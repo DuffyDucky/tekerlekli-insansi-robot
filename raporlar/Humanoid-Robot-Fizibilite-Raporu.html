@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>İnsansı Robot Fizibilitesi</title>
+<style>
+:root{color-scheme:light;--page:#f9f9f7;--surface:#fcfcfb;--ink:#0b0b0b;--ink-2:#52514e;--muted:#898781;--grid:#e1e0d9;--ring:rgba(11,11,11,.10);--accent:#2a78d6;--accent-soft:rgba(42,120,214,.10);--good:#0b8a0b;--warn:#b77d00;--crit:#c33434;--bar:#c3c2b7}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--page:#0d0d0d;--surface:#1a1a19;--ink:#ffffff;--ink-2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--ring:rgba(255,255,255,.10);--accent:#4a93ea;--accent-soft:rgba(74,147,234,.14);--good:#2fbf4a;--warn:#f0b33a;--crit:#ec6a6a;--bar:#4a4a46}}
+:root[data-theme="dark"]{color-scheme:dark;--page:#0d0d0d;--surface:#1a1a19;--ink:#ffffff;--ink-2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--ring:rgba(255,255,255,.10);--accent:#4a93ea;--accent-soft:rgba(74,147,234,.14);--good:#2fbf4a;--warn:#f0b33a;--crit:#ec6a6a;--bar:#4a4a46}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--ink);text-underline-offset:3px}a:hover{color:var(--accent)}
+main,footer{max-width:960px;margin:auto;padding-left:16px;padding-right:16px}
+main{padding-top:42px;padding-bottom:30px}
+.eyebrow{font-size:12px;letter-spacing:.12em;color:var(--ink-2);font-weight:700;text-transform:uppercase}
+h1{font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.08;letter-spacing:-.04em;max-width:860px;margin:14px 0}
+.dek{font-size:clamp(1rem,1.8vw,1.18rem);color:var(--ink-2);max-width:780px;margin:0}
+.meta{font-size:12px;color:var(--muted);margin:16px 0 0}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;margin:22px 0 0}
+nav.toc a{color:var(--ink-2)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:26px 0 8px}
+.tile{background:var(--surface);border:1px solid var(--grid);padding:16px 15px}
+.tile .label{font-size:11px;letter-spacing:.08em;font-weight:700;color:var(--ink-2);text-transform:uppercase}
+.tile .big{font-size:clamp(1.45rem,2.8vw,2.1rem);line-height:1.15;letter-spacing:-.035em;font-weight:700;margin:10px 0 4px}
+.tile .sub{font-size:12px;color:var(--ink-2);line-height:1.4}
+section{border-top:1px solid var(--grid);padding-top:24px;margin-top:30px}
+h2{font-size:1.45rem;letter-spacing:-.025em;margin:0 0 6px}
+h3{font-size:1.05rem;margin:20px 0 8px}
+.section-dek,.note{font-size:13px;color:var(--ink-2);margin:0 0 14px}
+.verdict{border:1px solid var(--grid);border-left:4px solid var(--accent);background:var(--surface);padding:18px 20px;margin-top:26px}
+.verdict h2{margin-bottom:8px}
+.verdict p{margin:0 0 8px}
+.table-wrap{overflow-x:auto;border:1px solid var(--grid);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:8px 10px;border-top:1px solid var(--grid);vertical-align:top}
+thead th{border-top:none;color:var(--ink-2);font-weight:650;font-size:12px}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.total td{font-weight:700}
+.pill{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.pill.good{color:var(--good)}.pill.warn{color:var(--warn)}.pill.crit{color:var(--crit)}.pill.acc{color:var(--accent)}
+.t{color:var(--muted);font-size:11px;white-space:nowrap}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{border:1px solid var(--grid);background:var(--surface);padding:14px 16px}
+.card h3{margin-top:0}
+.card.rec{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+ul.bullets{margin:4px 0 0;padding-left:18px}ul.bullets li{margin-bottom:6px}
+.bars{display:grid;gap:10px;margin:8px 0 6px}
+.bar-row{display:grid;grid-template-columns:150px 1fr 120px;gap:10px;align-items:center;font-size:13px}
+.bar-track{height:22px;background:var(--accent-soft);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;background:var(--bar)}
+.bar-fill.rec{background:var(--accent)}
+.bar-row .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:650}
+.bar-row .n{color:var(--ink-2)}
+details{margin-top:12px;border:1px solid var(--grid);background:var(--surface)}
+summary{cursor:pointer;padding:10px 12px;font-weight:650;font-size:13px}
+details .table-wrap{border:none;border-top:1px solid var(--grid)}
+.timeline{display:grid;gap:0;border:1px solid var(--grid);background:var(--surface)}
+.step{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:12px 14px;border-top:1px solid var(--grid)}
+.step:first-child{border-top:none}
+.step .when{font-size:12px;font-weight:700;color:var(--ink-2)}
+.step .what b{display:block;margin-bottom:2px}
+.step .what span{font-size:13px;color:var(--ink-2)}
+.step.gate{background:var(--accent-soft)}
+.callout{border:1px solid var(--warn);background:var(--surface);padding:12px 14px;font-size:13px;margin-top:14px}
+.callout b{color:var(--warn)}
+pre{background:var(--surface);border:1px solid var(--grid);padding:12px;overflow-x:auto;font-size:12px;line-height:1.45}
+.source-list{font-size:12px;color:var(--ink-2);padding-left:18px;margin:8px 0 0;overflow-wrap:anywhere}
+.source-list li{margin-bottom:4px}
+footer{border-top:1px solid var(--grid);padding-top:16px;padding-bottom:24px;color:var(--muted);font-size:11px;margin-top:30px}
+@media(max-width:680px){.stats{grid-template-columns:1fr 1fr}.two-col,.three-col{grid-template-columns:1fr}.bar-row{grid-template-columns:92px 1fr 88px;font-size:12px}.step{grid-template-columns:1fr;gap:4px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="eyebrow">Fizibilite raporu · Üniversite projesi</div>
+  <h1>Tekerlekli insansı robot: yapılabilir, şartları var</h1>
+  <p class="dek">Konuşan, tekerlekle gezen, kollarıyla jest yapan bir robot 4 kişilik bir ekiple bir dönemde çıkar. Görüntü işleme ikinci adım olarak eklenmeli, baştan hedeflenmemeli. Önerilen yapının malzeme maliyeti yaklaşık 62 bin TL.</p>
+  <p class="meta">26 Eylül 2026 · Hazırlayan: Echo (Claude Code), üç paralel araştırma ajanıyla · Kur varsayımı 1 USD ≈ 49 TL · TL fiyatları KDV dahil, 26.09.2026'da mağaza sayfalarından alındı</p>
+  <nav class="toc" aria-label="İçindekiler">
+    <a href="#karar">Ses mi, görüntü mü?</a><a href="#maliyet">Maliyet</a><a href="#gucum">Elimden gelir mi?</a><a href="#gereklilik">Teknik gereklilikler</a><a href="#destek">Profesyonel destek</a><a href="#takvim">Takvim</a><a href="#finans">Finansman</a><a href="#risk">Riskler</a><a href="#ilk-adim">İlk iki hafta</a><a href="#kaynak">Kaynaklar</a>
+  </nav>
+</header>
+
+<div class="stats">
+  <div class="tile"><div class="label">Önerilen bütçe</div><div class="big">≈ 62 bin TL</div><div class="sub">≈ 1.260 $, %25 beklenmeyen gider payıyla. Ekipten bir dizüstü kullanılırsa ≈ 45 bin TL.</div></div>
+  <div class="tile"><div class="label">1. dönem hedefi</div><div class="big">Konuşur, gezer, jest yapar</div><div class="sub">Görüntü (kişiye dönme) dönem sonuna esnek hedef.</div></div>
+  <div class="tile"><div class="label">Aylık işletme</div><div class="big">10–20 $</div><div class="sub">Bulut konuşma tanıma, dil modeli ve seslendirme ücreti (tahmini).</div></div>
+  <div class="tile"><div class="label">Olmazsa olmaz</div><div class="big">Yazılımcı ortak</div><div class="sub">Ekipte en az bir yazılım/yapay zekâ ve bir elektronik sorumlusu.</div></div>
+</div>
+
+<div class="verdict">
+  <h2>Kısa cevap</h2>
+  <p><b>Evet, elinden gelir.</b> Mekanik tasarım, montaj, kablaj ve acil stop gibi güvenlik işleri zaten senin güçlü olduğun alanlar ve bu projenin yarısı tam olarak bunlar. Zorluk, konuşma zincirinin ve bütün parçaların birlikte çalıştırılmasında. Bu yüzden ekipteki 4 kişiden en az biri yazılımda gerçekten rahat olmalı.</p>
+  <p><b>Önerim:</b> Önce sesle etkileşen robotu bitirin. Kamerayla "kişiyi görüp kafasını ona çevirme" özelliğini sonra, ayrı bir modül olarak ekleyin. Yüz <i>tanıma</i> (kişiyi kimliğiyle ayırt etme), otonom gezinme ve eşya tutan kollar bu projenin kapsamına girmemeli.</p>
+  <p class="note" style="margin:0">Rakamlar üç ajanın kaynaklı araştırmasından geldi. "tahmini" işaretli olanlar tahmin, teklif alınarak kesinleşmeli. Ayrıntılı kanıt notları <code>raporlar/kaynaklar/</code> klasöründe.</p>
+</div>
+
+<section id="karar">
+  <h2>Ses mi, görüntü mü?</h2>
+  <p class="section-dek">İkisi arasında seçim yapmak zorunda değilsiniz: ses temel, görüntü eklenti. Aşağıda üç seçenek var; önerilen ortada.</p>
+  <div class="three-col">
+    <div class="card"><h3>A · Yalnız ses</h3><ul class="bullets"><li>Yazılım ≈ 150–220 saat <span class="t">tahmini</span></li><li>Raspberry Pi 5 fazlasıyla yeter</li><li>Robot konuşur ama kimseye "bakmaz"</li><li>Hukuki yük: yalnız bilgilendirme levhası</li></ul></div>
+    <div class="card rec"><h3>A + hafif görüntü <span class="pill acc">Önerilen</span></h3><ul class="bullets"><li>A'ya ek ≈ 60–90 saat <span class="t">tahmini</span></li><li>Yüzü algılar, kafasını kişiye çevirir (Pi 5'te ≈ 54 kare/sn)</li><li>Düğmeye basınca "ne görüyorsun?" sorusunu buluttaki modelle cevaplar</li><li>Ek kart gerekmez, sadece kamera (≈ 1.800 TL)</li></ul></div>
+    <div class="card"><h3>B · Tam görüntü</h3><ul class="bullets"><li>Yazılım ≈ 270–410 saat <span class="t">tahmini</span></li><li>Nesne algılama + poz + yüz tanıma; Jetson (≈ 31 bin TL) gerekebilir</li><li>Yüz tanıma KVKK'da "özel nitelikli veri", açık rıza ister</li><li>Bir dönemde 4 kişiyle gerçekçi değil</li></ul></div>
+  </div>
+  <p class="note" style="margin-top:12px">Neden hafif görüntü? Robotun "canlı" hissettirmesi göz temasından gelir, kimliği tanımasından değil. Kafa takibi ucuz ve etkileyici. Yüz tanıma ise hem lisans sorunu (InsightFace'in hazır modelleri ticari olmayan araştırmayla sınırlı) hem hukuki yük getirir, fuarda kazancı az.</p>
+
+  <h3>Konuşma zinciri nasıl kurulmalı?</h3>
+  <ul class="bullets">
+    <li><b>Konuşmayı yazıya çevirme bulutta olmalı.</b> Pi 5 üzerinde yerel Whisper Türkçede yavaş ve hatalı (small modelde kelime hata oranı ≈ %16). Deepgram Nova-3 Türkçe destekliyor, dakikası ≈ 0,0077 $.</li>
+    <li><b>Dil modeli:</b> Gemini Flash veya Claude Haiku 4.5 gibi hızlı bir bulut modeli. Pi üzerinde yerel model Türkçede zayıf ve yavaş.</li>
+    <li><b>Seslendirme:</b> Google Chirp 3 HD Türkçe (iyi kalite) veya ücretsiz Piper (orta kalite, internet olmadan da çalışır).</li>
+    <li><b>Uyandırma kelimesi yerine düğme.</b> Hazır ve ücretsiz Türkçe uyandırma kelimesi çözümü yok. Bas-konuş düğmesi ve LED halka fuar gürültüsünde de en sağlam yöntem.</li>
+    <li><b>Tepki süresi hedefi 2 saniyenin altı.</b> Her aşama akışlı çalışmalı, dil modelinin ilk cümlesi biter bitmez seslendirilmeli, cevaplar 1–2 cümle olmalı. Beklerken "hmm" jesti süreyi kısa gösterir.</li>
+    <li><b>İnternet kesilirse yedek mod:</b> Vosk küçük Türkçe modeliyle birkaç sabit komut ve Piper ile hazır cevaplar.</li>
+  </ul>
+
+  <h3>Sistem yapısı</h3>
+<pre>        [Mikrofon dizisi]   [Kamera] (2. adım)
+               |                 |
+[Düğme+LED]--> Raspberry Pi 5  (Python)
+               ├─ ses: düğme → bulut yazıya çevirme → dil modeli → seslendirme → hoparlör
+               ├─ görüntü (2. adım): yüz algılama → kafa açısı; düğmeyle "ne görüyorsun?"
+               ├─ davranış: BEKLE / DİNLE / DÜŞÜN / KONUŞ / JEST
+               └─ USB seri bağlantı
+                        |
+               ESP32 (alt kontrolcü)
+               ├─ 2 veya 4 DC motor + enkoder → hız kontrolü (PID)
+               ├─ PCA9685 → kol ve kafa servoları (kayıtlı jestler)
+               ├─ 0,5 sn komut gelmezse motorları durdur
+               └─ Bluetooth kumandayla sürüş (Pi çökse de çalışır)
+ Donanım acil stop · servo ve işlemci için ayrı güç hatları · ortak toprak</pre>
+  <p class="note">ROS 2 ilk sürümde gerekmiyor. Asıl faydası otonom gezinmede ve bu iş LiDAR, iyi odometri ve 150–300 saat ek emek ister <span class="t">tahmini</span>. Kollar için ters kinematik de gerekmez: el sallama, işaret etme, selam gibi hareketler kaydedilip oynatılır (≈ 20–30 saat).</p>
+</section>
+
+<section id="maliyet">
+  <h2>Maliyet</h2>
+  <p class="section-dek">Üç seviye, hepsi %25 beklenmeyen gider payı dahil. Seviyeler parçaların kalitesine göre ayrılıyor; önerilen "Orta, Pi 5".</p>
+  <div class="bars" role="img" aria-label="Bütçe seviyeleri: Minimum 37 bin, Orta Pi 5 ile 62 bin, Orta Jetson ile 86 bin, İddialı 150 bin TL">
+    <div class="bar-row"><span class="n">Minimum · ses</span><div class="bar-track"><div class="bar-fill" style="width:24.9%"></div></div><span class="v">≈ 37.250 TL</span></div>
+    <div class="bar-row"><span class="n"><b>Orta · Pi 5</b></span><div class="bar-track"><div class="bar-fill rec" style="width:41.3%"></div></div><span class="v">≈ 61.700 TL</span></div>
+    <div class="bar-row"><span class="n">Orta · Jetson</span><div class="bar-track"><div class="bar-fill" style="width:57.5%"></div></div><span class="v">≈ 85.900 TL</span></div>
+    <div class="bar-row"><span class="n">İddialı</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="v">≈ 149.500 TL</span></div>
+  </div>
+
+  <div class="table-wrap" style="margin-top:14px">
+    <table>
+      <thead><tr><th>Seviye</th><th>Ne içeriyor</th><th class="num">Toplam</th><th class="num">USD</th></tr></thead>
+      <tbody>
+        <tr><td>Minimum</td><td>Yalnız ses; kol başına 2 eklem, ucuz MG996R servolar; kontrplak şasi; OLED gözler; 10–15 kg</td><td class="num">≈ 37.250 TL</td><td class="num">≈ 760 $</td></tr>
+        <tr><td><b>Orta · Pi 5</b> <span class="pill acc">Önerilen</span></td><td>Ses + kamera; kol başına 4 eklem, omuzda 20 kg·cm servolar; alüminyum sigma profil şasi; 7" yüz ekranı; LiFePO4 batarya (≈ 2,9 saat çalışma)</td><td class="num">≈ 61.700 TL</td><td class="num">≈ 1.260 $</td></tr>
+        <tr><td>Orta · Jetson</td><td>Aynısı, işlemci Jetson Orin Nano Super (31.282 TL)</td><td class="num">≈ 85.900 TL</td><td class="num">≈ 1.750 $</td></tr>
+        <tr><td>İddialı</td><td>Derinlik kamera, LiDAR, 10 akıllı servo, hoverboard motorları, otonom gezinme; 20–25 kg</td><td class="num">≈ 149.500 TL</td><td class="num">≈ 3.050 $</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <details>
+    <summary>Önerilen seviyenin kalem kalem dökümü (Orta · Pi 5)</summary>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Kalem</th><th>Model</th><th class="num">Adet</th><th class="num">Toplam (TL)</th><th>Kaynak</th></tr></thead>
+      <tbody>
+        <tr><td>Taban</td><td>2× JGB37-520 enkoderli motor, 2× BTS7960 sürücü, 125 mm tekerlek, kaplin, sarhoş teker</td><td class="num">—</td><td class="num">2.890</td><td>Direnc.net, Robotistan</td></tr>
+        <tr><td>Şasi</td><td>40×40 sigma profil 2 m + köşe bağlantı + lazer kesim tabla</td><td class="num">—</td><td class="num">3.268 <span class="t">kısmen t.</span></td><td>Robolink</td></tr>
+        <tr><td>Omuz servosu</td><td>DS3218MG 20 kg·cm</td><td class="num">4</td><td class="num">6.378</td><td>Robolink</td></tr>
+        <tr><td>Dirsek/el servosu</td><td>MG996R</td><td class="num">4</td><td class="num">924</td><td>Robotistan</td></tr>
+        <tr><td>Kafa (sağa-sola, yukarı-aşağı)</td><td>MG996R</td><td class="num">2</td><td class="num">462</td><td>Robotistan</td></tr>
+        <tr><td>Servo sürücü</td><td>PCA9685 16 kanal</td><td class="num">1</td><td class="num">345</td><td>Robolink</td></tr>
+        <tr><td>Yüz ekranı</td><td>Waveshare 7" HDMI</td><td class="num">1</td><td class="num">2.924</td><td>Robotistan</td></tr>
+        <tr><td>Ana işlemci</td><td>Raspberry Pi 5 8GB + soğutucu + depolama</td><td class="num">1</td><td class="num">13.166</td><td>Robotistan</td></tr>
+        <tr><td>Alt kontrolcü</td><td>ESP32</td><td class="num">1</td><td class="num">275</td><td>Direnc.net</td></tr>
+        <tr><td>Kamera</td><td>Raspberry Pi Camera Module 3</td><td class="num">1</td><td class="num">1.791</td><td>Robotistan</td></tr>
+        <tr><td>Mikrofon</td><td>USB konferans mikrofonu</td><td class="num">1</td><td class="num">1.500 <span class="t">t.</span></td><td>—</td></tr>
+        <tr><td>Ses çıkışı</td><td>MAX98357 amfi + hoparlör</td><td class="num">1</td><td class="num">300 <span class="t">t.</span></td><td>—</td></tr>
+        <tr><td>Denge sensörü (IMU)</td><td>BNO055</td><td class="num">1</td><td class="num">980 <span class="t">t.</span></td><td>—</td></tr>
+        <tr><td>Mesafe sensörü + acil stop</td><td>HC-SR04 ×3, 22 mm mantar buton</td><td class="num">—</td><td class="num">549</td><td>Akakçe</td></tr>
+        <tr><td>Batarya</td><td>LiFePO4 12,8V 20Ah</td><td class="num">1</td><td class="num">4.500 <span class="t">t.</span></td><td>—</td></tr>
+        <tr><td>Şarj cihazı</td><td>LiFePO4 14,6V</td><td class="num">1</td><td class="num">800 <span class="t">t.</span></td><td>—</td></tr>
+        <tr><td>Voltaj düşürücüler</td><td>2× servo hattı + 1× Pi 5V/5A</td><td class="num">3</td><td class="num">750 <span class="t">t.</span></td><td>—</td></tr>
+        <tr><td>Sigorta, kablo, konnektör</td><td>—</td><td class="num">set</td><td class="num">1.200 <span class="t">t.</span></td><td>—</td></tr>
+        <tr><td>Filament + hırdavat</td><td>PETG 5 kg, vida, somun, rulman</td><td class="num">—</td><td class="num">4.326</td><td>Akakçe</td></tr>
+        <tr><td>Yedek parça</td><td>1 DS3218 + 2 MG996R</td><td class="num">—</td><td class="num">2.056</td><td>—</td></tr>
+        <tr><td>Ara toplam</td><td></td><td></td><td class="num">49.386</td><td></td></tr>
+        <tr class="total"><td>Toplam (+%25)</td><td></td><td></td><td class="num">≈ 61.700</td><td></td></tr>
+      </tbody>
+    </table></div>
+  </details>
+
+  <h3>Bu listede düzelttiklerim</h3>
+  <ul class="bullets">
+    <li><b>Taban motoru yetmeyebilir.</b> Donanım ajanının kendi tork hesabına göre iki JGB37 motor düz zeminde 10–15 kg taşır, Orta seviye ise 15–20 kg. Ya robotu 15 kg'ın altında tutun ya da 4 motora çıkın (≈ +2.000 TL: 2 motor ve 2 tekerlek; aynı taraftaki iki motor tek sürücüye bağlanabilir) <span class="t">tahmini</span>.</li>
+    <li><b>Minimum seviyedeki LiPo batarya yerine LiFePO4.</b> LiPo delinirse yanar. Okul ortamında LiFePO4 daha güvenli, fiyat farkı küçük.</li>
+    <li><b>Mikrofona para ayırın.</b> Listedeki 1.500 TL'lik USB mikrofon ses tanımada en zayıf halka olabilir. Yankı iptalli ReSpeaker mikrofon dizisi ≈ 8.000 TL (Robot Sepeti). Önce ucuzuyla deneyip fuardan önce yükseltmek makul.</li>
+    <li><b>Listede olmayan ama gereken:</b> fuarda internet için 4.5G mobil modem ve hat (≈ 1.500 TL + hat <span class="t">tahmini</span>) ve aylık bulut ücreti (≈ 500–1.000 TL).</li>
+  </ul>
+
+  <div class="callout"><b>Stok uyarısı:</b> 26 Eylül'de Robotistan ve Robolink'te Pi 5, JGB37, MG996R, BTS7960, DS3218, Jetson ve Pi kamera "Tükendi" görünüyordu. Siparişi ilk iki hafta içinde verin, her kalem için ikinci bir satıcı belirleyin.</div>
+
+  <h3>Nerede tasarruf, nerede harcama?</h3>
+  <div class="two-col">
+    <div class="card"><h3>Tasarruf edilebilir</h3><ul class="bullets"><li>Ekipten bir eski dizüstü Pi 5 yerine geçer (≈ 16 bin TL kazanç, pay dahil)</li><li>Kafa ve gövde kabukları 3D baskı (filament ≈ 565 TL/kg)</li><li>Bilek ve kafada ucuz MG996R servo</li><li>Klon ESP32, sigma veya kontrplak şasi</li></ul></div>
+    <div class="card"><h3>Para harcanmalı</h3><ul class="bullets"><li>Batarya, koruma devresi (BMS), sigorta, acil stop</li><li>Servo güç hattı: kaliteli voltaj düşürücü, kalın kablo</li><li>Omuz servoları (yük orada)</li><li>Enkoderli motor ve düzgün motor sürücü</li><li>Mikrofon</li><li>Yedek parça: servolar yanar, %20–30 fazla alın</li></ul></div>
+  </div>
+</section>
+
+<section id="gucum">
+  <h2>Elimden gelir mi?</h2>
+  <p class="section-dek">Senin bilinen yetkinliklerin: SolidWorks, AutoCAD, Siemens PLC, mekanik montaj, kablaj, elektrik panosu, lehim, FANUC temel eğitimi. Python ve Arduino'yu yapay zekâ yardımıyla yazıyorsun.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>İş</th><th>Durumun</th><th>Kim yapmalı</th></tr></thead>
+    <tbody>
+      <tr><td>Gövde tasarımı, tork ve devrilme hesabı</td><td><span class="pill good">Güçlü</span></td><td>Sen, hoca kontrol eder</td></tr>
+      <tr><td>Montaj, kablaj, acil stop, sigorta düzeni</td><td><span class="pill good">Güçlü</span></td><td>Sen (pano tecrübesi doğrudan işe yarar)</td></tr>
+      <tr><td>Batarya ve güç dağıtımı (DC tarafı)</td><td><span class="pill warn">Kısmen</span></td><td>Elektronik sorumlusu + danışman</td></tr>
+      <tr><td>ESP32: motor kontrolü, servolar</td><td><span class="pill warn">Yapay zekâ yardımıyla</span></td><td>Gömülü/test sorumlusu, sen destek</td></tr>
+      <tr><td>Konuşma zinciri, bulut bağlantıları, davranış akışı</td><td><span class="pill crit">Zayıf halka</span></td><td>Yazılım/yapay zekâ sorumlusu (şart)</td></tr>
+      <tr><td>Görüntü işleme (2. adım)</td><td><span class="pill crit">Yok</span></td><td>Yazılım sorumlusu</td></tr>
+    </tbody>
+  </table></div>
+  <h3>4 kişilik ekip için rol önerisi</h3>
+  <ul class="bullets">
+    <li><b>Mekanik + proje lideri (sen):</b> tasarım, montaj, takvim, satın alma, hoca ve sponsor ilişkisi.</li>
+    <li><b>Elektrik/elektronik:</b> batarya, güç dağıtımı, motor sürücüleri, acil stop devresi.</li>
+    <li><b>Yazılım/yapay zekâ:</b> konuşma zinciri, davranış akışı, sonra görüntü.</li>
+    <li><b>Gömülü + test:</b> ESP32 kodu, haftalık entegrasyon testleri, belgeler.</li>
+  </ul>
+  <p class="note">Ekipte yazılımda rahat biri yoksa, bilgisayar mühendisliğinden bir öğrenciyi 4. kişi olarak almak projenin en önemli kararı olur. Yapay zekâ kodlama asistanları bağlantı kodunu 2–3 kat hızlı yazar <span class="t">tahmini</span>; ama servoların Pi'yi yeniden başlatması, kablo ve toprak hataları, PID ayarı gibi sorunları ölçüp denemek insan işi.</p>
+</section>
+
+<section id="gereklilik">
+  <h2>Teknik gereklilikler</h2>
+  <p class="section-dek">Öğrenci robot projelerini en sık bitiren beş şey ve her birine karşı önlem.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Konu</th><th>Neden önemli</th><th>Gereklilik</th></tr></thead>
+    <tbody>
+      <tr><td>Servo akımı</td><td>Bir MG996R zorlandığında 2,5 A çeker; 10 servo 25 A'yı geçer. Voltaj düşer, Pi yeniden başlar.</td><td>Servolar asla Pi'nin 5V hattından beslenmez. Her kola ayrı voltaj düşürücü (gerçekçi 8–10 A), Pi'ye ayrı temiz 5V/5A, tek noktada ortak toprak, servo hattına 1000–2200 µF kondansatör, ana ve kol başına sigorta.</td></tr>
+      <tr><td>Motor torku</td><td>25 kg, 5° rampa, 0,5 m/s² hızlanma: motor başına ≈ 13 kg·cm, güvenlik payıyla 20–26 kg·cm sürekli tork gerekir.</td><td>JGB37'nin 21 kg·cm değeri durma torkudur, sürekli çalışmada %25–30'u kullanılır. 15 kg üstünde 4 motor veya hoverboard motoru.</td></tr>
+      <tr><td>Devrilme</td><td>Ağırlık merkezi 60 cm yüksekte ve teker kenarına 15 cm uzaktaysa, sert frende devrilme sınırı ≈ 2,45 m/s². Ani acil stop bunu aşabilir.</td><td>Batarya en alta, taban en az 45 cm, önde ve arkada sarhoş teker, yazılımda yumuşak hızlanma, hafif gövde (PETG, %15–20 doluluk).</td></tr>
+      <tr><td>Acil stop</td><td>Yazılım çökerse robot durmalı.</td><td>Mantar buton, röle veya kontaktörle motor ve servo gücünü fiziksel olarak keser; işlemci açık kalır. ESP32 0,5 sn komut alamazsa motorları durdurur.</td></tr>
+      <tr><td>İnternet ve gürültü</td><td>Fuar Wi-Fi'ı çoğu zaman çalışmaz; gürültüde ses tanıma çöker.</td><td>Ayrı mobil modem, çevrimdışı yedek mod, yankı iptalli mikrofon, robot konuşurken mikrofonu kapatmak, kişiyi 30–50 cm'ye çağıran tasarım.</td></tr>
+      <tr><td>KVKK</td><td>Yüz geometrisi ve ses tınısı biyometrik veri sayılıyor. Kurul 2026/921 kararında biyometriyi açık rızayla bile sınırladı.</td><td>Yüz algılama evet, tanıma hayır. Görüntü kaydedilmez. Robotta ve standta "kamera kullanılır, kayıt yapılmaz" levhası. Buluta yalnız düğmeye basınca tek kare gider. Üniversitenin KVKK birimine danışın.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note" style="margin-top:10px">Çalışma süresi örneği: ortalama ≈ 70 W tüketimle 12,8V 20Ah LiFePO4 ≈ 2,9 saat, aynı yükte 4S 5200 mAh LiPo ≈ 50 dakika.</p>
+</section>
+
+<section id="destek">
+  <h2>Profesyonel destek gereken alanlar</h2>
+  <p class="section-dek">Okul/hoca destekli bir projede danışmanlığın çoğu ücretsiz: hocalar ve diğer bölümlerin öğrencileri. Para gerektiren kısım daha çok üretim hizmeti.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Alan</th><th>Öneri</th><th>Kimden</th><th class="num">Tahmini maliyet</th></tr></thead>
+    <tbody>
+      <tr><td>Güç elektroniği, batarya güvenliği</td><td><span class="pill crit">Danışman şart</span> + hazır BMS'li paket al</td><td>Elektrik-elektronik mühendisliği hocası veya öğrencisi</td><td class="num">0 (batarya ayrı)</td></tr>
+      <tr><td>Yapay zekâ ve yazılım entegrasyonu</td><td><span class="pill crit">Ekip ortağı şart</span></td><td>Bilgisayar mühendisliği öğrencisi</td><td class="num">0</td></tr>
+      <tr><td>KVKK ve etik (kamera, ses)</td><td><span class="pill warn">Danışman al</span></td><td>Danışman hoca, üniversite KVKK birimi, gerekirse etik kurul</td><td class="num">0</td></tr>
+      <tr><td>Dış görünüm, endüstriyel tasarım</td><td><span class="pill warn">Danışman al</span> (isteğe bağlı)</td><td>İzmir'deki endüstriyel tasarım bölümlerinden gönüllü öğrenci <span class="t">doğrulanmadı</span></td><td class="num">0 – birkaç bin TL</td></tr>
+      <tr><td>3D baskı, lazer kesim</td><td><span class="pill acc">Hizmet al</span> (büyük parçalar)</td><td>Okulun yazıcısı, makerspace, İzmir'deki atölyeler</td><td class="num">Orta parça 500–1.500 TL; lazer 2–5 TL/dk</td></tr>
+      <tr><td>Baskılı devre kartı (PCB)</td><td>İlk sürümde gerek yok; sonra <span class="pill acc">hizmet al</span></td><td>Tasarım: elektronik öğrencisi; üretim: JLCPCB türü firmalar</td><td class="num">Birkaç yüz TL + kargo</td></tr>
+      <tr><td>Mekanik tasarım, tork, devrilme</td><td><span class="pill good">Kendin yap</span> + hoca kontrolü</td><td>Mekatronik veya makine hocası</td><td class="num">0</td></tr>
+      <tr><td>Acil stop, iş güvenliği</td><td><span class="pill good">Kendin yap</span></td><td>—</td><td class="num">500–1.500 TL</td></tr>
+      <tr><td>ESP32 kodu</td><td><span class="pill good">Ekip içi</span>, kod incelemesi için mentor</td><td>Robot kulübü, IEEE öğrenci kolu <span class="t">varlığı doğrulanmadı</span></td><td class="num">0</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="takvim">
+  <h2>Takvim: bir dönem, olursa iki</h2>
+  <p class="section-dek">Güz dönemi ≈ 15 hafta. İlke: 6. haftadan sonra her hafta baştan sona çalışan bir sürüm olsun. Entegrasyonu son haftaya bırakmak en sık görülen çöküş nedeni.</p>
+  <div class="timeline">
+    <div class="step"><div class="when">1–2. hafta<br>29 Eyl – 12 Eki</div><div class="what"><b>Kapsamı dondur, siparişi ver</b><span>Rol dağılımı, hoca onayı, kapsam belgesi. SolidWorks'te yerleşim çizimi, tork ve devrilme hesabı. Malzeme listesi ve sipariş (stok sorunu var).</span></div></div>
+    <div class="step"><div class="when">3–5. hafta</div><div class="what"><b>Üç paralel iş</b><span>Masada konuşan düzenek (Pi + mikrofon + hoparlör) · taban şasi, motorlar, ESP32 hız kontrolü, kumandayla sürüş · güç dağıtımı ve acil stop.</span></div></div>
+    <div class="step gate"><div class="when">6. hafta</div><div class="what"><b>İlk uçtan uca sürüm</b><span>Konuşan kafa tabanın üstünde, kumandayla geziyor. Bundan sonra her hafta entegrasyon testi.</span></div></div>
+    <div class="step"><div class="when">7–10. hafta</div><div class="what"><b>Gövde ve kollar</b><span>3D baskı gövde ve kollar, jest kütüphanesi, yüz ekranı, davranış akışı, çevrimdışı yedek mod.</span></div></div>
+    <div class="step"><div class="when">11–12. hafta</div><div class="what"><b>Hafif görüntü, yetişirse</b><span>Yüz algılayıp kafayı kişiye çevirme, düğmeyle "ne görüyorsun?". Yetişmezse 2. döneme kalır, robot yine tam çalışır durumda olur.</span></div></div>
+    <div class="step gate"><div class="when">13–15. hafta</div><div class="what"><b>Sağlamlaştırma ve teslim</b><span>3 senaryo × 20 deneme, yedek parça, demo kontrol listesi, rapor. Sağlam 3 senaryo, kırılgan 20 senaryodan iyidir (Pepper'ın dersi).</span></div></div>
+    <div class="step"><div class="when">2. dönem<br>(devam ederse)</div><div class="what"><b>Genişletme</b><span>Görüntü modülünü olgunlaştırma, belki tek bir hazır kolla (SO-101) nesne tutma, Teknofest başvurusu. Otonom gezinme ancak ekipte güçlü bir yazılımcı varsa.</span></div></div>
+  </div>
+  <div class="callout"><b>Kontrol et: İşletmede Mesleki Eğitim.</b> Vault'taki notlara göre zorunlu stajın 4. yarıyılda, yani 2027 baharında planlı. Bu staj dönem boyunca işletmede geçiyorsa projenin 2. dönemine ayıracağın zaman ciddi biçimde azalır. Ekip arkadaşların da aynı programdaysa durum onlar için de geçerli. Stajın haftada kaç gün olduğunu bölüme sor. Bu yüzden asıl hedefi 1. döneme göre kurmak daha güvenli.</div>
+  <p class="note" style="margin-top:10px">Kapasite hesabı <span class="t">tahmini</span>: 4 kişi × haftada ≈ 8 saat × 15 hafta ≈ 480 kişi-saat. Yazılım için 150–220 saat, mekanik, elektrik ve montaj için kabaca 150–250 saat. Birinci aşama sığar; hafif görüntü sınırda kalır.</p>
+</section>
+
+<section id="finans">
+  <h2>Finansman</h2>
+  <p class="section-dek">Bütçe okul veya hoca üzerinden gelecek. Bir dönemlik projede işe yarayan kaynaklar farklı, TÜBİTAK'ın takvimi bir döneme sığmıyor.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Kaynak</th><th>Tutar</th><th>Bu proje için</th></tr></thead>
+    <tbody>
+      <tr><td>Bölüm imkânları / hoca bütçesi</td><td>—</td><td><span class="pill good">Ana kaynak</span> Yazıcı, atölye, eldeki malzeme de sayılır; önce elde ne olduğunu listeleyin.</td></tr>
+      <tr><td>MCBÜ BAP</td><td>Komisyon belirliyor</td><td><span class="pill acc">Hoca üzerinden</span> Yürütücü doktoralı öğretim üyesi olmalı. Öğrenci proje türü var mı <span class="t">doğrulanmadı</span>.</td></tr>
+      <tr><td>Sponsorluk</td><td>Malzeme veya para</td><td><span class="pill acc">Hemen denenebilir</span> Manisa OSB'deki firmalar (Vestel, Bosch vb.), robotta logo karşılığı. Bosch Rexroth öğrenci robot takımlarına sponsor oluyor.</td></tr>
+      <tr><td>TÜBİTAK 2209-A</td><td>2025 çağrısında 9.000 TL <span class="t">2026 doğrulanmadı</span></td><td><span class="pill warn">2. dönem için</span> Önlisans öğrencisi başvurabiliyor, yürütücü + 3 ortak. Başvuru Ekim–Kasım, sonuç Nisan civarı; bu dönemin parası olmaz.</td></tr>
+      <tr><td>TÜBİTAK 2209-B</td><td>12.000 TL</td><td><span class="pill warn">2. dönem için</span> Sanayi danışmanı ister.</td></tr>
+      <tr><td>Teknofest</td><td>Malzeme desteği, aşamaları geçen takımlara</td><td><span class="pill warn">Uzun vade</span> İnsansı robot kategorisi yok; "İnsanlık Yararına Teknoloji" için robota amaç gerekir (ör. hastane rehberi). 2027 takvimi ilan edilmedi.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="risk">
+  <h2>Riskler</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Risk</th><th>Olasılık</th><th>Önlem</th></tr></thead>
+    <tbody>
+      <tr><td>Kapsam şişmesi ("yüz tanısın, gezsin, eşya tutsun")</td><td><span class="pill crit">Yüksek</span></td><td>Kapsamı 2. haftada yazılı dondurun, yeni fikirleri 2. döneme listeleyin.</td></tr>
+      <tr><td>Servolar yüzünden Pi'nin yeniden başlaması</td><td><span class="pill crit">Yüksek</span></td><td>Ayrı güç hatları, ortak toprak, kondansatör (bkz. gereklilikler).</td></tr>
+      <tr><td>Parça stoğu ve kargo gecikmesi</td><td><span class="pill warn">Orta</span></td><td>İlk iki haftada sipariş, her kalem için ikinci satıcı.</td></tr>
+      <tr><td>Demo günü internet ve gürültü</td><td><span class="pill warn">Orta</span></td><td>Mobil modem, çevrimdışı yedek mod, bas-konuş düğmesi.</td></tr>
+      <tr><td>Üst gövde ağırlaşıp devrilme, servo yetersizliği</td><td><span class="pill warn">Orta</span></td><td>Hesabı baskıdan önce yapın; hafif kabuk, batarya en altta.</td></tr>
+      <tr><td>2. dönemde staj yüzünden zaman kaybı</td><td><span class="pill warn">Belirsiz</span></td><td>Bölüme sorun; asıl hedefi 1. döneme göre kurun.</td></tr>
+      <tr><td>Yazılım sorumlusunun ayrılması</td><td><span class="pill warn">Orta</span></td><td>Kodu ortak depoda tutun, ikinci bir kişi de konuşma zincirini çalıştırabilsin.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="ilk-adim">
+  <h2>İlk iki hafta yapılacaklar</h2>
+  <ol class="bullets">
+    <li>Hocayla robotun <b>ne işe yarayacağını</b> netleştirin: karşılama robotu mu, tanıtım mı, rehber mi? Senaryolar buna göre seçilir.</li>
+    <li>4 kişinin rollerini yazın. Yazılım sorumlusu yoksa bilgisayar mühendisliğinden birini arayın.</li>
+    <li>Bölümde hazır olanları listeleyin: 3D yazıcı, eski dizüstü, sigma profil, servo, güç kaynağı.</li>
+    <li>SolidWorks'te kaba yerleşim: boy, taban genişliği, batarya yeri, ağırlık tahmini. Sonra tork ve devrilme hesabı.</li>
+    <li>Malzeme listesini kesinleştirip siparişi verin; stoğu kontrol edin.</li>
+    <li>İşletmede Mesleki Eğitim takvimini bölüme sorun.</li>
+    <li>İsteğe bağlı: XLeRobot'un açık malzeme listesine ve kablaj şemasına bakın. Bu projeye en yakın açık kaynak örnek bu (≈ 660 $, tekerlekli, çift kollu).</li>
+  </ol>
+</section>
+
+<section id="kaynak">
+  <h2>Kaynaklar</h2>
+  <p class="section-dek">Tam listeler ve ajan raporları: <code>kaynaklar/01-donanim-maliyet.md</code>, <code>02-yazilim-yapay-zeka.md</code>, <code>03-referans-finansman-destek.md</code>. Öne çıkanlar:</p>
+  <ul class="source-list">
+    <li>Fiyatlar: robotistan.com, direnc.net, robolinkmarket.com, robotsepeti.com, akakce.com (26.09.2026)</li>
+    <li>Kur: https://tr.investing.com/currencies/usd-try</li>
+    <li>Jetson fiyat artışı: https://www.cnx-software.com/2026/07/22/nvidia-increases-the-price-of-jetson-modules-and-devkits-by-up-to-101/</li>
+    <li>Pi 5 fiyatı: https://www.raspberrypi.com/news/more-memory-driven-price-rises/</li>
+    <li>Deepgram Türkçe: https://deepgram.com/learn/deepgram-expands-nova-3-with-italian-turkish-norwegian-and-indonesian-support</li>
+    <li>Piper Türkçe sesler: https://github.com/rhasspy/piper/blob/master/VOICES.md</li>
+    <li>Porcupine dil desteği: https://picovoice.ai/docs/faq/porcupine/</li>
+    <li>YOLO / Pi 5: https://docs.ultralytics.com/guides/raspberry-pi</li>
+    <li>InsightFace lisansı: https://github.com/deepinsight/insightface/blob/master/python-package/README.md</li>
+    <li>KVKK 2026/921: https://www.kvkk.gov.tr/Icerik/8762/</li>
+    <li>XLeRobot: https://github.com/Vector-Wangel/XLeRobot</li>
+    <li>Akınsoft Mini Ada: https://akinoid.com/akinrobotics-robotlar/ada/prd-mini-ada-insansi-robot</li>
+    <li>BTÜ Moria: https://btu.edu.tr/tr/haber/detay/6821/</li>
+    <li>TÜBİTAK 2209 (2025 çağrısı): https://projekoord.sdu.edu.tr/tr/haber/tubitak-2209-a-ve-2209-b-universite-ogrencileri-arastirma-projeleri-2025-yili-cagrilari-basvuruya-acildi-54788h.html</li>
+    <li>Teknofest İnsanlık Yararına Teknoloji: https://teknofest.org/tr/yarismalar/insanlik-yararina-teknoloji-yarismasi/</li>
+  </ul>
+  <p class="note" style="margin-top:12px"><b>Güvenilirlik:</b> TÜBİTAK resmî sayfaları açılamadı, rakamlar üniversite duyurularından çapraz kontrol edildi. Doğrulanamayanlar: 2026 2209 tutarı ve tarihleri, Teknofest 2027 takvimi, MCBÜ BAP'ta öğrenci proje türü, bazı Türkiye fiyatları (LiFePO4 20Ah, BNO055, mikrofon). Saat tahminleri, API maliyetleri ve hizmet fiyatları tahmindir.</p>
+</section>
+</main>
+<footer>Robot projesi · raporlar/ · 26 Eylül 2026 · Yerel rapor, dışarı gönderilmedi.</footer>
+</body>
+</html>

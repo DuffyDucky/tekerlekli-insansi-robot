@@ -1,0 +1,44 @@
+﻿Parça;Model / malzeme;Ölçü (mm);Adet;Birim kütle (g);Toplam (g)
+LiFePO4 12,8 V 20 Ah akü (yatık);LiFePO4 12.8V 20Ah, BMS'li;181 x 167 x 77;1;2800;2800
+Şase uzun rayı;40x40 agir sigma profil, kanal 10;40 x 40 x 500;2;995;1990
+Şase ara rayı;40x40 agir sigma profil, kanal 10;40 x 40 x 260;3;517;1552
+Taban kapağı, PETG 3D baskı (4 parça);PETG, 2,5 mm duvar;360 x 172 x 520;1;1457;1457
+Gövde direği;40x40 agir sigma profil, kanal 10;40 x 40 x 700;1;1394;1394
+Alt plaka, 3 mm alüminyum (lazer kesim);3 mm Al 5754, lazer kesim;340 x 500 x 3;1;1336;1336
+Gövde kabuğu, PETG 3D baskı (6 parça);PETG, 2,5 mm duvar;285 x 623 x 175;1;1320;1320
+JGB37-520 enkoderli motor (60 dev/dk);JGB37-520 12V, enkoderli;O37 redüktör, toplam ~64 + 15 mil;4;200;800
+125 x 58 mm arazi tekerleği;Büyük arazi tekerleği 125x58 (mavi jant);O125 x 58;4;140;560
+Elektronik katı, 5 mm kontrplak (lazer kesim);5 mm huş kontrplak, lazer kesim;340 x 500 x 5;1;542;542
+Kafa kabuğu, PETG 3D baskı (2 parça);PETG, 2,5 mm duvar;210 x 180 x 150;1;492;492
+Omuz traversi;40x40 agir sigma profil, kanal 10;40 x 40 x 200;1;398;398
+MG996R servo (≈10 kg·cm);MG996R + disk horn;40.7 x 19.7 x 36.6;6;55;330
+40x40 geniş köşe bağlantı;40x40 geniş köşe bağlantı + T somun;37 x 37 x 37,7;4;75;300
+DS3218MG servo (20 kg·cm);DS3218MG + alüminyum disk horn;40.0 x 20.0 x 40.4;4;60;240
+"7"" HDMI LCD 1024x600";Waveshare 7inch HDMI LCD (C) muadili;164.9 x 124.25 x ~15;1;230;230
+XL4016 DC-DC düşürücü;XL4016 8A modül;65.0 x 47.0 x 23.5;3;60;180
+12 mm altıgen kaplin (6 mm mil);12 mm altıgen pirinç kaplin, O6 delik;12 AA x 30;4;35;140
+BTS7960 43A motor sürücü;BTS7960B modülü;50.0 x 50.0 x 43.0;2;66;132
+JGB37 L montaj braketi;37 mm motor L braketi (JGB37 delik duzeni kontrol!);46 x 42 x 40, 1,5 mm;4;30;120
+Ön kol tüpü, PETG;PETG;O60 x 75;2;43;86
+Üst kol tüpü, PETG;PETG;O56 x 80;2;43;85
+22 mm mantar acil stop butonu;Emas B200E60 (O60 mantar, kalıcı);O60, ön 28, arka 48;1;85;85
+Dirsek kapağı, PETG;PETG;O56 x 56;2;35;70
+El, PETG (sabit, %30 doluluk);PETG, %30 doluluk;26 x 62 x 50;2;35;70
+Omuz kapağı, PETG;PETG;O76;2;32;63
+Raspberry Pi 5 8GB + Active Cooler;Raspberry Pi 5 8GB;85 x 56 x ~18;1;58;58
+M5 x 40 mesafe burcu;M5 x 40 pirinç burç;M5 x 40;4;12;48
+Kafa taşıyıcı plaka, PETG;PETG, %40 doluluk;120 x 90 x 4;1;40;40
+Boyun plakası, 3 mm alüminyum;3 mm Al;70 x 70 x 3;1;39;39
+Servo kızağı (2 mm alüminyum);20 kg servo için çok amaçlı braket;24 x 44 x 30;2;19;38
+Kol bağlantı plakası, 2 mm Al;2 mm Al;24 x 32 x 8;2;17;33
+40 mm 3 W hoparlör;40 mm 4 ohm 3 W;O40 x 18;1;27;27
+HC-SR04 ultrasonik sensör;HC-SR04;45 x 20 x 15;3;9;27
+Omuz bağlantı plakası, 2 mm Al;2 mm Al;76 x 30 x 2;2;12;25
+Kafa eğme U braketi, 2 mm Al;Uzun U servo braketi;50 x 48 x 24;1;18;18
+ESP32-WROOM-32D DevKit;ESP32 DevKit 30 pin;52.0 x 28.0;1;10;10
+PCA9685 16 kanal servo sürücü;PCA9685 (Adafruit tipi);62.2 x 25.4;1;9;9
+Raspberry Pi Camera Module 3;Camera Module 3 (12 MP);25 x 24 x 11,5;1;4;4
+BNO055 IMU kartı;BNO055;27.0 x 20.0;1;3;3
+MAX98357A I2S amfi;MAX98357A;19.4 x 17.8;1;2;2
+Vida, somun, T-somun, kablo payı;tahmini;;1;600;600
+TOPLAM;;;;;17755
