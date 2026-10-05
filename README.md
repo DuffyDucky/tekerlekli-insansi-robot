@@ -12,9 +12,9 @@ planlama, tasarım (CAD) ve ileride yazılım kodu burada tutulur.
 | `raporlar/kaynaklar/` | Raporun dayandığı araştırma notları (donanım/maliyet, yazılım/yapay zekâ, referans projeler/finansman, parça ölçüleri, fiyat araştırması ve doğrulaması) |
 | `planlama/proje-plani.md` | Kapsam, takvim, roller, ilk iki hafta, riskler, açık sorular |
 | `planlama/maliyet.json` | Doğrulanmış malzeme maliyeti (satıcı, TL, bağlantı, stok); demodaki maliyet bölümünün tek kaynağı |
-| `tasarim/Robot-Tasarim-Demosu.html` | Gerçek parçalarla 3B CAD montajı; devrilme, motor ve servo hesabı canlı; TL + USD proje maliyeti |
-| `tasarim/cad/Humanoid-Robot-Montaj.step` | SolidWorks'te açılan montaj dosyası |
-| `tasarim/cad/parca-listesi.csv` | Gerçek parça listesi (model, ölçü, adet, kütle) |
+| `tasarim/Robot-Tasarim-Demosu.html` | Gerçek parçalarla 3B CAD montajı; V1 / V2 düğmesi; devrilme, motor ve servo hesabı canlı; TL + USD proje maliyeti |
+| `tasarim/cad/Humanoid-Robot-Montaj.step` · `-V2` · `-V3` | SolidWorks'te açılan montaj dosyaları (V1, V2, V3) |
+| `tasarim/cad/parca-listesi.csv` · `-V2` · `-V3` | Gerçek parça listesi (model, ölçü, adet, kütle) |
 | `tasarim/cad/robot_cad.py` | Modeli üreten kod (STEP + CSV + demo) |
 | `tasarim/cad/demo_uret.py` | Demoyu şablon + model + maliyetten yeniden üretir; CadQuery gerekmez |
 | `CLAUDE.md` | Bu klasörde açılan yapay zekâ oturumları için bağlam |
@@ -38,6 +38,8 @@ HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünü
 | Ekip | Yazılım / yapay zekâ sorumlusu şart; güç elektroniği ve KVKK için danışman |
 | Güvenlik | LiPo yerine LiFePO4 akü, donanımsal acil stop, servo ve işlemci için ayrı güç hatları |
 | Mekanik | Ağırlığı alta topla, tabanı geniş tut, robotu kat kat kur ve her katta test et |
+| V2 (hoca, 2 Ekim 2026) | 10,1" dokunmatik ekran göğüste, kafada iki yuvarlak göz ekranı (Pepper benzeri; Duffy A seçeneğini seçti). Tekerlekler yerinde, taban kabuğu genişleyip onları sarıyor. Malzeme ≈ 77.900 TL (%15 pay dahil; V1 64.500). |
+| V3 deneme (Duffy, 2 Ekim 2026) | V2 yorumu: "taban çok geniş", "ekran çok alçakta", "yüz ifadesi çok ruhsuz". V3: boy 125 cm, şase 27 cm (akünün sığdığı en dar), taban 44 cm ve yukarı 30 cm'ye daralan etek, 10,1" ekran üst göğüste 15° yukarı eğik (merkez 82 cm), kafada 7" yüz ekranı + siyah akrilik yüz paneli (Pi 5 iki HDMI). Malzeme ≈ 79.400 TL. |
 
 ## CAD modelinden çıkanlar (varsayılan tasarım)
 
@@ -50,6 +52,8 @@ HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünü
 | Devrilme | ileri frende 6,8, geri frende 5,7 m/s² (acil stop payı 3,8×); yana 7,2 m/s² |
 | Taban motoru | 4× JGB37, 5° rampada motor başına 4,7 kg·cm (sürekli sınırın %74'ü) |
 | Kol | 386 g; omuz 5,4 kg·cm (DS3218 güvenli sınır 10), dirsek 1,0 kg·cm (MG996R sınır 5) |
+| **V2 farkı** | Ölçü 51 × 52 × 115 cm · 18,9 kg · ağırlık merkezi 282 mm · devrilme ileri 6,9, geri 5,9 m/s² (pay 4,0×), yana 7,4 · motor 5,0 kg·cm (%79) · PETG ≈ 4,4 kg · taban kabuğu 513 × 227 × 520 (9 baskı parçası), gövde 6, kafa 2 · çakışma yok (kol × gövde 2.822 mm³ V1'den kalma) |
+| **V3 farkı** | Ölçü 44 × 52 × 125 cm · 18,6 kg · ağırlık merkezi 337 mm · devrilme ileri 5,8, geri 5,0 m/s² (pay 3,3×), yana 5,2 (3,4×) · motor 4,9 kg·cm (%77) · PETG ≈ 4,4 kg · etek 6, gövde 8, kafa 2 baskı parçası · çakışma yok (kol × gövde 2.299 mm³, V1'den kalma sorun) |
 | Yapı | 340×500 sigma çerçeve; altta 3 mm Al plaka + yatık akü (arka) + motor sürücüleri (ön); 40 mm burç üstünde 5 mm kontrplak elektronik katı; motorlar L braketle plaka altında; tek sigma direk + 200 mm omuz traversi; PETG kabuklar |
 
 ## Konuşma geçmişi (26 Eylül 2026)
@@ -79,6 +83,14 @@ HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünü
 - [ ] STEP dosyasını SolidWorks'te aç (henüz denenmedi)
 - [ ] Parçalar gelince tahmini ölçüleri kumpasla doğrula (enkoder boyu, braket delikleri, BTS7960 delikleri)
 - [ ] Ağırlık için hafif profil (40×40 hafif veya 30×30) seçeneğini değerlendir (≈ 2 kg, tahmini)
+- [x] Hoca geri bildirimi (2 Ekim 2026): (1) ekran daha büyük olsun (şu an 7"); (2) tekerlekler dışarıda
+  değil, kabuğun içine gömülü olsun. Hoca: ekran gövdede de olabilir. Karar (Duffy): tekerlekler yerinde kalır,
+  kabuk dışa genişleyip tekerlekleri sarar; yüz A seçeneği (göğüste ekran + kafada göz ekranları). → Demoda V2.
+  SolidWorks tasarımında da uygulanacak.
+- [ ] V2 kabuklarının 23 cm'lik baskı bölme çizgileri ve birleşme yerleri (SolidWorks'te)
+- [ ] 10,1" ekranın 5 V ≈ 0,75 A beslemesini güç planına ekle; ekran ve göz ekranı kütlelerini tartıp CAD'e gir
+- [ ] Okulun 3D yazıcı tablası 25 × 25 × 25 cm (hocanın söylediği; model doğrulanmadı). Her baskı parçası
+  buna sığacak şekilde bölünmeli (pay için ≤ 23 cm hedef)
 
 ## CAD'i yeniden üretme
 

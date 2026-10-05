@@ -136,12 +136,14 @@ footer{max-width:1400px;margin:auto;padding:12px 16px 22px;color:var(--muted);fo
     <div>
       <div class="eyebrow">Tasarım demosu · gerçek parçalarla CAD montajı</div>
       <h1>Tekerlekli insansı robot</h1>
-      <p class="dek">Robotun her parçası gerçek ölçüsüyle çizildi: JGB37 motorlar, DS3218 ve MG996R servolar, Raspberry Pi 5, 7" ekran, LiFePO4 akü, 40×40 sigma profil. Kütle ve ağırlık merkezi bu parçalardan hesaplanıyor. Aynı montajı SolidWorks'te açmak için STEP dosyasını indir.</p>
+      <p class="dek">Robotun her parçası gerçek ölçüsüyle çizildi: JGB37 motorlar, DS3218 ve MG996R servolar, Raspberry Pi 5, ekranlar, LiFePO4 akü, 40×40 sigma profil. Kütle ve ağırlık merkezi bu parçalardan hesaplanıyor. Aynı montajı SolidWorks'te açmak için STEP dosyasını indir.</p>
+      <p class="dek" id="ver-dek" style="margin-top:6px"></p>
     </div>
-    <div class="dl"><a class="btn" href="cad/Humanoid-Robot-Montaj.step" download>⬇ STEP (SolidWorks)</a><a class="btn" href="cad/parca-listesi.csv" download>⬇ Parça listesi (CSV)</a><a class="btn" href="#maliyet" id="cost-link" hidden>₺ Proje maliyeti</a></div>
+    <div class="dl"><a class="btn" id="dl-step" href="cad/Humanoid-Robot-Montaj-V2.step" download>⬇ STEP V2 (SolidWorks)</a><a class="btn" id="dl-csv" href="cad/parca-listesi-V2.csv" download>⬇ Parça listesi V2 (CSV)</a><a class="btn" href="#maliyet" id="cost-link" hidden>₺ Proje maliyeti</a></div>
   </div>
 
   <div class="toolbar">
+    <div class="seg" role="group" aria-label="Sürüm" id="vers"><button data-ver="v1">V1 · ilk tasarım</button><button data-ver="v2">V2 · hoca geri bildirimi</button><button data-ver="v3" aria-pressed="true">V3 · deneme</button></div>
     <div class="seg" role="group" aria-label="Yapım aşaması" id="stages"><button data-stage="1">1 · Taban</button><button data-stage="2">2 · + Gövde</button><button data-stage="3">3 · + Kafa</button><button data-stage="4" aria-pressed="true">4 · + Kollar</button></div>
     <button class="btn" id="p-oneri">Önerilen</button>
     <button class="btn risk" id="p-riskli">Riskli örnek</button>
@@ -172,6 +174,11 @@ footer{max-width:1400px;margin:auto;padding:12px 16px 22px;color:var(--muted);fo
   <div class="lower">
     <div class="panel"><h2>Yandan görünüş: devrilme</h2><svg id="side" viewBox="0 0 520 470" role="img" aria-label="Yandan siluet, ağırlık merkezi ve devrilme kenarı"></svg><p class="note">Siluet 3B modelin gerçek parça sınırlarından çiziliyor. Kırmızı nokta ağırlık merkezi, kesikli çizgi en yakın devrilme kenarına gidiyor.</p></div>
     <div class="panel"><h2>Ne yapmalı?</h2><ul class="tips" id="tips"></ul></div>
+  </div>
+
+  <div class="panel" style="margin-top:12px">
+    <h2 id="ver-h">V1 → V2: ne değişti?</h2>
+    <ul class="tips" id="ver-list"></ul>
   </div>
 
   <div class="panel" style="margin-top:12px">
@@ -206,6 +213,7 @@ footer{max-width:1400px;margin:auto;padding:12px 16px 22px;color:var(--muted);fo
       <li><b>Devrilme:</b> Sınır ivme = g × (ağırlık merkezinden teker temas hattına yatay mesafe) ÷ (ağırlık merkezi yüksekliği). Acil stop freni ≈ 1,5 m/s² kabul edildi. Pay 2 katın üstündeyse yeşil.</li>
       <li><b>Motor:</b> F = m·(0,5 + g·sinθ + 0,03·g·cosθ), tekerlek yarıçapı 62,5 mm. JGB37'nin 21 kg·cm'si durma torku; sürekli çalışmada ≈ %30'u (6,3 kg·cm) hedeflenir.</li>
       <li><b>Servolar:</b> Tork, kolun gerçek parça kütleleri ve ağırlık merkezinden hesaplanıyor. Pratik kural: servo sürekli olarak etiket torkunun yarısıyla çalışmalı.</li>
+      <li><b>V2 ekranları:</b> 10,1" göğüs ekranı ve GC9A01 göz ekranlarının ölçüleri <span id="v2-olcu"></span>. Kabuklar okul yazıcısına (25 × 25 × 25 cm) sığsın diye en fazla 23 cm'lik parçalara bölünecek; bölme çizgileri SolidWorks'te çizilecek.</li>
       <li><b>Sınırlar:</b> Kaydırıcılar ray, plaka, direk ve kabukları ölçekler; satın alınan parçalar değişmez. Kablolama, vida ve T somunlar çizilmedi. Kesin karar öncesi parçaları kumpasla ölç, montajı SolidWorks'te kontrol et.</li>
     </ul>
   </div>
@@ -228,7 +236,17 @@ var STAGE_NOTE={1:"1. adım: Tabanı tek başına kur. Üstüne 15 kg ağırlık
   2:"2. adım: Sigma profil direği, omuz traversini ve gövde kabuğunu ekle. Tepeye kafa ağırlığında yük bağlayıp yandan it.",
   3:"3. adım: Kafayı tak: boyun servoları, 7\" ekran, Pi kamera.",
   4:"4. adım: Kolları en son tak. Kol ileri uzanınca ağırlık merkezi öne kayar; omuz servosu en çok o zaman zorlanır."};
-var P=Object.assign({},PRESETS.oneri),stage=4,waving=false,waveAng=0,explode=0,shellMode="opak",edgesOn=true;
+var VER="v3";
+function verOK(d){return !d.ver||d.ver.split(",").indexOf(VER)>=0;}
+function presetFor(v){return Object.assign({},PRESETS.oneri,v==="v3"?{H:C.V3.H,W:C.V3.W}:{});}
+var VER_DEK={v1:"V1 · ilk tasarım: 7\" ekran kafada, tekerlekler gövdenin dışında.",
+  v2:"V2 · hocanın geri bildirimi (2 Ekim 2026): 10,1\" ekran göğüste, kafada iki yuvarlak göz ekranı, tekerlekler genişleyen taban kabuğunun içinde.",
+  v3:"V3 · deneme (Duffy'nin V2 yorumu): boy 125 cm, 10,1\" ekran üst göğüste ve 15° yukarı bakıyor, kafada 7\" yüz ekranı ve siyah yüz paneli, taban 44 cm ve yukarı doğru daralan etek."};
+var STAGE_V2={2:"2. adım: Sigma profil direği, omuz traversini, gövde kabuğunu ve 10,1\" göğüs ekranını ekle. Tepeye kafa ağırlığında yük bağlayıp yandan it.",
+  3:"3. adım: Kafayı tak: boyun servoları, iki yuvarlak göz ekranı, Pi kamera."};
+var STAGE_V3={2:"2. adım: Sigma profil direği, omuz traversini, gövde kabuğunu ve eğik 10,1\" göğüs ekranını ekle. Tepeye kafa ağırlığında yük bağlayıp yandan it.",
+  3:"3. adım: Kafayı tak: boyun servoları, 7\" yüz ekranı ve siyah yüz paneli, Pi kamera."};
+var P=presetFor(VER),stage=4,waving=false,waveAng=0,explode=0,shellMode="opak",edgesOn=true;
 function fmt(v,d){return v.toLocaleString("tr-TR",{minimumFractionDigits:d,maximumFractionDigits:d});}
 function mmcm(v){return Math.round(v/10)+" cm";}
 function kg(v){return fmt(v,v<1?2:1)+" kg";}
@@ -265,6 +283,38 @@ function mat(ck,shell){
   store[ck]=m;return m;
 }
 
+/* ---------- ekran gorselleri (V3): yuz ve gogus menusu ---------- */
+var FACE=null;
+function rr(g,x,y,w,h,r){g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath();}
+function drawFace(g,open,look){
+  var W=512,H=286;g.fillStyle="#000";g.fillRect(0,0,W,H);
+  g.shadowColor="#5ce1ff";g.shadowBlur=28;g.fillStyle="#7fe9ff";
+  var eh=Math.max(10,96*open),ew=86,cy=118,dx=look*14;
+  [-1,1].forEach(function(sx){rr(g,W/2+sx*92-ew/2+dx,cy-eh/2,ew,eh,Math.min(30,eh/2));g.fill();});
+  g.lineWidth=12;g.lineCap="round";g.strokeStyle="#7fe9ff";g.beginPath();g.arc(W/2+dx*0.5,196,46,0.2*Math.PI,0.8*Math.PI);g.stroke();
+  g.shadowBlur=0;
+}
+function drawUI(g){
+  var W=640,H=402,gr=g.createLinearGradient(0,0,0,H);gr.addColorStop(0,"#0f2c4f");gr.addColorStop(1,"#0a1a30");g.fillStyle=gr;g.fillRect(0,0,W,H);
+  g.fillStyle="#fff";g.font="700 54px system-ui,Segoe UI,sans-serif";g.fillText("Merhaba!",40,92);
+  g.fillStyle="#b9d3f2";g.font="400 27px system-ui,Segoe UI,sans-serif";g.fillText("Size nasıl yardımcı olabilirim?",42,136);
+  ["Bölümü tanı","Yol tarifi","Soru sor"].forEach(function(t,i){var x=40+i*192;g.fillStyle=i===2?"#2a78d6":"#1d3f68";rr(g,x,186,176,118,16);g.fill();
+    g.fillStyle="#fff";g.font="600 25px system-ui,Segoe UI,sans-serif";g.fillText(t,x+18,256);});
+  g.fillStyle="#8fb0d6";g.font="400 21px system-ui,Segoe UI,sans-serif";g.fillText("Konuşmak için kırmızı düğmeye basın",42,358);
+}
+function screenTex(kind){
+  var cv=document.createElement("canvas"),g=cv.getContext("2d");
+  if(kind==="face"){cv.width=512;cv.height=286;drawFace(g,1,0);}else{cv.width=640;cv.height=402;drawUI(g);}
+  var tx=new T.CanvasTexture(cv);if(T.sRGBEncoding!==undefined)tx.encoding=T.sRGBEncoding;
+  if(kind==="face")(FACE=FACE||[]).push({g:g,tx:tx});
+  return tx;
+}
+var faceT=0;
+function animFace(now){
+  if(!FACE||now-faceT<90)return;faceT=now;
+  var ph=(now%3600)/3600,open=ph>0.94?Math.abs(Math.cos((ph-0.94)/0.06*Math.PI)):1,look=Math.sin(now/1700);
+  FACE.forEach(function(f){drawFace(f.g,reduce?1:open,reduce?0:look);f.tx.needsUpdate=true;});
+}
 /* ---------- sahne ---------- */
 var R=null,root,BASE=[],HEADI=[],ARMS=[],ALL=[],headGroup,comMark,dyn;
 function makeInst(d,parent,grp,side){
@@ -277,6 +327,8 @@ function makeInst(d,parent,grp,side){
     if(!b.e)b.e=new T.EdgesGeometry(b.g,30);
     var ls=new T.LineSegments(b.e,EDGE_MAT);ls.userData.edge=true;ch.add(ls);
   });
+  if(d.face){var ft=screenTex(d.face.kind);var pm=new T.Mesh(new T.PlaneGeometry(d.face.w,d.face.h),new T.MeshBasicMaterial({map:ft}));
+    pm.material.toneMapped=false;pm.position.set(0,d.face.y,0.45);ch.add(pm);}
   w.add(ch);parent.add(w);ALL.push(rec);return rec;
 }
 function init3D(){
@@ -337,23 +389,23 @@ function setView(v){
 function Sh(){return P.H-20-C.HEAD_UP;}
 function layout(angR){
   var W=P.W,L=P.L,S=Sh(),dS=S-C.S0,f=explode;
-  var colK=(S-20-C.Y_RAIL1)/(C.S0-20-C.Y_RAIL1),torK=(S+30-C.TORSO_Y0)/(C.S0+30-C.TORSO_Y0);
+  var colK=(S-20-C.Y_RAIL1)/(C.S0-20-C.Y_RAIL1),torK=(S+30-C.TORSO_Y0)/(C.S0+30-C.TORSO_Y0),torK3=(S+30-C.TORSO_Y0)/(C.S3+30-C.TORSO_Y0);
   BASE.forEach(function(r){
     var d=r.d,p=d.pos.slice();
     if(d.xm==="s")p[0]+=Math.sign(p[0])*(W-C.W0)/2;else if(d.xm==="p")p[0]*=W/C.W0;
     if(d.zm==="s")p[2]+=Math.sign(p[2])*(L-C.L0)/2;else if(d.zm==="p")p[2]*=L/C.L0;
-    if(d.ym==="S")p[1]+=dS;else if(d.ym==="B")p[1]=P.battY-C.BAT_H/2;
+    if(d.ym==="S")p[1]+=dS;else if(d.ym==="B")p[1]=P.battY-C.BAT_H/2;else if(d.ym==="T")p[1]=C.TORSO_Y0+(p[1]-C.TORSO_Y0)*torK;else if(d.ym==="T3")p[1]=C.TORSO_Y0+(p[1]-C.TORSO_Y0)*torK3;
     var sx=1,sy=1,sz=1;
-    if(d.sx==="W")sx=W/C.W0;else if(d.sx==="Win")sx=(W-80)/(C.W0-80);else if(d.sx==="Wc")sx=(W+20)/(C.W0+20);
+    if(d.sx==="W")sx=W/C.W0;else if(d.sx==="Win")sx=(W-80)/(C.W0-80);else if(d.sx==="Wc")sx=(W+20)/(C.W0+20);else if(d.sx==="Wc2")sx=(W+C.COV2_ADD)/(C.W0+C.COV2_ADD);else if(d.sx==="Wc3")sx=(W+C.COV3_ADD)/(C.V3.W+C.COV3_ADD);else if(d.sx==="W3")sx=W/C.V3.W;
     if(d.sz==="L")sz=L/C.L0;else if(d.sz==="Lc")sz=(L+20)/(C.L0+20);
-    if(d.sy==="col")sy=colK;else if(d.sy==="torso")sy=torK;
+    if(d.sy==="col")sy=colK;else if(d.sy==="torso")sy=torK;else if(d.sy==="torso3")sy=torK3;
     var ex=d.ex||[0,0,0];
     r.w.position.set(p[0]+ex[0]*f,p[1]+ex[1]*f,p[2]+ex[2]*f);r.w.scale.set(sx,sy,sz);
     r.ms=d.shell?Math.pow(sx*sy*sz,2/3):sx*sy*sz;
-    r.count=(d.st||1)<=stage&&(!d.vis||(d.vis==="m4"?P.nMot===4:P.nMot===2));
+    r.count=(d.st||1)<=stage&&(!d.vis||(d.vis==="m4"?P.nMot===4:P.nMot===2))&&verOK(d);
   });
   headGroup.position.set(0,S+20,0);
-  HEADI.forEach(function(r){var p=r.d.pos,ex=r.d.ex||[0,0,0];r.w.position.set(p[0]+ex[0]*f,p[1]+ex[1]*f,p[2]+ex[2]*f);r.count=stage>=3;});
+  HEADI.forEach(function(r){var p=r.d.pos,ex=r.d.ex||[0,0,0];r.w.position.set(p[0]+ex[0]*f,p[1]+ex[1]*f,p[2]+ex[2]*f);r.count=stage>=3&&verOK(r.d);});
   var lu=C.UP[0]-C.UP[1],lf=C.FA[0]-C.FA[1],k=1+(P.armL-C.ARM0)/(lu+lf),sh1=(k-1)*lu,sh2=sh1+(k-1)*lf;
   ARMS.forEach(function(A){
     A.root.position.set(A.side*(C.X_SH+200*f),S+60*f,0);A.root.scale.set(A.side,1,1);
@@ -401,7 +453,7 @@ function calc(){
     });
   }
   var shW=Math.sqrt(sy*sy+sz*sz)/10,shC=Math.abs(cur)/10,elW=Math.sqrt(ey*ey+ez*ez)/10,sv=SERVOS[P.servo];
-  var width=(xmax-xmin)+58,depth=Math.max(P.L+20,(zmax-zmin)+125);
+  var width=VER==="v1"?(xmax-xmin)+58:Math.max((xmax-xmin)+58,P.W+(VER==="v2"?C.COV2_ADD:C.COV3_ADD)),depth=Math.max(P.L+20,(zmax-zmin)+125);
   var lv=function(r,g,w){return r>=g?"good":(r>=w?"warn":"crit");};
   return {M:Mt,xc:xc,yc:yc,zc:zc,xmin:xmin,xmax:xmax,zmin:zmin,zmax:zmax,dF:dF,dR:dR,aF:aF,aR:aR,aS:aS,aMin:aMin,ramp:ramp,Tm:Tm,Tc:Tc,
     armM:sm,shW:shW,shC:shC,elW:elW,sv:sv,width:width,depth:depth,byKey:byKey,
@@ -508,7 +560,7 @@ function drawSide(c){
   var boxes=[],B=new T.Box3();
   function add(obj,cls){B.setFromObject(obj);if(!isFinite(B.min.y))return;boxes.push({y0:B.min.y*1000,y1:B.max.y*1000,z0:B.min.z*1000,z1:B.max.z*1000,c:cls});}
   ALL.forEach(function(r){if(!r.count)return;var k=r.d.key;
-    if(k==="cover"||k==="torso"||k==="head"||k==="sh_cap"||k==="tube_up"||k==="tube_fa"||k==="elbow_cap"||k==="hand")add(r.w,"bx");
+    if(k==="cover"||k==="torso"||k==="head"||k==="cover2"||k==="torso2"||k==="head2"||k==="cover3"||k==="torso3"||k==="sh_cap"||k==="tube_up"||k==="tube_fa"||k==="elbow_cap"||k==="hand")add(r.w,"bx");
     else if(k==="wheel"||k==="caster")add(r.w,"bx wh");
     else if(k==="battery")add(r.w,"bx batt");});
   var s=400/(P.H+80),X=function(z){return (260+z*s).toFixed(1);},Y=function(y){return (450-y*s).toFixed(1);};
@@ -546,11 +598,47 @@ function solve(a){var e=explode;explode=0;layout(a);var c=calc();drawSide(c);exp
 function update(){
   SL.forEach(function(s){document.getElementById("o-"+s.k).textContent=s.f(P[s.k]);});
   var c=solve(curAng());render(c);updateDyn(c);
-  document.getElementById("stage-note").textContent=STAGE_NOTE[stage];
+  document.getElementById("stage-note").textContent=(VER==="v2"&&STAGE_V2[stage])||(VER==="v3"&&STAGE_V3[stage])||STAGE_NOTE[stage];
 }
 function press(sel,btn){Array.prototype.forEach.call(document.querySelectorAll(sel+" button"),function(x){x.setAttribute("aria-pressed",String(x===btn));});}
+function setVer(v){
+  VER=v;press("#vers",document.querySelector('#vers button[data-ver="'+v+'"]'));
+  P=presetFor(v);syncControls();verList();
+  var sfx=v==="v1"?"":"-"+v.toUpperCase(),lab=v==="v1"?"":" "+v.toUpperCase();
+  var a=document.getElementById("dl-step");a.href="cad/Humanoid-Robot-Montaj"+sfx+".step";a.textContent="⬇ STEP"+lab+" (SolidWorks)";
+  a=document.getElementById("dl-csv");a.href="cad/parca-listesi"+sfx+".csv";a.textContent="⬇ Parça listesi"+lab+" (CSV)";
+  document.getElementById("ver-dek").textContent=VER_DEK[v];
+  if(selKey)select(null);
+  if(R)update();
+  document.dispatchEvent(new CustomEvent("robotver",{detail:v}));
+}
+function verList(){
+  if(VER==="v3"){verList3();return;}
+  document.getElementById("ver-h").textContent="V1 → V2: ne değişti?";
+  var a=MD.check.v1,b=MD.check.v2,pn=function(k){var m=/\((\d+) parça\)/.exec(MD.parts[k].name);return m?m[1]:"?";};
+  var t=["<b>Ekran göğüste:</b> 10,1\" dokunmatik ekran gövdenin önündeki çerçeveye oturuyor (V1'de kafada 7\"). Ağır parça aşağı indi; kollar aşağıdayken ekrana değmiyor (çakışma kontrolü: 0 mm³).",
+    "<b>Yüz:</b> Kafada iki yuvarlak göz ekranı (GC9A01 1,28\") ve kamera. Kafa 21 × 18 × 15 cm'den 18 × 15 × 14 cm'ye küçüldü; yazıcıya sığıyor.",
+    "<b>Tekerlekler içeride:</b> Teker yerleri V1 ile aynı, yani devrilme hesabı değişmedi. Taban kabuğu 36 cm'den "+mmcm(C.W0+C.COV2_ADD)+" genişliğe çıktı ve yere 35 mm kalana kadar iniyor. Akü tablası aynı kaldı; kabuğu iki yanda 4 L braket taşıyor.",
+    "<b>3D baskı:</b> Kabuklar en fazla 23 cm'lik parçalara bölünecek: taban "+pn("cover2")+", gövde "+pn("torso2")+", kafa 2 parça.",
+    "<b>Kütle:</b> "+kg(a.mass)+" → "+kg(b.mass)+" (geniş kabuk). <b>Ağırlık merkezi:</b> "+mmcm(a.com[1])+" → "+mmcm(b.com[1])+" (ekran aşağı indi).",
+    "<b>Henüz çözülmedi:</b> Omuz ile üst kol arasındaki çakışma V1'den beri duruyor; SolidWorks montajında düzeltilecek."];
+  document.getElementById("ver-list").innerHTML=t.map(function(x){return "<li>"+x+"</li>";}).join("");
+  var o=/\(ölçü (\w+)/.exec(MD.parts.lcd10.model);document.getElementById("v2-olcu").textContent=o&&o[1]==="dogrulandi"?"Waveshare çizimlerinden alındı (kütleler tahmini)":"henüz tahmini; ürün seçilince üretici çiziminden güncellenecek";
+}
+function verList3(){
+  var b=MD.check.v2,c=MD.check.v3,pn=function(k){var m=/\((\d+) parça\)/.exec(MD.parts[k].name);return m?m[1]:"?";};
+  document.getElementById("ver-h").textContent="V2 → V3: ne değişti? (deneme)";
+  var t=["<b>Taban daha dar:</b> "+mmcm(C.W0+C.COV2_ADD)+" → "+mmcm(C.V3.W+C.COV3_ADD)+". Şase 34 → 27 cm (akünün sığdığı en dar ölçü). Etek tekerleklerin üstünden sonra gövdeye doğru "+mmcm(C.V3.W+C.COV3_ADD)+" → 30 cm daralıyor, kutu gibi durmuyor.",
+    "<b>Ekran göz hizasına yakın:</b> Boy 115 → 125 cm. 10,1\" ekranın merkezi yerden 65 → 82 cm'ye çıktı ve 15° yukarı bakıyor; ayakta duran kişi ekrana tepeden bakar, dokunması rahat.",
+    "<b>Yüz geri geldi:</b> Kafada 7\" yüz ekranı, önünde parlak siyah yüz paneli. Ekranın kenarı kayboluyor, yalnız parlayan gözler ve ağız görünüyor. Raspberry Pi 5 iki ekranı birlikte sürüyor. Demoda yüz göz kırpıyor ve bakışını kaydırıyor.",
+    "<b>Kütle:</b> "+kg(b.mass)+" → "+kg(c.mass)+". <b>Ağırlık merkezi:</b> "+mmcm(b.com[1])+" → "+mmcm(c.com[1])+" (robot uzadı). Devrilme hesapları yukarıdaki kartlarda; hepsi güvenli bölgede.",
+    "<b>3D baskı:</b> Etek "+pn("cover3")+", gövde "+pn("torso3")+", kafa 2 parça (her biri ≤ 23 cm). Yüz paneli lazer kesim akrilik.",
+    "<b>Çakışma:</b> V3 parçaları arasında çakışma yok. Omuz ile üst kol arasındaki eski sorun duruyor; SolidWorks montajında düzeltilecek."];
+  document.getElementById("ver-list").innerHTML=t.map(function(x){return "<li>"+x+"</li>";}).join("");
+}
 function wire(){
-  document.getElementById("p-oneri").addEventListener("click",function(){P=Object.assign({},PRESETS.oneri);syncControls();update();});
+  Array.prototype.forEach.call(document.querySelectorAll("#vers button"),function(b){b.addEventListener("click",function(){setVer(b.getAttribute("data-ver"));});});
+  document.getElementById("p-oneri").addEventListener("click",function(){P=presetFor(VER);syncControls();update();});
   document.getElementById("p-riskli").addEventListener("click",function(){P=Object.assign({},PRESETS.riskli);syncControls();update();});
   Array.prototype.forEach.call(document.querySelectorAll("#stages button"),function(b){b.addEventListener("click",function(){stage=+b.getAttribute("data-stage");press("#stages",b);update();});});
   Array.prototype.forEach.call(document.querySelectorAll("#views button"),function(b){b.addEventListener("click",function(){setView(b.getAttribute("data-v"));press("#views",b);});});
@@ -565,13 +653,14 @@ function loop(now){
   requestAnimationFrame(loop);
   if(waving){waveAng=135+28*Math.sin(now/1000*5);ARMS[0].pitch.rotation.x=-waveAng*D2R;
     if(now-last>150){last=now;var c=solve(waveAng);render(c);updateDyn(c);}}
+  animFace(now);
   if(!R.touched&&!reduce)R.yaw+=0.0018;
   var ty=P.H/2000*0.95+R.py;R.camera.position.set(R.tx+R.dist*Math.cos(R.pitch)*Math.sin(R.yaw),ty+R.dist*Math.sin(R.pitch),R.tz+R.dist*Math.cos(R.pitch)*Math.cos(R.yaw));
   R.camera.lookAt(R.tx,ty,R.tz);R.renderer.render(R.scene,R.camera);
 }
-document.getElementById("stamp").textContent="Varsayılan: "+kg(MD.check.mass)+", ağırlık merkezi "+Math.round(MD.check.com[1])+" mm";
-buildControls();syncControls();wire();
-if(init3D()){applyShells();update();requestAnimationFrame(loop);}
+document.getElementById("stamp").textContent="Varsayılan V1: "+kg(MD.check.v1.mass)+", ağırlık merkezi "+Math.round(MD.check.v1.com[1])+" mm · V2: "+kg(MD.check.v2.mass)+", "+Math.round(MD.check.v2.com[1])+" mm · V3: "+kg(MD.check.v3.mass)+", "+Math.round(MD.check.v3.com[1])+" mm";
+buildControls();syncControls();wire();verList();
+if(init3D()){applyShells();setVer(VER);requestAnimationFrame(loop);}else setVer(VER);
 })();
 </script>
 <script id="cost" type="application/json">/*COST_JSON*/</script>
@@ -582,10 +671,10 @@ if(init3D()){applyShells();update();requestAnimationFrame(loop);}
 var CD=null;try{CD=JSON.parse(document.getElementById("cost").textContent);}catch(e){}
 if(!CD||!CD.kalemler)return;
 document.getElementById("maliyet").hidden=false;document.getElementById("cost-link").hidden=false;
-var K=CD.kur,O={print:CD.baski||"yazici",pay:CD.pay,spare:true};
+var K=CD.kur,O={print:CD.baski||"yazici",pay:CD.pay,spare:true,ver:"v3"};
 function nf(v,d){return v.toLocaleString("tr-TR",{minimumFractionDigits:d,maximumFractionDigits:d});}
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
-function on(it){return !(it.secenek&&it.secenek!==O.print)&&!(it.g==="yedek"&&!O.spare);}
+function on(it){return !(it.secenek&&it.secenek!==O.print)&&!(it.g==="yedek"&&!O.spare)&&!(it.ver&&it.ver.split(",").indexOf(O.ver)<0);}
 function qty(it){return nf(it.adet,it.adet%1?1:0)+(it.birim?" "+it.birim:"");}
 var DUR={dogrulandi:["ok","Doğrulandı"],tahmini:["t","Tahmini"],ithal:["t","İthal (t)"]};
 var STOK={yok:["no","Stokta yok"],belirsiz:["t","Stok belirsiz"]};
@@ -602,7 +691,7 @@ function render(){
   var c=calc(),pc=Math.round(O.pay*100);
   var ver=c.items.filter(function(it){return it.durum==="dogrulandi";}).length,est=c.items.length-ver;
   var out=c.items.filter(function(it){return it.stok==="yok";});
-  var h='<div class="ctile hero"><div class="lab">Genel toplam</div><div class="val">'+nf(Math.round(c.tot),0)+' TL</div><div class="sub">≈ '+nf(Math.round(c.tot/K),0)+' USD · %'+pc+' beklenmeyen pay dahil</div></div>';
+  var h='<div class="ctile hero"><div class="lab">Genel toplam</div><div class="val">'+nf(Math.round(c.tot),0)+' TL</div><div class="sub">≈ '+nf(Math.round(c.tot/K),0)+' USD · %'+pc+' beklenmeyen pay dahil · '+O.ver.toUpperCase()+' yapısı</div></div>';
   h+='<div class="ctile"><div class="lab">Parçalar ve kargo</div><div class="val">'+nf(Math.round(c.sub),0)+' TL</div><div class="sub">≈ '+nf(Math.round(c.sub/K),0)+' USD · pay hariç</div></div>';
   h+='<div class="ctile"><div class="lab">Doğrulanan fiyat</div><div class="val">'+ver+' / '+c.items.length+'</div><div class="sub">'+(est?est+" kalem tahmini veya ithal":"Hepsi satıcı sayfasından")+'</div></div>';
   h+='<div class="ctile"><div class="lab">Stok sorunu</div><div class="val">'+out.length+' kalem</div><div class="sub">'+(out.length?esc(out.map(function(it){return it.ad;}).join(", ")):"Seçilen satıcılarda hepsi stokta")+'</div></div>';
@@ -637,7 +726,7 @@ function csv(){
   r.push(["","Genel toplam","","","",n(c.tot),"",n(c.tot/K)]);
   r.push(["","Kur: 1 USD = "+n(K)+" TL ("+CD.kur_kaynak+"), fiyat tarihi "+CD.tarih]);
   var s="﻿"+r.map(function(row){return row.map(function(x){x=String(x);return /[;"\r\n]/.test(x)?'"'+x.replace(/"/g,'""')+'"':x;}).join(";");}).join("\r\n");
-  var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([s],{type:"text/csv;charset=utf-8"}));a.download="robot-maliyet-"+CD.tarih+".csv";
+  var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([s],{type:"text/csv;charset=utf-8"}));a.download="robot-maliyet-"+O.ver.toUpperCase()+"-"+CD.tarih+".csv";
   document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},1000);
 }
 document.getElementById("cost-meta").textContent="Fiyatlar "+new Date(CD.tarih+"T12:00:00").toLocaleDateString("tr-TR",{day:"numeric",month:"long",year:"numeric"})+" tarihinde satıcı sayfalarından okundu, KDV dahil. 1 USD = "+nf(K,4)+" TL ("+CD.kur_kaynak+"). Dolar karşılıkları bu kurla hesaplandı.";
@@ -648,6 +737,7 @@ ps.addEventListener("change",function(){O.print=ps.value;render();});
 py.addEventListener("change",function(){O.pay=parseFloat(py.value);render();});
 sp.addEventListener("change",function(){O.spare=sp.checked;render();});
 document.getElementById("c-csv").addEventListener("click",csv);
+document.addEventListener("robotver",function(e){O.ver=e.detail;render();});
 render();
 })();
 </script>

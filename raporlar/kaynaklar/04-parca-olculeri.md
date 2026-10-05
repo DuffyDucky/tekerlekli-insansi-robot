@@ -30,3 +30,12 @@ created: 2026-09-26
 | 50 mm sarhoş teker (Emes) | Toplam yükseklik 74; tabla 50 × 50; delik 38 × 38 | doğrulandı | https://www.tekerteker.com/emes-tablali-pvc-doner-tekerlek-50-mm-cap |
 
 **Oran uyarısı (ajan):** 60 dev/dk hangi orana denk gelir, motorun boştaki devrine bağlı. ~6000 rpm motorda 1:90–100 (redüktör 24 mm), ~10000 rpm motorda 1:168 (26,5 mm). Modelde 24 mm kullanıldı.
+
+## V2 ekranları (2 Ekim 2026, hoca geri bildirimi)
+
+Kaynak: Claude Opus alt ajanı Waveshare çizimlerinden okudu; orkestratör fiyat ve stoğu sayfa verisinden yeniden kontrol etti.
+
+| Parça | Ölçü (mm) | Durum | Kaynak |
+|---|---|---|---|
+| Waveshare 10.1inch HDMI LCD (B), kasalı | Kasa ön plakası 274,12 × 187,00 (R6); ön cam 253,96 × 168,60; cam penceresi 217,96 × 136,60; panel aktif alanı 216,96 × 135,60; çıplak panel 229,46 × 149,20 × 4,8; camdan arka plakaya 18,0; köşe delikleri Ø3,0, 265,11 × 179,0. CAD'de kasa ön plakası kullanılmadı, çerçeveyi gövde yapıyor (cam + 0,5 boşluk + 2,5 duvar). Kütle doğrulanmadı (CAD'de 0,60 kg tahmini) | doğrulandı (kütle tahmini) | https://files.waveshare.com/wiki/10.1inch_HDMI_LCD_B_with_case/10.1inch_HDMI_LCD_B_with_case_2D_PDF_20260116.pdf · https://files.waveshare.com/upload/9/9b/10.1inch_HDMI_LCD_B_panel_dimension.pdf |
+| Waveshare 1.28inch LCD Module (GC9A01) | PCB Ø37,5, dil dahil 40,4; aktif Ø32,4; konnektörle 11,05, konnektörsüz ≈ 5,45; 4 pirinç burç Ø3,5 / Ø1,7, 18,6 × 26,7; PH2.0 8 pin. Kütle doğrulanmadı (CAD'de 8 g tahmini) | doğrulandı (kütle tahmini) | https://www.waveshare.com/wiki/1.28inch_LCD_Module · https://files.waveshare.com/upload/4/49/1.28inch_LCD_Module_3D_Drawing.zip |

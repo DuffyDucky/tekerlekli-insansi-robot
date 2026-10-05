@@ -59,7 +59,17 @@ D = dict(
     amp_l=19.4, amp_w=17.8, m_amp=0.002, spk_d=40.0, spk_h=20.0, m_spk=0.027,
     # Emes 50 mm tablali PVC sarhos teker: H74, tabla 50 x 50, delik 38 x 38
     cs_h=74.0, cs_plate=50.0, m_cs=0.075,
+    # --- V2 (hoca geri bildirimi, 02.10.2026): gogus ekrani + iki goz ekrani
+    # Waveshare 10.1inch HDMI LCD (B) 1280x800 kapasitif: on cam 253.96 x 168.60, cam penceresi 217.96 x 136.60,
+    # cam -> arka plaka 18.0 (kasanin 274 x 187 on plakasi kullanilmiyor, cerceveyi govde yapar) [Waveshare 2D PDF]
+    # kutle doğrulanmadi (tahmini 0.60)
+    l10_l=253.96, l10_h=168.60, l10_t=18.0, l10_al=217.96, l10_ah=136.60, m_l10=0.60,
+    # Waveshare 1.28inch LCD Module (GC9A01 240x240): PCB O37.5 (dil dahil 40.4), aktif O32.4, konnektorle 11.05;
+    # 4 burc 18.6 x 26.7 [Waveshare wiki + STEP]; kutle doğrulanmadi (tahmini 8 g)
+    eye_d=37.5, eye_a=32.4, eye_t=11.05, m_eye=0.008,
 )
+V2_OLCU = "dogrulandi"   # ekran olculeri ureticinin cizimiyle dogrulandi (02.10.2026); kutleler tahmini
+PRINT_MAX = 230.0     # okul yazicisi 250 x 250 x 250; pay birakilarak parca siniri (mm)
 RHO = dict(al=2.70, petg=1.27, steel=7.85, ply=0.68)
 
 # =====================================================================
@@ -86,6 +96,27 @@ X_BR = W0 / 2 - 2                 # motor braketi dikey plakasi ic yuzu (168)
 X_WH = X_BR + 2 + 14 + D['wh_w'] / 2   # teker merkezi (213)
 Z_WH = L0 / 2 - 65                # 4 motorlu yerlesimde teker Z (185)
 Z_BAT = -121.5
+# --- V2 yerlesimi
+COV2_T = 2.5
+COV2_GAP = 12.0                                         # teker yanagi ile kabuk ic yuzu arasi
+X_COV2 = X_WH + D['wh_w'] / 2 + COV2_GAP + COV2_T       # kabuk dis yari genisligi (256.5)
+COV2_ADD = 2 * X_COV2 - W0                              # kabuk genisligi = W + COV2_ADD
+Y_COV2_0 = 35.0                                         # kabuk alt kenari: yerden 35 mm
+COV2_H = Y_COV1 - Y_COV2_0                              # 227 -> yaziciya dik sigar
+CHEST_Y = S0 - 205                                      # gogus ekrani merkezi (650)
+CHEST_SPK = S0 - 330                                    # V2 hoparlor: ekranin altinda (525)
+CHEST_ZF = 92.0                                         # ekran cercevesinin on yuzu
+HEAD2 = dict(w=180.0, h=150.0, d=140.0)                 # V2 kafa: ekran yok, iki goz
+EYE_X, EYE_Y = 38.0, 70.0                               # goz merkezi (kafa yerel)
+# --- V3 (Duffy, 02.10.2026: "taban cok genis", "ekran cok alcakta", "yuz ifadesi cok ruhsuz")
+V3 = dict(H=1250.0, W=270.0)                            # boy 125 cm, sase 27 cm (taban ~44 cm; aku 181 genislik icin en dar)
+S3 = V3['H'] - 20 - HEAD_UP                             # V3 omuz ekseni (955)
+TORSO3_Y1 = S3 + 30
+COV3_ADD = COV2_ADD                                     # etek alt genisligi = W + 173 (teker + 12 bosluk + duvar)
+COV3_TOP = (300.0, 490.0)                               # etek ust kenari (gogus altina dogru daralir)
+COV3_Y_KNEE = 140.0                                     # bu yukseklige kadar dik (tekerlek ustu 125)
+CHEST3_Y, CHEST3_ZC, CHEST3_TILT = S3 - 135, 95.0, 15.0 # ekran merkezi 820 mm, 15 derece yukari bakar
+CHEST3_SPK = S3 - 315                                   # hoparlor ekranin altinda (640)
 
 # =====================================================================
 # 3) YARDIMCILAR
@@ -126,8 +157,13 @@ def mat4(R, t):
     return M
 
 def xform(shape, M):
-    from OCP.gp import gp_Trsf
+    from OCP.gp import gp_Trsf, gp_GTrsf, gp_Mat, gp_XYZ
     R = np.array(M[:3, :3], float)
+    if not np.allclose(R.T @ R, I3, atol=1e-9):          # olcekli (demo kaydirici kurali): genel donusum
+        g = gp_GTrsf()
+        g.SetVectorialPart(gp_Mat(*[float(v) for row in R for v in row]))
+        g.SetTranslationPart(gp_XYZ(*[float(v) for v in M[:3, 3]]))
+        return cq.Shape.cast(cq.occ_impl.shapes.BRepBuilderAPI_GTransform(shape.wrapped, g, True).Shape())
     R[np.abs(R) < 1e-9] = 0.0
     R[np.abs(np.abs(R) - 1) < 1e-9] = np.sign(R[np.abs(np.abs(R) - 1) < 1e-9])
     t = gp_Trsf()
@@ -377,6 +413,12 @@ DECK_T = 5.0
 part('plate_deck', "Elektronik katı, 5 mm kontrplak (lazer kesim)", [(plate(W0, L0, DECK_T, [(x, z, 14) for x in (-110, 110) for z in (60, 150)], deck_cut), 'ply')],
      rho=RHO['ply'], model="5 mm huş kontrplak, lazer kesim", dims=f"{W0:.0f} x {L0:.0f} x 5")
 
+part('plate_bot3', "Alt plaka V3, 3 mm alüminyum (lazer kesim)", [(plate(V3['W'], L0, PL_T, holes_bot), 'alu_dark')], rho=RHO['al'],
+     model="3 mm Al 5754, lazer kesim", dims=f"{V3['W']:.0f} x {L0:.0f} x 3")
+part('plate_deck3', "Elektronik katı V3, 5 mm kontrplak (lazer kesim)",
+     [(plate(V3['W'], L0, DECK_T, [(x * V3['W'] / W0, z, 14) for x in (-110, 110) for z in (60, 150)], deck_cut), 'ply')],
+     rho=RHO['ply'], model="5 mm huş kontrplak, lazer kesim", dims=f"{V3['W']:.0f} x {L0:.0f} x 5")
+
 def standoff():
     pl = cq.Plane(origin=(0, 0, 0), xDir=(1, 0, 0), normal=(0, 1, 0))
     return [(cq.Workplane(pl).polygon(6, 9.2).extrude(40).findSolid(), 'gold')]
@@ -440,6 +482,167 @@ def head_shell():
     return [(s, 'petg')]
 
 part('head', "Kafa kabuğu, PETG 3D baskı (2 parça)", head_shell(), rho=RHO['petg'], model="PETG, 2,5 mm duvar", dims="210 x 180 x 150")
+
+# ---- V2 parcalari (hoca geri bildirimi, 02.10.2026)
+def print_pieces(*dims, min_n=1):
+    n = 1
+    for v in dims:
+        n *= math.ceil(v / PRINT_MAX)
+    return max(n, min_n)
+
+def base_cover2():
+    # tekerlekleri saran taban kabugu: alt acik, teker izi V1 ile ayni, kabuk disa genisler
+    w, h, d, t = W0 + COV2_ADD, COV2_H, L0 + 20, COV2_T
+    o = rbox(w, h, d, 25, c=(0, h / 2, 0), sel="|Y", r2=10, sel2=">Y")
+    i = rbox(w - 2 * t, h, d - 2 * t, 25 - t, c=(0, h / 2 - t, 0), sel="|Y", r2=10 - t, sel2=">Y")
+    c = o.cut(i)
+    c = c.cut(box(-24, 24, h - 5, h + 5, -24, 24))                                  # direk
+    c = c.cut(cyl(11.5, (W0 / 2 - 70, h - 5, -(L0 / 2 - 50)), (0, 1, 0), 10))         # acil stop
+    ys = Y_COV0 + 100 - Y_COV2_0
+    for x in (-100, 0, 100):                                                         # sonar
+        for dx in (-13, 13):
+            c = c.cut(cyl(8.5, (x + dx, ys, d / 2 - 5), (0, 0, 1), 10))
+    return [(c, 'petg')]
+
+_cw, _cd = W0 + COV2_ADD, L0 + 20
+part('cover2', f"Taban kabuğu V2 (tekerlekleri sarar), PETG 3D baskı ({print_pieces(_cw, COV2_H, _cd)} parça)", base_cover2(),
+     rho=RHO['petg'], model="PETG, 2,5 mm duvar, alt açık, yerden 35 mm",
+     dims=f"{_cw:.0f} x {COV2_H:.0f} x {_cd:.0f}")
+
+COVBR_X0 = 140.0
+def cover_bracket():
+    lh = (X_COV2 - COV2_T) - COVBR_X0
+    return [(box(0, lh, 0, 2, -15, 15).fuse(box(lh - 2, lh, 2, 32, -15, 15)), 'alu')]
+
+part('cov_br', "Kabuk taşıyıcı L braket, 2 mm Al", cover_bracket(), rho=RHO['al'], model="2 mm Al, büküm",
+     dims=f"{X_COV2 - COV2_T - COVBR_X0:.0f} x 32 x 30")
+
+def torso_shell2(y0, y1):
+    # V1 govdesi + gogus ekrani cercevesi (ekran duz, govde egrisinden 5 mm onde)
+    h = y1 - y0
+    def loft(a0, b0, a1, b1, a2, b2, ext=0):
+        pl = cq.Plane(origin=(0, -ext, 0), xDir=(1, 0, 0), normal=(0, 1, 0))
+        return (cq.Workplane(pl).ellipse(a0, b0).workplane(offset=h * 0.55 + ext).ellipse(a1, b1)
+                .workplane(offset=h * 0.45 + ext).ellipse(a2, b2).loft(combine=True).findSolid())
+    cy, zf, t = CHEST_Y - y0, CHEST_ZF, 2.5
+    bw, bh = D['l10_l'] / 2 + 3, D['l10_h'] / 2 + 3          # cam + 0.5 bosluk + 2.5 duvar
+    o = loft(112, 82, 132, 88, 152, 78).fuse(rbox(2 * bw, 2 * bh, zf, 8, c=(0, cy, zf / 2), sel="|Z"))
+    i = loft(109.5, 79.5, 129.5, 85.5, 149.5, 75.5, ext=1).fuse(box(-bw + t, bw - t, cy - bh + t, cy + bh - t, -1, zf - t))
+    s = o.cut(i)
+    s = s.cut(box(-D['l10_al'] / 2 - 1, D['l10_al'] / 2 + 1, cy - D['l10_ah'] / 2 - 1, cy + D['l10_ah'] / 2 + 1, zf - t - 1, zf + 1))
+    gy = CHEST_SPK - y0 - 14
+    for k in range(5):
+        s = s.cut(box(-16, 16, gy + k * 7, gy + k * 7 + 3, 55, 100))       # hoparlor izgarasi
+    return [(s, 'petg')]
+
+_th = TORSO_Y1 - TORSO_Y0
+part('torso2', f"Gövde kabuğu V2 (göğüs ekranı çerçeveli), PETG 3D baskı ({print_pieces(304, _th, 2 * CHEST_ZF)} parça)",
+     torso_shell2(TORSO_Y0, TORSO_Y1), rho=RHO['petg'], model="PETG, 2,5 mm duvar", dims=f"304 x {_th:.0f} x {CHEST_ZF + 82:.0f}")
+
+def lcd10():
+    l, h, t = D['l10_l'], D['l10_h'], D['l10_t']
+    panel = box(-l / 2, l / 2, -h / 2, h / 2, -4, 0)
+    scr = box(-D['l10_al'] / 2, D['l10_al'] / 2, -D['l10_ah'] / 2, D['l10_ah'] / 2, 0, 0.3)
+    back = box(-l / 2 + 6, l / 2 - 6, -h / 2 + 6, h / 2 - 6, -9, -4)
+    conn = box(l / 2 - 45, l / 2 - 12, -30, 30, -t, -9)
+    return [(panel, 'black'), (scr, 'screen'), (back, 'pcb_green'), (conn, 'steel')]
+
+part('lcd10', "10,1\" HDMI LCD (göğüs ekranı)", lcd10(), mass=D['m_l10'], model=f"Waveshare 10.1inch HDMI LCD (B), 1280×800 kapasitif (ölçü {V2_OLCU}; kütle tahmini)",
+     dims=f"{D['l10_l']:.0f} x {D['l10_h']:.0f} x ~{D['l10_t']:.0f}")
+
+def eye_lcd():
+    r, a = D['eye_d'] / 2, D['eye_a'] / 2
+    pcb = cyl(r, (0, 0, -1.6), (0, 0, 1), 1.6)
+    scr = cyl(a, (0, 0, 0), (0, 0, 1), 1.2)
+    hdr = box(-9, 9, -r - 3, -r + 5, -D['eye_t'], -1.6)
+    return [(pcb, 'pcb_blue'), (scr, 'screen'), (hdr, 'black')]
+
+part('eye', "Yuvarlak göz ekranı GC9A01 1,28\" 240×240", eye_lcd(), mass=D['m_eye'], model=f"Waveshare 1.28inch LCD Module, SPI (ölçü {V2_OLCU}; kütle tahmini)",
+     dims=f"O{D['eye_d']:.0f}, aktif O{D['eye_a']:.1f}")
+
+def head_shell2():
+    w, h, d, t = HEAD2['w'], HEAD2['h'], HEAD2['d'], 2.5
+    zf = 10 + d / 2
+    o = rbox(w, h, d, 30, c=(0, h / 2, 10), sel="|Z", r2=12, sel2="|X")
+    i = rbox(w - 2 * t, h - 2 * t, d - 2 * t, 30 - t, c=(0, h / 2, 10), sel="|Z", r2=12 - t, sel2="|X")
+    s = o.cut(i)
+    for sx in (-1, 1):
+        s = s.cut(cyl(D['eye_a'] / 2 + 1, (sx * EYE_X, EYE_Y, zf - 6), (0, 0, 1), 10))   # goz pencereleri
+    s = s.cut(cyl(4.5, (0, 112, zf - 20), (0, 0, 1), 40))                               # kamera
+    s = s.cut(cyl(28, (0, -1, 0), (0, 1, 0), 10))                                       # boyun
+    for sx in (-1, 1):
+        for k in range(4):
+            s = s.cut(box(sx * (w / 2 - 1) - 3, sx * (w / 2 - 1) + 3, 50 + k * 9, 54 + k * 9, -20, 30))
+    return [(s, 'petg')]
+
+def rrect_wire(w, d, r, y):
+    f = cq.Sketch().rect(w, d).vertices().fillet(r)._faces.Faces()[0]
+    return f.outerWire().rotate(V(0, 0, 0), V(1, 0, 0), 90).translate(V(0, y, 0))
+
+def base_cover3():
+    # tekerlekleri saran etek: altta dik, tekerlek ustunden sonra gogse dogru daralir; V3 olculeriyle (W=260)
+    W, t = V3['W'], 2.5
+    wb, db = W + COV3_ADD, L0 + 20
+    wt, dt = COV3_TOP
+    y0, yk, y1 = Y_COV2_0, COV3_Y_KNEE, Y_COV1
+    o = cq.Solid.makeLoft([rrect_wire(wb, db, 25, y0), rrect_wire(wb, db, 25, yk), rrect_wire(wt, dt, 60, y1)], True)
+    i = cq.Solid.makeLoft([rrect_wire(wb - 2 * t, db - 2 * t, 25 - t, y0 - 1), rrect_wire(wb - 2 * t, db - 2 * t, 25 - t, yk),
+                           rrect_wire(wt - 2 * t - 2, dt - 2 * t - 2, 60 - t, y1 - t)], True)
+    c = o.cut(i)
+    c = c.cut(box(-24, 24, y1 - 5, y1 + 5, -24, 24))                                         # direk
+    c = c.cut(cyl(11.5, ((W0 / 2 - 70) * W / W0, y1 - 5, -(L0 / 2 - 50)), (0, 1, 0), 10))     # acil stop
+    for x in (-100, 0, 100):                                                                  # sonar (dik bolumde)
+        for dx in (-13, 13):
+            c = c.cut(cyl(8.5, (x * W / W0 + dx, 110, db / 2 - 5), (0, 0, 1), 10))
+    return [(c, 'petg')]
+
+_c3w = V3['W'] + COV3_ADD
+part('cover3', f"Taban eteği V3 (tekerlekleri sarar, yukarı daralır), PETG 3D baskı ({print_pieces(_c3w, COV2_H, L0 + 20)} parça)",
+     base_cover3(), rho=RHO['petg'], model="PETG, 2,5 mm duvar, alt açık, yerden 35 mm",
+     dims=f"{_c3w:.0f} (üstte {COV3_TOP[0]:.0f}) x {COV2_H:.0f} x {L0 + 20:.0f}")
+
+def cover_bracket3():
+    # ray ustunden disari, uc kismi asagi bukulu (etegin dik bolumune vidalanir)
+    lh = (V3['W'] + COV3_ADD) / 2 - 2.5 - (COVBR_X0 - (W0 - V3['W']) / 2)
+    return [(box(0, lh, 0, 2, -15, 15).fuse(box(lh - 2, lh, -30, 0, -15, 15)), 'alu')]
+
+part('cov_br3', "Etek taşıyıcı L braket, 2 mm Al", cover_bracket3(), rho=RHO['al'], model="2 mm Al, büküm", dims="114 x 32 x 30")
+
+def torso_shell3(y0, y1):
+    # V1 govdesi + ust gogse 15 derece yukari bakan ekran yuvasi
+    h = y1 - y0
+    top = 0.45 * (S0 + 30 - TORSO_Y0)                    # V1'deki ust bolum boyu (280 mm)
+    def loft(a0, b0, a1, b1, a2, b2, ext=0):
+        pl = cq.Plane(origin=(0, -ext, 0), xDir=(1, 0, 0), normal=(0, 1, 0))
+        return (cq.Workplane(pl).ellipse(a0, b0).workplane(offset=h - top + ext).ellipse(a1, b1)
+                .workplane(offset=top + ext).ellipse(a2, b2).loft(combine=True).findSolid())
+    bw, bh, dd, t = D['l10_l'] / 2 + 3, D['l10_h'] / 2 + 3, 80.0, 2.5
+    place = lambda sh: sh.rotate(V(0, 0, 0), V(1, 0, 0), -CHEST3_TILT).translate(V(0, CHEST3_Y - y0, CHEST3_ZC))
+    bez_o = place(rbox(2 * bw, 2 * bh, dd + 3, 8, c=(0, 0, 3 - (dd + 3) / 2), sel="|Z"))
+    bez_i = place(box(-bw + t, bw - t, -bh + t, bh - t, -dd - 1, 0.5))
+    win = place(box(-D['l10_al'] / 2 - 1, D['l10_al'] / 2 + 1, -D['l10_ah'] / 2 - 1, D['l10_ah'] / 2 + 1, -1, 60))
+    o = loft(112, 82, 132, 88, 152, 78).fuse(bez_o)
+    i = loft(109.5, 79.5, 129.5, 85.5, 149.5, 75.5, ext=1).fuse(bez_i)
+    s = o.cut(i).cut(win)
+    gy = CHEST3_SPK - y0 - 14
+    for k in range(5):
+        s = s.cut(box(-16, 16, gy + k * 7, gy + k * 7 + 3, 55, 100))       # hoparlor izgarasi
+    return [(s, 'petg')]
+
+_t3h = TORSO3_Y1 - TORSO_Y0
+part('torso3', f"Gövde kabuğu V3 (eğik göğüs ekranı), PETG 3D baskı ({print_pieces(304, _t3h, 205)} parça)",
+     torso_shell3(TORSO_Y0, TORSO3_Y1), rho=RHO['petg'], model="PETG, 2,5 mm duvar", dims=f"304 x {_t3h:.0f} x ~205")
+
+def visor():
+    # parlak siyah yuz paneli: ekranin kenarlari kaybolur, yalniz parlayan gozler ve agiz gorunur
+    p_ = rbox(190, 115, 3, 18, c=(0, 0, 1.5), sel="|Z")
+    p_ = p_.cut(box(-D['lcd_al'] / 2 - 1, D['lcd_al'] / 2 + 1, -D['lcd_ah'] / 2 - 1, D['lcd_ah'] / 2 + 1, -1, 4).translate(V(0, 3.5, 0)))
+    return [(p_, 'visor')]
+
+part('visor', "Yüz paneli, 3 mm parlak siyah akrilik (lazer kesim)", visor(), rho=1.19, model="3 mm siyah akrilik, ekran penceresi", dims="190 x 115 x 3")
+
+part('head2', "Kafa kabuğu V2 (iki göz), PETG 3D baskı (2 parça)", head_shell2(), rho=RHO['petg'], model="PETG, 2,5 mm duvar",
+     dims=f"{HEAD2['w']:.0f} x {HEAD2['h']:.0f} x {HEAD2['d']:.0f}")
 
 def neck_plate():
     p = rbox(70, 3, 70, 6, c=(0, 1.5, 10), sel="|Y")
@@ -507,8 +710,10 @@ for z, zm in ((-(L0 / 2 - 20), 's'), (0, ''), (L0 / 2 - 20, 's')):
     put(INST, 'rail_c', (0, Y_RAIL0 + 20, z), grp='base', st=1, zm=zm, sx='Win', ex=[0, 0, (z / 230) * 30 if z else 0])
 add_sigma('rail_l', "Şase uzun rayı", L0, 'z', True)
 add_sigma('rail_c', "Şase ara rayı", W0 - 80, 'x', True)
-put(INST, 'plate_bot', (0, Y_PL, 0), grp='base', st=1, sx='W', sz='L', ex=[0, -70, 0])
-put(INST, 'plate_deck', (0, Y_DECK0, 0), grp='base', st=1, sx='W', sz='L', ex=[0, 160, 0])
+put(INST, 'plate_bot', (0, Y_PL, 0), grp='base', st=1, sx='W', sz='L', ex=[0, -70, 0], ver='v1,v2')
+put(INST, 'plate_deck', (0, Y_DECK0, 0), grp='base', st=1, sx='W', sz='L', ex=[0, 160, 0], ver='v1,v2')
+put(INST, 'plate_bot3', (0, Y_PL, 0), grp='base', st=1, sx='W3', sz='L', ex=[0, -70, 0], ver='v3')
+put(INST, 'plate_deck3', (0, Y_DECK0, 0), grp='base', st=1, sx='W3', sz='L', ex=[0, 160, 0], ver='v3')
 for sx in (-1, 1):
     for sz in (-1, 1):
         put(INST, 'standoff', (sx * (W0 / 2 - 20), Y_RAIL1, sz * (L0 / 2 - 20)), grp='base', st=1, xm='s', zm='s', ex=[0, 80, 0])
@@ -537,9 +742,18 @@ put(INST, 'pca', (65, Y_DECK1 + 6, -65), grp='base', st=1, xm='p', zm='p', ex=[0
 put(INST, 'bno', (0, Y_DECK1 + 6, 60), grp='base', st=1, xm='p', zm='p', ex=[0, 230, 0])
 put(INST, 'amp', (-65, Y_DECK1 + 6, 40), grp='base', st=1, xm='p', zm='p', ex=[0, 230, 0])
 # --- kapak, sensor, acil stop
-put(INST, 'cover', (0, Y_COV0, 0), grp='base', st=1, sx='Wc', sz='Lc', ex=[0, 420, 0], shell=1)
+put(INST, 'cover', (0, Y_COV0, 0), grp='base', st=1, sx='Wc', sz='Lc', ex=[0, 420, 0], shell=1, ver='v1')
+put(INST, 'cover2', (0, Y_COV2_0, 0), grp='base', st=1, sx='Wc2', sz='Lc', ex=[0, 420, 0], shell=1, ver='v2')
+for sx in (-1, 1):
+    for z in (-60, 60):
+        put(INST, 'cov_br', (sx * COVBR_X0, Y_DECK1, z), (I3 if sx > 0 else Ry(180)), grp='base', st=1, xm='s', ex=[sx * 60, 300, 0], ver='v2')
 for x in (-100, 0, 100):
-    put(INST, 'sonar', (x, Y_COV0 + 100, L0 / 2 + 10 - 2.5 - 3), grp='base', st=1, xm='p', zm='s', ex=[0, 420, 0])
+    put(INST, 'sonar', (x, Y_COV0 + 100, L0 / 2 + 10 - 2.5 - 3), grp='base', st=1, xm='p', zm='s', ex=[0, 420, 0], ver='v1,v2')
+    put(INST, 'sonar', (x, 110, L0 / 2 + 10 - 2.5 - 3), grp='base', st=1, xm='p', zm='s', ex=[0, 420, 0], ver='v3')
+put(INST, 'cover3', (0, 0, 0), grp='base', st=1, sx='Wc3', sz='Lc', ex=[0, 420, 0], shell=1, ver='v3')
+for sx in (-1, 1):
+    for z in (-60, 60):
+        put(INST, 'cov_br3', (sx * COVBR_X0, Y_RAIL1, z), (I3 if sx > 0 else Ry(180)), grp='base', st=1, xm='s', ex=[sx * 60, 300, 0], ver='v3')
 put(INST, 'estop', (W0 / 2 - 70, Y_COV1, -(L0 / 2 - 50)), grp='base', st=1, xm='p', zm='s', ex=[0, 470, 0])
 # --- govde
 COL_L0 = (S0 - 20) - Y_RAIL1
@@ -552,8 +766,15 @@ add_sigma('crossbar', "Omuz traversi", 200, 'x', True)
 put(INST, 'crossbar', (0, S0, 0), grp='torso', st=2, ym='S', ex=[0, 90, 0])
 for sx in (-1, 1):
     put(INST, 'corner', (sx * 20, S0 - 20, 0), (Rx(180) if sx > 0 else Rz(180)), grp='torso', st=2, ym='S', ex=[0, 90, 0])
-put(INST, 'torso', (0, TORSO_Y0, 0), grp='torso', st=2, sy='torso', ex=[0, 0, 300], shell=1)
-put(INST, 'speaker', (0, S0 - 175, 76), grp='torso', st=2, ym='S', ex=[0, 0, 360])
+put(INST, 'torso', (0, TORSO_Y0, 0), grp='torso', st=2, sy='torso', ex=[0, 0, 300], shell=1, ver='v1')
+put(INST, 'torso2', (0, TORSO_Y0, 0), grp='torso', st=2, sy='torso', ex=[0, 0, 300], shell=1, ver='v2')
+put(INST, 'lcd10', (0, CHEST_Y, CHEST_ZF - 2.5 - 0.5), grp='torso', st=2, ym='T', ex=[0, 0, 420], ver='v2')
+put(INST, 'speaker', (0, S0 - 175, 76), grp='torso', st=2, ym='S', ex=[0, 0, 360], ver='v1')
+put(INST, 'speaker', (0, CHEST_SPK, 76), grp='torso', st=2, ym='T', ex=[0, 0, 360], ver='v2')
+put(INST, 'torso3', (0, TORSO_Y0, 0), grp='torso', st=2, sy='torso3', ex=[0, 0, 300], shell=1, ver='v3')
+put(INST, 'lcd10', (0, CHEST3_Y, CHEST3_ZC), Rx(-CHEST3_TILT), grp='torso', st=2, ym='T3', ex=[0, 0, 420], ver='v3',
+    face=dict(kind='ui', w=D['l10_al'], h=D['l10_ah'], y=0.0))
+put(INST, 'speaker', (0, CHEST3_SPK, 76), grp='torso', st=2, ym='T3', ex=[0, 0, 360], ver='v3')
 for sx in (-1, 1):
     Rs = R_SHAFT_X_BODY_DOWN if sx > 0 else Ry(180) @ R_SHAFT_X_BODY_DOWN
     put(INST, 'ds3218', (sx * (X_SH - 6), S0, 0), Rs, grp='torso', st=4, ym='S', ex=[sx * 150, 90, 0], role='pitch')
@@ -565,9 +786,17 @@ put(HEAD, 'mg996r', (0, MG_TOP, 0), ex=[0, 40, 0], role='pan')
 put(HEAD, 'ubr_tilt', (0, MG_TOP + 9, 0), ex=[0, 80, 0])
 put(HEAD, 'mg996r', (D['mg_h'] / 2, MG_TOP + 33, 0), Rz(-90), ex=[0, 100, 0], role='tilt')
 put(HEAD, 'headmount', (0, 91, 0), ex=[0, 150, 0])
-put(HEAD, 'head', (0, 95, 0), ex=[0, 230, 60], shell=1)
-put(HEAD, 'lcd', (0, 95 + 84, 82.5), ex=[0, 230, 170])
-put(HEAD, 'camera', (0, 95 + 180 - 28 - 2.5, 81.5), ex=[0, 250, 170])
+put(HEAD, 'head', (0, 95, 0), ex=[0, 230, 60], shell=1, ver='v1,v3')
+put(HEAD, 'lcd', (0, 95 + 84, 82.5), ex=[0, 230, 170], ver='v3', face=dict(kind='face', w=D['lcd_al'], h=D['lcd_ah'], y=2.0))
+put(HEAD, 'visor', (0, 95 + 84 - 1.5, 85), ex=[0, 230, 230], ver='v3')
+put(HEAD, 'camera', (0, 95 + 180 - 28 - 2.5, 85 - 2.5 - 6.5), ex=[0, 250, 170], ver='v3')
+put(HEAD, 'lcd', (0, 95 + 84, 82.5), ex=[0, 230, 170], ver='v1')
+put(HEAD, 'camera', (0, 95 + 180 - 28 - 2.5, 81.5), ex=[0, 250, 170], ver='v1')
+_hz = 10 + HEAD2['d'] / 2
+put(HEAD, 'head2', (0, 95, 0), ex=[0, 230, 60], shell=1, ver='v2')
+for sx in (-1, 1):
+    put(HEAD, 'eye', (sx * EYE_X, 95 + EYE_Y, _hz - 2.5 - 1.3), ex=[sx * 30, 230, 170], ver='v2')
+put(HEAD, 'camera', (0, 95 + 112 - (-D['cam_w'] / 2 + 14.4), _hz - 2.5 - 6.5), ex=[0, 250, 170], ver='v2')   # lens blogu duvarin arkasinda, O7.2 namlu delikten gecer
 # --- sag kol (orijin: omuz ekseni horn yuzu; seg: 0 sabit, 1 ust tup, 2 dirsek, 3 on kol, 4 el)
 put(ARM, 'sh_plate', (0, 0, 0), seg=0)
 put(ARM, 'ds3218', (AX_ARM + 6, -35, 20), R_SHAFT_Z_BODY_DOWN, seg=0, role='roll')
@@ -600,35 +829,73 @@ for k, p in PARTS.items():
         num += v * np.array([c.x, c.y, c.z]); den += v
     p['com'] = (num / den).tolist() if den > 0 else [0, 0, 0]
 
-def world_list():
-    """Varsayilan yapilandirmanin (4 motor, kol asagida) dunya donusumleri."""
+VERS = ('v1', 'v2', 'v3')
+VER_FILE = {'v1': "", 'v2': "-V2", 'v3': "-V3"}
+VER_P = {'v1': dict(H=H0, W=W0, L=L0), 'v2': dict(H=H0, W=W0, L=L0), 'v3': dict(H=V3['H'], W=V3['W'], L=L0)}
+
+def place_base(d, P):
+    """Demodaki layout() kurallarinin aynisi: konum kaydirma + olcek (W, L, H kaydiricilari)."""
+    W, L, S = P['W'], P['L'], P['H'] - 20 - HEAD_UP
+    dS = S - S0
+    colK = (S - 20 - Y_RAIL1) / (S0 - 20 - Y_RAIL1)
+    torK = (S + 30 - TORSO_Y0) / (S0 + 30 - TORSO_Y0)
+    torK3 = (S + 30 - TORSO_Y0) / (S3 + 30 - TORSO_Y0)
+    p = list(d['pos'])
+    if d.get('xm') == 's': p[0] += np.sign(p[0]) * (W - W0) / 2
+    elif d.get('xm') == 'p': p[0] *= W / W0
+    if d.get('zm') == 's': p[2] += np.sign(p[2]) * (L - L0) / 2
+    elif d.get('zm') == 'p': p[2] *= L / L0
+    ym = d.get('ym')
+    if ym == 'S': p[1] += dS
+    elif ym == 'T': p[1] = TORSO_Y0 + (p[1] - TORSO_Y0) * torK
+    elif ym == 'T3': p[1] = TORSO_Y0 + (p[1] - TORSO_Y0) * torK3
+    sx = {'W': W / W0, 'Win': (W - 80) / (W0 - 80), 'Wc': (W + 20) / (W0 + 20), 'Wc2': (W + COV2_ADD) / (W0 + COV2_ADD),
+          'Wc3': (W + COV3_ADD) / (V3['W'] + COV3_ADD), 'W3': W / V3['W']}.get(d.get('sx'), 1.0)
+    sz = {'L': L / L0, 'Lc': (L + 20) / (L0 + 20)}.get(d.get('sz'), 1.0)
+    sy = {'col': colK, 'torso': torK, 'torso3': torK3}.get(d.get('sy'), 1.0)
+    M = mat4(np.diag([sx, sy, sz]) @ np.array(d['R']), p)
+    ms = (sx * sy * sz) ** (2 / 3) if d.get('shell') else sx * sy * sz
+    return M, ms
+
+def ver_ok(d, ver):
+    return d.get('ver') is None or ver in d['ver'].split(',')
+
+def world_list(ver):
+    """Surumun varsayilan yapilandirmasi (4 motor, kol asagida): (d, M, grup, ayna, kutle_carpani)."""
+    P = VER_P[ver]
+    S = P['H'] - 20 - HEAD_UP
     out = []
     for d in INST:
-        if d.get('vis') == 'm2':
+        if d.get('vis') == 'm2' or not ver_ok(d, ver):
             continue
-        out.append((d, mat4(np.array(d['R']), d['pos']), 'Taban' if d['grp'] == 'base' else 'Govde', False))
-    Mh = mat4(I3, (0, S0 + 20, 0))
+        M, ms = place_base(d, P)
+        out.append((d, M, 'Taban' if d['grp'] == 'base' else 'Govde', False, ms))
+    Mh = mat4(I3, (0, S + 20, 0))
     for d in HEAD:
-        out.append((d, Mh @ mat4(np.array(d['R']), d['pos']), 'Kafa', False))
-    Ma = mat4(I3, (X_SH, S0, 0))
+        if ver_ok(d, ver):
+            out.append((d, Mh @ mat4(np.array(d['R']), d['pos']), 'Kafa', False, 1.0))
+    Ma = mat4(I3, (X_SH, S, 0))
     for d in ARM:
         M = Ma @ mat4(np.array(d['R']), d['pos'])
-        out.append((d, M, 'Sag_Kol', False))
-        out.append((d, M, 'Sol_Kol', True))
+        out.append((d, M, 'Sag_Kol', False, 1.0))
+        out.append((d, M, 'Sol_Kol', True, 1.0))
     return out
 
-WL = world_list()
-Mtot = 0.0; mc = np.zeros(3)
-for d, M, g, mir in WL:
-    p = PARTS[d['key']]
-    c = M[:3, :3] @ np.array(p['com']) + M[:3, 3]
-    if mir:
-        c[0] = -c[0]
-    Mtot += p['mass']; mc += p['mass'] * c
 EXTRA = 0.6  # vida, somun, kablo, T-somun payi (kg) - tabanda
-mc += EXTRA * np.array([0, 120, 0]); Mtot += EXTRA
-COM = mc / Mtot
-print(f"Toplam kutle: {Mtot:.2f} kg   Agirlik merkezi (mm): x={COM[0]:.1f} y={COM[1]:.1f} z={COM[2]:.1f}")
+WLS, CHECK = {}, {}
+for ver in VERS:
+    WL = WLS[ver] = world_list(ver)
+    Mtot = 0.0; mc = np.zeros(3)
+    for d, M, g, mir, ms in WL:
+        p = PARTS[d['key']]
+        c = M[:3, :3] @ np.array(p['com']) + M[:3, 3]
+        if mir:
+            c[0] = -c[0]
+        Mtot += p['mass'] * ms; mc += p['mass'] * ms * c
+    mc += EXTRA * np.array([0, 120, 0]); Mtot += EXTRA
+    COM = mc / Mtot
+    CHECK[ver] = dict(mass=Mtot, com=COM.tolist())
+    print(f"[{ver}] Toplam kutle: {Mtot:.2f} kg   Agirlik merkezi (mm): x={COM[0]:.1f} y={COM[1]:.1f} z={COM[2]:.1f}")
 
 # --- STEP
 def safe(s):
@@ -646,40 +913,41 @@ COL = {
     'pcb_black': ('#222428', 0.05, 0.6), 'petg': ('#ecebe6', 0.0, 0.5), 'petg_dark': ('#3b3f46', 0.0, 0.55),
     'batt': ('#2c3a4f', 0.1, 0.6), 'red': ('#d22b2b', 0.1, 0.45), 'yellow': ('#f2c21b', 0.1, 0.5),
     'screen': ('#0b1426', 0.3, 0.12), 'gold': ('#c9a45c', 0.85, 0.35), 'white': ('#f4f4f4', 0.0, 0.5),
-    'copper': ('#b87333', 0.8, 0.35), 'ply': ('#d9b98a', 0.0, 0.8),
+    'copper': ('#b87333', 0.8, 0.35), 'ply': ('#d9b98a', 0.0, 0.8), 'visor': ('#0a0c10', 0.35, 0.12),
 }
 
-assy = cq.Assembly(name="Humanoid_Robot")
-subs = {}
-counter = {}
-for d, M, g, mir in WL:
-    p = PARTS[d['key']]
-    if g not in subs:
-        subs[g] = cq.Assembly(name=g)
-    n = counter.get((g, d['key']), 0) + 1
-    counter[(g, d['key'])] = n
-    shapes = []
-    for s, ck in p['bodies']:
-        w = xform(s, M)
-        if mir:
-            w = w.mirror("YZ")
-        shapes.append((w, ck))
-    comp = cq.Compound.makeCompound([s for s, _ in shapes])
-    child = cq.Assembly(comp, name=f"{safe(p['name'])}_{n}", color=cq.Color(*rgb(shapes[0][1])))
-    for s, ck in shapes[1:]:
-        try:
-            child.addSubshape(s, color=cq.Color(*rgb(ck)))
-        except Exception:
-            pass
-    subs[g].add(child)
-for g in ('Taban', 'Govde', 'Kafa', 'Sag_Kol', 'Sol_Kol'):
-    assy.add(subs[g])
-step_path = os.path.join(OUT, "Humanoid-Robot-Montaj.step")
-try:
-    assy.export(step_path)
-except Exception:
-    assy.save(step_path)
-print("STEP:", step_path, os.path.getsize(step_path) // 1024, "KB")
+for ver in VERS:
+    assy = cq.Assembly(name="Humanoid_Robot" + ("_V2" if ver == 'v2' else ""))
+    subs = {}
+    counter = {}
+    for d, M, g, mir, ms in WLS[ver]:
+        p = PARTS[d['key']]
+        if g not in subs:
+            subs[g] = cq.Assembly(name=g)
+        n = counter.get((g, d['key']), 0) + 1
+        counter[(g, d['key'])] = n
+        shapes = []
+        for s, ck in p['bodies']:
+            w = xform(s, M)
+            if mir:
+                w = w.mirror("YZ")
+            shapes.append((w, ck))
+        comp = cq.Compound.makeCompound([s for s, _ in shapes])
+        child = cq.Assembly(comp, name=f"{safe(p['name'])}_{n}", color=cq.Color(*rgb(shapes[0][1])))
+        for s, ck in shapes[1:]:
+            try:
+                child.addSubshape(s, color=cq.Color(*rgb(ck)))
+            except Exception:
+                pass
+        subs[g].add(child)
+    for g in ('Taban', 'Govde', 'Kafa', 'Sag_Kol', 'Sol_Kol'):
+        assy.add(subs[g])
+    step_path = os.path.join(OUT, f"Humanoid-Robot-Montaj{VER_FILE[ver]}.step")
+    try:
+        assy.export(step_path)
+    except Exception:
+        assy.save(step_path)
+    print(f"[{ver}] STEP:", step_path, os.path.getsize(step_path) // 1024, "KB")
 
 # --- JSON (demo)
 TOL, ATOL = 0.3, 0.35
@@ -695,9 +963,10 @@ def enc(shape):
 
 model = dict(units="mm", C=dict(W0=W0, L0=L0, H0=H0, S0=S0, ARM0=ARM0, AX=AX, X_SH=X_SH, Y_RAIL1=Y_RAIL1, Y_COV1=Y_COV1,
                                 TORSO_Y0=TORSO_Y0, HEAD_UP=HEAD_UP, UP=[UP_Y0, UP_Y1], FA=[FA_Y0, FA_Y1], EXTRA=EXTRA,
-                                BAT_Y0=Y_RAIL0, BAT_H=D['bat_w'], WH_R=D['wh_d'] / 2),
+                                BAT_Y0=Y_RAIL0, BAT_H=D['bat_w'], WH_R=D['wh_d'] / 2, COV2_ADD=COV2_ADD,
+                                COV3_ADD=COV3_ADD, V3=V3, S3=S3),
              col={k: v for k, v in COL.items()}, parts={}, inst=INST, head=HEAD, arm=ARM,
-             check=dict(mass=Mtot, com=COM.tolist()))
+             check=CHECK)
 ntri = 0
 for k, p in PARTS.items():
     bodies = []
@@ -709,49 +978,69 @@ with open(MODEL_JSON, "w", encoding="utf-8") as f:
 print("model.json:", os.path.getsize(MODEL_JSON) // 1024, "KB, ucgen:", ntri)
 
 # --- parca listesi
-rows = {}
-for d, M, g, mir in WL:
-    k = d['key']
-    rows.setdefault(k, 0)
-    rows[k] += 1
-with open(os.path.join(OUT, "parca-listesi.csv"), "w", encoding="utf-8-sig", newline="") as f:
-    w = csv.writer(f, delimiter=";")
-    w.writerow(["Parça", "Model / malzeme", "Ölçü (mm)", "Adet", "Birim kütle (g)", "Toplam (g)"])
-    for k, n in sorted(rows.items(), key=lambda kv: -PARTS[kv[0]]['mass'] * kv[1]):
-        p = PARTS[k]
-        w.writerow([p['name'], p['model'], p['dims'], n, round(p['mass'] * 1000), round(p['mass'] * 1000 * n)])
-    w.writerow(["Vida, somun, T-somun, kablo payı", "tahmini", "", 1, round(EXTRA * 1000), round(EXTRA * 1000)])
-    w.writerow(["TOPLAM", "", "", "", "", round(Mtot * 1000)])
-print("parca-listesi.csv yazildi")
+for ver in VERS:
+    rows = {}
+    for d, M, g, mir, ms in WLS[ver]:
+        r = rows.setdefault(d['key'], [0, 0.0])
+        r[0] += 1; r[1] += PARTS[d['key']]['mass'] * ms
+    P = VER_P[ver]
+    dimx = {'rail_l': f"40 x 40 x {P['L']:.0f}", 'rail_c': f"40 x 40 x {P['W'] - 80:.0f}",
+            'column': f"40 x 40 x {P['H'] - 20 - HEAD_UP - 20 - Y_RAIL1:.0f}",
+            'plate_bot': f"{P['W']:.0f} x {P['L']:.0f} x 3", 'plate_deck': f"{P['W']:.0f} x {P['L']:.0f} x 5",
+            'plate_bot3': f"{P['W']:.0f} x {P['L']:.0f} x 3", 'plate_deck3': f"{P['W']:.0f} x {P['L']:.0f} x 5"}
+    with open(os.path.join(OUT, f"parca-listesi{VER_FILE[ver]}.csv"), "w", encoding="utf-8-sig", newline="") as f:
+        w = csv.writer(f, delimiter=";")
+        w.writerow(["Parça", "Model / malzeme", "Ölçü (mm)", "Adet", "Birim kütle (g)", "Toplam (g)"])
+        for k, (n, m) in sorted(rows.items(), key=lambda kv: -kv[1][1]):
+            p = PARTS[k]
+            w.writerow([p['name'], p['model'], dimx.get(k, p['dims']), n, round(m / n * 1000), round(m * 1000)])
+        w.writerow(["Vida, somun, T-somun, kablo payı", "tahmini", "", 1, round(EXTRA * 1000), round(EXTRA * 1000)])
+        w.writerow(["TOPLAM", "", "", "", "", round(CHECK[ver]['mass'] * 1000)])
+    print(f"[{ver}] parca-listesi{VER_FILE[ver]}.csv yazildi")
 
 # --- cakisma kontrolu (secili ciftler)
 def wshape(d, M, mir=False):
     p = PARTS[d['key']]
     s = cq.Compound.makeCompound([xform(b, M) for b, _ in p['bodies']])
     return s.mirror("YZ") if mir else s
-checks = []
-base = [(d, M) for d, M, g, mir in WL if g in ('Taban', 'Govde') and not mir]
-keys_a = {'battery', 'bts', 'xl4016', 'jgb37', 'wheel', 'pi5', 'esp32', 'pca', 'column', 'sonar', 'estop'}
-keys_b = {'rail_l', 'rail_c', 'plate_bot', 'plate_deck', 'standoff', 'cover', 'column', 'corner', 'jgb37', 'wheel', 'battery', 'torso'}
-for i, (da, Ma_) in enumerate(base):
-    if da['key'] not in keys_a:
-        continue
-    sa = wshape(da, Ma_)
-    ba = sa.BoundingBox()
-    for j, (db, Mb) in enumerate(base):
-        if j == i or db['key'] not in keys_b or (db['key'] in keys_a and j < i):
+
+def overlap(sa, sb):
+    ba, bb = sa.BoundingBox(), sb.BoundingBox()
+    if ba.xmax < bb.xmin or bb.xmax < ba.xmin or ba.ymax < bb.ymin or bb.ymax < ba.ymin or ba.zmax < bb.zmin or bb.zmax < ba.zmin:
+        return 0
+    try:
+        return sa.intersect(sb).Volume()
+    except Exception:
+        return -1
+
+keys_a = {'battery', 'bts', 'xl4016', 'jgb37', 'wheel', 'pi5', 'esp32', 'pca', 'column', 'sonar', 'estop',
+          'cov_br', 'cov_br3', 'lcd10', 'speaker', 'eye', 'camera', 'headmount', 'lcd', 'visor'}
+keys_b = {'rail_l', 'rail_c', 'plate_bot', 'plate_deck', 'plate_bot3', 'plate_deck3', 'standoff', 'cover', 'cover2', 'column', 'corner', 'jgb37', 'wheel',
+          'battery', 'torso', 'torso2', 'torso3', 'head', 'head2', 'cov_br', 'cov_br3', 'cover3', 'crossbar', 'ds3218', 'holder',
+          'lcd10', 'pi5', 'esp32', 'pca', 'bts', 'xl4016', 'sonar', 'estop'}
+for ver in VERS:
+    checks = []
+    base = [(d, M) for d, M, g, mir, ms in WLS[ver] if g in ('Taban', 'Govde', 'Kafa') and not mir]
+    for i, (da, Ma_) in enumerate(base):
+        if da['key'] not in keys_a:
             continue
-        sb = wshape(db, Mb)
-        bb = sb.BoundingBox()
-        if ba.xmax < bb.xmin or bb.xmax < ba.xmin or ba.ymax < bb.ymin or bb.ymax < ba.ymin or ba.zmax < bb.zmin or bb.zmax < ba.zmin:
+        sa = wshape(da, Ma_)
+        for j, (db, Mb) in enumerate(base):
+            if j == i or db['key'] not in keys_b or (db['key'] in keys_a and j < i):
+                continue
+            v = overlap(sa, wshape(db, Mb))
+            if v > 5 or v < 0:
+                checks.append((da['key'], db['key'], round(v)))
+    print(f"[{ver}] Cakismalar (mm3 > 5):", checks if checks else "yok")
+    # sag kol (asagida) ile govde kabugu / gogus ekrani; V1'deki bilinen omuz sorunu ayri gorulsun diye
+    arm = [(d, M) for d, M, g, mir, ms in WLS[ver] if g == 'Sag_Kol']
+    res = []
+    for ds_, Ms, g, mir, ms in WLS[ver]:
+        if ds_['key'] not in ('torso', 'torso2', 'torso3', 'lcd10'):
             continue
-        try:
-            v = sa.intersect(sb).Volume()
-        except Exception:
-            v = -1
-        if v > 5:
-            checks.append((da['key'], db['key'], round(v)))
-print("Cakismalar (mm3 > 5):", checks if checks else "yok")
+        ss = wshape(ds_, Ms)
+        res.append((ds_['key'], round(sum(max(overlap(wshape(da, Ma_), ss), 0) for da, Ma_ in arm))))
+    print(f"[{ver}] Sag kol x govde (mm3):", res)
 
 # --- tarayici demosunu uret (viewer-template.html + model.json + planlama/maliyet.json -> ../Robot-Tasarim-Demosu.html)
 import demo_uret

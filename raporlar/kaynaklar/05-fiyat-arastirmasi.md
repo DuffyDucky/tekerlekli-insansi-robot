@@ -446,3 +446,21 @@ EUR döviz satış 55,6880 (TCMB, 25.09). Öneri: TCMB döviz satış 48,8780. S
 - Baskı hizmeti: gerçek fiyat için STL'leri Yazdır Gelsin'e yükleyip teklif almak gerekiyor; baskı hacmi ayrıca kontrol edilmeli.
 - Eşik altı kargo ücretleri Robotistan, Direnc ve Motorobit'te sepete eklemeden görülemiyor.
 
+
+## 4. V2 eklemeleri (2 Ekim 2026)
+
+Hocanın geri bildirimiyle 7" yüz ekranı kalktı; göğüse 10,1" ekran, kafaya iki yuvarlak göz ekranı girdi. Araştırmayı bir
+Claude Opus alt ajanı yaptı; orkestratör seçilen iki ürünün fiyatını ve stoğunu sayfanın JSON-LD verisinden yeniden okudu.
+
+| Kalem | Satıcı | Sayfa verisi | KDV dahil | Stok |
+|---|---|---|---|---|
+| Waveshare 10.1" HDMI LCD (B) kasalı, 1280 × 800 | Robotsepeti | `price` 10272.51 (KDV hariç) | 12.327,01 TL | InStock |
+| Waveshare 1.28" yuvarlak LCD (GC9A01), ×2 | Robotistan | `price` 863.43 (KDV dahil) | 863,43 TL | InStock |
+| Alternatif: Waveshare 10.1" (E), 1024 × 600 | Robotistan | `price` 6607.48 | 6.607,48 TL | InStock (alt ajan) |
+| Alternatif: GC9A01 muadil, çizimi yok | Motorobit | `price` 450.00 (KDV hariç) | 540,00 TL | InStock (alt ajan) |
+
+- Direnc.net'teki 10,1" 1280 × 800 muhafazalı ekran `OutOfStock` (7.807,92 TL KDV dahil).
+- 10,1" ekran ayrı 5 V besleme ister: arka ışık açıkken ≈ 750 mA (Waveshare wiki SSS). Dokunmatik için USB kablosu gerekir.
+  Paketten HDMI ve USB kablosu çıkıp çıkmadığı doğrulanmadı.
+- Filament: V2 baskı parçaları CAD'den ≈ 4,4 kg (V1 ≈ 3,7 kg) → V2'de 6 × 1 kg.
+- Daha büyük SPI yuvarlak ekran bulunamadı (Robotistan 3,4" yuvarlak HDMI arabirimli, 5.408,83 TL).
