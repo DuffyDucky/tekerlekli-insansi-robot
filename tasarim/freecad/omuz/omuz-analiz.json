@@ -1,0 +1,8049 @@
+{
+ "parca_sayisi": 70,
+ "coklu_kati": [],
+ "gecersiz": [],
+ "statik": [],
+ "bosluk": {
+  "Kol-Gobek": [
+   0.0,
+   "S2 horn 25T aluminyum disk",
+   "S2 servo cikis mili"
+  ],
+  "Kol-Govde": [
+   4.0,
+   "Kol catali",
+   "Rulman kapagi"
+  ],
+  "Gobek-Govde": [
+   0.0,
+   "S1 horn 25T aluminyum disk",
+   "S1 servo cikis mili"
+  ]
+ },
+ "phis": [
+  -60,
+  -50,
+  -40,
+  -30,
+  -20,
+  -10,
+  0,
+  10,
+  20,
+  30,
+  40,
+  50,
+  60,
+  70,
+  80,
+  90,
+  100,
+  110,
+  120,
+  130,
+  140,
+  150,
+  160,
+  170,
+  180
+ ],
+ "ths": [
+  -20,
+  -15,
+  -10,
+  -5,
+  0,
+  5,
+  10,
+  15,
+  20,
+  25,
+  30,
+  35,
+  40,
+  45,
+  50,
+  55,
+  60,
+  65,
+  70,
+  75,
+  80,
+  85,
+  90,
+  95,
+  100,
+  105,
+  110,
+  115,
+  120,
+  125,
+  130,
+  135,
+  140,
+  145,
+  150
+ ],
+ "kol_gobek": {
+  "-20": [
+   [
+    "Kol catali",
+    "6808-2RS rulman (ic bilezik)",
+    113.5
+   ],
+   [
+    "Kol catali",
+    "Omuz gobegi",
+    141.1
+   ]
+  ],
+  "-15": [
+   [
+    "Kol catali",
+    "6808-2RS rulman (ic bilezik)",
+    1.7
+   ]
+  ],
+  "-10": [],
+  "-5": [],
+  "0": [],
+  "5": [],
+  "10": [],
+  "15": [],
+  "20": [],
+  "25": [],
+  "30": [],
+  "35": [],
+  "40": [],
+  "45": [],
+  "50": [],
+  "55": [],
+  "60": [],
+  "65": [],
+  "70": [],
+  "75": [],
+  "80": [],
+  "85": [],
+  "90": [],
+  "95": [],
+  "100": [],
+  "105": [],
+  "110": [],
+  "115": [],
+  "120": [],
+  "125": [
+   [
+    "Kol catali",
+    "Omuz gobegi",
+    146.1
+   ]
+  ],
+  "130": [
+   [
+    "Kol catali",
+    "Omuz gobegi",
+    703.0
+   ],
+   [
+    "Kol catali",
+    "S2 servo DS3218MG (yana acma)",
+    5.0
+   ]
+  ],
+  "135": [
+   [
+    "Kol catali",
+    "Omuz gobegi",
+    1371.9
+   ],
+   [
+    "Kol catali",
+    "S2 servo DS3218MG (yana acma)",
+    43.9
+   ],
+   [
+    "Kol catali",
+    "S2 kulak civatasi M4x16",
+    44.3
+   ],
+   [
+    "Kol catali",
+    "S2 kontra somun M4",
+    28.8
+   ]
+  ],
+  "140": [
+   [
+    "Kol catali",
+    "Omuz gobegi",
+    2050.1
+   ],
+   [
+    "Kol catali",
+    "S2 servo DS3218MG (yana acma)",
+    143.0
+   ],
+   [
+    "Kol catali",
+    "S2 kulak civatasi M4x16",
+    259.1
+   ],
+   [
+    "Kol catali",
+    "S2 kontra somun M4",
+    69.6
+   ],
+   [
+    "Ust kol tupu",
+    "Omuz gobegi",
+    12.5
+   ]
+  ],
+  "145": [
+   [
+    "Kol catali",
+    "Omuz gobegi",
+    2828.1
+   ],
+   [
+    "Kol catali",
+    "S2 servo DS3218MG (yana acma)",
+    333.3
+   ],
+   [
+    "Kol catali",
+    "S2 kulak civatasi M4x16",
+    335.3
+   ],
+   [
+    "Kol catali",
+    "S2 kontra somun M4",
+    145.1
+   ],
+   [
+    "Ust kol tupu",
+    "Omuz gobegi",
+    33.2
+   ]
+  ],
+  "150": [
+   [
+    "Kol catali",
+    "Omuz gobegi",
+    3660.7
+   ],
+   [
+    "Kol catali",
+    "S2 servo DS3218MG (yana acma)",
+    567.8
+   ],
+   [
+    "Kol catali",
+    "S2 kulak civatasi M4x16",
+    14.2
+   ],
+   [
+    "Kol catali",
+    "S2 kontra somun M4",
+    18.7
+   ],
+   [
+    "Kol catali",
+    "S2 kulak civatasi M4x16",
+    336.3
+   ],
+   [
+    "Kol catali",
+    "S2 kontra somun M4",
+    149.3
+   ],
+   [
+    "Ust kol tupu",
+    "Omuz gobegi",
+    50.5
+   ]
+  ]
+ },
+ "gobek_govde": {
+  "-60": [],
+  "-50": [],
+  "-40": [],
+  "-30": [],
+  "-20": [],
+  "-10": [],
+  "0": [],
+  "10": [],
+  "20": [],
+  "30": [],
+  "40": [],
+  "50": [],
+  "60": [],
+  "70": [],
+  "80": [],
+  "90": [],
+  "100": [],
+  "110": [],
+  "120": [],
+  "130": [],
+  "140": [],
+  "150": [],
+  "160": [],
+  "170": [],
+  "180": []
+ },
+ "kol_govde": {
+  "-60,-20": [
+   [
+    "Kol catali",
+    "Omuz yuvasi",
+    4.4
+   ],
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    2276.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    84.9
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    9.6
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "Omuz yuvasi",
+    96.3
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    168.5
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    20.3
+   ],
+   [
+    "Ust kol tupu",
+    "Isil gomme somun M3 (yuvada)",
+    4.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2174.2
+   ]
+  ],
+  "-60,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    969.9
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    73.3
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    113.7
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    5.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2507.7
+   ]
+  ],
+  "-60,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    74.8
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    38.6
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    9.5
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3543.2
+   ]
+  ],
+  "-60,-5": [
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2390.3
+   ]
+  ],
+  "-60,0": [],
+  "-60,5": [],
+  "-60,10": [],
+  "-60,15": [],
+  "-60,20": [],
+  "-60,25": [],
+  "-60,30": [],
+  "-60,35": [],
+  "-60,40": [],
+  "-60,45": [],
+  "-60,50": [],
+  "-60,55": [],
+  "-60,60": [],
+  "-60,65": [],
+  "-60,70": [],
+  "-60,75": [],
+  "-60,80": [],
+  "-60,85": [],
+  "-60,90": [],
+  "-60,95": [],
+  "-60,100": [],
+  "-60,105": [],
+  "-60,110": [],
+  "-60,115": [],
+  "-60,120": [],
+  "-60,125": [],
+  "-60,130": [],
+  "-60,135": [],
+  "-60,140": [],
+  "-60,145": [],
+  "-60,150": [],
+  "-50,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    2030.8
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    74.6
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "Omuz yuvasi",
+    1.7
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    149.0
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    4.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2351.1
+   ]
+  ],
+  "-50,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    885.3
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    34.5
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    21.0
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2647.0
+   ]
+  ],
+  "-50,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    0.6
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3751.1
+   ]
+  ],
+  "-50,-5": [
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3328.2
+   ]
+  ],
+  "-50,0": [],
+  "-50,5": [],
+  "-50,10": [],
+  "-50,15": [],
+  "-50,20": [],
+  "-50,25": [],
+  "-50,30": [],
+  "-50,35": [],
+  "-50,40": [],
+  "-50,45": [],
+  "-50,50": [],
+  "-50,55": [],
+  "-50,60": [],
+  "-50,65": [],
+  "-50,70": [],
+  "-50,75": [],
+  "-50,80": [],
+  "-50,85": [],
+  "-50,90": [],
+  "-50,95": [],
+  "-50,100": [],
+  "-50,105": [],
+  "-50,110": [],
+  "-50,115": [],
+  "-50,120": [],
+  "-50,125": [],
+  "-50,130": [],
+  "-50,135": [],
+  "-50,140": [],
+  "-50,145": [],
+  "-50,150": [],
+  "-40,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1930.7
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    12.5
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    27.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2585.7
+   ]
+  ],
+  "-40,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    848.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2839.6
+   ]
+  ],
+  "-40,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3977.5
+   ]
+  ],
+  "-40,-5": [
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3752.1
+   ]
+  ],
+  "-40,0": [],
+  "-40,5": [],
+  "-40,10": [],
+  "-40,15": [],
+  "-40,20": [],
+  "-40,25": [],
+  "-40,30": [],
+  "-40,35": [],
+  "-40,40": [],
+  "-40,45": [],
+  "-40,50": [],
+  "-40,55": [],
+  "-40,60": [],
+  "-40,65": [],
+  "-40,70": [],
+  "-40,75": [],
+  "-40,80": [],
+  "-40,85": [],
+  "-40,90": [],
+  "-40,95": [],
+  "-40,100": [],
+  "-40,105": [],
+  "-40,110": [],
+  "-40,115": [],
+  "-40,120": [],
+  "-40,125": [],
+  "-40,130": [],
+  "-40,135": [],
+  "-40,140": [],
+  "-40,145": [],
+  "-40,150": [],
+  "-30,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1898.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    23.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2699.5
+   ]
+  ],
+  "-30,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    848.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2964.8
+   ]
+  ],
+  "-30,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    4072.4
+   ]
+  ],
+  "-30,-5": [
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3753.7
+   ]
+  ],
+  "-30,0": [],
+  "-30,5": [],
+  "-30,10": [],
+  "-30,15": [],
+  "-30,20": [],
+  "-30,25": [],
+  "-30,30": [],
+  "-30,35": [],
+  "-30,40": [],
+  "-30,45": [],
+  "-30,50": [],
+  "-30,55": [],
+  "-30,60": [],
+  "-30,65": [],
+  "-30,70": [],
+  "-30,75": [],
+  "-30,80": [],
+  "-30,85": [],
+  "-30,90": [],
+  "-30,95": [],
+  "-30,100": [],
+  "-30,105": [],
+  "-30,110": [],
+  "-30,115": [],
+  "-30,120": [],
+  "-30,125": [],
+  "-30,130": [],
+  "-30,135": [],
+  "-30,140": [],
+  "-30,145": [],
+  "-30,150": [],
+  "-20,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1898.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "S1 servo DS3218MG (one-arka)",
+    1.8
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    23.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2699.5
+   ]
+  ],
+  "-20,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    848.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2964.8
+   ]
+  ],
+  "-20,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    4072.4
+   ]
+  ],
+  "-20,-5": [
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3753.7
+   ]
+  ],
+  "-20,0": [],
+  "-20,5": [],
+  "-20,10": [],
+  "-20,15": [],
+  "-20,20": [],
+  "-20,25": [],
+  "-20,30": [],
+  "-20,35": [],
+  "-20,40": [],
+  "-20,45": [],
+  "-20,50": [],
+  "-20,55": [],
+  "-20,60": [],
+  "-20,65": [],
+  "-20,70": [],
+  "-20,75": [],
+  "-20,80": [],
+  "-20,85": [],
+  "-20,90": [],
+  "-20,95": [],
+  "-20,100": [],
+  "-20,105": [],
+  "-20,110": [],
+  "-20,115": [],
+  "-20,120": [],
+  "-20,125": [],
+  "-20,130": [],
+  "-20,135": [],
+  "-20,140": [],
+  "-20,145": [],
+  "-20,150": [],
+  "-10,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1898.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "S1 servo DS3218MG (one-arka)",
+    3.5
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    23.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2699.5
+   ]
+  ],
+  "-10,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    848.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2964.8
+   ]
+  ],
+  "-10,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    4072.4
+   ]
+  ],
+  "-10,-5": [
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3753.7
+   ]
+  ],
+  "-10,0": [],
+  "-10,5": [],
+  "-10,10": [],
+  "-10,15": [],
+  "-10,20": [],
+  "-10,25": [],
+  "-10,30": [],
+  "-10,35": [],
+  "-10,40": [],
+  "-10,45": [],
+  "-10,50": [],
+  "-10,55": [],
+  "-10,60": [],
+  "-10,65": [],
+  "-10,70": [],
+  "-10,75": [],
+  "-10,80": [],
+  "-10,85": [],
+  "-10,90": [],
+  "-10,95": [],
+  "-10,100": [],
+  "-10,105": [],
+  "-10,110": [],
+  "-10,115": [],
+  "-10,120": [],
+  "-10,125": [],
+  "-10,130": [],
+  "-10,135": [],
+  "-10,140": [],
+  "-10,145": [],
+  "-10,150": [],
+  "0,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1898.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "S1 servo DS3218MG (one-arka)",
+    1.2
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    23.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2699.5
+   ]
+  ],
+  "0,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    848.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2964.8
+   ]
+  ],
+  "0,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    4072.4
+   ]
+  ],
+  "0,-5": [
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3753.7
+   ]
+  ],
+  "0,0": [],
+  "0,5": [],
+  "0,10": [],
+  "0,15": [],
+  "0,20": [],
+  "0,25": [],
+  "0,30": [],
+  "0,35": [],
+  "0,40": [],
+  "0,45": [],
+  "0,50": [],
+  "0,55": [],
+  "0,60": [],
+  "0,65": [],
+  "0,70": [],
+  "0,75": [],
+  "0,80": [],
+  "0,85": [],
+  "0,90": [],
+  "0,95": [],
+  "0,100": [],
+  "0,105": [],
+  "0,110": [],
+  "0,115": [],
+  "0,120": [],
+  "0,125": [],
+  "0,130": [],
+  "0,135": [],
+  "0,140": [],
+  "0,145": [],
+  "0,150": [],
+  "10,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1898.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "S1 servo DS3218MG (one-arka)",
+    2.4
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    23.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2699.5
+   ]
+  ],
+  "10,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    848.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2964.8
+   ]
+  ],
+  "10,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    4072.4
+   ]
+  ],
+  "10,-5": [
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3753.7
+   ]
+  ],
+  "10,0": [],
+  "10,5": [],
+  "10,10": [],
+  "10,15": [],
+  "10,20": [],
+  "10,25": [],
+  "10,30": [],
+  "10,35": [],
+  "10,40": [],
+  "10,45": [],
+  "10,50": [],
+  "10,55": [],
+  "10,60": [],
+  "10,65": [],
+  "10,70": [],
+  "10,75": [],
+  "10,80": [],
+  "10,85": [],
+  "10,90": [],
+  "10,95": [],
+  "10,100": [],
+  "10,105": [],
+  "10,110": [],
+  "10,115": [],
+  "10,120": [],
+  "10,125": [],
+  "10,130": [],
+  "10,135": [],
+  "10,140": [],
+  "10,145": [],
+  "10,150": [],
+  "20,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1898.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "S1 servo DS3218MG (one-arka)",
+    3.2
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    23.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2699.5
+   ]
+  ],
+  "20,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    848.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2964.8
+   ]
+  ],
+  "20,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    4072.4
+   ]
+  ],
+  "20,-5": [
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3753.7
+   ]
+  ],
+  "20,0": [],
+  "20,5": [],
+  "20,10": [],
+  "20,15": [],
+  "20,20": [],
+  "20,25": [],
+  "20,30": [],
+  "20,35": [],
+  "20,40": [],
+  "20,45": [],
+  "20,50": [],
+  "20,55": [],
+  "20,60": [],
+  "20,65": [],
+  "20,70": [],
+  "20,75": [],
+  "20,80": [],
+  "20,85": [],
+  "20,90": [],
+  "20,95": [],
+  "20,100": [],
+  "20,105": [],
+  "20,110": [],
+  "20,115": [],
+  "20,120": [],
+  "20,125": [],
+  "20,130": [],
+  "20,135": [],
+  "20,140": [],
+  "20,145": [],
+  "20,150": [],
+  "30,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1898.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    23.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2699.5
+   ]
+  ],
+  "30,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    848.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2964.8
+   ]
+  ],
+  "30,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    4072.4
+   ]
+  ],
+  "30,-5": [
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3753.7
+   ]
+  ],
+  "30,0": [],
+  "30,5": [],
+  "30,10": [],
+  "30,15": [],
+  "30,20": [],
+  "30,25": [],
+  "30,30": [],
+  "30,35": [],
+  "30,40": [],
+  "30,45": [],
+  "30,50": [],
+  "30,55": [],
+  "30,60": [],
+  "30,65": [],
+  "30,70": [],
+  "30,75": [],
+  "30,80": [],
+  "30,85": [],
+  "30,90": [],
+  "30,95": [],
+  "30,100": [],
+  "30,105": [],
+  "30,110": [],
+  "30,115": [],
+  "30,120": [],
+  "30,125": [],
+  "30,130": [],
+  "30,135": [],
+  "30,140": [],
+  "30,145": [],
+  "30,150": [],
+  "40,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1904.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    1.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    23.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2636.3
+   ]
+  ],
+  "40,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    848.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2876.3
+   ]
+  ],
+  "40,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    4015.4
+   ]
+  ],
+  "40,-5": [
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3753.7
+   ]
+  ],
+  "40,0": [],
+  "40,5": [],
+  "40,10": [],
+  "40,15": [],
+  "40,20": [],
+  "40,25": [],
+  "40,30": [],
+  "40,35": [],
+  "40,40": [],
+  "40,45": [],
+  "40,50": [],
+  "40,55": [],
+  "40,60": [],
+  "40,65": [],
+  "40,70": [],
+  "40,75": [],
+  "40,80": [],
+  "40,85": [],
+  "40,90": [],
+  "40,95": [],
+  "40,100": [],
+  "40,105": [],
+  "40,110": [],
+  "40,115": [],
+  "40,120": [],
+  "40,125": [],
+  "40,130": [],
+  "40,135": [],
+  "40,140": [],
+  "40,145": [],
+  "40,150": [],
+  "50,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1963.0
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    51.6
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    119.1
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    5.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2379.2
+   ]
+  ],
+  "50,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    860.7
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    11.3
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    3.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2672.6
+   ]
+  ],
+  "50,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3780.1
+   ]
+  ],
+  "50,-5": [
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3399.7
+   ]
+  ],
+  "50,0": [],
+  "50,5": [],
+  "50,10": [],
+  "50,15": [],
+  "50,20": [],
+  "50,25": [],
+  "50,30": [],
+  "50,35": [],
+  "50,40": [],
+  "50,45": [],
+  "50,50": [],
+  "50,55": [],
+  "50,60": [],
+  "50,65": [],
+  "50,70": [],
+  "50,75": [],
+  "50,80": [],
+  "50,85": [],
+  "50,90": [],
+  "50,95": [],
+  "50,100": [],
+  "50,105": [],
+  "50,110": [],
+  "50,115": [],
+  "50,120": [],
+  "50,125": [],
+  "50,130": [],
+  "50,135": [],
+  "50,140": [],
+  "50,145": [],
+  "50,150": [],
+  "60,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    2163.7
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    75.5
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    0.9
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "Omuz yuvasi",
+    57.2
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    181.0
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    21.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2210.9
+   ]
+  ],
+  "60,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    917.5
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    62.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    92.8
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    8.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2543.8
+   ]
+  ],
+  "60,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    66.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    17.5
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    1.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3586.1
+   ]
+  ],
+  "60,-5": [
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2495.4
+   ]
+  ],
+  "60,0": [],
+  "60,5": [],
+  "60,10": [],
+  "60,15": [],
+  "60,20": [],
+  "60,25": [],
+  "60,30": [],
+  "60,35": [],
+  "60,40": [],
+  "60,45": [],
+  "60,50": [],
+  "60,55": [],
+  "60,60": [],
+  "60,65": [],
+  "60,70": [],
+  "60,75": [],
+  "60,80": [],
+  "60,85": [],
+  "60,90": [],
+  "60,95": [],
+  "60,100": [],
+  "60,105": [],
+  "60,110": [],
+  "60,115": [],
+  "60,120": [],
+  "60,125": [],
+  "60,130": [],
+  "60,135": [],
+  "60,140": [],
+  "60,145": [],
+  "60,150": [],
+  "70,-20": [
+   [
+    "Kol catali",
+    "Omuz yuvasi",
+    27.6
+   ],
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    2416.9
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    97.1
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    47.9
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "Omuz yuvasi",
+    163.5
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    202.5
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    19.5
+   ],
+   [
+    "Ust kol tupu",
+    "Isil gomme somun M3 (yuvada)",
+    17.8
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    4.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    1975.6
+   ]
+  ],
+  "70,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1053.0
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    71.4
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    8.7
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    175.4
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    17.4
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2300.6
+   ]
+  ],
+  "70,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    87.5
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    58.4
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    39.2
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    4.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3288.9
+   ]
+  ],
+  "70,-5": [
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    3.9
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    1801.2
+   ]
+  ],
+  "70,0": [],
+  "70,5": [],
+  "70,10": [],
+  "70,15": [],
+  "70,20": [],
+  "70,25": [],
+  "70,30": [],
+  "70,35": [],
+  "70,40": [],
+  "70,45": [],
+  "70,50": [],
+  "70,55": [],
+  "70,60": [],
+  "70,65": [],
+  "70,70": [],
+  "70,75": [],
+  "70,80": [],
+  "70,85": [],
+  "70,90": [],
+  "70,95": [],
+  "70,100": [],
+  "70,105": [],
+  "70,110": [],
+  "70,115": [],
+  "70,120": [],
+  "70,125": [],
+  "70,130": [],
+  "70,135": [],
+  "70,140": [],
+  "70,145": [],
+  "70,150": [],
+  "80,-20": [
+   [
+    "Kol catali",
+    "Omuz yuvasi",
+    59.2
+   ],
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    2674.7
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    105.4
+   ],
+   [
+    "Kol catali",
+    "Isil gomme somun M3 (yuvada)",
+    3.0
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    73.7
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "Omuz yuvasi",
+    274.8
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    212.2
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    18.8
+   ],
+   [
+    "Ust kol tupu",
+    "Isil gomme somun M3 (yuvada)",
+    24.5
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    21.5
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    1846.3
+   ]
+  ],
+  "80,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1179.6
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    77.4
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    60.8
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Omuz yuvasi",
+    1.5
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    268.4
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    18.3
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    7.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2163.9
+   ]
+  ],
+  "80,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    106.4
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    65.3
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    14.8
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    76.7
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    5.1
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3118.0
+   ]
+  ],
+  "80,-5": [
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    16.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    1452.5
+   ]
+  ],
+  "80,0": [],
+  "80,5": [],
+  "80,10": [],
+  "80,15": [],
+  "80,20": [],
+  "80,25": [],
+  "80,30": [],
+  "80,35": [],
+  "80,40": [],
+  "80,45": [],
+  "80,50": [],
+  "80,55": [],
+  "80,60": [],
+  "80,65": [],
+  "80,70": [],
+  "80,75": [],
+  "80,80": [],
+  "80,85": [],
+  "80,90": [],
+  "80,95": [],
+  "80,100": [],
+  "80,105": [],
+  "80,110": [],
+  "80,115": [],
+  "80,120": [],
+  "80,125": [],
+  "80,130": [],
+  "80,135": [],
+  "80,140": [],
+  "80,145": [],
+  "80,150": [],
+  "90,-20": [
+   [
+    "Kol catali",
+    "Omuz yuvasi",
+    58.9
+   ],
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    2855.0
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    100.8
+   ],
+   [
+    "Kol catali",
+    "Isil gomme somun M3 (yuvada)",
+    0.6
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    96.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "Omuz yuvasi",
+    334.3
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    197.6
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    19.1
+   ],
+   [
+    "Ust kol tupu",
+    "Isil gomme somun M3 (yuvada)",
+    21.4
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    19.5
+   ],
+   [
+    "Ust kol tupu",
+    "Isil gomme somun M3 (yuvada)",
+    16.7
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    1801.6
+   ]
+  ],
+  "90,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1259.3
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    74.6
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    71.0
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    341.4
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    17.4
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    17.0
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2116.2
+   ]
+  ],
+  "90,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    111.6
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    64.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    57.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    81.3
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    3.0
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    4.0
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    3057.6
+   ]
+  ],
+  "90,-5": [
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    8.4
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    3.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    1338.9
+   ]
+  ],
+  "90,0": [],
+  "90,5": [],
+  "90,10": [],
+  "90,15": [],
+  "90,20": [],
+  "90,25": [],
+  "90,30": [],
+  "90,35": [],
+  "90,40": [],
+  "90,45": [],
+  "90,50": [],
+  "90,55": [],
+  "90,60": [],
+  "90,65": [],
+  "90,70": [],
+  "90,75": [],
+  "90,80": [],
+  "90,85": [],
+  "90,90": [],
+  "90,95": [],
+  "90,100": [],
+  "90,105": [],
+  "90,110": [],
+  "90,115": [],
+  "90,120": [],
+  "90,125": [],
+  "90,130": [],
+  "90,135": [],
+  "90,140": [],
+  "90,145": [],
+  "90,150": [],
+  "100,-20": [
+   [
+    "Kol catali",
+    "Omuz yuvasi",
+    61.7
+   ],
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    2773.5
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    83.4
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    105.2
+   ],
+   [
+    "Kol catali",
+    "Isil gomme somun M3 (yuvada)",
+    2.9
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1817.9
+   ],
+   [
+    "Ust kol tupu",
+    "Omuz yuvasi",
+    304.7
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    201.9
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    20.4
+   ],
+   [
+    "Ust kol tupu",
+    "Isil gomme somun M3 (yuvada)",
+    3.7
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    18.8
+   ],
+   [
+    "Ust kol tupu",
+    "Isil gomme somun M3 (yuvada)",
+    24.5
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    1125.6
+   ]
+  ],
+  "100,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1222.2
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    73.0
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    77.3
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1330.6
+   ],
+   [
+    "Ust kol tupu",
+    "Omuz yuvasi",
+    0.7
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    293.3
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    4.7
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    18.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    1543.5
+   ]
+  ],
+  "100,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    111.1
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    34.8
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    65.1
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    81.9
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    5.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2686.1
+   ]
+  ],
+  "100,-5": [
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    16.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    1422.6
+   ]
+  ],
+  "100,0": [],
+  "100,5": [],
+  "100,10": [],
+  "100,15": [],
+  "100,20": [],
+  "100,25": [],
+  "100,30": [],
+  "100,35": [],
+  "100,40": [],
+  "100,45": [],
+  "100,50": [],
+  "100,55": [],
+  "100,60": [],
+  "100,65": [],
+  "100,70": [],
+  "100,75": [],
+  "100,80": [],
+  "100,85": [],
+  "100,90": [],
+  "100,95": [],
+  "100,100": [],
+  "100,105": [],
+  "100,110": [],
+  "100,115": [],
+  "100,120": [],
+  "100,125": [],
+  "100,130": [],
+  "100,135": [],
+  "100,140": [],
+  "100,145": [],
+  "100,150": [],
+  "110,-20": [
+   [
+    "Kol catali",
+    "Omuz yuvasi",
+    42.2
+   ],
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    2520.8
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    74.0
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    101.4
+   ],
+   [
+    "Kol catali",
+    "Isil gomme somun M3 (yuvada)",
+    0.9
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1711.9
+   ],
+   [
+    "Ust kol tupu",
+    "Omuz yuvasi",
+    199.5
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    192.8
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    2.9
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    19.1
+   ],
+   [
+    "Ust kol tupu",
+    "Isil gomme somun M3 (yuvada)",
+    21.9
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    906.2
+   ]
+  ],
+  "110,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1117.8
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    29.6
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    74.9
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1317.4
+   ],
+   [
+    "Ust kol tupu",
+    "Omuz yuvasi",
+    1.4
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    195.5
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    17.7
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    1234.9
+   ]
+  ],
+  "110,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    96.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    64.4
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    204.3
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    53.6
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    3.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    2179.1
+   ]
+  ],
+  "110,-5": [
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    9.5
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    845.1
+   ]
+  ],
+  "110,0": [],
+  "110,5": [],
+  "110,10": [],
+  "110,15": [],
+  "110,20": [],
+  "110,25": [],
+  "110,30": [],
+  "110,35": [],
+  "110,40": [],
+  "110,45": [],
+  "110,50": [],
+  "110,55": [],
+  "110,60": [],
+  "110,65": [],
+  "110,70": [],
+  "110,75": [],
+  "110,80": [],
+  "110,85": [],
+  "110,90": [],
+  "110,95": [],
+  "110,100": [],
+  "110,105": [],
+  "110,110": [],
+  "110,115": [],
+  "110,120": [],
+  "110,125": [],
+  "110,130": [],
+  "110,135": [],
+  "110,140": [],
+  "110,145": [],
+  "110,150": [],
+  "120,-20": [
+   [
+    "Kol catali",
+    "Omuz yuvasi",
+    4.4
+   ],
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    2276.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    9.6
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    84.9
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1357.5
+   ],
+   [
+    "Ust kol tupu",
+    "Omuz yuvasi",
+    96.3
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    168.5
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    20.3
+   ],
+   [
+    "Ust kol tupu",
+    "Isil gomme somun M3 (yuvada)",
+    4.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    905.8
+   ]
+  ],
+  "120,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    969.9
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    73.3
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    1105.2
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    113.7
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    5.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    1112.4
+   ]
+  ],
+  "120,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    74.8
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    38.6
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    185.4
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    9.5
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    1689.5
+   ]
+  ],
+  "120,-5": [
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    31.0
+   ]
+  ],
+  "120,0": [],
+  "120,5": [],
+  "120,10": [],
+  "120,15": [],
+  "120,20": [],
+  "120,25": [],
+  "120,30": [],
+  "120,35": [],
+  "120,40": [],
+  "120,45": [],
+  "120,50": [],
+  "120,55": [],
+  "120,60": [],
+  "120,65": [],
+  "120,70": [],
+  "120,75": [],
+  "120,80": [],
+  "120,85": [],
+  "120,90": [],
+  "120,95": [],
+  "120,100": [],
+  "120,105": [],
+  "120,110": [],
+  "120,115": [],
+  "120,120": [],
+  "120,125": [],
+  "120,130": [],
+  "120,135": [],
+  "120,140": [],
+  "120,145": [],
+  "120,150": [],
+  "130,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    2030.8
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    74.6
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    992.0
+   ],
+   [
+    "Ust kol tupu",
+    "Omuz yuvasi",
+    1.7
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    149.0
+   ],
+   [
+    "Ust kol tupu",
+    "Kapak civatasi M3x12",
+    4.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    620.8
+   ]
+  ],
+  "130,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    885.3
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    34.5
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    707.7
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    21.0
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    681.9
+   ]
+  ],
+  "130,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    0.6
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    72.1
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    555.2
+   ]
+  ],
+  "130,-5": [],
+  "130,0": [],
+  "130,5": [],
+  "130,10": [],
+  "130,15": [],
+  "130,20": [],
+  "130,25": [],
+  "130,30": [],
+  "130,35": [],
+  "130,40": [],
+  "130,45": [],
+  "130,50": [],
+  "130,55": [],
+  "130,60": [],
+  "130,65": [],
+  "130,70": [],
+  "130,75": [],
+  "130,80": [],
+  "130,85": [],
+  "130,90": [],
+  "130,95": [],
+  "130,100": [],
+  "130,105": [],
+  "130,110": [],
+  "130,115": [],
+  "130,120": [],
+  "130,125": [],
+  "130,130": [],
+  "130,135": [],
+  "130,140": [],
+  "130,145": [],
+  "130,150": [],
+  "140,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1930.7
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Kapak civatasi M3x12",
+    12.5
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    593.5
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    27.3
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    360.4
+   ]
+  ],
+  "140,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    848.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    233.1
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    340.7
+   ]
+  ],
+  "140,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    93.0
+   ]
+  ],
+  "140,-5": [],
+  "140,0": [],
+  "140,5": [],
+  "140,10": [],
+  "140,15": [],
+  "140,20": [],
+  "140,25": [],
+  "140,30": [],
+  "140,35": [],
+  "140,40": [],
+  "140,45": [],
+  "140,50": [],
+  "140,55": [],
+  "140,60": [],
+  "140,65": [],
+  "140,70": [],
+  "140,75": [],
+  "140,80": [],
+  "140,85": [],
+  "140,90": [],
+  "140,95": [],
+  "140,100": [],
+  "140,105": [],
+  "140,110": [],
+  "140,115": [],
+  "140,120": [],
+  "140,125": [],
+  "140,130": [],
+  "140,135": [],
+  "140,140": [],
+  "140,145": [],
+  "140,150": [],
+  "150,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1898.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    130.8
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    23.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    165.5
+   ]
+  ],
+  "150,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    848.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    9.6
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    74.8
+   ]
+  ],
+  "150,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    1.1
+   ]
+  ],
+  "150,-5": [],
+  "150,0": [],
+  "150,5": [],
+  "150,10": [],
+  "150,15": [],
+  "150,20": [],
+  "150,25": [],
+  "150,30": [],
+  "150,35": [],
+  "150,40": [],
+  "150,45": [],
+  "150,50": [],
+  "150,55": [],
+  "150,60": [],
+  "150,65": [],
+  "150,70": [],
+  "150,75": [],
+  "150,80": [],
+  "150,85": [],
+  "150,90": [],
+  "150,95": [],
+  "150,100": [],
+  "150,105": [],
+  "150,110": [],
+  "150,115": [],
+  "150,120": [],
+  "150,125": [],
+  "150,130": [],
+  "150,135": [],
+  "150,140": [],
+  "150,145": [],
+  "150,150": [],
+  "160,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1898.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Kol catali",
+    "Govde kabugu yan yuzu (referans)",
+    0.9
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    23.2
+   ],
+   [
+    "Ust kol tupu",
+    "Govde kabugu yan yuzu (referans)",
+    23.2
+   ]
+  ],
+  "160,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    848.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ]
+  ],
+  "160,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ]
+  ],
+  "160,-5": [],
+  "160,0": [],
+  "160,5": [],
+  "160,10": [],
+  "160,15": [],
+  "160,20": [],
+  "160,25": [],
+  "160,30": [],
+  "160,35": [],
+  "160,40": [],
+  "160,45": [],
+  "160,50": [],
+  "160,55": [],
+  "160,60": [],
+  "160,65": [],
+  "160,70": [],
+  "160,75": [],
+  "160,80": [],
+  "160,85": [],
+  "160,90": [],
+  "160,95": [],
+  "160,100": [],
+  "160,105": [],
+  "160,110": [],
+  "160,115": [],
+  "160,120": [],
+  "160,125": [],
+  "160,130": [],
+  "160,135": [],
+  "160,140": [],
+  "160,145": [],
+  "160,150": [],
+  "170,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1898.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    23.2
+   ]
+  ],
+  "170,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    848.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ]
+  ],
+  "170,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ]
+  ],
+  "170,-5": [],
+  "170,0": [],
+  "170,5": [],
+  "170,10": [],
+  "170,15": [],
+  "170,20": [],
+  "170,25": [],
+  "170,30": [],
+  "170,35": [],
+  "170,40": [],
+  "170,45": [],
+  "170,50": [],
+  "170,55": [],
+  "170,60": [],
+  "170,65": [],
+  "170,70": [],
+  "170,75": [],
+  "170,80": [],
+  "170,85": [],
+  "170,90": [],
+  "170,95": [],
+  "170,100": [],
+  "170,105": [],
+  "170,110": [],
+  "170,115": [],
+  "170,120": [],
+  "170,125": [],
+  "170,130": [],
+  "170,135": [],
+  "170,140": [],
+  "170,145": [],
+  "170,150": [],
+  "180,-20": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    1898.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    271.2
+   ],
+   [
+    "Ust kol tupu",
+    "Rulman kapagi",
+    23.2
+   ]
+  ],
+  "180,-15": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    848.4
+   ],
+   [
+    "Kol catali",
+    "6808-2RS rulman (dis bilezik)",
+    88.4
+   ]
+  ],
+  "180,-10": [
+   [
+    "Kol catali",
+    "Rulman kapagi",
+    64.2
+   ]
+  ],
+  "180,-5": [],
+  "180,0": [],
+  "180,5": [],
+  "180,10": [],
+  "180,15": [],
+  "180,20": [],
+  "180,25": [],
+  "180,30": [],
+  "180,35": [],
+  "180,40": [],
+  "180,45": [],
+  "180,50": [],
+  "180,55": [],
+  "180,60": [],
+  "180,65": [],
+  "180,70": [],
+  "180,75": [],
+  "180,80": [],
+  "180,85": [],
+  "180,90": [],
+  "180,95": [],
+  "180,100": [],
+  "180,105": [],
+  "180,110": [],
+  "180,115": [],
+  "180,120": [],
+  "180,125": [],
+  "180,130": [],
+  "180,135": [],
+  "180,140": [],
+  "180,145": [],
+  "180,150": []
+ },
+ "serbest": {
+  "-60,-20": false,
+  "-60,-15": false,
+  "-60,-10": false,
+  "-60,-5": false,
+  "-60,0": true,
+  "-60,5": true,
+  "-60,10": true,
+  "-60,15": true,
+  "-60,20": true,
+  "-60,25": true,
+  "-60,30": true,
+  "-60,35": true,
+  "-60,40": true,
+  "-60,45": true,
+  "-60,50": true,
+  "-60,55": true,
+  "-60,60": true,
+  "-60,65": true,
+  "-60,70": true,
+  "-60,75": true,
+  "-60,80": true,
+  "-60,85": true,
+  "-60,90": true,
+  "-60,95": true,
+  "-60,100": true,
+  "-60,105": true,
+  "-60,110": true,
+  "-60,115": true,
+  "-60,120": true,
+  "-60,125": false,
+  "-60,130": false,
+  "-60,135": false,
+  "-60,140": false,
+  "-60,145": false,
+  "-60,150": false,
+  "-50,-20": false,
+  "-50,-15": false,
+  "-50,-10": false,
+  "-50,-5": false,
+  "-50,0": true,
+  "-50,5": true,
+  "-50,10": true,
+  "-50,15": true,
+  "-50,20": true,
+  "-50,25": true,
+  "-50,30": true,
+  "-50,35": true,
+  "-50,40": true,
+  "-50,45": true,
+  "-50,50": true,
+  "-50,55": true,
+  "-50,60": true,
+  "-50,65": true,
+  "-50,70": true,
+  "-50,75": true,
+  "-50,80": true,
+  "-50,85": true,
+  "-50,90": true,
+  "-50,95": true,
+  "-50,100": true,
+  "-50,105": true,
+  "-50,110": true,
+  "-50,115": true,
+  "-50,120": true,
+  "-50,125": false,
+  "-50,130": false,
+  "-50,135": false,
+  "-50,140": false,
+  "-50,145": false,
+  "-50,150": false,
+  "-40,-20": false,
+  "-40,-15": false,
+  "-40,-10": false,
+  "-40,-5": false,
+  "-40,0": true,
+  "-40,5": true,
+  "-40,10": true,
+  "-40,15": true,
+  "-40,20": true,
+  "-40,25": true,
+  "-40,30": true,
+  "-40,35": true,
+  "-40,40": true,
+  "-40,45": true,
+  "-40,50": true,
+  "-40,55": true,
+  "-40,60": true,
+  "-40,65": true,
+  "-40,70": true,
+  "-40,75": true,
+  "-40,80": true,
+  "-40,85": true,
+  "-40,90": true,
+  "-40,95": true,
+  "-40,100": true,
+  "-40,105": true,
+  "-40,110": true,
+  "-40,115": true,
+  "-40,120": true,
+  "-40,125": false,
+  "-40,130": false,
+  "-40,135": false,
+  "-40,140": false,
+  "-40,145": false,
+  "-40,150": false,
+  "-30,-20": false,
+  "-30,-15": false,
+  "-30,-10": false,
+  "-30,-5": false,
+  "-30,0": true,
+  "-30,5": true,
+  "-30,10": true,
+  "-30,15": true,
+  "-30,20": true,
+  "-30,25": true,
+  "-30,30": true,
+  "-30,35": true,
+  "-30,40": true,
+  "-30,45": true,
+  "-30,50": true,
+  "-30,55": true,
+  "-30,60": true,
+  "-30,65": true,
+  "-30,70": true,
+  "-30,75": true,
+  "-30,80": true,
+  "-30,85": true,
+  "-30,90": true,
+  "-30,95": true,
+  "-30,100": true,
+  "-30,105": true,
+  "-30,110": true,
+  "-30,115": true,
+  "-30,120": true,
+  "-30,125": false,
+  "-30,130": false,
+  "-30,135": false,
+  "-30,140": false,
+  "-30,145": false,
+  "-30,150": false,
+  "-20,-20": false,
+  "-20,-15": false,
+  "-20,-10": false,
+  "-20,-5": false,
+  "-20,0": true,
+  "-20,5": true,
+  "-20,10": true,
+  "-20,15": true,
+  "-20,20": true,
+  "-20,25": true,
+  "-20,30": true,
+  "-20,35": true,
+  "-20,40": true,
+  "-20,45": true,
+  "-20,50": true,
+  "-20,55": true,
+  "-20,60": true,
+  "-20,65": true,
+  "-20,70": true,
+  "-20,75": true,
+  "-20,80": true,
+  "-20,85": true,
+  "-20,90": true,
+  "-20,95": true,
+  "-20,100": true,
+  "-20,105": true,
+  "-20,110": true,
+  "-20,115": true,
+  "-20,120": true,
+  "-20,125": false,
+  "-20,130": false,
+  "-20,135": false,
+  "-20,140": false,
+  "-20,145": false,
+  "-20,150": false,
+  "-10,-20": false,
+  "-10,-15": false,
+  "-10,-10": false,
+  "-10,-5": false,
+  "-10,0": true,
+  "-10,5": true,
+  "-10,10": true,
+  "-10,15": true,
+  "-10,20": true,
+  "-10,25": true,
+  "-10,30": true,
+  "-10,35": true,
+  "-10,40": true,
+  "-10,45": true,
+  "-10,50": true,
+  "-10,55": true,
+  "-10,60": true,
+  "-10,65": true,
+  "-10,70": true,
+  "-10,75": true,
+  "-10,80": true,
+  "-10,85": true,
+  "-10,90": true,
+  "-10,95": true,
+  "-10,100": true,
+  "-10,105": true,
+  "-10,110": true,
+  "-10,115": true,
+  "-10,120": true,
+  "-10,125": false,
+  "-10,130": false,
+  "-10,135": false,
+  "-10,140": false,
+  "-10,145": false,
+  "-10,150": false,
+  "0,-20": false,
+  "0,-15": false,
+  "0,-10": false,
+  "0,-5": false,
+  "0,0": true,
+  "0,5": true,
+  "0,10": true,
+  "0,15": true,
+  "0,20": true,
+  "0,25": true,
+  "0,30": true,
+  "0,35": true,
+  "0,40": true,
+  "0,45": true,
+  "0,50": true,
+  "0,55": true,
+  "0,60": true,
+  "0,65": true,
+  "0,70": true,
+  "0,75": true,
+  "0,80": true,
+  "0,85": true,
+  "0,90": true,
+  "0,95": true,
+  "0,100": true,
+  "0,105": true,
+  "0,110": true,
+  "0,115": true,
+  "0,120": true,
+  "0,125": false,
+  "0,130": false,
+  "0,135": false,
+  "0,140": false,
+  "0,145": false,
+  "0,150": false,
+  "10,-20": false,
+  "10,-15": false,
+  "10,-10": false,
+  "10,-5": false,
+  "10,0": true,
+  "10,5": true,
+  "10,10": true,
+  "10,15": true,
+  "10,20": true,
+  "10,25": true,
+  "10,30": true,
+  "10,35": true,
+  "10,40": true,
+  "10,45": true,
+  "10,50": true,
+  "10,55": true,
+  "10,60": true,
+  "10,65": true,
+  "10,70": true,
+  "10,75": true,
+  "10,80": true,
+  "10,85": true,
+  "10,90": true,
+  "10,95": true,
+  "10,100": true,
+  "10,105": true,
+  "10,110": true,
+  "10,115": true,
+  "10,120": true,
+  "10,125": false,
+  "10,130": false,
+  "10,135": false,
+  "10,140": false,
+  "10,145": false,
+  "10,150": false,
+  "20,-20": false,
+  "20,-15": false,
+  "20,-10": false,
+  "20,-5": false,
+  "20,0": true,
+  "20,5": true,
+  "20,10": true,
+  "20,15": true,
+  "20,20": true,
+  "20,25": true,
+  "20,30": true,
+  "20,35": true,
+  "20,40": true,
+  "20,45": true,
+  "20,50": true,
+  "20,55": true,
+  "20,60": true,
+  "20,65": true,
+  "20,70": true,
+  "20,75": true,
+  "20,80": true,
+  "20,85": true,
+  "20,90": true,
+  "20,95": true,
+  "20,100": true,
+  "20,105": true,
+  "20,110": true,
+  "20,115": true,
+  "20,120": true,
+  "20,125": false,
+  "20,130": false,
+  "20,135": false,
+  "20,140": false,
+  "20,145": false,
+  "20,150": false,
+  "30,-20": false,
+  "30,-15": false,
+  "30,-10": false,
+  "30,-5": false,
+  "30,0": true,
+  "30,5": true,
+  "30,10": true,
+  "30,15": true,
+  "30,20": true,
+  "30,25": true,
+  "30,30": true,
+  "30,35": true,
+  "30,40": true,
+  "30,45": true,
+  "30,50": true,
+  "30,55": true,
+  "30,60": true,
+  "30,65": true,
+  "30,70": true,
+  "30,75": true,
+  "30,80": true,
+  "30,85": true,
+  "30,90": true,
+  "30,95": true,
+  "30,100": true,
+  "30,105": true,
+  "30,110": true,
+  "30,115": true,
+  "30,120": true,
+  "30,125": false,
+  "30,130": false,
+  "30,135": false,
+  "30,140": false,
+  "30,145": false,
+  "30,150": false,
+  "40,-20": false,
+  "40,-15": false,
+  "40,-10": false,
+  "40,-5": false,
+  "40,0": true,
+  "40,5": true,
+  "40,10": true,
+  "40,15": true,
+  "40,20": true,
+  "40,25": true,
+  "40,30": true,
+  "40,35": true,
+  "40,40": true,
+  "40,45": true,
+  "40,50": true,
+  "40,55": true,
+  "40,60": true,
+  "40,65": true,
+  "40,70": true,
+  "40,75": true,
+  "40,80": true,
+  "40,85": true,
+  "40,90": true,
+  "40,95": true,
+  "40,100": true,
+  "40,105": true,
+  "40,110": true,
+  "40,115": true,
+  "40,120": true,
+  "40,125": false,
+  "40,130": false,
+  "40,135": false,
+  "40,140": false,
+  "40,145": false,
+  "40,150": false,
+  "50,-20": false,
+  "50,-15": false,
+  "50,-10": false,
+  "50,-5": false,
+  "50,0": true,
+  "50,5": true,
+  "50,10": true,
+  "50,15": true,
+  "50,20": true,
+  "50,25": true,
+  "50,30": true,
+  "50,35": true,
+  "50,40": true,
+  "50,45": true,
+  "50,50": true,
+  "50,55": true,
+  "50,60": true,
+  "50,65": true,
+  "50,70": true,
+  "50,75": true,
+  "50,80": true,
+  "50,85": true,
+  "50,90": true,
+  "50,95": true,
+  "50,100": true,
+  "50,105": true,
+  "50,110": true,
+  "50,115": true,
+  "50,120": true,
+  "50,125": false,
+  "50,130": false,
+  "50,135": false,
+  "50,140": false,
+  "50,145": false,
+  "50,150": false,
+  "60,-20": false,
+  "60,-15": false,
+  "60,-10": false,
+  "60,-5": false,
+  "60,0": true,
+  "60,5": true,
+  "60,10": true,
+  "60,15": true,
+  "60,20": true,
+  "60,25": true,
+  "60,30": true,
+  "60,35": true,
+  "60,40": true,
+  "60,45": true,
+  "60,50": true,
+  "60,55": true,
+  "60,60": true,
+  "60,65": true,
+  "60,70": true,
+  "60,75": true,
+  "60,80": true,
+  "60,85": true,
+  "60,90": true,
+  "60,95": true,
+  "60,100": true,
+  "60,105": true,
+  "60,110": true,
+  "60,115": true,
+  "60,120": true,
+  "60,125": false,
+  "60,130": false,
+  "60,135": false,
+  "60,140": false,
+  "60,145": false,
+  "60,150": false,
+  "70,-20": false,
+  "70,-15": false,
+  "70,-10": false,
+  "70,-5": false,
+  "70,0": true,
+  "70,5": true,
+  "70,10": true,
+  "70,15": true,
+  "70,20": true,
+  "70,25": true,
+  "70,30": true,
+  "70,35": true,
+  "70,40": true,
+  "70,45": true,
+  "70,50": true,
+  "70,55": true,
+  "70,60": true,
+  "70,65": true,
+  "70,70": true,
+  "70,75": true,
+  "70,80": true,
+  "70,85": true,
+  "70,90": true,
+  "70,95": true,
+  "70,100": true,
+  "70,105": true,
+  "70,110": true,
+  "70,115": true,
+  "70,120": true,
+  "70,125": false,
+  "70,130": false,
+  "70,135": false,
+  "70,140": false,
+  "70,145": false,
+  "70,150": false,
+  "80,-20": false,
+  "80,-15": false,
+  "80,-10": false,
+  "80,-5": false,
+  "80,0": true,
+  "80,5": true,
+  "80,10": true,
+  "80,15": true,
+  "80,20": true,
+  "80,25": true,
+  "80,30": true,
+  "80,35": true,
+  "80,40": true,
+  "80,45": true,
+  "80,50": true,
+  "80,55": true,
+  "80,60": true,
+  "80,65": true,
+  "80,70": true,
+  "80,75": true,
+  "80,80": true,
+  "80,85": true,
+  "80,90": true,
+  "80,95": true,
+  "80,100": true,
+  "80,105": true,
+  "80,110": true,
+  "80,115": true,
+  "80,120": true,
+  "80,125": false,
+  "80,130": false,
+  "80,135": false,
+  "80,140": false,
+  "80,145": false,
+  "80,150": false,
+  "90,-20": false,
+  "90,-15": false,
+  "90,-10": false,
+  "90,-5": false,
+  "90,0": true,
+  "90,5": true,
+  "90,10": true,
+  "90,15": true,
+  "90,20": true,
+  "90,25": true,
+  "90,30": true,
+  "90,35": true,
+  "90,40": true,
+  "90,45": true,
+  "90,50": true,
+  "90,55": true,
+  "90,60": true,
+  "90,65": true,
+  "90,70": true,
+  "90,75": true,
+  "90,80": true,
+  "90,85": true,
+  "90,90": true,
+  "90,95": true,
+  "90,100": true,
+  "90,105": true,
+  "90,110": true,
+  "90,115": true,
+  "90,120": true,
+  "90,125": false,
+  "90,130": false,
+  "90,135": false,
+  "90,140": false,
+  "90,145": false,
+  "90,150": false,
+  "100,-20": false,
+  "100,-15": false,
+  "100,-10": false,
+  "100,-5": false,
+  "100,0": true,
+  "100,5": true,
+  "100,10": true,
+  "100,15": true,
+  "100,20": true,
+  "100,25": true,
+  "100,30": true,
+  "100,35": true,
+  "100,40": true,
+  "100,45": true,
+  "100,50": true,
+  "100,55": true,
+  "100,60": true,
+  "100,65": true,
+  "100,70": true,
+  "100,75": true,
+  "100,80": true,
+  "100,85": true,
+  "100,90": true,
+  "100,95": true,
+  "100,100": true,
+  "100,105": true,
+  "100,110": true,
+  "100,115": true,
+  "100,120": true,
+  "100,125": false,
+  "100,130": false,
+  "100,135": false,
+  "100,140": false,
+  "100,145": false,
+  "100,150": false,
+  "110,-20": false,
+  "110,-15": false,
+  "110,-10": false,
+  "110,-5": false,
+  "110,0": true,
+  "110,5": true,
+  "110,10": true,
+  "110,15": true,
+  "110,20": true,
+  "110,25": true,
+  "110,30": true,
+  "110,35": true,
+  "110,40": true,
+  "110,45": true,
+  "110,50": true,
+  "110,55": true,
+  "110,60": true,
+  "110,65": true,
+  "110,70": true,
+  "110,75": true,
+  "110,80": true,
+  "110,85": true,
+  "110,90": true,
+  "110,95": true,
+  "110,100": true,
+  "110,105": true,
+  "110,110": true,
+  "110,115": true,
+  "110,120": true,
+  "110,125": false,
+  "110,130": false,
+  "110,135": false,
+  "110,140": false,
+  "110,145": false,
+  "110,150": false,
+  "120,-20": false,
+  "120,-15": false,
+  "120,-10": false,
+  "120,-5": false,
+  "120,0": true,
+  "120,5": true,
+  "120,10": true,
+  "120,15": true,
+  "120,20": true,
+  "120,25": true,
+  "120,30": true,
+  "120,35": true,
+  "120,40": true,
+  "120,45": true,
+  "120,50": true,
+  "120,55": true,
+  "120,60": true,
+  "120,65": true,
+  "120,70": true,
+  "120,75": true,
+  "120,80": true,
+  "120,85": true,
+  "120,90": true,
+  "120,95": true,
+  "120,100": true,
+  "120,105": true,
+  "120,110": true,
+  "120,115": true,
+  "120,120": true,
+  "120,125": false,
+  "120,130": false,
+  "120,135": false,
+  "120,140": false,
+  "120,145": false,
+  "120,150": false,
+  "130,-20": false,
+  "130,-15": false,
+  "130,-10": false,
+  "130,-5": true,
+  "130,0": true,
+  "130,5": true,
+  "130,10": true,
+  "130,15": true,
+  "130,20": true,
+  "130,25": true,
+  "130,30": true,
+  "130,35": true,
+  "130,40": true,
+  "130,45": true,
+  "130,50": true,
+  "130,55": true,
+  "130,60": true,
+  "130,65": true,
+  "130,70": true,
+  "130,75": true,
+  "130,80": true,
+  "130,85": true,
+  "130,90": true,
+  "130,95": true,
+  "130,100": true,
+  "130,105": true,
+  "130,110": true,
+  "130,115": true,
+  "130,120": true,
+  "130,125": false,
+  "130,130": false,
+  "130,135": false,
+  "130,140": false,
+  "130,145": false,
+  "130,150": false,
+  "140,-20": false,
+  "140,-15": false,
+  "140,-10": false,
+  "140,-5": true,
+  "140,0": true,
+  "140,5": true,
+  "140,10": true,
+  "140,15": true,
+  "140,20": true,
+  "140,25": true,
+  "140,30": true,
+  "140,35": true,
+  "140,40": true,
+  "140,45": true,
+  "140,50": true,
+  "140,55": true,
+  "140,60": true,
+  "140,65": true,
+  "140,70": true,
+  "140,75": true,
+  "140,80": true,
+  "140,85": true,
+  "140,90": true,
+  "140,95": true,
+  "140,100": true,
+  "140,105": true,
+  "140,110": true,
+  "140,115": true,
+  "140,120": true,
+  "140,125": false,
+  "140,130": false,
+  "140,135": false,
+  "140,140": false,
+  "140,145": false,
+  "140,150": false,
+  "150,-20": false,
+  "150,-15": false,
+  "150,-10": false,
+  "150,-5": true,
+  "150,0": true,
+  "150,5": true,
+  "150,10": true,
+  "150,15": true,
+  "150,20": true,
+  "150,25": true,
+  "150,30": true,
+  "150,35": true,
+  "150,40": true,
+  "150,45": true,
+  "150,50": true,
+  "150,55": true,
+  "150,60": true,
+  "150,65": true,
+  "150,70": true,
+  "150,75": true,
+  "150,80": true,
+  "150,85": true,
+  "150,90": true,
+  "150,95": true,
+  "150,100": true,
+  "150,105": true,
+  "150,110": true,
+  "150,115": true,
+  "150,120": true,
+  "150,125": false,
+  "150,130": false,
+  "150,135": false,
+  "150,140": false,
+  "150,145": false,
+  "150,150": false,
+  "160,-20": false,
+  "160,-15": false,
+  "160,-10": false,
+  "160,-5": true,
+  "160,0": true,
+  "160,5": true,
+  "160,10": true,
+  "160,15": true,
+  "160,20": true,
+  "160,25": true,
+  "160,30": true,
+  "160,35": true,
+  "160,40": true,
+  "160,45": true,
+  "160,50": true,
+  "160,55": true,
+  "160,60": true,
+  "160,65": true,
+  "160,70": true,
+  "160,75": true,
+  "160,80": true,
+  "160,85": true,
+  "160,90": true,
+  "160,95": true,
+  "160,100": true,
+  "160,105": true,
+  "160,110": true,
+  "160,115": true,
+  "160,120": true,
+  "160,125": false,
+  "160,130": false,
+  "160,135": false,
+  "160,140": false,
+  "160,145": false,
+  "160,150": false,
+  "170,-20": false,
+  "170,-15": false,
+  "170,-10": false,
+  "170,-5": true,
+  "170,0": true,
+  "170,5": true,
+  "170,10": true,
+  "170,15": true,
+  "170,20": true,
+  "170,25": true,
+  "170,30": true,
+  "170,35": true,
+  "170,40": true,
+  "170,45": true,
+  "170,50": true,
+  "170,55": true,
+  "170,60": true,
+  "170,65": true,
+  "170,70": true,
+  "170,75": true,
+  "170,80": true,
+  "170,85": true,
+  "170,90": true,
+  "170,95": true,
+  "170,100": true,
+  "170,105": true,
+  "170,110": true,
+  "170,115": true,
+  "170,120": true,
+  "170,125": false,
+  "170,130": false,
+  "170,135": false,
+  "170,140": false,
+  "170,145": false,
+  "170,150": false,
+  "180,-20": false,
+  "180,-15": false,
+  "180,-10": false,
+  "180,-5": true,
+  "180,0": true,
+  "180,5": true,
+  "180,10": true,
+  "180,15": true,
+  "180,20": true,
+  "180,25": true,
+  "180,30": true,
+  "180,35": true,
+  "180,40": true,
+  "180,45": true,
+  "180,50": true,
+  "180,55": true,
+  "180,60": true,
+  "180,65": true,
+  "180,70": true,
+  "180,75": true,
+  "180,80": true,
+  "180,85": true,
+  "180,90": true,
+  "180,95": true,
+  "180,100": true,
+  "180,105": true,
+  "180,110": true,
+  "180,115": true,
+  "180,120": true,
+  "180,125": false,
+  "180,130": false,
+  "180,135": false,
+  "180,140": false,
+  "180,145": false,
+  "180,150": false
+ },
+ "tork": {
+  "-60,-20": [
+   4.61,
+   0.98
+  ],
+  "-60,-15": [
+   4.74,
+   0.74
+  ],
+  "-60,-10": [
+   4.83,
+   0.5
+  ],
+  "-60,-5": [
+   4.89,
+   0.25
+  ],
+  "-60,0": [
+   4.91,
+   0.0
+  ],
+  "-60,5": [
+   4.89,
+   0.25
+  ],
+  "-60,10": [
+   4.83,
+   0.5
+  ],
+  "-60,15": [
+   4.74,
+   0.74
+  ],
+  "-60,20": [
+   4.61,
+   0.98
+  ],
+  "-60,25": [
+   4.44,
+   1.21
+  ],
+  "-60,30": [
+   4.24,
+   1.44
+  ],
+  "-60,35": [
+   4.01,
+   1.65
+  ],
+  "-60,40": [
+   3.75,
+   1.85
+  ],
+  "-60,45": [
+   3.45,
+   2.03
+  ],
+  "-60,50": [
+   3.13,
+   2.2
+  ],
+  "-60,55": [
+   2.79,
+   2.35
+  ],
+  "-60,60": [
+   2.42,
+   2.49
+  ],
+  "-60,65": [
+   2.04,
+   2.6
+  ],
+  "-60,70": [
+   1.64,
+   2.7
+  ],
+  "-60,75": [
+   1.22,
+   2.77
+  ],
+  "-60,80": [
+   0.8,
+   2.83
+  ],
+  "-60,85": [
+   0.37,
+   2.86
+  ],
+  "-60,90": [
+   0.06,
+   2.87
+  ],
+  "-60,95": [
+   0.5,
+   2.86
+  ],
+  "-60,100": [
+   0.93,
+   2.83
+  ],
+  "-60,105": [
+   1.35,
+   2.77
+  ],
+  "-60,110": [
+   1.76,
+   2.7
+  ],
+  "-60,115": [
+   2.16,
+   2.6
+  ],
+  "-60,120": [
+   2.55,
+   2.49
+  ],
+  "-60,125": [
+   2.91,
+   2.35
+  ],
+  "-60,130": [
+   3.26,
+   2.2
+  ],
+  "-60,135": [
+   3.58,
+   2.03
+  ],
+  "-60,140": [
+   3.87,
+   1.85
+  ],
+  "-60,145": [
+   4.13,
+   1.65
+  ],
+  "-60,150": [
+   4.37,
+   1.44
+  ],
+  "-50,-20": [
+   4.09,
+   1.26
+  ],
+  "-50,-15": [
+   4.21,
+   0.96
+  ],
+  "-50,-10": [
+   4.29,
+   0.64
+  ],
+  "-50,-5": [
+   4.34,
+   0.32
+  ],
+  "-50,0": [
+   4.36,
+   0.0
+  ],
+  "-50,5": [
+   4.34,
+   0.32
+  ],
+  "-50,10": [
+   4.29,
+   0.64
+  ],
+  "-50,15": [
+   4.21,
+   0.96
+  ],
+  "-50,20": [
+   4.09,
+   1.26
+  ],
+  "-50,25": [
+   3.94,
+   1.56
+  ],
+  "-50,30": [
+   3.77,
+   1.85
+  ],
+  "-50,35": [
+   3.56,
+   2.12
+  ],
+  "-50,40": [
+   3.33,
+   2.37
+  ],
+  "-50,45": [
+   3.07,
+   2.61
+  ],
+  "-50,50": [
+   2.79,
+   2.83
+  ],
+  "-50,55": [
+   2.48,
+   3.02
+  ],
+  "-50,60": [
+   2.16,
+   3.2
+  ],
+  "-50,65": [
+   1.82,
+   3.34
+  ],
+  "-50,70": [
+   1.46,
+   3.47
+  ],
+  "-50,75": [
+   1.1,
+   3.56
+  ],
+  "-50,80": [
+   0.72,
+   3.63
+  ],
+  "-50,85": [
+   0.34,
+   3.68
+  ],
+  "-50,90": [
+   0.04,
+   3.69
+  ],
+  "-50,95": [
+   0.42,
+   3.68
+  ],
+  "-50,100": [
+   0.8,
+   3.63
+  ],
+  "-50,105": [
+   1.18,
+   3.56
+  ],
+  "-50,110": [
+   1.55,
+   3.47
+  ],
+  "-50,115": [
+   1.9,
+   3.34
+  ],
+  "-50,120": [
+   2.24,
+   3.2
+  ],
+  "-50,125": [
+   2.56,
+   3.02
+  ],
+  "-50,130": [
+   2.87,
+   2.83
+  ],
+  "-50,135": [
+   3.15,
+   2.61
+  ],
+  "-50,140": [
+   3.41,
+   2.37
+  ],
+  "-50,145": [
+   3.64,
+   2.12
+  ],
+  "-50,150": [
+   3.85,
+   1.85
+  ],
+  "-40,-20": [
+   3.45,
+   1.5
+  ],
+  "-40,-15": [
+   3.55,
+   1.14
+  ],
+  "-40,-10": [
+   3.61,
+   0.76
+  ],
+  "-40,-5": [
+   3.66,
+   0.38
+  ],
+  "-40,0": [
+   3.67,
+   0.0
+  ],
+  "-40,5": [
+   3.66,
+   0.38
+  ],
+  "-40,10": [
+   3.61,
+   0.76
+  ],
+  "-40,15": [
+   3.55,
+   1.14
+  ],
+  "-40,20": [
+   3.45,
+   1.5
+  ],
+  "-40,25": [
+   3.33,
+   1.86
+  ],
+  "-40,30": [
+   3.18,
+   2.2
+  ],
+  "-40,35": [
+   3.0,
+   2.52
+  ],
+  "-40,40": [
+   2.81,
+   2.83
+  ],
+  "-40,45": [
+   2.59,
+   3.11
+  ],
+  "-40,50": [
+   2.35,
+   3.37
+  ],
+  "-40,55": [
+   2.1,
+   3.6
+  ],
+  "-40,60": [
+   1.83,
+   3.81
+  ],
+  "-40,65": [
+   1.54,
+   3.99
+  ],
+  "-40,70": [
+   1.24,
+   4.13
+  ],
+  "-40,75": [
+   0.94,
+   4.25
+  ],
+  "-40,80": [
+   0.62,
+   4.33
+  ],
+  "-40,85": [
+   0.3,
+   4.38
+  ],
+  "-40,90": [
+   0.02,
+   4.4
+  ],
+  "-40,95": [
+   0.34,
+   4.38
+  ],
+  "-40,100": [
+   0.66,
+   4.33
+  ],
+  "-40,105": [
+   0.97,
+   4.25
+  ],
+  "-40,110": [
+   1.28,
+   4.13
+  ],
+  "-40,115": [
+   1.58,
+   3.99
+  ],
+  "-40,120": [
+   1.86,
+   3.81
+  ],
+  "-40,125": [
+   2.14,
+   3.6
+  ],
+  "-40,130": [
+   2.39,
+   3.37
+  ],
+  "-40,135": [
+   2.63,
+   3.11
+  ],
+  "-40,140": [
+   2.85,
+   2.83
+  ],
+  "-40,145": [
+   3.04,
+   2.52
+  ],
+  "-40,150": [
+   3.21,
+   2.2
+  ],
+  "-30,-20": [
+   2.7,
+   1.7
+  ],
+  "-30,-15": [
+   2.78,
+   1.29
+  ],
+  "-30,-10": [
+   2.83,
+   0.86
+  ],
+  "-30,-5": [
+   2.86,
+   0.43
+  ],
+  "-30,0": [
+   2.87,
+   0.0
+  ],
+  "-30,5": [
+   2.86,
+   0.43
+  ],
+  "-30,10": [
+   2.83,
+   0.86
+  ],
+  "-30,15": [
+   2.78,
+   1.29
+  ],
+  "-30,20": [
+   2.7,
+   1.7
+  ],
+  "-30,25": [
+   2.6,
+   2.1
+  ],
+  "-30,30": [
+   2.49,
+   2.49
+  ],
+  "-30,35": [
+   2.35,
+   2.85
+  ],
+  "-30,40": [
+   2.2,
+   3.2
+  ],
+  "-30,45": [
+   2.03,
+   3.52
+  ],
+  "-30,50": [
+   1.85,
+   3.81
+  ],
+  "-30,55": [
+   1.65,
+   4.07
+  ],
+  "-30,60": [
+   1.44,
+   4.31
+  ],
+  "-30,65": [
+   1.22,
+   4.51
+  ],
+  "-30,70": [
+   0.98,
+   4.67
+  ],
+  "-30,75": [
+   0.75,
+   4.8
+  ],
+  "-30,80": [
+   0.5,
+   4.9
+  ],
+  "-30,85": [
+   0.25,
+   4.95
+  ],
+  "-30,90": [
+   0.0,
+   4.97
+  ],
+  "-30,95": [
+   0.25,
+   4.95
+  ],
+  "-30,100": [
+   0.5,
+   4.9
+  ],
+  "-30,105": [
+   0.74,
+   4.8
+  ],
+  "-30,110": [
+   0.98,
+   4.67
+  ],
+  "-30,115": [
+   1.21,
+   4.51
+  ],
+  "-30,120": [
+   1.43,
+   4.31
+  ],
+  "-30,125": [
+   1.64,
+   4.07
+  ],
+  "-30,130": [
+   1.84,
+   3.81
+  ],
+  "-30,135": [
+   2.03,
+   3.52
+  ],
+  "-30,140": [
+   2.2,
+   3.2
+  ],
+  "-30,145": [
+   2.35,
+   2.85
+  ],
+  "-30,150": [
+   2.48,
+   2.49
+  ],
+  "-20,-20": [
+   1.87,
+   1.85
+  ],
+  "-20,-15": [
+   1.92,
+   1.4
+  ],
+  "-20,-10": [
+   1.96,
+   0.94
+  ],
+  "-20,-5": [
+   1.98,
+   0.47
+  ],
+  "-20,0": [
+   1.99,
+   0.0
+  ],
+  "-20,5": [
+   1.98,
+   0.47
+  ],
+  "-20,10": [
+   1.96,
+   0.94
+  ],
+  "-20,15": [
+   1.92,
+   1.4
+  ],
+  "-20,20": [
+   1.87,
+   1.85
+  ],
+  "-20,25": [
+   1.81,
+   2.28
+  ],
+  "-20,30": [
+   1.73,
+   2.7
+  ],
+  "-20,35": [
+   1.63,
+   3.09
+  ],
+  "-20,40": [
+   1.53,
+   3.47
+  ],
+  "-20,45": [
+   1.41,
+   3.81
+  ],
+  "-20,50": [
+   1.29,
+   4.13
+  ],
+  "-20,55": [
+   1.15,
+   4.42
+  ],
+  "-20,60": [
+   1.01,
+   4.67
+  ],
+  "-20,65": [
+   0.86,
+   4.89
+  ],
+  "-20,70": [
+   0.7,
+   5.07
+  ],
+  "-20,75": [
+   0.53,
+   5.21
+  ],
+  "-20,80": [
+   0.37,
+   5.31
+  ],
+  "-20,85": [
+   0.2,
+   5.37
+  ],
+  "-20,90": [
+   0.03,
+   5.39
+  ],
+  "-20,95": [
+   0.15,
+   5.37
+  ],
+  "-20,100": [
+   0.32,
+   5.31
+  ],
+  "-20,105": [
+   0.48,
+   5.21
+  ],
+  "-20,110": [
+   0.65,
+   5.07
+  ],
+  "-20,115": [
+   0.8,
+   4.89
+  ],
+  "-20,120": [
+   0.96,
+   4.67
+  ],
+  "-20,125": [
+   1.1,
+   4.42
+  ],
+  "-20,130": [
+   1.24,
+   4.13
+  ],
+  "-20,135": [
+   1.36,
+   3.81
+  ],
+  "-20,140": [
+   1.48,
+   3.47
+  ],
+  "-20,145": [
+   1.58,
+   3.09
+  ],
+  "-20,150": [
+   1.67,
+   2.7
+  ],
+  "-10,-20": [
+   0.98,
+   1.93
+  ],
+  "-10,-15": [
+   1.01,
+   1.46
+  ],
+  "-10,-10": [
+   1.03,
+   0.98
+  ],
+  "-10,-5": [
+   1.04,
+   0.49
+  ],
+  "-10,0": [
+   1.04,
+   0.0
+  ],
+  "-10,5": [
+   1.04,
+   0.49
+  ],
+  "-10,10": [
+   1.03,
+   0.98
+  ],
+  "-10,15": [
+   1.01,
+   1.46
+  ],
+  "-10,20": [
+   0.98,
+   1.93
+  ],
+  "-10,25": [
+   0.95,
+   2.39
+  ],
+  "-10,30": [
+   0.91,
+   2.83
+  ],
+  "-10,35": [
+   0.86,
+   3.24
+  ],
+  "-10,40": [
+   0.81,
+   3.63
+  ],
+  "-10,45": [
+   0.75,
+   4.0
+  ],
+  "-10,50": [
+   0.69,
+   4.33
+  ],
+  "-10,55": [
+   0.62,
+   4.63
+  ],
+  "-10,60": [
+   0.55,
+   4.9
+  ],
+  "-10,65": [
+   0.47,
+   5.12
+  ],
+  "-10,70": [
+   0.39,
+   5.31
+  ],
+  "-10,75": [
+   0.31,
+   5.46
+  ],
+  "-10,80": [
+   0.22,
+   5.57
+  ],
+  "-10,85": [
+   0.13,
+   5.63
+  ],
+  "-10,90": [
+   0.05,
+   5.65
+  ],
+  "-10,95": [
+   0.04,
+   5.63
+  ],
+  "-10,100": [
+   0.13,
+   5.57
+  ],
+  "-10,105": [
+   0.21,
+   5.46
+  ],
+  "-10,110": [
+   0.29,
+   5.31
+  ],
+  "-10,115": [
+   0.37,
+   5.12
+  ],
+  "-10,120": [
+   0.45,
+   4.9
+  ],
+  "-10,125": [
+   0.52,
+   4.63
+  ],
+  "-10,130": [
+   0.59,
+   4.33
+  ],
+  "-10,135": [
+   0.66,
+   4.0
+  ],
+  "-10,140": [
+   0.72,
+   3.63
+  ],
+  "-10,145": [
+   0.77,
+   3.24
+  ],
+  "-10,150": [
+   0.82,
+   2.83
+  ],
+  "0,-20": [
+   0.07,
+   1.96
+  ],
+  "0,-15": [
+   0.07,
+   1.49
+  ],
+  "0,-10": [
+   0.07,
+   1.0
+  ],
+  "0,-5": [
+   0.07,
+   0.5
+  ],
+  "0,0": [
+   0.07,
+   0.0
+  ],
+  "0,5": [
+   0.07,
+   0.5
+  ],
+  "0,10": [
+   0.07,
+   1.0
+  ],
+  "0,15": [
+   0.07,
+   1.49
+  ],
+  "0,20": [
+   0.07,
+   1.96
+  ],
+  "0,25": [
+   0.07,
+   2.43
+  ],
+  "0,30": [
+   0.07,
+   2.87
+  ],
+  "0,35": [
+   0.07,
+   3.29
+  ],
+  "0,40": [
+   0.07,
+   3.69
+  ],
+  "0,45": [
+   0.07,
+   4.06
+  ],
+  "0,50": [
+   0.07,
+   4.4
+  ],
+  "0,55": [
+   0.07,
+   4.7
+  ],
+  "0,60": [
+   0.07,
+   4.97
+  ],
+  "0,65": [
+   0.07,
+   5.2
+  ],
+  "0,70": [
+   0.07,
+   5.39
+  ],
+  "0,75": [
+   0.07,
+   5.55
+  ],
+  "0,80": [
+   0.07,
+   5.65
+  ],
+  "0,85": [
+   0.07,
+   5.72
+  ],
+  "0,90": [
+   0.07,
+   5.74
+  ],
+  "0,95": [
+   0.07,
+   5.72
+  ],
+  "0,100": [
+   0.07,
+   5.65
+  ],
+  "0,105": [
+   0.07,
+   5.55
+  ],
+  "0,110": [
+   0.07,
+   5.39
+  ],
+  "0,115": [
+   0.07,
+   5.2
+  ],
+  "0,120": [
+   0.07,
+   4.97
+  ],
+  "0,125": [
+   0.07,
+   4.7
+  ],
+  "0,130": [
+   0.07,
+   4.4
+  ],
+  "0,135": [
+   0.07,
+   4.06
+  ],
+  "0,140": [
+   0.07,
+   3.69
+  ],
+  "0,145": [
+   0.07,
+   3.29
+  ],
+  "0,150": [
+   0.07,
+   2.87
+  ],
+  "10,-20": [
+   0.85,
+   1.93
+  ],
+  "10,-15": [
+   0.88,
+   1.46
+  ],
+  "10,-10": [
+   0.9,
+   0.98
+  ],
+  "10,-5": [
+   0.91,
+   0.49
+  ],
+  "10,0": [
+   0.91,
+   0.0
+  ],
+  "10,5": [
+   0.91,
+   0.49
+  ],
+  "10,10": [
+   0.9,
+   0.98
+  ],
+  "10,15": [
+   0.88,
+   1.46
+  ],
+  "10,20": [
+   0.85,
+   1.93
+  ],
+  "10,25": [
+   0.82,
+   2.39
+  ],
+  "10,30": [
+   0.78,
+   2.83
+  ],
+  "10,35": [
+   0.73,
+   3.24
+  ],
+  "10,40": [
+   0.68,
+   3.63
+  ],
+  "10,45": [
+   0.62,
+   4.0
+  ],
+  "10,50": [
+   0.56,
+   4.33
+  ],
+  "10,55": [
+   0.49,
+   4.63
+  ],
+  "10,60": [
+   0.41,
+   4.9
+  ],
+  "10,65": [
+   0.34,
+   5.12
+  ],
+  "10,70": [
+   0.26,
+   5.31
+  ],
+  "10,75": [
+   0.17,
+   5.46
+  ],
+  "10,80": [
+   0.09,
+   5.57
+  ],
+  "10,85": [
+   0.0,
+   5.63
+  ],
+  "10,90": [
+   0.09,
+   5.65
+  ],
+  "10,95": [
+   0.17,
+   5.63
+  ],
+  "10,100": [
+   0.26,
+   5.57
+  ],
+  "10,105": [
+   0.34,
+   5.46
+  ],
+  "10,110": [
+   0.43,
+   5.31
+  ],
+  "10,115": [
+   0.51,
+   5.12
+  ],
+  "10,120": [
+   0.58,
+   4.9
+  ],
+  "10,125": [
+   0.66,
+   4.63
+  ],
+  "10,130": [
+   0.73,
+   4.33
+  ],
+  "10,135": [
+   0.79,
+   4.0
+  ],
+  "10,140": [
+   0.85,
+   3.63
+  ],
+  "10,145": [
+   0.9,
+   3.24
+  ],
+  "10,150": [
+   0.95,
+   2.83
+  ],
+  "20,-20": [
+   1.74,
+   1.85
+  ],
+  "20,-15": [
+   1.8,
+   1.4
+  ],
+  "20,-10": [
+   1.83,
+   0.94
+  ],
+  "20,-5": [
+   1.85,
+   0.47
+  ],
+  "20,0": [
+   1.86,
+   0.0
+  ],
+  "20,5": [
+   1.85,
+   0.47
+  ],
+  "20,10": [
+   1.83,
+   0.94
+  ],
+  "20,15": [
+   1.8,
+   1.4
+  ],
+  "20,20": [
+   1.74,
+   1.85
+  ],
+  "20,25": [
+   1.68,
+   2.28
+  ],
+  "20,30": [
+   1.6,
+   2.7
+  ],
+  "20,35": [
+   1.51,
+   3.09
+  ],
+  "20,40": [
+   1.4,
+   3.47
+  ],
+  "20,45": [
+   1.29,
+   3.81
+  ],
+  "20,50": [
+   1.16,
+   4.13
+  ],
+  "20,55": [
+   1.03,
+   4.42
+  ],
+  "20,60": [
+   0.88,
+   4.67
+  ],
+  "20,65": [
+   0.73,
+   4.89
+  ],
+  "20,70": [
+   0.57,
+   5.07
+  ],
+  "20,75": [
+   0.41,
+   5.21
+  ],
+  "20,80": [
+   0.24,
+   5.31
+  ],
+  "20,85": [
+   0.07,
+   5.37
+  ],
+  "20,90": [
+   0.1,
+   5.39
+  ],
+  "20,95": [
+   0.27,
+   5.37
+  ],
+  "20,100": [
+   0.44,
+   5.31
+  ],
+  "20,105": [
+   0.61,
+   5.21
+  ],
+  "20,110": [
+   0.77,
+   5.07
+  ],
+  "20,115": [
+   0.93,
+   4.89
+  ],
+  "20,120": [
+   1.08,
+   4.67
+  ],
+  "20,125": [
+   1.23,
+   4.42
+  ],
+  "20,130": [
+   1.36,
+   4.13
+  ],
+  "20,135": [
+   1.49,
+   3.81
+  ],
+  "20,140": [
+   1.61,
+   3.47
+  ],
+  "20,145": [
+   1.71,
+   3.09
+  ],
+  "20,150": [
+   1.8,
+   2.7
+  ],
+  "30,-20": [
+   2.58,
+   1.7
+  ],
+  "30,-15": [
+   2.66,
+   1.29
+  ],
+  "30,-10": [
+   2.71,
+   0.86
+  ],
+  "30,-5": [
+   2.75,
+   0.43
+  ],
+  "30,0": [
+   2.76,
+   0.0
+  ],
+  "30,5": [
+   2.75,
+   0.43
+  ],
+  "30,10": [
+   2.71,
+   0.86
+  ],
+  "30,15": [
+   2.66,
+   1.29
+  ],
+  "30,20": [
+   2.58,
+   1.7
+  ],
+  "30,25": [
+   2.49,
+   2.1
+  ],
+  "30,30": [
+   2.37,
+   2.49
+  ],
+  "30,35": [
+   2.24,
+   2.85
+  ],
+  "30,40": [
+   2.09,
+   3.2
+  ],
+  "30,45": [
+   1.92,
+   3.52
+  ],
+  "30,50": [
+   1.73,
+   3.81
+  ],
+  "30,55": [
+   1.53,
+   4.07
+  ],
+  "30,60": [
+   1.32,
+   4.31
+  ],
+  "30,65": [
+   1.1,
+   4.51
+  ],
+  "30,70": [
+   0.87,
+   4.67
+  ],
+  "30,75": [
+   0.63,
+   4.8
+  ],
+  "30,80": [
+   0.38,
+   4.9
+  ],
+  "30,85": [
+   0.14,
+   4.95
+  ],
+  "30,90": [
+   0.11,
+   4.97
+  ],
+  "30,95": [
+   0.36,
+   4.95
+  ],
+  "30,100": [
+   0.61,
+   4.9
+  ],
+  "30,105": [
+   0.86,
+   4.8
+  ],
+  "30,110": [
+   1.1,
+   4.67
+  ],
+  "30,115": [
+   1.33,
+   4.51
+  ],
+  "30,120": [
+   1.55,
+   4.31
+  ],
+  "30,125": [
+   1.76,
+   4.07
+  ],
+  "30,130": [
+   1.96,
+   3.81
+  ],
+  "30,135": [
+   2.14,
+   3.52
+  ],
+  "30,140": [
+   2.31,
+   3.2
+  ],
+  "30,145": [
+   2.46,
+   2.85
+  ],
+  "30,150": [
+   2.6,
+   2.49
+  ],
+  "40,-20": [
+   3.34,
+   1.5
+  ],
+  "40,-15": [
+   3.44,
+   1.14
+  ],
+  "40,-10": [
+   3.51,
+   0.76
+  ],
+  "40,-5": [
+   3.55,
+   0.38
+  ],
+  "40,0": [
+   3.57,
+   0.0
+  ],
+  "40,5": [
+   3.55,
+   0.38
+  ],
+  "40,10": [
+   3.51,
+   0.76
+  ],
+  "40,15": [
+   3.44,
+   1.14
+  ],
+  "40,20": [
+   3.34,
+   1.5
+  ],
+  "40,25": [
+   3.22,
+   1.86
+  ],
+  "40,30": [
+   3.07,
+   2.2
+  ],
+  "40,35": [
+   2.9,
+   2.52
+  ],
+  "40,40": [
+   2.7,
+   2.83
+  ],
+  "40,45": [
+   2.49,
+   3.11
+  ],
+  "40,50": [
+   2.25,
+   3.37
+  ],
+  "40,55": [
+   1.99,
+   3.6
+  ],
+  "40,60": [
+   1.72,
+   3.81
+  ],
+  "40,65": [
+   1.44,
+   3.99
+  ],
+  "40,70": [
+   1.14,
+   4.13
+  ],
+  "40,75": [
+   0.83,
+   4.25
+  ],
+  "40,80": [
+   0.52,
+   4.33
+  ],
+  "40,85": [
+   0.2,
+   4.38
+  ],
+  "40,90": [
+   0.12,
+   4.4
+  ],
+  "40,95": [
+   0.44,
+   4.38
+  ],
+  "40,100": [
+   0.76,
+   4.33
+  ],
+  "40,105": [
+   1.08,
+   4.25
+  ],
+  "40,110": [
+   1.38,
+   4.13
+  ],
+  "40,115": [
+   1.68,
+   3.99
+  ],
+  "40,120": [
+   1.97,
+   3.81
+  ],
+  "40,125": [
+   2.24,
+   3.6
+  ],
+  "40,130": [
+   2.49,
+   3.37
+  ],
+  "40,135": [
+   2.73,
+   3.11
+  ],
+  "40,140": [
+   2.95,
+   2.83
+  ],
+  "40,145": [
+   3.15,
+   2.52
+  ],
+  "40,150": [
+   3.32,
+   2.2
+  ],
+  "50,-20": [
+   4.0,
+   1.26
+  ],
+  "50,-15": [
+   4.12,
+   0.96
+  ],
+  "50,-10": [
+   4.2,
+   0.64
+  ],
+  "50,-5": [
+   4.25,
+   0.32
+  ],
+  "50,0": [
+   4.27,
+   0.0
+  ],
+  "50,5": [
+   4.25,
+   0.32
+  ],
+  "50,10": [
+   4.2,
+   0.64
+  ],
+  "50,15": [
+   4.12,
+   0.96
+  ],
+  "50,20": [
+   4.0,
+   1.26
+  ],
+  "50,25": [
+   3.86,
+   1.56
+  ],
+  "50,30": [
+   3.68,
+   1.85
+  ],
+  "50,35": [
+   3.47,
+   2.12
+  ],
+  "50,40": [
+   3.24,
+   2.37
+  ],
+  "50,45": [
+   2.98,
+   2.61
+  ],
+  "50,50": [
+   2.7,
+   2.83
+  ],
+  "50,55": [
+   2.39,
+   3.02
+  ],
+  "50,60": [
+   2.07,
+   3.2
+  ],
+  "50,65": [
+   1.73,
+   3.34
+  ],
+  "50,70": [
+   1.38,
+   3.47
+  ],
+  "50,75": [
+   1.01,
+   3.56
+  ],
+  "50,80": [
+   0.64,
+   3.63
+  ],
+  "50,85": [
+   0.26,
+   3.68
+  ],
+  "50,90": [
+   0.13,
+   3.69
+  ],
+  "50,95": [
+   0.51,
+   3.68
+  ],
+  "50,100": [
+   0.89,
+   3.63
+  ],
+  "50,105": [
+   1.27,
+   3.56
+  ],
+  "50,110": [
+   1.63,
+   3.47
+  ],
+  "50,115": [
+   1.99,
+   3.34
+  ],
+  "50,120": [
+   2.33,
+   3.2
+  ],
+  "50,125": [
+   2.65,
+   3.02
+  ],
+  "50,130": [
+   2.95,
+   2.83
+  ],
+  "50,135": [
+   3.24,
+   2.61
+  ],
+  "50,140": [
+   3.5,
+   2.37
+  ],
+  "50,145": [
+   3.73,
+   2.12
+  ],
+  "50,150": [
+   3.94,
+   1.85
+  ],
+  "60,-20": [
+   4.54,
+   0.98
+  ],
+  "60,-15": [
+   4.67,
+   0.74
+  ],
+  "60,-10": [
+   4.77,
+   0.5
+  ],
+  "60,-5": [
+   4.82,
+   0.25
+  ],
+  "60,0": [
+   4.84,
+   0.0
+  ],
+  "60,5": [
+   4.82,
+   0.25
+  ],
+  "60,10": [
+   4.77,
+   0.5
+  ],
+  "60,15": [
+   4.67,
+   0.74
+  ],
+  "60,20": [
+   4.54,
+   0.98
+  ],
+  "60,25": [
+   4.38,
+   1.21
+  ],
+  "60,30": [
+   4.18,
+   1.44
+  ],
+  "60,35": [
+   3.94,
+   1.65
+  ],
+  "60,40": [
+   3.68,
+   1.85
+  ],
+  "60,45": [
+   3.39,
+   2.03
+  ],
+  "60,50": [
+   3.07,
+   2.2
+  ],
+  "60,55": [
+   2.72,
+   2.35
+  ],
+  "60,60": [
+   2.36,
+   2.49
+  ],
+  "60,65": [
+   1.97,
+   2.6
+  ],
+  "60,70": [
+   1.57,
+   2.7
+  ],
+  "60,75": [
+   1.16,
+   2.77
+  ],
+  "60,80": [
+   0.73,
+   2.83
+  ],
+  "60,85": [
+   0.3,
+   2.86
+  ],
+  "60,90": [
+   0.13,
+   2.87
+  ],
+  "60,95": [
+   0.56,
+   2.86
+  ],
+  "60,100": [
+   0.99,
+   2.83
+  ],
+  "60,105": [
+   1.42,
+   2.77
+  ],
+  "60,110": [
+   1.83,
+   2.7
+  ],
+  "60,115": [
+   2.23,
+   2.6
+  ],
+  "60,120": [
+   2.62,
+   2.49
+  ],
+  "60,125": [
+   2.98,
+   2.35
+  ],
+  "60,130": [
+   3.32,
+   2.2
+  ],
+  "60,135": [
+   3.64,
+   2.03
+  ],
+  "60,140": [
+   3.94,
+   1.85
+  ],
+  "60,145": [
+   4.2,
+   1.65
+  ],
+  "60,150": [
+   4.43,
+   1.44
+  ],
+  "70,-20": [
+   4.94,
+   0.67
+  ],
+  "70,-15": [
+   5.08,
+   0.51
+  ],
+  "70,-10": [
+   5.19,
+   0.34
+  ],
+  "70,-5": [
+   5.25,
+   0.17
+  ],
+  "70,0": [
+   5.27,
+   0.0
+  ],
+  "70,5": [
+   5.25,
+   0.17
+  ],
+  "70,10": [
+   5.19,
+   0.34
+  ],
+  "70,15": [
+   5.08,
+   0.51
+  ],
+  "70,20": [
+   4.94,
+   0.67
+  ],
+  "70,25": [
+   4.76,
+   0.83
+  ],
+  "70,30": [
+   4.55,
+   0.98
+  ],
+  "70,35": [
+   4.29,
+   1.13
+  ],
+  "70,40": [
+   4.01,
+   1.26
+  ],
+  "70,45": [
+   3.69,
+   1.39
+  ],
+  "70,50": [
+   3.34,
+   1.5
+  ],
+  "70,55": [
+   2.97,
+   1.61
+  ],
+  "70,60": [
+   2.57,
+   1.7
+  ],
+  "70,65": [
+   2.15,
+   1.78
+  ],
+  "70,70": [
+   1.72,
+   1.85
+  ],
+  "70,75": [
+   1.27,
+   1.9
+  ],
+  "70,80": [
+   0.81,
+   1.93
+  ],
+  "70,85": [
+   0.34,
+   1.96
+  ],
+  "70,90": [
+   0.13,
+   1.96
+  ],
+  "70,95": [
+   0.6,
+   1.96
+  ],
+  "70,100": [
+   1.06,
+   1.93
+  ],
+  "70,105": [
+   1.52,
+   1.9
+  ],
+  "70,110": [
+   1.97,
+   1.85
+  ],
+  "70,115": [
+   2.41,
+   1.78
+  ],
+  "70,120": [
+   2.82,
+   1.7
+  ],
+  "70,125": [
+   3.22,
+   1.61
+  ],
+  "70,130": [
+   3.59,
+   1.5
+  ],
+  "70,135": [
+   3.94,
+   1.39
+  ],
+  "70,140": [
+   4.26,
+   1.26
+  ],
+  "70,145": [
+   4.55,
+   1.13
+  ],
+  "70,150": [
+   4.8,
+   0.98
+  ],
+  "80,-20": [
+   5.19,
+   0.34
+  ],
+  "80,-15": [
+   5.34,
+   0.26
+  ],
+  "80,-10": [
+   5.45,
+   0.17
+  ],
+  "80,-5": [
+   5.51,
+   0.09
+  ],
+  "80,0": [
+   5.53,
+   0.0
+  ],
+  "80,5": [
+   5.51,
+   0.09
+  ],
+  "80,10": [
+   5.45,
+   0.17
+  ],
+  "80,15": [
+   5.34,
+   0.26
+  ],
+  "80,20": [
+   5.19,
+   0.34
+  ],
+  "80,25": [
+   5.0,
+   0.42
+  ],
+  "80,30": [
+   4.78,
+   0.5
+  ],
+  "80,35": [
+   4.51,
+   0.57
+  ],
+  "80,40": [
+   4.21,
+   0.64
+  ],
+  "80,45": [
+   3.88,
+   0.7
+  ],
+  "80,50": [
+   3.51,
+   0.76
+  ],
+  "80,55": [
+   3.12,
+   0.82
+  ],
+  "80,60": [
+   2.71,
+   0.86
+  ],
+  "80,65": [
+   2.27,
+   0.9
+  ],
+  "80,70": [
+   1.81,
+   0.94
+  ],
+  "80,75": [
+   1.34,
+   0.96
+  ],
+  "80,80": [
+   0.86,
+   0.98
+  ],
+  "80,85": [
+   0.37,
+   0.99
+  ],
+  "80,90": [
+   0.12,
+   1.0
+  ],
+  "80,95": [
+   0.61,
+   0.99
+  ],
+  "80,100": [
+   1.1,
+   0.98
+  ],
+  "80,105": [
+   1.58,
+   0.96
+  ],
+  "80,110": [
+   2.05,
+   0.94
+  ],
+  "80,115": [
+   2.51,
+   0.9
+  ],
+  "80,120": [
+   2.95,
+   0.86
+  ],
+  "80,125": [
+   3.36,
+   0.82
+  ],
+  "80,130": [
+   3.75,
+   0.76
+  ],
+  "80,135": [
+   4.12,
+   0.7
+  ],
+  "80,140": [
+   4.45,
+   0.64
+  ],
+  "80,145": [
+   4.75,
+   0.57
+  ],
+  "80,150": [
+   5.02,
+   0.5
+  ],
+  "90,-20": [
+   5.28,
+   0.0
+  ],
+  "90,-15": [
+   5.43,
+   0.0
+  ],
+  "90,-10": [
+   5.54,
+   0.0
+  ],
+  "90,-5": [
+   5.61,
+   0.0
+  ],
+  "90,0": [
+   5.63,
+   0.0
+  ],
+  "90,5": [
+   5.61,
+   0.0
+  ],
+  "90,10": [
+   5.54,
+   0.0
+  ],
+  "90,15": [
+   5.43,
+   0.0
+  ],
+  "90,20": [
+   5.28,
+   0.0
+  ],
+  "90,25": [
+   5.09,
+   0.0
+  ],
+  "90,30": [
+   4.86,
+   0.0
+  ],
+  "90,35": [
+   4.59,
+   0.0
+  ],
+  "90,40": [
+   4.29,
+   0.0
+  ],
+  "90,45": [
+   3.95,
+   0.0
+  ],
+  "90,50": [
+   3.58,
+   0.0
+  ],
+  "90,55": [
+   3.18,
+   0.0
+  ],
+  "90,60": [
+   2.76,
+   0.0
+  ],
+  "90,65": [
+   2.32,
+   0.0
+  ],
+  "90,70": [
+   1.85,
+   0.0
+  ],
+  "90,75": [
+   1.38,
+   0.0
+  ],
+  "90,80": [
+   0.89,
+   0.0
+  ],
+  "90,85": [
+   0.39,
+   0.0
+  ],
+  "90,90": [
+   0.11,
+   0.0
+  ],
+  "90,95": [
+   0.61,
+   0.0
+  ],
+  "90,100": [
+   1.11,
+   0.0
+  ],
+  "90,105": [
+   1.6,
+   0.0
+  ],
+  "90,110": [
+   2.07,
+   0.0
+  ],
+  "90,115": [
+   2.54,
+   0.0
+  ],
+  "90,120": [
+   2.98,
+   0.0
+  ],
+  "90,125": [
+   3.4,
+   0.0
+  ],
+  "90,130": [
+   3.8,
+   0.0
+  ],
+  "90,135": [
+   4.17,
+   0.0
+  ],
+  "90,140": [
+   4.51,
+   0.0
+  ],
+  "90,145": [
+   4.81,
+   0.0
+  ],
+  "90,150": [
+   5.08,
+   0.0
+  ],
+  "100,-20": [
+   5.22,
+   0.34
+  ],
+  "100,-15": [
+   5.36,
+   0.26
+  ],
+  "100,-10": [
+   5.47,
+   0.17
+  ],
+  "100,-5": [
+   5.54,
+   0.09
+  ],
+  "100,0": [
+   5.56,
+   0.0
+  ],
+  "100,5": [
+   5.54,
+   0.09
+  ],
+  "100,10": [
+   5.47,
+   0.17
+  ],
+  "100,15": [
+   5.36,
+   0.26
+  ],
+  "100,20": [
+   5.22,
+   0.34
+  ],
+  "100,25": [
+   5.03,
+   0.42
+  ],
+  "100,30": [
+   4.8,
+   0.5
+  ],
+  "100,35": [
+   4.53,
+   0.57
+  ],
+  "100,40": [
+   4.23,
+   0.64
+  ],
+  "100,45": [
+   3.9,
+   0.7
+  ],
+  "100,50": [
+   3.54,
+   0.76
+  ],
+  "100,55": [
+   3.15,
+   0.82
+  ],
+  "100,60": [
+   2.73,
+   0.86
+  ],
+  "100,65": [
+   2.29,
+   0.9
+  ],
+  "100,70": [
+   1.84,
+   0.94
+  ],
+  "100,75": [
+   1.37,
+   0.96
+  ],
+  "100,80": [
+   0.88,
+   0.98
+  ],
+  "100,85": [
+   0.4,
+   0.99
+  ],
+  "100,90": [
+   0.1,
+   1.0
+  ],
+  "100,95": [
+   0.59,
+   0.99
+  ],
+  "100,100": [
+   1.08,
+   0.98
+  ],
+  "100,105": [
+   1.56,
+   0.96
+  ],
+  "100,110": [
+   2.03,
+   0.94
+  ],
+  "100,115": [
+   2.49,
+   0.9
+  ],
+  "100,120": [
+   2.92,
+   0.86
+  ],
+  "100,125": [
+   3.34,
+   0.82
+  ],
+  "100,130": [
+   3.73,
+   0.76
+  ],
+  "100,135": [
+   4.09,
+   0.7
+  ],
+  "100,140": [
+   4.43,
+   0.64
+  ],
+  "100,145": [
+   4.73,
+   0.57
+  ],
+  "100,150": [
+   4.99,
+   0.5
+  ],
+  "110,-20": [
+   4.99,
+   0.67
+  ],
+  "110,-15": [
+   5.13,
+   0.51
+  ],
+  "110,-10": [
+   5.23,
+   0.34
+  ],
+  "110,-5": [
+   5.29,
+   0.17
+  ],
+  "110,0": [
+   5.31,
+   0.0
+  ],
+  "110,5": [
+   5.29,
+   0.17
+  ],
+  "110,10": [
+   5.23,
+   0.34
+  ],
+  "110,15": [
+   5.13,
+   0.51
+  ],
+  "110,20": [
+   4.99,
+   0.67
+  ],
+  "110,25": [
+   4.81,
+   0.83
+  ],
+  "110,30": [
+   4.59,
+   0.98
+  ],
+  "110,35": [
+   4.34,
+   1.13
+  ],
+  "110,40": [
+   4.05,
+   1.26
+  ],
+  "110,45": [
+   3.73,
+   1.39
+  ],
+  "110,50": [
+   3.39,
+   1.5
+  ],
+  "110,55": [
+   3.01,
+   1.61
+  ],
+  "110,60": [
+   2.62,
+   1.7
+  ],
+  "110,65": [
+   2.2,
+   1.78
+  ],
+  "110,70": [
+   1.76,
+   1.85
+  ],
+  "110,75": [
+   1.32,
+   1.9
+  ],
+  "110,80": [
+   0.86,
+   1.93
+  ],
+  "110,85": [
+   0.39,
+   1.96
+  ],
+  "110,90": [
+   0.08,
+   1.96
+  ],
+  "110,95": [
+   0.55,
+   1.96
+  ],
+  "110,100": [
+   1.02,
+   1.93
+  ],
+  "110,105": [
+   1.48,
+   1.9
+  ],
+  "110,110": [
+   1.93,
+   1.85
+  ],
+  "110,115": [
+   2.36,
+   1.78
+  ],
+  "110,120": [
+   2.78,
+   1.7
+  ],
+  "110,125": [
+   3.17,
+   1.61
+  ],
+  "110,130": [
+   3.55,
+   1.5
+  ],
+  "110,135": [
+   3.9,
+   1.39
+  ],
+  "110,140": [
+   4.21,
+   1.26
+  ],
+  "110,145": [
+   4.5,
+   1.13
+  ],
+  "110,150": [
+   4.75,
+   0.98
+  ],
+  "120,-20": [
+   4.61,
+   0.98
+  ],
+  "120,-15": [
+   4.74,
+   0.74
+  ],
+  "120,-10": [
+   4.83,
+   0.5
+  ],
+  "120,-5": [
+   4.89,
+   0.25
+  ],
+  "120,0": [
+   4.91,
+   0.0
+  ],
+  "120,5": [
+   4.89,
+   0.25
+  ],
+  "120,10": [
+   4.83,
+   0.5
+  ],
+  "120,15": [
+   4.74,
+   0.74
+  ],
+  "120,20": [
+   4.61,
+   0.98
+  ],
+  "120,25": [
+   4.44,
+   1.21
+  ],
+  "120,30": [
+   4.24,
+   1.44
+  ],
+  "120,35": [
+   4.01,
+   1.65
+  ],
+  "120,40": [
+   3.75,
+   1.85
+  ],
+  "120,45": [
+   3.45,
+   2.03
+  ],
+  "120,50": [
+   3.13,
+   2.2
+  ],
+  "120,55": [
+   2.79,
+   2.35
+  ],
+  "120,60": [
+   2.42,
+   2.49
+  ],
+  "120,65": [
+   2.04,
+   2.6
+  ],
+  "120,70": [
+   1.64,
+   2.7
+  ],
+  "120,75": [
+   1.22,
+   2.77
+  ],
+  "120,80": [
+   0.8,
+   2.83
+  ],
+  "120,85": [
+   0.37,
+   2.86
+  ],
+  "120,90": [
+   0.06,
+   2.87
+  ],
+  "120,95": [
+   0.5,
+   2.86
+  ],
+  "120,100": [
+   0.93,
+   2.83
+  ],
+  "120,105": [
+   1.35,
+   2.77
+  ],
+  "120,110": [
+   1.76,
+   2.7
+  ],
+  "120,115": [
+   2.16,
+   2.6
+  ],
+  "120,120": [
+   2.55,
+   2.49
+  ],
+  "120,125": [
+   2.91,
+   2.35
+  ],
+  "120,130": [
+   3.26,
+   2.2
+  ],
+  "120,135": [
+   3.58,
+   2.03
+  ],
+  "120,140": [
+   3.87,
+   1.85
+  ],
+  "120,145": [
+   4.13,
+   1.65
+  ],
+  "120,150": [
+   4.37,
+   1.44
+  ],
+  "130,-20": [
+   4.09,
+   1.26
+  ],
+  "130,-15": [
+   4.21,
+   0.96
+  ],
+  "130,-10": [
+   4.29,
+   0.64
+  ],
+  "130,-5": [
+   4.34,
+   0.32
+  ],
+  "130,0": [
+   4.36,
+   0.0
+  ],
+  "130,5": [
+   4.34,
+   0.32
+  ],
+  "130,10": [
+   4.29,
+   0.64
+  ],
+  "130,15": [
+   4.21,
+   0.96
+  ],
+  "130,20": [
+   4.09,
+   1.26
+  ],
+  "130,25": [
+   3.94,
+   1.56
+  ],
+  "130,30": [
+   3.77,
+   1.85
+  ],
+  "130,35": [
+   3.56,
+   2.12
+  ],
+  "130,40": [
+   3.33,
+   2.37
+  ],
+  "130,45": [
+   3.07,
+   2.61
+  ],
+  "130,50": [
+   2.79,
+   2.83
+  ],
+  "130,55": [
+   2.48,
+   3.02
+  ],
+  "130,60": [
+   2.16,
+   3.2
+  ],
+  "130,65": [
+   1.82,
+   3.34
+  ],
+  "130,70": [
+   1.46,
+   3.47
+  ],
+  "130,75": [
+   1.1,
+   3.56
+  ],
+  "130,80": [
+   0.72,
+   3.63
+  ],
+  "130,85": [
+   0.34,
+   3.68
+  ],
+  "130,90": [
+   0.04,
+   3.69
+  ],
+  "130,95": [
+   0.42,
+   3.68
+  ],
+  "130,100": [
+   0.8,
+   3.63
+  ],
+  "130,105": [
+   1.18,
+   3.56
+  ],
+  "130,110": [
+   1.55,
+   3.47
+  ],
+  "130,115": [
+   1.9,
+   3.34
+  ],
+  "130,120": [
+   2.24,
+   3.2
+  ],
+  "130,125": [
+   2.56,
+   3.02
+  ],
+  "130,130": [
+   2.87,
+   2.83
+  ],
+  "130,135": [
+   3.15,
+   2.61
+  ],
+  "130,140": [
+   3.41,
+   2.37
+  ],
+  "130,145": [
+   3.64,
+   2.12
+  ],
+  "130,150": [
+   3.85,
+   1.85
+  ],
+  "140,-20": [
+   3.45,
+   1.5
+  ],
+  "140,-15": [
+   3.55,
+   1.14
+  ],
+  "140,-10": [
+   3.61,
+   0.76
+  ],
+  "140,-5": [
+   3.66,
+   0.38
+  ],
+  "140,0": [
+   3.67,
+   0.0
+  ],
+  "140,5": [
+   3.66,
+   0.38
+  ],
+  "140,10": [
+   3.61,
+   0.76
+  ],
+  "140,15": [
+   3.55,
+   1.14
+  ],
+  "140,20": [
+   3.45,
+   1.5
+  ],
+  "140,25": [
+   3.33,
+   1.86
+  ],
+  "140,30": [
+   3.18,
+   2.2
+  ],
+  "140,35": [
+   3.0,
+   2.52
+  ],
+  "140,40": [
+   2.81,
+   2.83
+  ],
+  "140,45": [
+   2.59,
+   3.11
+  ],
+  "140,50": [
+   2.35,
+   3.37
+  ],
+  "140,55": [
+   2.1,
+   3.6
+  ],
+  "140,60": [
+   1.83,
+   3.81
+  ],
+  "140,65": [
+   1.54,
+   3.99
+  ],
+  "140,70": [
+   1.24,
+   4.13
+  ],
+  "140,75": [
+   0.94,
+   4.25
+  ],
+  "140,80": [
+   0.62,
+   4.33
+  ],
+  "140,85": [
+   0.3,
+   4.38
+  ],
+  "140,90": [
+   0.02,
+   4.4
+  ],
+  "140,95": [
+   0.34,
+   4.38
+  ],
+  "140,100": [
+   0.66,
+   4.33
+  ],
+  "140,105": [
+   0.97,
+   4.25
+  ],
+  "140,110": [
+   1.28,
+   4.13
+  ],
+  "140,115": [
+   1.58,
+   3.99
+  ],
+  "140,120": [
+   1.86,
+   3.81
+  ],
+  "140,125": [
+   2.14,
+   3.6
+  ],
+  "140,130": [
+   2.39,
+   3.37
+  ],
+  "140,135": [
+   2.63,
+   3.11
+  ],
+  "140,140": [
+   2.85,
+   2.83
+  ],
+  "140,145": [
+   3.04,
+   2.52
+  ],
+  "140,150": [
+   3.21,
+   2.2
+  ],
+  "150,-20": [
+   2.7,
+   1.7
+  ],
+  "150,-15": [
+   2.78,
+   1.29
+  ],
+  "150,-10": [
+   2.83,
+   0.86
+  ],
+  "150,-5": [
+   2.86,
+   0.43
+  ],
+  "150,0": [
+   2.87,
+   0.0
+  ],
+  "150,5": [
+   2.86,
+   0.43
+  ],
+  "150,10": [
+   2.83,
+   0.86
+  ],
+  "150,15": [
+   2.78,
+   1.29
+  ],
+  "150,20": [
+   2.7,
+   1.7
+  ],
+  "150,25": [
+   2.6,
+   2.1
+  ],
+  "150,30": [
+   2.49,
+   2.49
+  ],
+  "150,35": [
+   2.35,
+   2.85
+  ],
+  "150,40": [
+   2.2,
+   3.2
+  ],
+  "150,45": [
+   2.03,
+   3.52
+  ],
+  "150,50": [
+   1.85,
+   3.81
+  ],
+  "150,55": [
+   1.65,
+   4.07
+  ],
+  "150,60": [
+   1.44,
+   4.31
+  ],
+  "150,65": [
+   1.22,
+   4.51
+  ],
+  "150,70": [
+   0.98,
+   4.67
+  ],
+  "150,75": [
+   0.75,
+   4.8
+  ],
+  "150,80": [
+   0.5,
+   4.9
+  ],
+  "150,85": [
+   0.25,
+   4.95
+  ],
+  "150,90": [
+   0.0,
+   4.97
+  ],
+  "150,95": [
+   0.25,
+   4.95
+  ],
+  "150,100": [
+   0.5,
+   4.9
+  ],
+  "150,105": [
+   0.74,
+   4.8
+  ],
+  "150,110": [
+   0.98,
+   4.67
+  ],
+  "150,115": [
+   1.21,
+   4.51
+  ],
+  "150,120": [
+   1.43,
+   4.31
+  ],
+  "150,125": [
+   1.64,
+   4.07
+  ],
+  "150,130": [
+   1.84,
+   3.81
+  ],
+  "150,135": [
+   2.03,
+   3.52
+  ],
+  "150,140": [
+   2.2,
+   3.2
+  ],
+  "150,145": [
+   2.35,
+   2.85
+  ],
+  "150,150": [
+   2.48,
+   2.49
+  ],
+  "160,-20": [
+   1.87,
+   1.85
+  ],
+  "160,-15": [
+   1.92,
+   1.4
+  ],
+  "160,-10": [
+   1.96,
+   0.94
+  ],
+  "160,-5": [
+   1.98,
+   0.47
+  ],
+  "160,0": [
+   1.99,
+   0.0
+  ],
+  "160,5": [
+   1.98,
+   0.47
+  ],
+  "160,10": [
+   1.96,
+   0.94
+  ],
+  "160,15": [
+   1.92,
+   1.4
+  ],
+  "160,20": [
+   1.87,
+   1.85
+  ],
+  "160,25": [
+   1.81,
+   2.28
+  ],
+  "160,30": [
+   1.73,
+   2.7
+  ],
+  "160,35": [
+   1.63,
+   3.09
+  ],
+  "160,40": [
+   1.53,
+   3.47
+  ],
+  "160,45": [
+   1.41,
+   3.81
+  ],
+  "160,50": [
+   1.29,
+   4.13
+  ],
+  "160,55": [
+   1.15,
+   4.42
+  ],
+  "160,60": [
+   1.01,
+   4.67
+  ],
+  "160,65": [
+   0.86,
+   4.89
+  ],
+  "160,70": [
+   0.7,
+   5.07
+  ],
+  "160,75": [
+   0.53,
+   5.21
+  ],
+  "160,80": [
+   0.37,
+   5.31
+  ],
+  "160,85": [
+   0.2,
+   5.37
+  ],
+  "160,90": [
+   0.03,
+   5.39
+  ],
+  "160,95": [
+   0.15,
+   5.37
+  ],
+  "160,100": [
+   0.32,
+   5.31
+  ],
+  "160,105": [
+   0.48,
+   5.21
+  ],
+  "160,110": [
+   0.65,
+   5.07
+  ],
+  "160,115": [
+   0.8,
+   4.89
+  ],
+  "160,120": [
+   0.96,
+   4.67
+  ],
+  "160,125": [
+   1.1,
+   4.42
+  ],
+  "160,130": [
+   1.24,
+   4.13
+  ],
+  "160,135": [
+   1.36,
+   3.81
+  ],
+  "160,140": [
+   1.48,
+   3.47
+  ],
+  "160,145": [
+   1.58,
+   3.09
+  ],
+  "160,150": [
+   1.67,
+   2.7
+  ],
+  "170,-20": [
+   0.98,
+   1.93
+  ],
+  "170,-15": [
+   1.01,
+   1.46
+  ],
+  "170,-10": [
+   1.03,
+   0.98
+  ],
+  "170,-5": [
+   1.04,
+   0.49
+  ],
+  "170,0": [
+   1.04,
+   0.0
+  ],
+  "170,5": [
+   1.04,
+   0.49
+  ],
+  "170,10": [
+   1.03,
+   0.98
+  ],
+  "170,15": [
+   1.01,
+   1.46
+  ],
+  "170,20": [
+   0.98,
+   1.93
+  ],
+  "170,25": [
+   0.95,
+   2.39
+  ],
+  "170,30": [
+   0.91,
+   2.83
+  ],
+  "170,35": [
+   0.86,
+   3.24
+  ],
+  "170,40": [
+   0.81,
+   3.63
+  ],
+  "170,45": [
+   0.75,
+   4.0
+  ],
+  "170,50": [
+   0.69,
+   4.33
+  ],
+  "170,55": [
+   0.62,
+   4.63
+  ],
+  "170,60": [
+   0.55,
+   4.9
+  ],
+  "170,65": [
+   0.47,
+   5.12
+  ],
+  "170,70": [
+   0.39,
+   5.31
+  ],
+  "170,75": [
+   0.31,
+   5.46
+  ],
+  "170,80": [
+   0.22,
+   5.57
+  ],
+  "170,85": [
+   0.13,
+   5.63
+  ],
+  "170,90": [
+   0.05,
+   5.65
+  ],
+  "170,95": [
+   0.04,
+   5.63
+  ],
+  "170,100": [
+   0.13,
+   5.57
+  ],
+  "170,105": [
+   0.21,
+   5.46
+  ],
+  "170,110": [
+   0.29,
+   5.31
+  ],
+  "170,115": [
+   0.37,
+   5.12
+  ],
+  "170,120": [
+   0.45,
+   4.9
+  ],
+  "170,125": [
+   0.52,
+   4.63
+  ],
+  "170,130": [
+   0.59,
+   4.33
+  ],
+  "170,135": [
+   0.66,
+   4.0
+  ],
+  "170,140": [
+   0.72,
+   3.63
+  ],
+  "170,145": [
+   0.77,
+   3.24
+  ],
+  "170,150": [
+   0.82,
+   2.83
+  ],
+  "180,-20": [
+   0.07,
+   1.96
+  ],
+  "180,-15": [
+   0.07,
+   1.49
+  ],
+  "180,-10": [
+   0.07,
+   1.0
+  ],
+  "180,-5": [
+   0.07,
+   0.5
+  ],
+  "180,0": [
+   0.07,
+   0.0
+  ],
+  "180,5": [
+   0.07,
+   0.5
+  ],
+  "180,10": [
+   0.07,
+   1.0
+  ],
+  "180,15": [
+   0.07,
+   1.49
+  ],
+  "180,20": [
+   0.07,
+   1.96
+  ],
+  "180,25": [
+   0.07,
+   2.43
+  ],
+  "180,30": [
+   0.07,
+   2.87
+  ],
+  "180,35": [
+   0.07,
+   3.29
+  ],
+  "180,40": [
+   0.07,
+   3.69
+  ],
+  "180,45": [
+   0.07,
+   4.06
+  ],
+  "180,50": [
+   0.07,
+   4.4
+  ],
+  "180,55": [
+   0.07,
+   4.7
+  ],
+  "180,60": [
+   0.07,
+   4.97
+  ],
+  "180,65": [
+   0.07,
+   5.2
+  ],
+  "180,70": [
+   0.07,
+   5.39
+  ],
+  "180,75": [
+   0.07,
+   5.55
+  ],
+  "180,80": [
+   0.07,
+   5.65
+  ],
+  "180,85": [
+   0.07,
+   5.72
+  ],
+  "180,90": [
+   0.07,
+   5.74
+  ],
+  "180,95": [
+   0.07,
+   5.72
+  ],
+  "180,100": [
+   0.07,
+   5.65
+  ],
+  "180,105": [
+   0.07,
+   5.55
+  ],
+  "180,110": [
+   0.07,
+   5.39
+  ],
+  "180,115": [
+   0.07,
+   5.2
+  ],
+  "180,120": [
+   0.07,
+   4.97
+  ],
+  "180,125": [
+   0.07,
+   4.7
+  ],
+  "180,130": [
+   0.07,
+   4.4
+  ],
+  "180,135": [
+   0.07,
+   4.06
+  ],
+  "180,140": [
+   0.07,
+   3.69
+  ],
+  "180,145": [
+   0.07,
+   3.29
+  ],
+  "180,150": [
+   0.07,
+   2.87
+  ]
+ },
+ "kutle": {
+  "Govde": 600.0,
+  "Gobek": 147.5,
+  "Kol": 108.3
+ },
+ "alt_kol": {
+  "m": 260.0,
+  "p": [
+   185.0,
+   -200.0,
+   -1.25
+  ],
+  "ad": "Dirsek + on kol + el (eski modelden tahmini 260 g)"
+ },
+ "bom": [
+  [
+   "Baglanti",
+   "M3 isil gomme somun",
+   6
+  ],
+  [
+   "Baglanti",
+   "M3x12 DIN 912",
+   8
+  ],
+  [
+   "Baglanti",
+   "M3x5 horn vidasi (servo ile)",
+   2
+  ],
+  [
+   "Baglanti",
+   "M3x8 DIN 912",
+   6
+  ],
+  [
+   "Baglanti",
+   "M4 DIN 985 kontra somun",
+   8
+  ],
+  [
+   "Baglanti",
+   "M4x16 DIN 912",
+   8
+  ],
+  [
+   "Baglanti",
+   "M5 DIN 125 pul",
+   1
+  ],
+  [
+   "Baglanti",
+   "M5 isil gomme somun",
+   1
+  ],
+  [
+   "Baglanti",
+   "M5x12 DIN 912",
+   1
+  ],
+  [
+   "Baglanti",
+   "M6 DIN 125 pul",
+   4
+  ],
+  [
+   "Baglanti",
+   "M6 cekic somun, kanal 10",
+   4
+  ],
+  [
+   "Baglanti",
+   "M6x16 DIN 912",
+   4
+  ],
+  [
+   "Satin",
+   "25T aluminyum disk horn",
+   2
+  ],
+  [
+   "Satin",
+   "625ZZ rulman 5x16x5",
+   1
+  ],
+  [
+   "Satin",
+   "6808-2RS rulman 40x52x7",
+   1
+  ],
+  [
+   "Satin",
+   "DS3218MG servo",
+   2
+  ],
+  [
+   "Satin",
+   "Sigma 40x40 agir kanal 10, 200 mm",
+   1
+  ]
+ ],
+ "baski": [
+  {
+   "ad": "Omuz yuvasi",
+   "stl": "stl/omuz-yuvasi.stl",
+   "olcu": [
+    76.0,
+    76.0,
+    67.0
+   ],
+   "sigar": true,
+   "kutle": 49.9,
+   "hacim_cm3": 65.5
+  },
+  {
+   "ad": "Rulman kapagi",
+   "stl": "stl/rulman-kapagi.stl",
+   "olcu": [
+    76.0,
+    60.0,
+    14.0
+   ],
+   "sigar": true,
+   "kutle": 11.0,
+   "hacim_cm3": 14.4
+  },
+  {
+   "ad": "Omuz gobegi",
+   "stl": "stl/omuz-gobegi.stl",
+   "olcu": [
+    66.0,
+    51.0,
+    49.0
+   ],
+   "sigar": true,
+   "kutle": 39.6,
+   "hacim_cm3": 52.0
+  },
+  {
+   "ad": "Kol catali",
+   "stl": "stl/kol-catali.stl",
+   "olcu": [
+    76.0,
+    63.5,
+    56.0
+   ],
+   "sigar": true,
+   "kutle": 62.4,
+   "hacim_cm3": 81.8
+  },
+  {
+   "ad": "Ust kol tupu",
+   "stl": "stl/ust-kol-tupu.stl",
+   "olcu": [
+    100.0,
+    56.0,
+    56.0
+   ],
+   "sigar": true,
+   "kutle": 32.0,
+   "hacim_cm3": 42.0
+  }
+ ],
+ "joints_ok": true,
+ "sure_s": 37.0
+}

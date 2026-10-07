@@ -3,3 +3,10 @@ __pycache__/
 .venv/
 venv/
 desktop.ini
+# ureticinin buyuk dosyalari depoya girmez; adresleri donanim/datasheet/README.md'de
+donanim/datasheet/pi5-step/
+donanim/datasheet/raspberry-pi-5-product-brief.pdf
+donanim/datasheet/rp1-peripherals.pdf
+# FreeCAD yedekleri ve animasyonun ara kareleri (GIF'te birlesik)
+*.FCBak
+tasarim/freecad/omuz/gorsel/kare/
