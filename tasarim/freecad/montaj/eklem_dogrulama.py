@@ -1,0 +1,240 @@
+# Ana montaj eklem dogrulamasi (FreeCAD 1.1, arayuzsuz). robot-montaj.FCStd'yi acar, her omuzun iki doner eklemini
+# Assembly simulasyonuyla (Create Simulation'in kullandigi generateSimulation + Motion) birkac aciya surer ve
+# cozucunun verdigi grup konumlarini modulun kendi kinematigiyle (omuz_parcalar Pp/Pr, moduller.beklenen) karsilastirir.
+# Revolute acisi dogrudan surulemedigi icin (Angle ozelligi yalniz Angle ekleminde) surus Motion ile yapilir.
+# Calistir: FC_SCRIPT=<bu dosya> freecadcmd run_fc.py  -> eklem-dogrulama.json (dosya kaydedilmez)
+import os, sys, json, time, math
+import FreeCAD as App
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import moduller as MD
+from moduller import V
+
+t0 = time.time()
+ADIM = 0.02      # s, simulasyon cikti adimi (sure 1 s; formul = aci * time)
+
+
+def log(*a):
+    print(*a, "%.1fs" % (time.time() - t0))
+
+
+MOD = {ad: MD.yukle(ad) for ad in MD.SIRA}
+doc = App.openDocument(os.path.join(HERE, "robot-montaj.FCStd"))
+asm = doc.getObject("Assembly")
+GR = {o.Name: o for o in asm.Group if o.TypeId == "App::Part"}
+EK = {o.Name: o for o in doc.Objects if getattr(o, "JointType", None) == "Revolute"}
+log("gruplar", sorted(GR), "doner eklemler", sorted(EK))
+
+# her grubun ornek noktalari: ev pozundaki sinir kutusu koseleri (global)
+NOKTA = {}
+for ad, gp in GR.items():
+    bb = None
+    for o in gp.OutListRecursive:
+        if o.TypeId == "Part::Feature":
+            if bb is None:
+                bb = App.BoundBox(o.Shape.BoundBox)
+            else:
+                bb.add(o.Shape.BoundBox)
+    NOKTA[ad] = [V(x, y, z) for x in (bb.XMin, bb.XMax) for y in (bb.YMin, bb.YMax) for z in (bb.ZMin, bb.ZMax)]
+
+# kol (modul) -> {eklem anahtari: eklem nesnesi}, {grup adi: grup nesne adi}
+KOL = {}
+for ad, d in MOD.items():
+    if not d["eklemler"]:
+        continue
+    KOL[ad] = dict(eklem={e["anahtar"]: EK["%s_%s" % (d["on_ek"], "".join(s.capitalize() for s in e["anahtar"].split("_")))]
+                          for e in d["eklemler"]},
+                   grup={g: ("%s_%s" % (d["on_ek"], g)) for g, _ in d["gruplar"]},
+                   sinir={e["anahtar"]: e["sinir"] for e in d["eklemler"]})
+
+# ---------------------------------------------------------------------- simulasyon nesneleri (bellekte, kaydedilmez)
+# CommandCreateSimulation arayuzsuz import edilemiyor (QtCore); C++ cozucu yalniz ozellikleri okur, burada elle kurulur.
+sg = asm.newObject("Assembly::SimulationGroup", "Simulations_dogrulama")
+sim = sg.newObject("App::FeaturePython", "Simulation_dogrulama")
+sim.addExtension("App::GroupExtensionPython")
+for n, t, v in (("aTimeStart", "App::PropertyTime", 0.0), ("bTimeEnd", "App::PropertyTime", 1.0),
+                ("cTimeStepOutput", "App::PropertyTime", ADIM), ("fGlobalErrorTolerance", "App::PropertyFloat", 1e-6),
+                ("jFramesPerSecond", "App::PropertyInteger", 30)):
+    sim.addProperty(t, n, "Simulation")
+    setattr(sim, n, v)
+MOT = {}
+for kol, k in KOL.items():
+    for anah, j in k["eklem"].items():
+        m = asm.newObject("App::FeaturePython", "Motion_" + j.Name)
+        m.addProperty("App::PropertyXLinkSubHidden", "Joint", "Motion")
+        m.addProperty("App::PropertyString", "Formula", "Motion")
+        m.addProperty("App::PropertyEnumeration", "MotionType", "Motion")
+        m.MotionType = ["Angular", "Linear"]
+        m.MotionType = "Angular"
+        m.Joint = j
+        m.Formula = "0*time"
+        MOT[(kol, anah)] = m
+sim.Group = list(MOT.values())
+
+
+def sifirla():
+    for gp in GR.values():
+        gp.Placement = App.Placement()
+
+
+def beklenen(kol, poz, g):
+    d = MOD[kol]
+    return MD.global_poz(kol, d["beklenen"](poz, g))
+
+
+def sapma(gad, A_, E_):
+    mm = max((A_.multVec(p) - E_.multVec(p)).Length for p in NOKTA[gad])
+    return mm, rot_aci(E_.inverse().multiply(A_).Rotation)
+
+
+def rot_aci(r):
+    """Donus acisi (derece), kucuk acilarda hassas: 2 atan2(|q_xyz|, |q_w|)."""
+    x, y, z, w = r.Q
+    return math.degrees(2 * math.atan2(math.sqrt(x * x + y * y + z * z), abs(w)))
+
+
+def sar(a):
+    """Aciyi (-180, 180] araligina getirir."""
+    a = math.fmod(a, 360.0)
+    if a > 180.0:
+        a -= 360.0
+    if a <= -180.0:
+        a += 360.0
+    return a
+
+
+def olculen_aci(j):
+    """Cozucu sonrasi eklem acisi: ust ve alt grubun eklem cercevesindeki goreli donusu (cerceve Z etrafinda, isaretli)."""
+    F = App.Placement(j.Placement1)
+    ust, alt = j.Reference1[0], j.Reference2[0]
+    rel = ust.Placement.multiply(F).inverse().multiply(alt.Placement.multiply(F))
+    r = rel.Rotation
+    a = sar(math.degrees(r.Angle) * (1 if r.Axis.z >= 0 else -1))
+    egik = math.degrees(math.acos(max(-1.0, min(1.0, abs(r.Axis.z))))) if rot_aci(r) > 1e-6 else 0.0
+    return a, rel.Base.Length, egik
+
+
+def calistir(komut):
+    """komut: {kol: {anahtar: derece}}. Surulmeyen eklemler 0'da tutulur. Doner: kare listesi."""
+    sifirla()
+    for (kol, anah), m in MOT.items():
+        a = komut.get(kol, {}).get(anah, 0.0)
+        m.Formula = "%.12f*time" % math.radians(a)
+    asm.generateSimulation(sim)
+    n = asm.numberOfFrames()
+    kareler = []
+    for k in range(n):
+        asm.updateForFrame(k)
+        t = max(0, k - 1) * ADIM          # kare 0 = baslangic montaji, kare k>=1 -> t = (k-1)*adim (probe ile olculdu)
+        kare = dict(k=k, t=t, gruplar={}, aci={})
+        for kol, kk in KOL.items():
+            poz = {an: komut.get(kol, {}).get(an, 0.0) * t for an in kk["eklem"]}
+            for g, gad in kk["grup"].items():
+                kare["gruplar"][gad] = sapma(gad, GR[gad].Placement, beklenen(kol, poz, g))
+            for an, j in kk["eklem"].items():
+                kare["aci"][j.Name] = (poz[an],) + olculen_aci(j)
+        for gad in GR:
+            if gad not in kare["gruplar"]:
+                kare["gruplar"][gad] = sapma(gad, GR[gad].Placement, App.Placement())
+        kareler.append(kare)
+    return kareler
+
+
+def ozetle(ad, komut, kareler):
+    son = kareler[-1]
+    mx_mm = max(v[0] for k in kareler for v in k["gruplar"].values())
+    mx_dg = max(v[1] for k in kareler for v in k["gruplar"].values())
+    aci_hata = max(abs(sar(v[0] - v[1])) for k in kareler for v in k["aci"].values())
+    sinir_ici = all(KOL[kol]["sinir"][an][0] <= a <= KOL[kol]["sinir"][an][1] for kol, c in komut.items() for an, a in c.items())
+    r = dict(ad=ad, komut=komut, sinir_ici=sinir_ici, kare=len(kareler), t_son=son["t"],
+             son={g: [round(v[0], 6), round(v[1], 6)] for g, v in son["gruplar"].items()},
+             son_aci={j: [round(v[0], 4), round(v[1], 4), round(v[2], 6), round(v[3], 6)] for j, v in son["aci"].items()},
+             max_mm=mx_mm, max_derece=mx_dg, max_aci_hatasi=aci_hata)
+    log("%-34s kare %d  max sapma %.2e mm %.2e der  aci hatasi %.2e der  %s" % (
+        ad, len(kareler), mx_mm, mx_dg, aci_hata, "" if sinir_ici else "(SINIR DISI)"))
+    return r
+
+
+# ---------------------------------------------------------------------- 1) birim ve isaret: 1 rad -> 57.296 derece mi
+kar = calistir({"omuz_sag": {"one_arka": math.degrees(1.0)}})
+birim = dict(formul="57.29578*time (= 1 rad)", olculen_derece=round(kar[-1]["aci"][KOL["omuz_sag"]["eklem"]["one_arka"].Name][1], 6),
+             kare_sayisi=len(kar), not_="Motion formulu radyan; pozitif aci eklem cercevesinin Z ekseni etrafinda sag el kurali")
+log("birim testi: 1 rad ->", birim["olculen_derece"], "derece")
+
+# ---------------------------------------------------------------------- 2) her kol ayri, sinir ici pozlar
+POZ = [(30, 0), (90, 0), (135, 0), (-45, 0), (0, 60), (0, 120), (90, 90), (-30, 45), (60, 30), (135, 120)]
+vakalar = []
+for kol in KOL:
+    for phi, th in POZ:
+        komut = {kol: {"one_arka": float(phi), "yana": float(th)}}
+        vakalar.append(ozetle("%s one %d yana %d" % (kol, phi, th), komut, calistir(komut)))
+# iki kol birlikte
+for (a, b) in (((90, 45), (90, 45)), ((120, 30), (-30, 90))):
+    komut = {"omuz_sag": {"one_arka": float(a[0]), "yana": float(a[1])}, "omuz_sol": {"one_arka": float(b[0]), "yana": float(b[1])}}
+    vakalar.append(ozetle("iki kol sag %s sol %s" % (a, b), komut, calistir(komut)))
+
+# ---------------------------------------------------------------------- 3) sinir disi surus
+SINIR_DISI = [(160, 0), (180, 0), (-60, 0), (0, 140), (0, -15)]
+sinir_disi = []
+for kol in KOL:
+    for phi, th in SINIR_DISI:
+        komut = {kol: {"one_arka": float(phi), "yana": float(th)}}
+        sinir_disi.append(ozetle("%s one %d yana %d" % (kol, phi, th), komut, calistir(komut)))
+
+# ---------------------------------------------------------------------- 3b) yon kontrolu: cozucu sonrasi kol ucunun gittigi yer
+# one-arka +90: kol ucu (ust kol tupunun alt ucu) her iki kolda +Z'ye; yana +90: sagda +X'e, solda -X'e
+yon = []
+for kol in KOL:
+    gad = KOL[kol]["grup"]["Kol"]
+    uc0 = min(NOKTA[gad], key=lambda p: p.y)
+    uc0 = V(sum(p.x for p in NOKTA[gad]) / 8, uc0.y, sum(p.z for p in NOKTA[gad]) / 8)    # tup ekseni alt ucu (yaklasik)
+    for an, a in (("one_arka", 90.0), ("yana", 90.0)):
+        calistir({kol: {an: a}})
+        uc = GR[gad].Placement.multVec(uc0)
+        d = uc - uc0
+        if an == "one_arka":
+            ok = d.z > 0 and uc.z > 50
+        else:
+            ok = (uc.x > uc0.x + 50) if MOD[kol]["taraf"] == "sag" else (uc.x < uc0.x - 50)
+        yon.append(dict(kol=kol, eklem=an, aci=a, uc_once=[round(x, 1) for x in uc0], uc_sonra=[round(x, 1) for x in uc], dogru=ok))
+        log("yon %s %s +%d: kol ucu (%.0f, %.0f, %.0f) -> (%.0f, %.0f, %.0f) %s" % (kol, an, a, uc0.x, uc0.y, uc0.z, uc.x, uc.y, uc.z,
+                                                                                    "dogru" if ok else "YANLIS"))
+
+# ---------------------------------------------------------------------- 4) solve(): elle verilen pozu koruyor mu, sinirda geri cekiyor mu
+# (GUI'de surukleme ve doc.recompute() bu cozucuyu cagirir)
+solve_test = []
+for kol in KOL:
+    for phi, th in ((90, 45), (160, 0), (0, 140), (-60, 0)):
+        sifirla()
+        poz = {"one_arka": float(phi), "yana": float(th)}
+        for g, gad in KOL[kol]["grup"].items():
+            GR[gad].Placement = beklenen(kol, poz, g)
+        r = asm.solve()
+        olc = {an: round(olculen_aci(j)[0], 4) for an, j in KOL[kol]["eklem"].items()}
+        mx = max(sapma(gad, GR[gad].Placement, beklenen(kol, poz, g))[0] for g, gad in KOL[kol]["grup"].items())
+        sinir_ici = all(KOL[kol]["sinir"][an][0] <= a <= KOL[kol]["sinir"][an][1] for an, a in poz.items())
+        solve_test.append(dict(kol=kol, poz=poz, sinir_ici=sinir_ici, solve=r, olculen=olc, max_mm=mx))
+        log("solve %s one %d yana %d -> donus %d, olculen %s, sapma %.2e mm" % (kol, phi, th, r, olc, mx))
+sifirla()
+
+# ---------------------------------------------------------------------- ozet: eklem basina en buyuk sapma (sinir ici vakalar)
+ozet = {}
+for kol, kk in KOL.items():
+    for an, j in kk["eklem"].items():
+        ilgili = [v for v in vakalar if kol in v["komut"]]
+        gad = kk["grup"]["Gobek" if an == "one_arka" else "Kol"]
+        ozet[j.Name] = dict(kol=kol, anahtar=an, etiket=j.Label, vaka=len(ilgili),
+                            grup=gad, max_mm=max(v["max_mm"] for v in ilgili), max_derece=max(v["max_derece"] for v in ilgili),
+                            max_aci_hatasi=max(v["max_aci_hatasi"] for v in ilgili),
+                            sinir=[float(j.AngleMin), float(j.AngleMax)],
+                            eksen=list(App.Placement(j.Placement1).Rotation.multVec(V(0, 0, 1))),
+                            nokta=list(App.Placement(j.Placement1).Base))
+out = dict(yontem="Assembly simulasyonu: her eklemde Motion (Angular, formul = aci_rad * time), 0...1 s, adim %.2f s; "
+                  "her karede cozucunun grup yerlesimi omuz_parcalar Pp/Pr (moduller.beklenen, solda X aynasiyla) ile karsilastirildi. "
+                  "Sapma: grubun sinir kutusu kosesindeki en buyuk konum farki (mm) ve donus farki (derece)." % ADIM,
+           birim=birim, yon=yon, vakalar=vakalar, sinir_disi=sinir_disi, solve_testi=solve_test, ozet=ozet,
+           sure_s=round(time.time() - t0, 1))
+json.dump(out, open(os.path.join(HERE, "eklem-dogrulama.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+App.closeDocument(doc.Name)
+log("bitti; sinir ici en buyuk sapma %.2e mm / %.2e derece" % (max(v["max_mm"] for v in vakalar), max(v["max_derece"] for v in vakalar)))

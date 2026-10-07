@@ -1,0 +1,323 @@
+{
+ "dosya": "robot-montaj.FCStd",
+ "step": "robot-montaj.step",
+ "step_kati": 195,
+ "parca_sayisi": 195,
+ "grup_sayisi": 7,
+ "gecersiz": [],
+ "hacim_fark_mm3": 2.9103830456733704e-11,
+ "ayna_merkez_fark_mm": 5.859285502108464e-13,
+ "moduller": [
+  {
+   "ad": "iskelet",
+   "konum": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "ayna": false,
+   "not_": "yerel = global",
+   "parca_modulde": 59,
+   "parca": 59,
+   "haric": [],
+   "haric_neden": "",
+   "kutle_g": 5793.09,
+   "agirlik_merkezi": [
+    0.0,
+    314.487,
+    0.0
+   ],
+   "gruplar": [
+    "Iskelet"
+   ]
+  },
+  {
+   "ad": "omuz_sag",
+   "konum": [
+    0.0,
+    955.0,
+    0.0
+   ],
+   "ayna": false,
+   "not_": "yerel orijin = travers merkezi; X disari (sag), Y yukari, Z ileri",
+   "parca_modulde": 70,
+   "parca": 68,
+   "haric": [
+    "Omuz traversi (sigma 40x40 agir, 200 mm)",
+    "Govde kabugu yan yuzu (referans)"
+   ],
+   "haric_neden": "travers iskeletin parcasi (iki kez sayilmaz); kabuk duvari kabuk modulunun yer tutucusu",
+   "kutle_g": 463.6,
+   "agirlik_merkezi": [
+    150.931,
+    943.879,
+    -0.753
+   ],
+   "gruplar": [
+    "OmuzSag_Govde",
+    "OmuzSag_Gobek",
+    "OmuzSag_Kol"
+   ]
+  },
+  {
+   "ad": "omuz_sol",
+   "konum": [
+    0.0,
+    955.0,
+    0.0
+   ],
+   "ayna": true,
+   "not_": "sag omuzun X aynasi",
+   "parca_modulde": 70,
+   "parca": 68,
+   "haric": [
+    "Omuz traversi (sigma 40x40 agir, 200 mm)",
+    "Govde kabugu yan yuzu (referans)"
+   ],
+   "haric_neden": "travers iskeletin parcasi (iki kez sayilmaz); kabuk duvari kabuk modulunun yer tutucusu",
+   "kutle_g": 463.6,
+   "agirlik_merkezi": [
+    -150.931,
+    943.879,
+    -0.753
+   ],
+   "gruplar": [
+    "OmuzSol_Govde",
+    "OmuzSol_Gobek",
+    "OmuzSol_Kol"
+   ]
+  }
+ ],
+ "eklemler": [
+  {
+   "isim": "Sabit_Iskelet",
+   "etiket": "Iskelet zemine sabit",
+   "tip": "Grounded",
+   "modul": "iskelet",
+   "ust": "-",
+   "alt": "Iskelet"
+  },
+  {
+   "isim": "Sabit_OmuzSag",
+   "etiket": "OmuzSag Govde -> iskelet (sabit)",
+   "tip": "Fixed",
+   "modul": "omuz_sag",
+   "ust": "Iskelet",
+   "alt": "OmuzSag_Govde",
+   "nokta": [
+    86.5,
+    955.0,
+    0.0
+   ],
+   "aciklama": "omuz yuvasi travers ucunda, 4x M6 + cekic somun (arayuz.OMUZ_YUVA_X)"
+  },
+  {
+   "isim": "OmuzSag_OneArka",
+   "etiket": "OmuzSag one-arka (S1)",
+   "tip": "Revolute",
+   "modul": "omuz_sag",
+   "anahtar": "one_arka",
+   "ad": "one-arka (S1)",
+   "ust": "OmuzSag_Govde",
+   "alt": "OmuzSag_Gobek",
+   "nokta": [
+    150.0,
+    955.0,
+    0.0
+   ],
+   "eksen": [
+    -1.0,
+    0.0,
+    -0.0
+   ],
+   "yerel_nokta": [
+    150.0,
+    0.0,
+    0.0
+   ],
+   "yerel_eksen": [
+    -1.0,
+    0.0,
+    -0.0
+   ],
+   "sinir": [
+    -45.0,
+    135.0
+   ],
+   "kaynak": "omuz/omuz-montaj.FCStd: OmuzOneArka (Omuz_one_arka (S1))"
+  },
+  {
+   "isim": "OmuzSag_Yana",
+   "etiket": "OmuzSag yana acma (S2)",
+   "tip": "Revolute",
+   "modul": "omuz_sag",
+   "anahtar": "yana",
+   "ad": "yana acma (S2)",
+   "ust": "OmuzSag_Gobek",
+   "alt": "OmuzSag_Kol",
+   "nokta": [
+    185.0,
+    955.0,
+    20.2
+   ],
+   "eksen": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "yerel_nokta": [
+    185.0,
+    0.0,
+    20.2
+   ],
+   "yerel_eksen": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "sinir": [
+    0.0,
+    120.0
+   ],
+   "kaynak": "omuz/omuz-montaj.FCStd: OmuzYanaAcma (Omuz_yana_acma (S2))"
+  },
+  {
+   "isim": "Sabit_OmuzSol",
+   "etiket": "OmuzSol Govde -> iskelet (sabit)",
+   "tip": "Fixed",
+   "modul": "omuz_sol",
+   "ust": "Iskelet",
+   "alt": "OmuzSol_Govde",
+   "nokta": [
+    -86.5,
+    955.0,
+    0.0
+   ],
+   "aciklama": "omuz yuvasi travers ucunda, 4x M6 + cekic somun (arayuz.OMUZ_YUVA_X)"
+  },
+  {
+   "isim": "OmuzSol_OneArka",
+   "etiket": "OmuzSol one-arka (S1)",
+   "tip": "Revolute",
+   "modul": "omuz_sol",
+   "anahtar": "one_arka",
+   "ad": "one-arka (S1)",
+   "ust": "OmuzSol_Govde",
+   "alt": "OmuzSol_Gobek",
+   "nokta": [
+    -150.0,
+    955.0,
+    0.0
+   ],
+   "eksen": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "yerel_nokta": [
+    150.0,
+    0.0,
+    0.0
+   ],
+   "yerel_eksen": [
+    -1.0,
+    0.0,
+    -0.0
+   ],
+   "sinir": [
+    -45.0,
+    135.0
+   ],
+   "kaynak": "omuz/omuz-montaj.FCStd: OmuzOneArka (Omuz_one_arka (S1))"
+  },
+  {
+   "isim": "OmuzSol_Yana",
+   "etiket": "OmuzSol yana acma (S2)",
+   "tip": "Revolute",
+   "modul": "omuz_sol",
+   "anahtar": "yana",
+   "ad": "yana acma (S2)",
+   "ust": "OmuzSol_Gobek",
+   "alt": "OmuzSol_Kol",
+   "nokta": [
+    -185.0,
+    955.0,
+    20.2
+   ],
+   "eksen": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "yerel_nokta": [
+    185.0,
+    0.0,
+    20.2
+   ],
+   "yerel_eksen": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "sinir": [
+    0.0,
+    120.0
+   ],
+   "kaynak": "omuz/omuz-montaj.FCStd: OmuzYanaAcma (Omuz_yana_acma (S2))"
+  }
+ ],
+ "dosyadaki_eklem": [
+  "Sabit_Iskelet",
+  "Sabit_OmuzSag",
+  "OmuzSag_OneArka",
+  "OmuzSag_Yana",
+  "Sabit_OmuzSol",
+  "OmuzSol_OneArka",
+  "OmuzSol_Yana"
+ ],
+ "solve": 0,
+ "ev_pozu_cozucu_sapmasi": 0.0,
+ "kutle_g": 6720.28,
+ "agirlik_merkezi": [
+  -0.0,
+  401.324,
+  -0.104
+ ],
+ "karsilastirma": {
+  "parca": {
+   "montaj": 195,
+   "beklenen": 195,
+   "formul": "iskelet 59 + 2 x (omuz 70 - travers - kabuk referansi)",
+   "ayni": true
+  },
+  "kutle": {
+   "montaj_dosyasi": 6720.28,
+   "bellek": 6720.28,
+   "beklenen_analizlerden": 6720.3,
+   "carpisma": 6720.3,
+   "fark_analiz": -0.018,
+   "fark_carpisma": -0.021
+  },
+  "am": {
+   "montaj_dosyasi": [
+    -0.0,
+    401.324,
+    -0.104
+   ],
+   "bellek": [
+    0.0,
+    401.324,
+    -0.104
+   ],
+   "carpisma": [
+    -0.0,
+    401.32,
+    -0.1
+   ],
+   "fark_carpisma_mm": 0.005,
+   "fark_bellek_mm": 0.0
+  },
+  "not_": "analiz JSON'lari 0,1 g'a yuvarlanmis; carpisma AM'si 0,01 mm'ye"
+ },
+ "sure_s": 4.9
+}

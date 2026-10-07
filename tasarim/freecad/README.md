@@ -13,6 +13,7 @@ Eski CadQuery modeli `tasarim/cad/robot_cad.py` yalnız ölçü kaynağı olarak
 | `sigma_profil.py` | 40×40 ağır sigma kesiti (kesit alanı üreticiye göre doğrulandı); doğrudan çalışınca test parçası üretir |
 | `omuz/` | Sağ omuz (2 eksen): `omuz_parcalar.py` parçalar + kinematik, `omuz_montaj.py` kontroller + kayıt, `omuz_gorsel.py`, `omuz_rapor.py`, `omuz_regresyon.py` |
 | `iskelet/` | Şase çerçevesi + gövde direği + omuz traversi + bağlantılar: `iskelet_parcalar.py`, `iskelet_montaj.py`, `iskelet_gorsel.py`, `iskelet_rapor.py` → `rapor.html` |
+| `montaj/` | **Ana montaj** (FreeCAD Assembly): iskelet + sağ omuz + aynalı sol omuz tek dosyada, eklemler, eklem doğrulaması → `robot-montaj.FCStd`, `rapor.html` |
 | `carpisma.py` | Modüller arası çakışma: modülleri `arayuz.MODULLER` ile yerleştirir, ev pozunu, hareketli modüllerin tüm tarama pozlarını ve henüz çizilmemiş modüllerin ayrılmış bölgelerini tarar → `carpisma-sonuc.json` |
 
 Koordinat (global): orijin zemin + robot merkezi, +X robotun sağı, +Y yukarı, +Z ileri (yüz), mm.
@@ -45,7 +46,28 @@ FC_SCRIPT=$R/omuz/omuz_regresyon.py REG_ETIKET=sonra "$FC" $L   # omuz/regresyon
 
 PowerShell'de: `$env:FC_SCRIPT="<betik>"; & "$env:LOCALAPPDATA\Programs\FreeCAD 1.1\bin\freecadcmd.exe" C:\Users\Victus\.robot-cad\run_fc.py`
 
-Sıra: `arayuz.py` veya `ortak_lib.py` değişirse → omuz regresyonu → iskelet montajı → `carpisma.py` → raporlar.
+Sıra: `arayuz.py` veya `ortak_lib.py` değişirse → omuz regresyonu → iskelet montajı → `carpisma.py` → ana montaj → raporlar.
+
+## Ana montaj (`montaj/`)
+
+Tüm modüller tek FreeCAD Assembly dosyasında: `robot-montaj.FCStd` (+ `robot-montaj.step`). Modül listesi ve yükleyiciler
+`montaj/moduller.py`'de (`SIRA` + `MODUL_YUKLE`); yerleşim yalnız `arayuz.MODULLER`'den okunur, sol omuz şekil aynalanarak
+(gerçek aynalı geometri, parça adları "(sol)") kurulur. Eklemler: iskelet zemine sabit, her omuz gövdesi iskelete sabit, her omuzda
+öne-arka (S1, −45…135°) ve yana açma (S2, 0…120°) döner eklemi. Eksen ve sınırlar `omuz/omuz-montaj.FCStd`'den okunur.
+
+```bash
+M=$R/montaj
+FC_SCRIPT=$M/ana_montaj.py "$FC" $L          # montaj + STEP + montaj-analiz.json (parça/kütle/AM modül toplamıyla karşılaştırılır)
+FC_SCRIPT=$M/montaj_gorsel.py "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecad.exe" $L   # eklem görünümleri + Kollari_oynat simülasyonu, dosyayı GUI'den kaydeder; görseller; GIF kareleri %TEMP%/robot-montaj-kare
+FC_SCRIPT=$M/montaj_gui_kontrol.py "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecad.exe" $L   # taze açılış: eklem görünür/seçilebilir, fareyle sürükleme -> gui-kontrol.json
+FC_SCRIPT=$M/eklem_dogrulama.py "$FC" $L      # eklemleri simülasyonla sürer, omuz kinematiğiyle karşılaştırır -> eklem-dogrulama.json
+python $M/montaj_rapor.py                      # GIF + montaj/rapor.html
+```
+
+- `ana_montaj.py` tek başına çalışırsa dosyada eklem görünüm nesneleri olmaz; ardından `montaj_gorsel.py` şart.
+- FreeCAD 1.1'de eklem sınırları yalnız fareyle sürüklemede uygulanır; simülasyon ve `solve()` sınır dışı açıyı kabul eder.
+- Yeni modül (kabuk, kafa, taban, dirsek): `arayuz.MODULLER`'e yerleşim, `moduller.py`'ye yükleyici (parçalar, gruplar, bağlantı,
+  eklemler, beklenen poz) ve `SIRA`'ya ad. Hareketli modülün beklenen pozu `eklem_dogrulama.py`'de karşılaştırılır.
 
 ## Kontroller
 
@@ -56,6 +78,7 @@ Sıra: `arayuz.py` veya `ortak_lib.py` değişirse → omuz regresyonu → iskel
 | Bağlantı oturması | `iskelet_montaj.py` | köşe bağlantı ve kama profile dayalı, çekiç somun dudak altında, cıvata ucu somunu geçip kanal tabanına değmiyor, set vida tabana dayalı |
 | Ayrılmış bölgeler | `iskelet_montaj.py`, `carpisma.py` | henüz çizilmemiş modüllerin bölgelerine taşma yok |
 | Modüller arası | `carpisma.py` | ev pozu + her hareketli modülün tüm tarama pozları |
+| Ana montaj | `montaj/ana_montaj.py`, `montaj/eklem_dogrulama.py` | parça sayısı/kütle/AM = modül toplamı; simülasyonla sürülen eklemlerde çözücü konumu = modül kinematiği |
 | Regresyon | `omuz/omuz_regresyon.py` | parça sayısı, hacim, sınır kutusu, kütle, çakışma, tarama, tork birebir |
 
 ## Yeni modül eklemek (taban, kabuk, kafa, dirsek)
