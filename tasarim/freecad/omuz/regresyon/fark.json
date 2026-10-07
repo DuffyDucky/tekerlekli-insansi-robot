@@ -1,0 +1,117 @@
+{
+ "hepsi_ayni": true,
+ "satirlar": [
+  {
+   "olcut": "parca sayisi",
+   "once": 70,
+   "sonra": 70,
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "parca adlari ve sirasi",
+   "once": 70,
+   "sonra": 70,
+   "fark": null,
+   "ayni": true
+  },
+  {
+   "olcut": "parca hacmi (en buyuk fark, mm3)",
+   "once": 799446.104,
+   "sonra": 799446.104,
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "sinir kutusu (en buyuk fark, mm)",
+   "once": "70 x 6 deger",
+   "sonra": "70 x 6 deger",
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "parca kutlesi (en buyuk fark, g)",
+   "once": 855.797,
+   "sonra": 855.797,
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "agirlik merkezi (en buyuk fark, mm)",
+   "once": "70 x 3",
+   "sonra": "70 x 3",
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "kati sayisi + isValid",
+   "once": "hepsi 1 / gecerli",
+   "sonra": "hepsi 1 / gecerli",
+   "fark": null,
+   "ayni": true
+  },
+  {
+   "olcut": "statik cakisma",
+   "once": 0,
+   "sonra": 0,
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "bosluk Kol-Gobek (mm)",
+   "once": 0.0,
+   "sonra": 0.0,
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "bosluk Kol-Govde (mm)",
+   "once": 4.0,
+   "sonra": 4.0,
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "bosluk Gobek-Govde (mm)",
+   "once": 0.0,
+   "sonra": 0.0,
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "tarama kol_gobek: cakisan poz",
+   "once": 8,
+   "sonra": 8,
+   "fark": null,
+   "ayni": true
+  },
+  {
+   "olcut": "tarama gobek_govde: cakisan poz",
+   "once": 0,
+   "sonra": 0,
+   "fark": null,
+   "ayni": true
+  },
+  {
+   "olcut": "tarama kol_govde: cakisan poz",
+   "once": 94,
+   "sonra": 94,
+   "fark": null,
+   "ayni": true
+  },
+  {
+   "olcut": "tork tablosu (875 poz, en buyuk fark kg*cm)",
+   "once": 5.740694416,
+   "sonra": 5.740694416,
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "BOM",
+   "once": 17,
+   "sonra": 17,
+   "fark": null,
+   "ayni": true
+  }
+ ]
+}

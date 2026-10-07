@@ -1,30 +1,23 @@
 # 40x40 agir sigma profil, kanal 10 - FreeCAD test parcasi
-# Calistir: freecadcmd.exe sigma_profil.py
+# Calistir: freecadcmd.exe sigma_profil.py (ortak_lib.py kesit() fonksiyonunu import eder)
 # Not: freecadcmd, yolunda "ü" (Masaüstü) olan betik verilince cokuyor; ASCII yoldaki bir baslaticidan exec ile calistir.
 # Olculer: tasarim/cad/robot_cad.py ile ayni (04-parca-olculeri.md, Robolink cizimi + sigmaprofil.com.tr):
 # kanal 10.2, dudak 4.3, merkez O9, kose delik O5.1 @ 30.2, 1.99 kg/m, kesit 7.32 cm2.
 # Kanal ici bosluk: dudak altinda 20 genislik, CAV_DIK kadar dik iner, 45 derece egimle CAV_TAB genislige daralir.
 # Egimli bolum gobegi koselere baglayan capraz duvarlari birakir (dikdortgen bosluk gobegi koparirdi).
 # CAV_DIK / CAV_TAB uretici ciziminden olculmedi; kesit alani ureticinin 7.32 cm2 degerine gore ayarlandi.
-import os
+import os, sys
 import FreeCAD as App
 import Part
 
 V = App.Vector
 HERE = os.path.dirname(os.path.abspath(__file__))
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
 
-SG = 40.0         # dis olcu
-R_DIS = 1.5       # dis kose radyusu
-SLOT = 10.2       # kanal agzi
-LIP = 4.3         # dudak kalinligi
-CAV_W = 20.0      # kanal ic genisligi
-CAV_D = 7.5       # kanal ic derinligi (dudak altindan)
-CAV_TAB = 13.0    # kanal tabani genisligi (tahmini)
-CAV_DIK = CAV_D - (CAV_W - CAV_TAB) / 2  # dik bolum, kalan derinlik 45 derece egim
-BORE = 9.0        # merkez delik
-KOSE_D = 5.1      # kose delikleri
-KOSE_A = 30.2     # kose delik araligi
-KG_M = 1.99       # ureticinin kg/m degeri
+# Olculer tek kaynaktan: arayuz.py (bolum 2). Degerler degismedi.
+from arayuz import SG, SLOT, LIP, CAV_W, CAV_D, CAV_TAB, CAV_DIK, BORE, KOSE_D, KOSE_A
+from arayuz import SG_R as R_DIS, SG_KG_M as KG_M
 UZUNLUK = 500.0   # test boyu (FreeCAD'de Extrude > Length ile degisir)
 
 
@@ -51,26 +44,27 @@ def kesit():
     return s.removeSplitter()
 
 
-doc = App.newDocument("SigmaTest")
-f = doc.addObject("Part::Feature", "Kesit_40x40")
-f.Shape = kesit()
-ext = doc.addObject("Part::Extrusion", "Sigma_40x40_Agir")
-ext.Base = f
-ext.DirMode = "Custom"
-ext.Dir = V(0, 0, 1)
-ext.LengthFwd = UZUNLUK
-ext.Solid = True
-doc.recompute()
+if __name__ == "__main__":   # test parcasi yalniz dogrudan calistirilinca uretilir (ortak_lib import eder)
+    doc = App.newDocument("SigmaTest")
+    f = doc.addObject("Part::Feature", "Kesit_40x40")
+    f.Shape = kesit()
+    ext = doc.addObject("Part::Extrusion", "Sigma_40x40_Agir")
+    ext.Base = f
+    ext.DirMode = "Custom"
+    ext.Dir = V(0, 0, 1)
+    ext.LengthFwd = UZUNLUK
+    ext.Solid = True
+    doc.recompute()
 
-alan = f.Shape.Area
-hacim = ext.Shape.Volume
-kutle = hacim * 2.70e-3  # 6063 aluminyum 2.70 g/cm3
-print("Kesit alani: %.1f mm2 (uretici 732 mm2, fark %%%.1f)" % (alan, (alan - 732) / 732 * 100))
-print("Kati sayisi: %s, gecerli: %s" % (len(ext.Shape.Solids), ext.Shape.isValid()))
-print("Boy %.0f mm -> %.0f g (uretici kg/m ile %.0f g)" % (UZUNLUK, kutle, KG_M * UZUNLUK))
-bb = ext.Shape.BoundBox
-print("Sinir kutusu: %.1f x %.1f x %.1f mm" % (bb.XLength, bb.YLength, bb.ZLength))
+    alan = f.Shape.Area
+    hacim = ext.Shape.Volume
+    kutle = hacim * 2.70e-3  # 6063 aluminyum 2.70 g/cm3
+    print("Kesit alani: %.1f mm2 (uretici 732 mm2, fark %%%.1f)" % (alan, (alan - 732) / 732 * 100))
+    print("Kati sayisi: %s, gecerli: %s" % (len(ext.Shape.Solids), ext.Shape.isValid()))
+    print("Boy %.0f mm -> %.0f g (uretici kg/m ile %.0f g)" % (UZUNLUK, kutle, KG_M * UZUNLUK))
+    bb = ext.Shape.BoundBox
+    print("Sinir kutusu: %.1f x %.1f x %.1f mm" % (bb.XLength, bb.YLength, bb.ZLength))
 
-doc.saveAs(os.path.join(HERE, "sigma-test.FCStd"))
-ext.Shape.exportStep(os.path.join(HERE, "sigma-test.step"))
-print("Kaydedildi:", HERE)
+    doc.saveAs(os.path.join(HERE, "sigma-test.FCStd"))
+    ext.Shape.exportStep(os.path.join(HERE, "sigma-test.step"))
+    print("Kaydedildi:", HERE)
