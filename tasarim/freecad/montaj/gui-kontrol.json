@@ -1,9 +1,9 @@
 {
  "acilis": {
-  "parca": 601,
-  "parca_gorunur": 601,
+  "parca": 907,
+  "parca_gorunur": 907,
   "montaj_gorunur": true,
-  "grup_gorunur": 17,
+  "grup_gorunur": 22,
   "simulasyon": true,
   "simulasyon_proxy": "ViewProviderSimulation",
   "hareket": [
@@ -16,7 +16,11 @@
    "Hareket DirsekSag bilek (MG996R)",
    "Hareket DirsekSol bilek (MG996R)",
    "Hareket Kafa pan (MG996R)",
-   "Hareket Kafa tilt (MG996R)"
+   "Hareket Kafa tilt (MG996R)",
+   "Hareket Taban teker on sag (JGB37 mili)",
+   "Hareket Taban teker on sol (JGB37 mili)",
+   "Hareket Taban teker arka sag (JGB37 mili)",
+   "Hareket Taban teker arka sol (JGB37 mili)"
   ]
  },
  "eklemler": {
@@ -138,6 +142,41 @@
    "vp": "ViewProviderJoint",
    "gorunur": true,
    "isaret_switch": -3
+  },
+  "Sabit_Taban": {
+   "etiket": "Taban Govde -> iskelet (sabit)",
+   "tip": "Fixed",
+   "vp": "ViewProviderJoint",
+   "gorunur": true,
+   "isaret_switch": -3
+  },
+  "Taban_TekerOnSag": {
+   "etiket": "Taban teker on sag (JGB37 mili)",
+   "tip": "Revolute",
+   "vp": "ViewProviderJoint",
+   "gorunur": true,
+   "isaret_switch": -3
+  },
+  "Taban_TekerOnSol": {
+   "etiket": "Taban teker on sol (JGB37 mili)",
+   "tip": "Revolute",
+   "vp": "ViewProviderJoint",
+   "gorunur": true,
+   "isaret_switch": -3
+  },
+  "Taban_TekerArkaSag": {
+   "etiket": "Taban teker arka sag (JGB37 mili)",
+   "tip": "Revolute",
+   "vp": "ViewProviderJoint",
+   "gorunur": true,
+   "isaret_switch": -3
+  },
+  "Taban_TekerArkaSol": {
+   "etiket": "Taban teker arka sol (JGB37 mili)",
+   "tip": "Revolute",
+   "vp": "ViewProviderJoint",
+   "gorunur": true,
+   "isaret_switch": -3
   }
  },
  "secim": {
@@ -157,7 +196,12 @@
   "DirsekSol_Bilek": true,
   "Sabit_Kafa": true,
   "Kafa_Pan": true,
-  "Kafa_Tilt": true
+  "Kafa_Tilt": true,
+  "Sabit_Taban": true,
+  "Taban_TekerOnSag": true,
+  "Taban_TekerOnSol": true,
+  "Taban_TekerArkaSag": true,
+  "Taban_TekerArkaSol": true
  },
  "pick": {
   "OmuzSag_OneArka": {
@@ -238,6 +282,38 @@
     709
    ],
    "nesne": "Kafa_Tilt",
+   "alt": ""
+  },
+  "Taban_TekerOnSag": {
+   "ekran": [
+    831,
+    -483
+   ],
+   "nesne": "Taban_TekerOnSag",
+   "alt": ""
+  },
+  "Taban_TekerOnSol": {
+   "ekran": [
+    511,
+    -410
+   ],
+   "nesne": "Taban_TekerOnSol",
+   "alt": ""
+  },
+  "Taban_TekerArkaSag": {
+   "ekran": [
+    1081,
+    -381
+   ],
+   "nesne": "Taban_TekerArkaSag",
+   "alt": ""
+  },
+  "Taban_TekerArkaSol": {
+   "ekran": [
+    761,
+    -308
+   ],
+   "nesne": "Taban_TekerArkaSol",
    "alt": ""
   }
  },

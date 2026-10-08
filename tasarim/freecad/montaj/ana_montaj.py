@@ -1,8 +1,9 @@
-# Robot ana montaji (FreeCAD 1.1 Assembly): iskelet + sag/sol omuz + kabuk + sag/sol dirsek + kafa (sol = gercek aynali geometri).
+# Robot ana montaji (FreeCAD 1.1 Assembly): iskelet + sag/sol omuz + kabuk + sag/sol dirsek + kafa + taban (sol = gercek aynali geometri).
 # Moduller ve yukleyiciler moduller.py'de; yerlesim yalniz arayuz.MODULLER'den. Eklemler: zemine sabit iskelet,
 # her omuz govdesi ve kabuk iskelete Fixed, her omuzda 2 Revolute (omuz/omuz-montaj.FCStd'den, solda aynali), her dirsek
 # catali omuzun Kol grubuna Fixed, her kolda dirsek + bilek Revolute (dirsek/dirsek-montaj.FCStd'den, solda aynali);
-# kafa govdesi traverse Fixed, pan (govde -> boyun) ve tilt (boyun -> bas) Revolute (kafa/kafa-montaj.FCStd'den).
+# kafa govdesi traverse Fixed, pan (govde -> boyun) ve tilt (boyun -> bas) Revolute (kafa/kafa-montaj.FCStd'den); taban govdesi
+# iskelete Fixed, 4 teker grubu (teker + kaplin) taban govdesine sinirsiz Revolute (motor mili ekseni, moduller.yukle_taban).
 # Calistir (yolda "ü" oldugu icin ASCII baslaticiyla): FC_SCRIPT=<bu dosya> freecadcmd run_fc.py
 #   -> robot-montaj.FCStd, robot-montaj.step, montaj-analiz.json
 # Not: betikle kaydedilen dosyada eklemlerin gorunum nesnesi yok; montaj_gorsel.py (GUI) bunlari kurup dosyayi yeniden kaydeder.
@@ -157,7 +158,7 @@ for d in MOD:
                           ust=ust.Name, alt=alt.Name, nokta=[round(x, 4) for x in cer.Base], eksen=[round(x, 6) for x in ax],
                           yerel_nokta=[round(x, 4) for x in e["cerceve"].Base],
                           yerel_eksen=[round(x, 6) for x in e["cerceve"].Rotation.multVec(V(0, 0, 1))],
-                          sinir=list(e["sinir"]), kaynak=e["kaynak"]))
+                          sinir=list(e["sinir"]) if e["sinir"] else None, kaynak=e["kaynak"]))
 r_solve = asm.solve()
 doc.recompute()
 # ev pozunda cozucu gruplari yerinde birakmali (eklem cerceveleri tutarli)

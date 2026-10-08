@@ -1,6 +1,6 @@
 # Ana montajin modul tanimlari (FreeCAD 1.1). ana_montaj.py ve eklem_dogrulama.py bunu kullanir.
 #
-# Yeni modul eklemek (taban; kabuk, dirsek ve kafa ekli):
+# Yeni modul eklemek (iskelet, omuz, kabuk, dirsek, kafa ve taban ekli):
 #   1. Yerlesimini arayuz.MODULLER'e yaz (konum + ayna). Burada hicbir yerlesim sayisi yazilmaz.
 #   2. Asagida bir yukleyici yaz ve MODUL_YUKLE'ye, adini SIRA listesine ekle.
 #   Yukleyici dict dondurur (koordinatlar modulun YEREL koordinatinda; aynalama ve tasima burada yapilir):
@@ -9,7 +9,7 @@
 #     baglanti : None = zemine sabit (grounded) | dict(modul, grup, nokta (yerel), ref) -> Fixed eklem
 #                (ref = ust modulde eklem referansi olarak kullanilacak parca adi oneki)
 #     eklemler : [dict(anahtar, ad, etiket, ebeveyn, cocuk, cerceve (yerel App.Placement; Z = donme ekseni),
-#                      sinir=(min, max) derece)]
+#                      sinir=(min, max) derece | None = sinirsiz (teker))]
 #     beklenen : None | f(poz: {anahtar: derece}, grup) -> yerel App.Placement (modulun kendi kinematigi)
 #     haric    : [parca adi oneki], haric_neden
 #   Istege bagli: ust_kol (zincir: bu modul baska bir hareketli modulun grubuna bagli; beklenen poz o modulun eklem
@@ -21,7 +21,7 @@ V = App.Vector
 HERE = os.path.dirname(os.path.abspath(__file__))
 UST = os.path.dirname(HERE)
 for _p in (UST, os.path.join(UST, "iskelet"), os.path.join(UST, "omuz"), os.path.join(UST, "kabuk"), os.path.join(UST, "dirsek"),
-           os.path.join(UST, "kafa")):
+           os.path.join(UST, "kafa"), os.path.join(UST, "taban")):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 import arayuz as A
@@ -204,9 +204,68 @@ def yukle_kafa():
                 haric_neden="kablo demeti gosterimi (Referans grubu, 0 g); kafa analizinin parca sayisina da girmiyor")
 
 
+# taban: govde (plakalar, motorlar, aku, guc, elektronik, sensorler; iskelete sabit) + her kosede teker grubu (teker + kaplin +
+# teker civatasi ve pulu: motor milinde doner). Teker eklemleri: Revolute, sinirsiz (serbest donus), eksen motor mili (+X yonlu:
+# pozitif aci = ileri yuvarlanma, tekerin alt noktasi geri gider). Eksen noktasi ve yonu taban_parcalar (X_WH, Z_WH, arayuz.AX)
+# ve kaplin-motor mili baglantisinin eksen kontrolunden; taban-montaj.FCStd'de eklem yok (1. asama statik), burada kurulur.
+TEKER_KOSE = (("on_sag", 1, 1), ("on_sol", -1, 1), ("arka_sag", 1, -1), ("arka_sol", -1, -1))     # (anahtar eki, sx, sz)
+
+
+def teker_grup(k):
+    """Grup adi: on_sag -> OnSagTeker (ana montajda Taban_OnSagTeker); eklem adi Taban_TekerOnSag ile cakismasin."""
+    return "".join(x.capitalize() for x in k.split("_")) + "Teker"
+
+
+def yukle_taban():
+    import taban_parcalar as TP
+    kose_ad = {(sx, sz): "%s %s" % (TP.SZ(sz), TP.SX(sx)) for _, sx, sz in TEKER_KOSE}     # (1, 1) -> "on sag" (parca adlarindaki)
+    grup_on = {}
+    for k, sx, sz in TEKER_KOSE:
+        ka = kose_ad[(sx, sz)]
+        for on in ("Teker 125 x 58 (%s)" % ka, "Kaplin 12 mm altigen (%s)" % ka, "Pul M4 (teker %s)" % ka, "Civata M4x16 (teker %s)" % ka):
+            grup_on[on] = teker_grup(k)
+
+    def grup(p):
+        if p["grup"] == "Referans":
+            return "Referans"
+        return grup_on.get(p["ad"], "Govde")
+
+    eklemler = []
+    for k, sx, sz in TEKER_KOSE:
+        n = V(sx * TP.X_WH, A.AX, sz * TP.Z_WH)
+        eklemler.append(dict(anahtar="teker_" + k, ad="teker %s (JGB37 mili)" % k.replace("_", " "), ebeveyn="Govde",
+                             cocuk=teker_grup(k), cerceve=App.Placement(n, App.Rotation(V(0, 0, 1), V(1, 0, 0))), sinir=None,
+                             sinir_acik=(False, False),
+                             kaynak="taban/taban_parcalar.py: teker merkezi (x = %+.0f, y = %.1f, z = %+.0f), eksen +X (motor mili)" % (
+                                 n.x, n.y, n.z)))
+
+    def beklenen(poz, g):
+        for k, sx, sz in TEKER_KOSE:
+            if g == teker_grup(k):
+                return App.Placement(V(0, 0, 0), App.Rotation(V(1, 0, 0), poz.get("teker_" + k, 0.0)),
+                                     V(sx * TP.X_WH, A.AX, sz * TP.Z_WH))
+        return App.Placement()
+
+    parcalar = []
+    for k, p in enumerate(TP.P):
+        q = _parca(p, k)
+        q["kutle"] = p["kutle"]
+        parcalar.append(dict(q, grup=grup(p), alt_grup=p["grup"]))
+    return dict(parcalar=parcalar,
+                gruplar=[("Govde", "Taban govdesi: plakalar + motorlar + aku + guc + elektronik + sensorler (iskelete sabit)")] +
+                        [(teker_grup(k), "Teker %s (teker + kaplin, motor milinde doner)" % k.replace("_", " ")) for k, _, _ in TEKER_KOSE],
+                baglanti=dict(modul="iskelet", grup="Iskelet", ref="Sase uzun rayi", nokta=(0.0, A.Y_RAIL0, 0.0),
+                              aciklama="alt plaka uzun ve ara raylarin alt kanallarina 14x M6 + cekic somun (arayuz.TABAN plaka_ray_z / "
+                                       "plaka_ara_x); motor braketleri plaka uzerinden uzun raylara M4 + cekic somun"),
+                eklemler=eklemler, beklenen=beklenen, analiz=os.path.join("taban", "taban-analiz.json"),
+                haric=["Kablo yolu", "Ana anahtar dugmesi"],
+                haric_neden="kablo yolu semalari ve ana anahtar dugmesi gosterimi (Referans grubu, 0 g); taban analizinin parca sayisina "
+                            "girmiyor")
+
+
 MODUL_YUKLE = {"iskelet": yukle_iskelet, "omuz_sag": yukle_omuz, "omuz_sol": yukle_omuz, "kabuk": yukle_kabuk,
-               "dirsek_sag": yukle_dirsek("sag"), "dirsek_sol": yukle_dirsek("sol"), "kafa": yukle_kafa}
-SIRA = ["iskelet", "omuz_sag", "omuz_sol", "kabuk", "dirsek_sag", "dirsek_sol", "kafa"]       # sonra: "taban"
+               "dirsek_sag": yukle_dirsek("sag"), "dirsek_sol": yukle_dirsek("sol"), "kafa": yukle_kafa, "taban": yukle_taban}
+SIRA = ["iskelet", "omuz_sag", "omuz_sol", "kabuk", "dirsek_sag", "dirsek_sol", "kafa", "taban"]
 
 
 # ====================================================================== global yerlesim (yalniz arayuz.MODULLER)

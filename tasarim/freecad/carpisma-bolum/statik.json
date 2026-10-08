@@ -1,0 +1,214 @@
+{
+ "bolum": "statik",
+ "kosu": "20261008-221731",
+ "baslangic": "2026-10-08T22:18:16",
+ "bitis": "2026-10-08T22:18:26",
+ "sure_s": 10.4,
+ "yukleme_s": 44.1,
+ "tepe_bellek_mb": 510,
+ "tepe_sayfa_mb": 2411,
+ "ayni_surec": [
+  "statik"
+ ],
+ "pid": 125244,
+ "moduller": [
+  "iskelet",
+  "omuz_sag",
+  "omuz_sol",
+  "kabuk",
+  "dirsek_sag",
+  "dirsek_sol",
+  "kafa",
+  "taban"
+ ],
+ "kaynak": {
+  "carpisma.py": "46990770f1",
+  "arayuz.py": "6aa5377a61",
+  "ortak_lib.py": "ce4e4053c4",
+  "iskelet/iskelet_parcalar.py": "da1de9d063",
+  "omuz/omuz_parcalar.py": "ac3c6974d4",
+  "kabuk/kabuk_parcalar.py": "49520759b6",
+  "dirsek/dirsek_parcalar.py": "029708d0b7",
+  "kafa/kafa_parcalar.py": "3b147ef083",
+  "taban/taban_parcalar.py": "e1d0b822f1",
+  "taban/taban_lib.py": "29fc99b240"
+ },
+ "sonuc": {
+  "moduller": [
+   {
+    "ad": "iskelet",
+    "konum": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ayna": false,
+    "parca": 59,
+    "haric": [],
+    "haric_neden": "",
+    "hareketli": false,
+    "bagli": null
+   },
+   {
+    "ad": "omuz_sag",
+    "konum": [
+     0.0,
+     955.0,
+     0.0
+    ],
+    "ayna": false,
+    "parca": 70,
+    "haric": [
+     "Omuz traversi (sigma 40x40 agir, 200 mm)",
+     "Govde kabugu yan yuzu (referans)"
+    ],
+    "haric_neden": "travers iskeletin parcasi (arayuz uyumu ayrica kontrol edilir); kabuk duvari kabuk modulunun yer tutucusu",
+    "hareketli": true,
+    "bagli": null
+   },
+   {
+    "ad": "omuz_sol",
+    "konum": [
+     0.0,
+     955.0,
+     0.0
+    ],
+    "ayna": true,
+    "parca": 70,
+    "haric": [
+     "Omuz traversi (sigma 40x40 agir, 200 mm)",
+     "Govde kabugu yan yuzu (referans)"
+    ],
+    "haric_neden": "travers iskeletin parcasi (arayuz uyumu ayrica kontrol edilir); kabuk duvari kabuk modulunun yer tutucusu",
+    "hareketli": true,
+    "bagli": null
+   },
+   {
+    "ad": "kabuk",
+    "konum": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ayna": false,
+    "parca": 202,
+    "haric": [],
+    "haric_neden": "",
+    "hareketli": false,
+    "bagli": null
+   },
+   {
+    "ad": "dirsek_sag",
+    "konum": [
+     0.0,
+     955.0,
+     0.0
+    ],
+    "ayna": false,
+    "parca": 53,
+    "haric": [],
+    "haric_neden": "",
+    "hareketli": true,
+    "bagli": "omuz_sag"
+   },
+   {
+    "ad": "dirsek_sol",
+    "konum": [
+     0.0,
+     955.0,
+     0.0
+    ],
+    "ayna": true,
+    "parca": 53,
+    "haric": [],
+    "haric_neden": "",
+    "hareketli": true,
+    "bagli": "omuz_sol"
+   },
+   {
+    "ad": "kafa",
+    "konum": [
+     0.0,
+     975.0,
+     0.0
+    ],
+    "ayna": false,
+    "parca": 99,
+    "haric": [
+     "Kablo demeti (gosterim)"
+    ],
+    "haric_neden": "kablo demeti gosterimi (Referans grubu, 0 g); carpisma taramasina girmez",
+    "hareketli": true,
+    "bagli": null
+   },
+   {
+    "ad": "taban",
+    "konum": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ayna": false,
+    "parca": 319,
+    "haric": [
+     "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)",
+     "Kablo yolu 1: 12 V ana hat: aku + -> XT60 -> ana sigorta 30 A -> ana anahtar -> sigorta kutusu",
+     "Kablo yolu 2: Toprak: aku - -> WAGO yildiz noktasi (guc paneli) -> tum donusturuculer",
+     "Kablo yolu 3: Motor 12 V: F1 20 A -> role -> WAGO -> BTS7960 sol/sag -> motor kablo delikleri -> 4 motor",
+     "Kablo yolu 4: Motor 12 V sag kol + arka motorlar (plaka altindan z 36 deliginden)",
+     "Kablo yolu 5: Servo 6 V: F1 -> role -> WAGO -> XL4016 servo -> PCA9685 V+ -> direk arka yuzu -> omuz / kafa",
+     "Kablo yolu 6: Servo kablolari sola ve kafaya (direk ustu dagitim)",
+     "Kablo yolu 7: Pi 5,1 V: F3 10 A -> XL4016 Pi -> Pi USB-C",
+     "Kablo yolu 8: Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / Nextion / 7in LCD / sensorler",
+     "Kablo yolu 9: Acil stop: F5 -> mantar (NC) -> role bobini",
+     "Kablo yolu 10: Sinyal: sonar x3 -> ESP32 (on ara ray ustunden)",
+     "Kablo yolu 11: Sinyal: enkoder + BTS PWM/EN -> ESP32; Pi <-> ESP32 USB",
+     "Kablo yolu 12: Pi -> kafa: 2x HDMI (7in LCD), kamera FPC, USB mikrofon, hoparlor (direk on yuzu)"
+    ],
+    "haric_neden": "kablo yolu semalari ve ana anahtar dugmesi gosterimi (Referans grubu, 0 g); dugme kol x taban taramasinda (bolum 4c) hedef",
+    "hareketli": false,
+    "bagli": null
+   }
+  ],
+  "ayrilmis_bolge": {
+   "sayi": 0,
+   "sahipler": []
+  },
+  "arayuz_uyumu": [
+   {
+    "modul": "omuz_sag",
+    "hacim_omuz": 145259.701,
+    "hacim_iskelet": 145259.701,
+    "ortak": 145259.701,
+    "sinir_kutusu_fark": 0.0,
+    "ayni": true
+   },
+   {
+    "modul": "omuz_sol",
+    "hacim_omuz": 145259.701,
+    "hacim_iskelet": 145259.701,
+    "ortak": 145259.701,
+    "sinir_kutusu_fark": 0.0,
+    "ayni": true
+   }
+  ],
+  "ev_pozu_cakisma": [],
+  "ev_pozu_kesisen_cift": 693,
+  "kutle_g": {
+   "iskelet": 5793.1,
+   "omuz_sag": 463.6,
+   "omuz_sol": 463.6,
+   "kabuk": 4925.8,
+   "dirsek_sag": 370.0,
+   "dirsek_sol": 370.0,
+   "kafa": 1366.8,
+   "taban": 7508.0
+  },
+  "kutle_toplam_g": 21260.9,
+  "agirlik_merkezi": [
+   -0.38,
+   374.61,
+   -13.51
+  ]
+ }
+}

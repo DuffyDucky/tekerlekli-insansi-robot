@@ -1,0 +1,51 @@
+﻿Tur;Kalem;Adet;Toplam kutle (g)
+Baglanti;M2,5x5 DIN 912;12;5.6
+Baglanti;M2,5x8 DIN 912;12;7.0
+Baglanti;M3 isil gomme somun;2;0.9
+Baglanti;M3x6 DIN 912;60;49.0
+Baglanti;M3x8 DIN 912;6;5.6
+Baglanti;M4 DIN 125 pul;15;4.6
+Baglanti;M4 DIN 985 naylon somun;3;3.5
+Baglanti;M4 cekic somun, kanal 10 (tahmini olcu);8;46.3
+Baglanti;M4x16 DIN 912;15;39.6
+Baglanti;M5 DIN 125 pul;8;3.5
+Baglanti;M5 cekic somun, kanal 10 (tahmini olcu);8;44.1
+Baglanti;M5x12 DIN 912;8;30.0
+Baglanti;M5x16 DIN 913 set vida (saplama);8;18.7
+Baglanti;M6 DIN 125 pul;14;14.2
+Baglanti;M6 cekic somun, kanal 10;18;93.1
+Baglanti;M6x14 DIN 912;14;86.7
+Baglanti;M6x14 ISO 7380;4;20.5
+Baski;Aku on takozu;1;68.7
+Baski;Sonar tutucu orta;1;5.6
+Baski;Sonar tutucu sag;1;5.0
+Baski;Sonar tutucu sol;1;5.0
+Lazer;Alt plaka;1;1060.5
+Lazer;Elektronik kati (on);1;196.2
+Lazer;Guc paneli (arka kat);1;240.3
+Satin;12 mm altigen kaplin x 30, O6;4;140.0
+Satin;25 mm cirt bant kayis (tahmini);2;54.9
+Satin;37 mm L motor braketi 1,5 mm;4;120.0
+Satin;6 yollu bicak sigorta kutusu;1;120.0
+Satin;ASW-A01 100 A aku ayirici;1;150.0
+Satin;Adafruit MAX98357A;1;2.0
+Satin;Arazi tekerlegi 125 x 58;4;560.0
+Satin;"BNO055 9 eksen (Adafruit 2472 delik duzeni; eldeki muadil olculecek)";1;3.0
+Satin;BTS7960B 43 A (IBT-2);2;132.0
+Satin;Cift tarafli kopuk bant 1 mm;1;0.0
+Satin;"Delikli pertinaks 70 x 50 + 2x 15'li disi header (tahmini; BOM'da yok)";1;14.0
+Satin;ESP32-WROOM-32 DevKit 30 pin;1;10.0
+Satin;Emas B200E60 acil stop;1;35.0
+Satin;Emas B200E60 kontak blogu;1;50.0
+Satin;HC-SR04;3;27.0
+Satin;ISO mini role 12 V 40 A + soket (BOM'da yok);1;35.0
+Satin;JGB37-520 12 V 60 dev/dk enkoderli;4;800.0
+Satin;Kablolu kapakli bicak sigorta yuvasi 12 AWG + 30 A;1;40.0
+Satin;LiFePO4 12,8 V 24 Ah (yuva 181 x 77 x 167);1;2800.0
+Satin;M2,5x8 pirinc burc;12;13.7
+Satin;M3x8 naylon burc;24;4.2
+Satin;M5 x 40 burc, disi-disi, AA 8;8;96.0
+Satin;PCA9685 16 kanal (Adafruit 815 delik duzeni);1;9.0
+Satin;Raspberry Pi 5 8GB + resmi Active Cooler;1;58.0
+Satin;XL4016 8 A DC-DC dusurucu;3;180.0
+Pay;Kablo payi (tahmini, geometri yok);1;400.0

@@ -3,6 +3,8 @@
 # birkac aciya surer ve cozucunun verdigi grup konumlarini modulun kendi kinematigiyle (omuz_parcalar Pp/Pr,
 # dirsek_parcalar grup_yer; moduller.beklenen) karsilastirir. Dirsek gruplari omuz zincirine bagli: beklenen poz omuz
 # acilarini da alir (moduller ust_kol). Kafa: pan + tilt (kafa_parcalar grup_yer), tek basina ve kollarla birlikte.
+# Taban: 4 teker eklemi (sinirsiz Revolute, motor mili ekseni; beklenen = teker merkezinden +X etrafinda donus), birkac aci
+# (tam turdan buyuk dahil), kollar + kafa ile birlikte.
 # Revolute acisi dogrudan surulemedigi icin (Angle ozelligi yalniz Angle ekleminde) surus Motion ile yapilir.
 # Calistir: FC_SCRIPT=<bu dosya> freecadcmd run_fc.py  -> eklem-dogrulama.json (dosya kaydedilmez)
 import os, sys, json, time, math
@@ -96,6 +98,13 @@ def poz_al(kol, komut, t=1.0):
 
 
 EKLEM_GRUP = {"one_arka": "Gobek", "yana": "Kol", "dirsek": "OnKol", "bilek": "El", "pan": "Boyun", "tilt": "Bas"}   # eklemin dondurdugu grup
+for _k, _sx, _sz in MD.TEKER_KOSE:
+    EKLEM_GRUP["teker_" + _k] = MD.teker_grup(_k)
+
+
+def sinirda(kol, an, a):
+    s_ = KOL[kol]["sinir"][an]
+    return s_ is None or s_[0] <= a <= s_[1]
 
 
 def omuz_mu(k):
@@ -165,7 +174,7 @@ def ozetle(ad, komut, kareler):
     mx_mm = max(v[0] for k in kareler for v in k["gruplar"].values())
     mx_dg = max(v[1] for k in kareler for v in k["gruplar"].values())
     aci_hata = max(abs(sar(v[0] - v[1])) for k in kareler for v in k["aci"].values())
-    sinir_ici = all(KOL[kol]["sinir"][an][0] <= a <= KOL[kol]["sinir"][an][1] for kol, c in komut.items() for an, a in c.items())
+    sinir_ici = all(sinirda(kol, an, a) for kol, c in komut.items() for an, a in c.items())
     r = dict(ad=ad, komut=komut, sinir_ici=sinir_ici, kare=len(kareler), t_son=son["t"],
              son={g: [round(v[0], 6), round(v[1], 6)] for g, v in son["gruplar"].items()},
              son_aci={j: [round(v[0], 4), round(v[1], 4), round(v[2], 6), round(v[3], 6)] for j, v in son["aci"].items()},
@@ -219,10 +228,24 @@ if "kafa" in KOL:
                  "omuz_sol": {"one_arka": float(sl[0]), "yana": float(sl[1])}, "dirsek_sol": {"dirsek": float(sl[2]), "bilek": float(sl[3])}}
         vakalar.append(ozetle("kafa %s + kollar sag %s sol %s" % (kp, sg, sl), komut, calistir(komut)))
 
+# taban: 4 teker (sinirsiz), tek tek, birlikte, tam turdan buyuk ve kollar + kafa ile birlikte
+TPOZ = [(90, 0, 0, 0), (0, -45, 0, 0), (0, 0, 180, 0), (0, 0, 0, -120), (30, 30, 30, 30), (-75, 75, -75, 75), (400, -200, 135, -720)]
+if "taban" in KOL:
+    tk = ["teker_" + k for k, _, _ in MD.TEKER_KOSE]
+    for tp in TPOZ:
+        komut = {"taban": {a: float(x) for a, x in zip(tk, tp)}}
+        vakalar.append(ozetle("taban teker %s" % (tp,), komut, calistir(komut)))
+    komut = {"taban": {a: 60.0 for a in tk}, "kafa": {"pan": 30.0, "tilt": 10.0},
+             "omuz_sag": {"one_arka": 90.0, "yana": 0.0}, "dirsek_sag": {"dirsek": 60.0, "bilek": 45.0},
+             "omuz_sol": {"one_arka": -30.0, "yana": 30.0}, "dirsek_sol": {"dirsek": 30.0, "bilek": -45.0}}
+    vakalar.append(ozetle("taban teker 60 + kafa + kollar", komut, calistir(komut)))
+
 # ---------------------------------------------------------------------- 3) sinir disi surus
 SINIR_DISI = [(160, 0), (180, 0), (-60, 0), (0, 140), (0, -15)]
 sinir_disi = []
 for kol in KOL:
+    if kol == "taban":
+        continue          # teker eklemleri sinirsiz
     if kol == "kafa":
         for pa, ti in ((120, 0), (180, 0), (0, 40), (0, -35)):
             komut = {kol: {"pan": float(pa), "tilt": float(ti)}}
@@ -283,6 +306,19 @@ if "kafa" in KOL:
         log("yon kafa %s +%d: kamera (%.0f, %.0f, %.0f) -> (%.0f, %.0f, %.0f) %s" % (an, a, kam.x, kam.y, kam.z, uc.x, uc.y, uc.z,
                                                                                  "dogru" if ok else "YANLIS"))
 
+# taban: teker +90 -> tekerin en alt noktasi geri (-Z) gider = robot ileri (+Z) yuvarlanir; eksen uzerindeki nokta yerinde kalir
+if "taban" in KOL:
+    import taban_parcalar as TPm
+    for k, sx, sz in MD.TEKER_KOSE:
+        alt0 = V(sx * TPm.X_WH, MD.A.AX - MD.A.TEKER_D / 2, sz * TPm.Z_WH)
+        calistir({"taban": {"teker_" + k: 90.0}})
+        uc = GR[KOL["taban"]["grup"][MD.teker_grup(k)]].Placement.multVec(alt0)
+        d = uc - alt0
+        ok = d.z < -(MD.A.TEKER_D / 2) + 1e-3 and abs(uc.y - MD.A.AX) < 1e-4 and abs(d.x) < 1e-6
+        yon.append(dict(kol="taban", eklem="teker_" + k, aci=90.0, uc_once=[round(x, 1) for x in alt0], uc_sonra=[round(x, 1) for x in uc], dogru=ok))
+        log("yon taban teker %s +90: alt nokta (%.0f, %.1f, %.0f) -> (%.0f, %.1f, %.0f) %s" % (
+            k, alt0.x, alt0.y, alt0.z, uc.x, uc.y, uc.z, "dogru" if ok else "YANLIS"))
+
 # ---------------------------------------------------------------------- 4) solve(): elle verilen pozu koruyor mu, sinirda geri cekiyor mu
 # (GUI'de surukleme ve doc.recompute() bu cozucuyu cagirir)
 solve_test = []
@@ -290,6 +326,7 @@ for kol in KOL:
     ust = MOD[kol].get("ust_kol")
     pozlar = ([dict(dirsek=60.0, bilek=45.0), dict(dirsek=125.0, bilek=0.0), dict(dirsek=30.0, bilek=-110.0)] if ust else
               [dict(pan=45.0, tilt=20.0), dict(pan=120.0, tilt=0.0), dict(pan=0.0, tilt=40.0)] if kol == "kafa" else
+              [dict(teker_on_sag=30.0, teker_on_sol=-60.0, teker_arka_sag=200.0, teker_arka_sol=0.0)] if kol == "taban" else
               [dict(one_arka=float(a), yana=float(b)) for a, b in ((90, 45), (160, 0), (0, 140), (-60, 0))])
     alt = [k for k in KOL if MOD[k].get("ust_kol") == kol]      # zincirdeki alt moduller (omuz -> dirsek) birlikte tasinir
     for poz in pozlar:
@@ -300,7 +337,7 @@ for kol in KOL:
         r = asm.solve()
         olc = {an: round(olculen_aci(j)[0], 4) for an, j in KOL[kol]["eklem"].items()}
         mx = max(sapma(gad, GR[gad].Placement, beklenen(k, poz, g))[0] for k in [kol] + alt for g, gad in KOL[k]["grup"].items())
-        sinir_ici = all(KOL[kol]["sinir"][an][0] <= a <= KOL[kol]["sinir"][an][1] for an, a in poz.items())
+        sinir_ici = all(sinirda(kol, an, a) for an, a in poz.items())
         solve_test.append(dict(kol=kol, poz=poz, sinir_ici=sinir_ici, solve=r, olculen=olc, max_mm=mx))
         log("solve %s %s -> donus %d, olculen %s, sapma %.2e mm" % (kol, poz, r, olc, mx))
 sifirla()
@@ -314,7 +351,7 @@ for kol, kk in KOL.items():
         ozet[j.Name] = dict(kol=kol, anahtar=an, etiket=j.Label, vaka=len(ilgili),
                             grup=gad, max_mm=max(v["max_mm"] for v in ilgili), max_derece=max(v["max_derece"] for v in ilgili),
                             max_aci_hatasi=max(v["max_aci_hatasi"] for v in ilgili),
-                            sinir=[float(j.AngleMin), float(j.AngleMax)],
+                            sinir=[float(j.AngleMin), float(j.AngleMax)] if kk["sinir"][an] else None,
                             eksen=list(App.Placement(j.Placement1).Rotation.multVec(V(0, 0, 1))),
                             nokta=list(App.Placement(j.Placement1).Base))
 out = dict(yontem="Assembly simulasyonu: her eklemde Motion (Angular, formul = aci_rad * time), 0...1 s, adim %.2f s; "

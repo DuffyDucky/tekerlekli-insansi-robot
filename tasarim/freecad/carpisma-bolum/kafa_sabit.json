@@ -1,0 +1,578 @@
+{
+ "bolum": "kafa_sabit",
+ "kosu": "20261008-221731",
+ "baslangic": "2026-10-08T22:59:41",
+ "bitis": "2026-10-08T23:00:00",
+ "sure_s": 19.3,
+ "yukleme_s": 33.4,
+ "tepe_bellek_mb": 503,
+ "tepe_sayfa_mb": 2404,
+ "ayni_surec": [
+  "kafa_sabit"
+ ],
+ "pid": 124344,
+ "moduller": [
+  "iskelet",
+  "omuz_sag",
+  "omuz_sol",
+  "kabuk",
+  "kafa",
+  "taban"
+ ],
+ "kaynak": {
+  "carpisma.py": "46990770f1",
+  "arayuz.py": "6aa5377a61",
+  "ortak_lib.py": "ce4e4053c4",
+  "iskelet/iskelet_parcalar.py": "da1de9d063",
+  "omuz/omuz_parcalar.py": "ac3c6974d4",
+  "kabuk/kabuk_parcalar.py": "49520759b6",
+  "dirsek/dirsek_parcalar.py": "029708d0b7",
+  "kafa/kafa_parcalar.py": "3b147ef083",
+  "taban/taban_parcalar.py": "e1d0b822f1",
+  "taban/taban_lib.py": "29fc99b240"
+ },
+ "sonuc": {
+  "aralik": {
+   "pan": [
+    -90.0,
+    90.0
+   ],
+   "tilt": [
+    -25.0,
+    30.0
+   ]
+  },
+  "serbest": {
+   "pan": [
+    -180.0,
+    180.0
+   ],
+   "tilt": [
+    -25.0,
+    40.0
+   ]
+  },
+  "kaba": {
+   "pan": [
+    -180,
+    -165,
+    -150,
+    -135,
+    -120,
+    -105,
+    -90,
+    -75,
+    -60,
+    -45,
+    -30,
+    -15,
+    0,
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165
+   ],
+   "tilt": [
+    -25,
+    -10,
+    0,
+    10,
+    20,
+    30,
+    40
+   ]
+  },
+  "ince_adim": [
+   [
+    -10,
+    -5,
+    0,
+    5,
+    10
+   ],
+   [
+    -10,
+    -5,
+    0,
+    5,
+    10
+   ]
+  ],
+  "sinir_adim": {
+   "kafa": 5,
+   "omuz": 5,
+   "yana": 5,
+   "dirsek": 5,
+   "bilek": 15
+  },
+  "sinir_tur_siniri": 40,
+  "lim_mm": 100.0,
+  "yakin_mm": 5.0,
+  "kisimlar": [
+   "sabit"
+  ],
+  "jest": [
+   {
+    "ad": "ev",
+    "poz": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "ad": "selam (montaj gorseli)",
+    "poz": [
+     20,
+     100,
+     95,
+     -60
+    ]
+   },
+   {
+    "ad": "selam, kol yukarida",
+    "poz": [
+     0,
+     120,
+     105,
+     0
+    ]
+   },
+   {
+    "ad": "selam, yan",
+    "poz": [
+     30,
+     90,
+     105,
+     90
+    ]
+   },
+   {
+    "ad": "kafa kasima",
+    "poz": [
+     135,
+     30,
+     105,
+     0
+    ]
+   },
+   {
+    "ad": "kafa kasima, bilek 90",
+    "poz": [
+     135,
+     45,
+     105,
+     90
+    ]
+   },
+   {
+    "ad": "kafa kasima, yana 60",
+    "poz": [
+     120,
+     60,
+     105,
+     -90
+    ]
+   },
+   {
+    "ad": "kafa kasima, yana 15",
+    "poz": [
+     135,
+     15,
+     105,
+     0
+    ]
+   },
+   {
+    "ad": "el yuze",
+    "poz": [
+     120,
+     0,
+     105,
+     0
+    ]
+   },
+   {
+    "ad": "el yuze, bilek 90",
+    "poz": [
+     135,
+     0,
+     105,
+     90
+    ]
+   },
+   {
+    "ad": "el agiza",
+    "poz": [
+     105,
+     0,
+     105,
+     0
+    ]
+   },
+   {
+    "ad": "kol tepede",
+    "poz": [
+     135,
+     120,
+     0,
+     0
+    ]
+   },
+   {
+    "ad": "kol tepede bukuk",
+    "poz": [
+     135,
+     120,
+     105,
+     0
+    ]
+   },
+   {
+    "ad": "kol yana yukari bukuk",
+    "poz": [
+     45,
+     120,
+     105,
+     0
+    ]
+   },
+   {
+    "ad": "eller basta",
+    "poz": [
+     120,
+     90,
+     105,
+     0
+    ]
+   }
+  ],
+  "sabit": {
+   "kaba": {
+    "pan": [
+     -180,
+     -165,
+     -150,
+     -135,
+     -120,
+     -105,
+     -90,
+     -75,
+     -60,
+     -45,
+     -30,
+     -15,
+     0,
+     15,
+     30,
+     45,
+     60,
+     75,
+     90,
+     105,
+     120,
+     135,
+     150,
+     165
+    ],
+    "tilt": [
+     -25,
+     -10,
+     0,
+     10,
+     20,
+     30,
+     40
+    ],
+    "poz": 168
+   },
+   "aday": 22083,
+   "ince_cift": 6,
+   "tam_olcum": 518,
+   "cakisma_aralikta": [],
+   "cakisma_aralik_disi": [],
+   "cakisan_alt_poz_aralikta": 0,
+   "cakisan_alt_poz_aralik_disi": 0,
+   "en_kucuk_aralikta": {
+    "iskelet (kafa govdesi)": {
+     "kafa_grup": "Govde",
+     "kafa_poz": [],
+     "parca": "Boyun plakasi",
+     "hedef_modul": "iskelet (kafa govdesi)",
+     "hedef": "Omuz traversi",
+     "bosluk_mm": 0.0,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    "kabuk (kafa govdesi)": {
+     "kafa_grup": "Govde",
+     "kafa_poz": [],
+     "parca": "Boyun plakasi",
+     "hedef_modul": "kabuk (kafa govdesi)",
+     "hedef": "Omuz bandi sag",
+     "bosluk_mm": 8.41,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    "omuz_sag govde (kafa govdesi)": {
+     "kafa_grup": "Govde",
+     "kafa_poz": [],
+     "parca": "Boyun plakasi",
+     "hedef_modul": "omuz_sag govde (kafa govdesi)",
+     "hedef": "Omuz yuvasi",
+     "bosluk_mm": 22.0,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    "omuz_sol govde (kafa govdesi)": {
+     "kafa_grup": "Govde",
+     "kafa_poz": [],
+     "parca": "Boyun plakasi",
+     "hedef_modul": "omuz_sol govde (kafa govdesi)",
+     "hedef": "Omuz yuvasi",
+     "bosluk_mm": 22.0,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    "kabuk": {
+     "kafa_grup": "Kafa",
+     "kafa_poz": [
+      -90.0,
+      -25.0
+     ],
+     "parca": "Arka kafa kabugu",
+     "hedef_modul": "kabuk",
+     "hedef": "Omuz bandi sag",
+     "bosluk_mm": 54.19,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    "iskelet": {
+     "kafa_grup": "Pan",
+     "kafa_poz": [
+      -90.0
+     ],
+     "parca": "Pan horn merkez vidasi M3",
+     "hedef_modul": "iskelet",
+     "hedef": "Omuz traversi",
+     "bosluk_mm": 43.05,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    "omuz_sag govde": {
+     "kafa_grup": "Kafa",
+     "kafa_poz": [
+      -30.0,
+      -25.0
+     ],
+     "parca": "Arka kafa kabugu",
+     "hedef_modul": "omuz_sag govde",
+     "hedef": "Yuva baglanti civatasi M6x16",
+     "bosluk_mm": 51.62,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    "omuz_sol govde": {
+     "kafa_grup": "Kafa",
+     "kafa_poz": [
+      30.0,
+      -25.0
+     ],
+     "parca": "Arka kafa kabugu",
+     "hedef_modul": "omuz_sol govde",
+     "hedef": "Yuva baglanti civatasi M6x16",
+     "bosluk_mm": 51.62,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    }
+   },
+   "en_kucuk_aralik_disi": {
+    "kabuk": {
+     "kafa_grup": "Kafa",
+     "kafa_poz": [
+      -180.0,
+      -25.0
+     ],
+     "parca": "Arka kafa kabugu",
+     "hedef_modul": "kabuk",
+     "hedef": "Omuz bandi sag",
+     "bosluk_mm": 54.19,
+     "hacim_mm3": 0.0,
+     "aralikta": false
+    },
+    "iskelet": {
+     "kafa_grup": "Pan",
+     "kafa_poz": [
+      -180.0
+     ],
+     "parca": "Pan horn merkez vidasi M3",
+     "hedef_modul": "iskelet",
+     "hedef": "Omuz traversi",
+     "bosluk_mm": 43.05,
+     "hacim_mm3": 0.0,
+     "aralikta": false
+    },
+    "omuz_sag govde": {
+     "kafa_grup": "Kafa",
+     "kafa_poz": [
+      -150.0,
+      -25.0
+     ],
+     "parca": "Arka kafa kabugu",
+     "hedef_modul": "omuz_sag govde",
+     "hedef": "Yuva baglanti civatasi M6x16",
+     "bosluk_mm": 51.62,
+     "hacim_mm3": 0.0,
+     "aralikta": false
+    },
+    "omuz_sol govde": {
+     "kafa_grup": "Kafa",
+     "kafa_poz": [
+      150.0,
+      -25.0
+     ],
+     "parca": "Arka kafa kabugu",
+     "hedef_modul": "omuz_sol govde",
+     "hedef": "Yuva baglanti civatasi M6x16",
+     "bosluk_mm": 51.62,
+     "hacim_mm3": 0.0,
+     "aralikta": false
+    }
+   },
+   "en_kucuk_ciftler_aralikta": [
+    {
+     "kafa_grup": "Govde",
+     "kafa_poz": [],
+     "parca": "Boyun plakasi",
+     "hedef_modul": "iskelet (kafa govdesi)",
+     "hedef": "Omuz traversi",
+     "bosluk_mm": 0.0,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "kafa_grup": "Govde",
+     "kafa_poz": [],
+     "parca": "Cekic somun M6 (travers ust kanali)",
+     "hedef_modul": "iskelet (kafa govdesi)",
+     "hedef": "Omuz traversi",
+     "bosluk_mm": 0.0,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "kafa_grup": "Govde",
+     "kafa_poz": [],
+     "parca": "Boyun civatasi M6x20",
+     "hedef_modul": "iskelet (kafa govdesi)",
+     "hedef": "Omuz traversi",
+     "bosluk_mm": 1.4,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "kafa_grup": "Govde",
+     "kafa_poz": [],
+     "parca": "Servo yuvasi",
+     "hedef_modul": "iskelet (kafa govdesi)",
+     "hedef": "Omuz traversi",
+     "bosluk_mm": 3.0,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "kafa_grup": "Govde",
+     "kafa_poz": [],
+     "parca": "Boyun plakasi",
+     "hedef_modul": "kabuk (kafa govdesi)",
+     "hedef": "Omuz bandi sag",
+     "bosluk_mm": 8.41,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "kafa_grup": "Govde",
+     "kafa_poz": [],
+     "parca": "Boyun plakasi",
+     "hedef_modul": "kabuk (kafa govdesi)",
+     "hedef": "Omuz bandi sol",
+     "bosluk_mm": 8.41,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "kafa_grup": "Govde",
+     "kafa_poz": [],
+     "parca": "Servo yuvasi",
+     "hedef_modul": "kabuk (kafa govdesi)",
+     "hedef": "Omuz bandi sag",
+     "bosluk_mm": 11.81,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "kafa_grup": "Govde",
+     "kafa_poz": [],
+     "parca": "Servo yuvasi",
+     "hedef_modul": "kabuk (kafa govdesi)",
+     "hedef": "Omuz bandi sol",
+     "bosluk_mm": 11.81,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "kafa_grup": "Govde",
+     "kafa_poz": [],
+     "parca": "Boyun civata pulu M6",
+     "hedef_modul": "kabuk (kafa govdesi)",
+     "hedef": "Omuz bandi sag",
+     "bosluk_mm": 16.0,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "kafa_grup": "Govde",
+     "kafa_poz": [],
+     "parca": "Boyun civata pulu M6",
+     "hedef_modul": "kabuk (kafa govdesi)",
+     "hedef": "Omuz bandi sol",
+     "bosluk_mm": 16.0,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "kafa_grup": "Govde",
+     "kafa_poz": [],
+     "parca": "Boyun civatasi M6x20",
+     "hedef_modul": "kabuk (kafa govdesi)",
+     "hedef": "Omuz bandi sag",
+     "bosluk_mm": 17.0,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "kafa_grup": "Govde",
+     "kafa_poz": [],
+     "parca": "Boyun civatasi M6x20",
+     "hedef_modul": "kabuk (kafa govdesi)",
+     "hedef": "Omuz bandi sol",
+     "bosluk_mm": 17.0,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    }
+   ],
+   "sure_s": 19.3
+  },
+  "kol": {},
+  "not_": "kafa pozu = (pan, tilt); kol pozu = (one-arka, yana, dirsek, bilek); alt poz: kafa Govde (), Pan (pan), Kafa (pan, tilt); kol Gobek (one-arka), Kol/UstKol (one-arka, yana), OnKol (+dirsek), El (+bilek). Eklem araligi: kafa pan +-90, tilt -25...30 ve kol araligi; aralik disi = kafa pan +-90 disi ya da tilt 40 (serbest -25...40) ya da kol ince komsulugu disi. Olculmeyen ciftlerin boslugu >= 100 mm (sinir kutusu).",
+  "sure_s": 19.3
+ }
+}

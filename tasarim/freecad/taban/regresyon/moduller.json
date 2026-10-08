@@ -1,0 +1,34 @@
+{
+ "tarih": "2026-10-08",
+ "yontem": "kabuk_parcalar, dirsek_parcalar, kafa_parcalar once git HEAD arayuz.py (taban eklenmeden), sonra guncel arayuz.py ile import edildi; parca adlari/sirasi, hacim, sinir kutusu, kutle karsilastirildi",
+ "moduller": {
+  "kabuk": {
+   "parca_once": 202,
+   "parca_sonra": 202,
+   "adlar_ayni": true,
+   "hacim_fark_mm3": 0.0,
+   "bb_fark_mm": 0.0,
+   "kutle_fark_g": 0.0,
+   "toplam_hacim_mm3": 3831076.6
+  },
+  "dirsek": {
+   "parca_once": 53,
+   "parca_sonra": 53,
+   "adlar_ayni": true,
+   "hacim_fark_mm3": 0.0,
+   "bb_fark_mm": 0.0,
+   "kutle_fark_g": 0.0,
+   "toplam_hacim_mm3": 263473.1
+  },
+  "kafa": {
+   "parca_once": 99,
+   "parca_sonra": 99,
+   "adlar_ayni": true,
+   "hacim_fark_mm3": 0.0,
+   "bb_fark_mm": 0.0,
+   "kutle_fark_g": 0.0,
+   "toplam_hacim_mm3": 976985.3
+  }
+ },
+ "hepsi_ayni": true
+}

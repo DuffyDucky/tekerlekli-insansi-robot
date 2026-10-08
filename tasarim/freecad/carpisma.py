@@ -1,23 +1,59 @@
 # Moduller arasi carpisma kontrolu (FreeCAD 1.1). arayuz.MODULLER yerlesimiyle modulleri global koordinata
 # koyar, (1) ev pozunda tum modul ciftlerini, (2) her hareketli modulun tum tarama pozlarinda hareketli
 # parcalarini diger modullere karsi, (3) henuz cizilmemis modullerin ayrilmis bolgelerini (arayuz.BOLGELER)
-# tarar, (4) kol zincirini (omuz S1 x S2 x dirsek x bilek; dirsek modulu omuzun Kol grubuna bagli) iskelet, kabuk,
+# tarar, (4) kol zincirini (omuz S1 x S2 x dirsek x bilek; dirsek modulu omuzun Kol grubuna bagli) iskelet, kabuk, taban,
 # ayrilmis bolgeler ve kendi omuzunun govde/gobegine karsi, iki kolu da birbirine karsi tarar, (4b) kafayi (pan x tilt)
-# sabit modullere (iskelet, kabuk R62 ust kapak, omuz govdeleri, bolgeler) ve iki kolun pozlarina (omuz + dirsek) karsi tarar.
+# sabit modullere (iskelet, kabuk R62 ust kapak, omuz govdeleri, taban, bolgeler) ve iki kolun pozlarina (omuz + dirsek) karsi
+# tarar, (4c) tabani: ev pozunda tum modullere (cakisma, temas, en kucuk bosluk), iki kolun tum pozlarina (acil stop, sonar,
+# ana anahtar dugmesi, etek ustu) ve kafaya (sinir kutusu) karsi.
 # Yeni modul eklemek: MODUL_YUKLE'ye bir yukleyici ekle (parcalar + hareket + haric listesi).
-# Calistir: FC_SCRIPT=<bu dosya> freecadcmd run_fc.py   ->  carpisma-sonuc.json
-import os, sys, json, time, math
+#
+# Bolumlu kosu (bellek): CARPISMA_BOLUM ortam degiskeni hangi bolumlerin bu surecte kosacagini secer:
+#   statik | omuz | kol_sag | kol_sol | kolkol | kafa_sabit | kafa_sag | kafa_sol | taban   (virgulle birden cok)
+#   kisaltmalar: kol = kol_sag,kol_sol; kafa = kafa_sabit,kafa_sag,kafa_sol; hepsi = tum bolumler tek surecte (eski yol)
+# Her bolum yalniz gerektigi modulleri yukler ve sonucunu carpisma-bolum/<bolum>.json'a yazar (kosu zamani, sure, tepe bellek).
+# Tam sonuc carpisma-bolum/*.json birlestirilerek uretilir: carpisma_kos.py (sistem Python'u) bolumleri SIRAYLA ayri
+# freecadcmd sureclerinde kosar ve sonunda birlestirir -> carpisma-sonuc.json. Tek bolum: CARPISMA_BOLUM=taban ile bu betik,
+# ardindan "python carpisma_kos.py birlestir".
+# Calistir: FC_SCRIPT=<bu dosya> CARPISMA_BOLUM=<bolum> freecadcmd run_fc.py
+import os, sys, json, time, math, gc, datetime
+from collections import OrderedDict
 import FreeCAD as App
 import Part
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+
+
+def bellek_mb():
+    """(tepe calisma kumesi, simdiki calisma kumesi, tepe sayfa dosyasi) MB; Windows disinda None."""
+    try:
+        import ctypes
+        from ctypes import wintypes
+
+        class PMC(ctypes.Structure):
+            _fields_ = [("cb", wintypes.DWORD), ("PageFaultCount", wintypes.DWORD)] + [(n, ctypes.c_size_t) for n in (
+                "PeakWorkingSetSize", "WorkingSetSize", "QuotaPeakPagedPoolUsage", "QuotaPagedPoolUsage",
+                "QuotaPeakNonPagedPoolUsage", "QuotaNonPagedPoolUsage", "PagefileUsage", "PeakPagefileUsage")]
+        k32 = ctypes.windll.kernel32
+        k32.GetCurrentProcess.restype = wintypes.HANDLE
+        ps = ctypes.windll.psapi
+        ps.GetProcessMemoryInfo.argtypes = [wintypes.HANDLE, ctypes.POINTER(PMC), wintypes.DWORD]
+        c = PMC()
+        c.cb = ctypes.sizeof(c)
+        ps.GetProcessMemoryInfo(k32.GetCurrentProcess(), ctypes.byref(c), c.cb)
+        return (round(c.PeakWorkingSetSize / 2 ** 20), round(c.WorkingSetSize / 2 ** 20), round(c.PeakPagefileUsage / 2 ** 20))
+    except Exception:
+        return (None, None, None)
+
+
 for _p in (HERE, os.path.join(HERE, "iskelet"), os.path.join(HERE, "omuz"), os.path.join(HERE, "kabuk"),
-           os.path.join(HERE, "dirsek"), os.path.join(HERE, "kafa")):
+           os.path.join(HERE, "dirsek"), os.path.join(HERE, "kafa"), os.path.join(HERE, "taban")):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 import arayuz as A
 from ortak_lib import V, box
+import carpisma_kos as CK
 
 t0 = time.time()
 TOL = 0.5   # mm3 (omuz ve iskelet kontrolleriyle ayni)
@@ -79,11 +115,32 @@ def yukle_kafa():
                 haric_neden="kablo demeti gosterimi (Referans grubu, 0 g); carpisma taramasina girmez")
 
 
+def yukle_taban():
+    """Taban: tum parcalar sabit (yerel = global). Kablo yolu semalari (Referans, 0 g) taramaya girmez. Ana anahtar dugmesi
+    gosterimi (Referans; etek plakasinda kabuk deligi gerekir) statik kontrollerde haric (deliksiz kabukla cakisir), ama
+    kol x taban taramasinda (bolum 4c) hedef olarak kullanilir (gercekte etek ustune ~22 mm tasar)."""
+    import taban_parcalar as TP
+    return dict(parcalar=[dict(ad=p["ad"], grup="sabit", shape=p["shape"], kutle=p["kutle"], merkez=p["merkez"], tgrup=p["grup"],
+                               tur=p["tur"]) for p in TP.P],
+                hareket=None, haric=["Kablo yolu", "Ana anahtar dugmesi"],
+                haric_neden="kablo yolu semalari ve ana anahtar dugmesi gosterimi (Referans grubu, 0 g); dugme kol x taban "
+                            "taramasinda (bolum 4c) hedef")
+
+
 MODUL_YUKLE = {"iskelet": yukle_iskelet, "omuz_sag": yukle_omuz, "omuz_sol": yukle_omuz, "kabuk": yukle_kabuk,
-               "dirsek_sag": yukle_dirsek("sag"), "dirsek_sol": yukle_dirsek("sol"), "kafa": yukle_kafa}
-KONTROL = ["iskelet", "omuz_sag", "omuz_sol", "kabuk", "dirsek_sag", "dirsek_sol", "kafa"]   # sonraki modul (taban) buraya eklenir
-# Gelistirme kisayolu: CRP_YALNIZ_KAFA=1 bolum 3-4'u (omuz ve kol zinciri, ~35 dk) atlar, ciktiyi CRP_CIKTI'ya yazar.
-YALNIZ_KAFA = bool(os.environ.get("CRP_YALNIZ_KAFA"))
+               "dirsek_sag": yukle_dirsek("sag"), "dirsek_sol": yukle_dirsek("sol"), "kafa": yukle_kafa, "taban": yukle_taban}
+KONTROL = ["iskelet", "omuz_sag", "omuz_sol", "kabuk", "dirsek_sag", "dirsek_sol", "kafa", "taban"]
+
+# ---------------------------------------------------------------------- bolum secimi (bkz. bas not)
+BOLUMLER = CK.BOLUMLER
+BOLUM = CK.bolum_coz(os.environ.get("CARPISMA_BOLUM") or "hepsi")
+GEREK = set()
+for _b in BOLUM:
+    GEREK |= set(CK.GEREK_MODUL[_b])
+# Gelistirme testi: CARPISMA_KISA=1 kafa x kol taramasini yasak bolge cevresine daraltir (kol one >= 120, yana <= 15, dirsek >= 90;
+# pan -60...60); sonuc carpisma-bolum/<bolum>-kisa.json'a yazilir, birlestirmeye girmez.
+KISA = bool(os.environ.get("CARPISMA_KISA"))
+print("bolum:", ",".join(BOLUM), "(KISA test)" if KISA else "", "| moduller:", ",".join(a for a in KONTROL if a in GEREK), flush=True)
 
 
 def ozel(d):
@@ -105,6 +162,8 @@ def global_matris(ad):
 
 MODUL = {}
 for ad in KONTROL:
+    if ad not in GEREK:
+        continue
     d = MODUL_YUKLE[ad]()
     T, R = global_matris(ad)
     for p in d["parcalar"]:
@@ -150,151 +209,182 @@ def aktif(d):
     return [p for p in d["parcalar"] if not p["haric"]]
 
 
-# ====================================================================== 1) arayuz uyumu: omuzun traversi = iskeletin traversi
-uyum = []
-isk_tr = next(p for p in MODUL["iskelet"]["parcalar"] if p["ad"] == "Omuz traversi")
-for ad in ("omuz_sag", "omuz_sol"):
-    o_tr = next(p for p in MODUL[ad]["parcalar"] if p["ad"].startswith("Omuz traversi"))
-    ortak = o_tr["g"].common(isk_tr["g"]).Volume
-    bbd = max(abs(getattr(o_tr["gbb"], k) - getattr(isk_tr["gbb"], k)) for k in ("XMin", "XMax", "YMin", "YMax", "ZMin", "ZMax"))
-    uyum.append(dict(modul=ad, hacim_omuz=round(o_tr["g"].Volume, 3), hacim_iskelet=round(isk_tr["g"].Volume, 3),
-                     ortak=round(ortak, 3), sinir_kutusu_fark=round(bbd, 6),
-                     ayni=abs(ortak - isk_tr["g"].Volume) < 1e-3 and bbd < 1e-6))
-print("arayuz uyumu:", [(u["modul"], u["ayni"]) for u in uyum])
-
-# ====================================================================== 2) ev pozunda modul ciftleri
 adlar = list(MODUL)
-statik = []
-n_statik = 0
-for i in range(len(adlar)):
-    for j in range(i + 1, len(adlar)):
-        for a in aktif(MODUL[adlar[i]]):
-            for b in aktif(MODUL[adlar[j]]):
-                if a["gbb"].intersect(b["gbb"]):
-                    n_statik += 1
-                v = kesisim(a["g"], b["g"], a["gbb"], b["gbb"])
-                if v > TOL or v < 0:
-                    statik.append(dict(a=adlar[i], pa=a["ad"], b=adlar[j], pb=b["ad"], hacim=round(v, 2)))
-print("ev pozu: %d cakisma (%d sinir kutusu kesisen cift)" % (len(statik), n_statik), "%.1fs" % (time.time() - t0))
 
-# ====================================================================== 3) hareket taramasi
-zarf = {}
-for ad in adlar:
-    d = MODUL[ad]
-    if not d["hareket"] or YALNIZ_KAFA:
-        continue
-    gruplar = sorted(set(p["grup"] for p in aktif(d) if p["grup"] != "sabit"))
-    bb = None
-    for poz in d["hareket"]["pozlar"]:
-        for g in gruplar:
-            M = poz_matrisi(ad, poz, g)
-            for p in aktif(d):
-                if p["grup"] != g:
-                    continue
-                s = p["g"].copy()
-                s.transformShape(M)
-                if bb is None:
-                    bb = App.BoundBox(s.BoundBox)
-                else:
-                    bb.add(s.BoundBox)
-    zarf[ad] = bb
-    print("zarf", ad, "x %.0f...%.0f y %.0f...%.0f z %.0f...%.0f" % (bb.XMin, bb.XMax, bb.YMin, bb.YMax, bb.ZMin, bb.ZMax))
 
-# uzaklik icin yuz listesi: sabit hedef parcanin hareket zarflarina (30 mm payli) yakin yuzleri ve sinir kutulari. Her
-# pozda yalniz hareketli parcanin 30 mm kutusuna giren yuzlere distToShape: cakismayan iki sekil arasindaki en kucuk uzaklik
-# sinirlarda olculdugu icin sonuc ayni, buyuk (B-spline yuzlu) kabuk parcalarinda tarama cok hizlanir.
-_zarf30 = []
-for _b in zarf.values():
-    _z = App.BoundBox(_b)
-    _z.enlarge(30)
-    _zarf30.append(_z)
-for ad in adlar:
-    if MODUL[ad]["hareket"] or ozel(MODUL[ad]):
-        continue
-    for q in aktif(MODUL[ad]):
-        q["yuz"] = [] if not any(z.intersect(q["gbb"]) for z in _zarf30) else             [(f, f.BoundBox) for f in q["g"].Faces if any(z.intersect(f.BoundBox) for z in _zarf30)]
-# kabuk (buyuk sabit kabuk) icin en kucuk bosluk yalniz eklem araligindaki pozlarda olculur; cakisma tum pozlarda
-YALNIZ_ARALIKTA = ("kabuk",)
+# ====================================================================== 1-2) statik bolum: arayuz uyumu, ev pozu, kutle
+def b_statik():
+    # ====================================================================== 1) arayuz uyumu: omuzun traversi = iskeletin traversi
+    uyum = []
+    isk_tr = next(p for p in MODUL["iskelet"]["parcalar"] if p["ad"] == "Omuz traversi")
+    for ad in ("omuz_sag", "omuz_sol"):
+        o_tr = next(p for p in MODUL[ad]["parcalar"] if p["ad"].startswith("Omuz traversi"))
+        ortak = o_tr["g"].common(isk_tr["g"]).Volume
+        bbd = max(abs(getattr(o_tr["gbb"], k) - getattr(isk_tr["gbb"], k)) for k in ("XMin", "XMax", "YMin", "YMax", "ZMin", "ZMax"))
+        uyum.append(dict(modul=ad, hacim_omuz=round(o_tr["g"].Volume, 3), hacim_iskelet=round(isk_tr["g"].Volume, 3),
+                         ortak=round(ortak, 3), sinir_kutusu_fark=round(bbd, 6),
+                         ayni=abs(ortak - isk_tr["g"].Volume) < 1e-3 and bbd < 1e-6))
+    print("arayuz uyumu:", [(u["modul"], u["ayni"]) for u in uyum])
 
-tarama = {}
-for ad in adlar:
-    d = MODUL[ad]
-    if not d["hareket"] or YALNIZ_KAFA:
-        continue
-    hedef = []          # diger modullerin ev pozu parcalari (hareketli diger modul: zarflar kesisiyorsa ortak tarama)
-    ortak_gerekli = []
-    for bd in adlar:
-        if bd == ad:
-            continue
-        if MODUL[bd]["hareket"]:
-            if zarf[ad].intersect(zarf[bd]):
-                ortak_gerekli.append(bd)
-            continue     # zarflar ayriksa hicbir pozda carpisamazlar
-        if ozel(MODUL[bd]):
-            continue     # dirsek: kolla birlikte hareket eder, kol zinciri taramasinda (bolum 4); kafa: bolum 4b
-        hedef += [(bd, p) for p in aktif(MODUL[bd])]
-    hareketli = [p for p in aktif(d) if p["grup"] != "sabit"]
-    cak = {}
-    n_test = 0
-    yakin = (1e9, None)     # en kucuk bosluk: 30 mm icindeki adaylar icin distToShape
-    ea = d["hareket"]["eklem_araligi"]
-    mod_yakin = {}          # hedef modul -> eklem araligindaki en kucuk bosluk
-    mod_cak = {}            # hedef modul -> cakisan pozlar
-    for poz in d["hareket"]["pozlar"]:
-        tasinmis = []
-        for p in hareketli:
-            s = p["g"].copy()
-            s.transformShape(poz_matrisi(ad, poz, p["grup"]))
-            tasinmis.append((p, s, s.BoundBox))
-        hits = []
-        for p, s, sbb in tasinmis:
-            bb30 = App.BoundBox(sbb)
-            bb30.enlarge(30)
-            for bd, q in hedef:
-                if not bb30.intersect(q["gbb"]):
-                    continue
-                v = 0.0
-                if sbb.intersect(q["gbb"]):
-                    n_test += 1
-                    v = kesisim(s, q["g"], sbb, q["gbb"])
+    # ====================================================================== 2) ev pozunda modul ciftleri
+    statik = []
+    n_statik = 0
+    for i in range(len(adlar)):
+        for j in range(i + 1, len(adlar)):
+            for a in aktif(MODUL[adlar[i]]):
+                for b in aktif(MODUL[adlar[j]]):
+                    if a["gbb"].intersect(b["gbb"]):
+                        n_statik += 1
+                    v = kesisim(a["g"], b["g"], a["gbb"], b["gbb"])
                     if v > TOL or v < 0:
-                        hits.append((p["ad"], bd, q["ad"], round(v, 1)))
-                        mod_cak.setdefault(bd, set()).add(poz)
-                if bd in YALNIZ_ARALIKTA and not ea(poz) and not (v > TOL or v < 0):
-                    continue
-                yz = [f for f, fb in q["yuz"] if bb30.intersect(fb)]
-                if yz or v > TOL or v < 0:
-                    dd = 0.0 if (v > TOL or v < 0) else s.distToShape(Part.Compound(yz) if len(yz) > 1 else yz[0])[0]
-                    if dd < yakin[0]:
-                        yakin = (dd, (poz, p["ad"], bd, q["ad"]))
-                    if ea(poz) and dd < mod_yakin.get(bd, (1e9,))[0]:
-                        mod_yakin[bd] = (dd, (poz, p["ad"], q["ad"]))
-        # hareketli diger moduller (zarflari kesisiyorsa): onlarin tum pozlariyla
-        for bd in ortak_gerekli:
-            for poz2 in MODUL[bd]["hareket"]["pozlar"]:
-                for q in [x for x in aktif(MODUL[bd]) if x["grup"] != "sabit"]:
-                    s2 = q["g"].copy()
-                    s2.transformShape(poz_matrisi(bd, poz2, q["grup"]))
-                    for p, s, sbb in tasinmis:
-                        v = kesisim(s, s2, sbb, s2.BoundBox)
+                        statik.append(dict(a=adlar[i], pa=a["ad"], b=adlar[j], pb=b["ad"], hacim=round(v, 2)))
+    print("ev pozu: %d cakisma (%d sinir kutusu kesisen cift)" % (len(statik), n_statik), "%.1fs" % (time.time() - t0))
+    # toplam kutle ve agirlik merkezi (ev pozu)
+    m_top, cg = 0.0, V(0, 0, 0)
+    km = {}
+    for ad in KONTROL:
+        mm = 0.0
+        for p in MODUL[ad]["parcalar"]:
+            if p["haric"] or p["kutle"] <= 0:
+                continue
+            m_top += p["kutle"]
+            mm += p["kutle"]
+            cg = cg + p["gmerkez"] * p["kutle"]
+        km[ad] = round(mm, 1)
+    cg = cg * (1.0 / m_top)
+    print("kutle %.1f g, AM (%.2f, %.2f, %.2f)" % (m_top, cg.x, cg.y, cg.z), flush=True)
+    return dict(
+        moduller=[dict(ad=ad, konum=list(A.MODULLER[ad]["konum"]), ayna=A.MODULLER[ad]["ayna"], parca=len(MODUL[ad]["parcalar"]),
+                       haric=[p["ad"] for p in MODUL[ad]["parcalar"] if p["haric"]], haric_neden=MODUL[ad]["haric_neden"],
+                       hareketli=bool(MODUL[ad]["hareket"]) or ozel(MODUL[ad]),
+                       bagli=(MODUL[ad].get("zincir") or {}).get("omuz")) for ad in KONTROL],
+        ayrilmis_bolge=dict(sayi=len(bolge_parca), sahipler=sorted(set(z["sahip"] for z in A.bolgeler(haric=KONTROL)))),
+        arayuz_uyumu=uyum, ev_pozu_cakisma=statik, ev_pozu_kesisen_cift=n_statik,
+        kutle_g=km, kutle_toplam_g=round(m_top, 1), agirlik_merkezi=[round(cg.x, 2), round(cg.y, 2), round(cg.z, 2)])
+
+
+# ====================================================================== 3) hareket taramasi (omuz bolumu)
+def b_omuz():
+    zarf = {}
+    for ad in adlar:
+        d = MODUL[ad]
+        if not d["hareket"]:
+            continue
+        gruplar = sorted(set(p["grup"] for p in aktif(d) if p["grup"] != "sabit"))
+        bb = None
+        for poz in d["hareket"]["pozlar"]:
+            for g in gruplar:
+                M = poz_matrisi(ad, poz, g)
+                for p in aktif(d):
+                    if p["grup"] != g:
+                        continue
+                    s = p["g"].copy()
+                    s.transformShape(M)
+                    if bb is None:
+                        bb = App.BoundBox(s.BoundBox)
+                    else:
+                        bb.add(s.BoundBox)
+        zarf[ad] = bb
+        print("zarf", ad, "x %.0f...%.0f y %.0f...%.0f z %.0f...%.0f" % (bb.XMin, bb.XMax, bb.YMin, bb.YMax, bb.ZMin, bb.ZMax))
+
+    # uzaklik icin yuz listesi: sabit hedef parcanin hareket zarflarina (30 mm payli) yakin yuzleri ve sinir kutulari. Her
+    # pozda yalniz hareketli parcanin 30 mm kutusuna giren yuzlere distToShape: cakismayan iki sekil arasindaki en kucuk uzaklik
+    # sinirlarda olculdugu icin sonuc ayni, buyuk (B-spline yuzlu) kabuk parcalarinda tarama cok hizlanir.
+    _zarf30 = []
+    for _b in zarf.values():
+        _z = App.BoundBox(_b)
+        _z.enlarge(30)
+        _zarf30.append(_z)
+    for ad in adlar:
+        if MODUL[ad]["hareket"] or ozel(MODUL[ad]):
+            continue
+        for q in aktif(MODUL[ad]):
+            q["yuz"] = [] if not any(z.intersect(q["gbb"]) for z in _zarf30) else             [(f, f.BoundBox) for f in q["g"].Faces if any(z.intersect(f.BoundBox) for z in _zarf30)]
+    # kabuk (buyuk sabit kabuk) icin en kucuk bosluk yalniz eklem araligindaki pozlarda olculur; cakisma tum pozlarda
+    YALNIZ_ARALIKTA = ("kabuk",)
+
+    tarama = {}
+    for ad in adlar:
+        d = MODUL[ad]
+        if not d["hareket"]:
+            continue
+        hedef = []          # diger modullerin ev pozu parcalari (hareketli diger modul: zarflar kesisiyorsa ortak tarama)
+        ortak_gerekli = []
+        for bd in adlar:
+            if bd == ad:
+                continue
+            if MODUL[bd]["hareket"]:
+                if zarf[ad].intersect(zarf[bd]):
+                    ortak_gerekli.append(bd)
+                continue     # zarflar ayriksa hicbir pozda carpisamazlar
+            if ozel(MODUL[bd]):
+                continue     # dirsek: kolla birlikte hareket eder, kol zinciri taramasinda (bolum 4); kafa: bolum 4b
+            hedef += [(bd, p) for p in aktif(MODUL[bd])]
+        hareketli = [p for p in aktif(d) if p["grup"] != "sabit"]
+        cak = {}
+        n_test = 0
+        yakin = (1e9, None)     # en kucuk bosluk: 30 mm icindeki adaylar icin distToShape
+        ea = d["hareket"]["eklem_araligi"]
+        mod_yakin = {}          # hedef modul -> eklem araligindaki en kucuk bosluk
+        mod_cak = {}            # hedef modul -> cakisan pozlar
+        for poz in d["hareket"]["pozlar"]:
+            tasinmis = []
+            for p in hareketli:
+                s = p["g"].copy()
+                s.transformShape(poz_matrisi(ad, poz, p["grup"]))
+                tasinmis.append((p, s, s.BoundBox))
+            hits = []
+            for p, s, sbb in tasinmis:
+                bb30 = App.BoundBox(sbb)
+                bb30.enlarge(30)
+                for bd, q in hedef:
+                    if not bb30.intersect(q["gbb"]):
+                        continue
+                    v = 0.0
+                    if sbb.intersect(q["gbb"]):
+                        n_test += 1
+                        v = kesisim(s, q["g"], sbb, q["gbb"])
                         if v > TOL or v < 0:
-                            hits.append((p["ad"], bd + "@%s" % (poz2,), q["ad"], round(v, 1)))
-        if hits:
-            cak[poz] = hits
-        n_poz_bitti = d["hareket"]["pozlar"].index(poz) + 1
-        if n_poz_bitti % 125 == 0:
-            print("  %s %d/%d poz, %.0fs" % (ad, n_poz_bitti, len(d["hareket"]["pozlar"]), time.time() - t0), flush=True)
-    tarama[ad] = dict(poz_sayisi=len(d["hareket"]["pozlar"]), cakisan_poz=len(cak),
-                      eklem_araliginda_cakisan=sum(1 for k in cak if ea(k)), kesisim_testi=n_test,
-                      ortak_tarama=ortak_gerekli, aciklama=d["hareket"]["aciklama"],
-                      en_kucuk_bosluk_mm=round(yakin[0], 2), en_yakin=yakin[1],
-                      cakismalar={"%s" % (k,): v for k, v in list(cak.items())[:50]},
-                      modul_bosluk_eklem_araliginda={k: [round(v[0], 2), v[1]] for k, v in mod_yakin.items()},
-                      modul_cakisan_poz={k: sorted([list(x) for x in v]) for k, v in mod_cak.items()},
-                      bosluk_notu="kabuk icin en kucuk bosluk yalniz eklem araligindaki pozlarda olculdu (cakisma tum pozlarda)")
-    print("tarama", ad, "%d poz, %d cakisan (eklem araliginda %d), %d kesisim testi, en kucuk bosluk %.1f mm %s" %
-          (len(d["hareket"]["pozlar"]), len(cak), tarama[ad]["eklem_araliginda_cakisan"], n_test, yakin[0], yakin[1]),
-          "%.1fs" % (time.time() - t0))
+                            hits.append((p["ad"], bd, q["ad"], round(v, 1)))
+                            mod_cak.setdefault(bd, set()).add(poz)
+                    if bd in YALNIZ_ARALIKTA and not ea(poz) and not (v > TOL or v < 0):
+                        continue
+                    yz = [f for f, fb in q["yuz"] if bb30.intersect(fb)]
+                    if yz or v > TOL or v < 0:
+                        dd = 0.0 if (v > TOL or v < 0) else s.distToShape(Part.Compound(yz) if len(yz) > 1 else yz[0])[0]
+                        if dd < yakin[0]:
+                            yakin = (dd, (poz, p["ad"], bd, q["ad"]))
+                        if ea(poz) and dd < mod_yakin.get(bd, (1e9,))[0]:
+                            mod_yakin[bd] = (dd, (poz, p["ad"], q["ad"]))
+            # hareketli diger moduller (zarflari kesisiyorsa): onlarin tum pozlariyla
+            for bd in ortak_gerekli:
+                for poz2 in MODUL[bd]["hareket"]["pozlar"]:
+                    for q in [x for x in aktif(MODUL[bd]) if x["grup"] != "sabit"]:
+                        s2 = q["g"].copy()
+                        s2.transformShape(poz_matrisi(bd, poz2, q["grup"]))
+                        for p, s, sbb in tasinmis:
+                            v = kesisim(s, s2, sbb, s2.BoundBox)
+                            if v > TOL or v < 0:
+                                hits.append((p["ad"], bd + "@%s" % (poz2,), q["ad"], round(v, 1)))
+            if hits:
+                cak[poz] = hits
+            n_poz_bitti = d["hareket"]["pozlar"].index(poz) + 1
+            if n_poz_bitti % 125 == 0:
+                print("  %s %d/%d poz, %.0fs" % (ad, n_poz_bitti, len(d["hareket"]["pozlar"]), time.time() - t0), flush=True)
+        tarama[ad] = dict(poz_sayisi=len(d["hareket"]["pozlar"]), cakisan_poz=len(cak),
+                          eklem_araliginda_cakisan=sum(1 for k in cak if ea(k)), kesisim_testi=n_test,
+                          ortak_tarama=ortak_gerekli, aciklama=d["hareket"]["aciklama"],
+                          en_kucuk_bosluk_mm=round(yakin[0], 2), en_yakin=yakin[1],
+                          cakismalar={"%s" % (k,): v for k, v in list(cak.items())[:50]},
+                          modul_bosluk_eklem_araliginda={k: [round(v[0], 2), v[1]] for k, v in mod_yakin.items()},
+                          modul_cakisan_poz={k: sorted([list(x) for x in v]) for k, v in mod_cak.items()},
+                          bosluk_notu="kabuk icin en kucuk bosluk yalniz eklem araligindaki pozlarda olculdu (cakisma tum pozlarda)")
+        print("tarama", ad, "%d poz, %d cakisan (eklem araliginda %d), %d kesisim testi, en kucuk bosluk %.1f mm %s" %
+              (len(d["hareket"]["pozlar"]), len(cak), tarama[ad]["eklem_araliginda_cakisan"], n_test, yakin[0], yakin[1]),
+              "%.1fs" % (time.time() - t0))
+    return dict(zarf={k: [round(v.XMin, 1), round(v.XMax, 1), round(v.YMin, 1), round(v.YMax, 1), round(v.ZMin, 1), round(v.ZMax, 1)]
+                      for k, v in zarf.items()}, tarama=tarama)
+
 
 # ====================================================================== 4) kol zinciri taramasi (omuz S1 x S2 x dirsek x bilek)
 # Dirsek modulu omuzun Kol grubuna bagli: UstKol = Pp(phi) Pr(th), OnKol = UstKol Pe(dirsek), El = OnKol Pb(bilek)
@@ -599,12 +689,6 @@ def kol_tara(taraf):
     return sonuc
 
 
-kol_tarama = {}
-for _t in ("sag", "sol"):
-    if "dirsek_" + _t in MODUL and not YALNIZ_KAFA:
-        kol_tarama[_t] = kol_tara(_t)
-
-
 # ---------------------------------------------------------------------- kol <-> kol (iki kol ayni anda)
 def kol_parcalari(taraf):
     om, dr = "omuz_" + taraf, "dirsek_" + taraf
@@ -693,8 +777,6 @@ def kol_kol():
                      "sol kolda ayni acilar aynali hareket")
 
 
-kol_kol_sonuc = kol_kol() if all("dirsek_" + t in MODUL for t in ("sag", "sol")) and not YALNIZ_KAFA else None
-
 # ====================================================================== 4b) kafa taramasi (pan x tilt; sabit moduller + iki kol)
 # Kafa gruplari: Govde (traverse sabit), Pan = Ppan(psi), Kafa = Ppan(psi) Ptilt(th) (kafa_parcalar.grup_yer). Alt poz: Govde (),
 # Pan (psi,), Kafa (psi, th). (a) hareketli kafa parcalari x sabit hedefler (iskelet, kabuk, iki omuzun govdesi, bolgeler):
@@ -710,7 +792,9 @@ KAFA_KABA = (list(range(-180, 180, 15)), [-25, -10, 0, 10, 20, 30, 40])
 KAFA_INCE = ((-10, -5, 0, 5, 10), (-10, -5, 0, 5, 10))
 KAFA_GRUP_UZ = {"Govde": 0, "Pan": 1, "Kafa": 2}
 LIM_K = 100.0        # mm: kafa taramasi kutu on elemesi
-INCE_TUR = 6         # kafa x kol ince adim tur siniri
+INCE_TUR = 1         # kafa x kol genel ince adim turu (cakisan + INCE_ESIK alti ciftlerin +-10 derece komsulugu)
+SINIR_TUR = 40       # yasak bolge siniri: yalniz cakisan ciftlerin eksen komsulari (5 derece, bilek 15), yakinsayana dek
+ONBELLEK = 3000      # tasinmis sekil onbellegi (LRU) ust siniri: bellek
 JEST = [("ev", (0, 0, 0, 0)), ("selam (montaj gorseli)", (20, 100, 95, -60)), ("selam, kol yukarida", (0, 120, 105, 0)),
         ("selam, yan", (30, 90, 105, 90)), ("kafa kasima", (135, 30, 105, 0)), ("kafa kasima, bilek 90", (135, 45, 105, 90)),
         ("kafa kasima, yana 60", (120, 60, 105, -90)), ("kafa kasima, yana 15", (135, 15, 105, 0)), ("el yuze", (120, 0, 105, 0)),
@@ -862,7 +946,59 @@ def olc_iki(sa, sb_, B, fbb=None):
     return d, v
 
 
-def kafa_tara():
+class LRU(OrderedDict):
+    """Sinirli onbellek: en eski kullanilan oge atilir (tasinmis sekiller bellegi doldurmasin)."""
+
+    def __init__(s, n):
+        super().__init__()
+        s.n = n
+
+    def al(s, k):
+        if k in s:
+            s.move_to_end(k)
+            return s[k]
+        return None
+
+    def koy(s, k, v):
+        s[k] = v
+        if len(s) > s.n:
+            s.popitem(last=False)
+        return v
+
+
+def hafif(sh, M):
+    """Tasinmis sekil: geometri paylasilir (copy(False)), yalniz konum (Location) degisir; kati donusumde sonuc ayni."""
+    s = sh.copy(False)
+    s.transformShape(M)
+    return s
+
+
+def yasak_kurali(yasak):
+    """Yasak bolge tablosu: kol (grup, one-arka, yana, dirsek) basina bilek degerleri ve yasak kafa pan / tilt araligi."""
+    satir = {}
+    for (g, sp), y in yasak.items():
+        k = (g,) + tuple(sp[:3])
+        r = satir.setdefault(k, dict(kol_grup=g, one_arka=sp[0], yana=sp[1] if len(sp) > 1 else None,
+                                     dirsek=sp[2] if len(sp) > 2 else None, bilek=set(), pan=set(), tilt=set(), kafa_tum=False))
+        if len(sp) > 3:
+            r["bilek"].add(sp[3])
+        for x in y["kafa"]:
+            if len(x) == 1:
+                r["kafa_tum"] = True
+            if len(x) > 1:
+                r["pan"].add(x[1])
+            if len(x) > 2:
+                r["tilt"].add(x[2])
+    out = []
+    for k in sorted(satir):
+        r = satir[k]
+        out.append(dict(kol_grup=r["kol_grup"], one_arka=r["one_arka"], yana=r["yana"], dirsek=r["dirsek"], bilek=sorted(r["bilek"]),
+                        pan=[min(r["pan"]), max(r["pan"])] if r["pan"] else None, pan_degerleri=sorted(r["pan"]),
+                        tilt=[min(r["tilt"]), max(r["tilt"])] if r["tilt"] else None, kafa_tum_pozlar=r["kafa_tum"]))
+    return out
+
+
+def kafa_tara(kisimlar=("sabit", "sag", "sol")):
     ts0 = time.time()
     KP_ = aktif(MODUL["kafa"])
     T = MODUL["kafa"]["T"]
@@ -886,18 +1022,17 @@ def kafa_tara():
             kmc[(g, ksp)] = T.multiply(KPm.grup_yer(g, psi, th).toMatrix()).multiply(T.inverse())
         return kmc[(g, ksp)]
 
-    ksc = {}
+    ksc = LRU(ONBELLEK)
 
     def k_sekil(pi, ksp):
         k = (pi, ksp)
-        if k not in ksc:
+        r = ksc.al(k)
+        if r is None:
             p = KP_[pi]
-            s = p["g"].copy()
-            if ksp:
-                s.transformShape(k_mat(p["grup"], ksp))
+            s = hafif(p["g"], k_mat(p["grup"], ksp)) if ksp else p["g"]
             fs = s.Faces
-            ksc[k] = (s, np.array([bb6(f.BoundBox) for f in fs]) if len(fs) > ESIK_YUZ else None)
-        return ksc[k]
+            r = ksc.koy(k, (s, np.array([bb6(f.BoundBox) for f in fs]) if len(fs) > ESIK_YUZ else None))
+        return r
 
     def k_kutu(k):
         pi, ksp = k
@@ -908,6 +1043,8 @@ def kafa_tara():
         return tuple(float(x) for x in ksp_tam[:KAFA_GRUP_UZ[g]])
 
     kaba_k = [(float(a), float(b)) for a in KAFA_KABA[0] for b in KAFA_KABA[1]]
+    if KISA:
+        kaba_k = [k for k in kaba_k if -60 <= k[0] <= 60]
 
     def k_ince(ksp):
         rng = [[ksp[k] + dd for dd in KAFA_INCE[k]] for k in range(len(ksp))]
@@ -918,95 +1055,101 @@ def kafa_tara():
                 out.add(q)
         return out
 
-    # ------------------------------------------------------------ (a) kafa x sabit hedefler
-    sabit = []
-    for ad in adlar:
-        dd = MODUL[ad]
-        if ozel(dd):
-            continue
-        if dd["hareket"]:
-            if ad.startswith("omuz_"):
-                sabit += [dict(mod="%s govde" % ad, ad=q["ad"], g=q["g"], gbbF=q["gbb"], bb=bb6(q["gbb"])) for q in aktif(dd)
-                          if q["grup"] == "sabit"]
-            continue
-        sabit += [dict(mod=ad, ad=q["ad"], g=q["g"], gbbF=q["gbb"], bb=bb6(q["gbb"])) for q in aktif(dd)]
-    har_k = list(range(len(KP_)))      # Govde (sabit boyun) de: R62 halkasina ve traverse en kucuk bosluk (alt poz ())
+    sonuc_sabit = None
+    if "sabit" in kisimlar:
+        # ------------------------------------------------------------ (a) kafa x sabit hedefler
+        sabit = []
+        for ad in adlar:
+            dd = MODUL[ad]
+            if ozel(dd):
+                continue
+            if dd["hareket"]:
+                if ad.startswith("omuz_"):
+                    sabit += [dict(mod="%s govde" % ad, ad=q["ad"], g=q["g"], gbbF=q["gbb"], bb=bb6(q["gbb"])) for q in aktif(dd)
+                              if q["grup"] == "sabit"]
+                continue
+            sabit += [dict(mod=ad, ad=q["ad"], g=q["g"], gbbF=q["gbb"], bb=bb6(q["gbb"])) for q in aktif(dd)]
+        har_k = list(range(len(KP_)))      # Govde (sabit boyun) de: R62 halkasina ve traverse en kucuk bosluk (alt poz ())
 
-    def gmod(pi, j):
-        return sabit[j]["mod"] + (" (kafa govdesi)" if KP_[pi]["grup"] == "Govde" else "")
+        def gmod(pi, j):
+            return sabit[j]["mod"] + (" (kafa govdesi)" if KP_[pi]["grup"] == "Govde" else "")
 
-    def kat_s(i, j):
-        pi, ksp = KS.A[i]
-        return (gmod(pi, KS.B[j]), k_aralikta(ksp)), (KP_[pi]["grup"], ksp)
+        def kat_s(i, j):
+            pi, ksp = KS.A[i]
+            return (gmod(pi, KS.B[j]), k_aralikta(ksp)), (KP_[pi]["grup"], ksp)
 
-    def olc_s(i, j, B):
-        pi, ksp = KS.A[i]
-        return tam_olc(k_sekil(pi, ksp)[0], sabit[KS.B[j]], B)
+        def olc_s(i, j, B):
+            pi, ksp = KS.A[i]
+            return tam_olc(k_sekil(pi, ksp)[0], sabit[KS.B[j]], B)
 
-    KS = Kume(k_kutu, lambda j: sabit[j]["bb"], olc_s, kat_s)
-    ia_l = [KS.a((pi, k_alt(kk, KP_[pi]["grup"]))) for pi in har_k for kk in kaba_k]
-    ib_l = [KS.b(j) for j in range(len(sabit))]
-    n_aday, _ = KS.hepsi(sorted(set(ia_l)), ib_l)
-    KS.degerlendir()
-    isa = [(i, j) for (i, j), r in KS.olcum.items() if r and (r[0] < INCE_ESIK or r[1] > TOL or r[1] < 0) and k_aralikta(KS.A[i][1])]
-    yeni = []
-    for i, j in isa:
-        pi, ksp = KS.A[i]
-        for q in k_ince(ksp):
-            yeni.append((KS.a((pi, q)), j))
-    n_ince = KS.ciftler(yeni)
-    KS.degerlendir()
-    print("kafa x sabit: %d kaba alt poz, %d aday, ince %d, %d tam olcum %.0fs" % (len(set(ia_l)), n_aday, n_ince, KS.n_tam,
-                                                                                 time.time() - ts0), flush=True)
+        KS = Kume(k_kutu, lambda j: sabit[j]["bb"], olc_s, kat_s)
+        ia_l = [KS.a((pi, k_alt(kk, KP_[pi]["grup"]))) for pi in har_k for kk in kaba_k]
+        ib_l = [KS.b(j) for j in range(len(sabit))]
+        n_aday, _ = KS.hepsi(sorted(set(ia_l)), ib_l)
+        KS.degerlendir()
+        isa = [(i, j) for (i, j), r in KS.olcum.items() if r and (r[0] < INCE_ESIK or r[1] > TOL or r[1] < 0) and k_aralikta(KS.A[i][1])]
+        yeni = []
+        for i, j in isa:
+            pi, ksp = KS.A[i]
+            for q in k_ince(ksp):
+                yeni.append((KS.a((pi, q)), j))
+        n_ince = KS.ciftler(yeni)
+        KS.degerlendir()
+        print("kafa x sabit: %d kaba alt poz, %d aday, ince %d, %d tam olcum %.0fs" % (len(set(ia_l)), n_aday, n_ince, KS.n_tam,
+                                                                                     time.time() - ts0), flush=True)
 
-    def bulgu_s(i, j, r):
-        pi, ksp = KS.A[i]
-        q = sabit[KS.B[j]]
-        return dict(kafa_grup=KP_[pi]["grup"], kafa_poz=list(ksp), parca=KP_[pi]["ad"], hedef_modul=gmod(pi, KS.B[j]), hedef=q["ad"],
-                    bosluk_mm=round(r[0], 2), hacim_mm3=round(r[1], 1), aralikta=k_aralikta(ksp))
+        def bulgu_s(i, j, r):
+            pi, ksp = KS.A[i]
+            q = sabit[KS.B[j]]
+            return dict(kafa_grup=KP_[pi]["grup"], kafa_poz=list(ksp), parca=KP_[pi]["ad"], hedef_modul=gmod(pi, KS.B[j]), hedef=q["ad"],
+                        bosluk_mm=round(r[0], 2), hacim_mm3=round(r[1], 1), aralikta=k_aralikta(ksp))
 
-    bl = [bulgu_s(i, j, r) for (i, j), r in KS.olcum.items() if r is not None]
-    cak_s = [b for b in bl if b["hacim_mm3"] > TOL or b["hacim_mm3"] < 0]
-    mm_s = {}
-    for b in bl:
-        k = (b["hedef_modul"], b["aralikta"])
-        if b["bosluk_mm"] < mm_s.get(k, dict(bosluk_mm=1e9))["bosluk_mm"]:
-            mm_s[k] = b
-    cift_s = {}
-    for b in bl:
-        if b["aralikta"]:
-            k = (b["parca"], b["hedef"])
-            if b["bosluk_mm"] < cift_s.get(k, dict(bosluk_mm=1e9))["bosluk_mm"]:
-                cift_s[k] = b
-    sonuc_sabit = dict(
-        kaba=dict(pan=KAFA_KABA[0], tilt=KAFA_KABA[1], poz=len(kaba_k)), aday=n_aday, ince_cift=n_ince, tam_olcum=KS.n_tam,
-        cakisma_aralikta=sorted([b for b in cak_s if b["aralikta"]], key=lambda b: b["kafa_poz"])[:100],
-        cakisma_aralik_disi=sorted([b for b in cak_s if not b["aralikta"]], key=lambda b: b["kafa_poz"])[:100],
-        cakisan_alt_poz_aralikta=len(set((b["kafa_grup"], tuple(b["kafa_poz"])) for b in cak_s if b["aralikta"])),
-        cakisan_alt_poz_aralik_disi=len(set((b["kafa_grup"], tuple(b["kafa_poz"])) for b in cak_s if not b["aralikta"])),
-        en_kucuk_aralikta={m: b for (m, a), b in mm_s.items() if a}, en_kucuk_aralik_disi={m: b for (m, a), b in mm_s.items() if not a},
-        en_kucuk_ciftler_aralikta=sorted(cift_s.values(), key=lambda b: b["bosluk_mm"])[:12],
-        sure_s=round(time.time() - ts0, 1))
-    for m, b in sorted(sonuc_sabit["en_kucuk_aralikta"].items()):
-        print("  kafa -> %-22s %.2f mm %s %s / %s" % (m, b["bosluk_mm"], b["kafa_poz"], b["parca"], b["hedef"]))
-    print("kafa x sabit: aralikta cakisan alt poz %d, aralik disi %d" % (sonuc_sabit["cakisan_alt_poz_aralikta"],
-                                                                         sonuc_sabit["cakisan_alt_poz_aralik_disi"]), flush=True)
+        bl = [bulgu_s(i, j, r) for (i, j), r in KS.olcum.items() if r is not None]
+        cak_s = [b for b in bl if b["hacim_mm3"] > TOL or b["hacim_mm3"] < 0]
+        mm_s = {}
+        for b in bl:
+            k = (b["hedef_modul"], b["aralikta"])
+            if b["bosluk_mm"] < mm_s.get(k, dict(bosluk_mm=1e9))["bosluk_mm"]:
+                mm_s[k] = b
+        cift_s = {}
+        for b in bl:
+            if b["aralikta"]:
+                k = (b["parca"], b["hedef"])
+                if b["bosluk_mm"] < cift_s.get(k, dict(bosluk_mm=1e9))["bosluk_mm"]:
+                    cift_s[k] = b
+        sonuc_sabit = dict(
+            kaba=dict(pan=KAFA_KABA[0], tilt=KAFA_KABA[1], poz=len(kaba_k)), aday=n_aday, ince_cift=n_ince, tam_olcum=KS.n_tam,
+            cakisma_aralikta=sorted([b for b in cak_s if b["aralikta"]], key=lambda b: b["kafa_poz"])[:100],
+            cakisma_aralik_disi=sorted([b for b in cak_s if not b["aralikta"]], key=lambda b: b["kafa_poz"])[:100],
+            cakisan_alt_poz_aralikta=len(set((b["kafa_grup"], tuple(b["kafa_poz"])) for b in cak_s if b["aralikta"])),
+            cakisan_alt_poz_aralik_disi=len(set((b["kafa_grup"], tuple(b["kafa_poz"])) for b in cak_s if not b["aralikta"])),
+            en_kucuk_aralikta={m: b for (m, a), b in mm_s.items() if a}, en_kucuk_aralik_disi={m: b for (m, a), b in mm_s.items() if not a},
+            en_kucuk_ciftler_aralikta=sorted(cift_s.values(), key=lambda b: b["bosluk_mm"])[:12],
+            sure_s=round(time.time() - ts0, 1))
+        for m, b in sorted(sonuc_sabit["en_kucuk_aralikta"].items()):
+            print("  kafa -> %-22s %.2f mm %s %s / %s" % (m, b["bosluk_mm"], b["kafa_poz"], b["parca"], b["hedef"]))
+        print("kafa x sabit: aralikta cakisan alt poz %d, aralik disi %d" % (sonuc_sabit["cakisan_alt_poz_aralikta"],
+                                                                             sonuc_sabit["cakisan_alt_poz_aralik_disi"]), flush=True)
+        ksc.clear()
+        gc.collect()
 
     # ------------------------------------------------------------ (b) kafa x kol (her taraf)
     KOL_KAT = {"Gobek": "omuz", "Kol": "omuz", "UstKol": "dirsek catali", "OnKol": "on kol", "El": "el"}
     kol_alt_uz = {"Gobek": 1, "Kol": 2, "UstKol": 2, "OnKol": 3, "El": 4}
     kaba_kol = [(float(a), float(b), float(c), float(d)) for a in KABA[0] for b in KABA[1] for c in KABA[2] for d in KABA[3]]
+    if KISA:
+        kaba_kol = [p for p in kaba_kol if p[0] >= 120 and p[1] <= 15 and p[2] >= 90]
     jest_poz = [tuple(float(x) for x in p) for _, p in JEST]
     ADIM_I = ((-10, -5, 0, 5, 10), (-10, -5, 0, 5, 10), (-10, -5, 0, 5, 10), (-15, 0, 15))
     kol_sonuc = {}
-    for taraf in ("sag", "sol"):
+    for taraf in [t for t in ("sag", "sol") if t in kisimlar]:
         ts = time.time()
         om, dr = "omuz_" + taraf, "dirsek_" + taraf
         AP = [(om, p) for p in aktif(MODUL[om]) if p["grup"] in ("Gobek", "Kol")] + [(dr, p) for p in aktif(MODUL[dr])]
         for _, p in AP:
             if "K8" not in p:
                 p["K8"] = kose8(p["gbb"])
-        amc, asc = {}, {}
+        amc, asc = {}, LRU(ONBELLEK)
 
         def a_mat(ai, sp):
             ad, p = AP[ai]
@@ -1020,11 +1163,10 @@ def kafa_tara():
             return kutu_siki(AP[ai][1], np_m(a_mat(ai, sp)))
 
         def a_sekil(ai, sp):
-            if (ai, sp) not in asc:
-                s = AP[ai][1]["g"].copy()
-                s.transformShape(a_mat(ai, sp))
-                asc[(ai, sp)] = s
-            return asc[(ai, sp)]
+            r = asc.al((ai, sp))
+            if r is None:
+                r = asc.koy((ai, sp), hafif(AP[ai][1]["g"], a_mat(ai, sp)))
+            return r
 
         def kat_k(i, j):
             ai, sp = KK.A[i]
@@ -1088,6 +1230,42 @@ def kafa_tara():
             KK.degerlendir()
             print("kafa x kol %s: ince tur %d, isaretli %d cift, toplam %d tam olcum %.0fs" % (taraf, tur, len(isa), KK.n_tam,
                                                                                              time.time() - ts), flush=True)
+        # yasak bolge siniri: eklem araligindaki cakisan ciftlerin her eksende tek adim komsusu (kafa pan/tilt 5, kol omuz/yana/
+        # dirsek 5, bilek 15 derece) olculur; yeni cakisan cift kalmayana dek tekrarlanir. Yakinsayinca bolgenin siniri 5 derece
+        # (bilek 15) kesinliginde kapali: her cakisan pozun aralik icindeki tum eksen komsulari olculmus durumda.
+        sinir_genis = set()
+        s_tur, s_cift, yakinsadi = 0, 0, False
+        while s_tur < SINIR_TUR:
+            isa = [(i, j) for (i, j), r in KK.olcum.items()
+                   if r and (r[1] > TOL or r[1] < 0) and kat_k(i, j)[0][1] and (i, j) not in sinir_genis]
+            if not isa:
+                yakinsadi = True
+                break
+            s_tur += 1
+            sinir_genis.update(isa)
+            yeni = []
+            for i, j in isa:
+                ai, sp = KK.A[i]
+                pi, ksp = KK.B[j]
+                for k in range(len(ksp)):
+                    for dd in (-5.0, 5.0):
+                        q = list(ksp)
+                        q[k] += dd
+                        q = tuple(float(sar180(x)) if kk == 0 else float(x) for kk, x in enumerate(q))
+                        if k_serbest(q) and k_aralikta(q):
+                            yeni.append((i, KK.b((pi, q))))
+                for k in range(len(sp)):
+                    st = 15.0 if k == 3 else 5.0
+                    for dd in (-st, st):
+                        q = list(sp)
+                        q[k] += dd
+                        q = tuple(float(x) for x in q)
+                        if kol_araliginda(q):
+                            yeni.append((KK.a((ai, q)), j))
+            s_cift += KK.ciftler(yeni)
+            KK.degerlendir()
+            print("kafa x kol %s: sinir turu %d, cakisan genisletilen %d cift, toplam %d tam olcum, bellek %s MB %.0fs" % (
+                taraf, s_tur, len(isa), KK.n_tam, bellek_mb()[1], time.time() - ts), flush=True)
 
         def bulgu_k(i, j, r):
             ai, sp = KK.A[i]
@@ -1161,7 +1339,8 @@ def kafa_tara():
                                   cakisan_kafa_poz=[list(x) for x in yk][:40]))
         kol_sonuc[taraf] = dict(
             kol_alt_oge=len(ia_l), zarfa_yakin_alt_oge=n_yakin_a, kafa_oge=len(ib_l), aday=n_aday, ince_aday=n_ince, ince_tur=tur,
-            ince_isaretli=n_isa,
+            ince_isaretli=n_isa, sinir_tur=s_tur, sinir_aday=s_cift, sinir_yakinsadi=yakinsadi,
+            yasak_kural=yasak_kurali(yasak),
             tam_olcum=KK.n_tam, kafaya_yakin_tam_kol_pozu=len(yakin_poz), kol_pozu=len(kaba_kol) + len(jest_poz),
             kafa_pozu=len(kaba_k),
             cakisan_cift_aralikta=len(set(((b["kol_grup"], tuple(b["kol_poz"])), (b["kafa_grup"], tuple(b["kafa_poz"]))) for b in cak if b["aralikta"])),
@@ -1177,8 +1356,11 @@ def kafa_tara():
         print("kafa x kol %s: aralikta cakisan cift %d, yasak kol alt pozu %d, %.0fs" % (
             taraf, kol_sonuc[taraf]["cakisan_cift_aralikta"], len(yasak_l), time.time() - ts), flush=True)
         asc.clear()
+        ksc.clear()
+        gc.collect()
     return dict(aralik=dict(pan=list(AR[0]), tilt=list(AR[1])), serbest=dict(pan=list(SERBEST[0]), tilt=list(SERBEST[1])),
-                kaba=dict(pan=KAFA_KABA[0], tilt=KAFA_KABA[1]), ince_adim=list(KAFA_INCE), lim_mm=LIM_K, yakin_mm=YAKIN,
+                kaba=dict(pan=KAFA_KABA[0], tilt=KAFA_KABA[1]), ince_adim=list(KAFA_INCE), sinir_adim=dict(kafa=5, omuz=5, yana=5, dirsek=5, bilek=15), sinir_tur_siniri=SINIR_TUR,
+                lim_mm=LIM_K, yakin_mm=YAKIN, kisimlar=list(kisimlar),
                 jest=[dict(ad=a, poz=list(p)) for a, p in JEST], sabit=sonuc_sabit, kol=kol_sonuc,
                 not_="kafa pozu = (pan, tilt); kol pozu = (one-arka, yana, dirsek, bilek); alt poz: kafa Govde (), Pan (pan), Kafa (pan, tilt); "
                      "kol Gobek (one-arka), Kol/UstKol (one-arka, yana), OnKol (+dirsek), El (+bilek). Eklem araligi: kafa pan +-90, tilt "
@@ -1187,53 +1369,255 @@ def kafa_tara():
                 sure_s=round(time.time() - ts0, 1))
 
 
-kafa_sonuc = kafa_tara() if "kafa" in MODUL else None
+# ====================================================================== 4c) taban taramasi
+# (a) statik: taban <-> her modul ev pozunda: kutusu kesisen her cift icin cakisma hacmi (common), 1 mm icindeki ciftlerde mesafe
+#     (temas = 0 mm, hacim <= TOL), modul basina en kucuk bosluk dal-sinirla.
+# (b) kol x taban: iki kolun kol zinciri kaba izgarasi (1755 poz) + aralik disi halka (279) + jest pozlarinin tum alt pozlari
+#     (omuz gobegi + ust kol, dirsek catali, on kol, el) x taban parcalari (+ ana anahtar dugmesi gosterimi) ve kabugun etek
+#     parcalari. Siki tutucu kutularla (tessellation dis kabugu) bosluk alt siniri; kategori (acil stop, sonar, ana anahtar
+#     dugmesi, etek, taban diger) basina en kucuk bosluk dal-sinirla tam olculur; YAKIN altindaki her aday tam olculur
+#     (cakisma). En kucuklerin cevresi 5 derece adimla (bilek 15) yeniden taranir.
+# (c) kafa x taban: kafanin tum pan x tilt pozlarindaki siki kutularinin en alt noktasi tabanin en ust noktasindan LIM_K'dan
+#     uzaksa olculmez (not edilir); degilse olcum gerektigi yazilir.
+TABAN_KAT = (("Acil stop", "acil stop"), ("Sonar", "sonar"), ("Ana anahtar dugmesi", "ana anahtar dugmesi"))
 
-# ====================================================================== 5) toplam kutle ve agirlik merkezi (ev pozu)
-m_top, cg = 0.0, V(0, 0, 0)
-km = {}
-for ad in KONTROL:
-    mm = 0.0
-    for p in MODUL[ad]["parcalar"]:
-        if p["haric"] or p["kutle"] <= 0:
+
+def taban_kat(ad, mod):
+    if mod != "taban":
+        return "etek (kabuk)"
+    for on, k in TABAN_KAT:
+        if ad.startswith(on):
+            return k
+    return "taban diger"
+
+
+def taban_tara():
+    ts0 = time.time()
+    TB = aktif(MODUL["taban"])
+    gost = [p for p in MODUL["taban"]["parcalar"] if p["haric"] and p["ad"].startswith("Ana anahtar dugmesi")]
+    TBB = np.array([bb6(p["gbb"]) for p in TB])
+    TBq = [dict(mod="taban", ad=p["ad"], g=p["g"], gbbF=p["gbb"], bb=bb6(p["gbb"])) for p in TB]
+
+    # ------------------------------------------------------------ (a) statik (ev pozu)
+    statik_t = {}
+    for ad in adlar:
+        if ad in ("taban", "ayrilmis_bolgeler") or not aktif(MODUL[ad]):
             continue
-        m_top += p["kutle"]
-        mm += p["kutle"]
-        cg = cg + p["gmerkez"] * p["kutle"]
-    km[ad] = round(mm, 1)
-cg = cg * (1.0 / m_top)
+        H = [dict(mod=ad, ad=q["ad"], g=q["g"], gbbF=q["gbb"], bb=bb6(q["gbb"])) for q in aktif(MODUL[ad])]
+        G = bosluk_mat(TBB, np.array([q["bb"] for q in H]))
+        cak, temas, olc = [], [], {}
+        kes = list(zip(*np.nonzero(G <= 0.0)))
+        for i, j in kes:
+            v = kesisim(TB[i]["g"], H[j]["g"], TB[i]["gbb"], H[j]["gbbF"])
+            if v > TOL or v < 0:
+                cak.append(dict(taban=TB[i]["ad"], hedef=H[j]["ad"], hacim_mm3=round(v, 2)))
+        for i, j in zip(*np.nonzero(G <= 1.0)):
+            r = tam_olc(TB[i]["g"], H[j], 1.0)
+            if r is not None:
+                olc[(i, j)] = r
+                if r[0] < 0.01 and not (r[1] > TOL or r[1] < 0):
+                    temas.append("%s / %s" % (TB[i]["ad"], H[j]["ad"]))
+        en = min(((r[0], k) for k, r in olc.items()), default=(1e9, None))
+        sira = np.dstack(np.unravel_index(np.argsort(G, axis=None), G.shape))[0]
+        n_tam = len(olc)
+        for i, j in sira:
+            if G[i, j] >= en[0]:
+                break
+            if (i, j) in olc:
+                continue
+            r = tam_olc(TB[i]["g"], H[j], en[0])
+            n_tam += 1
+            if r is not None and r[0] < en[0]:
+                en = (r[0], (i, j))
+        statik_t[ad] = dict(kutu_kesisen=len(kes), cakisma=cak, temas=len(temas), temas_ornek=sorted(temas)[:12],
+                            en_kucuk_bosluk_mm=round(en[0], 2) if en[1] else None,
+                            en_yakin=[TB[en[1][0]]["ad"], H[en[1][1]]["ad"]] if en[1] else None, tam_olcum=n_tam)
+        print("taban <-> %-11s kutu kesisen %d, cakisma %d, temas %d, en kucuk %.2f mm %s %.0fs" % (
+            ad, len(kes), len(cak), len(temas), en[0], statik_t[ad]["en_yakin"], time.time() - ts0), flush=True)
+        del H
+        gc.collect()
 
-KAFA_TOPLAM = (0, 0)
-if kafa_sonuc:
-    _ks = kafa_sonuc
-    KAFA_TOPLAM = (_ks["sabit"]["cakisan_alt_poz_aralikta"] + _ks["sabit"]["cakisan_alt_poz_aralik_disi"]
-                   + sum(k["cakisan_cift_aralikta"] + k["cakisan_cift_aralik_disi"] for k in _ks["kol"].values()),
-                   _ks["sabit"]["cakisan_alt_poz_aralikta"] + sum(k["cakisan_cift_aralikta"] for k in _ks["kol"].values()))
-out = dict(
-    moduller=[dict(ad=ad, konum=list(A.MODULLER[ad]["konum"]), ayna=A.MODULLER[ad]["ayna"], parca=len(MODUL[ad]["parcalar"]),
-                   haric=[p["ad"] for p in MODUL[ad]["parcalar"] if p["haric"]], haric_neden=MODUL[ad]["haric_neden"],
-                   hareketli=bool(MODUL[ad]["hareket"]) or ozel(MODUL[ad]),
-                   bagli=(MODUL[ad].get("zincir") or {}).get("omuz")) for ad in KONTROL],
-    ayrilmis_bolge=dict(sayi=len(bolge_parca), sahipler=sorted(set(z["sahip"] for z in A.bolgeler(haric=KONTROL)))),
-    arayuz_uyumu=uyum,
-    ev_pozu_cakisma=statik, ev_pozu_kesisen_cift=n_statik,
-    zarf={k: [round(v.XMin, 1), round(v.XMax, 1), round(v.YMin, 1), round(v.YMax, 1), round(v.ZMin, 1), round(v.ZMax, 1)]
-          for k, v in zarf.items()},
-    tarama=tarama,
-    kol_tarama=kol_tarama, kol_kol=kol_kol_sonuc, kafa_tarama=kafa_sonuc,
-    toplam=dict(cakisma=len(statik) + sum(t["cakisan_poz"] for t in tarama.values())
-                + sum(k["cakisan_tam_poz_aralikta"] + k["cakisan_tam_poz_aralik_disi"] for k in kol_tarama.values())
-                + (kol_kol_sonuc["cakisan"] if kol_kol_sonuc else 0) + KAFA_TOPLAM[0],
-                eklem_araliginda=len(statik) + sum(t["eklem_araliginda_cakisan"] for t in tarama.values())
-                + sum(k["cakisan_tam_poz_aralikta"] + k["cakisan_alt_poz_aralikta"] for k in kol_tarama.values())
-                + (kol_kol_sonuc["cakisan"] if kol_kol_sonuc else 0) + KAFA_TOPLAM[1],
-                kafa=dict(toplam=KAFA_TOPLAM[0], eklem_araliginda=KAFA_TOPLAM[1]),
-                not_="kol taramasinda eklem araliginda = kaba izgarada cakisan tam poz + cakisan (kaba ve ince) alt poz; kafa taramasinda "
-                     "cakisan kafa alt pozu (sabit hedefler) + cakisan (kol alt pozu, kafa alt pozu) cifti (iki kol)"),
-    kutle_g=km, kutle_toplam_g=round(m_top, 1), agirlik_merkezi=[round(cg.x, 2), round(cg.y, 2), round(cg.z, 2)],
-    tolerans_mm3=TOL, sure_s=round(time.time() - t0, 1),
-)
-json.dump(out, open(os.environ.get("CRP_CIKTI") or os.path.join(HERE, "carpisma-sonuc.json"), "w", encoding="utf-8"),
-          ensure_ascii=False, indent=1)
-print("TOPLAM cakisma (ev pozu + tarama):", out["toplam"]["cakisma"], "| eklem araliginda:", out["toplam"]["eklem_araliginda"],
-      "| kutle %.1f g, AM (%.1f, %.1f, %.1f)" % (m_top, cg.x, cg.y, cg.z), "| %.1fs" % (time.time() - t0))
+    # ------------------------------------------------------------ (b) kol x taban
+    hedef = [dict(q, kat=taban_kat(q["ad"], "taban")) for q in TBq] + \
+            [dict(mod="taban", ad=p["ad"], g=p["g"], gbbF=p["gbb"], bb=bb6(p["gbb"]), kat=taban_kat(p["ad"], "taban")) for p in gost]
+    if "kabuk" in MODUL:
+        hedef += [dict(mod="kabuk", ad=q["ad"], g=q["g"], gbbF=q["gbb"], bb=bb6(q["gbb"]), kat="etek (kabuk)")
+                  for q in aktif(MODUL["kabuk"]) if q["ad"].startswith("Etek")]
+    HB = np.array([q["bb"] for q in hedef])
+    KAT = sorted(set(q["kat"] for q in hedef))
+    kat_idx = {c: np.array([j for j, q in enumerate(hedef) if q["kat"] == c]) for c in KAT}
+    kol_alt_uz = {"Gobek": 1, "Kol": 2, "UstKol": 2, "OnKol": 3, "El": 4}
+    kaba = [(float(a), float(b), float(c), float(d)) for a in KABA[0] for b in KABA[1] for c in KABA[2] for d in KABA[3]]
+    disi = [(float(phi), float(th), float(al), float(be)) for phi in (-60, 150) for th in KABA[1] for al in DISI_AL for be in DISI_BE] + \
+           [(float(phi), -10.0, float(al), float(be)) for phi in KABA[0] for al in DISI_AL for be in DISI_BE]
+    jest = [tuple(float(x) for x in p) for _, p in JEST]
+    ADIM_I = ((-10, -5, 0, 5, 10), (-10, -5, 0, 5, 10), (-10, -5, 0, 5, 10), (-15, 0, 15))
+    kol_t = {}
+    for taraf in ("sag", "sol"):
+        ts = time.time()
+        om, dr = "omuz_" + taraf, "dirsek_" + taraf
+        AP = [(om, p) for p in aktif(MODUL[om]) if p["grup"] in ("Gobek", "Kol")] + [(dr, p) for p in aktif(MODUL[dr])]
+        ogeler, AKl = [], []
+        oge_i = {}
+
+        def ekle(L):
+            yeni = []
+            for k in L:
+                if k in oge_i:
+                    continue
+                ai, sp = k
+                ad, p = AP[ai]
+                oge_i[k] = len(ogeler)
+                ogeler.append(k)
+                AKl.append(kutu_siki(p, np_m(kol_matrisi(ad, p["grup"], sp))))
+                yeni.append(oge_i[k])
+            return yeni
+
+        alt0 = sorted(set((ai, tuple(poz[:kol_alt_uz[p["grup"]]])) for poz in kaba + disi + jest for ai, (_, p) in enumerate(AP)))
+        ekle(alt0)
+        olcum = {}
+
+        def olc(i, j, B):
+            if (i, j) in olcum:
+                return olcum[(i, j)]
+            ai, sp = ogeler[i]
+            ad, p = AP[ai]
+            r = tam_olc(hafif(p["g"], kol_matrisi(ad, p["grup"], sp)), hedef[j], B)
+            olcum[(i, j)] = r
+            return r
+
+        en = {}             # (kat, aralikta) -> (d, i, j)
+
+        def tara(idx):
+            """idx (oge indeksleri) x tum hedefler: YAKIN alti hepsi, ustu kategori basina dal-sinir."""
+            idx = np.array(idx)
+            AK = np.array([AKl[i] for i in idx])
+            ic_m = np.array([kol_araliginda(ogeler[i][1]) for i in idx])
+            for c in KAT:
+                J = kat_idx[c]
+                for ic in (True, False):
+                    sec = ic_m == ic
+                    if not sec.any():
+                        continue
+                    Ii, AKs = idx[sec], AK[sec]
+                    G = np.concatenate([bosluk_mat(AKs[k:k + 2000], HB[J]) for k in range(0, len(Ii), 2000)])
+                    sira = np.argsort(G, axis=None)
+                    B = en.get((c, ic), (1e9,))[0]
+                    for f in sira:
+                        a, b = divmod(int(f), len(J))
+                        if G[a, b] >= max(B, YAKIN):
+                            break
+                        i, j = int(Ii[a]), int(J[b])
+                        r = olc(i, j, max(B, YAKIN))
+                        if r is not None and r[0] < B:
+                            B = r[0]
+                            en[(c, ic)] = (r[0], i, j)
+
+        tara(list(range(len(ogeler))))
+        n_kaba = len(olcum)
+        # ince: her kategorinin en kucugu (aralikta) cevresinde 5 derece (bilek 15) komsuluk, ayni parca
+        ince = []
+        for (c, ic), (d0, i, j) in list(en.items()):
+            if not ic:
+                continue
+            ai, sp = ogeler[i]
+            rng = [[sp[k] + dd for dd in ADIM_I[k]] for k in range(len(sp))]
+            for q in itertools.product(*rng):
+                q = tuple(float(x) for x in q)
+                if kol_araliginda(q):
+                    ince.append((ai, q))
+        yeni = ekle(sorted(set(ince)))
+        if yeni:
+            tara(yeni)
+
+        def bulgu(i, j, r):
+            ai, sp = ogeler[i]
+            return dict(kol_grup=AP[ai][1]["grup"], kol_poz=list(sp), parca=AP[ai][1]["ad"], hedef_modul=hedef[j]["mod"],
+                        hedef=hedef[j]["ad"], kategori=hedef[j]["kat"], bosluk_mm=round(r[0], 2), hacim_mm3=round(r[1], 1),
+                        aralikta=kol_araliginda(sp))
+
+        cak = [bulgu(i, j, r) for (i, j), r in olcum.items() if r is not None and (r[1] > TOL or r[1] < 0)]
+        # kolun en alt noktasi (siki kutu alt siniri; tutucu) eklem araliginda
+        AKa = np.array(AKl)
+        ar = np.array([kol_araliginda(sp) for _, sp in ogeler])
+        k_alt = int(np.argmin(np.where(ar, AKa[:, 1], 1e9)))
+        kol_t[taraf] = dict(
+            poz=dict(kaba=len(kaba), aralik_disi=len(disi), jest=len(jest)), alt_oge=len(alt0), ince_alt_oge=len(yeni),
+            tam_olcum=len(olcum), tam_olcum_kaba=n_kaba,
+            cakisan_alt_poz_aralikta=len(set((b["kol_grup"], tuple(b["kol_poz"])) for b in cak if b["aralikta"])),
+            cakisan_alt_poz_aralik_disi=len(set((b["kol_grup"], tuple(b["kol_poz"])) for b in cak if not b["aralikta"])),
+            cakismalar=cak[:100],
+            en_kucuk_aralikta={c: bulgu(v[1], v[2], olcum[(v[1], v[2])]) for (c, ic), v in sorted(en.items()) if ic},
+            en_kucuk_aralik_disi={c: bulgu(v[1], v[2], olcum[(v[1], v[2])]) for (c, ic), v in sorted(en.items()) if not ic},
+            kol_en_alt=dict(y_mm=round(float(AKa[k_alt, 1]), 1), kol_grup=AP[ogeler[k_alt][0]][1]["grup"], kol_poz=list(ogeler[k_alt][1]),
+                            parca=AP[ogeler[k_alt][0]][1]["ad"], not_="siki tutucu kutunun alt siniri (gercek nokta en cok ~0,5 mm yukarida)"),
+            taban_en_ust_y_mm=round(float(max(HB[kat_idx[c]][:, 4].max() for c in KAT if c != "etek (kabuk)")), 1),
+            sure_s=round(time.time() - ts, 1))
+        for c, b in sorted(kol_t[taraf]["en_kucuk_aralikta"].items()):
+            print("  kol %s <-> %-20s %.1f mm kol %s %s / %s" % (taraf, c, b["bosluk_mm"], b["kol_poz"], b["parca"], b["hedef"]))
+        print("kol %s x taban: %d alt oge (+%d ince), %d tam olcum, aralikta cakisan alt poz %d, kol en alt y %.0f %.0fs" % (
+            taraf, len(alt0), len(yeni), len(olcum), kol_t[taraf]["cakisan_alt_poz_aralikta"], kol_t[taraf]["kol_en_alt"]["y_mm"],
+            time.time() - ts), flush=True)
+        gc.collect()
+
+    # ------------------------------------------------------------ (c) kafa x taban (sinir kutusu)
+    kafa_t = None
+    if "kafa" in MODUL:
+        T = MODUL["kafa"]["T"]
+        import kafa_parcalar as KPm2
+        y_min = (1e9, None)
+        for p in aktif(MODUL["kafa"]):
+            if p["grup"] == "Govde":
+                if p["gbb"].YMin < y_min[0]:
+                    y_min = (p["gbb"].YMin, (p["ad"], None))
+                continue
+            for a_ in KAFA_KABA[0]:
+                for b_ in KAFA_KABA[1]:
+                    M = T.multiply(KPm2.grup_yer(p["grup"], float(a_), float(b_)).toMatrix()).multiply(T.inverse())
+                    y = float(kutu_siki(p, np_m(M))[1])
+                    if y < y_min[0]:
+                        y_min = (y, (p["ad"], [a_, b_]))
+        ust = float(max(TBB[:, 4].max(), max((bb6(p["gbb"])[4] for p in gost), default=-1e9)))
+        bos = y_min[0] - ust
+        kafa_t = dict(kafa_en_alt_y_mm=round(y_min[0], 1), kafa_en_alt_parca=y_min[1][0], kafa_en_alt_poz=y_min[1][1],
+                      taban_en_ust_y_mm=round(ust, 1), kutu_bosluk_mm=round(bos, 1), olculdu=False, gerekli=bos < LIM_K,
+                      not_=("kafanin tum pan x tilt pozlarindaki (pan -180...165, tilt -25...40, 15 derece) siki kutularinin en alti "
+                            "tabanin en ustunden %.0f mm yukarida (> LIM_K = %.0f mm): kafa x taban olculmedi, carpisma olanaksiz" % (bos, LIM_K))
+                      if bos >= LIM_K else "kafa tabana LIM_K'dan yakin: olcum gerekli (bu bolumde yapilmadi)")
+        print("kafa x taban: kafa en alt y %.0f, taban en ust y %.0f, kutu boslugu %.0f mm" % (y_min[0], ust, bos), flush=True)
+
+    toplam_kol = sum(k["cakisan_alt_poz_aralikta"] + k["cakisan_alt_poz_aralik_disi"] for k in kol_t.values())
+    return dict(statik=statik_t, kol=kol_t, kafa=kafa_t,
+                toplam=dict(cakisma=toplam_kol, eklem_araliginda=sum(k["cakisan_alt_poz_aralikta"] for k in kol_t.values()),
+                            statik_cakisma=sum(len(v["cakisma"]) for v in statik_t.values()),
+                            not_="kol x taban cakisan alt pozlari; statik cakismalar ev_pozu_cakisma'da da sayilir (toplama bir kez girer)"),
+                kategoriler=KAT, hedef_sayisi=len(hedef), yakin_mm=YAKIN,
+                not_="kol pozu = (one-arka, yana, dirsek, bilek); aralik disi halka omuz -60 / 150, yana -10. Hedef: taban parcalari "
+                     "(kablo yolu semalari haric), ana anahtar dugmesi gosterimi, kabuk etek parcalari. Bulunan en kucugun otesindeki "
+                     "ciftler olculmedi (siki kutu boslugu alt sinir).",
+                sure_s=round(time.time() - ts0, 1))
+
+
+# ====================================================================== bolum kosucusu
+CALISTIR = {"statik": b_statik, "omuz": b_omuz, "kol_sag": lambda: kol_tara("sag"), "kol_sol": lambda: kol_tara("sol"),
+            "kolkol": kol_kol, "kafa_sabit": lambda: kafa_tara(("sabit",)), "kafa_sag": lambda: kafa_tara(("sag",)),
+            "kafa_sol": lambda: kafa_tara(("sol",)), "taban": taban_tara}
+YUKLEME_S = round(time.time() - t0, 1)
+os.makedirs(CK.BOLUM_DIZIN, exist_ok=True)
+for _b in BOLUM:
+    _tb = time.time()
+    _bas = datetime.datetime.now().isoformat(timespec="seconds")
+    print("==== bolum %s basladi (bellek %s MB)" % (_b, bellek_mb()[1]), flush=True)
+    _s = CALISTIR[_b]()
+    _bm = bellek_mb()
+    _k = dict(bolum=_b, kosu=os.environ.get("CARPISMA_KOSU", "elle"), baslangic=_bas,
+              bitis=datetime.datetime.now().isoformat(timespec="seconds"), sure_s=round(time.time() - _tb, 1),
+              yukleme_s=YUKLEME_S, tepe_bellek_mb=_bm[0], tepe_sayfa_mb=_bm[2], ayni_surec=BOLUM, pid=os.getpid(),
+              moduller=[a for a in KONTROL if a in GEREK], kaynak=CK.kaynak_ozeti(), sonuc=_s)
+    json.dump(_k, open(CK.bolum_dosyasi(_b + ("-kisa" if KISA else "")), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print("==== bolum %s bitti: %.0f s, tepe bellek %s MB" % (_b, _k["sure_s"], _bm[0]), flush=True)
+    del _s
+    gc.collect()
+if len(BOLUM) == len(BOLUMLER):
+    CK.birlestir()
+print("bitti %.1fs" % (time.time() - t0), flush=True)

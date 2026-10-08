@@ -441,6 +441,76 @@ _b("Boyun plakasi kulaklari + M6 civata baslari", "kafa", _k(-53.0, 53.0, S3 + _
    "kafa/kafa_parcalar.py", "traversin ust yuzu x +-35...53; kulak 5 mm PETG + plaka 3 mm, M6x20 + pul + cekic somun x = +-40")
 
 
+# =====================================================================================================
+# 12) Taban modulu (plakalar, tahrik, aku, guc, elektronik kati, sonar, acil stop). Yerel = global (iskelet ve kabuk gibi).
+#     V3 yerlesimi (rc:715-757) korunur; degisiklikler ve gerekceleri taban/rapor.html'de. Kaynagi olmayan deger "tahmini".
+#     Kat iki parca: on "Elektronik kati" (Pi, ESP32, PCA, BNO, amfi) + arka "Guc paneli" (sigorta kutusu, role, ana sigorta);
+#     arka parca akunun ustunde, akuyu degistirirken elektronige dokunmadan sokulur.
+# =====================================================================================================
+_Z_BAT = -121.5                                   # rc:100 (V3 aku merkezi z)
+TABAN = dict(
+    plaka=dict(x=V3_W / 2, z=L0 / 2, r=10.0, malzeme="Al 5754, 3 mm (rc:416)"),
+    plaka_ray_z=(-235.0, -90.0, 90.0, 235.0),     # uzun ray alt kanalina M6 (x = +-115)
+    plaka_ara_x=(-50.0, 50.0),                    # ara ray alt kanallarina M6 (z = -230 / 0 / 230)
+    plaka_civata=(6, 14),                         # M6x14 DIN 912 + pul + M6 cekic somun: uc yuzden 9,4 (somun ustu 9,3, taban 11,8)
+    braket_civata=dict(x=UZUN_RAY_X, dz=16.0, civata=(4, 16)),   # motor braketi flansi -> plaka -> uzun ray alt kanali (M4 cekic somun)
+    motor_kablo_delik=((80.0, 200.0), (80.0, 36.0)),            # (x, z) +-x; on motor kablosu z 200, arka motor kablosu plaka altindan z 36
+    kablo_delik_d=16.0,
+    burc_z=(-230.0, -40.0, 40.0, 230.0),          # M5x40 burc, uzun ray ust kanalinda (V3 -230/230 + kat ayrimi icin -40/40)
+    kat_ayrim_z=24.0,                             # on kat z 24,25...250, arka guc paneli z -250...23,75 (0,5 mm aralik)
+    kat_kesik_on=(-60.0, 60.0, 150.0, 175.0),     # rc:410 deck_cut (kablo gecisi XL4016 / BTS -> kat)
+    aku=dict(merkez=(0.0, Y_RAIL0, _Z_BAT), olcu=(181.0, 77.0, 167.0), kutle_g=2800.0,
+             not_="rc:46-47 Landport LFP12-20 olcusu; alinacak Limacell 24 Ah'in olcusu yok (README acik is)"),
+    kayis_z=(-140.0, -80.0), kayis_en=25.0, kayis_t=1.5,       # 25 mm cirt bant, plakadaki yariklardan (x 90,75...94,25)
+    takoz=dict(x=(-80.0, 80.0), y=(Y_RAIL0, Y_RAIL0 + 25.0), z=(-37.5, -20.5)),   # aku on takozu (baski), orta ara rayin arka yuzu -20
+    bts=((-85.0 * V3_W / W0, 165.0), (85.0 * V3_W / W0, 165.0)),   # rc:734 (x 'p' olcegi)
+    bts_burc=8.0,                                 # M3x8 naylon burc (Al plakaya kisa devre olmasin; ust + alt vida 7,4 mm)
+    xl=((-62.0 * V3_W / W0, 75.0, "Pi 5,1 V"), (62.0 * V3_W / W0, 75.0, "cevre 5 V"), (0.0, 170.0, "servo 6 V")),   # rc:736
+    xl_burc=8.0,
+    pi=dict(merkez=(-90.5, 80.0), burc=8.0),      # on kat sol: SD yuvasi -X kenarinda (x -135,5, z 80: etek orta sol hizasi)
+    esp=dict(merkez=(80.0, 75.0), tasiyici=(70.0, 50.0), burc=8.0),   # ESP32 delikli pertinaks tasiyici + disi header ustunde
+    pca=dict(merkez=(83.0, 125.0), burc=8.0),
+    bno=dict(merkez=(0.0, 60.0), burc=8.0),       # rc:742 (0, 60)
+    amp=dict(merkez=(-65.0 * V3_W / W0, 40.0)),   # rc:743, kopuk bantla (montaj deligi yok)
+    sigorta_kutusu=dict(merkez=(0.0, -203.0), olcu=(105.0, 60.0, 35.0), delik_x=47.0, delik_z=-213.0),   # tahmini zarf; somun akunun arkasinda
+    role=dict(merkez=(-112.0, -130.0), olcu=(30.0, 30.0, 45.0)),                         # ISO mini role + soket, tahmini zarf
+    ana_sigorta=dict(merkez=(112.0, -130.0), olcu=(30.0, 60.0, 20.0)),                   # kablolu kapakli yuva, tahmini zarf
+    ana_anahtar=dict(merkez=(-(W0 / 2 - 70) * V3_W / W0, -(L0 / 2 - 50)), olcu=(50.0, 50.0, 40.0)),   # acil stobun aynasi; tahmini zarf
+    sonar_on_z=256.0,                             # HC-SR04 PCB on yuzu; transduserler 12 mm, etek dis yuzunden 5,5 mm tasar
+    acil_stop="Emas B200E60 (rc:357-365; 04). Elde B200E-E (40 mm mantar): O60 zarf buyuk tarafta kalir",
+)
+MODULLER["taban"] = dict(konum=(0.0, 0.0, 0.0), ayna=False,
+                         not_="yerel = global; plakalar, tahrik, aku, guc, elektronik kati, sonar, acil stop (statik)")
+_T = TABAN
+# --- taban: V3 bolgelerine ek yeni bolgeler (yalniz ekleme; eski taban bolgeleri taban cizilince zaten taranmaz)
+for sx in (-1, 1):
+    for z in (-40.0, 40.0):
+        _b("M5x40 burc %+d%+d (kat ayrimi)" % (sx, z), "taban",
+           _k(sx * UZUN_RAY_X - 5.3, sx * UZUN_RAY_X + 5.3, Y_RAIL1, Y_DECK0, z - 5.3, z + 5.3), "taban_parcalar",
+           "on kat / arka guc paneli birlesimi icin ek burc (uzun ray ust kanali)")
+for (x, z) in _T["bts"]:
+    _b("BTS7960 %+.0f (8 mm burc ustunde)" % x, "taban", _k(x - 25, x + 25, Y_RAIL0, Y_RAIL0 + _T["bts_burc"] + 43, z - 25, z + 25),
+       "taban_parcalar", "V3 bolgesi 8 mm yukseldi: Al plakaya kisa devre olmasin diye naylon burc")
+for (x, z, _) in _T["xl"]:
+    _b("XL4016 %+.0f,%.0f (8 mm burc ustunde)" % (x, z), "taban", _k(x - 32.5, x + 32.5, Y_RAIL0, Y_RAIL0 + _T["xl_burc"] + 23.5, z - 23.5, z + 23.5),
+       "taban_parcalar", "V3 bolgesi 8 mm yukseldi (naylon burc)")
+_b("Elektronik kati on yerlesimi (Pi, ESP32, PCA, BNO, amfi)", "taban", _k(-136, 116, Y_DECK1, Y_DECK1 + 30, 30, 140),
+   "taban_parcalar", "kartlar akunun ustunden on kata alindi (kat alti somun akuya degmesin, aku servisi)")
+_b("Pi 5 fan hava payi", "taban", _k(-128, -60, Y_DECK1 + 24, Y_DECK1 + 39, 55, 105), "taban_parcalar",
+   "Active Cooler ustunde 15 mm bos (tahmini)")
+_b("Guc paneli (sigorta kutusu, role, ana sigorta)", "taban", _k(-128, 128, Y_DECK1, Y_DECK1 + 46, -234, -99), "taban_parcalar",
+   "arka kat; sigorta kutusu tahmini zarf 105 x 60 x 35")
+_aa = _T["ana_anahtar"]
+_b("Ana anahtar govdesi (etek plakasi alti, oneri)", "taban",
+   _k(_aa["merkez"][0] - 25, _aa["merkez"][0] + 25, Y_COV1 - KABUK_T - 3 - 40, Y_COV1 - KABUK_T - 3, _aa["merkez"][1] - 25, _aa["merkez"][1] + 25),
+   "taban_parcalar", "ASW-A01 tahmini zarf; kabukta delik acilmasi gerekir (2. asama)")
+for x in SONAR["x"]:
+    _b("Sonar tutucu %+.0f" % x, "taban", _k(x - (36 if x <= 0 else 26), x + (36 if x >= 0 else 26), 96, 125, ARA_RAY_Z[2] + 20, 257.6),
+       "taban_parcalar", "on ara ray on yuzu, M6 ISO 7380 + cekic somun")
+_b("Aku on takozu + aku kayislari", "taban", _k(-95, 95, Y_PL - 1.5, Y_RAIL0 + 77 + 2, -205, -20.5), "taban_parcalar",
+   "kayis plaka altindan doner (y 90...91,5)")
+
+
 if __name__ == "__main__":
     print("S3 =", S3, "direk", DIREK_Y0, "->", DIREK_Y1, "=", DIREK_L, "mm; uzun ray x", UZUN_RAY_X, "ara ray", ARA_RAY_L)
     print("ayrilmis bolge sayisi:", len(BOLGELER), "; sahipler:", sorted(set(b["sahip"] for b in BOLGELER)))

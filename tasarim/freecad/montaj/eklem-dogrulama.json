@@ -166,6 +166,70 @@
     133.2
    ],
    "dogru": true
+  },
+  {
+   "kol": "taban",
+   "eklem": "teker_on_sag",
+   "aci": 90.0,
+   "uc_once": [
+    178.0,
+    0.0,
+    185.0
+   ],
+   "uc_sonra": [
+    178.0,
+    62.5,
+    122.5
+   ],
+   "dogru": true
+  },
+  {
+   "kol": "taban",
+   "eklem": "teker_on_sol",
+   "aci": 90.0,
+   "uc_once": [
+    -178.0,
+    0.0,
+    185.0
+   ],
+   "uc_sonra": [
+    -178.0,
+    62.5,
+    122.5
+   ],
+   "dogru": true
+  },
+  {
+   "kol": "taban",
+   "eklem": "teker_arka_sag",
+   "aci": 90.0,
+   "uc_once": [
+    178.0,
+    0.0,
+    -185.0
+   ],
+   "uc_sonra": [
+    178.0,
+    62.5,
+    -247.5
+   ],
+   "dogru": true
+  },
+  {
+   "kol": "taban",
+   "eklem": "teker_arka_sol",
+   "aci": 90.0,
+   "uc_once": [
+    -178.0,
+    0.0,
+    -185.0
+   ],
+   "uc_sonra": [
+    -178.0,
+    62.5,
+    -247.5
+   ],
+   "dogru": true
   }
  ],
  "vakalar": [
@@ -241,6 +305,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -306,6 +390,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -388,6 +496,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -453,6 +581,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -535,6 +687,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -600,6 +772,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -682,6 +878,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -747,6 +963,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -829,6 +1069,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -894,6 +1154,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -976,6 +1260,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1041,6 +1345,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -1123,6 +1451,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1188,6 +1536,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -1270,6 +1642,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1335,6 +1727,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -1417,6 +1833,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1482,6 +1918,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -1564,6 +2024,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1629,6 +2109,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -1711,6 +2215,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1776,6 +2300,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -1858,6 +2406,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1923,6 +2491,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -2005,6 +2597,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2070,6 +2682,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -2152,6 +2788,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2217,6 +2873,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -2299,6 +2979,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2364,6 +3064,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -2446,6 +3170,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2511,6 +3255,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -2593,6 +3361,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2658,6 +3446,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -2740,6 +3552,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2805,6 +3637,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -2887,6 +3743,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2952,6 +3828,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -3034,6 +3934,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -3099,6 +4019,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -3185,6 +4129,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -3250,6 +4214,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -3336,6 +4324,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -3401,6 +4409,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -3487,6 +4519,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -3552,6 +4604,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -3638,6 +4714,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -3703,6 +4799,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -3789,6 +4909,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -3854,6 +4994,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -3940,6 +5104,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -4005,6 +5189,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -4091,6 +5299,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -4156,6 +5384,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -4242,6 +5494,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -4307,6 +5579,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -4393,6 +5689,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -4458,6 +5774,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -4544,6 +5884,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -4609,6 +5969,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -4695,6 +6079,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -4760,6 +6164,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -4846,6 +6274,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -4911,6 +6359,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -4997,6 +6469,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -5062,6 +6554,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -5148,6 +6664,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -5213,6 +6749,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -5299,6 +6859,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -5364,6 +6944,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -5450,6 +7054,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -5515,6 +7139,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -5601,6 +7249,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -5666,6 +7334,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -5752,6 +7444,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -5817,6 +7529,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -5903,6 +7639,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -5968,6 +7724,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -6054,6 +7834,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -6119,6 +7919,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -6205,6 +8029,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -6270,6 +8114,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -6356,6 +8224,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -6421,6 +8309,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -6515,6 +8427,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -6580,6 +8512,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -6674,6 +8630,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -6739,6 +8715,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -6821,6 +8821,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -6886,6 +8906,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -6968,6 +9012,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -7033,6 +9097,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -7115,6 +9203,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -7180,6 +9288,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -7262,6 +9394,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -7327,6 +9479,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -7409,6 +9585,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -7476,6 +9672,30 @@
     "Kafa_Tilt": [
      30.0,
      30.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -7556,6 +9776,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -7623,6 +9863,30 @@
     "Kafa_Tilt": [
      -25.0,
      -25.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -7703,6 +9967,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -7770,6 +10054,30 @@
     "Kafa_Tilt": [
      20.0,
      20.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -7850,6 +10158,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -7917,6 +10245,30 @@
     "Kafa_Tilt": [
      -15.0,
      -15.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -7997,6 +10349,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -8064,6 +10436,30 @@
     "Kafa_Tilt": [
      30.0,
      30.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -8144,6 +10540,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -8211,6 +10627,30 @@
     "Kafa_Tilt": [
      -25.0,
      -25.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -8291,6 +10731,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -8358,6 +10818,30 @@
     "Kafa_Tilt": [
      -10.0,
      -10.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -8454,6 +10938,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -8521,6 +11025,30 @@
     "Kafa_Tilt": [
      -10.0,
      -10.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -8617,6 +11145,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -8684,6 +11232,30 @@
     "Kafa_Tilt": [
      20.0,
      20.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -8780,6 +11352,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -8849,10 +11441,1598 @@
      25.0,
      0.0,
      0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "max_mm": 1.3405602943087505e-10,
    "max_derece": 3.451014993719972e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11
+  },
+  {
+   "ad": "taban teker (90, 0, 0, 0)",
+   "komut": {
+    "taban": {
+     "teker_on_sag": 90.0,
+     "teker_on_sol": 0.0,
+     "teker_arka_sag": 0.0,
+     "teker_arka_sol": 0.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 9.968567661657063e-12,
+   "max_derece": 5.954025547866133e-12,
+   "max_aci_hatasi": 5.9543481256696396e-12
+  },
+  {
+   "ad": "taban teker (0, -45, 0, 0)",
+   "komut": {
+    "taban": {
+     "teker_on_sag": 0.0,
+     "teker_on_sol": -45.0,
+     "teker_arka_sag": 0.0,
+     "teker_arka_sol": 0.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     -45.0,
+     -45.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 4.2916793003861016e-11,
+   "max_derece": 2.5679798498136435e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11
+  },
+  {
+   "ad": "taban teker (0, 0, 180, 0)",
+   "komut": {
+    "taban": {
+     "teker_on_sag": 0.0,
+     "teker_on_sol": 0.0,
+     "teker_arka_sag": 180.0,
+     "teker_arka_sol": 0.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     180.0,
+     -180.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 2.096254734780243e-11,
+   "max_derece": 1.2144040029648223e-11,
+   "max_aci_hatasi": 1.2164491636212915e-11
+  },
+  {
+   "ad": "taban teker (0, 0, 0, -120)",
+   "komut": {
+    "taban": {
+     "teker_on_sag": 0.0,
+     "teker_on_sol": 0.0,
+     "teker_arka_sag": 0.0,
+     "teker_arka_sol": -120.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     -120.0,
+     -120.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 1.8655902687359356e-11,
+   "max_derece": 1.114468538844908e-11,
+   "max_aci_hatasi": 1.1169731806148775e-11
+  },
+  {
+   "ad": "taban teker (30, 30, 30, 30)",
+   "komut": {
+    "taban": {
+     "teker_on_sag": 30.0,
+     "teker_on_sol": 30.0,
+     "teker_arka_sag": 30.0,
+     "teker_arka_sol": 30.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 2.8579756554276052e-11,
+   "max_derece": 1.709230085818494e-11,
+   "max_aci_hatasi": 1.716315978228522e-11
+  },
+  {
+   "ad": "taban teker (-75, 75, -75, 75)",
+   "komut": {
+    "taban": {
+     "teker_on_sag": -75.0,
+     "teker_on_sol": 75.0,
+     "teker_arka_sag": -75.0,
+     "teker_arka_sol": 75.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     -75.0,
+     -75.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     75.0,
+     75.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     -75.0,
+     -75.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     75.0,
+     75.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 2.430695976053371e-11,
+   "max_derece": 1.4516051566199491e-11,
+   "max_aci_hatasi": 1.453770437365165e-11
+  },
+  {
+   "ad": "taban teker (400, -200, 135, -720)",
+   "komut": {
+    "taban": {
+     "teker_on_sag": 400.0,
+     "teker_on_sol": -200.0,
+     "teker_arka_sag": 135.0,
+     "teker_arka_sol": -720.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     400.0,
+     40.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     -200.0,
+     160.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     135.0,
+     135.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     -720.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 3.29691951900032e-11,
+   "max_derece": 1.9706730827121435e-11,
+   "max_aci_hatasi": 1.972466634470038e-11
+  },
+  {
+   "ad": "taban teker 60 + kafa + kollar",
+   "komut": {
+    "taban": {
+     "teker_on_sag": 60.0,
+     "teker_on_sol": 60.0,
+     "teker_arka_sag": 60.0,
+     "teker_arka_sol": 60.0
+    },
+    "kafa": {
+     "pan": 30.0,
+     "tilt": 10.0
+    },
+    "omuz_sag": {
+     "one_arka": 90.0,
+     "yana": 0.0
+    },
+    "dirsek_sag": {
+     "dirsek": 60.0,
+     "bilek": 45.0
+    },
+    "omuz_sol": {
+     "one_arka": -30.0,
+     "yana": 30.0
+    },
+    "dirsek_sol": {
+     "dirsek": 30.0,
+     "bilek": -45.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     -30.0,
+     -30.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     45.0,
+     45.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     -45.0,
+     -45.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     10.0,
+     10.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 1.1150686765155846e-10,
+   "max_derece": 4.3048059732121876e-11,
    "max_aci_hatasi": 2.5693225325085223e-11
   }
  ],
@@ -8929,6 +13109,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -8994,6 +13194,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -9076,6 +13300,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -9141,6 +13385,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -9223,6 +13491,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -9288,6 +13576,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -9370,6 +13682,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -9435,6 +13767,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -9517,6 +13873,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -9582,6 +13958,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -9664,6 +14064,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -9729,6 +14149,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -9811,6 +14255,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -9876,6 +14340,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -9958,6 +14446,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -10023,6 +14531,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -10105,6 +14637,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -10170,6 +14722,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -10252,6 +14828,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -10317,6 +14913,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -10399,6 +15019,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -10464,6 +15104,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -10546,6 +15210,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -10611,6 +15295,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -10693,6 +15401,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -10758,6 +15486,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -10840,6 +15592,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -10905,6 +15677,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -10987,6 +15783,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -11052,6 +15868,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -11134,6 +15974,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -11199,6 +16059,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -11281,6 +16165,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -11346,6 +16250,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -11428,6 +16356,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -11493,6 +16441,30 @@
      0.0
     ],
     "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
      0.0,
      0.0,
      0.0,
@@ -11575,6 +16547,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -11642,6 +16634,30 @@
     "Kafa_Tilt": [
      40.0,
      40.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -11722,6 +16738,26 @@
      0.0,
      0.0
     ],
+    "Taban_Govde": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_OnSolTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSagTeker": [
+     0.0,
+     0.0
+    ],
+    "Taban_ArkaSolTeker": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -11789,6 +16825,30 @@
     "Kafa_Tilt": [
      -35.0,
      -35.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerOnSol": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSag": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Taban_TekerArkaSol": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -12036,6 +17096,24 @@
     "tilt": 40.0
    },
    "max_mm": 2.5421149729252077e-13
+  },
+  {
+   "kol": "taban",
+   "poz": {
+    "teker_on_sag": 30.0,
+    "teker_on_sol": -60.0,
+    "teker_arka_sag": 200.0,
+    "teker_arka_sol": 0.0
+   },
+   "sinir_ici": true,
+   "solve": 0,
+   "olculen": {
+    "teker_on_sag": 30.0,
+    "teker_on_sol": -60.0,
+    "teker_arka_sag": -160.0,
+    "teker_arka_sol": 0.0
+   },
+   "max_mm": 2.237927638478769e-13
   }
  ],
  "ozet": {
@@ -12043,7 +17121,7 @@
    "kol": "omuz_sag",
    "anahtar": "one_arka",
    "etiket": "OmuzSag one-arka (S1)",
-   "vaka": 27,
+   "vaka": 28,
    "grup": "OmuzSag_Gobek",
    "max_mm": 2.3151068413993734e-10,
    "max_derece": 4.856062616882153e-11,
@@ -12067,7 +17145,7 @@
    "kol": "omuz_sag",
    "anahtar": "yana",
    "etiket": "OmuzSag yana acma (S2)",
-   "vaka": 27,
+   "vaka": 28,
    "grup": "OmuzSag_Kol",
    "max_mm": 2.3151068413993734e-10,
    "max_derece": 4.856062616882153e-11,
@@ -12091,7 +17169,7 @@
    "kol": "omuz_sol",
    "anahtar": "one_arka",
    "etiket": "OmuzSol one-arka (S1)",
-   "vaka": 27,
+   "vaka": 28,
    "grup": "OmuzSol_Gobek",
    "max_mm": 2.3151068413993734e-10,
    "max_derece": 4.856062616882153e-11,
@@ -12115,7 +17193,7 @@
    "kol": "omuz_sol",
    "anahtar": "yana",
    "etiket": "OmuzSol yana acma (S2)",
-   "vaka": 27,
+   "vaka": 28,
    "grup": "OmuzSol_Kol",
    "max_mm": 2.3151068413993734e-10,
    "max_derece": 4.856062616882153e-11,
@@ -12139,7 +17217,7 @@
    "kol": "dirsek_sag",
    "anahtar": "dirsek",
    "etiket": "DirsekSag dirsek (MG996R)",
-   "vaka": 15,
+   "vaka": 16,
    "grup": "DirsekSag_OnKol",
    "max_mm": 2.3151068413993734e-10,
    "max_derece": 4.856062616882153e-11,
@@ -12163,7 +17241,7 @@
    "kol": "dirsek_sag",
    "anahtar": "bilek",
    "etiket": "DirsekSag bilek (MG996R)",
-   "vaka": 15,
+   "vaka": 16,
    "grup": "DirsekSag_El",
    "max_mm": 2.3151068413993734e-10,
    "max_derece": 4.856062616882153e-11,
@@ -12187,7 +17265,7 @@
    "kol": "dirsek_sol",
    "anahtar": "dirsek",
    "etiket": "DirsekSol dirsek (MG996R)",
-   "vaka": 15,
+   "vaka": 16,
    "grup": "DirsekSol_OnKol",
    "max_mm": 2.3151068413993734e-10,
    "max_derece": 4.856062616882153e-11,
@@ -12211,7 +17289,7 @@
    "kol": "dirsek_sol",
    "anahtar": "bilek",
    "etiket": "DirsekSol bilek (MG996R)",
-   "vaka": 15,
+   "vaka": 16,
    "grup": "DirsekSol_El",
    "max_mm": 2.3151068413993734e-10,
    "max_derece": 4.856062616882153e-11,
@@ -12235,7 +17313,7 @@
    "kol": "kafa",
    "anahtar": "pan",
    "etiket": "Kafa pan (MG996R)",
-   "vaka": 14,
+   "vaka": 15,
    "grup": "Kafa_Boyun",
    "max_mm": 2.3151068413993734e-10,
    "max_derece": 4.856062616882153e-11,
@@ -12259,7 +17337,7 @@
    "kol": "kafa",
    "anahtar": "tilt",
    "etiket": "Kafa tilt (MG996R)",
-   "vaka": 14,
+   "vaka": 15,
    "grup": "Kafa_Bas",
    "max_mm": 2.3151068413993734e-10,
    "max_derece": 4.856062616882153e-11,
@@ -12278,7 +17356,91 @@
     1105.0,
     25.0
    ]
+  },
+  "Taban_TekerOnSag": {
+   "kol": "taban",
+   "anahtar": "teker_on_sag",
+   "etiket": "Taban teker on sag (JGB37 mili)",
+   "vaka": 8,
+   "grup": "Taban_OnSagTeker",
+   "max_mm": 1.1150686765155846e-10,
+   "max_derece": 4.3048059732121876e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11,
+   "sinir": null,
+   "eksen": [
+    1.0000000000000002,
+    0.0,
+    0.0
+   ],
+   "nokta": [
+    178.0,
+    62.5,
+    185.0
+   ]
+  },
+  "Taban_TekerOnSol": {
+   "kol": "taban",
+   "anahtar": "teker_on_sol",
+   "etiket": "Taban teker on sol (JGB37 mili)",
+   "vaka": 8,
+   "grup": "Taban_OnSolTeker",
+   "max_mm": 1.1150686765155846e-10,
+   "max_derece": 4.3048059732121876e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11,
+   "sinir": null,
+   "eksen": [
+    1.0000000000000002,
+    0.0,
+    0.0
+   ],
+   "nokta": [
+    -178.0,
+    62.5,
+    185.0
+   ]
+  },
+  "Taban_TekerArkaSag": {
+   "kol": "taban",
+   "anahtar": "teker_arka_sag",
+   "etiket": "Taban teker arka sag (JGB37 mili)",
+   "vaka": 8,
+   "grup": "Taban_ArkaSagTeker",
+   "max_mm": 1.1150686765155846e-10,
+   "max_derece": 4.3048059732121876e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11,
+   "sinir": null,
+   "eksen": [
+    1.0000000000000002,
+    0.0,
+    0.0
+   ],
+   "nokta": [
+    178.0,
+    62.5,
+    -185.0
+   ]
+  },
+  "Taban_TekerArkaSol": {
+   "kol": "taban",
+   "anahtar": "teker_arka_sol",
+   "etiket": "Taban teker arka sol (JGB37 mili)",
+   "vaka": 8,
+   "grup": "Taban_ArkaSolTeker",
+   "max_mm": 1.1150686765155846e-10,
+   "max_derece": 4.3048059732121876e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11,
+   "sinir": null,
+   "eksen": [
+    1.0000000000000002,
+    0.0,
+    0.0
+   ],
+   "nokta": [
+    -178.0,
+    62.5,
+    -185.0
+   ]
   }
  },
- "sure_s": 94.5
+ "sure_s": 80.6
 }

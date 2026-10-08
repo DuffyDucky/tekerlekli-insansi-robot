@@ -26,7 +26,8 @@ RENK = {"alu": (0.78, 0.80, 0.83), "alu2": (0.55, 0.60, 0.68), "celik": (0.50, 0
 # dirsek 0...103 derece (sinir 0...105), bilek -69...+69 derece (sinir +-90).
 # Sag ve sol kol zit fazda one-arka sallanir, ikisi birlikte one kalkip yana acilir; sag dirsek 4 s'de iki kez bukulur,
 # sol dirsek 8 s'de bir kez; bilekler zit yonde doner. Kafa pan -46...+46 derece (sinir +-90) saga sola bakar, tilt
-# -14...+14 derece (sinir -25...30) iki kez basini egip kaldirir. Her formul t = 0'da 0 (ev pozundan baslar).
+# -14...+14 derece (sinir -25...30) iki kez basini egip kaldirir. Tekerler (sinirsiz) 8 s'de bir tur ileri yuvarlanir.
+# Her formul t = 0'da 0 (ev pozundan baslar).
 SURE, ADIM = 8.0, 0.05
 FORMUL = {
     "OmuzSag_OneArka": "0.75*sin(2*pi*time/4) + 0.6*(1 - cos(2*pi*time/8))",
@@ -39,6 +40,8 @@ FORMUL = {
     "DirsekSol_Bilek": "-1.2*sin(2*pi*time/8)",
     "Kafa_Pan": "0.8*sin(2*pi*time/8)",
     "Kafa_Tilt": "0.25*sin(2*pi*time/4)",
+    "Taban_TekerOnSag": "2*pi*time/8", "Taban_TekerOnSol": "2*pi*time/8",
+    "Taban_TekerArkaSag": "2*pi*time/8", "Taban_TekerArkaSol": "2*pi*time/8",
 }
 KOLON = ("OmuzSag_OneArka", "OmuzSag_Yana", "DirsekSag_Dirsek", "DirsekSag_Bilek",
          "OmuzSol_OneArka", "OmuzSol_Yana", "DirsekSol_Dirsek", "DirsekSol_Bilek", "Kafa_Pan", "Kafa_Tilt")
@@ -161,6 +164,17 @@ def go():
     kaydet(v, "montaj-omuzlar.png", 1400, 900)
     kamera(v, (0.9, 0.3, 0.6), 420, (150, 790, 0))
     kaydet(v, "montaj-dirsek.png", 1200, 1000)
+    # taban yakindan: etek arkasi (acil stop, ana anahtar) ve tekerler; etek parcalari gizlenip ic yerlesim ayrica
+    kamera(v, (0.75, 0.55, -1.0), 700, (0, 190, 0))
+    kaydet(v, "montaj-taban.png", 1300, 900)
+    etek = [o for o in feats if o.Name.startswith("Kabuk_") and o.Label.startswith("Etek")]
+    for o in etek:
+        gd.getObject(o.Name).Visibility = False
+    kamera(v, (0.8, 0.9, 1.0), 640, (0, 170, 0))
+    kaydet(v, "montaj-taban-ic.png", 1300, 900)
+    for o in etek:
+        gd.getObject(o.Name).Visibility = True
+    Gui.updateGui()
 
     # --- 4) poz gorselleri (gruplar beklenen poza; recompute yok)
     try:
@@ -205,7 +219,7 @@ def go():
     for f in os.listdir(KARE):
         if f.endswith(".png") or f == "pozlar.txt":
             os.remove(os.path.join(KARE, f))
-    kamera(v, (0.75, 0.4, 1.0), 900, (0, 870, 90))
+    kamera(v, (0.75, 0.4, 1.0), 1340, (0, 650, 40))      # tam robot (tabanli)
     satir = []
     k_out = 0
     for k in range(1, n, 2):

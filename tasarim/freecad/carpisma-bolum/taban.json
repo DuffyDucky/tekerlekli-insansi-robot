@@ -1,0 +1,552 @@
+{
+ "bolum": "taban",
+ "kosu": "20261008-221731",
+ "baslangic": "2026-10-08T23:43:53",
+ "bitis": "2026-10-08T23:44:43",
+ "sure_s": 50.6,
+ "yukleme_s": 53.5,
+ "tepe_bellek_mb": 553,
+ "tepe_sayfa_mb": 2569,
+ "ayni_surec": [
+  "taban"
+ ],
+ "pid": 115156,
+ "moduller": [
+  "iskelet",
+  "omuz_sag",
+  "omuz_sol",
+  "kabuk",
+  "dirsek_sag",
+  "dirsek_sol",
+  "kafa",
+  "taban"
+ ],
+ "kaynak": {
+  "carpisma.py": "46990770f1",
+  "arayuz.py": "6aa5377a61",
+  "ortak_lib.py": "ce4e4053c4",
+  "iskelet/iskelet_parcalar.py": "da1de9d063",
+  "omuz/omuz_parcalar.py": "ac3c6974d4",
+  "kabuk/kabuk_parcalar.py": "49520759b6",
+  "dirsek/dirsek_parcalar.py": "029708d0b7",
+  "kafa/kafa_parcalar.py": "3b147ef083",
+  "taban/taban_parcalar.py": "e1d0b822f1",
+  "taban/taban_lib.py": "29fc99b240"
+ },
+ "sonuc": {
+  "statik": {
+   "iskelet": {
+    "kutu_kesisen": 97,
+    "cakisma": [],
+    "temas": 44,
+    "temas_ornek": [
+     "Alt plaka / Sase ara rayi arka",
+     "Alt plaka / Sase ara rayi on",
+     "Alt plaka / Sase ara rayi orta",
+     "Alt plaka / Sase uzun rayi sag",
+     "Alt plaka / Sase uzun rayi sol",
+     "Cekic somun M4 (braket arka sag +1) / Sase uzun rayi sag",
+     "Cekic somun M4 (braket arka sag -1) / Sase uzun rayi sag",
+     "Cekic somun M4 (braket arka sol +1) / Sase uzun rayi sol",
+     "Cekic somun M4 (braket arka sol -1) / Sase uzun rayi sol",
+     "Cekic somun M4 (braket on sag +1) / Sase uzun rayi sag",
+     "Cekic somun M4 (braket on sag -1) / Sase uzun rayi sag",
+     "Cekic somun M4 (braket on sol +1) / Sase uzun rayi sol"
+    ],
+    "en_kucuk_bosluk_mm": 0.0,
+    "en_yakin": [
+     "Alt plaka",
+     "Sase uzun rayi sag"
+    ],
+    "tam_olcum": 74
+   },
+   "omuz_sag": {
+    "kutu_kesisen": 0,
+    "cakisma": [],
+    "temas": 0,
+    "temas_ornek": [],
+    "en_kucuk_bosluk_mm": 550.94,
+    "en_yakin": [
+     "Acil stop mantari + bilezik",
+     "Ust kol tupu"
+    ],
+    "tam_olcum": 1
+   },
+   "omuz_sol": {
+    "kutu_kesisen": 0,
+    "cakisma": [],
+    "temas": 0,
+    "temas_ornek": [],
+    "en_kucuk_bosluk_mm": 582.8,
+    "en_yakin": [
+     "Ana anahtar ASW-A01 govdesi (tahmini zarf)",
+     "Ust kol tupu"
+    ],
+    "tam_olcum": 2
+   },
+   "kabuk": {
+    "kutu_kesisen": 365,
+    "cakisma": [],
+    "temas": 1,
+    "temas_ornek": [
+     "Acil stop mantari + bilezik / Etek arka sag"
+    ],
+    "en_kucuk_bosluk_mm": 0.0,
+    "en_yakin": [
+     "Acil stop mantari + bilezik",
+     "Etek arka sag"
+    ],
+    "tam_olcum": 197
+   },
+   "dirsek_sag": {
+    "kutu_kesisen": 0,
+    "cakisma": [],
+    "temas": 0,
+    "temas_ornek": [],
+    "en_kucuk_bosluk_mm": 377.12,
+    "en_yakin": [
+     "Acil stop mantari + bilezik",
+     "El"
+    ],
+    "tam_olcum": 1
+   },
+   "dirsek_sol": {
+    "kutu_kesisen": 0,
+    "cakisma": [],
+    "temas": 0,
+    "temas_ornek": [],
+    "en_kucuk_bosluk_mm": 407.34,
+    "en_yakin": [
+     "Ana anahtar ASW-A01 govdesi (tahmini zarf)",
+     "El"
+    ],
+    "tam_olcum": 1
+   },
+   "kafa": {
+    "kutu_kesisen": 0,
+    "cakisma": [],
+    "temas": 0,
+    "temas_ornek": [],
+    "en_kucuk_bosluk_mm": 695.57,
+    "en_yakin": [
+     "Acil stop mantari + bilezik",
+     "Cekic somun M6 (travers ust kanali)"
+    ],
+    "tam_olcum": 2
+   }
+  },
+  "kol": {
+   "sag": {
+    "poz": {
+     "kaba": 1755,
+     "aralik_disi": 279,
+     "jest": 15
+    },
+    "alt_oge": 46068,
+    "ince_alt_oge": 392,
+    "tam_olcum": 559,
+    "tam_olcum_kaba": 63,
+    "cakisan_alt_poz_aralikta": 0,
+    "cakisan_alt_poz_aralik_disi": 0,
+    "cakismalar": [],
+    "en_kucuk_aralikta": {
+     "acil stop": {
+      "kol_grup": "El",
+      "kol_poz": [
+       -10.0,
+       0.0,
+       0.0,
+       -75.0
+      ],
+      "parca": "El",
+      "hedef_modul": "taban",
+      "hedef": "Acil stop mantari + bilezik",
+      "kategori": "acil stop",
+      "bosluk_mm": 367.0,
+      "hacim_mm3": 0.0,
+      "aralikta": true
+     },
+     "ana anahtar dugmesi": {
+      "kol_grup": "El",
+      "kol_poz": [
+       -20.0,
+       0.0,
+       0.0,
+       75.0
+      ],
+      "parca": "El",
+      "hedef_modul": "taban",
+      "hedef": "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)",
+      "kategori": "ana anahtar dugmesi",
+      "bosluk_mm": 431.35,
+      "hacim_mm3": 0.0,
+      "aralikta": true
+     },
+     "etek (kabuk)": {
+      "kol_grup": "El",
+      "kol_poz": [
+       0.0,
+       0.0,
+       10.0,
+       -15.0
+      ],
+      "parca": "El",
+      "hedef_modul": "kabuk",
+      "hedef": "Etek orta sag",
+      "kategori": "etek (kabuk)",
+      "bosluk_mm": 365.41,
+      "hacim_mm3": 0.0,
+      "aralikta": true
+     },
+     "sonar": {
+      "kol_grup": "El",
+      "kol_poz": [
+       15.0,
+       0.0,
+       10.0,
+       0.0
+      ],
+      "parca": "El",
+      "hedef_modul": "taban",
+      "hedef": "Sonar tutucu sag",
+      "kategori": "sonar",
+      "bosluk_mm": 543.69,
+      "hacim_mm3": 0.0,
+      "aralikta": true
+     },
+     "taban diger": {
+      "kol_grup": "El",
+      "kol_poz": [
+       5.0,
+       0.0,
+       10.0,
+       0.0
+      ],
+      "parca": "El",
+      "hedef_modul": "taban",
+      "hedef": "ESP32 DevKit 30 pin",
+      "kategori": "taban diger",
+      "bosluk_mm": 432.47,
+      "hacim_mm3": 0.0,
+      "aralikta": true
+     }
+    },
+    "en_kucuk_aralik_disi": {
+     "acil stop": {
+      "kol_grup": "El",
+      "kol_poz": [
+       -15.0,
+       -10.0,
+       0.0,
+       -90.0
+      ],
+      "parca": "El",
+      "hedef_modul": "taban",
+      "hedef": "Acil stop mantari + bilezik",
+      "kategori": "acil stop",
+      "bosluk_mm": 367.2,
+      "hacim_mm3": 0.0,
+      "aralikta": false
+     },
+     "ana anahtar dugmesi": {
+      "kol_grup": "El",
+      "kol_poz": [
+       -15.0,
+       -10.0,
+       0.0,
+       -90.0
+      ],
+      "parca": "El",
+      "hedef_modul": "taban",
+      "hedef": "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)",
+      "kategori": "ana anahtar dugmesi",
+      "bosluk_mm": 415.66,
+      "hacim_mm3": 0.0,
+      "aralikta": false
+     },
+     "etek (kabuk)": {
+      "kol_grup": "El",
+      "kol_poz": [
+       0.0,
+       -10.0,
+       0.0,
+       90.0
+      ],
+      "parca": "El",
+      "hedef_modul": "kabuk",
+      "hedef": "Etek orta sag",
+      "kategori": "etek (kabuk)",
+      "bosluk_mm": 368.12,
+      "hacim_mm3": 0.0,
+      "aralikta": false
+     },
+     "sonar": {
+      "kol_grup": "El",
+      "kol_poz": [
+       15.0,
+       -10.0,
+       0.0,
+       90.0
+      ],
+      "parca": "El",
+      "hedef_modul": "taban",
+      "hedef": "Sonar tutucu sag",
+      "kategori": "sonar",
+      "bosluk_mm": 544.78,
+      "hacim_mm3": 0.0,
+      "aralikta": false
+     },
+     "taban diger": {
+      "kol_grup": "El",
+      "kol_poz": [
+       0.0,
+       -10.0,
+       0.0,
+       90.0
+      ],
+      "parca": "El",
+      "hedef_modul": "taban",
+      "hedef": "ESP32 DevKit 30 pin",
+      "kategori": "taban diger",
+      "bosluk_mm": 433.33,
+      "hacim_mm3": 0.0,
+      "aralikta": false
+     }
+    },
+    "kol_en_alt": {
+     "y_mm": 626.5,
+     "kol_grup": "El",
+     "kol_poz": [
+      0.0,
+      5.0,
+      10.0,
+      -15.0
+     ],
+     "parca": "El",
+     "not_": "siki tutucu kutunun alt siniri (gercek nokta en cok ~0,5 mm yukarida)"
+    },
+    "taban_en_ust_y_mm": 290.0,
+    "sure_s": 13.8
+   },
+   "sol": {
+    "poz": {
+     "kaba": 1755,
+     "aralik_disi": 279,
+     "jest": 15
+    },
+    "alt_oge": 46068,
+    "ince_alt_oge": 312,
+    "tam_olcum": 463,
+    "tam_olcum_kaba": 55,
+    "cakisan_alt_poz_aralikta": 0,
+    "cakisan_alt_poz_aralik_disi": 0,
+    "cakismalar": [],
+    "en_kucuk_aralikta": {
+     "acil stop": {
+      "kol_grup": "El",
+      "kol_poz": [
+       -20.0,
+       0.0,
+       0.0,
+       75.0
+      ],
+      "parca": "El",
+      "hedef_modul": "taban",
+      "hedef": "Acil stop mantari + bilezik",
+      "kategori": "acil stop",
+      "bosluk_mm": 420.87,
+      "hacim_mm3": 0.0,
+      "aralikta": true
+     },
+     "ana anahtar dugmesi": {
+      "kol_grup": "El",
+      "kol_poz": [
+       -10.0,
+       0.0,
+       0.0,
+       -75.0
+      ],
+      "parca": "El",
+      "hedef_modul": "taban",
+      "hedef": "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)",
+      "kategori": "ana anahtar dugmesi",
+      "bosluk_mm": 375.97,
+      "hacim_mm3": 0.0,
+      "aralikta": true
+     },
+     "etek (kabuk)": {
+      "kol_grup": "El",
+      "kol_poz": [
+       5.0,
+       0.0,
+       5.0,
+       -15.0
+      ],
+      "parca": "El",
+      "hedef_modul": "kabuk",
+      "hedef": "Etek orta sol",
+      "kategori": "etek (kabuk)",
+      "bosluk_mm": 365.95,
+      "hacim_mm3": 0.0,
+      "aralikta": true
+     },
+     "sonar": {
+      "kol_grup": "El",
+      "kol_poz": [
+       15.0,
+       0.0,
+       10.0,
+       0.0
+      ],
+      "parca": "El",
+      "hedef_modul": "taban",
+      "hedef": "Sonar tutucu sol",
+      "kategori": "sonar",
+      "bosluk_mm": 543.69,
+      "hacim_mm3": 0.0,
+      "aralikta": true
+     },
+     "taban diger": {
+      "kol_grup": "El",
+      "kol_poz": [
+       -10.0,
+       0.0,
+       5.0,
+       -90.0
+      ],
+      "parca": "El",
+      "hedef_modul": "taban",
+      "hedef": "Ana anahtar ASW-A01 govdesi (tahmini zarf)",
+      "kategori": "taban diger",
+      "bosluk_mm": 398.52,
+      "hacim_mm3": 0.0,
+      "aralikta": true
+     }
+    },
+    "en_kucuk_aralik_disi": {
+     "acil stop": {
+      "kol_grup": "El",
+      "kol_poz": [
+       -15.0,
+       -10.0,
+       0.0,
+       -90.0
+      ],
+      "parca": "El",
+      "hedef_modul": "taban",
+      "hedef": "Acil stop mantari + bilezik",
+      "kategori": "acil stop",
+      "bosluk_mm": 405.73,
+      "hacim_mm3": 0.0,
+      "aralikta": false
+     },
+     "ana anahtar dugmesi": {
+      "kol_grup": "El",
+      "kol_poz": [
+       -15.0,
+       -10.0,
+       0.0,
+       -90.0
+      ],
+      "parca": "El",
+      "hedef_modul": "taban",
+      "hedef": "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)",
+      "kategori": "ana anahtar dugmesi",
+      "bosluk_mm": 375.94,
+      "hacim_mm3": 0.0,
+      "aralikta": false
+     },
+     "etek (kabuk)": {
+      "kol_grup": "El",
+      "kol_poz": [
+       0.0,
+       -10.0,
+       0.0,
+       90.0
+      ],
+      "parca": "El",
+      "hedef_modul": "kabuk",
+      "hedef": "Etek orta sol",
+      "kategori": "etek (kabuk)",
+      "bosluk_mm": 368.12,
+      "hacim_mm3": 0.0,
+      "aralikta": false
+     },
+     "sonar": {
+      "kol_grup": "El",
+      "kol_poz": [
+       15.0,
+       -10.0,
+       0.0,
+       90.0
+      ],
+      "parca": "El",
+      "hedef_modul": "taban",
+      "hedef": "Sonar tutucu sol",
+      "kategori": "sonar",
+      "bosluk_mm": 544.78,
+      "hacim_mm3": 0.0,
+      "aralikta": false
+     },
+     "taban diger": {
+      "kol_grup": "El",
+      "kol_poz": [
+       -15.0,
+       -10.0,
+       0.0,
+       -90.0
+      ],
+      "parca": "El",
+      "hedef_modul": "taban",
+      "hedef": "Ana anahtar ASW-A01 govdesi (tahmini zarf)",
+      "kategori": "taban diger",
+      "bosluk_mm": 398.99,
+      "hacim_mm3": 0.0,
+      "aralikta": false
+     }
+    },
+    "kol_en_alt": {
+     "y_mm": 626.6,
+     "kol_grup": "El",
+     "kol_poz": [
+      0.0,
+      0.0,
+      10.0,
+      -75.0
+     ],
+     "parca": "El",
+     "not_": "siki tutucu kutunun alt siniri (gercek nokta en cok ~0,5 mm yukarida)"
+    },
+    "taban_en_ust_y_mm": 290.0,
+    "sure_s": 13.0
+   }
+  },
+  "kafa": {
+   "kafa_en_alt_y_mm": 964.6,
+   "kafa_en_alt_parca": "Boyun civatasi M6x20",
+   "kafa_en_alt_poz": null,
+   "taban_en_ust_y_mm": 290.0,
+   "kutu_bosluk_mm": 674.6,
+   "olculdu": false,
+   "gerekli": false,
+   "not_": "kafanin tum pan x tilt pozlarindaki (pan -180...165, tilt -25...40, 15 derece) siki kutularinin en alti tabanin en ustunden 675 mm yukarida (> LIM_K = 100 mm): kafa x taban olculmedi, carpisma olanaksiz"
+  },
+  "toplam": {
+   "cakisma": 0,
+   "eklem_araliginda": 0,
+   "statik_cakisma": 0,
+   "not_": "kol x taban cakisan alt pozlari; statik cakismalar ev_pozu_cakisma'da da sayilir (toplama bir kez girer)"
+  },
+  "kategoriler": [
+   "acil stop",
+   "ana anahtar dugmesi",
+   "etek (kabuk)",
+   "sonar",
+   "taban diger"
+  ],
+  "hedef_sayisi": 319,
+  "yakin_mm": 5.0,
+  "not_": "kol pozu = (one-arka, yana, dirsek, bilek); aralik disi halka omuz -60 / 150, yana -10. Hedef: taban parcalari (kablo yolu semalari haric), ana anahtar dugmesi gosterimi, kabuk etek parcalari. Bulunan en kucugun otesindeki ciftler olculmedi (siki kutu boslugu alt sinir).",
+  "sure_s": 50.5
+ }
+}

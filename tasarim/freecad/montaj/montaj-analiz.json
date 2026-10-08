@@ -1,9 +1,9 @@
 {
  "dosya": "robot-montaj.FCStd",
  "step": "robot-montaj.step",
- "step_kati": 601,
- "parca_sayisi": 601,
- "grup_sayisi": 17,
+ "step_kati": 907,
+ "parca_sayisi": 907,
+ "grup_sayisi": 22,
  "gecersiz": [],
  "hacim_fark_mm3": 3.7834979593753815e-10,
  "ayna_merkez_fark_mm": 5.859285502108464e-13,
@@ -185,6 +185,47 @@
     "Kafa_Govde",
     "Kafa_Boyun",
     "Kafa_Bas"
+   ]
+  },
+  {
+   "ad": "taban",
+   "konum": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "ayna": false,
+   "not_": "yerel = global; plakalar, tahrik, aku, guc, elektronik kati, sonar, acil stop (statik)",
+   "parca_modulde": 319,
+   "parca": 306,
+   "haric": [
+    "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)",
+    "Kablo yolu 1: 12 V ana hat: aku + -> XT60 -> ana sigorta 30 A -> ana anahtar -> sigorta kutusu",
+    "Kablo yolu 2: Toprak: aku - -> WAGO yildiz noktasi (guc paneli) -> tum donusturuculer",
+    "Kablo yolu 3: Motor 12 V: F1 20 A -> role -> WAGO -> BTS7960 sol/sag -> motor kablo delikleri -> 4 motor",
+    "Kablo yolu 4: Motor 12 V sag kol + arka motorlar (plaka altindan z 36 deliginden)",
+    "Kablo yolu 5: Servo 6 V: F1 -> role -> WAGO -> XL4016 servo -> PCA9685 V+ -> direk arka yuzu -> omuz / kafa",
+    "Kablo yolu 6: Servo kablolari sola ve kafaya (direk ustu dagitim)",
+    "Kablo yolu 7: Pi 5,1 V: F3 10 A -> XL4016 Pi -> Pi USB-C",
+    "Kablo yolu 8: Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / Nextion / 7in LCD / sensorler",
+    "Kablo yolu 9: Acil stop: F5 -> mantar (NC) -> role bobini",
+    "Kablo yolu 10: Sinyal: sonar x3 -> ESP32 (on ara ray ustunden)",
+    "Kablo yolu 11: Sinyal: enkoder + BTS PWM/EN -> ESP32; Pi <-> ESP32 USB",
+    "Kablo yolu 12: Pi -> kafa: 2x HDMI (7in LCD), kamera FPC, USB mikrofon, hoparlor (direk on yuzu)"
+   ],
+   "haric_neden": "kablo yolu semalari ve ana anahtar dugmesi gosterimi (Referans grubu, 0 g); taban analizinin parca sayisina girmiyor",
+   "kutle_g": 7507.96,
+   "agirlik_merkezi": [
+    -1.12,
+    119.495,
+    -47.414
+   ],
+   "gruplar": [
+    "Taban_Govde",
+    "Taban_OnSagTeker",
+    "Taban_OnSolTeker",
+    "Taban_ArkaSagTeker",
+    "Taban_ArkaSolTeker"
    ]
   }
  ],
@@ -630,6 +671,148 @@
     30.0
    ],
    "kaynak": "kafa/kafa-montaj.FCStd: Tilt (Tilt (MG996R))"
+  },
+  {
+   "isim": "Sabit_Taban",
+   "etiket": "Taban Govde -> iskelet (sabit)",
+   "tip": "Fixed",
+   "modul": "taban",
+   "ust": "Iskelet",
+   "alt": "Taban_Govde",
+   "nokta": [
+    0.0,
+    94.5,
+    0.0
+   ],
+   "aciklama": "alt plaka uzun ve ara raylarin alt kanallarina 14x M6 + cekic somun (arayuz.TABAN plaka_ray_z / plaka_ara_x); motor braketleri plaka uzerinden uzun raylara M4 + cekic somun"
+  },
+  {
+   "isim": "Taban_TekerOnSag",
+   "etiket": "Taban teker on sag (JGB37 mili)",
+   "tip": "Revolute",
+   "modul": "taban",
+   "anahtar": "teker_on_sag",
+   "ad": "teker on sag (JGB37 mili)",
+   "ust": "Taban_Govde",
+   "alt": "Taban_OnSagTeker",
+   "nokta": [
+    178.0,
+    62.5,
+    185.0
+   ],
+   "eksen": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "yerel_nokta": [
+    178.0,
+    62.5,
+    185.0
+   ],
+   "yerel_eksen": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "sinir": null,
+   "kaynak": "taban/taban_parcalar.py: teker merkezi (x = +178, y = 62.5, z = +185), eksen +X (motor mili)"
+  },
+  {
+   "isim": "Taban_TekerOnSol",
+   "etiket": "Taban teker on sol (JGB37 mili)",
+   "tip": "Revolute",
+   "modul": "taban",
+   "anahtar": "teker_on_sol",
+   "ad": "teker on sol (JGB37 mili)",
+   "ust": "Taban_Govde",
+   "alt": "Taban_OnSolTeker",
+   "nokta": [
+    -178.0,
+    62.5,
+    185.0
+   ],
+   "eksen": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "yerel_nokta": [
+    -178.0,
+    62.5,
+    185.0
+   ],
+   "yerel_eksen": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "sinir": null,
+   "kaynak": "taban/taban_parcalar.py: teker merkezi (x = -178, y = 62.5, z = +185), eksen +X (motor mili)"
+  },
+  {
+   "isim": "Taban_TekerArkaSag",
+   "etiket": "Taban teker arka sag (JGB37 mili)",
+   "tip": "Revolute",
+   "modul": "taban",
+   "anahtar": "teker_arka_sag",
+   "ad": "teker arka sag (JGB37 mili)",
+   "ust": "Taban_Govde",
+   "alt": "Taban_ArkaSagTeker",
+   "nokta": [
+    178.0,
+    62.5,
+    -185.0
+   ],
+   "eksen": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "yerel_nokta": [
+    178.0,
+    62.5,
+    -185.0
+   ],
+   "yerel_eksen": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "sinir": null,
+   "kaynak": "taban/taban_parcalar.py: teker merkezi (x = +178, y = 62.5, z = -185), eksen +X (motor mili)"
+  },
+  {
+   "isim": "Taban_TekerArkaSol",
+   "etiket": "Taban teker arka sol (JGB37 mili)",
+   "tip": "Revolute",
+   "modul": "taban",
+   "anahtar": "teker_arka_sol",
+   "ad": "teker arka sol (JGB37 mili)",
+   "ust": "Taban_Govde",
+   "alt": "Taban_ArkaSolTeker",
+   "nokta": [
+    -178.0,
+    62.5,
+    -185.0
+   ],
+   "eksen": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "yerel_nokta": [
+    -178.0,
+    62.5,
+    -185.0
+   ],
+   "yerel_eksen": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "sinir": null,
+   "kaynak": "taban/taban_parcalar.py: teker merkezi (x = -178, y = 62.5, z = -185), eksen +X (motor mili)"
   }
  ],
  "dosyadaki_eklem": [
@@ -649,51 +832,56 @@
   "DirsekSol_Bilek",
   "Sabit_Kafa",
   "Kafa_Pan",
-  "Kafa_Tilt"
+  "Kafa_Tilt",
+  "Sabit_Taban",
+  "Taban_TekerOnSag",
+  "Taban_TekerOnSol",
+  "Taban_TekerArkaSag",
+  "Taban_TekerArkaSol"
  ],
  "solve": 0,
  "ev_pozu_cozucu_sapmasi": 0.0,
- "kutle_g": 13752.92,
+ "kutle_g": 21260.88,
  "agirlik_merkezi": [
-  0.029,
-  513.889,
-  4.993
+  -0.376,
+  374.615,
+  -13.514
  ],
  "karsilastirma": {
   "parca": {
-   "montaj": 601,
-   "beklenen": 601,
-   "formul": "iskelet 59 + 2 x (omuz 70 - travers - kabuk referansi) + kabuk 202 + dirsek_sag 53 + dirsek_sol 53 + kafa 98",
+   "montaj": 907,
+   "beklenen": 907,
+   "formul": "iskelet 59 + 2 x (omuz 70 - travers - kabuk referansi) + kabuk 202 + dirsek_sag 53 + dirsek_sol 53 + kafa 98 + taban 306",
    "ayni": true
   },
   "kutle": {
-   "montaj_dosyasi": 13752.92,
-   "bellek": 13752.92,
-   "beklenen_analizlerden": 13752.9,
-   "carpisma": 13752.9,
-   "fark_analiz": 0.027,
-   "fark_carpisma": 0.024
+   "montaj_dosyasi": 21260.88,
+   "bellek": 21260.88,
+   "beklenen_analizlerden": 21260.9,
+   "carpisma": 21260.9,
+   "fark_analiz": -0.014,
+   "fark_carpisma": -0.016
   },
   "am": {
    "montaj_dosyasi": [
-    0.029,
-    513.889,
-    4.993
+    -0.376,
+    374.615,
+    -13.514
    ],
    "bellek": [
-    0.029,
-    513.889,
-    4.993
+    -0.376,
+    374.615,
+    -13.514
    ],
    "carpisma": [
-    0.03,
-    513.89,
-    4.99
+    -0.38,
+    374.61,
+    -13.51
    ],
-   "fark_carpisma_mm": 0.003,
+   "fark_carpisma_mm": 0.007,
    "fark_bellek_mm": 0.0
   },
   "not_": "analiz JSON'lari 0,1 g'a yuvarlanmis; carpisma AM'si 0,01 mm'ye"
  },
- "sure_s": 61.9
+ "sure_s": 46.3
 }

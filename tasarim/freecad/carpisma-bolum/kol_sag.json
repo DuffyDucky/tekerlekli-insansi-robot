@@ -1,0 +1,3927 @@
+{
+ "bolum": "kol_sag",
+ "kosu": "20261008-221731",
+ "baslangic": "2026-10-08T22:48:00",
+ "bitis": "2026-10-08T22:53:01",
+ "sure_s": 301.0,
+ "yukleme_s": 36.9,
+ "tepe_bellek_mb": 510,
+ "tepe_sayfa_mb": 2447,
+ "ayni_surec": [
+  "kol_sag"
+ ],
+ "pid": 120728,
+ "moduller": [
+  "iskelet",
+  "omuz_sag",
+  "omuz_sol",
+  "kabuk",
+  "dirsek_sag",
+  "taban"
+ ],
+ "kaynak": {
+  "carpisma.py": "46990770f1",
+  "arayuz.py": "6aa5377a61",
+  "ortak_lib.py": "ce4e4053c4",
+  "iskelet/iskelet_parcalar.py": "da1de9d063",
+  "omuz/omuz_parcalar.py": "ac3c6974d4",
+  "kabuk/kabuk_parcalar.py": "49520759b6",
+  "dirsek/dirsek_parcalar.py": "029708d0b7",
+  "kafa/kafa_parcalar.py": "3b147ef083",
+  "taban/taban_parcalar.py": "e1d0b822f1",
+  "taban/taban_lib.py": "29fc99b240"
+ },
+ "sonuc": {
+  "taraf": "sag",
+  "omuz": "omuz_sag",
+  "dirsek": "dirsek_sag",
+  "aralik": {
+   "one_arka": [
+    -45.0,
+    135.0
+   ],
+   "yana": [
+    0.0,
+    120.0
+   ],
+   "dirsek": [
+    0.0,
+    105.0
+   ],
+   "bilek": [
+    -90.0,
+    90.0
+   ]
+  },
+  "kaba_izgara": {
+   "one_arka": [
+    -45,
+    -30,
+    -15,
+    0,
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135
+   ],
+   "yana": [
+    0,
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120
+   ],
+   "dirsek": [
+    0,
+    30,
+    60,
+    90,
+    105
+   ],
+   "bilek": [
+    -90,
+    0,
+    90
+   ],
+   "tam_poz": 1755
+  },
+  "aralik_disi_halka": {
+   "aciklama": "omuz one-arka -60 ve 150 (yana 0...120) + yana -10 (one-arka -45...135); dirsek [0, 60, 105]; bilek [-90, 0, 90]",
+   "tam_poz": 279
+  },
+  "alt_poz": {
+   "kaba": 2860,
+   "ince": 188
+  },
+  "aday": 425977,
+  "tam_olcum": 3249,
+  "cakisan_tam_poz_aralikta": 0,
+  "cakisan_tam_poz_aralik_disi": 63,
+  "cakisan_alt_poz_aralikta": 0,
+  "cakisan_alt_poz_aralik_disi": 60,
+  "cakismalar_aralikta": [],
+  "cakismalar_aralik_disi": [
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 265.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3010.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 435.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 2546.3,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 474.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3144.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 25.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 183.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3709.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde braketi sag y780",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 128.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 25.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 148.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3060.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 20.3,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 21.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     105.0,
+     90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 25.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     105.0,
+     90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 183.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     105.0,
+     90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3709.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     105.0,
+     90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde braketi sag y780",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 41.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 208.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 464.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 32.5,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 70.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 1716.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 2272.8,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 7.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 208.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 466.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 70.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 32.5,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3143.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 4482.1,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 208.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 464.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 70.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 32.5,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 1595.8,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 2575.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 7.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 16.1,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 156.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3708.3,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde braketi sag y780",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 78.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 16.1,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 125.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3034.8,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 18.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 21.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     105.0,
+     90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 16.1,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     105.0,
+     90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 156.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     105.0,
+     90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3708.3,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -30.0,
+     -10.0,
+     105.0,
+     90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde braketi sag y780",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 78.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 190.3,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Bilek horn merkez vidasi M3",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 50.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 43.5,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 377.8,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 42.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3478.8,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 653.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 8.3,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 24.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 12.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 38.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 190.3,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Bilek horn merkez vidasi M3",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 50.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 54.3,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 433.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 42.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 5629.1,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 656.8,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 190.3,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Bilek horn merkez vidasi M3",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 50.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 43.5,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 377.8,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 42.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 4410.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 653.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 8.3,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 24.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 12.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 38.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 199.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 443.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 55.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 74.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 1492.1,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 2492.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 1.1,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 206.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 446.1,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 113.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 55.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 2585.3,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 5480.3,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 199.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 446.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 74.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 55.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 873.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3099.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 1.1,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 22.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 186.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3766.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 22.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 151.8,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 2555.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 20.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 21.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     105.0,
+     90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 22.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     105.0,
+     90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 186.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     -10.0,
+     105.0,
+     90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3185.5,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 66.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 137.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Bilek horn merkez vidasi M3",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 6.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Bilek horn merkez vidasi M3",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 28.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Bilek horn merkez vidasi M3",
+    "hedef_modul": "kabuk",
+    "hedef": "Bindirme civatasi M3x6 (govde y690 yan)",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 394.5,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 207.5,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Isil gomme somun M3 (govde y690 yan)",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 36.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Bindirme civatasi M3x6 (govde y690 yan)",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 60.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 43.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Isil gomme somun M3 (govde y690 yan)",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 12.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Bindirme civatasi M3x6 (govde y690 yan)",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 4.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3958.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 138.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 4.5,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 19.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 4.8,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 25.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 4.5,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 19.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 4.8,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 25.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 66.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 137.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Bilek horn merkez vidasi M3",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 6.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Bilek horn merkez vidasi M3",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 28.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Bilek horn merkez vidasi M3",
+    "hedef_modul": "kabuk",
+    "hedef": "Bindirme civatasi M3x6 (govde y690 yan)",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 392.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 278.3,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Isil gomme somun M3 (govde y690 yan)",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 36.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Bindirme civatasi M3x6 (govde y690 yan)",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 60.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 43.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Isil gomme somun M3 (govde y690 yan)",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 12.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Bindirme civatasi M3x6 (govde y690 yan)",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 4.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 8957.8,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 157.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     0.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3.8,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 66.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 137.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Bilek horn merkez vidasi M3",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 6.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Bilek horn merkez vidasi M3",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 28.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Bilek horn merkez vidasi M3",
+    "hedef_modul": "kabuk",
+    "hedef": "Bindirme civatasi M3x6 (govde y690 yan)",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 394.5,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 207.5,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Isil gomme somun M3 (govde y690 yan)",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 36.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Bindirme civatasi M3x6 (govde y690 yan)",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 60.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 43.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Isil gomme somun M3 (govde y690 yan)",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 12.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Bindirme civatasi M3x6 (govde y690 yan)",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 4.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3958.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 138.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 4.5,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 19.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 4.8,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 25.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 4.5,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 19.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 4.8,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 25.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 216.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Bilek horn merkez vidasi M3",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 5.1,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 502.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 8.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 51.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 2648.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 16.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 15.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 216.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "Bilek horn merkez vidasi M3",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 5.1,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 523.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 51.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 8.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     0.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 3939.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 216.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Bilek horn merkez vidasi M3",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 5.1,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 502.8,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 51.2,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Flans-horn civatasi M3x8",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 8.6,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 2647.0,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Isil gomme somun M3 (flansta)",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 16.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     60.0,
+     90.0
+    ],
+    "parca": "Yaka civatasi M3x6 ISO 7380",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 15.9,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 46.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 254.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 738.7,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "Bilek horn 25T aluminyum disk",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 46.4,
+    "aralikta": false
+   },
+   {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     105.0,
+     0.0
+    ],
+    "parca": "Bilek flansi",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 208.8,
+    "aralikta": false
+   }
+  ],
+  "en_kucuk_bosluk_aralikta": {
+   "iskelet": {
+    "grup": "UstKol",
+    "poz": [
+     -45.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "iskelet",
+    "hedef": "Omuz traversi",
+    "bosluk_mm": 102.69,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   "kabuk": {
+    "grup": "UstKol",
+    "poz": [
+     40.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 3.76,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   "omuz_sag gobek": {
+    "grup": "UstKol",
+    "poz": [
+     120.0,
+     120.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "Omuz gobegi",
+    "bosluk_mm": 81.38,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   "omuz_sag govde": {
+    "grup": "UstKol",
+    "poz": [
+     -30.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag govde",
+    "hedef": "Omuz yuvasi",
+    "bosluk_mm": 69.69,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   }
+  },
+  "en_kucuk_bosluk_aralik_disi": {
+   "iskelet": {
+    "grup": "El",
+    "poz": [
+     0.0,
+     -10.0,
+     0.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "iskelet",
+    "hedef": "Govde diregi",
+    "bosluk_mm": 81.41,
+    "hacim_mm3": 0.0,
+    "aralikta": false
+   },
+   "kabuk": {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     -10.0,
+     60.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Govde orta bandi sag",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 265.6,
+    "aralikta": false
+   },
+   "omuz_sag gobek": {
+    "grup": "UstKol",
+    "poz": [
+     150.0,
+     120.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "Omuz gobegi",
+    "bosluk_mm": 81.38,
+    "hacim_mm3": 0.0,
+    "aralikta": false
+   },
+   "omuz_sag govde": {
+    "grup": "UstKol",
+    "poz": [
+     -30.0,
+     -10.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag govde",
+    "hedef": "Omuz yuvasi",
+    "bosluk_mm": 59.05,
+    "hacim_mm3": 0.0,
+    "aralikta": false
+   }
+  },
+  "en_kucuk_ciftler_aralikta": {
+   "iskelet": [
+    {
+     "grup": "UstKol",
+     "poz": [
+      -45.0,
+      0.0
+     ],
+     "parca": "Dirsek catali",
+     "hedef_modul": "iskelet",
+     "hedef": "Omuz traversi",
+     "bosluk_mm": 102.69,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    }
+   ],
+   "kabuk": [
+    {
+     "grup": "UstKol",
+     "poz": [
+      40.0,
+      0.0
+     ],
+     "parca": "Dirsek catali",
+     "hedef_modul": "kabuk",
+     "hedef": "Gogus bandi sag",
+     "bosluk_mm": 3.76,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "grup": "El",
+     "poz": [
+      -5.0,
+      0.0,
+      105.0,
+      -90.0
+     ],
+     "parca": "El",
+     "hedef_modul": "kabuk",
+     "hedef": "Gogus bandi sag",
+     "bosluk_mm": 4.12,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "grup": "OnKol",
+     "poz": [
+      30.0,
+      0.0,
+      30.0
+     ],
+     "parca": "Pim civatasi M5x12",
+     "hedef_modul": "kabuk",
+     "hedef": "Gogus bandi sag",
+     "bosluk_mm": 7.95,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "grup": "UstKol",
+     "poz": [
+      -45.0,
+      0.0
+     ],
+     "parca": "Dirsek catali",
+     "hedef_modul": "kabuk",
+     "hedef": "Omuz bandi sag",
+     "bosluk_mm": 12.66,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    }
+   ],
+   "omuz_sag gobek": [
+    {
+     "grup": "UstKol",
+     "poz": [
+      120.0,
+      120.0
+     ],
+     "parca": "Dirsek catali",
+     "hedef_modul": "omuz_sag gobek",
+     "hedef": "Omuz gobegi",
+     "bosluk_mm": 81.38,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "grup": "UstKol",
+     "poz": [
+      120.0,
+      120.0
+     ],
+     "parca": "Dirsek catali",
+     "hedef_modul": "omuz_sag gobek",
+     "hedef": "S2 servo DS3218MG (yana acma)",
+     "bosluk_mm": 87.71,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "grup": "UstKol",
+     "poz": [
+      90.0,
+      120.0
+     ],
+     "parca": "Dirsek catali",
+     "hedef_modul": "omuz_sag gobek",
+     "hedef": "S2 kulak civatasi M4x16",
+     "bosluk_mm": 89.79,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "grup": "UstKol",
+     "poz": [
+      120.0,
+      120.0
+     ],
+     "parca": "Dirsek catali",
+     "hedef_modul": "omuz_sag gobek",
+     "hedef": "S2 kontra somun M4",
+     "bosluk_mm": 89.79,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "grup": "UstKol",
+     "poz": [
+      135.0,
+      30.0
+     ],
+     "parca": "Bilezik pulu M3 (bas)",
+     "hedef_modul": "omuz_sag gobek",
+     "hedef": "Omuz gobegi",
+     "bosluk_mm": 92.19,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "grup": "UstKol",
+     "poz": [
+      135.0,
+      30.0
+     ],
+     "parca": "Bilezik pulu M3 (somun)",
+     "hedef_modul": "omuz_sag gobek",
+     "hedef": "Omuz gobegi",
+     "bosluk_mm": 92.36,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    }
+   ],
+   "omuz_sag govde": [
+    {
+     "grup": "UstKol",
+     "poz": [
+      -30.0,
+      0.0
+     ],
+     "parca": "Dirsek catali",
+     "hedef_modul": "omuz_sag govde",
+     "hedef": "Omuz yuvasi",
+     "bosluk_mm": 69.69,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "grup": "UstKol",
+     "poz": [
+      120.0,
+      0.0
+     ],
+     "parca": "Dirsek catali",
+     "hedef_modul": "omuz_sag govde",
+     "hedef": "Rulman kapagi",
+     "bosluk_mm": 76.14,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "grup": "UstKol",
+     "poz": [
+      -20.0,
+      0.0
+     ],
+     "parca": "Dirsek catali",
+     "hedef_modul": "omuz_sag govde",
+     "hedef": "S1 kulak civatasi M4x16",
+     "bosluk_mm": 78.83,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "grup": "UstKol",
+     "poz": [
+      -20.0,
+      0.0
+     ],
+     "parca": "Dirsek catali",
+     "hedef_modul": "omuz_sag govde",
+     "hedef": "S1 servo DS3218MG (one-arka)",
+     "bosluk_mm": 79.07,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "grup": "UstKol",
+     "poz": [
+      120.0,
+      0.0
+     ],
+     "parca": "Dirsek catali",
+     "hedef_modul": "omuz_sag govde",
+     "hedef": "Kapak civatasi M3x12",
+     "bosluk_mm": 80.67,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    },
+    {
+     "grup": "UstKol",
+     "poz": [
+      120.0,
+      0.0
+     ],
+     "parca": "Dirsek catali",
+     "hedef_modul": "omuz_sag govde",
+     "hedef": "Isil gomme somun M3 (yuvada)",
+     "bosluk_mm": 81.65,
+     "hacim_mm3": 0.0,
+     "aralikta": true
+    }
+   ]
+  },
+  "yakin_aralikta": [
+   {
+    "grup": "UstKol",
+    "poz": [
+     40.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 3.76,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     -35.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 3.81,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     35.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 3.84,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     -30.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.01,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     30.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.06,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -5.0,
+     0.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.12,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -5.0,
+     0.0,
+     105.0,
+     -75.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.18,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     -25.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.2,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     25.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.25,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -10.0,
+     0.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.35,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     -20.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.37,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     20.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.4,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -10.0,
+     0.0,
+     105.0,
+     -75.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.41,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -5.0,
+     0.0,
+     100.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.49,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     -15.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.5,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     15.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.52,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -5.0,
+     0.0,
+     100.0,
+     -75.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.55,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     -10.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.59,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     10.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.61,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     0.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.64,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     -5.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.65,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     5.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.66,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     0.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.67,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     0.0,
+     105.0,
+     -75.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.7,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     -40.0,
+     0.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.72,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -10.0,
+     0.0,
+     100.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.78,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -20.0,
+     0.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.82,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -10.0,
+     0.0,
+     100.0,
+     -75.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.84,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -5.0,
+     0.0,
+     95.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.86,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -20.0,
+     0.0,
+     105.0,
+     -75.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.88,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -5.0,
+     0.0,
+     95.0,
+     -75.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.93,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -45.0,
+     0.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.94,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -25.0,
+     0.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 4.95,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   }
+  ],
+  "yakin_aralikta_sayi": 33,
+  "bosluk_notu": "olculmeyen ciftlerin boslugu >= 150 mm (sinir kutusu); YAKIN = 5 mm altindaki her aday tam olculdu",
+  "sure_s": 300.9
+ }
+}

@@ -199,10 +199,7 @@ ACIK = [
     "Tilt'te servo miline kalan radyal pay (≈ %s N) kabul edilecek mi, yoksa sağ yanağa ikinci rulman + esnek kaplin mi (seçenek)." % sayi(ms["horn_N"], 1),
     "Yazılım sınırları: pan %s…%s°, tilt %s…%s° (`arayuz.KAFA`); servo horn'ları orta konumda = ev pozu." % (sayi(PAR[0], 0), sayi(PAR[1], 0),
                                                                                                     sayi(TAR[0], 0), sayi(TAR[1], 0)),
-    "**Kafa-kol yasak pozu yazılımda:** kol öne ≈130…135°, dirsek ≈80…105° (el yüzün önünde) iken kafa o kola doğru pan 30…50° ve tilt "
-    "25…30° birlikte verilmemeli (el ön kabuğa giriyor). Tarama tek tur 5° ince adımla yapıldı; sınır ±5° belirsiz, yazılımda pay bırak "
-    "(örnek: kol öne ≥ 120° ve dirsek ≥ 75° iken tilt ≤ 20°). Çok turlu ince tarama (`carpisma.py` INCE_TUR) bellek yetersizliğiyle yarıda kaldı; "
-    "makine boşken yeniden koşulmalı.",
+    "@@YASAK@@",
     "Pan fareyle zor sürükleniyor (boyun mili kafanın altında, eksene ≈ 20 mm): FreeCAD'de pan için simülasyon ya da betik kullan.",
 ]
 
@@ -219,6 +216,27 @@ ED = _js("montaj", "eklem-dogrulama.json")
 GK = _js("montaj", "gui-kontrol.json")
 KOLAD = {"sag": "Sağ kol", "sol": "Sol kol"}
 KATAD = {"omuz": "omuz (göbek + üst kol)", "dirsek catali": "dirsek çatalı", "on kol": "ön kol", "el": "el"}
+
+
+def yasak_metni():
+    """Acik isler maddesi: yasak bolge carpisma-sonuc.json'dan (sinir turlariyla 5 derece kesinlikte)."""
+    ks = (KT or {}).get("kol") or {}
+    oz = [(t, g, o) for t, k in ks.items() for g, o in (k.get("yasak_ozet") or {}).items()]
+    if not oz:
+        return "**Kafa-kol yasak pozu:** tarama yasak bölge bulmadı (ya da kafa taraması yok)."
+    t, g, o = oz[0]
+    yak = all(k.get("sinir_yakinsadi") for k in ks.values())
+    return ("**Kafa-kol yasak pozu yazılımda:** kol öne %s…%s°, yana %s…%s°, dirsek %s…%s° (el yüzün önünde) iken kafa o kola doğru pan %s…%s° "
+            "(sol kolda işaret ters) ve tilt %s…%s° birlikte verilmemeli (%s). Sınır, çakışan her çiftin eksen komşuları 5° (bilek 15°) adımla "
+            "taranarak %s; satır satır sınırlar aşağıdaki yasak bölge tablosunda. Yazılımda bir adım (5°) pay bırak." % (
+                sayi(o["kol_min"][0], 0), sayi(o["kol_max"][0], 0), sayi(o["kol_min"][1], 0), sayi(o["kol_max"][1], 0),
+                sayi(o["kol_min"][2], 0), sayi(o["kol_max"][2], 0), sayi(min(abs(x) for x in o["pan"]), 0), sayi(max(abs(x) for x in o["pan"]), 0),
+                sayi(o["tilt"][0], 0), sayi(o["tilt"][1], 0), ", ".join(o["parcalar"][:2]),
+                "kesinleşti (yakınsadı: sağ %s, sol %s tur)" % (ks["sag"].get("sinir_tur"), ks["sol"].get("sinir_tur")) if yak
+                else "YAKINSAMADI (tur sınırı); sınır belirsiz"))
+
+
+ACIK = [yasak_metni() if x == "@@YASAK@@" else x for x in ACIK]
 
 
 def kpoz(p):
@@ -269,12 +287,14 @@ def asama2():
              "yana 0…120° 15° adımla, dirsek 0/30/60/90/105°, bilek −90/0/90°) + %d jest pozu (ev, selam, kafa kaşıma, el yüze/ağıza, kol tepede) = "
              "<b>%d kol pozu</b>, hepsi kafa pozlarıyla birlikte; sıkı sınır kutusu ön elemesinde dirseği kafaya %s mm'den yakın gelen kol pozu "
              "sağ + sol %d. Eklem aralığında çakışan ya da 5 mm altında kalan çiftlerin çevresi 5° adımla yeniden tarandı (kafa pan/tilt ±5/10°, "
-             "kol ±5/10°, bilek ±15°). Toplam %d tam ölçüm, %s s. Hedefler: iskelet, kabuk (üst kapak R62 halkası dahil), iki omuzun gövdesi, "
+             "kol ±5/10°, bilek ±15°); ardından yasak bölgenin sınırı: çakışan her çiftin eksen komşuları (5°, bilek 15°) yeni çakışma kalmayana dek "
+             "ölçüldü (sağ %s, sol %s tur). Toplam %d tam ölçüm, %s s. Hedefler: iskelet, kabuk (üst kapak R62 halkası dahil), iki omuzun gövdesi, "
              "göbeği ve üst kolu, iki kolun dirsek çatalı, ön kolu ve eli; kafanın sabit boynu (gövde) da her kol pozunda sınandı. "
              "Kablo demeti gösterimi hariç.</p>" % (
                  sayi(KT["kaba"]["pan"][0], 0), sayi(KT["kaba"]["pan"][-1], 0), esc(KT["kaba"]["tilt"]), sayi(KT["aralik"]["pan"][0], 0),
                  sayi(KT["aralik"]["pan"][1], 0), sayi(KT["aralik"]["tilt"][0], 0), sayi(KT["aralik"]["tilt"][1], 0),
-                 sb["kaba"]["poz"], len(KT["jest"]), n_kol, sayi(KT["lim_mm"], 0), n_yak, n_tam, sayi(KT["sure_s"], 0)))
+                 sb["kaba"]["poz"], len(KT["jest"]), n_kol, sayi(KT["lim_mm"], 0), n_yak, ksum.get("sag", {}).get("sinir_tur", "–"),
+                 ksum.get("sol", {}).get("sinir_tur", "–"), n_tam, sayi(KT["sure_s"], 0)))
     h.append("<div class='k'>" + "".join("<div class='kpi'><b>%s</b><span>%s</span></div>" % (a, esc(b)) for a, b in [
         ("%d" % top_ar, "eklem aralığında çakışma (kafa × sabit modüller %d alt poz + kafa × kollar %d poz çifti)" % (
             sb["cakisan_alt_poz_aralikta"], sum(k["cakisan_cift_aralikta"] for k in ksum.values()))),
@@ -310,6 +330,16 @@ def asama2():
         h.append("<h3>Kafa-kol yasak poz bölgeleri</h3>")
         if oz:
             h.append("<div class='tw'>" + tablo(["Kol", "Grup", "Çakışan alt poz", "Kol açıları (zarf)", "Kafa açıları (zarf)", "Çakışan çift"], oz) + "</div>")
+        kural = [(t, r) for t, k in ksum.items() for r in (k.get("yasak_kural") or [])]
+        if kural:
+            ks_ = []
+            for t, r in kural:
+                ks_.append([KOLAD[t], "%s°" % sayi(r["one_arka"], 0), "%s°" % sayi(r["yana"], 0), "%s°" % sayi(r["dirsek"], 0),
+                            esc(araliklar(r["bilek"], 15)), "her kafa pozu" if r["kafa_tum_pozlar"] else
+                            esc("pan %s…%s°" % (sayi(r["pan"][0], 0), sayi(r["pan"][1], 0)) if r["pan"] else "–"),
+                            esc("%s…%s°" % (sayi(r["tilt"][0], 0), sayi(r["tilt"][1], 0)) if r["tilt"] else "–")])
+            h.append("<details open><summary>Yasak bölge tablosu (kol öne / yana / dirsek başına; 5° kesinlikte, %d satır)</summary><div class='tw'>" % len(ks_) +
+                     tablo(["Kol", "Öne", "Yana", "Dirsek", "Bilek (çakışan)", "Kafa pan", "Kafa tilt"], ks_) + "</div></details>")
 
         def kafa_yaz(y):
             if y["kafa_tum_pozlar"]:
@@ -351,7 +381,7 @@ def asama2():
         kam = km["agirlik_merkezi"] if km else (0, 0, 0)
         h.append("<h3>Ana montaj</h3>")
         h.append("<p><code>montaj/robot-montaj.FCStd</code>: kafa üç grup (sabit boyun traverse sabit, pan grubu, kafa) ve %d eklem: %s. Kafa %d parça, "
-                 "%s g, AM (%s; %s; %s) mm (global). Robot toplamı %d parça, <b>%s kg</b>, AM (%s; %s; %s) mm (tabansız).</p>" % (
+                 "%s g, AM (%s; %s; %s) mm (global). Robot toplamı %d parça, <b>%s kg</b>, AM (%s; %s; %s) mm (tam robot, taban dahil; kablo payı hariç).</p>" % (
                      len(ej), esc(ek), km["parca"] if km else 0, sayi(km["kutle_g"], 1) if km else "–", sayi(kam[0], 1), sayi(kam[1], 1),
                      sayi(kam[2], 1), MA["parca_sayisi"], sayi(MA["kutle_g"] / 1000, 2), sayi(MA["agirlik_merkezi"][0], 1),
                      sayi(MA["agirlik_merkezi"][1], 1), sayi(MA["agirlik_merkezi"][2], 1)))
