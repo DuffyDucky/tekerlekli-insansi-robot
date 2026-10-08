@@ -29,12 +29,15 @@ if os.path.exists(os.path.join(KARE, "pozlar.txt")):
     for k, satir in enumerate(pozlar):
         if len(satir) == 5:                       # eski bicim: yalniz omuz
             satir = satir[:3] + [0.0, 0.0] + satir[3:] + [0.0, 0.0]
-        t, sp, sy, sd, sb, lp, ly, ld, lb = satir
+        if len(satir) == 9:                       # eski bicim: kafasiz
+            satir = satir + [0.0, 0.0]
+        t, sp, sy, sd, sb, lp, ly, ld, lb, kp, kt_ = satir
         im = Image.open(os.path.join(KARE, "k%03d.png" % k)).convert("RGB").resize((630, 448), Image.LANCZOS)
         dr = ImageDraw.Draw(im)
-        dr.rectangle((6, 5, 478, 50), fill=(255, 255, 255))
+        dr.rectangle((6, 5, 478, 71), fill=(255, 255, 255))
         dr.text((12, 8), "Sağ: öne %+4.0f°  yana %3.0f°  dirsek %3.0f°  bilek %+3.0f°" % (sp, sy, sd, sb), fill=(30, 30, 30), font=font)
         dr.text((12, 29), "Sol: öne %+4.0f°  yana %3.0f°  dirsek %3.0f°  bilek %+3.0f°" % (lp, ly, ld, lb), fill=(30, 30, 30), font=font)
+        dr.text((12, 50), "Kafa: pan %+4.0f°  tilt %+3.0f°" % (kp, kt_), fill=(30, 30, 30), font=font)
         dr.text((540, 425), "t = %.1f s" % t, fill=(110, 110, 110), font=font)
         frames.append(im.quantize(colors=48, method=Image.Quantize.MEDIANCUT))
     frames[0].save(GIF, save_all=True, append_images=frames[1:], duration=100, loop=0, optimize=True)
@@ -83,26 +86,28 @@ def tablo(baslik, satirlar, sinif=""):
 
 
 MODAD = {"iskelet": "İskelet", "omuz_sag": "Sağ omuz", "omuz_sol": "Sol omuz", "kabuk": "Kabuk", "dirsek_sag": "Sağ dirsek",
-         "dirsek_sol": "Sol dirsek"}
+         "dirsek_sol": "Sol dirsek", "kafa": "Kafa"}
 GRUPAD = {"Iskelet": "iskelet", "Kabuk": "kabuk", "OmuzSag_Govde": "sağ omuz gövde", "OmuzSag_Gobek": "sağ omuz göbeği",
           "OmuzSag_Kol": "sağ üst kol", "OmuzSol_Govde": "sol omuz gövde", "OmuzSol_Gobek": "sol omuz göbeği",
           "OmuzSol_Kol": "sol üst kol", "DirsekSag_UstKol": "sağ dirsek çatalı", "DirsekSag_OnKol": "sağ ön kol",
-          "DirsekSag_El": "sağ el", "DirsekSol_UstKol": "sol dirsek çatalı", "DirsekSol_OnKol": "sol ön kol", "DirsekSol_El": "sol el"}
-EKAD = {"one_arka": "öne-arka (S1)", "yana": "yana açma (S2)", "dirsek": "dirsek", "bilek": "bilek"}
-EKKISA = {"one_arka": "öne", "yana": "yana", "dirsek": "dirsek", "bilek": "bilek"}
+          "DirsekSag_El": "sağ el", "DirsekSol_UstKol": "sol dirsek çatalı", "DirsekSol_OnKol": "sol ön kol", "DirsekSol_El": "sol el",
+          "Kafa_Govde": "kafa gövdesi (boyun)", "Kafa_Boyun": "kafa pan grubu", "Kafa_Bas": "kafa"}
+EKAD = {"one_arka": "öne-arka (S1)", "yana": "yana açma (S2)", "dirsek": "dirsek", "bilek": "bilek", "pan": "pan", "tilt": "tilt"}
+EKKISA = {"one_arka": "öne", "yana": "yana", "dirsek": "dirsek", "bilek": "bilek", "pan": "pan", "tilt": "tilt"}
 
 
 def komut_yaz(komut):
     """{modul: {eklem: derece}} -> 'sağ öne 90° yana 0° dirsek 60°; sol ...' (omuz ve dirsek ayni kolda birlesir)."""
     kol = {}
     for m, a in komut.items():
-        t = "sağ" if m.endswith("_sag") else "sol"
+        t = "kafa" if m == "kafa" else "sağ" if m.endswith("_sag") else "sol"
         kol.setdefault(t, []).extend("%s %s°" % (EKKISA[k], sayi(v, 0)) for k, v in a.items())
-    return "; ".join("%s %s" % (t, " ".join(v)) for t, v in sorted(kol.items(), key=lambda x: x[0] != "sağ"))
+    return "; ".join("%s %s" % (t, " ".join(v)) for t, v in sorted(kol.items(), key=lambda x: ("sağ", "sol", "kafa").index(x[0])))
 
 
 n_revolute = sum(1 for j in d["eklemler"] if j["tip"] == "Revolute")
-n_eksen_kol = n_revolute // 2
+n_eksen_kafa = sum(1 for j in d["eklemler"] if j["tip"] == "Revolute" and j["modul"] == "kafa")
+n_eksen_kol = (n_revolute - n_eksen_kafa) // 2
 K = d["karsilastirma"]
 CG = d["agirlik_merkezi"]
 oz = e["ozet"]
@@ -115,9 +120,14 @@ n_poz = sum(t["poz_sayisi"] for t in tarama.values())
 gui_ok = (gk["acilis"]["parca_gorunur"] == gk["acilis"]["parca"] and all(x["gorunur"] for x in gk["eklemler"].values())
           and all(gk["secim"].values()) and all(p["nesne"] == j for j, p in gk["pick"].items()) and not gk["hatalar"])
 sur = gk["surukleme"]
+ksur = gk.get("kafa_surukleme") or []
 
 
 def sur_aralik(kol, eklem):
+    if kol == "kafa":
+        vs = [s["yol_boyunca"][eklem] for s in ksur if s["kafa_hareket_etti"] and s["yol_boyunca"].get(eklem)]
+        vs = [v for v in vs if abs(v[0] - v[1]) > 0.05]
+        return (min(v[0] for v in vs), max(v[1] for v in vs)) if vs else None
     vs = [s["yol_boyunca"][eklem] for s in sur if s["kol"] == kol and s["kol_hareket_etti"] and eklem in s["yol_boyunca"]]
     vs = [v for v in vs if v[0] != v[1]]
     return (min(v[0] for v in vs), max(v[1] for v in vs)) if vs else None
@@ -143,10 +153,10 @@ for j in d["eklemler"]:
                          "(%s; %s; %s)" % tuple(sayi(x, 1) for x in j["nokta"]), "–", "–", esc(j["aciklama"])])
         continue
     o = oz[j["isim"]]
-    kol = "sag" if "Sag" in j["isim"] else "sol"
+    kol = "kafa" if j["modul"] == "kafa" else "sag" if "Sag" in j["isim"] else "sol"
     sr = sur_aralik(kol, j["anahtar"])
     ek_satir.append([
-        "<b>%s %s</b>" % ("Sağ" if kol == "sag" else "Sol", EKAD[j["anahtar"]]), "Döner (Revolute)",
+        "<b>%s %s</b>" % ({"sag": "Sağ", "sol": "Sol", "kafa": "Kafa"}[kol], EKAD[j["anahtar"]]), "Döner (Revolute)",
         esc("%s → %s" % (GRUPAD.get(j["ust"]), GRUPAD.get(j["alt"]))),
         "(%s; %s; %s) · yön (%s; %s; %s)" % (tuple(sayi(x, 1) for x in j["nokta"]) + tuple(sayi(x + 0.0, 0) for x in j["eksen"])),
         "%s° … %s°" % (sayi(j["sinir"][0], 0), sayi(j["sinir"][1], 0)),
@@ -196,6 +206,22 @@ for taraf, k in kt.items():
                           esc("öne %s° yana %s°" % (sayi(b["poz"][0], 0), sayi(b["poz"][1], 0)) +
                               ("" if len(b["poz"]) < 3 else " dirsek %s°" % sayi(b["poz"][2], 0)) +
                               ("" if len(b["poz"]) < 4 else " bilek %s°" % sayi(b["poz"][3], 0)))])
+kft = c.get("kafa_tarama")
+kf_satir = []
+if kft:
+    for m, b in sorted(kft["sabit"]["en_kucuk_aralikta"].items(), key=lambda x: x[1]["bosluk_mm"]):
+        kf_satir.append(["Kafa", esc(m), sayi(b["bosluk_mm"], 1) + " mm", esc("%s ↔ %s" % (b["parca"], b["hedef"])),
+                         esc(("pan %s°" % sayi(b["kafa_poz"][0], 0) + (" tilt %s°" % sayi(b["kafa_poz"][1], 0) if len(b["kafa_poz"]) > 1 else ""))
+                             if b["kafa_poz"] else "sabit boyun")])
+    for taraf, k in kft["kol"].items():
+        for m, b in sorted(k["en_kucuk_aralikta"].items(), key=lambda x: x[1]["bosluk_mm"]):
+            cak = b["hacim_mm3"] > 0.5 or b["hacim_mm3"] < 0
+            kf_satir.append(["Kafa ↔ %s kol" % ("sağ" if taraf == "sag" else "sol"), esc(m),
+                             ("<b class='no'>çakışma</b>" if cak else sayi(b["bosluk_mm"], 1) + " mm"),
+                             esc("%s ↔ %s" % (b["parca"], b["kafa_parca"])),
+                             esc("kol (%s); kafa %s" % (" / ".join("%s°" % sayi(x, 0) for x in b["kol_poz"]),
+                                                         " / ".join("%s°" % sayi(x, 0) for x in b["kafa_poz"]) or "sabit boyun"))])
+n_poz += (kft["sabit"]["kaba"]["poz"] + sum(k["kol_pozu"] * k["kafa_pozu"] for k in kft["kol"].values())) if kft else 0
 tar_satir = []
 for ad, t in tarama.items():
     yk = t["en_yakin"]
@@ -210,6 +236,9 @@ ADIM = [
     "Kolu fareyle tut ve sürükle: **yana açma** için mavi üst kol tüpünden, **öne kaldırma** için omuz göbeğinden (mavi kutu) tut. "
     "Eklem sınırlarında kol durur. Göbek eksene yakın olduğu için küçük fare hareketi büyük dönüş verir; yavaş sürükle. "
     "**Dirsek** için ön kolu (mavi, servolu gövde) tutup öne-yukarı sürükle; bilek fareyle zor tutulur (el küçük), simülasyonla oynat.",
+    "**Kafa:** tilt için kafayı yüzünün yanından tutup aşağı-yukarı sürükle (−25…30°'de durur). Pan için kafanın altındaki boyun milini "
+    "(turuncu, kabuk kapağıyla kafa arasında) tut ve yana sürükle: mil eksene yakın, küçük fare hareketi büyük dönüş verir; kafadan tutunca "
+    "yalnız tilt döner. Kesin açı için simülasyon.",
     "Hazır hareket için ağaçta **Simulations → Kollari_oynat**'a çift tıkla, açılan panelde **Run Kinematics** (kinematiği çalıştır) düğmesine, "
     "sonra ▶ (ileri oynat) düğmesine bas. Paneli **OK** ile kapat. Kollar son karede kalır; sıfır pozuna dönmek için dosyayı "
     "kaydetmeden kapatıp yeniden aç.",
@@ -232,11 +261,15 @@ KARAR = [
     "bağlı; her kolda üst kol → ön kol (dirsek, 0…105°) ve ön kol → el (bilek, −90…90°) döner eklemleri. Eksen ve sınırlar "
     "`dirsek/dirsek-montaj.FCStd`'den okunuyor ve `arayuz.DIRSEK` ile karşılaştırılıyor; solda eksen aynalanıyor. Pozitif dirsek açısı iki kolda "
     "ön kolu öne büker, pozitif bilek açısı avucu öne çevirir. Sol dirsek sağın gerçek aynalı geometrisi.",
+    "**Kafa modülü:** kafanın sabit boynu (boyun plakası + servo/rulman yuvası + pan servosu) traverse sabit eklemle bağlı; sabit boyun → pan "
+    "grubu (pan, −90…90°, eksen +Y) ve pan grubu → kafa (tilt, −25…30°, eksen +X, y = 1.105, z = 25) döner eklemleri. Eksen ve sınırlar "
+    "`kafa/kafa-montaj.FCStd`'den okunup `arayuz.KAFA` ile karşılaştırılıyor. Ana montajda gruplar Kafa_Govde / Kafa_Boyun / Kafa_Bas "
+    "(eklem adları Kafa_Pan / Kafa_Tilt ile çakışmasın diye). Kablo demeti gösterimi (Referans, 0 g) ana montajda yok.",
     "**Travers bir kez sayılıyor:** Omuz modülünün içindeki 200 mm traversi iskeletin parçası; ana montajda yalnız iskeletinki var. "
     "Omuzdaki kabuk duvarı (referans, 0 g) ana montajda yok; yerini gerçek kabuk modülü aldı (`kabuk/`). Parça sayısı %d = %s." % (d["karsilastirma"]["parca"]["montaj"], d["karsilastirma"]["parca"]["formul"]),
     "**Eklem yapısı:** İskelet zemine sabit (grounded); her omuz gövdesi ve kabuk iskelete sabit eklemle bağlı; her omuzda gövde → göbek "
-    "(öne-arka) ve göbek → kol (yana açma), her dirsekte üst kol → ön kol (dirsek) ve ön kol → el (bilek) döner eklemleri. "
-    "Serbestlik: %d (her kolda %d)." % (n_revolute, n_eksen_kol),
+    "(öne-arka) ve göbek → kol (yana açma), her dirsekte üst kol → ön kol (dirsek) ve ön kol → el (bilek) döner eklemleri; kafada pan ve tilt. "
+    "Serbestlik: %d (her kolda %d, kafada %d)." % (n_revolute, n_eksen_kol, n_eksen_kafa),
 ]
 
 ACIK = [
@@ -252,13 +285,17 @@ ACIK = [
     "**Sol baskı parçaları aynalı basılmalı:** Omuz yuvası, rulman kapağı, omuz göbeği, kol çatalı ve tüp sağın aynası. Dilimleyicide "
     "STL'ler X'te aynalanarak basılır (`omuz/stl/` yalnız sağ). Servo, horn, rulman ve cıvatalar simetrik kabul edildi: DS3218MG gövdesi "
     "genişlik yönünde simetrik, aynası 180° çevrilmiş servo ile aynı (tahmini; kablo çıkışı tarafı farklı olabilir).",
-    "**Kafa ve taban henüz yok:** `moduller.py`'de `SIRA` listesine eklenip birer yükleyici yazılınca ana montaja girer. Kafa pan/tilt "
-    "eklemleri dirsekteki gibi `eklemler` + `beklenen` ile tanımlanır.",
+    "**Taban henüz yok:** `moduller.py`'de `SIRA` listesine eklenip bir yükleyici yazılınca ana montaja girer.",
+    "**Kafa-kol yasak pozları yazılımda uygulanmalı:** `carpisma.py` kafa taramasında bulunan kol pozu × kafa açısı birleşimleri (yukarıdaki "
+    "tablo, ayrıntı `kafa/rapor.html`) eklem sınırlarıyla değil, ancak robot yazılımında (kol pozuna bağlı kafa açısı sınırı ya da hareket sırası) "
+    "engellenebilir.",
+    "**Pan fareyle zor sürükleniyor:** pan grubu kafanın altında kalıyor; kafadan tutunca yalnız tilt dönüyor, boyun milinden tutunca pan "
+    "dönüyor ama mil eksene yakın (≈ 20 mm) olduğu için hareket küçük ve sıçramalı. Pan açısını simülasyonla ya da betikle ver.",
     "**Bilek fareyle zor sürükleniyor:** el küçük ve ön kol ekseninde döndüğü için 3B görünümde tutup çevirmek pratik değil; bilek açısını "
     "simülasyonla (Kollari_oynat) ya da betikle ver.",
     "**Montaj dosyası iki adımda üretiliyor:** `ana_montaj.py` (arayüzsüz) dosyayı kurar, `montaj_gorsel.py` (GUI) eklem görünüm "
     "nesnelerini ve simülasyonu ekleyip yeniden kaydeder. Yalnız `ana_montaj.py` çalıştırılırsa dosya açıldığında eklem işaretleri görünmez.",
-    "**Kütle ve ağırlık merkezi tabansız:** %s kg, AM yerden %s mm (iskelet + iki omuz + kabuk + iki dirsek). Akü, motorlar ve tekerler gelince AM "
+    "**Kütle ve ağırlık merkezi tabansız:** %s kg, AM yerden %s mm (iskelet + iki omuz + kabuk + iki dirsek + kafa). Akü, motorlar ve tekerler gelince AM "
     "belirgin şekilde aşağı iner." % (sayi(d["kutle_g"] / 1000, 2), sayi(CG[1], 0)),
 ]
 
@@ -285,7 +322,7 @@ ol li,ul li{margin:5px 0}code{background:rgba(127,127,127,.15);padding:1px 5px;b
 .ok{color:var(--ok);font-weight:600}.no{color:var(--no);font-weight:600}.wide{grid-column:1/-1}
 .not{color:var(--mut);font-size:13px}
 </style></head><body><main>""")
-H.append("<h1>Robot ana montajı: iskelet + omuzlar + kabuk + dirsekler</h1>")
+H.append("<h1>Robot ana montajı: iskelet + omuzlar + kabuk + dirsekler + kafa</h1>")
 H.append("<div class='sub'>FreeCAD 1.1 Assembly · <code>ana_montaj.py</code> · %d parça, %d grup, %d eklem · yerleşim <code>arayuz.MODULLER</code>'den · "
          "sol omuz ve sol dirsek gerçek aynalı geometri</div>" % (d["parca_sayisi"], d["grup_sayisi"], len(d["eklemler"])))
 kpi = [
@@ -293,23 +330,26 @@ kpi = [
     ("%s kg" % sayi(d["kutle_g"] / 1000, 2), "kütle · AM (%s; %s; %s) mm · modül toplamından fark %s g" % (sayi(CG[0], 1), sayi(CG[1], 0), sayi(CG[2], 1), sayi(K["kutle"]["fark_analiz"], 2))),
     ("%d" % c["toplam"]["eklem_araliginda"], "eklem aralığında modüller arası çakışma (ev pozu + %d poz tarama; aralık dışı %d)" % (
         n_poz, c["toplam"]["cakisma"] - c["toplam"]["eklem_araliginda"])),
-    ("%d eksen" % n_revolute, "2 kol × (öne-arka, yana açma, dirsek, bilek) · iskelet zemine sabit, omuzlar ve kabuk iskelete, dirsekler "
-                              "omuz koluna sabit"),
+    ("%d eksen" % n_revolute, "2 kol × (öne-arka, yana açma, dirsek, bilek) + kafa (pan, tilt) · iskelet zemine sabit, omuzlar, kabuk ve "
+                              "kafanın boynu iskelete, dirsekler omuz koluna sabit"),
     ("%s mm" % bilimsel(mx_mm).replace("<sup>", "<sup>"), "eklem doğrulama en büyük sapma (%d poz, %d çözücü karesi) · açı %s°" % (n_vaka, n_kare, re.sub("<.*?>", "", bilimsel(mx_dg)).replace("·10", "e"))),
     ("doğrulandı" if gui_ok else "SORUN", "GUI'de açılış: eklemler görünür, ağaçta ve 3B'de seçilebilir, sürükleme çalışıyor"),
 ]
 H.append("<div class='k'>" + "".join("<div class='kpi'><b>%s</b><span>%s</span></div>" % (a, esc(b)) for a, b in kpi) + "</div>")
 
 H.append("<h2>Görünümler</h2><div class='grid'>")
-for ad, cap, w in (("montaj-izometrik.png", "İzometrik: iskelet, iki omuz, kabuk ve iki dirsek", ""),
+for ad, cap, w in (("montaj-izometrik.png", "İzometrik: iskelet, iki omuz, kabuk, iki dirsek ve kafa", ""),
                    ("montaj-on.png", "Önden (+Z'den bakış; robotun sağı görüntünün solunda)", ""),
                    ("montaj-yan.png", "Yandan (+X'ten bakış)", ""),
                    ("montaj-omuzlar.png", "Omuzlar yakından: sol omuz sağın aynası", "wide"),
                    ("montaj-dirsek.png", "Sağ dirsek ev pozunda: kol aşağıda, çatal kabuğun yanında", ""),
-                   ("montaj-poz-selam.png", "Poz: sağ kol yana 100°, öne 20°, dirsek 95°, bilek −60°; sol kol yana 10°, dirsek 30°", ""),
-                   ("montaj-poz-one.png", "Poz: iki kol öne 90°, dirsek 60°, bilek 45°", ""),
-                   ("montaj-hareket.gif", "İki kol birlikte (Kollari_oynat simülasyonu, FreeCAD çözücüsünün kareleri): omuzlar zıt fazda öne-arka sallanır, "
-                    "birlikte öne kalkıp yana açılır; sağ dirsek iki kez, sol dirsek bir kez bükülür, bilekler zıt yönde döner", "wide")):
+                   ("montaj-kafa.png", "Kafa ev pozunda: boyun kabuk üst kapağının R62 halkasından çıkıyor", ""),
+                   ("montaj-poz-selam.png", "Poz: sağ kol yana 100°, öne 20°, dirsek 95°, bilek −60°; sol kol yana 10°, dirsek 30°; kafa pan 30°, tilt −10°", ""),
+                   ("montaj-poz-one.png", "Poz: iki kol öne 90°, dirsek 60°, bilek 45°; kafa tilt 25° (ellere bakar)", ""),
+                   ("montaj-poz-kafa.png", "Poz: kafa pan 45°, tilt 20°; sağ kol öne 45°, yana 20°, dirsek 60°", ""),
+                   ("montaj-hareket.gif", "İki kol ve kafa birlikte (Kollari_oynat simülasyonu, FreeCAD çözücüsünün kareleri): omuzlar zıt fazda öne-arka sallanır, "
+                    "birlikte öne kalkıp yana açılır; sağ dirsek iki kez, sol dirsek bir kez bükülür, bilekler zıt yönde döner; kafa ±46° sağa sola "
+                    "bakar, ±14° başını eğip kaldırır", "wide")):
     if os.path.exists(os.path.join(G, ad)):
         H.append("<figure class='%s'><img src='%s' alt='%s'><figcaption>%s</figcaption></figure>" % (w, img64(ad), esc(cap), esc(cap)))
 H.append("</div>")
@@ -317,7 +357,7 @@ H.append("</div>")
 H.append("<h2>Modüller</h2><div class='tw'>")
 H.append(tablo(["Modül", "Parça", "Kütle", "Ağırlık merkezi (mm)", "Yerel orijin (global)", "Dönüş", "Ana montajda yok", "Gruplar"], mod_satir))
 H.append("</div><p class='not'>Kütle ve AM dosyadan geri okunarak hesaplandı (her parçanın <code>Kutle_g</code> özelliği ve katı kütle merkezi). "
-         "Modül analizlerinin toplamı (iskelet + 2 × omuz, travers hariç + kabuk + 2 × dirsek) = %s g, <code>carpisma.py</code> = %s g; fark %s g (analiz JSON'ları 0,1 g'a yuvarlı). "
+         "Modül analizlerinin toplamı (iskelet + 2 × omuz, travers hariç + kabuk + 2 × dirsek + kafa) = %s g, <code>carpisma.py</code> = %s g; fark %s g (analiz JSON'ları 0,1 g'a yuvarlı). "
          "AM, <code>carpisma.py</code> sonucundan %s mm farklı (yuvarlama). Parça sayısı %d = %s.</p>" % (
              sayi(K["kutle"]["beklenen_analizlerden"], 1), sayi(K["kutle"]["carpisma"], 1), sayi(K["kutle"]["fark_analiz"], 3),
              sayi(K["am"]["fark_carpisma_mm"], 3), K["parca"]["montaj"], esc(K["parca"]["formul"])))
@@ -325,19 +365,23 @@ H.append("</div><p class='not'>Kütle ve AM dosyadan geri okunarak hesaplandı (
 H.append("<h2>Eklemler</h2><div class='tw'>")
 H.append(tablo(["Eklem", "Tip", "Bağladığı", "Konum ve eksen (global, mm)", "Sınır", "Doğrulama sapması (kolun tüm pozlarında en büyük)", "Sürükleme (GUI, yol boyunca)"], ek_satir))
 H.append("</div><p class='not'>Pozitif açı: öne-arka = kol öne (+Z) kalkar, yana açma = kol dışarı açılır (sağda +X, solda −X). Çözücü sonrası "
-         "kol ucu kontrolü: öne +90° → (±185; 955; 140), yana +90° → (±325; 955; 0); iki kolda %s.</p>" % (
+         "kol ucu kontrolü: öne +90° → (±185; 955; 140), yana +90° → (±325; 955; 0); kafa pan +90° → kamera robotun sağına (+X), tilt +30° → "
+         "yüz aşağı; hepsi %s.</p>" % (
              "doğru" if all(y["dogru"] for y in e["yon"]) else "<b>YANLIŞ</b>"))
 
 H.append("<h2>Eklem doğrulaması</h2>")
 H.append("<p><b>Yöntem:</b> FreeCAD 1.1'de Revolute açısı doğrudan sürülemiyor (<code>Angle</code> yalnız Angle ekleminde). Eklemler Create "
          "Simulation'ın kullandığı yolla sürüldü: her döner ekleme bir hareket (Motion, Angular, formül = açı × time), 0…1 s, 0,02 s adım. "
-         "Her karede çözücünün verdiği grup yerleşimi, omuz modülünün kendi kinematiğiyle (<code>omuz_parcalar.Pp/Pr</code>, solda X aynasıyla "
+         "Her karede çözücünün verdiği grup yerleşimi, modülün kendi kinematiğiyle (<code>omuz_parcalar.Pp/Pr</code>, <code>dirsek_parcalar</code> ve "
+         "<code>kafa_parcalar.grup_yer</code>, solda X aynasıyla "
          "<code>T·R·P·R·T⁻¹</code>) karşılaştırıldı. Sapma: grubun sınır kutusu köşelerindeki en büyük konum farkı ve dönüş farkı. "
          "Birim testi: formül 1 rad → %s° (formül radyan).</p>" % sayi(e["birim"]["olculen_derece"], 3))
-H.append("<p>Sonuç: sınır içindeki %d pozun (omuz sağ/sol 10'ar, omuz + dirsek + bilek sağ/sol 10'ar, iki kol birlikte %d) tüm karelerinde en büyük "
-         "sapma <b>%s mm</b> ve <b>%s°</b>; sürülmeyen gruplar (iskelet, omuz gövdeleri, kabuk, diğer kol) yerinde kaldı, dirsek grupları omuzla "
-         "birlikte doğru taşındı. Eksenler ve sol aynalama doğru.</p>" % (
-             n_vaka, sum(1 for v in e["vakalar"] if v["ad"].startswith("iki kol")), bilimsel(mx_mm), bilimsel(mx_dg)))
+H.append("<p>Sonuç: sınır içindeki %d pozun (omuz sağ/sol 10'ar, omuz + dirsek + bilek sağ/sol 10'ar, iki kol birlikte %d, kafa pan × tilt %d, "
+         "kafa + iki kol %d) tüm karelerinde en büyük sapma <b>%s mm</b> ve <b>%s°</b>; sürülmeyen gruplar (iskelet, omuz gövdeleri, kabuk, "
+         "kafanın boynu, diğer kol) yerinde kaldı, dirsek grupları omuzla birlikte doğru taşındı. Eksenler ve sol aynalama doğru.</p>" % (
+             n_vaka, sum(1 for v in e["vakalar"] if v["ad"].startswith("iki kol")),
+             sum(1 for v in e["vakalar"] if v["ad"].startswith("kafa pan")), sum(1 for v in e["vakalar"] if v["ad"].startswith("kafa (")),
+             bilimsel(mx_mm), bilimsel(mx_dg)))
 H.append("<div class='tw'>" + tablo(["Sürülen poz", "Kare", "Konum sapması mm", "Dönüş sapması °", "Açı hatası °"], vaka_satir, "sayi") + "</div>")
 H.append("<h3>Sınır dışına sürülünce</h3><p>Simülasyon sınırları uygulamıyor: komut edilen açı aynen izleniyor. <code>solve()</code> da (GUI'de "
          "<i>Solve</i>, <code>doc.recompute()</code>) elle verilen sınır dışı pozu geri çekmiyor. Sınırlar yalnız fareyle sürüklemede durduruyor "
@@ -360,11 +404,19 @@ sur_d = [x for x in sur if x["aciklama"].startswith("dirsek") and "dirsek" in x[
 for ad, cap in (("montaj-gui-eklemler.png", "Montaj etkin, eklem işaretleri görünür; sağ dirsek eklemi seçili (bağladığı üst kol ve ön kol vurgulu)"),
                 ("montaj-gui-surukleme.png", "Fareyle sürükleme: sağ kol yana %s° açıldı" % sayi(sur[0]["sonra"]["yana"][0], 0)),
                 ("montaj-gui-dirsek.png", "Fareyle sürükleme: sağ dirsek %s° büküldü" % (sayi(sur_d[0]["sonra"]["dirsek"][0], 0) if sur_d else "?")),
+                ("montaj-gui-kafa.png", "Fareyle sürükleme: kafa boyun milinden tutulup pan döndürüldü"),
                 ("montaj-gui-agac.png", "Model ağacı: Robot montajı, Eklemler, %d grup, Kollari_oynat simülasyonu" % d["grup_sayisi"])):
     if os.path.exists(os.path.join(G, ad)):
         H.append("<figure><img src='%s' alt='%s'><figcaption>%s</figcaption></figure>" % (img64(ad), esc(cap), esc(cap)))
 H.append("</div><h3>Sürükleme denemeleri</h3><div class='tw'>")
 H.append(tablo(["#", "Kol", "Deneme", "Tutulan parça", "Öne-arka (yol boyunca)", "Yana (yol boyunca)", "Dirsek (yol boyunca)", "Bırakınca"], sr_satir))
+if ksur:
+    ks_satir = [["%d" % x["deneme"], esc(x["aciklama"].replace("cok", "çok").replace("saga", "sağa").replace("milinden", "milinden")
+                                         .replace("yuzden", "yüzden").replace("asagi", "aşağı").replace("sinir", "sınır")),
+                 esc(x["tiklanan"]), yol(x, "pan"), yol(x, "tilt"),
+                 "pan %s° · tilt %s°" % (sayi(x["sonra"]["pan"][0], 1), sayi(x["sonra"]["tilt"][0], 1))] for x in ksur]
+    H.append("</div><h3>Kafa sürükleme denemeleri</h3><div class='tw'>")
+    H.append(tablo(["#", "Deneme", "Tutulan parça", "Pan (yol boyunca)", "Tilt (yol boyunca)", "Bırakınca"], ks_satir))
 H.append("</div><p class='not'>Yana açma: sürüklemede 120°'de ve 0°'da duruyor. Öne-arka: göbekten sürüklemede −45° ile 135° arasında kaldı; "
          "kol tüpünden sürüklemede dönmedi (açık işler). Dirsek: ön koldan sürüklemede döndü ve 0…105° içinde kaldı. Kol uzadığı için yana açmayı "
          "sınıra zorlayan sürüklemede çözücü serbest zinciri (öne-arka, dirsek) de sallayabiliyor; bırakınca açılar yine sınırlar içinde.</p>")
@@ -385,6 +437,34 @@ if kt:
                  kt["sag"]["cakisan_tam_poz_aralik_disi"], kt["sol"]["cakisan_tam_poz_aralik_disi"],
                  kk["poz_cifti"] if kk else 0, kk["cakisan"] if kk else 0, sayi(kk["en_kucuk"]["bosluk_mm"], 0) if kk else "–"))
     H.append("<div class='tw'>" + tablo(["Kol", "Hedef", "En küçük boşluk (eklem aralığında)", "Parça çifti", "Poz"], kol_satir) + "</div>")
+if kft:
+    ks = kft["kol"]
+    yo = {}
+    for taraf, k in ks.items():
+        for g, o in (k.get("yasak_ozet") or {}).items():
+            yo.setdefault(g, []).append((taraf, o))
+    H.append("<h3>Kafa taraması (pan × tilt; sabit modüller ve iki kolun pozlarıyla)</h3>")
+    H.append("<p>Kafa pan %s…%s° (15°) × tilt %s = %d kafa pozu; eklem aralığı pan %s…%s°, tilt %s…%s°. Her kol: kol zinciri kaba ızgarası + %d jest pozu "
+             "= %d kol pozu × kafa pozları (sıkı sınır kutusu ön elemesi, 5 mm altındaki her aday tam ölçüldü, çakışan / 5 mm altı çiftlerin çevresi "
+             "5° adımla, sınır izlenene dek yeniden tarandı). Eklem aralığında: kafa × sabit modüller <b>%d</b> çakışma; kafa × kol sağ <b>%d</b>, sol <b>%d</b> "
+             "çakışan poz çifti. Süre %s s.</p>" % (
+                 sayi(kft["kaba"]["pan"][0], 0), sayi(kft["kaba"]["pan"][-1], 0), esc(kft["kaba"]["tilt"]), kft["sabit"]["kaba"]["poz"],
+                 sayi(kft["aralik"]["pan"][0], 0), sayi(kft["aralik"]["pan"][1], 0), sayi(kft["aralik"]["tilt"][0], 0), sayi(kft["aralik"]["tilt"][1], 0),
+                 len(kft["jest"]), list(ks.values())[0]["kol_pozu"], kft["sabit"]["cakisan_alt_poz_aralikta"],
+                 ks["sag"]["cakisan_cift_aralikta"], ks["sol"]["cakisan_cift_aralikta"], sayi(kft["sure_s"], 0)))
+    H.append("<div class='tw'>" + tablo(["Tarama", "Hedef", "En küçük boşluk (eklem aralığında)", "Parça çifti", "Poz"], kf_satir) + "</div>")
+    if yo:
+        ys = []
+        for g, L in sorted(yo.items()):
+            for taraf, o in L:
+                ys.append(["%s kol, %s" % ("sağ" if taraf == "sag" else "sol", esc(g)), "%d" % o["kol_alt_poz"],
+                           esc(" · ".join("%s %s…%s°" % (n, sayi(a, 0), sayi(b, 0)) for n, a, b in zip(("öne", "yana", "dirsek", "bilek"), o["kol_min"], o["kol_max"]))),
+                           "her kafa pozu" if o["kafa_tum_pozlar"] else esc(("pan %s…%s°" % (sayi(o["pan"][0], 0), sayi(o["pan"][1], 0)) if o["pan"] else "") +
+                                                                            (", tilt %s…%s°" % (sayi(o["tilt"][0], 0), sayi(o["tilt"][1], 0)) if o["tilt"] else "")),
+                           esc(", ".join(o["parcalar"][:3]))])
+        H.append("<p><b>Yasak poz bölgesi (yazılım sınırı):</b> aşağıdaki kol pozlarında kafa belirtilen açılara dönmemeli. Ayrıntı ve jest pozları "
+                 "<code>kafa/rapor.html</code>'de.</p><div class='tw'>" +
+                 tablo(["Kol, grup", "Çakışan alt poz", "Kol açıları (aralık)", "Kafa (pan / tilt aralığı)", "Çakışan çift"], ys) + "</div>")
 H.append("<p>Ev pozunda %d çakışma (%d sınır kutusu kesişen çift gerçek kesişimle sınandı). Eklem aralığında toplam <b>%d</b>, aralık dışı dahil %d. "
          "Ayrılmış bölgeler (%s) de tarandı.</p>" % (len(c["ev_pozu_cakisma"]), c["ev_pozu_kesisen_cift"], c["toplam"]["eklem_araliginda"],
                                                     c["toplam"]["cakisma"], ", ".join(c["ayrilmis_bolge"]["sahipler"])))

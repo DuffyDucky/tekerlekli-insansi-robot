@@ -1,0 +1,6806 @@
+{
+ "modul": "kafa",
+ "koordinat": "kafa yereli: orijin traversin ust yuzu ortasi (global 0, 975.0, 0), X sag, Y yukari, Z ileri (mm); global = yerel + arayuz.MODULLER['kafa'] konumu",
+ "yerlesim": {
+  "konum": [
+   0.0,
+   975.0,
+   0.0
+  ],
+  "ayna": false,
+  "not_": "yerel orijin = traversin ust yuzu ortasi; gruplar Govde (sabit), Pan, Kafa (Pan * tilt)"
+ },
+ "parca_sayisi": 98,
+ "referans_sayisi": 1,
+ "baski_sayisi": 7,
+ "parcalar": [
+  {
+   "i": 0,
+   "ad": "Boyun plakasi",
+   "grup": "Govde",
+   "tur": "Imalat",
+   "malzeme": "Aluminyum",
+   "kod": "Boyun plakasi 3 mm Al (lazer/su jeti)",
+   "kutle_g": 42.92,
+   "hacim_mm3": 15897.6,
+   "merkez": [
+    0.0,
+    1.5,
+    9.188
+   ],
+   "bb": [
+    -48.0,
+    48.0,
+    0.0,
+    3.0,
+    -25.0,
+    45.0
+   ],
+   "patlat": [
+    0,
+    -60,
+    0
+   ],
+   "not_": "V3 70x70 (rc:647) + yan kulaklar; traversin ust kanalina 2x M6"
+  },
+  {
+   "i": 1,
+   "ad": "Servo yuvasi",
+   "grup": "Govde",
+   "tur": "Baski",
+   "malzeme": "PETG",
+   "kod": "Servo yuvasi",
+   "kutle_g": 144.31,
+   "hacim_mm3": 142034.1,
+   "merkez": [
+    0.189,
+    23.469,
+    7.475
+   ],
+   "bb": [
+    -48.0,
+    48.0,
+    3.0,
+    46.0,
+    -30.0,
+    44.0
+   ],
+   "patlat": [
+    0,
+    -45,
+    0
+   ],
+   "not_": "pan servosu ustten girer, kulaklari 7 mm tablaya (M3 isil gomme); arkada kablo kanali ve alt cikis penceresi"
+  },
+  {
+   "i": 2,
+   "ad": "Rulman yuvasi",
+   "grup": "Govde",
+   "tur": "Baski",
+   "malzeme": "PETG",
+   "kod": "Rulman yuvasi",
+   "kutle_g": 25.59,
+   "hacim_mm3": 25184.8,
+   "merkez": [
+    -0.0,
+    64.337,
+    1.154
+   ],
+   "bb": [
+    -30.0,
+    30.0,
+    46.0,
+    82.0,
+    -30.0,
+    37.5
+   ],
+   "patlat": [
+    0,
+    -20,
+    0
+   ],
+   "not_": "iki 6808-2RS: ust rulman tablaya oturur (kafa agirligi), alt rulman devrilme momentini ikiye boler"
+  },
+  {
+   "i": 3,
+   "ad": "6808-2RS alt rulman (dis bilezik)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "malzeme": "Celik",
+   "kod": "6808-2RS rulman 40x52x7",
+   "kutle_g": 13.92,
+   "hacim_mm3": 1773.4,
+   "merkez": [
+    -0.0,
+    67.5,
+    -0.0
+   ],
+   "bb": [
+    -26.0,
+    26.0,
+    64.0,
+    71.0,
+    -26.0,
+    26.0
+   ],
+   "patlat": [
+    0,
+    -10,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 4,
+   "ad": "6808-2RS ust rulman (dis bilezik)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "malzeme": "Celik",
+   "kod": "6808-2RS rulman 40x52x7",
+   "kutle_g": 13.92,
+   "hacim_mm3": 1773.4,
+   "merkez": [
+    -0.0,
+    78.5,
+    -0.0
+   ],
+   "bb": [
+    -26.0,
+    26.0,
+    75.0,
+    82.0,
+    -26.0,
+    26.0
+   ],
+   "patlat": [
+    0,
+    5,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 5,
+   "ad": "Pan servosu MG996R",
+   "grup": "Govde",
+   "tur": "Satin",
+   "malzeme": "-",
+   "kod": "MG996R servo",
+   "kutle_g": 55.0,
+   "hacim_mm3": 29818.2,
+   "merkez": [
+    -0.0,
+    23.451,
+    10.15
+   ],
+   "bb": [
+    -9.85,
+    9.85,
+    5.0,
+    41.6,
+    -16.65,
+    36.95
+   ],
+   "patlat": [
+    0,
+    -45,
+    60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 6,
+   "ad": "Pan servosu cikis mili",
+   "grup": "Govde",
+   "tur": "Satin",
+   "malzeme": "-",
+   "kod": "(servo ile)",
+   "kutle_g": 0.0,
+   "hacim_mm3": 334.5,
+   "merkez": [
+    -0.0,
+    43.384,
+    -0.0
+   ],
+   "bb": [
+    -6.5,
+    6.5,
+    41.6,
+    47.9,
+    -6.5,
+    6.5
+   ],
+   "patlat": [
+    0,
+    -45,
+    60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 7,
+   "ad": "Pan servosu kulak pulu M3",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.12,
+   "hacim_mm3": 15.2,
+   "merkez": [
+    -5.0,
+    34.35,
+    34.9
+   ],
+   "bb": [
+    -8.5,
+    -1.5,
+    34.1,
+    34.6,
+    31.4,
+    38.4
+   ],
+   "patlat": [
+    0,
+    -15,
+    60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 8,
+   "ad": "Pan servosu kulak civatasi M3x8",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    -5.0,
+    33.417,
+    34.9
+   ],
+   "bb": [
+    -7.75,
+    -2.25,
+    26.6,
+    37.6,
+    32.15,
+    37.65
+   ],
+   "patlat": [
+    0,
+    -5,
+    60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 9,
+   "ad": "Isil gomme somun M3 (servo yuvasi)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    -5.0,
+    28.75,
+    34.9
+   ],
+   "bb": [
+    -7.3,
+    -2.7,
+    25.9,
+    31.6,
+    32.6,
+    37.2
+   ],
+   "patlat": [
+    0,
+    -45,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 10,
+   "ad": "Pan servosu kulak pulu M3",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.12,
+   "hacim_mm3": 15.2,
+   "merkez": [
+    5.0,
+    34.35,
+    34.9
+   ],
+   "bb": [
+    1.5,
+    8.5,
+    34.1,
+    34.6,
+    31.4,
+    38.4
+   ],
+   "patlat": [
+    0,
+    -15,
+    60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 11,
+   "ad": "Pan servosu kulak civatasi M3x8",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    5.0,
+    33.417,
+    34.9
+   ],
+   "bb": [
+    2.25,
+    7.75,
+    26.6,
+    37.6,
+    32.15,
+    37.65
+   ],
+   "patlat": [
+    0,
+    -5,
+    60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 12,
+   "ad": "Isil gomme somun M3 (servo yuvasi)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    5.0,
+    28.75,
+    34.9
+   ],
+   "bb": [
+    2.7,
+    7.3,
+    25.9,
+    31.6,
+    32.6,
+    37.2
+   ],
+   "patlat": [
+    0,
+    -45,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 13,
+   "ad": "Pan servosu kulak pulu M3",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.12,
+   "hacim_mm3": 15.2,
+   "merkez": [
+    -5.0,
+    34.35,
+    -14.6
+   ],
+   "bb": [
+    -8.5,
+    -1.5,
+    34.1,
+    34.6,
+    -18.1,
+    -11.1
+   ],
+   "patlat": [
+    0,
+    -15,
+    60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 14,
+   "ad": "Pan servosu kulak civatasi M3x8",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    -5.0,
+    33.417,
+    -14.6
+   ],
+   "bb": [
+    -7.75,
+    -2.25,
+    26.6,
+    37.6,
+    -17.35,
+    -11.85
+   ],
+   "patlat": [
+    0,
+    -5,
+    60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 15,
+   "ad": "Isil gomme somun M3 (servo yuvasi)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    -5.0,
+    28.75,
+    -14.6
+   ],
+   "bb": [
+    -7.3,
+    -2.7,
+    25.9,
+    31.6,
+    -16.9,
+    -12.3
+   ],
+   "patlat": [
+    0,
+    -45,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 16,
+   "ad": "Pan servosu kulak pulu M3",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3 DIN 125 pul",
+   "kutle_g": 0.12,
+   "hacim_mm3": 15.2,
+   "merkez": [
+    5.0,
+    34.35,
+    -14.6
+   ],
+   "bb": [
+    1.5,
+    8.5,
+    34.1,
+    34.6,
+    -18.1,
+    -11.1
+   ],
+   "patlat": [
+    0,
+    -15,
+    60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 17,
+   "ad": "Pan servosu kulak civatasi M3x8",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    5.0,
+    33.417,
+    -14.6
+   ],
+   "bb": [
+    2.25,
+    7.75,
+    26.6,
+    37.6,
+    -17.35,
+    -11.85
+   ],
+   "patlat": [
+    0,
+    -5,
+    60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 18,
+   "ad": "Isil gomme somun M3 (servo yuvasi)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    5.0,
+    28.75,
+    -14.6
+   ],
+   "bb": [
+    2.7,
+    7.3,
+    25.9,
+    31.6,
+    -16.9,
+    -12.3
+   ],
+   "patlat": [
+    0,
+    -45,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 19,
+   "ad": "Boyun civata pulu M6",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M6 DIN 125 pul",
+   "kutle_g": 1.02,
+   "hacim_mm3": 129.5,
+   "merkez": [
+    40.0,
+    8.8,
+    0.0
+   ],
+   "bb": [
+    34.0,
+    46.0,
+    8.0,
+    9.6,
+    -6.0,
+    6.0
+   ],
+   "patlat": [
+    0,
+    -10,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 20,
+   "ad": "Boyun civatasi M6x20",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M6x20 DIN 912",
+   "kutle_g": 7.53,
+   "hacim_mm3": 958.8,
+   "merkez": [
+    40.0,
+    4.835,
+    0.0
+   ],
+   "bb": [
+    35.0,
+    45.0,
+    -10.4,
+    15.6,
+    -5.0,
+    5.0
+   ],
+   "patlat": [
+    0,
+    10,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 21,
+   "ad": "Cekic somun M6 (travers ust kanali)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M6 cekic somun (kanal 10)",
+   "kutle_g": 5.17,
+   "hacim_mm3": 658.6,
+   "merkez": [
+    40.0,
+    -6.8,
+    0.0
+   ],
+   "bb": [
+    35.0,
+    45.0,
+    -9.3,
+    -4.3,
+    -8.0,
+    8.0
+   ],
+   "patlat": [
+    0,
+    -80,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 22,
+   "ad": "Boyun civata pulu M6",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M6 DIN 125 pul",
+   "kutle_g": 1.02,
+   "hacim_mm3": 129.5,
+   "merkez": [
+    -40.0,
+    8.8,
+    0.0
+   ],
+   "bb": [
+    -46.0,
+    -34.0,
+    8.0,
+    9.6,
+    -6.0,
+    6.0
+   ],
+   "patlat": [
+    0,
+    -10,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 23,
+   "ad": "Boyun civatasi M6x20",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M6x20 DIN 912",
+   "kutle_g": 7.53,
+   "hacim_mm3": 958.8,
+   "merkez": [
+    -40.0,
+    4.835,
+    0.0
+   ],
+   "bb": [
+    -45.0,
+    -35.0,
+    -10.4,
+    15.6,
+    -5.0,
+    5.0
+   ],
+   "patlat": [
+    0,
+    10,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 24,
+   "ad": "Cekic somun M6 (travers ust kanali)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M6 cekic somun (kanal 10)",
+   "kutle_g": 5.17,
+   "hacim_mm3": 658.6,
+   "merkez": [
+    -40.0,
+    -6.8,
+    0.0
+   ],
+   "bb": [
+    -45.0,
+    -35.0,
+    -9.3,
+    -4.3,
+    -8.0,
+    8.0
+   ],
+   "patlat": [
+    0,
+    -80,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 25,
+   "ad": "Rulman yuvasi civatasi M3x10",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x10 DIN 912",
+   "kutle_g": 1.04,
+   "hacim_mm3": 132.2,
+   "merkez": [
+    24.0,
+    49.981,
+    32.0
+   ],
+   "bb": [
+    21.25,
+    26.75,
+    42.0,
+    55.0,
+    29.25,
+    34.75
+   ],
+   "patlat": [
+    0,
+    -10,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 26,
+   "ad": "Isil gomme somun M3 (servo yuvasi ustu)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    24.0,
+    43.15,
+    32.0
+   ],
+   "bb": [
+    21.7,
+    26.3,
+    40.3,
+    46.0,
+    29.7,
+    34.3
+   ],
+   "patlat": [
+    0,
+    -45,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 27,
+   "ad": "Rulman yuvasi civatasi M3x10",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x10 DIN 912",
+   "kutle_g": 1.04,
+   "hacim_mm3": 132.2,
+   "merkez": [
+    -24.0,
+    49.981,
+    32.0
+   ],
+   "bb": [
+    -26.75,
+    -21.25,
+    42.0,
+    55.0,
+    29.25,
+    34.75
+   ],
+   "patlat": [
+    0,
+    -10,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 28,
+   "ad": "Isil gomme somun M3 (servo yuvasi ustu)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    -24.0,
+    43.15,
+    32.0
+   ],
+   "bb": [
+    -26.3,
+    -21.7,
+    40.3,
+    46.0,
+    29.7,
+    34.3
+   ],
+   "patlat": [
+    0,
+    -45,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 29,
+   "ad": "Rulman yuvasi civatasi M3x10",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x10 DIN 912",
+   "kutle_g": 1.04,
+   "hacim_mm3": 132.2,
+   "merkez": [
+    24.0,
+    49.981,
+    -24.0
+   ],
+   "bb": [
+    21.25,
+    26.75,
+    42.0,
+    55.0,
+    -26.75,
+    -21.25
+   ],
+   "patlat": [
+    0,
+    -10,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 30,
+   "ad": "Isil gomme somun M3 (servo yuvasi ustu)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    24.0,
+    43.15,
+    -24.0
+   ],
+   "bb": [
+    21.7,
+    26.3,
+    40.3,
+    46.0,
+    -26.3,
+    -21.7
+   ],
+   "patlat": [
+    0,
+    -45,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 31,
+   "ad": "Rulman yuvasi civatasi M3x10",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x10 DIN 912",
+   "kutle_g": 1.04,
+   "hacim_mm3": 132.2,
+   "merkez": [
+    -24.0,
+    49.981,
+    -24.0
+   ],
+   "bb": [
+    -26.75,
+    -21.25,
+    42.0,
+    55.0,
+    -26.75,
+    -21.25
+   ],
+   "patlat": [
+    0,
+    -10,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 32,
+   "ad": "Isil gomme somun M3 (servo yuvasi ustu)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    -24.0,
+    43.15,
+    -24.0
+   ],
+   "bb": [
+    -26.3,
+    -21.7,
+    40.3,
+    46.0,
+    -26.3,
+    -21.7
+   ],
+   "patlat": [
+    0,
+    -45,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 33,
+   "ad": "Pan horn 25T aluminyum disk",
+   "grup": "Pan",
+   "tur": "Satin",
+   "malzeme": "Aluminyum",
+   "kod": "25T aluminyum disk horn",
+   "kutle_g": 3.87,
+   "hacim_mm3": 1433.3,
+   "merkez": [
+    -0.0,
+    46.25,
+    0.0
+   ],
+   "bb": [
+    -12.5,
+    12.5,
+    44.6,
+    47.9,
+    -12.5,
+    12.5
+   ],
+   "patlat": [
+    0,
+    10,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 34,
+   "ad": "Pan horn merkez vidasi M3",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3x5 horn vidasi (servo ile)",
+   "kutle_g": 0.76,
+   "hacim_mm3": 96.9,
+   "merkez": [
+    0.0,
+    47.88,
+    -0.0
+   ],
+   "bb": [
+    -2.75,
+    2.75,
+    42.9,
+    50.9,
+    -2.75,
+    2.75
+   ],
+   "patlat": [
+    0,
+    20,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 35,
+   "ad": "Boyun mili",
+   "grup": "Pan",
+   "tur": "Baski",
+   "malzeme": "PETG",
+   "kod": "Boyun mili",
+   "kutle_g": 38.8,
+   "hacim_mm3": 38188.6,
+   "merkez": [
+    -0.0,
+    76.877,
+    0.258
+   ],
+   "bb": [
+    -30.0,
+    30.0,
+    47.9,
+    96.0,
+    -30.0,
+    30.0
+   ],
+   "patlat": [
+    0,
+    70,
+    0
+   ],
+   "not_": "ici bos O32 (kablolar eksenden iner), alt diski horn'a 4x M3x8; omzu ust 6808 ic bileziginde"
+  },
+  {
+   "i": 36,
+   "ad": "Mil-horn civatasi M3x8",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    6.01,
+    51.717,
+    -6.01
+   ],
+   "bb": [
+    3.26,
+    8.76,
+    44.9,
+    55.9,
+    -8.76,
+    -3.26
+   ],
+   "patlat": [
+    0,
+    75,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 37,
+   "ad": "Mil-horn civatasi M3x8",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    -6.01,
+    51.717,
+    -6.01
+   ],
+   "bb": [
+    -8.76,
+    -3.26,
+    44.9,
+    55.9,
+    -8.76,
+    -3.26
+   ],
+   "patlat": [
+    0,
+    75,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 38,
+   "ad": "Mil-horn civatasi M3x8",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    -6.01,
+    51.717,
+    6.01
+   ],
+   "bb": [
+    -8.76,
+    -3.26,
+    44.9,
+    55.9,
+    3.26,
+    8.76
+   ],
+   "patlat": [
+    0,
+    75,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 39,
+   "ad": "Mil-horn civatasi M3x8",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    6.01,
+    51.717,
+    6.01
+   ],
+   "bb": [
+    3.26,
+    8.76,
+    44.9,
+    55.9,
+    3.26,
+    8.76
+   ],
+   "patlat": [
+    0,
+    75,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 40,
+   "ad": "6808-2RS alt rulman (ic bilezik)",
+   "grup": "Pan",
+   "tur": "Satin",
+   "malzeme": "Celik",
+   "kod": "(6808 ile)",
+   "kutle_g": 16.8,
+   "hacim_mm3": 2139.5,
+   "merkez": [
+    -0.0,
+    67.5,
+    0.0
+   ],
+   "bb": [
+    -22.3,
+    22.3,
+    64.0,
+    71.0,
+    -22.3,
+    22.3
+   ],
+   "patlat": [
+    0,
+    -10,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 41,
+   "ad": "6808-2RS ust rulman (ic bilezik)",
+   "grup": "Pan",
+   "tur": "Satin",
+   "malzeme": "Celik",
+   "kod": "(6808 ile)",
+   "kutle_g": 16.8,
+   "hacim_mm3": 2139.5,
+   "merkez": [
+    -0.0,
+    78.5,
+    0.0
+   ],
+   "bb": [
+    -22.3,
+    22.3,
+    75.0,
+    82.0,
+    -22.3,
+    22.3
+   ],
+   "patlat": [
+    0,
+    5,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 42,
+   "ad": "Egme catali",
+   "grup": "Pan",
+   "tur": "Baski",
+   "malzeme": "PETG",
+   "kod": "Egme catali",
+   "kutle_g": 33.77,
+   "hacim_mm3": 33239.9,
+   "merkez": [
+    -5.059,
+    111.606,
+    20.08
+   ],
+   "bb": [
+    -30.0,
+    30.0,
+    96.0,
+    145.0,
+    -30.0,
+    44.5
+   ],
+   "patlat": [
+    0,
+    95,
+    0
+   ],
+   "not_": "mil flansina 4x M3; tilt servosu +X'ten kulak plakasina, sol duvarda 625ZZ pimi (M5 isil gomme)"
+  },
+  {
+   "i": 43,
+   "ad": "Catal-mil civatasi M3x8",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    25.0,
+    97.817,
+    -0.0
+   ],
+   "bb": [
+    22.25,
+    27.75,
+    91.0,
+    102.0,
+    -2.75,
+    2.75
+   ],
+   "patlat": [
+    0,
+    100,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 44,
+   "ad": "Isil gomme somun M3 (mil flansi)",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    25.0,
+    93.15,
+    0.0
+   ],
+   "bb": [
+    22.7,
+    27.3,
+    90.3,
+    96.0,
+    -2.3,
+    2.3
+   ],
+   "patlat": [
+    0,
+    70,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 45,
+   "ad": "Catal-mil civatasi M3x8",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    -0.0,
+    97.817,
+    25.0
+   ],
+   "bb": [
+    -2.75,
+    2.75,
+    91.0,
+    102.0,
+    22.25,
+    27.75
+   ],
+   "patlat": [
+    0,
+    100,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 46,
+   "ad": "Isil gomme somun M3 (mil flansi)",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    -0.0,
+    93.15,
+    25.0
+   ],
+   "bb": [
+    -2.3,
+    2.3,
+    90.3,
+    96.0,
+    22.7,
+    27.3
+   ],
+   "patlat": [
+    0,
+    70,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 47,
+   "ad": "Catal-mil civatasi M3x8",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    -25.0,
+    97.817,
+    -0.0
+   ],
+   "bb": [
+    -27.75,
+    -22.25,
+    91.0,
+    102.0,
+    -2.75,
+    2.75
+   ],
+   "patlat": [
+    0,
+    100,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 48,
+   "ad": "Isil gomme somun M3 (mil flansi)",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    -25.0,
+    93.15,
+    0.0
+   ],
+   "bb": [
+    -27.3,
+    -22.7,
+    90.3,
+    96.0,
+    -2.3,
+    2.3
+   ],
+   "patlat": [
+    0,
+    70,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 49,
+   "ad": "Catal-mil civatasi M3x8",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    -0.0,
+    97.817,
+    -25.0
+   ],
+   "bb": [
+    -2.75,
+    2.75,
+    91.0,
+    102.0,
+    -27.75,
+    -22.25
+   ],
+   "patlat": [
+    0,
+    100,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 50,
+   "ad": "Isil gomme somun M3 (mil flansi)",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    -0.0,
+    93.15,
+    -25.0
+   ],
+   "bb": [
+    -2.3,
+    2.3,
+    90.3,
+    96.0,
+    -27.3,
+    -22.7
+   ],
+   "patlat": [
+    0,
+    70,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 51,
+   "ad": "Tilt servosu MG996R",
+   "grup": "Pan",
+   "tur": "Satin",
+   "malzeme": "-",
+   "kod": "MG996R servo",
+   "kutle_g": 55.0,
+   "hacim_mm3": 29818.2,
+   "merkez": [
+    5.751,
+    130.0,
+    14.85
+   ],
+   "bb": [
+    -12.7,
+    23.9,
+    120.15,
+    139.85,
+    -11.95,
+    41.65
+   ],
+   "patlat": [
+    60,
+    95,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 52,
+   "ad": "Tilt servosu cikis mili",
+   "grup": "Pan",
+   "tur": "Satin",
+   "malzeme": "-",
+   "kod": "(servo ile)",
+   "kutle_g": 0.0,
+   "hacim_mm3": 334.5,
+   "merkez": [
+    25.684,
+    130.0,
+    25.0
+   ],
+   "bb": [
+    23.9,
+    30.2,
+    123.5,
+    136.5,
+    18.5,
+    31.5
+   ],
+   "patlat": [
+    60,
+    95,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 53,
+   "ad": "Tilt servosu kulak civatasi M4x16",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "hacim_mm3": 336.3,
+   "merkez": [
+    12.377,
+    125.0,
+    -9.9
+   ],
+   "bb": [
+    0.4,
+    20.4,
+    121.5,
+    128.5,
+    -13.4,
+    -6.4
+   ],
+   "patlat": [
+    90,
+    95,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 54,
+   "ad": "Tilt servosu kontra somunu M4",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.17,
+   "hacim_mm3": 149.3,
+   "merkez": [
+    6.4,
+    125.0,
+    -9.9
+   ],
+   "bb": [
+    3.9,
+    8.9,
+    120.96,
+    129.04,
+    -13.4,
+    -6.4
+   ],
+   "patlat": [
+    -20,
+    95,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 55,
+   "ad": "Tilt servosu kulak civatasi M4x16",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "hacim_mm3": 336.3,
+   "merkez": [
+    12.377,
+    135.0,
+    -9.9
+   ],
+   "bb": [
+    0.4,
+    20.4,
+    131.5,
+    138.5,
+    -13.4,
+    -6.4
+   ],
+   "patlat": [
+    90,
+    95,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 56,
+   "ad": "Tilt servosu kontra somunu M4",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.17,
+   "hacim_mm3": 149.3,
+   "merkez": [
+    6.4,
+    135.0,
+    -9.9
+   ],
+   "bb": [
+    3.9,
+    8.9,
+    130.96,
+    139.04,
+    -13.4,
+    -6.4
+   ],
+   "patlat": [
+    -20,
+    95,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 57,
+   "ad": "Tilt servosu kulak civatasi M4x16",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "hacim_mm3": 336.3,
+   "merkez": [
+    12.377,
+    125.0,
+    39.6
+   ],
+   "bb": [
+    0.4,
+    20.4,
+    121.5,
+    128.5,
+    36.1,
+    43.1
+   ],
+   "patlat": [
+    90,
+    95,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 58,
+   "ad": "Tilt servosu kontra somunu M4",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.17,
+   "hacim_mm3": 149.3,
+   "merkez": [
+    6.4,
+    125.0,
+    39.6
+   ],
+   "bb": [
+    3.9,
+    8.9,
+    120.96,
+    129.04,
+    36.1,
+    43.1
+   ],
+   "patlat": [
+    -20,
+    95,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 59,
+   "ad": "Tilt servosu kulak civatasi M4x16",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "hacim_mm3": 336.3,
+   "merkez": [
+    12.377,
+    135.0,
+    39.6
+   ],
+   "bb": [
+    0.4,
+    20.4,
+    131.5,
+    138.5,
+    36.1,
+    43.1
+   ],
+   "patlat": [
+    90,
+    95,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 60,
+   "ad": "Tilt servosu kontra somunu M4",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.17,
+   "hacim_mm3": 149.3,
+   "merkez": [
+    6.4,
+    135.0,
+    39.6
+   ],
+   "bb": [
+    3.9,
+    8.9,
+    130.96,
+    139.04,
+    36.1,
+    43.1
+   ],
+   "patlat": [
+    -20,
+    95,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 61,
+   "ad": "625ZZ rulman (ic bilezik)",
+   "grup": "Pan",
+   "tur": "Satin",
+   "malzeme": "Celik",
+   "kod": "(625ZZ ile)",
+   "kutle_g": 1.3,
+   "hacim_mm3": 165.9,
+   "merkez": [
+    -26.7,
+    130.0,
+    25.0
+   ],
+   "bb": [
+    -29.2,
+    -24.2,
+    125.9,
+    134.1,
+    20.9,
+    29.1
+   ],
+   "patlat": [
+    -40,
+    140,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 62,
+   "ad": "Pim pulu M5",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M5 DIN 125 pul",
+   "kutle_g": 0.44,
+   "hacim_mm3": 56.5,
+   "merkez": [
+    -29.7,
+    130.0,
+    25.0
+   ],
+   "bb": [
+    -30.2,
+    -29.2,
+    125.0,
+    135.0,
+    20.0,
+    30.0
+   ],
+   "patlat": [
+    -55,
+    140,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 63,
+   "ad": "Pim civatasi M5x12",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M5x12 DIN 912",
+   "kutle_g": 3.75,
+   "hacim_mm3": 477.8,
+   "merkez": [
+    -28.421,
+    130.0,
+    25.0
+   ],
+   "bb": [
+    -35.2,
+    -18.2,
+    125.75,
+    134.25,
+    20.75,
+    29.25
+   ],
+   "patlat": [
+    -70,
+    140,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 64,
+   "ad": "Isil gomme somun M5 (catal)",
+   "grup": "Pan",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M5 isil gomme somun",
+   "kutle_g": 1.12,
+   "hacim_mm3": 131.9,
+   "merkez": [
+    -19.7,
+    130.0,
+    25.0
+   ],
+   "bb": [
+    -23.2,
+    -16.2,
+    126.5,
+    133.5,
+    21.5,
+    28.5
+   ],
+   "patlat": [
+    0,
+    95,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 65,
+   "ad": "Tilt horn 25T aluminyum disk",
+   "grup": "Kafa",
+   "tur": "Satin",
+   "malzeme": "Aluminyum",
+   "kod": "25T aluminyum disk horn",
+   "kutle_g": 3.87,
+   "hacim_mm3": 1433.3,
+   "merkez": [
+    28.55,
+    130.0,
+    25.0
+   ],
+   "bb": [
+    26.9,
+    30.2,
+    117.5,
+    142.5,
+    12.5,
+    37.5
+   ],
+   "patlat": [
+    25,
+    140,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 66,
+   "ad": "Tilt horn merkez vidasi M3",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3x5 horn vidasi (servo ile)",
+   "kutle_g": 0.76,
+   "hacim_mm3": 96.9,
+   "merkez": [
+    30.18,
+    130.0,
+    25.0
+   ],
+   "bb": [
+    25.2,
+    33.2,
+    127.25,
+    132.75,
+    22.25,
+    27.75
+   ],
+   "patlat": [
+    35,
+    140,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 67,
+   "ad": "625ZZ rulman (dis bilezik)",
+   "grup": "Kafa",
+   "tur": "Satin",
+   "malzeme": "Celik",
+   "kod": "625ZZ rulman 5x16x5",
+   "kutle_g": 2.84,
+   "hacim_mm3": 361.9,
+   "merkez": [
+    -26.7,
+    130.0,
+    25.0
+   ],
+   "bb": [
+    -29.2,
+    -24.2,
+    122.0,
+    138.0,
+    17.0,
+    33.0
+   ],
+   "patlat": [
+    -40,
+    140,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 68,
+   "ad": "Kafa iskeleti",
+   "grup": "Kafa",
+   "tur": "Baski",
+   "malzeme": "PETG",
+   "kod": "Kafa iskeleti",
+   "kutle_g": 110.35,
+   "hacim_mm3": 108614.7,
+   "merkez": [
+    -3.684,
+    171.954,
+    10.832
+   ],
+   "bb": [
+    -102.5,
+    102.5,
+    114.0,
+    183.0,
+    -58.0,
+    58.0
+   ],
+   "patlat": [
+    0,
+    170,
+    0
+   ],
+   "not_": "kafa tablasi + iki yanak: sag yanak tilt horn'una 4x M3, sol yanakta 625ZZ; kabuklar tablaya 4x M3"
+  },
+  {
+   "i": 69,
+   "ad": "Yanak-horn civatasi M3x8",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    34.017,
+    136.01,
+    31.01
+   ],
+   "bb": [
+    27.2,
+    38.2,
+    133.26,
+    138.76,
+    28.26,
+    33.76
+   ],
+   "patlat": [
+    45,
+    170,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 70,
+   "ad": "Yanak-horn civatasi M3x8",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    34.017,
+    123.99,
+    31.01
+   ],
+   "bb": [
+    27.2,
+    38.2,
+    121.24,
+    126.74,
+    28.26,
+    33.76
+   ],
+   "patlat": [
+    45,
+    170,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 71,
+   "ad": "Yanak-horn civatasi M3x8",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    34.017,
+    123.99,
+    18.99
+   ],
+   "bb": [
+    27.2,
+    38.2,
+    121.24,
+    126.74,
+    16.24,
+    21.74
+   ],
+   "patlat": [
+    45,
+    170,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 72,
+   "ad": "Yanak-horn civatasi M3x8",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    34.017,
+    136.01,
+    18.99
+   ],
+   "bb": [
+    27.2,
+    38.2,
+    133.26,
+    138.76,
+    16.24,
+    21.74
+   ],
+   "patlat": [
+    45,
+    170,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 73,
+   "ad": "Yuz kabugu (on)",
+   "grup": "Kafa",
+   "tur": "Baski",
+   "malzeme": "PETG",
+   "kod": "Yuz kabugu (on)",
+   "kutle_g": 170.08,
+   "hacim_mm3": 148803.9,
+   "merkez": [
+    0.0,
+    189.174,
+    67.618
+   ],
+   "bb": [
+    -107.31,
+    107.31,
+    92.69,
+    277.31,
+    30.0,
+    85.0
+   ],
+   "patlat": [
+    0,
+    140,
+    120
+   ],
+   "not_": "LCD penceresi + 3 mm ekran yuvasi kenari + 4 LCD boss'u (M3 isil gomme), kamera deligi O9 + 4 boss (M2)"
+  },
+  {
+   "i": 74,
+   "ad": "Arka kafa kabugu",
+   "grup": "Kafa",
+   "tur": "Baski",
+   "malzeme": "PETG",
+   "kod": "Arka kafa kabugu",
+   "kutle_g": 270.62,
+   "hacim_mm3": 236761.8,
+   "merkez": [
+    -0.0,
+    192.309,
+    -32.437
+   ],
+   "bb": [
+    -107.31,
+    107.31,
+    92.69,
+    277.31,
+    -65.0,
+    36.0
+   ],
+   "patlat": [
+    0,
+    140,
+    -120
+   ],
+   "not_": "dikis dili on kabuga 6 mm girer; yanlarda 4'er havalandirma yarigi"
+  },
+  {
+   "i": 75,
+   "ad": "Kabuk civatasi M3x8 ISO 7380",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3x8 ISO 7380",
+   "kutle_g": 0.75,
+   "hacim_mm3": 94.9,
+   "merkez": [
+    102.94,
+    176.5,
+    -30.0
+   ],
+   "bb": [
+    97.0,
+    106.65,
+    173.65,
+    179.35,
+    -32.85,
+    -27.15
+   ],
+   "patlat": [
+    40,
+    170,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 76,
+   "ad": "Isil gomme somun M3 (kafa tablasi)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    99.65,
+    176.5,
+    -30.0
+   ],
+   "bb": [
+    96.8,
+    102.5,
+    174.2,
+    178.8,
+    -32.3,
+    -27.7
+   ],
+   "patlat": [
+    0,
+    170,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 77,
+   "ad": "Kabuk civatasi M3x8 ISO 7380",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3x8 ISO 7380",
+   "kutle_g": 0.75,
+   "hacim_mm3": 94.9,
+   "merkez": [
+    102.94,
+    176.5,
+    45.0
+   ],
+   "bb": [
+    97.0,
+    106.65,
+    173.65,
+    179.35,
+    42.15,
+    47.85
+   ],
+   "patlat": [
+    40,
+    170,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 78,
+   "ad": "Isil gomme somun M3 (kafa tablasi)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    99.65,
+    176.5,
+    45.0
+   ],
+   "bb": [
+    96.8,
+    102.5,
+    174.2,
+    178.8,
+    42.7,
+    47.3
+   ],
+   "patlat": [
+    0,
+    170,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 79,
+   "ad": "Kabuk civatasi M3x8 ISO 7380",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3x8 ISO 7380",
+   "kutle_g": 0.75,
+   "hacim_mm3": 94.9,
+   "merkez": [
+    -102.94,
+    176.5,
+    -30.0
+   ],
+   "bb": [
+    -106.65,
+    -97.0,
+    173.65,
+    179.35,
+    -32.85,
+    -27.15
+   ],
+   "patlat": [
+    -40,
+    170,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 80,
+   "ad": "Isil gomme somun M3 (kafa tablasi)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    -99.65,
+    176.5,
+    -30.0
+   ],
+   "bb": [
+    -102.5,
+    -96.8,
+    174.2,
+    178.8,
+    -32.3,
+    -27.7
+   ],
+   "patlat": [
+    0,
+    170,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 81,
+   "ad": "Kabuk civatasi M3x8 ISO 7380",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3x8 ISO 7380",
+   "kutle_g": 0.75,
+   "hacim_mm3": 94.9,
+   "merkez": [
+    -102.94,
+    176.5,
+    45.0
+   ],
+   "bb": [
+    -106.65,
+    -97.0,
+    173.65,
+    179.35,
+    42.15,
+    47.85
+   ],
+   "patlat": [
+    -40,
+    170,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 82,
+   "ad": "Isil gomme somun M3 (kafa tablasi)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    -99.65,
+    176.5,
+    45.0
+   ],
+   "bb": [
+    -102.5,
+    -96.8,
+    174.2,
+    178.8,
+    42.7,
+    47.3
+   ],
+   "patlat": [
+    0,
+    170,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 83,
+   "ad": "Yuz ekrani Waveshare 7in HDMI LCD (C)",
+   "grup": "Kafa",
+   "tur": "Satin",
+   "malzeme": "-",
+   "kod": "Waveshare 7in HDMI LCD (C) 1024x600",
+   "kutle_g": 230.0,
+   "hacim_mm3": 109295.6,
+   "merkez": [
+    3.901,
+    178.013,
+    75.786
+   ],
+   "bb": [
+    -82.45,
+    82.45,
+    116.88,
+    241.12,
+    64.5,
+    79.5
+   ],
+   "patlat": [
+    0,
+    140,
+    60
+   ],
+   "not_": "panel on yuzu ekran yuvasi kenarina dayali; kulaklar 4x M3 ile boss'lara"
+  },
+  {
+   "i": 84,
+   "ad": "LCD civatasi M3x6 ISO 7380",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.63,
+   "hacim_mm3": 80.8,
+   "merkez": [
+    -78.45,
+    121.52,
+    75.596
+   ],
+   "bb": [
+    -81.3,
+    -75.6,
+    118.67,
+    124.37,
+    72.75,
+    80.4
+   ],
+   "patlat": [
+    0,
+    140,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 85,
+   "ad": "Isil gomme somun M3 (LCD boss)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    -78.45,
+    121.52,
+    78.85
+   ],
+   "bb": [
+    -80.75,
+    -76.15,
+    119.22,
+    123.82,
+    76.0,
+    81.7
+   ],
+   "patlat": [
+    0,
+    140,
+    120
+   ],
+   "not_": ""
+  },
+  {
+   "i": 86,
+   "ad": "LCD civatasi M3x6 ISO 7380",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.63,
+   "hacim_mm3": 80.8,
+   "merkez": [
+    -78.45,
+    236.48,
+    75.596
+   ],
+   "bb": [
+    -81.3,
+    -75.6,
+    233.63,
+    239.33,
+    72.75,
+    80.4
+   ],
+   "patlat": [
+    0,
+    140,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 87,
+   "ad": "Isil gomme somun M3 (LCD boss)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    -78.45,
+    236.48,
+    78.85
+   ],
+   "bb": [
+    -80.75,
+    -76.15,
+    234.18,
+    238.78,
+    76.0,
+    81.7
+   ],
+   "patlat": [
+    0,
+    140,
+    120
+   ],
+   "not_": ""
+  },
+  {
+   "i": 88,
+   "ad": "LCD civatasi M3x6 ISO 7380",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.63,
+   "hacim_mm3": 80.8,
+   "merkez": [
+    78.45,
+    121.52,
+    75.596
+   ],
+   "bb": [
+    75.6,
+    81.3,
+    118.67,
+    124.37,
+    72.75,
+    80.4
+   ],
+   "patlat": [
+    0,
+    140,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 89,
+   "ad": "Isil gomme somun M3 (LCD boss)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    78.45,
+    121.52,
+    78.85
+   ],
+   "bb": [
+    76.15,
+    80.75,
+    119.22,
+    123.82,
+    76.0,
+    81.7
+   ],
+   "patlat": [
+    0,
+    140,
+    120
+   ],
+   "not_": ""
+  },
+  {
+   "i": 90,
+   "ad": "LCD civatasi M3x6 ISO 7380",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.63,
+   "hacim_mm3": 80.8,
+   "merkez": [
+    78.45,
+    236.48,
+    75.596
+   ],
+   "bb": [
+    75.6,
+    81.3,
+    233.63,
+    239.33,
+    72.75,
+    80.4
+   ],
+   "patlat": [
+    0,
+    140,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 91,
+   "ad": "Isil gomme somun M3 (LCD boss)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Pirinc",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.46,
+   "hacim_mm3": 54.4,
+   "merkez": [
+    78.45,
+    236.48,
+    78.85
+   ],
+   "bb": [
+    76.15,
+    80.75,
+    234.18,
+    238.78,
+    76.0,
+    81.7
+   ],
+   "patlat": [
+    0,
+    140,
+    120
+   ],
+   "not_": ""
+  },
+  {
+   "i": 92,
+   "ad": "Vizor (siyah akrilik)",
+   "grup": "Kafa",
+   "tur": "Imalat",
+   "malzeme": "Akrilik",
+   "kod": "Vizor 3 mm siyah akrilik 190x115 (lazer)",
+   "kutle_g": 27.98,
+   "hacim_mm3": 23513.7,
+   "merkez": [
+    0.0,
+    171.367,
+    86.5
+   ],
+   "bb": [
+    -95.0,
+    95.0,
+    120.0,
+    235.0,
+    85.0,
+    88.0
+   ],
+   "patlat": [
+    0,
+    140,
+    170
+   ],
+   "not_": "on yuze 3M VHB bantla (tahmini); ekranin kenarlarini gizler"
+  },
+  {
+   "i": 93,
+   "ad": "Kamera Raspberry Pi Camera Module 3",
+   "grup": "Kafa",
+   "tur": "Satin",
+   "malzeme": "-",
+   "kod": "Raspberry Pi Camera Module 3",
+   "kutle_g": 4.0,
+   "hacim_mm3": 1529.7,
+   "merkez": [
+    0.0,
+    256.99,
+    78.092
+   ],
+   "bb": [
+    -12.5,
+    12.5,
+    243.6,
+    267.46,
+    74.88,
+    86.5
+   ],
+   "patlat": [
+    0,
+    160,
+    60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 94,
+   "ad": "Kamera vidasi M2x8 PT",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M2x8 PT vida (plastik icin)",
+   "kutle_g": 0.34,
+   "hacim_mm3": 43.3,
+   "merkez": [
+    -10.5,
+    245.6,
+    76.867
+   ],
+   "bb": [
+    -12.4,
+    -8.6,
+    243.7,
+    247.5,
+    73.28,
+    82.88
+   ],
+   "patlat": [
+    0,
+    160,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 95,
+   "ad": "Kamera vidasi M2x8 PT",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M2x8 PT vida (plastik icin)",
+   "kutle_g": 0.34,
+   "hacim_mm3": 43.3,
+   "merkez": [
+    -10.5,
+    258.1,
+    76.867
+   ],
+   "bb": [
+    -12.4,
+    -8.6,
+    256.2,
+    260.0,
+    73.28,
+    82.88
+   ],
+   "patlat": [
+    0,
+    160,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 96,
+   "ad": "Kamera vidasi M2x8 PT",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M2x8 PT vida (plastik icin)",
+   "kutle_g": 0.34,
+   "hacim_mm3": 43.3,
+   "merkez": [
+    10.5,
+    245.6,
+    76.867
+   ],
+   "bb": [
+    8.6,
+    12.4,
+    243.7,
+    247.5,
+    73.28,
+    82.88
+   ],
+   "patlat": [
+    0,
+    160,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 97,
+   "ad": "Kamera vidasi M2x8 PT",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M2x8 PT vida (plastik icin)",
+   "kutle_g": 0.34,
+   "hacim_mm3": 43.3,
+   "merkez": [
+    10.5,
+    258.1,
+    76.867
+   ],
+   "bb": [
+    8.6,
+    12.4,
+    256.2,
+    260.0,
+    73.28,
+    82.88
+   ],
+   "patlat": [
+    0,
+    160,
+    40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 98,
+   "ad": "Kablo demeti (gosterim)",
+   "grup": "Referans",
+   "tur": "Referans",
+   "malzeme": "-",
+   "kod": "(gosterim)",
+   "kutle_g": 0.0,
+   "hacim_mm3": 11655.1,
+   "merkez": [
+    -9.525,
+    105.61,
+    4.044
+   ],
+   "bb": [
+    -46.0,
+    56.51,
+    -43.0,
+    193.0,
+    -39.0,
+    64.59
+   ],
+   "patlat": [
+    0,
+    0,
+    0
+   ],
+   "not_": "HDMI ince kablo + USB (dokunmatik/guc) + kamera FPC + tilt servosu; sema, gercek kablo degil"
+  }
+ ],
+ "gruplar": {
+  "Govde": {
+   "hareket": "sabit (traverse)",
+   "baglanti": "traversin ust kanalina 2x M6 + cekic somun (x = +-40, z = 0)",
+   "parca": [
+    "Boyun plakasi",
+    "Servo yuvasi",
+    "Rulman yuvasi",
+    "6808-2RS alt rulman (dis bilezik)",
+    "6808-2RS ust rulman (dis bilezik)",
+    "Pan servosu MG996R",
+    "Pan servosu cikis mili",
+    "Pan servosu kulak pulu M3",
+    "Pan servosu kulak civatasi M3x8",
+    "Isil gomme somun M3 (servo yuvasi)",
+    "Pan servosu kulak pulu M3",
+    "Pan servosu kulak civatasi M3x8",
+    "Isil gomme somun M3 (servo yuvasi)",
+    "Pan servosu kulak pulu M3",
+    "Pan servosu kulak civatasi M3x8",
+    "Isil gomme somun M3 (servo yuvasi)",
+    "Pan servosu kulak pulu M3",
+    "Pan servosu kulak civatasi M3x8",
+    "Isil gomme somun M3 (servo yuvasi)",
+    "Boyun civata pulu M6",
+    "Boyun civatasi M6x20",
+    "Cekic somun M6 (travers ust kanali)",
+    "Boyun civata pulu M6",
+    "Boyun civatasi M6x20",
+    "Cekic somun M6 (travers ust kanali)",
+    "Rulman yuvasi civatasi M3x10",
+    "Isil gomme somun M3 (servo yuvasi ustu)",
+    "Rulman yuvasi civatasi M3x10",
+    "Isil gomme somun M3 (servo yuvasi ustu)",
+    "Rulman yuvasi civatasi M3x10",
+    "Isil gomme somun M3 (servo yuvasi ustu)",
+    "Rulman yuvasi civatasi M3x10",
+    "Isil gomme somun M3 (servo yuvasi ustu)"
+   ]
+  },
+  "Pan": {
+   "hareket": "Ppan(psi)",
+   "parca": [
+    "Pan horn 25T aluminyum disk",
+    "Pan horn merkez vidasi M3",
+    "Boyun mili",
+    "Mil-horn civatasi M3x8",
+    "Mil-horn civatasi M3x8",
+    "Mil-horn civatasi M3x8",
+    "Mil-horn civatasi M3x8",
+    "6808-2RS alt rulman (ic bilezik)",
+    "6808-2RS ust rulman (ic bilezik)",
+    "Egme catali",
+    "Catal-mil civatasi M3x8",
+    "Isil gomme somun M3 (mil flansi)",
+    "Catal-mil civatasi M3x8",
+    "Isil gomme somun M3 (mil flansi)",
+    "Catal-mil civatasi M3x8",
+    "Isil gomme somun M3 (mil flansi)",
+    "Catal-mil civatasi M3x8",
+    "Isil gomme somun M3 (mil flansi)",
+    "Tilt servosu MG996R",
+    "Tilt servosu cikis mili",
+    "Tilt servosu kulak civatasi M4x16",
+    "Tilt servosu kontra somunu M4",
+    "Tilt servosu kulak civatasi M4x16",
+    "Tilt servosu kontra somunu M4",
+    "Tilt servosu kulak civatasi M4x16",
+    "Tilt servosu kontra somunu M4",
+    "Tilt servosu kulak civatasi M4x16",
+    "Tilt servosu kontra somunu M4",
+    "625ZZ rulman (ic bilezik)",
+    "Pim pulu M5",
+    "Pim civatasi M5x12",
+    "Isil gomme somun M5 (catal)"
+   ]
+  },
+  "Kafa": {
+   "hareket": "Ppan(psi) * Ptilt(th)",
+   "parca": [
+    "Tilt horn 25T aluminyum disk",
+    "Tilt horn merkez vidasi M3",
+    "625ZZ rulman (dis bilezik)",
+    "Kafa iskeleti",
+    "Yanak-horn civatasi M3x8",
+    "Yanak-horn civatasi M3x8",
+    "Yanak-horn civatasi M3x8",
+    "Yanak-horn civatasi M3x8",
+    "Yuz kabugu (on)",
+    "Arka kafa kabugu",
+    "Kabuk civatasi M3x8 ISO 7380",
+    "Isil gomme somun M3 (kafa tablasi)",
+    "Kabuk civatasi M3x8 ISO 7380",
+    "Isil gomme somun M3 (kafa tablasi)",
+    "Kabuk civatasi M3x8 ISO 7380",
+    "Isil gomme somun M3 (kafa tablasi)",
+    "Kabuk civatasi M3x8 ISO 7380",
+    "Isil gomme somun M3 (kafa tablasi)",
+    "Yuz ekrani Waveshare 7in HDMI LCD (C)",
+    "LCD civatasi M3x6 ISO 7380",
+    "Isil gomme somun M3 (LCD boss)",
+    "LCD civatasi M3x6 ISO 7380",
+    "Isil gomme somun M3 (LCD boss)",
+    "LCD civatasi M3x6 ISO 7380",
+    "Isil gomme somun M3 (LCD boss)",
+    "LCD civatasi M3x6 ISO 7380",
+    "Isil gomme somun M3 (LCD boss)",
+    "Vizor (siyah akrilik)",
+    "Kamera Raspberry Pi Camera Module 3",
+    "Kamera vidasi M2x8 PT",
+    "Kamera vidasi M2x8 PT",
+    "Kamera vidasi M2x8 PT",
+    "Kamera vidasi M2x8 PT"
+   ]
+  },
+  "Referans": {
+   "hareket": "kablo gosterimi; carpisma taramasina girmez",
+   "parca": [
+    "Kablo demeti (gosterim)"
+   ]
+  }
+ },
+ "eklemler": [
+  {
+   "ad": "Pan",
+   "tip": "revolute",
+   "ust": "Govde",
+   "alt": "Pan",
+   "nokta": [
+    0.0,
+    44.6,
+    0.0
+   ],
+   "yon": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "aralik": [
+    -90.0,
+    90.0
+   ],
+   "ev": 0.0,
+   "serbest_aralik": [
+    -180,
+    180
+   ],
+   "servo": "MG996R (180 derece)",
+   "not_": "+aci yuz robotun sagina; servo orta konumu (90) = pan 0 olacak sekilde horn takilir; kablo halkasi +-90 icin"
+  },
+  {
+   "ad": "Tilt",
+   "tip": "revolute",
+   "ust": "Pan",
+   "alt": "Kafa",
+   "nokta": [
+    26.9,
+    130.0,
+    25.0
+   ],
+   "yon": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "aralik": [
+    -25.0,
+    30.0
+   ],
+   "ev": 0.0,
+   "serbest_aralik": [
+    -25,
+    40
+   ],
+   "servo": "MG996R (180 derece)",
+   "not_": "+aci basi one eger (yuz asagi); karsi yatak 625ZZ sol yanakta"
+  }
+ ],
+ "kinematik": "T_Pan = Ppan(psi); T_Kafa = Ppan(psi) * Ptilt(th); Ppan = Rotation((0,1,0), psi) merkez (0,0,0); Ptilt = Rotation((1,0,0), th) merkez (0, 130.0, 25.0) (kafa_parcalar.grup_yer)",
+ "tarama_onerisi": {
+  "pan": [
+   -90,
+   -75,
+   -60,
+   -45,
+   -30,
+   -15,
+   0,
+   15,
+   30,
+   45,
+   60,
+   75,
+   90
+  ],
+  "tilt": [
+   -25,
+   -10,
+   0,
+   10,
+   20,
+   30
+  ],
+  "hedefler": "iskelet (traverse ust yuzu ve omuz yuvalari), kabuk (ust kapak R62 halkasi, gogus bandi), omuz (sag/sol; kol one 135 derece kalkinca kafa yanina yaklasir), dirsek (kol zinciri, el kafaya)",
+  "haric": "kafa 'Referans' grubu (kablo gosterimi); traverse ust kanalindaki cekic somunlar iskelet profiline temasli (tasarim geregi, kanal icinde)",
+  "not_": "kafa grubu en genis: x +-105, z -65...85 (pan donunce r 135); omuz/kol taramasinda pan +-90 sinirlari"
+ },
+ "gecersiz": [],
+ "coklu_kati": [],
+ "statik": [],
+ "cift_sayisi": 302,
+ "tolerans_mm3": 0.5,
+ "baglanti_kontrol": [
+  {
+   "ad": "Pan servosu kulagi",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 5.0 mm (isil gomme somun 5.7)",
+     5.0,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi pula dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "pul parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 0.7 mm)",
+     0.7,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Pan servosu kulagi",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 5.0 mm (isil gomme somun 5.7)",
+     5.0,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi pula dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "pul parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 0.7 mm)",
+     0.7,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Pan servosu kulagi",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 5.0 mm (isil gomme somun 5.7)",
+     5.0,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi pula dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "pul parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 0.7 mm)",
+     0.7,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Pan servosu kulagi",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 5.0 mm (isil gomme somun 5.7)",
+     5.0,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi pula dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "pul parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 0.7 mm)",
+     0.7,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Boyun plakasi -> traverse",
+   "tip": "cekic",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "cekic somun ayni eksende",
+     0.0,
+     true
+    ],
+    [
+     "cekic somun ust yuzu dudak altinda (y = -4.3)",
+     -0.0,
+     true
+    ],
+    [
+     "civata ucu somunu 1.1 mm geciyor (>= 0,5)",
+     1.1,
+     true
+    ],
+    [
+     "civata ucundan kanal tabanina 1.4 mm (>= 1)",
+     1.4,
+     true
+    ],
+    [
+     "pul servo yuvasi kulagina dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata basi pula dayali",
+     0.0,
+     true
+    ],
+    [
+     "servo yuvasi plakaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "plaka alt yuzu traverse ust yuzunde (y = 0)",
+     0.0,
+     true
+    ],
+    [
+     "civata plaka deliginde ortali (0.30 mm)",
+     0.3,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Boyun plakasi -> traverse",
+   "tip": "cekic",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "cekic somun ayni eksende",
+     0.0,
+     true
+    ],
+    [
+     "cekic somun ust yuzu dudak altinda (y = -4.3)",
+     -0.0,
+     true
+    ],
+    [
+     "civata ucu somunu 1.1 mm geciyor (>= 0,5)",
+     1.1,
+     true
+    ],
+    [
+     "civata ucundan kanal tabanina 1.4 mm (>= 1)",
+     1.4,
+     true
+    ],
+    [
+     "pul servo yuvasi kulagina dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata basi pula dayali",
+     0.0,
+     true
+    ],
+    [
+     "servo yuvasi plakaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "plaka alt yuzu traverse ust yuzunde (y = 0)",
+     0.0,
+     true
+    ],
+    [
+     "civata plaka deliginde ortali (0.30 mm)",
+     0.3,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Rulman yuvasi -> servo yuvasi",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 4.0 mm (isil gomme somun 5.7)",
+     4.0,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 1.7 mm)",
+     1.7,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Rulman yuvasi -> servo yuvasi",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 4.0 mm (isil gomme somun 5.7)",
+     4.0,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 1.7 mm)",
+     1.7,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Rulman yuvasi -> servo yuvasi",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 4.0 mm (isil gomme somun 5.7)",
+     4.0,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 1.7 mm)",
+     1.7,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Rulman yuvasi -> servo yuvasi",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 4.0 mm (isil gomme somun 5.7)",
+     4.0,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 1.7 mm)",
+     1.7,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Boyun mili -> pan horn",
+   "tip": "civata_horn",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "horn disine kavrama 3.0 mm (horn 3.3)",
+     3.0,
+     true
+    ],
+    [
+     "civata ucundan servo kasasina 3.3 mm",
+     3.3,
+     true
+    ],
+    [
+     "horn parcaya dayali",
+     0.0,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Boyun mili -> pan horn",
+   "tip": "civata_horn",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "horn disine kavrama 3.0 mm (horn 3.3)",
+     3.0,
+     true
+    ],
+    [
+     "civata ucundan servo kasasina 3.3 mm",
+     3.3,
+     true
+    ],
+    [
+     "horn parcaya dayali",
+     0.0,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Boyun mili -> pan horn",
+   "tip": "civata_horn",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "horn disine kavrama 3.0 mm (horn 3.3)",
+     3.0,
+     true
+    ],
+    [
+     "civata ucundan servo kasasina 3.3 mm",
+     3.3,
+     true
+    ],
+    [
+     "horn parcaya dayali",
+     0.0,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Boyun mili -> pan horn",
+   "tip": "civata_horn",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "horn disine kavrama 3.0 mm (horn 3.3)",
+     3.0,
+     true
+    ],
+    [
+     "civata ucundan servo kasasina 3.3 mm",
+     3.3,
+     true
+    ],
+    [
+     "horn parcaya dayali",
+     0.0,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Egme catali -> boyun mili",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 5.0 mm (isil gomme somun 5.7)",
+     5.0,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 0.7 mm)",
+     0.7,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Egme catali -> boyun mili",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 5.0 mm (isil gomme somun 5.7)",
+     5.0,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 0.7 mm)",
+     0.7,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Egme catali -> boyun mili",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 5.0 mm (isil gomme somun 5.7)",
+     5.0,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 0.7 mm)",
+     0.7,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Egme catali -> boyun mili",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 5.0 mm (isil gomme somun 5.7)",
+     5.0,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 0.7 mm)",
+     0.7,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Tilt servosu kulagi",
+   "tip": "servo_kulak",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "somun ayni eksende",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu kontra somundan 3.5 mm tasiyor (0,5...6)",
+     3.5,
+     true
+    ],
+    [
+     "civata basi servo kulagina dayali",
+     0.0,
+     true
+    ],
+    [
+     "somun plakaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "servo kulagi plakaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata plaka deliginde ortali (0.25 mm)",
+     0.25,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Tilt servosu kulagi",
+   "tip": "servo_kulak",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "somun ayni eksende",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu kontra somundan 3.5 mm tasiyor (0,5...6)",
+     3.5,
+     true
+    ],
+    [
+     "civata basi servo kulagina dayali",
+     0.0,
+     true
+    ],
+    [
+     "somun plakaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "servo kulagi plakaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata plaka deliginde ortali (0.25 mm)",
+     0.25,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Tilt servosu kulagi",
+   "tip": "servo_kulak",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "somun ayni eksende",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu kontra somundan 3.5 mm tasiyor (0,5...6)",
+     3.5,
+     true
+    ],
+    [
+     "civata basi servo kulagina dayali",
+     0.0,
+     true
+    ],
+    [
+     "somun plakaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "servo kulagi plakaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata plaka deliginde ortali (0.25 mm)",
+     0.25,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Tilt servosu kulagi",
+   "tip": "servo_kulak",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "somun ayni eksende",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu kontra somundan 3.5 mm tasiyor (0,5...6)",
+     3.5,
+     true
+    ],
+    [
+     "civata basi servo kulagina dayali",
+     0.0,
+     true
+    ],
+    [
+     "somun plakaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "servo kulagi plakaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata plaka deliginde ortali (0.25 mm)",
+     0.25,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Kafa iskeleti sag yanak -> tilt horn",
+   "tip": "civata_horn",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "horn disine kavrama 3.0 mm (horn 3.3)",
+     3.0,
+     true
+    ],
+    [
+     "civata ucundan servo kasasina 3.3 mm",
+     3.3,
+     true
+    ],
+    [
+     "horn parcaya dayali",
+     0.0,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Kafa iskeleti sag yanak -> tilt horn",
+   "tip": "civata_horn",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "horn disine kavrama 3.0 mm (horn 3.3)",
+     3.0,
+     true
+    ],
+    [
+     "civata ucundan servo kasasina 3.3 mm",
+     3.3,
+     true
+    ],
+    [
+     "horn parcaya dayali",
+     0.0,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Kafa iskeleti sag yanak -> tilt horn",
+   "tip": "civata_horn",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "horn disine kavrama 3.0 mm (horn 3.3)",
+     3.0,
+     true
+    ],
+    [
+     "civata ucundan servo kasasina 3.3 mm",
+     3.3,
+     true
+    ],
+    [
+     "horn parcaya dayali",
+     0.0,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Kafa iskeleti sag yanak -> tilt horn",
+   "tip": "civata_horn",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "horn disine kavrama 3.0 mm (horn 3.3)",
+     3.0,
+     true
+    ],
+    [
+     "civata ucundan servo kasasina 3.3 mm",
+     3.3,
+     true
+    ],
+    [
+     "horn parcaya dayali",
+     0.0,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Tilt pimi (servo karsi yatagi)",
+   "tip": "pim",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M5 kavramasi 5.0 mm (isil gomme somun 7.0)",
+     5.0,
+     true
+    ],
+    [
+     "625ZZ ic bilezik tilt ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "625ZZ dis bilezik tilt ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun tilt ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "pul tilt ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "pul 625ZZ ic bilezigine dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata basi pula dayali",
+     0.0,
+     true
+    ],
+    [
+     "625ZZ ic bilezik catal dayamasina dayali",
+     0.0,
+     true
+    ],
+    [
+     "625ZZ dis bilezik sol yanak yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun catal duvarinda",
+     0.0,
+     true
+    ],
+    [
+     "pim civatasi yanaga degmiyor (2.25 mm)",
+     2.25,
+     true
+    ],
+    [
+     "pul yanaga degmiyor (1.50 mm)",
+     1.5,
+     true
+    ],
+    [
+     "625ZZ ic bilezik yanaga degmiyor (2.40 mm)",
+     2.4,
+     true
+    ],
+    [
+     "625ZZ dis bilezik catala degmiyor (1.00 mm)",
+     1.0,
+     true
+    ],
+    [
+     "sol yanak catala degmiyor (1.00 mm)",
+     1.0,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Kafa kabugu -> kafa tablasi",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 5.5 mm (isil gomme somun 5.7)",
+     5.5,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 0.2 mm)",
+     0.2,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Kafa kabugu -> kafa tablasi",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 5.5 mm (isil gomme somun 5.7)",
+     5.5,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 0.2 mm)",
+     0.2,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Kafa kabugu -> kafa tablasi",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 5.5 mm (isil gomme somun 5.7)",
+     5.5,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 0.2 mm)",
+     0.2,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Kafa kabugu -> kafa tablasi",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 5.5 mm (isil gomme somun 5.7)",
+     5.5,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 0.2 mm)",
+     0.2,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "LCD kulagi -> on kabuk boss'u",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 4.4 mm (isil gomme somun 5.7)",
+     4.4,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 1.3 mm)",
+     1.3,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "LCD kulagi -> on kabuk boss'u",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 4.4 mm (isil gomme somun 5.7)",
+     4.4,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 1.3 mm)",
+     1.3,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "LCD kulagi -> on kabuk boss'u",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 4.4 mm (isil gomme somun 5.7)",
+     4.4,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 1.3 mm)",
+     1.3,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "LCD kulagi -> on kabuk boss'u",
+   "tip": "insert",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M3 kavramasi 4.4 mm (isil gomme somun 5.7)",
+     4.4,
+     true
+    ],
+    [
+     "isil gomme somun civata ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "civata basi parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "isil gomme somun yuvasinda",
+     0.0,
+     true
+    ],
+    [
+     "bagli parca govdeye dayali",
+     0.0,
+     true
+    ],
+    [
+     "civata ucu isil gomme somun icinde (uc payi 1.3 mm)",
+     1.3,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Kamera -> on kabuk boss'u",
+   "tip": "pt",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M2 PT vida boss'a 6.9 mm girer (>= 5, tahmini)",
+     6.88,
+     true
+    ],
+    [
+     "civata basi PCB'ye dayali",
+     0.0,
+     true
+    ],
+    [
+     "PCB boss'a dayali",
+     0.0,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Kamera -> on kabuk boss'u",
+   "tip": "pt",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M2 PT vida boss'a 6.9 mm girer (>= 5, tahmini)",
+     6.88,
+     true
+    ],
+    [
+     "civata basi PCB'ye dayali",
+     0.0,
+     true
+    ],
+    [
+     "PCB boss'a dayali",
+     0.0,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Kamera -> on kabuk boss'u",
+   "tip": "pt",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M2 PT vida boss'a 6.9 mm girer (>= 5, tahmini)",
+     6.88,
+     true
+    ],
+    [
+     "civata basi PCB'ye dayali",
+     0.0,
+     true
+    ],
+    [
+     "PCB boss'a dayali",
+     0.0,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Kamera -> on kabuk boss'u",
+   "tip": "pt",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "M2 PT vida boss'a 6.9 mm girer (>= 5, tahmini)",
+     6.88,
+     true
+    ],
+    [
+     "civata basi PCB'ye dayali",
+     0.0,
+     true
+    ],
+    [
+     "PCB boss'a dayali",
+     0.0,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Eksen hizasi ve oturmalar",
+   "tip": "eksen",
+   "kontroller": [
+    [
+     "Pan servosu cikis mili pan ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "Pan horn 25T aluminyum disk pan ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "6808-2RS alt rulman (dis bilezik) pan ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "6808-2RS alt rulman (ic bilezik) pan ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "6808-2RS ust rulman (dis bilezik) pan ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "6808-2RS ust rulman (ic bilezik) pan ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "Boyun mili pan ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "Tilt servosu cikis mili tilt ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "Tilt horn 25T aluminyum disk tilt ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "625ZZ rulman (ic bilezik) tilt ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "625ZZ rulman (dis bilezik) tilt ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "boyun mili diski pan horn'una dayali",
+     0.0,
+     true
+    ],
+    [
+     "6808 alt dis bilezik yuvada",
+     0.0,
+     true
+    ],
+    [
+     "6808 ust dis bilezik tablaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "6808 alt ic bilezik milde",
+     0.0,
+     true
+    ],
+    [
+     "6808 ust ic bilezik milde (omuz ustunde)",
+     0.0,
+     true
+    ],
+    [
+     "rulman yuvasi servo yuvasina dayali",
+     0.0,
+     true
+    ],
+    [
+     "egme catali mil flansina dayali",
+     0.0,
+     true
+    ],
+    [
+     "LCD paneli ekran yuvasi kenarina dayali",
+     0.0,
+     true
+    ],
+    [
+     "vizor on yuze dayali",
+     0.0,
+     true
+    ],
+    [
+     "on kabuk kafa tablasi boss'una dayali",
+     0.0,
+     true
+    ],
+    [
+     "arka kabuk kafa tablasi boss'una dayali",
+     0.0,
+     true
+    ],
+    [
+     "arka kabuk dikis dili on kabuga oturuyor",
+     0.0,
+     true
+    ],
+    [
+     "mil omzu ust 6808 ic bilezigine basar (eksenel yuk)",
+     50.259,
+     true
+    ],
+    [
+     "ust 6808 dis bilezigi yuva tablasina oturur",
+     44.334,
+     true
+    ]
+   ],
+   "tamam": true
+  }
+ ],
+ "bagil_bosluk": {
+  "en_kucuk": [
+   [
+    1.0,
+    "Egme catali",
+    "625ZZ rulman (dis bilezik)"
+   ],
+   [
+    1.0,
+    "Egme catali",
+    "Kafa iskeleti"
+   ],
+   [
+    1.2,
+    "Rulman yuvasi",
+    "6808-2RS ust rulman (ic bilezik)"
+   ],
+   [
+    1.3,
+    "Pan servosu MG996R",
+    "Pan horn merkez vidasi M3"
+   ],
+   [
+    1.3,
+    "Tilt servosu MG996R",
+    "Tilt horn merkez vidasi M3"
+   ],
+   [
+    1.393,
+    "Pan servosu cikis mili",
+    "Mil-horn civatasi M3x8"
+   ],
+   [
+    1.393,
+    "Pan servosu cikis mili",
+    "Mil-horn civatasi M3x8"
+   ],
+   [
+    1.393,
+    "Pan servosu cikis mili",
+    "Mil-horn civatasi M3x8"
+   ],
+   [
+    1.393,
+    "Pan servosu cikis mili",
+    "Mil-horn civatasi M3x8"
+   ],
+   [
+    1.393,
+    "Tilt servosu cikis mili",
+    "Yanak-horn civatasi M3x8"
+   ],
+   [
+    1.393,
+    "Tilt servosu cikis mili",
+    "Yanak-horn civatasi M3x8"
+   ],
+   [
+    1.393,
+    "Tilt servosu cikis mili",
+    "Yanak-horn civatasi M3x8"
+   ]
+  ],
+  "hata": [],
+  "esik_mm": 0.3
+ },
+ "tarama": {
+  "psi": [
+   -90,
+   -75,
+   -60,
+   -45,
+   -30,
+   -15,
+   0,
+   15,
+   30,
+   45,
+   60,
+   75,
+   90
+  ],
+  "psi_tum": [
+   -180,
+   -165,
+   -150,
+   -135,
+   -120,
+   -105,
+   -90,
+   -75,
+   -60,
+   -45,
+   -30,
+   -15,
+   0,
+   15,
+   30,
+   45,
+   60,
+   75,
+   90,
+   105,
+   120,
+   135,
+   150,
+   165,
+   180
+  ],
+  "th": [
+   -45,
+   -40,
+   -35,
+   -30,
+   -25,
+   -20,
+   -15,
+   -10,
+   -5,
+   0,
+   5,
+   10,
+   15,
+   20,
+   25,
+   30,
+   35,
+   40,
+   45
+  ],
+  "pan_govde": {
+   "-180": [],
+   "-165": [],
+   "-150": [],
+   "-135": [],
+   "-120": [],
+   "-105": [],
+   "-90": [],
+   "-75": [],
+   "-60": [],
+   "-45": [],
+   "-30": [],
+   "-15": [],
+   "0": [],
+   "15": [],
+   "30": [],
+   "45": [],
+   "60": [],
+   "75": [],
+   "90": [],
+   "105": [],
+   "120": [],
+   "135": [],
+   "150": [],
+   "165": [],
+   "180": []
+  },
+  "kafa_pan": {
+   "-45": [
+    [
+     "Arka kafa kabugu",
+     "Pan horn 25T aluminyum disk",
+     33.4
+    ],
+    [
+     "Arka kafa kabugu",
+     "Boyun mili",
+     490.2
+    ]
+   ],
+   "-40": [
+    [
+     "Arka kafa kabugu",
+     "Boyun mili",
+     189.5
+    ]
+   ],
+   "-35": [],
+   "-30": [],
+   "-25": [],
+   "-20": [],
+   "-15": [],
+   "-10": [],
+   "-5": [],
+   "0": [],
+   "5": [],
+   "10": [],
+   "15": [],
+   "20": [],
+   "25": [],
+   "30": [],
+   "35": [],
+   "40": [],
+   "45": []
+  },
+  "kafa_govde": {
+   "-90,-45": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     909.9
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     44.0
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     44.0
+    ]
+   ],
+   "-90,-40": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     674.3
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     46.5
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     46.5
+    ]
+   ],
+   "-90,-35": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     252.0
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     6.8
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     6.8
+    ]
+   ],
+   "-90,-30": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     49.6
+    ]
+   ],
+   "-90,-25": [],
+   "-90,-20": [],
+   "-90,-15": [],
+   "-90,-10": [],
+   "-90,-5": [],
+   "-90,0": [],
+   "-90,5": [],
+   "-90,10": [],
+   "-90,15": [],
+   "-90,20": [],
+   "-90,25": [],
+   "-90,30": [],
+   "-90,35": [],
+   "-90,40": [],
+   "-90,45": [
+    [
+     "Yuz kabugu (on)",
+     "Rulman yuvasi",
+     56.1
+    ]
+   ],
+   "-75,-45": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     957.6
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     17.8
+    ]
+   ],
+   "-75,-40": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     528.9
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     45.8
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     14.5
+    ]
+   ],
+   "-75,-35": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     252.0
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     3.0
+    ]
+   ],
+   "-75,-30": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     49.6
+    ]
+   ],
+   "-75,-25": [],
+   "-75,-20": [],
+   "-75,-15": [],
+   "-75,-10": [],
+   "-75,-5": [],
+   "-75,0": [],
+   "-75,5": [],
+   "-75,10": [],
+   "-75,15": [],
+   "-75,20": [],
+   "-75,25": [],
+   "-75,30": [],
+   "-75,35": [],
+   "-75,40": [],
+   "-75,45": [
+    [
+     "Yuz kabugu (on)",
+     "Rulman yuvasi",
+     56.1
+    ]
+   ],
+   "-60,-45": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     723.9
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     32.9
+    ]
+   ],
+   "-60,-40": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     438.6
+    ]
+   ],
+   "-60,-35": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     252.0
+    ]
+   ],
+   "-60,-30": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     49.6
+    ]
+   ],
+   "-60,-25": [],
+   "-60,-20": [],
+   "-60,-15": [],
+   "-60,-10": [],
+   "-60,-5": [],
+   "-60,0": [],
+   "-60,5": [],
+   "-60,10": [],
+   "-60,15": [],
+   "-60,20": [],
+   "-60,25": [],
+   "-60,30": [],
+   "-60,35": [],
+   "-60,40": [],
+   "-60,45": [
+    [
+     "Yuz kabugu (on)",
+     "Rulman yuvasi",
+     56.1
+    ]
+   ],
+   "-45,-45": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     579.8
+    ]
+   ],
+   "-45,-40": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     438.6
+    ]
+   ],
+   "-45,-35": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     252.0
+    ]
+   ],
+   "-45,-30": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     49.6
+    ]
+   ],
+   "-45,-25": [],
+   "-45,-20": [],
+   "-45,-15": [],
+   "-45,-10": [],
+   "-45,-5": [],
+   "-45,0": [],
+   "-45,5": [],
+   "-45,10": [],
+   "-45,15": [],
+   "-45,20": [],
+   "-45,25": [],
+   "-45,30": [],
+   "-45,35": [],
+   "-45,40": [],
+   "-45,45": [
+    [
+     "Yuz kabugu (on)",
+     "Rulman yuvasi",
+     56.1
+    ]
+   ],
+   "-30,-45": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     725.2
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     17.2
+    ]
+   ],
+   "-30,-40": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     438.8
+    ]
+   ],
+   "-30,-35": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     252.0
+    ]
+   ],
+   "-30,-30": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     49.6
+    ]
+   ],
+   "-30,-25": [],
+   "-30,-20": [],
+   "-30,-15": [],
+   "-30,-10": [],
+   "-30,-5": [],
+   "-30,0": [],
+   "-30,5": [],
+   "-30,10": [],
+   "-30,15": [],
+   "-30,20": [],
+   "-30,25": [],
+   "-30,30": [],
+   "-30,35": [],
+   "-30,40": [],
+   "-30,45": [
+    [
+     "Yuz kabugu (on)",
+     "Rulman yuvasi",
+     56.1
+    ]
+   ],
+   "-15,-45": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     806.8
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     18.5
+    ]
+   ],
+   "-15,-40": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     536.8
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     14.5
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     30.6
+    ]
+   ],
+   "-15,-35": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     252.0
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     3.0
+    ]
+   ],
+   "-15,-30": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     49.6
+    ]
+   ],
+   "-15,-25": [],
+   "-15,-20": [],
+   "-15,-15": [],
+   "-15,-10": [],
+   "-15,-5": [],
+   "-15,0": [],
+   "-15,5": [],
+   "-15,10": [],
+   "-15,15": [],
+   "-15,20": [],
+   "-15,25": [],
+   "-15,30": [],
+   "-15,35": [],
+   "-15,40": [],
+   "-15,45": [
+    [
+     "Yuz kabugu (on)",
+     "Rulman yuvasi",
+     56.1
+    ]
+   ],
+   "0,-45": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     750.2
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     44.0
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     44.0
+    ]
+   ],
+   "0,-40": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     580.6
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     46.5
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     46.5
+    ]
+   ],
+   "0,-35": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     252.0
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     6.8
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     6.8
+    ]
+   ],
+   "0,-30": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     49.6
+    ]
+   ],
+   "0,-25": [],
+   "0,-20": [],
+   "0,-15": [],
+   "0,-10": [],
+   "0,-5": [],
+   "0,0": [],
+   "0,5": [],
+   "0,10": [],
+   "0,15": [],
+   "0,20": [],
+   "0,25": [],
+   "0,30": [],
+   "0,35": [],
+   "0,40": [],
+   "0,45": [
+    [
+     "Yuz kabugu (on)",
+     "Rulman yuvasi",
+     56.1
+    ]
+   ],
+   "15,-45": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     806.8
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     18.5
+    ]
+   ],
+   "15,-40": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     536.8
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     30.6
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     14.5
+    ]
+   ],
+   "15,-35": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     252.0
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     3.0
+    ]
+   ],
+   "15,-30": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     49.6
+    ]
+   ],
+   "15,-25": [],
+   "15,-20": [],
+   "15,-15": [],
+   "15,-10": [],
+   "15,-5": [],
+   "15,0": [],
+   "15,5": [],
+   "15,10": [],
+   "15,15": [],
+   "15,20": [],
+   "15,25": [],
+   "15,30": [],
+   "15,35": [],
+   "15,40": [],
+   "15,45": [
+    [
+     "Yuz kabugu (on)",
+     "Rulman yuvasi",
+     56.1
+    ]
+   ],
+   "30,-45": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     725.2
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     17.2
+    ]
+   ],
+   "30,-40": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     438.8
+    ]
+   ],
+   "30,-35": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     252.0
+    ]
+   ],
+   "30,-30": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     49.6
+    ]
+   ],
+   "30,-25": [],
+   "30,-20": [],
+   "30,-15": [],
+   "30,-10": [],
+   "30,-5": [],
+   "30,0": [],
+   "30,5": [],
+   "30,10": [],
+   "30,15": [],
+   "30,20": [],
+   "30,25": [],
+   "30,30": [],
+   "30,35": [],
+   "30,40": [],
+   "30,45": [
+    [
+     "Yuz kabugu (on)",
+     "Rulman yuvasi",
+     56.1
+    ]
+   ],
+   "45,-45": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     579.8
+    ]
+   ],
+   "45,-40": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     438.6
+    ]
+   ],
+   "45,-35": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     252.0
+    ]
+   ],
+   "45,-30": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     49.6
+    ]
+   ],
+   "45,-25": [],
+   "45,-20": [],
+   "45,-15": [],
+   "45,-10": [],
+   "45,-5": [],
+   "45,0": [],
+   "45,5": [],
+   "45,10": [],
+   "45,15": [],
+   "45,20": [],
+   "45,25": [],
+   "45,30": [],
+   "45,35": [],
+   "45,40": [],
+   "45,45": [
+    [
+     "Yuz kabugu (on)",
+     "Rulman yuvasi",
+     56.1
+    ]
+   ],
+   "60,-45": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     723.9
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     32.9
+    ]
+   ],
+   "60,-40": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     438.6
+    ]
+   ],
+   "60,-35": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     252.0
+    ]
+   ],
+   "60,-30": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     49.6
+    ]
+   ],
+   "60,-25": [],
+   "60,-20": [],
+   "60,-15": [],
+   "60,-10": [],
+   "60,-5": [],
+   "60,0": [],
+   "60,5": [],
+   "60,10": [],
+   "60,15": [],
+   "60,20": [],
+   "60,25": [],
+   "60,30": [],
+   "60,35": [],
+   "60,40": [],
+   "60,45": [
+    [
+     "Yuz kabugu (on)",
+     "Rulman yuvasi",
+     56.1
+    ]
+   ],
+   "75,-45": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     957.6
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     17.8
+    ]
+   ],
+   "75,-40": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     528.9
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     45.8
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     14.5
+    ]
+   ],
+   "75,-35": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     252.0
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     3.0
+    ]
+   ],
+   "75,-30": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     49.6
+    ]
+   ],
+   "75,-25": [],
+   "75,-20": [],
+   "75,-15": [],
+   "75,-10": [],
+   "75,-5": [],
+   "75,0": [],
+   "75,5": [],
+   "75,10": [],
+   "75,15": [],
+   "75,20": [],
+   "75,25": [],
+   "75,30": [],
+   "75,35": [],
+   "75,40": [],
+   "75,45": [
+    [
+     "Yuz kabugu (on)",
+     "Rulman yuvasi",
+     56.1
+    ]
+   ],
+   "90,-45": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     909.9
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     44.0
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     44.0
+    ]
+   ],
+   "90,-40": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     674.3
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     46.5
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     46.5
+    ]
+   ],
+   "90,-35": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     252.0
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     6.8
+    ],
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi civatasi M3x10",
+     6.8
+    ]
+   ],
+   "90,-30": [
+    [
+     "Arka kafa kabugu",
+     "Rulman yuvasi",
+     49.6
+    ]
+   ],
+   "90,-25": [],
+   "90,-20": [],
+   "90,-15": [],
+   "90,-10": [],
+   "90,-5": [],
+   "90,0": [],
+   "90,5": [],
+   "90,10": [],
+   "90,15": [],
+   "90,20": [],
+   "90,25": [],
+   "90,30": [],
+   "90,35": [],
+   "90,40": [],
+   "90,45": [
+    [
+     "Yuz kabugu (on)",
+     "Rulman yuvasi",
+     56.1
+    ]
+   ]
+  },
+  "serbest_tilt": [
+   -25,
+   40
+  ],
+  "serbest_pan": [
+   -180,
+   180
+  ],
+  "ilk_carpan": {
+   "+": [
+    45,
+    [
+     [
+      "Yuz kabugu (on)",
+      "Rulman yuvasi",
+      56.1
+     ],
+     [
+      "Yuz kabugu (on)",
+      "Rulman yuvasi",
+      56.1
+     ],
+     [
+      "Yuz kabugu (on)",
+      "Rulman yuvasi",
+      56.1
+     ],
+     [
+      "Yuz kabugu (on)",
+      "Rulman yuvasi",
+      56.1
+     ]
+    ]
+   ],
+   "-": [
+    -30,
+    [
+     [
+      "Arka kafa kabugu",
+      "Rulman yuvasi",
+      49.6
+     ],
+     [
+      "Arka kafa kabugu",
+      "Rulman yuvasi",
+      49.6
+     ],
+     [
+      "Arka kafa kabugu",
+      "Rulman yuvasi",
+      49.6
+     ],
+     [
+      "Arka kafa kabugu",
+      "Rulman yuvasi",
+      49.6
+     ]
+    ]
+   ]
+  },
+  "aralik": [
+   -25.0,
+   30.0
+  ],
+  "aralik_ok": true,
+  "bosluk_kafa_pan": {
+   "-25": [
+    1.0,
+    "Kafa iskeleti",
+    "Egme catali"
+   ],
+   "-20": [
+    1.0,
+    "Kafa iskeleti",
+    "Egme catali"
+   ],
+   "-15": [
+    1.0,
+    "Kafa iskeleti",
+    "Egme catali"
+   ],
+   "-10": [
+    1.0,
+    "Kafa iskeleti",
+    "Egme catali"
+   ],
+   "-5": [
+    1.0,
+    "Kafa iskeleti",
+    "Egme catali"
+   ],
+   "0": [
+    1.0,
+    "Kafa iskeleti",
+    "Egme catali"
+   ],
+   "5": [
+    1.0,
+    "Kafa iskeleti",
+    "Egme catali"
+   ],
+   "10": [
+    1.0,
+    "Kafa iskeleti",
+    "Egme catali"
+   ],
+   "15": [
+    1.0,
+    "Kafa iskeleti",
+    "Egme catali"
+   ],
+   "20": [
+    1.0,
+    "Kafa iskeleti",
+    "Egme catali"
+   ],
+   "25": [
+    1.0,
+    "Kafa iskeleti",
+    "Egme catali"
+   ],
+   "30": [
+    1.0,
+    "Kafa iskeleti",
+    "Egme catali"
+   ]
+  },
+  "bosluk_kafa_govde": {
+   "-90,-25": [
+    3.78,
+    "Arka kafa kabugu",
+    "Rulman yuvasi"
+   ],
+   "-90,0": [
+    17.69,
+    "Arka kafa kabugu",
+    "Rulman yuvasi"
+   ],
+   "-90,30": [
+    11.27,
+    "Yuz kabugu (on)",
+    "Rulman yuvasi"
+   ],
+   "0,-25": [
+    3.78,
+    "Arka kafa kabugu",
+    "Rulman yuvasi"
+   ],
+   "0,0": [
+    17.69,
+    "Arka kafa kabugu",
+    "Rulman yuvasi"
+   ],
+   "0,30": [
+    11.27,
+    "Yuz kabugu (on)",
+    "Rulman yuvasi"
+   ],
+   "90,-25": [
+    3.78,
+    "Arka kafa kabugu",
+    "Rulman yuvasi"
+   ],
+   "90,0": [
+    17.69,
+    "Arka kafa kabugu",
+    "Rulman yuvasi"
+   ],
+   "90,30": [
+    11.27,
+    "Yuz kabugu (on)",
+    "Rulman yuvasi"
+   ]
+  },
+  "not_": "kafa x pan yalniz tilt acisina, pan x govde yalniz pan acisina bagli; kafa x govde pan x tilt"
+ },
+ "r62": {
+  "aciklik_r": 62.0,
+  "kapak_y_yerel": [
+   7.0,
+   10.0
+  ],
+  "sabit_en_kucuk": [
+   [
+    8.41,
+    "Boyun plakasi"
+   ],
+   [
+    11.81,
+    "Servo yuvasi"
+   ],
+   [
+    16.0,
+    "Boyun civata pulu M6"
+   ],
+   [
+    16.0,
+    "Boyun civata pulu M6"
+   ],
+   [
+    17.0,
+    "Boyun civatasi M6x20"
+   ],
+   [
+    17.0,
+    "Boyun civatasi M6x20"
+   ]
+  ],
+  "kapak_seviyesi_r_max": 50.19,
+  "kafa_en_alt_y": 63.04,
+  "kafa_en_alt_poz": [
+   -15,
+   -25,
+   "Arka kafa kabugu"
+  ],
+  "pan_en_alt_y": 42.9,
+  "not_": "kapak seviyesinde yalniz sabit boyun (servo yuvasi + plaka kulaklari) var; hareketli parcalar y >= 42.9"
+ },
+ "tork": {
+  "tilt": {
+   "kutle_g": 834.8,
+   "am": [
+    0.81,
+    183.75,
+    29.76
+   ],
+   "eksen": [
+    130.0,
+    25.0
+   ],
+   "am_eksen_mm": 54.0,
+   "yercekimi_max_kgcm": 2.59,
+   "yercekimi_max_th": 30,
+   "tam_tur_max_kgcm": 4.5,
+   "I_kgm2": 0.007037,
+   "alfa_rad_s2": 26.2,
+   "ivme_kgcm": 1.878,
+   "toplam_kgcm": 4.46,
+   "stall_kgcm": 9.4,
+   "pay": 2.11,
+   "egri": [
+    {
+     "th": -25,
+     "yercekimi_kgcm": -1.537
+    },
+    {
+     "th": -20,
+     "yercekimi_kgcm": -1.162
+    },
+    {
+     "th": -15,
+     "yercekimi_kgcm": -0.778
+    },
+    {
+     "th": -10,
+     "yercekimi_kgcm": -0.388
+    },
+    {
+     "th": -5,
+     "yercekimi_kgcm": 0.004
+    },
+    {
+     "th": 0,
+     "yercekimi_kgcm": 0.397
+    },
+    {
+     "th": 5,
+     "yercekimi_kgcm": 0.787
+    },
+    {
+     "th": 10,
+     "yercekimi_kgcm": 1.17
+    },
+    {
+     "th": 15,
+     "yercekimi_kgcm": 1.545
+    },
+    {
+     "th": 20,
+     "yercekimi_kgcm": 1.908
+    },
+    {
+     "th": 25,
+     "yercekimi_kgcm": 2.256
+    },
+    {
+     "th": 30,
+     "yercekimi_kgcm": 2.587
+    }
+   ],
+   "mesnet": {
+    "x_625": -26.7,
+    "x_horn": 28.55,
+    "horn_payi": 0.498,
+    "horn_N": 4.08,
+    "pim_N": 4.11
+   }
+  },
+  "pan": {
+   "kutle_g": 1031.7,
+   "am": [
+    0.78,
+    168.2,
+    25.91
+   ],
+   "I_kgm2": {
+    "-25.0": 0.00619,
+    "0": 0.006828,
+    "30.0": 0.008553
+   },
+   "alfa_rad_s2": 26.2,
+   "ivme_kgcm": 2.283,
+   "rulman_kgcm": 0.0203,
+   "kablo_kgcm": 0.31,
+   "toplam_kgcm": 2.61,
+   "stall_kgcm": 9.4,
+   "pay": 3.6,
+   "rulman": {
+    "eksenel_N": 10.12,
+    "devirme_Nm": 0.2624,
+    "rulman_arasi_mm": 11.0,
+    "radyal_N": 23.9,
+    "not_": "6808: eksenel yuk ust rulmanda (mil omzu -> ic bilezik -> dis bilezik -> yuva tablasi); devirme momenti iki rulmanda kuvvet cifti; pan servosu mili yalniz dondurur"
+   }
+  },
+  "profil": "60 derece 0,4 s'de ucgen hiz profili (tahmini): alfa 26.2 rad/s2, tepe hiz 5.2 rad/s",
+  "stall_kaynak": "MG996R datasheet 9,4 kg*cm @4,8 V (11 @6 V); dirsek ile ayni"
+ },
+ "grup": {
+  "Govde": {
+   "m": 335.1,
+   "am": [
+    0.081,
+    26.62,
+    6.404
+   ]
+  },
+  "Pan": {
+   "m": 196.9,
+   "am": [
+    0.658,
+    102.267,
+    9.632
+   ]
+  },
+  "Kafa": {
+   "m": 834.8,
+   "am": [
+    0.808,
+    183.75,
+    29.755
+   ]
+  }
+ },
+ "baski": [
+  {
+   "ad": "Servo yuvasi",
+   "olcu": [
+    88.1,
+    88.1,
+    43.0
+   ],
+   "tabla_aci": 45,
+   "sigar": true,
+   "sigar_cift": true,
+   "cikinti_orani": 0.0044,
+   "cikinti_alan_cm2": 1.24,
+   "yuzey_cm2": 284.7,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "ofset_uyari": 0,
+   "atlanan_katman": [],
+   "hacim_cm3": 142.0,
+   "kutle_g": 144.3,
+   "filament_g": 151.5,
+   "sure_saat": 3.16,
+   "katman": 43,
+   "yon": "dik: kulak flansi tablada",
+   "grup": "Govde"
+  },
+  {
+   "ad": "Rulman yuvasi",
+   "olcu": [
+    67.5,
+    60.0,
+    36.0
+   ],
+   "tabla_aci": 0,
+   "sigar": true,
+   "sigar_cift": true,
+   "cikinti_orani": 0.031,
+   "cikinti_alan_cm2": 5.09,
+   "yuzey_cm2": 164.2,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "ofset_uyari": 0,
+   "atlanan_katman": [],
+   "hacim_cm3": 25.2,
+   "kutle_g": 25.6,
+   "filament_g": 26.9,
+   "sure_saat": 0.56,
+   "katman": 36,
+   "yon": "dik: kulaklar tablada, rulman yuvasi yukari",
+   "grup": "Govde"
+  },
+  {
+   "ad": "Boyun mili",
+   "olcu": [
+    60.0,
+    60.0,
+    48.1
+   ],
+   "tabla_aci": 45,
+   "sigar": true,
+   "sigar_cift": true,
+   "cikinti_orani": 0.0582,
+   "cikinti_alan_cm2": 9.46,
+   "yuzey_cm2": 162.6,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "ofset_uyari": 0,
+   "atlanan_katman": [],
+   "hacim_cm3": 38.2,
+   "kutle_g": 38.8,
+   "filament_g": 40.7,
+   "sure_saat": 0.85,
+   "katman": 48,
+   "yon": "dik: horn diski tablada, flans yukari (45 derece koni)",
+   "grup": "Pan"
+  },
+  {
+   "ad": "Egme catali",
+   "olcu": [
+    74.5,
+    60.0,
+    49.0
+   ],
+   "tabla_aci": 0,
+   "sigar": true,
+   "sigar_cift": true,
+   "cikinti_orani": 0.0084,
+   "cikinti_alan_cm2": 1.28,
+   "yuzey_cm2": 153.2,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "ofset_uyari": 0,
+   "atlanan_katman": [],
+   "hacim_cm3": 33.2,
+   "kutle_g": 33.8,
+   "filament_g": 35.5,
+   "sure_saat": 0.74,
+   "katman": 48,
+   "yon": "dik: taban tablada, duvarlar yukari",
+   "grup": "Pan"
+  },
+  {
+   "ad": "Kafa iskeleti",
+   "olcu": [
+    205.0,
+    116.0,
+    69.0
+   ],
+   "tabla_aci": 0,
+   "sigar": true,
+   "sigar_cift": true,
+   "cikinti_orani": 0.0064,
+   "cikinti_alan_cm2": 3.17,
+   "yuzey_cm2": 492.4,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "ofset_uyari": 0,
+   "atlanan_katman": [],
+   "hacim_cm3": 108.6,
+   "kutle_g": 110.4,
+   "filament_g": 115.9,
+   "sure_saat": 2.41,
+   "katman": 68,
+   "yon": "ters: kafa tablasi tablada, yanaklar yukari",
+   "grup": "Kafa"
+  },
+  {
+   "ad": "Yuz kabugu (on)",
+   "olcu": [
+    210.0,
+    180.0,
+    55.0
+   ],
+   "tabla_aci": 0,
+   "sigar": true,
+   "sigar_cift": true,
+   "cikinti_orani": 0.0447,
+   "cikinti_alan_cm2": 52.9,
+   "yuzey_cm2": 1182.2,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "ofset_uyari": 0,
+   "atlanan_katman": [],
+   "hacim_cm3": 148.8,
+   "kutle_g": 170.1,
+   "filament_g": 178.6,
+   "sure_saat": 3.72,
+   "katman": 55,
+   "yon": "yuz asagi: on yuz tablada, dikis yukari",
+   "grup": "Kafa"
+  },
+  {
+   "ad": "Arka kafa kabugu",
+   "olcu": [
+    210.0,
+    180.0,
+    101.0
+   ],
+   "tabla_aci": 0,
+   "sigar": true,
+   "sigar_cift": true,
+   "cikinti_orani": 0.0319,
+   "cikinti_alan_cm2": 63.1,
+   "yuzey_cm2": 1981.1,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "ofset_uyari": 0,
+   "atlanan_katman": [],
+   "hacim_cm3": 236.8,
+   "kutle_g": 270.6,
+   "filament_g": 284.1,
+   "sure_saat": 5.92,
+   "katman": 101,
+   "yon": "arka yuz tablada, dikis dili yukari",
+   "grup": "Kafa"
+  }
+ ],
+ "doluluk": 0.8,
+ "doluluk_kabuk": 0.9,
+ "yazici": {
+  "model": "Bambu Lab X2D",
+  "nozul": "2 (ana + yardimci nozul, cift nozullu sistem)",
+  "hacim_ana": [
+   256.0,
+   256.0,
+   260.0
+  ],
+  "hacim_yardimci": [
+   235.5,
+   256.0,
+   256.0
+  ],
+  "hacim_cift": [
+   235.5,
+   256.0,
+   256.0
+  ],
+  "pay": 10.0,
+  "hazne": "aktif isitmali hazne, en cok 65 C",
+  "nozul_c": 300.0,
+  "tabla_c": 120.0,
+  "malzeme": "PLA, PETG, ABS, ASA, TPU, PA, PC, PET, PVA, 'Support for PLA/PETG' (ana ve yardimci hotend)",
+  "kaynak": "https://bambulab.com/en/x2d/specs",
+  "durum": "dogrulandi (uretici sayfasi, 08.10.2026)",
+  "kullanilabilir": [
+   246.0,
+   246.0,
+   250.0
+  ],
+  "kullanilabilir_cift": [
+   225.5,
+   246.0,
+   246.0
+  ]
+ },
+ "kutle_g": 1366.8,
+ "kutle_tur": {
+  "Imalat": 70.9,
+  "Baski": 793.5,
+  "Satin": 417.3,
+  "Baglanti": 85.1,
+  "Referans": 0.0
+ },
+ "agirlik_merkezi": [
+  0.608,
+  133.485,
+  21.131
+ ],
+ "bom": [
+  [
+   "Baglanti",
+   "M2x8 PT vida (plastik icin)",
+   4,
+   1.4
+  ],
+  [
+   "Baglanti",
+   "M3 DIN 125 pul",
+   4,
+   0.5
+  ],
+  [
+   "Baglanti",
+   "M3 isil gomme somun",
+   20,
+   9.3
+  ],
+  [
+   "Baglanti",
+   "M3x10 DIN 912",
+   4,
+   4.2
+  ],
+  [
+   "Baglanti",
+   "M3x5 horn vidasi (servo ile)",
+   2,
+   1.5
+  ],
+  [
+   "Baglanti",
+   "M3x6 ISO 7380",
+   4,
+   2.5
+  ],
+  [
+   "Baglanti",
+   "M3x8 DIN 912",
+   16,
+   14.8
+  ],
+  [
+   "Baglanti",
+   "M3x8 ISO 7380",
+   4,
+   3.0
+  ],
+  [
+   "Baglanti",
+   "M4 DIN 985 kontra somun",
+   4,
+   4.7
+  ],
+  [
+   "Baglanti",
+   "M4x16 DIN 912",
+   4,
+   10.6
+  ],
+  [
+   "Baglanti",
+   "M5 DIN 125 pul",
+   1,
+   0.4
+  ],
+  [
+   "Baglanti",
+   "M5 isil gomme somun",
+   1,
+   1.1
+  ],
+  [
+   "Baglanti",
+   "M5x12 DIN 912",
+   1,
+   3.8
+  ],
+  [
+   "Baglanti",
+   "M6 DIN 125 pul",
+   2,
+   2.0
+  ],
+  [
+   "Baglanti",
+   "M6 cekic somun (kanal 10)",
+   2,
+   10.3
+  ],
+  [
+   "Baglanti",
+   "M6x20 DIN 912",
+   2,
+   15.1
+  ],
+  [
+   "Baski",
+   "Arka kafa kabugu",
+   1,
+   270.6
+  ],
+  [
+   "Baski",
+   "Boyun mili",
+   1,
+   38.8
+  ],
+  [
+   "Baski",
+   "Egme catali",
+   1,
+   33.8
+  ],
+  [
+   "Baski",
+   "Kafa iskeleti",
+   1,
+   110.4
+  ],
+  [
+   "Baski",
+   "Rulman yuvasi",
+   1,
+   25.6
+  ],
+  [
+   "Baski",
+   "Servo yuvasi",
+   1,
+   144.3
+  ],
+  [
+   "Baski",
+   "Yuz kabugu (on)",
+   1,
+   170.1
+  ],
+  [
+   "Imalat",
+   "Boyun plakasi 3 mm Al (lazer/su jeti)",
+   1,
+   42.9
+  ],
+  [
+   "Imalat",
+   "Vizor 3 mm siyah akrilik 190x115 (lazer)",
+   1,
+   28.0
+  ],
+  [
+   "Satin",
+   "25T aluminyum disk horn",
+   2,
+   7.7
+  ],
+  [
+   "Satin",
+   "625ZZ rulman 5x16x5",
+   1,
+   2.8
+  ],
+  [
+   "Satin",
+   "6808-2RS rulman 40x52x7",
+   2,
+   27.8
+  ],
+  [
+   "Satin",
+   "MG996R servo",
+   2,
+   110.0
+  ],
+  [
+   "Satin",
+   "Raspberry Pi Camera Module 3",
+   1,
+   4.0
+  ],
+  [
+   "Satin",
+   "Waveshare 7in HDMI LCD (C) 1024x600",
+   1,
+   230.0
+  ]
+ ],
+ "step_kati": 98,
+ "joints_ok": true,
+ "arayuz": {
+  "taban_y": 975.0,
+  "pan_nokta": [
+   0.0,
+   44.6,
+   0.0
+  ],
+  "pan_yon": [
+   0.0,
+   1.0,
+   0.0
+  ],
+  "pan_aralik": [
+   -90.0,
+   90.0
+  ],
+  "tilt_nokta": [
+   26.9,
+   130.0,
+   25.0
+  ],
+  "tilt_yon": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "tilt_aralik": [
+   -25.0,
+   30.0
+  ],
+  "servo": "MG996R (180 derece), pan ve tilt",
+  "kafa_kutu": [
+   210.0,
+   180.0,
+   150.0
+  ],
+  "kafa_alt_y": 95.0,
+  "boyun_plaka": {
+   "t": 3.0,
+   "x": [
+    -35.0,
+    35.0
+   ],
+   "z": [
+    -25.0,
+    45.0
+   ],
+   "kulak_x": 48.0,
+   "kulak_z": 10.0,
+   "civata_x": 40.0,
+   "not_": "V3 70x70 (rc:647) + iki yan kulak; 2x M6 traversin ust kanalina (kanal z = 0'da; rc:650'deki z -15/35 delikleri kanala denk gelmiyordu)"
+  },
+  "kaynak": "kafa/kafa_parcalar.py"
+ },
+ "olcu": {
+  "Y_PK": 41.6,
+  "Y_R1": [
+   64.0,
+   71.0
+  ],
+  "Y_R2": [
+   75.0,
+   82.0
+  ],
+  "Y_FL": [
+   92.0,
+   96.0
+  ],
+  "Y_CB": [
+   96.0,
+   99.0
+  ],
+  "Y_TABLA": [
+   178.0,
+   183.0
+  ],
+  "Z_DIKIS": 30.0,
+  "Z_LCD": 79.5,
+  "Y_LCD": 179.0,
+  "Y_CAM": 258.0,
+  "Z_CAM": 76.0,
+  "ACIKLIK": {
+   "x": 42.0,
+   "z": [
+    -56.0,
+    64.0
+   ],
+   "r": 15.0
+  },
+  "kafa": [
+   105.0,
+   95.0,
+   275.0,
+   -65.0,
+   85.0
+  ]
+ },
+ "kablo_yolu": [
+  [
+   55.0,
+   190.0,
+   62.0
+  ],
+  [
+   0.0,
+   190.0,
+   30.0
+  ],
+  [
+   -43.0,
+   190.0,
+   12.0
+  ],
+  [
+   -43.0,
+   150.0,
+   12.0
+  ],
+  [
+   -40.0,
+   112.0,
+   18.0
+  ],
+  [
+   -18.0,
+   108.0,
+   2.0
+  ],
+  [
+   -8.0,
+   100.0,
+   -6.0
+  ],
+  [
+   0.0,
+   90.0,
+   0.0
+  ],
+  [
+   0.0,
+   60.0,
+   0.0
+  ],
+  [
+   0.0,
+   58.0,
+   -18.0
+  ],
+  [
+   -12.0,
+   55.0,
+   -23.0
+  ],
+  [
+   -4.0,
+   45.0,
+   -21.0
+  ],
+  [
+   -4.0,
+   15.0,
+   -23.0
+  ],
+  [
+   0.0,
+   10.0,
+   -33.0
+  ],
+  [
+   0.0,
+   -40.0,
+   -36.0
+  ]
+ ],
+ "sure_s": 107.8
+}

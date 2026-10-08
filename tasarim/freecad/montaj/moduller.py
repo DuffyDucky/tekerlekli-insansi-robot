@@ -1,6 +1,6 @@
 # Ana montajin modul tanimlari (FreeCAD 1.1). ana_montaj.py ve eklem_dogrulama.py bunu kullanir.
 #
-# Yeni modul eklemek (kabuk, dirsek, kafa, taban):
+# Yeni modul eklemek (taban; kabuk, dirsek ve kafa ekli):
 #   1. Yerlesimini arayuz.MODULLER'e yaz (konum + ayna). Burada hicbir yerlesim sayisi yazilmaz.
 #   2. Asagida bir yukleyici yaz ve MODUL_YUKLE'ye, adini SIRA listesine ekle.
 #   Yukleyici dict dondurur (koordinatlar modulun YEREL koordinatinda; aynalama ve tasima burada yapilir):
@@ -20,7 +20,8 @@ import FreeCAD as App
 V = App.Vector
 HERE = os.path.dirname(os.path.abspath(__file__))
 UST = os.path.dirname(HERE)
-for _p in (UST, os.path.join(UST, "iskelet"), os.path.join(UST, "omuz"), os.path.join(UST, "kabuk"), os.path.join(UST, "dirsek")):
+for _p in (UST, os.path.join(UST, "iskelet"), os.path.join(UST, "omuz"), os.path.join(UST, "kabuk"), os.path.join(UST, "dirsek"),
+           os.path.join(UST, "kafa")):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 import arayuz as A
@@ -148,9 +149,64 @@ def yukle_dirsek(taraf):
     return yukle
 
 
+# kafa-montaj.FCStd'deki eklem etiketinin ilk sozcugu -> poz anahtari (dosyada pan eklemi "Pan001": "Pan" grubun adi);
+# kafa_parcalar gruplari ana montajda yeniden adlanir (eklem adlari
+# Kafa_Pan / Kafa_Tilt, grup adlari Kafa_Govde / Kafa_Boyun / Kafa_Bas ile cakismasin)
+KAFA_EKLEM = {"Pan": ("pan", "pan (MG996R)"), "Tilt": ("tilt", "tilt (MG996R)")}
+KAFA_GRUP = {"Govde": "Govde", "Pan": "Boyun", "Kafa": "Bas"}
+_KAFA_EKLEM_CACHE = []
+
+
+def kafa_eklemleri():
+    if _KAFA_EKLEM_CACHE:
+        return _KAFA_EKLEM_CACHE
+    onceki = App.ActiveDocument
+    d = App.openDocument(os.path.join(UST, "kafa", "kafa-montaj.FCStd"))
+    for j in d.Objects:
+        if hasattr(j, "JointType") and j.Label.split(" ")[0] in KAFA_EKLEM:
+            anahtar, ad = KAFA_EKLEM[j.Label.split(" ")[0]]
+            p1, p2 = App.Placement(j.Placement1), App.Placement(j.Placement2)
+            assert p1.isSame(p2, 1e-9), "kafa eklem cerceveleri ev pozunda farkli: %s" % j.Name
+            _KAFA_EKLEM_CACHE.append(dict(
+                anahtar=anahtar, ad=ad, ebeveyn=KAFA_GRUP[j.Reference1[0].Name], cocuk=KAFA_GRUP[j.Reference2[0].Name], cerceve=p1,
+                sinir=(float(j.AngleMin), float(j.AngleMax)), sinir_acik=(bool(j.EnableAngleMin), bool(j.EnableAngleMax)),
+                kaynak="kafa/kafa-montaj.FCStd: %s (%s)" % (j.Name, j.Label)))
+    App.closeDocument(d.Name)
+    if onceki is not None:
+        App.setActiveDocument(onceki.Name)
+    _KAFA_EKLEM_CACHE.sort(key=lambda e: list(KAFA_EKLEM.values()).index((e["anahtar"], e["ad"])))
+    K = A.KAFA      # arayuz.KAFA ile tutarli mi (eksen noktasi, yonu, sinir); assert yerine raise (betik -O ile kosabilir)
+    if [e["anahtar"] for e in _KAFA_EKLEM_CACHE] != ["pan", "tilt"]:
+        raise RuntimeError("kafa-montaj.FCStd: Pan/Tilt eklemi eksik: %s" % [e["anahtar"] for e in _KAFA_EKLEM_CACHE])
+    for e, (n, y, s) in zip(_KAFA_EKLEM_CACHE, ((K["pan_nokta"], K["pan_yon"], K["pan_aralik"]),
+                                                (K["tilt_nokta"], K["tilt_yon"], K["tilt_aralik"]))):
+        ax = e["cerceve"].Rotation.multVec(V(0, 0, 1))
+        if not ((e["cerceve"].Base - V(*n)).Length < 1e-9 and (ax - V(*y)).Length < 1e-9 and tuple(e["sinir"]) == tuple(s)):
+            raise RuntimeError("kafa eklemi arayuz.KAFA ile tutarsiz: %s" % e["anahtar"])
+    return _KAFA_EKLEM_CACHE
+
+
+def yukle_kafa():
+    import kafa_parcalar as KP
+    geri = {v: k for k, v in KAFA_GRUP.items()}
+
+    def beklenen(poz, g):
+        return KP.grup_yer(geri.get(g, g), poz.get("pan", 0.0), poz.get("tilt", 0.0))
+
+    return dict(parcalar=[dict(_parca(p, k), grup=KAFA_GRUP.get(p["grup"], p["grup"]), alt_grup=p["grup"]) for k, p in enumerate(KP.P)],
+                gruplar=[("Govde", "Kafa govdesi: boyun plakasi + servo/rulman yuvasi + pan servosu (traverse sabit)"),
+                         ("Boyun", "Kafa pan grubu: boyun mili + egme catali + tilt servosu (pan ile doner)"),
+                         ("Bas", "Kafa: iskelet + kabuklar + LCD + kamera (pan x tilt ile doner)")],
+                baglanti=dict(modul="iskelet", grup="Iskelet", ref="Omuz traversi", nokta=(0.0, 0.0, 0.0),
+                              aciklama="boyun plakasi traversin ust kanalina 2x M6 + cekic somun (x = +-40, z = 0; arayuz.KAFA boyun_plaka)"),
+                eklemler=[dict(e) for e in kafa_eklemleri()], beklenen=beklenen,
+                analiz=os.path.join("kafa", "kafa-analiz.json"), haric=["Kablo demeti (gosterim)"],
+                haric_neden="kablo demeti gosterimi (Referans grubu, 0 g); kafa analizinin parca sayisina da girmiyor")
+
+
 MODUL_YUKLE = {"iskelet": yukle_iskelet, "omuz_sag": yukle_omuz, "omuz_sol": yukle_omuz, "kabuk": yukle_kabuk,
-               "dirsek_sag": yukle_dirsek("sag"), "dirsek_sol": yukle_dirsek("sol")}
-SIRA = ["iskelet", "omuz_sag", "omuz_sol", "kabuk", "dirsek_sag", "dirsek_sol"]       # sonra: "taban", "kafa"
+               "dirsek_sag": yukle_dirsek("sag"), "dirsek_sol": yukle_dirsek("sol"), "kafa": yukle_kafa}
+SIRA = ["iskelet", "omuz_sag", "omuz_sol", "kabuk", "dirsek_sag", "dirsek_sol", "kafa"]       # sonra: "taban"
 
 
 # ====================================================================== global yerlesim (yalniz arayuz.MODULLER)

@@ -14,7 +14,7 @@ OUT = os.path.join(HERE, "gorsel")
 LOG = os.path.join(tempfile.gettempdir(), "robot-montaj-kare", "montaj_gui_kontrol.log")
 os.makedirs(os.path.dirname(LOG), exist_ok=True)
 open(LOG, "w").close()
-R = dict(acilis={}, eklemler={}, secim={}, pick={}, etkin={}, surukleme=[], hatalar=[])
+R = dict(acilis={}, eklemler={}, secim={}, pick={}, etkin={}, surukleme=[], kafa_surukleme=[], hatalar=[])
 
 
 def log(*a):
@@ -160,7 +160,14 @@ def go():
     except Exception:
         R["hatalar"].append(traceback.format_exc())
         log(traceback.format_exc())
+    try:
+        if doc.getObject("Kafa_Pan"):
+            kafa_surukle(v, gd, asm)
+    except Exception:
+        R["hatalar"].append(traceback.format_exc())
+        log(traceback.format_exc())
 
+    R.pop("_kafa_png", None)
     json.dump(R, open(os.path.join(HERE, "gui-kontrol.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     log("bitti")
     try:
@@ -280,6 +287,86 @@ def surukle(v, gd, asm):
             v.saveImage(os.path.join(OUT, "montaj-gui-surukleme.png"), 1400, 1000, "White")
         if acik.startswith("dirsek") and hareket:
             v.saveImage(os.path.join(OUT, "montaj-gui-dirsek.png"), 1000, 1000, "White")
+    for g in [o for o in asm.Group if o.TypeId == "App::Part"]:
+        g.Placement = App.Placement()
+
+
+def kafa_surukle(v, gd, asm):
+    """Kafa: ustten bakista kafa tepesinden tutup yana surukle (pan), yandan bakista yuzden tutup asagi surukle (tilt)."""
+    gv, vp = viewport_bul(v)
+    dpr = vp.devicePixelRatioF()
+    jP, jT = doc.getObject("Kafa_Pan"), doc.getObject("Kafa_Tilt")
+    bas = doc.getObject("Kafa_Bas")
+    boyun = doc.getObject("Kafa_Boyun")
+    hedef_ad = {"bas": [o.Name for o in bas.OutListRecursive], "boyun": [o.Name for o in boyun.OutListRecursive]}
+    # pan grubu (boyun mili flansi/konisi) yalniz kabuk ust kapagiyla kafa altinin arasinda gorunur: onden aday noktalar
+    BOYUN_ADAY = [(x, y, 30.0) for y in (1058.0, 1060.0, 1056.0, 1062.0, 1064.0) for x in (22.0, 18.0, 26.0, 14.0, 10.0, 0.0)]
+    UST_G = ((0, 1, 0), 520, (0, 1100, 0))
+    YAN = ((1, 0, 0), 520, (0, 1100, 0))
+    # (aciklama, aday tutma noktalari (global), gorunum, fare yolu)
+    ON = ((0.25, 0.12, 1.0), 420, (0, 1080, 0))      # hafif yukaridan: surukleme duzlemi pan donusunu da icerir
+    DENEME = [("pan: kafadan (tepeden) tutup yana", "bas", [(60.0, 1250.0, 40.0), (50.0, 1248.0, 20.0), (40.0, 1250.0, 0.0)], UST_G,
+               [(0, -60), (-60, -140), (-140, -180)]),
+              ("pan: boyun milinden (onden) tutup saga", "boyun", BOYUN_ADAY, ON, [(10, 0), (25, 0), (40, 0)]),
+              ("pan: boyun milinden cok saga (sinir 90)", "boyun", BOYUN_ADAY, ON, [(15, 0), (40, 0), (70, 0), (110, 0), (160, 0)]),
+              ("pan: boyun milinden sola", "boyun", BOYUN_ADAY, ON, [(-10, 0), (-25, 0), (-40, 0)]),
+              ("tilt: yuzden tutup asagi", "bas", [(106.0, 1200.0, 60.0), (106.0, 1220.0, 40.0), (106.0, 1180.0, 70.0)], YAN,
+               [(-10, 30), (-20, 80), (-30, 140)]),
+              ("tilt: cok (sinir -25...30)", "bas", [(106.0, 1200.0, 60.0), (106.0, 1220.0, 40.0)], YAN,
+               [(-10, 40), (-30, 160), (-40, 300)])]
+    L, N = QtCore.Qt.LeftButton, QtCore.Qt.NoButton
+    for deneme, (acik, tutulan, adaylar, gor, yol) in enumerate(DENEME):
+        for g in [o for o in asm.Group if o.TypeId == "App::Part"]:
+            g.Placement = App.Placement()
+        kamera(v, *gor)
+        Gui.updateGui()
+        bekle(300)
+        Hd = vp.height() * dpr
+        hedef, info, xy = None, None, None
+        for h in adaylar:                      # tutulacak gruba isabet eden ilk aday nokta
+            xy = v.getPointOnViewport(V(*h))
+            info = v.getObjectInfo((int(xy[0]), int(xy[1])))
+            if info and info.get("Object") in hedef_ad[tutulan]:
+                hedef = h
+                break
+        if hedef is None:
+            hedef = adaylar[0]
+            xy = v.getPointOnViewport(V(*hedef))
+        p0 = QtCore.QPoint(int(xy[0] / dpr), int((Hd - xy[1]) / dpr))
+        for k in range(3):
+            olay(vp, QtCore.QEvent.MouseMove, p0 + QtCore.QPoint(k, 0), N, N)
+            bekle(60)
+        olay(vp, QtCore.QEvent.MouseMove, p0, N, N)
+        bekle(150)
+        olay(vp, QtCore.QEvent.MouseButtonPress, p0, L, L)
+        bekle(100)
+        izP, izT = [], []
+        onceki = (0, 0)
+        for (dx, dy) in yol:
+            n = max(1, int(math.hypot(dx - onceki[0], dy - onceki[1]) / (2 if tutulan == "boyun" else 8)))   # boyun eksene yakin: ince adim
+            for k in range(1, n + 1):
+                x = onceki[0] + (dx - onceki[0]) * k / n
+                y = onceki[1] + (dy - onceki[1]) * k / n
+                olay(vp, QtCore.QEvent.MouseMove, p0 + QtCore.QPoint(int(x), int(y)), N, L)
+                bekle(30)
+                izP.append(eklem_aci(jP)[0])
+                izT.append(eklem_aci(jT)[0])
+            onceki = (dx, dy)
+        olay(vp, QtCore.QEvent.MouseButtonRelease, p0 + QtCore.QPoint(*onceki), L, N)
+        bekle(300)
+        Gui.updateGui()
+        sonra = dict(pan=eklem_aci(jP), tilt=eklem_aci(jT))
+        hareket = rot_aci(bas.Placement.Rotation) > 1e-3 or bas.Placement.Base.Length > 1e-3 or rot_aci(boyun.Placement.Rotation) > 1e-3
+        kayit = dict(deneme=deneme + 1, aciklama=acik, tutulan_grup=tutulan, isabet=bool(info and info.get("Object") in hedef_ad[tutulan]),
+                     hedef=list(hedef), ekran_qt=[p0.x(), p0.y()], yol_px=yol,
+                     tiklanan=info.get("Object") if info else None, sonra=sonra, kafa_hareket_etti=hareket,
+                     yol_boyunca=dict(pan=[min(izP), max(izP)] if izP else None, tilt=[min(izT), max(izT)] if izT else None),
+                     sinir=dict(pan=[float(jP.AngleMin), float(jP.AngleMax)], tilt=[float(jT.AngleMin), float(jT.AngleMax)]))
+        R["kafa_surukleme"].append(kayit)
+        log("kafa surukleme", deneme + 1, acik, "-> son", sonra, "yol boyunca", kayit["yol_boyunca"], "tik", kayit["tiklanan"])
+        if hareket and acik.startswith("pan") and not R.get("_kafa_png"):
+            R["_kafa_png"] = True
+            v.saveImage(os.path.join(OUT, "montaj-gui-kafa.png"), 1000, 1000, "White")
     for g in [o for o in asm.Group if o.TypeId == "App::Part"]:
         g.Placement = App.Placement()
 

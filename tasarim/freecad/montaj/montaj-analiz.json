@@ -1,11 +1,11 @@
 {
  "dosya": "robot-montaj.FCStd",
  "step": "robot-montaj.step",
- "step_kati": 503,
- "parca_sayisi": 503,
- "grup_sayisi": 14,
+ "step_kati": 601,
+ "parca_sayisi": 601,
+ "grup_sayisi": 17,
  "gecersiz": [],
- "hacim_fark_mm3": 8.731149137020111e-11,
+ "hacim_fark_mm3": 3.7834979593753815e-10,
  "ayna_merkez_fark_mm": 5.859285502108464e-13,
  "moduller": [
   {
@@ -158,6 +158,33 @@
     "DirsekSol_UstKol",
     "DirsekSol_OnKol",
     "DirsekSol_El"
+   ]
+  },
+  {
+   "ad": "kafa",
+   "konum": [
+    0.0,
+    975.0,
+    0.0
+   ],
+   "ayna": false,
+   "not_": "yerel orijin = traversin ust yuzu ortasi; gruplar Govde (sabit), Pan, Kafa (Pan * tilt)",
+   "parca_modulde": 99,
+   "parca": 98,
+   "haric": [
+    "Kablo demeti (gosterim)"
+   ],
+   "haric_neden": "kablo demeti gosterimi (Referans grubu, 0 g); kafa analizinin parca sayisina da girmiyor",
+   "kutle_g": 1366.84,
+   "agirlik_merkezi": [
+    0.608,
+    1108.485,
+    21.131
+   ],
+   "gruplar": [
+    "Kafa_Govde",
+    "Kafa_Boyun",
+    "Kafa_Bas"
    ]
   }
  ],
@@ -519,6 +546,90 @@
     90.0
    ],
    "kaynak": "dirsek/dirsek-montaj.FCStd: Bilek (Bilek (MG996R))"
+  },
+  {
+   "isim": "Sabit_Kafa",
+   "etiket": "Kafa Govde -> iskelet (sabit)",
+   "tip": "Fixed",
+   "modul": "kafa",
+   "ust": "Iskelet",
+   "alt": "Kafa_Govde",
+   "nokta": [
+    0.0,
+    975.0,
+    0.0
+   ],
+   "aciklama": "boyun plakasi traversin ust kanalina 2x M6 + cekic somun (x = +-40, z = 0; arayuz.KAFA boyun_plaka)"
+  },
+  {
+   "isim": "Kafa_Pan",
+   "etiket": "Kafa pan (MG996R)",
+   "tip": "Revolute",
+   "modul": "kafa",
+   "anahtar": "pan",
+   "ad": "pan (MG996R)",
+   "ust": "Kafa_Govde",
+   "alt": "Kafa_Boyun",
+   "nokta": [
+    0.0,
+    1019.6,
+    0.0
+   ],
+   "eksen": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "yerel_nokta": [
+    0.0,
+    44.6,
+    0.0
+   ],
+   "yerel_eksen": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "sinir": [
+    -90.0,
+    90.0
+   ],
+   "kaynak": "kafa/kafa-montaj.FCStd: Pan001 (Pan (MG996R))"
+  },
+  {
+   "isim": "Kafa_Tilt",
+   "etiket": "Kafa tilt (MG996R)",
+   "tip": "Revolute",
+   "modul": "kafa",
+   "anahtar": "tilt",
+   "ad": "tilt (MG996R)",
+   "ust": "Kafa_Boyun",
+   "alt": "Kafa_Bas",
+   "nokta": [
+    26.9,
+    1105.0,
+    25.0
+   ],
+   "eksen": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "yerel_nokta": [
+    26.9,
+    130.0,
+    25.0
+   ],
+   "yerel_eksen": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "sinir": [
+    -25.0,
+    30.0
+   ],
+   "kaynak": "kafa/kafa-montaj.FCStd: Tilt (Tilt (MG996R))"
   }
  ],
  "dosyadaki_eklem": [
@@ -535,51 +646,54 @@
   "DirsekSag_Bilek",
   "Sabit_DirsekSol",
   "DirsekSol_Dirsek",
-  "DirsekSol_Bilek"
+  "DirsekSol_Bilek",
+  "Sabit_Kafa",
+  "Kafa_Pan",
+  "Kafa_Tilt"
  ],
  "solve": 0,
  "ev_pozu_cozucu_sapmasi": 0.0,
- "kutle_g": 12386.08,
+ "kutle_g": 13752.92,
  "agirlik_merkezi": [
-  -0.034,
-  448.273,
-  3.212
+  0.029,
+  513.889,
+  4.993
  ],
  "karsilastirma": {
   "parca": {
-   "montaj": 503,
-   "beklenen": 503,
-   "formul": "iskelet 59 + 2 x (omuz 70 - travers - kabuk referansi) + kabuk 202 + dirsek_sag 53 + dirsek_sol 53",
+   "montaj": 601,
+   "beklenen": 601,
+   "formul": "iskelet 59 + 2 x (omuz 70 - travers - kabuk referansi) + kabuk 202 + dirsek_sag 53 + dirsek_sol 53 + kafa 98",
    "ayni": true
   },
   "kutle": {
-   "montaj_dosyasi": 12386.08,
-   "bellek": 12386.08,
-   "beklenen_analizlerden": 12386.1,
-   "carpisma": 12386.1,
-   "fark_analiz": -0.017,
-   "fark_carpisma": -0.019
+   "montaj_dosyasi": 13752.92,
+   "bellek": 13752.92,
+   "beklenen_analizlerden": 13752.9,
+   "carpisma": 13752.9,
+   "fark_analiz": 0.027,
+   "fark_carpisma": 0.024
   },
   "am": {
    "montaj_dosyasi": [
-    -0.034,
-    448.273,
-    3.212
+    0.029,
+    513.889,
+    4.993
    ],
    "bellek": [
-    -0.034,
-    448.273,
-    3.212
+    0.029,
+    513.889,
+    4.993
    ],
    "carpisma": [
-    -0.03,
-    448.27,
-    3.21
+    0.03,
+    513.89,
+    4.99
    ],
-   "fark_carpisma_mm": 0.006,
+   "fark_carpisma_mm": 0.003,
    "fark_bellek_mm": 0.0
   },
   "not_": "analiz JSON'lari 0,1 g'a yuvarlanmis; carpisma AM'si 0,01 mm'ye"
  },
- "sure_s": 33.7
+ "sure_s": 61.9
 }

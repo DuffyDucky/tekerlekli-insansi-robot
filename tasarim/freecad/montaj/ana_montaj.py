@@ -1,7 +1,8 @@
-# Robot ana montaji (FreeCAD 1.1 Assembly): iskelet + sag/sol omuz + kabuk + sag/sol dirsek (sol = gercek aynali geometri).
+# Robot ana montaji (FreeCAD 1.1 Assembly): iskelet + sag/sol omuz + kabuk + sag/sol dirsek + kafa (sol = gercek aynali geometri).
 # Moduller ve yukleyiciler moduller.py'de; yerlesim yalniz arayuz.MODULLER'den. Eklemler: zemine sabit iskelet,
 # her omuz govdesi ve kabuk iskelete Fixed, her omuzda 2 Revolute (omuz/omuz-montaj.FCStd'den, solda aynali), her dirsek
-# catali omuzun Kol grubuna Fixed, her kolda dirsek + bilek Revolute (dirsek/dirsek-montaj.FCStd'den, solda aynali).
+# catali omuzun Kol grubuna Fixed, her kolda dirsek + bilek Revolute (dirsek/dirsek-montaj.FCStd'den, solda aynali);
+# kafa govdesi traverse Fixed, pan (govde -> boyun) ve tilt (boyun -> bas) Revolute (kafa/kafa-montaj.FCStd'den).
 # Calistir (yolda "ü" oldugu icin ASCII baslaticiyla): FC_SCRIPT=<bu dosya> freecadcmd run_fc.py
 #   -> robot-montaj.FCStd, robot-montaj.step, montaj-analiz.json
 # Not: betikle kaydedilen dosyada eklemlerin gorunum nesnesi yok; montaj_gorsel.py (GUI) bunlari kurup dosyayi yeniden kaydeder.
@@ -189,7 +190,8 @@ for o in feats:
     c = V(0, 0, 0)
     for s in sl:
         c = c + s.CenterOfMass * (s.Volume / vt)
-    c_dosya = c_dosya + o.getGlobalPlacement().multVec(c) * (o.Kutle_g / m_dosya)
+    # o.Shape kendi Placement'ini (o.Placement) zaten tasiyor (kafa parcalarinda kimlik degil): yalniz ust grubun yerlesimi uygulanir
+    c_dosya = c_dosya + o.getGlobalPlacement().multiply(o.Placement.inverse()).multVec(c) * (o.Kutle_g / m_dosya)
 dosya_eklem = [o.Name for o in doc.Objects if hasattr(o, "JointType") or o.Name.startswith("Sabit_")]
 App.closeDocument(doc.Name)
 log("dosyadan: parca %d, kutle %.1f g, AM (%.2f, %.2f, %.2f)" % (len(feats), m_dosya, c_dosya.x, c_dosya.y, c_dosya.z))

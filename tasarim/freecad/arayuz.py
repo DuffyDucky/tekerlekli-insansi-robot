@@ -196,9 +196,10 @@ for s, ad in ((1, "sag"), (-1, "sol")):
     x0, x1 = sorted((s * OMUZ_YUVA_X[0], s * OMUZ_YUVA_X[1]))
     _b("Omuz yuvasi " + ad, "omuz_" + ad, _k(x0, x1, S3 - OMUZ_YUVA_YZ, S3 + OMUZ_YUVA_YZ, -OMUZ_YUVA_YZ, OMUZ_YUVA_YZ),
        "omuz_montaj.py", "traversin x 70...103 ucu; 4 yuzde M6 civata + cekic somun (x = 86)")
-# --- kafa: boyun plakasi traversin ust yuzunun ortasinda
+# --- kafa: boyun plakasi traversin ust yuzunun ortasinda (kafa cizildi: carpisma.py bu bolgeler yerine kafa geometrisini tarar)
 _b("Boyun plakasi (70x70x3 Al)", "kafa", _k(-35, 35, S3 + _h, S3 + _h + 3, -25, 45), "rc:647-654, rc:783, rc:873",
-   "4x M5 delik x +-25, z -15/35; traversin ust yuzu x -35...35 kafaya ayrilmis")
+   "traversin ust yuzu x -35...35 kafaya ayrilmis; baglanti 2x M6 + cekic somun x = +-40, z = 0 (KAFA['boyun_plaka']; V3'teki "
+   "4x M5 x +-25, z -15/35 delikleri kanala denk gelmiyordu)")
 _b("Kafa pan servosu ve boyun (tahmini zarf)", "kafa", _k(-35, 35, S3 + _h + 3, S3 + _h + 95, -25, 45), "rc:784-788",
    "MG996R pan + U braket + kafa tasiyici; kafa kabugu y = S3+20+95'ten yukari (tahmini)")
 # --- taban: plakalar, burclar, aku, guc, elektronik, tahrik, etek braketleri
@@ -409,6 +410,35 @@ DIRSEK = dict(
 MODULLER["dirsek_sag"] = dict(konum=(0.0, S3, 0.0), ayna=False,
                               not_="yerel = omuz_sag yereli; omuz Kol grubuna bagli, eklemler dirsek (X) + bilek (on kol ekseni)")
 MODULLER["dirsek_sol"] = dict(konum=(0.0, S3, 0.0), ayna=True, not_="sag dirsegin X aynasi (omuz_sol Kol grubuna bagli)")
+
+
+# =====================================================================================================
+# 11) Kafa modulu (boyun + pan + tilt + kafa). Yerel koordinat: orijin = traversin ust yuzu ortasi (0, S3 + 20, 0)
+#     (rc:870 Mh ile ayni), X sag, Y yukari, Z ileri. Pan ekseni yerel Y ekseni (x = z = 0; kabuk R62 boyun acikligi bu
+#     eksen etrafinda). Ev pozu: duz bakis (pan 0, tilt 0). Gruplar: Govde (traverse sabit), Pan (pan ekseninde doner),
+#     Kafa (Pan * tilt). Ayrintilar ve dayanaklari kafa/kafa_parcalar.py ve kafa/rapor.html'de.
+# =====================================================================================================
+KAFA = dict(
+    taban_y=S3 + SG / 2,                       # 975: traversin ust yuzu (yerel y = 0)
+    pan_nokta=(0.0, 44.6, 0.0),                # pan horn alt yuzu (pan servosu kasa ustu 41,6 + 3)
+    pan_yon=(0.0, 1.0, 0.0),                   # +aci: yuz (+Z) robotun sagina (+X) doner
+    pan_aralik=(-90.0, 90.0),                  # MG996R 180 derece; kablo halkasi +-90 icin (kafa_montaj taramasi)
+    tilt_nokta=(26.9, 130.0, 25.0),            # tilt horn alt yuzu; eksen X'e paralel, y = 130, z = 25
+    tilt_yon=(1.0, 0.0, 0.0),                  # +aci: basi one egme (yuz asagi)
+    tilt_aralik=(-25.0, 30.0),                 # yazilim siniri (derece); kafa_montaj taramasi serbest araligi raporlar
+    servo="MG996R (180 derece), pan ve tilt",
+    kafa_kutu=(210.0, 180.0, 150.0),           # rc:472 head_shell w x h x d (V3); merkez (0, 95 + 90, 10), tepe y = 275 = HEAD_UP
+    kafa_alt_y=95.0,                           # rc:789 kafa kabugu alt yuzu (yerel)
+    boyun_plaka=dict(t=3.0, x=(-35.0, 35.0), z=(-25.0, 45.0), kulak_x=48.0, kulak_z=10.0, civata_x=40.0,
+                     not_="V3 70x70 (rc:647) + iki yan kulak; 2x M6 traversin ust kanalina (kanal z = 0'da; rc:650'deki "
+                          "z -15/35 delikleri kanala denk gelmiyordu)"),
+    kaynak="kafa/kafa_parcalar.py",
+)
+MODULLER["kafa"] = dict(konum=(0.0, S3 + SG / 2, 0.0), ayna=False,
+                        not_="yerel orijin = traversin ust yuzu ortasi; gruplar Govde (sabit), Pan, Kafa (Pan * tilt)")
+# Boyun plakasi kulaklari ve M6 civata baslari, kafaya ayrilmis 70x70 bolgenin disina tasar (yalniz ekleme):
+_b("Boyun plakasi kulaklari + M6 civata baslari", "kafa", _k(-53.0, 53.0, S3 + _h, S3 + _h + 16.0, -10.0, 10.0),
+   "kafa/kafa_parcalar.py", "traversin ust yuzu x +-35...53; kulak 5 mm PETG + plaka 3 mm, M6x20 + pul + cekic somun x = +-40")
 
 
 if __name__ == "__main__":

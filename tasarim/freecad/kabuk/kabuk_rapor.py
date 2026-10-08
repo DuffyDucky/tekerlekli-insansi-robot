@@ -381,7 +381,7 @@ H.append("<p class='not'>Tarama: öne-arka −60…180° (10°), yana −20…15
 H.append("<h3>Kabuğun ayrılmış bölgelere en yakın noktası</h3><div class='tw'>" + tablo(["Sahip", "Bölge", "En küçük boşluk", "Kabuk parçası"], bol_satir) + "</div>")
 
 H.append("<h2>Kütle ve ağırlık merkezi</h2><div class='grid'><div>")
-H.append(tablo(["", "Kabuktan önce", "Kabukla", "Değişim"], km_satir))
+H.append(tablo(["", "Kabuktan önce", "Güncel ana montaj (%s)" % ", ".join(x["ad"] for x in m["moduller"]), "Değişim"], km_satir))
 H.append("</div><div>" + tablo(["Grup", "Kütle"], kg_satir, "sayi") + "</div></div>")
 H.append("<p class='not'>Ana montaj: %s. Kütle karşılaştırması %s g fark (analiz JSON'ları 0,1 g yuvarlı).</p>" % (
     esc(m["karsilastirma"]["parca"]["formul"]), sayi(m["karsilastirma"]["kutle"]["fark_analiz"], 2)))

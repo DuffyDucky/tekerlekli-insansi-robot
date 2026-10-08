@@ -1,9 +1,9 @@
 {
  "acilis": {
-  "parca": 503,
-  "parca_gorunur": 503,
+  "parca": 601,
+  "parca_gorunur": 601,
   "montaj_gorunur": true,
-  "grup_gorunur": 14,
+  "grup_gorunur": 17,
   "simulasyon": true,
   "simulasyon_proxy": "ViewProviderSimulation",
   "hareket": [
@@ -14,7 +14,9 @@
    "Hareket DirsekSag dirsek (MG996R)",
    "Hareket DirsekSol dirsek (MG996R)",
    "Hareket DirsekSag bilek (MG996R)",
-   "Hareket DirsekSol bilek (MG996R)"
+   "Hareket DirsekSol bilek (MG996R)",
+   "Hareket Kafa pan (MG996R)",
+   "Hareket Kafa tilt (MG996R)"
   ]
  },
  "eklemler": {
@@ -115,6 +117,27 @@
    "vp": "ViewProviderJoint",
    "gorunur": true,
    "isaret_switch": -3
+  },
+  "Sabit_Kafa": {
+   "etiket": "Kafa Govde -> iskelet (sabit)",
+   "tip": "Fixed",
+   "vp": "ViewProviderJoint",
+   "gorunur": true,
+   "isaret_switch": -3
+  },
+  "Kafa_Pan": {
+   "etiket": "Kafa pan (MG996R)",
+   "tip": "Revolute",
+   "vp": "ViewProviderJoint",
+   "gorunur": true,
+   "isaret_switch": -3
+  },
+  "Kafa_Tilt": {
+   "etiket": "Kafa tilt (MG996R)",
+   "tip": "Revolute",
+   "vp": "ViewProviderJoint",
+   "gorunur": true,
+   "isaret_switch": -3
   }
  },
  "secim": {
@@ -131,7 +154,10 @@
   "DirsekSag_Bilek": true,
   "Sabit_DirsekSol": true,
   "DirsekSol_Dirsek": true,
-  "DirsekSol_Bilek": true
+  "DirsekSol_Bilek": true,
+  "Sabit_Kafa": true,
+  "Kafa_Pan": true,
+  "Kafa_Tilt": true
  },
  "pick": {
   "OmuzSag_OneArka": {
@@ -196,6 +222,22 @@
     325
    ],
    "nesne": "DirsekSol_Bilek",
+   "alt": ""
+  },
+  "Kafa_Pan": {
+   "ekran": [
+    796,
+    630
+   ],
+   "nesne": "Kafa_Pan",
+   "alt": ""
+  },
+  "Kafa_Tilt": {
+   "ekran": [
+    803,
+    709
+   ],
+   "nesne": "Kafa_Tilt",
    "alt": ""
   }
  },
@@ -618,12 +660,12 @@
    "kol": "sag",
    "hedef": [
     199.0,
-    994.0,
-    2.5
+    994.9382934570312,
+    -9.864206314086914
    ],
    "ekran_qt": [
-    738,
-    252
+    759,
+    250
    ],
    "yol_px": [
     [
@@ -644,7 +686,7 @@
      0.0
     ],
     "one_arka": [
-     -44.507,
+     -43.017,
      0.0,
      0.0
     ],
@@ -661,7 +703,7 @@
      0.0
     ],
     "one_arka": [
-     -44.507,
+     -43.017,
      0.0
     ],
     "dirsek": [
@@ -690,12 +732,12 @@
    "kol": "sag",
    "hedef": [
     199.0,
-    994.0,
-    2.5
+    994.9382934570312,
+    -9.864206314086914
    ],
    "ekran_qt": [
-    738,
-    252
+    759,
+    250
    ],
    "yol_px": [
     [
@@ -728,7 +770,7 @@
      0.0
     ],
     "one_arka": [
-     -44.507,
+     -43.017,
      0.0,
      0.0
     ],
@@ -745,7 +787,7 @@
      0.0
     ],
     "one_arka": [
-     -44.507,
+     -43.017,
      0.0
     ],
     "dirsek": [
@@ -774,12 +816,12 @@
    "kol": "sag",
    "hedef": [
     199.0,
-    994.0,
-    2.5
+    994.9382934570312,
+    -9.864206314086914
    ],
    "ekran_qt": [
-    738,
-    252
+    759,
+    250
    ],
    "yol_px": [
     [
@@ -804,7 +846,7 @@
      0.0
     ],
     "one_arka": [
-     117.743,
+     97.81,
      0.0,
      0.0
     ],
@@ -822,7 +864,7 @@
     ],
     "one_arka": [
      0.0,
-     117.743
+     97.81
     ],
     "dirsek": [
      0.0,
@@ -850,12 +892,12 @@
    "kol": "sol",
    "hedef": [
     -199.0,
-    994.0,
-    2.5
+    994.9382934570312,
+    -9.864206314086914
    ],
    "ekran_qt": [
-    746,
-    252
+    725,
+    250
    ],
    "yol_px": [
     [
@@ -876,7 +918,7 @@
      0.0
     ],
     "one_arka": [
-     -44.507,
+     -43.017,
      0.0,
      0.0
     ],
@@ -893,7 +935,7 @@
      0.0
     ],
     "one_arka": [
-     -44.507,
+     -43.017,
      0.0
     ],
     "dirsek": [
@@ -989,6 +1031,394 @@
     "dirsek": [
      0.0,
      105.0
+    ]
+   }
+  }
+ ],
+ "kafa_surukleme": [
+  {
+   "deneme": 1,
+   "aciklama": "pan: kafadan (tepeden) tutup yana",
+   "tutulan_grup": "bas",
+   "isabet": true,
+   "hedef": [
+    60.0,
+    1250.0,
+    40.0
+   ],
+   "ekran_qt": [
+    835,
+    467
+   ],
+   "yol_px": [
+    [
+     0,
+     -60
+    ],
+    [
+     -60,
+     -140
+    ],
+    [
+     -140,
+     -180
+    ]
+   ],
+   "tiklanan": "Kafa_P073",
+   "sonra": {
+    "pan": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "tilt": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "kafa_hareket_etti": false,
+   "yol_boyunca": {
+    "pan": [
+     0.0,
+     0.0
+    ],
+    "tilt": [
+     0.0,
+     0.0
+    ]
+   },
+   "sinir": {
+    "pan": [
+     -90.0,
+     90.0
+    ],
+    "tilt": [
+     -25.0,
+     30.0
+    ]
+   }
+  },
+  {
+   "deneme": 2,
+   "aciklama": "pan: boyun milinden (onden) tutup saga",
+   "tutulan_grup": "boyun",
+   "isabet": true,
+   "hedef": [
+    22.0,
+    1062.0,
+    30.0
+   ],
+   "ekran_qt": [
+    769,
+    447
+   ],
+   "yol_px": [
+    [
+     10,
+     0
+    ],
+    [
+     25,
+     0
+    ],
+    [
+     40,
+     0
+    ]
+   ],
+   "tiklanan": "Kafa_P035",
+   "sonra": {
+    "pan": [
+     -3.442,
+     0.0,
+     0.0
+    ],
+    "tilt": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "kafa_hareket_etti": true,
+   "yol_boyunca": {
+    "pan": [
+     -3.442,
+     0.0
+    ],
+    "tilt": [
+     0.0,
+     0.0
+    ]
+   },
+   "sinir": {
+    "pan": [
+     -90.0,
+     90.0
+    ],
+    "tilt": [
+     -25.0,
+     30.0
+    ]
+   }
+  },
+  {
+   "deneme": 3,
+   "aciklama": "pan: boyun milinden cok saga (sinir 90)",
+   "tutulan_grup": "boyun",
+   "isabet": true,
+   "hedef": [
+    22.0,
+    1062.0,
+    30.0
+   ],
+   "ekran_qt": [
+    769,
+    447
+   ],
+   "yol_px": [
+    [
+     15,
+     0
+    ],
+    [
+     40,
+     0
+    ],
+    [
+     70,
+     0
+    ],
+    [
+     110,
+     0
+    ],
+    [
+     160,
+     0
+    ]
+   ],
+   "tiklanan": "Kafa_P035",
+   "sonra": {
+    "pan": [
+     -13.923,
+     0.0,
+     0.0
+    ],
+    "tilt": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "kafa_hareket_etti": true,
+   "yol_boyunca": {
+    "pan": [
+     -13.923,
+     0.0
+    ],
+    "tilt": [
+     0.0,
+     0.0
+    ]
+   },
+   "sinir": {
+    "pan": [
+     -90.0,
+     90.0
+    ],
+    "tilt": [
+     -25.0,
+     30.0
+    ]
+   }
+  },
+  {
+   "deneme": 4,
+   "aciklama": "pan: boyun milinden sola",
+   "tutulan_grup": "boyun",
+   "isabet": true,
+   "hedef": [
+    22.0,
+    1062.0,
+    30.0
+   ],
+   "ekran_qt": [
+    769,
+    447
+   ],
+   "yol_px": [
+    [
+     -10,
+     0
+    ],
+    [
+     -25,
+     0
+    ],
+    [
+     -40,
+     0
+    ]
+   ],
+   "tiklanan": "Kafa_P035",
+   "sonra": {
+    "pan": [
+     3.462,
+     0.0,
+     0.0
+    ],
+    "tilt": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "kafa_hareket_etti": true,
+   "yol_boyunca": {
+    "pan": [
+     0.0,
+     3.462
+    ],
+    "tilt": [
+     0.0,
+     0.0
+    ]
+   },
+   "sinir": {
+    "pan": [
+     -90.0,
+     90.0
+    ],
+    "tilt": [
+     -25.0,
+     30.0
+    ]
+   }
+  },
+  {
+   "deneme": 5,
+   "aciklama": "tilt: yuzden tutup asagi",
+   "tutulan_grup": "bas",
+   "isabet": true,
+   "hedef": [
+    106.0,
+    1200.0,
+    60.0
+   ],
+   "ekran_qt": [
+    649,
+    249
+   ],
+   "yol_px": [
+    [
+     -10,
+     30
+    ],
+    [
+     -20,
+     80
+    ],
+    [
+     -30,
+     140
+    ]
+   ],
+   "tiklanan": "Kafa_P073",
+   "sonra": {
+    "pan": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "tilt": [
+     30.0,
+     0.0,
+     0.0
+    ]
+   },
+   "kafa_hareket_etti": true,
+   "yol_boyunca": {
+    "pan": [
+     0.0,
+     0.0
+    ],
+    "tilt": [
+     0.0,
+     30.0
+    ]
+   },
+   "sinir": {
+    "pan": [
+     -90.0,
+     90.0
+    ],
+    "tilt": [
+     -25.0,
+     30.0
+    ]
+   }
+  },
+  {
+   "deneme": 6,
+   "aciklama": "tilt: cok (sinir -25...30)",
+   "tutulan_grup": "bas",
+   "isabet": true,
+   "hedef": [
+    106.0,
+    1200.0,
+    60.0
+   ],
+   "ekran_qt": [
+    649,
+    249
+   ],
+   "yol_px": [
+    [
+     -10,
+     40
+    ],
+    [
+     -30,
+     160
+    ],
+    [
+     -40,
+     300
+    ]
+   ],
+   "tiklanan": "Kafa_P073",
+   "sonra": {
+    "pan": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "tilt": [
+     30.0,
+     0.0,
+     0.0
+    ]
+   },
+   "kafa_hareket_etti": true,
+   "yol_boyunca": {
+    "pan": [
+     0.0,
+     0.0
+    ],
+    "tilt": [
+     0.0,
+     30.0
+    ]
+   },
+   "sinir": {
+    "pan": [
+     -90.0,
+     90.0
+    ],
+    "tilt": [
+     -25.0,
+     30.0
     ]
    }
   }

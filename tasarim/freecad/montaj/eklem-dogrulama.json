@@ -1,5 +1,5 @@
 {
- "yontem": "Assembly simulasyonu: her eklemde Motion (Angular, formul = aci_rad * time), 0...1 s, adim 0.02 s; her karede cozucunun grup yerlesimi omuz_parcalar Pp/Pr ve dirsek_parcalar grup_yer (moduller.beklenen, solda X aynasiyla; dirsek gruplari omuz acilariyla birlikte) ile karsilastirildi. Sapma: grubun sinir kutusu kosesindeki en buyuk konum farki (mm) ve donus farki (derece).",
+ "yontem": "Assembly simulasyonu: her eklemde Motion (Angular, formul = aci_rad * time), 0...1 s, adim 0.02 s; her karede cozucunun grup yerlesimi omuz_parcalar Pp/Pr, dirsek_parcalar ve kafa_parcalar grup_yer (moduller.beklenen, solda X aynasiyla; dirsek gruplari omuz acilariyla birlikte) ile karsilastirildi. Sapma: grubun sinir kutusu kosesindeki en buyuk konum farki (mm) ve donus farki (derece).",
  "birim": {
   "formul": "57.29578*time (= 1 rad)",
   "olculen_derece": 57.29578,
@@ -134,6 +134,38 @@
     19.7
    ],
    "dogru": true
+  },
+  {
+   "kol": "kafa",
+   "eklem": "pan",
+   "aci": 90.0,
+   "uc_once": [
+    0.0,
+    1233.0,
+    76.0
+   ],
+   "uc_sonra": [
+    76.0,
+    1233.0,
+    0.0
+   ],
+   "dogru": true
+  },
+  {
+   "kol": "kafa",
+   "eklem": "tilt",
+   "aci": 30.0,
+   "uc_once": [
+    0.0,
+    1233.0,
+    76.0
+   ],
+   "uc_sonra": [
+    -0.0,
+    1190.4,
+    133.2
+   ],
+   "dogru": true
   }
  ],
  "vakalar": [
@@ -197,6 +229,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -250,6 +294,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -320,6 +376,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -373,6 +441,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -443,6 +523,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -496,6 +588,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -566,6 +670,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -619,6 +735,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -689,6 +817,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -742,6 +882,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -812,6 +964,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -865,6 +1029,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -935,6 +1111,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -988,6 +1176,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -1058,6 +1258,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1111,6 +1323,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -1181,6 +1405,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1238,10 +1474,22 @@
      0.0,
      0.0,
      0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 1.5670624393107502e-10,
-   "max_derece": 2.8749066316472214e-11,
+   "max_mm": 1.566426823340272e-10,
+   "max_derece": 2.8750062890674174e-11,
    "max_aci_hatasi": 2.3064217202772852e-11
   },
   {
@@ -1304,6 +1552,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1357,6 +1617,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -1427,6 +1699,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1480,6 +1764,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -1550,6 +1846,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1603,6 +1911,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -1673,6 +1993,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1726,6 +2058,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -1796,6 +2140,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1849,6 +2205,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -1919,6 +2287,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1972,6 +2352,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -2042,6 +2434,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2095,6 +2499,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -2165,6 +2581,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2218,6 +2646,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -2288,6 +2728,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2341,6 +2793,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -2411,6 +2875,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2468,10 +2944,22 @@
      0.0,
      0.0,
      0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 1.5667445604411078e-10,
-   "max_derece": 2.873552421089305e-11,
+   "max_mm": 1.5638404530624383e-10,
+   "max_derece": 2.8708433895456524e-11,
    "max_aci_hatasi": 2.3035795493342448e-11
   },
   {
@@ -2534,6 +3022,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2587,6 +3087,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -2661,6 +3173,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2714,6 +3238,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -2788,6 +3324,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2841,6 +3389,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -2915,6 +3475,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2968,6 +3540,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -3042,6 +3626,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -3095,6 +3691,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -3169,6 +3777,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -3222,6 +3842,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -3296,6 +3928,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -3349,6 +3993,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -3423,6 +4079,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -3476,6 +4144,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -3550,6 +4230,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -3603,6 +4295,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -3677,6 +4381,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -3730,6 +4446,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -3804,6 +4532,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -3857,6 +4597,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -3931,6 +4683,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -3984,6 +4748,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -4058,6 +4834,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -4113,6 +4901,18 @@
     "DirsekSol_Bilek": [
      45.0,
      45.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -4185,6 +4985,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -4240,6 +5052,18 @@
     "DirsekSol_Bilek": [
      -90.0,
      -90.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -4312,6 +5136,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -4367,6 +5203,18 @@
     "DirsekSol_Bilek": [
      90.0,
      90.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -4439,6 +5287,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -4494,6 +5354,18 @@
     "DirsekSol_Bilek": [
      45.0,
      45.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -4566,6 +5438,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -4621,6 +5505,18 @@
     "DirsekSol_Bilek": [
      -45.0,
      -45.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -4693,6 +5589,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -4748,6 +5656,18 @@
     "DirsekSol_Bilek": [
      90.0,
      90.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -4820,6 +5740,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -4875,6 +5807,18 @@
     "DirsekSol_Bilek": [
      -90.0,
      -90.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -4947,6 +5891,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -5002,6 +5958,18 @@
     "DirsekSol_Bilek": [
      30.0,
      30.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -5074,6 +6042,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -5129,6 +6109,18 @@
     "DirsekSol_Bilek": [
      -60.0,
      -60.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -5201,6 +6193,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -5254,6 +6258,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -5328,6 +6344,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -5381,6 +6409,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -5463,6 +6503,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -5518,6 +6570,18 @@
     "DirsekSol_Bilek": [
      -45.0,
      -45.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
      0.0,
      0.0
     ]
@@ -5598,6 +6662,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -5655,11 +6731,2129 @@
      -90.0,
      0.0,
      0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "max_mm": 1.0437148290122537e-10,
    "max_derece": 2.303252531712763e-11,
    "max_aci_hatasi": 1.716315978228522e-11
+  },
+  {
+   "ad": "kafa pan 30 tilt 0",
+   "komut": {
+    "kafa": {
+     "pan": 30.0,
+     "tilt": 0.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 4.151816485751682e-11,
+   "max_derece": 1.7098661967547867e-11,
+   "max_aci_hatasi": 1.7113421790782013e-11
+  },
+  {
+   "ad": "kafa pan 90 tilt 0",
+   "komut": {
+    "kafa": {
+     "pan": 90.0,
+     "tilt": 0.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 1.4186746867713965e-11,
+   "max_derece": 5.852220613892871e-12,
+   "max_aci_hatasi": 5.8548721426632255e-12
+  },
+  {
+   "ad": "kafa pan -90 tilt 0",
+   "komut": {
+    "kafa": {
+     "pan": -90.0,
+     "tilt": 0.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     -90.0,
+     -90.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 1.4104872868458384e-11,
+   "max_derece": 5.814053957715309e-12,
+   "max_aci_hatasi": 5.8548721426632255e-12
+  },
+  {
+   "ad": "kafa pan -45 tilt 0",
+   "komut": {
+    "kafa": {
+     "pan": -45.0,
+     "tilt": 0.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     -45.0,
+     -45.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 6.231725055583028e-11,
+   "max_derece": 2.567343738877351e-11,
+   "max_aci_hatasi": 2.5657698188297218e-11
+  },
+  {
+   "ad": "kafa pan 0 tilt 30",
+   "komut": {
+    "kafa": {
+     "pan": 0.0,
+     "tilt": 30.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 5.152488485884718e-11,
+   "max_derece": 1.709230085818494e-11,
+   "max_aci_hatasi": 1.716315978228522e-11
+  },
+  {
+   "ad": "kafa pan 0 tilt -25",
+   "komut": {
+    "kafa": {
+     "pan": 0.0,
+     "tilt": -25.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     -25.0,
+     -25.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 7.201726920810619e-11,
+   "max_derece": 2.3908229540561254e-11,
+   "max_aci_hatasi": 2.3927526626721374e-11
+  },
+  {
+   "ad": "kafa pan 60 tilt 20",
+   "komut": {
+    "kafa": {
+     "pan": 60.0,
+     "tilt": 20.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     20.0,
+     20.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 8.154138407673214e-11,
+   "max_derece": 2.4342970094879554e-11,
+   "max_aci_hatasi": 2.3064217202772852e-11
+  },
+  {
+   "ad": "kafa pan -75 tilt -15",
+   "komut": {
+    "kafa": {
+     "pan": -75.0,
+     "tilt": -15.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     -75.0,
+     -75.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     -15.0,
+     -15.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 5.493354733567209e-11,
+   "max_derece": 1.6850487057835217e-11,
+   "max_aci_hatasi": 1.4509282664221246e-11
+  },
+  {
+   "ad": "kafa pan 90 tilt 30",
+   "komut": {
+    "kafa": {
+     "pan": 90.0,
+     "tilt": 30.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 6.26966949998144e-11,
+   "max_derece": 1.8116676079247678e-11,
+   "max_aci_hatasi": 1.7113421790782013e-11
+  },
+  {
+   "ad": "kafa pan -90 tilt -25",
+   "komut": {
+    "kafa": {
+     "pan": -90.0,
+     "tilt": -25.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     -90.0,
+     -90.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     -25.0,
+     -25.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 7.954233167684676e-11,
+   "max_derece": 2.4614119959552626e-11,
+   "max_aci_hatasi": 2.3927526626721374e-11
+  },
+  {
+   "ad": "kafa pan 45 tilt -10",
+   "komut": {
+    "kafa": {
+     "pan": 45.0,
+     "tilt": -10.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     45.0,
+     45.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     -10.0,
+     -10.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 1.2212133946212714e-10,
+   "max_derece": 3.568731725299827e-11,
+   "max_aci_hatasi": 2.5657698188297218e-11
+  },
+  {
+   "ad": "kafa (30, -10) + kollar sag (20, 100, 95, -60) sol (10, 10, 30, 0)",
+   "komut": {
+    "kafa": {
+     "pan": 30.0,
+     "tilt": -10.0
+    },
+    "omuz_sag": {
+     "one_arka": 20.0,
+     "yana": 100.0
+    },
+    "dirsek_sag": {
+     "dirsek": 95.0,
+     "bilek": -60.0
+    },
+    "omuz_sol": {
+     "one_arka": 10.0,
+     "yana": 10.0
+    },
+    "dirsek_sol": {
+     "dirsek": 30.0,
+     "bilek": 0.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     20.0,
+     20.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     100.0,
+     100.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     10.0,
+     10.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     10.0,
+     10.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     95.0,
+     95.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     -60.0,
+     -60.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     -10.0,
+     -10.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 2.3151068413993734e-10,
+   "max_derece": 4.856062616882153e-11,
+   "max_aci_hatasi": 2.4977353518806922e-11
+  },
+  {
+   "ad": "kafa (-60, 20) + kollar sag (90, 0, 60, 45) sol (90, 0, 60, -45)",
+   "komut": {
+    "kafa": {
+     "pan": -60.0,
+     "tilt": 20.0
+    },
+    "omuz_sag": {
+     "one_arka": 90.0,
+     "yana": 0.0
+    },
+    "dirsek_sag": {
+     "dirsek": 60.0,
+     "bilek": 45.0
+    },
+    "omuz_sol": {
+     "one_arka": 90.0,
+     "yana": 0.0
+    },
+    "dirsek_sol": {
+     "dirsek": 60.0,
+     "bilek": -45.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     45.0,
+     45.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     -45.0,
+     -45.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     -60.0,
+     -60.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     20.0,
+     20.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 1.0482537163219354e-10,
+   "max_derece": 3.874127323124707e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11
+  },
+  {
+   "ad": "kafa (75, 25) + kollar sag (45, 60, 60, -45) sol (-30, 30, 0, 0)",
+   "komut": {
+    "kafa": {
+     "pan": 75.0,
+     "tilt": 25.0
+    },
+    "omuz_sag": {
+     "one_arka": 45.0,
+     "yana": 60.0
+    },
+    "dirsek_sag": {
+     "dirsek": 60.0,
+     "bilek": -45.0
+    },
+    "omuz_sol": {
+     "one_arka": -30.0,
+     "yana": 30.0
+    },
+    "dirsek_sol": {
+     "dirsek": 0.0,
+     "bilek": 0.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     45.0,
+     45.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     -30.0,
+     -30.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     -45.0,
+     -45.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     75.0,
+     75.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     25.0,
+     25.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 1.3405602943087505e-10,
+   "max_derece": 3.451014993719972e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11
   }
  ],
  "sinir_disi": [
@@ -5723,6 +8917,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -5776,6 +8982,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -5846,6 +9064,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -5899,6 +9129,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -5969,6 +9211,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -6022,6 +9276,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -6092,6 +9358,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -6145,6 +9423,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -6215,6 +9505,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -6268,6 +9570,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -6338,6 +9652,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -6391,6 +9717,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -6461,6 +9799,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -6514,6 +9864,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -6584,6 +9946,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -6637,6 +10011,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -6707,6 +10093,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -6760,6 +10158,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -6830,6 +10240,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -6883,6 +10305,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -6953,6 +10387,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -7006,6 +10452,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -7076,6 +10534,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -7129,6 +10599,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -7199,6 +10681,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -7252,6 +10746,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -7322,6 +10828,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -7375,6 +10893,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -7445,6 +10975,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -7498,6 +11040,18 @@
      0.0
     ],
     "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
      0.0,
      0.0,
      0.0,
@@ -7568,6 +11122,18 @@
      0.0,
      0.0
     ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -7625,11 +11191,611 @@
      120.0,
      0.0,
      0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "max_mm": 7.831405925938976e-12,
    "max_derece": 1.1138329668615748e-11,
    "max_aci_hatasi": 1.1112888387287967e-11
+  },
+  {
+   "ad": "kafa pan 120 tilt 0",
+   "komut": {
+    "kafa": {
+     "pan": 120.0,
+     "tilt": 0.0
+    }
+   },
+   "sinir_ici": false,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     120.0,
+     120.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 2.7354046007576293e-11,
+   "max_derece": 1.1138302494485236e-11,
+   "max_aci_hatasi": 1.1155520951433573e-11
+  },
+  {
+   "ad": "kafa pan 180 tilt 0",
+   "komut": {
+    "kafa": {
+     "pan": 180.0,
+     "tilt": 0.0
+    }
+   },
+   "sinir_ici": false,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     180.0,
+     -180.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 2.960250316973215e-11,
+   "max_derece": 1.214239273232874e-11,
+   "max_aci_hatasi": 1.2164491636212915e-11
+  },
+  {
+   "ad": "kafa pan 0 tilt 40",
+   "komut": {
+    "kafa": {
+     "pan": 0.0,
+     "tilt": 40.0
+    }
+   },
+   "sinir_ici": false,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     40.0,
+     40.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 4.643350840045222e-11,
+   "max_derece": 1.5393884658283422e-11,
+   "max_aci_hatasi": 1.5347723092418164e-11
+  },
+  {
+   "ad": "kafa pan 0 tilt -35",
+   "komut": {
+    "kafa": {
+     "pan": 0.0,
+     "tilt": -35.0
+    }
+   },
+   "sinir_ici": false,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Govde": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Boyun": [
+     0.0,
+     0.0
+    ],
+    "Kafa_Bas": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Pan": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "Kafa_Tilt": [
+     -35.0,
+     -35.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 2.916239131623265e-12,
+   "max_derece": 8.905553108097847e-13,
+   "max_aci_hatasi": 2.912670105104098e-12
   }
  ],
  "solve_testi": [
@@ -7828,6 +11994,48 @@
     "bilek": -110.0
    },
    "max_mm": 2.604892696897332e-13
+  },
+  {
+   "kol": "kafa",
+   "poz": {
+    "pan": 45.0,
+    "tilt": 20.0
+   },
+   "sinir_ici": true,
+   "solve": 0,
+   "olculen": {
+    "pan": 45.0,
+    "tilt": 20.0
+   },
+   "max_mm": 6.069216312898397e-13
+  },
+  {
+   "kol": "kafa",
+   "poz": {
+    "pan": 120.0,
+    "tilt": 0.0
+   },
+   "sinir_ici": false,
+   "solve": 0,
+   "olculen": {
+    "pan": 120.0,
+    "tilt": 0.0
+   },
+   "max_mm": 2.802818659591256e-13
+  },
+  {
+   "kol": "kafa",
+   "poz": {
+    "pan": 0.0,
+    "tilt": 40.0
+   },
+   "sinir_ici": false,
+   "solve": 0,
+   "olculen": {
+    "pan": 0.0,
+    "tilt": 40.0
+   },
+   "max_mm": 2.5421149729252077e-13
   }
  ],
  "ozet": {
@@ -7835,10 +12043,10 @@
    "kol": "omuz_sag",
    "anahtar": "one_arka",
    "etiket": "OmuzSag one-arka (S1)",
-   "vaka": 24,
+   "vaka": 27,
    "grup": "OmuzSag_Gobek",
-   "max_mm": 1.686028793830723e-10,
-   "max_derece": 3.874127323124707e-11,
+   "max_mm": 2.3151068413993734e-10,
+   "max_derece": 4.856062616882153e-11,
    "max_aci_hatasi": 2.5693225325085223e-11,
    "sinir": [
     -45.0,
@@ -7859,10 +12067,10 @@
    "kol": "omuz_sag",
    "anahtar": "yana",
    "etiket": "OmuzSag yana acma (S2)",
-   "vaka": 24,
+   "vaka": 27,
    "grup": "OmuzSag_Kol",
-   "max_mm": 1.686028793830723e-10,
-   "max_derece": 3.874127323124707e-11,
+   "max_mm": 2.3151068413993734e-10,
+   "max_derece": 4.856062616882153e-11,
    "max_aci_hatasi": 2.5693225325085223e-11,
    "sinir": [
     0.0,
@@ -7883,10 +12091,10 @@
    "kol": "omuz_sol",
    "anahtar": "one_arka",
    "etiket": "OmuzSol one-arka (S1)",
-   "vaka": 24,
+   "vaka": 27,
    "grup": "OmuzSol_Gobek",
-   "max_mm": 1.6826781131745397e-10,
-   "max_derece": 3.874127323124707e-11,
+   "max_mm": 2.3151068413993734e-10,
+   "max_derece": 4.856062616882153e-11,
    "max_aci_hatasi": 2.5693225325085223e-11,
    "sinir": [
     -45.0,
@@ -7907,10 +12115,10 @@
    "kol": "omuz_sol",
    "anahtar": "yana",
    "etiket": "OmuzSol yana acma (S2)",
-   "vaka": 24,
+   "vaka": 27,
    "grup": "OmuzSol_Kol",
-   "max_mm": 1.6826781131745397e-10,
-   "max_derece": 3.874127323124707e-11,
+   "max_mm": 2.3151068413993734e-10,
+   "max_derece": 4.856062616882153e-11,
    "max_aci_hatasi": 2.5693225325085223e-11,
    "sinir": [
     0.0,
@@ -7931,10 +12139,10 @@
    "kol": "dirsek_sag",
    "anahtar": "dirsek",
    "etiket": "DirsekSag dirsek (MG996R)",
-   "vaka": 12,
+   "vaka": 15,
    "grup": "DirsekSag_OnKol",
-   "max_mm": 1.6465543800037887e-10,
-   "max_derece": 3.874127323124707e-11,
+   "max_mm": 2.3151068413993734e-10,
+   "max_derece": 4.856062616882153e-11,
    "max_aci_hatasi": 2.5693225325085223e-11,
    "sinir": [
     0.0,
@@ -7955,10 +12163,10 @@
    "kol": "dirsek_sag",
    "anahtar": "bilek",
    "etiket": "DirsekSag bilek (MG996R)",
-   "vaka": 12,
+   "vaka": 15,
    "grup": "DirsekSag_El",
-   "max_mm": 1.6465543800037887e-10,
-   "max_derece": 3.874127323124707e-11,
+   "max_mm": 2.3151068413993734e-10,
+   "max_derece": 4.856062616882153e-11,
    "max_aci_hatasi": 2.5693225325085223e-11,
    "sinir": [
     -90.0,
@@ -7979,10 +12187,10 @@
    "kol": "dirsek_sol",
    "anahtar": "dirsek",
    "etiket": "DirsekSol dirsek (MG996R)",
-   "vaka": 12,
+   "vaka": 15,
    "grup": "DirsekSol_OnKol",
-   "max_mm": 1.642037051803671e-10,
-   "max_derece": 3.874127323124707e-11,
+   "max_mm": 2.3151068413993734e-10,
+   "max_derece": 4.856062616882153e-11,
    "max_aci_hatasi": 2.5693225325085223e-11,
    "sinir": [
     0.0,
@@ -8003,10 +12211,10 @@
    "kol": "dirsek_sol",
    "anahtar": "bilek",
    "etiket": "DirsekSol bilek (MG996R)",
-   "vaka": 12,
+   "vaka": 15,
    "grup": "DirsekSol_El",
-   "max_mm": 1.642037051803671e-10,
-   "max_derece": 3.874127323124707e-11,
+   "max_mm": 2.3151068413993734e-10,
+   "max_derece": 4.856062616882153e-11,
    "max_aci_hatasi": 2.5693225325085223e-11,
    "sinir": [
     -90.0,
@@ -8022,7 +12230,55 @@
     698.9,
     -1.25
    ]
+  },
+  "Kafa_Pan": {
+   "kol": "kafa",
+   "anahtar": "pan",
+   "etiket": "Kafa pan (MG996R)",
+   "vaka": 14,
+   "grup": "Kafa_Boyun",
+   "max_mm": 2.3151068413993734e-10,
+   "max_derece": 4.856062616882153e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11,
+   "sinir": [
+    -90.0,
+    90.0
+   ],
+   "eksen": [
+    0.0,
+    1.0,
+    -2.220446049250313e-16
+   ],
+   "nokta": [
+    0.0,
+    1019.6,
+    0.0
+   ]
+  },
+  "Kafa_Tilt": {
+   "kol": "kafa",
+   "anahtar": "tilt",
+   "etiket": "Kafa tilt (MG996R)",
+   "vaka": 14,
+   "grup": "Kafa_Bas",
+   "max_mm": 2.3151068413993734e-10,
+   "max_derece": 4.856062616882153e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11,
+   "sinir": [
+    -25.0,
+    30.0
+   ],
+   "eksen": [
+    1.0000000000000002,
+    0.0,
+    0.0
+   ],
+   "nokta": [
+    26.9,
+    1105.0,
+    25.0
+   ]
   }
  },
- "sure_s": 46.2
+ "sure_s": 94.5
 }

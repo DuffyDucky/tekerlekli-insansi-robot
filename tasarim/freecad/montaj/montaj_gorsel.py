@@ -4,7 +4,7 @@
 #    nesnesi (ViewProviderJoint) kurar, "Kollari_oynat" simulasyonunu (Create Simulation nesneleri) ekler ve dosyayi
 #    GUI'den yeniden kaydeder: boylece Duffy dosyayi actiginda eklemler gorunur, simulasyon oynatilabilir.
 # 2) On, yan, izometrik gorunumler -> gorsel/
-# 3) Simulasyonun cozucu karelerinden iki kolun birlikte hareketi (omuz + dirsek + bilek) -> %TEMP%/robot-montaj-kare/
+# 3) Simulasyonun cozucu karelerinden iki kolun ve kafanin birlikte hareketi (omuz + dirsek + bilek + pan + tilt) -> %TEMP%/robot-montaj-kare/
 #    (GIF montaj_rapor.py'de)
 # 4) Poz gorselleri: gruplar beklenen poza dogrudan yerlestirilir (recompute yok), dosya kaydedilmez.
 import os, sys, math, tempfile
@@ -25,7 +25,8 @@ RENK = {"alu": (0.78, 0.80, 0.83), "alu2": (0.55, 0.60, 0.68), "celik": (0.50, 0
 # Kollari_oynat simulasyonu (radyan, sure 8 s). Sinirlar icinde: one-arka -33...+101 derece, yana 0...69 derece,
 # dirsek 0...103 derece (sinir 0...105), bilek -69...+69 derece (sinir +-90).
 # Sag ve sol kol zit fazda one-arka sallanir, ikisi birlikte one kalkip yana acilir; sag dirsek 4 s'de iki kez bukulur,
-# sol dirsek 8 s'de bir kez; bilekler zit yonde doner. Her formul t = 0'da 0 (ev pozundan baslar).
+# sol dirsek 8 s'de bir kez; bilekler zit yonde doner. Kafa pan -46...+46 derece (sinir +-90) saga sola bakar, tilt
+# -14...+14 derece (sinir -25...30) iki kez basini egip kaldirir. Her formul t = 0'da 0 (ev pozundan baslar).
 SURE, ADIM = 8.0, 0.05
 FORMUL = {
     "OmuzSag_OneArka": "0.75*sin(2*pi*time/4) + 0.6*(1 - cos(2*pi*time/8))",
@@ -36,17 +37,24 @@ FORMUL = {
     "DirsekSol_Dirsek": "0.9*(1 - cos(2*pi*time/8))",
     "DirsekSag_Bilek": "1.2*sin(2*pi*time/8)",
     "DirsekSol_Bilek": "-1.2*sin(2*pi*time/8)",
+    "Kafa_Pan": "0.8*sin(2*pi*time/8)",
+    "Kafa_Tilt": "0.25*sin(2*pi*time/4)",
 }
 KOLON = ("OmuzSag_OneArka", "OmuzSag_Yana", "DirsekSag_Dirsek", "DirsekSag_Bilek",
-         "OmuzSol_OneArka", "OmuzSol_Yana", "DirsekSol_Dirsek", "DirsekSol_Bilek")
+         "OmuzSol_OneArka", "OmuzSol_Yana", "DirsekSol_Dirsek", "DirsekSol_Bilek", "Kafa_Pan", "Kafa_Tilt")
 # poz gorselleri: (dosya, {modul: {eklem anahtari: derece}}, kamera, aciklama)
 POZ_GORSEL = [
     ("montaj-poz-selam.png", {"omuz_sag": dict(one_arka=20.0, yana=100.0), "dirsek_sag": dict(dirsek=95.0, bilek=-60.0),
-                              "omuz_sol": dict(one_arka=10.0, yana=10.0), "dirsek_sol": dict(dirsek=30.0, bilek=0.0)},
-     ((0.35, 0.25, 1.0), 900, (0, 760, 0))),
+                              "omuz_sol": dict(one_arka=10.0, yana=10.0), "dirsek_sol": dict(dirsek=30.0, bilek=0.0),
+                              "kafa": dict(pan=30.0, tilt=-10.0)},
+     ((0.35, 0.25, 1.0), 1000, (0, 820, 0))),
     ("montaj-poz-one.png", {"omuz_sag": dict(one_arka=90.0, yana=0.0), "dirsek_sag": dict(dirsek=60.0, bilek=45.0),
-                            "omuz_sol": dict(one_arka=90.0, yana=0.0), "dirsek_sol": dict(dirsek=60.0, bilek=45.0)},
-     ((0.8, 0.45, 1.0), 800, (0, 800, 120))),
+                            "omuz_sol": dict(one_arka=90.0, yana=0.0), "dirsek_sol": dict(dirsek=60.0, bilek=45.0),
+                            "kafa": dict(pan=0.0, tilt=25.0)},
+     ((0.8, 0.45, 1.0), 900, (0, 860, 120))),
+    ("montaj-poz-kafa.png", {"kafa": dict(pan=45.0, tilt=20.0), "omuz_sag": dict(one_arka=45.0, yana=20.0),
+                             "dirsek_sag": dict(dirsek=60.0, bilek=0.0)},
+     ((0.7, 0.35, 1.0), 560, (0, 1090, 30))),
 ]
 
 
@@ -141,12 +149,14 @@ def go():
     for j in eklemler:
         j.ViewObject.Visibility = False
     Gui.updateGui()
-    kamera(v, (0.85, 0.55, 1.0), 800, (0, 520, 0))
+    kamera(v, (0.85, 0.55, 1.0), 1000, (0, 640, 0))
     kaydet(v, "montaj-izometrik.png", 1000, 1300)
-    kamera(v, (0, 0, 1), 620, (0, 530, 0))
+    kamera(v, (0, 0, 1), 790, (0, 635, 0))
     kaydet(v, "montaj-on.png", 800, 1300)
-    kamera(v, (1, 0, 0), 620, (0, 530, 0))
+    kamera(v, (1, 0, 0), 790, (0, 635, 0))
     kaydet(v, "montaj-yan.png", 800, 1300)
+    kamera(v, (0.7, 0.35, 1.0), 520, (0, 1080, 20))
+    kaydet(v, "montaj-kafa.png", 1200, 1000)
     kamera(v, (0.6, 0.35, 1.0), 360, (0, 900, 20))
     kaydet(v, "montaj-omuzlar.png", 1400, 900)
     kamera(v, (0.9, 0.3, 0.6), 420, (150, 790, 0))
@@ -158,6 +168,7 @@ def go():
         import moduller as MD
         import omuz_parcalar as OP
         import dirsek_parcalar as DP
+        import kafa_parcalar as KP
         for dosya, poz, kam in POZ_GORSEL:
             for gp in [o for o in asm.Group if o.TypeId == "App::Part"]:
                 gp.Placement = App.Placement()
@@ -172,6 +183,11 @@ def go():
                     gp = doc.getObject(ad % taraf.capitalize())
                     if gp is not None:
                         gp.Placement = MD.global_poz(mod, pl)
+            k = poz.get("kafa", {})
+            for ad, g in (("Kafa_Boyun", "Pan"), ("Kafa_Bas", "Kafa")):
+                gp = doc.getObject(ad)
+                if gp is not None:
+                    gp.Placement = MD.global_poz("kafa", KP.grup_yer(g, k.get("pan", 0.0), k.get("tilt", 0.0)))
             Gui.updateGui()
             kamera(v, *kam)
             kaydet(v, dosya, 1200, 1100)
@@ -189,7 +205,7 @@ def go():
     for f in os.listdir(KARE):
         if f.endswith(".png") or f == "pozlar.txt":
             os.remove(os.path.join(KARE, f))
-    kamera(v, (0.75, 0.4, 1.0), 860, (0, 850, 90))
+    kamera(v, (0.75, 0.4, 1.0), 900, (0, 870, 90))
     satir = []
     k_out = 0
     for k in range(1, n, 2):
