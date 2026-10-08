@@ -382,6 +382,35 @@ def bolgeler(sahip=None, haric=()):
     return [b for b in BOLGELER if (sahip is None or b["sahip"] == sahip) and b["sahip"] not in haric]
 
 
+# =====================================================================================================
+# 10) Dirsek modulu (sag kol; sol kol = X aynasi). Yerel koordinat = omuz yereli (travers merkezi, X disari, Y yukari,
+#     Z ileri). Dirsek parcalarinin hepsi omuzun "Kol" grubuna bagli (omuz S1 + S2 ile birlikte hareket eder); kendi
+#     eklemleri dirsek (X ekseni) ve bilek (on kol ekseni). Ev pozu: kol asagida duz (dirsek 0, bilek 0).
+#     Ust kol tupu omuz_parcalar'dan (degismez): eksen x = XR 185, z = ZC -1,25; y -40...-140; O56 / O51.
+# =====================================================================================================
+DIRSEK = dict(
+    bagli="omuz:Kol",                         # ust grup omuzun Kol grubuna sabit (Pp(phi) * Pr(th))
+    tup_x=185.0, tup_z=-1.25,                 # omuz_parcalar XR, ZC
+    tup_uc_y=-140.0, tup_ri=25.5, tup_ro=28.0,  # omuz_parcalar "Ust kol tupu"
+    eksen_y=-173.0, eksen_z=-1.25,            # dirsek ekseni (X'e paralel), tup ucundan 33 mm asagida
+    eksen_x=(156.0, 224.9),                   # catalin ic ve dis kolu arasi (eksen dogrusu)
+    eksen_nokta=(216.6, -173.0, -1.25),       # horn alt yuzu (eklem noktasi)
+    eksen_yon=(-1.0, 0.0, 0.0),               # +aci on kolu one (+Z) buker (omuz Pp ile ayni isaret)
+    aralik=(0.0, 105.0),                      # yazilim siniri (derece): tarama 110 serbest (1,6 mm), 115 carpar; 105te 4,2 mm
+    servo="MG996R (180 derece)",
+    bilek_x=185.0, bilek_z=-1.25,             # bilek ekseni (Y'ye paralel) = ust kol tupu ekseni hizasi
+    bilek_nokta=(185.0, -173.0 - 83.1, -1.25),  # bilek horn ust yuzu (servo tarafi)
+    bilek_yon=(0.0, 1.0, 0.0),
+    bilek_aralik=(-90.0, 90.0),               # 180 derece servo, ev 0 = avuc ice (-X) bakar
+    el_ucu=(185.0, -173.0 - 152.5, -1.25),    # el ucu (omuz eksenine 325,5 mm)
+    yuk_g=500.0,                              # el ucunda tasarim yuku (hafif nesne)
+    kaynak="dirsek/dirsek_parcalar.py",
+)
+MODULLER["dirsek_sag"] = dict(konum=(0.0, S3, 0.0), ayna=False,
+                              not_="yerel = omuz_sag yereli; omuz Kol grubuna bagli, eklemler dirsek (X) + bilek (on kol ekseni)")
+MODULLER["dirsek_sol"] = dict(konum=(0.0, S3, 0.0), ayna=True, not_="sag dirsegin X aynasi (omuz_sol Kol grubuna bagli)")
+
+
 if __name__ == "__main__":
     print("S3 =", S3, "direk", DIREK_Y0, "->", DIREK_Y1, "=", DIREK_L, "mm; uzun ray x", UZUN_RAY_X, "ara ray", ARA_RAY_L)
     print("ayrilmis bolge sayisi:", len(BOLGELER), "; sahipler:", sorted(set(b["sahip"] for b in BOLGELER)))

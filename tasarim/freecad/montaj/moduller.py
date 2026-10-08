@@ -12,13 +12,15 @@
 #                      sinir=(min, max) derece)]
 #     beklenen : None | f(poz: {anahtar: derece}, grup) -> yerel App.Placement (modulun kendi kinematigi)
 #     haric    : [parca adi oneki], haric_neden
+#   Istege bagli: ust_kol (zincir: bu modul baska bir hareketli modulun grubuna bagli; beklenen poz o modulun eklem
+#   acilarini da alir, ornek dirsek -> omuz), analiz (analiz JSON'unun ../ altindaki yolu; yoksa <modul>/<modul>-analiz.json)
 import os, sys
 import FreeCAD as App
 
 V = App.Vector
 HERE = os.path.dirname(os.path.abspath(__file__))
 UST = os.path.dirname(HERE)
-for _p in (UST, os.path.join(UST, "iskelet"), os.path.join(UST, "omuz"), os.path.join(UST, "kabuk")):
+for _p in (UST, os.path.join(UST, "iskelet"), os.path.join(UST, "omuz"), os.path.join(UST, "kabuk"), os.path.join(UST, "dirsek")):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 import arayuz as A
@@ -96,8 +98,59 @@ def yukle_kabuk():
                 eklemler=[], beklenen=None, haric=[], haric_neden="")
 
 
-MODUL_YUKLE = {"iskelet": yukle_iskelet, "omuz_sag": yukle_omuz, "omuz_sol": yukle_omuz, "kabuk": yukle_kabuk}
-SIRA = ["iskelet", "omuz_sag", "omuz_sol", "kabuk"]       # sonra: "taban", "kafa", "dirsek_sag", "dirsek_sol"
+# dirsek-montaj.FCStd'deki eklem adlari -> poz anahtari (eksen cercevesi ve sinirlar dosyadan; dirsek_montaj.py arayuz.DIRSEK'ten kurar)
+DIRSEK_EKLEM = {"Dirsek": ("dirsek", "dirsek (MG996R)"), "Bilek": ("bilek", "bilek (MG996R)")}
+_DIRSEK_EKLEM_CACHE = []
+
+
+def dirsek_eklemleri():
+    if _DIRSEK_EKLEM_CACHE:
+        return _DIRSEK_EKLEM_CACHE
+    onceki = App.ActiveDocument
+    d = App.openDocument(os.path.join(UST, "dirsek", "dirsek-montaj.FCStd"))
+    for j in d.Objects:
+        if j.Name in DIRSEK_EKLEM and hasattr(j, "JointType"):
+            anahtar, ad = DIRSEK_EKLEM[j.Name]
+            p1, p2 = App.Placement(j.Placement1), App.Placement(j.Placement2)
+            assert p1.isSame(p2, 1e-9), "dirsek eklem cerceveleri ev pozunda farkli: %s" % j.Name
+            _DIRSEK_EKLEM_CACHE.append(dict(
+                anahtar=anahtar, ad=ad, ebeveyn=j.Reference1[0].Name, cocuk=j.Reference2[0].Name, cerceve=p1,
+                sinir=(float(j.AngleMin), float(j.AngleMax)), sinir_acik=(bool(j.EnableAngleMin), bool(j.EnableAngleMax)),
+                kaynak="dirsek/dirsek-montaj.FCStd: %s (%s)" % (j.Name, j.Label)))
+    App.closeDocument(d.Name)
+    if onceki is not None:
+        App.setActiveDocument(onceki.Name)
+    _DIRSEK_EKLEM_CACHE.sort(key=lambda e: list(DIRSEK_EKLEM.values()).index((e["anahtar"], e["ad"])))
+    # arayuz.DIRSEK ile tutarli mi (eksen noktasi, yonu, sinir)
+    D = A.DIRSEK
+    for e, (n, y, s) in zip(_DIRSEK_EKLEM_CACHE, ((D["eksen_nokta"], D["eksen_yon"], D["aralik"]),
+                                                  (D["bilek_nokta"], D["bilek_yon"], D["bilek_aralik"]))):
+        ax = e["cerceve"].Rotation.multVec(V(0, 0, 1))
+        assert (e["cerceve"].Base - V(*n)).Length < 1e-9 and (ax - V(*y)).Length < 1e-9 and tuple(e["sinir"]) == tuple(s), e["anahtar"]
+    return _DIRSEK_EKLEM_CACHE
+
+
+def yukle_dirsek(taraf):
+    def yukle():
+        import dirsek_parcalar as DP
+
+        def beklenen(poz, g):
+            return DP.grup_yer(g, poz.get("one_arka", 0.0), poz.get("yana", 0.0), poz.get("dirsek", 0.0), poz.get("bilek", 0.0))
+
+        return dict(parcalar=[_parca(p, k) for k, p in enumerate(DP.P)],
+                    gruplar=[("UstKol", "dirsek catali (ust kola sabit)"), ("OnKol", "on kol (dirsek ile doner)"),
+                             ("El", "el (bilek ile doner)")],
+                    baglanti=dict(modul="omuz_" + taraf, grup="Kol", ref="Ust kol tupu",
+                                  nokta=(A.DIRSEK["tup_x"], A.DIRSEK["tup_uc_y"], A.DIRSEK["tup_z"]),
+                                  aciklama="dirsek catali ust kol tupunun ucuna: pim + yarikli sikma bilezigi, 2x M3 (arayuz.DIRSEK)"),
+                    eklemler=[dict(e) for e in dirsek_eklemleri()], beklenen=beklenen, ust_kol="omuz_" + taraf,
+                    analiz=os.path.join("dirsek", "dirsek-analiz.json"), haric=[], haric_neden="")
+    return yukle
+
+
+MODUL_YUKLE = {"iskelet": yukle_iskelet, "omuz_sag": yukle_omuz, "omuz_sol": yukle_omuz, "kabuk": yukle_kabuk,
+               "dirsek_sag": yukle_dirsek("sag"), "dirsek_sol": yukle_dirsek("sol")}
+SIRA = ["iskelet", "omuz_sag", "omuz_sol", "kabuk", "dirsek_sag", "dirsek_sol"]       # sonra: "taban", "kafa"
 
 
 # ====================================================================== global yerlesim (yalniz arayuz.MODULLER)

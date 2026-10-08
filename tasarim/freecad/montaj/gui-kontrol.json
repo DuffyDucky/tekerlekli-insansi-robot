@@ -1,16 +1,20 @@
 {
  "acilis": {
-  "parca": 195,
-  "parca_gorunur": 195,
+  "parca": 503,
+  "parca_gorunur": 503,
   "montaj_gorunur": true,
-  "grup_gorunur": 7,
+  "grup_gorunur": 14,
   "simulasyon": true,
   "simulasyon_proxy": "ViewProviderSimulation",
   "hareket": [
    "Hareket OmuzSag one-arka (S1)",
    "Hareket OmuzSol one-arka (S1)",
    "Hareket OmuzSag yana acma (S2)",
-   "Hareket OmuzSol yana acma (S2)"
+   "Hareket OmuzSol yana acma (S2)",
+   "Hareket DirsekSag dirsek (MG996R)",
+   "Hareket DirsekSol dirsek (MG996R)",
+   "Hareket DirsekSag bilek (MG996R)",
+   "Hareket DirsekSol bilek (MG996R)"
   ]
  },
  "eklemler": {
@@ -62,6 +66,55 @@
    "vp": "ViewProviderJoint",
    "gorunur": true,
    "isaret_switch": -3
+  },
+  "Sabit_Kabuk": {
+   "etiket": "Kabuk Kabuk -> iskelet (sabit)",
+   "tip": "Fixed",
+   "vp": "ViewProviderJoint",
+   "gorunur": true,
+   "isaret_switch": -3
+  },
+  "Sabit_DirsekSag": {
+   "etiket": "DirsekSag UstKol -> omuz_sag (sabit)",
+   "tip": "Fixed",
+   "vp": "ViewProviderJoint",
+   "gorunur": true,
+   "isaret_switch": -3
+  },
+  "DirsekSag_Dirsek": {
+   "etiket": "DirsekSag dirsek (MG996R)",
+   "tip": "Revolute",
+   "vp": "ViewProviderJoint",
+   "gorunur": true,
+   "isaret_switch": -3
+  },
+  "DirsekSag_Bilek": {
+   "etiket": "DirsekSag bilek (MG996R)",
+   "tip": "Revolute",
+   "vp": "ViewProviderJoint",
+   "gorunur": true,
+   "isaret_switch": -3
+  },
+  "Sabit_DirsekSol": {
+   "etiket": "DirsekSol UstKol -> omuz_sol (sabit)",
+   "tip": "Fixed",
+   "vp": "ViewProviderJoint",
+   "gorunur": true,
+   "isaret_switch": -3
+  },
+  "DirsekSol_Dirsek": {
+   "etiket": "DirsekSol dirsek (MG996R)",
+   "tip": "Revolute",
+   "vp": "ViewProviderJoint",
+   "gorunur": true,
+   "isaret_switch": -3
+  },
+  "DirsekSol_Bilek": {
+   "etiket": "DirsekSol bilek (MG996R)",
+   "tip": "Revolute",
+   "vp": "ViewProviderJoint",
+   "gorunur": true,
+   "isaret_switch": -3
   }
  },
  "secim": {
@@ -71,39 +124,78 @@
   "OmuzSag_Yana": true,
   "Sabit_OmuzSol": true,
   "OmuzSol_OneArka": true,
-  "OmuzSol_Yana": true
+  "OmuzSol_Yana": true,
+  "Sabit_Kabuk": true,
+  "Sabit_DirsekSag": true,
+  "DirsekSag_Dirsek": true,
+  "DirsekSag_Bilek": true,
+  "Sabit_DirsekSol": true,
+  "DirsekSol_Dirsek": true,
+  "DirsekSol_Bilek": true
  },
  "pick": {
   "OmuzSag_OneArka": {
    "ekran": [
-    1011,
-    465
+    931,
+    530
    ],
    "nesne": "OmuzSag_OneArka",
    "alt": ""
   },
   "OmuzSag_Yana": {
    "ekran": [
-    1038,
-    445
+    949,
+    517
    ],
    "nesne": "OmuzSag_Yana",
    "alt": ""
   },
   "OmuzSol_OneArka": {
    "ekran": [
-    597,
-    560
+    661,
+    592
    ],
    "nesne": "OmuzSol_OneArka",
    "alt": ""
   },
   "OmuzSol_Yana": {
    "ekran": [
-    528,
-    562
+    616,
+    593
    ],
    "nesne": "OmuzSol_Yana",
+   "alt": ""
+  },
+  "DirsekSag_Dirsek": {
+   "ekran": [
+    992,
+    331
+   ],
+   "nesne": "DirsekSag_Dirsek",
+   "alt": ""
+  },
+  "DirsekSag_Bilek": {
+   "ekran": [
+    963,
+    249
+   ],
+   "nesne": "DirsekSag_Bilek",
+   "alt": ""
+  },
+  "DirsekSol_Dirsek": {
+   "ekran": [
+    602,
+    420
+   ],
+   "nesne": "DirsekSol_Dirsek",
+   "alt": ""
+  },
+  "DirsekSol_Bilek": {
+   "ekran": [
+    630,
+    325
+   ],
+   "nesne": "DirsekSol_Bilek",
    "alt": ""
   }
  },
@@ -143,6 +235,11 @@
      0.0,
      0.0,
      0.0
+    ],
+    "dirsek": [
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "kol_hareket_etti": true,
@@ -152,6 +249,10 @@
      64.726
     ],
     "one_arka": [
+     0.0,
+     0.0
+    ],
+    "dirsek": [
      0.0,
      0.0
     ]
@@ -164,6 +265,10 @@
     "one_arka": [
      -45.0,
      135.0
+    ],
+    "dirsek": [
+     0.0,
+     105.0
     ]
    }
   },
@@ -198,6 +303,11 @@
      0.0,
      0.0,
      0.0
+    ],
+    "dirsek": [
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "kol_hareket_etti": true,
@@ -207,6 +317,10 @@
      112.163
     ],
     "one_arka": [
+     0.0,
+     0.0
+    ],
+    "dirsek": [
      0.0,
      0.0
     ]
@@ -219,6 +333,10 @@
     "one_arka": [
      -45.0,
      135.0
+    ],
+    "dirsek": [
+     0.0,
+     105.0
     ]
    }
   },
@@ -250,7 +368,12 @@
      0.0
     ],
     "one_arka": [
+     0.482,
      0.0,
+     0.0
+    ],
+    "dirsek": [
+     0.195,
      0.0,
      0.0
     ]
@@ -263,7 +386,11 @@
     ],
     "one_arka": [
      0.0,
-     0.0
+     90.087
+    ],
+    "dirsek": [
+     0.0,
+     105.0
     ]
    },
    "sinir": {
@@ -274,6 +401,10 @@
     "one_arka": [
      -45.0,
      135.0
+    ],
+    "dirsek": [
+     0.0,
+     105.0
     ]
    }
   },
@@ -305,20 +436,29 @@
      0.0
     ],
     "one_arka": [
+     -0.068,
      0.0,
+     0.0
+    ],
+    "dirsek": [
+     0.239,
      0.0,
      0.0
     ]
    },
-   "kol_hareket_etti": false,
+   "kol_hareket_etti": true,
    "yol_boyunca": {
     "yana": [
      0.0,
      0.0
     ],
     "one_arka": [
-     0.0,
+     -0.068,
      0.0
+    ],
+    "dirsek": [
+     0.0,
+     0.239
     ]
    },
    "sinir": {
@@ -329,6 +469,10 @@
     "one_arka": [
      -45.0,
      135.0
+    ],
+    "dirsek": [
+     0.0,
+     105.0
     ]
    }
   },
@@ -351,7 +495,7 @@
      40
     ]
    ],
-   "tiklanan": "OmuzSol_P065",
+   "tiklanan": "Kabuk_P007",
    "on_secim": "Assembly",
    "sonra": {
     "yana": [
@@ -360,6 +504,11 @@
      0.0
     ],
     "one_arka": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "dirsek": [
      0.0,
      0.0,
      0.0
@@ -374,6 +523,10 @@
     "one_arka": [
      0.0,
      0.0
+    ],
+    "dirsek": [
+     0.0,
+     0.0
     ]
    },
    "sinir": {
@@ -384,6 +537,10 @@
     "one_arka": [
      -45.0,
      135.0
+    ],
+    "dirsek": [
+     0.0,
+     105.0
     ]
    }
   },
@@ -418,6 +575,11 @@
      0.0,
      0.0,
      0.0
+    ],
+    "dirsek": [
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "kol_hareket_etti": false,
@@ -427,6 +589,10 @@
      0.0
     ],
     "one_arka": [
+     0.0,
+     0.0
+    ],
+    "dirsek": [
      0.0,
      0.0
     ]
@@ -439,6 +605,10 @@
     "one_arka": [
      -45.0,
      135.0
+    ],
+    "dirsek": [
+     0.0,
+     105.0
     ]
    }
   },
@@ -469,12 +639,17 @@
    "on_secim": "Assembly",
    "sonra": {
     "yana": [
-     23.868,
+     0.0,
      0.0,
      0.0
     ],
     "one_arka": [
-     135.0,
+     -44.507,
+     0.0,
+     0.0
+    ],
+    "dirsek": [
+     0.0,
      0.0,
      0.0
     ]
@@ -483,11 +658,15 @@
    "yol_boyunca": {
     "yana": [
      0.0,
-     120.0
+     0.0
     ],
     "one_arka": [
      -44.507,
-     135.0
+     0.0
+    ],
+    "dirsek": [
+     0.0,
+     0.0
     ]
    },
    "sinir": {
@@ -498,6 +677,10 @@
     "one_arka": [
      -45.0,
      135.0
+    ],
+    "dirsek": [
+     0.0,
+     105.0
     ]
    }
   },
@@ -545,7 +728,12 @@
      0.0
     ],
     "one_arka": [
-     131.15,
+     -44.507,
+     0.0,
+     0.0
+    ],
+    "dirsek": [
+     0.0,
      0.0,
      0.0
     ]
@@ -554,11 +742,15 @@
    "yol_boyunca": {
     "yana": [
      0.0,
-     120.0
+     0.0
     ],
     "one_arka": [
-     -45.0,
-     135.0
+     -44.507,
+     0.0
+    ],
+    "dirsek": [
+     0.0,
+     0.0
     ]
    },
    "sinir": {
@@ -569,6 +761,10 @@
     "one_arka": [
      -45.0,
      135.0
+    ],
+    "dirsek": [
+     0.0,
+     105.0
     ]
    }
   },
@@ -611,6 +807,11 @@
      117.743,
      0.0,
      0.0
+    ],
+    "dirsek": [
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "kol_hareket_etti": true,
@@ -622,6 +823,10 @@
     "one_arka": [
      0.0,
      117.743
+    ],
+    "dirsek": [
+     0.0,
+     0.0
     ]
    },
    "sinir": {
@@ -632,6 +837,10 @@
     "one_arka": [
      -45.0,
      135.0
+    ],
+    "dirsek": [
+     0.0,
+     105.0
     ]
    }
   },
@@ -662,12 +871,17 @@
    "on_secim": "Assembly",
    "sonra": {
     "yana": [
-     23.868,
+     0.0,
      0.0,
      0.0
     ],
     "one_arka": [
-     135.0,
+     -44.507,
+     0.0,
+     0.0
+    ],
+    "dirsek": [
+     0.0,
      0.0,
      0.0
     ]
@@ -676,11 +890,15 @@
    "yol_boyunca": {
     "yana": [
      0.0,
-     120.0
+     0.0
     ],
     "one_arka": [
      -44.507,
-     135.0
+     0.0
+    ],
+    "dirsek": [
+     0.0,
+     0.0
     ]
    },
    "sinir": {
@@ -691,6 +909,86 @@
     "one_arka": [
      -45.0,
      135.0
+    ],
+    "dirsek": [
+     0.0,
+     105.0
+    ]
+   }
+  },
+  {
+   "deneme": 11,
+   "aciklama": "dirsek bukme, on koldan (yan gorunum)",
+   "kol": "sag",
+   "hedef": [
+    226.7,
+    712.0,
+    0.0
+   ],
+   "ekran_qt": [
+    742,
+    738
+   ],
+   "yol_px": [
+    [
+     -40,
+     -10
+    ],
+    [
+     -90,
+     -40
+    ],
+    [
+     -130,
+     -90
+    ]
+   ],
+   "tiklanan": "DirsekSag_P016",
+   "on_secim": "Assembly",
+   "sonra": {
+    "yana": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "one_arka": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "dirsek": [
+     71.544,
+     0.0,
+     0.0
+    ]
+   },
+   "kol_hareket_etti": true,
+   "yol_boyunca": {
+    "yana": [
+     0.0,
+     0.0
+    ],
+    "one_arka": [
+     0.0,
+     0.0
+    ],
+    "dirsek": [
+     0.0,
+     71.544
+    ]
+   },
+   "sinir": {
+    "yana": [
+     0.0,
+     120.0
+    ],
+    "one_arka": [
+     -45.0,
+     135.0
+    ],
+    "dirsek": [
+     0.0,
+     105.0
     ]
    }
   }

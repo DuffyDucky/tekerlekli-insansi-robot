@@ -108,7 +108,7 @@ def go():
         R["hatalar"].append(traceback.format_exc())
     log("etkin", R["etkin"])
 
-    kamera(v, (0.75, 0.4, 1.0), 470, (0, 905, 60))
+    kamera(v, (0.75, 0.4, 1.0), 720, (0, 830, 80))      # omuz + dirsek + bilek eklemleri gorunur
     bekle(300)
     Gui.updateGui()
 
@@ -123,8 +123,8 @@ def go():
                                  alt=info.get("Component") if info else None)
     log("pick", R["pick"])
 
-    # --- ekran goruntusu: eklemler gorunur, sag yana acma eklemi secili, montaj etkin
-    Gui.Selection.addSelection(doc.Name, "OmuzSag_Yana")
+    # --- ekran goruntusu: eklemler gorunur, sag dirsek eklemi secili (yoksa sag yana acma), montaj etkin
+    Gui.Selection.addSelection(doc.Name, "DirsekSag_Dirsek" if doc.getObject("DirsekSag_Dirsek") else "OmuzSag_Yana")
     bekle(300)
     v.saveImage(os.path.join(OUT, "montaj-gui-eklemler.png"), 1400, 1000, "White")
     try:
@@ -218,10 +218,15 @@ def surukle(v, gd, asm):
         ("arkaya, gobekten (sinir -45)", "Sag", GOBEK, YAN, [(60, -20), (140, 60), (160, 160)]),
         ("one kaldirma, gobekten (yan gorunum)", "Sol", (-GOBEK[0], GOBEK[1], GOBEK[2]), YAN_SOL, [(60, -20), (120, 60)]),
     ]
+    if doc.getObject("DirsekSag_Dirsek"):
+        # dirsek: on kolun dis yanagindan (x 226,7) tutup one-yukari surukle (yan gorunum +X'ten: ekranda sol = ileri)
+        DENEME.append(("dirsek bukme, on koldan (yan gorunum)", "Sag", (226.7, 712.0, 0.0), YAN, [(-40, -10), (-90, -40), (-130, -90)]))
     L, N = QtCore.Qt.LeftButton, QtCore.Qt.NoButton
     for deneme, (acik, taraf, hedef, gor, yol) in enumerate(DENEME):
         jY, jO = doc.getObject("Omuz%s_Yana" % taraf), doc.getObject("Omuz%s_OneArka" % taraf)
+        jD = doc.getObject("Dirsek%s_Dirsek" % taraf)
         kol = doc.getObject("Omuz%s_Kol" % taraf)
+        onkol = doc.getObject("Dirsek%s_OnKol" % taraf)
         for g in [o for o in asm.Group if o.TypeId == "App::Part"]:
             g.Placement = App.Placement()
         kamera(v, *gor)
@@ -240,7 +245,7 @@ def surukle(v, gd, asm):
         pre_ad = pre.ObjectName if pre and hasattr(pre, "ObjectName") else str(pre)
         olay(vp, QtCore.QEvent.MouseButtonPress, p0, L, L)
         bekle(100)
-        izY, izO = [], []
+        izY, izO, izD = [], [], []
         onceki = (0, 0)
         for (dx, dy) in yol:
             n = max(1, int(math.hypot(dx - onceki[0], dy - onceki[1]) / 8))
@@ -251,20 +256,30 @@ def surukle(v, gd, asm):
                 bekle(30)
                 izY.append(eklem_aci(jY)[0])
                 izO.append(eklem_aci(jO)[0])
+                if jD:
+                    izD.append(eklem_aci(jD)[0])
             onceki = (dx, dy)
         olay(vp, QtCore.QEvent.MouseButtonRelease, p0 + QtCore.QPoint(*onceki), L, N)
         bekle(300)
         Gui.updateGui()
         sonra = dict(yana=eklem_aci(jY), one_arka=eklem_aci(jO))
+        if jD:
+            sonra["dirsek"] = eklem_aci(jD)
         hareket = rot_aci(kol.Placement.Rotation) > 1e-3 or kol.Placement.Base.Length > 1e-3
+        if onkol is not None:
+            hareket = hareket or rot_aci(onkol.Placement.Rotation) > 1e-3
         kayit = dict(deneme=deneme + 1, aciklama=acik, kol=taraf.lower(), hedef=list(hedef), ekran_qt=[p0.x(), p0.y()], yol_px=yol,
                      tiklanan=info.get("Object") if info else None, on_secim=pre_ad, sonra=sonra, kol_hareket_etti=hareket,
-                     yol_boyunca=dict(yana=[min(izY), max(izY)], one_arka=[min(izO), max(izO)]),
-                     sinir=dict(yana=[float(jY.AngleMin), float(jY.AngleMax)], one_arka=[float(jO.AngleMin), float(jO.AngleMax)]))
+                     yol_boyunca=dict(dict(yana=[min(izY), max(izY)], one_arka=[min(izO), max(izO)]),
+                                      **({"dirsek": [min(izD), max(izD)]} if izD else {})),
+                     sinir=dict(yana=[float(jY.AngleMin), float(jY.AngleMax)], one_arka=[float(jO.AngleMin), float(jO.AngleMax)],
+                                **({"dirsek": [float(jD.AngleMin), float(jD.AngleMax)]} if jD else {})))
         R["surukleme"].append(kayit)
         log("surukleme", deneme + 1, taraf, acik, "-> son", sonra, "yol boyunca", kayit["yol_boyunca"], "tik", kayit["tiklanan"])
         if deneme == 0 and hareket:
             v.saveImage(os.path.join(OUT, "montaj-gui-surukleme.png"), 1400, 1000, "White")
+        if acik.startswith("dirsek") and hareket:
+            v.saveImage(os.path.join(OUT, "montaj-gui-dirsek.png"), 1000, 1000, "White")
     for g in [o for o in asm.Group if o.TypeId == "App::Part"]:
         g.Placement = App.Placement()
 

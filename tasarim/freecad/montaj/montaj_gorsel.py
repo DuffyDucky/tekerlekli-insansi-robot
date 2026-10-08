@@ -4,8 +4,10 @@
 #    nesnesi (ViewProviderJoint) kurar, "Kollari_oynat" simulasyonunu (Create Simulation nesneleri) ekler ve dosyayi
 #    GUI'den yeniden kaydeder: boylece Duffy dosyayi actiginda eklemler gorunur, simulasyon oynatilabilir.
 # 2) On, yan, izometrik gorunumler -> gorsel/
-# 3) Simulasyonun cozucu karelerinden iki kolun birlikte hareketi -> %TEMP%/robot-montaj-kare/ (GIF montaj_rapor.py'de)
-import os, math, tempfile
+# 3) Simulasyonun cozucu karelerinden iki kolun birlikte hareketi (omuz + dirsek + bilek) -> %TEMP%/robot-montaj-kare/
+#    (GIF montaj_rapor.py'de)
+# 4) Poz gorselleri: gruplar beklenen poza dogrudan yerlestirilir (recompute yok), dosya kaydedilmez.
+import os, sys, math, tempfile
 import FreeCAD as App
 import FreeCADGui as Gui
 from PySide import QtCore
@@ -20,15 +22,32 @@ os.makedirs(KARE, exist_ok=True)
 RENK = {"alu": (0.78, 0.80, 0.83), "alu2": (0.55, 0.60, 0.68), "celik": (0.50, 0.52, 0.56), "celik2": (0.86, 0.66, 0.22),
         "siyah": (0.13, 0.13, 0.14), "petg": (0.96, 0.55, 0.13), "petg2": (0.18, 0.52, 0.86), "pirinc": (0.86, 0.66, 0.22),
         "kabuk": (0.85, 0.87, 0.90), "gri": (0.6, 0.6, 0.6)}
-# Kollari_oynat simulasyonu (radyan, sure 8 s). Sinirlar icinde: one-arka -33...+101 derece, yana 0...69 derece.
-# Sag ve sol kol zit fazda one-arka sallanir, ikisi birlikte one kalkip yana acilir.
+# Kollari_oynat simulasyonu (radyan, sure 8 s). Sinirlar icinde: one-arka -33...+101 derece, yana 0...69 derece,
+# dirsek 0...103 derece (sinir 0...105), bilek -69...+69 derece (sinir +-90).
+# Sag ve sol kol zit fazda one-arka sallanir, ikisi birlikte one kalkip yana acilir; sag dirsek 4 s'de iki kez bukulur,
+# sol dirsek 8 s'de bir kez; bilekler zit yonde doner. Her formul t = 0'da 0 (ev pozundan baslar).
 SURE, ADIM = 8.0, 0.05
 FORMUL = {
     "OmuzSag_OneArka": "0.75*sin(2*pi*time/4) + 0.6*(1 - cos(2*pi*time/8))",
     "OmuzSol_OneArka": "-0.75*sin(2*pi*time/4) + 0.6*(1 - cos(2*pi*time/8))",
     "OmuzSag_Yana": "0.6*(1 - cos(2*pi*time/8))",
     "OmuzSol_Yana": "0.6*(1 - cos(2*pi*time/8))",
+    "DirsekSag_Dirsek": "0.9*(1 - cos(2*pi*time/4))",
+    "DirsekSol_Dirsek": "0.9*(1 - cos(2*pi*time/8))",
+    "DirsekSag_Bilek": "1.2*sin(2*pi*time/8)",
+    "DirsekSol_Bilek": "-1.2*sin(2*pi*time/8)",
 }
+KOLON = ("OmuzSag_OneArka", "OmuzSag_Yana", "DirsekSag_Dirsek", "DirsekSag_Bilek",
+         "OmuzSol_OneArka", "OmuzSol_Yana", "DirsekSol_Dirsek", "DirsekSol_Bilek")
+# poz gorselleri: (dosya, {modul: {eklem anahtari: derece}}, kamera, aciklama)
+POZ_GORSEL = [
+    ("montaj-poz-selam.png", {"omuz_sag": dict(one_arka=20.0, yana=100.0), "dirsek_sag": dict(dirsek=95.0, bilek=-60.0),
+                              "omuz_sol": dict(one_arka=10.0, yana=10.0), "dirsek_sol": dict(dirsek=30.0, bilek=0.0)},
+     ((0.35, 0.25, 1.0), 900, (0, 760, 0))),
+    ("montaj-poz-one.png", {"omuz_sag": dict(one_arka=90.0, yana=0.0), "dirsek_sag": dict(dirsek=60.0, bilek=45.0),
+                            "omuz_sol": dict(one_arka=90.0, yana=0.0), "dirsek_sol": dict(dirsek=60.0, bilek=45.0)},
+     ((0.8, 0.45, 1.0), 800, (0, 800, 120))),
+]
 
 
 LOG = os.path.join(KARE, "montaj_gorsel.log")
@@ -103,6 +122,9 @@ def go():
     sim.cTimeStepOutput = ADIM
     for ad, f in FORMUL.items():
         j = doc.getObject(ad)
+        if j is None:
+            log("eklem yok, hareket atlandi:", ad)
+            continue
         m = asm.newObject("App::FeaturePython", "Hareket_" + ad)
         CS.Motion(m, "Angular", j, f)
         CS.ViewProviderMotion(m.ViewObject)
@@ -127,6 +149,39 @@ def go():
     kaydet(v, "montaj-yan.png", 800, 1300)
     kamera(v, (0.6, 0.35, 1.0), 360, (0, 900, 20))
     kaydet(v, "montaj-omuzlar.png", 1400, 900)
+    kamera(v, (0.9, 0.3, 0.6), 420, (150, 790, 0))
+    kaydet(v, "montaj-dirsek.png", 1200, 1000)
+
+    # --- 4) poz gorselleri (gruplar beklenen poza; recompute yok)
+    try:
+        sys.path.insert(0, HERE)
+        import moduller as MD
+        import omuz_parcalar as OP
+        import dirsek_parcalar as DP
+        for dosya, poz, kam in POZ_GORSEL:
+            for gp in [o for o in asm.Group if o.TypeId == "App::Part"]:
+                gp.Placement = App.Placement()
+            for taraf in ("sag", "sol"):
+                o = poz.get("omuz_" + taraf, {})
+                dd = poz.get("dirsek_" + taraf, {})
+                phi, th = o.get("one_arka", 0.0), o.get("yana", 0.0)
+                yer = {"Omuz%s_Gobek": ("omuz_" + taraf, OP.Pp(phi)), "Omuz%s_Kol": ("omuz_" + taraf, OP.Pp(phi).multiply(OP.Pr(th)))}
+                for g in ("UstKol", "OnKol", "El"):
+                    yer["Dirsek%s_" + g] = ("dirsek_" + taraf, DP.grup_yer(g, phi, th, dd.get("dirsek", 0.0), dd.get("bilek", 0.0)))
+                for ad, (mod, pl) in yer.items():
+                    gp = doc.getObject(ad % taraf.capitalize())
+                    if gp is not None:
+                        gp.Placement = MD.global_poz(mod, pl)
+            Gui.updateGui()
+            kamera(v, *kam)
+            kaydet(v, dosya, 1200, 1100)
+            log("poz gorseli", dosya)
+        for gp in [o for o in asm.Group if o.TypeId == "App::Part"]:
+            gp.Placement = App.Placement()
+        Gui.updateGui()
+    except Exception:
+        import traceback
+        log("poz gorseli hatasi", traceback.format_exc())
 
     # --- 3) hareket: cozucunun simulasyon kareleri (iki kol birlikte)
     asm.generateSimulation(sim)
@@ -134,7 +189,7 @@ def go():
     for f in os.listdir(KARE):
         if f.endswith(".png") or f == "pozlar.txt":
             os.remove(os.path.join(KARE, f))
-    kamera(v, (0.75, 0.4, 1.0), 470, (0, 905, 60))
+    kamera(v, (0.75, 0.4, 1.0), 860, (0, 850, 90))
     satir = []
     k_out = 0
     for k in range(1, n, 2):
@@ -142,8 +197,8 @@ def go():
         Gui.updateGui()
         v.saveImage(os.path.join(KARE, "k%03d.png" % k_out), 900, 640, "White")
         t = (k - 1) * ADIM
-        ac = [math.degrees(formul_deger(FORMUL[a], t)) for a in ("OmuzSag_OneArka", "OmuzSag_Yana", "OmuzSol_OneArka", "OmuzSol_Yana")]
-        satir.append("%.2f %.1f %.1f %.1f %.1f" % ((t,) + tuple(ac)))
+        ac = [math.degrees(formul_deger(FORMUL[a], t)) if a in FORMUL else 0.0 for a in KOLON]
+        satir.append(("%.2f" + " %.1f" * len(ac)) % ((t,) + tuple(ac)))
         k_out += 1
     with open(os.path.join(KARE, "pozlar.txt"), "w") as fh:
         fh.write("\n".join(satir) + "\n")

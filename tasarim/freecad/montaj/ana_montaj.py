@@ -1,6 +1,7 @@
-# Robot ana montaji (FreeCAD 1.1 Assembly): iskelet + sag omuz + sol omuz (gercek aynali geometri) tek dosyada.
+# Robot ana montaji (FreeCAD 1.1 Assembly): iskelet + sag/sol omuz + kabuk + sag/sol dirsek (sol = gercek aynali geometri).
 # Moduller ve yukleyiciler moduller.py'de; yerlesim yalniz arayuz.MODULLER'den. Eklemler: zemine sabit iskelet,
-# her omuz govdesi iskelete Fixed, her omuzda 2 Revolute (eksen ve sinirlar omuz/omuz-montaj.FCStd'den, solda aynali).
+# her omuz govdesi ve kabuk iskelete Fixed, her omuzda 2 Revolute (omuz/omuz-montaj.FCStd'den, solda aynali), her dirsek
+# catali omuzun Kol grubuna Fixed, her kolda dirsek + bilek Revolute (dirsek/dirsek-montaj.FCStd'den, solda aynali).
 # Calistir (yolda "ü" oldugu icin ASCII baslaticiyla): FC_SCRIPT=<bu dosya> freecadcmd run_fc.py
 #   -> robot-montaj.FCStd, robot-montaj.step, montaj-analiz.json
 # Not: betikle kaydedilen dosyada eklemlerin gorunum nesnesi yok; montaj_gorsel.py (GUI) bunlari kurup dosyayi yeniden kaydeder.
@@ -216,7 +217,7 @@ formul = "iskelet %d + 2 x (omuz %d - travers - kabuk referansi)" % (isk["parca_
 for d in MOD:                      # diger moduller: kendi analiz JSON'u (<modul>/<modul>-analiz.json)
     if d["ad"] in ("iskelet", "omuz_sag", "omuz_sol"):
         continue
-    js = json.load(open(os.path.join(UST, d["ad"], "%s-analiz.json" % d["ad"]), encoding="utf-8"))
+    js = json.load(open(os.path.join(UST, d.get("analiz") or os.path.join(d["ad"], "%s-analiz.json" % d["ad"])), encoding="utf-8"))
     beklenen_kutle += js["kutle_g"]
     beklenen_parca += js["parca_sayisi"]
     formul += " + %s %d" % (d["ad"], js["parca_sayisi"])

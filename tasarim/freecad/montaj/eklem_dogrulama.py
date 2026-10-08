@@ -1,6 +1,8 @@
-# Ana montaj eklem dogrulamasi (FreeCAD 1.1, arayuzsuz). robot-montaj.FCStd'yi acar, her omuzun iki doner eklemini
-# Assembly simulasyonuyla (Create Simulation'in kullandigi generateSimulation + Motion) birkac aciya surer ve
-# cozucunun verdigi grup konumlarini modulun kendi kinematigiyle (omuz_parcalar Pp/Pr, moduller.beklenen) karsilastirir.
+# Ana montaj eklem dogrulamasi (FreeCAD 1.1, arayuzsuz). robot-montaj.FCStd'yi acar, her kolun doner eklemlerini (omuz
+# one-arka + yana acma, dirsek, bilek) Assembly simulasyonuyla (Create Simulation'in kullandigi generateSimulation + Motion)
+# birkac aciya surer ve cozucunun verdigi grup konumlarini modulun kendi kinematigiyle (omuz_parcalar Pp/Pr,
+# dirsek_parcalar grup_yer; moduller.beklenen) karsilastirir. Dirsek gruplari omuz zincirine bagli: beklenen poz omuz
+# acilarini da alir (moduller ust_kol).
 # Revolute acisi dogrudan surulemedigi icin (Angle ozelligi yalniz Angle ekleminde) surus Motion ile yapilir.
 # Calistir: FC_SCRIPT=<bu dosya> freecadcmd run_fc.py  -> eklem-dogrulama.json (dosya kaydedilmez)
 import os, sys, json, time, math
@@ -83,6 +85,19 @@ def beklenen(kol, poz, g):
     return MD.global_poz(kol, d["beklenen"](poz, g))
 
 
+def poz_al(kol, komut, t=1.0):
+    """Kolun beklenen pozu icin eklem acilari: kendi eklemleri + zincirde ust modulun (dirsek -> omuz) eklemleri."""
+    poz = {}
+    ust = MOD[kol].get("ust_kol")
+    if ust:
+        poz.update({an: komut.get(ust, {}).get(an, 0.0) * t for an in KOL[ust]["eklem"]})
+    poz.update({an: komut.get(kol, {}).get(an, 0.0) * t for an in KOL[kol]["eklem"]})
+    return poz
+
+
+EKLEM_GRUP = {"one_arka": "Gobek", "yana": "Kol", "dirsek": "OnKol", "bilek": "El"}   # eklemin dondurdugu grup
+
+
 def sapma(gad, A_, E_):
     mm = max((A_.multVec(p) - E_.multVec(p)).Length for p in NOKTA[gad])
     return mm, rot_aci(E_.inverse().multiply(A_).Rotation)
@@ -129,7 +144,7 @@ def calistir(komut):
         t = max(0, k - 1) * ADIM          # kare 0 = baslangic montaji, kare k>=1 -> t = (k-1)*adim (probe ile olculdu)
         kare = dict(k=k, t=t, gruplar={}, aci={})
         for kol, kk in KOL.items():
-            poz = {an: komut.get(kol, {}).get(an, 0.0) * t for an in kk["eklem"]}
+            poz = poz_al(kol, komut, t)
             for g, gad in kk["grup"].items():
                 kare["gruplar"][gad] = sapma(gad, GR[gad].Placement, beklenen(kol, poz, g))
             for an, j in kk["eklem"].items():
@@ -165,19 +180,38 @@ log("birim testi: 1 rad ->", birim["olculen_derece"], "derece")
 # ---------------------------------------------------------------------- 2) her kol ayri, sinir ici pozlar
 POZ = [(30, 0), (90, 0), (135, 0), (-45, 0), (0, 60), (0, 120), (90, 90), (-30, 45), (60, 30), (135, 120)]
 vakalar = []
-for kol in KOL:
+for kol in [k for k in KOL if not MOD[k].get("ust_kol")]:
     for phi, th in POZ:
         komut = {kol: {"one_arka": float(phi), "yana": float(th)}}
         vakalar.append(ozetle("%s one %d yana %d" % (kol, phi, th), komut, calistir(komut)))
+# dirsek ve bilek (omuz pozuyla birlikte): (one-arka, yana, dirsek, bilek)
+DPOZ = [(0, 0, 30, 0), (0, 0, 60, 45), (0, 0, 105, -90), (0, 0, 90, 90), (90, 0, 90, 45), (45, 60, 60, -45),
+        (135, 120, 105, 90), (-45, 30, 0, -90), (60, 30, 45, 30), (90, 90, 105, -60)]
+for taraf in ("sag", "sol"):
+    om, dr = "omuz_" + taraf, "dirsek_" + taraf
+    if dr not in KOL:
+        continue
+    for phi, th, al, be in DPOZ:
+        komut = {om: {"one_arka": float(phi), "yana": float(th)}, dr: {"dirsek": float(al), "bilek": float(be)}}
+        vakalar.append(ozetle("%s one %d yana %d dirsek %d bilek %d" % (taraf, phi, th, al, be), komut, calistir(komut)))
 # iki kol birlikte
-for (a, b) in (((90, 45), (90, 45)), ((120, 30), (-30, 90))):
+for (a, b) in (((90, 45, 0, 0), (90, 45, 0, 0)), ((120, 30, 0, 0), (-30, 90, 0, 0)), ((90, 0, 60, 45), (90, 0, 60, -45)),
+               ((30, 20, 105, 90), (-30, 40, 30, -90))):
     komut = {"omuz_sag": {"one_arka": float(a[0]), "yana": float(a[1])}, "omuz_sol": {"one_arka": float(b[0]), "yana": float(b[1])}}
+    if "dirsek_sag" in KOL and (a[2] or a[3] or b[2] or b[3]):
+        komut["dirsek_sag"] = {"dirsek": float(a[2]), "bilek": float(a[3])}
+        komut["dirsek_sol"] = {"dirsek": float(b[2]), "bilek": float(b[3])}
     vakalar.append(ozetle("iki kol sag %s sol %s" % (a, b), komut, calistir(komut)))
 
 # ---------------------------------------------------------------------- 3) sinir disi surus
 SINIR_DISI = [(160, 0), (180, 0), (-60, 0), (0, 140), (0, -15)]
 sinir_disi = []
 for kol in KOL:
+    if MOD[kol].get("ust_kol"):
+        for al, be in ((120, 0), (-20, 0), (0, 120)):
+            komut = {kol: {"dirsek": float(al), "bilek": float(be)}}
+            sinir_disi.append(ozetle("%s dirsek %d bilek %d" % (kol, al, be), komut, calistir(komut)))
+        continue
     for phi, th in SINIR_DISI:
         komut = {kol: {"one_arka": float(phi), "yana": float(th)}}
         sinir_disi.append(ozetle("%s one %d yana %d" % (kol, phi, th), komut, calistir(komut)))
@@ -185,7 +219,7 @@ for kol in KOL:
 # ---------------------------------------------------------------------- 3b) yon kontrolu: cozucu sonrasi kol ucunun gittigi yer
 # one-arka +90: kol ucu (ust kol tupunun alt ucu) her iki kolda +Z'ye; yana +90: sagda +X'e, solda -X'e
 yon = []
-for kol in KOL:
+for kol in [k for k in KOL if not MOD[k].get("ust_kol")]:
     gad = KOL[kol]["grup"]["Kol"]
     uc0 = min(NOKTA[gad], key=lambda p: p.y)
     uc0 = V(sum(p.x for p in NOKTA[gad]) / 8, uc0.y, sum(p.z for p in NOKTA[gad]) / 8)    # tup ekseni alt ucu (yaklasik)
@@ -201,21 +235,39 @@ for kol in KOL:
         log("yon %s %s +%d: kol ucu (%.0f, %.0f, %.0f) -> (%.0f, %.0f, %.0f) %s" % (kol, an, a, uc0.x, uc0.y, uc0.z, uc.x, uc.y, uc.z,
                                                                                     "dogru" if ok else "YANLIS"))
 
+# dirsek +90: el ucu one (+Z) gelir; bilek +90: parmak (avucun ic tarafi, ev pozunda iceri bakar) one (+Z) doner; iki kolda da
+import dirsek_parcalar as DP
+for kol in [k for k in KOL if MOD[k].get("ust_kol")]:
+    uc_y = MD.global_nokta(kol, DP.D["el_ucu"])
+    parmak = MD.global_nokta(kol, (DP.XW - 21.0, DP.Y(DP.S_UC - 18.0), DP.ZE))
+    for an, a, p0 in (("dirsek", 90.0, uc_y), ("bilek", 90.0, parmak)):
+        calistir({kol: {an: a}})
+        uc = GR[KOL[kol]["grup"]["El"]].Placement.multVec(p0)
+        d = uc - p0
+        ok = (d.z > 100 and abs(d.x) < 1e-6) if an == "dirsek" else (d.z > 15 and abs(d.y) < 1e-6)
+        yon.append(dict(kol=kol, eklem=an, aci=a, uc_once=[round(x, 1) for x in p0], uc_sonra=[round(x, 1) for x in uc], dogru=ok))
+        log("yon %s %s +%d: nokta (%.0f, %.0f, %.0f) -> (%.0f, %.0f, %.0f) %s" % (kol, an, a, p0.x, p0.y, p0.z, uc.x, uc.y, uc.z,
+                                                                               "dogru" if ok else "YANLIS"))
+
 # ---------------------------------------------------------------------- 4) solve(): elle verilen pozu koruyor mu, sinirda geri cekiyor mu
 # (GUI'de surukleme ve doc.recompute() bu cozucuyu cagirir)
 solve_test = []
 for kol in KOL:
-    for phi, th in ((90, 45), (160, 0), (0, 140), (-60, 0)):
+    ust = MOD[kol].get("ust_kol")
+    pozlar = ([dict(dirsek=60.0, bilek=45.0), dict(dirsek=125.0, bilek=0.0), dict(dirsek=30.0, bilek=-110.0)] if ust else
+              [dict(one_arka=float(a), yana=float(b)) for a, b in ((90, 45), (160, 0), (0, 140), (-60, 0))])
+    alt = [k for k in KOL if MOD[k].get("ust_kol") == kol]      # zincirdeki alt moduller (omuz -> dirsek) birlikte tasinir
+    for poz in pozlar:
         sifirla()
-        poz = {"one_arka": float(phi), "yana": float(th)}
-        for g, gad in KOL[kol]["grup"].items():
-            GR[gad].Placement = beklenen(kol, poz, g)
+        for k in [kol] + alt:
+            for g, gad in KOL[k]["grup"].items():
+                GR[gad].Placement = beklenen(k, poz, g)
         r = asm.solve()
         olc = {an: round(olculen_aci(j)[0], 4) for an, j in KOL[kol]["eklem"].items()}
-        mx = max(sapma(gad, GR[gad].Placement, beklenen(kol, poz, g))[0] for g, gad in KOL[kol]["grup"].items())
+        mx = max(sapma(gad, GR[gad].Placement, beklenen(k, poz, g))[0] for k in [kol] + alt for g, gad in KOL[k]["grup"].items())
         sinir_ici = all(KOL[kol]["sinir"][an][0] <= a <= KOL[kol]["sinir"][an][1] for an, a in poz.items())
         solve_test.append(dict(kol=kol, poz=poz, sinir_ici=sinir_ici, solve=r, olculen=olc, max_mm=mx))
-        log("solve %s one %d yana %d -> donus %d, olculen %s, sapma %.2e mm" % (kol, phi, th, r, olc, mx))
+        log("solve %s %s -> donus %d, olculen %s, sapma %.2e mm" % (kol, poz, r, olc, mx))
 sifirla()
 
 # ---------------------------------------------------------------------- ozet: eklem basina en buyuk sapma (sinir ici vakalar)
@@ -223,7 +275,7 @@ ozet = {}
 for kol, kk in KOL.items():
     for an, j in kk["eklem"].items():
         ilgili = [v for v in vakalar if kol in v["komut"]]
-        gad = kk["grup"]["Gobek" if an == "one_arka" else "Kol"]
+        gad = kk["grup"][EKLEM_GRUP[an]]
         ozet[j.Name] = dict(kol=kol, anahtar=an, etiket=j.Label, vaka=len(ilgili),
                             grup=gad, max_mm=max(v["max_mm"] for v in ilgili), max_derece=max(v["max_derece"] for v in ilgili),
                             max_aci_hatasi=max(v["max_aci_hatasi"] for v in ilgili),
@@ -231,7 +283,8 @@ for kol, kk in KOL.items():
                             eksen=list(App.Placement(j.Placement1).Rotation.multVec(V(0, 0, 1))),
                             nokta=list(App.Placement(j.Placement1).Base))
 out = dict(yontem="Assembly simulasyonu: her eklemde Motion (Angular, formul = aci_rad * time), 0...1 s, adim %.2f s; "
-                  "her karede cozucunun grup yerlesimi omuz_parcalar Pp/Pr (moduller.beklenen, solda X aynasiyla) ile karsilastirildi. "
+                  "her karede cozucunun grup yerlesimi omuz_parcalar Pp/Pr ve dirsek_parcalar grup_yer (moduller.beklenen, solda X aynasiyla; "
+                  "dirsek gruplari omuz acilariyla birlikte) ile karsilastirildi. "
                   "Sapma: grubun sinir kutusu kosesindeki en buyuk konum farki (mm) ve donus farki (derece)." % ADIM,
            birim=birim, yon=yon, vakalar=vakalar, sinir_disi=sinir_disi, solve_testi=solve_test, ozet=ozet,
            sure_s=round(time.time() - t0, 1))

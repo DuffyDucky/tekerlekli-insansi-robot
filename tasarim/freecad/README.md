@@ -14,8 +14,9 @@ Eski CadQuery modeli `tasarim/cad/robot_cad.py` yalnız ölçü kaynağı olarak
 | `omuz/` | Sağ omuz (2 eksen): `omuz_parcalar.py` parçalar + kinematik, `omuz_montaj.py` kontroller + kayıt, `omuz_gorsel.py`, `omuz_rapor.py`, `omuz_regresyon.py` |
 | `iskelet/` | Şase çerçevesi + gövde direği + omuz traversi + bağlantılar: `iskelet_parcalar.py`, `iskelet_montaj.py`, `iskelet_gorsel.py`, `iskelet_rapor.py` → `rapor.html`, `iskelet_regresyon.py` |
 | `kabuk/` | Gövde kabuğu + taban eteği + Nextion göğüs ekranı + iskelete bağlantı braketleri: `kabuk_lib.py`, `kabuk_parcalar.py`, `kabuk_montaj.py` (kontroller, baskı analizi), `kabuk_gorsel.py`, `kabuk_rapor.py` → `rapor.html` |
-| `montaj/` | **Ana montaj** (FreeCAD Assembly): iskelet + sağ omuz + aynalı sol omuz tek dosyada, eklemler, eklem doğrulaması → `robot-montaj.FCStd`, `rapor.html` |
-| `carpisma.py` | Modüller arası çakışma: modülleri `arayuz.MODULLER` ile yerleştirir, ev pozunu, hareketli modüllerin tüm tarama pozlarını ve henüz çizilmemiş modüllerin ayrılmış bölgelerini tarar → `carpisma-sonuc.json` |
+| `dirsek/` | Sağ dirsek + ön kol + bilek + el (sol = X aynası): `dirsek_lib.py` (MG996R, horn, baskı analizi), `dirsek_parcalar.py`, `dirsek_montaj.py` (kontroller, dirsek içi tarama, tork, baskı), `dirsek_gorsel.py`, `dirsek_rapor.py` → `rapor.html`, `dirsek-analiz.json`. Arayüz `arayuz.DIRSEK`; modüller arası tarama `carpisma.py` (kol zinciri), ana montajda `dirsek_sag` / `dirsek_sol` |
+| `montaj/` | **Ana montaj** (FreeCAD Assembly): iskelet + sağ/sol omuz + kabuk + sağ/sol dirsek tek dosyada (sol = gerçek aynalı geometri), eklemler, eklem doğrulaması → `robot-montaj.FCStd`, `rapor.html` |
+| `carpisma.py` | Modüller arası çakışma: modülleri `arayuz.MODULLER` ile yerleştirir, ev pozunu, hareketli modüllerin tüm tarama pozlarını, kol zincirini (omuz × dirsek × bilek; iki kol birbirine karşı) ve henüz çizilmemiş modüllerin ayrılmış bölgelerini tarar → `carpisma-sonuc.json` |
 
 Koordinat (global): orijin zemin + robot merkezi, +X robotun sağı, +Y yukarı, +Z ileri (yüz), mm.
 Her modülün yerel orijini `arayuz.MODULLER`'de (sağ omuz = travers merkezi (0, 955, 0); sol omuz = sağın X aynası).
@@ -33,7 +34,7 @@ L=C:/Users/Victus/.robot-cad/run_fc.py
 # iskelet: montaj + kontroller + eğilme + STEP/BOM/JSON (~15 s), görseller (GUI), rapor (sistem Python'u)
 FC_SCRIPT=$R/iskelet/iskelet_montaj.py "$FC" $L
 FC_SCRIPT=$R/iskelet/iskelet_gorsel.py "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecad.exe" $L
-FC_SCRIPT=$R/carpisma.py "$FC" $L                     # modüller arası tarama (kabukla ~25 dk)
+FC_SCRIPT=$R/carpisma.py "$FC" $L                     # modüller arası tarama (omuz ~25 dk + kol zinciri ~10 dk)
 python $R/iskelet/iskelet_rapor.py                     # iskelet/rapor.html
 
 # omuz: montaj + tarama + tork (~40 s), görseller, rapor
@@ -50,6 +51,10 @@ FC_SCRIPT=$R/iskelet/iskelet_regresyon.py REG_ETIKET=sonra "$FC" $L   # iskelet/
 FC_SCRIPT=$R/kabuk/kabuk_montaj.py "$FC" $L
 FC_SCRIPT=$R/kabuk/kabuk_gorsel.py "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecad.exe" $L
 python $R/kabuk/kabuk_rapor.py                 # carpisma.py ve ana montajdan sonra (onların sonuçlarını da okur)
+# dirsek: montaj + kontroller + tarama + tork + baski (~30 s), gorseller (GUI), rapor
+FC_SCRIPT=$R/dirsek/dirsek_montaj.py "$FC" $L
+FC_SCRIPT=$R/dirsek/dirsek_gorsel.py "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecad.exe" $L
+python $R/dirsek/dirsek_rapor.py
 ```
 
 Not: `omuz_regresyon.py` `omuz_montaj.py`'yi çalıştırıp omuz çıktılarını yeniden yazar (FCStd GUI durumu kaybolur). Sonuç birebir
@@ -57,15 +62,17 @@ aynıysa üretilmiş omuz dosyaları `git checkout` ile geri alınabilir.
 
 PowerShell'de: `$env:FC_SCRIPT="<betik>"; & "$env:LOCALAPPDATA\Programs\FreeCAD 1.1\bin\freecadcmd.exe" C:\Users\Victus\.robot-cad\run_fc.py`
 
-Sıra: `arayuz.py` veya `ortak_lib.py` değişirse → omuz ve iskelet regresyonu → iskelet montajı → kabuk montajı → `carpisma.py` →
+Sıra: `arayuz.py` veya `ortak_lib.py` değişirse → omuz ve iskelet regresyonu → iskelet montajı → kabuk montajı → dirsek montajı → `carpisma.py` →
 ana montaj (`ana_montaj.py` + `montaj_gorsel.py`) → görseller → raporlar.
 
 ## Ana montaj (`montaj/`)
 
 Tüm modüller tek FreeCAD Assembly dosyasında: `robot-montaj.FCStd` (+ `robot-montaj.step`). Modül listesi ve yükleyiciler
 `montaj/moduller.py`'de (`SIRA` + `MODUL_YUKLE`); yerleşim yalnız `arayuz.MODULLER`'den okunur, sol omuz şekil aynalanarak
-(gerçek aynalı geometri, parça adları "(sol)") kurulur. Eklemler: iskelet zemine sabit, her omuz gövdesi iskelete sabit, her omuzda
-öne-arka (S1, −45…135°) ve yana açma (S2, 0…120°) döner eklemi. Eksen ve sınırlar `omuz/omuz-montaj.FCStd`'den okunur.
+(gerçek aynalı geometri, parça adları "(sol)") kurulur; sol dirsek de aynı yolla. Eklemler: iskelet zemine sabit, her omuz gövdesi ve kabuk iskelete sabit, her omuzda
+öne-arka (S1, −45…135°) ve yana açma (S2, 0…120°) döner eklemi. Her dirsek çatalı omuzun Kol grubuna sabit
+(üst kol tüpü ucu), her kolda dirsek (0…105°) ve bilek (−90…90°) döner eklemi; eksen ve sınırlar `dirsek/dirsek-montaj.FCStd`'den okunup
+`arayuz.DIRSEK` ile karşılaştırılır. Dirsek yükleyicisinde `ust_kol` (zincir: beklenen poz omuz açılarını da alır) ve `analiz` (analiz JSON yolu) var. Eksen ve sınırlar `omuz/omuz-montaj.FCStd`'den okunur.
 
 ```bash
 M=$R/montaj
@@ -89,7 +96,7 @@ python $M/montaj_rapor.py                      # GIF + montaj/rapor.html
 | Modül içi çakışma | her `*_montaj.py` | tüm çiftler, `common().Volume > 0,5 mm³` çakışma |
 | Bağlantı oturması | `iskelet_montaj.py` | köşe bağlantı ve kama profile dayalı, çekiç somun dudak altında, cıvata ucu somunu geçip kanal tabanına değmiyor, set vida tabana dayalı |
 | Ayrılmış bölgeler | `iskelet_montaj.py`, `carpisma.py` | henüz çizilmemiş modüllerin bölgelerine taşma yok |
-| Modüller arası | `carpisma.py` | ev pozu + her hareketli modülün tüm tarama pozları |
+| Modüller arası | `carpisma.py` | ev pozu + her hareketli modülün tüm tarama pozları; kol zinciri (omuz −45…135 / 0…120 × dirsek 0…105 × bilek ±90, kaba 15° + 5 mm altında ince 5°, aralık dışı halka ayrı) iskelet, kabuk, bölgeler, omuz gövde/göbeğine karşı; iki kol birbirine karşı (simetrik, zıt, birlikte öne) |
 | Ana montaj | `montaj/ana_montaj.py`, `montaj/eklem_dogrulama.py` | parça sayısı/kütle/AM = modül toplamı; simülasyonla sürülen eklemlerde çözücü konumu = modül kinematiği |
 | Regresyon | `omuz/omuz_regresyon.py`, `iskelet/iskelet_regresyon.py` | parça sayısı, hacim, sınır kutusu, kütle, AM, çakışma, tarama/tork (omuz), bağlantılar (iskelet) birebir |
 | Kabuk bağlantıları | `kabuk/kabuk_montaj.py` | braket profile ve boss'a dayalı, çekiç somun dudak altında, M6 ucu somunu geçip kanal tabanına değmiyor, eksen hizası; M5/M3 kavrama ≥ d ve ≤ ısıl gömme somun deliği, dış yüzeye ≥ 1 mm et; bindirme cıvatası başı dudağa, ısıl gömme somun boss'a oturmuş |
@@ -120,3 +127,15 @@ Bambu Lab X2D'ye (`arayuz.YAZICI`, kullanılabilir 246 × 246 × 250) sığacak 
 - **Baskı yönü** parça başına `kabuk_parcalar.BASKI`; boss'lar ve omuz deliği o yöne göre 45° damla şekilli.
 - **Montajda:** `moduller.py`'de `kabuk` (tek grup, direğe sabit eklem); `carpisma.py`'de `KONTROL` listesinde. Tarama çıktısında hedef modül
   başına eklem aralığındaki en küçük boşluk (`modul_bosluk_eklem_araliginda`) ve çakışan pozlar (`modul_cakisan_poz`) var.
+
+## Dirsek modülü (`dirsek/`)
+
+Sağ kol: dirsek çatalı (üst kol tüpüne pim + sıkma bileziği) + ön kol (dirsek ve bilek MG996R) + bilek flanşı + sabit kancalı el; sol kol X aynası.
+Ayrıntı ve sonuçlar `dirsek/rapor.html`'de.
+
+- **Kol zinciri taraması** (`carpisma.py` bölüm 4): dirsek parçaları omuzla birlikte sürülür (çatal = Pp·Pr, ön kol ·Pe, el ·Pb). Sınır kutusu
+  ön elemesi (köşeleri poz matrisiyle taşınan tutucu kutu, numpy), 5 mm altındaki her aday tam ölçülür, hedef başına en küçük boşluk dal-sınırla;
+  5 mm altında kalan alt pozların çevresi 5° adımla yeniden taranır. Kol başına 1755 poz + 279 aralık dışı, iki kol ~10 dk.
+- **Sonuç (8 Ekim 2026):** eklem aralığında çakışma 0, yasak poz bölgesi yok; kabuğa en az ~3,8 mm (kol aşağıda, çatal bileziği ↔ göğüs bandı),
+  iskelete ~103 mm, iki kol arası ≥ 290 mm. Aralık dışı: yana −10°'de el kabuğa giriyor (omuz yana sınırı 0° engelliyor).
+- **Tork kararı:** ana senaryo yüksüz jest (1. dönem kapsamı); mevcut servolar yeterli, 0,5 kg yük bilgi amaçlı, el ucu yükü ~50 g ile sınırlı.

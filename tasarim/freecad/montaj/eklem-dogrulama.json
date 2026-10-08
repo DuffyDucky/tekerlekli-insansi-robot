@@ -1,5 +1,5 @@
 {
- "yontem": "Assembly simulasyonu: her eklemde Motion (Angular, formul = aci_rad * time), 0...1 s, adim 0.02 s; her karede cozucunun grup yerlesimi omuz_parcalar Pp/Pr (moduller.beklenen, solda X aynasiyla) ile karsilastirildi. Sapma: grubun sinir kutusu kosesindeki en buyuk konum farki (mm) ve donus farki (derece).",
+ "yontem": "Assembly simulasyonu: her eklemde Motion (Angular, formul = aci_rad * time), 0...1 s, adim 0.02 s; her karede cozucunun grup yerlesimi omuz_parcalar Pp/Pr ve dirsek_parcalar grup_yer (moduller.beklenen, solda X aynasiyla; dirsek gruplari omuz acilariyla birlikte) ile karsilastirildi. Sapma: grubun sinir kutusu kosesindeki en buyuk konum farki (mm) ve donus farki (derece).",
  "birim": {
   "formul": "57.29578*time (= 1 rad)",
   "olculen_derece": 57.29578,
@@ -70,6 +70,70 @@
     0.2
    ],
    "dogru": true
+  },
+  {
+   "kol": "dirsek_sag",
+   "eklem": "dirsek",
+   "aci": 90.0,
+   "uc_once": [
+    185.0,
+    629.5,
+    -1.2
+   ],
+   "uc_sonra": [
+    185.0,
+    782.0,
+    151.2
+   ],
+   "dogru": true
+  },
+  {
+   "kol": "dirsek_sag",
+   "eklem": "bilek",
+   "aci": 90.0,
+   "uc_once": [
+    164.0,
+    647.5,
+    -1.2
+   ],
+   "uc_sonra": [
+    185.0,
+    647.5,
+    19.8
+   ],
+   "dogru": true
+  },
+  {
+   "kol": "dirsek_sol",
+   "eklem": "dirsek",
+   "aci": 90.0,
+   "uc_once": [
+    -185.0,
+    629.5,
+    -1.2
+   ],
+   "uc_sonra": [
+    -185.0,
+    782.0,
+    151.2
+   ],
+   "dogru": true
+  },
+  {
+   "kol": "dirsek_sol",
+   "eklem": "bilek",
+   "aci": 90.0,
+   "uc_once": [
+    -164.0,
+    647.5,
+    -1.2
+   ],
+   "uc_sonra": [
+    -185.0,
+    647.5,
+    19.7
+   ],
+   "dogru": true
   }
  ],
  "vakalar": [
@@ -109,6 +173,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -142,9 +230,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 4.303437260032877e-11,
+   "max_mm": 9.761224976574684e-11,
    "max_derece": 1.7098661967547867e-11,
    "max_aci_hatasi": 1.7113421790782013e-11
   },
@@ -184,6 +296,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -217,9 +353,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 1.4948008922911893e-11,
+   "max_mm": 3.393685404522016e-11,
    "max_derece": 5.954025547866133e-12,
    "max_aci_hatasi": 5.9685589803848416e-12
   },
@@ -259,6 +419,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -292,9 +476,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 5.009514753764184e-11,
+   "max_mm": 1.1298625823259311e-10,
    "max_derece": 1.968128640779725e-11,
    "max_aci_hatasi": 1.9696244635269977e-11
   },
@@ -334,6 +542,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -367,9 +599,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 6.473739852928203e-11,
+   "max_mm": 1.4659778039486097e-10,
    "max_derece": 2.567343738877351e-11,
    "max_aci_hatasi": 2.5657698188297218e-11
   },
@@ -409,6 +665,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -442,9 +722,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 5.7506439124715226e-11,
+   "max_mm": 1.3120358769277108e-10,
    "max_derece": 2.307174365933635e-11,
    "max_aci_hatasi": 2.3064217202772852e-11
   },
@@ -484,6 +788,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -517,9 +845,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 2.7776139801412706e-11,
+   "max_mm": 6.330070465232205e-11,
    "max_derece": 1.1144663603848163e-11,
    "max_aci_hatasi": 1.1155520951433573e-11
   },
@@ -559,6 +911,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -592,9 +968,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 1.8687571133302245e-11,
+   "max_mm": 3.7380166980065184e-11,
    "max_derece": 8.411234079834782e-12,
    "max_aci_hatasi": 5.9685589803848416e-12
   },
@@ -634,6 +1034,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -667,10 +1091,34 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 7.856850389683788e-11,
-   "max_derece": 3.087450863682163e-11,
+   "max_mm": 1.686028793830723e-10,
+   "max_derece": 3.087482027836944e-11,
    "max_aci_hatasi": 2.5693225325085223e-11
   },
   {
@@ -709,6 +1157,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -742,10 +1214,34 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 7.295438154272758e-11,
-   "max_derece": 2.874697769544074e-11,
+   "max_mm": 1.5670624393107502e-10,
+   "max_derece": 2.8749066316472214e-11,
    "max_aci_hatasi": 2.3064217202772852e-11
   },
   {
@@ -784,6 +1280,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -817,9 +1337,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 4.935934541497557e-11,
+   "max_mm": 9.556447212352715e-11,
    "max_derece": 2.2645088548939914e-11,
    "max_aci_hatasi": 1.972466634470038e-11
   },
@@ -859,6 +1403,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -892,9 +1460,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 4.314041012708646e-11,
+   "max_mm": 9.761224976574684e-11,
    "max_derece": 1.709230085818494e-11,
    "max_aci_hatasi": 1.716315978228522e-11
   },
@@ -934,6 +1526,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -967,9 +1583,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 1.4948008922911893e-11,
+   "max_mm": 3.393685404522016e-11,
    "max_derece": 5.954025547866133e-12,
    "max_aci_hatasi": 5.9685589803848416e-12
   },
@@ -1009,6 +1649,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1042,9 +1706,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 4.9722105290867824e-11,
+   "max_mm": 1.1260970009071794e-10,
    "max_derece": 1.9706730827122566e-11,
    "max_aci_hatasi": 1.9753088054130785e-11
   },
@@ -1084,6 +1772,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1117,9 +1829,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 6.477439148293597e-11,
+   "max_mm": 1.4674232896074149e-10,
    "max_derece": 2.5679798498136435e-11,
    "max_aci_hatasi": 2.5693225325085223e-11
   },
@@ -1159,6 +1895,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1192,9 +1952,33 @@
      60.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 5.75065515006912e-11,
+   "max_mm": 1.3120363689902035e-10,
    "max_derece": 2.307174365933635e-11,
    "max_aci_hatasi": 2.3064217202772852e-11
   },
@@ -1234,6 +2018,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1267,9 +2075,33 @@
      120.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 2.777646788398369e-11,
+   "max_mm": 6.350510631636977e-11,
    "max_derece": 1.1144663603848163e-11,
    "max_aci_hatasi": 1.1169731806148775e-11
   },
@@ -1309,6 +2141,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1342,9 +2198,33 @@
      90.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 1.8609340786240153e-11,
+   "max_mm": 3.7434746959722715e-11,
    "max_derece": 8.429262006804891e-12,
    "max_aci_hatasi": 5.9685589803848416e-12
   },
@@ -1384,6 +2264,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1417,9 +2321,33 @@
      45.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 7.856848333405171e-11,
+   "max_mm": 1.6826781131745397e-10,
    "max_derece": 3.087575588036063e-11,
    "max_aci_hatasi": 2.5693225325085223e-11
   },
@@ -1459,6 +2387,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1492,10 +2444,34 @@
      30.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 7.313830891873816e-11,
-   "max_derece": 2.8707264098574394e-11,
+   "max_mm": 1.5667445604411078e-10,
+   "max_derece": 2.873552421089305e-11,
    "max_aci_hatasi": 2.3035795493342448e-11
   },
   {
@@ -1534,6 +2510,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1567,14 +2567,2578 @@
      120.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 4.9780816763411005e-11,
-   "max_derece": 2.2616267119322007e-11,
+   "max_mm": 9.552098069027376e-11,
+   "max_derece": 2.2653360501488268e-11,
    "max_aci_hatasi": 1.9753088054130785e-11
   },
   {
-   "ad": "iki kol sag (90, 45) sol (90, 45)",
+   "ad": "sag one 0 yana 0 dirsek 30 bilek 0",
+   "komut": {
+    "omuz_sag": {
+     "one_arka": 0.0,
+     "yana": 0.0
+    },
+    "dirsek_sag": {
+     "dirsek": 30.0,
+     "bilek": 0.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 4.659573486530428e-11,
+   "max_derece": 1.7098661967547867e-11,
+   "max_aci_hatasi": 1.7113421790782013e-11
+  },
+  {
+   "ad": "sag one 0 yana 0 dirsek 60 bilek 45",
+   "komut": {
+    "omuz_sag": {
+     "one_arka": 0.0,
+     "yana": 0.0
+    },
+    "dirsek_sag": {
+     "dirsek": 60.0,
+     "bilek": 45.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     45.0,
+     45.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 7.798532267209295e-11,
+   "max_derece": 3.452002320039152e-11,
+   "max_aci_hatasi": 2.5657698188297218e-11
+  },
+  {
+   "ad": "sag one 0 yana 0 dirsek 105 bilek -90",
+   "komut": {
+    "omuz_sag": {
+     "one_arka": 0.0,
+     "yana": 0.0
+    },
+    "dirsek_sag": {
+     "dirsek": 105.0,
+     "bilek": -90.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     105.0,
+     105.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     -90.0,
+     -90.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 2.0245695551380764e-11,
+   "max_derece": 6.336038533834886e-12,
+   "max_aci_hatasi": 5.8548721426632255e-12
+  },
+  {
+   "ad": "sag one 0 yana 0 dirsek 90 bilek 90",
+   "komut": {
+    "omuz_sag": {
+     "one_arka": 0.0,
+     "yana": 0.0
+    },
+    "dirsek_sag": {
+     "dirsek": 90.0,
+     "bilek": 90.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 2.4701866708220086e-11,
+   "max_derece": 8.280090785489133e-12,
+   "max_aci_hatasi": 5.9685589803848416e-12
+  },
+  {
+   "ad": "sag one 90 yana 0 dirsek 90 bilek 45",
+   "komut": {
+    "omuz_sag": {
+     "one_arka": 90.0,
+     "yana": 0.0
+    },
+    "dirsek_sag": {
+     "dirsek": 90.0,
+     "bilek": 45.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     45.0,
+     45.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 5.0914991701076993e-11,
+   "max_derece": 2.8295836870966403e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11
+  },
+  {
+   "ad": "sag one 45 yana 60 dirsek 60 bilek -45",
+   "komut": {
+    "omuz_sag": {
+     "one_arka": 45.0,
+     "yana": 60.0
+    },
+    "dirsek_sag": {
+     "dirsek": 60.0,
+     "bilek": -45.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     45.0,
+     45.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     -45.0,
+     -45.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 1.0740193580061652e-10,
+   "max_derece": 3.451014993719972e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11
+  },
+  {
+   "ad": "sag one 135 yana 120 dirsek 105 bilek 90",
+   "komut": {
+    "omuz_sag": {
+     "one_arka": 135.0,
+     "yana": 120.0
+    },
+    "dirsek_sag": {
+     "dirsek": 105.0,
+     "bilek": 90.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     135.0,
+     135.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     120.0,
+     120.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     105.0,
+     105.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 8.554691392565451e-11,
+   "max_derece": 2.6205831149976133e-11,
+   "max_aci_hatasi": 1.972466634470038e-11
+  },
+  {
+   "ad": "sag one -45 yana 30 dirsek 0 bilek -90",
+   "komut": {
+    "omuz_sag": {
+     "one_arka": -45.0,
+     "yana": 30.0
+    },
+    "dirsek_sag": {
+     "dirsek": 0.0,
+     "bilek": -90.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     -45.0,
+     -45.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     -90.0,
+     -90.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 1.6465543800037887e-10,
+   "max_derece": 3.086386963372995e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11
+  },
+  {
+   "ad": "sag one 60 yana 30 dirsek 45 bilek 30",
+   "komut": {
+    "omuz_sag": {
+     "one_arka": 60.0,
+     "yana": 30.0
+    },
+    "dirsek_sag": {
+     "dirsek": 45.0,
+     "bilek": 30.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     45.0,
+     45.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 9.736698580713753e-11,
+   "max_derece": 2.8749066316472214e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11
+  },
+  {
+   "ad": "sag one 90 yana 90 dirsek 105 bilek -60",
+   "komut": {
+    "omuz_sag": {
+     "one_arka": 90.0,
+     "yana": 90.0
+    },
+    "dirsek_sag": {
+     "dirsek": 105.0,
+     "bilek": -60.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     105.0,
+     105.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     -60.0,
+     -60.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 4.624910167868579e-11,
+   "max_derece": 3.074669700391293e-11,
+   "max_aci_hatasi": 2.3064217202772852e-11
+  },
+  {
+   "ad": "sol one 0 yana 0 dirsek 30 bilek 0",
+   "komut": {
+    "omuz_sol": {
+     "one_arka": 0.0,
+     "yana": 0.0
+    },
+    "dirsek_sol": {
+     "dirsek": 30.0,
+     "bilek": 0.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 4.659573486530428e-11,
+   "max_derece": 1.709230085818494e-11,
+   "max_aci_hatasi": 1.716315978228522e-11
+  },
+  {
+   "ad": "sol one 0 yana 0 dirsek 60 bilek 45",
+   "komut": {
+    "omuz_sol": {
+     "one_arka": 0.0,
+     "yana": 0.0
+    },
+    "dirsek_sol": {
+     "dirsek": 60.0,
+     "bilek": 45.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     45.0,
+     45.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 7.787449322233099e-11,
+   "max_derece": 3.4519696416784496e-11,
+   "max_aci_hatasi": 2.5657698188297218e-11
+  },
+  {
+   "ad": "sol one 0 yana 0 dirsek 105 bilek -90",
+   "komut": {
+    "omuz_sol": {
+     "one_arka": 0.0,
+     "yana": 0.0
+    },
+    "dirsek_sol": {
+     "dirsek": 105.0,
+     "bilek": -90.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     105.0,
+     105.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     -90.0,
+     -90.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 2.04274598294524e-11,
+   "max_derece": 6.359869620930798e-12,
+   "max_aci_hatasi": 5.8690829973784275e-12
+  },
+  {
+   "ad": "sol one 0 yana 0 dirsek 90 bilek 90",
+   "komut": {
+    "omuz_sol": {
+     "one_arka": 0.0,
+     "yana": 0.0
+    },
+    "dirsek_sol": {
+     "dirsek": 90.0,
+     "bilek": 90.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 2.4955118695788488e-11,
+   "max_derece": 8.262991693024461e-12,
+   "max_aci_hatasi": 5.9685589803848416e-12
+  },
+  {
+   "ad": "sol one 90 yana 0 dirsek 90 bilek 45",
+   "komut": {
+    "omuz_sol": {
+     "one_arka": 90.0,
+     "yana": 0.0
+    },
+    "dirsek_sol": {
+     "dirsek": 90.0,
+     "bilek": 45.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     45.0,
+     45.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 5.095460046735364e-11,
+   "max_derece": 2.8323496287541533e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11
+  },
+  {
+   "ad": "sol one 45 yana 60 dirsek 60 bilek -45",
+   "komut": {
+    "omuz_sol": {
+     "one_arka": 45.0,
+     "yana": 60.0
+    },
+    "dirsek_sol": {
+     "dirsek": 60.0,
+     "bilek": -45.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     45.0,
+     45.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     -45.0,
+     -45.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 1.0729610522413517e-10,
+   "max_derece": 3.451915299161745e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11
+  },
+  {
+   "ad": "sol one 135 yana 120 dirsek 105 bilek 90",
+   "komut": {
+    "omuz_sol": {
+     "one_arka": 135.0,
+     "yana": 120.0
+    },
+    "dirsek_sol": {
+     "dirsek": 105.0,
+     "bilek": 90.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     135.0,
+     135.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     120.0,
+     120.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     105.0,
+     105.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 8.514265645327975e-11,
+   "max_derece": 2.6138811367281254e-11,
+   "max_aci_hatasi": 1.9753088054130785e-11
+  },
+  {
+   "ad": "sol one -45 yana 30 dirsek 0 bilek -90",
+   "komut": {
+    "omuz_sol": {
+     "one_arka": -45.0,
+     "yana": 30.0
+    },
+    "dirsek_sol": {
+     "dirsek": 0.0,
+     "bilek": -90.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     -45.0,
+     -45.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     -90.0,
+     -90.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 1.642037051803671e-10,
+   "max_derece": 3.086128584056056e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11
+  },
+  {
+   "ad": "sol one 60 yana 30 dirsek 45 bilek 30",
+   "komut": {
+    "omuz_sol": {
+     "one_arka": 60.0,
+     "yana": 30.0
+    },
+    "dirsek_sol": {
+     "dirsek": 45.0,
+     "bilek": 30.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     45.0,
+     45.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 9.733580301573596e-11,
+   "max_derece": 2.8735886516518415e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11
+  },
+  {
+   "ad": "sol one 90 yana 90 dirsek 105 bilek -60",
+   "komut": {
+    "omuz_sol": {
+     "one_arka": 90.0,
+     "yana": 90.0
+    },
+    "dirsek_sol": {
+     "dirsek": 105.0,
+     "bilek": -60.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     105.0,
+     105.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     -60.0,
+     -60.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 4.648498955501583e-11,
+   "max_derece": 3.079170508356239e-11,
+   "max_aci_hatasi": 2.3064217202772852e-11
+  },
+  {
+   "ad": "iki kol sag (90, 45, 0, 0) sol (90, 45, 0, 0)",
    "komut": {
     "omuz_sag": {
      "one_arka": 90.0,
@@ -1613,6 +5177,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1646,14 +5234,38 @@
      45.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 6.739915808649404e-11,
+   "max_mm": 1.5038518141672818e-10,
    "max_derece": 2.6361553565222676e-11,
    "max_aci_hatasi": 2.5693225325085223e-11
   },
   {
-   "ad": "iki kol sag (120, 30) sol (-30, 90)",
+   "ad": "iki kol sag (120, 30, 0, 0) sol (-30, 90, 0, 0)",
    "komut": {
     "omuz_sag": {
      "one_arka": 120.0,
@@ -1692,6 +5304,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1725,10 +5361,304 @@
      90.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 5.234970271791103e-11,
+   "max_mm": 1.153311925270128e-10,
    "max_derece": 2.0426731060198183e-11,
+   "max_aci_hatasi": 1.716315978228522e-11
+  },
+  {
+   "ad": "iki kol sag (90, 0, 60, 45) sol (90, 0, 60, -45)",
+   "komut": {
+    "omuz_sag": {
+     "one_arka": 90.0,
+     "yana": 0.0
+    },
+    "omuz_sol": {
+     "one_arka": 90.0,
+     "yana": 0.0
+    },
+    "dirsek_sag": {
+     "dirsek": 60.0,
+     "bilek": 45.0
+    },
+    "dirsek_sol": {
+     "dirsek": 60.0,
+     "bilek": -45.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     45.0,
+     45.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     60.0,
+     60.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     -45.0,
+     -45.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 1.0482537163219354e-10,
+   "max_derece": 3.874127323124707e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11
+  },
+  {
+   "ad": "iki kol sag (30, 20, 105, 90) sol (-30, 40, 30, -90)",
+   "komut": {
+    "omuz_sag": {
+     "one_arka": 30.0,
+     "yana": 20.0
+    },
+    "omuz_sol": {
+     "one_arka": -30.0,
+     "yana": 40.0
+    },
+    "dirsek_sag": {
+     "dirsek": 105.0,
+     "bilek": 90.0
+    },
+    "dirsek_sol": {
+     "dirsek": 30.0,
+     "bilek": -90.0
+    }
+   },
+   "sinir_ici": true,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     20.0,
+     20.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     -30.0,
+     -30.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     40.0,
+     40.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     105.0,
+     105.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     30.0,
+     30.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     -90.0,
+     -90.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 1.0437148290122537e-10,
+   "max_derece": 2.303252531712763e-11,
    "max_aci_hatasi": 1.716315978228522e-11
   }
  ],
@@ -1769,6 +5699,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1802,9 +5756,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 9.574067026196304e-12,
+   "max_mm": 2.33820689516091e-11,
    "max_derece": 4.325626946174508e-12,
    "max_aci_hatasi": 4.291678123991005e-12
   },
@@ -1844,6 +5822,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1877,9 +5879,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 2.721008818116385e-11,
+   "max_mm": 6.578529940486681e-11,
    "max_derece": 1.2144040029648223e-11,
    "max_aci_hatasi": 1.2164491636212915e-11
   },
@@ -1919,6 +5945,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -1952,9 +6002,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 5.789822417254002e-11,
+   "max_mm": 1.3152403920027057e-10,
    "max_derece": 2.307174365933635e-11,
    "max_aci_hatasi": 2.3064217202772852e-11
   },
@@ -1994,6 +6068,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2027,9 +6125,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 9.055071987920185e-12,
+   "max_mm": 2.0179013698594725e-11,
    "max_derece": 3.4286379466176712e-12,
    "max_aci_hatasi": 3.439026841078885e-12
   },
@@ -2069,6 +6191,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2102,9 +6248,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 2.1175852056724196e-11,
+   "max_mm": 4.859883783074022e-11,
    "max_derece": 8.55569209313686e-12,
    "max_aci_hatasi": 8.549605468033405e-12
   },
@@ -2144,6 +6314,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2177,9 +6371,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 9.617337012339753e-12,
+   "max_mm": 2.3303340698882565e-11,
    "max_derece": 4.325626946174508e-12,
    "max_aci_hatasi": 4.291678123991005e-12
   },
@@ -2219,6 +6437,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2252,9 +6494,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 2.7244239594437513e-11,
+   "max_mm": 6.581712381758163e-11,
    "max_derece": 1.2144040029648223e-11,
    "max_aci_hatasi": 1.2164491636212915e-11
   },
@@ -2294,6 +6560,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2327,9 +6617,33 @@
      0.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 5.8141370606823486e-11,
+   "max_mm": 1.31682647524623e-10,
    "max_derece": 2.307174365933635e-11,
    "max_aci_hatasi": 2.3035795493342448e-11
   },
@@ -2369,6 +6683,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2402,9 +6740,33 @@
      140.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 9.055874832981176e-12,
+   "max_mm": 2.0260852008043802e-11,
    "max_derece": 3.4286379466176712e-12,
    "max_aci_hatasi": 3.467448550509289e-12
   },
@@ -2444,6 +6806,30 @@
      0.0,
      0.0
     ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
     "Iskelet": [
      0.0,
      0.0
@@ -2477,11 +6863,773 @@
      -15.0,
      0.0,
      0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
     ]
    },
-   "max_mm": 2.1175871130176375e-11,
+   "max_mm": 4.859884821927929e-11,
    "max_derece": 8.55569209313686e-12,
    "max_aci_hatasi": 8.549605468033405e-12
+  },
+  {
+   "ad": "dirsek_sag dirsek 120 bilek 0",
+   "komut": {
+    "dirsek_sag": {
+     "dirsek": 120.0,
+     "bilek": 0.0
+    }
+   },
+   "sinir_ici": false,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     120.0,
+     120.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 3.026079303792138e-11,
+   "max_derece": 1.114468538844908e-11,
+   "max_aci_hatasi": 1.1169731806148775e-11
+  },
+  {
+   "ad": "dirsek_sag dirsek -20 bilek 0",
+   "komut": {
+    "dirsek_sag": {
+     "dirsek": -20.0,
+     "bilek": 0.0
+    }
+   },
+   "sinir_ici": false,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     -20.0,
+     -20.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 2.0969848475149536e-11,
+   "max_derece": 7.703303438504638e-12,
+   "max_aci_hatasi": 7.645439836778678e-12
+  },
+  {
+   "ad": "dirsek_sag dirsek 0 bilek 120",
+   "komut": {
+    "dirsek_sag": {
+     "dirsek": 0.0,
+     "bilek": 120.0
+    }
+   },
+   "sinir_ici": false,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     120.0,
+     120.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 8.083415975732077e-12,
+   "max_derece": 1.1138302494485236e-11,
+   "max_aci_hatasi": 1.1155520951433573e-11
+  },
+  {
+   "ad": "dirsek_sol dirsek 120 bilek 0",
+   "komut": {
+    "dirsek_sol": {
+     "dirsek": 120.0,
+     "bilek": 0.0
+    }
+   },
+   "sinir_ici": false,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     120.0,
+     120.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 3.059001267969955e-11,
+   "max_derece": 1.114468538844908e-11,
+   "max_aci_hatasi": 1.1169731806148775e-11
+  },
+  {
+   "ad": "dirsek_sol dirsek -20 bilek 0",
+   "komut": {
+    "dirsek_sol": {
+     "dirsek": -20.0,
+     "bilek": 0.0
+    }
+   },
+   "sinir_ici": false,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     -20.0,
+     -20.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 2.09546847156798e-11,
+   "max_derece": 7.703303438504638e-12,
+   "max_aci_hatasi": 7.720046824033489e-12
+  },
+  {
+   "ad": "dirsek_sol dirsek 0 bilek 120",
+   "komut": {
+    "dirsek_sol": {
+     "dirsek": 0.0,
+     "bilek": 120.0
+    }
+   },
+   "sinir_ici": false,
+   "kare": 52,
+   "t_son": 1.0,
+   "son": {
+    "OmuzSag_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Kol": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Govde": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Gobek": [
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Kol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSag_El": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_UstKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_OnKol": [
+     0.0,
+     0.0
+    ],
+    "DirsekSol_El": [
+     0.0,
+     0.0
+    ],
+    "Iskelet": [
+     0.0,
+     0.0
+    ],
+    "Kabuk": [
+     0.0,
+     0.0
+    ]
+   },
+   "son_aci": {
+    "OmuzSag_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSag_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_OneArka": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "OmuzSol_Yana": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSag_Bilek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Dirsek": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "DirsekSol_Bilek": [
+     120.0,
+     120.0,
+     0.0,
+     0.0
+    ]
+   },
+   "max_mm": 7.831405925938976e-12,
+   "max_derece": 1.1138329668615748e-11,
+   "max_aci_hatasi": 1.1112888387287967e-11
   }
  ],
  "solve_testi": [
@@ -2511,7 +7659,7 @@
     "one_arka": 160.0,
     "yana": 0.0
    },
-   "max_mm": 6.938623537128991e-13
+   "max_mm": 7.054082769849888e-13
   },
   {
    "kol": "omuz_sag",
@@ -2525,7 +7673,7 @@
     "one_arka": 0.0,
     "yana": 140.0
    },
-   "max_mm": 5.084229945850415e-13
+   "max_mm": 3.410605131648481e-13
   },
   {
    "kol": "omuz_sag",
@@ -2567,7 +7715,7 @@
     "one_arka": 160.0,
     "yana": 0.0
    },
-   "max_mm": 6.868416433914361e-13
+   "max_mm": 6.938623537128991e-13
   },
   {
    "kol": "omuz_sol",
@@ -2581,7 +7729,7 @@
     "one_arka": 0.0,
     "yana": 140.0
    },
-   "max_mm": 5.143956456589156e-13
+   "max_mm": 4.592217417228007e-13
   },
   {
    "kol": "omuz_sol",
@@ -2596,6 +7744,90 @@
     "yana": 0.0
    },
    "max_mm": 7.122459968594323e-13
+  },
+  {
+   "kol": "dirsek_sag",
+   "poz": {
+    "dirsek": 60.0,
+    "bilek": 45.0
+   },
+   "sinir_ici": true,
+   "solve": 0,
+   "olculen": {
+    "dirsek": 60.0,
+    "bilek": 45.0
+   },
+   "max_mm": 5.859285502108464e-13
+  },
+  {
+   "kol": "dirsek_sag",
+   "poz": {
+    "dirsek": 125.0,
+    "bilek": 0.0
+   },
+   "sinir_ici": false,
+   "solve": 0,
+   "olculen": {
+    "dirsek": 125.0,
+    "bilek": 0.0
+   },
+   "max_mm": 3.770565843246231e-13
+  },
+  {
+   "kol": "dirsek_sag",
+   "poz": {
+    "dirsek": 30.0,
+    "bilek": -110.0
+   },
+   "sinir_ici": false,
+   "solve": 0,
+   "olculen": {
+    "dirsek": 30.0,
+    "bilek": -110.0
+   },
+   "max_mm": 2.6963201038669064e-13
+  },
+  {
+   "kol": "dirsek_sol",
+   "poz": {
+    "dirsek": 60.0,
+    "bilek": 45.0
+   },
+   "sinir_ici": true,
+   "solve": 0,
+   "olculen": {
+    "dirsek": 60.0,
+    "bilek": 45.0
+   },
+   "max_mm": 5.824717144355189e-13
+  },
+  {
+   "kol": "dirsek_sol",
+   "poz": {
+    "dirsek": 125.0,
+    "bilek": 0.0
+   },
+   "sinir_ici": false,
+   "solve": 0,
+   "olculen": {
+    "dirsek": 125.0,
+    "bilek": 0.0
+   },
+   "max_mm": 2.7847474288855413e-13
+  },
+  {
+   "kol": "dirsek_sol",
+   "poz": {
+    "dirsek": 30.0,
+    "bilek": -110.0
+   },
+   "sinir_ici": false,
+   "solve": 0,
+   "olculen": {
+    "dirsek": 30.0,
+    "bilek": -110.0
+   },
+   "max_mm": 2.604892696897332e-13
   }
  ],
  "ozet": {
@@ -2603,10 +7835,10 @@
    "kol": "omuz_sag",
    "anahtar": "one_arka",
    "etiket": "OmuzSag one-arka (S1)",
-   "vaka": 12,
+   "vaka": 24,
    "grup": "OmuzSag_Gobek",
-   "max_mm": 7.856850389683788e-11,
-   "max_derece": 3.087450863682163e-11,
+   "max_mm": 1.686028793830723e-10,
+   "max_derece": 3.874127323124707e-11,
    "max_aci_hatasi": 2.5693225325085223e-11,
    "sinir": [
     -45.0,
@@ -2627,10 +7859,10 @@
    "kol": "omuz_sag",
    "anahtar": "yana",
    "etiket": "OmuzSag yana acma (S2)",
-   "vaka": 12,
+   "vaka": 24,
    "grup": "OmuzSag_Kol",
-   "max_mm": 7.856850389683788e-11,
-   "max_derece": 3.087450863682163e-11,
+   "max_mm": 1.686028793830723e-10,
+   "max_derece": 3.874127323124707e-11,
    "max_aci_hatasi": 2.5693225325085223e-11,
    "sinir": [
     0.0,
@@ -2651,10 +7883,10 @@
    "kol": "omuz_sol",
    "anahtar": "one_arka",
    "etiket": "OmuzSol one-arka (S1)",
-   "vaka": 12,
+   "vaka": 24,
    "grup": "OmuzSol_Gobek",
-   "max_mm": 7.856848333405171e-11,
-   "max_derece": 3.087575588036063e-11,
+   "max_mm": 1.6826781131745397e-10,
+   "max_derece": 3.874127323124707e-11,
    "max_aci_hatasi": 2.5693225325085223e-11,
    "sinir": [
     -45.0,
@@ -2675,10 +7907,10 @@
    "kol": "omuz_sol",
    "anahtar": "yana",
    "etiket": "OmuzSol yana acma (S2)",
-   "vaka": 12,
+   "vaka": 24,
    "grup": "OmuzSol_Kol",
-   "max_mm": 7.856848333405171e-11,
-   "max_derece": 3.087575588036063e-11,
+   "max_mm": 1.6826781131745397e-10,
+   "max_derece": 3.874127323124707e-11,
    "max_aci_hatasi": 2.5693225325085223e-11,
    "sinir": [
     0.0,
@@ -2694,7 +7926,103 @@
     955.0,
     20.2
    ]
+  },
+  "DirsekSag_Dirsek": {
+   "kol": "dirsek_sag",
+   "anahtar": "dirsek",
+   "etiket": "DirsekSag dirsek (MG996R)",
+   "vaka": 12,
+   "grup": "DirsekSag_OnKol",
+   "max_mm": 1.6465543800037887e-10,
+   "max_derece": 3.874127323124707e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11,
+   "sinir": [
+    0.0,
+    105.0
+   ],
+   "eksen": [
+    -1.0,
+    0.0,
+    -2.220446049250313e-16
+   ],
+   "nokta": [
+    216.6,
+    782.0,
+    -1.25
+   ]
+  },
+  "DirsekSag_Bilek": {
+   "kol": "dirsek_sag",
+   "anahtar": "bilek",
+   "etiket": "DirsekSag bilek (MG996R)",
+   "vaka": 12,
+   "grup": "DirsekSag_El",
+   "max_mm": 1.6465543800037887e-10,
+   "max_derece": 3.874127323124707e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11,
+   "sinir": [
+    -90.0,
+    90.0
+   ],
+   "eksen": [
+    0.0,
+    1.0,
+    -2.220446049250313e-16
+   ],
+   "nokta": [
+    185.0,
+    698.9,
+    -1.25
+   ]
+  },
+  "DirsekSol_Dirsek": {
+   "kol": "dirsek_sol",
+   "anahtar": "dirsek",
+   "etiket": "DirsekSol dirsek (MG996R)",
+   "vaka": 12,
+   "grup": "DirsekSol_OnKol",
+   "max_mm": 1.642037051803671e-10,
+   "max_derece": 3.874127323124707e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11,
+   "sinir": [
+    0.0,
+    105.0
+   ],
+   "eksen": [
+    -1.0000000000000002,
+    0.0,
+    0.0
+   ],
+   "nokta": [
+    -216.6,
+    782.0,
+    -1.25
+   ]
+  },
+  "DirsekSol_Bilek": {
+   "kol": "dirsek_sol",
+   "anahtar": "bilek",
+   "etiket": "DirsekSol bilek (MG996R)",
+   "vaka": 12,
+   "grup": "DirsekSol_El",
+   "max_mm": 1.642037051803671e-10,
+   "max_derece": 3.874127323124707e-11,
+   "max_aci_hatasi": 2.5693225325085223e-11,
+   "sinir": [
+    -90.0,
+    90.0
+   ],
+   "eksen": [
+    8.659560562354934e-17,
+    -1.0,
+    -2.220446049250313e-16
+   ],
+   "nokta": [
+    -185.0,
+    698.9,
+    -1.25
+   ]
   }
  },
- "sure_s": 29.7
+ "sure_s": 46.2
 }

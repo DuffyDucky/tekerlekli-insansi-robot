@@ -1,9 +1,9 @@
 {
  "dosya": "robot-montaj.FCStd",
  "step": "robot-montaj.step",
- "step_kati": 397,
- "parca_sayisi": 397,
- "grup_sayisi": 8,
+ "step_kati": 503,
+ "parca_sayisi": 503,
+ "grup_sayisi": 14,
  "gecersiz": [],
  "hacim_fark_mm3": 8.731149137020111e-11,
  "ayna_merkez_fark_mm": 5.859285502108464e-13,
@@ -108,6 +108,56 @@
    ],
    "gruplar": [
     "Kabuk"
+   ]
+  },
+  {
+   "ad": "dirsek_sag",
+   "konum": [
+    0.0,
+    955.0,
+    0.0
+   ],
+   "ayna": false,
+   "not_": "yerel = omuz_sag yereli; omuz Kol grubuna bagli, eklemler dirsek (X) + bilek (on kol ekseni)",
+   "parca_modulde": 53,
+   "parca": 53,
+   "haric": [],
+   "haric_neden": "",
+   "kutle_g": 369.98,
+   "agirlik_merkezi": [
+    189.34,
+    748.705,
+    -1.586
+   ],
+   "gruplar": [
+    "DirsekSag_UstKol",
+    "DirsekSag_OnKol",
+    "DirsekSag_El"
+   ]
+  },
+  {
+   "ad": "dirsek_sol",
+   "konum": [
+    0.0,
+    955.0,
+    0.0
+   ],
+   "ayna": true,
+   "not_": "sag dirsegin X aynasi (omuz_sol Kol grubuna bagli)",
+   "parca_modulde": 53,
+   "parca": 53,
+   "haric": [],
+   "haric_neden": "",
+   "kutle_g": 369.98,
+   "agirlik_merkezi": [
+    -189.34,
+    748.705,
+    -1.586
+   ],
+   "gruplar": [
+    "DirsekSol_UstKol",
+    "DirsekSol_OnKol",
+    "DirsekSol_El"
    ]
   }
  ],
@@ -301,6 +351,174 @@
     0.0
    ],
    "aciklama": "govde braketleri direk yan kanallarina (4 braket x 2 M6), etek braketleri uzun ray ust kanallarina (6 x M6), cekic somunla (arayuz.KABUK_GOVDE_BRAKET / KABUK_ETEK_BRAKET)"
+  },
+  {
+   "isim": "Sabit_DirsekSag",
+   "etiket": "DirsekSag UstKol -> omuz_sag (sabit)",
+   "tip": "Fixed",
+   "modul": "dirsek_sag",
+   "ust": "OmuzSag_Kol",
+   "alt": "DirsekSag_UstKol",
+   "nokta": [
+    185.0,
+    815.0,
+    -1.25
+   ],
+   "aciklama": "dirsek catali ust kol tupunun ucuna: pim + yarikli sikma bilezigi, 2x M3 (arayuz.DIRSEK)"
+  },
+  {
+   "isim": "DirsekSag_Dirsek",
+   "etiket": "DirsekSag dirsek (MG996R)",
+   "tip": "Revolute",
+   "modul": "dirsek_sag",
+   "anahtar": "dirsek",
+   "ad": "dirsek (MG996R)",
+   "ust": "DirsekSag_UstKol",
+   "alt": "DirsekSag_OnKol",
+   "nokta": [
+    216.6,
+    782.0,
+    -1.25
+   ],
+   "eksen": [
+    -1.0,
+    0.0,
+    -0.0
+   ],
+   "yerel_nokta": [
+    216.6,
+    -173.0,
+    -1.25
+   ],
+   "yerel_eksen": [
+    -1.0,
+    0.0,
+    -0.0
+   ],
+   "sinir": [
+    0.0,
+    105.0
+   ],
+   "kaynak": "dirsek/dirsek-montaj.FCStd: Dirsek (Dirsek (MG996R))"
+  },
+  {
+   "isim": "DirsekSag_Bilek",
+   "etiket": "DirsekSag bilek (MG996R)",
+   "tip": "Revolute",
+   "modul": "dirsek_sag",
+   "anahtar": "bilek",
+   "ad": "bilek (MG996R)",
+   "ust": "DirsekSag_OnKol",
+   "alt": "DirsekSag_El",
+   "nokta": [
+    185.0,
+    698.9,
+    -1.25
+   ],
+   "eksen": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "yerel_nokta": [
+    185.0,
+    -256.1,
+    -1.25
+   ],
+   "yerel_eksen": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "sinir": [
+    -90.0,
+    90.0
+   ],
+   "kaynak": "dirsek/dirsek-montaj.FCStd: Bilek (Bilek (MG996R))"
+  },
+  {
+   "isim": "Sabit_DirsekSol",
+   "etiket": "DirsekSol UstKol -> omuz_sol (sabit)",
+   "tip": "Fixed",
+   "modul": "dirsek_sol",
+   "ust": "OmuzSol_Kol",
+   "alt": "DirsekSol_UstKol",
+   "nokta": [
+    -185.0,
+    815.0,
+    -1.25
+   ],
+   "aciklama": "dirsek catali ust kol tupunun ucuna: pim + yarikli sikma bilezigi, 2x M3 (arayuz.DIRSEK)"
+  },
+  {
+   "isim": "DirsekSol_Dirsek",
+   "etiket": "DirsekSol dirsek (MG996R)",
+   "tip": "Revolute",
+   "modul": "dirsek_sol",
+   "anahtar": "dirsek",
+   "ad": "dirsek (MG996R)",
+   "ust": "DirsekSol_UstKol",
+   "alt": "DirsekSol_OnKol",
+   "nokta": [
+    -216.6,
+    782.0,
+    -1.25
+   ],
+   "eksen": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "yerel_nokta": [
+    216.6,
+    -173.0,
+    -1.25
+   ],
+   "yerel_eksen": [
+    -1.0,
+    0.0,
+    -0.0
+   ],
+   "sinir": [
+    0.0,
+    105.0
+   ],
+   "kaynak": "dirsek/dirsek-montaj.FCStd: Dirsek (Dirsek (MG996R))"
+  },
+  {
+   "isim": "DirsekSol_Bilek",
+   "etiket": "DirsekSol bilek (MG996R)",
+   "tip": "Revolute",
+   "modul": "dirsek_sol",
+   "anahtar": "bilek",
+   "ad": "bilek (MG996R)",
+   "ust": "DirsekSol_OnKol",
+   "alt": "DirsekSol_El",
+   "nokta": [
+    -185.0,
+    698.9,
+    -1.25
+   ],
+   "eksen": [
+    0.0,
+    -1.0,
+    -0.0
+   ],
+   "yerel_nokta": [
+    185.0,
+    -256.1,
+    -1.25
+   ],
+   "yerel_eksen": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "sinir": [
+    -90.0,
+    90.0
+   ],
+   "kaynak": "dirsek/dirsek-montaj.FCStd: Bilek (Bilek (MG996R))"
   }
  ],
  "dosyadaki_eklem": [
@@ -311,51 +529,57 @@
   "Sabit_OmuzSol",
   "OmuzSol_OneArka",
   "OmuzSol_Yana",
-  "Sabit_Kabuk"
+  "Sabit_Kabuk",
+  "Sabit_DirsekSag",
+  "DirsekSag_Dirsek",
+  "DirsekSag_Bilek",
+  "Sabit_DirsekSol",
+  "DirsekSol_Dirsek",
+  "DirsekSol_Bilek"
  ],
  "solve": 0,
  "ev_pozu_cozucu_sapmasi": 0.0,
- "kutle_g": 11646.13,
+ "kutle_g": 12386.08,
  "agirlik_merkezi": [
-  -0.037,
-  429.185,
-  3.517
+  -0.034,
+  448.273,
+  3.212
  ],
  "karsilastirma": {
   "parca": {
-   "montaj": 397,
-   "beklenen": 397,
-   "formul": "iskelet 59 + 2 x (omuz 70 - travers - kabuk referansi) + kabuk 202",
+   "montaj": 503,
+   "beklenen": 503,
+   "formul": "iskelet 59 + 2 x (omuz 70 - travers - kabuk referansi) + kabuk 202 + dirsek_sag 53 + dirsek_sol 53",
    "ayni": true
   },
   "kutle": {
-   "montaj_dosyasi": 11646.13,
-   "bellek": 11646.13,
-   "beklenen_analizlerden": 11646.1,
-   "carpisma": 11646.1,
-   "fark_analiz": 0.031,
-   "fark_carpisma": 0.028
+   "montaj_dosyasi": 12386.08,
+   "bellek": 12386.08,
+   "beklenen_analizlerden": 12386.1,
+   "carpisma": 12386.1,
+   "fark_analiz": -0.017,
+   "fark_carpisma": -0.019
   },
   "am": {
    "montaj_dosyasi": [
-    -0.037,
-    429.185,
-    3.517
+    -0.034,
+    448.273,
+    3.212
    ],
    "bellek": [
-    -0.037,
-    429.185,
-    3.517
+    -0.034,
+    448.273,
+    3.212
    ],
    "carpisma": [
-    -0.04,
-    429.18,
-    3.52
+    -0.03,
+    448.27,
+    3.21
    ],
-   "fark_carpisma_mm": 0.007,
+   "fark_carpisma_mm": 0.006,
    "fark_bellek_mm": 0.0
   },
   "not_": "analiz JSON'lari 0,1 g'a yuvarlanmis; carpisma AM'si 0,01 mm'ye"
  },
- "sure_s": 31.7
+ "sure_s": 33.7
 }
