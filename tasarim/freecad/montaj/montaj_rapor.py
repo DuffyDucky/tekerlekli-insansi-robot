@@ -78,8 +78,8 @@ def tablo(baslik, satirlar, sinif=""):
     return "".join(h)
 
 
-MODAD = {"iskelet": "İskelet", "omuz_sag": "Sağ omuz", "omuz_sol": "Sol omuz"}
-GRUPAD = {"Iskelet": "iskelet", "OmuzSag_Govde": "sağ omuz gövde", "OmuzSag_Gobek": "sağ omuz göbeği",
+MODAD = {"iskelet": "İskelet", "omuz_sag": "Sağ omuz", "omuz_sol": "Sol omuz", "kabuk": "Kabuk"}
+GRUPAD = {"Iskelet": "iskelet", "Kabuk": "kabuk", "OmuzSag_Govde": "sağ omuz gövde", "OmuzSag_Gobek": "sağ omuz göbeği",
           "OmuzSag_Kol": "sağ üst kol", "OmuzSol_Govde": "sol omuz gövde", "OmuzSol_Gobek": "sol omuz göbeği",
           "OmuzSol_Kol": "sol üst kol"}
 EKAD = {"one_arka": "öne-arka (S1)", "yana": "yana açma (S2)"}
@@ -191,7 +191,7 @@ KARAR = [
     "gövdeye çarpıyor (omuz taraması yana −20…−5°). 270° servo alınırsa sınırlar −60…180°'e kadar açılabilir "
     "(geometri izin veriyor); o zaman `omuz_montaj.py` güncellenip ana montaj yeniden kurulur.",
     "**Travers bir kez sayılıyor:** Omuz modülünün içindeki 200 mm traversi iskeletin parçası; ana montajda yalnız iskeletinki var. "
-    "Omuzdaki kabuk duvarı (referans, 0 g) kabuk modülü gelene kadar dışarıda. Parça sayısı 59 + 2 × 68 = 195.",
+    "Omuzdaki kabuk duvarı (referans, 0 g) ana montajda yok; yerini gerçek kabuk modülü aldı (`kabuk/`). Parça sayısı %d = %s." % (d["karsilastirma"]["parca"]["montaj"], d["karsilastirma"]["parca"]["formul"]),
     "**Eklem yapısı:** İskelet zemine sabit (grounded); her omuz gövdesi iskelete sabit eklemle (omuz yuvası, 4× M6 + çekiç somun) bağlı; "
     "her omuzda gövde → göbek (öne-arka) ve göbek → kol (yana açma) döner eklemleri. Serbestlik: 4 (her kolda 2).",
 ]
@@ -209,12 +209,12 @@ ACIK = [
     "**Sol baskı parçaları aynalı basılmalı:** Omuz yuvası, rulman kapağı, omuz göbeği, kol çatalı ve tüp sağın aynası. Dilimleyicide "
     "STL'ler X'te aynalanarak basılır (`omuz/stl/` yalnız sağ). Servo, horn, rulman ve cıvatalar simetrik kabul edildi: DS3218MG gövdesi "
     "genişlik yönünde simetrik, aynası 180° çevrilmiş servo ile aynı (tahmini; kablo çıkışı tarafı farklı olabilir).",
-    "**Kabuk, kafa, taban, dirsek henüz yok:** `moduller.py`'de `SIRA` listesine eklenip birer yükleyici yazılınca ana montaja girer. "
+    "**Kafa, taban, dirsek henüz yok:** `moduller.py`'de `SIRA` listesine eklenip birer yükleyici yazılınca ana montaja girer. "
     "Dirsek kola bağlanacağı için yükleyicisinde `baglanti=dict(modul='omuz_sag', grup='Kol', ...)` verilir; beklenen poz zinciri "
     "(omuz × dirsek) o zaman `eklem_dogrulama.py`'ye eklenmeli.",
     "**Montaj dosyası iki adımda üretiliyor:** `ana_montaj.py` (arayüzsüz) dosyayı kurar, `montaj_gorsel.py` (GUI) eklem görünüm "
     "nesnelerini ve simülasyonu ekleyip yeniden kaydeder. Yalnız `ana_montaj.py` çalıştırılırsa dosya açıldığında eklem işaretleri görünmez.",
-    "**Kütle ve ağırlık merkezi taban ve kabuksuz:** %s kg, AM yerden %s mm (iskelet + iki omuz). Akü, motorlar ve kabuk gelince AM "
+    "**Kütle ve ağırlık merkezi tabansız:** %s kg, AM yerden %s mm (iskelet + iki omuz + kabuk). Akü, motorlar ve tekerler gelince AM "
     "belirgin şekilde aşağı iner." % (sayi(d["kutle_g"] / 1000, 2), sayi(CG[1], 0)),
 ]
 
@@ -241,21 +241,21 @@ ol li,ul li{margin:5px 0}code{background:rgba(127,127,127,.15);padding:1px 5px;b
 .ok{color:var(--ok);font-weight:600}.no{color:var(--no);font-weight:600}.wide{grid-column:1/-1}
 .not{color:var(--mut);font-size:13px}
 </style></head><body><main>""")
-H.append("<h1>Robot ana montajı: iskelet + sağ omuz + sol omuz</h1>")
+H.append("<h1>Robot ana montajı: iskelet + sağ omuz + sol omuz + kabuk</h1>")
 H.append("<div class='sub'>FreeCAD 1.1 Assembly · <code>ana_montaj.py</code> · %d parça, %d grup, %d eklem · yerleşim <code>arayuz.MODULLER</code>'den · "
          "sol omuz gerçek aynalı geometri</div>" % (d["parca_sayisi"], d["grup_sayisi"], len(d["eklemler"])))
 kpi = [
-    ("%d" % d["parca_sayisi"], "parça (59 iskelet + 2 × 68 omuz) · tümü geçerli, STEP geri okuma %d katı" % d["step_kati"]),
+    ("%d" % d["parca_sayisi"], "parça (%s) · tümü geçerli, STEP geri okuma %d katı" % (d["karsilastirma"]["parca"]["formul"], d["step_kati"])),
     ("%s kg" % sayi(d["kutle_g"] / 1000, 2), "kütle · AM (%s; %s; %s) mm · modül toplamından fark %s g" % (sayi(CG[0], 1), sayi(CG[1], 0), sayi(CG[2], 1), sayi(K["kutle"]["fark_analiz"], 2))),
     ("%d" % c["toplam"]["cakisma"], "modüller arası çakışma (ev pozu + %d poz tarama)" % n_poz),
-    ("4 eksen", "2 omuz × (öne-arka, yana açma) · iskelet zemine sabit, omuzlar iskelete sabit"),
+    ("4 eksen", "2 omuz × (öne-arka, yana açma) · iskelet zemine sabit, omuzlar ve kabuk iskelete sabit"),
     ("%s mm" % bilimsel(mx_mm).replace("<sup>", "<sup>"), "eklem doğrulama en büyük sapma (%d poz, %d çözücü karesi) · açı %s°" % (n_vaka, n_kare, re.sub("<.*?>", "", bilimsel(mx_dg)).replace("·10", "e"))),
     ("doğrulandı" if gui_ok else "SORUN", "GUI'de açılış: eklemler görünür, ağaçta ve 3B'de seçilebilir, sürükleme çalışıyor"),
 ]
 H.append("<div class='k'>" + "".join("<div class='kpi'><b>%s</b><span>%s</span></div>" % (a, esc(b)) for a, b in kpi) + "</div>")
 
 H.append("<h2>Görünümler</h2><div class='grid'>")
-for ad, cap, w in (("montaj-izometrik.png", "İzometrik: iskelet ve iki omuz", ""),
+for ad, cap, w in (("montaj-izometrik.png", "İzometrik: iskelet, iki omuz ve kabuk", ""),
                    ("montaj-on.png", "Önden (+Z'den bakış; robotun sağı görüntünün solunda)", ""),
                    ("montaj-yan.png", "Yandan (+X'ten bakış)", ""),
                    ("montaj-omuzlar.png", "Omuzlar yakından: sol omuz sağın aynası", "wide"),

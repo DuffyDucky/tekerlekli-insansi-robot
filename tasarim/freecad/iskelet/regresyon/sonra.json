@@ -1,0 +1,1378 @@
+{
+"parca_sayisi": 59,
+"parcalar": [
+{
+"ad": "Sase uzun rayi sag",
+"grup": "Sase",
+"hacim": 363149.253657757,
+"kati": 1,
+"gecerli": true,
+"kutle": 980.502984876,
+"merkez": [
+115.0,
+114.5,
+0.0
+],
+"bb": [
+95.0,
+135.0,
+94.5,
+134.5,
+-250.0,
+250.0
+]
+},
+{
+"ad": "Sase uzun rayi sol",
+"grup": "Sase",
+"hacim": 363149.253657757,
+"kati": 1,
+"gecerli": true,
+"kutle": 980.502984876,
+"merkez": [
+-115.0,
+114.5,
+0.0
+],
+"bb": [
+-135.0,
+-95.0,
+94.5,
+134.5,
+-250.0,
+250.0
+]
+},
+{
+"ad": "Sase ara rayi arka",
+"grup": "Sase",
+"hacim": 137996.716389947,
+"kati": 1,
+"gecerli": true,
+"kutle": 372.591134253,
+"merkez": [
+-0.0,
+114.5,
+-230.0
+],
+"bb": [
+-95.0,
+95.0,
+94.5,
+134.5,
+-250.0,
+-210.0
+]
+},
+{
+"ad": "Sase ara rayi orta",
+"grup": "Sase",
+"hacim": 137996.716389948,
+"kati": 1,
+"gecerli": true,
+"kutle": 372.591134253,
+"merkez": [
+0.0,
+114.5,
+-0.0
+],
+"bb": [
+-95.0,
+95.0,
+94.5,
+134.5,
+-20.0,
+20.0
+]
+},
+{
+"ad": "Sase ara rayi on",
+"grup": "Sase",
+"hacim": 137996.716389948,
+"kati": 1,
+"gecerli": true,
+"kutle": 372.591134253,
+"merkez": [
+-0.0,
+114.5,
+230.0
+],
+"bb": [
+-95.0,
+95.0,
+94.5,
+134.5,
+210.0,
+250.0
+]
+},
+{
+"ad": "Govde diregi",
+"grup": "Direk",
+"hacim": 581401.955106068,
+"kati": 1,
+"gecerli": true,
+"kutle": 1569.785278786,
+"merkez": [
+0.0,
+534.75,
+-0.0
+],
+"bb": [
+-20.0,
+20.0,
+134.5,
+935.0,
+-20.0,
+20.0
+]
+},
+{
+"ad": "Omuz traversi",
+"grup": "Travers",
+"hacim": 145259.701463103,
+"kati": 1,
+"gecerli": true,
+"kutle": 392.20119395,
+"merkez": [
+0.0,
+955.0,
+-0.0
+],
+"bb": [
+-100.0,
+100.0,
+935.0,
+975.0,
+-20.0,
+20.0
+]
+},
+{
+"ad": "Kose baglanti 40x40 genis (Direk-ray sag)",
+"grup": "Direk",
+"hacim": 16677.896904963,
+"kati": 1,
+"gecerli": true,
+"kutle": 75.0,
+"merkez": [
+32.719957445,
+147.219957445,
+0.0
+],
+"bb": [
+18.0,
+57.0,
+132.5,
+171.5,
+-18.85,
+18.85
+]
+},
+{
+"ad": "Pul M6 (Direk-ray sag, ayak A)",
+"grup": "Direk",
+"hacim": 129.48388281,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.01644848,
+"merkez": [
+42.0,
+139.8,
+-0.0
+],
+"bb": [
+36.0,
+48.0,
+139.0,
+140.6,
+-6.0,
+6.0
+]
+},
+{
+"ad": "Civata M6x16 (Direk-ray sag, ayak A)",
+"grup": "Direk",
+"hacim": 845.685953815,
+"kati": 1,
+"gecerli": true,
+"kutle": 6.638634737,
+"merkez": [
+42.0,
+137.60508725,
+0.0
+],
+"bb": [
+37.0,
+47.0,
+124.6,
+146.6,
+-5.0,
+5.0
+]
+},
+{
+"ad": "Cekic somun M6 (Direk-ray sag, ayak A)",
+"grup": "Direk",
+"hacim": 658.628330588,
+"kati": 1,
+"gecerli": true,
+"kutle": 5.170232395,
+"merkez": [
+42.0,
+127.7,
+-0.0
+],
+"bb": [
+37.0,
+47.0,
+125.2,
+130.2,
+-8.0,
+8.0
+]
+},
+{
+"ad": "Pul M6 (Direk-ray sag, ayak B)",
+"grup": "Direk",
+"hacim": 129.48388281,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.01644848,
+"merkez": [
+25.3,
+156.5,
+-0.0
+],
+"bb": [
+24.5,
+26.1,
+150.5,
+162.5,
+-6.0,
+6.0
+]
+},
+{
+"ad": "Civata M6x16 (Direk-ray sag, ayak B)",
+"grup": "Direk",
+"hacim": 845.685953815,
+"kati": 1,
+"gecerli": true,
+"kutle": 6.638634737,
+"merkez": [
+23.10508725,
+156.5,
+0.0
+],
+"bb": [
+10.1,
+32.1,
+151.5,
+161.5,
+-5.0,
+5.0
+]
+},
+{
+"ad": "Cekic somun M6 (Direk-ray sag, ayak B)",
+"grup": "Direk",
+"hacim": 658.628330588,
+"kati": 1,
+"gecerli": true,
+"kutle": 5.170232395,
+"merkez": [
+13.2,
+156.5,
+0.0
+],
+"bb": [
+10.7,
+15.7,
+151.5,
+161.5,
+-8.0,
+8.0
+]
+},
+{
+"ad": "Kose baglanti 40x40 genis (Direk-ray sol)",
+"grup": "Direk",
+"hacim": 16677.896904963,
+"kati": 1,
+"gecerli": true,
+"kutle": 75.0,
+"merkez": [
+-32.719957445,
+147.219957445,
+-0.0
+],
+"bb": [
+-57.0,
+-18.0,
+132.5,
+171.5,
+-18.85,
+18.85
+]
+},
+{
+"ad": "Pul M6 (Direk-ray sol, ayak A)",
+"grup": "Direk",
+"hacim": 129.48388281,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.01644848,
+"merkez": [
+-42.0,
+139.8,
+-0.0
+],
+"bb": [
+-48.0,
+-36.0,
+139.0,
+140.6,
+-6.0,
+6.0
+]
+},
+{
+"ad": "Civata M6x16 (Direk-ray sol, ayak A)",
+"grup": "Direk",
+"hacim": 845.685953815,
+"kati": 1,
+"gecerli": true,
+"kutle": 6.638634737,
+"merkez": [
+-42.0,
+137.60508725,
+-0.0
+],
+"bb": [
+-47.0,
+-37.0,
+124.6,
+146.6,
+-5.0,
+5.0
+]
+},
+{
+"ad": "Cekic somun M6 (Direk-ray sol, ayak A)",
+"grup": "Direk",
+"hacim": 658.628330588,
+"kati": 1,
+"gecerli": true,
+"kutle": 5.170232395,
+"merkez": [
+-42.0,
+127.7,
+-0.0
+],
+"bb": [
+-47.0,
+-37.0,
+125.2,
+130.2,
+-8.0,
+8.0
+]
+},
+{
+"ad": "Pul M6 (Direk-ray sol, ayak B)",
+"grup": "Direk",
+"hacim": 129.48388281,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.01644848,
+"merkez": [
+-25.3,
+156.5,
+0.0
+],
+"bb": [
+-26.1,
+-24.5,
+150.5,
+162.5,
+-6.0,
+6.0
+]
+},
+{
+"ad": "Civata M6x16 (Direk-ray sol, ayak B)",
+"grup": "Direk",
+"hacim": 845.685953815,
+"kati": 1,
+"gecerli": true,
+"kutle": 6.638634737,
+"merkez": [
+-23.10508725,
+156.5,
+-0.0
+],
+"bb": [
+-32.1,
+-10.1,
+151.5,
+161.5,
+-5.0,
+5.0
+]
+},
+{
+"ad": "Cekic somun M6 (Direk-ray sol, ayak B)",
+"grup": "Direk",
+"hacim": 658.628330588,
+"kati": 1,
+"gecerli": true,
+"kutle": 5.170232395,
+"merkez": [
+-13.2,
+156.5,
+0.0
+],
+"bb": [
+-15.7,
+-10.7,
+151.5,
+161.5,
+-8.0,
+8.0
+]
+},
+{
+"ad": "Kose baglanti 40x40 genis (Direk-travers sag)",
+"grup": "Travers",
+"hacim": 16677.896904963,
+"kati": 1,
+"gecerli": true,
+"kutle": 75.0,
+"merkez": [
+32.719957445,
+922.280042555,
+-0.0
+],
+"bb": [
+18.0,
+57.0,
+898.0,
+937.0,
+-18.85,
+18.85
+]
+},
+{
+"ad": "Pul M6 (Direk-travers sag, ayak A)",
+"grup": "Travers",
+"hacim": 129.48388281,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.01644848,
+"merkez": [
+42.0,
+929.7,
+-0.0
+],
+"bb": [
+36.0,
+48.0,
+928.9,
+930.5,
+-6.0,
+6.0
+]
+},
+{
+"ad": "Civata M6x16 (Direk-travers sag, ayak A)",
+"grup": "Travers",
+"hacim": 845.685953815,
+"kati": 1,
+"gecerli": true,
+"kutle": 6.638634737,
+"merkez": [
+42.0,
+931.89491275,
+0.0
+],
+"bb": [
+37.0,
+47.0,
+922.9,
+944.9,
+-5.0,
+5.0
+]
+},
+{
+"ad": "Cekic somun M6 (Direk-travers sag, ayak A)",
+"grup": "Travers",
+"hacim": 658.628330588,
+"kati": 1,
+"gecerli": true,
+"kutle": 5.170232395,
+"merkez": [
+42.0,
+941.8,
+-0.0
+],
+"bb": [
+37.0,
+47.0,
+939.3,
+944.3,
+-8.0,
+8.0
+]
+},
+{
+"ad": "Pul M6 (Direk-travers sag, ayak B)",
+"grup": "Travers",
+"hacim": 129.48388281,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.01644848,
+"merkez": [
+25.3,
+913.0,
+-0.0
+],
+"bb": [
+24.5,
+26.1,
+907.0,
+919.0,
+-6.0,
+6.0
+]
+},
+{
+"ad": "Civata M6x16 (Direk-travers sag, ayak B)",
+"grup": "Travers",
+"hacim": 845.685953815,
+"kati": 1,
+"gecerli": true,
+"kutle": 6.638634737,
+"merkez": [
+23.10508725,
+913.0,
+0.0
+],
+"bb": [
+10.1,
+32.1,
+908.0,
+918.0,
+-5.0,
+5.0
+]
+},
+{
+"ad": "Cekic somun M6 (Direk-travers sag, ayak B)",
+"grup": "Travers",
+"hacim": 658.628330588,
+"kati": 1,
+"gecerli": true,
+"kutle": 5.170232395,
+"merkez": [
+13.2,
+913.0,
+0.0
+],
+"bb": [
+10.7,
+15.7,
+908.0,
+918.0,
+-8.0,
+8.0
+]
+},
+{
+"ad": "Kose baglanti 40x40 genis (Direk-travers sol)",
+"grup": "Travers",
+"hacim": 16677.896904963,
+"kati": 1,
+"gecerli": true,
+"kutle": 75.0,
+"merkez": [
+-32.719957445,
+922.280042555,
+0.0
+],
+"bb": [
+-57.0,
+-18.0,
+898.0,
+937.0,
+-18.85,
+18.85
+]
+},
+{
+"ad": "Pul M6 (Direk-travers sol, ayak A)",
+"grup": "Travers",
+"hacim": 129.48388281,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.01644848,
+"merkez": [
+-42.0,
+929.7,
+0.0
+],
+"bb": [
+-48.0,
+-36.0,
+928.9,
+930.5,
+-6.0,
+6.0
+]
+},
+{
+"ad": "Civata M6x16 (Direk-travers sol, ayak A)",
+"grup": "Travers",
+"hacim": 845.685953815,
+"kati": 1,
+"gecerli": true,
+"kutle": 6.638634737,
+"merkez": [
+-42.0,
+931.89491275,
+0.0
+],
+"bb": [
+-47.0,
+-37.0,
+922.9,
+944.9,
+-5.0,
+5.0
+]
+},
+{
+"ad": "Cekic somun M6 (Direk-travers sol, ayak A)",
+"grup": "Travers",
+"hacim": 658.628330588,
+"kati": 1,
+"gecerli": true,
+"kutle": 5.170232395,
+"merkez": [
+-42.0,
+941.8,
+-0.0
+],
+"bb": [
+-47.0,
+-37.0,
+939.3,
+944.3,
+-8.0,
+8.0
+]
+},
+{
+"ad": "Pul M6 (Direk-travers sol, ayak B)",
+"grup": "Travers",
+"hacim": 129.48388281,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.01644848,
+"merkez": [
+-25.3,
+913.0,
+0.0
+],
+"bb": [
+-26.1,
+-24.5,
+907.0,
+919.0,
+-6.0,
+6.0
+]
+},
+{
+"ad": "Civata M6x16 (Direk-travers sol, ayak B)",
+"grup": "Travers",
+"hacim": 845.685953815,
+"kati": 1,
+"gecerli": true,
+"kutle": 6.638634737,
+"merkez": [
+-23.10508725,
+913.0,
+-0.0
+],
+"bb": [
+-32.1,
+-10.1,
+908.0,
+918.0,
+-5.0,
+5.0
+]
+},
+{
+"ad": "Cekic somun M6 (Direk-travers sol, ayak B)",
+"grup": "Travers",
+"hacim": 658.628330588,
+"kati": 1,
+"gecerli": true,
+"kutle": 5.170232395,
+"merkez": [
+-13.2,
+913.0,
+-0.0
+],
+"bb": [
+-15.7,
+-10.7,
+908.0,
+918.0,
+-8.0,
+8.0
+]
+},
+{
+"ad": "Ic kose baglanti kanal 10 (Sase sag arka on yuz)",
+"grup": "Sase",
+"hacim": 5059.398725318,
+"kati": 1,
+"gecerli": true,
+"kutle": 39.716279994,
+"merkez": [
+91.829190713,
+114.5,
+-206.760323043
+],
+"bb": [
+69.0,
+102.3,
+106.0,
+123.0,
+-217.3,
+-184.0
+]
+},
+{
+"ad": "Set vida M6x10 (Sase sag arka on yuz, ara ray)",
+"grup": "Sase",
+"hacim": 254.68411574,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.999270309,
+"merkez": [
+80.0,
+114.5,
+-217.152552469
+],
+"bb": [
+77.0,
+83.0,
+111.5,
+117.5,
+-221.8,
+-211.8
+]
+},
+{
+"ad": "Set vida M6x10 (Sase sag arka on yuz, uzun ray)",
+"grup": "Sase",
+"hacim": 254.68411574,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.999270309,
+"merkez": [
+102.152552469,
+114.5,
+-195.0
+],
+"bb": [
+96.8,
+106.8,
+111.5,
+117.5,
+-198.0,
+-192.0
+]
+},
+{
+"ad": "Ic kose baglanti kanal 10 (Sase sol arka on yuz)",
+"grup": "Sase",
+"hacim": 5059.398725318,
+"kati": 1,
+"gecerli": true,
+"kutle": 39.716279994,
+"merkez": [
+-91.829190713,
+114.5,
+-206.760323043
+],
+"bb": [
+-102.3,
+-69.0,
+106.0,
+123.0,
+-217.3,
+-184.0
+]
+},
+{
+"ad": "Set vida M6x10 (Sase sol arka on yuz, ara ray)",
+"grup": "Sase",
+"hacim": 254.68411574,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.999270309,
+"merkez": [
+-80.0,
+114.5,
+-217.152552469
+],
+"bb": [
+-83.0,
+-77.0,
+111.5,
+117.5,
+-221.8,
+-211.8
+]
+},
+{
+"ad": "Set vida M6x10 (Sase sol arka on yuz, uzun ray)",
+"grup": "Sase",
+"hacim": 254.68411574,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.999270309,
+"merkez": [
+-102.152552469,
+114.5,
+-195.0
+],
+"bb": [
+-106.8,
+-96.8,
+111.5,
+117.5,
+-198.0,
+-192.0
+]
+},
+{
+"ad": "Ic kose baglanti kanal 10 (Sase sag orta on yuz)",
+"grup": "Sase",
+"hacim": 5059.398725318,
+"kati": 1,
+"gecerli": true,
+"kutle": 39.716279994,
+"merkez": [
+91.829190713,
+114.5,
+23.239676957
+],
+"bb": [
+69.0,
+102.3,
+106.0,
+123.0,
+12.7,
+46.0
+]
+},
+{
+"ad": "Set vida M6x10 (Sase sag orta on yuz, ara ray)",
+"grup": "Sase",
+"hacim": 254.68411574,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.999270309,
+"merkez": [
+80.0,
+114.5,
+12.847447531
+],
+"bb": [
+77.0,
+83.0,
+111.5,
+117.5,
+8.2,
+18.2
+]
+},
+{
+"ad": "Set vida M6x10 (Sase sag orta on yuz, uzun ray)",
+"grup": "Sase",
+"hacim": 254.68411574,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.999270309,
+"merkez": [
+102.152552469,
+114.5,
+35.0
+],
+"bb": [
+96.8,
+106.8,
+111.5,
+117.5,
+32.0,
+38.0
+]
+},
+{
+"ad": "Ic kose baglanti kanal 10 (Sase sag orta arka yuz)",
+"grup": "Sase",
+"hacim": 5059.398725318,
+"kati": 1,
+"gecerli": true,
+"kutle": 39.716279994,
+"merkez": [
+91.829190713,
+114.5,
+-23.239676957
+],
+"bb": [
+69.0,
+102.3,
+106.0,
+123.0,
+-46.0,
+-12.7
+]
+},
+{
+"ad": "Set vida M6x10 (Sase sag orta arka yuz, ara ray)",
+"grup": "Sase",
+"hacim": 254.68411574,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.999270309,
+"merkez": [
+80.0,
+114.5,
+-12.847447531
+],
+"bb": [
+77.0,
+83.0,
+111.5,
+117.5,
+-18.2,
+-8.2
+]
+},
+{
+"ad": "Set vida M6x10 (Sase sag orta arka yuz, uzun ray)",
+"grup": "Sase",
+"hacim": 254.68411574,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.999270309,
+"merkez": [
+102.152552469,
+114.5,
+-35.0
+],
+"bb": [
+96.8,
+106.8,
+111.5,
+117.5,
+-38.0,
+-32.0
+]
+},
+{
+"ad": "Ic kose baglanti kanal 10 (Sase sol orta on yuz)",
+"grup": "Sase",
+"hacim": 5059.398725318,
+"kati": 1,
+"gecerli": true,
+"kutle": 39.716279994,
+"merkez": [
+-91.829190713,
+114.5,
+23.239676957
+],
+"bb": [
+-102.3,
+-69.0,
+106.0,
+123.0,
+12.7,
+46.0
+]
+},
+{
+"ad": "Set vida M6x10 (Sase sol orta on yuz, ara ray)",
+"grup": "Sase",
+"hacim": 254.68411574,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.999270309,
+"merkez": [
+-80.0,
+114.5,
+12.847447531
+],
+"bb": [
+-83.0,
+-77.0,
+111.5,
+117.5,
+8.2,
+18.2
+]
+},
+{
+"ad": "Set vida M6x10 (Sase sol orta on yuz, uzun ray)",
+"grup": "Sase",
+"hacim": 254.68411574,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.999270309,
+"merkez": [
+-102.152552469,
+114.5,
+35.0
+],
+"bb": [
+-106.8,
+-96.8,
+111.5,
+117.5,
+32.0,
+38.0
+]
+},
+{
+"ad": "Ic kose baglanti kanal 10 (Sase sol orta arka yuz)",
+"grup": "Sase",
+"hacim": 5059.398725318,
+"kati": 1,
+"gecerli": true,
+"kutle": 39.716279994,
+"merkez": [
+-91.829190713,
+114.5,
+-23.239676957
+],
+"bb": [
+-102.3,
+-69.0,
+106.0,
+123.0,
+-46.0,
+-12.7
+]
+},
+{
+"ad": "Set vida M6x10 (Sase sol orta arka yuz, ara ray)",
+"grup": "Sase",
+"hacim": 254.68411574,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.999270309,
+"merkez": [
+-80.0,
+114.5,
+-12.847447531
+],
+"bb": [
+-83.0,
+-77.0,
+111.5,
+117.5,
+-18.2,
+-8.2
+]
+},
+{
+"ad": "Set vida M6x10 (Sase sol orta arka yuz, uzun ray)",
+"grup": "Sase",
+"hacim": 254.68411574,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.999270309,
+"merkez": [
+-102.152552469,
+114.5,
+-35.0
+],
+"bb": [
+-106.8,
+-96.8,
+111.5,
+117.5,
+-38.0,
+-32.0
+]
+},
+{
+"ad": "Ic kose baglanti kanal 10 (Sase sag on arka yuz)",
+"grup": "Sase",
+"hacim": 5059.398725318,
+"kati": 1,
+"gecerli": true,
+"kutle": 39.716279994,
+"merkez": [
+91.829190713,
+114.5,
+206.760323043
+],
+"bb": [
+69.0,
+102.3,
+106.0,
+123.0,
+184.0,
+217.3
+]
+},
+{
+"ad": "Set vida M6x10 (Sase sag on arka yuz, ara ray)",
+"grup": "Sase",
+"hacim": 254.68411574,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.999270309,
+"merkez": [
+80.0,
+114.5,
+217.152552469
+],
+"bb": [
+77.0,
+83.0,
+111.5,
+117.5,
+211.8,
+221.8
+]
+},
+{
+"ad": "Set vida M6x10 (Sase sag on arka yuz, uzun ray)",
+"grup": "Sase",
+"hacim": 254.68411574,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.999270309,
+"merkez": [
+102.152552469,
+114.5,
+195.0
+],
+"bb": [
+96.8,
+106.8,
+111.5,
+117.5,
+192.0,
+198.0
+]
+},
+{
+"ad": "Ic kose baglanti kanal 10 (Sase sol on arka yuz)",
+"grup": "Sase",
+"hacim": 5059.398725318,
+"kati": 1,
+"gecerli": true,
+"kutle": 39.716279994,
+"merkez": [
+-91.829190713,
+114.5,
+206.760323043
+],
+"bb": [
+-102.3,
+-69.0,
+106.0,
+123.0,
+184.0,
+217.3
+]
+},
+{
+"ad": "Set vida M6x10 (Sase sol on arka yuz, ara ray)",
+"grup": "Sase",
+"hacim": 254.68411574,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.999270309,
+"merkez": [
+-80.0,
+114.5,
+217.152552469
+],
+"bb": [
+-83.0,
+-77.0,
+111.5,
+117.5,
+211.8,
+221.8
+]
+},
+{
+"ad": "Set vida M6x10 (Sase sol on arka yuz, uzun ray)",
+"grup": "Sase",
+"hacim": 254.68411574,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.999270309,
+"merkez": [
+-102.152552469,
+114.5,
+195.0
+],
+"bb": [
+-106.8,
+-96.8,
+111.5,
+117.5,
+192.0,
+198.0
+]
+}
+],
+"cakisma": [],
+"baglanti": [
+[
+"Direk-ray sag",
+"kose",
+"Kose baglanti 40x40 genis (Direk-ray sag)",
+[
+"Pul M6 (Direk-ray sag, ayak A)",
+"Civata M6x16 (Direk-ray sag, ayak A)",
+"Cekic somun M6 (Direk-ray sag, ayak A)",
+"Pul M6 (Direk-ray sag, ayak B)",
+"Civata M6x16 (Direk-ray sag, ayak B)",
+"Cekic somun M6 (Direk-ray sag, ayak B)"
+]
+],
+[
+"Direk-ray sol",
+"kose",
+"Kose baglanti 40x40 genis (Direk-ray sol)",
+[
+"Pul M6 (Direk-ray sol, ayak A)",
+"Civata M6x16 (Direk-ray sol, ayak A)",
+"Cekic somun M6 (Direk-ray sol, ayak A)",
+"Pul M6 (Direk-ray sol, ayak B)",
+"Civata M6x16 (Direk-ray sol, ayak B)",
+"Cekic somun M6 (Direk-ray sol, ayak B)"
+]
+],
+[
+"Direk-travers sag",
+"kose",
+"Kose baglanti 40x40 genis (Direk-travers sag)",
+[
+"Pul M6 (Direk-travers sag, ayak A)",
+"Civata M6x16 (Direk-travers sag, ayak A)",
+"Cekic somun M6 (Direk-travers sag, ayak A)",
+"Pul M6 (Direk-travers sag, ayak B)",
+"Civata M6x16 (Direk-travers sag, ayak B)",
+"Cekic somun M6 (Direk-travers sag, ayak B)"
+]
+],
+[
+"Direk-travers sol",
+"kose",
+"Kose baglanti 40x40 genis (Direk-travers sol)",
+[
+"Pul M6 (Direk-travers sol, ayak A)",
+"Civata M6x16 (Direk-travers sol, ayak A)",
+"Cekic somun M6 (Direk-travers sol, ayak A)",
+"Pul M6 (Direk-travers sol, ayak B)",
+"Civata M6x16 (Direk-travers sol, ayak B)",
+"Cekic somun M6 (Direk-travers sol, ayak B)"
+]
+],
+[
+"Sase sag arka on yuz",
+"ic_kose",
+"Ic kose baglanti kanal 10 (Sase sag arka on yuz)",
+[
+"Set vida M6x10 (Sase sag arka on yuz, ara ray)",
+"Set vida M6x10 (Sase sag arka on yuz, uzun ray)"
+]
+],
+[
+"Sase sol arka on yuz",
+"ic_kose",
+"Ic kose baglanti kanal 10 (Sase sol arka on yuz)",
+[
+"Set vida M6x10 (Sase sol arka on yuz, ara ray)",
+"Set vida M6x10 (Sase sol arka on yuz, uzun ray)"
+]
+],
+[
+"Sase sag orta on yuz",
+"ic_kose",
+"Ic kose baglanti kanal 10 (Sase sag orta on yuz)",
+[
+"Set vida M6x10 (Sase sag orta on yuz, ara ray)",
+"Set vida M6x10 (Sase sag orta on yuz, uzun ray)"
+]
+],
+[
+"Sase sag orta arka yuz",
+"ic_kose",
+"Ic kose baglanti kanal 10 (Sase sag orta arka yuz)",
+[
+"Set vida M6x10 (Sase sag orta arka yuz, ara ray)",
+"Set vida M6x10 (Sase sag orta arka yuz, uzun ray)"
+]
+],
+[
+"Sase sol orta on yuz",
+"ic_kose",
+"Ic kose baglanti kanal 10 (Sase sol orta on yuz)",
+[
+"Set vida M6x10 (Sase sol orta on yuz, ara ray)",
+"Set vida M6x10 (Sase sol orta on yuz, uzun ray)"
+]
+],
+[
+"Sase sol orta arka yuz",
+"ic_kose",
+"Ic kose baglanti kanal 10 (Sase sol orta arka yuz)",
+[
+"Set vida M6x10 (Sase sol orta arka yuz, ara ray)",
+"Set vida M6x10 (Sase sol orta arka yuz, uzun ray)"
+]
+],
+[
+"Sase sag on arka yuz",
+"ic_kose",
+"Ic kose baglanti kanal 10 (Sase sag on arka yuz)",
+[
+"Set vida M6x10 (Sase sag on arka yuz, ara ray)",
+"Set vida M6x10 (Sase sag on arka yuz, uzun ray)"
+]
+],
+[
+"Sase sol on arka yuz",
+"ic_kose",
+"Ic kose baglanti kanal 10 (Sase sol on arka yuz)",
+[
+"Set vida M6x10 (Sase sol on arka yuz, ara ray)",
+"Set vida M6x10 (Sase sol on arka yuz, uzun ray)"
+]
+]
+],
+"kutle": 5793.086935035,
+"agirlik_merkezi": [
+-0.0,
+314.486827577,
+0.0
+],
+"bolge_ihlal": []
+}

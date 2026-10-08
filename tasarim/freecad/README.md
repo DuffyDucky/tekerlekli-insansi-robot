@@ -12,7 +12,8 @@ Eski CadQuery modeli `tasarim/cad/robot_cad.py` yalnız ölçü kaynağı olarak
 | `ortak_lib.py` | Ortak parça kütüphanesi: `box/cyl/hexprism`, DIN 912/913/934/985/125, ısıl gömme somun, çekiç somun, rulman, sigma (X/Y/Z), 40×40 geniş köşe bağlantı, iç köşe bağlantı, `yerlestir()` |
 | `sigma_profil.py` | 40×40 ağır sigma kesiti (kesit alanı üreticiye göre doğrulandı); doğrudan çalışınca test parçası üretir |
 | `omuz/` | Sağ omuz (2 eksen): `omuz_parcalar.py` parçalar + kinematik, `omuz_montaj.py` kontroller + kayıt, `omuz_gorsel.py`, `omuz_rapor.py`, `omuz_regresyon.py` |
-| `iskelet/` | Şase çerçevesi + gövde direği + omuz traversi + bağlantılar: `iskelet_parcalar.py`, `iskelet_montaj.py`, `iskelet_gorsel.py`, `iskelet_rapor.py` → `rapor.html` |
+| `iskelet/` | Şase çerçevesi + gövde direği + omuz traversi + bağlantılar: `iskelet_parcalar.py`, `iskelet_montaj.py`, `iskelet_gorsel.py`, `iskelet_rapor.py` → `rapor.html`, `iskelet_regresyon.py` |
+| `kabuk/` | Gövde kabuğu + taban eteği + Nextion göğüs ekranı + iskelete bağlantı braketleri: `kabuk_lib.py`, `kabuk_parcalar.py`, `kabuk_montaj.py` (kontroller, baskı analizi), `kabuk_gorsel.py`, `kabuk_rapor.py` → `rapor.html` |
 | `montaj/` | **Ana montaj** (FreeCAD Assembly): iskelet + sağ omuz + aynalı sol omuz tek dosyada, eklemler, eklem doğrulaması → `robot-montaj.FCStd`, `rapor.html` |
 | `carpisma.py` | Modüller arası çakışma: modülleri `arayuz.MODULLER` ile yerleştirir, ev pozunu, hareketli modüllerin tüm tarama pozlarını ve henüz çizilmemiş modüllerin ayrılmış bölgelerini tarar → `carpisma-sonuc.json` |
 
@@ -32,7 +33,7 @@ L=C:/Users/Victus/.robot-cad/run_fc.py
 # iskelet: montaj + kontroller + eğilme + STEP/BOM/JSON (~15 s), görseller (GUI), rapor (sistem Python'u)
 FC_SCRIPT=$R/iskelet/iskelet_montaj.py "$FC" $L
 FC_SCRIPT=$R/iskelet/iskelet_gorsel.py "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecad.exe" $L
-FC_SCRIPT=$R/carpisma.py "$FC" $L                     # modüller arası tarama (~1 dk)
+FC_SCRIPT=$R/carpisma.py "$FC" $L                     # modüller arası tarama (kabukla ~25 dk)
 python $R/iskelet/iskelet_rapor.py                     # iskelet/rapor.html
 
 # omuz: montaj + tarama + tork (~40 s), görseller, rapor
@@ -42,11 +43,22 @@ python $R/omuz/omuz_rapor.py
 
 # omuz regresyonu: ortak dosyalar (arayuz, ortak_lib, sigma_profil) değişince omuzun aynı kaldığını kanıtlar
 FC_SCRIPT=$R/omuz/omuz_regresyon.py REG_ETIKET=sonra "$FC" $L   # omuz/regresyon/once.json ile karşılaştırır -> fark.json
+# iskelet regresyonu (dosya yazmaz, yalnız iskelet_parcalar'ı import eder): değişiklikten önce once, sonra sonra
+FC_SCRIPT=$R/iskelet/iskelet_regresyon.py REG_ETIKET=sonra "$FC" $L   # iskelet/regresyon/fark.json
+
+# kabuk: parçalar + kontroller + baskı analizi + STEP/BOM/JSON (~6 dk), görseller (GUI), rapor
+FC_SCRIPT=$R/kabuk/kabuk_montaj.py "$FC" $L
+FC_SCRIPT=$R/kabuk/kabuk_gorsel.py "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecad.exe" $L
+python $R/kabuk/kabuk_rapor.py                 # carpisma.py ve ana montajdan sonra (onların sonuçlarını da okur)
 ```
+
+Not: `omuz_regresyon.py` `omuz_montaj.py`'yi çalıştırıp omuz çıktılarını yeniden yazar (FCStd GUI durumu kaybolur). Sonuç birebir
+aynıysa üretilmiş omuz dosyaları `git checkout` ile geri alınabilir.
 
 PowerShell'de: `$env:FC_SCRIPT="<betik>"; & "$env:LOCALAPPDATA\Programs\FreeCAD 1.1\bin\freecadcmd.exe" C:\Users\Victus\.robot-cad\run_fc.py`
 
-Sıra: `arayuz.py` veya `ortak_lib.py` değişirse → omuz regresyonu → iskelet montajı → `carpisma.py` → ana montaj → raporlar.
+Sıra: `arayuz.py` veya `ortak_lib.py` değişirse → omuz ve iskelet regresyonu → iskelet montajı → kabuk montajı → `carpisma.py` →
+ana montaj (`ana_montaj.py` + `montaj_gorsel.py`) → görseller → raporlar.
 
 ## Ana montaj (`montaj/`)
 
@@ -79,7 +91,9 @@ python $M/montaj_rapor.py                      # GIF + montaj/rapor.html
 | Ayrılmış bölgeler | `iskelet_montaj.py`, `carpisma.py` | henüz çizilmemiş modüllerin bölgelerine taşma yok |
 | Modüller arası | `carpisma.py` | ev pozu + her hareketli modülün tüm tarama pozları |
 | Ana montaj | `montaj/ana_montaj.py`, `montaj/eklem_dogrulama.py` | parça sayısı/kütle/AM = modül toplamı; simülasyonla sürülen eklemlerde çözücü konumu = modül kinematiği |
-| Regresyon | `omuz/omuz_regresyon.py` | parça sayısı, hacim, sınır kutusu, kütle, çakışma, tarama, tork birebir |
+| Regresyon | `omuz/omuz_regresyon.py`, `iskelet/iskelet_regresyon.py` | parça sayısı, hacim, sınır kutusu, kütle, AM, çakışma, tarama/tork (omuz), bağlantılar (iskelet) birebir |
+| Kabuk bağlantıları | `kabuk/kabuk_montaj.py` | braket profile ve boss'a dayalı, çekiç somun dudak altında, M6 ucu somunu geçip kanal tabanına değmiyor, eksen hizası; M5/M3 kavrama ≥ d ve ≤ ısıl gömme somun deliği, dış yüzeye ≥ 1 mm et; bindirme cıvatası başı dudağa, ısıl gömme somun boss'a oturmuş |
+| Baskı | `kabuk/kabuk_montaj.py` | her baskı parçası `arayuz.YAZICI` kullanılabilir hacmine sığar; 45° üstü çıkıntı oranı; 1 mm katmanlarla desteksiz basılabilirlik (2 mm'den dar şerit ve 15 mm'den kısa açıklık serbest) |
 
 ## Yeni modül eklemek (taban, kabuk, kafa, dirsek)
 
@@ -89,3 +103,20 @@ python $M/montaj_rapor.py                      # GIF + montaj/rapor.html
 3. `carpisma.py` içinde `MODUL_YUKLE`'ye bir yükleyici ekle ve adı `KONTROL` listesine koy. Hareketli modülde
    `hareket` (pozlar + grup yerleşimi) ver; başka modülün parçası olan parçaları `haric` listesine yaz. Modül çizilince
    o modülün `BOLGELER` kutuları otomatik olarak kontrol dışı kalır, yerine gerçek geometrisi taranır.
+
+## Kabuk modülü (`kabuk/`)
+
+Gövde kabuğu (4 yatay bant × sağ/sol + arka servis kapağı) ve taban eteği (3 bant × sağ/sol): 15 PETG baskı parçası, 3 mm duvar,
+Bambu Lab X2D'ye (`arayuz.YAZICI`, kullanılabilir 246 × 246 × 250) sığacak şekilde bölünmüş. Biçim V3 `torso_shell3` / `base_cover3`
+ölçüleriyle (`arayuz.GOVDE_KESIT`, `ETEK_KESIT`): yuvarlatılmış dikdörtgen kesitler, omuzda x = 147…152 düz yan duvar ve Ø84 delik
+(omuz modülündeki referansla aynı), göğüste 15° eğik ön duvar ve Nextion NX1060P101_011 penceresi (`arayuz.NEXTION`, datasheet).
+
+- **Bölme:** dış ve iç zarfın arasındaki orta zarf duvarı iki yarıya ayırır; iç yarının hücre sınırı dikişten 12 mm kaydırılınca bindirme
+  dili oluşur (`kabuk_parcalar.py` baş notu). Dilde damla boss + M3 ısıl gömme somun, dudaktan M3×6 ISO 7380. Yatay plakalarda alın birleşim.
+- **İskelete bağlantı:** 4 gövde braketi (3 mm Al U, direk ±X kanalına 2× M6 + çekiç somun, kabuğa M5 + ısıl gömme somun), 6 etek
+  braketi (2 mm Al L, uzun ray üst kanalına M6, eteğe M3). Ölçüler `arayuz.KABUK_GOVDE_BRAKET` / `KABUK_ETEK_BRAKET`.
+- **Ayrılmış bölgeler:** etek braketleri artık kabuk bölgesi; taban için sonar (3) ve acil stop (gövde, mantar) bölgeleri; Nextion konnektör
+  ve kablo boşluğu (kabuk).
+- **Baskı yönü** parça başına `kabuk_parcalar.BASKI`; boss'lar ve omuz deliği o yöne göre 45° damla şekilli.
+- **Montajda:** `moduller.py`'de `kabuk` (tek grup, direğe sabit eklem); `carpisma.py`'de `KONTROL` listesinde. Tarama çıktısında hedef modül
+  başına eklem aralığındaki en küçük boşluk (`modul_bosluk_eklem_araliginda`) ve çakışan pozlar (`modul_cakisan_poz`) var.

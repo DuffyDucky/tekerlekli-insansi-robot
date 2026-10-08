@@ -1,0 +1,151 @@
+{
+ "moduller": [
+  {
+   "ad": "iskelet",
+   "konum": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "ayna": false,
+   "parca": 59,
+   "haric": [],
+   "haric_neden": "",
+   "hareketli": false
+  },
+  {
+   "ad": "omuz_sag",
+   "konum": [
+    0.0,
+    955.0,
+    0.0
+   ],
+   "ayna": false,
+   "parca": 70,
+   "haric": [
+    "Omuz traversi (sigma 40x40 agir, 200 mm)",
+    "Govde kabugu yan yuzu (referans)"
+   ],
+   "haric_neden": "travers iskeletin parcasi (arayuz uyumu ayrica kontrol edilir); kabuk duvari kabuk modulunun yer tutucusu",
+   "hareketli": true
+  },
+  {
+   "ad": "omuz_sol",
+   "konum": [
+    0.0,
+    955.0,
+    0.0
+   ],
+   "ayna": true,
+   "parca": 70,
+   "haric": [
+    "Omuz traversi (sigma 40x40 agir, 200 mm)",
+    "Govde kabugu yan yuzu (referans)"
+   ],
+   "haric_neden": "travers iskeletin parcasi (arayuz uyumu ayrica kontrol edilir); kabuk duvari kabuk modulunun yer tutucusu",
+   "hareketli": true
+  }
+ ],
+ "ayrilmis_bolge": {
+  "sayi": 31,
+  "sahipler": [
+   "kafa",
+   "taban"
+  ]
+ },
+ "arayuz_uyumu": [
+  {
+   "modul": "omuz_sag",
+   "hacim_omuz": 145259.701,
+   "hacim_iskelet": 145259.701,
+   "ortak": 145259.701,
+   "sinir_kutusu_fark": 0.0,
+   "ayni": true
+  },
+  {
+   "modul": "omuz_sol",
+   "hacim_omuz": 145259.701,
+   "hacim_iskelet": 145259.701,
+   "ortak": 145259.701,
+   "sinir_kutusu_fark": 0.0,
+   "ayni": true
+  }
+ ],
+ "ev_pozu_cakisma": [],
+ "ev_pozu_kesisen_cift": 39,
+ "zarf": {
+  "omuz_sag": [
+   110.8,
+   327.7,
+   812.0,
+   1097.7,
+   -135.9,
+   143.0
+  ],
+  "omuz_sol": [
+   -327.7,
+   -110.8,
+   812.0,
+   1097.7,
+   -135.9,
+   143.0
+  ]
+ },
+ "tarama": {
+  "omuz_sag": {
+   "poz_sayisi": 875,
+   "cakisan_poz": 0,
+   "eklem_araliginda_cakisan": 0,
+   "kesisim_testi": 0,
+   "ortak_tarama": [],
+   "aciklama": "omuz_montaj taramasi: one-arka -60...180, yana -20...150 (5-10 derece adim)",
+   "en_kucuk_bosluk_mm": 42.45,
+   "en_yakin": [
+    [
+     -40,
+     -20
+    ],
+    "Ust kol tupu",
+    "iskelet",
+    "Omuz traversi"
+   ],
+   "cakismalar": {}
+  },
+  "omuz_sol": {
+   "poz_sayisi": 875,
+   "cakisan_poz": 0,
+   "eklem_araliginda_cakisan": 0,
+   "kesisim_testi": 0,
+   "ortak_tarama": [],
+   "aciklama": "omuz_montaj taramasi: one-arka -60...180, yana -20...150 (5-10 derece adim)",
+   "en_kucuk_bosluk_mm": 42.45,
+   "en_yakin": [
+    [
+     -40,
+     -20
+    ],
+    "Ust kol tupu",
+    "iskelet",
+    "Omuz traversi"
+   ],
+   "cakismalar": {}
+  }
+ },
+ "toplam": {
+  "cakisma": 0,
+  "eklem_araliginda": 0
+ },
+ "kutle_g": {
+  "iskelet": 5793.1,
+  "omuz_sag": 463.6,
+  "omuz_sol": 463.6
+ },
+ "kutle_toplam_g": 6720.3,
+ "agirlik_merkezi": [
+  -0.0,
+  401.32,
+  -0.1
+ ],
+ "tolerans_mm3": 0.5,
+ "sure_s": 57.3
+}

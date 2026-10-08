@@ -44,10 +44,23 @@
    ],
    "haric_neden": "travers iskeletin parcasi (arayuz uyumu ayrica kontrol edilir); kabuk duvari kabuk modulunun yer tutucusu",
    "hareketli": true
+  },
+  {
+   "ad": "kabuk",
+   "konum": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "ayna": false,
+   "parca": 202,
+   "haric": [],
+   "haric_neden": "",
+   "hareketli": false
   }
  ],
  "ayrilmis_bolge": {
-  "sayi": 31,
+  "sayi": 32,
   "sahipler": [
    "kafa",
    "taban"
@@ -72,7 +85,7 @@
   }
  ],
  "ev_pozu_cakisma": [],
- "ev_pozu_kesisen_cift": 39,
+ "ev_pozu_kesisen_cift": 281,
  "zarf": {
   "omuz_sag": [
    110.8,
@@ -94,58 +107,2789 @@
  "tarama": {
   "omuz_sag": {
    "poz_sayisi": 875,
-   "cakisan_poz": 0,
+   "cakisan_poz": 88,
    "eklem_araliginda_cakisan": 0,
-   "kesisim_testi": 0,
+   "kesisim_testi": 6452,
    "ortak_tarama": [],
    "aciklama": "omuz_montaj taramasi: one-arka -60...180, yana -20...150 (5-10 derece adim)",
-   "en_kucuk_bosluk_mm": 42.45,
+   "en_kucuk_bosluk_mm": 0.0,
    "en_yakin": [
     [
-     -40,
+     -60,
      -20
     ],
-    "Ust kol tupu",
-    "iskelet",
-    "Omuz traversi"
+    "Kol catali",
+    "kabuk",
+    "Omuz bandi sag"
    ],
-   "cakismalar": {}
+   "cakismalar": {
+    "(-60, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      1816.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      300.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1446.0
+     ]
+    ],
+    "(-60, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      1330.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      157.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1654.6
+     ]
+    ],
+    "(-60, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      204.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      12.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      2106.1
+     ]
+    ],
+    "(-60, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      258.5
+     ]
+    ],
+    "(-50, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      1788.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      940.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1191.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Isil gomme somun M3 (govde y883 arka)",
+      29.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Bindirme civatasi M3x6 (govde y883 arka)",
+      50.2
+     ]
+    ],
+    "(-50, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      1326.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      742.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1391.5
+     ]
+    ],
+    "(-50, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      204.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      598.1
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1874.4
+     ]
+    ],
+    "(-50, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      4.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      649.7
+     ]
+    ],
+    "(-40, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      1679.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      808.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1024.1
+     ]
+    ],
+    "(-40, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      1291.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      809.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1200.8
+     ]
+    ],
+    "(-40, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      204.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      950.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1699.4
+     ]
+    ],
+    "(-40, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      839.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      604.7
+     ]
+    ],
+    "(-30, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      1410.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1018.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      737.2
+     ]
+    ],
+    "(-30, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      1161.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      950.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      955.6
+     ]
+    ],
+    "(-30, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      201.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1127.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1478.4
+     ]
+    ],
+    "(-30, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      2074.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      235.6
+     ]
+    ],
+    "(-20, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      965.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      997.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      554.7
+     ]
+    ],
+    "(-20, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      832.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1034.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      688.9
+     ]
+    ],
+    "(-20, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      183.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1377.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1160.0
+     ]
+    ],
+    "(-20, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      2084.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      73.1
+     ]
+    ],
+    "(-10, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      631.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1048.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      605.1
+     ]
+    ],
+    "(-10, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      436.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1107.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      615.6
+     ]
+    ],
+    "(-10, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      105.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1506.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      768.7
+     ]
+    ],
+    "(-10, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1925.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      25.6
+     ]
+    ],
+    "(0, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      500.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1069.4
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      625.4
+     ]
+    ],
+    "(0, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      244.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1134.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      635.7
+     ]
+    ],
+    "(0, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      22.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1556.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      593.1
+     ]
+    ],
+    "(0, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1856.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      15.2
+     ]
+    ],
+    "(10, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      545.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1055.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      614.1
+     ]
+    ],
+    "(10, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      339.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1116.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      622.3
+     ]
+    ],
+    "(10, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      75.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1523.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      692.6
+     ]
+    ],
+    "(10, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1909.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      21.8
+     ]
+    ],
+    "(20, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      817.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1006.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      565.6
+     ]
+    ],
+    "(20, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      701.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1053.4
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      627.4
+     ]
+    ],
+    "(20, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      170.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1409.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1069.7
+     ]
+    ],
+    "(20, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      2061.4
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      58.9
+     ]
+    ],
+    "(30, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      1289.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1080.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      683.4
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Nextion NX1060P101_011 (10,1 in)",
+      107.6
+     ]
+    ],
+    "(30, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      1092.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      949.4
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      893.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Nextion NX1060P101_011 (10,1 in)",
+      11.1
+     ]
+    ],
+    "(30, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      199.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1176.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1411.0
+     ]
+    ],
+    "(30, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      2203.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      192.0
+     ]
+    ],
+    "(40, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      1619.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      863.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      969.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Nextion NX1060P101_011 (10,1 in)",
+      482.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Isil gomme somun M3 (ekran)",
+      29.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Ekran civatasi M3x6",
+      50.6
+     ]
+    ],
+    "(40, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      1266.4
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      806.4
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1136.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Nextion NX1060P101_011 (10,1 in)",
+      99.0
+     ]
+    ],
+    "(40, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      204.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      931.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1637.2
+     ]
+    ],
+    "(40, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      1576.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      541.4
+     ]
+    ],
+    "(50, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      1766.4
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      718.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1129.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Nextion NX1060P101_011 (10,1 in)",
+      367.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Isil gomme somun M3 (ekran)",
+      0.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Ekran civatasi M3x6",
+      25.7
+     ]
+    ],
+    "(50, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      1321.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      782.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1325.1
+     ]
+    ],
+    "(50, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      204.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      861.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1806.2
+     ]
+    ],
+    "(50, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      13.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      576.0
+     ]
+    ],
+    "(60, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      1812.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      498.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1360.1
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Isil gomme somun M3 (ekran)",
+      0.6
+     ]
+    ],
+    "(60, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sag",
+      1330.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sag",
+      274.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sag",
+      1571.9
+     ]
+    ]
+   },
+   "modul_bosluk_eklem_araliginda": {
+    "kabuk": [
+     5.0,
+     [
+      [
+       -40,
+       0
+      ],
+      "Ust kol tupu",
+      "Omuz bandi sag"
+     ]
+    ]
+   },
+   "modul_cakisan_poz": {
+    "kabuk": [
+     [
+      -60,
+      -20
+     ],
+     [
+      -60,
+      -15
+     ],
+     [
+      -60,
+      -10
+     ],
+     [
+      -60,
+      -5
+     ],
+     [
+      -50,
+      -20
+     ],
+     [
+      -50,
+      -15
+     ],
+     [
+      -50,
+      -10
+     ],
+     [
+      -50,
+      -5
+     ],
+     [
+      -40,
+      -20
+     ],
+     [
+      -40,
+      -15
+     ],
+     [
+      -40,
+      -10
+     ],
+     [
+      -40,
+      -5
+     ],
+     [
+      -30,
+      -20
+     ],
+     [
+      -30,
+      -15
+     ],
+     [
+      -30,
+      -10
+     ],
+     [
+      -30,
+      -5
+     ],
+     [
+      -20,
+      -20
+     ],
+     [
+      -20,
+      -15
+     ],
+     [
+      -20,
+      -10
+     ],
+     [
+      -20,
+      -5
+     ],
+     [
+      -10,
+      -20
+     ],
+     [
+      -10,
+      -15
+     ],
+     [
+      -10,
+      -10
+     ],
+     [
+      -10,
+      -5
+     ],
+     [
+      0,
+      -20
+     ],
+     [
+      0,
+      -15
+     ],
+     [
+      0,
+      -10
+     ],
+     [
+      0,
+      -5
+     ],
+     [
+      10,
+      -20
+     ],
+     [
+      10,
+      -15
+     ],
+     [
+      10,
+      -10
+     ],
+     [
+      10,
+      -5
+     ],
+     [
+      20,
+      -20
+     ],
+     [
+      20,
+      -15
+     ],
+     [
+      20,
+      -10
+     ],
+     [
+      20,
+      -5
+     ],
+     [
+      30,
+      -20
+     ],
+     [
+      30,
+      -15
+     ],
+     [
+      30,
+      -10
+     ],
+     [
+      30,
+      -5
+     ],
+     [
+      40,
+      -20
+     ],
+     [
+      40,
+      -15
+     ],
+     [
+      40,
+      -10
+     ],
+     [
+      40,
+      -5
+     ],
+     [
+      50,
+      -20
+     ],
+     [
+      50,
+      -15
+     ],
+     [
+      50,
+      -10
+     ],
+     [
+      50,
+      -5
+     ],
+     [
+      60,
+      -20
+     ],
+     [
+      60,
+      -15
+     ],
+     [
+      60,
+      -10
+     ],
+     [
+      60,
+      -5
+     ],
+     [
+      70,
+      -20
+     ],
+     [
+      70,
+      -15
+     ],
+     [
+      70,
+      -10
+     ],
+     [
+      70,
+      -5
+     ],
+     [
+      80,
+      -20
+     ],
+     [
+      80,
+      -15
+     ],
+     [
+      80,
+      -10
+     ],
+     [
+      80,
+      -5
+     ],
+     [
+      90,
+      -20
+     ],
+     [
+      90,
+      -15
+     ],
+     [
+      90,
+      -10
+     ],
+     [
+      90,
+      -5
+     ],
+     [
+      100,
+      -20
+     ],
+     [
+      100,
+      -15
+     ],
+     [
+      100,
+      -10
+     ],
+     [
+      100,
+      -5
+     ],
+     [
+      110,
+      -20
+     ],
+     [
+      110,
+      -15
+     ],
+     [
+      110,
+      -10
+     ],
+     [
+      110,
+      -5
+     ],
+     [
+      120,
+      -20
+     ],
+     [
+      120,
+      -15
+     ],
+     [
+      120,
+      -10
+     ],
+     [
+      120,
+      -5
+     ],
+     [
+      130,
+      -20
+     ],
+     [
+      130,
+      -15
+     ],
+     [
+      130,
+      -10
+     ],
+     [
+      140,
+      -20
+     ],
+     [
+      140,
+      -15
+     ],
+     [
+      140,
+      -10
+     ],
+     [
+      150,
+      -20
+     ],
+     [
+      150,
+      -15
+     ],
+     [
+      150,
+      -10
+     ],
+     [
+      160,
+      -20
+     ],
+     [
+      170,
+      -20
+     ],
+     [
+      180,
+      -20
+     ]
+    ]
+   },
+   "bosluk_notu": "kabuk icin en kucuk bosluk yalniz eklem araligindaki pozlarda olculdu (cakisma tum pozlarda)"
   },
   "omuz_sol": {
    "poz_sayisi": 875,
-   "cakisan_poz": 0,
+   "cakisan_poz": 88,
    "eklem_araliginda_cakisan": 0,
-   "kesisim_testi": 0,
+   "kesisim_testi": 6452,
    "ortak_tarama": [],
    "aciklama": "omuz_montaj taramasi: one-arka -60...180, yana -20...150 (5-10 derece adim)",
-   "en_kucuk_bosluk_mm": 42.45,
+   "en_kucuk_bosluk_mm": 0.0,
    "en_yakin": [
     [
-     -40,
+     -60,
      -20
     ],
-    "Ust kol tupu",
-    "iskelet",
-    "Omuz traversi"
+    "Kol catali",
+    "kabuk",
+    "Omuz bandi sol"
    ],
-   "cakismalar": {}
+   "cakismalar": {
+    "(-60, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      1816.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      300.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1446.0
+     ]
+    ],
+    "(-60, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      1330.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      157.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1654.6
+     ]
+    ],
+    "(-60, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      204.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      12.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      2106.1
+     ]
+    ],
+    "(-60, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      258.5
+     ]
+    ],
+    "(-50, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      1788.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      940.1
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1191.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Isil gomme somun M3 (govde y883 arka)",
+      29.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Bindirme civatasi M3x6 (govde y883 arka)",
+      50.2
+     ]
+    ],
+    "(-50, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      1326.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      742.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1391.5
+     ]
+    ],
+    "(-50, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      204.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      598.1
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1874.4
+     ]
+    ],
+    "(-50, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      4.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      649.7
+     ]
+    ],
+    "(-40, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      1679.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      808.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1024.1
+     ]
+    ],
+    "(-40, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      1291.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      809.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1200.8
+     ]
+    ],
+    "(-40, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      204.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      950.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1699.4
+     ]
+    ],
+    "(-40, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      839.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      604.7
+     ]
+    ],
+    "(-30, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      1410.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1018.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      737.2
+     ]
+    ],
+    "(-30, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      1161.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      950.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      955.6
+     ]
+    ],
+    "(-30, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      201.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1127.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1478.4
+     ]
+    ],
+    "(-30, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      2072.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      235.6
+     ]
+    ],
+    "(-20, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      965.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      997.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      554.7
+     ]
+    ],
+    "(-20, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      832.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1034.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      688.9
+     ]
+    ],
+    "(-20, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      183.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1377.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1160.0
+     ]
+    ],
+    "(-20, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      2084.1
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      73.1
+     ]
+    ],
+    "(-10, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      631.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1048.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      605.1
+     ]
+    ],
+    "(-10, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      436.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1107.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      615.6
+     ]
+    ],
+    "(-10, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      105.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1506.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      768.7
+     ]
+    ],
+    "(-10, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1925.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      25.6
+     ]
+    ],
+    "(0, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      500.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1069.4
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      625.4
+     ]
+    ],
+    "(0, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      244.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1134.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      635.7
+     ]
+    ],
+    "(0, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      22.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1556.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      593.1
+     ]
+    ],
+    "(0, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1856.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      15.2
+     ]
+    ],
+    "(10, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      545.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1055.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      614.1
+     ]
+    ],
+    "(10, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      339.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1116.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      622.3
+     ]
+    ],
+    "(10, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      75.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1523.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      692.6
+     ]
+    ],
+    "(10, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1909.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      21.8
+     ]
+    ],
+    "(20, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      817.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1006.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      565.6
+     ]
+    ],
+    "(20, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      701.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1053.4
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      627.4
+     ]
+    ],
+    "(20, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      170.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1409.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1069.7
+     ]
+    ],
+    "(20, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      2061.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      58.9
+     ]
+    ],
+    "(30, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      1289.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1080.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      683.4
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Nextion NX1060P101_011 (10,1 in)",
+      106.8
+     ]
+    ],
+    "(30, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      1092.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      949.4
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      893.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Nextion NX1060P101_011 (10,1 in)",
+      11.1
+     ]
+    ],
+    "(30, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      199.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1176.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1411.0
+     ]
+    ],
+    "(30, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      2203.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      192.0
+     ]
+    ],
+    "(40, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      1619.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      883.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      969.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Nextion NX1060P101_011 (10,1 in)",
+      463.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Isil gomme somun M3 (ekran)",
+      29.2
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Ekran civatasi M3x6",
+      50.6
+     ]
+    ],
+    "(40, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      1266.4
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      806.4
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1136.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Nextion NX1060P101_011 (10,1 in)",
+      99.0
+     ]
+    ],
+    "(40, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      204.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      931.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1637.2
+     ]
+    ],
+    "(40, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      1576.4
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      541.4
+     ]
+    ],
+    "(50, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      1766.4
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      727.7
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1129.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Nextion NX1060P101_011 (10,1 in)",
+      321.1
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Isil gomme somun M3 (ekran)",
+      0.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Ekran civatasi M3x6",
+      25.7
+     ]
+    ],
+    "(50, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      1321.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      782.8
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1325.1
+     ]
+    ],
+    "(50, -10)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      204.3
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      861.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1806.2
+     ]
+    ],
+    "(50, -5)": [
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      13.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      576.0
+     ]
+    ],
+    "(60, -20)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      1812.6
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      498.0
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1360.1
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Isil gomme somun M3 (ekran)",
+      0.6
+     ]
+    ],
+    "(60, -15)": [
+     [
+      "Kol catali",
+      "kabuk",
+      "Omuz bandi sol",
+      1330.5
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Gogus bandi sol",
+      274.9
+     ],
+     [
+      "Ust kol tupu",
+      "kabuk",
+      "Omuz bandi sol",
+      1571.9
+     ]
+    ]
+   },
+   "modul_bosluk_eklem_araliginda": {
+    "kabuk": [
+     5.0,
+     [
+      [
+       -40,
+       0
+      ],
+      "Ust kol tupu",
+      "Omuz bandi sol"
+     ]
+    ]
+   },
+   "modul_cakisan_poz": {
+    "kabuk": [
+     [
+      -60,
+      -20
+     ],
+     [
+      -60,
+      -15
+     ],
+     [
+      -60,
+      -10
+     ],
+     [
+      -60,
+      -5
+     ],
+     [
+      -50,
+      -20
+     ],
+     [
+      -50,
+      -15
+     ],
+     [
+      -50,
+      -10
+     ],
+     [
+      -50,
+      -5
+     ],
+     [
+      -40,
+      -20
+     ],
+     [
+      -40,
+      -15
+     ],
+     [
+      -40,
+      -10
+     ],
+     [
+      -40,
+      -5
+     ],
+     [
+      -30,
+      -20
+     ],
+     [
+      -30,
+      -15
+     ],
+     [
+      -30,
+      -10
+     ],
+     [
+      -30,
+      -5
+     ],
+     [
+      -20,
+      -20
+     ],
+     [
+      -20,
+      -15
+     ],
+     [
+      -20,
+      -10
+     ],
+     [
+      -20,
+      -5
+     ],
+     [
+      -10,
+      -20
+     ],
+     [
+      -10,
+      -15
+     ],
+     [
+      -10,
+      -10
+     ],
+     [
+      -10,
+      -5
+     ],
+     [
+      0,
+      -20
+     ],
+     [
+      0,
+      -15
+     ],
+     [
+      0,
+      -10
+     ],
+     [
+      0,
+      -5
+     ],
+     [
+      10,
+      -20
+     ],
+     [
+      10,
+      -15
+     ],
+     [
+      10,
+      -10
+     ],
+     [
+      10,
+      -5
+     ],
+     [
+      20,
+      -20
+     ],
+     [
+      20,
+      -15
+     ],
+     [
+      20,
+      -10
+     ],
+     [
+      20,
+      -5
+     ],
+     [
+      30,
+      -20
+     ],
+     [
+      30,
+      -15
+     ],
+     [
+      30,
+      -10
+     ],
+     [
+      30,
+      -5
+     ],
+     [
+      40,
+      -20
+     ],
+     [
+      40,
+      -15
+     ],
+     [
+      40,
+      -10
+     ],
+     [
+      40,
+      -5
+     ],
+     [
+      50,
+      -20
+     ],
+     [
+      50,
+      -15
+     ],
+     [
+      50,
+      -10
+     ],
+     [
+      50,
+      -5
+     ],
+     [
+      60,
+      -20
+     ],
+     [
+      60,
+      -15
+     ],
+     [
+      60,
+      -10
+     ],
+     [
+      60,
+      -5
+     ],
+     [
+      70,
+      -20
+     ],
+     [
+      70,
+      -15
+     ],
+     [
+      70,
+      -10
+     ],
+     [
+      70,
+      -5
+     ],
+     [
+      80,
+      -20
+     ],
+     [
+      80,
+      -15
+     ],
+     [
+      80,
+      -10
+     ],
+     [
+      80,
+      -5
+     ],
+     [
+      90,
+      -20
+     ],
+     [
+      90,
+      -15
+     ],
+     [
+      90,
+      -10
+     ],
+     [
+      90,
+      -5
+     ],
+     [
+      100,
+      -20
+     ],
+     [
+      100,
+      -15
+     ],
+     [
+      100,
+      -10
+     ],
+     [
+      100,
+      -5
+     ],
+     [
+      110,
+      -20
+     ],
+     [
+      110,
+      -15
+     ],
+     [
+      110,
+      -10
+     ],
+     [
+      110,
+      -5
+     ],
+     [
+      120,
+      -20
+     ],
+     [
+      120,
+      -15
+     ],
+     [
+      120,
+      -10
+     ],
+     [
+      120,
+      -5
+     ],
+     [
+      130,
+      -20
+     ],
+     [
+      130,
+      -15
+     ],
+     [
+      130,
+      -10
+     ],
+     [
+      140,
+      -20
+     ],
+     [
+      140,
+      -15
+     ],
+     [
+      140,
+      -10
+     ],
+     [
+      150,
+      -20
+     ],
+     [
+      150,
+      -15
+     ],
+     [
+      150,
+      -10
+     ],
+     [
+      160,
+      -20
+     ],
+     [
+      170,
+      -20
+     ],
+     [
+      180,
+      -20
+     ]
+    ]
+   },
+   "bosluk_notu": "kabuk icin en kucuk bosluk yalniz eklem araligindaki pozlarda olculdu (cakisma tum pozlarda)"
   }
  },
  "toplam": {
-  "cakisma": 0,
+  "cakisma": 176,
   "eklem_araliginda": 0
  },
  "kutle_g": {
   "iskelet": 5793.1,
   "omuz_sag": 463.6,
-  "omuz_sol": 463.6
+  "omuz_sol": 463.6,
+  "kabuk": 4925.8
  },
- "kutle_toplam_g": 6720.3,
+ "kutle_toplam_g": 11646.1,
  "agirlik_merkezi": [
-  -0.0,
-  401.32,
-  -0.1
+  -0.04,
+  429.18,
+  3.52
  ],
  "tolerans_mm3": 0.5,
- "sure_s": 57.3
+ "sure_s": 1451.8
 }

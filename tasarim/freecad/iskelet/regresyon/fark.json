@@ -1,0 +1,91 @@
+{
+ "hepsi_ayni": true,
+ "satirlar": [
+  {
+   "olcut": "parca sayisi",
+   "once": 59,
+   "sonra": 59,
+   "fark": 0,
+   "ayni": true
+  },
+  {
+   "olcut": "parca adlari, gruplari ve sirasi",
+   "once": 59,
+   "sonra": 59,
+   "fark": null,
+   "ayni": true
+  },
+  {
+   "olcut": "parca hacmi (en buyuk fark, mm3)",
+   "once": 1991282.422,
+   "sonra": 1991282.422,
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "sinir kutusu (en buyuk fark, mm)",
+   "once": "59 x 6 deger",
+   "sonra": "59 x 6 deger",
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "parca kutlesi (en buyuk fark, g)",
+   "once": 5793.087,
+   "sonra": 5793.087,
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "parca agirlik merkezi (en buyuk fark, mm)",
+   "once": "59 x 3",
+   "sonra": "59 x 3",
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "kati sayisi + isValid",
+   "once": "hepsi 1 / gecerli",
+   "sonra": "hepsi 1 / gecerli",
+   "fark": null,
+   "ayni": true
+  },
+  {
+   "olcut": "toplam agirlik merkezi (mm)",
+   "once": [
+    -0.0,
+    314.486827577,
+    0.0
+   ],
+   "sonra": [
+    -0.0,
+    314.486827577,
+    0.0
+   ],
+   "fark": 0.0,
+   "ayni": true
+  },
+  {
+   "olcut": "parca ici cakisma",
+   "once": 0,
+   "sonra": 0,
+   "fark": null,
+   "ayni": true
+  },
+  {
+   "olcut": "baglantilar (govde + elemanlar)",
+   "once": 12,
+   "sonra": 12,
+   "fark": null,
+   "ayni": true
+  },
+  {
+   "olcut": "ayrilmis bolge ihlali",
+   "once": 0,
+   "sonra": 0,
+   "fark": null,
+   "ayni": true
+  }
+ ],
+ "not_": "bolge ihlali: iki durumda da iskelet ayrilmis bolgelere girmiyor (bolge listesi kabuk modulunde degisti)"
+}

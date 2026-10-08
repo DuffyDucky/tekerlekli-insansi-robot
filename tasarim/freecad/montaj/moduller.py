@@ -18,7 +18,7 @@ import FreeCAD as App
 V = App.Vector
 HERE = os.path.dirname(os.path.abspath(__file__))
 UST = os.path.dirname(HERE)
-for _p in (UST, os.path.join(UST, "iskelet"), os.path.join(UST, "omuz")):
+for _p in (UST, os.path.join(UST, "iskelet"), os.path.join(UST, "omuz"), os.path.join(UST, "kabuk")):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 import arayuz as A
@@ -86,8 +86,18 @@ def yukle_omuz():
                 haric_neden="travers iskeletin parcasi (iki kez sayilmaz); kabuk duvari kabuk modulunun yer tutucusu")
 
 
-MODUL_YUKLE = {"iskelet": yukle_iskelet, "omuz_sag": yukle_omuz, "omuz_sol": yukle_omuz}
-SIRA = ["iskelet", "omuz_sag", "omuz_sol"]       # sonra: "taban", "kabuk", "kafa", "dirsek_sag", "dirsek_sol"
+def yukle_kabuk():
+    import kabuk_parcalar as K
+    return dict(parcalar=[dict(_parca(p, k), grup="Kabuk", alt_grup=p["grup"]) for k, p in enumerate(K.P)],
+                gruplar=[("Kabuk", "Kabuk (sabit)")],
+                baglanti=dict(modul="iskelet", grup="Iskelet", ref="Govde diregi", nokta=(0.0, 600.0, 0.0),
+                              aciklama="govde braketleri direk yan kanallarina (4 braket x 2 M6), etek braketleri uzun ray ust "
+                                       "kanallarina (6 x M6), cekic somunla (arayuz.KABUK_GOVDE_BRAKET / KABUK_ETEK_BRAKET)"),
+                eklemler=[], beklenen=None, haric=[], haric_neden="")
+
+
+MODUL_YUKLE = {"iskelet": yukle_iskelet, "omuz_sag": yukle_omuz, "omuz_sol": yukle_omuz, "kabuk": yukle_kabuk}
+SIRA = ["iskelet", "omuz_sag", "omuz_sol", "kabuk"]       # sonra: "taban", "kafa", "dirsek_sag", "dirsek_sol"
 
 
 # ====================================================================== global yerlesim (yalniz arayuz.MODULLER)

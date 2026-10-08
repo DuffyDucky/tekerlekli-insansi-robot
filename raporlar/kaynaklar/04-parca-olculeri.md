@@ -39,3 +39,13 @@ Kaynak: Claude Opus alt ajanı Waveshare çizimlerinden okudu; orkestratör fiya
 |---|---|---|---|
 | Waveshare 10.1inch HDMI LCD (B), kasalı | Kasa ön plakası 274,12 × 187,00 (R6); ön cam 253,96 × 168,60; cam penceresi 217,96 × 136,60; panel aktif alanı 216,96 × 135,60; çıplak panel 229,46 × 149,20 × 4,8; camdan arka plakaya 18,0; köşe delikleri Ø3,0, 265,11 × 179,0. CAD'de kasa ön plakası kullanılmadı, çerçeveyi gövde yapıyor (cam + 0,5 boşluk + 2,5 duvar). Kütle doğrulanmadı (CAD'de 0,60 kg tahmini) | doğrulandı (kütle tahmini) | https://files.waveshare.com/wiki/10.1inch_HDMI_LCD_B_with_case/10.1inch_HDMI_LCD_B_with_case_2D_PDF_20260116.pdf · https://files.waveshare.com/upload/9/9b/10.1inch_HDMI_LCD_B_panel_dimension.pdf |
 | Waveshare 1.28inch LCD Module (GC9A01) | PCB Ø37,5, dil dahil 40,4; aktif Ø32,4; konnektörle 11,05, konnektörsüz ≈ 5,45; 4 pirinç burç Ø3,5 / Ø1,7, 18,6 × 26,7; PH2.0 8 pin. Kütle doğrulanmadı (CAD'de 8 g tahmini) | doğrulandı (kütle tahmini) | https://www.waveshare.com/wiki/1.28inch_LCD_Module · https://files.waveshare.com/upload/4/49/1.28inch_LCD_Module_3D_Drawing.zip |
+
+## Kabuk modülü (8 Ekim 2026): 3D yazıcı ve göğüs ekranı
+
+Kaynak: Claude Opus, FreeCAD kabuk modülü oturumu. Yazıcı değerleri üreticinin teknik sayfasından okundu; Nextion ölçüleri `donanim/datasheet/` altındaki çizimden. Bu değerler `tasarim/freecad/arayuz.py` içindeki `YAZICI` ve `NEXTION` sözlüklerine işlendi.
+
+| Parça | Ölçü (mm) | Durum | Kaynak |
+|---|---|---|---|
+| Bambu Lab X2D (ekibin yazıcısı) | Baskı hacmi ana nozül 256 × 256 × 260; yardımcı nozül ve çift nozül 235,5 × 256 × 256; iki nozül toplam 256 × 256 × 260 · iki nozül (ana + yardımcı) · aktif ısıtmalı hazne en çok 65 °C · nozül 300 °C, tabla 120 °C · PLA, PETG, ABS, ASA, TPU, PA, PC, PET, PVA ve "Support for PLA/PETG" destek malzemesi. Kabukta kullanılabilir hacim her eksende 10 mm pay ile 246 × 246 × 250 (pay tahmini). Eski 250³ / PRINT_MAX 230 varsayımı geçersiz | doğrulandı (pay tahmini) | https://bambulab.com/en/x2d/specs |
+| Nextion NX1060P101_011 (10,1", Intelligent) | PCB 258,00 × 152,00 × 1,60; cam (LCD + dokunmatik) 236,80 × 144,80; toplam kalınlık 9,80 ± 0,2 (sayfada bileşenlerle 11,5); aktif alan 222,72 × 125,28; görünen alan 235 × 143; delikler 4× Ø3,20, 251,60 × 145,60 (kenardan 3,2); cam PCB uzun kenarından 10,40, kısa kenarından 3,80; 535 g. 4 pin XH2.54 konnektörün yeri (alt kenardan 7,81, soldan 68,44, 15,12 genişlik) ve arka bileşen yüksekliği (6,00) çizimden yorum | doğrulandı (konnektör yeri tahmini) | `donanim/datasheet/NX1060P101-011C-I_dimension.pdf` · https://nextion.tech/datasheets/nx1060p101-011c-i/ |
+| M3 ISO 7380 bombe başlı imbus | Baş Ø5,7 × 1,65, anahtar 2 (bindirme cıvataları) | standart (nominal) | ISO 7380-1 |

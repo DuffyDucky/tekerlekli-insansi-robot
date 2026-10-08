@@ -195,8 +195,8 @@ ACIK = [
     "sağlamaz. Plaka, burç, akü, motor ve elektronik yerleri `arayuz.BOLGELER`'de (31 bölge).",
     "**Dirsek ve aşağısı çizilmedi:** Modüller arası tarama üst kol tüpünün ucuna (omuzdan 140 mm) kadar. Tork ve eğilme hesabında alt kol "
     "260 g ve el ucu %s mm (tahmini). Dirsek modülü `carpisma.py` içindeki `KONTROL` listesine eklenince tam kol taranır." % sayi(306, 0),
-    "**Kabuk ve kafa:** Gövde kabuğu (torso3) ve kafa henüz FreeCAD'de yok. Kafa için traversin üst yüzü x −35…35 (boyun plakası) ayrıldı. "
-    "Omuzdaki kabuk duvarı x = 152 varsayımı sürüyor.",
+    "**Kabuk ve kafa:** Gövde kabuğu ve taban eteği `kabuk/` modülünde (direğe 4 braket, uzun raylara 6 braket; ayrıntı `kabuk/rapor.html`). "
+    "Kafa henüz FreeCAD'de yok; traversin üst yüzü x −35…35 (boyun plakası) ayrıldı.",
     "**Direk boyu 800,5 mm:** robot_cad V3 ölçüsü (Y_RAIL1 134,5 → S3 − 20 = 935). Kesimde ±0,5 mm tolerans traversin yüksekliğini aynı "
     "miktarda değiştirir.",
 ]

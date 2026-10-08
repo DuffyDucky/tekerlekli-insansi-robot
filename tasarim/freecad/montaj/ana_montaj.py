@@ -212,9 +212,16 @@ omuz_tr = next(p for d in MOD if d["ad"] == "omuz_sag" for p in d["parcalar"] if
 omuz_net = sum(omz["kutle"].values()) - omuz_tr
 beklenen_kutle = isk["kutle_g"] + 2 * omuz_net
 beklenen_parca = isk["parca_sayisi"] + 2 * (omz["parca_sayisi"] - 2)
+formul = "iskelet %d + 2 x (omuz %d - travers - kabuk referansi)" % (isk["parca_sayisi"], omz["parca_sayisi"])
+for d in MOD:                      # diger moduller: kendi analiz JSON'u (<modul>/<modul>-analiz.json)
+    if d["ad"] in ("iskelet", "omuz_sag", "omuz_sol"):
+        continue
+    js = json.load(open(os.path.join(UST, d["ad"], "%s-analiz.json" % d["ad"]), encoding="utf-8"))
+    beklenen_kutle += js["kutle_g"]
+    beklenen_parca += js["parca_sayisi"]
+    formul += " + %s %d" % (d["ad"], js["parca_sayisi"])
 kars = dict(
-    parca=dict(montaj=len(feats), beklenen=beklenen_parca, formul="iskelet %d + 2 x (omuz %d - travers - kabuk referansi)" % (
-        isk["parca_sayisi"], omz["parca_sayisi"]), ayni=len(feats) == beklenen_parca),
+    parca=dict(montaj=len(feats), beklenen=beklenen_parca, formul=formul, ayni=len(feats) == beklenen_parca),
     kutle=dict(montaj_dosyasi=round(m_dosya, 2), bellek=round(m_top, 2), beklenen_analizlerden=round(beklenen_kutle, 2),
                carpisma=crp["kutle_toplam_g"], fark_analiz=round(m_dosya - beklenen_kutle, 3),
                fark_carpisma=round(m_dosya - crp["kutle_toplam_g"], 3)),
