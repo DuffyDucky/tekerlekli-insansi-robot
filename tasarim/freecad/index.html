@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>FreeCAD Raporları</title>
+<style>
+:root{color-scheme:light;--page:#f6f6f4;--surface:#fdfdfc;--ink:#0b0b0b;--ink-2:#52514e;--muted:#898781;--grid:#e1e0d9;--accent:#2a78d6;--accent-soft:rgba(42,120,214,.10);--thumb:#ffffff}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--page:#0d0d0d;--surface:#1a1a19;--ink:#fff;--ink-2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--accent:#4a93ea;--accent-soft:rgba(74,147,234,.14);--thumb:#f4f4f2}}
+:root[data-theme="dark"]{color-scheme:dark;--page:#0d0d0d;--surface:#1a1a19;--ink:#fff;--ink-2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--accent:#4a93ea;--accent-soft:rgba(74,147,234,.14);--thumb:#f4f4f2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1200px;margin:auto;padding:26px 16px 32px}
+.eyebrow{font-size:12px;letter-spacing:.12em;color:var(--ink-2);font-weight:700;text-transform:uppercase}
+h1{font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.1;letter-spacing:-.03em;margin:8px 0}
+.dek{color:var(--ink-2);max-width:860px;margin:0;font-size:clamp(.95rem,1.5vw,1.05rem)}
+.top{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-end}
+.dl{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-block;border:1px solid var(--grid);background:var(--surface);color:var(--ink);font-size:12.5px;font-weight:600;padding:7px 11px;border-radius:8px;text-decoration:none}
+.btn:hover{border-color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:20px 0}
+.stat{background:var(--surface);border:1px solid var(--grid);border-radius:10px;padding:12px 14px}
+.stat b{display:block;font-size:1.35rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat span{color:var(--ink-2);font-size:12.5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--grid);border-radius:12px;overflow:hidden;color:inherit;text-decoration:none}
+.card:hover{border-color:var(--accent)}
+.card.main{grid-column:1 / -1;flex-direction:row}
+.card img{width:100%;height:220px;object-fit:contain;background:var(--thumb);display:block}
+.card.main img{width:46%;height:300px}
+.card div{padding:12px 14px}
+.card h2{font-size:1.05rem;margin:0 0 4px;letter-spacing:-.01em}
+.card p{margin:0;color:var(--ink-2);font-size:13px}
+.note{color:var(--muted);font-size:12.5px;margin-top:22px}
+@media(max-width:720px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.card.main{flex-direction:column}.card.main img{width:100%;height:220px}}
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <div>
+      <div class="eyebrow">FreeCAD tasarımı · modül raporları</div>
+      <h1>Tekerlekli insansı robot</h1>
+      <p class="dek">Robot FreeCAD'de altı modül olarak çizildi ve tek bir ana montajda birleşti. Her modülün raporunda görseller, bağlantı tablosu, 3D baskı tablosu, çakışma taraması ve hesaplar var.</p>
+    </div>
+    <div class="dl">
+      <a class="btn" href="../Robot-Tasarim-Demosu.html">← Tasarım demosu</a>
+      <a class="btn" href="https://github.com/DuffyDucky/tekerlekli-insansi-robot/blob/main/tasarim/freecad/OZET.md">Tek sayfa özet</a>
+      <a class="btn" href="montaj/robot-montaj.step" download>⬇ Montaj STEP</a>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>907</b><span>parça, 22 eklem</span></div>
+    <div class="stat"><b>21,66 kg</b><span>toplam kütle</span></div>
+    <div class="stat"><b>44 + 3</b><span>3D baskı + lazer kesim parça</span></div>
+    <div class="stat"><b>≥ 2,9×</b><span>devrilme payı</span></div>
+  </div>
+
+  <div class="grid">
+    <a class="card main" href="montaj/rapor.html">
+      <img src="montaj/gorsel/montaj-izometrik.png" alt="Robotun tam montajı" loading="lazy">
+      <div><h2>Ana montaj</h2><p>Bütün modüller tek dosyada: iki kol, kafa, kabuk ve taban; eklemlerin hareketi ve çakışma özeti.</p></div>
+    </a>
+    <a class="card" href="omuz/rapor.html">
+      <img src="omuz/gorsel/omuz-genel.png" alt="Omuz modülü" loading="lazy">
+      <div><h2>Omuz</h2><p>İki eksenli omuz: öne-arka ve yana açma, rulmanlı yatak.</p></div>
+    </a>
+    <a class="card" href="iskelet/rapor.html">
+      <img src="iskelet/gorsel/iskelet-izometrik.png" alt="İskelet modülü" loading="lazy">
+      <div><h2>İskelet</h2><p>Sigma profil şase, gövde direği ve omuz traversi.</p></div>
+    </a>
+    <a class="card" href="kabuk/rapor.html">
+      <img src="kabuk/gorsel/kabuk-izometrik.png" alt="Kabuk modülü" loading="lazy">
+      <div><h2>Kabuk</h2><p>Gövde ve etek; X2D yazıcıya bölünmüş 15 baskı parçası, ekran yuvası.</p></div>
+    </a>
+    <a class="card" href="dirsek/rapor.html">
+      <img src="dirsek/gorsel/dirsek-izometrik.png" alt="Dirsek modülü" loading="lazy">
+      <div><h2>Dirsek</h2><p>Dirsek, bilek ve el; kol zincirinin tork hesabı.</p></div>
+    </a>
+    <a class="card" href="kafa/rapor.html">
+      <img src="kafa/gorsel/kafa-izometrik.png" alt="Kafa modülü" loading="lazy">
+      <div><h2>Kafa</h2><p>Sağa-sola ve öne-arka dönen boyun, yüz ekranı, vizör ve kamera.</p></div>
+    </a>
+    <a class="card" href="taban/rapor.html">
+      <img src="taban/gorsel/taban-izometrik.png" alt="Taban modülü" loading="lazy">
+      <div><h2>Taban</h2><p>Motorlar, tekerlekler, akü ve elektronik; devrilme, motor ve akü hesapları.</p></div>
+    </a>
+  </div>
+
+  <p class="note">Tahmini ölçüler raporlarda "tahmini" diye işaretli. Kaynak dosyalar: <a href="https://github.com/DuffyDucky/tekerlekli-insansi-robot/tree/main/tasarim/freecad">GitHub deposu</a>.</p>
+</main>
+</body>
+</html>
