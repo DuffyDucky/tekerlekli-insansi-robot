@@ -1,0 +1,6958 @@
+{
+ "tarih": "2026-10-14T23:02:45",
+ "betik": "omuz/omuz_baski.py",
+ "girdi": {
+  "dosya": "omuz/omuz-montaj.FCStd",
+  "degistirilme": "2026-10-14T15:48:40",
+  "boyut": 175187,
+  "sha256": "bc6e54004f81ae08",
+  "deneme": 1,
+  "yontem": "fcstd",
+  "omuz_parcalar_py_degistirilme": "2026-10-14T14:59:48"
+ },
+ "yazici": {
+  "model": "Bambu Lab X2D",
+  "kullanilabilir": [
+   246.0,
+   246.0,
+   250.0
+  ],
+  "nozul": "0,4 mm sertlestirilmis celik (baski-listesi; PETG-CF icin sart)"
+ },
+ "parametreler": {
+  "katman_mm": 0.5,
+  "aci_derece": 45,
+  "ince_serit_mm": 2.0,
+  "konsol_sinir_mm": 1.0,
+  "kopru_sinir_mm": 15.0,
+  "kopru_uyari_mm": 10.0,
+  "doluluk_petg_cf": [
+   0.8,
+   0.9
+  ],
+  "doluluk_petg": 0.8,
+  "rho": {
+   "PETG-CF": 1.27,
+   "PETG": 1.27
+  },
+  "hiz_mm3_s": 10.0,
+  "hiz_cf_yavas_mm3_s": 7.0,
+  "destek_doluluk": 0.15,
+  "secim": "sigma > yuk uyumu (agirlikli) > destek alani > 45 derece cikinti > ilk katman",
+  "notlar": "kutle/sure tahmini; filament = kutle x 1,05 + destek. Destek hacmi = alan x alttaki malzemeye/tablaya kolon boyu"
+ },
+ "parcalar": [
+  {
+   "ad": "Omuz yuvasi",
+   "adet": 2,
+   "adet_notu": "sag + sol (sol = X aynasi; yon ve sonuc ayni, dilimleyicide aynalanir)",
+   "malzeme": "PETG-CF",
+   "model_malzeme": "PETG",
+   "model_kutle_g": 50.0,
+   "hacim_cm3": 65.59,
+   "secilen_yon": "-Y",
+   "en_az_destek_yon": "-Y",
+   "yon_sirasi": [
+    "-Y",
+    "+Y",
+    "+Z",
+    "-Z",
+    "+X",
+    "-X"
+   ],
+   "desteksiz": false,
+   "desteksiz_yon_var": [],
+   "kutle_g": {
+    "0.80": 66.6,
+    "0.90": 75.0
+   },
+   "filament_g": {
+    "0.80": 81.0,
+    "0.90": 89.9
+   },
+   "destek_filament_g": 11.1,
+   "sure_saat": {
+    "0.80": 1.7,
+    "0.90": 1.88
+   },
+   "sure_saat_yavas_cf": {
+    "0.80": 2.43,
+    "0.90": 2.69
+   },
+   "silindir": [
+    {
+     "r": 2.0,
+     "delik": true,
+     "eksen": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 6.2
+    },
+    {
+     "r": 2.0,
+     "delik": true,
+     "eksen": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 6.2
+    },
+    {
+     "r": 3.3,
+     "delik": true,
+     "eksen": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "boy": 4.8
+    },
+    {
+     "r": 3.3,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "boy": 4.8
+    },
+    {
+     "r": 3.3,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 4.8
+    },
+    {
+     "r": 3.3,
+     "delik": true,
+     "eksen": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "boy": 4.8
+    },
+    {
+     "r": 2.25,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 5.0
+    },
+    {
+     "r": 2.25,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 5.0
+    },
+    {
+     "r": 2.25,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 5.0
+    },
+    {
+     "r": 2.25,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 5.0
+    },
+    {
+     "r": 2.0,
+     "delik": true,
+     "eksen": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 6.2
+    },
+    {
+     "r": 2.0,
+     "delik": true,
+     "eksen": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 6.2
+    }
+   ],
+   "yonler": {
+    "+X": {
+     "yukari": [
+      1,
+      0,
+      0
+     ],
+     "tabla_yuzu": "x = 70.0 yuzu tablada (robot yerel +X yukari)",
+     "olcu": [
+      76.0,
+      67.0,
+      76.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 867.8,
+     "yukseklik_taban_orani": 2.58,
+     "cikinti45_mm2": 4161.1,
+     "tavan_mm2": 4082.2,
+     "cikinti45_orani": 0.1336,
+     "egim_yuz": [],
+     "egim_alan_mm2": 0,
+     "egim_izdusum_mm2": 0,
+     "kucuk_delik_cikinti_mm2": 77.4,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 3905.4,
+     "destek_katman_alan_mm2": 3905.4,
+     "destek_hacim_cm3": 182.25,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        57.23,
+        57.23
+       ],
+       "katman": 3,
+       "alan_mm2": 2353.0,
+       "turler": [
+        "konsol",
+        "kopru"
+       ],
+       "konsol_max_mm": 25.39,
+       "kopru_max_mm": 51.3,
+       "merkez_robot": [
+        127.2,
+        -9.3,
+        0.0
+       ],
+       "destek_hacim_mm3": 134592.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        30.73,
+        30.73
+       ],
+       "katman": 1,
+       "alan_mm2": 1552.4,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 0,
+       "kopru_max_mm": 39.4,
+       "merkez_robot": [
+        100.7,
+        0.0,
+        0.0
+       ],
+       "destek_hacim_mm3": 47659.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 2,
+     "en_buyuk_kopru_mm": 51.3,
+     "en_buyuk_konsol_mm": 25.4,
+     "kopruler": [],
+     "yuk_uyum": 0.429,
+     "yuk": [
+      {
+       "ad": "manson + kollar: butun kolun momenti X boyunca egilme",
+       "ister": "yatay",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "S1 kulak M4 delikleri (servo tork tepkisi)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 4,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "kapak M3 isil gomme somunlari",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 4,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        6.0,
+        33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "dikey",
+       "agiz": [
+        "yukari"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        -6.0,
+        33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "dikey",
+       "agiz": [
+        "yukari"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        6.0,
+        -33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "dikey",
+       "agiz": [
+        "yukari"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        -6.0,
+        -33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "dikey",
+       "agiz": [
+        "yukari"
+       ],
+       "derinlik_mm": 6.2
+      }
+     ],
+     "katman_sayisi": 152,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "-X": {
+     "yukari": [
+      -1,
+      0,
+      0
+     ],
+     "tabla_yuzu": "x = 146.0 yuzu tablada (robot yerel -X yukari)",
+     "olcu": [
+      76.0,
+      67.0,
+      76.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 525.7,
+     "yukseklik_taban_orani": 3.31,
+     "cikinti45_mm2": 4503.2,
+     "tavan_mm2": 4424.2,
+     "cikinti45_orani": 0.1446,
+     "egim_yuz": [],
+     "egim_alan_mm2": 0,
+     "egim_izdusum_mm2": 0,
+     "kucuk_delik_cikinti_mm2": 77.4,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 4277.0,
+     "destek_katman_alan_mm2": 4277.0,
+     "destek_hacim_cm3": 118.08,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        14.23,
+        14.23
+       ],
+       "katman": 1,
+       "alan_mm2": 2299.4,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 38.83,
+       "kopru_max_mm": 57.47,
+       "merkez_robot": [
+        131.8,
+        -9.9,
+        0.0
+       ],
+       "destek_hacim_mm3": 32651.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        43.23,
+        43.23
+       ],
+       "katman": 1,
+       "alan_mm2": 1977.6,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 2.83,
+       "kopru_max_mm": 40.72,
+       "merkez_robot": [
+        102.8,
+        0.3,
+        0.0
+       ],
+       "destek_hacim_mm3": 85432.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 2,
+     "en_buyuk_kopru_mm": 57.5,
+     "en_buyuk_konsol_mm": 38.8,
+     "kopruler": [
+      {
+       "z": 6.23,
+       "tur": "kopru",
+       "alan_mm2": 7.1,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.91,
+       "boyut": [
+        3.0,
+        3.0
+       ],
+       "merkez_robot": [
+        139.8,
+        -6.0,
+        33.0
+       ],
+       "destek": false,
+       "kolon_mm": 6.2,
+       "tablaya": true
+      },
+      {
+       "z": 6.23,
+       "tur": "kopru",
+       "alan_mm2": 7.1,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.91,
+       "boyut": [
+        3.0,
+        3.0
+       ],
+       "merkez_robot": [
+        139.8,
+        6.0,
+        33.0
+       ],
+       "destek": false,
+       "kolon_mm": 6.2,
+       "tablaya": true
+      },
+      {
+       "z": 6.23,
+       "tur": "kopru",
+       "alan_mm2": 7.1,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.91,
+       "boyut": [
+        3.0,
+        3.0
+       ],
+       "merkez_robot": [
+        139.8,
+        -6.0,
+        -33.0
+       ],
+       "destek": false,
+       "kolon_mm": 6.2,
+       "tablaya": true
+      },
+      {
+       "z": 6.23,
+       "tur": "kopru",
+       "alan_mm2": 7.1,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.91,
+       "boyut": [
+        3.0,
+        3.0
+       ],
+       "merkez_robot": [
+        139.8,
+        6.0,
+        -33.0
+       ],
+       "destek": false,
+       "kolon_mm": 6.2,
+       "tablaya": true
+      }
+     ],
+     "yuk_uyum": 0.429,
+     "yuk": [
+      {
+       "ad": "manson + kollar: butun kolun momenti X boyunca egilme",
+       "ister": "yatay",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "S1 kulak M4 delikleri (servo tork tepkisi)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 4,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "kapak M3 isil gomme somunlari",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 4,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        6.0,
+        33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "dikey",
+       "agiz": [
+        "asagi"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        -6.0,
+        33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "dikey",
+       "agiz": [
+        "asagi"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        6.0,
+        -33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "dikey",
+       "agiz": [
+        "asagi"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        -6.0,
+        -33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "dikey",
+       "agiz": [
+        "asagi"
+       ],
+       "derinlik_mm": 6.2
+      }
+     ],
+     "katman_sayisi": 152,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "+Y": {
+     "yukari": [
+      0,
+      1,
+      0
+     ],
+     "tabla_yuzu": "y = -42.0 yuzu tablada (robot yerel +Y yukari)",
+     "olcu": [
+      76.0,
+      76.0,
+      67.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 250.0,
+     "yukseklik_taban_orani": 4.24,
+     "cikinti45_mm2": 3826.3,
+     "tavan_mm2": 3662.7,
+     "cikinti45_orani": 0.1229,
+     "egim_yuz": [],
+     "egim_alan_mm2": 0,
+     "egim_izdusum_mm2": 0,
+     "kucuk_delik_cikinti_mm2": 151.1,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 3559.6,
+     "destek_katman_alan_mm2": 3559.6,
+     "destek_hacim_cm3": 96.39,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        17.23,
+        17.23
+       ],
+       "katman": 1,
+       "alan_mm2": 1850.8,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 59.48,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        90.1,
+        -24.8,
+        0.0
+       ],
+       "destek_hacim_mm3": 31834.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        62.23,
+        62.23
+       ],
+       "katman": 1,
+       "alan_mm2": 1147.8,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 19.18,
+       "kopru_max_mm": 41.15,
+       "merkez_robot": [
+        85.0,
+        20.2,
+        0.0
+       ],
+       "destek_hacim_mm3": 46486.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        30.23,
+        30.23
+       ],
+       "katman": 1,
+       "alan_mm2": 230.5,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 18.67,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        136.4,
+        -11.8,
+        31.9
+       ],
+       "destek_hacim_mm3": 6961.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        30.23,
+        30.23
+       ],
+       "katman": 1,
+       "alan_mm2": 230.5,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 18.65,
+       "kopru_max_mm": 3.08,
+       "merkez_robot": [
+        136.4,
+        -11.8,
+        -31.9
+       ],
+       "destek_hacim_mm3": 6961.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        52.73,
+        52.73
+       ],
+       "katman": 1,
+       "alan_mm2": 100.0,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 0,
+       "kopru_max_mm": 20.02,
+       "merkez_robot": [
+        129.5,
+        10.7,
+        0.0
+       ],
+       "destek_hacim_mm3": 4150.0,
+       "tablaya": false
+      }
+     ],
+     "destek_bolge_sayi": 5,
+     "en_buyuk_kopru_mm": 41.1,
+     "en_buyuk_konsol_mm": 59.5,
+     "kopruler": [],
+     "yuk_uyum": 0.571,
+     "yuk": [
+      {
+       "ad": "manson + kollar: butun kolun momenti X boyunca egilme",
+       "ister": "yatay",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "S1 kulak M4 delikleri (servo tork tepkisi)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "kapak M3 isil gomme somunlari",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        6.0,
+        33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        -6.0,
+        33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        6.0,
+        -33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        -6.0,
+        -33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      }
+     ],
+     "katman_sayisi": 134,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "-Y": {
+     "yukari": [
+      0,
+      -1,
+      0
+     ],
+     "tabla_yuzu": "y = 25.0 yuzu tablada (robot yerel -Y yukari)",
+     "olcu": [
+      76.0,
+      76.0,
+      67.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 1615.8,
+     "yukseklik_taban_orani": 1.67,
+     "cikinti45_mm2": 2460.5,
+     "tavan_mm2": 2296.8,
+     "cikinti45_orani": 0.079,
+     "egim_yuz": [],
+     "egim_alan_mm2": 0,
+     "egim_izdusum_mm2": 0,
+     "kucuk_delik_cikinti_mm2": 151.1,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 2193.8,
+     "destek_katman_alan_mm2": 2193.8,
+     "destek_hacim_cm3": 58.27,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        45.23,
+        45.23
+       ],
+       "katman": 1,
+       "alan_mm2": 1147.8,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 19.18,
+       "kopru_max_mm": 41.15,
+       "merkez_robot": [
+        85.0,
+        -20.2,
+        0.0
+       ],
+       "destek_hacim_mm3": 46486.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        3.23,
+        3.23
+       ],
+       "katman": 1,
+       "alan_mm2": 485.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 34.62,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        122.6,
+        21.8,
+        0.0
+       ],
+       "destek_hacim_mm3": 1552.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        13.23,
+        13.23
+       ],
+       "katman": 1,
+       "alan_mm2": 230.5,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 18.65,
+       "kopru_max_mm": 3.08,
+       "merkez_robot": [
+        136.4,
+        11.8,
+        31.9
+       ],
+       "destek_hacim_mm3": 3043.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        13.23,
+        13.23
+       ],
+       "katman": 1,
+       "alan_mm2": 230.5,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 18.67,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        136.4,
+        11.8,
+        -31.9
+       ],
+       "destek_hacim_mm3": 3043.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        55.73,
+        55.73
+       ],
+       "katman": 1,
+       "alan_mm2": 100.0,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 0,
+       "kopru_max_mm": 20.02,
+       "merkez_robot": [
+        129.5,
+        -30.7,
+        0.0
+       ],
+       "destek_hacim_mm3": 4150.0,
+       "tablaya": false
+      }
+     ],
+     "destek_bolge_sayi": 5,
+     "en_buyuk_kopru_mm": 41.1,
+     "en_buyuk_konsol_mm": 34.6,
+     "kopruler": [],
+     "yuk_uyum": 0.571,
+     "yuk": [
+      {
+       "ad": "manson + kollar: butun kolun momenti X boyunca egilme",
+       "ister": "yatay",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "S1 kulak M4 delikleri (servo tork tepkisi)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "kapak M3 isil gomme somunlari",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        6.0,
+        33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        -6.0,
+        33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        6.0,
+        -33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        -6.0,
+        -33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      }
+     ],
+     "katman_sayisi": 134,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "+Z": {
+     "yukari": [
+      0,
+      0,
+      1
+     ],
+     "tabla_yuzu": "z = -38.0 yuzu tablada (robot yerel +Z yukari)",
+     "olcu": [
+      76.0,
+      67.0,
+      76.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 456.0,
+     "yukseklik_taban_orani": 3.56,
+     "cikinti45_mm2": 6005.8,
+     "tavan_mm2": 5854.7,
+     "cikinti45_orani": 0.1929,
+     "egim_yuz": [],
+     "egim_alan_mm2": 0,
+     "egim_izdusum_mm2": 0,
+     "kucuk_delik_cikinti_mm2": 157.6,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 5679.2,
+     "destek_katman_alan_mm2": 5679.2,
+     "destek_hacim_cm3": 150.2,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        13.23,
+        13.23
+       ],
+       "katman": 1,
+       "alan_mm2": 2926.4,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 57.42,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        100.2,
+        -1.7,
+        -24.8
+       ],
+       "destek_hacim_mm3": 38628.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        58.23,
+        58.23
+       ],
+       "katman": 1,
+       "alan_mm2": 1147.8,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 19.18,
+       "kopru_max_mm": 41.15,
+       "merkez_robot": [
+        85.0,
+        0.0,
+        20.2
+       ],
+       "destek_hacim_mm3": 46486.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        58.23,
+        58.23
+       ],
+       "katman": 1,
+       "alan_mm2": 1081.0,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 0,
+       "kopru_max_mm": 23.02,
+       "merkez_robot": [
+        115.0,
+        -1.5,
+        20.2
+       ],
+       "destek_hacim_mm3": 43780.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        64.23,
+        64.23
+       ],
+       "katman": 1,
+       "alan_mm2": 324.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 13.31,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        139.2,
+        0.0,
+        26.2
+       ],
+       "destek_hacim_mm3": 17010.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        48.73,
+        48.73
+       ],
+       "katman": 1,
+       "alan_mm2": 200.0,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 0,
+       "kopru_max_mm": 40.03,
+       "merkez_robot": [
+        129.5,
+        -10.0,
+        10.7
+       ],
+       "destek_hacim_mm3": 4300.0,
+       "tablaya": false
+      }
+     ],
+     "destek_bolge_sayi": 5,
+     "en_buyuk_kopru_mm": 41.1,
+     "en_buyuk_konsol_mm": 57.4,
+     "kopruler": [],
+     "yuk_uyum": 0.571,
+     "yuk": [
+      {
+       "ad": "manson + kollar: butun kolun momenti X boyunca egilme",
+       "ister": "yatay",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "S1 kulak M4 delikleri (servo tork tepkisi)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "kapak M3 isil gomme somunlari",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        6.0,
+        33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        -6.0,
+        33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        6.0,
+        -33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        -6.0,
+        -33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      }
+     ],
+     "katman_sayisi": 152,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "-Z": {
+     "yukari": [
+      0,
+      0,
+      -1
+     ],
+     "tabla_yuzu": "z = 38.0 yuzu tablada (robot yerel -Z yukari)",
+     "olcu": [
+      76.0,
+      67.0,
+      76.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 456.0,
+     "yukseklik_taban_orani": 3.56,
+     "cikinti45_mm2": 6006.2,
+     "tavan_mm2": 5855.2,
+     "cikinti45_orani": 0.1929,
+     "egim_yuz": [],
+     "egim_alan_mm2": 0,
+     "egim_izdusum_mm2": 0,
+     "kucuk_delik_cikinti_mm2": 157.1,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 5679.2,
+     "destek_katman_alan_mm2": 5679.2,
+     "destek_hacim_cm3": 150.2,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        13.23,
+        13.23
+       ],
+       "katman": 1,
+       "alan_mm2": 2926.4,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 57.64,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        100.2,
+        -1.7,
+        24.8
+       ],
+       "destek_hacim_mm3": 38628.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        58.23,
+        58.23
+       ],
+       "katman": 1,
+       "alan_mm2": 1147.8,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 18.87,
+       "kopru_max_mm": 40.9,
+       "merkez_robot": [
+        85.0,
+        0.0,
+        -20.2
+       ],
+       "destek_hacim_mm3": 46486.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        58.23,
+        58.23
+       ],
+       "katman": 1,
+       "alan_mm2": 1081.0,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 0,
+       "kopru_max_mm": 23.02,
+       "merkez_robot": [
+        115.0,
+        -1.5,
+        -20.2
+       ],
+       "destek_hacim_mm3": 43780.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        64.23,
+        64.23
+       ],
+       "katman": 1,
+       "alan_mm2": 324.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 13.34,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        139.2,
+        0.0,
+        -26.2
+       ],
+       "destek_hacim_mm3": 17010.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        48.73,
+        48.73
+       ],
+       "katman": 1,
+       "alan_mm2": 200.0,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 0,
+       "kopru_max_mm": 40.03,
+       "merkez_robot": [
+        129.5,
+        -10.0,
+        -10.7
+       ],
+       "destek_hacim_mm3": 4300.0,
+       "tablaya": false
+      }
+     ],
+     "destek_bolge_sayi": 5,
+     "en_buyuk_kopru_mm": 40.9,
+     "en_buyuk_konsol_mm": 57.6,
+     "kopruler": [],
+     "yuk_uyum": 0.571,
+     "yuk": [
+      {
+       "ad": "manson + kollar: butun kolun momenti X boyunca egilme",
+       "ister": "yatay",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "S1 kulak M4 delikleri (servo tork tepkisi)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "kapak M3 isil gomme somunlari",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        6.0,
+        33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        -6.0,
+        33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        6.0,
+        -33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        142.9,
+        -6.0,
+        -33.0
+       ],
+       "eksen_robot": [
+        -1.0,
+        0.0,
+        0.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      }
+     ],
+     "katman_sayisi": 152,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    }
+   }
+  },
+  {
+   "ad": "Rulman kapagi",
+   "adet": 2,
+   "adet_notu": "sag + sol (sol = X aynasi; yon ve sonuc ayni, dilimleyicide aynalanir)",
+   "malzeme": "PETG-CF",
+   "model_malzeme": "PETG",
+   "model_kutle_g": 11.0,
+   "hacim_cm3": 14.37,
+   "secilen_yon": "+X",
+   "en_az_destek_yon": "+X",
+   "yon_sirasi": [
+    "+X",
+    "-X",
+    "-Z",
+    "+Z",
+    "+Y",
+    "-Y"
+   ],
+   "desteksiz": true,
+   "desteksiz_yon_var": [
+    "+X"
+   ],
+   "kutle_g": {
+    "0.80": 14.6,
+    "0.90": 16.4
+   },
+   "filament_g": {
+    "0.80": 15.3,
+    "0.90": 17.2
+   },
+   "destek_filament_g": 0.0,
+   "sure_saat": {
+    "0.80": 0.32,
+    "0.90": 0.36
+   },
+   "sure_saat_yavas_cf": {
+    "0.80": 0.46,
+    "0.90": 0.51
+   },
+   "silindir": [
+    {
+     "r": 30.0,
+     "delik": false,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 14.0
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 6.0
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 6.0
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 6.0
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 6.0
+    },
+    {
+     "r": 26.0,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 7.0
+    },
+    {
+     "r": 24.0,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 7.0
+    }
+   ],
+   "yonler": {
+    "+X": {
+     "yukari": [
+      1,
+      0,
+      0
+     ],
+     "tabla_yuzu": "x = 146.0 yuzu tablada (robot yerel +X yukari)",
+     "olcu": [
+      76.0,
+      60.0,
+      14.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 1404.9,
+     "yukseklik_taban_orani": 0.37,
+     "cikinti45_mm2": 0.0,
+     "tavan_mm2": 0.0,
+     "cikinti45_orani": 0.0,
+     "egim_yuz": [],
+     "egim_alan_mm2": 0,
+     "egim_izdusum_mm2": 0,
+     "kucuk_delik_cikinti_mm2": 0.0,
+     "destek_gerekli": false,
+     "destek_alan_mm2": 0,
+     "destek_katman_alan_mm2": 0,
+     "destek_hacim_cm3": 0.0,
+     "destek_bolge": [],
+     "destek_bolge_sayi": 0,
+     "en_buyuk_kopru_mm": 0,
+     "en_buyuk_konsol_mm": 0,
+     "kopruler": [],
+     "yuk_uyum": 1.0,
+     "yuk": [
+      {
+       "ad": "6808-2RS dis bilezik yuvasi O52 (siki gecme)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "kapak M3 civata delikleri",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 4,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 28,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "-X": {
+     "yukari": [
+      -1,
+      0,
+      0
+     ],
+     "tabla_yuzu": "x = 160.0 yuzu tablada (robot yerel -X yukari)",
+     "olcu": [
+      76.0,
+      60.0,
+      14.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 703.7,
+     "yukseklik_taban_orani": 0.53,
+     "cikinti45_mm2": 701.7,
+     "tavan_mm2": 701.7,
+     "cikinti45_orani": 0.0861,
+     "egim_yuz": [],
+     "egim_alan_mm2": 0,
+     "egim_izdusum_mm2": 0,
+     "kucuk_delik_cikinti_mm2": 0.0,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 387.0,
+     "destek_katman_alan_mm2": 387.0,
+     "destek_hacim_cm3": 3.17,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        8.23,
+        8.23
+       ],
+       "katman": 1,
+       "alan_mm2": 193.5,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 9.6,
+       "kopru_max_mm": 1.26,
+       "merkez_robot": [
+        151.8,
+        0.0,
+        33.6
+       ],
+       "destek_hacim_mm3": 1587.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        8.23,
+        8.23
+       ],
+       "katman": 1,
+       "alan_mm2": 193.5,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 9.69,
+       "kopru_max_mm": 1.26,
+       "merkez_robot": [
+        151.8,
+        0.0,
+        -33.6
+       ],
+       "destek_hacim_mm3": 1587.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 2,
+     "en_buyuk_kopru_mm": 1.3,
+     "en_buyuk_konsol_mm": 9.7,
+     "kopruler": [],
+     "yuk_uyum": 1.0,
+     "yuk": [
+      {
+       "ad": "6808-2RS dis bilezik yuvasi O52 (siki gecme)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "kapak M3 civata delikleri",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 4,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 28,
+     "ofset_uyari": 16,
+     "atlanan_kesit": []
+    },
+    "+Y": {
+     "yukari": [
+      0,
+      1,
+      0
+     ],
+     "tabla_yuzu": "y = -30.0 yuzu tablada (robot yerel +Y yukari)",
+     "olcu": [
+      76.0,
+      14.0,
+      60.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 68.5,
+     "yukseklik_taban_orani": 7.25,
+     "cikinti45_mm2": 1347.4,
+     "tavan_mm2": 381.5,
+     "cikinti45_orani": 0.1654,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 509.1,
+       "izdusum_mm2": 443.6,
+       "en_dik_aci": 79.2,
+       "z_mm": [
+        0.6,
+        8.8
+       ],
+       "merkez_robot": [
+        153.2,
+        -26.1,
+        0.3
+       ],
+       "yaricap": 30.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 222.3,
+       "izdusum_mm2": 194.2,
+       "en_dik_aci": 78.3,
+       "z_mm": [
+        48.9,
+        55.4
+       ],
+       "merkez_robot": [
+        156.5,
+        22.7,
+        -0.0
+       ],
+       "yaricap": 26.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 214.1,
+       "izdusum_mm2": 186.9,
+       "en_dik_aci": 80.0,
+       "z_mm": [
+        47.0,
+        53.6
+       ],
+       "merkez_robot": [
+        149.5,
+        20.9,
+        -0.0
+       ],
+       "yaricap": 24.0
+      }
+     ],
+     "egim_alan_mm2": 945.5,
+     "egim_izdusum_mm2": 824.7,
+     "kucuk_delik_cikinti_mm2": 48.8,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 1039.1,
+     "destek_katman_alan_mm2": 214.4,
+     "destek_hacim_cm3": 3.63,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        18.23,
+        18.23
+       ],
+       "katman": 1,
+       "alan_mm2": 60.7,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 10.0,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        149.0,
+        -11.8,
+        32.9
+       ],
+       "destek_hacim_mm3": 1105.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        18.23,
+        18.23
+       ],
+       "katman": 1,
+       "alan_mm2": 60.7,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 9.88,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        149.0,
+        -11.8,
+        -32.9
+       ],
+       "destek_hacim_mm3": 1105.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 33.2,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.13,
+       "kopru_max_mm": 7.67,
+       "merkez_robot": [
+        153.0,
+        -29.3,
+        -5.4
+       ],
+       "destek_hacim_mm3": 23.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 33.2,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.25,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        153.0,
+        -29.3,
+        5.4
+       ],
+       "destek_hacim_mm3": 23.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        55.73,
+        55.73
+       ],
+       "katman": 1,
+       "alan_mm2": 13.3,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 1.92,
+       "kopru_max_mm": 6.37,
+       "merkez_robot": [
+        156.8,
+        25.7,
+        -4.8
+       ],
+       "destek_hacim_mm3": 685.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        55.73,
+        55.73
+       ],
+       "katman": 1,
+       "alan_mm2": 13.3,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 1.88,
+       "kopru_max_mm": 6.27,
+       "merkez_robot": [
+        156.8,
+        25.7,
+        4.8
+       ],
+       "destek_hacim_mm3": 685.0,
+       "tablaya": false
+      }
+     ],
+     "destek_bolge_sayi": 6,
+     "en_buyuk_kopru_mm": 7.7,
+     "en_buyuk_konsol_mm": 10.0,
+     "kopruler": [
+      {
+       "z": 56.23,
+       "tur": "kopru",
+       "alan_mm2": 42.1,
+       "konsol_mm": 0.0,
+       "kopru_mm": 6.77,
+       "boyut": [
+        6.5,
+        6.5
+       ],
+       "merkez_robot": [
+        156.8,
+        26.2,
+        0.0
+       ],
+       "destek": false,
+       "kolon_mm": 52.5,
+       "tablaya": false
+      },
+      {
+       "z": 54.23,
+       "tur": "kopru",
+       "alan_mm2": 43.3,
+       "konsol_mm": 0.0,
+       "kopru_mm": 6.2,
+       "boyut": [
+        7.0,
+        6.2
+       ],
+       "merkez_robot": [
+        149.5,
+        24.2,
+        -0.0
+       ],
+       "destek": false,
+       "kolon_mm": 48.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.0,
+     "yuk": [
+      {
+       "ad": "6808-2RS dis bilezik yuvasi O52 (siki gecme)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "kapak M3 civata delikleri",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 120,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "-Y": {
+     "yukari": [
+      0,
+      -1,
+      0
+     ],
+     "tabla_yuzu": "y = 30.0 yuzu tablada (robot yerel -Y yukari)",
+     "olcu": [
+      76.0,
+      14.0,
+      60.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 68.5,
+     "yukseklik_taban_orani": 7.25,
+     "cikinti45_mm2": 1347.4,
+     "tavan_mm2": 381.5,
+     "cikinti45_orani": 0.1654,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 509.1,
+       "izdusum_mm2": 443.6,
+       "en_dik_aci": 79.2,
+       "z_mm": [
+        0.6,
+        8.8
+       ],
+       "merkez_robot": [
+        153.2,
+        26.1,
+        0.3
+       ],
+       "yaricap": 30.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 222.3,
+       "izdusum_mm2": 194.2,
+       "en_dik_aci": 78.3,
+       "z_mm": [
+        48.9,
+        55.4
+       ],
+       "merkez_robot": [
+        156.5,
+        -22.7,
+        0.0
+       ],
+       "yaricap": 26.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 214.1,
+       "izdusum_mm2": 186.9,
+       "en_dik_aci": 80.0,
+       "z_mm": [
+        47.0,
+        53.6
+       ],
+       "merkez_robot": [
+        149.6,
+        -20.9,
+        -0.0
+       ],
+       "yaricap": 24.0
+      }
+     ],
+     "egim_alan_mm2": 945.5,
+     "egim_izdusum_mm2": 824.7,
+     "kucuk_delik_cikinti_mm2": 48.8,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 1039.1,
+     "destek_katman_alan_mm2": 214.4,
+     "destek_hacim_cm3": 3.63,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        18.23,
+        18.23
+       ],
+       "katman": 1,
+       "alan_mm2": 60.7,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 10.0,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        149.0,
+        11.8,
+        -32.9
+       ],
+       "destek_hacim_mm3": 1105.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        18.23,
+        18.23
+       ],
+       "katman": 1,
+       "alan_mm2": 60.7,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 9.88,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        149.0,
+        11.8,
+        32.9
+       ],
+       "destek_hacim_mm3": 1105.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 33.2,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.13,
+       "kopru_max_mm": 7.67,
+       "merkez_robot": [
+        153.0,
+        29.3,
+        5.4
+       ],
+       "destek_hacim_mm3": 23.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 33.2,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.25,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        153.0,
+        29.3,
+        -5.4
+       ],
+       "destek_hacim_mm3": 23.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        55.73,
+        55.73
+       ],
+       "katman": 1,
+       "alan_mm2": 13.3,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 1.92,
+       "kopru_max_mm": 6.37,
+       "merkez_robot": [
+        156.8,
+        -25.7,
+        4.8
+       ],
+       "destek_hacim_mm3": 685.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        55.73,
+        55.73
+       ],
+       "katman": 1,
+       "alan_mm2": 13.3,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 1.88,
+       "kopru_max_mm": 6.27,
+       "merkez_robot": [
+        156.8,
+        -25.7,
+        -4.8
+       ],
+       "destek_hacim_mm3": 685.0,
+       "tablaya": false
+      }
+     ],
+     "destek_bolge_sayi": 6,
+     "en_buyuk_kopru_mm": 7.7,
+     "en_buyuk_konsol_mm": 10.0,
+     "kopruler": [
+      {
+       "z": 56.23,
+       "tur": "kopru",
+       "alan_mm2": 42.1,
+       "konsol_mm": 0.0,
+       "kopru_mm": 6.77,
+       "boyut": [
+        6.5,
+        6.5
+       ],
+       "merkez_robot": [
+        156.8,
+        -26.2,
+        -0.0
+       ],
+       "destek": false,
+       "kolon_mm": 52.5,
+       "tablaya": false
+      },
+      {
+       "z": 54.23,
+       "tur": "kopru",
+       "alan_mm2": 43.3,
+       "konsol_mm": 0.0,
+       "kopru_mm": 6.2,
+       "boyut": [
+        7.0,
+        6.2
+       ],
+       "merkez_robot": [
+        149.5,
+        -24.2,
+        0.0
+       ],
+       "destek": false,
+       "kolon_mm": 48.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.0,
+     "yuk": [
+      {
+       "ad": "6808-2RS dis bilezik yuvasi O52 (siki gecme)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "kapak M3 civata delikleri",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 120,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "+Z": {
+     "yukari": [
+      0,
+      0,
+      1
+     ],
+     "tabla_yuzu": "z = -38.0 yuzu tablada (robot yerel +Z yukari)",
+     "olcu": [
+      60.0,
+      14.0,
+      76.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 144.0,
+     "yukseklik_taban_orani": 6.33,
+     "cikinti45_mm2": 1144.2,
+     "tavan_mm2": 234.8,
+     "cikinti45_orani": 0.1404,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 424.2,
+       "izdusum_mm2": 361.3,
+       "en_dik_aci": 77.5,
+       "z_mm": [
+        8.7,
+        16.5
+       ],
+       "merkez_robot": [
+        153.6,
+        0.0,
+        -25.5
+       ],
+       "yaricap": 30.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 222.3,
+       "izdusum_mm2": 194.2,
+       "en_dik_aci": 78.3,
+       "z_mm": [
+        56.9,
+        63.4
+       ],
+       "merkez_robot": [
+        156.5,
+        0.0,
+        22.7
+       ],
+       "yaricap": 26.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 198.8,
+       "izdusum_mm2": 173.9,
+       "en_dik_aci": 77.8,
+       "z_mm": [
+        55.4,
+        61.4
+       ],
+       "merkez_robot": [
+        149.4,
+        0.0,
+        21.0
+       ],
+       "yaricap": 24.0
+      }
+     ],
+     "egim_alan_mm2": 845.3,
+     "egim_izdusum_mm2": 729.4,
+     "kucuk_delik_cikinti_mm2": 48.8,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 847.2,
+     "destek_katman_alan_mm2": 117.8,
+     "destek_hacim_cm3": 2.14,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        8.23,
+        8.73
+       ],
+       "katman": 3,
+       "alan_mm2": 91.2,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 7.38,
+       "kopru_max_mm": 7.59,
+       "merkez_robot": [
+        156.2,
+        0.0,
+        -29.6
+       ],
+       "destek_hacim_mm3": 766.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        63.73,
+        63.73
+       ],
+       "katman": 1,
+       "alan_mm2": 13.3,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 1.92,
+       "kopru_max_mm": 6.37,
+       "merkez_robot": [
+        156.8,
+        4.8,
+        25.7
+       ],
+       "destek_hacim_mm3": 685.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        63.73,
+        63.73
+       ],
+       "katman": 1,
+       "alan_mm2": 13.3,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 1.88,
+       "kopru_max_mm": 6.27,
+       "merkez_robot": [
+        156.8,
+        -4.8,
+        25.7
+       ],
+       "destek_hacim_mm3": 685.0,
+       "tablaya": false
+      }
+     ],
+     "destek_bolge_sayi": 3,
+     "en_buyuk_kopru_mm": 7.6,
+     "en_buyuk_konsol_mm": 7.4,
+     "kopruler": [
+      {
+       "z": 64.23,
+       "tur": "kopru",
+       "alan_mm2": 42.1,
+       "konsol_mm": 0.0,
+       "kopru_mm": 6.77,
+       "boyut": [
+        6.5,
+        6.5
+       ],
+       "merkez_robot": [
+        156.8,
+        0.0,
+        26.2
+       ],
+       "destek": false,
+       "kolon_mm": 52.5,
+       "tablaya": false
+      },
+      {
+       "z": 62.23,
+       "tur": "kopru",
+       "alan_mm2": 43.3,
+       "konsol_mm": 0.0,
+       "kopru_mm": 6.2,
+       "boyut": [
+        7.0,
+        6.2
+       ],
+       "merkez_robot": [
+        149.5,
+        -0.0,
+        24.2
+       ],
+       "destek": false,
+       "kolon_mm": 48.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.0,
+     "yuk": [
+      {
+       "ad": "6808-2RS dis bilezik yuvasi O52 (siki gecme)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "kapak M3 civata delikleri",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 152,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "-Z": {
+     "yukari": [
+      0,
+      0,
+      -1
+     ],
+     "tabla_yuzu": "z = 38.0 yuzu tablada (robot yerel -Z yukari)",
+     "olcu": [
+      60.0,
+      14.0,
+      76.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 144.0,
+     "yukseklik_taban_orani": 6.33,
+     "cikinti45_mm2": 1142.0,
+     "tavan_mm2": 210.1,
+     "cikinti45_orani": 0.1402,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 412.4,
+       "izdusum_mm2": 354.2,
+       "en_dik_aci": 78.3,
+       "z_mm": [
+        8.6,
+        16.2
+       ],
+       "merkez_robot": [
+        153.6,
+        0.0,
+        25.8
+       ],
+       "yaricap": 30.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 222.3,
+       "izdusum_mm2": 194.2,
+       "en_dik_aci": 78.3,
+       "z_mm": [
+        56.9,
+        63.4
+       ],
+       "merkez_robot": [
+        156.5,
+        -0.0,
+        -22.7
+       ],
+       "yaricap": 26.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 198.8,
+       "izdusum_mm2": 174.0,
+       "en_dik_aci": 78.7,
+       "z_mm": [
+        55.6,
+        61.5
+       ],
+       "merkez_robot": [
+        149.5,
+        0.0,
+        -21.0
+       ],
+       "yaricap": 24.0
+      }
+     ],
+     "egim_alan_mm2": 833.5,
+     "egim_izdusum_mm2": 722.4,
+     "kucuk_delik_cikinti_mm2": 52.9,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 840.2,
+     "destek_katman_alan_mm2": 117.8,
+     "destek_hacim_cm3": 2.14,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        8.23,
+        8.73
+       ],
+       "katman": 3,
+       "alan_mm2": 91.2,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 7.38,
+       "kopru_max_mm": 7.59,
+       "merkez_robot": [
+        156.2,
+        0.0,
+        29.6
+       ],
+       "destek_hacim_mm3": 766.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        63.73,
+        63.73
+       ],
+       "katman": 1,
+       "alan_mm2": 13.3,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 1.88,
+       "kopru_max_mm": 6.27,
+       "merkez_robot": [
+        156.7,
+        -4.8,
+        -25.7
+       ],
+       "destek_hacim_mm3": 685.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        63.73,
+        63.73
+       ],
+       "katman": 1,
+       "alan_mm2": 13.3,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 1.92,
+       "kopru_max_mm": 6.35,
+       "merkez_robot": [
+        156.8,
+        4.8,
+        -25.7
+       ],
+       "destek_hacim_mm3": 685.0,
+       "tablaya": false
+      }
+     ],
+     "destek_bolge_sayi": 3,
+     "en_buyuk_kopru_mm": 7.6,
+     "en_buyuk_konsol_mm": 7.4,
+     "kopruler": [
+      {
+       "z": 64.23,
+       "tur": "kopru",
+       "alan_mm2": 42.1,
+       "konsol_mm": 0.0,
+       "kopru_mm": 6.52,
+       "boyut": [
+        6.5,
+        6.5
+       ],
+       "merkez_robot": [
+        156.8,
+        0.0,
+        -26.2
+       ],
+       "destek": false,
+       "kolon_mm": 52.5,
+       "tablaya": false
+      },
+      {
+       "z": 62.23,
+       "tur": "kopru",
+       "alan_mm2": 43.3,
+       "konsol_mm": 0.0,
+       "kopru_mm": 6.2,
+       "boyut": [
+        7.0,
+        6.2
+       ],
+       "merkez_robot": [
+        149.5,
+        0.0,
+        -24.2
+       ],
+       "destek": false,
+       "kolon_mm": 48.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.0,
+     "yuk": [
+      {
+       "ad": "6808-2RS dis bilezik yuvasi O52 (siki gecme)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "kapak M3 civata delikleri",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 152,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    }
+   }
+  },
+  {
+   "ad": "Omuz gobegi",
+   "adet": 2,
+   "adet_notu": "sag + sol (sol = X aynasi; yon ve sonuc ayni, dilimleyicide aynalanir)",
+   "malzeme": "PETG-CF",
+   "model_malzeme": "PETG",
+   "model_kutle_g": 39.7,
+   "hacim_cm3": 52.07,
+   "secilen_yon": "+X",
+   "en_az_destek_yon": "-Y",
+   "yon_sirasi": [
+    "+X",
+    "-X",
+    "-Z",
+    "+Z",
+    "-Y",
+    "+Y"
+   ],
+   "desteksiz": false,
+   "desteksiz_yon_var": [],
+   "kutle_g": {
+    "0.80": 52.9,
+    "0.90": 59.5
+   },
+   "filament_g": {
+    "0.80": 60.9,
+    "0.90": 67.8
+   },
+   "destek_filament_g": 5.3,
+   "sure_saat": {
+    "0.80": 1.27,
+    "0.90": 1.42
+   },
+   "sure_saat_yavas_cf": {
+    "0.80": 1.82,
+    "0.90": 2.03
+   },
+   "silindir": [
+    {
+     "r": 4.0,
+     "delik": false,
+     "eksen": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "boy": 1.0
+    },
+    {
+     "r": 20.0,
+     "delik": false,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 10.0
+    },
+    {
+     "r": 22.5,
+     "delik": false,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 3.0
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 9.0
+    },
+    {
+     "r": 4.5,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 3.0
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 9.0
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 9.0
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 9.0
+    },
+    {
+     "r": 3.3,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 9.0
+    },
+    {
+     "r": 3.3,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 10.0
+    },
+    {
+     "r": 3.3,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 9.0
+    },
+    {
+     "r": 3.3,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 10.0
+    },
+    {
+     "r": 2.25,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 5.0
+    },
+    {
+     "r": 2.25,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 5.0
+    },
+    {
+     "r": 2.25,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 5.0
+    },
+    {
+     "r": 2.25,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 5.0
+    },
+    {
+     "r": 3.2,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 7.0
+    }
+   ],
+   "yonler": {
+    "+X": {
+     "yukari": [
+      1,
+      0,
+      0
+     ],
+     "tabla_yuzu": "x = 150.0 yuzu tablada (robot yerel +X yukari)",
+     "olcu": [
+      66.0,
+      51.0,
+      49.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 1156.7,
+     "yukseklik_taban_orani": 1.44,
+     "cikinti45_mm2": 2465.5,
+     "tavan_mm2": 2380.0,
+     "cikinti45_orani": 0.1247,
+     "egim_yuz": [],
+     "egim_alan_mm2": 0,
+     "egim_izdusum_mm2": 0,
+     "kucuk_delik_cikinti_mm2": 85.4,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 2058.3,
+     "destek_katman_alan_mm2": 2058.3,
+     "destek_hacim_cm3": 28.02,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        13.23,
+        13.23
+       ],
+       "katman": 2,
+       "alan_mm2": 1588.1,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 26.5,
+       "kopru_max_mm": 1.67,
+       "merkez_robot": [
+        163.2,
+        19.4,
+        -4.1
+       ],
+       "destek_hacim_mm3": 20963.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        10.23,
+        10.23
+       ],
+       "katman": 1,
+       "alan_mm2": 270.2,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.0,
+       "kopru_max_mm": 1.87,
+       "merkez_robot": [
+        160.2,
+        0.0,
+        0.0
+       ],
+       "destek_hacim_mm3": 2756.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        45.73,
+        45.73
+       ],
+       "katman": 1,
+       "alan_mm2": 200.0,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 0,
+       "kopru_max_mm": 40.03,
+       "merkez_robot": [
+        195.7,
+        10.0,
+        5.0
+       ],
+       "destek_hacim_mm3": 4300.0,
+       "tablaya": false
+      }
+     ],
+     "destek_bolge_sayi": 3,
+     "en_buyuk_kopru_mm": 40.0,
+     "en_buyuk_konsol_mm": 26.5,
+     "kopruler": [
+      {
+       "z": 3.23,
+       "tur": "kopru",
+       "alan_mm2": 50.3,
+       "konsol_mm": 0.0,
+       "kopru_mm": 7.91,
+       "boyut": [
+        8.0,
+        8.0
+       ],
+       "merkez_robot": [
+        153.2,
+        -0.0,
+        0.0
+       ],
+       "destek": false,
+       "kolon_mm": 3.2,
+       "tablaya": true
+      },
+      {
+       "z": 19.23,
+       "tur": "kopru",
+       "alan_mm2": 20.3,
+       "konsol_mm": 0.0,
+       "kopru_mm": 5.52,
+       "boyut": [
+        4.3,
+        5.6
+       ],
+       "merkez_robot": [
+        169.2,
+        -6.0,
+        5.6
+       ],
+       "destek": false,
+       "kolon_mm": 19.2,
+       "tablaya": true
+      },
+      {
+       "z": 19.23,
+       "tur": "kopru",
+       "alan_mm2": 20.3,
+       "konsol_mm": 0.0,
+       "kopru_mm": 5.52,
+       "boyut": [
+        4.3,
+        5.6
+       ],
+       "merkez_robot": [
+        169.2,
+        6.0,
+        5.6
+       ],
+       "destek": false,
+       "kolon_mm": 19.2,
+       "tablaya": true
+      },
+      {
+       "z": 38.23,
+       "tur": "kopru",
+       "alan_mm2": 16.4,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.36,
+       "boyut": [
+        7.0,
+        2.3
+       ],
+       "merkez_robot": [
+        188.2,
+        -0.0,
+        -24.5
+       ],
+       "destek": false,
+       "kolon_mm": 6.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.636,
+     "yuk": [
+      {
+       "ad": "6808 ic bilezik mili O40 (siki gecme)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "S1 horn M3 delikleri (kolun tum momenti)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 4,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "S2 kulak M4 delikleri",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "625ZZ mafsal M5 isil gomme somunu",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 1.0
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M5",
+       "merkez_robot": [
+        185.0,
+        0.0,
+        -24.5
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        1.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan",
+        "yan"
+       ],
+       "derinlik_mm": 7.0
+      }
+     ],
+     "katman_sayisi": 98,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "-X": {
+     "yukari": [
+      -1,
+      0,
+      0
+     ],
+     "tabla_yuzu": "x = 199.0 yuzu tablada (robot yerel -X yukari)",
+     "olcu": [
+      66.0,
+      51.0,
+      49.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 809.0,
+     "yukseklik_taban_orani": 1.72,
+     "cikinti45_mm2": 2804.1,
+     "tavan_mm2": 2718.7,
+     "cikinti45_orani": 0.1418,
+     "egim_yuz": [],
+     "egim_alan_mm2": 0,
+     "egim_izdusum_mm2": 0,
+     "kucuk_delik_cikinti_mm2": 92.5,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 2487.1,
+     "destek_katman_alan_mm2": 2487.1,
+     "destek_hacim_cm3": 75.66,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        31.23,
+        31.23
+       ],
+       "katman": 1,
+       "alan_mm2": 2287.1,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 14.62,
+       "kopru_max_mm": 23.74,
+       "merkez_robot": [
+        167.8,
+        8.7,
+        1.1
+       ],
+       "destek_hacim_mm3": 71358.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        24.73,
+        24.73
+       ],
+       "katman": 1,
+       "alan_mm2": 200.0,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 0,
+       "kopru_max_mm": 40.03,
+       "merkez_robot": [
+        174.3,
+        10.0,
+        5.0
+       ],
+       "destek_hacim_mm3": 4300.0,
+       "tablaya": false
+      }
+     ],
+     "destek_bolge_sayi": 2,
+     "en_buyuk_kopru_mm": 40.0,
+     "en_buyuk_konsol_mm": 14.6,
+     "kopruler": [
+      {
+       "z": 40.23,
+       "tur": "kopru",
+       "alan_mm2": 25.1,
+       "konsol_mm": 0.0,
+       "kopru_mm": 5.41,
+       "boyut": [
+        6.6,
+        6.6
+       ],
+       "merkez_robot": [
+        158.8,
+        -6.0,
+        -6.0
+       ],
+       "destek": false,
+       "kolon_mm": 40.2,
+       "tablaya": true
+      },
+      {
+       "z": 40.23,
+       "tur": "kopru",
+       "alan_mm2": 25.1,
+       "konsol_mm": 0.0,
+       "kopru_mm": 5.41,
+       "boyut": [
+        6.6,
+        6.6
+       ],
+       "merkez_robot": [
+        158.8,
+        -6.0,
+        6.0
+       ],
+       "destek": false,
+       "kolon_mm": 10.5,
+       "tablaya": false
+      },
+      {
+       "z": 40.23,
+       "tur": "kopru",
+       "alan_mm2": 25.1,
+       "konsol_mm": 0.0,
+       "kopru_mm": 5.41,
+       "boyut": [
+        6.6,
+        6.6
+       ],
+       "merkez_robot": [
+        158.8,
+        6.0,
+        -6.0
+       ],
+       "destek": false,
+       "kolon_mm": 40.2,
+       "tablaya": true
+      },
+      {
+       "z": 40.23,
+       "tur": "kopru",
+       "alan_mm2": 25.1,
+       "konsol_mm": 0.0,
+       "kopru_mm": 5.41,
+       "boyut": [
+        6.6,
+        6.6
+       ],
+       "merkez_robot": [
+        158.8,
+        6.0,
+        6.0
+       ],
+       "destek": false,
+       "kolon_mm": 10.5,
+       "tablaya": false
+      },
+      {
+       "z": 17.23,
+       "tur": "kopru",
+       "alan_mm2": 16.4,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.36,
+       "boyut": [
+        7.0,
+        2.3
+       ],
+       "merkez_robot": [
+        181.8,
+        0.0,
+        -24.5
+       ],
+       "destek": false,
+       "kolon_mm": 6.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.636,
+     "yuk": [
+      {
+       "ad": "6808 ic bilezik mili O40 (siki gecme)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "S1 horn M3 delikleri (kolun tum momenti)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 4,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "S2 kulak M4 delikleri",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "625ZZ mafsal M5 isil gomme somunu",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 1.0
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M5",
+       "merkez_robot": [
+        185.0,
+        0.0,
+        -24.5
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        1.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan",
+        "yan"
+       ],
+       "derinlik_mm": 7.0
+      }
+     ],
+     "katman_sayisi": 98,
+     "ofset_uyari": 25,
+     "atlanan_kesit": []
+    },
+    "+Y": {
+     "yukari": [
+      0,
+      1,
+      0
+     ],
+     "tabla_yuzu": "y = -23.0 yuzu tablada (robot yerel +Y yukari)",
+     "olcu": [
+      51.0,
+      49.0,
+      66.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 250.0,
+     "yukseklik_taban_orani": 4.17,
+     "cikinti45_mm2": 2031.3,
+     "tavan_mm2": 1340.8,
+     "cikinti45_orani": 0.1028,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 239.3,
+       "izdusum_mm2": 209.8,
+       "en_dik_aci": 79.0,
+       "z_mm": [
+        3.4,
+        8.5
+       ],
+       "merkez_robot": [
+        155.0,
+        -17.5,
+        0.0
+       ],
+       "yaricap": 20.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 82.3,
+       "izdusum_mm2": 72.3,
+       "en_dik_aci": 79.7,
+       "z_mm": [
+        0.9,
+        6.7
+       ],
+       "merkez_robot": [
+        161.5,
+        -19.7,
+        0.0
+       ],
+       "yaricap": 22.5
+      }
+     ],
+     "egim_alan_mm2": 321.6,
+     "egim_izdusum_mm2": 282.1,
+     "kucuk_delik_cikinti_mm2": 324.8,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 1477.4,
+     "destek_katman_alan_mm2": 1195.3,
+     "destek_hacim_cm3": 47.44,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        62.23,
+        62.23
+       ],
+       "katman": 1,
+       "alan_mm2": 686.3,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 0,
+       "kopru_max_mm": 23.76,
+       "merkez_robot": [
+        183.8,
+        39.2,
+        -9.2
+       ],
+       "destek_hacim_mm3": 42688.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        1.23,
+        1.23
+       ],
+       "katman": 1,
+       "alan_mm2": 183.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 30.38,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        183.8,
+        -21.8,
+        -24.0
+       ],
+       "destek_hacim_mm3": 220.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        1.23,
+        1.23
+       ],
+       "katman": 1,
+       "alan_mm2": 152.5,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 30.38,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        183.8,
+        -21.8,
+        5.0
+       ],
+       "destek_hacim_mm3": 183.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        53.73,
+        53.73
+       ],
+       "katman": 1,
+       "alan_mm2": 100.0,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 0,
+       "kopru_max_mm": 20.02,
+       "merkez_robot": [
+        185.0,
+        30.7,
+        5.0
+       ],
+       "destek_hacim_mm3": 4150.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        3.23,
+        3.23
+       ],
+       "katman": 1,
+       "alan_mm2": 57.5,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 9.38,
+       "kopru_max_mm": 5.47,
+       "merkez_robot": [
+        154.8,
+        -19.8,
+        0.0
+       ],
+       "destek_hacim_mm3": 184.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 16.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.38,
+       "kopru_max_mm": 1.29,
+       "merkez_robot": [
+        161.3,
+        -22.3,
+        0.0
+       ],
+       "destek_hacim_mm3": 11.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 6,
+     "en_buyuk_kopru_mm": 23.8,
+     "en_buyuk_konsol_mm": 30.4,
+     "kopruler": [
+      {
+       "z": 26.23,
+       "tur": "kopru",
+       "alan_mm2": 16.4,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.36,
+       "boyut": [
+        2.3,
+        7.0
+       ],
+       "merkez_robot": [
+        185.0,
+        3.2,
+        -24.5
+       ],
+       "destek": false,
+       "kolon_mm": 6.5,
+       "tablaya": false
+      },
+      {
+       "z": 27.73,
+       "tur": "kopru",
+       "alan_mm2": 5.2,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.09,
+       "boyut": [
+        2.5,
+        2.1
+       ],
+       "merkez_robot": [
+        151.3,
+        4.7,
+        -0.0
+       ],
+       "destek": false,
+       "kolon_mm": 9.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.0,
+     "yuk": [
+      {
+       "ad": "6808 ic bilezik mili O40 (siki gecme)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "S1 horn M3 delikleri (kolun tum momenti)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "S2 kulak M4 delikleri",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "625ZZ mafsal M5 isil gomme somunu",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 1.0
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M5",
+       "merkez_robot": [
+        185.0,
+        0.0,
+        -24.5
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        1.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan",
+        "yan"
+       ],
+       "derinlik_mm": 7.0
+      }
+     ],
+     "katman_sayisi": 132,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "-Y": {
+     "yukari": [
+      0,
+      -1,
+      0
+     ],
+     "tabla_yuzu": "y = 43.0 yuzu tablada (robot yerel -Y yukari)",
+     "olcu": [
+      51.0,
+      49.0,
+      66.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 1069.5,
+     "yukseklik_taban_orani": 2.02,
+     "cikinti45_mm2": 1211.8,
+     "tavan_mm2": 521.3,
+     "cikinti45_orani": 0.0613,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 239.3,
+       "izdusum_mm2": 209.8,
+       "en_dik_aci": 79.0,
+       "z_mm": [
+        23.4,
+        28.5
+       ],
+       "merkez_robot": [
+        155.0,
+        17.5,
+        0.0
+       ],
+       "yaricap": 20.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 82.3,
+       "izdusum_mm2": 72.3,
+       "en_dik_aci": 79.7,
+       "z_mm": [
+        20.9,
+        26.7
+       ],
+       "merkez_robot": [
+        161.5,
+        19.7,
+        0.0
+       ],
+       "yaricap": 22.5
+      }
+     ],
+     "egim_alan_mm2": 321.6,
+     "egim_izdusum_mm2": 282.1,
+     "kucuk_delik_cikinti_mm2": 324.8,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 688.2,
+     "destek_katman_alan_mm2": 406.1,
+     "destek_hacim_cm3": 6.09,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        1.23,
+        1.23
+       ],
+       "katman": 1,
+       "alan_mm2": 232.6,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 15.72,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        165.3,
+        41.8,
+        -1.4
+       ],
+       "destek_hacim_mm3": 279.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        53.73,
+        53.73
+       ],
+       "katman": 1,
+       "alan_mm2": 100.0,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 0,
+       "kopru_max_mm": 20.02,
+       "merkez_robot": [
+        185.0,
+        -10.7,
+        5.0
+       ],
+       "destek_hacim_mm3": 4150.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        23.23,
+        23.23
+       ],
+       "katman": 1,
+       "alan_mm2": 57.5,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 9.38,
+       "kopru_max_mm": 5.47,
+       "merkez_robot": [
+        154.8,
+        19.8,
+        0.0
+       ],
+       "destek_hacim_mm3": 1334.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        20.73,
+        20.73
+       ],
+       "katman": 1,
+       "alan_mm2": 16.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.38,
+       "kopru_max_mm": 1.29,
+       "merkez_robot": [
+        161.3,
+        22.3,
+        0.0
+       ],
+       "destek_hacim_mm3": 331.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 4,
+     "en_buyuk_kopru_mm": 20.0,
+     "en_buyuk_konsol_mm": 15.7,
+     "kopruler": [
+      {
+       "z": 46.23,
+       "tur": "kopru",
+       "alan_mm2": 16.4,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.36,
+       "boyut": [
+        2.3,
+        7.0
+       ],
+       "merkez_robot": [
+        185.0,
+        -3.2,
+        -24.5
+       ],
+       "destek": false,
+       "kolon_mm": 6.5,
+       "tablaya": false
+      },
+      {
+       "z": 47.73,
+       "tur": "kopru",
+       "alan_mm2": 5.2,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.09,
+       "boyut": [
+        2.5,
+        2.1
+       ],
+       "merkez_robot": [
+        151.3,
+        -4.7,
+        -0.0
+       ],
+       "destek": false,
+       "kolon_mm": 9.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.0,
+     "yuk": [
+      {
+       "ad": "6808 ic bilezik mili O40 (siki gecme)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "S1 horn M3 delikleri (kolun tum momenti)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "S2 kulak M4 delikleri",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "625ZZ mafsal M5 isil gomme somunu",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 1.0
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M5",
+       "merkez_robot": [
+        185.0,
+        0.0,
+        -24.5
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        1.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan",
+        "yan"
+       ],
+       "derinlik_mm": 7.0
+      }
+     ],
+     "katman_sayisi": 132,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "+Z": {
+     "yukari": [
+      0,
+      0,
+      1
+     ],
+     "tabla_yuzu": "z = -28.0 yuzu tablada (robot yerel +Z yukari)",
+     "olcu": [
+      66.0,
+      49.0,
+      51.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 18.1,
+     "yukseklik_taban_orani": 11.99,
+     "cikinti45_mm2": 3973.3,
+     "tavan_mm2": 3411.3,
+     "cikinti45_orani": 0.201,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 259.2,
+       "izdusum_mm2": 226.6,
+       "en_dik_aci": 79.5,
+       "z_mm": [
+        8.4,
+        13.8
+       ],
+       "merkez_robot": [
+        155.0,
+        -0.0,
+        -17.5
+       ],
+       "yaricap": 20.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 82.3,
+       "izdusum_mm2": 71.4,
+       "en_dik_aci": 78.4,
+       "z_mm": [
+        6.0,
+        11.8
+       ],
+       "merkez_robot": [
+        161.5,
+        -0.0,
+        -19.5
+       ],
+       "yaricap": 22.5
+      }
+     ],
+     "egim_alan_mm2": 341.5,
+     "egim_izdusum_mm2": 298.0,
+     "kucuk_delik_cikinti_mm2": 228.7,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 3581.1,
+     "destek_katman_alan_mm2": 3283.1,
+     "destek_hacim_cm3": 25.39,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        1.23,
+        1.23
+       ],
+       "katman": 1,
+       "alan_mm2": 2289.7,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 42.51,
+       "kopru_max_mm": 0.45,
+       "merkez_robot": [
+        180.9,
+        10.6,
+        -26.8
+       ],
+       "destek_hacim_mm3": 2748.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        30.73,
+        30.73
+       ],
+       "katman": 1,
+       "alan_mm2": 919.9,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 30.18,
+       "kopru_max_mm": 65.32,
+       "merkez_robot": [
+        182.5,
+        6.5,
+        2.7
+       ],
+       "destek_hacim_mm3": 22078.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        8.23,
+        8.23
+       ],
+       "katman": 1,
+       "alan_mm2": 57.5,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 9.38,
+       "kopru_max_mm": 5.47,
+       "merkez_robot": [
+        154.8,
+        0.0,
+        -19.8
+       ],
+       "destek_hacim_mm3": 471.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        5.73,
+        5.73
+       ],
+       "katman": 1,
+       "alan_mm2": 16.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.38,
+       "kopru_max_mm": 1.29,
+       "merkez_robot": [
+        161.2,
+        0.0,
+        -22.3
+       ],
+       "destek_hacim_mm3": 91.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 4,
+     "en_buyuk_kopru_mm": 65.3,
+     "en_buyuk_konsol_mm": 42.5,
+     "kopruler": [
+      {
+       "z": 32.73,
+       "tur": "kopru",
+       "alan_mm2": 5.2,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.09,
+       "boyut": [
+        2.5,
+        2.1
+       ],
+       "merkez_robot": [
+        151.2,
+        0.0,
+        4.7
+       ],
+       "destek": false,
+       "kolon_mm": 9.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.364,
+     "yuk": [
+      {
+       "ad": "6808 ic bilezik mili O40 (siki gecme)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "S1 horn M3 delikleri (kolun tum momenti)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "S2 kulak M4 delikleri",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 4,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "625ZZ mafsal M5 isil gomme somunu",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 1.0
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M5",
+       "merkez_robot": [
+        185.0,
+        0.0,
+        -24.5
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        1.0
+       ],
+       "yon": "dikey",
+       "agiz": [
+        "asagi",
+        "yukari"
+       ],
+       "derinlik_mm": 7.0
+      }
+     ],
+     "katman_sayisi": 102,
+     "ofset_uyari": 2,
+     "atlanan_kesit": []
+    },
+    "-Z": {
+     "yukari": [
+      0,
+      0,
+      -1
+     ],
+     "tabla_yuzu": "z = 23.0 yuzu tablada (robot yerel -Z yukari)",
+     "olcu": [
+      66.0,
+      49.0,
+      51.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 325.0,
+     "yukseklik_taban_orani": 2.83,
+     "cikinti45_mm2": 3656.9,
+     "tavan_mm2": 3102.5,
+     "cikinti45_orani": 0.185,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 239.3,
+       "izdusum_mm2": 207.1,
+       "en_dik_aci": 76.7,
+       "z_mm": [
+        3.6,
+        8.6
+       ],
+       "merkez_robot": [
+        155.0,
+        -0.0,
+        17.3
+       ],
+       "yaricap": 20.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 82.3,
+       "izdusum_mm2": 71.4,
+       "en_dik_aci": 77.5,
+       "z_mm": [
+        1.1,
+        7.0
+       ],
+       "merkez_robot": [
+        161.5,
+        0.0,
+        19.5
+       ],
+       "yaricap": 22.5
+      }
+     ],
+     "egim_alan_mm2": 321.6,
+     "egim_izdusum_mm2": 278.5,
+     "kucuk_delik_cikinti_mm2": 259.2,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 3217.2,
+     "destek_katman_alan_mm2": 2938.7,
+     "destek_hacim_cm3": 60.23,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        44.23,
+        44.23
+       ],
+       "katman": 1,
+       "alan_mm2": 1813.1,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 30.11,
+       "kopru_max_mm": 64.75,
+       "merkez_robot": [
+        183.7,
+        8.4,
+        -21.2
+       ],
+       "destek_hacim_mm3": 43514.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        15.73,
+        15.73
+       ],
+       "katman": 1,
+       "alan_mm2": 1052.1,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 30.35,
+       "kopru_max_mm": 41.67,
+       "merkez_robot": [
+        182.7,
+        11.0,
+        7.3
+       ],
+       "destek_hacim_mm3": 16518.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        3.23,
+        3.23
+       ],
+       "katman": 1,
+       "alan_mm2": 57.5,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 9.38,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        154.8,
+        0.0,
+        19.8
+       ],
+       "destek_hacim_mm3": 184.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 16.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.38,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        161.2,
+        0.0,
+        22.3
+       ],
+       "destek_hacim_mm3": 11.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 4,
+     "en_buyuk_kopru_mm": 64.8,
+     "en_buyuk_konsol_mm": 30.4,
+     "kopruler": [
+      {
+       "z": 27.73,
+       "tur": "kopru",
+       "alan_mm2": 5.2,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.13,
+       "boyut": [
+        2.5,
+        2.1
+       ],
+       "merkez_robot": [
+        151.2,
+        -0.0,
+        -4.7
+       ],
+       "destek": false,
+       "kolon_mm": 9.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.364,
+     "yuk": [
+      {
+       "ad": "6808 ic bilezik mili O40 (siki gecme)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "S1 horn M3 delikleri (kolun tum momenti)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "S2 kulak M4 delikleri",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 4,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "625ZZ mafsal M5 isil gomme somunu",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 1.0
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M5",
+       "merkez_robot": [
+        185.0,
+        0.0,
+        -24.5
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        1.0
+       ],
+       "yon": "dikey",
+       "agiz": [
+        "yukari",
+        "asagi"
+       ],
+       "derinlik_mm": 7.0
+      }
+     ],
+     "katman_sayisi": 102,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    }
+   }
+  },
+  {
+   "ad": "Kol catali",
+   "adet": 2,
+   "adet_notu": "sag + sol (sol = X aynasi; yon ve sonuc ayni, dilimleyicide aynalanir)",
+   "malzeme": "PETG-CF",
+   "model_malzeme": "PETG",
+   "model_kutle_g": 62.4,
+   "hacim_cm3": 81.88,
+   "secilen_yon": "-Z",
+   "en_az_destek_yon": "+Y",
+   "yon_sirasi": [
+    "-Z",
+    "+Z",
+    "+Y",
+    "-Y",
+    "-X",
+    "+X"
+   ],
+   "desteksiz": false,
+   "desteksiz_yon_var": [],
+   "kutle_g": {
+    "0.80": 83.2,
+    "0.90": 93.6
+   },
+   "filament_g": {
+    "0.80": 98.7,
+    "0.90": 109.6
+   },
+   "destek_filament_g": 11.4,
+   "sure_saat": {
+    "0.80": 2.07,
+    "0.90": 2.3
+   },
+   "sure_saat_yavas_cf": {
+    "0.80": 2.95,
+    "0.90": 3.28
+   },
+   "silindir": [
+    {
+     "r": 16.0,
+     "delik": false,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 5.0
+    },
+    {
+     "r": 28.0,
+     "delik": false,
+     "eksen": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "boy": 6.0
+    },
+    {
+     "r": 16.0,
+     "delik": false,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 5.0
+    },
+    {
+     "r": 25.4,
+     "delik": false,
+     "eksen": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "boy": 20.0
+    },
+    {
+     "r": 2.0,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 6.2
+    },
+    {
+     "r": 2.0,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "boy": 6.2
+    },
+    {
+     "r": 8.0,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 5.0
+    },
+    {
+     "r": 4.5,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 5.0
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 5.0
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 5.0
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 5.0
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 5.0
+    }
+   ],
+   "yonler": {
+    "+X": {
+     "yukari": [
+      1,
+      0,
+      0
+     ],
+     "tabla_yuzu": "x = 157.0 yuzu tablada (robot yerel +X yukari)",
+     "olcu": [
+      76.0,
+      63.5,
+      56.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 28.4,
+     "yukseklik_taban_orani": 10.51,
+     "cikinti45_mm2": 2036.2,
+     "tavan_mm2": 967.1,
+     "cikinti45_orani": 0.1162,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 606.7,
+       "izdusum_mm2": 531.4,
+       "en_dik_aci": 79.4,
+       "z_mm": [
+        3.1,
+        9.6
+       ],
+       "merkez_robot": [
+        162.8,
+        -50.1,
+        -1.4
+       ],
+       "yaricap": 25.4
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 201.5,
+       "izdusum_mm2": 175.5,
+       "en_dik_aci": 78.9,
+       "z_mm": [
+        0.5,
+        8.0
+       ],
+       "merkez_robot": [
+        160.6,
+        -37.0,
+        -1.7
+       ],
+       "yaricap": 28.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 47.1,
+       "izdusum_mm2": 41.0,
+       "en_dik_aci": 76.9,
+       "z_mm": [
+        12.4,
+        16.3
+       ],
+       "merkez_robot": [
+        171.1,
+        7.4,
+        -30.5
+       ],
+       "yaricap": 16.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 47.1,
+       "izdusum_mm2": 41.0,
+       "en_dik_aci": 76.9,
+       "z_mm": [
+        12.4,
+        16.3
+       ],
+       "merkez_robot": [
+        171.1,
+        7.4,
+        28.0
+       ],
+       "yaricap": 16.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 47.1,
+       "izdusum_mm2": 41.0,
+       "en_dik_aci": 76.9,
+       "z_mm": [
+        33.8,
+        35.8
+       ],
+       "merkez_robot": [
+        191.9,
+        -0.0,
+        -30.5
+       ],
+       "yaricap": 8.0
+      }
+     ],
+     "egim_alan_mm2": 949.5,
+     "egim_izdusum_mm2": 829.9,
+     "kucuk_delik_cikinti_mm2": 96.5,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 1720.2,
+     "destek_katman_alan_mm2": 890.3,
+     "destek_hacim_cm3": 7.26,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        8.23,
+        8.23
+       ],
+       "katman": 1,
+       "alan_mm2": 361.4,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 13.16,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        165.2,
+        -30.9,
+        -1.2
+       ],
+       "destek_hacim_mm3": 2963.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        2.73,
+        3.23
+       ],
+       "katman": 3,
+       "alan_mm2": 199.7,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 19.38,
+       "kopru_max_mm": 18.48,
+       "merkez_robot": [
+        159.9,
+        -50.3,
+        -1.2
+       ],
+       "destek_hacim_mm3": 589.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        12.23,
+        12.23
+       ],
+       "katman": 1,
+       "alan_mm2": 151.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 30.13,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        169.2,
+        -12.4,
+        -30.5
+       ],
+       "destek_hacim_mm3": 1842.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        12.23,
+        12.23
+       ],
+       "katman": 1,
+       "alan_mm2": 151.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 30.13,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        169.2,
+        -12.4,
+        28.0
+       ],
+       "destek_hacim_mm3": 1842.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 13.6,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.13,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        157.7,
+        -37.0,
+        -6.5
+       ],
+       "destek_hacim_mm3": 10.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 13.6,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.15,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        157.7,
+        -37.0,
+        4.0
+       ],
+       "destek_hacim_mm3": 10.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 6,
+     "en_buyuk_kopru_mm": 18.5,
+     "en_buyuk_konsol_mm": 30.1,
+     "kopruler": [
+      {
+       "z": 36.23,
+       "tur": "kopru",
+       "alan_mm2": 15.6,
+       "konsol_mm": 0.0,
+       "kopru_mm": 3.14,
+       "boyut": [
+        5.0,
+        3.1
+       ],
+       "merkez_robot": [
+        193.2,
+        0.0,
+        -30.5
+       ],
+       "destek": false,
+       "kolon_mm": 16.5,
+       "tablaya": false
+      },
+      {
+       "z": 32.73,
+       "tur": "kopru",
+       "alan_mm2": 10.4,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.09,
+       "boyut": [
+        5.0,
+        2.1
+       ],
+       "merkez_robot": [
+        189.7,
+        0.0,
+        28.0
+       ],
+       "destek": false,
+       "kolon_mm": 9.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.0,
+     "yuk": [
+      {
+       "ad": "S2 horn M3 delikleri (kol torku)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "625ZZ yuvasi O16",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "tup pimi O50,8 (tupe gecme, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "tup M3 isil gomme somunlari",
+       "ister": "dikey",
+       "bulundu": 2,
+       "uyan": 0,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        185.0,
+        -50.0,
+        -23.5
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        1.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        185.0,
+        -50.0,
+        21.0
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        -1.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      }
+     ],
+     "katman_sayisi": 112,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "-X": {
+     "yukari": [
+      -1,
+      0,
+      0
+     ],
+     "tabla_yuzu": "x = 213.0 yuzu tablada (robot yerel -X yukari)",
+     "olcu": [
+      76.0,
+      63.5,
+      56.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 28.4,
+     "yukseklik_taban_orani": 10.51,
+     "cikinti45_mm2": 2032.8,
+     "tavan_mm2": 963.7,
+     "cikinti45_orani": 0.116,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 606.7,
+       "izdusum_mm2": 531.4,
+       "en_dik_aci": 79.4,
+       "z_mm": [
+        3.1,
+        9.6
+       ],
+       "merkez_robot": [
+        207.2,
+        -50.1,
+        -1.4
+       ],
+       "yaricap": 25.4
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 201.5,
+       "izdusum_mm2": 175.5,
+       "en_dik_aci": 78.9,
+       "z_mm": [
+        0.5,
+        8.0
+       ],
+       "merkez_robot": [
+        209.4,
+        -37.0,
+        -1.7
+       ],
+       "yaricap": 28.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 47.1,
+       "izdusum_mm2": 41.0,
+       "en_dik_aci": 76.9,
+       "z_mm": [
+        12.4,
+        16.3
+       ],
+       "merkez_robot": [
+        198.9,
+        7.4,
+        -30.5
+       ],
+       "yaricap": 16.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 47.1,
+       "izdusum_mm2": 41.0,
+       "en_dik_aci": 76.9,
+       "z_mm": [
+        12.4,
+        16.3
+       ],
+       "merkez_robot": [
+        198.9,
+        7.4,
+        28.0
+       ],
+       "yaricap": 16.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 47.1,
+       "izdusum_mm2": 41.0,
+       "en_dik_aci": 76.9,
+       "z_mm": [
+        33.8,
+        35.8
+       ],
+       "merkez_robot": [
+        178.1,
+        -0.0,
+        -30.5
+       ],
+       "yaricap": 8.0
+      }
+     ],
+     "egim_alan_mm2": 949.5,
+     "egim_izdusum_mm2": 829.9,
+     "kucuk_delik_cikinti_mm2": 99.9,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 1720.2,
+     "destek_katman_alan_mm2": 890.3,
+     "destek_hacim_cm3": 7.26,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        8.23,
+        8.23
+       ],
+       "katman": 1,
+       "alan_mm2": 361.4,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 13.16,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        204.8,
+        -30.9,
+        -1.3
+       ],
+       "destek_hacim_mm3": 2963.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        2.73,
+        3.23
+       ],
+       "katman": 3,
+       "alan_mm2": 199.7,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 19.38,
+       "kopru_max_mm": 18.48,
+       "merkez_robot": [
+        210.1,
+        -50.3,
+        -1.3
+       ],
+       "destek_hacim_mm3": 589.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        12.23,
+        12.23
+       ],
+       "katman": 1,
+       "alan_mm2": 151.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 30.13,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        200.8,
+        -12.4,
+        -30.5
+       ],
+       "destek_hacim_mm3": 1842.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        12.23,
+        12.23
+       ],
+       "katman": 1,
+       "alan_mm2": 151.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 30.13,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        200.8,
+        -12.4,
+        28.0
+       ],
+       "destek_hacim_mm3": 1842.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 13.6,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.13,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        212.3,
+        -37.0,
+        4.0
+       ],
+       "destek_hacim_mm3": 10.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 13.6,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.15,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        212.3,
+        -37.0,
+        -6.5
+       ],
+       "destek_hacim_mm3": 10.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 6,
+     "en_buyuk_kopru_mm": 18.5,
+     "en_buyuk_konsol_mm": 30.1,
+     "kopruler": [
+      {
+       "z": 36.23,
+       "tur": "kopru",
+       "alan_mm2": 15.6,
+       "konsol_mm": 0.0,
+       "kopru_mm": 3.14,
+       "boyut": [
+        5.0,
+        3.1
+       ],
+       "merkez_robot": [
+        176.8,
+        -0.0,
+        -30.5
+       ],
+       "destek": false,
+       "kolon_mm": 16.5,
+       "tablaya": false
+      },
+      {
+       "z": 32.73,
+       "tur": "kopru",
+       "alan_mm2": 10.4,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.09,
+       "boyut": [
+        5.0,
+        2.1
+       ],
+       "merkez_robot": [
+        180.3,
+        -0.0,
+        28.0
+       ],
+       "destek": false,
+       "kolon_mm": 9.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.0,
+     "yuk": [
+      {
+       "ad": "S2 horn M3 delikleri (kol torku)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "625ZZ yuvasi O16",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "tup pimi O50,8 (tupe gecme, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "tup M3 isil gomme somunlari",
+       "ister": "dikey",
+       "bulundu": 2,
+       "uyan": 0,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        185.0,
+        -50.0,
+        -23.5
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        1.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        185.0,
+        -50.0,
+        21.0
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        -1.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      }
+     ],
+     "katman_sayisi": 112,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "+Y": {
+     "yukari": [
+      0,
+      1,
+      0
+     ],
+     "tabla_yuzu": "y = -60.0 yuzu tablada (robot yerel +Y yukari)",
+     "olcu": [
+      63.5,
+      56.0,
+      76.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 2026.8,
+     "yukseklik_taban_orani": 1.69,
+     "cikinti45_mm2": 1137.1,
+     "tavan_mm2": 988.6,
+     "cikinti45_orani": 0.0649,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 47.1,
+       "izdusum_mm2": 41.0,
+       "en_dik_aci": 76.9,
+       "z_mm": [
+        65.8,
+        67.8
+       ],
+       "merkez_robot": [
+        185.0,
+        6.9,
+        -30.5
+       ],
+       "yaricap": 8.0
+      }
+     ],
+     "egim_alan_mm2": 47.1,
+     "egim_izdusum_mm2": 41.0,
+     "kucuk_delik_cikinti_mm2": 97.9,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 860.8,
+     "destek_katman_alan_mm2": 819.8,
+     "destek_hacim_cm3": 19.35,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        20.23,
+        20.23
+       ],
+       "katman": 1,
+       "alan_mm2": 355.6,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.1,
+       "kopru_max_mm": 1.44,
+       "merkez_robot": [
+        185.0,
+        -39.8,
+        -1.2
+       ],
+       "destek_hacim_mm3": 7183.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        26.23,
+        26.23
+       ],
+       "katman": 1,
+       "alan_mm2": 232.1,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 8.83,
+       "kopru_max_mm": 1.26,
+       "merkez_robot": [
+        185.0,
+        -33.8,
+        -29.6
+       ],
+       "destek_hacim_mm3": 6081.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        26.23,
+        26.23
+       ],
+       "katman": 1,
+       "alan_mm2": 232.1,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 8.86,
+       "kopru_max_mm": 1.06,
+       "merkez_robot": [
+        185.0,
+        -33.8,
+        27.1
+       ],
+       "destek_hacim_mm3": 6081.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 3,
+     "en_buyuk_kopru_mm": 3.1,
+     "en_buyuk_konsol_mm": 8.9,
+     "kopruler": [
+      {
+       "z": 68.23,
+       "tur": "kopru",
+       "alan_mm2": 15.6,
+       "konsol_mm": 0.0,
+       "kopru_mm": 3.14,
+       "boyut": [
+        3.1,
+        5.0
+       ],
+       "merkez_robot": [
+        185.0,
+        8.2,
+        -30.5
+       ],
+       "destek": false,
+       "kolon_mm": 16.5,
+       "tablaya": false
+      },
+      {
+       "z": 64.73,
+       "tur": "kopru",
+       "alan_mm2": 10.4,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.09,
+       "boyut": [
+        2.1,
+        5.0
+       ],
+       "merkez_robot": [
+        185.0,
+        4.7,
+        28.0
+       ],
+       "destek": false,
+       "kolon_mm": 9.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.222,
+     "yuk": [
+      {
+       "ad": "S2 horn M3 delikleri (kol torku)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "625ZZ yuvasi O16",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "tup pimi O50,8 (tupe gecme, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "tup M3 isil gomme somunlari",
+       "ister": "dikey",
+       "bulundu": 2,
+       "uyan": 0,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        185.0,
+        -50.0,
+        -23.5
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        1.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        185.0,
+        -50.0,
+        21.0
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        -1.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      }
+     ],
+     "katman_sayisi": 152,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "-Y": {
+     "yukari": [
+      0,
+      -1,
+      0
+     ],
+     "tabla_yuzu": "y = 16.0 yuzu tablada (robot yerel -Y yukari)",
+     "olcu": [
+      63.5,
+      56.0,
+      76.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 35.7,
+     "yukseklik_taban_orani": 12.72,
+     "cikinti45_mm2": 3077.7,
+     "tavan_mm2": 2739.6,
+     "cikinti45_orani": 0.1757,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 94.2,
+       "izdusum_mm2": 81.9,
+       "en_dik_aci": 76.9,
+       "z_mm": [
+        0.4,
+        4.3
+       ],
+       "merkez_robot": [
+        185.0,
+        13.9,
+        -30.5
+       ],
+       "yaricap": 16.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 94.2,
+       "izdusum_mm2": 81.9,
+       "en_dik_aci": 76.9,
+       "z_mm": [
+        0.4,
+        4.3
+       ],
+       "merkez_robot": [
+        185.0,
+        13.9,
+        28.0
+       ],
+       "yaricap": 16.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 47.1,
+       "izdusum_mm2": 41.0,
+       "en_dik_aci": 76.9,
+       "z_mm": [
+        21.8,
+        23.8
+       ],
+       "merkez_robot": [
+        185.0,
+        -6.9,
+        -30.5
+       ],
+       "yaricap": 8.0
+      }
+     ],
+     "egim_alan_mm2": 235.5,
+     "egim_izdusum_mm2": 204.8,
+     "kucuk_delik_cikinti_mm2": 97.9,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 2775.0,
+     "destek_katman_alan_mm2": 2570.2,
+     "destek_hacim_cm3": 115.96,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        44.23,
+        44.23
+       ],
+       "katman": 1,
+       "alan_mm2": 2177.2,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 3.56,
+       "kopru_max_mm": 59.51,
+       "merkez_robot": [
+        185.0,
+        -28.2,
+        -1.2
+       ],
+       "destek_hacim_mm3": 96232.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        50.23,
+        50.23
+       ],
+       "katman": 1,
+       "alan_mm2": 196.5,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 7.29,
+       "kopru_max_mm": 24.87,
+       "merkez_robot": [
+        208.5,
+        -34.2,
+        -1.2
+       ],
+       "destek_hacim_mm3": 9864.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        50.23,
+        50.23
+       ],
+       "katman": 1,
+       "alan_mm2": 196.5,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 7.37,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        161.5,
+        -34.2,
+        -1.3
+       ],
+       "destek_hacim_mm3": 9864.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 3,
+     "en_buyuk_kopru_mm": 59.5,
+     "en_buyuk_konsol_mm": 7.4,
+     "kopruler": [
+      {
+       "z": 24.23,
+       "tur": "kopru",
+       "alan_mm2": 15.6,
+       "konsol_mm": 0.0,
+       "kopru_mm": 3.14,
+       "boyut": [
+        3.1,
+        5.0
+       ],
+       "merkez_robot": [
+        185.0,
+        -8.2,
+        -30.5
+       ],
+       "destek": false,
+       "kolon_mm": 16.5,
+       "tablaya": false
+      },
+      {
+       "z": 20.73,
+       "tur": "kopru",
+       "alan_mm2": 10.4,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.09,
+       "boyut": [
+        2.1,
+        5.0
+       ],
+       "merkez_robot": [
+        185.0,
+        -4.7,
+        28.0
+       ],
+       "destek": false,
+       "kolon_mm": 9.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.222,
+     "yuk": [
+      {
+       "ad": "S2 horn M3 delikleri (kol torku)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 0,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "625ZZ yuvasi O16",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "tup pimi O50,8 (tupe gecme, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "tup M3 isil gomme somunlari",
+       "ister": "dikey",
+       "bulundu": 2,
+       "uyan": 0,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        185.0,
+        -50.0,
+        -23.5
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        1.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        185.0,
+        -50.0,
+        21.0
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        -1.0
+       ],
+       "yon": "yatay",
+       "agiz": [
+        "yan"
+       ],
+       "derinlik_mm": 6.2
+      }
+     ],
+     "katman_sayisi": 152,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "+Z": {
+     "yukari": [
+      0,
+      0,
+      1
+     ],
+     "tabla_yuzu": "z = -33.0 yuzu tablada (robot yerel +Z yukari)",
+     "olcu": [
+      76.0,
+      56.0,
+      63.5
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 1337.1,
+     "yukseklik_taban_orani": 1.74,
+     "cikinti45_mm2": 2266.9,
+     "tavan_mm2": 1430.8,
+     "cikinti45_orani": 0.1294,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 629.2,
+       "izdusum_mm2": 547.4,
+       "en_dik_aci": 78.2,
+       "z_mm": [
+        6.9,
+        13.5
+       ],
+       "merkez_robot": [
+        185.0,
+        -50.0,
+        -23.3
+       ],
+       "yaricap": 25.4
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 206.9,
+       "izdusum_mm2": 181.9,
+       "en_dik_aci": 79.6,
+       "z_mm": [
+        4.2,
+        11.4
+       ],
+       "merkez_robot": [
+        185.0,
+        -37.0,
+        -25.8
+       ],
+       "yaricap": 28.0
+      }
+     ],
+     "egim_alan_mm2": 836.1,
+     "egim_izdusum_mm2": 729.3,
+     "kucuk_delik_cikinti_mm2": 0.0,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 2126.4,
+     "destek_katman_alan_mm2": 1397.1,
+     "destek_hacim_cm3": 65.14,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        58.73,
+        58.73
+       ],
+       "katman": 1,
+       "alan_mm2": 1182.2,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 43.0,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        185.0,
+        -7.9,
+        25.7
+       ],
+       "destek_hacim_mm3": 63839.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        6.73,
+        6.73
+       ],
+       "katman": 1,
+       "alan_mm2": 158.1,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 19.38,
+       "kopru_max_mm": 3.27,
+       "merkez_robot": [
+        185.0,
+        -50.3,
+        -26.3
+       ],
+       "destek_hacim_mm3": 1059.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        4.23,
+        4.23
+       ],
+       "katman": 1,
+       "alan_mm2": 56.8,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 5.38,
+       "kopru_max_mm": 1.07,
+       "merkez_robot": [
+        185.0,
+        -37.2,
+        -28.8
+       ],
+       "destek_hacim_mm3": 239.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 3,
+     "en_buyuk_kopru_mm": 3.3,
+     "en_buyuk_konsol_mm": 43.0,
+     "kopruler": [
+      {
+       "z": 12.73,
+       "tur": "kopru",
+       "alan_mm2": 7.1,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.91,
+       "boyut": [
+        3.0,
+        3.0
+       ],
+       "merkez_robot": [
+        185.0,
+        -50.0,
+        -20.3
+       ],
+       "destek": false,
+       "kolon_mm": 12.7,
+       "tablaya": true
+      }
+     ],
+     "yuk_uyum": 0.778,
+     "yuk": [
+      {
+       "ad": "S2 horn M3 delikleri (kol torku)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 4,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "625ZZ yuvasi O16",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "tup pimi O50,8 (tupe gecme, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "tup M3 isil gomme somunlari",
+       "ister": "dikey",
+       "bulundu": 2,
+       "uyan": 2,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        185.0,
+        -50.0,
+        -23.5
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        1.0
+       ],
+       "yon": "dikey",
+       "agiz": [
+        "asagi"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        185.0,
+        -50.0,
+        21.0
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        -1.0
+       ],
+       "yon": "dikey",
+       "agiz": [
+        "yukari"
+       ],
+       "derinlik_mm": 6.2
+      }
+     ],
+     "katman_sayisi": 127,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "-Z": {
+     "yukari": [
+      0,
+      0,
+      -1
+     ],
+     "tabla_yuzu": "z = 30.5 yuzu tablada (robot yerel -Z yukari)",
+     "olcu": [
+      76.0,
+      56.0,
+      63.5
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 1438.2,
+     "yukseklik_taban_orani": 1.67,
+     "cikinti45_mm2": 2128.0,
+     "tavan_mm2": 1291.9,
+     "cikinti45_orani": 0.1215,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 629.2,
+       "izdusum_mm2": 547.2,
+       "en_dik_aci": 79.0,
+       "z_mm": [
+        6.8,
+        13.7
+       ],
+       "merkez_robot": [
+        185.0,
+        -50.0,
+        20.8
+       ],
+       "yaricap": 25.4
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 206.9,
+       "izdusum_mm2": 180.0,
+       "en_dik_aci": 78.8,
+       "z_mm": [
+        4.3,
+        11.6
+       ],
+       "merkez_robot": [
+        185.0,
+        -37.0,
+        23.1
+       ],
+       "yaricap": 28.0
+      }
+     ],
+     "egim_alan_mm2": 836.1,
+     "egim_izdusum_mm2": 727.2,
+     "kucuk_delik_cikinti_mm2": 0.0,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 2023.2,
+     "destek_katman_alan_mm2": 1296.0,
+     "destek_hacim_cm3": 59.68,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        58.73,
+        58.73
+       ],
+       "katman": 1,
+       "alan_mm2": 1081.1,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 42.92,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        185.0,
+        -8.7,
+        -28.2
+       ],
+       "destek_hacim_mm3": 58379.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        6.73,
+        6.73
+       ],
+       "katman": 1,
+       "alan_mm2": 158.1,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 19.38,
+       "kopru_max_mm": 3.27,
+       "merkez_robot": [
+        185.0,
+        -50.3,
+        23.8
+       ],
+       "destek_hacim_mm3": 1059.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        4.23,
+        4.23
+       ],
+       "katman": 1,
+       "alan_mm2": 56.8,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 5.38,
+       "kopru_max_mm": 1.07,
+       "merkez_robot": [
+        185.0,
+        -37.2,
+        26.3
+       ],
+       "destek_hacim_mm3": 239.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 3,
+     "en_buyuk_kopru_mm": 3.3,
+     "en_buyuk_konsol_mm": 42.9,
+     "kopruler": [
+      {
+       "z": 12.73,
+       "tur": "kopru",
+       "alan_mm2": 7.1,
+       "konsol_mm": 0.0,
+       "kopru_mm": 2.91,
+       "boyut": [
+        3.0,
+        3.0
+       ],
+       "merkez_robot": [
+        185.0,
+        -50.0,
+        17.8
+       ],
+       "destek": false,
+       "kolon_mm": 12.7,
+       "tablaya": true
+      }
+     ],
+     "yuk_uyum": 0.778,
+     "yuk": [
+      {
+       "ad": "S2 horn M3 delikleri (kol torku)",
+       "ister": "dikey",
+       "bulundu": 4,
+       "uyan": 4,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "625ZZ yuvasi O16",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 1.5
+      },
+      {
+       "ad": "tup pimi O50,8 (tupe gecme, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 1.0
+      },
+      {
+       "ad": "tup M3 isil gomme somunlari",
+       "ister": "dikey",
+       "bulundu": 2,
+       "uyan": 2,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        185.0,
+        -50.0,
+        -23.5
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        1.0
+       ],
+       "yon": "dikey",
+       "agiz": [
+        "yukari"
+       ],
+       "derinlik_mm": 6.2
+      },
+      {
+       "boy": "M3",
+       "merkez_robot": [
+        185.0,
+        -50.0,
+        21.0
+       ],
+       "eksen_robot": [
+        0.0,
+        0.0,
+        -1.0
+       ],
+       "yon": "dikey",
+       "agiz": [
+        "asagi"
+       ],
+       "derinlik_mm": 6.2
+      }
+     ],
+     "katman_sayisi": 127,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    }
+   }
+  },
+  {
+   "ad": "Ust kol tupu",
+   "adet": 2,
+   "adet_notu": "sag + sol (sol = X aynasi; yon ve sonuc ayni, dilimleyicide aynalanir)",
+   "malzeme": "PETG",
+   "model_malzeme": "PETG",
+   "model_kutle_g": 30.1,
+   "hacim_cm3": 39.57,
+   "secilen_yon": "+Y",
+   "en_az_destek_yon": "+Y",
+   "yon_sirasi": [
+    "+Y",
+    "-Y",
+    "-X",
+    "+X",
+    "+Z",
+    "-Z"
+   ],
+   "desteksiz": true,
+   "desteksiz_yon_var": [
+    "+Y",
+    "-Y"
+   ],
+   "kutle_g": {
+    "0.80": 40.2
+   },
+   "filament_g": {
+    "0.80": 42.2
+   },
+   "destek_filament_g": 0.0,
+   "sure_saat": {
+    "0.80": 0.88
+   },
+   "sure_saat_yavas_cf": null,
+   "silindir": [
+    {
+     "r": 28.0,
+     "delik": false,
+     "eksen": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "boy": 100.0
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 2.41
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 2.41
+    },
+    {
+     "r": 25.65,
+     "delik": true,
+     "eksen": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "boy": 100.0
+    }
+   ],
+   "yonler": {
+    "+X": {
+     "yukari": [
+      1,
+      0,
+      0
+     ],
+     "tabla_yuzu": "x = 157.0 yuzu tablada (robot yerel +X yukari)",
+     "olcu": [
+      100.0,
+      56.0,
+      56.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 472.9,
+     "yukseklik_taban_orani": 2.57,
+     "cikinti45_mm2": 8261.6,
+     "tavan_mm2": 1601.3,
+     "cikinti45_orani": 0.2394,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 3400.3,
+       "izdusum_mm2": 2983.6,
+       "en_dik_aci": 80.0,
+       "z_mm": [
+        0.4,
+        7.7
+       ],
+       "merkez_robot": [
+        160.5,
+        -90.6,
+        -1.4
+       ],
+       "yaricap": 28.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 3132.7,
+       "izdusum_mm2": 2736.4,
+       "en_dik_aci": 78.3,
+       "z_mm": [
+        46.6,
+        53.1
+       ],
+       "merkez_robot": [
+        207.4,
+        -90.0,
+        -1.2
+       ],
+       "yaricap": 25.65
+      }
+     ],
+     "egim_alan_mm2": 6533.0,
+     "egim_izdusum_mm2": 5720.0,
+     "kucuk_delik_cikinti_mm2": 10.0,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 6174.0,
+     "destek_katman_alan_mm2": 454.0,
+     "destek_hacim_cm3": 0.32,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 227.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.07,
+       "kopru_max_mm": 30.88,
+       "merkez_robot": [
+        157.7,
+        -90.0,
+        -6.5
+       ],
+       "destek_hacim_mm3": 159.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 227.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.14,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        157.7,
+        -90.0,
+        4.0
+       ],
+       "destek_hacim_mm3": 159.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 2,
+     "en_buyuk_kopru_mm": 30.9,
+     "en_buyuk_konsol_mm": 2.1,
+     "kopruler": [
+      {
+       "z": 53.73,
+       "tur": "kopru",
+       "alan_mm2": 824.5,
+       "konsol_mm": 0.0,
+       "kopru_mm": 8.27,
+       "boyut": [
+        8.2,
+        100.0
+       ],
+       "merkez_robot": [
+        210.7,
+        -90.0,
+        -1.2
+       ],
+       "destek": false,
+       "kolon_mm": 51.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.0,
+     "yuk": [
+      {
+       "ad": "tup ic capi O51,3 (pime gecme, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 1.0
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 112,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "-X": {
+     "yukari": [
+      -1,
+      0,
+      0
+     ],
+     "tabla_yuzu": "x = 213.0 yuzu tablada (robot yerel -X yukari)",
+     "olcu": [
+      100.0,
+      56.0,
+      56.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 472.9,
+     "yukseklik_taban_orani": 2.57,
+     "cikinti45_mm2": 8261.3,
+     "tavan_mm2": 1601.5,
+     "cikinti45_orani": 0.2394,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 3400.3,
+       "izdusum_mm2": 2983.6,
+       "en_dik_aci": 80.0,
+       "z_mm": [
+        0.4,
+        7.7
+       ],
+       "merkez_robot": [
+        209.5,
+        -90.6,
+        -1.4
+       ],
+       "yaricap": 28.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 3132.7,
+       "izdusum_mm2": 2736.4,
+       "en_dik_aci": 78.3,
+       "z_mm": [
+        46.6,
+        53.1
+       ],
+       "merkez_robot": [
+        162.6,
+        -90.0,
+        -1.2
+       ],
+       "yaricap": 25.65
+      }
+     ],
+     "egim_alan_mm2": 6533.0,
+     "egim_izdusum_mm2": 5720.0,
+     "kucuk_delik_cikinti_mm2": 9.8,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 6174.0,
+     "destek_katman_alan_mm2": 454.0,
+     "destek_hacim_cm3": 0.32,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 227.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.07,
+       "kopru_max_mm": 30.88,
+       "merkez_robot": [
+        212.3,
+        -90.0,
+        4.0
+       ],
+       "destek_hacim_mm3": 159.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 227.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.14,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        212.3,
+        -90.0,
+        -6.5
+       ],
+       "destek_hacim_mm3": 159.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 2,
+     "en_buyuk_kopru_mm": 30.9,
+     "en_buyuk_konsol_mm": 2.1,
+     "kopruler": [
+      {
+       "z": 53.73,
+       "tur": "kopru",
+       "alan_mm2": 824.5,
+       "konsol_mm": 0.0,
+       "kopru_mm": 8.27,
+       "boyut": [
+        8.2,
+        100.0
+       ],
+       "merkez_robot": [
+        159.3,
+        -90.0,
+        -1.3
+       ],
+       "destek": false,
+       "kolon_mm": 51.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.0,
+     "yuk": [
+      {
+       "ad": "tup ic capi O51,3 (pime gecme, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 1.0
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 112,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "+Y": {
+     "yukari": [
+      0,
+      1,
+      0
+     ],
+     "tabla_yuzu": "y = -140.0 yuzu tablada (robot yerel +Y yukari)",
+     "olcu": [
+      56.0,
+      56.0,
+      100.0
+     ],
+     "tabla_aci": 24,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 396.1,
+     "yukseklik_taban_orani": 5.02,
+     "cikinti45_mm2": 12.6,
+     "tavan_mm2": 2.3,
+     "cikinti45_orani": 0.0004,
+     "egim_yuz": [],
+     "egim_alan_mm2": 0,
+     "egim_izdusum_mm2": 0,
+     "kucuk_delik_cikinti_mm2": 9.5,
+     "destek_gerekli": false,
+     "destek_alan_mm2": 0,
+     "destek_katman_alan_mm2": 0,
+     "destek_hacim_cm3": 0.0,
+     "destek_bolge": [],
+     "destek_bolge_sayi": 0,
+     "en_buyuk_kopru_mm": 0,
+     "en_buyuk_konsol_mm": 0,
+     "kopruler": [],
+     "yuk_uyum": 1.0,
+     "yuk": [
+      {
+       "ad": "tup ic capi O51,3 (pime gecme, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 1.0
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 200,
+     "ofset_uyari": 193,
+     "atlanan_kesit": []
+    },
+    "-Y": {
+     "yukari": [
+      0,
+      -1,
+      0
+     ],
+     "tabla_yuzu": "y = -40.0 yuzu tablada (robot yerel -Y yukari)",
+     "olcu": [
+      56.0,
+      56.0,
+      100.0
+     ],
+     "tabla_aci": 24,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 396.1,
+     "yukseklik_taban_orani": 5.02,
+     "cikinti45_mm2": 12.6,
+     "tavan_mm2": 2.3,
+     "cikinti45_orani": 0.0004,
+     "egim_yuz": [],
+     "egim_alan_mm2": 0,
+     "egim_izdusum_mm2": 0,
+     "kucuk_delik_cikinti_mm2": 9.9,
+     "destek_gerekli": false,
+     "destek_alan_mm2": 0,
+     "destek_katman_alan_mm2": 0,
+     "destek_hacim_cm3": 0.0,
+     "destek_bolge": [],
+     "destek_bolge_sayi": 0,
+     "en_buyuk_kopru_mm": 0,
+     "en_buyuk_konsol_mm": 0,
+     "kopruler": [],
+     "yuk_uyum": 1.0,
+     "yuk": [
+      {
+       "ad": "tup ic capi O51,3 (pime gecme, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 1.0
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 200,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "+Z": {
+     "yukari": [
+      0,
+      0,
+      1
+     ],
+     "tabla_yuzu": "z = -29.2 yuzu tablada (robot yerel +Z yukari)",
+     "olcu": [
+      100.0,
+      56.0,
+      56.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 463.8,
+     "yukseklik_taban_orani": 2.6,
+     "cikinti45_mm2": 7886.8,
+     "tavan_mm2": 1471.0,
+     "cikinti45_orani": 0.2286,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 3517.6,
+       "izdusum_mm2": 3065.7,
+       "en_dik_aci": 78.8,
+       "z_mm": [
+        0.6,
+        8.1
+       ],
+       "merkez_robot": [
+        185.0,
+        -90.0,
+        -25.6
+       ],
+       "yaricap": 28.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 3132.7,
+       "izdusum_mm2": 2736.4,
+       "en_dik_aci": 78.3,
+       "z_mm": [
+        46.6,
+        53.1
+       ],
+       "merkez_robot": [
+        185.0,
+        -90.0,
+        21.1
+       ],
+       "yaricap": 25.65
+      }
+     ],
+     "egim_alan_mm2": 6650.3,
+     "egim_izdusum_mm2": 5802.1,
+     "kucuk_delik_cikinti_mm2": 0.0,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 6256.1,
+     "destek_katman_alan_mm2": 454.0,
+     "destek_hacim_cm3": 0.32,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 227.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.07,
+       "kopru_max_mm": 30.88,
+       "merkez_robot": [
+        190.2,
+        -90.0,
+        -28.5
+       ],
+       "destek_hacim_mm3": 159.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 227.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.14,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        179.8,
+        -90.0,
+        -28.5
+       ],
+       "destek_hacim_mm3": 159.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 2,
+     "en_buyuk_kopru_mm": 30.9,
+     "en_buyuk_konsol_mm": 2.1,
+     "kopruler": [
+      {
+       "z": 53.73,
+       "tur": "kopru",
+       "alan_mm2": 815.5,
+       "konsol_mm": 0.0,
+       "kopru_mm": 8.27,
+       "boyut": [
+        8.2,
+        100.0
+       ],
+       "merkez_robot": [
+        185.0,
+        -90.4,
+        24.5
+       ],
+       "destek": false,
+       "kolon_mm": 51.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.0,
+     "yuk": [
+      {
+       "ad": "tup ic capi O51,3 (pime gecme, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 1.0
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 112,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "-Z": {
+     "yukari": [
+      0,
+      0,
+      -1
+     ],
+     "tabla_yuzu": "z = 26.8 yuzu tablada (robot yerel -Z yukari)",
+     "olcu": [
+      100.0,
+      56.0,
+      56.0
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 461.1,
+     "yukseklik_taban_orani": 2.61,
+     "cikinti45_mm2": 8187.8,
+     "tavan_mm2": 1772.0,
+     "cikinti45_orani": 0.2373,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 3517.6,
+       "izdusum_mm2": 3067.1,
+       "en_dik_aci": 79.6,
+       "z_mm": [
+        0.5,
+        7.9
+       ],
+       "merkez_robot": [
+        185.0,
+        -88.9,
+        23.1
+       ],
+       "yaricap": 28.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 3132.7,
+       "izdusum_mm2": 2736.4,
+       "en_dik_aci": 78.3,
+       "z_mm": [
+        46.6,
+        53.1
+       ],
+       "merkez_robot": [
+        185.0,
+        -90.0,
+        -23.6
+       ],
+       "yaricap": 25.65
+      }
+     ],
+     "egim_alan_mm2": 6650.3,
+     "egim_izdusum_mm2": 5803.5,
+     "kucuk_delik_cikinti_mm2": 0.0,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 6258.3,
+     "destek_katman_alan_mm2": 454.8,
+     "destek_hacim_cm3": 0.32,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 227.4,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.07,
+       "kopru_max_mm": 57.28,
+       "merkez_robot": [
+        179.8,
+        -90.0,
+        26.0
+       ],
+       "destek_hacim_mm3": 159.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        0.73,
+        0.73
+       ],
+       "katman": 1,
+       "alan_mm2": 227.4,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.14,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        190.2,
+        -90.0,
+        26.0
+       ],
+       "destek_hacim_mm3": 159.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 2,
+     "en_buyuk_kopru_mm": 57.3,
+     "en_buyuk_konsol_mm": 2.1,
+     "kopruler": [
+      {
+       "z": 53.73,
+       "tur": "kopru",
+       "alan_mm2": 816.7,
+       "konsol_mm": 0.0,
+       "kopru_mm": 8.29,
+       "boyut": [
+        8.3,
+        100.0
+       ],
+       "merkez_robot": [
+        185.0,
+        -90.4,
+        -27.0
+       ],
+       "destek": false,
+       "kolon_mm": 51.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.0,
+     "yuk": [
+      {
+       "ad": "tup ic capi O51,3 (pime gecme, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 1.0
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 112,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    }
+   }
+  }
+ ],
+ "ozet": {
+  "parca_turu": 5,
+  "adet": 10,
+  "desteksiz_tur": [
+   "Rulman kapagi",
+   "Ust kol tupu"
+  ],
+  "destekli_tur": [
+   "Omuz yuvasi",
+   "Omuz gobegi",
+   "Kol catali"
+  ],
+  "desteksiz_iddia_tutmayan_adet": 6,
+  "kutle_toplam_g": {
+   "0.80": 515.0,
+   "0.90": 569.0
+  },
+  "sure_toplam_saat": {
+   "0.80": 12.5,
+   "0.90": 13.7
+  }
+ },
+ "sure_s": 268.1
+}
