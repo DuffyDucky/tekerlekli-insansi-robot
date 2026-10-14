@@ -164,7 +164,7 @@ bom_satir = [[esc(t), esc(k), "%d" % n, sayi(m, 0)] for t, k, n, m in d["bom"]]
 cub_satir = []
 for i, cb in enumerate(kesim["cubuklar"], 1):
     cub_satir.append(["%d" % i, esc(" + ".join("%s (%s)" % (sayi(L, 1).rstrip("0").rstrip(","), ad) for L, ad in cb["parcalar"])),
-                      sayi(cb["artik"], 1) + " mm"])
+                      sayi(cb["artik"], 1) + " mm (nominal " + sayi(cb["artik_nominal"], 1) + ")"])
 
 KARAR = [
     "**Şase T birleşimlerinde iç köşe bağlantı:** Ara raylar uzun rayların arasına aynı yükseklikte girdiği için dış köşe bağlantı "
@@ -224,6 +224,7 @@ ol li,ul li{margin:5px 0}code{background:rgba(127,127,127,.15);padding:1px 5px;b
 .not{color:var(--mut);font-size:13px}
 </style></head><body><main>""")
 H.append("<h1>İskelet modülü (V3): şase, gövde direği, omuz traversi</h1>")
+H.append(__import__("carpisma_kos").eskime_html())   # C6: carpisma-sonuc.json eskidiyse uyari kutusu (bos dize = guncel)
 H.append("<div class='sub'>FreeCAD 1.1 · <code>iskelet_montaj.py</code> · %d parça · ölçüler <code>arayuz.py</code>'den (robot_cad V3) · "
          "plakalar, motorlar, akü ve elektronik taban modülünde</div>" % d["parca_sayisi"])
 
@@ -268,8 +269,12 @@ H.append("<p>Omuz betikleri genel elemanları artık <code>ortak_lib.py</code>'d
          "<code>arayuz.py</code>'den okuyor; sigma kesiti <code>sigma_profil.py</code>'den geliyor. Değişiklikten önce ve sonra "
          "<code>omuz_montaj.py</code> çalıştırılıp karşılaştırıldı (<code>omuz/omuz_regresyon.py</code>):</p><div class='tw'>")
 H.append(tablo(["Ölçüt", "Önce", "Sonra", "En büyük fark", "Sonuç"], reg_satir))
-H.append("</div><p class='not'>Taramada çakışan pozlar omuzun kendi eklem sınırlarının dışında (yana −20…−5°) ve değişiklikten önce de "
-         "aynıydı. Sonuç: <b>%s</b>.</p>" % ("birebir aynı" if r["hepsi_ayni"] else "fark var"))
+_tar = [x for x in r["satirlar"] if x["olcut"].startswith("tarama ")]
+_tar_ayni = all(x["ayni"] for x in _tar)
+H.append("</div><p class='not'>Tarama çakışan poz sayıları (%s) değişiklikten önce ve sonra %s; çakışan pozlar omuzun kendi eklem "
+         "sınırlarının dışında (yana −20…−5°). Sonuç: <b>%s</b> (%d ölçüt).</p>" % (
+             "; ".join("%s %s" % (x["olcut"].replace("tarama ", "").replace(": cakisan poz", "").replace("_", " ↔ "), x["sonra"]) for x in _tar) or "tarama ölçütü yok",
+             "aynı" if _tar_ayni else "FARKLI", "birebir aynı" if r["hepsi_ayni"] else "fark var", len(r["satirlar"])))
 
 H.append("<h2>Eğilme kontrolü: direk ve travers</h2>")
 H.append("<p>Kesit (FreeCAD, sigma_profil kesiti): alan %s mm² (üretici %s), I = %s mm⁴, W = %s mm³. Direk %s mm, travers yarısı %s mm konsol.</p>" % (
@@ -305,9 +310,12 @@ H.append("<p>Toplam: <b>%d çakışma</b>. İskelet + iki omuz kütlesi %s kg, a
     sayi(c["agirlik_merkezi"][2], 1), esc(list(tarama.values())[0]["aciklama"])))
 
 H.append("<h2>Kesim listesi ve malzeme</h2><div class='grid'><div>")
-H.append(tablo(["Çubuk (%s mm, testere %s mm)" % (sayi(kesim["stok_mm"], 0), sayi(kesim["testere_mm"], 0)), "Kesilecek parçalar", "Artık"], cub_satir))
+H.append(tablo(["Çubuk (%s mm, testere %s mm, stok toleransı −%s mm)" % (sayi(kesim["stok_mm"], 0), sayi(kesim["testere_mm"], 0), sayi(kesim["stok_tolerans_mm"], 0)), "Kesilecek parçalar", "Artık (tolerans sonrası)"], cub_satir))
 H.append("<p class='not'>Toplam %s mm sigma: modelde %s g, üretici 1,99 kg/m ile %s g. Robolink özel boy kesimi de yapıyor; o durumda bu tablo "
-         "sipariş listesidir. 1. çubukta artık 3,5 mm: çubuk kısa gelirse 190 mm'lik parça 3. çubuğa alınır (artık 111 mm).</p></div><div>" % (sayi(kesim["toplam_mm"], 1), sayi(kesim["kutle_model_g"], 0), sayi(kesim["kutle_uretici_g"], 0)))
+         "sipariş listesidir. Her kesim %s mm testere payı yer; her çubuk %s mm kısa gelebilir kabul edildi (<b>tahmini</b>, satıcı teyidi yok); artık en az %s mm olmalı: %s. "
+         "Orta ara ray 3. çubuğa alındı (eski planda 1. çubukta artık yalnız 3,5 mm kalıyordu).</p></div><div>" % (sayi(kesim["toplam_mm"], 1), sayi(kesim["kutle_model_g"], 0), sayi(kesim["kutle_uretici_g"], 0),
+                                                                     sayi(kesim["testere_mm"], 0), sayi(kesim["stok_tolerans_mm"], 0), sayi(kesim["min_artik_mm"], 0),
+                                                                     "sağlanıyor (en az %s mm)" % sayi(min(c["artik"] for c in kesim["cubuklar"]), 1) if not kesim["kesim_hatasi"] else "SAĞLANMIYOR: " + esc("; ".join(kesim["kesim_hatasi"]))))
 H.append(tablo(["Tür", "Kalem", "Adet", "Kütle g"], bom_satir, "sayi"))
 H.append("</div></div>")
 

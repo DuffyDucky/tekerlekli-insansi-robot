@@ -83,7 +83,8 @@ def yukle_omuz():
     return dict(parcalar=[dict(ad=p["ad"], grup=grup[p["grup"]], shape=p["shape"], kutle=p["kutle"], merkez=p["merkez"])
                           for p in O.P],
                 hareket=dict(pozlar=[(phi, th) for phi in O.PHIS for th in O.THS], yer=yer,
-                             eklem_araligi=lambda poz: -45 <= poz[0] <= 135 and 0 <= poz[1] <= 120,
+                             eklem_araligi=lambda poz: A.OMUZ["one_arka_aralik"][0] <= poz[0] <= A.OMUZ["one_arka_aralik"][1]
+                             and A.OMUZ["yana_aralik"][0] <= poz[1] <= A.OMUZ["yana_aralik"][1],
                              aciklama="omuz_montaj taramasi: one-arka %d...%d, yana %d...%d (5-10 derece adim)" %
                              (min(O.PHIS), max(O.PHIS), min(O.THS), max(O.THS))),
                 haric=["Omuz traversi", "Govde kabugu yan yuzu (referans)"],
@@ -402,8 +403,12 @@ import itertools
 import dirsek_parcalar as DP
 import omuz_parcalar as OP
 
-KOL_ARALIK = ((-45.0, 135.0), (0.0, 120.0), tuple(DP.D["aralik"]), tuple(DP.D["bilek_aralik"]))   # phi, th, dirsek, bilek
-KABA = (list(range(-45, 136, 15)), list(range(0, 121, 15)), [0, 30, 60, 90, 105], [-90, 0, 90])
+KOL_ARALIK = (tuple(A.OMUZ["one_arka_aralik"]), tuple(A.OMUZ["yana_aralik"]), tuple(DP.D["aralik"]), tuple(DP.D["bilek_aralik"]))   # phi, th, dirsek, bilek (arayuz.OMUZ: tek kaynak)
+YANA_MIN = A.OMUZ["yana_aralik"][0]    # S2 alt siniri (3): kol-kol ve jest test pozlarindaki "yana 0" bunun yerine
+# kaba izgara: sinirlardan turetilir (one-arka 15 derece adim, yana alt sinir + 15'in katlari)
+KABA = (list(range(int(KOL_ARALIK[0][0]), int(KOL_ARALIK[0][1]) + 1, 15)),
+        sorted(set([int(YANA_MIN)] + [t for t in range(0, int(KOL_ARALIK[1][1]) + 1, 15) if t > YANA_MIN])),
+        [0, 30, 60, 90, 105], [-90, 0, 90])
 DISI_AL, DISI_BE = [0, 60, 105], [-90, 0, 90]       # aralik disi halka: omuz one-arka -60 / 150, yana -10
 YAKIN = 5.0          # mm: tutucu kutu boslugu bunun altindaki her aday tam olculur
 INCE_ESIK = 5.0      # mm: bunun altinda bosluk (ya da cakisma) olan alt pozun cevresi ince taranir
@@ -665,8 +670,8 @@ def kol_tara(taraf):
         taraf=taraf, omuz=om, dirsek=dr,
         aralik=dict(one_arka=KOL_ARALIK[0], yana=KOL_ARALIK[1], dirsek=KOL_ARALIK[2], bilek=KOL_ARALIK[3]),
         kaba_izgara=dict(one_arka=KABA[0], yana=KABA[1], dirsek=KABA[2], bilek=KABA[3], tam_poz=len(kaba)),
-        aralik_disi_halka=dict(aciklama="omuz one-arka -60 ve 150 (yana 0...120) + yana -10 (one-arka -45...135); dirsek %s; bilek %s"
-                               % (DISI_AL, DISI_BE), tam_poz=len(disi)),
+        aralik_disi_halka=dict(aciklama="omuz one-arka -60 ve 150 (yana %g...%g) + yana -10 (one-arka %g...%g); dirsek %s; bilek %s"
+                               % (KOL_ARALIK[1] + KOL_ARALIK[0] + (DISI_AL, DISI_BE)), tam_poz=len(disi)),
         alt_poz=dict(kaba=len(altlar), ince=len(ince)), aday=len(aday), tam_olcum=len(olcum),
         cakisan_tam_poz_aralikta=len(kaba_cak), cakisan_tam_poz_aralik_disi=len(disi_cak),
         cakisan_alt_poz_aralikta=len(set((b["grup"], tuple(b["poz"])) for b in cak if b["aralikta"])),
@@ -704,23 +709,24 @@ def kol_kol():
     KS, KL = kol_parcalari("sag"), kol_parcalari("sol")
     ciftler = []
     for phi in (-45, 0, 45, 90, 135):                     # simetrik: iki kol ayni poz (aynali hareket)
-        for th in (0, 60, 120):
+        for th in (YANA_MIN, 60, 120):
             for al in (0, 60, 105):
                 for be in (-90, 90):
                     ciftler.append(("simetrik", (phi, th, al, be), (phi, th, al, be)))
-    for (a, b) in (((135, 0), (-45, 0)), ((-45, 0), (135, 0)), ((90, 0), (0, 0)), ((135, 120), (-45, 0)), ((0, 120), (135, 0)),
-                   ((90, 30), (-45, 60)), ((45, 0), (-45, 0)), ((120, 0), (-30, 0))):   # zit pozlar
+    _y = YANA_MIN
+    for (a, b) in (((135, _y), (-45, _y)), ((-45, _y), (135, _y)), ((90, _y), (0, _y)), ((135, 120), (-45, _y)), ((0, 120), (135, _y)),
+                   ((90, 30), (-45, 60)), ((45, _y), (-45, _y)), ((120, _y), (-30, _y))):   # zit pozlar
         for al in (0, 105):
             for be in (-90, 90):
                 ciftler.append(("zit", (a[0], a[1], al, be), (b[0], b[1], 105 - al, -be)))
-    for th in (0, 15, 30):                               # iki kol birlikte one uzanir (omuz one 90)
+    for th in (YANA_MIN, 15, 30):                        # iki kol birlikte one uzanir (omuz one 90)
         for al in (0, 30, 60, 90, 105):
             for be in (-90, 0, 90):
                 ciftler.append(("birlikte one", (90, th, al, be), (90, th, al, -be)))
                 ciftler.append(("birlikte one (bilek ayni)", (90, th, al, be), (90, th, al, be)))
     for phi in (60, 75, 105, 120, 135):
         for al in (0, 60, 105):
-            ciftler.append(("birlikte one", (phi, 0, al, 0), (phi, 0, al, 0)))
+            ciftler.append(("birlikte one", (phi, YANA_MIN, al, 0), (phi, YANA_MIN, al, 0)))
 
     def kutular(KX, poz):
         cb = []
@@ -797,8 +803,8 @@ SINIR_TUR = 40       # yasak bolge siniri: yalniz cakisan ciftlerin eksen komsul
 ONBELLEK = 3000      # tasinmis sekil onbellegi (LRU) ust siniri: bellek
 JEST = [("ev", (0, 0, 0, 0)), ("selam (montaj gorseli)", (20, 100, 95, -60)), ("selam, kol yukarida", (0, 120, 105, 0)),
         ("selam, yan", (30, 90, 105, 90)), ("kafa kasima", (135, 30, 105, 0)), ("kafa kasima, bilek 90", (135, 45, 105, 90)),
-        ("kafa kasima, yana 60", (120, 60, 105, -90)), ("kafa kasima, yana 15", (135, 15, 105, 0)), ("el yuze", (120, 0, 105, 0)),
-        ("el yuze, bilek 90", (135, 0, 105, 90)), ("el agiza", (105, 0, 105, 0)), ("kol tepede", (135, 120, 0, 0)),
+        ("kafa kasima, yana 60", (120, 60, 105, -90)), ("kafa kasima, yana 15", (135, 15, 105, 0)), ("el yuze", (120, YANA_MIN, 105, 0)),
+        ("el yuze, bilek 90", (135, YANA_MIN, 105, 90)), ("el agiza", (105, YANA_MIN, 105, 0)), ("kol tepede", (135, 120, 0, 0)),
         ("kol tepede bukuk", (135, 120, 105, 0)), ("kol yana yukari bukuk", (45, 120, 105, 0)), ("eller basta", (120, 90, 105, 0))]
 
 

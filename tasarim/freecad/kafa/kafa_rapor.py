@@ -435,6 +435,7 @@ ol li,ul li{margin:5px 0}code{background:rgba(127,127,127,.15);padding:1px 5px;b
 .karar{border-left:4px solid var(--ok);background:var(--card);padding:10px 14px;border-radius:6px}
 </style></head><body><main>""")
 H.append("<h1>Kafa modülü: boyun + pan + tilt + yüz ekranı</h1>")
+H.append(__import__("carpisma_kos").eskime_html())   # C6: carpisma-sonuc.json eskidiyse uyari kutusu (bos dize = guncel)
 H.append("<div class='sub'>1. aşama (tasarım) + 2. aşama (modüller arası, ana montaj) · FreeCAD 1.1 · <code>kafa_montaj.py</code> · %d parça (%d baskı) · ölçüler <code>arayuz.KAFA</code>'dan, "
          "V3 kafa düzeni (robot_cad) · yazıcı %s · 2. aşama: modüller arası tarama (<code>carpisma.py</code>) ve ana montaj (<code>montaj/</code>) aşağıda</div>"
          % (d["parca_sayisi"], d["baski_sayisi"], esc(Y["model"])))

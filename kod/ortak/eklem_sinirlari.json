@@ -1,0 +1,202 @@
+{
+  "surum": 1,
+  "birim": "derece",
+  "kaynak": "tasarim/freecad/arayuz.py (OMUZ, DIRSEK, KAFA, KAFA_KOL_YASAK)",
+  "eklemler": {
+    "r_s1": {
+      "ad": "omuz one-arka (S1)",
+      "min": -45.0,
+      "max": 135.0,
+      "servo": "DS3218MG (180 derece), S1 ve S2",
+      "neden": "DS3218MG 180 derece; horn kol asagidayken 45'te; geometri -60...180 serbest",
+      "taraf": "sag",
+      "ayna": false
+    },
+    "r_s2": {
+      "ad": "omuz yana acma (S2)",
+      "min": 3.0,
+      "max": 120.0,
+      "servo": "DS3218MG (180 derece), S1 ve S2",
+      "neden": "alt sinir +3: 0'da kabuk boslugu 4,7 mm, -2'de 0,6 mm, -3'te temas; servo sifir hatasi <= +-2 derece olmali",
+      "bosluk_mm": {
+        "0": 4.7,
+        "-2": 0.6,
+        "-3": 0.0
+      },
+      "taraf": "sag",
+      "ayna": false
+    },
+    "r_dirsek": {
+      "ad": "dirsek",
+      "min": 0.0,
+      "max": 105.0,
+      "servo": "MG996R (180 derece)",
+      "neden": "MG996R, catal dayanagi",
+      "taraf": "sag",
+      "ayna": false
+    },
+    "r_bilek": {
+      "ad": "bilek",
+      "min": -90.0,
+      "max": 90.0,
+      "servo": "MG996R (180 derece)",
+      "neden": "MG996R 180 derece, ev 0 = avuc ice bakar",
+      "taraf": "sag",
+      "ayna": false
+    },
+    "l_s1": {
+      "ad": "omuz one-arka (S1)",
+      "min": -45.0,
+      "max": 135.0,
+      "servo": "DS3218MG (180 derece), S1 ve S2",
+      "neden": "DS3218MG 180 derece; horn kol asagidayken 45'te; geometri -60...180 serbest",
+      "taraf": "sol",
+      "ayna": true
+    },
+    "l_s2": {
+      "ad": "omuz yana acma (S2)",
+      "min": 3.0,
+      "max": 120.0,
+      "servo": "DS3218MG (180 derece), S1 ve S2",
+      "neden": "alt sinir +3: 0'da kabuk boslugu 4,7 mm, -2'de 0,6 mm, -3'te temas; servo sifir hatasi <= +-2 derece olmali",
+      "bosluk_mm": {
+        "0": 4.7,
+        "-2": 0.6,
+        "-3": 0.0
+      },
+      "taraf": "sol",
+      "ayna": true
+    },
+    "l_dirsek": {
+      "ad": "dirsek",
+      "min": 0.0,
+      "max": 105.0,
+      "servo": "MG996R (180 derece)",
+      "neden": "MG996R, catal dayanagi",
+      "taraf": "sol",
+      "ayna": true
+    },
+    "l_bilek": {
+      "ad": "bilek",
+      "min": -90.0,
+      "max": 90.0,
+      "servo": "MG996R (180 derece)",
+      "neden": "MG996R 180 derece, ev 0 = avuc ice bakar",
+      "taraf": "sol",
+      "ayna": true
+    },
+    "pan": {
+      "ad": "kafa pan",
+      "min": -90.0,
+      "max": 90.0,
+      "servo": "MG996R (180 derece), pan ve tilt",
+      "neden": "MG996R 180 derece; kablo halkasi +-90"
+    },
+    "tilt": {
+      "ad": "kafa tilt",
+      "min": -25.0,
+      "max": 30.0,
+      "servo": "MG996R (180 derece), pan ve tilt",
+      "neden": "yazilim siniri; geometri serbest -25...40"
+    }
+  },
+  "teker": {
+    "sinirsiz": true,
+    "not_": "hiz / ivme siniri yazilimda (rampada <= 0,25 m/s2 onerilir)"
+  },
+  "sol_isaret": {
+    "deger": -1,
+    "durum": "tahmini; montajdan sonra her servo tek tek dogrulanir (duzeltme plani C4)"
+  },
+  "kafa_kol_yasak": {
+    "aciklama": "kol kol_kosulu icindeyken kafa o kola dogru kutu icine girmemeli (pan x tilt); sol kol: sol_kol.kutu",
+    "pay": 5.0,
+    "sag_kol": {
+      "kol_kosulu": {
+        "one_arka": [
+          120.0,
+          135.0
+        ],
+        "yana": [
+          3.0,
+          5.0
+        ],
+        "dirsek": [
+          65.0,
+          105.0
+        ],
+        "bilek": [
+          -90.0,
+          90.0
+        ]
+      },
+      "kutu": {
+        "pan": [
+          25.0,
+          60.0
+        ],
+        "tilt": [
+          20.0,
+          30.0
+        ]
+      }
+    },
+    "sol_kol": {
+      "kol_kosulu": {
+        "one_arka": [
+          120.0,
+          135.0
+        ],
+        "yana": [
+          3.0,
+          5.0
+        ],
+        "dirsek": [
+          65.0,
+          105.0
+        ],
+        "bilek": [
+          -90.0,
+          90.0
+        ]
+      },
+      "kutu": {
+        "pan": [
+          -60.0,
+          -25.0
+        ],
+        "tilt": [
+          20.0,
+          30.0
+        ]
+      }
+    },
+    "olculen": {
+      "one_arka": [
+        125.0,
+        135.0
+      ],
+      "yana": [
+        0.0,
+        0.0
+      ],
+      "dirsek": [
+        70.0,
+        105.0
+      ],
+      "bilek": [
+        -90.0,
+        90.0
+      ],
+      "pan": [
+        30.0,
+        55.0
+      ],
+      "tilt": [
+        25.0,
+        30.0
+      ]
+    },
+    "not_": "kol_kosulu disinda kafa-kol cakismasi taramada yok; kosulsuz uygulamak guvenli ama kafayi gereksiz kisitlar. Olculen yana 0 idi; S2 alt siniri +3 oldugundan kosul yana 3...5 olur. Kutu C7 tam taramasiyla dogrulanacak."
+  }
+}

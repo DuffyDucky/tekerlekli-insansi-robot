@@ -464,3 +464,19 @@ Claude Opus alt ajanı yaptı; orkestratör seçilen iki ürünün fiyatını ve
   Paketten HDMI ve USB kablosu çıkıp çıkmadığı doğrulanmadı.
 - Filament: V2 baskı parçaları CAD'den ≈ 4,4 kg (V1 ≈ 3,7 kg) → V2'de 6 × 1 kg.
 - Daha büyük SPI yuvarlak ekran bulunamadı (Robotistan 3,4" yuvarlak HDMI arabirimli, 5.408,83 TL).
+
+## 5. FreeCAD V3 filament (11 Ekim 2026)
+
+Duffy renk kararı: "Tamamen beyaz". Baskı listesi (`planlama/baski-listesi.md`): düz PETG ≈ 4,94 kg, yük taşıyan 10 parça
+PETG-CF ≈ 0,79 kg. Fiyatlar orkestratörün ürün sayfası okumasıyla (WebFetch).
+
+| Kalem | Satıcı | Fiyat | Stok | Bağlantı | Not |
+|---|---|---|---|---|---|
+| HS PETG Beyaz 1,75 mm 1 kg | Microzey | **389,00 TL** | "Sepete Ekle" var, adet görünmüyor | https://microzey.com/hs-petg-beyaz | Sayfada KDV ibaresi yok. Kategori sayfası (https://microzey.com/petg) beyazı 389 TL listeliyor; eski `petg-beyaz` adresi 404. |
+| Elas PET-G 1,75 mm 1 kg, beyaz seçeneği | FilamentMarketim | 549,00 TL (havale 534,73) | Beyaz için "Tükendi" işareti yok (yalnız Bakır tükendi) | https://www.filamentmarketim.com/elas-1.75-mm-siyah-petg-filament-1kg | 27 renk tek fiyat; 2.500 TL üzeri Elas alımında sepette ek %10 |
+| Polymaker Fiberon PETG-rCF08 siyah 0,5 kg | FilamentMarketim | **1.105,87 TL** (havale 1.077,11) | **Belirsiz:** ürün sayfasında "Ekle" var, benzer ürünlerde "Stokta Yok" | https://www.filamentmarketim.com/polymaker-fiberon-petg-rcf08-filament-siyah | Baskı 240–270 °C. 2 adet = 1 kg. Siparişten önce satıcıya sorulmalı. |
+
+- Türkiye'de siyah 1 kg PETG-CF bulunamadı. Creality PETG-CF 1 kg Akakçe'de yalnız renkli (çay kahverengisi, sütlü kahve,
+  kaya kırmızısı, gizemli mor) listeleniyor, fiyatı okunamadı (https://www.akakce.com/filament/petg-filament,2.html).
+  Bambu Lab PETG-CF'nin Türkiye satışı bulunamadı (ABD'de 1 kg 34,99 $: https://shop3duniverse.com/collections/bambu-lab-filaments/products/bambu-lab-petg-cf-carbon-fiber-reinforced-petg-1-75mm-1kg).
+- Polymaker stokta yoksa yedek yol: Creality PETG-CF renkli (eklemler renkli görünür) ya da yurt dışı sipariş.

@@ -1,7 +1,7 @@
 # Taban modulu - montaj, kontroller, muhendislik hesaplari, DXF, baski analizi, FCStd + STEP + BOM + json
 # Calistir (yolda "ü" oldugu icin ASCII baslaticiyla): FC_SCRIPT=<bu dosya> freecadcmd run_fc.py   (~5-8 dk; kabuk parcalari kurulur)
 # Kontroller: her parca isValid + tek kati; taban ici cakisma (0,5 mm3); baglantilar (dayanma, eksen hizasi, civata ucu payi /
-# kavrama); taban <-> iskelet ve taban <-> kabuk ev pozunda (statik, burada); teker <-> etek boslugu; yeni ayrilmis bolgelerin
+# kavrama, vida ucu somunu >= 0,5 mm gecer); taban <-> iskelet ve taban <-> kabuk ev pozunda (statik, burada); teker <-> etek boslugu; yeni ayrilmis bolgelerin
 # iskelet/kabuga uyumu; X2D baski analizi; lazer DXF. Hesaplar: tam robot kutlesi + AM (diger modullerin analizlerinden + taban),
 # kol pozlarinda devrilme (duz zemin + 5 derece rampa), motor torku (V3 varsayimlari), aku suresi (tahmini tuketim).
 # Moduller arasi tarama (kollar, kafa) ve ana montaja ekleme 2. asamada (carpisma.py, montaj/), dokunulmaz.
@@ -22,6 +22,7 @@ import arayuz as A
 t0 = time.time()
 TOL = 0.5          # mm3
 TEMAS = 0.01       # mm
+SOMUN_GECME = 0.5  # mm: kanal baglantisinda vida ucunun cekic somun ust yuzunu gecme payi (en az)
 G = 9.81
 T = A.TABAN
 
@@ -107,6 +108,10 @@ for b in BAG:
         if o["uc"] > o["taban"] - 0.5:
             sonuc["hata"].append("uc kanal tabanina %.2f" % (o["taban"] - o["uc"]))
         sonuc["uc_taban_pay"] = round(o["taban"] - o["uc"], 2)
+        # M3 (14 Ekim 2026): vida ucu cekic somunun ust yuzunu en az SOMUN_GECME kadar gecmeli (dis tamamen somunda, tolerans payi)
+        sonuc["somun_gecme_pay"] = round(o["uc"] - o["somun_ust"], 2)
+        if o["uc"] - o["somun_ust"] < SOMUN_GECME - 1e-6:
+            sonuc["hata"].append("vida ucu somunu %.2f mm geciyor (sart >= %.1f)" % (o["uc"] - o["somun_ust"], SOMUN_GECME))
     elif t == "saplama":
         if o["kavrama_somun"] < 0.8 * d or o["kavrama_burc"] < d or o["uc"] > o["taban"] - 0.5:
             sonuc["hata"].append("saplama olcusu")
@@ -274,8 +279,12 @@ log("taban kutle %.1f g (+kablo payi %.0f = %.1f), AM (%.1f, %.1f, %.1f)" % (M_t
 
 # ====================================================================== 6) tam robot: kutle, AM, kol pozlari, devrilme, motor, aku
 MA = json.load(open(os.path.join(UST, "montaj", "montaj-analiz.json"), encoding="utf-8"))
-M_r0 = MA["kutle_g"]
-CG_r0 = V(*MA["agirlik_merkezi"])
+# Ana montaj tabani da iceriyorsa (taban montaja eklendikten sonraki her kosu) onceki taban cikarilir, yoksa taban iki kez sayilir.
+_MT = [m for m in MA.get("moduller", []) if m["ad"] == "taban"]
+M_r0 = MA["kutle_g"] - sum(m["kutle_g"] for m in _MT)
+CG_r0 = (V(*MA["agirlik_merkezi"]) * MA["kutle_g"] - sum((V(*m["agirlik_merkezi"]) * m["kutle_g"] for m in _MT), V(0, 0, 0))) * (1.0 / M_r0)
+N_r0 = MA["parca_sayisi"] - sum(m["parca"] for m in _MT)
+log("tabansiz montaj: %.1f g, %d parca (montajdaki taban: %s)" % (M_r0, N_r0, "cikarildi" if _MT else "yok"))
 import omuz_parcalar as OP
 import dirsek_parcalar as DP
 log("omuz + dirsek yuklendi")
@@ -505,9 +514,9 @@ out = dict(
     kutle_g=round(M_t, 1), kablo_payi=KP_, kutle_payli_g=round(M_tp, 1), agirlik_merkezi=vl(CG_t), agirlik_merkezi_payli=vl(CG_tp),
     kutle_grup={k: round(v, 1) for k, v in kutle_grup.items()}, kutle_tur={k: round(v, 1) for k, v in kutle_tur.items()},
     en_agir=[[p["ad"], round(p["kutle"], 1)] for p in buyuk],
-    robot=dict(kaynak="montaj/montaj-analiz.json (tabansiz 601 parca, ev pozu) + taban (kablo payi dahil); kol gruplari omuz_parcalar / "
-                      "dirsek_parcalar'dan (Gobek, Kol, UstKol, OnKol, El)",
-               tabansiz_kutle_g=M_r0, tabansiz_am=MA["agirlik_merkezi"],
+    robot=dict(kaynak="montaj/montaj-analiz.json (tabansiz %d parca, ev pozu; montajdaki taban cikarildi) + taban (kablo payi dahil); "
+                      "kol gruplari omuz_parcalar / dirsek_parcalar'dan (Gobek, Kol, UstKol, OnKol, El)" % N_r0,
+               tabansiz_kutle_g=round(M_r0, 2), tabansiz_am=vl(CG_r0), tabansiz_parca=N_r0,
                hareketli_gruplar={k: dict(kutle_g=round(v[0], 1), am_omuz_yereli=vl(v[1])) for k, v in HAREKETLI.items()},
                temas="teker merkez duzlemleri x +-%.0f, z +-%.0f (V3 hesabi ile ayni); fren ivmesi 1,5 m/s2 (acil stop, tahmini)" % (XC, ZC),
                pozlar=robot),

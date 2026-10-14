@@ -9,7 +9,7 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 if _HERE not in sys.path:
     sys.path.insert(0, _HERE)
 
-from arayuz import DIN912, CLEAR, NUT934, NUT985, WASH125, INSERT, DIN913, CEKIC_SOMUN, KOSE, IC_KOSE   # noqa
+from arayuz import DIN912, CLEAR, NUT934, NUT985, WASH125, INSERT, INSERT_DELIK, DIN913, CEKIC_SOMUN, KOSE, IC_KOSE   # noqa
 from arayuz import LIP, KANAL_TABAN                                                                  # noqa
 from sigma_profil import kesit as _sigma_kesit
 
@@ -110,15 +110,16 @@ def washer(d, p, direction):
 
 
 def insert(d, p, direction):
-    """Isil gomme somun: p = agiz yuzu, direction = deligin icine dogru. Ic cap = civata capi."""
-    od, L = INSERT[d]
+    """Isil gomme somun (takilmis hal): p = agiz yuzu, direction = deligin icine dogru. Ic cap = civata capi.
+    Dis cap baski deligi capinda (INSERT_DELIK) cizilir: takilinca tirtil plastige gomulur, delikle cakismaz."""
+    od, L = INSERT_DELIK[d], INSERT[d][1]
     u = unit(direction)
     p = V(*p)
     return Part.makeCylinder(od / 2, L, p, u).cut(Part.makeCylinder(d / 2, L + 2, p - u, u))
 
 
 def insert_hole(d, p, direction, extra=0.5):
-    od, L = INSERT[d]
+    od, L = INSERT_DELIK[d], INSERT[d][1]
     u = unit(direction)
     return Part.makeCylinder(od / 2, L + extra, V(*p), u)
 

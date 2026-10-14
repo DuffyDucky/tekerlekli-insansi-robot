@@ -5,7 +5,7 @@
  "parca_sayisi": 907,
  "grup_sayisi": 22,
  "gecersiz": [],
- "hacim_fark_mm3": 3.7834979593753815e-10,
+ "hacim_fark_mm3": 2.6193447411060333e-10,
  "ayna_merkez_fark_mm": 5.859285502108464e-13,
  "moduller": [
   {
@@ -47,11 +47,11 @@
     "Govde kabugu yan yuzu (referans)"
    ],
    "haric_neden": "travers iskeletin parcasi (iki kez sayilmaz); kabuk duvari kabuk modulunun yer tutucusu",
-   "kutle_g": 463.6,
+   "kutle_g": 460.36,
    "agirlik_merkezi": [
-    150.931,
-    943.879,
-    -0.753
+    150.755,
+    944.198,
+    -0.734
    ],
    "gruplar": [
     "OmuzSag_Govde",
@@ -75,11 +75,11 @@
     "Govde kabugu yan yuzu (referans)"
    ],
    "haric_neden": "travers iskeletin parcasi (iki kez sayilmaz); kabuk duvari kabuk modulunun yer tutucusu",
-   "kutle_g": 463.6,
+   "kutle_g": 460.36,
    "agirlik_merkezi": [
-    -150.931,
-    943.879,
-    -0.753
+    -150.755,
+    944.198,
+    -0.734
    ],
    "gruplar": [
     "OmuzSol_Govde",
@@ -100,11 +100,11 @@
    "parca": 202,
    "haric": [],
    "haric_neden": "",
-   "kutle_g": 4925.85,
+   "kutle_g": 4901.23,
    "agirlik_merkezi": [
-    -0.086,
-    467.195,
-    8.457
+    -0.079,
+    467.067,
+    8.542
    ],
    "gruplar": [
     "Kabuk"
@@ -123,11 +123,11 @@
    "parca": 53,
    "haric": [],
    "haric_neden": "",
-   "kutle_g": 369.98,
+   "kutle_g": 369.34,
    "agirlik_merkezi": [
-    189.34,
-    748.705,
-    -1.586
+    189.36,
+    748.733,
+    -1.587
    ],
    "gruplar": [
     "DirsekSag_UstKol",
@@ -148,11 +148,11 @@
    "parca": 53,
    "haric": [],
    "haric_neden": "",
-   "kutle_g": 369.98,
+   "kutle_g": 369.34,
    "agirlik_merkezi": [
-    -189.34,
-    748.705,
-    -1.586
+    -189.36,
+    748.733,
+    -1.587
    ],
    "gruplar": [
     "DirsekSol_UstKol",
@@ -175,11 +175,11 @@
     "Kablo demeti (gosterim)"
    ],
    "haric_neden": "kablo demeti gosterimi (Referans grubu, 0 g); kafa analizinin parca sayisina da girmiyor",
-   "kutle_g": 1366.84,
+   "kutle_g": 1363.11,
    "agirlik_merkezi": [
-    0.608,
-    1108.485,
-    21.131
+    0.615,
+    1108.56,
+    21.133
    ],
    "gruplar": [
     "Kafa_Govde",
@@ -214,11 +214,11 @@
     "Kablo yolu 12: Pi -> kafa: 2x HDMI (7in LCD), kamera FPC, USB mikrofon, hoparlor (direk on yuzu)"
    ],
    "haric_neden": "kablo yolu semalari ve ana anahtar dugmesi gosterimi (Referans grubu, 0 g); taban analizinin parca sayisina girmiyor",
-   "kutle_g": 7507.96,
+   "kutle_g": 7507.63,
    "agirlik_merkezi": [
     -1.12,
-    119.495,
-    -47.414
+    119.496,
+    -47.415
    ],
    "gruplar": [
     "Taban_Govde",
@@ -841,11 +841,11 @@
  ],
  "solve": 0,
  "ev_pozu_cozucu_sapmasi": 0.0,
- "kutle_g": 21260.88,
+ "kutle_g": 21224.45,
  "agirlik_merkezi": [
-  -0.376,
-  374.615,
-  -13.514
+  -0.375,
+  374.176,
+  -13.529
  ],
  "karsilastirma": {
   "parca": {
@@ -855,33 +855,33 @@
    "ayni": true
   },
   "kutle": {
-   "montaj_dosyasi": 21260.88,
-   "bellek": 21260.88,
-   "beklenen_analizlerden": 21260.9,
+   "montaj_dosyasi": 21224.45,
+   "bellek": 21224.45,
+   "beklenen_analizlerden": 21224.8,
    "carpisma": 21260.9,
-   "fark_analiz": -0.014,
-   "fark_carpisma": -0.016
+   "fark_analiz": -0.347,
+   "fark_carpisma": -36.449
   },
   "am": {
    "montaj_dosyasi": [
-    -0.376,
-    374.615,
-    -13.514
+    -0.375,
+    374.176,
+    -13.529
    ],
    "bellek": [
-    -0.376,
-    374.615,
-    -13.514
+    -0.375,
+    374.176,
+    -13.529
    ],
    "carpisma": [
     -0.38,
     374.61,
     -13.51
    ],
-   "fark_carpisma_mm": 0.007,
+   "fark_carpisma_mm": 0.434,
    "fark_bellek_mm": 0.0
   },
   "not_": "analiz JSON'lari 0,1 g'a yuvarlanmis; carpisma AM'si 0,01 mm'ye"
  },
- "sure_s": 46.3
+ "sure_s": 57.3
 }

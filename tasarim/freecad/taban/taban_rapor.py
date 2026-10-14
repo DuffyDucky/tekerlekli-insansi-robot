@@ -13,6 +13,9 @@ G = os.path.join(HERE, "gorsel")
 d = json.load(open(os.path.join(HERE, "taban-analiz.json"), encoding="utf-8"))
 T = A.TABAN
 Y = A.YAZICI
+_pl = [b for b in d["baglanti_kontrol"] if b["tip"] == "kanal" and b["olcu"]["d"] == 6 and b["ad"].startswith("Plaka")]
+PLAKA_GECME = min(b["somun_gecme_pay"] for b in _pl)      # vida ucu cekic somun ustunu gecme payi (en az)
+PLAKA_TABAN = min(b["uc_taban_pay"] for b in _pl)         # vida ucu - kanal tabani (en az)
 
 
 def esc(s):
@@ -110,6 +113,7 @@ ol li,ul li{margin:5px 0}code{background:rgba(127,127,127,.15);padding:1px 5px;b
 .karar{border-left:4px solid var(--ok);background:var(--card);padding:10px 14px;border-radius:6px}
 </style></head><body><main>""")
 H.append("<h1>Taban modülü: şase plakaları, tahrik, akü, güç ve elektronik katı</h1>")
+H.append(__import__("carpisma_kos").eskime_html())   # C6: carpisma-sonuc.json eskidiyse uyari kutusu (bos dize = guncel)
 H.append("<div class='sub'>1. aşama (tasarım) · FreeCAD 1.1 · <code>taban_montaj.py</code> · %d parça (%d lazer kesim, %d baskı) + %d kablo yolu şeması · "
          "ölçüler <code>arayuz.TABAN</code>'dan, V3 yerleşimi (robot_cad satır 715–757) · yazıcı %s · 2. aşama: modüller arası tarama ve ana montaj aşağıda</div>"
          % (d["parca_sayisi"], d["lazer_sayisi"], d["baski_sayisi"], d["referans_sayisi"], esc(Y["model"])))
@@ -204,7 +208,7 @@ H.append("<p class='not'>CSV: <code>taban-bom.csv</code>. Kütleler: satın alı
 # ---------------------------------------------------------------- baglantilar
 BAGLANTI = [
     ("Alt plaka ↔ şase sigma rayları", "plaka rayların alt yüzüne dayanır; uzun ray alt kanalı x ±115 (z ±90, ±235), ara ray alt kanalları x ±50",
-     "14× M6×14 DIN 912 + DIN 125 pul (alttan) + M6 çekiç somun; uç kanal tabanına 2,4 mm"),
+     "14× M6×14 DIN 912 (pulsuz, alttan) + M6 çekiç somun; uç somunu %s mm geçer, kanal tabanına %s mm kalır" % (sayi(PLAKA_GECME, 1), sayi(PLAKA_TABAN, 1))),
     ("Motor braketi ↔ plaka ↔ uzun ray", "L braket flanşı plakanın altında; delikler uzun rayın alt kanal hizasında (x ±115, z ±185 ±16)",
      "8× M4×16 DIN 912 + pul + M4 çekiç somun (tahmini ölçü); braket motor takılmadan önce bağlanır"),
     ("JGB37 ↔ L braket", "redüktör ön yüzü braketin dikey plakasına; Ø31 dairedeki 6 delikten 4'ü", "4× M3×6 DIN 912 (4,5 mm kavrama)"),
@@ -236,6 +240,8 @@ for tp in tip_ad:
     ek = ""
     if tp in ("kanal", "saplama"):
         ek = "uç–kanal tabanı payı en az %s mm" % sayi(min(b["uc_taban_pay"] for b in bs), 1)
+        if tp == "kanal":
+            ek += "; uç somun üstünü en az %s mm geçer" % sayi(min(b["somun_gecme_pay"] for b in bs), 1)
     elif tp == "ray":
         ek = "PCB–ray en büyük %s mm" % sayi(max(b["kart_tutucu_mm"] for b in bs), 2)
     elif "kavrama" in ornek:
@@ -243,7 +249,7 @@ for tp in tip_ad:
     rows.append((esc(tip_ad[tp]), "%d / %d" % (ok, len(bs)), esc(ek)))
 H.append("<div class='tw'>" + tablo(["Tür", "Tamam", "Ölçüt örneği"], rows) + "</div>")
 H.append("<p class='not'>Ölçütler: baş, pul, somun, burç ve kart yüzeye dayalı (≤ 0,01 mm); bağlantı elemanı ve delik/somun aynı eksende (≤ 10⁻⁴ mm); "
-         "çekiç somun dudak altında, cıvata somunu tam geçer, uç kanal tabanına ≥ 0,5 mm; dişli delik ve burçta kavrama ≥ d; bir burçtaki iki vida "
+         "çekiç somun dudak altında, cıvata somunu tam geçer (kanal bağlantılarında uç somun üstünü ≥ 0,5 mm geçer), uç kanal tabanına ≥ 0,5 mm; dişli delik ve burçta kavrama ≥ d; bir burçtaki iki vida "
          "arasında ≥ 0,5 mm.</p>")
 
 # ---------------------------------------------------------------- uretim: lazer + baski
@@ -263,7 +269,7 @@ H.append("<p class='not'>Yöntem kabuk/kafa ile aynı: tabla düzleminde en kü�
 
 # ---------------------------------------------------------------- hesaplar
 H.append("<h2>Mühendislik hesapları</h2><h3>Kütle ve ağırlık merkezi</h3>")
-rows = [("Tabansız robot (ana montaj, 601 parça)", sayi(d["robot"]["tabansiz_kutle_g"] / 1000, 2), "(%s)" % "; ".join(sayi(v, 1) for v in d["robot"]["tabansiz_am"])),
+rows = [("Tabansız robot (ana montaj, %d parça)" % d["robot"].get("tabansiz_parca", 601), sayi(d["robot"]["tabansiz_kutle_g"] / 1000, 2), "(%s)" % "; ".join(sayi(v, 1) for v in d["robot"]["tabansiz_am"])),
         ("Taban parçaları (%d)" % d["parca_sayisi"], sayi(d["kutle_g"] / 1000, 2), "(%s)" % "; ".join(sayi(v, 1) for v in d["agirlik_merkezi"])),
         ("Kablo payı (tahmini)", sayi(d["kablo_payi"]["kutle_g"] / 1000, 2), "(%s)" % "; ".join(sayi(v, 0) for v in d["kablo_payi"]["merkez"])),
         ("<b>Tam robot (ev pozu)</b>", "<b>%s</b>" % sayi(EV["kutle_g"] / 1000, 2), "<b>(%s)</b>" % "; ".join(sayi(v, 1) for v in EV["am"]))]
@@ -462,11 +468,11 @@ if MA:
 H.append("<h3>Regresyon</h3><ul>")
 for m, r in REG.items():
     if r:
-        H.append("<li>%s regresyonu (<code>arayuz.py</code>'ye taban eklendikten sonra): <span class='%s'>%s</span></li>" % (
-            m, "ok" if r["hepsi_ayni"] else "no", "birebir aynı (fark 0)" if r["hepsi_ayni"] else "FARK VAR"))
+        H.append("<li>%s regresyonu (<code>fark.json</code>, %d ölçüt): <span class='%s'>%s</span></li>" % (
+            m, len(r["satirlar"]), "ok" if r["hepsi_ayni"] else "no", "birebir aynı (fark 0)" if r["hepsi_ayni"] else "FARK VAR"))
 if REGM:
-    H.append("<li>Kabuk, dirsek, kafa modül çıktıları (git HEAD arayüzü ile güncel arayüz): %s · <span class='%s'>%s</span></li>" % (
-        esc(", ".join("%s %d parça" % (m, v["parca_sonra"]) for m, v in REGM["moduller"].items())), "ok" if REGM["hepsi_ayni"] else "no",
+    H.append("<li>Kabuk, dirsek, kafa modül çıktıları (git HEAD arayüzü ile güncel arayüz, %s): %s · <span class='%s'>%s</span></li>" % (
+        esc(REGM.get("tarih", "tarih yok")), esc(", ".join("%s %d parça" % (m, v["parca_sonra"]) for m, v in REGM["moduller"].items())), "ok" if REGM["hepsi_ayni"] else "no",
         "parça adları, hacim, sınır kutusu, kütle birebir aynı" if REGM["hepsi_ayni"] else "FARK VAR"))
 H.append("</ul>")
 
@@ -476,7 +482,8 @@ KARAR = [
     "**Pi 5, ESP32, PCA9685 ön kata taşındı** (V3'te akünün üstündeydi, z −135…−65): kat altı ile akü arasında 3 mm var, kart vidaları/somunları akünün üstüne inerdi; ayrıca akü servisi. Bölge değişikliği, gerekçe bu.",
     "**BTS7960 ve XL4016 8 mm naylon burç üstünde** (V3'te doğrudan plakadaydı: Al plaka PCB'yi kısa devre eder). Bölgeleri 8 mm yükseldi; üstte 31 mm boşluk kalıyor.",
     "**Motor braketi flanşı uzun rayın alt kanalına:** V3'te flanş delikleri (x 109 / 123) rayın dolu dudağına denk geliyordu (kanal 110–120); delikler kanal hizasına (x 115) alındı, M4 çekiç somun (tahmini ölçü). Braket elde yok; delik düzeni braket gelince doğrulanacak, gerekirse flanşa delik açılır.",
-    "**Plaka → ray bağlantısı:** V3'te yoktu; 14× M6 alttan. M6×14 + pul ile uç somunu 0,1 mm geçer, kanal tabanına 2,4 mm kalır.",
+    "**Plaka → ray bağlantısı:** V3'te yoktu; 14× M6 alttan. Önceki çözüm M6×14 + pul somunu yalnız 0,1 mm geçiyordu (şart ≥ 0,5 mm); M6×16 + pul ise ucu kanal tabanına 0,4 mm yaklaştırırdı, M6×15 standart değil. "
+    "Pul kaldırıldı: M6×14 baş doğrudan 3 mm Al plakada, uç somunu %s mm geçer, kanal tabanına %s mm kalır. Başın altındaki ezilmeyi sınırlamak için sıkma momenti düşük tutulur (≈ 4–5 N·m, tahmini)." % (sayi(PLAKA_GECME, 1), sayi(PLAKA_TABAN, 1)),
     "**Burç:** V3'teki 4 burca kat ayrımı için z ±40'ta 4 burç eklendi (etek braketleri z 0 / ±105 arasında). Burç M5 çekiç somun + M5×16 saplama ile oturur.",
     "**Sonar tutucu:** kabuğa dokunmadan ön ara rayın ön kanalına; PCB yandan raylara sürülür, transdüserler etek deliklerinde (radyal 0,5 mm) ve 5,5 mm dışarı taşar.",
     "**Acil stop:** Emas B200E60 ölçüsüyle çizildi (04). Elde olan B200E-E 40 mm mantar: Ø60 zarfın içinde, delik aynı Ø22,4. NC kontağı röle bobinini keser; röle BOM'da yok (açık iş).",

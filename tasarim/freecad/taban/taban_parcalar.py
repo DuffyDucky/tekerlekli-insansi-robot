@@ -109,23 +109,33 @@ PLAKA = add("Alt plaka", "Plaka", pl, "Lazer", "Al 5754", kod="Alt plaka 270 x 5
 LAZER["Alt plaka"] = dict(y0=y0p, malzeme="Al 5754 3 mm", kalinlik=tp)
 log("alt plaka", len(kes), "kesim")
 
-# --- plaka -> sigma raylari: M6x14 DIN 912 + pul (alttan) + M6 cekic somun (rayin alt kanalinda)
+# --- plaka -> sigma raylari: M6x14 DIN 912 (pulsuz, alttan) + M6 cekic somun (rayin alt kanalinda)
+# M3 (14 Ekim 2026): pulla vida ucu somunun ustunu yalniz 0,1 mm geciyordu (sart >= 0,5, taban_montaj.py). M6x16 pulla ucu kanal tabanina
+# 0,4 mm yaklastirir (sart >= 0,5), M6x15 standart degil; pul kaldirilinca M6x14 ucu somunu 1,7 mm gecer, tabana 0,8 mm kalir.
+# Bas dogrudan 3 mm Al plakaya oturur (basin altinda ezilme: sikma momenti sinirli tutulur, rapordaki not).
 CD, CL = T["plaka_civata"]
-for (x, z), ad_ray, uzun in [((x, z), "uzun ray %s" % SX(x), "X") for (x, z) in del_ray] + \
-                            [((x, z), "ara ray z %+.0f" % z, "Z") for (x, z) in del_ara]:
-    yb = y0p - A.WASH125[CD][2]
-    iw = add("Pul M6 (plaka, %s, z %+.0f)" % (ad_ray, z), "Plaka", pul(CD, (x, yb, z), UP), "Baglanti", "Celik", kod="M6 DIN 125 pul",
-             renk="celik", patlat=(x * 0.2, -210, z * 0.1))
+PLAKA_PUL = False
+for (x, z), ad_ray, uzun in [((x, z), "uzun ray %s" % SX(x), "X") for (x, z) in del_ray] +                             [((x, z), "ara ray z %+.0f" % z, "Z") for (x, z) in del_ara]:
+    yb = y0p - (A.WASH125[CD][2] if PLAKA_PUL else 0.0)
+    iw = None
+    if PLAKA_PUL:
+        iw = add("Pul M6 (plaka, %s, z %+.0f)" % (ad_ray, z), "Plaka", pul(CD, (x, yb, z), UP), "Baglanti", "Celik", kod="M6 DIN 125 pul",
+                 renk="celik", patlat=(x * 0.2, -210, z * 0.1))
     iv = add("Civata M6x%d (plaka, %s, z %+.0f)" % (CL, ad_ray, z), "Plaka", vida912(CD, CL, (x, yb, z), UP), "Baglanti", "Celik 8.8",
              kod="M6x%d DIN 912" % CL, renk="celik", patlat=(x * 0.2, -250, z * 0.1))
     ld = V(1, 0, 0) if uzun == "X" else V(0, 0, 1)
     isn = add("Cekic somun M6 (plaka, %s, z %+.0f)" % (ad_ray, z), "Plaka", hammer_nut((x, A.Y_RAIL0 + A.LIP, z), DOWN, ld, d=6),
               "Baglanti", "Celik", kod="M6 cekic somun, kanal 10", renk="celik", patlat=(x * 0.2, 60, z * 0.1))
     uc = yb + CL
-    bag("Plaka - %s (z %+.0f, x %+.0f)" % (ad_ray, z, x), "kanal", dict(vida=iv, pul=iw, somun=isn, govde=[PLAKA]),
+    rol = dict(vida=iv, somun=isn, govde=[PLAKA])
+    temas = [(iv, PLAKA)]
+    if PLAKA_PUL:
+        rol["pul"] = iw
+        temas = [(iw, PLAKA), (iv, iw)]
+    bag("Plaka - %s (z %+.0f, x %+.0f)" % (ad_ray, z, x), "kanal", rol,
         dict(d=CD, uc=uc - A.Y_RAIL0, somun_ust=A.LIP + 5.0, taban=A.KANAL_TABAN, kavrama=min(uc, A.Y_RAIL0 + A.LIP + 5) - (A.Y_RAIL0 + A.LIP)),
-        temas=[(iw, PLAKA), (iv, iw)], eksen=(V(x, 0, z), UP, [(iv, CD / 2), (isn, CD / 2)]),
-        aciklama="alttan pul + M6x14, rayin alt kanalinda cekic somun (uzun yonu kanala dik)")
+        temas=temas, eksen=(V(x, 0, z), UP, [(iv, CD / 2), (isn, CD / 2)]),
+        aciklama="alttan M6x14 (pulsuz, bas plakaya dayali), rayin alt kanalinda cekic somun (uzun yonu kanala dik)")
 
 # ====================================================================== 2) BURCLAR + KAT (on) + GUC PANELI (arka)
 y0d, td = A.Y_DECK0, A.DECK_T

@@ -1,6 +1,6 @@
 # Robot projesi — yapay zekâ oturumları için bağlam
 
-Tekerlekli insansı robot (üniversite projesi, 4 kişilik ekip, MCBÜ Mekatronik MYO). Proje sahibi
+Tekerlekli insansı robot **Lale** (adı Duffy'nin kararı, 11 Ekim 2026; üniversite projesi, 4 kişilik ekip, MCBÜ Mekatronik MYO). Proje sahibi
 Duffy; mekanik, montaj, kablaj ve SolidWorks'te güçlü, yazılımı yapay zekâ yardımıyla yazıyor.
 
 - Türkçe konuş; doğrudan ol, ilk cümlede cevaba başla. Bitmiş işi tablo veya kısa listeyle özetle.

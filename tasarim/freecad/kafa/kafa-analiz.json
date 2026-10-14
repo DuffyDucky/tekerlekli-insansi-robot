@@ -50,11 +50,11 @@
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "Servo yuvasi",
-   "kutle_g": 144.31,
-   "hacim_mm3": 142034.1,
+   "kutle_g": 144.51,
+   "hacim_mm3": 142235.2,
    "merkez": [
     0.189,
-    23.469,
+    23.486,
     7.475
    ],
    "bb": [
@@ -282,20 +282,20 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     -5.0,
     28.75,
     34.9
    ],
    "bb": [
-    -7.3,
-    -2.7,
+    -7.0,
+    -3.0,
     25.9,
     31.6,
-    32.6,
-    37.2
+    32.9,
+    36.9
    ],
    "patlat": [
     0,
@@ -369,20 +369,20 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     5.0,
     28.75,
     34.9
    ],
    "bb": [
-    2.7,
-    7.3,
+    3.0,
+    7.0,
     25.9,
     31.6,
-    32.6,
-    37.2
+    32.9,
+    36.9
    ],
    "patlat": [
     0,
@@ -456,20 +456,20 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     -5.0,
     28.75,
     -14.6
    ],
    "bb": [
-    -7.3,
-    -2.7,
+    -7.0,
+    -3.0,
     25.9,
     31.6,
-    -16.9,
-    -12.3
+    -16.6,
+    -12.6
    ],
    "patlat": [
     0,
@@ -543,20 +543,20 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     5.0,
     28.75,
     -14.6
    ],
    "bb": [
-    2.7,
-    7.3,
+    3.0,
+    7.0,
     25.9,
     31.6,
-    -16.9,
-    -12.3
+    -16.6,
+    -12.6
    ],
    "patlat": [
     0,
@@ -775,20 +775,20 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     24.0,
     43.15,
     32.0
    ],
    "bb": [
-    21.7,
-    26.3,
+    22.0,
+    26.0,
     40.3,
     46.0,
-    29.7,
-    34.3
+    30.0,
+    34.0
    ],
    "patlat": [
     0,
@@ -833,20 +833,20 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     -24.0,
     43.15,
     32.0
    ],
    "bb": [
-    -26.3,
-    -21.7,
+    -26.0,
+    -22.0,
     40.3,
     46.0,
-    29.7,
-    34.3
+    30.0,
+    34.0
    ],
    "patlat": [
     0,
@@ -891,20 +891,20 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     24.0,
     43.15,
     -24.0
    ],
    "bb": [
-    21.7,
-    26.3,
+    22.0,
+    26.0,
     40.3,
     46.0,
-    -26.3,
-    -21.7
+    -26.0,
+    -22.0
    ],
    "patlat": [
     0,
@@ -949,20 +949,20 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     -24.0,
     43.15,
     -24.0
    ],
    "bb": [
-    -26.3,
-    -21.7,
+    -26.0,
+    -22.0,
     40.3,
     46.0,
-    -26.3,
-    -21.7
+    -26.0,
+    -22.0
    ],
    "patlat": [
     0,
@@ -1036,11 +1036,11 @@
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "Boyun mili",
-   "kutle_g": 38.8,
-   "hacim_mm3": 38188.6,
+   "kutle_g": 38.9,
+   "hacim_mm3": 38289.1,
    "merkez": [
     -0.0,
-    76.877,
+    76.919,
     0.258
    ],
    "bb": [
@@ -1239,12 +1239,12 @@
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "Egme catali",
-   "kutle_g": 33.77,
-   "hacim_mm3": 33239.9,
+   "kutle_g": 33.82,
+   "hacim_mm3": 33287.3,
    "merkez": [
-    -5.059,
-    111.606,
-    20.08
+    -5.079,
+    111.632,
+    20.087
    ],
    "bb": [
     -30.0,
@@ -1297,20 +1297,20 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     25.0,
     93.15,
     0.0
    ],
    "bb": [
-    22.7,
-    27.3,
+    23.0,
+    27.0,
     90.3,
     96.0,
-    -2.3,
-    2.3
+    -2.0,
+    2.0
    ],
    "patlat": [
     0,
@@ -1355,20 +1355,20 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
-    -0.0,
+    0.0,
     93.15,
     25.0
    ],
    "bb": [
-    -2.3,
-    2.3,
+    -2.0,
+    2.0,
     90.3,
     96.0,
-    22.7,
-    27.3
+    23.0,
+    27.0
    ],
    "patlat": [
     0,
@@ -1413,20 +1413,20 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     -25.0,
     93.15,
     0.0
    ],
    "bb": [
-    -27.3,
-    -22.7,
+    -27.0,
+    -23.0,
     90.3,
     96.0,
-    -2.3,
-    2.3
+    -2.0,
+    2.0
    ],
    "patlat": [
     0,
@@ -1471,20 +1471,20 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
-    -0.0,
+    0.0,
     93.15,
     -25.0
    ],
    "bb": [
-    -2.3,
-    2.3,
+    -2.0,
+    2.0,
     90.3,
     96.0,
-    -27.3,
-    -22.7
+    -27.0,
+    -23.0
    ],
    "patlat": [
     0,
@@ -1877,8 +1877,8 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M5 isil gomme somun",
-   "kutle_g": 1.12,
-   "hacim_mm3": 131.9,
+   "kutle_g": 0.75,
+   "hacim_mm3": 87.7,
    "merkez": [
     -19.7,
     130.0,
@@ -1887,10 +1887,10 @@
    "bb": [
     -23.2,
     -16.2,
-    126.5,
-    133.5,
-    21.5,
-    28.5
+    126.8,
+    133.2,
+    21.8,
+    28.2
    ],
    "patlat": [
     0,
@@ -1993,12 +1993,12 @@
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "Kafa iskeleti",
-   "kutle_g": 110.35,
-   "hacim_mm3": 108614.7,
+   "kutle_g": 110.45,
+   "hacim_mm3": 108715.2,
    "merkez": [
-    -3.684,
-    171.954,
-    10.832
+    -3.68,
+    171.958,
+    10.829
    ],
    "bb": [
     -102.5,
@@ -2138,12 +2138,12 @@
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "Yuz kabugu (on)",
-   "kutle_g": 170.08,
-   "hacim_mm3": 148803.9,
+   "kutle_g": 170.2,
+   "hacim_mm3": 148904.4,
    "merkez": [
-    0.0,
-    189.174,
-    67.618
+    -0.0,
+    189.167,
+    67.626
    ],
    "bb": [
     -107.31,
@@ -2225,8 +2225,8 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     99.65,
     176.5,
@@ -2235,10 +2235,10 @@
    "bb": [
     96.8,
     102.5,
-    174.2,
-    178.8,
-    -32.3,
-    -27.7
+    174.5,
+    178.5,
+    -32.0,
+    -28.0
    ],
    "patlat": [
     0,
@@ -2283,8 +2283,8 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     99.65,
     176.5,
@@ -2293,10 +2293,10 @@
    "bb": [
     96.8,
     102.5,
-    174.2,
-    178.8,
-    42.7,
-    47.3
+    174.5,
+    178.5,
+    43.0,
+    47.0
    ],
    "patlat": [
     0,
@@ -2341,8 +2341,8 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     -99.65,
     176.5,
@@ -2351,10 +2351,10 @@
    "bb": [
     -102.5,
     -96.8,
-    174.2,
-    178.8,
-    -32.3,
-    -27.7
+    174.5,
+    178.5,
+    -32.0,
+    -28.0
    ],
    "patlat": [
     0,
@@ -2399,8 +2399,8 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     -99.65,
     176.5,
@@ -2409,10 +2409,10 @@
    "bb": [
     -102.5,
     -96.8,
-    174.2,
-    178.8,
-    42.7,
-    47.3
+    174.5,
+    178.5,
+    43.0,
+    47.0
    ],
    "patlat": [
     0,
@@ -2486,18 +2486,18 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     -78.45,
     121.52,
     78.85
    ],
    "bb": [
-    -80.75,
-    -76.15,
-    119.22,
-    123.82,
+    -80.45,
+    -76.45,
+    119.52,
+    123.52,
     76.0,
     81.7
    ],
@@ -2544,18 +2544,18 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     -78.45,
     236.48,
     78.85
    ],
    "bb": [
-    -80.75,
-    -76.15,
-    234.18,
-    238.78,
+    -80.45,
+    -76.45,
+    234.48,
+    238.48,
     76.0,
     81.7
    ],
@@ -2602,18 +2602,18 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     78.45,
     121.52,
     78.85
    ],
    "bb": [
-    76.15,
-    80.75,
-    119.22,
-    123.82,
+    76.45,
+    80.45,
+    119.52,
+    123.52,
     76.0,
     81.7
    ],
@@ -2660,18 +2660,18 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     78.45,
     236.48,
     78.85
    ],
    "bb": [
-    76.15,
-    80.75,
-    234.18,
-    238.78,
+    76.45,
+    80.45,
+    234.48,
+    238.48,
     76.0,
     81.7
    ],
@@ -6069,30 +6069,30 @@
  },
  "tork": {
   "tilt": {
-   "kutle_g": 834.8,
+   "kutle_g": 833.4,
    "am": [
     0.81,
-    183.75,
-    29.76
+    183.76,
+    29.73
    ],
    "eksen": [
     130.0,
     25.0
    ],
    "am_eksen_mm": 54.0,
-   "yercekimi_max_kgcm": 2.59,
+   "yercekimi_max_kgcm": 2.58,
    "yercekimi_max_th": 30,
    "tam_tur_max_kgcm": 4.5,
-   "I_kgm2": 0.007037,
+   "I_kgm2": 0.007029,
    "alfa_rad_s2": 26.2,
-   "ivme_kgcm": 1.878,
+   "ivme_kgcm": 1.876,
    "toplam_kgcm": 4.46,
    "stall_kgcm": 9.4,
    "pay": 2.11,
    "egri": [
     {
      "th": -25,
-     "yercekimi_kgcm": -1.537
+     "yercekimi_kgcm": -1.536
     },
     {
      "th": -20,
@@ -6100,77 +6100,77 @@
     },
     {
      "th": -15,
-     "yercekimi_kgcm": -0.778
+     "yercekimi_kgcm": -0.779
     },
     {
      "th": -10,
-     "yercekimi_kgcm": -0.388
+     "yercekimi_kgcm": -0.389
     },
     {
      "th": -5,
-     "yercekimi_kgcm": 0.004
+     "yercekimi_kgcm": 0.003
     },
     {
      "th": 0,
-     "yercekimi_kgcm": 0.397
+     "yercekimi_kgcm": 0.395
     },
     {
      "th": 5,
-     "yercekimi_kgcm": 0.787
+     "yercekimi_kgcm": 0.784
     },
     {
      "th": 10,
-     "yercekimi_kgcm": 1.17
+     "yercekimi_kgcm": 1.167
     },
     {
      "th": 15,
-     "yercekimi_kgcm": 1.545
+     "yercekimi_kgcm": 1.541
     },
     {
      "th": 20,
-     "yercekimi_kgcm": 1.908
+     "yercekimi_kgcm": 1.903
     },
     {
      "th": 25,
-     "yercekimi_kgcm": 2.256
+     "yercekimi_kgcm": 2.251
     },
     {
      "th": 30,
-     "yercekimi_kgcm": 2.587
+     "yercekimi_kgcm": 2.582
     }
    ],
    "mesnet": {
     "x_625": -26.7,
     "x_horn": 28.55,
     "horn_payi": 0.498,
-    "horn_N": 4.08,
+    "horn_N": 4.07,
     "pim_N": 4.11
    }
   },
   "pan": {
-   "kutle_g": 1031.7,
+   "kutle_g": 1029.4,
    "am": [
-    0.78,
-    168.2,
+    0.79,
+    168.25,
     25.91
    ],
    "I_kgm2": {
-    "-25.0": 0.00619,
-    "0": 0.006828,
-    "30.0": 0.008553
+    "-25.0": 0.006175,
+    "0": 0.006811,
+    "30.0": 0.008533
    },
    "alfa_rad_s2": 26.2,
-   "ivme_kgcm": 2.283,
+   "ivme_kgcm": 2.277,
    "rulman_kgcm": 0.0203,
    "kablo_kgcm": 0.31,
-   "toplam_kgcm": 2.61,
+   "toplam_kgcm": 2.6,
    "stall_kgcm": 9.4,
    "pay": 3.6,
    "rulman": {
-    "eksenel_N": 10.12,
-    "devirme_Nm": 0.2624,
+    "eksenel_N": 10.1,
+    "devirme_Nm": 0.2618,
     "rulman_arasi_mm": 11.0,
-    "radyal_N": 23.9,
+    "radyal_N": 23.8,
     "not_": "6808: eksenel yuk ust rulmanda (mil omzu -> ic bilezik -> dis bilezik -> yuva tablasi); devirme momenti iki rulmanda kuvvet cifti; pan servosu mili yalniz dondurur"
    }
   },
@@ -6179,27 +6179,27 @@
  },
  "grup": {
   "Govde": {
-   "m": 335.1,
+   "m": 333.8,
    "am": [
-    0.081,
-    26.62,
-    6.404
+    0.082,
+    26.581,
+    6.401
    ]
   },
   "Pan": {
-   "m": 196.9,
+   "m": 195.9,
    "am": [
-    0.658,
-    102.267,
-    9.632
+    0.694,
+    102.252,
+    9.64
    ]
   },
   "Kafa": {
-   "m": 834.8,
+   "m": 833.4,
    "am": [
-    0.808,
-    183.75,
-    29.755
+    0.809,
+    183.76,
+    29.734
    ]
   }
  },
@@ -6216,15 +6216,15 @@
    "sigar_cift": true,
    "cikinti_orani": 0.0044,
    "cikinti_alan_cm2": 1.24,
-   "yuzey_cm2": 284.7,
+   "yuzey_cm2": 283.8,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
    "ofset_uyari": 0,
    "atlanan_katman": [],
-   "hacim_cm3": 142.0,
-   "kutle_g": 144.3,
-   "filament_g": 151.5,
+   "hacim_cm3": 142.2,
+   "kutle_g": 144.5,
+   "filament_g": 151.7,
    "sure_saat": 3.16,
    "katman": 43,
    "yon": "dik: kulak flansi tablada",
@@ -6266,17 +6266,17 @@
    "tabla_aci": 45,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0582,
+   "cikinti_orani": 0.0583,
    "cikinti_alan_cm2": 9.46,
-   "yuzey_cm2": 162.6,
+   "yuzey_cm2": 162.1,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
    "ofset_uyari": 0,
    "atlanan_katman": [],
-   "hacim_cm3": 38.2,
-   "kutle_g": 38.8,
-   "filament_g": 40.7,
+   "hacim_cm3": 38.3,
+   "kutle_g": 38.9,
+   "filament_g": 40.8,
    "sure_saat": 0.85,
    "katman": 48,
    "yon": "dik: horn diski tablada, flans yukari (45 derece koni)",
@@ -6292,15 +6292,15 @@
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0084,
-   "cikinti_alan_cm2": 1.28,
-   "yuzey_cm2": 153.2,
+   "cikinti_orani": 0.0081,
+   "cikinti_alan_cm2": 1.25,
+   "yuzey_cm2": 153.0,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
    "ofset_uyari": 0,
    "atlanan_katman": [],
-   "hacim_cm3": 33.2,
+   "hacim_cm3": 33.3,
    "kutle_g": 33.8,
    "filament_g": 35.5,
    "sure_saat": 0.74,
@@ -6318,18 +6318,18 @@
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0064,
-   "cikinti_alan_cm2": 3.17,
-   "yuzey_cm2": 492.4,
+   "cikinti_orani": 0.0062,
+   "cikinti_alan_cm2": 3.04,
+   "yuzey_cm2": 491.9,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
    "ofset_uyari": 0,
    "atlanan_katman": [],
-   "hacim_cm3": 108.6,
-   "kutle_g": 110.4,
-   "filament_g": 115.9,
-   "sure_saat": 2.41,
+   "hacim_cm3": 108.7,
+   "kutle_g": 110.5,
+   "filament_g": 116.0,
+   "sure_saat": 2.42,
    "katman": 68,
    "yon": "ters: kafa tablasi tablada, yanaklar yukari",
    "grup": "Kafa"
@@ -6344,17 +6344,17 @@
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0447,
+   "cikinti_orani": 0.0448,
    "cikinti_alan_cm2": 52.9,
-   "yuzey_cm2": 1182.2,
+   "yuzey_cm2": 1181.7,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
    "ofset_uyari": 0,
    "atlanan_katman": [],
-   "hacim_cm3": 148.8,
-   "kutle_g": 170.1,
-   "filament_g": 178.6,
+   "hacim_cm3": 148.9,
+   "kutle_g": 170.2,
+   "filament_g": 178.7,
    "sure_saat": 3.72,
    "katman": 55,
    "yon": "yuz asagi: on yuz tablada, dikis yukari",
@@ -6425,18 +6425,18 @@
    246.0
   ]
  },
- "kutle_g": 1366.8,
+ "kutle_g": 1363.1,
  "kutle_tur": {
   "Imalat": 70.9,
-  "Baski": 793.5,
+  "Baski": 794.1,
   "Satin": 417.3,
-  "Baglanti": 85.1,
+  "Baglanti": 80.8,
   "Referans": 0.0
  },
  "agirlik_merkezi": [
-  0.608,
-  133.485,
-  21.131
+  0.615,
+  133.56,
+  21.133
  ],
  "bom": [
   [
@@ -6455,7 +6455,7 @@
    "Baglanti",
    "M3 isil gomme somun",
    20,
-   9.3
+   5.3
   ],
   [
    "Baglanti",
@@ -6509,7 +6509,7 @@
    "Baglanti",
    "M5 isil gomme somun",
    1,
-   1.1
+   0.7
   ],
   [
    "Baglanti",
@@ -6545,7 +6545,7 @@
    "Baski",
    "Boyun mili",
    1,
-   38.8
+   38.9
   ],
   [
    "Baski",
@@ -6557,7 +6557,7 @@
    "Baski",
    "Kafa iskeleti",
    1,
-   110.4
+   110.5
   ],
   [
    "Baski",
@@ -6569,13 +6569,13 @@
    "Baski",
    "Servo yuvasi",
    1,
-   144.3
+   144.5
   ],
   [
    "Baski",
    "Yuz kabugu (on)",
    1,
-   170.1
+   170.2
   ],
   [
    "Imalat",
@@ -6802,5 +6802,5 @@
    -36.0
   ]
  ],
- "sure_s": 107.8
+ "sure_s": 87.9
 }

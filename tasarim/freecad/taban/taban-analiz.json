@@ -213,7 +213,7 @@
   "sonar_on_z": 256.0,
   "acil_stop": "Emas B200E60 (rc:357-365; 04). Elde B200E-E (40 mm mantar): O60 zarf buyuk tarafta kalir"
  },
- "parca_sayisi": 306,
+ "parca_sayisi": 292,
  "referans_sayisi": 13,
  "baski_sayisi": 4,
  "lazer_sayisi": 3,
@@ -249,35 +249,6 @@
   },
   {
    "i": 1,
-   "ad": "Pul M6 (plaka, uzun ray sol, z -235)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 DIN 125 pul",
-   "kutle_g": 1.02,
-   "hacim_mm3": 129.5,
-   "merkez": [
-    -115.0,
-    90.7,
-    -235.0
-   ],
-   "bb": [
-    -121.0,
-    -109.0,
-    89.9,
-    91.5,
-    -241.0,
-    -229.0
-   ],
-   "patlat": [
-    -23.0,
-    -210,
-    -23.5
-   ],
-   "not_": ""
-  },
-  {
-   "i": 2,
    "ad": "Civata M6x14 (plaka, uzun ray sol, z -235)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -287,14 +258,14 @@
    "hacim_mm3": 789.1,
    "merkez": [
     -115.0,
-    92.035,
+    93.635,
     -235.0
    ],
    "bb": [
     -120.0,
     -110.0,
-    83.9,
-    103.9,
+    85.5,
+    105.5,
     -240.0,
     -230.0
    ],
@@ -306,7 +277,7 @@
    "not_": ""
   },
   {
-   "i": 3,
+   "i": 2,
    "ad": "Cekic somun M6 (plaka, uzun ray sol, z -235)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -335,36 +306,7 @@
    "not_": ""
   },
   {
-   "i": 4,
-   "ad": "Pul M6 (plaka, uzun ray sol, z -90)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 DIN 125 pul",
-   "kutle_g": 1.02,
-   "hacim_mm3": 129.5,
-   "merkez": [
-    -115.0,
-    90.7,
-    -90.0
-   ],
-   "bb": [
-    -121.0,
-    -109.0,
-    89.9,
-    91.5,
-    -96.0,
-    -84.0
-   ],
-   "patlat": [
-    -23.0,
-    -210,
-    -9.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 5,
+   "i": 3,
    "ad": "Civata M6x14 (plaka, uzun ray sol, z -90)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -374,14 +316,14 @@
    "hacim_mm3": 789.1,
    "merkez": [
     -115.0,
-    92.035,
+    93.635,
     -90.0
    ],
    "bb": [
     -120.0,
     -110.0,
-    83.9,
-    103.9,
+    85.5,
+    105.5,
     -95.0,
     -85.0
    ],
@@ -393,7 +335,7 @@
    "not_": ""
   },
   {
-   "i": 6,
+   "i": 4,
    "ad": "Cekic somun M6 (plaka, uzun ray sol, z -90)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -422,36 +364,7 @@
    "not_": ""
   },
   {
-   "i": 7,
-   "ad": "Pul M6 (plaka, uzun ray sol, z +90)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 DIN 125 pul",
-   "kutle_g": 1.02,
-   "hacim_mm3": 129.5,
-   "merkez": [
-    -115.0,
-    90.7,
-    90.0
-   ],
-   "bb": [
-    -121.0,
-    -109.0,
-    89.9,
-    91.5,
-    84.0,
-    96.0
-   ],
-   "patlat": [
-    -23.0,
-    -210,
-    9.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 8,
+   "i": 5,
    "ad": "Civata M6x14 (plaka, uzun ray sol, z +90)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -461,14 +374,14 @@
    "hacim_mm3": 789.1,
    "merkez": [
     -115.0,
-    92.035,
+    93.635,
     90.0
    ],
    "bb": [
     -120.0,
     -110.0,
-    83.9,
-    103.9,
+    85.5,
+    105.5,
     85.0,
     95.0
    ],
@@ -480,7 +393,7 @@
    "not_": ""
   },
   {
-   "i": 9,
+   "i": 6,
    "ad": "Cekic somun M6 (plaka, uzun ray sol, z +90)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -509,36 +422,7 @@
    "not_": ""
   },
   {
-   "i": 10,
-   "ad": "Pul M6 (plaka, uzun ray sol, z +235)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 DIN 125 pul",
-   "kutle_g": 1.02,
-   "hacim_mm3": 129.5,
-   "merkez": [
-    -115.0,
-    90.7,
-    235.0
-   ],
-   "bb": [
-    -121.0,
-    -109.0,
-    89.9,
-    91.5,
-    229.0,
-    241.0
-   ],
-   "patlat": [
-    -23.0,
-    -210,
-    23.5
-   ],
-   "not_": ""
-  },
-  {
-   "i": 11,
+   "i": 7,
    "ad": "Civata M6x14 (plaka, uzun ray sol, z +235)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -548,14 +432,14 @@
    "hacim_mm3": 789.1,
    "merkez": [
     -115.0,
-    92.035,
+    93.635,
     235.0
    ],
    "bb": [
     -120.0,
     -110.0,
-    83.9,
-    103.9,
+    85.5,
+    105.5,
     230.0,
     240.0
    ],
@@ -567,7 +451,7 @@
    "not_": ""
   },
   {
-   "i": 12,
+   "i": 8,
    "ad": "Cekic somun M6 (plaka, uzun ray sol, z +235)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -596,36 +480,7 @@
    "not_": ""
   },
   {
-   "i": 13,
-   "ad": "Pul M6 (plaka, uzun ray sag, z -235)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 DIN 125 pul",
-   "kutle_g": 1.02,
-   "hacim_mm3": 129.5,
-   "merkez": [
-    115.0,
-    90.7,
-    -235.0
-   ],
-   "bb": [
-    109.0,
-    121.0,
-    89.9,
-    91.5,
-    -241.0,
-    -229.0
-   ],
-   "patlat": [
-    23.0,
-    -210,
-    -23.5
-   ],
-   "not_": ""
-  },
-  {
-   "i": 14,
+   "i": 9,
    "ad": "Civata M6x14 (plaka, uzun ray sag, z -235)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -635,14 +490,14 @@
    "hacim_mm3": 789.1,
    "merkez": [
     115.0,
-    92.035,
+    93.635,
     -235.0
    ],
    "bb": [
     110.0,
     120.0,
-    83.9,
-    103.9,
+    85.5,
+    105.5,
     -240.0,
     -230.0
    ],
@@ -654,7 +509,7 @@
    "not_": ""
   },
   {
-   "i": 15,
+   "i": 10,
    "ad": "Cekic somun M6 (plaka, uzun ray sag, z -235)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -683,36 +538,7 @@
    "not_": ""
   },
   {
-   "i": 16,
-   "ad": "Pul M6 (plaka, uzun ray sag, z -90)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 DIN 125 pul",
-   "kutle_g": 1.02,
-   "hacim_mm3": 129.5,
-   "merkez": [
-    115.0,
-    90.7,
-    -90.0
-   ],
-   "bb": [
-    109.0,
-    121.0,
-    89.9,
-    91.5,
-    -96.0,
-    -84.0
-   ],
-   "patlat": [
-    23.0,
-    -210,
-    -9.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 17,
+   "i": 11,
    "ad": "Civata M6x14 (plaka, uzun ray sag, z -90)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -722,14 +548,14 @@
    "hacim_mm3": 789.1,
    "merkez": [
     115.0,
-    92.035,
+    93.635,
     -90.0
    ],
    "bb": [
     110.0,
     120.0,
-    83.9,
-    103.9,
+    85.5,
+    105.5,
     -95.0,
     -85.0
    ],
@@ -741,7 +567,7 @@
    "not_": ""
   },
   {
-   "i": 18,
+   "i": 12,
    "ad": "Cekic somun M6 (plaka, uzun ray sag, z -90)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -770,36 +596,7 @@
    "not_": ""
   },
   {
-   "i": 19,
-   "ad": "Pul M6 (plaka, uzun ray sag, z +90)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 DIN 125 pul",
-   "kutle_g": 1.02,
-   "hacim_mm3": 129.5,
-   "merkez": [
-    115.0,
-    90.7,
-    90.0
-   ],
-   "bb": [
-    109.0,
-    121.0,
-    89.9,
-    91.5,
-    84.0,
-    96.0
-   ],
-   "patlat": [
-    23.0,
-    -210,
-    9.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 20,
+   "i": 13,
    "ad": "Civata M6x14 (plaka, uzun ray sag, z +90)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -809,14 +606,14 @@
    "hacim_mm3": 789.1,
    "merkez": [
     115.0,
-    92.035,
+    93.635,
     90.0
    ],
    "bb": [
     110.0,
     120.0,
-    83.9,
-    103.9,
+    85.5,
+    105.5,
     85.0,
     95.0
    ],
@@ -828,7 +625,7 @@
    "not_": ""
   },
   {
-   "i": 21,
+   "i": 14,
    "ad": "Cekic somun M6 (plaka, uzun ray sag, z +90)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -857,36 +654,7 @@
    "not_": ""
   },
   {
-   "i": 22,
-   "ad": "Pul M6 (plaka, uzun ray sag, z +235)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 DIN 125 pul",
-   "kutle_g": 1.02,
-   "hacim_mm3": 129.5,
-   "merkez": [
-    115.0,
-    90.7,
-    235.0
-   ],
-   "bb": [
-    109.0,
-    121.0,
-    89.9,
-    91.5,
-    229.0,
-    241.0
-   ],
-   "patlat": [
-    23.0,
-    -210,
-    23.5
-   ],
-   "not_": ""
-  },
-  {
-   "i": 23,
+   "i": 15,
    "ad": "Civata M6x14 (plaka, uzun ray sag, z +235)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -896,14 +664,14 @@
    "hacim_mm3": 789.1,
    "merkez": [
     115.0,
-    92.035,
+    93.635,
     235.0
    ],
    "bb": [
     110.0,
     120.0,
-    83.9,
-    103.9,
+    85.5,
+    105.5,
     230.0,
     240.0
    ],
@@ -915,7 +683,7 @@
    "not_": ""
   },
   {
-   "i": 24,
+   "i": 16,
    "ad": "Cekic somun M6 (plaka, uzun ray sag, z +235)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -944,529 +712,355 @@
    "not_": ""
   },
   {
-   "i": 25,
-   "ad": "Pul M6 (plaka, ara ray z -230, z -230)",
+   "i": 17,
+   "ad": "Civata M6x14 (plaka, ara ray z -230, z -230)",
    "grup": "Plaka",
    "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 DIN 125 pul",
-   "kutle_g": 1.02,
-   "hacim_mm3": 129.5,
+   "malzeme": "Celik 8.8",
+   "kod": "M6x14 DIN 912",
+   "kutle_g": 6.19,
+   "hacim_mm3": 789.1,
    "merkez": [
     -50.0,
-    90.7,
+    93.635,
     -230.0
    ],
    "bb": [
-    -56.0,
-    -44.0,
-    89.9,
-    91.5,
-    -236.0,
-    -224.0
+    -55.0,
+    -45.0,
+    85.5,
+    105.5,
+    -235.0,
+    -225.0
    ],
    "patlat": [
     -10.0,
-    -210,
+    -250,
     -23.0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 18,
+   "ad": "Cekic somun M6 (plaka, ara ray z -230, z -230)",
+   "grup": "Plaka",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M6 cekic somun, kanal 10",
+   "kutle_g": 5.17,
+   "hacim_mm3": 658.6,
+   "merkez": [
+    -50.0,
+    101.3,
+    -230.0
+   ],
+   "bb": [
+    -55.0,
+    -45.0,
+    98.8,
+    103.8,
+    -238.0,
+    -222.0
+   ],
+   "patlat": [
+    -10.0,
+    60,
+    -23.0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 19,
+   "ad": "Civata M6x14 (plaka, ara ray z +0, z +0)",
+   "grup": "Plaka",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M6x14 DIN 912",
+   "kutle_g": 6.19,
+   "hacim_mm3": 789.1,
+   "merkez": [
+    -50.0,
+    93.635,
+    -0.0
+   ],
+   "bb": [
+    -55.0,
+    -45.0,
+    85.5,
+    105.5,
+    -5.0,
+    5.0
+   ],
+   "patlat": [
+    -10.0,
+    -250,
+    0.0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 20,
+   "ad": "Cekic somun M6 (plaka, ara ray z +0, z +0)",
+   "grup": "Plaka",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M6 cekic somun, kanal 10",
+   "kutle_g": 5.17,
+   "hacim_mm3": 658.6,
+   "merkez": [
+    -50.0,
+    101.3,
+    -0.0
+   ],
+   "bb": [
+    -55.0,
+    -45.0,
+    98.8,
+    103.8,
+    -8.0,
+    8.0
+   ],
+   "patlat": [
+    -10.0,
+    60,
+    0.0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 21,
+   "ad": "Civata M6x14 (plaka, ara ray z +230, z +230)",
+   "grup": "Plaka",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M6x14 DIN 912",
+   "kutle_g": 6.19,
+   "hacim_mm3": 789.1,
+   "merkez": [
+    -50.0,
+    93.635,
+    230.0
+   ],
+   "bb": [
+    -55.0,
+    -45.0,
+    85.5,
+    105.5,
+    225.0,
+    235.0
+   ],
+   "patlat": [
+    -10.0,
+    -250,
+    23.0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 22,
+   "ad": "Cekic somun M6 (plaka, ara ray z +230, z +230)",
+   "grup": "Plaka",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M6 cekic somun, kanal 10",
+   "kutle_g": 5.17,
+   "hacim_mm3": 658.6,
+   "merkez": [
+    -50.0,
+    101.3,
+    230.0
+   ],
+   "bb": [
+    -55.0,
+    -45.0,
+    98.8,
+    103.8,
+    222.0,
+    238.0
+   ],
+   "patlat": [
+    -10.0,
+    60,
+    23.0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 23,
+   "ad": "Civata M6x14 (plaka, ara ray z -230, z -230)",
+   "grup": "Plaka",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M6x14 DIN 912",
+   "kutle_g": 6.19,
+   "hacim_mm3": 789.1,
+   "merkez": [
+    50.0,
+    93.635,
+    -230.0
+   ],
+   "bb": [
+    45.0,
+    55.0,
+    85.5,
+    105.5,
+    -235.0,
+    -225.0
+   ],
+   "patlat": [
+    10.0,
+    -250,
+    -23.0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 24,
+   "ad": "Cekic somun M6 (plaka, ara ray z -230, z -230)",
+   "grup": "Plaka",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M6 cekic somun, kanal 10",
+   "kutle_g": 5.17,
+   "hacim_mm3": 658.6,
+   "merkez": [
+    50.0,
+    101.3,
+    -230.0
+   ],
+   "bb": [
+    45.0,
+    55.0,
+    98.8,
+    103.8,
+    -238.0,
+    -222.0
+   ],
+   "patlat": [
+    10.0,
+    60,
+    -23.0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 25,
+   "ad": "Civata M6x14 (plaka, ara ray z +0, z +0)",
+   "grup": "Plaka",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M6x14 DIN 912",
+   "kutle_g": 6.19,
+   "hacim_mm3": 789.1,
+   "merkez": [
+    50.0,
+    93.635,
+    -0.0
+   ],
+   "bb": [
+    45.0,
+    55.0,
+    85.5,
+    105.5,
+    -5.0,
+    5.0
+   ],
+   "patlat": [
+    10.0,
+    -250,
+    0.0
    ],
    "not_": ""
   },
   {
    "i": 26,
-   "ad": "Civata M6x14 (plaka, ara ray z -230, z -230)",
+   "ad": "Cekic somun M6 (plaka, ara ray z +0, z +0)",
    "grup": "Plaka",
    "tur": "Baglanti",
-   "malzeme": "Celik 8.8",
-   "kod": "M6x14 DIN 912",
-   "kutle_g": 6.19,
-   "hacim_mm3": 789.1,
+   "malzeme": "Celik",
+   "kod": "M6 cekic somun, kanal 10",
+   "kutle_g": 5.17,
+   "hacim_mm3": 658.6,
    "merkez": [
-    -50.0,
-    92.035,
-    -230.0
+    50.0,
+    101.3,
+    -0.0
    ],
    "bb": [
-    -55.0,
-    -45.0,
-    83.9,
-    103.9,
-    -235.0,
-    -225.0
+    45.0,
+    55.0,
+    98.8,
+    103.8,
+    -8.0,
+    8.0
    ],
    "patlat": [
-    -10.0,
-    -250,
-    -23.0
+    10.0,
+    60,
+    0.0
    ],
    "not_": ""
   },
   {
    "i": 27,
-   "ad": "Cekic somun M6 (plaka, ara ray z -230, z -230)",
+   "ad": "Civata M6x14 (plaka, ara ray z +230, z +230)",
    "grup": "Plaka",
    "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 cekic somun, kanal 10",
-   "kutle_g": 5.17,
-   "hacim_mm3": 658.6,
+   "malzeme": "Celik 8.8",
+   "kod": "M6x14 DIN 912",
+   "kutle_g": 6.19,
+   "hacim_mm3": 789.1,
    "merkez": [
-    -50.0,
-    101.3,
-    -230.0
+    50.0,
+    93.635,
+    230.0
    ],
    "bb": [
-    -55.0,
-    -45.0,
-    98.8,
-    103.8,
-    -238.0,
-    -222.0
+    45.0,
+    55.0,
+    85.5,
+    105.5,
+    225.0,
+    235.0
    ],
    "patlat": [
-    -10.0,
-    60,
-    -23.0
+    10.0,
+    -250,
+    23.0
    ],
    "not_": ""
   },
   {
    "i": 28,
-   "ad": "Pul M6 (plaka, ara ray z +0, z +0)",
+   "ad": "Cekic somun M6 (plaka, ara ray z +230, z +230)",
    "grup": "Plaka",
    "tur": "Baglanti",
    "malzeme": "Celik",
-   "kod": "M6 DIN 125 pul",
-   "kutle_g": 1.02,
-   "hacim_mm3": 129.5,
+   "kod": "M6 cekic somun, kanal 10",
+   "kutle_g": 5.17,
+   "hacim_mm3": 658.6,
    "merkez": [
-    -50.0,
-    90.7,
-    -0.0
+    50.0,
+    101.3,
+    230.0
    ],
    "bb": [
-    -56.0,
-    -44.0,
-    89.9,
-    91.5,
-    -6.0,
-    6.0
+    45.0,
+    55.0,
+    98.8,
+    103.8,
+    222.0,
+    238.0
    ],
    "patlat": [
-    -10.0,
-    -210,
-    0.0
+    10.0,
+    60,
+    23.0
    ],
    "not_": ""
   },
   {
    "i": 29,
-   "ad": "Civata M6x14 (plaka, ara ray z +0, z +0)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik 8.8",
-   "kod": "M6x14 DIN 912",
-   "kutle_g": 6.19,
-   "hacim_mm3": 789.1,
-   "merkez": [
-    -50.0,
-    92.035,
-    -0.0
-   ],
-   "bb": [
-    -55.0,
-    -45.0,
-    83.9,
-    103.9,
-    -5.0,
-    5.0
-   ],
-   "patlat": [
-    -10.0,
-    -250,
-    0.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 30,
-   "ad": "Cekic somun M6 (plaka, ara ray z +0, z +0)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 cekic somun, kanal 10",
-   "kutle_g": 5.17,
-   "hacim_mm3": 658.6,
-   "merkez": [
-    -50.0,
-    101.3,
-    -0.0
-   ],
-   "bb": [
-    -55.0,
-    -45.0,
-    98.8,
-    103.8,
-    -8.0,
-    8.0
-   ],
-   "patlat": [
-    -10.0,
-    60,
-    0.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 31,
-   "ad": "Pul M6 (plaka, ara ray z +230, z +230)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 DIN 125 pul",
-   "kutle_g": 1.02,
-   "hacim_mm3": 129.5,
-   "merkez": [
-    -50.0,
-    90.7,
-    230.0
-   ],
-   "bb": [
-    -56.0,
-    -44.0,
-    89.9,
-    91.5,
-    224.0,
-    236.0
-   ],
-   "patlat": [
-    -10.0,
-    -210,
-    23.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 32,
-   "ad": "Civata M6x14 (plaka, ara ray z +230, z +230)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik 8.8",
-   "kod": "M6x14 DIN 912",
-   "kutle_g": 6.19,
-   "hacim_mm3": 789.1,
-   "merkez": [
-    -50.0,
-    92.035,
-    230.0
-   ],
-   "bb": [
-    -55.0,
-    -45.0,
-    83.9,
-    103.9,
-    225.0,
-    235.0
-   ],
-   "patlat": [
-    -10.0,
-    -250,
-    23.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 33,
-   "ad": "Cekic somun M6 (plaka, ara ray z +230, z +230)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 cekic somun, kanal 10",
-   "kutle_g": 5.17,
-   "hacim_mm3": 658.6,
-   "merkez": [
-    -50.0,
-    101.3,
-    230.0
-   ],
-   "bb": [
-    -55.0,
-    -45.0,
-    98.8,
-    103.8,
-    222.0,
-    238.0
-   ],
-   "patlat": [
-    -10.0,
-    60,
-    23.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 34,
-   "ad": "Pul M6 (plaka, ara ray z -230, z -230)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 DIN 125 pul",
-   "kutle_g": 1.02,
-   "hacim_mm3": 129.5,
-   "merkez": [
-    50.0,
-    90.7,
-    -230.0
-   ],
-   "bb": [
-    44.0,
-    56.0,
-    89.9,
-    91.5,
-    -236.0,
-    -224.0
-   ],
-   "patlat": [
-    10.0,
-    -210,
-    -23.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 35,
-   "ad": "Civata M6x14 (plaka, ara ray z -230, z -230)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik 8.8",
-   "kod": "M6x14 DIN 912",
-   "kutle_g": 6.19,
-   "hacim_mm3": 789.1,
-   "merkez": [
-    50.0,
-    92.035,
-    -230.0
-   ],
-   "bb": [
-    45.0,
-    55.0,
-    83.9,
-    103.9,
-    -235.0,
-    -225.0
-   ],
-   "patlat": [
-    10.0,
-    -250,
-    -23.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 36,
-   "ad": "Cekic somun M6 (plaka, ara ray z -230, z -230)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 cekic somun, kanal 10",
-   "kutle_g": 5.17,
-   "hacim_mm3": 658.6,
-   "merkez": [
-    50.0,
-    101.3,
-    -230.0
-   ],
-   "bb": [
-    45.0,
-    55.0,
-    98.8,
-    103.8,
-    -238.0,
-    -222.0
-   ],
-   "patlat": [
-    10.0,
-    60,
-    -23.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 37,
-   "ad": "Pul M6 (plaka, ara ray z +0, z +0)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 DIN 125 pul",
-   "kutle_g": 1.02,
-   "hacim_mm3": 129.5,
-   "merkez": [
-    50.0,
-    90.7,
-    -0.0
-   ],
-   "bb": [
-    44.0,
-    56.0,
-    89.9,
-    91.5,
-    -6.0,
-    6.0
-   ],
-   "patlat": [
-    10.0,
-    -210,
-    0.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 38,
-   "ad": "Civata M6x14 (plaka, ara ray z +0, z +0)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik 8.8",
-   "kod": "M6x14 DIN 912",
-   "kutle_g": 6.19,
-   "hacim_mm3": 789.1,
-   "merkez": [
-    50.0,
-    92.035,
-    -0.0
-   ],
-   "bb": [
-    45.0,
-    55.0,
-    83.9,
-    103.9,
-    -5.0,
-    5.0
-   ],
-   "patlat": [
-    10.0,
-    -250,
-    0.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 39,
-   "ad": "Cekic somun M6 (plaka, ara ray z +0, z +0)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 cekic somun, kanal 10",
-   "kutle_g": 5.17,
-   "hacim_mm3": 658.6,
-   "merkez": [
-    50.0,
-    101.3,
-    -0.0
-   ],
-   "bb": [
-    45.0,
-    55.0,
-    98.8,
-    103.8,
-    -8.0,
-    8.0
-   ],
-   "patlat": [
-    10.0,
-    60,
-    0.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 40,
-   "ad": "Pul M6 (plaka, ara ray z +230, z +230)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 DIN 125 pul",
-   "kutle_g": 1.02,
-   "hacim_mm3": 129.5,
-   "merkez": [
-    50.0,
-    90.7,
-    230.0
-   ],
-   "bb": [
-    44.0,
-    56.0,
-    89.9,
-    91.5,
-    224.0,
-    236.0
-   ],
-   "patlat": [
-    10.0,
-    -210,
-    23.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 41,
-   "ad": "Civata M6x14 (plaka, ara ray z +230, z +230)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik 8.8",
-   "kod": "M6x14 DIN 912",
-   "kutle_g": 6.19,
-   "hacim_mm3": 789.1,
-   "merkez": [
-    50.0,
-    92.035,
-    230.0
-   ],
-   "bb": [
-    45.0,
-    55.0,
-    83.9,
-    103.9,
-    225.0,
-    235.0
-   ],
-   "patlat": [
-    10.0,
-    -250,
-    23.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 42,
-   "ad": "Cekic somun M6 (plaka, ara ray z +230, z +230)",
-   "grup": "Plaka",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M6 cekic somun, kanal 10",
-   "kutle_g": 5.17,
-   "hacim_mm3": 658.6,
-   "merkez": [
-    50.0,
-    101.3,
-    230.0
-   ],
-   "bb": [
-    45.0,
-    55.0,
-    98.8,
-    103.8,
-    222.0,
-    238.0
-   ],
-   "patlat": [
-    10.0,
-    60,
-    23.0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 43,
    "ad": "Cekic somun M5 (burc sol z -230)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -1495,7 +1089,7 @@
    "not_": ""
   },
   {
-   "i": 44,
+   "i": 30,
    "ad": "Saplama M5x16 DIN 913 (burc sol z -230)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -1524,7 +1118,7 @@
    "not_": ""
   },
   {
-   "i": 45,
+   "i": 31,
    "ad": "Burc M5x40 (sol z -230)",
    "grup": "Plaka",
    "tur": "Satin",
@@ -1553,7 +1147,7 @@
    "not_": ""
   },
   {
-   "i": 46,
+   "i": 32,
    "ad": "Cekic somun M5 (burc sol z -40)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -1582,7 +1176,7 @@
    "not_": ""
   },
   {
-   "i": 47,
+   "i": 33,
    "ad": "Saplama M5x16 DIN 913 (burc sol z -40)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -1611,7 +1205,7 @@
    "not_": ""
   },
   {
-   "i": 48,
+   "i": 34,
    "ad": "Burc M5x40 (sol z -40)",
    "grup": "Plaka",
    "tur": "Satin",
@@ -1640,7 +1234,7 @@
    "not_": ""
   },
   {
-   "i": 49,
+   "i": 35,
    "ad": "Cekic somun M5 (burc sol z +40)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -1669,7 +1263,7 @@
    "not_": ""
   },
   {
-   "i": 50,
+   "i": 36,
    "ad": "Saplama M5x16 DIN 913 (burc sol z +40)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -1698,7 +1292,7 @@
    "not_": ""
   },
   {
-   "i": 51,
+   "i": 37,
    "ad": "Burc M5x40 (sol z +40)",
    "grup": "Plaka",
    "tur": "Satin",
@@ -1727,7 +1321,7 @@
    "not_": ""
   },
   {
-   "i": 52,
+   "i": 38,
    "ad": "Cekic somun M5 (burc sol z +230)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -1756,7 +1350,7 @@
    "not_": ""
   },
   {
-   "i": 53,
+   "i": 39,
    "ad": "Saplama M5x16 DIN 913 (burc sol z +230)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -1785,7 +1379,7 @@
    "not_": ""
   },
   {
-   "i": 54,
+   "i": 40,
    "ad": "Burc M5x40 (sol z +230)",
    "grup": "Plaka",
    "tur": "Satin",
@@ -1814,7 +1408,7 @@
    "not_": ""
   },
   {
-   "i": 55,
+   "i": 41,
    "ad": "Cekic somun M5 (burc sag z -230)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -1843,7 +1437,7 @@
    "not_": ""
   },
   {
-   "i": 56,
+   "i": 42,
    "ad": "Saplama M5x16 DIN 913 (burc sag z -230)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -1872,7 +1466,7 @@
    "not_": ""
   },
   {
-   "i": 57,
+   "i": 43,
    "ad": "Burc M5x40 (sag z -230)",
    "grup": "Plaka",
    "tur": "Satin",
@@ -1901,7 +1495,7 @@
    "not_": ""
   },
   {
-   "i": 58,
+   "i": 44,
    "ad": "Cekic somun M5 (burc sag z -40)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -1930,7 +1524,7 @@
    "not_": ""
   },
   {
-   "i": 59,
+   "i": 45,
    "ad": "Saplama M5x16 DIN 913 (burc sag z -40)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -1959,7 +1553,7 @@
    "not_": ""
   },
   {
-   "i": 60,
+   "i": 46,
    "ad": "Burc M5x40 (sag z -40)",
    "grup": "Plaka",
    "tur": "Satin",
@@ -1988,7 +1582,7 @@
    "not_": ""
   },
   {
-   "i": 61,
+   "i": 47,
    "ad": "Cekic somun M5 (burc sag z +40)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2017,7 +1611,7 @@
    "not_": ""
   },
   {
-   "i": 62,
+   "i": 48,
    "ad": "Saplama M5x16 DIN 913 (burc sag z +40)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2046,7 +1640,7 @@
    "not_": ""
   },
   {
-   "i": 63,
+   "i": 49,
    "ad": "Burc M5x40 (sag z +40)",
    "grup": "Plaka",
    "tur": "Satin",
@@ -2075,7 +1669,7 @@
    "not_": ""
   },
   {
-   "i": 64,
+   "i": 50,
    "ad": "Cekic somun M5 (burc sag z +230)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2104,7 +1698,7 @@
    "not_": ""
   },
   {
-   "i": 65,
+   "i": 51,
    "ad": "Saplama M5x16 DIN 913 (burc sag z +230)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2133,7 +1727,7 @@
    "not_": ""
   },
   {
-   "i": 66,
+   "i": 52,
    "ad": "Burc M5x40 (sag z +230)",
    "grup": "Plaka",
    "tur": "Satin",
@@ -2162,7 +1756,7 @@
    "not_": ""
   },
   {
-   "i": 67,
+   "i": 53,
    "ad": "Elektronik kati (on)",
    "grup": "Plaka",
    "tur": "Lazer",
@@ -2191,7 +1785,7 @@
    "not_": "Pi 5, ESP32 tasiyici, PCA9685, BNO055, MAX98357A; 4x M5 burca"
   },
   {
-   "i": 68,
+   "i": 54,
    "ad": "Guc paneli (arka kat)",
    "grup": "Plaka",
    "tur": "Lazer",
@@ -2220,7 +1814,7 @@
    "not_": "sigorta kutusu, role, ana sigorta; akunun ustunde, aku icin sokulur"
   },
   {
-   "i": 69,
+   "i": 55,
    "ad": "Pul M5 (kat sol z -230)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2249,7 +1843,7 @@
    "not_": ""
   },
   {
-   "i": 70,
+   "i": 56,
    "ad": "Civata M5x12 (kat sol z -230)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2278,7 +1872,7 @@
    "not_": ""
   },
   {
-   "i": 71,
+   "i": 57,
    "ad": "Pul M5 (kat sol z -40)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2307,7 +1901,7 @@
    "not_": ""
   },
   {
-   "i": 72,
+   "i": 58,
    "ad": "Civata M5x12 (kat sol z -40)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2336,7 +1930,7 @@
    "not_": ""
   },
   {
-   "i": 73,
+   "i": 59,
    "ad": "Pul M5 (kat sol z +40)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2365,7 +1959,7 @@
    "not_": ""
   },
   {
-   "i": 74,
+   "i": 60,
    "ad": "Civata M5x12 (kat sol z +40)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2394,7 +1988,7 @@
    "not_": ""
   },
   {
-   "i": 75,
+   "i": 61,
    "ad": "Pul M5 (kat sol z +230)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2423,7 +2017,7 @@
    "not_": ""
   },
   {
-   "i": 76,
+   "i": 62,
    "ad": "Civata M5x12 (kat sol z +230)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2452,7 +2046,7 @@
    "not_": ""
   },
   {
-   "i": 77,
+   "i": 63,
    "ad": "Pul M5 (kat sag z -230)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2481,7 +2075,7 @@
    "not_": ""
   },
   {
-   "i": 78,
+   "i": 64,
    "ad": "Civata M5x12 (kat sag z -230)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2510,7 +2104,7 @@
    "not_": ""
   },
   {
-   "i": 79,
+   "i": 65,
    "ad": "Pul M5 (kat sag z -40)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2539,7 +2133,7 @@
    "not_": ""
   },
   {
-   "i": 80,
+   "i": 66,
    "ad": "Civata M5x12 (kat sag z -40)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2568,7 +2162,7 @@
    "not_": ""
   },
   {
-   "i": 81,
+   "i": 67,
    "ad": "Pul M5 (kat sag z +40)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2597,7 +2191,7 @@
    "not_": ""
   },
   {
-   "i": 82,
+   "i": 68,
    "ad": "Civata M5x12 (kat sag z +40)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2626,7 +2220,7 @@
    "not_": ""
   },
   {
-   "i": 83,
+   "i": 69,
    "ad": "Pul M5 (kat sag z +230)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2655,7 +2249,7 @@
    "not_": ""
   },
   {
-   "i": 84,
+   "i": 70,
    "ad": "Civata M5x12 (kat sag z +230)",
    "grup": "Plaka",
    "tur": "Baglanti",
@@ -2684,7 +2278,7 @@
    "not_": ""
   },
   {
-   "i": 85,
+   "i": 71,
    "ad": "Motor JGB37-520 (arka sol)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -2713,7 +2307,7 @@
    "not_": ""
   },
   {
-   "i": 86,
+   "i": 72,
    "ad": "Motor braketi L 37 mm (arka sol)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -2742,7 +2336,7 @@
    "not_": ""
   },
   {
-   "i": 87,
+   "i": 73,
    "ad": "Kaplin 12 mm altigen (arka sol)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -2771,7 +2365,7 @@
    "not_": ""
   },
   {
-   "i": 88,
+   "i": 74,
    "ad": "Teker 125 x 58 (arka sol)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -2800,7 +2394,7 @@
    "not_": ""
   },
   {
-   "i": 89,
+   "i": 75,
    "ad": "Pul M4 (braket arka sol -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -2829,7 +2423,7 @@
    "not_": ""
   },
   {
-   "i": 90,
+   "i": 76,
    "ad": "Civata M4x16 (braket arka sol -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -2858,7 +2452,7 @@
    "not_": ""
   },
   {
-   "i": 91,
+   "i": 77,
    "ad": "Cekic somun M4 (braket arka sol -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -2887,7 +2481,7 @@
    "not_": ""
   },
   {
-   "i": 92,
+   "i": 78,
    "ad": "Pul M4 (braket arka sol +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -2916,7 +2510,7 @@
    "not_": ""
   },
   {
-   "i": 93,
+   "i": 79,
    "ad": "Civata M4x16 (braket arka sol +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -2945,7 +2539,7 @@
    "not_": ""
   },
   {
-   "i": 94,
+   "i": 80,
    "ad": "Cekic somun M4 (braket arka sol +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -2974,7 +2568,7 @@
    "not_": ""
   },
   {
-   "i": 95,
+   "i": 81,
    "ad": "Civata M3x6 (motor arka sol 0)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3003,7 +2597,7 @@
    "not_": ""
   },
   {
-   "i": 96,
+   "i": 82,
    "ad": "Civata M3x6 (motor arka sol 2)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3032,7 +2626,7 @@
    "not_": ""
   },
   {
-   "i": 97,
+   "i": 83,
    "ad": "Civata M3x6 (motor arka sol 3)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3061,7 +2655,7 @@
    "not_": ""
   },
   {
-   "i": 98,
+   "i": 84,
    "ad": "Civata M3x6 (motor arka sol 5)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3090,7 +2684,7 @@
    "not_": ""
   },
   {
-   "i": 99,
+   "i": 85,
    "ad": "Pul M4 (teker arka sol)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3119,7 +2713,7 @@
    "not_": ""
   },
   {
-   "i": 100,
+   "i": 86,
    "ad": "Civata M4x16 (teker arka sol)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3148,7 +2742,7 @@
    "not_": ""
   },
   {
-   "i": 101,
+   "i": 87,
    "ad": "Motor JGB37-520 (on sol)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -3177,7 +2771,7 @@
    "not_": ""
   },
   {
-   "i": 102,
+   "i": 88,
    "ad": "Motor braketi L 37 mm (on sol)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -3206,7 +2800,7 @@
    "not_": ""
   },
   {
-   "i": 103,
+   "i": 89,
    "ad": "Kaplin 12 mm altigen (on sol)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -3235,7 +2829,7 @@
    "not_": ""
   },
   {
-   "i": 104,
+   "i": 90,
    "ad": "Teker 125 x 58 (on sol)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -3264,7 +2858,7 @@
    "not_": ""
   },
   {
-   "i": 105,
+   "i": 91,
    "ad": "Pul M4 (braket on sol -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3293,7 +2887,7 @@
    "not_": ""
   },
   {
-   "i": 106,
+   "i": 92,
    "ad": "Civata M4x16 (braket on sol -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3322,7 +2916,7 @@
    "not_": ""
   },
   {
-   "i": 107,
+   "i": 93,
    "ad": "Cekic somun M4 (braket on sol -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3351,7 +2945,7 @@
    "not_": ""
   },
   {
-   "i": 108,
+   "i": 94,
    "ad": "Pul M4 (braket on sol +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3380,7 +2974,7 @@
    "not_": ""
   },
   {
-   "i": 109,
+   "i": 95,
    "ad": "Civata M4x16 (braket on sol +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3409,7 +3003,7 @@
    "not_": ""
   },
   {
-   "i": 110,
+   "i": 96,
    "ad": "Cekic somun M4 (braket on sol +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3438,7 +3032,7 @@
    "not_": ""
   },
   {
-   "i": 111,
+   "i": 97,
    "ad": "Civata M3x6 (motor on sol 0)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3467,7 +3061,7 @@
    "not_": ""
   },
   {
-   "i": 112,
+   "i": 98,
    "ad": "Civata M3x6 (motor on sol 2)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3496,7 +3090,7 @@
    "not_": ""
   },
   {
-   "i": 113,
+   "i": 99,
    "ad": "Civata M3x6 (motor on sol 3)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3525,7 +3119,7 @@
    "not_": ""
   },
   {
-   "i": 114,
+   "i": 100,
    "ad": "Civata M3x6 (motor on sol 5)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3554,7 +3148,7 @@
    "not_": ""
   },
   {
-   "i": 115,
+   "i": 101,
    "ad": "Pul M4 (teker on sol)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3583,7 +3177,7 @@
    "not_": ""
   },
   {
-   "i": 116,
+   "i": 102,
    "ad": "Civata M4x16 (teker on sol)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3612,7 +3206,7 @@
    "not_": ""
   },
   {
-   "i": 117,
+   "i": 103,
    "ad": "Motor JGB37-520 (arka sag)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -3641,7 +3235,7 @@
    "not_": ""
   },
   {
-   "i": 118,
+   "i": 104,
    "ad": "Motor braketi L 37 mm (arka sag)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -3670,7 +3264,7 @@
    "not_": ""
   },
   {
-   "i": 119,
+   "i": 105,
    "ad": "Kaplin 12 mm altigen (arka sag)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -3699,7 +3293,7 @@
    "not_": ""
   },
   {
-   "i": 120,
+   "i": 106,
    "ad": "Teker 125 x 58 (arka sag)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -3728,7 +3322,7 @@
    "not_": ""
   },
   {
-   "i": 121,
+   "i": 107,
    "ad": "Pul M4 (braket arka sag -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3757,7 +3351,7 @@
    "not_": ""
   },
   {
-   "i": 122,
+   "i": 108,
    "ad": "Civata M4x16 (braket arka sag -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3786,7 +3380,7 @@
    "not_": ""
   },
   {
-   "i": 123,
+   "i": 109,
    "ad": "Cekic somun M4 (braket arka sag -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3815,7 +3409,7 @@
    "not_": ""
   },
   {
-   "i": 124,
+   "i": 110,
    "ad": "Pul M4 (braket arka sag +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3844,7 +3438,7 @@
    "not_": ""
   },
   {
-   "i": 125,
+   "i": 111,
    "ad": "Civata M4x16 (braket arka sag +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3873,7 +3467,7 @@
    "not_": ""
   },
   {
-   "i": 126,
+   "i": 112,
    "ad": "Cekic somun M4 (braket arka sag +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3902,7 +3496,7 @@
    "not_": ""
   },
   {
-   "i": 127,
+   "i": 113,
    "ad": "Civata M3x6 (motor arka sag 0)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3931,7 +3525,7 @@
    "not_": ""
   },
   {
-   "i": 128,
+   "i": 114,
    "ad": "Civata M3x6 (motor arka sag 2)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3960,7 +3554,7 @@
    "not_": ""
   },
   {
-   "i": 129,
+   "i": 115,
    "ad": "Civata M3x6 (motor arka sag 3)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -3989,7 +3583,7 @@
    "not_": ""
   },
   {
-   "i": 130,
+   "i": 116,
    "ad": "Civata M3x6 (motor arka sag 5)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4018,7 +3612,7 @@
    "not_": ""
   },
   {
-   "i": 131,
+   "i": 117,
    "ad": "Pul M4 (teker arka sag)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4047,7 +3641,7 @@
    "not_": ""
   },
   {
-   "i": 132,
+   "i": 118,
    "ad": "Civata M4x16 (teker arka sag)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4076,7 +3670,7 @@
    "not_": ""
   },
   {
-   "i": 133,
+   "i": 119,
    "ad": "Motor JGB37-520 (on sag)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -4105,7 +3699,7 @@
    "not_": ""
   },
   {
-   "i": 134,
+   "i": 120,
    "ad": "Motor braketi L 37 mm (on sag)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -4134,7 +3728,7 @@
    "not_": ""
   },
   {
-   "i": 135,
+   "i": 121,
    "ad": "Kaplin 12 mm altigen (on sag)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -4163,7 +3757,7 @@
    "not_": ""
   },
   {
-   "i": 136,
+   "i": 122,
    "ad": "Teker 125 x 58 (on sag)",
    "grup": "Tahrik",
    "tur": "Satin",
@@ -4192,7 +3786,7 @@
    "not_": ""
   },
   {
-   "i": 137,
+   "i": 123,
    "ad": "Pul M4 (braket on sag -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4221,7 +3815,7 @@
    "not_": ""
   },
   {
-   "i": 138,
+   "i": 124,
    "ad": "Civata M4x16 (braket on sag -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4250,7 +3844,7 @@
    "not_": ""
   },
   {
-   "i": 139,
+   "i": 125,
    "ad": "Cekic somun M4 (braket on sag -1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4279,7 +3873,7 @@
    "not_": ""
   },
   {
-   "i": 140,
+   "i": 126,
    "ad": "Pul M4 (braket on sag +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4308,7 +3902,7 @@
    "not_": ""
   },
   {
-   "i": 141,
+   "i": 127,
    "ad": "Civata M4x16 (braket on sag +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4337,7 +3931,7 @@
    "not_": ""
   },
   {
-   "i": 142,
+   "i": 128,
    "ad": "Cekic somun M4 (braket on sag +1)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4366,7 +3960,7 @@
    "not_": ""
   },
   {
-   "i": 143,
+   "i": 129,
    "ad": "Civata M3x6 (motor on sag 0)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4395,7 +3989,7 @@
    "not_": ""
   },
   {
-   "i": 144,
+   "i": 130,
    "ad": "Civata M3x6 (motor on sag 2)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4424,7 +4018,7 @@
    "not_": ""
   },
   {
-   "i": 145,
+   "i": 131,
    "ad": "Civata M3x6 (motor on sag 3)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4453,7 +4047,7 @@
    "not_": ""
   },
   {
-   "i": 146,
+   "i": 132,
    "ad": "Civata M3x6 (motor on sag 5)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4482,7 +4076,7 @@
    "not_": ""
   },
   {
-   "i": 147,
+   "i": 133,
    "ad": "Pul M4 (teker on sag)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4511,7 +4105,7 @@
    "not_": ""
   },
   {
-   "i": 148,
+   "i": 134,
    "ad": "Civata M4x16 (teker on sag)",
    "grup": "Tahrik",
    "tur": "Baglanti",
@@ -4540,7 +4134,7 @@
    "not_": ""
   },
   {
-   "i": 149,
+   "i": 135,
    "ad": "Aku LiFePO4 12,8 V (yatik)",
    "grup": "Guc",
    "tur": "Satin",
@@ -4569,7 +4163,7 @@
    "not_": "rc:46-47 Landport LFP12-20 olcusu; alinacak Limacell 24 Ah'in olcusu yok (README acik is)"
   },
   {
-   "i": 150,
+   "i": 136,
    "ad": "Aku kayisi 25 mm (z -140)",
    "grup": "Guc",
    "tur": "Satin",
@@ -4598,7 +4192,7 @@
    "not_": "plakadaki yariklardan gecip plaka altindan doner"
   },
   {
-   "i": 151,
+   "i": 137,
    "ad": "Aku kayisi 25 mm (z -80)",
    "grup": "Guc",
    "tur": "Satin",
@@ -4627,17 +4221,17 @@
    "not_": "plakadaki yariklardan gecip plaka altindan doner"
   },
   {
-   "i": 152,
+   "i": 138,
    "ad": "Aku on takozu",
    "grup": "Guc",
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "Aku on takozu (PETG baski)",
-   "kutle_g": 68.68,
-   "hacim_mm3": 67596.1,
+   "kutle_g": 68.75,
+   "hacim_mm3": 67662.6,
    "merkez": [
     0.0,
-    107.034,
+    107.026,
     -29.0
    ],
    "bb": [
@@ -4656,26 +4250,26 @@
    "not_": "aku ile orta ara ray arasindaki 18 mm bosluk; kutuplar takozun ustunde serbest"
   },
   {
-   "i": 153,
+   "i": 139,
    "ad": "Isil gomme somun M3 (takoz x -60)",
    "grup": "Guc",
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     -60.0,
     97.35,
     -29.0
    ],
    "bb": [
-    -62.3,
-    -57.7,
+    -62.0,
+    -58.0,
     94.5,
     100.2,
-    -31.3,
-    -26.7
+    -31.0,
+    -27.0
    ],
    "patlat": [
     0,
@@ -4685,7 +4279,7 @@
    "not_": ""
   },
   {
-   "i": 154,
+   "i": 140,
    "ad": "Civata M3x8 (takoz x -60)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4714,26 +4308,26 @@
    "not_": ""
   },
   {
-   "i": 155,
+   "i": 141,
    "ad": "Isil gomme somun M3 (takoz x +60)",
    "grup": "Guc",
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     60.0,
     97.35,
     -29.0
    ],
    "bb": [
-    57.7,
-    62.3,
+    58.0,
+    62.0,
     94.5,
     100.2,
-    -31.3,
-    -26.7
+    -31.0,
+    -27.0
    ],
    "patlat": [
     0,
@@ -4743,7 +4337,7 @@
    "not_": ""
   },
   {
-   "i": 156,
+   "i": 142,
    "ad": "Civata M3x8 (takoz x +60)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4772,7 +4366,7 @@
    "not_": ""
   },
   {
-   "i": 157,
+   "i": 143,
    "ad": "BTS7960 motor surucu sol",
    "grup": "Guc",
    "tur": "Satin",
@@ -4801,7 +4395,7 @@
    "not_": "sol motor cifti (on + arka paralel)"
   },
   {
-   "i": 158,
+   "i": 144,
    "ad": "Burc M3x8 naylon burc (BTS7960 motor surucu sol 0)",
    "grup": "Guc",
    "tur": "Satin",
@@ -4830,7 +4424,7 @@
    "not_": ""
   },
   {
-   "i": 159,
+   "i": 145,
    "ad": "Vida M3x6 (BTS7960 motor surucu sol 0 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4859,7 +4453,7 @@
    "not_": ""
   },
   {
-   "i": 160,
+   "i": 146,
    "ad": "Vida M3x6 (BTS7960 motor surucu sol 0 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4888,7 +4482,7 @@
    "not_": ""
   },
   {
-   "i": 161,
+   "i": 147,
    "ad": "Burc M3x8 naylon burc (BTS7960 motor surucu sol 1)",
    "grup": "Guc",
    "tur": "Satin",
@@ -4917,7 +4511,7 @@
    "not_": ""
   },
   {
-   "i": 162,
+   "i": 148,
    "ad": "Vida M3x6 (BTS7960 motor surucu sol 1 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4946,7 +4540,7 @@
    "not_": ""
   },
   {
-   "i": 163,
+   "i": 149,
    "ad": "Vida M3x6 (BTS7960 motor surucu sol 1 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -4975,7 +4569,7 @@
    "not_": ""
   },
   {
-   "i": 164,
+   "i": 150,
    "ad": "Burc M3x8 naylon burc (BTS7960 motor surucu sol 2)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5004,7 +4598,7 @@
    "not_": ""
   },
   {
-   "i": 165,
+   "i": 151,
    "ad": "Vida M3x6 (BTS7960 motor surucu sol 2 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5033,7 +4627,7 @@
    "not_": ""
   },
   {
-   "i": 166,
+   "i": 152,
    "ad": "Vida M3x6 (BTS7960 motor surucu sol 2 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5062,7 +4656,7 @@
    "not_": ""
   },
   {
-   "i": 167,
+   "i": 153,
    "ad": "Burc M3x8 naylon burc (BTS7960 motor surucu sol 3)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5091,7 +4685,7 @@
    "not_": ""
   },
   {
-   "i": 168,
+   "i": 154,
    "ad": "Vida M3x6 (BTS7960 motor surucu sol 3 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5120,7 +4714,7 @@
    "not_": ""
   },
   {
-   "i": 169,
+   "i": 155,
    "ad": "Vida M3x6 (BTS7960 motor surucu sol 3 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5149,7 +4743,7 @@
    "not_": ""
   },
   {
-   "i": 170,
+   "i": 156,
    "ad": "BTS7960 motor surucu sag",
    "grup": "Guc",
    "tur": "Satin",
@@ -5178,7 +4772,7 @@
    "not_": "sag motor cifti (on + arka paralel)"
   },
   {
-   "i": 171,
+   "i": 157,
    "ad": "Burc M3x8 naylon burc (BTS7960 motor surucu sag 0)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5207,7 +4801,7 @@
    "not_": ""
   },
   {
-   "i": 172,
+   "i": 158,
    "ad": "Vida M3x6 (BTS7960 motor surucu sag 0 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5236,7 +4830,7 @@
    "not_": ""
   },
   {
-   "i": 173,
+   "i": 159,
    "ad": "Vida M3x6 (BTS7960 motor surucu sag 0 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5265,7 +4859,7 @@
    "not_": ""
   },
   {
-   "i": 174,
+   "i": 160,
    "ad": "Burc M3x8 naylon burc (BTS7960 motor surucu sag 1)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5294,7 +4888,7 @@
    "not_": ""
   },
   {
-   "i": 175,
+   "i": 161,
    "ad": "Vida M3x6 (BTS7960 motor surucu sag 1 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5323,7 +4917,7 @@
    "not_": ""
   },
   {
-   "i": 176,
+   "i": 162,
    "ad": "Vida M3x6 (BTS7960 motor surucu sag 1 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5352,7 +4946,7 @@
    "not_": ""
   },
   {
-   "i": 177,
+   "i": 163,
    "ad": "Burc M3x8 naylon burc (BTS7960 motor surucu sag 2)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5381,7 +4975,7 @@
    "not_": ""
   },
   {
-   "i": 178,
+   "i": 164,
    "ad": "Vida M3x6 (BTS7960 motor surucu sag 2 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5410,7 +5004,7 @@
    "not_": ""
   },
   {
-   "i": 179,
+   "i": 165,
    "ad": "Vida M3x6 (BTS7960 motor surucu sag 2 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5439,7 +5033,7 @@
    "not_": ""
   },
   {
-   "i": 180,
+   "i": 166,
    "ad": "Burc M3x8 naylon burc (BTS7960 motor surucu sag 3)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5468,7 +5062,7 @@
    "not_": ""
   },
   {
-   "i": 181,
+   "i": 167,
    "ad": "Vida M3x6 (BTS7960 motor surucu sag 3 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5497,7 +5091,7 @@
    "not_": ""
   },
   {
-   "i": 182,
+   "i": 168,
    "ad": "Vida M3x6 (BTS7960 motor surucu sag 3 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5526,7 +5120,7 @@
    "not_": ""
   },
   {
-   "i": 183,
+   "i": 169,
    "ad": "XL4016 Pi 5,1 V",
    "grup": "Guc",
    "tur": "Satin",
@@ -5555,7 +5149,7 @@
    "not_": "Pi 5,1 V"
   },
   {
-   "i": 184,
+   "i": 170,
    "ad": "Burc M3x8 naylon burc (XL4016 Pi 5,1 V 0)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5584,7 +5178,7 @@
    "not_": ""
   },
   {
-   "i": 185,
+   "i": 171,
    "ad": "Vida M3x6 (XL4016 Pi 5,1 V 0 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5613,7 +5207,7 @@
    "not_": ""
   },
   {
-   "i": 186,
+   "i": 172,
    "ad": "Vida M3x6 (XL4016 Pi 5,1 V 0 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5642,7 +5236,7 @@
    "not_": ""
   },
   {
-   "i": 187,
+   "i": 173,
    "ad": "Burc M3x8 naylon burc (XL4016 Pi 5,1 V 1)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5671,7 +5265,7 @@
    "not_": ""
   },
   {
-   "i": 188,
+   "i": 174,
    "ad": "Vida M3x6 (XL4016 Pi 5,1 V 1 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5700,7 +5294,7 @@
    "not_": ""
   },
   {
-   "i": 189,
+   "i": 175,
    "ad": "Vida M3x6 (XL4016 Pi 5,1 V 1 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5729,7 +5323,7 @@
    "not_": ""
   },
   {
-   "i": 190,
+   "i": 176,
    "ad": "Burc M3x8 naylon burc (XL4016 Pi 5,1 V 2)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5758,7 +5352,7 @@
    "not_": ""
   },
   {
-   "i": 191,
+   "i": 177,
    "ad": "Vida M3x6 (XL4016 Pi 5,1 V 2 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5787,7 +5381,7 @@
    "not_": ""
   },
   {
-   "i": 192,
+   "i": 178,
    "ad": "Vida M3x6 (XL4016 Pi 5,1 V 2 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5816,7 +5410,7 @@
    "not_": ""
   },
   {
-   "i": 193,
+   "i": 179,
    "ad": "Burc M3x8 naylon burc (XL4016 Pi 5,1 V 3)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5845,7 +5439,7 @@
    "not_": ""
   },
   {
-   "i": 194,
+   "i": 180,
    "ad": "Vida M3x6 (XL4016 Pi 5,1 V 3 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5874,7 +5468,7 @@
    "not_": ""
   },
   {
-   "i": 195,
+   "i": 181,
    "ad": "Vida M3x6 (XL4016 Pi 5,1 V 3 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5903,7 +5497,7 @@
    "not_": ""
   },
   {
-   "i": 196,
+   "i": 182,
    "ad": "XL4016 cevre 5 V",
    "grup": "Guc",
    "tur": "Satin",
@@ -5932,7 +5526,7 @@
    "not_": "cevre 5 V"
   },
   {
-   "i": 197,
+   "i": 183,
    "ad": "Burc M3x8 naylon burc (XL4016 cevre 5 V 0)",
    "grup": "Guc",
    "tur": "Satin",
@@ -5961,7 +5555,7 @@
    "not_": ""
   },
   {
-   "i": 198,
+   "i": 184,
    "ad": "Vida M3x6 (XL4016 cevre 5 V 0 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -5990,7 +5584,7 @@
    "not_": ""
   },
   {
-   "i": 199,
+   "i": 185,
    "ad": "Vida M3x6 (XL4016 cevre 5 V 0 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6019,7 +5613,7 @@
    "not_": ""
   },
   {
-   "i": 200,
+   "i": 186,
    "ad": "Burc M3x8 naylon burc (XL4016 cevre 5 V 1)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6048,7 +5642,7 @@
    "not_": ""
   },
   {
-   "i": 201,
+   "i": 187,
    "ad": "Vida M3x6 (XL4016 cevre 5 V 1 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6077,7 +5671,7 @@
    "not_": ""
   },
   {
-   "i": 202,
+   "i": 188,
    "ad": "Vida M3x6 (XL4016 cevre 5 V 1 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6106,7 +5700,7 @@
    "not_": ""
   },
   {
-   "i": 203,
+   "i": 189,
    "ad": "Burc M3x8 naylon burc (XL4016 cevre 5 V 2)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6135,7 +5729,7 @@
    "not_": ""
   },
   {
-   "i": 204,
+   "i": 190,
    "ad": "Vida M3x6 (XL4016 cevre 5 V 2 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6164,7 +5758,7 @@
    "not_": ""
   },
   {
-   "i": 205,
+   "i": 191,
    "ad": "Vida M3x6 (XL4016 cevre 5 V 2 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6193,7 +5787,7 @@
    "not_": ""
   },
   {
-   "i": 206,
+   "i": 192,
    "ad": "Burc M3x8 naylon burc (XL4016 cevre 5 V 3)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6222,7 +5816,7 @@
    "not_": ""
   },
   {
-   "i": 207,
+   "i": 193,
    "ad": "Vida M3x6 (XL4016 cevre 5 V 3 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6251,7 +5845,7 @@
    "not_": ""
   },
   {
-   "i": 208,
+   "i": 194,
    "ad": "Vida M3x6 (XL4016 cevre 5 V 3 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6280,7 +5874,7 @@
    "not_": ""
   },
   {
-   "i": 209,
+   "i": 195,
    "ad": "XL4016 servo 6 V",
    "grup": "Guc",
    "tur": "Satin",
@@ -6309,7 +5903,7 @@
    "not_": "servo 6 V"
   },
   {
-   "i": 210,
+   "i": 196,
    "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V 0)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6338,7 +5932,7 @@
    "not_": ""
   },
   {
-   "i": 211,
+   "i": 197,
    "ad": "Vida M3x6 (XL4016 servo 6 V 0 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6367,7 +5961,7 @@
    "not_": ""
   },
   {
-   "i": 212,
+   "i": 198,
    "ad": "Vida M3x6 (XL4016 servo 6 V 0 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6396,7 +5990,7 @@
    "not_": ""
   },
   {
-   "i": 213,
+   "i": 199,
    "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V 1)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6425,7 +6019,7 @@
    "not_": ""
   },
   {
-   "i": 214,
+   "i": 200,
    "ad": "Vida M3x6 (XL4016 servo 6 V 1 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6454,7 +6048,7 @@
    "not_": ""
   },
   {
-   "i": 215,
+   "i": 201,
    "ad": "Vida M3x6 (XL4016 servo 6 V 1 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6483,7 +6077,7 @@
    "not_": ""
   },
   {
-   "i": 216,
+   "i": 202,
    "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V 2)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6512,7 +6106,7 @@
    "not_": ""
   },
   {
-   "i": 217,
+   "i": 203,
    "ad": "Vida M3x6 (XL4016 servo 6 V 2 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6541,7 +6135,7 @@
    "not_": ""
   },
   {
-   "i": 218,
+   "i": 204,
    "ad": "Vida M3x6 (XL4016 servo 6 V 2 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6570,7 +6164,7 @@
    "not_": ""
   },
   {
-   "i": 219,
+   "i": 205,
    "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V 3)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6599,7 +6193,7 @@
    "not_": ""
   },
   {
-   "i": 220,
+   "i": 206,
    "ad": "Vida M3x6 (XL4016 servo 6 V 3 ust)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6628,7 +6222,7 @@
    "not_": ""
   },
   {
-   "i": 221,
+   "i": 207,
    "ad": "Vida M3x6 (XL4016 servo 6 V 3 alt)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6657,7 +6251,7 @@
    "not_": ""
   },
   {
-   "i": 222,
+   "i": 208,
    "ad": "Sigorta kutusu 6 yollu (tahmini zarf)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6686,7 +6280,7 @@
    "not_": "olcu bilinmiyor: zarf 105 x 60 x 35 tahmini, kumpasla olculecek"
   },
   {
-   "i": 223,
+   "i": 209,
    "ad": "Pul M4 (sigorta kutusu sol)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6715,7 +6309,7 @@
    "not_": ""
   },
   {
-   "i": 224,
+   "i": 210,
    "ad": "Civata M4x16 (sigorta kutusu sol)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6744,7 +6338,7 @@
    "not_": ""
   },
   {
-   "i": 225,
+   "i": 211,
    "ad": "Somun M4 (sigorta kutusu sol)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6773,7 +6367,7 @@
    "not_": ""
   },
   {
-   "i": 226,
+   "i": 212,
    "ad": "Pul M4 (sigorta kutusu sag)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6802,7 +6396,7 @@
    "not_": ""
   },
   {
-   "i": 227,
+   "i": 213,
    "ad": "Civata M4x16 (sigorta kutusu sag)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6831,7 +6425,7 @@
    "not_": ""
   },
   {
-   "i": 228,
+   "i": 214,
    "ad": "Somun M4 (sigorta kutusu sag)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6860,7 +6454,7 @@
    "not_": ""
   },
   {
-   "i": 229,
+   "i": 215,
    "ad": "Role 12 V 40 A + soket (tahmini zarf)",
    "grup": "Guc",
    "tur": "Satin",
@@ -6889,7 +6483,7 @@
    "not_": "acil stop NC kontagi bobini keser -> motor + servo gucu duser (Pi acik kalir)"
   },
   {
-   "i": 230,
+   "i": 216,
    "ad": "Pul M4 (role)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6918,7 +6512,7 @@
    "not_": ""
   },
   {
-   "i": 231,
+   "i": 217,
    "ad": "Civata M4x16 (role)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6947,7 +6541,7 @@
    "not_": ""
   },
   {
-   "i": 232,
+   "i": 218,
    "ad": "Somun M4 (role)",
    "grup": "Guc",
    "tur": "Baglanti",
@@ -6976,7 +6570,7 @@
    "not_": ""
   },
   {
-   "i": 233,
+   "i": 219,
    "ad": "Ana sigorta yuvasi 30 A (tahmini zarf)",
    "grup": "Guc",
    "tur": "Satin",
@@ -7005,7 +6599,7 @@
    "not_": "kablo uzerinde; panele 2 kablo bagi ile (cizilmedi)"
   },
   {
-   "i": 234,
+   "i": 220,
    "ad": "Ana anahtar ASW-A01 govdesi (tahmini zarf)",
    "grup": "Guc",
    "tur": "Satin",
@@ -7034,7 +6628,7 @@
    "not_": "oneri: etek ust plakasinin altinda, acil stobun aynasi; kabukta delik yok (2. asama). Olcu bilinmiyor (zarf)"
   },
   {
-   "i": 235,
+   "i": 221,
    "ad": "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)",
    "grup": "Referans",
    "tur": "Referans",
@@ -7063,7 +6657,7 @@
    "not_": ""
   },
   {
-   "i": 236,
+   "i": 222,
    "ad": "Raspberry Pi 5 8GB + Active Cooler",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -7092,7 +6686,7 @@
    "not_": "SD yuvasi -X kenarinda (x -135,5, z 80); USB/Ethernet +X'e, micro HDMI + USB-C -Z kenarinda; fan ustu ~55 mm acik"
   },
   {
-   "i": 237,
+   "i": 223,
    "ad": "Burc M2,5x8 pirinc burc (Raspberry Pi 5 8GB + Active Cooler 0)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -7121,7 +6715,7 @@
    "not_": ""
   },
   {
-   "i": 238,
+   "i": 224,
    "ad": "Vida M2,5x5 (Raspberry Pi 5 8GB + Active Cooler 0 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7150,7 +6744,7 @@
    "not_": ""
   },
   {
-   "i": 239,
+   "i": 225,
    "ad": "Vida M2,5x8 (Raspberry Pi 5 8GB + Active Cooler 0 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7179,7 +6773,7 @@
    "not_": ""
   },
   {
-   "i": 240,
+   "i": 226,
    "ad": "Burc M2,5x8 pirinc burc (Raspberry Pi 5 8GB + Active Cooler 1)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -7208,7 +6802,7 @@
    "not_": ""
   },
   {
-   "i": 241,
+   "i": 227,
    "ad": "Vida M2,5x5 (Raspberry Pi 5 8GB + Active Cooler 1 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7237,7 +6831,7 @@
    "not_": ""
   },
   {
-   "i": 242,
+   "i": 228,
    "ad": "Vida M2,5x8 (Raspberry Pi 5 8GB + Active Cooler 1 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7266,7 +6860,7 @@
    "not_": ""
   },
   {
-   "i": 243,
+   "i": 229,
    "ad": "Burc M2,5x8 pirinc burc (Raspberry Pi 5 8GB + Active Cooler 2)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -7295,7 +6889,7 @@
    "not_": ""
   },
   {
-   "i": 244,
+   "i": 230,
    "ad": "Vida M2,5x5 (Raspberry Pi 5 8GB + Active Cooler 2 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7324,7 +6918,7 @@
    "not_": ""
   },
   {
-   "i": 245,
+   "i": 231,
    "ad": "Vida M2,5x8 (Raspberry Pi 5 8GB + Active Cooler 2 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7353,7 +6947,7 @@
    "not_": ""
   },
   {
-   "i": 246,
+   "i": 232,
    "ad": "Burc M2,5x8 pirinc burc (Raspberry Pi 5 8GB + Active Cooler 3)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -7382,7 +6976,7 @@
    "not_": ""
   },
   {
-   "i": 247,
+   "i": 233,
    "ad": "Vida M2,5x5 (Raspberry Pi 5 8GB + Active Cooler 3 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7411,7 +7005,7 @@
    "not_": ""
   },
   {
-   "i": 248,
+   "i": 234,
    "ad": "Vida M2,5x8 (Raspberry Pi 5 8GB + Active Cooler 3 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7440,7 +7034,7 @@
    "not_": ""
   },
   {
-   "i": 249,
+   "i": 235,
    "ad": "PCA9685 servo surucu",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -7469,7 +7063,7 @@
    "not_": ""
   },
   {
-   "i": 250,
+   "i": 236,
    "ad": "Burc M2,5x8 pirinc burc (PCA9685 servo surucu 0)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -7498,7 +7092,7 @@
    "not_": ""
   },
   {
-   "i": 251,
+   "i": 237,
    "ad": "Vida M2,5x5 (PCA9685 servo surucu 0 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7527,7 +7121,7 @@
    "not_": ""
   },
   {
-   "i": 252,
+   "i": 238,
    "ad": "Vida M2,5x8 (PCA9685 servo surucu 0 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7556,7 +7150,7 @@
    "not_": ""
   },
   {
-   "i": 253,
+   "i": 239,
    "ad": "Burc M2,5x8 pirinc burc (PCA9685 servo surucu 1)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -7585,7 +7179,7 @@
    "not_": ""
   },
   {
-   "i": 254,
+   "i": 240,
    "ad": "Vida M2,5x5 (PCA9685 servo surucu 1 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7614,7 +7208,7 @@
    "not_": ""
   },
   {
-   "i": 255,
+   "i": 241,
    "ad": "Vida M2,5x8 (PCA9685 servo surucu 1 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7643,7 +7237,7 @@
    "not_": ""
   },
   {
-   "i": 256,
+   "i": 242,
    "ad": "Burc M2,5x8 pirinc burc (PCA9685 servo surucu 2)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -7672,7 +7266,7 @@
    "not_": ""
   },
   {
-   "i": 257,
+   "i": 243,
    "ad": "Vida M2,5x5 (PCA9685 servo surucu 2 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7701,7 +7295,7 @@
    "not_": ""
   },
   {
-   "i": 258,
+   "i": 244,
    "ad": "Vida M2,5x8 (PCA9685 servo surucu 2 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7730,7 +7324,7 @@
    "not_": ""
   },
   {
-   "i": 259,
+   "i": 245,
    "ad": "Burc M2,5x8 pirinc burc (PCA9685 servo surucu 3)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -7759,7 +7353,7 @@
    "not_": ""
   },
   {
-   "i": 260,
+   "i": 246,
    "ad": "Vida M2,5x5 (PCA9685 servo surucu 3 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7788,7 +7382,7 @@
    "not_": ""
   },
   {
-   "i": 261,
+   "i": 247,
    "ad": "Vida M2,5x8 (PCA9685 servo surucu 3 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7817,7 +7411,7 @@
    "not_": ""
   },
   {
-   "i": 262,
+   "i": 248,
    "ad": "BNO055 IMU",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -7846,7 +7440,7 @@
    "not_": ""
   },
   {
-   "i": 263,
+   "i": 249,
    "ad": "Burc M2,5x8 pirinc burc (BNO055 IMU 0)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -7875,7 +7469,7 @@
    "not_": ""
   },
   {
-   "i": 264,
+   "i": 250,
    "ad": "Vida M2,5x5 (BNO055 IMU 0 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7904,7 +7498,7 @@
    "not_": ""
   },
   {
-   "i": 265,
+   "i": 251,
    "ad": "Vida M2,5x8 (BNO055 IMU 0 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7933,7 +7527,7 @@
    "not_": ""
   },
   {
-   "i": 266,
+   "i": 252,
    "ad": "Burc M2,5x8 pirinc burc (BNO055 IMU 1)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -7962,7 +7556,7 @@
    "not_": ""
   },
   {
-   "i": 267,
+   "i": 253,
    "ad": "Vida M2,5x5 (BNO055 IMU 1 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -7991,7 +7585,7 @@
    "not_": ""
   },
   {
-   "i": 268,
+   "i": 254,
    "ad": "Vida M2,5x8 (BNO055 IMU 1 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -8020,7 +7614,7 @@
    "not_": ""
   },
   {
-   "i": 269,
+   "i": 255,
    "ad": "Burc M2,5x8 pirinc burc (BNO055 IMU 2)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -8049,7 +7643,7 @@
    "not_": ""
   },
   {
-   "i": 270,
+   "i": 256,
    "ad": "Vida M2,5x5 (BNO055 IMU 2 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -8078,7 +7672,7 @@
    "not_": ""
   },
   {
-   "i": 271,
+   "i": 257,
    "ad": "Vida M2,5x8 (BNO055 IMU 2 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -8107,7 +7701,7 @@
    "not_": ""
   },
   {
-   "i": 272,
+   "i": 258,
    "ad": "Burc M2,5x8 pirinc burc (BNO055 IMU 3)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -8136,7 +7730,7 @@
    "not_": ""
   },
   {
-   "i": 273,
+   "i": 259,
    "ad": "Vida M2,5x5 (BNO055 IMU 3 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -8165,7 +7759,7 @@
    "not_": ""
   },
   {
-   "i": 274,
+   "i": 260,
    "ad": "Vida M2,5x8 (BNO055 IMU 3 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -8194,7 +7788,7 @@
    "not_": ""
   },
   {
-   "i": 275,
+   "i": 261,
    "ad": "ESP32 tasiyici kart (pertinaks)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -8223,7 +7817,7 @@
    "not_": ""
   },
   {
-   "i": 276,
+   "i": 262,
    "ad": "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 0)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -8252,7 +7846,7 @@
    "not_": ""
   },
   {
-   "i": 277,
+   "i": 263,
    "ad": "Vida M3x6 (ESP32 tasiyici kart (pertinaks) 0 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -8281,7 +7875,7 @@
    "not_": ""
   },
   {
-   "i": 278,
+   "i": 264,
    "ad": "Vida M3x8 (ESP32 tasiyici kart (pertinaks) 0 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -8310,7 +7904,7 @@
    "not_": ""
   },
   {
-   "i": 279,
+   "i": 265,
    "ad": "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 1)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -8339,7 +7933,7 @@
    "not_": ""
   },
   {
-   "i": 280,
+   "i": 266,
    "ad": "Vida M3x6 (ESP32 tasiyici kart (pertinaks) 1 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -8368,7 +7962,7 @@
    "not_": ""
   },
   {
-   "i": 281,
+   "i": 267,
    "ad": "Vida M3x8 (ESP32 tasiyici kart (pertinaks) 1 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -8397,7 +7991,7 @@
    "not_": ""
   },
   {
-   "i": 282,
+   "i": 268,
    "ad": "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 2)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -8426,7 +8020,7 @@
    "not_": ""
   },
   {
-   "i": 283,
+   "i": 269,
    "ad": "Vida M3x6 (ESP32 tasiyici kart (pertinaks) 2 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -8455,7 +8049,7 @@
    "not_": ""
   },
   {
-   "i": 284,
+   "i": 270,
    "ad": "Vida M3x8 (ESP32 tasiyici kart (pertinaks) 2 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -8484,7 +8078,7 @@
    "not_": ""
   },
   {
-   "i": 285,
+   "i": 271,
    "ad": "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 3)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -8513,7 +8107,7 @@
    "not_": ""
   },
   {
-   "i": 286,
+   "i": 272,
    "ad": "Vida M3x6 (ESP32 tasiyici kart (pertinaks) 3 ust)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -8542,7 +8136,7 @@
    "not_": ""
   },
   {
-   "i": 287,
+   "i": 273,
    "ad": "Vida M3x8 (ESP32 tasiyici kart (pertinaks) 3 alt)",
    "grup": "Elektronik",
    "tur": "Baglanti",
@@ -8571,7 +8165,7 @@
    "not_": ""
   },
   {
-   "i": 288,
+   "i": 274,
    "ad": "ESP32 DevKit 30 pin",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -8600,7 +8194,7 @@
    "not_": "disi header'a takili (pin 6 mm)"
   },
   {
-   "i": 289,
+   "i": 275,
    "ad": "Kopuk bant (amfi)",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -8629,7 +8223,7 @@
    "not_": ""
   },
   {
-   "i": 290,
+   "i": 276,
    "ad": "MAX98357A I2S amfi",
    "grup": "Elektronik",
    "tur": "Satin",
@@ -8658,7 +8252,7 @@
    "not_": "montaj deligi yok: kopuk bant"
   },
   {
-   "i": 291,
+   "i": 277,
    "ad": "Sonar HC-SR04 (sol)",
    "grup": "Sensor",
    "tur": "Satin",
@@ -8687,7 +8281,7 @@
    "not_": "transduserler etek deliklerinden (O17)"
   },
   {
-   "i": 292,
+   "i": 278,
    "ad": "Sonar tutucu sol",
    "grup": "Sensor",
    "tur": "Baski",
@@ -8716,7 +8310,7 @@
    "not_": "PCB yandan raylara surulur; on ara rayin on kanalina M6"
   },
   {
-   "i": 293,
+   "i": 279,
    "ad": "Civata M6x14 ISO 7380 (sonar sol x -48)",
    "grup": "Sensor",
    "tur": "Baglanti",
@@ -8745,7 +8339,7 @@
    "not_": ""
   },
   {
-   "i": 294,
+   "i": 280,
    "ad": "Cekic somun M6 (sonar sol x -48)",
    "grup": "Sensor",
    "tur": "Baglanti",
@@ -8774,7 +8368,7 @@
    "not_": ""
   },
   {
-   "i": 295,
+   "i": 281,
    "ad": "Sonar HC-SR04 (orta)",
    "grup": "Sensor",
    "tur": "Satin",
@@ -8803,7 +8397,7 @@
    "not_": "transduserler etek deliklerinden (O17)"
   },
   {
-   "i": 296,
+   "i": 282,
    "ad": "Sonar tutucu orta",
    "grup": "Sensor",
    "tur": "Baski",
@@ -8832,7 +8426,7 @@
    "not_": "PCB yandan raylara surulur; on ara rayin on kanalina M6"
   },
   {
-   "i": 297,
+   "i": 283,
    "ad": "Civata M6x14 ISO 7380 (sonar orta x -31)",
    "grup": "Sensor",
    "tur": "Baglanti",
@@ -8861,7 +8455,7 @@
    "not_": ""
   },
   {
-   "i": 298,
+   "i": 284,
    "ad": "Cekic somun M6 (sonar orta x -31)",
    "grup": "Sensor",
    "tur": "Baglanti",
@@ -8890,7 +8484,7 @@
    "not_": ""
   },
   {
-   "i": 299,
+   "i": 285,
    "ad": "Civata M6x14 ISO 7380 (sonar orta x +31)",
    "grup": "Sensor",
    "tur": "Baglanti",
@@ -8919,7 +8513,7 @@
    "not_": ""
   },
   {
-   "i": 300,
+   "i": 286,
    "ad": "Cekic somun M6 (sonar orta x +31)",
    "grup": "Sensor",
    "tur": "Baglanti",
@@ -8948,7 +8542,7 @@
    "not_": ""
   },
   {
-   "i": 301,
+   "i": 287,
    "ad": "Sonar HC-SR04 (sag)",
    "grup": "Sensor",
    "tur": "Satin",
@@ -8977,7 +8571,7 @@
    "not_": "transduserler etek deliklerinden (O17)"
   },
   {
-   "i": 302,
+   "i": 288,
    "ad": "Sonar tutucu sag",
    "grup": "Sensor",
    "tur": "Baski",
@@ -9006,7 +8600,7 @@
    "not_": "PCB yandan raylara surulur; on ara rayin on kanalina M6"
   },
   {
-   "i": 303,
+   "i": 289,
    "ad": "Civata M6x14 ISO 7380 (sonar sag x +48)",
    "grup": "Sensor",
    "tur": "Baglanti",
@@ -9035,7 +8629,7 @@
    "not_": ""
   },
   {
-   "i": 304,
+   "i": 290,
    "ad": "Cekic somun M6 (sonar sag x +48)",
    "grup": "Sensor",
    "tur": "Baglanti",
@@ -9064,7 +8658,7 @@
    "not_": ""
   },
   {
-   "i": 305,
+   "i": 291,
    "ad": "Acil stop mantari + bilezik",
    "grup": "Sensor",
    "tur": "Satin",
@@ -9093,7 +8687,7 @@
    "not_": "Emas B200E60 (rc:357-365; 04). Elde B200E-E (40 mm mantar): O60 zarf buyuk tarafta kalir"
   },
   {
-   "i": 306,
+   "i": 292,
    "ad": "Acil stop kontak govdesi (1NC)",
    "grup": "Sensor",
    "tur": "Satin",
@@ -9122,7 +8716,7 @@
    "not_": "etek ust plakasinin O22,4 deliginde; bilezik plaka ustune oturur"
   },
   {
-   "i": 307,
+   "i": 293,
    "ad": "Kablo yolu 1: 12 V ana hat: aku + -> XT60 -> ana sigorta 30 A -> ana anahtar -> sigorta kutusu",
    "grup": "Referans",
    "tur": "Referans",
@@ -9151,7 +8745,7 @@
    "not_": ""
   },
   {
-   "i": 308,
+   "i": 294,
    "ad": "Kablo yolu 2: Toprak: aku - -> WAGO yildiz noktasi (guc paneli) -> tum donusturuculer",
    "grup": "Referans",
    "tur": "Referans",
@@ -9180,7 +8774,7 @@
    "not_": ""
   },
   {
-   "i": 309,
+   "i": 295,
    "ad": "Kablo yolu 3: Motor 12 V: F1 20 A -> role -> WAGO -> BTS7960 sol/sag -> motor kablo delikleri -> 4 motor",
    "grup": "Referans",
    "tur": "Referans",
@@ -9209,7 +8803,7 @@
    "not_": ""
   },
   {
-   "i": 310,
+   "i": 296,
    "ad": "Kablo yolu 4: Motor 12 V sag kol + arka motorlar (plaka altindan z 36 deliginden)",
    "grup": "Referans",
    "tur": "Referans",
@@ -9238,7 +8832,7 @@
    "not_": ""
   },
   {
-   "i": 311,
+   "i": 297,
    "ad": "Kablo yolu 5: Servo 6 V: F1 -> role -> WAGO -> XL4016 servo -> PCA9685 V+ -> direk arka yuzu -> omuz / kafa",
    "grup": "Referans",
    "tur": "Referans",
@@ -9267,7 +8861,7 @@
    "not_": ""
   },
   {
-   "i": 312,
+   "i": 298,
    "ad": "Kablo yolu 6: Servo kablolari sola ve kafaya (direk ustu dagitim)",
    "grup": "Referans",
    "tur": "Referans",
@@ -9296,7 +8890,7 @@
    "not_": ""
   },
   {
-   "i": 313,
+   "i": 299,
    "ad": "Kablo yolu 7: Pi 5,1 V: F3 10 A -> XL4016 Pi -> Pi USB-C",
    "grup": "Referans",
    "tur": "Referans",
@@ -9325,7 +8919,7 @@
    "not_": ""
   },
   {
-   "i": 314,
+   "i": 300,
    "ad": "Kablo yolu 8: Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / Nextion / 7in LCD / sensorler",
    "grup": "Referans",
    "tur": "Referans",
@@ -9354,7 +8948,7 @@
    "not_": ""
   },
   {
-   "i": 315,
+   "i": 301,
    "ad": "Kablo yolu 9: Acil stop: F5 -> mantar (NC) -> role bobini",
    "grup": "Referans",
    "tur": "Referans",
@@ -9383,7 +8977,7 @@
    "not_": ""
   },
   {
-   "i": 316,
+   "i": 302,
    "ad": "Kablo yolu 10: Sinyal: sonar x3 -> ESP32 (on ara ray ustunden)",
    "grup": "Referans",
    "tur": "Referans",
@@ -9412,7 +9006,7 @@
    "not_": ""
   },
   {
-   "i": 317,
+   "i": 303,
    "ad": "Kablo yolu 11: Sinyal: enkoder + BTS PWM/EN -> ESP32; Pi <-> ESP32 USB",
    "grup": "Referans",
    "tur": "Referans",
@@ -9441,7 +9035,7 @@
    "not_": ""
   },
   {
-   "i": 318,
+   "i": 304,
    "ad": "Kablo yolu 12: Pi -> kafa: 2x HDMI (7in LCD), kamera FPC, USB mikrofon, hoparlor (direk on yuzu)",
    "grup": "Referans",
    "tur": "Referans",
@@ -9475,46 +9069,32 @@
    "hareket": "sabit (sase / iskelete sabit)",
    "parca": [
     "Alt plaka",
-    "Pul M6 (plaka, uzun ray sol, z -235)",
     "Civata M6x14 (plaka, uzun ray sol, z -235)",
     "Cekic somun M6 (plaka, uzun ray sol, z -235)",
-    "Pul M6 (plaka, uzun ray sol, z -90)",
     "Civata M6x14 (plaka, uzun ray sol, z -90)",
     "Cekic somun M6 (plaka, uzun ray sol, z -90)",
-    "Pul M6 (plaka, uzun ray sol, z +90)",
     "Civata M6x14 (plaka, uzun ray sol, z +90)",
     "Cekic somun M6 (plaka, uzun ray sol, z +90)",
-    "Pul M6 (plaka, uzun ray sol, z +235)",
     "Civata M6x14 (plaka, uzun ray sol, z +235)",
     "Cekic somun M6 (plaka, uzun ray sol, z +235)",
-    "Pul M6 (plaka, uzun ray sag, z -235)",
     "Civata M6x14 (plaka, uzun ray sag, z -235)",
     "Cekic somun M6 (plaka, uzun ray sag, z -235)",
-    "Pul M6 (plaka, uzun ray sag, z -90)",
     "Civata M6x14 (plaka, uzun ray sag, z -90)",
     "Cekic somun M6 (plaka, uzun ray sag, z -90)",
-    "Pul M6 (plaka, uzun ray sag, z +90)",
     "Civata M6x14 (plaka, uzun ray sag, z +90)",
     "Cekic somun M6 (plaka, uzun ray sag, z +90)",
-    "Pul M6 (plaka, uzun ray sag, z +235)",
     "Civata M6x14 (plaka, uzun ray sag, z +235)",
     "Cekic somun M6 (plaka, uzun ray sag, z +235)",
-    "Pul M6 (plaka, ara ray z -230, z -230)",
     "Civata M6x14 (plaka, ara ray z -230, z -230)",
     "Cekic somun M6 (plaka, ara ray z -230, z -230)",
-    "Pul M6 (plaka, ara ray z +0, z +0)",
     "Civata M6x14 (plaka, ara ray z +0, z +0)",
     "Cekic somun M6 (plaka, ara ray z +0, z +0)",
-    "Pul M6 (plaka, ara ray z +230, z +230)",
     "Civata M6x14 (plaka, ara ray z +230, z +230)",
     "Cekic somun M6 (plaka, ara ray z +230, z +230)",
-    "Pul M6 (plaka, ara ray z -230, z -230)",
     "Civata M6x14 (plaka, ara ray z -230, z -230)",
     "Cekic somun M6 (plaka, ara ray z -230, z -230)",
-    "Pul M6 (plaka, ara ray z +0, z +0)",
     "Civata M6x14 (plaka, ara ray z +0, z +0)",
     "Cekic somun M6 (plaka, ara ray z +0, z +0)",
-    "Pul M6 (plaka, ara ray z +230, z +230)",
     "Civata M6x14 (plaka, ara ray z +230, z +230)",
     "Cekic somun M6 (plaka, ara ray z +230, z +230)",
     "Cekic somun M5 (burc sol z -230)",
@@ -9560,7 +9140,7 @@
     "Pul M5 (kat sag z +230)",
     "Civata M5x12 (kat sag z +230)"
    ],
-   "kutle_g": 1862.7
+   "kutle_g": 1848.5
   },
   "Tahrik": {
    "hareket": "sabit (sase / iskelete sabit)",
@@ -9722,7 +9302,7 @@
     "Ana sigorta yuvasi 30 A (tahmini zarf)",
     "Ana anahtar ASW-A01 govdesi (tahmini zarf)"
    ],
-   "kutle_g": 3631.8
+   "kutle_g": 3631.5
   },
   "Elektronik": {
    "hareket": "sabit (sase / iskelete sabit)",
@@ -9842,7 +9422,7 @@
  "gecersiz": [],
  "coklu_kati": [],
  "ic_cakisma": [],
- "cift_sayisi": 497,
+ "cift_sayisi": 469,
  "tolerans_mm3": 0.5,
  "baglanti_kontrol": [
   {
@@ -9850,21 +9430,21 @@
    "tip": "kanal",
    "olcu": {
     "d": 6,
-    "uc": 9.4,
+    "uc": 11.0,
     "somun_ust": 9.3,
     "taban": 11.8,
     "kavrama": 5.0
    },
    "hata": [],
    "temas_mm": [
-    0.0,
     0.0
    ],
    "eksen_mm": [
     0.0,
     0.0
    ],
-   "uc_taban_pay": 2.4,
+   "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -9872,21 +9452,21 @@
    "tip": "kanal",
    "olcu": {
     "d": 6,
-    "uc": 9.4,
+    "uc": 11.0,
     "somun_ust": 9.3,
     "taban": 11.8,
     "kavrama": 5.0
    },
    "hata": [],
    "temas_mm": [
-    0.0,
     0.0
    ],
    "eksen_mm": [
     0.0,
     0.0
    ],
-   "uc_taban_pay": 2.4,
+   "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -9894,21 +9474,21 @@
    "tip": "kanal",
    "olcu": {
     "d": 6,
-    "uc": 9.4,
+    "uc": 11.0,
     "somun_ust": 9.3,
     "taban": 11.8,
     "kavrama": 5.0
    },
    "hata": [],
    "temas_mm": [
-    0.0,
     0.0
    ],
    "eksen_mm": [
     0.0,
     0.0
    ],
-   "uc_taban_pay": 2.4,
+   "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -9916,21 +9496,21 @@
    "tip": "kanal",
    "olcu": {
     "d": 6,
-    "uc": 9.4,
+    "uc": 11.0,
     "somun_ust": 9.3,
     "taban": 11.8,
     "kavrama": 5.0
    },
    "hata": [],
    "temas_mm": [
-    0.0,
     0.0
    ],
    "eksen_mm": [
     0.0,
     0.0
    ],
-   "uc_taban_pay": 2.4,
+   "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -9938,21 +9518,21 @@
    "tip": "kanal",
    "olcu": {
     "d": 6,
-    "uc": 9.4,
+    "uc": 11.0,
     "somun_ust": 9.3,
     "taban": 11.8,
     "kavrama": 5.0
    },
    "hata": [],
    "temas_mm": [
-    0.0,
     0.0
    ],
    "eksen_mm": [
     0.0,
     0.0
    ],
-   "uc_taban_pay": 2.4,
+   "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -9960,21 +9540,21 @@
    "tip": "kanal",
    "olcu": {
     "d": 6,
-    "uc": 9.4,
+    "uc": 11.0,
     "somun_ust": 9.3,
     "taban": 11.8,
     "kavrama": 5.0
    },
    "hata": [],
    "temas_mm": [
-    0.0,
     0.0
    ],
    "eksen_mm": [
     0.0,
     0.0
    ],
-   "uc_taban_pay": 2.4,
+   "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -9982,21 +9562,21 @@
    "tip": "kanal",
    "olcu": {
     "d": 6,
-    "uc": 9.4,
+    "uc": 11.0,
     "somun_ust": 9.3,
     "taban": 11.8,
     "kavrama": 5.0
    },
    "hata": [],
    "temas_mm": [
-    0.0,
     0.0
    ],
    "eksen_mm": [
     0.0,
     0.0
    ],
-   "uc_taban_pay": 2.4,
+   "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -10004,21 +9584,21 @@
    "tip": "kanal",
    "olcu": {
     "d": 6,
-    "uc": 9.4,
+    "uc": 11.0,
     "somun_ust": 9.3,
     "taban": 11.8,
     "kavrama": 5.0
    },
    "hata": [],
    "temas_mm": [
-    0.0,
     0.0
    ],
    "eksen_mm": [
     0.0,
     0.0
    ],
-   "uc_taban_pay": 2.4,
+   "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -10026,21 +9606,21 @@
    "tip": "kanal",
    "olcu": {
     "d": 6,
-    "uc": 9.4,
+    "uc": 11.0,
     "somun_ust": 9.3,
     "taban": 11.8,
     "kavrama": 5.0
    },
    "hata": [],
    "temas_mm": [
-    0.0,
     0.0
    ],
    "eksen_mm": [
     0.0,
     0.0
    ],
-   "uc_taban_pay": 2.4,
+   "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -10048,21 +9628,21 @@
    "tip": "kanal",
    "olcu": {
     "d": 6,
-    "uc": 9.4,
+    "uc": 11.0,
     "somun_ust": 9.3,
     "taban": 11.8,
     "kavrama": 5.0
    },
    "hata": [],
    "temas_mm": [
-    0.0,
     0.0
    ],
    "eksen_mm": [
     0.0,
     0.0
    ],
-   "uc_taban_pay": 2.4,
+   "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -10070,21 +9650,21 @@
    "tip": "kanal",
    "olcu": {
     "d": 6,
-    "uc": 9.4,
+    "uc": 11.0,
     "somun_ust": 9.3,
     "taban": 11.8,
     "kavrama": 5.0
    },
    "hata": [],
    "temas_mm": [
-    0.0,
     0.0
    ],
    "eksen_mm": [
     0.0,
     0.0
    ],
-   "uc_taban_pay": 2.4,
+   "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -10092,21 +9672,21 @@
    "tip": "kanal",
    "olcu": {
     "d": 6,
-    "uc": 9.4,
+    "uc": 11.0,
     "somun_ust": 9.3,
     "taban": 11.8,
     "kavrama": 5.0
    },
    "hata": [],
    "temas_mm": [
-    0.0,
     0.0
    ],
    "eksen_mm": [
     0.0,
     0.0
    ],
-   "uc_taban_pay": 2.4,
+   "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -10114,21 +9694,21 @@
    "tip": "kanal",
    "olcu": {
     "d": 6,
-    "uc": 9.4,
+    "uc": 11.0,
     "somun_ust": 9.3,
     "taban": 11.8,
     "kavrama": 5.0
    },
    "hata": [],
    "temas_mm": [
-    0.0,
     0.0
    ],
    "eksen_mm": [
     0.0,
     0.0
    ],
-   "uc_taban_pay": 2.4,
+   "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -10136,21 +9716,21 @@
    "tip": "kanal",
    "olcu": {
     "d": 6,
-    "uc": 9.4,
+    "uc": 11.0,
     "somun_ust": 9.3,
     "taban": 11.8,
     "kavrama": 5.0
    },
    "hata": [],
    "temas_mm": [
-    0.0,
     0.0
    ],
    "eksen_mm": [
     0.0,
     0.0
    ],
-   "uc_taban_pay": 2.4,
+   "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -10502,6 +10082,7 @@
     0.0
    ],
    "uc_taban_pay": 1.1,
+   "somun_gecme_pay": 1.4,
    "tamam": true
   },
   {
@@ -10525,6 +10106,7 @@
     0.0
    ],
    "uc_taban_pay": 1.1,
+   "somun_gecme_pay": 1.4,
    "tamam": true
   },
   {
@@ -10659,6 +10241,7 @@
     0.0
    ],
    "uc_taban_pay": 1.1,
+   "somun_gecme_pay": 1.4,
    "tamam": true
   },
   {
@@ -10682,6 +10265,7 @@
     0.0
    ],
    "uc_taban_pay": 1.1,
+   "somun_gecme_pay": 1.4,
    "tamam": true
   },
   {
@@ -10816,6 +10400,7 @@
     0.0
    ],
    "uc_taban_pay": 1.1,
+   "somun_gecme_pay": 1.4,
    "tamam": true
   },
   {
@@ -10839,6 +10424,7 @@
     0.0
    ],
    "uc_taban_pay": 1.1,
+   "somun_gecme_pay": 1.4,
    "tamam": true
   },
   {
@@ -10973,6 +10559,7 @@
     0.0
    ],
    "uc_taban_pay": 1.1,
+   "somun_gecme_pay": 1.4,
    "tamam": true
   },
   {
@@ -10996,6 +10583,7 @@
     0.0
    ],
    "uc_taban_pay": 1.1,
+   "somun_gecme_pay": 1.4,
    "tamam": true
   },
   {
@@ -12106,6 +11694,7 @@
     0.0
    ],
    "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -12139,6 +11728,7 @@
     0.0
    ],
    "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -12160,6 +11750,7 @@
     0.0
    ],
    "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -12193,6 +11784,7 @@
     0.0
    ],
    "uc_taban_pay": 0.8,
+   "somun_gecme_pay": 1.7,
    "tamam": true
   },
   {
@@ -12214,7 +11806,7 @@
   "temas": 44
  },
  "kabuk": {
-  "cift": 369,
+  "cift": 351,
   "cakisma": [],
   "temas": 1
  },
@@ -12383,15 +11975,15 @@
    "tabla_aci": 45,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0063,
-   "cikinti_alan_cm2": 0.91,
-   "yuzey_cm2": 144.2,
+   "cikinti_orani": 0.0058,
+   "cikinti_alan_cm2": 0.83,
+   "yuzey_cm2": 143.9,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 67.6,
+   "hacim_cm3": 67.7,
    "kutle_g": 68.7,
-   "filament_g": 72.1,
+   "filament_g": 72.2,
    "sure_saat": 1.5,
    "katman": 25,
    "yon": "alt yuzu tablada",
@@ -12566,7 +12158,7 @@
    "kutle_g": 240.3
   }
  ],
- "kutle_g": 7508.0,
+ "kutle_g": 7493.4,
  "kablo_payi": {
   "kutle_g": 400.0,
   "merkez": [
@@ -12576,29 +12168,29 @@
   ],
   "not_": "kablo payi (tahmini): 12 AWG ~4 m, 18 AWG ~10 m, servo uzatma ~8 m, Dupont, XT60, WAGO; parca listesine girmez"
  },
- "kutle_payli_g": 7908.0,
+ "kutle_payli_g": 7893.4,
  "agirlik_merkezi": [
-  -1.12,
-  119.495,
-  -47.414
+  -1.122,
+  119.57,
+  -47.505
  ],
  "agirlik_merkezi_payli": [
-  -1.063,
-  121.038,
-  -48.051
+  -1.065,
+  121.112,
+  -48.138
  ],
  "kutle_grup": {
-  "Plaka": 1862.7,
+  "Plaka": 1848.5,
   "Tahrik": 1714.7,
-  "Guc": 3631.8,
+  "Guc": 3631.5,
   "Elektronik": 129.9,
   "Sensor": 168.8
  },
  "kutle_tur": {
   "Lazer": 1497.0,
-  "Baglanti": 472.8,
+  "Baglanti": 458.2,
   "Satin": 5453.8,
-  "Baski": 84.3
+  "Baski": 84.4
  },
  "en_agir": [
   [
@@ -12651,52 +12243,53 @@
   ]
  ],
  "robot": {
-  "kaynak": "montaj/montaj-analiz.json (tabansiz 601 parca, ev pozu) + taban (kablo payi dahil); kol gruplari omuz_parcalar / dirsek_parcalar'dan (Gobek, Kol, UstKol, OnKol, El)",
-  "tabansiz_kutle_g": 13752.92,
+  "kaynak": "montaj/montaj-analiz.json (tabansiz 601 parca, ev pozu; montajdaki taban cikarildi) + taban (kablo payi dahil); kol gruplari omuz_parcalar / dirsek_parcalar'dan (Gobek, Kol, UstKol, OnKol, El)",
+  "tabansiz_kutle_g": 13716.82,
   "tabansiz_am": [
-   0.029,
-   513.889,
-   4.993
+   0.033,
+   513.57,
+   5.018
   ],
+  "tabansiz_parca": 601,
   "hareketli_gruplar": {
    "Gobek": {
-    "kutle_g": 147.5,
+    "kutle_g": 147.2,
     "am_omuz_yereli": [
-     175.582,
-     7.478,
-     -2.527
+     175.56,
+     7.496,
+     -2.475
     ]
    },
    "Kol": {
-    "kutle_g": 108.3,
+    "kutle_g": 106.1,
     "am_omuz_yereli": [
      185.0,
-     -49.929,
-     0.218
+     -49.235,
+     0.248
     ]
    },
    "UstKol": {
-    "kutle_g": 105.5,
+    "kutle_g": 104.8,
     "am_omuz_yereli": [
-     187.997,
-     -143.467,
-     -4.187
+     188.015,
+     -143.568,
+     -4.207
     ]
    },
    "OnKol": {
-    "kutle_g": 189.2,
+    "kutle_g": 188.9,
     "am_omuz_yereli": [
-     192.87,
-     -207.522,
-     -0.482
+     192.907,
+     -207.582,
+     -0.48
     ]
    },
    "El": {
-    "kutle_g": 75.3,
+    "kutle_g": 75.0,
     "am_omuz_yereli": [
-     182.357,
-     -291.178,
-     -0.718
+     182.345,
+     -291.305,
+     -0.716
     ]
    }
   },
@@ -12716,16 +12309,16 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 21660.9,
+    "kutle_g": 21610.2,
     "am": [
      -0.4,
-     370.5,
+     370.2,
      -14.4
     ],
     "duz": {
      "ileri": 5.28,
      "geri": 4.52,
-     "yan": 4.7,
+     "yan": 4.71,
      "pay_ileri": 3.52,
      "pay_geri": 3.01,
      "pay_yan": 3.14,
@@ -12735,22 +12328,22 @@
      "dF": 199.4,
      "dR": 170.6,
      "dS": 177.6,
-     "h": 370.5
+     "h": 370.2
     },
     "rampa5": {
-     "ileri": 4.4,
+     "ileri": 4.41,
      "geri": 3.65,
      "yan": 3.83,
      "pay_ileri": 2.94,
      "pay_geri": 2.43,
-     "pay_yan": 2.55,
+     "pay_yan": 2.56,
      "statik_egim_ileri": 28.3,
      "statik_egim_geri": 24.7,
      "statik_egim_yan": 25.6,
      "dF": 199.4,
      "dR": 170.6,
      "dS": 177.6,
-     "h": 370.5
+     "h": 370.2
     }
    },
    {
@@ -12767,41 +12360,41 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 21660.9,
+    "kutle_g": 21610.2,
     "am": [
      -0.4,
-     377.8,
-     -6.8
+     377.6,
+     -6.9
     ],
     "duz": {
-     "ileri": 4.98,
+     "ileri": 4.99,
      "geri": 4.63,
-     "yan": 4.61,
+     "yan": 4.62,
      "pay_ileri": 3.32,
-     "pay_geri": 3.08,
-     "pay_yan": 3.07,
+     "pay_geri": 3.09,
+     "pay_yan": 3.08,
      "statik_egim_ileri": 26.9,
-     "statik_egim_geri": 25.2,
+     "statik_egim_geri": 25.3,
      "statik_egim_yan": 25.2,
-     "dF": 191.8,
-     "dR": 178.2,
+     "dF": 191.9,
+     "dR": 178.1,
      "dS": 177.6,
-     "h": 377.8
+     "h": 377.6
     },
     "rampa5": {
      "ileri": 4.11,
-     "geri": 3.75,
+     "geri": 3.76,
      "yan": 3.74,
      "pay_ileri": 2.74,
      "pay_geri": 2.5,
-     "pay_yan": 2.49,
+     "pay_yan": 2.5,
      "statik_egim_ileri": 26.9,
-     "statik_egim_geri": 25.2,
+     "statik_egim_geri": 25.3,
      "statik_egim_yan": 25.2,
-     "dF": 191.8,
-     "dR": 178.2,
+     "dF": 191.9,
+     "dR": 178.1,
      "dS": 177.6,
-     "h": 377.8
+     "h": 377.6
     }
    },
    {
@@ -12818,17 +12411,17 @@
      0
     ],
     "yuk": true,
-    "kutle_g": 22660.9,
+    "kutle_g": 22610.2,
     "am": [
      -0.4,
-     403.2,
+     403.0,
      7.8
     ],
     "duz": {
      "ileri": 4.31,
      "geri": 4.69,
      "yan": 4.32,
-     "pay_ileri": 2.87,
+     "pay_ileri": 2.88,
      "pay_geri": 3.13,
      "pay_yan": 2.88,
      "statik_egim_ileri": 23.7,
@@ -12837,7 +12430,7 @@
      "dF": 177.2,
      "dR": 192.8,
      "dS": 177.6,
-     "h": 403.2
+     "h": 403.0
     },
     "rampa5": {
      "ileri": 3.44,
@@ -12852,7 +12445,7 @@
      "dF": 177.2,
      "dR": 192.8,
      "dS": 177.6,
-     "h": 403.2
+     "h": 403.0
     }
    },
    {
@@ -12869,10 +12462,10 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 21660.9,
+    "kutle_g": 21610.2,
     "am": [
      -0.4,
-     383.1,
+     382.8,
      -9.0
     ],
     "duz": {
@@ -12888,14 +12481,14 @@
      "dF": 194.0,
      "dR": 176.0,
      "dS": 177.6,
-     "h": 383.1
+     "h": 382.8
     },
     "rampa5": {
-     "ileri": 4.09,
+     "ileri": 4.1,
      "geri": 3.64,
      "yan": 3.68,
      "pay_ileri": 2.73,
-     "pay_geri": 2.42,
+     "pay_geri": 2.43,
      "pay_yan": 2.45,
      "statik_egim_ileri": 26.9,
      "statik_egim_geri": 24.7,
@@ -12903,7 +12496,7 @@
      "dF": 194.0,
      "dR": 176.0,
      "dS": 177.6,
-     "h": 383.1
+     "h": 382.8
     }
    },
    {
@@ -12920,15 +12513,15 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 21660.9,
+    "kutle_g": 21610.2,
     "am": [
      -0.4,
-     372.7,
+     372.5,
      -19.6
     ],
     "duz": {
      "ileri": 5.39,
-     "geri": 4.35,
+     "geri": 4.36,
      "yan": 4.68,
      "pay_ileri": 3.59,
      "pay_geri": 2.9,
@@ -12939,12 +12532,12 @@
      "dF": 204.6,
      "dR": 165.4,
      "dS": 177.6,
-     "h": 372.7
+     "h": 372.5
     },
     "rampa5": {
      "ileri": 4.51,
      "geri": 3.48,
-     "yan": 3.8,
+     "yan": 3.81,
      "pay_ileri": 3.01,
      "pay_geri": 2.32,
      "pay_yan": 2.54,
@@ -12954,7 +12547,7 @@
      "dF": 204.6,
      "dR": 165.4,
      "dS": 177.6,
-     "h": 372.7
+     "h": 372.5
     }
    },
    {
@@ -12971,26 +12564,26 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 21660.9,
+    "kutle_g": 21610.2,
     "am": [
      3.3,
-     374.3,
+     374.1,
      -14.4
     ],
     "duz": {
      "ileri": 5.23,
      "geri": 4.47,
      "yan": 4.58,
-     "pay_ileri": 3.48,
+     "pay_ileri": 3.49,
      "pay_geri": 2.98,
      "pay_yan": 3.05,
-     "statik_egim_ileri": 28.0,
+     "statik_egim_ileri": 28.1,
      "statik_egim_geri": 24.5,
      "statik_egim_yan": 25.0,
      "dF": 199.4,
      "dR": 170.6,
      "dS": 174.7,
-     "h": 374.3
+     "h": 374.1
     },
     "rampa5": {
      "ileri": 4.35,
@@ -12999,13 +12592,13 @@
      "pay_ileri": 2.9,
      "pay_geri": 2.4,
      "pay_yan": 2.47,
-     "statik_egim_ileri": 28.0,
+     "statik_egim_ileri": 28.1,
      "statik_egim_geri": 24.5,
      "statik_egim_yan": 25.0,
      "dF": 199.4,
      "dR": 170.6,
      "dS": 174.7,
-     "h": 374.3
+     "h": 374.1
     }
    }
   ]
@@ -13015,36 +12608,36 @@
    "rampa": 0.0,
    "a": 0.5,
    "F_N": 17.2,
-   "T_kgcm": 2.74,
-   "oran": 0.435
+   "T_kgcm": 2.73,
+   "oran": 0.434
   },
   "rampa5": {
    "rampa": 5.0,
    "a": 0.5,
-   "F_N": 35.7,
-   "T_kgcm": 5.69,
-   "oran": 0.903
+   "F_N": 35.6,
+   "T_kgcm": 5.67,
+   "oran": 0.901
   },
   "rampa5_yavas": {
    "rampa": 5.0,
    "a": 0.25,
-   "F_N": 30.3,
-   "T_kgcm": 4.83,
-   "oran": 0.766
+   "F_N": 30.2,
+   "T_kgcm": 4.81,
+   "oran": 0.764
   },
   "rampa5_durus": {
    "rampa": 5.0,
    "a": 0.0,
-   "F_N": 24.9,
-   "T_kgcm": 3.96,
-   "oran": 0.629
+   "F_N": 24.8,
+   "T_kgcm": 3.95,
+   "oran": 0.628
   },
   "rampa5_yuk2": {
    "rampa": 5.0,
    "a": 0.5,
-   "F_N": 39.0,
-   "T_kgcm": 6.21,
-   "oran": 0.986
+   "F_N": 38.9,
+   "T_kgcm": 6.2,
+   "oran": 0.984
   },
   "surekli_kgcm": 6.3,
   "stall_kgcm": 21.0,
@@ -13057,8 +12650,8 @@
   }
  },
  "aks": {
-  "on_N": 98.0,
-  "arka_N": 114.5,
+  "on_N": 97.7,
+  "arka_N": 114.2,
   "mu_gereken_rampa5": 0.169
  },
  "aku": {
@@ -13150,7 +12743,7 @@
    "Baglanti",
    "M3 isil gomme somun",
    2,
-   0.9
+   0.5
   ],
   [
    "Baglanti",
@@ -13211,12 +12804,6 @@
    "M5x16 DIN 913 set vida (saplama)",
    8,
    18.7
-  ],
-  [
-   "Baglanti",
-   "M6 DIN 125 pul",
-   14,
-   14.2
   ],
   [
    "Baglanti",
@@ -13429,7 +13016,7 @@
    180.0
   ]
  ],
- "step_kati": 306,
+ "step_kati": 292,
  "joints_ok": true,
  "kablo_yolu": [
   {
@@ -13990,5 +13577,5 @@
    ]
   }
  ],
- "sure_s": 99.0
+ "sure_s": 89.0
 }

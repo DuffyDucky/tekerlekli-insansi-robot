@@ -4,8 +4,9 @@
 #   python carpisma_kos.py                    -> tum bolumler + birlestirme (~1,5-2 saat)
 #   python carpisma_kos.py kafa_sag taban     -> yalniz bu bolumler + birlestirme (digerleri onceki dosyalarindan; not edilir)
 #   python carpisma_kos.py birlestir          -> yalniz birlestirme
+#   python carpisma_kos.py kontrol            -> sonuc eskidi mi? (izlenen dosyalarin ozetleri kayitla karsilastirilir; eskiyse cikis kodu 1)
 # Gunluk: %TEMP%/carpisma-<bolum>.log
-import os, sys, json, time, hashlib, datetime, subprocess
+import os, sys, json, time, hashlib, datetime, subprocess, glob, html
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 BOLUM_DIZIN = os.path.join(HERE, "carpisma-bolum")
@@ -22,8 +23,26 @@ GEREK_MODUL = {
     "kafa_sag": ["omuz_sag", "dirsek_sag", "kafa"], "kafa_sol": ["omuz_sol", "dirsek_sol", "kafa"],
     "taban": ["iskelet", "omuz_sag", "omuz_sol", "kabuk", "dirsek_sag", "dirsek_sol", "kafa", "taban"],
 }
-KAYNAK = ["carpisma.py", "arayuz.py", "ortak_lib.py", "iskelet/iskelet_parcalar.py", "omuz/omuz_parcalar.py", "kabuk/kabuk_parcalar.py",
-          "dirsek/dirsek_parcalar.py", "kafa/kafa_parcalar.py", "taban/taban_parcalar.py", "taban/taban_lib.py"]
+# Sonucun eskidigini anlamak icin izlenen dosyalar (md5 ozeti sonuc dosyasina 'kaynak' olarak yazilir). Geometriyi ya da taramayi
+# etkileyen her sey burada olmali: kosucu, arayuz, ortak/modul kutuphaneleri (*_lib.py), sigma kesiti, modul parca betikleri ve
+# kafa taramasinin okudugu kafa/kafa-analiz.json (yasak bolge / eklem verisi).
+KAYNAK_SABIT = ["carpisma.py", "arayuz.py", "ortak_lib.py", "sigma_profil.py",
+                "iskelet/iskelet_parcalar.py", "omuz/omuz_parcalar.py", "kabuk/kabuk_parcalar.py",
+                "dirsek/dirsek_parcalar.py", "kafa/kafa_parcalar.py", "taban/taban_parcalar.py", "kafa/kafa-analiz.json"]
+
+
+def kaynak_listesi():
+    """Sabit liste + tum *_lib.py dosyalari (kok ve modul klasorleri; yeni kutuphane kendiliginden izlenir)."""
+    out = list(KAYNAK_SABIT)
+    for desen in ("*_lib.py", os.path.join("*", "*_lib.py")):
+        for p in sorted(glob.glob(os.path.join(HERE, desen))):
+            r = os.path.relpath(p, HERE).replace(os.sep, "/")
+            if r not in out:
+                out.append(r)
+    return out
+
+
+KAYNAK = kaynak_listesi()
 FC = os.path.join(os.environ.get("LOCALAPPDATA", ""), "Programs", "FreeCAD 1.1", "bin", "freecadcmd.exe")
 BASLATICI = r"C:\Users\Victus\.robot-cad\run_fc.py"
 
@@ -46,7 +65,7 @@ def bolum_dosyasi(b):
 def kaynak_ozeti():
     """Girdi dosyalarinin kisa ozeti (md5, 10 hane): birlestirmede tum bolumlerin ayni kaynakla kostugu dogrulanir."""
     out = {}
-    for f in KAYNAK:
+    for f in kaynak_listesi():
         p = os.path.join(HERE, f)
         out[f] = hashlib.md5(open(p, "rb").read()).hexdigest()[:10] if os.path.exists(p) else None
     return out
@@ -55,6 +74,57 @@ def kaynak_ozeti():
 def _oku(b):
     f = bolum_dosyasi(b)
     return json.load(open(f, encoding="utf-8")) if os.path.exists(f) else None
+
+
+def eskime(sonuc=None):
+    """Sonuc dosyasi eskidi mi? Kayitli 'kaynak' ozetleri bugunku dosyalarla karsilastirilir.
+    Doner: dict(eski, degisen, kayitta_yok, eski_bolumler, sonuc_yok). 'kayitta_yok' = izleme listesine sonradan eklenmis dosya
+    (kosu onun eski halini gormus olabilir; tam kosu sonrasi temizlenir). eski_bolumler: kendi kaynak kaydi bugunkunden farkli bolumler."""
+    guncel = kaynak_ozeti()
+    if sonuc is None:
+        if not os.path.exists(SONUC):
+            return dict(eski=True, degisen=[], kayitta_yok=[], eski_bolumler=[], sonuc_yok=True)
+        sonuc = json.load(open(SONUC, encoding="utf-8"))
+    kayit = sonuc.get("kaynak") or {}
+    degisen = sorted(f for f, h in guncel.items() if f in kayit and kayit[f] != h)
+    yok = sorted(f for f in guncel if f not in kayit)
+    eski_b = []
+    for b in BOLUMLER:
+        v = _oku(b)
+        if v is None:
+            continue
+        kb = v.get("kaynak") or {}
+        if any(kb.get(f) != h for f, h in guncel.items()):
+            eski_b.append(b)
+    return dict(eski=bool(degisen or yok or eski_b or not kayit), degisen=degisen, kayitta_yok=yok, eski_bolumler=eski_b, sonuc_yok=False)
+
+
+def eskime_metni(e=None):
+    """Kisa uyari metni (eskimediyse bos dize)."""
+    e = e or eskime()
+    if not e["eski"]:
+        return ""
+    if e["sonuc_yok"]:
+        return "carpisma-sonuc.json yok: modüller arası tarama koşulmadı."
+    parca = []
+    if e["degisen"]:
+        parca.append("kosudan sonra degisen dosyalar: " + ", ".join(e["degisen"]))
+    if e["kayitta_yok"]:
+        parca.append("kosu kaydinda ozeti olmayan (izlemeye sonradan eklenen) dosyalar: " + ", ".join(e["kayitta_yok"]))
+    if e["eski_bolumler"]:
+        parca.append("kaynagi eskimis bolumler: " + ", ".join(e["eski_bolumler"]))
+    return ("UYARI: carpisma-sonuc.json eskimis olabilir; " + "; ".join(parca) +
+            ". Rapordaki cakisma/bosluk sayilari bu degisikliklerden once olculdu; 'python carpisma_kos.py' ile yeniden kosun.")
+
+
+def eskime_html():
+    """Rapor betikleri icin HTML uyari kutusu (eskimediyse bos dize). Satir ici stil: her raporun kendi CSS'inden bagimsiz."""
+    m = eskime_metni()
+    if not m:
+        return ""
+    print(m, file=sys.stderr)
+    return ("<div style='border:2px solid #c0392b;background:rgba(192,57,43,.12);border-radius:8px;padding:10px 14px;margin:12px 0'>"
+            "<b>Çakışma taraması eskimiş olabilir.</b> %s</div>" % html.escape(m))
 
 
 def birlestir():
@@ -121,6 +191,8 @@ def birlestir():
     json.dump(out, open(SONUC, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print("birlestirildi:", SONUC, "| tek kosu:", tek, "| eksik:", eksik, "| TOPLAM cakisma", toplam["cakisma"],
           "eklem araliginda", toplam["eklem_araliginda"])
+    if eskime_metni(eskime(out)):
+        print(eskime_metni(eskime(out)))
     return out
 
 
@@ -150,5 +222,9 @@ if __name__ == "__main__":
     arg = sys.argv[1:]
     if arg == ["birlestir"]:
         birlestir()
+    elif arg == ["kontrol"]:
+        m = eskime_metni()
+        print(m or "carpisma-sonuc.json guncel: izlenen %d dosyanin ozetleri kayitla ayni." % len(kaynak_listesi()))
+        sys.exit(1 if m else 0)
     else:
         kos(bolum_coz(",".join(arg) or "hepsi"))

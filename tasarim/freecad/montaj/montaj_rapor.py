@@ -347,6 +347,7 @@ ol li,ul li{margin:5px 0}code{background:rgba(127,127,127,.15);padding:1px 5px;b
 .not{color:var(--mut);font-size:13px}
 </style></head><body><main>""")
 H.append("<h1>Robot ana montajı: tam robot (iskelet, omuzlar, kabuk, dirsekler, kafa, taban)</h1>")
+H.append(__import__("carpisma_kos").eskime_html())   # C6: carpisma-sonuc.json eskidiyse uyari kutusu (bos dize = guncel)
 H.append("<div class='sub'>FreeCAD 1.1 Assembly · <code>ana_montaj.py</code> · %d parça, %d grup, %d eklem · yerleşim <code>arayuz.MODULLER</code>'den · "
          "sol omuz ve sol dirsek gerçek aynalı geometri</div>" % (d["parca_sayisi"], d["grup_sayisi"], len(d["eklemler"])))
 kpi = [

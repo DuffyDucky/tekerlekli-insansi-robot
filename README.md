@@ -23,6 +23,7 @@ HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünü
 
 ## Proje çerçevesi (Duffy, 26 Eylül 2026)
 
+- Robotun adı: **Lale** (Duffy, 11 Ekim 2026)
 - Ekip: **4 kişi**
 - Süre: **normalde 1 dönem**, proje başarılı giderse muhtemelen 2 dönem
 - Bütçe: **okul / hoca destekli**

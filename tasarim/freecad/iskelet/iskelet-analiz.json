@@ -217,6 +217,11 @@
      true
     ],
     [
+     "ayak A M6 ucu cekic somunu 0.6 mm gecer (>= 0.5), kanal tabanina 1.9 mm kalir (>= 0.5)",
+     0.6,
+     true
+    ],
+    [
      "ayak A civata ekseni somun deligi ekseninde",
      0.0,
      true
@@ -234,6 +239,11 @@
     [
      "ayak B civata ucu yuzden 9.9 mm iceride (kanal tabani 11.8, somun alti 9.3)",
      9.9,
+     true
+    ],
+    [
+     "ayak B M6 ucu cekic somunu 0.6 mm gecer (>= 0.5), kanal tabanina 1.9 mm kalir (>= 0.5)",
+     0.6,
      true
     ],
     [
@@ -274,6 +284,11 @@
      true
     ],
     [
+     "ayak A M6 ucu cekic somunu 0.6 mm gecer (>= 0.5), kanal tabanina 1.9 mm kalir (>= 0.5)",
+     0.6,
+     true
+    ],
+    [
      "ayak A civata ekseni somun deligi ekseninde",
      0.0,
      true
@@ -291,6 +306,11 @@
     [
      "ayak B civata ucu yuzden 9.9 mm iceride (kanal tabani 11.8, somun alti 9.3)",
      9.9,
+     true
+    ],
+    [
+     "ayak B M6 ucu cekic somunu 0.6 mm gecer (>= 0.5), kanal tabanina 1.9 mm kalir (>= 0.5)",
+     0.6,
      true
     ],
     [
@@ -331,6 +351,11 @@
      true
     ],
     [
+     "ayak A M6 ucu cekic somunu 0.6 mm gecer (>= 0.5), kanal tabanina 1.9 mm kalir (>= 0.5)",
+     0.6,
+     true
+    ],
+    [
      "ayak A civata ekseni somun deligi ekseninde",
      0.0,
      true
@@ -348,6 +373,11 @@
     [
      "ayak B civata ucu yuzden 9.9 mm iceride (kanal tabani 11.8, somun alti 9.3)",
      9.9,
+     true
+    ],
+    [
+     "ayak B M6 ucu cekic somunu 0.6 mm gecer (>= 0.5), kanal tabanina 1.9 mm kalir (>= 0.5)",
+     0.6,
      true
     ],
     [
@@ -388,6 +418,11 @@
      true
     ],
     [
+     "ayak A M6 ucu cekic somunu 0.6 mm gecer (>= 0.5), kanal tabanina 1.9 mm kalir (>= 0.5)",
+     0.6,
+     true
+    ],
+    [
      "ayak A civata ekseni somun deligi ekseninde",
      0.0,
      true
@@ -405,6 +440,11 @@
     [
      "ayak B civata ucu yuzden 9.9 mm iceride (kanal tabani 11.8, somun alti 9.3)",
      9.9,
+     true
+    ],
+    [
+     "ayak B M6 ucu cekic somunu 0.6 mm gecer (>= 0.5), kanal tabanina 1.9 mm kalir (>= 0.5)",
+     0.6,
      true
     ],
     [
@@ -638,9 +678,10 @@
   }
  ],
  "bolge": {
-  "kontrol_edilen": 31,
+  "kontrol_edilen": 57,
   "ihlal": [],
   "sahipler": [
+   "kabuk",
    "kafa",
    "taban"
   ]
@@ -694,19 +735,20 @@
   "toplam_mm": 2570.5,
   "stok_mm": 1000.0,
   "testere_mm": 3.0,
+  "stok_tolerans_mm": 2.0,
+  "min_artik_mm": 10.0,
+  "kesim_hatasi": [],
   "cubuklar": [
    {
     "parcalar": [
      [
       800.5,
       "Govde diregi"
-     ],
-     [
-      190.0,
-      "Sase ara rayi orta"
      ]
     ],
-    "artik": 3.5
+    "artik": 194.5,
+    "artik_nominal": 196.5,
+    "kesim_sayisi": 1
    },
    {
     "parcalar": [
@@ -723,7 +765,9 @@
       "Sase ara rayi on"
      ]
     ],
-    "artik": 101.0
+    "artik": 99.0,
+    "artik_nominal": 101.0,
+    "kesim_sayisi": 3
    },
    {
     "parcalar": [
@@ -734,9 +778,15 @@
      [
       190.0,
       "Sase ara rayi arka"
+     ],
+     [
+      190.0,
+      "Sase ara rayi orta"
      ]
     ],
-    "artik": 304.0
+    "artik": 109.0,
+    "artik_nominal": 111.0,
+    "kesim_sayisi": 3
    }
   ],
   "kutle_uretici_g": 5115.0,
@@ -771,34 +821,34 @@
      90,
      0
     ],
-    "Mx_Nm": 4.106537938338198,
-    "Mz_Nm": -3.410605131648481e-16,
-    "sigma_direk_MPa": 0.7822767348827097,
-    "sehim_tepe_mm": 0.1665348741028186,
-    "donme_tepe_derece": 0.023839463904644642,
+    "Mx_Nm": 4.102948292044586,
+    "Mz_Nm": -7.958078640513122e-16,
+    "sigma_direk_MPa": 0.7814523589011965,
+    "sehim_tepe_mm": 0.16638930104284533,
+    "donme_tepe_derece": 0.023818625124014354,
     "travers": [
      {
       "taraf": "sag",
-      "F_N": 12.0035,
-      "Mb_Nmm": 1825.6316,
-      "Mt_Nmm": 2053.269,
-      "sigma_MPa": 0.3189,
+      "F_N": 11.9318,
+      "Mb_Nmm": 1818.0443,
+      "Mt_Nmm": 2051.4741,
+      "sigma_MPa": 0.3176,
       "sehim_uc_mm": 0.0006,
       "sehim_yuva_mm": 0.0004,
       "donme_yuva_rad": 0.0
      },
      {
       "taraf": "sol",
-      "F_N": 12.0035,
-      "Mb_Nmm": 1825.6316,
-      "Mt_Nmm": 2053.269,
-      "sigma_MPa": 0.3189,
+      "F_N": 11.9318,
+      "Mb_Nmm": 1818.0443,
+      "Mt_Nmm": 2051.4741,
+      "sigma_MPa": 0.3176,
       "sehim_uc_mm": 0.0006,
       "sehim_yuva_mm": 0.0004,
       "donme_yuva_rad": 0.0
      }
     ],
-    "el_dususu_mm": 0.12893876072605834
+    "el_dususu_mm": 0.12882147363825308
    },
    {
     "ad": "İki kol yana tam açık (yana 90°) + 0,5 kg",
@@ -810,34 +860,34 @@
      0,
      90
     ],
-    "Mx_Nm": -0.02548904485437409,
+    "Mx_Nm": -0.025270921885429,
     "Mz_Nm": -1.3642420526593924e-15,
-    "sigma_direk_MPa": 0.06944412170289287,
-    "sehim_tepe_mm": 0.0010336723876809097,
-    "donme_tepe_derece": 0.00014797018166977325,
+    "sigma_direk_MPa": 0.06920864623314651,
+    "sehim_tepe_mm": 0.0010248267172603162,
+    "donme_tepe_derece": 0.0001467039241255791,
     "travers": [
      {
       "taraf": "sag",
-      "F_N": 12.0035,
-      "Mb_Nmm": 3889.7237,
-      "Mt_Nmm": -12.7445,
-      "sigma_MPa": 0.6794,
+      "F_N": 11.9318,
+      "Mb_Nmm": 3880.3417,
+      "Mt_Nmm": -12.6355,
+      "sigma_MPa": 0.6778,
       "sehim_uc_mm": 0.0014,
       "sehim_yuva_mm": 0.001,
       "donme_yuva_rad": 0.0
      },
      {
       "taraf": "sol",
-      "F_N": 12.0035,
-      "Mb_Nmm": 3889.7237,
-      "Mt_Nmm": -12.7445,
-      "sigma_MPa": 0.6794,
+      "F_N": 11.9318,
+      "Mb_Nmm": 3880.3417,
+      "Mt_Nmm": -12.6355,
+      "sigma_MPa": 0.6778,
       "sehim_uc_mm": 0.0014,
       "sehim_yuva_mm": 0.001,
       "donme_yuva_rad": 0.0
      }
     ],
-    "el_dususu_mm": 0.012901781714163783
+    "el_dususu_mm": 0.012875744352807882
    },
    {
     "ad": "Sağ kol yana tam açık + 0,5 kg, sol kol aşağıda",
@@ -849,34 +899,34 @@
      0,
      0
     ],
-    "Mx_Nm": -0.025489044854374084,
-    "Mz_Nm": 2.0640921247437722,
-    "sigma_direk_MPa": 0.42997697037184135,
-    "sehim_tepe_mm": 0.08371273697263817,
-    "donme_tepe_derece": 0.011983476627160353,
+    "Mx_Nm": -0.025270921885428996,
+    "Mz_Nm": 2.062297321444536,
+    "sigma_direk_MPa": 0.4294279984556345,
+    "sehim_tepe_mm": 0.08363984794900205,
+    "donme_tepe_derece": 0.011973042564881332,
     "travers": [
      {
       "taraf": "sag",
-      "F_N": 12.0035,
-      "Mb_Nmm": 3889.7237,
-      "Mt_Nmm": -12.7445,
-      "sigma_MPa": 0.6794,
+      "F_N": 11.9318,
+      "Mb_Nmm": 3880.3417,
+      "Mt_Nmm": -12.6355,
+      "sigma_MPa": 0.6778,
       "sehim_uc_mm": 0.0014,
       "sehim_yuva_mm": 0.001,
       "donme_yuva_rad": 0.0
      },
      {
       "taraf": "sol",
-      "F_N": 12.0035,
-      "Mb_Nmm": 1825.6316,
-      "Mt_Nmm": -12.7445,
-      "sigma_MPa": 0.3189,
+      "F_N": 11.9318,
+      "Mb_Nmm": 1818.0443,
+      "Mt_Nmm": -12.6355,
+      "sigma_MPa": 0.3176,
       "sehim_uc_mm": 0.0006,
       "sehim_yuva_mm": 0.0004,
       "donme_yuva_rad": 0.0
      }
     ],
-    "el_dususu_mm": 0.1155871540123603
+    "el_dususu_mm": 0.11547182797886871
    },
    {
     "ad": "Sağ kol öne, sol kol yana tam açık + 0,5 kg",
@@ -888,34 +938,34 @@
      0,
      90
     ],
-    "Mx_Nm": 2.040524446741913,
-    "Mz_Nm": -2.064092124743772,
-    "sigma_direk_MPa": 0.7819411317105592,
-    "sehim_tepe_mm": 0.11770478238004489,
-    "donme_tepe_derece": 0.016849437248925393,
+    "Mx_Nm": 2.038838685079578,
+    "Mz_Nm": -2.062297321444537,
+    "sigma_direk_MPa": 0.7811358088531319,
+    "sehim_tepe_mm": 0.11760495838771443,
+    "donme_tepe_derece": 0.016835147446415257,
     "travers": [
      {
       "taraf": "sag",
-      "F_N": 12.0035,
-      "Mb_Nmm": 1825.6316,
-      "Mt_Nmm": 2053.269,
-      "sigma_MPa": 0.3189,
+      "F_N": 11.9318,
+      "Mb_Nmm": 1818.0443,
+      "Mt_Nmm": 2051.4741,
+      "sigma_MPa": 0.3176,
       "sehim_uc_mm": 0.0006,
       "sehim_yuva_mm": 0.0004,
       "donme_yuva_rad": 0.0
      },
      {
       "taraf": "sol",
-      "F_N": 12.0035,
-      "Mb_Nmm": 3889.7237,
-      "Mt_Nmm": -12.7445,
-      "sigma_MPa": 0.6794,
+      "F_N": 11.9318,
+      "Mb_Nmm": 3880.3417,
+      "Mt_Nmm": -12.6355,
+      "sigma_MPa": 0.6778,
       "sehim_uc_mm": 0.0014,
       "sehim_yuva_mm": 0.001,
       "donme_yuva_rad": 0.0
      }
     ],
-    "el_dususu_mm": 0.10357383392002467
+    "el_dususu_mm": 0.10348193273255026
    },
    {
     "ad": "İki kol aşağıda (yüksüz referans)",
@@ -927,70 +977,70 @@
      0,
      0
     ],
-    "Mx_Nm": -0.01322654485437409,
-    "Mz_Nm": 5.684341886080802e-16,
-    "sigma_direk_MPa": 0.053795400314250945,
-    "sehim_tepe_mm": 0.0005363839358634627,
-    "donme_tepe_derece": 7.678334971540849e-05,
+    "Mx_Nm": -0.013008421885429002,
+    "Mz_Nm": 1.7053025658242405e-16,
+    "sigma_direk_MPa": 0.053559924844504524,
+    "sehim_tepe_mm": 0.0005275382654428692,
+    "donme_tepe_derece": 7.551709217121431e-05,
     "travers": [
      {
       "taraf": "sag",
-      "F_N": 7.0985,
-      "Mb_Nmm": 1016.3066,
-      "Mt_Nmm": -6.6133,
-      "sigma_MPa": 0.1775,
+      "F_N": 7.0268,
+      "Mb_Nmm": 1008.7193,
+      "Mt_Nmm": -6.5042,
+      "sigma_MPa": 0.1762,
       "sehim_uc_mm": 0.0003,
       "sehim_yuva_mm": 0.0002,
       "donme_yuva_rad": 0.0
      },
      {
       "taraf": "sol",
-      "F_N": 7.0985,
-      "Mb_Nmm": 1016.3066,
-      "Mt_Nmm": -6.6133,
-      "sigma_MPa": 0.1775,
+      "F_N": 7.0268,
+      "Mb_Nmm": 1008.7193,
+      "Mt_Nmm": -6.5042,
+      "sigma_MPa": 0.1762,
       "sehim_uc_mm": 0.0003,
       "sehim_yuva_mm": 0.0002,
       "donme_yuva_rad": 0.0
      }
     ],
-    "el_dususu_mm": 0.0008889814484472094
+    "el_dususu_mm": 0.0008829605674221792
    }
   ],
   "en_kotu": {
-   "direk_sigma_MPa": 0.9316143307417085,
+   "direk_sigma_MPa": 0.9113140103615723,
    "direk_poz": [
     [
      90,
-     0
+     3
     ],
     [
      90,
      45
     ]
    ],
-   "direk_sehim_mm": 0.1538585284484642,
-   "travers_sigma_MPa": 0.6794140411217142,
+   "direk_sehim_mm": 0.1519869290724733,
+   "travers_sigma_MPa": 0.6777752874752229,
    "travers_poz": [
     [
-     0,
-     0
+     -45,
+     3
     ],
     [
-     0,
+     -45,
      90
     ]
    ],
-   "travers_sehim_uc_mm": 0.001410772041983325,
-   "sehim_tepe_mm": 0.1665348741028186,
+   "travers_sehim_uc_mm": 0.001407795716200104,
+   "sehim_tepe_mm": 0.1661600673404942,
    "sehim_poz": [
     [
      90,
-     0
+     3
     ],
     [
      90,
-     0
+     3
     ]
    ],
    "izgara_poz": 13689
@@ -1001,8 +1051,8 @@
    "Rp02_MPa": 110.0
   },
   "sonuc": {
-   "direk_emniyet": 118.07461131734959,
-   "travers_emniyet": 161.90421943354266,
+   "direk_emniyet": 120.70482704019493,
+   "travers_emniyet": 162.2956782767345,
    "direk_sehim_uygun": true,
    "el_uygun": true
   }
@@ -1070,5 +1120,5 @@
   ]
  ],
  "step_kati": 59,
- "sure_s": 12.7
+ "sure_s": 12.0
 }

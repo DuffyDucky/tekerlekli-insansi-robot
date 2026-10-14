@@ -1,0 +1,75 @@
+{
+ "bb_govde": [
+  -34.0,
+  54.1,
+  187.5,
+  206.5,
+  -55.0,
+  2.7
+ ],
+ "bb_koruma": [
+  -49.0,
+  74.0,
+  186.0,
+  214.0,
+  -53.2,
+  31.0
+ ],
+ "en_yakin_govde": [
+  [
+   4.5,
+   3.0,
+   "Kafa iskeleti"
+  ],
+  [
+   7.5,
+   9.3,
+   "Arka kafa kabugu"
+  ],
+  [
+   43.81,
+   24.7,
+   "Isil gomme somun M3 (kafa tablasi)"
+  ],
+  [
+   44.12,
+   25.08,
+   "Kabuk civatasi M3x8 ISO 7380"
+  ],
+  [
+   49.81,
+   45.67,
+   "Tilt horn 25T aluminyum disk"
+  ]
+ ],
+ "en_yakin_koruma": [
+  [
+   4.5,
+   3.0,
+   "Kafa iskeleti"
+  ],
+  [
+   7.5,
+   9.3,
+   "Arka kafa kabugu"
+  ],
+  [
+   43.81,
+   24.7,
+   "Isil gomme somun M3 (kafa tablasi)"
+  ],
+  [
+   44.12,
+   25.08,
+   "Kabuk civatasi M3x8 ISO 7380"
+  ],
+  [
+   63.52,
+   39.5,
+   "Yuz ekrani Waveshare 7in HDMI LCD (C)"
+  ]
+ ],
+ "cakisma": [],
+ "tilt_cakisma": [],
+ "tilt_en_yakin_pan_govde_mm": 28.12
+}

@@ -9,15 +9,15 @@ Koordinat: orijin zemin + robot merkezi, +X sağ, +Y yukarı, +Z ileri (mm).
 | Modül | Parça | Baskı (PETG) | Lazer / kesim | Kütle | Not |
 |---|---|---|---|---|---|
 | İskelet | 59 | – | 7 sigma 40×40 kesimi (3 × 1 m stok) | 5.793 g | şase + gövde direği + omuz traversi |
-| Omuz (sağ + sol) | 2 × 68 | 2 × 5 (sol aynalı basılır) | – | 2 × 464 g | 2 eksen, DS3218MG × 2 |
-| Kabuk | 202 | 15 | – | 4.926 g | gövde + taban eteği + Nextion 10,1" |
-| Dirsek + bilek + el (sağ + sol) | 2 × 53 | 2 × 4 | – | 2 × 370 g | MG996R × 2 |
-| Kafa | 98 | 7 | – | 1.367 g | pan + tilt MG996R, 7" LCD, Camera Module 3 |
+| Omuz (sağ + sol) | 2 × 68 | 2 × 5 (sol aynalı basılır) | – | 2 × 460 g | 2 eksen, DS3218MG × 2 |
+| Kabuk | 202 | 15 | – | 4.901 g | gövde + taban eteği + Nextion 10,1" |
+| Dirsek + bilek + el (sağ + sol) | 2 × 53 | 2 × 4 | – | 2 × 369 g | MG996R × 2 |
+| Kafa | 98 | 7 | – | 1.363 g | pan + tilt MG996R, 7" LCD, Camera Module 3 |
 | Taban | 306 | 4 | 3 (Al 3 mm plaka, 2 × 5 mm kontrplak) | 7.508 g | 4 × JGB37, LiFePO4, güç, kartlar, 3 sonar, acil stop |
-| **Toplam (ana montaj)** | **907** | **44** | **3 lazer + 7 profil** | **21.261 g** | + kablo payı 400 g (tahmini) = **21,66 kg** |
+| **Toplam (ana montaj)** | **907** | **44** | **3 lazer + 7 profil** | **21.224 g** | + kablo payı 400 g (tahmini) = **21,62 kg** |
 
-Ağırlık merkezi (ev pozu, kollar aşağıda): montaj (−0,4; 374,6; −13,5) mm; kablo payıyla (−0,4; 370,5; −14,4) mm, yerden 370 mm.
-Montaj kütlesi + kablo payı = taban raporundaki 21.660,9 g (fark 0,0 g, AM 0,03 mm). Eklemler: 14 döner (2 kol × 4, kafa 2, teker 4) + 7 sabit + zemin.
+Ağırlık merkezi (ev pozu, kollar aşağıda): montaj (−0,4; 374,2; −13,5) mm (11 Ekim tolerans güncellemesinden sonra); kablo payıyla (−0,4; 370,5; −14,4) mm, yerden 370 mm.
+Montaj kütlesi + kablo payı = taban raporundaki 21.624,5 g (fark 0,0 g, AM 0,03 mm). `taban_montaj.py` ana montajdaki tabanı çıkarıp "tabansız" robotu buluyor (11 Ekim 2026 düzeltmesi; önceden yeniden koşunca taban iki kez sayılıyordu). Eklemler: 14 döner (2 kol × 4, kafa 2, teker 4) + 7 sabit + zemin.
 
 ## Devrilme, motor, akü (taban raporu)
 
@@ -48,6 +48,10 @@ Diğer tüm modül çiftlerinde eklem aralığında çakışma 0 (omuz, kol zinc
 kol ↔ kabuk ~3,8 mm (kol aşağıda), sabit boyun ↔ kabuk R62 halkası 8,4 mm, kafa ↔ ön kol 25,7 mm, kol ↔ taban/etek ~365 mm.
 
 ## Açık işler
+
+**Tolerans (11 Ekim 2026):** ısıl gömme somun deliği M3 Ø4,0 / M5 Ø6,4 (`arayuz.INSERT_DELIK`; önceden somun dış çapındaydı), üst kol tüpü ↔ pim
+her yanda 0,25 mm (`arayuz.GECME`), kabuk dili ile komşunun dış yarısı arası 0,2 mm (`arayuz.KABUK_BINDIRME_BOSLUK`). Rulman yuvaları tam ölçüde;
+`test/tolerans_kuponu.py` kuponlarıyla (Ø52, Ø16, Ø40 mil, somun delikleri) seçilecek. Ayrıntı `planlama/baski-listesi.md`.
 
 **Satın alınacak / BOM'a eklenecek:** 12 V 40 A röle + soket; ESP32 taşıyıcı (pertinaks + 2 × 15'li dişi header); M2,5 pirinç burç + vida
 (Pi, PCA9685, BNO055); M4 ve M5 çekiç somun; M5×16 set vida; 25 mm cırt kayış (2); köpük bant; XT60 şarj girişi; 37 mm L motor braketi;
