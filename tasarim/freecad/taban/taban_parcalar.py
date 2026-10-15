@@ -1,7 +1,10 @@
 # Taban modulu (V3) - PARCALAR: alt plaka, elektronik kati (on) + guc paneli (arka), burclar, 4 motorlu tahrik (JGB37 + L braket
-# + kaplin + teker), aku + kayis + takoz, guc elektronigi (BTS7960 x2, XL4016 x3, sigorta kutusu, role, ana sigorta, ana anahtar),
-# kartlar (Pi 5, ESP32 + tasiyici, PCA9685, BNO055, MAX98357A), HC-SR04 x3 + tutucular, acil stop, tum baglanti elemanlari ve
-# kablo yolu semasi (Referans). Import edilebilir: taban_montaj.py (kontroller + kayit), 2. asamada ../carpisma.py ve montaj/.
+# + kaplin + teker), aku + kayis + takoz, guc elektronigi (BTS7960 x2, XL4016 x3: servo A / servo B / cevre 5 V, sigorta kutusu,
+# role, ana sigorta, ana anahtar), kartlar (ESP32 + tasiyici, PCA9685, BNO055, arayuz karti, 2 servo dagitim karti), HC-SR04 x3 +
+# tutucular, acil stop, tum baglanti elemanlari ve kablo yolu semasi (Referans).
+# 15 Ekim 2026 (duzeltme plani 3. adim): K4 Pi 5 + MAX98357A kafaya gitti (kafa/); Pi'nin XL4016'si servo B oldu (E1); eski Pi yerine
+# arayuz karti (E2/E3); on kat on bandinda servo dagitim A/B (E1). K1 (a) omni secenegi arayuz.TABAN['omni']['aktif'] ya da
+# TABAN_OMNI=1 ile (varsayilan kapali). Elektrik kararlari planlama/adim3/elektrik.md. Import edilebilir: taban_montaj.py (kontroller + kayit), 2. asamada ../carpisma.py ve montaj/.
 # Koordinat = global (arayuz.py): orijin zemin + robot merkezi, +X sag, +Y yukari, +Z ileri, mm. Olculer arayuz.TABAN'dan.
 import os, sys, math, time
 import FreeCAD as App
@@ -178,18 +181,26 @@ kes_ar.append(delik_y(RL_DEL[0], RL_DEL[1], A.CLEAR[4], y0d, td))
 
 # --- kart konumlari (kat ustu y = Y_DECK1)
 YD1 = A.Y_DECK1
-PI_C, PCA_C, BNO_C, ESP_C, AMP_C = T["pi"]["merkez"], T["pca"]["merkez"], T["bno"]["merkez"], T["esp"]["merkez"], T["amp"]["merkez"]
-pi_del = [(PI_C[0] + x, PI_C[1] + z) for (x, z) in L.PI_DELIK]
+AK_C, PCA_C, BNO_C, ESP_C = T["arayuz_karti"]["merkez"], T["pca"]["merkez"], T["bno"]["merkez"], T["esp"]["merkez"]
+SD_C = T["servo_dagitim"]
+
+
+def perf_delik(c):
+    return [(c[0] + sx * (L.PERF["l"] / 2 - L.PERF["kenar"]), c[1] + sz * (L.PERF["w"] / 2 - L.PERF["kenar"])) for sx in (-1, 1) for sz in (-1, 1)]
+
+
+ak_del = perf_delik(AK_C)
+sd_del = {k: perf_delik(SD_C[k]) for k in ("A", "B")}
 pca_del = [(PCA_C[0] + sx * L.PCA["dx"] / 2, PCA_C[1] + sz * L.PCA["dz"] / 2) for sx in (-1, 1) for sz in (-1, 1)]
 bno_del = [(BNO_C[0] + sx * L.BNO["dx"] / 2, BNO_C[1] + sz * L.BNO["dz"] / 2) for sx in (-1, 1) for sz in (-1, 1)]
 perf_del = [(ESP_C[0] + sx * (L.PERF["l"] / 2 - L.PERF["kenar"]), ESP_C[1] + sz * (L.PERF["w"] / 2 - L.PERF["kenar"]))
             for sx in (-1, 1) for sz in (-1, 1)]
-kes_on += [delik_y(x, z, CLEAR_T[2.5], y0d, td) for (x, z) in pi_del + pca_del + bno_del]
-kes_on += [delik_y(x, z, A.CLEAR[3], y0d, td) for (x, z) in perf_del]
+kes_on += [delik_y(x, z, CLEAR_T[2.5], y0d, td) for (x, z) in pca_del + bno_del]
+kes_on += [delik_y(x, z, A.CLEAR[3], y0d, td) for (x, z) in perf_del + ak_del + sd_del["A"] + sd_del["B"]]
 kat_on = kat_on.cut(Part.makeCompound(kes_on)).removeSplitter()
 kat_ar = kat_ar.cut(Part.makeCompound(kes_ar)).removeSplitter()
 KAT_ON = add("Elektronik kati (on)", "Plaka", kat_on, "Lazer", "Kontrplak", kod="Elektronik kati on 270 x 226 x 5 huş kontrplak (lazer)",
-             renk="ahsap", patlat=(0, 260, 60), not_="Pi 5, ESP32 tasiyici, PCA9685, BNO055, MAX98357A; 4x M5 burca")
+             renk="ahsap", patlat=(0, 260, 60), not_="arayuz karti, ESP32 tasiyici, PCA9685, BNO055, servo dagitim A/B; 4x M5 burca")
 KAT_AR = add("Guc paneli (arka kat)", "Plaka", kat_ar, "Lazer", "Kontrplak", kod="Guc paneli arka 270 x 274 x 5 huş kontrplak (lazer)",
              renk="ahsap", patlat=(0, 260, -60), not_="sigorta kutusu, role, ana sigorta; akunun ustunde, aku icin sokulur")
 LAZER["Elektronik kati (on)"] = dict(y0=y0d, malzeme="Huş kontrplak 5 mm", kalinlik=td)
@@ -213,6 +224,9 @@ motor0 = tasi(jgb37_local(), X_BR, A.AX, Z_WH)
 braket0 = tasi(braket_local(T["braket_civata"]["x"] - X_BR, T["braket_civata"]["dz"]), X_BR, A.AX, Z_WH)
 kaplin0 = tasi(kaplin_local(), X_BR + L.BRK["t"] + 2.0, A.AX, Z_WH)
 teker0 = tasi(teker_local(), X_WH, A.AX, Z_WH)
+# K1 (a) secenegi: on iki teker omni (varsayilan kapali). Aks, motor, braket, kaplin, M4 eksenel vida ayni; omni ayni teker duzleminde.
+OMNI = bool(T["omni"]["aktif"]) or os.environ.get("TABAN_OMNI", "") == "1"
+omni0 = tasi(omni_local(), X_WH, A.AX, Z_WH) if OMNI else None
 TEKER = {}
 for sx in (-1, 1):
     for sz in (-1, 1):
@@ -224,8 +238,14 @@ for sx in (-1, 1):
                   renk="celik", patlat=(sx * 90, -20, sz * 40), kutle=L.BRK["kutle_g"])
         ik = add("Kaplin 12 mm altigen (%s)" % k, "Tahrik", ayna(kaplin0, sx, sz), "Satin", "Pirinc", kod="12 mm altigen kaplin x 30, O6",
                  renk="pirinc", patlat=(sx * 120, -40, sz * 40), kutle=L.KAP["kutle_g"])
-        it = add("Teker 125 x 58 (%s)" % k, "Tahrik", ayna(teker0, sx, sz), "Satin", "Kaucuk + plastik", kod="Arazi tekerlegi 125 x 58",
-                 renk="lastik", patlat=(sx * 170, -40, sz * 40), kutle=L.TEK["kutle_g"])
+        if OMNI and sz > 0:
+            OM = T["omni"]
+            it = add("Omni teker %.0f x %.0f (%s)" % (OM["cap"], OM["en"], k), "Tahrik", ayna(omni0, sx, sz), "Satin", "Al + kaucuk",
+                     kod="Nexus 14075 omni teker O127 x 29 + 12 mm altigen gobek adaptoru (tahmini)", renk="lastik",
+                     patlat=(sx * 170, -40, sz * 40), kutle=OM["kutle_g"], not_="K1 (a) secenegi; " + OM["kaynak"])
+        else:
+            it = add("Teker 125 x 58 (%s)" % k, "Tahrik", ayna(teker0, sx, sz), "Satin", "Kaucuk + plastik", kod="Arazi tekerlegi 125 x 58",
+                     renk="lastik", patlat=(sx * 170, -40, sz * 40), kutle=L.TEK["kutle_g"])
         TEKER[(sx, sz)] = it
         # braket -> plaka -> uzun ray: 2x M4x16 + pul (flans altindan) + M4 cekic somun
         yf = A.Y_PL - L.BRK["t"]
@@ -394,10 +414,17 @@ add("Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)", "Referans",
 log("guc")
 
 # ====================================================================== 6) ELEKTRONIK KATI (on)
-PI_I = kart_burclu("Raspberry Pi 5 8GB + Active Cooler", "Elektronik", pi5_local(), PI_C[0], PI_C[1], YD1, T["pi"]["burc"], pi_del, 2.5, 5.0,
-                   "Pirinc", "M2,5x8 pirinc burc", KAT_ON, "Raspberry Pi 5 8GB + resmi Active Cooler", L.PI["kutle_g"], "pcb_y",
-                   (-80, 120, 40), vida_ust=5, vida_alt=8,
-                   not_="SD yuvasi -X kenarinda (x -135,5, z 80); USB/Ethernet +X'e, micro HDMI + USB-C -Z kenarinda; fan ustu ~55 mm acik")
+# K4: Raspberry Pi 5 kafada (kafa_parcalar). Eski yerinde E2/E3 arayuz karti (planlama/adim3/elektrik.md).
+AKI = kart_burclu("Arayuz karti (E2/E3)", "Elektronik", arayuz_karti_local(), AK_C[0], AK_C[1], YD1, T["arayuz_karti"]["burc"], ak_del, 3,
+                  5.5, "Naylon", "M3x8 naylon burc", KAT_ON, "Delikli pertinaks 70 x 50: PC817 x2, MOSFET + 1N4007, bolucu direncler, klemens (tahmini zarf)",
+                  L.PERF["kutle_g"] + 10.0, "pcb_y", (-80, 120, 40), vida_ust=6, vida_alt=8, not_=T["arayuz_karti"]["not_"])
+SDI = {}
+for k, ad in (("A", "sag kol + pan"), ("B", "sol kol + tilt")):
+    c = SD_C[k]
+    SDI[k] = kart_burclu("Servo dagitim karti %s (%s)" % (k, ad), "Elektronik", servo_dagitim_local(), c[0], c[1], YD1, SD_C["burc"], sd_del[k],
+                         3, 5.5, "Naylon", "M3x8 naylon burc", KAT_ON,
+                         "Delikli pertinaks 70 x 50: 16 AWG klemens, 2200 uF, 6x 3 pin cikis (tahmini zarf)", L.PERF["kutle_g"] + 15.0,
+                         "pcb_m", (c[0] * 0.6, 120, 80), vida_ust=6, vida_alt=8, not_=SD_C["not_"])
 PCA_I = kart_burclu("PCA9685 servo surucu", "Elektronik", pca_local(), PCA_C[0], PCA_C[1], YD1, T["pca"]["burc"], pca_del, 2.5, 5.0, "Pirinc",
                     "M2,5x8 pirinc burc", KAT_ON, "PCA9685 16 kanal (Adafruit 815 delik duzeni)", L.PCA["kutle_g"], "pcb_m",
                     (80, 120, 60), vida_ust=5, vida_alt=8)
@@ -412,12 +439,7 @@ ESP_I = add("ESP32 DevKit 30 pin", "Elektronik", tasi(esp_local(), ESP_C[0], y_e
             renk="pcb_k", patlat=(80, 170, 20), kutle=L.ESP["kutle_g"], not_="disi header'a takili (pin 6 mm)")
 bag("ESP32 - tasiyici header", "gecme", dict(govde=[PERF_I], kart=ESP_I), dict(d=0.64, kavrama=6.0), temas=[(ESP_I, PERF_I)],
     aciklama="ESP32 pinleri 15'li disi header'lara 6 mm gecer")
-yam = YD1 + 1.0
-add("Kopuk bant (amfi)", "Elektronik", box(AMP_C[0] - L.AMP["l"] / 2, AMP_C[0] + L.AMP["l"] / 2, YD1, yam, AMP_C[1] - L.AMP["w"] / 2,
-                                          AMP_C[1] + L.AMP["w"] / 2), "Satin", "Kopuk", kod="Cift tarafli kopuk bant 1 mm", renk="siyah",
-    patlat=(-50, 100, 40))
-AMP_I = add("MAX98357A I2S amfi", "Elektronik", tasi(amp_local(), AMP_C[0], yam, AMP_C[1]), "Satin", "PCB", kod="Adafruit MAX98357A",
-            renk="pcb_m", patlat=(-50, 140, 40), kutle=L.AMP["kutle_g"], not_="montaj deligi yok: kopuk bant")
+# K4: MAX98357A amfi Pi ile kafaya gitti (I2S boyundan gecmez; kafa_parcalar).
 log("elektronik kati")
 
 # ====================================================================== 7) SONARLAR + TUTUCULAR, ACIL STOP
@@ -489,25 +511,27 @@ YOL += [
     ("Motor 12 V sag kol + arka motorlar (plaka altindan z 36 deliginden)", "turuncu",
      [(-50, 145, 60), (50, 145, 60), (67.5, 145, 140), (80, 120, 196), (80, 88, 200), (100, 85, 185), (80, 120, 140), (80, 112, 40),
       (80, 88, 36), (80, 87, -150), (100, 85, -185)]),
-    ("Servo 6 V: F1 -> role -> WAGO -> XL4016 servo -> PCA9685 V+ -> direk arka yuzu -> omuz / kafa", "sari",
-     [(rx, YD1 + 46, rz), (-60, 182, -30), (-30, 150, 40), (0, 130, 150), (0, 140, 170), (30, 182, 150), (PCA_C[0], 200, PCA_C[1]),
-      (40, 205, 30), (25, 230, -26), (0, 262, -26), (0, 400, -26), (0, 900, -26), (60, 955, -26), (100, 955, -26)]),
-    ("Servo kablolari sola ve kafaya (direk ustu dagitim)", "sari", [(0, 900, -26), (-60, 955, -26), (-100, 955, -26), (0, 900, -26),
-                                                                      (0, 975, -30), (0, 1010, -10)]),
-    ("Pi 5,1 V: F3 10 A -> XL4016 Pi -> Pi USB-C", "mavi",
-     [(cx - 20, YD1 + 36, cz), (-62, 182, -30), (-55, 150, 20), (T["xl"][0][0], 125, T["xl"][0][1]), (-40, 150, 150), (-40, 185, 160),
-      (-100, 190, 58)]),
-    ("Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / Nextion / 7in LCD / sensorler", "mavi",
+    ("Servo 6 V A (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol + pan", "sari",
+     [(rx, YD1 + 46, rz), (-60, 182, -30), (-30, 150, 40), (0, 130, 150), (0, 140, 170), (20, 150, 160), (30, 190, 165), (SD_C["A"][0], 200, SD_C["A"][1]),
+      (40, 205, 180), (25, 230, 26), (25, 262, -26), (0, 400, -26), (0, 900, -26), (60, 955, -26), (100, 955, -26)]),
+    ("Servo uzatmalari kafaya: pan (A) + tilt (B) (direk ustu, R62 halkasindan)", "sari", [(0, 900, -26), (0, 975, -30), (0, 1010, -10)]),
+    ("Servo 6 V B (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol + tilt", "sari",
+     [(rx, YD1 + 46, rz), (-62, 182, -30), (-55, 150, 20), (T["xl"][0][0], 125, T["xl"][0][1]), (-40, 150, 150), (-30, 190, 165),
+      (SD_C["B"][0], 200, SD_C["B"][1]), (-40, 205, 180), (-25, 230, 26), (-25, 262, -26), (-5, 400, -26), (-5, 900, -26), (-60, 955, -26),
+      (-100, 955, -26)]),
+    ("Kafa 12 V (K4/E4): F3 5 A -> 18 AWG cift -> direk on yuzu -> R62 -> kafada 5 V/5,5 A cevirici (Pi 5, LCD)", "kirmizi",
+     [(cx - 20, YD1 + 36, cz), (-62, 182, -30), (-40, 200, 20), (-24, 230, 26), (-24, 262, 26), (-24, 900, 26), (-24, 975, 30), (0, 1010, 20)]),
+    ("Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / Nextion / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)", "mavi",
      [(cx, YD1 + 36, cz), (62, 182, -30), (55, 150, 20), (T["xl"][1][0], 125, T["xl"][1][1]), (40, 150, 150), (40, 185, 160),
       (ESP_C[0], 200, ESP_C[1]), (30, 205, 40), (24, 230, 26), (24, 262, 26), (24, 700, 26), (24, 800, 60)]),
-    ("Acil stop: F5 -> mantar (NC) -> role bobini", "yesil",
-     [(cx + 30, YD1 + 36, cz), (ex, 205, ez), (ex, 214, ez), (ex - 10, 205, ez + 20), (rx, YD1 + 46, rz)]),
-    ("Sinyal: sonar x3 -> ESP32 (on ara ray ustunden)", "mor",
-     [(-79.4, 95, 254), (-79.4, 90, 240), (-60, 140, 240), (0, 150, 240), (60, 150, 235), (ESP_C[0], 190, 100)]),
-    ("Sinyal: enkoder + BTS PWM/EN -> ESP32; Pi <-> ESP32 USB", "mor",
-     [(-67.5, 140, 140), (-30, 160, 160), (ESP_C[0], 190, ESP_C[1]), (PI_C[0] + 42, 195, PI_C[1] + 15)]),
-    ("Pi -> kafa: 2x HDMI (7in LCD), kamera FPC, USB mikrofon, hoparlor (direk on yuzu)", "beyaz",
-     [(PI_C[0] + 10, 190, PI_C[1] - 30), (-30, 205, 30), (-24, 230, 26), (-24, 262, 26), (-24, 900, 26), (-24, 975, 30), (0, 1010, 20)]),
+    ("Acil stop (E3): F5 -> mantar (NC) -> role bobini -> MOSFET (arayuz karti, ESP32 'devreye al') ; PC817 mantar sonrasi gerilimi okur", "yesil",
+     [(cx + 30, YD1 + 36, cz), (ex, 205, ez), (ex, 214, ez), (ex - 10, 205, ez + 20), (rx, YD1 + 46, rz), (-110, 200, -60), (-100, 200, 40),
+      (AK_C[0], 195, AK_C[1])]),
+    ("Sinyal: sonar x3 -> arayuz karti bolucu (4,7k/10k) -> ESP32 (on ara ray ustunden)", "mor",
+     [(-79.4, 95, 254), (-79.4, 90, 240), (-60, 140, 240), (-100, 150, 200), (AK_C[0], 190, AK_C[1] + 20), (0, 195, 90), (ESP_C[0], 190, 100)]),
+    ("Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (yalniz veri, VBUS kesik)", "mor",
+     [(-67.5, 140, 140), (-30, 160, 160), (ESP_C[0], 190, ESP_C[1]), (40, 205, 30), (20, 230, 26), (20, 262, 26), (20, 900, 26), (20, 975, 30),
+      (0, 1010, 20)]),
 ]
 
 

@@ -1,0 +1,273 @@
+# Lale: elektrik kararları (düzeltme planı 3. adım: E0–E4, E7, K4)
+
+Tarih: 15 Ekim 2026. Tek yer: bu dosya. CAD karşılığı `tasarim/freecad/taban/` ve `kafa/`, sayılar `taban-analiz.json`
+(`donus`, `aku`) ve `kafa-analiz.json` (`tork`, `isi`, `pi`). "Tahmini" yazan değer ölçülmedi ya da kaynaktan türetildi.
+Pin planı E5'in başlangıcıdır, kesin değildir. Akü süreleri E8'in (5. adım) işi, burada yalnız anlık akımlar var.
+
+## Özet: ne değişti
+
+| Konu | Önce | Sonra |
+|---|---|---|
+| Pi 5 | Tabanda, XL4016 "Pi 5,1 V" ile | **Kafada** (K4). Boyundan 12 V + ESP32 USB çıkar; kafada Pololu D36V50F5 5 V/5,5 A |
+| Servo beslemesi (E1) | 10 servo tek XL4016 (8 A), güç PCA9685 V+ üstünden | **İki hat:** A = sağ kol + pan, B = sol kol + tilt. İki XL4016 (biri Pi'den boşaldı), 16 AWG, iki dağıtım kartı; PCA9685 V+ boş |
+| Sonar (E2) | 5 V echo doğrudan ESP32'ye | 4,7 kΩ / 10 kΩ bölücü (3,40 V) |
+| Akü ölçümü (E2) | Yok | 100 kΩ / 18 kΩ bölücü + 100 nF, GPIO36 |
+| Acil stop durumu (E2) | Okunmuyor | PC817 #1 mantar sonrası 12 V'u okur; PC817 #2 anahtarlı 12 V barayı okur |
+| PCA9685 / BNO055 mantık (E2) | 5 V | 3V3 (ESP32 regülatörü) |
+| Acil stop yeniden başlatma (E3) | Mantar bırakılınca röle kendiliğinden çeker | Bobin: F5 → mantar NC → bobin → MOSFET (ESP32 "devreye al", GPIO12). Bırakmak gücü vermez |
+| ESP32 beslemesi (E4) | Pi USB'si + çevre 5 V birlikte | Tek kaynak: çevre 5 V (VIN). USB kablosunun VBUS teline seri 1N5819 (kartta VBUS-VIN diyodu yoksa) |
+| Amfi | Tabanda (I2S 1 m boyundan) | Kafada, Pi'nin yanında |
+| Etek ısısı (E7) | Pi + 3 XL4016 + 2 BTS kapalı etekte | Pi ve onun XL'i çıktı (≈ −8…11 W). Fan yeri ayrıldı (ölçüme bağlı), ölçüm planı aşağıda |
+
+## E0: dönüş yükü ve K1
+
+**Hesap:** `tasarim/freecad/taban/donus_hesap.py` (FreeCAD gerekmez; `taban_montaj.py` çağırır → `taban-analiz.json` `donus`).
+**Ölçüm gelince yalnız** `arayuz.TABAN['donus']` içindeki `mu_olculen`, `stall_kgcm_olculen`, `stall_A_olculen` doldurulur;
+hesap "ölçülen" senaryoyu ekler, karar ona göre verilir.
+
+Varsayımlar (hepsi açık):
+- Robot ev pozu 21,71 kg, AM (−0,2; 372,4; −13,8) mm (taban + güncel kafa + montajın geri kalanı + 400 g kablo payı). Arka aks daha yüklü: ön 98,6 N, arka 114,5 N.
+- Kare yerleşim: iz 356 (teker düzlemi x ±178), aks arası 370 (z ±185), teker r 62,5 mm. Her yandaki iki motor aynı BTS7960'tan paralel sürülür, yani aynı hızda döner.
+- JGB37-520 60 dev/dk: durma 21 kg·cm (Direnc.net sayfası), sürekli = durmanın %30'u = 6,3 kg·cm (projedeki ölçüt). Durma akımı 2,8 A (tahmini, `06-aku-secimi.md`), boşta 0,12 A; akım torkla doğrusal.
+- Sürtünme: Coulomb, her tekerde kuvvet ≤ μN, yönü kayma hızının tersi. Lastik esnemesi için kayma ölçeği 0,05 (kaymanın hıza oranı 0,05'te kuvvet ≈ 0,7 μN; tahmini). Yuvarlanma direnci Crr 0,03. Omni makarası yanal direnci 0,05 (tahmini).
+- **Üst sınır** modeli ayrıca: yanal sürtünme tam μN, dönüş direnci katsayısı μ_t = μ / (0,925 + 0,15 R/B) (Wong, *Theory of Ground Vehicles*, kayarak yönlenme yarı ampirik bağıntısı).
+
+| μ | Yerinde dönüş, en yüklü motor (arka) | Sürekli 6,3'ün | Durma 21'in | Akım | Üst sınır (R 0) | Ön omni ile |
+|---|---|---|---|---|---|---|
+| 0,4 | 12,1 kg·cm | ×1,91 | %57 | 1,7 A | 17,5 (×2,78; durmanın %83'ü) | 2,7 kg·cm (×0,43) |
+| 0,5 | 14,9 kg·cm | ×2,36 | %71 | 2,0 A | 21,6 (×3,43; **durmanın %103'ü**) | 2,6 kg·cm (×0,41) |
+| 0,6 | 17,7 kg·cm | ×2,81 | %84 | 2,4 A | 25,7 (×4,08; **%122**) | 2,9 kg·cm (×0,46) |
+
+- Ön motorlar 9,2 / 11,3 / 13,4 kg·cm. Dönme merkezi ağır arka aksa ~26 mm kayar.
+- Dönüş ivmesi payı (1 rad/s², I_z ≈ 0,85 kg·m²) motor başına +0,8 kg·cm.
+- **Yay çizerek dönüş** (aynı model, u_sol = k·u_sağ): R ≈ 0,12 / 0,37 / 1,10 m için μ 0,5'te 14,8 / 14,4 / 13,0 kg·cm (×2,34 / ×2,29 / ×2,06).
+  Üst sınırda R 0,5 / 1 / 2 m: 17,8 / 15,2 / 11,8 kg·cm. Kare yerleşimde yanal kayma yarıçaptan bağımsız olduğu için yay **çok az** yardım eder.
+  R ≥ 2 m bile μ 0,5'te sürekli değerin ×1,9'u.
+- **Ön omni** (Nexus 14075, Ø127 × 29, 22 makara Ø19, 480 g, 30 kg; [ozrobotics](https://ozrobotics.com/shop/double-aluminum-omni-wheel-5-inches-basic-14075/)): robot arka aks ortası (z −184) etrafında döner, arka tekerler neredeyse saf yuvarlanır.
+  Motor yükü 2,6–2,9 kg·cm (×0,41–0,46). Omni Ø127, teker Ø125: aynı motor hızında önler %1,6 hızlı, düz giderken ön motorlara 1,8–2,9 kg·cm çekişme biner (arka 0,2–0,8 fren).
+  Kabul edilebilir, ama Ø125'e yakın omni bulunursa o seçilmeli. **Omni teker düzlemi standartla aynı olmalı (x 178):** farklı x'te (163,5) hesap, ayni yandaki ön/arka motorun birbirine karşı çalıştığını gösterdi (arka motor 17 kg·cm fren).
+
+**Sonuç (μ 0,5, ölçüm yok): KÖTÜ.** Yerinde dönüş sürekli değerin %236'sı; üst sınır modelinde durma torkunu aşıyor (μ ≥ 0,5'te robot dönemeyebilir).
+**K1 önerisi:** Kararınız aynı kalıyor: önce ölç (aşağıda). Ölçümde μ ≥ 0,4 çıkarsa (beklenen) **(a) ön iki teker omni**. CAD hazır, bayrakla açılır:
+`arayuz.TABAN['omni']['aktif'] = True` ya da `TABAN_OMNI=1`. Varsayılan geometri değişmedi.
+
+**Omni CAD (bayrak açıkken, `taban_montaj.py` ile denendi):** 316 parça, taban 8.209,4 g (+680 g: 2 × (480 − 140)), robot 22,39 kg, AM z −7,8 (öne kayar).
+Çakışma: taban içi 0, iskelet 0, kabuk 0, bağlantı 119/119. **Teker–etek boşluğu 10,55 mm (hedef 12):** omni 1 mm büyük ve göbek adaptörü ön yüzde. Kabuk ajanı için açık iş (etek ön bant 1,5 mm).
+Omni aks yeri aynı olduğu için zeminde 1 mm aşağı çiziliyor; gerçekte ön 1 mm kalkar (0,15°, önemsiz). Göbek: 12 mm altıgen → omni flanşı adaptörü (tahmini; Nexus göbek delik düzeni satıcıdan teyit).
+Ana montaj yükleyicisi (`montaj/moduller.py`) teker gruplarını "Teker 125 x 58 (…)" adıyla kuruyor; omni açılırsa "Omni teker 127 x 29 (…)" adı da eklenmeli (montaj klasörü bende değil).
+
+**Yazılım kısıtı (her durumda, K1 (c)):**
+- Standart tekerle: yerinde dönüş komutu en çok 90° ve ω ≤ 0,6 rad/s (≈ 2,6 s), ardından en az 3 kat dinlenme (ısıl yük). Yaw ivmesi ≤ 1 rad/s².
+  Sürüş sırasında yön değişimi yay ile (R ≥ 1 m, k ≥ 0,5). Bu, yükü yalnız %10–15 azaltır; asıl çözüm omni.
+- Akım izleme: BTS7960 IS çıkışları (GPIO32/33) motor başına > 2,0 A ölçülürse 2 s sonra dönüşü kes (μ 0,5'te yerinde dönüş akımı 2,0 A).
+- Omni ile: dönme merkezi arka aks ortası. Odometri modeli arka aksta diferansiyel sürüş; ön enkoderler kayma tespiti içindir.
+
+**Ölçüm (ekip, ~1 saat):** (1) Bir JGB37'yi laboratuvar kaynağında 12 V'ta mil kilitli tut, durma akımını oku; tork için 100 mm kol + el kantarı
+(F × 0,1 m). (2) Robotu (ya da eşit yüklü tabanı) zeminde yanlamasına el kantarıyla çek: μ = F / (m g). Kullanılacak zeminlerin hepsinde (sınıf, koridor).
+(3) Sonuçları `arayuz.TABAN['donus']`'a yaz, `taban_montaj.py` koş.
+
+## E1: servo beslemesi
+
+| Hat | Servolar | Bekleme | Jest anı | Yoğun (kol uzanmış tutuyor + hareket) | Gerçekçi tepe (≤ 100 ms) | Teorik (hepsi durma) |
+|---|---|---|---|---|---|---|
+| **A**: sağ kol + pan | S1, S2 (DS3218MG), dirsek, bilek, pan (MG996R) | 0,3 A | 2,8 A | **4,4 A** | 7,7 A | 12,7 A |
+| **B**: sol kol + tilt | S1, S2, dirsek, bilek, tilt | 0,4 A | 2,9 A | **4,7 A** | 7,7 A | 12,7 A |
+
+Servo başına varsayım (tahmini): jestte S1 0,8, S2 0,6, dirsek 0,6, bilek 0,4, pan 0,4, tilt 0,5 A; yoğunda 1,5 / 0,9 / 0,9 / 0,5 / 0,6 / 0,9 A;
+kalkış anı 2,5 A (MG996R durma 2,5 A @6 V, DS3218MG 2,6 A @6,8 V; `06-aku-secimi.md`). Gerçekçi tepe = 2 servo kalkışta + diğerleri hareket.
+
+- **Seçim: iki XL4016 (8 A modül, sürekli ≤ 5 A önerilir).** Biri yeni değil: K4 ile boşalan Pi XL4016'sı servo B oldu, XL sayısı 3 kalır. Hat başına yoğun yük 4,4 / 4,7 A, sınırın altında.
+  Kafa servolarını iki hatta bölmek (pan A, tilt B) yükü dengeliyor. "Sağ kol + kafa / sol kol" bölüşümünde A 5,3 A olurdu.
+- Teorik durma (12,7 A) XL4016'nın kendi akım sınırına çarpar: gerilim düşer, servo resetlenebilir, tehlikeli değil. Ölçümde hat sürekli > 5 A ise yedek: o hat için 20 A / 300 W düşürücü modül (fiyat doğrulanmadı).
+- XL4016 girişleri: anahtarlı 12 V baradan (röle sonrası), her biri **7,5 A hat sigortası** ile (giriş tepe 7,7 A × 6 V / 0,88 / 12,8 V ≈ 4,1 A).
+- XL → dağıtım kartı: **16 AWG** silikon çift (≈ 0,3 m; 0,6 m gidiş-dönüş 8 mΩ → 7,7 A'de 0,06 V).
+- **Dağıtım kartı A / B** (ön kat ön bandı, (±72; 205); 70 × 50 pertinaks): 16 AWG klemens → V+ ve GND barası (kalın tel) → 2200 µF (mevcut 4 kondansatörden 2'şer) → 6 adet 3 pinli çıkış (servo uzatmaları).
+  Sinyal: PCA9685 kanalından kısa 3 pinli köprüyle kartın sinyal girişine. Bu köprünün V+ ucu kartta bağlı değil. **PCA9685 V+ klemensi boş kalır.**
+- Uzatma: servo başına 22 AWG, ~1,3 m. Durma akımında 2,6 m × 0,052 Ω/m × 2,5 A ≈ 0,34 V düşüm (servo 5,66 V görür); kabul. Daha az düşüm istenirse dağıtım traverse seviyesine taşınabilir (iskelet/kabuk işi, açık).
+
+## E2: gerilim seviyeleri
+
+| Sinyal | Çözüm | Değer |
+|---|---|---|
+| HC-SR04 echo ×3 (5 V) | Bölücü (arayüz kartında): seri 4,7 kΩ, toprağa 10 kΩ | 5 × 10/14,7 = 3,40 V (ESP32 ≤ 3,6 V). Trig 3,3 V yeterli (PCA9685 kanalından, aşağıda). HC-SR04P yalnız yeni alımda: 3,3 V beslenirse echo 3,3 V |
+| Akü gerilimi | 100 kΩ / 18 kΩ + 100 nF, ana anahtar sonrası (kapalıyken akım çekmez) | 14,6 V → 2,23 V, 10,0 V → 1,53 V (ESP32 ADC 11 dB doğrusal bölge ≤ 2,45 V). Akım 0,12 mA. Bir kez multimetreyle kalibre et |
+| Acil stop durumu | PC817 2 kanal modülü ([Direnc.net, 43,59 TL](https://www.direnc.net/pc817-2-kanal-optokuplor-izolasyon-icin-modul); giriş 3,6–24 V). Kanal 1 mantar NC sonrasındaki düğüm | LOW = mantar serbest, HIGH = basılı ya da F5 attı |
+| Anahtarlı 12 V durumu | PC817 kanal 2, röle sonrası bara | LOW = motor/servo gücü var |
+| PCA9685 mantık | VCC ← ESP32 3V3 (I2C pull-up'lar 3,3 V'a); OE → GND | Servo gücü V+'tan değil, dağıtım kartından |
+| BNO055 | VIN ← 3V3 | Adafruit kartı 3–5 V kabul eder |
+| JGB37 enkoder | VCC ← 3V3 (Hall çıkışı 3,3 V) | 5 V gerekirse çıkışa 4,7k/10k bölücü (ölç) |
+| Nextion TX (3,0–5,0 V) | 1 kΩ / 2 kΩ bölücü → GPIO16 | `donanim/datasheet/README.md` |
+
+## E3: acil stop ve yeniden başlatma
+
+```
+F5 2 A ─── mantar NC ───┬─── röle K1 bobini (+) ── bobin (−) ── IRLZ44N drain       (bobine ters paralel 1N4007)
+                        │                                       IRLZ44N source ── GND
+                        └── PC817 #1 giriş (12 V algı)          IRLZ44N gate ── 220 Ω ── GPIO12 ;  gate ── 10 kΩ ── GND
+K1 kontağı (40 A): F1 20 A ──> anahtarlı 12 V bara ──> BTS7960 sol/sağ, XL4016 A, XL4016 B  (PC817 #2 bu barayı okur)
+```
+
+- Röle yalnız **mantar serbest ve ESP32 "devreye al" (GPIO12 = 1)** iken çeker. Mantar bırakılınca hiçbir şey olmaz; güç ancak operatör komutuyla gelir (Nextion "Devreye al" ya da Pi komutu).
+- Yazılım kuralı (ESP32): PC817 #1 HIGH görünce GPIO12'yi hemen 0 yap ve kilitle. Yeniden devreye almadan önce:
+  (1) mantar serbest, (2) PCA9685 çıkışları servoların **son bilinen konumuna** yazılmış, (3) BTS EN = 0 ve PWM = 0, (4) açık komut. Sonra GPIO12 = 1.
+  PC817 #2 500 ms içinde LOW olmazsa hata ver.
+- Açılışta güvenli: GPIO12 boot'ta LOW olmalı (strapping pini). Gate'teki 10 kΩ pull-down hem bunu sağlar hem röleyi kapalı tutar. ESP32 kilitlenirse görev izleyicisi (watchdog) resetler; reset anında pin LOW'a düşer → röle bırakır.
+- Kalan risk: yazılım hatası pini 1'de bırakıp mantar bırakılırsa röle yeniden çeker. Donanımla kapatılacaksa: röle kontağına paralel ikinci (kendini tutma) kontak + ayrı başlat butonu (iki kontaklı röle gerekir). Şimdilik yazılım kuralı + watchdog.
+- MOSFET: IRLZ44N (mantık seviyeli, TO-220; Direnc.net ~26 TL, fiyat doğrulanmadı). Bobin akımı ~0,15 A. Alternatif BC337 + 1 kΩ.
+- F5 2 A: bobin 0,15 A + PC817 ~5 mA. Önceki 5 A bu devre için büyüktü, 5 A artık F3/F4'te.
+
+## E4: Pi 5 beslemesi (K4: Pi kafada)
+
+- **Boyundan:** 12 V çift (18 AWG, F3 5 A) + ESP32 USB (veri; 1,25 m) + tilt servo (3 tel). HDMI ve CSI boyundan çıktı (`kafa-analiz.json` `pi`).
+- **Kafada çevirici:** Pololu **D36V50F5** ([pololu.com/product/4091](https://www.pololu.com/product/4091)): giriş 5,5–50 V, çıkış 5 V (%4), 5,5 A (giriş gerilimine ve ısıya bağlı; 12 V'ta tipik 3,5–8 A aralığı grafikte).
+  Ters gerilim −40 V, aşırı akım, kısa devre, aşırı sıcaklık, çıkış alt/üst gerilim koruması, yumuşak başlatma. 25,4 × 25,4 × 9,5 mm, 7 g.
+  P raporundaki D24V50F5 yerine bu seçildi: 50 V giriş payı (12 V hatta motor/röle sıçramaları) ve korumalar. Türkiye stoğu bulunamadı (USD 39,95).
+- **Kafa 5 V bütçesi:** Pi 5 12 W tepe + 7" LCD 2,5 W (Pi USB-A'dan) + amfi 3 W tepe + kamera 0,7 + mikrofon 0,5 ≈ 18,7 W → 3,7 A (çevirici sınırının %68'i). 12 V'tan 1,6 A tepe.
+- **Bağlantı:** çevirici VOUT → kısa USB-C erkek ucu (20 AWG, ~10 cm) → Pi USB-C. PD yok, bu yüzden:
+  - EEPROM'a `PSU_MAX_CURRENT=5000` (`sudo rpi-eeprom-config --edit`): firmware PD pazarlığını atlar, 5 A kaynak varsayar ([raspberrypi.com](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html), bootloader yapılandırması).
+  - `config.txt`: `usb_max_current_enable=1` (aynı belge; USB-A çıkış sınırını kaldırır, LCD için gerekli).
+- **TVS:** 5 V çıkışa P6KE6.8A (5,8 V tutma, 6,45–7,14 V kırılma), kafa girişinde 12 V'a P6KE18A (15,3 V tutma; LiFePO4 şarjda 14,6 V). Delikli gövde, klemense lehimlenir.
+- **ESP32 çift besleme:** tek kaynak = çevre 5 V → VIN. Pi'ye giden USB kablosunun VBUS teline seri **1N5819** (anot Pi tarafında): CP2102 bağlantıyı görmeye devam eder, çevre 5 V Pi'ye geri beslemez.
+  Kartın kendi VBUS→VIN diyodu doğrulanırsa (DOIT DevKit V1 şemasında var) bu diyot gerekmez. Montajda multimetreyle bakılacak.
+- **Nextion** artık Pi'den değil ESP32'den sürülür (UART2; Pi → ESP32 USB komutu). Boyundan sinyal geçmez. Yazılım planına iş: ESP32 Nextion sürücüsü.
+
+## K4: kafa CAD özeti (sayılar `kafa-analiz.json`)
+
+| | Önce | Sonra |
+|---|---|---|
+| Parça / kütle | 98 / 1.363,1 g | 115 / 1.431,3 g (+68,2: Pi + soğutucu 58, 4 burç + 8 vida ~3, çevirici 7, amfi 2, köpük) |
+| Tilt grubu (kablo payı 25 g dahil) | 833,4 g, 4,46 kg·cm, **pay 2,11** | 926,6 g, 4,64 kg·cm (yerçekimi 2,62 @30° + ivme 2,02), **pay 2,03** (P tahmini 1,96) |
+| Pan | 2,6 kg·cm, pay 3,6 | 2,64 kg·cm, pay 3,6; üst rulman eksenel 10,1 → 11,0 N |
+| Tilt mili yük paylaşımı | horn 4,07 N / pim 4,11 N | 4,55 / 4,54 N (açık iş: tilt servosuna ikinci rulman) |
+| Hareket aralığı | tilt −25…40 serbest, pan ±180 | aynı (çarpan poz kümesi birebir aynı) |
+
+- Yer: Pi kartı köşesi (x −34, z +1), kart altı y 191 (4 × M2,5×8 pirinç burç; alttan M2,5×8 tabladan, üstten M2,5×5; tabla delikleri Ø2,9).
+  Pi ↔ kafa iskeleti 6,6 mm, ↔ arka kabuk 7,5 mm; tilt taramasında (−25…30°) Pan/Gövde grubuna en az 31,6 mm. Soğutucu üstü y 208,5, tavana 64 mm.
+- Çevirici (−75; 44) ve amfi (65; 44) tablada 1 mm köpük bant + kablo bağıyla. Çevirici ↔ kablo geçişi ~25 mm, amfi ↔ LCD HDMI bloğu 11,6 mm.
+- Kamera FPC **300 mm** (Pi 5 22 pin 0,5 mm → 15 pin 1 mm); micro HDMI → HDMI **25–30 cm**; kısa USB-C güç ucu. Kafa içi kablolar referans (kütleye 25 g nokta yük olarak tork hesabında).
+- **Havalandırma (arka kabuk):** giriş arka duvar 2 × 5 yarık 3 × 40 = 1.200 mm²; çıkış iki yan duvar 6'şar yarık 3 × 40 = 1.440 mm² (y 198–249, z −50…−10). Eski 8 alt yarık (1.120 mm²) yerinde.
+  Arka kabuk baskısı desteksiz kaldı (0 sorun), 270,6 → 263,1 g.
+- **Isı (el hesabı, 30 °C ortam; `kafa-analiz.json` `isi`):** kafa gücü boşta / tipik / en kötü 7,2 / 11,4 / 14,5 W.
+  Kapalı kafa 39 / 45 / **49 °C** (servo sınırı 55 °C). Yarıklı ve Active Cooler 1,0–1,55 L/s ile 34–42 °C (fan debisi üreticiden yok, varsayım).
+  Test şartı: kafa kapalı, stres (stress-ng + animasyon), SoC ≤ 75 °C, tilt servosu gövdesi ≤ 50 °C. Yazılım SoC > 75 °C'de animasyon FPS düşürür.
+- **Servis:** microSD −X'e bakar (x −49…−34, z −17…−37). Arka kabuk 2 vidayla (x ±105, z −30) sökülünce SD, USB-A ve Ethernet erişilir. Ön kabuk ve LCD yerinde kalır.
+- **Kablo listesi (boyun, dar boğaz 137 mm² mil penceresi):** 12 V çift 18 AWG (7,6 mm²) + ESP32 USB (9,6) + tilt servo (8,5) + pan servo (gövdede) ≈ 26 mm² (%19). Hoparlör yeri açık (Duffy kararı): göğüste olursa +2 tel.
+- **Tabanda boşalan Pi yeri** (−90,5; 80): E2/E3 arayüz kartı (70 × 50 pertinaks: bölücüler, PC817, IRLZ44N + 1N4007, klemens).
+
+## E7: etek içi ısı
+
+- **Isı kaynakları (Pi gittikten sonra; tahmini):** XL4016 A/B (hat başına yoğun 4,5 A × 6 V = 27 W çıkış → kayıp 3,7 W), XL4016 çevre (6 W → 0,8 W), BTS7960 ×2 (dönüşte ~0,3 W),
+  röle bobini 1,8 W, ESP32 + kartlar ~1 W. Tipik ~8 W, yoğun ~11,5 W. Önceki düzende bunlara Pi (7–10 W) ve onun XL'i (~1 W) ekleniyordu: etek ısısı yaklaşık yarıya indi.
+- **Isı yolu:** XL4016 modülünde ısı, IC'nin ve diyodun vidalı olduğu **üstteki** alüminyum soğutucuda. Kart altı ile alt plaka arasına ped koymak ısı kaynağına değmez. 8 mm naylon burç kalıyor (kısa devre koruması), ped/plaka önerilmiyor.
+  Isıyı soğutucu üstündeki hava taşır.
+- **Fan (ölçüme bağlı):** 40 × 40 × 10 12 V fan, üç XL4016'nın ortasında kat altına asılı, aşağı üfler. Yer `arayuz.BOLGELER` "E7 fan yeri" (x ±25, y 162,5–174,5, z 85–135) olarak ayrıldı; iskelet/kabukla ihlal 0.
+  Sıcak hava etek üst açıklığından gövdeye ve etek altından çıkar. Etek arka bandında havalandırma yarıkları: **kabuk için açık iş** (kabuk benim dosyam değil).
+- **Ölçüm planı:** 3 XL4016 soğutucusuna, bir BTS7960'a, etek içi havaya (orta) ve akü yüzeyine NTC/termokupl (multimetre ya da ESP32).
+  Kabuk kapalı, 25–30 °C ortam, 30 dk "yoğun" profil: servo hatlarına 1,33 Ω / 30 W yük direnci (6 V'ta 4,5 A) ya da kollar uzanmış tutarken. Ardından 5 dk yerinde dönüş/sürüş döngüsü.
+  **Ölçüt:** XL4016 soğutucusu ≤ 80 °C, etek havası ≤ 45 °C, akü yüzeyi ≤ 45 °C. Aşılırsa fan + etek yarıkları; yine aşılırsa servo hattı 20 A modüle.
+
+## Blok şema (metin)
+
+```
+Akü Victron SuperPack 12,8 V 20 Ah (BMS 30 A sürekli) ── XT60 ── Ana sigorta 30 A ── ASW-A01 ana anahtar ── sigorta kutusu (6 yol)
+  │                                                                                   │
+  └─ (anahtar sonrası) akü ADC bölücü 100k/18k ── ESP32 GPIO36                         ├─ F1 20 A ── röle K1 kontağı ── anahtarlı 12 V bara (WAGO)
+                                                                                      │        ├─ BTS7960 sol ── ön sol + arka sol JGB37 (paralel)
+                                                                                      │        ├─ BTS7960 sağ ── ön sağ + arka sağ JGB37 (paralel)
+                                                                                      │        ├─ 7,5 A ── XL4016 A 6 V ── 16 AWG ── dağıtım A ── sağ kol (4) + pan
+                                                                                      │        ├─ 7,5 A ── XL4016 B 6 V ── 16 AWG ── dağıtım B ── sol kol (4) + tilt
+                                                                                      │        └─ PC817 #2 (bara durumu) ── ESP32 GPIO5
+                                                                                      ├─ F2 15 A ── yedek
+                                                                                      ├─ F3 5 A ── 18 AWG çift, direk ön yüzü, boyun ── KAFA: P6KE18A ── D36V50F5 5 V ── P6KE6.8A
+                                                                                      │                                              ├─ USB-C ── Raspberry Pi 5 ── USB-A: 7" LCD (dokunmatik+güç), mikrofon
+                                                                                      │                                              │                          ├─ micro HDMI: LCD ; CSI: Camera Module 3 (FPC 300 mm)
+                                                                                      │                                              │                          └─ I2S: MAX98357A ── hoparlör (yer açık)
+                                                                                      ├─ F4 5 A ── XL4016 çevre 5 V ── ESP32 VIN, Nextion, sonar ×3, enkoder (3V3 ESP32'den), PCA9685/BNO055 mantık (3V3)
+                                                                                      └─ F5 2 A ── mantar NC ── röle K1 bobini ── IRLZ44N ── GND   (PC817 #1 mantar sonrası)
+Veri: Pi (kafa) ── USB 1,25 m (VBUS'ta 1N5819) ── ESP32 (taban) ── I2C: PCA9685 (10 servo + 3 sonar trig), BNO055 ; UART2: Nextion ; PWM/EN/IS: BTS ×2 ; enkoder ×2 (A/B)
+Toprak: akü − ── WAGO yıldız noktası (güç paneli) ── tüm dönüştürücüler; kafa GND 12 V dönüşüyle
+```
+
+## Akım bütçesi (anlık, akü tarafı 12,8 V; dönüştürücü verimi XL 0,88, Pololu 0,90, BTS 0,95)
+
+| Yük | Hat | Tipik | Yoğun | Tepe |
+|---|---|---|---|---|
+| Kafa (Pi + LCD + kamera + amfi + mikrofon) | F3 | 0,89 A (11,4 W) | 1,13 A | 1,62 A |
+| Servo A | F1 → 7,5 A | 1,5 A (jest 2,8 A × 6 V) | 2,3 A (4,4 A) | 4,1 A (7,7 A) |
+| Servo B | F1 → 7,5 A | 1,5 A | 2,5 A (4,7 A) | 4,1 A |
+| Motorlar ×4 (BTS) | F1 | 0,9 A (düz, sabit hız) | **8,0 A (yerinde dönüş μ 0,5: 4 × 2,0)** | 11,2 A (4 × durma) |
+| Çevre 5 V (Nextion 0,8 A + ESP32 0,24 + sensör/enkoder/opto ~0,15) | F4 | 0,4 A | 0,5 A | 0,6 A |
+| Röle bobini + PC817 | F5 | 0,15 A | 0,15 A | 0,15 A |
+| **Toplam** | | **5,3 A** | **14,6 A** | **21,8 A** (teorik) |
+
+- F1 yükü: yoğun 12,8 A, teorik 19,4 A (≤ 20 A). Ana 30 A ve Victron BMS 30 A sürekli içinde. Omni ile yerinde dönüşte motorlar 4 × 0,45 A, yoğun toplam ≈ 8,4 A.
+- Zaman ortalaması ve akü süresi: `taban-analiz.json` `aku` (hat verimleri güncellendi; röle bobini hesapta 0,3 W, gerçekte ~1,8 W: E8, 5. adım).
+
+## Sigorta listesi
+
+| Yer | Değer | Besler | Not |
+|---|---|---|---|
+| Ana | 30 A | akü + → her şey | XT60 sonrası kablolu yuva (mevcut) |
+| F1 | 20 A | röle K1 → anahtarlı 12 V bara | motorlar + iki servo hattı |
+| F2 | 15 A | yedek | |
+| F3 | **5 A** (önce 10 A Pi) | kafa 12 V (18 AWG) | kafa tepe 1,6 A |
+| F4 | 5 A | XL4016 çevre 5 V | |
+| F5 | **2 A** (önce 5 A) | acil stop / röle bobini devresi | sette yok: yeni |
+| Hat | 7,5 A × 2 | XL4016 A ve B girişi | kapaklı mini bıçak sigorta yuvası × 2 (yeni) |
+
+Sette (5, 10, 2×15, 2×20) F3 ve F4 için iki 5 A gerekiyor, bir tane var: bir 5 A ve bir 2 A eklenir (E9 ile aynı yönde). 10 A artık boşta.
+
+## Pin planı taslağı (ESP32 DevKit 30 pin; E5 başlangıcı)
+
+| GPIO | İşlev | Not |
+|---|---|---|
+| 36 (VP) | Akü gerilimi | ADC1; 100k/18k |
+| 39 (VN) | Sonar sağ echo | yalnız giriş; bölücü |
+| 34 | Sonar orta echo | yalnız giriş; bölücü |
+| 35 | Sonar sol echo | yalnız giriş; bölücü |
+| 32 | BTS sol IS (R_IS + L_IS) | ADC1; IS direnci modül şemasından (tahmini 1 kΩ) |
+| 33 | BTS sağ IS | ADC1 |
+| 25 / 26 | BTS sol RPWM / LPWM | |
+| 27 / 14 | BTS sağ RPWM / LPWM | 14 boot'ta kısa PWM verir: EN düşük olduğu için zararsız |
+| 13 | BTS EN (dört R_EN/L_EN ortak) | 10 kΩ pull-down |
+| 12 | Röle "devreye al" (IRLZ44N gate) | strapping: boot'ta LOW olmalı → gate'teki 10 kΩ pull-down sağlar |
+| 23 | Acil stop durumu (PC817 #1) | dahili pull-up |
+| 5 | Anahtarlı 12 V durumu (PC817 #2) | strapping (SDIO zamanlaması, normal açılışı etkilemez) |
+| 21 / 22 | I2C SDA / SCL (PCA9685, BNO055) | 3V3 |
+| 17 / 16 | UART2 TX / RX (Nextion) | RX'te 1k/2k bölücü |
+| 18 / 19 | Enkoder sol arka A / B | PCNT |
+| 4 / 15 | Enkoder sağ arka A / B | 15 strapping: boot'ta yüksek olabilir, sorun değil |
+| 1 / 3 | UART0 (USB → Pi) | |
+| 2 | Boş (kart LED'i) | ADC2: Wi-Fi açıkken analog okunamaz |
+
+- **PCA9685 kanalları:** 0–4 hat A servoları, 5–9 hat B servoları, 10–12 **sonar trig** (3,3 V, I2C ile ≥ 10 µs darbe), 13–15 yedek. Böylece üç GPIO kazanıldı.
+- Ön motorların enkoderleri bağlanmadı (pin yok). Yandaki iki motor aynı sürücüde olduğu için yan başına bir dörtlü enkoder yeter. Ön enkoder istenirse I2C GPIO genişletici (PCF8574 yavaş; PCNT gerekir) ya da ESP32-S3: E5'te karar.
+- Kalan yedek: GPIO2. XL4016 NTC (E7 ölçümü) için ADC1 pini kalmadı: ölçüm geçici olarak multimetreyle ya da BNO055 sıcaklığıyla.
+
+## Malzeme değişikliği (yalnız bu adım; `planlama/maliyet.json`)
+
+Eklenen ve değişen kalemler maliyet dosyasında `"adim": "3"` alanıyla işaretli. Fiyatı doğrulanmayanlar `durum: tahmini` ve notta "fiyat doğrulanmadı".
+Koşullu kalemler (omni, fan) `secenek: "kosullu"` ile toplama girmez.
+
+| Değişiklik | TL |
+|---|---|
+| Yeni: Pololu D36V50F5 (ithal, 39,95 USD) | 1.952,68 |
+| Yeni: USB-C güç ucu, TVS ×2, PC817 modülü (Direnc 43,59, doğrulandı), IRLZ44N, diyot ×2, direnç seti, pertinaks ×3, klemens/header, 16 AWG 2 m, hat sigortası yuvası ×2, bıçak sigorta ×4, ESP32–Pi USB 1,5 m | 730,59 |
+| Değişen: kamera FPC 200 → 300 mm (Adafruit 3,16 USD, ithal; 70,44 → 154,45) | +84,01 |
+| Değişen: micro HDMI 1,5 m → 25–30 cm (fiyat doğrulanmadı, aynı yazıldı) | 0 |
+| XL4016 ×3 (görev değişti, adet aynı), HC-SR04 ×3 (bölücüyle kaldı) | 0 |
+| **V3 toplamı (pay ve yedek hariç)** | **69.793,60 → 72.560,88 (+2.767,28; %15 payla +3.182)** |
+| Koşullu, toplama girmez: omni ×2 (45,90 USD × 2 = 4.487 TL, ithal) + fan 60 TL | 4.547 |
+
+`tasarim/cad/demo_uret.py` (maliyet sayfası) bu adımda koşulmadı: dosyası bu adımın kapsamında değil.
+
+## Açık işler
+
+1. **Ölçüm (K1):** JGB37 durma torku ve akımı, zemin μ → `arayuz.TABAN['donus']`.
+2. **Kabuk:** omni seçilirse etek ön bantta teker boşluğu 10,55 → 12 mm (1,5 mm). Etek arka bandına havalandırma yarıkları (E7). Hoparlör yeri.
+3. **Montaj:** `montaj/moduller.py` omni teker adı; ana montaj ve tam tarama (6. adım). `carpisma-sonuc.json` taban ve kafa bölümleri eskidi.
+4. **E5:** pin planı kesinleşmesi (ön enkoderler).
+5. **E8/E9 (5. adım):** akü süreleri (Victron 256 Wh, röle 1,8 W), sigorta seti.
+6. ESP32 kartında VBUS→VIN diyodu kontrolü; JGB37 enkoderinin 3,3 V'ta çalıştığı; BTS7960 modülünde IS direnci.
+7. Tilt servosu radyal yük (4,55 N): ikinci rulman açık işi sürüyor.
+8. Pololu D36V50F5 Türkiye stoğu yok: ithal ya da 5 V ≥ 5 A ve ≥ 24 V girişli eşdeğer (koruma özellikleri aranır).

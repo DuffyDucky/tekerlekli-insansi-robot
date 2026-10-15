@@ -200,6 +200,39 @@ def teker_local():
     return tire.fuse(jant).removeSplitter()
 
 
+# K1 (a) secenegi: on omni teker (arayuz.TABAN['omni']: Nexus 14075, O127 x 29, 22 makara O19, 480 g). Yerel: merkez orijin,
+# eksen X, standart tekerle AYNI merkez (teker duzlemi x 178: ayni yandaki on/arka teker birbirine karsi calismasin). Ic yuz
+# x = -14,5; standart tekerin ic yuzu x = -29'dan baslayan altigen yuva + gogus + M4 deligi aynen korunur: -29...-14,5 arasi
+# "gobek adaptoru" (12 mm altigen -> omni flansi; tahmini, Nexus gobegi teyit edilecek). Makaralar iki sirada (x +-5), 11'er,
+# yarim adim kaydirilmis; govde diski makaralara 0,5 mm gomulu (tek kati gosterim). Geometri gosterimdir, olcu: cap, en, makara.
+def omni_local():
+    O = A.TABAN["omni"]
+    R, w, rd = O["cap"] / 2, O["en"], O["makara_d"] / 2
+    rc = R - rd                                          # makara ekseni yaricapi (54)
+    n = O["makara"] // 2
+    disk = Part.makeCylinder(rc - rd + 0.5, w, V(-w / 2, 0, 0), V(1, 0, 0))
+    for i in range(6):                                   # hafifletme
+        a = math.radians(60 * i + 30)
+        disk = disk.cut(Part.makeCylinder(7.0, w + 2, V(-w / 2 - 1, 30 * math.sin(a), 30 * math.cos(a)), V(1, 0, 0)))
+    parca = []
+    boy = 2 * rc * math.sin(math.pi / n) - 9.0           # makara boyu: komsu makaraya ~9 mm bosluk
+    for sira, xs in ((0, -w / 2 + rd), (1, w / 2 - rd)):
+        for i in range(n):
+            a = 2 * math.pi * (i + 0.5 * sira) / n
+            c = V(xs, rc * math.sin(a), rc * math.cos(a))
+            t = V(0, math.cos(a), -math.sin(a))          # teget
+            parca.append(Part.makeCylinder(rd, boy, c - t * (boy / 2), t))
+    x0 = -TEK["W"] / 2 + TEK["yuva_derin"]               # gogus ic yuzu (-11,5): standart tekerle ayni
+    gobek = Part.makeCylinder(TEK["gobek_r"], TEK["yuva_derin"] + TEK["gogus"], V(-TEK["W"] / 2, 0, 0), V(1, 0, 0))
+    adaptor = Part.makeCylinder(20.0, (-w / 2) - (-TEK["W"] / 2) + 0.5, V(-TEK["W"] / 2, 0, 0), V(1, 0, 0))
+    g = disk.fuse(parca + [gobek, adaptor])
+    g = g.cut(hexprism(KAP["af"] + 0.1, V(-TEK["W"] / 2 - 1, 0, 0), V(x0, 0, 0), V(0, 1, 0)))
+    g = g.cut(Part.makeCylinder(2.25, 20, V(x0 - 2, 0, 0), V(1, 0, 0)))
+    # gogus (M4 vida basi + pul icin dis taraf acik): standart tekerdeki gibi x0 + gogus'ten disari bosluk
+    g = g.cut(Part.makeCylinder(7.0, w, V(x0 + TEK["gogus"], 0, 0), V(1, 0, 0)))
+    return g.removeSplitter()
+
+
 # ------------------------------------------------------------------ LiFePO4 aku (rc:339-345, yatik: 181 x, 77 y, 167 z; kutuplar +Z
 # yuzunde x +-65,5, y orta). Yerel: alt yuz merkezi orijin, kutup yuzu +Z.
 AKU = A.TABAN["aku"]
@@ -314,6 +347,30 @@ def acil_stop_local():
     ust = cap.fuse(Part.makeCylinder(16.0, 6.0, V(0, 0, 0), V(0, 1, 0))).removeSplitter()
     alt = Part.makeCylinder(11.0, 12.0, V(0, -12, 0), V(0, 1, 0)).fuse(box(-21, 21, -48, -12, -15, 15)).removeSplitter()
     return ust, alt
+
+
+# E2/E3 arayuz karti ve E1 servo dagitim karti: delikli pertinaks 70 x 50 (PERF ile ayni, kenardan 2,5 mm M3 delik). Bilesenler
+# tahmini zarf: arayuz kartinda 2 kanalli PC817 blogu, MOSFET + diyot, direnc sirasi, 2 adet 2'li klemens; dagitim kartinda 16 AWG
+# icin 2'li klemens, 2200 uF (O10 x 20, yatik), 6 adet 3 pinli cikis (2,54) ve sinyal giris sirasi.
+def arayuz_karti_local():
+    l, w, k = PERF["l"], PERF["w"], PERF["kenar"]
+    d = [(sx * (l / 2 - k), sz * (w / 2 - k)) for sx in (-1, 1) for sz in (-1, 1)]
+    comps = [(-28, -8, 1.6, 9.6, -16, -6),                  # PC817 x2 blogu
+             (-4, 6, 1.6, 16.6, -16, -6),                   # MOSFET (TO-220 dik)
+             (10, 16, 1.6, 6.6, -16, -6),                   # diyot 1N4007 / direnc
+             (-28, 20, 1.6, 4.1, 2, 6),                     # direnc sirasi (bolucu)
+             (20, 30, 1.6, 11.6, -18, 2), (20, 30, 1.6, 11.6, 6, 18)]   # 2'li klemensler
+    return kart(l, w, PERF["t"], comps, d, PERF["delik"])
+
+
+def servo_dagitim_local():
+    l, w, k = PERF["l"], PERF["w"], PERF["kenar"]
+    d = [(sx * (l / 2 - k), sz * (w / 2 - k)) for sx in (-1, 1) for sz in (-1, 1)]
+    comps = [(-30, -20, 1.6, 11.6, -10, 10),                # 16 AWG giris klemensi
+             (-17, 3, 1.6, 11.6, 5, 15),                    # 2200 uF (yatik)
+             (6, 21, 1.6, 10.1, -19, 19),                   # 6 x 3 pin cikis (servo uzatmalari)
+             (24, 28, 1.6, 10.1, -19, 19)]                  # sinyal giris sirasi (PCA9685'ten kopru)
+    return kart(l, w, PERF["t"], comps, d, PERF["delik"])
 
 
 def zarf(x0, x1, y0, y1, z0, z1, r=2.0):

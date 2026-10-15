@@ -185,11 +185,12 @@ for ad, yer, dayanak in (
         ("JGB37 + L braket (4)", "redüktör ön yüzü x ±133; flanş plakanın altında (y 90–91,5)", "rc:721–727"),
         ("Akü LiFePO4 (yatık)", "x ±90,5, y 94,5–171,5, z −205…−38; kutuplar +Z (z −29'a kadar)", "rc:733, rc:46"),
         ("BTS7960 ×2", "x ±67,5, z 165; 8 mm naylon burç üstünde (üst 143,5)", "rc:734 (+8 mm)"),
-        ("XL4016 ×3", "(−49,2; 75) Pi · (49,2; 75) çevre 5 V · (0; 170) servo 6 V", "rc:736 (+8 mm)"),
-        ("Raspberry Pi 5", "ön kat (−90,5; 80), SD yuvası x −135,5", "V3 (−59,6; −120) → taşındı"),
+        ("XL4016 ×3", "(−49,2; 75) servo B (sol kol + tilt) · (49,2; 75) çevre 5 V · (0; 170) servo A (sağ kol + pan)", "rc:736 (+8 mm); E1 15 Ekim 2026"),
+        ("Arayüz kartı (E2/E3)", "ön kat (−90,5; 80): eski Pi 5 yeri (Pi K4 ile kafada)", "planlama/adim3/elektrik.md"),
+        ("Servo dağıtım A / B (E1)", "ön kat (72; 205) / (−72; 205)", "planlama/adim3/elektrik.md"),
         ("ESP32 + taşıyıcı", "ön kat (80; 75)", "V3 (51,6; −135) → taşındı"),
         ("PCA9685", "ön kat (83; 125)", "V3 (51,6; −65) → taşındı"),
-        ("BNO055 · MAX98357A", "(0; 60) · (−51,6; 40)", "rc:742–743 (aynı)"),
+        ("BNO055", "(0; 60)", "rc:742 (aynı); MAX98357A K4 ile kafaya gitti"),
         ("Sigorta kutusu · röle · ana sigorta", "güç paneli (0; −203) · (−112; −130) · (112; −130)", "yeni (tahmini zarflar)"),
         ("Sonar HC-SR04 ×3", "x 0, ±79,4; y 110; PCB ön yüzü z 256", "rc:752 + kabuk delikleri"),
         ("Acil stop · ana anahtar", "etek üst plakası (79,4; −200) · aynası (−79,4; −200)", "rc:757 · yeni öneri")):
@@ -307,6 +308,27 @@ H.append("<p class='not'>F = m · (a + g · sin θ + 0,03 · g · cos θ), T = F
          "(6,3 kg·cm) hedef (01-donanim-maliyet, V3 demosu). Hız 60 dev/dk × Ø125 = %s m/s. Aks yükü (düz, sabit hız): ön çift %s N, arka çift %s N "
          "(akü arkada); 5° rampa + 0,5 m/s² için gereken sürtünme katsayısı %s (kauçuk teker için düşük, tahmini).</p>"
          % (sayi(MOT["hiz_m_s"], 2), sayi(d["aks"]["on_N"], 0), sayi(d["aks"]["arka_N"], 0), sayi(d["aks"]["mu_gereken_rampa5"], 2)))
+# ---------------------------------------------------------------- E0: donus yuku (15 Ekim 2026)
+DN = d.get("donus")
+if DN:
+    H.append("<h3>Dönüş yükü (E0, düzeltme planı 3. adım)</h3><div class='tw'>")
+    rows = []
+    for a in DN["yerinde"]:
+        om = next(o for o in DN["yerinde_omni"] if o["mu"] == a["mu"])
+        us = next(b for b in DN["ust_sinir"] if b["mu"] == a["mu"] and b["R_mm"] == 0)
+        sn = "ok" if a["en_cok_oran_surekli"] <= 0.8 else ("uy" if a["en_cok_oran_surekli"] <= 1.0 else "no")
+        rows.append(("%s%s" % (sayi(a["mu"], 2), " (ölçülen)" if a.get("etiket") == "olculen" else ""), "%s (%s)" % (sayi(a["en_cok_kgcm"], 1), esc(a["en_cok_teker"])),
+                     "<span class='%s'>×%s</span>" % (sn, sayi(a["en_cok_oran_surekli"], 2)), "%%%d" % round(a["en_cok_oran_stall"] * 100),
+                     sayi(a["en_cok_akim_A"], 1), "%s (durmanın %%%d'i)" % (sayi(us["en_cok_kgcm"], 1), round(us["oran_stall"] * 100)),
+                     "%s (×%s)" % (sayi(om["en_cok_kgcm"], 1), sayi(om["en_cok_oran_surekli"], 2))))
+    H.append(tablo(["μ (yanal)", "Yerinde dönüş, en yüklü motor (kg·cm)", "Sürekli (%s) oranı" % sayi(DN["motor"]["surekli_kgcm"], 1), "Durma (%s)" % sayi(DN["motor"]["stall_kgcm"], 0),
+                    "Akım (A, tahmini)", "Üst sınır, R 0 (kg·cm)", "Ön omni ile (kg·cm)"], rows) + "</div>")
+    H.append("<p class='not'>%s Model: Coulomb sürtünmesi (kuvvet ≤ μN, kayma yönünün tersi, lastik kayma ölçeği 0,05), her yanda iki motor aynı sürücüde "
+             "(aynı hız); üst sınır: yanal tam μN ve Wong μ_t(R). Yay dönüşü (R ≈ 1,1 m) yükü yalnız %%10–15 azaltır. Sabitler <code>arayuz.TABAN['donus']</code>; "
+             "ölçüm gelince yalnız <code>mu_olculen</code>, <code>stall_kgcm_olculen</code>, <code>stall_A_olculen</code> doldurulur. Ayrıntı: "
+             "<code>taban/donus_hesap.py</code>, <code>planlama/adim3/elektrik.md</code>. Omni CAD seçeneği: <code>arayuz.TABAN['omni']['aktif']</code> ya da "
+             "<code>TABAN_OMNI=1</code> (bu raporda %s).</p>" % (esc(DN["karar"]["sonuc"]), "açık" if d.get("omni") else "kapalı"))
+
 H.append("<h3>Akü süresi (tahmini)</h3><div class='tw'>")
 rows = [(esc(t[0]), esc(t[1]), sayi(t[2], 1), sayi(t[3], 1), sayi(t[4], 1), esc(t[5])) for t in AKU["kalemler"]]
 rows.append(("<b>Aküden çekilen (dönüştürücü kaybı + röle bobini dahil)</b>", "12,8 V", "<b>%s</b>" % sayi(AKU["senaryo"]["dusuk"]["W"], 1),
@@ -328,13 +350,13 @@ for ad, cap in (("taban-kablo-yolu.png", "Taban içi kablo yolu şeması (katlar
     if os.path.exists(os.path.join(G, ad)):
         H.append("<figure><img src='%s' alt='%s'><figcaption>%s</figcaption></figure>" % (img64(ad), esc(cap), esc(cap)))
 H.append("</div>")
-H.append("<h3>Sigorta planı (sigorta kutusu ile gelen 5, 10, 2×15, 2×20 A)</h3><div class='tw'>")
+H.append("<h3>Sigorta planı (15 Ekim 2026, planlama/adim3/elektrik.md; sette 5, 10, 2×15, 2×20 A var: bir 5 A ve bir 2 A eklenir)</h3><div class='tw'>")
 SIG = [("Ana sigorta 30 A", "akü + → XT60 → kablolu yuva (güç panelinde)", "ana anahtar ASW-A01 → sigorta kutusu girişi"),
-       ("F1 20 A", "röle (40 A) kontağı → WAGO", "BTS7960 sol + sağ (her biri iki motoru paralel sürer) ve XL4016 servo 6 V"),
-       ("F2 15 A", "yedek", "ileride kol başına ayrı servo dönüştürücü (01'deki öneri)"),
-       ("F3 10 A", "XL4016 Pi (5,1 V)", "Raspberry Pi 5 (USB-C)"),
-       ("F4 5 A", "XL4016 çevre (5 V)", "Nextion, 7\" LCD, ESP32, PCA mantık, BNO055, sonarlar, amfi"),
-       ("F5 5 A", "acil stop (NC) → röle bobini", "basınca röle bırakır: motor + servo gücü düşer, Pi ve ekranlar açık kalır (03-referans)"),
+       ("F1 20 A", "röle K1 (40 A) kontağı → anahtarlı 12 V bara (WAGO)", "BTS7960 sol + sağ; 7,5 A hat sigortalarıyla XL4016 servo A (sağ kol + pan) ve B (sol kol + tilt)"),
+       ("F2 15 A", "yedek", ""),
+       ("F3 5 A", "kafa 12 V (18 AWG çift, boyundan)", "kafada Pololu D36V50F5 5 V → Raspberry Pi 5, 7\" LCD, amfi, kamera (K4)"),
+       ("F4 5 A", "XL4016 çevre (5 V)", "Nextion, ESP32 (VIN), sonarlar; PCA9685/BNO055 mantığı ESP32 3V3'ten"),
+       ("F5 2 A", "mantar (NC) → röle bobini → IRLZ44N (ESP32 'devreye al')", "basınca röle bırakır; bırakınca güç kendiliğinden gelmez (E3). Pi ve ekranlar açık kalır"),
        ("F6", "boş", "")]
 H.append(tablo(["Sigorta", "Hat", "Besledikleri"], [(esc(a), esc(b), esc(c)) for a, b, c in SIG]) + "</div>")
 H.append("<h3>Kablo yolları (şema, <code>Referans</code> grubu; taramaya ve kütleye girmez)</h3><ol>")
@@ -344,11 +366,11 @@ H.append("</ol><ul>")
 for s in ("**Akü → güç paneli:** kutuplar önde (z −29); kablolar akü ile orta ara ray arasındaki 18 mm boşluktan yukarı, güç panelinin akü kablo yarıklarından (x ±40…80, z −37…−23) çıkar.",
           "**Panel → alt kat:** aynı yarıklardan aşağı, orta ara rayın üstünden (y 140–170) ön bölmeye: BTS7960 ve XL4016'lar.",
           "**Motorlar:** ön motor kabloları Ø16 delikten (x ±80, z 200), arka motor kabloları plakanın altından öne gelip Ø16 delikten (x ±80, z 36) çıkar.",
-          "**Alt kat → ön kat:** ön katın kablo kesiği (x ±60, z 150–175); Pi beslemesi ve ESP32 sinyalleri buradan.",
+          "**Alt kat → ön kat:** ön katın kablo kesiği (x ±60, z 150–175); servo 16 AWG hatları (dağıtım kartlarına), ESP32 sinyalleri buradan.",
           "**Gövdeye çıkış:** etek üst plakasının 200 × 140 açıklığından direğin yanından. Servo demeti direğin **arka yüzü** boyunca (gövde braketleri ±X yüzünde, arka yüz boş), "
-          "traverse çıkınca omuz servolarına ve R62 boyun açıklığından kafaya. 5 V çevre ve Pi → kafa (HDMI, kamera, USB) direğin **ön yüzünde**, Nextion konnektörüne y ~800'de ayrılır. "
+          "traverse çıkınca omuz servolarına ve R62 boyun açıklığından kafaya. 5 V çevre, kafa 12 V çifti ve ESP32 → Pi USB'si direğin **ön yüzünde**; Nextion konnektörüne y ~800'de ayrılır. "
           "Demet gövde arka servis kapağından (y 500–690) erişilebilir.",
-          "**Sinyal:** sonarlar ön ara rayın üstünden ESP32'ye; enkoder ve BTS PWM/EN ESP32'ye; Pi ↔ ESP32 USB."):
+          "**Sinyal:** sonarlar ön ara rayın üstünden arayüz kartındaki bölücülere, oradan ESP32'ye; enkoder ve BTS PWM/EN/IS ESP32'ye; ESP32 → kafadaki Pi'ye USB (1,25 m, VBUS'ta 1N5819)."):
     H.append("<li>%s</li>" % md(s))
 H.append("</ul>")
 
@@ -359,8 +381,7 @@ for s in ("**Akü değişimi:** (1) acil stop + ana anahtar kapalı, akü XT60'�
           "kaldırılır; sigorta kutusu ve röle panelde kalır (servis halkası). (4) İki cırt kayış açılır; akü 40 mm kaldırılıp arka ara rayın üstünden geriye alınır "
           "(üstte etek orta plakası y 259'da, akü üstü 211,5: 47 mm boşluk). Elektronik katına dokunulmaz.",
           "**Şarj:** akü yerinde, ayrı XT60 şarj girişinden (konum önerisi: etek üst plakası arka; kabukta delik gerekir, açık iş).",
-          "**SD kart:** Pi 5 ön katın sol kenarında, SD yuvası −X'e bakar (x −135,5, z 80) ve etek orta sol bandının hizasında. Etek orta sol (1 parça) sökülünce yandan "
-          "doğrudan erişilir. Günlük güncelleme SSH/ağ üzerinden; SD çıkarmak yalnız imaj değişiminde.",
+          "**SD kart:** Pi 5 artık kafada (K4); arka kafa kabuğu 2 vidayla sökülünce erişilir (kafa raporu). Günlük güncelleme SSH/ağ üzerinden.",
           "**Sigortalar:** güç panelinin üstünde; etek arka bandı sökülünce erişilir.",
           "**Elektronik katı:** etek ön + orta bantları sökülünce yandan; kat 4× M5 ile söküp kaldırılabilir (kablolar kesikten).",
           "**Motor / teker:** teker M4 eksenel vidası dışarıdan (etek sökülmeden alttan erişim zor: etek yerden 35 mm). Motor braketi plakaya önce takılır (M4 anahtarı redüktörden geçmez)."):
@@ -519,13 +540,13 @@ ACIK = ["**Akü:** Limacell 24 Ah'ın ölçüsü ve kütlesi satıcıdan (yuva 1
         "**BOM'a eklenecekler:** 12 V 40 A röle + soket, ESP32 taşıyıcı (pertinaks + 2× 15'li dişi header), M2,5 pirinç burç + vida (Pi/PCA/BNO; settekiler M3), M4 ve M5 çekiç somun, M5×16 set vida, 25 mm cırt kayış (2), köpük bant, XT60 şarj girişi.",
         "**Kumpasla ölçülecek:** sigorta kutusu, röle, ana anahtar ASW-A01, ana sigorta yuvası, BTS7960 delik aralığı, eldeki BNO055 muadil kartı, HC-SR04 pin bloğu.",
         "**Kabuk (2. aşama / kabuk sahibi):** etek üst plakasına ana anahtar deliği ve XT60 şarj girişi; acil stop B200E-E ile delik aynı.",
-        "**Isı:** Pi 5 + 3× XL4016 + 2× BTS7960 kapalı etekte; etek altı açık (yerden 35 mm), sıcak hava etek üst açıklığından gövdeye çıkar. Sıcaklık ölçülmeli; gerekirse etek arka bandına havalandırma.",
-        "**Kamera kablosu:** Pi tabanda, kamera kafada (~900 mm): elimizdeki 200 mm FPC yetmez (kafa raporuyla birlikte karar).",
+        "**Isı (E7):** Pi kafaya gitti; etekte 3× XL4016 + 2× BTS7960 + röle kalır (tipik ~8 W, yoğun ~11,5 W, tahmini). XL4016 ısısı üstteki soğutucuda: ped yerine ölçüme bağlı 40 mm fan (yer ayrıldı) ve etek arka bandında yarık (kabuk açık işi). Ölçüm planı planlama/adim3/elektrik.md.",
+        "**Kamera kablosu:** K4 ile Pi kafada; kamera FPC 300 mm kafa içinde (kafa raporu).",
         "**Alt plaka 1,06 kg:** lazer kesimde hafifletme cepleri (akü ve kart bölgeleri dışında) ~%25 kazandırır; devrilme payı düşük kütleye duyarlı değil (akü belirleyici).",
         "**Robot yazılımı:** tekerler montajda serbest döner eklem; hız/ivme sınırı (rampada ≤ 0,25 m/s²) ve acil stop davranışı yazılımda."]
 H.append("<h2>Açık işler</h2><ul>" + "".join("<li>%s</li>" % md(s) for s in ACIK) + "</ul>")
 H.append("<h2>Dosyalar</h2><ul>"
-         "<li><code>taban_lib.py</code>: JGB37, L braket, kaplin, teker, akü, kartlar (Pi 5, PCA9685, BNO055, MAX98357A, ESP32, BTS7960, XL4016, HC-SR04), acil stop, "
+         "<li><code>taban_lib.py</code>: JGB37, L braket, kaplin, teker, akü, kartlar (PCA9685, BNO055, ESP32, BTS7960, XL4016, HC-SR04, arayüz kartı, servo dağıtım kartı; Pi 5 ve amfi kafada), omni teker seçeneği, acil stop, "
          "zarflar, burç, plaka yardımcıları, DXF yazıcı; baskı analizi dirsek_lib'den</li>"
          "<li><code>taban_parcalar.py</code>: parçalar, bağlantılar, baskı/lazer listesi, kablo yolu şeması (import edilebilir)</li>"
          "<li><code>taban_montaj.py</code>: kontroller, iskelet/kabuk taraması, hesaplar → <code>taban-montaj.FCStd</code>, <code>.step</code>, <code>taban-bom.csv</code>, "

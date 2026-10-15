@@ -10,8 +10,8 @@
   "ayna": false,
   "not_": "yerel orijin = traversin ust yuzu ortasi; gruplar Govde (sabit), Pan, Kafa (Pan * tilt)"
  },
- "parca_sayisi": 98,
- "referans_sayisi": 1,
+ "parca_sayisi": 115,
+ "referans_sayisi": 5,
  "baski_sayisi": 7,
  "parcalar": [
   {
@@ -1993,12 +1993,12 @@
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "Kafa iskeleti",
-   "kutle_g": 110.45,
-   "hacim_mm3": 108715.2,
+   "kutle_g": 110.32,
+   "hacim_mm3": 108583.1,
    "merkez": [
-    -3.68,
-    171.958,
-    10.829
+    -3.683,
+    171.948,
+    10.875
    ],
    "bb": [
     -102.5,
@@ -2013,7 +2013,7 @@
     170,
     0
    ],
-   "not_": "kafa tablasi + iki yanak: sag yanak tilt horn'una 4x M3, sol yanakta 625ZZ; kabuklar tablaya 4x M3"
+   "not_": "kafa tablasi + iki yanak: sag yanak tilt horn'una 4x M3, sol yanakta 625ZZ; kabuklar tablaya 4x M3; Pi 5 icin 4x O2,9"
   },
   {
    "i": 69,
@@ -2167,12 +2167,12 @@
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "Arka kafa kabugu",
-   "kutle_g": 270.62,
-   "hacim_mm3": 236761.8,
+   "kutle_g": 263.07,
+   "hacim_mm3": 230161.8,
    "merkez": [
     -0.0,
-    192.309,
-    -32.437
+    191.621,
+    -32.067
    ],
    "bb": [
     -107.31,
@@ -2187,7 +2187,7 @@
     140,
     -120
    ],
-   "not_": "dikis dili on kabuga 6 mm girer; yanlarda 4'er havalandirma yarigi"
+   "not_": "dikis dili on kabuga 6 mm girer; yanlarda 4'er alt yarik + 6'sar ust cikis yarigi, arka duvarda 10 giris yarigi (K4)"
   },
   {
    "i": 75,
@@ -2858,6 +2858,499 @@
   },
   {
    "i": 98,
+   "ad": "Raspberry Pi 5 8GB + Active Cooler",
+   "grup": "Kafa",
+   "tur": "Satin",
+   "malzeme": "-",
+   "kod": "Raspberry Pi 5 8GB + resmi Active Cooler",
+   "kutle_g": 58.0,
+   "hacim_mm3": 64986.9,
+   "merkez": [
+    14.596,
+    198.427,
+    -27.482
+   ],
+   "bb": [
+    -36.5,
+    54.1,
+    189.6,
+    208.5,
+    -55.0,
+    2.7
+   ],
+   "patlat": [
+    0,
+    230,
+    -40
+   ],
+   "not_": "kablo kenari (USB-C, 2x micro HDMI, 2x CSI) one; microSD -X'e (x -49...-34): arka kabuk sokulunce erisilir"
+  },
+  {
+   "i": 99,
+   "ad": "Burc M2,5x8 (Pi 0)",
+   "grup": "Kafa",
+   "tur": "Satin",
+   "malzeme": "Pirinc",
+   "kod": "M2,5 x 8 burc, disi-disi, AA 5",
+   "kutle_g": 1.14,
+   "hacim_mm3": 133.9,
+   "merkez": [
+    -30.5,
+    187.0,
+    -2.5
+   ],
+   "bb": [
+    -33.0,
+    -28.0,
+    183.0,
+    191.0,
+    -5.39,
+    0.39
+   ],
+   "patlat": [
+    0,
+    210,
+    -40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 100,
+   "ad": "Vida M2,5x5 (Pi 0 ust)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M2,5x5 DIN 912",
+   "kutle_g": 0.46,
+   "hacim_mm3": 59.1,
+   "merkez": [
+    -30.5,
+    192.249,
+    -2.5
+   ],
+   "bb": [
+    -32.75,
+    -28.25,
+    187.6,
+    195.1,
+    -4.75,
+    -0.25
+   ],
+   "patlat": [
+    0,
+    250,
+    -40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 101,
+   "ad": "Vida M2,5x8 (Pi 0 alt)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M2,5x8 DIN 912",
+   "kutle_g": 0.58,
+   "hacim_mm3": 73.8,
+   "merkez": [
+    -30.5,
+    179.577,
+    -2.5
+   ],
+   "bb": [
+    -32.75,
+    -28.25,
+    175.5,
+    186.0,
+    -4.75,
+    -0.25
+   ],
+   "patlat": [
+    0,
+    150,
+    -40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 102,
+   "ad": "Burc M2,5x8 (Pi 1)",
+   "grup": "Kafa",
+   "tur": "Satin",
+   "malzeme": "Pirinc",
+   "kod": "M2,5 x 8 burc, disi-disi, AA 5",
+   "kutle_g": 1.14,
+   "hacim_mm3": 133.9,
+   "merkez": [
+    27.5,
+    187.0,
+    -2.5
+   ],
+   "bb": [
+    25.0,
+    30.0,
+    183.0,
+    191.0,
+    -5.39,
+    0.39
+   ],
+   "patlat": [
+    0,
+    210,
+    -40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 103,
+   "ad": "Vida M2,5x5 (Pi 1 ust)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M2,5x5 DIN 912",
+   "kutle_g": 0.46,
+   "hacim_mm3": 59.1,
+   "merkez": [
+    27.5,
+    192.249,
+    -2.5
+   ],
+   "bb": [
+    25.25,
+    29.75,
+    187.6,
+    195.1,
+    -4.75,
+    -0.25
+   ],
+   "patlat": [
+    0,
+    250,
+    -40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 104,
+   "ad": "Vida M2,5x8 (Pi 1 alt)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M2,5x8 DIN 912",
+   "kutle_g": 0.58,
+   "hacim_mm3": 73.8,
+   "merkez": [
+    27.5,
+    179.577,
+    -2.5
+   ],
+   "bb": [
+    25.25,
+    29.75,
+    175.5,
+    186.0,
+    -4.75,
+    -0.25
+   ],
+   "patlat": [
+    0,
+    150,
+    -40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 105,
+   "ad": "Burc M2,5x8 (Pi 2)",
+   "grup": "Kafa",
+   "tur": "Satin",
+   "malzeme": "Pirinc",
+   "kod": "M2,5 x 8 burc, disi-disi, AA 5",
+   "kutle_g": 1.14,
+   "hacim_mm3": 133.9,
+   "merkez": [
+    -30.5,
+    187.0,
+    -51.5
+   ],
+   "bb": [
+    -33.0,
+    -28.0,
+    183.0,
+    191.0,
+    -54.39,
+    -48.61
+   ],
+   "patlat": [
+    0,
+    210,
+    -40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 106,
+   "ad": "Vida M2,5x5 (Pi 2 ust)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M2,5x5 DIN 912",
+   "kutle_g": 0.46,
+   "hacim_mm3": 59.1,
+   "merkez": [
+    -30.5,
+    192.249,
+    -51.5
+   ],
+   "bb": [
+    -32.75,
+    -28.25,
+    187.6,
+    195.1,
+    -53.75,
+    -49.25
+   ],
+   "patlat": [
+    0,
+    250,
+    -40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 107,
+   "ad": "Vida M2,5x8 (Pi 2 alt)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M2,5x8 DIN 912",
+   "kutle_g": 0.58,
+   "hacim_mm3": 73.8,
+   "merkez": [
+    -30.5,
+    179.577,
+    -51.5
+   ],
+   "bb": [
+    -32.75,
+    -28.25,
+    175.5,
+    186.0,
+    -53.75,
+    -49.25
+   ],
+   "patlat": [
+    0,
+    150,
+    -40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 108,
+   "ad": "Burc M2,5x8 (Pi 3)",
+   "grup": "Kafa",
+   "tur": "Satin",
+   "malzeme": "Pirinc",
+   "kod": "M2,5 x 8 burc, disi-disi, AA 5",
+   "kutle_g": 1.14,
+   "hacim_mm3": 133.9,
+   "merkez": [
+    27.5,
+    187.0,
+    -51.5
+   ],
+   "bb": [
+    25.0,
+    30.0,
+    183.0,
+    191.0,
+    -54.39,
+    -48.61
+   ],
+   "patlat": [
+    0,
+    210,
+    -40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 109,
+   "ad": "Vida M2,5x5 (Pi 3 ust)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M2,5x5 DIN 912",
+   "kutle_g": 0.46,
+   "hacim_mm3": 59.1,
+   "merkez": [
+    27.5,
+    192.249,
+    -51.5
+   ],
+   "bb": [
+    25.25,
+    29.75,
+    187.6,
+    195.1,
+    -53.75,
+    -49.25
+   ],
+   "patlat": [
+    0,
+    250,
+    -40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 110,
+   "ad": "Vida M2,5x8 (Pi 3 alt)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M2,5x8 DIN 912",
+   "kutle_g": 0.58,
+   "hacim_mm3": 73.8,
+   "merkez": [
+    27.5,
+    179.577,
+    -51.5
+   ],
+   "bb": [
+    25.25,
+    29.75,
+    175.5,
+    186.0,
+    -53.75,
+    -49.25
+   ],
+   "patlat": [
+    0,
+    150,
+    -40
+   ],
+   "not_": ""
+  },
+  {
+   "i": 111,
+   "ad": "Kopuk bant (5)",
+   "grup": "Kafa",
+   "tur": "Satin",
+   "malzeme": "Kopuk",
+   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
+   "kutle_g": 0.06,
+   "hacim_mm3": 645.2,
+   "merkez": [
+    -75.0,
+    183.5,
+    44.0
+   ],
+   "bb": [
+    -87.7,
+    -62.3,
+    183.0,
+    184.0,
+    31.3,
+    56.7
+   ],
+   "patlat": [
+    0,
+    200,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 112,
+   "ad": "5 V cevirici Pololu D36V50F5",
+   "grup": "Kafa",
+   "tur": "Satin",
+   "malzeme": "-",
+   "kod": "Pololu D36V50F5 5 V 5,5 A (pololu.com/product/4091)",
+   "kutle_g": 7.0,
+   "hacim_mm3": 2845.2,
+   "merkez": [
+    -75.394,
+    188.074,
+    44.569
+   ],
+   "bb": [
+    -87.7,
+    -62.3,
+    184.0,
+    193.5,
+    31.3,
+    56.7
+   ],
+   "patlat": [
+    0,
+    230,
+    0
+   ],
+   "not_": "12 V boyundan gelir (kablo gecisi x -50...-37); cikis kisa USB-C kabloyla Pi'ye, LCD Pi USB'sinden; TVS cikista; kopuk bant + kablo bagi"
+  },
+  {
+   "i": 113,
+   "ad": "Kopuk bant (MAX98357A)",
+   "grup": "Kafa",
+   "tur": "Satin",
+   "malzeme": "Kopuk",
+   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
+   "kutle_g": 0.03,
+   "hacim_mm3": 345.3,
+   "merkez": [
+    65.0,
+    183.5,
+    44.0
+   ],
+   "bb": [
+    55.3,
+    74.7,
+    183.0,
+    184.0,
+    35.1,
+    52.9
+   ],
+   "patlat": [
+    0,
+    200,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 114,
+   "ad": "MAX98357A I2S amfi",
+   "grup": "Kafa",
+   "tur": "Satin",
+   "malzeme": "-",
+   "kod": "Adafruit MAX98357A",
+   "kutle_g": 2.0,
+   "hacim_mm3": 708.5,
+   "merkez": [
+    65.0,
+    185.213,
+    45.084
+   ],
+   "bb": [
+    55.3,
+    74.7,
+    184.0,
+    188.1,
+    35.1,
+    52.9
+   ],
+   "patlat": [
+    0,
+    230,
+    0
+   ],
+   "not_": "Pi GPIO I2S (kisa); hoparlor yeri acik (Duffy karari); kopuk bant + kablo bagi"
+  },
+  {
+   "i": 115,
    "ad": "Kablo demeti (gosterim)",
    "grup": "Referans",
    "tur": "Referans",
@@ -2883,7 +3376,123 @@
     0,
     0
    ],
-   "not_": "HDMI ince kablo + USB (dokunmatik/guc) + kamera FPC + tilt servosu; sema, gercek kablo degil"
+   "not_": "K4: boyundan yalniz 12 V cift (18 AWG) + ESP32 USB (yalniz veri) + tilt servosu; sema, gercek kablo degil"
+  },
+  {
+   "i": 116,
+   "ad": "Kamera FPC 300 mm (gosterim)",
+   "grup": "Referans",
+   "tur": "Referans",
+   "malzeme": "-",
+   "kod": "(gosterim)",
+   "kutle_g": 0.0,
+   "hacim_mm3": 758.9,
+   "merkez": [
+    12.993,
+    218.212,
+    41.943
+   ],
+   "bb": [
+    -1.5,
+    19.5,
+    192.5,
+    259.5,
+    2.0,
+    71.5
+   ],
+   "patlat": [
+    0,
+    0,
+    0
+   ],
+   "not_": "sema"
+  },
+  {
+   "i": 117,
+   "ad": "micro HDMI -> LCD HDMI (gosterim)",
+   "grup": "Referans",
+   "tur": "Referans",
+   "malzeme": "-",
+   "kod": "(gosterim)",
+   "kutle_g": 0.0,
+   "hacim_mm3": 633.5,
+   "merkez": [
+    26.674,
+    195.53,
+    36.727
+   ],
+   "bb": [
+    -1.32,
+    63.5,
+    192.5,
+    197.5,
+    2.28,
+    61.5
+   ],
+   "patlat": [
+    0,
+    0,
+    0
+   ],
+   "not_": "sema"
+  },
+  {
+   "i": 118,
+   "ad": "USB-C guc: cevirici -> Pi (gosterim)",
+   "grup": "Referans",
+   "tur": "Referans",
+   "malzeme": "-",
+   "kod": "(gosterim)",
+   "kutle_g": 0.0,
+   "hacim_mm3": 499.9,
+   "merkez": [
+    -42.601,
+    195.241,
+    28.289
+   ],
+   "bb": [
+    -70.83,
+    -18.5,
+    192.5,
+    197.5,
+    1.5,
+    51.25
+   ],
+   "patlat": [
+    0,
+    0,
+    0
+   ],
+   "not_": "sema"
+  },
+  {
+   "i": 119,
+   "ad": "12 V: kablo gecisi -> cevirici (gosterim)",
+   "grup": "Referans",
+   "tur": "Referans",
+   "malzeme": "-",
+   "kod": "(gosterim)",
+   "kutle_g": 0.0,
+   "hacim_mm3": 377.0,
+   "merkez": [
+    -55.435,
+    187.206,
+    20.937
+   ],
+   "bb": [
+    -76.5,
+    -41.5,
+    175.0,
+    191.5,
+    10.5,
+    36.5
+   ],
+   "patlat": [
+    0,
+    0,
+    0
+   ],
+   "not_": "sema"
   }
  ],
  "gruplar": {
@@ -2998,13 +3607,34 @@
     "Kamera vidasi M2x8 PT",
     "Kamera vidasi M2x8 PT",
     "Kamera vidasi M2x8 PT",
-    "Kamera vidasi M2x8 PT"
+    "Kamera vidasi M2x8 PT",
+    "Raspberry Pi 5 8GB + Active Cooler",
+    "Burc M2,5x8 (Pi 0)",
+    "Vida M2,5x5 (Pi 0 ust)",
+    "Vida M2,5x8 (Pi 0 alt)",
+    "Burc M2,5x8 (Pi 1)",
+    "Vida M2,5x5 (Pi 1 ust)",
+    "Vida M2,5x8 (Pi 1 alt)",
+    "Burc M2,5x8 (Pi 2)",
+    "Vida M2,5x5 (Pi 2 ust)",
+    "Vida M2,5x8 (Pi 2 alt)",
+    "Burc M2,5x8 (Pi 3)",
+    "Vida M2,5x5 (Pi 3 ust)",
+    "Vida M2,5x8 (Pi 3 alt)",
+    "Kopuk bant (5)",
+    "5 V cevirici Pololu D36V50F5",
+    "Kopuk bant (MAX98357A)",
+    "MAX98357A I2S amfi"
    ]
   },
   "Referans": {
    "hareket": "kablo gosterimi; carpisma taramasina girmez",
    "parca": [
-    "Kablo demeti (gosterim)"
+    "Kablo demeti (gosterim)",
+    "Kamera FPC 300 mm (gosterim)",
+    "micro HDMI -> LCD HDMI (gosterim)",
+    "USB-C guc: cevirici -> Pi (gosterim)",
+    "12 V: kablo gecisi -> cevirici (gosterim)"
    ]
   }
  },
@@ -3096,7 +3726,7 @@
  "gecersiz": [],
  "coklu_kati": [],
  "statik": [],
- "cift_sayisi": 302,
+ "cift_sayisi": 351,
  "tolerans_mm3": 0.5,
  "baglanti_kontrol": [
   {
@@ -4693,6 +5323,254 @@
    "tamam": true
   },
   {
+   "ad": "Pi 5 -> burc -> kafa tablasi",
+   "tip": "burc_kart",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "ust vida burca 3.4 mm (>= d 2.5)",
+     3.4,
+     true
+    ],
+    [
+     "alt vida burca 3.0 mm (>= d 2.5)",
+     3.0,
+     true
+    ],
+    [
+     "burc icinde vidalar arasi 1.6 mm (>= 0,5)",
+     1.6,
+     true
+    ],
+    [
+     "alt vida ayni eksende",
+     0.0,
+     true
+    ],
+    [
+     "burc ayni eksende",
+     0.0,
+     true
+    ],
+    [
+     "burc tablaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "kart burca dayali",
+     0.0,
+     true
+    ],
+    [
+     "ust vida basi karta dayali",
+     0.0,
+     true
+    ],
+    [
+     "alt vida basi tablaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "ust vida tablaya degmiyor (4.60 mm)",
+     4.604,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Pi 5 -> burc -> kafa tablasi",
+   "tip": "burc_kart",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "ust vida burca 3.4 mm (>= d 2.5)",
+     3.4,
+     true
+    ],
+    [
+     "alt vida burca 3.0 mm (>= d 2.5)",
+     3.0,
+     true
+    ],
+    [
+     "burc icinde vidalar arasi 1.6 mm (>= 0,5)",
+     1.6,
+     true
+    ],
+    [
+     "alt vida ayni eksende",
+     0.0,
+     true
+    ],
+    [
+     "burc ayni eksende",
+     0.0,
+     true
+    ],
+    [
+     "burc tablaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "kart burca dayali",
+     0.0,
+     true
+    ],
+    [
+     "ust vida basi karta dayali",
+     0.0,
+     true
+    ],
+    [
+     "alt vida basi tablaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "ust vida tablaya degmiyor (4.60 mm)",
+     4.604,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Pi 5 -> burc -> kafa tablasi",
+   "tip": "burc_kart",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "ust vida burca 3.4 mm (>= d 2.5)",
+     3.4,
+     true
+    ],
+    [
+     "alt vida burca 3.0 mm (>= d 2.5)",
+     3.0,
+     true
+    ],
+    [
+     "burc icinde vidalar arasi 1.6 mm (>= 0,5)",
+     1.6,
+     true
+    ],
+    [
+     "alt vida ayni eksende",
+     0.0,
+     true
+    ],
+    [
+     "burc ayni eksende",
+     0.0,
+     true
+    ],
+    [
+     "burc tablaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "kart burca dayali",
+     0.0,
+     true
+    ],
+    [
+     "ust vida basi karta dayali",
+     0.0,
+     true
+    ],
+    [
+     "alt vida basi tablaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "ust vida tablaya degmiyor (4.60 mm)",
+     4.604,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
+   "ad": "Pi 5 -> burc -> kafa tablasi",
+   "tip": "burc_kart",
+   "kontroller": [
+    [
+     "civata ekseni tasarim ekseninde",
+     0.0,
+     true
+    ],
+    [
+     "ust vida burca 3.4 mm (>= d 2.5)",
+     3.4,
+     true
+    ],
+    [
+     "alt vida burca 3.0 mm (>= d 2.5)",
+     3.0,
+     true
+    ],
+    [
+     "burc icinde vidalar arasi 1.6 mm (>= 0,5)",
+     1.6,
+     true
+    ],
+    [
+     "alt vida ayni eksende",
+     0.0,
+     true
+    ],
+    [
+     "burc ayni eksende",
+     0.0,
+     true
+    ],
+    [
+     "burc tablaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "kart burca dayali",
+     0.0,
+     true
+    ],
+    [
+     "ust vida basi karta dayali",
+     0.0,
+     true
+    ],
+    [
+     "alt vida basi tablaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "ust vida tablaya degmiyor (4.60 mm)",
+     4.604,
+     true
+    ]
+   ],
+   "tamam": true
+  },
+  {
    "ad": "Eksen hizasi ve oturmalar",
    "tip": "eksen",
    "kontroller": [
@@ -6067,110 +6945,206 @@
   "pan_en_alt_y": 42.9,
   "not_": "kapak seviyesinde yalniz sabit boyun (servo yuvasi + plaka kulaklari) var; hareketli parcalar y >= 42.9"
  },
+ "isi": {
+  "varsayim": {
+   "ortam_C": 30.0,
+   "R_kapali_K_W": 1.3,
+   "yuzey_m2": 0.19,
+   "verim": 0.9,
+   "debi_L_s": [
+    1.0,
+    1.55
+   ],
+   "servo_sinir_C": 55.0,
+   "kaynak": "planlama/adim1/P-pi-kafada.md bolum 3; jeffgeerling.com (Pi 5 guc); Waveshare wiki (LCD akimi); MG996R datasheet (0-55 C)"
+  },
+  "hava": {
+   "giris_mm2": 1200.0,
+   "cikis_mm2": 1440.0,
+   "eski_yan_mm2": 1120.0,
+   "giris_mm2_hiz_m_s_1.55L": 1.29,
+   "cikis_mm2_hiz_m_s_1.55L": 1.08
+  },
+  "senaryo": {
+   "bosta": {
+    "W": 7.2,
+    "kapali_ic_C": 39.3,
+    "yarikli_ic_C": [
+     36.1,
+     34.0
+    ],
+    "servo_payi_kapali_K": 15.7
+   },
+   "tipik": {
+    "W": 11.4,
+    "kapali_ic_C": 44.8,
+    "yarikli_ic_C": [
+     39.7,
+     36.3
+    ],
+    "servo_payi_kapali_K": 10.2
+   },
+   "en_kotu": {
+    "W": 14.5,
+    "kapali_ic_C": 48.9,
+    "yarikli_ic_C": [
+     42.4,
+     38.0
+    ],
+    "servo_payi_kapali_K": 6.1
+   }
+  }
+ },
+ "pi": {
+  "konum_T": [
+   -34.0,
+   191.0,
+   1.0
+  ],
+  "burc_mm": 8.0,
+  "delikler": [
+   [
+    -30.5,
+    -2.5
+   ],
+   [
+    27.5,
+    -2.5
+   ],
+   [
+    -30.5,
+    -51.5
+   ],
+   [
+    27.5,
+    -51.5
+   ]
+  ],
+  "cevirici": [
+   -75.0,
+   44.0
+  ],
+  "amfi": [
+   65.0,
+   44.0
+  ],
+  "boyun_kablolari": "12 V cift 18 AWG + ESP32 USB (yalniz veri, VBUS kesik) + tilt servo (3 tel)",
+  "kaynak": "planlama/adim1/P-pi-kafada.md; planlama/adim3/elektrik.md"
+ },
  "tork": {
   "tilt": {
-   "kutle_g": 833.4,
+   "kutle_g": 926.6,
+   "kutle_parca_g": 901.6,
+   "kablo_payi": {
+    "kutle_g": 25.0,
+    "merkez": [
+     -10.0,
+     195.0,
+     15.0
+    ],
+    "not_": "tahmini: FPC ~3 g, micro HDMI 25 cm ~12 g, USB-C ~6 g, 12 V 18 AWG ~4 g"
+   },
    "am": [
-    0.81,
-    183.76,
-    29.73
+    0.93,
+    184.77,
+    25.99
    ],
    "eksen": [
     130.0,
     25.0
    ],
-   "am_eksen_mm": 54.0,
-   "yercekimi_max_kgcm": 2.58,
+   "am_eksen_mm": 54.8,
+   "yercekimi_max_kgcm": 2.62,
    "yercekimi_max_th": 30,
-   "tam_tur_max_kgcm": 4.5,
-   "I_kgm2": 0.007029,
+   "tam_tur_max_kgcm": 5.08,
+   "I_kgm2": 0.007573,
    "alfa_rad_s2": 26.2,
-   "ivme_kgcm": 1.876,
-   "toplam_kgcm": 4.46,
+   "ivme_kgcm": 2.021,
+   "toplam_kgcm": 4.64,
    "stall_kgcm": 9.4,
-   "pay": 2.11,
+   "pay": 2.03,
    "egri": [
     {
      "th": -25,
-     "yercekimi_kgcm": -1.536
+     "yercekimi_kgcm": -2.062
     },
     {
      "th": -20,
-     "yercekimi_kgcm": -1.162
+     "yercekimi_kgcm": -1.65
     },
     {
      "th": -15,
-     "yercekimi_kgcm": -0.779
+     "yercekimi_kgcm": -1.225
     },
     {
      "th": -10,
-     "yercekimi_kgcm": -0.389
+     "yercekimi_kgcm": -0.791
     },
     {
      "th": -5,
-     "yercekimi_kgcm": 0.003
+     "yercekimi_kgcm": -0.351
     },
     {
      "th": 0,
-     "yercekimi_kgcm": 0.395
+     "yercekimi_kgcm": 0.091
     },
     {
      "th": 5,
-     "yercekimi_kgcm": 0.784
+     "yercekimi_kgcm": 0.533
     },
     {
      "th": 10,
-     "yercekimi_kgcm": 1.167
+     "yercekimi_kgcm": 0.971
     },
     {
      "th": 15,
-     "yercekimi_kgcm": 1.541
+     "yercekimi_kgcm": 1.402
     },
     {
      "th": 20,
-     "yercekimi_kgcm": 1.903
+     "yercekimi_kgcm": 1.822
     },
     {
      "th": 25,
-     "yercekimi_kgcm": 2.251
+     "yercekimi_kgcm": 2.228
     },
     {
      "th": 30,
-     "yercekimi_kgcm": 2.582
+     "yercekimi_kgcm": 2.617
     }
    ],
    "mesnet": {
     "x_625": -26.7,
     "x_horn": 28.55,
-    "horn_payi": 0.498,
-    "horn_N": 4.07,
-    "pim_N": 4.11
+    "horn_payi": 0.5,
+    "horn_N": 4.55,
+    "pim_N": 4.54
    }
   },
   "pan": {
-   "kutle_g": 1029.4,
+   "kutle_g": 1122.5,
    "am": [
-    0.79,
-    168.25,
-    25.91
+    0.89,
+    170.37,
+    23.13
    ],
    "I_kgm2": {
-    "-25.0": 0.006175,
-    "0": 0.006811,
-    "30.0": 0.008533
+    "-25.0": 0.006377,
+    "0": 0.006936,
+    "30.0": 0.008658
    },
    "alfa_rad_s2": 26.2,
-   "ivme_kgcm": 2.277,
-   "rulman_kgcm": 0.0203,
+   "ivme_kgcm": 2.31,
+   "rulman_kgcm": 0.0202,
    "kablo_kgcm": 0.31,
-   "toplam_kgcm": 2.6,
+   "toplam_kgcm": 2.64,
    "stall_kgcm": 9.4,
    "pay": 3.6,
    "rulman": {
-    "eksenel_N": 10.1,
-    "devirme_Nm": 0.2618,
+    "eksenel_N": 11.01,
+    "devirme_Nm": 0.2549,
     "rulman_arasi_mm": 11.0,
-    "radyal_N": 23.8,
+    "radyal_N": 23.2,
     "not_": "6808: eksenel yuk ust rulmanda (mil omzu -> ic bilezik -> dis bilezik -> yuva tablasi); devirme momenti iki rulmanda kuvvet cifti; pan servosu mili yalniz dondurur"
    }
   },
@@ -6195,11 +7169,11 @@
    ]
   },
   "Kafa": {
-   "m": 833.4,
+   "m": 901.6,
    "am": [
-    0.809,
-    183.76,
-    29.734
+    1.229,
+    184.491,
+    26.292
    ]
   }
  },
@@ -6320,16 +7294,16 @@
    "sigar_cift": true,
    "cikinti_orani": 0.0062,
    "cikinti_alan_cm2": 3.04,
-   "yuzey_cm2": 491.9,
+   "yuzey_cm2": 493.2,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
    "ofset_uyari": 0,
    "atlanan_katman": [],
-   "hacim_cm3": 108.7,
-   "kutle_g": 110.5,
-   "filament_g": 116.0,
-   "sure_saat": 2.42,
+   "hacim_cm3": 108.6,
+   "kutle_g": 110.3,
+   "filament_g": 115.8,
+   "sure_saat": 2.41,
    "katman": 68,
    "yon": "ters: kafa tablasi tablada, yanaklar yukari",
    "grup": "Kafa"
@@ -6370,18 +7344,18 @@
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0319,
-   "cikinti_alan_cm2": 63.1,
-   "yuzey_cm2": 1981.1,
+   "cikinti_orani": 0.0324,
+   "cikinti_alan_cm2": 64.0,
+   "yuzey_cm2": 1975.6,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
    "ofset_uyari": 0,
    "atlanan_katman": [],
-   "hacim_cm3": 236.8,
-   "kutle_g": 270.6,
-   "filament_g": 284.1,
-   "sure_saat": 5.92,
+   "hacim_cm3": 230.2,
+   "kutle_g": 263.1,
+   "filament_g": 276.2,
+   "sure_saat": 5.75,
    "katman": 101,
    "yon": "arka yuz tablada, dikis dili yukari",
    "grup": "Kafa"
@@ -6425,20 +7399,32 @@
    246.0
   ]
  },
- "kutle_g": 1363.1,
+ "kutle_g": 1431.3,
  "kutle_tur": {
   "Imalat": 70.9,
-  "Baski": 794.1,
-  "Satin": 417.3,
-  "Baglanti": 80.8,
+  "Baski": 786.4,
+  "Satin": 489.0,
+  "Baglanti": 85.0,
   "Referans": 0.0
  },
  "agirlik_merkezi": [
-  0.615,
-  133.56,
-  21.133
+  0.888,
+  136.411,
+  19.374
  ],
  "bom": [
+  [
+   "Baglanti",
+   "M2,5x5 DIN 912",
+   4,
+   1.9
+  ],
+  [
+   "Baglanti",
+   "M2,5x8 DIN 912",
+   4,
+   2.3
+  ],
   [
    "Baglanti",
    "M2x8 PT vida (plastik icin)",
@@ -6539,7 +7525,7 @@
    "Baski",
    "Arka kafa kabugu",
    1,
-   270.6
+   263.1
   ],
   [
    "Baski",
@@ -6557,7 +7543,7 @@
    "Baski",
    "Kafa iskeleti",
    1,
-   110.5
+   110.3
   ],
   [
    "Baski",
@@ -6609,9 +7595,39 @@
   ],
   [
    "Satin",
+   "Adafruit MAX98357A",
+   1,
+   2.0
+  ],
+  [
+   "Satin",
+   "Cift tarafli kopuk bant 1 mm (VHB)",
+   2,
+   0.1
+  ],
+  [
+   "Satin",
+   "M2,5 x 8 burc, disi-disi, AA 5",
+   4,
+   4.6
+  ],
+  [
+   "Satin",
    "MG996R servo",
    2,
    110.0
+  ],
+  [
+   "Satin",
+   "Pololu D36V50F5 5 V 5,5 A (pololu.com/product/4091)",
+   1,
+   7.0
+  ],
+  [
+   "Satin",
+   "Raspberry Pi 5 8GB + resmi Active Cooler",
+   1,
+   58.0
   ],
   [
    "Satin",
@@ -6626,7 +7642,7 @@
    230.0
   ]
  ],
- "step_kati": 98,
+ "step_kati": 115,
  "joints_ok": true,
  "arayuz": {
   "taban_y": 975.0,
@@ -6802,5 +7818,5 @@
    -36.0
   ]
  ],
- "sure_s": 87.9
+ "sure_s": 140.5
 }

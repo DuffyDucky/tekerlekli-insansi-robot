@@ -28,11 +28,11 @@ rehberi (Duffy seçti, 14 Ekim).
 | Sıra | İş | Durum | Not |
 |---|---|---|---|
 | 1 | 1. adım (M2, M3, M5, M8, C1–C3, C6, D3) | ✅ V kontrolü geçti | `planlama/adim1/` |
-| 1b | G takip (kelepçe yarığı, eski sınır kodu, ≥0,5 kontrolleri, kabuk cam) | ✅ Opus-1 (kontrol bekliyor) | yarık 2→4 mm, ön yük +0,137 |
-| 2a | M1 kol kablo yolu (omuz, dirsek, kabuk) | ◐ dirsek + S2 tamam; **S1 (Ø84) açık** | `planlama/adim2/M1-kablo-yolu.md`, `dirsek/kablo_yolu.py`. S1: Opus-2 seçenekleri değerlendiriyor → orkestratör karar → tasarım ajanı uygular |
+| 1b | G takip (kelepçe yarığı, eski sınır kodu, ≥0,5 kontrolleri, kabuk cam) | ✅ `a158211` | Opus-2 kontrolü geçti |
+| 2a | M1 kol kablo yolu (omuz, dirsek, kabuk) | ◐ dirsek + S2 ✅ `a158211`; **S1 🔄 Opus-4** (A′ döner U-lop kaseti, S2 alt sınır 5°, eski 'yana 0' kalıntıları, omuz kütle dolulukla) | `planlama/adim2/S1-kaset.md`; sonra bağımsız kontrol + commit |
 | 2b | M4 omuz baskı analizi | ✅ `25de259` | 6/10 parça desteksiz basılamıyor (yuva, göbek, çatal). M1 omuzu değiştirirse betik yeniden koşulur. Açık: `omuz_parcalar.py` kütleyi %60 dolulukla hesaplıyor (kol başına 43–58 g eksik), FCStd'de 4 parça malzemesi PETG yazıyor (PETG-CF olmalı), yatay ısıl gömme kuponu yok → 2c/3–5. adımlarda ele alınacak; baskı listesi düzeltmeleri 5. adım (D6) |
-| 2c | Opus-2: G + M1 bağımsız kontrol + S1 değerlendirme + tüp baskı yeniden koşu | 🔄 Opus-2 | `planlama/adim2/K-kontrol.md`; geçerse G+M1 commit |
-| 3 | E0 (+K1 varsayımla), E1–E4, E7 taban ve güç **+ K4: Pi 5 kafaya** (kafa CAD, havalandırma, boyun kabloları, 12→5 V) | 🔄 Opus-3 (15 Ekim 03:40) | `planlama/adim3/T-taban-guc-pi.md`; dosyalar: taban/, kafa/, arayuz taban/kafa bölümü, maliyet.json |
+| 2c | Opus-2: G + M1 bağımsız kontrol + S1 değerlendirme + tüp baskı | ✅ | `planlama/adim2/K-kontrol.md`; S1 bitince ikinci kontrol gerekecek |
+| 3 | E0 (+K1 varsayımla), E1–E4, E7 taban ve güç **+ K4: Pi 5 kafaya** | ◐ Opus-3 tasarım bitti; 🔄 Opus-5 bağımsız kontrol | `planlama/adim3/T-taban-guc-pi.md`, `elektrik.md`, `K3-kontrol.md`. Dönüş: arka motor sürekli değerin 1,9–2,8 katı → ölçüm büyük olasılıkla kötü, omni CAD bayrakla hazır. Açık: hoparlör/mikrofon yeri (Duffy), etek havalandırma yarığı (kabuk), Pololu ithal, ön enkoder pinleri (E5), röle bobini 1,8 W (E8) |
 | 4 | M6 montaj sırası ve erişim, M7 kupon | ⏳ | Rehbere girdi olur |
 | 5 | B1, B2, E8, E9, D6 malzeme ve plan | ⏳ | |
 | 6 | Bütün modüller yeniden üretilir → C7 tam tarama (C5 ile) → D4 regresyon → D5 | ⏳ | Makine ~1,5 sa |
@@ -49,3 +49,6 @@ rehberi (Duffy seçti, 14 Ekim).
 - 2026-10-14 ~23:50 Opus-1 M1 ortasında oturum limitine takıldı (yenilenme 03:30).
 - 2026-10-15 03:31 Opus-1 SendMessage ile devam ettirildi (aynı ajan, günlüğünden).
 - 2026-10-15 03:40 Opus-1 bitti (G tamam, M1 dirsek+S2 tamam, S1 açık). Opus-2 kontrol + S1 değerlendirme; Opus-3 (yeni, taze bağlam) 3. adım. S1 tasarımı Opus-2 önerisinden sonra.
+- 2026-10-15 ~04:20 Opus-2 kontrolü geçti → `a158211` (arayuz.py'den yalnız 1./2. adım parçaları; 3. adımın taban/elektrik parçaları dışarıda). S1 kararı (orkestratör): A′ döner U-lop kaseti (bedeli: yay duvarı omuz üstünden ~40 mm görünür). Opus-4 S1'i uyguluyor; Opus-3 3. adımda.
+- 2026-10-15 ~04:45 Opus-3 bitti (taban 316 parça 7.529 g, kafa 115 parça 1.431 g, robot 21,71 kg, maliyet +2.767 TL). Opus-5 3. adımı kontrol ediyor; Opus-4 S1'de.
+- 2026-10-15 ~05:00 Opus-4 ve Opus-5 oturum limitine takıldı (yenilenme 08:30). 08:31 ikisi de SendMessage ile devam ettirildi.

@@ -487,19 +487,42 @@ TABAN = dict(
     takoz=dict(x=(-80.0, 80.0), y=(Y_RAIL0, Y_RAIL0 + 25.0), z=(-37.5, -20.5)),   # aku on takozu (baski), orta ara rayin arka yuzu -20
     bts=((-85.0 * V3_W / W0, 165.0), (85.0 * V3_W / W0, 165.0)),   # rc:734 (x 'p' olcegi)
     bts_burc=8.0,                                 # M3x8 naylon burc (Al plakaya kisa devre olmasin; ust + alt vida 7,4 mm)
-    xl=((-62.0 * V3_W / W0, 75.0, "Pi 5,1 V"), (62.0 * V3_W / W0, 75.0, "cevre 5 V"), (0.0, 170.0, "servo 6 V")),   # rc:736
+    # E1 (15 Ekim 2026): servo beslemesi ikiye bolundu. K4 ile Pi kafaya gitti; Pi'nin XL4016'si (-49,2; 75) servo B oldu (sayi 3 kalir).
+    # Yuk dengesi (planlama/adim3/elektrik.md): A = sag kol + pan (yogun ~4,4 A), B = sol kol + tilt (~4,7 A); XL4016 surekli <= 5 A.
+    xl=((-62.0 * V3_W / W0, 75.0, "servo 6 V B (sol kol + tilt)"), (62.0 * V3_W / W0, 75.0, "cevre 5 V"),
+        (0.0, 170.0, "servo 6 V A (sag kol + pan)")),   # rc:736 yerleri
     xl_burc=8.0,
-    pi=dict(merkez=(-90.5, 80.0), burc=8.0),      # on kat sol: SD yuvasi -X kenarinda (x -135,5, z 80: etek orta sol hizasi)
+    # K4 (14 Ekim 2026): Raspberry Pi 5 kafada (kafa/kafa_parcalar.py). On kattaki eski Pi yeri (-90,5; 80) arayuz kartina verildi.
+    arayuz_karti=dict(merkez=(-90.5, 80.0), olcu=(70.0, 50.0), burc=8.0,
+                      not_="E2/E3 pertinaks: sonar bolucu x3, aku ADC bolucu, PC817 x2 (acil stop durumu, anahtarli 12 V), role surucu MOSFET + diyot"),
+    servo_dagitim=dict(A=(72.0, 205.0), B=(-72.0, 205.0), olcu=(70.0, 50.0), burc=8.0,
+                       not_="E1: 16 AWG giris + 2200 uF + 3 pinli cikislar; sinyal PCA9685'ten kisa kopruyle, V+ PCA uzerinden GECMEZ"),
     esp=dict(merkez=(80.0, 75.0), tasiyici=(70.0, 50.0), burc=8.0),   # ESP32 delikli pertinaks tasiyici + disi header ustunde
     pca=dict(merkez=(83.0, 125.0), burc=8.0),
     bno=dict(merkez=(0.0, 60.0), burc=8.0),       # rc:742 (0, 60)
-    amp=dict(merkez=(-65.0 * V3_W / W0, 40.0)),   # rc:743, kopuk bantla (montaj deligi yok)
+    amp=None,                                     # K4: MAX98357A Pi ile kafaya gitti (I2S boyundan gecmesin); eski yer (-51,6; 40)
     sigorta_kutusu=dict(merkez=(0.0, -203.0), olcu=(105.0, 60.0, 35.0), delik_x=47.0, delik_z=-213.0),   # tahmini zarf; somun akunun arkasinda
     role=dict(merkez=(-112.0, -130.0), olcu=(30.0, 30.0, 45.0)),                         # ISO mini role + soket, tahmini zarf
     ana_sigorta=dict(merkez=(112.0, -130.0), olcu=(30.0, 60.0, 20.0)),                   # kablolu kapakli yuva, tahmini zarf
     ana_anahtar=dict(merkez=(-(W0 / 2 - 70) * V3_W / W0, -(L0 / 2 - 50)), olcu=(50.0, 50.0, 40.0)),   # acil stobun aynasi; tahmini zarf
     sonar_on_z=256.0,                             # HC-SR04 PCB on yuzu; transduserler 12 mm, etek dis yuzunden 5,5 mm tasar
     acil_stop="Emas B200E60 (rc:357-365; 04). Elde B200E-E (40 mm mantar): O60 zarf buyuk tarafta kalir",
+    # E0 (15 Ekim 2026): yerinde donus / yay donusu hesabi (taban/donus_hesap.py). OLCUM GELINCE yalniz *_olculen alanlarini doldur:
+    # mu_olculen (teker-zemin yanal surtunme), stall_kgcm_olculen (12 V'ta durma torku), stall_A_olculen (durma akimi).
+    donus=dict(mu_senaryo=(0.4, 0.5, 0.6), mu_olculen=None,
+               stall_kgcm=21.0, stall_kgcm_olculen=None,          # Direnc.net JGB37-520 60 dev/dk sayfasi "21 kg" (durma)
+               stall_A=2.8, stall_A_olculen=None, bos_A=0.12,     # 06-aku-secimi.md: 2,4-2,8 A tahmini; bosta 0,08-0,15 A (Direnc)
+               surekli_oran=0.30,                                 # surekli = durmanin %30'u (01-donanim-maliyet, mevcut taban hesabi)
+               crr=0.03,                                          # yuvarlanma direnci (mevcut taban hesabi)
+               omni_mu_yan=0.05,                                  # omni makara yanal direnci (tahmini, olculecek)
+               yaw_ivme=1.0,                                      # rad/s2 donus ivmesi (tahmini, yazilim siniri)
+               kayma_c=0.05,                                      # lastik kayma (creep) olcegi: kayma/hiz = 0,05'te kuvvet ~0,7 mu N (tahmini)
+               not_="Coulomb surtunme dairesi (ana model) + 'yanal tam muN' ust sinir (Wong mu_t(R)); ayrinti donus_hesap.py"),
+    # K1 secenegi (a): on iki teker omni. VARSAYILAN KAPALI; True (ya da ortam degiskeni TABAN_OMNI=1) taban CAD'ini omni ile kurar.
+    # Aks yeri ayni (motor, braket, kaplin degismez); teker ic yuzu ayni x'te kalir, omni dar oldugu icin merkezi iceri kayar.
+    omni=dict(aktif=False, cap=127.0, en=29.0, makara_d=19.0, makara=22, kutle_g=480.0, gobek="12 mm altigen adaptor (tahmini; Nexus 14075 gobegi teyit edilecek)",
+              kaynak="Nexus Robot 14075 5 inch double aluminum omni wheel: O127, eksenel 29 mm, 22 makara O19, 480 g, 30 kg "
+                     "(ozrobotics.com/shop/double-aluminum-omni-wheel-5-inches-basic-14075/)"),
 )
 MODULLER["taban"] = dict(konum=(0.0, 0.0, 0.0), ayna=False,
                          not_="yerel = global; plakalar, tahrik, aku, guc, elektronik kati, sonar, acil stop (statik)")
@@ -516,10 +539,12 @@ for (x, z) in _T["bts"]:
 for (x, z, _) in _T["xl"]:
     _b("XL4016 %+.0f,%.0f (8 mm burc ustunde)" % (x, z), "taban", _k(x - 32.5, x + 32.5, Y_RAIL0, Y_RAIL0 + _T["xl_burc"] + 23.5, z - 23.5, z + 23.5),
        "taban_parcalar", "V3 bolgesi 8 mm yukseldi (naylon burc)")
-_b("Elektronik kati on yerlesimi (Pi, ESP32, PCA, BNO, amfi)", "taban", _k(-136, 116, Y_DECK1, Y_DECK1 + 30, 30, 140),
-   "taban_parcalar", "kartlar akunun ustunden on kata alindi (kat alti somun akuya degmesin, aku servisi)")
-_b("Pi 5 fan hava payi", "taban", _k(-128, -60, Y_DECK1 + 24, Y_DECK1 + 39, 55, 105), "taban_parcalar",
-   "Active Cooler ustunde 15 mm bos (tahmini)")
+_b("Elektronik kati on yerlesimi (arayuz karti, ESP32, PCA, BNO)", "taban", _k(-136, 116, Y_DECK1, Y_DECK1 + 30, 30, 140),
+   "taban_parcalar", "kartlar akunun ustunden on kata alindi; K4 (15 Ekim 2026): Pi kafaya gitti, yerinde arayuz karti")
+_b("Servo dagitim kartlari A / B (E1)", "taban", _k(-110, 110, Y_DECK1, Y_DECK1 + 30, 177, 233), "taban_parcalar",
+   "on katin on bandi x +-37...107; 16 AWG giris ve servo uzatmalari icin ust pay")
+_b("E7 fan yeri (olcume bagli, 40 x 40 x 10)", "taban", _k(-25, 25, Y_DECK0 - 12, Y_DECK0, 85, 135), "planlama/adim3/elektrik.md",
+   "uc XL4016'nin ortasinda (-49/75, 49/75, 0/170) kat altina asili 12 V fan, asagi ufler; olcum sart koyarsa takilir (tahmini zarf)")
 _b("Guc paneli (sigorta kutusu, role, ana sigorta)", "taban", _k(-128, 128, Y_DECK1, Y_DECK1 + 46, -234, -99), "taban_parcalar",
    "arka kat; sigorta kutusu tahmini zarf 105 x 60 x 35")
 _aa = _T["ana_anahtar"]

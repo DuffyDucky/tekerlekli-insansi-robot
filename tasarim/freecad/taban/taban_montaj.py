@@ -285,6 +285,22 @@ M_r0 = MA["kutle_g"] - sum(m["kutle_g"] for m in _MT)
 CG_r0 = (V(*MA["agirlik_merkezi"]) * MA["kutle_g"] - sum((V(*m["agirlik_merkezi"]) * m["kutle_g"] for m in _MT), V(0, 0, 0))) * (1.0 / M_r0)
 N_r0 = MA["parca_sayisi"] - sum(m["parca"] for m in _MT)
 log("tabansiz montaj: %.1f g, %d parca (montajdaki taban: %s)" % (M_r0, N_r0, "cikarildi" if _MT else "yok"))
+# K4 (15 Ekim 2026): kafa degisti (Pi 5 + 5 V cevirici + amfi kafada). Ana montaj 6. adimda yeniden uretilene kadar montajdaki kafa
+# modulu guncel kafa-analiz.json ile degistirilir (global AM = kafa yereli + MODULLER['kafa'] konumu).
+KAFA_DUZ = None
+_MK = [m for m in MA.get("moduller", []) if m["ad"] == "kafa"]
+_KA_YOL = os.path.join(UST, "kafa", "kafa-analiz.json")
+if _MK and os.path.exists(_KA_YOL):
+    _KA = json.load(open(_KA_YOL, encoding="utf-8"))
+    _km, _kc = _MK[0]["kutle_g"], V(*_MK[0]["agirlik_merkezi"])
+    _ym, _yc = _KA["kutle_g"], V(*_KA["agirlik_merkezi"]) + V(*A.MODULLER["kafa"]["konum"])
+    if abs(_ym - _km) > 0.05 or (_yc - _kc).Length > 0.05:
+        CG_r0 = (CG_r0 * M_r0 - _kc * _km + _yc * _ym) * (1.0 / (M_r0 - _km + _ym))
+        M_r0 = M_r0 - _km + _ym
+        N_r0 = N_r0 - _MK[0]["parca"] + _KA["parca_sayisi"]
+        KAFA_DUZ = dict(montajdaki_g=round(_km, 1), guncel_g=round(_ym, 1), fark_g=round(_ym - _km, 1), montajdaki_am=[round(c, 2) for c in _kc], guncel_am=[round(c, 2) for c in _yc],
+                        not_="ana montaj 6. adimda yeniden uretilecek; o zamana dek kafa kafa-analiz.json'dan")
+        log("kafa duzeltmesi: montajdaki %.1f g -> guncel %.1f g (AM y %.1f -> %.1f)" % (_km, _ym, _kc.y, _yc.y))
 import omuz_parcalar as OP
 import dirsek_parcalar as DP
 log("omuz + dirsek yuklendi")
@@ -368,9 +384,12 @@ for kod, ad, ps, pl_, yk in POZLAR:
         robot[-1]["rampa5"]["ileri"], robot[-1]["rampa5"]["geri"], robot[-1]["rampa5"]["yan"]))
 ROB = robot[0]
 M_kg = ROB["kutle_g"] / 1000.0
-# motor torku (V3 viewer-template: F = m (a + g sin + Crr g cos), a 0,5, Crr 0,03, r 62,5 mm, 4 motor; surekli = 21 kg cm x 0,30)
+# motor torku (V3 viewer-template: F = m (a + g sin + Crr g cos), a 0,5, Crr 0,03, r 62,5 mm, 4 motor; surekli = durma x 0,30)
+# Durma torku arayuz.TABAN['donus'] (olculen varsa o): E0 ile ayni kaynak.
+import donus_hesap as DH
+MOT = DH.motor_degerleri()
 R_T = A.TEKER_D / 2 / 1000.0
-TC = 21.0 * 0.30
+TC = MOT["surekli_kgcm"]
 
 
 def tork(m, rampa, a=0.5, crr=0.03):
@@ -381,7 +400,7 @@ def tork(m, rampa, a=0.5, crr=0.03):
 
 
 motor = dict(duz=tork(M_kg, 0.0), rampa5=tork(M_kg, 5.0), rampa5_yavas=tork(M_kg, 5.0, a=0.25), rampa5_durus=tork(M_kg, 5.0, a=0.0),
-             rampa5_yuk2=tork(M_kg + 2.0, 5.0), surekli_kgcm=TC, stall_kgcm=21.0,
+             rampa5_yuk2=tork(M_kg + 2.0, 5.0), surekli_kgcm=TC, stall_kgcm=MOT["stall_kgcm"],
              hiz_m_s=round(60 * math.pi * A.TEKER_D / 1000 / 60, 3),
              v3=dict(kutle_kg=18.6, T_kgcm=4.9, oran=0.77, kaynak="README V3 farki (rampa 5 derece, a 0,5)"))
 # aks yukleri (cekis): on / arka teker cifti normal kuvveti (duz zemin, sabit hiz)
@@ -389,24 +408,35 @@ dF, dR = ZC - ROB["am"][2], ZC + ROB["am"][2]
 aks = dict(on_N=round(M_kg * G * dR / (dF + dR), 1), arka_N=round(M_kg * G * dF / (dF + dR), 1))
 F5 = motor["rampa5"]["F_N"]
 aks["mu_gereken_rampa5"] = round(F5 / (M_kg * G * math.cos(math.radians(5))), 3)
+# E0: yerinde donus ve yay donusu (taban/donus_hesap.py; sabitler arayuz.TABAN['donus'], olcum gelince *_olculen)
+donus = DH.hesapla(M_kg, ROB["am"])
+donus["omni_cad"] = dict(aktif=TP.OMNI, bayrak="arayuz.TABAN['omni']['aktif'] ya da TABAN_OMNI=1")
+log("donus (E0): " + donus["karar"]["sonuc"])
+for _a in donus["yerinde"]:
+    log("  yerinde mu %.2f: %.2f kg cm (%s) surekli x%.2f durma x%.2f | omni %.2f kg cm" % (
+        _a["mu"], _a["en_cok_kgcm"], _a["en_cok_teker"], _a["en_cok_oran_surekli"], _a["en_cok_oran_stall"],
+        next(o["en_cok_kgcm"] for o in donus["yerinde_omni"] if o["mu"] == _a["mu"])))
 log("motor duz %.2f kgcm (%.0f%%) rampa5 %.2f kgcm (%.0f%%)" % (motor["duz"]["T_kgcm"], motor["duz"]["oran"] * 100,
                                                             motor["rampa5"]["T_kgcm"], motor["rampa5"]["oran"] * 100))
 # aku suresi (tahmini tuketim)
 AKU_WH = 12.8 * 24.0          # Limacell 24 Ah: 307 Wh (05-fiyat-arastirmasi)
 KULLANIM = 0.80               # kullanilabilir oran (tahmini; 01-donanim-maliyet ile ayni)
 VERIM = 0.88                  # XL4016 verimi (tahmini)
+HAT_VERIM = {"kafa 5 V": 0.90, "5 V": VERIM, "6 V": VERIM, "12 V": 0.95}   # kafa: Pololu D36V50F5 (%80-95 sayfa araligi; tahmini)
 TUKETIM = [
-    # (kalem, hat, dusuk W, orta W, yuksek W, dayanak)
-    ("Raspberry Pi 5 + Active Cooler", "5,1 V", 4.0, 7.0, 12.0, "tahmini (besleme 5 V 5 A, datasheet README)"),
+    # (kalem, hat, dusuk W, orta W, yuksek W, dayanak). K4 (15 Ekim 2026): Pi 5, 7" LCD, amfi, mikrofon, kamera kafada (12 V -> kafa 5 V)
+    ("Raspberry Pi 5 + Active Cooler (kafada)", "kafa 5 V", 4.0, 7.0, 12.0, "tahmini (besleme 5 V 5 A, datasheet README)"),
+    ("7\" yuz ekrani (Waveshare, kafada)", "kafa 5 V", 1.5, 2.5, 3.0, "tahmini"),
+    ("Amfi + mikrofon + kamera (kafada)", "kafa 5 V", 0.5, 1.2, 2.5, "tahmini"),
     ("Nextion 10,1\" gogus ekrani", "5 V", 1.5, 4.0, 4.0, "datasheet: %100 parlaklik 800 mA, uyku 170 mA"),
-    ("7\" yuz ekrani (Waveshare)", "5 V", 1.5, 2.5, 3.0, "tahmini"),
-    ("ESP32 + sensorler + PCA mantik + amfi + mikrofon + kamera", "5 V", 1.0, 2.5, 4.0, "tahmini"),
-    ("Servolar (4 DS3218 + 6 MG996R)", "6 V", 1.0, 8.0, 25.0, "tahmini: bosta / jest / kol yuklu tutma"),
+    ("ESP32 + sensorler + PCA/BNO mantik (3V3)", "5 V", 0.5, 1.3, 1.5, "tahmini"),
+    ("Servolar A: sag kol + pan (2 DS3218 + 3 MG996R)", "6 V", 0.5, 4.0, 12.5, "tahmini zaman ortalamasi: bosta / jest / kol yuklu tutma (elektrik.md)"),
+    ("Servolar B: sol kol + tilt (2 DS3218 + 3 MG996R)", "6 V", 0.5, 4.0, 12.5, "tahmini zaman ortalamasi (elektrik.md)"),
     ("Tahrik (4 JGB37, BTS7960)", "12 V", 0.5, 5.0, 25.0, "tahmini: duruyor / %30 surus / surekli surus + rampa"),
 ]
-aku = dict(wh=AKU_WH, kullanilabilir=KULLANIM, verim=VERIM, senaryo={})
+aku = dict(wh=AKU_WH, kullanilabilir=KULLANIM, verim=VERIM, hat_verim=HAT_VERIM, senaryo={})
 for k, ad in ((2, "dusuk"), (3, "orta"), (4, "yuksek")):
-    W = sum((t[k] / VERIM if t[1] != "12 V" else t[k] / 0.95) for t in TUKETIM) + 0.3   # role bobini ~0,3 W hep
+    W = sum(t[k] / HAT_VERIM[t[1]] for t in TUKETIM) + 0.3   # role bobini ~0,3 W hep
     aku["senaryo"][ad] = dict(W=round(W, 1), saat=round(AKU_WH * KULLANIM / W, 1), saat_20ah=round(12.8 * 20 * KULLANIM / W, 1))
 aku["kalemler"] = [list(t) for t in TUKETIM]
 log("aku", aku["senaryo"])
@@ -520,7 +550,7 @@ out = dict(
                hareketli_gruplar={k: dict(kutle_g=round(v[0], 1), am_omuz_yereli=vl(v[1])) for k, v in HAREKETLI.items()},
                temas="teker merkez duzlemleri x +-%.0f, z +-%.0f (V3 hesabi ile ayni); fren ivmesi 1,5 m/s2 (acil stop, tahmini)" % (XC, ZC),
                pozlar=robot),
-    motor=motor, aks=aks, aku=aku,
+    motor=motor, aks=aks, aku=aku, donus=donus, kafa_duzeltme=KAFA_DUZ, omni=TP.OMNI,
     bom=[[t, kod, v["adet"], round(v["kutle"], 1)] for (t, kod), v in sorted(bom.items())],
     step_kati=step_kati, joints_ok=joints_ok,
     kablo_yolu=[dict(devre=d, renk=r, noktalar=[list(p) for p in pts]) for (d, r, pts) in TP.YOL],

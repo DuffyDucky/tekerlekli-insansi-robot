@@ -16,6 +16,10 @@
 #   Kafa (Pan * tilt): tilt horn -> kafa iskeleti (PETG; sag yanak horn'a 4x M3, sol yanakta 625ZZ dis bilezigi; ustte
 #       kafa tablasi) -> on (yuz) ve arka kafa kabugu (tablaya 4x M3 ISO 7380 + isil gomme somun) -> 7" LCD (on kabukta
 #       ekran yuvasi, 4x M3), siyah akrilik vizor (VHB bant), Camera Module 3 (on kabukta, 4x M2).
+#   K4 (15 Ekim 2026, duzeltme plani 3. adim): Raspberry Pi 5 + Active Cooler kafa tablasinin ustunde (planlama/adim1/P-pi-kafada.md
+#       secilen konum: kart kosesi x -34, z +1, kablo kenari one; burc 8 mm ile kart alti y 191), 4x M2,5x8 pirinc burc (alttan
+#       M2,5x8 tabladan, ustten M2,5x5). 5 V / 5,5 A cevirici (Pololu D36V50F5) ve MAX98357A amfi tablada kopuk bantla. Arka kabukta
+#       giris (arka duvar 10 yarik) ve cikis (iki yan duvar 6'sar yarik) havalandirmasi. Boyundan: 12 V cift + ESP32 USB + tilt servo.
 import os, sys, math, time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -70,6 +74,16 @@ Y_LCD = KY0 + 84.0                         # 179 LCD merkezi (rc:790)
 Y_CAM = 258.0                              # kamera lens ekseni (LCD kulaklarinin 17 mm ustu; rc 247 LCD kulagiyla cakisirdi)
 Z_CAM = Z_LCD - LCD["panel_t"] - LCD["arka_t"] + 1.6   # 76.0 kamera PCB on yuzu (LCD kulak on yuzu ile ayni)
 ACIKLIK = dict(x=42.0, z=(-56.0, 64.0), r=15.0)          # kafa alt duvarinda boyun acikligi (kafa_montaj taramasi)
+# K4: Pi 5 yerlesimi (P-pi-kafada.md R0 adayi; 6 mm yerine taban ile ayni M2,5x8 pirinc burc -> kart 2 mm yukari)
+PI_BURC = 8.0
+PI_T = (-34.0, Y_TABLA[1] + PI_BURC, 1.0)                 # kart alt yuzu kosesi (kart x 0, y 0)
+PI_DEL = pi5_delikler_kafa(PI_T)                          # (-30,5; -2,5) (27,5; -2,5) (-30,5; -51,5) (27,5; -51,5)
+CEV_C = (-75.0, 44.0)                                     # 5 V cevirici merkezi (tabla sol-on, kablo gecisine ~25 mm)
+AMP_C = (65.0, 44.0)                                      # amfi merkezi (tabla sag-on, LCD HDMI blogunun 11 mm arkasi)
+KOPUK_T = 1.0
+# havalandirma (P-pi-kafada.md bolum 3): giris arka duvar 2 sutun x 5 yarik 3 x 40 (1.200 mm2), cikis iki yan duvar 6'sar 3 x 40
+HAVA_GIRIS = dict(x=((-45.0, -5.0), (5.0, 45.0)), y0=192.0, adim=8.0, n=5, h=3.0)
+HAVA_CIKIS = dict(y0=198.0, adim=9.0, n=6, h=3.0, z=(-50.0, -10.0))
 
 assert abs(K["pan_nokta"][1] - Y_HORN[0]) < 1e-9 and abs(K["tilt_nokta"][0] - X_TH[0]) < 1e-9
 assert abs(KY1 - A.HEAD_UP) < 1e-9
@@ -310,8 +324,10 @@ ki = ki.cut(yuv_dikdortgen_y(-50.0, -37.0, 0.0, 24.0, 4.0, Y_TABLA[0] - 1, Y_TAB
 for (x0, x1, z0, z1) in ((44.0, 86.0, -46.0, 30.0), (-86.0, -56.0, -46.0, 30.0), (-30.0, 22.0, -50.0, -10.0),
                          (-22.0, 18.0, 46.0, 54.0)):
     ki = ki.cut(yuv_dikdortgen_y(x0, x1, z0, z1, min(6.0, (z1 - z0) / 2 - 1.0), Y_TABLA[0] - 1, Y_TABLA[1] + 1))   # hafifletme
+for (x, z) in PI_DEL:                                                               # K4: Pi 5 burc delikleri O2,9 (M2,5 gecme)
+    ki = ki.cut(cyl(1.45, (x, Y_TABLA[0] - 1, z), (x, Y_TABLA[1] + 1, z)))
 I_ISK = add("Kafa iskeleti", "Kafa", ki.removeSplitter(), "Baski", "PETG", renk="petg2", patlat=(0, 170, 0),
-            not_="kafa tablasi + iki yanak: sag yanak tilt horn'una 4x M3, sol yanakta 625ZZ; kabuklar tablaya 4x M3")
+            not_="kafa tablasi + iki yanak: sag yanak tilt horn'una 4x M3, sol yanakta 625ZZ; kabuklar tablaya 4x M3; Pi 5 icin 4x O2,9")
 for h in HORN_T:
     i = add("Yanak-horn civatasi M3x8", "Kafa", screw912(3, 8, (X_SAG[1], h.y, h.z), (-1, 0, 0)), "Baglanti", "Celik 8.8",
             kod="M3x8 DIN 912", renk="celik", patlat=(45, 170, 0))
@@ -363,8 +379,21 @@ for sx in (1, -1):
         ak = ak.cut(box(min(sx * (KX + 1), sx * (KX - KT - 1)), max(sx * (KX + 1), sx * (KX - KT - 1)), 140.0 + 9 * k, 144.0 + 9 * k,
                         -15.0, 20.0))
     ak = ak.cut(cyl(CLEAR[3] / 2, (sx * (KX + 1), Y_KCIV, BOSS_Z[0]), (sx * (KX - KT - 1), Y_KCIV, BOSS_Z[0])))
+# K4: Pi havalandirmasi. Giris: arka duvar (z -65...-62,5), Active Cooler ustunden emer; cikis: iki yan duvarin ust-arka bolgesi.
+for (x0, x1) in HAVA_GIRIS["x"]:
+    for k in range(HAVA_GIRIS["n"]):
+        y = HAVA_GIRIS["y0"] + HAVA_GIRIS["adim"] * k
+        ak = ak.cut(box(x0, x1, y, y + HAVA_GIRIS["h"], KZ0 - 1, KZ0 + KT + 1))
+for sx in (1, -1):
+    for k in range(HAVA_CIKIS["n"]):
+        y = HAVA_CIKIS["y0"] + HAVA_CIKIS["adim"] * k
+        ak = ak.cut(box(min(sx * (KX + 1), sx * (KX - KT - 1)), max(sx * (KX + 1), sx * (KX - KT - 1)), y, y + HAVA_CIKIS["h"],
+                        HAVA_CIKIS["z"][0], HAVA_CIKIS["z"][1]))
+HAVA_ALAN = dict(giris_mm2=2 * HAVA_GIRIS["n"] * HAVA_GIRIS["h"] * 40.0, cikis_mm2=2 * HAVA_CIKIS["n"] * HAVA_CIKIS["h"] * 40.0,
+                 eski_yan_mm2=2 * 4 * 4.0 * 35.0)
 I_ARKA = add("Arka kafa kabugu", "Kafa", ak.removeSplitter(), "Baski", "PETG", renk="kabuk", patlat=(0, 140, -120),
-             not_="dikis dili on kabuga 6 mm girer; yanlarda 4'er havalandirma yarigi", doluluk=A.KABUK_DOLULUK)
+             not_="dikis dili on kabuga 6 mm girer; yanlarda 4'er alt yarik + 6'sar ust cikis yarigi, arka duvarda 10 giris yarigi (K4)",
+             doluluk=A.KABUK_DOLULUK)
 for sx in (1, -1):
     for zc, kab_i in ((BOSS_Z[0], I_ARKA), (BOSS_Z[1], I_ON)):
         i_c = add("Kabuk civatasi M3x8 ISO 7380", "Kafa", screw7380(3, 8, (sx * KX, Y_KCIV, zc), (-sx, 0, 0)), "Baglanti", "Celik",
@@ -406,6 +435,32 @@ for (x, y) in CAM_DEL:
     BAG.append(dict(ad="Kamera -> on kabuk boss'u", tip="pt", civata=i_c, bas_parca=I_CAM, govde=I_ON, nokta=(x, y, Z_CAM_ARKA),
                     yon=(0, 0, 1), d=2, L=8.0, agiz_t=CAM["t"]))
 
+# ====================================================================== K4: Pi 5 + 5 V cevirici + amfi (kafa tablasi ustu)
+I_PI = add("Raspberry Pi 5 8GB + Active Cooler", "Kafa", pi5_kafa(PI_T), "Satin", "-", kod="Raspberry Pi 5 8GB + resmi Active Cooler",
+           renk="pcb", patlat=(0, 230, -40),
+           not_="kablo kenari (USB-C, 2x micro HDMI, 2x CSI) one; microSD -X'e (x -49...-34): arka kabuk sokulunce erisilir")
+for j, (x, z) in enumerate(PI_DEL):
+    ib = add("Burc M2,5x8 (Pi %d)" % j, "Kafa", burc25(PI_BURC, (x, Y_TABLA[1], z), (0, 1, 0)), "Satin", "Pirinc",
+             kod="M2,5 x 8 burc, disi-disi, AA 5", renk="pirinc", patlat=(0, 210, -40))
+    iu = add("Vida M2,5x5 (Pi %d ust)" % j, "Kafa", screw912_25(5.0, (x, PI_T[1] + PI5["t"], z), (0, -1, 0)), "Baglanti", "Celik 8.8",
+             kod="M2,5x5 DIN 912", renk="celik", patlat=(0, 250, -40))
+    ia = add("Vida M2,5x8 (Pi %d alt)" % j, "Kafa", screw912_25(8.0, (x, Y_TABLA[0], z), (0, 1, 0)), "Baglanti", "Celik 8.8",
+             kod="M2,5x8 DIN 912", renk="celik", patlat=(0, 150, -40))
+    BAG.append(dict(ad="Pi 5 -> burc -> kafa tablasi", tip="burc_kart", civata=iu, civata_alt=ia, burc=ib, kart=I_PI, govde=I_ISK,
+                    nokta=(x, PI_T[1] + PI5["t"], z), yon=(0, -1, 0), d=2.5, L=5.0, L_alt=8.0, kart_t=PI5["t"],
+                    tabla_t=Y_TABLA[1] - Y_TABLA[0], burc_L=PI_BURC))
+for ad_, (cx_, cz_), sh_, kod_, l_, w_, m_, nt in (
+        ("5 V cevirici Pololu D36V50F5", CEV_C, cevirici_local(), "Pololu D36V50F5 5 V 5,5 A (pololu.com/product/4091)", CEV["l"], CEV["w"],
+         CEV["kutle_g"], "12 V boyundan gelir (kablo gecisi x -50...-37); cikis kisa USB-C kabloyla Pi'ye, LCD Pi USB'sinden; TVS cikista"),
+        ("MAX98357A I2S amfi", AMP_C, amp_local(), "Adafruit MAX98357A", AMP["l"], AMP["w"], AMP["kutle_g"],
+         "Pi GPIO I2S (kisa); hoparlor yeri acik (Duffy karari)")):
+    add("Kopuk bant (%s)" % ad_.split()[0], "Kafa", box(cx_ - l_ / 2, cx_ + l_ / 2, Y_TABLA[1], Y_TABLA[1] + KOPUK_T, cz_ - w_ / 2, cz_ + w_ / 2),
+        "Satin", "Kopuk", kod="Cift tarafli kopuk bant 1 mm (VHB)", renk="siyah", patlat=(0, 200, 0))
+    sh_ = sh_.copy()
+    sh_.translate(V(cx_, Y_TABLA[1] + KOPUK_T, cz_))
+    i_ = add(ad_, "Kafa", sh_, "Satin", "-", kod=kod_, renk="pcb", patlat=(0, 230, 0), not_=nt + "; kopuk bant + kablo bagi")
+    P[i_]["kutle_sabit"] = m_
+
 # --- kablo demeti gosterimi (Referans: carpisma ve kutleye girmez). LCD/kamera -> tabla ustu -> sol yanak disi ->
 #     tilt ekseni altindan (eksenin 18 mm alti) catal sol duvarina -> taban deligi -> mil ici -> pencere -> kablo odasi ->
 #     servo yuvasi arka kanali -> alt pencere -> gövdeye (R62 halkasi)
@@ -417,11 +472,21 @@ for a, b in zip(YOL[:-1], YOL[1:]):
     s = cyl(3.0, a, b).fuse(Part.makeSphere(3.0, V(*b)))
     kd = s if kd is None else kd.fuse(s)
 add("Kablo demeti (gosterim)", "Referans", kd.removeSplitter(), "Referans", "-", kod="(gosterim)", renk="kablo",
-    not_="HDMI ince kablo + USB (dokunmatik/guc) + kamera FPC + tilt servosu; sema, gercek kablo degil")
+    not_="K4: boyundan yalniz 12 V cift (18 AWG) + ESP32 USB (yalniz veri) + tilt servosu; sema, gercek kablo degil")
+# K4 kafa ici kisa kablolar (gosterim): FPC 300 mm Pi CSI -> kamera; micro HDMI -> LCD HDMI; USB-C cevirici -> Pi; 12 V gecis -> cevirici
+for ad_, pts_ in (("Kamera FPC 300 mm (gosterim)", [(18.0, 194.0, 2.0), (18.0, 194.0, 30.0), (10.0, 240.0, 60.0), (0.0, 258.0, 70.0)]),
+                  ("micro HDMI -> LCD HDMI (gosterim)", [(0.0, 194.0, 3.0), (20.0, 196.0, 40.0), (62.0, 196.0, 60.0)]),
+                  ("USB-C guc: cevirici -> Pi (gosterim)", [(-70.0, 195.0, 50.0), (-40.0, 196.0, 30.0), (-20.0, 194.0, 3.0)]),
+                  ("12 V: kablo gecisi -> cevirici (gosterim)", [(-43.0, 175.0, 12.0), (-43.0, 188.0, 12.0), (-75.0, 190.0, 35.0)])):
+    kk = None
+    for a, b in zip(pts_[:-1], pts_[1:]):
+        s_ = cyl(1.5, a, b).fuse(Part.makeSphere(1.5, V(*b)))
+        kk = s_ if kk is None else kk.fuse(s_)
+    add(ad_, "Referans", kk.removeSplitter(), "Referans", "-", kod="(gosterim)", renk="kablo", not_="sema")
 
 # ====================================================================== kutle ve agirlik merkezi
 DOLULUK = 0.80          # kucuk, kalin cidarli PETG parcalar (dirsek ile ayni, tahmini); kabuklar arayuz.KABUK_DOLULUK
-RHO = {"PETG": A.PETG_RHO, "Aluminyum": 2.70, "Celik": 7.85, "Celik 8.8": 7.85, "Pirinc": 8.50, "Akrilik": 1.19}
+RHO = {"PETG": A.PETG_RHO, "Aluminyum": 2.70, "Celik": 7.85, "Celik 8.8": 7.85, "Pirinc": 8.50, "Akrilik": 1.19, "Kopuk": 0.10}
 for p in P:
     p["hacim"] = p["shape"].Volume
     sol = p["shape"].Solids
@@ -436,6 +501,10 @@ for p in P:
         p["merkez"] = p["shape"].BoundBox.Center
     if p["tur"] == "Referans" or p["kod"] == "(servo ile)":
         p["kutle"] = 0.0
+    elif p.get("kutle_sabit") is not None:
+        p["kutle"] = p["kutle_sabit"]                 # K4: cevirici 7 g (Pololu), amfi 2 g (taban_lib AMP)
+    elif p["ad"].startswith("Raspberry Pi 5"):
+        p["kutle"] = PI5["kutle_g"]                   # 46 + 12 g (taban_lib PI)
     elif p["kod"] == "MG996R servo":
         p["kutle"] = MG["kutle_g"]                    # datasheet 55 g (cikis mili dahil)
     elif p["ad"].startswith("Yuz ekrani"):

@@ -189,10 +189,10 @@ SIRA = [
 ]
 
 ACIK = [
-    "**Kamera kablosu:** bütçedeki 200 mm FPC (maliyet.json) kafadan elektronik katındaki Pi 5'e yetmez (kablo yolu ≈ 1,1 m). Seçenekler: 1 m Pi 5 "
-    "kamera FPC'si, CSI → HDMI uzatma kiti ya da USB kamera. Karar Duffy'nin.",
-    "**HDMI kablosu:** Pi 5 mikro-HDMI → LCD; mil deliği (Ø32) ve kablo odası için ince, esnek kablo (≈ Ø4-5) önerilir; standart kalın HDMI pan "
-    "dönüşünde sert kalır. Gerçek kabloyla ±90° deneme.",
+    "**K4 (14-15 Ekim 2026): Pi 5 kafada.** Kamera FPC 300 mm ve micro HDMI → HDMI 25–30 cm kafa içinde kalır; boyundan HDMI ve CSI geçmez. "
+    "Isı testi (kafa kapalı, stres): SoC ≤ 75 °C, tilt servosu gövdesi ≤ 50 °C. Active Cooler debisi üreticiden yok (varsayım 1,0–1,55 L/s).",
+    "**Hoparlör yeri** (amfi tablada): kafada üst bölme ya da göğüs; karar Duffy'nin. Mikrofon yeri CAD'de yok.",
+    "Pi 5 için 4× M2,5 burç deliği 5 mm tablada: alt vida 3 mm burca girer (kupon testinde sıkma kontrolü).",
     "6808-2RS ve 625ZZ yük değerleri üretici kataloğundan doğrulanmalı (burada yalnız kuvvetler hesaplandı; değerler çok küçük).",
     "LCD kütlesi ve kalınlığı, kamera delik yerleri parça gelince kumpas / tartı ile doğrulanmalı.",
     "Pan servosunun eksenel konumu: montajda ince pulla ayar; servo milinin eksenel yük almadığı elle kontrol edilmeli.",
@@ -590,7 +590,30 @@ H.append("<ol>"
          "(saat yayı gibi sarılır).</li>"
          "<li>Servo yuvasının arka kanalından (20 × 8 mm) aşağı; pan servosu kablosu da buraya katılır.</li>"
          "<li>Arka alt pencereden (12 × 12 mm) çıkıp traversin arkasından, kabuk üst kapağının R62 halkasından gövdeye iner.</li></ol>")
-H.append("<p class='not'>Kablolar modelde yalnız şema (<code>Referans</code> grubu, çakışma ve kütleye girmez). Kamera FPC'si ve HDMI için açık iş aşağıda.</p>")
+H.append("<p class='not'>Kablolar modelde yalnız şema (<code>Referans</code> grubu, çakışma ve kütleye girmez). K4 ile boyundan yalnız 12 V çifti (18 AWG), "
+         "ESP32 USB'si (yalnız veri) ve tilt servosu geçer; ekran, kamera ve güç kabloları kafa içinde kısa kalır.</p>")
+
+# ---------------------------------------------------------------- K4: Pi 5 kafada (15 Ekim 2026)
+PI_ = d.get("pi")
+ISI_ = d.get("isi")
+if PI_ and ISI_:
+    H.append("<h2>Raspberry Pi 5 kafada (K4, düzeltme planı 3. adım)</h2>")
+    H.append("<ul><li>Pi 5 + Active Cooler kafa tablasının üstünde: kart köşesi (x %s, z %s), kart altı y %s; 4× M2,5×8 pirinç burç (alttan M2,5×8 tabladan, "
+             "üstten M2,5×5). Kablo kenarı (USB-C, 2× micro HDMI, 2× CSI) öne, microSD −X'e: arka kabuk 2 vidayla sökülünce erişilir.</li>"
+             % (sayi(PI_["konum_T"][0], 0), sayi(PI_["konum_T"][2], 0), sayi(PI_["konum_T"][1], 0)))
+    H.append("<li>5 V çevirici Pololu D36V50F5 (%s; %s) ve MAX98357A (%s; %s) tablada köpük bantla. Boyundan: %s.</li>"
+             % (sayi(PI_["cevirici"][0], 0), sayi(PI_["cevirici"][1], 0), sayi(PI_["amfi"][0], 0), sayi(PI_["amfi"][1], 0), esc(PI_["boyun_kablolari"])))
+    hv = ISI_["hava"]
+    H.append("<li>Havalandırma: giriş arka duvarda %s mm², çıkış yan duvarlarda %s mm² (1,55 L/s'de yarık hızı %s / %s m/s); eski alt yarıklar %s mm².</li></ul>"
+             % (sayi(hv["giris_mm2"], 0), sayi(hv["cikis_mm2"], 0), sayi(hv["giris_mm2_hiz_m_s_1.55L"], 2), sayi(hv["cikis_mm2_hiz_m_s_1.55L"], 2),
+                sayi(hv["eski_yan_mm2"], 0)))
+    rows = []
+    for k_, ad_ in (("bosta", "Boşta (Pi 3,2 W)"), ("tipik", "Tipik (Pi 7 W)"), ("en_kotu", "En kötü (Pi 9,8 W)")):
+        v_ = ISI_["senaryo"][k_]
+        rows.append((esc(ad_), sayi(v_["W"], 1), sayi(v_["kapali_ic_C"], 1), " / ".join(sayi(x, 1) for x in v_["yarikli_ic_C"]), sayi(v_["servo_payi_kapali_K"], 1)))
+    H.append("<div class='tw'>" + tablo(["Senaryo", "Kafa gücü (W)", "Kapalı kafa iç hava (°C)", "Yarıklı, 1,0 / 1,55 L/s (°C)", "Servo sınırına pay, kapalı (K)"], rows) + "</div>")
+    H.append("<p class='not'>El hesabı, %s °C ortam (tahmini; kaynak: %s). Kapalı kabuk R ≈ %s K/W; yarıklı durumda hava artışı Q / (ρ c_p V̇).</p>"
+             % (sayi(ISI_["varsayim"]["ortam_C"], 0), esc(ISI_["varsayim"]["kaynak"]), sayi(ISI_["varsayim"]["R_kapali_K_W"], 1)))
 
 H.append("<h2>Modüller arası çakışma ve ana montaj (2. aşama)</h2>")
 H.extend(asama2())

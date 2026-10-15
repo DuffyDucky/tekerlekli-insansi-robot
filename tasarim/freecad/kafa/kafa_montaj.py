@@ -176,6 +176,24 @@ for b in BAG:
         k += [(a_, round(x_, 4), x_ <= TEMAS) for a_, x_ in dl]
         _, t_ins = t_aralik(ins, n0, u)
         k.append(("civata ucu isil gomme somun icinde (uc payi %.1f mm)" % (t_ins - t_uc), round(t_ins - t_uc, 3), t_uc <= t_ins + 1e-6))
+    elif b["tip"] == "burc_kart":
+        # K4: Pi 5 kart -> M2,5x8 burc -> kafa tablasi (taban kart_burclu ile ayni olcut)
+        ust_kav = b["L"] - b["kart_t"]
+        alt_kav = b["L_alt"] - b["tabla_t"]
+        ara = b["burc_L"] - ust_kav - alt_kav
+        k.append(("ust vida burca %.1f mm (>= d %.1f)" % (ust_kav, d_), round(ust_kav, 3), ust_kav >= d_ - 1e-6))
+        k.append(("alt vida burca %.1f mm (>= d %.1f)" % (alt_kav, d_), round(alt_kav, 3), alt_kav >= d_ - 1e-6))
+        k.append(("burc icinde vidalar arasi %.1f mm (>= 0,5)" % ara, round(ara, 3), ara >= 0.5))
+        alt = S(b["civata_alt"])
+        e_ = eksen_disi(alt, n0, u)
+        k.append(("alt vida ayni eksende", round(e_, 6), e_ < 1e-6))
+        e_ = eksen_disi(S(b["burc"]), n0, u)
+        k.append(("burc ayni eksende", round(e_, 6), e_ < 1e-6))
+        dl = [("burc tablaya dayali", mesafe(S(b["burc"]), S(b["govde"]))), ("kart burca dayali", mesafe(S(b["kart"]), S(b["burc"]))),
+              ("ust vida basi karta dayali", mesafe(civ, S(b["kart"]))), ("alt vida basi tablaya dayali", mesafe(alt, S(b["govde"])))]
+        k += [(a_, round(x_, 4), x_ <= TEMAS) for a_, x_ in dl]
+        dg = mesafe(civ, S(b["govde"]))
+        k.append(("ust vida tablaya degmiyor (%.2f mm)" % dg, round(dg, 3), dg > 0.3))
     elif b["tip"] == "pt":
         kav = t_uc - b["agiz_t"]
         k.append(("M2 PT vida boss'a %.1f mm girer (>= 5, tahmini)" % kav, round(kav, 3), kav >= 5.0))
@@ -449,8 +467,15 @@ def atalet(gruplar, pl_map, eksen_n, eksen_u):
 
 
 # tilt: kafa grubunun yercekimi momenti (pan acisindan bagimsiz) + ivme momenti
-mK, cK = GR["Kafa"]
+# K4 (15 Ekim 2026): kafa ici kisa kablolar (FPC 300 mm, micro HDMI 25-30 cm, USB-C guc, 12 V, LCD USB) parca listesinde yok:
+# tork ve rulman hesabina nokta kutle olarak eklenir (taban KABLO_PAY gibi; tahmini). Modul kutlesine (kutle_g) girmez.
+KABLO_KAFA = dict(kutle_g=25.0, merkez=(-10.0, 195.0, 15.0), not_="tahmini: FPC ~3 g, micro HDMI 25 cm ~12 g, USB-C ~6 g, 12 V 18 AWG ~4 g")
+mK0, cK0 = GR["Kafa"]
+mK = mK0 + KABLO_KAFA["kutle_g"]
+cK = (cK0 * mK0 + V(*KABLO_KAFA["merkez"]) * KABLO_KAFA["kutle_g"]) * (1.0 / mK)
 I_tilt = atalet(("Kafa",), {"Kafa": App.Placement()}, (0, YT, ZT), K["tilt_yon"])
+_kc = V(*KABLO_KAFA["merkez"]) - V(0, YT, ZT)
+I_tilt += KABLO_KAFA["kutle_g"] / 1000.0 * ((_kc.y ** 2 + _kc.z ** 2) * 1e-6)
 ALFA = 4 * math.radians(60) / 0.4 ** 2       # 60 derece 0,4 s'de, ucgen hiz profili (tahmini): 26,2 rad/s2
 OMEGA = 2 * math.radians(60) / 0.4           # tepe hiz 5,2 rad/s (MG996R bossta ~6,2 rad/s @4,8 V)
 STALL = 9.4                                  # kg*cm MG996R @4,8 V (dirsek ile ayni kaynak)
@@ -465,7 +490,8 @@ ti = I_tilt * ALFA / 9.81 * 100              # N*m -> kg*cm
 tilt_t = tg_max + ti
 # tum acilarda en kotu (tam tur, bilgi): kutle merkezinin eksene uzakligi
 r_cg = math.hypot(cK.y - YT, cK.z - ZT)
-tilt_tork = dict(kutle_g=round(mK, 1), am=[round(cK.x, 2), round(cK.y, 2), round(cK.z, 2)], eksen=[YT, ZT],
+tilt_tork = dict(kutle_g=round(mK, 1), kutle_parca_g=round(mK0, 1), kablo_payi=KABLO_KAFA,
+                 am=[round(cK.x, 2), round(cK.y, 2), round(cK.z, 2)], eksen=[YT, ZT],
                  am_eksen_mm=round(r_cg, 1), yercekimi_max_kgcm=round(tg_max, 2), yercekimi_max_th=th_tg,
                  tam_tur_max_kgcm=round(mK * r_cg / 1e4, 2), I_kgm2=round(I_tilt, 6), alfa_rad_s2=round(ALFA, 1),
                  ivme_kgcm=round(ti, 3), toplam_kgcm=round(tilt_t, 2), stall_kgcm=STALL, pay=round(STALL / tilt_t, 2),
@@ -501,6 +527,26 @@ tilt_tork["mesnet"] = dict(x_625=x_625, x_horn=x_horn, horn_payi=round(pay_horn,
                            pim_N=round(mK / 1000 * G * (1 - pay_horn), 2))
 log("tork tilt %.2f kg*cm (yercekimi %.2f @%d, ivme %.3f) pay %.1f; pan %.2f kg*cm pay %.1f; rulman eksenel %.1f N radyal %.1f N" % (
     tilt_t, tg_max, th_tg, ti, STALL / tilt_t, pan_t, STALL / pan_t, F_ax, F_rad))
+
+# ====================================================================== 6b) K4 isi (el hesabi, P-pi-kafada.md bolum 3; tahmini)
+# Kafada harcanan guc: Pi 5 (Jeff Geerling olcumu: bosta 3,2 W, stress-ng 9,8 W; tipik 7 W tahmini) + 7" LCD 2,45 W (Waveshare 490 mA)
+# + kamera ~0,5 W + amfi ortalama ~0,3 W + 5 V cevirici kaybi (%90 verim varsayimi). Kapali kabuk: yuzey ~0,19 m2, toplam isi gecirgenligi
+# ~9 W/m2K (tasinim + isinim) + PETG 2,5 mm (k 0,2) -> R ~1,3 K/W. Yarikli: Active Cooler fani arka duvardan emer, yan duvarlardan atar;
+# hava artisi dT = Q / (rho cp Vdot). Fan debisi uretici vermiyor: 1,0 ve 1,55 L/s iki varsayim. Servo (MG996R) sinir 55 C, Pi SoC kisma 80-85 C.
+ISI = dict(ortam_C=30.0, R_kapali_K_W=1.3, yuzey_m2=0.19, verim=0.90, debi_L_s=(1.0, 1.55), servo_sinir_C=55.0,
+           kaynak="planlama/adim1/P-pi-kafada.md bolum 3; jeffgeerling.com (Pi 5 guc); Waveshare wiki (LCD akimi); MG996R datasheet (0-55 C)")
+isi = dict(varsayim=ISI, hava=dict(KP.HAVA_ALAN), senaryo={})
+for ad_, pi_W in (("bosta", 3.2), ("tipik", 7.0), ("en_kotu", 9.8)):
+    yuk = pi_W + 2.45 + 0.5 + 0.3
+    Q = yuk / ISI["verim"]
+    dT_kapali = Q * ISI["R_kapali_K_W"]
+    dT_yarik = [Q / (1.16 * 1007.0 * v / 1000.0) for v in ISI["debi_L_s"]]
+    isi["senaryo"][ad_] = dict(W=round(Q, 1), kapali_ic_C=round(ISI["ortam_C"] + dT_kapali, 1),
+                               yarikli_ic_C=[round(ISI["ortam_C"] + d, 1) for d in dT_yarik],
+                               servo_payi_kapali_K=round(ISI["servo_sinir_C"] - ISI["ortam_C"] - dT_kapali, 1))
+for gir in ("giris_mm2", "cikis_mm2"):
+    isi["hava"][gir + "_hiz_m_s_1.55L"] = round(1.55e-3 / (KP.HAVA_ALAN[gir] * 1e-6), 2)
+log("isi (K4):", {k: (v["W"], v["kapali_ic_C"], v["yarikli_ic_C"]) for k, v in isi["senaryo"].items()}, "yarik", KP.HAVA_ALAN)
 
 # ====================================================================== 7) baski analizi (X2D)
 baski = []
@@ -652,6 +698,9 @@ out = dict(
     r62=dict(aciklik_r=A.BOYUN_ACIKLIK_R, kapak_y_yerel=list(y_kapak), sabit_en_kucuk=r62[:6], kapak_seviyesi_r_max=round(r_max, 2),
              kafa_en_alt_y=round(alt[0], 2), kafa_en_alt_poz=alt[1], pan_en_alt_y=round(y_pan_min, 2),
              not_="kapak seviyesinde yalniz sabit boyun (servo yuvasi + plaka kulaklari) var; hareketli parcalar y >= %.1f" % y_pan_min),
+    isi=isi, pi=dict(konum_T=list(KP.PI_T), burc_mm=KP.PI_BURC, delikler=[list(d) for d in KP.PI_DEL], cevirici=list(KP.CEV_C),
+                     amfi=list(KP.AMP_C), boyun_kablolari="12 V cift 18 AWG + ESP32 USB (yalniz veri, VBUS kesik) + tilt servo (3 tel)",
+                     kaynak="planlama/adim1/P-pi-kafada.md; planlama/adim3/elektrik.md"),
     tork=dict(tilt=tilt_tork, pan=pan_tork, profil="60 derece 0,4 s'de ucgen hiz profili (tahmini): alfa %.1f rad/s2, tepe hiz %.1f rad/s" % (ALFA, OMEGA),
               stall_kaynak="MG996R datasheet 9,4 kg*cm @4,8 V (11 @6 V); dirsek ile ayni"),
     grup={k: dict(m=round(v[0], 1), am=vl(v[1])) for k, v in GR.items()},

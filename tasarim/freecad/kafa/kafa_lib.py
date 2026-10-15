@@ -83,6 +83,72 @@ def screw_m2(L, p, direction):
     return head.fuse(Part.makeCylinder(1.0, L, p, u)).removeSplitter()
 
 
+# ------------------------------------------------------------------ K4 (15 Ekim 2026): Raspberry Pi 5 kafada
+# Pi 5 + Active Cooler: bilesen kutulari planlama/adim1/pi_kafada_dogrula.py GOVDE listesinden (resmi STEP'ten alinmis; kart
+# koordinati: x 0...85 uzun kenar, y 0...56, y = 0 kenarinda USB-C + 2x micro HDMI + 2x CSI, z kart ust yuzu = 1,6).
+# Delikler O2,7, kenardan 3,5, 58 x 49 (donanim/datasheet/raspberry-pi-5-mechanical-drawing.pdf). microSD yuvasi altta x -2,5...12.
+PI5 = dict(l=85.0, w=56.0, t=1.6, delik_d=2.7, delik=[(3.5, 3.5), (61.5, 3.5), (3.5, 52.5), (61.5, 52.5)], kutle_g=46.0 + 12.0,
+           kaynak="taban_lib PI (46 g kart + 12 g Active Cooler); olculer resmi mekanik cizim + STEP")
+PI5_BILESEN = [("USB-C + micro HDMI", 6.5, 46.0, -1.7, 6.2, 1.6, 4.6), ("CSI x2", 47.0, 57.0, 0.0, 17.0, 1.6, 5.3),
+               ("USB / Ethernet", 66.4, 88.1, 2.3, 54.2, -0.7, 17.5), ("GPIO", 7.0, 58.0, 50.0, 55.5, 1.6, 11.0),
+               ("Active Cooler", 6.0, 69.5, 6.5, 49.0, 1.6, 15.0), ("microSD yuvasi", -2.5, 12.0, 22.0, 34.0, -1.4, 0.0)]
+# kart koordinati -> kafa: kafa_x = x + T.x, kafa_y = z + T.y, kafa_z = -y + T.z (bilesen yuzu yukari, kablo kenari +Z = one)
+PI5_R = ((1, 0, 0), (0, 0, 1), (0, -1, 0))
+
+
+def pi5_kafa(T):
+    """Pi 5 + Active Cooler tek kati, kafa koordinatinda; T = kart alt yuzu kosesi (kart x 0, y 0) konumu."""
+    def kutu(x0, x1, y0, y1, z0, z1):
+        b = box(x0, x1, y0, y1, z0, z1)
+        m = App.Matrix(1, 0, 0, T[0], 0, 0, 1, T[1], 0, -1, 0, T[2], 0, 0, 0, 1)
+        b.transformShape(m)
+        return b
+    pcb = kutu(0, PI5["l"], 0, PI5["w"], 0, PI5["t"])
+    for (x, y) in PI5["delik"]:
+        pcb = pcb.cut(cyl(PI5["delik_d"] / 2, (x + T[0], T[1] - 1, -y + T[2]), (x + T[0], T[1] + PI5["t"] + 1, -y + T[2])))
+    return pcb.fuse([kutu(*b[1:]) for b in PI5_BILESEN]).removeSplitter()
+
+
+def pi5_delikler_kafa(T):
+    return [(x + T[0], -y + T[2]) for (x, y) in PI5["delik"]]
+
+
+# M2,5 elemanlari (taban_lib ile ayni nominal): DIN 912 M2,5 dk 4,5 k 2,5 s 2; gecme deligi O2,9; pirinc burc AA 5 x 8 disi-disi
+def screw912_25(L, p, direction):
+    u = unit(direction)
+    p = V(*p)
+    head = Part.makeCylinder(2.25, 2.5, p - u * 2.5, u).cut(hexprism(2.0, p - u * 2.6, p - u * 1.0))
+    return head.fuse(Part.makeCylinder(1.25, L, p, u)).removeSplitter()
+
+
+def burc25(L, p0, direction):
+    u = unit(direction)
+    p0 = V(*p0)
+    return hexprism(5.0, p0, p0 + u * L, V(1, 0, 0) if abs(u.x) < 0.9 else V(0, 0, 1)).cut(Part.makeCylinder(1.25, L + 2, p0 - u, u))
+
+
+# 5 V cevirici: Pololu D36V50F5 (pololu.com/product/4091: 25,4 x 25,4 x 9,5 mm, 7 g, giris 5,5-50 V, 5 V %4, 5,5 A (giris
+# gerilimine/isiya bagli), ters gerilim korumasi -40 V, asiri akim / kisa devre / asiri sicaklik, 3x M2 delik). Bilesen yuksekligi
+# 9,5 icinde tek blok (tahmini dagilim). Yerel: kart alt yuzu y = 0, merkez orijin.
+CEV = dict(l=25.4, w=25.4, h=9.5, t=1.0, kutle_g=7.0)
+
+
+def cevirici_local():
+    l, w = CEV["l"], CEV["w"]
+    b = box(-l / 2, l / 2, 0, CEV["t"], -w / 2, w / 2)
+    return b.fuse([box(-8, 8, CEV["t"], CEV["h"], -6, 9), box(-11, -3, CEV["t"], 6.0, -11, -7)]).removeSplitter()
+
+
+# MAX98357A (taban_lib AMP: Adafruit 3006, 19,4 x 17,8, montaj deligi yok -> kopuk bant)
+AMP = dict(l=19.4, w=17.8, kutle_g=2.0)
+
+
+def amp_local():
+    l, w = AMP["l"], AMP["w"]
+    b = box(-l / 2, l / 2, 0, 1.6, -w / 2, w / 2)
+    return b.fuse([box(-3, 3, 1.6, 2.6, -3, 3), box(-8, 8, 1.6, 4.1, w / 2 - 4, w / 2 - 1)]).removeSplitter()
+
+
 # ------------------------------------------------------------------ yuvarlatilmis kutu (kafa kabugu)
 def kafa_kutu(x0, x1, y0, y1, z0, z1, r_on, r_kenar):
     """Kutu: Z'ye paralel 4 kenar r_on (ondan bakista koseler), sonra on ve arka yuzun tum kenarlari r_kenar."""
