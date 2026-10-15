@@ -8,6 +8,9 @@ Duffy'nin talimatı: "tasarım planlayıcı bitene kadar planlama ve aksiyon dö
 bundan sonraki adımları falan bitirince tasarım planlayıcıya geç onu da yap". "Tasarım planlayıcı" = 3B montaj
 rehberi (Duffy seçti, 14 Ekim).
 
+
+> **DURAKLATILDI (15 Ekim 2026 akşam, Duffy):** "kablo makarasını yapanın işi bitince başka iş açma montaj rehberini de tamamen bitirme %50 bitince önemli bir checkpointte dur". Saatlik zamanlayıcı kapatıldı. S1 kontrolü bitince (geçerse) yalnız commit; yeni ajan yok. Rehber ~%50 checkpoint'te durur (`planlama/rehber/R-gunluk.md`). Devam için Duffy'nin yeni "başla"sı gerekir.
+
 ## Kurallar (her uyanışta geçerli)
 - Oturum yeniden başlarsa eski ajanlar SendMessage ile devam ettirilemez ("No transcript found"): aynı brief + "önce günlüğü oku, yapılanı tekrarlama" ile yeni Opus ajanı başlat.
 - Ajan düzeni: iki Opus ajanı (`model: opus`, general-purpose). Biri tasarım, biri analiz + bağımsız kontrol.
@@ -35,10 +38,10 @@ rehberi (Duffy seçti, 14 Ekim).
 | 2c | Opus-2: G + M1 bağımsız kontrol + S1 değerlendirme + tüp baskı | ✅ | `planlama/adim2/K-kontrol.md`; S1 bitince ikinci kontrol gerekecek |
 | 3 | E0, E1–E4, E7 taban ve güç + K4 Pi 5 kafada | ✅ `7c87ff4` + takip `c299754` | **Risk:** JGB37 9 kg·cm ise standart tekerle dönemez, omniyle sınırda → ölçüm omni siparişinden önce. Açık: arayuz ESP32/PCA9685 bölgeleri eski V3 yerinde; Pololu 12 V akımı grafikten; perde/fan testi |
 | 4 | M6 montaj sırası ve erişim, M7 kupon | ✅ analiz + kupon `6bb1eff`; ⏳ **M6 CAD** (C1 göbek-horn cıvatası, C2 dirsek servo kulağı, C3 kontra somun cepleri, K1/K2 dışarıdan vida + perçin somun, K3 ped yarığı + Ø84, K4 göğüs servis kapağı, K5 etek kapağı, K6 ana sigorta, K7 ana anahtar deliği) | S1 kontrolü bitince tasarım + kontrol ajanı; sonra `M6_erisim.py` yeniden |
-| 5 | B1, B2, E8, E9, D6 malzeme ve plan | 🔄 Opus-9 (CAD'e dokunmuyor) | `planlama/adim5/B-malzeme-plan.md`; M6 kalemleri koşullu |
+| 5 | B1, B2, E8, E9, D6 malzeme ve plan | ✅ `15a4444` | Genel 99.147,48 TL (koşullular dahil 105.053,19). Yoğun kullanım 2,0 sa. Ön şarj K2 rölesi + 5,6 Ω (CAD'de yok → M6 CAD ile). CAD'e kalan bulgular `adim5/B-malzeme-plan.md` |
 | 6 | Bütün modüller yeniden üretilir → C7 tam tarama (C5 ile) → D4 regresyon → D5 | ⏳ | Makine ~1,5 sa |
 | 7 | D1, D2 belgeler (isteğe bağlı D7, C8, M9, M10; D8 ve K5 Duffy'ye sorulur) | ⏳ | |
-| 8 | **3B montaj rehberi** (A: FreeCAD'den adım verisi, B: 3B adım adım rehber + PDF; kabuk öncesi kablolama kapısı) | ⏳ | Plan 11 Ekim'de sunuldu: DuffyOS `Last-Session.md` 11 Ekim "montaj rehberi planı" kartı; ayrıntı 11 Ekim oturum dökümü (Claude oturumu 2892de2f). Önce planı oku, sonra başla |
+| 8 | **3B montaj rehberi** (A: adım verisi, B: 3B sayfa + yazdırılabilir) | 🔄 Opus-10 altyapı + taslak (şimdiki CAD'den; 6. adımdan sonra tek komutla yeniden üretilecek) | `planlama/rehber/R-gunluk.md`, `rehber/`, `tasarim/freecad/rehber/`. İskelet: `adim4/M6-montaj-sirasi.md` (48 adım) |
 | 9 | Sonuç `rapor.html` + Duffy'ye özet tablo | ⏳ | |
 
 ## Günlük
@@ -59,3 +62,5 @@ rehberi (Duffy seçti, 14 Ekim).
 - 2026-10-15 ~14:00 Opus-4 S1'i bitirdi (omuz 73, kabuk 206 parça). Opus-8 S1 kontrolü; Opus-7 M6 analizinde.
 - 2026-10-15 ~14:30 Opus-7 bitti → `6bb1eff` (M7 kupon + M6 analizi; D1 kuponu FCStd ile fark 0). Opus-9 5. adım; Opus-8 S1 kontrolü. M6 CAD, S1 kontrolünden sonra.
 - 2026-10-15 ~14:40 Opus-8 ve Opus-9 limite takıldı (yenilenme 18:30). Oturum yeniden başlamış, eski ajanlar devam ettirilemedi → 18:35 yeni Opus-8b (S1 kontrolü, K2-*.json'dan devam) ve Opus-9b (5. adım, günlükten devam). Uyanık tutma süreçleri (17020, 24440) hâlâ çalışıyor.
+- 2026-10-15 ~19:15 Opus-9b bitti → `15a4444` (toplam betikle doğrulandı). Opus-10 montaj rehberi altyapısı (CAD'i yalnız okur); Opus-8b S1 kontrolünde. M6 CAD, S1 kontrolünden sonra.
+- 2026-10-15 ~19:30 Duffy duraklattı (yukarıdaki not). Zamanlayıcı silindi; Opus-10'a %50 checkpoint talimatı gönderildi.

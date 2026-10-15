@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Lale Montaj Rehberi</title>
+<link rel="stylesheet" href="stil.css">
+<script>/* hata sayacı: rehber_uret.py headless kontrolünde <html data-hata> okunur */
+window.__hata=[];(function(){function k(m){window.__hata.push(String(m));document.documentElement.dataset.hata=window.__hata.join(" | ").slice(0,500);}
+addEventListener("error",function(e){k(e.message||e);});addEventListener("unhandledrejection",function(e){k(e.reason);});
+var ce=console.error;console.error=function(){k(Array.prototype.join.call(arguments," "));ce.apply(console,arguments);};})();</script>
+</head>
+<body>
+<header class="ust">
+  <div class="baslik"><b>Lale</b> <span>3B montaj rehberi</span> <span class="taslak">taslak</span></div>
+  <div class="ilerleme" aria-label="İlerleme"><div class="cubuk"><i id="cubuk"></i></div><span id="sayac">–</span></div>
+  <div class="ust-sag">
+    <button class="btn ince" id="tema" title="Tema (T)">◐</button>
+  </div>
+</header>
+<main class="duzen">
+  <section class="sahne" id="sahne">
+    <canvas id="tuval"></canvas>
+    <div class="yukleniyor" id="yukleniyor">3B model yükleniyor…</div>
+    <div class="etiket" id="etiket" hidden></div>
+    <div class="sahne-arac">
+      <button class="btn ince" id="tekrar" title="Uçuşu tekrar oynat (R)">↻ uçuş</button>
+      <button class="btn ince" id="sifirla" title="Görünümü sıfırla (V)">⌖ görünüm</button>
+      <label class="btn ince"><input type="checkbox" id="onceki-gizle"> öncekileri gizle</label>
+    </div>
+    <div class="lejant" id="lejant"></div>
+  </section>
+  <aside class="panel" id="panel">
+    <div class="adim-bas">
+      <div class="rozetler" id="rozetler"></div>
+      <h1 id="adim-baslik">–</h1>
+      <p class="is" id="adim-is"></p>
+    </div>
+    <div id="m6-uyari"></div>
+    <div class="kpi-satir" id="kpi"></div>
+    <details open><summary>Parçalar</summary><div id="parcalar"></div></details>
+    <details open><summary>Bağlantı elemanları</summary><div id="baglantilar"></div></details>
+    <details open><summary>Kontrol listesi</summary><ul class="kontrol" id="kontrol"></ul></details>
+    <details open><summary>Kablo kancası</summary><ul class="kablo" id="kablo"></ul></details>
+    <details><summary>Erişim notu (M6)</summary><p class="not" id="erisim"></p></details>
+  </aside>
+</main>
+<nav class="alt">
+  <button class="btn" id="geri" title="Önceki adım (←)">← Geri</button>
+  <select id="secim" aria-label="Adım seç"></select>
+  <button class="btn ana" id="ileri" title="Sonraki adım (→)">İleri →</button>
+</nav>
+<script src="veri/rehber-veri.js"></script>
+<script src="veri/robot-glb.js"></script>
+<script src="app.js"></script>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+"three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from "three";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { toCreasedNormals } from "three/addons/utils/BufferGeometryUtils.js";
+window.RehberBaslat({ THREE, GLTFLoader, OrbitControls, toCreasedNormals });
+</script>
+</body>
+</html>

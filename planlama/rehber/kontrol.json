@@ -1,0 +1,54 @@
+{
+ "tarih": "2026-10-15 19:17",
+ "tarayici": "chrome.exe",
+ "sonuc": [
+  {
+   "adim": 0,
+   "hazir": true,
+   "hata": null,
+   "goruntu": "planlama/rehber/goruntu/adim-00.png"
+  },
+  {
+   "adim": 1,
+   "hazir": true,
+   "hata": null,
+   "goruntu": "planlama/rehber/goruntu/adim-01.png"
+  },
+  {
+   "adim": 4,
+   "hazir": true,
+   "hata": null,
+   "goruntu": "planlama/rehber/goruntu/adim-04.png"
+  },
+  {
+   "adim": 5,
+   "hazir": true,
+   "hata": null,
+   "goruntu": "planlama/rehber/goruntu/adim-05.png"
+  },
+  {
+   "adim": 9,
+   "hazir": true,
+   "hata": null,
+   "goruntu": "planlama/rehber/goruntu/adim-09.png"
+  },
+  {
+   "adim": 11,
+   "hazir": true,
+   "hata": null,
+   "goruntu": "planlama/rehber/goruntu/adim-11.png"
+  },
+  {
+   "adim": 16,
+   "hazir": true,
+   "hata": null,
+   "goruntu": "planlama/rehber/goruntu/adim-16.png"
+  },
+  {
+   "adim": 17,
+   "hazir": true,
+   "hata": null,
+   "goruntu": "planlama/rehber/goruntu/adim-17.png"
+  }
+ ]
+}
