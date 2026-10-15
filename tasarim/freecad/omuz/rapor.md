@@ -1,6 +1,6 @@
 # Sağ omuz modülü (2 eksen) + üst kol bağlantısı
 
-FreeCAD 1.1 · `omuz_montaj.py` ile üretildi · 70 parça · çizim ve kontroller betikle tekrarlanabilir.
+FreeCAD 1.1 · `omuz_montaj.py` ile üretildi · 66 parça · çizim ve kontroller betikle tekrarlanabilir.
 
 ## Özet
 
@@ -8,18 +8,18 @@ FreeCAD 1.1 · `omuz_montaj.py` ile üretildi · 70 parça · çizim ve kontroll
 |---|---|
 | Eksenler | Öne-arka (S1, X ekseni) ve yana açma (S2, Z ekseni); iki eksen tek noktada kesişir |
 | Yük yolu | Öne-arka: 6808-2RS rulman taşır, S1 yalnız döndürür. Yana açma: çatal iki taraftan tutulur (horn + 625ZZ) |
-| Montaj kontrolü | 70 parça, ev pozunda **0 çakışma** (tolerans 0,5 mm³), tüm parçalar tek ve geçerli katı |
+| Montaj kontrolü | 66 parça, ev pozunda **0 çakışma** (tolerans 0,5 mm³), tüm parçalar tek ve geçerli katı |
 | Öne-arka serbest aralık | -60° … 180° arası hiçbir yere çarpmıyor (taranan aralığın tamamı) |
 | Yana açma serbest aralık | 0° … 120° (her öne-arka açısında) |
 | En küçük boşluk (kol aşağıda) | Kol × gövde 4.0 mm (Kol catali ↔ Rulman kapagi) |
 | En kötü tork (eklem sınırları içinde) | Öne-arka 5.6 kg·cm, yana açma 5.7 kg·cm · DS3218MG ≈ 20 kg·cm → ≈ 3.5× pay |
-| Hareketli kütle | Göbek grubu 148 g, kol grubu 108 g + dirsek ve aşağısı (tahmini) 260 g |
+| Hareketli kütle | Göbek grubu 147 g, kol grubu 106 g + dirsek ve aşağısı (tahmini) 260 g |
 
 ## Hangi parça neye, nasıl bağlanıyor
 
 | Bağlantı | Nasıl oturuyor | Bağlantı elemanı |
 |---|---|---|
-| Omuz yuvası → sigma traversi | Yuva traversin ucuna 30 mm geçer (0,2 mm boşluk), uç duvarına dayanır. | 4× M6×16 DIN 912 + 4× M6 pul + 4× M6 çekiç somun (kanal 10), dört yüzde birer |
+| Omuz yuvası → sigma traversi | Yuva traversin ucuna 30 mm geçer (0,2 mm boşluk), uç duvarına dayanır. | 4× M6×16 DIN 912 (pulsuz: uç somunu 1,7 mm geçer) + 4× M6 çekiç somun (kanal 10), dört yüzde birer |
 | S1 servo → omuz yuvası | Servo plakadaki yuvaya dışarıdan girer, kulakları plakanın dış yüzüne oturur. | 4× M4×16 DIN 912 + 4× M4 DIN 985 kontra somun (somunlar plakanın iç yüzünde) |
 | S1 horn → S1 mili | 25 dişli mile geçer. | M3 merkez vidası (servo ile gelir) |
 | Rulman kapağı → omuz yuvası | Kapağın iki kulağı yuvanın kollarına dayanır. | 4× M3×12 DIN 912 → yuvadaki 4× M3 ısıl gömme somun |
@@ -35,7 +35,7 @@ FreeCAD 1.1 · `omuz_montaj.py` ile üretildi · 70 parça · çizim ve kontroll
 
 1. Isıl gömme somunları havyayla bas: yuvaya 4× M3 (kol uçları), göbeğe 1× M5 (arka plaka), çatala 2× M3 (pim).
 2. 6808-2RS'yi rulman kapağına, 625ZZ'yi çatalın arka koluna bastır.
-3. 4 çekiç somunu traversin dört kanalına sok. Yuvayı traverse geçir, 4× M6×16 + pulla sık.
+3. 4 çekiç somunu traversin dört kanalına sok. Yuvayı traverse geçir, 4× M6×16 ile sık (pul yok: başı doğrudan yuvaya oturur).
 4. S1'i yuvaya dışarıdan sok, 4× M4×16 + kontra somunla bağla.
 5. S1'i 45° konumuna getir (Pi ya da servo test cihazıyla), horn'u kol aşağıdayken tak, merkez vidasını sık.
 6. Rulmanlı kapağı yuvanın kollarına 4× M3×12 ile bağla.
@@ -67,7 +67,6 @@ FreeCAD 1.1 · `omuz_montaj.py` ile üretildi · 70 parça · çizim ve kontroll
 | M5 DIN 125 pul | 1 |
 | M5 isil gomme somun | 1 |
 | M5x12 DIN 912 | 1 |
-| M6 DIN 125 pul | 4 |
 | M6 cekic somun, kanal 10 | 4 |
 | M6x16 DIN 912 | 4 |
 
@@ -79,7 +78,7 @@ FreeCAD 1.1 · `omuz_montaj.py` ile üretildi · 70 parça · çizim ve kontroll
 | Rulman kapagi | 76 × 60 × 14 | 11 | evet | `stl/rulman-kapagi.stl` |
 | Omuz gobegi | 66 × 51 × 49 | 40 | evet | `stl/omuz-gobegi.stl` |
 | Kol catali | 76 × 64 × 56 | 62 | evet | `stl/kol-catali.stl` |
-| Ust kol tupu | 100 × 56 × 56 | 32 | evet | `stl/ust-kol-tupu.stl` |
+| Ust kol tupu | 100 × 56 × 56 | 30 | evet | `stl/ust-kol-tupu.stl` |
 
 ## Kontrollerde bulunup düzeltilenler
 
@@ -88,7 +87,8 @@ FreeCAD 1.1 · `omuz_montaj.py` ile üretildi · 70 parça · çizim ve kontroll
 ## Doğrulanacaklar ve açık işler
 
 - **Horn delik dizilimi:** 25T disk horn'da M3 delikler 8,5 mm yarıçapta varsayıldı. Horn eline geçince kumpasla ölçülmeli, göbek ve çatal delikleri ona göre güncellenir.
-- **Servo sürümü:** Eklem sınırları 180° servoya göre (öne −45…+135°, yana 0…120°). DS3218MG'nin 270° sürümü alınırsa sınırlar genişler, horn takma açıları değişir.
+- **Servo sürümü:** Eklem sınırları 180° servoya göre (öne -45…+135°, yana 3…120°; `arayuz.OMUZ`). DS3218MG'nin 270° sürümü alınırsa sınırlar genişler, horn takma açıları değişir.
+- **Yana açma alt sınırı +3° (düzeltme planı C1):** mekanik sıfır 0°'dir ama yazılım hiçbir zaman 0'a komut vermez. Kolun kabuğa boşluğu (hedefli ölçüm, kol aşağıda): öne 0°'de 0° → 4,67, −2° → 0,63 mm, −3° → temas; öne 40°'de 0° → 3,76 mm, −2° → temas; +3° → en az 7,17 mm. Servo sıfır kalibrasyonu (S2 horn'u takarken ve yazılımdaki sıfır kayması) en çok ±2° hata ile yapılmalı: 3° komutunda gerçek açı ≥ 1° kalır, boşluk 3,76 mm'nin altına düşmez. Sıfır kayması 5°'yi geçerse (gerçek açı −2°) kol kabuğa değer; kalibrasyonu servo test cihazıyla kolu 0°'ye getirip kabuğa dokunmadığını gözle doğrulayarak yap.
 - **Gövde kabuğu:** V3 kabuğunun yan yüzü x = 152'de düz duvar varsayıldı. Omuz için kabukta Ø84 delik gerekiyor; V3 kabuğunda bu delik yok.
 - **S2 kablosu:** Göbekle birlikte dönüyor. Kanal açılmadı; gevşek bir kablo halkasıyla gövdeye girmeli.
 - **Tahmini ölçüler:** Çekiç somun 16×10×5, ısıl gömme somun M3 Ø4,6×5,7 / M5 Ø7×7, PETG baskı yoğunluğu %60. Parçalar gelince kumpasla doğrulanmalı.

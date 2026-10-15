@@ -12,7 +12,12 @@ rehberi (Duffy seçti, 14 Ekim).
 - Ajan düzeni: iki Opus ajanı (`model: opus`, general-purpose). Biri tasarım, biri analiz + bağımsız kontrol.
   Aynı dosyaya iki ajan aynı anda dokunmaz. Ana oturum iş yapmaz; brief yazar, sonucu doğrular, kritik değeri kendisi ölçer.
 - Çalışan ajan varsa yenisini başlatma, aynı işi tekrar verme. Önce `planlama/adim*/` günlüklerine bak.
-- Git commit yok, GitHub'a gönderme yok (K5 Release taşıması ve D8 depo temizliği Duffy'ye sorulacak; dışarı gönderim).
+- **Git (Duffy, 14 Ekim: "githuba paralel git adım adım ilerledikçe push at büyük bir hata falan ile karşılaşırsak
+  geri alması kolay olsun"):** çalışma dalı `lale-duzeltme`. Her adım (ya da alt iş) doğrulanınca orkestratör o işin
+  dosyalarını commit'ler ve `git push` atar; mesaj `Lale: <adım> ...` + ne doğrulandı. Commit yalnız hiçbir ajan o
+  dosyaları düzenlemiyorken atılır; ajanlar commit atmaz. Geri alma: `git revert <commit>` (gönderilmiş geçmiş yeniden
+  yazılmaz). `main` (GitHub Pages sitesi) değişmez; dal sonunda Duffy onaylarsa squash-merge edilir (büyük dosyalar
+  main'e bir kez girer). K5 Release taşıması ve D8 depo temizliği yine Duffy'ye sorulur.
 - Sipariş, satın alma, dışarı mesaj yok. Ölçüm gerektiren iş (JGB37 durma torku, zemin sürtünmesi) ekibin; varsayımla
   ilerle, varsayımı açıkça yaz.
 - Tam çakışma taraması ve ana montaj yalnız 6. adımda, bir kez.
@@ -23,11 +28,11 @@ rehberi (Duffy seçti, 14 Ekim).
 | Sıra | İş | Durum | Not |
 |---|---|---|---|
 | 1 | 1. adım (M2, M3, M5, M8, C1–C3, C6, D3) | ✅ V kontrolü geçti | `planlama/adim1/` |
-| 1b | G takip (kelepçe yarığı, eski sınır kodu, ≥0,5 kontrolleri, kabuk cam) | 🔄 Opus-1 | Windows güncellemesiyle kesilmişti |
-| 2a | M1 kol kablo yolu (omuz, dirsek, kabuk) | 🔄 Opus-1 (G'den sonra) | `planlama/adim2/M1-kablo-yolu.md` |
-| 2b | M4 omuz baskı analizi | 🔄 Opus-2 | `planlama/adim2/M4-omuz-baski.md`; M1 omuzu değiştirirse yeniden koşulur |
-| 2c | Opus-2: G + M1 bağımsız kontrol | ⏳ | Opus-1 bitince |
-| 3 | E0 (+K1 varsayımla), E1–E4, E7 taban ve güç **+ K4: Pi 5 kafaya** (kafa CAD, havalandırma, boyun kabloları, 12→5 V) | ⏳ | K4 kararı 14 Ekim: evet |
+| 1b | G takip (kelepçe yarığı, eski sınır kodu, ≥0,5 kontrolleri, kabuk cam) | ✅ Opus-1 (kontrol bekliyor) | yarık 2→4 mm, ön yük +0,137 |
+| 2a | M1 kol kablo yolu (omuz, dirsek, kabuk) | ◐ dirsek + S2 tamam; **S1 (Ø84) açık** | `planlama/adim2/M1-kablo-yolu.md`, `dirsek/kablo_yolu.py`. S1: Opus-2 seçenekleri değerlendiriyor → orkestratör karar → tasarım ajanı uygular |
+| 2b | M4 omuz baskı analizi | ✅ `25de259` | 6/10 parça desteksiz basılamıyor (yuva, göbek, çatal). M1 omuzu değiştirirse betik yeniden koşulur. Açık: `omuz_parcalar.py` kütleyi %60 dolulukla hesaplıyor (kol başına 43–58 g eksik), FCStd'de 4 parça malzemesi PETG yazıyor (PETG-CF olmalı), yatay ısıl gömme kuponu yok → 2c/3–5. adımlarda ele alınacak; baskı listesi düzeltmeleri 5. adım (D6) |
+| 2c | Opus-2: G + M1 bağımsız kontrol + S1 değerlendirme + tüp baskı yeniden koşu | 🔄 Opus-2 | `planlama/adim2/K-kontrol.md`; geçerse G+M1 commit |
+| 3 | E0 (+K1 varsayımla), E1–E4, E7 taban ve güç **+ K4: Pi 5 kafaya** (kafa CAD, havalandırma, boyun kabloları, 12→5 V) | 🔄 Opus-3 (15 Ekim 03:40) | `planlama/adim3/T-taban-guc-pi.md`; dosyalar: taban/, kafa/, arayuz taban/kafa bölümü, maliyet.json |
 | 4 | M6 montaj sırası ve erişim, M7 kupon | ⏳ | Rehbere girdi olur |
 | 5 | B1, B2, E8, E9, D6 malzeme ve plan | ⏳ | |
 | 6 | Bütün modüller yeniden üretilir → C7 tam tarama (C5 ile) → D4 regresyon → D5 | ⏳ | Makine ~1,5 sa |
@@ -37,3 +42,10 @@ rehberi (Duffy seçti, 14 Ekim).
 
 ## Günlük
 - 2026-10-14 22:45 Döngü kuruldu. Opus-1 (G + M1) ve Opus-2 (M4) çalışıyor. K4 = Pi kafada.
+- 2026-10-14 22:55 `lale-duzeltme` dalı açıldı, `c531c59` gönderildi (11 Ekim planları + 1. adımın ajan dışı kısmı).
+  Ajanların dosyaları (arayuz, dirsek, omuz, kabuk, iskelet_montaj, eklem_dogrulama, montaj_gorsel, adim2, G-takip)
+  2. adım kaydına girecek. 11 Ekim'den kalmış boş `.git/index.lock` silindi.
+- 2026-10-14 23:05 M4 bitti, `25de259`. G'nin dört maddesi Opus-1 günlüğünde tamam (doğrulanmadı).
+- 2026-10-14 ~23:50 Opus-1 M1 ortasında oturum limitine takıldı (yenilenme 03:30).
+- 2026-10-15 03:31 Opus-1 SendMessage ile devam ettirildi (aynı ajan, günlüğünden).
+- 2026-10-15 03:40 Opus-1 bitti (G tamam, M1 dirsek+S2 tamam, S1 açık). Opus-2 kontrol + S1 değerlendirme; Opus-3 (yeni, taze bağlam) 3. adım. S1 tasarımı Opus-2 önerisinden sonra.

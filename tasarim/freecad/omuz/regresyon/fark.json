@@ -1,54 +1,19 @@
 {
- "hepsi_ayni": true,
+ "hepsi_ayni": false,
  "satirlar": [
   {
    "olcut": "parca sayisi",
    "once": 70,
-   "sonra": 70,
-   "fark": 0.0,
-   "ayni": true
+   "sonra": 66,
+   "fark": 4.0,
+   "ayni": false
   },
   {
    "olcut": "parca adlari ve sirasi",
    "once": 70,
-   "sonra": 70,
+   "sonra": 66,
    "fark": null,
-   "ayni": true
-  },
-  {
-   "olcut": "parca hacmi (en buyuk fark, mm3)",
-   "once": 799446.104,
-   "sonra": 799446.104,
-   "fark": 0.0,
-   "ayni": true
-  },
-  {
-   "olcut": "sinir kutusu (en buyuk fark, mm)",
-   "once": "70 x 6 deger",
-   "sonra": "70 x 6 deger",
-   "fark": 0.0,
-   "ayni": true
-  },
-  {
-   "olcut": "parca kutlesi (en buyuk fark, g)",
-   "once": 855.797,
-   "sonra": 855.797,
-   "fark": 0.0,
-   "ayni": true
-  },
-  {
-   "olcut": "agirlik merkezi (en buyuk fark, mm)",
-   "once": "70 x 3",
-   "sonra": "70 x 3",
-   "fark": 0.0,
-   "ayni": true
-  },
-  {
-   "olcut": "kati sayisi + isValid",
-   "once": "hepsi 1 / gecerli",
-   "sonra": "hepsi 1 / gecerli",
-   "fark": null,
-   "ayni": true
+   "ayni": false
   },
   {
    "olcut": "statik cakisma",
@@ -101,17 +66,17 @@
   },
   {
    "olcut": "tork tablosu (875 poz, en buyuk fark kg*cm)",
-   "once": 5.740694416,
-   "sonra": 5.740694416,
+   "once": 5.722398563,
+   "sonra": 5.722398563,
    "fark": 0.0,
    "ayni": true
   },
   {
    "olcut": "BOM",
    "once": 17,
-   "sonra": 17,
+   "sonra": 16,
    "fark": null,
-   "ayni": true
+   "ayni": false
   }
  ]
 }

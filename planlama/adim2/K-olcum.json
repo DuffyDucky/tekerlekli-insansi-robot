@@ -1,0 +1,1353 @@
+{
+ "tarih": "2026-10-15T03:39:19",
+ "girdi": {
+  "dirsek/dirsek-montaj.FCStd": "2026-10-14T23:46:56",
+  "omuz/omuz-montaj.FCStd": "2026-10-14T23:48:08",
+  "iskelet/iskelet-montaj.FCStd": "2026-10-14T22:41:40",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-14T23:56:48"
+ },
+ "kelepce": {
+  "kesitler": {
+   "-118.0": {
+    "yarik_duz_kenar_x": [
+     183.0,
+     187.0
+    ],
+    "yarik_mm": 4.0,
+    "r_bilezik_ic": 28.25,
+    "ic_yay_bosluk_mm": 4.0033,
+    "r_pim": 25.4
+   },
+   "-127.0": {
+    "yarik_duz_kenar_x": [
+     183.0,
+     187.0
+    ],
+    "yarik_mm": 4.0,
+    "r_bilezik_ic": 28.25,
+    "ic_yay_bosluk_mm": 4.0033,
+    "r_pim": 25.4
+   },
+   "-136.0": {
+    "yarik_duz_kenar_x": [
+     183.0,
+     187.0
+    ],
+    "yarik_mm": 4.0,
+    "r_bilezik_ic": 28.25,
+    "ic_yay_bosluk_mm": 4.0033,
+    "r_pim": 25.4
+   }
+  },
+  "r_tup_dis": 28.0,
+  "r_tup_ic": 25.65,
+  "yarik_mm": 4.0,
+  "kapanma_mm": 0.6366,
+  "toplam_bosluk_mm": 0.5,
+  "on_yuk_mm": 0.1366,
+  "sart": 0.1,
+  "gecti": true,
+  "dogrusal_dagilim": {
+   "not_": "yarik y -140'ta alin kapagina bagli: kapanma kokte 0, uc (y -114) 0,637 varsayimi",
+   "tupe_degme_basi_y": -129.8,
+   "pime_bastirma_basi_y": -119.6,
+   "pime_bastiran_boy_mm": 5.6,
+   "bilezik_boy_mm": 26.0,
+   "civata_y": [
+    -121.0,
+    -132.0
+   ]
+  }
+ },
+ "m6": {
+  "omuz": [
+   {
+    "civata": "Yuva baglanti civatasi M6x16",
+    "somun": "Cekic somun M6 (kanal 10)",
+    "somun_gecme_mm": 1.7,
+    "kanal_tabani_pay_mm": 0.8,
+    "taban_parca": "Omuz traversi (sigma 40x40 agir, 200 mm)"
+   },
+   {
+    "civata": "Yuva baglanti civatasi M6x001",
+    "somun": "Cekic somun M6 (kanal 10)001",
+    "somun_gecme_mm": 1.7,
+    "kanal_tabani_pay_mm": 0.8,
+    "taban_parca": "Omuz traversi (sigma 40x40 agir, 200 mm)"
+   },
+   {
+    "civata": "Yuva baglanti civatasi M6x002",
+    "somun": "Cekic somun M6 (kanal 10)002",
+    "somun_gecme_mm": 1.7,
+    "kanal_tabani_pay_mm": 0.8,
+    "taban_parca": "Omuz traversi (sigma 40x40 agir, 200 mm)"
+   },
+   {
+    "civata": "Yuva baglanti civatasi M6x003",
+    "somun": "Cekic somun M6 (kanal 10)003",
+    "somun_gecme_mm": 1.7,
+    "kanal_tabani_pay_mm": 0.8,
+    "taban_parca": "Omuz traversi (sigma 40x40 agir, 200 mm)"
+   }
+  ],
+  "iskelet": [
+   {
+    "civata": "Civata M6x16 (Direk-ray sag, ayak A)",
+    "somun": "Cekic somun M6 (Direk-ray sag, ayak A)",
+    "somun_gecme_mm": 0.6,
+    "kanal_tabani_pay_mm": 1.9,
+    "taban_parca": "Sase ara rayi orta"
+   },
+   {
+    "civata": "Civata M6x16 (Direk-ray sag, ayak B)",
+    "somun": "Cekic somun M6 (Direk-ray sag, ayak B)",
+    "somun_gecme_mm": 0.6,
+    "kanal_tabani_pay_mm": 1.9,
+    "taban_parca": "Govde diregi"
+   },
+   {
+    "civata": "Civata M6x16 (Direk-ray sol, ayak A)",
+    "somun": "Cekic somun M6 (Direk-ray sol, ayak A)",
+    "somun_gecme_mm": 0.6,
+    "kanal_tabani_pay_mm": 1.9,
+    "taban_parca": "Sase ara rayi orta"
+   },
+   {
+    "civata": "Civata M6x16 (Direk-ray sol, ayak B)",
+    "somun": "Cekic somun M6 (Direk-ray sol, ayak B)",
+    "somun_gecme_mm": 0.6,
+    "kanal_tabani_pay_mm": 1.9,
+    "taban_parca": "Govde diregi"
+   },
+   {
+    "civata": "Civata M6x16 (Direk-travers sag, ayak A)",
+    "somun": "Cekic somun M6 (Direk-travers sag, ayak A)",
+    "somun_gecme_mm": 0.6,
+    "kanal_tabani_pay_mm": 1.9,
+    "taban_parca": "Omuz traversi"
+   },
+   {
+    "civata": "Civata M6x16 (Direk-travers sag, ayak B)",
+    "somun": "Cekic somun M6 (Direk-travers sag, ayak B)",
+    "somun_gecme_mm": 0.6,
+    "kanal_tabani_pay_mm": 1.9,
+    "taban_parca": "Govde diregi"
+   },
+   {
+    "civata": "Civata M6x16 (Direk-travers sol, ayak A)",
+    "somun": "Cekic somun M6 (Direk-travers sol, ayak A)",
+    "somun_gecme_mm": 0.6,
+    "kanal_tabani_pay_mm": 1.9,
+    "taban_parca": "Omuz traversi"
+   },
+   {
+    "civata": "Civata M6x16 (Direk-travers sol, ayak B)",
+    "somun": "Cekic somun M6 (Direk-travers sol, ayak B)",
+    "somun_gecme_mm": 0.6,
+    "kanal_tabani_pay_mm": 1.9,
+    "taban_parca": "Govde diregi"
+   }
+  ],
+  "kabuk": [
+   {
+    "civata": "Civata M6x14 (Govde braketi sag y400)",
+    "somun": "Cekic somun M6 (Govde braketi sag y400)",
+    "somun_gecme_mm": 1.7,
+    "kanal_tabani_pay_mm": 0.8,
+    "taban_parca": "Govde diregi"
+   },
+   {
+    "civata": "Civata M6x14 (Govde braketi sag y400)001",
+    "somun": "Cekic somun M6 (Govde braketi sag y400)001",
+    "somun_gecme_mm": 1.7,
+    "kanal_tabani_pay_mm": 0.8,
+    "taban_parca": "Govde diregi"
+   },
+   {
+    "civata": "Civata M6x14 (Govde braketi sol y400)",
+    "somun": "Cekic somun M6 (Govde braketi sol y400)",
+    "somun_gecme_mm": 1.7,
+    "kanal_tabani_pay_mm": 0.8,
+    "taban_parca": "Govde diregi"
+   },
+   {
+    "civata": "Civata M6x14 (Govde braketi sol y400)001",
+    "somun": "Cekic somun M6 (Govde braketi sol y400)001",
+    "somun_gecme_mm": 1.7,
+    "kanal_tabani_pay_mm": 0.8,
+    "taban_parca": "Govde diregi"
+   },
+   {
+    "civata": "Civata M6x14 (Govde braketi sag y780)",
+    "somun": "Cekic somun M6 (Govde braketi sag y780)",
+    "somun_gecme_mm": 1.7,
+    "kanal_tabani_pay_mm": 0.8,
+    "taban_parca": "Govde diregi"
+   },
+   {
+    "civata": "Civata M6x14 (Govde braketi sag y780)001",
+    "somun": "Cekic somun M6 (Govde braketi sag y780)001",
+    "somun_gecme_mm": 1.7,
+    "kanal_tabani_pay_mm": 0.8,
+    "taban_parca": "Govde diregi"
+   },
+   {
+    "civata": "Civata M6x14 (Govde braketi sol y780)",
+    "somun": "Cekic somun M6 (Govde braketi sol y780)",
+    "somun_gecme_mm": 1.7,
+    "kanal_tabani_pay_mm": 0.8,
+    "taban_parca": "Govde diregi"
+   },
+   {
+    "civata": "Civata M6x14 (Govde braketi sol y780)001",
+    "somun": "Cekic somun M6 (Govde braketi sol y780)001",
+    "somun_gecme_mm": 1.7,
+    "kanal_tabani_pay_mm": 0.8,
+    "taban_parca": "Govde diregi"
+   },
+   {
+    "civata": "Civata M6x14 (Etek braketi sag z-105)",
+    "somun": "Cekic somun M6 (Etek braketi sag z-105)",
+    "somun_gecme_mm": 1.1,
+    "kanal_tabani_pay_mm": 1.4,
+    "taban_parca": "Sase uzun rayi sag"
+   },
+   {
+    "civata": "Civata M6x14 (Etek braketi sol z-105)",
+    "somun": "Cekic somun M6 (Etek braketi sol z-105)",
+    "somun_gecme_mm": 1.1,
+    "kanal_tabani_pay_mm": 1.4,
+    "taban_parca": "Sase uzun rayi sol"
+   },
+   {
+    "civata": "Civata M6x14 (Etek braketi sag z+0)",
+    "somun": "Cekic somun M6 (Etek braketi sag z+0)",
+    "somun_gecme_mm": 1.1,
+    "kanal_tabani_pay_mm": 1.4,
+    "taban_parca": "Sase uzun rayi sag"
+   },
+   {
+    "civata": "Civata M6x14 (Etek braketi sol z+0)",
+    "somun": "Cekic somun M6 (Etek braketi sol z+0)",
+    "somun_gecme_mm": 1.1,
+    "kanal_tabani_pay_mm": 1.4,
+    "taban_parca": "Sase uzun rayi sol"
+   },
+   {
+    "civata": "Civata M6x14 (Etek braketi sag z+105)",
+    "somun": "Cekic somun M6 (Etek braketi sag z+105)",
+    "somun_gecme_mm": 1.1,
+    "kanal_tabani_pay_mm": 1.4,
+    "taban_parca": "Sase uzun rayi sag"
+   },
+   {
+    "civata": "Civata M6x14 (Etek braketi sol z+105)",
+    "somun": "Cekic somun M6 (Etek braketi sol z+105)",
+    "somun_gecme_mm": 1.1,
+    "kanal_tabani_pay_mm": 1.4,
+    "taban_parca": "Sase uzun rayi sol"
+   }
+  ],
+  "sart_mm": 0.5,
+  "profil_sayisi": {
+   "omuz": 1,
+   "iskelet": 7
+  }
+ },
+ "kabuk_cam": {
+  "cam_en_yakin": [
+   [
+    0.1022,
+    "Gogus bandi sag"
+   ],
+   [
+    0.1022,
+    "Gogus bandi sol"
+   ],
+   [
+    0.1022,
+    "Omuz bandi sag"
+   ],
+   [
+    0.1022,
+    "Omuz bandi sol"
+   ]
+  ],
+  "nextion_tum_en_yakin": [
+   [
+    0.0,
+    "Gogus bandi sag"
+   ],
+   [
+    0.0,
+    "Gogus bandi sol"
+   ],
+   [
+    0.1022,
+    "Omuz bandi sag"
+   ],
+   [
+    0.1022,
+    "Omuz bandi sol"
+   ]
+  ],
+  "pcb_arka_alan": 39073.3,
+  "cam_hacim": 280292.4
+ },
+ "gecit": {
+  "catal_delik_cap": 10.0,
+  "jr_kosegen": 8.365,
+  "delik_pay": 1.635,
+  "tup_pencere_kutusu": [
+   [
+    180.0,
+    190.0,
+    -89.0,
+    -65.0
+   ],
+   [
+    183.3,
+    186.7,
+    -51.7,
+    -48.3
+   ]
+  ],
+  "tup_pencere": {
+   "jr_gecen_boy_mm": 15.6,
+   "en_genis_mm": 10.0
+  },
+  "tup_ic_cap": 51.3,
+  "iki_eslesik_jr_kosegen": 13.04
+ },
+ "kablo": {
+  "dirsek_lop": {
+   "ad": "dirsek lopu",
+   "L": 120.0,
+   "M_aci_sapma": 0.0,
+   "N": 150,
+   "r_min": 13.03,
+   "r_min_poz": 105.0,
+   "yakinsadi": true,
+   "pozlar": [
+    {
+     "poz": 0.0,
+     "r_min": 13.2,
+     "enerji": 0.1869,
+     "yakinsadi": true,
+     "k": 0,
+     "toplam_donus_derece": -180.0,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 46.2
+    },
+    {
+     "poz": 2.5,
+     "r_min": 13.4,
+     "enerji": 0.1816,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -182.5,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 46.5
+    },
+    {
+     "poz": 5.0,
+     "r_min": 13.62,
+     "enerji": 0.1764,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -185.0,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 46.9
+    },
+    {
+     "poz": 7.5,
+     "r_min": 13.85,
+     "enerji": 0.1714,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -187.5,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 47.3
+    },
+    {
+     "poz": 10.0,
+     "r_min": 14.09,
+     "enerji": 0.1666,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -190.0,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 47.7
+    },
+    {
+     "poz": 12.5,
+     "r_min": 14.34,
+     "enerji": 0.162,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -192.5,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 48.0
+    },
+    {
+     "poz": 15.0,
+     "r_min": 14.61,
+     "enerji": 0.1576,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -195.0,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 48.4
+    },
+    {
+     "poz": 17.5,
+     "r_min": 14.89,
+     "enerji": 0.1534,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -197.5,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 48.7
+    },
+    {
+     "poz": 20.0,
+     "r_min": 15.18,
+     "enerji": 0.1494,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -200.0,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 49.1
+    },
+    {
+     "poz": 22.5,
+     "r_min": 15.49,
+     "enerji": 0.1457,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -202.5,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 49.4
+    },
+    {
+     "poz": 25.0,
+     "r_min": 15.81,
+     "enerji": 0.1423,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -205.0,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 49.8
+    },
+    {
+     "poz": 27.5,
+     "r_min": 16.15,
+     "enerji": 0.1391,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -207.5,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 50.1
+    },
+    {
+     "poz": 30.0,
+     "r_min": 16.5,
+     "enerji": 0.1362,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -210.0,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 50.4
+    },
+    {
+     "poz": 32.5,
+     "r_min": 16.87,
+     "enerji": 0.1336,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -212.5,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 50.8
+    },
+    {
+     "poz": 35.0,
+     "r_min": 17.26,
+     "enerji": 0.1312,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -215.0,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 51.1
+    },
+    {
+     "poz": 37.5,
+     "r_min": 17.65,
+     "enerji": 0.1292,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -217.5,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 51.5
+    },
+    {
+     "poz": 40.0,
+     "r_min": 18.07,
+     "enerji": 0.1274,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -220.0,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 51.9
+    },
+    {
+     "poz": 42.5,
+     "r_min": 18.5,
+     "enerji": 0.126,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -222.5,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 52.3
+    },
+    {
+     "poz": 45.0,
+     "r_min": 18.95,
+     "enerji": 0.1248,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -225.0,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 52.6
+    },
+    {
+     "poz": 47.5,
+     "r_min": 19.41,
+     "enerji": 0.124,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -227.5,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 53.0
+    },
+    {
+     "poz": 50.0,
+     "r_min": 19.88,
+     "enerji": 0.1235,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -230.0,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 53.5
+    },
+    {
+     "poz": 52.5,
+     "r_min": 20.37,
+     "enerji": 0.1233,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -232.5,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 53.9
+    },
+    {
+     "poz": 55.0,
+     "r_min": 20.86,
+     "enerji": 0.1234,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -235.0,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 54.3
+    },
+    {
+     "poz": 57.5,
+     "r_min": 21.35,
+     "enerji": 0.1239,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -237.5,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 54.8
+    },
+    {
+     "poz": 60.0,
+     "r_min": 21.84,
+     "enerji": 0.1247,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -240.0,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 55.3
+    },
+    {
+     "poz": 62.5,
+     "r_min": 22.29,
+     "enerji": 0.1258,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -242.5,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 55.8
+    },
+    {
+     "poz": 65.0,
+     "r_min": 22.68,
+     "enerji": 0.1272,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -245.0,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 56.3
+    },
+    {
+     "poz": 67.5,
+     "r_min": 22.96,
+     "enerji": 0.129,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -247.5,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 56.9
+    },
+    {
+     "poz": 70.0,
+     "r_min": 23.05,
+     "enerji": 0.131,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -250.0,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 57.5
+    },
+    {
+     "poz": 72.5,
+     "r_min": 22.84,
+     "enerji": 0.1335,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -252.5,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 58.1
+    },
+    {
+     "poz": 75.0,
+     "r_min": 22.27,
+     "enerji": 0.1362,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -255.0,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 58.7
+    },
+    {
+     "poz": 77.5,
+     "r_min": 21.41,
+     "enerji": 0.1393,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -257.5,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 59.3
+    },
+    {
+     "poz": 80.0,
+     "r_min": 20.4,
+     "enerji": 0.1427,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -260.0,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 59.9
+    },
+    {
+     "poz": 82.5,
+     "r_min": 19.39,
+     "enerji": 0.1464,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -262.5,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 60.6
+    },
+    {
+     "poz": 85.0,
+     "r_min": 18.42,
+     "enerji": 0.1505,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -265.0,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 61.2
+    },
+    {
+     "poz": 87.5,
+     "r_min": 17.52,
+     "enerji": 0.1548,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -267.5,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 61.9
+    },
+    {
+     "poz": 90.0,
+     "r_min": 16.69,
+     "enerji": 0.1595,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -270.0,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 62.6
+    },
+    {
+     "poz": 92.5,
+     "r_min": 15.94,
+     "enerji": 0.1645,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -272.5,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 63.2
+    },
+    {
+     "poz": 95.0,
+     "r_min": 15.26,
+     "enerji": 0.1698,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -275.0,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 63.9
+    },
+    {
+     "poz": 97.5,
+     "r_min": 14.63,
+     "enerji": 0.1755,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -277.5,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 64.5
+    },
+    {
+     "poz": 100.0,
+     "r_min": 14.05,
+     "enerji": 0.1814,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -280.0,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 65.2
+    },
+    {
+     "poz": 102.5,
+     "r_min": 13.52,
+     "enerji": 0.1876,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -282.5,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 65.9
+    },
+    {
+     "poz": 105.0,
+     "r_min": 13.03,
+     "enerji": 0.1941,
+     "yakinsadi": true,
+     "k": -1,
+     "toplam_donus_derece": -285.0,
+     "bosluk": 0.61,
+     "en_yakin": "On kol govdesi",
+     "uzak_mm": 66.5
+    }
+   ],
+   "en_kucuk_bosluk": 0.61,
+   "en_yakin": "On kol govdesi",
+   "en_yakin_poz": 105.0
+  },
+  "s2_lop": {
+   "ad": "S2 lopu",
+   "L": 80.0,
+   "M_aci_sapma": 0.0,
+   "N": 150,
+   "r_min": 12.39,
+   "r_min_poz": 120,
+   "yakinsadi": true,
+   "pozlar": [
+    {
+     "poz": 3.0,
+     "r_min": 12.64,
+     "enerji": 0.1056,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 177.0,
+     "bosluk": 1.57,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 34.2
+    },
+    {
+     "poz": 6,
+     "r_min": 12.79,
+     "enerji": 0.1032,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 174.0,
+     "bosluk": 2.04,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 34.4
+    },
+    {
+     "poz": 9,
+     "r_min": 12.93,
+     "enerji": 0.1008,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 171.0,
+     "bosluk": 2.4,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 34.7
+    },
+    {
+     "poz": 12,
+     "r_min": 13.07,
+     "enerji": 0.0986,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 168.0,
+     "bosluk": 2.67,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 34.9
+    },
+    {
+     "poz": 15,
+     "r_min": 13.21,
+     "enerji": 0.0965,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 165.0,
+     "bosluk": 2.84,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 35.4
+    },
+    {
+     "poz": 18,
+     "r_min": 13.34,
+     "enerji": 0.0944,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 162.0,
+     "bosluk": 2.93,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 36.4
+    },
+    {
+     "poz": 21,
+     "r_min": 13.47,
+     "enerji": 0.0925,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 159.0,
+     "bosluk": 2.95,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 37.3
+    },
+    {
+     "poz": 24,
+     "r_min": 13.59,
+     "enerji": 0.0906,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 156.0,
+     "bosluk": 2.96,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 38.3
+    },
+    {
+     "poz": 27,
+     "r_min": 13.71,
+     "enerji": 0.0889,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 153.0,
+     "bosluk": 2.98,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 39.2
+    },
+    {
+     "poz": 30,
+     "r_min": 13.82,
+     "enerji": 0.0873,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 150.0,
+     "bosluk": 3.0,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 40.0
+    },
+    {
+     "poz": 33,
+     "r_min": 13.93,
+     "enerji": 0.0857,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 147.0,
+     "bosluk": 3.01,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 40.9
+    },
+    {
+     "poz": 36,
+     "r_min": 14.03,
+     "enerji": 0.0843,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 144.0,
+     "bosluk": 3.03,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 41.7
+    },
+    {
+     "poz": 39,
+     "r_min": 14.12,
+     "enerji": 0.083,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 141.0,
+     "bosluk": 3.05,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 42.5
+    },
+    {
+     "poz": 42,
+     "r_min": 14.2,
+     "enerji": 0.0818,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 138.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 43.3
+    },
+    {
+     "poz": 45,
+     "r_min": 14.28,
+     "enerji": 0.0808,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 135.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 44.0
+    },
+    {
+     "poz": 48,
+     "r_min": 14.34,
+     "enerji": 0.0798,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 132.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 44.7
+    },
+    {
+     "poz": 51,
+     "r_min": 14.39,
+     "enerji": 0.079,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 129.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 45.4
+    },
+    {
+     "poz": 54,
+     "r_min": 14.44,
+     "enerji": 0.0784,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 126.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 46.1
+    },
+    {
+     "poz": 57,
+     "r_min": 14.47,
+     "enerji": 0.0778,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 123.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 46.7
+    },
+    {
+     "poz": 60,
+     "r_min": 14.49,
+     "enerji": 0.0775,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 120.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 47.3
+    },
+    {
+     "poz": 63,
+     "r_min": 14.5,
+     "enerji": 0.0772,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 117.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 47.8
+    },
+    {
+     "poz": 66,
+     "r_min": 14.5,
+     "enerji": 0.0772,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 114.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 48.3
+    },
+    {
+     "poz": 69,
+     "r_min": 14.48,
+     "enerji": 0.0773,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 111.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 48.8
+    },
+    {
+     "poz": 72,
+     "r_min": 14.45,
+     "enerji": 0.0775,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 108.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 49.3
+    },
+    {
+     "poz": 75,
+     "r_min": 14.41,
+     "enerji": 0.078,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 105.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 49.7
+    },
+    {
+     "poz": 78,
+     "r_min": 14.35,
+     "enerji": 0.0786,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 102.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 50.1
+    },
+    {
+     "poz": 81,
+     "r_min": 14.29,
+     "enerji": 0.0795,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 99.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 50.5
+    },
+    {
+     "poz": 84,
+     "r_min": 14.2,
+     "enerji": 0.0805,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 96.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 50.8
+    },
+    {
+     "poz": 87,
+     "r_min": 14.11,
+     "enerji": 0.0818,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 93.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 51.1
+    },
+    {
+     "poz": 90,
+     "r_min": 14.01,
+     "enerji": 0.0833,
+     "yakinsadi": true,
+     "k": 1,
+     "toplam_donus_derece": 90.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 51.3
+    },
+    {
+     "poz": 93,
+     "r_min": 13.89,
+     "enerji": 0.085,
+     "yakinsadi": true,
+     "k": 0,
+     "toplam_donus_derece": 87.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 51.6
+    },
+    {
+     "poz": 96,
+     "r_min": 13.76,
+     "enerji": 0.087,
+     "yakinsadi": true,
+     "k": 0,
+     "toplam_donus_derece": 84.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 51.7
+    },
+    {
+     "poz": 99,
+     "r_min": 13.62,
+     "enerji": 0.0892,
+     "yakinsadi": true,
+     "k": 0,
+     "toplam_donus_derece": 81.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 51.9
+    },
+    {
+     "poz": 102,
+     "r_min": 13.47,
+     "enerji": 0.0917,
+     "yakinsadi": true,
+     "k": 0,
+     "toplam_donus_derece": 78.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 52.0
+    },
+    {
+     "poz": 105,
+     "r_min": 13.31,
+     "enerji": 0.0945,
+     "yakinsadi": true,
+     "k": 0,
+     "toplam_donus_derece": 75.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 52.1
+    },
+    {
+     "poz": 108,
+     "r_min": 13.14,
+     "enerji": 0.0976,
+     "yakinsadi": true,
+     "k": 0,
+     "toplam_donus_derece": 72.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 52.1
+    },
+    {
+     "poz": 111,
+     "r_min": 12.96,
+     "enerji": 0.1009,
+     "yakinsadi": true,
+     "k": 0,
+     "toplam_donus_derece": 69.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 52.2
+    },
+    {
+     "poz": 114,
+     "r_min": 12.77,
+     "enerji": 0.1046,
+     "yakinsadi": true,
+     "k": 0,
+     "toplam_donus_derece": 66.0,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "uzak_mm": 52.1
+    },
+    {
+     "poz": 117,
+     "r_min": 12.58,
+     "enerji": 0.1086,
+     "yakinsadi": true,
+     "k": 0,
+     "toplam_donus_derece": 63.0,
+     "bosluk": 2.89,
+     "en_yakin": "Kapak civatasi M3x002 (S1 0)",
+     "uzak_mm": 52.1
+    },
+    {
+     "poz": 120,
+     "r_min": 12.39,
+     "enerji": 0.1129,
+     "yakinsadi": true,
+     "k": 0,
+     "toplam_donus_derece": 60.0,
+     "bosluk": 2.45,
+     "en_yakin": "Kapak civatasi M3x002 (S1 0)",
+     "uzak_mm": 52.0
+    }
+   ],
+   "en_kucuk_bosluk": 1.57,
+   "en_yakin": "Kol catali",
+   "en_yakin_poz": 3.0
+  },
+  "duyarlilik": [
+   {
+    "lop": "dirsek",
+    "L": 110.0,
+    "M_aci": 0,
+    "r_min": 10.83,
+    "poz": 105.0,
+    "yakinsadi": true
+   },
+   {
+    "lop": "dirsek",
+    "L": 130.0,
+    "M_aci": 0,
+    "r_min": 14.08,
+    "poz": 0.0,
+    "yakinsadi": true
+   },
+   {
+    "lop": "dirsek",
+    "L": 120.0,
+    "M_aci": -15,
+    "r_min": 12.44,
+    "poz": 0.0,
+    "yakinsadi": true
+   },
+   {
+    "lop": "dirsek",
+    "L": 120.0,
+    "M_aci": 15,
+    "r_min": 11.58,
+    "poz": 105.0,
+    "yakinsadi": true
+   },
+   {
+    "lop": "S2",
+    "L": 70.0,
+    "M_aci": 0,
+    "r_min": 12.22,
+    "poz": 3.0,
+    "yakinsadi": true
+   },
+   {
+    "lop": "S2",
+    "L": 90.0,
+    "M_aci": 0,
+    "r_min": 12.36,
+    "poz": 117,
+    "yakinsadi": true
+   },
+   {
+    "lop": "S2",
+    "L": 80.0,
+    "M_aci": -15,
+    "r_min": 13.56,
+    "poz": 117,
+    "yakinsadi": true
+   },
+   {
+    "lop": "S2",
+    "L": 80.0,
+    "M_aci": 15,
+    "r_min": 11.69,
+    "poz": 3.0,
+    "yakinsadi": true
+   }
+  ],
+  "sinir": {
+   "r_7_5d_2serit": 11.2,
+   "r_10d_2serit": 14.7,
+   "r_7_5d_kalin_1_8": 14.4,
+   "not_": "2 serit demet: merkez cizgisi sinir = kat x t + (n-1) t / 2"
+  },
+  "kabuk_gercek_dahil": "S2 lopu govde listesinde kabuk omuz bandi sag + gogus bandi sag (global -> omuz yereli), S1 -45...135 (15)"
+ },
+ "boy": {
+  "dirsek_gerek": 197.6,
+  "bilek_gerek": 267.1,
+  "dirsek_artan": 102.4,
+  "bilek_artan": 32.9,
+  "jr_govde_dusulunce": {
+   "dirsek": 88.4,
+   "bilek": 18.9
+  },
+  "cikis_noktasi_servoya_uzaklik": {
+   "dirsek": 0.5,
+   "bilek": 0.5
+  }
+ },
+ "sure_s": 441.2
+}

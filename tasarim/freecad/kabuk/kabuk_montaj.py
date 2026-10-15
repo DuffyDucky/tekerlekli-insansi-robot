@@ -1,9 +1,9 @@
 # Kabuk modulu (V3) - montaj, kontroller, baski analizi, FCStd + STEP + BOM + analiz json
 # Calistir (yolda "ü" oldugu icin ASCII baslaticiyla): FC_SCRIPT=<bu dosya> freecadcmd run_fc.py
 # Kontroller: her parca isValid + tek kati; kabuk ici cakisma (0,5 mm3); kabuk <-> iskelet cakisma; ayrilmis bolgeler;
-# iskelete baglanti (braket dayanmasi, cekic somun dudak altinda, civata ucu payi, eksen hizasi, isil gomme somun
+# iskelete baglanti (braket dayanmasi, cekic somun dudak altinda, M6 civata ucu: somun ustunu >= 0,5 ve kanal tabanina >= 0,5 mm, eksen hizasi, isil gomme somun
 # kavrama boyu ve dis yuzeye kalan et); bindirme ve ekran civatalari; her baski parcasi icin yaziciya sigma, baski yonu,
-# 45 derece cikinti orani, katman katman desteksiz basilabilirlik, tahmini kutle / filament / sure.
+# bindirme boslugu (dil <-> komsu dis yari >= 0,15 mm), 45 derece cikinti orani, katman katman desteksiz basilabilirlik, tahmini kutle / filament / sure.
 import os, sys, json, math, time, csv
 import FreeCAD as App
 import Part
@@ -118,7 +118,13 @@ IDX = {p["ad"]: k for k, p in enumerate(P)}
 PAR = {ad: P[d["indeks"]]["shape"] for ad, d in K.PARCA.items()}
 direk = next(q for q in I.P if q["ad"] == "Govde diregi")["shape"]
 ray = {1: next(q for q in I.P if q["ad"] == "Sase uzun rayi sag")["shape"], -1: next(q for q in I.P if q["ad"] == "Sase uzun rayi sol")["shape"]}
-somun_alti = A.LIP + A.CEKIC_SOMUN["T"]
+somun_alti = A.LIP + A.CEKIC_SOMUN["T"]      # cekic somunun kanal icindeki (tabana bakan) yuzu, profil yuzunden (9,3)
+# F (14 Ekim 2026): iskelet / taban / omuz ile ayni kalici kural. Vida ucu somun ustunu en az SOMUN_GECME gecmeli (kavrama / uc somundan
+# sivisin) ve kanal tabanina en az TABAN_PAY kalmali (uzunluk toleransinda degmesin). Bu kontrol 'degmiyor' ile yetinen eski kontrolun yerine
+# gecti: govde braketi M6x16 + pul'da uc tabana 0,4 mm kaliyordu.
+SOMUN_GECME = 0.5
+TABAN_PAY = 0.5
+m6_pay = []          # (braket, delik, uc, somun_pay, taban_pay, ok)
 bag_kontrol = []
 for b in BAG:
     k = []
@@ -137,16 +143,25 @@ for b in BAG:
     d = mesafe(br, parca)
     k.append(("braket kabuk boss'una dayali (%s)" % b["parca"], round(d, 4), d <= TEMAS))
     for i, yuz in enumerate(yuzler):
-        pul, civ, som = el[3 * i], el[3 * i + 1], el[3 * i + 2]
+        m = b["m6"][i]
+        pul, civ, som = (P[m["pul"]] if m["pul"] is not None else None), P[m["civata"]], P[m["somun"]]
         d = mesafe(som["shape"], prof)
         k.append(("M6 cekic somun dudak altina dayali", round(d, 4), d <= TEMAS))
         uc = max((yuz - v.Point).dot(nv) for v in civ["shape"].Vertexes)
-        k.append(("M6 civata ucu yuzden %.1f mm iceride (somun alti %.1f, kanal tabani %.1f)" % (uc, somun_alti, A.KANAL_TABAN),
-                  round(uc, 3), somun_alti <= uc < A.KANAL_TABAN))
+        uc_yuzden = uc          # yuz = profil yuzu (direk +-X yuzu / ray ust yuzu): uc zaten profil yuzunden derinlik
+        sp, tp = uc_yuzden - somun_alti, A.KANAL_TABAN - uc_yuzden
+        k.append(("M6 civata ucu profil yuzunden %.1f mm iceride: somun ustunu %.1f mm geciyor (sart >= %.1f), kanal tabanina %.1f mm (sart >= %.1f)"
+                  % (uc_yuzden, sp, SOMUN_GECME, tp, TABAN_PAY), round(uc_yuzden, 3), sp >= SOMUN_GECME - 1e-6 and tp >= TABAN_PAY - 1e-6))
+        m6_pay.append(dict(braket=b["ad"], tip=b["tip"], delik=i, uc_mm=round(uc_yuzden, 3), vida=civ["kod"], pul=pul is not None,
+                           somun_pay_mm=round(sp, 3), taban_pay_mm=round(tp, 3), tamam=bool(sp >= SOMUN_GECME - 1e-6 and tp >= TABAN_PAY - 1e-6)))
         ed = eksen_disi(som["shape"], yuz, nv)
         k.append(("M6 civata ekseni somun deligi ekseninde", round(ed, 4), ed < 1e-6))
-        d = mesafe(pul["shape"], br)
-        k.append(("M6 pul brakete dayali", round(d, 4), d <= TEMAS))
+        if pul is not None:
+            d = mesafe(pul["shape"], br)
+            k.append(("M6 pul brakete dayali", round(d, 4), d <= TEMAS))
+        else:
+            d = mesafe(civ["shape"], br)
+            k.append(("M6 civata (pulsuz) basi brakete dayali", round(d, 4), d <= TEMAS))
     # kabuk tarafi: isil gomme somun + civata
     ins = el[-1]
     civ = el[-2]
@@ -173,6 +188,8 @@ for b in BAG:
     k.append(("M%d isil gomme somun boss'ta oturuyor" % dmet, round(d, 4), d <= TEMAS))
     bag_kontrol.append(dict(ad=b["ad"], tip=b["tip"], parca=b["parca"], kontroller=k, tamam=all(x[2] for x in k)))
 log("braket kontrol: %d/%d tamam" % (sum(1 for s in bag_kontrol if s["tamam"]), len(bag_kontrol)))
+log("M6 vida payi: %d delik, en az somun gecme %.2f (sart >= %.1f), en az kanal tabani payi %.2f (sart >= %.1f)" % (
+    len(m6_pay), min(x["somun_pay_mm"] for x in m6_pay), SOMUN_GECME, min(x["taban_pay_mm"] for x in m6_pay), TABAN_PAY))
 
 vida_kontrol = []
 for v in VIDA:
@@ -203,7 +220,53 @@ teker_bosluk = min(PAR[ad].distToShape(box(*z["kutu"]))[0] for ad in etek_parca 
 govde_parca = [ad for ad in K.PARCA if not ad.startswith("Etek")]
 direk_bosluk = min(PAR[ad].distToShape(direk)[0] for ad in govde_parca)
 ekran_cam_bosluk = A.GOGUS_Z + A.KABUK_T / math.cos(math.radians(A.GOGUS_EGIM)) - A.KABUK_T  # yatay
-log("teker-etek %.2f mm, direk-govde %.2f mm" % (teker_bosluk, direk_bosluk))
+# Nextion cam on yuzu <-> govde kabugu (pencere cevresindeki duvar ic yuzu): geometriden olculur (eskiden elle 0,106 x cos 15)
+from ortak_lib import yerlestir
+_c = K.EO["cam"]
+cam_sh = yerlestir(box(_c[0], _c[1], _c[2], _c[3], K.w_pcb_on, 0.0), K.EKM)
+_cbb = App.BoundBox(cam_sh.BoundBox)
+_cbb.enlarge(5.0)
+cam_olcum = sorted((cam_sh.distToShape(PAR[ad])[0], ad) for ad in govde_parca if PAR[ad].BoundBox.intersect(_cbb))
+cam_duvar = cam_olcum[0][0] if cam_olcum else None
+CAM_DUVAR_MIN = 0.05     # mm: cam duvara degmemeli (temas = 0); ust sinir yok, pencere payi ayrica
+log("teker-etek %.2f mm, direk-govde %.2f mm, cam-duvar %.4f mm (%s)" % (teker_bosluk, direk_bosluk, cam_duvar, cam_olcum[0][1] if cam_olcum else "-"))
+
+# ====================================================================== 5b) bindirme boslugu (M5, 14 Ekim 2026)
+# Dil (bir parcanin ic yarisi) komsunun dis yarisinin arkasina uzanir; arayuz.KABUK_BINDIRME_BOSLUK (0,25 mm) kadar iceri cekilmistir.
+# Kontrol: dil <-> komsunun dis yarisi en kisa mesafe >= BINDIRME_BOSLUK_MIN. Iki olcum:
+#   duvar  = dil (boss ve delik oncesi sekil) <-> komsu dis yarisi: tasarlanan duvar boslugu (sart bu olcume uygulanir)
+#   son    = ayni, boss ve deliklerden sonraki gercek parcalarla: bindirme civatasi bosslari orta yuzeye kadar iner, komsunun
+#            dis yarisina dayanir (sikistirma, tasarim geregi) -> 0 beklenir, sart uygulanmaz, bilgi icin.
+BINDIRME_BOSLUK_MIN = 0.15
+ON_SEKIL = {}
+for (bant, sag), sh in K.GOVDE.items():
+    ON_SEKIL["Arka servis kapagi" if bant == "kapak" else "%s %s" % (K.GOVDE_AD[bant], "sag" if sag else "sol")] = (sh, K.S_dis)
+for (bant, sag), sh in K.ETEK.items():
+    ON_SEKIL["%s %s" % (K.ETEK_AD[bant], "sag" if sag else "sol")] = (sh, K.Se_dis)
+dis_yari = {}
+bindirme_bosluk = []
+for ad_b, (_, s_dis) in ON_SEKIL.items():
+    dis_yari[ad_b] = s_dis.common(K.DIS_HUCRE[ad_b])
+for ad_a, (sh_a, _) in ON_SEKIL.items():
+    for ad_b in ON_SEKIL:
+        if ad_a == ad_b or not ON_SEKIL[ad_a][1] is ON_SEKIL[ad_b][1]:
+            continue            # govde ve etek ayri zarflar
+        bb = App.BoundBox(PAR[ad_b].BoundBox)
+        bb.enlarge(0.5)
+        if not PAR[ad_a].BoundBox.intersect(bb):
+            continue
+        dil = sh_a.common(K.DIS_HUCRE[ad_b])
+        if dil.Volume < 1.0:
+            continue            # bu komsuya dil yok (alin birlesim)
+        d_duvar = dil.distToShape(dis_yari[ad_b])[0]
+        d_son = PAR[ad_a].common(K.DIS_HUCRE[ad_b]).distToShape(dis_yari[ad_b])[0]
+        bindirme_bosluk.append(dict(dil=ad_a, komsu=ad_b, dil_hacim_mm3=round(dil.Volume, 0), duvar_bosluk_mm=round(d_duvar, 4),
+                                    son_bosluk_mm=round(d_son, 4), tamam=d_duvar >= BINDIRME_BOSLUK_MIN - 1e-6))
+bindirme_en_az = min(b["duvar_bosluk_mm"] for b in bindirme_bosluk) if bindirme_bosluk else None
+log("bindirme boslugu: %d dil-komsu cifti, en kucuk duvar boslugu %s mm (sart >= %.2f), %d ihlal" % (
+    len(bindirme_bosluk), bindirme_en_az, BINDIRME_BOSLUK_MIN, sum(1 for b in bindirme_bosluk if not b["tamam"])))
+for b in bindirme_bosluk:
+    log("  %s -> %s: duvar %.4f, boss dahil %.4f %s" % (b["dil"], b["komsu"], b["duvar_bosluk_mm"], b["son_bosluk_mm"], "" if b["tamam"] else "IHLAL"))
 
 # ====================================================================== 6) baski analizi
 import numpy as np
@@ -356,9 +419,13 @@ out = dict(
     bolge=dict(kontrol_edilen=bolge_n, ihlal=bolge_ihlal, en_yakin=bolge_bosluk),
     baglanti=[dict(ad=b["ad"], tip=b["tip"], parca=b["parca"], govde=P[b["govde"]]["ad"], eleman=[P[i]["kod"] for i in b["eleman"]])
               for b in BAG],
-    baglanti_kontrol=bag_kontrol, vida_kontrol=vida_kontrol, ekran_kontrol=ekran_kontrol,
+    baglanti_kontrol=bag_kontrol, m6_vida_pay=dict(sart_somun_gecme_mm=SOMUN_GECME, sart_taban_pay_mm=TABAN_PAY, somun_ustu_mm=somun_alti,
+                                                  kanal_tabani_mm=A.KANAL_TABAN, kalemler=m6_pay), vida_kontrol=vida_kontrol, ekran_kontrol=ekran_kontrol,
     bosluk=dict(teker_etek_mm=round(teker_bosluk, 2), direk_govde_mm=round(direk_bosluk, 2),
-                cam_duvar_mm=round(0.106 * math.cos(math.radians(A.GOGUS_EGIM)), 3)),
+                cam_duvar_mm=round(cam_duvar, 3), cam_duvar_parca=[[ad, round(d, 4)] for d, ad in cam_olcum[:3]],
+                cam_duvar_sart_mm=CAM_DUVAR_MIN, cam_duvar_ok=bool(cam_duvar is not None and cam_duvar >= CAM_DUVAR_MIN)),
+    bindirme_bosluk=dict(sart_min_mm=BINDIRME_BOSLUK_MIN, tasarim_mm=A.KABUK_BINDIRME_BOSLUK, en_az_mm=bindirme_en_az,
+                         ihlal=[b for b in bindirme_bosluk if not b['tamam']], ciftler=bindirme_bosluk),
     baski=baski,
     yazici=dict(A.YAZICI),
     kutle_g=round(M, 1), kutle_grup={k: round(v, 1) for k, v in kutle_grup.items()},

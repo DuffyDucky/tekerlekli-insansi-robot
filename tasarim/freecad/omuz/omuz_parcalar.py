@@ -10,6 +10,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from omuz_lib import *   # noqa
 from arayuz import SG, TRAVERS_L, OMUZ_YUVA_X, LIP_ALTI_MERKEZ   # noqa
+import arayuz as A
 
 # arayuz: travers 200 mm, omuz yerel orijini = travers merkezi; yuva traversin x 70...103 ucuna gecer
 YX0, YX1 = OMUZ_YUVA_X                      # 70, 103
@@ -81,11 +82,12 @@ for (y, z) in S1_HOLES:
         "Baglanti", "Celik", kod="M4 DIN 985 kontra somun", renk="celik", patlat=(-30, 0, 0))
 
 # --- yuva -> sigma: 4x M6x16 + pul + cekic somun
+# Duzeltme plani M3 (14 Ekim 2026): pullu M6x16 ucu cekic somunu yalniz 0,1 mm geciyordu (pul 1,6 + somun alti 14,3 / uc 14,4).
+# Pul kaldirildi: civata basi yuvanin dis yuzune oturur, uc yuzeyden 16 mm iceride = somunu 1,7 mm, kanal tabanini (16,8) 0,8 mm
+# geciyor. Zarf yalniz kuculur (eski pulun yeri bosalir), vida boyu degismez. M6x18 + pul secenegi: payi 2,1 / 0,4.
 for (p, d, ld) in SLEEVE:
     pv, dv = V(*p), V(*d)
-    add("Yuva baglanti pulu M6", "Govde", washer(6, pv, dv * -1), "Baglanti", "Celik", kod="M6 DIN 125 pul",
-        renk="celik", patlat=tuple(dv * -25))
-    add("Yuva baglanti civatasi M6x16", "Govde", screw912(6, 16, pv - dv * WASH125[6][2], dv), "Baglanti", "Celik 8.8",
+    add("Yuva baglanti civatasi M6x16", "Govde", screw912(6, 16, pv, dv), "Baglanti", "Celik 8.8",
         kod="M6x16 DIN 912", renk="celik", patlat=tuple(dv * -40))
     ptop = pv + dv * (25 - LIP_ALTI_MERKEZ)      # cekic somun ust yuzu dudak altinda
     add("Cekic somun M6 (kanal 10)", "Govde", hammer_nut(ptop, dv * -1, ld), "Baglanti", "Celik",
@@ -184,7 +186,14 @@ add("625ZZ rulman (dis bilezik)", "Kol", b5_out, "Satin", "Celik", kod="(625ZZ i
 for g in S2_HORN:
     add("Catal-horn civatasi M3x8", "Kol", screw912(3, 8, (g.x, g.y, 30.5), (0, 0, -1)), "Baglanti", "Celik 8.8",
         kod="M3x8 DIN 912", renk="celik", patlat=(110, -40, 40))
-tube = cyl(28, (XR, -40, ZC), (XR, -140, ZC)).cut(cyl(25.5, (XR, -39, ZC), (XR, -141, ZC)))
+R_TUP_IC = 25.4 + A.GECME["tup_pim"]     # tup ic yaricapi: catal / dirsek pimi O50,8 + radyal bosluk
+tube = cyl(28, (XR, -40, ZC), (XR, -140, ZC)).cut(cyl(R_TUP_IC, (XR, -39, ZC), (XR, -141, ZC)))
+_TP = A.KOL_KABLO["tup_pencere"]          # M1: arka duvarda kablo penceresi (dirsek kablolari tupten cikar); uclari 45 derece sivri
+_px, _py, _u = _TP["x"], _TP["y"], _TP["uc"]
+_pen = Part.Face(Part.makePolygon([V(_px[0], _py[0] + _u, _TP["z"][0]), V(XR, _py[0], _TP["z"][0]), V(_px[1], _py[0] + _u, _TP["z"][0]),
+                                   V(_px[1], _py[1] - _u, _TP["z"][0]), V(XR, _py[1], _TP["z"][0]), V(_px[0], _py[1] - _u, _TP["z"][0]),
+                                   V(_px[0], _py[0] + _u, _TP["z"][0])])).extrude(V(0, 0, _TP["z"][1] - _TP["z"][0]))
+tube = tube.cut(_pen)
 for (p, d) in TUBE_S:
     tube = tube.cut(cyl(CLEAR[3] / 2, (XR, -50, ZC - 30), (XR, -50, ZC + 30)))
 add("Ust kol tupu", "Kol", tube.removeSplitter(), "Baski", "PETG", renk="petg2", patlat=(110, -120, 0))

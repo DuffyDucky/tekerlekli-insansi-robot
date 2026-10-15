@@ -149,3 +149,11 @@ delikleri Ø3,4, yatay ve küçük. Katmanlar tüpün eğilmesini keser, ama ger
    ve süreler tahmini. Sonuç dilimleyici (Bambu Studio) önizlemesiyle karşılaştırılmadı.
 6. Analiz FCStd 15:48:40'a dayanıyor. M1 kablo yolu değişikliğinden sonra betik aynen yeniden koşulmalı (~4,5 dk):
    `FC_SCRIPT=$R/omuz/omuz_baski.py "$FC" $L`
+
+## Yeniden koşu (15 Ekim 2026, K kontrolü): M1 tüp penceresinden sonra
+- Girdi `omuz-montaj.FCStd` 14.10.2026 23:48:08, sha256 `be9fa876bceb…` (`omuz_parcalar.py` 23:35, FCStd güncel); süre 227 s.
+- **Üst kol tüpü** (arka kablo penceresi x 180…190, y −89…−65, uçları 45° sivri): **hâlâ desteksiz** (+Y ve −Y yönünde destek 0).
+  Pencerenin 45° uçları sınırda eğim olarak geçiyor. 45° üstü çıkıntı 12,6 → 21,4 mm² (Ø10 altı delik ve uç kırıntısı).
+  Hacim 39,57 → 39,12 cm³, kütle 40,2 → 39,7 g (0,8), süre 0,87 sa.
+- Yuva, kapak, göbek ve çatal hacmi ve sonuçları birebir aynı (M1 bu parçalara dokunmadı). Özet değişmedi: 10 parçanın 6'sı destekli.
+  Toplam 514–568 g, 12,5–13,7 sa.

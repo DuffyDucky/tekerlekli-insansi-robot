@@ -69,6 +69,14 @@ NUT985 = {3: (5.5, 4.0), 4: (7.0, 5.0), 5: (8.0, 5.0), 6: (10.0, 6.0)}          
 WASH125 = {3: (3.2, 7.0, 0.5), 4: (4.3, 9.0, 0.8), 5: (5.3, 10.0, 1.0), 6: (6.4, 12.0, 1.6)}  # di, do, t
 DIN913 = {6: 3.0}                                                                          # set (grub) vida, M6 anahtar 3
 INSERT = {3: (4.6, 5.7), 5: (7.0, 7.0)}            # isil gomme somun: dis cap, boy (tahmini tipik)
+INSERT_DELIK = {3: 4.0, 5: 6.4}                    # baski deligi capi (dis captan kucuk: somun eriyip plastige gomulur).
+#   M3 4,0: ruthex M3x5,7 tablosu (dis 4,6); M5 6,4 tahmini (dis - 0,6). Tolerans kuponuyla dogrulanacak.
+#   Montajda somun govdesi delik capinda cizilir (takilmis hal); BOM/kutle icin fark ihmal edilir.
+GECME = dict(tup_pim=0.25,                       # radyal bosluk, mm: ust kol tupu ic yuzu <-> kol catali pimi
+             tup_bilezik=0.25,                  # radyal bosluk, mm: ust kol tupu dis yuzu <-> dirsek sikma bilezigi ic yuzu (M2: 0,1 -> 0,25)
+             kabul_max=0.3)                     # dirsek kontrolunun kabul siniri: olculen radyal bosluk bunu asmamali (tup_pim, tup_bilezik)
+TUP_PIM_R = 25.4                                 # kol catali / dirsek pimi yaricapi (O50,8); tup ic yaricapi = TUP_PIM_R + GECME['tup_pim']
+KABUK_BINDIRME_BOSLUK = 0.25                       # kabuk dili ile komsunun dis yarisi arasi (dil 0,25 mm incelir; 14 Ekim 2026: 0,2 -> 0,25, 15 derece egik gogus duvarinda loft payi 0,15 mm sartina yetmiyordu)
 CEKIC_SOMUN = dict(d=6, L=16.0, W=10.0, T=5.0)     # M6 cekic somun, kanal 10 (tahmini; uzun yonu kanala dik kilitlenir)
 
 # =====================================================================================================
@@ -146,6 +154,15 @@ MODULLER = {
 # Omuz yuvasi: traversin ucuna gecer (omuz yerel x 70...103), 4x M6 + cekic somunla baglanir
 OMUZ_YUVA_X = (70.0, 103.0)          # omuz yerel
 OMUZ_YUVA_YZ = 25.0                  # yuva dis yari olcusu (y, z +-25)
+
+# Omuz eklem sinirlari (yazilim siniri, derece) - TEK KAYNAK: omuz_montaj (FreeCAD eklemi), carpisma (eklem araligi, tarama
+# izgarasi), dirsek_montaj / kabuk_rapor / omuz_rapor (siniri ici suzgeci) ve kod/ortak/eklem_sinirlari.json buradan okur.
+OMUZ = dict(
+    one_arka_aralik=(-45.0, 135.0),      # S1: DS3218MG 180 derece, horn kol asagidayken 45'te; geometri -60...180 serbest
+    yana_aralik=(3.0, 120.0),            # S2: alt sinir 0 -> +3 (duzeltme plani C1, 14 Ekim 2026)
+    yana_alt_bosluk_mm={0: 4.7, -2: 0.6, -3: 0.0},   # kol/el <-> kabuk en kucuk bosluk (duzeltme plani C1, tarama; -3'te temas)
+    servo="DS3218MG (180 derece), S1 ve S2",
+)
 
 
 def modul_konum(ad):
@@ -336,8 +353,8 @@ SONAR = dict(x=tuple(v * V3_W / W0 for v in (-100.0, 0.0, 100.0)), y=110.0, dx=1
 
 # --- kabugun iskelete baglantisi
 KABUK_GOVDE_BRAKET = dict(y=(400.0, 780.0), t=3.0, en=30.0, a_boy=50.0, c_boy=40.0, m6_y=(15.0, 40.0), m5_y=25.0,
-                          civata_m6=(6, 16), civata_m5=(5, 10), insert_bosluk=10.0,
-                          not_="3 mm Al U braket: direk +-X yuzu kanalina 2x M6x16 + pul + cekic somun, govde yan duvari "
+                          civata_m6=(6, 14), civata_m5=(5, 10), insert_bosluk=10.0,
+                          not_="3 mm Al U braket: direk +-X yuzu kanalina 2x M6x14 pulsuz + cekic somun (14 Ekim 2026), govde yan duvari "
                                "boss'una M5x10 + pul + M5 isil gomme somun (tahmini)")
 KABUK_ETEK_BRAKET = dict(z=(-105.0, 0.0, 105.0), t=2.0, en=30.0, x0=105.0, x_ic=214.0, y_alt=106.5,
                          civata_m6=(6, 14), civata_m3=(3, 8), m3_y=121.0,
@@ -387,12 +404,17 @@ def bolgeler(sahip=None, haric=()):
 # 10) Dirsek modulu (sag kol; sol kol = X aynasi). Yerel koordinat = omuz yereli (travers merkezi, X disari, Y yukari,
 #     Z ileri). Dirsek parcalarinin hepsi omuzun "Kol" grubuna bagli (omuz S1 + S2 ile birlikte hareket eder); kendi
 #     eklemleri dirsek (X ekseni) ve bilek (on kol ekseni). Ev pozu: kol asagida duz (dirsek 0, bilek 0).
-#     Ust kol tupu omuz_parcalar'dan (degismez): eksen x = XR 185, z = ZC -1,25; y -40...-140; O56 / O51.
+#     Ust kol tupu omuz_parcalar'dan (degismez): eksen x = XR 185, z = ZC -1,25; y -40...-140; O56 / O51,3.
 # =====================================================================================================
 DIRSEK = dict(
     bagli="omuz:Kol",                         # ust grup omuzun Kol grubuna sabit (Pp(phi) * Pr(th))
     tup_x=185.0, tup_z=-1.25,                 # omuz_parcalar XR, ZC
-    tup_uc_y=-140.0, tup_ri=25.5, tup_ro=28.0,  # omuz_parcalar "Ust kol tupu"
+    tup_uc_y=-140.0, tup_ro=28.0,             # omuz_parcalar "Ust kol tupu" (dis yaricap omuzda elle 28)
+    tup_ri=TUP_PIM_R + GECME["tup_pim"],      # tup ic yaricapi (omuz_parcalar: 25,4 + GECME) = 25,65
+    bilezik_ri=28.0 + GECME["tup_bilezik"],   # dirsek sikma bilezigi ic yaricapi = tup_ro + GECME
+    bilezik_yarik=4.0,                        # sikma bilezigi yarik genisligi (mm, acik hal). Kapaninca ic yaricap ~ yarik/(2*pi) iner (4 mm -> 0,64);
+                                              # tup pime ancak toplam radyal bosluk (tup_pim + tup_bilezik = 0,5) kapanir ve on yuk kalirsa sikisir (eski 2 mm -> 0,32: yetmiyordu)
+    bilezik_on_yuk_min=0.1,                   # kapali bilezikte toplam bosluktan arta kalmasi gereken en az radyal on yuk (mm)
     eksen_y=-173.0, eksen_z=-1.25,            # dirsek ekseni (X'e paralel), tup ucundan 33 mm asagida
     eksen_x=(156.0, 224.9),                   # catalin ic ve dis kolu arasi (eksen dogrusu)
     eksen_nokta=(216.6, -173.0, -1.25),       # horn alt yuzu (eklem noktasi)
@@ -452,7 +474,7 @@ TABAN = dict(
     plaka=dict(x=V3_W / 2, z=L0 / 2, r=10.0, malzeme="Al 5754, 3 mm (rc:416)"),
     plaka_ray_z=(-235.0, -90.0, 90.0, 235.0),     # uzun ray alt kanalina M6 (x = +-115)
     plaka_ara_x=(-50.0, 50.0),                    # ara ray alt kanallarina M6 (z = -230 / 0 / 230)
-    plaka_civata=(6, 14),                         # M6x14 DIN 912 + pul + M6 cekic somun: uc yuzden 9,4 (somun ustu 9,3, taban 11,8)
+    plaka_civata=(6, 14),                         # M6x14 DIN 912 PULSUZ (taban_parcalar.PLAKA_PUL=False, 14 Ekim 2026) + M6 cekic somun: bas 3 mm plakada, uc rayin alt yuzunden 11,0 (somun ustu 9,3 -> pay 1,7; kanal tabani 11,8 -> pay 0,8)
     braket_civata=dict(x=UZUN_RAY_X, dz=16.0, civata=(4, 16)),   # motor braketi flansi -> plaka -> uzun ray alt kanali (M4 cekic somun)
     motor_kablo_delik=((80.0, 200.0), (80.0, 36.0)),            # (x, z) +-x; on motor kablosu z 200, arka motor kablosu plaka altindan z 36
     kablo_delik_d=16.0,
@@ -509,6 +531,127 @@ for x in SONAR["x"]:
        "taban_parcalar", "on ara ray on yuzu, M6 ISO 7380 + cekic somun")
 _b("Aku on takozu + aku kayislari", "taban", _k(-95, 95, Y_PL - 1.5, Y_RAIL0 + 77 + 2, -205, -20.5), "taban_parcalar",
    "kayis plaka altindan doner (y 90...91,5)")
+
+
+# =====================================================================================================
+# 13) Eklem sinirlari ve kafa-kol yasak kutusu (yazilim siniri, derece) - kod/ortak/eklem_sinirlari.json'un kaynagi.
+#     Sinirlar modullerdeki tanimlardan (OMUZ, DIRSEK, KAFA) okunur; yeni sayi burada yazilmaz. Uretici: kod/ortak/eklem_sinirlari_uret.py
+# =====================================================================================================
+# Kafa-kol yasak bolgesi: carpisma taramasinin (5 derece adim, 8 Ekim 2026) buldugu el <-> on yuz kabugu cakismasi.
+# Satir satir tablo yerine TEK KUTU: olculen aralik her eksende +-YASAK_PAY genisletilir, eklem araligina kirpilir
+# (duzeltme plani C2). Yasak, kol "kol_kosulu" kutusundayken kafanin o kola dogru pan x tilt kutusuna girmesidir;
+# sol kol ve sol kafa yonu sag kolun X aynasi (pan isareti ters, tilt ayni).
+YASAK_PAY = 5.0
+YASAK_OLCULEN = dict(                    # carpisma-sonuc.json kafa_tarama.kol.sag.yasak_ozet (El / Yuz kabugu (on)), 198 kol alt pozu
+    one_arka=(125.0, 135.0), yana=(0.0, 0.0), dirsek=(70.0, 105.0), bilek=(-90.0, 90.0),
+    pan=(30.0, 55.0), tilt=(25.0, 30.0),
+)
+
+
+def _genislet(aralik, sinir, pay=YASAK_PAY):
+    return (max(aralik[0] - pay, sinir[0]), min(aralik[1] + pay, sinir[1]))
+
+
+_YS_SINIR = dict(one_arka=OMUZ["one_arka_aralik"], yana=OMUZ["yana_aralik"], dirsek=DIRSEK["aralik"],
+                 bilek=DIRSEK["bilek_aralik"], pan=KAFA["pan_aralik"], tilt=KAFA["tilt_aralik"])
+KAFA_KOL_YASAK = dict(
+    kutu_sag_kol=dict(pan=_genislet(YASAK_OLCULEN["pan"], _YS_SINIR["pan"]),            # (25, 60)
+                      tilt=_genislet(YASAK_OLCULEN["tilt"], _YS_SINIR["tilt"])),        # (20, 30)
+    kutu_sol_kol=dict(pan=tuple(-v for v in reversed(_genislet(YASAK_OLCULEN["pan"], _YS_SINIR["pan"]))),   # (-60, -25)
+                      tilt=_genislet(YASAK_OLCULEN["tilt"], _YS_SINIR["tilt"])),
+    kol_kosulu={k: _genislet(YASAK_OLCULEN[k], _YS_SINIR[k]) for k in ("one_arka", "yana", "dirsek", "bilek")},
+    pay=YASAK_PAY, olculen=YASAK_OLCULEN,
+    not_="kol_kosulu disinda kafa-kol cakismasi taramada yok; kosulsuz uygulamak guvenli ama kafayi gereksiz kisitlar. "
+         "Olculen yana 0 idi; S2 alt siniri +3 oldugundan kosul yana 3...5 olur. Kutu C7 tam taramasiyla dogrulanacak.",
+)
+
+
+def eklem_sinirlari():
+    """Tum eklem sinirlari + yasak kutu (kod/ortak/eklem_sinirlari_uret.py JSON'a yazar). Saf Python."""
+    def j(ad, aralik, servo, neden, **ek):
+        return dict(ad=ad, min=float(aralik[0]), max=float(aralik[1]), servo=servo, neden=neden, **ek)
+
+    tek = {
+        "s1": j("omuz one-arka (S1)", OMUZ["one_arka_aralik"], OMUZ["servo"],
+                "DS3218MG 180 derece; horn kol asagidayken 45'te; geometri -60...180 serbest"),
+        "s2": j("omuz yana acma (S2)", OMUZ["yana_aralik"], OMUZ["servo"],
+                "alt sinir +3: 0'da kabuk boslugu 4,7 mm, -2'de 0,6 mm, -3'te temas; servo sifir hatasi <= +-2 derece olmali",
+                bosluk_mm={str(k): v for k, v in OMUZ["yana_alt_bosluk_mm"].items()}),
+        "dirsek": j("dirsek", DIRSEK["aralik"], DIRSEK["servo"], "MG996R, catal dayanagi"),
+        "bilek": j("bilek", DIRSEK["bilek_aralik"], DIRSEK["servo"], "MG996R 180 derece, ev 0 = avuc ice bakar"),
+    }
+    taraf = {}
+    for t, on in (("r", "sag"), ("l", "sol")):
+        for k, v in tek.items():
+            taraf["%s_%s" % (t, k)] = dict(v, taraf=on, ayna=(t == "l"))
+    return dict(
+        surum=1, birim="derece", kaynak="tasarim/freecad/arayuz.py (OMUZ, DIRSEK, KAFA, KAFA_KOL_YASAK)",
+        eklemler=dict(taraf,
+                      pan=j("kafa pan", KAFA["pan_aralik"], KAFA["servo"], "MG996R 180 derece; kablo halkasi +-90"),
+                      tilt=j("kafa tilt", KAFA["tilt_aralik"], KAFA["servo"], "yazilim siniri; geometri serbest -25...40")),
+        teker=dict(sinirsiz=True, not_="hiz / ivme siniri yazilimda (rampada <= 0,25 m/s2 onerilir)"),
+        sol_isaret=dict(deger=-1, durum="tahmini; montajdan sonra her servo tek tek dogrulanir (duzeltme plani C4)"),
+        kafa_kol_yasak=dict(
+            aciklama="kol kol_kosulu icindeyken kafa o kola dogru kutu icine girmemeli (pan x tilt); sol kol: sol_kol.kutu",
+            pay=KAFA_KOL_YASAK["pay"],
+            sag_kol=dict(kol_kosulu={k: list(v) for k, v in KAFA_KOL_YASAK["kol_kosulu"].items()},
+                         kutu={k: list(v) for k, v in KAFA_KOL_YASAK["kutu_sag_kol"].items()}),
+            sol_kol=dict(kol_kosulu={k: list(v) for k, v in KAFA_KOL_YASAK["kol_kosulu"].items()},
+                         kutu={k: list(v) for k, v in KAFA_KOL_YASAK["kutu_sol_kol"].items()}),
+            olculen={k: list(v) for k, v in YASAK_OLCULEN.items()}, not_=KAFA_KOL_YASAK["not_"]),
+    )
+
+
+# =====================================================================================================
+# 14) Kol kablo yolu (duzeltme plani M1, 14 Ekim 2026). Sag kol, omuz yereli (X disari, Y yukari, Z ileri), ev pozu;
+#     sol kol = X aynasi. Dirsek + bilek servo kablolari: on kol -> dirsek arkasindaki serbest lop -> catal koprusu
+#     altindaki oluk -> O10 delik -> ust kol tupu ici (birlesim: servo kablosu -> uzatma) -> tupun arka penceresi ->
+#     tup / yaka / kopru arkasi -> S2 lopu (kol catali arka plakasinin arkasinda) -> gobek ic seridi. S1 gecisi ACIK
+#     (planlama/adim2/M1-kablo-yolu.md: 180 derecelik S1 araliginda tup alt sektoru doldurdugu icin kompakt serbest lop yok).
+#     Loplar dirsek/kablo_yolu.py'de duzlemsel elastika ile cozulur; kalici kontrol dirsek_montaj.py (kablo).
+# =====================================================================================================
+KOL_KABLO = dict(
+    serit=(4.2, 1.4),                 # 22 AWG 3 damar duz servo kablosu: genislik, kalinlik (mm). Iletken 0,34 mm2 (Maplin
+                                      # Futaba 22AWG); damar dis capi ~1,4 (0,66 iletken + PVC) TAHMINI, kumpasla olculmeli
+    servo_kablo_boy=300.0,            # MG996R 30 cm (Tower Pro datasheet), DS3218 300 +-5 (DSServo datasheet)
+    jr_disi=(7.9, 2.75, 14.0),        # servo ucundaki disi JR govdesi (Pololu 1924 cizimi)
+    jr_erkek=(10.3, 4.0, 18.0),       # uzatmanin erkek JR govdesi (Pololu 1925 cizimi)
+    jr_eslesik=(10.3, 4.0, 26.0),     # erkek + disi takili (boy tahmini)
+    r_dinamik_kat=7.5, r_sabit_kat=4.0,   # en kucuk bukulme yaricapi = kat x serit kalinligi (Helukabel ornegi: sabit 4 d, dinamik 7,5 d)
+    pay_bosluk=0.5,                   # lop ve sabit yol: demet zarfi ile parcalar arasi en az bosluk (mm)
+    boy_payi=10.0,                    # servo kablosu tup icine (y -122) ulastiktan sonra en az artan (mm); disi JR ucu orada
+                                      # uzatmanin erkek ucuna takilir (birlesim tup icinde y -122...-62 arasinda serbest)
+    bag_tabani=(10.0, 10.0, 3.5),     # yapiskan tabanli kablo bagi yuvasi (K noktasi; olcu tahmini) + 2,5 mm kablo bagi
+    # --- geometri kesimleri (yalniz malzeme cikarir)
+    catal_oluk=dict(x=(182.0, 188.0), y=(-148.0, -143.5), z=(-34.0, -1.25)),   # dirsek catali koprusu + alin kapagi alti: delikten
+                                      # kapagin arka kenarina (r31 -> z -32,25) acik oluk; 2 serit (4,2 x 2,8) + pay. Kablo burada sicak tutkal noktasi
+    onkol_centik=dict(x=(176.5, 182.5), dz=(-14.01, -9.0)),   # on kol ara duvari (dirsek-bilek servo arasi) arka kenari: bilek kablosu
+    onkol_tirnak=dict(x=(172.5, 176.5), dy=(10.5, 16.5), dz=(-19.5, -13.0)),   # yanagin ust-arka kosesinde geriye kanat (eksenden
+                                      # dy, dz): iki kablo burada birlesir, kablo bagi kanat + demeti sarar (M). Baskida yukari (on yuz tablada) -> desteksiz
+    tup_pencere=dict(x=(180.0, 190.0), y=(-89.0, -65.0), uc=5.0, z=(-32.0, -20.0)),   # ust kol tupu arka duvari: 10 genis, 14 duz +
+                                      # iki ucta 45 derece sivri (dik baskida desteksiz); disi JR (7,9 x 2,75) gecer
+    # --- serbest loplar (duzlemsel elastika) ve baglama noktalari (konum, cikis tegeti, bagli grup)
+    dirsek_lop=dict(M=(179.3, -158.0, -17.75), M_teget=(0.0, 0.0, -1.0), M_grup="OnKol",     # on kol tirnagi (eksenden dy 15, dz -16,5), demet geriye
+                    F=(185.0, -144.9, -32.75), F_teget=(0.0, 0.0, 1.0), F_grup="UstKol",    # catal olugunun arka agzi (kablo one girer)
+                    L=120.0, serit=2, duzlem="x", eklem="dirsek"),
+    s2_lop=dict(M=(193.0, -26.0, -38.6), M_teget=(0.0, 1.0, 0.0), M_grup="Kol",              # K: kol catali arka plakasi (z -33) arkasinda kablo bagi tabani
+                F=(165.5, -15.0, -32.6), F_teget=(0.0, -1.0, 0.0), F_grup="Gobek",           # G2: gobek kutusu arka yuzu ic seridi (x 163...168; catal plakasi buraya hic girmez)
+                L=80.0, serit=2, duzlem="z", eklem="yana", gecis=15.0),                      # z: K duzleminde, son 15 mm'de G2'ye
+    # --- sabit yollar (cokgen; her kosede r_sabit yaricapli yay sigmali). Gruplar: OnKol (dirsek), UstKol / Kol (omuz kolu).
+    yol_dirsek_servo=dict(grup="OnKol", serit=1, nokta=[(181.0, -162.3, -1.25), (180.0, -155.8, -1.25), (179.3, -158.0, -17.75)],
+                          cikis=2.0),         # servo ust yuzundeki cikistan yukari, sonra geriye tirnaga
+    yol_bilek_servo=dict(grup="OnKol", serit=1, nokta=[(174.3, -220.5, -1.25), (168.0, -220.5, -1.25), (168.0, -220.5, -12.75),
+                                                       (179.5, -219.5, -12.75), (179.5, -164.0, -12.75), (179.3, -158.0, -17.75)],
+                         cikis=2.0),          # mil ucu cikisindan ice, geriye, ara duvar centiginden dirsek servosunun arkasindan yukari
+    yol_ustkol=dict(grup="UstKol", serit=2, nokta=[(185.0, -144.9, -32.75), (185.0, -144.9, -1.25), (185.0, -122.0, -1.25)]),
+    birlesim=(185.0, -105.0, -1.25),  # servo kablosu -> uzatma (tup ici, O51,3; iki eslesik JR yan yana 10,3 x 8 x 26 sigar)
+    yol_uzatma_kol=dict(grup="Kol", serit=2, nokta=[(185.0, -105.0, -1.25), (185.0, -92.0, -12.0), (185.0, -77.0, -31.0),
+                                                    (190.5, -60.0, -30.5), (191.0, -46.0, -30.4), (191.0, -40.0, -30.4),
+                                                    (191.5, -35.5, -35.0), (192.0, -30.0, -37.2), (193.0, -26.0, -38.6)]),   # tup civatasi basinin (x 185, y -50) yanindan
+    s1=dict(durum="ACIK", not_="S1 (-45...135) gecisi: tup ve yaka yana kucukken kabuk yuzunden 5...8 mm uzakta, S1 ekseninin alt "
+                              "sektorunu dolduruyor; ust yaridaki serbest lop R ~10 mm ve eksenden ~95 mm'ye tasiyor. Karar: kablo "
+                              "kaseti (gobekte tambur + govdede yay duvar) ya da omuz ustu buyuk lop. Bkz. planlama/adim2/M1-kablo-yolu.md"),
+)
 
 
 if __name__ == "__main__":

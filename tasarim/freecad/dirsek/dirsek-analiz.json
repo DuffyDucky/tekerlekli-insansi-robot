@@ -32,12 +32,12 @@
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "Dirsek catali",
-   "kutle_g": 89.42,
-   "hacim_mm3": 88008.4,
+   "kutle_g": 87.49,
+   "hacim_mm3": 86109.5,
    "merkez": [
-    185.939,
-    -140.698,
-    -2.755
+    185.959,
+    -140.848,
+    -2.419
    ],
    "bb": [
     154.0,
@@ -496,19 +496,19 @@
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "On kol govdesi",
-   "kutle_g": 42.07,
-   "hacim_mm3": 41411.8,
+   "kutle_g": 42.18,
+   "hacim_mm3": 41517.9,
    "merkez": [
-    187.477,
-    -206.112,
-    2.206
+    187.432,
+    -205.911,
+    2.164
    ],
    "bb": [
     163.6,
     226.7,
     -253.1,
     -152.0,
-    -15.25,
+    -20.75,
     12.75
    ],
    "patlat": [
@@ -612,8 +612,8 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M5 isil gomme somun",
-   "kutle_g": 1.12,
-   "hacim_mm3": 131.9,
+   "kutle_g": 0.75,
+   "hacim_mm3": 87.7,
    "merkez": [
     171.5,
     -173.0,
@@ -622,10 +622,10 @@
    "bb": [
     168.0,
     175.0,
-    -176.5,
-    -169.5,
-    -4.75,
-    2.25
+    -176.2,
+    -169.8,
+    -4.45,
+    1.95
    ],
    "patlat": [
     0,
@@ -1279,11 +1279,11 @@
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "Bilek flansi",
-   "kutle_g": 3.98,
-   "hacim_mm3": 3913.9,
+   "kutle_g": 4.03,
+   "hacim_mm3": 3963.5,
    "merkez": [
     185.0,
-    -263.369,
+    -263.37,
     -1.25
    ],
    "bb": [
@@ -1453,8 +1453,8 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     196.15,
     -263.4,
@@ -1463,10 +1463,10 @@
    "bb": [
     193.3,
     199.0,
-    -265.7,
-    -261.1,
-    -3.55,
-    1.05
+    -265.4,
+    -261.4,
+    -3.25,
+    0.75
    ],
    "patlat": [
     0,
@@ -1511,8 +1511,8 @@
    "tur": "Baglanti",
    "malzeme": "Pirinc",
    "kod": "M3 isil gomme somun",
-   "kutle_g": 0.46,
-   "hacim_mm3": 54.4,
+   "kutle_g": 0.27,
+   "hacim_mm3": 31.3,
    "merkez": [
     173.85,
     -263.4,
@@ -1521,10 +1521,10 @@
    "bb": [
     171.0,
     176.7,
-    -265.7,
-    -261.1,
-    -3.55,
-    1.05
+    -265.4,
+    -261.4,
+    -3.25,
+    0.75
    ],
    "patlat": [
     0,
@@ -1656,7 +1656,7 @@
    ],
    "ev": 0.0,
    "serbest_aralik": [
-    -60,
+    -40,
     110
    ],
    "servo": "MG996R (180 derece)",
@@ -1722,21 +1722,1589 @@
     true
    ],
    [
-    "pim - tup ic yuzu radyal bosluk 0.10 mm (sikma bilezigi tupu pime bastirir)",
-    0.1,
+    "tup ic yaricapi: omuz geometrisi = arayuz (A.GECME) 25.650 mm",
+    25.65,
     true
    ],
    [
-    "bilezik ic yuzu - tup dis yuzu radyal bosluk 0.10 mm",
-    0.1,
+    "pim - tup ic yuzu radyal bosluk 0.25 mm (sikma bilezigi tupu pime bastirir; kabul <= 0.30)",
+    0.25,
+    true
+   ],
+   [
+    "bilezik ic yuzu - tup dis yuzu radyal bosluk 0.25 mm (kabul <= 0.30)",
+    0.25,
     true
    ],
    [
     "pim tupe giris boyu 25.0 mm",
     25.0,
     true
+   ],
+   [
+    "tup duvari (r 25.65...28.00) pim (r 25.40) ile bilezik (r 28.25) arasinda; tup alin kapagina ve V oluga dayali",
+    [
+     25.4,
+     25.65,
+     28.0,
+     28.25
+    ],
+    true
+   ],
+   [
+    "yarik 4.00 mm (arayuz 4.00): kapaninca ic yaricap 28.250 -> 27.613 mm (0.637 iner)",
+    4.0,
+    true
+   ],
+   [
+    "kelepce kapanma 0.637 mm >= toplam radyal bosluk 0.50 (pim-tup 0.25 + bilezik-tup 0.25) + on yuk 0.10; kalan on yuk 0.137 mm",
+    0.137,
+    true
    ]
   ]
+ },
+ "sikma_bilezigi": {
+  "yarik_mm": 4.0,
+  "yay_acik_mm": 4.003,
+  "r_bilezik_acik": 28.25,
+  "r_bilezik_kapali": 27.6128,
+  "kapanma_mm": 0.6372,
+  "bosluk_toplam_mm": 0.5,
+  "on_yuk_mm": 0.1372,
+  "on_yuk_min_mm": 0.1,
+  "eski_yarik_2mm_kapanma_mm": 0.318,
+  "kontrol_ok": true,
+  "kulak_kapanma_cakisma_mm3": 0.0
+ },
+ "kablo": {
+  "kaynak": "arayuz.KOL_KABLO + dirsek/kablo_yolu.py",
+  "serit": [
+   4.2,
+   1.4
+  ],
+  "r_dinamik": {
+   "1": 10.5,
+   "2": 11.2
+  },
+  "r_sabit": {
+   "1": 5.6,
+   "2": 6.3
+  },
+  "pay_bosluk": 0.5,
+  "s1": {
+   "durum": "ACIK",
+   "not_": "S1 (-45...135) gecisi: tup ve yaka yana kucukken kabuk yuzunden 5...8 mm uzakta, S1 ekseninin alt sektorunu dolduruyor; ust yaridaki serbest lop R ~10 mm ve eksenden ~95 mm'ye tasiyor. Karar: kablo kaseti (gobekte tambur + govdede yay duvar) ya da omuz ustu buyuk lop. Bkz. planlama/adim2/M1-kablo-yolu.md"
+  },
+  "dirsek_lop": {
+   "L": 120.0,
+   "serit": 2,
+   "demet": {
+    "genislik": 4.2,
+    "kalinlik": 2.8,
+    "r_lop": 2.5238858928247927,
+    "r_sabit": 1.4
+   },
+   "r_min": 12.95,
+   "r_sinir": 11.2,
+   "en_kucuk_bosluk": 0.61,
+   "en_yakin": "On kol govdesi",
+   "en_yakin_poz": 105.0,
+   "kiris": [
+    20.71,
+    52.74
+   ],
+   "ok": true,
+   "pozlar": [
+    {
+     "poz": 0.0,
+     "r_min": 13.18,
+     "kiris": 20.71,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 2.5,
+     "r_min": 13.39,
+     "kiris": 20.74,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 5.0,
+     "r_min": 13.6,
+     "kiris": 20.85,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 7.5,
+     "r_min": 13.83,
+     "kiris": 21.05,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 10.0,
+     "r_min": 14.08,
+     "kiris": 21.32,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 12.5,
+     "r_min": 14.33,
+     "kiris": 21.68,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 15.0,
+     "r_min": 14.6,
+     "kiris": 22.11,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 17.5,
+     "r_min": 14.88,
+     "kiris": 22.6,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 20.0,
+     "r_min": 15.17,
+     "kiris": 23.16,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 22.5,
+     "r_min": 15.48,
+     "kiris": 23.78,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 25.0,
+     "r_min": 15.81,
+     "kiris": 24.45,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 27.5,
+     "r_min": 16.14,
+     "kiris": 25.17,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 30.0,
+     "r_min": 16.5,
+     "kiris": 25.93,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 32.5,
+     "r_min": 16.87,
+     "kiris": 26.73,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 35.0,
+     "r_min": 17.25,
+     "kiris": 27.56,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 37.5,
+     "r_min": 17.65,
+     "kiris": 28.41,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 40.0,
+     "r_min": 18.07,
+     "kiris": 29.29,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 42.5,
+     "r_min": 18.5,
+     "kiris": 30.19,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 45.0,
+     "r_min": 18.95,
+     "kiris": 31.11,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 47.5,
+     "r_min": 19.42,
+     "kiris": 32.04,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 50.0,
+     "r_min": 19.89,
+     "kiris": 32.98,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 52.5,
+     "r_min": 20.38,
+     "kiris": 33.93,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 55.0,
+     "r_min": 20.88,
+     "kiris": 34.89,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 57.5,
+     "r_min": 21.37,
+     "kiris": 35.85,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 60.0,
+     "r_min": 21.86,
+     "kiris": 36.81,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 62.5,
+     "r_min": 22.31,
+     "kiris": 37.77,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 65.0,
+     "r_min": 22.7,
+     "kiris": 38.73,
+     "bosluk": 0.63,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 67.5,
+     "r_min": 22.97,
+     "kiris": 39.68,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 70.0,
+     "r_min": 23.04,
+     "kiris": 40.63,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 72.5,
+     "r_min": 22.8,
+     "kiris": 41.58,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 75.0,
+     "r_min": 22.2,
+     "kiris": 42.51,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 77.5,
+     "r_min": 21.31,
+     "kiris": 43.44,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 80.0,
+     "r_min": 20.3,
+     "kiris": 44.35,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 82.5,
+     "r_min": 19.27,
+     "kiris": 45.26,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 85.0,
+     "r_min": 18.31,
+     "kiris": 46.15,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 87.5,
+     "r_min": 17.41,
+     "kiris": 47.03,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 90.0,
+     "r_min": 16.59,
+     "kiris": 47.89,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 92.5,
+     "r_min": 15.84,
+     "kiris": 48.74,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 95.0,
+     "r_min": 15.16,
+     "kiris": 49.58,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 97.5,
+     "r_min": 14.54,
+     "kiris": 50.4,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 100.0,
+     "r_min": 13.97,
+     "kiris": 51.2,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 102.5,
+     "r_min": 13.44,
+     "kiris": 51.98,
+     "bosluk": 0.62,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    },
+    {
+     "poz": 105.0,
+     "r_min": 12.95,
+     "kiris": 52.74,
+     "bosluk": 0.61,
+     "en_yakin": "On kol govdesi",
+     "yakinsadi": true
+    }
+   ],
+   "ornek_nokta": {
+    "0.0": [
+     [
+      179.3,
+      -158.0,
+      -17.75
+     ],
+     [
+      179.585,
+      -158.655,
+      -23.698
+     ],
+     [
+      179.87,
+      -160.569,
+      -29.377
+     ],
+     [
+      180.155,
+      -163.245,
+      -34.745
+     ],
+     [
+      180.44,
+      -166.244,
+      -39.941
+     ],
+     [
+      180.725,
+      -169.171,
+      -45.178
+     ],
+     [
+      181.01,
+      -171.619,
+      -50.651
+     ],
+     [
+      181.295,
+      -173.126,
+      -56.448
+     ],
+     [
+      181.58,
+      -173.185,
+      -62.429
+     ],
+     [
+      181.865,
+      -171.36,
+      -68.112
+     ],
+     [
+      182.15,
+      -167.528,
+      -72.674
+     ],
+     [
+      182.435,
+      -162.136,
+      -75.193
+     ],
+     [
+      182.72,
+      -156.186,
+      -75.103
+     ],
+     [
+      183.005,
+      -150.822,
+      -72.509
+     ],
+     [
+      183.29,
+      -146.833,
+      -68.069
+     ],
+     [
+      183.575,
+      -144.444,
+      -62.587
+     ],
+     [
+      183.86,
+      -143.455,
+      -56.679
+     ],
+     [
+      184.145,
+      -143.461,
+      -50.683
+     ],
+     [
+      184.43,
+      -144.004,
+      -44.708
+     ],
+     [
+      184.715,
+      -144.633,
+      -38.742
+     ],
+     [
+      185.0,
+      -144.9,
+      -32.75
+     ]
+    ],
+    "52.5": [
+     [
+      179.3,
+      -176.959,
+      -23.195
+     ],
+     [
+      179.585,
+      -181.552,
+      -27.051
+     ],
+     [
+      179.87,
+      -185.642,
+      -31.435
+     ],
+     [
+      180.155,
+      -189.037,
+      -36.374
+     ],
+     [
+      180.44,
+      -191.514,
+      -41.829
+     ],
+     [
+      180.725,
+      -192.838,
+      -47.67
+     ],
+     [
+      181.01,
+      -192.796,
+      -53.656
+     ],
+     [
+      181.295,
+      -191.253,
+      -59.436
+     ],
+     [
+      181.58,
+      -188.209,
+      -64.585
+     ],
+     [
+      181.865,
+      -183.834,
+      -68.66
+     ],
+     [
+      182.15,
+      -178.467,
+      -71.296
+     ],
+     [
+      182.435,
+      -172.568,
+      -72.276
+     ],
+     [
+      182.72,
+      -166.628,
+      -71.574
+     ],
+     [
+      183.005,
+      -161.08,
+      -69.333
+     ],
+     [
+      183.29,
+      -156.237,
+      -65.812
+     ],
+     [
+      183.575,
+      -152.277,
+      -61.319
+     ],
+     [
+      183.86,
+      -149.25,
+      -56.148
+     ],
+     [
+      184.145,
+      -147.113,
+      -50.547
+     ],
+     [
+      184.43,
+      -145.766,
+      -44.704
+     ],
+     [
+      184.715,
+      -145.077,
+      -38.746
+     ],
+     [
+      185.0,
+      -144.9,
+      -32.75
+     ]
+    ],
+    "105.0": [
+     [
+      179.3,
+      -192.82,
+      -11.468
+     ],
+     [
+      179.585,
+      -198.754,
+      -11.057
+     ],
+     [
+      179.87,
+      -204.27,
+      -13.294
+     ],
+     [
+      180.155,
+      -208.367,
+      -17.622
+     ],
+     [
+      180.44,
+      -210.532,
+      -23.183
+     ],
+     [
+      180.725,
+      -210.725,
+      -29.156
+     ],
+     [
+      181.01,
+      -209.191,
+      -34.938
+     ],
+     [
+      181.295,
+      -206.284,
+      -40.172
+     ],
+     [
+      181.58,
+      -202.342,
+      -44.683
+     ],
+     [
+      181.865,
+      -197.648,
+      -48.409
+     ],
+     [
+      182.15,
+      -192.419,
+      -51.341
+     ],
+     [
+      182.435,
+      -186.821,
+      -53.486
+     ],
+     [
+      182.72,
+      -180.981,
+      -54.843
+     ],
+     [
+      183.005,
+      -175.011,
+      -55.392
+     ],
+     [
+      183.29,
+      -169.024,
+      -55.089
+     ],
+     [
+      183.575,
+      -163.157,
+      -53.865
+     ],
+     [
+      183.86,
+      -157.593,
+      -51.641
+     ],
+     [
+      184.145,
+      -152.592,
+      -48.347
+     ],
+     [
+      184.43,
+      -148.505,
+      -43.976
+     ],
+     [
+      184.715,
+      -145.78,
+      -38.655
+     ],
+     [
+      185.0,
+      -144.9,
+      -32.75
+     ]
+    ]
+   }
+  },
+  "s2_lop": {
+   "L": 80.0,
+   "serit": 2,
+   "demet": {
+    "genislik": 4.2,
+    "kalinlik": 2.8,
+    "r_lop": 2.5238858928247927,
+    "r_sabit": 1.4
+   },
+   "r_min": 12.36,
+   "r_sinir": 11.2,
+   "en_kucuk_bosluk": 1.57,
+   "en_yakin": "Kol catali",
+   "en_yakin_poz": 3.0,
+   "kiris": [
+    31.3,
+    52.15
+   ],
+   "ok": true,
+   "pozlar": [
+    {
+     "poz": 3.0,
+     "r_min": 12.63,
+     "kiris": 31.3,
+     "bosluk": 1.57,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 6,
+     "r_min": 12.78,
+     "kiris": 32.36,
+     "bosluk": 2.04,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 9,
+     "r_min": 12.92,
+     "kiris": 33.39,
+     "bosluk": 2.4,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 12,
+     "r_min": 13.06,
+     "kiris": 34.41,
+     "bosluk": 2.67,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 15,
+     "r_min": 13.2,
+     "kiris": 35.41,
+     "bosluk": 2.84,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 18,
+     "r_min": 13.33,
+     "kiris": 36.38,
+     "bosluk": 2.93,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 21,
+     "r_min": 13.46,
+     "kiris": 37.33,
+     "bosluk": 2.95,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 24,
+     "r_min": 13.58,
+     "kiris": 38.26,
+     "bosluk": 2.96,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 27,
+     "r_min": 13.7,
+     "kiris": 39.16,
+     "bosluk": 2.98,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 30,
+     "r_min": 13.81,
+     "kiris": 40.04,
+     "bosluk": 3.0,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 33,
+     "r_min": 13.92,
+     "kiris": 40.89,
+     "bosluk": 3.01,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 36,
+     "r_min": 14.02,
+     "kiris": 41.71,
+     "bosluk": 3.03,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 39,
+     "r_min": 14.11,
+     "kiris": 42.51,
+     "bosluk": 3.05,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 42,
+     "r_min": 14.19,
+     "kiris": 43.27,
+     "bosluk": 3.07,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 45,
+     "r_min": 14.26,
+     "kiris": 44.01,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 48,
+     "r_min": 14.33,
+     "kiris": 44.72,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 51,
+     "r_min": 14.38,
+     "kiris": 45.4,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 54,
+     "r_min": 14.42,
+     "kiris": 46.05,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 57,
+     "r_min": 14.45,
+     "kiris": 46.67,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 60,
+     "r_min": 14.47,
+     "kiris": 47.26,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 63,
+     "r_min": 14.48,
+     "kiris": 47.81,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 66,
+     "r_min": 14.48,
+     "kiris": 48.34,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 69,
+     "r_min": 14.46,
+     "kiris": 48.83,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 72,
+     "r_min": 14.43,
+     "kiris": 49.29,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 75,
+     "r_min": 14.39,
+     "kiris": 49.71,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 78,
+     "r_min": 14.33,
+     "kiris": 50.11,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 81,
+     "r_min": 14.26,
+     "kiris": 50.46,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 84,
+     "r_min": 14.18,
+     "kiris": 50.79,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 87,
+     "r_min": 14.09,
+     "kiris": 51.08,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 90,
+     "r_min": 13.98,
+     "kiris": 51.33,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 93,
+     "r_min": 13.86,
+     "kiris": 51.56,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 96,
+     "r_min": 13.73,
+     "kiris": 51.74,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 99,
+     "r_min": 13.59,
+     "kiris": 51.89,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 102,
+     "r_min": 13.44,
+     "kiris": 52.01,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 105,
+     "r_min": 13.28,
+     "kiris": 52.09,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 108,
+     "r_min": 13.11,
+     "kiris": 52.14,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 111,
+     "r_min": 12.93,
+     "kiris": 52.15,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 114,
+     "r_min": 12.75,
+     "kiris": 52.13,
+     "bosluk": 3.08,
+     "en_yakin": "Kol catali",
+     "yakinsadi": true
+    },
+    {
+     "poz": 117,
+     "r_min": 12.55,
+     "kiris": 52.07,
+     "bosluk": 2.9,
+     "en_yakin": "Kapak civatasi M3x12 (S1 0)",
+     "yakinsadi": true
+    },
+    {
+     "poz": 120,
+     "r_min": 12.36,
+     "kiris": 51.97,
+     "bosluk": 2.46,
+     "en_yakin": "Kapak civatasi M3x12 (S1 0)",
+     "yakinsadi": true
+    }
+   ],
+   "ornek_nokta": {
+    "3.0": [
+     [
+      194.35,
+      -25.546,
+      -38.6
+     ],
+     [
+      194.314,
+      -21.547,
+      -38.6
+     ],
+     [
+      194.579,
+      -17.557,
+      -38.6
+     ],
+     [
+      194.953,
+      -13.574,
+      -38.6
+     ],
+     [
+      195.246,
+      -9.585,
+      -38.6
+     ],
+     [
+      195.266,
+      -5.587,
+      -38.6
+     ],
+     [
+      194.824,
+      -1.614,
+      -38.6
+     ],
+     [
+      193.744,
+      2.231,
+      -38.6
+     ],
+     [
+      191.893,
+      5.768,
+      -38.6
+     ],
+     [
+      189.231,
+      8.737,
+      -38.6
+     ],
+     [
+      185.847,
+      10.844,
+      -38.6
+     ],
+     [
+      181.988,
+      11.835,
+      -38.6
+     ],
+     [
+      178.012,
+      11.58,
+      -38.6
+     ],
+     [
+      174.303,
+      10.124,
+      -38.6
+     ],
+     [
+      171.164,
+      7.664,
+      -38.6
+     ],
+     [
+      168.762,
+      4.477,
+      -38.6
+     ],
+     [
+      167.114,
+      0.84,
+      -38.6
+     ],
+     [
+      166.13,
+      -3.033,
+      -37.976
+     ],
+     [
+      165.655,
+      -7.003,
+      -35.9
+     ],
+     [
+      165.509,
+      -11.0,
+      -33.652
+     ],
+     [
+      165.5,
+      -15.0,
+      -32.6
+     ]
+    ],
+    "63": [
+     [
+      211.798,
+      -4.676,
+      -38.6
+     ],
+     [
+      208.383,
+      -2.603,
+      -38.6
+     ],
+     [
+      205.313,
+      -0.043,
+      -38.6
+     ],
+     [
+      202.511,
+      2.811,
+      -38.6
+     ],
+     [
+      199.847,
+      5.795,
+      -38.6
+     ],
+     [
+      197.165,
+      8.762,
+      -38.6
+     ],
+     [
+      194.312,
+      11.564,
+      -38.6
+     ],
+     [
+      191.167,
+      14.031,
+      -38.6
+     ],
+     [
+      187.67,
+      15.962,
+      -38.6
+     ],
+     [
+      183.857,
+      17.142,
+      -38.6
+     ],
+     [
+      179.874,
+      17.382,
+      -38.6
+     ],
+     [
+      175.969,
+      16.573,
+      -38.6
+     ],
+     [
+      172.431,
+      14.734,
+      -38.6
+     ],
+     [
+      169.509,
+      12.019,
+      -38.6
+     ],
+     [
+      167.349,
+      8.663,
+      -38.6
+     ],
+     [
+      165.964,
+      4.917,
+      -38.6
+     ],
+     [
+      165.259,
+      0.984,
+      -38.6
+     ],
+     [
+      165.065,
+      -3.01,
+      -37.976
+     ],
+     [
+      165.182,
+      -7.008,
+      -35.9
+     ],
+     [
+      165.398,
+      -11.002,
+      -33.652
+     ],
+     [
+      165.5,
+      -15.0,
+      -32.6
+     ]
+    ],
+    "120": [
+     [
+      203.517,
+      19.928,
+      -38.6
+     ],
+     [
+      199.841,
+      18.387,
+      -38.6
+     ],
+     [
+      195.88,
+      17.916,
+      -38.6
+     ],
+     [
+      191.908,
+      18.338,
+      -38.6
+     ],
+     [
+      188.047,
+      19.375,
+      -38.6
+     ],
+     [
+      184.281,
+      20.722,
+      -38.6
+     ],
+     [
+      180.517,
+      22.076,
+      -38.6
+     ],
+     [
+      176.663,
+      23.136,
+      -38.6
+     ],
+     [
+      172.695,
+      23.598,
+      -38.6
+     ],
+     [
+      168.728,
+      23.179,
+      -38.6
+     ],
+     [
+      165.029,
+      21.696,
+      -38.6
+     ],
+     [
+      161.964,
+      19.151,
+      -38.6
+     ],
+     [
+      159.859,
+      15.769,
+      -38.6
+     ],
+     [
+      158.861,
+      11.909,
+      -38.6
+     ],
+     [
+      158.897,
+      7.918,
+      -38.6
+     ],
+     [
+      159.736,
+      4.012,
+      -38.6
+     ],
+     [
+      161.079,
+      0.245,
+      -38.6
+     ],
+     [
+      162.624,
+      -3.444,
+      -37.976
+     ],
+     [
+      164.077,
+      -7.17,
+      -35.9
+     ],
+     [
+      165.136,
+      -11.024,
+      -33.652
+     ],
+     [
+      165.5,
+      -15.0,
+      -32.6
+     ]
+    ]
+   }
+  },
+  "yol_dirsek_servo": {
+   "grup": "OnKol",
+   "serit": 1,
+   "boy": 23.2,
+   "kose_r_max": 5.81,
+   "r_sinir": 5.6,
+   "koseler": [
+    [
+     5.81,
+     1,
+     97.1
+    ]
+   ],
+   "en_kucuk_bosluk": 1.78,
+   "en_yakin": "Dirsek servosu MG996R",
+   "en_yakin_poz": 75.0,
+   "ok": true
+  },
+  "yol_bilek_servo": {
+   "grup": "OnKol",
+   "serit": 1,
+   "boy": 92.7,
+   "kose_r_max": 5.75,
+   "r_sinir": 5.6,
+   "koseler": [
+    [
+     5.75,
+     1,
+     90.0
+    ],
+    [
+     5.75,
+     2,
+     90.0
+    ],
+    [
+     6.3,
+     3,
+     85.0
+    ],
+    [
+     21.57,
+     4,
+     39.8
+    ]
+   ],
+   "en_kucuk_bosluk": 0.7,
+   "en_yakin": "On kol govdesi",
+   "en_yakin_poz": 70.0,
+   "ok": true
+  },
+  "yol_ustkol": {
+   "grup": "UstKol",
+   "serit": 2,
+   "boy": 54.4,
+   "kose_r_max": 22.9,
+   "r_sinir": 6.3,
+   "koseler": [
+    [
+     22.9,
+     1,
+     90.0
+    ]
+   ],
+   "en_kucuk_bosluk": 0.0,
+   "en_yakin": "Dirsek catali",
+   "en_yakin_poz": 0.0,
+   "ok": true
+  },
+  "yol_uzatma_kol": {
+   "grup": "Kol",
+   "serit": 2,
+   "boy": 95.7,
+   "kose_r_max": 7.1,
+   "r_sinir": 6.3,
+   "koseler": [
+    [
+     113.99,
+     1,
+     12.1
+    ],
+    [
+     17.01,
+     2,
+     55.4
+    ],
+    [
+     50.08,
+     3,
+     15.9
+    ],
+    [
+     164.79,
+     4,
+     2.1
+    ],
+    [
+     7.1,
+     5,
+     45.8
+    ],
+    [
+     14.13,
+     6,
+     23.8
+    ],
+    [
+     38.59,
+     7,
+     8.8
+    ]
+   ],
+   "en_kucuk_bosluk": 0.23,
+   "en_yakin": "Ust kol tupu",
+   "en_yakin_poz": 3.0,
+   "ok": true
+  },
+  "gecit": [
+   {
+    "ad": "catal kablo deligi (O10.0) <- disi JR kosegeni 8.36",
+    "deger": 1.64,
+    "ok": true
+   },
+   {
+    "ad": "tup penceresi (10 x 14 duz) <- disi JR 7.9 x 2.75",
+    "deger": 0.0,
+    "ok": true
+   },
+   {
+    "ad": "tup ici iki eslesik JR (10.3 x 8 x 26)",
+    "deger": 0.0,
+    "ok": true
+   }
+  ],
+  "boy": [
+   {
+    "ad": "dirsek servosu (MG996R) -> tup ici (y -122)",
+    "gerekli_mm": 197.6,
+    "kablo_mm": 300.0,
+    "artan_mm": 102.4,
+    "ok": true
+   },
+   {
+    "ad": "bilek servosu (MG996R) -> tup ici (y -122)",
+    "gerekli_mm": 267.1,
+    "kablo_mm": 300.0,
+    "artan_mm": 32.9,
+    "ok": true
+   },
+   {
+    "ad": "uzatma (birlesim -> G2, S1 oncesi)",
+    "gerekli_mm": 175.7,
+    "not_": "S1 gecisi, govde ici ve PCA9685'e (~967 mm, taban YOL) yol ACIK"
+   }
+  ],
+  "ok": true
  },
  "baglanti_kontrol": [
   {
@@ -1781,6 +3349,26 @@
     [
      "civata govdesi delikte ortali (delik duvarina 0.20 mm)",
      0.2,
+     true
+    ],
+    [
+     "yarik 4.0 mm kapaninca civata ucu somundan 5.0 mm tasir (>= 0,5): vida boyu yarigi kapatir",
+     5.0,
+     true
+    ],
+    [
+     "kapali halde somun dislik boy icinde (somun yakin yuzu uctan 9.0 <= 12 mm)",
+     9.0,
+     true
+    ],
+    [
+     "kapali halde somun ve pul catalin kalanina 1.50 mm (>= 1; kulak bosluga girer)",
+     1.5,
+     true
+    ],
+    [
+     "kayan kulak karsi kulak/halka ile cakismiyor (0.000 mm3 <= 0.5)",
+     0.0,
      true
     ]
    ],
@@ -1828,6 +3416,26 @@
     [
      "civata govdesi delikte ortali (delik duvarina 0.20 mm)",
      0.2,
+     true
+    ],
+    [
+     "yarik 4.0 mm kapaninca civata ucu somundan 5.0 mm tasir (>= 0,5): vida boyu yarigi kapatir",
+     5.0,
+     true
+    ],
+    [
+     "kapali halde somun dislik boy icinde (somun yakin yuzu uctan 9.0 <= 12 mm)",
+     9.0,
+     true
+    ],
+    [
+     "kapali halde somun ve pul catalin kalanina 1.50 mm (>= 1; kulak bosluga girer)",
+     1.5,
+     true
+    ],
+    [
+     "kayan kulak karsi kulak/halka ile cakismiyor (0.000 mm3 <= 0.5)",
+     0.0,
      true
     ]
    ],
@@ -2684,9 +4292,27 @@
   ],
   "onkol_ust": {
    "-60": [],
-   "-55": [],
-   "-50": [],
-   "-45": [],
+   "-55": [
+    [
+     "On kol govdesi",
+     "Dirsek catali",
+     0.8
+    ]
+   ],
+   "-50": [
+    [
+     "On kol govdesi",
+     "Dirsek catali",
+     1.2
+    ]
+   ],
+   "-45": [
+    [
+     "On kol govdesi",
+     "Dirsek catali",
+     0.8
+    ]
+   ],
    "-40": [],
    "-35": [],
    "-30": [],
@@ -2736,12 +4362,12 @@
     [
      "On kol govdesi",
      "Dirsek catali",
-     2005.6
+     1997.7
     ],
     [
      "On kol govdesi",
      "Ust kol tupu (omuz)",
-     141.4
+     136.5
     ],
     [
      "Dirsek servosu MG996R",
@@ -2758,12 +4384,12 @@
     [
      "On kol govdesi",
      "Dirsek catali",
-     3262.6
+     3240.2
     ],
     [
      "On kol govdesi",
      "Ust kol tupu (omuz)",
-     471.4
+     444.9
     ],
     [
      "Dirsek servosu MG996R",
@@ -2783,7 +4409,7 @@
     [
      "Bilek servosu MG996R",
      "Dirsek catali",
-     236.3
+     232.4
     ],
     [
      "Bilek servosu MG996R",
@@ -2795,17 +4421,17 @@
     [
      "On kol govdesi",
      "Dirsek catali",
-     4873.2
+     4840.0
     ],
     [
      "On kol govdesi",
      "Ust kol tupu (omuz)",
-     706.1
+     662.9
     ],
     [
      "Dirsek servosu MG996R",
      "Dirsek catali",
-     465.1
+     465.2
     ],
     [
      "Dirsek servosu kulak civatasi M4x16",
@@ -2820,34 +4446,34 @@
     [
      "Bilek servosu MG996R",
      "Dirsek catali",
-     734.4
+     708.8
     ],
     [
      "Bilek servosu MG996R",
      "Ust kol tupu (omuz)",
-     247.3
+     240.4
     ]
    ],
    "140": [
     [
      "On kol govdesi",
      "Dirsek catali",
-     6758.3
+     6714.5
     ],
     [
      "On kol govdesi",
      "Ust kol tupu (omuz)",
-     881.6
+     826.7
     ],
     [
      "Dirsek servosu MG996R",
      "Dirsek catali",
-     854.5
+     855.1
     ],
     [
      "Dirsek servosu MG996R",
      "Ust kol tupu (omuz)",
-     4.3
+     3.8
     ],
     [
      "Dirsek servosu kulak civatasi M4x16",
@@ -2862,44 +4488,39 @@
     [
      "Bilek servosu MG996R",
      "Dirsek catali",
-     1759.4
+     1703.3
     ],
     [
      "Bilek servosu MG996R",
      "Ust kol tupu (omuz)",
-     703.0
+     671.5
     ]
    ],
    "145": [
     [
      "On kol govdesi",
      "Dirsek catali",
-     8086.3
+     8048.9
     ],
     [
      "On kol govdesi",
      "Ust kol tupu (omuz)",
-     1086.3
+     1019.8
     ],
     [
      "Dirsek servosu MG996R",
      "Dirsek catali",
-     1316.2
-    ],
-    [
-     "Dirsek servosu MG996R",
-     "Ust kol tupu (omuz)",
-     0.7
+     1316.3
     ],
     [
      "Dirsek servosu kulak civatasi M4x16",
      "Dirsek catali",
-     279.6
+     279.1
     ],
     [
      "Dirsek servosu kulak civatasi M4x16",
      "Ust kol tupu (omuz)",
-     16.8
+     16.4
     ],
     [
      "Dirsek servosu kontra somunu M4",
@@ -2919,12 +4540,12 @@
     [
      "Bilek servosu MG996R",
      "Dirsek catali",
-     3668.4
+     3571.0
     ],
     [
      "Bilek servosu MG996R",
      "Ust kol tupu (omuz)",
-     1334.7
+     1268.2
     ],
     [
      "Bilek servosu kulak civatasi M4x16",
@@ -2936,32 +4557,32 @@
     [
      "On kol govdesi",
      "Dirsek catali",
-     7939.0
+     7904.1
     ],
     [
      "On kol govdesi",
      "Ust kol tupu (omuz)",
-     1454.8
+     1365.4
     ],
     [
      "Dirsek servosu MG996R",
      "Dirsek catali",
-     1808.1
+     1808.6
     ],
     [
      "Dirsek servosu MG996R",
      "Ust kol tupu (omuz)",
-     0.7
+     0.5
     ],
     [
      "Dirsek servosu kulak civatasi M4x16",
      "Dirsek catali",
-     289.2
+     288.8
     ],
     [
      "Dirsek servosu kulak civatasi M4x16",
      "Ust kol tupu (omuz)",
-     37.4
+     35.1
     ],
     [
      "Dirsek servosu kontra somunu M4",
@@ -2981,17 +4602,17 @@
     [
      "Bilek servosu MG996R",
      "Dirsek catali",
-     5746.3
+     5625.7
     ],
     [
      "Bilek servosu MG996R",
      "Ust kol tupu (omuz)",
-     2219.4
+     2103.5
     ],
     [
      "Bilek servosu kulak civatasi M4x16",
      "Dirsek catali",
-     63.7
+     61.4
     ],
     [
      "Bilek servosu kulak civatasi M4x16",
@@ -3001,7 +4622,7 @@
     [
      "Bilek servosu kontra somunu M4",
      "Dirsek catali",
-     38.7
+     36.6
     ],
     [
      "Bilek servosu kontra somunu M4",
@@ -3227,7 +4848,7 @@
     [
      "El",
      "Ust kol tupu (omuz)",
-     145.0
+     139.6
     ]
    ],
    "150,45": [],
@@ -3249,7 +4870,7 @@
    "90": []
   },
   "serbest": [
-   -60,
+   -40,
    110
   ],
   "bilek_serbest": true,
@@ -3263,11 +4884,21 @@
       32.0
      ]
     ]
+   ],
+   "-": [
+    -45,
+    [
+     [
+      "On kol govdesi",
+      "Dirsek catali",
+      0.8
+     ]
+    ]
    ]
   },
   "bosluk": {
-   "-60": [
-    1.0,
+   "-40": [
+    0.0,
     "On kol govdesi",
     "Dirsek catali"
    ],
@@ -3338,38 +4969,38 @@
     "servo": "DS3218MG",
     "stall_kgcm": 20.0,
     "stall_kaynak": "omuz raporundaki deger (datasheet 19 kg*cm @5 V, 21,5 @6,8 V)",
-    "yuksuz_kgcm": 8.06,
+    "yuksuz_kgcm": 7.98,
     "yuksuz_poz": [
      90,
+     3,
      0,
-     0,
-     -90
+     0
     ],
-    "yuksuz_pay": 2.48,
-    "yuklu_kgcm": 24.34,
+    "yuksuz_pay": 2.51,
+    "yuklu_kgcm": 24.24,
     "yuklu_poz": [
      90,
+     3,
      0,
-     0,
-     -90
+     0
     ],
-    "yuklu_pay": 0.82,
-    "izinli_yuk_2x_g": 60.0
+    "yuklu_pay": 0.83,
+    "izinli_yuk_2x_g": 62.0
    },
    {
     "eklem": "S2 (omuz yana acma)",
     "servo": "DS3218MG",
     "stall_kgcm": 20.0,
     "stall_kaynak": "omuz raporundaki deger",
-    "yuksuz_kgcm": 8.17,
+    "yuksuz_kgcm": 8.11,
     "yuksuz_poz": [
      0,
      90,
      0,
      -90
     ],
-    "yuksuz_pay": 2.45,
-    "yuklu_kgcm": 24.45,
+    "yuksuz_pay": 2.47,
+    "yuklu_kgcm": 24.39,
     "yuklu_poz": [
      0,
      90,
@@ -3377,7 +5008,7 @@
      -90
     ],
     "yuklu_pay": 0.82,
-    "izinli_yuk_2x_g": 56.0
+    "izinli_yuk_2x_g": 58.0
    },
    {
     "eklem": "Dirsek",
@@ -3386,18 +5017,18 @@
     "stall_kaynak": "datasheet 9,4 kg*cm @4,8 V (11 @6 V); 01-donanim-maliyet.md",
     "yuksuz_kgcm": 1.54,
     "yuksuz_poz": [
-     -15,
+     90,
+     90,
      0,
-     105,
      -90
     ],
-    "yuksuz_pay": 6.09,
-    "yuklu_kgcm": 9.17,
+    "yuksuz_pay": 6.11,
+    "yuklu_kgcm": 9.16,
     "yuklu_poz": [
      90,
-     30,
+     25,
      0,
-     90
+     0
     ],
     "yuklu_pay": 1.03,
     "izinli_yuk_2x_g": 207.0
@@ -3418,7 +5049,7 @@
     "yuklu_kgcm": 0.67,
     "yuklu_poz": [
      85,
-     5,
+     3,
      5,
      0
     ],
@@ -3444,7 +5075,7 @@
     5
    ],
    "th": [
-    0,
+    3,
     120,
     5
    ],
@@ -3460,8 +5091,8 @@
    ]
   },
   "omuz_eski": {
-   "S1": 5.63,
-   "S2": 5.74,
+   "S1": 5.59,
+   "S2": 5.72,
    "alt_kol_g": 260.0
   },
   "egri": [
@@ -3470,27 +5101,27 @@
     "dirsek_yuksuz": 0.02,
     "dirsek_yuklu": 0.02,
     "s1_yuksuz_omuz0": 0.09,
-    "s1_yuklu_omuz0": 0.16,
-    "s1_yuksuz_omuz90": 8.06,
-    "s1_yuklu_omuz90": 24.34
+    "s1_yuklu_omuz0": 0.15,
+    "s1_yuksuz_omuz90": 8.0,
+    "s1_yuklu_omuz90": 24.28
    },
    {
     "al": 5,
     "dirsek_yuksuz": 0.15,
     "dirsek_yuklu": 0.82,
-    "s1_yuksuz_omuz0": 0.04,
-    "s1_yuklu_omuz0": 0.64,
-    "s1_yuksuz_omuz90": 8.06,
-    "s1_yuklu_omuz90": 24.3
+    "s1_yuksuz_omuz0": 0.05,
+    "s1_yuklu_omuz0": 0.65,
+    "s1_yuksuz_omuz90": 7.99,
+    "s1_yuklu_omuz90": 24.24
    },
    {
     "al": 10,
     "dirsek_yuksuz": 0.29,
     "dirsek_yuklu": 1.61,
-    "s1_yuksuz_omuz0": 0.17,
+    "s1_yuksuz_omuz0": 0.18,
     "s1_yuklu_omuz0": 1.44,
-    "s1_yuksuz_omuz90": 8.04,
-    "s1_yuklu_omuz90": 24.2
+    "s1_yuksuz_omuz90": 7.98,
+    "s1_yuklu_omuz90": 24.13
    },
    {
     "al": 15,
@@ -3498,17 +5129,17 @@
     "dirsek_yuklu": 2.39,
     "s1_yuksuz_omuz0": 0.31,
     "s1_yuklu_omuz0": 2.22,
-    "s1_yuksuz_omuz90": 8.01,
-    "s1_yuklu_omuz90": 24.02
+    "s1_yuksuz_omuz90": 7.94,
+    "s1_yuklu_omuz90": 23.96
    },
    {
     "al": 20,
-    "dirsek_yuksuz": 0.55,
+    "dirsek_yuksuz": 0.54,
     "dirsek_yuklu": 3.15,
-    "s1_yuksuz_omuz0": 0.43,
+    "s1_yuksuz_omuz0": 0.44,
     "s1_yuklu_omuz0": 2.98,
-    "s1_yuksuz_omuz90": 7.96,
-    "s1_yuklu_omuz90": 23.78
+    "s1_yuksuz_omuz90": 7.9,
+    "s1_yuklu_omuz90": 23.72
    },
    {
     "al": 25,
@@ -3516,8 +5147,8 @@
     "dirsek_yuklu": 3.89,
     "s1_yuksuz_omuz0": 0.56,
     "s1_yuklu_omuz0": 3.72,
-    "s1_yuksuz_omuz90": 7.91,
-    "s1_yuklu_omuz90": 23.47
+    "s1_yuksuz_omuz90": 7.85,
+    "s1_yuklu_omuz90": 23.41
    },
    {
     "al": 30,
@@ -3525,8 +5156,8 @@
     "dirsek_yuklu": 4.6,
     "s1_yuksuz_omuz0": 0.68,
     "s1_yuklu_omuz0": 4.43,
-    "s1_yuksuz_omuz90": 7.85,
-    "s1_yuklu_omuz90": 23.1
+    "s1_yuksuz_omuz90": 7.79,
+    "s1_yuklu_omuz90": 23.04
    },
    {
     "al": 35,
@@ -3534,80 +5165,80 @@
     "dirsek_yuklu": 5.27,
     "s1_yuksuz_omuz0": 0.79,
     "s1_yuklu_omuz0": 5.1,
-    "s1_yuksuz_omuz90": 7.77,
-    "s1_yuklu_omuz90": 22.67
+    "s1_yuksuz_omuz90": 7.71,
+    "s1_yuklu_omuz90": 22.61
    },
    {
     "al": 40,
-    "dirsek_yuksuz": 1.01,
+    "dirsek_yuksuz": 1.0,
     "dirsek_yuklu": 5.91,
-    "s1_yuksuz_omuz0": 0.89,
-    "s1_yuklu_omuz0": 5.73,
-    "s1_yuksuz_omuz90": 7.69,
-    "s1_yuklu_omuz90": 22.18
+    "s1_yuksuz_omuz0": 0.9,
+    "s1_yuklu_omuz0": 5.74,
+    "s1_yuksuz_omuz90": 7.63,
+    "s1_yuklu_omuz90": 22.12
    },
    {
     "al": 45,
     "dirsek_yuksuz": 1.1,
-    "dirsek_yuklu": 6.5,
-    "s1_yuksuz_omuz0": 0.99,
+    "dirsek_yuklu": 6.49,
+    "s1_yuksuz_omuz0": 1.0,
     "s1_yuklu_omuz0": 6.32,
-    "s1_yuksuz_omuz90": 7.6,
-    "s1_yuklu_omuz90": 21.64
+    "s1_yuksuz_omuz90": 7.54,
+    "s1_yuklu_omuz90": 21.58
    },
    {
     "al": 50,
     "dirsek_yuksuz": 1.19,
-    "dirsek_yuklu": 7.04,
+    "dirsek_yuklu": 7.03,
     "s1_yuksuz_omuz0": 1.08,
     "s1_yuklu_omuz0": 6.86,
-    "s1_yuksuz_omuz90": 7.5,
-    "s1_yuklu_omuz90": 21.05
+    "s1_yuksuz_omuz90": 7.44,
+    "s1_yuklu_omuz90": 20.99
    },
    {
     "al": 55,
     "dirsek_yuksuz": 1.27,
     "dirsek_yuklu": 7.52,
-    "s1_yuksuz_omuz0": 1.16,
+    "s1_yuksuz_omuz0": 1.17,
     "s1_yuklu_omuz0": 7.35,
-    "s1_yuksuz_omuz90": 7.39,
-    "s1_yuklu_omuz90": 20.41
+    "s1_yuksuz_omuz90": 7.33,
+    "s1_yuklu_omuz90": 20.35
    },
    {
     "al": 60,
-    "dirsek_yuksuz": 1.35,
+    "dirsek_yuksuz": 1.34,
     "dirsek_yuklu": 7.95,
-    "s1_yuksuz_omuz0": 1.23,
-    "s1_yuklu_omuz0": 7.77,
-    "s1_yuksuz_omuz90": 7.28,
-    "s1_yuklu_omuz90": 19.74
+    "s1_yuksuz_omuz0": 1.24,
+    "s1_yuklu_omuz0": 7.78,
+    "s1_yuksuz_omuz90": 7.22,
+    "s1_yuklu_omuz90": 19.68
    },
    {
     "al": 65,
-    "dirsek_yuksuz": 1.41,
-    "dirsek_yuklu": 8.32,
-    "s1_yuksuz_omuz0": 1.29,
+    "dirsek_yuksuz": 1.4,
+    "dirsek_yuklu": 8.31,
+    "s1_yuksuz_omuz0": 1.3,
     "s1_yuklu_omuz0": 8.14,
-    "s1_yuksuz_omuz90": 7.15,
-    "s1_yuklu_omuz90": 19.03
+    "s1_yuksuz_omuz90": 7.1,
+    "s1_yuklu_omuz90": 18.97
    },
    {
     "al": 70,
-    "dirsek_yuksuz": 1.46,
+    "dirsek_yuksuz": 1.45,
     "dirsek_yuklu": 8.62,
-    "s1_yuksuz_omuz0": 1.34,
+    "s1_yuksuz_omuz0": 1.35,
     "s1_yuklu_omuz0": 8.45,
-    "s1_yuksuz_omuz90": 7.03,
-    "s1_yuklu_omuz90": 18.29
+    "s1_yuksuz_omuz90": 6.97,
+    "s1_yuklu_omuz90": 18.23
    },
    {
     "al": 75,
-    "dirsek_yuksuz": 1.5,
+    "dirsek_yuksuz": 1.49,
     "dirsek_yuklu": 8.86,
-    "s1_yuksuz_omuz0": 1.38,
+    "s1_yuksuz_omuz0": 1.39,
     "s1_yuklu_omuz0": 8.69,
-    "s1_yuksuz_omuz90": 6.9,
-    "s1_yuklu_omuz90": 17.52
+    "s1_yuksuz_omuz90": 6.84,
+    "s1_yuklu_omuz90": 17.47
    },
    {
     "al": 80,
@@ -3615,94 +5246,94 @@
     "dirsek_yuklu": 9.03,
     "s1_yuksuz_omuz0": 1.41,
     "s1_yuklu_omuz0": 8.86,
-    "s1_yuksuz_omuz90": 6.77,
-    "s1_yuklu_omuz90": 16.74
+    "s1_yuksuz_omuz90": 6.71,
+    "s1_yuklu_omuz90": 16.69
    },
    {
     "al": 85,
     "dirsek_yuksuz": 1.54,
-    "dirsek_yuklu": 9.14,
+    "dirsek_yuklu": 9.13,
     "s1_yuksuz_omuz0": 1.43,
     "s1_yuklu_omuz0": 8.96,
-    "s1_yuksuz_omuz90": 6.64,
-    "s1_yuklu_omuz90": 15.95
+    "s1_yuksuz_omuz90": 6.58,
+    "s1_yuklu_omuz90": 15.89
    },
    {
     "al": 90,
     "dirsek_yuksuz": 1.54,
-    "dirsek_yuklu": 9.17,
+    "dirsek_yuklu": 9.16,
     "s1_yuksuz_omuz0": 1.43,
-    "s1_yuklu_omuz0": 8.99,
-    "s1_yuksuz_omuz90": 6.5,
-    "s1_yuklu_omuz90": 15.15
+    "s1_yuklu_omuz0": 9.0,
+    "s1_yuksuz_omuz90": 6.44,
+    "s1_yuklu_omuz90": 15.09
    },
    {
     "al": 95,
-    "dirsek_yuksuz": 1.54,
+    "dirsek_yuksuz": 1.53,
     "dirsek_yuklu": 9.13,
-    "s1_yuksuz_omuz0": 1.42,
+    "s1_yuksuz_omuz0": 1.43,
     "s1_yuklu_omuz0": 8.96,
-    "s1_yuksuz_omuz90": 6.37,
-    "s1_yuklu_omuz90": 14.35
+    "s1_yuksuz_omuz90": 6.31,
+    "s1_yuklu_omuz90": 14.3
    },
    {
     "al": 100,
-    "dirsek_yuksuz": 1.52,
-    "dirsek_yuklu": 9.03,
-    "s1_yuksuz_omuz0": 1.4,
+    "dirsek_yuksuz": 1.51,
+    "dirsek_yuklu": 9.02,
+    "s1_yuksuz_omuz0": 1.41,
     "s1_yuklu_omuz0": 8.85,
-    "s1_yuksuz_omuz90": 6.23,
-    "s1_yuklu_omuz90": 13.56
+    "s1_yuksuz_omuz90": 6.18,
+    "s1_yuklu_omuz90": 13.5
    },
    {
     "al": 105,
-    "dirsek_yuksuz": 1.49,
+    "dirsek_yuksuz": 1.48,
     "dirsek_yuklu": 8.85,
-    "s1_yuksuz_omuz0": 1.37,
+    "s1_yuksuz_omuz0": 1.38,
     "s1_yuklu_omuz0": 8.68,
-    "s1_yuksuz_omuz90": 6.1,
-    "s1_yuklu_omuz90": 12.78
+    "s1_yuksuz_omuz90": 6.05,
+    "s1_yuklu_omuz90": 12.72
    }
   ],
   "grup": {
    "UstKol": {
-    "m": 105.5,
+    "m": 103.5,
     "am": [
-     187.997,
-     -143.467,
-     -4.187
+     188.053,
+     -143.646,
+     -3.93
     ]
    },
    "OnKol": {
-    "m": 189.2,
+    "m": 188.9,
     "am": [
-     192.87,
-     -207.522,
-     -0.482
+     192.899,
+     -207.545,
+     -0.488
     ]
    },
    "El": {
-    "m": 75.3,
+    "m": 75.0,
     "am": [
-     182.357,
-     -291.178,
-     -0.718
+     182.345,
+     -291.305,
+     -0.716
     ]
    },
    "omuz_Gobek": {
-    "m": 147.5,
+    "m": 147.2,
     "am": [
-     175.582,
-     7.478,
-     -2.527
+     175.56,
+     7.496,
+     -2.475
     ]
    },
    "omuz_Kol": {
-    "m": 108.3,
+    "m": 105.8,
     "am": [
      185.0,
-     -49.929,
-     0.218
+     -49.145,
+     0.339
     ]
    }
   }
@@ -3718,16 +5349,16 @@
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0361,
-   "cikinti_alan_cm2": 11.23,
-   "yuzey_cm2": 311.4,
+   "cikinti_orani": 0.037,
+   "cikinti_alan_cm2": 11.53,
+   "yuzey_cm2": 311.6,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 88.0,
-   "kutle_g": 89.4,
-   "filament_g": 93.9,
-   "sure_saat": 1.96,
+   "hacim_cm3": 86.1,
+   "kutle_g": 87.5,
+   "filament_g": 91.9,
+   "sure_saat": 1.91,
    "katman": 73,
    "yon": "ters: pim ve bilezik ucu tablada, kollar yukari",
    "grup": "UstKol"
@@ -3737,22 +5368,22 @@
    "olcu": [
     101.1,
     63.1,
-    28.0
+    33.5
    ],
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0077,
-   "cikinti_alan_cm2": 1.84,
-   "yuzey_cm2": 239.5,
+   "cikinti_orani": 0.0075,
+   "cikinti_alan_cm2": 1.81,
+   "yuzey_cm2": 240.0,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 41.4,
-   "kutle_g": 42.1,
-   "filament_g": 44.2,
+   "hacim_cm3": 41.5,
+   "kutle_g": 42.2,
+   "filament_g": 44.3,
    "sure_saat": 0.92,
-   "katman": 28,
+   "katman": 33,
    "yon": "on yuzu tablada, acik arka yukari",
    "grup": "OnKol"
   },
@@ -3766,13 +5397,13 @@
    "tabla_aci": 45,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0418,
-   "cikinti_alan_cm2": 1.09,
-   "yuzey_cm2": 26.0,
+   "cikinti_orani": 0.0397,
+   "cikinti_alan_cm2": 1.02,
+   "yuzey_cm2": 25.8,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 3.9,
+   "hacim_cm3": 4.0,
    "kutle_g": 4.0,
    "filament_g": 4.2,
    "sure_saat": 0.09,
@@ -3842,38 +5473,38 @@
    246.0
   ]
  },
- "kutle_g": 370.0,
+ "kutle_g": 367.4,
  "kutle_grup": {
-  "UstKol": 105.5,
-  "OnKol": 189.2,
-  "El": 75.3
+  "UstKol": 103.5,
+  "OnKol": 188.9,
+  "El": 75.0
  },
  "am_grup": {
   "UstKol": [
-   188.0,
-   -143.47,
-   -4.19
+   188.05,
+   -143.65,
+   -3.93
   ],
   "OnKol": [
-   192.87,
-   -207.52,
-   -0.48
+   192.9,
+   -207.54,
+   -0.49
   ],
   "El": [
-   182.36,
-   -291.18,
+   182.34,
+   -291.3,
    -0.72
   ]
  },
  "kutle_tur": {
-  "Baski": 196.3,
-  "Baglanti": 51.8,
+  "Baski": 194.5,
+  "Baglanti": 51.0,
   "Satin": 121.9
  },
  "agirlik_merkezi": [
-  189.34,
-  -206.295,
-  -1.586
+  189.38,
+  -206.633,
+  -1.504
  ],
  "bom": [
   [
@@ -3892,7 +5523,7 @@
    "Baglanti",
    "M3 isil gomme somun",
    2,
-   0.9
+   0.5
   ],
   [
    "Baglanti",
@@ -3940,7 +5571,7 @@
    "Baglanti",
    "M5 isil gomme somun",
    1,
-   1.1
+   0.7
   ],
   [
    "Baglanti",
@@ -3958,7 +5589,7 @@
    "Baski",
    "Dirsek catali",
    1,
-   89.4
+   87.5
   ],
   [
    "Baski",
@@ -3970,7 +5601,7 @@
    "Baski",
    "On kol govdesi",
    1,
-   42.1
+   42.2
   ],
   [
    "Satin",
@@ -3998,8 +5629,11 @@
   "tup_x": 185.0,
   "tup_z": -1.25,
   "tup_uc_y": -140.0,
-  "tup_ri": 25.5,
   "tup_ro": 28.0,
+  "tup_ri": 25.65,
+  "bilezik_ri": 28.25,
+  "bilezik_yarik": 4.0,
+  "bilezik_on_yuk_min": 0.1,
   "eksen_y": -173.0,
   "eksen_z": -1.25,
   "eksen_x": [
@@ -4045,5 +5679,5 @@
   "yuk_g": 500.0,
   "kaynak": "dirsek/dirsek_parcalar.py"
  },
- "sure_s": 27.6
+ "sure_s": 55.6
 }

@@ -7,6 +7,11 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+import sys
+sys.path.insert(0, os.path.dirname(HERE))
+import arayuz as A   # eklem sinirlari tek kaynak: A.OMUZ
+PA0, PA1 = A.OMUZ["one_arka_aralik"]
+YA0, YA1 = A.OMUZ["yana_aralik"]
 G = os.path.join(HERE, "gorsel")
 d = json.load(open(os.path.join(HERE, "omuz-analiz.json"), encoding="utf-8"))
 
@@ -41,8 +46,8 @@ for phi in phis:
         else:
             c = "#b03a5b"
         ax.add_patch(Rectangle((th - 2.5, phi - 5), 5, 10, color=c, lw=0))
-ax.add_patch(Rectangle((0, -45), 120, 180, fill=False, ec="#1b1b1b", lw=2, ls="--"))
-ax.text(60, 138, "eklem sınırları (180° servo)", ha="center", va="bottom", fontsize=9)
+ax.add_patch(Rectangle((YA0, PA0), YA1 - YA0, PA1 - PA0, fill=False, ec="#1b1b1b", lw=2, ls="--"))
+ax.text((YA0 + YA1) / 2, PA1 + 3, "eklem sınırları (180° servo)", ha="center", va="bottom", fontsize=9)
 ax.set_xlim(min(ths) - 2.5, max(ths) + 2.5)
 ax.set_ylim(min(phis) - 5, max(phis) + 5)
 ax.set_xlabel("Yana açma (°)  — 0 = kol aşağıda, + dışarı")
@@ -57,7 +62,7 @@ fig.savefig(os.path.join(G, "omuz-calisma-alani.png"), dpi=130)
 # ---------------------------------------------------------------- tork haritasi (en kotu)
 tp = max(v[0] for v in d["tork"].values())
 tr = max(v[1] for v in d["tork"].values())
-lim = [(phi, th) for phi in phis for th in ths if -45 <= phi <= 135 and 0 <= th <= 120]
+lim = [(phi, th) for phi in phis for th in ths if PA0 <= phi <= PA1 and YA0 <= th <= YA1]
 tp_l = max(d["tork"]["%d,%d" % k][0] for k in lim)
 tr_l = max(d["tork"]["%d,%d" % k][1] for k in lim)
 
@@ -69,12 +74,12 @@ def aralik(vals):
 th_free_all = [th for th in ths if all(not d["kol_gobek"][str(th)] and not d["kol_govde"]["%d,%d" % (phi, th)]
                                        for phi in phis)]
 phi_free = [phi for phi in phis if not d["gobek_govde"][str(phi)] and all(
-    not d["kol_govde"]["%d,%d" % (phi, th)] for th in range(0, 121, 5))]
+    not d["kol_govde"]["%d,%d" % (phi, th)] for th in ths if YA0 <= th <= YA1)]
 
 BAGLANTI = [
     ("Omuz yuvası → sigma traversi",
      "Yuva traversin ucuna 30 mm geçer (0,2 mm boşluk), uç duvarına dayanır.",
-     "4× M6×16 DIN 912 + 4× M6 pul + 4× M6 çekiç somun (kanal 10), dört yüzde birer"),
+     "4× M6×16 DIN 912 (pulsuz: uç somunu 1,7 mm geçer) + 4× M6 çekiç somun (kanal 10), dört yüzde birer"),
     ("S1 servo → omuz yuvası",
      "Servo plakadaki yuvaya dışarıdan girer, kulakları plakanın dış yüzüne oturur.",
      "4× M4×16 DIN 912 + 4× M4 DIN 985 kontra somun (somunlar plakanın iç yüzünde)"),
@@ -101,7 +106,7 @@ BAGLANTI = [
 SIRA = [
     "Isıl gömme somunları havyayla bas: yuvaya 4× M3 (kol uçları), göbeğe 1× M5 (arka plaka), çatala 2× M3 (pim).",
     "6808-2RS'yi rulman kapağına, 625ZZ'yi çatalın arka koluna bastır.",
-    "4 çekiç somunu traversin dört kanalına sok. Yuvayı traverse geçir, 4× M6×16 + pulla sık.",
+    "4 çekiç somunu traversin dört kanalına sok. Yuvayı traverse geçir, 4× M6×16 ile sık (pul yok: başı doğrudan yuvaya oturur).",
     "S1'i yuvaya dışarıdan sok, 4× M4×16 + kontra somunla bağla.",
     "S1'i 45° konumuna getir (Pi ya da servo test cihazıyla), horn'u kol aşağıdayken tak, merkez vidasını sık.",
     "Rulmanlı kapağı yuvanın kollarına 4× M3×12 ile bağla.",
@@ -113,7 +118,8 @@ SIRA = [
 
 ACIK = [
     "**Horn delik dizilimi:** 25T disk horn'da M3 delikler 8,5 mm yarıçapta varsayıldı. Horn eline geçince kumpasla ölçülmeli, göbek ve çatal delikleri ona göre güncellenir.",
-    "**Servo sürümü:** Eklem sınırları 180° servoya göre (öne −45…+135°, yana 0…120°). DS3218MG'nin 270° sürümü alınırsa sınırlar genişler, horn takma açıları değişir.",
+    "**Servo sürümü:** Eklem sınırları 180° servoya göre (öne %d…+%d°, yana %d…%d°; `arayuz.OMUZ`). DS3218MG'nin 270° sürümü alınırsa sınırlar genişler, horn takma açıları değişir." % (PA0, PA1, YA0, YA1),
+    "**Yana açma alt sınırı +3° (düzeltme planı C1):** mekanik sıfır 0°'dir ama yazılım hiçbir zaman 0'a komut vermez. Kolun kabuğa boşluğu (hedefli ölçüm, kol aşağıda): öne 0°'de 0° → 4,67, −2° → 0,63 mm, −3° → temas; öne 40°'de 0° → 3,76 mm, −2° → temas; +3° → en az 7,17 mm. Servo sıfır kalibrasyonu (S2 horn'u takarken ve yazılımdaki sıfır kayması) en çok ±2° hata ile yapılmalı: 3° komutunda gerçek açı ≥ 1° kalır, boşluk 3,76 mm'nin altına düşmez. Sıfır kayması 5°'yi geçerse (gerçek açı −2°) kol kabuğa değer; kalibrasyonu servo test cihazıyla kolu 0°'ye getirip kabuğa dokunmadığını gözle doğrulayarak yap.",
     "**Gövde kabuğu:** V3 kabuğunun yan yüzü x = 152'de düz duvar varsayıldı. Omuz için kabukta Ø84 delik gerekiyor; V3 kabuğunda bu delik yok.",
     "**S2 kablosu:** Göbekle birlikte dönüyor. Kanal açılmadı; gevşek bir kablo halkasıyla gövdeye girmeli.",
     "**Tahmini ölçüler:** Çekiç somun 16×10×5, ısıl gömme somun M3 Ø4,6×5,7 / M5 Ø7×7, PETG baskı yoğunluğu %60. Parçalar gelince kumpasla doğrulanmalı.",

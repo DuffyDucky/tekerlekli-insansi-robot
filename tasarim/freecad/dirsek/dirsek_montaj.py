@@ -94,12 +94,50 @@ for w in catal.slice(V(0, 1, 0), kes_y):
             yaricap.append(cv.Radius)
 r_pim = max(r for r in yaricap if r < 26.5)
 r_bil = min(r for r in yaricap if 27.0 < r < 29.0)
-ara.append(("pim - tup ic yuzu radyal bosluk %.2f mm (sikma bilezigi tupu pime bastirir)" % (A.DIRSEK["tup_ri"] - r_pim),
-            round(A.DIRSEK["tup_ri"] - r_pim, 3), 0.0 < A.DIRSEK["tup_ri"] - r_pim <= 0.2))
-ara.append(("bilezik ic yuzu - tup dis yuzu radyal bosluk %.2f mm" % (r_bil - A.DIRSEK["tup_ro"]),
-            round(r_bil - A.DIRSEK["tup_ro"], 3), 0.0 < r_bil - A.DIRSEK["tup_ro"] <= 0.2))
+# tup ic yaricapi arayuzden (A.DIRSEK["tup_ri"] = A.TUP_PIM_R + A.GECME["tup_pim"]); omuzdaki gercek tup geometrisiyle de dogrulanir
+r_tup_ic = A.DIRSEK["tup_ri"]
+yar_tup = []
+for w in TUP["shape"].slice(V(0, 1, 0), kes_y):
+    for e in w.Edges:
+        cv = e.Curve
+        if hasattr(cv, "Radius") and math.hypot(cv.Center.x - DP.TX, cv.Center.z - DP.TZ) < 1e-6:
+            yar_tup.append(cv.Radius)
+r_tup_ic_geo = min(yar_tup)
+KABUL = A.GECME["kabul_max"]
+b_pim = r_tup_ic - r_pim
+b_bil = r_bil - A.DIRSEK["tup_ro"]
+ara.append(("tup ic yaricapi: omuz geometrisi = arayuz (A.GECME) %.3f mm" % r_tup_ic_geo,
+            round(r_tup_ic_geo, 3), abs(r_tup_ic_geo - r_tup_ic) < 1e-6))
+ara.append(("pim - tup ic yuzu radyal bosluk %.2f mm (sikma bilezigi tupu pime bastirir; kabul <= %.2f)" % (b_pim, KABUL),
+            round(b_pim, 3), 0.0 < b_pim <= KABUL and abs(b_pim - A.GECME["tup_pim"]) < 1e-6))
+ara.append(("bilezik ic yuzu - tup dis yuzu radyal bosluk %.2f mm (kabul <= %.2f)" % (b_bil, KABUL),
+            round(b_bil, 3), 0.0 < b_bil <= KABUL and abs(b_bil - A.GECME["tup_bilezik"]) < 1e-6))
 ara.append(("pim tupe giris boyu %.1f mm" % (catal.BoundBox.YMax - A.DIRSEK["tup_uc_y"]),
             round(catal.BoundBox.YMax - A.DIRSEK["tup_uc_y"], 2), catal.BoundBox.YMax - A.DIRSEK["tup_uc_y"] >= 20.0))
+
+# --- sikma bilezigi kelepcesi (duzeltme plani 1. adim, G): tup pim ile bilezik arasinda sikisir. Yarik kapaninca bilezik ic yaricapi
+#     ~ yarik/(2*pi) kadar iner; bu dusus toplam radyal bosluktan (pim-tup + bilezik-tup) en az on yuk kadar BUYUK olmali, yoksa kelepce
+#     tupu pime bastiramaz. Yarik genisligi catal geometrisinden olculur (y = -128 kesiti, kulak ucundaki yarik koseleri).
+tup_yaricap_arasi = r_pim < r_tup_ic < A.DIRSEK["tup_ro"] < r_bil          # tup duvari (r_ic...r_dis) pim ile bilezik arasinda
+ara.append(("tup duvari (r %.2f...%.2f) pim (r %.2f) ile bilezik (r %.2f) arasinda; tup alin kapagina ve V oluga dayali" % (
+    r_tup_ic, A.DIRSEK["tup_ro"], r_pim, r_bil), [round(r_pim, 3), round(r_tup_ic, 3), round(A.DIRSEK["tup_ro"], 3), round(r_bil, 3)],
+    tup_yaricap_arasi))
+xs_yarik = [v.X for w in catal.slice(V(0, 1, 0), kes_y) for v in w.Vertexes
+            if abs(v.X - DP.TX) < 6.0 and v.Z < DP.TZ - 30.0]
+yarik_w = max(xs_yarik) - min(xs_yarik)                                      # acik yarik genisligi (geometriden)
+yay_acik = 2.0 * r_bil * math.asin(yarik_w / (2.0 * r_bil))                    # yariga denk gelen ic yuz yayi
+r_kapali = (2.0 * math.pi * r_bil - yay_acik) / (2.0 * math.pi)               # yarik tam kapaninca (kulaklar degince) ic yaricap
+dr_kapanma = r_bil - r_kapali
+bosluk_toplam = b_pim + b_bil
+on_yuk = dr_kapanma - bosluk_toplam
+ON_YUK_MIN = A.DIRSEK["bilezik_on_yuk_min"]
+ara.append(("yarik %.2f mm (arayuz %.2f): kapaninca ic yaricap %.3f -> %.3f mm (%.3f iner)" % (
+    yarik_w, A.DIRSEK["bilezik_yarik"], r_bil, r_kapali, dr_kapanma), round(yarik_w, 3), abs(yarik_w - A.DIRSEK["bilezik_yarik"]) < 1e-3))
+ara.append(("kelepce kapanma %.3f mm >= toplam radyal bosluk %.2f (pim-tup %.2f + bilezik-tup %.2f) + on yuk %.2f; kalan on yuk %.3f mm" % (
+    dr_kapanma, bosluk_toplam, b_pim, b_bil, ON_YUK_MIN, on_yuk), round(on_yuk, 3), dr_kapanma >= bosluk_toplam + ON_YUK_MIN - 1e-9))
+kelepce = dict(yarik_mm=round(yarik_w, 3), yay_acik_mm=round(yay_acik, 3), r_bilezik_acik=round(r_bil, 4), r_bilezik_kapali=round(r_kapali, 4),
+               kapanma_mm=round(dr_kapanma, 4), bosluk_toplam_mm=round(bosluk_toplam, 4), on_yuk_mm=round(on_yuk, 4),
+               on_yuk_min_mm=ON_YUK_MIN, eski_yarik_2mm_kapanma_mm=round(2.0 / (2 * math.pi), 3), kontrol_ok=bool(on_yuk >= ON_YUK_MIN - 1e-9))
 log("omuz arayuzu cakisma", len(arayuz_cak), [x[:2] for x in ara])
 
 
@@ -122,6 +160,15 @@ def t_aralik(sh, nokta, yon):
 def S(i):
     return P[i]["shape"]
 
+
+# sikma bilezigi: civata yarigi kapatirken somun tarafi kulak (yarigin -X yani) +yarik kadar kayar; somun ve pul onunla gider
+KUL_KUTU = Part.makeBox(DP.TX - yarik_w / 2 - 170.0, 25.0, 14.0, V(170.0, -139.0, DP.TZ - 45.0))     # x 170...yarik yuzu, z TZ-45...TZ-31
+CATAL_KUL = catal.common(KUL_KUTU)
+CATAL_KALAN = catal.cut(KUL_KUTU)
+KUL_KAYMIS = CATAL_KUL.copy()
+KUL_KAYMIS.translate(V(yarik_w, 0, 0))
+kul_cakisma = kes(KUL_KAYMIS, CATAL_KALAN)
+log("kelepce kulak kapanma cakismasi mm3", round(kul_cakisma, 4))
 
 bag_kontrol = []
 for b in BAG:
@@ -149,6 +196,23 @@ for b in BAG:
             dg = mesafe(civ, S(b["govde"]))
             k.append(("civata govdesi delikte ortali (delik duvarina %.2f mm)" % dg, round(dg, 3),
                       abs(dg - (A.CLEAR[d_] - d_) / 2) < 0.02))
+            if b["ad"].startswith("Sikma bilezigi"):
+                # yarik kapanirken somun + pul +yarik kadar kafaya dogru kayar; civata (basi sabit kulakta) yerinde kalir
+                t_yakin = t_aralik(som, n0, u)[0] - yarik_w     # somun yakin yuzu (kafa tarafi), kapali halde
+                cik_k = t_uc - (t_aralik(som, n0, u)[1] - yarik_w)  # civata ucu - somun uzak yuzu, kapali halde
+                DISLI = 2 * d_ + 6.0                          # DIN 912 / ISO 4762 en kisa dislik boy (2d+6, l <= 125)
+                k.append(("yarik %.1f mm kapaninca civata ucu somundan %.1f mm tasir (>= 0,5): vida boyu yarigi kapatir" % (yarik_w, cik_k),
+                          round(cik_k, 3), cik_k >= 0.5))
+                k.append(("kapali halde somun dislik boy icinde (somun yakin yuzu uctan %.1f <= %.0f mm)" % (t_uc - t_yakin, DISLI),
+                          round(t_uc - t_yakin, 3), t_uc - t_yakin <= DISLI))
+                som_k = som.copy()
+                som_k.translate(V(yarik_w, 0, 0))
+                pul_k = S(b["pul_somun"]).copy()
+                pul_k.translate(V(yarik_w, 0, 0))
+                dk = min(mesafe(som_k, CATAL_KALAN), mesafe(pul_k, CATAL_KALAN))
+                k.append(("kapali halde somun ve pul catalin kalanina %.2f mm (>= 1; kulak bosluga girer)" % dk, round(dk, 3), dk >= 1.0))
+                k.append(("kayan kulak karsi kulak/halka ile cakismiyor (%.3f mm3 <= %.1f)" % (kul_cakisma, TOL), round(kul_cakisma, 4),
+                          0.0 <= kul_cakisma <= TOL))
         else:
             dh = mesafe(civ, S(b["servo"]))
             dn = mesafe(som, S(b["govde"]))
@@ -396,8 +460,14 @@ def tork(phi, th, al, be):
     return t0_, t1_
 
 
-PHI_T = list(range(-45, 136, 5))
-TH_T = list(range(0, 121, 5))
+def _izgara(aralik, adim=5):
+    """Eklem araligi (arayuz) ucta tam: alt/ust sinir + aradaki adim katlari (ornek yana 3...120 -> 3, 5, 10, ..., 120)."""
+    lo, hi = int(math.ceil(aralik[0])), int(math.floor(aralik[1]))
+    return sorted({lo, hi} | set(range(-(-lo // adim) * adim, hi + 1, adim)))
+
+
+PHI_T = _izgara(A.OMUZ["one_arka_aralik"])      # S1 (omuz one-arka): arayuz.OMUZ, elle sinir yok
+TH_T = _izgara(A.OMUZ["yana_aralik"])           # S2 (omuz yana acma): arayuz.OMUZ (alt sinir 3)
 AL_T = list(range(int(ar[0]), int(ar[1]) + 1, 5))
 BE_T = [-90, 0, 90]
 TK = []
@@ -449,7 +519,7 @@ for j, ad in enumerate(EKLEM):
         ad, t_yuksuz, p_yuksuz, t_yuklu, p_yuklu, stall, stall / max(t_yuksuz, 1e-9), stall / max(t_yuklu, 1e-9), izin))
 # omuz raporundaki eski hesap (alt kol 260 g tahmini) ile karsilastirma
 omz = json.load(open(os.path.join(UST, "omuz", "omuz-analiz.json"), encoding="utf-8"))
-lim = [(phi, th) for phi in O.PHIS for th in O.THS if -45 <= phi <= 135 and 0 <= th <= 120]
+lim = [(phi, th) for phi in O.PHIS for th in O.THS if A.OMUZ["one_arka_aralik"][0] <= phi <= A.OMUZ["one_arka_aralik"][1] and A.OMUZ["yana_aralik"][0] <= th <= A.OMUZ["yana_aralik"][1]]
 omuz_eski = dict(S1=max(omz["tork"]["%d,%d" % k][0] for k in lim), S2=max(omz["tork"]["%d,%d" % k][1] for k in lim),
                  alt_kol_g=omz["alt_kol"]["m"])
 # dirsek ve bilek servosu: tork vs dirsek acisi (kol asagida, omuz 0/0 ve omuz one 90)
@@ -565,6 +635,170 @@ def vl(v):
     return [round(v.x, 3), round(v.y, 3), round(v.z, 3)]
 
 
+# ====================================================================== 8b) kol kablo yolu (duzeltme plani M1; arayuz.KOL_KABLO, kablo_yolu.py)
+# Dirsek lopu (dirsek 0...105) ve S2 lopu (yana 3...120) duzlemsel elastikayla her pozda cozulur: en kucuk egrilik yaricapi
+# (>= r_dinamik), kiris < L (gerilmez), demet cevrel zarfi ile parcalar arasi bosluk (>= pay_bosluk; ilk / son 4 mm baglama
+# noktasi, haric). Sabit yollar: kose yaricapi (>= r_sabit), yassi yatan demet ile parcalar arasi bosluk (>= 0; servo cikisinin
+# ilk 2 mm'si haric). Gecitler: disi JR'nin O10 delikten ve tup penceresinden gecisi, tup icinde iki eslesik JR. Boy: servo
+# kablosu (300) birlesime ulasir mi. S1 gecisi ACIK (arayuz KOL_KABLO["s1"]).
+import kablo_yolu as KY
+KK = A.KOL_KABLO
+R_DIN = {n: KY.r_sinir(KK, n)[0] for n in (1, 2)}
+R_SAB = {n: KY.r_sinir(KK, n)[1] for n in (1, 2)}
+PAY = KK["pay_bosluk"]
+UC = 4.0
+
+
+def grup_sekil(gruplar, pl=None, kaynak=None):
+    kaynak = P if kaynak is None else kaynak
+    return [(q["ad"], tasi(q["shape"], pl) if pl is not None else q["shape"]) for q in kaynak if q["grup"] in gruplar]
+
+
+UST_S = grup_sekil(("UstKol",)) + grup_sekil(("Kol",), kaynak=O.P)        # ev pozu (omuz Kol grubu + dirsek catali): UstKol cercevesi
+ONK_POZ = {}
+
+
+def onkol_sekil(al):
+    if al not in ONK_POZ:
+        ONK_POZ[al] = grup_sekil(("OnKol", "El"), Pe(al))
+    return ONK_POZ[al]
+
+
+kablo = dict(kaynak="arayuz.KOL_KABLO + dirsek/kablo_yolu.py", serit=list(KK["serit"]),
+             r_dinamik={str(n): round(v, 2) for n, v in R_DIN.items()}, r_sabit={str(n): round(v, 2) for n, v in R_SAB.items()},
+             pay_bosluk=PAY, s1=KK["s1"])
+
+
+def lop_degerlendir(ad, lt, rel_yer, pozlar, sekiller):
+    dm = KY.demet(lt["serit"], KK["serit"])
+    sonuc = KY.lop_coz(lt, rel_yer, pozlar)
+    satir = []
+    for r in sonuc:
+        kenar, boy_ = KY.cokgen(r["nokta"], UC, UC)
+        d, kim = KY.en_yakin(kenar, sekiller(r["poz"]))
+        satir.append(dict(poz=r["poz"], r_min=round(r["r_min"], 2), kiris=round(r["kiris"], 2), bosluk=round(d - dm["r_lop"], 2),
+                          en_yakin=kim, yakinsadi=r["yakinsadi"]))
+    rmin = min(s["r_min"] for s in satir)
+    bmin = min(satir, key=lambda s: s["bosluk"])
+    kmax = max(s["kiris"] for s in satir)
+    ok = (all(s["yakinsadi"] for s in satir) and rmin >= R_DIN[lt["serit"]] and bmin["bosluk"] >= PAY and kmax < lt["L"])
+    log("kablo %s: L %.0f, R_min %.1f (>= %.1f), en kucuk bosluk %.2f (%s, poz %s), kiris %.1f...%.1f %s" % (
+        ad, lt["L"], rmin, R_DIN[lt["serit"]], bmin["bosluk"], bmin["en_yakin"], bmin["poz"], min(s["kiris"] for s in satir), kmax,
+        "OK" if ok else "HATA"))
+    ornek = {str(sonuc[i]["poz"]): [vl(q) for q in sonuc[i]["nokta"][::6]] for i in (0, len(sonuc) // 2, len(sonuc) - 1)}
+    return dict(L=lt["L"], serit=lt["serit"], demet=dm, r_min=rmin, r_sinir=round(R_DIN[lt["serit"]], 2), en_kucuk_bosluk=bmin["bosluk"],
+                en_yakin=bmin["en_yakin"], en_yakin_poz=bmin["poz"], kiris=[min(s["kiris"] for s in satir), kmax], ok=bool(ok),
+                pozlar=satir, ornek_nokta=ornek)
+
+
+# --- dirsek lopu: M on kolda (Pe(al)), F catalda (UstKol); dirsek 0...105 (2,5 adim)
+DL = KK["dirsek_lop"]
+AL_K = [ar[0] + 2.5 * i for i in range(int(round((ar[1] - ar[0]) / 2.5)) + 1)]
+kablo["dirsek_lop"] = lop_degerlendir("dirsek lopu", DL, lambda al: Pe(al), AL_K, lambda al: UST_S + onkol_sekil(al))
+
+# --- S2 lopu: K kol catalinda (Pr(th)), G2 gobekte; yana 3...120 (3 adim). Gobek cercevesinde: omuz Gobek sabit, Kol + dirsek UstKol
+#     Pr(th) ile; Govde parcalari S1 pozlarinda gobege gore -phi (kapak, yuva, kabuk referansi)
+SL = KK["s2_lop"]
+GOB_S = grup_sekil(("Gobek",), kaynak=O.P)
+GOV_S = []
+for _phi in (-45, 0, 45, 90, 135):
+    GOV_S += [("%s (S1 %d)" % (a, _phi), s) for a, s in grup_sekil(("Govde",), Pp(_phi).inverse(), kaynak=O.P)]
+yana = A.OMUZ["yana_aralik"]
+TH_K = sorted(set([yana[0]] + list(range(int(math.ceil(yana[0] / 3.0)) * 3, int(yana[1]) + 1, 3)) + [yana[1]]))
+KOL_POZ = {}
+
+
+def kol_sekil(th):
+    if th not in KOL_POZ:
+        KOL_POZ[th] = grup_sekil(("Kol",), Pr(th), kaynak=O.P) + grup_sekil(("UstKol",), Pr(th))
+    return KOL_POZ[th]
+
+
+kablo["s2_lop"] = lop_degerlendir("S2 lopu", SL, lambda th: Pr(th), TH_K, lambda th: GOB_S + GOV_S + kol_sekil(th))
+
+
+# --- sabit yollar
+def yol_degerlendir(ad, yt, cerceve_sekil, pozlar, bas=0.0):
+    n = yt["serit"]
+    dm = KY.demet(n, KK["serit"])
+    rk, ik, koseler = KY.kose_yaricap(yt["nokta"])
+    bmin = (1e9, None, None)
+    for poz in pozlar:
+        pl, sekiller = cerceve_sekil(poz)
+        q = [pl.multVec(V(*p)) for p in yt["nokta"]]
+        kenar, _ = KY.cokgen(q, bas, 0.0)
+        d, kim = KY.en_yakin(kenar, sekiller)
+        if d - dm["r_sabit"] < bmin[0]:
+            bmin = (d - dm["r_sabit"], kim, poz)
+    _, boy_ = KY.cokgen(yt["nokta"])
+    ok = rk >= R_SAB[n] - 1e-9 and bmin[0] >= -1e-6
+    log("kablo yol %s: boy %.1f, kose yaricapi en fazla %.1f (>= %.1f), en kucuk bosluk %.2f (%s, poz %s) %s" % (
+        ad, boy_, rk, R_SAB[n], bmin[0], bmin[1], bmin[2], "OK" if ok else "HATA"))
+    return dict(grup=yt["grup"], serit=n, boy=round(boy_, 1), kose_r_max=round(rk, 2), r_sinir=round(R_SAB[n], 2),
+                koseler=[[round(a, 2), i, round(b, 1)] for a, i, b in koseler], en_kucuk_bosluk=round(bmin[0], 2),
+                en_yakin=bmin[1], en_yakin_poz=bmin[2], ok=bool(ok))
+
+
+def ONK_KONTROL(al):        # on kol yolu: on kolla birlikte doner; catal, tup ve on kola gore
+    return Pe(al), UST_S + onkol_sekil(al)
+
+
+kablo["yol_dirsek_servo"] = yol_degerlendir("dirsek servosu", KK["yol_dirsek_servo"], ONK_KONTROL, AL_K[::2],
+                                            bas=KK["yol_dirsek_servo"]["cikis"])
+kablo["yol_bilek_servo"] = yol_degerlendir("bilek servosu", KK["yol_bilek_servo"], ONK_KONTROL, AL_K[::2],
+                                           bas=KK["yol_bilek_servo"]["cikis"])
+kablo["yol_ustkol"] = yol_degerlendir("catal + tup ici", KK["yol_ustkol"], lambda al: (App.Placement(), UST_S + onkol_sekil(al)), AL_K[::2])
+GOB_KOL = {}
+
+
+def kol_cerceve(th):        # Kol cercevesinde: gobek ve Govde (S1 0) Pr(th)^-1 ile
+    if th not in GOB_KOL:
+        inv = Pr(th).inverse()
+        GOB_KOL[th] = grup_sekil(("Gobek",), inv, kaynak=O.P) + grup_sekil(("Govde",), inv, kaynak=O.P)
+    return App.Placement(), UST_S + GOB_KOL[th]
+
+
+kablo["yol_uzatma_kol"] = yol_degerlendir("tup penceresi -> K", KK["yol_uzatma_kol"], kol_cerceve, TH_K[::5])
+
+# --- gecitler (montajda disi JR gecer mi; tup icinde birlesim sigar mi)
+JR = KK["jr_disi"]
+jr_diag = math.hypot(JR[0], JR[1])
+gecit = []
+r_del = min(e.Curve.Radius for w in catal.slice(V(0, 1, 0), -142.0) for e in w.Edges
+            if hasattr(e.Curve, "Radius") and math.hypot(e.Curve.Center.x - DP.TX, e.Curve.Center.z - DP.TZ) < 1e-6)
+gecit.append(dict(ad="catal kablo deligi (O%.1f) <- disi JR kosegeni %.2f" % (2 * r_del, jr_diag), deger=round(2 * r_del - jr_diag, 2),
+                  ok=bool(2 * r_del >= jr_diag + 0.5)))
+TP = KK["tup_pencere"]
+jr_kutu = Part.makeBox(JR[0] + 0.4, JR[1] + 0.4, 15.0, V(DP.TX - (JR[0] + 0.4) / 2, -77.0 - (JR[1] + 0.4) / 2, -33.0))
+v_jr = jr_kutu.common(tup).Volume
+gecit.append(dict(ad="tup penceresi (%.0f x %.0f duz) <- disi JR %.1f x %.2f" % (TP["x"][1] - TP["x"][0], TP["y"][1] - TP["y"][0] - 2 * TP["uc"],
+                                                                                JR[0], JR[1]), deger=round(v_jr, 4), ok=bool(v_jr < 1e-6)))
+EJ = KK["jr_eslesik"]
+bj = V(*KK["birlesim"])
+bir_kutu = Part.makeBox(EJ[0], EJ[2], 2 * EJ[1], V(bj.x - EJ[0] / 2, bj.y - EJ[2] / 2, bj.z - EJ[1]))     # x 10,3, boy y yonunde, iki yan yana z
+v_bir = sum(bir_kutu.common(s).Volume for a, s in UST_S if s.BoundBox.intersect(bir_kutu.BoundBox))
+gecit.append(dict(ad="tup ici iki eslesik JR (%.1f x %.0f x %.0f)" % (EJ[0], 2 * EJ[1], EJ[2]), deger=round(v_bir, 4), ok=bool(v_bir < 1e-6)))
+kablo["gecit"] = gecit
+log("kablo gecit:", [(g["ad"], g["deger"], g["ok"]) for g in gecit])
+
+# --- boy: servo kablosu (300) birlesime ulasir (sabit yol + lop + catal/tup yolu + pay)
+boy = []
+L_ust = kablo["yol_ustkol"]["boy"]
+for ad, yk in (("dirsek servosu (MG996R) -> tup ici (y %.0f)" % KK["yol_ustkol"]["nokta"][-1][1], "yol_dirsek_servo"),
+               ("bilek servosu (MG996R) -> tup ici (y %.0f)" % KK["yol_ustkol"]["nokta"][-1][1], "yol_bilek_servo")):
+    gerek = kablo[yk]["boy"] + DL["L"] + L_ust
+    boy.append(dict(ad=ad, gerekli_mm=round(gerek, 1), kablo_mm=KK["servo_kablo_boy"], artan_mm=round(KK["servo_kablo_boy"] - gerek, 1),
+                    ok=bool(KK["servo_kablo_boy"] - gerek >= KK["boy_payi"])))
+L_uz = kablo["yol_uzatma_kol"]["boy"] + SL["L"]
+boy.append(dict(ad="uzatma (birlesim -> G2, S1 oncesi)", gerekli_mm=round(L_uz, 1),
+                not_="S1 gecisi, govde ici ve PCA9685'e (~967 mm, taban YOL) yol ACIK"))
+kablo["boy"] = boy
+log("kablo boy:", [(b["ad"], b["gerekli_mm"], b.get("artan_mm"), b.get("ok")) for b in boy])
+kablo["ok"] = bool(all(kablo[k]["ok"] for k in ("dirsek_lop", "s2_lop", "yol_dirsek_servo", "yol_bilek_servo", "yol_ustkol", "yol_uzatma_kol"))
+                   and all(g["ok"] for g in gecit) and all(b.get("ok", True) for b in boy))
+log("kablo kontrolu", "OK" if kablo["ok"] else "HATA", "(S1 gecisi acik)")
+
+
 out = dict(
     modul="dirsek_sag", ayna_modul="dirsek_sol",
     koordinat="omuz yereli: orijin travers merkezi, X disari, Y yukari, Z ileri (mm); global = yerel + arayuz.MODULLER konumu",
@@ -591,6 +825,8 @@ out = dict(
                         not_="2. asama: omuz pozlari (phi, th) x dirsek acilari; bilek yalniz el (El grubu) icin; sol kol aynali"),
     gecersiz=gecersiz, coklu_kati=coklu, statik=statik, cift_sayisi=n_cift, tolerans_mm3=TOL,
     omuz_arayuzu=dict(cakisma=arayuz_cak, kontroller=ara),
+    sikma_bilezigi=dict(kelepce, kulak_kapanma_cakisma_mm3=round(kul_cakisma, 4)),
+    kablo=kablo,
     baglanti_kontrol=bag_kontrol,
     tarama=dict(als=ALS, bes=BES, bes_kol=BES_K,
                 onkol_ust={str(k): v for k, v in onkol_ust.items()},

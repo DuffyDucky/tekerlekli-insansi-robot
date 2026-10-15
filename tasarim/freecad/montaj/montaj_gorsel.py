@@ -15,6 +15,10 @@ from pivy import coin  # noqa  getCameraNode icin
 
 V = App.Vector
 HERE = os.path.dirname(os.path.abspath(__file__))
+if os.path.dirname(HERE) not in sys.path:
+    sys.path.insert(0, os.path.dirname(HERE))
+import arayuz as A          # eklem sinirlari + kafa-kol yasak kutusu (animasyon kontrolu)
+Y0 = float(A.OMUZ["yana_aralik"][0])      # omuz yana acma yazilim alt siniri (3 derece, duzeltme plani C1)
 OUT = os.path.join(HERE, "gorsel")
 KARE = os.path.join(tempfile.gettempdir(), "robot-montaj-kare")      # OneDrive disi
 os.makedirs(OUT, exist_ok=True)
@@ -22,18 +26,19 @@ os.makedirs(KARE, exist_ok=True)
 RENK = {"alu": (0.78, 0.80, 0.83), "alu2": (0.55, 0.60, 0.68), "celik": (0.50, 0.52, 0.56), "celik2": (0.86, 0.66, 0.22),
         "siyah": (0.13, 0.13, 0.14), "petg": (0.96, 0.55, 0.13), "petg2": (0.18, 0.52, 0.86), "pirinc": (0.86, 0.66, 0.22),
         "kabuk": (0.85, 0.87, 0.90), "gri": (0.6, 0.6, 0.6)}
-# Kollari_oynat simulasyonu (radyan, sure 8 s). Sinirlar icinde: one-arka -33...+101 derece, yana 0...69 derece,
-# dirsek 0...103 derece (sinir 0...105), bilek -69...+69 derece (sinir +-90).
+# Kollari_oynat simulasyonu (radyan, sure 8 s). Sinirlar icinde: one-arka -34...+103 derece, yana Y0 (3)...69 derece
+# (yazilim alt siniri arayuz.OMUZ, 14 Ekim 2026; eskiden 0'dan basliyordu), dirsek 0...103 derece (sinir 0...105), bilek -69...+69 derece (sinir +-90).
 # Sag ve sol kol zit fazda one-arka sallanir, ikisi birlikte one kalkip yana acilir; sag dirsek 4 s'de iki kez bukulur,
 # sol dirsek 8 s'de bir kez; bilekler zit yonde doner. Kafa pan -46...+46 derece (sinir +-90) saga sola bakar, tilt
 # -14...+14 derece (sinir -25...30) iki kez basini egip kaldirir. Tekerler (sinirsiz) 8 s'de bir tur ileri yuvarlanir.
-# Her formul t = 0'da 0 (ev pozundan baslar).
+# Her formul t = 0'da 0 (ev pozundan baslar); yana acma t = 0'da Y0 (sinir ici en alt konum). animasyon_kontrol() her karede
+# sinirlari ve kafa-kol yasak kutusunu (arayuz.KAFA_KOL_YASAK) denetler; ihlalde betik durur.
 SURE, ADIM = 8.0, 0.05
 FORMUL = {
     "OmuzSag_OneArka": "0.75*sin(2*pi*time/4) + 0.6*(1 - cos(2*pi*time/8))",
     "OmuzSol_OneArka": "-0.75*sin(2*pi*time/4) + 0.6*(1 - cos(2*pi*time/8))",
-    "OmuzSag_Yana": "0.6*(1 - cos(2*pi*time/8))",
-    "OmuzSol_Yana": "0.6*(1 - cos(2*pi*time/8))",
+    "OmuzSag_Yana": "%.6f + %.6f*(1 - cos(2*pi*time/8))" % (math.radians(Y0), (1.2 - math.radians(Y0)) / 2),   # Y0 ... 1,2 rad
+    "OmuzSol_Yana": "%.6f + %.6f*(1 - cos(2*pi*time/8))" % (math.radians(Y0), (1.2 - math.radians(Y0)) / 2),
     "DirsekSag_Dirsek": "0.9*(1 - cos(2*pi*time/4))",
     "DirsekSol_Dirsek": "0.9*(1 - cos(2*pi*time/8))",
     "DirsekSag_Bilek": "1.2*sin(2*pi*time/8)",
@@ -51,8 +56,8 @@ POZ_GORSEL = [
                               "omuz_sol": dict(one_arka=10.0, yana=10.0), "dirsek_sol": dict(dirsek=30.0, bilek=0.0),
                               "kafa": dict(pan=30.0, tilt=-10.0)},
      ((0.35, 0.25, 1.0), 1000, (0, 820, 0))),
-    ("montaj-poz-one.png", {"omuz_sag": dict(one_arka=90.0, yana=0.0), "dirsek_sag": dict(dirsek=60.0, bilek=45.0),
-                            "omuz_sol": dict(one_arka=90.0, yana=0.0), "dirsek_sol": dict(dirsek=60.0, bilek=45.0),
+    ("montaj-poz-one.png", {"omuz_sag": dict(one_arka=90.0, yana=Y0), "dirsek_sag": dict(dirsek=60.0, bilek=45.0),
+                            "omuz_sol": dict(one_arka=90.0, yana=Y0), "dirsek_sol": dict(dirsek=60.0, bilek=45.0),
                             "kafa": dict(pan=0.0, tilt=25.0)},
      ((0.8, 0.45, 1.0), 900, (0, 860, 120))),
     ("montaj-poz-kafa.png", {"kafa": dict(pan=45.0, tilt=20.0), "omuz_sag": dict(one_arka=45.0, yana=20.0),
@@ -72,6 +77,37 @@ def log(*a):
 
 def formul_deger(f, t):
     return eval(f.replace("time", "(%r)" % t), {"sin": math.sin, "cos": math.cos, "pi": math.pi})
+
+
+def animasyon_kontrol():
+    """Kollari_oynat: her karede (ADIM) her eklem yazilim sinirinda mi, hicbir kol kafa-kol yasak kutusuna giriyor mu (arayuz)."""
+    sinir = dict(OneArka=A.OMUZ["one_arka_aralik"], Yana=A.OMUZ["yana_aralik"], Dirsek=A.DIRSEK["aralik"],
+                 Bilek=A.DIRSEK["bilek_aralik"], Pan=A.KAFA["pan_aralik"], Tilt=A.KAFA["tilt_aralik"])
+    Y = A.KAFA_KOL_YASAK
+    hata, uc = [], {}
+    n = int(round(SURE / ADIM))
+    for i in range(n + 1):
+        t = i * ADIM
+        d = {ad: math.degrees(formul_deger(f, t)) for ad, f in FORMUL.items() if not ad.startswith("Taban_")}
+        for ad, a in d.items():
+            s = sinir[ad.split("_")[1]]
+            lo, hi = uc.get(ad, (a, a))
+            uc[ad] = (min(lo, a), max(hi, a))
+            if not s[0] - 1e-9 <= a <= s[1] + 1e-9:
+                hata.append("t=%.2f %s %.2f sinir disi %s" % (t, ad, a, s))
+        for taraf, kutu in (("Sag", Y["kutu_sag_kol"]), ("Sol", Y["kutu_sol_kol"])):
+            kol = dict(one_arka=d["Omuz%s_OneArka" % taraf], yana=d["Omuz%s_Yana" % taraf],
+                       dirsek=d["Dirsek%s_Dirsek" % taraf], bilek=d["Dirsek%s_Bilek" % taraf])
+            kosul = all(Y["kol_kosulu"][k][0] <= v <= Y["kol_kosulu"][k][1] for k, v in kol.items())
+            if kosul and kutu["pan"][0] <= d["Kafa_Pan"] <= kutu["pan"][1] and kutu["tilt"][0] <= d["Kafa_Tilt"] <= kutu["tilt"][1]:
+                hata.append("t=%.2f %s kol + kafa yasak kutuda" % (t, taraf))
+    return dict(kare=n + 1, uc={k: (round(v[0], 2), round(v[1], 2)) for k, v in uc.items()}, hata=hata)
+
+
+ANIM = animasyon_kontrol()
+log("animasyon kontrolu:", ANIM["kare"], "kare; uclar", ANIM["uc"], "; ihlal", len(ANIM["hata"]), ANIM["hata"][:5])
+if ANIM["hata"]:
+    raise SystemExit("Kollari_oynat sinir / yasak kutu ihlali: %s" % ANIM["hata"][:3])
 
 doc = App.openDocument(os.path.join(HERE, "robot-montaj.FCStd"))
 
@@ -189,7 +225,7 @@ def go():
             for taraf in ("sag", "sol"):
                 o = poz.get("omuz_" + taraf, {})
                 dd = poz.get("dirsek_" + taraf, {})
-                phi, th = o.get("one_arka", 0.0), o.get("yana", 0.0)
+                phi, th = o.get("one_arka", 0.0), o.get("yana", Y0)      # pozda verilmeyen kol: asagida, yana alt sinirda
                 yer = {"Omuz%s_Gobek": ("omuz_" + taraf, OP.Pp(phi)), "Omuz%s_Kol": ("omuz_" + taraf, OP.Pp(phi).multiply(OP.Pr(th)))}
                 for g in ("UstKol", "OnKol", "El"):
                     yer["Dirsek%s_" + g] = ("dirsek_" + taraf, DP.grup_yer(g, phi, th, dd.get("dirsek", 0.0), dd.get("bilek", 0.0)))

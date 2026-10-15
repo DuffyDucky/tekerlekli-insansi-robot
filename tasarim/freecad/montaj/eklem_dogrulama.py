@@ -14,6 +14,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import moduller as MD
 from moduller import V
+import arayuz as A          # moduller yolu kurar
+
+Y0 = float(A.OMUZ["yana_aralik"][0])   # omuz yana acma yazilim alt siniri (3 derece, duzeltme plani C1); sinir ici pozlarda 'kol asagida' = Y0
 
 t0 = time.time()
 ADIM = 0.02      # s, simulasyon cikti adimi (sure 1 s; formul = aci * time)
@@ -191,14 +194,14 @@ birim = dict(formul="57.29578*time (= 1 rad)", olculen_derece=round(kar[-1]["aci
 log("birim testi: 1 rad ->", birim["olculen_derece"], "derece")
 
 # ---------------------------------------------------------------------- 2) her kol ayri, sinir ici pozlar
-POZ = [(30, 0), (90, 0), (135, 0), (-45, 0), (0, 60), (0, 120), (90, 90), (-30, 45), (60, 30), (135, 120)]
+POZ = [(30, Y0), (90, Y0), (135, Y0), (-45, Y0), (0, 60), (0, 120), (90, 90), (-30, 45), (60, 30), (135, 120)]
 vakalar = []
 for kol in [k for k in KOL if omuz_mu(k)]:
     for phi, th in POZ:
         komut = {kol: {"one_arka": float(phi), "yana": float(th)}}
         vakalar.append(ozetle("%s one %d yana %d" % (kol, phi, th), komut, calistir(komut)))
 # dirsek ve bilek (omuz pozuyla birlikte): (one-arka, yana, dirsek, bilek)
-DPOZ = [(0, 0, 30, 0), (0, 0, 60, 45), (0, 0, 105, -90), (0, 0, 90, 90), (90, 0, 90, 45), (45, 60, 60, -45),
+DPOZ = [(0, Y0, 30, 0), (0, Y0, 60, 45), (0, Y0, 105, -90), (0, Y0, 90, 90), (90, Y0, 90, 45), (45, 60, 60, -45),
         (135, 120, 105, 90), (-45, 30, 0, -90), (60, 30, 45, 30), (90, 90, 105, -60)]
 for taraf in ("sag", "sol"):
     om, dr = "omuz_" + taraf, "dirsek_" + taraf
@@ -208,7 +211,7 @@ for taraf in ("sag", "sol"):
         komut = {om: {"one_arka": float(phi), "yana": float(th)}, dr: {"dirsek": float(al), "bilek": float(be)}}
         vakalar.append(ozetle("%s one %d yana %d dirsek %d bilek %d" % (taraf, phi, th, al, be), komut, calistir(komut)))
 # iki kol birlikte
-for (a, b) in (((90, 45, 0, 0), (90, 45, 0, 0)), ((120, 30, 0, 0), (-30, 90, 0, 0)), ((90, 0, 60, 45), (90, 0, 60, -45)),
+for (a, b) in (((90, 45, 0, 0), (90, 45, 0, 0)), ((120, 30, 0, 0), (-30, 90, 0, 0)), ((90, Y0, 60, 45), (90, Y0, 60, -45)),
                ((30, 20, 105, 90), (-30, 40, 30, -90))):
     komut = {"omuz_sag": {"one_arka": float(a[0]), "yana": float(a[1])}, "omuz_sol": {"one_arka": float(b[0]), "yana": float(b[1])}}
     if "dirsek_sag" in KOL and (a[2] or a[3] or b[2] or b[3]):
@@ -221,7 +224,7 @@ if "kafa" in KOL:
     for pa, ti in KPOZ:
         komut = {"kafa": {"pan": float(pa), "tilt": float(ti)}}
         vakalar.append(ozetle("kafa pan %d tilt %d" % (pa, ti), komut, calistir(komut)))
-    for (kp, sg, sl) in (((30, -10), (20, 100, 95, -60), (10, 10, 30, 0)), ((-60, 20), (90, 0, 60, 45), (90, 0, 60, -45)),
+    for (kp, sg, sl) in (((30, -10), (20, 100, 95, -60), (10, 10, 30, 0)), ((-60, 20), (90, Y0, 60, 45), (90, Y0, 60, -45)),
                          ((75, 25), (45, 60, 60, -45), (-30, 30, 0, 0))):
         komut = {"kafa": {"pan": float(kp[0]), "tilt": float(kp[1])},
                  "omuz_sag": {"one_arka": float(sg[0]), "yana": float(sg[1])}, "dirsek_sag": {"dirsek": float(sg[2]), "bilek": float(sg[3])},
@@ -236,12 +239,12 @@ if "taban" in KOL:
         komut = {"taban": {a: float(x) for a, x in zip(tk, tp)}}
         vakalar.append(ozetle("taban teker %s" % (tp,), komut, calistir(komut)))
     komut = {"taban": {a: 60.0 for a in tk}, "kafa": {"pan": 30.0, "tilt": 10.0},
-             "omuz_sag": {"one_arka": 90.0, "yana": 0.0}, "dirsek_sag": {"dirsek": 60.0, "bilek": 45.0},
+             "omuz_sag": {"one_arka": 90.0, "yana": Y0}, "dirsek_sag": {"dirsek": 60.0, "bilek": 45.0},
              "omuz_sol": {"one_arka": -30.0, "yana": 30.0}, "dirsek_sol": {"dirsek": 30.0, "bilek": -45.0}}
     vakalar.append(ozetle("taban teker 60 + kafa + kollar", komut, calistir(komut)))
 
 # ---------------------------------------------------------------------- 3) sinir disi surus
-SINIR_DISI = [(160, 0), (180, 0), (-60, 0), (0, 140), (0, -15)]
+SINIR_DISI = [(160, Y0), (180, Y0), (-60, Y0), (0, 140), (0, -15), (0, 0)]   # (0, 0): mekanik ev pozu, yazilim alt sinirinin (Y0) altinda
 sinir_disi = []
 for kol in KOL:
     if kol == "taban":

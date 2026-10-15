@@ -1,16 +1,16 @@
 {
- "parca_sayisi": 202,
+ "parca_sayisi": 194,
  "baski_sayisi": 15,
  "gecersiz": [],
  "coklu_kati": [],
  "temizlik": [],
  "cakisma": [],
- "cakisma_cift_sayisi": 509,
+ "cakisma_cift_sayisi": 485,
  "tolerans_mm3": 0.5,
  "iskelet_cakisma": [],
  "iskelet_cift_sayisi": 116,
  "bolge": {
-  "kontrol_edilen": 33,
+  "kontrol_edilen": 51,
   "ihlal": [],
   "en_yakin": [
    [
@@ -210,6 +210,114 @@
     "Nextion konnektor ve kablo boslugu",
     2.12,
     "Gogus bandi sol"
+   ],
+   [
+    "kafa",
+    "Boyun plakasi kulaklari + M6 civata baslari",
+    8.06,
+    "Omuz bandi sag"
+   ],
+   [
+    "taban",
+    "M5x40 burc -1-40 (kat ayrimi)",
+    67.47,
+    "Etek orta sol"
+   ],
+   [
+    "taban",
+    "M5x40 burc -1+40 (kat ayrimi)",
+    67.47,
+    "Etek orta sol"
+   ],
+   [
+    "taban",
+    "M5x40 burc +1-40 (kat ayrimi)",
+    67.47,
+    "Etek orta sag"
+   ],
+   [
+    "taban",
+    "M5x40 burc +1+40 (kat ayrimi)",
+    67.47,
+    "Etek orta sag"
+   ],
+   [
+    "taban",
+    "BTS7960 -68 (8 mm burc ustunde)",
+    68.01,
+    "Etek on sol"
+   ],
+   [
+    "taban",
+    "BTS7960 +68 (8 mm burc ustunde)",
+    68.01,
+    "Etek on sag"
+   ],
+   [
+    "taban",
+    "XL4016 -49,75 (8 mm burc ustunde)",
+    119.64,
+    "Etek orta sol"
+   ],
+   [
+    "taban",
+    "XL4016 +49,75 (8 mm burc ustunde)",
+    119.64,
+    "Etek orta sag"
+   ],
+   [
+    "taban",
+    "XL4016 +0,170 (8 mm burc ustunde)",
+    66.0,
+    "Etek on sag"
+   ],
+   [
+    "taban",
+    "Elektronik kati on yerlesimi (Pi, ESP32, PCA, BNO, amfi)",
+    36.16,
+    "Etek orta sol"
+   ],
+   [
+    "taban",
+    "Pi 5 fan hava payi",
+    38.47,
+    "Etek orta sol"
+   ],
+   [
+    "taban",
+    "Guc paneli (sigorta kutusu, role, ana sigorta)",
+    10.46,
+    "Etek arka sag"
+   ],
+   [
+    "taban",
+    "Ana anahtar govdesi (etek plakasi alti, oneri)",
+    3.0,
+    "Etek arka sol"
+   ],
+   [
+    "taban",
+    "Sonar tutucu -79",
+    1.9,
+    "Etek on sol"
+   ],
+   [
+    "taban",
+    "Sonar tutucu +0",
+    1.9,
+    "Etek on sag"
+   ],
+   [
+    "taban",
+    "Sonar tutucu +79",
+    1.9,
+    "Etek on sag"
+   ],
+   [
+    "taban",
+    "Aku on takozu + aku kayislari",
+    46.16,
+    "Etek arka sag"
    ]
   ]
  },
@@ -220,11 +328,9 @@
    "parca": "Govde alt bandi sag",
    "govde": "Govde braketi sag y400",
    "eleman": [
-    "M6 DIN 125 pul",
-    "M6x16 DIN 912",
+    "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
-    "M6 DIN 125 pul",
-    "M6x16 DIN 912",
+    "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
     "M5 DIN 125 pul",
     "M5x10 DIN 912",
@@ -237,11 +343,9 @@
    "parca": "Govde alt bandi sol",
    "govde": "Govde braketi sol y400",
    "eleman": [
-    "M6 DIN 125 pul",
-    "M6x16 DIN 912",
+    "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
-    "M6 DIN 125 pul",
-    "M6x16 DIN 912",
+    "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
     "M5 DIN 125 pul",
     "M5x10 DIN 912",
@@ -254,11 +358,9 @@
    "parca": "Gogus bandi sag",
    "govde": "Govde braketi sag y780",
    "eleman": [
-    "M6 DIN 125 pul",
-    "M6x16 DIN 912",
+    "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
-    "M6 DIN 125 pul",
-    "M6x16 DIN 912",
+    "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
     "M5 DIN 125 pul",
     "M5x10 DIN 912",
@@ -271,11 +373,9 @@
    "parca": "Gogus bandi sol",
    "govde": "Govde braketi sol y780",
    "eleman": [
-    "M6 DIN 125 pul",
-    "M6x16 DIN 912",
+    "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
-    "M6 DIN 125 pul",
-    "M6x16 DIN 912",
+    "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
     "M5 DIN 125 pul",
     "M5x10 DIN 912",
@@ -383,8 +483,8 @@
      true
     ],
     [
-     "M6 civata ucu yuzden 11.4 mm iceride (somun alti 9.3, kanal tabani 11.8)",
-     11.4,
+     "M6 civata ucu profil yuzunden 11.0 mm iceride: somun ustunu 1.7 mm geciyor (sart >= 0.5), kanal tabanina 0.8 mm (sart >= 0.5)",
+     11.0,
      true
     ],
     [
@@ -393,7 +493,7 @@
      true
     ],
     [
-     "M6 pul brakete dayali",
+     "M6 civata (pulsuz) basi brakete dayali",
      0.0,
      true
     ],
@@ -403,8 +503,8 @@
      true
     ],
     [
-     "M6 civata ucu yuzden 11.4 mm iceride (somun alti 9.3, kanal tabani 11.8)",
-     11.4,
+     "M6 civata ucu profil yuzunden 11.0 mm iceride: somun ustunu 1.7 mm geciyor (sart >= 0.5), kanal tabanina 0.8 mm (sart >= 0.5)",
+     11.0,
      true
     ],
     [
@@ -413,7 +513,7 @@
      true
     ],
     [
-     "M6 pul brakete dayali",
+     "M6 civata (pulsuz) basi brakete dayali",
      0.0,
      true
     ],
@@ -461,8 +561,8 @@
      true
     ],
     [
-     "M6 civata ucu yuzden 11.4 mm iceride (somun alti 9.3, kanal tabani 11.8)",
-     11.4,
+     "M6 civata ucu profil yuzunden 11.0 mm iceride: somun ustunu 1.7 mm geciyor (sart >= 0.5), kanal tabanina 0.8 mm (sart >= 0.5)",
+     11.0,
      true
     ],
     [
@@ -471,7 +571,7 @@
      true
     ],
     [
-     "M6 pul brakete dayali",
+     "M6 civata (pulsuz) basi brakete dayali",
      0.0,
      true
     ],
@@ -481,8 +581,8 @@
      true
     ],
     [
-     "M6 civata ucu yuzden 11.4 mm iceride (somun alti 9.3, kanal tabani 11.8)",
-     11.4,
+     "M6 civata ucu profil yuzunden 11.0 mm iceride: somun ustunu 1.7 mm geciyor (sart >= 0.5), kanal tabanina 0.8 mm (sart >= 0.5)",
+     11.0,
      true
     ],
     [
@@ -491,7 +591,7 @@
      true
     ],
     [
-     "M6 pul brakete dayali",
+     "M6 civata (pulsuz) basi brakete dayali",
      0.0,
      true
     ],
@@ -539,8 +639,8 @@
      true
     ],
     [
-     "M6 civata ucu yuzden 11.4 mm iceride (somun alti 9.3, kanal tabani 11.8)",
-     11.4,
+     "M6 civata ucu profil yuzunden 11.0 mm iceride: somun ustunu 1.7 mm geciyor (sart >= 0.5), kanal tabanina 0.8 mm (sart >= 0.5)",
+     11.0,
      true
     ],
     [
@@ -549,7 +649,7 @@
      true
     ],
     [
-     "M6 pul brakete dayali",
+     "M6 civata (pulsuz) basi brakete dayali",
      0.0,
      true
     ],
@@ -559,8 +659,8 @@
      true
     ],
     [
-     "M6 civata ucu yuzden 11.4 mm iceride (somun alti 9.3, kanal tabani 11.8)",
-     11.4,
+     "M6 civata ucu profil yuzunden 11.0 mm iceride: somun ustunu 1.7 mm geciyor (sart >= 0.5), kanal tabanina 0.8 mm (sart >= 0.5)",
+     11.0,
      true
     ],
     [
@@ -569,7 +669,7 @@
      true
     ],
     [
-     "M6 pul brakete dayali",
+     "M6 civata (pulsuz) basi brakete dayali",
      0.0,
      true
     ],
@@ -617,8 +717,8 @@
      true
     ],
     [
-     "M6 civata ucu yuzden 11.4 mm iceride (somun alti 9.3, kanal tabani 11.8)",
-     11.4,
+     "M6 civata ucu profil yuzunden 11.0 mm iceride: somun ustunu 1.7 mm geciyor (sart >= 0.5), kanal tabanina 0.8 mm (sart >= 0.5)",
+     11.0,
      true
     ],
     [
@@ -627,7 +727,7 @@
      true
     ],
     [
-     "M6 pul brakete dayali",
+     "M6 civata (pulsuz) basi brakete dayali",
      0.0,
      true
     ],
@@ -637,8 +737,8 @@
      true
     ],
     [
-     "M6 civata ucu yuzden 11.4 mm iceride (somun alti 9.3, kanal tabani 11.8)",
-     11.4,
+     "M6 civata ucu profil yuzunden 11.0 mm iceride: somun ustunu 1.7 mm geciyor (sart >= 0.5), kanal tabanina 0.8 mm (sart >= 0.5)",
+     11.0,
      true
     ],
     [
@@ -647,7 +747,7 @@
      true
     ],
     [
-     "M6 pul brakete dayali",
+     "M6 civata (pulsuz) basi brakete dayali",
      0.0,
      true
     ],
@@ -695,7 +795,7 @@
      true
     ],
     [
-     "M6 civata ucu yuzden 10.4 mm iceride (somun alti 9.3, kanal tabani 11.8)",
+     "M6 civata ucu profil yuzunden 10.4 mm iceride: somun ustunu 1.1 mm geciyor (sart >= 0.5), kanal tabanina 1.4 mm (sart >= 0.5)",
      10.4,
      true
     ],
@@ -753,7 +853,7 @@
      true
     ],
     [
-     "M6 civata ucu yuzden 10.4 mm iceride (somun alti 9.3, kanal tabani 11.8)",
+     "M6 civata ucu profil yuzunden 10.4 mm iceride: somun ustunu 1.1 mm geciyor (sart >= 0.5), kanal tabanina 1.4 mm (sart >= 0.5)",
      10.4,
      true
     ],
@@ -811,7 +911,7 @@
      true
     ],
     [
-     "M6 civata ucu yuzden 10.4 mm iceride (somun alti 9.3, kanal tabani 11.8)",
+     "M6 civata ucu profil yuzunden 10.4 mm iceride: somun ustunu 1.1 mm geciyor (sart >= 0.5), kanal tabanina 1.4 mm (sart >= 0.5)",
      10.4,
      true
     ],
@@ -869,7 +969,7 @@
      true
     ],
     [
-     "M6 civata ucu yuzden 10.4 mm iceride (somun alti 9.3, kanal tabani 11.8)",
+     "M6 civata ucu profil yuzunden 10.4 mm iceride: somun ustunu 1.1 mm geciyor (sart >= 0.5), kanal tabanina 1.4 mm (sart >= 0.5)",
      10.4,
      true
     ],
@@ -927,7 +1027,7 @@
      true
     ],
     [
-     "M6 civata ucu yuzden 10.4 mm iceride (somun alti 9.3, kanal tabani 11.8)",
+     "M6 civata ucu profil yuzunden 10.4 mm iceride: somun ustunu 1.1 mm geciyor (sart >= 0.5), kanal tabanina 1.4 mm (sart >= 0.5)",
      10.4,
      true
     ],
@@ -985,7 +1085,7 @@
      true
     ],
     [
-     "M6 civata ucu yuzden 10.4 mm iceride (somun alti 9.3, kanal tabani 11.8)",
+     "M6 civata ucu profil yuzunden 10.4 mm iceride: somun ustunu 1.1 mm geciyor (sart >= 0.5), kanal tabanina 1.4 mm (sart >= 0.5)",
      10.4,
      true
     ],
@@ -1023,6 +1123,168 @@
    "tamam": true
   }
  ],
+ "m6_vida_pay": {
+  "sart_somun_gecme_mm": 0.5,
+  "sart_taban_pay_mm": 0.5,
+  "somun_ustu_mm": 9.3,
+  "kanal_tabani_mm": 11.8,
+  "kalemler": [
+   {
+    "braket": "Govde braketi sag y400",
+    "tip": "govde",
+    "delik": 0,
+    "uc_mm": 11.0,
+    "vida": "M6x14 DIN 912",
+    "pul": false,
+    "somun_pay_mm": 1.7,
+    "taban_pay_mm": 0.8,
+    "tamam": true
+   },
+   {
+    "braket": "Govde braketi sag y400",
+    "tip": "govde",
+    "delik": 1,
+    "uc_mm": 11.0,
+    "vida": "M6x14 DIN 912",
+    "pul": false,
+    "somun_pay_mm": 1.7,
+    "taban_pay_mm": 0.8,
+    "tamam": true
+   },
+   {
+    "braket": "Govde braketi sol y400",
+    "tip": "govde",
+    "delik": 0,
+    "uc_mm": 11.0,
+    "vida": "M6x14 DIN 912",
+    "pul": false,
+    "somun_pay_mm": 1.7,
+    "taban_pay_mm": 0.8,
+    "tamam": true
+   },
+   {
+    "braket": "Govde braketi sol y400",
+    "tip": "govde",
+    "delik": 1,
+    "uc_mm": 11.0,
+    "vida": "M6x14 DIN 912",
+    "pul": false,
+    "somun_pay_mm": 1.7,
+    "taban_pay_mm": 0.8,
+    "tamam": true
+   },
+   {
+    "braket": "Govde braketi sag y780",
+    "tip": "govde",
+    "delik": 0,
+    "uc_mm": 11.0,
+    "vida": "M6x14 DIN 912",
+    "pul": false,
+    "somun_pay_mm": 1.7,
+    "taban_pay_mm": 0.8,
+    "tamam": true
+   },
+   {
+    "braket": "Govde braketi sag y780",
+    "tip": "govde",
+    "delik": 1,
+    "uc_mm": 11.0,
+    "vida": "M6x14 DIN 912",
+    "pul": false,
+    "somun_pay_mm": 1.7,
+    "taban_pay_mm": 0.8,
+    "tamam": true
+   },
+   {
+    "braket": "Govde braketi sol y780",
+    "tip": "govde",
+    "delik": 0,
+    "uc_mm": 11.0,
+    "vida": "M6x14 DIN 912",
+    "pul": false,
+    "somun_pay_mm": 1.7,
+    "taban_pay_mm": 0.8,
+    "tamam": true
+   },
+   {
+    "braket": "Govde braketi sol y780",
+    "tip": "govde",
+    "delik": 1,
+    "uc_mm": 11.0,
+    "vida": "M6x14 DIN 912",
+    "pul": false,
+    "somun_pay_mm": 1.7,
+    "taban_pay_mm": 0.8,
+    "tamam": true
+   },
+   {
+    "braket": "Etek braketi sag z-105",
+    "tip": "etek",
+    "delik": 0,
+    "uc_mm": 10.4,
+    "vida": "M6x14 DIN 912",
+    "pul": true,
+    "somun_pay_mm": 1.1,
+    "taban_pay_mm": 1.4,
+    "tamam": true
+   },
+   {
+    "braket": "Etek braketi sol z-105",
+    "tip": "etek",
+    "delik": 0,
+    "uc_mm": 10.4,
+    "vida": "M6x14 DIN 912",
+    "pul": true,
+    "somun_pay_mm": 1.1,
+    "taban_pay_mm": 1.4,
+    "tamam": true
+   },
+   {
+    "braket": "Etek braketi sag z+0",
+    "tip": "etek",
+    "delik": 0,
+    "uc_mm": 10.4,
+    "vida": "M6x14 DIN 912",
+    "pul": true,
+    "somun_pay_mm": 1.1,
+    "taban_pay_mm": 1.4,
+    "tamam": true
+   },
+   {
+    "braket": "Etek braketi sol z+0",
+    "tip": "etek",
+    "delik": 0,
+    "uc_mm": 10.4,
+    "vida": "M6x14 DIN 912",
+    "pul": true,
+    "somun_pay_mm": 1.1,
+    "taban_pay_mm": 1.4,
+    "tamam": true
+   },
+   {
+    "braket": "Etek braketi sag z+105",
+    "tip": "etek",
+    "delik": 0,
+    "uc_mm": 10.4,
+    "vida": "M6x14 DIN 912",
+    "pul": true,
+    "somun_pay_mm": 1.1,
+    "taban_pay_mm": 1.4,
+    "tamam": true
+   },
+   {
+    "braket": "Etek braketi sol z+105",
+    "tip": "etek",
+    "delik": 0,
+    "uc_mm": 10.4,
+    "vida": "M6x14 DIN 912",
+    "pul": true,
+    "somun_pay_mm": 1.1,
+    "taban_pay_mm": 1.4,
+    "tamam": true
+   }
+  ]
+ },
  "vida_kontrol": [
   {
    "etiket": "govde y476 on",
@@ -1568,7 +1830,199 @@
  "bosluk": {
   "teker_etek_mm": 12.0,
   "direk_govde_mm": 46.64,
-  "cam_duvar_mm": 0.102
+  "cam_duvar_mm": 0.102,
+  "cam_duvar_parca": [
+   [
+    "Omuz bandi sag",
+    0.1022
+   ],
+   [
+    "Omuz bandi sol",
+    0.1022
+   ],
+   [
+    "Gogus bandi sag",
+    0.1022
+   ]
+  ],
+  "cam_duvar_sart_mm": 0.05,
+  "cam_duvar_ok": true
+ },
+ "bindirme_bosluk": {
+  "sart_min_mm": 0.15,
+  "tasarim_mm": 0.25,
+  "en_az_mm": 0.1881,
+  "ihlal": [],
+  "ciftler": [
+   {
+    "dil": "Govde alt bandi sag",
+    "komsu": "Govde alt bandi sol",
+    "dil_hacim_mm3": 6405.0,
+    "duvar_bosluk_mm": 0.25,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Govde alt bandi sag",
+    "komsu": "Govde orta bandi sag",
+    "dil_hacim_mm3": 5713.0,
+    "duvar_bosluk_mm": 0.2495,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Govde alt bandi sag",
+    "komsu": "Govde orta bandi sol",
+    "dil_hacim_mm3": 360.0,
+    "duvar_bosluk_mm": 0.25,
+    "son_bosluk_mm": 0.25,
+    "tamam": true
+   },
+   {
+    "dil": "Govde alt bandi sol",
+    "komsu": "Govde orta bandi sol",
+    "dil_hacim_mm3": 5352.0,
+    "duvar_bosluk_mm": 0.2495,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Govde orta bandi sag",
+    "komsu": "Govde orta bandi sol",
+    "dil_hacim_mm3": 3195.0,
+    "duvar_bosluk_mm": 0.25,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Govde orta bandi sag",
+    "komsu": "Gogus bandi sag",
+    "dil_hacim_mm3": 5133.0,
+    "duvar_bosluk_mm": 0.1881,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Govde orta bandi sag",
+    "komsu": "Gogus bandi sol",
+    "dil_hacim_mm3": 180.0,
+    "duvar_bosluk_mm": 0.2019,
+    "son_bosluk_mm": 0.2019,
+    "tamam": true
+   },
+   {
+    "dil": "Govde orta bandi sag",
+    "komsu": "Arka servis kapagi",
+    "dil_hacim_mm3": 3992.0,
+    "duvar_bosluk_mm": 0.25,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Govde orta bandi sol",
+    "komsu": "Gogus bandi sol",
+    "dil_hacim_mm3": 4953.0,
+    "duvar_bosluk_mm": 0.1881,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Govde orta bandi sol",
+    "komsu": "Arka servis kapagi",
+    "dil_hacim_mm3": 3632.0,
+    "duvar_bosluk_mm": 0.25,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Gogus bandi sag",
+    "komsu": "Gogus bandi sol",
+    "dil_hacim_mm3": 3739.0,
+    "duvar_bosluk_mm": 0.2019,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Gogus bandi sag",
+    "komsu": "Omuz bandi sag",
+    "dil_hacim_mm3": 4911.0,
+    "duvar_bosluk_mm": 0.2415,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Gogus bandi sag",
+    "komsu": "Omuz bandi sol",
+    "dil_hacim_mm3": 180.0,
+    "duvar_bosluk_mm": 0.2497,
+    "son_bosluk_mm": 0.2497,
+    "tamam": true
+   },
+   {
+    "dil": "Gogus bandi sol",
+    "komsu": "Omuz bandi sol",
+    "dil_hacim_mm3": 4779.0,
+    "duvar_bosluk_mm": 0.2415,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Omuz bandi sag",
+    "komsu": "Omuz bandi sol",
+    "dil_hacim_mm3": 2700.0,
+    "duvar_bosluk_mm": 0.2415,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Etek arka sag",
+    "komsu": "Etek arka sol",
+    "dil_hacim_mm3": 3300.0,
+    "duvar_bosluk_mm": 0.2475,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Etek orta sag",
+    "komsu": "Etek arka sag",
+    "dil_hacim_mm3": 3300.0,
+    "duvar_bosluk_mm": 0.2153,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Etek orta sag",
+    "komsu": "Etek on sag",
+    "dil_hacim_mm3": 3300.0,
+    "duvar_bosluk_mm": 0.2153,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Etek orta sol",
+    "komsu": "Etek arka sol",
+    "dil_hacim_mm3": 3300.0,
+    "duvar_bosluk_mm": 0.2153,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Etek orta sol",
+    "komsu": "Etek on sol",
+    "dil_hacim_mm3": 3300.0,
+    "duvar_bosluk_mm": 0.2153,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   },
+   {
+    "dil": "Etek on sag",
+    "komsu": "Etek on sol",
+    "dil_hacim_mm3": 3179.0,
+    "duvar_bosluk_mm": 0.2475,
+    "son_bosluk_mm": 0.0,
+    "tamam": true
+   }
+  ]
  },
  "baski": [
   {
@@ -1581,16 +2035,16 @@
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.001,
-   "cikinti_alan_cm2": 1.8,
-   "yuzey_cm2": 1820.6,
+   "cikinti_orani": 0.0008,
+   "cikinti_alan_cm2": 1.5,
+   "yuzey_cm2": 1819.8,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 251.6,
-   "kutle_g": 288.0,
-   "filament_g": 302.0,
-   "sure_saat": 6.3,
+   "hacim_cm3": 249.4,
+   "kutle_g": 285.0,
+   "filament_g": 299.0,
+   "sure_saat": 6.2,
    "katman": 225,
    "yon": "dik (alt kenari tablada)",
    "grup": "Govde kabugu"
@@ -1605,16 +2059,16 @@
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0007,
-   "cikinti_alan_cm2": 1.2,
-   "yuzey_cm2": 1695.6,
+   "cikinti_orani": 0.0006,
+   "cikinti_alan_cm2": 1.0,
+   "yuzey_cm2": 1695.2,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 234.5,
-   "kutle_g": 268.0,
-   "filament_g": 281.0,
-   "sure_saat": 5.9,
+   "hacim_cm3": 233.5,
+   "kutle_g": 267.0,
+   "filament_g": 280.0,
+   "sure_saat": 5.8,
    "katman": 225,
    "yon": "dik (alt kenari tablada)",
    "grup": "Govde kabugu"
@@ -1622,22 +2076,22 @@
   {
    "ad": "Govde orta bandi sag",
    "olcu": [
-    183.3,
-    150.4,
+    183.0,
+    150.1,
     227.0
    ],
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0048,
-   "cikinti_alan_cm2": 8.0,
-   "yuzey_cm2": 1674.2,
+   "cikinti_orani": 0.0046,
+   "cikinti_alan_cm2": 7.7,
+   "yuzey_cm2": 1673.4,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 220.4,
-   "kutle_g": 252.0,
-   "filament_g": 264.0,
+   "hacim_cm3": 218.2,
+   "kutle_g": 249.0,
+   "filament_g": 262.0,
    "sure_saat": 5.5,
    "katman": 226,
    "yon": "dik (alt kenari tablada)",
@@ -1646,23 +2100,23 @@
   {
    "ad": "Govde orta bandi sol",
    "olcu": [
-    183.3,
-    138.4,
+    183.0,
+    138.1,
     227.0
    ],
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0042,
-   "cikinti_alan_cm2": 6.7,
-   "yuzey_cm2": 1601.4,
+   "cikinti_orani": 0.0041,
+   "cikinti_alan_cm2": 6.6,
+   "yuzey_cm2": 1600.9,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 211.2,
-   "kutle_g": 241.0,
-   "filament_g": 253.0,
-   "sure_saat": 5.3,
+   "hacim_cm3": 209.7,
+   "kutle_g": 240.0,
+   "filament_g": 252.0,
+   "sure_saat": 5.2,
    "katman": 226,
    "yon": "dik (alt kenari tablada)",
    "grup": "Govde kabugu"
@@ -1677,16 +2131,16 @@
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0048,
-   "cikinti_alan_cm2": 8.3,
-   "yuzey_cm2": 1736.3,
+   "cikinti_orani": 0.0047,
+   "cikinti_alan_cm2": 8.1,
+   "yuzey_cm2": 1735.5,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 230.5,
-   "kutle_g": 263.0,
-   "filament_g": 277.0,
-   "sure_saat": 5.8,
+   "hacim_cm3": 229.0,
+   "kutle_g": 262.0,
+   "filament_g": 275.0,
+   "sure_saat": 5.7,
    "katman": 205,
    "yon": "dik (alt kenari tablada)",
    "grup": "Govde kabugu"
@@ -1701,15 +2155,15 @@
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0045,
-   "cikinti_alan_cm2": 7.5,
-   "yuzey_cm2": 1668.9,
+   "cikinti_orani": 0.0044,
+   "cikinti_alan_cm2": 7.3,
+   "yuzey_cm2": 1668.4,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 221.6,
-   "kutle_g": 253.0,
-   "filament_g": 266.0,
+   "hacim_cm3": 220.8,
+   "kutle_g": 252.0,
+   "filament_g": 265.0,
    "sure_saat": 5.5,
    "katman": 205,
    "yon": "dik (alt kenari tablada)",
@@ -1725,14 +2179,14 @@
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.004,
-   "cikinti_alan_cm2": 4.8,
-   "yuzey_cm2": 1195.5,
+   "cikinti_orani": 0.0039,
+   "cikinti_alan_cm2": 4.7,
+   "yuzey_cm2": 1195.3,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 168.7,
-   "kutle_g": 193.0,
+   "hacim_cm3": 168.2,
+   "kutle_g": 192.0,
    "filament_g": 202.0,
    "sure_saat": 4.2,
    "katman": 102,
@@ -1797,15 +2251,15 @@
    "tabla_aci": 4,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0011,
-   "cikinti_alan_cm2": 2.5,
-   "yuzey_cm2": 2240.5,
+   "cikinti_orani": 0.001,
+   "cikinti_alan_cm2": 2.3,
+   "yuzey_cm2": 2240.1,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 310.7,
-   "kutle_g": 355.0,
-   "filament_g": 373.0,
+   "hacim_cm3": 310.1,
+   "kutle_g": 354.0,
+   "filament_g": 372.0,
    "sure_saat": 7.8,
    "katman": 227,
    "yon": "ters (ust plakasi tablada)",
@@ -1822,8 +2276,8 @@
    "sigar": true,
    "sigar_cift": true,
    "cikinti_orani": 0.0004,
-   "cikinti_alan_cm2": 0.9,
-   "yuzey_cm2": 2185.4,
+   "cikinti_alan_cm2": 0.8,
+   "yuzey_cm2": 2185.3,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
@@ -1845,15 +2299,15 @@
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0031,
-   "cikinti_alan_cm2": 4.0,
-   "yuzey_cm2": 1278.4,
+   "cikinti_orani": 0.003,
+   "cikinti_alan_cm2": 3.8,
+   "yuzey_cm2": 1277.9,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 165.4,
-   "kutle_g": 189.0,
-   "filament_g": 198.0,
+   "hacim_cm3": 164.3,
+   "kutle_g": 188.0,
+   "filament_g": 197.0,
    "sure_saat": 4.1,
    "katman": 227,
    "yon": "ters (ust plakasi tablada)",
@@ -1869,15 +2323,15 @@
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0031,
-   "cikinti_alan_cm2": 4.0,
-   "yuzey_cm2": 1278.4,
+   "cikinti_orani": 0.003,
+   "cikinti_alan_cm2": 3.8,
+   "yuzey_cm2": 1277.9,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 165.4,
-   "kutle_g": 189.0,
-   "filament_g": 198.0,
+   "hacim_cm3": 164.3,
+   "kutle_g": 188.0,
+   "filament_g": 197.0,
    "sure_saat": 4.1,
    "katman": 227,
    "yon": "ters (ust plakasi tablada)",
@@ -1894,13 +2348,13 @@
    "sigar": true,
    "sigar_cift": true,
    "cikinti_orani": 0.0013,
-   "cikinti_alan_cm2": 3.0,
-   "yuzey_cm2": 2233.2,
+   "cikinti_alan_cm2": 2.8,
+   "yuzey_cm2": 2232.9,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 309.5,
-   "kutle_g": 354.0,
+   "hacim_cm3": 308.9,
+   "kutle_g": 353.0,
    "filament_g": 371.0,
    "sure_saat": 7.7,
    "katman": 227,
@@ -1919,12 +2373,12 @@
    "sigar_cift": true,
    "cikinti_orani": 0.0008,
    "cikinti_alan_cm2": 1.8,
-   "yuzey_cm2": 2176.1,
+   "yuzey_cm2": 2175.9,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
    "hacim_cm3": 301.4,
-   "kutle_g": 344.0,
+   "kutle_g": 345.0,
    "filament_g": 362.0,
    "sure_saat": 7.5,
    "katman": 227,
@@ -1968,30 +2422,30 @@
    246.0
   ]
  },
- "kutle_g": 4925.8,
+ "kutle_g": 4886.3,
  "kutle_grup": {
-  "Govde kabugu": 2078.3,
-  "Taban etegi": 1799.4,
-  "Gogus ekrani": 540.1,
-  "Govde braketleri": 297.4,
+  "Govde kabugu": 2059.3,
+  "Taban etegi": 1791.3,
+  "Gogus ekrani": 539.3,
+  "Govde braketleri": 285.7,
   "Etek braketleri": 210.6
  },
  "kutle_tur": {
-  "Baski": 3814.5,
+  "Baski": 3800.1,
   "Satin": 845.0,
-  "Baglanti": 266.3
+  "Baglanti": 241.2
  },
  "agirlik_merkezi": [
-  -0.09,
-  467.2,
-  8.46
+  -0.08,
+  466.68,
+  8.57
  ],
  "bom": [
   [
    "Baglanti",
    "M3 isil gomme somun",
    61,
-   28.2
+   16.2
   ],
   [
    "Baglanti",
@@ -2021,7 +2475,7 @@
    "Baglanti",
    "M5 isil gomme somun",
    4,
-   4.5
+   3.0
   ],
   [
    "Baglanti",
@@ -2032,8 +2486,8 @@
   [
    "Baglanti",
    "M6 DIN 125 pul",
-   14,
-   14.2
+   6,
+   6.1
   ],
   [
    "Baglanti",
@@ -2044,14 +2498,8 @@
   [
    "Baglanti",
    "M6x14 DIN 912",
-   6,
-   37.2
-  ],
-  [
-   "Baglanti",
-   "M6x16 DIN 912",
-   8,
-   53.1
+   14,
+   86.7
   ],
   [
    "Baski",
@@ -2063,7 +2511,7 @@
    "Baski",
    "Etek arka sag",
    1,
-   355.1
+   354.5
   ],
   [
    "Baski",
@@ -2075,7 +2523,7 @@
    "Baski",
    "Etek on sag",
    1,
-   353.7
+   353.1
   ],
   [
    "Baski",
@@ -2087,55 +2535,55 @@
    "Baski",
    "Etek orta sag",
    1,
-   189.0
+   187.8
   ],
   [
    "Baski",
    "Etek orta sol",
    1,
-   189.0
+   187.8
   ],
   [
    "Baski",
    "Gogus bandi sag",
    1,
-   263.4
+   261.7
   ],
   [
    "Baski",
    "Gogus bandi sol",
    1,
-   253.3
+   252.4
   ],
   [
    "Baski",
    "Govde alt bandi sag",
    1,
-   287.5
+   285.0
   ],
   [
    "Baski",
    "Govde alt bandi sol",
    1,
-   268.0
+   266.9
   ],
   [
    "Baski",
    "Govde orta bandi sag",
    1,
-   251.9
+   249.4
   ],
   [
    "Baski",
    "Govde orta bandi sol",
    1,
-   241.4
+   239.7
   ],
   [
    "Baski",
    "Omuz bandi sag",
    1,
-   192.8
+   192.3
   ],
   [
    "Baski",
@@ -2162,6 +2610,6 @@
    535.0
   ]
  ],
- "step_kati": 202,
- "sure_s": 348.6
+ "step_kati": 194,
+ "sure_s": 487.8
 }

@@ -13,6 +13,8 @@ G = os.path.join(HERE, "gorsel")
 GM = os.path.join(UST, "montaj", "gorsel")
 d = json.load(open(os.path.join(HERE, "dirsek-analiz.json"), encoding="utf-8"))
 DI = A.DIRSEK
+# pim tüpe giriş boyu: dirsek_montaj.py omuz arayüzü kontrolünden ("pim tupe giris boyu"); yoksa 25 (tasarım)
+GIRIS = next((k[1] for k in d["omuz_arayuzu"]["kontroller"] if k[0].startswith("pim tupe giris boyu")), 25.0)
 
 
 def oku(*yol):
@@ -180,8 +182,10 @@ plt.close(fig)
 # ---------------------------------------------------------------- metinler
 BAGLANTI = [
     ("Dirsek çatalı → üst kol tüpü (omuz)",
-     "Pim tüpün içine 25 mm girer (Ø50,8; tüp içi Ø51 → 0,1 mm boşluk). Yarıklı bilezik (iç Ø56,2) tüpü dıştan sarar. Tüp ucu alın "
-     "kapağındaki V oluğun iki kenarına dayanır. Tüpe delik açılmaz, omuz geometrisi değişmez.",
+     "Pim tüpün içine %s mm girer (Ø%s; tüp içi Ø%s → her yanda %s mm boşluk). Yarıklı bilezik (iç Ø%s; tüp dışı Ø%s → her yanda %s mm boşluk) "
+     "tüpü dıştan sarar. Tüp ucu alın kapağındaki V oluğun iki kenarına dayanır. Tüpe delik açılmaz, omuz geometrisi değişmez."
+     % (sayi(GIRIS, 0), sayi(2 * A.TUP_PIM_R, 1), sayi(2 * DI["tup_ri"], 1), sayi(A.GECME["tup_pim"], 2),
+        sayi(2 * DI["bilezik_ri"], 1), sayi(2 * DI["tup_ro"], 1), sayi(A.GECME["tup_bilezik"], 2)),
      "2× M3×20 DIN 912 + 4× M3 pul + 2× M3 DIN 985 kontra somun (arka kulaklarda, yarığı kapatır)"),
     ("Dirsek servosu → ön kol gövdesi", "Servo arkadan kulak plakasındaki yuvaya girer, kulakları plakanın dış yüzüne oturur. Mil +X (dışarı).",
      "4× M4×16 DIN 912 + 4× M4 DIN 985 kontra somun (somunlar plakanın iç yüzünde)"),
@@ -257,12 +261,19 @@ ACIK = [
        t1["izinli_yuk_2x_g"], t2["izinli_yuk_2x_g"], td["izinli_yuk_2x_g"],
        sayi(max(e["s1_yuklu_omuz0"] for e in eg), 1), sayi(t1["stall_kgcm"] / max(e["s1_yuklu_omuz0"] for e in eg), 1),
        sayi(20.0 / td["yuklu_kgcm"], 2)),
-    "**Servo kabloları:** Çatal kapağında Ø10 kablo deliği var, ancak omuz çatalının pimi dolu olduğundan tüpün üstü kapalı ve kablo tüpten "
-    "omza çıkamıyor. Şimdilik kablolar dışarıdan gevşek halkayla (spiral kılıf) götürülmeli. Omuz pimine kablo deliği açmak omuz değişikliği; karar Duffy'nin.",
+    ("**Servo kabloları (düzeltme planı M1):** dirsek + bilek kablosu ön kol yanağındaki tırnakta birleşir, dirseğin arkasında serbest lop "
+     "(L %s mm) yapar, çatal köprüsünün altındaki oluktan Ø10 deliğe ve üst kol tüpüne girer (ön kol başı ile köprü arasındaki 4 mm "
+     "aralığa hiç inmez); tüp içinde uzatmaya bağlanır, tüpün arka penceresinden çıkıp S2 lopuyla (L %s mm) göbeğe geçer. Dirsek 0…105° "
+     "boyunca en küçük bükülme yarıçapı %s mm (sınır %s), en dar boşluk %s mm; S2 için %s / %s mm. **S1 geçişi açık** (planlama/adim2/M1-kablo-yolu.md)."
+     % (sayi(d["kablo"]["dirsek_lop"]["L"], 0), sayi(d["kablo"]["s2_lop"]["L"], 0), sayi(d["kablo"]["dirsek_lop"]["r_min"], 1),
+        sayi(d["kablo"]["dirsek_lop"]["r_sinir"], 1), sayi(d["kablo"]["dirsek_lop"]["en_kucuk_bosluk"], 2),
+        sayi(d["kablo"]["s2_lop"]["r_min"], 1), sayi(d["kablo"]["s2_lop"]["en_kucuk_bosluk"], 2))
+     if "kablo" in d else "**Servo kabloları:** kablo yolu kontrolü yok (dirsek_montaj.py eski)."),
     "**Horn delik dizilimi:** 25T disk horn'da M3 deliklerin yarıçapı 8,5 mm varsayıldı (omuzdaki gibi). Horn alt yüzünün kasa üstünden "
     "yüksekliği 3,0 mm (tahmini; datasheet'e göre mil ucu 6,3 mm). Parçalar gelince kumpasla ölçülmeli.",
-    "**Geçme toleransları:** pim/tüp ve bilezik/tüp 0,1 mm, 625ZZ yuvası Ø16 nominal çizildi. X2D toleransı için önce bilezik + pim deneme "
-    "halkası basılmalı. PETG bilezik zamanla gevşeyebilir (sürünme); bakımda sıkma kontrolü yapılmalı.",
+    "**Geçme toleransları:** pim/tüp %s mm, bilezik/tüp %s mm (radyal, her yanda; kontrol kabulü ≤ %s mm), 625ZZ yuvası Ø16 nominal çizildi. "
+    "X2D toleransı için önce bilezik + pim deneme halkası basılmalı. PETG bilezik zamanla gevşeyebilir (sürünme); bakımda sıkma kontrolü yapılmalı."
+    % (sayi(A.GECME["tup_pim"], 2), sayi(A.GECME["tup_bilezik"], 2), sayi(A.GECME["kabul_max"], 2)),
     "**Bilekte ayrı rulman yok:** el ve yük MG996R çıkış milinde. Kol yatayken 0,5 kg yük mile yaklaşık 0,3 N·m eğilme bindirir (tahmini). "
     "Yük sürekli taşınacaksa rulmanlı bilek göbeği (ör. 6805) eklenmeli; bu ön kolu yaklaşık 42 mm derinliğe çıkarır.",
     "**Ön kol arkası açık:** Görünüm için arkaya takılan bir kapak sonra eklenebilir (servolara erişimi kapatmamalı).",
@@ -323,6 +334,7 @@ def md(s):
 
 
 H.append("<h1>Dirsek modülü (sağ kol): dirsek + ön kol + bilek + el</h1>")
+H.append(__import__("carpisma_kos").eskime_html())   # C6: carpisma-sonuc.json eskidiyse uyari kutusu (bos dize = guncel)
 H.append("<div class='sub'>2. aşama: modüller arası tarama + ana montaj · FreeCAD 1.1 · <code>dirsek_montaj.py</code> · %d parça (%d baskı) · ölçüler "
          "<code>arayuz.DIRSEK</code>'ten, V3 sağ kol düzeni (robot_cad) · yazıcı %s · sol kol = X aynası</div>"
          % (d["parca_sayisi"], d["baski_sayisi"], esc(Y["model"])))
@@ -589,9 +601,21 @@ rr = []
 for m, f in REG.items():
     if f:
         rr.append("%s %s (%d ölçüt)" % (m, "birebir aynı" if f["hepsi_ayni"] else "FARK VAR", len(f["satirlar"])))
-H.append("<p>arayuz.py'ye <code>DIRSEK</code> ve iki <code>MODULLER</code> girişi eklendiği için koşuldu: %s. Kabuk modül çıktısı (kabuk_parcalar, "
-         "güncel arayuz.py ile) git'teki <code>kabuk-montaj.FCStd</code> ile karşılaştırıldı: 202 / 202 parça, toplam hacim farkı 1,3·10⁻⁹ mm³, "
-         "sınır kutusu farkı 0 mm. Omuz regresyonunun yeniden yazdığı aynı içerikli omuz dosyaları git ile geri alındı.</p>" % "; ".join(rr))
+REGM = oku("taban", "regresyon", "moduller.json")   # kabuk/dirsek/kafa modül çıktıları: önceki ve güncel arayuz.py
+if REGM:
+    def _f(x):
+        return ("%.2g" % x).replace(".", ",") if x else "0"
+    kabuk_r = REGM["moduller"].get("kabuk")
+    if kabuk_r:
+        rr.append("kabuk modül çıktısı (%s): %d / %d parça, parça adları %s, toplam hacim farkı %s mm³, sınır kutusu farkı %s mm" % (
+            REGM.get("tarih", "tarih yok"), kabuk_r["parca_sonra"], kabuk_r["parca_once"], "aynı" if kabuk_r["adlar_ayni"] else "FARKLI",
+            _f(kabuk_r["hacim_fark_mm3"]), _f(kabuk_r["bb_fark_mm"])))
+    dr = REGM["moduller"].get("dirsek")
+    if dr:
+        rr.append("dirsek modül çıktısı (%s, o günkü arayuz.py): %d / %d parça, hacim farkı %s mm³, kütle farkı %s g" % (
+            REGM.get("tarih", "tarih yok"), dr["parca_sonra"], dr["parca_once"], _f(dr["hacim_fark_mm3"]), _f(dr["kutle_fark_g"])))
+H.append("<p>Regresyon sonuçları (<code>fark.json</code> ve <code>taban/regresyon/moduller.json</code> dosyalarından okunur): %s.</p>" % (
+    "; ".join(rr) if rr else "regresyon dosyası yok"))
 
 H.append("<h2>Kararlar ve varsayımlar</h2><ul>" + "".join("<li>%s</li>" % md(s) for s in KARAR) + "</ul>")
 H.append("<h2>Montaj sırası (öneri)</h2><ol>" + "".join("<li>%s</li>" % md(s) for s in SIRA) + "</ol>")

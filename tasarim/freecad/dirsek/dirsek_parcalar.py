@@ -90,7 +90,11 @@ BAG = []     # baglanti tanimlari (dirsek_montaj kontrol eder)
 
 # ====================================================================== UST KOL (omuz Kol grubuna sabit)
 # --- dirsek catali (PETG): tupe giren pim + sikma bilezigi + kulaklar + kopru + iki kol
-c = cyl(25.4, (TX, TUC, TZ), (TX, -115.0, TZ))                                      # pim (tup ic O51 -> 0,1 bosluk)
+R_PIM = A.TUP_PIM_R                                                                  # pim yaricapi (O50,8)
+R_TUP_IC = R_PIM + A.GECME["tup_pim"]                                               # tup ic yaricapi (omuz_parcalar ile ayni)
+R_TUP_DIS = D["tup_ro"]                                                             # tup dis yaricapi (omuzda 28)
+R_BIL_IC = R_TUP_DIS + A.GECME["tup_bilezik"]                                       # bilezik ic yaricapi (tup dis + A.GECME)
+c = cyl(R_PIM, (TX, TUC, TZ), (TX, -115.0, TZ))                                     # pim O50,8 (tup ic bosluk A.GECME)
 c = c.fuse(cyl(31.0, (TX, TUC, TZ), (TX, -115.0, TZ)))                              # bilezik dis O62
 c = c.fuse(box(178.0, 192.0, -138.0, -115.0, TZ - 41.0, TZ - 30.0))                 # sikma kulaklari (arkada)
 c = c.fuse(cyl(31.0, (TX, KOPRU_Y[0], TZ), (TX, TUC, TZ)))                          # tup alin kapagi
@@ -98,9 +102,10 @@ c = c.fuse(box(IC_KOL[0], DIS_KOL[1], KOPRU_Y[0], TUC, TZ - 16.0, TZ + 16.0))   
 c = c.fuse(prizma([(213.0, -128.0), (DIS_KOL[1], -139.9), (DIS_KOL[1], TUC), (213.0, TUC)], "z", TZ - 16.0, TZ + 16.0))  # 45 der. destek
 for (x0, x1) in (IC_KOL, DIS_KOL):
     c = c.fuse(box(x0, x1, YE, KOPRU_Y[0], ZE - 16.0, ZE + 16.0)).fuse(cyl(16.0, (x0, YE, ZE), (x1, YE, ZE)))
-c = c.cut(cyl(28.1, (TX, TUC, TZ), (TX, -114.0, TZ)).cut(cyl(25.4, (TX, TUC - 1, TZ), (TX, -113.0, TZ))))  # tup yuvasi (halka)
-# tup alin yuvasinda 45 der. V oluk: tup ucu oluk kenarlarina (r 25,5 ve 28) dayanir, ters baskida tavan kendini tasir
-oluk = Part.Face(Part.makePolygon([V(TX + 25.5, TUC, TZ), V(TX + 28.0, TUC, TZ), V(TX + 26.75, TUC - 1.25, TZ), V(TX + 25.5, TUC, TZ)]))
+c = c.cut(cyl(R_BIL_IC, (TX, TUC, TZ), (TX, -114.0, TZ)).cut(cyl(R_PIM, (TX, TUC - 1, TZ), (TX, -113.0, TZ))))  # tup yuvasi (halka)
+# tup alin yuvasinda 45 der. V oluk: tup ucu oluk kenarlarina (r R_TUP_IC ve R_TUP_DIS) dayanir, ters baskida tavan kendini tasir
+_om, _od = 0.5 * (R_TUP_IC + R_TUP_DIS), 0.5 * (R_TUP_DIS - R_TUP_IC)
+oluk = Part.Face(Part.makePolygon([V(TX + R_TUP_IC, TUC, TZ), V(TX + R_TUP_DIS, TUC, TZ), V(TX + _om, TUC - _od, TZ), V(TX + R_TUP_IC, TUC, TZ)]))
 c = c.cut(oluk.revolve(V(TX, 0, TZ), V(0, 1, 0), 360))
 # alin kapaginin on bolumu 45 der. pahli (bukulen on kol kapaga erken degmesin); kopru bandi (z +-16) korunur
 pah = box(140.0, 240.0, KOPRU_Y[0] - 0.1, TUC + 0.01, TZ + 16.0, TZ + 40.0).cut(koni(31.0, 23.0, (TX, TUC + 0.01, TZ), (TX, KOPRU_Y[0] - 0.01, TZ)))
@@ -108,7 +113,10 @@ c = c.cut(pah)
 c = c.cut(cyl(21.9, (TX, -114.0, TZ), (TX, -122.0, TZ)))                            # pim ici bos
 c = c.cut(koni(21.9, 5.0, (TX, -122.0, TZ), (TX, -138.9, TZ)))                      # 45 der. tavan (ters baskida desteksiz)
 c = c.cut(cyl(5.0, (TX, -138.0, TZ), (TX, KOPRU_Y[0] - 1.0, TZ)))                   # kablo deligi (servo kablolari tupe)
-c = c.cut(box(184.0, 186.0, TUC, -114.0, TZ - 45.0, TZ - 27.5))                     # yarik (arka; pim yariksiz)
+KO = A.KOL_KABLO["catal_oluk"]                                                       # M1: kopru + alin kapagi alti oluk, delikten arkaya:
+c = c.cut(box(KO["x"][0], KO["x"][1], KO["y"][0] - 0.01, KO["y"][1], KO["z"][0], KO["z"][1]))   # kablo 4 mm araliga inmez, dirsek arkasindan girer
+YARIK_W = D["bilezik_yarik"]                                                         # yarik genisligi (arayuz; kapaninca ic yaricap ~ W/2pi iner)
+c = c.cut(box(TX - YARIK_W / 2, TX + YARIK_W / 2, TUC, -114.0, TZ - 45.0, TZ - 27.5))   # yarik (arka; pim yariksiz)
 KELEPCE_Y = (-121.0, -132.0)
 KELEPCE_Z = TZ - 36.0
 for yb in KELEPCE_Y:
@@ -181,6 +189,12 @@ for q in DELIK_B:
 # M5 pim: dayamadan gecis + isil gomme somun deligi
 g = g.cut(cyl(2.75, (IC_KOL[1] - 0.1, YE, ZE), (YANAK[0] + 0.1, YE, ZE)))
 g = g.cut(insert_hole(5, (YANAK[0], YE, ZE), (1, 0, 0)))
+# M1: yanagin ust-arka kosesinde kablo tirnagi (dirsek + bilek kablosu burada birlesir, kablo bagi tirnak + demeti sarar)
+KT = A.KOL_KABLO["onkol_tirnak"]
+g = g.fuse(box(KT["x"][0], KT["x"][1], YE + KT["dy"][0], YE + KT["dy"][1], ZE + KT["dz"][0], ZE + KT["dz"][1]))
+# M1: ara duvarin arka kenarinda bilek servosu kablosu centigi (kablo dirsek servosunun arkasindan yukari cikar)
+KC = A.KOL_KABLO["onkol_centik"]
+g = g.cut(box(KC["x"][0], KC["x"][1], Y(S_WEB[1]) - 0.01, Y(S_WEB[0]) + 0.01, ZE + KC["dz"][0], ZE + KC["dz"][1]))
 I_ONKOL = add("On kol govdesi", "OnKol", g.removeSplitter(), "Baski", "PETG", renk="petg2", patlat=(0, -70, 0),
               not_="arkasi acik U: iki servo arkadan takilir; on yuzu tablada basilir")
 

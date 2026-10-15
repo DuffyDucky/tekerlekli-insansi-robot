@@ -117,7 +117,7 @@ for k in ("gobek_govde",):
                 omuz_ic.add((int(phi), th))
 kabuk_poz = {ad: set(tuple(p) for p in t.get("modul_cakisan_poz", {}).get("kabuk", [])) for ad, t in tar.items()}
 kabuk_ek = {ad: sorted(v - omuz_ic) for ad, v in kabuk_poz.items()}
-eklem_ici = lambda pz: -45 <= pz[0] <= 135 and 0 <= pz[1] <= 120
+eklem_ici = lambda pz: A.OMUZ["one_arka_aralik"][0] <= pz[0] <= A.OMUZ["one_arka_aralik"][1] and A.OMUZ["yana_aralik"][0] <= pz[1] <= A.OMUZ["yana_aralik"][1]
 kabuk_eklem = {ad: [p for p in v if eklem_ici(p)] for ad, v in kabuk_poz.items()}
 min_bosluk = min((b[0] for b in kol_kabuk.values() if b), default=None)
 min_yer = next((b for b in kol_kabuk.values() if b and b[0] == min_bosluk), None)
@@ -164,22 +164,31 @@ bs_satir.append(["<b>Toplam (%d parça)</b>" % len(baski), "", "%d / %d" % (len(
                  "<b>%s sa</b>" % sayi(sure, 0)])
 
 GB, EB = A.KABUK_GOVDE_BRAKET, A.KABUK_ETEK_BRAKET
+M6P = d["m6_vida_pay"]["kalemler"]      # kabuk_montaj.py: M6 vida ucu payi (somun ustu / kanal tabani)
+GB_M6 = [x for x in M6P if x["tip"] == "govde"]
+EB_M6 = [x for x in M6P if x["tip"] == "etek"]
+GB_M6_METIN = "%d× %s%s + %d× M6 çekiç somun" % (len(GB_M6), GB_M6[0]["vida"], " + %d× M6 pul" % len(GB_M6) if GB_M6[0]["pul"] else " (pulsuz)", len(GB_M6))
+EB_M6_METIN = "%d× %s%s + %d× M6 çekiç somun" % (len(EB_M6), EB_M6[0]["vida"], " + %d× M6 pul" % len(EB_M6) if EB_M6[0]["pul"] else " (pulsuz)", len(EB_M6))
 bag_satir = [
     ["<b>Gövde kabuğu → gövde direği</b>",
      esc("4 adet 3 mm Al U braket (y = 400 ve 780, sağ ve sol). A ayağı direğin ±X yüzüne dayanır, 2× M6 kanalda çekiç somuna; "
          "C ayağı gövde yan duvarındaki Ø14 damla boss'a (M5 ısıl gömme somun) dayanır."),
-     esc("8× M6×16 DIN 912 + 8× M6 pul + 8× M6 çekiç somun · 4× M5×10 DIN 912 + 4× M5 pul + 4× M5 ısıl gömme somun"), "4"],
+     esc(GB_M6_METIN + " · 4× M5×10 DIN 912 + 4× M5 pul + 4× M5 ısıl gömme somun"), "4"],
     ["<b>Taban eteği → şase uzun rayları</b>",
      esc("6 adet 2 mm Al L braket (V3 cover_bracket3): yatay ayak uzun rayın üst yüzünde (z = −175, 0, 175), aşağı bükülü uç eteğin "
          "dik duvarındaki Ø9 boss'a (M3 ısıl gömme somun) dayanır. Etek braketlerinin bölgeleri tabandan kabuğa geçti."),
-     esc("6× M6×14 DIN 912 + 6× M6 pul + 6× M6 çekiç somun · 6× M3×8 DIN 912 + 6× M3 ısıl gömme somun"), "6"],
+     esc(EB_M6_METIN + " · 6× M3×8 DIN 912 + 6× M3 ısıl gömme somun"), "6"],
     ["<b>Baskı parçaları arası (bindirme)</b>",
      esc("Bir parçanın iç yarısı (1,5 mm) komşusunun dış yarısının arkasına 12 mm dil olarak uzanır. Dilde Ø8 damla boss + M3 ısıl gömme "
-         "somun, komşunun dudağından M3 bombe başlı cıvata. Ust kapak ve etek ust plakasında alın birleşim (plakada dil havada kalırdı)."),
+         "somun, komşunun dudağından M3 bombe başlı cıvata. Ust kapak ve etek ust plakasında alın birleşim (plakada dil havada kalırdı)." +
+         ((" Dil ↔ komşu dış yarı boşluğu ölçüldü: %d dil çifti, en az %s mm (şart ≥ %s mm, tasarım %s mm)%s." % (
+             len(d["bindirme_bosluk"]["ciftler"]), sayi(d["bindirme_bosluk"]["en_az_mm"], 4), sayi(d["bindirme_bosluk"]["sart_min_mm"], 2),
+             sayi(d["bindirme_bosluk"]["tasarim_mm"], 2), "" if not d["bindirme_bosluk"]["ihlal"] else "; İHLAL %d" % len(d["bindirme_bosluk"]["ihlal"])))
+          if d.get("bindirme_bosluk") and d["bindirme_bosluk"]["ciftler"] else "")),
      esc("%d× M3×6 ISO 7380 + %d× M3 ısıl gömme somun" % (len(d["vida_kontrol"]), len(d["vida_kontrol"]))), "%d" % len(d["vida_kontrol"])],
     ["<b>Nextion → göğüs ön duvarı</b>",
-     esc("Cam ön yüzü duvar iç yüzüne 0,1 mm; PCB ön yüzü 4 adet Ø8 boss'a dayanır (boss boyu cam + LCD = %s mm). Pencere = aktif alan + "
-         "%s mm her kenarda." % (sayi(A.NEXTION["kalinlik"] - A.NEXTION["pcb"][2], 1), sayi(A.NEXTION["pencere_pay"], 1))),
+     esc("Cam ön yüzü duvar iç yüzüne %s mm; PCB ön yüzü 4 adet Ø8 boss'a dayanır (boss boyu cam + LCD = %s mm). Pencere = aktif alan + "
+         "%s mm her kenarda." % (sayi(d.get("bosluk", {}).get("cam_duvar_mm", 0.1), 1), sayi(A.NEXTION["kalinlik"] - A.NEXTION["pcb"][2], 1), sayi(A.NEXTION["pencere_pay"], 1))),
      esc("4× M3×6 DIN 912 + 4× M3 ısıl gömme somun (PCB delikleri Ø3,2, 251,6 × 145,6)"), "4"],
 ]
 kont_satir = []
@@ -308,6 +317,7 @@ ol li,ul li{margin:5px 0}code{background:rgba(127,127,127,.15);padding:1px 5px;b
 .not{color:var(--mut);font-size:13px}a{color:var(--acc2)}
 </style></head><body><main>""")
 H.append("<h1>Kabuk modülü (V3): gövde kabuğu + taban eteği</h1>")
+H.append(__import__("carpisma_kos").eskime_html())   # C6: carpisma-sonuc.json eskidiyse uyari kutusu (bos dize = guncel)
 H.append("<div class='sub'>FreeCAD 1.1 · <code>kabuk_montaj.py</code> · %d parça (%d baskı) · PETG %s mm duvar · göğüste Nextion NX1060P101_011 · "
          "ölçüler <code>arayuz.py</code>'den (robot_cad V3 torso_shell3 / base_cover3) · yazıcı %s</div>" % (
              d["parca_sayisi"], d["baski_sayisi"], sayi(A.KABUK_T, 1), esc(Y["model"])))
@@ -354,9 +364,12 @@ H.append(tablo(["Bağlantı", "Nasıl oturuyor", "Bağlantı elemanı (toplam)",
 H.append("</div><h3>İskelete bağlantı kontrolleri (her braket ayrı)</h3><div class='tw'>")
 H.append(tablo(["Braket", "Kabuk parçası", "Kontrol", "Ölçü", "Sonuç"], kont_satir))
 H.append("</div><p class='not'>Her braket: braket profile ve kabuk boss'una dayalı (0,00 mm), çekiç somun dudak altına dayalı, M6 cıvata ucu "
-         "somunu geçip kanal tabanına değmiyor (%s ≤ uç < %s mm), cıvata ve somun aynı eksende, pul brakete dayalı; kabuk tarafında cıvata "
+         "somunu en az %s mm geçiyor ve kanal tabanına en az %s mm kalıyor (uç %s…%s mm; gerçek: gövde braketi uç %s mm, somun payı %s / taban payı %s; etek braketi uç %s mm, %s / %s), cıvata ve somun aynı eksende, pul (varsa) ya da pulsuz baş brakete dayalı; kabuk tarafında cıvata "
          "kavraması ≥ cıvata çapı ve ≤ ısıl gömme somun deliği, cıvata ucundan dış yüzeye ≥ 1 mm et, ısıl gömme somun boss'ta.</p>" % (
-             sayi(A.LIP + A.CEKIC_SOMUN["T"], 1), sayi(A.KANAL_TABAN, 1)))
+             sayi(d["m6_vida_pay"]["sart_somun_gecme_mm"], 1), sayi(d["m6_vida_pay"]["sart_taban_pay_mm"], 1),
+             sayi(A.LIP + A.CEKIC_SOMUN["T"] + d["m6_vida_pay"]["sart_somun_gecme_mm"], 1), sayi(A.KANAL_TABAN - d["m6_vida_pay"]["sart_taban_pay_mm"], 1),
+             sayi(GB_M6[0]["uc_mm"], 1), sayi(min(x["somun_pay_mm"] for x in GB_M6), 1), sayi(min(x["taban_pay_mm"] for x in GB_M6), 1),
+             sayi(EB_M6[0]["uc_mm"], 1), sayi(min(x["somun_pay_mm"] for x in EB_M6), 1), sayi(min(x["taban_pay_mm"] for x in EB_M6), 1)))
 H.append("<h3>Bindirme cıvataları</h3><div class='tw'>")
 H.append(tablo(["Dikiş", "Adet", "Isıl gömme somun (dil)", "Cıvata (dudak)", "En kısa kavrama", "Dudak", "Sonuç"], vk_satir))
 H.append("</div><p class='not'>Cıvata başı dudağa dayalı, ısıl gömme somun boss'ta oturuyor, kavrama 3…5,7 mm, dudak ≥ 1,2 mm. Ekran: 4 cıvata, PCB "

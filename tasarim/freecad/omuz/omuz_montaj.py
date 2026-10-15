@@ -42,6 +42,23 @@ for i in range(n):
             static.append((P[i]["ad"], P[j]["ad"], round(v, 2)))
 print("statik cakisma:", len(static), static[:10], "%.1fs" % (time.time() - t0))
 
+# --- 1b) yuva M6 civatalari: uc cekic somunu >= 0,5 mm gecmeli, kanal tabanina degmemeli (duzeltme plani M3)
+M6_PAY_MIN = 0.5   # mm (somun payi)
+M6_TABAN_PAY_MIN = 0.5   # mm (kanal tabani payi; diger modullerle ayni: eskiden yalniz > 0)
+m6_pay = []
+_vida = [p for p in P if p["ad"] == "Yuva baglanti civatasi M6x16"]
+_somun = [p for p in P if p["ad"] == "Cekic somun M6 (kanal 10)"]
+_tabanD = A.OMUZ_YUVA_YZ - (A.SG / 2 - A.KANAL_TABAN)   # kanal tabaninin yuva dis yuzunden derinligi (16,8)
+for (pp, dd, ld), vv, ss in zip(SLEEVE, _vida, _somun):
+    pv_, dv_ = V(*pp), V(*dd)
+    uc = max((q.Point - pv_).dot(dv_) for q in vv["shape"].Vertexes)           # civata ucu, dis yuzden derinlik
+    somun_alt = max((q.Point - pv_).dot(dv_) for q in ss["shape"].Vertexes)    # cekic somun alt yuzu
+    m6_pay.append(dict(yuz=list(pp), uc_derinlik=round(uc, 3), somun_alt=round(somun_alt, 3), taban=round(_tabanD, 3),
+                       somun_pay=round(uc - somun_alt, 3), taban_pay=round(_tabanD - uc, 3)))
+m6_ok = all(m["somun_pay"] >= M6_PAY_MIN and m["taban_pay"] >= M6_TABAN_PAY_MIN for m in m6_pay) and len(m6_pay) == 4
+print("M6 vida payi (uc - somun alti / kanal tabani - uc):", [(m["somun_pay"], m["taban_pay"]) for m in m6_pay], "OK" if m6_ok else "HATA",
+      "%.1fs" % (time.time() - t0))
+
 # --- 2) ev pozunda gruplar arasi en kucuk bosluk
 def min_gap(ga, gb, phi=0, th=0):
     best = (1e9, None, None)
@@ -186,8 +203,8 @@ try:
         j.EnableAngleMax = True
         j.AngleMax = amax
         return j
-    revolute("OmuzOneArka", "Omuz_one_arka (S1)", "Govde", "Gobek", (150, 0, 0), App.Rotation(V(0, 1, 0), -90), -45, 135)
-    revolute("OmuzYanaAcma", "Omuz_yana_acma (S2)", "Gobek", "Kol", (XR, 0, Z_S2), App.Rotation(), 0, 120)
+    revolute("OmuzOneArka", "Omuz_one_arka (S1)", "Govde", "Gobek", (150, 0, 0), App.Rotation(V(0, 1, 0), -90), *A.OMUZ["one_arka_aralik"])
+    revolute("OmuzYanaAcma", "Omuz_yana_acma (S2)", "Gobek", "Kol", (XR, 0, Z_S2), App.Rotation(), *A.OMUZ["yana_aralik"])
     asm.solve()
     doc.recompute()
     joints_ok = True
@@ -228,6 +245,8 @@ out = dict(
     coklu_kati=[(p["ad"], p["kati"]) for p in P if p["kati"] != 1],
     gecersiz=[p["ad"] for p in P if not p["shape"].isValid()],
     statik=static,
+    m6_vida_pay=dict(sinir_somun_mm=M6_PAY_MIN, sinir_taban_mm=M6_TABAN_PAY_MIN, ok=m6_ok, yuzler=m6_pay),
+    eklem_siniri=dict(one_arka=list(A.OMUZ["one_arka_aralik"]), yana=list(A.OMUZ["yana_aralik"]), kaynak="arayuz.OMUZ"),
     bosluk={k: [round(v[0], 2), v[1], v[2]] for k, v in gaps.items()},
     phis=PHIS, ths=THS,
     kol_gobek={str(k): v for k, v in kol_gobek.items()},

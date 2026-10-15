@@ -21,6 +21,7 @@ t0 = time.time()
 TOL = 0.5          # mm3, cakisma esigi (omuz ile ayni)
 H = A.SG / 2
 TEMAS = 0.01       # mm, "dayali" sayilan en buyuk mesafe
+M6_PAY_MIN = 0.5   # mm, kose M6 vida ucu: cekic somunu gecme ve kanal tabanina kalan pay (en az)
 print("parca sayisi", len(P), "baglanti", len(BAG))
 
 # ====================================================================== 1) gecerlilik ve parca ici cakisma
@@ -82,6 +83,11 @@ for b in BAG:
             k.append(("ayak %s civata ucu yuzden %.1f mm iceride (kanal tabani %.1f, somun alti %.1f)" %
                       (ayak, uc, A.KANAL_TABAN, A.LIP + A.CEKIC_SOMUN["T"]), round(uc, 3),
                       A.LIP + A.CEKIC_SOMUN["T"] <= uc < A.KANAL_TABAN))
+            # M6 payi (omuz/taban/kabukla ayni olcut): somunu >= 0,5 gecer, kanal tabanina >= 0,5 kalir
+            s_pay, t_pay = uc - (A.LIP + A.CEKIC_SOMUN["T"]), A.KANAL_TABAN - uc
+            k.append(("ayak %s M6 ucu cekic somunu %.1f mm gecer (>= %.1f), kanal tabanina %.1f mm kalir (>= %.1f)" %
+                      (ayak, s_pay, M6_PAY_MIN, t_pay, M6_PAY_MIN), round(min(s_pay, t_pay), 3),
+                      s_pay >= M6_PAY_MIN and t_pay >= M6_PAY_MIN))
             k.append(("ayak %s civata ekseni somun deligi ekseninde" % ayak,
                       round(eksen_disi(P[som]["shape"], yuz, nv), 4), eksen_disi(P[som]["shape"], yuz, nv) < 1e-6))
             d_pul = mesafe(pul, g)
@@ -120,18 +126,29 @@ kutle_grup = {g: round(sum(p["kutle"] for p in P if p["grup"] == g), 1) for g in
 kutle_tur = {t: round(sum(p["kutle"] for p in P if p["tur"] == t), 1) for t in ("Satin", "Baglanti")}
 sigma = [p for p in P if p["kod"].startswith("Sigma")]
 kesim = sorted([(float(p["kod"].split(",")[1].split()[0]), p["ad"]) for p in sigma], reverse=True)
-cubuklar = []   # ilk sigan azalan (FFD), testere payi her kesimde
-for L, ad in kesim:
-    for c in cubuklar:
-        if c["kalan"] >= L + A.TESTERE:
-            c["parcalar"].append((L, ad))
-            c["kalan"] -= L + A.TESTERE
-            break
-    else:
-        cubuklar.append(dict(parcalar=[(L, ad)], kalan=A.STOK_BOY - L - A.TESTERE))
+# Kesim plani (M8, 14 Ekim 2026). Eski plan (ilk sigan azalan) 1. cubukta 800,5 + orta ara ray birakiyor, artik 3,5 mm, stok boy
+# toleransi yoktu. Simdi: her kesim testere payi (arayuz.TESTERE) yer, her cubuk stok boy toleransi kadar kisa kabul edilir.
+# STOK_TOL tahmini (Robolink "1 metre" kesim toleransi dogrulanmadi; siparis oncesi satici teyit etmeli). Orta ara ray 3. cubuga alindi.
+STOK_TOL = 2.0         # mm: cubuk nominalden bu kadar kisa gelebilir (tahmini)
+MIN_ARTIK = 10.0       # mm: her cubukta testere + tolerans sonrasi en az kalmasi gereken artik
+KESIM_PLANI = [
+    ["Govde diregi"],
+    ["Sase uzun rayi sol", "Omuz traversi", "Sase ara rayi on"],
+    ["Sase uzun rayi sag", "Sase ara rayi arka", "Sase ara rayi orta"],
+]
+boy = {ad: L for L, ad in kesim}
+assert sorted(ad for c in KESIM_PLANI for ad in c) == sorted(boy), "kesim plani tum sigma parcalarini bir kez icermeli"
+cubuklar = []
+for plan in KESIM_PLANI:
+    kalan = A.STOK_BOY - STOK_TOL
+    for ad in plan:
+        kalan -= boy[ad] + A.TESTERE
+    cubuklar.append(dict(parcalar=[(boy[ad], ad) for ad in plan], kalan=kalan, kalan_nominal=kalan + STOK_TOL,
+                         kesim_sayisi=len(plan)))
+kesim_hata = ["cubuk %d artik %.1f < %.1f" % (i + 1, c["kalan"], MIN_ARTIK) for i, c in enumerate(cubuklar) if c["kalan"] < MIN_ARTIK]
 toplam_boy = sum(L for L, _ in kesim)
-print("kutle %.1f g, AM (%.1f, %.1f, %.1f), sigma %.1f mm -> %d x %d mm cubuk" %
-      (M, CG.x, CG.y, CG.z, toplam_boy, len(cubuklar), A.STOK_BOY))
+print("kutle %.1f g, AM (%.1f, %.1f, %.1f), sigma %.1f mm -> %d x %d mm cubuk (artik %s), kesim hatasi %s" %
+      (M, CG.x, CG.y, CG.z, toplam_boy, len(cubuklar), A.STOK_BOY, [round(c["kalan"], 1) for c in cubuklar], kesim_hata))
 
 # ====================================================================== 5) egilme: direk + travers
 import omuz_parcalar as O          # sag omuzun parcalari ve kinematigi (yerel koordinat)
@@ -228,8 +245,13 @@ for ad, sp, lp in ADLI:
                      sehim_tepe_mm=d["sehim_tepe"], donme_tepe_derece=math.degrees(d["donme_tepe"]),
                      travers=[{k: (round(v, 4) if isinstance(v, float) else v) for k, v in t.items()} for t in d["travers"]],
                      el_dususu_mm=el_dususu(d, sp)))
-# en kotu durum taramasi: her kol phi 0...180 (15), yana 0...120 (15), yuklu
-izgara = [(ph, th) for ph in range(0, 181, 15) for th in range(0, 121, 15)]
+# en kotu durum taramasi: her kol, omuz eklem araliginin tamami (arayuz.OMUZ: one-arka -45...135, yana 3...120), 15 derece adim, yuklu
+def _izgara(aralik, adim=15):
+    lo, hi = int(math.ceil(aralik[0])), int(math.floor(aralik[1]))
+    return sorted({lo, hi} | set(range(-(-lo // adim) * adim, hi + 1, adim)))
+
+
+izgara = [(ph, th) for ph in _izgara(A.OMUZ["one_arka_aralik"]) for th in _izgara(A.OMUZ["yana_aralik"])]
 eniyi = dict(direk=(0, None), travers=(0, None), sehim=(0, None))
 for sp in izgara:
     for lp in izgara:
@@ -320,7 +342,9 @@ out = dict(
     kutle_g=round(M, 1), kutle_grup=kutle_grup, kutle_tur=kutle_tur,
     agirlik_merkezi=[round(CG.x, 2), round(CG.y, 2), round(CG.z, 2)],
     kesim=dict(parcalar=[[L, ad] for L, ad in kesim], toplam_mm=toplam_boy, stok_mm=A.STOK_BOY, testere_mm=A.TESTERE,
-               cubuklar=[dict(parcalar=c["parcalar"], artik=round(c["kalan"], 1)) for c in cubuklar],
+               stok_tolerans_mm=STOK_TOL, min_artik_mm=MIN_ARTIK, kesim_hatasi=kesim_hata,
+               cubuklar=[dict(parcalar=c["parcalar"], artik=round(c["kalan"], 1), artik_nominal=round(c["kalan_nominal"], 1),
+                              kesim_sayisi=c["kesim_sayisi"]) for c in cubuklar],
                kutle_uretici_g=round(toplam_boy / 1000 * A.SG_KG_M * 1000, 0),
                kutle_model_g=round(sum(p["kutle"] for p in sigma), 1)),
     egilme=egilme,
