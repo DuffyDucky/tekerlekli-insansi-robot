@@ -1,0 +1,414 @@
+{
+ "etek_ust_y": 262.0,
+ "H1": {
+  "ad": "sigorta + servis kapagi",
+  "delik": [
+   -44.0,
+   36.0,
+   -230.0,
+   -175.0
+  ],
+  "pay": 6.0,
+  "plaka_kesilen_mm3": 13200.0,
+  "plaka_tam_mm3": 13200.0,
+  "kapak_carpan": [],
+  "kapak_en_yakin": [
+   [
+    7.4,
+    "Ana anahtar ASW-A01 govdesi (tahmini zarf) [taban]"
+   ],
+   [
+    15.0,
+    "Acil stop mantari + bilezik [taban]"
+   ],
+   [
+    20.3,
+    "Acil stop kontak govdesi (1NC) [taban]"
+   ],
+   [
+    81.5,
+    "Etek orta sag [kabuk]"
+   ]
+  ],
+  "delik_alti_carpan": [
+   [
+    "Guc paneli (arka kat) [taban]",
+    19800.0
+   ],
+   [
+    "Sigorta kutusu 6 yollu (tahmini zarf) [taban]",
+    151182.5
+   ],
+   [
+    "Pul M4 (sigorta kutusu sol) [taban]",
+    5.6
+   ],
+   [
+    "Civata M4x16 (sigorta kutusu sol) [taban]",
+    4.9
+   ]
+  ]
+ },
+ "H2": {
+  "ad": "ana sigorta kapagi (yedek secenek)",
+  "delik": [
+   94.0,
+   130.0,
+   -160.0,
+   -100.0
+  ],
+  "pay": 5.0,
+  "plaka_kesilen_mm3": 6480.0,
+  "plaka_tam_mm3": 6480.0,
+  "kapak_carpan": [],
+  "kapak_en_yakin": [
+   [
+    7.5,
+    "Etek orta sag [kabuk]"
+   ],
+   [
+    14.4,
+    "Acil stop mantari + bilezik [taban]"
+   ],
+   [
+    15.6,
+    "Govde alt bandi sag [kabuk]"
+   ],
+   [
+    23.3,
+    "Acil stop kontak govdesi (1NC) [taban]"
+   ]
+  ],
+  "delik_alti_carpan": [
+   [
+    "Guc paneli (arka kat) [taban]",
+    9720.0
+   ],
+   [
+    "Ana sigorta yuvasi 30 A (tahmini zarf) [taban]",
+    35725.3
+   ]
+  ]
+ },
+ "kaset_parcalari": [
+  [
+   "S1 kaset govdesi sag",
+   "kabuk",
+   [
+    152.0,
+    158.3,
+    879.0,
+    1011.4,
+    7.7,
+    77.2
+   ]
+  ],
+  [
+   "S1 kaset kapagi sag",
+   "kabuk",
+   [
+    155.0,
+    159.5,
+    879.0,
+    1011.4,
+    7.7,
+    77.2
+   ]
+  ],
+  [
+   "S1 kaset govdesi sol",
+   "kabuk",
+   [
+    -158.3,
+    -152.0,
+    879.0,
+    1011.4,
+    7.7,
+    77.2
+   ]
+  ],
+  [
+   "S1 kaset kapagi sol",
+   "kabuk",
+   [
+    -159.5,
+    -155.0,
+    879.0,
+    1011.4,
+    7.7,
+    77.2
+   ]
+  ],
+  [
+   "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+   "kabuk",
+   [
+    146.3,
+    152.0,
+    903.2,
+    907.2,
+    16.1,
+    20.1
+   ]
+  ],
+  [
+   "Kaset civatasi M3x8 (sag psi 200)",
+   "kabuk",
+   [
+    148.5,
+    159.5,
+    902.4,
+    907.9,
+    15.4,
+    20.9
+   ]
+  ],
+  [
+   "Isil gomme somun M3 (S1 kaseti sag psi 226)",
+   "kabuk",
+   [
+    146.3,
+    152.0,
+    915.5,
+    919.5,
+    36.8,
+    40.8
+   ]
+  ],
+  [
+   "Kaset civatasi M3x8 (sag psi 226)",
+   "kabuk",
+   [
+    148.5,
+    159.5,
+    914.7,
+    920.2,
+    36.1,
+    41.6
+   ]
+  ],
+  [
+   "Isil gomme somun M3 (S1 kaseti sol psi 200)",
+   "kabuk",
+   [
+    -152.0,
+    -146.3,
+    903.2,
+    907.2,
+    16.1,
+    20.1
+   ]
+  ],
+  [
+   "Kaset civatasi M3x8 (sol psi 200)",
+   "kabuk",
+   [
+    -159.5,
+    -148.5,
+    902.4,
+    907.9,
+    15.4,
+    20.9
+   ]
+  ],
+  [
+   "Isil gomme somun M3 (S1 kaseti sol psi 226)",
+   "kabuk",
+   [
+    -152.0,
+    -146.3,
+    915.5,
+    919.5,
+    36.8,
+    40.8
+   ]
+  ],
+  [
+   "Kaset civatasi M3x8 (sol psi 226)",
+   "kabuk",
+   [
+    -159.5,
+    -148.5,
+    914.7,
+    920.2,
+    36.1,
+    41.6
+   ]
+  ]
+ ],
+ "ped_psi_r_dolu": {
+  "202.0": [
+   46.0,
+   62.0
+  ],
+  "208.0": [
+   44.0,
+   62.0
+  ],
+  "211.0": [
+   43.5,
+   62.0
+  ],
+  "214.0": [
+   43.0,
+   62.0
+  ],
+  "217.0": [
+   42.5,
+   62.0
+  ],
+  "220.0": [
+   42.5,
+   62.0
+  ],
+  "226.0": [
+   42.0,
+   62.0
+  ]
+ },
+ "yarik_psi_c_bos_r": [
+  40.0,
+  40.5,
+  41.0,
+  "...",
+  56.5,
+  57.0,
+  57.5
+ ],
+ "kaset_civata_erisim": [
+  {
+   "phi": -45.0,
+   "civata": "Kaset civatasi M3x8 (sag psi 200)",
+   "eksen": [
+    1.0,
+    -0.0,
+    -0.0
+   ],
+   "serbest_mm": 110.0,
+   "engel": null
+  },
+  {
+   "phi": -45.0,
+   "civata": "Kaset civatasi M3x8 (sag psi 226)",
+   "eksen": [
+    1.0,
+    -0.0,
+    -0.0
+   ],
+   "serbest_mm": 110.0,
+   "engel": null
+  },
+  {
+   "phi": 0.0,
+   "civata": "Kaset civatasi M3x8 (sag psi 200)",
+   "eksen": [
+    1.0,
+    -0.0,
+    -0.0
+   ],
+   "serbest_mm": 7.5,
+   "engel": "Ust kol tupu@0.0"
+  },
+  {
+   "phi": 0.0,
+   "civata": "Kaset civatasi M3x8 (sag psi 226)",
+   "eksen": [
+    1.0,
+    -0.0,
+    -0.0
+   ],
+   "serbest_mm": 110.0,
+   "engel": null
+  },
+  {
+   "phi": 45.0,
+   "civata": "Kaset civatasi M3x8 (sag psi 200)",
+   "eksen": [
+    1.0,
+    -0.0,
+    -0.0
+   ],
+   "serbest_mm": 5.6,
+   "engel": "Ust kol tupu@45.0"
+  },
+  {
+   "phi": 45.0,
+   "civata": "Kaset civatasi M3x8 (sag psi 226)",
+   "eksen": [
+    1.0,
+    -0.0,
+    -0.0
+   ],
+   "serbest_mm": 0.2,
+   "engel": "Kol catali@45.0"
+  },
+  {
+   "phi": 90.0,
+   "civata": "Kaset civatasi M3x8 (sag psi 200)",
+   "eksen": [
+    1.0,
+    -0.0,
+    -0.0
+   ],
+   "serbest_mm": 110.0,
+   "engel": null
+  },
+  {
+   "phi": 90.0,
+   "civata": "Kaset civatasi M3x8 (sag psi 226)",
+   "eksen": [
+    1.0,
+    -0.0,
+    -0.0
+   ],
+   "serbest_mm": 110.0,
+   "engel": null
+  }
+ ],
+ "gobek_horn": [
+  {
+   "civata": "Gobek-horn civatasi M3x12",
+   "bas": [
+    162.0,
+    961.0,
+    -6.0
+   ],
+   "engel_x": null
+  },
+  {
+   "civata": "Gobek-horn civatasi M3x001",
+   "bas": [
+    162.0,
+    961.0,
+    6.0
+   ],
+   "engel_x": [
+    169.0,
+    199.0
+   ],
+   "hacim": 109.1
+  },
+  {
+   "civata": "Gobek-horn civatasi M3x002",
+   "bas": [
+    162.0,
+    949.0,
+    6.0
+   ],
+   "engel_x": [
+    169.0,
+    199.0
+   ],
+   "hacim": 109.1
+  },
+  {
+   "civata": "Gobek-horn civatasi M3x003",
+   "bas": [
+    162.0,
+    949.0,
+    -6.0
+   ],
+   "engel_x": null
+  }
+ ]
+}
