@@ -9,6 +9,7 @@ bundan sonraki adımları falan bitirince tasarım planlayıcıya geç onu da ya
 rehberi (Duffy seçti, 14 Ekim).
 
 ## Kurallar (her uyanışta geçerli)
+- Oturum yeniden başlarsa eski ajanlar SendMessage ile devam ettirilemez ("No transcript found"): aynı brief + "önce günlüğü oku, yapılanı tekrarlama" ile yeni Opus ajanı başlat.
 - Ajan düzeni: iki Opus ajanı (`model: opus`, general-purpose). Biri tasarım, biri analiz + bağımsız kontrol.
   Aynı dosyaya iki ajan aynı anda dokunmaz. Ana oturum iş yapmaz; brief yazar, sonucu doğrular, kritik değeri kendisi ölçer.
 - Çalışan ajan varsa yenisini başlatma, aynı işi tekrar verme. Önce `planlama/adim*/` günlüklerine bak.
@@ -29,12 +30,12 @@ rehberi (Duffy seçti, 14 Ekim).
 |---|---|---|---|
 | 1 | 1. adım (M2, M3, M5, M8, C1–C3, C6, D3) | ✅ V kontrolü geçti | `planlama/adim1/` |
 | 1b | G takip (kelepçe yarığı, eski sınır kodu, ≥0,5 kontrolleri, kabuk cam) | ✅ `a158211` | Opus-2 kontrolü geçti |
-| 2a | M1 kol kablo yolu (omuz, dirsek, kabuk) | ◐ dirsek + S2 ✅ `a158211`; **S1 🔄 Opus-4** (A′ döner U-lop kaseti, S2 alt sınır 5°, eski 'yana 0' kalıntıları, omuz kütle dolulukla) | `planlama/adim2/S1-kaset.md`; sonra bağımsız kontrol + commit |
+| 2a | M1 kol kablo yolu | dirsek + S2 ✅ `a158211`; **S1 tasarım bitti (Opus-4), 🔄 Opus-8 bağımsız kontrol** | `adim2/S1-kaset.md`, `K2-s1-kontrol.md`. Kaset kabuk modülünde, omuz üstünden 26,4 mm taşıyor; S1 R_min 12,91 (7,5×d geçer, 10×d geçmez); uzatma kablosu iki kol ≈ 8,4 m (maliyete) |
 | 2b | M4 omuz baskı analizi | ✅ `25de259` | 6/10 parça desteksiz basılamıyor (yuva, göbek, çatal). M1 omuzu değiştirirse betik yeniden koşulur. Açık: `omuz_parcalar.py` kütleyi %60 dolulukla hesaplıyor (kol başına 43–58 g eksik), FCStd'de 4 parça malzemesi PETG yazıyor (PETG-CF olmalı), yatay ısıl gömme kuponu yok → 2c/3–5. adımlarda ele alınacak; baskı listesi düzeltmeleri 5. adım (D6) |
 | 2c | Opus-2: G + M1 bağımsız kontrol + S1 değerlendirme + tüp baskı | ✅ | `planlama/adim2/K-kontrol.md`; S1 bitince ikinci kontrol gerekecek |
-| 3 | E0, E1–E4, E7 taban ve güç + K4 Pi 5 kafada | ✅ `7c87ff4` (Opus-5 kontrolü geçti); 🔄 Opus-6 takip düzeltmeleri | `adim3/K3-kontrol.md`, `T2-takip.md`: ESP32 USB metni, eski Pi metinleri, elektrik notları, kafa çıkış yarıkları üste, JGB37 9 kg·cm senaryosu. **Risk:** JGB37 durma torku etiketi belirsiz → ölçüm omniden önce |
-| 4 | M6 montaj sırası ve erişim, M7 kupon | ⏳ | Rehbere girdi olur |
-| 5 | B1, B2, E8, E9, D6 malzeme ve plan | ⏳ | |
+| 3 | E0, E1–E4, E7 taban ve güç + K4 Pi 5 kafada | ✅ `7c87ff4` + takip `c299754` | **Risk:** JGB37 9 kg·cm ise standart tekerle dönemez, omniyle sınırda → ölçüm omni siparişinden önce. Açık: arayuz ESP32/PCA9685 bölgeleri eski V3 yerinde; Pololu 12 V akımı grafikten; perde/fan testi |
+| 4 | M6 montaj sırası ve erişim, M7 kupon | ✅ analiz + kupon `6bb1eff`; ⏳ **M6 CAD** (C1 göbek-horn cıvatası, C2 dirsek servo kulağı, C3 kontra somun cepleri, K1/K2 dışarıdan vida + perçin somun, K3 ped yarığı + Ø84, K4 göğüs servis kapağı, K5 etek kapağı, K6 ana sigorta, K7 ana anahtar deliği) | S1 kontrolü bitince tasarım + kontrol ajanı; sonra `M6_erisim.py` yeniden |
+| 5 | B1, B2, E8, E9, D6 malzeme ve plan | 🔄 Opus-9 (CAD'e dokunmuyor) | `planlama/adim5/B-malzeme-plan.md`; M6 kalemleri koşullu |
 | 6 | Bütün modüller yeniden üretilir → C7 tam tarama (C5 ile) → D4 regresyon → D5 | ⏳ | Makine ~1,5 sa |
 | 7 | D1, D2 belgeler (isteğe bağlı D7, C8, M9, M10; D8 ve K5 Duffy'ye sorulur) | ⏳ | |
 | 8 | **3B montaj rehberi** (A: FreeCAD'den adım verisi, B: 3B adım adım rehber + PDF; kabuk öncesi kablolama kapısı) | ⏳ | Plan 11 Ekim'de sunuldu: DuffyOS `Last-Session.md` 11 Ekim "montaj rehberi planı" kartı; ayrıntı 11 Ekim oturum dökümü (Claude oturumu 2892de2f). Önce planı oku, sonra başla |
@@ -53,3 +54,8 @@ rehberi (Duffy seçti, 14 Ekim).
 - 2026-10-15 ~04:45 Opus-3 bitti (taban 316 parça 7.529 g, kafa 115 parça 1.431 g, robot 21,71 kg, maliyet +2.767 TL). Opus-5 3. adımı kontrol ediyor; Opus-4 S1'de.
 - 2026-10-15 ~05:00 Opus-4 ve Opus-5 oturum limitine takıldı (yenilenme 08:30). 08:31 ikisi de SendMessage ile devam ettirildi.
 - 2026-10-15 ~08:50 Opus-5 kontrolü geçti → `7c87ff4` (arayuz.py'den yalnız 3. adım parçaları). Opus-6 takip düzeltmeleri; Opus-4 S1'de.
+- 2026-10-15 ~09:20 Opus-6 bitti, orkestratör kontrolü (VBUS metni yok, kafa 44/44, taban aynı) → `c299754`. Opus-7 4. adım (M7 + M6 analizi); Opus-4 S1'de.
+- 2026-10-15 ~09:40 Opus-4 ve Opus-7 oturum limitine takıldı (yenilenme 13:30). 13:31 ikisi de devam ettirildi.
+- 2026-10-15 ~14:00 Opus-4 S1'i bitirdi (omuz 73, kabuk 206 parça). Opus-8 S1 kontrolü; Opus-7 M6 analizinde.
+- 2026-10-15 ~14:30 Opus-7 bitti → `6bb1eff` (M7 kupon + M6 analizi; D1 kuponu FCStd ile fark 0). Opus-9 5. adım; Opus-8 S1 kontrolü. M6 CAD, S1 kontrolünden sonra.
+- 2026-10-15 ~14:40 Opus-8 ve Opus-9 limite takıldı (yenilenme 18:30). Oturum yeniden başlamış, eski ajanlar devam ettirilemedi → 18:35 yeni Opus-8b (S1 kontrolü, K2-*.json'dan devam) ve Opus-9b (5. adım, günlükten devam). Uyanık tutma süreçleri (17020, 24440) hâlâ çalışıyor.

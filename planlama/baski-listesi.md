@@ -1,31 +1,33 @@
-# Baskı listesi (FreeCAD V3, 11 Ekim 2026)
+# Baskı listesi (FreeCAD V3, 11 Ekim 2026; 15 Ekim 2026 güncellemesi: M4, S1, K2/K3)
 
-Kaynak: modül analizleri `tasarim/freecad/<modül>/<modül>-analiz.json` (`baski` alanı). Filament ve süre
-analizdeki dilimleme tahmininden gelir (%80 doluluk, PETG). Omuz analizinde süre yok; süresi diğer
-parçaların ortalaması 48 g/saat ile **tahmini** hesaplandı. Yazıcı: Bambu Lab X2D (kullanılabilir hacim
-246 × 246 × 250 mm). 44 parçanın hepsi tablaya sığıyor ve hepsi desteksiz basılıyor (analizlerin
-`sigar` ve `desteksiz` alanları).
+Kaynak: modül analizleri `tasarim/freecad/<modül>/<modül>-analiz.json` (`baski` alanı); omuz için M4 baskı analizi
+`tasarim/freecad/omuz/omuz-baski.json` (PETG-CF doluluk 0,8–0,9, yön, destek ve süre). Filament ve süre analizdeki
+dilimleme tahmininden gelir (diğer modüller %80 doluluk, 10 mm³/s). Toplamlar `planlama/adim5/baski_toplam.py` ile.
+Yazıcı: Bambu Lab X2D (kullanılabilir hacim 246 × 246 × 250 mm). **50 parçanın hepsi tablaya sığıyor.** Omuzdaki
+**6 parça destekli** basılır (omuz yuvası, omuz göbeği, kol çatalı; ikişer) ve **S1 kablo tamburu** (×2) destekli;
+diğer 42 parça desteksiz (M4: eski "44 parçanın hepsi desteksiz" cümlesi yanlıştı). Tam yeniden üretim 6. adımda (D5).
 
 ## Özet
 
 | Parti | Ne zaman | Adet | Filament | Baskı süresi |
 |---|---|---|---|---|
-| 1 | Hemen | 14 | 1,69 kg | ≈ 35 sa |
-| 2 | Servo ve horn gelip ölçülünce | 18 | 0,99 kg | ≈ 21 sa |
+| 1 | Hemen | 14 | 1,72 kg | ≈ 36 sa |
+| 2 | Servo ve horn gelip ölçülünce (S1 kaseti: S1 kontrolü bitince) | 24 | 1,19–1,24 kg | ≈ 25–26 sa |
 | 3 | Ekranlar gelip ölçülünce | 5 | 1,12 kg | ≈ 23 sa |
 | 4 | Etek tasarım kararından sonra | 7 | 1,94 kg | ≈ 40 sa |
-| **Toplam** | | **44** | **5,73 kg** | **≈ 120 sa** |
+| **Toplam** | | **50** | **5,96–6,02 kg** | **≈ 124–125 sa** |
 
-**Filament:** Net ihtiyaç 5,73 kg. Bunun 0,79 kg'ı PETG-CF, 4,94 kg'ı düz PETG (bkz. Malzeme).
-Başarısız baskı ve yeniden basım payıyla **6 makara beyaz PETG + 1 kg siyah PETG-CF** öneriyorum (tahmini
-pay %20–25). `maliyet.json`'da (11 Ekim 2026): 6 × Microzey HS PETG beyaz (389 TL) + 2 × 0,5 kg Polymaker PETG-rCF08 siyah
-(1.105,87 TL; stok belirsiz, siparişten önce sorulmalı). Kanıt `raporlar/kaynaklar/05-fiyat-arastirmasi.md` bölüm 5.
+**Filament:** Net ihtiyaç 5,96–6,02 kg: **PETG-CF 0,96–1,02 kg** (omuz doluluğu 0,8–0,9 ve destek dahil; önce 0,79), **düz PETG 5,01 kg**
+(S1 kaseti ve tamburu dahil). Tolerans kuponları ayrıca ≈ 0,1 kg PETG ve ≈ 0,2–0,3 kg PETG-CF (aşağıda). Başarısız baskı payıyla
+**7 makara beyaz PETG + 1,5 kg siyah PETG-CF (3 × 0,5 kg)**. `maliyet.json` (15 Ekim 2026): 6 + 1 ("kupon + pay") × Microzey HS PETG beyaz
+(389 TL) + 3 × 0,5 kg Polymaker PETG-rCF08 siyah (1.105,87 TL; stok belirsiz, siparişten önce sorulmalı). Kanıt
+`raporlar/kaynaklar/05-fiyat-arastirmasi.md` bölüm 5.
 
 ## Renk (Duffy, 11 Ekim 2026: "Tamamen beyaz")
 
 | Renk | Parçalar |
 |---|---|
-| **Beyaz PETG** | Düz PETG'den basılan her şey: kabuk, etek, kafa kabukları, üst kol tüpü, ön kol, el, sonar tutucular, akü takozu, servis kapağı |
+| **Beyaz PETG** | Düz PETG'den basılan her şey: kabuk, etek, kafa kabukları, üst kol tüpü, ön kol, el, sonar tutucular, akü takozu, servis kapağı, S1 kaseti ve tamburu |
 | **Siyah PETG-CF** | Yük taşıyan 10 parça. PETG-CF neredeyse yalnız siyah satılıyor. Omuz ve dirsek eklemleri siyah görünür, kafa iç parçaları kabuğun içinde kalır. |
 | Siyah akrilik | Yüz vizörü (lazer kesim, değişmedi) |
 
@@ -38,10 +40,10 @@ kazancı azdır.
 
 | Malzeme | Nereye | Neden |
 |---|---|---|
-| **PETG** (beyaz) | Kabuk, etek, kafa kabukları, sonar tutucular, akü takozu, üst kol tüpü, ön kol, el, arka servis kapağı | Yükü az, büyük parçalar. PETG tok, kolay basılır, iç mekânda yeterli ısı dayanımı var (camsı geçiş ≈ 80 °C, tahmini). Etekteki sürücü ve düşürücülerin ısısı ölçülünce kontrol edilmeli. |
+| **PETG** (beyaz) | Kabuk, etek, kafa kabukları, sonar tutucular, akü takozu, üst kol tüpü, ön kol, el, arka servis kapağı, S1 kaseti (gövde + kapak) ve kablo tamburu | Yükü az, büyük parçalar. PETG tok, kolay basılır, iç mekânda yeterli ısı dayanımı var (camsı geçiş ≈ 80 °C, tahmini). Etekteki sürücü ve düşürücülerin ısısı ölçülünce kontrol edilmeli. |
 | **PETG-CF** (karbon katkılı PETG) | Servo torkunu ya da rulman yükünü taşıyan 10 parça (aşağıda) | Düz PETG'den daha rijit. Vida sıkıştırmasında ve rulmanın sıkı geçtiği yuvada zamanla akma (sünme) daha az, yani boşluk yapmıyor (tahmini). Düz PETG gibi basılır, ayarı benzer. |
 
-**PETG-CF ile basılacak parçalar (≈ 0,79 kg):**
+**PETG-CF ile basılacak parçalar (≈ 0,96–1,02 kg; M4 sonrası):**
 
 | Modül | Parça | Adet | Taşıdığı yük |
 |---|---|---|---|
@@ -51,10 +53,10 @@ kazancı azdır.
 | omuz | Kol çatalı | 2 | S2 horn torku + 625ZZ yuvası |
 | dirsek | Dirsek çatalı | 2 | Dirsek horn torku |
 | dirsek | Bilek flanşı | 2 | Bilek horn bağlantısı (küçük, ama tork doğrudan horn'dan geçiyor) |
-| kafa | Servo yuvası | 1 | Kafanın tamamı (1,37 kg) bunun üstünde |
+| kafa | Servo yuvası | 1 | Kafanın tamamı (1,44 kg, Pi kafada) bunun üstünde |
 | kafa | Rulman yuvası | 1 | 6808-2RS yuvası |
 | kafa | Boyun mili | 1 | Pan horn torku |
-| kafa | Eğme çatalı | 1 | Tilt horn torku. Tilt payı 2,1× ile servoların en düşüğü |
+| kafa | Eğme çatalı | 1 | Tilt horn torku. Pi kafaya girdikten sonra tilt payı **2,01×** (`kafa-analiz.json` `tork.tilt`, 4,67 / 9,4 kg·cm), servoların en düşüğü. Montajda tilt servosundan **önce** takılır (M6: çatal–mil cıvataları sonra kapanır); tilt kontra somunlarından biri anahtarla tutulamıyor (M6 C3) |
 
 **Neden PA-CF (naylon karbon) değil:** Daha güçlü ama nem çekiyor, her baskıdan önce kurutma ister,
 fiyatı daha yüksek. Bu yüklerde (el ucunda ≈ 50 g, jest hareketleri) PETG-CF yeterli olmalı (tahmini).
@@ -74,7 +76,7 @@ nozulun değiştirilmediğini kontrol edin.
 **Ağırlık:** PETG-CF yoğunluğu düz PETG'ye yakın (tahmini ≈ 1,25–1,3 g/cm³). CAD'deki kütle ve ağırlık
 merkezi pratikte değişmez.
 
-**Süre:** 120 saat, yazıcı hiç durmazsa 5 gün eder. Okul yazıcısı paylaşımlıysa ve gece baskısı
+**Süre:** ≈ 125 saat, yazıcı hiç durmazsa 5,2 gün eder (PETG-CF yavaş basılırsa omuz +4–6 sa). Okul yazıcısı paylaşımlıysa ve gece baskısı
 yapılamıyorsa gerçekçi süre 3–4 hafta (tahmini). Bu yüzden Parti 1 hemen başlamalı.
 
 ## Sıralama mantığı
@@ -86,10 +88,11 @@ yapılamıyorsa gerçekçi süre 3–4 hafta (tahmini). Bu yüzden Parti 1 hemen
    bu sırada boş kalmaz.
 3. **Parti 2:** Horn delik dizilimi tahmini (25T disk, M3 delikler 8,5 mm yarıçapta). Horn'lar gelince
    kumpasla ölçülür, CAD güncellenir, sonra basılır. Bu parçalar küçük, baskısı hızlı.
-4. **Parti 3:** Ekran açıklıkları ölçüye bağlı. Not: CAD'de göğüs ekranı **Nextion NX1060P101**,
-   `maliyet.json`'da ise **Waveshare 10,1" HDMI**. Hangisinin alınacağı kesinleşmeden göğüs bandı basılmamalı.
-5. **Parti 4:** Etek üst plakasına ana anahtar deliği ve XT60 şarj girişi henüz çizilmedi. Etekteki ısı
-   ve havalandırma kararı da bekliyor. Akü ön takozu ise akü seçimine bağlı.
+4. **Parti 3:** Ekran açıklıkları ölçüye bağlı. Göğüs ekranı **Nextion NX1060P101** (K2, 14 Ekim 2026; CAD ve
+   `maliyet.json` artık aynı). Ekran gelince ölçüsü kumpasla teyit edilir, sonra göğüs bandı basılır.
+5. **Parti 4:** Etek üst plakasına ana anahtar deliği (M6 K7), XT60 şarj girişi ve sigorta/servis kapağı (M6 K5) henüz çizilmedi
+   (M6 CAD). Etekteki ısı ve havalandırma kararı da bekliyor (E7). Akü **Victron SuperPack 12,8/20** (K3): ölçüsü CAD yuvasıyla
+   aynı, takoz akü gelince teyit edilip basılır.
 
 ## Tolerans (CAD'de, 11 Ekim 2026)
 
@@ -105,6 +108,10 @@ yapılamıyorsa gerçekçi süre 3–4 hafta (tahmini). Bu yüzden Parti 1 hemen
 | Horn delik dizilimi | Tahmini | Horn gelince kumpasla |
 
 ### Tolerans kuponları (Parti 0)
+
+M7 kuponları (`tasarim/freecad/test/README.md`, 4. adım) da Parti 0'dadır: C ısıl gömme L + 1 (PETG **ve** PETG-CF),
+D1 / D2 dirsek kelepçesi (dirsek çatalının malzemesi: **PETG-CF**; kupon README'si "şu an PETG" diyor, çünkü FCStd'de malzeme alanı
+düzeltilmedi), E tüp halkası (PETG). Toplam ≈ 104 g (tahmini doluluk) / 205 g (%100), ~3 sa.
 
 | Dosya | Malzeme | Ne denenir | Ölçü | Kütle |
 |---|---|---|---|---|
@@ -124,32 +131,35 @@ toplu olarak dışa aktarılmalı (açık iş).
 
 ## Parti 1 — hemen basılabilir (ölçüye az bağlı)
 
-14 adet · 1.69 kg filament · ≈ 35 saat baskı
+14 adet · 1,72 kg filament · ≈ 36 saat baskı
 
 | ☐ | Modül | Parça | Adet | Ölçü (mm) | Filament (g/adet) | Süre (sa/adet) | Tabla yönü | Bağlı olduğu ölçü | STL |
 |---|---|---|---|---|---|---|---|---|---|
 | ☐ | taban | Sonar tutucu sol | 1 | 61 × 61 × 8 | 5 | 0.1 | arka yuzu (ray tarafi) tablada | HC-SR04 standart ölçü | yok |
 | ☐ | taban | Sonar tutucu orta | 1 | 66 × 66 × 8 | 6 | 0.1 | arka yuzu (ray tarafi) tablada | HC-SR04 standart ölçü | yok |
 | ☐ | taban | Sonar tutucu sag | 1 | 61 × 61 × 8 | 5 | 0.1 | arka yuzu (ray tarafi) tablada | HC-SR04 standart ölçü | yok |
-| ☐ | omuz | Rulman kapagi **(PETG-CF)** | 2 | 76 × 60 × 14 | 12 | 0.2 (tahmini) | — | 6808-2RS Ø52 sıkı geçme (kupon A sonucu) | `omuz/stl/rulman-kapagi.stl` |
-| ☐ | omuz | Ust kol tupu | 2 | 100 × 56 × 56 | 32 | 0.7 (tahmini) | — | — | `omuz/stl/ust-kol-tupu.stl` |
-| ☐ | kabuk | Govde alt bandi sag | 1 | 170 × 137 × 226 | 300 | 6.2 | dik (alt kenari tablada) | ısıl gömme somun ölçüsü | yok |
+| ☐ | omuz | Rulman kapagi **(PETG-CF)** | 2 | 76 × 60 × 14 | 15–17 | 0.32–0.36 | +X: x = 146 yüzü tablada, Ø52 yuva yukarı (desteksiz) | 6808-2RS Ø52 sıkı geçme (kupon A sonucu) | `omuz/stl/rulman-kapagi.stl` |
+| ☐ | omuz | Ust kol tupu | 2 | 100 × 56 × 56 | 42 | 0.87 | uç tablada, brim (M1 penceresiyle desteksiz) | **M1/S1 kontrolü bitene kadar bekler** | `omuz/stl/ust-kol-tupu.stl` |
+| ☐ | kabuk | Govde alt bandi sag | 1 | 170 × 137 × 226 | 299 | 6.2 | dik (alt kenari tablada) | ısıl gömme somun ölçüsü | yok |
 | ☐ | kabuk | Govde alt bandi sol | 1 | 170 × 125 × 226 | 281 | 5.8 | dik (alt kenari tablada) | ısıl gömme somun ölçüsü | yok |
 | ☐ | kabuk | Govde orta bandi sag | 1 | 183 × 150 × 227 | 262 | 5.5 | dik (alt kenari tablada) | ısıl gömme somun ölçüsü | yok |
-| ☐ | kabuk | Govde orta bandi sol | 1 | 183 × 138 × 227 | 252 | 5.3 | dik (alt kenari tablada) | ısıl gömme somun ölçüsü | yok |
+| ☐ | kabuk | Govde orta bandi sol | 1 | 183 × 138 × 227 | 252 | 5.2 | dik (alt kenari tablada) | ısıl gömme somun ölçüsü | yok |
 | ☐ | kabuk | Omuz bandi sag | 1 | 164 × 162 × 102 | 202 | 4.2 | ters (ust kapak tablada) | ısıl gömme somun ölçüsü | yok |
 | ☐ | kabuk | Omuz bandi sol | 1 | 162 × 152 × 102 | 194 | 4.0 | ters (ust kapak tablada) | ısıl gömme somun ölçüsü | yok |
 | ☐ | kabuk | Arka servis kapagi | 1 | 190 × 160 × 3 | 98 | 2.0 | dis yuzu tablada | — | yok |
 
 ## Parti 2 — servo ve horn gelip ölçülünce
 
-18 adet · 0.99 kg filament · ≈ 21 saat baskı
+24 adet · 1,19–1,24 kg filament · ≈ 25–26 saat baskı (omuz doluluk 0,8–0,9)
 
 | ☐ | Modül | Parça | Adet | Ölçü (mm) | Filament (g/adet) | Süre (sa/adet) | Tabla yönü | Bağlı olduğu ölçü | STL |
 |---|---|---|---|---|---|---|---|---|---|
-| ☐ | omuz | Omuz yuvasi **(PETG-CF)** | 2 | 76 × 76 × 67 | 52 | 1.1 (tahmini) | — | DS3218MG gövdesi, çekiç somun | `omuz/stl/omuz-yuvasi.stl` |
-| ☐ | omuz | Omuz gobegi **(PETG-CF)** | 2 | 66 × 51 × 49 | 42 | 0.9 (tahmini) | — | **horn delik dizilimi** | `omuz/stl/omuz-gobegi.stl` |
-| ☐ | omuz | Kol catali **(PETG-CF)** | 2 | 76 × 64 × 56 | 66 | 1.4 (tahmini) | — | **horn delik dizilimi** | `omuz/stl/kol-catali.stl` |
+| ☐ | omuz | Omuz yuvasi **(PETG-CF)** | 2 | 76 × 76 × 67 | 81–90 | 1.70–1.88 | −Y: y = 25 üst yüzü tablada, manşon yatay, **destekli** (manşon içi + S1 penceresi) | DS3218MG gövdesi, çekiç somun | `omuz/stl/omuz-yuvasi.stl` |
+| ☐ | omuz | Omuz gobegi **(PETG-CF)** | 2 | 66 × 51 × 49 | 61–68 | 1.27–1.41 | +X: Ø40 mil ucu tablada, **destekli** (flanş altı ağaç destek) | **horn delik dizilimi** | `omuz/stl/omuz-gobegi.stl` |
+| ☐ | omuz | S1 kablo tamburu | 2 | C halka r 37–43,7 | 6 | 0.12 | +X: −x dudak tablada, **destekli** (+x dudak altı halka) | göbekle birlikte (S1 kontrolü bitince) | yok |
+| ☐ | omuz | Kol catali **(PETG-CF)** | 2 | 76 × 64 × 56 | 99–110 | 2.07–2.30 | −Z: horn kulağı tablada, **destekli** (ya da iki parçaya bölünür, M4) | **horn delik dizilimi** | `omuz/stl/kol-catali.stl` |
+| ☐ | kabuk | S1 kaset govdesi sag / sol | 2 | 108,8 × 108,6 × 6,3 | 9 | 0.2 | arka yüzü (x 152) tablada | **S1 bağımsız kontrolü bitince** | yok |
+| ☐ | kabuk | S1 kaset kapagi sag / sol | 2 | 108,8 × 108,6 × 4,5 | 7 | 0.1 | flanş dış yüzü tablada | **S1 bağımsız kontrolü bitince** | yok |
 | ☐ | dirsek | Dirsek catali **(PETG-CF)** | 2 | 72 × 71 × 74 | 94 | 2.0 | ters: pim ve bilezik ucu tablada, kollar yukari | **horn delik dizilimi** | yok |
 | ☐ | dirsek | On kol govdesi | 2 | 101 × 63 × 28 | 44 | 0.9 | on yuzu tablada, acik arka yukari | MG996R gövdesi | yok |
 | ☐ | dirsek | Bilek flansi **(PETG-CF)** | 2 | 28 × 28 × 8 | 4 | 0.1 | horn yuzu tablada, havsalar yukari | **horn delik dizilimi** | yok |
@@ -161,25 +171,25 @@ toplu olarak dışa aktarılmalı (açık iş).
 
 ## Parti 3 — ekranlar gelip ölçülünce
 
-5 adet · 1.12 kg filament · ≈ 23 saat baskı
+5 adet · 1,12 kg filament · ≈ 23 saat baskı
 
 | ☐ | Modül | Parça | Adet | Ölçü (mm) | Filament (g/adet) | Süre (sa/adet) | Tabla yönü | Bağlı olduğu ölçü | STL |
 |---|---|---|---|---|---|---|---|---|---|
 | ☐ | kafa | Kafa iskeleti | 1 | 205 × 116 × 69 | 116 | 2.4 | ters: kafa tablasi tablada, yanaklar yukari | **7" LCD + kamera delikleri** | yok |
 | ☐ | kafa | Yuz kabugu (on) | 1 | 210 × 180 × 55 | 179 | 3.7 | yuz asagi: on yuz tablada, dikis yukari | **7" LCD ölçüsü** | yok |
-| ☐ | kafa | Arka kafa kabugu | 1 | 210 × 180 × 101 | 284 | 5.9 | arka yuz tablada, dikis dili yukari | 7" LCD ölçüsü | yok |
-| ☐ | kabuk | Gogus bandi sag | 1 | 209 × 163 × 205 | 275 | 5.7 | dik (alt kenari tablada) | **10,1" ekran ölçüsü** | yok |
-| ☐ | kabuk | Gogus bandi sol | 1 | 209 × 151 × 205 | 265 | 5.5 | dik (alt kenari tablada) | **10,1" ekran ölçüsü** | yok |
+| ☐ | kafa | Arka kafa kabugu | 1 | 210 × 180 × 101 | 289 | 6.0 | arka yuz tablada, dikis dili yukari (Pi perdesi ve yarıklar dahil) | 7" LCD ölçüsü | yok |
+| ☐ | kabuk | Gogus bandi sag | 1 | 209 × 163 × 205 | 275 | 5.7 | dik (alt kenari tablada) | **Nextion 10,1" ölçüsü** (K2) | yok |
+| ☐ | kabuk | Gogus bandi sol | 1 | 209 × 151 × 205 | 265 | 5.5 | dik (alt kenari tablada) | **Nextion 10,1" ölçüsü** (K2) | yok |
 
 ## Parti 4 — tasarım kararından sonra (etek, akü)
 
-7 adet · 1.94 kg filament · ≈ 40 saat baskı
+7 adet · 1,94 kg filament · ≈ 40 saat baskı
 
 | ☐ | Modül | Parça | Adet | Ölçü (mm) | Filament (g/adet) | Süre (sa/adet) | Tabla yönü | Bağlı olduğu ölçü | STL |
 |---|---|---|---|---|---|---|---|---|---|
-| ☐ | taban | Aku on takozu | 1 | 125 × 125 × 25 | 72 | 1.5 | alt yuzu tablada | **akü seçimi (ölçü)** | yok |
-| ☐ | kabuk | Etek arka sag | 1 | 234 × 190 × 227 | 372 | 7.8 | ters (ust plakasi tablada) | **ana anahtar + XT60 deliği, havalandırma kararı** | yok |
-| ☐ | kabuk | Etek arka sol | 1 | 222 × 175 × 227 | 364 | 7.6 | ters (ust plakasi tablada) | **ana anahtar + XT60 deliği, havalandırma kararı** | yok |
+| ☐ | taban | Aku on takozu | 1 | 125 × 125 × 25 | 72 | 1.5 | alt yuzu tablada | Victron (K3) ölçüsü CAD ile aynı; akü gelince teyit | yok |
+| ☐ | kabuk | Etek arka sag | 1 | 234 × 190 × 227 | 372 | 7.8 | ters (ust plakasi tablada) | **ana anahtar (M6 K7) + XT60 deliği + sigorta kapağı (M6 K5), havalandırma (E7)** | yok |
+| ☐ | kabuk | Etek arka sol | 1 | 222 × 175 × 227 | 364 | 7.6 | ters (ust plakasi tablada) | **ana anahtar (M6 K7) + XT60 deliği + sigorta kapağı (M6 K5), havalandırma (E7)** | yok |
 | ☐ | kabuk | Etek orta sag | 1 | 222 × 199 × 227 | 197 | 4.1 | ters (ust plakasi tablada) | havalandırma kararı | yok |
 | ☐ | kabuk | Etek orta sol | 1 | 222 × 199 × 227 | 197 | 4.1 | ters (ust plakasi tablada) | havalandırma kararı | yok |
 | ☐ | kabuk | Etek on sag | 1 | 234 × 190 × 227 | 371 | 7.7 | ters (ust plakasi tablada) | havalandırma kararı | yok |

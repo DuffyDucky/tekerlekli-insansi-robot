@@ -480,3 +480,33 @@ PETG-CF ≈ 0,79 kg. Fiyatlar orkestratörün ürün sayfası okumasıyla (WebFe
   kaya kırmızısı, gizemli mor) listeleniyor, fiyatı okunamadı (https://www.akakce.com/filament/petg-filament,2.html).
   Bambu Lab PETG-CF'nin Türkiye satışı bulunamadı (ABD'de 1 kg 34,99 $: https://shop3duniverse.com/collections/bambu-lab-filaments/products/bambu-lab-petg-cf-carbon-fiber-reinforced-petg-1-75mm-1kg).
 - Polymaker stokta yoksa yedek yol: Creality PETG-CF renkli (eklemler renkli görünür) ya da yurt dışı sipariş.
+
+## 6. Düzeltme planı 5. adım: B1, B2, E9 kalemleri (15 Ekim 2026)
+
+Ajan (Opus, 5. adım) ürün sayfalarını WebFetch ile okudu; arama motoru özetleri yalnız sayfa bulmak için kullanıldı. Adetler CAD BOM'larından
+(`planlama/adim5/bom_say.py` → `bom_toplam.json`). Maliyette her kalem `"adim": "5"`; fiyatı sayfadan okunamayanlar `durum: tahmini` ve notta
+"fiyat doğrulanmadı". Sipariş verilmedi, satıcıyla iletişim kurulmadı.
+
+| Kalem | Satıcı · bağlantı | Sayfada okunan | Stok | Durum |
+|---|---|---|---|---|
+| Victron SuperPack 12,8/20 (K3) | [Atakale](https://atakale.com/index.php?product_id=438&route=product%2Fproduct) | 12.680,70 TL (vergiler hariç 10.567,25) | "Ürün Stok: 1" | doğrulandı |
+| Nextion NX1060P101-011C-I (K2) | [Robotistan](https://www.robotistan.com/nextion-nx1060p101-101touch-display) | 7.629,09 + KDV = 9.154,91 TL | Tükendi | doğrulandı (stok yok) |
+| Nextion NX1060P101-011R-I (alternatif) | [Robotistan](https://www.robotistan.com/nx1060p101-011r-i-101inc-akilli-seri-usart-hmi-rezistif-dokunmatik-ekran) | 8.189,40 + KDV = 9.827,28 TL | sayfa Tükendi, arama listesi "stokta" | belirsiz |
+| 6808-2RS KWC 40 × 52 × 7 | [Rulmanal](https://www.rulmanal.com.tr/urun/6808-2rs-kwc-40x52x7-rulman) | 106,75 TL (88,96 + KDV) | 67 | doğrulandı |
+| 625 ZZ BGR 5 × 16 × 5 | [Rulmanal](https://www.rulmanal.com.tr/urun/625-zz-kwc-5-16-5-rulman) | 29,65 TL (24,71 + KDV) | 8.548 | doğrulandı; 2.500 TL üstü kargo ücretsiz |
+| 25T alüminyum servo kolu (disk değil) | [Robiz](https://robiz.net/servoarm25t) | 82,32 TL (68,60 + KDV) | Stok var | tahmini: CAD disk tipi, Türkiye'de disk bulunamadı |
+| Kanal 10 tırtıllı somun M6 / M4 / M5 | [CNC Marketi M6](https://www.cnc-marketi.com/urun/10-kanal-profil-tirtilli-somunu-m6), [M4](https://www.cnc-marketi.com/urun/10-kanal-profil-tirtilli-somun-m4), [M5](https://www.cnc-marketi.com/urun/10-kanal-profil-tirtilli-somunu10-kanal-profil-tirtilli-somunu) | 3,79 / 3,91 / 3,85 TL KDV dahil | M6 37.430; M4/M5 sepete ekle | doğrulandı. "Uçtan kaydırma veya üstten yerleştirme" |
+| Gizli köşe bağlantı K10 | [CNC Marketi 45 × 45](https://www.cnc-marketi.com/urun/45x45-gizli-kose-baglanti-90-k10) | 38,51 TL | — | tahmini: 40 × 40 K10 sayfası yok |
+| DIN 912 / ISO 7380 / DIN 916 / DIN 985 / DIN 125 (A2) | [paslanmazcivata.ist kategori](https://www.paslanmazcivata.ist/kategori/paslanmaz-imbus-civata) | M3 1,30 · M4 2,02 · M5 2,66 · M6 3,89 · ISO 7380 M3 1,15 / M5 2,95 / M6 3,89 · DIN 916 M5 0,84 / M6 1,02 · DIN 985 1,02 · pul 0,40 TL | M3 912: 78.998 | tahmini: kategori taban fiyatı, boya göre ayrılmıyor (M3 sayfası 1,08 + KDV, 101+ adette %20 indirim). DIN 913 yok, DIN 916 yazıldı |
+| Isıl gömme M3 / M5 | [Rhino3DPrinter](https://www.rhino3dprinter.com/urun/kaliteli-insert-somun-m3) | 5,22 / 6,27 TL adet | sepete ekle | M3 doğrulandı; varyantlar OD 4 / 5 mm (CAD deliği ruthex OD 4,6 için Ø4,0: kupon C ile seçilmeli) |
+| Röle K1, mini 12 V 40 A 5 fişli diyotlu | [Elo](https://eticaret.elo.com.tr/urun/mini-role-12-v-40-a-5-fisli-diyotlu-toz-korumali) | 138,60 + KDV = 166,32 TL | sayfada yok | doğrulandı. 2. satıcı [Kartal Otomasyon mikro 40 A](https://www.kartalotomasyon.com.tr/urun/12v-40a-mikro-role-5-fisli) 56,70 TL ("gelince haber ver") |
+| Ön şarj rölesi K2, JQC-3F(T73) 12 V 7 A | [Direnc.net](https://www.direnc.net/12v-7a-tek-kontak-5-pinli-jqc-3ft73-12vdc-role) | 18,23 TL KDV dahil | stokta | doğrulandı |
+| Ön şarj direnci 5,6 Ω 11 W taş | [Direnc.net](https://www.direnc.net/022r-11w-tas-direnc-11664) | 13,95 TL KDV dahil | stokta | doğrulandı (4,7 Ω ve 10 Ω listede yok) |
+| 22 AWG servo uzatma 100 cm | [Robotistan](https://www.robotistan.com/60-cekirdek-22awg-servo-kablosu) | 43,94 TL | Tükendi; iki uç erkek JR | tahmini |
+
+Doğrulanamayan (tahmini, `maliyet.json` notunda "fiyat doğrulanmadı"): röle soketi (n11 ilanı 119,90 TL, açılmadı), JR konnektör seti,
+XT60 şarj tutucusu, M5 halka pabuç, M2,5 pirinç distans seti (Amazon TR 503 verdi), cırt kayış, kablo bağı + taban, Al bükme braket,
+Bluetooth gamepad, bıçak sigortalar ve yuvası, perçin somun + aleti ve M4 ısıl gömme (M6 koşullu).
+
+Bulunamayanlar: 40 × 40 kanal 10 gizli köşe, 25T alüminyum **disk** horn, DIN 913 (düz uçlu) set vida, 3 damarlı silikon yassı servo kablosu
+(S1 kaseti ≤ 1,4 mm kalınlık şartı için ölçülmeli).

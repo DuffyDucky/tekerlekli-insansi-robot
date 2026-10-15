@@ -1,0 +1,1055 @@
+{
+ "kaynak": "tasarim/freecad/*/*-bom.csv + omuz-analiz.json bom (x2, travers sigmasi haric)",
+ "dosya_saati": {
+  "iskelet": 1792006900.8802564,
+  "taban": 1792043908.469224,
+  "kabuk": 1792045272.779352,
+  "kafa": 1792043784.2461727,
+  "dirsek": 1792045934.7214627,
+  "omuz": 1792045629.802981
+ },
+ "ozet": {
+  "M2,5 DIN 912": 24.0,
+  "M3 DIN 912": 178.0,
+  "M3 ISO 7380": 63.0,
+  "M4 DIN 912": 51.0,
+  "M5 DIN 912": 17.0,
+  "M5 DIN 913": 8.0,
+  "M6 DIN 912": 46.0,
+  "M6 DIN 913": 16.0,
+  "M6 ISO 7380": 4.0,
+  "M3 isil gomme": 109.0,
+  "M5 isil gomme": 9.0,
+  "M3 DIN 985": 4.0,
+  "M4 DIN 985": 39.0,
+  "M3 pul": 12.0,
+  "M4 pul": 15.0,
+  "M5 pul": 17.0,
+  "M6 pul": 16.0,
+  "M6 cekic somun": 50.0,
+  "M5 cekic somun": 8.0,
+  "M4 cekic somun": 8.0,
+  "horn vidasi (servo ile)": 10.0
+ },
+ "boy": {
+  "M2,5 DIN 912": {
+   "5": 12.0,
+   "8": 12.0
+  },
+  "M3 DIN 912": {
+   "10": 4.0,
+   "12": 16.0,
+   "20": 4.0,
+   "6": 76.0,
+   "8": 78.0
+  },
+  "M3 ISO 7380": {
+   "6": 59.0,
+   "8": 4.0
+  },
+  "M4 DIN 912": {
+   "16": 51.0
+  },
+  "M5 DIN 912": {
+   "10": 4.0,
+   "12": 13.0
+  },
+  "M5 DIN 913": {
+   "16": 8.0
+  },
+  "M6 DIN 913": {
+   "10": 16.0
+  },
+  "M6 DIN 912": {
+   "14": 28.0,
+   "16": 16.0,
+   "20": 2.0
+  },
+  "M6 ISO 7380": {
+   "14": 4.0
+  }
+ },
+ "kalemler": [
+  {
+   "tur": "Baglanti",
+   "kalem": "M2,5x5 DIN 912",
+   "adet": 12.0,
+   "modul": {
+    "taban": 8.0,
+    "kafa": 4.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M2,5x8 DIN 912",
+   "adet": 12.0,
+   "modul": {
+    "taban": 8.0,
+    "kafa": 4.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M2x8 PT vida (plastik icin)",
+   "adet": 4.0,
+   "modul": {
+    "kafa": 4.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M3 DIN 125 pul",
+   "adet": 12.0,
+   "modul": {
+    "kafa": 4.0,
+    "dirsek (iki kol)": 8.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M3 DIN 985 kontra somun",
+   "adet": 4.0,
+   "modul": {
+    "dirsek (iki kol)": 4.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M3 isil gomme somun",
+   "adet": 109.0,
+   "modul": {
+    "taban": 2.0,
+    "kabuk": 65.0,
+    "kafa": 20.0,
+    "dirsek (iki kol)": 4.0,
+    "omuz (x2, travers haric)": 18.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M3x10 DIN 912",
+   "adet": 4.0,
+   "modul": {
+    "kafa": 4.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M3x12 DIN 912",
+   "adet": 16.0,
+   "modul": {
+    "omuz (x2, travers haric)": 16.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M3x20 DIN 912",
+   "adet": 4.0,
+   "modul": {
+    "dirsek (iki kol)": 4.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M3x5 horn vidasi (servo ile)",
+   "adet": 10.0,
+   "modul": {
+    "kafa": 2.0,
+    "dirsek (iki kol)": 4.0,
+    "omuz (x2, travers haric)": 4.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M3x6 DIN 912",
+   "adet": 76.0,
+   "modul": {
+    "taban": 72.0,
+    "kabuk": 4.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M3x6 ISO 7380",
+   "adet": 59.0,
+   "modul": {
+    "kabuk": 51.0,
+    "kafa": 4.0,
+    "dirsek (iki kol)": 4.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M3x8 DIN 912",
+   "adet": 78.0,
+   "modul": {
+    "taban": 18.0,
+    "kabuk": 10.0,
+    "kafa": 16.0,
+    "dirsek (iki kol)": 16.0,
+    "omuz (x2, travers haric)": 18.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M3x8 ISO 7380",
+   "adet": 4.0,
+   "modul": {
+    "kafa": 4.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M4 DIN 125 pul",
+   "adet": 15.0,
+   "modul": {
+    "taban": 15.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M4 DIN 985 kontra somun",
+   "adet": 36.0,
+   "modul": {
+    "kafa": 4.0,
+    "dirsek (iki kol)": 16.0,
+    "omuz (x2, travers haric)": 16.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M4 DIN 985 naylon somun",
+   "adet": 3.0,
+   "modul": {
+    "taban": 3.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M4 cekic somun, kanal 10",
+   "adet": 8.0,
+   "modul": {
+    "taban": 8.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M4x16 DIN 912",
+   "adet": 51.0,
+   "modul": {
+    "taban": 15.0,
+    "kafa": 4.0,
+    "dirsek (iki kol)": 16.0,
+    "omuz (x2, travers haric)": 16.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M5 DIN 125 pul",
+   "adet": 17.0,
+   "modul": {
+    "taban": 8.0,
+    "kabuk": 4.0,
+    "kafa": 1.0,
+    "dirsek (iki kol)": 2.0,
+    "omuz (x2, travers haric)": 2.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M5 cekic somun, kanal 10",
+   "adet": 8.0,
+   "modul": {
+    "taban": 8.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M5 isil gomme somun",
+   "adet": 9.0,
+   "modul": {
+    "kabuk": 4.0,
+    "kafa": 1.0,
+    "dirsek (iki kol)": 2.0,
+    "omuz (x2, travers haric)": 2.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M5x10 DIN 912",
+   "adet": 4.0,
+   "modul": {
+    "kabuk": 4.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M5x12 DIN 912",
+   "adet": 13.0,
+   "modul": {
+    "taban": 8.0,
+    "kafa": 1.0,
+    "dirsek (iki kol)": 2.0,
+    "omuz (x2, travers haric)": 2.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M5x16 DIN 913 set vida (saplama)",
+   "adet": 8.0,
+   "modul": {
+    "taban": 8.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M6 DIN 125 pul",
+   "adet": 16.0,
+   "modul": {
+    "iskelet": 8.0,
+    "kabuk": 6.0,
+    "kafa": 2.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M6 cekic somun, kanal 10",
+   "adet": 50.0,
+   "modul": {
+    "iskelet": 8.0,
+    "taban": 18.0,
+    "kabuk": 14.0,
+    "kafa": 2.0,
+    "omuz (x2, travers haric)": 8.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M6x10 DIN 913 set vida",
+   "adet": 16.0,
+   "modul": {
+    "iskelet": 16.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M6x14 DIN 912",
+   "adet": 28.0,
+   "modul": {
+    "taban": 14.0,
+    "kabuk": 14.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M6x14 ISO 7380",
+   "adet": 4.0,
+   "modul": {
+    "taban": 4.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M6x16 DIN 912",
+   "adet": 16.0,
+   "modul": {
+    "iskelet": 8.0,
+    "omuz (x2, travers haric)": 8.0
+   }
+  },
+  {
+   "tur": "Baglanti",
+   "kalem": "M6x20 DIN 912",
+   "adet": 2.0,
+   "modul": {
+    "kafa": 2.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Aku on takozu",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Arka kafa kabugu",
+   "adet": 1.0,
+   "modul": {
+    "kafa": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Arka servis kapagi",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Bilek flansi",
+   "adet": 2.0,
+   "modul": {
+    "dirsek (iki kol)": 2.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Boyun mili",
+   "adet": 1.0,
+   "modul": {
+    "kafa": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Dirsek catali",
+   "adet": 2.0,
+   "modul": {
+    "dirsek (iki kol)": 2.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Egme catali",
+   "adet": 1.0,
+   "modul": {
+    "kafa": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "El",
+   "adet": 2.0,
+   "modul": {
+    "dirsek (iki kol)": 2.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Etek arka sag",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Etek arka sol",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Etek on sag",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Etek on sol",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Etek orta sag",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Etek orta sol",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Gogus bandi sag",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Gogus bandi sol",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Govde alt bandi sag",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Govde alt bandi sol",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Govde orta bandi sag",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Govde orta bandi sol",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Kafa iskeleti",
+   "adet": 1.0,
+   "modul": {
+    "kafa": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Omuz bandi sag",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Omuz bandi sol",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "On kol govdesi",
+   "adet": 2.0,
+   "modul": {
+    "dirsek (iki kol)": 2.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Rulman yuvasi",
+   "adet": 1.0,
+   "modul": {
+    "kafa": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "S1 kaset govdesi sag",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "S1 kaset govdesi sol",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "S1 kaset kapagi sag",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "S1 kaset kapagi sol",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Servo yuvasi",
+   "adet": 1.0,
+   "modul": {
+    "kafa": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Sonar tutucu orta",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Sonar tutucu sag",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Sonar tutucu sol",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Baski",
+   "kalem": "Yuz kabugu (on)",
+   "adet": 1.0,
+   "modul": {
+    "kafa": 1.0
+   }
+  },
+  {
+   "tur": "Imalat",
+   "kalem": "Boyun plakasi 3 mm Al (lazer/su jeti)",
+   "adet": 1.0,
+   "modul": {
+    "kafa": 1.0
+   }
+  },
+  {
+   "tur": "Imalat",
+   "kalem": "Vizor 3 mm siyah akrilik 190x115 (lazer)",
+   "adet": 1.0,
+   "modul": {
+    "kafa": 1.0
+   }
+  },
+  {
+   "tur": "Lazer",
+   "kalem": "Alt plaka",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Lazer",
+   "kalem": "Elektronik kati (on)",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Lazer",
+   "kalem": "Guc paneli (arka kat)",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Pay",
+   "kalem": "Kablo payi (tahmini, geometri yok)",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "12 mm altigen kaplin x 30, O6",
+   "adet": 4.0,
+   "modul": {
+    "taban": 4.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "25 mm cirt bant kayis (tahmini)",
+   "adet": 2.0,
+   "modul": {
+    "taban": 2.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "25T aluminyum disk horn",
+   "adet": 10.0,
+   "modul": {
+    "kafa": 2.0,
+    "dirsek (iki kol)": 4.0,
+    "omuz (x2, travers haric)": 4.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "37 mm L motor braketi 1,5 mm",
+   "adet": 4.0,
+   "modul": {
+    "taban": 4.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "40x40 genis kose baglanti (Robolink)",
+   "adet": 4.0,
+   "modul": {
+    "iskelet": 4.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "6 yollu bicak sigorta kutusu",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "625ZZ rulman 5x16x5",
+   "adet": 5.0,
+   "modul": {
+    "kafa": 1.0,
+    "dirsek (iki kol)": 2.0,
+    "omuz (x2, travers haric)": 2.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "6808-2RS rulman 40x52x7",
+   "adet": 4.0,
+   "modul": {
+    "kafa": 2.0,
+    "omuz (x2, travers haric)": 2.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "ASW-A01 100 A aku ayirici",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Adafruit MAX98357A",
+   "adet": 1.0,
+   "modul": {
+    "kafa": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Arazi tekerlegi 125 x 58",
+   "adet": 4.0,
+   "modul": {
+    "taban": 4.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "BNO055 9 eksen (Adafruit 2472 delik duzeni; eldeki muadil olculecek)",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "BTS7960B 43 A (IBT-2)",
+   "adet": 2.0,
+   "modul": {
+    "taban": 2.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Cift tarafli kopuk bant 1 mm (VHB)",
+   "adet": 2.0,
+   "modul": {
+    "kafa": 2.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "DS3218MG servo",
+   "adet": 4.0,
+   "modul": {
+    "omuz (x2, travers haric)": 4.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Delikli pertinaks 70 x 50 + 2x 15'li disi header (tahmini; BOM'da yok)",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Delikli pertinaks 70 x 50: 16 AWG klemens, 2200 uF, 6x 3 pin cikis (tahmini zarf)",
+   "adet": 2.0,
+   "modul": {
+    "taban": 2.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Delikli pertinaks 70 x 50: PC817 x2, MOSFET + 1N4007, bolucu direncler, klemens (tahmini zarf)",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "ESP32-WROOM-32 DevKit 30 pin",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Emas B200E60 acil stop",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Emas B200E60 kontak blogu",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Etek tasiyici L braket 2 mm Al (bukum)",
+   "adet": 6.0,
+   "modul": {
+    "kabuk": 6.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Govde braketi 3 mm Al U (bukum)",
+   "adet": 4.0,
+   "modul": {
+    "kabuk": 4.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "HC-SR04",
+   "adet": 3.0,
+   "modul": {
+    "taban": 3.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "ISO mini role 12 V 40 A + soket (BOM'da yok)",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Ic kose baglanti kanal 10",
+   "adet": 8.0,
+   "modul": {
+    "iskelet": 8.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "JGB37-520 12 V 60 dev/dk enkoderli",
+   "adet": 4.0,
+   "modul": {
+    "taban": 4.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Kablolu kapakli bicak sigorta yuvasi 12 AWG + 30 A",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "LiFePO4 12,8 V 24 Ah (yuva 181 x 77 x 167)",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "M2,5 x 8 burc, disi-disi, AA 5",
+   "adet": 4.0,
+   "modul": {
+    "kafa": 4.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "M2,5x8 pirinc burc",
+   "adet": 8.0,
+   "modul": {
+    "taban": 8.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "M3x8 naylon burc",
+   "adet": 36.0,
+   "modul": {
+    "taban": 36.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "M5 x 40 burc, disi-disi, AA 8",
+   "adet": 8.0,
+   "modul": {
+    "taban": 8.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "MG996R servo",
+   "adet": 6.0,
+   "modul": {
+    "kafa": 2.0,
+    "dirsek (iki kol)": 4.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Nextion NX1060P101_011 10,1\" 1024x600",
+   "adet": 1.0,
+   "modul": {
+    "kabuk": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "PCA9685 16 kanal (Adafruit 815 delik duzeni)",
+   "adet": 1.0,
+   "modul": {
+    "taban": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Pololu D36V50F5 5 V 5,5 A (pololu.com/product/4091)",
+   "adet": 1.0,
+   "modul": {
+    "kafa": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Raspberry Pi 5 8GB + resmi Active Cooler",
+   "adet": 1.0,
+   "modul": {
+    "kafa": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Raspberry Pi Camera Module 3",
+   "adet": 1.0,
+   "modul": {
+    "kafa": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Sigma 40x40 agir kanal 10, 190 mm",
+   "adet": 3.0,
+   "modul": {
+    "iskelet": 3.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Sigma 40x40 agir kanal 10, 200 mm",
+   "adet": 1.0,
+   "modul": {
+    "iskelet": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Sigma 40x40 agir kanal 10, 500 mm",
+   "adet": 2.0,
+   "modul": {
+    "iskelet": 2.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Sigma 40x40 agir kanal 10, 800.5 mm",
+   "adet": 1.0,
+   "modul": {
+    "iskelet": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "Waveshare 7in HDMI LCD (C) 1024x600",
+   "adet": 1.0,
+   "modul": {
+    "kafa": 1.0
+   }
+  },
+  {
+   "tur": "Satin",
+   "kalem": "XL4016 8 A DC-DC dusurucu",
+   "adet": 3.0,
+   "modul": {
+    "taban": 3.0
+   }
+  }
+ ]
+}

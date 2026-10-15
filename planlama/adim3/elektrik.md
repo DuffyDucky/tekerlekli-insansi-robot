@@ -244,14 +244,98 @@ Toprak: akü − ── WAGO yıldız noktası (güç paneli) ── tüm dönü
 | Yer | Değer | Besler | Not |
 |---|---|---|---|
 | Ana | 30 A | akü + → her şey | XT60 sonrası kablolu yuva (mevcut) |
-| F1 | 20 A | röle K1 → anahtarlı 12 V bara | motorlar + iki servo hattı |
+| F1 | 20 A | röle K1 (ve paralel ön şarj kolu K2 + 5,6 Ω, E9) → anahtarlı 12 V bara | motorlar + iki servo hattı. Ön şarj kolu da F1'den sonra, ayrı sigorta yok |
 | F2 | 15 A | yedek | |
 | F3 | **5 A** (önce 10 A Pi) | kafa 12 V (18 AWG) | kafa tepe 1,6 A |
-| F4 | 5 A | XL4016 çevre 5 V | |
-| F5 | **2 A** (önce 5 A) | acil stop / röle bobini devresi | sette yok: yeni |
+| F4 | 5 A | XL4016 çevre 5 V | **ikinci 5 A** (E9): sette tek 5 A var, F3 onu alır |
+| F5 | **2 A** (önce 5 A) | acil stop / röle K1 + K2 bobinleri | sette yok: yeni. K1 0,15 A + K2 ~0,03 A + PC817 |
 | Hat | 7,5 A × 2 | XL4016 A ve B girişi | kapaklı mini bıçak sigorta yuvası × 2 (yeni) |
+| Şarj | 10 A (mini) | XT60 şarj girişi → akü + (ana anahtar öncesi) | E9 / akü raporu önerisi; üçüncü kapaklı yuva (yeni). Şarj cihazı 6 A |
 
-Sette (5, 10, 2×15, 2×20) F3 ve F4 için iki 5 A gerekiyor, bir tane var: bir 5 A ve bir 2 A eklenir (E9 ile aynı yönde). 10 A artık boşta.
+**Sigorta seti (E9, 5. adım):** kutudaki set 5, 10, 2 × 15, 2 × 20 (standart/ATO bıçak). F3 ve F4 iki 5 A ister, bir tane var:
+**ikinci 5 A** ve F5 için **2 A** standart bıçak eklenir. Hat yuvaları mini bıçak: 7,5 A × 2 + şarj girişi 10 A. Maliyette tek satır
+"Bıçak sigorta (ek)" (5 adet; standart/mini ayrımı modelde), yuvalar "Hat sigortası yuvası" × 3. Setteki 10 A ve bir 15 A yedek kalır.
+
+## E8: akü süreleri (5. adım, akü raporuyla hizalı)
+
+Yöntem akü raporununki (`raporlar/aku-secimi/rapor.html`, `06-aku-secimi.md`): kullanılabilir = nominal × 0,90 (DoD) × 0,90 (yaşlanma,
+soğuk, BMS) = **× 0,81**; süre = Wh × 0,81 ÷ akü tarafı W. Akü **Victron SuperPack 12,8/20 = 256 Wh** (K3). Hesap betiği
+`planlama/adim5/e8_aku.py` → `e8-aku.json`. Yük değerleri tahmini (yalnız Nextion akımı datasheet'ten).
+
+3. adımın yeni tüketicileri dahil: Pi kafada **Pololu D36V50F5 üzerinden (verim 0,90)**, röle bobini **0,15 A × 12,8 V = 1,9 W** (önce 0,3 / 1,5 W),
+XL4016 boşta 0,4 W, PC817 girişleri ~0,13 W, servo bekleme akımı E1 tablosundan (0,7 A × 6 V = 4,2 W). Fan (E7, koşullu) ayrı satırda.
+
+| Yük (yük tarafı, W) | Hat (verim) | Boşta | Normal | Yoğun |
+|---|---|---|---|---|
+| Pi 5 + Active Cooler | kafa (0,90) | 4,0 | 6,5 | 12,0 (tam yük) |
+| 7" yüz LCD | kafa (0,90) | 1,7 | 2,45 | 2,5 |
+| Kamera 0,7 + mikrofon 0,5 + amfi | kafa (0,90) | 1,2 | 1,7 | 2,7 |
+| Nextion 10,1" | 5 V (0,88) | 2,5 | 3,5 | 4,0 |
+| ESP32 + sensör + mantık | 5 V (0,88) | 0,8 | 1,0 | 1,3 |
+| Servolar A + B | 6 V (0,88) | 4,2 (bekleme) | 10,2 (%20 jest) | **34,2** (sürekli jest, E1 5,7 A × 6 V) |
+| Tahrik 4 × JGB37 | 12 V (0,95) | 0,3 | 5,0 | **36,1** (%40 düz, %20 ivme, %25 rampa, %15 yerinde dönüş 2,0 A/motor) |
+| Sabit: röle 1,9 + XL boşta 0,4 + PC817 0,1 | akü | 2,5 | 2,5 | 2,5 |
+| **Akü tarafı** | | **19,0 W (1,5 A)** | **36,3 W (2,8 A)** | **104,4 W (8,2 A)** |
+
+| Senaryo | Akü W | Victron 256 Wh | 24 Ah (307 Wh) | 30 Ah (384 Wh) |
+|---|---|---|---|---|
+| Boşta (sunum bekleme) | 19,0 | 10,9 sa | 13,1 sa | 16,4 sa |
+| Normal etkileşim | 36,3 | 5,7 sa | 6,9 sa | 8,6 sa |
+| **Yoğun** | **104,4** | **2,0 sa** | 2,4 sa | 3,0 sa |
+| Yoğun, ön tekerler omni | 91,9 | 2,3 sa | 2,7 sa | 3,4 sa |
+| Ders karışımı (%40 / %50 / %10) | 36,2 | 5,7 sa | 6,9 sa | 8,6 sa |
+| Fuar karışımı (%35 / %50 / %15) | 40,5 | 5,1 sa | 6,1 sa | 7,7 sa |
+| + E7 fanı (1,2 W, koşullu) | | yoğun 1,96 sa, normal 5,5 sa | | |
+
+- **Yoğun senaryo düzeltme planındaki şartı karşılıyor (≥ 100 W).** Planın "≈ 2,5 sa" değeri 307 Wh (24 Ah) içindi; bu hesapta 24 Ah ile 2,4 sa.
+  Seçilen Victron ile **≈ 2,0 sa**.
+- **3 saatlik ders:** 134 Wh nominal gerekir (10,5 Ah). Victron 5,7 sa ile rahat.
+- **8 saatlik fuar:** 400 Wh nominal gerekir (31 Ah). Victron 5,1 sa ile yetmez: öğle şarjı (6 A ile ≈ 3,5 sa) ya da ikinci akü. Akü raporunun
+  sonucuyla aynı.
+- Akü raporuyla fark: boşta 14,6 → 19,0 W (servo bekleme 1,5 → 4,2 W, röle 1,5 → 1,9 W, Pololu kaybı), normal 31 → 36 W, yoğun 73 → 104 W
+  (yoğun tanımı sürekli jest + yerinde dönüş payı ile ağırlaştırıldı). OZET / `taban-analiz.json` `aku` hâlâ 307 Wh × 0,80 ve röle 0,3 W ile
+  hesaplı (10,9 / 32,6 / 80,7 W): **CAD tarafında açık iş** (`tasarim/freecad` bu adımda değişmedi; 6. adımda taban yeniden üretilirken 256 Wh,
+  × 0,81 ve bu tablo alınmalı).
+- En büyük belirsizlik: servo bekleme ve jest akımı (E1 tahmini) ve yerinde dönüş akımı (K1 ölçümü). Ölçümden sonra `e8_aku.py` yeniden koşulur.
+
+## E9: ön şarj (5. adım kararı)
+
+**Sorun:** E3 ile röle K1 her "devreye al"da çeker. Anahtarlı bara üstündeki boş kondansatörler aküye doğrudan bağlanır: XL4016 A/B ve
+BTS7960 ×2 modül giriş elektrolitleri (tahmini 4 × ~470 µF ≈ **2 mF**, ölçülecek) ve XL çıkışındaki 4 × 2200 µF servo kondansatörü (XL üzerinden).
+Kablo + kontak ≈ 30 mΩ ile tepe ≈ 13,3 V / 0,03 Ω ≈ 440 A, ~60 µs (tahmini). Victron datasheet dipnotu: yüksek giriş kapasitesinde akü
+kesebilir, ~10 sn sonra yeniden dener (`06-aku-secimi.md`). Önceden yalnız açılışta olan bu darbe artık her acil stop sonrasında olur.
+
+| Seçenek | Sonuç |
+|---|---|
+| Röle kontağına **kalıcı** paralel direnç | **Red.** K1 açıkken (acil stopta) bara direnç üzerinden beslenir: XL4016'lar servolara zayıf güç verir, acil stop delinir. Bara yüklüyse direnç yanar |
+| Seri NTC (≥ 30 A) | **Red.** Sürekli akım yolunda: yoğun 12,8 A'de birkaç W ve 100 °C üstü (PETG etek, Tg ≈ 80 °C). Acil stoptan hemen sonra NTC sıcak kalır, darbeyi sınırlamaz. Yük adımlarında gerilim düşürür |
+| **Ön şarj rölesi K2 + direnç, K1'e paralel kol** | **Seçildi.** Kol yalnız devreye alma anında ~300 ms kapalı; acil stop iki röleyi birlikte bırakır |
+
+**Devre:**
+```
+F1 20 A ──┬── K1 kontağı (40 A) ─────────────────────┬── anahtarlı 12 V bara (BTS ×2, 7,5 A ── XL4016 A/B)
+          └── K2 kontağı (7 A) ── R_ön 5,6 Ω 11 W ───┘
+F5 2 A ── mantar NC ──┬── K1 bobini ── IRLZ44N #1 (GPIO12)      (her bobine ters paralel 1N4007)
+                      └── K2 bobini ── IRLZ44N #2 (GPIO2; 220 Ω seri, 10 kΩ pull-down)
+```
+- **R_ön = 5,6 Ω, 11 W taş (çimento) direnç** (Direnc.net 13,95 TL); **K2 = 12 V 7 A sinyal rölesi** JQC-3F(T73) (18,23 TL), ikinci IRLZ44N + 1N4007.
+- **Tepe ön şarj akımı:** 14,6 V / 5,6 Ω = **2,6 A** (BMS 30 A sürekli sınırının onda biri). τ = 5,6 Ω × 2 mF = 11 ms; %99 dolum 56 ms.
+  Ön şarj penceresi **300 ms**: XL çıkışındaki 8,8 mF servo kondansatörü de buck üzerinden dolsun.
+- **Enerji:** bara ½ · 2 mF · 14,6² ≈ 0,21 J + servo kondansatörleri ½ · 8,8 mF · 6² ≈ 0,16 J; dirençte < 0,5 J, 11 W için ihmal.
+- **Ön şarjda yük:** XL4016 A/B servoları bekleme akımıyla besler (≈ 5 W, ≈ 0,4 A): R'de ≈ 2,2 V düşüm, bara ≈ 11 V'a çıkar. K1 kapanınca
+  kalan adım ≈ 2 V (darbe enerjisi doğrudan bağlamanın ≈ %2'si). BTS EN = 0 olmalı (E3 kuralı); motorlar ön şarjda çekmez.
+- **Hata durumu:** K1 kapanmazsa ya da bara kısa devreyse R'de 13,3² / 5,6 ≈ 32 W (14,6 V'ta 38 W). F1 bu akımı görmez; yazılım K2'yi
+  **≤ 1 s** içinde bırakır. Taş direncin kısa süreli aşırı yük dayanımı (tipik 5–10 × P_n, 5 s) seçilen ürün sayfasında yok: doğrulanmadı.
+- **Yer:** güç paneli, K1 yanında; direnç panel yüzeyinden ≥ 5 mm yukarıda (ısı), PETG'ye ve kablo demetine değmez. Montaj rehberi B5a adımı.
+- **Yazılım (ESP32, E3 dizisine ek):** (1) E3 ön koşulları: mantar serbest, servo hedefleri son konumda, BTS EN = 0, açık komut;
+  (2) GPIO2 = 1 (K2); (3) 300 ms bekle, PC817 #2 LOW olmalı (bara var), değilse GPIO2 = 0 ve hata; (4) GPIO12 = 1 (K1);
+  (5) 100 ms sonra GPIO2 = 0; (6) PC817 #2 LOW teyidi. Reset ya da acil stopta iki pin de LOW (pull-down), iki röle de bırakır.
+- **GPIO2:** E5 pin planındaki son yedek pin (DevKit LED'i; strapping, boot'ta LOW/boş olmalı, 10 kΩ pull-down uygun). Artık yedek GPIO yok.
+  PCA9685 kanal 13 alternatifi önerilmez: ESP32 resetlenince PCA çıkışını korur, K2 kapalı kalabilir.
+- **Ana anahtar açılışı:** K1 açık olduğundan yalnız F3/F4/F5 girişleri bağlanır (Pololu + XL çevre girişi, tahmini ≤ 0,6 mF). BMS'in bunu kesip
+  kesmediği ilk açılışta gözlenir; keserse aynı yöntem ana anahtara uygulanır (malzeme eklenmedi, ölçüme bağlı).
+- **Ölçüm (montajda):** bara kapasitesi multimetrenin kapasite kademesiyle (K1 açık, akü ayrık). 2 mF'tan çok büyükse ön şarj penceresi
+  5τ + XL dolum payına göre uzatılır; R değişmez.
 
 ## Pin planı taslağı (ESP32 DevKit 30 pin; E5 başlangıcı)
 

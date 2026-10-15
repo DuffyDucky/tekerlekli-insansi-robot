@@ -1,7 +1,12 @@
 # Proje planı
 
 Kaynak: `raporlar/Humanoid-Robot-Fizibilite-Raporu.html` (26 Eylül 2026). Tarihler güz dönemine göre;
-rakamların çoğu tahmin, teklif ve bölüm onayıyla kesinleşecek.
+rakamların çoğu tahmin, teklif ve bölüm onayıyla kesinleşecek. Tasarımın tek kaynağı FreeCAD V3 modeli (`tasarim/freecad/`),
+malzeme listesi `planlama/maliyet.json`.
+
+**Tek takvim (15 Ekim 2026, D6):** hafta numarası **dönem haftasıdır**, H1 = 28 Eylül – 4 Ekim 2026 (pazartesi başlar).
+`yazilim-plani.md` aynı numarayı kullanır. Takvim, yazılım planının 11 Ekim takvimine hizalandı: eski "H6 ilk uçtan uca sürüm"
+hedefi, sipariş Ekim ortasına kaydığı için H9'a taşındı. Teslim tarihi 1–2 hafta oynayabilir (Duffy, 11 Ekim 2026).
 
 ## Kapsam
 
@@ -12,16 +17,16 @@ rakamların çoğu tahmin, teklif ve bölüm onayıyla kesinleşecek.
 
 Kapsam 2. haftada yazılı olarak dondurulur; yeni fikirler 2. dönem listesine yazılır.
 
-## Takvim (güz dönemi ≈ 15 hafta)
+## Takvim (güz dönemi ≈ 15 hafta + 1 hafta pay; dönem haftası)
 
-| Hafta | İş | Çıktı |
+| Hafta (tarih) | İş | Çıktı |
 |---|---|---|
-| 1–2 (29 Eyl – 12 Eki) | Rol dağılımı, hoca onayı, kapsam belgesi. SolidWorks'te yerleşim, tork ve devrilme hesabı. Malzeme listesi ve sipariş | Onaylı kapsam, sipariş |
-| 3–5 | Paralel: masada konuşan düzenek (Pi + mikrofon + hoparlör) · taban şasi, motorlar, ESP32 hız kontrolü, kumandayla sürüş · güç dağıtımı ve acil stop | Üç alt sistem ayrı ayrı çalışıyor |
-| **6** | **İlk uçtan uca sürüm:** konuşan kafa tabanın üstünde, kumandayla geziyor. Bundan sonra her hafta entegrasyon testi | Çalışan ilk robot |
-| 7–10 | 3D baskı gövde ve kollar, jest kütüphanesi, yüz ekranı, davranış akışı, çevrimdışı yedek mod | Tam görünüşlü robot |
-| 11–12 | Hafif görüntü (yetişirse) | Kişiye dönen kafa |
-| **13–15** | Sağlamlaştırma: 3 senaryo × 20 deneme, yedek parça, demo kontrol listesi, rapor | Teslim / demo |
+| H1–2 (28 Eyl – 11 Eki) | Rol dağılımı, hoca onayı, kapsam belgesi. FreeCAD V3 yerleşim, tork ve devrilme hesabı. Malzeme listesi | Onaylı kapsam, V3 CAD |
+| H3–4 (12 – 25 Eki) | Düzeltme planı (CAD ve malzeme), sipariş. Masa düzeneği: Pi ↔ ESP32 protokolü, 1 motor + 2 servo (yazılım Y0) | Sipariş verildi, masa düzeneği konuşuyor (H4) |
+| H5–8 (26 Eki – 22 Kas) | Paralel: masada konuşan kafa (Pi + mikrofon + hoparlör, H7) · taban şasi, motorlar, ESP32 hız kontrolü, kumandayla sürüş · güç dağıtımı ve acil stop · 3D baskı (Parti 0–2) | Üç alt sistem ayrı ayrı çalışıyor |
+| **H9 (23 – 29 Kas)** | **İlk uçtan uca sürüm / ilk sürüş:** elektrik robotta, kumandayla geziyor, kollar sınırlar içinde. Bundan sonra her hafta entegrasyon testi | Çalışan ilk robot |
+| H10–14 (30 Kas – 3 Oca) | Gövde ve kollar (baskı Parti 3–4), jest kütüphanesi, yüz ekranı, davranış akışı, çevrimdışı yedek mod; konuşan + jest yapan robot (H11); tam görünüş ve hafif görüntü (yetişirse, H12–14) | Tam görünüşlü robot |
+| **H15–16 (4 – 17 Oca)** | Sağlamlaştırma: 3 senaryo × 20 deneme, yedek parça, demo kontrol listesi, rapor | Teslim / demo |
 | 2. dönem | Görüntü modülünü olgunlaştırma, belki tek hazır kolla (SO-101) nesne tutma, Teknofest / TÜBİTAK 2209-A | Genişletme |
 
 Kapasite (tahmini): 4 kişi × haftada ≈ 8 saat × 15 hafta ≈ 480 kişi-saat. Yazılım 150–220 saat,
@@ -31,7 +36,7 @@ mekanik + elektrik + montaj 150–250 saat → 1. aşama sığar, hafif görünt
 
 | Rol | Kim | İş |
 |---|---|---|
-| Mekanik + proje lideri | Duffy | Tasarım (SolidWorks), montaj, takvim, satın alma, hoca ve sponsor ilişkisi |
+| Mekanik + proje lideri | Duffy | Tasarım (FreeCAD V3 modeli), montaj, takvim, satın alma, hoca ve sponsor ilişkisi |
 | Elektrik / elektronik | — | Akü, güç dağıtımı, motor sürücüleri, acil stop devresi |
 | Yazılım / yapay zekâ | — (şart) | Konuşma zinciri, davranış akışı, sonra görüntü |
 | Gömülü + test | — | ESP32 kodu, haftalık entegrasyon testleri, belgeler |
@@ -63,11 +68,11 @@ denenebilir (Manisa OSB). TÜBİTAK 2209-A ve 2209-B takvimi bir döneme yetişm
 | 2. dönemde staj | Bölüme sor; asıl hedefi 1. döneme göre kur |
 | Yazılım sorumlusunun ayrılması | Ortak depo; ikinci kişi de konuşma zincirini çalıştırabilsin |
 
-## İlk iki hafta
+## İlk iki hafta (H1–2; çoğu yapıldı, sipariş H3–4'e kaydı)
 
 1. Robotun amacını hocayla netleştir (karşılama / tanıtım / rehber).
 2. 4 kişinin rollerini yaz.
 3. Bölümde hazır malzemeyi listele.
-4. Tasarımı SolidWorks'e taşı (`tasarim/cad/Humanoid-Robot-Montaj.step`), ölçüleri gözden geçir.
-5. Malzeme listesini kesinleştir (`tasarim/cad/parca-listesi.csv` + raporun bütçe tablosu), siparişi ver.
+4. Tasarım FreeCAD V3'te (`tasarim/freecad/`; eski CadQuery V1/V2 modeli `tasarim/cad/` altında kaldı; oradaki `demo_uret.py` yalnız maliyet sayfasını üretir). Ölçüleri gözden geçir.
+5. Malzeme listesini kesinleştir (`planlama/maliyet.json`, sayfası `tasarim/Robot-Tasarim-Demosu.html`), siparişi ver.
 6. İşletmede Mesleki Eğitim takvimini bölüme sor.
