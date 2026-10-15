@@ -248,8 +248,9 @@ for sx in (-1, 1):
            "rc:729")
 # Etek tasiyici L braketleri (rc:604-609, V3'te taban bolgesiydi) artik kabuk modulunun parcasi: bolgeleri asagida
 # (8. bolum, KABUK_ETEK_BRAKET) kabuk sahipli olarak tanimli.
-for (x, z, l, w, ad) in ((-75, -120, 85, 56, "Raspberry Pi 5"), (65, -135, 52, 28, "ESP32"), (65, -65, 62.2, 25.4, "PCA9685"),
-                         (0, 60, 27, 20, "BNO055"), (-65, 40, 19.4, 17.8, "MAX98357A")):
+# K4 (3. adim): Raspberry Pi 5 ve MAX98357A kafada (kafa_parcalar; KAFA modulu cizili): eski V3 taban bolgeleri kaldirildi (K3 kontrolu).
+for (x, z, l, w, ad) in ((65, -135, 52, 28, "ESP32"), (65, -65, 62.2, 25.4, "PCA9685"),
+                         (0, 60, 27, 20, "BNO055")):
     _b(ad + " (elektronik kati)", "taban", _k(_xs(x) - l / 2 - 3, _xs(x) + l / 2 + 3, Y_DECK1, Y_DECK1 + 25, z - w / 2 - 3, z + w / 2 + 3),
        "rc:739-743, rc:34-45", "kart olcusu + 3 mm pay; yukseklik 6 mm burc + bilesenler (tahmini)")
 

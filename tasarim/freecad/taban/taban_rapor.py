@@ -155,7 +155,7 @@ for ad, cap, w in (
         ("taban-yan.png", "Yandan (+X), etek yarı saydam: aks 62,5, plaka 91,5, ray 94,5–134,5, kat 174,5, etek üstü 262", ""),
         ("taban-on.png", "Önden: sonarlar etek deliklerinde, teker–etek 12 mm", ""),
         ("taban-alt.png", "Alttan: plaka cıvataları (14× M6), motor braketleri (8× M4), kayış dönüşü, kablo delikleri", ""),
-        ("taban-elektronik-kati.png", "Elektronik katı (ön): Pi 5 + Active Cooler, ESP32 taşıyıcı, PCA9685, BNO055, MAX98357A", ""),
+        ("taban-elektronik-kati.png", "Elektronik katı (ön): arayüz kartı (E2/E3, eski Pi 5 yeri), servo dağıtım A/B, ESP32 taşıyıcı, PCA9685, BNO055 (Pi 5 ve MAX98357A K4 ile kafada)", ""),
         ("taban-guc-paneli.png", "Güç paneli (arka): sigorta kutusu, röle, ana sigorta; üstte acil stop ve ana anahtar gövdesi", ""),
         ("taban-aku-yakin.png", "Akü yakın plan (katlar gizli): iki cırt kayış plaka yarıklarından döner, ön takoz", ""),
         ("taban-teker-yakin.png", "Teker grubu: teker, kaplin, L braket, JGB37", ""),
@@ -175,7 +175,8 @@ H.append("<h2>Yapı ve yerleşim</h2>")
 H.append("<p>Koordinat global (taban yereli = global): +X sağ, +Y yukarı, +Z ileri, mm. Üç kat var:</p><ul>")
 H.append("<li><b>Alt plaka</b> (3 mm Al 5754, y 91,5–94,5): şase raylarının altına 14× M6 + çekiç somun (uzun raylar z ±90 / ±235, ara raylar x ±50). "
          "Altında 4 motor braketi, üstünde (raylar arasında) akü, 2× BTS7960, 3× XL4016.</li>")
-H.append("<li><b>Elektronik katı (ön)</b> (5 mm huş kontrplak, z 24,25–250, y 174,5–179,5): Pi 5, ESP32 taşıyıcı, PCA9685, BNO055, MAX98357A. "
+H.append("<li><b>Elektronik katı (ön)</b> (5 mm huş kontrplak, z 24,25–250, y 174,5–179,5): arayüz kartı (E2/E3), servo dağıtım kartı A/B (E1), ESP32 taşıyıcı, PCA9685, BNO055. "
+         "Raspberry Pi 5 ve MAX98357A amfi K4 ile kafada (kafa raporu). "
          "4× M5×40 burç (z 40 / 230).</li>")
 H.append("<li><b>Güç paneli (arka)</b> (5 mm kontrplak, z −250–23,75, direk cebi önden açık): sigorta kutusu, röle, ana sigorta yuvası. "
          "Akünün üstünde; akü değişiminde elektroniğe dokunmadan sökülür. 4× M5×40 burç (z −40 / −230).</li></ul>")
@@ -217,9 +218,9 @@ BAGLANTI = [
     ("Burç ↔ uzun ray üst kanalı", "M5×40 burç ray üstüne dayalı (x ±115, z ±40, ±230)", "M5 çekiç somun + M5×16 DIN 913 saplama (burca 6,7 mm)"),
     ("Kat / güç paneli ↔ burç", "kontrplak burç üstüne dayalı", "8× M5×12 DIN 912 + pul (burca 6 mm)"),
     ("BTS7960, XL4016 ↔ alt plaka", "kart 8 mm naylon burç üstünde (Al plakaya kısa devre yok)", "M3×6 üstten + M3×6 alttan (vidalar arası 0,6 mm)"),
-    ("Pi 5, PCA9685, BNO055 ↔ ön kat", "datasheet delikleri: Pi 58 × 49 Ø2,7; PCA 55,9 × 19,05; BNO 20 × 12", "M2,5×8 pirinç burç + M2,5×5 üst + M2,5×8 alt"),
+    ("PCA9685, BNO055 ↔ ön kat", "datasheet delikleri: PCA 55,9 × 19,05; BNO 20 × 12 (Pi 5 K4 ile kafada)", "M2,5×8 pirinç burç + M2,5×5 üst + M2,5×8 alt"),
+    ("Arayüz kartı, servo dağıtım A/B ↔ ön kat", "70 × 50 pertinaks, 4 köşe deliği (tahmini düzen; 3 kart × 4)", "M3×8 naylon burç + M3×6 üst + M3×8 alt"),
     ("ESP32 ↔ taşıyıcı ↔ ön kat", "ESP32 pinleri 2× 15'li dişi header'a 6 mm; taşıyıcı 8 mm naylon burçta", "M3×6 üst + M3×8 alt"),
-    ("MAX98357A ↔ ön kat", "montaj deliği yok", "1 mm çift taraflı köpük bant"),
     ("Akü ↔ alt plaka", "akü raylar arasında (yanlarda 4,5 mm), arka ara raya 5 mm, önde takoz", "2× 25 mm cırt kayış (plaka yarıklarından döner) + baskı ön takoz (2× M3×8 + ısıl gömme somun)"),
     ("Sigorta kutusu, röle ↔ güç paneli", "kulaklardan; somunlar akünün dışında (z −213, x −112)", "3× M4×16 + pul + M4 DIN 985"),
     ("Sonar ↔ tutucu ↔ ön ara ray", "PCB üst/alt kenarı tutucu raylarında; tutucu ön ara rayın ön yüzüne (z 250)", "4× M6×14 ISO 7380 + M6 çekiç somun (etek duvarına 3,2 mm)"),
@@ -346,7 +347,7 @@ H.append("<p class='not'>Tüm tüketim kalemleri tahmini (yalnız Nextion akım�
 H.append("<h2>Güç dağıtımı ve kablo yolu</h2>")
 H.append("<div class='grid'>")
 for ad, cap in (("taban-kablo-yolu.png", "Taban içi kablo yolu şeması (katlar yarı saydam): kırmızı 12 V ana hat, turuncu motor, sarı servo 6 V, mavi 5 V, yeşil acil stop, mor sinyal"),
-                ("taban-kablo-yolu-direk.png", "Gövde direği boyunca: servo, 5 V ve Pi kabloları etek üst açıklığından çıkar, direğin arka/ön yüzü boyunca traverse")):
+                ("taban-kablo-yolu-direk.png", "Gövde direği boyunca: servo, 5 V, kafa 12 V çifti ve ESP32 → Pi USB'si (Pi K4 ile kafada) etek üst açıklığından çıkar, direğin arka/ön yüzü boyunca traverse")):
     if os.path.exists(os.path.join(G, ad)):
         H.append("<figure><img src='%s' alt='%s'><figcaption>%s</figcaption></figure>" % (img64(ad), esc(cap), esc(cap)))
 H.append("</div>")

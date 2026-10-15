@@ -529,7 +529,7 @@ YOL += [
       (AK_C[0], 195, AK_C[1])]),
     ("Sinyal: sonar x3 -> arayuz karti bolucu (4,7k/10k) -> ESP32 (on ara ray ustunden)", "mor",
      [(-79.4, 95, 254), (-79.4, 90, 240), (-60, 140, 240), (-100, 150, 200), (AK_C[0], 190, AK_C[1] + 20), (0, 195, 90), (ESP_C[0], 190, 100)]),
-    ("Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (yalniz veri, VBUS kesik)", "mor",
+    ("Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (VBUS hattinda seri 1N5819)", "mor",
      [(-67.5, 140, 140), (-30, 160, 160), (ESP_C[0], 190, ESP_C[1]), (40, 205, 30), (20, 230, 26), (20, 262, 26), (20, 900, 26), (20, 975, 30),
       (0, 1010, 20)]),
 ]

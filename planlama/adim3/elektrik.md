@@ -3,6 +3,7 @@
 Tarih: 15 Ekim 2026. Tek yer: bu dosya. CAD karşılığı `tasarim/freecad/taban/` ve `kafa/`, sayılar `taban-analiz.json`
 (`donus`, `aku`) ve `kafa-analiz.json` (`tork`, `isi`, `pi`). "Tahmini" yazan değer ölçülmedi ya da kaynaktan türetildi.
 Pin planı E5'in başlangıcıdır, kesin değildir. Akü süreleri E8'in (5. adım) işi, burada yalnız anlık akımlar var.
+T2 takip düzeltmesi (15 Ekim 2026, bağımsız kontrol `K3-kontrol.md`): JGB37 tork uyarısı, ESP32 beslemesi ifadesi, DTR/RTS, ön şarj, PC817 3,3 V, Pololu akımı, kafa ısısı (`T2-takip.md`).
 
 ## Özet: ne değişti
 
@@ -15,7 +16,7 @@ Pin planı E5'in başlangıcıdır, kesin değildir. Akü süreleri E8'in (5. ad
 | Acil stop durumu (E2) | Okunmuyor | PC817 #1 mantar sonrası 12 V'u okur; PC817 #2 anahtarlı 12 V barayı okur |
 | PCA9685 / BNO055 mantık (E2) | 5 V | 3V3 (ESP32 regülatörü) |
 | Acil stop yeniden başlatma (E3) | Mantar bırakılınca röle kendiliğinden çeker | Bobin: F5 → mantar NC → bobin → MOSFET (ESP32 "devreye al", GPIO12). Bırakmak gücü vermez |
-| ESP32 beslemesi (E4) | Pi USB'si + çevre 5 V birlikte | Tek kaynak: çevre 5 V (VIN). USB kablosunun VBUS teline seri 1N5819 (kartta VBUS-VIN diyodu yoksa) |
+| ESP32 beslemesi (E4) | Pi USB'si + çevre 5 V birlikte | Diyotlu VEYA (iki kaynak): asıl çevre 5 V (VIN); USB kablosunun VBUS teline seri 1N5819 (anot Pi tarafında). Pi'ye geri besleme yok, CP2102 VBUS algısı sürer |
 | Amfi | Tabanda (I2S 1 m boyundan) | Kafada, Pi'nin yanında |
 | Etek ısısı (E7) | Pi + 3 XL4016 + 2 BTS kapalı etekte | Pi ve onun XL'i çıktı (≈ −8…11 W). Fan yeri ayrıldı (ölçüme bağlı), ölçüm planı aşağıda |
 
@@ -26,9 +27,24 @@ Pin planı E5'in başlangıcıdır, kesin değildir. Akü süreleri E8'in (5. ad
 hesap "ölçülen" senaryoyu ekler, karar ona göre verilir.
 
 Varsayımlar (hepsi açık):
-- Robot ev pozu 21,71 kg, AM (−0,2; 372,4; −13,8) mm (taban + güncel kafa + montajın geri kalanı + 400 g kablo payı). Arka aks daha yüklü: ön 98,6 N, arka 114,5 N.
+- Robot ev pozu 21,73 kg, AM (−0,2; 372,9; −13,8) mm (taban + güncel kafa + montajın geri kalanı + 400 g kablo payı; T2 kafa perdesiyle 21,71 → 21,73, tablo değerleri yuvarlamada aynı). Arka aks daha yüklü: ön 98,6 N, arka 114,5 N.
 - Kare yerleşim: iz 356 (teker düzlemi x ±178), aks arası 370 (z ±185), teker r 62,5 mm. Her yandaki iki motor aynı BTS7960'tan paralel sürülür, yani aynı hızda döner.
 - JGB37-520 60 dev/dk: durma 21 kg·cm (Direnc.net sayfası), sürekli = durmanın %30'u = 6,3 kg·cm (projedeki ölçüt). Durma akımı 2,8 A (tahmini, `06-aku-secimi.md`), boşta 0,12 A; akım torkla doğrusal.
+
+> **Uyarı (JGB37 torku doğrulanmadı, K3):** 21 kg·cm yalnız satıcı etiketi: Direnc.net sayfasında "Tork 21KG" yazıyor, birim yok, durma mı nominal mi belli değil.
+> Aynı motorun Aslong tablosu 1:90 (66 dev/dk) için **durma 9 kg·cm / 1,2 A** veriyor (`raporlar/kaynaklar/06-aku-secimi.md` satır 15); 60 dev/dk (≈ 1:100) için bu ≈ 10 kg·cm.
+> Hesap değeri değişmedi (21), yalnız senaryo koşuldu: `T2_donus_9kg.py` (`donus_hesap.py`'yi import eder, arayüz değişmez). Durma 9 kg·cm, sürekli 2,7 kg·cm, durma akımı 1,2 A ile:
+>
+> | μ | Yerinde dönüş (arka) | Durmanın | Üst sınır | Ön omni | Omni / sürekli 2,7 | Omni düz gidiş çekişmesi |
+> |---|---|---|---|---|---|---|
+> | 0,4 | 12,1 kg·cm | **%134** | %194 | 2,7 kg·cm | ×1,00 | ×0,68 |
+> | 0,5 | 14,9 kg·cm | **%165** | %240 | 2,6 kg·cm | ×0,95 | ×0,86 |
+> | 0,6 | 17,7 kg·cm | **%197** | %285 | 2,9 kg·cm | ×1,08 | ×1,08 |
+>
+> Sonuç: tork gerçekten ~9 kg·cm ise standart tekerle robot **yerinde dönemez** (μ 0,4'te bile motorlar durur); ön omniyle dönüş durmanın %29–33'ü, yani sürekli sınır (%30) civarında (×0,95–1,08; sınırda, ısıl yük izlenmeli).
+> Omni + Ø127/Ø125 çap farkı düz gidişte de sürekli değere yaklaşır: Ø125'e yakın omni ya da hız düzeltmesi gerekir. Yazılımdaki "> 2,0 A'de kes" eşiği bu senaryoda geçersiz (durma akımı 1,2 A): eşik ölçümden sonra yazılır.
+> Düz sürüşte de pay daralır: `taban-analiz.json` `motor` düz 0,5 m/s² ivmede 2,75 kg·cm (2,7'nin ×1,02), 5° rampa + 0,5 m/s² 5,7 kg·cm (×2,1; durmanın %63'ü).
+> **Motor (durma torku + akımı) ve zemin μ ölçümü omni siparişinden ÖNCE yapılmalı** (ölçüm aşağıda). Tork ≤ 10 kg·cm çıkarsa omni tek başına yetmeyebilir: daha düşük devirli (daha yüksek oranlı) JGB37 ya da daha güçlü motor da değerlendirilmeli.
 - Sürtünme: Coulomb, her tekerde kuvvet ≤ μN, yönü kayma hızının tersi. Lastik esnemesi için kayma ölçeği 0,05 (kaymanın hıza oranı 0,05'te kuvvet ≈ 0,7 μN; tahmini). Yuvarlanma direnci Crr 0,03. Omni makarası yanal direnci 0,05 (tahmini).
 - **Üst sınır** modeli ayrıca: yanal sürtünme tam μN, dönüş direnci katsayısı μ_t = μ / (0,925 + 0,15 R/B) (Wong, *Theory of Ground Vehicles*, kayarak yönlenme yarı ampirik bağıntısı).
 
@@ -91,12 +107,17 @@ kalkış anı 2,5 A (MG996R durma 2,5 A @6 V, DS3218MG 2,6 A @6,8 V; `06-aku-sec
 |---|---|---|
 | HC-SR04 echo ×3 (5 V) | Bölücü (arayüz kartında): seri 4,7 kΩ, toprağa 10 kΩ | 5 × 10/14,7 = 3,40 V (ESP32 ≤ 3,6 V). Trig 3,3 V yeterli (PCA9685 kanalından, aşağıda). HC-SR04P yalnız yeni alımda: 3,3 V beslenirse echo 3,3 V |
 | Akü gerilimi | 100 kΩ / 18 kΩ + 100 nF, ana anahtar sonrası (kapalıyken akım çekmez) | 14,6 V → 2,23 V, 10,0 V → 1,53 V (ESP32 ADC 11 dB doğrusal bölge ≤ 2,45 V). Akım 0,12 mA. Bir kez multimetreyle kalibre et |
-| Acil stop durumu | PC817 2 kanal modülü ([Direnc.net, 43,59 TL](https://www.direnc.net/pc817-2-kanal-optokuplor-izolasyon-icin-modul); giriş 3,6–24 V). Kanal 1 mantar NC sonrasındaki düğüm | LOW = mantar serbest, HIGH = basılı ya da F5 attı |
+| Acil stop durumu | PC817 2 kanal modülü ([Direnc.net, 43,59 TL](https://www.direnc.net/pc817-2-kanal-optokuplor-izolasyon-icin-modul); giriş 3,6–24 V). Kanal 1 mantar NC sonrasındaki düğüm | LOW = mantar serbest, HIGH = basılı ya da F5 attı. **Modülün çıkış tarafı 3,6–30 V için verilmiş, ESP32 3,3 V bunun altında:** montajda 3,3 V'ta çıkışın tam LOW/HIGH verdiği multimetreyle ölçülecek (aşağıdaki not) |
 | Anahtarlı 12 V durumu | PC817 kanal 2, röle sonrası bara | LOW = motor/servo gücü var |
 | PCA9685 mantık | VCC ← ESP32 3V3 (I2C pull-up'lar 3,3 V'a); OE → GND | Servo gücü V+'tan değil, dağıtım kartından |
 | BNO055 | VIN ← 3V3 | Adafruit kartı 3–5 V kabul eder |
 | JGB37 enkoder | VCC ← 3V3 (Hall çıkışı 3,3 V) | 5 V gerekirse çıkışa 4,7k/10k bölücü (ölç) |
 | Nextion TX (3,0–5,0 V) | 1 kΩ / 2 kΩ bölücü → GPIO16 | `donanim/datasheet/README.md` |
+
+**PC817 modülü 3,3 V'ta (K3 notu):** modülün giriş tarafı 3,6–24 V (12 V için uygun), ama çıkış tarafı da satıcı sayfasında "3,6–30 V" ve jumper'la yüksek/düşük seçiliyor; ESP32 tarafı 3,3 V nominalin altında.
+Montajda: çıkışı açık kolektör gibi kullan (modülün çıkış besleme ucu 3V3'e ya da boş, sinyal ESP32 GPIO'suna dahili pull-up ile), girişe 12 V verip kesip multimetreyle 3,3 V tarafında LOW < 0,4 V ve HIGH > 2,5 V gör.
+Olmazsa **alternatif (önerilen yedek, ~10 TL):** arayüz kartına doğrudan iki PC817 (DIP-4): giriş LED'ine seri 2,2 kΩ (12,8 V'ta (12,8 − 1,2) / 2,2 k ≈ 5,3 mA, 14,6 V'ta 6,1 mA, 0,08 W; 1/4 W yeter),
+LED'e ters paralel 1N4148 (ters gerilim koruması), çıkış kolektörü → GPIO23 / GPIO5 + 10 kΩ pull-up 3V3'e, emetör GND. PC817 CTR ≥ %50 (5 mA'de ≥ 2,5 mA) → 3,3 V / 10 kΩ = 0,33 mA'i rahat doyurur. Mantık aynı: LED yanık = çıkış LOW.
 
 ## E3: acil stop ve yeniden başlatma
 
@@ -113,21 +134,30 @@ K1 kontağı (40 A): F1 20 A ──> anahtarlı 12 V bara ──> BTS7960 sol/sa
   PC817 #2 500 ms içinde LOW olmazsa hata ver.
 - Açılışta güvenli: GPIO12 boot'ta LOW olmalı (strapping pini). Gate'teki 10 kΩ pull-down hem bunu sağlar hem röleyi kapalı tutar. ESP32 kilitlenirse görev izleyicisi (watchdog) resetler; reset anında pin LOW'a düşer → röle bırakır.
 - Kalan risk: yazılım hatası pini 1'de bırakıp mantar bırakılırsa röle yeniden çeker. Donanımla kapatılacaksa: röle kontağına paralel ikinci (kendini tutma) kontak + ayrı başlat butonu (iki kontaklı röle gerekir). Şimdilik yazılım kuralı + watchdog.
+- **Pi seri portu DTR/RTS (K3 E-2, yazılım planına satır):** DevKit'teki otomatik reset devresi (CP2102 DTR/RTS → EN/GPIO0) ESP32'yi Pi seri portu açıp kapatırken resetleyebilir.
+  Reset → GPIO12 LOW → röle bırakır → servo ve motor gücü kesilir, **kollar düşer**. Pi tarafı portu DTR/RTS değiştirmeden açmalı: pyserial'de port açılmadan önce
+  `ser.dtr = False; ser.rts = False` ayarlanıp sonra `ser.open()`, Linux'ta ayrıca `stty -F /dev/ttyUSB0 -hupcl` (kapanışta DTR düşmesin). İlk bağlantı testinde
+  ESP32'nin boot mesajı basmadığı (resetlenmediği) görülmeli. Yazılım yine de "ESP32 resetlendi" durumunu ele almalı: reset sonrası röle kapalı açılır, yeniden devreye alma E3 kuralıyla.
+- **Ön şarj (E9) önemi arttı (K3):** E3 ile röle her "devreye al"da yeniden çeker. Her seferinde anahtarlı bara üstündeki kondansatörler (XL4016 / BTS giriş kondansatörleri; XL çıkışındaki
+  4 × 2200 µF servo kondansatörü de XL üzerinden) boş halden dolar. Victron BMS yüksek kapasitif yükte kesebilir, ~10 s sonra yeniden dener (`06-aku-secimi.md` satır 61, 164).
+  Önceden yalnız açılışta olan darbe artık her acil stop sonrasında olur. E9 (5. adım): röle kontağına paralel 10 Ω / 5 W ön şarj direnci + gecikmeli çekme ya da ≥ 30 A NTC; değer için bara kapasitesi ölçülecek.
 - MOSFET: IRLZ44N (mantık seviyeli, TO-220; Direnc.net ~26 TL, fiyat doğrulanmadı). Bobin akımı ~0,15 A. Alternatif BC337 + 1 kΩ.
 - F5 2 A: bobin 0,15 A + PC817 ~5 mA. Önceki 5 A bu devre için büyüktü, 5 A artık F3/F4'te.
 
 ## E4: Pi 5 beslemesi (K4: Pi kafada)
 
 - **Boyundan:** 12 V çift (18 AWG, F3 5 A) + ESP32 USB (veri; 1,25 m) + tilt servo (3 tel). HDMI ve CSI boyundan çıktı (`kafa-analiz.json` `pi`).
-- **Kafada çevirici:** Pololu **D36V50F5** ([pololu.com/product/4091](https://www.pololu.com/product/4091)): giriş 5,5–50 V, çıkış 5 V (%4), 5,5 A (giriş gerilimine ve ısıya bağlı; 12 V'ta tipik 3,5–8 A aralığı grafikte).
+- **Kafada çevirici:** Pololu **D36V50F5** ([pololu.com/product/4091](https://www.pololu.com/product/4091)): giriş 5,5–50 V, çıkış 5 V (%4), tipik 5,5 A **36 V girişte**; ürün sayfasındaki 3,5–8 A aralığı **tüm giriş aralığı** içindir (giriş gerilimine ve ısıya bağlı), 12 V'a özel bir değer değildir.
+  12 V girişteki sürekli akım üreticinin grafiğinden okunup teyit edilecek (açık iş 8); kafa tepe 3,7 A kısa süreli, tipik 2,3 A.
   Ters gerilim −40 V, aşırı akım, kısa devre, aşırı sıcaklık, çıkış alt/üst gerilim koruması, yumuşak başlatma. 25,4 × 25,4 × 9,5 mm, 7 g.
   P raporundaki D24V50F5 yerine bu seçildi: 50 V giriş payı (12 V hatta motor/röle sıçramaları) ve korumalar. Türkiye stoğu bulunamadı (USD 39,95).
-- **Kafa 5 V bütçesi:** Pi 5 12 W tepe + 7" LCD 2,5 W (Pi USB-A'dan) + amfi 3 W tepe + kamera 0,7 + mikrofon 0,5 ≈ 18,7 W → 3,7 A (çevirici sınırının %68'i). 12 V'tan 1,6 A tepe.
+- **Kafa 5 V bütçesi:** Pi 5 12 W tepe + 7" LCD 2,5 W (Pi USB-A'dan) + amfi 3 W tepe + kamera 0,7 + mikrofon 0,5 ≈ 18,7 W → 3,7 A (36 V'taki 5,5 A'in %68'i; aralığın alt ucu 3,5 A'in biraz üstü, bu yüzden 12 V eğrisi teyit edilmeli). 12 V'tan 1,6 A tepe.
 - **Bağlantı:** çevirici VOUT → kısa USB-C erkek ucu (20 AWG, ~10 cm) → Pi USB-C. PD yok, bu yüzden:
   - EEPROM'a `PSU_MAX_CURRENT=5000` (`sudo rpi-eeprom-config --edit`): firmware PD pazarlığını atlar, 5 A kaynak varsayar ([raspberrypi.com](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html), bootloader yapılandırması).
   - `config.txt`: `usb_max_current_enable=1` (aynı belge; USB-A çıkış sınırını kaldırır, LCD için gerekli).
 - **TVS:** 5 V çıkışa P6KE6.8A (5,8 V tutma, 6,45–7,14 V kırılma), kafa girişinde 12 V'a P6KE18A (15,3 V tutma; LiFePO4 şarjda 14,6 V). Delikli gövde, klemense lehimlenir.
-- **ESP32 çift besleme:** tek kaynak = çevre 5 V → VIN. Pi'ye giden USB kablosunun VBUS teline seri **1N5819** (anot Pi tarafında): CP2102 bağlantıyı görmeye devam eder, çevre 5 V Pi'ye geri beslemez.
+- **ESP32 çift besleme (diyotlu VEYA, iki kaynak):** asıl kaynak çevre 5 V → VIN. Pi'ye giden USB kablosunun VBUS teline seri **1N5819** (anot Pi tarafında). VBUS kesilmez:
+  CP2102'nin VBUS pini bağlantı algısıdır, kesilirse kart USB'de görünmeyebilir. Diyot sayesinde çevre 5 V Pi'ye geri beslemez; çevre 5 V düşerse ESP32 Pi'den ~4,4–4,7 V alır (zararsız, ESP32 çalışır).
   Kartın kendi VBUS→VIN diyodu doğrulanırsa (DOIT DevKit V1 şemasında var) bu diyot gerekmez. Montajda multimetreyle bakılacak.
 - **Nextion** artık Pi'den değil ESP32'den sürülür (UART2; Pi → ESP32 USB komutu). Boyundan sinyal geçmez. Yazılım planına iş: ESP32 Nextion sürücüsü.
 
@@ -135,8 +165,8 @@ K1 kontağı (40 A): F1 20 A ──> anahtarlı 12 V bara ──> BTS7960 sol/sa
 
 | | Önce | Sonra |
 |---|---|---|
-| Parça / kütle | 98 / 1.363,1 g | 115 / 1.431,3 g (+68,2: Pi + soğutucu 58, 4 burç + 8 vida ~3, çevirici 7, amfi 2, köpük) |
-| Tilt grubu (kablo payı 25 g dahil) | 833,4 g, 4,46 kg·cm, **pay 2,11** | 926,6 g, 4,64 kg·cm (yerçekimi 2,62 @30° + ivme 2,02), **pay 2,03** (P tahmini 1,96) |
+| Parça / kütle | 98 / 1.363,1 g | 115 / 1.431,3 g (+68,2: Pi + soğutucu 58, 4 burç + 8 vida ~3, çevirici 7, amfi 2, köpük); T2 yarık + perde sonrası **1.443,5 g** |
+| Tilt grubu (kablo payı 25 g dahil) | 833,4 g, 4,46 kg·cm, **pay 2,11** | 926,6 g, 4,64 kg·cm (yerçekimi 2,62 @30° + ivme 2,02), **pay 2,03** (P tahmini 1,96); T2 sonrası 938,8 g, 4,67 kg·cm, **pay 2,01** |
 | Pan | 2,6 kg·cm, pay 3,6 | 2,64 kg·cm, pay 3,6; üst rulman eksenel 10,1 → 11,0 N |
 | Tilt mili yük paylaşımı | horn 4,07 N / pim 4,11 N | 4,55 / 4,54 N (açık iş: tilt servosuna ikinci rulman) |
 | Hareket aralığı | tilt −25…40 serbest, pan ±180 | aynı (çarpan poz kümesi birebir aynı) |
@@ -145,11 +175,17 @@ K1 kontağı (40 A): F1 20 A ──> anahtarlı 12 V bara ──> BTS7960 sol/sa
   Pi ↔ kafa iskeleti 6,6 mm, ↔ arka kabuk 7,5 mm; tilt taramasında (−25…30°) Pan/Gövde grubuna en az 31,6 mm. Soğutucu üstü y 208,5, tavana 64 mm.
 - Çevirici (−75; 44) ve amfi (65; 44) tablada 1 mm köpük bant + kablo bağıyla. Çevirici ↔ kablo geçişi ~25 mm, amfi ↔ LCD HDMI bloğu 11,6 mm.
 - Kamera FPC **300 mm** (Pi 5 22 pin 0,5 mm → 15 pin 1 mm); micro HDMI → HDMI **25–30 cm**; kısa USB-C güç ucu. Kafa içi kablolar referans (kütleye 25 g nokta yük olarak tork hesabında).
-- **Havalandırma (arka kabuk):** giriş arka duvar 2 × 5 yarık 3 × 40 = 1.200 mm²; çıkış iki yan duvar 6'şar yarık 3 × 40 = 1.440 mm² (y 198–249, z −50…−10). Eski 8 alt yarık (1.120 mm²) yerinde.
-  Arka kabuk baskısı desteksiz kaldı (0 sorun), 270,6 → 263,1 g.
-- **Isı (el hesabı, 30 °C ortam; `kafa-analiz.json` `isi`):** kafa gücü boşta / tipik / en kötü 7,2 / 11,4 / 14,5 W.
-  Kapalı kafa 39 / 45 / **49 °C** (servo sınırı 55 °C). Yarıklı ve Active Cooler 1,0–1,55 L/s ile 34–42 °C (fan debisi üreticiden yok, varsayım).
-  Test şartı: kafa kapalı, stres (stress-ng + animasyon), SoC ≤ 75 °C, tilt servosu gövdesi ≤ 50 °C. Yazılım SoC > 75 °C'de animasyon FPS düşürür.
+- **Havalandırma (arka kabuk; T2 ile baca etkisi için yeniden yerleşti):** giriş **altta**: arka duvar alt bandı 2 × 5 yarık 3 × 40 = 1.200 mm² (y 185–220, Pi'nin hemen arkası).
+  Çıkış **üstte**: arka duvar üst bandı 2 × 4 yarık (y 234–261) + iki yan duvarın düz bölgesinin en üstü 2'şer yarık (y 234–246, z −50…−10) = 1.440 mm². Giriş–çıkış merkez yükseklik farkı 42,5 mm (önce 12,5 mm; önceki çıkış y 198–246).
+  **Emiş perdesi:** arka kabukla tek parça 2 mm yatay levha (x −45…48, y 221–223, arka duvardan z −5'e), Active Cooler'ın 12,5 mm üstünde: taze hava giriş yarıklarından perde altından fana, sıcak hava perdenin önünden yukarı ve üst banttan dışarı; üstteki sıcak havanın fana geri emilmesini azaltır.
+  Eski 8 alt yarık (1.120 mm², servo bölmesi) yerinde. Arka kabuk baskısı desteksiz kaldı (0 sorun), 263,1 → 275,3 g (perde +12 g); tilt payı 2,03 → 2,01.
+- **Isı (el hesabı, 30 °C ortam, kafa içi ortalama hava; `kafa-analiz.json` `isi`):** kafa gücü boşta / tipik / en kötü 7,2 / 11,4 / 14,5 W.
+  Kapalı kafa 39 / 45 / **49 °C** (servo sınırı 55 °C).
+  **Önceki "yarıklı 34–42 °C" iyimserdi (K3):** fanın bütün debisinin yarıklardan geçtiğini varsayıyordu. Active Cooler fanı SoC ~50 °C altında durur, kanalsız fan havayı kafa içinde döndürür, giriş–çıkış farkı 12 mm'ydi.
+  Yeni hesap iki sınırla, ikisinde de duvar kaybı paralel: (1) **yalnız doğal çekiş** V̇ = C<sub>d</sub>·A<sub>ef</sub>·√(2gHΔT/T) (C<sub>d</sub> 0,6 tahmini): önceki yarıklarla 38,7 / 43,6 / 47,2 °C, yeni yarıklarla **38,3 / 42,8 / 46,1 °C**
+  (kafa küçük, çekiş yalnız ~0,08–0,11 L/s: yükseklik farkını 3 kat artırmak ~1 K kazandırıyor); (2) **iyimser**: fan debisinin tamamı yarıklardan: 33–34 / 34–36 / 36–38 °C.
+  **Dürüst aralık: boşta 33–38, tipik 34–43, en kötü 36–46 °C**; perde fanı taze havaya bağladığı ölçüde alt uca yaklaşır, fan duruyorsa (boşta) üst uç geçerli. Pi üst bölmede, oradaki hava ortalamadan sıcak.
+  Test şartı (değişmedi): kafa kapalı, stres (stress-ng + animasyon), SoC ≤ 75 °C, tilt servosu gövdesi ≤ 50 °C. Yazılım SoC > 75 °C'de animasyon FPS düşürür. Aşılırsa üst bant arkasına 25–30 mm egzoz fanı (yer var: perde üstü ile tavan arası ~50 mm).
 - **Servis:** microSD −X'e bakar (x −49…−34, z −17…−37). Arka kabuk 2 vidayla (x ±105, z −30) sökülünce SD, USB-A ve Ethernet erişilir. Ön kabuk ve LCD yerinde kalır.
 - **Kablo listesi (boyun, dar boğaz 137 mm² mil penceresi):** 12 V çift 18 AWG (7,6 mm²) + ESP32 USB (9,6) + tilt servo (8,5) + pan servo (gövdede) ≈ 26 mm² (%19). Hoparlör yeri açık (Duffy kararı): göğüste olursa +2 tel.
 - **Tabanda boşalan Pi yeri** (−90,5; 80): E2/E3 arayüz kartı (70 × 50 pertinaks: bölücüler, PC817, IRLZ44N + 1N4007, klemens).
@@ -271,3 +307,9 @@ Koşullu kalemler (omni, fan) `secenek: "kosullu"` ile toplama girmez.
 6. ESP32 kartında VBUS→VIN diyodu kontrolü; JGB37 enkoderinin 3,3 V'ta çalıştığı; BTS7960 modülünde IS direnci.
 7. Tilt servosu radyal yük (4,55 N): ikinci rulman açık işi sürüyor.
 8. Pololu D36V50F5 Türkiye stoğu yok: ithal ya da 5 V ≥ 5 A ve ≥ 24 V girişli eşdeğer (koruma özellikleri aranır).
+   Ayrıca 12 V girişte sürekli akım ürün grafiğinden teyit edilecek (3,5–8 A aralığı tüm giriş için; kafa tepe 3,7 A).
+9. **JGB37 tork riski (T2):** 21 kg·cm satıcı etiketi; 9 kg·cm (Aslong 1:90) senaryosunda standart tekerle yerinde dönüş imkânsız, omni sınırda. Motor ve zemin ölçümü omni siparişinden önce.
+10. PC817 modülünün 3,3 V çıkış tarafı montajda ölçülecek; olmazsa arayüz kartına doğrudan PC817 + 2,2 kΩ (E2 notu).
+11. Yazılım planına: Pi seri portu DTR/RTS değiştirmeden açılır (E3); ESP32 reset = röle bırakır = kollar düşer.
+12. E9 ön şarj: röle her "devreye al"da yeniden çektiği için öncelik arttı (E3).
+13. Kafa ısı testi (perde + yarıklar): tahmin aralığı geniş (tipik 34–43 °C); ölçümde aşılırsa 25–30 mm egzoz fanı.

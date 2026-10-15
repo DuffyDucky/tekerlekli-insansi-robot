@@ -531,22 +531,52 @@ log("tork tilt %.2f kg*cm (yercekimi %.2f @%d, ivme %.3f) pay %.1f; pan %.2f kg*
 # ====================================================================== 6b) K4 isi (el hesabi, P-pi-kafada.md bolum 3; tahmini)
 # Kafada harcanan guc: Pi 5 (Jeff Geerling olcumu: bosta 3,2 W, stress-ng 9,8 W; tipik 7 W tahmini) + 7" LCD 2,45 W (Waveshare 490 mA)
 # + kamera ~0,5 W + amfi ortalama ~0,3 W + 5 V cevirici kaybi (%90 verim varsayimi). Kapali kabuk: yuzey ~0,19 m2, toplam isi gecirgenligi
-# ~9 W/m2K (tasinim + isinim) + PETG 2,5 mm (k 0,2) -> R ~1,3 K/W. Yarikli: Active Cooler fani arka duvardan emer, yan duvarlardan atar;
-# hava artisi dT = Q / (rho cp Vdot). Fan debisi uretici vermiyor: 1,0 ve 1,55 L/s iki varsayim. Servo (MG996R) sinir 55 C, Pi SoC kisma 80-85 C.
-ISI = dict(ortam_C=30.0, R_kapali_K_W=1.3, yuzey_m2=0.19, verim=0.90, debi_L_s=(1.0, 1.55), servo_sinir_C=55.0,
-           kaynak="planlama/adim1/P-pi-kafada.md bolum 3; jeffgeerling.com (Pi 5 guc); Waveshare wiki (LCD akimi); MG996R datasheet (0-55 C)")
+# ~9 W/m2K (tasinim + isinim) + PETG 2,5 mm (k 0,2) -> R ~1,3 K/W.
+# T2 (15 Ekim 2026, K3 kontrolu: onceki 'yarikli 34-42 C' iyimserdi): yarikli kafa iki sinirla hesaplanir, ikisinde de duvar kaybi (1/R)
+# paralel. (1) Dogal cekis (fan yarik akisina katki vermiyor: Active Cooler fani SoC ~50 C altinda durur, ustelik kanalsiz ic havayi dondurur):
+# Vdot = Cd A_ef sqrt(2 g H dT / T_ic), A_ef = 1 / sqrt(1/A_gir^2 + 1/A_cik^2), Cd 0,6 (ince duvar yarigi, tahmini), H giris-cikis merkez
+# yukseklik farki; Q = (1/R + rho cp Vdot) dT esitligi bisection ile. (2) Iyimser sinir: fan debisinin (1,0-1,55 L/s, uretici vermiyor)
+# tamami yariklardan gecer (emis perdesinin hedefi; gercekte bir kismi). Gercek deger ikisinin arasinda; Pi ust bolmede, oradaki hava
+# ortalamadan sicak. Servo (MG996R) sinir 55 C, Pi SoC kisma 80-85 C.
+ISI = dict(ortam_C=30.0, R_kapali_K_W=1.3, yuzey_m2=0.19, verim=0.90, debi_L_s=(1.0, 1.55), servo_sinir_C=55.0, Cd=0.6,
+           kaynak="planlama/adim1/P-pi-kafada.md bolum 3; jeffgeerling.com (Pi 5 guc); Waveshare wiki (LCD akimi); MG996R datasheet (0-55 C); "
+                  "dogal cekis: standart baca (yigin) etkisi bagintisi, Cd tahmini")
 isi = dict(varsayim=ISI, hava=dict(KP.HAVA_ALAN), senaryo={})
+RHO_CP = 1.16 * 1007.0                                           # J/(m3 K), 30-40 C hava
+
+
+def cekis_dT(Q, H_mm):
+    """Dogal cekis + duvar kaybi: ic hava artisi (K) ve yarik debisi (L/s)."""
+    Ag, Ac = KP.HAVA_ALAN["giris_mm2"] * 1e-6, KP.HAVA_ALAN["cikis_mm2"] * 1e-6
+    Ae = 1.0 / math.sqrt(1.0 / Ag ** 2 + 1.0 / Ac ** 2)
+    lo, hi = 0.0, 80.0
+    for _ in range(80):
+        dT = (lo + hi) / 2
+        Vd = ISI["Cd"] * Ae * math.sqrt(2 * 9.81 * H_mm / 1000.0 * dT / (273.15 + ISI["ortam_C"] + dT))
+        if (1.0 / ISI["R_kapali_K_W"] + RHO_CP * Vd) * dT < Q:
+            lo = dT
+        else:
+            hi = dT
+    return dT, Vd * 1000.0
+
+
 for ad_, pi_W in (("bosta", 3.2), ("tipik", 7.0), ("en_kotu", 9.8)):
     yuk = pi_W + 2.45 + 0.5 + 0.3
     Q = yuk / ISI["verim"]
     dT_kapali = Q * ISI["R_kapali_K_W"]
-    dT_yarik = [Q / (1.16 * 1007.0 * v / 1000.0) for v in ISI["debi_L_s"]]
+    dT_fan = [Q / (1.0 / ISI["R_kapali_K_W"] + RHO_CP * v / 1000.0) for v in ISI["debi_L_s"]]
+    dT_c, Vd_c = cekis_dT(Q, KP.HAVA_ALAN["H_mm"])
+    dT_c0, Vd_c0 = cekis_dT(Q, KP.HAVA_ALAN["once"]["H_mm"])
     isi["senaryo"][ad_] = dict(W=round(Q, 1), kapali_ic_C=round(ISI["ortam_C"] + dT_kapali, 1),
-                               yarikli_ic_C=[round(ISI["ortam_C"] + d, 1) for d in dT_yarik],
+                               yarikli_ic_C=[round(ISI["ortam_C"] + d, 1) for d in dT_fan],
+                               cekis_ic_C=round(ISI["ortam_C"] + dT_c, 1), cekis_debi_L_s=round(Vd_c, 3),
+                               cekis_once_ic_C=round(ISI["ortam_C"] + dT_c0, 1),
+                               aralik_C=[round(ISI["ortam_C"] + min(dT_fan), 1), round(ISI["ortam_C"] + dT_c, 1)],
                                servo_payi_kapali_K=round(ISI["servo_sinir_C"] - ISI["ortam_C"] - dT_kapali, 1))
 for gir in ("giris_mm2", "cikis_mm2"):
     isi["hava"][gir + "_hiz_m_s_1.55L"] = round(1.55e-3 / (KP.HAVA_ALAN[gir] * 1e-6), 2)
-log("isi (K4):", {k: (v["W"], v["kapali_ic_C"], v["yarikli_ic_C"]) for k, v in isi["senaryo"].items()}, "yarik", KP.HAVA_ALAN)
+log("isi (K4/T2):", {k: (v["W"], v["kapali_ic_C"], v["yarikli_ic_C"], v["cekis_ic_C"], v["cekis_once_ic_C"]) for k, v in isi["senaryo"].items()},
+    "yarik", KP.HAVA_ALAN)
 
 # ====================================================================== 7) baski analizi (X2D)
 baski = []
@@ -699,7 +729,7 @@ out = dict(
              kafa_en_alt_y=round(alt[0], 2), kafa_en_alt_poz=alt[1], pan_en_alt_y=round(y_pan_min, 2),
              not_="kapak seviyesinde yalniz sabit boyun (servo yuvasi + plaka kulaklari) var; hareketli parcalar y >= %.1f" % y_pan_min),
     isi=isi, pi=dict(konum_T=list(KP.PI_T), burc_mm=KP.PI_BURC, delikler=[list(d) for d in KP.PI_DEL], cevirici=list(KP.CEV_C),
-                     amfi=list(KP.AMP_C), boyun_kablolari="12 V cift 18 AWG + ESP32 USB (yalniz veri, VBUS kesik) + tilt servo (3 tel)",
+                     amfi=list(KP.AMP_C), boyun_kablolari="12 V cift 18 AWG + ESP32 USB (VBUS hattinda seri 1N5819) + tilt servo (3 tel)",
                      kaynak="planlama/adim1/P-pi-kafada.md; planlama/adim3/elektrik.md"),
     tork=dict(tilt=tilt_tork, pan=pan_tork, profil="60 derece 0,4 s'de ucgen hiz profili (tahmini): alfa %.1f rad/s2, tepe hiz %.1f rad/s" % (ALFA, OMEGA),
               stall_kaynak="MG996R datasheet 9,4 kg*cm @4,8 V (11 @6 V); dirsek ile ayni"),

@@ -2167,12 +2167,12 @@
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "Arka kafa kabugu",
-   "kutle_g": 263.07,
-   "hacim_mm3": 230161.8,
+   "kutle_g": 275.3,
+   "hacim_mm3": 240856.8,
    "merkez": [
-    -0.0,
-    191.621,
-    -32.067
+    0.067,
+    192.713,
+    -31.805
    ],
    "bb": [
     -107.31,
@@ -2187,7 +2187,7 @@
     140,
     -120
    ],
-   "not_": "dikis dili on kabuga 6 mm girer; yanlarda 4'er alt yarik + 6'sar ust cikis yarigi, arka duvarda 10 giris yarigi (K4)"
+   "not_": "dikis dili on kabuga 6 mm girer; yanlarda 4'er alt yarik + 2'ser ust cikis yarigi, arka duvarda 10 giris (alt) + 8 cikis (ust) yarigi, aralarinda emis perdesi (K4, T2)"
   },
   {
    "i": 75,
@@ -3376,7 +3376,7 @@
     0,
     0
    ],
-   "not_": "K4: boyundan yalniz 12 V cift (18 AWG) + ESP32 USB (yalniz veri) + tilt servosu; sema, gercek kablo degil"
+   "not_": "K4: boyundan yalniz 12 V cift (18 AWG) + ESP32 USB (VBUS hattinda seri 1N5819) + tilt servosu; sema, gercek kablo degil"
   },
   {
    "i": 116,
@@ -6956,12 +6956,35 @@
     1.55
    ],
    "servo_sinir_C": 55.0,
-   "kaynak": "planlama/adim1/P-pi-kafada.md bolum 3; jeffgeerling.com (Pi 5 guc); Waveshare wiki (LCD akimi); MG996R datasheet (0-55 C)"
+   "Cd": 0.6,
+   "kaynak": "planlama/adim1/P-pi-kafada.md bolum 3; jeffgeerling.com (Pi 5 guc); Waveshare wiki (LCD akimi); MG996R datasheet (0-55 C); dogal cekis: standart baca (yigin) etkisi bagintisi, Cd tahmini"
   },
   "hava": {
    "giris_mm2": 1200.0,
    "cikis_mm2": 1440.0,
+   "cikis_arka_mm2": 960.0,
+   "cikis_yan_mm2": 480.0,
    "eski_yan_mm2": 1120.0,
+   "giris_y": 202.5,
+   "cikis_y": 245.0,
+   "perde": {
+    "x": [
+     -45.0,
+     48.0
+    ],
+    "y": [
+     221.0,
+     223.0
+    ],
+    "z_on": -5.0
+   },
+   "once": {
+    "giris_y": 209.5,
+    "cikis_y": 222.0,
+    "H_mm": 12.5,
+    "not_": "K3 oncesi: giris arka 192-227, cikis yan 198-246"
+   },
+   "H_mm": 42.5,
    "giris_mm2_hiz_m_s_1.55L": 1.29,
    "cikis_mm2_hiz_m_s_1.55L": 1.08
   },
@@ -6970,8 +6993,15 @@
     "W": 7.2,
     "kapali_ic_C": 39.3,
     "yarikli_ic_C": [
-     36.1,
-     34.0
+     33.7,
+     32.8
+    ],
+    "cekis_ic_C": 38.3,
+    "cekis_debi_L_s": 0.082,
+    "cekis_once_ic_C": 38.7,
+    "aralik_C": [
+     32.8,
+     38.3
     ],
     "servo_payi_kapali_K": 15.7
    },
@@ -6979,8 +7009,15 @@
     "W": 11.4,
     "kapali_ic_C": 44.8,
     "yarikli_ic_C": [
-     39.7,
-     36.3
+     35.9,
+     34.4
+    ],
+    "cekis_ic_C": 42.8,
+    "cekis_debi_L_s": 0.102,
+    "cekis_once_ic_C": 43.6,
+    "aralik_C": [
+     34.4,
+     42.8
     ],
     "servo_payi_kapali_K": 10.2
    },
@@ -6988,8 +7025,15 @@
     "W": 14.5,
     "kapali_ic_C": 48.9,
     "yarikli_ic_C": [
-     42.4,
-     38.0
+     37.5,
+     35.6
+    ],
+    "cekis_ic_C": 46.1,
+    "cekis_debi_L_s": 0.113,
+    "cekis_once_ic_C": 47.2,
+    "aralik_C": [
+     35.6,
+     46.1
     ],
     "servo_payi_kapali_K": 6.1
    }
@@ -7028,13 +7072,13 @@
    65.0,
    44.0
   ],
-  "boyun_kablolari": "12 V cift 18 AWG + ESP32 USB (yalniz veri, VBUS kesik) + tilt servo (3 tel)",
+  "boyun_kablolari": "12 V cift 18 AWG + ESP32 USB (VBUS hattinda seri 1N5819) + tilt servo (3 tel)",
   "kaynak": "planlama/adim1/P-pi-kafada.md; planlama/adim3/elektrik.md"
  },
  "tork": {
   "tilt": {
-   "kutle_g": 926.6,
-   "kutle_parca_g": 901.6,
+   "kutle_g": 938.8,
+   "kutle_parca_g": 913.8,
    "kablo_payi": {
     "kutle_g": 25.0,
     "merkez": [
@@ -7046,105 +7090,105 @@
    },
    "am": [
     0.93,
-    184.77,
-    25.99
+    185.18,
+    25.31
    ],
    "eksen": [
     130.0,
     25.0
    ],
-   "am_eksen_mm": 54.8,
+   "am_eksen_mm": 55.2,
    "yercekimi_max_kgcm": 2.62,
    "yercekimi_max_th": 30,
-   "tam_tur_max_kgcm": 5.08,
-   "I_kgm2": 0.007573,
+   "tam_tur_max_kgcm": 5.18,
+   "I_kgm2": 0.007694,
    "alfa_rad_s2": 26.2,
-   "ivme_kgcm": 2.021,
-   "toplam_kgcm": 4.64,
+   "ivme_kgcm": 2.053,
+   "toplam_kgcm": 4.67,
    "stall_kgcm": 9.4,
-   "pay": 2.03,
+   "pay": 2.01,
    "egri": [
     {
      "th": -25,
-     "yercekimi_kgcm": -2.062
+     "yercekimi_kgcm": -2.163
     },
     {
      "th": -20,
-     "yercekimi_kgcm": -1.65
+     "yercekimi_kgcm": -1.745
     },
     {
      "th": -15,
-     "yercekimi_kgcm": -1.225
+     "yercekimi_kgcm": -1.313
     },
     {
      "th": -10,
-     "yercekimi_kgcm": -0.791
+     "yercekimi_kgcm": -0.871
     },
     {
      "th": -5,
-     "yercekimi_kgcm": -0.351
+     "yercekimi_kgcm": -0.423
     },
     {
      "th": 0,
-     "yercekimi_kgcm": 0.091
+     "yercekimi_kgcm": 0.029
     },
     {
      "th": 5,
-     "yercekimi_kgcm": 0.533
+     "yercekimi_kgcm": 0.48
     },
     {
      "th": 10,
-     "yercekimi_kgcm": 0.971
+     "yercekimi_kgcm": 0.928
     },
     {
      "th": 15,
-     "yercekimi_kgcm": 1.402
+     "yercekimi_kgcm": 1.369
     },
     {
      "th": 20,
-     "yercekimi_kgcm": 1.822
+     "yercekimi_kgcm": 1.799
     },
     {
      "th": 25,
-     "yercekimi_kgcm": 2.228
+     "yercekimi_kgcm": 2.216
     },
     {
      "th": 30,
-     "yercekimi_kgcm": 2.617
+     "yercekimi_kgcm": 2.615
     }
    ],
    "mesnet": {
     "x_625": -26.7,
     "x_horn": 28.55,
     "horn_payi": 0.5,
-    "horn_N": 4.55,
-    "pim_N": 4.54
+    "horn_N": 4.61,
+    "pim_N": 4.6
    }
   },
   "pan": {
-   "kutle_g": 1122.5,
+   "kutle_g": 1134.7,
    "am": [
     0.89,
-    170.37,
-    23.13
+    170.87,
+    22.6
    ],
    "I_kgm2": {
-    "-25.0": 0.006377,
-    "0": 0.006936,
-    "30.0": 0.008658
+    "-25.0": 0.006453,
+    "0": 0.006981,
+    "30.0": 0.008702
    },
    "alfa_rad_s2": 26.2,
-   "ivme_kgcm": 2.31,
-   "rulman_kgcm": 0.0202,
+   "ivme_kgcm": 2.322,
+   "rulman_kgcm": 0.02,
    "kablo_kgcm": 0.31,
-   "toplam_kgcm": 2.64,
+   "toplam_kgcm": 2.65,
    "stall_kgcm": 9.4,
-   "pay": 3.6,
+   "pay": 3.5,
    "rulman": {
-    "eksenel_N": 11.01,
-    "devirme_Nm": 0.2549,
+    "eksenel_N": 11.13,
+    "devirme_Nm": 0.2518,
     "rulman_arasi_mm": 11.0,
-    "radyal_N": 23.2,
+    "radyal_N": 22.9,
     "not_": "6808: eksenel yuk ust rulmanda (mil omzu -> ic bilezik -> dis bilezik -> yuva tablasi); devirme momenti iki rulmanda kuvvet cifti; pan servosu mili yalniz dondurur"
    }
   },
@@ -7169,11 +7213,11 @@
    ]
   },
   "Kafa": {
-   "m": 901.6,
+   "m": 913.8,
    "am": [
-    1.229,
-    184.491,
-    26.292
+    1.232,
+    184.916,
+    25.59
    ]
   }
  },
@@ -7344,18 +7388,18 @@
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0324,
-   "cikinti_alan_cm2": 64.0,
-   "yuzey_cm2": 1975.6,
+   "cikinti_orani": 0.0304,
+   "cikinti_alan_cm2": 63.4,
+   "yuzey_cm2": 2084.8,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
    "ofset_uyari": 0,
    "atlanan_katman": [],
-   "hacim_cm3": 230.2,
-   "kutle_g": 263.1,
-   "filament_g": 276.2,
-   "sure_saat": 5.75,
+   "hacim_cm3": 240.9,
+   "kutle_g": 275.3,
+   "filament_g": 289.1,
+   "sure_saat": 6.02,
    "katman": 101,
    "yon": "arka yuz tablada, dikis dili yukari",
    "grup": "Kafa"
@@ -7399,18 +7443,18 @@
    246.0
   ]
  },
- "kutle_g": 1431.3,
+ "kutle_g": 1443.5,
  "kutle_tur": {
   "Imalat": 70.9,
-  "Baski": 786.4,
+  "Baski": 798.6,
   "Satin": 489.0,
   "Baglanti": 85.0,
   "Referans": 0.0
  },
  "agirlik_merkezi": [
-  0.888,
-  136.411,
-  19.374
+  0.893,
+  137.087,
+  18.988
  ],
  "bom": [
   [
@@ -7525,7 +7569,7 @@
    "Baski",
    "Arka kafa kabugu",
    1,
-   263.1
+   275.3
   ],
   [
    "Baski",
@@ -7818,5 +7862,5 @@
    -36.0
   ]
  ],
- "sure_s": 140.5
+ "sure_s": 144.8
 }

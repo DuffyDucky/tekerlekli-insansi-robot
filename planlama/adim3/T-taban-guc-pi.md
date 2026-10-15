@@ -1,6 +1,6 @@
 # T: 3. adım tasarım ajanı (taban, güç, Pi kafada)
 
-Başlangıç: 2026-10-15. Durum: **TAMAMLANDI (tasarım)**; kontrol/regresyon/ana montaj ayrı ajanın ve 6. adımın işi. Kararlar: `elektrik.md`.
+Başlangıç: 2026-10-15. Durum: **TAMAMLANDI (tasarım)**; kontrol/regresyon/ana montaj ayrı ajanın ve 6. adımın işi. Kararlar: `elektrik.md`. Bağımsız kontrol `K3-kontrol.md`, takip düzeltmesi `T2-takip.md`.
 
 ## Durum
 - [x] Okuma (CLAUDE.md, README, düzeltme planı, döngü, P, B, betikler, maliyet, akü raporu)
@@ -39,6 +39,9 @@ Dokunulmayan: omuz, dirsek, kabuk, iskelet, montaj; `tasarim/cad/demo_uret.py` (
 
 ## Açık sorunlar
 1. K1 ölçümü (μ, JGB37 durma torku/akımı) → `arayuz.TABAN['donus']`.
+   **Uyarı (K3/T2):** 21 kg·cm yalnız satıcı etiketi (Direnc.net "Tork 21KG", birimsiz; durma mı nominal mi belli değil). Aslong tablosu aynı motorun 1:90 sürümü için durma **9 kg·cm / 1,2 A** veriyor.
+   9 kg·cm senaryosu (`T2_donus_9kg.py`, değer değiştirilmedi): standart tekerle yerinde dönüş durmanın %134–197'si (robot dönemez), ön omniyle sürekli sınırın ×0,95–1,08'i (sınırda).
+   **Motor + zemin ölçümü omni siparişinden önce.** Ayrıntı `elektrik.md` E0.
 2. Omni açılırsa: etek ön teker boşluğu 10,55 mm (kabuk), `montaj/moduller.py` teker adı, göbek adaptörü teyidi, Ø127/Ø125 %1,6 hız farkı.
 3. Etek arka bandına havalandırma yarıkları (kabuk), E7 ölçümü sonrası fan.
 4. Hoparlör yeri (Duffy), mikrofon yeri CAD'de yok.

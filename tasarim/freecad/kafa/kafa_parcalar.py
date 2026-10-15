@@ -19,7 +19,8 @@
 #   K4 (15 Ekim 2026, duzeltme plani 3. adim): Raspberry Pi 5 + Active Cooler kafa tablasinin ustunde (planlama/adim1/P-pi-kafada.md
 #       secilen konum: kart kosesi x -34, z +1, kablo kenari one; burc 8 mm ile kart alti y 191), 4x M2,5x8 pirinc burc (alttan
 #       M2,5x8 tabladan, ustten M2,5x5). 5 V / 5,5 A cevirici (Pololu D36V50F5) ve MAX98357A amfi tablada kopuk bantla. Arka kabukta
-#       giris (arka duvar 10 yarik) ve cikis (iki yan duvar 6'sar yarik) havalandirmasi. Boyundan: 12 V cift + ESP32 USB + tilt servo.
+#       giris (arka duvar alt bandi 10 yarik) ve cikis (arka duvar ust bandi 8 yarik + iki yan duvarin en ust 2'ser yarigi) havalandirmasi,
+#       giris ile cikis arasinda emis perdesi (T2, 15 Ekim 2026: baca etkisi, K3 kontrolu). Boyundan: 12 V cift + ESP32 USB + tilt servo.
 import os, sys, math, time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -81,9 +82,16 @@ PI_DEL = pi5_delikler_kafa(PI_T)                          # (-30,5; -2,5) (27,5;
 CEV_C = (-75.0, 44.0)                                     # 5 V cevirici merkezi (tabla sol-on, kablo gecisine ~25 mm)
 AMP_C = (65.0, 44.0)                                      # amfi merkezi (tabla sag-on, LCD HDMI blogunun 11 mm arkasi)
 KOPUK_T = 1.0
-# havalandirma (P-pi-kafada.md bolum 3): giris arka duvar 2 sutun x 5 yarik 3 x 40 (1.200 mm2), cikis iki yan duvar 6'sar 3 x 40
-HAVA_GIRIS = dict(x=((-45.0, -5.0), (5.0, 45.0)), y0=192.0, adim=8.0, n=5, h=3.0)
-HAVA_CIKIS = dict(y0=198.0, adim=9.0, n=6, h=3.0, z=(-50.0, -10.0))
+# havalandirma (P-pi-kafada.md bolum 3; T2 15 Ekim 2026 K3 kontrolu): giris ALTTA, cikis USTTE (baca etkisi). Giris arka duvar alt bandi
+# 2 sutun x 5 yarik 3 x 40 (y 185...220, Pi'nin hemen arkasi; 1.200 mm2). Cikis: arka duvar ust bandi 2 sutun x 4 yarik 3 x 40 (y 234...261)
+# + iki yan duvarin duz bolgesinin en ustu 2'ser yarik 3 x 40 (y 234...246; yan duvar y 247'de R28 tavan kosesine doner) = 1.440 mm2.
+# Giris-cikis merkez yukseklik farki ~42 mm (onceki ~12 mm). Emis perdesi: arka kabuktan Active Cooler'in ustune uzanan 2 mm yatay
+# levha (y 221...223, cooler ustune 12,5 mm): giris yariklarindan gelen taze hava perde altindan fana, sicak hava perdenin onunden
+# yukari, ust banttan disari; ust banttaki sicak havanin fan emisine geri donmesini (kisa devre) azaltir.
+HAVA_GIRIS = dict(x=((-45.0, -5.0), (5.0, 45.0)), y0=185.0, adim=8.0, n=5, h=3.0)
+HAVA_CIKIS_ARKA = dict(x=((-45.0, -5.0), (5.0, 45.0)), y0=234.0, adim=8.0, n=4, h=3.0)
+HAVA_CIKIS = dict(y0=234.0, adim=9.0, n=2, h=3.0, z=(-50.0, -10.0))           # yan duvarlar
+PERDE = dict(x=(-45.0, 48.0), y=(221.0, 223.0), z_on=-5.0)                   # emis perdesi (arka kabukla tek parca)
 
 assert abs(K["pan_nokta"][1] - Y_HORN[0]) < 1e-9 and abs(K["tilt_nokta"][0] - X_TH[0]) < 1e-9
 assert abs(KY1 - A.HEAD_UP) < 1e-9
@@ -379,20 +387,29 @@ for sx in (1, -1):
         ak = ak.cut(box(min(sx * (KX + 1), sx * (KX - KT - 1)), max(sx * (KX + 1), sx * (KX - KT - 1)), 140.0 + 9 * k, 144.0 + 9 * k,
                         -15.0, 20.0))
     ak = ak.cut(cyl(CLEAR[3] / 2, (sx * (KX + 1), Y_KCIV, BOSS_Z[0]), (sx * (KX - KT - 1), Y_KCIV, BOSS_Z[0])))
-# K4: Pi havalandirmasi. Giris: arka duvar (z -65...-62,5), Active Cooler ustunden emer; cikis: iki yan duvarin ust-arka bolgesi.
-for (x0, x1) in HAVA_GIRIS["x"]:
-    for k in range(HAVA_GIRIS["n"]):
-        y = HAVA_GIRIS["y0"] + HAVA_GIRIS["adim"] * k
-        ak = ak.cut(box(x0, x1, y, y + HAVA_GIRIS["h"], KZ0 - 1, KZ0 + KT + 1))
+# K4 + T2: Pi havalandirmasi. Giris: arka duvar alt bandi (z -65...-62,5), Active Cooler perde altindan emer; cikis: arka duvar ust
+# bandi + iki yan duvarin en ust duz bolgesi (sicak hava tavanda toplanir).
+ak = ak.fuse(box(PERDE["x"][0], PERDE["x"][1], PERDE["y"][0], PERDE["y"][1], KZ0 + KT - 0.5, PERDE["z_on"]))
+for HG in (HAVA_GIRIS, HAVA_CIKIS_ARKA):
+    for (x0, x1) in HG["x"]:
+        for k in range(HG["n"]):
+            y = HG["y0"] + HG["adim"] * k
+            ak = ak.cut(box(x0, x1, y, y + HG["h"], KZ0 - 1, KZ0 + KT + 1))
 for sx in (1, -1):
     for k in range(HAVA_CIKIS["n"]):
         y = HAVA_CIKIS["y0"] + HAVA_CIKIS["adim"] * k
         ak = ak.cut(box(min(sx * (KX + 1), sx * (KX - KT - 1)), max(sx * (KX + 1), sx * (KX - KT - 1)), y, y + HAVA_CIKIS["h"],
                         HAVA_CIKIS["z"][0], HAVA_CIKIS["z"][1]))
-HAVA_ALAN = dict(giris_mm2=2 * HAVA_GIRIS["n"] * HAVA_GIRIS["h"] * 40.0, cikis_mm2=2 * HAVA_CIKIS["n"] * HAVA_CIKIS["h"] * 40.0,
-                 eski_yan_mm2=2 * 4 * 4.0 * 35.0)
+_a_ca, _a_cy = 2 * HAVA_CIKIS_ARKA["n"] * HAVA_CIKIS_ARKA["h"] * 40.0, 2 * HAVA_CIKIS["n"] * HAVA_CIKIS["h"] * 40.0
+_yo = lambda H_: H_["y0"] + H_["adim"] * (H_["n"] - 1) / 2 + H_["h"] / 2                       # bant merkez yuksekligi
+HAVA_ALAN = dict(giris_mm2=2 * HAVA_GIRIS["n"] * HAVA_GIRIS["h"] * 40.0, cikis_mm2=_a_ca + _a_cy, cikis_arka_mm2=_a_ca, cikis_yan_mm2=_a_cy,
+                 eski_yan_mm2=2 * 4 * 4.0 * 35.0, giris_y=_yo(HAVA_GIRIS), cikis_y=round((_a_ca * _yo(HAVA_CIKIS_ARKA) + _a_cy * _yo(HAVA_CIKIS)) /
+                                                                                      (_a_ca + _a_cy), 1),
+                 perde=dict(PERDE), once=dict(giris_y=209.5, cikis_y=222.0, H_mm=12.5, not_="K3 oncesi: giris arka 192-227, cikis yan 198-246"))
+HAVA_ALAN["H_mm"] = round(HAVA_ALAN["cikis_y"] - HAVA_ALAN["giris_y"], 1)
 I_ARKA = add("Arka kafa kabugu", "Kafa", ak.removeSplitter(), "Baski", "PETG", renk="kabuk", patlat=(0, 140, -120),
-             not_="dikis dili on kabuga 6 mm girer; yanlarda 4'er alt yarik + 6'sar ust cikis yarigi, arka duvarda 10 giris yarigi (K4)",
+             not_="dikis dili on kabuga 6 mm girer; yanlarda 4'er alt yarik + 2'ser ust cikis yarigi, arka duvarda 10 giris (alt) + 8 cikis (ust) yarigi, "
+                  "aralarinda emis perdesi (K4, T2)",
              doluluk=A.KABUK_DOLULUK)
 for sx in (1, -1):
     for zc, kab_i in ((BOSS_Z[0], I_ARKA), (BOSS_Z[1], I_ON)):
@@ -472,7 +489,7 @@ for a, b in zip(YOL[:-1], YOL[1:]):
     s = cyl(3.0, a, b).fuse(Part.makeSphere(3.0, V(*b)))
     kd = s if kd is None else kd.fuse(s)
 add("Kablo demeti (gosterim)", "Referans", kd.removeSplitter(), "Referans", "-", kod="(gosterim)", renk="kablo",
-    not_="K4: boyundan yalniz 12 V cift (18 AWG) + ESP32 USB (yalniz veri) + tilt servosu; sema, gercek kablo degil")
+    not_="K4: boyundan yalniz 12 V cift (18 AWG) + ESP32 USB (VBUS hattinda seri 1N5819) + tilt servosu; sema, gercek kablo degil")
 # K4 kafa ici kisa kablolar (gosterim): FPC 300 mm Pi CSI -> kamera; micro HDMI -> LCD HDMI; USB-C cevirici -> Pi; 12 V gecis -> cevirici
 for ad_, pts_ in (("Kamera FPC 300 mm (gosterim)", [(18.0, 194.0, 2.0), (18.0, 194.0, 30.0), (10.0, 240.0, 60.0), (0.0, 258.0, 70.0)]),
                   ("micro HDMI -> LCD HDMI (gosterim)", [(0.0, 194.0, 3.0), (20.0, 196.0, 40.0), (62.0, 196.0, 60.0)]),
