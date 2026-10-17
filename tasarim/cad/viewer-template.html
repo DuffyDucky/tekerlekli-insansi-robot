@@ -230,6 +230,7 @@ footer{max-width:1400px;margin:auto;padding:12px 16px 22px;color:var(--muted);fo
         <label>3D baskı <select id="c-print"><option value="yazici">Bölümün yazıcısı (filament)</option><option value="hizmet">Baskı hizmeti</option></select></label>
         <label>Beklenmeyen pay <select id="c-pay"><option value="0">%0</option><option value="0.1">%10</option><option value="0.15">%15</option><option value="0.2">%20</option><option value="0.25">%25</option></select></label>
         <label><input type="checkbox" id="c-spare" checked> Yedek parçalar</label>
+        <label><input type="checkbox" id="c-elde"> Elimizdekileri düş</label>
         <button class="btn" id="c-csv" type="button">⬇ Maliyet (Excel)</button>
       </div>
     </div>
@@ -763,15 +764,17 @@ function badges(it){
   return '<span class="badge '+d[0]+'">'+d[1]+'</span>'+(s?'<span class="badge '+s[0]+'">'+s[1]+'</span>':"");
 }
 function calc(){
-  var items=CD.kalemler.filter(on),by={},sub=0;
+  var all=CD.kalemler.filter(on),items=all.filter(function(it){return !(O.elde&&it.elde);}),owned=all.filter(function(it){return O.elde&&it.elde;}),by={},sub=0,own=0;
   items.forEach(function(it){var t=it.adet*it.tl;sub+=t;by[it.g]=(by[it.g]||0)+t;});
-  return {items:items,by:by,sub:sub,pay:sub*O.pay,tot:sub*(1+O.pay)};
+  owned.forEach(function(it){own+=it.adet*it.tl;});
+  return {items:items,owned:owned,own:own,by:by,sub:sub,pay:sub*O.pay,tot:sub*(1+O.pay)};
 }
 function render(){
   var c=calc(),pc=Math.round(O.pay*100);
   var ver=c.items.filter(function(it){return it.durum==="dogrulandi";}).length,est=c.items.length-ver;
   var out=c.items.filter(function(it){return it.stok==="yok";});
-  var h='<div class="ctile hero"><div class="lab">Genel toplam</div><div class="val">'+nf(Math.round(c.tot),0)+' TL</div><div class="sub">≈ '+nf(Math.round(c.tot/K),0)+' USD · %'+pc+' beklenmeyen pay dahil · '+O.ver.toUpperCase()+' yapısı</div></div>';
+  var h='<div class="ctile hero"><div class="lab">Genel toplam'+(O.elde?" · alınacaklar":"")+'</div><div class="val">'+nf(Math.round(c.tot),0)+' TL</div><div class="sub">≈ '+nf(Math.round(c.tot/K),0)+' USD · %'+pc+' beklenmeyen pay dahil · '+O.ver.toUpperCase()+' yapısı</div></div>';
+  if(O.elde)h+='<div class="ctile"><div class="lab">Elimizdekiler</div><div class="val">−'+nf(Math.round(c.own),0)+' TL</div><div class="sub">'+esc(c.owned.map(function(it){return it.ad;}).join(", "))+'; toplama girmedi</div></div>';
   h+='<div class="ctile"><div class="lab">Parçalar ve kargo</div><div class="val">'+nf(Math.round(c.sub),0)+' TL</div><div class="sub">≈ '+nf(Math.round(c.sub/K),0)+' USD · pay hariç</div></div>';
   h+='<div class="ctile"><div class="lab">Doğrulanan fiyat</div><div class="val">'+ver+' / '+c.items.length+'</div><div class="sub">'+(est?est+" kalem tahmini veya ithal":"Hepsi satıcı sayfasından")+'</div></div>';
   h+='<div class="ctile"><div class="lab">Stok sorunu</div><div class="val">'+out.length+' kalem</div><div class="sub">'+(out.length?esc(out.map(function(it){return it.ad;}).join(", ")):"Seçilen satıcılarda hepsi stokta")+'</div></div>';
@@ -793,6 +796,11 @@ function render(){
   rows+='<tr class="sum sub"><td colspan="5">Parçalar ve kargo</td><td class="num">'+nf(c.sub,2)+'</td><td class="num">'+nf(c.sub/K,2)+'</td><td colspan="2"></td></tr>';
   rows+='<tr class="sub"><td colspan="5">Beklenmeyen gider payı (%'+pc+')</td><td class="num">'+nf(c.pay,2)+'</td><td class="num">'+nf(c.pay/K,2)+'</td><td colspan="2"></td></tr>';
   rows+='<tr class="total"><td colspan="5">Genel toplam</td><td class="num">'+nf(c.tot,2)+'</td><td class="num">'+nf(c.tot/K,2)+'</td><td colspan="2"></td></tr>';
+  if(c.owned.length){
+    rows+='<tr class="grp"><td colspan="5">Elimizde olanlar (toplama girmedi)</td><td class="num">'+nf(c.own,2)+'</td><td class="num">'+nf(c.own/K,2)+'</td><td colspan="2"></td></tr>';
+    c.owned.forEach(function(it){var t=it.adet*it.tl;
+      rows+='<tr class="sub"><td>'+esc(it.ad)+'</td><td>'+esc(it.model)+'</td><td class="num">'+qty(it)+'</td><td class="num">'+nf(it.tl,2)+'</td><td class="num">'+nf(it.tl/K,2)+'</td><td class="num">'+nf(t,2)+'</td><td class="num">'+nf(t/K,2)+'</td><td>Elimizde</td><td></td></tr>';});
+  }
   document.getElementById("cost-body").innerHTML=rows;
 }
 /* Excel (.xlsx) cikti: CSV, Windows liste ayiracina gore (en-US ",", tr-TR ";") farkli bolunuyordu.
@@ -822,7 +830,7 @@ function xlsx(){
   // hucre: [deger, stil] ; stil 1 baslik, 2 sayi, 3 grup, 4 grup sayi, 5 toplam, 6 toplam sayi, 7 ana baslik, 8 link, 9 bilgi
   function row(cells,ht){rows.push({c:cells,ht:ht});}
   function link(v,url){return [v,url?8:0,url];}
-  row([["Lale · proje maliyeti ("+O.ver.toUpperCase()+")",7]],22);
+  row([["Lale · proje maliyeti ("+O.ver.toUpperCase()+(O.elde?" · elimizdekiler düşüldü":"")+")",7]],22);
   row([["Fiyatlar "+CD.tarih+" tarihinde satıcı sayfalarından okundu, KDV dahil. 1 USD = "+nf(K,4)+" TL ("+CD.kur_kaynak+"). 3D baskı: "+(O.print==="hizmet"?"baskı hizmeti":"bölümün yazıcısı")+" · beklenmeyen pay %"+pc+" · yedek parçalar "+(O.spare?"dahil":"hariç")+".",9]]);
   row([]);
   row(["Kalem","Model","Adet","Birim","Birim TL","Toplam TL","Birim USD","Toplam USD","Satıcı","Durum","Stok","2. satıcı","2. satıcı TL","Not"].map(function(h){return [h,1];}));
@@ -835,7 +843,12 @@ function xlsx(){
   row([]);
   row([["Parçalar ve kargo",5],["",5],["",5],["",5],["",5],[c.sub,6],["",5],[c.sub/K,6]]);
   row([["Beklenmeyen gider payı (%"+pc+")"],[""],[""],[""],[""],[c.pay,2],[""],[c.pay/K,2]]);
-  row([["Genel toplam",5],["",5],["",5],["",5],["",5],[c.tot,6],["",5],[c.tot/K,6]]);
+  row([["Genel toplam"+(O.elde?" (alınacaklar)":""),5],["",5],["",5],["",5],["",5],[c.tot,6],["",5],[c.tot/K,6]]);
+  if(c.owned.length){
+    row([]);
+    row([["Elimizde olanlar (toplama girmedi)",3],["",3],["",3],["",3],["",3],[c.own,4],["",3],[c.own/K,4],["",3],["",3],["",3],["",3],["",3],["",3]]);
+    c.owned.forEach(function(it){var t=it.adet*it.tl;row([[it.ad],[it.model],[it.adet],[it.birim||"adet"],[it.tl,2],[t,2],[it.tl/K,2],[t/K,2],["Elimizde"],[""],[""],[""],[""],[it.not||""]]);});
+  }
   if(CD.dipnot){row([]);row([[CD.dipnot,9]]);}
   var hl=[],sd=rows.map(function(r,i){var n=i+1;
     return '<row r="'+n+'"'+(r.ht?' ht="'+r.ht+'" customHeight="1"':"")+'>'+r.c.map(function(x,j){var ref=COLS[j]+n,v=x[0],s=x[1]?' s="'+x[1]+'"':"";
@@ -866,7 +879,7 @@ function xlsx(){
     ["xl/workbook.xml",X+'<workbook '+NS+'><sheets><sheet name="Maliyet" sheetId="1" r:id="rId1"/></sheets></workbook>'],
     ["xl/_rels/workbook.xml.rels",X+'<Relationships xmlns="'+RN+'"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>'],
     ["xl/worksheets/sheet1.xml",sheet],["xl/worksheets/_rels/sheet1.xml.rels",srel],["xl/styles.xml",styles]]);
-  var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="robot-maliyet-"+O.ver.toUpperCase()+"-"+CD.tarih+".xlsx";
+  var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="robot-maliyet-"+O.ver.toUpperCase()+(O.elde?"-elimizdekiler-dusuldu":"")+"-"+CD.tarih+".xlsx";
   document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},1000);
 }
 document.getElementById("cost-meta").textContent="Fiyatlar "+new Date(CD.tarih+"T12:00:00").toLocaleDateString("tr-TR",{day:"numeric",month:"long",year:"numeric"})+" tarihinde satıcı sayfalarından okundu, KDV dahil. 1 USD = "+nf(K,4)+" TL ("+CD.kur_kaynak+"). Dolar karşılıkları bu kurla hesaplandı.";
@@ -876,6 +889,7 @@ ps.value=O.print;py.value=String(O.pay);
 ps.addEventListener("change",function(){O.print=ps.value;render();});
 py.addEventListener("change",function(){O.pay=parseFloat(py.value);render();});
 sp.addEventListener("change",function(){O.spare=sp.checked;render();});
+document.getElementById("c-elde").addEventListener("change",function(e){O.elde=e.target.checked;render();});
 document.getElementById("c-csv").addEventListener("click",xlsx);
 document.addEventListener("robotver",function(e){O.ver=e.detail;render();});
 render();
