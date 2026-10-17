@@ -510,3 +510,135 @@ Bluetooth gamepad, bıçak sigortalar ve yuvası, perçin somun + aleti ve M4 ı
 
 Bulunamayanlar: 40 × 40 kanal 10 gizli köşe, 25T alüminyum **disk** horn, DIN 913 (düz uçlu) set vida, 3 damarlı silikon yassı servo kablosu
 (S1 kaseti ≤ 1,4 mm kalınlık şartı için ölçülmeli).
+
+## 7. Fiyat ve stok güncellemesi (17 Ekim 2026)
+
+Ajan (Opus) `durum` değeri `dogrulandi` ya da `ithal` olan ve bağlantısı bulunan 66 kalemi kontrol etti; ana ve 2. satıcıyla birlikte
+93 farklı sayfa (artı Robotsepeti XT60 dişi sayfası). Bağlantısı olan 26 `tahmini` kaleme dokunulmadı. Sayfalar bir betikle yalnız okunarak
+(GET) indirildi. Fiyat ve stok sayfanın görünen metninden ("X TL + KDV / Y TL KDV Dahil", "Stok : 186", "Stokta 100+ ürün", "67 STOKTA")
+ve yapısal verisinden (schema.org `offers.price` / `availability`, Direnc.net `quantity`, Robotistan `available` ve `out-stock-available`
+bloğu) okundu. Direnc.net'in JSON-LD fiyatı bazı ürünlerde KDV hariç, bazılarında KDV dahil; bu yüzden her yerde sayfada görünen
+"KDV Dahil" fiyat esas alındı. Atakale (betikte DNS hatası) ile Amazon sayfaları WebFetch'le okundu. Sipariş verilmedi, sepete ürün
+eklenmedi, stok alarmı kurulmadı. Okunan sayfa bölümlerinde talimat niteliğinde bir metin görülmedi.
+
+**Kur.** 1 USD = **49,4463 TL**, TCMB 16.10.2026 döviz satış (bülten 2026/196): https://www.tcmb.gov.tr/kurlar/202610/16102026.xml
+(17.10 Cumartesi; `today.xml` aynı bülteni veriyor). Önceki kur 48,8780 (25.09.2026).
+
+**İthal kalemler (USD fiyat × yeni kur, 2 haneye yuvarlandı).** USD fiyatlar sayfada değişmedi, yalnız kur değişti:
+
+| Kalem | Sayfa | USD | Eski TL | Yeni TL | Stok |
+|---|---|---|---|---|---|
+| Kamera kablosu, Adafruit 5819 | https://www.adafruit.com/product/5819 | 3,16 | 154,45 | 156,25 | belirsiz → var (In stock) |
+| Pololu D36V50F5 | https://www.pololu.com/product/4091 | 39,95 | 1.952,68 | 1.975,38 | belirsiz → var (InStock) |
+| Omni teker Nexus 14075 (koşullu) | https://ozrobotics.com/shop/double-aluminum-omni-wheel-5-inches-basic-14075/ | 45,90 | 2.243,50 | 2.269,59 | belirsiz → var (InStock) |
+| Camera Module 3 (2. satıcı, TL'si yok) | https://www.adafruit.com/product/5657 | 29,25 | — | — | In stock |
+
+Kargo ve gümrük hâlâ hariç.
+
+**Fiyatı değişen kalemler** (KDV dahil birim TL; "+ KDV" sütunu sayfanın KDV hariç fiyatı):
+
+| Kalem | Satıcı · bağlantı | Eski | Yeni | Not |
+|---|---|---|---|---|
+| Motor montaj braketi | [Robotzade](https://www.robotzade.com/urun/37-mm-motor-tutucu-aparat-metal) | 111,72 | 114,00 | 95,00 + KDV; stok belirsiz → var ("Stokta") |
+| ↳ 2. satıcı Pololu çift | [Robotistan](https://www.robotistan.com/aluminyum-l-tipi-37d-motor-tutucu) | 373,28 | 377,62 | Çift 755,23 TL ÷ 2 |
+| Altıgen kaplin | [Motorobit](https://www.motorobit.com/6mm-motor-safti-ile-uyumlu-hex-tekerlek-kaplini) | 120,00 | 121,20 | 101,00 + KDV, stok 100+ |
+| ↳ 2. satıcı | [Robotsepeti](https://www.robotsepeti.com/hex-tekerlek-kaplini-6mm-motor-mili-icin) | 151,89 | 153,65 | 128,04 + KDV |
+| Arazi tekerleği | [Robotistan](https://www.robotistan.com/buyuk-arazi-tekerlegi-125mm-x-58mm-mavi) | 353,63 | 357,74 | |
+| ↳ 2. satıcı | [Motorobit](https://www.motorobit.com/buyuk-arazi-tekerlegi-125mm-x-58mm-mavi) | 600,00 | 606,00 | 505,00 + KDV |
+| Sigma profil | [CNC Marketi](https://www.cnc-marketi.com/urun/40x40-sigma-profil-10-kanal-agir-tip) | 908,32 | 908,33 | |
+| ↳ 2. satıcı | [Otomasyoncu](https://www.otomasyoncu.net/urun/sigma-profil-40x40-agir-kanal-10) | 1.071,25 | 1.083,26 | 18,20 USD + KDV |
+| Omuz servosu DS3218 (+ yedek) | [Robocombo](https://www.robocombo.com/dsservo-ds3218-20kg-servo-motor-180-derece-su--4151) | 959,40 | 964,50 | "Fiyatlarımıza KDV dahildir", stok 186 |
+| ↳ 2. satıcı | [Motorobit](https://www.motorobit.com/ds3218mg-20kg-waterproof-digital-servo-motor) | 1.290,00 | 1.302,90 | 1.085,75 + KDV |
+| MG996R (+ yedek) | [Robocombo](https://www.robocombo.com/tower-pro-mg996r-metal-disli-dijital-servo-motor-180-derece) | 197,78 | 199,00 | stok 138 |
+| ↳ 2. satıcı | [Robotsepeti](https://www.robotsepeti.com/tower-pro-mg996-r-servo-motor-180) | 256,35 | 259,32 | 216,10 + KDV |
+| Rulman 6808-2RS KWC | [Rulmanal](https://www.rulmanal.com.tr/urun/6808-2rs-kwc-40x52x7-rulman) | 106,75 | 106,80 | 89,00 + KDV, 67 stokta |
+| ↳ 2. satıcı NSK | [Rulmanal](https://www.rulmanal.com.tr/urun/6808-2rs-nsk-40x52x7-rulman) | 1.050,59 | 1.054,52 | 5 stokta |
+| Rulman 625ZZ | [Rulmanal](https://www.rulmanal.com.tr/urun/625-zz-kwc-5-16-5-rulman) | 29,65 | 29,67 | 24,72 + KDV, 8.548 stokta |
+| Çok amaçlı servo braketi (V1/V2) | [Robiz](https://robiz.net/servobracket) | 88,20 | 89,10 | 74,25 + KDV |
+| Uzun U servo braketi (V1/V2) | [Robiz](https://robiz.net/longubracket) | 88,20 | 89,10 | 74,25 + KDV |
+| Raspberry Pi 5 8 GB (elde) | [Robotistan](https://www.robotistan.com/raspberry-pi-5-8-gb) | 11.966,22 | 12.105,35 | |
+| ↳ 2. satıcı | [SAMM](https://market.samm.com/raspberry-pi-5) | 12.057,68 | 12.203,79 | stok 109 |
+| Active Cooler | [Robotistan](https://www.robotistan.com/raspberry-pi-active-cooler-en) | 314,34 | 317,99 | |
+| microSD 64 GB (elde) | [SAMM](https://market.samm.com/raspberry-pi-64gb-a2-class-hafiza-karti) | 2.166,16 | 2.192,40 | stok 261 |
+| ESP32 | [Robotistan](https://www.robotistan.com/esp32-esp-32s-wifi-bluetooth-dual-mode-gelistirme-karti) | 416,14 | 420,98 | |
+| PCA9685 | [SAMM](https://market.samm.com/pca9685-16-kanal-i2c-pwm-servo-surucu-karti-klon) | 197,15 | 199,53 | stok 41 |
+| ↳ 2. satıcı | [Robotistan](https://www.robotistan.com/pca9685-16-kanal-i2c-pwmservo-surucu-karti-klon) | 241,71 | 244,52 | |
+| BNO055 | [Robotistan](https://www.robotistan.com/bno055-9dof-sensor-modul) | 753,10 | 761,85 | **stok var → yok** (Tükendi, `available:false`) |
+| ↳ 2. satıcı Boardoza | [Robotistan](https://www.robotistan.com/boardoza-bno055-imu-sensor-modulu) | 1.146,02 | 1.159,34 | stokta (farklı kart) |
+| HC-SR04 | [Robotistan](https://www.robotistan.com/hc-sr04-ultrasonik-mesafe-sensoru) | 62,51 | 63,24 | |
+| Camera Module 3 | [Robotistan](https://www.robotistan.com/raspberrypi-camera-module) | 1.791,36 | 1.812,19 | hâlâ tükendi |
+| ↳ Kamera kablosu 2. satıcı | [SAMM](https://market.samm.com/raspberry-pi-5-kamera-fpc-kablosu) | 70,44 | 71,30 | stok 122 |
+| Waveshare 7" (C) | [Robotistan](https://www.robotistan.com/7-hdmi-kapasitif-dokunmatik-lcd-ekran-1024x600) | 2.758,18 | 2.790,25 | |
+| Waveshare 10,1" (B) (V2) | [Robotsepeti](https://www.robotsepeti.com/waveshare-101inch-dokunmatik-lcd-b-kasali-1280x800-ips-ekran) | 12.327,01 | 12.424,50 | 10.353,75 + KDV |
+| ↳ 2. satıcı 10,1" (E) | [Robotistan](https://www.robotistan.com/101-inc-lcd-ekran-modulu) | 6.607,48 | 6.659,75 | |
+| Nextion NX1060P101-011C-I (elde) | [Robotistan](https://www.robotistan.com/nextion-nx1060p101-101touch-display) | 9.154,91 | 9.159,71 | hâlâ tükendi |
+| ↳ 2. satıcı 011R-I | [Robotistan](https://www.robotistan.com/nx1060p101-011r-i-101inc-akilli-seri-usart-hmi-rezistif-dokunmatik-ekran) | 9.827,28 | 9.832,43 | **artık stokta** (`available:true`) |
+| Göz ekranı 1,28" ×2 | [Robotistan](https://www.robotistan.com/128inc-yuvarlak-lcd-ekran-modulu) | 863,43 | 870,26 | |
+| ↳ 2. satıcı | [Motorobit](https://www.motorobit.com/gc9a01-128-240x240-oled-grafik-lcd-ekran-yuvarlak-pcb) | 540,00 | 545,40 | 454,50 + KDV |
+| ReSpeaker Lite | [Robotsepeti](https://www.robotsepeti.com/respeaker-lite-2-mikrofon-uzak-alan-ai-ses-tanima-ve-isleme-karti) | 2.587,46 | 2.617,54 | 2.181,28 + KDV; sayfada "Tedarik süresi yaklaşık 7–12 iş günü" |
+| MAX98357A | [Robotsepeti](https://www.robotsepeti.com/adafruit-3w-class-d-amplifikator-breakout-karti-i2s) | 728,81 | 737,28 | 614,40 + KDV; "Tedarik süresi yaklaşık 7–12 iş günü" |
+| Hoparlör | [Motorobit](https://www.motorobit.com/speaker-4-ohm-3w-40mm) | 105,00 | 106,05 | 88,38 + KDV |
+| Arcade buton | [Robotistan](https://www.robotistan.com/43mm-led-arcade-basmali-buton-kirmizi) | 74,42 | 75,28 | |
+| BTS7960B (+ yedek) | [Makermarketim](https://www.makermarketim.net/bts7960b-40-amper-motor-surucu-modulu) | 277,85 | 281,08 | 234,23 + KDV, "Stokta Var" |
+| XL4016 | [Motorobit](https://www.motorobit.com/xl4016-8a-dc-dc-step-down-voltage-regulator) | 240,00 | 242,40 | 202,00 + KDV |
+| ↳ 2. satıcı | [Robotronik](https://www.robotronik.com.tr/xl4016-8a-dc-dc-step-down-voltaj-regulatoru-potansli-a0188) | 170,10 | 172,07 | kalan stok 16 |
+| Limacell 24 Ah (V1/V2) | [Limacell](https://www.gecersunenerji.com/12-volt-24-ah-lifepo4-batarya) | 4.713,43 | 4.768,22 | sipariş üzerine üretim, stok belirsiz kaldı |
+| Şarj cihazı 4S 6 A | [UserPil](https://userpilbatarya.com/urun/14-4-volt-6-amper-lifepo4-sarj-cihazi-4s/) | 1.642,30 | 1.661,40 | **Sayfa yalnız KDV hariç gösteriyor:** 1.384,50 + KDV × 1,20 |
+| Sigorta kutusu | [Motorobit](https://www.motorobit.com/6-channel-auto-blade-fuse-box) | 309,00 | 312,09 | 260,08 + KDV |
+| ASW-A01 anahtar | [Motorobit](https://www.motorobit.com/asw-a01-100a-on-off-battery-disconnect-switch) | 276,00 | 278,76 | 232,30 + KDV |
+| XT60 çift | [Robotsepeti erkek](https://www.robotsepeti.com/xt60-konnektor-erkek) + [dişi](https://www.robotsepeti.com/xt60-konnektor-disi) | 42,62 | 43,12 | Erkek 21,26 + dişi 21,86 |
+| Silikon kablo 12 AWG | [Motorobit](https://www.motorobit.com/12-awg-silicone-cable-red-1-meter) | 126,00 | 127,26 | |
+| Silikon kablo 18 AWG | [Motorobit](https://www.motorobit.com/18-awg-silicone-cable-red-1-meter) | 42,00 | 42,42 | |
+| Kondansatör 2200 µF | [Motorobit](https://www.motorobit.com/2200uf-16v-electrolytic-capacitor-10x20mm) | 4,20 | 4,24 | |
+| Makaron seti | [Robolink](https://www.robolinkmarket.com/328-parca-renkli-makaron-seti-kutulu) | 229,50 | 232,50 | |
+| PETG siyah (V1/V2) | [Microzey](https://microzey.com/petg-siyah) | 359,00 | 389,00 | Sayfa artık "HS PETG Siyah", 466,80 → 389,00 |
+| Polymaker PETG-rCF08 | [FilamentMarketim](https://www.filamentmarketim.com/polymaker-fiberon-petg-rcf08-filament-siyah) | 1.105,87 | 1.114,03 | stok belirsiz → var (`InStock`, "Ekle"; "Stokta Yok" yazanlar benzer ürünler) |
+| Vida seti M3 / M4 / M5 (V1/V2) | [Robolink M3](https://www.robolinkmarket.com/m3-ysb-vida-somun-ve-pul-seti-220-parca), [M4](https://www.robolinkmarket.com/m4-ysb-vida-somun-ve-pul-seti-395-parca), [M5](https://www.robolinkmarket.com/m5-ysb-vida-somun-ve-pul-seti-188-parca) | 411 / 657 / 363 | 415,50 / 664,50 / 367,50 | |
+
+**Fiyatı aynı, stoğu değişen kalemler:**
+
+| Kalem | Satıcı · bağlantı | Fiyat | Stok | Kanıt |
+|---|---|---|---|---|
+| Geniş köşe bağlantı 40 × 40 K10 | [CNC Marketi](https://www.cnc-marketi.com/urun/genis-kose-baglanti-40x40-k10) | 24,68 | var → **yok** | "Stokta yok", "Ön Sipariş Ver". Eski 2. satıcı Robolink de Tükendi → 2. satıcı [Otomasyoncu 40x40 geniş K10](https://www.otomasyoncu.net/urun/40x40-kose-baglanti-genis) 30,95 TL, InStock ("kanal 10, 40x40 sigma profiller içindir") |
+| PC817 2 kanal optokuplör | [Direnc.net](https://www.direnc.net/pc817-2-kanal-optokuplor-izolasyon-icin-modul) | 43,59 | belirsiz → **yok** | `quantity: 0`, OutOfStock. 2. satıcı eklendi: [Robotistan](https://www.robotistan.com/pc817-2-kanal-optokuplor-izolasyon-modulu) 94,55 TL (78,80 + KDV), stok 9 |
+| Ön şarj rölesi JQC-3F(T73)-12VDC | [Direnc.net](https://www.direnc.net/12v-7a-tek-kontak-5-pinli-jqc-3ft73-12vdc-role) | 18,23 | var → **yok** | `quantity: 0`. Aynı model [Motorobit](https://www.motorobit.com/qianji-jqc-3ft73-12vdc-role-5-pin)'te de tükendi (16,16 + KDV) |
+| Siyah M3 distans seti 200 parça | [Direnc.net](https://www.direnc.net/siyah-m3-distans-vida-seti-200-parca) | 261,53 | var → **yok** | `quantity: 0`; ürün Direnc.net'in kendi markası, başka satıcıda yok |
+| Röle K1 (Elo) | [Elo](https://eticaret.elo.com.tr/urun/mini-role-12-v-40-a-5-fisli-diyotlu-toz-korumali) | 166,32 | belirsiz → var | itemprop InStock, "Sepete Ekle" |
+| Ana sigorta yuvası | [Hepsiburada](https://www.hepsiburada.com/allestock-kablolu-kapakli-bicak-sigorta-yuvasi-tekli-pm-HBC00002M7LNF) | 550,00 | var → belirsiz | Sayfa açılmadı (403, betik ve WebFetch); fiyat değiştirilmedi |
+
+**Değişmeyenler (aynı fiyat, aynı stok).** JGB37 (639,29; Direnc stok 42), tırtıllı somun M4/M5/M6, M6×16 imbus ("Son 20 Adet", 18
+gerekiyor), Pazarama servo braketi, Vatan microSD, Direnc ESP32 / 7" LCD / 22 mm buton / BTS7960 (tükendi) / XT60 (tükendi) / 5,6 Ω direnç
+(stok 6), Robolink HC-SR04, Victron SuperPack Atakale (12.680,70; vergiler hariç 10.567,25; "Ürün Stok : 1"), Merter Orbus (tükendi),
+Elektrix acil stop 231,66, Kartal B200E60 267,70, Kartal mikro röle 56,70 (tükendi), Microzey HS PETG beyaz 389, Elas PETG 549 (adres
+`elas-petg-filament`'e yönleniyor), Rhino M3 insert 5,22 (varyanta göre stok, belirsiz kaldı).
+
+**Açılamayan / okunamayan:**
+- Hepsiburada ana sigorta yuvası (ana satıcı) ve Hepsiburada Victron (2. satıcı): 403. Değerler değiştirilmedi. Arama motorunda Koçtaş'ta
+  Allestock "Bıçak Sigorta Yuvası - Tekli" 95,43 TL görünüyor (https://www.koctas.com.tr/bicak-sigorta-yuvasi-tekli/p/5001574647); sayfa
+  açılmadı, kablolu ve kapaklı olduğu doğrulanmadı.
+- Amazon TR Audio-Technica ATR4750 (mikrofon 2. satıcı): sayfada fiyat ve stok alanı boş; 1.962,11 TL değiştirilmedi.
+- Amazon TR SANEC MAX98357 (amfi 2. satıcı): "Şu anda mevcut değil"; fiyat okunamadı, 227,23 TL değiştirilmedi.
+
+**Stokta olmayan, aynı modelin stoklu başka Türk satıcısı bulunamayanlar** (Robotistan, Motorobit, Robotsepeti, Direnc, Robolink,
+Makermarketim, Robotzade arama sayfaları):
+- Camera Module 3: Robotistan (iki sayfa: `raspberrypi-camera-module`, `raspberry-pi-kamera-modulu-3`), Robotistan çıplak sensör
+  SA31VA30P (1.089,48) ve Robolink (2.850,00) tükendi. Adafruit 29,25 USD stokta.
+- Nextion NX1060P101-011C-I: Robotistan ve [Direnc.net](https://www.direnc.net/101-inc-nextion-hmi-display-rezistif-ekran) (9.666,69)
+  tükendi. Aynı ölçüdeki rezistif 011R-I Robotistan'da stokta (9.832,43).
+- BNO055 muadil kart: başka satıcıda aynı kart yok. Stoklu farklı kartlar: Robotistan Boardoza (1.159,34, mevcut 2. satıcı); Robotsepeti
+  ve Direnc'te Adafruit BNO055 (fiyatı okunmadı).
+- JQC-3F(T73)-12VDC: Direnc ve Motorobit tükendi. Direnc'te stoklu yakın model JQC-3FF-12VDC 10 A, 18,60 TL
+  (https://www.direnc.net/12v-minyonpot-qianji-role--jqc-3ff-12vdc-10a); farklı model, uygunluğu kontrol edilmedi.
+- Siyah M3 distans seti 200 parça: Direnc markası, eşi yok.
+
+**Toplamlar** (`planlama/adim5/maliyet_toplam.py`, V3, yazıcı, yedek ve %15 pay dahil):
+
+| | Önceki | 17.10.2026 |
+|---|---|---|
+| Ara toplam | 86.215,20 TL | 86.672,21 TL |
+| Genel toplam | 99.147,48 TL | **99.673,04 TL** |
+| Elde kalemler (Pi 5, microSD, Nextion) düşülmüş: (ara − elde) × 1,15 | 72.367,10 TL | **72.696,96 TL** |
+| Koşullular dahil genel | 105.053,19 TL | 105.638,76 TL |
+
+Kalem notlarındaki eski fiyat dökümlerine dokunulmadı (ör. 6808 "88,96 + KDV", Nextion "7.629,09 + KDV", XT60 "21,01 + 21,61",
+Waveshare 10,1" "10.272,51 × 1,20", Polymaker "stok sorulmalı").
