@@ -79,6 +79,7 @@ select{font:inherit;font-size:12.5px;padding:4px 6px;border:1px solid var(--grid
 #side .bx{fill:var(--sil);stroke:var(--sil-line);stroke-width:1}
 #side .bx.batt{fill:var(--batt);stroke:none}
 #side .bx.wh{fill:var(--ink-2);stroke:none;opacity:.8}
+#side .bx.lid{fill:var(--accent);stroke:none}
 #side .com{fill:var(--crit);stroke:var(--surface);stroke-width:2}
 #side .drop{stroke:var(--crit);stroke-width:1.2;stroke-dasharray:4 4}
 #side .tip{stroke-width:2;stroke-dasharray:6 4;fill:none}
@@ -125,6 +126,8 @@ footer{max-width:1400px;margin:auto;padding:12px 16px 22px;color:var(--muted);fo
 .badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c,var(--muted))}
 .badge.ok{--c:var(--good)}.badge.t{--c:var(--warn)}.badge.no{--c:var(--crit)}
 @media(max-width:820px){.cgrid{grid-template-columns:1fr}}
+.pill{display:inline-block;font-size:11px;font-weight:700;color:var(--warn);border:1px solid var(--warn);border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:middle}
+.steps{margin:4px 0 0;padding-left:20px;font-size:13px}.steps li{margin-bottom:6px}
 @media(max-width:1180px){.studio{grid-template-columns:220px minmax(0,1fr)}.right{grid-column:1 / -1}}
 @media(max-width:820px){.studio,.lower{grid-template-columns:1fr}.tree{max-height:260px}.vp{height:420px}}
 @media(max-width:420px){.cards{grid-template-columns:1fr}}
@@ -148,6 +151,7 @@ footer{max-width:1400px;margin:auto;padding:12px 16px 22px;color:var(--muted);fo
     <button class="btn" id="p-oneri">Önerilen</button>
     <button class="btn risk" id="p-riskli">Riskli örnek</button>
     <button class="btn" id="wave" aria-pressed="false">👋 El salla</button>
+    <button class="btn" id="auto" aria-pressed="false">📡 Otonomi (öneri)</button>
     <div class="seg" role="group" aria-label="Görünüm" id="views"><button data-v="iso" aria-pressed="true">İzometrik</button><button data-v="front">Ön</button><button data-v="side">Yan</button><button data-v="top">Üst</button></div>
     <div class="seg" role="group" aria-label="Kabuklar" id="shells"><button data-s="opak" aria-pressed="true">Kabuk</button><button data-s="seffaf">Şeffaf</button><button data-s="gizli">Gizli</button></div>
     <button class="btn" id="edges" aria-pressed="true">Kenar çizgileri</button>
@@ -180,6 +184,39 @@ footer{max-width:1400px;margin:auto;padding:12px 16px 22px;color:var(--muted);fo
     <h2 id="ver-h">V1 → V2: ne değişti?</h2>
     <ul class="tips" id="ver-list"></ul>
   </div>
+
+  <section class="panel" id="otonomi" style="margin-top:12px;scroll-margin-top:12px">
+    <h2>Otonom gezinme <span class="pill">öneri · CAD'de yok</span></h2>
+    <p class="note" style="margin:0 0 10px">FreeCAD modeline ve maliyet listesine eklenmedi. Yukarıdaki <b>📡 Otonomi</b> düğmesi lidarı ve tarama alanını gösterir. Bu demo eski CadQuery V3 modelini kullanıyor; lidar yeri FreeCAD V3'te ayrıca kontrol edilmeli.</p>
+    <div class="cgrid">
+      <div>
+        <h3>Yerleşim</h3>
+        <ul class="tips" style="font-size:13px">
+          <li><b>Lidar etek üstünde,</b> göğüs ekranının önünde. Elektronik katından çıkan bir direğin ucunda duruyor; etekte yalnız direk deliği gerekir, pencere gerekmez.</li>
+          <li><b>Tarama düzlemi</b> yerden <b id="a-plane">—</b>. Gövde arkayı kapatıyor, görüş açısı <b id="a-fov">—</b>. Robot çoğunlukla ileri gideceği için yol bulmaya yeter; arkada sensör olmadığından geri manevra yavaş olmalı.</li>
+          <li><b>Alçak engeller</b> (eşik, kutu) tarama düzleminin altında kalır; onları ön sonarlar (yerden 11 cm) görür.</li>
+          <li><b>Kollar</b> en aşağıdayken bile tarama düzleminin üstünde; jest yaparken lidarı kapatmıyor.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Aşamalar</h3>
+        <ol class="steps">
+          <li><b>Şimdi (sipariş öncesi):</b> lidar yeri, ön motor enkoderleri için pin çözümü, lidarı malzeme listesine koşullu ekleme, Pi yazılımını parçalara ayrılabilir yazma.</li>
+          <li><b>H9 · ilk sürüş:</b> plan aynı, kumandayla.</li>
+          <li><b>H10–14 (esnek):</b> ROS 2 katmanı, konum tahmini (enkoder + BNO055), kumandayla sürerek koridor haritası.</li>
+          <li><b>Dönem sonu / 2. dönem:</b> haritada bir noktaya tıkla, robot oraya gitsin; sonra "A noktasına götür" rehber modu.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th>Gereken</th><th>Bugün</th><th>Ne yapılmalı</th></tr></thead><tbody>
+      <tr><td>Lidar</td><td>Yok</td><td>360° 2B lidar. Demodaki ölçü tahmini (Ø56 × 41 mm, ≈ 110 g + direk); model ve fiyat seçilmedi.</td></tr>
+      <tr><td>Tekerlek sayacı</td><td>Yan başına 1 enkoder bağlı; ön motorlarınki ESP32'de pin kalmadığı için boşta</td><td>4 enkoderin hepsi: ESP32-S3 ya da ek sayaç çözümü (E5 pin planı kararı)</td></tr>
+      <tr><td>Dönüşte kayma</td><td>Kare teker düzeni dönüşte yana kayıyor, robot nerede olduğunu şaşırır</td><td>Ön omni teker (K1) + enkoderleri BNO055 ile birleştirme</td></tr>
+      <tr><td>İşlemci</td><td>Pi 5'te ses, yüz animasyonu, kamera</td><td>Haritalama ve yol bulmayı ölçerek ekle; yetmezse animasyon hızı düşer (tahmini, denenmedi)</td></tr>
+      <tr><td>Yazılım</td><td>Düz Python + ESP32, seri JSON</td><td>ROS 2 Jazzy, Pi OS üstünde Docker içinde (kamera desteği bozulmaz); ESP32 köprüsü, slam_toolbox, Nav2</td></tr>
+      <tr><td>Saha ayarı</td><td>—</td><td>Ekip işi: koridorda sürüp harita çıkarmak, ayar turları. Kod yapay zekâyla hızlanır, bu kısım hızlanmaz.</td></tr>
+    </tbody></table></div>
+  </section>
 
   <div class="panel" style="margin-top:12px">
     <h2>Parça listesi (mevcut ayarlara göre)</h2>
@@ -226,6 +263,9 @@ footer{max-width:1400px;margin:auto;padding:12px 16px 22px;color:var(--muted);fo
 (function(){
 "use strict";
 var MD=JSON.parse(document.getElementById("model").textContent),C=MD.C;
+/* otonomi onerisi: CAD'de yok, demoda cizilen lidar + direk (olculer tahmini) */
+MD.parts.lidar={name:"Lidar + direk (öneri)",model:"360° 2B lidar, model seçilmedi (ölçü tahmini)",dims:"Ø56 × 41 + Ø20 direk",mass:0.15,com:[0,0,0]};
+var LID_Z0=190,LID_Y0=270,LID_H=41,LID_SCAN=33,LID_DECK=177,LID_R=1200,lidarOn=false,LID=null;
 var D2R=Math.PI/180,G=9.81;
 var SERVOS={DS3218:{ad:"DS3218MG",nom:20},MG996R:{ad:"MG996R",nom:10},STS3215:{ad:"Feetech STS3215",nom:19.5}};
 var PRESETS={
@@ -356,6 +396,7 @@ function init3D(){
     ARMS.push({side:side,root:aroot,pitch:pitch,items:items});
   });
   dyn=new T.Group();root.add(dyn);
+  initLidar();
   R={renderer:renderer,scene:scene,camera:camera,yaw:0.75,pitch:0.28,dist:3.1,tx:0,py:0,tz:0,touched:false};
   // kontroller
   var drag=null,moved=0;
@@ -376,6 +417,42 @@ function init3D(){
   if(window.ResizeObserver)new ResizeObserver(resize).observe(wrap);else window.addEventListener("resize",resize);
   resize();
   return true;
+}
+function initLidar(){
+  var g=new T.Group(),body=new T.Group(),scan=new T.Group(),beam=new T.Group();
+  var dark=new T.MeshStandardMaterial({color:0x26292e,metalness:0.2,roughness:0.6}),alu=new T.MeshStandardMaterial({color:0xb8bec7,metalness:0.45,roughness:0.35});
+  var mast=new T.Mesh(new T.CylinderGeometry(10,10,LID_Y0-LID_DECK,20),alu);mast.position.y=(LID_Y0+LID_DECK)/2;body.add(mast);
+  var base=new T.Mesh(new T.CylinderGeometry(28,28,26,32),dark);base.position.y=LID_Y0+13;body.add(base);
+  var head=new T.Mesh(new T.CylinderGeometry(25,25,15,32),new T.MeshStandardMaterial({color:0x3b4048,metalness:0.3,roughness:0.4}));head.position.y=LID_Y0+26+7.5;body.add(head);
+  var win=new T.Mesh(new T.BoxGeometry(14,8,4),new T.MeshBasicMaterial({color:0x2a78d6}));win.position.set(0,0,24);head.add(win);
+  var col=new T.Color(getComputedStyle(document.documentElement).getPropertyValue("--accent").trim()||"#2a78d6");
+  var sm=new T.MeshBasicMaterial({color:col,transparent:true,opacity:0.22,side:T.DoubleSide,depthWrite:false});
+  var bl=new T.Line(new T.BufferGeometry().setFromPoints([new T.Vector3(0,0,0),new T.Vector3(0,0,LID_R)]),new T.LineBasicMaterial({color:col}));
+  beam.add(bl);scan.add(beam);scan.position.y=LID_Y0+LID_SCAN;
+  g.add(body);g.add(scan);g.visible=false;root.add(g);
+  LID={g:g,body:body,mast:mast,head:head,scan:scan,beam:beam,sm:sm,sector:null,half:-1,ang:0};
+}
+function updateLidar(){
+  if(!LID)return;
+  LID.g.visible=lidarOn;
+  var z=LID_Z0+(P.L-C.L0)/2,top=LID_Y0;
+  LID.g.position.z=z;
+  // govde lidarin arkasini kapatiyor: on kenar ve yari genislikten kor aci
+  var half=Math.PI,B=new T.Box3();
+  BASE.forEach(function(r){var k=r.d.key;if(!r.count||!(k==="torso"||k==="torso2"||k==="torso3"))return;
+    B.setFromObject(r.w);var fz=B.max.z*1000,hw=Math.max(-B.min.x,B.max.x)*1000,y0=B.min.y*1000;
+    if(y0<top+LID_SCAN&&z>fz)half=Math.PI-Math.atan2(hw,z-fz);});
+  if(Math.abs(half-LID.half)>1e-3){
+    if(LID.sector){LID.scan.remove(LID.sector);LID.sector.geometry.dispose();}
+    LID.sector=new T.Mesh(new T.CircleGeometry(LID_R,72,-Math.PI/2-half,2*half),LID.sm);LID.sector.rotation.x=-Math.PI/2;LID.scan.add(LID.sector);LID.half=half;
+  }
+  document.getElementById("a-plane").textContent="≈ "+Math.round((top+LID_SCAN)/10)+" cm";
+  document.getElementById("a-fov").textContent="≈ "+Math.round(2*half/D2R/5)*5+"°";
+}
+function spinLidar(now){
+  if(!LID||!lidarOn||reduce)return;
+  var a=(now/1400*2*Math.PI)%(2*Math.PI),w=a>Math.PI?a-2*Math.PI:a;
+  LID.beam.rotation.y=a;LID.beam.visible=Math.abs(w)<=LID.half;LID.head.rotation.y=a;
 }
 function setView(v){
   if(!R)return;R.touched=true;R.tx=0;R.tz=0;R.py=0;
@@ -434,6 +511,7 @@ function calc(){
     var kk=r.grp+"|"+r.d.key;(byKey[kk]=byKey[kk]||{grp:r.grp,key:r.d.key,n:0,m:0}).n++;byKey[kk].m+=m;
     if(r.d.contact){v.setFromMatrixPosition(r.w.matrixWorld).multiplyScalar(1000);contacts.push([v.x,v.z,r.d.contact]);}
   });
+  if(lidarOn){var lm=MD.parts.lidar.mass;Mt+=lm;cy+=lm*LID_Y0;cz+=lm*(LID_Z0+(P.L-C.L0)/2);byKey["Taban|lidar"]={grp:"Taban",key:"lidar",n:1,m:lm};}
   Mt+=C.EXTRA;cy+=C.EXTRA*120;
   var xc=cx/Mt,yc=cy/Mt,zc=cz/Mt;
   var xs=contacts.map(function(c){return c[0];}),zs=contacts.map(function(c){return c[1];});
@@ -563,10 +641,11 @@ function drawSide(c){
     if(k==="cover"||k==="torso"||k==="head"||k==="cover2"||k==="torso2"||k==="head2"||k==="cover3"||k==="torso3"||k==="sh_cap"||k==="tube_up"||k==="tube_fa"||k==="elbow_cap"||k==="hand")add(r.w,"bx");
     else if(k==="wheel"||k==="caster")add(r.w,"bx wh");
     else if(k==="battery")add(r.w,"bx batt");});
+  if(lidarOn&&LID){LID.g.position.z=LID_Z0+(P.L-C.L0)/2;add(LID.body,"bx lid");}
   var s=400/(P.H+80),X=function(z){return (260+z*s).toFixed(1);},Y=function(y){return (450-y*s).toFixed(1);};
   var h='<text x="508" y="466" text-anchor="end">ön →</text><line class="gnd" x1="8" y1="'+Y(0)+'" x2="512" y2="'+Y(0)+'"/>';
   h+='<line class="sup '+c.stTip+'" x1="'+X(c.zmin)+'" y1="'+Y(0)+'" x2="'+X(c.zmax)+'" y2="'+Y(0)+'"/>';
-  var order={"bx":1,"bx wh":0,"bx batt":2};
+  var order={"bx":1,"bx wh":0,"bx batt":2,"bx lid":3};
   boxes.sort(function(a,b){return order[a.c]-order[b.c];}).forEach(function(b){
     h+='<rect class="'+b.c+'" x="'+X(b.z0)+'" y="'+Y(b.y1)+'" width="'+((b.z1-b.z0)*s).toFixed(1)+'" height="'+((b.y1-b.y0)*s).toFixed(1)+'" rx="'+(b.c==="bx wh"?((b.y1-b.y0)*s/2).toFixed(1):4)+'"/>';
   });
@@ -597,7 +676,7 @@ function curAng(){return waving?waveAng:P.armAng;}
 function solve(a){var e=explode;explode=0;layout(a);var c=calc();drawSide(c);explode=e;if(e>0)layout(a);return c;}
 function update(){
   SL.forEach(function(s){document.getElementById("o-"+s.k).textContent=s.f(P[s.k]);});
-  var c=solve(curAng());render(c);updateDyn(c);
+  var c=solve(curAng());render(c);updateDyn(c);updateLidar();
   document.getElementById("stage-note").textContent=(VER==="v2"&&STAGE_V2[stage])||(VER==="v3"&&STAGE_V3[stage])||STAGE_NOTE[stage];
 }
 function press(sel,btn){Array.prototype.forEach.call(document.querySelectorAll(sel+" button"),function(x){x.setAttribute("aria-pressed",String(x===btn));});}
@@ -647,13 +726,14 @@ function wire(){
   document.getElementById("explode").addEventListener("input",function(e){explode=parseFloat(e.target.value);update();});
   document.getElementById("wave").addEventListener("click",function(e){waving=!waving;e.currentTarget.setAttribute("aria-pressed",String(waving));
     if(waving&&stage<4){stage=4;press("#stages",document.querySelector('#stages button[data-stage="4"]'));}update();});
+  document.getElementById("auto").addEventListener("click",function(e){lidarOn=!lidarOn;e.currentTarget.setAttribute("aria-pressed",String(lidarOn));if(R)update();});
 }
 var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches,last=0;
 function loop(now){
   requestAnimationFrame(loop);
   if(waving){waveAng=135+28*Math.sin(now/1000*5);ARMS[0].pitch.rotation.x=-waveAng*D2R;
     if(now-last>150){last=now;var c=solve(waveAng);render(c);updateDyn(c);}}
-  animFace(now);
+  animFace(now);spinLidar(now);
   if(!R.touched&&!reduce)R.yaw+=0.0018;
   var ty=P.H/2000*0.95+R.py;R.camera.position.set(R.tx+R.dist*Math.cos(R.pitch)*Math.sin(R.yaw),ty+R.dist*Math.sin(R.pitch),R.tz+R.dist*Math.cos(R.pitch)*Math.cos(R.yaw));
   R.camera.lookAt(R.tx,ty,R.tz);R.renderer.render(R.scene,R.camera);
