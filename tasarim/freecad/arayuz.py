@@ -159,9 +159,13 @@ OMUZ_YUVA_YZ = 25.0                  # yuva dis yari olcusu (y, z +-25)
 # izgarasi), dirsek_montaj / kabuk_rapor / omuz_rapor (siniri ici suzgeci) ve kod/ortak/eklem_sinirlari.json buradan okur.
 OMUZ = dict(
     one_arka_aralik=(-45.0, 135.0),      # S1: DS3218MG 180 derece, horn kol asagidayken 45'te; geometri -60...180 serbest
-    yana_aralik=(3.0, 120.0),            # S2: alt sinir 0 -> +3 (duzeltme plani C1, 14 Ekim 2026)
+    yana_aralik=(5.0, 120.0),            # S2: alt sinir 0 -> +3 (C1, 14 Ekim) -> +5 (S1 kablo kaseti, 15 Ekim 2026): kol S2 3'te
+                                         # x 158,8'e, 5'te 160,07'ye iner; tambur / flans x <= 159,5 (planlama/adim2/S1-kaset.md)
     yana_alt_bosluk_mm={0: 4.7, -2: 0.6, -3: 0.0},   # kol/el <-> kabuk en kucuk bosluk (duzeltme plani C1, tarama; -3'te temas)
     servo="DS3218MG (180 derece), S1 ve S2",
+    # baski parcalari etkin yogunluk = rho x doluluk (M4 omuz baski analizi, 15 Ekim 2026: PETG-CF 0,8...0,9, PETG tup 0,8). Tork
+    # icin ust deger (0,9) alinir. rho tahmini (PETG-CF 1,25...1,30).
+    baski_rho={"PETG-CF": (1.27, 0.9), "PETG": (1.27, 0.8)},
 )
 
 
@@ -588,7 +592,7 @@ KAFA_KOL_YASAK = dict(
     kol_kosulu={k: _genislet(YASAK_OLCULEN[k], _YS_SINIR[k]) for k in ("one_arka", "yana", "dirsek", "bilek")},
     pay=YASAK_PAY, olculen=YASAK_OLCULEN,
     not_="kol_kosulu disinda kafa-kol cakismasi taramada yok; kosulsuz uygulamak guvenli ama kafayi gereksiz kisitlar. "
-         "Olculen yana 0 idi; S2 alt siniri +3 oldugundan kosul yana 3...5 olur. Kutu C7 tam taramasiyla dogrulanacak.",
+         "Olculen yana 0 idi; S2 alt siniri +5 oldugundan (15 Ekim 2026, S1 kaseti) kosul yana 5...5 olur. Kutu C7 tam taramasiyla dogrulanacak.",
 )
 
 
@@ -601,7 +605,7 @@ def eklem_sinirlari():
         "s1": j("omuz one-arka (S1)", OMUZ["one_arka_aralik"], OMUZ["servo"],
                 "DS3218MG 180 derece; horn kol asagidayken 45'te; geometri -60...180 serbest"),
         "s2": j("omuz yana acma (S2)", OMUZ["yana_aralik"], OMUZ["servo"],
-                "alt sinir +3: 0'da kabuk boslugu 4,7 mm, -2'de 0,6 mm, -3'te temas; servo sifir hatasi <= +-2 derece olmali",
+                "alt sinir +5 (S1 kablo kaseti: kol S2 3'te tambura/flansa yaklasir, 5'te 0,77 mm); kabuk boslugu 0'da 4,7 mm, -3'te temas",
                 bosluk_mm={str(k): v for k, v in OMUZ["yana_alt_bosluk_mm"].items()}),
         "dirsek": j("dirsek", DIRSEK["aralik"], DIRSEK["servo"], "MG996R, catal dayanagi"),
         "bilek": j("bilek", DIRSEK["bilek_aralik"], DIRSEK["servo"], "MG996R 180 derece, ev 0 = avuc ice bakar"),
@@ -674,9 +678,37 @@ KOL_KABLO = dict(
     yol_uzatma_kol=dict(grup="Kol", serit=2, nokta=[(185.0, -105.0, -1.25), (185.0, -92.0, -12.0), (185.0, -77.0, -31.0),
                                                     (190.5, -60.0, -30.5), (191.0, -46.0, -30.4), (191.0, -40.0, -30.4),
                                                     (191.5, -35.5, -35.0), (192.0, -30.0, -37.2), (193.0, -26.0, -38.6)]),   # tup civatasi basinin (x 185, y -50) yanindan
-    s1=dict(durum="ACIK", not_="S1 (-45...135) gecisi: tup ve yaka yana kucukken kabuk yuzunden 5...8 mm uzakta, S1 ekseninin alt "
-                              "sektorunu dolduruyor; ust yaridaki serbest lop R ~10 mm ve eksenden ~95 mm'ye tasiyor. Karar: kablo "
-                              "kaseti (gobekte tambur + govdede yay duvar) ya da omuz ustu buyuk lop. Bkz. planlama/adim2/M1-kablo-yolu.md"),
+    # --- S1 gecisi: doner U-lop kaseti (A', 15 Ekim 2026; planlama/adim2/S1-kaset.md). Aci psi: S1 ekseni (omuz yerel X)
+    #     etrafinda psi = atan2(-z, y) derece: +Y 0, arka (-Z) 90, asagi 180, on (+Z) 270; S1 +phi gobekteki noktanin psi'sini phi
+    #     kadar arttirir (Pp). Kablo G2'den asagi (+psi) iner, tambura +psi yonunde sarilir (ic kosu, tamburla doner), U'da doner,
+    #     sabit duvar boyunca -psi yonunde (dis kosu) duvar bagina gelir. U sekli temasli elastika (kablo_yolu.u_lop): pozdan bagimsiz,
+    #     yalniz doner. Tambur omuz Gobek grubunda (omuz_parcalar), kaset govdesi kabuk modulunde (kabuk_parcalar).
+    s1=dict(durum="A' doner U-lop kaseti (15 Ekim 2026)",
+            serit=3,                                    # dirsek + bilek uzatmalari + S2 servosu (DS3218) kablosu
+            kanal_x=(153.5, 158.3),                     # tambur dudaklari arasi eksenel kanal: demet 4,2 + 0,6
+            tambur=dict(r=(37.0, 39.0), x=(152.5, 159.3), dudak_r=43.7, dudak_t=1.0,     # ic r 37: kapak M3 basi r 36,3 -> 0,7
+                        kol_psi=(-30.0, 0.0, 30.0), kol_r=(31.0, 39.0), kol_gen=9.0, kol_x=(159.3, 163.0),   # gobek on yuzune 3 kol
+                        vida_r=33.75, vida=(3, 8),       # M3x8 DIN 912 +x yonunde (bas tamburun ic tarafinda), gobekte isil gomme
+                        bag_psi=145.0, yay_psi=(142.0, 395.0)),   # gobek cercevesi: kablo bagi; halka yalniz ic kosunun gezdigi
+                                                        # yayda (C halka): arka-ust 35...142 bos (S2 lopu S2 120'de oradan gecer)
+            # kaset iki baski parcasi: govde (arka plaka x 152-153 + duvar + dikmeler; arka yuz tablada) ve kapak (flans + dikme
+            # basliklari + ust uc pimi; flans tablada). Arka plaka kabugun duz omuz yuzune (x 152) oturur; kabugun x 152'den geri
+            # cekildigi on kose ve ust kapak ustunde de kablonun -x kenarini tutar.
+            duvar=dict(r=(75.2, 77.2), x0=152.0, arka_t=1.0, flans_x=(158.3, 159.5), flans_r_ic=44.2, psi0=190.0,
+                       u_pay=4.5, ic_kes_r=46.5, bolum_x=155.0, havsa_x=156.5, pim=dict(r=57.0, d=3.0, post_r=3.5, bosluk=0.5)),
+            alfa_min=10.0,                              # ic / dis kosu en kisa yay acisi (derece; kontrol esigi)
+            bag_duvar_psi=228.3, L=171.4,               # duvar bagi (sabit) ve bagdan baga kablo boyu: phi 135'te ic kosu ~10,
+                                                        # phi -45'te dis kosu ~10 derece (kontrol dirsek_montaj'da yeniden hesaplar)
+            dikme=((200.0, 53.0), (226.0, 54.0)), dikme_r=4.0, dikme_vida=(3, 8),   # (psi, r): kabuk omuz pedinde isil gomme
+            kulak=dict(x=(138.0, 152.0), z=(38.0, 56.0), t=3.0, vida_xz=(144.0, 47.0), vida=(3, 8)),   # kabuk ust kapagina yatay kulak
+            cikis=dict(psi=214.0, r_don=52.0, x_ic=140.0, yarik=(12.0, 6.0)),   # duvar bagi -> duvar boyunca -> psi 214'te radyal
+                                                        # ice -> r 52'de ped yarigi (radyal 12 x 6: JR erkek 10,3 x 4 gecer) -> govde ici
+            gecis=dict(G2_r=(35.9, 41.1), x=(165.5, 155.9), n=24),   # G2 -> tambur bagi: r ve x, psi boyunca Hermite (sabit yol)
+            # govde ici: yarik -> travers arkasi (omuz yereli) -> taban YOL 'Servo 6 V A' (taban_parcalar, global) -> dagitim karti A
+            govde_ici=((140.0, -62.0, 18.0), (105.0, -62.0, -26.0), (0.0, -55.0, -26.0)),
+            govde_dikey=((0.0, 900.0, -26.0), (0.0, 400.0, -26.0), (25.0, 262.0, -26.0), (25.0, 230.0, 26.0), (40.0, 205.0, 180.0)),
+            s2_servo_kablo=40.0,                        # S2 servo cikisindan G2'ye (tahmini; DS3218 300 mm kablonun kalan boyu bundan)
+            jr_pay=30.0),                               # her birlesimde konnektor + bag payi (tahmini)
 )
 
 

@@ -1,0 +1,128 @@
+{
+ "tarih": "2026-10-15T18:41:31",
+ "yontem": "MeshPart MaxLength 0,6 nokta bulutu + cKDTree; en kucuk 6 poz kesin distToShape",
+ "gobek_kaset_bant": {
+  "on_min_aralik": [
+   -42.0,
+   3.500000552327235,
+   "Omuz gobegi",
+   "S1 kaset kapagi sag"
+  ],
+  "kesin": [
+   [
+    -42.0,
+    3.5,
+    "Omuz gobegi",
+    "S1 kaset kapagi sag",
+    0.0
+   ],
+   [
+    180.0,
+    3.5,
+    "Omuz gobegi",
+    "S1 kaset kapagi sag",
+    0.0
+   ],
+   [
+    155.0,
+    3.5,
+    "Omuz gobegi",
+    "S1 kaset kapagi sag",
+    0.0
+   ],
+   [
+    175.0,
+    3.5,
+    "Omuz gobegi",
+    "S1 kaset kapagi sag",
+    0.0
+   ],
+   [
+    -14.0,
+    3.5,
+    "Omuz gobegi",
+    "S1 kaset kapagi sag",
+    0.0
+   ],
+   [
+    -36.0,
+    3.5,
+    "Omuz gobegi",
+    "S1 kaset kapagi sag",
+    0.0
+   ]
+  ],
+  "en_kucuk_10": [
+   [
+    -42.0,
+    3.500000552327235,
+    "Omuz gobegi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    180.0,
+    3.5000005596090342,
+    "Omuz gobegi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    155.0,
+    3.5000007618481512,
+    "Omuz gobegi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    175.0,
+    3.50000084579073,
+    "Omuz gobegi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    -14.0,
+    3.500001300319065,
+    "Omuz gobegi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    -36.0,
+    3.500001813442881,
+    "Omuz gobegi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    -60.0,
+    3.5000018374957174,
+    "Omuz gobegi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    159.0,
+    3.500001901340339,
+    "Omuz gobegi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    -53.0,
+    3.500002002541776,
+    "Omuz gobegi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    177.0,
+    3.5000020321053444,
+    "Omuz gobegi",
+    "S1 kaset kapagi sag"
+   ]
+  ]
+ },
+ "bant_kaset_omuz_govde": [
+  1.0,
+  "Omuz bandi sag",
+  "Rulman kapagi"
+ ],
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-15T09:27:09",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-15T09:21:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-15T09:32:14"
+ }
+}

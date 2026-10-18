@@ -1,16 +1,16 @@
 {
- "parca_sayisi": 194,
- "baski_sayisi": 15,
+ "parca_sayisi": 206,
+ "baski_sayisi": 19,
  "gecersiz": [],
  "coklu_kati": [],
  "temizlik": [],
  "cakisma": [],
- "cakisma_cift_sayisi": 485,
+ "cakisma_cift_sayisi": 513,
  "tolerans_mm3": 0.5,
  "iskelet_cakisma": [],
  "iskelet_cift_sayisi": 116,
  "bolge": {
-  "kontrol_edilen": 51,
+  "kontrol_edilen": 50,
   "ihlal": [],
   "en_yakin": [
    [
@@ -147,12 +147,6 @@
    ],
    [
     "taban",
-    "Raspberry Pi 5 (elektronik kati)",
-    54.5,
-    "Etek arka sol"
-   ],
-   [
-    "taban",
     "ESP32 (elektronik kati)",
     54.5,
     "Etek arka sag"
@@ -168,12 +162,6 @@
     "BNO055 (elektronik kati)",
     54.5,
     "Etek orta sag"
-   ],
-   [
-    "taban",
-    "MAX98357A (elektronik kati)",
-    57.43,
-    "Etek orta sol"
    ],
    [
     "taban",
@@ -273,15 +261,21 @@
    ],
    [
     "taban",
-    "Elektronik kati on yerlesimi (Pi, ESP32, PCA, BNO, amfi)",
+    "Elektronik kati on yerlesimi (arayuz karti, ESP32, PCA, BNO)",
     36.16,
     "Etek orta sol"
    ],
    [
     "taban",
-    "Pi 5 fan hava payi",
-    38.47,
-    "Etek orta sol"
+    "Servo dagitim kartlari A / B (E1)",
+    11.46,
+    "Etek on sag"
+   ],
+   [
+    "taban",
+    "E7 fan yeri (olcume bagli, 40 x 40 x 10)",
+    84.5,
+    "Etek orta sag"
    ],
    [
     "taban",
@@ -1827,6 +1821,64 @@
    "tamam": true
   }
  ],
+ "kaset_kontrol": [
+  {
+   "etiket": "Kaset civatasi M3x8 (sag psi 200)",
+   "parca": "Omuz bandi sag",
+   "bas_dayali": 0.0,
+   "insert_oturdu": 0.0,
+   "kavrama": 3.5,
+   "govde_kabuga": 0.0,
+   "kapak_govdeye": 0.0,
+   "tamam": true
+  },
+  {
+   "etiket": "Kaset civatasi M3x8 (sag psi 226)",
+   "parca": "Omuz bandi sag",
+   "bas_dayali": 0.0,
+   "insert_oturdu": 0.0,
+   "kavrama": 3.5,
+   "govde_kabuga": 0.0,
+   "kapak_govdeye": 0.0,
+   "tamam": true
+  },
+  {
+   "etiket": "Kaset civatasi M3x8 (sol psi 200)",
+   "parca": "Omuz bandi sol",
+   "bas_dayali": 0.0,
+   "insert_oturdu": 0.0,
+   "kavrama": 3.5,
+   "govde_kabuga": 0.0,
+   "kapak_govdeye": 0.0,
+   "tamam": true
+  },
+  {
+   "etiket": "Kaset civatasi M3x8 (sol psi 226)",
+   "parca": "Omuz bandi sol",
+   "bas_dayali": 0.0,
+   "insert_oturdu": 0.0,
+   "kavrama": 3.5,
+   "govde_kabuga": 0.0,
+   "kapak_govdeye": 0.0,
+   "tamam": true
+  }
+ ],
+ "s1_kaset": {
+  "pim_psi": 331.2676974590279,
+  "psi_a": 303.24013391596105,
+  "psi_uc": 324.2676974590279,
+  "dikme": [
+   [
+    200.0,
+    53.0
+   ],
+   [
+    226.0,
+    54.0
+   ]
+  ],
+  "kaynak": "arayuz.KOL_KABLO s1"
+ },
  "bosluk": {
   "teker_etek_mm": 12.0,
   "direk_govde_mm": 46.64,
@@ -2179,13 +2231,13 @@
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0039,
-   "cikinti_alan_cm2": 4.7,
-   "yuzey_cm2": 1195.3,
+   "cikinti_orani": 0.0044,
+   "cikinti_alan_cm2": 5.3,
+   "yuzey_cm2": 1198.3,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 168.2,
+   "hacim_cm3": 168.0,
    "kutle_g": 192.0,
    "filament_g": 202.0,
    "sure_saat": 4.2,
@@ -2203,13 +2255,13 @@
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0036,
-   "cikinti_alan_cm2": 4.1,
-   "yuzey_cm2": 1146.5,
+   "cikinti_orani": 0.0041,
+   "cikinti_alan_cm2": 4.7,
+   "yuzey_cm2": 1149.5,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 161.7,
+   "hacim_cm3": 161.5,
    "kutle_g": 185.0,
    "filament_g": 194.0,
    "sure_saat": 4.0,
@@ -2384,6 +2436,102 @@
    "katman": 227,
    "yon": "ters (ust plakasi tablada)",
    "grup": "Taban etegi"
+  },
+  {
+   "ad": "S1 kaset govdesi sag",
+   "olcu": [
+    108.8,
+    108.6,
+    6.3
+   ],
+   "tabla_aci": 34,
+   "sigar": true,
+   "sigar_cift": true,
+   "cikinti_orani": 0.0,
+   "cikinti_alan_cm2": 0.0,
+   "yuzey_cm2": 126.0,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "hacim_cm3": 7.7,
+   "kutle_g": 9.0,
+   "filament_g": 9.0,
+   "sure_saat": 0.2,
+   "katman": 6,
+   "yon": "arka yuzu (x 152) tablada",
+   "grup": "S1 kablo kaseti"
+  },
+  {
+   "ad": "S1 kaset kapagi sag",
+   "olcu": [
+    108.8,
+    108.6,
+    4.5
+   ],
+   "tabla_aci": 56,
+   "sigar": true,
+   "sigar_cift": true,
+   "cikinti_orani": 0.0037,
+   "cikinti_alan_cm2": 0.4,
+   "yuzey_cm2": 103.2,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "hacim_cm3": 5.9,
+   "kutle_g": 7.0,
+   "filament_g": 7.0,
+   "sure_saat": 0.1,
+   "katman": 4,
+   "yon": "flans dis yuzu tablada",
+   "grup": "S1 kablo kaseti"
+  },
+  {
+   "ad": "S1 kaset govdesi sol",
+   "olcu": [
+    108.8,
+    108.6,
+    6.3
+   ],
+   "tabla_aci": 56,
+   "sigar": true,
+   "sigar_cift": true,
+   "cikinti_orani": 0.0,
+   "cikinti_alan_cm2": 0.0,
+   "yuzey_cm2": 126.0,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "hacim_cm3": 7.7,
+   "kutle_g": 9.0,
+   "filament_g": 9.0,
+   "sure_saat": 0.2,
+   "katman": 6,
+   "yon": "arka yuzu (x 152) tablada",
+   "grup": "S1 kablo kaseti"
+  },
+  {
+   "ad": "S1 kaset kapagi sol",
+   "olcu": [
+    108.8,
+    108.6,
+    4.5
+   ],
+   "tabla_aci": 34,
+   "sigar": true,
+   "sigar_cift": true,
+   "cikinti_orani": 0.0037,
+   "cikinti_alan_cm2": 0.4,
+   "yuzey_cm2": 103.2,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "hacim_cm3": 5.9,
+   "kutle_g": 7.0,
+   "filament_g": 7.0,
+   "sure_saat": 0.1,
+   "katman": 4,
+   "yon": "flans dis yuzu tablada",
+   "grup": "S1 kablo kaseti"
   }
  ],
  "yazici": {
@@ -2422,30 +2570,31 @@
    246.0
   ]
  },
- "kutle_g": 4886.3,
+ "kutle_g": 4921.5,
  "kutle_grup": {
-  "Govde kabugu": 2059.3,
+  "Govde kabugu": 2059.8,
   "Taban etegi": 1791.3,
+  "S1 kablo kaseti": 34.7,
   "Gogus ekrani": 539.3,
   "Govde braketleri": 285.7,
   "Etek braketleri": 210.6
  },
  "kutle_tur": {
-  "Baski": 3800.1,
+  "Baski": 3830.5,
   "Satin": 845.0,
-  "Baglanti": 241.2
+  "Baglanti": 245.9
  },
  "agirlik_merkezi": [
   -0.08,
-  466.68,
-  8.57
+  470.08,
+  8.83
  ],
  "bom": [
   [
    "Baglanti",
    "M3 isil gomme somun",
-   61,
-   16.2
+   65,
+   17.3
   ],
   [
    "Baglanti",
@@ -2462,8 +2611,8 @@
   [
    "Baglanti",
    "M3x8 DIN 912",
-   6,
-   5.6
+   10,
+   9.3
   ],
   [
    "Baglanti",
@@ -2583,13 +2732,37 @@
    "Baski",
    "Omuz bandi sag",
    1,
-   192.3
+   192.0
   ],
   [
    "Baski",
    "Omuz bandi sol",
    1,
-   184.8
+   184.5
+  ],
+  [
+   "Baski",
+   "S1 kaset govdesi sag",
+   1,
+   8.8
+  ],
+  [
+   "Baski",
+   "S1 kaset govdesi sol",
+   1,
+   8.8
+  ],
+  [
+   "Baski",
+   "S1 kaset kapagi sag",
+   1,
+   6.8
+  ],
+  [
+   "Baski",
+   "S1 kaset kapagi sol",
+   1,
+   6.8
   ],
   [
    "Satin",
@@ -2610,6 +2783,6 @@
    535.0
   ]
  ],
- "step_kati": 194,
- "sure_s": 487.8
+ "step_kati": 206,
+ "sure_s": 685.6
 }

@@ -1,0 +1,7228 @@
+{
+ "tarih": "2026-10-15T13:49:48",
+ "s1_tanim": {
+  "ri": 41.1,
+  "ro": 73.10000000000001,
+  "xc": 155.9,
+  "L": 171.4,
+  "psi_w": 228.3,
+  "bag_psi": 145.0,
+  "R_sinir": 11.9,
+  "R_10d": 15.4,
+  "demet": [
+   4.2,
+   4.199999999999999
+  ]
+ },
+ "s1_tarama": [
+  {
+   "phi": -45,
+   "ozet": {
+    "R_min": 12.976,
+    "R_yer_r": 62.867,
+    "R_yer_psi": 256.247,
+    "psi_bukum": 232.684,
+    "psi_dis_temas": 238.376,
+    "a_ic": 132.684,
+    "a_dis": 10.076,
+    "u_uc_psi": 257.44,
+    "u_uc_ileri": 24.756,
+    "ic_kalkma": 3.305,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.035
+    ],
+    [
+     "S1 kablo tamburu (S1 -45)",
+     0.0,
+     0.003
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -45, S2 5)",
+     2.457,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -45, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x12",
+     2.709,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     5.631,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -45, S2 10)",
+     5.675,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -45, S2 10)",
+     6.371,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+     6.63,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 -45)",
+     154.0,
+     0.3,
+     206.1,
+     -0.002,
+     109.7
+    ],
+    [
+     "S1 kablo tamburu (S1 -45)",
+     155.9,
+     1.5,
+     266.8,
+     -0.002,
+     108.2
+    ],
+    [
+     "S1 kablo tamburu (S1 -45)",
+     157.9,
+     0.2,
+     240.5,
+     -0.002,
+     110.0
+    ],
+    [
+     "S1 kablo tamburu (S1 -45)",
+     155.9,
+     38.0,
+     99.4,
+     -0.0,
+     4.2
+    ],
+    [
+     "S1 kablo tamburu (S1 -45)",
+     155.9,
+     38.0,
+     107.1,
+     0.058,
+     5.0
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     4.381,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     4.381,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": -44,
+   "ozet": {
+    "R_min": 12.97,
+    "R_yer_r": 62.742,
+    "R_yer_psi": 256.749,
+    "psi_bukum": 233.921,
+    "psi_dis_temas": 238.936,
+    "a_ic": 132.921,
+    "a_dis": 10.636,
+    "u_uc_psi": 257.888,
+    "u_uc_ileri": 23.967,
+    "ic_kalkma": 3.186,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.033
+    ],
+    [
+     "S1 kablo tamburu (S1 -44)",
+     0.0,
+     0.003
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -44, S2 5)",
+     2.453,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -44, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x12",
+     2.727,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     5.649,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -44, S2 10)",
+     5.667,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -44, S2 10)",
+     6.371,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+     6.647,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 -44)",
+     154.0,
+     0.3,
+     218.3,
+     -0.002,
+     109.7
+    ],
+    [
+     "S1 kablo tamburu (S1 -44)",
+     155.9,
+     1.6,
+     268.7,
+     -0.002,
+     108.0
+    ],
+    [
+     "S1 kablo tamburu (S1 -44)",
+     157.9,
+     0.2,
+     259.6,
+     -0.002,
+     110.0
+    ],
+    [
+     "S1 kablo tamburu (S1 -44)",
+     155.9,
+     38.0,
+     100.4,
+     -0.0,
+     4.3
+    ],
+    [
+     "S1 kablo tamburu (S1 -44)",
+     155.9,
+     38.0,
+     108.1,
+     0.058,
+     5.1
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     4.399,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     4.399,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": -43,
+   "ozet": {
+    "R_min": 12.991,
+    "R_yer_r": 63.092,
+    "R_yer_psi": 256.91,
+    "psi_bukum": 233.814,
+    "psi_dis_temas": 239.496,
+    "a_ic": 131.814,
+    "a_dis": 11.196,
+    "u_uc_psi": 258.208,
+    "u_uc_ileri": 24.394,
+    "ic_kalkma": 3.253,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.035
+    ],
+    [
+     "S1 kablo tamburu (S1 -43)",
+     0.0,
+     0.003
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -43, S2 5)",
+     2.456,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -43, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x12",
+     2.813,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     5.548,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -43, S2 10)",
+     5.674,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -43, S2 10)",
+     6.371,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+     6.551,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 -43)",
+     154.0,
+     0.3,
+     231.7,
+     -0.002,
+     109.7
+    ],
+    [
+     "S1 kablo tamburu (S1 -43)",
+     155.9,
+     1.7,
+     270.2,
+     -0.002,
+     107.9
+    ],
+    [
+     "S1 kablo tamburu (S1 -43)",
+     157.9,
+     0.2,
+     271.5,
+     -0.002,
+     110.0
+    ],
+    [
+     "S1 kablo tamburu (S1 -43)",
+     155.9,
+     38.0,
+     101.4,
+     0.0,
+     4.3
+    ],
+    [
+     "S1 kablo tamburu (S1 -43)",
+     155.9,
+     38.0,
+     109.1,
+     0.058,
+     5.1
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     4.298,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     4.298,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": -42,
+   "ozet": {
+    "R_min": 12.982,
+    "R_yer_r": 62.969,
+    "R_yer_psi": 257.414,
+    "psi_bukum": 234.06,
+    "psi_dis_temas": 240.055,
+    "a_ic": 131.06,
+    "a_dis": 11.755,
+    "u_uc_psi": 258.651,
+    "u_uc_ileri": 24.591,
+    "ic_kalkma": 3.133,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.035
+    ],
+    [
+     "S1 kablo tamburu (S1 -42)",
+     0.0,
+     0.003
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -42, S2 5)",
+     2.452,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -42, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x12",
+     2.968,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     5.57,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -42, S2 10)",
+     5.666,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -42, S2 10)",
+     6.371,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+     6.572,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 -42)",
+     154.0,
+     0.3,
+     243.9,
+     -0.002,
+     109.7
+    ],
+    [
+     "S1 kablo tamburu (S1 -42)",
+     155.9,
+     1.9,
+     271.3,
+     -0.002,
+     107.8
+    ],
+    [
+     "S1 kablo tamburu (S1 -42)",
+     157.9,
+     0.3,
+     278.0,
+     -0.002,
+     109.9
+    ],
+    [
+     "S1 kablo tamburu (S1 -42)",
+     155.9,
+     38.0,
+     102.4,
+     0.0,
+     4.4
+    ],
+    [
+     "S1 kablo tamburu (S1 -42)",
+     155.9,
+     38.0,
+     110.1,
+     0.058,
+     5.2
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     4.32,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     4.32,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": -40,
+   "ozet": {
+    "R_min": 12.968,
+    "R_yer_r": 62.709,
+    "R_yer_psi": 258.412,
+    "psi_bukum": 235.517,
+    "psi_dis_temas": 240.615,
+    "a_ic": 130.517,
+    "a_dis": 12.315,
+    "u_uc_psi": 259.538,
+    "u_uc_ileri": 24.021,
+    "ic_kalkma": 2.904,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.035
+    ],
+    [
+     "S1 kablo tamburu (S1 -40)",
+     0.0,
+     0.003
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -40, S2 5)",
+     2.444,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -40, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x12",
+     3.461,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     5.619,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -40, S2 10)",
+     5.65,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -40, S2 10)",
+     6.371,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+     6.619,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 -40)",
+     154.0,
+     0.4,
+     260.1,
+     -0.002,
+     109.6
+    ],
+    [
+     "S1 kablo tamburu (S1 -40)",
+     155.9,
+     2.2,
+     272.5,
+     -0.002,
+     107.4
+    ],
+    [
+     "S1 kablo tamburu (S1 -40)",
+     157.9,
+     0.4,
+     282.5,
+     -0.002,
+     109.8
+    ],
+    [
+     "S1 kablo tamburu (S1 -40)",
+     155.9,
+     38.0,
+     104.4,
+     0.0,
+     4.5
+    ],
+    [
+     "S1 kablo tamburu (S1 -40)",
+     155.9,
+     38.0,
+     112.1,
+     0.056,
+     5.2
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     4.369,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     4.369,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": -35,
+   "ozet": {
+    "R_min": 12.961,
+    "R_yer_r": 63.16,
+    "R_yer_psi": 260.289,
+    "psi_bukum": 237.266,
+    "psi_dis_temas": 242.854,
+    "a_ic": 127.266,
+    "a_dis": 14.554,
+    "u_uc_psi": 261.599,
+    "u_uc_ileri": 24.333,
+    "ic_kalkma": 2.539,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.039
+    ],
+    [
+     "S1 kablo tamburu (S1 -35)",
+     0.0,
+     0.003
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     2.243,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -35, S2 5)",
+     2.431,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -35, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x12",
+     5.445,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -35, S2 10)",
+     5.625,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     5.636,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -35, S2 10)",
+     6.371,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+     6.635,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 -35)",
+     154.0,
+     0.9,
+     270.0,
+     -0.002,
+     109.1
+    ],
+    [
+     "S1 kablo tamburu (S1 -35)",
+     155.9,
+     3.0,
+     272.3,
+     -0.002,
+     106.3
+    ],
+    [
+     "S1 kablo tamburu (S1 -35)",
+     157.9,
+     0.9,
+     278.1,
+     -0.002,
+     109.3
+    ],
+    [
+     "S1 kablo tamburu (S1 -35)",
+     155.9,
+     38.0,
+     109.4,
+     0.0,
+     4.7
+    ],
+    [
+     "S1 kablo tamburu (S1 -35)",
+     155.9,
+     38.0,
+     117.0,
+     0.054,
+     5.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     4.386,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     4.386,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": -30,
+   "ozet": {
+    "R_min": 12.958,
+    "R_yer_r": 62.883,
+    "R_yer_psi": 262.407,
+    "psi_bukum": 239.829,
+    "psi_dis_temas": 245.094,
+    "a_ic": 124.829,
+    "a_dis": 16.794,
+    "u_uc_psi": 263.597,
+    "u_uc_ileri": 23.768,
+    "ic_kalkma": 2.258,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.04
+    ],
+    [
+     "S1 kablo tamburu (S1 -30)",
+     0.0,
+     0.002
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     2.218,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -30, S2 5)",
+     2.42,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -30, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -30, S2 10)",
+     5.605,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     5.638,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     6.267,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -30, S2 10)",
+     6.371,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+     6.636,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 -30)",
+     154.0,
+     1.4,
+     270.0,
+     -0.001,
+     108.3
+    ],
+    [
+     "S1 kablo tamburu (S1 -30)",
+     155.9,
+     4.0,
+     270.0,
+     -0.001,
+     104.8
+    ],
+    [
+     "S1 kablo tamburu (S1 -30)",
+     157.9,
+     1.4,
+     270.0,
+     -0.001,
+     108.3
+    ],
+    [
+     "S1 kablo tamburu (S1 -30)",
+     155.9,
+     38.0,
+     114.4,
+     0.0,
+     4.8
+    ],
+    [
+     "S1 kablo tamburu (S1 -30)",
+     155.9,
+     38.0,
+     122.0,
+     0.052,
+     5.5
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     4.388,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     4.388,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": -25,
+   "ozet": {
+    "R_min": 12.962,
+    "R_yer_r": 62.561,
+    "R_yer_psi": 264.501,
+    "psi_bukum": 241.31,
+    "psi_dis_temas": 246.773,
+    "a_ic": 121.31,
+    "a_dis": 18.473,
+    "u_uc_psi": 265.563,
+    "u_uc_ileri": 24.254,
+    "ic_kalkma": 2.02,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.044
+    ],
+    [
+     "S1 kablo tamburu (S1 -25)",
+     0.0,
+     0.003
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.967,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -25, S2 5)",
+     2.411,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -25, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -25, S2 10)",
+     5.588,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     5.642,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     5.682,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -25, S2 10)",
+     6.371,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+     6.641,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 -25)",
+     154.0,
+     2.1,
+     270.0,
+     -0.002,
+     107.3
+    ],
+    [
+     "S1 kablo tamburu (S1 -25)",
+     155.9,
+     5.1,
+     271.4,
+     -0.002,
+     103.6
+    ],
+    [
+     "S1 kablo tamburu (S1 -25)",
+     157.9,
+     2.1,
+     273.3,
+     -0.002,
+     107.5
+    ],
+    [
+     "S1 kablo tamburu (S1 -25)",
+     155.9,
+     38.0,
+     119.4,
+     -0.0,
+     5.0
+    ],
+    [
+     "S1 kablo tamburu (S1 -25)",
+     155.9,
+     38.0,
+     127.0,
+     0.051,
+     5.6
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     4.392,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     4.392,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": -20,
+   "ozet": {
+    "R_min": 12.948,
+    "R_yer_r": 62.93,
+    "R_yer_psi": 266.343,
+    "psi_bukum": 243.839,
+    "psi_dis_temas": 249.012,
+    "a_ic": 118.839,
+    "a_dis": 20.712,
+    "u_uc_psi": 267.548,
+    "u_uc_ileri": 23.709,
+    "ic_kalkma": 1.738,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.049
+    ],
+    [
+     "S1 kablo tamburu (S1 -20)",
+     0.0,
+     0.003
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.84,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -20, S2 5)",
+     2.4,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -20, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     5.166,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -20, S2 10)",
+     5.565,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     5.734,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -20, S2 10)",
+     6.371,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+     6.729,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 -20)",
+     154.0,
+     3.0,
+     270.0,
+     -0.002,
+     106.2
+    ],
+    [
+     "S1 kablo tamburu (S1 -20)",
+     155.9,
+     6.3,
+     270.9,
+     -0.002,
+     102.0
+    ],
+    [
+     "S1 kablo tamburu (S1 -20)",
+     157.9,
+     3.0,
+     271.8,
+     -0.002,
+     106.3
+    ],
+    [
+     "S1 kablo tamburu (S1 -20)",
+     155.9,
+     38.0,
+     124.4,
+     -0.0,
+     5.1
+    ],
+    [
+     "S1 kablo tamburu (S1 -20)",
+     155.9,
+     38.0,
+     132.0,
+     0.048,
+     5.6
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     4.484,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     4.484,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": -15,
+   "ozet": {
+    "R_min": 12.939,
+    "R_yer_r": 62.617,
+    "R_yer_psi": 268.437,
+    "psi_bukum": 245.306,
+    "psi_dis_temas": 250.691,
+    "a_ic": 115.306,
+    "a_dis": 22.391,
+    "u_uc_psi": 269.509,
+    "u_uc_ileri": 24.203,
+    "ic_kalkma": 1.488,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.059
+    ],
+    [
+     "S1 kablo tamburu (S1 -15)",
+     0.0,
+     0.003
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.801,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -15, S2 5)",
+     2.389,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -15, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     4.711,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -15, S2 10)",
+     5.543,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     5.838,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -15, S2 10)",
+     6.371,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+     6.83,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 -15)",
+     154.0,
+     3.9,
+     270.0,
+     -0.002,
+     104.9
+    ],
+    [
+     "S1 kablo tamburu (S1 -15)",
+     155.9,
+     7.6,
+     270.0,
+     -0.002,
+     100.2
+    ],
+    [
+     "S1 kablo tamburu (S1 -15)",
+     157.9,
+     3.9,
+     270.0,
+     -0.002,
+     104.9
+    ],
+    [
+     "S1 kablo tamburu (S1 -15)",
+     155.9,
+     38.0,
+     129.4,
+     0.0,
+     5.1
+    ],
+    [
+     "S1 kablo tamburu (S1 -15)",
+     155.9,
+     38.0,
+     137.0,
+     0.046,
+     5.6
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     4.588,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     4.588,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": -10,
+   "ozet": {
+    "R_min": 12.945,
+    "R_yer_r": 62.857,
+    "R_yer_psi": 270.228,
+    "psi_bukum": 247.576,
+    "psi_dis_temas": 252.931,
+    "a_ic": 112.576,
+    "a_dis": 24.631,
+    "u_uc_psi": 271.402,
+    "u_uc_ileri": 23.826,
+    "ic_kalkma": 1.344,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.072
+    ],
+    [
+     "S1 kablo tamburu (S1 -10)",
+     0.0,
+     0.003
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -10, S2 5)",
+     2.382,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -10, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     4.299,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -10, S2 10)",
+     5.531,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     5.871,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -10, S2 10)",
+     6.371,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+     6.861,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 -10)",
+     154.0,
+     5.0,
+     270.0,
+     -0.002,
+     103.5
+    ],
+    [
+     "S1 kablo tamburu (S1 -10)",
+     155.9,
+     9.0,
+     270.6,
+     -0.002,
+     98.6
+    ],
+    [
+     "S1 kablo tamburu (S1 -10)",
+     157.9,
+     5.0,
+     271.1,
+     -0.002,
+     103.6
+    ],
+    [
+     "S1 kablo tamburu (S1 -10)",
+     155.9,
+     38.0,
+     134.4,
+     -0.0,
+     5.1
+    ],
+    [
+     "S1 kablo tamburu (S1 -10)",
+     155.9,
+     38.0,
+     142.0,
+     0.045,
+     5.6
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     4.621,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     4.621,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": -5,
+   "ozet": {
+    "R_min": 12.935,
+    "R_yer_r": 63.15,
+    "R_yer_psi": 272.032,
+    "psi_bukum": 248.94,
+    "psi_dis_temas": 254.61,
+    "a_ic": 108.94,
+    "a_dis": 26.31,
+    "u_uc_psi": 273.323,
+    "u_uc_ileri": 24.384,
+    "ic_kalkma": 1.141,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.088
+    ],
+    [
+     "S1 kablo tamburu (S1 -5)",
+     0.0,
+     0.003
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -5, S2 5)",
+     2.372,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -5, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     3.96,
+     0.0
+    ],
+    [
+     "Kol catali (S1 -5, S2 10)",
+     5.512,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     5.996,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 -5, S2 10)",
+     6.373,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+     6.982,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 -5)",
+     154.0,
+     6.2,
+     270.0,
+     -0.002,
+     101.9
+    ],
+    [
+     "S1 kablo tamburu (S1 -5)",
+     155.9,
+     9.2,
+     270.8,
+     -0.002,
+     98.3
+    ],
+    [
+     "S1 kablo tamburu (S1 -5)",
+     157.9,
+     6.2,
+     271.1,
+     -0.002,
+     102.1
+    ],
+    [
+     "S1 kablo tamburu (S1 -5)",
+     155.9,
+     38.0,
+     139.4,
+     -0.0,
+     5.1
+    ],
+    [
+     "S1 kablo tamburu (S1 -5)",
+     155.9,
+     38.0,
+     147.0,
+     0.043,
+     5.5
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     4.746,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     4.746,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 0,
+   "ozet": {
+    "R_min": 12.941,
+    "R_yer_r": 62.719,
+    "R_yer_psi": 274.082,
+    "psi_bukum": 251.153,
+    "psi_dis_temas": 256.289,
+    "a_ic": 106.153,
+    "a_dis": 27.989,
+    "u_uc_psi": 275.197,
+    "u_uc_ileri": 24.045,
+    "ic_kalkma": 1.021,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.102
+    ],
+    [
+     "S1 kablo tamburu (S1 0)",
+     0.0,
+     0.003
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 0, S2 5)",
+     2.366,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 0, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     3.654,
+     0.0
+    ],
+    [
+     "Kol catali (S1 0, S2 10)",
+     5.5,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     6.064,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 0, S2 10)",
+     6.376,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+     7.048,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 0)",
+     154.0,
+     7.5,
+     270.0,
+     -0.002,
+     100.3
+    ],
+    [
+     "S1 kablo tamburu (S1 0)",
+     155.9,
+     7.8,
+     270.0,
+     -0.002,
+     99.9
+    ],
+    [
+     "S1 kablo tamburu (S1 0)",
+     157.9,
+     7.5,
+     270.0,
+     -0.002,
+     100.3
+    ],
+    [
+     "S1 kablo tamburu (S1 0)",
+     155.9,
+     38.0,
+     144.4,
+     0.0,
+     5.1
+    ],
+    [
+     "S1 kablo tamburu (S1 0)",
+     155.9,
+     38.0,
+     152.0,
+     0.042,
+     5.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     4.814,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     4.814,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 5,
+   "ozet": {
+    "R_min": 12.928,
+    "R_yer_r": 62.976,
+    "R_yer_psi": 275.874,
+    "psi_bukum": 253.418,
+    "psi_dis_temas": 258.528,
+    "a_ic": 103.418,
+    "a_dis": 30.228,
+    "u_uc_psi": 277.086,
+    "u_uc_ileri": 23.668,
+    "ic_kalkma": 0.86,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.117
+    ],
+    [
+     "S1 kablo tamburu (S1 5)",
+     0.0,
+     0.004
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 5, S2 5)",
+     2.358,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 5, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     3.416,
+     0.0
+    ],
+    [
+     "Kol catali (S1 5, S2 10)",
+     5.483,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     6.2,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 5, S2 10)",
+     6.38,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+     7.179,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 5)",
+     154.0,
+     7.0,
+     270.0,
+     -0.002,
+     100.9
+    ],
+    [
+     "S1 kablo tamburu (S1 5)",
+     155.9,
+     6.5,
+     271.1,
+     -0.002,
+     101.8
+    ],
+    [
+     "S1 kablo tamburu (S1 5)",
+     157.9,
+     6.5,
+     271.1,
+     -0.002,
+     101.8
+    ],
+    [
+     "S1 kablo tamburu (S1 5)",
+     155.9,
+     38.0,
+     149.3,
+     0.0,
+     5.0
+    ],
+    [
+     "S1 kablo tamburu (S1 5)",
+     155.9,
+     38.0,
+     156.9,
+     0.04,
+     5.3
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     4.95,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     4.95,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 10,
+   "ozet": {
+    "R_min": 12.936,
+    "R_yer_r": 63.173,
+    "R_yer_psi": 277.64,
+    "psi_bukum": 254.594,
+    "psi_dis_temas": 260.207,
+    "a_ic": 99.594,
+    "a_dis": 31.907,
+    "u_uc_psi": 278.942,
+    "u_uc_ileri": 24.348,
+    "ic_kalkma": 0.763,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.13
+    ],
+    [
+     "S1 kablo tamburu (S1 10)",
+     0.0,
+     0.004
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 10, S2 5)",
+     2.352,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 10, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     3.207,
+     0.0
+    ],
+    [
+     "Kol catali (S1 10, S2 10)",
+     5.472,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     6.288,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 10, S2 10)",
+     6.384,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+     7.265,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 10)",
+     154.0,
+     5.7,
+     270.0,
+     -0.002,
+     102.6
+    ],
+    [
+     "S1 kablo tamburu (S1 10)",
+     155.9,
+     5.2,
+     271.0,
+     -0.002,
+     103.3
+    ],
+    [
+     "S1 kablo tamburu (S1 10)",
+     157.9,
+     5.2,
+     271.0,
+     -0.002,
+     103.3
+    ],
+    [
+     "S1 kablo tamburu (S1 10)",
+     155.9,
+     38.0,
+     154.3,
+     -0.0,
+     4.9
+    ],
+    [
+     "S1 kablo tamburu (S1 10)",
+     155.9,
+     38.0,
+     161.9,
+     0.039,
+     5.1
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     5.038,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     5.038,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 15,
+   "ozet": {
+    "R_min": 12.924,
+    "R_yer_r": 62.752,
+    "R_yer_psi": 279.69,
+    "psi_bukum": 256.79,
+    "psi_dis_temas": 261.887,
+    "a_ic": 96.79,
+    "a_dis": 33.587,
+    "u_uc_psi": 280.809,
+    "u_uc_ileri": 24.019,
+    "ic_kalkma": 0.638,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.145
+    ],
+    [
+     "S1 kablo tamburu (S1 15)",
+     0.0,
+     0.004
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 15, S2 5)",
+     2.344,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 15, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     3.055,
+     0.0
+    ],
+    [
+     "Kol catali (S1 15, S2 10)",
+     5.457,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 15, S2 10)",
+     6.39,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     6.42,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (S1 kaseti sag psi 200)",
+     7.392,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 15)",
+     154.0,
+     4.6,
+     270.0,
+     -0.002,
+     104.1
+    ],
+    [
+     "S1 kablo tamburu (S1 15)",
+     155.9,
+     4.1,
+     270.0,
+     -0.002,
+     104.6
+    ],
+    [
+     "S1 kablo tamburu (S1 15)",
+     157.9,
+     4.1,
+     270.0,
+     -0.002,
+     104.6
+    ],
+    [
+     "S1 kablo tamburu (S1 15)",
+     155.9,
+     38.0,
+     159.3,
+     -0.0,
+     4.7
+    ],
+    [
+     "S1 kablo tamburu (S1 15)",
+     155.9,
+     38.0,
+     166.9,
+     0.037,
+     4.9
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     5.169,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     5.169,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 20,
+   "ozet": {
+    "R_min": 12.927,
+    "R_yer_r": 62.934,
+    "R_yer_psi": 281.453,
+    "psi_bukum": 258.914,
+    "psi_dis_temas": 264.126,
+    "a_ic": 93.914,
+    "a_dis": 35.826,
+    "u_uc_psi": 282.647,
+    "u_uc_ileri": 23.734,
+    "ic_kalkma": 0.562,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.159
+    ],
+    [
+     "S1 kablo tamburu (S1 20)",
+     0.0,
+     0.004
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 20, S2 5)",
+     2.34,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 20, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.925,
+     0.0
+    ],
+    [
+     "Kol catali (S1 20, S2 10)",
+     5.448,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 20, S2 10)",
+     6.395,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     6.515,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     6.809,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 20)",
+     154.0,
+     3.5,
+     270.0,
+     -0.002,
+     105.4
+    ],
+    [
+     "S1 kablo tamburu (S1 20)",
+     155.9,
+     3.1,
+     271.7,
+     -0.002,
+     106.1
+    ],
+    [
+     "S1 kablo tamburu (S1 20)",
+     157.9,
+     3.1,
+     271.7,
+     -0.002,
+     106.1
+    ],
+    [
+     "S1 kablo tamburu (S1 20)",
+     155.9,
+     38.0,
+     164.3,
+     -0.0,
+     4.5
+    ],
+    [
+     "S1 kablo tamburu (S1 20)",
+     155.9,
+     38.0,
+     171.9,
+     0.036,
+     4.6
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     5.265,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     5.265,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 25,
+   "ozet": {
+    "R_min": 12.92,
+    "R_yer_r": 63.137,
+    "R_yer_psi": 283.218,
+    "psi_bukum": 260.069,
+    "psi_dis_temas": 265.805,
+    "a_ic": 90.069,
+    "a_dis": 37.505,
+    "u_uc_psi": 284.494,
+    "u_uc_ileri": 24.425,
+    "ic_kalkma": 0.466,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.174
+    ],
+    [
+     "S1 kablo tamburu (S1 25)",
+     0.0,
+     0.005
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 25, S2 5)",
+     2.333,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 25, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.841,
+     0.0
+    ],
+    [
+     "Kol catali (S1 25, S2 10)",
+     5.435,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     6.232,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 25, S2 10)",
+     6.402,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     6.632,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 25)",
+     154.0,
+     2.6,
+     270.0,
+     -0.002,
+     106.7
+    ],
+    [
+     "S1 kablo tamburu (S1 25)",
+     155.9,
+     2.2,
+     273.5,
+     -0.002,
+     107.3
+    ],
+    [
+     "S1 kablo tamburu (S1 25)",
+     157.9,
+     2.2,
+     273.1,
+     -0.002,
+     107.4
+    ],
+    [
+     "S1 kablo tamburu (S1 25)",
+     155.9,
+     38.0,
+     169.3,
+     -0.0,
+     4.3
+    ],
+    [
+     "S1 kablo tamburu (S1 25)",
+     155.9,
+     38.0,
+     176.9,
+     0.035,
+     4.3
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     5.382,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     5.382,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 30,
+   "ozet": {
+    "R_min": 12.923,
+    "R_yer_r": 62.658,
+    "R_yer_psi": 285.244,
+    "psi_bukum": 262.161,
+    "psi_dis_temas": 267.484,
+    "a_ic": 87.161,
+    "a_dis": 39.184,
+    "u_uc_psi": 286.325,
+    "u_uc_ileri": 24.163,
+    "ic_kalkma": 0.407,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.188
+    ],
+    [
+     "S1 kablo tamburu (S1 30)",
+     0.0,
+     0.004
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 30, S2 5)",
+     2.329,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 30, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.775,
+     0.0
+    ],
+    [
+     "Kol catali (S1 30, S2 10)",
+     5.426,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     5.691,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 30, S2 10)",
+     6.407,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     6.723,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 30)",
+     154.0,
+     1.8,
+     270.0,
+     -0.002,
+     107.8
+    ],
+    [
+     "S1 kablo tamburu (S1 30)",
+     155.9,
+     1.5,
+     276.0,
+     -0.002,
+     108.0
+    ],
+    [
+     "S1 kablo tamburu (S1 30)",
+     157.9,
+     1.5,
+     270.0,
+     -0.002,
+     108.2
+    ],
+    [
+     "S1 kablo tamburu (S1 30)",
+     155.9,
+     38.0,
+     174.3,
+     0.0,
+     4.0
+    ],
+    [
+     "S1 kablo tamburu (S1 30)",
+     155.9,
+     38.0,
+     182.1,
+     0.034,
+     4.3
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     5.473,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     5.473,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 35,
+   "ozet": {
+    "R_min": 12.925,
+    "R_yer_r": 62.824,
+    "R_yer_psi": 287.0,
+    "psi_bukum": 264.242,
+    "psi_dis_temas": 269.723,
+    "a_ic": 84.242,
+    "a_dis": 41.423,
+    "u_uc_psi": 288.149,
+    "u_uc_ileri": 23.907,
+    "ic_kalkma": 0.355,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.202
+    ],
+    [
+     "S1 kablo tamburu (S1 35)",
+     0.0,
+     0.004
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 35, S2 5)",
+     2.325,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 35, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.734,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     5.2,
+     0.0
+    ],
+    [
+     "Kol catali (S1 35, S2 10)",
+     5.419,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 35, S2 10)",
+     6.412,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     6.809,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 35)",
+     154.0,
+     1.2,
+     270.0,
+     -0.002,
+     108.7
+    ],
+    [
+     "S1 kablo tamburu (S1 35)",
+     155.9,
+     1.0,
+     302.9,
+     -0.002,
+     108.6
+    ],
+    [
+     "S1 kablo tamburu (S1 35)",
+     157.9,
+     0.9,
+     277.9,
+     -0.002,
+     109.3
+    ],
+    [
+     "S1 kablo tamburu (S1 35)",
+     155.9,
+     38.0,
+     179.4,
+     -0.0,
+     3.8
+    ],
+    [
+     "S1 kablo tamburu (S1 35)",
+     155.9,
+     38.0,
+     187.1,
+     0.033,
+     4.6
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     5.559,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     5.559,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 40,
+   "ozet": {
+    "R_min": 12.917,
+    "R_yer_r": 63.004,
+    "R_yer_psi": 288.757,
+    "psi_bukum": 266.331,
+    "psi_dis_temas": 271.403,
+    "a_ic": 81.331,
+    "a_dis": 43.103,
+    "u_uc_psi": 289.974,
+    "u_uc_ileri": 23.643,
+    "ic_kalkma": 0.291,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.216
+    ],
+    [
+     "S1 kablo tamburu (S1 40)",
+     0.0,
+     0.005
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 40, S2 5)",
+     2.32,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 40, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.717,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     4.771,
+     0.0
+    ],
+    [
+     "Kol catali (S1 40, S2 10)",
+     5.408,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 40, S2 10)",
+     6.419,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     6.893,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 40)",
+     154.0,
+     0.7,
+     271.0,
+     -0.002,
+     109.4
+    ],
+    [
+     "S1 kablo tamburu (S1 40)",
+     155.9,
+     1.1,
+     337.3,
+     -0.002,
+     108.6
+    ],
+    [
+     "S1 kablo tamburu (S1 40)",
+     157.9,
+     0.4,
+     284.7,
+     -0.002,
+     109.9
+    ],
+    [
+     "S1 kablo tamburu (S1 40)",
+     155.9,
+     38.0,
+     184.4,
+     0.0,
+     4.0
+    ],
+    [
+     "S1 kablo tamburu (S1 40)",
+     155.9,
+     38.0,
+     192.1,
+     0.032,
+     4.8
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     5.643,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     5.643,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 45,
+   "ozet": {
+    "R_min": 12.92,
+    "R_yer_r": 63.161,
+    "R_yer_psi": 290.505,
+    "psi_bukum": 267.404,
+    "psi_dis_temas": 273.082,
+    "a_ic": 77.404,
+    "a_dis": 44.782,
+    "u_uc_psi": 291.792,
+    "u_uc_ileri": 24.389,
+    "ic_kalkma": 0.252,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.23
+    ],
+    [
+     "S1 kablo tamburu (S1 45)",
+     0.0,
+     0.005
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 45, S2 5)",
+     2.316,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 45, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.708,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     4.377,
+     0.0
+    ],
+    [
+     "Kol catali (S1 45, S2 10)",
+     5.402,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 45, S2 10)",
+     6.424,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     6.959,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 45)",
+     154.0,
+     0.3,
+     296.1,
+     -0.002,
+     109.7
+    ],
+    [
+     "S1 kablo tamburu (S1 45)",
+     155.9,
+     1.5,
+     356.8,
+     -0.002,
+     108.2
+    ],
+    [
+     "S1 kablo tamburu (S1 45)",
+     157.9,
+     0.2,
+     330.5,
+     -0.002,
+     110.0
+    ],
+    [
+     "S1 kablo tamburu (S1 45)",
+     155.9,
+     38.0,
+     189.4,
+     0.0,
+     4.2
+    ],
+    [
+     "S1 kablo tamburu (S1 45)",
+     155.9,
+     38.0,
+     197.1,
+     0.031,
+     5.0
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     5.709,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     5.709,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 50,
+   "ozet": {
+    "R_min": 12.922,
+    "R_yer_r": 62.667,
+    "R_yer_psi": 292.525,
+    "psi_bukum": 269.457,
+    "psi_dis_temas": 274.761,
+    "a_ic": 74.457,
+    "a_dis": 46.461,
+    "u_uc_psi": 293.608,
+    "u_uc_ileri": 24.151,
+    "ic_kalkma": 0.216,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.244
+    ],
+    [
+     "S1 kablo tamburu (S1 50)",
+     0.0,
+     0.004
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 50, S2 5)",
+     2.313,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 50, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.709,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     4.033,
+     0.0
+    ],
+    [
+     "Kol catali (S1 50, S2 10)",
+     5.396,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 50, S2 10)",
+     6.429,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     7.012,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 50)",
+     154.0,
+     0.4,
+     350.1,
+     -0.001,
+     109.6
+    ],
+    [
+     "S1 kablo tamburu (S1 50)",
+     155.9,
+     2.2,
+     2.5,
+     -0.001,
+     107.4
+    ],
+    [
+     "S1 kablo tamburu (S1 50)",
+     157.9,
+     0.4,
+     12.5,
+     -0.001,
+     109.8
+    ],
+    [
+     "S1 kablo tamburu (S1 50)",
+     155.9,
+     38.0,
+     194.4,
+     -0.0,
+     4.5
+    ],
+    [
+     "S1 kablo tamburu (S1 50)",
+     155.9,
+     38.0,
+     202.1,
+     0.03,
+     5.2
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     5.762,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     5.762,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 55,
+   "ozet": {
+    "R_min": 12.915,
+    "R_yer_r": 62.83,
+    "R_yer_psi": 294.277,
+    "psi_bukum": 271.512,
+    "psi_dis_temas": 277.0,
+    "a_ic": 71.512,
+    "a_dis": 48.7,
+    "u_uc_psi": 295.424,
+    "u_uc_ileri": 23.912,
+    "ic_kalkma": 0.205,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.258
+    ],
+    [
+     "S1 kablo tamburu (S1 55)",
+     0.0,
+     0.006
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 55, S2 5)",
+     2.309,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 55, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.711,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     3.743,
+     0.0
+    ],
+    [
+     "Kol catali (S1 55, S2 10)",
+     5.389,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 55, S2 10)",
+     6.435,
+     0.0
+    ],
+    [
+     "Kaset civatasi M3x8 (sag psi 200)",
+     7.05,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 55)",
+     154.0,
+     0.9,
+     0.0,
+     -0.002,
+     109.1
+    ],
+    [
+     "S1 kablo tamburu (S1 55)",
+     155.9,
+     3.0,
+     2.3,
+     -0.002,
+     106.3
+    ],
+    [
+     "S1 kablo tamburu (S1 55)",
+     157.9,
+     0.9,
+     8.1,
+     -0.002,
+     109.3
+    ],
+    [
+     "S1 kablo tamburu (S1 55)",
+     155.9,
+     38.0,
+     199.4,
+     -0.0,
+     4.7
+    ],
+    [
+     "S1 kablo tamburu (S1 55)",
+     155.9,
+     38.0,
+     207.0,
+     0.029,
+     5.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     5.8,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     5.8,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 60,
+   "ozet": {
+    "R_min": 12.916,
+    "R_yer_r": 62.98,
+    "R_yer_psi": 296.023,
+    "psi_bukum": 273.55,
+    "psi_dis_temas": 278.68,
+    "a_ic": 68.55,
+    "a_dis": 50.38,
+    "u_uc_psi": 297.231,
+    "u_uc_ileri": 23.68,
+    "ic_kalkma": 0.217,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.272
+    ],
+    [
+     "S1 kablo tamburu (S1 60)",
+     0.0,
+     0.005
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 60, S2 5)",
+     2.307,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 60, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.718,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     3.49,
+     0.0
+    ],
+    [
+     "Kol catali (S1 60, S2 10)",
+     5.385,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 60, S2 10)",
+     6.439,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 60)",
+     154.0,
+     1.4,
+     0.0,
+     -0.002,
+     108.3
+    ],
+    [
+     "S1 kablo tamburu (S1 60)",
+     155.9,
+     4.0,
+     0.0,
+     -0.002,
+     104.8
+    ],
+    [
+     "S1 kablo tamburu (S1 60)",
+     157.9,
+     1.4,
+     0.0,
+     -0.002,
+     108.3
+    ],
+    [
+     "S1 kablo tamburu (S1 60)",
+     155.9,
+     38.0,
+     204.4,
+     -0.0,
+     4.8
+    ],
+    [
+     "S1 kablo tamburu (S1 60)",
+     155.9,
+     38.0,
+     212.0,
+     0.028,
+     5.5
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     53.0,
+     200.0,
+     6.477,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     53.0,
+     200.0,
+     6.477,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 65,
+   "ozet": {
+    "R_min": 12.919,
+    "R_yer_r": 63.126,
+    "R_yer_psi": 297.767,
+    "psi_bukum": 275.584,
+    "psi_dis_temas": 280.359,
+    "a_ic": 65.584,
+    "a_dis": 52.059,
+    "u_uc_psi": 299.038,
+    "u_uc_ileri": 23.454,
+    "ic_kalkma": 0.23,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.286
+    ],
+    [
+     "S1 kablo tamburu (S1 65)",
+     0.0,
+     0.005
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 65, S2 5)",
+     2.304,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 65, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.726,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     3.277,
+     0.0
+    ],
+    [
+     "Kol catali (S1 65, S2 10)",
+     5.381,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 65, S2 10)",
+     6.443,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 65)",
+     154.0,
+     2.1,
+     0.0,
+     -0.002,
+     107.3
+    ],
+    [
+     "S1 kablo tamburu (S1 65)",
+     155.9,
+     5.1,
+     1.4,
+     -0.002,
+     103.6
+    ],
+    [
+     "S1 kablo tamburu (S1 65)",
+     157.9,
+     2.1,
+     3.3,
+     -0.002,
+     107.5
+    ],
+    [
+     "S1 kablo tamburu (S1 65)",
+     155.9,
+     38.0,
+     209.4,
+     -0.0,
+     5.0
+    ],
+    [
+     "S1 kablo tamburu (S1 65)",
+     155.9,
+     38.0,
+     217.0,
+     0.027,
+     5.6
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     54.0,
+     226.0,
+     6.694,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     54.0,
+     226.0,
+     6.694,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 70,
+   "ozet": {
+    "R_min": 12.915,
+    "R_yer_r": 62.631,
+    "R_yer_psi": 299.783,
+    "psi_bukum": 276.632,
+    "psi_dis_temas": 282.038,
+    "a_ic": 61.632,
+    "a_dis": 53.738,
+    "u_uc_psi": 300.848,
+    "u_uc_ileri": 24.216,
+    "ic_kalkma": 0.188,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.301
+    ],
+    [
+     "S1 kablo tamburu (S1 70)",
+     0.0,
+     0.006
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 70, S2 5)",
+     2.301,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 70, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.729,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     3.112,
+     0.0
+    ],
+    [
+     "Kol catali (S1 70, S2 10)",
+     5.377,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 70, S2 10)",
+     6.448,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 70)",
+     154.0,
+     3.0,
+     360.0,
+     -0.002,
+     106.2
+    ],
+    [
+     "S1 kablo tamburu (S1 70)",
+     155.9,
+     6.3,
+     0.9,
+     -0.002,
+     102.0
+    ],
+    [
+     "S1 kablo tamburu (S1 70)",
+     157.9,
+     3.0,
+     1.8,
+     -0.002,
+     106.3
+    ],
+    [
+     "S1 kablo tamburu (S1 70)",
+     155.9,
+     38.0,
+     214.4,
+     -0.0,
+     5.1
+    ],
+    [
+     "S1 kablo tamburu (S1 70)",
+     155.9,
+     38.0,
+     222.0,
+     0.026,
+     5.6
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     54.0,
+     226.0,
+     6.73,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     54.0,
+     226.0,
+     6.73,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 75,
+   "ozet": {
+    "R_min": 12.915,
+    "R_yer_r": 62.776,
+    "R_yer_psi": 301.529,
+    "psi_bukum": 278.659,
+    "psi_dis_temas": 283.718,
+    "a_ic": 58.659,
+    "a_dis": 55.418,
+    "u_uc_psi": 302.654,
+    "u_uc_ileri": 23.995,
+    "ic_kalkma": 0.2,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.313
+    ],
+    [
+     "S1 kablo tamburu (S1 75)",
+     0.0,
+     0.006
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 75, S2 5)",
+     2.3,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 75, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.737,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     2.976,
+     0.0
+    ],
+    [
+     "Kol catali (S1 75, S2 10)",
+     5.374,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 75, S2 10)",
+     6.451,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 75)",
+     154.0,
+     3.9,
+     0.0,
+     -0.002,
+     104.9
+    ],
+    [
+     "S1 kablo tamburu (S1 75)",
+     155.9,
+     7.6,
+     0.0,
+     -0.002,
+     100.2
+    ],
+    [
+     "S1 kablo tamburu (S1 75)",
+     157.9,
+     3.9,
+     0.0,
+     -0.002,
+     104.9
+    ],
+    [
+     "S1 kablo tamburu (S1 75)",
+     155.9,
+     38.0,
+     219.4,
+     0.0,
+     5.1
+    ],
+    [
+     "S1 kablo tamburu (S1 75)",
+     155.9,
+     38.0,
+     227.0,
+     0.026,
+     5.6
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     54.0,
+     226.0,
+     6.762,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     54.0,
+     226.0,
+     6.762,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 80,
+   "ozet": {
+    "R_min": 12.915,
+    "R_yer_r": 62.919,
+    "R_yer_psi": 303.273,
+    "psi_bukum": 280.682,
+    "psi_dis_temas": 285.957,
+    "a_ic": 55.682,
+    "a_dis": 57.657,
+    "u_uc_psi": 304.456,
+    "u_uc_ileri": 23.774,
+    "ic_kalkma": 0.212,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.327
+    ],
+    [
+     "S1 kablo tamburu (S1 80)",
+     0.0,
+     0.006
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 80, S2 5)",
+     2.298,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 80, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.743,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     2.873,
+     0.0
+    ],
+    [
+     "Kol catali (S1 80, S2 10)",
+     5.372,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 80, S2 10)",
+     6.454,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 80)",
+     154.0,
+     5.0,
+     0.0,
+     -0.002,
+     103.5
+    ],
+    [
+     "S1 kablo tamburu (S1 80)",
+     155.9,
+     9.0,
+     0.6,
+     -0.002,
+     98.6
+    ],
+    [
+     "S1 kablo tamburu (S1 80)",
+     157.9,
+     5.0,
+     1.1,
+     -0.002,
+     103.6
+    ],
+    [
+     "S1 kablo tamburu (S1 80)",
+     155.9,
+     38.0,
+     224.4,
+     -0.0,
+     5.1
+    ],
+    [
+     "S1 kablo tamburu (S1 80)",
+     155.9,
+     38.0,
+     232.0,
+     0.025,
+     5.6
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     54.0,
+     226.0,
+     6.794,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     54.0,
+     226.0,
+     6.794,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 85,
+   "ozet": {
+    "R_min": 12.915,
+    "R_yer_r": 63.065,
+    "R_yer_psi": 305.016,
+    "psi_bukum": 282.705,
+    "psi_dis_temas": 287.636,
+    "a_ic": 52.705,
+    "a_dis": 59.336,
+    "u_uc_psi": 306.257,
+    "u_uc_ileri": 23.552,
+    "ic_kalkma": 0.228,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.342
+    ],
+    [
+     "S1 kablo tamburu (S1 85)",
+     0.0,
+     0.006
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 85, S2 5)",
+     2.296,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 85, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.745,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     2.801,
+     0.0
+    ],
+    [
+     "Kol catali (S1 85, S2 10)",
+     5.37,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 85, S2 10)",
+     6.457,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 85)",
+     154.0,
+     6.2,
+     0.0,
+     -0.001,
+     101.9
+    ],
+    [
+     "S1 kablo tamburu (S1 85)",
+     155.9,
+     9.2,
+     0.8,
+     -0.001,
+     98.3
+    ],
+    [
+     "S1 kablo tamburu (S1 85)",
+     157.9,
+     6.2,
+     1.1,
+     -0.001,
+     102.1
+    ],
+    [
+     "S1 kablo tamburu (S1 85)",
+     155.9,
+     38.0,
+     229.4,
+     -0.0,
+     5.1
+    ],
+    [
+     "S1 kablo tamburu (S1 85)",
+     155.9,
+     38.0,
+     237.0,
+     0.024,
+     5.5
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     54.0,
+     226.0,
+     7.213,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     54.0,
+     226.0,
+     7.213,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 90,
+   "ozet": {
+    "R_min": 12.915,
+    "R_yer_r": 63.208,
+    "R_yer_psi": 306.757,
+    "psi_bukum": 283.737,
+    "psi_dis_temas": 289.315,
+    "a_ic": 48.737,
+    "a_dis": 61.015,
+    "u_uc_psi": 308.062,
+    "u_uc_ileri": 24.325,
+    "ic_kalkma": 0.182,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.356
+    ],
+    [
+     "S1 kablo tamburu (S1 90)",
+     0.0,
+     0.007
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 90, S2 5)",
+     2.295,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 90, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.747,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     2.754,
+     0.0
+    ],
+    [
+     "Kol catali (S1 90, S2 10)",
+     5.368,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 90, S2 10)",
+     6.459,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 90)",
+     154.0,
+     7.5,
+     0.0,
+     -0.002,
+     100.3
+    ],
+    [
+     "S1 kablo tamburu (S1 90)",
+     155.9,
+     7.8,
+     0.0,
+     -0.002,
+     99.9
+    ],
+    [
+     "S1 kablo tamburu (S1 90)",
+     157.9,
+     7.5,
+     0.0,
+     -0.002,
+     100.3
+    ],
+    [
+     "S1 kablo tamburu (S1 90)",
+     155.9,
+     38.0,
+     234.4,
+     -0.0,
+     5.1
+    ],
+    [
+     "S1 kablo tamburu (S1 90)",
+     155.9,
+     38.0,
+     242.0,
+     0.023,
+     5.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     54.0,
+     226.0,
+     8.768,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     54.0,
+     226.0,
+     8.768,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 95,
+   "ozet": {
+    "R_min": 12.915,
+    "R_yer_r": 62.701,
+    "R_yer_psi": 308.771,
+    "psi_bukum": 285.755,
+    "psi_dis_temas": 290.995,
+    "a_ic": 45.755,
+    "a_dis": 62.695,
+    "u_uc_psi": 309.865,
+    "u_uc_ileri": 24.11,
+    "ic_kalkma": 0.194,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.37
+    ],
+    [
+     "S1 kablo tamburu (S1 95)",
+     0.0,
+     0.006
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 95, S2 5)",
+     2.295,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 95, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     2.725,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.749,
+     0.0
+    ],
+    [
+     "Kol catali (S1 95, S2 10)",
+     5.367,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 95, S2 10)",
+     6.46,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 95)",
+     154.0,
+     7.0,
+     0.0,
+     -0.002,
+     100.9
+    ],
+    [
+     "S1 kablo tamburu (S1 95)",
+     155.9,
+     6.5,
+     1.1,
+     -0.002,
+     101.8
+    ],
+    [
+     "S1 kablo tamburu (S1 95)",
+     157.9,
+     6.5,
+     1.1,
+     -0.002,
+     101.8
+    ],
+    [
+     "S1 kablo tamburu (S1 95)",
+     155.9,
+     38.0,
+     239.3,
+     0.0,
+     5.0
+    ],
+    [
+     "S1 kablo tamburu (S1 95)",
+     155.9,
+     38.0,
+     246.9,
+     0.022,
+     5.3
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     54.0,
+     226.0,
+     11.17,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     54.0,
+     226.0,
+     11.17,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 100,
+   "ozet": {
+    "R_min": 12.915,
+    "R_yer_r": 62.841,
+    "R_yer_psi": 310.515,
+    "psi_bukum": 287.772,
+    "psi_dis_temas": 293.234,
+    "a_ic": 42.772,
+    "a_dis": 64.934,
+    "u_uc_psi": 311.666,
+    "u_uc_ileri": 23.895,
+    "ic_kalkma": 0.206,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.383
+    ],
+    [
+     "S1 kablo tamburu (S1 100)",
+     0.0,
+     0.006
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 100, S2 5)",
+     2.294,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 100, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     2.711,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.748,
+     0.0
+    ],
+    [
+     "Kol catali (S1 100, S2 10)",
+     5.367,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 100, S2 10)",
+     6.461,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 100)",
+     154.0,
+     5.7,
+     0.0,
+     -0.002,
+     102.6
+    ],
+    [
+     "S1 kablo tamburu (S1 100)",
+     155.9,
+     5.2,
+     1.0,
+     -0.002,
+     103.3
+    ],
+    [
+     "S1 kablo tamburu (S1 100)",
+     157.9,
+     5.2,
+     1.0,
+     -0.002,
+     103.3
+    ],
+    [
+     "S1 kablo tamburu (S1 100)",
+     155.9,
+     38.0,
+     244.3,
+     -0.0,
+     4.9
+    ],
+    [
+     "S1 kablo tamburu (S1 100)",
+     155.9,
+     38.0,
+     251.9,
+     0.022,
+     5.1
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     54.0,
+     226.0,
+     13.164,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     54.0,
+     226.0,
+     13.164,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 105,
+   "ozet": {
+    "R_min": 12.915,
+    "R_yer_r": 62.982,
+    "R_yer_psi": 312.257,
+    "psi_bukum": 289.787,
+    "psi_dis_temas": 294.913,
+    "a_ic": 39.787,
+    "a_dis": 66.613,
+    "u_uc_psi": 313.465,
+    "u_uc_ileri": 23.678,
+    "ic_kalkma": 0.218,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.396
+    ],
+    [
+     "S1 kablo tamburu (S1 105)",
+     0.0,
+     0.006
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 105, S2 5)",
+     2.295,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 105, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     2.708,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.742,
+     0.0
+    ],
+    [
+     "Kol catali (S1 105, S2 10)",
+     5.368,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 105, S2 10)",
+     6.458,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 105)",
+     154.0,
+     4.6,
+     360.0,
+     -0.001,
+     104.1
+    ],
+    [
+     "S1 kablo tamburu (S1 105)",
+     155.9,
+     4.1,
+     360.0,
+     -0.001,
+     104.6
+    ],
+    [
+     "S1 kablo tamburu (S1 105)",
+     157.9,
+     4.1,
+     360.0,
+     -0.001,
+     104.6
+    ],
+    [
+     "S1 kablo tamburu (S1 105)",
+     155.9,
+     38.0,
+     249.3,
+     0.0,
+     4.7
+    ],
+    [
+     "S1 kablo tamburu (S1 105)",
+     155.9,
+     38.0,
+     256.9,
+     0.021,
+     4.9
+    ],
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     54.0,
+     226.0,
+     13.164,
+     11.3
+    ],
+    [
+     "S1 kaset kapagi sag",
+     155.9,
+     54.0,
+     226.0,
+     13.164,
+     11.3
+    ]
+   ]
+  },
+  {
+   "phi": 110,
+   "ozet": {
+    "R_min": 12.914,
+    "R_yer_r": 63.125,
+    "R_yer_psi": 313.998,
+    "psi_bukum": 291.802,
+    "psi_dis_temas": 296.592,
+    "a_ic": 36.802,
+    "a_dis": 68.292,
+    "u_uc_psi": 315.266,
+    "u_uc_ileri": 23.464,
+    "ic_kalkma": 0.235,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.411
+    ],
+    [
+     "S1 kablo tamburu (S1 110)",
+     0.0,
+     0.007
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 110, S2 5)",
+     2.3,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 110, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     2.708,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.73,
+     0.0
+    ],
+    [
+     "Kol catali (S1 110, S2 10)",
+     5.374,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 110, S2 10)",
+     6.447,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 110)",
+     154.0,
+     3.5,
+     0.0,
+     -0.002,
+     105.4
+    ],
+    [
+     "S1 kablo tamburu (S1 110)",
+     155.9,
+     3.1,
+     1.7,
+     -0.002,
+     106.1
+    ],
+    [
+     "S1 kablo tamburu (S1 110)",
+     157.9,
+     3.1,
+     1.7,
+     -0.002,
+     106.1
+    ],
+    [
+     "S1 kablo tamburu (S1 110)",
+     155.9,
+     38.0,
+     254.3,
+     -0.0,
+     4.5
+    ],
+    [
+     "S1 kablo tamburu (S1 110)",
+     155.9,
+     38.0,
+     261.9,
+     0.02,
+     4.6
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     57.0,
+     331.3,
+     12.108,
+     4.5
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     57.0,
+     331.3,
+     12.108,
+     4.5
+    ]
+   ]
+  },
+  {
+   "phi": 115,
+   "ozet": {
+    "R_min": 12.915,
+    "R_yer_r": 62.616,
+    "R_yer_psi": 316.009,
+    "psi_bukum": 292.829,
+    "psi_dis_temas": 298.271,
+    "a_ic": 32.829,
+    "a_dis": 69.972,
+    "u_uc_psi": 317.068,
+    "u_uc_ileri": 24.239,
+    "ic_kalkma": 0.187,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.425
+    ],
+    [
+     "S1 kablo tamburu (S1 115)",
+     0.0,
+     0.007
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 115, S2 5)",
+     2.31,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 115, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     2.71,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     2.712,
+     0.0
+    ],
+    [
+     "Kol catali (S1 115, S2 10)",
+     5.389,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 115, S2 10)",
+     6.423,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 115)",
+     154.0,
+     2.6,
+     0.0,
+     -0.002,
+     106.7
+    ],
+    [
+     "S1 kablo tamburu (S1 115)",
+     155.9,
+     2.2,
+     3.5,
+     -0.002,
+     107.3
+    ],
+    [
+     "S1 kablo tamburu (S1 115)",
+     157.9,
+     2.2,
+     3.1,
+     -0.002,
+     107.4
+    ],
+    [
+     "S1 kablo tamburu (S1 115)",
+     155.9,
+     38.0,
+     259.3,
+     -0.0,
+     4.3
+    ],
+    [
+     "S1 kablo tamburu (S1 115)",
+     155.9,
+     38.0,
+     266.9,
+     0.019,
+     4.3
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     57.0,
+     331.3,
+     10.349,
+     4.5
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     57.0,
+     331.3,
+     10.349,
+     4.5
+    ]
+   ]
+  },
+  {
+   "phi": 120,
+   "ozet": {
+    "R_min": 12.914,
+    "R_yer_r": 62.756,
+    "R_yer_psi": 317.753,
+    "psi_bukum": 294.843,
+    "psi_dis_temas": 299.951,
+    "a_ic": 29.843,
+    "a_dis": 71.651,
+    "u_uc_psi": 318.869,
+    "u_uc_ileri": 24.027,
+    "ic_kalkma": 0.198,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.439
+    ],
+    [
+     "S1 kablo tamburu (S1 120)",
+     0.0,
+     0.006
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 120, S2 5)",
+     2.33,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 120, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     2.715,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     3.654,
+     0.0
+    ],
+    [
+     "Kol catali (S1 120, S2 10)",
+     5.421,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 120, S2 10)",
+     6.392,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 120)",
+     154.0,
+     1.8,
+     0.0,
+     -0.002,
+     107.8
+    ],
+    [
+     "S1 kablo tamburu (S1 120)",
+     155.9,
+     1.5,
+     6.0,
+     -0.002,
+     108.0
+    ],
+    [
+     "S1 kablo tamburu (S1 120)",
+     157.9,
+     1.5,
+     0.0,
+     -0.002,
+     108.2
+    ],
+    [
+     "S1 kablo tamburu (S1 120)",
+     155.9,
+     38.0,
+     264.3,
+     0.0,
+     4.0
+    ],
+    [
+     "S1 kablo tamburu (S1 120)",
+     155.9,
+     38.0,
+     272.1,
+     0.018,
+     4.3
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     57.0,
+     331.3,
+     8.583,
+     4.5
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     57.0,
+     331.3,
+     8.583,
+     4.5
+    ]
+   ]
+  },
+  {
+   "phi": 125,
+   "ozet": {
+    "R_min": 12.915,
+    "R_yer_r": 62.895,
+    "R_yer_psi": 319.495,
+    "psi_bukum": 296.856,
+    "psi_dis_temas": 302.19,
+    "a_ic": 26.856,
+    "a_dis": 73.89,
+    "u_uc_psi": 320.669,
+    "u_uc_ileri": 23.812,
+    "ic_kalkma": 0.21,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.452
+    ],
+    [
+     "S1 kablo tamburu (S1 125)",
+     0.0,
+     0.006
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 125, S2 5)",
+     2.362,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 125, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     2.72,
+     0.0
+    ],
+    [
+     "Kol catali (S1 125, S2 10)",
+     5.476,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     5.735,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 125, S2 10)",
+     6.372,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 125)",
+     154.0,
+     1.2,
+     0.0,
+     -0.002,
+     108.7
+    ],
+    [
+     "S1 kablo tamburu (S1 125)",
+     155.9,
+     1.0,
+     32.9,
+     -0.002,
+     108.6
+    ],
+    [
+     "S1 kablo tamburu (S1 125)",
+     157.9,
+     0.9,
+     7.9,
+     -0.002,
+     109.3
+    ],
+    [
+     "S1 kablo tamburu (S1 125)",
+     155.9,
+     38.0,
+     269.4,
+     -0.0,
+     3.8
+    ],
+    [
+     "S1 kablo tamburu (S1 125)",
+     155.9,
+     38.0,
+     277.1,
+     0.013,
+     4.6
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     57.0,
+     331.3,
+     6.812,
+     4.5
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     57.0,
+     331.3,
+     6.812,
+     4.5
+    ]
+   ]
+  },
+  {
+   "phi": 130,
+   "ozet": {
+    "R_min": 12.917,
+    "R_yer_r": 63.033,
+    "R_yer_psi": 321.236,
+    "psi_bukum": 298.869,
+    "psi_dis_temas": 303.869,
+    "a_ic": 23.869,
+    "a_dis": 75.569,
+    "u_uc_psi": 322.466,
+    "u_uc_ileri": 23.596,
+    "ic_kalkma": 0.222,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.463
+    ],
+    [
+     "S1 kablo tamburu (S1 130)",
+     0.0,
+     0.005
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 130, S2 5)",
+     2.409,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 130, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     2.723,
+     0.0
+    ],
+    [
+     "Kol catali (S1 130, S2 10)",
+     5.556,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 130, S2 10)",
+     6.371,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x001",
+     8.322,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 130)",
+     154.0,
+     0.7,
+     1.0,
+     -0.002,
+     109.4
+    ],
+    [
+     "S1 kablo tamburu (S1 130)",
+     155.9,
+     1.1,
+     67.3,
+     -0.002,
+     108.6
+    ],
+    [
+     "S1 kablo tamburu (S1 130)",
+     157.9,
+     0.4,
+     14.7,
+     -0.002,
+     109.9
+    ],
+    [
+     "S1 kablo tamburu (S1 130)",
+     155.9,
+     38.0,
+     274.4,
+     0.0,
+     4.0
+    ],
+    [
+     "S1 kablo tamburu (S1 130)",
+     155.9,
+     38.0,
+     282.1,
+     0.006,
+     4.8
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     57.0,
+     331.3,
+     5.036,
+     4.5
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     57.0,
+     331.3,
+     5.036,
+     4.5
+    ]
+   ]
+  },
+  {
+   "phi": 132,
+   "ozet": {
+    "R_min": 12.92,
+    "R_yer_r": 63.218,
+    "R_yer_psi": 321.876,
+    "psi_bukum": 298.884,
+    "psi_dis_temas": 304.429,
+    "a_ic": 21.884,
+    "a_dis": 76.129,
+    "u_uc_psi": 323.188,
+    "u_uc_ileri": 24.304,
+    "ic_kalkma": 0.179,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.463
+    ],
+    [
+     "S1 kablo tamburu (S1 132)",
+     0.0,
+     0.004
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 132, S2 5)",
+     2.433,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 132, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     2.721,
+     0.0
+    ],
+    [
+     "Kol catali (S1 132, S2 10)",
+     5.596,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 132, S2 10)",
+     6.371,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (yuvada)003",
+     8.538,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 132)",
+     154.0,
+     0.5,
+     5.4,
+     -0.001,
+     109.5
+    ],
+    [
+     "S1 kablo tamburu (S1 132)",
+     155.9,
+     1.2,
+     77.1,
+     -0.001,
+     108.5
+    ],
+    [
+     "S1 kablo tamburu (S1 132)",
+     157.9,
+     0.3,
+     19.0,
+     -0.001,
+     109.9
+    ],
+    [
+     "S1 kablo tamburu (S1 132)",
+     155.9,
+     38.0,
+     276.4,
+     -0.0,
+     4.1
+    ],
+    [
+     "S1 kablo tamburu (S1 132)",
+     155.9,
+     38.0,
+     284.1,
+     0.004,
+     4.9
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     57.0,
+     331.3,
+     4.327,
+     4.5
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     57.0,
+     331.3,
+     4.327,
+     4.5
+    ]
+   ]
+  },
+  {
+   "phi": 133,
+   "ozet": {
+    "R_min": 12.916,
+    "R_yer_r": 62.988,
+    "R_yer_psi": 322.336,
+    "psi_bukum": 299.879,
+    "psi_dis_temas": 304.989,
+    "a_ic": 21.879,
+    "a_dis": 76.689,
+    "u_uc_psi": 323.547,
+    "u_uc_ileri": 23.667,
+    "ic_kalkma": 0.218,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.463
+    ],
+    [
+     "S1 kablo tamburu (S1 133)",
+     0.0,
+     0.004
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 133, S2 5)",
+     2.446,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 133, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     2.719,
+     0.0
+    ],
+    [
+     "Kol catali (S1 133, S2 10)",
+     5.619,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 133, S2 10)",
+     6.371,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (yuvada)003",
+     8.537,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 133)",
+     154.0,
+     0.4,
+     9.9,
+     -0.002,
+     109.6
+    ],
+    [
+     "S1 kablo tamburu (S1 133)",
+     155.9,
+     1.2,
+     80.9,
+     -0.002,
+     108.3
+    ],
+    [
+     "S1 kablo tamburu (S1 133)",
+     157.9,
+     0.2,
+     22.5,
+     -0.002,
+     109.9
+    ],
+    [
+     "S1 kablo tamburu (S1 133)",
+     155.9,
+     38.0,
+     277.4,
+     -0.0,
+     4.1
+    ],
+    [
+     "S1 kablo tamburu (S1 133)",
+     155.9,
+     38.0,
+     285.1,
+     0.002,
+     5.0
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     57.0,
+     331.3,
+     3.966,
+     4.5
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     57.0,
+     331.3,
+     3.966,
+     4.5
+    ]
+   ]
+  },
+  {
+   "phi": 134,
+   "ozet": {
+    "R_min": 12.916,
+    "R_yer_r": 62.756,
+    "R_yer_psi": 322.792,
+    "psi_bukum": 299.887,
+    "psi_dis_temas": 304.989,
+    "a_ic": 20.887,
+    "a_dis": 76.689,
+    "u_uc_psi": 323.909,
+    "u_uc_ileri": 24.023,
+    "ic_kalkma": 0.197,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.463
+    ],
+    [
+     "S1 kablo tamburu (S1 134)",
+     0.0,
+     0.002
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 134, S2 5)",
+     2.46,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 134, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     2.715,
+     0.0
+    ],
+    [
+     "Kol catali (S1 134, S2 10)",
+     5.642,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 134, S2 10)",
+     6.371,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (yuvada)003",
+     8.535,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 134)",
+     154.0,
+     0.4,
+     16.6,
+     -0.001,
+     109.7
+    ],
+    [
+     "S1 kablo tamburu (S1 134)",
+     155.9,
+     1.3,
+     84.2,
+     -0.001,
+     108.3
+    ],
+    [
+     "S1 kablo tamburu (S1 134)",
+     157.9,
+     0.2,
+     38.3,
+     -0.001,
+     110.0
+    ],
+    [
+     "S1 kablo tamburu (S1 134)",
+     155.9,
+     38.0,
+     278.4,
+     -0.0,
+     4.2
+    ],
+    [
+     "S1 kablo tamburu (S1 134)",
+     155.9,
+     38.0,
+     286.1,
+     0.001,
+     5.0
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     57.0,
+     331.3,
+     3.614,
+     4.5
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     57.0,
+     331.3,
+     3.614,
+     4.5
+    ]
+   ]
+  },
+  {
+   "phi": 135,
+   "ozet": {
+    "R_min": 12.921,
+    "R_yer_r": 63.171,
+    "R_yer_psi": 322.976,
+    "psi_bukum": 299.894,
+    "psi_dis_temas": 305.548,
+    "a_ic": 19.894,
+    "a_dis": 77.248,
+    "u_uc_psi": 324.268,
+    "u_uc_ileri": 24.373,
+    "ic_kalkma": 0.173,
+    "r_min": 41.1,
+    "r_max": 73.102,
+    "hata": 0.001,
+    "ihlal": -0.002
+   },
+   "ok": true,
+   "mesafe": [
+    [
+     "S1 kaset govdesi sag",
+     0.0,
+     0.463
+    ],
+    [
+     "S1 kablo tamburu (S1 135)",
+     0.0,
+     0.002
+    ],
+    [
+     "S1 kaset kapagi sag",
+     0.3,
+     0.0
+    ],
+    [
+     "Rulman kapagi",
+     1.8,
+     0.0
+    ],
+    [
+     "Omuz bandi sag",
+     1.8,
+     0.0
+    ],
+    [
+     "Kol catali (S1 135, S2 5)",
+     2.475,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 135, S2 5)",
+     2.593,
+     0.0
+    ],
+    [
+     "Kapak civatasi M3x003",
+     2.709,
+     0.0
+    ],
+    [
+     "Kol catali (S1 135, S2 10)",
+     5.666,
+     0.0
+    ],
+    [
+     "Ust kol tupu (S1 135, S2 10)",
+     6.371,
+     0.0
+    ],
+    [
+     "Omuz yuvasi",
+     7.8,
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (yuvada)003",
+     8.533,
+     0.0
+    ]
+   ],
+   "dilim": [
+    [
+     "S1 kaset govdesi sag",
+     154.0,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     43.8,
+     257.0,
+     -0.003,
+     149.4
+    ],
+    [
+     "S1 kablo tamburu (S1 135)",
+     154.0,
+     0.3,
+     26.1,
+     -0.002,
+     109.7
+    ],
+    [
+     "S1 kablo tamburu (S1 135)",
+     157.9,
+     0.2,
+     60.5,
+     -0.002,
+     110.0
+    ],
+    [
+     "S1 kablo tamburu (S1 135)",
+     155.9,
+     1.5,
+     86.8,
+     -0.001,
+     108.2
+    ],
+    [
+     "S1 kablo tamburu (S1 135)",
+     155.9,
+     38.0,
+     287.1,
+     0.0,
+     5.0
+    ],
+    [
+     "S1 kablo tamburu (S1 135)",
+     155.9,
+     38.0,
+     279.4,
+     -0.0,
+     4.2
+    ],
+    [
+     "S1 kaset govdesi sag",
+     155.9,
+     57.0,
+     331.3,
+     3.256,
+     4.5
+    ],
+    [
+     "S1 kaset govdesi sag",
+     157.9,
+     57.0,
+     331.3,
+     3.256,
+     4.5
+    ]
+   ]
+  }
+ ],
+ "s1_ozet": {
+  "R_min": 12.914,
+  "R_max": 12.991,
+  "a_ic_min": 19.894,
+  "a_dis_min": 10.076,
+  "ic_kalkma_max": 3.305,
+  "en_kucuk_bosluk_temas_disi": [
+   [
+    -45,
+    "S1 kaset kapagi sag",
+    0.3
+   ],
+   [
+    -44,
+    "S1 kaset kapagi sag",
+    0.3
+   ],
+   [
+    -43,
+    "S1 kaset kapagi sag",
+    0.3
+   ],
+   [
+    -42,
+    "S1 kaset kapagi sag",
+    0.3
+   ],
+   [
+    -40,
+    "S1 kaset kapagi sag",
+    0.3
+   ],
+   [
+    -35,
+    "S1 kaset kapagi sag",
+    0.3
+   ],
+   [
+    -30,
+    "S1 kaset kapagi sag",
+    0.3
+   ],
+   [
+    -25,
+    "S1 kaset kapagi sag",
+    0.3
+   ]
+  ],
+  "giris_hacmi": [
+   [
+    -15,
+    "S1 kaset govdesi sag",
+    0.059
+   ],
+   [
+    -10,
+    "S1 kaset govdesi sag",
+    0.072
+   ],
+   [
+    -5,
+    "S1 kaset govdesi sag",
+    0.088
+   ],
+   [
+    0,
+    "S1 kaset govdesi sag",
+    0.102
+   ],
+   [
+    5,
+    "S1 kaset govdesi sag",
+    0.117
+   ],
+   [
+    10,
+    "S1 kaset govdesi sag",
+    0.13
+   ],
+   [
+    15,
+    "S1 kaset govdesi sag",
+    0.145
+   ],
+   [
+    20,
+    "S1 kaset govdesi sag",
+    0.159
+   ],
+   [
+    25,
+    "S1 kaset govdesi sag",
+    0.174
+   ],
+   [
+    30,
+    "S1 kaset govdesi sag",
+    0.188
+   ],
+   [
+    35,
+    "S1 kaset govdesi sag",
+    0.202
+   ],
+   [
+    40,
+    "S1 kaset govdesi sag",
+    0.216
+   ],
+   [
+    45,
+    "S1 kaset govdesi sag",
+    0.23
+   ],
+   [
+    50,
+    "S1 kaset govdesi sag",
+    0.244
+   ],
+   [
+    55,
+    "S1 kaset govdesi sag",
+    0.258
+   ],
+   [
+    60,
+    "S1 kaset govdesi sag",
+    0.272
+   ],
+   [
+    65,
+    "S1 kaset govdesi sag",
+    0.286
+   ],
+   [
+    70,
+    "S1 kaset govdesi sag",
+    0.301
+   ],
+   [
+    75,
+    "S1 kaset govdesi sag",
+    0.313
+   ],
+   [
+    80,
+    "S1 kaset govdesi sag",
+    0.327
+   ]
+  ]
+ },
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-15T09:27:09",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-15T09:21:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-15T09:32:14"
+ },
+ "sure_s": 1230.6
+}

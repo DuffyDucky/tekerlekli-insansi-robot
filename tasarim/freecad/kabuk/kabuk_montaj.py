@@ -212,6 +212,24 @@ for v in VIDA:
                               kavrama=round(6.0 - A.NEXTION["pcb"][2], 2), tamam=d <= TEMAS))
 log("bindirme civatasi tamam %d/%d, ekran %d/%d" % (sum(x["tamam"] for x in vida_kontrol), len(vida_kontrol),
                                                      sum(x["tamam"] for x in ekran_kontrol), len(ekran_kontrol)))
+# S1 kablo kaseti (15 Ekim 2026): kapak havsasindaki M3x8 basi kapaga dayali, isil gomme somun boss'ta oturmus, kavrama >= d ve
+# <= isil gomme somun deligi, kaset govdesi (arka plaka) kabuk omuz yuzune oturmus, kapak govdeye oturmus.
+kaset_kontrol = []
+for v in VIDA:
+    if v["tip"] != "kaset":
+        continue
+    ins, civ = P[v["i_insert"]], P[v["i_vida"]]
+    sx = 1 if v["sag"] else -1
+    d_bas = mesafe(civ["shape"], PAR[v["kapak"]])
+    d_ins = mesafe(ins["shape"], PAR[v["ic"]])
+    uc = min(q.Point.x * sx for q in civ["shape"].Vertexes)
+    kavrama = v["p_yuz"].x * sx - uc
+    d_gov = mesafe(PAR[v["govde"]], PAR[v["ic"]])
+    d_kap = mesafe(PAR[v["kapak"]], PAR[v["govde"]])
+    ok = d_bas <= TEMAS and d_ins <= TEMAS and 3.0 <= kavrama <= A.INSERT[3][1] + 0.5 and d_gov <= TEMAS and d_kap <= TEMAS
+    kaset_kontrol.append(dict(etiket=P[v["i_vida"]]["ad"], parca=v["ic"], bas_dayali=round(d_bas, 4), insert_oturdu=round(d_ins, 4),
+                              kavrama=round(kavrama, 2), govde_kabuga=round(d_gov, 4), kapak_govdeye=round(d_kap, 4), tamam=bool(ok)))
+log("S1 kaseti civatasi tamam %d/%d" % (sum(x["tamam"] for x in kaset_kontrol), len(kaset_kontrol)), [(x["etiket"], x["kavrama"]) for x in kaset_kontrol])
 
 # ====================================================================== 5) bosluklar (tasarim olculeri)
 teker = [z for z in A.BOLGELER if z["ad"].startswith("Teker")]
@@ -420,7 +438,8 @@ out = dict(
     baglanti=[dict(ad=b["ad"], tip=b["tip"], parca=b["parca"], govde=P[b["govde"]]["ad"], eleman=[P[i]["kod"] for i in b["eleman"]])
               for b in BAG],
     baglanti_kontrol=bag_kontrol, m6_vida_pay=dict(sart_somun_gecme_mm=SOMUN_GECME, sart_taban_pay_mm=TABAN_PAY, somun_ustu_mm=somun_alti,
-                                                  kanal_tabani_mm=A.KANAL_TABAN, kalemler=m6_pay), vida_kontrol=vida_kontrol, ekran_kontrol=ekran_kontrol,
+                                                  kanal_tabani_mm=A.KANAL_TABAN, kalemler=m6_pay), vida_kontrol=vida_kontrol, ekran_kontrol=ekran_kontrol, kaset_kontrol=kaset_kontrol,
+    s1_kaset=dict(K.S1_KASET, dikme=[[d[0], d[1]] for d in K.S1_KASET['dikme']], kaynak='arayuz.KOL_KABLO s1'),
     bosluk=dict(teker_etek_mm=round(teker_bosluk, 2), direk_govde_mm=round(direk_bosluk, 2),
                 cam_duvar_mm=round(cam_duvar, 3), cam_duvar_parca=[[ad, round(d, 4)] for d, ad in cam_olcum[:3]],
                 cam_duvar_sart_mm=CAM_DUVAR_MIN, cam_duvar_ok=bool(cam_duvar is not None and cam_duvar >= CAM_DUVAR_MIN)),

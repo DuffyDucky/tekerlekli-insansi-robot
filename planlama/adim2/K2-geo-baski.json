@@ -1,0 +1,315 @@
+{
+ "tarih": "2026-10-15T13:53:22",
+ "adim": "baski",
+ "baski": [
+  {
+   "parca": "S1 kaset govdesi sag (arka yuz x 152 tablada)",
+   "yukari": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "cikinti_alan_mm2": 0.0,
+   "yuzler": [],
+   "yukseklik": 6.3,
+   "hacim": 7661.8
+  },
+  {
+   "parca": "S1 kaset kapagi sag (flans x 159,5 tablada)",
+   "yukari": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "cikinti_alan_mm2": 38.37,
+   "yuzler": [
+    {
+     "yuz": 213,
+     "alan": 19.19,
+     "tip": "GeomPlane",
+     "yukseklik": 3.0,
+     "bb": [
+      156.5,
+      156.5,
+      -40.51,
+      -34.51,
+      35.84,
+      41.84
+     ]
+    },
+    {
+     "yuz": 214,
+     "alan": 19.19,
+     "tip": "GeomPlane",
+     "yukseklik": 3.0,
+     "bb": [
+      156.5,
+      156.5,
+      -52.8,
+      -46.8,
+      15.13,
+      21.13
+     ]
+    }
+   ],
+   "yukseklik": 4.5,
+   "hacim": 5907.0
+  },
+  {
+   "parca": "S1 kablo tamburu (+X: -x dudak tablada)",
+   "yukari": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "cikinti_alan_mm2": 917.48,
+   "yuzler": [
+    {
+     "yuz": 6,
+     "alan": 855.47,
+     "tip": "GeomPlane",
+     "yukseklik": 5.8,
+     "bb": [
+      158.3,
+      158.3,
+      -43.69,
+      43.69,
+      -26.9,
+      43.7
+     ]
+    },
+    {
+     "yuz": 22,
+     "alan": 15.87,
+     "tip": "GeomPlane",
+     "yukseklik": 8.0,
+     "bb": [
+      160.5,
+      160.5,
+      26.4,
+      32.23,
+      -19.87,
+      -13.88
+     ]
+    },
+    {
+     "yuz": 36,
+     "alan": 15.87,
+     "tip": "GeomPlane",
+     "yukseklik": 8.0,
+     "bb": [
+      160.5,
+      160.5,
+      26.4,
+      32.23,
+      13.88,
+      19.87
+     ]
+    },
+    {
+     "yuz": 46,
+     "alan": 15.87,
+     "tip": "GeomPlane",
+     "yukseklik": 8.0,
+     "bb": [
+      160.5,
+      160.5,
+      31.8,
+      36.75,
+      -3.0,
+      3.0
+     ]
+    },
+    {
+     "yuz": 16,
+     "alan": 3.74,
+     "tip": "GeomPlane",
+     "yukseklik": 3.0,
+     "bb": [
+      155.5,
+      155.5,
+      29.62,
+      33.79,
+      -23.4,
+      -15.07
+     ]
+    },
+    {
+     "yuz": 53,
+     "alan": 3.32,
+     "tip": "GeomPlane",
+     "yukseklik": 4.9,
+     "bb": [
+      157.4,
+      157.4,
+      -33.52,
+      -30.94,
+      -21.38,
+      -18.92
+     ]
+    },
+    {
+     "yuz": 58,
+     "alan": 3.32,
+     "tip": "GeomPlane",
+     "yukseklik": 4.9,
+     "bb": [
+      157.4,
+      157.4,
+      -35.97,
+      -33.46,
+      -16.64,
+      -14.31
+     ]
+    },
+    {
+     "yuz": 30,
+     "alan": 0.98,
+     "tip": "GeomPlane",
+     "yukseklik": 3.0,
+     "bb": [
+      155.5,
+      155.5,
+      29.95,
+      33.79,
+      15.07,
+      21.73
+     ]
+    },
+    {
+     "yuz": 41,
+     "alan": 0.98,
+     "tip": "GeomPlane",
+     "yukseklik": 3.0,
+     "bb": [
+      155.5,
+      155.5,
+      36.8,
+      36.99,
+      -3.84,
+      3.84
+     ]
+    },
+    {
+     "yuz": 0,
+     "alan": 0.41,
+     "tip": "GeomPlane",
+     "yukseklik": 3.0,
+     "bb": [
+      155.5,
+      155.5,
+      31.3,
+      33.77,
+      19.5,
+      23.4
+     ]
+    },
+    {
+     "yuz": 2,
+     "alan": 0.41,
+     "tip": "GeomPlane",
+     "yukseklik": 3.0,
+     "bb": [
+      155.5,
+      155.5,
+      38.74,
+      39.0,
+      0.0,
+      4.5
+     ]
+    },
+    {
+     "yuz": 4,
+     "alan": 0.41,
+     "tip": "GeomPlane",
+     "yukseklik": 3.0,
+     "bb": [
+      155.5,
+      155.5,
+      33.77,
+      36.02,
+      -19.5,
+      -15.47
+     ]
+    }
+   ],
+   "yukseklik": 10.5,
+   "hacim": 4707.8
+  },
+  {
+   "parca": "S1 kablo tamburu (-X: +x dudak tablada)",
+   "yukari": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "cikinti_alan_mm2": 2003.63,
+   "yuzler": [
+    {
+     "yuz": 27,
+     "alan": 1139.19,
+     "tip": "GeomPlane",
+     "yukseklik": 3.7,
+     "bb": [
+      159.3,
+      159.3,
+      -43.69,
+      43.69,
+      -26.9,
+      43.7
+     ]
+    },
+    {
+     "yuz": 15,
+     "alan": 857.81,
+     "tip": "GeomPlane",
+     "yukseklik": 9.5,
+     "bb": [
+      153.5,
+      153.5,
+      -43.69,
+      43.69,
+      -26.9,
+      43.7
+     ]
+    },
+    {
+     "yuz": 52,
+     "alan": 3.32,
+     "tip": "GeomPlane",
+     "yukseklik": 8.6,
+     "bb": [
+      154.4,
+      154.4,
+      -33.52,
+      -30.94,
+      -21.38,
+      -18.92
+     ]
+    },
+    {
+     "yuz": 56,
+     "alan": 3.32,
+     "tip": "GeomPlane",
+     "yukseklik": 8.6,
+     "bb": [
+      154.4,
+      154.4,
+      -35.97,
+      -33.46,
+      -16.64,
+      -14.31
+     ]
+    }
+   ],
+   "yukseklik": 10.5,
+   "hacim": 4707.8
+  }
+ ],
+ "sure_s": 23.8,
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-15T09:27:09",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-15T09:21:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-15T09:32:14"
+ }
+}

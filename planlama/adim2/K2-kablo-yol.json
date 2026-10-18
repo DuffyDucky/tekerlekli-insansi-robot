@@ -1,0 +1,143 @@
+{
+ "tarih": "2026-10-15T13:49:48",
+ "s1_tanim": {
+  "ri": 41.1,
+  "ro": 73.10000000000001,
+  "xc": 155.9,
+  "L": 171.4,
+  "psi_w": 228.3,
+  "bag_psi": 145.0,
+  "R_sinir": 11.9,
+  "R_10d": 15.4,
+  "demet": [
+   4.2,
+   4.199999999999999
+  ]
+ },
+ "s1_yol": {
+  "gecis": {
+   "boy": 23.92,
+   "mesafe": [
+    [
+     "gobek/kol S2 5",
+     4.284,
+     "Omuz gobegi"
+    ],
+    [
+     "gobek/kol S2 10",
+     4.284,
+     "Omuz gobegi"
+    ],
+    [
+     "gobek/kol S2 20",
+     4.284,
+     "Omuz gobegi"
+    ],
+    [
+     "gobek/kol S2 45",
+     4.284,
+     "Omuz gobegi"
+    ],
+    [
+     "gobek/kol S2 90",
+     4.284,
+     "Omuz gobegi"
+    ],
+    [
+     "gobek/kol S2 120",
+     4.284,
+     "Omuz gobegi"
+    ],
+    [
+     "tambur (son 8 mm haric)",
+     5.847,
+     "S1 kablo tamburu"
+    ],
+    [
+     "sabit (govde, bant, kaset) S1 -45...135",
+     3.619,
+     "S1 kaset kapagi sag",
+     110
+    ]
+   ],
+   "yari_kalinlik": 2.0999999999999996,
+   "cevrel": 2.9698484809834995
+  },
+  "cikis": {
+   "boy": 238.0,
+   "mesafe": [
+    [
+     "kaset",
+     2.4,
+     "S1 kaset kapagi sag"
+    ],
+    [
+     "bant",
+     3.0,
+     "Omuz bandi sag"
+    ],
+    [
+     "omuz govde",
+     8.98,
+     "Omuz yuvasi"
+    ],
+    [
+     "gobek + tambur S1 -45...135",
+     8.3,
+     "S1 kablo tamburu",
+     10
+    ]
+   ],
+   "yari_kalinlik": 2.0999999999999996,
+   "yarik_isin_kesisim": [
+    [
+     "S1 kaset kapagi sag",
+     1.2
+    ]
+   ],
+   "nokta": [
+    [
+     155.9,
+     -48.63,
+     54.58
+    ],
+    [
+     155.9,
+     -60.19,
+     40.6
+    ],
+    [
+     155.9,
+     -43.11,
+     29.08
+    ],
+    [
+     140.0,
+     -43.11,
+     29.08
+    ],
+    [
+     140.0,
+     -62.0,
+     18.0
+    ],
+    [
+     105.0,
+     -62.0,
+     -26.0
+    ],
+    [
+     0.0,
+     -55.0,
+     -26.0
+    ]
+   ]
+  }
+ },
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-15T09:27:09",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-15T09:21:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-15T09:32:14"
+ },
+ "sure_s": 12.1
+}

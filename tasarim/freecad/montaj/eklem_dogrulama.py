@@ -16,7 +16,7 @@ import moduller as MD
 from moduller import V
 import arayuz as A          # moduller yolu kurar
 
-Y0 = float(A.OMUZ["yana_aralik"][0])   # omuz yana acma yazilim alt siniri (3 derece, duzeltme plani C1); sinir ici pozlarda 'kol asagida' = Y0
+Y0 = float(A.OMUZ["yana_aralik"][0])   # omuz yana acma yazilim alt siniri (5 derece: C1 3 -> S1 kaseti 5, 15 Ekim 2026); sinir ici pozlarda 'kol asagida' = Y0
 
 t0 = time.time()
 ADIM = 0.02      # s, simulasyon cikti adimi (sure 1 s; formul = aci * time)

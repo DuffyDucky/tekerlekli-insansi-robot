@@ -18,7 +18,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 if os.path.dirname(HERE) not in sys.path:
     sys.path.insert(0, os.path.dirname(HERE))
 import arayuz as A          # eklem sinirlari + kafa-kol yasak kutusu (animasyon kontrolu)
-Y0 = float(A.OMUZ["yana_aralik"][0])      # omuz yana acma yazilim alt siniri (3 derece, duzeltme plani C1)
+Y0 = float(A.OMUZ["yana_aralik"][0])      # omuz yana acma yazilim alt siniri (5 derece: C1 3 -> S1 kaseti 5, 15 Ekim 2026)
 OUT = os.path.join(HERE, "gorsel")
 KARE = os.path.join(tempfile.gettempdir(), "robot-montaj-kare")      # OneDrive disi
 os.makedirs(OUT, exist_ok=True)
@@ -26,7 +26,7 @@ os.makedirs(KARE, exist_ok=True)
 RENK = {"alu": (0.78, 0.80, 0.83), "alu2": (0.55, 0.60, 0.68), "celik": (0.50, 0.52, 0.56), "celik2": (0.86, 0.66, 0.22),
         "siyah": (0.13, 0.13, 0.14), "petg": (0.96, 0.55, 0.13), "petg2": (0.18, 0.52, 0.86), "pirinc": (0.86, 0.66, 0.22),
         "kabuk": (0.85, 0.87, 0.90), "gri": (0.6, 0.6, 0.6)}
-# Kollari_oynat simulasyonu (radyan, sure 8 s). Sinirlar icinde: one-arka -34...+103 derece, yana Y0 (3)...69 derece
+# Kollari_oynat simulasyonu (radyan, sure 8 s). Sinirlar icinde: one-arka -34...+103 derece, yana Y0 (5)...69 derece
 # (yazilim alt siniri arayuz.OMUZ, 14 Ekim 2026; eskiden 0'dan basliyordu), dirsek 0...103 derece (sinir 0...105), bilek -69...+69 derece (sinir +-90).
 # Sag ve sol kol zit fazda one-arka sallanir, ikisi birlikte one kalkip yana acilir; sag dirsek 4 s'de iki kez bukulur,
 # sol dirsek 8 s'de bir kez; bilekler zit yonde doner. Kafa pan -46...+46 derece (sinir +-90) saga sola bakar, tilt

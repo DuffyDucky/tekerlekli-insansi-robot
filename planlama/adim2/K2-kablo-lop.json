@@ -1,0 +1,783 @@
+{
+ "tarih": "2026-10-15T13:49:48",
+ "s1_tanim": {
+  "ri": 41.1,
+  "ro": 73.10000000000001,
+  "xc": 155.9,
+  "L": 171.4,
+  "psi_w": 228.3,
+  "bag_psi": 145.0,
+  "R_sinir": 11.9,
+  "R_10d": 15.4,
+  "demet": [
+   4.2,
+   4.199999999999999
+  ]
+ },
+ "dirsek_lop": {
+  "R_min": 13.035,
+  "bosluk_min": {
+   "dirsek": 105.0,
+   "R": 13.035,
+   "bosluk": 0.615,
+   "en_yakin": "On kol govdesi",
+   "hata": 8.987733679556355e-14
+  },
+  "satir": [
+   {
+    "dirsek": 0.0,
+    "R": 13.202,
+    "bosluk": 0.624,
+    "en_yakin": "On kol govdesi",
+    "hata": 2.0097183471152322e-13
+   },
+   {
+    "dirsek": 2.5,
+    "R": 13.403,
+    "bosluk": 0.625,
+    "en_yakin": "On kol govdesi",
+    "hata": 2.0691316789454157e-13
+   },
+   {
+    "dirsek": 5.0,
+    "R": 13.621,
+    "bosluk": 0.625,
+    "en_yakin": "On kol govdesi",
+    "hata": 2.0691316789454157e-13
+   },
+   {
+    "dirsek": 7.5,
+    "R": 13.847,
+    "bosluk": 0.626,
+    "en_yakin": "On kol govdesi",
+    "hata": 1.4210854715202004e-13
+   },
+   {
+    "dirsek": 10.0,
+    "R": 14.089,
+    "bosluk": 0.626,
+    "en_yakin": "On kol govdesi",
+    "hata": 1.464821375527116e-13
+   },
+   {
+    "dirsek": 12.5,
+    "R": 14.342,
+    "bosluk": 0.627,
+    "en_yakin": "On kol govdesi",
+    "hata": 1.4369837526939964e-13
+   },
+   {
+    "dirsek": 15.0,
+    "R": 14.609,
+    "bosluk": 0.627,
+    "en_yakin": "On kol govdesi",
+    "hata": 1.1457157353758233e-13
+   },
+   {
+    "dirsek": 17.5,
+    "R": 14.89,
+    "bosluk": 0.627,
+    "en_yakin": "On kol govdesi",
+    "hata": 1.4836567898030567e-13
+   },
+   {
+    "dirsek": 20.0,
+    "R": 15.183,
+    "bosluk": 0.628,
+    "en_yakin": "On kol govdesi",
+    "hata": 1.4836567898030567e-13
+   },
+   {
+    "dirsek": 22.5,
+    "R": 15.493,
+    "bosluk": 0.628,
+    "en_yakin": "On kol govdesi",
+    "hata": 1.464821375527116e-13
+   },
+   {
+    "dirsek": 25.0,
+    "R": 15.814,
+    "bosluk": 0.628,
+    "en_yakin": "On kol govdesi",
+    "hata": 1.156679772130055e-13
+   },
+   {
+    "dirsek": 27.5,
+    "R": 16.153,
+    "bosluk": 0.629,
+    "en_yakin": "On kol govdesi",
+    "hata": 1.449228509952941e-13
+   },
+   {
+    "dirsek": 30.0,
+    "R": 16.504,
+    "bosluk": 0.629,
+    "en_yakin": "On kol govdesi",
+    "hata": 1.4836567898030567e-13
+   },
+   {
+    "dirsek": 32.5,
+    "R": 16.873,
+    "bosluk": 0.629,
+    "en_yakin": "On kol govdesi",
+    "hata": 8.644125458514252e-14
+   },
+   {
+    "dirsek": 35.0,
+    "R": 17.255,
+    "bosluk": 0.629,
+    "en_yakin": "On kol govdesi",
+    "hata": 1.1368683772161603e-13
+   },
+   {
+    "dirsek": 37.5,
+    "R": 17.655,
+    "bosluk": 0.629,
+    "en_yakin": "On kol govdesi",
+    "hata": 8.987733679556355e-14
+   },
+   {
+    "dirsek": 40.0,
+    "R": 18.071,
+    "bosluk": 0.629,
+    "en_yakin": "On kol govdesi",
+    "hata": 1.0658141036401503e-13
+   },
+   {
+    "dirsek": 42.5,
+    "R": 18.501,
+    "bosluk": 0.629,
+    "en_yakin": "On kol govdesi",
+    "hata": 1.10990323433763e-13
+   },
+   {
+    "dirsek": 45.0,
+    "R": 18.947,
+    "bosluk": 0.629,
+    "en_yakin": "On kol govdesi",
+    "hata": 8.644125458514252e-14
+   },
+   {
+    "dirsek": 47.5,
+    "R": 19.409,
+    "bosluk": 0.629,
+    "en_yakin": "On kol govdesi",
+    "hata": 6.703246762680666e-14
+   },
+   {
+    "dirsek": 50.0,
+    "R": 19.883,
+    "bosluk": 0.628,
+    "en_yakin": "On kol govdesi",
+    "hata": 4.5496934130773415e-14
+   },
+   {
+    "dirsek": 52.5,
+    "R": 20.369,
+    "bosluk": 0.628,
+    "en_yakin": "On kol govdesi",
+    "hata": 4.0194366942304644e-14
+   },
+   {
+    "dirsek": 55.0,
+    "R": 20.861,
+    "bosluk": 0.628,
+    "en_yakin": "On kol govdesi",
+    "hata": 6.355287432313019e-14
+   },
+   {
+    "dirsek": 57.5,
+    "R": 21.354,
+    "bosluk": 0.628,
+    "en_yakin": "On kol govdesi",
+    "hata": 4.5496934130773415e-14
+   },
+   {
+    "dirsek": 60.0,
+    "R": 21.835,
+    "bosluk": 0.627,
+    "en_yakin": "On kol govdesi",
+    "hata": 4.0194366942304644e-14
+   },
+   {
+    "dirsek": 62.5,
+    "R": 22.288,
+    "bosluk": 0.627,
+    "en_yakin": "On kol govdesi",
+    "hata": 3.552713678800501e-14
+   },
+   {
+    "dirsek": 65.0,
+    "R": 22.681,
+    "bosluk": 0.627,
+    "en_yakin": "On kol govdesi",
+    "hata": 4.0194366942304644e-14
+   },
+   {
+    "dirsek": 67.5,
+    "R": 22.961,
+    "bosluk": 0.626,
+    "en_yakin": "On kol govdesi",
+    "hata": 4.0194366942304644e-14
+   },
+   {
+    "dirsek": 70.0,
+    "R": 23.048,
+    "bosluk": 0.626,
+    "en_yakin": "On kol govdesi",
+    "hata": 2.842170943040401e-14
+   },
+   {
+    "dirsek": 72.5,
+    "R": 22.835,
+    "bosluk": 0.625,
+    "en_yakin": "On kol govdesi",
+    "hata": 2.1316282072803006e-14
+   },
+   {
+    "dirsek": 75.0,
+    "R": 22.266,
+    "bosluk": 0.624,
+    "en_yakin": "On kol govdesi",
+    "hata": 3.552713678800501e-14
+   },
+   {
+    "dirsek": 77.5,
+    "R": 21.405,
+    "bosluk": 0.624,
+    "en_yakin": "On kol govdesi",
+    "hata": 2.842170943040401e-14
+   },
+   {
+    "dirsek": 80.0,
+    "R": 20.404,
+    "bosluk": 0.623,
+    "en_yakin": "On kol govdesi",
+    "hata": 3.552713678800501e-14
+   },
+   {
+    "dirsek": 82.5,
+    "R": 19.386,
+    "bosluk": 0.623,
+    "en_yakin": "On kol govdesi",
+    "hata": 3.1776437161565096e-14
+   },
+   {
+    "dirsek": 85.0,
+    "R": 18.416,
+    "bosluk": 0.622,
+    "en_yakin": "On kol govdesi",
+    "hata": 5.728578676879116e-14
+   },
+   {
+    "dirsek": 87.5,
+    "R": 17.517,
+    "bosluk": 0.621,
+    "en_yakin": "On kol govdesi",
+    "hata": 3.1776437161565096e-14
+   },
+   {
+    "dirsek": 90.0,
+    "R": 16.693,
+    "bosluk": 0.62,
+    "en_yakin": "On kol govdesi",
+    "hata": 5.728578676879116e-14
+   },
+   {
+    "dirsek": 92.5,
+    "R": 15.943,
+    "bosluk": 0.619,
+    "en_yakin": "On kol govdesi",
+    "hata": 5.684341886080802e-14
+   },
+   {
+    "dirsek": 95.0,
+    "R": 15.257,
+    "bosluk": 0.619,
+    "en_yakin": "On kol govdesi",
+    "hata": 5.859285502108464e-14
+   },
+   {
+    "dirsek": 97.5,
+    "R": 14.629,
+    "bosluk": 0.618,
+    "en_yakin": "On kol govdesi",
+    "hata": 8.556067554929069e-14
+   },
+   {
+    "dirsek": 100.0,
+    "R": 14.053,
+    "bosluk": 0.617,
+    "en_yakin": "On kol govdesi",
+    "hata": 8.644125458514252e-14
+   },
+   {
+    "dirsek": 102.5,
+    "R": 13.524,
+    "bosluk": 0.616,
+    "en_yakin": "On kol govdesi",
+    "hata": 8.644125458514252e-14
+   },
+   {
+    "dirsek": 105.0,
+    "R": 13.035,
+    "bosluk": 0.615,
+    "en_yakin": "On kol govdesi",
+    "hata": 8.987733679556355e-14
+   }
+  ],
+  "R_sinir_2serit": 11.2
+ },
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-15T09:27:09",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-15T09:21:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-15T09:32:14"
+ },
+ "s2_lop": {
+  "R_min": 12.387,
+  "bosluk_gobek_kol_min": {
+   "yana": 5.0,
+   "R": 12.738,
+   "bosluk_gobek_kol": 1.895,
+   "en_yakin_gobek_kol": "Kol catali",
+   "bosluk_sabit": 5.223,
+   "en_yakin_sabit": "Rulman kapagi",
+   "sabit_phi": -35,
+   "hata": 1.4369837526939964e-13
+  },
+  "bosluk_sabit_min": {
+   "yana": 120,
+   "R": 12.387,
+   "bosluk_gobek_kol": 3.076,
+   "en_yakin_gobek_kol": "Kol catali",
+   "bosluk_sabit": -0.319,
+   "en_yakin_sabit": "S1 kaset kapagi sag",
+   "sabit_phi": 135,
+   "hata": 2.864289338439558e-13
+  },
+  "satir": [
+   {
+    "yana": 5.0,
+    "R": 12.738,
+    "bosluk_gobek_kol": 1.895,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.223,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -35,
+    "hata": 1.4369837526939964e-13
+   },
+   {
+    "yana": 5.5,
+    "R": 12.763,
+    "bosluk_gobek_kol": 1.969,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.222,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -30,
+    "hata": 1.4369837526939964e-13
+   },
+   {
+    "yana": 6.0,
+    "R": 12.787,
+    "bosluk_gobek_kol": 2.04,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.222,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -35,
+    "hata": 1.4566126083082054e-13
+   },
+   {
+    "yana": 7.0,
+    "R": 12.835,
+    "bosluk_gobek_kol": 2.173,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.221,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -35,
+    "hata": 1.4566126083082054e-13
+   },
+   {
+    "yana": 9,
+    "R": 12.93,
+    "bosluk_gobek_kol": 2.405,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.22,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -30,
+    "hata": 1.4738410323425584e-13
+   },
+   {
+    "yana": 12,
+    "R": 13.071,
+    "bosluk_gobek_kol": 2.669,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.218,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -30,
+    "hata": 1.4738410323425584e-13
+   },
+   {
+    "yana": 15,
+    "R": 13.208,
+    "bosluk_gobek_kol": 2.84,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.215,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -30,
+    "hata": 1.707613964003266e-13
+   },
+   {
+    "yana": 18,
+    "R": 13.341,
+    "bosluk_gobek_kol": 2.927,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.212,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -40,
+    "hata": 1.4281732235759946e-13
+   },
+   {
+    "yana": 21,
+    "R": 13.47,
+    "bosluk_gobek_kol": 2.95,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.209,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -25,
+    "hata": 1.432144669219779e-13
+   },
+   {
+    "yana": 24,
+    "R": 13.594,
+    "bosluk_gobek_kol": 2.964,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.206,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": 95,
+    "hata": 1.7233408066822027e-13
+   },
+   {
+    "yana": 27,
+    "R": 13.712,
+    "bosluk_gobek_kol": 2.98,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.202,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": 60,
+    "hata": 1.4369837526939964e-13
+   },
+   {
+    "yana": 30,
+    "R": 13.825,
+    "bosluk_gobek_kol": 2.997,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.198,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -30,
+    "hata": 1.4397259859288263e-13
+   },
+   {
+    "yana": 33,
+    "R": 13.931,
+    "bosluk_gobek_kol": 3.015,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.194,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -30,
+    "hata": 1.4566126083082054e-13
+   },
+   {
+    "yana": 36,
+    "R": 14.029,
+    "bosluk_gobek_kol": 3.034,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.189,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -35,
+    "hata": 1.7456265077867385e-13
+   },
+   {
+    "yana": 39,
+    "R": 14.12,
+    "bosluk_gobek_kol": 3.055,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.184,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -35,
+    "hata": 1.4606147445783587e-13
+   },
+   {
+    "yana": 42,
+    "R": 14.203,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.179,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -25,
+    "hata": 1.7495085916501027e-13
+   },
+   {
+    "yana": 45,
+    "R": 14.276,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.173,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": 5,
+    "hata": 1.757785650632539e-13
+   },
+   {
+    "yana": 48,
+    "R": 14.34,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.167,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -30,
+    "hata": 1.7763568394002505e-13
+   },
+   {
+    "yana": 51,
+    "R": 14.394,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.16,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": 60,
+    "hata": 1.797546735911271e-13
+   },
+   {
+    "yana": 54,
+    "R": 14.438,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.154,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -35,
+    "hata": 1.8151029404871322e-13
+   },
+   {
+    "yana": 57,
+    "R": 14.47,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.147,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -35,
+    "hata": 1.8090953881929317e-13
+   },
+   {
+    "yana": 60,
+    "R": 14.491,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.139,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": 60,
+    "hata": 1.8151029404871322e-13
+   },
+   {
+    "yana": 63,
+    "R": 14.5,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.131,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": 95,
+    "hata": 1.8275768308625944e-13
+   },
+   {
+    "yana": 66,
+    "R": 14.497,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.123,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -40,
+    "hata": 1.580957587066223e-13
+   },
+   {
+    "yana": 69,
+    "R": 14.481,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.115,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -30,
+    "hata": 2.157597268697343e-13
+   },
+   {
+    "yana": 72,
+    "R": 14.453,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.106,
+    "en_yakin_sabit": "Rulman kapagi",
+    "sabit_phi": -25,
+    "hata": 2.178772448710044e-13
+   },
+   {
+    "yana": 75,
+    "R": 14.41,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 5.02,
+    "en_yakin_sabit": "S1 kaset kapagi sag",
+    "sabit_phi": 105,
+    "hata": 1.9653443811007174e-13
+   },
+   {
+    "yana": 78,
+    "R": 14.355,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 4.858,
+    "en_yakin_sabit": "S1 kaset kapagi sag",
+    "sabit_phi": 120,
+    "hata": 1.9065862296939058e-13
+   },
+   {
+    "yana": 81,
+    "R": 14.286,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 4.656,
+    "en_yakin_sabit": "S1 kaset kapagi sag",
+    "sabit_phi": 120,
+    "hata": 2.2914314707516465e-13
+   },
+   {
+    "yana": 84,
+    "R": 14.205,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 4.422,
+    "en_yakin_sabit": "S1 kaset kapagi sag",
+    "sabit_phi": 120,
+    "hata": 2.2740142932498854e-13
+   },
+   {
+    "yana": 87,
+    "R": 14.111,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 4.156,
+    "en_yakin_sabit": "S1 kaset kapagi sag",
+    "sabit_phi": 130,
+    "hata": 2.089768879877275e-13
+   },
+   {
+    "yana": 90,
+    "R": 14.005,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 3.861,
+    "en_yakin_sabit": "S1 kaset kapagi sag",
+    "sabit_phi": 130,
+    "hata": 2.327502010382318e-13
+   },
+   {
+    "yana": 93,
+    "R": 13.888,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 3.536,
+    "en_yakin_sabit": "S1 kaset kapagi sag",
+    "sabit_phi": 130,
+    "hata": 2.1316282072803006e-13
+   },
+   {
+    "yana": 96,
+    "R": 13.759,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 3.183,
+    "en_yakin_sabit": "S1 kaset kapagi sag",
+    "sabit_phi": 130,
+    "hata": 2.197232063290674e-13
+   },
+   {
+    "yana": 99,
+    "R": 13.618,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 2.806,
+    "en_yakin_sabit": "S1 kaset kapagi sag",
+    "sabit_phi": 130,
+    "hata": 2.4657471015332013e-13
+   },
+   {
+    "yana": 102,
+    "R": 13.466,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 2.404,
+    "en_yakin_sabit": "S1 kaset kapagi sag",
+    "sabit_phi": 135,
+    "hata": 2.33751281791626e-13
+   },
+   {
+    "yana": 105,
+    "R": 13.305,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 1.979,
+    "en_yakin_sabit": "S1 kaset kapagi sag",
+    "sabit_phi": 135,
+    "hata": 2.574675893923972e-13
+   },
+   {
+    "yana": 108,
+    "R": 13.136,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 1.536,
+    "en_yakin_sabit": "S1 kaset kapagi sag",
+    "sabit_phi": 135,
+    "hata": 2.6203521364587025e-13
+   },
+   {
+    "yana": 111,
+    "R": 12.959,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 1.08,
+    "en_yakin_sabit": "S1 kaset kapagi sag",
+    "sabit_phi": 130,
+    "hata": 2.6671393099950733e-13
+   },
+   {
+    "yana": 114,
+    "R": 12.775,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 0.615,
+    "en_yakin_sabit": "S1 kaset kapagi sag",
+    "sabit_phi": 135,
+    "hata": 2.514156848996284e-13
+   },
+   {
+    "yana": 117,
+    "R": 12.585,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": 0.147,
+    "en_yakin_sabit": "S1 kaset kapagi sag",
+    "sabit_phi": 135,
+    "hata": 2.7149799812125933e-13
+   },
+   {
+    "yana": 120,
+    "R": 12.387,
+    "bosluk_gobek_kol": 3.076,
+    "en_yakin_gobek_kol": "Kol catali",
+    "bosluk_sabit": -0.319,
+    "en_yakin_sabit": "S1 kaset kapagi sag",
+    "sabit_phi": 135,
+    "hata": 2.864289338439558e-13
+   }
+  ],
+  "r_lop": 2.5238858928247927
+ },
+ "sure_s": 582.3
+}

@@ -67,7 +67,7 @@ for (p, d, ld) in SLEEVE:
 CAP_B = [(y, z) for y in (-6, 6) for z in (-33, 33)]   # z=32 iken civata basi halkaya 0.75 mm3 biniyordu
 for (y, z) in CAP_B:
     yuva = yuva.cut(insert_hole(3, (146, y, z), (-1, 0, 0)))
-add("Omuz yuvasi", "Govde", yuva.removeSplitter(), "Baski", "PETG", renk="petg", patlat=(-60, 0, 0))
+add("Omuz yuvasi", "Govde", yuva.removeSplitter(), "Baski", "PETG-CF", renk="petg", patlat=(-60, 0, 0))
 
 # --- S1 (one-arka servo) + kulak civatalari
 body, dome, yc = servo_local()
@@ -99,7 +99,7 @@ cap = cap.fuse(box(146, 152, -12, 12, 26, 38)).fuse(box(146, 152, -12, 12, -38, 
 cap = cap.cut(cyl(24, (145, 0, 0), (153.01, 0, 0))).cut(cyl(26, (153, 0, 0), (161, 0, 0)))
 for (y, z) in CAP_B:
     cap = cap.cut(cyl(CLEAR[3] / 2, (145, y, z), (153, y, z)))
-add("Rulman kapagi", "Govde", cap.removeSplitter(), "Baski", "PETG", renk="petg", patlat=(55, 0, 0))
+add("Rulman kapagi", "Govde", cap.removeSplitter(), "Baski", "PETG-CF", renk="petg", patlat=(55, 0, 0))
 b_in, b_out = bearing(40, 52, 7, (153, 0, 0), (1, 0, 0), 22.3, 24.4)
 add("6808-2RS rulman (dis bilezik)", "Govde", b_out, "Satin", "Celik", kod="6808-2RS rulman 40x52x7", renk="celik",
     patlat=(75, 0, 0))
@@ -136,10 +136,80 @@ S2_HOLES = [(XR - 5, -14.75), (XR + 5, -14.75), (XR - 5, 34.75), (XR + 5, 34.75)
 for (x, y) in S2_HOLES:
     hub = hub.cut(cyl(CLEAR[4] / 2, (x, y, 2), (x, y, 8)))
 hub = hub.cut(insert_hole(5, (XR, 0, -28), (0, 0, 1), extra=0.0))
-add("Omuz gobegi", "Gobek", hub.removeSplitter(), "Baski", "PETG", renk="petg2", patlat=(110, 0, 0))
+# S1 kablo kaseti (A', 15 Ekim 2026; arayuz.KOL_KABLO["s1"]): tambur gobegin on yuzune (x 163) 3x M3 ile baglanir -> 3 isil gomme
+S1K = A.KOL_KABLO["s1"]
+TB = S1K["tambur"]
+
+
+def psi_yz(psi, r):
+    """S1 ekseni etrafinda aci (psi = atan2(-z, y), derece) ve yaricap -> (y, z)."""
+    a = math.radians(psi)
+    return r * math.cos(a), -r * math.sin(a)
+
+
+TB_VIDA = [psi_yz(ps, TB["vida_r"]) for ps in TB["kol_psi"]]
+for (y, z) in TB_VIDA:
+    hub = hub.cut(insert_hole(3, (TB["kol_x"][1], y, z), (1, 0, 0)))
+add("Omuz gobegi", "Gobek", hub.removeSplitter(), "Baski", "PETG-CF", renk="petg2", patlat=(110, 0, 0))
 for g in S1_HORN:
     add("Gobek-horn civatasi M3x12", "Gobek", screw912(3, 12, (159, g.y, g.z), (-1, 0, 0)), "Baglanti", "Celik 8.8",
         kod="M3x12 DIN 912", renk="celik", patlat=(140, 0, 0))
+
+
+def sektor(r0, r1, x0, x1, psi0, psi1):
+    """S1 ekseni etrafinda halka dilimi (psi derece, psi0 < psi1)."""
+    h = Part.makeCylinder(r1, x1 - x0, V(x0, 0, 0), V(1, 0, 0), 360).cut(Part.makeCylinder(r0, x1 - x0 + 2, V(x0 - 1, 0, 0), V(1, 0, 0)))
+    if psi1 - psi0 >= 360:
+        return h
+    # psi -> FreeCAD silindir acisi: X ekseni etrafinda; dilim kutularla (yarim duzlemler) kesilir
+    r = r1 + 5
+    pts = [V(x0 - 1, 0, 0)]
+    n = max(2, int((psi1 - psi0) / 10) + 1)
+    for i in range(n + 1):
+        ps = psi0 + (psi1 - psi0) * i / n
+        y, z = psi_yz(ps, r / math.cos(math.radians((psi1 - psi0) / n / 2)))
+        pts.append(V(x0 - 1, y, z))
+    pts.append(V(x0 - 1, 0, 0))
+    kama = Part.Face(Part.makePolygon(pts)).extrude(V(x1 - x0 + 2, 0, 0))
+    return h.common(kama)
+
+
+# --- S1 kablo tamburu (gobekle doner): halka r 37-39 + iki yanda dudak (ic kosuyu eksenel tutar) + gobek on yuzune 3 kol.
+#     +x dudakta kablo giris centigi; bag noktasinda kablo bagi icin iki yarik. Kapak M3 basi (r 36,3, x <= 155) -> 0,7 mm.
+_tr0, _tr1 = TB["r"]
+_tx0, _tx1 = TB["x"]
+_dt = TB["dudak_t"]
+# C halka: yalniz ic kosunun gezdigi yay (yay_psi, gobek cercevesi); arka-ust bosluk S2 lopuna yer birakir. Kablo bagdan once halkaya
+# degmez (gecis yolu halkanin acik ucundan girer), +x dudakta centik gerekmez.
+_yp0, _yp1 = TB["yay_psi"]
+drum = sektor(_tr0, _tr1, _tx0, _tx1, _yp0, _yp1)
+for _xa in (_tx0, _tx1 - _dt):
+    drum = drum.fuse(sektor(_tr0, TB["dudak_r"], _xa, _xa + _dt, _yp0, _yp1))
+for _ps in (TB["bag_psi"] + 3.0, TB["bag_psi"] + 11.0):         # 2,5 mm kablo bagi icin 3 x 1,6 yarik (halkadan gecer)
+    drum = drum.cut(sektor(_tr0 - 1, _tr1 + 1, 154.4, 157.4, _ps - 1.25, _ps + 1.25))
+# kollar: halkanin icinden gobek yuzune uzanan dikme; alt (-x) yuzu 45 derece pah (+X baski yonunde ice konsol yok). Kapak M3 basi
+# (x <= 155, r <= 36,3) icin pah x 155,5'te r 36,8'den baslar. Vida basi pahin icine acilan havsada (oturma x = HAVSA_X).
+_kg = TB["kol_gen"] / 2
+_kr0, _kr1 = TB["kol_r"]
+_k_x0 = 155.5
+_k_r0 = _tr0 - 0.2
+HAVSA_X = _k_x0 + (_k_r0 - _kr0) - 0.8                                # 160,5: pahin r 31'e indigi yerden 0,8 geride
+for ps in TB["kol_psi"]:
+    kes_ = Part.Face(Part.makePolygon([V(_k_x0, _tr1, -_kg), V(TB["kol_x"][1], _tr1, -_kg), V(TB["kol_x"][1], _kr0, -_kg),
+                                       V(_k_x0 + (_k_r0 - _kr0), _kr0, -_kg), V(_k_x0, _k_r0, -_kg), V(_k_x0, _tr1, -_kg)]))
+    kol_ = kes_.extrude(V(0, 0, 2 * _kg))
+    kol_ = kol_.cut(cyl(CLEAR[3] / 2, (_k_x0 - 1, TB["vida_r"], 0), (TB["kol_x"][1] + 1, TB["vida_r"], 0)))
+    kol_ = kol_.cut(cyl(3.0, (_k_x0 - 1, TB["vida_r"], 0), (HAVSA_X, TB["vida_r"], 0)))      # O6 havsa (DIN 912 M3 basi O5,5)
+    kol_.rotate(V(0, 0, 0), V(-1, 0, 0), ps)                        # +psi: Pp ile ayni yon (X ekseni etrafinda -psi)
+    drum = drum.fuse(kol_)
+drum = drum.removeSplitter()
+add("S1 kablo tamburu", "Gobek", drum, "Baski", "PETG", renk="petg", patlat=(200, 0, 0),
+    not_="S1 doner U-lop kaseti (arayuz KOL_KABLO s1): ic kosu bu tambura sarili, gobekle doner")
+for (y, z) in TB_VIDA:
+    add("Tambur civatasi M3x8", "Gobek", screw912(TB["vida"][0], TB["vida"][1], (HAVSA_X, y, z), (1, 0, 0)), "Baglanti",
+        "Celik 8.8", kod="M3x8 DIN 912", renk="celik", patlat=(170, 0, 0))
+    add("Isil gomme somun M3 (gobekte)", "Gobek", insert(3, (TB["kol_x"][1], y, z), (1, 0, 0)), "Baglanti", "Pirinc",
+        kod="M3 isil gomme somun", renk="pirinc", patlat=(230, 0, 0))
 
 body2, dome2, _ = servo_local()
 add("S2 servo DS3218MG (yana acma)", "Gobek", place(body2, (XR, 0, Z_S2), ROT_S2), "Satin", "-", kod="DS3218MG servo",
@@ -180,7 +250,7 @@ fork = fork.cut(cyl(8, (XR, 0, -33.01), (XR, 0, -27.99)))
 TUBE_S = [((XR, -50, ZC + 25.4), (0, 0, -1)), ((XR, -50, ZC - 25.4), (0, 0, 1))]
 for (p, d) in TUBE_S:
     fork = fork.cut(insert_hole(3, p, d))
-add("Kol catali", "Kol", fork.removeSplitter(), "Baski", "PETG", renk="petg", patlat=(110, -40, 0))
+add("Kol catali", "Kol", fork.removeSplitter(), "Baski", "PETG-CF", renk="petg", patlat=(110, -40, 0))
 add("625ZZ rulman (dis bilezik)", "Kol", b5_out, "Satin", "Celik", kod="(625ZZ ile)", renk="celik",
     patlat=(110, -40, -45))
 for g in S2_HORN:
@@ -213,6 +283,7 @@ PATLAT = {
     "Rulman kapagi": (175, 0, 0), "Kapak civatasi M3x12": (205, 0, 0), "Isil gomme somun M3 (yuvada)": (-10, 0, 0),
     "6808-2RS rulman (dis bilezik)": (190, 0, 0), "6808-2RS rulman (ic bilezik)": (190, 0, 0),
     "Omuz gobegi": (235, 0, 0), "Gobek-horn civatasi M3x12": (275, 0, 0),
+    "S1 kablo tamburu": (205, 0, 0), "Tambur civatasi M3x8": (180, 0, 0), "Isil gomme somun M3 (gobekte)": (240, 0, 0),
     "S2 servo DS3218MG (yana acma)": (235, 0, 70), "S2 servo cikis mili": (235, 0, 70),
     "S2 kulak civatasi M4x16": (235, 0, 110), "S2 kontra somun M4": (235, 0, -30),
     "Isil gomme somun M5 (gobekte)": (235, 0, -12),
@@ -232,8 +303,10 @@ for p in P:
 ALT_KOL = dict(m=260.0, p=(XR, -200.0, ZC), ad="Dirsek + on kol + el (eski modelden tahmini 260 g)")
 
 # ====================================================================== kutle
-RHO = {"PETG": 1.27 * 0.6, "Aluminyum": 2.70, "Aluminyum 6063": 2.70, "Celik": 7.85, "Celik 8.8": 7.85,
-       "Pirinc": 8.50}
+# baski parcalari: rho x etkin doluluk (arayuz.OMUZ["baski_rho"]; M4: PETG-CF 0,8-0,9 -> 0,9, PETG tup 0,8). Eskiden PETG 1,27 x 0,6.
+RHO = {m: r * d for m, (r, d) in A.OMUZ["baski_rho"].items()}
+RHO.update({"Aluminyum": 2.70, "Aluminyum 6063": 2.70, "Celik": 7.85, "Celik 8.8": 7.85,
+       "Pirinc": 8.50})
 for p in P:
     p["hacim"] = p["shape"].Volume
     sol = p["shape"].Solids

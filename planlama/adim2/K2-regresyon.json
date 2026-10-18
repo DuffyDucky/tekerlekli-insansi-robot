@@ -1,0 +1,1173 @@
+{
+ "omuz": {
+  "anahtar_eklenen": [
+   "statik_poz",
+   "statik_s2_0"
+  ],
+  "anahtar_silinen": [],
+  "parca_sayisi": {
+   "once": 66,
+   "sonra": 73
+  },
+  "kutle": {
+   "once": {
+    "Govde": 595.2,
+    "Gobek": 147.2,
+    "Kol": 105.8
+   },
+   "sonra": {
+    "Govde": 625.7,
+    "Gobek": 175.2,
+    "Kol": 146.9
+   }
+  },
+  "bosluk": {
+   "once": {
+    "Kol-Gobek": [
+     0.0,
+     "S2 horn 25T aluminyum disk",
+     "S2 servo cikis mili"
+    ],
+    "Kol-Govde": [
+     4.0,
+     "Kol catali",
+     "Rulman kapagi"
+    ],
+    "Gobek-Govde": [
+     0.0,
+     "S1 horn 25T aluminyum disk",
+     "S1 servo cikis mili"
+    ]
+   },
+   "sonra": {
+    "Kol-Gobek": [
+     0.0,
+     "S2 horn 25T aluminyum disk",
+     "S2 servo cikis mili"
+    ],
+    "Kol-Govde": [
+     6.29,
+     "Kol catali",
+     "Rulman kapagi"
+    ],
+    "Gobek-Govde": [
+     0.0,
+     "S1 horn 25T aluminyum disk",
+     "S1 servo cikis mili"
+    ]
+   }
+  },
+  "eklem_siniri": {
+   "once": {
+    "one_arka": [
+     -45.0,
+     135.0
+    ],
+    "yana": [
+     3.0,
+     120.0
+    ],
+    "kaynak": "arayuz.OMUZ"
+   },
+   "sonra": {
+    "one_arka": [
+     -45.0,
+     135.0
+    ],
+    "yana": [
+     5.0,
+     120.0
+    ],
+    "kaynak": "arayuz.OMUZ"
+   }
+  },
+  "parca_eklenen": [],
+  "parca_silinen": [],
+  "kutle_degisen_parca": [],
+  "degisen_ust_anahtar": [
+   "baski",
+   "bom",
+   "bosluk",
+   "eklem_siniri",
+   "kol_gobek",
+   "kutle",
+   "parca_sayisi",
+   "serbest",
+   "sure_s",
+   "tork"
+  ],
+  "bom_eklenen": [],
+  "bom_silinen": [],
+  "bom_degisen": [
+   [
+    "[\"Baglanti\", \"M3 isil gomme somun\"]",
+    [
+     "Baglanti",
+     "M3 isil gomme somun",
+     6
+    ],
+    [
+     "Baglanti",
+     "M3 isil gomme somun",
+     9
+    ]
+   ],
+   [
+    "[\"Baglanti\", \"M3x8 DIN 912\"]",
+    [
+     "Baglanti",
+     "M3x8 DIN 912",
+     6
+    ],
+    [
+     "Baglanti",
+     "M3x8 DIN 912",
+     9
+    ]
+   ]
+  ],
+  "baski_eklenen": [
+   "S1 kablo tamburu"
+  ],
+  "baski_degisen": [
+   [
+    "Kol catali",
+    {
+     "kutle": [
+      62.4,
+      93.6
+     ]
+    }
+   ],
+   [
+    "Omuz gobegi",
+    {
+     "kutle": [
+      39.7,
+      59.3
+     ],
+     "hacim_cm3": [
+      52.1,
+      51.9
+     ]
+    }
+   ],
+   [
+    "Omuz yuvasi",
+    {
+     "kutle": [
+      50.0,
+      75.0
+     ]
+    }
+   ],
+   [
+    "Rulman kapagi",
+    {
+     "kutle": [
+      11.0,
+      16.4
+     ]
+    }
+   ],
+   [
+    "Ust kol tupu",
+    {
+     "kutle": [
+      29.8,
+      39.7
+     ]
+    }
+   ]
+  ],
+  "serbest_farkli_poz": [
+   [
+    "-10,0",
+    true,
+    false
+   ],
+   [
+    "-20,0",
+    true,
+    false
+   ],
+   [
+    "-30,0",
+    true,
+    false
+   ],
+   [
+    "-40,0",
+    true,
+    false
+   ],
+   [
+    "-50,0",
+    true,
+    false
+   ],
+   [
+    "-60,0",
+    true,
+    false
+   ],
+   [
+    "0,0",
+    true,
+    false
+   ],
+   [
+    "10,0",
+    true,
+    false
+   ],
+   [
+    "100,0",
+    true,
+    false
+   ],
+   [
+    "110,0",
+    true,
+    false
+   ],
+   [
+    "120,0",
+    true,
+    false
+   ],
+   [
+    "130,-5",
+    true,
+    false
+   ],
+   [
+    "130,0",
+    true,
+    false
+   ],
+   [
+    "140,-5",
+    true,
+    false
+   ],
+   [
+    "140,0",
+    true,
+    false
+   ],
+   [
+    "150,-5",
+    true,
+    false
+   ],
+   [
+    "150,0",
+    true,
+    false
+   ],
+   [
+    "160,-5",
+    true,
+    false
+   ],
+   [
+    "160,0",
+    true,
+    false
+   ],
+   [
+    "170,-5",
+    true,
+    false
+   ]
+  ],
+  "statik_s2_0": [
+   [
+    "S1 kablo tamburu",
+    "Kol catali",
+    97.87
+   ],
+   [
+    "S1 kablo tamburu",
+    "Ust kol tupu",
+    65.01
+   ]
+  ],
+  "tork_max_once_sonra": [
+   5.61,
+   5.79,
+   5.72,
+   5.93
+  ]
+ },
+ "kabuk": {
+  "anahtar_eklenen": [
+   "kaset_kontrol",
+   "s1_kaset"
+  ],
+  "anahtar_silinen": [],
+  "parca_sayisi": {
+   "once": 194,
+   "sonra": 206
+  },
+  "baski_sayisi": {
+   "once": 15,
+   "sonra": 19
+  },
+  "kutle_g": {
+   "once": 4886.3,
+   "sonra": 4921.5
+  },
+  "kutle_grup": {
+   "once": {
+    "Govde kabugu": 2059.3,
+    "Taban etegi": 1791.3,
+    "Gogus ekrani": 539.3,
+    "Govde braketleri": 285.7,
+    "Etek braketleri": 210.6
+   },
+   "sonra": {
+    "Govde kabugu": 2059.8,
+    "Taban etegi": 1791.3,
+    "S1 kablo kaseti": 34.7,
+    "Gogus ekrani": 539.3,
+    "Govde braketleri": 285.7,
+    "Etek braketleri": 210.6
+   }
+  },
+  "agirlik_merkezi": {
+   "once": [
+    -0.08,
+    466.68,
+    8.57
+   ],
+   "sonra": [
+    -0.08,
+    470.08,
+    8.83
+   ]
+  },
+  "parca_eklenen": [],
+  "parca_silinen": [],
+  "kutle_degisen_parca": [],
+  "degisen_ust_anahtar": [
+   "agirlik_merkezi",
+   "baski",
+   "baski_sayisi",
+   "bolge",
+   "bom",
+   "cakisma_cift_sayisi",
+   "kutle_g",
+   "kutle_grup",
+   "kutle_tur",
+   "parca_sayisi",
+   "step_kati",
+   "sure_s"
+  ],
+  "bom_eklenen": [
+   [
+    "Baglanti",
+    "M3 isil gomme somun",
+    65,
+    17.3
+   ],
+   [
+    "Baglanti",
+    "M3x8 DIN 912",
+    10,
+    9.3
+   ],
+   [
+    "Baski",
+    "S1 kaset govdesi sag",
+    1,
+    8.8
+   ],
+   [
+    "Baski",
+    "S1 kaset govdesi sol",
+    1,
+    8.8
+   ],
+   [
+    "Baski",
+    "S1 kaset kapagi sag",
+    1,
+    6.8
+   ],
+   [
+    "Baski",
+    "S1 kaset kapagi sol",
+    1,
+    6.8
+   ]
+  ],
+  "bom_silinen": [
+   "[\"Baglanti\", \"M3 isil gomme somun\", 61]",
+   "[\"Baglanti\", \"M3x8 DIN 912\", 6]"
+  ],
+  "bom_degisen": [
+   [
+    "[\"Baski\", \"Omuz bandi sag\", 1]",
+    [
+     "Baski",
+     "Omuz bandi sag",
+     1,
+     192.3
+    ],
+    [
+     "Baski",
+     "Omuz bandi sag",
+     1,
+     192.0
+    ]
+   ],
+   [
+    "[\"Baski\", \"Omuz bandi sol\", 1]",
+    [
+     "Baski",
+     "Omuz bandi sol",
+     1,
+     184.8
+    ],
+    [
+     "Baski",
+     "Omuz bandi sol",
+     1,
+     184.5
+    ]
+   ]
+  ],
+  "baski_eklenen": [
+   "S1 kaset govdesi sag",
+   "S1 kaset govdesi sol",
+   "S1 kaset kapagi sag",
+   "S1 kaset kapagi sol"
+  ],
+  "baski_degisen": [
+   [
+    "Omuz bandi sag",
+    {
+     "cikinti_orani": [
+      0.0039,
+      0.0044
+     ],
+     "cikinti_alan_cm2": [
+      4.7,
+      5.3
+     ],
+     "hacim_cm3": [
+      168.2,
+      168.0
+     ],
+     "yuzey_cm2": [
+      1195.3,
+      1198.3
+     ]
+    }
+   ],
+   [
+    "Omuz bandi sol",
+    {
+     "cikinti_orani": [
+      0.0036,
+      0.0041
+     ],
+     "cikinti_alan_cm2": [
+      4.1,
+      4.7
+     ],
+     "hacim_cm3": [
+      161.7,
+      161.5
+     ],
+     "yuzey_cm2": [
+      1146.5,
+      1149.5
+     ]
+    }
+   ]
+  ]
+ },
+ "dirsek": {
+  "anahtar_eklenen": [],
+  "anahtar_silinen": [],
+  "parca_eklenen": [],
+  "parca_silinen": [],
+  "kutle_degisen_parca": [],
+  "degisen_ust_anahtar": [
+   "kablo",
+   "sure_s",
+   "tork"
+  ],
+  "bom_eklenen": [],
+  "bom_silinen": [],
+  "bom_degisen": [],
+  "baski_eklenen": [],
+  "baski_degisen": []
+ },
+ "eklem_sinirlari_json_uretici_ayni": true,
+ "OMUZ_yana": [
+  5.0,
+  120.0
+ ],
+ "json_r_s2": [
+  5.0,
+  120.0
+ ],
+ "json_l_s2": [
+  5.0,
+  120.0
+ ],
+ "yasak_kol_kosulu": {
+  "one_arka": [
+   120.0,
+   135.0
+  ],
+  "yana": [
+   5.0,
+   5.0
+  ],
+  "dirsek": [
+   65.0,
+   105.0
+  ],
+  "bilek": [
+   -90.0,
+   90.0
+  ]
+ },
+ "sinir_eklem-dogrulama.json": {},
+ "sinir_omuz-analiz.json": {
+  "one_arka": [
+   -45.0,
+   135.0
+  ],
+  "yana": [
+   5.0,
+   120.0
+  ],
+  "kaynak": "arayuz.OMUZ"
+ },
+ "kalinti": [
+  [
+   "kod\\ortak\\eklem_sinirlari.json",
+   200,
+   "yana[ _]?0\\b",
+   "\"not_\": \"kol_kosulu disinda kafa-kol cakismasi taramada yok; kosulsuz uygulamak guvenli ama kafayi gereksiz kisitlar. Olculen yana 0 idi; S2 alt siniri +5 oldug"
+  ],
+  [
+   "planlama\\adim1\\A2-omuz-sinirlar.md",
+   8,
+   "3…120",
+   "| Omuz yana açma (S2) sınırı | 0…120° | **3…120°** (`arayuz.OMUZ[\"yana_aralik\"]`) |"
+  ],
+  [
+   "planlama\\adim1\\A2-omuz-sinirlar.md",
+   10,
+   "yana[ _]?0\\b",
+   "| Kol ↔ kabuk en küçük boşluk (yana alt sınırda) | 3,76 mm (yana 0°, öne ±40°) | **7,17 mm** (yana 3°; hedefli ölçüm, bkz. C1) |"
+  ],
+  [
+   "planlama\\adim1\\A2-omuz-sinirlar.md",
+   14,
+   "yana[ _]?0\\b",
+   "| Kafa-kol yasak bölgesi | tablo: öne 125…135°, yana 0°, dirsek 70…105°; pan 30…55°, tilt 25…30° | **kutu: pan 25…60° (sol kolda −60…−25°), tilt 20…30°**; kol k"
+  ],
+  [
+   "planlama\\adim1\\A2-omuz-sinirlar.md",
+   21,
+   "yana[ _]?0\\b",
+   "- `carpisma.py`: `KOL_ARALIK`, omuz yükleyicisinin `eklem_araligi`, `KABA` ızgarası `A.OMUZ`'dan (yana ızgarası 3,15,30…120; eskiden 0,15,…); kol-kol ve jest te"
+  ],
+  [
+   "planlama\\adim1\\A2-omuz-sinirlar.md",
+   53,
+   "yana[ _]?0\\b",
+   "Kural: ölçülen aralık her eksende ±5° (tarama adımı, OZET'teki \"+1 adım pay\" kuralı) genişletilip eklem aralığına kırpıldı (`arayuz._genislet`). Pan 30…55 → **2"
+  ],
+  [
+   "planlama\\adim1\\A2-omuz-sinirlar.md",
+   76,
+   "yana[ _]?0\\b",
+   "1. **Yalnız metin, dokunulmadı** (sayılar 0…120 diyor): `OZET.md` S2 ve yasak bölge satırları, `README.md`, `dirsek/dirsek_rapor.py` (273, 425, 522, 532), `kabu"
+  ],
+  [
+   "planlama\\adim1\\A2-omuz-sinirlar.md",
+   77,
+   "yana[ _]?0\\b",
+   "2. **Montaj tarafı, dokunulmadı:** `montaj/montaj_gorsel.py` Kollari_oynat (yana 0…69°) ve poz-önü (yana 0°) sınırın altına iniyor; `montaj/eklem_dogrulama.py` "
+  ],
+  [
+   "planlama\\adim1\\A2-omuz-sinirlar.md",
+   79,
+   "yana[ _]?0\\b",
+   "4. `carpisma.py` KABA yana ızgarası artık 3,15,30…120 (eskiden 0,15,…): poz sayısı aynı (9), pozlar farklı. `carpisma-bolum/*.json` eski; `carpisma_kos.py` izle"
+  ],
+  [
+   "planlama\\adim1\\A2-omuz-sinirlar.md",
+   80,
+   "yana 3\\b",
+   "5. Yasak kutu ve kol koşulundaki \"yana 3…5\" taramayla doğrulanmadı (C7)."
+  ],
+  [
+   "planlama\\adim1\\A2-omuz-sinirlar.md",
+   88,
+   "3…120",
+   "- `omuz_rapor.py`: `rapor.md` + `rapor.html` + çalışma alanı haritası yeniden üretildi (çerçeve artık 3…120 × −45…135). GIF kareleri (`gorsel/kare`) 7 Ekim'den,"
+  ],
+  [
+   "planlama\\adim1\\G-takip.md",
+   21,
+   "yana[ _]?0\\b",
+   "- Madde 2 tamamlandı: `montaj/eklem_dogrulama.py`: `Y0 = arayuz.OMUZ[\"yana_aralik\"][0]`; sınır içi vakalardaki tüm \"yana 0\" pozları (POZ 4, DPOZ 5, iki kol 1, k"
+  ],
+  [
+   "planlama\\adim1\\G-takip.md",
+   23,
+   "yana 3\\b",
+   "- Koşular: `dirsek_montaj.py` (31 s): geçersiz 0, ev pozu çakışma 0, omuz arayüzü 0, bağlantı 22/22, kelepçe kontrolleri geçti (aşağıdaki tablo); çatal 88,78 → "
+  ],
+  [
+   "planlama\\adim1\\G-takip.md",
+   44,
+   "yana 3\\b",
+   "| 2 Sınırlar | dirsek tork ızgarası S1 −45…135 / S2 3…120 (`_izgara`, `A.OMUZ`); iskelet en kötü durum ızgarası aynı kaynaktan (15°); `eklem_dogrulama.py` sınır"
+  ],
+  [
+   "planlama\\adim1\\G-takip.md",
+   48,
+   "yana[ _]?0\\b",
+   "- Açık: `montaj/montaj_gui_kontrol.py` sınır beklentisi (dokunma yetkim yoktu) yana 0 içeriyorsa 6. adımda bakılmalı; rapor metinlerindeki \"yana 0…120\" (A2'nin "
+  ],
+  [
+   "planlama\\adim1\\V-dogrulama.md",
+   20,
+   "yana 3\\b",
+   "- `python -I kod/ortak/eklem_sinirlari_uret.py --kontrol` -> \"guncel\", rc 0. `eklem_sinirlari.json`: S2 3…120, S1 -45…135, kutu pan 25…60 (sol -60…-25), tilt 20"
+  ],
+  [
+   "planlama\\adim1\\V-dogrulama.md",
+   22,
+   "yana[ _]?0\\b",
+   "- Üretim: omuz_regresyon (54 s) -> fark.json önceki ile AYNI; yalnız beklenen 3 fark (parça 70->66, adlar, BOM 17->16). omuz-analiz.json önceki ile aynı. iskele"
+  ],
+  [
+   "planlama\\adim1\\V-dogrulama.md",
+   51,
+   "3…120",
+   "| omuz (66) | 0 | 0 | statik 0; tarama kol×göbek 8, göbek×gövde 0, kol×gövde 94 (önceki ile aynı) | tork farkı 0 (5,722 kg·cm) | eklem testi True | M6 payı 4/4;"
+  ],
+  [
+   "planlama\\adim1\\V-dogrulama.md",
+   63,
+   "yana[ _]?0\\b",
+   "- KESİN: `dirsek_montaj.py:413-414` tork taraması hâlâ elle `range(-45,136,5)` / `range(0,121,5)` (S2 3° yok; muhafazakâr ama C3 hedefine aykırı). `iskelet_mont"
+  ],
+  [
+   "planlama\\adim1\\V-dogrulama.md",
+   64,
+   "yana[ _]?0\\b",
+   "- KESİN: `montaj/eklem_dogrulama.py:194` POZ ve `montaj_gorsel.py` (poz-önü yana=0, Kollari_oynat yana 0…69) S2 3°'nin altına iniyor; ana montaj koşusunda `sini"
+  ],
+  [
+   "planlama\\adim1\\V-dogrulama.md",
+   72,
+   "yana[ _]?0\\b",
+   "OZET.md (202/306 parça, 4.901/7.508 g, S2 0…120, eski yasak tablosu, dil 0,2 mm); tasarim/freecad/README.md (S2 0…120, pan 30…55 / tilt 25…30, 306 parça/7.508 g"
+  ],
+  [
+   "planlama\\adim2\\K-kontrol.md",
+   38,
+   "3…120",
+   "| S2 lopu (L 80, 3…120°) | R 12,36 / boşluk 1,57 | R_min **12,39** (120°), boşluk **1,57** (kol çatalı, 3°); gerçek kabuk dahil değişmedi | ✔ |"
+  ],
+  [
+   "planlama\\adim2\\K-kontrol.md",
+   83,
+   "3…120",
+   "| dirsek | 53 → 53 | 0 / 0 / 0 | 22/22 → 22/22 | 370,0 → 367,4 g | G yarığı + M1 oluk/çentik/tırnak + A1 tüp içi 25,5 → 25,65 (1. adım); serbest aralık −60 → −4"
+  ],
+  [
+   "planlama\\adim2\\K-kontrol.md",
+   86,
+   "3…120",
+   "| iskelet | 59 → 59 | 0 / 0 / 0 | 12/12 | 5.793,1 aynı | köşe M6 kontrolü eklendi; eğilme ızgarası 3…120 (σ 0,931 → 0,911 MPa, G'nin kaydıyla aynı) |"
+  ],
+  [
+   "planlama\\adim2\\K-kontrol.md",
+   94,
+   "sinir 0\\)",
+   "- `montaj/montaj_gui_kontrol.py` 220: beklenti metni \"yana acma, iceri (sinir 0)\"."
+  ],
+  [
+   "planlama\\adim2\\K-kontrol.md",
+   97,
+   "yana[ _]?0\\b",
+   "- Rapor metinlerinde \"yana 0…120\" geçen yerler: `dirsek_rapor`, `kabuk_rapor`, `iskelet_rapor`, `kafa_rapor`, `taban_rapor`, `montaj_rapor`."
+  ],
+  [
+   "planlama\\adim2\\M1-kablo-yolu.md",
+   47,
+   "yana 3\\b",
+   "- S2: K çatal arka plakasında (S2 ekseninden 8 dış, 26 aşağı; z −35,6, kablo plakanın arkasında yan duruşta), G2 göbek iç şeridinde (x 163…168, eksenden 19,5 iç"
+  ],
+  [
+   "planlama\\adim2\\M1-kablo-yolu.md",
+   83,
+   "yana 3\\b",
+   "| S2 lopu (yana 3…120°, 3° adım, 41 poz; S1 −45…135 kabuk/kapak/yuva dahil), L 80 | R_min **12,36 mm**, en dar boşluk **1,57 mm** (kol çatalı, 3°), kiriş 31,3…5"
+  ],
+  [
+   "planlama\\adim2\\S1-kaset.md",
+   10,
+   "yana[ _]?0\\b",
+   "- [x] 3. S2 alt sınırı 5° + \"yana 0\" kalıntıları (arayuz, eklem_sinirlari.json, omuz_gorsel/goster, carpisma JEST ev, gui metni, yorumlar)"
+  ],
+  [
+   "planlama\\adim2\\S1-kaset.md",
+   70,
+   "yana 3\\b",
+   "- `kod/ortak/eklem_sinirlari.json` üreticiyle yeniden yazıldı: yalnız r_s2/l_s2 min 3→5, neden metni, yasak kutu yana 3→5."
+  ],
+  [
+   "planlama\\adim2\\S1-kaset.md",
+   136,
+   "yana[ _]?0\\b",
+   "6. Yasak kutu kol koşulu yana 5…5 (tek nokta) oldu; C7'de yeniden bakılmalı. Rapor metinlerinde \"yana 0…120\" (dirsek/kabuk/iskelet/"
+  ],
+  [
+   "raporlar\\aku-secimi\\rapor.html",
+   66,
+   "yana 3\\b",
+   "<div class=\"tw\"><table style=\"min-width:900px\"><thead><tr><th></th><th>1. tercih: yuvaya birebir</th><th>2. tercih: uzun çalışma / ucuz</th><th>3. tercih: yedek"
+  ],
+  [
+   "raporlar\\kaynaklar\\06-aku-secimi.md",
+   152,
+   "yana 3\\b",
+   "| Kütle farkı · devrilme | +0,2 kg · ileri 3,6×, geri 3,0×, yana 3,2× | kütle yok (benzer 24 Ah paketler 2,7–4 kg → 0…+1,2 kg); geri pay 3,0× sabit | −1,3 kg · "
+  ],
+  [
+   "tasarim\\freecad\\arayuz.py",
+   162,
+   "alt sinir[^\\n]{0,20}\\b3\\b",
+   "yana_aralik=(5.0, 120.0),            # S2: alt sinir 0 -> +3 (C1, 14 Ekim) -> +5 (S1 kablo kaseti, 15 Ekim 2026): kol S2 3'te"
+  ],
+  [
+   "tasarim\\freecad\\arayuz.py",
+   595,
+   "yana[ _]?0\\b",
+   "\"Olculen yana 0 idi; S2 alt siniri +5 oldugundan (15 Ekim 2026, S1 kaseti) kosul yana 5...5 olur. Kutu C7 tam taramasiyla dogrulanacak.\","
+  ],
+  [
+   "tasarim\\freecad\\carpisma-sonuc.json",
+   3015,
+   "yana[ _]?0\\b",
+   "\"aciklama\": \"omuz one-arka -60 ve 150 (yana 0...120) + yana -10 (one-arka -45...135); dirsek [0, 60, 105]; bilek [-90, 0, 90]\","
+  ],
+  [
+   "tasarim\\freecad\\carpisma-sonuc.json",
+   6908,
+   "yana[ _]?0\\b",
+   "\"aciklama\": \"omuz one-arka -60 ve 150 (yana 0...120) + yana -10 (one-arka -45...135); dirsek [0, 60, 105]; bilek [-90, 0, 90]\","
+  ],
+  [
+   "tasarim\\freecad\\carpisma.py",
+   407,
+   "yana[ _]?0\\b",
+   "YANA_MIN = A.OMUZ[\"yana_aralik\"][0]    # S2 alt siniri (5; 15 Ekim 2026): kol-kol ve jest test pozlarindaki \"yana 0\" bunun yerine"
+  ],
+  [
+   "tasarim\\freecad\\OZET.md",
+   38,
+   "0…120",
+   "| Omuz yana açma (S2) | 0…120° | 0°'nin altında kol / el kabuğa çarpar (yana −10°'de el kabuğa giriyor) |"
+  ],
+  [
+   "tasarim\\freecad\\OZET.md",
+   44,
+   "yana[ _]?0\\b",
+   "| **Kafa-kol yasak bölgesi** | kol öne 125…135°, yana 0°, dirsek 70…105° iken kafa o kola doğru pan 30…55° (sol kol −55…−30°) **ve** tilt 25…30° birlikte verilm"
+  ],
+  [
+   "tasarim\\freecad\\README.md",
+   91,
+   "0…120",
+   "öne-arka (S1, −45…135°) ve yana açma (S2, 0…120°) döner eklemi. Her dirsek çatalı omuzun Kol grubuna sabit"
+  ],
+  [
+   "tasarim\\freecad\\README.md",
+   124,
+   "0…120",
+   "| Modüller arası | `carpisma.py` (bölümlü, `carpisma_kos.py`) | ev pozu + her hareketli modülün tüm tarama pozları; kol zinciri (omuz −45…135 / 0…120 × dirsek 0"
+  ],
+  [
+   "tasarim\\freecad\\README.md",
+   175,
+   "yana[ _]?0\\b",
+   "- **Yasak poz bölgesi (yazılım, 9 Ekim 2026 kesin sınır):** kol öne 125…135°, yana 0°, dirsek 70…105° (el yüzün önünde) iken kafa o kola"
+  ],
+  [
+   "tasarim\\freecad\\carpisma-bolum\\kol_sag.json",
+   98,
+   "yana[ _]?0\\b",
+   "\"aciklama\": \"omuz one-arka -60 ve 150 (yana 0...120) + yana -10 (one-arka -45...135); dirsek [0, 60, 105]; bilek [-90, 0, 90]\","
+  ],
+  [
+   "tasarim\\freecad\\carpisma-bolum\\kol_sol.json",
+   98,
+   "yana[ _]?0\\b",
+   "\"aciklama\": \"omuz one-arka -60 ve 150 (yana 0...120) + yana -10 (one-arka -45...135); dirsek [0, 60, 105]; bilek [-90, 0, 90]\","
+  ],
+  [
+   "tasarim\\freecad\\dirsek\\dirsek_montaj.py",
+   464,
+   "yana 3\\b",
+   "\"\"\"Eklem araligi (arayuz) ucta tam: alt/ust sinir + aradaki adim katlari (ornek yana 3...120 -> 3, 5, 10, ..., 120).\"\"\""
+  ],
+  [
+   "tasarim\\freecad\\dirsek\\dirsek_montaj.py",
+   470,
+   "alt sinir[^\\n]{0,20}\\b3\\b",
+   "TH_T = _izgara(A.OMUZ[\"yana_aralik\"])           # S2 (omuz yana acma): arayuz.OMUZ (alt sinir 3)"
+  ],
+  [
+   "tasarim\\freecad\\dirsek\\dirsek_montaj.py",
+   639,
+   "yana 3\\b",
+   "# Dirsek lopu (dirsek 0...105) ve S2 lopu (yana 3...120) duzlemsel elastikayla her pozda cozulur: en kucuk egrilik yaricapi"
+  ],
+  [
+   "tasarim\\freecad\\dirsek\\dirsek_montaj.py",
+   699,
+   "yana 3\\b",
+   "# --- S2 lopu: K kol catalinda (Pr(th)), G2 gobekte; yana 3...120 (3 adim). Gobek cercevesinde: omuz Gobek sabit, Kol + dirsek UstKol"
+  ],
+  [
+   "tasarim\\freecad\\dirsek\\dirsek_rapor.py",
+   280,
+   "yana[ _]?0\\b",
+   "\"**Kabuğa en yakın nokta:** kol aşağıdayken (yana 0°) dirsek çatalının sıkma bileziği göğüs bandına %s mm yaklaşıyor (eklem aralığında \""
+  ],
+  [
+   "tasarim\\freecad\\dirsek\\dirsek_rapor.py",
+   284,
+   "yana[ _]?0\\b",
+   "\"(yana 0…120°) bunu zaten engelliyor; servo kalibrasyonunda 0° konumu kabuğa doğru kaçmamalı.\","
+  ],
+  [
+   "tasarim\\freecad\\dirsek\\dirsek_rapor.py",
+   534,
+   "yana[ _]?0\\b",
+   "\"[öne 60…135°, yana 0…30°, dirsek 0…105°, bilek aynı ve zıt]), çakışma %d. Kollar yalnız dışarı açıldığı (yana 0…120°) ve dirsek ekseni \""
+  ],
+  [
+   "tasarim\\freecad\\dirsek\\dirsek_rapor.py",
+   544,
+   "0…120",
+   "H.append(\"<p><b>Eklem aralığında yasak bölge yok</b>: omuz −45…135° / 0…120°, dirsek 0…105°, bilek ±90° içindeki bütün taranan pozlar \""
+  ],
+  [
+   "tasarim\\freecad\\iskelet\\iskelet_montaj.py",
+   248,
+   "yana 3\\b",
+   "# en kotu durum taramasi: her kol, omuz eklem araliginin tamami (arayuz.OMUZ: one-arka -45...135, yana 3...120), 15 derece adim, yuklu"
+  ],
+  [
+   "tasarim\\freecad\\iskelet\\iskelet_rapor.py",
+   285,
+   "yana[ _]?0\\b",
+   "H.append(\"<p><b>En kötü durum</b> (%s poz çifti tarandı, her kol öne 0…180°, yana 0…120°, 0,5 kg yüklü): direk σ = %s MPa (sağ kol öne %s° / yana %s°, sol kol ö"
+  ],
+  [
+   "tasarim\\freecad\\iskelet\\rapor.html",
+   52,
+   "yana[ _]?0\\b",
+   "<p><b>En kötü durum</b> (13.689 poz çifti tarandı, her kol öne 0…180°, yana 0…120°, 0,5 kg yüklü): direk σ = 0,93 MPa (sağ kol öne 90° / yana 0°, sol kol öne 90"
+  ],
+  [
+   "tasarim\\freecad\\iskelet\\rapor.html",
+   69,
+   "0…120",
+   "<table class=''><tr><th>Sahip</th><th>Bölge</th><th>Global kutu (mm)</th><th>Kaynak</th><th>Not</th></tr><tr><td>iskelet</td><td>Şase sigma çerçevesi</td><td>x "
+  ],
+  [
+   "tasarim\\freecad\\kabuk\\kabuk_rapor.py",
+   276,
+   "yana[ _]?0\\b",
+   "\"**Kol yana 0°'nin altına inerse kabuğa çarpar:** eklem aralığında (öne −45…135°, yana 0…120°) kabuk çakışması 0. Tarama aralığının dışındaki \""
+  ],
+  [
+   "tasarim\\freecad\\kabuk\\kabuk_rapor.py",
+   389,
+   "yana[ _]?0\\b",
+   "H.append(\"<p class='not'>Tarama: öne-arka −60…180° (10°), yana −20…150° (5°), her omuz %d poz. Eklem aralığı öne −45…135°, yana 0…120°. \""
+  ],
+  [
+   "tasarim\\freecad\\kabuk\\kabuk_rapor.py",
+   390,
+   "yana[ _]?0\\b",
+   "\"Kabuğa çarpan pozların hepsi yana 0°'nin altında: %s. Kabuk kaynaklı olanlar (omuzun kendi parçaları serbest) yalnız yana −5°: \""
+  ],
+  [
+   "tasarim\\freecad\\kabuk\\rapor.html",
+   58,
+   "yana[ _]?0\\b",
+   "<div class='tw'><table class=''><tr><th>Omuz</th><th>Taranan poz</th><th>Kabuğa çarpan poz (tümü)</th><th>Eklem aralığında</th><th>Kabuk kaynaklı (omuz kendine "
+  ],
+  [
+   "tasarim\\freecad\\kabuk\\rapor.html",
+   59,
+   "yana[ _]?0\\b",
+   "<p class='not'>Tarama: öne-arka −60…180° (10°), yana −20…150° (5°), her omuz 875 poz. Eklem aralığı öne −45…135°, yana 0…120°. Kabuğa çarpan pozların hepsi yana"
+  ],
+  [
+   "tasarim\\freecad\\kabuk\\rapor.html",
+   71,
+   "yana[ _]?0\\b",
+   "<h2>Açık işler ve varsayımlar</h2><ul><li><b>Kol yana 0°&#x27;nin altına inerse kabuğa çarpar:</b> eklem aralığında (öne −45…135°, yana 0…120°) kabuk çakışması "
+  ],
+  [
+   "tasarim\\freecad\\kafa\\kafa_rapor.py",
+   287,
+   "yana[ _]?0\\b",
+   "\"yana 0…120° 15° adımla, dirsek 0/30/60/90/105°, bilek −90/0/90°) + %d jest pozu (ev, selam, kafa kaşıma, el yüze/ağıza, kol tepede) = \""
+  ],
+  [
+   "tasarim\\freecad\\kafa\\rapor.html",
+   88,
+   "yana[ _]?0\\b",
+   "<p><b>Kapsam (<code>carpisma.py</code> bölüm 4b):</b> kafa pan −180…165° × tilt [-25, -10, 0, 10, 20, 30, 40] (kaba, 15°; eklem aralığı pan −90…90°, tilt −25…30"
+  ],
+  [
+   "tasarim\\freecad\\kafa\\rapor.html",
+   90,
+   "yana[ _]?0\\b",
+   "<h3>En küçük boşluklar (eklem aralığında)</h3><div class='tw'><table class=''><tr><th>Hedef</th><th>En küçük boşluk</th><th>Parça çifti</th><th>Kafa pozu</th><t"
+  ],
+  [
+   "tasarim\\freecad\\kafa\\rapor.html",
+   93,
+   "yana[ _]?0\\b",
+   "<div class='tw'><table class=''><tr><th>Kol</th><th>Grup</th><th>Çakışan alt poz</th><th>Kol açıları (zarf)</th><th>Kafa açıları (zarf)</th><th>Çakışan çift</th"
+  ],
+  [
+   "tasarim\\freecad\\kafa\\rapor.html",
+   95,
+   "yana[ _]?0\\b",
+   "<details><summary>Çakışan alt pozlar (ilk 24 / 396)</summary><div class='tw'><table class=''><tr><th>Kol</th><th>Kol alt pozu</th><th>Kafa bu açılara dönmemeli<"
+  ],
+  [
+   "tasarim\\freecad\\kafa\\rapor.html",
+   96,
+   "yana[ _]?0\\b",
+   "<h3>Jest pozları</h3><div class='tw'><table class=''><tr><th>Kol</th><th>Jest</th><th>Kol pozu</th><th>Kafaya en küçük boşluk (kafa aralıkta)</th><th>Çift, kafa"
+  ],
+  [
+   "tasarim\\freecad\\kafa\\rapor.html",
+   105,
+   "yana[ _]?0\\b",
+   "<h2>Açık işler</h2><ul><li><b>K4 (14-15 Ekim 2026): Pi 5 kafada.</b> Kamera FPC 300 mm ve micro HDMI → HDMI 25–30 cm kafa içinde kalır; boyundan HDMI ve CSI geç"
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   237,
+   "yana[ _]?0\\b",
+   "\"ad\": \"omuz_sag one 30 yana 0\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   428,
+   "yana[ _]?0\\b",
+   "\"ad\": \"omuz_sag one 90 yana 0\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   619,
+   "yana[ _]?0\\b",
+   "\"ad\": \"omuz_sag one 135 yana 0\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   810,
+   "yana[ _]?0\\b",
+   "\"ad\": \"omuz_sag one -45 yana 0\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   2147,
+   "yana[ _]?0\\b",
+   "\"ad\": \"omuz_sol one 30 yana 0\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   2338,
+   "yana[ _]?0\\b",
+   "\"ad\": \"omuz_sol one 90 yana 0\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   2529,
+   "yana[ _]?0\\b",
+   "\"ad\": \"omuz_sol one 135 yana 0\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   2720,
+   "yana[ _]?0\\b",
+   "\"ad\": \"omuz_sol one -45 yana 0\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   4057,
+   "yana[ _]?0\\b",
+   "\"ad\": \"sag one 0 yana 0 dirsek 30 bilek 0\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   4252,
+   "yana[ _]?0\\b",
+   "\"ad\": \"sag one 0 yana 0 dirsek 60 bilek 45\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   4447,
+   "yana[ _]?0\\b",
+   "\"ad\": \"sag one 0 yana 0 dirsek 105 bilek -90\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   4642,
+   "yana[ _]?0\\b",
+   "\"ad\": \"sag one 0 yana 0 dirsek 90 bilek 90\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   4837,
+   "yana[ _]?0\\b",
+   "\"ad\": \"sag one 90 yana 0 dirsek 90 bilek 45\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   6007,
+   "yana[ _]?0\\b",
+   "\"ad\": \"sol one 0 yana 0 dirsek 30 bilek 0\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   6202,
+   "yana[ _]?0\\b",
+   "\"ad\": \"sol one 0 yana 0 dirsek 60 bilek 45\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   6397,
+   "yana[ _]?0\\b",
+   "\"ad\": \"sol one 0 yana 0 dirsek 105 bilek -90\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   6592,
+   "yana[ _]?0\\b",
+   "\"ad\": \"sol one 0 yana 0 dirsek 90 bilek 90\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   6787,
+   "yana[ _]?0\\b",
+   "\"ad\": \"sol one 90 yana 0 dirsek 90 bilek 45\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   13041,
+   "yana[ _]?0\\b",
+   "\"ad\": \"omuz_sag one 160 yana 0\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   13232,
+   "yana[ _]?0\\b",
+   "\"ad\": \"omuz_sag one 180 yana 0\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   13423,
+   "yana[ _]?0\\b",
+   "\"ad\": \"omuz_sag one -60 yana 0\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   13996,
+   "yana[ _]?0\\b",
+   "\"ad\": \"omuz_sol one 160 yana 0\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   14187,
+   "yana[ _]?0\\b",
+   "\"ad\": \"omuz_sol one 180 yana 0\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem-dogrulama.json",
+   14378,
+   "yana[ _]?0\\b",
+   "\"ad\": \"omuz_sol one -60 yana 0\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\eklem_dogrulama.py",
+   19,
+   "alt sinir[^\\n]{0,20}\\b3\\b",
+   "Y0 = float(A.OMUZ[\"yana_aralik\"][0])   # omuz yana acma yazilim alt siniri (5 derece: C1 3 -> S1 kaseti 5, 15 Ekim 2026); sinir ici pozlarda 'kol asagida' = Y0"
+  ],
+  [
+   "tasarim\\freecad\\montaj\\gui-kontrol.json",
+   531,
+   "sinir 0\\)",
+   "\"aciklama\": \"yana acma, iceri (sinir 0)\","
+  ],
+  [
+   "tasarim\\freecad\\montaj\\montaj_gorsel.py",
+   21,
+   "alt sinir[^\\n]{0,20}\\b3\\b",
+   "Y0 = float(A.OMUZ[\"yana_aralik\"][0])      # omuz yana acma yazilim alt siniri (5 derece: C1 3 -> S1 kaseti 5, 15 Ekim 2026)"
+  ],
+  [
+   "tasarim\\freecad\\montaj\\montaj_rapor.py",
+   104,
+   "yana[ _]?0\\b",
+   "\"\"\"{modul: {eklem: derece}} -> 'sağ öne 90° yana 0° dirsek 60°; sol ...' (omuz ve dirsek ayni kolda birlesir).\"\"\""
+  ],
+  [
+   "tasarim\\freecad\\montaj\\montaj_rapor.py",
+   274,
+   "0…120",
+   "\"konumunda takılıyor (omuz montaj sırası, 5. adım). Servo 0…180° → eklem −45…135°. Yana açmada sınır 0…120° (omuz_montaj); 0°'nin altında kol \""
+  ],
+  [
+   "tasarim\\freecad\\montaj\\montaj_rapor.py",
+   297,
+   "yana[ _]?0\\b",
+   "\"**Eklem sınırları çözücüde zorlanmıyor:** FreeCAD 1.1'de sınırlar yalnız fareyle sürüklemede uygulanıyor (yana 0…120°, öne \""
+  ],
+  [
+   "tasarim\\freecad\\omuz\\omuz_gorsel.py",
+   98,
+   "yana[ _]?0\\b",
+   "# yana acma yazilim alt siniri Y0 (arayuz.OMUZ; 15 Ekim 2026: 5): kareler sinir disina (yana 0) inmez"
+  ],
+  [
+   "tasarim\\freecad\\taban\\rapor.html",
+   126,
+   "yana[ _]?0\\b",
+   "<p>Her kol: kol zinciri ızgarası (öne −45…135°, yana 0…120° 15° adımla, dirsek 0/30/60/90/105°, bilek −90/0/90° = 1755 poz) + aralık dışı halka (279 poz) + 15 j"
+  ],
+  [
+   "tasarim\\freecad\\taban\\taban_rapor.py",
+   430,
+   "yana[ _]?0\\b",
+   "H.append(\"<p>Her kol: kol zinciri ızgarası (öne −45…135°, yana 0…120° 15° adımla, dirsek 0/30/60/90/105°, bilek −90/0/90° = %d poz) + aralık dışı \""
+  ]
+ ]
+}

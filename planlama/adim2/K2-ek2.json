@@ -1,0 +1,837 @@
+{
+ "satir": [
+  {
+   "yana": 99.0,
+   "S1": 100,
+   "d": 6.57,
+   "cevrel": 4.046,
+   "dikdortgen": 4.048,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.88,
+    0.6,
+    -38.6
+   ]
+  },
+  {
+   "yana": 99.0,
+   "S1": 105,
+   "d": 6.179,
+   "cevrel": 3.655,
+   "dikdortgen": 3.666,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.44,
+    4.06,
+    -38.6
+   ]
+  },
+  {
+   "yana": 99.0,
+   "S1": 110,
+   "d": 5.727,
+   "cevrel": 3.204,
+   "dikdortgen": 3.207,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.41,
+    7.5,
+    -38.6
+   ]
+  },
+  {
+   "yana": 99.0,
+   "S1": 115,
+   "d": 5.369,
+   "cevrel": 2.845,
+   "dikdortgen": 2.862,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.88,
+    10.65,
+    -38.6
+   ]
+  },
+  {
+   "yana": 99.0,
+   "S1": 120,
+   "d": 5.33,
+   "cevrel": 2.806,
+   "dikdortgen": 2.87,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    163.21,
+    11.83,
+    -38.6
+   ]
+  },
+  {
+   "yana": 99.0,
+   "S1": 125,
+   "d": 5.33,
+   "cevrel": 2.806,
+   "dikdortgen": 2.87,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    163.21,
+    11.83,
+    -38.6
+   ]
+  },
+  {
+   "yana": 99.0,
+   "S1": 130,
+   "d": 5.33,
+   "cevrel": 2.806,
+   "dikdortgen": 2.87,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    163.21,
+    11.83,
+    -38.6
+   ]
+  },
+  {
+   "yana": 99.0,
+   "S1": 135,
+   "d": 5.33,
+   "cevrel": 2.806,
+   "dikdortgen": 2.87,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    163.21,
+    11.83,
+    -38.6
+   ]
+  },
+  {
+   "yana": 102.0,
+   "S1": 100,
+   "d": 6.446,
+   "cevrel": 3.922,
+   "dikdortgen": 3.928,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.63,
+    0.64,
+    -38.6
+   ]
+  },
+  {
+   "yana": 102.0,
+   "S1": 105,
+   "d": 6.022,
+   "cevrel": 3.498,
+   "dikdortgen": 3.523,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.09,
+    4.12,
+    -38.6
+   ]
+  },
+  {
+   "yana": 102.0,
+   "S1": 110,
+   "d": 5.512,
+   "cevrel": 2.988,
+   "dikdortgen": 3.007,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.97,
+    7.58,
+    -38.6
+   ]
+  },
+  {
+   "yana": 102.0,
+   "S1": 115,
+   "d": 5.041,
+   "cevrel": 2.517,
+   "dikdortgen": 2.519,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.37,
+    10.78,
+    -38.6
+   ]
+  },
+  {
+   "yana": 102.0,
+   "S1": 120,
+   "d": 4.928,
+   "cevrel": 2.404,
+   "dikdortgen": 2.456,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.82,
+    12.46,
+    -38.6
+   ]
+  },
+  {
+   "yana": 102.0,
+   "S1": 125,
+   "d": 4.928,
+   "cevrel": 2.404,
+   "dikdortgen": 2.456,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.82,
+    12.46,
+    -38.6
+   ]
+  },
+  {
+   "yana": 102.0,
+   "S1": 130,
+   "d": 4.928,
+   "cevrel": 2.404,
+   "dikdortgen": 2.456,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.82,
+    12.46,
+    -38.6
+   ]
+  },
+  {
+   "yana": 102.0,
+   "S1": 135,
+   "d": 4.928,
+   "cevrel": 2.404,
+   "dikdortgen": 2.456,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.82,
+    12.46,
+    -38.6
+   ]
+  },
+  {
+   "yana": 105.0,
+   "S1": 100,
+   "d": 6.324,
+   "cevrel": 3.8,
+   "dikdortgen": 3.814,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.37,
+    0.64,
+    -38.6
+   ]
+  },
+  {
+   "yana": 105.0,
+   "S1": 105,
+   "d": 5.875,
+   "cevrel": 3.351,
+   "dikdortgen": 3.4,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.72,
+    4.15,
+    -38.6
+   ]
+  },
+  {
+   "yana": 105.0,
+   "S1": 110,
+   "d": 5.32,
+   "cevrel": 2.797,
+   "dikdortgen": 2.848,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.5,
+    7.63,
+    -38.6
+   ]
+  },
+  {
+   "yana": 105.0,
+   "S1": 115,
+   "d": 4.74,
+   "cevrel": 2.216,
+   "dikdortgen": 2.221,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.85,
+    10.98,
+    -38.6
+   ]
+  },
+  {
+   "yana": 105.0,
+   "S1": 120,
+   "d": 4.503,
+   "cevrel": 1.979,
+   "dikdortgen": 2.025,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.47,
+    13.26,
+    -38.6
+   ]
+  },
+  {
+   "yana": 105.0,
+   "S1": 125,
+   "d": 4.503,
+   "cevrel": 1.979,
+   "dikdortgen": 2.025,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.47,
+    13.26,
+    -38.6
+   ]
+  },
+  {
+   "yana": 105.0,
+   "S1": 130,
+   "d": 4.503,
+   "cevrel": 1.979,
+   "dikdortgen": 2.025,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.47,
+    13.26,
+    -38.6
+   ]
+  },
+  {
+   "yana": 105.0,
+   "S1": 135,
+   "d": 4.503,
+   "cevrel": 1.979,
+   "dikdortgen": 2.025,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.47,
+    13.26,
+    -38.6
+   ]
+  },
+  {
+   "yana": 108.0,
+   "S1": 100,
+   "d": 6.206,
+   "cevrel": 3.682,
+   "dikdortgen": 3.708,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.09,
+    0.66,
+    -38.6
+   ]
+  },
+  {
+   "yana": 108.0,
+   "S1": 105,
+   "d": 5.743,
+   "cevrel": 3.219,
+   "dikdortgen": 3.302,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.34,
+    4.16,
+    -38.6
+   ]
+  },
+  {
+   "yana": 108.0,
+   "S1": 110,
+   "d": 5.158,
+   "cevrel": 2.634,
+   "dikdortgen": 2.739,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.02,
+    7.7,
+    -38.6
+   ]
+  },
+  {
+   "yana": 108.0,
+   "S1": 115,
+   "d": 4.478,
+   "cevrel": 1.954,
+   "dikdortgen": 1.991,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.29,
+    11.12,
+    -38.6
+   ]
+  },
+  {
+   "yana": 108.0,
+   "S1": 120,
+   "d": 4.062,
+   "cevrel": 1.538,
+   "dikdortgen": 1.577,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.13,
+    14.12,
+    -38.6
+   ]
+  },
+  {
+   "yana": 108.0,
+   "S1": 125,
+   "d": 4.06,
+   "cevrel": 1.536,
+   "dikdortgen": 1.583,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.15,
+    14.2,
+    -38.6
+   ]
+  },
+  {
+   "yana": 108.0,
+   "S1": 130,
+   "d": 4.06,
+   "cevrel": 1.536,
+   "dikdortgen": 1.583,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.15,
+    14.2,
+    -38.6
+   ]
+  },
+  {
+   "yana": 108.0,
+   "S1": 135,
+   "d": 4.06,
+   "cevrel": 1.536,
+   "dikdortgen": 1.583,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    162.15,
+    14.2,
+    -38.6
+   ]
+  },
+  {
+   "yana": 111.0,
+   "S1": 100,
+   "d": 6.094,
+   "cevrel": 3.57,
+   "dikdortgen": 3.612,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.81,
+    0.67,
+    -38.6
+   ]
+  },
+  {
+   "yana": 111.0,
+   "S1": 105,
+   "d": 5.63,
+   "cevrel": 3.106,
+   "dikdortgen": 3.236,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    160.95,
+    4.12,
+    -38.6
+   ]
+  },
+  {
+   "yana": 111.0,
+   "S1": 110,
+   "d": 5.033,
+   "cevrel": 2.509,
+   "dikdortgen": 2.693,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    160.52,
+    7.73,
+    -38.6
+   ]
+  },
+  {
+   "yana": 111.0,
+   "S1": 115,
+   "d": 4.272,
+   "cevrel": 1.748,
+   "dikdortgen": 1.86,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    160.71,
+    11.25,
+    -38.6
+   ]
+  },
+  {
+   "yana": 111.0,
+   "S1": 120,
+   "d": 3.644,
+   "cevrel": 1.12,
+   "dikdortgen": 1.123,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.52,
+    14.34,
+    -38.6
+   ]
+  },
+  {
+   "yana": 111.0,
+   "S1": 125,
+   "d": 3.604,
+   "cevrel": 1.08,
+   "dikdortgen": 1.128,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.83,
+    15.11,
+    -38.6
+   ]
+  },
+  {
+   "yana": 111.0,
+   "S1": 130,
+   "d": 3.604,
+   "cevrel": 1.08,
+   "dikdortgen": 1.128,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.83,
+    15.11,
+    -38.6
+   ]
+  },
+  {
+   "yana": 111.0,
+   "S1": 135,
+   "d": 3.604,
+   "cevrel": 1.08,
+   "dikdortgen": 1.128,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.83,
+    15.11,
+    -38.6
+   ]
+  },
+  {
+   "yana": 114.0,
+   "S1": 100,
+   "d": 5.989,
+   "cevrel": 3.465,
+   "dikdortgen": 3.529,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.52,
+    0.65,
+    -38.6
+   ]
+  },
+  {
+   "yana": 114.0,
+   "S1": 105,
+   "d": 5.539,
+   "cevrel": 3.015,
+   "dikdortgen": 3.206,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    160.56,
+    4.08,
+    -38.6
+   ]
+  },
+  {
+   "yana": 114.0,
+   "S1": 110,
+   "d": 4.954,
+   "cevrel": 2.43,
+   "dikdortgen": 2.723,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    160.0,
+    7.7,
+    -38.6
+   ]
+  },
+  {
+   "yana": 114.0,
+   "S1": 115,
+   "d": 4.138,
+   "cevrel": 1.614,
+   "dikdortgen": 1.857,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    160.1,
+    11.37,
+    -38.6
+   ]
+  },
+  {
+   "yana": 114.0,
+   "S1": 120,
+   "d": 3.291,
+   "cevrel": 0.767,
+   "dikdortgen": 0.785,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    160.89,
+    14.58,
+    -38.6
+   ]
+  },
+  {
+   "yana": 114.0,
+   "S1": 125,
+   "d": 3.139,
+   "cevrel": 0.615,
+   "dikdortgen": 0.653,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.45,
+    15.88,
+    -38.6
+   ]
+  },
+  {
+   "yana": 114.0,
+   "S1": 130,
+   "d": 3.139,
+   "cevrel": 0.615,
+   "dikdortgen": 0.653,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.45,
+    15.88,
+    -38.6
+   ]
+  },
+  {
+   "yana": 114.0,
+   "S1": 135,
+   "d": 3.139,
+   "cevrel": 0.615,
+   "dikdortgen": 0.653,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.45,
+    15.88,
+    -38.6
+   ]
+  },
+  {
+   "yana": 117.0,
+   "S1": 100,
+   "d": 5.892,
+   "cevrel": 3.368,
+   "dikdortgen": 3.461,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.22,
+    0.62,
+    -38.6
+   ]
+  },
+  {
+   "yana": 117.0,
+   "S1": 105,
+   "d": 5.473,
+   "cevrel": 2.95,
+   "dikdortgen": 3.217,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    160.15,
+    4.02,
+    -38.6
+   ]
+  },
+  {
+   "yana": 117.0,
+   "S1": 110,
+   "d": 4.929,
+   "cevrel": 2.405,
+   "dikdortgen": 2.829,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    159.47,
+    7.68,
+    -38.6
+   ]
+  },
+  {
+   "yana": 117.0,
+   "S1": 115,
+   "d": 4.094,
+   "cevrel": 1.57,
+   "dikdortgen": 1.994,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    159.47,
+    11.44,
+    -38.6
+   ]
+  },
+  {
+   "yana": 117.0,
+   "S1": 120,
+   "d": 3.041,
+   "cevrel": 0.518,
+   "dikdortgen": 0.647,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    160.26,
+    14.85,
+    -38.6
+   ]
+  },
+  {
+   "yana": 117.0,
+   "S1": 125,
+   "d": 2.67,
+   "cevrel": 0.147,
+   "dikdortgen": 0.175,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.08,
+    16.68,
+    -38.6
+   ]
+  },
+  {
+   "yana": 117.0,
+   "S1": 130,
+   "d": 2.67,
+   "cevrel": 0.147,
+   "dikdortgen": 0.175,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.08,
+    16.68,
+    -38.6
+   ]
+  },
+  {
+   "yana": 117.0,
+   "S1": 135,
+   "d": 2.67,
+   "cevrel": 0.147,
+   "dikdortgen": 0.175,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    161.08,
+    16.68,
+    -38.6
+   ]
+  },
+  {
+   "yana": 120.0,
+   "S1": 100,
+   "d": 5.807,
+   "cevrel": 3.283,
+   "dikdortgen": 3.411,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    160.93,
+    0.57,
+    -38.6
+   ]
+  },
+  {
+   "yana": 120.0,
+   "S1": 105,
+   "d": 5.438,
+   "cevrel": 2.914,
+   "dikdortgen": 3.275,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    159.74,
+    3.92,
+    -38.6
+   ]
+  },
+  {
+   "yana": 120.0,
+   "S1": 110,
+   "d": 4.929,
+   "cevrel": 2.405,
+   "dikdortgen": 2.829,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    158.92,
+    7.68,
+    -38.6
+   ]
+  },
+  {
+   "yana": 120.0,
+   "S1": 115,
+   "d": 4.094,
+   "cevrel": 1.57,
+   "dikdortgen": 1.994,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    158.81,
+    11.44,
+    -38.6
+   ]
+  },
+  {
+   "yana": 120.0,
+   "S1": 120,
+   "d": 2.936,
+   "cevrel": 0.412,
+   "dikdortgen": 0.793,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    159.59,
+    15.09,
+    -38.6
+   ]
+  },
+  {
+   "yana": 120.0,
+   "S1": 125,
+   "d": 2.205,
+   "cevrel": -0.319,
+   "dikdortgen": -0.298,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    160.74,
+    17.49,
+    -38.6
+   ]
+  },
+  {
+   "yana": 120.0,
+   "S1": 130,
+   "d": 2.205,
+   "cevrel": -0.319,
+   "dikdortgen": -0.298,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    160.74,
+    17.49,
+    -38.6
+   ]
+  },
+  {
+   "yana": 120.0,
+   "S1": 135,
+   "d": 2.205,
+   "cevrel": -0.319,
+   "dikdortgen": -0.298,
+   "parca": "S1 kaset kapagi sag",
+   "nokta_gobek": [
+    160.74,
+    17.49,
+    -38.6
+   ]
+  }
+ ],
+ "r_cevrel": 2.5238858928247927
+}

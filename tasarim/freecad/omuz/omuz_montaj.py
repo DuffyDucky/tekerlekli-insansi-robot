@@ -32,15 +32,31 @@ def overlap(a, b, abb=None, bbb=None):
 
 TOL = 0.5   # mm3
 
-# --- 1) ev pozunda tum ciftler (statik montaj kontrolu)
-static = []
-n = len(P)
-for i in range(n):
-    for j in range(i + 1, n):
-        v = overlap(P[i]["shape"], P[j]["shape"], P[i]["bb"], P[j]["bb"])
-        if v > TOL or v < 0:
-            static.append((P[i]["ad"], P[j]["ad"], round(v, 2)))
-print("statik cakisma:", len(static), static[:10], "%.1fs" % (time.time() - t0))
+# --- 1) ev pozunda tum ciftler (statik montaj kontrolu). Ev pozu = yazilim ev pozu: S1 0, S2 = yana alt siniri (arayuz.OMUZ;
+#        15 Ekim 2026'dan beri 5). S1 kablo tamburu kola S2 ~3,8 derecenin altinda deger (tasarim geregi yumusak dayanak; S2 alt siniri
+#        bu yuzden 5): mekanik sifir (S2 0) ayrica bilgi olarak kaydedilir (statik_s2_0), kontrol olcutu degildir.
+EV_TH = float(A.OMUZ["yana_aralik"][0])
+
+
+def _ev(p, th):
+    return moved(p, pose_place(p, 0, th)) if p["grup"] == "Kol" else p["shape"]
+
+
+def statik_ciftler(th):
+    sh = [_ev(p, th) for p in P]
+    bb = [s_.BoundBox for s_ in sh]
+    out_ = []
+    for i in range(len(P)):
+        for j in range(i + 1, len(P)):
+            v = overlap(sh[i], sh[j], bb[i], bb[j])
+            if v > TOL or v < 0:
+                out_.append((P[i]["ad"], P[j]["ad"], round(v, 2)))
+    return out_
+
+
+static = statik_ciftler(EV_TH)
+static_s2_0 = statik_ciftler(0.0)
+print("statik cakisma (S2 %.0f):" % EV_TH, len(static), static[:10], "; mekanik sifir S2 0 (bilgi):", static_s2_0, "%.1fs" % (time.time() - t0))
 
 # --- 1b) yuva M6 civatalari: uc cekic somunu >= 0,5 mm gecmeli, kanal tabanina degmemeli (duzeltme plani M3)
 M6_PAY_MIN = 0.5   # mm (somun payi)
@@ -80,7 +96,7 @@ def min_gap(ga, gb, phi=0, th=0):
     return best
 
 
-gaps = {k: min_gap(*k.split("-")) for k in ("Kol-Gobek", "Kol-Govde", "Gobek-Govde")}
+gaps = {k: min_gap(*k.split("-"), 0, EV_TH) for k in ("Kol-Gobek", "Kol-Govde", "Gobek-Govde")}
 print("ev pozu bosluklar:", gaps, "%.1fs" % (time.time() - t0))
 
 # --- 3) hareket taramasi (PHIS, THS: omuz_parcalar)
@@ -244,7 +260,7 @@ out = dict(
     parca_sayisi=len(P),
     coklu_kati=[(p["ad"], p["kati"]) for p in P if p["kati"] != 1],
     gecersiz=[p["ad"] for p in P if not p["shape"].isValid()],
-    statik=static,
+    statik=static, statik_poz=dict(one_arka=0.0, yana=EV_TH), statik_s2_0=static_s2_0,
     m6_vida_pay=dict(sinir_somun_mm=M6_PAY_MIN, sinir_taban_mm=M6_TABAN_PAY_MIN, ok=m6_ok, yuzler=m6_pay),
     eklem_siniri=dict(one_arka=list(A.OMUZ["one_arka_aralik"]), yana=list(A.OMUZ["yana_aralik"]), kaynak="arayuz.OMUZ"),
     bosluk={k: [round(v[0], 2), v[1], v[2]] for k, v in gaps.items()},

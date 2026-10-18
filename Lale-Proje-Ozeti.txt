@@ -1,0 +1,197 @@
+LALE — TEKERLEKLİ İNSANSI ROBOT: PROJE ÖZETİ
+(Başka bir yapay zekâya bağlam vermek için hazırlandı. Tarih: 17 Ekim 2026)
+=====================================================================
+
+Kaynak dosyalar (proje klasörü "Robot/"): README.md, tasarim/freecad/OZET.md,
+planlama/proje-plani.md, planlama/yazilim-plani.md, planlama/adim3/elektrik.md,
+planlama/duzeltme-plani.md, planlama/adim5/B-malzeme-plan.md, kod/ortak/eklem_sinirlari.json.
+"Tahmini" yazan değerler ölçülmedi; parçalar henüz elde değil, robot fiziksel olarak yapılmadı.
+
+
+1. PROJE NEDİR
+--------------
+- Manisa Celal Bayar Üniversitesi Mekatronik MYO'da 4 kişilik öğrenci ekibinin dönem projesi.
+- Bacaksız, tekerlekle hareket eden; gövde + kafa + 2 kollu insansı robot ("insan gibi görünen bir
+  servis arabası"). Pepper'a benzer: göğüste dokunmatik ekran, kafada yüz ekranı.
+- Proje lideri ve mekanik sorumlusu: Duffy (mekanik, montaj, kablaj, CAD'de güçlü; yazılımı yapay
+  zekâ yardımıyla yazıyor). Diğer roller (elektrik, yazılım/YZ, gömülü+test) henüz atanmadı.
+- Süre: 1 dönem (güz 2026, ≈ 15 hafta + pay), başarılı olursa 2. dönem. Bütçe okul/hoca destekli.
+
+Kapsam
+- 1. dönem hedefi: KONUŞAN, TEKERLEKLE GEZEN, KOLLARIYLA KAYITLI JEST YAPAN robot.
+- Esnek hedef: kamerayla yüzü algılayıp kafayı kişiye çevirme, düğmeyle "ne görüyorsun?".
+- Kapsam dışı: yüz TANIMA (kimlik), otonom gezinme (ROS 2/Nav2), eşya tutan kol, ters kinematik.
+- Robotun amacı (karşılama / tanıtım / rehber) hocayla henüz netleşmedi.
+
+
+2. GENEL YAPI VE BOYUTLAR
+-------------------------
+- Boy ≈ 125 cm (V3), kütle ≈ 21,7 kg (kablo payı dahil, CAD hesabı).
+- Ağırlık merkezi yerden ≈ 370 mm (ağır parçalar en altta: akü, motorlar, alüminyum plaka).
+- Teker yerleşimi kare: iz 356 mm (x ±178), aks arası 370 mm (z ±185), teker Ø125 × 58.
+- Devrilme eşiği (ev pozu): ileri/geri/yana 5,3 / 4,5 / 4,7 m/s² (fren ivmesinin ≈ 3×'i).
+  Statik devrilme eğimi ≈ 25–28°.
+- Koordinat sistemi (CAD ve yazılımda): orijin zemin + robot merkezi, +X sağ, +Y yukarı,
+  +Z ileri (yüz), birim mm.
+
+Modüller (FreeCAD V3 ana montajı: 907 parça, 44 PETG baskı parçası, 22 eklem)
+| Modül          | Kütle    | İçerik |
+| İskelet        | 5,8 kg   | 40×40 ağır sigma alüminyum profil: şase çerçevesi + tek gövde direği + omuz traversi |
+| Taban          | 7,5 kg   | 3 mm Al alt plaka, 5 mm kontrplak elektronik katı, 4 motor, akü, güç elektroniği, kartlar, 3 sonar, acil stop |
+| Kabuk          | 4,9 kg   | PETG gövde kabuğu (4 bant × sağ/sol + arka servis kapağı) + taban eteği; göğüste 15° eğik 10,1" ekran |
+| Omuz (×2)      | 460 g    | 2 eksenli omuz, her biri 2 × DS3218MG servo |
+| Dirsek+el (×2) | 369 g    | dirsek + bilek MG996R, sabit kancalı el (tutma yok) |
+| Kafa           | ≈ 1,44 kg| boyun, pan + tilt MG996R, 7" LCD yüz ekranı, Camera Module 3, Raspberry Pi 5 |
+- Kabuk parçaları okulun 3D yazıcısına (kullanılabilir hacim 246 × 246 × 250 mm) sığacak şekilde
+  bölünmüş; birleşimler bindirme dili + M3 ısıl gömme somun ile.
+- Sol kol, sağ kolun X aynası.
+
+
+3. PARÇA LİSTESİ (ANA BİLEŞENLER)
+---------------------------------
+Hesaplama / kontrol
+- Raspberry Pi 5 — KAFADA. Ana beyin (Python). Kafa içinde Pololu D36V50F5 ile 12 V → 5 V beslenir.
+- ESP32-WROOM-32 DevKit — TABANDA. Alt kontrolcü (motor, servo, sensör, güvenlik), 100 Hz döngü.
+- PCA9685 — 16 kanallı I2C PWM kartı: 10 servo + 3 sonar tetik sinyali.
+
+Hareket
+- 4 × JGB37-520 12 V 60 dev/dk enkoderli redüktörlü DC motor (her yanda 2, paralel sürülür).
+- 2 × BTS7960 motor sürücü (her yan için bir tane).
+- Seçenek (karar bekliyor): ön iki teker omni (Nexus 14075, Ø127) — yerinde dönüş sorunu için.
+- 4 × DS3218MG servo (omuzlar: her kolda öne-arka S1 ve yana açma S2).
+- 6 × MG996R servo (2 × dirsek, 2 × bilek, kafa pan, kafa tilt).
+
+Algılama / etkileşim
+- 3 × HC-SR04 ultrasonik mesafe sensörü (engel algılama).
+- BNO055 IMU (eğim / devrilme alarmı).
+- Camera Module 3 (CSI, kafada).
+- ReSpeaker Lite USB mikrofon + MAX98357A I2S amfi + hoparlör (hoparlör yeri henüz açık).
+- 7" HDMI LCD (kafada yüz ekranı: göz-ağız animasyonu).
+- Nextion NX1060P101 10,1" dokunmatik ekran (göğüste; menü ve durum; ESP32'den UART ile sürülür).
+- Bas-konuş düğmesi (uyandırma kelimesi yok).
+- Bluetooth gamepad (manuel sürüş).
+
+Güç
+- Akü: Victron SuperPack LiFePO4 12,8 V 20 Ah (256 Wh, dahili BMS 30 A) — güncel seçim.
+  Ucuz alternatif: Limacell 24 Ah (ölçü/kutup teyidi bekliyor). LiPo bilinçli olarak seçilmedi.
+- XT60 bağlantı, 30 A ana sigorta, ASW-A01 ana anahtar, 6 yollu sigorta kutusu (F1–F5).
+- 3 × XL4016 düşürücü: servo hattı A (6 V), servo hattı B (6 V), çevre 5 V.
+- Pololu D36V50F5 (kafada 5 V, Pi için).
+- Acil stop mantar butonu (NC) + 12 V 40 A röle K1 + ön şarj rölesi K2 + IRLZ44N MOSFET'ler.
+- PC817 optokuplörler (acil stop ve anahtarlı bara durumunu ESP32'ye okutmak için).
+- Tahmini çalışma süresi: boşta ≈ 11 sa, normal ≈ 5,7 sa, yoğun ≈ 2 sa.
+
+Malzeme maliyeti (planlama/maliyet.json, %15 pay dahil): ≈ 99.000 TL; koşullu kalemlerle
+(omni teker, fan vb.) ≈ 105.000 TL. Sipariş henüz verilmedi.
+
+
+4. ÇALIŞMA MANTIĞI
+------------------
+4.1 İki katmanlı mimari (ROS 2 YOK; düz Python + ESP32 Arduino/PlatformIO + seri JSON)
+
+  Raspberry Pi 5 (kafa) — Python asyncio, tek süreç, açılışta systemd ile başlar
+   ├─ ses       : bas-konuş → mikrofon → bulut STT (Deepgram, akışlı) → LLM (kısa Türkçe cevap,
+   │              kişilik istemi) → akışlı TTS → hoparlör. Hedef tepki ≤ 2 s.
+   ├─ yedek     : internet yoksa Vosk (small-tr) sabit komutlar + Piper TTS
+   ├─ davranış  : durum makinesi BEKLE / DİNLE / DÜŞÜN / KONUŞ / JEST / ACİL
+   │              LLM cevabındaki etiket (örn. [el_salla]) → jest + yüz ifadesi
+   ├─ yüz       : 7" LCD'de pygame ile göz/ağız animasyonu (mutlu, düşünüyor, dinliyor, şaşkın)
+   ├─ görüş     : (esnek) MediaPipe yüz algılama → kafa pan/tilt takibi; düğmeyle bulut VLM
+   └─ seri      : USB kablo boyundan tabana, 115200 baud, satır başına bir JSON mesajı
+                          │
+  ESP32 (taban) — 100 Hz döngü
+   ├─ tahrik    : 2 × BTS7960, yan başına enkoder ve hız PID'i, ivme rampası
+   ├─ servo     : PCA9685 üzerinden 10 servo; hız sınırlı yumuşak geçiş
+   ├─ sensör    : 3 sonar, BNO055, akü gerilimi (ADC), acil stop durumu (PC817)
+   ├─ güç       : "devreye al" röle dizisi
+   ├─ göğüs     : Nextion ekran (UART2); Pi'nin ekran komutları ESP32 üzerinden gider
+   ├─ güvenlik  : 500 ms Pi'den mesaj yoksa tekerler DURUR; eklem sınırları ve kafa-kol yasak
+   │              bölgesi HER komutta yeniden kontrol edilir (Pi yanlış komut verse de kol kabuğa giremez)
+   └─ teleop    : Bluetooth gamepad (Bluepad32) — Pi çökse bile robot kumandayla sürülür
+
+4.2 Seri protokol (ilk taslak)
+  Pi → ESP  sürüş        {"t":"drv","v":0.20,"w":0.0}            (m/s, rad/s)
+  Pi → ESP  eklem hedefi {"t":"jnt","q":{"r_s1":30,"r_s2":10},"ms":600}  (derece, varış süresi)
+  Pi → ESP  kalp atışı   {"t":"hb"}                               (5 Hz)
+  Pi → ESP  devreye al   {"t":"arm"}
+  ESP → Pi  durum        {"t":"st","v":..,"enc":[..],"imu":[r,p,y],"son":[..],"es":0,"vb":13.1,"q":{..}} (20 Hz)
+  ESP → Pi  olay         {"t":"ev","k":"estop" | "sinir" | "engel" | "egim" | "reset"}
+
+4.3 Kollar: ters kinematik yok. Jestler zaman damgalı eklem kareleri olarak JSON dosyalarında
+  tutulur ve oynatılır. Her jest önce FreeCAD modelinde çakışma kontrolünden geçer, sonra robota
+  gider. Planlanan 8 jest: selam, el sallama, işaret etme, düşünme, onaylama, hayır, karşılama, veda.
+
+4.4 Eklem sınırları (tek kaynak: kod/ortak/eklem_sinirlari.json; ESP32 C başlığı buradan üretilir)
+  Omuz öne-arka S1 : −45…135°
+  Omuz yana S2     : +5…120°   (0°'ın altında kol kabuğa çarpar; +5 kablo kaseti yüzünden)
+  Dirsek           : 0…105°
+  Bilek            : −90…90°
+  Kafa pan         : −90…90°
+  Kafa tilt        : −25…30°
+  Teker            : sınırsız (yalnız hız/ivme sınırı)
+  Kafa-kol yasak bölgesi: kol öne 120…135°, yana 5°, dirsek 65…105° iken (el yüzün önünde),
+    kafa o kola doğru pan 25…60° (sol kol −60…−25°) VE tilt 20…30° birlikte verilmez.
+  Sol kol servolarının komut işareti ters (tahmini; montajda tek tek doğrulanacak).
+
+4.5 Sürüş kuralları
+  - Diferansiyel sürüş (her yandaki iki motor aynı hızda).
+  - İvme ≤ 0,5 m/s², rampada ≤ 0,25 m/s². Hız ≈ 0,39 m/s.
+  - Kare teker düzeninde yerinde dönüş motorları zorlar → yazılım YAY ÇİZEREK döner; yerinde
+    dönüş en çok 90° ve ω ≤ 0,6 rad/s, ardından dinlenme. Motor akımı izlenir.
+  - Sonar: ≈ 30 cm'de engel → dur. BNO055: 15° eğimde alarm. Düşük akü geriliminde uyarı.
+
+4.6 Güç ve güvenlik zinciri
+  Akü → ana sigorta 30 A → ana anahtar → sigorta kutusu:
+   F1 20 A → röle K1 kontağı → "anahtarlı 12 V bara" → 2 × BTS7960 (motorlar),
+             XL4016 A (6 V: sağ kol + pan), XL4016 B (6 V: sol kol + tilt)
+   F2 15 A → yedek
+   F3 5 A  → boyundan kafaya 12 V → Pololu 5 V → Pi 5 (+ LCD, kamera, amfi, mikrofon)
+   F4 5 A  → XL4016 çevre 5 V → ESP32, Nextion, sonarlar, mantık beslemeleri (3,3 V ESP32'den)
+   F5 2 A  → acil stop mantarı (NC) → K1 bobini → MOSFET → GND
+  Servolar PCA9685'in V+ ucundan DEĞİL, iki ayrı dağıtım kartından beslenir (Pi'nin servo
+  akımı yüzünden resetlenmemesi için ayrı hatlar + ortak yıldız toprak).
+
+  Acil stop mantığı:
+  - Mantara basılınca röle bobini kesilir → motor ve servo gücü gider (Pi ve ESP32 açık kalır).
+  - Mantar bırakılınca güç KENDİLİĞİNDEN GELMEZ. Güç yalnız açık bir "devreye al" komutuyla
+    (Nextion düğmesi ya da Pi "arm") gelir. Önkoşullar: mantar serbest, PCA9685 çıkışları
+    servoların son bilinen konumunda, motor PWM = 0.
+  - Dizi: ön şarj rölesi K2 açılır → 300 ms → bara geriliminin geldiği teyit edilir → K1 çeker →
+    K2 kapanır (BMS'in kondansatör dolum darbesiyle kesmemesi için).
+  - ESP32 resetlenirse röle bırakır (güç kesik); Pi ACİL durumuna geçer, yeniden devreye alma
+    operatör komutuyla olur. Pi seri portu DTR/RTS kapalı açmalı, yoksa port açılışı ESP32'yi
+    resetler ve kollar düşer.
+
+
+5. TAKVİM (dönem haftası; H1 = 28 Eylül 2026)
+--------------------------------------------
+  H3–4   düzeltme planı, sipariş, masa düzeneği (Pi ↔ ESP32 + 1 motor + 2 servo)
+  H5–8   paralel: masada konuşan kafa (H7), taban + motorlar + kumandayla sürüş, güç ve acil stop, 3D baskı
+  H9     İLK UÇTAN UCA SÜRÜM: elektrik robotta, kumandayla geziyor, kollar sınırlar içinde
+  H10–14 gövde/kollar, jest kütüphanesi, yüz ekranı, davranış, çevrimdışı mod; konuşan + jest yapan robot (H11)
+  H15–16 sağlamlaştırma (3 senaryo × 20 deneme), demo, rapor (Ocak 2027)
+  2. dönem: görüntüyü olgunlaştırma, belki hazır kol (SO-101) ile nesne tutma, Teknofest / TÜBİTAK 2209-A
+  Yazılım tahmini ≈ 160–215 saat (12 iş paketi Y0–Y12).
+
+
+6. ŞU ANKİ DURUM (17 Ekim 2026)
+-------------------------------
+- Tasarım: FreeCAD 1.1 V3 modeli tamam; tüm modüller Python betikleriyle üretiliyor
+  (tasarim/freecad/; tek ölçü kaynağı arayuz.py). Modüller arası çakışma taraması yapıldı:
+  eklem aralığında tek çakışma kafa-kol yasak bölgesi (yazılımla engelleniyor).
+- Düzeltme planı (11 Ekim): 1–5. adımlar yapıldı ve "lale-duzeltme" git dalında commit'lendi
+  (kablo yolu, omuz baskı analizi, elektrik kararları, montaj sırası analizi, malzeme listesi).
+  3B montaj rehberi ≈ %50'de durdu.
+- Duraklatıldı: omuz S1 kablo kaseti bağımsız kontrolü yarıda (3 kablo bulgusu açık), montaj
+  sırası/erişim CAD düzeltmeleri (M6) ve tam çakışma taraması bekliyor.
+- Sipariş verilmedi; parça yok; yazılım kodu yok (yalnız eklem sınırları JSON'u ve üreticisi).
+
+Açık riskler / kararlar
+- JGB37 torku belirsiz: satıcı "21 kg·cm" diyor, üretici tablosu ≈ 9–10 kg·cm. 9 ise robot
+  standart tekerle yerinde dönemez → ön omni teker gerekir. Sipariş öncesi motor durma torku
+  ve zemin sürtünmesi ölçülmeli (~1 saat).
+- 5° rampada motor torku sürekli sınırın ≈ %90'ı → yazılım ivme sınırı.
+- Bulut sağlayıcıları (STT/LLM/TTS) ve API hesabı seçilmedi (aylık ≈ 10–20 $ tahmini).
+- Kafa içi ısı (Pi 5 + servo): hesap 34–46 °C; kapalı kafa stres testi gerekecek.
+- KVKK: yüz algılama var, tanıma yok, kayıt yok, bilgilendirme levhası.
+- Yazılım sorumlusu ekipte yok (şart).

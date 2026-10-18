@@ -1,0 +1,87 @@
+{
+ "tarih": "2026-10-15T13:53:22",
+ "adim": "tork",
+ "kutle": {
+  "grup": {
+   "omuz_Gobek": {
+    "benim": 175.17,
+    "fcstd_kutle_g": 175.0
+   },
+   "omuz_Kol": {
+    "benim": 146.89,
+    "fcstd_kutle_g": 146.8
+   },
+   "dirsek_UstKol": {
+    "benim": 103.53,
+    "fcstd_kutle_g": 103.4
+   },
+   "dirsek_OnKol": {
+    "benim": 188.92,
+    "fcstd_kutle_g": 188.8
+   },
+   "dirsek_El": {
+    "benim": 74.98,
+    "fcstd_kutle_g": 74.9
+   }
+  },
+  "bilinmeyen": []
+ },
+ "tork": {
+  "sonuc": {
+   "S1": {
+    "yuksuz_kgcm": 8.135,
+    "yuksuz_poz": [
+     90.0,
+     5.0,
+     0.0,
+     0.0
+    ],
+    "yuksuz_pay": 2.458,
+    "yuklu_kgcm": 24.348,
+    "yuklu_poz": [
+     90.0,
+     5.0,
+     0.0,
+     0.0
+    ],
+    "yuklu_pay": 0.821,
+    "izinli_yuk_2x_g": 57.5,
+    "kol_mm": 324.3
+   },
+   "S2": {
+    "yuksuz_kgcm": 8.321,
+    "yuksuz_poz": [
+     0.0,
+     90.0,
+     0.0,
+     -90.0
+    ],
+    "yuksuz_pay": 2.403,
+    "yuklu_kgcm": 24.596,
+    "yuklu_poz": [
+     0.0,
+     90.0,
+     0.0,
+     -90.0
+    ],
+    "yuklu_pay": 0.813,
+    "izinli_yuk_2x_g": 51.6,
+    "kol_mm": 325.5
+   }
+  },
+  "stall": 20.0,
+  "yuk_g": 500.0,
+  "el_ucu": [
+   185.0,
+   -325.5,
+   -1.25
+  ],
+  "poz_sayisi": 58608
+ },
+ "sure_s": 12.0,
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-15T09:27:09",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-15T09:21:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-15T09:32:14"
+ }
+}

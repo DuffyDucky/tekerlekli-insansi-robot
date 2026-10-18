@@ -14,10 +14,10 @@
     },
     "r_s2": {
       "ad": "omuz yana acma (S2)",
-      "min": 3.0,
+      "min": 5.0,
       "max": 120.0,
       "servo": "DS3218MG (180 derece), S1 ve S2",
-      "neden": "alt sinir +3: 0'da kabuk boslugu 4,7 mm, -2'de 0,6 mm, -3'te temas; servo sifir hatasi <= +-2 derece olmali",
+      "neden": "alt sinir +5 (S1 kablo kaseti: kol S2 3'te tambura/flansa yaklasir, 5'te 0,77 mm); kabuk boslugu 0'da 4,7 mm, -3'te temas",
       "bosluk_mm": {
         "0": 4.7,
         "-2": 0.6,
@@ -55,10 +55,10 @@
     },
     "l_s2": {
       "ad": "omuz yana acma (S2)",
-      "min": 3.0,
+      "min": 5.0,
       "max": 120.0,
       "servo": "DS3218MG (180 derece), S1 ve S2",
-      "neden": "alt sinir +3: 0'da kabuk boslugu 4,7 mm, -2'de 0,6 mm, -3'te temas; servo sifir hatasi <= +-2 derece olmali",
+      "neden": "alt sinir +5 (S1 kablo kaseti: kol S2 3'te tambura/flansa yaklasir, 5'te 0,77 mm); kabuk boslugu 0'da 4,7 mm, -3'te temas",
       "bosluk_mm": {
         "0": 4.7,
         "-2": 0.6,
@@ -118,7 +118,7 @@
           135.0
         ],
         "yana": [
-          3.0,
+          5.0,
           5.0
         ],
         "dirsek": [
@@ -148,7 +148,7 @@
           135.0
         ],
         "yana": [
-          3.0,
+          5.0,
           5.0
         ],
         "dirsek": [
@@ -197,6 +197,6 @@
         30.0
       ]
     },
-    "not_": "kol_kosulu disinda kafa-kol cakismasi taramada yok; kosulsuz uygulamak guvenli ama kafayi gereksiz kisitlar. Olculen yana 0 idi; S2 alt siniri +3 oldugundan kosul yana 3...5 olur. Kutu C7 tam taramasiyla dogrulanacak."
+    "not_": "kol_kosulu disinda kafa-kol cakismasi taramada yok; kosulsuz uygulamak guvenli ama kafayi gereksiz kisitlar. Olculen yana 0 idi; S2 alt siniri +5 oldugundan (15 Ekim 2026, S1 kaseti) kosul yana 5...5 olur. Kutu C7 tam taramasiyla dogrulanacak."
   }
 }

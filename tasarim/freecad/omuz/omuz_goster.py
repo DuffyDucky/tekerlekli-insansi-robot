@@ -1,5 +1,5 @@
 # FreeCAD'de omuz montajini acar ve kolu bir tur oynatir (ASCII baslaticiyla freecad.exe uzerinden)
-import os, math
+import os, sys, math
 import FreeCAD as App
 import FreeCADGui as Gui
 from PySide import QtCore
@@ -7,6 +7,10 @@ from PySide import QtCore
 V = App.Vector
 HERE = os.path.dirname(os.path.abspath(__file__))
 XR = 185.0
+if os.path.dirname(HERE) not in sys.path:
+    sys.path.insert(0, os.path.dirname(HERE))
+import arayuz as A
+Y0 = int(A.OMUZ["yana_aralik"][0])   # yana acma yazilim alt siniri (15 Ekim 2026: 5); kareler 0'a (sinir disi) inmez
 doc = App.openDocument(os.path.join(HERE, "omuz-montaj.FCStd"))
 
 
@@ -18,15 +22,15 @@ def poz(phi, th):
 
 seq = []
 for _ in range(2):
-    seq += [(p, 0) for p in range(0, 121, 3)] + [(120, t) for t in range(0, 91, 3)] + \
-           [(120 - p, 90 - int(p * 0.75)) for p in range(0, 121, 3)] + [(0, 0)] * 10
+    seq += [(p, Y0) for p in range(0, 121, 3)] + [(120, t) for t in range(Y0, 91, 3)] + \
+           [(120 - p, max(Y0, 90 - int(p * 0.75))) for p in range(0, 121, 3)] + [(0, Y0)] * 10
 state = {"i": 0}
 
 
 def adim():
     if state["i"] >= len(seq):
         timer.stop()
-        poz(0, 0)
+        poz(0, Y0)
         return
     poz(*seq[state["i"]])
     state["i"] += 1

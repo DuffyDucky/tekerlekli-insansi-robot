@@ -404,7 +404,7 @@ import dirsek_parcalar as DP
 import omuz_parcalar as OP
 
 KOL_ARALIK = (tuple(A.OMUZ["one_arka_aralik"]), tuple(A.OMUZ["yana_aralik"]), tuple(DP.D["aralik"]), tuple(DP.D["bilek_aralik"]))   # phi, th, dirsek, bilek (arayuz.OMUZ: tek kaynak)
-YANA_MIN = A.OMUZ["yana_aralik"][0]    # S2 alt siniri (3): kol-kol ve jest test pozlarindaki "yana 0" bunun yerine
+YANA_MIN = A.OMUZ["yana_aralik"][0]    # S2 alt siniri (5; 15 Ekim 2026): kol-kol ve jest test pozlarindaki "yana 0" bunun yerine
 # kaba izgara: sinirlardan turetilir (one-arka 15 derece adim, yana alt sinir + 15'in katlari)
 KABA = (list(range(int(KOL_ARALIK[0][0]), int(KOL_ARALIK[0][1]) + 1, 15)),
         sorted(set([int(YANA_MIN)] + [t for t in range(0, int(KOL_ARALIK[1][1]) + 1, 15) if t > YANA_MIN])),
@@ -801,7 +801,7 @@ LIM_K = 100.0        # mm: kafa taramasi kutu on elemesi
 INCE_TUR = 1         # kafa x kol genel ince adim turu (cakisan + INCE_ESIK alti ciftlerin +-10 derece komsulugu)
 SINIR_TUR = 40       # yasak bolge siniri: yalniz cakisan ciftlerin eksen komsulari (5 derece, bilek 15), yakinsayana dek
 ONBELLEK = 3000      # tasinmis sekil onbellegi (LRU) ust siniri: bellek
-JEST = [("ev", (0, 0, 0, 0)), ("selam (montaj gorseli)", (20, 100, 95, -60)), ("selam, kol yukarida", (0, 120, 105, 0)),
+JEST = [("ev", (0, YANA_MIN, 0, 0)), ("selam (montaj gorseli)", (20, 100, 95, -60)), ("selam, kol yukarida", (0, 120, 105, 0)),
         ("selam, yan", (30, 90, 105, 90)), ("kafa kasima", (135, 30, 105, 0)), ("kafa kasima, bilek 90", (135, 45, 105, 90)),
         ("kafa kasima, yana 60", (120, 60, 105, -90)), ("kafa kasima, yana 15", (135, 15, 105, 0)), ("el yuze", (120, YANA_MIN, 105, 0)),
         ("el yuze, bilek 90", (135, YANA_MIN, 105, 90)), ("el agiza", (105, YANA_MIN, 105, 0)), ("kol tepede", (135, 120, 0, 0)),

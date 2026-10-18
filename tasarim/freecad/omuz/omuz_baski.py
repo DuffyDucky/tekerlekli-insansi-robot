@@ -50,9 +50,10 @@ DESTEK_DOLULUK = 0.15                        # agac/izgara destek etkin dolulugu
 YONLER = {"+X": (1, 0, 0), "-X": (-1, 0, 0), "+Y": (0, 1, 0), "-Y": (0, -1, 0), "+Z": (0, 0, 1), "-Z": (0, 0, -1)}
 UX, UY, UZ = A.YAZICI["kullanilabilir"]
 
-# baski listesindeki malzeme (planlama/baski-listesi.md, Malzeme bolumu); FCStd'de hepsi "PETG" yazili
+# baski listesindeki malzeme (planlama/baski-listesi.md, Malzeme bolumu). 15 Ekim 2026'dan beri FCStd'deki Malzeme alani da
+# ayni (omuz_parcalar); tabloda olmayan parca (S1 kablo tamburu) modeldeki malzemeyle hesaplanir.
 MALZEME = {"Omuz yuvasi": "PETG-CF", "Rulman kapagi": "PETG-CF", "Omuz gobegi": "PETG-CF", "Kol catali": "PETG-CF",
-           "Ust kol tupu": "PETG"}
+           "Ust kol tupu": "PETG", "S1 kablo tamburu": "PETG"}
 
 # yuk eksenleri: geometriden (silindir yaricapi -> ekseni) ya da tasarimdan (robot ekseni). ister:
 #   "dikey" = eksen tablaya dik: delik / yuva cevre cizgileriyle yuvarlak basilir, horn / rulman yuku katman duzleminde kalir
@@ -77,6 +78,9 @@ YUK = {
         dict(ad="tup M3 isil gomme somunlari", r=A.INSERT_DELIK[3] / 2, ister="dikey", w=0.5)],
     "Ust kol tupu": [
         dict(ad="tup ic capi O51,3 (pime gecme, yuvarlaklik)", r=A.TUP_PIM_R + A.GECME["tup_pim"], ister="dikey", w=1.0)],
+    "S1 kablo tamburu": [   # S1 kablo kaseti (15 Ekim 2026): halka yuvarlak basilmali (kablo sarilir; kapak M3 basina 0,7 mm)
+        dict(ad="tambur halkasi O78 (ic kosu sarilir, yuvarlaklik)", r=A.KOL_KABLO["s1"]["tambur"]["r"][1], ister="dikey", w=2.0),
+        dict(ad="gobek M3 delikleri (3 kol)", r=A.CLEAR[3] / 2, ister="dikey", w=0.5)],
 }
 INSERT_R = {round(A.INSERT_DELIK[d] / 2, 3): "M%d" % d for d in A.INSERT_DELIK}
 
@@ -560,7 +564,7 @@ for p in PARCA:
             r.get("destek_bolge_sayi", -1), r.get("en_buyuk_kopru_mm", -1), r.get("en_buyuk_konsol_mm", -1), r.get("yuk_uyum", 0)))
     sira, en_az = yon_sec(yon)
     sec = sira[0]
-    mal = MALZEME.get(ad, "PETG")
+    mal = MALZEME.get(ad, p["model_malzeme"] if p["model_malzeme"] in RHO else "PETG")
     hac = sh.Volume
     rho = RHO[mal]
     dol = DOLULUK if mal == "PETG-CF" else (0.80,)

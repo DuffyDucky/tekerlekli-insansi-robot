@@ -1,0 +1,32 @@
+{
+ "kaset_bb": {
+  "S1 kaset govdesi sag": [
+   152.0,
+   158.3,
+   -76.0,
+   56.4,
+   7.7,
+   77.2
+  ],
+  "S1 kaset kapagi sag": [
+   155.0,
+   159.5,
+   -76.0,
+   56.4,
+   7.7,
+   77.2
+  ]
+ },
+ "omuz_bandi_bb": [
+  -136.0,
+  152.0,
+  -220.0,
+  30.0,
+  -88.0,
+  120.9
+ ],
+ "ust_tasma_mm": 26.4,
+ "on_tasma_mm": -43.7,
+ "yan_tasma_mm": 7.5,
+ "not_": "omuz yereli (y 0 = S1 ekseni); tasma = kaset en uc - omuz bandi en uc"
+}

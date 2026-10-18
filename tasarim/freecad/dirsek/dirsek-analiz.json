@@ -1792,8 +1792,175 @@
   },
   "pay_bosluk": 0.5,
   "s1": {
-   "durum": "ACIK",
-   "not_": "S1 (-45...135) gecisi: tup ve yaka yana kucukken kabuk yuzunden 5...8 mm uzakta, S1 ekseninin alt sektorunu dolduruyor; ust yaridaki serbest lop R ~10 mm ve eksenden ~95 mm'ye tasiyor. Karar: kablo kaseti (gobekte tambur + govdede yay duvar) ya da omuz ustu buyuk lop. Bkz. planlama/adim2/M1-kablo-yolu.md"
+   "durum": "A' doner U-lop kaseti (15 Ekim 2026)",
+   "serit": 3,
+   "kanal_x": [
+    153.5,
+    158.3
+   ],
+   "tambur": {
+    "r": [
+     37.0,
+     39.0
+    ],
+    "x": [
+     152.5,
+     159.3
+    ],
+    "dudak_r": 43.7,
+    "dudak_t": 1.0,
+    "kol_psi": [
+     -30.0,
+     0.0,
+     30.0
+    ],
+    "kol_r": [
+     31.0,
+     39.0
+    ],
+    "kol_gen": 9.0,
+    "kol_x": [
+     159.3,
+     163.0
+    ],
+    "vida_r": 33.75,
+    "vida": [
+     3,
+     8
+    ],
+    "bag_psi": 145.0,
+    "yay_psi": [
+     142.0,
+     395.0
+    ]
+   },
+   "duvar": {
+    "r": [
+     75.2,
+     77.2
+    ],
+    "x0": 152.0,
+    "arka_t": 1.0,
+    "flans_x": [
+     158.3,
+     159.5
+    ],
+    "flans_r_ic": 44.2,
+    "psi0": 190.0,
+    "u_pay": 4.5,
+    "ic_kes_r": 46.5,
+    "bolum_x": 155.0,
+    "havsa_x": 156.5,
+    "pim": {
+     "r": 57.0,
+     "d": 3.0,
+     "post_r": 3.5,
+     "bosluk": 0.5
+    }
+   },
+   "alfa_min": 10.0,
+   "bag_duvar_psi": 228.3,
+   "L": 171.4,
+   "dikme": [
+    [
+     200.0,
+     53.0
+    ],
+    [
+     226.0,
+     54.0
+    ]
+   ],
+   "dikme_r": 4.0,
+   "dikme_vida": [
+    3,
+    8
+   ],
+   "kulak": {
+    "x": [
+     138.0,
+     152.0
+    ],
+    "z": [
+     38.0,
+     56.0
+    ],
+    "t": 3.0,
+    "vida_xz": [
+     144.0,
+     47.0
+    ],
+    "vida": [
+     3,
+     8
+    ]
+   },
+   "cikis": {
+    "psi": 214.0,
+    "r_don": 52.0,
+    "x_ic": 140.0,
+    "yarik": [
+     12.0,
+     6.0
+    ]
+   },
+   "gecis": {
+    "G2_r": [
+     35.9,
+     41.1
+    ],
+    "x": [
+     165.5,
+     155.9
+    ],
+    "n": 24
+   },
+   "govde_ici": [
+    [
+     140.0,
+     -62.0,
+     18.0
+    ],
+    [
+     105.0,
+     -62.0,
+     -26.0
+    ],
+    [
+     0.0,
+     -55.0,
+     -26.0
+    ]
+   ],
+   "govde_dikey": [
+    [
+     0.0,
+     900.0,
+     -26.0
+    ],
+    [
+     0.0,
+     400.0,
+     -26.0
+    ],
+    [
+     25.0,
+     262.0,
+     -26.0
+    ],
+    [
+     25.0,
+     230.0,
+     26.0
+    ],
+    [
+     40.0,
+     205.0,
+     180.0
+    ]
+   ],
+   "s2_servo_kablo": 40.0,
+   "jr_pay": 30.0
   },
   "dirsek_lop": {
    "L": 120.0,
@@ -2495,20 +2662,20 @@
    },
    "r_min": 12.36,
    "r_sinir": 11.2,
-   "en_kucuk_bosluk": 1.57,
+   "en_kucuk_bosluk": 1.9,
    "en_yakin": "Kol catali",
-   "en_yakin_poz": 3.0,
+   "en_yakin_poz": 5.0,
    "kiris": [
-    31.3,
+    32.01,
     52.15
    ],
    "ok": true,
    "pozlar": [
     {
-     "poz": 3.0,
-     "r_min": 12.63,
-     "kiris": 31.3,
-     "bosluk": 1.57,
+     "poz": 5.0,
+     "r_min": 12.73,
+     "kiris": 32.01,
+     "bosluk": 1.9,
      "en_yakin": "Kol catali",
      "yakinsadi": true
     },
@@ -2826,104 +2993,104 @@
     }
    ],
    "ornek_nokta": {
-    "3.0": [
+    "5.0": [
      [
-      194.35,
-      -25.546,
+      195.236,
+      -25.204,
       -38.6
      ],
      [
-      194.314,
-      -21.547,
+      195.063,
+      -21.209,
       -38.6
      ],
      [
-      194.579,
-      -17.557,
+      195.199,
+      -17.212,
       -38.6
      ],
      [
-      194.953,
-      -13.574,
+      195.451,
+      -13.22,
       -38.6
      ],
      [
-      195.246,
-      -9.585,
+      195.628,
+      -9.224,
       -38.6
      ],
      [
-      195.266,
-      -5.587,
+      195.54,
+      -5.226,
       -38.6
      ],
      [
-      194.824,
-      -1.614,
+      194.998,
+      -1.266,
       -38.6
      ],
      [
-      193.744,
-      2.231,
+      193.829,
+      2.553,
       -38.6
      ],
      [
-      191.893,
-      5.768,
+      191.905,
+      6.05,
       -38.6
      ],
      [
-      189.231,
-      8.737,
+      189.187,
+      8.97,
       -38.6
      ],
      [
-      185.847,
-      10.844,
+      185.77,
+      11.022,
       -38.6
      ],
      [
-      181.988,
-      11.835,
+      181.897,
+      11.959,
       -38.6
      ],
      [
-      178.012,
-      11.58,
+      177.924,
+      11.659,
       -38.6
      ],
      [
-      174.303,
-      10.124,
+      174.228,
+      10.17,
       -38.6
      ],
      [
-      171.164,
-      7.664,
+      171.107,
+      7.688,
       -38.6
      ],
      [
-      168.762,
-      4.477,
+      168.721,
+      4.488,
       -38.6
      ],
      [
-      167.114,
-      0.84,
+      167.088,
+      0.844,
       -38.6
      ],
      [
-      166.13,
-      -3.033,
+      166.116,
+      -3.032,
       -37.976
      ],
      [
-      165.655,
+      165.649,
       -7.003,
       -35.9
      ],
      [
-      165.509,
+      165.507,
       -11.0,
       -33.652
      ],
@@ -3263,7 +3430,7 @@
    ],
    "en_kucuk_bosluk": 0.23,
    "en_yakin": "Ust kol tupu",
-   "en_yakin_poz": 3.0,
+   "en_yakin_poz": 5.0,
    "ok": true
   },
   "gecit": [
@@ -3301,9 +3468,3149 @@
    {
     "ad": "uzatma (birlesim -> G2, S1 oncesi)",
     "gerekli_mm": 175.7,
-    "not_": "S1 gecisi, govde ici ve PCA9685'e (~967 mm, taban YOL) yol ACIK"
+    "not_": "S1 kaseti + govde ici + dagitim karti: kablo['s1_boy']"
    }
   ],
+  "s1_lop": {
+   "L": 171.4,
+   "serit": 3,
+   "demet": {
+    "genislik": 4.2,
+    "kalinlik": 4.199999999999999,
+    "r_lop": 2.9698484809834995,
+    "r_sabit": 2.0999999999999996
+   },
+   "r_min": 12.912,
+   "r_sinir": 11.9,
+   "r_10d": 15.4,
+   "r_10d_ok": false,
+   "u": {
+    "ri": 41.1,
+    "ro": 73.10000000000001,
+    "l": 68.52,
+    "delta": 13.11,
+    "uc": 34.14,
+    "F": [
+     -0.003131729054473639,
+     -0.00046241837961947185
+    ],
+    "artik": 9.264641066893947e-15
+   },
+   "en_kucuk_bosluk": 0.93,
+   "en_yakin": "Omuz bandi sag",
+   "en_yakin_poz": -45,
+   "kosu_aci_min": 10.13,
+   "alfa_min": 10.0,
+   "kanal_pay": {
+    "eksenel_arka": 0.8,
+    "eksenel_flans": 0.3,
+    "eksenel_tambur_dudak": 0.3,
+    "radyal_tambur": 0.0,
+    "radyal_duvar": -0.0
+   },
+   "duyarlilik": [
+    {
+     "durum": "eksen kacikligi -1 mm",
+     "ri": 41.1,
+     "ro": 72.1,
+     "R_min": 12.53
+    },
+    {
+     "durum": "eksen kacikligi +1 mm",
+     "ri": 41.1,
+     "ro": 74.1,
+     "R_min": 13.29
+    },
+    {
+     "durum": "serit 1,8 mm (demet 5.4)",
+     "ri": 41.7,
+     "ro": 72.5,
+     "R_min": 12.46
+    },
+    {
+     "durum": "serit 1,8: sinir 7,5 d + demet payi",
+     "R_sinir": 15.3
+    }
+   ],
+   "pozlar": [
+    {
+     "phi": -45,
+     "psi_bag": 100.0,
+     "psi_U": 225.35,
+     "a_i": 125.35,
+     "a_o": 10.16,
+     "u_uc_psi": 259.49,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": -40,
+     "psi_bag": 105.0,
+     "psi_U": 227.15,
+     "a_i": 122.15,
+     "a_o": 11.96,
+     "u_uc_psi": 261.29,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": -35,
+     "psi_bag": 110.0,
+     "psi_U": 228.95,
+     "a_i": 118.95,
+     "a_o": 13.76,
+     "u_uc_psi": 263.09,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": -30,
+     "psi_bag": 115.0,
+     "psi_U": 230.75,
+     "a_i": 115.75,
+     "a_o": 15.56,
+     "u_uc_psi": 264.89,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": -25,
+     "psi_bag": 120.0,
+     "psi_U": 232.55,
+     "a_i": 112.55,
+     "a_o": 17.36,
+     "u_uc_psi": 266.68,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": -20,
+     "psi_bag": 125.0,
+     "psi_U": 234.35,
+     "a_i": 109.35,
+     "a_o": 19.16,
+     "u_uc_psi": 268.48,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": -15,
+     "psi_bag": 130.0,
+     "psi_U": 236.15,
+     "a_i": 106.15,
+     "a_o": 20.96,
+     "u_uc_psi": 270.28,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": -10,
+     "psi_bag": 135.0,
+     "psi_U": 237.95,
+     "a_i": 102.95,
+     "a_o": 22.76,
+     "u_uc_psi": 272.08,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": -5,
+     "psi_bag": 140.0,
+     "psi_U": 239.74,
+     "a_i": 99.74,
+     "a_o": 24.55,
+     "u_uc_psi": 273.88,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 0,
+     "psi_bag": 145.0,
+     "psi_U": 241.54,
+     "a_i": 96.54,
+     "a_o": 26.35,
+     "u_uc_psi": 275.68,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 5,
+     "psi_bag": 150.0,
+     "psi_U": 243.34,
+     "a_i": 93.34,
+     "a_o": 28.15,
+     "u_uc_psi": 277.48,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 10,
+     "psi_bag": 155.0,
+     "psi_U": 245.14,
+     "a_i": 90.14,
+     "a_o": 29.95,
+     "u_uc_psi": 279.28,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 15,
+     "psi_bag": 160.0,
+     "psi_U": 246.94,
+     "a_i": 86.94,
+     "a_o": 31.75,
+     "u_uc_psi": 281.08,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 20,
+     "psi_bag": 165.0,
+     "psi_U": 248.74,
+     "a_i": 83.74,
+     "a_o": 33.55,
+     "u_uc_psi": 282.88,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 25,
+     "psi_bag": 170.0,
+     "psi_U": 250.54,
+     "a_i": 80.54,
+     "a_o": 35.35,
+     "u_uc_psi": 284.68,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 30,
+     "psi_bag": 175.0,
+     "psi_U": 252.34,
+     "a_i": 77.34,
+     "a_o": 37.15,
+     "u_uc_psi": 286.48,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 35,
+     "psi_bag": 180.0,
+     "psi_U": 254.14,
+     "a_i": 74.14,
+     "a_o": 38.95,
+     "u_uc_psi": 288.28,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 40,
+     "psi_bag": 185.0,
+     "psi_U": 255.94,
+     "a_i": 70.94,
+     "a_o": 40.75,
+     "u_uc_psi": 290.08,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 45,
+     "psi_bag": 190.0,
+     "psi_U": 257.74,
+     "a_i": 67.74,
+     "a_o": 42.55,
+     "u_uc_psi": 291.88,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 50,
+     "psi_bag": 195.0,
+     "psi_U": 259.54,
+     "a_i": 64.54,
+     "a_o": 44.35,
+     "u_uc_psi": 293.68,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 55,
+     "psi_bag": 200.0,
+     "psi_U": 261.34,
+     "a_i": 61.34,
+     "a_o": 46.15,
+     "u_uc_psi": 295.48,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 60,
+     "psi_bag": 205.0,
+     "psi_U": 263.14,
+     "a_i": 58.14,
+     "a_o": 47.95,
+     "u_uc_psi": 297.28,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 65,
+     "psi_bag": 210.0,
+     "psi_U": 264.94,
+     "a_i": 54.94,
+     "a_o": 49.75,
+     "u_uc_psi": 299.08,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 70,
+     "psi_bag": 215.0,
+     "psi_U": 266.74,
+     "a_i": 51.74,
+     "a_o": 51.55,
+     "u_uc_psi": 300.87,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 75,
+     "psi_bag": 220.0,
+     "psi_U": 268.54,
+     "a_i": 48.54,
+     "a_o": 53.35,
+     "u_uc_psi": 302.67,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 80,
+     "psi_bag": 225.0,
+     "psi_U": 270.34,
+     "a_i": 45.34,
+     "a_o": 55.15,
+     "u_uc_psi": 304.47,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 85,
+     "psi_bag": 230.0,
+     "psi_U": 272.14,
+     "a_i": 42.14,
+     "a_o": 56.95,
+     "u_uc_psi": 306.27,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 90,
+     "psi_bag": 235.0,
+     "psi_U": 273.93,
+     "a_i": 38.93,
+     "a_o": 58.74,
+     "u_uc_psi": 308.07,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 95,
+     "psi_bag": 240.0,
+     "psi_U": 275.73,
+     "a_i": 35.73,
+     "a_o": 60.54,
+     "u_uc_psi": 309.87,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 100,
+     "psi_bag": 245.0,
+     "psi_U": 277.53,
+     "a_i": 32.53,
+     "a_o": 62.34,
+     "u_uc_psi": 311.67,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 105,
+     "psi_bag": 250.0,
+     "psi_U": 279.33,
+     "a_i": 29.33,
+     "a_o": 64.14,
+     "u_uc_psi": 313.47,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 110,
+     "psi_bag": 255.0,
+     "psi_U": 281.13,
+     "a_i": 26.13,
+     "a_o": 65.94,
+     "u_uc_psi": 315.27,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 115,
+     "psi_bag": 260.0,
+     "psi_U": 282.93,
+     "a_i": 22.93,
+     "a_o": 67.74,
+     "u_uc_psi": 317.07,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 120,
+     "psi_bag": 265.0,
+     "psi_U": 284.73,
+     "a_i": 19.73,
+     "a_o": 69.54,
+     "u_uc_psi": 318.87,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 125,
+     "psi_bag": 270.0,
+     "psi_U": 286.53,
+     "a_i": 16.53,
+     "a_o": 71.34,
+     "u_uc_psi": 320.67,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 130,
+     "psi_bag": 275.0,
+     "psi_U": 288.33,
+     "a_i": 13.33,
+     "a_o": 73.14,
+     "u_uc_psi": 322.47,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    },
+    {
+     "phi": 135,
+     "psi_bag": 280.0,
+     "psi_U": 290.13,
+     "a_i": 10.13,
+     "a_o": 74.94,
+     "u_uc_psi": 324.27,
+     "bosluk": 0.93,
+     "en_yakin": "Omuz bandi sag"
+    }
+   ],
+   "ok": true,
+   "ornek_nokta": {
+    "-45": [
+     [
+      155.9,
+      -7.137,
+      -40.476
+     ],
+     [
+      155.9,
+      -12.672,
+      -39.098
+     ],
+     [
+      155.9,
+      -17.964,
+      -36.966
+     ],
+     [
+      155.9,
+      -22.909,
+      -34.123
+     ],
+     [
+      155.9,
+      -27.413,
+      -30.623
+     ],
+     [
+      155.9,
+      -31.389,
+      -26.532
+     ],
+     [
+      155.9,
+      -34.76,
+      -21.93
+     ],
+     [
+      155.9,
+      -37.462,
+      -16.906
+     ],
+     [
+      155.9,
+      -39.442,
+      -11.557
+     ],
+     [
+      155.9,
+      -40.662,
+      -5.984
+     ],
+     [
+      155.9,
+      -41.099,
+      -0.297
+     ],
+     [
+      155.9,
+      -40.744,
+      5.397
+     ],
+     [
+      155.9,
+      -39.604,
+      10.986
+     ],
+     [
+      155.9,
+      -37.702,
+      16.364
+     ],
+     [
+      155.9,
+      -35.073,
+      21.426
+     ],
+     [
+      155.9,
+      -31.769,
+      26.076
+     ],
+     [
+      155.9,
+      -28.393,
+      29.716
+     ],
+     [
+      155.9,
+      -26.364,
+      31.558
+     ],
+     [
+      155.9,
+      -24.267,
+      33.323
+     ],
+     [
+      155.9,
+      -22.147,
+      35.06
+     ],
+     [
+      155.9,
+      -20.045,
+      36.819
+     ],
+     [
+      155.9,
+      -18.004,
+      38.648
+     ],
+     [
+      155.9,
+      -16.072,
+      40.591
+     ],
+     [
+      155.9,
+      -14.304,
+      42.685
+     ],
+     [
+      155.9,
+      -12.765,
+      44.951
+     ],
+     [
+      155.9,
+      -11.524,
+      47.392
+     ],
+     [
+      155.9,
+      -10.656,
+      49.989
+     ],
+     [
+      155.9,
+      -10.232,
+      52.693
+     ],
+     [
+      155.9,
+      -10.31,
+      55.429
+     ],
+     [
+      155.9,
+      -10.923,
+      58.096
+     ],
+     [
+      155.9,
+      -12.07,
+      60.58
+     ],
+     [
+      155.9,
+      -13.712,
+      62.768
+     ],
+     [
+      155.9,
+      -15.776,
+      64.563
+     ],
+     [
+      155.9,
+      -18.164,
+      65.899
+     ],
+     [
+      155.9,
+      -20.767,
+      66.744
+     ],
+     [
+      155.9,
+      -23.481,
+      67.103
+     ],
+     [
+      155.9,
+      -26.218,
+      67.011
+     ],
+     [
+      155.9,
+      -28.913,
+      66.522
+     ],
+     [
+      155.9,
+      -31.527,
+      65.704
+     ],
+     [
+      155.9,
+      -34.045,
+      64.623
+     ],
+     [
+      155.9,
+      -36.47,
+      63.347
+     ],
+     [
+      155.9,
+      -40.063,
+      61.144
+     ],
+     [
+      155.9,
+      -46.994,
+      55.992
+     ]
+    ],
+    "45": [
+     [
+      155.9,
+      -40.476,
+      7.137
+     ],
+     [
+      155.9,
+      -39.095,
+      12.68
+     ],
+     [
+      155.9,
+      -36.96,
+      17.977
+     ],
+     [
+      155.9,
+      -34.11,
+      22.928
+     ],
+     [
+      155.9,
+      -30.602,
+      27.436
+     ],
+     [
+      155.9,
+      -26.503,
+      31.414
+     ],
+     [
+      155.9,
+      -21.892,
+      34.785
+     ],
+     [
+      155.9,
+      -16.857,
+      37.484
+     ],
+     [
+      155.9,
+      -11.498,
+      39.459
+     ],
+     [
+      155.9,
+      -7.384,
+      40.433
+     ],
+     [
+      155.9,
+      -4.679,
+      40.869
+     ],
+     [
+      155.9,
+      -1.961,
+      41.222
+     ],
+     [
+      155.9,
+      0.76,
+      41.554
+     ],
+     [
+      155.9,
+      3.475,
+      41.93
+     ],
+     [
+      155.9,
+      6.172,
+      42.414
+     ],
+     [
+      155.9,
+      8.833,
+      43.068
+     ],
+     [
+      155.9,
+      11.427,
+      43.952
+     ],
+     [
+      155.9,
+      13.907,
+      45.114
+     ],
+     [
+      155.9,
+      16.212,
+      46.592
+     ],
+     [
+      155.9,
+      18.265,
+      48.404
+     ],
+     [
+      155.9,
+      19.978,
+      50.539
+     ],
+     [
+      155.9,
+      21.263,
+      52.955
+     ],
+     [
+      155.9,
+      22.041,
+      55.578
+     ],
+     [
+      155.9,
+      22.261,
+      58.305
+     ],
+     [
+      155.9,
+      21.902,
+      61.017
+     ],
+     [
+      155.9,
+      20.985,
+      63.595
+     ],
+     [
+      155.9,
+      19.565,
+      65.934
+     ],
+     [
+      155.9,
+      17.722,
+      67.958
+     ],
+     [
+      155.9,
+      15.549,
+      69.623
+     ],
+     [
+      155.9,
+      13.137,
+      70.92
+     ],
+     [
+      155.9,
+      10.567,
+      71.866
+     ],
+     [
+      155.9,
+      7.903,
+      72.502
+     ],
+     [
+      155.9,
+      5.189,
+      72.879
+     ],
+     [
+      155.9,
+      2.454,
+      73.057
+     ],
+     [
+      155.9,
+      -3.849,
+      72.999
+     ],
+     [
+      155.9,
+      -13.641,
+      71.816
+     ],
+     [
+      155.9,
+      -23.184,
+      69.326
+     ],
+     [
+      155.9,
+      -32.305,
+      65.574
+     ],
+     [
+      155.9,
+      -40.839,
+      60.629
+     ],
+     [
+      155.9,
+      -48.628,
+      54.579
+     ]
+    ],
+    "135": [
+     [
+      155.9,
+      7.137,
+      40.476
+     ],
+     [
+      155.9,
+      11.847,
+      39.356
+     ],
+     [
+      155.9,
+      15.424,
+      38.098
+     ],
+     [
+      155.9,
+      17.942,
+      37.017
+     ],
+     [
+      155.9,
+      20.426,
+      35.859
+     ],
+     [
+      155.9,
+      22.901,
+      34.681
+     ],
+     [
+      155.9,
+      25.395,
+      33.545
+     ],
+     [
+      155.9,
+      27.933,
+      32.508
+     ],
+     [
+      155.9,
+      30.53,
+      31.636
+     ],
+     [
+      155.9,
+      33.193,
+      30.992
+     ],
+     [
+      155.9,
+      35.91,
+      30.645
+     ],
+     [
+      155.9,
+      38.649,
+      30.658
+     ],
+     [
+      155.9,
+      41.353,
+      31.088
+     ],
+     [
+      155.9,
+      43.943,
+      31.973
+     ],
+     [
+      155.9,
+      46.322,
+      33.326
+     ],
+     [
+      155.9,
+      48.385,
+      35.124
+     ],
+     [
+      155.9,
+      50.03,
+      37.309
+     ],
+     [
+      155.9,
+      51.18,
+      39.791
+     ],
+     [
+      155.9,
+      51.787,
+      42.459
+     ],
+     [
+      155.9,
+      51.841,
+      45.195
+     ],
+     [
+      155.9,
+      51.369,
+      47.891
+     ],
+     [
+      155.9,
+      50.426,
+      50.461
+     ],
+     [
+      155.9,
+      49.084,
+      52.848
+     ],
+     [
+      155.9,
+      47.421,
+      55.024
+     ],
+     [
+      155.9,
+      45.511,
+      56.989
+     ],
+     [
+      155.9,
+      43.422,
+      58.761
+     ],
+     [
+      155.9,
+      41.208,
+      60.376
+     ],
+     [
+      155.9,
+      35.769,
+      63.751
+     ],
+     [
+      155.9,
+      26.681,
+      68.057
+     ],
+     [
+      155.9,
+      17.088,
+      71.075
+     ],
+     [
+      155.9,
+      7.172,
+      72.747
+     ],
+     [
+      155.9,
+      -2.88,
+      73.043
+     ],
+     [
+      155.9,
+      -12.877,
+      71.957
+     ],
+     [
+      155.9,
+      -22.631,
+      69.509
+     ],
+     [
+      155.9,
+      -31.957,
+      65.745
+     ],
+     [
+      155.9,
+      -40.677,
+      60.737
+     ],
+     [
+      155.9,
+      -48.628,
+      54.579
+     ]
+    ]
+   },
+   "not_": "U temasli elastika (ayrilma noktasinda egrilik surekli); yarim daire tahmini (h/2) R'yi ~%19 fazla verir"
+  },
+  "s1_gecis": {
+   "boy": 23.9,
+   "kose_r_max": 8.2,
+   "r_sinir": 7.0,
+   "en_kucuk_bosluk": 2.18,
+   "en_yakin": "Omuz gobegi",
+   "tambur_bosluk_son8haric": 3.09,
+   "ok": true,
+   "not_": "G2'de yassi demet (kalinlik x, genislik z) bagda (kalinlik radyal, genislik x) olur: ~24 mm'de 90 derece serbest burulma + silindir uzerinde helis (geodezik; yassi seritte duzlem ici bukulme yok)"
+  },
+  "s1_cikis": {
+   "boy": 238.0,
+   "kose_r_max": 7.95,
+   "r_sinir": 7.0,
+   "koseler": [
+    [
+     9.34,
+     1,
+     95.6
+    ],
+    [
+     7.95,
+     2,
+     90.0
+    ],
+    [
+     7.95,
+     3,
+     90.0
+    ],
+    [
+     16.64,
+     4,
+     66.7
+    ],
+    [
+     58.15,
+     5,
+     51.6
+    ]
+   ],
+   "en_kucuk_bosluk": 0.3,
+   "en_yakin": "S1 kaset kapagi sag",
+   "ok": true,
+   "yarik": [
+    12.0,
+    6.0
+   ],
+   "jr_erkek": [
+    10.3,
+    4.0
+   ],
+   "jr_gecer": true
+  },
+  "s1_carpisma": {
+   "ozet": {
+    "tambur_kol": {
+     "th": 5.0,
+     "bosluk": 0.82,
+     "parca": "Kol catali"
+    },
+    "kaset_kol": {
+     "phi": 15,
+     "th": 5.0,
+     "al": 0.0,
+     "bosluk": 1.25,
+     "kaset": "S1 kaset kapagi sag",
+     "parca": "Ust kol tupu"
+    },
+    "tambur_kaset": {
+     "phi": -45,
+     "bosluk": 0.5,
+     "parca": "S1 kaset govdesi sag"
+    }
+   },
+   "satir": {
+    "tambur_kol": [
+     {
+      "th": 5.0,
+      "bosluk": 0.82,
+      "parca": "Kol catali"
+     },
+     {
+      "th": 10.0,
+      "bosluk": 4.03,
+      "parca": "Kol catali"
+     },
+     {
+      "th": 20.0,
+      "bosluk": 11.02,
+      "parca": "Kol catali"
+     },
+     {
+      "th": 45.0,
+      "bosluk": 11.68,
+      "parca": "Kol catali"
+     },
+     {
+      "th": 90.0,
+      "bosluk": 11.68,
+      "parca": "Kol catali"
+     },
+     {
+      "th": 120.0,
+      "bosluk": 11.68,
+      "parca": "Kol catali"
+     }
+    ],
+    "kaset_kol": [
+     {
+      "phi": -45,
+      "th": 5.0,
+      "al": 0.0,
+      "bosluk": 10.73,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 5.0,
+      "al": 52.5,
+      "bosluk": 10.73,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 5.0,
+      "al": 105.0,
+      "bosluk": 10.73,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 10.0,
+      "al": 0.0,
+      "bosluk": 13.37,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 10.0,
+      "al": 52.5,
+      "bosluk": 13.37,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 10.0,
+      "al": 105.0,
+      "bosluk": 13.37,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 20.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 20.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 20.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 45.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 45.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 45.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 90.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 90.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 90.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 120.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 120.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -45,
+      "th": 120.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 5.0,
+      "al": 0.0,
+      "bosluk": 8.16,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 5.0,
+      "al": 52.5,
+      "bosluk": 8.16,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 5.0,
+      "al": 105.0,
+      "bosluk": 8.16,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 10.0,
+      "al": 0.0,
+      "bosluk": 10.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 10.0,
+      "al": 52.5,
+      "bosluk": 10.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 10.0,
+      "al": 105.0,
+      "bosluk": 10.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 20.0,
+      "al": 0.0,
+      "bosluk": 16.28,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 20.0,
+      "al": 52.5,
+      "bosluk": 16.28,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 20.0,
+      "al": 105.0,
+      "bosluk": 16.28,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 45.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 45.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 45.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 90.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 90.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 90.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 120.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 120.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -30,
+      "th": 120.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 5.0,
+      "al": 0.0,
+      "bosluk": 7.1,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 5.0,
+      "al": 52.5,
+      "bosluk": 7.1,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 5.0,
+      "al": 105.0,
+      "bosluk": 7.1,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 10.0,
+      "al": 0.0,
+      "bosluk": 9.76,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 10.0,
+      "al": 52.5,
+      "bosluk": 9.76,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 10.0,
+      "al": 105.0,
+      "bosluk": 9.76,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 20.0,
+      "al": 0.0,
+      "bosluk": 15.47,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 20.0,
+      "al": 52.5,
+      "bosluk": 15.47,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 20.0,
+      "al": 105.0,
+      "bosluk": 15.47,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 45.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 45.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 45.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 90.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 90.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 90.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 120.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 120.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": -15,
+      "th": 120.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 0,
+      "th": 5.0,
+      "al": 0.0,
+      "bosluk": 2.53,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 0,
+      "th": 5.0,
+      "al": 52.5,
+      "bosluk": 2.53,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 0,
+      "th": 5.0,
+      "al": 105.0,
+      "bosluk": 2.53,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 0,
+      "th": 10.0,
+      "al": 0.0,
+      "bosluk": 5.87,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 0,
+      "th": 10.0,
+      "al": 52.5,
+      "bosluk": 5.87,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 0,
+      "th": 10.0,
+      "al": 105.0,
+      "bosluk": 5.87,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 0,
+      "th": 20.0,
+      "al": 0.0,
+      "bosluk": 12.0,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 0,
+      "th": 20.0,
+      "al": 52.5,
+      "bosluk": 12.0,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 0,
+      "th": 20.0,
+      "al": 105.0,
+      "bosluk": 12.0,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 0,
+      "th": 45.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 0,
+      "th": 45.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 0,
+      "th": 45.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 0,
+      "th": 90.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 0,
+      "th": 90.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 0,
+      "th": 90.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 0,
+      "th": 120.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 0,
+      "th": 120.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 0,
+      "th": 120.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 15,
+      "th": 5.0,
+      "al": 0.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 15,
+      "th": 5.0,
+      "al": 52.5,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 15,
+      "th": 5.0,
+      "al": 105.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 15,
+      "th": 10.0,
+      "al": 0.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 15,
+      "th": 10.0,
+      "al": 52.5,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 15,
+      "th": 10.0,
+      "al": 105.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 15,
+      "th": 20.0,
+      "al": 0.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 15,
+      "th": 20.0,
+      "al": 52.5,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 15,
+      "th": 20.0,
+      "al": 105.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 15,
+      "th": 45.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 15,
+      "th": 45.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 15,
+      "th": 45.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 15,
+      "th": 90.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 15,
+      "th": 90.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 15,
+      "th": 90.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 15,
+      "th": 120.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 15,
+      "th": 120.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 15,
+      "th": 120.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 30,
+      "th": 5.0,
+      "al": 0.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 30,
+      "th": 5.0,
+      "al": 52.5,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 30,
+      "th": 5.0,
+      "al": 105.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 30,
+      "th": 10.0,
+      "al": 0.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 30,
+      "th": 10.0,
+      "al": 52.5,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 30,
+      "th": 10.0,
+      "al": 105.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 30,
+      "th": 20.0,
+      "al": 0.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 30,
+      "th": 20.0,
+      "al": 52.5,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 30,
+      "th": 20.0,
+      "al": 105.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 30,
+      "th": 45.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 30,
+      "th": 45.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 30,
+      "th": 45.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 30,
+      "th": 90.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 30,
+      "th": 90.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 30,
+      "th": 90.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 30,
+      "th": 120.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 30,
+      "th": 120.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 30,
+      "th": 120.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 45,
+      "th": 5.0,
+      "al": 0.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 45,
+      "th": 5.0,
+      "al": 52.5,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 45,
+      "th": 5.0,
+      "al": 105.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 45,
+      "th": 10.0,
+      "al": 0.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 45,
+      "th": 10.0,
+      "al": 52.5,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 45,
+      "th": 10.0,
+      "al": 105.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 45,
+      "th": 20.0,
+      "al": 0.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 45,
+      "th": 20.0,
+      "al": 52.5,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 45,
+      "th": 20.0,
+      "al": 105.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 45,
+      "th": 45.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 45,
+      "th": 45.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 45,
+      "th": 45.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 45,
+      "th": 90.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 45,
+      "th": 90.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 45,
+      "th": 90.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 45,
+      "th": 120.0,
+      "al": 0.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 45,
+      "th": 120.0,
+      "al": 52.5,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 45,
+      "th": 120.0,
+      "al": 105.0,
+      "bosluk": 16.67,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 60,
+      "th": 5.0,
+      "al": 0.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 60,
+      "th": 5.0,
+      "al": 52.5,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 60,
+      "th": 5.0,
+      "al": 105.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 60,
+      "th": 10.0,
+      "al": 0.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 60,
+      "th": 10.0,
+      "al": 52.5,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 60,
+      "th": 10.0,
+      "al": 105.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 60,
+      "th": 20.0,
+      "al": 0.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 60,
+      "th": 20.0,
+      "al": 52.5,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 60,
+      "th": 20.0,
+      "al": 105.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 60,
+      "th": 45.0,
+      "al": 0.0,
+      "bosluk": 16.72,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 60,
+      "th": 45.0,
+      "al": 52.5,
+      "bosluk": 16.72,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 60,
+      "th": 45.0,
+      "al": 105.0,
+      "bosluk": 16.72,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 60,
+      "th": 90.0,
+      "al": 0.0,
+      "bosluk": 16.72,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 60,
+      "th": 90.0,
+      "al": 52.5,
+      "bosluk": 16.72,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 60,
+      "th": 90.0,
+      "al": 105.0,
+      "bosluk": 16.72,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 60,
+      "th": 120.0,
+      "al": 0.0,
+      "bosluk": 16.72,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 60,
+      "th": 120.0,
+      "al": 52.5,
+      "bosluk": 16.72,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 60,
+      "th": 120.0,
+      "al": 105.0,
+      "bosluk": 16.72,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 75,
+      "th": 5.0,
+      "al": 0.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 75,
+      "th": 5.0,
+      "al": 52.5,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 75,
+      "th": 5.0,
+      "al": 105.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 75,
+      "th": 10.0,
+      "al": 0.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 75,
+      "th": 10.0,
+      "al": 52.5,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 75,
+      "th": 10.0,
+      "al": 105.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 75,
+      "th": 20.0,
+      "al": 0.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 75,
+      "th": 20.0,
+      "al": 52.5,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 75,
+      "th": 20.0,
+      "al": 105.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 75,
+      "th": 45.0,
+      "al": 0.0,
+      "bosluk": 17.13,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 75,
+      "th": 45.0,
+      "al": 52.5,
+      "bosluk": 17.13,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 75,
+      "th": 45.0,
+      "al": 105.0,
+      "bosluk": 17.13,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 75,
+      "th": 90.0,
+      "al": 0.0,
+      "bosluk": 17.13,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 75,
+      "th": 90.0,
+      "al": 52.5,
+      "bosluk": 17.13,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 75,
+      "th": 90.0,
+      "al": 105.0,
+      "bosluk": 17.13,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 75,
+      "th": 120.0,
+      "al": 0.0,
+      "bosluk": 17.13,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 75,
+      "th": 120.0,
+      "al": 52.5,
+      "bosluk": 17.13,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 75,
+      "th": 120.0,
+      "al": 105.0,
+      "bosluk": 17.13,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 90,
+      "th": 5.0,
+      "al": 0.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 90,
+      "th": 5.0,
+      "al": 52.5,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 90,
+      "th": 5.0,
+      "al": 105.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 90,
+      "th": 10.0,
+      "al": 0.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 90,
+      "th": 10.0,
+      "al": 52.5,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 90,
+      "th": 10.0,
+      "al": 105.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 90,
+      "th": 20.0,
+      "al": 0.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 90,
+      "th": 20.0,
+      "al": 52.5,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 90,
+      "th": 20.0,
+      "al": 105.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 90,
+      "th": 45.0,
+      "al": 0.0,
+      "bosluk": 14.96,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 90,
+      "th": 45.0,
+      "al": 52.5,
+      "bosluk": 14.96,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 90,
+      "th": 45.0,
+      "al": 105.0,
+      "bosluk": 14.96,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 90,
+      "th": 90.0,
+      "al": 0.0,
+      "bosluk": 14.96,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 90,
+      "th": 90.0,
+      "al": 52.5,
+      "bosluk": 14.96,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 90,
+      "th": 90.0,
+      "al": 105.0,
+      "bosluk": 14.96,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 90,
+      "th": 120.0,
+      "al": 0.0,
+      "bosluk": 14.96,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 90,
+      "th": 120.0,
+      "al": 52.5,
+      "bosluk": 14.96,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 90,
+      "th": 120.0,
+      "al": 105.0,
+      "bosluk": 14.96,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 105,
+      "th": 5.0,
+      "al": 0.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 105,
+      "th": 5.0,
+      "al": 52.5,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 105,
+      "th": 5.0,
+      "al": 105.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 105,
+      "th": 10.0,
+      "al": 0.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 105,
+      "th": 10.0,
+      "al": 52.5,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 105,
+      "th": 10.0,
+      "al": 105.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 105,
+      "th": 20.0,
+      "al": 0.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 105,
+      "th": 20.0,
+      "al": 52.5,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 105,
+      "th": 20.0,
+      "al": 105.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 105,
+      "th": 45.0,
+      "al": 0.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 105,
+      "th": 45.0,
+      "al": 52.5,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 105,
+      "th": 45.0,
+      "al": 105.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 105,
+      "th": 90.0,
+      "al": 0.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 105,
+      "th": 90.0,
+      "al": 52.5,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 105,
+      "th": 90.0,
+      "al": 105.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 105,
+      "th": 120.0,
+      "al": 0.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 105,
+      "th": 120.0,
+      "al": 52.5,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 105,
+      "th": 120.0,
+      "al": 105.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 120,
+      "th": 5.0,
+      "al": 0.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 120,
+      "th": 5.0,
+      "al": 52.5,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 120,
+      "th": 5.0,
+      "al": 105.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 120,
+      "th": 10.0,
+      "al": 0.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 120,
+      "th": 10.0,
+      "al": 52.5,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 120,
+      "th": 10.0,
+      "al": 105.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 120,
+      "th": 20.0,
+      "al": 0.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 120,
+      "th": 20.0,
+      "al": 52.5,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 120,
+      "th": 20.0,
+      "al": 105.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 120,
+      "th": 45.0,
+      "al": 0.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 120,
+      "th": 45.0,
+      "al": 52.5,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 120,
+      "th": 45.0,
+      "al": 105.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 120,
+      "th": 90.0,
+      "al": 0.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 120,
+      "th": 90.0,
+      "al": 52.5,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 120,
+      "th": 90.0,
+      "al": 105.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 120,
+      "th": 120.0,
+      "al": 0.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 120,
+      "th": 120.0,
+      "al": 52.5,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 120,
+      "th": 120.0,
+      "al": 105.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 135,
+      "th": 5.0,
+      "al": 0.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 135,
+      "th": 5.0,
+      "al": 52.5,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 135,
+      "th": 5.0,
+      "al": 105.0,
+      "bosluk": 1.25,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Ust kol tupu"
+     },
+     {
+      "phi": 135,
+      "th": 10.0,
+      "al": 0.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 135,
+      "th": 10.0,
+      "al": 52.5,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 135,
+      "th": 10.0,
+      "al": 105.0,
+      "bosluk": 4.78,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 135,
+      "th": 20.0,
+      "al": 0.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 135,
+      "th": 20.0,
+      "al": 52.5,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 135,
+      "th": 20.0,
+      "al": 105.0,
+      "bosluk": 11.14,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 135,
+      "th": 45.0,
+      "al": 0.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 135,
+      "th": 45.0,
+      "al": 52.5,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 135,
+      "th": 45.0,
+      "al": 105.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 135,
+      "th": 90.0,
+      "al": 0.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 135,
+      "th": 90.0,
+      "al": 52.5,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 135,
+      "th": 90.0,
+      "al": 105.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 135,
+      "th": 120.0,
+      "al": 0.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 135,
+      "th": 120.0,
+      "al": 52.5,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     },
+     {
+      "phi": 135,
+      "th": 120.0,
+      "al": 105.0,
+      "bosluk": 14.69,
+      "kaset": "S1 kaset kapagi sag",
+      "parca": "Kol catali"
+     }
+    ],
+    "tambur_kaset": [
+     {
+      "phi": -45,
+      "bosluk": 0.5,
+      "parca": "S1 kaset govdesi sag"
+     },
+     {
+      "phi": -30,
+      "bosluk": 0.5,
+      "parca": "S1 kaset govdesi sag"
+     },
+     {
+      "phi": -15,
+      "bosluk": 0.5,
+      "parca": "S1 kaset kapagi sag"
+     },
+     {
+      "phi": 0,
+      "bosluk": 0.5,
+      "parca": "S1 kaset govdesi sag"
+     },
+     {
+      "phi": 15,
+      "bosluk": 0.5,
+      "parca": "S1 kaset govdesi sag"
+     },
+     {
+      "phi": 30,
+      "bosluk": 0.5,
+      "parca": "S1 kaset govdesi sag"
+     },
+     {
+      "phi": 45,
+      "bosluk": 0.5,
+      "parca": "S1 kaset govdesi sag"
+     },
+     {
+      "phi": 60,
+      "bosluk": 0.5,
+      "parca": "S1 kaset govdesi sag"
+     },
+     {
+      "phi": 75,
+      "bosluk": 0.5,
+      "parca": "S1 kaset govdesi sag"
+     },
+     {
+      "phi": 90,
+      "bosluk": 0.5,
+      "parca": "S1 kaset govdesi sag"
+     },
+     {
+      "phi": 105,
+      "bosluk": 0.5,
+      "parca": "S1 kaset govdesi sag"
+     },
+     {
+      "phi": 120,
+      "bosluk": 0.5,
+      "parca": "S1 kaset govdesi sag"
+     },
+     {
+      "phi": 135,
+      "bosluk": 0.5,
+      "parca": "S1 kaset govdesi sag"
+     }
+    ]
+   },
+   "ok": true,
+   "sart": 0.5,
+   "not_": "omuz/kol x tambur x kaset; tam tarama (kafa, iki kol, el pozlari) carpisma.py 6. adimda"
+  },
+  "s1_boy": {
+   "uzatma": [
+    {
+     "servo": "dirsek servosu (MG996R)",
+     "uzatma_mm": 1541.0,
+     "parca": {
+      "birlesim_G2": 175.7,
+      "gecis": 23.9,
+      "s1_lop": 171.4,
+      "cikis_govde_ici": 238.0,
+      "govde_ici_dikeye": 0.0,
+      "dikey_dagitim": 901.5,
+      "konnektor_payi": 30.0
+     }
+    },
+    {
+     "servo": "bilek servosu (MG996R)",
+     "uzatma_mm": 1541.0,
+     "parca": {
+      "birlesim_G2": 175.7,
+      "gecis": 23.9,
+      "s1_lop": 171.4,
+      "cikis_govde_ici": 238.0,
+      "govde_ici_dikeye": 0.0,
+      "dikey_dagitim": 901.5,
+      "konnektor_payi": 30.0
+     }
+    },
+    {
+     "servo": "S2 servosu (DS3218, 300 mm kablo)",
+     "servo_kablo_yariga_mm": 290.0,
+     "kalan_mm": 10.0,
+     "kalan_sart_mm": 7.0,
+     "birlesim": "kabuk icinde yarik arkasinda",
+     "uzatma_mm": 1105.0,
+     "ok": true
+    }
+   ],
+   "dagitim": "dagitim karti A (arayuz.TABAN servo_dagitim, y ~ kat ustu + 10, tahmini)",
+   "kaynak": "KOL_KABLO s1 govde_ici / govde_dikey (taban_parcalar YOL 'Servo 6 V A', 15 Ekim)",
+   "not_": "kol basina 3 kablo (dirsek, bilek uzatmasi + S2 servosu); sol kol ayni (B karti). Konnektor payi tahmini."
+  },
   "ok": true
  },
  "baglanti_kontrol": [
@@ -4969,46 +8276,46 @@
     "servo": "DS3218MG",
     "stall_kgcm": 20.0,
     "stall_kaynak": "omuz raporundaki deger (datasheet 19 kg*cm @5 V, 21,5 @6,8 V)",
-    "yuksuz_kgcm": 7.98,
+    "yuksuz_kgcm": 8.14,
     "yuksuz_poz": [
      90,
-     3,
+     5,
      0,
      0
     ],
-    "yuksuz_pay": 2.51,
-    "yuklu_kgcm": 24.24,
+    "yuksuz_pay": 2.46,
+    "yuklu_kgcm": 24.35,
     "yuklu_poz": [
      90,
-     3,
+     5,
      0,
      0
     ],
-    "yuklu_pay": 0.83,
-    "izinli_yuk_2x_g": 62.0
+    "yuklu_pay": 0.82,
+    "izinli_yuk_2x_g": 58.0
    },
    {
     "eklem": "S2 (omuz yana acma)",
     "servo": "DS3218MG",
     "stall_kgcm": 20.0,
     "stall_kaynak": "omuz raporundaki deger",
-    "yuksuz_kgcm": 8.11,
+    "yuksuz_kgcm": 8.32,
     "yuksuz_poz": [
      0,
      90,
      0,
      -90
     ],
-    "yuksuz_pay": 2.47,
-    "yuklu_kgcm": 24.39,
+    "yuksuz_pay": 2.4,
+    "yuklu_kgcm": 24.6,
     "yuklu_poz": [
      0,
      90,
      0,
      -90
     ],
-    "yuklu_pay": 0.82,
-    "izinli_yuk_2x_g": 58.0
+    "yuklu_pay": 0.81,
+    "izinli_yuk_2x_g": 52.0
    },
    {
     "eklem": "Dirsek",
@@ -5049,7 +8356,7 @@
     "yuklu_kgcm": 0.67,
     "yuklu_poz": [
      85,
-     3,
+     5,
      5,
      0
     ],
@@ -5075,7 +8382,7 @@
     5
    ],
    "th": [
-    3,
+    5,
     120,
     5
    ],
@@ -5091,8 +8398,8 @@
    ]
   },
   "omuz_eski": {
-   "S1": 5.59,
-   "S2": 5.72,
+   "S1": 5.77,
+   "S2": 5.93,
    "alt_kol_g": 260.0
   },
   "egri": [
@@ -5100,199 +8407,199 @@
     "al": 0,
     "dirsek_yuksuz": 0.02,
     "dirsek_yuklu": 0.02,
-    "s1_yuksuz_omuz0": 0.09,
-    "s1_yuklu_omuz0": 0.15,
-    "s1_yuksuz_omuz90": 8.0,
-    "s1_yuklu_omuz90": 24.28
+    "s1_yuksuz_omuz0": 0.1,
+    "s1_yuklu_omuz0": 0.16,
+    "s1_yuksuz_omuz90": 8.18,
+    "s1_yuklu_omuz90": 24.46
    },
    {
     "al": 5,
     "dirsek_yuksuz": 0.15,
     "dirsek_yuklu": 0.82,
-    "s1_yuksuz_omuz0": 0.05,
-    "s1_yuklu_omuz0": 0.65,
-    "s1_yuksuz_omuz90": 7.99,
-    "s1_yuklu_omuz90": 24.24
+    "s1_yuksuz_omuz0": 0.04,
+    "s1_yuklu_omuz0": 0.64,
+    "s1_yuksuz_omuz90": 8.17,
+    "s1_yuklu_omuz90": 24.42
    },
    {
     "al": 10,
     "dirsek_yuksuz": 0.29,
     "dirsek_yuklu": 1.61,
-    "s1_yuksuz_omuz0": 0.18,
-    "s1_yuklu_omuz0": 1.44,
-    "s1_yuksuz_omuz90": 7.98,
-    "s1_yuklu_omuz90": 24.13
+    "s1_yuksuz_omuz0": 0.17,
+    "s1_yuklu_omuz0": 1.43,
+    "s1_yuksuz_omuz90": 8.15,
+    "s1_yuklu_omuz90": 24.31
    },
    {
     "al": 15,
     "dirsek_yuksuz": 0.42,
     "dirsek_yuklu": 2.39,
-    "s1_yuksuz_omuz0": 0.31,
-    "s1_yuklu_omuz0": 2.22,
-    "s1_yuksuz_omuz90": 7.94,
-    "s1_yuklu_omuz90": 23.96
+    "s1_yuksuz_omuz0": 0.3,
+    "s1_yuklu_omuz0": 2.21,
+    "s1_yuksuz_omuz90": 8.12,
+    "s1_yuklu_omuz90": 24.14
    },
    {
     "al": 20,
     "dirsek_yuksuz": 0.54,
     "dirsek_yuklu": 3.15,
-    "s1_yuksuz_omuz0": 0.44,
-    "s1_yuklu_omuz0": 2.98,
-    "s1_yuksuz_omuz90": 7.9,
-    "s1_yuklu_omuz90": 23.72
+    "s1_yuksuz_omuz0": 0.43,
+    "s1_yuklu_omuz0": 2.97,
+    "s1_yuksuz_omuz90": 8.08,
+    "s1_yuklu_omuz90": 23.9
    },
    {
     "al": 25,
     "dirsek_yuksuz": 0.67,
     "dirsek_yuklu": 3.89,
-    "s1_yuksuz_omuz0": 0.56,
-    "s1_yuklu_omuz0": 3.72,
-    "s1_yuksuz_omuz90": 7.85,
-    "s1_yuklu_omuz90": 23.41
+    "s1_yuksuz_omuz0": 0.55,
+    "s1_yuklu_omuz0": 3.71,
+    "s1_yuksuz_omuz90": 8.03,
+    "s1_yuklu_omuz90": 23.59
    },
    {
     "al": 30,
     "dirsek_yuksuz": 0.79,
     "dirsek_yuklu": 4.6,
-    "s1_yuksuz_omuz0": 0.68,
-    "s1_yuklu_omuz0": 4.43,
-    "s1_yuksuz_omuz90": 7.79,
-    "s1_yuklu_omuz90": 23.04
+    "s1_yuksuz_omuz0": 0.67,
+    "s1_yuklu_omuz0": 4.42,
+    "s1_yuksuz_omuz90": 7.97,
+    "s1_yuklu_omuz90": 23.22
    },
    {
     "al": 35,
     "dirsek_yuksuz": 0.9,
     "dirsek_yuklu": 5.27,
-    "s1_yuksuz_omuz0": 0.79,
-    "s1_yuklu_omuz0": 5.1,
-    "s1_yuksuz_omuz90": 7.71,
-    "s1_yuklu_omuz90": 22.61
+    "s1_yuksuz_omuz0": 0.78,
+    "s1_yuklu_omuz0": 5.09,
+    "s1_yuksuz_omuz90": 7.89,
+    "s1_yuklu_omuz90": 22.79
    },
    {
     "al": 40,
     "dirsek_yuksuz": 1.0,
     "dirsek_yuklu": 5.91,
-    "s1_yuksuz_omuz0": 0.9,
-    "s1_yuklu_omuz0": 5.74,
-    "s1_yuksuz_omuz90": 7.63,
-    "s1_yuklu_omuz90": 22.12
+    "s1_yuksuz_omuz0": 0.89,
+    "s1_yuklu_omuz0": 5.73,
+    "s1_yuksuz_omuz90": 7.81,
+    "s1_yuklu_omuz90": 22.3
    },
    {
     "al": 45,
     "dirsek_yuksuz": 1.1,
     "dirsek_yuklu": 6.49,
-    "s1_yuksuz_omuz0": 1.0,
-    "s1_yuklu_omuz0": 6.32,
-    "s1_yuksuz_omuz90": 7.54,
-    "s1_yuklu_omuz90": 21.58
+    "s1_yuksuz_omuz0": 0.98,
+    "s1_yuklu_omuz0": 6.31,
+    "s1_yuksuz_omuz90": 7.72,
+    "s1_yuklu_omuz90": 21.76
    },
    {
     "al": 50,
     "dirsek_yuksuz": 1.19,
     "dirsek_yuklu": 7.03,
-    "s1_yuksuz_omuz0": 1.08,
-    "s1_yuklu_omuz0": 6.86,
-    "s1_yuksuz_omuz90": 7.44,
-    "s1_yuklu_omuz90": 20.99
+    "s1_yuksuz_omuz0": 1.07,
+    "s1_yuklu_omuz0": 6.85,
+    "s1_yuksuz_omuz90": 7.62,
+    "s1_yuklu_omuz90": 21.17
    },
    {
     "al": 55,
     "dirsek_yuksuz": 1.27,
     "dirsek_yuklu": 7.52,
-    "s1_yuksuz_omuz0": 1.17,
-    "s1_yuklu_omuz0": 7.35,
-    "s1_yuksuz_omuz90": 7.33,
-    "s1_yuklu_omuz90": 20.35
+    "s1_yuksuz_omuz0": 1.15,
+    "s1_yuklu_omuz0": 7.34,
+    "s1_yuksuz_omuz90": 7.51,
+    "s1_yuklu_omuz90": 20.53
    },
    {
     "al": 60,
     "dirsek_yuksuz": 1.34,
     "dirsek_yuklu": 7.95,
-    "s1_yuksuz_omuz0": 1.24,
-    "s1_yuklu_omuz0": 7.78,
-    "s1_yuksuz_omuz90": 7.22,
-    "s1_yuklu_omuz90": 19.68
+    "s1_yuksuz_omuz0": 1.23,
+    "s1_yuklu_omuz0": 7.77,
+    "s1_yuksuz_omuz90": 7.4,
+    "s1_yuklu_omuz90": 19.86
    },
    {
     "al": 65,
     "dirsek_yuksuz": 1.4,
     "dirsek_yuklu": 8.31,
-    "s1_yuksuz_omuz0": 1.3,
-    "s1_yuklu_omuz0": 8.14,
-    "s1_yuksuz_omuz90": 7.1,
-    "s1_yuklu_omuz90": 18.97
+    "s1_yuksuz_omuz0": 1.29,
+    "s1_yuklu_omuz0": 8.13,
+    "s1_yuksuz_omuz90": 7.28,
+    "s1_yuklu_omuz90": 19.15
    },
    {
     "al": 70,
     "dirsek_yuksuz": 1.45,
     "dirsek_yuklu": 8.62,
-    "s1_yuksuz_omuz0": 1.35,
-    "s1_yuklu_omuz0": 8.45,
-    "s1_yuksuz_omuz90": 6.97,
-    "s1_yuklu_omuz90": 18.23
+    "s1_yuksuz_omuz0": 1.34,
+    "s1_yuklu_omuz0": 8.44,
+    "s1_yuksuz_omuz90": 7.15,
+    "s1_yuklu_omuz90": 18.41
    },
    {
     "al": 75,
     "dirsek_yuksuz": 1.49,
     "dirsek_yuklu": 8.86,
-    "s1_yuksuz_omuz0": 1.39,
-    "s1_yuklu_omuz0": 8.69,
-    "s1_yuksuz_omuz90": 6.84,
-    "s1_yuklu_omuz90": 17.47
+    "s1_yuksuz_omuz0": 1.37,
+    "s1_yuklu_omuz0": 8.68,
+    "s1_yuksuz_omuz90": 7.02,
+    "s1_yuklu_omuz90": 17.65
    },
    {
     "al": 80,
     "dirsek_yuksuz": 1.52,
     "dirsek_yuklu": 9.03,
-    "s1_yuksuz_omuz0": 1.41,
-    "s1_yuklu_omuz0": 8.86,
-    "s1_yuksuz_omuz90": 6.71,
-    "s1_yuklu_omuz90": 16.69
+    "s1_yuksuz_omuz0": 1.4,
+    "s1_yuklu_omuz0": 8.85,
+    "s1_yuksuz_omuz90": 6.89,
+    "s1_yuklu_omuz90": 16.86
    },
    {
     "al": 85,
     "dirsek_yuksuz": 1.54,
     "dirsek_yuklu": 9.13,
-    "s1_yuksuz_omuz0": 1.43,
-    "s1_yuklu_omuz0": 8.96,
-    "s1_yuksuz_omuz90": 6.58,
-    "s1_yuklu_omuz90": 15.89
+    "s1_yuksuz_omuz0": 1.42,
+    "s1_yuklu_omuz0": 8.95,
+    "s1_yuksuz_omuz90": 6.76,
+    "s1_yuklu_omuz90": 16.07
    },
    {
     "al": 90,
     "dirsek_yuksuz": 1.54,
     "dirsek_yuklu": 9.16,
-    "s1_yuksuz_omuz0": 1.43,
-    "s1_yuklu_omuz0": 9.0,
-    "s1_yuksuz_omuz90": 6.44,
-    "s1_yuklu_omuz90": 15.09
+    "s1_yuksuz_omuz0": 1.42,
+    "s1_yuklu_omuz0": 8.99,
+    "s1_yuksuz_omuz90": 6.62,
+    "s1_yuklu_omuz90": 15.27
    },
    {
     "al": 95,
     "dirsek_yuksuz": 1.53,
     "dirsek_yuklu": 9.13,
-    "s1_yuksuz_omuz0": 1.43,
-    "s1_yuklu_omuz0": 8.96,
-    "s1_yuksuz_omuz90": 6.31,
-    "s1_yuklu_omuz90": 14.3
+    "s1_yuksuz_omuz0": 1.42,
+    "s1_yuklu_omuz0": 8.95,
+    "s1_yuksuz_omuz90": 6.49,
+    "s1_yuklu_omuz90": 14.47
    },
    {
     "al": 100,
     "dirsek_yuksuz": 1.51,
     "dirsek_yuklu": 9.02,
-    "s1_yuksuz_omuz0": 1.41,
-    "s1_yuklu_omuz0": 8.85,
-    "s1_yuksuz_omuz90": 6.18,
-    "s1_yuklu_omuz90": 13.5
+    "s1_yuksuz_omuz0": 1.4,
+    "s1_yuklu_omuz0": 8.84,
+    "s1_yuksuz_omuz90": 6.36,
+    "s1_yuklu_omuz90": 13.68
    },
    {
     "al": 105,
     "dirsek_yuksuz": 1.48,
     "dirsek_yuklu": 8.85,
-    "s1_yuksuz_omuz0": 1.38,
-    "s1_yuklu_omuz0": 8.68,
-    "s1_yuksuz_omuz90": 6.05,
-    "s1_yuklu_omuz90": 12.72
+    "s1_yuksuz_omuz0": 1.37,
+    "s1_yuklu_omuz0": 8.67,
+    "s1_yuksuz_omuz90": 6.22,
+    "s1_yuklu_omuz90": 12.9
    }
   ],
   "grup": {
@@ -5321,19 +8628,19 @@
     ]
    },
    "omuz_Gobek": {
-    "m": 147.2,
+    "m": 175.2,
     "am": [
-     175.56,
-     7.496,
-     -2.475
+     174.121,
+     8.022,
+     -2.439
     ]
    },
    "omuz_Kol": {
-    "m": 105.8,
+    "m": 146.9,
     "am": [
      185.0,
-     -49.145,
-     0.339
+     -49.62,
+     -0.047
     ]
    }
   }
@@ -5679,5 +8986,5 @@
   "yuk_g": 500.0,
   "kaynak": "dirsek/dirsek_parcalar.py"
  },
- "sure_s": 55.6
+ "sure_s": 248.0
 }

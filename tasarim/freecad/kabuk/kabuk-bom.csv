@@ -1,8 +1,8 @@
 ﻿Tur;Kalem;Adet;Toplam kutle (g)
-Baglanti;M3 isil gomme somun;61;16.2
+Baglanti;M3 isil gomme somun;65;17.3
 Baglanti;M3x6 DIN 912;4;3.3
 Baglanti;M3x6 ISO 7380;51;32.3
-Baglanti;M3x8 DIN 912;6;5.6
+Baglanti;M3x8 DIN 912;10;9.3
 Baglanti;M5 DIN 125 pul;4;1.8
 Baglanti;M5 isil gomme somun;4;3.0
 Baglanti;M5x10 DIN 912;4;13.8
@@ -22,8 +22,12 @@ Baski;Govde alt bandi sag;1;285.0
 Baski;Govde alt bandi sol;1;266.9
 Baski;Govde orta bandi sag;1;249.4
 Baski;Govde orta bandi sol;1;239.7
-Baski;Omuz bandi sag;1;192.3
-Baski;Omuz bandi sol;1;184.8
+Baski;Omuz bandi sag;1;192.0
+Baski;Omuz bandi sol;1;184.5
+Baski;S1 kaset govdesi sag;1;8.8
+Baski;S1 kaset govdesi sol;1;8.8
+Baski;S1 kaset kapagi sag;1;6.8
+Baski;S1 kaset kapagi sol;1;6.8
 Satin;Etek tasiyici L braket 2 mm Al (bukum);6;130.8
 Satin;Govde braketi 3 mm Al U (bukum);4;179.3
 Satin;"Nextion NX1060P101_011 10,1"" 1024x600";1;535.0

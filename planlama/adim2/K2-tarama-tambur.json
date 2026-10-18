@@ -1,0 +1,558 @@
+{
+ "tarih": "2026-10-15T18:41:31",
+ "yontem": "MeshPart MaxLength 0,6 nokta bulutu + cKDTree; en kucuk 6 poz kesin distToShape",
+ "tambur_sabit": {
+  "on_min_aralik": [
+   119.0,
+   0.48896947674350555,
+   "S1 kablo tamburu",
+   "S1 kaset govdesi sag"
+  ],
+  "kesin": [
+   [
+    119.0,
+    0.5,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag",
+    0.0
+   ],
+   [
+    26.0,
+    0.5,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag",
+    0.0
+   ],
+   [
+    152.0,
+    0.5,
+    "S1 kablo tamburu",
+    "S1 kaset kapagi sag",
+    0.0
+   ],
+   [
+    125.0,
+    0.5,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag",
+    0.0
+   ],
+   [
+    28.0,
+    0.5,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag",
+    0.0
+   ],
+   [
+    88.0,
+    0.5,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag",
+    0.0
+   ]
+  ],
+  "en_kucuk_10": [
+   [
+    119.0,
+    0.48896947674350555,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag"
+   ],
+   [
+    26.0,
+    0.48897289563261825,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag"
+   ],
+   [
+    152.0,
+    0.48897440037160667,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag"
+   ],
+   [
+    125.0,
+    0.4889775047416173,
+    "S1 kablo tamburu",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    28.0,
+    0.48897772887636837,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag"
+   ],
+   [
+    88.0,
+    0.4889780915830777,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag"
+   ],
+   [
+    30.0,
+    0.48898452824589556,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag"
+   ],
+   [
+    -20.0,
+    0.4889864645595848,
+    "S1 kablo tamburu",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    150.0,
+    0.48898658743996304,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag"
+   ],
+   [
+    121.0,
+    0.4890037356692271,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag"
+   ]
+  ]
+ },
+ "tambur_kapak_civata": {
+  "kesin": [
+   [
+    108.0,
+    0.709,
+    "S1 kablo tamburu",
+    "Kapak civatasi M3x12",
+    0.0
+   ],
+   [
+    -52.0,
+    0.709,
+    "S1 kablo tamburu",
+    "Kapak civatasi M3x001",
+    0.0
+   ],
+   [
+    128.0,
+    0.709,
+    "S1 kablo tamburu",
+    "Kapak civatasi M3x12",
+    0.0
+   ],
+   [
+    107.0,
+    0.709,
+    "S1 kablo tamburu",
+    "Kapak civatasi M3x003",
+    0.0
+   ],
+   [
+    -51.0,
+    0.709,
+    "S1 kablo tamburu",
+    "Kapak civatasi M3x003",
+    0.0
+   ],
+   [
+    129.0,
+    0.709,
+    "S1 kablo tamburu",
+    "Kapak civatasi M3x002",
+    0.0
+   ]
+  ],
+  "en_kucuk_10": [
+   [
+    108.0,
+    0.6687563376566295,
+    "S1 kablo tamburu",
+    "Kapak civatasi M3x001"
+   ],
+   [
+    -52.0,
+    0.6692238738851547,
+    "S1 kablo tamburu",
+    "Kapak civatasi M3x12"
+   ],
+   [
+    128.0,
+    0.6692238738851773,
+    "S1 kablo tamburu",
+    "Kapak civatasi M3x003"
+   ],
+   [
+    107.0,
+    0.6711158740871432,
+    "S1 kablo tamburu",
+    "Kapak civatasi M3x001"
+   ],
+   [
+    -51.0,
+    0.6715668853950404,
+    "S1 kablo tamburu",
+    "Kapak civatasi M3x12"
+   ],
+   [
+    129.0,
+    0.6715668853950583,
+    "S1 kablo tamburu",
+    "Kapak civatasi M3x003"
+   ],
+   [
+    109.0,
+    0.678614216334831,
+    "S1 kablo tamburu",
+    "Kapak civatasi M3x001"
+   ],
+   [
+    -53.0,
+    0.6786142163348327,
+    "S1 kablo tamburu",
+    "Kapak civatasi M3x12"
+   ],
+   [
+    127.0,
+    0.6786142163348419,
+    "S1 kablo tamburu",
+    "Kapak civatasi M3x003"
+   ],
+   [
+    130.0,
+    0.6842844479486362,
+    "S1 kablo tamburu",
+    "Kapak civatasi M3x003"
+   ]
+  ]
+ },
+ "tambur_kol": [
+  [
+   0.0,
+   0.021,
+   "Ust kol tupu"
+  ],
+  [
+   1.0,
+   0.017,
+   "Ust kol tupu"
+  ],
+  [
+   2.0,
+   0.025,
+   "Kol catali"
+  ],
+  [
+   3.0,
+   0.004,
+   "Kol catali"
+  ],
+  [
+   3.5,
+   0.046,
+   "Kol catali"
+  ],
+  [
+   3.75,
+   0.094,
+   "Kol catali"
+  ],
+  [
+   4.0,
+   0.226,
+   "Kol catali"
+  ],
+  [
+   4.25,
+   0.405,
+   "Kol catali"
+  ],
+  [
+   4.5,
+   0.534,
+   "Kol catali"
+  ],
+  [
+   5.0,
+   0.844,
+   "Kol catali"
+  ],
+  [
+   5.5,
+   1.128,
+   "Kol catali"
+  ],
+  [
+   6.0,
+   1.426,
+   "Kol catali"
+  ],
+  [
+   7.0,
+   2.06,
+   "Kol catali"
+  ],
+  [
+   8.0,
+   2.709,
+   "Kol catali"
+  ],
+  [
+   10.0,
+   4.031,
+   "Kol catali"
+  ],
+  [
+   12.5,
+   5.723,
+   "Kol catali"
+  ],
+  [
+   15.0,
+   7.455,
+   "Kol catali"
+  ],
+  [
+   17.5,
+   9.221,
+   "Kol catali"
+  ],
+  [
+   20.0,
+   11.018,
+   "Kol catali"
+  ],
+  [
+   22.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   25.0,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   27.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   30.0,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   32.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   35.0,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   37.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   40.0,
+   11.675,
+   "Kol catali"
+  ],
+  [
+   42.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   45.0,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   47.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   50.0,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   52.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   55.0,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   57.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   60.0,
+   11.675,
+   "Kol catali"
+  ],
+  [
+   62.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   65.0,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   67.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   70.0,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   72.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   75.0,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   77.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   80.0,
+   11.675,
+   "Kol catali"
+  ],
+  [
+   82.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   85.0,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   87.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   90.0,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   92.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   95.0,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   97.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   100.0,
+   11.675,
+   "Kol catali"
+  ],
+  [
+   102.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   105.0,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   107.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   110.0,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   112.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   115.0,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   117.5,
+   11.674,
+   "Kol catali"
+  ],
+  [
+   120.0,
+   11.675,
+   "Kol catali"
+  ],
+  [
+   "kesin",
+   3.5,
+   0.0,
+   "Kol catali"
+  ],
+  [
+   "kesin",
+   3.75,
+   0.063,
+   "Kol catali"
+  ],
+  [
+   "kesin",
+   4.0,
+   0.217,
+   "Kol catali"
+  ],
+  [
+   "kesin",
+   4.25,
+   0.37,
+   "Kol catali"
+  ],
+  [
+   "kesin",
+   5.0,
+   0.825,
+   "Kol catali"
+  ]
+ ],
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-15T09:27:09",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-15T09:21:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-15T09:32:14"
+ }
+}

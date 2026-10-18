@@ -1,0 +1,130 @@
+{
+ "tarih": "2026-10-15T19:14:45",
+ "kaydirma": [
+  {
+   "phi": -45.0,
+   "S2": 5.0,
+   "parca": "S1 kaset govdesi sag",
+   "ilk_cakisma": [
+    10.5,
+    "Omuz gobegi",
+    8.825
+   ],
+   "en_kucuk": [
+    0.0,
+    10.0,
+    "Omuz gobegi"
+   ]
+  },
+  {
+   "phi": -45.0,
+   "S2": 5.0,
+   "parca": "S1 kaset kapagi sag",
+   "ilk_cakisma": [
+    4.0,
+    "Omuz gobegi",
+    8.825
+   ],
+   "en_kucuk": [
+    0.0,
+    3.5,
+    "Omuz gobegi"
+   ]
+  },
+  {
+   "phi": 0.0,
+   "S2": 5.0,
+   "parca": "S1 kaset govdesi sag",
+   "ilk_cakisma": [
+    4.5,
+    "Ust kol tupu",
+    0.084
+   ],
+   "en_kucuk": [
+    0.0,
+    4.5,
+    "Ust kol tupu"
+   ]
+  },
+  {
+   "phi": 0.0,
+   "S2": 5.0,
+   "parca": "S1 kaset kapagi sag",
+   "ilk_cakisma": [
+    3.0,
+    "Ust kol tupu",
+    0.127
+   ],
+   "en_kucuk": [
+    0.0,
+    3.0,
+    "Ust kol tupu"
+   ]
+  },
+  {
+   "phi": 90.0,
+   "S2": 5.0,
+   "parca": "S1 kaset govdesi sag",
+   "ilk_cakisma": [
+    5.5,
+    "Ust kol tupu",
+    2.439
+   ],
+   "en_kucuk": [
+    0.0,
+    5.5,
+    "Ust kol tupu"
+   ]
+  },
+  {
+   "phi": 90.0,
+   "S2": 5.0,
+   "parca": "S1 kaset kapagi sag",
+   "ilk_cakisma": [
+    1.5,
+    "Ust kol tupu",
+    1.343
+   ],
+   "en_kucuk": [
+    0.0,
+    1.5,
+    "Ust kol tupu"
+   ]
+  },
+  {
+   "phi": 135.0,
+   "S2": 5.0,
+   "parca": "S1 kaset govdesi sag",
+   "ilk_cakisma": [
+    4.0,
+    "Ust kol tupu",
+    0.063
+   ],
+   "en_kucuk": [
+    0.0,
+    4.0,
+    "Ust kol tupu"
+   ]
+  },
+  {
+   "phi": 135.0,
+   "S2": 5.0,
+   "parca": "S1 kaset kapagi sag",
+   "ilk_cakisma": [
+    1.5,
+    "Ust kol tupu",
+    1.343
+   ],
+   "en_kucuk": [
+    0.0,
+    1.5,
+    "Ust kol tupu"
+   ]
+  }
+ ],
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-15T09:27:09",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-15T09:21:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-15T09:32:14"
+ }
+}

@@ -640,7 +640,7 @@ def vl(v):
 # (>= r_dinamik), kiris < L (gerilmez), demet cevrel zarfi ile parcalar arasi bosluk (>= pay_bosluk; ilk / son 4 mm baglama
 # noktasi, haric). Sabit yollar: kose yaricapi (>= r_sabit), yassi yatan demet ile parcalar arasi bosluk (>= 0; servo cikisinin
 # ilk 2 mm'si haric). Gecitler: disi JR'nin O10 delikten ve tup penceresinden gecisi, tup icinde iki eslesik JR. Boy: servo
-# kablosu (300) birlesime ulasir mi. S1 gecisi ACIK (arayuz KOL_KABLO["s1"]).
+# kablosu (300) birlesime ulasir mi. S1 gecisi: doner U-lop kaseti (arayuz KOL_KABLO["s1"], asagida s1_*).
 import kablo_yolu as KY
 KK = A.KOL_KABLO
 R_DIN = {n: KY.r_sinir(KK, n)[0] for n in (1, 2)}
@@ -791,12 +791,213 @@ for ad, yk in (("dirsek servosu (MG996R) -> tup ici (y %.0f)" % KK["yol_ustkol"]
                     ok=bool(KK["servo_kablo_boy"] - gerek >= KK["boy_payi"])))
 L_uz = kablo["yol_uzatma_kol"]["boy"] + SL["L"]
 boy.append(dict(ad="uzatma (birlesim -> G2, S1 oncesi)", gerekli_mm=round(L_uz, 1),
-                not_="S1 gecisi, govde ici ve PCA9685'e (~967 mm, taban YOL) yol ACIK"))
+                not_="S1 kaseti + govde ici + dagitim karti: kablo['s1_boy']"))
 kablo["boy"] = boy
 log("kablo boy:", [(b["ad"], b["gerekli_mm"], b.get("artan_mm"), b.get("ok")) for b in boy])
-kablo["ok"] = bool(all(kablo[k]["ok"] for k in ("dirsek_lop", "s2_lop", "yol_dirsek_servo", "yol_bilek_servo", "yol_ustkol", "yol_uzatma_kol"))
-                   and all(g["ok"] for g in gecit) and all(b.get("ok", True) for b in boy))
-log("kablo kontrolu", "OK" if kablo["ok"] else "HATA", "(S1 gecisi acik)")
+# --- S1 doner U-lop kaseti (15 Ekim 2026; arayuz KOL_KABLO["s1"], kablo_yolu.u_lop / s1_*; planlama/adim2/S1-kaset.md)
+#     Tambur omuz Gobek grubunda (omuz_parcalar), kaset govdesi + kapagi kabuk modulunde (kabuk-montaj.FCStd'den okunur; once kabuk_montaj).
+#     U temasli elastika (pozdan bagimsiz). Her S1 pozunda (-45...135, 5 derece): ic / dis kosu acisi >= alfa_min; kablonun (tambur bagi ->
+#     ic kosu -> U -> dis kosu -> duvar bagi) demet cevrel zarfiyla bosluk: omuz Govde, gobek (tambur haric), kabuk (kaset haric), kol +
+#     ust kol (S2 alt sinir ve 20). Tambur ve kaset tasarim geregi temas yuzeyi: ayrica kanal paylari raporlanir. Gecis (G2 -> tambur bagi,
+#     gobek cercevesi) ve cikis (duvar bagi -> ped yarigi -> govde ici) sabit yol: kose yaricapi >= r_sabit (3 serit), bosluk >= 0.
+import shutil, tempfile
+S1 = KK["s1"]
+S1O = KY.s1_olcu(KK)
+U1 = S1O["U"]
+N1 = S1["serit"]
+R_DIN1, R_SAB1 = KY.r_sinir(KK, N1)
+DM1 = KY.demet(N1, KK["serit"])
+R_ON1 = 10.0 * KK["serit"][1] + (N1 - 1) * KK["serit"][1] / 2.0          # 10 x d (bilgi: K-kontrol onerisi)
+OMUZ_Y = A.MODULLER["omuz_sag"]["konum"][1]
+
+
+def kabuk_oku():
+    yol = os.path.join(UST, "kabuk", "kabuk-montaj.FCStd")
+    tmp = os.path.join(tempfile.gettempdir(), "dirsek_s1_kabuk.FCStd")
+    shutil.copy2(yol, tmp)
+    d = App.openDocument(tmp)
+    out = []
+    for o in d.Objects:
+        if o.TypeId == "Part::Feature" and ("sag" in o.Label) and (o.Label.startswith("S1 kaset") or o.Label.startswith("Omuz bandi")
+                                                                  or o.Label.startswith("Gogus bandi") or "Kaset civatasi" in o.Label):
+            s_ = o.Shape.copy()
+            s_.Placement = o.getGlobalPlacement()
+            s_ = s_.copy()
+            s_.translate(V(0, -OMUZ_Y, 0))
+            out.append((o.Label, s_))
+    App.closeDocument(d.Name)
+    return out, datetime_mtime(yol)
+
+
+def datetime_mtime(p):
+    import datetime
+    return datetime.datetime.fromtimestamp(os.stat(p).st_mtime).isoformat(timespec="seconds")
+
+
+KAB1, KAB1_T = kabuk_oku()
+KASET = [(a, s_) for a, s_ in KAB1 if a.startswith("S1 kaset")]
+KAB_DIGER = [(a, s_) for a, s_ in KAB1 if not a.startswith("S1 kaset")]
+TAMBUR = [(q["ad"], q["shape"]) for q in O.P if q["ad"] == "S1 kablo tamburu"]
+GOB_DIGER = [(q["ad"], q["shape"]) for q in O.P if q["grup"] == "Gobek" and q["ad"] != "S1 kablo tamburu"]
+GOV1 = [(q["ad"], q["shape"]) for q in O.P if q["grup"] == "Govde" and q["tur"] != "Referans"]
+log("S1: kabuk-montaj.FCStd (%s) %d parca (kaset %d); U R_min %.2f (sinir %.2f, 10xd %.2f), l %.1f, delta %.1f, uc +%.1f" % (
+    KAB1_T, len(KAB1), len(KASET), U1["R_min"], R_DIN1, R_ON1, U1["l"], U1["delta"], U1["pol_max"]))
+PHI_S1 = list(range(int(A.OMUZ["one_arka_aralik"][0]), int(A.OMUZ["one_arka_aralik"][1]) + 1, 5))
+TH_S1 = [yana[0], 20.0]
+kol1 = {th: grup_sekil(("Kol",), Pr(th), kaynak=O.P) + grup_sekil(("UstKol",), Pr(th)) for th in TH_S1}
+satir1 = []
+for phi in PHI_S1:
+    ps = KY.s1_poz(KK, phi, S1O)
+    kenar, boy1 = KY.cokgen(ps["nokta"], UC, UC)
+    pp = Pp(phi)
+    hedef = GOV1 + KAB_DIGER + [(a + " (S1 %d)" % phi, tasi(s_, pp)) for a, s_ in GOB_DIGER]
+    for th in TH_S1:
+        hedef += [("%s (S2 %g)" % (a, th), tasi(s_, pp)) for a, s_ in kol1[th]]
+    d, kim = KY.en_yakin(kenar, hedef)
+    satir1.append(dict(phi=phi, psi_bag=round(ps["psi_bag"], 2), psi_U=round(ps["psi_U"], 2), a_i=round(ps["a_i"], 2), a_o=round(ps["a_o"], 2),
+                       u_uc_psi=round(ps["u_uc_psi"], 2), bosluk=round(d - DM1["r_lop"], 2), en_yakin=kim))
+b1 = min(satir1, key=lambda q: q["bosluk"])
+a_min = min(min(q["a_i"], q["a_o"]) for q in satir1)
+# duyarlilik: eksen kacikligi +-1 mm (h 31 / 33), serit kalinligi 1,8 (demet 5,4)
+duy = []
+for ad_, ri_, ro_ in (("eksen kacikligi -1 mm", S1O["ri"], S1O["ro"] - 1.0), ("eksen kacikligi +1 mm", S1O["ri"], S1O["ro"] + 1.0),
+                      ("serit 1,8 mm (demet %.1f)" % (N1 * 1.8), S1["tambur"]["r"][1] + N1 * 0.9, S1["duvar"]["r"][0] - N1 * 0.9)):
+    u_ = KY.u_lop(ri_, ro_)
+    duy.append(dict(durum=ad_, ri=round(ri_, 2), ro=round(ro_, 2), R_min=round(u_["R_min"], 2)))
+duy.append(dict(durum="serit 1,8: sinir 7,5 d + demet payi", R_sinir=round(7.5 * 1.8 + (N1 - 1) * 0.9, 2)))
+kanal = dict(eksenel_arka=round(S1O["xc"] - (S1["duvar"]["x0"] + S1["duvar"]["arka_t"]) - KK["serit"][0] / 2, 2),
+             eksenel_flans=round(S1["duvar"]["flans_x"][0] - S1O["xc"] - KK["serit"][0] / 2, 2),
+             eksenel_tambur_dudak=round((S1["kanal_x"][1] - S1["kanal_x"][0] - KK["serit"][0]) / 2, 2),
+             radyal_tambur=round(S1O["ri"] - S1O["kalinlik"] / 2 - S1["tambur"]["r"][1], 3),
+             radyal_duvar=round(S1["duvar"]["r"][0] - S1O["ro"] - S1O["kalinlik"] / 2, 3))
+ok_lop = bool(U1["gecerli"] and U1["R_min"] >= R_DIN1 and b1["bosluk"] >= PAY and a_min >= S1["alfa_min"] - 1e-6)
+log("kablo S1 lopu: L %.1f, R_min %.2f (>= %.2f; 10xd %.2f %s), en kucuk bosluk %.2f (%s, phi %s), kosu acisi en az %.1f (>= %.0f) %s" % (
+    S1["L"], U1["R_min"], R_DIN1, R_ON1, "saglar" if U1["R_min"] >= R_ON1 else "SAGLAMAZ", b1["bosluk"], b1["en_yakin"], b1["phi"], a_min,
+    S1["alfa_min"], "OK" if ok_lop else "HATA"))
+log("kablo S1 duyarlilik:", duy, "kanal paylari:", kanal)
+kablo["s1_lop"] = dict(L=S1["L"], serit=N1, demet=DM1, r_min=round(U1["R_min"], 3), r_sinir=round(R_DIN1, 2), r_10d=round(R_ON1, 2),
+                       r_10d_ok=bool(U1["R_min"] >= R_ON1), u=dict(ri=S1O["ri"], ro=S1O["ro"], l=round(U1["l"], 2), delta=round(U1["delta"], 2),
+                                                                     uc=round(U1["pol_max"], 2), F=U1["F"], artik=U1["artik"]),
+                       en_kucuk_bosluk=b1["bosluk"], en_yakin=b1["en_yakin"], en_yakin_poz=b1["phi"], kosu_aci_min=round(a_min, 2),
+                       alfa_min=S1["alfa_min"], kanal_pay=kanal, duyarlilik=duy, pozlar=satir1, ok=ok_lop,
+                       ornek_nokta={str(phi): [vl(q) for q in KY.s1_poz(KK, phi, S1O)["nokta"][::4]] for phi in (PHI_S1[0], 45, PHI_S1[-1])},
+                       not_="U temasli elastika (ayrilma noktasinda egrilik surekli); yarim daire tahmini (h/2) R'yi ~%19 fazla verir")
+
+# gecis: G2 -> tambur bagi (gobek cercevesi); son 8 mm tambura sarilir (tambur haric)
+g1 = KY.s1_gecis(KK, S1O)
+rk_g, _, kos_g = KY.kose_yaricap(g1)
+ken_g, boy_g = KY.cokgen(g1, 0.0, 0.0)
+ken_g8, _ = KY.cokgen(g1, 0.0, 8.0)
+hedef_g = GOB_DIGER + kol1[yana[0]] + kol1[20.0]
+for _phi in (-45, 0, 45, 90, 135):
+    hedef_g += [("%s (S1 %d)" % (a, _phi), s_) for a, s_ in grup_sekil(("Govde",), Pp(_phi).inverse(), kaynak=O.P) if "referans" not in a]
+d_g, kim_g = KY.en_yakin(ken_g, hedef_g)
+d_gt, _ = KY.en_yakin(ken_g8, TAMBUR)
+gecis_ok = bool(rk_g >= R_SAB1 - 1e-9 and d_g - DM1["r_sabit"] >= -1e-6 and d_gt - DM1["r_sabit"] >= -1e-6)
+kablo["s1_gecis"] = dict(boy=round(boy_g, 1), kose_r_max=round(rk_g, 2), r_sinir=round(R_SAB1, 2), en_kucuk_bosluk=round(d_g - DM1["r_sabit"], 2),
+                         en_yakin=kim_g, tambur_bosluk_son8haric=round(d_gt - DM1["r_sabit"], 2), ok=gecis_ok,
+                         not_="G2'de yassi demet (kalinlik x, genislik z) bagda (kalinlik radyal, genislik x) olur: ~24 mm'de 90 derece serbest burulma + "
+                              "silindir uzerinde helis (geodezik; yassi seritte duzlem ici bukulme yok)")
+log("kablo S1 gecis: boy %.1f, kose R %.1f (>= %.1f), bosluk %.2f (%s), tambura (son 8 mm haric) %.2f %s" % (
+    boy_g, rk_g, R_SAB1, d_g - DM1["r_sabit"], kim_g, d_gt - DM1["r_sabit"], "OK" if gecis_ok else "HATA"))
+
+# cikis: duvar bagi -> duvar boyunca -> radyal ice -> ped yarigi -> govde ici (sabit cerceve); gobek tum S1 pozlarinda
+c1 = KY.s1_cikis(KK, S1O)
+rk_c, _, kos_c = KY.kose_yaricap(c1)
+ken_c, boy_c = KY.cokgen(c1, 0.0, 0.0)
+ken_c4, _ = KY.cokgen(c1, UC, 0.0)                     # duvar bagindaki kablo bagi (ilk 4 mm) haric: orada demet duvara yaslanir
+hedef_c = GOV1 + KAB1
+for _phi in (-45, 0, 45, 90, 135):
+    hedef_c += [("%s (S1 %d)" % (a, _phi), tasi(s_, Pp(_phi))) for a, s_ in TAMBUR + GOB_DIGER]
+d_c, kim_c = KY.en_yakin(ken_c4, hedef_c)
+cikis_ok = bool(rk_c >= R_SAB1 - 1e-9 and d_c - DM1["r_sabit"] >= -1e-6)
+kablo["s1_cikis"] = dict(boy=round(boy_c, 1), kose_r_max=round(rk_c, 2), r_sinir=round(R_SAB1, 2), koseler=[[round(a, 2), i, round(b, 1)] for a, i, b in kos_c],
+                         en_kucuk_bosluk=round(d_c - DM1["r_sabit"], 2), en_yakin=kim_c, ok=cikis_ok,
+                         yarik=list(S1["cikis"]["yarik"]), jr_erkek=list(KK["jr_erkek"][:2]),
+                         jr_gecer=bool(S1["cikis"]["yarik"][0] >= KK["jr_erkek"][0] + 0.5 and S1["cikis"]["yarik"][1] >= KK["jr_erkek"][1] + 0.5))
+log("kablo S1 cikis: boy %.1f, kose R %.1f (>= %.1f), bosluk %.2f (%s) %s" % (boy_c, rk_c, R_SAB1, d_c - DM1["r_sabit"], kim_c,
+                                                                            "OK" if cikis_ok else "HATA"))
+
+# hafif carpisma: tambur (gobek) <-> kol zinciri (yalniz S2'ye bagli); kaset govdesi/kapagi (sabit) <-> kol zinciri (S1 x S2 x dirsek);
+# tambur <-> kaset ve kabuk (S1'e bagli). Sinir kutusu on elemesi + distToShape.
+def _enaz(a_list, b_list):
+    best = (1e9, None, None)
+    for a, sa in a_list:
+        bba = App.BoundBox(sa.BoundBox)
+        bba.enlarge(10.0)
+        for b, sb in b_list:
+            if not bba.intersect(sb.BoundBox):
+                continue
+            dd = sa.distToShape(sb)[0]
+            if dd < best[0]:
+                best = (dd, a, b)
+    return best
+
+
+TH_C = [yana[0], 10.0, 20.0, 45.0, 90.0, 120.0]
+AL_C = [ar[0], 52.5, ar[1]]
+car = dict(tambur_kol=[], kaset_kol=[], tambur_kaset=[])
+for th in TH_C:
+    kz = grup_sekil(("Kol",), Pr(th), kaynak=O.P) + grup_sekil(("UstKol",), Pr(th))
+    d_, a_, b_ = _enaz(TAMBUR, kz)
+    car["tambur_kol"].append(dict(th=th, bosluk=round(d_, 2), parca=b_))
+for phi in range(int(A.OMUZ["one_arka_aralik"][0]), int(A.OMUZ["one_arka_aralik"][1]) + 1, 15):
+    pp = Pp(phi)
+    tb = [(a, tasi(s_, pp)) for a, s_ in TAMBUR]
+    d_, a_, b_ = _enaz(tb, KAB1 + GOV1)
+    car["tambur_kaset"].append(dict(phi=phi, bosluk=round(d_, 2), parca=b_))
+    for th in TH_C:
+        for al in AL_C:
+            kz = [(a, tasi(s_, pp.multiply(Pr(th)))) for a, s_ in grup_sekil(("Kol",), None, kaynak=O.P) + grup_sekil(("UstKol",))]
+            kz += [(a, tasi(s_, pp.multiply(Pr(th)).multiply(Pe(al)))) for a, s_ in grup_sekil(("OnKol", "El"))]
+            d_, a_, b_ = _enaz(KASET, kz)
+            car["kaset_kol"].append(dict(phi=phi, th=th, al=al, bosluk=round(d_, 2), kaset=a_, parca=b_))
+car_ok = all(q["bosluk"] >= PAY for k in car for q in car[k])
+car_ozet = {k: min(car[k], key=lambda q: q["bosluk"]) for k in car}
+kablo["s1_carpisma"] = dict(ozet=car_ozet, satir=car, ok=bool(car_ok), sart=PAY,
+                            not_="omuz/kol x tambur x kaset; tam tarama (kafa, iki kol, el pozlari) carpisma.py 6. adimda")
+log("S1 hafif tarama:", {k: (v["bosluk"], v.get("parca"), v.get("phi"), v.get("th")) for k, v in car_ozet.items()}, "OK" if car_ok else "HATA")
+
+# boy: servo basina uzatma (birlesim / S2 servosu -> S1 -> govde ici -> dagitim karti A), tahmini konnektor payi dahil
+_dik = [V(*p) for p in S1["govde_dikey"]]
+try:
+    _sd = A.TABAN["servo_dagitim"]["A"]
+    _dik.append(V(_sd[0], A.Y_DECK1 + 10.0, _sd[1]))
+    _sd_not = "dagitim karti A (arayuz.TABAN servo_dagitim, y ~ kat ustu + 10, tahmini)"
+except Exception:
+    _sd_not = "dagitim karti konumu okunamadi: govde_dikey sonu"
+_, boy_dik = KY.cokgen(_dik)
+_bag = V(*S1["govde_ici"][-1]) + V(0, OMUZ_Y, 0)
+boy_bag = (_dik[0] - _bag).Length
+L_cik_ici = boy_c                                    # duvar bagi -> govde ici sonu (travers arkasi, x 0)
+L_s1_toplam = boy_g + S1["L"] + L_cik_ici + boy_bag + boy_dik
+uzat = []
+for ad in ("dirsek servosu (MG996R)", "bilek servosu (MG996R)"):
+    toplam = L_uz + L_s1_toplam + S1["jr_pay"]
+    uzat.append(dict(servo=ad, uzatma_mm=round(toplam, 0),
+                     parca=dict(birlesim_G2=round(L_uz, 1), gecis=round(boy_g, 1), s1_lop=S1["L"], cikis_govde_ici=round(L_cik_ici, 1),
+                                govde_ici_dikeye=round(boy_bag, 1), dikey_dagitim=round(boy_dik, 1), konnektor_payi=S1["jr_pay"])))
+# S2 servosu (DS3218, kablosu 300): G2'ye s2_servo_kablo (tahmini) + gecis + S1 lopu + cikis -> govde icinde birlesim (kalan boy)
+s2_gerek = S1["s2_servo_kablo"] + boy_g + S1["L"]
+_c_pts = KY.s1_cikis(KK, S1O)
+_c_yarik = KY.cokgen(_c_pts[:4])[1]                     # duvar bagi -> yarigin ic agzi (x_ic)
+s2_yarik = s2_gerek + _c_yarik
+s2_kalan = KK["servo_kablo_boy"] - s2_yarik
+# kablo ucu (disi JR, 14 mm) ped ic yuzunu tamamen gecmeli: kalan + (ped ic yuzu - x_ic) >= JR boyu
+s2_kalan_sart = KK["jr_disi"][2] - (A.OMUZ_DUVAR["x0"] - S1["cikis"]["x_ic"])
+uzat.append(dict(servo="S2 servosu (DS3218, 300 mm kablo)", servo_kablo_yariga_mm=round(s2_yarik, 1), kalan_mm=round(s2_kalan, 1),
+                 kalan_sart_mm=round(s2_kalan_sart, 1),
+                 birlesim="kabuk icinde yarik arkasinda" if s2_kalan >= s2_kalan_sart else "KABLO YETMEZ: gobekte birlesim gerekir",
+                 uzatma_mm=round(L_cik_ici - _c_yarik + boy_bag + boy_dik + S1["jr_pay"] - max(s2_kalan, 0.0), 0),
+                 ok=bool(s2_kalan >= s2_kalan_sart)))
+kablo["s1_boy"] = dict(uzatma=uzat, dagitim=_sd_not, kaynak="KOL_KABLO s1 govde_ici / govde_dikey (taban_parcalar YOL 'Servo 6 V A', 15 Ekim)",
+                       not_="kol basina 3 kablo (dirsek, bilek uzatmasi + S2 servosu); sol kol ayni (B karti). Konnektor payi tahmini.")
+log("kablo S1 boy:", [(u["servo"], u.get("uzatma_mm"), u.get("kalan_mm")) for u in uzat])
+
+kablo["ok"] = bool(all(kablo[k]["ok"] for k in ("dirsek_lop", "s2_lop", "yol_dirsek_servo", "yol_bilek_servo", "yol_ustkol", "yol_uzatma_kol",
+                                               "s1_lop", "s1_gecis", "s1_cikis", "s1_carpisma"))
+                   and all(g["ok"] for g in gecit) and all(b.get("ok", True) for b in boy) and all(u.get("ok", True) for u in kablo["s1_boy"]["uzatma"]))
+log("kablo kontrolu", "OK" if kablo["ok"] else "HATA", "(S1 doner U-lop kaseti dahil)")
 
 
 out = dict(

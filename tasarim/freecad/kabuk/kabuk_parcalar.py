@@ -178,6 +178,135 @@ for (bant, sag), sh in ETEK.items():
                      grup="Taban etegi")
 
 
+# ====================================================================== S1 kablo kaseti (duzeltme plani M1 / S1, 15 Ekim 2026)
+# Doner U-lop kasetinin sabit yarisi (arayuz.KOL_KABLO["s1"]; tambur omuz modulunde). Iki baski parcasi (taraf basina):
+#   govde = arka plaka (x 152-153, kabugun duz omuz yuzune oturur) + dis duvar (r 75,2-77,2) + 2 dikme + ust uc pim yuvasi;
+#           baski: arka yuz tablada (desteksiz).
+#   kapak = flans (x 158,3-159,5) + dikme basliklari (havsali M3 basi) + ust uc pimi; baski: flans dis yuzu tablada (desteksiz).
+# Taban cizgisi (yz duzleminde) = S1 ekseni etrafinda halka dilimi (psi0 ... phi 135'teki U'nun dis temasi) + phi 135'teki U'nun
+# (temasli elastika, dirsek/kablo_yolu.py) ic bolgesi u_pay kadar buyutulmus + ust uc pimi. Duvar = taban cizgisinin 2 mm ic seridi
+# (tambura bakan ic kenar haric). Kabuga: 2 dikme icin omuz pedine isil gomme + boss, kablo cikisi icin ped yarigi. Sol = X aynasi.
+for _p in (os.path.join(UST, "dirsek"),):
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
+import kablo_yolu as KY
+S1K = A.KOL_KABLO["s1"]
+S1D = S1K["duvar"]
+S1O = KY.s1_olcu(A.KOL_KABLO)
+S1U = KY.s1_poz(A.KOL_KABLO, A.OMUZ["one_arka_aralik"][1], S1O)         # U'nun en ileri konumu (S1 ust siniri)
+KAS_X0, KAS_XA = S1D["x0"], S1D["x0"] + S1D["arka_t"]                    # arka plaka
+KAS_XF0, KAS_XF1 = S1D["flans_x"]
+KAS_RI, KAS_RO = S1D["flans_r_ic"], S1D["r"][1]
+
+
+def _yz(psi, r, x=0.0):
+    y, z = KY.psi_yz(psi, r)
+    return V(x, y, z)
+
+
+def _yay_poligon(r0, r1, psi0, psi1, adim=1.0):
+    n = max(2, int(abs(psi1 - psi0) / adim) + 1)
+    dis = [_yz(psi0 + (psi1 - psi0) * i / n, r1) for i in range(n + 1)]
+    ic = [_yz(psi1 - (psi1 - psi0) * i / n, r0) for i in range(n + 1)]
+    return Part.Face(Part.makePolygon(dis + ic + [dis[0]]))
+
+
+def _daire(r, merkez=V(0, 0, 0)):
+    return Part.Face(Part.Wire(Part.makeCircle(r, merkez, V(1, 0, 0))))
+
+
+_psi_a = S1U["psi_U"] + S1O["U"]["delta"]                                # phi 135'te dis temas (duvarin bittigi yer, + U payi)
+_dilim = _yay_poligon(KAS_RI, KAS_RO, S1D["psi0"], _psi_a)
+_u = [V(0, q.y, q.z) for q in S1U["u_nokta"]]
+_u_yuz = Part.Face(Part.Wire(Part.makePolygon(_u + [_u[0]]))).makeOffset2D(S1D["u_pay"], 0)
+# ust uc pimi: U'nun (phi 135) en yakin noktasina >= demet yari kalinligi + bosluk + dikme yaricapi
+_pm = S1D["pim"]
+_u2 = [(q.y, q.z) for q in S1U["u_nokta"]]
+_pim_psi = S1U["u_uc_psi"]
+while True:
+    _c = KY.psi_yz(_pim_psi, _pm["r"])
+    if min(math.hypot(_c[0] - a_, _c[1] - b_) for a_, b_ in _u2) >= S1O["kalinlik"] / 2 + _pm["bosluk"] + _pm["post_r"] + 0.5:
+        break
+    _pim_psi += 0.5
+_taban = _dilim.fuse([_u_yuz, _daire(_pm["post_r"] + 2.0, _yz(_pim_psi, _pm["r"]))])
+_taban = _taban.common(_daire(KAS_RO).cut(_daire(KAS_RI))).removeSplitter()
+assert len(_taban.Faces) == 1, "S1 kaseti taban cizgisi tek yuz degil: %d" % len(_taban.Faces)
+_taban = _taban.Faces[0]
+_ic = _taban.makeOffset2D(-2.0, 0)
+_serit = _taban.cut(_ic).cut(_daire(S1D["ic_kes_r"]))
+
+
+def _uz(face, x0, x1):
+    f = face.copy()
+    f.translate(V(x0, 0, 0))
+    return f.extrude(V(x1 - x0, 0, 0))
+
+
+S1_DIKME = []                       # (psi, r, havsa oturma noktasi, kabuk yuzu noktasi) yerel
+_bx, _hx = S1D["bolum_x"], S1D["havsa_x"]
+k_govde = _uz(_taban, KAS_X0, KAS_XA).fuse(_uz(_serit, KAS_XA, KAS_XF0))
+k_kapak = _uz(_taban, KAS_XF0, KAS_XF1)
+for (ps, r) in S1K["dikme"]:
+    c = _yz(ps, r)
+    k_govde = k_govde.fuse(Part.makeCylinder(S1K["dikme_r"], _bx - KAS_XA + 0.01, V(KAS_XA - 0.01, c.y, c.z), V(1, 0, 0)))
+    k_kapak = k_kapak.fuse(Part.makeCylinder(S1K["dikme_r"], KAS_XF0 - _bx + 0.01, V(_bx, c.y, c.z), V(1, 0, 0)))
+    k_govde = k_govde.cut(Part.makeCylinder(CLEAR[3] / 2, _bx - KAS_X0 + 2, V(KAS_X0 - 1, c.y, c.z), V(1, 0, 0)))
+    k_kapak = k_kapak.cut(Part.makeCylinder(CLEAR[3] / 2, KAS_XF1 - _bx + 2, V(_bx - 1, c.y, c.z), V(1, 0, 0)))
+    k_kapak = k_kapak.cut(Part.makeCylinder(3.0, KAS_XF1 - _hx + 1, V(_hx, c.y, c.z), V(1, 0, 0)))      # O6 havsa (DIN 912 basi O5,5)
+    S1_DIKME.append((ps, r, V(_hx, c.y, c.z), V(KAS_X0, c.y, c.z)))
+_pc = _yz(_pim_psi, _pm["r"])
+k_govde = k_govde.fuse(Part.makeCylinder(_pm["post_r"], KAS_XF0 - KAS_XA + 0.01, V(KAS_XA - 0.01, _pc.y, _pc.z), V(1, 0, 0)))
+k_govde = k_govde.cut(Part.makeCylinder(_pm["d"] / 2 + 0.1, 3.2, V(KAS_XF0 - 3.1, _pc.y, _pc.z), V(1, 0, 0)))
+k_kapak = k_kapak.fuse(Part.makeCylinder(_pm["d"] / 2, 3.0, V(KAS_XF0 - 3.0, _pc.y, _pc.z), V(1, 0, 0)))
+# kablo cikisi: duvar bagi -> psi_c'de radyal ice -> r_don'da arka plaka + ped yarigi (radyal x teget = yarik olcusu)
+_C = S1K["cikis"]
+_yr, _yt = _C["yarik"]
+_e_r = _yz(_C["psi"], 1.0)
+_e_t = _yz(_C["psi"] + 90.0, 1.0)
+_m = _yz(_C["psi"], _C["r_don"])
+
+
+def _yarik(x0, x1):
+    a_ = _m - _e_r * ((_yr - _yt) / 2)
+    b_ = _m + _e_r * ((_yr - _yt) / 2)
+    s_ = Part.makeCylinder(_yt / 2, x1 - x0, V(x0, a_.y, a_.z), V(1, 0, 0)).fuse(
+        Part.makeCylinder(_yt / 2, x1 - x0, V(x0, b_.y, b_.z), V(1, 0, 0)))
+    kut = Part.Face(Part.makePolygon([a_ + _e_t * (_yt / 2), b_ + _e_t * (_yt / 2), b_ - _e_t * (_yt / 2), a_ - _e_t * (_yt / 2),
+                                      a_ + _e_t * (_yt / 2)]))
+    kut.translate(V(x0, 0, 0))
+    return s_.fuse(kut.extrude(V(x1 - x0, 0, 0))).removeSplitter()
+
+
+k_govde = k_govde.cut(_yarik(KAS_X0 - 1, KAS_XA + 1)).removeSplitter()
+k_kapak = k_kapak.removeSplitter()
+S1_YARIK_KABUK = _yarik(A.OMUZ_DUVAR["x0"] - 3.0, KAS_X0 + 0.01)         # kabuk ped yarigi (yerel)
+S1_KASET = dict(pim_psi=_pim_psi, psi_a=_psi_a, psi_uc=S1U["u_uc_psi"], dikme=S1_DIKME)
+_OMUZ_Y = A.MODULLER["omuz_sag"]["konum"][1]
+
+
+def _glob(sh, sag):
+    s_ = sh.copy()
+    s_.translate(V(0, _OMUZ_Y, 0))
+    if not sag:
+        s_ = s_.mirror(V(0, 0, 0), V(1, 0, 0))
+    return s_
+
+
+def _gnok(p, sag):
+    return V(p.x if sag else -p.x, p.y + _OMUZ_Y, p.z)
+
+
+for sag in (True, False):
+    sx = 1 if sag else -1
+    t_ = "sag" if sag else "sol"
+    PARCA["S1 kaset govdesi %s" % t_] = dict(shape=_glob(k_govde, sag), yukari=V(sx, 0, 0), yon="arka yuzu (x 152) tablada",
+                                             patlat=(sx * 60, 0, 40), grup="S1 kablo kaseti")
+    PARCA["S1 kaset kapagi %s" % t_] = dict(shape=_glob(k_kapak, sag), yukari=V(-sx, 0, 0), yon="flans dis yuzu tablada",
+                                            patlat=(sx * 90, 0, 40), grup="S1 kablo kaseti")
+log("S1 kaseti: psi %.1f...%.1f (U ucu %.1f, pim %.1f), govde %.1f cm3, kapak %.1f cm3, kati %d/%d" % (
+    S1D["psi0"], _psi_a, S1U["u_uc_psi"], _pim_psi, k_govde.Volume / 1000, k_kapak.Volume / 1000, len(k_govde.Solids), len(k_kapak.Solids)))
+
+
 def sahip(pt, haric=()):
     """Noktayi iceren baski parcasi (yoksa None)."""
     pt = V(*pt)
@@ -198,6 +327,24 @@ CIKAR = {ad: [] for ad in PARCA}    # parcadan cikarilacak delikler
 dk3, k3, _ = A.ISO7380[3]
 OD_I3, L_I3 = A.INSERT[3]
 BOSS_L = L_I3 + 0.5 + 1.0          # orta yuzeyden iceri: delik 6,2 + 1 mm taban
+
+# --- S1 kaseti: omuz pedinde dikme isil gomme somunlari (boss icerde) + kablo cikis yarigi
+KASET_PARCA = [ad for ad in PARCA if ad.startswith("S1 kaset")]
+S1_VIDA = []
+for sag in (True, False):
+    sx = 1 if sag else -1
+    for (ps, r, p_has, p_yuz) in S1_DIKME:
+        pg = _gnok(p_yuz, sag)
+        ic = sahip(pg - V(sx * 2.5, 0, 0), haric=KASET_PARCA)
+        EKLE[ic].append(damla(pg, V(-sx, 0, 0), 4.0, BOSS_L, PARCA[ic]["yukari"] * -1))
+        CIKAR[ic].append(insert_hole(3, pg, V(-sx, 0, 0), extra=0.5))
+        S1_VIDA.append(dict(sag=sag, psi=ps, r=r, p_yuz=pg, p_has=_gnok(p_has, sag), ic=ic,
+                            kapak="S1 kaset kapagi %s" % ("sag" if sag else "sol"), govde="S1 kaset govdesi %s" % ("sag" if sag else "sol")))
+    yk = _glob(S1_YARIK_KABUK, sag)
+    for ad_ in [a_ for a_ in PARCA if a_ not in KASET_PARCA and PARCA[a_]["shape"].BoundBox.intersect(yk.BoundBox)]:
+        if PARCA[ad_]["shape"].common(yk).Volume > 1.0:
+            CIKAR[ad_].append(yk)
+log("S1 kaseti: dikme somunlari", [(v["ic"], v["psi"]) for v in S1_VIDA])
 VIDA_L = 6.0                        # M3x6 ISO 7380
 ADAY = []      # (etiket, kesit tablosu, yer, y, u)
 for y_d, xs in ((A.GOVDE_DIKIS[0], None), (A.GOVDE_DIKIS[1], None)):
@@ -370,6 +517,19 @@ for v in VIDA:
     v["i_vida"] = add("Bindirme civatasi M3x6 (%s)" % v["etiket"], PARCA[v["dis"]]["grup"],
                       screw7380(3, VIDA_L, v["p"] + v["n"] * (v["hn"] + BAS_BOSLUK), v["n"] * -1), "Baglanti", "Celik 10.9",
                       kod="M3x6 ISO 7380", renk="celik", patlat=tuple(pd + v["n"] * 25))
+
+# ====================================================================== S1 kaseti civatalari (M3x8 DIN 912, kapak havsasindan) + isil gomme somunlar
+for v in S1_VIDA:
+    sx = 1 if v["sag"] else -1
+    pk = V(*PARCA[v["kapak"]]["patlat"])
+    v["i_insert"] = add("Isil gomme somun M3 (S1 kaseti %s psi %.0f)" % ("sag" if v["sag"] else "sol", v["psi"]), PARCA[v["ic"]]["grup"],
+                        insert(3, v["p_yuz"], V(-sx, 0, 0)), "Baglanti", "Pirinc", kod="M3 isil gomme somun", renk="pirinc",
+                        patlat=tuple(V(*PARCA[v["ic"]]["patlat"])))
+    v["i_vida"] = add("Kaset civatasi M3x%d (%s psi %.0f)" % (S1K["dikme_vida"][1], "sag" if v["sag"] else "sol", v["psi"]),
+                      "S1 kablo kaseti", screw912(S1K["dikme_vida"][0], S1K["dikme_vida"][1], v["p_has"], V(-sx, 0, 0)), "Baglanti",
+                      "Celik 8.8", kod="M3x%d DIN 912" % S1K["dikme_vida"][1], renk="celik", patlat=tuple(pk + V(sx * 25, 0, 0)))
+    v["tip"] = "kaset"
+    VIDA.append(v)
 
 # ====================================================================== govde braketleri (3 mm Al U) + M6 + M5
 ALU = "Aluminyum 5754"

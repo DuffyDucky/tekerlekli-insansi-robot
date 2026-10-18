@@ -64,3 +64,4 @@ rehberi (Duffy seçti, 14 Ekim).
 - 2026-10-15 ~14:40 Opus-8 ve Opus-9 limite takıldı (yenilenme 18:30). Oturum yeniden başlamış, eski ajanlar devam ettirilemedi → 18:35 yeni Opus-8b (S1 kontrolü, K2-*.json'dan devam) ve Opus-9b (5. adım, günlükten devam). Uyanık tutma süreçleri (17020, 24440) hâlâ çalışıyor.
 - 2026-10-15 ~19:15 Opus-9b bitti → `15a4444` (toplam betikle doğrulandı). Opus-10 montaj rehberi altyapısı (CAD'i yalnız okur); Opus-8b S1 kontrolünde. M6 CAD, S1 kontrolünden sonra.
 - 2026-10-15 ~19:30 Duffy duraklattı (yukarıdaki not). Zamanlayıcı silindi; Opus-10'a %50 checkpoint talimatı gönderildi.
+- 2026-10-15 ~23:30 PC reset: Opus-8b (S1 kontrolü) yarıda kaldı, `K2-s1-kontrol.md` kapanmadı (son tarama 22:16). Duffy: limit %82, sonra devam. Devamda yeni ajan günlükten başlar.

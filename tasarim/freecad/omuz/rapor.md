@@ -1,6 +1,6 @@
 # Sağ omuz modülü (2 eksen) + üst kol bağlantısı
 
-FreeCAD 1.1 · `omuz_montaj.py` ile üretildi · 66 parça · çizim ve kontroller betikle tekrarlanabilir.
+FreeCAD 1.1 · `omuz_montaj.py` ile üretildi · 73 parça · çizim ve kontroller betikle tekrarlanabilir.
 
 ## Özet
 
@@ -8,12 +8,12 @@ FreeCAD 1.1 · `omuz_montaj.py` ile üretildi · 66 parça · çizim ve kontroll
 |---|---|
 | Eksenler | Öne-arka (S1, X ekseni) ve yana açma (S2, Z ekseni); iki eksen tek noktada kesişir |
 | Yük yolu | Öne-arka: 6808-2RS rulman taşır, S1 yalnız döndürür. Yana açma: çatal iki taraftan tutulur (horn + 625ZZ) |
-| Montaj kontrolü | 66 parça, ev pozunda **0 çakışma** (tolerans 0,5 mm³), tüm parçalar tek ve geçerli katı |
+| Montaj kontrolü | 73 parça, ev pozunda **0 çakışma** (tolerans 0,5 mm³), tüm parçalar tek ve geçerli katı |
 | Öne-arka serbest aralık | -60° … 180° arası hiçbir yere çarpmıyor (taranan aralığın tamamı) |
-| Yana açma serbest aralık | 0° … 120° (her öne-arka açısında) |
-| En küçük boşluk (kol aşağıda) | Kol × gövde 4.0 mm (Kol catali ↔ Rulman kapagi) |
-| En kötü tork (eklem sınırları içinde) | Öne-arka 5.6 kg·cm, yana açma 5.7 kg·cm · DS3218MG ≈ 20 kg·cm → ≈ 3.5× pay |
-| Hareketli kütle | Göbek grubu 147 g, kol grubu 106 g + dirsek ve aşağısı (tahmini) 260 g |
+| Yana açma serbest aralık | 5° … 120° (her öne-arka açısında) |
+| En küçük boşluk (kol aşağıda) | Kol × gövde 6.3 mm (Kol catali ↔ Rulman kapagi) |
+| En kötü tork (eklem sınırları içinde) | Öne-arka 5.8 kg·cm, yana açma 5.9 kg·cm · DS3218MG ≈ 20 kg·cm → ≈ 3.4× pay |
+| Hareketli kütle | Göbek grubu 175 g, kol grubu 147 g + dirsek ve aşağısı (tahmini) 260 g |
 
 ## Hangi parça neye, nasıl bağlanıyor
 
@@ -58,10 +58,10 @@ FreeCAD 1.1 · `omuz_montaj.py` ile üretildi · 66 parça · çizim ve kontroll
 
 | Eleman | Adet |
 |---|---|
-| M3 isil gomme somun | 6 |
+| M3 isil gomme somun | 9 |
 | M3x12 DIN 912 | 8 |
 | M3x5 horn vidasi (servo ile) | 2 |
-| M3x8 DIN 912 | 6 |
+| M3x8 DIN 912 | 9 |
 | M4 DIN 985 kontra somun | 8 |
 | M4x16 DIN 912 | 8 |
 | M5 DIN 125 pul | 1 |
@@ -74,11 +74,12 @@ FreeCAD 1.1 · `omuz_montaj.py` ile üretildi · 66 parça · çizim ve kontroll
 
 | Parça | Ölçü (mm) | Kütle (g, %60 doluluk) | Yazıcıya sığar (230 mm) | STL |
 |---|---|---|---|---|
-| Omuz yuvasi | 76 × 76 × 67 | 50 | evet | `stl/omuz-yuvasi.stl` |
-| Rulman kapagi | 76 × 60 × 14 | 11 | evet | `stl/rulman-kapagi.stl` |
-| Omuz gobegi | 66 × 51 × 49 | 40 | evet | `stl/omuz-gobegi.stl` |
-| Kol catali | 76 × 64 × 56 | 62 | evet | `stl/kol-catali.stl` |
-| Ust kol tupu | 100 × 56 × 56 | 30 | evet | `stl/ust-kol-tupu.stl` |
+| Omuz yuvasi | 76 × 76 × 67 | 75 | evet | `stl/omuz-yuvasi.stl` |
+| Rulman kapagi | 76 × 60 × 14 | 16 | evet | `stl/rulman-kapagi.stl` |
+| Omuz gobegi | 66 × 51 × 49 | 59 | evet | `stl/omuz-gobegi.stl` |
+| S1 kablo tamburu | 87 × 71 × 10 | 5 | evet | `stl/s1-kablo-tamburu.stl` |
+| Kol catali | 76 × 64 × 56 | 94 | evet | `stl/kol-catali.stl` |
+| Ust kol tupu | 100 × 56 × 56 | 40 | evet | `stl/ust-kol-tupu.stl` |
 
 ## Kontrollerde bulunup düzeltilenler
 
@@ -87,7 +88,7 @@ FreeCAD 1.1 · `omuz_montaj.py` ile üretildi · 66 parça · çizim ve kontroll
 ## Doğrulanacaklar ve açık işler
 
 - **Horn delik dizilimi:** 25T disk horn'da M3 delikler 8,5 mm yarıçapta varsayıldı. Horn eline geçince kumpasla ölçülmeli, göbek ve çatal delikleri ona göre güncellenir.
-- **Servo sürümü:** Eklem sınırları 180° servoya göre (öne -45…+135°, yana 3…120°; `arayuz.OMUZ`). DS3218MG'nin 270° sürümü alınırsa sınırlar genişler, horn takma açıları değişir.
+- **Servo sürümü:** Eklem sınırları 180° servoya göre (öne -45…+135°, yana 5…120°; `arayuz.OMUZ`). DS3218MG'nin 270° sürümü alınırsa sınırlar genişler, horn takma açıları değişir.
 - **Yana açma alt sınırı +3° (düzeltme planı C1):** mekanik sıfır 0°'dir ama yazılım hiçbir zaman 0'a komut vermez. Kolun kabuğa boşluğu (hedefli ölçüm, kol aşağıda): öne 0°'de 0° → 4,67, −2° → 0,63 mm, −3° → temas; öne 40°'de 0° → 3,76 mm, −2° → temas; +3° → en az 7,17 mm. Servo sıfır kalibrasyonu (S2 horn'u takarken ve yazılımdaki sıfır kayması) en çok ±2° hata ile yapılmalı: 3° komutunda gerçek açı ≥ 1° kalır, boşluk 3,76 mm'nin altına düşmez. Sıfır kayması 5°'yi geçerse (gerçek açı −2°) kol kabuğa değer; kalibrasyonu servo test cihazıyla kolu 0°'ye getirip kabuğa dokunmadığını gözle doğrulayarak yap.
 - **Gövde kabuğu:** V3 kabuğunun yan yüzü x = 152'de düz duvar varsayıldı. Omuz için kabukta Ø84 delik gerekiyor; V3 kabuğunda bu delik yok.
 - **S2 kablosu:** Göbekle birlikte dönüyor. Kanal açılmadı; gevşek bir kablo halkasıyla gövdeye girmeli.

@@ -1,6 +1,6 @@
 # Omuz montaji: renkler, gorunumler, patlatilmis gorunum, hareket kareleri (FreeCAD GUI icinde calisir)
 # freecad.exe <ascii baslatici> ile; FC_SCRIPT=<bu dosya>
-import os, math
+import os, sys, math
 import FreeCAD as App
 import FreeCADGui as Gui
 from PySide import QtCore
@@ -95,10 +95,15 @@ def go():
     # 3) hareket kareleri (kabuk saydam gorunur)
     for o in kabuk:
         gd.getObject(o.Name).Visibility = True
+    # yana acma yazilim alt siniri Y0 (arayuz.OMUZ; 15 Ekim 2026: 5): kareler sinir disina (yana 0) inmez
+    if os.path.dirname(HERE) not in sys.path:
+        sys.path.insert(0, os.path.dirname(HERE))
+    import arayuz as A
+    Y0 = int(A.OMUZ["yana_aralik"][0])
     seq = []
-    seq += [(p, 0) for p in range(0, 121, 8)] + [(p, 0) for p in range(120, -41, -8)] + [(p, 0) for p in range(-40, 1, 8)]
-    seq += [(0, t) for t in range(0, 121, 8)] + [(0, t) for t in range(120, -1, -8)]
-    seq += [(p, int(p * 0.75)) for p in range(0, 121, 8)] + [(p, int(p * 0.75)) for p in range(120, -1, -8)]
+    seq += [(p, Y0) for p in range(0, 121, 8)] + [(p, Y0) for p in range(120, -41, -8)] + [(p, Y0) for p in range(-40, 1, 8)]
+    seq += [(0, t) for t in range(Y0, 121, 8)] + [(0, t) for t in range(120, Y0 - 1, -8)]
+    seq += [(p, max(Y0, int(p * 0.75))) for p in range(0, 121, 8)] + [(p, max(Y0, int(p * 0.75))) for p in range(120, -1, -8)]
     kamera(v, (0.55, 0.3, 1.0), 430, (175, -55, 35))
     for k, (phi, th) in enumerate(seq):
         poz(phi, th)

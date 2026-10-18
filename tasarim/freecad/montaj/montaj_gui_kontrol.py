@@ -217,7 +217,7 @@ def surukle(v, gd, asm):
         ("yana acma, disari", "Sag", (185.0, 860.0, 27.0), ISO, [(160, -40)]),
         ("yana acma, daha disari", "Sag", (185.0, 860.0, 27.0), ISO, [(420, -260)]),
         ("yana acma, cok disari (sinir 120)", "Sag", (185.0, 860.0, 27.0), ISO, [(900, -700)]),
-        ("yana acma, iceri (sinir 0)", "Sag", (185.0, 860.0, 27.0), ISO, [(-260, 40)]),
+        ("yana acma, iceri (sinir 5)", "Sag", (185.0, 860.0, 27.0), ISO, [(-260, 40)]),
         ("yana acma, disari", "Sol", (-185.0, 860.0, 27.0), ISO, [(-160, 40)]),
         ("one kaldirma, kol tupundan (yan gorunum)", "Sag", (213.0, 860.0, 0.0), YAN, [(-150, -20)]),
         ("one kaldirma, gobekten (yan gorunum)", "Sag", GOBEK, YAN, [(-60, -20), (-120, 60)]),
