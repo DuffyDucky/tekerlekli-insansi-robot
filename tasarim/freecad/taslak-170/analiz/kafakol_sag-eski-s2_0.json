@@ -1,0 +1,6506 @@
+{
+ "robot": "eski",
+ "taraf": "sag",
+ "kafa_pan": [
+  -90,
+  -75,
+  -60,
+  -45,
+  -30,
+  -15,
+  0,
+  15,
+  30,
+  45,
+  60,
+  75,
+  90
+ ],
+ "kafa_tilt": [
+  -25,
+  -20,
+  -15,
+  -10,
+  -5,
+  0,
+  5,
+  10,
+  15,
+  20,
+  25,
+  30
+ ],
+ "kafa_poz": 156,
+ "kol_alt_poz": 2587,
+ "yakin_oge": 2852,
+ "aday": 123929,
+ "tam_olcum": 3380,
+ "sinir_turu": 11,
+ "cakisma_sayisi": 610,
+ "cakisan_tam_cift": 608,
+ "cakismalar": [
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    80.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 0.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    80.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 0.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 25.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 6.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 5.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    85.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 2.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    85.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 25.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    85.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 6.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    85.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 5.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    85.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 2.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    90.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 10.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    90.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 3.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 43.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    90.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 43.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    90.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 10.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    90.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 3.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 43.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    90.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 43.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    95.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 41.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 53.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    95.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    95.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 0.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    95.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    95.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 41.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 53.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    95.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    95.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 0.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    100.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 7.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    100.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 4.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    100.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 7.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    100.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 4.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    75.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 0.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    75.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 25.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    75.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 75.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    75.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 88.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    75.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 8.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    75.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 0.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    75.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 0.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    75.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 25.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    75.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 75.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    75.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 88.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    75.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 8.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    75.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 0.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 4.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 6.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 6.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 52.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 5.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 92.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 323.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 93.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 2.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 3.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 379.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 191.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 0.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 257.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 2.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 6.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 49.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 92.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 323.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 91.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 2.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 3.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 379.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 191.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 0.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 257.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 2.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 4.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    80.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 27.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 116.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 221.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 20.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 0.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 415.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 365.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 29.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 480.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 406.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 28.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 3.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 426.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 424.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 60.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 393.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 50.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 141.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 9.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 94.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 91.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 20.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 0.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 414.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 302.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 29.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 483.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 397.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 28.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 3.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 425.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 426.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 60.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 34.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 434.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 50.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 27.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 243.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 9.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 296.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 10.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 213.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 442.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 12.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 7.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 329.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 478.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 76.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 244.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 6.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 503.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 146.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 4.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 3.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 501.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 165.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 301.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 117.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 139.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 3.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 213.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 360.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 7.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 331.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 460.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 68.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 241.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 6.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 507.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 146.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 4.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 3.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 551.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 165.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 418.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 119.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 244.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 13.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 166.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 40.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 13.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 96.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 35.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 4.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 396.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 186.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 2.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 6.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 396.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 223.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 158.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 195.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 60.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 138.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 13.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 76.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 35.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 4.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 396.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 184.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 2.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 6.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 403.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 223.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 198.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 200.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 48.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 84.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 28.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 40.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 5.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 15.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 113.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 114.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 147.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 172.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 47.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 168.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 67.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 5.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 12.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 113.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 113.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 147.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 172.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 47.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 168.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 71.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 3.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 40.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 64.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 22.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 40.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 64.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 22.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 37.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 77.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 0.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 6.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 27.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 118.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 58.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 92.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 165.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 50.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 32.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 130.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 58.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 70.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 165.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    70.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 50.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 144.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 91.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 81.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 26.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 213.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 169.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 15.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 149.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 175.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 3.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 61.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 203.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 6.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 505.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 25.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 79.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 220.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 100.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 560.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 377.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 70.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 79.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 0.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 413.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 49.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 352.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 346.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 36.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 164.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 49.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 61.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 226.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 6.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 554.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 12.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 79.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 183.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 100.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 583.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 377.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 27.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 79.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 518.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 0.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 413.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 49.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 15.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 346.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    75.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 36.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 28.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 273.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 553.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 353.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 30.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 233.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 775.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 535.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 86.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 67.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 184.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 110.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 902.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 962.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 110.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 128.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 217.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 263.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 756.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 25.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 919.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 307.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 108.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 287.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 761.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 71.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 838.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 342.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    55.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 21.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 61.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 791.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 60.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 835.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 333.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    55.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 19.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 412.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 829.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 254.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 94.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 542.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 543.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 58.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 67.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 212.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 110.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 895.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 789.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 15.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 128.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 189.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 263.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 767.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 25.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 823.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 270.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 51.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 287.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 775.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 71.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 835.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 339.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    55.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 21.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 27.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 61.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 839.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 60.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 911.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 333.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    55.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 19.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 22.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 651.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 976.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 280.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 198.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 722.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 7.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 758.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 271.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 110.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 76.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 884.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 7.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1228.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 428.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 18.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 104.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 281.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 710.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 86.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1173.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 629.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    55.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 10.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 22.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 326.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 703.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 171.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1092.3
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 632.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    55.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 97.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 129.2
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 692.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 180.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1058.1
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 600.9
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    55.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 98.0
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 419.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 69.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1155.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 561.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    55.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 38.7
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 413.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    45.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 1043.5
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    0.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    50.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 485.6
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 78.4
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    25.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 76.8
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    30.0
+   ],
+   "kafa_parca": "Yuz kabugu (on)",
+   "hacim_mm3": 825.4
+  }
+ ],
+ "yasak_bolge": {
+  "one_arka": [
+   125.0,
+   135.0
+  ],
+  "yana": [
+   0.0,
+   0.0
+  ],
+  "dirsek": [
+   70.0,
+   105.0
+  ],
+  "pan": [
+   30.0,
+   55.0
+  ],
+  "tilt": [
+   25.0,
+   30.0
+  ],
+  "kafa_parcalari": [
+   "Vizor (siyah akrilik)",
+   "Yuz kabugu (on)"
+  ],
+  "kol_parcalari": [
+   "El"
+  ],
+  "not_": "cakisan alt poz ciftlerinin eksen bazinda kapsadigi aralik (kesin kural: liste)"
+ },
+ "en_kucuk": {
+  "bosluk_mm": 0.0,
+  "kol_grup": "El",
+  "kol_poz": [
+   135.0,
+   0.0,
+   90.0,
+   -90.0
+  ],
+  "kol_parca": "El",
+  "kafa_poz": [
+   45.0,
+   25.0
+  ],
+  "kafa_parca": "Yuz kabugu (on)"
+ },
+ "en_kucuk_cakismasiz": {
+  "bosluk_mm": 0.0,
+  "kol_grup": "El",
+  "kol_poz": [
+   135.0,
+   0.0,
+   90.0,
+   -90.0
+  ],
+  "kol_parca": "El",
+  "kafa_poz": [
+   40.0,
+   30.0
+  ],
+  "kafa_parca": "Yuz kabugu (on)"
+ },
+ "sure_s": 493.1
+}

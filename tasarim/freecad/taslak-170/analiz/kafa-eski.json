@@ -1,0 +1,125 @@
+{
+ "robot": "eski",
+ "pan": [
+  -90,
+  -85,
+  -80,
+  -75,
+  -70,
+  -65,
+  -60,
+  -55,
+  -50,
+  -45,
+  -40,
+  -35,
+  -30,
+  -25,
+  -20,
+  -15,
+  -10,
+  -5,
+  0,
+  5,
+  10,
+  15,
+  20,
+  25,
+  30,
+  35,
+  40,
+  45,
+  50,
+  55,
+  60,
+  65,
+  70,
+  75,
+  80,
+  85,
+  90
+ ],
+ "tilt": [
+  -25,
+  -20,
+  -15,
+  -10,
+  -5,
+  0,
+  5,
+  10,
+  15,
+  20,
+  25,
+  30
+ ],
+ "poz": 444,
+ "cakisma": [],
+ "en_kucuk_bosluk": {
+  "iskelet": {
+   "poz": [
+    -75.0,
+    -25.0
+   ],
+   "parca": "Pan horn merkez vidasi M3",
+   "hedef": "Omuz traversi",
+   "bosluk_mm": 43.05
+  },
+  "kabuk": {
+   "poz": [
+    5.0,
+    -25.0
+   ],
+   "parca": "Arka kafa kabugu",
+   "hedef": "Omuz bandi sol",
+   "bosluk_mm": 54.19
+  },
+  "kafa boyun (pan grubu)": {
+   "poz": [
+    -90.0,
+    -15.0
+   ],
+   "parca": "Tilt horn merkez vidasi M3",
+   "hedef": "Tilt servosu cikis mili",
+   "bosluk_mm": 0.0
+  },
+  "kafa govde": {
+   "poz": [
+    -90.0,
+    -25.0
+   ],
+   "parca": "Pan horn merkez vidasi M3",
+   "hedef": "Pan servosu cikis mili",
+   "bosluk_mm": 0.0
+  },
+  "omuz (ev pozu)": {
+   "poz": [
+    -25.0,
+    -25.0
+   ],
+   "parca": "Arka kafa kabugu",
+   "hedef": "S1 kablo tamburu",
+   "bosluk_mm": 67.99
+  },
+  "omuz_sag govde": {
+   "poz": [
+    -25.0,
+    -25.0
+   ],
+   "parca": "Arka kafa kabugu",
+   "hedef": "Yuva baglanti civatasi M6x16",
+   "bosluk_mm": 53.19
+  },
+  "omuz_sol govde": {
+   "poz": [
+    25.0,
+    -25.0
+   ],
+   "parca": "Arka kafa kabugu",
+   "hedef": "Yuva baglanti civatasi M6x16",
+   "bosluk_mm": 53.19
+  }
+ },
+ "hedefler": "iskelet, kabuk, sabit boyun (Kafa_Govde), iki omuz (govde + ev pozunda gobek/kol), iki kol ev pozunda; Bas <-> Boyun (tilt)",
+ "sure_s": 3556.6
+}

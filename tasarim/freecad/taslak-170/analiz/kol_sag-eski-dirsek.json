@@ -1,0 +1,734 @@
+{
+ "robot": "eski",
+ "taraf": "sag",
+ "aralik": {
+  "one_arka": [
+   -45.0,
+   135.0
+  ],
+  "yana": [
+   5.0,
+   120.0
+  ],
+  "dirsek": [
+   0.0,
+   105.0
+  ],
+  "bilek": [
+   -90.0,
+   90.0
+  ]
+ },
+ "kaba": {
+  "one_arka": [
+   -45,
+   -30,
+   -15,
+   0,
+   15,
+   30,
+   45,
+   60,
+   75,
+   90,
+   105,
+   120,
+   135
+  ],
+  "yana": [
+   5,
+   15,
+   30,
+   45,
+   60,
+   75,
+   90,
+   105,
+   120
+  ],
+  "dirsek": [
+   0,
+   30,
+   60,
+   90,
+   105
+  ],
+  "bilek": [
+   -90,
+   0,
+   90
+  ],
+  "tam_poz": 1755
+ },
+ "alt_poz": {
+  "kaba": 2587,
+  "ince": 0
+ },
+ "tam_olcum": 977,
+ "cakisan_alt_poz": 0,
+ "cakisma_ciftleri": [],
+ "en_kucuk_bosluk": {
+  "iskelet": {
+   "grup": "UstKol",
+   "poz": [
+    135.0,
+    5.0
+   ],
+   "parca": "Dirsek catali",
+   "hedef_modul": "iskelet",
+   "hedef": "Omuz traversi",
+   "bosluk_mm": 110.2,
+   "hacim_mm3": 0.0,
+   "aralikta": true
+  },
+  "kabuk": {
+   "grup": "UstKol",
+   "poz": [
+    -30.0,
+    5.0
+   ],
+   "parca": "Dirsek catali",
+   "hedef_modul": "kabuk",
+   "hedef": "Gogus bandi sag",
+   "bosluk_mm": 14.22,
+   "hacim_mm3": 0.0,
+   "aralikta": true
+  },
+  "kafa govde": {
+   "grup": "UstKol",
+   "poz": [
+    135.0,
+    5.0
+   ],
+   "parca": "Dirsek catali",
+   "hedef_modul": "kafa govde",
+   "hedef": "Servo yuvasi",
+   "bosluk_mm": 142.58,
+   "hacim_mm3": 0.0,
+   "aralikta": true
+  },
+  "omuz_sag gobek": {
+   "grup": "UstKol",
+   "poz": [
+    0.0,
+    5.0
+   ],
+   "parca": "Dirsek catali",
+   "hedef_modul": "omuz_sag gobek",
+   "hedef": "S1 kablo tamburu",
+   "bosluk_mm": 73.71,
+   "hacim_mm3": 0.0,
+   "aralikta": true
+  },
+  "omuz_sag govde": {
+   "grup": "UstKol",
+   "poz": [
+    -30.0,
+    5.0
+   ],
+   "parca": "Dirsek catali",
+   "hedef_modul": "omuz_sag govde",
+   "hedef": "Omuz yuvasi",
+   "bosluk_mm": 75.57,
+   "hacim_mm3": 0.0,
+   "aralikta": true
+  }
+ },
+ "en_kucuk_ciftler": {
+  "iskelet": [
+   {
+    "grup": "UstKol",
+    "poz": [
+     135.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "iskelet",
+    "hedef": "Omuz traversi",
+    "bosluk_mm": 110.2,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     -30.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "iskelet",
+    "hedef": "Kose baglanti 40x40 genis (Direk-travers sag)",
+    "bosluk_mm": 134.64,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "OnKol",
+    "poz": [
+     30.0,
+     5.0,
+     105.0
+    ],
+    "parca": "On kol govdesi",
+    "hedef_modul": "iskelet",
+    "hedef": "Omuz traversi",
+    "bosluk_mm": 147.74,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   }
+  ],
+  "kabuk": [
+   {
+    "grup": "UstKol",
+    "poz": [
+     -30.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 14.22,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     -15.0,
+     5.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kabuk",
+    "hedef": "Gogus bandi sag",
+    "bosluk_mm": 16.86,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     45.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Omuz bandi sag",
+    "bosluk_mm": 21.07,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     30.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "S1 kaset kapagi sag",
+    "bosluk_mm": 40.33,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     30.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kabuk",
+    "hedef": "S1 kaset govdesi sag",
+    "bosluk_mm": 40.49,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   }
+  ],
+  "kafa govde": [
+   {
+    "grup": "UstKol",
+    "poz": [
+     135.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kafa govde",
+    "hedef": "Servo yuvasi",
+    "bosluk_mm": 142.58,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     135.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kafa govde",
+    "hedef": "Rulman yuvasi",
+    "bosluk_mm": 143.73,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     135.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kafa govde",
+    "hedef": "Rulman yuvasi civatasi M3x10",
+    "bosluk_mm": 146.21,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     120.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kafa govde",
+    "hedef": "Boyun plakasi",
+    "bosluk_mm": 147.29,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     135.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kafa govde",
+    "hedef": "Isil gomme somun M3 (servo yuvasi ustu)",
+    "bosluk_mm": 147.89,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     135.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kafa govde",
+    "hedef": "Boyun civatasi M6x20",
+    "bosluk_mm": 151.62,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     135.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kafa govde",
+    "hedef": "Boyun civata pulu M6",
+    "bosluk_mm": 152.76,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     135.0,
+     5.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kafa govde",
+    "hedef": "Rulman yuvasi",
+    "bosluk_mm": 154.37,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     135.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kafa govde",
+    "hedef": "Cekic somun M6 (travers ust kanali)",
+    "bosluk_mm": 155.98,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     135.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kafa govde",
+    "hedef": "6808-2RS alt rulman (dis bilezik)",
+    "bosluk_mm": 156.64,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     135.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "kafa govde",
+    "hedef": "6808-2RS ust rulman (dis bilezik)",
+    "bosluk_mm": 156.75,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "El",
+    "poz": [
+     120.0,
+     5.0,
+     105.0,
+     -90.0
+    ],
+    "parca": "El",
+    "hedef_modul": "kafa govde",
+    "hedef": "6808-2RS ust rulman (dis bilezik)",
+    "bosluk_mm": 164.49,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   }
+  ],
+  "omuz_sag gobek": [
+   {
+    "grup": "UstKol",
+    "poz": [
+     0.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "S1 kablo tamburu",
+    "bosluk_mm": 73.71,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     90.0,
+     120.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "Omuz gobegi",
+    "bosluk_mm": 81.38,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     135.0,
+     5.0
+    ],
+    "parca": "Bilezik kontra somunu M3",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "S1 kablo tamburu",
+    "bosluk_mm": 84.05,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     135.0,
+     5.0
+    ],
+    "parca": "Bilezik pulu M3 (somun)",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "S1 kablo tamburu",
+    "bosluk_mm": 84.54,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     -30.0,
+     5.0
+    ],
+    "parca": "Bilezik civatasi M3x20",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "S1 kablo tamburu",
+    "bosluk_mm": 85.36,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     -30.0,
+     5.0
+    ],
+    "parca": "Bilezik pulu M3 (bas)",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "S1 kablo tamburu",
+    "bosluk_mm": 89.38,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     60.0,
+     30.0
+    ],
+    "parca": "Bilezik pulu M3 (somun)",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "Omuz gobegi",
+    "bosluk_mm": 92.36,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     -30.0,
+     30.0
+    ],
+    "parca": "Bilezik kontra somunu M3",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "Omuz gobegi",
+    "bosluk_mm": 92.74,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     60.0,
+     30.0
+    ],
+    "parca": "Bilezik civatasi M3x20",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "Omuz gobegi",
+    "bosluk_mm": 92.97,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     -30.0,
+     15.0
+    ],
+    "parca": "Bilezik pulu M3 (bas)",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "Omuz gobegi",
+    "bosluk_mm": 93.17,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     -30.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "6808-2RS rulman (ic bilezik)",
+    "bosluk_mm": 94.97,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     15.0,
+     30.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "S2 servo DS3218MG (yana acma)",
+    "bosluk_mm": 95.66,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   }
+  ],
+  "omuz_sag govde": [
+   {
+    "grup": "UstKol",
+    "poz": [
+     -30.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag govde",
+    "hedef": "Omuz yuvasi",
+    "bosluk_mm": 75.57,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     75.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag govde",
+    "hedef": "Rulman kapagi",
+    "bosluk_mm": 78.4,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     105.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag govde",
+    "hedef": "Kapak civatasi M3x12",
+    "bosluk_mm": 81.6,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     15.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag govde",
+    "hedef": "S1 kulak civatasi M4x16",
+    "bosluk_mm": 82.98,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     105.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag govde",
+    "hedef": "Isil gomme somun M3 (yuvada)",
+    "bosluk_mm": 83.83,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     -15.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag govde",
+    "hedef": "S1 servo DS3218MG (one-arka)",
+    "bosluk_mm": 84.1,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     15.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag govde",
+    "hedef": "S1 kontra somun M4",
+    "bosluk_mm": 86.85,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     135.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag govde",
+    "hedef": "6808-2RS rulman (dis bilezik)",
+    "bosluk_mm": 91.28,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "UstKol",
+    "poz": [
+     135.0,
+     5.0
+    ],
+    "parca": "Dirsek catali",
+    "hedef_modul": "omuz_sag govde",
+    "hedef": "S1 servo cikis mili",
+    "bosluk_mm": 112.13,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "OnKol",
+    "poz": [
+     -45.0,
+     5.0,
+     105.0
+    ],
+    "parca": "On kol govdesi",
+    "hedef_modul": "omuz_sag govde",
+    "hedef": "Omuz yuvasi",
+    "bosluk_mm": 114.21,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "OnKol",
+    "poz": [
+     45.0,
+     5.0,
+     105.0
+    ],
+    "parca": "On kol govdesi",
+    "hedef_modul": "omuz_sag govde",
+    "hedef": "Rulman kapagi",
+    "bosluk_mm": 117.68,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "OnKol",
+    "poz": [
+     120.0,
+     5.0,
+     105.0
+    ],
+    "parca": "On kol govdesi",
+    "hedef_modul": "omuz_sag govde",
+    "hedef": "Kapak civatasi M3x12",
+    "bosluk_mm": 125.71,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   }
+  ]
+ },
+ "hareketli": "omuz gobegi (S1) + ust kol (S1+S2: kol catali, tup, S2 servosu) + dirsek catali + on kol + el",
+ "hedefler": "iskelet, kabuk, taban, kafa govdesi (sabit boyun), iki omuzun govdesi, kendi omuzunun gobegi (S1 ile); gobek <-> kendi govdesi omuz ici (haric)",
+ "sure_s": 340.6
+}

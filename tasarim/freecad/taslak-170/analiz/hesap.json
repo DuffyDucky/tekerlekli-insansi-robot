@@ -1,0 +1,4854 @@
+{
+ "yontem": {
+  "devrilme": "taban_montaj.py denge(): esik = g (d cos t - h sin t) / h; pay = esik / 1,5 m/s2 (acil stop freni, tahmini); temas teker merkez duzlemleri",
+  "motor": "taban_montaj.py tork() + donus_hesap.py",
+  "servo": "dirsek_montaj.py tork() izgarasi; kafa_montaj.py tilt/pan; ivme profili 60 derece 0,4 s (alfa 26.2 rad/s2, tahmini)",
+  "olcut": {
+   "devrilme_pay": 2.0,
+   "devrilme_uyari": 1.2,
+   "motor_iyi": 0.8,
+   "motor_uyari": 1.0,
+   "servo_pay": 2.0,
+   "not_": "devrilme ve servo: projede pay >= 2 yesil, 1,2-2 uyari (taban_rapor.pay_sinif, viewer-template); motor: surekli torkun <= %80'i iyi, <= %100 uyari (viewer-template stMot)"
+  }
+ },
+ "robot": {
+  "eski-444": {
+   "kutle_g": 21933.4,
+   "am": [
+    -0.19,
+    378.45,
+    -13.63
+   ],
+   "taban_w": 444,
+   "destek_x": 178.0,
+   "devrilme": {
+    "pozlar": [
+     {
+      "kod": "ev",
+      "ad": "Ev pozu (kollar aşağıda)",
+      "kutle_g": 21933.4,
+      "am": [
+       -0.2,
+       378.4,
+       -13.6
+      ],
+      "duz": {
+       "ileri": 5.15,
+       "geri": 4.44,
+       "yan": 4.61,
+       "pay_ileri": 3.43,
+       "pay_geri": 2.96,
+       "pay_yan": 3.07,
+       "egim_ileri": 27.7,
+       "egim_geri": 24.4,
+       "egim_yan": 25.2,
+       "dF": 198.6,
+       "dR": 171.4,
+       "dS": 177.8,
+       "h": 378.4
+      },
+      "rampa5": {
+       "ileri": 4.27,
+       "geri": 3.57,
+       "yan": 3.74,
+       "pay_ileri": 2.85,
+       "pay_geri": 2.38,
+       "pay_yan": 2.49,
+       "egim_ileri": 27.7,
+       "egim_geri": 24.4,
+       "egim_yan": 25.2,
+       "dF": 198.6,
+       "dR": 171.4,
+       "dS": 177.8,
+       "h": 378.4
+      }
+     },
+     {
+      "kod": "one",
+      "ad": "İki kol öne uzanmış (S1 90, düz)",
+      "kutle_g": 21933.4,
+      "am": [
+       -0.2,
+       385.8,
+       -6.1
+      ],
+      "duz": {
+       "ileri": 4.86,
+       "geri": 4.55,
+       "yan": 4.52,
+       "pay_ileri": 3.24,
+       "pay_geri": 3.03,
+       "pay_yan": 3.01,
+       "egim_ileri": 26.4,
+       "egim_geri": 24.9,
+       "egim_yan": 24.7,
+       "dF": 191.1,
+       "dR": 178.9,
+       "dS": 177.8,
+       "h": 385.8
+      },
+      "rampa5": {
+       "ileri": 3.99,
+       "geri": 3.68,
+       "yan": 3.65,
+       "pay_ileri": 2.66,
+       "pay_geri": 2.45,
+       "pay_yan": 2.43,
+       "egim_ileri": 26.4,
+       "egim_geri": 24.9,
+       "egim_yan": 24.7,
+       "dF": 191.1,
+       "dR": 178.9,
+       "dS": 177.8,
+       "h": 385.8
+      }
+     },
+     {
+      "kod": "one_yuk",
+      "ad": "İki kol öne uzanmış + her elde 0,5 kg (bilgi)",
+      "kutle_g": 22933.4,
+      "am": [
+       -0.2,
+       410.6,
+       8.3
+      ],
+      "duz": {
+       "ileri": 4.22,
+       "geri": 4.62,
+       "yan": 4.25,
+       "pay_ileri": 2.81,
+       "pay_geri": 3.08,
+       "pay_yan": 2.83,
+       "egim_ileri": 23.3,
+       "egim_geri": 25.2,
+       "egim_yan": 23.4,
+       "dF": 176.7,
+       "dR": 193.3,
+       "dS": 177.8,
+       "h": 410.6
+      },
+      "rampa5": {
+       "ileri": 3.35,
+       "geri": 3.75,
+       "yan": 3.38,
+       "pay_ileri": 2.23,
+       "pay_geri": 2.5,
+       "pay_yan": 2.25,
+       "egim_ileri": 23.3,
+       "egim_geri": 25.2,
+       "egim_yan": 23.4,
+       "dF": 176.7,
+       "dR": 193.3,
+       "dS": 177.8,
+       "h": 410.6
+      }
+     },
+     {
+      "kod": "one_yukari",
+      "ad": "İki kol öne-yukarı (S1 135)",
+      "kutle_g": 21933.4,
+      "am": [
+       -0.2,
+       391.1,
+       -8.2
+      ],
+      "duz": {
+       "ileri": 4.85,
+       "geri": 4.43,
+       "yan": 4.46,
+       "pay_ileri": 3.23,
+       "pay_geri": 2.96,
+       "pay_yan": 2.97,
+       "egim_ileri": 26.3,
+       "egim_geri": 24.3,
+       "egim_yan": 24.4,
+       "dF": 193.2,
+       "dR": 176.8,
+       "dS": 177.8,
+       "h": 391.1
+      },
+      "rampa5": {
+       "ileri": 3.97,
+       "geri": 3.56,
+       "yan": 3.59,
+       "pay_ileri": 2.65,
+       "pay_geri": 2.37,
+       "pay_yan": 2.39,
+       "egim_ileri": 26.3,
+       "egim_geri": 24.3,
+       "egim_yan": 24.4,
+       "dF": 193.2,
+       "dR": 176.8,
+       "dS": 177.8,
+       "h": 391.1
+      }
+     },
+     {
+      "kod": "geri",
+      "ad": "İki kol geride (S1 −45)",
+      "kutle_g": 21933.4,
+      "am": [
+       -0.2,
+       380.7,
+       -18.9
+      ],
+      "duz": {
+       "ileri": 5.25,
+       "geri": 4.28,
+       "yan": 4.58,
+       "pay_ileri": 3.5,
+       "pay_geri": 2.85,
+       "pay_yan": 3.05,
+       "egim_ileri": 28.2,
+       "egim_geri": 23.6,
+       "egim_yan": 25.0,
+       "dF": 203.9,
+       "dR": 166.1,
+       "dS": 177.8,
+       "h": 380.7
+      },
+      "rampa5": {
+       "ileri": 4.38,
+       "geri": 3.41,
+       "yan": 3.71,
+       "pay_ileri": 2.92,
+       "pay_geri": 2.27,
+       "pay_yan": 2.47,
+       "egim_ileri": 28.2,
+       "egim_geri": 23.6,
+       "egim_yan": 25.0,
+       "dF": 203.9,
+       "dR": 166.1,
+       "dS": 177.8,
+       "h": 380.7
+      }
+     },
+     {
+      "kod": "yan_tek",
+      "ad": "Sağ kol yana açık (S2 90), sol aşağıda",
+      "kutle_g": 21933.4,
+      "am": [
+       3.5,
+       382.3,
+       -13.6
+      ],
+      "duz": {
+       "ileri": 5.1,
+       "geri": 4.4,
+       "yan": 4.48,
+       "pay_ileri": 3.4,
+       "pay_geri": 2.93,
+       "pay_yan": 2.98,
+       "egim_ileri": 27.5,
+       "egim_geri": 24.1,
+       "egim_yan": 24.5,
+       "dF": 198.6,
+       "dR": 171.4,
+       "dS": 174.5,
+       "h": 382.3
+      },
+      "rampa5": {
+       "ileri": 4.22,
+       "geri": 3.53,
+       "yan": 3.6,
+       "pay_ileri": 2.81,
+       "pay_geri": 2.35,
+       "pay_yan": 2.4,
+       "egim_ileri": 27.5,
+       "egim_geri": 24.1,
+       "egim_yan": 24.5,
+       "dF": 198.6,
+       "dR": 171.4,
+       "dS": 174.5,
+       "h": 382.3
+      }
+     },
+     {
+      "kod": "yan_cift",
+      "ad": "İki kol yana açık (S2 90)",
+      "kutle_g": 21933.4,
+      "am": [
+       -0.2,
+       386.2,
+       -13.6
+      ],
+      "duz": {
+       "ileri": 5.05,
+       "geri": 4.35,
+       "yan": 4.52,
+       "pay_ileri": 3.36,
+       "pay_geri": 2.9,
+       "pay_yan": 3.01,
+       "egim_ileri": 27.2,
+       "egim_geri": 23.9,
+       "egim_yan": 24.7,
+       "dF": 198.6,
+       "dR": 171.4,
+       "dS": 177.8,
+       "h": 386.2
+      },
+      "rampa5": {
+       "ileri": 4.17,
+       "geri": 3.48,
+       "yan": 3.64,
+       "pay_ileri": 2.78,
+       "pay_geri": 2.32,
+       "pay_yan": 2.43,
+       "egim_ileri": 27.2,
+       "egim_geri": 23.9,
+       "egim_yan": 24.7,
+       "dF": 198.6,
+       "dR": 171.4,
+       "dS": 177.8,
+       "h": 386.2
+      }
+     }
+    ],
+    "izgara_en_kotu": {
+     "duz_ileri": {
+      "tip": "simetrik",
+      "sag": [
+       120,
+       5,
+       0,
+       0
+      ],
+      "sol": [
+       120,
+       5,
+       0,
+       0
+      ],
+      "esik": 4.84,
+      "pay": 3.22,
+      "am": [
+       -0.2,
+       389.5,
+       -7.1
+      ]
+     },
+     "duz_geri": {
+      "tip": "simetrik",
+      "sag": [
+       60,
+       120,
+       0,
+       0
+      ],
+      "sol": [
+       60,
+       120,
+       0,
+       0
+      ],
+      "esik": 4.25,
+      "pay": 2.83,
+      "am": [
+       -0.2,
+       387.9,
+       -17.1
+      ]
+     },
+     "duz_yan": {
+      "tip": "zit",
+      "sag": [
+       -45,
+       90,
+       0,
+       0
+      ],
+      "sol": [
+       135,
+       5,
+       0,
+       0
+      ],
+      "esik": 4.41,
+      "pay": 2.94,
+      "am": [
+       3.2,
+       388.6,
+       -10.8
+      ]
+     },
+     "rampa5_ileri": {
+      "tip": "simetrik",
+      "sag": [
+       120,
+       5,
+       0,
+       0
+      ],
+      "sol": [
+       120,
+       5,
+       0,
+       0
+      ],
+      "esik": 3.96,
+      "pay": 2.64,
+      "am": [
+       -0.2,
+       389.5,
+       -7.1
+      ]
+     },
+     "rampa5_geri": {
+      "tip": "simetrik",
+      "sag": [
+       45,
+       120,
+       0,
+       0
+      ],
+      "sol": [
+       45,
+       120,
+       0,
+       0
+      ],
+      "esik": 3.38,
+      "pay": 2.25,
+      "am": [
+       -0.2,
+       388.7,
+       -16.5
+      ]
+     },
+     "rampa5_yan": {
+      "tip": "zit",
+      "sag": [
+       -45,
+       90,
+       0,
+       0
+      ],
+      "sol": [
+       135,
+       5,
+       0,
+       0
+      ],
+      "esik": 3.54,
+      "pay": 2.36,
+      "am": [
+       3.2,
+       388.6,
+       -10.8
+      ]
+     }
+    },
+    "ev": {
+     "kod": "ev",
+     "ad": "Ev pozu (kollar aşağıda)",
+     "kutle_g": 21933.4,
+     "am": [
+      -0.2,
+      378.4,
+      -13.6
+     ],
+     "duz": {
+      "ileri": 5.15,
+      "geri": 4.44,
+      "yan": 4.61,
+      "pay_ileri": 3.43,
+      "pay_geri": 2.96,
+      "pay_yan": 3.07,
+      "egim_ileri": 27.7,
+      "egim_geri": 24.4,
+      "egim_yan": 25.2,
+      "dF": 198.6,
+      "dR": 171.4,
+      "dS": 177.8,
+      "h": 378.4
+     },
+     "rampa5": {
+      "ileri": 4.27,
+      "geri": 3.57,
+      "yan": 3.74,
+      "pay_ileri": 2.85,
+      "pay_geri": 2.38,
+      "pay_yan": 2.49,
+      "egim_ileri": 27.7,
+      "egim_geri": 24.4,
+      "egim_yan": 25.2,
+      "dF": 198.6,
+      "dR": 171.4,
+      "dS": 177.8,
+      "h": 378.4
+     }
+    },
+    "en_kucuk_pay_duz": 2.85,
+    "en_kucuk_pay_rampa": 2.27,
+    "izgara_en_kucuk_duz": 2.83,
+    "izgara_en_kucuk_rampa": 2.25
+   },
+   "motor": {
+    "kutle_kg": 21.933,
+    "duz": {
+     "rampa": 0.0,
+     "a": 0.5,
+     "F_N": 17.4,
+     "T_kgcm": 2.78,
+     "oran": 0.441
+    },
+    "rampa5": {
+     "rampa": 5.0,
+     "a": 0.5,
+     "F_N": 36.2,
+     "T_kgcm": 5.76,
+     "oran": 0.914
+    },
+    "rampa5_yavas": {
+     "rampa": 5.0,
+     "a": 0.25,
+     "F_N": 30.7,
+     "T_kgcm": 4.89,
+     "oran": 0.776
+    },
+    "rampa5_durus": {
+     "rampa": 5.0,
+     "a": 0.0,
+     "F_N": 25.2,
+     "T_kgcm": 4.01,
+     "oran": 0.637
+    },
+    "rampa5_yuk2": {
+     "rampa": 5.0,
+     "a": 0.5,
+     "F_N": 39.4,
+     "T_kgcm": 6.28,
+     "oran": 0.998
+    },
+    "a_sinir_rampa5_80": 0.294,
+    "a_sinir_rampa5_77": 0.24,
+    "a_sinir_duz_80": 1.148,
+    "surekli_kgcm": 6.3,
+    "stall_kgcm": 21.0,
+    "stall9": {
+     "duz": {
+      "rampa": 0.0,
+      "a": 0.5,
+      "F_N": 17.4,
+      "T_kgcm": 2.78,
+      "oran": 1.028
+     },
+     "rampa5_yavas": {
+      "rampa": 5.0,
+      "a": 0.25,
+      "F_N": 30.7,
+      "T_kgcm": 4.89,
+      "oran": 1.81
+     },
+     "rampa5_durus": {
+      "rampa": 5.0,
+      "a": 0.0,
+      "F_N": 25.2,
+      "T_kgcm": 4.01,
+      "oran": 1.486
+     }
+    },
+    "aks": {
+     "on_N": 99.7,
+     "arka_N": 115.5,
+     "mu_gereken_rampa5": 0.169
+    },
+    "yerinde_donus": [
+     {
+      "mu": 0.4,
+      "standart_kgcm": 12.16,
+      "standart_oran": 1.93,
+      "standart_stall": 0.58,
+      "akim_A": 1.67,
+      "ust_sinir_kgcm": 17.65,
+      "ust_sinir_stall": 0.84,
+      "omni_kgcm": 2.72,
+      "omni_oran": 0.43
+     },
+     {
+      "mu": 0.5,
+      "standart_kgcm": 15.02,
+      "standart_oran": 2.38,
+      "standart_stall": 0.72,
+      "akim_A": 2.04,
+      "ust_sinir_kgcm": 21.78,
+      "ust_sinir_stall": 1.04,
+      "omni_kgcm": 2.61,
+      "omni_oran": 0.41
+     },
+     {
+      "mu": 0.6,
+      "standart_kgcm": 17.86,
+      "standart_oran": 2.83,
+      "standart_stall": 0.85,
+      "akim_A": 2.4,
+      "ust_sinir_kgcm": 25.92,
+      "ust_sinir_stall": 1.23,
+      "omni_kgcm": 2.96,
+      "omni_oran": 0.47
+     }
+    ],
+    "yaw": {
+     "Iy_parca_kgm2": 0.5806,
+     "Iz_kutu_kgm2": 0.8641,
+     "yaw_ivme": 1.0,
+     "ivme_payi_kgcm": 0.52,
+     "ivme_payi_kutu_kgcm": 0.773
+    }
+   }
+  },
+  "yeni-444": {
+   "kutle_g": 24918.9,
+   "am": [
+    -0.1,
+    560.4,
+    -11.55
+   ],
+   "taban_w": 444,
+   "destek_x": 178.0,
+   "devrilme": {
+    "pozlar": [
+     {
+      "kod": "ev",
+      "ad": "Ev pozu (kollar aşağıda)",
+      "kutle_g": 24918.9,
+      "am": [
+       -0.1,
+       560.4,
+       -11.6
+      ],
+      "duz": {
+       "ileri": 3.44,
+       "geri": 3.04,
+       "yan": 3.11,
+       "pay_ileri": 2.29,
+       "pay_geri": 2.02,
+       "pay_yan": 2.08,
+       "egim_ileri": 19.3,
+       "egim_geri": 17.2,
+       "egim_yan": 17.6,
+       "dF": 196.6,
+       "dR": 173.4,
+       "dS": 177.9,
+       "h": 560.4
+      },
+      "rampa5": {
+       "ileri": 2.57,
+       "geri": 2.17,
+       "yan": 2.25,
+       "pay_ileri": 1.72,
+       "pay_geri": 1.45,
+       "pay_yan": 1.5,
+       "egim_ileri": 19.3,
+       "egim_geri": 17.2,
+       "egim_yan": 17.6,
+       "dF": 196.6,
+       "dR": 173.4,
+       "dS": 177.9,
+       "h": 560.4
+      }
+     },
+     {
+      "kod": "one",
+      "ad": "İki kol öne uzanmış (S1 90, düz)",
+      "kutle_g": 24918.9,
+      "am": [
+       -0.1,
+       568.3,
+       -3.5
+      ],
+      "duz": {
+       "ileri": 3.25,
+       "geri": 3.13,
+       "yan": 3.07,
+       "pay_ileri": 2.17,
+       "pay_geri": 2.09,
+       "pay_yan": 2.05,
+       "egim_ileri": 18.4,
+       "egim_geri": 17.7,
+       "egim_yan": 17.4,
+       "dF": 188.5,
+       "dR": 181.5,
+       "dS": 177.9,
+       "h": 568.3
+      },
+      "rampa5": {
+       "ileri": 2.39,
+       "geri": 2.27,
+       "yan": 2.2,
+       "pay_ileri": 1.59,
+       "pay_geri": 1.51,
+       "pay_yan": 1.47,
+       "egim_ileri": 18.4,
+       "egim_geri": 17.7,
+       "egim_yan": 17.4,
+       "dF": 188.5,
+       "dR": 181.5,
+       "dS": 177.9,
+       "h": 568.3
+      }
+     },
+     {
+      "kod": "one_yuk",
+      "ad": "İki kol öne uzanmış + her elde 0,5 kg (bilgi)",
+      "kutle_g": 25918.9,
+      "am": [
+       -0.1,
+       599.9,
+       11.0
+      ],
+      "duz": {
+       "ileri": 2.85,
+       "geri": 3.2,
+       "yan": 2.91,
+       "pay_ileri": 1.9,
+       "pay_geri": 2.14,
+       "pay_yan": 1.94,
+       "egim_ileri": 16.2,
+       "egim_geri": 18.1,
+       "egim_yan": 16.5,
+       "dF": 174.0,
+       "dR": 196.0,
+       "dS": 177.9,
+       "h": 599.9
+      },
+      "rampa5": {
+       "ileri": 1.98,
+       "geri": 2.34,
+       "yan": 2.04,
+       "pay_ileri": 1.32,
+       "pay_geri": 1.56,
+       "pay_yan": 1.36,
+       "egim_ileri": 16.2,
+       "egim_geri": 18.1,
+       "egim_yan": 16.5,
+       "dF": 174.0,
+       "dR": 196.0,
+       "dS": 177.9,
+       "h": 599.9
+      }
+     },
+     {
+      "kod": "one_yukari",
+      "ad": "İki kol öne-yukarı (S1 135)",
+      "kutle_g": 24918.9,
+      "am": [
+       -0.1,
+       573.9,
+       -5.8
+      ],
+      "duz": {
+       "ileri": 3.26,
+       "geri": 3.06,
+       "yan": 3.04,
+       "pay_ileri": 2.17,
+       "pay_geri": 2.04,
+       "pay_yan": 2.03,
+       "egim_ileri": 18.4,
+       "egim_geri": 17.3,
+       "egim_yan": 17.2,
+       "dF": 190.8,
+       "dR": 179.2,
+       "dS": 177.9,
+       "h": 573.9
+      },
+      "rampa5": {
+       "ileri": 2.39,
+       "geri": 2.2,
+       "yan": 2.17,
+       "pay_ileri": 1.6,
+       "pay_geri": 1.46,
+       "pay_yan": 1.45,
+       "egim_ileri": 18.4,
+       "egim_geri": 17.3,
+       "egim_yan": 17.2,
+       "dF": 190.8,
+       "dR": 179.2,
+       "dS": 177.9,
+       "h": 573.9
+      }
+     },
+     {
+      "kod": "geri",
+      "ad": "İki kol geride (S1 −45)",
+      "kutle_g": 24918.9,
+      "am": [
+       -0.1,
+       562.8,
+       -17.1
+      ],
+      "duz": {
+       "ileri": 3.52,
+       "geri": 2.93,
+       "yan": 3.1,
+       "pay_ileri": 2.35,
+       "pay_geri": 1.95,
+       "pay_yan": 2.07,
+       "egim_ileri": 19.8,
+       "egim_geri": 16.6,
+       "egim_yan": 17.5,
+       "dF": 202.1,
+       "dR": 167.9,
+       "dS": 177.9,
+       "h": 562.8
+      },
+      "rampa5": {
+       "ileri": 2.65,
+       "geri": 2.06,
+       "yan": 2.23,
+       "pay_ileri": 1.77,
+       "pay_geri": 1.37,
+       "pay_yan": 1.49,
+       "egim_ileri": 19.8,
+       "egim_geri": 16.6,
+       "egim_yan": 17.5,
+       "dF": 202.1,
+       "dR": 167.9,
+       "dS": 177.9,
+       "h": 562.8
+      }
+     },
+     {
+      "kod": "yan_tek",
+      "ad": "Sağ kol yana açık (S2 90), sol aşağıda",
+      "kutle_g": 24918.9,
+      "am": [
+       3.9,
+       564.5,
+       -11.6
+      ],
+      "duz": {
+       "ileri": 3.42,
+       "geri": 3.01,
+       "yan": 3.03,
+       "pay_ileri": 2.28,
+       "pay_geri": 2.01,
+       "pay_yan": 2.02,
+       "egim_ileri": 19.2,
+       "egim_geri": 17.1,
+       "egim_yan": 17.1,
+       "dF": 196.6,
+       "dR": 173.4,
+       "dS": 174.1,
+       "h": 564.5
+      },
+      "rampa5": {
+       "ileri": 2.55,
+       "geri": 2.15,
+       "yan": 2.16,
+       "pay_ileri": 1.7,
+       "pay_geri": 1.43,
+       "pay_yan": 1.44,
+       "egim_ileri": 19.2,
+       "egim_geri": 17.1,
+       "egim_yan": 17.1,
+       "dF": 196.6,
+       "dR": 173.4,
+       "dS": 174.1,
+       "h": 564.5
+      }
+     },
+     {
+      "kod": "yan_cift",
+      "ad": "İki kol yana açık (S2 90)",
+      "kutle_g": 24918.9,
+      "am": [
+       -0.1,
+       568.6,
+       -11.6
+      ],
+      "duz": {
+       "ileri": 3.39,
+       "geri": 2.99,
+       "yan": 3.07,
+       "pay_ileri": 2.26,
+       "pay_geri": 1.99,
+       "pay_yan": 2.05,
+       "egim_ileri": 19.1,
+       "egim_geri": 17.0,
+       "egim_yan": 17.4,
+       "dF": 196.6,
+       "dR": 173.4,
+       "dS": 177.9,
+       "h": 568.6
+      },
+      "rampa5": {
+       "ileri": 2.52,
+       "geri": 2.13,
+       "yan": 2.2,
+       "pay_ileri": 1.68,
+       "pay_geri": 1.42,
+       "pay_yan": 1.47,
+       "egim_ileri": 19.1,
+       "egim_geri": 17.0,
+       "egim_yan": 17.4,
+       "dF": 196.6,
+       "dR": 173.4,
+       "dS": 177.9,
+       "h": 568.6
+      }
+     }
+    ],
+    "izgara_en_kotu": {
+     "duz_ileri": {
+      "tip": "simetrik",
+      "sag": [
+       105,
+       5,
+       0,
+       0
+      ],
+      "sol": [
+       105,
+       5,
+       0,
+       0
+      ],
+      "esik": 3.25,
+      "pay": 2.16,
+      "am": [
+       -0.1,
+       570.3,
+       -3.8
+      ]
+     },
+     "duz_geri": {
+      "tip": "simetrik",
+      "sag": [
+       -45,
+       5,
+       0,
+       0
+      ],
+      "sol": [
+       -45,
+       5,
+       0,
+       0
+      ],
+      "esik": 2.93,
+      "pay": 1.95,
+      "am": [
+       -0.1,
+       562.8,
+       -17.1
+      ]
+     },
+     "duz_yan": {
+      "tip": "zit",
+      "sag": [
+       -45,
+       75,
+       0,
+       0
+      ],
+      "sol": [
+       135,
+       5,
+       0,
+       0
+      ],
+      "esik": 3.0,
+      "pay": 2.0,
+      "am": [
+       3.4,
+       570.5,
+       -9.3
+      ]
+     },
+     "rampa5_ileri": {
+      "tip": "simetrik",
+      "sag": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "sol": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "esik": 2.39,
+      "pay": 1.59,
+      "am": [
+       -0.1,
+       568.3,
+       -3.5
+      ]
+     },
+     "rampa5_geri": {
+      "tip": "simetrik",
+      "sag": [
+       -45,
+       5,
+       0,
+       0
+      ],
+      "sol": [
+       -45,
+       5,
+       0,
+       0
+      ],
+      "esik": 2.06,
+      "pay": 1.37,
+      "am": [
+       -0.1,
+       562.8,
+       -17.1
+      ]
+     },
+     "rampa5_yan": {
+      "tip": "zit",
+      "sag": [
+       -45,
+       75,
+       0,
+       0
+      ],
+      "sol": [
+       135,
+       5,
+       0,
+       0
+      ],
+      "esik": 2.14,
+      "pay": 1.42,
+      "am": [
+       3.4,
+       570.5,
+       -9.3
+      ]
+     }
+    },
+    "ev": {
+     "kod": "ev",
+     "ad": "Ev pozu (kollar aşağıda)",
+     "kutle_g": 24918.9,
+     "am": [
+      -0.1,
+      560.4,
+      -11.6
+     ],
+     "duz": {
+      "ileri": 3.44,
+      "geri": 3.04,
+      "yan": 3.11,
+      "pay_ileri": 2.29,
+      "pay_geri": 2.02,
+      "pay_yan": 2.08,
+      "egim_ileri": 19.3,
+      "egim_geri": 17.2,
+      "egim_yan": 17.6,
+      "dF": 196.6,
+      "dR": 173.4,
+      "dS": 177.9,
+      "h": 560.4
+     },
+     "rampa5": {
+      "ileri": 2.57,
+      "geri": 2.17,
+      "yan": 2.25,
+      "pay_ileri": 1.72,
+      "pay_geri": 1.45,
+      "pay_yan": 1.5,
+      "egim_ileri": 19.3,
+      "egim_geri": 17.2,
+      "egim_yan": 17.6,
+      "dF": 196.6,
+      "dR": 173.4,
+      "dS": 177.9,
+      "h": 560.4
+     }
+    },
+    "en_kucuk_pay_duz": 1.95,
+    "en_kucuk_pay_rampa": 1.37,
+    "izgara_en_kucuk_duz": 1.95,
+    "izgara_en_kucuk_rampa": 1.37
+   },
+   "motor": {
+    "kutle_kg": 24.919,
+    "duz": {
+     "rampa": 0.0,
+     "a": 0.5,
+     "F_N": 19.8,
+     "T_kgcm": 3.15,
+     "oran": 0.501
+    },
+    "rampa5": {
+     "rampa": 5.0,
+     "a": 0.5,
+     "F_N": 41.1,
+     "T_kgcm": 6.54,
+     "oran": 1.039
+    },
+    "rampa5_yavas": {
+     "rampa": 5.0,
+     "a": 0.25,
+     "F_N": 34.8,
+     "T_kgcm": 5.55,
+     "oran": 0.881
+    },
+    "rampa5_durus": {
+     "rampa": 5.0,
+     "a": 0.0,
+     "F_N": 28.6,
+     "T_kgcm": 4.56,
+     "oran": 0.724
+    },
+    "rampa5_yuk2": {
+     "rampa": 5.0,
+     "a": 0.5,
+     "F_N": 44.4,
+     "T_kgcm": 7.07,
+     "oran": 1.122
+    },
+    "a_sinir_rampa5_80": 0.121,
+    "a_sinir_rampa5_77": 0.074,
+    "a_sinir_duz_80": 0.975,
+    "surekli_kgcm": 6.3,
+    "stall_kgcm": 21.0,
+    "stall9": {
+     "duz": {
+      "rampa": 0.0,
+      "a": 0.5,
+      "F_N": 19.8,
+      "T_kgcm": 3.15,
+      "oran": 1.168
+     },
+     "rampa5_yavas": {
+      "rampa": 5.0,
+      "a": 0.25,
+      "F_N": 34.8,
+      "T_kgcm": 5.55,
+      "oran": 2.056
+     },
+     "rampa5_durus": {
+      "rampa": 5.0,
+      "a": 0.0,
+      "F_N": 28.6,
+      "T_kgcm": 4.56,
+      "oran": 1.688
+     }
+    },
+    "aks": {
+     "on_N": 114.6,
+     "arka_N": 129.9,
+     "mu_gereken_rampa5": 0.169
+    },
+    "yerinde_donus": [
+     {
+      "mu": 0.4,
+      "standart_kgcm": 13.58,
+      "standart_oran": 2.16,
+      "standart_stall": 0.65,
+      "akim_A": 1.85,
+      "ust_sinir_kgcm": 19.84,
+      "ust_sinir_stall": 0.94,
+      "omni_kgcm": 3.09,
+      "omni_oran": 0.49
+     },
+     {
+      "mu": 0.5,
+      "standart_kgcm": 16.76,
+      "standart_oran": 2.66,
+      "standart_stall": 0.8,
+      "akim_A": 2.26,
+      "ust_sinir_kgcm": 24.49,
+      "ust_sinir_stall": 1.17,
+      "omni_kgcm": 3.01,
+      "omni_oran": 0.48
+     },
+     {
+      "mu": 0.6,
+      "standart_kgcm": 19.93,
+      "standart_oran": 3.16,
+      "standart_stall": 0.95,
+      "akim_A": 2.66,
+      "ust_sinir_kgcm": 29.14,
+      "ust_sinir_stall": 1.39,
+      "omni_kgcm": 3.41,
+      "omni_oran": 0.54
+     }
+    ],
+    "yaw": {
+     "Iy_parca_kgm2": 0.6076,
+     "Iz_kutu_kgm2": 0.9817,
+     "yaw_ivme": 1.0,
+     "ivme_payi_kgcm": 0.544,
+     "ivme_payi_kutu_kgcm": 0.879
+    }
+   }
+  },
+  "yeni-480": {
+   "kutle_g": 25146.4,
+   "am": [
+    -0.15,
+    556.6,
+    -11.46
+   ],
+   "taban_w": 480,
+   "destek_x": 196.0,
+   "devrilme": {
+    "pozlar": [
+     {
+      "kod": "ev",
+      "ad": "Ev pozu (kollar aşağıda)",
+      "kutle_g": 25146.4,
+      "am": [
+       -0.2,
+       556.6,
+       -11.5
+      ],
+      "duz": {
+       "ileri": 3.46,
+       "geri": 3.06,
+       "yan": 3.45,
+       "pay_ileri": 2.31,
+       "pay_geri": 2.04,
+       "pay_yan": 2.3,
+       "egim_ileri": 19.4,
+       "egim_geri": 17.3,
+       "egim_yan": 19.4,
+       "dF": 196.5,
+       "dR": 173.5,
+       "dS": 195.8,
+       "h": 556.6
+      },
+      "rampa5": {
+       "ileri": 2.59,
+       "geri": 2.19,
+       "yan": 2.58,
+       "pay_ileri": 1.73,
+       "pay_geri": 1.46,
+       "pay_yan": 1.72,
+       "egim_ileri": 19.4,
+       "egim_geri": 17.3,
+       "egim_yan": 19.4,
+       "dF": 196.5,
+       "dR": 173.5,
+       "dS": 195.8,
+       "h": 556.6
+      }
+     },
+     {
+      "kod": "one",
+      "ad": "İki kol öne uzanmış (S1 90, düz)",
+      "kutle_g": 25146.4,
+      "am": [
+       -0.2,
+       564.4,
+       -3.5
+      ],
+      "duz": {
+       "ileri": 3.28,
+       "geri": 3.15,
+       "yan": 3.4,
+       "pay_ileri": 2.18,
+       "pay_geri": 2.1,
+       "pay_yan": 2.27,
+       "egim_ileri": 18.5,
+       "egim_geri": 17.8,
+       "egim_yan": 19.1,
+       "dF": 188.5,
+       "dR": 181.5,
+       "dS": 195.8,
+       "h": 564.4
+      },
+      "rampa5": {
+       "ileri": 2.41,
+       "geri": 2.29,
+       "yan": 2.54,
+       "pay_ileri": 1.61,
+       "pay_geri": 1.52,
+       "pay_yan": 1.69,
+       "egim_ileri": 18.5,
+       "egim_geri": 17.8,
+       "egim_yan": 19.1,
+       "dF": 188.5,
+       "dR": 181.5,
+       "dS": 195.8,
+       "h": 564.4
+      }
+     },
+     {
+      "kod": "one_yuk",
+      "ad": "İki kol öne uzanmış + her elde 0,5 kg (bilgi)",
+      "kutle_g": 26146.4,
+      "am": [
+       -0.1,
+       595.9,
+       10.9
+      ],
+      "duz": {
+       "ileri": 2.87,
+       "geri": 3.22,
+       "yan": 3.22,
+       "pay_ileri": 1.91,
+       "pay_geri": 2.15,
+       "pay_yan": 2.15,
+       "egim_ileri": 16.3,
+       "egim_geri": 18.2,
+       "egim_yan": 18.2,
+       "dF": 174.1,
+       "dR": 195.9,
+       "dS": 195.9,
+       "h": 595.9
+      },
+      "rampa5": {
+       "ileri": 2.0,
+       "geri": 2.36,
+       "yan": 2.36,
+       "pay_ileri": 1.33,
+       "pay_geri": 1.57,
+       "pay_yan": 1.57,
+       "egim_ileri": 16.3,
+       "egim_geri": 18.2,
+       "egim_yan": 18.2,
+       "dF": 174.1,
+       "dR": 195.9,
+       "dS": 195.9,
+       "h": 595.9
+      }
+     },
+     {
+      "kod": "one_yukari",
+      "ad": "İki kol öne-yukarı (S1 135)",
+      "kutle_g": 25146.4,
+      "am": [
+       -0.2,
+       570.0,
+       -5.8
+      ],
+      "duz": {
+       "ileri": 3.28,
+       "geri": 3.08,
+       "yan": 3.37,
+       "pay_ileri": 2.19,
+       "pay_geri": 2.06,
+       "pay_yan": 2.25,
+       "egim_ileri": 18.5,
+       "egim_geri": 17.5,
+       "egim_yan": 19.0,
+       "dF": 190.8,
+       "dR": 179.2,
+       "dS": 195.8,
+       "h": 570.0
+      },
+      "rampa5": {
+       "ileri": 2.42,
+       "geri": 2.22,
+       "yan": 2.5,
+       "pay_ileri": 1.61,
+       "pay_geri": 1.48,
+       "pay_yan": 1.67,
+       "egim_ileri": 18.5,
+       "egim_geri": 17.5,
+       "egim_yan": 19.0,
+       "dF": 190.8,
+       "dR": 179.2,
+       "dS": 195.8,
+       "h": 570.0
+      }
+     },
+     {
+      "kod": "geri",
+      "ad": "İki kol geride (S1 −45)",
+      "kutle_g": 25146.4,
+      "am": [
+       -0.2,
+       559.0,
+       -17.0
+      ],
+      "duz": {
+       "ileri": 3.54,
+       "geri": 2.95,
+       "yan": 3.44,
+       "pay_ileri": 2.36,
+       "pay_geri": 1.97,
+       "pay_yan": 2.29,
+       "egim_ileri": 19.9,
+       "egim_geri": 16.7,
+       "egim_yan": 19.3,
+       "dF": 202.0,
+       "dR": 168.0,
+       "dS": 195.8,
+       "h": 559.0
+      },
+      "rampa5": {
+       "ileri": 2.68,
+       "geri": 2.08,
+       "yan": 2.57,
+       "pay_ileri": 1.78,
+       "pay_geri": 1.39,
+       "pay_yan": 1.71,
+       "egim_ileri": 19.9,
+       "egim_geri": 16.7,
+       "egim_yan": 19.3,
+       "dF": 202.0,
+       "dR": 168.0,
+       "dS": 195.8,
+       "h": 559.0
+      }
+     },
+     {
+      "kod": "yan_tek",
+      "ad": "Sağ kol yana açık (S2 90), sol aşağıda",
+      "kutle_g": 25146.4,
+      "am": [
+       3.8,
+       560.7,
+       -11.5
+      ],
+      "duz": {
+       "ileri": 3.44,
+       "geri": 3.04,
+       "yan": 3.36,
+       "pay_ileri": 2.29,
+       "pay_geri": 2.02,
+       "pay_yan": 2.24,
+       "egim_ileri": 19.3,
+       "egim_geri": 17.2,
+       "egim_yan": 18.9,
+       "dF": 196.5,
+       "dR": 173.5,
+       "dS": 192.2,
+       "h": 560.7
+      },
+      "rampa5": {
+       "ileri": 2.57,
+       "geri": 2.17,
+       "yan": 2.5,
+       "pay_ileri": 1.71,
+       "pay_geri": 1.45,
+       "pay_yan": 1.66,
+       "egim_ileri": 19.3,
+       "egim_geri": 17.2,
+       "egim_yan": 18.9,
+       "dF": 196.5,
+       "dR": 173.5,
+       "dS": 192.2,
+       "h": 560.7
+      }
+     },
+     {
+      "kod": "yan_cift",
+      "ad": "İki kol yana açık (S2 90)",
+      "kutle_g": 25146.4,
+      "am": [
+       -0.2,
+       564.7,
+       -11.5
+      ],
+      "duz": {
+       "ileri": 3.41,
+       "geri": 3.01,
+       "yan": 3.4,
+       "pay_ileri": 2.28,
+       "pay_geri": 2.01,
+       "pay_yan": 2.27,
+       "egim_ileri": 19.2,
+       "egim_geri": 17.1,
+       "egim_yan": 19.1,
+       "dF": 196.5,
+       "dR": 173.5,
+       "dS": 195.8,
+       "h": 564.7
+      },
+      "rampa5": {
+       "ileri": 2.54,
+       "geri": 2.15,
+       "yan": 2.53,
+       "pay_ileri": 1.7,
+       "pay_geri": 1.43,
+       "pay_yan": 1.69,
+       "egim_ileri": 19.2,
+       "egim_geri": 17.1,
+       "egim_yan": 19.1,
+       "dF": 196.5,
+       "dR": 173.5,
+       "dS": 195.8,
+       "h": 564.7
+      }
+     }
+    ],
+    "izgara_en_kotu": {
+     "duz_ileri": {
+      "tip": "simetrik",
+      "sag": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "sol": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "esik": 3.28,
+      "pay": 2.18,
+      "am": [
+       -0.2,
+       564.4,
+       -3.5
+      ]
+     },
+     "duz_geri": {
+      "tip": "simetrik",
+      "sag": [
+       60,
+       120,
+       0,
+       0
+      ],
+      "sol": [
+       60,
+       120,
+       0,
+       0
+      ],
+      "esik": 2.94,
+      "pay": 1.96,
+      "am": [
+       -0.2,
+       566.5,
+       -15.1
+      ]
+     },
+     "duz_yan": {
+      "tip": "zit",
+      "sag": [
+       -45,
+       75,
+       0,
+       0
+      ],
+      "sol": [
+       135,
+       5,
+       0,
+       0
+      ],
+      "esik": 3.34,
+      "pay": 2.22,
+      "am": [
+       3.3,
+       566.6,
+       -9.3
+      ]
+     },
+     "rampa5_ileri": {
+      "tip": "simetrik",
+      "sag": [
+       105,
+       5,
+       0,
+       0
+      ],
+      "sol": [
+       105,
+       5,
+       0,
+       0
+      ],
+      "esik": 2.4,
+      "pay": 1.6,
+      "am": [
+       -0.2,
+       566.4,
+       -3.8
+      ]
+     },
+     "rampa5_geri": {
+      "tip": "simetrik",
+      "sag": [
+       60,
+       120,
+       0,
+       0
+      ],
+      "sol": [
+       60,
+       120,
+       0,
+       0
+      ],
+      "esik": 2.08,
+      "pay": 1.38,
+      "am": [
+       -0.2,
+       566.5,
+       -15.1
+      ]
+     },
+     "rampa5_yan": {
+      "tip": "zit",
+      "sag": [
+       -45,
+       90,
+       0,
+       0
+      ],
+      "sol": [
+       135,
+       5,
+       0,
+       0
+      ],
+      "esik": 2.46,
+      "pay": 1.64,
+      "am": [
+       3.4,
+       567.4,
+       -8.5
+      ]
+     }
+    },
+    "ev": {
+     "kod": "ev",
+     "ad": "Ev pozu (kollar aşağıda)",
+     "kutle_g": 25146.4,
+     "am": [
+      -0.2,
+      556.6,
+      -11.5
+     ],
+     "duz": {
+      "ileri": 3.46,
+      "geri": 3.06,
+      "yan": 3.45,
+      "pay_ileri": 2.31,
+      "pay_geri": 2.04,
+      "pay_yan": 2.3,
+      "egim_ileri": 19.4,
+      "egim_geri": 17.3,
+      "egim_yan": 19.4,
+      "dF": 196.5,
+      "dR": 173.5,
+      "dS": 195.8,
+      "h": 556.6
+     },
+     "rampa5": {
+      "ileri": 2.59,
+      "geri": 2.19,
+      "yan": 2.58,
+      "pay_ileri": 1.73,
+      "pay_geri": 1.46,
+      "pay_yan": 1.72,
+      "egim_ileri": 19.4,
+      "egim_geri": 17.3,
+      "egim_yan": 19.4,
+      "dF": 196.5,
+      "dR": 173.5,
+      "dS": 195.8,
+      "h": 556.6
+     }
+    },
+    "en_kucuk_pay_duz": 1.97,
+    "en_kucuk_pay_rampa": 1.39,
+    "izgara_en_kucuk_duz": 1.96,
+    "izgara_en_kucuk_rampa": 1.38
+   },
+   "motor": {
+    "kutle_kg": 25.146,
+    "duz": {
+     "rampa": 0.0,
+     "a": 0.5,
+     "F_N": 20.0,
+     "T_kgcm": 3.18,
+     "oran": 0.505
+    },
+    "rampa5": {
+     "rampa": 5.0,
+     "a": 0.5,
+     "F_N": 41.4,
+     "T_kgcm": 6.6,
+     "oran": 1.048
+    },
+    "rampa5_yavas": {
+     "rampa": 5.0,
+     "a": 0.25,
+     "F_N": 35.2,
+     "T_kgcm": 5.6,
+     "oran": 0.889
+    },
+    "rampa5_durus": {
+     "rampa": 5.0,
+     "a": 0.0,
+     "F_N": 28.9,
+     "T_kgcm": 4.6,
+     "oran": 0.73
+    },
+    "rampa5_yuk2": {
+     "rampa": 5.0,
+     "a": 0.5,
+     "F_N": 44.7,
+     "T_kgcm": 7.13,
+     "oran": 1.132
+    },
+    "a_sinir_rampa5_80": 0.11,
+    "a_sinir_rampa5_77": 0.063,
+    "a_sinir_duz_80": 0.964,
+    "surekli_kgcm": 6.3,
+    "stall_kgcm": 21.0,
+    "stall9": {
+     "duz": {
+      "rampa": 0.0,
+      "a": 0.5,
+      "F_N": 20.0,
+      "T_kgcm": 3.18,
+      "oran": 1.179
+     },
+     "rampa5_yavas": {
+      "rampa": 5.0,
+      "a": 0.25,
+      "F_N": 35.2,
+      "T_kgcm": 5.6,
+      "oran": 2.075
+     },
+     "rampa5_durus": {
+      "rampa": 5.0,
+      "a": 0.0,
+      "F_N": 28.9,
+      "T_kgcm": 4.6,
+      "oran": 1.704
+     }
+    },
+    "aks": {
+     "on_N": 115.7,
+     "arka_N": 131.0,
+     "mu_gereken_rampa5": 0.168
+    },
+    "yerinde_donus": [
+     {
+      "mu": 0.4,
+      "standart_kgcm": 13.19,
+      "standart_oran": 2.09,
+      "standart_stall": 0.63,
+      "akim_A": 1.8,
+      "ust_sinir_kgcm": 18.29,
+      "ust_sinir_stall": 0.87,
+      "omni_kgcm": 2.77,
+      "omni_oran": 0.44
+     },
+     {
+      "mu": 0.5,
+      "standart_kgcm": 16.29,
+      "standart_oran": 2.58,
+      "standart_stall": 0.78,
+      "akim_A": 2.2,
+      "ust_sinir_kgcm": 22.55,
+      "ust_sinir_stall": 1.07,
+      "omni_kgcm": 3.03,
+      "omni_oran": 0.48
+     },
+     {
+      "mu": 0.6,
+      "standart_kgcm": 19.37,
+      "standart_oran": 3.07,
+      "standart_stall": 0.92,
+      "akim_A": 2.59,
+      "ust_sinir_kgcm": 26.81,
+      "ust_sinir_stall": 1.28,
+      "omni_kgcm": 3.46,
+      "omni_oran": 0.55
+     }
+    ],
+    "yaw": {
+     "Iy_parca_kgm2": 0.6373,
+     "Iz_kutu_kgm2": 0.9907,
+     "yaw_ivme": 1.0,
+     "ivme_payi_kgcm": 0.518,
+     "ivme_payi_kutu_kgcm": 0.805
+    }
+   }
+  },
+  "yeni-500": {
+   "kutle_g": 25290.6,
+   "am": [
+    -0.18,
+    554.19,
+    -11.39
+   ],
+   "taban_w": 500,
+   "destek_x": 206.0,
+   "devrilme": {
+    "pozlar": [
+     {
+      "kod": "ev",
+      "ad": "Ev pozu (kollar aşağıda)",
+      "kutle_g": 25290.6,
+      "am": [
+       -0.2,
+       554.2,
+       -11.4
+      ],
+      "duz": {
+       "ileri": 3.48,
+       "geri": 3.07,
+       "yan": 3.64,
+       "pay_ileri": 2.32,
+       "pay_geri": 2.05,
+       "pay_yan": 2.43,
+       "egim_ileri": 19.5,
+       "egim_geri": 17.4,
+       "egim_yan": 20.4,
+       "dF": 196.4,
+       "dR": 173.6,
+       "dS": 205.8,
+       "h": 554.2
+      },
+      "rampa5": {
+       "ileri": 2.61,
+       "geri": 2.21,
+       "yan": 2.77,
+       "pay_ileri": 1.74,
+       "pay_geri": 1.47,
+       "pay_yan": 1.85,
+       "egim_ileri": 19.5,
+       "egim_geri": 17.4,
+       "egim_yan": 20.4,
+       "dF": 196.4,
+       "dR": 173.6,
+       "dS": 205.8,
+       "h": 554.2
+      }
+     },
+     {
+      "kod": "one",
+      "ad": "İki kol öne uzanmış (S1 90, düz)",
+      "kutle_g": 25290.6,
+      "am": [
+       -0.2,
+       562.0,
+       -3.5
+      ],
+      "duz": {
+       "ileri": 3.29,
+       "geri": 3.17,
+       "yan": 3.59,
+       "pay_ileri": 2.19,
+       "pay_geri": 2.11,
+       "pay_yan": 2.4,
+       "egim_ileri": 18.5,
+       "egim_geri": 17.9,
+       "egim_yan": 20.1,
+       "dF": 188.5,
+       "dR": 181.5,
+       "dS": 205.8,
+       "h": 562.0
+      },
+      "rampa5": {
+       "ileri": 2.42,
+       "geri": 2.3,
+       "yan": 2.72,
+       "pay_ileri": 1.62,
+       "pay_geri": 1.53,
+       "pay_yan": 1.82,
+       "egim_ileri": 18.5,
+       "egim_geri": 17.9,
+       "egim_yan": 20.1,
+       "dF": 188.5,
+       "dR": 181.5,
+       "dS": 205.8,
+       "h": 562.0
+      }
+     },
+     {
+      "kod": "one_yuk",
+      "ad": "İki kol öne uzanmış + her elde 0,5 kg (bilgi)",
+      "kutle_g": 26290.6,
+      "am": [
+       -0.2,
+       593.4,
+       10.8
+      ],
+      "duz": {
+       "ileri": 2.88,
+       "geri": 3.24,
+       "yan": 3.4,
+       "pay_ileri": 1.92,
+       "pay_geri": 2.16,
+       "pay_yan": 2.27,
+       "egim_ileri": 16.4,
+       "egim_geri": 18.3,
+       "egim_yan": 19.1,
+       "dF": 174.2,
+       "dR": 195.8,
+       "dS": 205.8,
+       "h": 593.4
+      },
+      "rampa5": {
+       "ileri": 2.01,
+       "geri": 2.37,
+       "yan": 2.53,
+       "pay_ileri": 1.34,
+       "pay_geri": 1.58,
+       "pay_yan": 1.69,
+       "egim_ileri": 16.4,
+       "egim_geri": 18.3,
+       "egim_yan": 19.1,
+       "dF": 174.2,
+       "dR": 195.8,
+       "dS": 205.8,
+       "h": 593.4
+      }
+     },
+     {
+      "kod": "one_yukari",
+      "ad": "İki kol öne-yukarı (S1 135)",
+      "kutle_g": 25290.6,
+      "am": [
+       -0.2,
+       567.5,
+       -5.7
+      ],
+      "duz": {
+       "ileri": 3.3,
+       "geri": 3.1,
+       "yan": 3.56,
+       "pay_ileri": 2.2,
+       "pay_geri": 2.07,
+       "pay_yan": 2.37,
+       "egim_ileri": 18.6,
+       "egim_geri": 17.5,
+       "egim_yan": 19.9,
+       "dF": 190.7,
+       "dR": 179.3,
+       "dS": 205.8,
+       "h": 567.5
+      },
+      "rampa5": {
+       "ileri": 2.43,
+       "geri": 2.23,
+       "yan": 2.69,
+       "pay_ileri": 1.62,
+       "pay_geri": 1.49,
+       "pay_yan": 1.79,
+       "egim_ileri": 18.6,
+       "egim_geri": 17.5,
+       "egim_yan": 19.9,
+       "dF": 190.7,
+       "dR": 179.3,
+       "dS": 205.8,
+       "h": 567.5
+      }
+     },
+     {
+      "kod": "geri",
+      "ad": "İki kol geride (S1 −45)",
+      "kutle_g": 25290.6,
+      "am": [
+       -0.2,
+       556.6,
+       -16.9
+      ],
+      "duz": {
+       "ileri": 3.56,
+       "geri": 2.96,
+       "yan": 3.63,
+       "pay_ileri": 2.37,
+       "pay_geri": 1.98,
+       "pay_yan": 2.42,
+       "egim_ileri": 19.9,
+       "egim_geri": 16.8,
+       "egim_yan": 20.3,
+       "dF": 201.9,
+       "dR": 168.1,
+       "dS": 205.8,
+       "h": 556.6
+      },
+      "rampa5": {
+       "ileri": 2.69,
+       "geri": 2.1,
+       "yan": 2.76,
+       "pay_ileri": 1.79,
+       "pay_geri": 1.4,
+       "pay_yan": 1.84,
+       "egim_ileri": 19.9,
+       "egim_geri": 16.8,
+       "egim_yan": 20.3,
+       "dF": 201.9,
+       "dR": 168.1,
+       "dS": 205.8,
+       "h": 556.6
+      }
+     },
+     {
+      "kod": "yan_tek",
+      "ad": "Sağ kol yana açık (S2 90), sol aşağıda",
+      "kutle_g": 25290.6,
+      "am": [
+       3.7,
+       558.2,
+       -11.4
+      ],
+      "duz": {
+       "ileri": 3.45,
+       "geri": 3.05,
+       "yan": 3.55,
+       "pay_ileri": 2.3,
+       "pay_geri": 2.03,
+       "pay_yan": 2.37,
+       "egim_ileri": 19.4,
+       "egim_geri": 17.3,
+       "egim_yan": 19.9,
+       "dF": 196.4,
+       "dR": 173.6,
+       "dS": 202.3,
+       "h": 558.2
+      },
+      "rampa5": {
+       "ileri": 2.58,
+       "geri": 2.18,
+       "yan": 2.69,
+       "pay_ileri": 1.72,
+       "pay_geri": 1.46,
+       "pay_yan": 1.79,
+       "egim_ileri": 19.4,
+       "egim_geri": 17.3,
+       "egim_yan": 19.9,
+       "dF": 196.4,
+       "dR": 173.6,
+       "dS": 202.3,
+       "h": 558.2
+      }
+     },
+     {
+      "kod": "yan_cift",
+      "ad": "İki kol yana açık (S2 90)",
+      "kutle_g": 25290.6,
+      "am": [
+       -0.2,
+       562.3,
+       -11.4
+      ],
+      "duz": {
+       "ileri": 3.43,
+       "geri": 3.03,
+       "yan": 3.59,
+       "pay_ileri": 2.28,
+       "pay_geri": 2.02,
+       "pay_yan": 2.39,
+       "egim_ileri": 19.3,
+       "egim_geri": 17.2,
+       "egim_yan": 20.1,
+       "dF": 196.4,
+       "dR": 173.6,
+       "dS": 205.8,
+       "h": 562.3
+      },
+      "rampa5": {
+       "ileri": 2.56,
+       "geri": 2.16,
+       "yan": 2.72,
+       "pay_ileri": 1.71,
+       "pay_geri": 1.44,
+       "pay_yan": 1.81,
+       "egim_ileri": 19.3,
+       "egim_geri": 17.2,
+       "egim_yan": 20.1,
+       "dF": 196.4,
+       "dR": 173.6,
+       "dS": 205.8,
+       "h": 562.3
+      }
+     }
+    ],
+    "izgara_en_kotu": {
+     "duz_ileri": {
+      "tip": "simetrik",
+      "sag": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "sol": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "esik": 3.29,
+      "pay": 2.19,
+      "am": [
+       -0.2,
+       562.0,
+       -3.5
+      ]
+     },
+     "duz_geri": {
+      "tip": "simetrik",
+      "sag": [
+       60,
+       120,
+       0,
+       0
+      ],
+      "sol": [
+       60,
+       120,
+       0,
+       0
+      ],
+      "esik": 2.96,
+      "pay": 1.97,
+      "am": [
+       -0.2,
+       564.1,
+       -15.0
+      ]
+     },
+     "duz_yan": {
+      "tip": "zit",
+      "sag": [
+       -45,
+       105,
+       0,
+       0
+      ],
+      "sol": [
+       135,
+       5,
+       0,
+       0
+      ],
+      "esik": 3.52,
+      "pay": 2.34,
+      "am": [
+       3.2,
+       565.6,
+       -7.7
+      ]
+     },
+     "rampa5_ileri": {
+      "tip": "simetrik",
+      "sag": [
+       90,
+       5,
+       30,
+       0
+      ],
+      "sol": [
+       90,
+       5,
+       30,
+       0
+      ],
+      "esik": 2.42,
+      "pay": 1.61,
+      "am": [
+       -0.2,
+       562.7,
+       -3.7
+      ]
+     },
+     "rampa5_geri": {
+      "tip": "simetrik",
+      "sag": [
+       60,
+       120,
+       0,
+       0
+      ],
+      "sol": [
+       60,
+       120,
+       0,
+       0
+      ],
+      "esik": 2.09,
+      "pay": 1.39,
+      "am": [
+       -0.2,
+       564.1,
+       -15.0
+      ]
+     },
+     "rampa5_yan": {
+      "tip": "zit",
+      "sag": [
+       -45,
+       75,
+       0,
+       0
+      ],
+      "sol": [
+       135,
+       5,
+       0,
+       0
+      ],
+      "esik": 2.66,
+      "pay": 1.77,
+      "am": [
+       3.3,
+       564.2,
+       -9.2
+      ]
+     }
+    },
+    "ev": {
+     "kod": "ev",
+     "ad": "Ev pozu (kollar aşağıda)",
+     "kutle_g": 25290.6,
+     "am": [
+      -0.2,
+      554.2,
+      -11.4
+     ],
+     "duz": {
+      "ileri": 3.48,
+      "geri": 3.07,
+      "yan": 3.64,
+      "pay_ileri": 2.32,
+      "pay_geri": 2.05,
+      "pay_yan": 2.43,
+      "egim_ileri": 19.5,
+      "egim_geri": 17.4,
+      "egim_yan": 20.4,
+      "dF": 196.4,
+      "dR": 173.6,
+      "dS": 205.8,
+      "h": 554.2
+     },
+     "rampa5": {
+      "ileri": 2.61,
+      "geri": 2.21,
+      "yan": 2.77,
+      "pay_ileri": 1.74,
+      "pay_geri": 1.47,
+      "pay_yan": 1.85,
+      "egim_ileri": 19.5,
+      "egim_geri": 17.4,
+      "egim_yan": 20.4,
+      "dF": 196.4,
+      "dR": 173.6,
+      "dS": 205.8,
+      "h": 554.2
+     }
+    },
+    "en_kucuk_pay_duz": 1.98,
+    "en_kucuk_pay_rampa": 1.4,
+    "izgara_en_kucuk_duz": 1.97,
+    "izgara_en_kucuk_rampa": 1.39
+   },
+   "motor": {
+    "kutle_kg": 25.291,
+    "duz": {
+     "rampa": 0.0,
+     "a": 0.5,
+     "F_N": 20.1,
+     "T_kgcm": 3.2,
+     "oran": 0.508
+    },
+    "rampa5": {
+     "rampa": 5.0,
+     "a": 0.5,
+     "F_N": 41.7,
+     "T_kgcm": 6.64,
+     "oran": 1.054
+    },
+    "rampa5_yavas": {
+     "rampa": 5.0,
+     "a": 0.25,
+     "F_N": 35.4,
+     "T_kgcm": 5.63,
+     "oran": 0.894
+    },
+    "rampa5_durus": {
+     "rampa": 5.0,
+     "a": 0.0,
+     "F_N": 29.0,
+     "T_kgcm": 4.63,
+     "oran": 0.734
+    },
+    "rampa5_yuk2": {
+     "rampa": 5.0,
+     "a": 0.5,
+     "F_N": 45.0,
+     "T_kgcm": 7.17,
+     "oran": 1.138
+    },
+    "a_sinir_rampa5_80": 0.103,
+    "a_sinir_rampa5_77": 0.056,
+    "a_sinir_duz_80": 0.956,
+    "surekli_kgcm": 6.3,
+    "stall_kgcm": 21.0,
+    "stall9": {
+     "duz": {
+      "rampa": 0.0,
+      "a": 0.5,
+      "F_N": 20.1,
+      "T_kgcm": 3.2,
+      "oran": 1.185
+     },
+     "rampa5_yavas": {
+      "rampa": 5.0,
+      "a": 0.25,
+      "F_N": 35.4,
+      "T_kgcm": 5.63,
+      "oran": 2.087
+     },
+     "rampa5_durus": {
+      "rampa": 5.0,
+      "a": 0.0,
+      "F_N": 29.0,
+      "T_kgcm": 4.63,
+      "oran": 1.714
+     }
+    },
+    "aks": {
+     "on_N": 116.4,
+     "arka_N": 131.7,
+     "mu_gereken_rampa5": 0.169
+    },
+    "yerinde_donus": [
+     {
+      "mu": 0.4,
+      "standart_kgcm": 13.0,
+      "standart_oran": 2.06,
+      "standart_stall": 0.62,
+      "akim_A": 1.78,
+      "ust_sinir_kgcm": 17.56,
+      "ust_sinir_stall": 0.84,
+      "omni_kgcm": 2.68,
+      "omni_oran": 0.43
+     },
+     {
+      "mu": 0.5,
+      "standart_kgcm": 16.05,
+      "standart_oran": 2.55,
+      "standart_stall": 0.76,
+      "akim_A": 2.17,
+      "ust_sinir_kgcm": 21.63,
+      "ust_sinir_stall": 1.03,
+      "omni_kgcm": 3.04,
+      "omni_oran": 0.48
+     },
+     {
+      "mu": 0.6,
+      "standart_kgcm": 19.08,
+      "standart_oran": 3.03,
+      "standart_stall": 0.91,
+      "akim_A": 2.55,
+      "ust_sinir_kgcm": 25.7,
+      "ust_sinir_stall": 1.22,
+      "omni_kgcm": 3.49,
+      "omni_oran": 0.55
+     }
+    ],
+    "yaw": {
+     "Iy_parca_kgm2": 0.6561,
+     "Iz_kutu_kgm2": 0.9964,
+     "yaw_ivme": 1.0,
+     "ivme_payi_kgcm": 0.507,
+     "ivme_payi_kutu_kgcm": 0.771
+    }
+   }
+  },
+  "yeni-520": {
+   "kutle_g": 25434.8,
+   "am": [
+    -0.2,
+    551.82,
+    -11.33
+   ],
+   "taban_w": 520,
+   "destek_x": 216.0,
+   "devrilme": {
+    "pozlar": [
+     {
+      "kod": "ev",
+      "ad": "Ev pozu (kollar aşağıda)",
+      "kutle_g": 25434.8,
+      "am": [
+       -0.2,
+       551.8,
+       -11.3
+      ],
+      "duz": {
+       "ileri": 3.49,
+       "geri": 3.09,
+       "yan": 3.84,
+       "pay_ileri": 2.33,
+       "pay_geri": 2.06,
+       "pay_yan": 2.56,
+       "egim_ileri": 19.6,
+       "egim_geri": 17.5,
+       "egim_yan": 21.4,
+       "dF": 196.3,
+       "dR": 173.7,
+       "dS": 215.8,
+       "h": 551.8
+      },
+      "rampa5": {
+       "ileri": 2.62,
+       "geri": 2.22,
+       "yan": 2.97,
+       "pay_ileri": 1.75,
+       "pay_geri": 1.48,
+       "pay_yan": 1.98,
+       "egim_ileri": 19.6,
+       "egim_geri": 17.5,
+       "egim_yan": 21.4,
+       "dF": 196.3,
+       "dR": 173.7,
+       "dS": 215.8,
+       "h": 551.8
+      }
+     },
+     {
+      "kod": "one",
+      "ad": "İki kol öne uzanmış (S1 90, düz)",
+      "kutle_g": 25434.8,
+      "am": [
+       -0.2,
+       559.5,
+       -3.5
+      ],
+      "duz": {
+       "ileri": 3.3,
+       "geri": 3.18,
+       "yan": 3.78,
+       "pay_ileri": 2.2,
+       "pay_geri": 2.12,
+       "pay_yan": 2.52,
+       "egim_ileri": 18.6,
+       "egim_geri": 18.0,
+       "egim_yan": 21.1,
+       "dF": 188.5,
+       "dR": 181.5,
+       "dS": 215.8,
+       "h": 559.5
+      },
+      "rampa5": {
+       "ileri": 2.44,
+       "geri": 2.32,
+       "yan": 2.91,
+       "pay_ileri": 1.62,
+       "pay_geri": 1.54,
+       "pay_yan": 1.94,
+       "egim_ileri": 18.6,
+       "egim_geri": 18.0,
+       "egim_yan": 21.1,
+       "dF": 188.5,
+       "dR": 181.5,
+       "dS": 215.8,
+       "h": 559.5
+      }
+     },
+     {
+      "kod": "one_yuk",
+      "ad": "İki kol öne uzanmış + her elde 0,5 kg (bilgi)",
+      "kutle_g": 26434.8,
+      "am": [
+       -0.2,
+       590.9,
+       10.8
+      ],
+      "duz": {
+       "ileri": 2.89,
+       "geri": 3.25,
+       "yan": 3.58,
+       "pay_ileri": 1.93,
+       "pay_geri": 2.17,
+       "pay_yan": 2.39,
+       "egim_ileri": 16.4,
+       "egim_geri": 18.3,
+       "egim_yan": 20.1,
+       "dF": 174.2,
+       "dR": 195.8,
+       "dS": 215.8,
+       "h": 590.9
+      },
+      "rampa5": {
+       "ileri": 2.03,
+       "geri": 2.38,
+       "yan": 2.71,
+       "pay_ileri": 1.35,
+       "pay_geri": 1.59,
+       "pay_yan": 1.81,
+       "egim_ileri": 16.4,
+       "egim_geri": 18.3,
+       "egim_yan": 20.1,
+       "dF": 174.2,
+       "dR": 195.8,
+       "dS": 215.8,
+       "h": 590.9
+      }
+     },
+     {
+      "kod": "one_yukari",
+      "ad": "İki kol öne-yukarı (S1 135)",
+      "kutle_g": 25434.8,
+      "am": [
+       -0.2,
+       565.1,
+       -5.7
+      ],
+      "duz": {
+       "ileri": 3.31,
+       "geri": 3.11,
+       "yan": 3.75,
+       "pay_ileri": 2.21,
+       "pay_geri": 2.08,
+       "pay_yan": 2.5,
+       "egim_ileri": 18.6,
+       "egim_geri": 17.6,
+       "egim_yan": 20.9,
+       "dF": 190.7,
+       "dR": 179.3,
+       "dS": 215.8,
+       "h": 565.1
+      },
+      "rampa5": {
+       "ileri": 2.44,
+       "geri": 2.25,
+       "yan": 2.88,
+       "pay_ileri": 1.63,
+       "pay_geri": 1.5,
+       "pay_yan": 1.92,
+       "egim_ileri": 18.6,
+       "egim_geri": 17.6,
+       "egim_yan": 20.9,
+       "dF": 190.7,
+       "dR": 179.3,
+       "dS": 215.8,
+       "h": 565.1
+      }
+     },
+     {
+      "kod": "geri",
+      "ad": "İki kol geride (S1 −45)",
+      "kutle_g": 25434.8,
+      "am": [
+       -0.2,
+       554.2,
+       -16.8
+      ],
+      "duz": {
+       "ileri": 3.57,
+       "geri": 2.98,
+       "yan": 3.82,
+       "pay_ileri": 2.38,
+       "pay_geri": 1.98,
+       "pay_yan": 2.55,
+       "egim_ileri": 20.0,
+       "egim_geri": 16.9,
+       "egim_yan": 21.3,
+       "dF": 201.8,
+       "dR": 168.2,
+       "dS": 215.8,
+       "h": 554.2
+      },
+      "rampa5": {
+       "ileri": 2.7,
+       "geri": 2.11,
+       "yan": 2.95,
+       "pay_ileri": 1.8,
+       "pay_geri": 1.41,
+       "pay_yan": 1.97,
+       "egim_ileri": 20.0,
+       "egim_geri": 16.9,
+       "egim_yan": 21.3,
+       "dF": 201.8,
+       "dR": 168.2,
+       "dS": 215.8,
+       "h": 554.2
+      }
+     },
+     {
+      "kod": "yan_tek",
+      "ad": "Sağ kol yana açık (S2 90), sol aşağıda",
+      "kutle_g": 25434.8,
+      "am": [
+       3.7,
+       555.8,
+       -11.3
+      ],
+      "duz": {
+       "ileri": 3.46,
+       "geri": 3.07,
+       "yan": 3.75,
+       "pay_ileri": 2.31,
+       "pay_geri": 2.04,
+       "pay_yan": 2.5,
+       "egim_ileri": 19.5,
+       "egim_geri": 17.4,
+       "egim_yan": 20.9,
+       "dF": 196.3,
+       "dR": 173.7,
+       "dS": 212.3,
+       "h": 555.8
+      },
+      "rampa5": {
+       "ileri": 2.6,
+       "geri": 2.2,
+       "yan": 2.88,
+       "pay_ileri": 1.73,
+       "pay_geri": 1.47,
+       "pay_yan": 1.92,
+       "egim_ileri": 19.5,
+       "egim_geri": 17.4,
+       "egim_yan": 20.9,
+       "dF": 196.3,
+       "dR": 173.7,
+       "dS": 212.3,
+       "h": 555.8
+      }
+     },
+     {
+      "kod": "yan_cift",
+      "ad": "İki kol yana açık (S2 90)",
+      "kutle_g": 25434.8,
+      "am": [
+       -0.2,
+       559.9,
+       -11.3
+      ],
+      "duz": {
+       "ileri": 3.44,
+       "geri": 3.04,
+       "yan": 3.78,
+       "pay_ileri": 2.29,
+       "pay_geri": 2.03,
+       "pay_yan": 2.52,
+       "egim_ileri": 19.3,
+       "egim_geri": 17.2,
+       "egim_yan": 21.1,
+       "dF": 196.3,
+       "dR": 173.7,
+       "dS": 215.8,
+       "h": 559.9
+      },
+      "rampa5": {
+       "ileri": 2.57,
+       "geri": 2.18,
+       "yan": 2.91,
+       "pay_ileri": 1.71,
+       "pay_geri": 1.45,
+       "pay_yan": 1.94,
+       "egim_ileri": 19.3,
+       "egim_geri": 17.2,
+       "egim_yan": 21.1,
+       "dF": 196.3,
+       "dR": 173.7,
+       "dS": 215.8,
+       "h": 559.9
+      }
+     }
+    ],
+    "izgara_en_kotu": {
+     "duz_ileri": {
+      "tip": "simetrik",
+      "sag": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "sol": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "esik": 3.3,
+      "pay": 2.2,
+      "am": [
+       -0.2,
+       559.5,
+       -3.5
+      ]
+     },
+     "duz_geri": {
+      "tip": "simetrik",
+      "sag": [
+       -45,
+       5,
+       0,
+       0
+      ],
+      "sol": [
+       -45,
+       5,
+       0,
+       0
+      ],
+      "esik": 2.98,
+      "pay": 1.98,
+      "am": [
+       -0.2,
+       554.2,
+       -16.8
+      ]
+     },
+     "duz_yan": {
+      "tip": "zit",
+      "sag": [
+       -45,
+       90,
+       0,
+       0
+      ],
+      "sol": [
+       135,
+       5,
+       0,
+       0
+      ],
+      "esik": 3.71,
+      "pay": 2.47,
+      "am": [
+       3.4,
+       562.5,
+       -8.4
+      ]
+     },
+     "rampa5_ileri": {
+      "tip": "simetrik",
+      "sag": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "sol": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "esik": 2.44,
+      "pay": 1.62,
+      "am": [
+       -0.2,
+       559.5,
+       -3.5
+      ]
+     },
+     "rampa5_geri": {
+      "tip": "simetrik",
+      "sag": [
+       60,
+       120,
+       0,
+       0
+      ],
+      "sol": [
+       60,
+       120,
+       0,
+       0
+      ],
+      "esik": 2.1,
+      "pay": 1.4,
+      "am": [
+       -0.2,
+       561.6,
+       -14.9
+      ]
+     },
+     "rampa5_yan": {
+      "tip": "zit",
+      "sag": [
+       -45,
+       90,
+       0,
+       0
+      ],
+      "sol": [
+       135,
+       5,
+       0,
+       0
+      ],
+      "esik": 2.84,
+      "pay": 1.89,
+      "am": [
+       3.4,
+       562.5,
+       -8.4
+      ]
+     }
+    },
+    "ev": {
+     "kod": "ev",
+     "ad": "Ev pozu (kollar aşağıda)",
+     "kutle_g": 25434.8,
+     "am": [
+      -0.2,
+      551.8,
+      -11.3
+     ],
+     "duz": {
+      "ileri": 3.49,
+      "geri": 3.09,
+      "yan": 3.84,
+      "pay_ileri": 2.33,
+      "pay_geri": 2.06,
+      "pay_yan": 2.56,
+      "egim_ileri": 19.6,
+      "egim_geri": 17.5,
+      "egim_yan": 21.4,
+      "dF": 196.3,
+      "dR": 173.7,
+      "dS": 215.8,
+      "h": 551.8
+     },
+     "rampa5": {
+      "ileri": 2.62,
+      "geri": 2.22,
+      "yan": 2.97,
+      "pay_ileri": 1.75,
+      "pay_geri": 1.48,
+      "pay_yan": 1.98,
+      "egim_ileri": 19.6,
+      "egim_geri": 17.5,
+      "egim_yan": 21.4,
+      "dF": 196.3,
+      "dR": 173.7,
+      "dS": 215.8,
+      "h": 551.8
+     }
+    },
+    "en_kucuk_pay_duz": 1.98,
+    "en_kucuk_pay_rampa": 1.41,
+    "izgara_en_kucuk_duz": 1.98,
+    "izgara_en_kucuk_rampa": 1.4
+   },
+   "motor": {
+    "kutle_kg": 25.435,
+    "duz": {
+     "rampa": 0.0,
+     "a": 0.5,
+     "F_N": 20.2,
+     "T_kgcm": 3.22,
+     "oran": 0.511
+    },
+    "rampa5": {
+     "rampa": 5.0,
+     "a": 0.5,
+     "F_N": 41.9,
+     "T_kgcm": 6.68,
+     "oran": 1.06
+    },
+    "rampa5_yavas": {
+     "rampa": 5.0,
+     "a": 0.25,
+     "F_N": 35.6,
+     "T_kgcm": 5.67,
+     "oran": 0.899
+    },
+    "rampa5_durus": {
+     "rampa": 5.0,
+     "a": 0.0,
+     "F_N": 29.2,
+     "T_kgcm": 4.65,
+     "oran": 0.739
+    },
+    "rampa5_yuk2": {
+     "rampa": 5.0,
+     "a": 0.5,
+     "F_N": 45.2,
+     "T_kgcm": 7.2,
+     "oran": 1.144
+    },
+    "a_sinir_rampa5_80": 0.096,
+    "a_sinir_rampa5_77": 0.049,
+    "a_sinir_duz_80": 0.949,
+    "surekli_kgcm": 6.3,
+    "stall_kgcm": 21.0,
+    "stall9": {
+     "duz": {
+      "rampa": 0.0,
+      "a": 0.5,
+      "F_N": 20.2,
+      "T_kgcm": 3.22,
+      "oran": 1.192
+     },
+     "rampa5_yavas": {
+      "rampa": 5.0,
+      "a": 0.25,
+      "F_N": 35.6,
+      "T_kgcm": 5.67,
+      "oran": 2.099
+     },
+     "rampa5_durus": {
+      "rampa": 5.0,
+      "a": 0.0,
+      "F_N": 29.2,
+      "T_kgcm": 4.65,
+      "oran": 1.723
+     }
+    },
+    "aks": {
+     "on_N": 117.1,
+     "arka_N": 132.4,
+     "mu_gereken_rampa5": 0.169
+    },
+    "yerinde_donus": [
+     {
+      "mu": 0.4,
+      "standart_kgcm": 12.8,
+      "standart_oran": 2.03,
+      "standart_stall": 0.61,
+      "akim_A": 1.75,
+      "ust_sinir_kgcm": 16.89,
+      "ust_sinir_stall": 0.8,
+      "omni_kgcm": 2.68,
+      "omni_oran": 0.43
+     },
+     {
+      "mu": 0.5,
+      "standart_kgcm": 15.81,
+      "standart_oran": 2.51,
+      "standart_stall": 0.75,
+      "akim_A": 2.14,
+      "ust_sinir_kgcm": 20.8,
+      "ust_sinir_stall": 0.99,
+      "omni_kgcm": 3.06,
+      "omni_oran": 0.49
+     },
+     {
+      "mu": 0.6,
+      "standart_kgcm": 18.8,
+      "standart_oran": 2.98,
+      "standart_stall": 0.9,
+      "akim_A": 2.52,
+      "ust_sinir_kgcm": 24.71,
+      "ust_sinir_stall": 1.18,
+      "omni_kgcm": 3.52,
+      "omni_oran": 0.56
+     }
+    ],
+    "yaw": {
+     "Iy_parca_kgm2": 0.676,
+     "Iz_kutu_kgm2": 1.002,
+     "yaw_ivme": 1.0,
+     "ivme_payi_kgcm": 0.499,
+     "ivme_payi_kutu_kgcm": 0.739
+    }
+   }
+  }
+ },
+ "onlem": [
+  {
+   "taban": "yeni-444",
+   "onlem": "yok",
+   "kutle_g": 24919.0,
+   "am": [
+    -0.1,
+    560.4,
+    -11.6
+   ],
+   "ev_duz": [
+    2.29,
+    2.02,
+    2.08
+   ],
+   "ev_rampa": [
+    1.72,
+    1.45,
+    1.5
+   ],
+   "izgara_duz": [
+    2.16,
+    1.95,
+    2.0
+   ],
+   "izgara_rampa": [
+    1.59,
+    1.37,
+    1.42
+   ],
+   "motor_rampa5_025": 0.881
+  },
+  {
+   "taban": "yeni-444",
+   "onlem": "akü 75 mm öne",
+   "kutle_g": 24919.0,
+   "am": [
+    -0.1,
+    560.4,
+    -3.1
+   ],
+   "ev_duz": [
+    2.2,
+    2.12,
+    2.08
+   ],
+   "ev_rampa": [
+    1.62,
+    1.54,
+    1.5
+   ],
+   "izgara_duz": [
+    2.07,
+    2.04,
+    2.0
+   ],
+   "izgara_rampa": [
+    1.49,
+    1.46,
+    1.42
+   ],
+   "motor_rampa5_025": 0.881
+  },
+  {
+   "taban": "yeni-444",
+   "onlem": "akü 100 mm öne",
+   "kutle_g": 24919.0,
+   "am": [
+    -0.1,
+    560.4,
+    -0.3
+   ],
+   "ev_duz": [
+    2.16,
+    2.16,
+    2.08
+   ],
+   "ev_rampa": [
+    1.58,
+    1.58,
+    1.5
+   ],
+   "izgara_duz": [
+    2.04,
+    2.07,
+    2.0
+   ],
+   "izgara_rampa": [
+    1.46,
+    1.5,
+    1.42
+   ],
+   "motor_rampa5_025": 0.881
+  },
+  {
+   "taban": "yeni-444",
+   "onlem": "1,5 kg balast ön-alt (y 60, z +150)",
+   "kutle_g": 26419.0,
+   "am": [
+    -0.1,
+    532.0,
+    -2.4
+   ],
+   "ev_duz": [
+    2.3,
+    2.25,
+    2.19
+   ],
+   "ev_rampa": [
+    1.72,
+    1.67,
+    1.61
+   ],
+   "izgara_duz": [
+    2.18,
+    2.16,
+    2.11
+   ],
+   "izgara_rampa": [
+    1.6,
+    1.59,
+    1.53
+   ],
+   "motor_rampa5_025": 0.934
+  },
+  {
+   "taban": "yeni-444",
+   "onlem": "Nextion kaldırılır (−535 g)",
+   "kutle_g": 24384.0,
+   "am": [
+    -0.1,
+    545.2,
+    -13.8
+   ],
+   "ev_duz": [
+    2.38,
+    2.05,
+    2.13
+   ],
+   "ev_rampa": [
+    1.81,
+    1.48,
+    1.56
+   ],
+   "izgara_duz": [
+    2.25,
+    1.97,
+    2.05
+   ],
+   "izgara_rampa": [
+    1.67,
+    1.39,
+    1.47
+   ],
+   "motor_rampa5_025": 0.862
+  },
+  {
+   "taban": "yeni-444",
+   "onlem": "akü 75 mm öne + Nextion kaldırılır",
+   "kutle_g": 24384.0,
+   "am": [
+    -0.1,
+    545.2,
+    -5.2
+   ],
+   "ev_duz": [
+    2.28,
+    2.16,
+    2.13
+   ],
+   "ev_rampa": [
+    1.7,
+    1.58,
+    1.56
+   ],
+   "izgara_duz": [
+    2.15,
+    2.07,
+    2.05
+   ],
+   "izgara_rampa": [
+    1.57,
+    1.49,
+    1.47
+   ],
+   "motor_rampa5_025": 0.862
+  },
+  {
+   "taban": "yeni-480",
+   "onlem": "yok",
+   "kutle_g": 25146.0,
+   "am": [
+    -0.2,
+    556.6,
+    -11.5
+   ],
+   "ev_duz": [
+    2.31,
+    2.04,
+    2.3
+   ],
+   "ev_rampa": [
+    1.73,
+    1.46,
+    1.72
+   ],
+   "izgara_duz": [
+    2.18,
+    1.96,
+    2.22
+   ],
+   "izgara_rampa": [
+    1.6,
+    1.38,
+    1.64
+   ],
+   "motor_rampa5_025": 0.889
+  },
+  {
+   "taban": "yeni-480",
+   "onlem": "akü 75 mm öne",
+   "kutle_g": 25146.0,
+   "am": [
+    -0.2,
+    556.6,
+    -3.1
+   ],
+   "ev_duz": [
+    2.21,
+    2.14,
+    2.3
+   ],
+   "ev_rampa": [
+    1.63,
+    1.56,
+    1.72
+   ],
+   "izgara_duz": [
+    2.08,
+    2.06,
+    2.22
+   ],
+   "izgara_rampa": [
+    1.51,
+    1.48,
+    1.64
+   ],
+   "motor_rampa5_025": 0.889
+  },
+  {
+   "taban": "yeni-480",
+   "onlem": "akü 100 mm öne",
+   "kutle_g": 25146.0,
+   "am": [
+    -0.2,
+    556.6,
+    -0.3
+   ],
+   "ev_duz": [
+    2.18,
+    2.17,
+    2.3
+   ],
+   "ev_rampa": [
+    1.6,
+    1.59,
+    1.72
+   ],
+   "izgara_duz": [
+    2.05,
+    2.09,
+    2.22
+   ],
+   "izgara_rampa": [
+    1.47,
+    1.51,
+    1.64
+   ],
+   "motor_rampa5_025": 0.889
+  },
+  {
+   "taban": "yeni-480",
+   "onlem": "1,5 kg balast ön-alt (y 60, z +150)",
+   "kutle_g": 26646.0,
+   "am": [
+    -0.1,
+    528.6,
+    -2.4
+   ],
+   "ev_duz": [
+    2.32,
+    2.26,
+    2.42
+   ],
+   "ev_rampa": [
+    1.74,
+    1.68,
+    1.84
+   ],
+   "izgara_duz": [
+    2.19,
+    2.18,
+    2.34
+   ],
+   "izgara_rampa": [
+    1.61,
+    1.6,
+    1.76
+   ],
+   "motor_rampa5_025": 0.942
+  },
+  {
+   "taban": "yeni-480",
+   "onlem": "Nextion kaldırılır (−535 g)",
+   "kutle_g": 24611.0,
+   "am": [
+    -0.2,
+    541.4,
+    -13.7
+   ],
+   "ev_duz": [
+    2.4,
+    2.07,
+    2.37
+   ],
+   "ev_rampa": [
+    1.82,
+    1.49,
+    1.79
+   ],
+   "izgara_duz": [
+    2.26,
+    1.99,
+    2.28
+   ],
+   "izgara_rampa": [
+    1.68,
+    1.41,
+    1.7
+   ],
+   "motor_rampa5_025": 0.87
+  },
+  {
+   "taban": "yeni-480",
+   "onlem": "akü 75 mm öne + Nextion kaldırılır",
+   "kutle_g": 24611.0,
+   "am": [
+    -0.2,
+    541.4,
+    -5.1
+   ],
+   "ev_duz": [
+    2.3,
+    2.17,
+    2.37
+   ],
+   "ev_rampa": [
+    1.72,
+    1.59,
+    1.79
+   ],
+   "izgara_duz": [
+    2.16,
+    2.09,
+    2.28
+   ],
+   "izgara_rampa": [
+    1.58,
+    1.51,
+    1.7
+   ],
+   "motor_rampa5_025": 0.87
+  },
+  {
+   "taban": "yeni-500",
+   "onlem": "yok",
+   "kutle_g": 25291.0,
+   "am": [
+    -0.2,
+    554.2,
+    -11.4
+   ],
+   "ev_duz": [
+    2.32,
+    2.05,
+    2.43
+   ],
+   "ev_rampa": [
+    1.74,
+    1.47,
+    1.85
+   ],
+   "izgara_duz": [
+    2.19,
+    1.97,
+    2.34
+   ],
+   "izgara_rampa": [
+    1.61,
+    1.39,
+    1.77
+   ],
+   "motor_rampa5_025": 0.894
+  },
+  {
+   "taban": "yeni-500",
+   "onlem": "akü 75 mm öne",
+   "kutle_g": 25291.0,
+   "am": [
+    -0.2,
+    554.2,
+    -3.1
+   ],
+   "ev_duz": [
+    2.22,
+    2.15,
+    2.43
+   ],
+   "ev_rampa": [
+    1.64,
+    1.57,
+    1.85
+   ],
+   "izgara_duz": [
+    2.09,
+    2.07,
+    2.34
+   ],
+   "izgara_rampa": [
+    1.51,
+    1.49,
+    1.77
+   ],
+   "motor_rampa5_025": 0.894
+  },
+  {
+   "taban": "yeni-500",
+   "onlem": "akü 100 mm öne",
+   "kutle_g": 25291.0,
+   "am": [
+    -0.2,
+    554.2,
+    -0.3
+   ],
+   "ev_duz": [
+    2.19,
+    2.18,
+    2.43
+   ],
+   "ev_rampa": [
+    1.61,
+    1.6,
+    1.85
+   ],
+   "izgara_duz": [
+    2.06,
+    2.1,
+    2.34
+   ],
+   "izgara_rampa": [
+    1.48,
+    1.52,
+    1.77
+   ],
+   "motor_rampa5_025": 0.894
+  },
+  {
+   "taban": "yeni-500",
+   "onlem": "1,5 kg balast ön-alt (y 60, z +150)",
+   "kutle_g": 26791.0,
+   "am": [
+    -0.2,
+    526.5,
+    -2.4
+   ],
+   "ev_duz": [
+    2.33,
+    2.27,
+    2.56
+   ],
+   "ev_rampa": [
+    1.75,
+    1.69,
+    1.98
+   ],
+   "izgara_duz": [
+    2.2,
+    2.19,
+    2.47
+   ],
+   "izgara_rampa": [
+    1.62,
+    1.61,
+    1.89
+   ],
+   "motor_rampa5_025": 0.947
+  },
+  {
+   "taban": "yeni-500",
+   "onlem": "Nextion kaldırılır (−535 g)",
+   "kutle_g": 24756.0,
+   "am": [
+    -0.2,
+    539.1,
+    -13.6
+   ],
+   "ev_duz": [
+    2.41,
+    2.08,
+    2.5
+   ],
+   "ev_rampa": [
+    1.83,
+    1.5,
+    1.92
+   ],
+   "izgara_duz": [
+    2.27,
+    2.0,
+    2.41
+   ],
+   "izgara_rampa": [
+    1.69,
+    1.42,
+    1.83
+   ],
+   "motor_rampa5_025": 0.875
+  },
+  {
+   "taban": "yeni-500",
+   "onlem": "akü 75 mm öne + Nextion kaldırılır",
+   "kutle_g": 24756.0,
+   "am": [
+    -0.2,
+    539.1,
+    -5.1
+   ],
+   "ev_duz": [
+    2.31,
+    2.18,
+    2.5
+   ],
+   "ev_rampa": [
+    1.73,
+    1.6,
+    1.92
+   ],
+   "izgara_duz": [
+    2.17,
+    2.1,
+    2.41
+   ],
+   "izgara_rampa": [
+    1.59,
+    1.52,
+    1.83
+   ],
+   "motor_rampa5_025": 0.875
+  },
+  {
+   "taban": "yeni-520",
+   "onlem": "yok",
+   "kutle_g": 25435.0,
+   "am": [
+    -0.2,
+    551.8,
+    -11.3
+   ],
+   "ev_duz": [
+    2.33,
+    2.06,
+    2.56
+   ],
+   "ev_rampa": [
+    1.75,
+    1.48,
+    1.98
+   ],
+   "izgara_duz": [
+    2.2,
+    1.98,
+    2.47
+   ],
+   "izgara_rampa": [
+    1.62,
+    1.4,
+    1.89
+   ],
+   "motor_rampa5_025": 0.899
+  },
+  {
+   "taban": "yeni-520",
+   "onlem": "akü 75 mm öne",
+   "kutle_g": 25435.0,
+   "am": [
+    -0.2,
+    551.8,
+    -3.1
+   ],
+   "ev_duz": [
+    2.23,
+    2.16,
+    2.56
+   ],
+   "ev_rampa": [
+    1.65,
+    1.58,
+    1.98
+   ],
+   "izgara_duz": [
+    2.1,
+    2.08,
+    2.47
+   ],
+   "izgara_rampa": [
+    1.52,
+    1.5,
+    1.89
+   ],
+   "motor_rampa5_025": 0.899
+  },
+  {
+   "taban": "yeni-520",
+   "onlem": "akü 100 mm öne",
+   "kutle_g": 25435.0,
+   "am": [
+    -0.2,
+    551.8,
+    -0.3
+   ],
+   "ev_duz": [
+    2.2,
+    2.19,
+    2.56
+   ],
+   "ev_rampa": [
+    1.62,
+    1.61,
+    1.98
+   ],
+   "izgara_duz": [
+    2.07,
+    2.11,
+    2.47
+   ],
+   "izgara_rampa": [
+    1.49,
+    1.53,
+    1.89
+   ],
+   "motor_rampa5_025": 0.899
+  },
+  {
+   "taban": "yeni-520",
+   "onlem": "1,5 kg balast ön-alt (y 60, z +150)",
+   "kutle_g": 26935.0,
+   "am": [
+    -0.2,
+    524.4,
+    -2.3
+   ],
+   "ev_duz": [
+    2.34,
+    2.28,
+    2.69
+   ],
+   "ev_rampa": [
+    1.76,
+    1.7,
+    2.11
+   ],
+   "izgara_duz": [
+    2.21,
+    2.2,
+    2.6
+   ],
+   "izgara_rampa": [
+    1.63,
+    1.62,
+    2.02
+   ],
+   "motor_rampa5_025": 0.952
+  },
+  {
+   "taban": "yeni-520",
+   "onlem": "Nextion kaldırılır (−535 g)",
+   "kutle_g": 24900.0,
+   "am": [
+    -0.2,
+    536.7,
+    -13.5
+   ],
+   "ev_duz": [
+    2.42,
+    2.09,
+    2.63
+   ],
+   "ev_rampa": [
+    1.84,
+    1.51,
+    2.05
+   ],
+   "izgara_duz": [
+    2.28,
+    2.01,
+    2.54
+   ],
+   "izgara_rampa": [
+    1.7,
+    1.43,
+    1.96
+   ],
+   "motor_rampa5_025": 0.88
+  },
+  {
+   "taban": "yeni-520",
+   "onlem": "akü 75 mm öne + Nextion kaldırılır",
+   "kutle_g": 24900.0,
+   "am": [
+    -0.2,
+    536.7,
+    -5.1
+   ],
+   "ev_duz": [
+    2.32,
+    2.19,
+    2.63
+   ],
+   "ev_rampa": [
+    1.74,
+    1.61,
+    2.05
+   ],
+   "izgara_duz": [
+    2.18,
+    2.11,
+    2.54
+   ],
+   "izgara_rampa": [
+    1.6,
+    1.53,
+    1.96
+   ],
+   "motor_rampa5_025": 0.88
+  }
+ ],
+ "servo": {
+  "eski-444": {
+   "kol": [
+    {
+     "eklem": "S1 (omuz öne-arka)",
+     "servo": "DS3218MG",
+     "stall_kgcm": 20.0,
+     "yuksuz_kgcm": 8.14,
+     "yuksuz_poz": [
+      90,
+      5,
+      0,
+      0
+     ],
+     "yuksuz_pay": 2.46,
+     "yuklu_kgcm": 24.35,
+     "yuklu_poz": [
+      90,
+      5,
+      0,
+      0
+     ],
+     "yuklu_pay": 0.82,
+     "I_kgm2": 0.01741,
+     "ivme_kgcm": 4.65,
+     "toplam_kgcm": 12.78,
+     "toplam_pay": 1.56,
+     "izinli_yuk_2x_g": 58.0
+    },
+    {
+     "eklem": "S2 (omuz yana açma)",
+     "servo": "DS3218MG",
+     "stall_kgcm": 20.0,
+     "yuksuz_kgcm": 8.32,
+     "yuksuz_poz": [
+      0,
+      90,
+      0,
+      -90
+     ],
+     "yuksuz_pay": 2.4,
+     "yuklu_kgcm": 24.6,
+     "yuklu_poz": [
+      0,
+      90,
+      0,
+      -90
+     ],
+     "yuklu_pay": 0.81,
+     "I_kgm2": 0.01754,
+     "ivme_kgcm": 4.68,
+     "toplam_kgcm": 13.0,
+     "toplam_pay": 1.54,
+     "izinli_yuk_2x_g": 52.0
+    },
+    {
+     "eklem": "Dirsek",
+     "servo": "MG996R",
+     "stall_kgcm": 9.4,
+     "yuksuz_kgcm": 1.54,
+     "yuksuz_poz": [
+      90,
+      20,
+      0,
+      90
+     ],
+     "yuksuz_pay": 6.11,
+     "yuklu_kgcm": 9.16,
+     "yuklu_poz": [
+      90,
+      20,
+      0,
+      90
+     ],
+     "yuklu_pay": 1.03,
+     "I_kgm2": 0.00149,
+     "ivme_kgcm": 0.4,
+     "toplam_kgcm": 1.94,
+     "toplam_pay": 4.85,
+     "izinli_yuk_2x_g": 207.0
+    },
+    {
+     "eklem": "Bilek",
+     "servo": "MG996R",
+     "stall_kgcm": 9.4,
+     "yuksuz_kgcm": 0.02,
+     "yuksuz_poz": [
+      75,
+      50,
+      10,
+      0
+     ],
+     "yuksuz_pay": 462.91,
+     "yuklu_kgcm": 0.67,
+     "yuklu_poz": [
+      85,
+      5,
+      5,
+      0
+     ],
+     "yuklu_pay": 14.03,
+     "I_kgm2": 2e-05,
+     "ivme_kgcm": 0.0,
+     "toplam_kgcm": 0.03,
+     "toplam_pay": 373.94,
+     "izinli_yuk_2x_g": 3600.0
+    }
+   ],
+   "kafa": {
+    "tilt": {
+     "kutle_g": 938.8,
+     "am_eksen_mm": 55.19,
+     "yercekimi_kgcm": 2.62,
+     "yercekimi_th": 30,
+     "I_kgm2": 0.00769,
+     "ivme_kgcm": 2.05,
+     "toplam_kgcm": 4.67,
+     "stall_kgcm": 9.4,
+     "pay": 2.01,
+     "aralik": [
+      -25.0,
+      30.0
+     ]
+    },
+    "pan": {
+     "kutle_g": 1134.7,
+     "am_eksen_mm": 22.6,
+     "I_kgm2": {
+      "-25.0": 0.00646,
+      "0.0": 0.00699,
+      "30.0": 0.00876
+     },
+     "ivme_kgcm": 2.34,
+     "rulman_kgcm": 0.02,
+     "kablo_kgcm": 0.31,
+     "toplam_kgcm": 2.66,
+     "stall_kgcm": 9.4,
+     "pay": 3.53,
+     "rulman_eksenel_N": 11.1,
+     "rulman_radyal_N": 22.9
+    }
+   }
+  },
+  "yeni-444": {
+   "kol": [
+    {
+     "eklem": "S1 (omuz öne-arka)",
+     "servo": "DS3218MG",
+     "stall_kgcm": 20.0,
+     "yuksuz_kgcm": 9.87,
+     "yuksuz_poz": [
+      90,
+      5,
+      0,
+      0
+     ],
+     "yuksuz_pay": 2.03,
+     "yuklu_kgcm": 28.53,
+     "yuklu_poz": [
+      90,
+      5,
+      0,
+      0
+     ],
+     "yuklu_pay": 0.7,
+     "I_kgm2": 0.02433,
+     "ivme_kgcm": 6.49,
+     "toplam_kgcm": 16.37,
+     "toplam_pay": 1.22,
+     "izinli_yuk_2x_g": 3.0
+    },
+    {
+     "eklem": "S2 (omuz yana açma)",
+     "servo": "DS3218MG",
+     "stall_kgcm": 20.0,
+     "yuksuz_kgcm": 10.07,
+     "yuksuz_poz": [
+      0,
+      90,
+      0,
+      -90
+     ],
+     "yuksuz_pay": 1.99,
+     "yuklu_kgcm": 28.79,
+     "yuklu_poz": [
+      0,
+      90,
+      0,
+      -90
+     ],
+     "yuklu_pay": 0.69,
+     "I_kgm2": 0.02453,
+     "ivme_kgcm": 6.55,
+     "toplam_kgcm": 16.61,
+     "toplam_pay": 1.2,
+     "izinli_yuk_2x_g": 0.0
+    },
+    {
+     "eklem": "Dirsek",
+     "servo": "MG996R",
+     "stall_kgcm": 9.4,
+     "yuksuz_kgcm": 1.77,
+     "yuksuz_poz": [
+      90,
+      5,
+      0,
+      90
+     ],
+     "yuksuz_pay": 5.32,
+     "yuklu_kgcm": 10.34,
+     "yuklu_poz": [
+      90,
+      5,
+      0,
+      -90
+     ],
+     "yuklu_pay": 0.91,
+     "I_kgm2": 0.00191,
+     "ivme_kgcm": 0.51,
+     "toplam_kgcm": 2.27,
+     "toplam_pay": 4.13,
+     "izinli_yuk_2x_g": 171.0
+    },
+    {
+     "eklem": "Bilek",
+     "servo": "MG996R",
+     "stall_kgcm": 9.4,
+     "yuksuz_kgcm": 0.02,
+     "yuksuz_poz": [
+      75,
+      50,
+      10,
+      0
+     ],
+     "yuksuz_pay": 462.91,
+     "yuklu_kgcm": 0.67,
+     "yuklu_poz": [
+      85,
+      5,
+      5,
+      0
+     ],
+     "yuklu_pay": 14.03,
+     "I_kgm2": 2e-05,
+     "ivme_kgcm": 0.01,
+     "toplam_kgcm": 0.03,
+     "toplam_pay": 365.56,
+     "izinli_yuk_2x_g": 3600.0
+    }
+   ],
+   "kafa": {
+    "tilt": {
+     "kutle_g": 1456.7,
+     "am_eksen_mm": 1.08,
+     "yercekimi_kgcm": 0.06,
+     "yercekimi_th": -15,
+     "I_kgm2": 0.00892,
+     "ivme_kgcm": 2.38,
+     "toplam_kgcm": 2.44,
+     "stall_kgcm": 9.4,
+     "pay": 3.85,
+     "aralik": [
+      -15.0,
+      15.0
+     ]
+    },
+    "pan": {
+     "kutle_g": 1729.0,
+     "am_eksen_mm": 22.1,
+     "I_kgm2": {
+      "-15.0": 0.01474,
+      "0.0": 0.01436,
+      "15.0": 0.01425
+     },
+     "ivme_kgcm": 3.93,
+     "rulman_kgcm": 0.03,
+     "kablo_kgcm": 0.31,
+     "toplam_kgcm": 4.27,
+     "stall_kgcm": 9.4,
+     "pay": 2.2,
+     "rulman_eksenel_N": 17.0,
+     "rulman_radyal_N": 34.0
+    }
+   }
+  }
+ },
+ "kol_orani": {
+  "varyant": [
+   {
+    "oran": 1.0,
+    "kol_boy_mm": 325.5,
+    "el_ucu_y": 630.0,
+    "tup_ek_mm": 0.0,
+    "el_ek_mm": 0.0,
+    "servo": [
+     {
+      "eklem": "S1 (omuz öne-arka)",
+      "servo": "DS3218MG",
+      "stall_kgcm": 20.0,
+      "yuksuz_kgcm": 8.14,
+      "yuksuz_poz": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "yuksuz_pay": 2.46,
+      "yuklu_kgcm": 24.35,
+      "yuklu_poz": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "yuklu_pay": 0.82,
+      "I_kgm2": 0.01741,
+      "ivme_kgcm": 4.65,
+      "toplam_kgcm": 12.78,
+      "toplam_pay": 1.56,
+      "izinli_yuk_2x_g": 58.0
+     },
+     {
+      "eklem": "S2 (omuz yana açma)",
+      "servo": "DS3218MG",
+      "stall_kgcm": 20.0,
+      "yuksuz_kgcm": 8.32,
+      "yuksuz_poz": [
+       0,
+       90,
+       0,
+       -90
+      ],
+      "yuksuz_pay": 2.4,
+      "yuklu_kgcm": 24.6,
+      "yuklu_poz": [
+       0,
+       90,
+       0,
+       -90
+      ],
+      "yuklu_pay": 0.81,
+      "I_kgm2": 0.01754,
+      "ivme_kgcm": 4.68,
+      "toplam_kgcm": 13.0,
+      "toplam_pay": 1.54,
+      "izinli_yuk_2x_g": 52.0
+     },
+     {
+      "eklem": "Dirsek",
+      "servo": "MG996R",
+      "stall_kgcm": 9.4,
+      "yuksuz_kgcm": 1.54,
+      "yuksuz_poz": [
+       90,
+       20,
+       0,
+       90
+      ],
+      "yuksuz_pay": 6.11,
+      "yuklu_kgcm": 9.16,
+      "yuklu_poz": [
+       90,
+       20,
+       0,
+       90
+      ],
+      "yuklu_pay": 1.03,
+      "I_kgm2": 0.00149,
+      "ivme_kgcm": 0.4,
+      "toplam_kgcm": 1.94,
+      "toplam_pay": 4.85,
+      "izinli_yuk_2x_g": 207.0
+     },
+     {
+      "eklem": "Bilek",
+      "servo": "MG996R",
+      "stall_kgcm": 9.4,
+      "yuksuz_kgcm": 0.02,
+      "yuksuz_poz": [
+       75,
+       50,
+       10,
+       0
+      ],
+      "yuksuz_pay": 462.91,
+      "yuklu_kgcm": 0.67,
+      "yuklu_poz": [
+       85,
+       5,
+       5,
+       0
+      ],
+      "yuklu_pay": 14.03,
+      "I_kgm2": 2e-05,
+      "ivme_kgcm": 0.0,
+      "toplam_kgcm": 0.03,
+      "toplam_pay": 373.94,
+      "izinli_yuk_2x_g": 3600.0
+     }
+    ],
+    "devrilme": {},
+    "kol_kutle_ek_g": 0.0
+   },
+   {
+    "oran": 1.15,
+    "kol_boy_mm": 374.5,
+    "el_ucu_y": 1016.0,
+    "tup_ek_mm": -0.1,
+    "el_ek_mm": -0.1,
+    "servo": [
+     {
+      "eklem": "S1 (omuz öne-arka)",
+      "servo": "DS3218MG",
+      "stall_kgcm": 20.0,
+      "yuksuz_kgcm": 9.87,
+      "yuksuz_poz": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "yuksuz_pay": 2.03,
+      "yuklu_kgcm": 28.53,
+      "yuklu_poz": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "yuklu_pay": 0.7,
+      "I_kgm2": 0.02433,
+      "ivme_kgcm": 6.49,
+      "toplam_kgcm": 16.37,
+      "toplam_pay": 1.22,
+      "izinli_yuk_2x_g": 3.0
+     },
+     {
+      "eklem": "S2 (omuz yana açma)",
+      "servo": "DS3218MG",
+      "stall_kgcm": 20.0,
+      "yuksuz_kgcm": 10.07,
+      "yuksuz_poz": [
+       0,
+       90,
+       0,
+       -90
+      ],
+      "yuksuz_pay": 1.99,
+      "yuklu_kgcm": 28.79,
+      "yuklu_poz": [
+       0,
+       90,
+       0,
+       -90
+      ],
+      "yuklu_pay": 0.69,
+      "I_kgm2": 0.02453,
+      "ivme_kgcm": 6.55,
+      "toplam_kgcm": 16.61,
+      "toplam_pay": 1.2,
+      "izinli_yuk_2x_g": 0.0
+     },
+     {
+      "eklem": "Dirsek",
+      "servo": "MG996R",
+      "stall_kgcm": 9.4,
+      "yuksuz_kgcm": 1.77,
+      "yuksuz_poz": [
+       90,
+       5,
+       0,
+       90
+      ],
+      "yuksuz_pay": 5.32,
+      "yuklu_kgcm": 10.34,
+      "yuklu_poz": [
+       90,
+       5,
+       0,
+       -90
+      ],
+      "yuklu_pay": 0.91,
+      "I_kgm2": 0.00191,
+      "ivme_kgcm": 0.51,
+      "toplam_kgcm": 2.27,
+      "toplam_pay": 4.13,
+      "izinli_yuk_2x_g": 171.0
+     },
+     {
+      "eklem": "Bilek",
+      "servo": "MG996R",
+      "stall_kgcm": 9.4,
+      "yuksuz_kgcm": 0.02,
+      "yuksuz_poz": [
+       75,
+       50,
+       10,
+       0
+      ],
+      "yuksuz_pay": 462.91,
+      "yuklu_kgcm": 0.67,
+      "yuklu_poz": [
+       85,
+       5,
+       5,
+       0
+      ],
+      "yuklu_pay": 14.03,
+      "I_kgm2": 2e-05,
+      "ivme_kgcm": 0.01,
+      "toplam_kgcm": 0.03,
+      "toplam_pay": 365.56,
+      "izinli_yuk_2x_g": 3600.0
+     }
+    ],
+    "devrilme": {
+     "yeni-444": {
+      "ev": {
+       "ileri": 3.44,
+       "geri": 3.04,
+       "yan": 3.11,
+       "pay_ileri": 2.29,
+       "pay_geri": 2.02,
+       "pay_yan": 2.08,
+       "egim_ileri": 19.3,
+       "egim_geri": 17.2,
+       "egim_yan": 17.6,
+       "dF": 196.6,
+       "dR": 173.4,
+       "dS": 177.9,
+       "h": 560.4
+      },
+      "one": {
+       "ileri": 3.25,
+       "geri": 3.13,
+       "yan": 3.07,
+       "pay_ileri": 2.17,
+       "pay_geri": 2.09,
+       "pay_yan": 2.05,
+       "egim_ileri": 18.4,
+       "egim_geri": 17.7,
+       "egim_yan": 17.4,
+       "dF": 188.5,
+       "dR": 181.5,
+       "dS": 177.9,
+       "h": 568.3
+      },
+      "one_rampa": {
+       "ileri": 2.39,
+       "geri": 2.27,
+       "yan": 2.2,
+       "pay_ileri": 1.59,
+       "pay_geri": 1.51,
+       "pay_yan": 1.47,
+       "egim_ileri": 18.4,
+       "egim_geri": 17.7,
+       "egim_yan": 17.4,
+       "dF": 188.5,
+       "dR": 181.5,
+       "dS": 177.9,
+       "h": 568.3
+      },
+      "one_yuk": {
+       "ileri": 2.85,
+       "geri": 3.2,
+       "yan": 2.91,
+       "pay_ileri": 1.9,
+       "pay_geri": 2.14,
+       "pay_yan": 1.94,
+       "egim_ileri": 16.2,
+       "egim_geri": 18.1,
+       "egim_yan": 16.5,
+       "dF": 174.0,
+       "dR": 196.0,
+       "dS": 177.9,
+       "h": 599.9
+      },
+      "en_kucuk_duz": 1.95,
+      "en_kucuk_rampa": 1.37,
+      "izgara_duz": 1.95,
+      "izgara_rampa": 1.37,
+      "kutle_g": 24918.9,
+      "am_y": 560.4
+     },
+     "yeni-520": {
+      "ev": {
+       "ileri": 3.49,
+       "geri": 3.09,
+       "yan": 3.84,
+       "pay_ileri": 2.33,
+       "pay_geri": 2.06,
+       "pay_yan": 2.56,
+       "egim_ileri": 19.6,
+       "egim_geri": 17.5,
+       "egim_yan": 21.4,
+       "dF": 196.3,
+       "dR": 173.7,
+       "dS": 215.8,
+       "h": 551.8
+      },
+      "one": {
+       "ileri": 3.3,
+       "geri": 3.18,
+       "yan": 3.78,
+       "pay_ileri": 2.2,
+       "pay_geri": 2.12,
+       "pay_yan": 2.52,
+       "egim_ileri": 18.6,
+       "egim_geri": 18.0,
+       "egim_yan": 21.1,
+       "dF": 188.5,
+       "dR": 181.5,
+       "dS": 215.8,
+       "h": 559.5
+      },
+      "one_rampa": {
+       "ileri": 2.44,
+       "geri": 2.32,
+       "yan": 2.91,
+       "pay_ileri": 1.62,
+       "pay_geri": 1.54,
+       "pay_yan": 1.94,
+       "egim_ileri": 18.6,
+       "egim_geri": 18.0,
+       "egim_yan": 21.1,
+       "dF": 188.5,
+       "dR": 181.5,
+       "dS": 215.8,
+       "h": 559.5
+      },
+      "one_yuk": {
+       "ileri": 2.89,
+       "geri": 3.25,
+       "yan": 3.58,
+       "pay_ileri": 1.93,
+       "pay_geri": 2.17,
+       "pay_yan": 2.39,
+       "egim_ileri": 16.4,
+       "egim_geri": 18.3,
+       "egim_yan": 20.1,
+       "dF": 174.2,
+       "dR": 195.8,
+       "dS": 215.8,
+       "h": 590.9
+      },
+      "en_kucuk_duz": 1.98,
+      "en_kucuk_rampa": 1.41,
+      "izgara_duz": 1.98,
+      "izgara_rampa": 1.4,
+      "kutle_g": 25434.8,
+      "am_y": 551.8
+     }
+    },
+    "kol_kutle_ek_g": 23.3
+   },
+   {
+    "oran": 1.25,
+    "kol_boy_mm": 406.9,
+    "el_ucu_y": 983.0,
+    "tup_ek_mm": 19.8,
+    "el_ek_mm": 12.6,
+    "servo": [
+     {
+      "eklem": "S1 (omuz öne-arka)",
+      "servo": "DS3218MG",
+      "stall_kgcm": 20.0,
+      "yuksuz_kgcm": 11.14,
+      "yuksuz_poz": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "yuksuz_pay": 1.8,
+      "yuklu_kgcm": 31.4,
+      "yuklu_poz": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "yuklu_pay": 0.64,
+      "I_kgm2": 0.02991,
+      "ivme_kgcm": 7.98,
+      "toplam_kgcm": 19.12,
+      "toplam_pay": 1.05,
+      "izinli_yuk_2x_g": 0.0
+     },
+     {
+      "eklem": "S2 (omuz yana açma)",
+      "servo": "DS3218MG",
+      "stall_kgcm": 20.0,
+      "yuksuz_kgcm": 11.33,
+      "yuksuz_poz": [
+       0,
+       90,
+       0,
+       -90
+      ],
+      "yuksuz_pay": 1.76,
+      "yuklu_kgcm": 31.68,
+      "yuklu_poz": [
+       0,
+       90,
+       0,
+       -90
+      ],
+      "yuklu_pay": 0.63,
+      "I_kgm2": 0.03016,
+      "ivme_kgcm": 8.05,
+      "toplam_kgcm": 19.38,
+      "toplam_pay": 1.03,
+      "izinli_yuk_2x_g": 0.0
+     },
+     {
+      "eklem": "Dirsek",
+      "servo": "MG996R",
+      "stall_kgcm": 9.4,
+      "yuksuz_kgcm": 1.97,
+      "yuksuz_poz": [
+       90,
+       50,
+       0,
+       90
+      ],
+      "yuksuz_pay": 4.77,
+      "yuklu_kgcm": 11.17,
+      "yuklu_poz": [
+       90,
+       50,
+       0,
+       90
+      ],
+      "yuklu_pay": 0.84,
+      "I_kgm2": 0.00233,
+      "ivme_kgcm": 0.62,
+      "toplam_kgcm": 2.59,
+      "toplam_pay": 3.63,
+      "izinli_yuk_2x_g": 148.0
+     },
+     {
+      "eklem": "Bilek",
+      "servo": "MG996R",
+      "stall_kgcm": 9.4,
+      "yuksuz_kgcm": 0.02,
+      "yuksuz_poz": [
+       75,
+       50,
+       10,
+       0
+      ],
+      "yuksuz_pay": 425.94,
+      "yuklu_kgcm": 0.67,
+      "yuklu_poz": [
+       85,
+       5,
+       5,
+       0
+      ],
+      "yuklu_pay": 14.0,
+      "I_kgm2": 2e-05,
+      "ivme_kgcm": 0.01,
+      "toplam_kgcm": 0.03,
+      "toplam_pay": 341.97,
+      "izinli_yuk_2x_g": 3599.0
+     }
+    ],
+    "devrilme": {
+     "yeni-444": {
+      "ev": {
+       "ileri": 3.44,
+       "geri": 3.04,
+       "yan": 3.11,
+       "pay_ileri": 2.29,
+       "pay_geri": 2.02,
+       "pay_yan": 2.08,
+       "egim_ileri": 19.3,
+       "egim_geri": 17.2,
+       "egim_yan": 17.6,
+       "dF": 196.5,
+       "dR": 173.5,
+       "dS": 177.9,
+       "h": 560.4
+      },
+      "one": {
+       "ileri": 3.23,
+       "geri": 3.14,
+       "yan": 3.07,
+       "pay_ileri": 2.15,
+       "pay_geri": 2.1,
+       "pay_yan": 2.04,
+       "egim_ileri": 18.2,
+       "egim_geri": 17.8,
+       "egim_yan": 17.4,
+       "dF": 187.5,
+       "dR": 182.5,
+       "dS": 177.9,
+       "h": 569.3
+      },
+      "one_rampa": {
+       "ileri": 2.36,
+       "geri": 2.28,
+       "yan": 2.2,
+       "pay_ileri": 1.58,
+       "pay_geri": 1.52,
+       "pay_yan": 1.47,
+       "egim_ileri": 18.2,
+       "egim_geri": 17.8,
+       "egim_yan": 17.4,
+       "dF": 187.5,
+       "dR": 182.5,
+       "dS": 177.9,
+       "h": 569.3
+      },
+      "one_yuk": {
+       "ileri": 2.8,
+       "geri": 3.24,
+       "yan": 2.9,
+       "pay_ileri": 1.87,
+       "pay_geri": 2.16,
+       "pay_yan": 1.94,
+       "egim_ileri": 16.0,
+       "egim_geri": 18.3,
+       "egim_yan": 16.5,
+       "dF": 171.8,
+       "dR": 198.2,
+       "dS": 177.9,
+       "h": 600.9
+      },
+      "en_kucuk_duz": 1.94,
+      "en_kucuk_rampa": 1.36,
+      "izgara_duz": 1.94,
+      "izgara_rampa": 1.36,
+      "kutle_g": 24949.9,
+      "am_y": 560.4
+     },
+     "yeni-520": {
+      "ev": {
+       "ileri": 3.49,
+       "geri": 3.09,
+       "yan": 3.84,
+       "pay_ileri": 2.33,
+       "pay_geri": 2.06,
+       "pay_yan": 2.56,
+       "egim_ileri": 19.6,
+       "egim_geri": 17.5,
+       "egim_yan": 21.4,
+       "dF": 196.3,
+       "dR": 173.7,
+       "dS": 215.8,
+       "h": 551.8
+      },
+      "one": {
+       "ileri": 3.28,
+       "geri": 3.19,
+       "yan": 3.78,
+       "pay_ileri": 2.19,
+       "pay_geri": 2.13,
+       "pay_yan": 2.52,
+       "egim_ileri": 18.5,
+       "egim_geri": 18.0,
+       "egim_yan": 21.1,
+       "dF": 187.5,
+       "dR": 182.5,
+       "dS": 215.8,
+       "h": 560.6
+      },
+      "one_rampa": {
+       "ileri": 2.41,
+       "geri": 2.33,
+       "yan": 2.91,
+       "pay_ileri": 1.61,
+       "pay_geri": 1.55,
+       "pay_yan": 1.94,
+       "egim_ileri": 18.5,
+       "egim_geri": 18.0,
+       "egim_yan": 21.1,
+       "dF": 187.5,
+       "dR": 182.5,
+       "dS": 215.8,
+       "h": 560.6
+      },
+      "one_yuk": {
+       "ileri": 2.85,
+       "geri": 3.28,
+       "yan": 3.58,
+       "pay_ileri": 1.9,
+       "pay_geri": 2.19,
+       "pay_yan": 2.38,
+       "egim_ileri": 16.2,
+       "egim_geri": 18.5,
+       "egim_yan": 20.0,
+       "dF": 172.1,
+       "dR": 197.9,
+       "dS": 215.8,
+       "h": 591.8
+      },
+      "en_kucuk_duz": 1.98,
+      "en_kucuk_rampa": 1.4,
+      "izgara_duz": 1.97,
+      "izgara_rampa": 1.39,
+      "kutle_g": 25465.7,
+      "am_y": 551.8
+     }
+    },
+    "kol_kutle_ek_g": 38.9
+   },
+   {
+    "oran": 1.36,
+    "kol_boy_mm": 442.7,
+    "el_ucu_y": 947.0,
+    "tup_ek_mm": 41.7,
+    "el_ek_mm": 26.4,
+    "servo": [
+     {
+      "eklem": "S1 (omuz öne-arka)",
+      "servo": "DS3218MG",
+      "stall_kgcm": 20.0,
+      "yuksuz_kgcm": 12.56,
+      "yuksuz_poz": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "yuksuz_pay": 1.59,
+      "yuklu_kgcm": 34.61,
+      "yuklu_poz": [
+       90,
+       5,
+       0,
+       0
+      ],
+      "yuklu_pay": 0.58,
+      "I_kgm2": 0.03665,
+      "ivme_kgcm": 9.78,
+      "toplam_kgcm": 22.34,
+      "toplam_pay": 0.9,
+      "izinli_yuk_2x_g": 0.0
+     },
+     {
+      "eklem": "S2 (omuz yana açma)",
+      "servo": "DS3218MG",
+      "stall_kgcm": 20.0,
+      "yuksuz_kgcm": 12.76,
+      "yuksuz_poz": [
+       0,
+       90,
+       0,
+       -90
+      ],
+      "yuksuz_pay": 1.57,
+      "yuklu_kgcm": 34.9,
+      "yuklu_poz": [
+       0,
+       90,
+       0,
+       -90
+      ],
+      "yuklu_pay": 0.57,
+      "I_kgm2": 0.03695,
+      "ivme_kgcm": 9.86,
+      "toplam_kgcm": 22.63,
+      "toplam_pay": 0.88,
+      "izinli_yuk_2x_g": 0.0
+     },
+     {
+      "eklem": "Dirsek",
+      "servo": "MG996R",
+      "stall_kgcm": 9.4,
+      "yuksuz_kgcm": 2.17,
+      "yuksuz_poz": [
+       90,
+       115,
+       0,
+       -90
+      ],
+      "yuksuz_pay": 4.32,
+      "yuklu_kgcm": 12.07,
+      "yuklu_poz": [
+       90,
+       15,
+       0,
+       90
+      ],
+      "yuklu_pay": 0.78,
+      "I_kgm2": 0.00274,
+      "ivme_kgcm": 0.73,
+      "toplam_kgcm": 2.91,
+      "toplam_pay": 3.23,
+      "izinli_yuk_2x_g": 128.0
+     },
+     {
+      "eklem": "Bilek",
+      "servo": "MG996R",
+      "stall_kgcm": 9.4,
+      "yuksuz_kgcm": 0.02,
+      "yuksuz_poz": [
+       75,
+       50,
+       10,
+       0
+      ],
+      "yuksuz_pay": 391.37,
+      "yuklu_kgcm": 0.67,
+      "yuklu_poz": [
+       85,
+       5,
+       5,
+       0
+      ],
+      "yuklu_pay": 13.96,
+      "I_kgm2": 2e-05,
+      "ivme_kgcm": 0.01,
+      "toplam_kgcm": 0.03,
+      "toplam_pay": 319.2,
+      "izinli_yuk_2x_g": 3597.0
+     }
+    ],
+    "devrilme": {
+     "yeni-444": {
+      "ev": {
+       "ileri": 3.44,
+       "geri": 3.04,
+       "yan": 3.11,
+       "pay_ileri": 2.29,
+       "pay_geri": 2.02,
+       "pay_yan": 2.08,
+       "egim_ileri": 19.3,
+       "egim_geri": 17.2,
+       "egim_yan": 17.6,
+       "dF": 196.5,
+       "dR": 173.5,
+       "dS": 177.9,
+       "h": 560.4
+      },
+      "one": {
+       "ileri": 3.21,
+       "geri": 3.16,
+       "yan": 3.06,
+       "pay_ileri": 2.14,
+       "pay_geri": 2.11,
+       "pay_yan": 2.04,
+       "egim_ileri": 18.1,
+       "egim_geri": 17.8,
+       "egim_yan": 17.3,
+       "dF": 186.4,
+       "dR": 183.6,
+       "dS": 177.9,
+       "h": 570.4
+      },
+      "one_rampa": {
+       "ileri": 2.34,
+       "geri": 2.29,
+       "yan": 2.19,
+       "pay_ileri": 1.56,
+       "pay_geri": 1.53,
+       "pay_yan": 1.46,
+       "egim_ileri": 18.1,
+       "egim_geri": 17.8,
+       "egim_yan": 17.3,
+       "dF": 186.4,
+       "dR": 183.6,
+       "dS": 177.9,
+       "h": 570.4
+      },
+      "one_yuk": {
+       "ileri": 2.76,
+       "geri": 3.27,
+       "yan": 2.9,
+       "pay_ileri": 1.84,
+       "pay_geri": 2.18,
+       "pay_yan": 1.93,
+       "egim_ileri": 15.7,
+       "egim_geri": 18.4,
+       "egim_yan": 16.5,
+       "dF": 169.3,
+       "dR": 200.7,
+       "dS": 177.9,
+       "h": 601.9
+      },
+      "en_kucuk_duz": 1.93,
+      "en_kucuk_rampa": 1.35,
+      "izgara_duz": 1.93,
+      "izgara_rampa": 1.35,
+      "kutle_g": 24984.1,
+      "am_y": 560.4
+     },
+     "yeni-520": {
+      "ev": {
+       "ileri": 3.49,
+       "geri": 3.09,
+       "yan": 3.84,
+       "pay_ileri": 2.33,
+       "pay_geri": 2.06,
+       "pay_yan": 2.56,
+       "egim_ileri": 19.6,
+       "egim_geri": 17.5,
+       "egim_yan": 21.4,
+       "dF": 196.3,
+       "dR": 173.7,
+       "dS": 215.8,
+       "h": 551.8
+      },
+      "one": {
+       "ileri": 3.25,
+       "geri": 3.21,
+       "yan": 3.77,
+       "pay_ileri": 2.17,
+       "pay_geri": 2.14,
+       "pay_yan": 2.51,
+       "egim_ileri": 18.4,
+       "egim_geri": 18.1,
+       "egim_yan": 21.0,
+       "dF": 186.4,
+       "dR": 183.6,
+       "dS": 215.8,
+       "h": 561.7
+      },
+      "one_rampa": {
+       "ileri": 2.39,
+       "geri": 2.34,
+       "yan": 2.9,
+       "pay_ileri": 1.59,
+       "pay_geri": 1.56,
+       "pay_yan": 1.93,
+       "egim_ileri": 18.4,
+       "egim_geri": 18.1,
+       "egim_yan": 21.0,
+       "dF": 186.4,
+       "dR": 183.6,
+       "dS": 215.8,
+       "h": 561.7
+      },
+      "one_yuk": {
+       "ileri": 2.81,
+       "geri": 3.31,
+       "yan": 3.57,
+       "pay_ileri": 1.87,
+       "pay_geri": 2.21,
+       "pay_yan": 2.38,
+       "egim_ileri": 16.0,
+       "egim_geri": 18.7,
+       "egim_yan": 20.0,
+       "dF": 169.7,
+       "dR": 200.3,
+       "dS": 215.8,
+       "h": 592.9
+      },
+      "en_kucuk_duz": 1.97,
+      "en_kucuk_rampa": 1.39,
+      "izgara_duz": 1.96,
+      "izgara_rampa": 1.38,
+      "kutle_g": 25500.0,
+      "am_y": 551.8
+     }
+    },
+    "kol_kutle_ek_g": 56.0
+   }
+  ],
+  "birim_kutle": {
+   "tup_g_mm": 0.403,
+   "yaka_g_mm": 0.597
+  },
+  "not_": "x1,25 / x1,36: x1,15 taslagindan dogrusal (ek boy tup:yaka = 30:19, birim kutleler taslak uzatmalarindan); geometri modellenmedi, tahmini. x1,00 = mevcut 125 cm kolu (omuz 955'te)."
+ }
+}

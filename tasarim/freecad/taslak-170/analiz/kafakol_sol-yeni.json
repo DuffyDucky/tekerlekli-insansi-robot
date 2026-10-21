@@ -1,0 +1,71 @@
+{
+ "robot": "yeni",
+ "taraf": "sol",
+ "kafa_pan": [
+  -90,
+  -75,
+  -60,
+  -45,
+  -30,
+  -15,
+  0,
+  15,
+  30,
+  45,
+  60,
+  75,
+  90
+ ],
+ "kafa_tilt": [
+  -15,
+  -10,
+  -5,
+  0,
+  5,
+  10,
+  15
+ ],
+ "kafa_poz": 91,
+ "kol_alt_poz": 2587,
+ "yakin_oge": 2081,
+ "aday": 47502,
+ "tam_olcum": 563,
+ "sinir_turu": 2,
+ "cakisma_sayisi": 0,
+ "cakisan_tam_cift": 0,
+ "cakismalar": [],
+ "yasak_bolge": null,
+ "en_kucuk": {
+  "bosluk_mm": 17.99,
+  "kol_grup": "El",
+  "kol_poz": [
+   135.0,
+   5.0,
+   105.0,
+   -90.0
+  ],
+  "kol_parca": "El",
+  "kafa_poz": [
+   -15.0,
+   -15.0
+  ],
+  "kafa_parca": "Yuz kabugu (on) sol"
+ },
+ "en_kucuk_cakismasiz": {
+  "bosluk_mm": 17.99,
+  "kol_grup": "El",
+  "kol_poz": [
+   135.0,
+   5.0,
+   105.0,
+   -90.0
+  ],
+  "kol_parca": "El",
+  "kafa_poz": [
+   -15.0,
+   -15.0
+  ],
+  "kafa_parca": "Yuz kabugu (on) sol"
+ },
+ "sure_s": 186.0
+}

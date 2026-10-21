@@ -1,0 +1,76 @@
+{
+ "robot": "eski",
+ "taraf": "sag",
+ "kafa_pan": [
+  -90,
+  -75,
+  -60,
+  -45,
+  -30,
+  -15,
+  0,
+  15,
+  30,
+  45,
+  60,
+  75,
+  90
+ ],
+ "kafa_tilt": [
+  -25,
+  -20,
+  -15,
+  -10,
+  -5,
+  0,
+  5,
+  10,
+  15,
+  20,
+  25,
+  30
+ ],
+ "kafa_poz": 156,
+ "kol_alt_poz": 2587,
+ "yakin_oge": 2732,
+ "aday": 63084,
+ "tam_olcum": 230,
+ "sinir_turu": 2,
+ "cakisma_sayisi": 0,
+ "cakisan_tam_cift": 0,
+ "cakismalar": [],
+ "yasak_bolge": null,
+ "en_kucuk": {
+  "bosluk_mm": 8.3,
+  "kol_grup": "El",
+  "kol_poz": [
+   135.0,
+   5.0,
+   90.0,
+   90.0
+  ],
+  "kol_parca": "El",
+  "kafa_poz": [
+   45.0,
+   30.0
+  ],
+  "kafa_parca": "Yuz kabugu (on)"
+ },
+ "en_kucuk_cakismasiz": {
+  "bosluk_mm": 8.3,
+  "kol_grup": "El",
+  "kol_poz": [
+   135.0,
+   5.0,
+   90.0,
+   90.0
+  ],
+  "kol_parca": "El",
+  "kafa_poz": [
+   45.0,
+   30.0
+  ],
+  "kafa_parca": "Yuz kabugu (on)"
+ },
+ "sure_s": 133.6
+}

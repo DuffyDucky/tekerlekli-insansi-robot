@@ -1,0 +1,2111 @@
+{
+ "dosya": "taslak-170.FCStd",
+ "step": "taslak-170.step",
+ "step_kati": 1052,
+ "parca_sayisi": 1052,
+ "grup_sayisi": 22,
+ "eklem_sayisi": 22,
+ "solve": 0,
+ "ev_pozu_cozucu_sapmasi": 0.0,
+ "gecersiz": [],
+ "coklu_kati": [],
+ "durum": {
+  "ayni": 467,
+  "tasindi": 419,
+  "degisti": 11,
+  "yeni": 155
+ },
+ "baski": [
+  {
+   "ad": "Omuz yuvasi",
+   "modul": "omuz_sag",
+   "durum": "tasindi",
+   "olcu": [
+    76.0,
+    67.0,
+    76.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    1,
+    0,
+    0
+   ],
+   "yon": "bilinmiyor: en kucuk sigan yon",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 65.6,
+   "kutle_g": 75.0,
+   "filament_g": 78.7,
+   "sure_saat": 1.64
+  },
+  {
+   "ad": "Rulman kapagi",
+   "modul": "omuz_sag",
+   "durum": "tasindi",
+   "olcu": [
+    58.0,
+    58.0,
+    60.0
+   ],
+   "tabla_aci": 45,
+   "yukari": [
+    0,
+    1,
+    0
+   ],
+   "yon": "bilinmiyor: en kucuk sigan yon",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 14.4,
+   "kutle_g": 16.4,
+   "filament_g": 17.3,
+   "sure_saat": 0.36
+  },
+  {
+   "ad": "Omuz gobegi",
+   "modul": "omuz_sag",
+   "durum": "tasindi",
+   "olcu": [
+    66.0,
+    51.0,
+    49.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    1,
+    0,
+    0
+   ],
+   "yon": "bilinmiyor: en kucuk sigan yon",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 51.9,
+   "kutle_g": 59.3,
+   "filament_g": 62.3,
+   "sure_saat": 1.3
+  },
+  {
+   "ad": "S1 kablo tamburu",
+   "modul": "omuz_sag",
+   "durum": "tasindi",
+   "olcu": [
+    66.6,
+    66.6,
+    70.6
+   ],
+   "tabla_aci": 45,
+   "yukari": [
+    0,
+    0,
+    1
+   ],
+   "yon": "bilinmiyor: en kucuk sigan yon",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 4.7,
+   "kutle_g": 4.8,
+   "filament_g": 5.0,
+   "sure_saat": 0.1
+  },
+  {
+   "ad": "Kol catali",
+   "modul": "omuz_sag",
+   "durum": "tasindi",
+   "olcu": [
+    76.0,
+    63.5,
+    56.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    1,
+    0,
+    0
+   ],
+   "yon": "bilinmiyor: en kucuk sigan yon",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 81.9,
+   "kutle_g": 93.6,
+   "filament_g": 98.3,
+   "sure_saat": 2.05
+  },
+  {
+   "ad": "Ust kol tupu",
+   "modul": "omuz_sag",
+   "durum": "degisti",
+   "olcu": [
+    130.0,
+    56.0,
+    56.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    1,
+    0,
+    0
+   ],
+   "yon": "bilinmiyor: en kucuk sigan yon",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 51.0,
+   "kutle_g": 51.8,
+   "filament_g": 54.4,
+   "sure_saat": 1.13
+  },
+  {
+   "ad": "Omuz yuvasi",
+   "modul": "omuz_sol",
+   "durum": "tasindi",
+   "olcu": [
+    76.0,
+    67.0,
+    76.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    1,
+    0,
+    0
+   ],
+   "yon": "bilinmiyor: en kucuk sigan yon",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 65.6,
+   "kutle_g": 75.0,
+   "filament_g": 78.7,
+   "sure_saat": 1.64
+  },
+  {
+   "ad": "Rulman kapagi",
+   "modul": "omuz_sol",
+   "durum": "tasindi",
+   "olcu": [
+    58.0,
+    58.0,
+    60.0
+   ],
+   "tabla_aci": 45,
+   "yukari": [
+    0,
+    1,
+    0
+   ],
+   "yon": "bilinmiyor: en kucuk sigan yon",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 14.4,
+   "kutle_g": 16.4,
+   "filament_g": 17.3,
+   "sure_saat": 0.36
+  },
+  {
+   "ad": "Omuz gobegi",
+   "modul": "omuz_sol",
+   "durum": "tasindi",
+   "olcu": [
+    66.0,
+    51.0,
+    49.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    1,
+    0,
+    0
+   ],
+   "yon": "bilinmiyor: en kucuk sigan yon",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 51.9,
+   "kutle_g": 59.3,
+   "filament_g": 62.3,
+   "sure_saat": 1.3
+  },
+  {
+   "ad": "S1 kablo tamburu",
+   "modul": "omuz_sol",
+   "durum": "tasindi",
+   "olcu": [
+    66.6,
+    66.6,
+    70.6
+   ],
+   "tabla_aci": 45,
+   "yukari": [
+    0,
+    0,
+    1
+   ],
+   "yon": "bilinmiyor: en kucuk sigan yon",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 4.7,
+   "kutle_g": 4.8,
+   "filament_g": 5.0,
+   "sure_saat": 0.1
+  },
+  {
+   "ad": "Kol catali",
+   "modul": "omuz_sol",
+   "durum": "tasindi",
+   "olcu": [
+    76.0,
+    63.5,
+    56.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    1,
+    0,
+    0
+   ],
+   "yon": "bilinmiyor: en kucuk sigan yon",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 81.9,
+   "kutle_g": 93.6,
+   "filament_g": 98.3,
+   "sure_saat": 2.05
+  },
+  {
+   "ad": "Ust kol tupu",
+   "modul": "omuz_sol",
+   "durum": "degisti",
+   "olcu": [
+    130.0,
+    56.0,
+    56.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    1,
+    0,
+    0
+   ],
+   "yon": "bilinmiyor: en kucuk sigan yon",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 51.0,
+   "kutle_g": 51.8,
+   "filament_g": 54.4,
+   "sure_saat": 1.13
+  },
+  {
+   "ad": "Dirsek catali",
+   "modul": "dirsek_sag",
+   "durum": "tasindi",
+   "olcu": [
+    72.0,
+    70.9,
+    74.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "yon": "ters: pim ve bilezik ucu tablada, kollar yukari",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 86.1,
+   "kutle_g": 87.5,
+   "filament_g": 91.9,
+   "sure_saat": 1.91
+  },
+  {
+   "ad": "On kol govdesi",
+   "modul": "dirsek_sag",
+   "durum": "tasindi",
+   "olcu": [
+    101.1,
+    63.1,
+    33.5
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "yon": "on yuzu tablada, acik arka yukari",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 41.5,
+   "kutle_g": 42.2,
+   "filament_g": 44.3,
+   "sure_saat": 0.92
+  },
+  {
+   "ad": "Bilek flansi",
+   "modul": "dirsek_sag",
+   "durum": "tasindi",
+   "olcu": [
+    28.0,
+    28.0,
+    8.0
+   ],
+   "tabla_aci": 45,
+   "yukari": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "yon": "horn yuzu tablada, havsalar yukari",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 4.0,
+   "kutle_g": 4.0,
+   "filament_g": 4.2,
+   "sure_saat": 0.09
+  },
+  {
+   "ad": "El",
+   "modul": "dirsek_sag",
+   "durum": "degisti",
+   "olcu": [
+    56.2,
+    56.2,
+    84.6
+   ],
+   "tabla_aci": 39,
+   "yukari": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "yon": "ters: parmak ucu ve avuc alti tablada, yaka yukari",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 71.0,
+   "kutle_g": 72.2,
+   "filament_g": 75.8,
+   "sure_saat": 1.58
+  },
+  {
+   "ad": "Dirsek catali",
+   "modul": "dirsek_sol",
+   "durum": "tasindi",
+   "olcu": [
+    72.0,
+    70.9,
+    74.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    -0.0,
+    -1.0,
+    0.0
+   ],
+   "yon": "ters: pim ve bilezik ucu tablada, kollar yukari",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 86.1,
+   "kutle_g": 87.5,
+   "filament_g": 91.9,
+   "sure_saat": 1.91
+  },
+  {
+   "ad": "On kol govdesi",
+   "modul": "dirsek_sol",
+   "durum": "tasindi",
+   "olcu": [
+    101.1,
+    63.1,
+    33.5
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    -0.0,
+    0.0,
+    -1.0
+   ],
+   "yon": "on yuzu tablada, acik arka yukari",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 41.5,
+   "kutle_g": 42.2,
+   "filament_g": 44.3,
+   "sure_saat": 0.92
+  },
+  {
+   "ad": "Bilek flansi",
+   "modul": "dirsek_sol",
+   "durum": "tasindi",
+   "olcu": [
+    28.0,
+    28.0,
+    8.0
+   ],
+   "tabla_aci": 35,
+   "yukari": [
+    -0.0,
+    -1.0,
+    0.0
+   ],
+   "yon": "horn yuzu tablada, havsalar yukari",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 4.0,
+   "kutle_g": 4.0,
+   "filament_g": 4.2,
+   "sure_saat": 0.09
+  },
+  {
+   "ad": "El",
+   "modul": "dirsek_sol",
+   "durum": "degisti",
+   "olcu": [
+    56.2,
+    56.2,
+    84.6
+   ],
+   "tabla_aci": 51,
+   "yukari": [
+    -0.0,
+    1.0,
+    0.0
+   ],
+   "yon": "ters: parmak ucu ve avuc alti tablada, yaka yukari",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 71.0,
+   "kutle_g": 72.2,
+   "filament_g": 75.8,
+   "sure_saat": 1.58
+  },
+  {
+   "ad": "Servo yuvasi",
+   "modul": "kafa",
+   "durum": "tasindi",
+   "olcu": [
+    88.1,
+    88.1,
+    43.0
+   ],
+   "tabla_aci": 45,
+   "yukari": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "yon": "dik: kulak flansi tablada",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 142.2,
+   "kutle_g": 144.5,
+   "filament_g": 151.7,
+   "sure_saat": 3.16
+  },
+  {
+   "ad": "Rulman yuvasi",
+   "modul": "kafa",
+   "durum": "tasindi",
+   "olcu": [
+    67.5,
+    60.0,
+    36.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "yon": "dik: kulaklar tablada, rulman yuvasi yukari",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 25.2,
+   "kutle_g": 25.6,
+   "filament_g": 26.9,
+   "sure_saat": 0.56
+  },
+  {
+   "ad": "Boyun mili",
+   "modul": "kafa",
+   "durum": "tasindi",
+   "olcu": [
+    60.0,
+    60.0,
+    48.1
+   ],
+   "tabla_aci": 35,
+   "yukari": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "yon": "dik: horn diski tablada, flans yukari (45 derece koni)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 38.3,
+   "kutle_g": 38.9,
+   "filament_g": 40.8,
+   "sure_saat": 0.85
+  },
+  {
+   "ad": "Egme catali",
+   "modul": "kafa",
+   "durum": "tasindi",
+   "olcu": [
+    74.5,
+    60.0,
+    49.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "yon": "dik: taban tablada, duvarlar yukari",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 33.3,
+   "kutle_g": 33.8,
+   "filament_g": 35.5,
+   "sure_saat": 0.74
+  },
+  {
+   "ad": "Boyun yukseltme adaptoru",
+   "modul": "kafa",
+   "durum": "yeni",
+   "olcu": [
+    60.0,
+    60.0,
+    58.3
+   ],
+   "tabla_aci": 52,
+   "yukari": [
+    0,
+    1,
+    0
+   ],
+   "yon": "dik: alt flans tablada",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 60.6,
+   "kutle_g": 61.6,
+   "filament_g": 64.7,
+   "sure_saat": 1.35
+  },
+  {
+   "ad": "Yuz kabugu (on) sag",
+   "modul": "kafa",
+   "durum": "yeni",
+   "olcu": [
+    215.0,
+    151.0,
+    37.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "yon": "on yuzu tablada",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 78.0,
+   "kutle_g": 89.1,
+   "filament_g": 93.6,
+   "sure_saat": 1.95
+  },
+  {
+   "ad": "Yuz kabugu (on) sol",
+   "modul": "kafa",
+   "durum": "yeni",
+   "olcu": [
+    215.0,
+    135.0,
+    37.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "yon": "on yuzu tablada",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 72.6,
+   "kutle_g": 83.0,
+   "filament_g": 87.1,
+   "sure_saat": 1.81
+  },
+  {
+   "ad": "Arka kafa kabugu sag",
+   "modul": "kafa",
+   "durum": "yeni",
+   "olcu": [
+    215.0,
+    151.0,
+    106.9
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "yon": "arka yuzu tablada",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 190.9,
+   "kutle_g": 218.2,
+   "filament_g": 229.2,
+   "sure_saat": 4.77
+  },
+  {
+   "ad": "Arka kafa kabugu sol",
+   "modul": "kafa",
+   "durum": "yeni",
+   "olcu": [
+    215.0,
+    135.0,
+    106.9
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "yon": "arka yuzu tablada",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 179.5,
+   "kutle_g": 205.1,
+   "filament_g": 215.4,
+   "sure_saat": 4.49
+  },
+  {
+   "ad": "Kafa iskeleti (10 in)",
+   "modul": "kafa",
+   "durum": "yeni",
+   "olcu": [
+    224.0,
+    114.9,
+    48.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0,
+    -1,
+    0
+   ],
+   "yon": "ters: tabla tablada, yanaklar yukari",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 119.5,
+   "kutle_g": 121.4,
+   "filament_g": 127.5,
+   "sure_saat": 2.66
+  },
+  {
+   "ad": "Ekran tutucu tirnak (ust sol)",
+   "modul": "kafa",
+   "durum": "yeni",
+   "olcu": [
+    17.5,
+    16.0,
+    9.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0,
+    0,
+    1
+   ],
+   "yon": "plaka tablada, dil yukari",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 1.3,
+   "kutle_g": 1.3,
+   "filament_g": 1.4,
+   "sure_saat": 0.03
+  },
+  {
+   "ad": "Ekran tutucu tirnak (alt sol)",
+   "modul": "kafa",
+   "durum": "yeni",
+   "olcu": [
+    17.5,
+    16.0,
+    9.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0,
+    0,
+    1
+   ],
+   "yon": "plaka tablada, dil yukari",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 1.3,
+   "kutle_g": 1.3,
+   "filament_g": 1.4,
+   "sure_saat": 0.03
+  },
+  {
+   "ad": "Ekran tutucu tirnak (ust sag)",
+   "modul": "kafa",
+   "durum": "yeni",
+   "olcu": [
+    17.5,
+    16.0,
+    9.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0,
+    0,
+    1
+   ],
+   "yon": "plaka tablada, dil yukari",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 1.3,
+   "kutle_g": 1.3,
+   "filament_g": 1.4,
+   "sure_saat": 0.03
+  },
+  {
+   "ad": "Ekran tutucu tirnak (alt sag)",
+   "modul": "kafa",
+   "durum": "yeni",
+   "olcu": [
+    17.5,
+    16.0,
+    9.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0,
+    0,
+    1
+   ],
+   "yon": "plaka tablada, dil yukari",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 1.3,
+   "kutle_g": 1.3,
+   "filament_g": 1.4,
+   "sure_saat": 0.03
+  },
+  {
+   "ad": "Govde alt bandi sag",
+   "modul": "kabuk",
+   "durum": "ayni",
+   "olcu": [
+    170.0,
+    137.0,
+    225.5
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "yon": "dik (alt kenari tablada)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 249.4,
+   "kutle_g": 285.0,
+   "filament_g": 299.3,
+   "sure_saat": 6.23
+  },
+  {
+   "ad": "Govde alt bandi sol",
+   "modul": "kabuk",
+   "durum": "ayni",
+   "olcu": [
+    170.0,
+    125.0,
+    225.5
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "yon": "dik (alt kenari tablada)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 233.5,
+   "kutle_g": 266.9,
+   "filament_g": 280.3,
+   "sure_saat": 5.84
+  },
+  {
+   "ad": "Govde orta bandi sag",
+   "modul": "kabuk",
+   "durum": "tasindi",
+   "olcu": [
+    183.0,
+    150.1,
+    227.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "yon": "dik (alt kenari tablada)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 218.2,
+   "kutle_g": 249.4,
+   "filament_g": 261.9,
+   "sure_saat": 5.46
+  },
+  {
+   "ad": "Govde orta bandi sol",
+   "modul": "kabuk",
+   "durum": "tasindi",
+   "olcu": [
+    183.0,
+    138.1,
+    227.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "yon": "dik (alt kenari tablada)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 209.7,
+   "kutle_g": 239.7,
+   "filament_g": 251.7,
+   "sure_saat": 5.24
+  },
+  {
+   "ad": "Gogus bandi sag",
+   "modul": "kabuk",
+   "durum": "tasindi",
+   "olcu": [
+    208.9,
+    163.1,
+    205.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "yon": "dik (alt kenari tablada)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 229.0,
+   "kutle_g": 261.7,
+   "filament_g": 274.8,
+   "sure_saat": 5.72
+  },
+  {
+   "ad": "Gogus bandi sol",
+   "modul": "kabuk",
+   "durum": "tasindi",
+   "olcu": [
+    208.9,
+    151.1,
+    205.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "yon": "dik (alt kenari tablada)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 220.8,
+   "kutle_g": 252.4,
+   "filament_g": 265.0,
+   "sure_saat": 5.52
+  },
+  {
+   "ad": "Omuz bandi sag",
+   "modul": "kabuk",
+   "durum": "tasindi",
+   "olcu": [
+    164.0,
+    162.3,
+    102.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "yon": "ters (ust kapak tablada)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 168.0,
+   "kutle_g": 192.0,
+   "filament_g": 201.6,
+   "sure_saat": 4.2
+  },
+  {
+   "ad": "Omuz bandi sol",
+   "modul": "kabuk",
+   "durum": "tasindi",
+   "olcu": [
+    162.3,
+    152.0,
+    102.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "yon": "ters (ust kapak tablada)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 161.5,
+   "kutle_g": 184.5,
+   "filament_g": 193.8,
+   "sure_saat": 4.04
+  },
+  {
+   "ad": "Arka servis kapagi",
+   "modul": "kabuk",
+   "durum": "tasindi",
+   "olcu": [
+    190.0,
+    160.0,
+    3.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    -0.0,
+    0.014050135250277578,
+    0.9999012919780876
+   ],
+   "yon": "dis yuzu tablada",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 81.7,
+   "kutle_g": 93.3,
+   "filament_g": 98.0,
+   "sure_saat": 2.04
+  },
+  {
+   "ad": "Etek arka sag",
+   "modul": "kabuk",
+   "durum": "ayni",
+   "olcu": [
+    233.8,
+    190.1,
+    227.0
+   ],
+   "tabla_aci": 4,
+   "yukari": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "yon": "ters (ust plakasi tablada)",
+   "sigar_250": "True",
+   "hedef_230": "False",
+   "hacim_cm3": 310.1,
+   "kutle_g": 354.5,
+   "filament_g": 372.2,
+   "sure_saat": 7.75
+  },
+  {
+   "ad": "Etek arka sol",
+   "modul": "kabuk",
+   "durum": "ayni",
+   "olcu": [
+    222.0,
+    175.0,
+    227.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "yon": "ters (ust plakasi tablada)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 303.3,
+   "kutle_g": 346.7,
+   "filament_g": 364.0,
+   "sure_saat": 7.58
+  },
+  {
+   "ad": "Etek orta sag",
+   "modul": "kabuk",
+   "durum": "ayni",
+   "olcu": [
+    222.0,
+    199.0,
+    227.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "yon": "ters (ust plakasi tablada)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 164.3,
+   "kutle_g": 187.8,
+   "filament_g": 197.2,
+   "sure_saat": 4.11
+  },
+  {
+   "ad": "Etek orta sol",
+   "modul": "kabuk",
+   "durum": "ayni",
+   "olcu": [
+    222.0,
+    199.0,
+    227.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "yon": "ters (ust plakasi tablada)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 164.3,
+   "kutle_g": 187.8,
+   "filament_g": 197.2,
+   "sure_saat": 4.11
+  },
+  {
+   "ad": "Etek on sag",
+   "modul": "kabuk",
+   "durum": "ayni",
+   "olcu": [
+    233.8,
+    190.1,
+    227.0
+   ],
+   "tabla_aci": 86,
+   "yukari": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "yon": "ters (ust plakasi tablada)",
+   "sigar_250": "True",
+   "hedef_230": "False",
+   "hacim_cm3": 308.9,
+   "kutle_g": 353.1,
+   "filament_g": 370.8,
+   "sure_saat": 7.72
+  },
+  {
+   "ad": "Etek on sol",
+   "modul": "kabuk",
+   "durum": "ayni",
+   "olcu": [
+    222.0,
+    175.0,
+    227.0
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "yon": "ters (ust plakasi tablada)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 301.4,
+   "kutle_g": 344.5,
+   "filament_g": 361.7,
+   "sure_saat": 7.54
+  },
+  {
+   "ad": "S1 kaset govdesi sag",
+   "modul": "kabuk",
+   "durum": "tasindi",
+   "olcu": [
+    108.8,
+    108.6,
+    6.3
+   ],
+   "tabla_aci": 34,
+   "yukari": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "yon": "arka yuzu (x 152) tablada",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 7.7,
+   "kutle_g": 8.8,
+   "filament_g": 9.2,
+   "sure_saat": 0.19
+  },
+  {
+   "ad": "S1 kaset kapagi sag",
+   "modul": "kabuk",
+   "durum": "tasindi",
+   "olcu": [
+    108.8,
+    108.6,
+    4.5
+   ],
+   "tabla_aci": 56,
+   "yukari": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "yon": "flans dis yuzu tablada",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 5.9,
+   "kutle_g": 6.8,
+   "filament_g": 7.1,
+   "sure_saat": 0.15
+  },
+  {
+   "ad": "S1 kaset govdesi sol",
+   "modul": "kabuk",
+   "durum": "tasindi",
+   "olcu": [
+    108.8,
+    108.6,
+    6.3
+   ],
+   "tabla_aci": 56,
+   "yukari": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "yon": "arka yuzu (x 152) tablada",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 7.7,
+   "kutle_g": 8.8,
+   "filament_g": 9.2,
+   "sure_saat": 0.19
+  },
+  {
+   "ad": "S1 kaset kapagi sol",
+   "modul": "kabuk",
+   "durum": "tasindi",
+   "olcu": [
+    108.8,
+    108.6,
+    4.5
+   ],
+   "tabla_aci": 34,
+   "yukari": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "yon": "flans dis yuzu tablada",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 5.9,
+   "kutle_g": 6.8,
+   "filament_g": 7.1,
+   "sure_saat": 0.15
+  },
+  {
+   "ad": "Govde uzatma bandi 1 sag",
+   "modul": "kabuk",
+   "durum": "yeni",
+   "olcu": [
+    170.3,
+    137.7,
+    229.5
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0,
+    1,
+    0
+   ],
+   "yon": "dik (alt kenari tablada)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 258.9,
+   "kutle_g": 295.9,
+   "filament_g": 310.7,
+   "sure_saat": 6.47
+  },
+  {
+   "ad": "Govde uzatma bandi 1 sol",
+   "modul": "kabuk",
+   "durum": "yeni",
+   "olcu": [
+    170.3,
+    125.7,
+    229.5
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0,
+    1,
+    0
+   ],
+   "yon": "dik (alt kenari tablada)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 243.6,
+   "kutle_g": 278.4,
+   "filament_g": 292.3,
+   "sure_saat": 6.09
+  },
+  {
+   "ad": "Govde uzatma bandi 2 sag",
+   "modul": "kabuk",
+   "durum": "yeni",
+   "olcu": [
+    170.3,
+    137.7,
+    229.5
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0,
+    1,
+    0
+   ],
+   "yon": "dik (alt kenari tablada)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 258.8,
+   "kutle_g": 295.9,
+   "filament_g": 310.7,
+   "sure_saat": 6.47
+  },
+  {
+   "ad": "Govde uzatma bandi 2 sol",
+   "modul": "kabuk",
+   "durum": "yeni",
+   "olcu": [
+    170.3,
+    125.7,
+    229.5
+   ],
+   "tabla_aci": 0,
+   "yukari": [
+    0,
+    1,
+    0
+   ],
+   "yon": "dik (alt kenari tablada)",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 243.5,
+   "kutle_g": 278.4,
+   "filament_g": 292.3,
+   "sure_saat": 6.09
+  },
+  {
+   "ad": "Aku on takozu",
+   "modul": "taban",
+   "durum": "ayni",
+   "olcu": [
+    125.2,
+    125.2,
+    25.0
+   ],
+   "tabla_aci": 45,
+   "yukari": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "yon": "alt yuzu tablada",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 67.7,
+   "kutle_g": 68.7,
+   "filament_g": 72.2,
+   "sure_saat": 1.5
+  },
+  {
+   "ad": "Sonar tutucu sol",
+   "modul": "taban",
+   "durum": "ayni",
+   "olcu": [
+    61.2,
+    61.0,
+    7.6
+   ],
+   "tabla_aci": 38,
+   "yukari": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "yon": "arka yuzu (ray tarafi) tablada",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 5.0,
+   "kutle_g": 5.0,
+   "filament_g": 5.3,
+   "sure_saat": 0.11
+  },
+  {
+   "ad": "Sonar tutucu orta",
+   "modul": "taban",
+   "durum": "ayni",
+   "olcu": [
+    65.8,
+    65.8,
+    7.6
+   ],
+   "tabla_aci": 45,
+   "yukari": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "yon": "arka yuzu (ray tarafi) tablada",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 5.5,
+   "kutle_g": 5.6,
+   "filament_g": 5.8,
+   "sure_saat": 0.12
+  },
+  {
+   "ad": "Sonar tutucu sag",
+   "modul": "taban",
+   "durum": "ayni",
+   "olcu": [
+    61.2,
+    61.0,
+    7.6
+   ],
+   "tabla_aci": 52,
+   "yukari": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "yon": "arka yuzu (ray tarafi) tablada",
+   "sigar_250": "True",
+   "hedef_230": "True",
+   "hacim_cm3": 5.0,
+   "kutle_g": 5.0,
+   "filament_g": 5.3,
+   "sure_saat": 0.11
+  }
+ ],
+ "baski_ozet": {
+  "sayi": 61,
+  "yeni": 14,
+  "degisti": 4,
+  "sigmayan_250": [],
+  "hedef_230_asan": [
+   "Etek arka sag",
+   "Etek on sag"
+  ],
+  "tabla": [
+   250.0,
+   250.0,
+   250.0
+  ],
+  "hedef": 230.0
+ },
+ "baglar": [
+  {
+   "ad": "Ust kol tupu -> dirsek catali",
+   "tip": "pim + yarikli sikma bilezigi, 2x M3 (degismedi; tupun yeni ucunda)",
+   "adet": 2,
+   "parcalar": [
+    "Ust kol tupu",
+    "Dirsek catali"
+   ],
+   "aciklama": "",
+   "durum": "tasindi"
+  },
+  {
+   "ad": "Boyun yukseltme adaptoru + egme catali -> boyun mili flansi",
+   "tip": "4x M3 saplama DIN 976 (mevcut M3 isil gomme somunlara) + pul + M3 DIN 985",
+   "adet": 4,
+   "parcalar": [
+    "Egme catali",
+    "Boyun yukseltme adaptoru",
+    "Boyun mili"
+   ],
+   "aciklama": "adaptor h = 58.3 mm; catal tabani adaptor ustunde",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Kafa tablasi -> arka kabuk rafi",
+   "tip": "M3x10 DIN 912 + M3 isil gomme somun (rafta)",
+   "adet": 1,
+   "parcalar": [
+    "Kafa iskeleti (10 in)",
+    "Arka kafa kabugu sag"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Kafa tablasi -> arka kabuk rafi",
+   "tip": "M3x10 DIN 912 + M3 isil gomme somun (rafta)",
+   "adet": 1,
+   "parcalar": [
+    "Kafa iskeleti (10 in)",
+    "Arka kafa kabugu sag"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Kafa tablasi -> arka kabuk rafi",
+   "tip": "M3x10 DIN 912 + M3 isil gomme somun (rafta)",
+   "adet": 1,
+   "parcalar": [
+    "Kafa iskeleti (10 in)",
+    "Arka kafa kabugu sol"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Kafa tablasi -> arka kabuk rafi",
+   "tip": "M3x10 DIN 912 + M3 isil gomme somun (rafta)",
+   "adet": 1,
+   "parcalar": [
+    "Kafa iskeleti (10 in)",
+    "Arka kafa kabugu sol"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Kafa kabugu sag/sol dikisi",
+   "tip": "M3x6 ISO 7380 + M3 isil gomme somun (dil boss'unda)",
+   "adet": 1,
+   "parcalar": [
+    "Yuz kabugu (on) sol",
+    "Yuz kabugu (on) sag"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Kafa kabugu sag/sol dikisi",
+   "tip": "M3x6 ISO 7380 + M3 isil gomme somun (dil boss'unda)",
+   "adet": 1,
+   "parcalar": [
+    "Yuz kabugu (on) sol",
+    "Yuz kabugu (on) sag"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Kafa kabugu sag/sol dikisi",
+   "tip": "M3x6 ISO 7380 + M3 isil gomme somun (dil boss'unda)",
+   "adet": 1,
+   "parcalar": [
+    "Arka kafa kabugu sol",
+    "Arka kafa kabugu sag"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Kafa kabugu sag/sol dikisi",
+   "tip": "M3x6 ISO 7380 + M3 isil gomme somun (dil boss'unda)",
+   "adet": 1,
+   "parcalar": [
+    "Arka kafa kabugu sol",
+    "Arka kafa kabugu sag"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Kafa kabugu sag/sol dikisi",
+   "tip": "M3x6 ISO 7380 + M3 isil gomme somun (dil boss'unda)",
+   "adet": 1,
+   "parcalar": [
+    "Arka kafa kabugu sol",
+    "Arka kafa kabugu sag"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Yuz kabugu -> arka kabuk dili",
+   "tip": "M3x6 ISO 7380 + M3 isil gomme somun (dil boss'unda)",
+   "adet": 1,
+   "parcalar": [
+    "Yuz kabugu (on) sag",
+    "Arka kafa kabugu sag"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Yuz kabugu -> arka kabuk dili",
+   "tip": "M3x6 ISO 7380 + M3 isil gomme somun (dil boss'unda)",
+   "adet": 1,
+   "parcalar": [
+    "Yuz kabugu (on) sag",
+    "Arka kafa kabugu sag"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Yuz kabugu -> arka kabuk dili",
+   "tip": "M3x6 ISO 7380 + M3 isil gomme somun (dil boss'unda)",
+   "adet": 1,
+   "parcalar": [
+    "Yuz kabugu (on) sol",
+    "Arka kafa kabugu sol"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Yuz kabugu -> arka kabuk dili",
+   "tip": "M3x6 ISO 7380 + M3 isil gomme somun (dil boss'unda)",
+   "adet": 1,
+   "parcalar": [
+    "Yuz kabugu (on) sol",
+    "Arka kafa kabugu sol"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Ekran tutucu tirnak -> yuz kabugu boss'u",
+   "tip": "M3x8 ISO 7380 + M3 isil gomme somun",
+   "adet": 1,
+   "parcalar": [
+    "Ekran tutucu tirnak (ust sol)",
+    "Yuz kabugu (on) sol"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Ekran tutucu tirnak -> yuz kabugu boss'u",
+   "tip": "M3x8 ISO 7380 + M3 isil gomme somun",
+   "adet": 1,
+   "parcalar": [
+    "Ekran tutucu tirnak (alt sol)",
+    "Yuz kabugu (on) sol"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Ekran tutucu tirnak -> yuz kabugu boss'u",
+   "tip": "M3x8 ISO 7380 + M3 isil gomme somun",
+   "adet": 1,
+   "parcalar": [
+    "Ekran tutucu tirnak (ust sag)",
+    "Yuz kabugu (on) sag"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Ekran tutucu tirnak -> yuz kabugu boss'u",
+   "tip": "M3x8 ISO 7380 + M3 isil gomme somun",
+   "adet": 1,
+   "parcalar": [
+    "Ekran tutucu tirnak (alt sag)",
+    "Yuz kabugu (on) sag"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Kamera -> yuz kabugu boss'lari",
+   "tip": "4x M2x8 PT vida",
+   "adet": 4,
+   "parcalar": [
+    "Kamera Raspberry Pi Camera Module 3",
+    "Yuz kabugu (on)"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Pi 5 -> burc -> kafa tablasi",
+   "tip": "4x M2,5x8 pirinc burc + M2,5x5 (ust) + M2,5x8 (alt)",
+   "adet": 4,
+   "parcalar": [
+    "Raspberry Pi 5 8GB + Active Cooler",
+    "Kafa iskeleti (10 in)"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "5 V cevirici Pololu D36V50F5 -> kafa tablasi",
+   "tip": "cift tarafli kopuk bant 1 mm + kablo bagi",
+   "adet": 1,
+   "parcalar": [
+    "5 V cevirici Pololu D36V50F5",
+    "Kafa iskeleti (10 in)"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "MAX98357A I2S amfi -> kafa tablasi",
+   "tip": "cift tarafli kopuk bant 1 mm + kablo bagi",
+   "adet": 1,
+   "parcalar": [
+    "MAX98357A I2S amfi",
+    "Kafa iskeleti (10 in)"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Kafa iskeleti sag yanak -> tilt horn",
+   "tip": "4x M3x8 DIN 912 (eski kafadaki gibi)",
+   "adet": 4,
+   "parcalar": [
+    "Kafa iskeleti (10 in)",
+    "Tilt horn 25T aluminyum disk"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Tilt pimi: 625ZZ dis bilezigi sol yanakta",
+   "tip": "625ZZ (eski kafadaki gibi; M5x12 pim catalda)",
+   "adet": 1,
+   "parcalar": [
+    "Kafa iskeleti (10 in)",
+    "Egme catali"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Govde alt bandi dili -> uzatma bandi 1 (A dikisi, y 476.5)",
+   "tip": "M3x6 ISO 7380 + M3 isil gomme somun (alt bant dilindeki mevcut boss)",
+   "adet": 6,
+   "parcalar": [
+    "Govde alt bandi",
+    "Govde uzatma bandi 1"
+   ],
+   "aciklama": "mevcut somunlar; civata basi bandin dis yuzune oturtuldu",
+   "durum": "degisti"
+  },
+  {
+   "ad": "Uzatma bandi 1 dili -> uzatma bandi 2 (B dikisi, y 694.0)",
+   "tip": "M3x6 ISO 7380 + M3 isil gomme somun (dilde damla boss)",
+   "adet": 6,
+   "parcalar": [
+    "Govde uzatma bandi 1",
+    "Govde uzatma bandi 2"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Uzatma bandi 2 dili -> govde orta bandi (C dikisi, y 911.5)",
+   "tip": "M3x6 ISO 7380 + M3 isil gomme somun (dilde damla boss)",
+   "adet": 6,
+   "parcalar": [
+    "Govde uzatma bandi 2",
+    "Govde orta bandi"
+   ],
+   "aciklama": "orta bandin mevcut delikleri; dil GK egimini izler",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Uzatma bantlari sag -> sol (x = 0 dikisi, on + arka)",
+   "tip": "M3x6 ISO 7380 + M3 isil gomme somun (sag parcanin dilinde)",
+   "adet": 8,
+   "parcalar": [
+    "Govde uzatma bandi sag",
+    "Govde uzatma bandi sol"
+   ],
+   "aciklama": "",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Uzatma bandi -> govde diregi (bant basina 2 braket)",
+   "tip": "3 mm Al U braket: direk +-X kanalina 2x M6x14 pulsuz + cekic somun; kabuk boss'una M5x10 + pul + M5 isil gomme somun",
+   "adet": 4,
+   "parcalar": [
+    "Govde braketi (uzatma)",
+    "Govde diregi",
+    "Govde uzatma bandi"
+   ],
+   "aciklama": "kabuk modulu govde braketiyle ayni olcu (arayuz.KABUK_GOVDE_BRAKET); y 560, 778",
+   "durum": "yeni"
+  }
+ ],
+ "degisen": [
+  [
+   "Iskelet",
+   "Govde diregi",
+   "800,5 -> 1235.5 mm (sigma 40x40 agir, 1570 -> 2423 g)"
+  ],
+  [
+   "Iskelet",
+   "Omuz traversi + 2 ust kose baglantisi",
+   "435 mm yukari (omuz ekseni 955 -> 1390)"
+  ],
+  [
+   "Omuz (sag + sol)",
+   "tum omuz",
+   "435 mm yukari"
+  ],
+  [
+   "Omuz (sag + sol)",
+   "Ust kol tupu",
+   "100 -> 130 mm (PETG); dirsek catali tupun yeni ucunda"
+  ],
+  [
+   "Dirsek + el (sag + sol)",
+   "tum dirsek",
+   "405 mm yukari (omuzla birlikte 435, tup uzadi -30)"
+  ],
+  [
+   "Dirsek + el (sag + sol)",
+   "El",
+   "yaka 19 mm uzadi (O34 / O22 bos); el ucu omuz ekseninden 325.5 -> 374.5 mm (x1.151)"
+  ],
+  [
+   "Kafa",
+   "Govde (boyun plakasi, servo yuvasi, 6808 cifti, pan servosu) + boyun mili",
+   "435 mm yukari (degismedi)"
+  ],
+  [
+   "Kafa",
+   "Egme catali + tilt servosu + 625ZZ pimi",
+   "58.3 mm daha yukari: boyun yukseltme adaptoru (yeni); tilt ekseni kafa yerelinde 130 -> 188.3"
+  ],
+  [
+   "Kafa",
+   "Catal-mil civatasi M3x8 (4)",
+   "kaldirildi: yerine 4x M3 saplama + pul + DIN 985 (catal + adaptor birlikte)"
+  ],
+  [
+   "Kafa",
+   "Bas grubu (iskelet, on/arka kabuk, 7\" LCD, vizor, kamera, Pi 5)",
+   "yeni kafa: 270 x 215 x 137, 10,1\" HDMI ekran (tahmini model), 4 kabuk baski parcasi (sag/sol), tilt ekseni kafa AM'sinde, tilt -15...+15"
+  ],
+  [
+   "Kafa",
+   "Vizor (siyah akrilik)",
+   "kaldirildi: 10,1\" ekranin cami yuz; cerceveyi on kabuk yapar"
+  ],
+  [
+   "Kabuk",
+   "Govde orta/gogus/omuz bantlari, arka kapak, Nextion, S1 kasetleri, ust govde braketleri",
+   "435 mm yukari"
+  ],
+  [
+   "Kabuk",
+   "Nextion 10,1\" gogus ekrani",
+   "yerinde birakildi (karar acik), 435 mm yukari: merkez y 820 -> 1255"
+  ],
+  [
+   "Kabuk",
+   "Govde uzatma bandi 1-2 x sag/sol (4 yeni baski parcasi)",
+   "476,5 dikisine 435 mm sabit kesit (251 x 170, r38), 2 bant; kesit dikis ustunun 12 mm ustundeki kesit (alt bant diline 0,25 bosluk), bu yuzden alt ve ust dikiste 0,7 mm disa basamak"
+  ],
+  [
+   "Kabuk",
+   "Govde braketi (uzatma) x 4",
+   "yeni: bant basina bir cift, direge 2x M6 + cekic somun, kabuga M5 + isil gomme somun"
+  ],
+  [
+   "Kafa",
+   "Tilt siniri",
+   "-25...30 -> -15...+15 derece (karar)"
+  ],
+  [
+   "Kapsam",
+   "Lidar / lidar diregi / haritalama",
+   "mevcut FreeCAD tasariminda yok; taslakta da yok (otonomi kapsam disi)"
+  ]
+ ],
+ "yerlesim": {
+  "ev_pozu_cakisma": [
+   {
+    "a": "Ust kol tupu",
+    "a_modul": "omuz_sag",
+    "b": "S1 kablo tamburu",
+    "b_modul": "omuz_sag",
+    "hacim_mm3": 65.01,
+    "eski_125_hacim_mm3": 65.01,
+    "kaynak": "mevcut tasarim (125'te de var)"
+   },
+   {
+    "a": "Ust kol tupu",
+    "a_modul": "omuz_sag",
+    "b": "S1 kaset kapagi sag",
+    "b_modul": "kabuk",
+    "hacim_mm3": 7.61,
+    "eski_125_hacim_mm3": 7.61,
+    "kaynak": "mevcut tasarim (125'te de var)"
+   },
+   {
+    "a": "Ust kol tupu",
+    "a_modul": "omuz_sol",
+    "b": "S1 kablo tamburu",
+    "b_modul": "omuz_sol",
+    "hacim_mm3": 65.01,
+    "eski_125_hacim_mm3": 65.01,
+    "kaynak": "mevcut tasarim (125'te de var)"
+   },
+   {
+    "a": "Ust kol tupu",
+    "a_modul": "omuz_sol",
+    "b": "S1 kaset kapagi sol",
+    "b_modul": "kabuk",
+    "hacim_mm3": 7.61,
+    "eski_125_hacim_mm3": 7.61,
+    "kaynak": "mevcut tasarim (125'te de var)"
+   }
+  ],
+  "aday_cift": 645,
+  "esik_mm3": 0.5,
+  "kafa_suprulme": [
+   {
+    "pan": -90.0,
+    "tilt": -15.0,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": -90.0,
+    "tilt": -7.5,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": -90.0,
+    "tilt": 0.0,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": -90.0,
+    "tilt": 7.5,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": -90.0,
+    "tilt": 15.0,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": -45.0,
+    "tilt": -15.0,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": -45.0,
+    "tilt": -7.5,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": -45.0,
+    "tilt": 0.0,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": -45.0,
+    "tilt": 7.5,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": -45.0,
+    "tilt": 15.0,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": 0.0,
+    "tilt": -15.0,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": 0.0,
+    "tilt": -7.5,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": 0.0,
+    "tilt": 7.5,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": 0.0,
+    "tilt": 15.0,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": 45.0,
+    "tilt": -15.0,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": 45.0,
+    "tilt": -7.5,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": 45.0,
+    "tilt": 0.0,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": 45.0,
+    "tilt": 7.5,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": 45.0,
+    "tilt": 15.0,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": 90.0,
+    "tilt": -15.0,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": 90.0,
+    "tilt": -7.5,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": 90.0,
+    "tilt": 0.0,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": 90.0,
+    "tilt": 7.5,
+    "cakisma": 0,
+    "ornek": []
+   },
+   {
+    "pan": 90.0,
+    "tilt": 15.0,
+    "cakisma": 0,
+    "ornek": []
+   }
+  ],
+  "bosluk": {
+   "kafa kabugu <-> omuz (ev pozu)": {
+    "mm": 60.56,
+    "a": "Arka kafa kabugu sag",
+    "b": "S1 kablo tamburu"
+   },
+   "kafa kabugu <-> govde kabugu ust kapagi": null,
+   "kafa (Bas) <-> egme catali / tilt servosu / adaptor": {
+    "mm": 1.0,
+    "a": "Kafa iskeleti (10 in)",
+    "b": "Egme catali"
+   },
+   "ekran <-> catal / adaptor": {
+    "mm": 15.5,
+    "a": "Yuz ekrani 10,1 in HDMI 1280x800 (tahmini model)",
+    "b": "Egme catali"
+   },
+   "el <-> govde kabugu (ev pozu, sag)": {
+    "mm": 5.91,
+    "a": "Dirsek catali",
+    "b": "Gogus bandi sag"
+   }
+  },
+  "not_": "kisa kontrol: yeni/degisen parcalar x tum parcalar ve farkli otelenen parca ciftleri (ev pozu); kafa pan {-90,-45,0,45,90} x tilt {-15,-7,5,0,7,5,15}. Tam carpisma taramasi (kol pozlari, kafa x kol) analiz ajaninda."
+ },
+ "uzatma": {
+  "dy": 435.0,
+  "dikis": [
+   476.5,
+   694.0,
+   911.5
+  ],
+  "braket_y": [
+   560.25,
+   777.75
+  ],
+  "direk_mm": 1235.5
+ },
+ "sure_s": 269.0,
+ "log": [
+  "yuklendi iskelet 59  1.0s",
+  "yuklendi omuz_sag 71  4.9s",
+  "yuklendi omuz_sol 71  5.0s",
+  "yuklendi kabuk 206  57.2s",
+  "yuklendi dirsek_sag 53  59.2s",
+  "yuklendi dirsek_sol 53  59.3s",
+  "yuklendi kafa 119  66.1s",
+  "yuklendi taban 316  71.7s",
+  "  denge 0: dy -10.00 zb -82.00 -> m 1407.4 g, AM (1.91, 2.51, 2.79)  76.8s",
+  "  denge 1: dy -12.96 zb -91.30 -> m 1436.0 g, AM (1.87, 0.23, -0.50)  81.4s",
+  "  denge 2: dy -13.26 zb -89.89 -> m 1431.7 g, AM (1.88, -0.05, 0.00)  85.8s",
+  "kafa: dy -13.26 zb -89.89, tilt ekseni yerel y 188.26 (eski 130), adaptor 58.26 mm  85.8s",
+  "kabuk: ust 92 parca DY tasindi, alt 108  87.1s",
+  "parca: yeni 1052 (eski 948), grup 22, eklem 22; kafa denge {'dy': -13.255, 'zb': -89.893, 'm': 1431.7, 'am': [1.879, -0.046, 0.004]}  91.9s",
+  "nesneler: 1052 parca, 22 grup  92.5s",
+  "eklem 22 solve 0 ev sapmasi 0.00e+00 STEP kati 1052  115.7s",
+  "kafa tilt grubu 1431.7 g AM eksene dik 0.046 mm; pan grubu 1704.0 g  117.5s",
+  "kol: moment oran 1.210 (x1,36 kaba 1.49), kutle 514.3 -> 537.7 g  117.5s",
+  "kutle: 24473.9 g AM [-0.11, 566.86, -10.73] (eski 21533.4 g AM [-0.19, 382.69, -12.77]), boy 1700.0  117.6s",
+  "baski: 61 parca, 250'ye sigmayan 0, 230 hedefi asan 2  121.3s",
+  "ev pozu kontrolu: 645 aday cift, 4 cakisma (0 taslaktan) (11 s)  131.9s",
+  "kafa suprulmesi: 24 poz, cakisan poz 0 (131 s)  263.4s",
+  "bosluklar: {\"kafa kabugu <-> omuz (ev pozu)\": {\"mm\": 60.56, \"a\": \"Arka kafa kabugu sag\", \"b\": \"S1 kablo tamburu\"}, \"kafa kabugu <-> govde kabugu ust kapagi\": null, \"kafa (Bas) <-> egme catali / tilt servosu / adaptor\": {\"mm\": 1.0, \"a\": \"Kafa iskeleti (10 in)\", \"b\": \"Egme catali\"}, \"ekran <-> catal / adaptor\": {\"mm\": 15.5, \"a\": \"Yuz ekrani 10,1 in HDMI 1280x800 (tahmini model)\", \"b\": \"Egme catali\"}, \"el <-> govde kabugu (ev pozu, sag)\": {\"mm\": 5.91, \"a\": \"Dirsek catali\", \"b\": \"Gogus bandi sag\"}}  266.2s"
+ ]
+}

@@ -1,0 +1,75 @@
+{
+ "robot": "yeni",
+ "parca": 1064,
+ "aday_cift": 3320,
+ "esik_mm3": 0.5,
+ "cakisma": [
+  {
+   "a": "S1 kablo tamburu",
+   "a_modul": "omuz_sag",
+   "b": "Kol catali",
+   "b_modul": "omuz_sag",
+   "hacim_mm3": 97.87,
+   "i": 96,
+   "j": 119,
+   "eski_125_hacim_mm3": 97.87,
+   "kaynak": "mevcut tasarim (125'te de var)"
+  },
+  {
+   "a": "S1 kablo tamburu",
+   "a_modul": "omuz_sag",
+   "b": "Ust kol tupu",
+   "b_modul": "omuz_sag",
+   "hacim_mm3": 65.01,
+   "i": 96,
+   "j": 125,
+   "eski_125_hacim_mm3": 65.01,
+   "kaynak": "mevcut tasarim (125'te de var)"
+  },
+  {
+   "a": "Ust kol tupu",
+   "a_modul": "omuz_sag",
+   "b": "S1 kaset kapagi sag",
+   "b_modul": "kabuk",
+   "hacim_mm3": 7.61,
+   "i": 125,
+   "j": 464,
+   "eski_125_hacim_mm3": 7.61,
+   "kaynak": "mevcut tasarim (125'te de var)"
+  },
+  {
+   "a": "S1 kablo tamburu",
+   "a_modul": "omuz_sol",
+   "b": "Kol catali",
+   "b_modul": "omuz_sol",
+   "hacim_mm3": 97.87,
+   "i": 167,
+   "j": 190,
+   "eski_125_hacim_mm3": 97.87,
+   "kaynak": "mevcut tasarim (125'te de var)"
+  },
+  {
+   "a": "S1 kablo tamburu",
+   "a_modul": "omuz_sol",
+   "b": "Ust kol tupu",
+   "b_modul": "omuz_sol",
+   "hacim_mm3": 65.01,
+   "i": 167,
+   "j": 196,
+   "eski_125_hacim_mm3": 65.01,
+   "kaynak": "mevcut tasarim (125'te de var)"
+  },
+  {
+   "a": "Ust kol tupu",
+   "a_modul": "omuz_sol",
+   "b": "S1 kaset kapagi sol",
+   "b_modul": "kabuk",
+   "hacim_mm3": 7.61,
+   "i": 196,
+   "j": 466,
+   "eski_125_hacim_mm3": 7.61,
+   "kaynak": "mevcut tasarim (125'te de var)"
+  }
+ ],
+ "not_": "ev pozu (kollar asagida, kafa duz); tum parca ciftleri, siki sinir kutusu on elemesi, common hacmi"
+}
