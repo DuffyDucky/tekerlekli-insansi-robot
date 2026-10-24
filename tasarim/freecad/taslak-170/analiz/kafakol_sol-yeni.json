@@ -27,16 +27,16 @@
  ],
  "kafa_poz": 91,
  "kol_alt_poz": 2587,
- "yakin_oge": 2081,
- "aday": 47502,
- "tam_olcum": 563,
+ "yakin_oge": 2071,
+ "aday": 52029,
+ "tam_olcum": 177,
  "sinir_turu": 2,
  "cakisma_sayisi": 0,
  "cakisan_tam_cift": 0,
  "cakismalar": [],
  "yasak_bolge": null,
  "en_kucuk": {
-  "bosluk_mm": 17.99,
+  "bosluk_mm": 10.98,
   "kol_grup": "El",
   "kol_poz": [
    135.0,
@@ -46,13 +46,13 @@
   ],
   "kol_parca": "El",
   "kafa_poz": [
-   -15.0,
-   -15.0
+   -30.0,
+   15.0
   ],
   "kafa_parca": "Yuz kabugu (on) sol"
  },
  "en_kucuk_cakismasiz": {
-  "bosluk_mm": 17.99,
+  "bosluk_mm": 10.98,
   "kol_grup": "El",
   "kol_poz": [
    135.0,
@@ -62,10 +62,10 @@
   ],
   "kol_parca": "El",
   "kafa_poz": [
-   -15.0,
-   -15.0
+   -30.0,
+   15.0
   ],
   "kafa_parca": "Yuz kabugu (on) sol"
  },
- "sure_s": 186.0
+ "sure_s": 74.9
 }

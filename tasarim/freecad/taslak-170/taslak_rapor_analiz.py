@@ -1,7 +1,7 @@
 # Lale 1,70 m taslak raporu: ANALIZ bolumleri (analiz ajani, 21 Ekim 2026). taslak_rapor.py bunu import eder.
 # Girdi: analiz/hesap.json (taslak_hesap.py), analiz/dogrulama.json, analiz/statik-*.json, analiz/kol_*.json, analiz/kolkol-*.json,
 # analiz/kafa-*.json, analiz/kafakol_*.json (taslak_analiz.py). Dosya yoksa ilgili bolum "kosulmadi" der.
-import os, json, glob, html
+import os, json, glob, html, math
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 AN = os.path.join(HERE, "analiz")
@@ -51,6 +51,13 @@ KKL = {t: _oku("kafakol_%s-yeni.json" % t) for t in ("sag", "sol")}
 KKLE = {t: _oku("kafakol_%s-eski.json" % t) for t in ("sag", "sol")}
 KD = {r: _oku("kol_sag-%s-dirsek.json" % r) for r in ("yeni", "eski")}
 KK0 = {r: _oku("kafakol_sag-%s-s2_0.json" % r) for r in ("yeni", "eski")}
+KI = {t: _oku("kafakol_ince_%s-yeni.json" % t) for t in ("sag", "sol")}
+KI = {t: v for t, v in KI.items() if v}
+try:
+    import taslak_ayar as _TA
+    TA_DY = _TA.DY
+except Exception:
+    TA_DY = 435.0
 R = H["robot"] if H else {}
 SV = H["servo"] if H else {}
 Y, E = R.get("yeni-444"), R.get("eski-444")
@@ -78,6 +85,23 @@ def yeni_cak_say():
         for s in KK["tip_ozet"].values():
             pass
     return yeni, eski
+
+
+def kafakol_en_dar():
+    """Kafa x kol en dar yer metni (ince tarama varsa onu, yoksa kaba taramayi kullanir)."""
+    adaylar = []
+    for t_, k in KI.items():
+        if k.get("en_kucuk"):
+            e = k["en_kucuk"]
+            adaylar.append((e["bosluk_mm"], "%s ↔ %s %s mm (kol %s, kafa pan/tilt %s; ince tarama)" % (
+                "el" if e["kol_grup"] == "El" else "ön kol", esc(e["kafa_parca"]), sayi(e["bosluk_mm"], 1), e["kol_poz"], e["kafa_poz"])))
+    if not adaylar:
+        for t_, k in KKL.items():
+            e = k and (k.get("en_kucuk_cakismasiz") or k.get("en_kucuk"))
+            if e:
+                adaylar.append((e["bosluk_mm"], "%s ↔ %s %s mm (kol %s, kafa pan/tilt %s)" % (esc(e["kol_parca"]), esc(e["kafa_parca"]), sayi(e["bosluk_mm"], 1),
+                                                                                          e["kol_poz"], e["kafa_poz"])))
+    return min(adaylar)[1] if adaylar else "?"
 
 
 # ====================================================================== karar kutusu ve kartlar
@@ -114,8 +138,8 @@ def devrilme():
              "(taban raporundaki 21,73 kg / AM y 373 değerinden 0,2 kg ağır: omuz S1 kaseti sonradan eklendi).</p>" % sayi(178, 0))
     h.append("<p><b>Ölçüt:</b> projede pay ≥ 2 yeşil, 1,2–2 uyarı (<code>taban_rapor.pay_sinif</code>, tasarım demosu). Taban raporu bunu düz zemine "
              "uyguluyor; rampa için ölçüt yok. Buradaki ölçüt: <b>düz zeminde tüm yüksüz kol pozlarında ≥ 2,0×</b> (projeninki) ve <b>5° rampada ≥ 1,5×</b> "
-             "(gerekçe: rampada robot yavaş ve kollar gövdede tutulur; 1,5× = acil frende 2,25 m/s² eşik, uyarı alt sınırı 1,2'nin %25 üstü). "
-             "125 cm tasarım ikisini de rahat geçiyor (en kötü 2,8× / 2,25×).</p>")
+             "(gerekçe: rampada robot yavaş ve kollar gövdede tutulur; 1,5× = acil frende 2,25 m/s² eşik, uyarı alt sınırı 1,2'nin %%25 üstü). "
+             "125 cm tasarım ikisini de rahat geçiyor (en kötü %s× / %s×).</p>" % (sayi(E["devrilme"]["izgara_en_kucuk_duz"], 2), sayi(E["devrilme"]["izgara_en_kucuk_rampa"], 2)))
     satir = []
     keys = [k for k in ("eski-444", "yeni-444", "yeni-500", "yeni-520") if k in R]
     for i, p in enumerate(R["yeni-444"]["devrilme"]["pozlar"]):
@@ -158,22 +182,34 @@ def devrilme():
                          " / ".join(pay(x) for x in o["izgara_duz"]), " / ".join(pay(x, 1.5) for x in o["izgara_rampa"]), oran(o["motor_rampa5_025"])])
         h.append("<h3>Önlemler (hesap; geometri değişmedi, <span class='t'>tahmini</span>)</h3>")
         h.append(tablo(["Taban", "Önlem", "Kütle (kg)", "AM y / z", "Izgara en kötü, düz (ileri / geri / yana)", "5° rampa", "Motor 5° rampa, 0,25 m/s²"], sat3))
-        h.append("<p class='not'>Akü (2,8 kg, z −121) taban arka panelinde; 75 mm öne almak AM'yi z −11,6 → −3,2'ye getirir (gerçek yerleşim taban "
-                 "tasarımında ayrıca çözülmeli). Balast seçeneği motor yükünü büyütür. Nextion kararı açık (göğüs ekranı 535 g, y 1.254).</p>")
+        _o0 = [o for o in H["onlem"] if o["taban"] == "yeni-444" and o["onlem"] == "yok"]
+        _o1 = [o for o in H["onlem"] if o["taban"] == "yeni-444" and o["onlem"] == "akü 75 mm öne"]
+        h.append("<p class='not'>Akü (2,8 kg, z −121) taban arka panelinde; 75 mm öne almak AM'yi z %s → %s'e getirir (gerçek yerleşim taban "
+                 "tasarımında ayrıca çözülmeli). Balast seçeneği motor yükünü büyütür. Nextion kararı açık (göğüs ekranı 535 g, y 1.254).</p>" % (
+                     sayi(_o0[0]["am"][2], 1) if _o0 else "?", sayi(_o1[0]["am"][2], 1) if _o1 else "?"))
     # karar
     y4, y5 = R["yeni-444"]["devrilme"], R.get("yeni-520", R["yeni-444"])["devrilme"]
+    iz4, iz5 = y4["izgara_en_kotu"], y5["izgara_en_kotu"]
+    # rampada (5 derece) yana 1,5x icin gereken teker x: g (d cos t - h sin t) / h / 1,5 >= 1,5 -> d >= h (2,25 / g + sin t) / cos t; en kotu yana pozun AM'si
+    _t = math.radians(5.0)
+    _am = iz4["rampa5_yan"]["am"]
+    x_gerek = abs(_am[0]) + _am[1] * (1.5 * 1.5 / 9.81 + math.sin(_t)) / math.cos(_t)
+    gd, gr_ = iz4["duz_geri"], iz4["rampa5_geri"]
+    duz_ok, rampa_ok = gd["pay"] >= 2.0, gr_["pay"] >= 1.5
     h.append("<div class='karar'><b>Karar önerisi: taban 520 mm'ye genişletilsin, ama genişletme tek başına yetmez.</b><ul>"
-             "<li>Yana pay yalnız teker iziyle büyür: 444'te düz %s× (en kötü zıt kol pozunda %s×, sınırda), rampada %s×; 520'de düz %s×, rampada %s×. "
-             "Ölçütü yana yönde 520 karşılıyor (rampada 1,5 için teker x ≥ ~%s mm gerekir).</li>"
-             "<li><b>Asıl darboğaz ileri-geri:</b> aks arası (z ±185) değişmiyor, AM 11,6 mm geride ve 560 mm yüksekte. Geri payı en kötü pozda düz %s×, "
-             "rampada %s× (520'de de aynı). Düz zemin ölçütü (≥ 2) kollar geride (S1 −45) iken kıl payı kaçıyor; rampada 1,5 tutmuyor.</li>"
+             "<li>Yana pay yalnız teker iziyle büyür: 444'te düz %s× (en kötü pozda %s×), rampada %s× (en kötü %s×); 520'de düz %s× (en kötü %s×), rampada %s× "
+             "(en kötü %s×). Rampada en kötü pozda 1,5 için teker x ≥ ~%s mm gerekir (teker x 444: %s, 520: %s).</li>"
+             "<li><b>Asıl darboğaz ileri-geri:</b> aks arası (z ±185) değişmiyor, AM %s mm geride ve %s mm yüksekte. Geri payı en kötü pozda (sağ kol S1 %s°) "
+             "düz %s×, rampada %s× (520'de %s× / %s×). %s</li>"
              "<li>Öneri: (1) taban 520 (her yana 38 mm; 500'de de temiz, 480'de motor braketi M4'leri uzun raya biniyor: DX ≥ ~24 mm şart), "
              "(2) AM'yi öne al: akü ~75 mm öne (ya da ön-alt 1,5 kg balast), (3) yazılım: rampada kollar ev pozunda (S1 0…90, S2 ≤ 30) ve rampa ivmesi "
              "aşağıdaki motor sınırıyla. Aks arasını uzatmak (taban boyu) daha kökten çözüm ama taban/etek/iskelet yeniden.</li></ul></div>" % (
-                 sayi(y4["ev"]["duz"]["pay_yan"], 2), sayi(y4["izgara_en_kotu"]["duz_yan"]["pay"], 2), sayi(y4["ev"]["rampa5"]["pay_yan"], 2),
-                 sayi(y5["ev"]["duz"]["pay_yan"], 2), sayi(y5["ev"]["rampa5"]["pay_yan"], 2),
-                 sayi(0.3945 * Y["am"][1] + 1, 0),
-                 sayi(y4["izgara_en_kotu"]["duz_geri"]["pay"], 2), sayi(y4["izgara_en_kotu"]["rampa5_geri"]["pay"], 2)))
+                 sayi(y4["ev"]["duz"]["pay_yan"], 2), sayi(iz4["duz_yan"]["pay"], 2), sayi(y4["ev"]["rampa5"]["pay_yan"], 2), sayi(iz4["rampa5_yan"]["pay"], 2),
+                 sayi(y5["ev"]["duz"]["pay_yan"], 2), sayi(iz5["duz_yan"]["pay"], 2), sayi(y5["ev"]["rampa5"]["pay_yan"], 2), sayi(iz5["rampa5_yan"]["pay"], 2),
+                 sayi(x_gerek, 0), sayi(Y["destek_x"], 0), sayi((Y5 or Y)["destek_x"], 0), sayi(-Y["am"][2], 1), sayi(Y["am"][1], 0), sayi(gd["sag"][0], 0), sayi(gd["pay"], 2), sayi(gr_["pay"], 2),
+                 sayi(iz5["duz_geri"]["pay"], 2), sayi(iz5["rampa5_geri"]["pay"], 2),
+                 ("Düz zemin ölçütü (≥ 2) %s; rampada 1,5 %s." % ("karşılanıyor" if duz_ok else "en kötü pozda kıl payı kaçıyor",
+                                                                  "tutuyor" if rampa_ok else "tutmuyor"))))
     return "\n".join(h)
 
 
@@ -224,20 +260,36 @@ def motor():
 
 
 # ====================================================================== servo
+def taslak_varyant():
+    """Kol orani tablosunda taslak geometrisine karsilik gelen varyant (x1,25 karariyla 'taslak' alani; eski hesapta x1,15)."""
+    if not H or not H.get("kol_orani"):
+        return None
+    v = [x for x in H["kol_orani"]["varyant"] if x.get("taslak")]
+    return v[0] if v else [x for x in H["kol_orani"]["varyant"] if abs(x["oran"] - 1.15) < 1e-9][0]
+
+
 def servo():
     if not H:
         return "<div class='bos'>analiz/hesap.json yok</div>"
     ys, es = SV["yeni-444"], SV["eski-444"]
+    s1, s2 = ys["kol"][0], ys["kol"][1]
+    sv_ad = s1["servo"]
+    if "servo_gerilimi_V" in s1:
+        st_metin = "125 cm DS3218MG 20 kg·cm (proje değeri); 170 cm %s %s kg·cm: S1 kalkışında servonun gördüğü %s V'ta (6 V'ta %s; hat 6,0 V − ana hat − 22 AWG " \
+                   "uzatma düşümü, kol analiziyle aynı model)" % (esc(sv_ad), sayi(s1["stall_kgcm"], 2), sayi(s1["servo_gerilimi_V"], 2), sayi(s1["stall_6V_kgcm"], 0))
+    else:
+        st_metin = "omuz %s %s kg·cm" % (esc(sv_ad), sayi(s1["stall_kgcm"], 0))
     h = ["<p>Kol: <code>dirsek/dirsek_montaj.py</code> <code>tork()</code> yöntemi: grup kütleleri ve AM'leri (omuz göbeği, üst kol, dirsek çatalı, ön kol, el) "
          "S1 −45…135 × S2 5…120 × dirsek 0…105 (5°) × bilek −90/0/90 ızgarasında döndürülüp her eksene yerçekimi torku; pay = durma torku ÷ en kötü tork "
-         "(DS3218MG 20, MG996R 9,4 kg·cm @4,8 V). 125 cm sütunu aynı kodla; dirsek raporundaki değerleri birebir veriyor (S1 8,14, S2 8,32, dirsek 1,54 kg·cm). "
+         "(%s; MG996R 9,4 kg·cm @4,8 V). 125 cm sütunu aynı kodla; dirsek raporundaki değerleri birebir veriyor (S1 8,14, S2 8,32, dirsek 1,54 kg·cm). "
          "Ek olarak ivme torku: en kötü pozda eksene göre atalet (parça şekillerinden) × α %s rad/s² (kafa yöntemiyle aynı 60° / 0,4 s profil, "
          "<span class='t'>tahmini</span>). Kafa: <code>kafa/kafa_montaj.py</code> yöntemi (tilt = yerçekimi + 25 g kafa içi kablo + I·α; pan = I·α + rulman + "
-         "kablo), 125 cm değerlerini birebir veriyor (tilt 4,67 kg·cm / 2,01×).</p>" % sayi(4 * 3.14159265 / 3 / 0.16, 1)]
+         "kablo), 125 cm değerlerini birebir veriyor (tilt 4,67 kg·cm / 2,01×).</p>" % (st_metin, sayi(4 * 3.14159265 / 3 / 0.16, 1))]
     sat = []
     for j in range(4):
         a, b = es["kol"][j], ys["kol"][j]
-        sat.append([esc(b["eklem"]), b["servo"], "%s → %s" % (sayi(a["yuksuz_kgcm"], 2), sayi(b["yuksuz_kgcm"], 2)),
+        sat.append([esc(b["eklem"]), "%s → %s" % (a["servo"], b["servo"]) if a["servo"] != b["servo"] else b["servo"],
+                    "%s → %s" % (sayi(a["yuksuz_kgcm"], 2), sayi(b["yuksuz_kgcm"], 2)),
                     "%s → %s" % (pay(a["yuksuz_pay"]), pay(b["yuksuz_pay"])), "%s → %s" % (pay(a["toplam_pay"]), pay(b["toplam_pay"])),
                     "%s → %s" % (pay(a["yuklu_pay"], 1.0, 0.8), pay(b["yuklu_pay"], 1.0, 0.8)), "%s → %s g" % (sayi(a["izinli_yuk_2x_g"], 0), sayi(b["izinli_yuk_2x_g"], 0)),
                     esc("%s (%s)" % (b["yuksuz_poz"], "S1, S2, dirsek, bilek"))])
@@ -248,18 +300,25 @@ def servo():
     h.append(tablo(["Eklem", "Servo", "Tork kg·cm (125 → 170; kol: statik yüksüz, kafa: toplam)", "Pay statik", "Pay statik + ivme", "Pay, elde 0,5 kg (statik)",
                     "2× pay için izinli el yükü", "En kötü poz (170)"], sat))
     t, p = ys["kafa"]["tilt"], ys["kafa"]["pan"]
-    s1, s2 = ys["kol"][0], ys["kol"][1]
-    h.append("<ul><li><b>Omuz:</b> S1 %s → %s kg·cm, S2 %s → %s kg·cm (kol 49 mm uzun, %s g ağır; uzun kol yatayken). Statik pay 2,0 sınırında "
-             "(S2 %s×), elde yük taşımak 2× payla <b>mümkün değil</b> (125 cm'de ~50 g'dı). İvmeli payda 125 cm de 2'nin altında (%s×); 1,70'te %s×: kol "
-             "hareketleri yumuşak profille (ör. 90° / 1 s) verilmeli. Kol oranı büyürse daha güçlü omuz servosu gerekir (aşağıdaki tablo).</li>"
-             "<li><b>Dirsek / bilek:</b> pay %s× / değişmez; sorun yok.</li>"
+    tv = taslak_varyant()
+    KS = H.get("kol_secim", {})
+    boy_y = KS.get("boy_mm", tv["kol_boy_mm"] if tv else 0)
+    alt_ = s1.get("alternatif", {}).get("DS3218MG")
+    h.append("<ul><li><b>Omuz:</b> S1 %s → %s kg·cm, S2 %s → %s kg·cm (kol %s → %s mm, kol başına +%s g; uzun kol yatayken). Omuz servosu %s: statik pay "
+             "S1 %s, S2 %s; ivmeli S1 %s (125 cm: %s); elde 2× statik payla ~%s g (125 cm: %s g).%s Kol hareketleri yine yumuşak profille "
+             "(60°/0,4 s'den hızlı değil) verilmeli.</li>"
+             "<li><b>Dirsek / bilek:</b> dirsek statik pay %s (125 cm: %s; ön kol uzadı), bilek değişmez. El takılırsa omuz stall'ı el ucundan dirseği geri sürer "
+             "(kol analizi, Kol oranı bölümündeki bağlantı).</li>"
              "<li><b>Kafa tilt:</b> AM tilt ekseninde (parçalar 0,05 mm; 25 g kablo payıyla %s mm) olduğu için yerçekimi torku ~%s kg·cm; tork neredeyse tamamen ivme (%s kg·cm, atalet "
              "%s kg·m²). Pay %s× (125 cm: %s×): iyileşti.</li>"
              "<li><b>Kafa pan:</b> 10,1\" kafanın ataleti büyük (%s kg·m²), pay %s× (125 cm: %s×), hâlâ ≥ 2. 6808 rulmanlarında radyal yük %s N "
              "(AM pan ekseninden %s mm önde; 125 cm: %s N). Pan hızını yazılımda 60°/0,4 s'den hızlı vermeyin.</li></ul>" % (
                  sayi(es["kol"][0]["yuksuz_kgcm"], 2), sayi(s1["yuksuz_kgcm"], 2), sayi(es["kol"][1]["yuksuz_kgcm"], 2), sayi(s2["yuksuz_kgcm"], 2),
-                 sayi(H["kol_orani"]["varyant"][1]["kol_kutle_ek_g"] if H.get("kol_orani") else 0, 0), sayi(s2["yuksuz_pay"], 2),
-                 sayi(es["kol"][0]["toplam_pay"], 2), sayi(s1["toplam_pay"], 2), sayi(ys["kol"][2]["yuksuz_pay"], 1),
+                 sayi(325.5, 1), sayi(boy_y, 1), sayi(tv["kol_kutle_ek_g"] if tv else 0, 0), esc(sv_ad),
+                 pay(s1["yuksuz_pay"]), pay(s2["yuksuz_pay"]), pay(s1["toplam_pay"], 1.5, 1.0), pay(es["kol"][0]["toplam_pay"], 1.5, 1.0),
+                 sayi(s1["izinli_yuk_2x_g"], 0), sayi(es["kol"][0]["izinli_yuk_2x_g"], 0),
+                 (" DS3218MG kalsaydı aynı kolda S1 statik %s, ivmeli %s, elde %s g." % (pay(alt_["yuksuz_pay"]), pay(alt_["toplam_pay"], 1.5, 1.0), sayi(alt_["izinli_yuk_2x_g"], 0))) if alt_ else "",
+                 pay(ys["kol"][2]["yuksuz_pay"]), pay(es["kol"][2]["yuksuz_pay"]),
                  sayi(t["am_eksen_mm"], 2), sayi(t["yercekimi_kgcm"], 2), sayi(t["ivme_kgcm"], 2), sayi(t["I_kgm2"], 4), sayi(t["pay"], 2), sayi(es["kafa"]["tilt"]["pay"], 2),
                  sayi(max(p["I_kgm2"].values()), 4), sayi(p["pay"], 2), sayi(es["kafa"]["pan"]["pay"], 2), sayi(p["rulman_radyal_N"], 0), sayi(p["am_eksen_mm"], 0),
                  sayi(es["kafa"]["pan"]["rulman_radyal_N"], 0)))
@@ -271,33 +330,46 @@ def kol_orani():
     if not H or not H.get("kol_orani"):
         return "<div class='bos'>hesap yok</div>"
     ko = H["kol_orani"]
+    on_kol = ko.get("dagilim") == "on_kol"
     sat = []
     for v in ko["varyant"]:
         s1, s2, de = v["servo"][0], v["servo"][1], v["servo"][2]
         d4 = v["devrilme"].get("yeni-444")
         d5 = v["devrilme"].get("yeni-520")
-        etiket = "×1,00 (125 cm, omuz y 955)" if v["oran"] == 1.0 else ("×%s%s" % (sayi(v["oran"], 2), " (taslak)" if abs(v["oran"] - 1.15) < 1e-9 else ""))
-        sat.append([etiket, sayi(v["kol_boy_mm"], 1), sayi(v["el_ucu_y"], 0), ("+%s" % sayi(v["kol_kutle_ek_g"], 0)) if v["oran"] != 1.0 else "–",
-                    "%s (%s)" % (pay(s1["yuksuz_pay"]), pay(s1["toplam_pay"])), pay(s2["yuksuz_pay"]), pay(de["yuksuz_pay"]),
+        tas = v.get("taslak", (not on_kol) and abs(v["oran"] - 1.15) < 1e-9)
+        etiket = "×1,00 (125 cm, omuz y 955)" if v["oran"] == 1.0 else ("×%s%s" % (sayi(v["oran"], 2), " (taslak, karar)" if tas else ""))
+        uz = v.get("uzama_mm")
+        dag = ("tüp +%s / ön kol +%s / yaka +%s" % (sayi(uz["ust_kol"], 0), sayi(uz["on_kol"], 1), sayi(uz["el"], 0))) if (uz and v["oran"] != 1.0) else (
+            "tüp +%s / yaka +%s" % (sayi(30 + v["tup_ek_mm"], 1), sayi(19 + v["el_ek_mm"], 1)) if v["oran"] != 1.0 else "–")
+        sat.append([etiket, sayi(v["kol_boy_mm"], 1), esc(dag), sayi(v["el_ucu_y"], 0), ("+%s" % sayi(v["kol_kutle_ek_g"], 0)) if v["oran"] != 1.0 else "–",
+                    esc(s1["servo"]), "%s (%s)" % (pay(s1["yuksuz_pay"]), pay(s1["toplam_pay"], 1.5, 1.0)), pay(s2["yuksuz_pay"]), pay(de["yuksuz_pay"]),
                     "%s g" % sayi(s1["izinli_yuk_2x_g"], 0),
                     ("%s / %s" % (pay(d4["izgara_duz"]), pay(d4["izgara_rampa"], 1.5))) if d4 else "%s / %s" % (pay(E["devrilme"]["izgara_en_kucuk_duz"]), pay(E["devrilme"]["izgara_en_kucuk_rampa"], 1.5)),
                     ("%s / %s" % (pay(d5["izgara_duz"]), pay(d5["izgara_rampa"], 1.5))) if d5 else "–",
                     ("%s / %s" % (pay(d4["one_yuk"]["pay_ileri"]), pay(d5["one_yuk"]["pay_ileri"]) if d5 else "–")) if d4 else "–"])
-    h = ["<p>Kol boyu omuz ekseninden el ucuna. ×1,25 ve ×1,36 <b>modellenmedi</b>: ×1,15 taslağından doğrusal (ek boy üst kol tüpü ile el yakası arasında "
-         "30:19 bölünür, birim kütleler taslaktaki uzatmalardan: tüp %s g/mm, yaka %s g/mm; <span class='t'>tahmini</span>). Gerçek tasarımda ön kol da "
-         "uzatılırsa dirsek servosunun payı biraz daha düşer. Kafa × kol yasak bölgesi uzun kolda yeniden taranmalı.</p>" % (
-             sayi(ko["birim_kutle"]["tup_g_mm"], 2), sayi(ko["birim_kutle"]["yaka_g_mm"], 2))]
-    h.append(tablo(["Kol oranı", "Kol boyu (mm)", "El ucu y (ev pozu)", "Kol başına ek kütle (g)", "S1 pay statik (ivmeli)", "S2 pay", "Dirsek pay",
-                    "S1 2× için el yükü", "Devrilme en kötü düz / rampa, taban 444", "Taban 520", "Kollar önde + 0,5 kg, ileri (444 / 520)"], sat))
+    if on_kol:
+        h = ["<p>Kol boyu omuz ekseninden el ucuna. <b>×%s taslak geometrisidir</b> (parçalardan; ek %s mm ön kolda, dirsek → bilek %s → %s mm). ×1,15 = ön kol "
+             "uzatması geri alınmış taslak (bilek servosu + el yukarı, U bölüm çıkarılır), ×1,36 = ek boy yine ön kola; birim kütle taslaktaki ön kol "
+             "uzatmasından (%s g/mm). ×1,36 <b>modellenmedi</b> (<span class='t'>tahmini</span>). Omuz servosu %s (stall servo geriliminde); 125 cm satırı "
+             "DS3218MG.</p>" % (sayi(ko["taslak_oran"], 2), sayi(H["kol_secim"]["on_kol_uzama"], 1), sayi(83.1, 1), sayi(83.1 + H["kol_secim"]["on_kol_uzama"], 1),
+                                sayi(ko["birim_kutle"]["on_kol_g_mm"], 3), esc(ko["omuz_servo"]))]
+    else:
+        h = ["<p>Kol boyu omuz ekseninden el ucuna. ×1,25 ve ×1,36 <b>modellenmedi</b>: ×1,15 taslağından doğrusal (ek boy üst kol tüpü ile el yakası arasında "
+             "30:19 bölünür, birim kütleler taslaktaki uzatmalardan: tüp %s g/mm, yaka %s g/mm; <span class='t'>tahmini</span>).</p>" % (
+                 sayi(ko["birim_kutle"]["tup_g_mm"], 2), sayi(ko["birim_kutle"]["yaka_g_mm"], 2))]
+    h.append(tablo(["Kol oranı", "Kol boyu (mm)", "Uzama (125 cm'e göre, mm)", "El ucu y (ev pozu)", "Kol başına ek kütle (g)", "Omuz servosu",
+                    "S1 pay statik (ivmeli)", "S2 pay", "Dirsek pay", "S1 2× için el yükü", "Devrilme en kötü düz / rampa, taban 444", "Taban 520",
+                    "Kollar önde + 0,5 kg, ileri (444 / 520)"], sat))
     v = {round(x["oran"], 2): x for x in ko["varyant"]}
-    h.append("<ul><li>Devrilmeye etkisi küçük (en kötü pay en çok %s düşer): kol kütlesi robotun %%2'si.</li>"
-             "<li>Asıl bedel omuz servosu: S1 statik payı ×1,15'te %s, ×1,25'te %s, ×1,36'da %s. ×1,25 ve üstü için omuzda ~30–35 kg·cm sınıfı servo "
-             "(ör. DS3235 / DS51150 sınıfı, <span class='t'>model ve ölçü doğrulanmadı</span>) ya da daha hafif ön kol/el gerekir; mevcut omuz yuvası 40 × 20 "
-             "DS3218 gövdesine göre.</li>"
-             "<li>Görünüm: 1,70 m'de el ucu y 1.016 (×1,15) → 947 (×1,36). İnsanda (1,70 m) parmak ucu yerden ~640 mm; ×1,36 bile bel/kalça hizasında kalır. "
-             "Karar Duffy'de.</li></ul>" % (
-                 sayi(max(0, (v[1.15]["devrilme"]["yeni-444"]["izgara_duz"] - v[1.36]["devrilme"]["yeni-444"]["izgara_duz"])), 2),
-                 pay(v[1.15]["servo"][0]["yuksuz_pay"]), pay(v[1.25]["servo"][0]["yuksuz_pay"]), pay(v[1.36]["servo"][0]["yuksuz_pay"])))
+    alt_ = v[1.25]["servo"][0].get("alternatif", {}).get("DS3218MG")
+    h.append("<ul><li>Devrilmeye etkisi küçük (×1,15 → ×1,36 en kötü pay en çok %s düşer): kol kütlesi robotun %%2'si.</li>"
+             "<li>Omuz servosu: S1 statik payı (%s) ×1,15'te %s, ×1,25'te %s, ×1,36'da %s; ivmeli ×1,25'te %s.%s</li>"
+             "<li>Görünüm: 1,70 m'de el ucu y %s (×1,15) → %s (×1,25) → %s (×1,36). İnsanda (1,70 m) parmak ucu yerden ~640 mm; ×1,36 bile bel/kalça hizasında kalır.</li></ul>" % (
+                 sayi(max(0, (v[1.15]["devrilme"]["yeni-444"]["izgara_duz"] - v[1.36]["devrilme"]["yeni-444"]["izgara_duz"])), 2), esc(v[1.25]["servo"][0]["servo"]),
+                 pay(v[1.15]["servo"][0]["yuksuz_pay"]), pay(v[1.25]["servo"][0]["yuksuz_pay"]), pay(v[1.36]["servo"][0]["yuksuz_pay"]),
+                 pay(v[1.25]["servo"][0]["toplam_pay"], 1.5, 1.0),
+                 (" DS3218MG ile ×1,25'te statik %s, ivmeli %s, elde %s g: DS3235 kararı bunun için." % (pay(alt_["yuksuz_pay"]), pay(alt_["toplam_pay"], 1.5, 1.0), sayi(alt_["izinli_yuk_2x_g"], 0))) if alt_ else "",
+                 sayi(v[1.15]["el_ucu_y"], 0), sayi(v[1.25]["el_ucu_y"], 0), sayi(v[1.36]["el_ucu_y"], 0)))
     return "\n".join(h)
 
 
@@ -324,7 +396,7 @@ def carpisma():
         ek = ""
         if n_y:
             ek = "; ".join(sorted(set("%s ↔ %s" % (c["a"].split(" (")[0], c["b"].split(" (")[0]) for c in s["cakisma"] if c["kaynak"].startswith("taslak"))))
-        sat.append(["Ev pozu, taban %d" % w, "%d parça" % s["parca"], "<b class='%s'>%d</b>" % ("ok" if not n_y else "no", n_y), "aynı 6", esc(ek)])
+        sat.append(["Ev pozu, taban %d" % w, "%d parça" % s["parca"], "<b class='%s'>%d</b>" % ("ok" if not n_y else "no", n_y), "%d" % (len(s["cakisma"]) - n_y), esc(ek)])
     for t in ("sag", "sol"):
         k = KOL.get(t)
         if not k:
@@ -360,11 +432,18 @@ def carpisma():
                     "<b class='%s'>%d</b>%s" % ("ok" if not k["cakisma_sayisi"] else "no", n_y, (" (%d tam poz çifti)" % k["cakisan_tam_cift"]) if k["cakisma_sayisi"] else ""),
                     "%d" % (k["cakisma_sayisi"] - n_y),
                     ("en az %s mm: %s ↔ %s, kol %s, kafa %s" % (sayi(e["bosluk_mm"], 1), esc(e["kol_parca"]), esc(e["kafa_parca"]), e["kol_poz"], e["kafa_poz"])) if e else ""])
+    if KI:
+        for t_, k in KI.items():
+            e = k["en_kucuk"]
+            sat.append(["Kafa × kol %s, en dar yer çevresinde ince tarama (S1 2,5°, S2 2,5–5°, dirsek 2,5°, bilek 15–30°, pan 2°, tilt 2,5–5°)" % ("sağ" if t_ == "sag" else "sol"),
+                        "%d kol × %d kafa pozu, %d tam ölçüm" % (k["kol_poz"], k["kafa_poz"], k["tam_olcum"]),
+                        "<b class='%s'>%d</b>" % ("ok" if not k["cakisma"] else "no", len(k["cakisma"])), "–",
+                        ("en az %s mm: %s ↔ %s, kol %s, kafa %s" % (sayi(e["bosluk_mm"], 1), esc(e["kol_grup"]), esc(e["kafa_parca"]), e["kol_poz"], e["kafa_poz"])) if e else ""])
     h.append(tablo(["Tarama", "Kapsam", "Yeni çakışma", "Mevcut tasarımdan (125'te de)", "En dar yer / not"], sat))
     h.append("<p class='not'>0,0 mm boşluklar tasarım temasıdır (horn merkez vidası ↔ servo çıkış mili, S2 horn ↔ S2 mili; hacim ≤ 0,5 mm³). Kol taramasında "
              "S2 ≥ 5° (eklem aralığı): ev pozundaki (S2 0°) tüp ↔ S1 tamburu / kaset kapağı kesişmeleri aralıkta yok, tamburu ↔ kaset kapağı en az 0,5 mm "
              "(S1 kaseti tasarımı, 125 cm ile aynı). Kafa × kol: 125 cm'deki yasak bölge tilt 25…30° istiyordu; tilt ±15 sınırıyla ve 95 mm yukarıdaki kafayla "
-             "bu bölge kalkıyor, en dar yer el ↔ yüz kabuğu ~18 mm (kol öne 135°, dirsek 105°).</p>")
+             "bu bölge kalkıyor, en dar yer %s.</p>" % kafakol_en_dar())
     # yasak bolge
     for t in ("sag", "sol"):
         k = KKL.get(t)
@@ -383,9 +462,19 @@ def carpisma():
                   "raporundaki bölgeyle (603 çift) birebir aynı yer." % (e0["cakisan_tam_cift"], *[sayi(x, 0) for x in (y["one_arka"] + [y["yana"][0]] + y["dirsek"] + y["pan"] + y["tilt"])]))
     y0 = KK0.get("yeni")
     if y0:
-        ek.append("170 cm taslakta S2 = 0° dahil edilse bile çakışma %d; en dar %s mm (%s ↔ %s, kol %s, kafa %s)." % (
-            y0["cakisma_sayisi"], sayi(y0["en_kucuk"]["bosluk_mm"], 1), esc(y0["en_kucuk"]["kol_parca"]), esc(y0["en_kucuk"]["kafa_parca"]),
-            y0["en_kucuk"]["kol_poz"], y0["en_kucuk"]["kafa_poz"]))
+        if y0["cakisma_sayisi"]:
+            yb = y0["yasak_bolge"]
+            ek.append("<b class='uy'>Eklem aralığı dışında yeni yasak bölge:</b> 170 cm taslakta (kol ×%s, ön kol uzun) S2 alt sınırı 0° alınırsa %d çakışan poz "
+                      "çifti çıkıyor (%d tam poz çifti, en çok %s mm³): kol öne %s…%s°, yana 0°, dirsek %s…%s° iken kafa pan %s…%s°, tilt %s…%s°; %s ↔ %s. "
+                      "Eklem aralığında (S2 ≥ 5°, S1 kaseti) çakışma yok: <b>S2 ≥ 5° sınırı korunmalı</b> (yazılım + mekanik dayama)." % (
+                          sayi(taslak_varyant()["oran"], 2) if taslak_varyant() else "?", y0["cakisma_sayisi"], y0["cakisan_tam_cift"],
+                          sayi(max(c["hacim_mm3"] for c in y0["cakismalar"]), 0),
+                          *[sayi(x, 0) for x in yb["one_arka"] + yb["dirsek"] + yb["pan"] + yb["tilt"]],
+                          esc(", ".join(yb["kol_parcalari"])), esc(", ".join(yb["kafa_parcalari"]))))
+        else:
+            ek.append("170 cm taslakta S2 = 0° dahil edilse bile çakışma %d; en dar %s mm (%s ↔ %s, kol %s, kafa %s)." % (
+                y0["cakisma_sayisi"], sayi(y0["en_kucuk"]["bosluk_mm"], 1), esc(y0["en_kucuk"]["kol_parca"]), esc(y0["en_kucuk"]["kafa_parca"]),
+                y0["en_kucuk"]["kol_poz"], y0["en_kucuk"]["kafa_poz"]))
     k5 = KKLE.get("sag")
     if k5:
         ek.append("Yan bulgu (mevcut 125 cm tasarım): S2 alt sınırı 5° olduğu (15 Ekim, S1 kaseti) için 125 cm'de de eklem aralığında kafa × kol çakışması "
@@ -441,16 +530,26 @@ def acik_isler(TA, KF, uzatma_g, ek=()):
          "2,4 mm duvar ~%%20 hafif (~%s g; AM y ~1 mm düşer) ya da ızgaralı iç yüz; bindirme dili/boss kuralı yeniden kontrol. Baskı süresi ve filament için de önemli" % sayi(uzatma_g * 0.2, 0), "kabuk"],
         ["Kafa 5 V beslemesi", "Pi 5 (5 V 5 A tepe) + 10,1\" ekran (~5 V 1–2 A, <span class='t'>tahmini</span>) aynı Pololu D36V50F5'ten (5,5 A)",
          "tepe toplam 6–7 A çeviriciyi aşabilir: ekran akımı ölçülsün; gerekirse ekrana ayrı küçük 5 V çevirici ya da ≥ 8 A çevirici. Kafa ısısı (Pi + ekran) yeniden ölçülmeli", "elektrik"],
-        ["Kablo uzamaları", "gövde +%s mm (12 V, ESP32 USB, servo uzatmaları), kol tüpü +%s mm, tilt servo +%s mm (adaptör)" % (sayi(TA.DY, 0), sayi(TA.UST_KOL_UZAMA, 0), sayi(KF["adaptor_h_mm"], 0)),
+        ["Kablo uzamaları", "gövde +%s mm (12 V, ESP32 USB, servo uzatmaları), kol tüpü +%s mm, ön kol +%s mm (bilek servosu), tilt servo +%s mm (adaptör)" % (
+            sayi(TA.DY, 0), sayi(TA.UST_KOL_UZAMA, 0), sayi(getattr(TA, "ON_KOL_UZAMA", 0.0), 1), sayi(KF["adaptor_h_mm"], 0)),
          "servo uzatması ~1,3 → ~1,8 m: 22 AWG'de 2,5 A'de düşüm 0,34 → ~0,46 V (servo ~5,5 V görür, <span class='t'>tahmini</span>); dağıtım kartlarını traverse seviyesine taşımak (E1 açık işi) artık daha anlamlı. Kablo payı 45 g tahmini", "elektrik"],
-        ["Kol oranı kararı", "×1,15 taslakta; ×1,25 / ×1,36 omuz servosunu 2× payın altına indirir", "Kol oranı tablosu (yukarıda). ×1,25+ seçilirse omuz servosu ve omuz yuvası değişir; kafa × kol taraması yeniden", "Duffy"],
+        (["Kol oranı kararı", "×1,15 taslakta; ×1,25 / ×1,36 omuz servosunu 2× payın altına indirir", "Kol oranı tablosu (yukarıda). ×1,25+ seçilirse omuz servosu ve omuz yuvası değişir; kafa × kol taraması yeniden", "Duffy"]
+         if getattr(TA, "KOL_SECIM", "115") == "115" else
+         ["Kol oranı kararı", "verildi (Duffy, 24 Ekim 2026): ×1,25 + omuz %s; taslak geometrisi ×1,25 (ek ön kolda)" % getattr(TA, "OMUZ_SERVO", {}).get("ad", "DS3235"),
+          "uygulandı; analiz bölümleri ×1,25 + %s ile yeniden koşuldu (kontrol ajanı, 24 Ekim 2026): yeni çakışma %d, kafa × kol en dar %s" % (
+              getattr(TA, "OMUZ_SERVO", {}).get("ad", "DS3235"), len(yeni_cak_say()[0]), kafakol_en_dar()), "–"]),
         ["Yüz ekranı modeli", "hocanın vereceği HDMI ekran belli değil; CAD Waveshare 10.1\" (B), 600 g <span class='t'>tahmini</span>",
          "gelince ölçü/kütle/delik <code>taslak_ayar.EKRAN10</code>'a; <code>kafa10.dengele()</code> kafayı yeniden dengeler; pan payı (%s×) ekran kütlesine duyarlı" % (sayi(SV["yeni-444"]["kafa"]["pan"]["pay"], 2) if H else "?"), "hoca + tasarım"],
         ["Taban genişletme (520)", "yana devrilme payı; 480'de motor braketi M4'leri uzun raya biniyor", "<code>TASLAK_TABAN_W=520</code> ile yeniden üret; braket artık 3 mm plakaya konsol: plaka rijitliği ve etek dolgu şeridi baskı yönü açık", "tasarım"],
-        ["AM'yi öne almak", "geri devrilme darboğazı (AM z −11,6)", "akü ~75 mm öne (taban yerleşimi) ya da ön-alt balast; rampada kol pozu sınırı (yazılım)", "taban + yazılım"],
+        ["AM'yi öne almak", "geri devrilme darboğazı (AM z %s)" % (sayi(Y["am"][2], 1) if Y else "?"), "akü ~75 mm öne (taban yerleşimi) ya da ön-alt balast; rampada kol pozu sınırı (yazılım)", "taban + yazılım"],
         ["Teker motoru", "rampada ivme %s m/s²'ye inmeli; yerinde dönüş standart tekerle ×%s" % (sayi(max(m4["a_sinir_rampa5_80"], 0), 2) if m4 else "?", sayi(m4["yerinde_donus"][1]["standart_oran"], 2) if m4 else "?"),
          "JGB37 durma torku + zemin μ ölçümü (K1) şimdi daha kritik; ön omni (K1 a) önerisi güçlendi", "ekip"],
-        ["Omuz servosu", "S1/S2 yüksüz pay ~2,0×, elde yük yok", "jest profili yumuşak (≤ 90°/1 s); yük taşınacaksa ~30–35 kg·cm servo", "tasarım + yazılım"],
+        (["Omuz servosu", "S1/S2 yüksüz pay ~2,0×, elde yük yok", "jest profili yumuşak (≤ 90°/1 s); yük taşınacaksa ~30–35 kg·cm servo", "tasarım + yazılım"]
+         if getattr(TA, "OMUZ_SERVO", {}).get("ad", "DS3218MG") == "DS3218MG" else
+         ["Omuz servosu", "%s seçildi (karar 24 Ekim 2026): ×1,25'te S1 statik %s×, ivmeli %s×, S2 %s×, elde ~%s g (2×)" % (
+             TA.OMUZ_SERVO["ad"], sayi(SV["yeni-444"]["kol"][0]["yuksuz_pay"], 2) if H else "?", sayi(SV["yeni-444"]["kol"][0]["toplam_pay"], 2) if H else "?",
+             sayi(SV["yeni-444"]["kol"][1]["yuksuz_pay"], 2) if H else "?", sayi(SV["yeni-444"]["kol"][0]["izinli_yuk_2x_g"], 0) if H else "?"),
+          "jest profili yumuşak (darbe güvenli hız kol analizinde); dirsek geri sürmeye karşı yazılımda konum hatası izleme; siparişten önce model / gövde teyidi", "yazılım + satın alma"]),
         ["S1 kaseti (mevcut, WIP)", "S1 kablo tamburu ↔ kol çatalı 97,9 / üst kol tüpü 65,0 mm³, tüp ↔ S1 kaset kapağı 7,6 mm³ (iki yanda; 125 cm'de de)", "S1 kaseti tasarımında çözülecek; taslağa özgü değil", "kabuk / omuz"],
         ["Pan rulman yükü", "6808 çiftinde radyal %s N (125 cm: %s N)" % (sayi(SV["yeni-444"]["kafa"]["pan"]["rulman_radyal_N"], 0), sayi(SV["eski-444"]["kafa"]["pan"]["rulman_radyal_N"], 0)) if H else "",
          "6808-2RS yük değerleri doğrulanacak (OZET açık işi); kafa AM'si pan eksenine yaklaştırılabilir", "tasarım"],
@@ -479,17 +578,22 @@ def sonuc_kutusu():
             sayi(y4["izgara_en_kucuk_rampa"], 2), sayi(min(o5["izgara_rampa"]) if o5 else y5["izgara_en_kucuk_rampa"], 2)),
         "<b>Yazılım:</b> rampada ivme ≤ 0,1 m/s² (0,25'te motor %s) ve kollar ev pozunda; yerinde dönüş standart tekerle sürekli torkun ×%s'i → ön omni (K1 a).",
         "<b>JGB37 ölçümü</b> şart: durma 21 değil 9 kg·cm çıkarsa düz zeminde bile %s.",
-        "<b>Kollar yüksüz jest:</b> omuz S1/S2 payı %s× / %s× (125 cm: %s× / %s×), elde yük yok, yumuşak hareket profili. Kol ×1,25+ seçilirse omuz servosu büyür.",
+        "<b>Kollar (×%s + %s):</b> omuz S1/S2 statik payı %s× / %s× (125 cm: %s× / %s×), ivmeli S1 %s×, elde ~%s g (2× pay). Jest profili yumuşak; el takılırsa "
+        "omuz dirseği geri sürer: yazılımda konum hatası / tork sınırı (kol analizi).",
         cak_metin,
         "Tedarik / yapım: 1.235,5 mm direk tek parça; uzatma bantları %s; kafa 5 V bütçesi; kablo uzamaları (Açık işler)." % "~1,15 kg PETG",
     ]
     sart[1] = sart[1] % (oran(m4["rampa5_yavas"]["oran"]), sayi(m4["yerinde_donus"][1]["standart_oran"], 2))
     sart[2] = sart[2] % oran(m4["stall9"]["duz"]["oran"])
-    sart[3] = sart[3] % (sayi(ys["kol"][0]["yuksuz_pay"], 2), sayi(ys["kol"][1]["yuksuz_pay"], 2), sayi(es["kol"][0]["yuksuz_pay"], 2), sayi(es["kol"][1]["yuksuz_pay"], 2))
+    _tv = taslak_varyant()
+    sart[3] = sart[3] % (sayi(_tv["oran"] if _tv else 1.15, 2), esc(ys["kol"][0]["servo"]), sayi(ys["kol"][0]["yuksuz_pay"], 2), sayi(ys["kol"][1]["yuksuz_pay"], 2),
+                         sayi(es["kol"][0]["yuksuz_pay"], 2), sayi(es["kol"][1]["yuksuz_pay"], 2), sayi(ys["kol"][0]["toplam_pay"], 2), sayi(ys["kol"][0]["izinli_yuk_2x_g"], 0))
+    omuz_ok = ys["kol"][0]["yuksuz_pay"] >= 2.0 and ys["kol"][1]["yuksuz_pay"] >= 2.0 and ys["kol"][0]["toplam_pay"] >= 1.5
     return ("<div class='sonuc'><h2>Sonuç: olur mu?</h2><div class='cevap'>Evet, şartlı: 1,70 m bu modüllerle yapılabilir, ama 125 cm'nin rahat "
-            "payları yok; devrilme, teker motoru ve omuz servosu sınırda.</div><ol>%s</ol>"
+            "payları yok; %s.</div><ol>%s</ol>"
             "<p class='not'>Kafa tarafı iyi: tilt ekseni kafanın AM'sinde (%s mm), tilt payı %s× (125 cm: %s×); pan %s× (125 cm: %s×). Kütle %s kg, AM y %s mm "
             "(125 cm: %s kg, y %s) bağımsız olarak doğrulandı.</p></div>" % (
+                ("devrilme ve teker motoru sınırda (omuz %s ile yeterli)" % esc(ys["kol"][0]["servo"])) if omuz_ok else "devrilme, teker motoru ve omuz servosu sınırda",
                 "".join("<li>%s</li>" % s for s in sart), sayi(D["kafa"]["tilt_am_eksene_dik_mm_sekil"], 2) if D else "?",
                 sayi(ys["kafa"]["tilt"]["pay"], 2), sayi(es["kafa"]["tilt"]["pay"], 2), sayi(ys["kafa"]["pan"]["pay"], 2), sayi(es["kafa"]["pan"]["pay"], 2),
                 sayi(Y["kutle_g"] / 1000, 2), sayi(Y["am"][1], 0), sayi(E["kutle_g"] / 1000, 2), sayi(E["am"][1], 0)))

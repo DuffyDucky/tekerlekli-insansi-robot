@@ -194,10 +194,13 @@ for t in ("sag", "sol"):
     de = eksen(dr + "_OnKol", "dirsek")
     bi = eksen(dr + "_El", "bilek")
     sx = 1 if t == "sag" else -1
-    el_ucu = V(sx * A.DIRSEK["el_ucu"][0], TA.S3_YENI + A.DIRSEK["el_ucu"][1] - TA.UST_KOL_UZAMA - TA.EL_UZAMA, A.DIRSEK["el_ucu"][2])
+    el_ucu = V(sx * A.DIRSEK["el_ucu"][0], TA.S3_YENI + A.DIRSEK["el_ucu"][1] - (TA.KOL_BOY_YENI - TA.KOL_BOY_ESKI), A.DIRSEK["el_ucu"][2])
     KOL[t] = dict(
         omuz_ekseni_S1=s1, S2_ekseni=s2, dirsek_ekseni=de, bilek_ekseni=bi, el_ucu=r3(el_ucu),
         omuz_ekseni_y=TA.S3_YENI,
+        bolum_boylari_mm=dict(ust_kol=round(TA.S3_YENI - de["nokta"][1], 2), on_kol=round(de["nokta"][1] - bi["nokta"][1], 2),
+                              el=round(bi["nokta"][1] - el_ucu.y, 2), toplam=round(TA.S3_YENI - el_ucu.y, 2),
+                              not_="ev pozunda dikey: S1 ekseni -> dirsek ekseni -> bilek ekseni (horn alt yuzu) -> el ucu"),
         bilesenler={"omuz gobegi (S1 ile doner)": kam(gob), "ust kol: kol catali + tup + S2 servosu (S1 + S2)": kam(kol),
                     "dirsek catali (ust kola sabit)": kam(ust), "on kol + dirsek/bilek servolari (dirsek ile)": kam(onk),
                     "bilek flansi + el (bilek ile)": kam(el)},
@@ -224,14 +227,16 @@ mke = sum(p["kutle"] for p in kol_parcalar(TP.ESKI, "sag", False))
 # x1,36 kaba tahmini: kol boyu orantili, uzayan bolumlerin birim kutlesi bu taslaktaki uzatmalarla ayni (tup 0,41 g/mm, yaka 0,54 g/mm)
 L136 = TA.KOL_BOY_ESKI * 1.36
 ek136 = (L136 - TA.KOL_BOY_ESKI)
-m_ek_birim = (mkn - mke) / (TA.UST_KOL_UZAMA + TA.EL_UZAMA)
+m_ek_birim = (mkn - mke) / (TA.KOL_BOY_YENI - TA.KOL_BOY_ESKI)
 M136 = Me * 1.36 + m_ek_birim * ek136 * (TA.KOL_BOY_ESKI + ek136 / 2) * 0.5
-KOL["oran"] = dict(hedef=TA.KOL_ORAN_HEDEF, secilen=round(TA.KOL_ORAN, 4), boy_eski_mm=TA.KOL_BOY_ESKI, boy_yeni_mm=TA.KOL_BOY_YENI,
-                   ust_kol_uzama_mm=TA.UST_KOL_UZAMA, el_uzama_mm=TA.EL_UZAMA,
+KOL["oran"] = dict(hedef=TA.KOL_ORAN_HEDEF, secilen=round(TA.KOL_ORAN, 4), secim=TA.KOL_SECIM, karar=TA.KOL_KARAR,
+                   boy_eski_mm=TA.KOL_BOY_ESKI, boy_yeni_mm=round(TA.KOL_BOY_YENI, 2),
+                   ust_kol_uzama_mm=TA.UST_KOL_UZAMA, on_kol_uzama_mm=TA.ON_KOL_UZAMA, el_uzama_mm=TA.EL_UZAMA,
+                   secenekler=TA.KOL_SECENEK, omuz_servo=dict(TA.OMUZ_SERVO, eski=TA.OMUZ_SERVO_ESKI["ad"]),
                    S1_statik_moment_kol_yatay=dict(eski_gmm=round(Me, 0), yeni_gmm=round(Mn, 0), oran=round(Mn / Me, 3),
                                                    x136_kaba_tahmin_gmm=round(M136, 0), x136_oran=round(M136 / Me, 2),
-                                                   not_="kol (Kol grubu + dirsek) one yatay; DS3218MG yuksuz pay eskiden 2,5x (OZET.md): yeni ~%.1fx, x1,36'da ~%.1fx (kaba; servo hesabi analiz ajaninda)" % (
-                                                       2.5 * Me / Mn, 2.5 * Me / M136)),
+                                                   not_="kol (Kol grubu + dirsek) one yatay; geometrik moment orani (servo bagimsiz). Servo paylari (%s) "
+                                                        "kontrol ajaninin hesabinda (taslak_hesap.py / kol-analiz)" % TA.OMUZ_SERVO["ad"]),
                    kol_kutle_g=dict(eski=round(mke, 1), yeni=round(mkn, 1)))
 log("kol: moment oran %.3f (x1,36 kaba %.2f), kutle %.1f -> %.1f g" % (Mn / Me, M136 / Me, mke, mkn))
 
@@ -347,8 +352,8 @@ IDX = {(p["ad"], p["modul"]): p for p in P}
 for c in cak:
     pa = next(p for p in P if p["ad"] == c["a"] and p["modul"] == c["a_modul"])
     pb = next(p for p in P if p["ad"] == c["b"] and p["modul"] == c["b_modul"])
-    ea = eski_karsi(c["a"], c["a_modul"], pa["merkez"] - (pa["v"] or V(0, 0, 0)))
-    eb = eski_karsi(c["b"], c["b_modul"], pb["merkez"] - (pb["v"] or V(0, 0, 0)))
+    ea = eski_karsi(pa.get("eski_ad", pa["ad"]), c["a_modul"], pa["merkez"] - (pa["v"] or TP.kaydir(pa["modul"], pa["grup"])))
+    eb = eski_karsi(pb.get("eski_ad", pb["ad"]), c["b_modul"], pb["merkez"] - (pb["v"] or TP.kaydir(pb["modul"], pb["grup"])))
     c["eski_125_hacim_mm3"] = round(ortak(ea["shape"], eb["shape"]), 2) if (ea and eb) else None
     c["kaynak"] = "mevcut tasarim (125'te de var)" if (c["eski_125_hacim_mm3"] or 0) > ESIK else "taslak"
 log("ev pozu kontrolu: %d aday cift, %d cakisma (%d taslaktan) (%.0f s)" % (aday, len(cak), sum(1 for c in cak if c["kaynak"] == "taslak"),
@@ -393,6 +398,71 @@ for psi in (-90.0, -45.0, 0.0, 45.0, 90.0):
         SUP.append(dict(pan=psi, tilt=th, cakisma=n_c, ornek=en_az[:6]))
 log("kafa suprulmesi: %d poz, cakisan poz %d (%.0f s)" % (len(SUP), sum(1 for s in SUP if s["cakisma"]), time.time() - t_k))
 
+# --- kisa kol taramasi (sag kol; sol X aynasi): on kol + el (uzayan bolum) kaba izgarada sabit govdeye, kafaya (ev pozu) ve kendi
+#     ust koluna karsi. Tam tarama (5 derece ince, kafa x kol pan/tilt, iki kol) kontrol ajaninda.
+t_k = time.time()
+
+
+def eklem_P(e, aci):
+    return App.Placement(V(0, 0, 0), App.Rotation(V(*e["yon"]), aci), V(*e["nokta"])) if aci else App.Placement()
+
+
+def tasi_P(sh, pl):
+    s = sh.copy()
+    s.transformShape(pl.toMatrix(), True)
+    return s
+
+
+KS = KOL["sag"]
+e_s1, e_s2, e_de, e_bi = KS["omuz_ekseni_S1"], KS["S2_ekseni"], KS["dirsek_ekseni"], KS["bilek_ekseni"]
+k_on = secim(modul="dirsek_sag", grup="OnKol")
+k_el = secim(modul="dirsek_sag", grup="El")
+k_ust = secim(modul="dirsek_sag", grup="UstKol") + secim(modul="omuz_sag", grup="Kol")
+k_gob = secim(modul="omuz_sag", grup="Gobek")
+sabit = [p for p in P if (p["modul"] == "kabuk" and p["tur"] == "Baski") or p["modul"] in ("iskelet", "kafa") or
+         (p["modul"] == "omuz_sag" and p["grup"] == "Govde")]
+sabit = [p for p in sabit if p["shape"].BoundBox.XMax > 60.0 and p["shape"].BoundBox.YMax > TA.S3_YENI - 520.0]
+S1_ = (-45.0, 0.0, 45.0, 90.0, 135.0)
+S2_ = (e_s2["aralik"][0], 45.0, 90.0, e_s2["aralik"][1])
+DE_ = (0.0, 35.0, 70.0, 105.0)
+BI_ = (-90.0, 0.0, 90.0)
+KOL_TAR = dict(izgara=dict(S1=S1_, S2=S2_, dirsek=DE_, bilek=BI_), hareketli="dirsek_sag OnKol + El (%d parca)" % (len(k_on) + len(k_el)),
+               hedef="kabuk (baski), iskelet, kafa (ev pozu), omuz_sag Govde/Gobek, kendi ust kolu (Kol + dirsek catali); x > 60, y > S3 - 520",
+               poz=0, cakisan_poz=0, cakisma=[], en_dusuk_el_y=None)
+en_alt = None
+for phi in S1_:
+    P1 = eklem_P(e_s1, phi)
+    gob_p = [(q, tasi_P(q["shape"], P1)) for q in k_gob] if phi else [(q, q["shape"]) for q in k_gob]
+    for th in S2_:
+        P2 = P1.multiply(eklem_P(e_s2, th))
+        ust_p = [(q, tasi_P(q["shape"], P2)) for q in k_ust]
+        hedefler = [(q, q["shape"]) for q in sabit] + gob_p + ust_p
+        for al in DE_:
+            P3 = P2.multiply(eklem_P(e_de, al))
+            on_p = [(q, tasi_P(q["shape"], P3)) for q in k_on]
+            for be in BI_:
+                P4 = P3.multiply(eklem_P(e_bi, be))
+                el_p = [(q, tasi_P(q["shape"], P4)) for q in k_el]
+                KOL_TAR["poz"] += 1
+                n0 = len(KOL_TAR["cakisma"])
+                for (p, s) in on_p + el_p:
+                    sb = s.BoundBox
+                    for (q, qs) in hedefler:
+                        if not sb.intersect(qs.BoundBox):
+                            continue
+                        v = ortak(s, qs)
+                        if v > ESIK or v < 0:
+                            KOL_TAR["cakisma"].append(dict(poz=[phi, th, al, be], a=p["ad"], b=q["ad"], b_modul=q["modul"], hacim_mm3=round(v, 2)))
+                if len(KOL_TAR["cakisma"]) > n0:
+                    KOL_TAR["cakisan_poz"] += 1
+                el_s = next(s for (q, s) in el_p if q["ad"] == "El")
+                if en_alt is None or el_s.BoundBox.YMin < en_alt[0]:
+                    en_alt = (el_s.BoundBox.YMin, [phi, th, al, be])
+KOL_TAR["en_dusuk_el_y"] = dict(y=round(en_alt[0], 1), poz=en_alt[1])
+KOL_TAR["sure_s"] = round(time.time() - t_k, 1)
+log("kol kisa tarama: %d poz, cakisan poz %d, cakisma %d, el en alt y %.1f (%.0f s)" % (
+    KOL_TAR["poz"], KOL_TAR["cakisan_poz"], len(KOL_TAR["cakisma"]), en_alt[0], time.time() - t_k))
+
 # en kucuk bosluklar (bilgi): kafa alti <-> omuz kaseti / kabuk ust kapagi, tabla <-> catal (ev pozu)
 def mesafe(a_list, b_list):
     en = None
@@ -430,9 +500,9 @@ ANALIZ = dict(
                                  sigmayan_250=[b["ad"] for b in BASKI if not b["sigar_250"]], hedef_230_asan=[b["ad"] for b in BASKI if not b["hedef_230"]],
                                  tabla=TA.TABLA, hedef=TA.TABLA_HEDEF),
     baglar=TP.BAGLAR, degisen=TP.DEGISEN,
-    yerlesim=dict(ev_pozu_cakisma=cak, aday_cift=aday, esik_mm3=ESIK, kafa_suprulme=SUP, bosluk=BOSLUK,
+    yerlesim=dict(ev_pozu_cakisma=cak, aday_cift=aday, esik_mm3=ESIK, kafa_suprulme=SUP, bosluk=BOSLUK, kol_kisa=KOL_TAR,
                   not_="kisa kontrol: yeni/degisen parcalar x tum parcalar ve farkli otelenen parca ciftleri (ev pozu); kafa pan {-90,-45,0,45,90} x "
-                       "tilt {-15,-7,5,0,7,5,15}. Tam carpisma taramasi (kol pozlari, kafa x kol) analiz ajaninda."),
+                       "tilt {-15,-7,5,0,7,5,15}; sag kol kaba izgara (on kol + el). Tam carpisma taramasi (ince kol pozlari, kafa x kol) analiz ajaninda."),
     uzatma=dict(dy=TA.DY, dikis=TA.UZATMA_DIKIS, braket_y=TA.UZATMA_BRAKET_Y, direk_mm=TA.DIREK_L_YENI),
     sure_s=round(time.time() - TP.t0, 1), log=TP.LOG,
 )

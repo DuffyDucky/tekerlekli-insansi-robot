@@ -56,6 +56,45 @@ sup_cak = sum(1 for s in yer["kafa_suprulme"] if s["cakisma"])
 o = KL["oran"]
 mo = o["S1_statik_moment_kol_yatay"]
 uzatma_g = sum(p["kutle_g"] for p in K["parcalar"] if p["ad"].startswith("Govde uzatma bandi"))
+BB = KL["sag"].get("bolum_boylari_mm", {})
+SERVO = TA.OMUZ_SERVO["ad"]
+KOL_ANALIZ_LINK = ("<p class='karar'>Ayrıntılı kol analizi (DS3235 karşılaştırması, akım bütçesi, parça yükleri ve emniyet katsayıları, dirsek geri sürme, "
+                   "önceki doğrusal modelle fark): <a href='kol-analiz/rapor.html'>kol-analiz/rapor.html</a>. İlk analiz ×1,25'i doğrusal (tüp : yaka) "
+                   "varsaymıştı; kontrol ajanı (24 Ekim 2026) taslağın gerçek ×1,25 geometrisiyle (ek ön kolda) yeniden koştu.</p>")
+
+
+def analiz_durumu():
+    """Analiz dosyalari (analiz/*.json) guncel geometriye mi ait? (eski, neden) dondurur. Kontrol ajani yeniden kosunca not kalkar."""
+    neden = []
+    try:
+        g = json.load(open(os.path.join(HERE, "analiz", "girdi-yeni-444.json"), encoding="utf-8"))
+        y_an = g["eksen"]["dirsek_sag|bilek"]["n"][1]
+        y_su = KL["sag"]["bilek_ekseni"]["nokta"][1]
+        if abs(y_an - y_su) > 0.05:
+            neden.append("bilek ekseni analizde y %s, güncel geometride y %s" % (sayi(y_an, 1), sayi(y_su, 1)))
+    except Exception:
+        neden.append("analiz/girdi-yeni-444.json okunamadı")
+    try:
+        hs = json.load(open(os.path.join(HERE, "analiz", "hesap.json"), encoding="utf-8"))
+        sv = hs["servo"]["yeni-444"]["kol"][0].get("servo")
+        if sv != SERVO:
+            neden.append("omuz servosu hesapta %s, kararda %s" % (sv, SERVO))
+        if TA.ON_KOL_UZAMA > 0 and hs.get("kol_orani", {}).get("dagilim") != "on_kol":
+            neden.append("kol oranı hesabı ek boyu tüp : yaka dağıtıyor (ön kol değil)")
+    except Exception:
+        neden.append("analiz/hesap.json okunamadı")
+    return bool(neden), neden
+
+
+ANALIZ_ESKI, ANALIZ_NEDEN = analiz_durumu()
+
+
+def yeniden_notu(bolum):
+    if not ANALIZ_ESKI:
+        return ""
+    return ("<div class='karar'><b class='uy'>×%s + %s için yeniden hesaplanacak.</b> Bu %s bölümündeki değerler önceki geometriye aittir "
+            "(kol ×1,15, omuz DS3218MG; %s). Kontrol ajanı <code>taslak_analiz.py</code> + <code>taslak_hesap.py</code> ile yeniden koşunca bu not "
+            "kendiliğinden kalkar.</div>" % (sayi(o["hedef"], 2), esc(SERVO), bolum, esc("; ".join(ANALIZ_NEDEN))))
 
 kart = [
     ("%s mm" % sayi(K["olcu"]["boy"], 0), "boy, yerden kafa tepesine (125 cm tasarım: %s mm) · %s × %s mm genişlik × derinlik" % (
@@ -69,12 +108,15 @@ kart = [
         BO["yeni"], BO["degisti"], len(BO["sigmayan_250"]), len(BO["hedef_230_asan"]))),
     ("%s mm" % sayi(KF["tilt_grubu"]["am_eksene_dik_uzaklik_mm"], 2), "kafanın (tilt grubu %s g) AM'si ile tilt ekseni arası · tilt %s°" % (
         sayi(KF["tilt_grubu"]["kutle_g"], 0), aralik(TA.TILT_ARALIK))),
-    ("×%s" % sayi(o["secilen"], 2), "kol boyu %s → %s mm · omuz S1 statik momenti ×%s (×1,36'da ~×%s)" % (
-        sayi(o["boy_eski_mm"], 1), sayi(o["boy_yeni_mm"], 1), sayi(mo["oran"], 2), sayi(mo["x136_oran"], 2))),
+    ("×%s" % sayi(o["secilen"], 2), "kol boyu %s → %s mm (karar; tüp +%s, ön kol +%s, yaka +%s) · omuz S1 statik momenti ×%s · omuz servoları %s" % (
+        sayi(o["boy_eski_mm"], 1), sayi(o["boy_yeni_mm"], 1), sayi(o["ust_kol_uzama_mm"], 0), sayi(o.get("on_kol_uzama_mm", 0), 1),
+        sayi(o["el_uzama_mm"], 0), sayi(mo["oran"], 2), SERVO)),
     ("+%s mm" % sayi(TA.DY, 0), "uzama gövdede: 2 sabit kesitli kabuk bandı (%s g) + direk %s mm (sigma 40×40)" % (sayi(uzatma_g, 0), sayi(TA.DIREK_L_YENI, 1))),
 ]
 
 gorsel = [("taslak-on.png", "Önden (ev pozu)"), ("taslak-yan.png", "Sağdan"), ("taslak-izometrik.png", "İzometrik"),
+          ("taslak-kol.png", "Sağ kol yakın: ×%s, ön kol uzatıldı (dirsek → bilek %s mm), omuz %s" % (
+              sayi(o["hedef"], 2), sayi(BB.get("on_kol", 0), 1), SERVO)),
           ("karsilastirma-125-170-on.png", "125 cm (solda, mevcut tasarım) ve 170 cm taslak (sağda), önden, aynı ölçek"),
           ("karsilastirma-125-170-izo.png", "125 cm ve 170 cm, izometrik"), ("taslak-kafa.png", "Yeni kafa: 10,1\" ekran, kamera üstte"),
           ("taslak-kafa-arka.png", "Kafa arkadan: alt boyun açıklığı + arka çentik, havalandırma yarıkları"),
@@ -112,6 +154,12 @@ h.append("<h1>Lale 1,70 m taslak montajı <span class='rozet'>TASLAK</span></h1>
 h.append("<div class='sub'>21 Ekim 2026 kararları (hoca + ekip): boy 1700 mm (yerden kafa tepesine), yüz kafada 10\" sınıfı HDMI ekran (model belli değil), "
          "otonomi yok (lidar / lidar direği / haritalama kapsam dışı), kumanda telefondan. Mevcut modüller ve ana montaj değiştirilmedi; varyant "
          "<code>tasarim/freecad/taslak-170/</code> klasöründe. <span class='t'>Tahmini</span> işaretli değerler ölçülmedi.</div>")
+h.append("<div class='karar'><b>Karar (Duffy, 24 Ekim 2026):</b> kol ×%s (%s), omuz servoları (S1, S2; iki kol) <b>%s</b> (eski %s; gövde aynı kabul, "
+         "geometri değişmedi). Uzatma: üst kol tüpü +%s mm (×1,15'ten), ön kol +%s mm (yeni), el yakası +%s mm (×1,15'ten). Eski ×1,15 taslak "
+         "<code>TASLAK_KOL=115</code> ile yeniden üretilir.</div>" % (
+             sayi(o["hedef"], 2), esc(o.get("karar", "")), esc(SERVO), esc(TA.OMUZ_SERVO_ESKI["ad"]), sayi(o["ust_kol_uzama_mm"], 0),
+             sayi(o.get("on_kol_uzama_mm", 0), 1), sayi(o["el_uzama_mm"], 0)))
+h.append(yeniden_notu("sonuç kutusu ve analiz kartlarındaki (devrilme, servo, çarpışma)"))
 h.append(RA.sonuc_kutusu())
 h.append("<div class='k'>" + "".join("<div class='kpi'><b>%s</b><span>%s</span></div>" % (esc(a), esc(b)) for a, b in kart + RA.kartlar()) + "</div>")
 
@@ -126,7 +174,11 @@ h.append("</div>")
 
 # ---------------------------------------------------------------------- degisenler
 h.append("<h2>Değişenler (125 cm → 170 cm)</h2>")
-h.append(tablo(["Modül", "Parça / konu", "Değişiklik"], [[esc(a), esc(b), esc(c)] for a, b, c in AN["degisen"]]))
+karar_sat = [["<b>Kol + omuz (karar, Duffy 24 Ekim 2026)</b>", "kol oranı, omuz S1/S2 servoları",
+              "kol ×1,15 → ×%s (el ucu omuz ekseninden %s mm); ek ön kola (+%s mm), tüp ve yaka ×1,15'teki gibi; omuz servoları %s → %s "
+              "(4 adet, iki kol; gövde aynı kabul, geometri değişmedi)" % (sayi(o["hedef"], 2), sayi(o["boy_yeni_mm"], 1), sayi(o.get("on_kol_uzama_mm", 0), 1),
+                                                                          esc(TA.OMUZ_SERVO_ESKI["ad"]), esc(SERVO))]]
+h.append(tablo(["Modül", "Parça / konu", "Değişiklik"], karar_sat + [[esc(a), esc(b), esc(c)] for a, b, c in AN["degisen"]]))
 h.append("<p class='not'>Boy zinciri: omuz ekseni (travers merkezi) %s → %s mm; kafa yereli = traversin üst yüzü (y %s); kafa kabuğu altı yerel %s, "
          "üstü %s (eski 275). Uzama 476,5 dikişinin üstünde: taban, etek, gövde alt bandı ve alt gövde braketleri yerinde.</p>" % (
              sayi(A.S3, 0), sayi(TA.S3_YENI, 0), sayi(TA.S3_YENI + 20, 0), sayi(TA.KAFA_ALT_YEREL, 0), sayi(TA.KAFA_UST_YEREL, 0)))
@@ -161,19 +213,40 @@ h.append("<li>Kafa alt duvarında boyun açıklığı x ±38 (R30 boyun × tilt 
          "<li>Kafa kabuğu 4 baskı parçası (ön/arka × sağ/sol): x = 0 dikişinde 16 mm bindirme dili, tepe dikiş cıvataları havşalı (boy 1700'ü geçmesin).</li></ul>")
 
 # ---------------------------------------------------------------------- kol
-h.append("<h2>Kol: ×%s (gerekçe)</h2>" % sayi(o["secilen"], 3))
-h.append("<p>Boyla orantılı uzatma ×1,36 olurdu (el ucu %s mm). Seçilen ×%s: üst kol tüpü +%s mm, el yakası +%s mm (el ucu omuz ekseninden %s → %s mm).</p>" % (
-    sayi(o["boy_eski_mm"] * 1.36, 0), sayi(o["secilen"], 3), sayi(o["ust_kol_uzama_mm"], 0), sayi(o["el_uzama_mm"], 0), sayi(o["boy_eski_mm"], 1),
-    sayi(o["boy_yeni_mm"], 1)))
-h.append("<ul><li>Omuz torku: kol öne yatayken S1 statik momenti ×%s (eski %s, yeni %s g·mm); ×1,36'da kabaca ×%s. DS3218MG yüksüz pay eskiden 2,5× "
-         "(OZET.md) → bu taslakta ~%s×, ×1,36'da ~%s× olurdu (kaba tahmin; hesaplanan değer Servo bölümünde).</li>" % (
-             sayi(mo["oran"], 2), sayi(mo["eski_gmm"], 0), sayi(mo["yeni_gmm"], 0), sayi(mo["x136_oran"], 2), sayi(2.5 / mo["oran"], 1),
-             sayi(2.5 / mo["x136_oran"], 1)))
+h.append("<h2>Kol: ×%s (karar) ve omuz %s</h2>" % (sayi(o["secilen"], 3), esc(SERVO)))
+h.append(KOL_ANALIZ_LINK)
+h.append("<p>Boyla orantılı uzatma ×1,36 olurdu (el ucu %s mm). Karar ×%s (%s): el ucu omuz ekseninden %s → %s mm. Uzatma dağılımı: üst kol tüpü +%s mm, "
+         "<b>ön kol +%s mm</b>, el yakası +%s mm.</p>" % (
+             sayi(o["boy_eski_mm"] * 1.36, 0), sayi(o["hedef"], 2), esc(o.get("karar", "")), sayi(o["boy_eski_mm"], 1), sayi(o["boy_yeni_mm"], 1),
+             sayi(o["ust_kol_uzama_mm"], 0), sayi(o.get("on_kol_uzama_mm", 0), 1), sayi(o["el_uzama_mm"], 0)))
+if BB:
+    h.append(tablo(["Bölüm (ev pozu, dikey)", "125 cm (mm)", "Taslak (mm)", "Not"], [
+        ["Üst kol: S1 ekseni → dirsek ekseni", sayi(-A.DIRSEK["eksen_y"], 1), sayi(BB["ust_kol"], 1), "tüp 100 → %s mm" % sayi(100 + o["ust_kol_uzama_mm"], 0)],
+        ["Ön kol: dirsek ekseni → bilek ekseni (horn)", sayi(A.DIRSEK["eksen_y"] - A.DIRSEK["bilek_nokta"][1], 1), sayi(BB["on_kol"], 1),
+         "ön kol gövdesi dirsek ve bilek servosu arasında uzatıldı"],
+        ["El: bilek ekseni → el ucu", sayi(A.DIRSEK["bilek_nokta"][1] - A.DIRSEK["el_ucu"][1], 1), sayi(BB["el"], 1), "yaka 13,6 → 32,6 mm (×1,15'teki gibi)"],
+        ["<b>Toplam</b>", sayi(o["boy_eski_mm"], 1), sayi(BB["toplam"], 1), "×%s" % sayi(o["secilen"], 4)],
+    ], "sayi"))
+h.append("<ul><li><b>Neden ön kol:</b> kol analizi uzatmayı el yakasına değil tüpe ve/veya ön kola vermeyi önerdi (yakadaki 2× M3 ve bilek MG996R mili konsolu "
+         "zayıf halka; yaka 32,6 mm'de kaldı). Tüp ile ön kol arasında ön kol seçildi: sınırlayıcı eklem omuz S1 (DS3235 ×1,25 ivmeli pay ~1,6, kol analizi). "
+         "Ek tüpe verilseydi tüm dirsek grubu (dirsek çatalı + ön kol + iki servo + el, ~380 g) uzaklaşırdı; ön kola verilince yalnız bilek servosu + el "
+         "(~160 g) ve ön kol uzatması uzaklaşıyor, S1 momenti daha az artıyor. Tüp +Y basılıyor (eğilme katmanlar arası), bu yüzden uzatılmadı. Dirsek MG996R "
+         "payı geniş (statik ~2 / durma 9,4 kg·cm, kol analizi). Oran da insan koluna yaklaşır (üst kol / ön kol ×1,15'te %s, şimdi %s; insanda ~1,3).</li>" % (
+             sayi(203.0 / 83.1, 2), sayi(BB["ust_kol"] / BB["on_kol"], 2) if BB else "?"))
+_HS = RA.H["servo"]["yeni-444"]["kol"] if RA.H else None
+h.append("<li>Omuz torku: kol öne yatayken S1 statik momenti ×%s (125 cm %s, taslak %s g·mm). %s</li>" % (
+    sayi(mo["oran"], 2), sayi(mo["eski_gmm"], 0), sayi(mo["yeni_gmm"], 0),
+    ("Kontrol ajanı hesabı (Servo bölümü): %s ile S1 statik pay %s×, ivmeli %s×, S2 %s×, elde ~%s g (2×); ilk kol analizi doğrusal modelle statik ~2,7×, "
+     "ivmeli ~1,6× öngörmüştü." % (esc(_HS[0]["servo"]), sayi(_HS[0]["yuksuz_pay"], 2), sayi(_HS[0]["toplam_pay"], 2), sayi(_HS[1]["yuksuz_pay"], 2),
+                                  sayi(_HS[0]["izinli_yuk_2x_g"], 0))) if _HS else "Servo payları analiz/hesap.json'da."))
+h.append("<li>Omuz servoları <b>%s</b> (eski %s): gövde DS3218 ile aynı kabul edildi (40 × 20 × 40, kulak delikleri 49,5 × 10, 25T çıkış, 60 g); omuz yuvası "
+         "ve geometri değişmedi, yalnız ad / kod / not. Gövde yüksekliği kaynaklarda 38,5 / 40 / 40,5 mm: <span class='uy'>servo gelince kumpasla "
+         "doğrulanacak</span> (yuva derinliği ve horn düzlemi buna bağlı).</li>" % (esc(SERVO), esc(TA.OMUZ_SERVO_ESKI["ad"])))
 h.append("<li>Üst kütle: kol kütlesi %s → %s g (her kol); uzun ve ağır kol, %s mm omuz yüksekliğinde devrilme momentini büyütür.</li>" % (
     sayi(o["kol_kutle_g"]["eski"], 0), sayi(o["kol_kutle_g"]["yeni"], 0), sayi(TA.S3_YENI, 0)))
 _b = yer["bosluk"].get("el <-> govde kabugu (ev pozu, sag)")
-h.append("<li>Yalnız iki basit PETG parça değişti (tüp, el); dirsek ve ön kol modülleri aynen. Dirsek çatalı / el ↔ gövde kabuğu ev pozunda %s mm "
-         "(eski ~3,8: dirsek 30 mm aşağıda, kabuğun dar bölgesinde).</li></ul>" % (sayi(_b["mm"], 1) if _b else "−"))
+h.append("<li>Değişen PETG parçalar: üst kol tüpü, ön kol gövdesi (tek parça kaldı), el; dirsek çatalı, servolar, flanş aynen. Dirsek çatalı / ön kol / el ↔ gövde "
+         "kabuğu ev pozunda %s mm (125 cm ~3,8).</li></ul>" % (sayi(_b["mm"], 1) if _b else "−"))
 satir = []
 for t in ("sag", "sol"):
     k = KL[t]
@@ -235,6 +308,19 @@ h.append("<ul><li>Taslaktan gelen çakışma: <b class='%s'>%d</b>%s</li>" % (
 h.append("<li>Mevcut tasarımdan gelen (125 cm'de de aynı hacim): %s</li>" % ("; ".join("%s (%s) × %s (%s mm³)" % (
     esc(c["a"]), esc(c["a_modul"]), esc(c["b"]), sayi(c["hacim_mm3"], 1)) for c in mevcut_cak) or "yok"))
 h.append("<li>Kafa süpürmesi: çakışan poz <b class='%s'>%d / %d</b></li>" % ("ok" if not sup_cak else "no", sup_cak, len(yer["kafa_suprulme"])))
+KT = yer.get("kol_kisa")
+if KT:
+    _ck = {}
+    for c in KT["cakisma"]:
+        _ck.setdefault((c["a"], c["b"]), []).append(c)
+    h.append("<li>Kol kaba ızgarası (sağ kol, ön kol + el; S1 %s × S2 %s × dirsek %s × bilek %s = %d poz; gövde kabuğu, iskelet, kafa ev pozunda, omuz ve "
+             "kendi üst kolu): çakışan poz <b class='%s'>%d / %d</b>%s. El en alt y %s mm (poz %s). İnce tarama ve kafa × kol (pan/tilt) kontrol ajanında.</li>" % (
+                 "/".join(sayi(x, 0) for x in KT["izgara"]["S1"]), "/".join(sayi(x, 0) for x in KT["izgara"]["S2"]),
+                 "/".join(sayi(x, 0) for x in KT["izgara"]["dirsek"]), "/".join(sayi(x, 0) for x in KT["izgara"]["bilek"]), KT["poz"],
+                 "ok" if not KT["cakisan_poz"] else "no", KT["cakisan_poz"], KT["poz"],
+                 (": " + "; ".join("%s × %s (%d poz, en çok %s mm³, ör. %s)" % (esc(a), esc(b), len(v), sayi(max(x["hacim_mm3"] for x in v), 1), v[0]["poz"])
+                                   for (a, b), v in _ck.items())) if _ck else "",
+                 sayi(KT["en_dusuk_el_y"]["y"], 0), KT["en_dusuk_el_y"]["poz"]))
 BOS_AD = {"kafa kabugu <-> omuz (ev pozu)": "kafa kabuğu ↔ omuz (ev pozu)", "kafa kabugu <-> govde kabugu ust kapagi": "kafa kabuğu ↔ gövde kabuğu üst kapağı",
           "kafa (Bas) <-> egme catali / tilt servosu / adaptor": "kafa ↔ eğme çatalı / tilt servosu / adaptör (eski kafada da 1,0)",
           "ekran <-> catal / adaptor": "ekran ↔ çatal / adaptör (ev pozu)", "el <-> govde kabugu (ev pozu, sag)": "kol ↔ gövde kabuğu (ev pozu, sağ)"}
@@ -244,16 +330,23 @@ h.append("</ul>")
 
 # ---------------------------------------------------------------------- analiz bolumleri (analiz ajani, taslak_rapor_analiz.py)
 h.append("<h2>Bağımsız doğrulama: kütle ve AM</h2>")
+h.append(yeniden_notu("doğrulama"))
 h.append(RA.dogrulama())
 h.append("<h2>Devrilme</h2>")
+h.append(yeniden_notu("devrilme"))
 h.append(RA.devrilme())
 h.append("<h2>Motor (taban tahriki)</h2>")
+h.append(yeniden_notu("motor"))
 h.append(RA.motor())
 h.append("<h2>Servo torkları (omuz, dirsek, kafa pan/tilt)</h2>")
+h.append(yeniden_notu("servo (omuz %s ile)" % esc(SERVO)))
 h.append(RA.servo())
-h.append("<h2>Kol oranı: ×1,15 / ×1,25 / ×1,36 (hesap, karar Duffy'de)</h2>")
+h.append("<h2>Kol oranı: ×1,15 / ×1,25 / ×1,36 (hesap; karar ×%s)</h2>" % sayi(o["hedef"], 2))
+h.append(KOL_ANALIZ_LINK)
+h.append(yeniden_notu("kol oranı"))
 h.append(RA.kol_orani())
 h.append("<h2>Çarpışma taraması (tüm eklem aralıkları)</h2>")
+h.append(yeniden_notu("çarpışma (kol zinciri, iki kol, kafa × kol; uzun ön kol yasak bölgeyi değiştirebilir)"))
 h.append(RA.carpisma())
 
 # ---------------------------------------------------------------------- acik isler, varsayimlar
@@ -263,6 +356,16 @@ acik_ek = [
     ["Uzatma bandı dikiş basamağı", "kesit dikişin 12 mm üstündeki kesit: alt (476,5) ve üst (911,5) dikişte ~0,7 mm dışa basamak", "görünür, zararsız", "kabuk"],
     ["Kafanın altı açık", "boyun açıklığı + arka çentik", "toz / parmak için esnek boyun körüğü düşünülebilir", "tasarım"],
     ["Kafa içi kablolar", "micro HDMI Pi → ekran (sağda), CSI FPC Pi → kamera (~200 mm)", "kablo boyları ve kafa içi kablo payı (25 g, tahmini) doğrulanacak", "elektrik"],
+] + ([
+    ["×%s + %s yeniden analiz" % (sayi(o["hedef"], 2), esc(SERVO)), "devrilme, servo payları, kol oranı, tam çarpışma taraması ve sonuç kutusu ×1,15 + DS3218MG geometrisine ait",
+     "kontrol ajanı: <code>taslak_analiz.py</code> (tüm bölümler) + <code>taslak_hesap.py</code>", "kontrol ajanı"]] if ANALIZ_ESKI else []) + [
+    ["%s gövde yüksekliği" % esc(SERVO), "kaynaklarda 38,5 / 40 / 40,5 mm (DS3218 ile aynı kabul edildi)", "servo gelince kumpasla ölç; farklıysa omuz yuvası / horn düzlemi "
+     "kontrolü. Robocombo ilanı açıklamada 'RDS3235 ... U braket dahil' diyor: satıcıya sorulacak (kol-analiz NOTLAR)", "Duffy + satın alma"],
+    ["Ön kol uzaması: kablo ve baskı", "bilek servosu kablosu +%s mm (MG996R 30 cm kablo); ön kol gövdesi tek parça (baskı tablosunda)" % sayi(o.get("on_kol_uzama_mm", 0), 1),
+     "kablo yolu (<code>dirsek/kablo_yolu.py</code>, arayuz.KOL_KABLO) ön kol boyuna göre güncellenmeli; servo uzatma boyu", "elektrik + tasarım"],
+    ["Onaylanmamış öneriler (kol analizi, UYGULANMADI)", "kol-analiz/rapor.html Düzeltmeler: S2 horn tarafı destek rulmanı (6806-2RS), göbekte ikinci 6808, kelepçeli "
+     "horn (25T Al horn kanalı DS3235 durmada SF ~1,3), S1/S2 uzatmalarında 20 AWG, XL4016 çıkışı 6,4 V, yazılım hız / temas sınırları",
+     "Duffy onaylarsa ayrı iş olarak modellenir (omuz yuvası, göbek, elektrik); bu taslakta geometri değişmedi", "Duffy"],
 ]
 h.append("<h2>Açık işler</h2>" + RA.acik_isler(TA, KF, uzatma_g, acik_ek))
 vars_ = [
@@ -270,7 +373,8 @@ vars_ = [
     "Kafa kabukları 2,5 mm PETG, etkin doluluk 0,90; küçük PETG parçalar 0,80 (eski kafa / dirsek ile aynı, <span class='t'>tahmini</span>).",
     "Kablo payları: taban 400 g (mevcut tahmin), gövde uzaması 45 g, kafa içi 25 g (kafa AM'sine katılmadı); hepsi <span class='t'>tahmini</span>.",
     "Baskı süresi 10 mm³/s ortalama debiyle <span class='t'>tahmini</span>; okul yazıcısı 25 × 25 × 25 cm (hocanın söylediği, model doğrulanmadı).",
-    "Kol ×1,15 tasarım ajanının kaba statik moment hesabıyla seçildi; hesaplanan servo payları Servo ve Kol oranı bölümlerinde (×1,25 / ×1,36 modellenmedi, <span class='t'>tahmini</span>).",
+    "Kol ×%s Duffy'nin kararı (24 Ekim 2026, kol analizi önerisi); ek boyun ön kola verilmesi tasarım ajanının kaba moment karşılaştırmasıyla (S1 momenti ön kolda ~8.000, tüpte ~15.000 g·mm artış, <span class='t'>tahmini</span>). Eski ×1,15: <code>TASLAK_KOL=115</code>." % sayi(o["hedef"], 2),
+    "Omuz servosu %s: gövde DS3218 ile aynı (40 × 20 × 40, kulak delikleri 49,5 × 10, 25T), 60 g; yükseklik <span class='t'>doğrulanmadı</span> (38,5 / 40 / 40,5)." % esc(SERVO),
     "Devrilmede fren 1,5 m/s² (acil stop, <span class='t'>tahmini</span>); motor durma torku 21 kg·cm satıcı etiketi (ölçülmedi); servo ivme profili 60°/0,4 s (<span class='t'>tahmini</span>).",
     "M3 saplama DIN 976 ve DIN 985 somun stokta varsayıldı; saplama %s mm'ye kesilir." % sayi(KF["adaptor_h_mm"] + 13.0, 0),
     "125 cm değerleri güncel modül betiklerinden (aynı yükleyiciler) hesaplandı; kayıtlı ana montaj çıktısı (montaj-analiz.json) daha eski.",
@@ -278,7 +382,7 @@ vars_ = [
 ]
 h.append("<h2>Varsayımlar</h2><ul>" + "".join("<li>%s</li>" % a for a in vars_) + "</ul>")
 h.append("<h2>Dosyalar ve çalıştırma</h2><ul>"
-         "<li><code>taslak_ayar.py</code> parametreler (boy, uzama, kol, ekran, taban genişliği, tabla) · <code>kafa10.py</code> yeni kafa + adaptör + denge · "
+         "<li><code>taslak_ayar.py</code> parametreler (boy, uzama, kol <code>TASLAK_KOL=115|125</code>, omuz servosu <code>TASLAK_OMUZ_SERVO</code>, ekran, taban genişliği, tabla) · <code>kafa10.py</code> yeni kafa + adaptör + denge · "
          "<code>taslak_parcalar.py</code> modülleri yükleyip varyantı kurar · <code>taslak_montaj.py</code> FCStd / STEP / kutle.json / taslak-analiz.json · "
          "<code>taslak_gorsel.py</code> (GUI) görseller · <code>taslak_rapor.py</code> bu rapor</li>"
          "<li>Analiz (analiz ajanı): <code>taslak_analiz.py</code> (FreeCAD; <code>TA_BOLUM=kutle|dogrula|statik|kol_sag|kol_sol|kolkol|kafa|kafakol_sag|kafakol_sol</code>, "

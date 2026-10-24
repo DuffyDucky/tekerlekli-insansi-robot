@@ -27,45 +27,6501 @@
  ],
  "kafa_poz": 91,
  "kol_alt_poz": 2587,
- "yakin_oge": 2215,
- "aday": 73967,
- "tam_olcum": 633,
- "sinir_turu": 2,
- "cakisma_sayisi": 0,
- "cakisan_tam_cift": 0,
- "cakismalar": [],
- "yasak_bolge": null,
- "en_kucuk": {
-  "bosluk_mm": 1.81,
-  "kol_grup": "El",
-  "kol_poz": [
-   135.0,
-   0.0,
-   90.0,
-   -90.0
+ "yakin_oge": 2207,
+ "aday": 81073,
+ "tam_olcum": 2060,
+ "sinir_turu": 11,
+ "cakisma_sayisi": 357,
+ "cakisan_tam_cift": 357,
+ "cakismalar": [
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 47.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    95.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 30.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 47.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    95.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 30.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    100.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 21.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    100.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    100.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 28.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    100.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 22.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    100.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 47.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    100.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 21.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    100.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    100.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 28.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    100.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 22.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    100.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 47.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    105.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 48.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    105.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 11.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    105.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 70.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    105.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 6.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    105.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 48.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    105.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 11.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    105.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 70.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    125.0,
+    0.0,
+    105.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 6.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 41.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 5.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 41.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    85.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 5.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 65.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 8.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 30.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 144.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 190.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 15.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 20.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 252.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 42.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 8.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 66.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 8.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 30.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 145.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 190.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 15.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 20.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 252.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 42.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    90.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 8.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 27.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 0.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 25.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 71.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 10.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 36.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 255.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 11.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 91.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 293.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 119.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 19.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 133.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 169.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 54.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 71.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 10.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 36.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 255.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 11.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 91.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 299.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 119.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 19.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 126.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 169.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 55.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    95.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 0.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 56.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 2.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 10.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 60.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 14.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 89.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 7.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 190.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 24.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 60.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 53.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 244.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 14.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 119.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 10.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 10.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 60.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 14.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 94.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 7.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 190.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 24.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 55.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 53.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 244.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 14.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 119.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    100.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 10.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 0.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 21.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 7.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 9.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 10.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 80.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 21.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 15.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 77.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 59.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 6.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 19.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 9.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 10.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 80.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 21.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 15.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 77.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 59.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 6.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    130.0,
+    0.0,
+    105.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 19.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    15.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 38.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 14.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    15.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 137.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 31.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 2.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 9.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 2.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    80.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 9.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -45.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 9.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 24.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 252.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 6.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -40.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 4.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 30.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 186.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 101.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -40.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 0.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 72.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 59.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 104.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 39.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 0.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 87.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 125.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 21.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 212.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 7.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 181.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 20.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 21.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 59.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 125.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 39.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 0.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 86.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 83.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 21.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 212.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 7.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 179.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    85.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 20.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -40.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 138.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 73.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 220.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 253.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 40.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 25.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -40.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 7.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -35.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 3.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 6.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 33.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 32.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 250.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 59.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 22.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 0.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 75.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 115.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 74.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 348.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 72.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 7.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 47.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 49.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 7.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 200.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 437.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 230.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 122.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 358.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 9.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 290.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 34.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 240.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 20.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 29.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 0.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 78.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 85.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 74.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 380.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 60.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 7.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 44.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 44.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 7.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 200.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 480.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 230.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 122.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 314.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 9.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 290.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 49.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 242.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 40.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    90.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 25.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -35.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 118.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 8.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    20.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 14.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 3.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 128.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 275.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 38.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 19.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -35.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 11.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 45.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 152.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 6.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 223.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 195.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -35.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 28.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -30.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 0.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 0.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 89.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 193.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 28.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 346.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -30.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 162.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 6.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 93.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 142.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 92.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 439.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 14.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -30.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 15.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -25.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 25.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 6.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 9.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 38.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 283.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 46.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 3.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    -15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 6.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 6.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 169.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 189.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 90.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 187.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 28.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 346.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 6.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 92.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 102.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 92.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 439.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 14.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 6.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 7.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 38.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 293.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 46.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 21.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 6.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    95.0,
+    90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 19.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -30.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 37.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    5.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 6.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 70.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 171.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 7.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 154.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -30.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 1.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 6.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 29.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 10.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 98.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 77.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 0.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -30.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 8.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -25.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 30.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 4.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 5.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 26.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 175.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 67.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    -25.0,
+    -15.0
+   ],
+   "kafa_parca": "Arka kafa kabugu sag",
+   "hacim_mm3": 29.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 31.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 157.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 0.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 107.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 36.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    -30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 37.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 77.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 0.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 4.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 4.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 26.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 182.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 67.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 31.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 156.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 0.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 107.4,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 32.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    100.0,
+    60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 37.9,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 9.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    25.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 22.0,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 38.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    -90.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 120.2,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 1.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    30.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 16.1,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    -75.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 0.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 24.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    -60.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 21.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 0.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 8.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    -45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 13.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    15.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 0.6,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 24.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    30.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 21.3,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    10.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 0.8,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    35.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 8.7,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  },
+  {
+   "kol_grup": "El",
+   "kol_poz": [
+    135.0,
+    0.0,
+    105.0,
+    45.0
+   ],
+   "kol_parca": "El",
+   "kafa_poz": [
+    40.0,
+    15.0
+   ],
+   "kafa_parca": "Yuz kabugu (on) sag",
+   "hacim_mm3": 13.5,
+   "eski_125_hacim_mm3": null,
+   "kaynak": "taslak (yeni)"
+  }
+ ],
+ "yasak_bolge": {
+  "one_arka": [
+   125.0,
+   135.0
   ],
-  "kol_parca": "El",
-  "kafa_poz": [
-   15.0,
+  "yana": [
+   0.0,
+   0.0
+  ],
+  "dirsek": [
+   80.0,
+   105.0
+  ],
+  "pan": [
+   -45.0,
+   40.0
+  ],
+  "tilt": [
+   -15.0,
    15.0
   ],
-  "kafa_parca": "Yuz kabugu (on) sag"
+  "kafa_parcalari": [
+   "Arka kafa kabugu sag",
+   "Yuz kabugu (on) sag"
+  ],
+  "kol_parcalari": [
+   "El"
+  ],
+  "not_": "cakisan alt poz ciftlerinin eksen bazinda kapsadigi aralik (kesin kural: liste)"
  },
- "en_kucuk_cakismasiz": {
-  "bosluk_mm": 0.6,
+ "en_kucuk": {
+  "bosluk_mm": 0.0,
   "kol_grup": "El",
   "kol_poz": [
    135.0,
    0.0,
    105.0,
-   -75.0
+   -90.0
   ],
   "kol_parca": "El",
   "kafa_poz": [
    30.0,
-   15.0
+   5.0
   ],
   "kafa_parca": "Yuz kabugu (on) sag"
  },
- "sure_s": 155.0
+ "en_kucuk_cakismasiz": {
+  "bosluk_mm": 0.0,
+  "kol_grup": "El",
+  "kol_poz": [
+   135.0,
+   0.0,
+   105.0,
+   -90.0
+  ],
+  "kol_parca": "El",
+  "kafa_poz": [
+   30.0,
+   5.0
+  ],
+  "kafa_parca": "Yuz kabugu (on) sag"
+ },
+ "sure_s": 284.3
 }

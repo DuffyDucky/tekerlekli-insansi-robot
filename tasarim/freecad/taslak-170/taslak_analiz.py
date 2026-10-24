@@ -5,7 +5,8 @@
 #   FC_SCRIPT=<bu dosya> TA_BOLUM=<bolumler> [TASLAK_TABAN_W=520] [TA_ROBOT=eski] freecadcmd.exe C:/Users/Victus/.robot-cad/run_fc.py
 # Bolumler (virgulle): kutle (grup kutle/AM/atalet tensoru -> analiz/girdi-<robot>-<W>.json), dogrula (FCStd + STEP + ornek),
 #   statik (ev pozu tum parca ciftleri), kol_sag, kol_sol (kol zinciri x sabit), kolkol, kafa (pan x tilt x sabit),
-#   kafakol_sag, kafakol_sol (kafa x kol). TA_ROBOT=eski: ayni tarama mevcut 125 cm robotta (karsilastirma, yontem dogrulamasi).
+#   kafakol_sag, kafakol_sol (kafa x kol), kafakol_ince_sag, kafakol_ince_sol (kafa x kol en dar yer cevresi ince, kontrol ajani 24 Ekim 2026).
+#   TA_ROBOT=eski: ayni tarama mevcut 125 cm robotta (karsilastirma, yontem dogrulamasi). TA_BOLUM="" : yalniz robotlari kurar (import icin).
 # Cikti: analiz/<bolum>-<robot>[-<W>].json. Koordinat global (orijin zemin + robot merkezi, +X sag, +Y yukari, +Z ileri), mm, g.
 import os, sys, json, time, math, random, itertools
 from collections import OrderedDict
@@ -139,7 +140,7 @@ for j, q in enumerate(ESKI["P"]):
     _by.setdefault((q["modul"], q["ad"]), []).append(j)
 KARSI = {}
 for i, p in enumerate(TP.P):
-    c = _by.get((p["modul"], p["ad"]))
+    c = _by.get((p["modul"], p.get("eski_ad", p["ad"])))       # yeniden adlanan parca (DS3235): 125 cm adiyla eslenir
     if not c:
         continue
     sh = p["v"] if p.get("v") is not None else TP.kaydir(p["modul"], p["grup"])
@@ -252,9 +253,51 @@ def b_kutle(Rb):
         I_top += paralel(np.array(g["I"]), g["m"], np.array(g["c_sekil"]) - cs_top)
     ozel = {}
     for p in Rb["P"]:
-        if p["ad"] in ("Ust kol tupu", "El", "Govde diregi") and p["modul"] in ("omuz_sag", "dirsek_sag", "iskelet"):
+        if p["ad"] in ("Ust kol tupu", "El", "On kol govdesi", "Govde diregi") and p["modul"] in ("omuz_sag", "dirsek_sag", "iskelet"):
             ozel["%s|%s" % (p["modul"], p["ad"])] = dict(kutle=round(p["kutle"], 2), merkez=r3(p["merkez"]), hacim=round(p["shape"].Volume, 1))
-    return dict(robot=Rb["ad"], taban_w=W if Rb["ad"] == "yeni" else 444, gruplar=out,
+    # bilek servosu alt kumesi (OnKol grubunda, on kol uzayinca bilek ekseniyle birlikte kayar): kol orani varyantlari icin (taslak_hesap)
+    alt_kume = OrderedDict()
+    for p in Rb["P"]:
+        if p["modul"].startswith("dirsek_") and p["grup"] == "OnKol" and p["ad"] in TP.BILEK_ILE:
+            k = "%s|OnKol|bilek_ile" % p["modul"]
+            kb = kati_bilgi(p["shape"])
+            if kb is None:
+                vt, cs, Ip = 0.0, p["merkez"], np.zeros((3, 3))
+            else:
+                vt, cs, I1 = kb
+                Ip = I1 * (p["kutle"] / vt)
+            g = alt_kume.setdefault(k, dict(m=0.0, mc=np.zeros(3), msc=np.zeros(3), parca=[]))
+            g["m"] += p["kutle"]
+            g["mc"] += p["kutle"] * np.array([p["merkez"].x, p["merkez"].y, p["merkez"].z])
+            g["msc"] += p["kutle"] * np.array([cs.x, cs.y, cs.z])
+            g["parca"].append((p["kutle"], np.array([cs.x, cs.y, cs.z]), Ip))
+    # on kol govdesinin uzatmanin altinda kalan bolumu (uzama degisince bilek servosuyla birlikte kayar); yalniz taslak (uzatilmis on kol)
+    if Rb["ad"] == "yeni" and TA.ON_KOL_UZAMA > 0:
+        for p in Rb["P"]:
+            if p["modul"].startswith("dirsek_") and p["ad"] == "On kol govdesi":
+                y_dir = Rb["AX"][(p["modul"], "dirsek")]["n"].y
+                y_kes = y_dir - TA.ON_KOL_KES_S - TA.ON_KOL_UZAMA                 # uzatmanin alt ucu
+                bb = p["shape"].BoundBox
+                alt = p["shape"].common(Part.makeBox(bb.XLength + 20, y_kes - bb.YMin + 10, bb.ZLength + 20, V(bb.XMin - 10, bb.YMin - 10, bb.ZMin - 10)))
+                kb = kati_bilgi(alt)
+                vt, cs, I1 = kb
+                m = p["kutle"] * vt / p["shape"].Volume
+                c = np.array([cs.x, cs.y, cs.z])
+                alt_kume["%s|OnKol|on_kol_alt" % p["modul"]] = dict(m=m, mc=m * c, msc=m * c, parca=[(m, c, I1 * (m / vt))], y_kesim=round(y_kes, 3),
+                                                                    hacim=round(vt, 1))
+    for k, g in list(alt_kume.items()):
+        cs = g["msc"] / g["m"]
+        I = np.zeros((3, 3))
+        for m, cp, Ip in g["parca"]:
+            I += paralel(Ip, m, cp - cs)
+        alt_kume[k] = dict(m=round(g["m"], 3), c=[round(x, 3) for x in g["mc"] / g["m"]], c_sekil=[round(x, 3) for x in cs], I=I.round(1).tolist(),
+                           parca=len(g["parca"]), adlar=list(TP.BILEK_ILE) if k.endswith("bilek_ile") else ["On kol govdesi (uzatmanin alti)"])
+        for ek_ in ("y_kesim", "hacim"):
+            if ek_ in g:
+                alt_kume[k][ek_] = g[ek_]
+    return dict(robot=Rb["ad"], taban_w=W if Rb["ad"] == "yeni" else 444, gruplar=out, alt_kume=alt_kume,
+                kol=dict(secim=TA.KOL_SECIM, ust_kol=TA.UST_KOL_UZAMA, on_kol=TA.ON_KOL_UZAMA, el=TA.EL_UZAMA, boy=TA.KOL_BOY_YENI,
+                         omuz_servo=TA.OMUZ_SERVO["ad"]) if Rb["ad"] == "yeni" else dict(secim="125cm", boy=TA.KOL_BOY_ESKI),
                 toplam=dict(m=round(Mtop, 2), c=[round(x, 3) for x in c_top], c_sekil=[round(x, 3) for x in cs_top], I=I_top.round(1).tolist()),
                 eksen={"%s|%s" % k: dict(n=r3(v["n"]), u=r3(v["u"], 9), sinir=v["sinir"]) for k, v in Rb["AX"].items()},
                 ozel_parca=ozel, birim="g, mm, g*mm2 (atalet: sekil merkezine gore, parca kutlesi hacme uniform)",
@@ -1015,6 +1058,67 @@ def b_kafakol(Rb, taraf):
                 sure_s=round(time.time() - ts, 1))
 
 
+# ====================================================================== 7) kafa x kol: en dar yer cevresinde ince tarama (kontrol ajani, 24 Ekim 2026)
+def b_kafakol_ince(Rb, taraf):
+    """Kaba kafa x kol taramasi (pan 15 derece adim) x1,25 kolda en dar yeri kol on-yukari (S1 135, S2 5, dirsek 105) + kafa o kola pan ~30,
+    tilt 15'te verdi. Bu bolge kol S1 120...135, S2 5...20, dirsek 85...105 (2,5 derece), bilek 9 aci x kafa pan 0...60 (2 derece, o kola dogru),
+    tilt 9 aci ile taranir: on kol + el gruplari (tessellation bulutu) x kafa Boyun + Bas parcalari, siki kutu alt siniriyla dal-sinir (kesin en kucuk)."""
+    ts = time.time()
+    AX = Rb["AX"]
+    sx = 1 if taraf == "sag" else -1
+    bas = [p for p in Rb["P"] if p["modul"] == "kafa" and p["grup"] in ("Boyun", "Bas")]
+    grp = {g: [p for p in Rb["P"] if p["modul"] == "dirsek_" + taraf and p["grup"] == g] for g in ("OnKol", "El")}
+    for p in bas + grp["OnKol"] + grp["El"]:
+        noktalar(p)
+    PT = {g: np.vstack([p["pts"] for p in L]) for g, L in grp.items()}
+    S1 = [120.0, 122.5, 125.0, 127.5, 130.0, 132.5, 135.0]
+    S2 = [5.0, 7.5, 10.0, 12.5, 15.0, 20.0]
+    DI = [85.0, 87.5, 90.0, 92.5, 95.0, 97.5, 100.0, 102.5, 105.0]
+    BI = [-90.0, -75.0, -60.0, -45.0, -30.0, 0.0, 30.0, 60.0, 90.0]
+    PAN = [sx * float(a) for a in range(0, 61, 2)]
+    TILT = [-15.0, -10.0, -5.0, 0.0, 5.0, 7.5, 10.0, 12.5, 15.0]
+    HP = [(a, b) for a in PAN for b in TILT]
+    HBf = np.array([[kutu_siki(q, np_m(kafa_M(AX, q["grup"], hp))) for q in bas] for hp in HP]).reshape(-1, 6)
+    aday = []
+    for sp in itertools.product(S1, S2, DI, BI):
+        for g in ("OnKol", "El"):
+            q = PT[g] @ np_m(kol_M(AX, taraf, g, sp)).T
+            b = np.concatenate([q.min(0) - PAY_SIKI, q.max(0) + PAY_SIKI])
+            gap = bosluk_np(b, HBf)
+            for k in np.nonzero(gap < 12.0)[0]:
+                aday.append((float(gap[k]), sp, g, int(k // len(bas)), int(k % len(bas))))
+    aday.sort(key=lambda c: c[0])
+    log("kafa x kol ince %s: %d kol x %d kafa pozu, %d aday (<12 mm)" % (taraf, len(S1) * len(S2) * len(DI) * len(BI), len(HP), len(aday)))
+    sc = Onbellek(3000)
+
+    def ksekil(g, sp):
+        return sc.al(("k", g, sp), lambda: Part.Compound([sekil(p, kol_M(AX, taraf, g, sp)) for p in grp[g]]))
+
+    def hsekil(j, hp):
+        return sc.al(("h", j, hp), lambda: sekil(bas[j], kafa_M(AX, bas[j]["grup"], hp)))
+
+    en, n, cak = (1e9, None), 0, []
+    for gap, sp, g, ih, j in aday:
+        if gap >= en[0]:
+            break
+        hp = HP[ih]
+        a, b = ksekil(g, sp), hsekil(j, hp)
+        d = a.distToShape(b)[0]
+        n += 1
+        if d < 1e-6:
+            v = sum(kesisim(s, b) for s in a.Solids)
+            if v > TOL or v < 0:
+                cak.append(dict(kol_poz=list(sp), kol_grup=g, kafa_poz=list(hp), kafa_parca=bas[j]["ad"], hacim_mm3=round(v, 2)))
+                continue
+        if d < en[0]:
+            en = (d, dict(bosluk_mm=round(d, 2), kol_poz=list(sp), kol_grup=g, kafa_poz=list(hp), kafa_parca=bas[j]["ad"]))
+    log("kafa x kol ince %s: %d tam olcum, en kucuk %s, cakisma %d" % (taraf, n, en[1], len(cak)))
+    return dict(robot=Rb["ad"], taraf=taraf, izgara=dict(S1=S1, S2=S2, dirsek=DI, bilek=BI, pan=PAN, tilt=TILT),
+                kol_poz=len(S1) * len(S2) * len(DI) * len(BI), kafa_poz=len(HP), aday_12mm=len(aday), tam_olcum=n, cakisma=cak, en_kucuk=en[1],
+                not_="kaba kafakol taramasinin en dar yeri cevresi; on kol + el gruplari x kafa Boyun + Bas; siki kutu alt siniri + dal-sinir",
+                sure_s=round(time.time() - ts, 1))
+
+
 # ====================================================================== kosucu
 for b in BOLUM:
     tb = time.time()
@@ -1032,6 +1136,8 @@ for b in BOLUM:
         yaz("kolkol-%s.json" % R["ad"], b_kolkol(R))
     elif b == "kafa":
         yaz("kafa-%s.json" % R["ad"], b_kafa(R))
+    elif b in ("kafakol_ince_sag", "kafakol_ince_sol"):
+        yaz("%s-%s.json" % (b, R["ad"]), b_kafakol_ince(R, b.split("_")[-1]))
     elif b in ("kafakol_sag", "kafakol_sol"):
         yaz("%s-%s%s.json" % (b, R["ad"], ("-s2_%s" % os.environ["TA_S2_MIN"]) if os.environ.get("TA_S2_MIN") else ""), b_kafakol(R, b.split("_")[1]))
     else:

@@ -1,7 +1,8 @@
 # Lale 1,70 m taslak: GUI kurulumu + gorseller (FreeCAD GUI icinde calisir; taslak_montaj.py'den SONRA)
 #   FC_SCRIPT=<bu dosya> "%LOCALAPPDATA%/Programs/FreeCAD 1.1/bin/freecad.exe" C:/Users/Victus/.robot-cad/run_fc.py
 # 1) taslak-170.FCStd: gizli gelen montaj/gruplar/parcalar gorunur, renkler, eklem gorunum nesneleri; dosya GUI'den kaydedilir.
-# 2) %TEMP%/taslak170-gorsel.FCStd (renk bazinda bilesik, yeni + eski 125 cm): onden, yandan, izometrik, kafa yakin, karsilastirma -> gorsel/
+# 2) %TEMP%/taslak170-gorsel.FCStd (renk bazinda bilesik, yeni + eski 125 cm): onden, yandan, izometrik, kafa yakin, sag kol yakin,
+#    karsilastirma -> gorsel/
 import os, sys, math, tempfile, traceback
 import FreeCAD as App
 import FreeCADGui as Gui
@@ -104,6 +105,8 @@ def gorseller():
     kaydet(v, "taslak-kafa.png", 1200, 1000)
     kamera(v, (-0.9, 0.25, -0.6), 520, (0, 1560, -20))
     kaydet(v, "taslak-kafa-arka.png", 1200, 1000)
+    kamera(v, (1.0, 0.15, 0.35), 620, (190, 1195, 0))
+    kaydet(v, "taslak-kol.png", 1000, 1200)
     kamera(v, (0.9, 0.2, 0.5), 700, (0, 720, 0))
     kaydet(v, "taslak-govde-uzatma.png", 1200, 1000)
     goster(kesit)

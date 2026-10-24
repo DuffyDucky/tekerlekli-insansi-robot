@@ -64,7 +64,7 @@
   "kaba": 2587,
   "ince": 0
  },
- "tam_olcum": 1186,
+ "tam_olcum": 1379,
  "cakisan_alt_poz": 0,
  "cakisma_ciftleri": [],
  "en_kucuk_bosluk": {
@@ -202,7 +202,7 @@
     "parca": "El",
     "hedef_modul": "kabuk",
     "hedef": "Gogus bandi sag",
-    "bosluk_mm": 20.23,
+    "bosluk_mm": 20.05,
     "hacim_mm3": 0.0,
     "aralikta": true
    },
@@ -326,6 +326,20 @@
     "aralikta": true
    },
    {
+    "grup": "OnKol",
+    "poz": [
+     135.0,
+     5.0,
+     105.0
+    ],
+    "parca": "On kol govdesi",
+    "hedef_modul": "kafa govde",
+    "hedef": "Rulman yuvasi",
+    "bosluk_mm": 174.42,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
     "grup": "UstKol",
     "poz": [
      135.0,
@@ -339,32 +353,30 @@
     "aralikta": true
    },
    {
-    "grup": "El",
+    "grup": "OnKol",
     "poz": [
      120.0,
      5.0,
-     105.0,
-     -90.0
+     105.0
     ],
-    "parca": "El",
+    "parca": "On kol govdesi",
     "hedef_modul": "kafa govde",
-    "hedef": "Rulman yuvasi",
-    "bosluk_mm": 179.48,
+    "hedef": "Boyun plakasi",
+    "bosluk_mm": 199.47,
     "hacim_mm3": 0.0,
     "aralikta": true
    },
    {
-    "grup": "El",
+    "grup": "OnKol",
     "poz": [
      120.0,
      5.0,
-     105.0,
-     -90.0
+     105.0
     ],
-    "parca": "El",
+    "parca": "On kol govdesi",
     "hedef_modul": "kafa govde",
-    "hedef": "6808-2RS ust rulman (dis bilezik)",
-    "bosluk_mm": 183.03,
+    "hedef": "Servo yuvasi",
+    "bosluk_mm": 204.27,
     "hacim_mm3": 0.0,
     "aralikta": true
    }
@@ -456,7 +468,7 @@
     ],
     "parca": "Dirsek catali",
     "hedef_modul": "omuz_sag gobek",
-    "hedef": "S2 servo DS3218MG (yana acma)",
+    "hedef": "S2 servo DS3235 (yana acma)",
     "bosluk_mm": 117.71,
     "hacim_mm3": 0.0,
     "aralikta": true
@@ -588,7 +600,7 @@
     ],
     "parca": "Dirsek catali",
     "hedef_modul": "omuz_sag govde",
-    "hedef": "S1 servo DS3218MG (one-arka)",
+    "hedef": "S1 servo DS3235 (one-arka)",
     "bosluk_mm": 113.27,
     "hacim_mm3": 0.0,
     "aralikta": true
@@ -635,14 +647,14 @@
    {
     "grup": "OnKol",
     "poz": [
-     -45.0,
+     15.0,
      5.0,
      105.0
     ],
     "parca": "On kol govdesi",
     "hedef_modul": "omuz_sag govde",
     "hedef": "Omuz yuvasi",
-    "bosluk_mm": 142.04,
+    "bosluk_mm": 142.03,
     "hacim_mm3": 0.0,
     "aralikta": true
    },
@@ -660,21 +672,6 @@
     "aralikta": true
    },
    {
-    "grup": "El",
-    "poz": [
-     15.0,
-     5.0,
-     105.0,
-     0.0
-    ],
-    "parca": "El",
-    "hedef_modul": "omuz_sag govde",
-    "hedef": "Rulman kapagi",
-    "bosluk_mm": 145.76,
-    "hacim_mm3": 0.0,
-    "aralikta": true
-   },
-   {
     "grup": "OnKol",
     "poz": [
      45.0,
@@ -687,10 +684,24 @@
     "bosluk_mm": 146.48,
     "hacim_mm3": 0.0,
     "aralikta": true
+   },
+   {
+    "grup": "OnKol",
+    "poz": [
+     45.0,
+     5.0,
+     105.0
+    ],
+    "parca": "On kol govdesi",
+    "hedef_modul": "omuz_sag govde",
+    "hedef": "Kapak civatasi M3x12",
+    "bosluk_mm": 150.48,
+    "hacim_mm3": 0.0,
+    "aralikta": true
    }
   ]
  },
  "hareketli": "omuz gobegi (S1) + ust kol (S1+S2: kol catali, tup, S2 servosu) + dirsek catali + on kol + el",
  "hedefler": "iskelet, kabuk, taban, kafa govdesi (sabit boyun), iki omuzun govdesi, kendi omuzunun gobegi (S1 ile); gobek <-> kendi govdesi omuz ici (haric)",
- "sure_s": 395.4
+ "sure_s": 348.3
 }

@@ -716,6 +716,86 @@
    "parca": 4
   }
  },
+ "alt_kume": {
+  "dirsek_sag|OnKol|bilek_ile": {
+   "m": 70.249,
+   "c": [
+    195.15,
+    719.009,
+    -1.25
+   ],
+   "c_sekil": [
+    195.15,
+    719.009,
+    -1.25
+   ],
+   "I": [
+    [
+     9112.4,
+     -0.0,
+     -0.0
+    ],
+    [
+     -0.0,
+     19529.4,
+     0.0
+    ],
+    [
+     -0.0,
+     0.0,
+     24235.4
+    ]
+   ],
+   "parca": 10,
+   "adlar": [
+    "Bilek servosu MG996R",
+    "Bilek servosu cikis mili",
+    "Bilek servosu kulak civatasi M4x16",
+    "Bilek servosu kontra somunu M4"
+   ]
+  },
+  "dirsek_sol|OnKol|bilek_ile": {
+   "m": 70.249,
+   "c": [
+    -195.15,
+    719.009,
+    -1.25
+   ],
+   "c_sekil": [
+    -195.15,
+    719.009,
+    -1.25
+   ],
+   "I": [
+    [
+     9112.4,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     19529.4,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     24235.4
+    ]
+   ],
+   "parca": 10,
+   "adlar": [
+    "Bilek servosu MG996R",
+    "Bilek servosu cikis mili",
+    "Bilek servosu kulak civatasi M4x16",
+    "Bilek servosu kontra somunu M4"
+   ]
+  }
+ },
+ "kol": {
+  "secim": "125cm",
+  "boy": 325.5
+ },
  "toplam": {
   "m": 21533.39,
   "c": [
@@ -978,6 +1058,15 @@
     -0.944
    ],
    "hacim": 39116.9
+  },
+  "dirsek_sag|On kol govdesi": {
+   "kutle": 42.18,
+   "merkez": [
+    187.432,
+    749.089,
+    2.164
+   ],
+   "hacim": 41517.9
   },
   "dirsek_sag|El": {
    "kutle": 60.82,

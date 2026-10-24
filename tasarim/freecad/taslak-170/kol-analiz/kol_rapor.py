@@ -54,62 +54,82 @@ eski = {s["eklem"].split(" ")[0]: s for s in H["servo"]["eski-444"]["kol"]}
 CSS = open(os.path.join(TS, "rapor.html"), encoding="utf-8").read().split("<style>")[1].split("</style>")[0]
 o = ["<!doctype html><html lang='tr'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>",
      "<title>Lale Kol Analizi</title><style>%s\ndetails{margin:8px 0}summary{cursor:pointer;font-weight:600}</style></head><body><main>" % CSS]
-o.append("<h1>Kol analizi: uzun kol + DS3235 <span class='rozet'>TASLAK</span></h1>")
-o.append("<div class='sub'>Lale 1,70 m taslağı (<code>taslak-170/</code>), 24 Ekim 2026, kol analiz ajanı. Soru (Duffy): kolu uzatıp omuz servolarını "
-         "DS3218MG'den DS3235'e yükseltmek; kol malzemesi bu ağırlığı kaldırır mı, parçalara binen yükler ne? Kol oranları ×1,15 (taslak) / ×1,25 / ×1,36; "
-         "omuzda DS3218MG ve DS3235 karşılaştırmalı. Ana taslak dosyaları değiştirilmedi. <span class='t'>Tahmini</span> işaretli değerler ölçülmedi ya da "
-         "kaynaktan türetildi. <a href='../rapor.html'>← taslak raporu</a></div>")
+o.append("<h1>Kol analizi: ×1,25 (ek ön kolda) + DS3235 <span class='rozet'>TASLAK</span></h1>")
+GEO = D["geometri"]
+o.append("<div class='sub'>Lale 1,70 m taslağı (<code>taslak-170/</code>). İlk analiz 24 Ekim 2026 (kol analiz ajanı, ×1,25 doğrusal tüp : yaka varsayımıyla); "
+         "<b>Duffy'nin kararından sonra (kol ×1,25 + omuz S1/S2 DS3235) kontrol ajanı gerçek taslak geometrisiyle yeniden koştu</b>: ek %s mm ön kolda "
+         "(dirsek → bilek %s mm), tüp %s mm, yaka %s mm. ×1,15 = ön kol uzatması geri alınmış taslak, ×1,36 = ek yine ön kola (<span class='t'>doğrusal, "
+         "modellenmedi</span>). Omuzda DS3218MG ve DS3235 karşılaştırmalı. Ana taslak dosyaları bu betikte değiştirilmedi. <span class='t'>Tahmini</span> "
+         "işaretli değerler ölçülmedi ya da kaynaktan türetildi. <a href='../rapor.html'>← taslak raporu</a></div>" % (
+             sayi(GEO["on_kol_uzama"], 1), sayi(var(1.25)["on_kol_boy_mm"], 1), sayi(var(1.25)["tup_boy_mm"], 0), sayi(var(1.25)["yaka_boy_mm"], 1)))
 
 R = var(REC[0])
 Rs = R["servo"][REC[1]]
 r_s1, r_s2 = ek(REC[0], REC[1], "S1"), ek(REC[0], REC[1], "S2")
-o.append("<div class='sonuc'><h2>Sonuç</h2><div class='cevap'>Evet: kol malzemesi (PETG / PETG-CF) bu yükleri rahat taşır; zayıf halka plastik değil, "
-         "servo çıkışları (mil, horn kanalı) ve dirsek servosu. Öneri: <b>kol ×1,25 + omuzda DS3235</b> (4 adet + 1 yedek).</div><ol>")
-o.append("<li><b>DS3218MG uzun kolda yetmez:</b> ×1,15'te bile statik pay %s, ivmeli %s ve elde yük yok; ×1,25'te %s / %s. DS3235 ile ×1,25'te "
-         "statik %s, ivmeli %s, elde ~%s g (2× pay). ×1,36'da DS3235 statik %s ama ivmeli %s: ancak yavaş profil (60°/0,5 s) ile.</li>" % (
-             pay_html(ek(1.15, "DS3218MG", "S1")["pay_statik"]), pay_html(ek(1.15, "DS3218MG", "S1")["pay_ivmeli"], 1.5, 1.0),
-             pay_html(ek(1.25, "DS3218MG", "S1")["pay_statik"]), pay_html(ek(1.25, "DS3218MG", "S1")["pay_ivmeli"], 1.5, 1.0),
-             pay_html(r_s1["pay_statik"]), pay_html(r_s1["pay_ivmeli"], 1.5, 1.0), sayi(r_s1["yuk_2x_g"], 0),
-             pay_html(ek(1.36, "DS3235", "S1")["pay_statik"]), pay_html(ek(1.36, "DS3235", "S1")["pay_ivmeli"], 1.5, 1.0)))
+ON = D.get("onceki") or {}
+ONV = ON.get("varyant", {})
+OZ = D["ozet"]["varyant"]
+
+
+def onc(oran, sv, *yol):
+    """Onceki (git e8697ac) ozetinden deger; yoksa None."""
+    try:
+        x = ONV["%.2f" % oran]["servo"][sv]
+        for k in yol:
+            x = x[k]
+        return x
+    except (KeyError, TypeError):
+        return None
+
+
 mn = {}
 for v in D["varyant"]:
     for sv in SV:
         for dur in DUR:
             sat = [r for r in v["servo"][sv]["yapisal"]["satir"] if r["durum"] == dur]
             mn[(v["oran"], sv, dur)] = min(sat, key=lambda r: r["sf"])
-o.append("<li><b>Baskı parçaları:</b> statik, ivmeli ve servo stall durumlarında her kesitte emniyet ≥ 2 (×1,25 + DS3235'te en düşük: %s, %s). "
-         "Katman yönü (Z), sürünme (×0,45) ve 40–50 °C (×0,75–0,85) düşümü dahil. Yalnız <b>tam hızda sert darbede</b> dirsek çatalı dış kolu ve el "
-         "yakası vidaları sınırı aşar.</li>" % (esc(mn[(REC[0], REC[1], "L3")]["eleman"]), sf_html(mn[(REC[0], REC[1], "L3")]["sf"], mn[(REC[0], REC[1], "L3")]["sinif"])))
-o.append("<li><b>DS3235 kendi parçalarını kırar mı?</b> Plastik parçaları hayır. Ama stall'da 25T alüminyum horn kanalı sınırda (%s), S2 servo miline ~%s N "
-         "radyal yük biner ve el bir yere takılırsa omuz <b>dirseği geri sürer</b> (MG996R stall'ının %s katı). Kelepçeli 25T horn + merkez vidaya "
-         "vida sabitleyici, S2 horn tarafına destek rulmanı ve yazılımda hız / temas sınırı.</li>" % (
-             sf_html([b for b in Rs["yapisal"]["baglanti"] if b["durum"] == "L3" and b["eleman"].startswith("S1 horn")][0]["sf"], "sinirda"),
-             sayi([b for b in Rs["yapisal"]["baglanti"] if b["durum"] == "L3" and b["eleman"].startswith("S2 servo mili")][0]["deger"], 0),
-             sayi(Rs["dirsek_geri_surme_kati"], 2)))
-o.append("<li><b>Akım:</b> DS3235 aynı torku daha az akımla verir; hat A yoğun %s A (XL4016 sürekli önerisi 5 A: <span class='uy'>sınırda</span>, ölç), "
-         "gerçekçi tepe %s A (8 A modül içinde), giriş sigortası 7,5 A yeter. Kablo düşümüyle servo 5,5 V görür (DS3235 listesi 6–7,4 V): "
-         "<b>S1/S2 uzatması 20 AWG + XL4016 çıkışı 6,4 V</b> → S1 statik %s, ivmeli %s.</li>" % (
-             sayi(Rs["hat"]["yogun_A"], 2), sayi(Rs["hat"]["tepe_A"], 2), pay_html(Rs["secenek_64V_20AWG"]["pay_statik"]),
-             pay_html(Rs["secenek_64V_20AWG"]["pay_ivmeli"], 1.5, 1.0)))
-o.append("<li><b>Maliyet / kütle:</b> 5 servo farkı +%s TL (indirimli; liste fiyatıyla +%s TL); servo kütlesi aynı (60 g). Kol ×1,25 her kolda +%s g, "
-         "devrilme payı %s → %s (etkisi küçük).</li>" % (
+b3 = {x["eleman"]: x for x in Rs["yapisal"]["baglanti"] if x["durum"] == "L3"}
+g_ = lambda dct, k: [x for n, x in dct.items() if n.startswith(k)][0]
+gs_o = onc(1.25, "DS3235", "geri_surme")
+o.append("<div class='sonuc'><h2>Sonuç</h2><div class='cevap'>Karar tutuyor: ×1,25 + DS3235'te kol malzemesi (PETG / PETG-CF) statik, ivmeli ve stall "
+         "yüklerini taşır; zayıf halka yine plastik değil, servo çıkışları (mil, 25T horn kanalı) ve dirsek servosu. Ekin ön kola verilmesi omuzu "
+         "rahatlattı, yükü dirseğe kaydırdı.</div><ol>")
+o.append("<li><b>Omuz S1 (sınırlayıcı eklem):</b> ×1,15 + DS3218MG statik %s, ivmeli %s, elde yük %s g → <b>×1,25 + DS3235 statik %s, ivmeli %s, elde ~%s g</b> "
+         "(2× statik pay; servo %s V görür). Aynı ×1,25 kolda DS3218MG statik %s / ivmeli %s ile yetmezdi. S2 %s; ×1,36'da DS3235 statik %s, ivmeli %s.</li>" % (
+             pay_html(ek(1.15, "DS3218MG", "S1")["pay_statik"]), pay_html(ek(1.15, "DS3218MG", "S1")["pay_ivmeli"], 1.5, 1.0), sayi(ek(1.15, "DS3218MG", "S1")["yuk_2x_g"], 0),
+             pay_html(r_s1["pay_statik"]), pay_html(r_s1["pay_ivmeli"], 1.5, 1.0), sayi(r_s1["yuk_2x_g"], 0), sayi(Rs["hat"]["V_servo_S1_stall"]["22AWG"], 2),
+             pay_html(ek(1.25, "DS3218MG", "S1")["pay_statik"]), pay_html(ek(1.25, "DS3218MG", "S1")["pay_ivmeli"], 1.5, 1.0), pay_html(r_s2["pay_statik"]),
+             pay_html(ek(1.36, "DS3235", "S1")["pay_statik"]), pay_html(ek(1.36, "DS3235", "S1")["pay_ivmeli"], 1.5, 1.0)))
+o.append("<li><b>Baskı parçaları:</b> L1–L3'te en düşük emniyet ×1,25 + DS3235 stall'da %s (%s). Ön kolun uzatılan alt U kesiti "
+         "(3 mm duvar) rahat. Tam hızda sert darbede (L4) en zayıf: %s (%s).</li>" % (
+             esc(mn[(REC[0], REC[1], "L3")]["eleman"]), sf_html(mn[(REC[0], REC[1], "L3")]["sf"], mn[(REC[0], REC[1], "L3")]["sinif"]),
+             esc(mn[(REC[0], REC[1], "L4")]["eleman"]), sf_html(mn[(REC[0], REC[1], "L4")]["sf"], mn[(REC[0], REC[1], "L4")]["sinif"])))
+o.append("<li><b>Ön kol uzayınca dirsek:</b> el takılırsa DS3235 stall'ı dirseği geri sürer: MG996R stall'ının <b>%s katı</b>%s; dirsek statik pay %s "
+         "(×1,15: %s). 25T horn kanalı stall'da %s, S2 servo miline ~%s N radyal.</li>" % (
+             sayi(Rs["dirsek_geri_surme_kati"], 2), (" (önceki doğrusal modelde %s)" % sayi(gs_o, 2)) if gs_o else "",
+             pay_html(ek(1.25, "DS3235", "Dirsek")["pay_statik"]), pay_html(ek(1.15, "DS3235", "Dirsek")["pay_statik"]),
+             sf_html(g_(b3, "S1 horn")["sf"], g_(b3, "S1 horn")["sinif"]), sayi(g_(b3, "S2 servo mili")["deger"], 0)))
+o.append("<li><b>Akım:</b> hat A yoğun %s A (XL4016 sürekli önerisi 5 A: <span class='uy'>ölçülmeli</span>), gerçekçi tepe %s A (8 A modül içinde), "
+         "giriş sigortası 7,5 A yeter. Servo S1 kalkışında %s V görür (DS3235 listesi 6–7,4 V).</li>" % (
+             sayi(Rs["hat"]["yogun_A"], 2), sayi(Rs["hat"]["tepe_A"], 2), sayi(Rs["hat"]["V_servo_S1_stall"]["22AWG"], 2)))
+o.append("<li><b>Maliyet / kütle:</b> 5 servo farkı +%s TL (indirimli; liste +%s TL); servo kütlesi aynı (60 g). ×1,25 her kolda ×1,15'e göre +%s g; "
+         "devrilme (düz, 444) %s → %s.</li>" % (
              sayi(D["maliyet"]["fark_indirimli"], 0), sayi(D["maliyet"]["fark_liste"], 0), sayi(var(1.25)["kol_kutle_g"] - var(1.15)["kol_kutle_g"], 1),
              sayi(var(1.15)["devrilme"]["yeni-444"]["izgara_duz"], 2), sayi(var(1.25)["devrilme"]["yeni-444"]["izgara_duz"], 2)))
 o.append("<li><b>Satın almadan önce:</b> Robocombo sayfası başlıkta DS3235 diyor, açıklamada \"RDS3235 … U braket dahil\" geçiyor. Gelen ürün çift milli "
-         "RDS3235 ise gövde ve kulaklar farklı olabilir: satıcıya model ve kulak delik aralığı (49,5 × 10) sorulsun.</li></ol>")
-o.append("<p class='not'>×1,15 + DS3235 en rahat seçenek (statik %s, ivmeli %s, ~%s g, hat %s A); ×1,36 boyla tam orantılı ama ivme sınırı ve daha uzun yaka "
-         "(bilek milinde konsol) ister. Uzatmayı yakaya değil üst kol tüpüne vermek bilek yükünü azaltır (Düzeltmeler).</p></div>" % (
-             pay_html(ek(1.15, "DS3235", "S1")["pay_statik"]), pay_html(ek(1.15, "DS3235", "S1")["pay_ivmeli"], 1.5, 1.0),
-             sayi(ek(1.15, "DS3235", "S1")["yuk_2x_g"], 0), sayi(var(1.15)["servo"]["DS3235"]["hat"]["yogun_A"], 2)))
+         "RDS3235 ise gövde ve kulaklar farklı olabilir: satıcıya model ve kulak delik aralığı (49,5 × 10) sorulsun; gövde yüksekliği kumpasla.</li></ol>")
+o.append("<p class='not'>Önceki analizle (doğrusal ×1,25, ek tüp : yaka) fark Bölüm 8'de. Önceki raporun önerileri (S2 destek rulmanı 6806, göbekte ikinci 6808, "
+         "kelepçeli horn, 20 AWG, XL4016 6,4 V, yazılım hız / temas sınırı) <b>onaylanmadı, uygulanmadı</b>; aşağıda öneri olarak duruyor.</p></div>")
 
 # ------------------------------------------------------------------ KPI
-kp = [("×1,25 + DS3235", "önerilen kombinasyon: kol %s mm (×1,15: %s, ×1,36: %s)" % (sayi(R["kol_boy_mm"], 1), sayi(var(1.15)["kol_boy_mm"], 1), sayi(var(1.36)["kol_boy_mm"], 1))),
+kp = [("×1,25 + DS3235", "karar (Duffy, 24 Ekim 2026): kol %s mm, ön kol %s mm (×1,15: %s, ×1,36: %s)" % (
+          sayi(R["kol_boy_mm"], 1), sayi(R["on_kol_boy_mm"], 1), sayi(var(1.15)["kol_boy_mm"], 1), sayi(var(1.36)["kol_boy_mm"], 1))),
       ("%s× / %s×" % (sayi(r_s1["pay_statik"], 2), sayi(r_s1["pay_ivmeli"], 2)), "S1 statik / ivmeli pay, servo gerilimi %s V (DS3218: %s× / %s×)" % (
           sayi(Rs["hat"]["V_servo_S1_stall"]["22AWG"], 2), sayi(ek(1.25, "DS3218MG", "S1")["pay_statik"], 2), sayi(ek(1.25, "DS3218MG", "S1")["pay_ivmeli"], 2))),
-      ("%s g" % sayi(r_s1["yuk_2x_g"], 0), "elde taşınabilecek yük, 2× statik pay (DS3218: 0 g)"),
+      ("%s g" % sayi(r_s1["yuk_2x_g"], 0), "elde taşınabilecek yük, 2× statik pay (DS3218: %s g)" % sayi(ek(1.25, "DS3218MG", "S1")["yuk_2x_g"], 0)),
       ("%s" % sayi(mn[(REC[0], REC[1], "L3")]["sf"], 2), "baskı parçalarında en düşük emniyet, servo stall (ölçüt ≥ 2)"),
       ("%s A" % sayi(Rs["hat"]["yogun_A"], 2), "servo hattı A yoğun (tepe %s A; XL4016 8 A, sürekli 5 A)" % sayi(Rs["hat"]["tepe_A"], 2)),
-      ("+%s TL" % sayi(D["maliyet"]["fark_indirimli"], 0), "5 × DS3235 farkı (indirimli 1.171,50 TL; liste 1.255 TL)"),
+      ("%s×" % sayi(Rs["dirsek_geri_surme_kati"], 2), "dirsek geri sürme: omuz stall'ının el ucundan dirsekte yaptığı tork ÷ MG996R stall"),
       ("%s kg·cm" % sayi(Rs["yapisal"]["darbe"]["S1"]["M_omuz_kgcm"], 0), "tam hızda sert darbede omuz momenti (stall'ın %s katı, tahmini)" % sayi(Rs["yapisal"]["darbe"]["S1"]["stall_kati"], 1)),
       ("+%s g" % sayi(R["kol_kutle_g"] - var(1.15)["kol_kutle_g"], 1), "kol başına kütle (×1,15'e göre); servo değişimi 0 g")]
 o.append("<div class='k'>%s</div>" % "".join("<div class='kpi'><b>%s</b><span>%s</span></div>" % (a, esc(b)) for a, b in kp))
@@ -141,14 +161,14 @@ o.append("<p class='not'>Kaynaklar: <a href='https://www.robocombo.com/dsservo-d
 o.append("<h2>2. Kol kütleleri (sağ kol; sol aynı)</h2>")
 rows = []
 for v in D["varyant"]:
-    rows.append(["×%s" % sayi(v["oran"], 2), sayi(v["kol_boy_mm"], 1), sayi(v["el_ucu_y"], 0), sayi(v["tup_boy_mm"], 1), sayi(v["yaka_boy_mm"], 1),
-                 sayi(v["kol_kutle_g"], 1), sayi(v["S1_ile_donen_g"], 1), sayi(v["kol_am_s_mm"], 1), sayi(v["I_S1_kgm2"] * 1e4, 1), sayi(v["I_S2_kgm2"] * 1e4, 1)])
-o.append(tablo(["Oran", "Kol boyu (S1 → el ucu) mm", "El ucu y (yerden) mm", "Üst kol tüpü mm", "El boynu (yaka) mm", "S2 altı kol g",
+    rows.append(["×%s%s" % (sayi(v["oran"], 2), " (taslak)" if v.get("taslak") else ""), sayi(v["kol_boy_mm"], 1), sayi(v["el_ucu_y"], 0),
+                 sayi(v["tup_boy_mm"], 1), sayi(v["on_kol_boy_mm"], 1), sayi(v["yaka_boy_mm"], 1), sayi(v["kol_kutle_g"], 1), sayi(v["S1_ile_donen_g"], 1), sayi(v["kol_am_s_mm"], 1), sayi(v["I_S1_kgm2"] * 1e4, 1), sayi(v["I_S2_kgm2"] * 1e4, 1)])
+o.append(tablo(["Oran", "Kol boyu (S1 → el ucu) mm", "El ucu y (yerden) mm", "Üst kol tüpü mm", "Ön kol (dirsek → bilek) mm", "El boynu (yaka) mm", "S2 altı kol g",
                 "S1 ile dönen g (göbek 175,2 dahil)", "Kol AM'si S1'den mm", "I (S1) kg·cm²", "I (S2) kg·cm²"], rows, "sayi"))
-o.append("<p class='not'>×1,15 = taslak geometrisi (<code>kutle.json</code>, parça parça). ×1,25 / ×1,36 = <code>taslak_hesap.py</code> yöntemi: ek boy tüp : yaka = 30 : 19, "
-         "birim kütleler taslak uzatmalarından (tüp %s g/mm, yaka %s g/mm); geometri modellenmedi, <span class='t'>tahmini</span>. Atalet en kötü statik pozda "
-         "(kol öne / yana düz), parça ataletleri dahil. DS3235 ve DS3218 ikisi de 60 g: servo değişimi kütleyi değiştirmez.</p>" % (
-             sayi(H["kol_orani"]["birim_kutle"]["tup_g_mm"], 3), sayi(H["kol_orani"]["birim_kutle"]["yaka_g_mm"], 3)))
+o.append("<p class='not'>×1,25 = taslak geometrisi (<code>kutle.json</code>, parça parça; ek ön kolda). ×1,15 = ön kol uzatması geri alınır (bilek servosu + "
+         "el %s mm yukarı, ön kol U bölümü çıkarılır: ×1,15 taslağı), ×1,36 = ek boy yine ön kola; birim kütle taslaktaki ön kol uzatmasından (%s g/mm), "
+         "×1,36 geometrisi modellenmedi, <span class='t'>tahmini</span>. Atalet en kötü statik pozda (kol öne / yana düz), parça ataletleri dahil. DS3235 ve "
+         "DS3218 ikisi de 60 g: servo değişimi kütleyi değiştirmez.</p>" % (sayi(GEO["on_kol_uzama"], 1), sayi(H["kol_orani"]["birim_kutle"]["on_kol_g_mm"], 3)))
 
 # ------------------------------------------------------------------ 3 servo paylari
 o.append("<h2>3. Servo payları (en kötü poz, yüksüz kol; elde yük 2× pay ile)</h2>")
@@ -310,7 +330,7 @@ zay = [
      "yazılım: omuz servolarında hedefe ulaşamama (konum hatası > 5° ve 0,5 s) → komutu geri al (PCA9685 akım okumaz; dağıtım kartına hat akım sensörü "
      "INA219 ~60 TL <span class='t'>tahmini</span> ile aşırı akımda kes). Donanım seçeneği: dirseği DS3218MG yapmak (+1.531 TL / 2 kol; ön kol yeniden çizilir)"],
     ["4", "Bilek MG996R mili (el konsol)", "bilekte karşı yatak yok; el ve yaka konsolu mili eğer: stall'da eşdeğer %s N (referans 30 N, <span class='t'>tahmini</span>); yaka uzadıkça artar" % sayi(g(b3, "Bilek MG996R")["deger"], 0),
-     "uzatmayı yakaya değil üst kol tüpüne / ön kola ver (yaka 32,6 mm kalsın); ya da bilek flanşını ön kolda ince rulmanla (6806-2RS 30 × 42 × 7) destekle"],
+     "karar uygulandı: ek ön kolda, yaka 32,6 mm'de kaldı (bilek konsolu ×1,15 ile aynı). Ek önlem önerisi (onaylanmadı): bilek flanşını ön kolda ince rulmanla (6806-2RS 30 × 42 × 7) destekle"],
     ["5", "S1 servo mili + 6808 (omuz göbeği)", "S1 horn ile 6808 arası yalnız 8,15 mm: göbeğe gelen eğilme momenti (S2 torku + ağırlık) 6808 boşluğu kapanana dek S1 milinde; "
      "üst sınır %s, boşluk sınırlı tahmin %s N (<span class='t'>tahmini</span>, 125 cm tasarımda da var)" % (
          esc(g(b3, "S1 servo mili")["yuk"].split("üst sınır ")[1]), sayi(g(b3, "S1 servo mili")["deger"], 0)),
@@ -320,7 +340,7 @@ zay = [
      "dış kolu 5 → 7 mm dışa doğru (çakışma taraması yeniden) ya da PETG-CF; yaka vidası 2 → 4 adet ve yaka duvarı "
      "kalınlaştırma; tüp penceresi uçlarına R2 yuvarlatma. Asıl önlem hız sınırı (Bölüm 5)"],
 ]
-o.append(tablo(["#", "Halka", "Neden / sayı (×%s + %s)" % (sayi(REC[0], 2), REC[1]), "Düzeltme"], zay))
+o.append(tablo(["#", "Halka", "Neden / sayı (×%s + %s)" % (sayi(REC[0], 2), REC[1]), "Düzeltme önerisi (onaylanmadı, uygulanmadı)"], zay))
 o.append("<p class='not'>Kontrol edilip sorunsuz çıkanlar (her oran ve servoda, L1–L3): kol çatalı pimi ve ön kolu, üst kol tüpü (katmanlar arası dahil; en kötü SF "
          "pencerede), ön kol U kesiti, el boynu, horn cıvatalarında PETG ezilmesi, servo kulak cıvataları, rulman kapağı ısıl gömme somunları, M5 mafsal somunu, "
          "tüp ↔ pim vidaları, dirsek sıkma bileziği (sürtünme 20 N·m), 6808-2RS ve 625ZZ statik yük (C0'ın küçük bir kesri). Cıvata kesmesi hiçbir yerde "
@@ -340,19 +360,78 @@ for v in D["varyant"]:
                      sayi(dv["yeni-444"]["one_yuk"]["pay_ileri"], 2)])
 o.append(tablo(["Kol", "Omuz servosu", "Servo farkı TL (5 adet)", "Filament farkı TL", "Robot kütle farkı g (iki kol)", "Devrilme düz 444", "Devrilme 5° rampa 444",
                 "Devrilme düz 520", "Kollar önde + 0,5 kg/el, ileri"], rows, "sayi"))
-o.append("<p class='not'>Referans ×1,15 + DS3218MG (taslak). Devrilme: <code>taslak_hesap.py</code> yöntemi (en kötü yüksüz kol pozu ızgarası, pay = eşik / 1,5 m/s², "
+o.append("<p class='not'>Referans ×1,15 + DS3218MG (önceki taslak). Devrilme: <code>taslak_hesap.py</code> yöntemi (en kötü yüksüz kol pozu ızgarası, pay = eşik / 1,5 m/s², "
          "ölçüt düz ≥ 2, rampa ≥ 1,5); kol uzaması etkisi küçük, belirleyici taban genişliği ve AM (taslak raporu). Servo değişimi kütleyi değiştirmez. "
          "Ek kalemler (öneriye bağlı, <span class='t'>tahmini</span>): S1/S2 uzatması 20 AWG (~6,5 m, ~200 TL), kelepçeli horn (mevcut horn satırının tipi, fark yok), "
          "ikinci 6808-2RS ×2 (213,60 TL), S2 destek rulmanı 6806-2RS ×2 (~150 TL), koşullu 20 A düşürücü ×2 (~800–1.200 TL, ölçüme bağlı). "
-         "Önerilen paket (×1,25 + DS3235 + 20 AWG + 6808 çifti + S2 destek rulmanı) ≈ +%s TL, düşürücü gerekirse ≈ +%s TL.</p>" % (
+         "Öneri paketi (onaylanmadı: ×1,25 + DS3235 + 20 AWG + 6808 çifti + S2 destek rulmanı) ≈ +%s TL, düşürücü gerekirse ≈ +%s TL.</p>" % (
              sayi(D["maliyet"]["fark_indirimli"] + 200 + 213.6 + 150, 0), sayi(D["maliyet"]["fark_indirimli"] + 200 + 213.6 + 150 + 1000, 0)))
 
-# ------------------------------------------------------------------ 8 acik isler
+# ------------------------------------------------------------------ 8 onceki analizle fark
+o.append("<h2>8. Önceki analizle fark (×1,25: doğrusal tüp : yaka → gerçek geometri, ek ön kolda)</h2>")
+if not ON:
+    o.append("<div class='bos'>önceki sonuç okunamadı (git %s)</div>" % esc(D.get("onceki_git", "e8697ac")))
+else:
+    def fsat(ad, a, b, n=2, birim="", ters=False, not_=""):
+        if a is None or b is None:
+            return [ad, "–" if a is None else sayi(a, n) + birim, "–" if b is None else sayi(b, n) + birim, "–", not_]
+        d = b - a
+        return [ad, sayi(a, n) + birim, sayi(b, n) + birim, ("+" if d > 0 else "") + sayi(d, n), not_]
+
+    def sf_el(liste, on_ek, dur):
+        L = [r for r in liste if r["durum"] == dur and r["eleman"].startswith(on_ek)]
+        return min(r["sf"] for r in L) if L else None
+
+    def tablo_fark(oran, sv, baslik):
+        a = ONV.get("%.2f" % oran)
+        b = OZ.get("%.2f" % oran)
+        if not a or not b:
+            return
+        A_, B_ = a["servo"][sv], b["servo"][sv]
+        sat = [fsat("Kol boyu (S1 → el ucu), mm", a["kol_boy_mm"], b["kol_boy_mm"], 1),
+               fsat("Üst kol tüpü, mm", a["tup_boy_mm"], b["tup_boy_mm"], 1), fsat("Ön kol (dirsek → bilek), mm", 83.1 if a.get("on_kol_boy_mm") is None else a["on_kol_boy_mm"], b["on_kol_boy_mm"], 1),
+               fsat("El yakası, mm", a["yaka_boy_mm"], b["yaka_boy_mm"], 1),
+               fsat("S2 altı kol kütlesi, g", a["kol_kutle_g"], b["kol_kutle_g"], 1), fsat("S1 ile dönen, g", a["S1_ile_donen_g"], b["S1_ile_donen_g"], 1),
+               fsat("Kol AM'si S1'den, mm", a["kol_am_s_mm"], b["kol_am_s_mm"], 1), fsat("Atalet S1, kg·cm²", a["I_S1_kgm2"] * 1e4, b["I_S1_kgm2"] * 1e4, 1)]
+        for j in ("S1", "S2", "Dirsek"):
+            ea, eb = A_["eklem"][j], B_["eklem"][j]
+            sat.append(fsat("%s statik tork, kg·cm" % j, ea["statik_kgcm"], eb["statik_kgcm"]))
+            sat.append(fsat("%s pay statik / ivmeli" % j, ea["pay_statik"], eb["pay_statik"], not_="ivmeli %s → %s" % (sayi(ea["pay_ivmeli"], 2), sayi(eb["pay_ivmeli"], 2))))
+        sat += [fsat("Elde yük (S1, 2× statik), g", A_["eklem"]["S1"]["yuk_2x_g"], B_["eklem"]["S1"]["yuk_2x_g"], 0),
+                fsat("Dirsek geri sürme (× MG996R stall)", A_["geri_surme"], B_["geri_surme"]),
+                fsat("Stall uç kuvveti, N", A_["F_stall_N"], B_["F_stall_N"], 1),
+                fsat("Darbe omuz momenti, kg·cm", A_["darbe"]["M_omuz_kgcm"], B_["darbe"]["M_omuz_kgcm"], 0),
+                fsat("Darbe güvenli hız, rad/s", A_["darbe"]["omega_guvenli"], B_["darbe"]["omega_guvenli"]),
+                fsat("Hat A yoğun / tepe, A", A_["hat"]["yogun_A"], B_["hat"]["yogun_A"], not_="tepe %s → %s" % (sayi(A_["hat"]["tepe_A"], 2), sayi(B_["hat"]["tepe_A"], 2))),
+                fsat("Devrilme düz 444 (ızgara en kötü)", a["devrilme"]["yeni-444"]["izgara_duz"], b["devrilme"]["yeni-444"]["izgara_duz"])]
+        for on_ek, et in (("Ön kol gövdesi, üst", "Ön kol üst kesiti"), ("Ön kol gövdesi, alt", "Ön kol alt U"), ("Dirsek çatalı dış kolu", "Dirsek çatalı dış kolu"),
+                          ("El boynu", "El boynu / yaka"), ("Üst kol tüpü, kablo", "Tüp penceresi"), ("Kol çatalı ön kolu", "Kol çatalı ön kolu")):
+            for dur in ("L3", "L4"):
+                sat.append(fsat("SF %s, %s" % (et, DUR[dur]), sf_el(A_["satir"], on_ek, dur), sf_el(B_["satir"], on_ek, dur),
+                                not_=("önceki: idealize kesit (plaka dahil) s 30; şimdi CAD kesiti (pencere)" if on_ek.endswith("üst") else
+                                      ("önceki s 60; şimdi alt U başı s 42 (en büyük moment)" if on_ek.endswith("alt") else ""))))
+        for on_ek, et in (("S1 horn", "S1 25T horn kanalı"), ("S2 servo mili", "S2 servo mili radyal"), ("Bilek MG996R", "Bilek MG996R mili (konsol)"),
+                          ("El yakası", "El yakası vidaları"), ("Dirsek MG996R", "Dirsek MG996R mili"), ("Dirsek horn", "Dirsek horn kanalı")):
+            for dur in ("L3", "L4"):
+                sat.append(fsat("SF %s, %s" % (et, DUR[dur]), sf_el(A_["baglanti"], on_ek, dur), sf_el(B_["baglanti"], on_ek, dur)))
+        o.append("<h3>%s</h3>" % baslik)
+        o.append(tablo(["Büyüklük", "Önceki (git %s)" % esc(ON["kaynak"].split(":")[0].replace("git ", "")), "Şimdi", "Fark", "Not"], sat, "sayi"))
+
+    o.append("<p>Önceki: %s. Şimdi: %s. ×1,25'te ek 32,4 mm önceki modelde tüpe (+19,8) ve yakaya (+12,6) gidiyordu, gerçek taslakta tamamı ön kolda. "
+             "Ayrıca ön kol kesitleri CAD dilimlerinden alındı (üst kesit idealize hesapta Wz 3.959, CAD'de 1.073 mm³; alt U değerlendirmesi s 60'tan "
+             "en büyük momentin olduğu s 42'ye çekildi).</p>" % (esc(ON["kaynak"]), esc(D["ozet"]["kaynak"])))
+    tablo_fark(1.25, "DS3235", "×1,25 + DS3235 (karar)")
+    tablo_fark(1.25, "DS3218MG", "×1,25 + DS3218MG (karşılaştırma)")
+    tablo_fark(1.15, "DS3218MG", "×1,15 + DS3218MG: yöntem kontrolü (önceki gerçek ×1,15 geometrisi ↔ şimdi ×1,25'ten geri alınmış)")
+    o.append("<p class='not'>×1,15 tablosu yöntemin kontrolüdür: ön kol uzatmasını geri almak gerçek ×1,15 taslağını vermeli (servo torkları ve kütleler "
+             "önceki ile aynı çıkmalı); farklar yalnız ön kol kesit modelinden (yukarıdaki not) gelir.</p>")
+
+# ------------------------------------------------------------------ 9 acik isler
 o.append("<h2>Açık işler</h2>")
 o.append(tablo(["İş", "Neden", "Öneri", "Kimde"], [
     ["DS3235 modelini teyit", "Robocombo açıklamasında RDS3235 / U braket geçiyor; gövde 38,5 / 40 / 40,5 mm farklı kaynaklarda", "satıcıya sor; gelince kumpas: gövde, kulak deliği 49,5 × 10, mil konumu, 25T", "satın alma"],
-    ["Kol oranı kararı", "×1,25 önerildi; ×1,36 yavaş profil ister", "Duffy karar verince <code>taslak_ayar.py</code> (UST_KOL_UZAMA / EL_UZAMA) güncellenir, taslak montaj + kafa × kol çarpışma taraması yeniden (×1,25 / ×1,36 modellenmedi)", "Duffy + tasarım"],
-    ["Uzatma dağılımı", "yaka uzadıkça bilek mili konsolu büyür", "×1,25'te ek 32,4 mm'yi tüpe / ön kola ver (yaka 32,6 kalsın); ön kol uzatılırsa bilek servosu yerini koru", "tasarım"],
+    ["Kol oranı kararı", "verildi (Duffy, 24 Ekim 2026): ×1,25 + omuz DS3235; ek ön kolda (tasarım ajanı)", "uygulandı ve bu raporda gerçek geometriyle yeniden hesaplandı; tam çarpışma taraması taslak raporunda", "–"],
+    ["Dirsek geri sürme (ön kol uzadı)", "DS3235 stall'ı el ucundan dirseğe MG996R stall'ının %s katı" % sayi(Rs["dirsek_geri_surme_kati"], 2), "yazılımda konum hatası izleme + tork geri alma; donanım seçeneği dirseği daha güçlü servo yapmak (onaylanmadı)", "yazılım + Duffy"],
     ["S2 horn tarafı destek rulmanı", "S2 mili radyal yükü (ivmeli ~40 N, stall ~80 N)", "omuz modülünde göbek ön plakası + kol çatalı ön koluna eş eksenli ince rulman (ör. 6806-2RS); çakışma ve tarama yeniden", "omuz"],
     ["Omuz 6808 çifti", "S1 mili ile 6808 arası 8,15 mm", "rulman kapağı + ikinci 6808; S1 servoyu tork-only yap", "omuz"],
     ["Servo hattı ölçümü", "yoğun akım 5 A'i geçebilir (×1,25+)", "E1 / E7 ölçümü (yük direnci ya da kollar uzanmış); > 5 A sürekli ise 20 A düşürücü; XL çıkışı 6,4 V", "elektrik"],
@@ -368,7 +447,7 @@ o.append("<h2>Varsayımlar</h2><ul>")
 for t in [
     "Servo hattı 6,0 V (E1), XL4016 8 A / sürekli 5 A, hat sigortası 7,5 A, 16 AWG 8 mΩ; uzatmalar S1 1,45, S2 1,55, dirsek/bilek 2,0 m 22 AWG (taslak +0,435 m) <span class='t'>tahmini</span>.",
     "DS3235 stall akımı tasarımda 3,0 A @6 V (datasheet 2,1 A, satıcılar 2,2–3,9 A) <span class='t'>tahmini</span>; DS3218 6 V'ta 20,4 kg·cm (19 @5 V, 21,5 @6,8 V arası doğrusal; proje 20 kullanır).",
-    "×1,25 / ×1,36 kolları modellenmedi: <code>taslak_hesap.py</code> yöntemiyle doğrusal uzatma (tüp : yaka = 30 : 19), <span class='t'>tahmini</span>.",
+    "×1,25 taslak geometrisi (parçalardan, ek ön kolda). ×1,15 ön kol uzatması geri alınarak, ×1,36 ek boy ön kola doğrusal (<span class='t'>tahmini</span>, modellenmedi); ön kol kesitleri CAD dilimlerinden (s 30 pencere, s 42 alt U).",
     "İvme profili 60°/0,4 s üçgen (α 26,2 rad/s², tepe 5,24 rad/s), <span class='t'>tahmini</span>; yük ataleti el ucunda nokta kütle.",
     "Yapısal model 1 boyutlu: kesit momenti kesit altındaki kütlelerden ve el ucu kuvvetinden; kesit modülleri parça betiklerindeki ölçülerden sayısal; gerilme yığılması Kt 1,5–2,5 <span class='t'>tahmini</span>.",
     "Sürünme ×0,45 (sürekli), ×0,7 (stall, dakikalar), sıcaklık ×0,85 / ×0,75, doluluk PETG-CF 0,9 / PETG 0,8: hepsi <span class='t'>tahmini</span>.",

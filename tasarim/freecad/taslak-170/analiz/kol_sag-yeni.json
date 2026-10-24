@@ -208,6 +208,96 @@
     "bosluk_mm": 1.8,
     "hacim_mm3": 0.0,
     "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     45.0,
+     5.0
+    ],
+    "parca": "Ust kol tupu",
+    "hedef_modul": "kabuk",
+    "hedef": "Kaset civatasi M3x8 (sag psi 226)",
+    "bosluk_mm": 1.91,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     105.0,
+     5.0
+    ],
+    "parca": "Kol catali",
+    "hedef_modul": "kabuk",
+    "hedef": "S1 kaset kapagi sag",
+    "bosluk_mm": 2.12,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     15.0,
+     5.0
+    ],
+    "parca": "Ust kol tupu",
+    "hedef_modul": "kabuk",
+    "hedef": "S1 kaset govdesi sag",
+    "bosluk_mm": 2.66,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Gobek",
+    "poz": [
+     -30.0
+    ],
+    "parca": "Omuz gobegi",
+    "hedef_modul": "kabuk",
+    "hedef": "S1 kaset kapagi sag",
+    "bosluk_mm": 3.5,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     20.0,
+     5.0
+    ],
+    "parca": "Kol catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Kaset civatasi M3x8 (sag psi 200)",
+    "bosluk_mm": 4.4,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     45.0,
+     5.0
+    ],
+    "parca": "Kol catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Kaset civatasi M3x8 (sag psi 226)",
+    "bosluk_mm": 4.51,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     20.0,
+     5.0
+    ],
+    "parca": "Kol catali",
+    "hedef_modul": "kabuk",
+    "hedef": "S1 kaset govdesi sag",
+    "bosluk_mm": 4.68,
+    "hacim_mm3": 0.0,
+    "aralikta": true
    }
   ],
   "kafa govde": [
@@ -272,7 +362,7 @@
     ],
     "parca": "S2 horn merkez vidasi M3",
     "hedef_modul": "omuz_sag gobek",
-    "hedef": "S2 servo DS3218MG (yana acma)",
+    "hedef": "S2 servo DS3235 (yana acma)",
     "bosluk_mm": 0.3,
     "hacim_mm3": 0.0,
     "aralikta": true
@@ -287,6 +377,97 @@
     "hedef_modul": "omuz_sag gobek",
     "hedef": "S2 servo cikis mili",
     "bosluk_mm": 0.58,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     125.0,
+     5.0
+    ],
+    "parca": "Kol catali",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "S1 kablo tamburu",
+    "bosluk_mm": 0.82,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     125.0,
+     35.0
+    ],
+    "parca": "625ZZ rulman (dis bilezik)",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "Omuz gobegi",
+    "bosluk_mm": 1.0,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     90.0,
+     5.0
+    ],
+    "parca": "Ust kol tupu",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "S1 kablo tamburu",
+    "bosluk_mm": 1.29,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     110.0,
+     35.0
+    ],
+    "parca": "625ZZ rulman (dis bilezik)",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "Mafsal pulu M5",
+    "bosluk_mm": 1.4,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     125.0,
+     120.0
+    ],
+    "parca": "Kol catali",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "S2 servo cikis mili",
+    "bosluk_mm": 1.6,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     130.0,
+     25.0
+    ],
+    "parca": "S2 horn 25T aluminyum disk",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "S2 servo DS3235 (yana acma)",
+    "bosluk_mm": 2.0,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     125.0,
+     115.0
+    ],
+    "parca": "625ZZ rulman (dis bilezik)",
+    "hedef_modul": "omuz_sag gobek",
+    "hedef": "625ZZ rulman (ic bilezik)",
+    "bosluk_mm": 2.3,
     "hacim_mm3": 0.0,
     "aralikta": true
    }
@@ -361,5 +542,5 @@
  },
  "hareketli": "omuz gobegi (S1) + ust kol (S1+S2: kol catali, tup, S2 servosu) + dirsek catali + on kol + el",
  "hedefler": "iskelet, kabuk, taban, kafa govdesi (sabit boyun), iki omuzun govdesi, kendi omuzunun gobegi (S1 ile); gobek <-> kendi govdesi omuz ici (haric)",
- "sure_s": 2223.6
+ "sure_s": 2322.1
 }

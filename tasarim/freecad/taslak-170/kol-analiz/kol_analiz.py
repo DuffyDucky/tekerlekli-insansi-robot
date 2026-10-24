@@ -1,20 +1,24 @@
 # Lale 1,70 m TASLAK - KOL ANALIZI: kol orani (x1,15 / x1,25 / x1,36) x omuz servosu (DS3218MG / DS3235)
 # Kol analiz ajani, 24 Ekim 2026. Sistem Python'u (numpy), FreeCAD gerekmez. Ana taslak dosyalarini DEGISTIRMEZ.
+# Kontrol ajani, 24 Ekim 2026 (karar Duffy: x1,25 + omuz DS3235, ek on kolda): taban geometrisi artik x1,25 taslak (parcalardan);
+# varyantlar taslak_hesap.kol_orani_on_kol ile ayni (ek boy on kolda); onceki sonuc (git e8697ac, dogrusal tup:yaka) 'onceki' altinda.
 #
 # Girdi: ../analiz/girdi-yeni-444.json (+520) (taslak_analiz.py kutle bolumu), ../kutle.json (parca kutle/AM), ../taslak_hesap.py
-#        (Robot, devrilme, rot) ve ../../arayuz.py, ../../omuz|dirsek *_parcalar.py olculeri (burada sayi olarak kopyalandi, satir notlu).
+#        (Robot, devrilme, rot, kol_gruplari, on_kol_ek) ve ../../arayuz.py, ../../omuz|dirsek *_parcalar.py olculeri (sayi olarak, satir notlu).
 # Yontem:
 #   servo     taslak_hesap.kol_servo ile AYNI izgara (S1 x S2 x dirsek x bilek, 5 derece; bilek -90/0/90), ivme alfa 26,2 rad/s2
-#             (60 derece 0,4 s ucgen profil). Burada izgara kopyalandi: degerler + izgara (yuk hesabi icin) doner; hesap.json ile dogrulanir.
-#             Stall torku servo gerilimine gore (datasheet noktalari arasinda dogrusal); gerilim = hat 6,0 V - kablo dusumleri.
-#   kutle     x1,15 = taslak geometrisi (kutle.json). x1,25 / x1,36 = taslak_hesap yontemi: ek boy tup:yaka = 30:19, birim kutle
-#             taslak uzatmalarindan (tup 0,403 g/mm, yaka 0,597 g/mm). Geometri modellenmedi (dogrusal uzatma).
+#             (60 derece 0,4 s ucgen profil). Burada izgara kopyalandi (gruplar taslak_hesap.kol_gruplari'ndan): degerler + izgara (yuk
+#             hesabi icin) doner; hesap.json ile dogrulanir. Stall torku servo gerilimine gore (datasheet noktalari arasinda dogrusal);
+#             gerilim = hat 6,0 V - kablo dusumleri.
+#   kutle     x1,25 = taslak geometrisi (kutle.json, parca parca; ek 32,4 mm on kolda). x1,15 = on kol uzatmasi geri alinir (x1,15 taslak
+#             geometrisi), x1,36 = ek boy yine on kola: bilek servosu alt kumesi + el kayar, on kol U bolumu birim kutlesi taslaktan
+#             (0,345 g/mm). x1,36 geometrisi modellenmedi (dogrusal, tahmini).
 #   yapisal   1-B kol modeli (kesit momenti = kesit altindaki kutleler + uc kuvveti), kesit modulleri parca betiklerindeki olculerden
 #             (sayisal integrasyon). Yuk durumlari: L1 statik (en kotu yatay poz, surekli), L2 statik + ivme (kisa), L3 servo stall
 #             (el ucu engelde; S1, S2, S1+S2 vektorel), L4 darbe (jest tepe hizinda sert engel; enerji yontemi, tahmini).
 #             Emniyet: sigma_izin = sigma_malzeme(katman yonune gore) x k_dolu x k_T x k_surunme; >= 2 guvenli, 1,2-2 sinirda, < 1,2 yetersiz.
 # Cikti: kol-analiz.json
-import os, sys, json, math, copy
+import os, sys, json, math, copy, subprocess
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -86,47 +90,30 @@ RB = TH.Robot(GY, "yeni-444", PAY_Y)
 RB_E = TH.Robot(GE, "eski-444", [(TA.KABLO_PAY_TABAN["kutle_g"], TA.KABLO_PAY_TABAN["merkez"])])
 MU_T = (RB.ozel["omuz_sag|Ust kol tupu"]["kutle"] - RB_E.ozel["omuz_sag|Ust kol tupu"]["kutle"]) / TA.UST_KOL_UZAMA   # g/mm
 MU_E = (RB.ozel["dirsek_sag|El"]["kutle"] - RB_E.ozel["dirsek_sag|El"]["kutle"]) / TA.EL_UZAMA
-Y_TUP_ALT = TA.S3_YENI + A.DIRSEK["tup_uc_y"] - TA.UST_KOL_UZAMA
+MU_O = (RB.ozel["dirsek_sag|On kol govdesi"]["kutle"] - RB_E.ozel["dirsek_sag|On kol govdesi"]["kutle"]) / TA.ON_KOL_UZAMA
 Y_BILEK = RB.ax["dirsek_sag|bilek"]["n"][1]
+S_E = TA.S3_YENI - RB.ax["dirsek_sag|dirsek"]["n"][1]                            # S1 ekseni -> dirsek ekseni (203)
+_S115 = TA.KOL_SECENEK["115"]
+L115 = TA.KOL_BOY_ESKI + _S115["ust_kol"] + _S115["on_kol"] + _S115["el"]       # x1,15 taslak (374,5)
+BILEK_ILE = RB.alt["dirsek_sag|OnKol|bilek_ile"]["adlar"]                        # bilek servosu alt kumesi (OnKol grubunda)
+assert TA.ON_KOL_UZAMA > 0, "kol analizi x1,25 taslak geometrisine gore (TASLAK_KOL=125)"
 
 
 def varyant(oran):
-    L = TA.KOL_BOY_YENI if abs(oran - 1.15) < 1e-9 else TA.KOL_BOY_ESKI * oran
+    """taslak_hesap.kol_orani_on_kol ile ayni: x1,25 taslak geometrisi, digerleri on kol uzamasi degistirilerek."""
+    taslak = abs(oran - TA.KOL_ORAN_HEDEF) < 1e-9
+    L = TA.KOL_BOY_YENI if taslak else (L115 if abs(oran - 1.15) < 1e-9 else TA.KOL_BOY_ESKI * oran)
     d = L - TA.KOL_BOY_YENI
-    dt = d * TA.UST_KOL_UZAMA / (TA.UST_KOL_UZAMA + TA.EL_UZAMA)
-    de = d - dt
-    ek = None if abs(d) < 1e-6 else dict(dy_dirsek=dt, dy_el=de, m_tup=MU_T * dt, y_tup=Y_TUP_ALT - dt / 2, m_el=MU_E * de,
-                                          y_el=Y_BILEK - 60.0 - de / 2)
-    return dict(oran=oran, L=L, dt=dt, de=de, ek=ek, tup_boy=100.0 + TA.UST_KOL_UZAMA + dt, yaka_boy=13.6 + TA.EL_UZAMA + de)
+    ek = None if taslak else TH.on_kol_ek(RB, RB_E, d)
+    E = TA.ON_KOL_UZAMA + d
+    return dict(oran=oran, L=L, d=d, E=E, dt=0.0, de=0.0, ek=ek, taslak=taslak, tup_boy=100.0 + TA.UST_KOL_UZAMA, yaka_boy=13.6 + TA.EL_UZAMA,
+                on_kol_boy=(A.DIRSEK["eksen_y"] - A.DIRSEK["bilek_nokta"][1]) + E)
 
 
 # ============================================================================== 3) servo izgarasi (taslak_hesap.kol_servo kopyasi + ic veriler)
 def servo_izgara(rb, ek=None, taraf="sag"):
     rot, tp, et = TH.rot, TH.tp, TH.eksen_torku
-    gr = {}
-    for g in ("Gobek", "Kol", "UstKol", "OnKol", "El"):
-        k = ("omuz_%s|%s" if g in ("Gobek", "Kol") else "dirsek_%s|%s") % (taraf, g)
-        d = rb.g[k]
-        gr[g] = [d["m"], d["c"].copy(), d["cs"].copy(), d["I"].copy()]
-    ax = {k: dict(n=np.array(v["n"], float), u=np.array(v["u"], float)) for k, v in rb.ax.items()}
-    uc = rb.uc.copy()
-    kanca = rb.uc + np.array([172.0 - 185.0, 20.0, 0.0])
-    if ek:
-        dyD, dyE = ek["dy_dirsek"], ek["dy_el"]
-        for g in ("UstKol", "OnKol", "El"):
-            gr[g][1][1] -= dyD
-            gr[g][2][1] -= dyD
-        gr["El"][1][1] -= dyE
-        gr["El"][2][1] -= dyE
-        for g, mk, yk in (("Kol", ek["m_tup"], ek["y_tup"]), ("El", ek["m_el"], ek["y_el"])):
-            m0, c0, cs0, I0 = gr[g]
-            c_ek = np.array([c0[0], yk, c0[2]])
-            m1 = m0 + mk
-            gr[g] = [m1, (m0 * c0 + mk * c_ek) / m1, (m0 * cs0 + mk * c_ek) / m1, I0]
-        for k in ("dirsek_%s|dirsek" % taraf, "dirsek_%s|bilek" % taraf):
-            ax[k] = dict(n=ax[k]["n"] - np.array([0, dyD, 0]), u=ax[k]["u"])
-        uc = uc - np.array([0, dyD + dyE, 0])
-        kanca = kanca - np.array([0, dyD + dyE, 0])
+    gr, ax, uc, kanca = TH.kol_gruplari(rb, taraf, ek)                            # taslak_hesap ile ayni gruplar (on kol varyanti dahil)
     a = {k: dict(n=list(v["n"]), u=list(v["u"])) for k, v in ax.items()}
 
     def M_al(sp):
@@ -261,37 +248,41 @@ TUP_PENCERE = kesit(lambda X, Z: (X ** 2 + Z ** 2 <= R_TUP_O ** 2) & (X ** 2 + Z
 YAKA = kesit(lambda X, Z: (X ** 2 + Z ** 2 <= 17.0 ** 2) & (X ** 2 + Z ** 2 >= 11.0 ** 2), -17, 17, -17, 17)   # taslak el boynu O34/O22
 PIM = kesit(lambda X, Z: X ** 2 + Z ** 2 <= 25.4 ** 2, -25.4, 25.4, -25.4, 25.4)                               # kol catali pimi O50,8 dolu
 # on kol U kesiti (dirsek_parcalar; x mutlak, z = ZE'ye gore): ust bolum (dirsek servosu yaninda) ve alt bolum (bilek servosu yaninda)
-ONKOL_UST = kesit(lambda X, Z: ((X >= 168.0) & (X <= 176.5) & (np.abs(Z) <= 14)) | ((X >= 198.6) & (X <= 203.6) & (np.abs(Z) <= 14)) |
-                  ((X >= 168.0) & (X <= 203.6) & (Z >= 11) & (Z <= 14)), 168, 204, -14, 14)
+ONKOL_UST_IDEAL = kesit(lambda X, Z: ((X >= 168.0) & (X <= 176.5) & (np.abs(Z) <= 14)) | ((X >= 198.6) & (X <= 203.6) & (np.abs(Z) <= 14)) |
+                        ((X >= 168.0) & (X <= 203.6) & (Z >= 11) & (Z <= 14)), 168, 204, -14, 14)
 ONKOL_ALT = kesit(lambda X, Z: ((X >= 163.6) & (X <= 166.6) & (np.abs(Z) <= 14)) | ((X >= 223.7) & (X <= 226.7) & (np.abs(Z) <= 14)) |
                   ((X >= 163.6) & (X <= 226.7) & (Z >= 11) & (Z <= 14)), 163, 227, -14, 14)
+# Kontrol ajani (24 Ekim 2026): taslak-170.FCStd 'On kol govdesi (sag)' y = sabit dilimleri (FreeCAD Face.MatrixOfInertia).
+#   s 30 (dirsek servosu penceresi: plaka kesik, yalniz yanak + on duvar): A 324,1 mm2, Wx 1.465, Wz 1.073 mm3 -> idealize UST (plaka dahil,
+#   Wz 3.959) bu kesitte 3,7 kat iyimserdi; artik CAD degeri kullanilir. s 42...(42 + 32,4 + 23): alt U, A 339,3, Wx 1.199, Wz 6.288 = ONKOL_ALT.
+ONKOL_UST = dict(A=324.1, Wx=1465.1, Wz=1072.8, kaynak="CAD dilimi s 30 (taslak-170.FCStd), kontrol ajani")
+assert abs(ONKOL_ALT["A"] - 339.3) < 0.5 and abs(ONKOL_ALT["Wx"] - 1199.2) < 5 and abs(ONKOL_ALT["Wz"] - 6287.6) < 15
+S_ONKOL_UST, S_ONKOL_ALT = 30.0, 42.0          # dirsek ekseninden: pencere kesiti; alt U'nun basi (ara duvar alti, en buyuk moment)
 PLAKA_5x32 = dict(W_duzlem=5.0 * 32.0 ** 2 / 6.0, A=5.0 * 32.0)          # kol catali on kolu / dirsek catali dis kolu
 PLAKA_11x32 = dict(W_duzlem=11.0 * 32.0 ** 2 / 6.0, A=11.0 * 32.0)      # dirsek catali ic kolu
 
 
 # ============================================================================== 7) 1-B kol kutle modeli (s: S1 ekseninden kol boyunca asagi, mm)
 KJ = json.load(open(os.path.join(TS, "kutle.json"), encoding="utf-8"))
-S1Y = 1390.0
+S1Y = TA.S3_YENI
+assert abs(KJ["kol"]["sag"]["bilek_ekseni"]["nokta"][1] - Y_BILEK) < 0.05, "kutle.json ile girdi-yeni-444.json ayni geometri degil"
 
 
 def kutle_noktalari(v):
-    """(kutle g, s mm) listesi; S2 ekseni altindaki kol (Kol + UstKol + OnKol + El grubu), taslak kutle.json'dan + uzatmalar."""
+    """(kutle g, s mm) listesi; S2 ekseni altindaki kol (Kol + UstKol + OnKol + El grubu), taslak kutle.json'dan (x1,25) + on kol farki."""
     pts = []
     for p in KJ["parcalar"]:
         if p["modul"] == "omuz_sag" and p["grup"] == "OmuzSag_Kol":
-            s = S1Y - p["am"][1]
-            if p["ad"] == "Ust kol tupu":
-                pts.append((p["kutle_g"] + MU_T * v["dt"], 40.0 + v["tup_boy"] / 2))
-            else:
-                pts.append((p["kutle_g"], s))
+            pts.append((p["kutle_g"], S1Y - p["am"][1]))
         elif p["modul"] == "dirsek_sag" and p["grup"].startswith("DirsekSag_"):
-            s = S1Y - p["am"][1] + v["dt"]
-            if p["ad"] == "El":
-                s += v["de"]
+            s = S1Y - p["am"][1]
+            if p["grup"] == "DirsekSag_El" or (p["grup"] == "DirsekSag_OnKol" and p["ad"] in BILEK_ILE):
+                s += v["d"]                                                    # bilek servosu + el on kolla kayar
             pts.append((p["kutle_g"], s))
-    if v["de"] > 0:
-        s_e = 203.0 + v["dt"]
-        pts.append((MU_E * v["de"], s_e + 100.5 + TA.EL_UZAMA + v["de"] / 2))
+    if abs(v["d"]) > 1e-9:
+        pts.append((MU_O * v["d"], S_E + TA.ON_KOL_KES_S + TA.ON_KOL_UZAMA + v["d"] / 2))   # on kol U bolumu (eklenen / cikarilan)
+        oa = RB.alt["dirsek_sag|OnKol|on_kol_alt"]                                          # govdenin uzatma alti bolumu kayar
+        pts += [(-oa["m"], S1Y - oa["c"][1]), (oa["m"], S1Y - oa["c"][1] + v["d"])]
     return pts
 
 
@@ -332,9 +323,9 @@ def yapisal(v, iz, sv_omuz, V_eff):
     W_gobek = 175.2 / 1000.0 * G
     Ts1 = stall(sv_omuz, 6.0)                                         # yapisal stall: nominal 6 V (ihtiyatli)
     Tmg = stall("MG996R", 6.0)
-    s_e = 203.0 + dt                                                  # dirsek ekseni
-    s_b = s_e + 83.1                                                  # bilek horn
-    s_yaka = s_e + 94.4                                               # flans ucu = el boynu baslangici
+    s_e = S_E + dt                                                    # dirsek ekseni (203)
+    s_b = s_e + v["on_kol_boy"]                                       # bilek horn (83,1 + on kol uzamasi)
+    s_yaka = s_b + 11.3                                               # flans ucu = el boynu baslangici (dirsek_parcalar S_FLANS 94,4 - S_HORN 83,1)
     I_S1, I_S2 = iz["S1"]["I_kgm2"], iz["S2"]["I_kgm2"]
     D1, D2 = darbe(I_S1, L, Ts1), darbe(I_S2, L, Ts1)
     # yuk durumlari: uc kuvveti (N) ve yercekimi/ivme carpanlari, her duzlem icin
@@ -397,7 +388,8 @@ def yapisal(v, iz, sv_omuz, V_eff):
              sig * 2.0, izin("PETG", "z", dur, "servo_yani"), sicak="servo_yani",
              not_="Kt 2,0 (horn delikleri); baskı −Y: kol boyu katmanlar arası. L3'te dirsek torku = max(MG996R stall, omuz stall'ının geri sürmesi)")
         # --- on kol U kesiti (PETG, baski -Z: katman duzleminde)
-        for s_, ks, ad in ((s_e + 30.0, ONKOL_UST, "üst (dirsek servosu yanı)"), (s_e + 60.0, ONKOL_ALT, "alt (bilek servosu yanı, 3 mm duvar)")):
+        for s_, ks, ad in ((s_e + S_ONKOL_UST, ONKOL_UST, "üst, dirsek servosu penceresi (s 30, CAD kesiti)"),
+                           (s_e + S_ONKOL_ALT, ONKOL_ALT, "alt U başı (s 42, uzatılan kesit, 3 mm duvar)")):
             M1 = M_kesit(s_, dur, 1)
             M2 = M_kesit(s_, dur, 2)
             sg = math.hypot(M1 * 1e3 / ks["Wx"], M2 * 1e3 / ks["Wz"]) if dur == "L3" else max(M1 * 1e3 / ks["Wx"], M2 * 1e3 / ks["Wz"])
@@ -502,18 +494,65 @@ def yapisal(v, iz, sv_omuz, V_eff):
                 kutle_noktalari=[(round(m, 1), round(s, 1)) for m, s in pts])
 
 
-# ============================================================================== 10) ana
+# ============================================================================== 10) onceki sonucla karsilastirma ozeti
+ONCEKI_GIT = "e8697ac"          # kol analiz ajani teslimi (24 Ekim 2026 00:36): x1,15 taslak tabanli, x1,25 / x1,36 dogrusal tup:yaka
+
+
+def ozet(D, kaynak):
+    o = dict(kaynak=kaynak, varyant={})
+    for v in D["varyant"]:
+        e = {k: v.get(k) for k in ("kol_boy_mm", "tup_boy_mm", "yaka_boy_mm", "on_kol_boy_mm", "el_ucu_y", "kol_kutle_g", "S1_ile_donen_g", "kol_am_s_mm",
+                                   "I_S1_kgm2", "I_S2_kgm2")}
+        dv = v.get("devrilme", {})
+        e["devrilme"] = {w: dict(izgara_duz=dv[w]["izgara_duz"], izgara_rampa=dv[w]["izgara_rampa"]) for w in dv}
+        e["servo"] = {}
+        for sv, S in v["servo"].items():
+            e["servo"][sv] = dict(
+                eklem={x["eklem"]: {k: x[k] for k in ("statik_kgcm", "ivme_kgcm", "stall_eff", "pay_statik", "pay_ivmeli", "yuk_2x_g")} for x in S["eklem"]},
+                hat={k: S["hat"][k] for k in ("tutma_A", "yogun_A", "tepe_A", "giris_tepe_A")}, V_servo=S["hat"]["V_servo_S1_stall"]["22AWG"],
+                geri_surme=S["dirsek_geri_surme_kati"],
+                darbe={k: S["yapisal"]["darbe"]["S1"][k] for k in ("F_N", "M_omuz_kgcm", "stall_kati", "omega_guvenli")},
+                F_stall_N=S["yapisal"]["F_stall_N"],
+                satir=[dict(eleman=r["eleman"], durum=r["durum"], sf=r["sf"]) for r in S["yapisal"]["satir"]],
+                baglanti=[dict(eleman=r["eleman"], durum=r["durum"], sf=r["sf"], deger=r["deger"], birim=r["birim"]) for r in S["yapisal"]["baglanti"]])
+        o["varyant"]["%.2f" % v["oran"]] = e
+    return o
+
+
+def onceki_ozet():
+    yol = "tasarim/freecad/taslak-170/kol-analiz/kol-analiz.json"
+    try:
+        r = subprocess.run(["git", "-C", HERE, "show", "%s:%s" % (ONCEKI_GIT, yol)], capture_output=True, check=True)
+        return ozet(json.loads(r.stdout.decode("utf-8")), "git %s: kol analizi (x1,15 taslak geometrisi; x1,25 / x1,36 dogrusal tup : yaka = 30 : 19; "
+                                                         "on kol kesitleri idealize, alt kesit s 60)" % ONCEKI_GIT)
+    except Exception as e:
+        try:
+            return json.load(open(os.path.join(HERE, "kol-analiz.json"), encoding="utf-8"))["onceki"]
+        except Exception:
+            print("onceki sonuc okunamadi:", e)
+            return None
+
+
+# ============================================================================== 11) ana
 def main():
     out = dict(tarih="2026-10-24", servo=SERVO, hat=HAT, malzeme=MALZ, k_T=K_T, k_surunme=K_SURUNME, esik=ESIK,
                yontem=dict(alfa=ALFA, omega_tepe=OMEGA_TEPE, darbe=dict(k_temas=K_TEMAS, theta_servo_derece=1.0),
-                           not_="x1,25 / x1,36 geometri modellenmedi: taslak_hesap yontemiyle dogrusal uzatma (tahmini)"),
+                           not_="x1,25 = taslak geometrisi (ek 32,4 mm on kolda, parcalardan); x1,15 = on kol uzatmasi geri alinir; x1,36 = ek "
+                                "boy on kola, geometri modellenmedi (dogrusal, tahmini). Kontrol ajani 24 Ekim 2026."),
+               geometri=dict(kol_secim=TA.KOL_SECIM, ust_kol_uzama=TA.UST_KOL_UZAMA, on_kol_uzama=TA.ON_KOL_UZAMA, el_uzama=TA.EL_UZAMA,
+                             kol_boy=TA.KOL_BOY_YENI, omuz_servo=TA.OMUZ_SERVO["ad"], s_dirsek=S_E, onkol_kesit=dict(
+                                 ust=dict(s=S_ONKOL_UST, **ONKOL_UST), ust_ideal_onceki={k: ONKOL_UST_IDEAL[k] for k in ("A", "Wx", "Wz")},
+                                 alt=dict(s=S_ONKOL_ALT, **{k: ONKOL_ALT[k] for k in ("A", "Wx", "Wz")}), alt_onceki_s=60.0),
+                             birim_kutle=dict(tup=MU_T, yaka=MU_E, on_kol=MU_O)),
                varyant=[])
     # dogrulama: hesap.json ile ayni mi
     hj = json.load(open(os.path.join(TS, "analiz", "hesap.json"), encoding="utf-8"))
+    assert hj["kol_orani"].get("dagilim") == "on_kol", "hesap.json x1,25 (on kol) dagilimiyla yeniden uretilmeli (taslak_hesap.py)"
+    IZ = {}
     for v_ in hj["kol_orani"]["varyant"]:
         if v_["oran"] in ORANLAR:
             v = varyant(v_["oran"])
-            iz = servo_izgara(RB, v["ek"])
+            iz = IZ[v_["oran"]] = servo_izgara(RB, v["ek"])
             for j, ad in enumerate(("S1", "S2", "Dirsek")):
                 a_, b_ = iz[ad]["statik_kgcm"], v_["servo"][j]["yuksuz_kgcm"]
                 assert abs(a_ - b_) < 0.02, (v_["oran"], ad, a_, b_)
@@ -523,11 +562,12 @@ def main():
 
     for oran in ORANLAR:
         v = varyant(oran)
-        iz = servo_izgara(RB, v["ek"])
+        iz = IZ[oran]
         pts = kutle_noktalari(v)
         kol_g = sum(m for m, _ in pts)
         V = dict(oran=oran, kol_boy_mm=round(v["L"], 1), tup_boy_mm=round(v["tup_boy"], 1), yaka_boy_mm=round(v["yaka_boy"], 1),
                  tup_ek_mm=round(v["dt"], 1), yaka_ek_mm=round(v["de"], 1), el_ucu_y=round(TA.S3_YENI - v["L"], 0),
+                 on_kol_boy_mm=round(v["on_kol_boy"], 1), on_kol_uzama_mm=round(v["E"], 1), on_kol_fark_mm=round(v["d"], 1), taslak=v["taslak"],
                  kol_kutle_g=round(kol_g, 1), gobek_g=175.2, S1_ile_donen_g=round(kol_g + 175.2, 1),
                  kol_am_s_mm=round(sum(m * s for m, s in pts) / kol_g, 1),
                  I_S1_kgm2=round(iz["S1"]["I_kgm2"], 5), I_S2_kgm2=round(iz["S2"]["I_kgm2"], 5))
@@ -560,7 +600,7 @@ def main():
                               pay_ivmeli=round(stall(sv, v_opt) / (iz["S1"]["statik_kgcm"] + iz["S1"]["ivme_kgcm"]), 2),
                               yuk_2x_g=round(izinli_yuk(iz["S1"], stall(sv, v_opt), 2.0), 0))
             # dirsek geri surme: omuz stall'i el ucundan dirsege binerse (S1 ve dirsek eksenleri paralel)
-            s_e = 203.0 + v["dt"]
+            s_e = S_E + v["dt"]
             geri_surme = stall(sv, 6.0) * (v["L"] - s_e) / v["L"] / stall("MG996R", 6.0)
             ts_mg = stall("MG996R", HAT["v_set"] - stall_akim("MG996R") * 2 * HAT["r_22awg"] * HAT["uzatma_m"]["Dirsek"])
             sv_t = []
@@ -589,7 +629,17 @@ def main():
         hv = [x for x in hj["kol_orani"]["varyant"] if abs(x["oran"] - oran) < 1e-9][0]
         V["devrilme"] = hv["devrilme"]
         V["kol_kutle_ek_g_hesap"] = hv["kol_kutle_ek_g"]
+        if v["taslak"]:
+            # capraz kontrol: omuz stall'i (servo geriliminde) taslak_hesap ile ayni modelden
+            for j in (0, 1):
+                h_ = hj["servo"]["yeni-444"]["kol"][j]
+                k_ = V["servo"][h_["servo"]]["eklem"][j]
+                assert abs(h_["stall_kgcm"] - k_["stall_eff"]) < 0.02, (h_["stall_kgcm"], k_["stall_eff"])
+            out["dogrulama"] += "; omuz stall (servo geriliminde) taslak_hesap ile ayni (%s %.2f kg*cm @ %.2f V)" % (
+                h_["servo"], h_["stall_kgcm"], h_.get("servo_gerilimi_V", 6.0))
         out["varyant"].append(V)
+    out["ozet"] = ozet(out, "bu kosu: x1,25 taslak geometrisi, ek on kolda (kontrol ajani 24 Ekim 2026)")
+    out["onceki"] = onceki_ozet()
     # ---------------- maliyet
     n = 5
     d_ind = n * (SERVO["DS3235"]["tl"] - SERVO["DS3218MG"]["tl"])

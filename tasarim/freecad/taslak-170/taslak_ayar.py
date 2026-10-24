@@ -4,6 +4,7 @@
 # (kesin model belli degil), otonomi yok (lidar / lidar diregi / haritalama kapsam disi), kumanda telefondan.
 # Bu klasor mevcut modulleri ve ana montaji DEGISTIRMEZ: modul betikleri (../<modul>/*_parcalar.py) oldugu gibi import edilir,
 # varyant farklari (uzayan direk, uzatma kabuk bantlari, yeni kafa, uzun kol) burada ve taslak_parcalar.py'de uygulanir.
+# Kararlar (24 Ekim 2026, Duffy): kol x1,25 (ek on kola), omuz S1/S2 servolari DS3235 (bolum 2).
 # Koordinat: global (../arayuz.py): orijin zemin + robot merkezi, +X sag, +Y yukari, +Z ileri (yuz), mm.
 # Kaynagi olmayan deger "tahmini".
 import os, sys, math
@@ -40,14 +41,47 @@ DIREK_Y1_YENI = A.DIREK_Y1 + DY             # 1370
 DIREK_L_YENI = DIREK_Y1_YENI - A.DIREK_Y0   # 1235,5 (1 m stok yetmez: 1,5 / 2 m boy ya da ozel kesim; acik is)
 
 # =====================================================================================================
-# 2) Kol (boyla orantili x1,36 yerine x1,15; gerekce raporda ve kutle.json'da: omuz torku, ust kutle, kafa-kol boslugu)
+# 2) Kol (boyla orantili x1,36 yerine). KARAR (Duffy, 24 Ekim 2026): x1,25 (kol analizi kol-analiz/rapor.html onerisi).
+#    Eski x1,15 secenegi geri alinabilir: TASLAK_KOL=115 ortam degiskeniyle yeniden uretilir (varsayilan 125).
+#    Uzatma uc yere dagitilir (omuz ekseninden el ucuna):
+#      UST_KOL_UZAMA: ust kol tupu (omuz Kol grubu, PETG tup), dirsek ekseni bu kadar asagi
+#      ON_KOL_UZAMA : on kol govdesi, dirsek servosu ile bilek servosu arasindaki U bolum (s = 42,75'te kesilip uzatilir);
+#                     bilek servosu + bilek flansi + el (bilek ekseni) bu kadar daha asagi; dirsek servosu yerinde
+#      EL_UZAMA     : bilek yakasi (el boynu) 13,6 -> 32,6 mm (O34 / O22 bos tup); kol analizi: yaka uzadikca bilek mili
+#                     konsolu buyur, yakadaki 2x M3 zayif halka -> x1,25'te yaka 32,6'da kalir
+#    x1,25 dagilim gerekcesi (KOL125-NOTLAR.md, rapor): ek 32,4 mm on kola. S1 sinirlayici eklem (DS3235 x1,25 ivmeli pay ~1,6);
+#    ek tupe verilseydi tum dirsek grubu (~380 g) uzaklasirdi, on kola verilince yalniz bilek servosu + el (~160 g): S1 momenti
+#    daha az artar. Tup +Y basili (egilme katmanlar arasi), uzatilmadi. Dirsek MG996R payi genis (statik ~2 / stall 9,4 kg.cm).
 # =====================================================================================================
-KOL_ORAN_HEDEF = 1.15
 KOL_BOY_ESKI = -A.DIRSEK["el_ucu"][1]       # omuz ekseninden el ucuna 325,5
-UST_KOL_UZAMA = 30.0                        # ust kol tupu 100 -> 130 mm (omuz Kol grubu, PETG tup)
-EL_UZAMA = 19.0                             # bilek yakasi (el boynu) 13,6 -> 32,6 mm (O34 / O22 bos tup), el ucu bu kadar asagi
-KOL_BOY_YENI = KOL_BOY_ESKI + UST_KOL_UZAMA + EL_UZAMA     # 374,5 -> x1,1505
+KOL_SECENEK = {
+    "115": dict(oran=1.15, ust_kol=30.0, on_kol=0.0, el=19.0, karar="21 Ekim 2026 taslak (tasarim ajani): 374,5 mm, x1,1505"),
+    "125": dict(oran=1.25, ust_kol=30.0, on_kol=32.4, el=19.0, karar="Duffy, 24 Ekim 2026: x1,25 + omuz DS3235; ek 32,4 mm on kola (406,9 mm, x1,2501)"),
+}
+KOL_SECIM = os.environ.get("TASLAK_KOL", "125")
+assert KOL_SECIM in KOL_SECENEK, "TASLAK_KOL 115 ya da 125 olmali"
+_KS = KOL_SECENEK[KOL_SECIM]
+KOL_ORAN_HEDEF = _KS["oran"]
+UST_KOL_UZAMA = _KS["ust_kol"]              # ust kol tupu 100 -> 130 mm
+ON_KOL_UZAMA = _KS["on_kol"]                # on kol (dirsek ekseni -> bilek ekseni) 83,1 -> 115,5 mm (x1,25)
+EL_UZAMA = _KS["el"]                        # el yakasi +19 (degismez)
+KOL_KARAR = _KS["karar"]
+KOL_BOY_YENI = KOL_BOY_ESKI + UST_KOL_UZAMA + ON_KOL_UZAMA + EL_UZAMA     # x1,25: 406,9 (x1,15: 374,5)
 KOL_ORAN = KOL_BOY_YENI / KOL_BOY_ESKI
+ON_KOL_KES_S = 42.75                        # on kol kesit yeri: dirsek ekseninden on kol boyunca (ara duvar alti 42,0 ile bilek servosu tabani 43,5 arasi)
+
+# Omuz servolari (S1 one-arka, S2 yana acma; iki kol). KARAR (Duffy, 24 Ekim 2026): DS3218MG -> DS3235.
+# Govde DS3218 ile ayni kabul (40 x 20 x 40, kulak delikleri 49,5 x 10, 25T cikis): geometri DEGISMEDI, yalniz ad / kod / not.
+# Govde yuksekligi kaynaklarda 38,5 (DS3235 datasheet, Rochester ME240 kopyasi) / 40 (Robocombo tablosu) / 40,5 (probots) ->
+# servo gelince kumpasla dogrulanacak. Kutle 60 g (datasheet; DS3218 ile ayni). Veri: kol-analiz/NOTLAR.md "1) Servo verisi".
+OMUZ_SERVO_SECENEK = {
+    "DS3218MG": dict(ad="DS3218MG", kod="DS3218MG servo", kutle_g=60.0, tork_kgcm="20 (6 V civari, tahmini; proje degeri)", not_=""),
+    "DS3235": dict(ad="DS3235", kod="DS3235 servo", kutle_g=60.0, tork_kgcm="29 / 32 / 35 @ 5 / 6 / 7,4 V (satici tablosu + datasheet)",
+                   not_="DS3235 (karar 24 Ekim 2026; eski DS3218MG). Govde DS3218 ile ayni kabul: 40x20x40, kulak delikleri 49,5x10, 25T. "
+                        "Govde yuksekligi kaynaklarda 38,5 / 40 / 40,5 mm: servo gelince kumpasla dogrulanacak. 60 g (datasheet)"),
+}
+OMUZ_SERVO = OMUZ_SERVO_SECENEK[os.environ.get("TASLAK_OMUZ_SERVO", "DS3235")]
+OMUZ_SERVO_ESKI = OMUZ_SERVO_SECENEK["DS3218MG"]
 
 # =====================================================================================================
 # 3) Kafa: yuz ekrani 10,1" 1280x800 HDMI (TAHMINI MODEL), tilt ekseni kafa AM'sinden, +-15 derece
@@ -97,5 +131,6 @@ KOORDINAT = "orijin zemin + robot merkezi; +X robotun sagi, +Y yukari, +Z ileri 
 
 if __name__ == "__main__":
     print("S3 yeni %.1f (eski %.1f), uzama %.1f, direk %.1f, uzatma dikisleri %s" % (S3_YENI, A.S3, DY, DIREK_L_YENI, UZATMA_DIKIS))
-    print("kol %.1f -> %.1f (x%.4f), taban %.0f (dx %.1f)" % (KOL_BOY_ESKI, KOL_BOY_YENI, KOL_ORAN, TABAN_W, TABAN_DX))
+    print("kol [%s] %.1f -> %.1f (x%.4f; tup +%.1f, on kol +%.1f, yaka +%.1f), omuz servosu %s, taban %.0f (dx %.1f)" % (
+        KOL_SECIM, KOL_BOY_ESKI, KOL_BOY_YENI, KOL_ORAN, UST_KOL_UZAMA, ON_KOL_UZAMA, EL_UZAMA, OMUZ_SERVO["ad"], TABAN_W, TABAN_DX))
     print("uzatma braketleri y", UZATMA_BRAKET_Y)

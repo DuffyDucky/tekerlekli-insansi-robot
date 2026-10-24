@@ -5,8 +5,9 @@
 #   iskelet : govde diregi 800,5 -> 1235,5 mm (yeni sigma kesimi); travers + ust kose baglantilari DY yukari
 #   kabuk   : 476,5 dikisinin ustu DY yukari; araya iki sabit kesitli uzatma bandi x sag/sol (4 baski parcasi) + bindirme civatalari
 #             + bant basina bir govde braketi cifti (3 mm Al U, direge 2x M6 + cekic somun, kabuga M5 + isil gomme somun)
-#   omuz    : DY yukari; ust kol tupu 30 mm uzar (PETG, omuz Kol grubu)
-#   dirsek  : DY - 30 (tupun yeni ucunda); elin yakasi 19 mm uzar (O34 / O22 bos tup), el ucu 374,5 mm (x1,15)
+#   omuz    : DY yukari; ust kol tupu 30 mm uzar (PETG, omuz Kol grubu); S1/S2 servolari DS3235 (geometri ayni, ad/kod/not)
+#   dirsek  : DY - 30 (tupun yeni ucunda); on kol govdesi ON_KOL_UZAMA uzar (x1,25: 32,4; bilek servosu + el o kadar asagi);
+#             elin yakasi 19 mm uzar (O34 / O22 bos tup); el ucu taslak_ayar.KOL_BOY_YENI (x1,25: 406,9; TASLAK_KOL=115: 374,5)
 #   kafa    : Govde + Pan DY yukari; catal + tilt servosu + pim H yukari (boyun yukseltme adaptoru, 4 saplama); Bas grubu yeni (kafa10.py)
 #   taban   : ayni (TASLAK_TABAN_W > 444 ise tahrik + plaka + etek yanlara acilir, etek dolgu seritleri; taslak_ayar.TABAN_DX)
 # Her parca: ad, modul, grup (montaj grubu), shape (global), kutle (g), merkez (global), tur, malzeme, kod, renk, not_, durum
@@ -121,8 +122,9 @@ def _baski_bilgisi(modul, ad):
     return None
 
 
-def mevcut(modul, p, shape=None, v=None, durum=None, grup=None, kutle=None, ad=None, not_=None, kod=None):
-    """Mevcut parcayi (global) ekler; v ile tasir, shape verilirse degisti sayar."""
+def mevcut(modul, p, shape=None, v=None, durum=None, grup=None, kutle=None, ad=None, not_=None, kod=None, rijit=False):
+    """Mevcut parcayi (global) ekler; v ile tasir, shape verilirse degisti sayar. rijit: durum 'degisti' olsa da geometri
+    yalniz otelendi (ornek: servo modeli degisti, govde ayni) -> v kaydedilir."""
     sh = shape if shape is not None else p["g"]
     if v is not None and v.Length > 1e-9:
         sh = tasi(sh, v)
@@ -134,7 +136,8 @@ def mevcut(modul, p, shape=None, v=None, durum=None, grup=None, kutle=None, ad=N
     q = ekle(ad or p["ad"], modul, grup or p["grup"], sh, p["kutle"] if kutle is None else kutle, p["tur"], p["malzeme"],
              kod or p["kod"], p["renk"], not_=p["not_"] if not_ is None else not_, durum=d_, baski=_baski_bilgisi(modul, p["ad"]),
              merkez=mer, kaynak=modul)
-    if shape is None and d_ in ("ayni", "tasindi"):
+    q["eski_ad"] = p["ad"]                                   # 125 cm robottaki adi (yeniden adlanan parca: eski robot eslemesi)
+    if shape is None and (d_ in ("ayni", "tasindi") or rijit):
         q["v"] = V(v) if v is not None else V(0, 0, 0)       # eski robota gore rijit oteleme (yerlesim kontrolu ciftleri eler)
     return q
 
@@ -169,14 +172,43 @@ for side in ("sag", "sol"):
             g = tasi(MD.global_sekil(yerel, ad), DYV)
             m = g.Volume / 1000.0 * (A.OMUZ["baski_rho"]["PETG"][0] * A.OMUZ["baski_rho"]["PETG"][1])
             mevcut(ad, p, shape=g, kutle=m, not_="ust kol tupu 100 -> %.0f mm (taslak); pencere ve civata delikleri ayni" % (100 + TA.UST_KOL_UZAMA))
+        elif p["kod"] == TA.OMUZ_SERVO_ESKI["kod"] and TA.OMUZ_SERVO["ad"] != TA.OMUZ_SERVO_ESKI["ad"]:
+            # S1 / S2 servosu: DS3218MG -> DS3235 (govde ayni kabul; geometri yalniz DY otelendi)
+            mevcut(ad, p, v=DYV, durum="degisti", rijit=True, ad=p["ad"].replace(TA.OMUZ_SERVO_ESKI["ad"], TA.OMUZ_SERVO["ad"]),
+                   kod=TA.OMUZ_SERVO["kod"], kutle=TA.OMUZ_SERVO["kutle_g"], not_=TA.OMUZ_SERVO["not_"])
         else:
             mevcut(ad, p, v=DYV)
 DEGISEN.append(("Omuz (sag + sol)", "tum omuz", "%.0f mm yukari" % DY))
 DEGISEN.append(("Omuz (sag + sol)", "Ust kol tupu", "100 -> %.0f mm (PETG); dirsek catali tupun yeni ucunda" % (100 + TA.UST_KOL_UZAMA)))
+if TA.OMUZ_SERVO["ad"] != TA.OMUZ_SERVO_ESKI["ad"]:
+    DEGISEN.append(("Omuz (sag + sol)", "S1 + S2 servolari (4 adet)", "%s -> %s (karar: Duffy, 24 Ekim 2026); tork %s kg.cm; govde ayni kabul (40 x 20 x 40, "
+                    "kulak delikleri 49,5 x 10, 25T), geometri degismedi, %.0f g. Govde yuksekligi kaynaklarda 38,5 / 40 / 40,5 mm: servo gelince "
+                    "kumpasla dogrulanacak" % (TA.OMUZ_SERVO_ESKI["ad"], TA.OMUZ_SERVO["ad"], TA.OMUZ_SERVO["tork_kgcm"], TA.OMUZ_SERVO["kutle_g"])))
 
-# ====================================================================== 4) dirsek: DY - 30, el yakasi +19
-V_DIR = V(0, DY - TA.UST_KOL_UZAMA, 0)
+# ====================================================================== 4) dirsek: DY - 30, on kol +ON_KOL_UZAMA, el yakasi +19
+V_DIR = V(0, DY - TA.UST_KOL_UZAMA, 0)           # dirsek catali, on kol ust bolumu, dirsek servosu (dirsek ekseni)
+V_EL = V_DIR + V(0, -TA.ON_KOL_UZAMA, 0)         # bilek servosu + El grubu (bilek ekseni)
 Y_KES = DP.Y(DP.S_YAKA[1])                       # el yakasinin bittigi yer (koni baslangici), omuz yereli
+Y_ONKOL_KES = DP.Y(TA.ON_KOL_KES_S)              # on kol kesiti (omuz yereli): ara duvar alti (s 42) ile bilek servosu tabani (s 43,5) arasi
+assert DP.S_WEB[1] < TA.ON_KOL_KES_S < DP.S_BT, (DP.S_WEB, TA.ON_KOL_KES_S, DP.S_BT)
+BILEK_ILE = ("Bilek servosu MG996R", "Bilek servosu cikis mili", "Bilek servosu kulak civatasi M4x16", "Bilek servosu kontra somunu M4")
+ONKOL_INFO = {}
+
+
+def onkol_uzat(s0, f):
+    """On kol govdesini Y_ONKOL_KES'te boler: alt bolum f asagi, arada kesitin f boyunca uzatmasi (yan duvarlar + on duvar, U)."""
+    big = 1e3
+    ust = s0.common(box(-big, big, Y_ONKOL_KES, big, -big, big))
+    alt = tasi(s0.common(box(-big, big, -big, Y_ONKOL_KES, -big, big)), V(0, -f, 0))
+    fs = [Part.Face(w) for w in s0.slice(V(0, 1, 0), Y_ONKOL_KES) if w.isClosed()]
+    dolgu = None
+    for fc in fs:
+        e_ = fc.extrude(V(0, -f, 0))
+        dolgu = e_ if dolgu is None else dolgu.fuse(e_)
+    yerel = ust.fuse([dolgu, alt]).removeSplitter()
+    return yerel, dict(kesit_alani_mm2=round(sum(fc.Area for fc in fs), 1), kesit_sayisi=len(fs), kati=len(yerel.Solids))
+
+
 for side in ("sag", "sol"):
     ad = "dirsek_" + side
     for p in MOD[ad]["parcalar"]:
@@ -189,17 +221,36 @@ for side in ("sag", "sol"):
             boyun = cyl(17.0, (DP.XW, Y_KES + 0.01, DP.ZE), (DP.XW, Y_KES - TA.EL_UZAMA - 0.01, DP.ZE))
             boyun = boyun.cut(cyl(11.0, (DP.XW, Y_KES - 1.5, DP.ZE), (DP.XW, Y_KES - TA.EL_UZAMA + 1.5, DP.ZE)))
             yerel = ust.fuse([boyun, alt]).removeSplitter()
-            g = tasi(MD.global_sekil(yerel, ad), V_DIR)
+            g = tasi(MD.global_sekil(yerel, ad), V_EL)
             m = g.Volume / 1000.0 * RHO_PETG08
             mevcut(ad, p, shape=g, kutle=m, not_="el yakasi %.0f mm uzatildi (ici O22 bos, uclari 1,5 mm kapali); taslak" % TA.EL_UZAMA)
+        elif p["ad"] == "On kol govdesi" and TA.ON_KOL_UZAMA > 0:
+            yerel, ONKOL_INFO[side] = onkol_uzat(p["shape"], TA.ON_KOL_UZAMA)
+            g = tasi(MD.global_sekil(yerel, ad), V_DIR)
+            m = g.Volume / 1000.0 * RHO_PETG08
+            mevcut(ad, p, shape=g, kutle=m, not_="on kol %.1f mm uzatildi (taslak, x%.2f): dirsek servosu ile bilek servosu arasindaki U bolum "
+                                                 "(yan duvarlar + on duvar, s %.2f'te kesit uzatmasi); bilek servosu yuvasi + plakasi asagi kaydi" % (
+                                                     TA.ON_KOL_UZAMA, TA.KOL_ORAN_HEDEF, TA.ON_KOL_KES_S))
+            log("on kol %s: kesit %s mm2 (%d), kati %d, %.1f -> %.1f g" % (side, ONKOL_INFO[side]["kesit_alani_mm2"], ONKOL_INFO[side]["kesit_sayisi"],
+                                                                        ONKOL_INFO[side]["kati"], p["kutle"], m))
+        elif p["grup"] == "El" or p["ad"] in BILEK_ILE:
+            mevcut(ad, p, v=V_EL)
         else:
             mevcut(ad, p, v=V_DIR)
 DEGISEN.append(("Dirsek + el (sag + sol)", "tum dirsek", "%.0f mm yukari (omuzla birlikte %.0f, tup uzadi -%.0f)" % (
     DY - TA.UST_KOL_UZAMA, DY, TA.UST_KOL_UZAMA)))
-DEGISEN.append(("Dirsek + el (sag + sol)", "El", "yaka %.0f mm uzadi (O34 / O22 bos); el ucu omuz ekseninden %.1f -> %.1f mm (x%.3f)" % (
-    TA.EL_UZAMA, TA.KOL_BOY_ESKI, TA.KOL_BOY_YENI, TA.KOL_ORAN)))
+if TA.ON_KOL_UZAMA > 0:
+    DEGISEN.append(("Dirsek + el (sag + sol)", "On kol govdesi", "%.1f mm uzadi (karar: kol x%.2f, Duffy 24 Ekim 2026): dirsek ekseni -> bilek ekseni %.1f -> %.1f mm; "
+                    "dirsek servosu ile bilek servosu arasindaki U bolum (yan duvarlar + on duvar) s %.2f'te kesit uzatmasiyla; tek baski parcasi kaldi" % (
+                        TA.ON_KOL_UZAMA, TA.KOL_ORAN_HEDEF, DP.S_HORN[0], DP.S_HORN[0] + TA.ON_KOL_UZAMA, TA.ON_KOL_KES_S)))
+    DEGISEN.append(("Dirsek + el (sag + sol)", "Bilek servosu (+ 4 M4 + somun) + bilek flansi + el", "%.1f mm daha asagi (on kolla); dirsek servosu ve dirsek ekseni yerinde" % TA.ON_KOL_UZAMA))
+DEGISEN.append(("Dirsek + el (sag + sol)", "El", "yaka %.0f mm uzadi (O34 / O22 bos); el ucu omuz ekseninden %.1f -> %.1f mm (x%.3f; tup +%.0f, on kol +%.1f, yaka +%.0f)" % (
+    TA.EL_UZAMA, TA.KOL_BOY_ESKI, TA.KOL_BOY_YENI, TA.KOL_ORAN, TA.UST_KOL_UZAMA, TA.ON_KOL_UZAMA, TA.EL_UZAMA)))
 bag("Ust kol tupu -> dirsek catali", "pim + yarikli sikma bilezigi, 2x M3 (degismedi; tupun yeni ucunda)", 2,
     ("Ust kol tupu", "Dirsek catali"), durum="tasindi")
+if TA.ON_KOL_UZAMA > 0:
+    bag("Bilek servosu -> on kol (uzayan alt bolum)", "4x M4x16 DIN 912 + M4 DIN 985 (degismedi; plaka %.1f mm asagida)" % TA.ON_KOL_UZAMA, 4,
+        ("Bilek servosu MG996R", "On kol govdesi"), "on kol tek parca basilir; servo kablosu %.1f mm uzar (MG996R 30 cm kablo)" % TA.ON_KOL_UZAMA, durum="tasindi")
 
 # ====================================================================== 5) kafa: Govde + Pan DY, catal H yukari, yeni Bas
 import kafa10 as K10
@@ -637,7 +688,7 @@ def kaydir(ad, grup):
     if ad in ("omuz_sag", "omuz_sol"):
         return DYV
     if ad in ("dirsek_sag", "dirsek_sol"):
-        return V_DIR
+        return V_EL if grup == "El" else V_DIR
     if ad == "kafa":
         return DYV + (V_PAN if grup in ("Boyun", "Bas") else V(0, 0, 0))
     if ad == "iskelet":

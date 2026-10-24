@@ -49,3 +49,9 @@ Durum: başladı (2026-10-24). Bulgular ilerledikçe buraya eklenir.
 ## Teslim (24 Ekim 2026)
 - kol_analiz.py -> kol-analiz.json; kol_rapor.py -> rapor.html. taslak-170/rapor.html'e "Kol oranı" başlığının altına bağlantı satırı eklendi (taslak_rapor.py yeniden koşulursa satır kaybolur).
 - Öneri: x1,25 + DS3235 (+ 20 AWG S1/S2 uzatma, XL 6,4 V, kelepçeli horn, S2 destek rulmanı, 6808 çifti, yazılım hız/temas sınırı).
+
+## Kontrol ajanı yeniden koşusu (24 Ekim 2026, karar: ×1,25 + DS3235, ek ön kolda)
+- kol_analiz.py tabanı artık ×1,25 taslak geometrisi (girdi + kutle.json); ×1,15 = ön kol uzatması geri alınır (gerçek ×1,15 ile birebir: S1 9,87, dirsek 1,77),
+  ×1,36 = ek ön kola (doğrusal). Gruplar taslak_hesap.kol_gruplari'ndan. Ön kol kesitleri CAD dilimlerinden (üst s 30 pencere Wz 1.073; alt U s 42).
+- Önceki sonuç (git e8697ac) kol-analiz.json 'onceki', bu koşu 'ozet'; fark rapor Bölüm 8. Ayrıntı: ../KOL125-KONTROL-NOTLAR.md.
+- ×1,25 + DS3235: S1 2,84 / 1,66, elde 111 g; dirsek geri sürme 1,32 -> 1,46; dirsek çatalı dış kolu L3 SF 2,07 -> 1,86 (sınırda), L4 0,77.

@@ -11,8 +11,8 @@
  "coklu_kati": [],
  "durum": {
   "ayni": 467,
-  "tasindi": 419,
-  "degisti": 11,
+  "tasindi": 413,
+  "degisti": 17,
   "yeni": 155
  },
  "baski": [
@@ -318,13 +318,13 @@
   {
    "ad": "On kol govdesi",
    "modul": "dirsek_sag",
-   "durum": "tasindi",
+   "durum": "degisti",
    "olcu": [
-    101.1,
-    63.1,
+    129.6,
+    128.9,
     33.5
    ],
-   "tabla_aci": 0,
+   "tabla_aci": 51,
    "yukari": [
     0.0,
     0.0,
@@ -333,10 +333,10 @@
    "yon": "on yuzu tablada, acik arka yukari",
    "sigar_250": "True",
    "hedef_230": "True",
-   "hacim_cm3": 41.5,
-   "kutle_g": 42.2,
-   "filament_g": 44.3,
-   "sure_saat": 0.92
+   "hacim_cm3": 52.5,
+   "kutle_g": 53.4,
+   "filament_g": 56.0,
+   "sure_saat": 1.17
   },
   {
    "ad": "Bilek flansi",
@@ -347,7 +347,7 @@
     28.0,
     8.0
    ],
-   "tabla_aci": 45,
+   "tabla_aci": 15,
    "yukari": [
     0.0,
     -1.0,
@@ -410,13 +410,13 @@
   {
    "ad": "On kol govdesi",
    "modul": "dirsek_sol",
-   "durum": "tasindi",
+   "durum": "degisti",
    "olcu": [
-    101.1,
-    63.1,
+    129.6,
+    128.9,
     33.5
    ],
-   "tabla_aci": 0,
+   "tabla_aci": 39,
    "yukari": [
     -0.0,
     0.0,
@@ -425,10 +425,10 @@
    "yon": "on yuzu tablada, acik arka yukari",
    "sigar_250": "True",
    "hedef_230": "True",
-   "hacim_cm3": 41.5,
-   "kutle_g": 42.2,
-   "filament_g": 44.3,
-   "sure_saat": 0.92
+   "hacim_cm3": 52.5,
+   "kutle_g": 53.4,
+   "filament_g": 56.0,
+   "sure_saat": 1.17
   },
   {
    "ad": "Bilek flansi",
@@ -439,7 +439,7 @@
     28.0,
     8.0
    ],
-   "tabla_aci": 35,
+   "tabla_aci": 25,
    "yukari": [
     -0.0,
     -1.0,
@@ -1423,7 +1423,7 @@
  "baski_ozet": {
   "sayi": 61,
   "yeni": 14,
-  "degisti": 4,
+  "degisti": 6,
   "sigmayan_250": [],
   "hedef_230_asan": [
    "Etek arka sag",
@@ -1446,6 +1446,17 @@
     "Dirsek catali"
    ],
    "aciklama": "",
+   "durum": "tasindi"
+  },
+  {
+   "ad": "Bilek servosu -> on kol (uzayan alt bolum)",
+   "tip": "4x M4x16 DIN 912 + M4 DIN 985 (degismedi; plaka 32.4 mm asagida)",
+   "adet": 4,
+   "parcalar": [
+    "Bilek servosu MG996R",
+    "On kol govdesi"
+   ],
+   "aciklama": "on kol tek parca basilir; servo kablosu 32.4 mm uzar (MG996R 30 cm kablo)",
    "durum": "tasindi"
   },
   {
@@ -1792,14 +1803,29 @@
    "100 -> 130 mm (PETG); dirsek catali tupun yeni ucunda"
   ],
   [
+   "Omuz (sag + sol)",
+   "S1 + S2 servolari (4 adet)",
+   "DS3218MG -> DS3235 (karar: Duffy, 24 Ekim 2026); tork 29 / 32 / 35 @ 5 / 6 / 7,4 V (satici tablosu + datasheet) kg.cm; govde ayni kabul (40 x 20 x 40, kulak delikleri 49,5 x 10, 25T), geometri degismedi, 60 g. Govde yuksekligi kaynaklarda 38,5 / 40 / 40,5 mm: servo gelince kumpasla dogrulanacak"
+  ],
+  [
    "Dirsek + el (sag + sol)",
    "tum dirsek",
    "405 mm yukari (omuzla birlikte 435, tup uzadi -30)"
   ],
   [
    "Dirsek + el (sag + sol)",
+   "On kol govdesi",
+   "32.4 mm uzadi (karar: kol x1.25, Duffy 24 Ekim 2026): dirsek ekseni -> bilek ekseni 83.1 -> 115.5 mm; dirsek servosu ile bilek servosu arasindaki U bolum (yan duvarlar + on duvar) s 42.75'te kesit uzatmasiyla; tek baski parcasi kaldi"
+  ],
+  [
+   "Dirsek + el (sag + sol)",
+   "Bilek servosu (+ 4 M4 + somun) + bilek flansi + el",
+   "32.4 mm daha asagi (on kolla); dirsek servosu ve dirsek ekseni yerinde"
+  ],
+  [
+   "Dirsek + el (sag + sol)",
    "El",
-   "yaka 19 mm uzadi (O34 / O22 bos); el ucu omuz ekseninden 325.5 -> 374.5 mm (x1.151)"
+   "yaka 19 mm uzadi (O34 / O22 bos); el ucu omuz ekseninden 325.5 -> 406.9 mm (x1.250; tup +30, on kol +32.4, yaka +19)"
   ],
   [
    "Kafa",
@@ -1896,7 +1922,7 @@
     "kaynak": "mevcut tasarim (125'te de var)"
    }
   ],
-  "aday_cift": 645,
+  "aday_cift": 707,
   "esik_mm3": 0.5,
   "kafa_suprulme": [
    {
@@ -2067,7 +2093,50 @@
     "b": "Gogus bandi sag"
    }
   },
-  "not_": "kisa kontrol: yeni/degisen parcalar x tum parcalar ve farkli otelenen parca ciftleri (ev pozu); kafa pan {-90,-45,0,45,90} x tilt {-15,-7,5,0,7,5,15}. Tam carpisma taramasi (kol pozlari, kafa x kol) analiz ajaninda."
+  "kol_kisa": {
+   "izgara": {
+    "S1": [
+     -45.0,
+     0.0,
+     45.0,
+     90.0,
+     135.0
+    ],
+    "S2": [
+     5.0,
+     45.0,
+     90.0,
+     120.0
+    ],
+    "dirsek": [
+     0.0,
+     35.0,
+     70.0,
+     105.0
+    ],
+    "bilek": [
+     -90.0,
+     0.0,
+     90.0
+    ]
+   },
+   "hareketli": "dirsek_sag OnKol + El (37 parca)",
+   "hedef": "kabuk (baski), iskelet, kafa (ev pozu), omuz_sag Govde/Gobek, kendi ust kolu (Kol + dirsek catali); x > 60, y > S3 - 520",
+   "poz": 240,
+   "cakisan_poz": 0,
+   "cakisma": [],
+   "en_dusuk_el_y": {
+    "y": 982.5,
+    "poz": [
+     0.0,
+     5.0,
+     0.0,
+     90.0
+    ]
+   },
+   "sure_s": 196.1
+  },
+  "not_": "kisa kontrol: yeni/degisen parcalar x tum parcalar ve farkli otelenen parca ciftleri (ev pozu); kafa pan {-90,-45,0,45,90} x tilt {-15,-7,5,0,7,5,15}; sag kol kaba izgara (on kol + el). Tam carpisma taramasi (ince kol pozlari, kafa x kol) analiz ajaninda."
  },
  "uzatma": {
   "dy": 435.0,
@@ -2082,30 +2151,33 @@
   ],
   "direk_mm": 1235.5
  },
- "sure_s": 269.0,
+ "sure_s": 436.4,
  "log": [
-  "yuklendi iskelet 59  1.0s",
-  "yuklendi omuz_sag 71  4.9s",
-  "yuklendi omuz_sol 71  5.0s",
-  "yuklendi kabuk 206  57.2s",
-  "yuklendi dirsek_sag 53  59.2s",
-  "yuklendi dirsek_sol 53  59.3s",
-  "yuklendi kafa 119  66.1s",
-  "yuklendi taban 316  71.7s",
-  "  denge 0: dy -10.00 zb -82.00 -> m 1407.4 g, AM (1.91, 2.51, 2.79)  76.8s",
-  "  denge 1: dy -12.96 zb -91.30 -> m 1436.0 g, AM (1.87, 0.23, -0.50)  81.4s",
-  "  denge 2: dy -13.26 zb -89.89 -> m 1431.7 g, AM (1.88, -0.05, 0.00)  85.8s",
-  "kafa: dy -13.26 zb -89.89, tilt ekseni yerel y 188.26 (eski 130), adaptor 58.26 mm  85.8s",
-  "kabuk: ust 92 parca DY tasindi, alt 108  87.1s",
-  "parca: yeni 1052 (eski 948), grup 22, eklem 22; kafa denge {'dy': -13.255, 'zb': -89.893, 'm': 1431.7, 'am': [1.879, -0.046, 0.004]}  91.9s",
-  "nesneler: 1052 parca, 22 grup  92.5s",
-  "eklem 22 solve 0 ev sapmasi 0.00e+00 STEP kati 1052  115.7s",
-  "kafa tilt grubu 1431.7 g AM eksene dik 0.046 mm; pan grubu 1704.0 g  117.5s",
-  "kol: moment oran 1.210 (x1,36 kaba 1.49), kutle 514.3 -> 537.7 g  117.5s",
-  "kutle: 24473.9 g AM [-0.11, 566.86, -10.73] (eski 21533.4 g AM [-0.19, 382.69, -12.77]), boy 1700.0  117.6s",
-  "baski: 61 parca, 250'ye sigmayan 0, 230 hedefi asan 2  121.3s",
-  "ev pozu kontrolu: 645 aday cift, 4 cakisma (0 taslaktan) (11 s)  131.9s",
-  "kafa suprulmesi: 24 poz, cakisan poz 0 (131 s)  263.4s",
-  "bosluklar: {\"kafa kabugu <-> omuz (ev pozu)\": {\"mm\": 60.56, \"a\": \"Arka kafa kabugu sag\", \"b\": \"S1 kablo tamburu\"}, \"kafa kabugu <-> govde kabugu ust kapagi\": null, \"kafa (Bas) <-> egme catali / tilt servosu / adaptor\": {\"mm\": 1.0, \"a\": \"Kafa iskeleti (10 in)\", \"b\": \"Egme catali\"}, \"ekran <-> catal / adaptor\": {\"mm\": 15.5, \"a\": \"Yuz ekrani 10,1 in HDMI 1280x800 (tahmini model)\", \"b\": \"Egme catali\"}, \"el <-> govde kabugu (ev pozu, sag)\": {\"mm\": 5.91, \"a\": \"Dirsek catali\", \"b\": \"Gogus bandi sag\"}}  266.2s"
+  "yuklendi iskelet 59  0.6s",
+  "yuklendi omuz_sag 71  6.4s",
+  "yuklendi omuz_sol 71  6.4s",
+  "yuklendi kabuk 206  45.8s",
+  "yuklendi dirsek_sag 53  47.2s",
+  "yuklendi dirsek_sol 53  47.2s",
+  "yuklendi kafa 119  51.8s",
+  "yuklendi taban 316  56.2s",
+  "on kol sag: kesit 339.3 mm2 (1), kati 1, 42.2 -> 53.4 g  57.0s",
+  "on kol sol: kesit 339.3 mm2 (1), kati 1, 42.2 -> 53.4 g  57.4s",
+  "  denge 0: dy -10.00 zb -82.00 -> m 1407.4 g, AM (1.91, 2.51, 2.79)  61.3s",
+  "  denge 1: dy -12.96 zb -91.30 -> m 1436.0 g, AM (1.87, 0.23, -0.50)  64.6s",
+  "  denge 2: dy -13.26 zb -89.89 -> m 1431.7 g, AM (1.88, -0.05, 0.00)  67.6s",
+  "kafa: dy -13.26 zb -89.89, tilt ekseni yerel y 188.26 (eski 130), adaptor 58.26 mm  67.6s",
+  "kabuk: ust 92 parca DY tasindi, alt 108  68.4s",
+  "parca: yeni 1052 (eski 948), grup 22, eklem 22; kafa denge {'dy': -13.255, 'zb': -89.893, 'm': 1431.7, 'am': [1.879, -0.046, 0.004]}  72.1s",
+  "nesneler: 1052 parca, 22 grup  72.5s",
+  "eklem 22 solve 0 ev sapmasi 0.00e+00 STEP kati 1052  88.0s",
+  "kafa tilt grubu 1431.7 g AM eksene dik 0.046 mm; pan grubu 1704.0 g  89.1s",
+  "kol: moment oran 1.312 (x1,36 kaba 1.47), kutle 514.3 -> 548.9 g  89.1s",
+  "kutle: 24496.3 g AM [-0.11, 566.92, -10.72] (eski 21533.4 g AM [-0.19, 382.69, -12.77]), boy 1700.0  89.2s",
+  "baski: 61 parca, 250'ye sigmayan 0, 230 hedefi asan 2  92.3s",
+  "ev pozu kontrolu: 707 aday cift, 4 cakisma (0 taslaktan) (9 s)  100.8s",
+  "kafa suprulmesi: 24 poz, cakisan poz 0 (133 s)  234.2s",
+  "kol kisa tarama: 240 poz, cakisan poz 0, cakisma 0, el en alt y 982.5 (196 s)  430.3s",
+  "bosluklar: {\"kafa kabugu <-> omuz (ev pozu)\": {\"mm\": 60.56, \"a\": \"Arka kafa kabugu sag\", \"b\": \"S1 kablo tamburu\"}, \"kafa kabugu <-> govde kabugu ust kapagi\": null, \"kafa (Bas) <-> egme catali / tilt servosu / adaptor\": {\"mm\": 1.0, \"a\": \"Kafa iskeleti (10 in)\", \"b\": \"Egme catali\"}, \"ekran <-> catal / adaptor\": {\"mm\": 15.5, \"a\": \"Yuz ekrani 10,1 in HDMI 1280x800 (tahmini model)\", \"b\": \"Egme catali\"}, \"el <-> govde kabugu (ev pozu, sag)\": {\"mm\": 5.91, \"a\": \"Dirsek catali\", \"b\": \"Gogus bandi sag\"}}  433.3s"
  ]
 }
