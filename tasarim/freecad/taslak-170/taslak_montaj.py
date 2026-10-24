@@ -491,6 +491,107 @@ BOSLUK = {
 }
 log("bosluklar:", json.dumps(BOSLUK, ensure_ascii=True))
 
+# --- dirsek catali dis kolu (TA.CATAL_DIS_KOL; eski 5 mm) kisa kontrolu, sag kol (sol X aynasi): ayni komsulara 5 mm ve yeni catal
+#     (catal + 4 horn civatasi) mesafesi: ev pozu (15 mm icindeki tum parcalar), dirsek 0...105 (5 derece) on kola, S1 x S2 kaba
+#     izgarada sabit govde / kafa / omuz govdesi + gobege. Tam tarama kontrol ajaninda.
+t_k = time.time()
+CAT_N = [p for p in P if p["modul"] == "dirsek_sag" and (p["ad"] == "Dirsek catali" or p["ad"].startswith(("Catal-horn civatasi", "Catal-horn pulu")))]
+CAT_Y = [s for s in (p["shape"] for p in CAT_N)]
+CAT_E = TP.CATAL_ESKI["sag"]["Dirsek catali"] + TP.CATAL_ESKI["sag"]["Catal-horn civatasi M3x8"]
+CAT_ID = set(id(p) for p in CAT_N)
+# ara kalinlik (8 mm kararinda 7 mm, 24 Ekim): ayni komsulara ucuncu sutun (ara_mm)
+T_ARA = TP.CATAL_ARA_T[-1] if TP.CATAL_ARA_T else None
+CAT_A = (TP.CATAL_ARA[T_ARA]["sag"]["Dirsek catali"] + TP.CATAL_ARA[T_ARA]["sag"]["civata"] + TP.CATAL_ARA[T_ARA]["sag"]["pul"]) if T_ARA else []
+
+
+def en_yakin(shs, hedef_sh, pay=30.0):
+    """shs (liste) ile hedef_sh arasi en kucuk mesafe; sinir kutusu pay'dan uzaksa None."""
+    hb = hedef_sh.BoundBox
+    en = None
+    for s in shs:
+        b = App.BoundBox(s.BoundBox)
+        b.enlarge(pay)
+        if not b.intersect(hb):
+            continue
+        d = s.distToShape(hedef_sh)[0]
+        en = d if en is None else min(en, d)
+    return en
+
+
+CATAL_K = dict(kalinlik_mm=TA.CATAL_DIS_KOL, eski_mm=TA.CATAL_DIS_KOL_ESKI, dis_yuz_x_yerel=[round(TP.DP.DIS_KOL[1], 2), round(TP.X_DIS1, 2)],
+               bilgi=TP.CATAL_INFO, ev_pozu=[], dirsek=[], omuz=[])
+if T_ARA:
+    CATAL_K.update(ara_kalinlik_mm=T_ARA, horn_civatasi="M3x%.0f" % TA.HORN_CIVATA_L, horn_pul=TA.HORN_PUL_N, destek_dis_yuze=TA.CATAL_DESTEK_DIS)
+
+
+def _r(x):
+    return None if x is None else round(x, 2)
+
+
+for q in P:
+    if id(q) in CAT_ID:
+        continue
+    d7 = en_yakin(CAT_Y, q["shape"], 15.0)
+    d5 = en_yakin(CAT_E, q["shape"], 15.0)
+    da = en_yakin(CAT_A, q["shape"], 15.0) if T_ARA else None
+    if d7 is None and d5 is None and da is None:
+        continue
+    r = dict(parca=q["ad"], modul=q["modul"], eski_mm=None if d5 is None else round(d5, 2), yeni_mm=None if d7 is None else round(d7, 2))
+    if T_ARA:
+        r["ara_mm"] = _r(da)
+    if d7 is not None and d7 < 1e-6 and (d5 is None or d5 > 1e-6):
+        r["ortak_mm3"] = round(sum(ortak(s, q["shape"]) for s in CAT_Y), 2)          # yeni temas: hacim kesisiyor mu
+    CATAL_K["ev_pozu"].append(r)
+CATAL_K["ev_pozu"].sort(key=lambda r: (r["yeni_mm"] if r["yeni_mm"] is not None else 99.0))
+CATAL_K["ev_pozu_yaklasan"] = [r for r in CATAL_K["ev_pozu"] if r["yeni_mm"] is not None and (r["eski_mm"] is None or r["yeni_mm"] < r["eski_mm"] - 0.01)]
+KOAKS = ("Dirsek servosu cikis mili", "625ZZ rulman (ic bilezik)", "Pim pulu M5", "Pim civatasi M5x12")   # dirsek ekseninde: mesafe aciyla degismez
+k_on_s = [q for q in secim(modul="dirsek_sag", grup="OnKol") if q["ad"] not in KOAKS]
+CATAL_K["dirsek_haric"] = list(KOAKS)
+for al in range(0, 106, 5):
+    Pd = eklem_P(e_de, float(al))
+    on_s = [(q, tasi_P(q["shape"], Pd) if al else q["shape"]) for q in k_on_s]
+    r7 = [(x, q["ad"]) for (x, q) in ((en_yakin(CAT_Y, s, 20.0), q) for (q, s) in on_s) if x is not None]
+    r5 = [(x, q["ad"]) for (x, q) in ((en_yakin(CAT_E, s, 20.0), q) for (q, s) in on_s) if x is not None]
+    d7, d5 = (min(r7) if r7 else None), (min(r5) if r5 else None)
+    CATAL_K["dirsek"].append(dict(dirsek=al, eski_mm=None if d5 is None else round(d5[0], 2), yeni_mm=None if d7 is None else round(d7[0], 2),
+                                  eski_parca=d5 and d5[1], yeni_parca=d7 and d7[1]))
+    if T_ARA:
+        ra = [(x, q["ad"]) for (x, q) in ((en_yakin(CAT_A, s, 20.0), q) for (q, s) in on_s) if x is not None]
+        da = min(ra) if ra else None
+        CATAL_K["dirsek"][-1].update(ara_mm=None if da is None else round(da[0], 2), ara_parca=da and da[1])
+hed_o = sabit + k_gob
+gob_id = set(id(q) for q in k_gob)
+for phi in S1_:
+    P1 = eklem_P(e_s1, phi)
+    for th in S2_:
+        P2 = P1.multiply(eklem_P(e_s2, th))
+        y_s = [tasi_P(s, P2) for s in CAT_Y]
+        e_s = [tasi_P(s, P2) for s in CAT_E]
+        a_s = [tasi_P(s, P2) for s in CAT_A]
+        en7, en5, ena = None, None, None
+        for q in hed_o:
+            qs = tasi_P(q["shape"], P1) if id(q) in gob_id and phi else q["shape"]
+            d7 = en_yakin(y_s, qs, 40.0)
+            d5 = en_yakin(e_s, qs, 40.0)
+            da = en_yakin(a_s, qs, 40.0) if T_ARA else None
+            if d7 is not None and (en7 is None or d7 < en7[0]):
+                en7 = (d7, q["ad"])
+            if d5 is not None and (en5 is None or d5 < en5[0]):
+                en5 = (d5, q["ad"])
+            if da is not None and (ena is None or da < ena[0]):
+                ena = (da, q["ad"])
+        CATAL_K["omuz"].append(dict(poz=[phi, th], eski=None if en5 is None else [round(en5[0], 2), en5[1]],
+                                    yeni=None if en7 is None else [round(en7[0], 2), en7[1]]))
+        if T_ARA:
+            CATAL_K["omuz"][-1]["ara"] = None if ena is None else [round(ena[0], 2), ena[1]]
+CATAL_K["sure_s"] = round(time.time() - t_k, 1)
+log("dirsek catali kontrolu (%.0f mm): ev pozu yaklasan %d; dirsek on kol en az %s -> %s; omuz izgarasi en az %s -> %s (%.0f s)" % (
+    TA.CATAL_DIS_KOL, len(CATAL_K["ev_pozu_yaklasan"]),
+    min((r["eski_mm"] for r in CATAL_K["dirsek"] if r["eski_mm"] is not None), default=None),
+    min((r["yeni_mm"] for r in CATAL_K["dirsek"] if r["yeni_mm"] is not None), default=None),
+    min((r["eski"][0] for r in CATAL_K["omuz"] if r["eski"]), default=None),
+    min((r["yeni"][0] for r in CATAL_K["omuz"] if r["yeni"]), default=None), time.time() - t_k))
+
 ANALIZ = dict(
     dosya="taslak-170.FCStd", step="taslak-170.step", step_kati=step_kati, parca_sayisi=len(P), grup_sayisi=len(GP), eklem_sayisi=len(EK_JSON),
     solve=r_solve, ev_pozu_cozucu_sapmasi=ev_sapma,
@@ -500,7 +601,7 @@ ANALIZ = dict(
                                  sigmayan_250=[b["ad"] for b in BASKI if not b["sigar_250"]], hedef_230_asan=[b["ad"] for b in BASKI if not b["hedef_230"]],
                                  tabla=TA.TABLA, hedef=TA.TABLA_HEDEF),
     baglar=TP.BAGLAR, degisen=TP.DEGISEN,
-    yerlesim=dict(ev_pozu_cakisma=cak, aday_cift=aday, esik_mm3=ESIK, kafa_suprulme=SUP, bosluk=BOSLUK, kol_kisa=KOL_TAR,
+    yerlesim=dict(ev_pozu_cakisma=cak, aday_cift=aday, esik_mm3=ESIK, kafa_suprulme=SUP, bosluk=BOSLUK, kol_kisa=KOL_TAR, catal=CATAL_K,
                   not_="kisa kontrol: yeni/degisen parcalar x tum parcalar ve farkli otelenen parca ciftleri (ev pozu); kafa pan {-90,-45,0,45,90} x "
                        "tilt {-15,-7,5,0,7,5,15}; sag kol kaba izgara (on kol + el). Tam carpisma taramasi (ince kol pozlari, kafa x kol) analiz ajaninda."),
     uzatma=dict(dy=TA.DY, dikis=TA.UZATMA_DIKIS, braket_y=TA.UZATMA_BRAKET_Y, direk_mm=TA.DIREK_L_YENI),
@@ -533,6 +634,37 @@ for etiket, liste, dx in (("Yeni", P, 0.0), ("Eski", TP.ESKI, -KAYIK), ("Kesit",
         o.Renk = r
         o.addProperty("App::PropertyString", "Takim", "Robot")
         o.Takim = etiket
+# dirsek catali karsilastirmasi (sag kol): Catal5 = 5 mm catal + M3x8, Catal<t> = yeni catal + horn civatalari (+ pul), ara kalinlik varsa
+# (8 mm kararinda 7 mm + M3x10) Catal7 de; CatalCevre = sag omuz + sag dirsek (catal haric) + yakin kabuk/iskelet (yari saydam).
+# taslak_gorsel: yalniz 5 / 7 -> gorsel/catal-5-7.png (2 x 2), 5 / 7 / 8 -> gorsel/catal-5-7-8.png (3 sutun x onden / izometrik).
+# Baslik ozelligi: "kalinlik|civata" (gorsel basliklari).
+CEV_BB = App.BoundBox(40.0, TA.S3_YENI - 330.0, -150.0, 330.0, TA.S3_YENI + 80.0, 150.0)
+_takim = [("Catal5", "5|M3x8", [(s, "kirmizi") for s in TP.CATAL_ESKI["sag"]["Dirsek catali"]] +
+           [(s, "celik") for s in TP.CATAL_ESKI["sag"]["Catal-horn civatasi M3x8"]])]
+for _ta in TP.CATAL_ARA_T:
+    _L, _n, _ = TA.horn_civatasi_secim(_ta)
+    _c = TP.CATAL_ARA[_ta]["sag"]
+    _takim.append(("Catal%g" % _ta, "%g|M3x%.0f%s" % (_ta, _L, " + %d pul" % _n if _n else ""),
+                   [(s, "kirmizi") for s in _c["Dirsek catali"]] + [(s, "celik") for s in _c["civata"] + _c["pul"]]))
+if TA.CATAL_DIS_KOL > TA.CATAL_DIS_KOL_ESKI:
+    _takim.append(("Catal%g" % TA.CATAL_DIS_KOL, "%g|M3x%.0f%s" % (TA.CATAL_DIS_KOL, TA.HORN_CIVATA_L, " + %d pul" % TA.HORN_PUL_N if TA.HORN_PUL_N else ""),
+                   [(p["shape"], "kirmizi" if p["ad"] == "Dirsek catali" else "celik") for p in CAT_N]))
+_takim.append(("CatalCevre", "", [(p["shape"], p["renk"]) for p in P if id(p) not in CAT_ID and p.get("tur") != "Referans" and
+                                  (p["modul"] in ("omuz_sag", "dirsek_sag") or p["shape"].BoundBox.intersect(CEV_BB))]))
+for etiket, baslik, shs in _takim:
+    renk = {}
+    for sh, r in shs:
+        renk.setdefault(r, []).append(sh)
+    for r, ls in renk.items():
+        o = g.addObject("Part::Feature", "%s_%s" % (etiket, r.replace(" ", "_")))
+        o.Shape = Part.makeCompound(ls)
+        o.addProperty("App::PropertyString", "Renk", "Robot")
+        o.Renk = r
+        o.addProperty("App::PropertyString", "Takim", "Robot")
+        o.Takim = etiket
+        if baslik:
+            o.addProperty("App::PropertyString", "Baslik", "Robot")
+            o.Baslik = baslik
 g.saveAs(GORSEL_DOC)
 App.closeDocument(g.Name)
 log("bitti; gorsel belgesi", GORSEL_DOC)

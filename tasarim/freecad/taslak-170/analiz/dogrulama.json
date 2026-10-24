@@ -1,31 +1,31 @@
 {
  "yeniden_kurulum": {
-  "parca": 1052,
-  "kutle_g": 24496.25,
+  "parca": 1060,
+  "kutle_g": 24510.52,
   "am": [
    -0.105,
-   566.916,
-   -10.718
+   567.284,
+   -10.712
   ],
-  "kutle_json_kutle_g": 24496.3,
+  "kutle_json_kutle_g": 24510.5,
   "kutle_json_am": [
    -0.11,
-   566.92,
-   -10.72
+   567.28,
+   -10.71
   ],
-  "fark_g": -0.05,
+  "fark_g": 0.02,
   "parca_sirasi_ve_kutle_ayni": true
  },
  "fcstd": {
-  "nesne": 1052,
-  "kutle_g": 24496.25,
+  "nesne": 1060,
+  "kutle_g": 24510.52,
   "am_sekil_merkezleriyle": [
    -0.105,
-   566.916,
-   -10.718
+   567.284,
+   -10.712
   ],
   "grup_yerlesimi_birim": true,
-  "hacim_mm3": 16489838.0,
+  "hacim_mm3": 16500726.0,
   "not_": "AM burada her parcanin FCStd sekil merkezinden (kutle.json 'merkez' alanindan degil)"
  },
  "ornek": [
@@ -390,7 +390,157 @@
    ]
   },
   {
+   "i": 201,
+   "ad": "Dirsek catali",
+   "modul": "dirsek_sag",
+   "durum": "degisti",
+   "malzeme": "PETG",
+   "kutle_json_g": 92.78,
+   "fcstd_g": 92.78,
+   "fcstd_etiket": "Dirsek catali (sag)",
+   "hacim_mm3": 91318.8,
+   "yogunluk_g_cm3": 1.016,
+   "merkez_json": [
+    188.19,
+    1218.28,
+    -2.35
+   ],
+   "merkez_fcstd_sekil": [
+    188.19,
+    1218.28,
+    -2.35
+   ],
+   "merkez_farki_mm": 0.01,
+   "eski_kutle_g": 87.49,
+   "eski_hacim": 86109.5,
+   "eski_merkez_kaymasi": [
+    2.23,
+    404.13,
+    0.07
+   ]
+  },
+  {
+   "i": 213,
+   "ad": "Catal-horn civatasi M3x12",
+   "modul": "dirsek_sag",
+   "durum": "degisti",
+   "malzeme": "Celik 8.8",
+   "kutle_json_g": 1.15,
+   "fcstd_g": 1.15,
+   "fcstd_etiket": "Catal-horn civatasi M3x12 (sag)",
+   "hacim_mm3": 146.4,
+   "yogunluk_g_cm3": 7.85,
+   "merkez_json": [
+    226.01,
+    1193.01,
+    -7.26
+   ],
+   "merkez_fcstd_sekil": [
+    226.01,
+    1193.01,
+    -7.26
+   ],
+   "merkez_farki_mm": 0.0,
+   "eski_kutle_g": 0.93,
+   "eski_hacim": 118.1,
+   "eski_merkez_kaymasi": [
+    2.3,
+    405.0,
+    -0.0
+   ]
+  },
+  {
+   "i": 215,
+   "ad": "Catal-horn civatasi M3x12",
+   "modul": "dirsek_sag",
+   "durum": "degisti",
+   "malzeme": "Celik 8.8",
+   "kutle_json_g": 1.15,
+   "fcstd_g": 1.15,
+   "fcstd_etiket": "Catal-horn civatasi M3x12 (sag)001",
+   "hacim_mm3": 146.4,
+   "yogunluk_g_cm3": 7.85,
+   "merkez_json": [
+    226.01,
+    1193.01,
+    4.76
+   ],
+   "merkez_fcstd_sekil": [
+    226.01,
+    1193.01,
+    4.76
+   ],
+   "merkez_farki_mm": 0.0,
+   "eski_kutle_g": 0.93,
+   "eski_hacim": 118.1,
+   "eski_merkez_kaymasi": [
+    2.3,
+    405.0,
+    -0.0
+   ]
+  },
+  {
    "i": 217,
+   "ad": "Catal-horn civatasi M3x12",
+   "modul": "dirsek_sag",
+   "durum": "degisti",
+   "malzeme": "Celik 8.8",
+   "kutle_json_g": 1.15,
+   "fcstd_g": 1.15,
+   "fcstd_etiket": "Catal-horn civatasi M3x12 (sag)002",
+   "hacim_mm3": 146.4,
+   "yogunluk_g_cm3": 7.85,
+   "merkez_json": [
+    226.01,
+    1180.99,
+    4.76
+   ],
+   "merkez_fcstd_sekil": [
+    226.01,
+    1180.99,
+    4.76
+   ],
+   "merkez_farki_mm": 0.0,
+   "eski_kutle_g": 0.93,
+   "eski_hacim": 118.1,
+   "eski_merkez_kaymasi": [
+    2.3,
+    405.0,
+    0.0
+   ]
+  },
+  {
+   "i": 219,
+   "ad": "Catal-horn civatasi M3x12",
+   "modul": "dirsek_sag",
+   "durum": "degisti",
+   "malzeme": "Celik 8.8",
+   "kutle_json_g": 1.15,
+   "fcstd_g": 1.15,
+   "fcstd_etiket": "Catal-horn civatasi M3x12 (sag)003",
+   "hacim_mm3": 146.4,
+   "yogunluk_g_cm3": 7.85,
+   "merkez_json": [
+    226.01,
+    1180.99,
+    -7.26
+   ],
+   "merkez_fcstd_sekil": [
+    226.01,
+    1180.99,
+    -7.26
+   ],
+   "merkez_farki_mm": 0.0,
+   "eski_kutle_g": 0.93,
+   "eski_hacim": 118.1,
+   "eski_merkez_kaymasi": [
+    2.3,
+    405.0,
+    -0.0
+   ]
+  },
+  {
+   "i": 221,
    "ad": "On kol govdesi",
    "modul": "dirsek_sag",
    "durum": "degisti",
@@ -421,28 +571,28 @@
   },
   {
    "i": 224,
-   "ad": "Dirsek servosu kulak civatasi M4x16",
+   "ad": "Pim civatasi M5x12",
    "modul": "dirsek_sag",
    "durum": "tasindi",
    "malzeme": "Celik 8.8",
-   "kutle_json_g": 2.64,
-   "fcstd_g": 2.64,
-   "fcstd_etiket": "Dirsek servosu kulak civatasi M4x16 (sag)",
-   "hacim_mm3": 336.3,
+   "kutle_json_g": 3.75,
+   "fcstd_g": 3.75,
+   "fcstd_etiket": "Pim civatasi M5x12 (sag)",
+   "hacim_mm3": 477.8,
    "yogunluk_g_cm3": 7.85,
    "merkez_json": [
-    202.08,
-    1152.1,
-    3.75
+    162.78,
+    1187.0,
+    -1.25
    ],
    "merkez_fcstd_sekil": [
-    202.08,
-    1152.1,
-    3.75
+    162.78,
+    1187.0,
+    -1.25
    ],
    "merkez_farki_mm": 0.0,
-   "eski_kutle_g": 2.64,
-   "eski_hacim": 336.3,
+   "eski_kutle_g": 3.75,
+   "eski_hacim": 477.8,
    "eski_merkez_kaymasi": [
     0.0,
     405.0,
@@ -451,6 +601,36 @@
   },
   {
    "i": 245,
+   "ad": "Bilek servosu kontra somunu M4",
+   "modul": "dirsek_sag",
+   "durum": "tasindi",
+   "malzeme": "Celik",
+   "kutle_json_g": 1.17,
+   "fcstd_g": 1.17,
+   "fcstd_etiket": "Bilek servosu kontra somunu M4 (sag)003",
+   "hacim_mm3": 149.3,
+   "yogunluk_g_cm3": 7.85,
+   "merkez_json": [
+    170.4,
+    1092.0,
+    3.75
+   ],
+   "merkez_fcstd_sekil": [
+    170.4,
+    1092.0,
+    3.75
+   ],
+   "merkez_farki_mm": 0.0,
+   "eski_kutle_g": 1.17,
+   "eski_hacim": 149.3,
+   "eski_merkez_kaymasi": [
+    0.0,
+    372.6,
+    0.0
+   ]
+  },
+  {
+   "i": 249,
    "ad": "Flans-horn civatasi M3x8",
    "modul": "dirsek_sag",
    "durum": "tasindi",
@@ -480,7 +660,7 @@
    ]
   },
   {
-   "i": 249,
+   "i": 253,
    "ad": "El",
    "modul": "dirsek_sag",
    "durum": "degisti",
@@ -510,149 +690,89 @@
    ]
   },
   {
-   "i": 270,
-   "ad": "On kol govdesi",
-   "modul": "dirsek_sol",
-   "durum": "degisti",
-   "malzeme": "PETG",
-   "kutle_json_g": 53.35,
-   "fcstd_g": 53.35,
-   "fcstd_etiket": "On kol govdesi (sol)",
-   "hacim_mm3": 52511.2,
-   "yogunluk_g_cm3": 1.016,
-   "merkez_json": [
-    -189.05,
-    1139.66,
-    2.77
-   ],
-   "merkez_fcstd_sekil": [
-    -189.05,
-    1139.66,
-    2.77
-   ],
-   "merkez_farki_mm": 0.0,
-   "eski_kutle_g": 42.18,
-   "eski_hacim": 41517.9,
-   "eski_merkez_kaymasi": [
-    -1.62,
-    390.57,
-    0.61
-   ]
-  },
-  {
-   "i": 302,
-   "ad": "El",
-   "modul": "dirsek_sol",
-   "durum": "degisti",
-   "malzeme": "PETG",
-   "kutle_json_g": 72.16,
-   "fcstd_g": 72.16,
-   "fcstd_etiket": "El (sol)",
-   "hacim_mm3": 71027.7,
-   "yogunluk_g_cm3": 1.016,
-   "merkez_json": [
-    -182.24,
-    1017.73,
-    -0.69
-   ],
-   "merkez_fcstd_sekil": [
-    -182.24,
-    1017.73,
-    -0.69
-   ],
-   "merkez_farki_mm": 0.01,
-   "eski_kutle_g": 60.82,
-   "eski_hacim": 59859.3,
-   "eski_merkez_kaymasi": [
-    -0.51,
-    361.02,
-    -0.1
-   ]
-  },
-  {
    "i": 356,
-   "ad": "Tilt servosu kulak civatasi M4x16",
+   "ad": "6808-2RS ust rulman (ic bilezik)",
    "modul": "kafa",
    "durum": "tasindi",
-   "malzeme": "Celik 8.8",
-   "kutle_json_g": 2.64,
-   "fcstd_g": 2.64,
-   "fcstd_etiket": "Tilt servosu kulak civatasi M4x16",
-   "hacim_mm3": 336.3,
+   "malzeme": "Celik",
+   "kutle_json_g": 16.8,
+   "fcstd_g": 16.8,
+   "fcstd_etiket": "6808-2RS ust rulman (ic bilezik)",
+   "hacim_mm3": 2139.5,
    "yogunluk_g_cm3": 7.85,
    "merkez_json": [
-    12.38,
-    1593.26,
-    -9.9
+    -0.0,
+    1488.5,
+    0.0
    ],
    "merkez_fcstd_sekil": [
-    12.38,
-    1593.26,
-    -9.9
+    -0.0,
+    1488.5,
+    0.0
    ],
-   "merkez_farki_mm": 0.01,
-   "eski_kutle_g": 2.64,
-   "eski_hacim": 336.3,
+   "merkez_farki_mm": 0.0,
+   "eski_kutle_g": 16.8,
+   "eski_hacim": 2139.5,
    "eski_merkez_kaymasi": [
     0.0,
-    493.26,
+    435.0,
     0.0
    ]
   },
   {
    "i": 361,
-   "ad": "Tilt servosu kontra somunu M4",
+   "ad": "Isil gomme somun M3 (mil flansi)",
    "modul": "kafa",
    "durum": "tasindi",
-   "malzeme": "Celik",
-   "kutle_json_g": 1.17,
-   "fcstd_g": 1.17,
-   "fcstd_etiket": "Tilt servosu kontra somunu M002",
-   "hacim_mm3": 149.3,
-   "yogunluk_g_cm3": 7.85,
+   "malzeme": "Pirinc",
+   "kutle_json_g": 0.27,
+   "fcstd_g": 0.27,
+   "fcstd_etiket": "Isil gomme somun M3 (mil flansi)003",
+   "hacim_mm3": 31.3,
+   "yogunluk_g_cm3": 8.5,
    "merkez_json": [
-    6.4,
-    1593.26,
-    39.6
+    0.0,
+    1503.15,
+    -25.0
    ],
    "merkez_fcstd_sekil": [
-    6.4,
-    1593.26,
-    39.6
+    0.0,
+    1503.15,
+    -25.0
    ],
    "merkez_farki_mm": 0.0,
-   "eski_kutle_g": 1.17,
-   "eski_hacim": 149.3,
+   "eski_kutle_g": 0.27,
+   "eski_hacim": 31.3,
    "eski_merkez_kaymasi": [
     0.0,
-    493.26,
+    435.0,
     0.0
    ]
   },
   {
    "i": 363,
-   "ad": "Tilt servosu kontra somunu M4",
+   "ad": "Tilt servosu cikis mili",
    "modul": "kafa",
    "durum": "tasindi",
-   "malzeme": "Celik",
-   "kutle_json_g": 1.17,
-   "fcstd_g": 1.17,
-   "fcstd_etiket": "Tilt servosu kontra somunu M003",
-   "hacim_mm3": 149.3,
-   "yogunluk_g_cm3": 7.85,
+   "malzeme": "-",
+   "kutle_json_g": 0.0,
+   "fcstd_g": 0.0,
+   "fcstd_etiket": "Tilt servosu cikis mili",
+   "hacim_mm3": 334.5,
+   "yogunluk_g_cm3": 0.0,
    "merkez_json": [
-    6.4,
-    1603.26,
-    39.6
+    25.68,
+    1598.26,
+    25.0
    ],
    "merkez_fcstd_sekil": [
-    6.4,
-    1603.26,
-    39.6
+    25.68,
+    1598.26,
+    25.0
    ],
-   "merkez_farki_mm": 0.0,
-   "eski_kutle_g": 1.17,
-   "eski_hacim": 149.3,
+   "merkez_farki_mm": 0.01,
+   "eski_kutle_g": 0.0,
+   "eski_hacim": 334.5,
    "eski_merkez_kaymasi": [
     0.0,
     493.26,
@@ -661,106 +781,84 @@
   },
   {
    "i": 373,
-   "ad": "Pul M3 (saplama 1)",
+   "ad": "Pim pulu M5",
    "modul": "kafa",
-   "durum": "yeni",
+   "durum": "tasindi",
    "malzeme": "Celik",
-   "kutle_json_g": 0.12,
-   "fcstd_g": 0.12,
-   "fcstd_etiket": "Pul M3 (saplama 1)",
-   "hacim_mm3": 15.2,
+   "kutle_json_g": 0.44,
+   "fcstd_g": 0.44,
+   "fcstd_etiket": "Pim pulu M5",
+   "hacim_mm3": 56.5,
    "yogunluk_g_cm3": 7.85,
    "merkez_json": [
-    -0.0,
-    1567.51,
+    -29.7,
+    1598.26,
     25.0
    ],
    "merkez_fcstd_sekil": [
-    -0.0,
-    1567.51,
+    -29.7,
+    1598.26,
     25.0
    ],
    "merkez_farki_mm": 0.0,
-   "eski_kutle_g": null,
-   "eski_hacim": null,
-   "eski_merkez_kaymasi": null
-  },
-  {
-   "i": 412,
-   "ad": "Yuz ekrani 10,1 in HDMI 1280x800 (tahmini model)",
-   "modul": "kafa",
-   "durum": "yeni",
-   "malzeme": "-",
-   "kutle_json_g": 600.0,
-   "fcstd_g": 600.0,
-   "fcstd_etiket": "Yuz ekrani 10,1 in HDMI 1280x800 (tahmini model)",
-   "hacim_mm3": 378545.3,
-   "yogunluk_g_cm3": 1.585,
-   "merkez_json": [
-    4.64,
-    1585.0,
-    64.21
-   ],
-   "merkez_fcstd_sekil": [
-    4.64,
-    1585.0,
-    64.21
-   ],
-   "merkez_farki_mm": 0.01,
-   "eski_kutle_g": null,
-   "eski_hacim": null,
-   "eski_merkez_kaymasi": null
+   "eski_kutle_g": 0.44,
+   "eski_hacim": 56.5,
+   "eski_merkez_kaymasi": [
+    0.0,
+    493.26,
+    0.0
+   ]
   },
   {
    "i": 446,
-   "ad": "MAX98357A I2S amfi",
+   "ad": "Vida M2,5x5 (Pi 2 ust)",
    "modul": "kafa",
    "durum": "yeni",
-   "malzeme": "-",
-   "kutle_json_g": 2.0,
-   "fcstd_g": 2.0,
-   "fcstd_etiket": "MAX98357A I2S amfi",
-   "hacim_mm3": 708.5,
-   "yogunluk_g_cm3": 2.8228,
+   "malzeme": "Celik 8.8",
+   "kutle_json_g": 0.46,
+   "fcstd_g": 0.46,
+   "fcstd_etiket": "Vida M2,5x5 (Pi 2 ust)",
+   "hacim_mm3": 59.1,
+   "yogunluk_g_cm3": 7.85,
    "merkez_json": [
-    80.0,
-    1632.47,
-    32.08
+    -39.0,
+    1639.5,
+    -55.39
    ],
    "merkez_fcstd_sekil": [
-    80.0,
-    1632.47,
-    32.08
+    -39.0,
+    1639.5,
+    -55.39
    ],
-   "merkez_farki_mm": 0.0,
-   "eski_kutle_g": 2.0,
-   "eski_hacim": 708.5,
+   "merkez_farki_mm": 0.01,
+   "eski_kutle_g": 0.46,
+   "eski_hacim": 59.1,
    "eski_merkez_kaymasi": [
-    15.0,
+    -8.5,
     472.26,
-    -13.0
+    -3.89
    ]
   },
   {
    "i": 496,
-   "ad": "Isil gomme somun M3 (govde y690 yan)",
+   "ad": "Isil gomme somun M3 (govde y690 on)",
    "modul": "kabuk",
    "durum": "tasindi",
    "malzeme": "Pirinc",
    "kutle_json_g": 0.27,
    "fcstd_g": 0.27,
-   "fcstd_etiket": "Isil gomme somun M3 (govde y690 yan)",
+   "fcstd_etiket": "Isil gomme somun M3 (govde y690 on)",
    "hacim_mm3": 31.3,
    "yogunluk_g_cm3": 8.5,
    "merkez_json": [
-    134.62,
-    1131.44,
-    2.19
+    58.08,
+    1132.68,
+    88.58
    ],
    "merkez_fcstd_sekil": [
-    134.62,
-    1131.44,
-    2.19
+    58.08,
+    1132.68,
+    88.58
    ],
    "merkez_farki_mm": 0.0,
    "eski_kutle_g": 0.27,
@@ -773,24 +871,24 @@
   },
   {
    "i": 505,
-   "ad": "Bindirme civatasi M3x6 (govde y883 arka)",
+   "ad": "Bindirme civatasi M3x6 (govde y690 yan)",
    "modul": "kabuk",
    "durum": "tasindi",
    "malzeme": "Celik 10.9",
    "kutle_json_g": 0.63,
    "fcstd_g": 0.63,
-   "fcstd_etiket": "Bindirme civatasi M3x6 (govde y883 arka)002",
+   "fcstd_etiket": "Bindirme civatasi M3x6 (govde y690 yan)",
    "hacim_mm3": 80.8,
    "yogunluk_g_cm3": 7.85,
    "merkez_json": [
-    -70.0,
-    1324.02,
-    -79.6
+    137.77,
+    1130.95,
+    2.19
    ],
    "merkez_fcstd_sekil": [
-    -70.0,
-    1324.02,
-    -79.6
+    137.77,
+    1130.95,
+    2.19
    ],
    "merkez_farki_mm": 0.01,
    "eski_kutle_g": 0.63,
@@ -809,18 +907,18 @@
    "malzeme": "Celik 10.9",
    "kutle_json_g": 0.63,
    "fcstd_g": 0.63,
-   "fcstd_etiket": "Bindirme civatasi M3x6 (arka kapak)006",
+   "fcstd_etiket": "Bindirme civatasi M3x6 (arka kapak)002",
    "hacim_mm3": 80.8,
    "yogunluk_g_cm3": 7.85,
    "merkez_json": [
-    -74.0,
-    1085.0,
-    -86.29
+    45.0,
+    941.0,
+    -84.27
    ],
    "merkez_fcstd_sekil": [
-    -74.0,
-    1085.0,
-    -86.29
+    45.0,
+    941.0,
+    -84.27
    ],
    "merkez_farki_mm": 0.01,
    "eski_kutle_g": 0.63,
@@ -833,24 +931,84 @@
   },
   {
    "i": 623,
-   "ad": "Isil gomme somun M3 (Etek braketi sag z-105)",
+   "ad": "Pul M5 (Govde braketi sol y780)",
+   "modul": "kabuk",
+   "durum": "tasindi",
+   "malzeme": "Celik",
+   "kutle_json_g": 0.44,
+   "fcstd_g": 0.44,
+   "fcstd_etiket": "Pul M5 (Govde braketi sol y780)",
+   "hacim_mm3": 56.5,
+   "yogunluk_g_cm3": 7.85,
+   "merkez_json": [
+    -134.38,
+    1240.0,
+    0.0
+   ],
+   "merkez_fcstd_sekil": [
+    -134.38,
+    1240.0,
+    -0.0
+   ],
+   "merkez_farki_mm": 0.0,
+   "eski_kutle_g": 0.44,
+   "eski_hacim": 56.5,
+   "eski_merkez_kaymasi": [
+    0.0,
+    435.0,
+    0.0
+   ]
+  },
+  {
+   "i": 644,
+   "ad": "Etek braketi sol z+0",
+   "modul": "kabuk",
+   "durum": "ayni",
+   "malzeme": "Aluminyum 5754",
+   "kutle_json_g": 21.8,
+   "fcstd_g": 21.8,
+   "fcstd_etiket": "Etek braketi sol z+0",
+   "hacim_mm3": 8133.4,
+   "yogunluk_g_cm3": 2.68,
+   "merkez_json": [
+    -170.81,
+    132.43,
+    -0.0
+   ],
+   "merkez_fcstd_sekil": [
+    -170.81,
+    132.43,
+    -0.0
+   ],
+   "merkez_farki_mm": 0.01,
+   "eski_kutle_g": 21.8,
+   "eski_hacim": 8133.4,
+   "eski_merkez_kaymasi": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "i": 655,
+   "ad": "Isil gomme somun M3 (Etek braketi sag z+105)",
    "modul": "kabuk",
    "durum": "ayni",
    "malzeme": "Pirinc",
    "kutle_json_g": 0.27,
    "fcstd_g": 0.27,
-   "fcstd_etiket": "Isil gomme somun M3 (Etek braketi sag z-105)",
+   "fcstd_etiket": "Isil gomme somun M3 (Etek braketi sag z+105)",
    "hacim_mm3": 31.3,
    "yogunluk_g_cm3": 8.5,
    "merkez_json": [
     216.85,
     121.0,
-    -105.0
+    105.0
    ],
    "merkez_fcstd_sekil": [
     216.85,
     121.0,
-    -105.0
+    105.0
    ],
    "merkez_farki_mm": 0.0,
    "eski_kutle_g": 0.27,
@@ -862,29 +1020,29 @@
    ]
   },
   {
-   "i": 644,
-   "ad": "Civata M6x14 (Etek braketi sag z+105)",
+   "i": 660,
+   "ad": "Civata M3x8 (Etek braketi sol z+105)",
    "modul": "kabuk",
    "durum": "ayni",
    "malzeme": "Celik 8.8",
-   "kutle_json_g": 6.19,
-   "fcstd_g": 6.19,
-   "fcstd_etiket": "Civata M6x14 (Etek braketi sag z+105)",
-   "hacim_mm3": 789.1,
+   "kutle_json_g": 0.93,
+   "fcstd_g": 0.93,
+   "fcstd_etiket": "Civata M3x8 (Etek braketi sol z+105)",
+   "hacim_mm3": 118.1,
    "yogunluk_g_cm3": 7.85,
    "merkez_json": [
-    115.0,
-    135.97,
+    -213.18,
+    121.0,
     105.0
    ],
    "merkez_fcstd_sekil": [
-    115.0,
-    135.97,
+    -213.18,
+    121.0,
     105.0
    ],
    "merkez_farki_mm": 0.0,
-   "eski_kutle_g": 6.19,
-   "eski_hacim": 789.1,
+   "eski_kutle_g": 0.93,
+   "eski_hacim": 118.1,
    "eski_merkez_kaymasi": [
     0.0,
     0.0,
@@ -892,77 +1050,25 @@
    ]
   },
   {
-   "i": 654,
-   "ad": "Govde uzatma bandi 1 sag",
-   "modul": "kabuk",
-   "durum": "yeni",
-   "malzeme": "PETG",
-   "kutle_json_g": 295.88,
-   "fcstd_g": 295.88,
-   "fcstd_etiket": "Govde uzatma bandi 1 sag",
-   "hacim_mm3": 258860.2,
-   "yogunluk_g_cm3": 1.143,
-   "merkez_json": [
-    81.12,
-    591.18,
-    -0.0
-   ],
-   "merkez_fcstd_sekil": [
-    81.12,
-    591.18,
-    -0.0
-   ],
-   "merkez_farki_mm": 0.0,
-   "eski_kutle_g": null,
-   "eski_hacim": null,
-   "eski_merkez_kaymasi": null
-  },
-  {
-   "i": 655,
-   "ad": "Govde uzatma bandi 1 sol",
-   "modul": "kabuk",
-   "durum": "yeni",
-   "malzeme": "PETG",
-   "kutle_json_g": 278.38,
-   "fcstd_g": 278.38,
-   "fcstd_etiket": "Govde uzatma bandi 1 sol",
-   "hacim_mm3": 243556.3,
-   "yogunluk_g_cm3": 1.143,
-   "merkez_json": [
-    -86.21,
-    590.85,
-    0.0
-   ],
-   "merkez_fcstd_sekil": [
-    -86.21,
-    590.85,
-    0.0
-   ],
-   "merkez_farki_mm": 0.01,
-   "eski_kutle_g": null,
-   "eski_hacim": null,
-   "eski_merkez_kaymasi": null
-  },
-  {
-   "i": 660,
-   "ad": "Bindirme civatasi M3x6 (govde y476 arka)",
+   "i": 667,
+   "ad": "Bindirme civatasi M3x6 (govde y476 on)",
    "modul": "kabuk",
    "durum": "degisti",
    "malzeme": "Celik 10.9",
    "kutle_json_g": 0.63,
    "fcstd_g": 0.63,
-   "fcstd_etiket": "Bindirme civatasi M3x6 (govde y476 arka)",
+   "fcstd_etiket": "Bindirme civatasi M3x6 (govde y476 on)001",
    "hacim_mm3": 80.8,
    "yogunluk_g_cm3": 7.85,
    "merkez_json": [
-    48.08,
+    -48.08,
     482.49,
-    -84.02
+    84.02
    ],
    "merkez_fcstd_sekil": [
-    48.08,
+    -48.08,
     482.49,
-    -84.02
+    84.02
    ],
    "merkez_farki_mm": 0.0,
    "eski_kutle_g": 0.63,
@@ -970,81 +1076,59 @@
    "eski_merkez_kaymasi": [
     0.0,
     -0.0,
-    -0.08
+    0.08
    ]
   },
   {
-   "i": 667,
-   "ad": "Bindirme civatasi M3x6 (uzatma y694 on -48)",
-   "modul": "kabuk",
-   "durum": "yeni",
-   "malzeme": "Celik 10.9",
-   "kutle_json_g": 0.63,
-   "fcstd_g": 0.63,
-   "fcstd_etiket": "Bindirme civatasi M3x6 (uzatma y694 on -48)",
-   "hacim_mm3": 80.8,
-   "yogunluk_g_cm3": 7.85,
-   "merkez_json": [
-    -48.31,
-    700.0,
-    84.02
-   ],
-   "merkez_fcstd_sekil": [
-    -48.31,
-    700.0,
-    84.02
-   ],
-   "merkez_farki_mm": 0.0,
-   "eski_kutle_g": null,
-   "eski_hacim": null,
-   "eski_merkez_kaymasi": null
-  },
-  {
    "i": 706,
-   "ad": "Cekic somun M6 (Govde braketi sag y560 (uzatma))",
+   "ad": "Isil gomme somun M3 (uzatma ustu y476 arka)",
    "modul": "kabuk",
    "durum": "yeni",
-   "malzeme": "Celik",
-   "kutle_json_g": 5.17,
-   "fcstd_g": 5.17,
-   "fcstd_etiket": "Cekic somun M6 (Govde braketi sag y560 (uzatma))",
-   "hacim_mm3": 658.6,
-   "yogunluk_g_cm3": 7.85,
+   "malzeme": "Pirinc",
+   "kutle_json_g": 0.27,
+   "fcstd_g": 0.27,
+   "fcstd_etiket": "Isil gomme somun M3 (uzatma ustu y476 arka)001",
+   "hacim_mm3": 31.3,
+   "yogunluk_g_cm3": 8.5,
    "merkez_json": [
-    13.2,
-    575.25,
-    -0.0
+    -48.08,
+    917.54,
+    -80.73
    ],
    "merkez_fcstd_sekil": [
-    13.2,
-    575.25,
-    -0.0
+    -48.08,
+    917.54,
+    -80.73
    ],
    "merkez_farki_mm": 0.0,
-   "eski_kutle_g": null,
-   "eski_hacim": null,
-   "eski_merkez_kaymasi": null
+   "eski_kutle_g": 0.27,
+   "eski_hacim": 31.3,
+   "eski_merkez_kaymasi": [
+    0.0,
+    435.0,
+    0.0
+   ]
   },
   {
    "i": 717,
-   "ad": "Pul M5 (Govde braketi sol y560 (uzatma))",
+   "ad": "Pul M5 (Govde braketi sag y560 (uzatma))",
    "modul": "kabuk",
    "durum": "yeni",
    "malzeme": "Celik",
    "kutle_json_g": 0.44,
    "fcstd_g": 0.44,
-   "fcstd_etiket": "Pul M5 (Govde braketi sol y560 (uzatma))",
+   "fcstd_etiket": "Pul M5 (Govde braketi sag y560 (uzatma))",
    "hacim_mm3": 56.5,
    "yogunluk_g_cm3": 7.85,
    "merkez_json": [
-    -112.23,
+    112.23,
     585.25,
-    0.0
+    -0.0
    ],
    "merkez_fcstd_sekil": [
-    -112.23,
+    112.23,
     585.25,
-    0.0
+    -0.0
    ],
    "merkez_farki_mm": 0.0,
    "eski_kutle_g": null,
@@ -1053,24 +1137,24 @@
   },
   {
    "i": 726,
-   "ad": "Civata M5x10 (Govde braketi sag y778 (uzatma))",
+   "ad": "Civata M5x10 (Govde braketi sol y560 (uzatma))",
    "modul": "kabuk",
    "durum": "yeni",
    "malzeme": "Celik 8.8",
    "kutle_json_g": 3.44,
    "fcstd_g": 3.44,
-   "fcstd_etiket": "Civata M5x10 (Govde braketi sag y778 (uzatma))",
+   "fcstd_etiket": "Civata M5x10 (Govde braketi sol y560 (uzatma))",
    "hacim_mm3": 438.5,
    "yogunluk_g_cm3": 7.85,
    "merkez_json": [
-    112.68,
-    802.75,
-    -0.0
+    -112.68,
+    585.25,
+    0.0
    ],
    "merkez_fcstd_sekil": [
-    112.68,
-    802.75,
-    -0.0
+    -112.68,
+    585.25,
+    0.0
    ],
    "merkez_farki_mm": 0.0,
    "eski_kutle_g": null,
@@ -1079,28 +1163,28 @@
   },
   {
    "i": 798,
-   "ad": "Civata M5x12 (kat sol z +230)",
+   "ad": "Guc paneli (arka kat)",
    "modul": "taban",
    "durum": "ayni",
-   "malzeme": "Celik 8.8",
-   "kutle_json_g": 3.75,
-   "fcstd_g": 3.75,
-   "fcstd_etiket": "Civata M5x12 (kat sol z +230)",
-   "hacim_mm3": 477.8,
-   "yogunluk_g_cm3": 7.85,
+   "malzeme": "Kontrplak",
+   "kutle_json_g": 240.3,
+   "fcstd_g": 240.3,
+   "fcstd_etiket": "Guc paneli (arka kat)",
+   "hacim_mm3": 353381.2,
+   "yogunluk_g_cm3": 0.68,
    "merkez_json": [
-    -115.0,
-    178.72,
-    230.0
+    0.03,
+    177.0,
+    -117.43
    ],
    "merkez_fcstd_sekil": [
-    -115.0,
-    178.72,
-    230.0
+    0.03,
+    177.0,
+    -117.43
    ],
    "merkez_farki_mm": 0.0,
-   "eski_kutle_g": 3.75,
-   "eski_hacim": 477.8,
+   "eski_kutle_g": 240.3,
+   "eski_hacim": 353381.2,
    "eski_merkez_kaymasi": [
     0.0,
     0.0,
@@ -1109,28 +1193,28 @@
   },
   {
    "i": 906,
-   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V B (sol kol + tilt) 0)",
+   "ad": "Vida M3x6 (BTS7960 motor surucu sag 1 alt)",
    "modul": "taban",
    "durum": "ayni",
-   "malzeme": "Naylon",
-   "kutle_json_g": 0.17,
-   "fcstd_g": 0.17,
-   "fcstd_etiket": "Burc M3x8 naylon burc (XL4016 servo 6 V B (sol kol + tilt) 0)",
-   "hacim_mm3": 153.0,
-   "yogunluk_g_cm3": 1.14,
+   "malzeme": "Celik 8.8",
+   "kutle_json_g": 0.82,
+   "fcstd_g": 0.82,
+   "fcstd_etiket": "Vida M3x6 (BTS7960 motor surucu sag 1 alt)",
+   "hacim_mm3": 103.9,
+   "yogunluk_g_cm3": 7.85,
    "merkez_json": [
-    -78.24,
-    98.5,
-    62.0
+    46.5,
+    91.89,
+    186.0
    ],
    "merkez_fcstd_sekil": [
-    -78.24,
-    98.5,
-    62.0
+    46.5,
+    91.89,
+    186.0
    ],
    "merkez_farki_mm": 0.0,
-   "eski_kutle_g": 0.17,
-   "eski_hacim": 153.0,
+   "eski_kutle_g": 0.82,
+   "eski_hacim": 103.9,
    "eski_merkez_kaymasi": [
     0.0,
     0.0,
@@ -1139,28 +1223,28 @@
   },
   {
    "i": 941,
-   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V A (sag kol + pan) 3)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol + pan) 0 ust)",
    "modul": "taban",
    "durum": "ayni",
-   "malzeme": "Naylon",
-   "kutle_json_g": 0.17,
-   "fcstd_g": 0.17,
-   "fcstd_etiket": "Burc M3x8 naylon burc (XL4016 servo 6 V A (sag kol + pan) 3)",
-   "hacim_mm3": 153.0,
-   "yogunluk_g_cm3": 1.14,
+   "malzeme": "Celik 8.8",
+   "kutle_json_g": 0.82,
+   "fcstd_g": 0.82,
+   "fcstd_etiket": "Vida M3x6 (XL4016 servo 6 V A (sag kol + pan) 0 ust)",
+   "hacim_mm3": 103.9,
+   "yogunluk_g_cm3": 7.85,
    "merkez_json": [
-    29.0,
-    98.5,
-    183.0
+    -29.0,
+    103.71,
+    157.0
    ],
    "merkez_fcstd_sekil": [
-    29.0,
-    98.5,
-    183.0
+    -29.0,
+    103.71,
+    157.0
    ],
    "merkez_farki_mm": 0.0,
-   "eski_kutle_g": 0.17,
-   "eski_hacim": 153.0,
+   "eski_kutle_g": 0.82,
+   "eski_hacim": 103.9,
    "eski_merkez_kaymasi": [
     0.0,
     0.0,
@@ -1169,28 +1253,28 @@
   },
   {
    "i": 950,
-   "ad": "Somun M4 (sigorta kutusu sag)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol + pan) 3 ust)",
    "modul": "taban",
    "durum": "ayni",
-   "malzeme": "Celik",
-   "kutle_json_g": 1.17,
-   "fcstd_g": 1.17,
-   "fcstd_etiket": "Somun M4 (sigorta kutusu sag)",
-   "hacim_mm3": 149.3,
+   "malzeme": "Celik 8.8",
+   "kutle_json_g": 0.82,
+   "fcstd_g": 0.82,
+   "fcstd_etiket": "Vida M3x6 (XL4016 servo 6 V A (sag kol + pan) 3 ust)",
+   "hacim_mm3": 103.9,
    "yogunluk_g_cm3": 7.85,
    "merkez_json": [
-    47.0,
-    172.0,
-    -213.0
+    29.0,
+    103.71,
+    183.0
    ],
    "merkez_fcstd_sekil": [
-    47.0,
-    172.0,
-    -213.0
+    29.0,
+    103.71,
+    183.0
    ],
    "merkez_farki_mm": 0.0,
-   "eski_kutle_g": 1.17,
-   "eski_hacim": 149.3,
+   "eski_kutle_g": 0.82,
+   "eski_hacim": 103.9,
    "eski_merkez_kaymasi": [
     0.0,
     0.0,
@@ -1199,6 +1283,36 @@
   },
   {
    "i": 1021,
+   "ad": "Burc M2,5x8 pirinc burc (BNO055 IMU 1)",
+   "modul": "taban",
+   "durum": "ayni",
+   "malzeme": "Pirinc",
+   "kutle_json_g": 1.14,
+   "fcstd_g": 1.14,
+   "fcstd_etiket": "Burc M2,5x8 pirinc burc (BNO055 IMU 1)",
+   "hacim_mm3": 133.9,
+   "yogunluk_g_cm3": 8.5,
+   "merkez_json": [
+    -10.0,
+    183.5,
+    66.0
+   ],
+   "merkez_fcstd_sekil": [
+    -10.0,
+    183.5,
+    66.0
+   ],
+   "merkez_farki_mm": 0.0,
+   "eski_kutle_g": 1.14,
+   "eski_hacim": 133.9,
+   "eski_merkez_kaymasi": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "i": 1029,
    "ad": "Vida M2,5x8 (BNO055 IMU 3 alt)",
    "modul": "taban",
    "durum": "ayni",
@@ -1226,59 +1340,29 @@
     0.0,
     0.0
    ]
-  },
-  {
-   "i": 1029,
-   "ad": "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 2)",
-   "modul": "taban",
-   "durum": "ayni",
-   "malzeme": "Naylon",
-   "kutle_json_g": 0.17,
-   "fcstd_g": 0.17,
-   "fcstd_etiket": "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 2)",
-   "hacim_mm3": 153.0,
-   "yogunluk_g_cm3": 1.14,
-   "merkez_json": [
-    112.5,
-    183.5,
-    52.5
-   ],
-   "merkez_fcstd_sekil": [
-    112.5,
-    183.5,
-    52.5
-   ],
-   "merkez_farki_mm": 0.0,
-   "eski_kutle_g": 0.17,
-   "eski_hacim": 153.0,
-   "eski_merkez_kaymasi": [
-    0.0,
-    0.0,
-    0.0
-   ]
   }
  ],
  "step": {
-  "kati": 1052,
-  "toplam_hacim_mm3": 16489795.0,
+  "kati": 1060,
+  "toplam_hacim_mm3": 16500683.0,
   "hacim_merkezi": [
    0.04,
-   550.3,
-   -16.92
+   550.73,
+   -16.91
   ],
   "fcstd_hacim_merkezi": [
    0.04,
-   550.3,
-   -16.92
+   550.73,
+   -16.91
   ],
-  "eslesen_kati": 1052,
+  "eslesen_kati": 1060,
   "eslesmeyen_fcstd": 0,
   "step_geometrisi_kutle_agirlikli_am": [
    -0.11,
-   566.92,
-   -10.72
+   567.28,
+   -10.71
   ],
-  "eslesen_kutle_g": 24496.3,
+  "eslesen_kutle_g": 24510.5,
   "en_kotu_eslesme_olcutu": 0.0217
  },
  "kafa": {

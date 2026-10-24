@@ -1,0 +1,113 @@
+{
+ "robot": "yeni",
+ "poz_cifti": 227,
+ "cakisan": 0,
+ "en_kucuk": {
+  "tip": "simetrik",
+  "sag": [
+   -45,
+   5.0,
+   0,
+   -90
+  ],
+  "sol": [
+   -45,
+   5.0,
+   0,
+   -90
+  ],
+  "bosluk_mm": 290.0,
+  "cift": [
+   "S1 horn merkez vidasi M3",
+   "S1 horn merkez vidasi M3"
+  ],
+  "cakisma": []
+ },
+ "tip_ozet": {
+  "birlikte one": {
+   "tip": "birlikte one",
+   "sag": [
+    90,
+    5.0,
+    0,
+    -90
+   ],
+   "sol": [
+    90,
+    5.0,
+    0,
+    90
+   ],
+   "bosluk_mm": 290.0,
+   "cift": [
+    "S1 horn merkez vidasi M3",
+    "S1 horn merkez vidasi M3"
+   ],
+   "cakisma": []
+  },
+  "birlikte one (bilek ayni)": {
+   "tip": "birlikte one (bilek ayni)",
+   "sag": [
+    90,
+    5.0,
+    0,
+    -90
+   ],
+   "sol": [
+    90,
+    5.0,
+    0,
+    -90
+   ],
+   "bosluk_mm": 290.0,
+   "cift": [
+    "S1 horn merkez vidasi M3",
+    "S1 horn merkez vidasi M3"
+   ],
+   "cakisma": []
+  },
+  "simetrik": {
+   "tip": "simetrik",
+   "sag": [
+    -45,
+    5.0,
+    0,
+    -90
+   ],
+   "sol": [
+    -45,
+    5.0,
+    0,
+    -90
+   ],
+   "bosluk_mm": 290.0,
+   "cift": [
+    "S1 horn merkez vidasi M3",
+    "S1 horn merkez vidasi M3"
+   ],
+   "cakisma": []
+  },
+  "zit": {
+   "tip": "zit",
+   "sag": [
+    135,
+    5.0,
+    0,
+    -90
+   ],
+   "sol": [
+    -45,
+    5.0,
+    105,
+    90
+   ],
+   "bosluk_mm": 290.0,
+   "cift": [
+    "S1 horn merkez vidasi M3",
+    "S1 horn merkez vidasi M3"
+   ],
+   "cakisma": []
+  }
+ },
+ "sure_s": 51.5
+}

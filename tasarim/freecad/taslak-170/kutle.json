@@ -4,24 +4,24 @@
  "birim": "g, mm",
  "olcu": {
   "boy": 1700.0,
-  "genislik_x": 455.8,
+  "genislik_x": 463.8,
   "derinlik_z": 532.2,
   "zemin_y": 0.0,
   "not_": "optimalBoundingBox; boy = kafa kabugu tepesi"
  },
  "toplam": {
-  "kutle_g": 24496.3,
+  "kutle_g": 24510.5,
   "am": [
    -0.11,
-   566.92,
-   -10.72
+   567.28,
+   -10.71
   ],
-  "parca_sayisi": 1052,
-  "kutle_payli_g": 24941.3,
+  "parca_sayisi": 1060,
+  "kutle_payli_g": 24955.5,
   "am_payli": [
    -0.1,
-   560.46,
-   -11.54
+   560.82,
+   -11.53
   ],
   "paylar": [
    {
@@ -352,13 +352,13 @@
      "parca": 13
     },
     "dirsek catali (ust kola sabit)": {
-     "kutle_g": 103.5,
+     "kutle_g": 110.7,
      "am": [
-      188.05,
-      1216.35,
-      -3.93
+      190.56,
+      1215.27,
+      -3.76
      ],
-     "parca": 16
+     "parca": 20
     },
     "on kol + dirsek/bilek servolari (dirsek ile)": {
      "kutle_g": 200.1,
@@ -380,22 +380,22 @@
     }
    },
    "S1_ile_donen": {
-    "kutle_g": 724.1,
+    "kutle_g": 731.2,
     "am": [
-     184.75,
-     1241.2,
-     -1.33
+     185.16,
+     1240.8,
+     -1.32
     ],
-    "parca": 95
+    "parca": 99
    },
    "S2_ile_donen": {
-    "kutle_g": 548.9,
+    "kutle_g": 556.1,
     "am": [
-     188.14,
-     1191.16,
+     188.64,
+     1191.27,
      -0.97
     ],
-    "parca": 66
+    "parca": 70
    },
    "dirsek_ile_donen": {
     "kutle_g": 286.4,
@@ -518,13 +518,13 @@
      "parca": 13
     },
     "dirsek catali (ust kola sabit)": {
-     "kutle_g": 103.5,
+     "kutle_g": 110.7,
      "am": [
-      -188.05,
-      1216.35,
-      -3.93
+      -190.56,
+      1215.27,
+      -3.76
      ],
-     "parca": 16
+     "parca": 20
     },
     "on kol + dirsek/bilek servolari (dirsek ile)": {
      "kutle_g": 200.1,
@@ -546,22 +546,22 @@
     }
    },
    "S1_ile_donen": {
-    "kutle_g": 724.1,
+    "kutle_g": 731.2,
     "am": [
-     -184.75,
-     1241.2,
-     -1.33
+     -185.16,
+     1240.8,
+     -1.32
     ],
-    "parca": 95
+    "parca": 99
    },
    "S2_ile_donen": {
-    "kutle_g": 548.9,
+    "kutle_g": 556.1,
     "am": [
-     -188.14,
-     1191.16,
+     -188.64,
+     1191.27,
      -0.97
     ],
-    "parca": 66
+    "parca": 70
    },
    "dirsek_ile_donen": {
     "kutle_g": 286.4,
@@ -618,15 +618,15 @@
    },
    "S1_statik_moment_kol_yatay": {
     "eski_gmm": 83213.0,
-    "yeni_gmm": 109146.0,
-    "oran": 1.312,
-    "x136_kaba_tahmin_gmm": 122733.0,
-    "x136_oran": 1.47,
+    "yeni_gmm": 110505.0,
+    "oran": 1.328,
+    "x136_kaba_tahmin_gmm": 124706.0,
+    "x136_oran": 1.5,
     "not_": "kol (Kol grubu + dirsek) one yatay; geometrik moment orani (servo bagimsiz). Servo paylari (DS3235) kontrol ajaninin hesabinda (taslak_hesap.py / kol-analiz)"
    },
    "kol_kutle_g": {
     "eski": 514.3,
-    "yeni": 548.9
+    "yeni": 556.1
    }
   }
  },
@@ -718,13 +718,13 @@
   {
    "ad": "dirsek_sag",
    "yeni": {
-    "kutle_g": 390.0,
+    "kutle_g": 397.1,
     "am": [
-     189.42,
-     1133.59,
+     190.09,
+     1134.78,
      -1.31
     ],
-    "parca": 53
+    "parca": 57
    },
    "eski": {
     "kutle_g": 367.4,
@@ -739,13 +739,13 @@
   {
    "ad": "dirsek_sol",
    "yeni": {
-    "kutle_g": 390.0,
+    "kutle_g": 397.1,
     "am": [
-     -189.42,
-     1133.59,
+     -190.09,
+     1134.78,
      -1.31
     ],
-    "parca": 53
+    "parca": 57
    },
    "eski": {
     "kutle_g": 367.4,
@@ -892,13 +892,13 @@
   {
    "isim": "DirsekSag_UstKol",
    "modul": "dirsek_sag",
-   "kutle_g": 103.5,
+   "kutle_g": 110.7,
    "am": [
-    188.05,
-    1216.35,
-    -3.93
+    190.56,
+    1215.27,
+    -3.76
    ],
-   "parca": 16
+   "parca": 20
   },
   {
    "isim": "DirsekSag_OnKol",
@@ -925,13 +925,13 @@
   {
    "isim": "DirsekSol_UstKol",
    "modul": "dirsek_sol",
-   "kutle_g": 103.5,
+   "kutle_g": 110.7,
    "am": [
-    -188.05,
-    1216.35,
-    -3.93
+    -190.56,
+    1215.27,
+    -3.76
    ],
-   "parca": 16
+   "parca": 20
   },
   {
    "isim": "DirsekSol_OnKol",
@@ -4319,15 +4319,15 @@
    "ad": "Dirsek catali",
    "modul": "dirsek_sag",
    "grup": "DirsekSag_UstKol",
-   "kutle_g": 87.49,
+   "kutle_g": 92.78,
    "am": [
-    185.96,
-    1219.15,
-    -2.42
+    188.19,
+    1218.28,
+    -2.35
    ],
    "tur": "Baski",
    "malzeme": "PETG",
-   "durum": "tasindi"
+   "durum": "degisti"
   },
   {
    "ad": "Bilezik pulu M3 (bas)",
@@ -4484,60 +4484,116 @@
    "durum": "tasindi"
   },
   {
-   "ad": "Catal-horn civatasi M3x8",
+   "ad": "Catal-horn civatasi M3x12",
    "modul": "dirsek_sag",
    "grup": "DirsekSag_UstKol",
-   "kutle_g": 0.93,
+   "kutle_g": 1.15,
    "am": [
-    223.72,
+    226.01,
     1193.01,
     -7.26
    ],
    "tur": "Baglanti",
    "malzeme": "Celik 8.8",
-   "durum": "tasindi"
+   "durum": "degisti"
   },
   {
-   "ad": "Catal-horn civatasi M3x8",
+   "ad": "Catal-horn pulu M3 (2x DIN 125-A)",
    "modul": "dirsek_sag",
    "grup": "DirsekSag_UstKol",
-   "kutle_g": 0.93,
+   "kutle_g": 0.24,
    "am": [
-    223.72,
+    228.4,
+    1193.01,
+    -7.26
+   ],
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Catal-horn civatasi M3x12",
+   "modul": "dirsek_sag",
+   "grup": "DirsekSag_UstKol",
+   "kutle_g": 1.15,
+   "am": [
+    226.01,
     1193.01,
     4.76
    ],
    "tur": "Baglanti",
    "malzeme": "Celik 8.8",
-   "durum": "tasindi"
+   "durum": "degisti"
   },
   {
-   "ad": "Catal-horn civatasi M3x8",
+   "ad": "Catal-horn pulu M3 (2x DIN 125-A)",
    "modul": "dirsek_sag",
    "grup": "DirsekSag_UstKol",
-   "kutle_g": 0.93,
+   "kutle_g": 0.24,
    "am": [
-    223.72,
+    228.4,
+    1193.01,
+    4.76
+   ],
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Catal-horn civatasi M3x12",
+   "modul": "dirsek_sag",
+   "grup": "DirsekSag_UstKol",
+   "kutle_g": 1.15,
+   "am": [
+    226.01,
     1180.99,
     4.76
    ],
    "tur": "Baglanti",
    "malzeme": "Celik 8.8",
-   "durum": "tasindi"
+   "durum": "degisti"
   },
   {
-   "ad": "Catal-horn civatasi M3x8",
+   "ad": "Catal-horn pulu M3 (2x DIN 125-A)",
    "modul": "dirsek_sag",
    "grup": "DirsekSag_UstKol",
-   "kutle_g": 0.93,
+   "kutle_g": 0.24,
    "am": [
-    223.72,
+    228.4,
+    1180.99,
+    4.76
+   ],
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Catal-horn civatasi M3x12",
+   "modul": "dirsek_sag",
+   "grup": "DirsekSag_UstKol",
+   "kutle_g": 1.15,
+   "am": [
+    226.01,
     1180.99,
     -7.26
    ],
    "tur": "Baglanti",
    "malzeme": "Celik 8.8",
-   "durum": "tasindi"
+   "durum": "degisti"
+  },
+  {
+   "ad": "Catal-horn pulu M3 (2x DIN 125-A)",
+   "modul": "dirsek_sag",
+   "grup": "DirsekSag_UstKol",
+   "kutle_g": 0.24,
+   "am": [
+    228.4,
+    1180.99,
+    -7.26
+   ],
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "durum": "yeni"
   },
   {
    "ad": "On kol govdesi",
@@ -5061,15 +5117,15 @@
    "ad": "Dirsek catali",
    "modul": "dirsek_sol",
    "grup": "DirsekSol_UstKol",
-   "kutle_g": 87.49,
+   "kutle_g": 92.78,
    "am": [
-    -185.96,
-    1219.15,
-    -2.42
+    -188.19,
+    1218.28,
+    -2.35
    ],
    "tur": "Baski",
    "malzeme": "PETG",
-   "durum": "tasindi"
+   "durum": "degisti"
   },
   {
    "ad": "Bilezik pulu M3 (bas)",
@@ -5226,60 +5282,116 @@
    "durum": "tasindi"
   },
   {
-   "ad": "Catal-horn civatasi M3x8",
+   "ad": "Catal-horn civatasi M3x12",
    "modul": "dirsek_sol",
    "grup": "DirsekSol_UstKol",
-   "kutle_g": 0.93,
+   "kutle_g": 1.15,
    "am": [
-    -223.72,
+    -226.01,
     1193.01,
     -7.26
    ],
    "tur": "Baglanti",
    "malzeme": "Celik 8.8",
-   "durum": "tasindi"
+   "durum": "degisti"
   },
   {
-   "ad": "Catal-horn civatasi M3x8",
+   "ad": "Catal-horn pulu M3 (2x DIN 125-A)",
    "modul": "dirsek_sol",
    "grup": "DirsekSol_UstKol",
-   "kutle_g": 0.93,
+   "kutle_g": 0.24,
    "am": [
-    -223.72,
+    -228.4,
+    1193.01,
+    -7.26
+   ],
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Catal-horn civatasi M3x12",
+   "modul": "dirsek_sol",
+   "grup": "DirsekSol_UstKol",
+   "kutle_g": 1.15,
+   "am": [
+    -226.01,
     1193.01,
     4.76
    ],
    "tur": "Baglanti",
    "malzeme": "Celik 8.8",
-   "durum": "tasindi"
+   "durum": "degisti"
   },
   {
-   "ad": "Catal-horn civatasi M3x8",
+   "ad": "Catal-horn pulu M3 (2x DIN 125-A)",
    "modul": "dirsek_sol",
    "grup": "DirsekSol_UstKol",
-   "kutle_g": 0.93,
+   "kutle_g": 0.24,
    "am": [
-    -223.72,
+    -228.4,
+    1193.01,
+    4.76
+   ],
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Catal-horn civatasi M3x12",
+   "modul": "dirsek_sol",
+   "grup": "DirsekSol_UstKol",
+   "kutle_g": 1.15,
+   "am": [
+    -226.01,
     1180.99,
     4.76
    ],
    "tur": "Baglanti",
    "malzeme": "Celik 8.8",
-   "durum": "tasindi"
+   "durum": "degisti"
   },
   {
-   "ad": "Catal-horn civatasi M3x8",
+   "ad": "Catal-horn pulu M3 (2x DIN 125-A)",
    "modul": "dirsek_sol",
    "grup": "DirsekSol_UstKol",
-   "kutle_g": 0.93,
+   "kutle_g": 0.24,
    "am": [
-    -223.72,
+    -228.4,
+    1180.99,
+    4.76
+   ],
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "durum": "yeni"
+  },
+  {
+   "ad": "Catal-horn civatasi M3x12",
+   "modul": "dirsek_sol",
+   "grup": "DirsekSol_UstKol",
+   "kutle_g": 1.15,
+   "am": [
+    -226.01,
     1180.99,
     -7.26
    ],
    "tur": "Baglanti",
    "malzeme": "Celik 8.8",
-   "durum": "tasindi"
+   "durum": "degisti"
+  },
+  {
+   "ad": "Catal-horn pulu M3 (2x DIN 125-A)",
+   "modul": "dirsek_sol",
+   "grup": "DirsekSol_UstKol",
+   "kutle_g": 0.24,
+   "am": [
+    -228.4,
+    1180.99,
+    -7.26
+   ],
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "durum": "yeni"
   },
   {
    "ad": "On kol govdesi",

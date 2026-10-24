@@ -1,8 +1,8 @@
 {
  "dosya": "taslak-170.FCStd",
  "step": "taslak-170.step",
- "step_kati": 1052,
- "parca_sayisi": 1052,
+ "step_kati": 1060,
+ "parca_sayisi": 1060,
  "grup_sayisi": 22,
  "eklem_sayisi": 22,
  "solve": 0,
@@ -11,9 +11,9 @@
  "coklu_kati": [],
  "durum": {
   "ayni": 467,
-  "tasindi": 413,
-  "degisti": 17,
-  "yeni": 155
+  "tasindi": 403,
+  "degisti": 27,
+  "yeni": 163
  },
  "baski": [
   {
@@ -295,10 +295,10 @@
   {
    "ad": "Dirsek catali",
    "modul": "dirsek_sag",
-   "durum": "tasindi",
+   "durum": "degisti",
    "olcu": [
+    73.9,
     72.0,
-    70.9,
     74.0
    ],
    "tabla_aci": 0,
@@ -310,10 +310,10 @@
    "yon": "ters: pim ve bilezik ucu tablada, kollar yukari",
    "sigar_250": "True",
    "hedef_230": "True",
-   "hacim_cm3": 86.1,
-   "kutle_g": 87.5,
-   "filament_g": 91.9,
-   "sure_saat": 1.91
+   "hacim_cm3": 91.3,
+   "kutle_g": 92.8,
+   "filament_g": 97.4,
+   "sure_saat": 2.03
   },
   {
    "ad": "On kol govdesi",
@@ -387,10 +387,10 @@
   {
    "ad": "Dirsek catali",
    "modul": "dirsek_sol",
-   "durum": "tasindi",
+   "durum": "degisti",
    "olcu": [
+    73.9,
     72.0,
-    70.9,
     74.0
    ],
    "tabla_aci": 0,
@@ -402,10 +402,10 @@
    "yon": "ters: pim ve bilezik ucu tablada, kollar yukari",
    "sigar_250": "True",
    "hedef_230": "True",
-   "hacim_cm3": 86.1,
-   "kutle_g": 87.5,
-   "filament_g": 91.9,
-   "sure_saat": 1.91
+   "hacim_cm3": 91.3,
+   "kutle_g": 92.8,
+   "filament_g": 97.4,
+   "sure_saat": 2.03
   },
   {
    "ad": "On kol govdesi",
@@ -1423,7 +1423,7 @@
  "baski_ozet": {
   "sayi": 61,
   "yeni": 14,
-  "degisti": 6,
+  "degisti": 8,
   "sigmayan_250": [],
   "hedef_230_asan": [
    "Etek arka sag",
@@ -1437,6 +1437,17 @@
   "hedef": 230.0
  },
  "baglar": [
+  {
+   "ad": "Dirsek catali dis kolu -> dirsek horn",
+   "tip": "4x M3x12 DIN 912 + 2 x DIN 125-A M3 pul (eski M3x8; dis kol 8 mm)",
+   "adet": 4,
+   "parcalar": [
+    "Dirsek catali",
+    "Dirsek horn 25T aluminyum disk"
+   ],
+   "aciklama": "delik konumlari ayni; civata ucu horn'da 3 mm (eskisi gibi), servo kasasina inmez",
+   "durum": "degisti"
+  },
   {
    "ad": "Ust kol tupu -> dirsek catali",
    "tip": "pim + yarikli sikma bilezigi, 2x M3 (degismedi; tupun yeni ucunda)",
@@ -1828,6 +1839,21 @@
    "yaka 19 mm uzadi (O34 / O22 bos); el ucu omuz ekseninden 325.5 -> 406.9 mm (x1.250; tup +30, on kol +32.4, yaka +19)"
   ],
   [
+   "Dirsek + el (sag + sol)",
+   "Dirsek catali (dis kol)",
+   "dis kol (horn tarafi) 5 -> 8 mm, disa (+X; x 224.9 -> 227.9): kol analizi dis kol L3 SF 1,86 / L4 0,77 (kontrol ajani, 24 Ekim 2026); kopru ayni duzleme uzadi; ic yuz, horn, 625ZZ, pim, delikler ve eksen ayni; 87.5 -> 92.8 g (kol basina). Onay: Duffy (gorunum + carpisma sartiyla)"
+  ],
+  [
+   "Dirsek + el (sag + sol)",
+   "Catal-horn civatasi (4 x 2)",
+   "M3x8 -> M3x12 DIN 912 + 2 x DIN 125-A M3 pul (1.0 mm; M3x11 standart degil); bas 4 mm disarida, uc ve horn'daki dis boyu ayni"
+  ],
+  [
+   "Dirsek + el (sag + sol)",
+   "Dirsek catali (45 der. kopru destegi)",
+   "ayni 45 der. egimle dis yuze (x 227.9) kadar uzatildi: ters baskida kopru altinda 3 mm cikinti seridi kalmaz (yalniz gorunum / baski; delik, ic yuz, horn oturmasi ayni)"
+  ],
+  [
    "Kafa",
    "Govde (boyun plakasi, servo yuvasi, 6808 cifti, pan servosu) + boyun mili",
    "435 mm yukari (degismedi)"
@@ -1922,7 +1948,7 @@
     "kaynak": "mevcut tasarim (125'te de var)"
    }
   ],
-  "aday_cift": 707,
+  "aday_cift": 789,
   "esik_mm3": 0.5,
   "kafa_suprulme": [
    {
@@ -2134,7 +2160,674 @@
      90.0
     ]
    },
-   "sure_s": 196.1
+   "sure_s": 218.7
+  },
+  "catal": {
+   "kalinlik_mm": 8.0,
+   "eski_mm": 5.0,
+   "dis_yuz_x_yerel": [
+    224.9,
+    227.9
+   ],
+   "bilgi": {
+    "sag": {
+     "eski_g": 87.49,
+     "yeni_g": 92.78,
+     "kati": 1,
+     "gecerli": true,
+     "dis_kol_x": [
+      219.9,
+      227.9
+     ]
+    },
+    "sol": {
+     "eski_g": 87.49,
+     "yeni_g": 92.78,
+     "kati": 1,
+     "gecerli": true,
+     "dis_kol_x": [
+      219.9,
+      227.9
+     ]
+    }
+   },
+   "ev_pozu": [
+    {
+     "parca": "Ust kol tupu",
+     "modul": "omuz_sag",
+     "eski_mm": 0.0,
+     "yeni_mm": 0.0,
+     "ara_mm": 0.0
+    },
+    {
+     "parca": "Bilezik pulu M3 (bas)",
+     "modul": "dirsek_sag",
+     "eski_mm": 0.0,
+     "yeni_mm": 0.0,
+     "ara_mm": 0.0
+    },
+    {
+     "parca": "Bilezik pulu M3 (somun)",
+     "modul": "dirsek_sag",
+     "eski_mm": 0.0,
+     "yeni_mm": 0.0,
+     "ara_mm": 0.0
+    },
+    {
+     "parca": "Bilezik pulu M3 (bas)",
+     "modul": "dirsek_sag",
+     "eski_mm": 0.0,
+     "yeni_mm": 0.0,
+     "ara_mm": 0.0
+    },
+    {
+     "parca": "Bilezik pulu M3 (somun)",
+     "modul": "dirsek_sag",
+     "eski_mm": 0.0,
+     "yeni_mm": 0.0,
+     "ara_mm": 0.0
+    },
+    {
+     "parca": "625ZZ rulman (dis bilezik)",
+     "modul": "dirsek_sag",
+     "eski_mm": 0.0,
+     "yeni_mm": 0.0,
+     "ara_mm": 0.0
+    },
+    {
+     "parca": "Dirsek horn 25T aluminyum disk",
+     "modul": "dirsek_sag",
+     "eski_mm": 0.0,
+     "yeni_mm": 0.0,
+     "ara_mm": 0.0
+    },
+    {
+     "parca": "Bilezik civatasi M3x20",
+     "modul": "dirsek_sag",
+     "eski_mm": 0.2,
+     "yeni_mm": 0.2,
+     "ara_mm": 0.2
+    },
+    {
+     "parca": "Bilezik civatasi M3x20",
+     "modul": "dirsek_sag",
+     "eski_mm": 0.2,
+     "yeni_mm": 0.2,
+     "ara_mm": 0.2
+    },
+    {
+     "parca": "Bilezik kontra somunu M3",
+     "modul": "dirsek_sag",
+     "eski_mm": 0.5,
+     "yeni_mm": 0.5,
+     "ara_mm": 0.5
+    },
+    {
+     "parca": "Bilezik kontra somunu M3",
+     "modul": "dirsek_sag",
+     "eski_mm": 0.5,
+     "yeni_mm": 0.5,
+     "ara_mm": 0.5
+    },
+    {
+     "parca": "On kol govdesi",
+     "modul": "dirsek_sag",
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "ara_mm": 1.0
+    },
+    {
+     "parca": "Dirsek servosu cikis mili",
+     "modul": "dirsek_sag",
+     "eski_mm": 1.39,
+     "yeni_mm": 1.39,
+     "ara_mm": 1.39
+    },
+    {
+     "parca": "Pim pulu M5",
+     "modul": "dirsek_sag",
+     "eski_mm": 1.5,
+     "yeni_mm": 1.5,
+     "ara_mm": 1.5
+    },
+    {
+     "parca": "Dirsek horn merkez vidasi M3",
+     "modul": "dirsek_sag",
+     "eski_mm": 1.75,
+     "yeni_mm": 1.75,
+     "ara_mm": 1.75
+    },
+    {
+     "parca": "Pim civatasi M5x12",
+     "modul": "dirsek_sag",
+     "eski_mm": 2.25,
+     "yeni_mm": 2.25,
+     "ara_mm": 2.25
+    },
+    {
+     "parca": "625ZZ rulman (ic bilezik)",
+     "modul": "dirsek_sag",
+     "eski_mm": 2.4,
+     "yeni_mm": 2.4,
+     "ara_mm": 2.4
+    },
+    {
+     "parca": "Dirsek servosu MG996R",
+     "modul": "dirsek_sag",
+     "eski_mm": 3.3,
+     "yeni_mm": 3.3,
+     "ara_mm": 3.3
+    },
+    {
+     "parca": "Isil gomme somun M5 (on kolda)",
+     "modul": "dirsek_sag",
+     "eski_mm": 4.9,
+     "yeni_mm": 4.9,
+     "ara_mm": 4.9
+    },
+    {
+     "parca": "Gogus bandi sag",
+     "modul": "kabuk",
+     "eski_mm": 5.91,
+     "yeni_mm": 5.91,
+     "ara_mm": 5.91
+    },
+    {
+     "parca": "Dirsek servosu kontra somunu M4",
+     "modul": "dirsek_sag",
+     "eski_mm": 6.36,
+     "yeni_mm": 6.36,
+     "ara_mm": 6.36
+    },
+    {
+     "parca": "Dirsek servosu kontra somunu M4",
+     "modul": "dirsek_sag",
+     "eski_mm": 6.36,
+     "yeni_mm": 6.36,
+     "ara_mm": 6.36
+    },
+    {
+     "parca": "Dirsek servosu kulak civatasi M4x16",
+     "modul": "dirsek_sag",
+     "eski_mm": 6.9,
+     "yeni_mm": 6.9,
+     "ara_mm": 6.9
+    },
+    {
+     "parca": "Dirsek servosu kulak civatasi M4x16",
+     "modul": "dirsek_sag",
+     "eski_mm": 6.9,
+     "yeni_mm": 6.9,
+     "ara_mm": 6.9
+    },
+    {
+     "parca": "Isil gomme somun M5 (Govde braketi sag y780)",
+     "modul": "kabuk",
+     "eski_mm": 9.12,
+     "yeni_mm": 9.12,
+     "ara_mm": 9.12
+    },
+    {
+     "parca": "Civata M5x10 (Govde braketi sag y780)",
+     "modul": "kabuk",
+     "eski_mm": 10.12,
+     "yeni_mm": 10.12,
+     "ara_mm": 10.12
+    },
+    {
+     "parca": "Dirsek servosu kontra somunu M4",
+     "modul": "dirsek_sag",
+     "eski_mm": 26.2,
+     "yeni_mm": 26.2,
+     "ara_mm": 26.2
+    },
+    {
+     "parca": "Dirsek servosu kontra somunu M4",
+     "modul": "dirsek_sag",
+     "eski_mm": 26.2,
+     "yeni_mm": 26.2,
+     "ara_mm": 26.2
+    }
+   ],
+   "dirsek": [
+    {
+     "dirsek": 0,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 5,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 10,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 15,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 20,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 25,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 30,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 35,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 40,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 45,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 50,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 55,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 60,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 65,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 70,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 75,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 80,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 85,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 90,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 95,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 100,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    },
+    {
+     "dirsek": 105,
+     "eski_mm": 1.0,
+     "yeni_mm": 1.0,
+     "eski_parca": "On kol govdesi",
+     "yeni_parca": "On kol govdesi",
+     "ara_mm": 1.0,
+     "ara_parca": "On kol govdesi"
+    }
+   ],
+   "omuz": [
+    {
+     "poz": [
+      -45.0,
+      5.0
+     ],
+     "eski": [
+      30.04,
+      "Gogus bandi sag"
+     ],
+     "yeni": [
+      30.04,
+      "Gogus bandi sag"
+     ],
+     "ara": [
+      30.04,
+      "Gogus bandi sag"
+     ]
+    },
+    {
+     "poz": [
+      -45.0,
+      45.0
+     ],
+     "eski": null,
+     "yeni": null,
+     "ara": null
+    },
+    {
+     "poz": [
+      -45.0,
+      90.0
+     ],
+     "eski": null,
+     "yeni": null,
+     "ara": null
+    },
+    {
+     "poz": [
+      -45.0,
+      120.0
+     ],
+     "eski": null,
+     "yeni": null,
+     "ara": null
+    },
+    {
+     "poz": [
+      0.0,
+      5.0
+     ],
+     "eski": [
+      18.74,
+      "Gogus bandi sag"
+     ],
+     "yeni": [
+      18.74,
+      "Gogus bandi sag"
+     ],
+     "ara": [
+      18.74,
+      "Gogus bandi sag"
+     ]
+    },
+    {
+     "poz": [
+      0.0,
+      45.0
+     ],
+     "eski": null,
+     "yeni": null,
+     "ara": null
+    },
+    {
+     "poz": [
+      0.0,
+      90.0
+     ],
+     "eski": null,
+     "yeni": null,
+     "ara": null
+    },
+    {
+     "poz": [
+      0.0,
+      120.0
+     ],
+     "eski": null,
+     "yeni": null,
+     "ara": null
+    },
+    {
+     "poz": [
+      45.0,
+      5.0
+     ],
+     "eski": [
+      24.07,
+      "Gogus bandi sag"
+     ],
+     "yeni": [
+      24.07,
+      "Gogus bandi sag"
+     ],
+     "ara": [
+      24.07,
+      "Gogus bandi sag"
+     ]
+    },
+    {
+     "poz": [
+      45.0,
+      45.0
+     ],
+     "eski": null,
+     "yeni": null,
+     "ara": null
+    },
+    {
+     "poz": [
+      45.0,
+      90.0
+     ],
+     "eski": null,
+     "yeni": null,
+     "ara": null
+    },
+    {
+     "poz": [
+      45.0,
+      120.0
+     ],
+     "eski": null,
+     "yeni": null,
+     "ara": null
+    },
+    {
+     "poz": [
+      90.0,
+      5.0
+     ],
+     "eski": [
+      86.54,
+      "Gogus bandi sag"
+     ],
+     "yeni": [
+      86.54,
+      "Gogus bandi sag"
+     ],
+     "ara": [
+      86.54,
+      "Gogus bandi sag"
+     ]
+    },
+    {
+     "poz": [
+      90.0,
+      45.0
+     ],
+     "eski": null,
+     "yeni": null,
+     "ara": null
+    },
+    {
+     "poz": [
+      90.0,
+      90.0
+     ],
+     "eski": null,
+     "yeni": null,
+     "ara": null
+    },
+    {
+     "poz": [
+      90.0,
+      120.0
+     ],
+     "eski": null,
+     "yeni": null,
+     "ara": null
+    },
+    {
+     "poz": [
+      135.0,
+      5.0
+     ],
+     "eski": [
+      43.83,
+      "Yuz kabugu (on) sag"
+     ],
+     "yeni": [
+      43.83,
+      "Yuz kabugu (on) sag"
+     ],
+     "ara": [
+      43.83,
+      "Yuz kabugu (on) sag"
+     ]
+    },
+    {
+     "poz": [
+      135.0,
+      45.0
+     ],
+     "eski": null,
+     "yeni": null,
+     "ara": null
+    },
+    {
+     "poz": [
+      135.0,
+      90.0
+     ],
+     "eski": null,
+     "yeni": null,
+     "ara": null
+    },
+    {
+     "poz": [
+      135.0,
+      120.0
+     ],
+     "eski": null,
+     "yeni": null,
+     "ara": null
+    }
+   ],
+   "ara_kalinlik_mm": 7.0,
+   "horn_civatasi": "M3x12",
+   "horn_pul": 2,
+   "destek_dis_yuze": true,
+   "ev_pozu_yaklasan": [],
+   "dirsek_haric": [
+    "Dirsek servosu cikis mili",
+    "625ZZ rulman (ic bilezik)",
+    "Pim pulu M5",
+    "Pim civatasi M5x12"
+   ],
+   "sure_s": 85.4
   },
   "not_": "kisa kontrol: yeni/degisen parcalar x tum parcalar ve farkli otelenen parca ciftleri (ev pozu); kafa pan {-90,-45,0,45,90} x tilt {-15,-7,5,0,7,5,15}; sag kol kaba izgara (on kol + el). Tam carpisma taramasi (ince kol pozlari, kafa x kol) analiz ajaninda."
  },
@@ -2151,33 +2844,36 @@
   ],
   "direk_mm": 1235.5
  },
- "sure_s": 436.4,
+ "sure_s": 627.0,
  "log": [
-  "yuklendi iskelet 59  0.6s",
-  "yuklendi omuz_sag 71  6.4s",
-  "yuklendi omuz_sol 71  6.4s",
-  "yuklendi kabuk 206  45.8s",
-  "yuklendi dirsek_sag 53  47.2s",
-  "yuklendi dirsek_sol 53  47.2s",
-  "yuklendi kafa 119  51.8s",
-  "yuklendi taban 316  56.2s",
-  "on kol sag: kesit 339.3 mm2 (1), kati 1, 42.2 -> 53.4 g  57.0s",
-  "on kol sol: kesit 339.3 mm2 (1), kati 1, 42.2 -> 53.4 g  57.4s",
-  "  denge 0: dy -10.00 zb -82.00 -> m 1407.4 g, AM (1.91, 2.51, 2.79)  61.3s",
-  "  denge 1: dy -12.96 zb -91.30 -> m 1436.0 g, AM (1.87, 0.23, -0.50)  64.6s",
-  "  denge 2: dy -13.26 zb -89.89 -> m 1431.7 g, AM (1.88, -0.05, 0.00)  67.6s",
-  "kafa: dy -13.26 zb -89.89, tilt ekseni yerel y 188.26 (eski 130), adaptor 58.26 mm  67.6s",
-  "kabuk: ust 92 parca DY tasindi, alt 108  68.4s",
-  "parca: yeni 1052 (eski 948), grup 22, eklem 22; kafa denge {'dy': -13.255, 'zb': -89.893, 'm': 1431.7, 'am': [1.879, -0.046, 0.004]}  72.1s",
-  "nesneler: 1052 parca, 22 grup  72.5s",
-  "eklem 22 solve 0 ev sapmasi 0.00e+00 STEP kati 1052  88.0s",
-  "kafa tilt grubu 1431.7 g AM eksene dik 0.046 mm; pan grubu 1704.0 g  89.1s",
-  "kol: moment oran 1.312 (x1,36 kaba 1.47), kutle 514.3 -> 548.9 g  89.1s",
-  "kutle: 24496.3 g AM [-0.11, 566.92, -10.72] (eski 21533.4 g AM [-0.19, 382.69, -12.77]), boy 1700.0  89.2s",
-  "baski: 61 parca, 250'ye sigmayan 0, 230 hedefi asan 2  92.3s",
-  "ev pozu kontrolu: 707 aday cift, 4 cakisma (0 taslaktan) (9 s)  100.8s",
-  "kafa suprulmesi: 24 poz, cakisan poz 0 (133 s)  234.2s",
-  "kol kisa tarama: 240 poz, cakisan poz 0, cakisma 0, el en alt y 982.5 (196 s)  430.3s",
-  "bosluklar: {\"kafa kabugu <-> omuz (ev pozu)\": {\"mm\": 60.56, \"a\": \"Arka kafa kabugu sag\", \"b\": \"S1 kablo tamburu\"}, \"kafa kabugu <-> govde kabugu ust kapagi\": null, \"kafa (Bas) <-> egme catali / tilt servosu / adaptor\": {\"mm\": 1.0, \"a\": \"Kafa iskeleti (10 in)\", \"b\": \"Egme catali\"}, \"ekran <-> catal / adaptor\": {\"mm\": 15.5, \"a\": \"Yuz ekrani 10,1 in HDMI 1280x800 (tahmini model)\", \"b\": \"Egme catali\"}, \"el <-> govde kabugu (ev pozu, sag)\": {\"mm\": 5.91, \"a\": \"Dirsek catali\", \"b\": \"Gogus bandi sag\"}}  433.3s"
+  "yuklendi iskelet 59  0.9s",
+  "yuklendi omuz_sag 71  4.1s",
+  "yuklendi omuz_sol 71  4.2s",
+  "yuklendi kabuk 206  66.4s",
+  "yuklendi dirsek_sag 53  68.4s",
+  "yuklendi dirsek_sol 53  68.4s",
+  "yuklendi kafa 119  75.0s",
+  "yuklendi taban 316  81.2s",
+  "dirsek catali sag: 87.49 -> 92.78 g, kati 1, gecerli True  82.1s",
+  "on kol sag: kesit 339.3 mm2 (1), kati 1, 42.2 -> 53.4 g  82.5s",
+  "dirsek catali sol: 87.49 -> 92.78 g, kati 1, gecerli True  83.1s",
+  "on kol sol: kesit 339.3 mm2 (1), kati 1, 42.2 -> 53.4 g  83.5s",
+  "  denge 0: dy -10.00 zb -82.00 -> m 1407.4 g, AM (1.91, 2.51, 2.79)  88.8s",
+  "  denge 1: dy -12.96 zb -91.30 -> m 1436.0 g, AM (1.87, 0.23, -0.50)  93.9s",
+  "  denge 2: dy -13.26 zb -89.89 -> m 1431.7 g, AM (1.88, -0.05, 0.00)  99.0s",
+  "kafa: dy -13.26 zb -89.89, tilt ekseni yerel y 188.26 (eski 130), adaptor 58.26 mm  99.0s",
+  "kabuk: ust 92 parca DY tasindi, alt 108  100.5s",
+  "parca: yeni 1060 (eski 948), grup 22, eklem 22; kafa denge {'dy': -13.255, 'zb': -89.893, 'm': 1431.7, 'am': [1.879, -0.046, 0.004]}  105.9s",
+  "nesneler: 1060 parca, 22 grup  106.4s",
+  "eklem 22 solve 0 ev sapmasi 0.00e+00 STEP kati 1060  129.8s",
+  "kafa tilt grubu 1431.7 g AM eksene dik 0.046 mm; pan grubu 1704.0 g  131.3s",
+  "kol: moment oran 1.328 (x1,36 kaba 1.50), kutle 514.3 -> 556.1 g  131.3s",
+  "kutle: 24510.5 g AM [-0.11, 567.28, -10.71] (eski 21533.4 g AM [-0.19, 382.69, -12.77]), boy 1700.0  131.4s",
+  "baski: 61 parca, 250'ye sigmayan 0, 230 hedefi asan 2  135.4s",
+  "ev pozu kontrolu: 789 aday cift, 4 cakisma (0 taslaktan) (12 s)  147.8s",
+  "kafa suprulmesi: 24 poz, cakisan poz 0 (168 s)  315.6s",
+  "kol kisa tarama: 240 poz, cakisan poz 0, cakisma 0, el en alt y 982.5 (219 s)  534.3s",
+  "bosluklar: {\"kafa kabugu <-> omuz (ev pozu)\": {\"mm\": 60.56, \"a\": \"Arka kafa kabugu sag\", \"b\": \"S1 kablo tamburu\"}, \"kafa kabugu <-> govde kabugu ust kapagi\": null, \"kafa (Bas) <-> egme catali / tilt servosu / adaptor\": {\"mm\": 1.0, \"a\": \"Kafa iskeleti (10 in)\", \"b\": \"Egme catali\"}, \"ekran <-> catal / adaptor\": {\"mm\": 15.5, \"a\": \"Yuz ekrani 10,1 in HDMI 1280x800 (tahmini model)\", \"b\": \"Egme catali\"}, \"el <-> govde kabugu (ev pozu, sag)\": {\"mm\": 5.91, \"a\": \"Dirsek catali\", \"b\": \"Gogus bandi sag\"}}  537.9s",
+  "dirsek catali kontrolu (8 mm): ev pozu yaklasan 0; dirsek on kol en az 1.0 -> 1.0; omuz izgarasi en az 18.74 -> 18.74 (85 s)  623.3s"
  ]
 }

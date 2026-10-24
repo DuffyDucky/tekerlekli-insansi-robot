@@ -2,7 +2,7 @@
 #   FC_SCRIPT=<bu dosya> "%LOCALAPPDATA%/Programs/FreeCAD 1.1/bin/freecad.exe" C:/Users/Victus/.robot-cad/run_fc.py
 # 1) taslak-170.FCStd: gizli gelen montaj/gruplar/parcalar gorunur, renkler, eklem gorunum nesneleri; dosya GUI'den kaydedilir.
 # 2) %TEMP%/taslak170-gorsel.FCStd (renk bazinda bilesik, yeni + eski 125 cm): onden, yandan, izometrik, kafa yakin, sag kol yakin,
-#    karsilastirma -> gorsel/
+#    karsilastirma, dirsek catali (catal-5-7.png ya da catal-5-7-8.png) -> gorsel/
 import os, sys, math, tempfile, traceback
 import FreeCAD as App
 import FreeCADGui as Gui
@@ -117,7 +117,98 @@ def gorseller():
     kaydet(v, "karsilastirma-125-170-on.png", 1600, 1250)
     kamera(v, (0.35, 0.2, 1.0), 1950, (-450, 860, 0))
     kaydet(v, "karsilastirma-125-170-izo.png", 1600, 1250)
+    catal_karsilastirma(doc, gd, v, goster)
     App.closeDocument(doc.Name)
+
+
+def catal_karsilastirma(doc, gd, v, goster):
+    """Dirsek catali dis kolu karsilastirmasi (sag kol; catal kirmizi, horn civatalari gri, cevre yari saydam), ayni kadraj:
+    yalniz Catal5 + Catal7 -> gorsel/catal-5-7.png (2 x 2: satir once / sonra, sutun onden / izometrik; 24 Ekim kaydi);
+    3+ takim (8 mm karari: Catal5, Catal7, Catal8) -> gorsel/catal-5-7-8.png (sutun = kalinlik, satir = onden / izometrik).
+    Basliklar nesnelerin Baslik ozelliginden ("kalinlik|civata")."""
+    from PySide import QtGui
+    takim = {}
+    for o in doc.Objects:
+        t = getattr(o, "Takim", "")
+        if t.startswith("Catal") and t != "CatalCevre":
+            takim.setdefault(t, []).append(o)
+    cev = [o for o in doc.Objects if getattr(o, "Takim", "") == "CatalCevre"]
+    sira = sorted(takim, key=lambda t: float(t[5:]))
+    if len(sira) < 2 or not cev:
+        log("catal karsilastirma nesneleri yok")
+        return
+    for o in cev:
+        gd.getObject(o.Name).Transparency = 72
+    for t in sira:
+        for o in takim[t]:
+            vo = gd.getObject(o.Name)
+            vo.ShapeColor = (0.86, 0.12, 0.10) if o.Renk == "kirmizi" else RENK["celik"]
+            vo.LineWidth = 2.0
+    W, H = 900, 820
+    gorus = (("önden", (0, 0, 1), 250, (205, 1200, 0)), ("izometrik", (1.0, 0.42, 0.85), 250, (205, 1200, 0)))
+    karo = {}
+    for etiket in sira:
+        goster(cev + takim[etiket])
+        for ad, eye, h, mer in gorus:
+            kamera(v, eye, h, mer)
+            Gui.updateGui()
+            yol = os.path.join(tempfile.gettempdir(), "catal-%s-%s.png" % (etiket, "on" if ad == "önden" else "izo"))
+            v.saveImage(yol, W, H, "White")
+            karo[(etiket, ad)] = yol
+
+    def bilgi(etiket):
+        b = next((getattr(o, "Baslik", "") for o in takim[etiket] if getattr(o, "Baslik", "")), "")
+        return b.split("|") if "|" in b else (etiket[5:], "")
+
+    baslik = 56
+    f = QtGui.QFont("Segoe UI", 20)
+    f.setBold(True)
+    if len(sira) == 2:                       # 24 Ekim duzeni (catal-5-7.png)
+        img = QtGui.QImage(2 * W, 2 * (H + baslik), QtGui.QImage.Format_RGB32)
+        img.fill(QtGui.QColor(255, 255, 255))
+        pt = QtGui.QPainter(img)
+        pt.setFont(f)
+        t1, c1 = bilgi(sira[1])
+        yazilar = ((sira[0], "Önce: dış kol %s mm" % bilgi(sira[0])[0]),
+                   (sira[1], "Sonra: dış kol %s mm (dışa +%g mm, horn cıvatası %s)" % (t1, float(t1) - float(bilgi(sira[0])[0]), c1)))
+        for r, (etiket, yazi) in enumerate(yazilar):
+            for c, (ad, _, _, _) in enumerate(gorus):
+                x0, y0 = c * W, r * (H + baslik)
+                pt.drawImage(x0, y0 + baslik, QtGui.QImage(karo[(etiket, ad)]))
+                pt.setPen(QtGui.QColor(30, 30, 30))
+                pt.drawText(x0 + 18, y0 + 38, "%s  -  %s" % (yazi, ad))
+        pt.setPen(QtGui.QPen(QtGui.QColor(180, 180, 180), 2))
+        pt.drawLine(W, 0, W, img.height())
+        pt.drawLine(0, H + baslik, img.width(), H + baslik)
+        dosya = "catal-%s.png" % "-".join(t[5:] for t in sira)
+    else:                                    # sutun = kalinlik, satir = gorus (catal-5-7-8.png)
+        n = len(sira)
+        img = QtGui.QImage(n * W, 2 * (H + baslik), QtGui.QImage.Format_RGB32)
+        img.fill(QtGui.QColor(255, 255, 255))
+        pt = QtGui.QPainter(img)
+        pt.setFont(f)
+        for c, etiket in enumerate(sira):
+            t_, civ = bilgi(etiket)
+            for r, (ad, _, _, _) in enumerate(gorus):
+                x0, y0 = c * W, r * (H + baslik)
+                pt.drawImage(x0, y0 + baslik, QtGui.QImage(karo[(etiket, ad)]))
+                pt.setPen(QtGui.QColor(30, 30, 30))
+                pt.drawText(x0 + 18, y0 + 38, "Dış kol %s mm, %s  -  %s" % (t_, civ, ad))
+        pt.setPen(QtGui.QPen(QtGui.QColor(180, 180, 180), 2))
+        for c in range(1, n):
+            pt.drawLine(c * W, 0, c * W, img.height())
+        pt.drawLine(0, H + baslik, img.width(), H + baslik)
+        dosya = "catal-%s.png" % "-".join(t[5:] for t in sira)
+    pt.end()
+    img.save(os.path.join(OUT, dosya))
+    for yol in karo.values():
+        try:
+            os.remove(yol)
+        except OSError:
+            pass
+    for o in cev:
+        gd.getObject(o.Name).Transparency = 0
+    log("gorsel", dosya)
 
 
 def guvenli():

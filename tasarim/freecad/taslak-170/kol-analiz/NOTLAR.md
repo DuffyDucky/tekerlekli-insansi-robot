@@ -55,3 +55,16 @@ Durum: başladı (2026-10-24). Bulgular ilerledikçe buraya eklenir.
   ×1,36 = ek ön kola (doğrusal). Gruplar taslak_hesap.kol_gruplari'ndan. Ön kol kesitleri CAD dilimlerinden (üst s 30 pencere Wz 1.073; alt U s 42).
 - Önceki sonuç (git e8697ac) kol-analiz.json 'onceki', bu koşu 'ozet'; fark rapor Bölüm 8. Ayrıntı: ../KOL125-KONTROL-NOTLAR.md.
 - ×1,25 + DS3235: S1 2,84 / 1,66, elde 111 g; dirsek geri sürme 1,32 -> 1,46; dirsek çatalı dış kolu L3 SF 2,07 -> 1,86 (sınırda), L4 0,77.
+
+## Dirsek çatalı dış kolu 5 → 7 mm (kontrol ajanı, 24 Ekim 2026 akşam)
+- kol_analiz.py: dış kol kalınlığı `T_DIS = TA.CATAL_DIS_KOL` (kesit t × 32, horn cıvatası ezilme boyu t, çift kuvvet kolu 61 + (t − 5)/2 mm);
+  her varyant × servoda `catal_dis_kol` {5, 7, 8} (8 yalnız hesap); `catal5` = git 8ee72a0 özeti. t = 5 → 8ee72a0 ile 672 satır fark 0.
+- ×1,25 + DS3235 (7 mm, yeni kütleler): dış kol L3 1,86 → 2,61, L4 0,77 → 1,07 (8 mm hesap 2,99 / 1,23); horn cıvatası ezilme L3 6,30 → 8,82.
+  S1 statik 10,72 → 10,78 kg·cm (pay 2,84 → 2,82, ivmeli 1,66 → 1,65, elde 111 → 109 g). L4'te en zayıf hâlâ dış kol (1,07), sonra kol çatalı ön kolu 1,42.
+  Ayrıntı: ../CATAL-KONTROL-NOTLAR.md.
+
+## Dirsek çatalı dış kolu 8 mm (karar Duffy 25 Ekim; kontrol ajanı 24 Ekim gece)
+- kol_analiz.py: T_DIS_HESAP {5, 7, 8} (8 varsayılanken 7 düşüyordu), 7 etiketi "onceki (7 mm)"; `horn_sikma(t)`: M3x12 + 2× DIN 125-A pul etkisi
+  (baş altı oturma 14,7 → 29,4 mm², izinli sıkma torku ~0,25 → ~0,5 N·m, Al horn dişi sıyırma SF 1,69 izinli ön yükte; tahmini).
+- ×1,25 + DS3235 dış kol SF L3 1,86 / 2,61 / 2,99, L4 0,76 / 1,07 / 1,22 (5 / 7 / 8, güncel kütleyle). S1 statik 10,85 kg·cm (pay 2,80, ivmeli 1,64, elde 108 g).
+  Ayrıntı: ../CATAL-KONTROL-NOTLAR.md.

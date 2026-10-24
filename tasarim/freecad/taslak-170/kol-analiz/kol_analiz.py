@@ -258,8 +258,52 @@ ONKOL_ALT = kesit(lambda X, Z: ((X >= 163.6) & (X <= 166.6) & (np.abs(Z) <= 14))
 ONKOL_UST = dict(A=324.1, Wx=1465.1, Wz=1072.8, kaynak="CAD dilimi s 30 (taslak-170.FCStd), kontrol ajani")
 assert abs(ONKOL_ALT["A"] - 339.3) < 0.5 and abs(ONKOL_ALT["Wx"] - 1199.2) < 5 and abs(ONKOL_ALT["Wz"] - 6287.6) < 15
 S_ONKOL_UST, S_ONKOL_ALT = 30.0, 42.0          # dirsek ekseninden: pencere kesiti; alt U'nun basi (ara duvar alti, en buyuk moment)
-PLAKA_5x32 = dict(W_duzlem=5.0 * 32.0 ** 2 / 6.0, A=5.0 * 32.0)          # kol catali on kolu / dirsek catali dis kolu
-PLAKA_11x32 = dict(W_duzlem=11.0 * 32.0 ** 2 / 6.0, A=11.0 * 32.0)      # dirsek catali ic kolu
+def plaka(t, b=32.0):
+    """b genislikli, t kalinlikli plaka: duzlem ici egilme W = t b^2 / 6, alan t b."""
+    return dict(W_duzlem=t * b ** 2 / 6.0, A=t * b, t=t)
+
+
+PLAKA_5x32 = plaka(5.0)                         # kol catali on kolu (S2 horn plakasi; degismedi)
+PLAKA_11x32 = plaka(11.0)                       # dirsek catali ic kolu
+# Dirsek catali DIS kolu (horn tarafi) kalinligi: taslak_ayar.CATAL_DIS_KOL (ortam TASLAK_CATAL_DIS_KOL; tasarim ajani 24 Ekim 2026:
+# 5 -> 7 mm, disa +X, ic yuz horn'da). Kontrol ajani (24 Ekim 2026): kesit (32 mm genislik) ve horn civata ezilme boyu t'ye baglandi;
+# kollar arasi cift kuvvet kolu ic kol merkezi (x 161,5) -> dis kol merkezi (219,9 + t/2): 5 mm'de onceki 61 mm, her mm icin +0,5.
+# T_DIS_HESAP: 5 / 7 / 8 mm (5 = git 8ee72a0 geometrisi, 7 = 24 Ekim taslagi, 8 = karar 25 Ekim; taslak disindakiler ayni modelle hesap).
+# t = 5 onceki kosuyu birebir verir. Kontrol ajani (24 Ekim gece, 8 mm): horn civatasi M3x12 + 2x DIN 125-A pul -> sikma / bas alti basinci
+# (horn_sikma): pul ezilme boyunu (PETG'de t) ve ucun horn'daki 3,0 mm kavramasini degistirmez; bas alti basincini dusurur.
+T_DIS = TA.CATAL_DIS_KOL
+T_DIS_HESAP = sorted(set([TA.CATAL_DIS_KOL_ESKI, 7.0, TA.CATAL_DIS_KOL, 8.0]))
+
+
+def catal_kol_arasi(t):
+    return 0.061 + (t - 5.0) / 2000.0           # m
+
+
+# Horn civatasi sikmasi (tahmini model; kontrol ajani 24 Ekim gece): DIN 912 M3 bas Ø5,5, delik Ø3,4 (arayuz CLEAR), DIN 125-A M3 3,2 x 7 x 0,5
+# (arayuz WASH125). Bas (ya da pul) alti basinci sikma aninda PETG kisa sureli izniyle sinirlanir (xy x dolu x k_T servo yani; surunme 1,0):
+# izinli on yuk = p_izin x oturma alani, izinli tork = F K d (K 0,2). Surekli yukte on yuk PETG surunmesiyle gevser (pullu da, pulsuz da);
+# baglanti torku kayma olursa delik ezilmesiyle tasinir (yukaridaki ezilme satiri, boy t; pul bunu degistirmez). Pul celik, basinci dis capina
+# yayar (iki ince pul, tam yayilma varsayimi: tahmini, ust sinir). Dis siyirma: Al horn icinde 3,0 mm kavrama (uc her kalinlikta ayni yerde),
+# A = pi d L 0,6, tau = 0,6 x 276 x 0,5 MPa (6061-T6 tahmini; horn alasimi bilinmiyor, P_SPL ile tutarli).
+M3_BAS_D, M3_DELIK, PUL_DO = 5.5, 3.4, 7.0
+SIKMA_K = 0.2
+SIKMA_REF_T = 0.5                                # N*m: karsilastirma torku (M3 sik gecme, tahmini)
+
+
+def horn_sikma(t):
+    L, n, pt = TA.horn_civatasi_secim(t)
+    assert abs((L - t - pt) - 3.0) < 1e-9                              # horn'daki kavrama her kalinlikta 3,0 mm (uc eski yerde, CAD x 216,9)
+    A_bas = math.pi / 4 * (M3_BAS_D ** 2 - M3_DELIK ** 2)
+    A = math.pi / 4 * (PUL_DO ** 2 - M3_DELIK ** 2) if n else A_bas
+    p_izin = izin("PETG", "xy", "L2", "servo_yani")                   # kisa sureli (sikma ani)
+    F_izin = p_izin * A
+    F_ref = SIKMA_REF_T / (SIKMA_K * 0.003)
+    F_sy = math.pi * 3.0 * 3.0 * 0.6 * (0.6 * 276.0 * 0.5)
+    return dict(civata="M3x%g" % L, pul_n=n, pul_mm=pt, sikisan_mm=round(t + pt, 2), oturma_alani_mm2=round(A, 1), bas_alani_mm2=round(A_bas, 1),
+                p_izin_MPa=round(p_izin, 1), izinli_on_yuk_N=round(F_izin, 0), izinli_tork_Nm=round(F_izin * SIKMA_K * 0.003, 2),
+                ref_tork_Nm=SIKMA_REF_T, ref_on_yuk_N=round(F_ref, 0), ref_basinc_MPa=round(F_ref / A, 1),
+                dis_siyirma_N=round(F_sy, 0), dis_sf_izinli=round(F_sy / F_izin, 2), horn_kavrama_mm=3.0,
+                not_="tahmini; pul ezilme boyunu (PETG'de t) ve ucun yerini degistirmez; bas alti basinci yariya iner -> izinli sikma torku ~2 kat")
 
 
 # ============================================================================== 7) 1-B kol kutle modeli (s: S1 ekseninden kol boyunca asagi, mm)
@@ -315,7 +359,9 @@ def darbe(I_kgm2, L_mm, Ts_kgcm, omega=OMEGA_TEPE):
 
 
 # ============================================================================== 9) yapisal kontrol
-def yapisal(v, iz, sv_omuz, V_eff):
+def yapisal(v, iz, sv_omuz, V_eff, t_dis=None):
+    t_dis = T_DIS if t_dis is None else float(t_dis)
+    PL_D = plaka(t_dis)                                               # dirsek catali dis kolu kesiti
     L = v["L"]
     dt, de = v["dt"], v["de"]
     pts = kutle_noktalari(v)
@@ -378,13 +424,13 @@ def yapisal(v, iz, sv_omuz, V_eff):
                 M = max(M1, M2)
             ekle("Üst kol tüpü, %s (Ø56/Ø51,3, PETG)" % ad, "PETG", "Z", dur, "M %.2f N·m" % M, sg * K, izin("PETG", "z", dur),
                  not_="Kt %.1f (tahmini); baskı +Y: eğilme gerilmesi katmanlar arası" % K)
-        # --- dirsek catali dis kolu (5 x 32, PETG, baski -Y: kol boyu katmanlar arasi). Dirsek torku + S2 duzlemi cift kuvveti
-        s_kok = 178.0 + dt
+        # --- dirsek catali dis kolu (t_dis x 32, PETG, baski -Y: kol boyu katmanlar arasi). Dirsek torku + S2 duzlemi cift kuvveti
         T_d = {"L1": iz["Dirsek"]["statik_kgcm"] * KG, "L2": (iz["Dirsek"]["statik_kgcm"] + iz["Dirsek"]["ivme_kgcm"]) * KG,
                "L3": max(Tmg * KG, F_st * (L - s_e) / 1000.0), "L4": D1["F_N"] * (L - s_e) / 1000.0}[dur]
         Mz_e = M_kesit(s_e, dur, 2)
-        sig = T_d * 1e3 / PLAKA_5x32["W_duzlem"] + Mz_e / 0.061 / PLAKA_5x32["A"]
-        ekle("Dirsek çatalı dış kolu (horn plakası 5 × 32, PETG)", "PETG", "Z", dur, "T_dirsek %.2f + M_z %.2f N·m" % (T_d, Mz_e),
+        sig = T_d * 1e3 / PL_D["W_duzlem"] + Mz_e / catal_kol_arasi(t_dis) / PL_D["A"]
+        ekle("Dirsek çatalı dış kolu (horn plakası %s × 32, PETG)" % ("%g" % t_dis).replace(".", ","), "PETG", "Z", dur,
+             "T_dirsek %.2f + M_z %.2f N·m" % (T_d, Mz_e),
              sig * 2.0, izin("PETG", "z", dur, "servo_yani"), sicak="servo_yani",
              not_="Kt 2,0 (horn delikleri); baskı −Y: kol boyu katmanlar arası. L3'te dirsek torku = max(MG996R stall, omuz stall'ının geri sürmesi)")
         # --- on kol U kesiti (PETG, baski -Z: katman duzleminde)
@@ -437,7 +483,8 @@ def yapisal(v, iz, sv_omuz, V_eff):
               izin("PETG-CF", "xy", dur, "servo_yani"), "MPa", "S2 torku + S1 düzlemi çift kuvveti")
         Mz_e = M_kesit(s_e, dur, 2)
         Fb = math.hypot(T_D[dur] / (4 * 0.0085), Mz_e / 0.054 / 4)
-        bekle("Dirsek çatalı ← dirsek horn 4× M3 (PETG ezilme, t 5)", dur, "F %.0f N/cıvata" % Fb, Fb / (3.0 * 5.0),
+        bekle("Dirsek çatalı ← dirsek horn 4× M3 (PETG ezilme, t %s)" % ("%g" % t_dis).replace(".", ","), dur, "F %.0f N/cıvata" % Fb,
+              Fb / (3.0 * t_dis),
               izin("PETG", "xy", dur, "servo_yani"), "MPa", "delik ekseni X: ezilme katman düzleminde değil -> XY yerine Z alınmadı (yanak yükü)")
         # servo kulak M4 (servo govde reaksiyonu): F = T/84 mm + mil radyal / 4
         # S1 mili radyal (ust sinir: 6808 moment tasimazsa): M_dik = S2 torku + agirlik x (185 - 156,5) mm
@@ -533,6 +580,25 @@ def onceki_ozet():
             return None
 
 
+CATAL5_GIT = "8ee72a0"          # kontrol ajani kosusu (24 Ekim 2026 ~02:25): x1,25 + DS3235 taslak, dirsek catali dis kolu 5 mm
+
+
+def catal5_ozet():
+    """Dis kol 5 mm iken (catal degisikliginden once) ayni modelin sonucu: dis kol / horn civatasi satirlari ve kutleler."""
+    yol = "tasarim/freecad/taslak-170/kol-analiz/kol-analiz.json"
+    try:
+        r = subprocess.run(["git", "-C", HERE, "show", "%s:%s" % (CATAL5_GIT, yol)], capture_output=True, check=True)
+        D = json.loads(r.stdout.decode("utf-8"))
+    except Exception as e:
+        try:
+            return json.load(open(os.path.join(HERE, "kol-analiz.json"), encoding="utf-8"))["catal5"]
+        except Exception:
+            print("catal 5 mm sonucu okunamadi:", e)
+            return None
+    o = ozet(D, "git %s: kontrol ajani kosusu, dirsek catali dis kolu 5 mm (catal degisikliginden once)" % CATAL5_GIT)
+    return o
+
+
 # ============================================================================== 11) ana
 def main():
     out = dict(tarih="2026-10-24", servo=SERVO, hat=HAT, malzeme=MALZ, k_T=K_T, k_surunme=K_SURUNME, esik=ESIK,
@@ -543,7 +609,13 @@ def main():
                              kol_boy=TA.KOL_BOY_YENI, omuz_servo=TA.OMUZ_SERVO["ad"], s_dirsek=S_E, onkol_kesit=dict(
                                  ust=dict(s=S_ONKOL_UST, **ONKOL_UST), ust_ideal_onceki={k: ONKOL_UST_IDEAL[k] for k in ("A", "Wx", "Wz")},
                                  alt=dict(s=S_ONKOL_ALT, **{k: ONKOL_ALT[k] for k in ("A", "Wx", "Wz")}), alt_onceki_s=60.0),
-                             birim_kutle=dict(tup=MU_T, yaka=MU_E, on_kol=MU_O)),
+                             birim_kutle=dict(tup=MU_T, yaka=MU_E, on_kol=MU_O),
+                             catal_dis_kol=dict(t=T_DIS, eski=TA.CATAL_DIS_KOL_ESKI, hesap=T_DIS_HESAP, genislik=32.0,
+                                                kol_arasi_mm=round(catal_kol_arasi(T_DIS) * 1000, 2),
+                                                civata=dict(boy=TA.HORN_CIVATA_L, pul_n=TA.HORN_PUL_N, pul_mm=TA.HORN_PUL_T),
+                                                sikma={"%g" % t_: horn_sikma(t_) for t_ in T_DIS_HESAP},
+                                                not_="dis kol kesiti t x 32 (duzlem ici egilme t*32^2/6, alan 32 t), horn civata ezilme boyu t; "
+                                                     "5 / 7 / 8 mm: 5 = git 8ee72a0, 7 = 24 Ekim taslagi, 8 = karar (25 Ekim); taslak disindakiler ayni modelle")),
                varyant=[])
     # dogrulama: hesap.json ile ayni mi
     hj = json.load(open(os.path.join(TS, "analiz", "hesap.json"), encoding="utf-8"))
@@ -621,7 +693,20 @@ def main():
                        xl_yogun=("yeter" if yogun <= HAT["xl_surekli"] else ("sinirda" if yogun <= HAT["xl_tepe"] else "yetmez")),
                        xl_tepe=("yeter" if tepe <= HAT["xl_tepe"] else "akim sinirina carpar"))
             ys = yapisal(v, iz, sv, V_eff)
-            V["servo"][sv] = dict(eklem=sv_t, hat=hat, yapisal=ys, secenek_64V_20AWG=secenek_64, dirsek_geri_surme_kati=round(geri_surme, 2))
+            # dirsek catali dis kolu kalinlik duyarliligi (5 / taslak / 8 mm; 8 yalniz hesap): dis kol satirlari + horn civatasi ezilmesi
+            cdk = {}
+            for t_ in T_DIS_HESAP:
+                ys_t = ys if abs(t_ - T_DIS) < 1e-9 else yapisal(v, iz, sv, V_eff, t_dis=t_)
+                cdk["%g" % t_] = dict(
+                    dis_kol={r["durum"]: dict(sf=r["sf"], sinif=r["sinif"], gerilme=r["gerilme"], izin=r["izin"], yuk=r["yuk"])
+                             for r in ys_t["satir"] if r["eleman"].startswith("Dirsek çatalı dış kolu")},
+                    horn_civata={r["durum"]: dict(sf=r["sf"], sinif=r["sinif"], deger=r["deger"], kapasite=r["kapasite"])
+                                 for r in ys_t["baglanti"] if r["eleman"].startswith("Dirsek çatalı ← dirsek horn")},
+                    kol_arasi_mm=round(catal_kol_arasi(t_) * 1000, 2), sikma=horn_sikma(t_),
+                    geometri=("taslak" if abs(t_ - T_DIS) < 1e-9 else ("onceki (5 mm)" if abs(t_ - 5.0) < 1e-9 else
+                                                                      ("onceki (7 mm)" if abs(t_ - 7.0) < 1e-9 else "yalniz hesap"))))
+            V["servo"][sv] = dict(eklem=sv_t, hat=hat, yapisal=ys, secenek_64V_20AWG=secenek_64, dirsek_geri_surme_kati=round(geri_surme, 2),
+                                  catal_dis_kol=cdk)
             print("x%.2f %-9s S1 st %.2f/%.2f=%.2f iv %.2f | S2 %.2f | yuk2x %s g | hat yogun %.2f tepe %.2f V %.2f | darbe S1 %.0f kgcm (x%.1f)" % (
                 oran, sv, sv_t[0]["statik_kgcm"], sv_t[0]["stall_eff"], sv_t[0]["pay_statik"], sv_t[0]["pay_ivmeli"], sv_t[1]["pay_statik"],
                 sv_t[0]["yuk_2x_g"], yogun, tepe, V_eff, ys["darbe"]["S1"]["M_omuz_kgcm"], ys["darbe"]["S1"]["stall_kati"]))
@@ -638,8 +723,9 @@ def main():
             out["dogrulama"] += "; omuz stall (servo geriliminde) taslak_hesap ile ayni (%s %.2f kg*cm @ %.2f V)" % (
                 h_["servo"], h_["stall_kgcm"], h_.get("servo_gerilimi_V", 6.0))
         out["varyant"].append(V)
-    out["ozet"] = ozet(out, "bu kosu: x1,25 taslak geometrisi, ek on kolda (kontrol ajani 24 Ekim 2026)")
+    out["ozet"] = ozet(out, "bu kosu: x1,25 taslak geometrisi, ek on kolda, dirsek catali dis kolu %g mm (kontrol ajani 24 Ekim 2026)" % T_DIS)
     out["onceki"] = onceki_ozet()
+    out["catal5"] = catal5_ozet()
     # ---------------- maliyet
     n = 5
     d_ind = n * (SERVO["DS3235"]["tl"] - SERVO["DS3218MG"]["tl"])

@@ -209,12 +209,102 @@ def onkol_uzat(s0, f):
     return yerel, dict(kesit_alani_mm2=round(sum(fc.Area for fc in fs), 1), kesit_sayisi=len(fs), kati=len(yerel.Solids))
 
 
+# --- dirsek catali dis kolu (horn tarafi) kalinligi: TA.CATAL_DIS_KOL (5 = mevcut). Ic yuzu horn ust yuzune (DP.X_HORN1) oturur ->
+#     kalinlastirma disa (+X): dis kol + kopru, ayni YZ kesitiyle d mm; horn merkez vidasi erisimi (O9) ve 4 horn civata deligi delinir.
+CATAL_EK = TA.CATAL_DIS_KOL - TA.CATAL_DIS_KOL_ESKI
+X_DIS1 = DP.DIS_KOL[1] + CATAL_EK                # yeni dis yuz (omuz yereli; eski 224,9)
+CATAL_ESKI = {}                                  # 5 mm catal + M3x8 horn civatalari (global, taraf -> ad -> sekiller): karsilastirma gorseli
+CATAL_INFO = {}
+# Karsilastirma icin ara kalinlik: 8 mm kararinda 7 mm (24 Ekim) catal + M3x10 de kurulur (yalniz gorsel / kisa kontrol; parca listesine girmez).
+CATAL_ARA_T = tuple(t for t in (7.0,) if TA.CATAL_DIS_KOL_ESKI < t < TA.CATAL_DIS_KOL)
+CATAL_ARA = {}                                   # t -> taraf -> {"Dirsek catali": [..], "civata": [..], "pul": [..]} (global)
+
+
+def catal_kalinlastir(s0, t=None, destek=None):
+    """Dis kolu t mm'ye (disa, +X) kalinlastirir; destek: kopru ustundeki 45 der. destegi yeni dis yuze kadar uzat (TA.CATAL_DESTEK_DIS)."""
+    t = TA.CATAL_DIS_KOL if t is None else t
+    destek = TA.CATAL_DESTEK_DIS if destek is None else destek
+    x0, x1 = DP.DIS_KOL[1], DP.DIS_KOL[1] + (t - TA.CATAL_DIS_KOL_ESKI)
+    ek = box(x0, x1, DP.YE, DP.KOPRU_Y[0], DP.ZE - 16.0, DP.ZE + 16.0)                         # dis kol (dirsek_parcalar ile ayni kesit)
+    ek = ek.fuse(cyl(16.0, (x0, DP.YE, DP.ZE), (x1, DP.YE, DP.ZE)))                             # kol ucu (eksen etrafinda R16)
+    ek = ek.fuse(box(x0, x1, DP.KOPRU_Y[0], DP.TUC, DP.TZ - 16.0, DP.TZ + 16.0))               # kopru
+    if destek:
+        # 45 der. destek (dirsek_parcalar: (213; -128) -> (224,9; -139,9)) ayni egimle disa kaydirilir: (213; -128 + d) -> (x1; -139,9).
+        # Eski destegin tamamini kapsar; yalniz kopru ustu (y > -140), z TZ +-16 (delik, ic yuz, horn oturmasi etkilenmez)
+        # Tup yuvasi (r R_BIL_IC, dirsek_parcalar'da destekten SONRA oyulur) yeniden oyulur: x 213 yuzu yuvanin 0,2 mm icine girer, tup gecmesi bozulmasin
+        prz = DP.prizma([(213.0, -128.0 + (x1 - x0)), (x1, -139.9), (x1, DP.TUC), (213.0, DP.TUC)], "z", DP.TZ - 16.0, DP.TZ + 16.0)
+        ek = ek.fuse(prz.cut(cyl(DP.R_BIL_IC, (DP.TX, DP.TUC - 0.01, DP.TZ), (DP.TX, -114.0, DP.TZ))))
+    ek = ek.cut(cyl(4.5, (x0 - 0.01, DP.YE, DP.ZE), (x1 + 0.01, DP.YE, DP.ZE)))                # horn merkez vidasi erisimi O9
+    for g in DP.HORN_E:
+        ek = ek.cut(cyl(CLEAR[3] / 2, (x0 - 0.01, g.y, g.z), (x1 + 0.01, g.y, g.z)))           # horn civata delikleri (konum ayni)
+    return s0.fuse(ek).removeSplitter()
+
+
+def horn_civatasi(g, t=None):
+    """Horn civatasi (+ pul yigini) yerel sekilleri: bas dis yuzde (pul varsa pul ustunde), uc eski yerde (x 216,9: horn'da 3 mm dis).
+    Doner (civata, pul ya da None, boy, pul adedi)."""
+    t = TA.CATAL_DIS_KOL if t is None else t
+    L, n, pt = TA.horn_civatasi_secim(t)
+    xd = DP.DIS_KOL[1] + (t - TA.CATAL_DIS_KOL_ESKI)
+    civ = screw912(3, L, (xd + pt, g.y, g.z), (-1, 0, 0))
+    pul = None
+    if n:
+        pul = washer(3, (xd, g.y, g.z), (1, 0, 0))
+        for i in range(1, n):
+            pul = pul.fuse(washer(3, (xd + i * TA.PUL_M3_T, g.y, g.z), (1, 0, 0)))
+        pul = pul.removeSplitter()
+    assert abs((xd + pt - L) - (DP.DIS_KOL[1] - 8.0)) < 1e-9          # uc eski yerde
+    return civ, pul, L, n
+
+
 for side in ("sag", "sol"):
     ad = "dirsek_" + side
+    hc = 0
     for p in MOD[ad]["parcalar"]:
         if p["haric"]:
             continue
-        if p["ad"] == "El":
+        if p["ad"] in ("Dirsek catali", "Catal-horn civatasi M3x8"):
+            CATAL_ESKI.setdefault(side, {}).setdefault(p["ad"], []).append(tasi(MD.global_sekil(p["shape"], ad), V_DIR))
+            for ta in CATAL_ARA_T:                                            # ara kalinlik (gorsel / kisa kontrol)
+                ca = CATAL_ARA.setdefault(ta, {}).setdefault(side, {"Dirsek catali": [], "civata": [], "pul": []})
+                if p["ad"] == "Dirsek catali":
+                    ca["Dirsek catali"].append(tasi(MD.global_sekil(catal_kalinlastir(p["shape"], ta, False), ad), V_DIR))
+                else:
+                    c0 = p["shape"].BoundBox.Center
+                    gh = min(DP.HORN_E, key=lambda q: (q.y - c0.y) ** 2 + (q.z - c0.z) ** 2)
+                    cv, pl, _, _ = horn_civatasi(gh, ta)
+                    ca["civata"].append(tasi(MD.global_sekil(cv, ad), V_DIR))
+                    if pl is not None:
+                        ca["pul"].append(tasi(MD.global_sekil(pl, ad), V_DIR))
+        if p["ad"] == "Dirsek catali" and CATAL_EK > 0:
+            yerel = catal_kalinlastir(p["shape"])
+            g = tasi(MD.global_sekil(yerel, ad), V_DIR)
+            m = g.Volume / 1000.0 * RHO_PETG08
+            CATAL_INFO[side] = dict(eski_g=round(p["kutle"], 2), yeni_g=round(m, 2), kati=len(g.Solids), gecerli=g.isValid(),
+                                    dis_kol_x=[round(DP.DIS_KOL[0], 2), round(X_DIS1, 2)])
+            mevcut(ad, p, shape=g, kutle=m, not_="dis kol (horn tarafi) %.0f -> %.0f mm, disa (+X) kalinlastirildi; kopru ayni duzleme uzadi%s "
+                                                 "(taslak, kol analizi: dis kol L3 SF 1,86 / L4 0,77). Delikler, 625ZZ, pim, eksen ayni" % (
+                                                     TA.CATAL_DIS_KOL_ESKI, TA.CATAL_DIS_KOL,
+                                                     ", 45 der. kopru destegi dis yuze kadar" if TA.CATAL_DESTEK_DIS else ""))
+            log("dirsek catali %s: %.2f -> %.2f g, kati %d, gecerli %s" % (side, p["kutle"], m, len(g.Solids), g.isValid()))
+        elif p["ad"] == "Catal-horn civatasi M3x8" and CATAL_EK > 0:
+            c0 = p["shape"].BoundBox.Center                                   # yerel: hangi horn deligi (y, z en yakin)
+            gh = min(DP.HORN_E, key=lambda q: (q.y - c0.y) ** 2 + (q.z - c0.z) ** 2)
+            assert (gh.y - c0.y) ** 2 + (gh.z - c0.z) ** 2 < 0.01
+            yerel, pul, L_, n_ = horn_civatasi(gh)
+            hc += 1
+            g = tasi(MD.global_sekil(yerel, ad), V_DIR)
+            m = g.Volume / 1000.0 * 7.85
+            mevcut(ad, p, shape=g, kutle=m, ad="Catal-horn civatasi M3x%.0f" % L_, kod="M3x%.0f DIN 912" % L_,
+                   not_=("dis kol %.0f mm: M3x8 -> M3x%.0f (bas %.0f mm disarida, uc ayni yerde)" % (TA.CATAL_DIS_KOL, L_, CATAL_EK)) if not n_ else
+                   ("dis kol %.0f mm: M3x8 -> M3x%.0f + %d x DIN 125-A M3 pul (bas %.0f mm disarida, uc ayni yerde)" % (TA.CATAL_DIS_KOL, L_, n_, L_ - 8.0)))
+            if pul is not None:
+                gp_ = tasi(MD.global_sekil(pul, ad), V_DIR)
+                ekle("Catal-horn pulu M3 (%dx DIN 125-A)" % n_, ad, p["grup"], gp_, gp_.Volume / 1000.0 * 7.85, "Baglanti", "Celik",
+                     "%d x DIN 125-A M3 (3,2 x 7 x 0,5)" % n_, "celik", durum="yeni",
+                     not_="M3x%.0f bas alti pul yigini %.1f mm: M3x11 standart degil; M3x12 ucu boylece eski yerde (horn'da 3,0 mm, kasaya 3,3)" % (
+                         L_, n_ * TA.PUL_M3_T), kaynak=ad)
+        elif p["ad"] == "El":
             s0 = p["shape"]
             ust = s0.common(box(-1e3, 1e3, Y_KES, 1e3, -1e3, 1e3))
             alt = tasi(s0.common(box(-1e3, 1e3, -1e3, Y_KES, -1e3, 1e3)), V(0, -TA.EL_UZAMA, 0))
@@ -237,6 +327,7 @@ for side in ("sag", "sol"):
             mevcut(ad, p, v=V_EL)
         else:
             mevcut(ad, p, v=V_DIR)
+    assert CATAL_EK == 0 or hc == 4, (side, hc)
 DEGISEN.append(("Dirsek + el (sag + sol)", "tum dirsek", "%.0f mm yukari (omuzla birlikte %.0f, tup uzadi -%.0f)" % (
     DY - TA.UST_KOL_UZAMA, DY, TA.UST_KOL_UZAMA)))
 if TA.ON_KOL_UZAMA > 0:
@@ -246,6 +337,24 @@ if TA.ON_KOL_UZAMA > 0:
     DEGISEN.append(("Dirsek + el (sag + sol)", "Bilek servosu (+ 4 M4 + somun) + bilek flansi + el", "%.1f mm daha asagi (on kolla); dirsek servosu ve dirsek ekseni yerinde" % TA.ON_KOL_UZAMA))
 DEGISEN.append(("Dirsek + el (sag + sol)", "El", "yaka %.0f mm uzadi (O34 / O22 bos); el ucu omuz ekseninden %.1f -> %.1f mm (x%.3f; tup +%.0f, on kol +%.1f, yaka +%.0f)" % (
     TA.EL_UZAMA, TA.KOL_BOY_ESKI, TA.KOL_BOY_YENI, TA.KOL_ORAN, TA.UST_KOL_UZAMA, TA.ON_KOL_UZAMA, TA.EL_UZAMA)))
+if CATAL_EK > 0:
+    DEGISEN.append(("Dirsek + el (sag + sol)", "Dirsek catali (dis kol)", "dis kol (horn tarafi) %.0f -> %.0f mm, disa (+X; x %.1f -> %.1f): kol analizi dis kol "
+                    "L3 SF 1,86 / L4 0,77 (kontrol ajani, 24 Ekim 2026); kopru ayni duzleme uzadi; ic yuz, horn, 625ZZ, pim, delikler ve eksen ayni; "
+                    "%.1f -> %.1f g (kol basina). Onay: Duffy (gorunum + carpisma sartiyla)" % (
+                        TA.CATAL_DIS_KOL_ESKI, TA.CATAL_DIS_KOL, DP.DIS_KOL[1], X_DIS1, CATAL_INFO["sag"]["eski_g"], CATAL_INFO["sag"]["yeni_g"])))
+    if TA.HORN_PUL_N:
+        DEGISEN.append(("Dirsek + el (sag + sol)", "Catal-horn civatasi (4 x 2)", "M3x8 -> M3x%.0f DIN 912 + %d x DIN 125-A M3 pul (%.1f mm; M3x11 standart degil); "
+                        "bas %.0f mm disarida, uc ve horn'daki dis boyu ayni" % (TA.HORN_CIVATA_L, TA.HORN_PUL_N, TA.HORN_PUL_T, TA.HORN_CIVATA_L - 8.0)))
+    else:
+        DEGISEN.append(("Dirsek + el (sag + sol)", "Catal-horn civatasi (4 x 2)", "M3x8 -> M3x%.0f DIN 912 (bas %.0f mm disarida, uc ve horn'daki dis boyu ayni)" % (
+            8.0 + CATAL_EK, CATAL_EK)))
+    if TA.CATAL_DESTEK_DIS:
+        DEGISEN.append(("Dirsek + el (sag + sol)", "Dirsek catali (45 der. kopru destegi)", "ayni 45 der. egimle dis yuze (x %.1f) kadar uzatildi: ters baskida "
+                        "kopru altinda %.0f mm cikinti seridi kalmaz (yalniz gorunum / baski; delik, ic yuz, horn oturmasi ayni)" % (X_DIS1, CATAL_EK)))
+    bag("Dirsek catali dis kolu -> dirsek horn", ("4x M3x%.0f DIN 912 (eski M3x8; dis kol %.0f mm)" % (8.0 + CATAL_EK, TA.CATAL_DIS_KOL)) if not TA.HORN_PUL_N else
+        ("4x M3x%.0f DIN 912 + %d x DIN 125-A M3 pul (eski M3x8; dis kol %.0f mm)" % (TA.HORN_CIVATA_L, TA.HORN_PUL_N, TA.CATAL_DIS_KOL)), 4,
+        ("Dirsek catali", "Dirsek horn 25T aluminyum disk"), "delik konumlari ayni; civata ucu horn'da 3 mm (eskisi gibi), servo kasasina inmez",
+        durum="degisti")
 bag("Ust kol tupu -> dirsek catali", "pim + yarikli sikma bilezigi, 2x M3 (degismedi; tupun yeni ucunda)", 2,
     ("Ust kol tupu", "Dirsek catali"), durum="tasindi")
 if TA.ON_KOL_UZAMA > 0:

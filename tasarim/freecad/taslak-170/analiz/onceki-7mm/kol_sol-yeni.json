@@ -1,0 +1,546 @@
+{
+ "robot": "yeni",
+ "taraf": "sol",
+ "aralik": {
+  "one_arka": [
+   -45.0,
+   135.0
+  ],
+  "yana": [
+   5.0,
+   120.0
+  ],
+  "dirsek": [
+   0.0,
+   105.0
+  ],
+  "bilek": [
+   -90.0,
+   90.0
+  ]
+ },
+ "kaba": {
+  "one_arka": [
+   -45,
+   -30,
+   -15,
+   0,
+   15,
+   30,
+   45,
+   60,
+   75,
+   90,
+   105,
+   120,
+   135
+  ],
+  "yana": [
+   5,
+   15,
+   30,
+   45,
+   60,
+   75,
+   90,
+   105,
+   120
+  ],
+  "dirsek": [
+   0,
+   30,
+   60,
+   90,
+   105
+  ],
+  "bilek": [
+   -90,
+   0,
+   90
+  ],
+  "tam_poz": 1755
+ },
+ "alt_poz": {
+  "kaba": 2587,
+  "ince": 795
+ },
+ "tam_olcum": 43043,
+ "cakisan_alt_poz": 0,
+ "cakisma_ciftleri": [],
+ "en_kucuk_bosluk": {
+  "iskelet": {
+   "grup": "Gobek",
+   "poz": [
+    -5.0
+   ],
+   "parca": "S1 horn merkez vidasi M3",
+   "hedef_modul": "iskelet",
+   "hedef": "Omuz traversi",
+   "bosluk_mm": 45.1,
+   "hacim_mm3": 0.0,
+   "aralikta": true
+  },
+  "kabuk": {
+   "grup": "Gobek",
+   "poz": [
+    -20.0
+   ],
+   "parca": "S1 kablo tamburu",
+   "hedef_modul": "kabuk",
+   "hedef": "S1 kaset kapagi sol",
+   "bosluk_mm": 0.5,
+   "hacim_mm3": 0.0,
+   "aralikta": true
+  },
+  "kafa govde": {
+   "grup": "Gobek",
+   "poz": [
+    -15.0
+   ],
+   "parca": "S1 horn merkez vidasi M3",
+   "hedef_modul": "kafa govde",
+   "hedef": "Boyun plakasi",
+   "bosluk_mm": 98.75,
+   "hacim_mm3": 0.0,
+   "aralikta": true
+  },
+  "omuz_sol gobek": {
+   "grup": "Kol",
+   "poz": [
+    -45.0,
+    30.0
+   ],
+   "parca": "S2 horn merkez vidasi M3",
+   "hedef_modul": "omuz_sol gobek",
+   "hedef": "S2 servo cikis mili",
+   "bosluk_mm": 0.0,
+   "hacim_mm3": 0.0,
+   "aralikta": true
+  },
+  "omuz_sol govde": {
+   "grup": "Kol",
+   "poz": [
+    80.0,
+    5.0
+   ],
+   "parca": "Kol catali",
+   "hedef_modul": "omuz_sol govde",
+   "hedef": "Kapak civatasi M3x12",
+   "bosluk_mm": 5.07,
+   "hacim_mm3": 0.0,
+   "aralikta": true
+  }
+ },
+ "en_kucuk_ciftler": {
+  "iskelet": [
+   {
+    "grup": "Gobek",
+    "poz": [
+     -5.0
+    ],
+    "parca": "S1 horn merkez vidasi M3",
+    "hedef_modul": "iskelet",
+    "hedef": "Omuz traversi",
+    "bosluk_mm": 45.1,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   }
+  ],
+  "kabuk": [
+   {
+    "grup": "Gobek",
+    "poz": [
+     -20.0
+    ],
+    "parca": "S1 kablo tamburu",
+    "hedef_modul": "kabuk",
+    "hedef": "S1 kaset kapagi sol",
+    "bosluk_mm": 0.5,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Gobek",
+    "poz": [
+     -20.0
+    ],
+    "parca": "S1 kablo tamburu",
+    "hedef_modul": "kabuk",
+    "hedef": "S1 kaset govdesi sol",
+    "bosluk_mm": 0.5,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Gobek",
+    "poz": [
+     -30.0
+    ],
+    "parca": "S1 kablo tamburu",
+    "hedef_modul": "kabuk",
+    "hedef": "Omuz bandi sol",
+    "bosluk_mm": 0.5,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     90.0,
+     5.0
+    ],
+    "parca": "Ust kol tupu",
+    "hedef_modul": "kabuk",
+    "hedef": "S1 kaset kapagi sol",
+    "bosluk_mm": 1.25,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     20.0,
+     5.0
+    ],
+    "parca": "Ust kol tupu",
+    "hedef_modul": "kabuk",
+    "hedef": "Kaset civatasi M3x8 (sol psi 200)",
+    "bosluk_mm": 1.8,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     45.0,
+     5.0
+    ],
+    "parca": "Ust kol tupu",
+    "hedef_modul": "kabuk",
+    "hedef": "Kaset civatasi M3x8 (sol psi 226)",
+    "bosluk_mm": 1.91,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     105.0,
+     5.0
+    ],
+    "parca": "Kol catali",
+    "hedef_modul": "kabuk",
+    "hedef": "S1 kaset kapagi sol",
+    "bosluk_mm": 2.12,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     15.0,
+     5.0
+    ],
+    "parca": "Ust kol tupu",
+    "hedef_modul": "kabuk",
+    "hedef": "S1 kaset govdesi sol",
+    "bosluk_mm": 2.66,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Gobek",
+    "poz": [
+     -30.0
+    ],
+    "parca": "Omuz gobegi",
+    "hedef_modul": "kabuk",
+    "hedef": "S1 kaset kapagi sol",
+    "bosluk_mm": 3.5,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     20.0,
+     5.0
+    ],
+    "parca": "Kol catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Kaset civatasi M3x8 (sol psi 200)",
+    "bosluk_mm": 4.4,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     45.0,
+     5.0
+    ],
+    "parca": "Kol catali",
+    "hedef_modul": "kabuk",
+    "hedef": "Kaset civatasi M3x8 (sol psi 226)",
+    "bosluk_mm": 4.51,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     20.0,
+     5.0
+    ],
+    "parca": "Kol catali",
+    "hedef_modul": "kabuk",
+    "hedef": "S1 kaset govdesi sol",
+    "bosluk_mm": 4.68,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   }
+  ],
+  "kafa govde": [
+   {
+    "grup": "Gobek",
+    "poz": [
+     -15.0
+    ],
+    "parca": "S1 horn merkez vidasi M3",
+    "hedef_modul": "kafa govde",
+    "hedef": "Boyun plakasi",
+    "bosluk_mm": 98.75,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   }
+  ],
+  "omuz_sol gobek": [
+   {
+    "grup": "Kol",
+    "poz": [
+     -45.0,
+     75.0
+    ],
+    "parca": "S2 horn 25T aluminyum disk",
+    "hedef_modul": "omuz_sol gobek",
+    "hedef": "S2 servo cikis mili",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     -45.0,
+     30.0
+    ],
+    "parca": "S2 horn merkez vidasi M3",
+    "hedef_modul": "omuz_sol gobek",
+    "hedef": "S2 servo cikis mili",
+    "bosluk_mm": 0.0,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     70.0,
+     120.0
+    ],
+    "parca": "Kol catali",
+    "hedef_modul": "omuz_sol gobek",
+    "hedef": "Omuz gobegi",
+    "bosluk_mm": 0.25,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     130.0,
+     25.0
+    ],
+    "parca": "S2 horn merkez vidasi M3",
+    "hedef_modul": "omuz_sol gobek",
+    "hedef": "S2 servo DS3235 (yana acma)",
+    "bosluk_mm": 0.3,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     125.0,
+     110.0
+    ],
+    "parca": "Catal-horn civatasi M3x8",
+    "hedef_modul": "omuz_sol gobek",
+    "hedef": "S2 servo cikis mili",
+    "bosluk_mm": 0.58,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     125.0,
+     5.0
+    ],
+    "parca": "Kol catali",
+    "hedef_modul": "omuz_sol gobek",
+    "hedef": "S1 kablo tamburu",
+    "bosluk_mm": 0.82,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     125.0,
+     35.0
+    ],
+    "parca": "625ZZ rulman (dis bilezik)",
+    "hedef_modul": "omuz_sol gobek",
+    "hedef": "Omuz gobegi",
+    "bosluk_mm": 1.0,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     90.0,
+     5.0
+    ],
+    "parca": "Ust kol tupu",
+    "hedef_modul": "omuz_sol gobek",
+    "hedef": "S1 kablo tamburu",
+    "bosluk_mm": 1.29,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     110.0,
+     35.0
+    ],
+    "parca": "625ZZ rulman (dis bilezik)",
+    "hedef_modul": "omuz_sol gobek",
+    "hedef": "Mafsal pulu M5",
+    "bosluk_mm": 1.4,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     125.0,
+     120.0
+    ],
+    "parca": "Kol catali",
+    "hedef_modul": "omuz_sol gobek",
+    "hedef": "S2 servo cikis mili",
+    "bosluk_mm": 1.6,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     130.0,
+     25.0
+    ],
+    "parca": "S2 horn 25T aluminyum disk",
+    "hedef_modul": "omuz_sol gobek",
+    "hedef": "S2 servo DS3235 (yana acma)",
+    "bosluk_mm": 2.0,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     125.0,
+     115.0
+    ],
+    "parca": "625ZZ rulman (dis bilezik)",
+    "hedef_modul": "omuz_sol gobek",
+    "hedef": "625ZZ rulman (ic bilezik)",
+    "bosluk_mm": 2.3,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   }
+  ],
+  "omuz_sol govde": [
+   {
+    "grup": "Kol",
+    "poz": [
+     80.0,
+     5.0
+    ],
+    "parca": "Kol catali",
+    "hedef_modul": "omuz_sol govde",
+    "hedef": "Kapak civatasi M3x12",
+    "bosluk_mm": 5.07,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     115.0,
+     5.0
+    ],
+    "parca": "Kol catali",
+    "hedef_modul": "omuz_sol govde",
+    "hedef": "Rulman kapagi",
+    "bosluk_mm": 6.29,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     115.0,
+     5.0
+    ],
+    "parca": "Kol catali",
+    "hedef_modul": "omuz_sol govde",
+    "hedef": "6808-2RS rulman (dis bilezik)",
+    "bosluk_mm": 8.35,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     110.0,
+     5.0
+    ],
+    "parca": "Ust kol tupu",
+    "hedef_modul": "omuz_sol govde",
+    "hedef": "Rulman kapagi",
+    "bosluk_mm": 8.95,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   },
+   {
+    "grup": "Kol",
+    "poz": [
+     115.0,
+     5.0
+    ],
+    "parca": "Ust kol tupu",
+    "hedef_modul": "omuz_sol govde",
+    "hedef": "6808-2RS rulman (dis bilezik)",
+    "bosluk_mm": 16.28,
+    "hacim_mm3": 0.0,
+    "aralikta": true
+   }
+  ]
+ },
+ "hareketli": "omuz gobegi (S1) + ust kol (S1+S2: kol catali, tup, S2 servosu) + dirsek catali + on kol + el",
+ "hedefler": "iskelet, kabuk, taban, kafa govdesi (sabit boyun), iki omuzun govdesi, kendi omuzunun gobegi (S1 ile); gobek <-> kendi govdesi omuz ici (haric)",
+ "sure_s": 3749.8
+}

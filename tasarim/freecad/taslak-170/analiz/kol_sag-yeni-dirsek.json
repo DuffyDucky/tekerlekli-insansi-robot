@@ -64,7 +64,7 @@
   "kaba": 2587,
   "ince": 0
  },
- "tam_olcum": 1379,
+ "tam_olcum": 1381,
  "cakisan_alt_poz": 0,
  "cakisma_ciftleri": [],
  "en_kucuk_bosluk": {
@@ -703,5 +703,5 @@
  },
  "hareketli": "omuz gobegi (S1) + ust kol (S1+S2: kol catali, tup, S2 servosu) + dirsek catali + on kol + el",
  "hedefler": "iskelet, kabuk, taban, kafa govdesi (sabit boyun), iki omuzun govdesi, kendi omuzunun gobegi (S1 ile); gobek <-> kendi govdesi omuz ici (haric)",
- "sure_s": 348.3
+ "sure_s": 477.5
 }

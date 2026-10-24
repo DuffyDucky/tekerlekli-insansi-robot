@@ -1,7 +1,7 @@
 {
  "robot": "yeni",
- "parca": 1052,
- "aday_cift": 3285,
+ "parca": 1060,
+ "aday_cift": 3301,
  "esik_mm3": 0.5,
  "cakisma": [
   {
@@ -33,7 +33,7 @@
    "b_modul": "kabuk",
    "hacim_mm3": 7.61,
    "i": 125,
-   "j": 470,
+   "j": 478,
    "eski_125_hacim_mm3": 7.61,
    "kaynak": "mevcut tasarim (125'te de var)"
   },
@@ -66,7 +66,7 @@
    "b_modul": "kabuk",
    "hacim_mm3": 7.61,
    "i": 196,
-   "j": 472,
+   "j": 480,
    "eski_125_hacim_mm3": 7.61,
    "kaynak": "mevcut tasarim (125'te de var)"
   }

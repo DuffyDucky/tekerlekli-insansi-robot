@@ -114,9 +114,15 @@ kart = [
     ("+%s mm" % sayi(TA.DY, 0), "uzama gövdede: 2 sabit kesitli kabuk bandı (%s g) + direk %s mm (sigma 40×40)" % (sayi(uzatma_g, 0), sayi(TA.DIREK_L_YENI, 1))),
 ]
 
+# dirsek catali karsilastirma gorseli: 8 mm kararinda (25 Ekim) 5 / 7 / 8, 7 mm'de 5 / 7
+CATAL_GORSEL = "catal-5-7-8.png" if TA.CATAL_DIS_KOL > 7.0 else "catal-5-7.png"
 gorsel = [("taslak-on.png", "Önden (ev pozu)"), ("taslak-yan.png", "Sağdan"), ("taslak-izometrik.png", "İzometrik"),
           ("taslak-kol.png", "Sağ kol yakın: ×%s, ön kol uzatıldı (dirsek → bilek %s mm), omuz %s" % (
               sayi(o["hedef"], 2), sayi(BB.get("on_kol", 0), 1), SERVO)),
+          (CATAL_GORSEL, ("Dirsek çatalı dış kolu 5 / 7 / 8 mm (sağ kol; çatal kırmızı, horn cıvataları + pul gri, çevre yarı saydam): sütunlar 5 mm M3x8, "
+                          "7 mm M3x10, 8 mm M3x12 + 2 pul; üstte önden, altta izometrik") if CATAL_GORSEL == "catal-5-7-8.png" else
+           ("Dirsek çatalı dış kolu %s → %s mm (sağ kol; çatal kırmızı, horn cıvataları gri, çevre yarı saydam): üstte önce, altta sonra; "
+            "solda önden, sağda izometrik" % (sayi(TA.CATAL_DIS_KOL_ESKI, 0), sayi(TA.CATAL_DIS_KOL, 0)))),
           ("karsilastirma-125-170-on.png", "125 cm (solda, mevcut tasarım) ve 170 cm taslak (sağda), önden, aynı ölçek"),
           ("karsilastirma-125-170-izo.png", "125 cm ve 170 cm, izometrik"), ("taslak-kafa.png", "Yeni kafa: 10,1\" ekran, kamera üstte"),
           ("taslak-kafa-arka.png", "Kafa arkadan: alt boyun açıklığı + arka çentik, havalandırma yarıkları"),
@@ -167,7 +173,7 @@ h.append("<div class='k'>" + "".join("<div class='kpi'><b>%s</b><span>%s</span><
 h.append("<h2>Görünümler</h2><div class='grid'>")
 for ad, cap in gorsel:
     s = img64(ad)
-    cls = " class='wide'" if ad == "karsilastirma-125-170-on.png" else ""
+    cls = " class='wide'" if ad in ("karsilastirma-125-170-on.png", "catal-5-7.png", "catal-5-7-8.png") else ""
     icerik = "<img src='%s' alt='%s'>" % (s, esc(cap)) if s else "<div class='bos'>görsel yok: taslak_gorsel.py çalıştırılmadı</div>"
     h.append("<figure%s>%s<figcaption>%s</figcaption></figure>" % (cls, icerik, esc(cap)))
 h.append("</div>")
@@ -245,8 +251,37 @@ h.append("<li>Omuz servoları <b>%s</b> (eski %s): gövde DS3218 ile aynı kabul
 h.append("<li>Üst kütle: kol kütlesi %s → %s g (her kol); uzun ve ağır kol, %s mm omuz yüksekliğinde devrilme momentini büyütür.</li>" % (
     sayi(o["kol_kutle_g"]["eski"], 0), sayi(o["kol_kutle_g"]["yeni"], 0), sayi(TA.S3_YENI, 0)))
 _b = yer["bosluk"].get("el <-> govde kabugu (ev pozu, sag)")
-h.append("<li>Değişen PETG parçalar: üst kol tüpü, ön kol gövdesi (tek parça kaldı), el; dirsek çatalı, servolar, flanş aynen. Dirsek çatalı / ön kol / el ↔ gövde "
-         "kabuğu ev pozunda %s mm (125 cm ~3,8).</li></ul>" % (sayi(_b["mm"], 1) if _b else "−"))
+_CK = yer.get("catal")
+if _CK and TA.CATAL_DIS_KOL > TA.CATAL_DIS_KOL_ESKI:
+    _ci = _CK["bilgi"]["sag"]
+    _KA = RA._kol_analiz()
+    _cd = None
+    try:
+        _cd = [x for x in _KA["varyant"] if abs(x["oran"] - 1.25) < 1e-9][0]["servo"][SERVO]["catal_dis_kol"]
+    except Exception:
+        pass
+    if _cd:
+        _ts = [(k, _cd[k]) for k in sorted(_cd, key=float)]          # 5 / 7 / 8 (kontrol ajani, 24 Ekim gece)
+        _z = lambda L_: " → ".join(("<b>%s</b>" if abs(float(k) - TA.CATAL_DIS_KOL) < 1e-9 else "%s") % sayi(r["dis_kol"][L_]["sf"], 2) for k, r in _ts)
+        _sf = ("Kol analizi yeniden koşuldu (kontrol ajanı): dış kol SF (%s mm) L3 stall %s, L4 darbe %s (×1,25 + %s; ölçüt ≥ 2 güvenli, "
+               "1,2–2 sınırda). Dayanım ve çarpışma ayrıntısı: <a href='#catal'>Dirsek çatalı kontrolü</a>." % (
+                   " / ".join(k for k, _ in _ts), _z("L3"), _z("L4"), esc(SERVO)))
+    else:
+        _sf = ("Kesit ∝ kalınlık: dış kol gerilmesi ×%s, SF yaklaşık L3 %s / L4 %s (<span class='t'>tahmini</span>; kol analizi yeniden koşulmadı)." % (
+            sayi(TA.CATAL_DIS_KOL_ESKI / TA.CATAL_DIS_KOL, 2), sayi(1.86 * TA.CATAL_DIS_KOL / TA.CATAL_DIS_KOL_ESKI, 2), sayi(0.77 * TA.CATAL_DIS_KOL / TA.CATAL_DIS_KOL_ESKI, 2)))
+    h.append("<li><b>Dirsek çatalı dış kolu %s → %s mm</b> (horn tarafı, gövdeden uzak kol; 5 mm'de kol analizi L3 servo stall SF 1,86, L4 darbe 0,77). "
+             "İç yüzü horn'a oturduğu için kalınlaştırma dışa (+X, dış yüz x %s → %s, omuz yereli); köprü aynı düzleme uzadı%s. Horn cıvataları M3x8 → %s "
+             "(baş %s mm dışarıda, uç horn'da aynı yerde: horn'da 3,0 mm diş, servo kasasına 3,3 mm). Delikler, 625ZZ, pim, eksenler değişmedi. "
+             "Kütle %s → %s g (kol başına, cıvatalar hariç). %s %s</li>" % (
+                 sayi(TA.CATAL_DIS_KOL_ESKI, 0), sayi(TA.CATAL_DIS_KOL, 0), sayi(_CK["dis_yuz_x_yerel"][0], 1), sayi(_CK["dis_yuz_x_yerel"][1], 1),
+                 ", 45° köprü desteği dış yüze kadar uzadı" if TA.CATAL_DESTEK_DIS else "",
+                 ("M3x%s + %d × DIN 125-A M3 pul (%s mm; M3x11 standart değil)" % (sayi(TA.HORN_CIVATA_L, 0), TA.HORN_PUL_N, sayi(TA.HORN_PUL_T, 1)))
+                 if TA.HORN_PUL_N else "M3x%s" % sayi(TA.HORN_CIVATA_L, 0),
+                 sayi(TA.HORN_CIVATA_L - 8.0, 0), sayi(_ci["eski_g"], 1), sayi(_ci["yeni_g"], 1), _sf,
+                 "<b>Karar: Duffy, 25 Ekim 2026 (8 mm).</b>" if TA.CATAL_DIS_KOL == 8.0 else "<span class='uy'>Duffy onayı bekliyor</span> (görünüm + çarpışma şartı)."))
+h.append("<li>Değişen PETG parçalar: üst kol tüpü, ön kol gövdesi (tek parça kaldı), el%s; servolar, flanş aynen. Dirsek çatalı / ön kol / el ↔ gövde "
+         "kabuğu ev pozunda %s mm (125 cm ~3,8).</li></ul>" % (
+             ", dirsek çatalı (dış kol)" if TA.CATAL_DIS_KOL > TA.CATAL_DIS_KOL_ESKI else "; dirsek çatalı", sayi(_b["mm"], 1) if _b else "−"))
 satir = []
 for t in ("sag", "sol"):
     k = KL[t]
@@ -321,6 +356,23 @@ if KT:
                  (": " + "; ".join("%s × %s (%d poz, en çok %s mm³, ör. %s)" % (esc(a), esc(b), len(v), sayi(max(x["hacim_mm3"] for x in v), 1), v[0]["poz"])
                                    for (a, b), v in _ck.items())) if _ck else "",
                  sayi(KT["en_dusuk_el_y"]["y"], 0), KT["en_dusuk_el_y"]["poz"]))
+CK = yer.get("catal")
+if CK and CK["kalinlik_mm"] > CK["eski_mm"]:
+    def _mn(ls, k):
+        v = [r[k] for r in ls if r[k] is not None]
+        return min(v) if v else None
+    _om5 = [r["eski"][0] for r in CK["omuz"] if r["eski"]]
+    _om7 = [r["yeni"][0] for r in CK["omuz"] if r["yeni"]]
+    _om7r = min((r for r in CK["omuz"] if r["yeni"]), key=lambda r: r["yeni"][0], default=None)
+    _yak = CK["ev_pozu_yaklasan"]
+    h.append("<li>Dirsek çatalı %s → %s mm (sağ kol; aynı komşulara eski ve yeni çatal): ev pozunda 15 mm içindeki parçalar %d, yaklaşan %s; "
+             "dirsek 0…105° (5°) ön kol + servolara (eş eksenli mil, rulman, pim hariç) en az %s → %s mm; S1 × S2 kaba ızgarada (%d poz) gövde kabuğu / iskelet / kafa / omuz gövdesi + göbeğe en az %s → %s mm%s.</li>" % (
+                 sayi(CK["eski_mm"], 0), sayi(CK["kalinlik_mm"], 0), len(CK["ev_pozu"]),
+                 ("<b class='ok'>yok</b>" if not _yak else "; ".join("%s %s → %s mm" % (esc(r["parca"]), sayi(r["eski_mm"], 2) if r["eski_mm"] is not None else "&gt; 15",
+                                                                                         sayi(r["yeni_mm"], 2)) for r in _yak)),
+                 sayi(_mn(CK["dirsek"], "eski_mm"), 1), sayi(_mn(CK["dirsek"], "yeni_mm"), 1), len(CK["omuz"]),
+                 sayi(min(_om5), 1) if _om5 else "&gt; 40", sayi(min(_om7), 1) if _om7 else "&gt; 40",
+                 (" (%s, poz S1/S2 %s)" % (esc(_om7r["yeni"][1]), _om7r["poz"])) if _om7r else ""))
 BOS_AD = {"kafa kabugu <-> omuz (ev pozu)": "kafa kabuğu ↔ omuz (ev pozu)", "kafa kabugu <-> govde kabugu ust kapagi": "kafa kabuğu ↔ gövde kabuğu üst kapağı",
           "kafa (Bas) <-> egme catali / tilt servosu / adaptor": "kafa ↔ eğme çatalı / tilt servosu / adaptör (eski kafada da 1,0)",
           "ekran <-> catal / adaptor": "ekran ↔ çatal / adaptör (ev pozu)", "el <-> govde kabugu (ev pozu, sag)": "kol ↔ gövde kabuğu (ev pozu, sağ)"}
@@ -348,6 +400,10 @@ h.append(RA.kol_orani())
 h.append("<h2>Çarpışma taraması (tüm eklem aralıkları)</h2>")
 h.append(yeniden_notu("çarpışma (kol zinciri, iki kol, kafa × kol; uzun ön kol yasak bölgeyi değiştirebilir)"))
 h.append(RA.carpisma())
+if TA.CATAL_DIS_KOL > TA.CATAL_DIS_KOL_ESKI:
+    h.append("<h2 id='catal'>Dirsek çatalı dış kolu %s → %s mm: kontrol (geometri, çarpışma, dayanım)</h2>" % (
+        sayi(TA.CATAL_DIS_KOL_ESKI, 0), sayi(TA.CATAL_DIS_KOL, 0)))
+    h.append(RA.catal())
 
 # ---------------------------------------------------------------------- acik isler, varsayimlar
 acik_ek = [
@@ -363,6 +419,17 @@ acik_ek = [
      "kontrolü. Robocombo ilanı açıklamada 'RDS3235 ... U braket dahil' diyor: satıcıya sorulacak (kol-analiz NOTLAR)", "Duffy + satın alma"],
     ["Ön kol uzaması: kablo ve baskı", "bilek servosu kablosu +%s mm (MG996R 30 cm kablo); ön kol gövdesi tek parça (baskı tablosunda)" % sayi(o.get("on_kol_uzama_mm", 0), 1),
      "kablo yolu (<code>dirsek/kablo_yolu.py</code>, arayuz.KOL_KABLO) ön kol boyuna göre güncellenmeli; servo uzatma boyu", "elektrik + tasarım"],
+] + ([
+    (["Dirsek çatalı dış kolu 8 mm (karar: Duffy, 25 Ekim 2026)",
+      "tasarım ajanı: 8 mm + M3x12 + 2 × DIN 125-A M3 pul, 45° destek dış yüze (gorsel/catal-5-7-8.png). Kontrol ajanı (24 Ekim gece): geometri, tam "
+      "çarpışma taraması ve kol analizi 8 mm ile yeniden koşuldu (<a href='#catal'>Dirsek çatalı kontrolü</a>)",
+      "BOM'a M3x12 (8) + DIN 125-A M3 pul (16) maliyet.json'da eklenmedi; horn cıvatası sıkma torku PETG'de ~0,5 N·m'yi geçmemeli (pul ile; "
+      "<span class='t'>tahmini</span>)", "Duffy"] if TA.CATAL_DIS_KOL == 8.0 else
+     ["Dirsek çatalı dış kolu %s mm (Duffy onayı)" % sayi(TA.CATAL_DIS_KOL, 0),
+      "kontrol: geometri tuttu, çarpışma taramalarında 5 mm ile fark yok; stall SF güvenli, darbe (L4) hâlâ 1,2 altında (Dirsek çatalı kontrolü bölümü)",
+      "onay Duffy'de (görünüm: gorsel/catal-5-7.png). L4 için seçenekler (onaylanmadı, uygulanmadı): 8 mm (yalnız hesapla L4 ~1,2), PETG-CF, jest hız sınırı; "
+      "BOM'a M3x10 (8 adet) maliyet.json'da eklenmedi; 45° destek x 224,9'da bitiyor (dış 2 mm şerit köprü üstünde düz)", "Duffy"])]
+    if TA.CATAL_DIS_KOL > TA.CATAL_DIS_KOL_ESKI else []) + [
     ["Onaylanmamış öneriler (kol analizi, UYGULANMADI)", "kol-analiz/rapor.html Düzeltmeler: S2 horn tarafı destek rulmanı (6806-2RS), göbekte ikinci 6808, kelepçeli "
      "horn (25T Al horn kanalı DS3235 durmada SF ~1,3), S1/S2 uzatmalarında 20 AWG, XL4016 çıkışı 6,4 V, yazılım hız / temas sınırları",
      "Duffy onaylarsa ayrı iş olarak modellenir (omuz yuvası, göbek, elektrik); bu taslakta geometri değişmedi", "Duffy"],
@@ -385,7 +452,7 @@ h.append("<h2>Dosyalar ve çalıştırma</h2><ul>"
          "<li><code>taslak_ayar.py</code> parametreler (boy, uzama, kol <code>TASLAK_KOL=115|125</code>, omuz servosu <code>TASLAK_OMUZ_SERVO</code>, ekran, taban genişliği, tabla) · <code>kafa10.py</code> yeni kafa + adaptör + denge · "
          "<code>taslak_parcalar.py</code> modülleri yükleyip varyantı kurar · <code>taslak_montaj.py</code> FCStd / STEP / kutle.json / taslak-analiz.json · "
          "<code>taslak_gorsel.py</code> (GUI) görseller · <code>taslak_rapor.py</code> bu rapor</li>"
-         "<li>Analiz (analiz ajanı): <code>taslak_analiz.py</code> (FreeCAD; <code>TA_BOLUM=kutle|dogrula|statik|kol_sag|kol_sol|kolkol|kafa|kafakol_sag|kafakol_sol</code>, "
+         "<li>Analiz (analiz ajanı): <code>taslak_analiz.py</code> (FreeCAD; <code>TA_BOLUM=kutle|dogrula|statik|kol_sag|kol_sol|kolkol|kafa|kafakol_sag|kafakol_sol|kafakol_ince_sag|kafakol_ince_sol|catal|catal_geo</code>, "
          "<code>TA_ROBOT=eski</code> aynı taramayı 125 cm robotta koşar, <code>TASLAK_TABAN_W</code>) → <code>analiz/*.json</code>; <code>python taslak_hesap.py</code> "
          "(devrilme, motor, servo, kol oranı) → <code>analiz/hesap.json</code>; rapor bölümleri <code>taslak_rapor_analiz.py</code></li>"
          "<li><code>FC_SCRIPT=.../taslak-170/taslak_montaj.py freecadcmd.exe C:/Users/Victus/.robot-cad/run_fc.py</code> (~7 dk), sonra aynı yolla "

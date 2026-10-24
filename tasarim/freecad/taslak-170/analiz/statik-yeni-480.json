@@ -1,7 +1,7 @@
 {
  "robot": "yeni",
- "parca": 1064,
- "aday_cift": 3333,
+ "parca": 1072,
+ "aday_cift": 3349,
  "esik_mm3": 0.5,
  "cakisma": [
   {
@@ -11,7 +11,7 @@
    "b_modul": "taban",
    "hacim_mm3": 117.86,
    "i": 0,
-   "j": 832,
+   "j": 840,
    "eski_125_hacim_mm3": 0.0,
    "kaynak": "taslak (yeni)"
   },
@@ -22,7 +22,7 @@
    "b_modul": "taban",
    "hacim_mm3": 79.77,
    "i": 0,
-   "j": 833,
+   "j": 841,
    "eski_125_hacim_mm3": null,
    "kaynak": "taslak (yeni)"
   },
@@ -33,7 +33,7 @@
    "b_modul": "taban",
    "hacim_mm3": 117.86,
    "i": 0,
-   "j": 835,
+   "j": 843,
    "eski_125_hacim_mm3": 0.0,
    "kaynak": "taslak (yeni)"
   },
@@ -44,7 +44,7 @@
    "b_modul": "taban",
    "hacim_mm3": 79.77,
    "i": 0,
-   "j": 836,
+   "j": 844,
    "eski_125_hacim_mm3": null,
    "kaynak": "taslak (yeni)"
   },
@@ -55,7 +55,7 @@
    "b_modul": "taban",
    "hacim_mm3": 117.86,
    "i": 0,
-   "j": 848,
+   "j": 856,
    "eski_125_hacim_mm3": 0.0,
    "kaynak": "taslak (yeni)"
   },
@@ -66,7 +66,7 @@
    "b_modul": "taban",
    "hacim_mm3": 79.77,
    "i": 0,
-   "j": 849,
+   "j": 857,
    "eski_125_hacim_mm3": null,
    "kaynak": "taslak (yeni)"
   },
@@ -77,7 +77,7 @@
    "b_modul": "taban",
    "hacim_mm3": 117.86,
    "i": 0,
-   "j": 851,
+   "j": 859,
    "eski_125_hacim_mm3": 0.0,
    "kaynak": "taslak (yeni)"
   },
@@ -88,7 +88,7 @@
    "b_modul": "taban",
    "hacim_mm3": 79.77,
    "i": 0,
-   "j": 852,
+   "j": 860,
    "eski_125_hacim_mm3": null,
    "kaynak": "taslak (yeni)"
   },
@@ -99,7 +99,7 @@
    "b_modul": "taban",
    "hacim_mm3": 117.86,
    "i": 1,
-   "j": 800,
+   "j": 808,
    "eski_125_hacim_mm3": 0.0,
    "kaynak": "taslak (yeni)"
   },
@@ -110,7 +110,7 @@
    "b_modul": "taban",
    "hacim_mm3": 79.77,
    "i": 1,
-   "j": 801,
+   "j": 809,
    "eski_125_hacim_mm3": null,
    "kaynak": "taslak (yeni)"
   },
@@ -121,7 +121,7 @@
    "b_modul": "taban",
    "hacim_mm3": 117.86,
    "i": 1,
-   "j": 803,
+   "j": 811,
    "eski_125_hacim_mm3": 0.0,
    "kaynak": "taslak (yeni)"
   },
@@ -132,7 +132,7 @@
    "b_modul": "taban",
    "hacim_mm3": 79.77,
    "i": 1,
-   "j": 804,
+   "j": 812,
    "eski_125_hacim_mm3": null,
    "kaynak": "taslak (yeni)"
   },
@@ -143,7 +143,7 @@
    "b_modul": "taban",
    "hacim_mm3": 117.86,
    "i": 1,
-   "j": 816,
+   "j": 824,
    "eski_125_hacim_mm3": 0.0,
    "kaynak": "taslak (yeni)"
   },
@@ -154,7 +154,7 @@
    "b_modul": "taban",
    "hacim_mm3": 79.77,
    "i": 1,
-   "j": 817,
+   "j": 825,
    "eski_125_hacim_mm3": null,
    "kaynak": "taslak (yeni)"
   },
@@ -165,7 +165,7 @@
    "b_modul": "taban",
    "hacim_mm3": 117.86,
    "i": 1,
-   "j": 819,
+   "j": 827,
    "eski_125_hacim_mm3": 0.0,
    "kaynak": "taslak (yeni)"
   },
@@ -176,7 +176,7 @@
    "b_modul": "taban",
    "hacim_mm3": 79.77,
    "i": 1,
-   "j": 820,
+   "j": 828,
    "eski_125_hacim_mm3": null,
    "kaynak": "taslak (yeni)"
   },
@@ -209,7 +209,7 @@
    "b_modul": "kabuk",
    "hacim_mm3": 7.61,
    "i": 125,
-   "j": 464,
+   "j": 472,
    "eski_125_hacim_mm3": 7.61,
    "kaynak": "mevcut tasarim (125'te de var)"
   },
@@ -242,7 +242,7 @@
    "b_modul": "kabuk",
    "hacim_mm3": 7.61,
    "i": 196,
-   "j": 466,
+   "j": 474,
    "eski_125_hacim_mm3": 7.61,
    "kaynak": "mevcut tasarim (125'te de var)"
   }

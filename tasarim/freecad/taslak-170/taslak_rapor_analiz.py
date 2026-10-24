@@ -499,6 +499,314 @@ def carpisma():
     return "\n".join(h)
 
 
+# ====================================================================== dirsek catali dis kolu 5 / 7 / 8 mm (kontrol ajani, 24 Ekim 2026; 8 mm gece)
+CATAL5_GIT = "8ee72a0"          # dis kol 5 mm iken son kontrol kosusu (analiz/*.json, kol-analiz)
+ONCEKI7 = "onceki-7mm"          # dis kol 7 mm iken kontrol kosusu (24 Ekim 18:13-19:25), analiz/onceki-7mm/ altinda donduruldu
+CG = _oku("catal-geo.json")
+CY = _oku("catal-yeni.json")
+
+
+def _git_json(yol):
+    import subprocess
+    try:
+        r = subprocess.run(["git", "-C", HERE, "show", "%s:tasarim/freecad/taslak-170/%s" % (CATAL5_GIT, yol)], capture_output=True, check=True)
+        return json.loads(r.stdout.decode("utf-8"))
+    except Exception:
+        return None
+
+
+def _oku7(ad):
+    return _oku(os.path.join(ONCEKI7, ad))
+
+
+def _kol_analiz():
+    p = os.path.join(HERE, "kol-analiz", "kol-analiz.json")
+    return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else None
+
+
+CATAL_ADLAR = ("Dirsek catali", "Catal-horn civatasi", "Catal-horn pulu")
+GEO_AD = {"taslak": "taslak geometrisi", "onceki (5 mm)": "önceki", "onceki (7 mm)": "önceki (24 Ekim)", "yalniz hesap": "yalnız hesap"}
+
+
+def _t_ayar():
+    try:
+        import taslak_ayar as TA_
+        return TA_.CATAL_DIS_KOL, TA_.CATAL_DIS_KOL_ESKI, TA_.HORN_CIVATA_L, TA_.HORN_PUL_N
+    except Exception:
+        return 8.0, 5.0, 12.0, 2
+
+
+def _civ_ad(t):
+    return {5.0: "M3x8", 7.0: "M3x10", 8.0: "M3x12 + 2 pul"}.get(float(t), "M3x%g" % (8 + t - 5))
+
+
+def catal_karsilastirma():
+    """5 mm (git CATAL5_GIT), 7 mm (analiz/onceki-7mm) ve guncel analiz/*.json: tarama bazinda cakisma sayisi ve en dar bosluk; catal parcalarinin
+    (catal + horn civatasi + pul) en dar boslugu. Satir: [tarama, cakisma 5, 7, guncel, en dar 5 → 7 → guncel]."""
+    sat = []
+
+    def mm(x):
+        return "–" if x is None else sayi(x, 2)
+
+    def catal_min(k):
+        v = [c for m, L in (k or {}).get("en_kucuk_ciftler", {}).items() for c in L
+             if c["parca"].startswith(CATAL_ADLAR) and c.get("grup") == "UstKol"]      # omuzdaki ayni adli kol catali civatalari (grup Kol) haric
+        if not v:
+            return None
+        c = min(v, key=lambda c: c["bosluk_mm"])
+        return c["bosluk_mm"], "%s ↔ %s" % (c["parca"], c["hedef"])
+
+    def uc(yol, ad=None):
+        return _git_json("analiz/" + yol), _oku7(ad or yol), _oku(ad or yol)
+
+    def zincir(xs, n=2):
+        return " → ".join(mm(x) for x in xs)
+
+    def mods(js, k="en_kucuk_bosluk"):
+        return sorted(set().union(*[set(j[k]) for j in js if j]))
+
+    for w in (444, 480, 500, 520):
+        J = uc("statik-yeni-%d.json" % w)
+        if all(J):
+            ny = lambda s: sum(1 for c in s["cakisma"] if c["kaynak"].startswith("taslak"))
+            sat.append(["Ev pozu, tüm çiftler (taban %d)" % w] + ["%d / %d" % (ny(j), len(j["cakisma"]) - ny(j)) for j in J] +
+                       ["aday çift %s" % " → ".join("%d" % j["aday_cift"] for j in J)])
+    for t, et in (("sag", "sağ"), ("sol", "sol")):
+        J = uc("kol_%s-yeni.json" % t)
+        if all(J):
+            ny = lambda s: sum(1 for c in s["cakisma_ciftleri"] if c["kaynak"].startswith("taslak"))
+            dm = "; ".join("%s %s" % (esc(m), zincir([(j["en_kucuk_bosluk"].get(m) or {}).get("bosluk_mm") for j in J])) for m in mods(J))
+            cm = [catal_min(j) for j in J]
+            sat.append(["Kol zinciri %s (tam: S1 × S2 × dirsek × bilek, kaba 15° + ince 5°)" % et] +
+                       ["%d / %d" % (ny(j), len(j["cakisma_ciftleri"]) - ny(j)) for j in J] +
+                       ["en dar (hedef modül, mm): %s. %s" % (dm, ("Dirsek çatalı + horn cıvatası / pul en dar: %s mm%s" % (
+                           zincir([c and c[0] for c in cm]), (" (%s)" % esc(cm[-1][1])) if cm[-1] else "")) if any(cm) else
+                           "Dirsek çatalı her hedef modülde en dar 12 çiftin dışında (yalnız dirsek taraması aşağıda).")])
+    J = uc("kol_sag-yeni-dirsek.json")
+    if all(J):
+        sat.append(["Kol sağ, yalnız dirsek parçaları hareketli"] + ["%d" % len(j["cakisma_ciftleri"]) for j in J] +
+                   ["; ".join("%s %s mm" % (esc(m), zincir([(j["en_kucuk_bosluk"].get(m) or {}).get("bosluk_mm") for j in J])) for m in mods(J))])
+    J = uc("kolkol-yeni.json")
+    if all(J):
+        sat.append(["Kol ↔ kol (%d poz çifti)" % J[-1]["poz_cifti"]] + ["%d" % j["cakisan"] for j in J] +
+                   ["en dar %s mm (%s)" % (zincir([j["en_kucuk"]["bosluk_mm"] for j in J]), esc(" ↔ ".join(J[-1]["en_kucuk"]["cift"])))])
+    J = uc("kafa-yeni.json")
+    if all(J):
+        sat.append(["Kafa pan ±90 × tilt ±15 (5°) × sabit + kollar ev pozunda"] + ["%d" % len(j["cakisma"]) for j in J] +
+                   ["; ".join("%s %s mm" % (esc(m), zincir([(j["en_kucuk_bosluk"].get(m) or {}).get("bosluk_mm") for j in J])) for m in mods(J))])
+    for t, et in (("sag", "sağ"), ("sol", "sol")):
+        J = uc("kafakol_%s-yeni.json" % t)
+        if all(J):
+            E = [(j["en_kucuk_cakismasiz"] or j["en_kucuk"]) for j in J]
+            sat.append(["Kafa × kol %s (kaba)" % et] + ["%d" % j["cakisma_sayisi"] for j in J] +
+                       ["en dar %s mm (%s ↔ %s)" % (zincir([e and e["bosluk_mm"] for e in E]), esc(E[-1]["kol_parca"]) if E[-1] else "",
+                                                    esc(E[-1]["kafa_parca"]) if E[-1] else "")])
+        J = uc("kafakol_ince_%s-yeni.json" % t)
+        if all(J):
+            sat.append(["Kafa × kol %s, ince" % et] + ["%d" % len(j["cakisma"]) for j in J] +
+                       ["en dar %s mm (%s ↔ %s)" % (zincir([j["en_kucuk"]["bosluk_mm"] for j in J]), esc(J[-1]["en_kucuk"]["kol_grup"]),
+                                                    esc(J[-1]["en_kucuk"]["kafa_parca"]))])
+    J = uc("kafakol_sag-yeni-s2_0.json")
+    if all(J):
+        sat.append(["Kafa × kol sağ, S2 = 0° dahil (aralık dışı)"] + ["%d" % j["cakisma_sayisi"] for j in J] +
+                   ["çakışan kol parçaları: %s" % esc(", ".join((J[-1].get("yasak_bolge") or {}).get("kol_parcalari", [])))])
+    return sat
+
+
+def _cy_ozet(cy, bol, k, taraf="sag"):
+    """catal-yeni.json ozeti: (mm, parca) ya da None."""
+    if not cy:
+        return None
+    o = (cy["taraf"][taraf]["ozet"].get(bol) or {}).get(k)
+    return (o["mm"], o["parca"]) if o else None
+
+
+def catal_tablo_578():
+    """5 / 7 / 8 mm ozet tablosu: geometri, en dar bosluklar (ayni hedeflere + tam taramalar), dayanim. Satir basina 5 / 7 / 8 hucresi."""
+    t_y, t_e, _, _ = _t_ayar()
+    G = {5: _oku("catal-geo-5.json"), 7: _oku("catal-geo-7.json"), 8: CG}
+    cy7 = _oku7("catal-yeni.json")
+    sat = []
+
+    def g(t, f, n=1):
+        try:
+            return sayi(f(G[t]["taraf"]["sag"]), n)
+        except Exception:
+            return "–"
+    sat.append(["Dış yüz x (global, sağ)"] + [g(t, lambda s: s["dis_yuz_x"]) for t in (5, 7, 8)] + ["iç yüz / horn oturması aynı"])
+    sat.append(["Horn cıvatası"] + [_civ_ad(t) for t in (5, 7, 8)] + ["uç her kalınlıkta aynı yerde"])
+    sat.append(["Cıvata ucu x / horn'da kavrama mm"] + ["%s / %s" % (g(t, lambda s: s["civatalar"][0]["uc_x"]), g(t, lambda s: s["civatalar"][0]["horn_kavrama_mm"]))
+                                                        for t in (5, 7, 8)] + ["uç horn alt yüzünün 0,3 mm içinde"])
+    sat.append(["Cıvata (+ pul) ↔ servo kasası, dirsek aralığı 1°"] + [g(t, lambda s: s["civata_servo_kasasi"]["yeni_en_az"], 2) for t in (5, 7, 8)] +
+               ["dirsek_montaj ölçütü ≥ 1"])
+    sat.append(["Cıvata ucu ↔ servo çıkış mili (kubbe)"] + [g(t, lambda s: s["civata_cikis_mili"]["yeni_en_az"], 2) for t in (5, 7, 8)] +
+               ["pulsuz M3x12 olsaydı 0,58 (tasarım ajanı)"])
+    sat.append(["Baskı ölçüsü mm"] + [g(t, lambda s: s["baski_olcu"][0], 1) + " × " + g(t, lambda s: s["baski_olcu"][1], 1) + " × " + g(t, lambda s: s["baski_olcu"][2], 1)
+                                      for t in (5, 7, 8)] + ["tabla 250, hedef 230"])
+    try:
+        sat.append(["Çatal kütlesi g (kol başına)"] + [sayi([p for p in G[t]["parca"] if p["ad"] == "Dirsek catali"][0]["kutle"], 2) for t in (5, 7, 8)] +
+                   ["toplam robot %s g" % " / ".join(sayi(sum(p["kutle"] for p in G[t]["parca"]), 1) for t in (5, 7, 8))])
+    except Exception:
+        pass
+    # ayni hedeflere (catal bolumu): 5 ve 7 = guncel kosunun eski / ara setleri; 7'nin kendi kosusu (onceki-7mm) capraz kontrol
+    for bol, ad in (("dirsek", "Dirsek 0…105° (1°) ön kol + el: çatal en dar"), ("omuz", "S1 × S2 5°: çatal ↔ gövde / kafa / omuz en dar")):
+        r = [_cy_ozet(CY, bol, "eski_catal"), _cy_ozet(CY, bol, "ara7_catal"), _cy_ozet(CY, bol, "yeni_catal")]
+        r7 = _cy_ozet(cy7, bol, "yeni_catal")
+        sat.append([ad] + [sayi(x[0], 2) if x else "&gt; 25" for x in r] + ["%s; 7 mm kendi koşusu %s" % (esc(r[-1][1]) if r[-1] else "", sayi(r7[0], 2) if r7 else "–")])
+    for bol, ad in (("dirsek", "Dirsek 0…105°: horn cıvatası (+ pul) en dar"), ("omuz", "S1 × S2 5°: horn cıvatası (+ pul) en dar")):
+        r = [_cy_ozet(CY, bol, "eski_civata"), _cy_ozet(CY, bol, "ara7_civata"), _cy_ozet(CY, bol, "yeni_civata")]
+        sat.append([ad] + [sayi(x[0], 2) if x else "&gt; 25–30" for x in r] + [esc(r[-1][1]) if r[-1] else "hedeflerin 25–30 mm'sine girmedi"])
+    KA = _kol_analiz()
+    try:
+        c = [x for x in KA["varyant"] if abs(x["oran"] - 1.25) < 1e-9][0]["servo"]["DS3235"]["catal_dis_kol"]
+        for k, ad in (("L3", "Dış kol SF L3 stall"), ("L4", "Dış kol SF L4 darbe (tahmini)")):
+            sat.append([ad + " (×1,25 + DS3235)"] + [pay(c["%g" % t]["dis_kol"][k]["sf"]) for t in (5, 7, 8)] + ["≥ 2 güvenli, 1,2–2 sınırda"])
+        for k in ("L3", "L4"):
+            sat.append(["Horn cıvatası delik ezilmesi SF %s" % k] + [pay(c["%g" % t]["horn_civata"][k]["sf"]) for t in (5, 7, 8)] + ["ezilme boyu t (pul etkilemez)"])
+        sk = [c["%g" % t].get("sikma") for t in (5, 7, 8)]
+        if all(sk):
+            sat.append(["Baş altı oturma alanı mm² / izinli sıkma torku N·m"] + ["%s / %s" % (sayi(s["oturma_alani_mm2"], 1), sayi(s["izinli_tork_Nm"], 2)) for s in sk] +
+                       ["pul baş altı basıncını yarıya indirir (<span class='t'>tahmini</span>)"])
+    except Exception:
+        pass
+    return tablo(["Ölçüt", "5 mm (M3x8)", "7 mm (M3x10)", "%s mm (%s)" % (sayi(t_y, 0), _civ_ad(t_y)), "Not"], sat)
+
+
+def catal():
+    """Dirsek catali dis kolu 5 -> TA.CATAL_DIS_KOL: geometri, ayni hedeflere 5 / 7 / guncel catal, tam taramalarda 5 / 7 / guncel, dayanim."""
+    h = []
+    t_y, t_e, L_c, n_p = _t_ayar()
+    cv = ("M3x%s + %d × DIN 125-A M3 pul" % (sayi(L_c, 0), n_p)) if n_p else "M3x%s" % sayi(L_c, 0)
+    h.append("<p>Tasarım ajanı dirsek çatalının dış kolunu (horn tarafı, gövdeden uzak) %s → %s mm yaptı (dışa; horn cıvataları M3x8 → %s, uç aynı yerde; "
+             "45° köprü desteği dış yüze kadar). Kontrol ajanı (24 Ekim 2026; 7 mm akşam, %s mm gece) bağımsız olarak geometriyi, tüm çarpışma taramalarını "
+             "ve kol analizini yeniden koştu. 5 mm sonuçları git <code>%s</code>'den, 7 mm sonuçları <code>analiz/%s/</code>'den.</p>" % (
+                 sayi(t_e, 0), sayi(t_y, 0), cv, sayi(t_y, 0), CATAL5_GIT, ONCEKI7))
+    h.append("<figure class='wide' style='margin:10px 0'><img src='%s' alt='Dirsek çatalı 5 / 7 / 8 mm'><figcaption>Dirsek çatalı dış kolu 5 / 7 / 8 mm "
+             "(sağ kol; çatal kırmızı, horn cıvataları + pul gri): sütunlar 5 mm M3x8, 7 mm M3x10, 8 mm M3x12 + 2 pul; üstte önden, altta izometrik "
+             "(<code>gorsel/catal-5-7-8.png</code>)</figcaption></figure>" % _img("catal-5-7-8.png") if _img("catal-5-7-8.png") else "")
+    h.append("<h3>5 / 7 / %s mm özet</h3>" % sayi(t_y, 0))
+    h.append(catal_tablo_578())
+    if CG:
+        s = CG["taraf"]["sag"]
+        c0 = s["civatalar"][0]
+        f5, f7 = CG.get("fark_5"), CG.get("fark_7")
+        g5 = _oku("catal-geo-5.json")
+        fk5 = g5.get("fark_kutle_json_%s" % CATAL5_GIT) if g5 else None
+
+        def fk(f):
+            return ("%d parça (+%d pul); pullar hariç farklı %d: %s" % (f["parca"], f["pul"], len(f["farkli"]), esc(", ".join(sorted(set(
+                "%s (%s)" % (x["ad"], x["modul"].split("_")[1]) for x in f["farkli"])))))) if f else "koşu yok"
+        sat = [["5 mm parametresi (<code>TASLAK_CATAL_DIS_KOL=5</code>) = önceki model",
+                "5 mm kurulum ↔ git %s kutle.json (çatal öncesi): ad / kütle / merkez farkı <b class='%s'>%s</b> parça" % (
+                    CATAL5_GIT, "ok" if fk5 == [] else "no", "–" if fk5 is None else len(fk5)),
+                "eski kodun 5 mm dökümüyle (18:47) parça listesi, cıvata kayıtları, eksenler birebir (kontrol notları)"],
+               ["7 mm parametresi (<code>TASLAK_CATAL_DIS_KOL=7</code>) = 24 Ekim taslağı",
+                "eski kodun 7 mm dökümüyle (18:47) parça listesi (ad, kütle, hacim, sınır kutusu, merkez) farkı 0, eksenler aynı; 45° destek 7'de kapalı",
+                "kontrol notları (scratch karşılaştırması)"],
+               ["%s mm ↔ 5 mm" % sayi(t_y, 0), fk(f5), "eklem eksenleri aynı: %s" % ("evet" if f5 and f5["eksen_ayni"] else "HAYIR")],
+               ["%s mm ↔ 7 mm" % sayi(t_y, 0), fk(f7), "eklem eksenleri aynı: %s" % ("evet" if f7 and f7["eksen_ayni"] else "HAYIR")],
+               ["Dış kol konumu", "çatal x %s … %s → %s … %s (yalnız dış yüz)" % (sayi(s["catal5_bb"][0], 1), sayi(s["catal5_bb"][3], 1), sayi(s["catal_bb"][0], 1),
+                                                                               sayi(s["catal_bb"][3], 1)),
+                "eklenen %s mm³ (x %s … %s; y %s … %s), çıkan %s mm³ (iç yüz, horn oturması aynı); 1 katı, geçerli: %s" % (
+                    sayi(s["eklenen_hacim"], 0), sayi(s["eklenen_bb"][0], 1), sayi(s["eklenen_bb"][3], 1), sayi(s["eklenen_bb"][1], 1), sayi(s["eklenen_bb"][4], 1),
+                    sayi(s["cikan_hacim"], 2), "evet" if s["gecerli"] and s["kati"] == 1 else "HAYIR")],
+               ["45° destek ↔ üst kol tüpü", "çatal ↔ tüp ortak hacim %s mm³ (5 mm'de %s), mesafe %s mm (oturma teması, 5 mm'de de aynı)" % (
+                   sayi(s["tup"]["ortak_mm3"], 2), sayi(s["tup"]["ortak5_mm3"], 2), sayi(s["tup"]["mesafe_mm"], 2)),
+                "eklenen hacim tüpe %s mm: tüp yuvasına girmiyor.%s" % (sayi(s["tup"]["eklenen_tupe_mm"] or 0, 2), (
+                    " Eski dış yüz düzleminin içinde kalan ek yalnız 45° destek uzantısı: %s mm³, x %s … %s, y %s … %s (köprü üstü); horn'a %s, servoya %s mm" % (
+                        sayi(s["eklenen_ic"]["hacim"], 0), sayi(s["eklenen_ic"]["bb"][0], 1), sayi(s["eklenen_ic"]["bb"][3], 1), sayi(s["eklenen_ic"]["bb"][1], 1),
+                        sayi(s["eklenen_ic"]["bb"][4], 1), sayi(s["eklenen_ic"]["horn_mm"], 1), sayi(s["eklenen_ic"]["servo_mm"], 1)))
+                    if (s.get("eklenen_ic") or {}).get("bb") else "")],
+               ["Delikler, eksen", "4 horn deliği eksen silindiri ↔ çatal ortak hacmi 5 ve %s mm'de aynı (%s): yeni malzemede delik açık; Ø9 merkez erişimi %s mm³" % (
+                   sayi(t_y, 0), "evet" if all(abs(d["yeni_mm3"] - d["eski_mm3"]) < 1e-3 for d in s["horn_delikleri"]) else "HAYIR",
+                   sayi(s["merkez_erisim_ortak_mm3"]["yeni"], 2)), "delik eksenleri, dirsek ekseni, 625ZZ, mil, horn aynı"],
+               ["Horn cıvatası %s" % cv, "uç x %s (eski %s), horn'da kavrama %s mm (eski %s; horn %s mm), uç horn alt yüzünün %s mm içinde" % (
+                   sayi(c0["uc_x"], 1), sayi(c0["eski_uc_x"], 1), sayi(c0["horn_kavrama_mm"], 1), sayi(c0["eski_horn_kavrama_mm"], 1),
+                   sayi(s["horn_x"][1] - s["horn_x"][0], 1), sayi(-c0["uc_horn_alti_mm"], 1)),
+                "baş / pul çatala dayalı, ortak hacim %s; dirsek %s…%s° (1°) servo kasasına en az %s mm (eski %s), çıkış miline %s (eski %s)" % (
+                    sayi(max(c["catal_ortak_mm3"] for c in s["civatalar"]), 2), sayi(s["civata_servo_kasasi"]["aralik"][0], 0), sayi(s["civata_servo_kasasi"]["aralik"][1], 0),
+                    sayi(s["civata_servo_kasasi"]["yeni_en_az"], 2), sayi(s["civata_servo_kasasi"]["eski_en_az"], 2),
+                    sayi(s["civata_cikis_mili"]["yeni_en_az"], 2), sayi(s["civata_cikis_mili"]["eski_en_az"], 2))]]
+        pl = [c["pul"] for c in s["civatalar"] if c.get("pul")]
+        if pl:
+            sat.append(["Pul yığını (%d × 2 DIN 125-A, kol başına)" % len(pl),
+                        "x %s … %s (%s mm), alt yüz dış yüzde (%s mm), çatal / cıvata ile ortak hacim %s / %s mm³, oturma oranı en az %%%s" % (
+                            sayi(pl[0]["x"][0], 2), sayi(pl[0]["x"][1], 2), sayi(pl[0]["kalinlik"], 2), sayi(max(abs(p["alt_dis_yuze_mm"]) for p in pl), 3),
+                            sayi(max(p["catal_ortak_mm3"] for p in pl), 2), sayi(max(p["civata_ortak_mm3"] for p in pl), 2),
+                            sayi(min(p["oturma_orani"] for p in pl) * 100, 1)),
+                        "pul Ø%s, dış kol kenarına en az %s mm (taşmıyor); oturma oranı &lt; 100: delik Ø3,4 > pul iç Ø3,2. Cıvata başı pula oturur, gövdesi "
+                        "delikte 0,2 mm boşluklu" % (
+                            sayi(pl[0]["dis_cap"], 1), sayi(min(p["kenar_bosluk_mm"] for p in pl), 1))])
+        sat.append(["Baskı", "%s × %s × %s mm" % tuple(sayi(x, 1) for x in s["baski_olcu"]), "tabla 250, hedef 230: %s" % ("sığar" if s["tabla_sigar"] else "SIĞMAZ")])
+        h.append("<h3>Geometri kontrolü (<code>TA_BOLUM=catal_geo</code>; sağ, sol X aynası aynı)</h3>")
+        h.append(tablo(["Kontrol", "Sonuç", "Not"], sat))
+    if CY:
+        sat = []
+        ks = [("eski_catal", "5 mm"), ("ara7_catal", "7 mm"), ("yeni_catal", "%s mm" % sayi(t_y, 0)),
+              ("eski_civata", "M3x8"), ("ara7_civata", "M3x10"), ("yeni_civata", _civ_ad(t_y))]
+        for t, et in (("sag", "sağ"), ("sol", "sol")):
+            T = CY["taraf"][t]
+            for bol, ad in (("dirsek", "dirsek 0…105° (1°) ön kol + el (bilek ±90, 5°)"), ("omuz", "S1 × S2 5° (%d poz) gövde, iskelet, taban, kafa, omuzlar, göbek, karşı kol" % len(T["omuz"]))):
+                o = T["ozet"][bol]
+                f = lambda k: ("%s (%s)" % (sayi(o[k]["mm"], 2), esc(o[k]["parca"]))) if o.get(k) else "&gt; 25"
+                hac = sum((o.get(k) or {}).get("hacim_toplam_mm3", 0) for k in ("yeni_catal", "yeni_civata"))
+                sat.append(["%s, %s" % (et, ad)] + [f(k) for k, _ in ks if k in o or True] + ["<b class='%s'>%s</b>" % ("ok" if hac <= 0.5 else "no", sayi(hac, 2))])
+        h.append("<h3>Aynı hedeflere 5 / 7 / %s mm çatal ve cıvatalar (<code>TA_BOLUM=catal</code>, mm)</h3>" % sayi(t_y, 0))
+        h.append(tablo(["Tarama"] + [b for _, b in ks] + ["Yeni kesişim mm³"], sat))
+        h.append("<p class='not'>Dirsek ekseninde eş eksenli parçalar (servo mili, 625ZZ iç bilezik, pim, pul) ayrı tutuldu: mesafe açıyla değişmez, temas tasarım gereği. "
+                 "%s mm cıvata sütunu pul yığınlarını da içerir. En dar yer iç kol / köprü tarafında; dış yüzün kalınlaşması bu boşlukları değiştirmedi.</p>" % sayi(t_y, 0))
+    sat = catal_karsilastirma()
+    if sat:
+        h.append("<h3>Tam taramalar: 5 mm (git %s) / 7 mm / %s mm</h3>" % (CATAL5_GIT, sayi(t_y, 0)))
+        h.append(tablo(["Tarama", "Çakışma 5 mm (yeni / mevcut)", "7 mm", "%s mm" % sayi(t_y, 0), "En dar boşluk 5 → 7 → %s mm" % sayi(t_y, 0)], sat))
+    KA = _kol_analiz()
+    if KA:
+        v = [x for x in KA["varyant"] if abs(x["oran"] - 1.25) < 1e-9]
+        if v and "catal_dis_kol" in v[0]["servo"]["DS3235"]:
+            sat = []
+            for sv in ("DS3235", "DS3218MG"):
+                c = v[0]["servo"][sv]["catal_dis_kol"]
+                for t_, r in sorted(c.items(), key=lambda x: float(x[0])):
+                    d, b = r["dis_kol"], r["horn_civata"]
+                    sat.append(["×1,25 + %s" % sv, "%s mm (%s)" % (t_.replace(".", ","), GEO_AD.get(r["geometri"], esc(r["geometri"]))),
+                                pay(d["L1"]["sf"]), pay(d["L2"]["sf"]), pay(d["L3"]["sf"]), pay(d["L4"]["sf"]), pay(b["L3"]["sf"]), pay(b["L4"]["sf"])])
+            h.append("<h3>Dayanım (kol analizi, <code>kol-analiz/kol_analiz.py</code>)</h3>")
+            h.append(tablo(["Kol + omuz", "Dış kol", "SF L1 statik", "L2 ivmeli", "L3 stall", "L4 darbe", "Horn cıvatası ezilme L3", "L4"], sat, "sayi"))
+            _c = v[0]["servo"]["DS3235"]["catal_dis_kol"]
+            _y, _7 = _c.get("%g" % t_y), _c.get("7")
+            if _y:
+                _l4 = _y["dis_kol"]["L4"]["sf"]
+                h.append("<p><b>Sonuç (×1,25 + DS3235):</b> stall (L3) %s → %s → <b>%s</b> (5 → 7 → %s mm): güvenli. Darbe (L4) %s → %s → <b>%s</b>: %s "
+                         "Darbe değeri <span class='t'>tahmini</span> (enerji yöntemi); asıl önlem jest hız sınırı (kol analizi).</p>" % (
+                             sayi(_c["5"]["dis_kol"]["L3"]["sf"], 2), sayi(_7["dis_kol"]["L3"]["sf"], 2) if _7 else "–", sayi(_y["dis_kol"]["L3"]["sf"], 2), sayi(t_y, 0),
+                             sayi(_c["5"]["dis_kol"]["L4"]["sf"], 2), sayi(_7["dis_kol"]["L4"]["sf"], 2) if _7 else "–", sayi(_l4, 2),
+                             "1,2 sınırının altında, yetersiz sınıfta." if _l4 < 1.2 else ("sınırda bandına geçti (≥ 1,2)." if _l4 < 2 else "güvenli.")))
+            sk = [(t_, _c[t_].get("sikma")) for t_ in sorted(_c, key=float) if _c[t_].get("sikma")]
+            if sk:
+                h.append("<h3>Pul yığınının etkisi (horn cıvatası sıkma, <span class='t'>tahmini</span>)</h3>")
+                h.append(tablo(["Dış kol", "Cıvata", "Sıkışan boy mm", "Baş altı oturma mm²", "Basınç @ 0,5 N·m MPa", "İzinli ön yük N", "İzinli sıkma torku N·m",
+                                "Horn dişi sıyırma SF (izinli ön yükte)"],
+                               [["%s mm" % t_.replace(".", ","), esc(s["civata"]) + ((" + %d pul" % s["pul_n"]) if s["pul_n"] else ""), sayi(s["sikisan_mm"], 1),
+                                 sayi(s["oturma_alani_mm2"], 1), sayi(s["ref_basinc_MPa"], 1), sayi(s["izinli_on_yuk_N"], 0), sayi(s["izinli_tork_Nm"], 2),
+                                 pay(s["dis_sf_izinli"])] for t_, s in sk], "sayi"))
+                h.append("<p class='not'>Pul delik ezilmesini (PETG'de boy t) ve ucun yerini (horn'da 3,0 mm kavrama) değiştirmez; yalnız baş altı basıncını "
+                         "Ø5,5 baştan Ø7 pula yayar (oturma alanı ~2 kat). Sıkma anında PETG kısa süreli izni (47 × 0,8 × 0,75 = 28,2 MPa) ile izinli ön yük "
+                         "~414 → ~829 N, sıkma torku ~0,25 → ~0,5 N·m. Sürekli yükte ön yük PETG sürünmesiyle gevşer (pullu da pulsuz da); bağlantı torku kayma olursa "
+                         "delik ezilmesiyle taşınır (yukarıdaki ezilme sütunu). Horn dişi (Al, 3,0 mm kavrama) izinli ön yükte sıyırma SF ~1,7 (8 mm) / ~3,4 "
+                         "(5–7 mm): 0,5 N·m üstüne çıkılmamalı. Model <span class='t'>tahmini</span>: K 0,2, tam yayılma, Al 6061-T6 varsayımı.</p>")
+            h.append("<p class='not'>Dış kol kesiti t × 32 mm (düzlem içi eğilme t·32²/6, alan 32·t), horn cıvatası ezilme boyu t, kollar arası çift kuvvet kolu "
+                     "61 + (t − 5)/2 mm; Kt 2,0, PETG katmanlar arası (Z). Üç kalınlık aynı modelle ve güncel (8 mm) kütlelerle; çatal + cıvata + pul kütlesi "
+                     "(kol başına +7 g) darbe satırını en çok 0,01 değiştirir (git %s koşusunda 5 mm L4 0,77, 7 mm koşusunda 8 mm hesabı 1,23). "
+                     "Ölçüt: ≥ 2 güvenli, 1,2–2 sınırda, &lt; 1,2 yetersiz.</p>" % CATAL5_GIT)
+    return "\n".join(h)
+
+
+def _img(ad):
+    import base64
+    p = os.path.join(HERE, "gorsel", ad)
+    return ("data:image/png;base64," + base64.b64encode(open(p, "rb").read()).decode()) if os.path.exists(p) else None
+
+
 # ====================================================================== dogrulama
 def dogrulama():
     if not D:

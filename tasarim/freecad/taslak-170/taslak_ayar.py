@@ -83,6 +83,42 @@ OMUZ_SERVO_SECENEK = {
 OMUZ_SERVO = OMUZ_SERVO_SECENEK[os.environ.get("TASLAK_OMUZ_SERVO", "DS3235")]
 OMUZ_SERVO_ESKI = OMUZ_SERVO_SECENEK["DS3218MG"]
 
+# Dirsek catali DIS kolu (horn tarafi, govdeden uzak; dirsek_parcalar.DIS_KOL x 219,9...224,9) kalinligi. Kol analizi (kontrol ajani,
+# 24 Ekim 2026): x1,25 + DS3235'te dis kol L3 (stall) SF 1,86, L4 (darbe) 0,77 -> 5 -> 7 mm (tasarim ajani, CATAL-NOTLAR.md).
+# Ic yuzu horn'a oturdugu icin kalinlastirma DISA (+X): x 224,9 -> 224,9 + (t - 5); kopru de ayni duzleme uzar; 4 horn civatasi
+# M3x(8 + t - 5) (uc ayni yerde). Delikler, 625ZZ, pim, eksenler degismez. ONAY: Duffy ("absurd gozukmez ve carpismaya yol acmazsa").
+# TASLAK_CATAL_DIS_KOL=5 eski geometriyi birebir verir.
+# KARAR (Duffy, 25 Ekim 2026: "8mm yap 3 unun gorunumunu ver"): 8 mm (kontrol ajani hesabi: L3 SF 2,99, L4 1,23). 7 mm (24 Ekim)
+# TASLAK_CATAL_DIS_KOL=7 ile birebir yeniden uretilir (45 der. destek o zaman eski haliyle, asagida).
+CATAL_DIS_KOL_ESKI = 5.0
+CATAL_DIS_KOL = float(os.environ.get("TASLAK_CATAL_DIS_KOL", "8"))
+assert CATAL_DIS_KOL_ESKI <= CATAL_DIS_KOL <= 9.0, "dis kol 5...9 mm (horn civatasi M3x8...M3x12)"
+
+# Horn civatasi (DIN 912 / ISO 4762 M3): bas dis kolun dis yuzunde, uc eski yerde (x 216,9: horn'da 3,0 mm dis, servo kasasina 3,3,
+# servo cikis kubbesine 1,39 mm). Gereken boy 8 + (t - 5); standart boy yoksa bir ust standart boy + bas altina pul yigini (uc yine eski yerde).
+# M3 standart boylar (ISO 4762 / DIN 912 yaygin seri): 6, 8, 10, 12, 16, 20 (M3x11 standart degil). Pul: DIN 125-A M3 (3,2 x 7 x 0,5).
+# 8 mm: M3x12 + 2x DIN 125-A M3 (1,0 mm). Pulsuz M3x12 ucu horn'un 0,7 mm altina cikar: kasaya 2,3, cikis kubbesine ~0,6 mm (olcum: CATAL-NOTLAR.md).
+M3_BOYLAR = (6.0, 8.0, 10.0, 12.0, 16.0, 20.0)
+PUL_M3_T = 0.5
+
+
+def horn_civatasi_secim(t):
+    """t (dis kol mm) -> (civata boyu, pul adedi, pul yigini mm). Uc her zaman eski yerde (gereken boy = 8 + t - 5)."""
+    gerek = 8.0 + t - CATAL_DIS_KOL_ESKI
+    L = min(b for b in M3_BOYLAR if b >= gerek - 1e-9)
+    n = int(round((L - gerek) / PUL_M3_T))
+    assert abs(n * PUL_M3_T - (L - gerek)) < 1e-9, "pul yigini 0,5 mm katlari"
+    return L, n, n * PUL_M3_T
+
+
+HORN_CIVATA_L, HORN_PUL_N, HORN_PUL_T = horn_civatasi_secim(CATAL_DIS_KOL)
+
+# Kopru ustundeki 45 der. destek (dirsek_parcalar: (213; -128) -> (224,9; -139,9), z TZ +-16): kalinlastirmada dis yuze kadar uzatilir
+# (ayni 45 der. egim disa kaydirilir: ust ucu x 213'te y -128 + (t - 5); ters baskida kopru alti cikinti seridi kalmaz). Yalniz gorunum/baski;
+# delik, ic yuz, horn oturmasi ayni. Varsayilan: t > 7 ise acik (8 mm karari); 7 mm (24 Ekim) eski haliyle (x 224,9'da biter) birebir.
+# Ortam: TASLAK_CATAL_DESTEK=1 (zorla acik) / 0 (kapali).
+CATAL_DESTEK_DIS = os.environ.get("TASLAK_CATAL_DESTEK", "1" if CATAL_DIS_KOL > 7.0 else "0") == "1"
+
 # =====================================================================================================
 # 3) Kafa: yuz ekrani 10,1" 1280x800 HDMI (TAHMINI MODEL), tilt ekseni kafa AM'sinden, +-15 derece
 # =====================================================================================================
@@ -133,4 +169,6 @@ if __name__ == "__main__":
     print("S3 yeni %.1f (eski %.1f), uzama %.1f, direk %.1f, uzatma dikisleri %s" % (S3_YENI, A.S3, DY, DIREK_L_YENI, UZATMA_DIKIS))
     print("kol [%s] %.1f -> %.1f (x%.4f; tup +%.1f, on kol +%.1f, yaka +%.1f), omuz servosu %s, taban %.0f (dx %.1f)" % (
         KOL_SECIM, KOL_BOY_ESKI, KOL_BOY_YENI, KOL_ORAN, UST_KOL_UZAMA, ON_KOL_UZAMA, EL_UZAMA, OMUZ_SERVO["ad"], TABAN_W, TABAN_DX))
+    print("dirsek catali dis kolu %.1f mm (eski %.1f), horn civatasi M3x%.0f + %d pul (%.1f mm), 45 der. destek dis yuze: %s" % (
+        CATAL_DIS_KOL, CATAL_DIS_KOL_ESKI, HORN_CIVATA_L, HORN_PUL_N, HORN_PUL_T, CATAL_DESTEK_DIS))
     print("uzatma braketleri y", UZATMA_BRAKET_Y)

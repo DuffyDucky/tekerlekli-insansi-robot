@@ -309,6 +309,61 @@ o.append("<p class='not'>Darbede en yumuşak eleman servo dişlisi olduğu için
          "servo millerine ve dirsek bölgesine gelir. Engel yakınında ya da insan yanında jest hızı ~%s rad/s (~%s°/s) altında tutulmalı.</p>" % (
              sayi(Rs["yapisal"]["darbe"]["S1"]["omega_guvenli"], 1), sayi(Rs["yapisal"]["darbe"]["S1"]["omega_guvenli"] * 57.2958, 0)))
 
+# ------------------------------------------------------------------ 5b dirsek catali dis kolu kalinligi
+CDK = GEO.get("catal_dis_kol")
+if CDK and "catal_dis_kol" in Rs:
+    _cv = CDK.get("civata") or dict(boy=8 + CDK["t"] - CDK["eski"], pul_n=0)
+    _cvs = "M3x%s%s" % (sayi(_cv["boy"], 0), (" + %d × DIN 125-A M3 pul" % _cv["pul_n"]) if _cv.get("pul_n") else "")
+    o.append("<h2>5b. Dirsek çatalı dış kolu %s → %s mm%s</h2>" % (sayi(CDK["eski"], 0), sayi(CDK["t"], 0),
+             " (karar: Duffy, 25 Ekim 2026)" if CDK["t"] == 8.0 else " (tasarım ajanı, Duffy onayı bekliyor)"))
+    o.append("<p>5 mm'de en zayıf baskı parçası dış koldu (L3 stall SF 1,86, L4 darbe 0,77). Tasarım ajanı kolu dışa doğru önce 7, sonra %s mm yaptı (horn cıvataları "
+             "M3x8 → %s; uç horn'da aynı yerde). Analizde dış kol kesiti t × 32 mm (düzlem içi eğilme t·32²/6, alan 32·t), horn cıvatası ezilme boyu t ve kollar arası çift "
+             "kuvvet kolu %s mm (61 + (t − 5)/2) kalınlığa bağlandı; t = 5 önceki koşuyu birebir verir (672 satır, fark 0). 5 / 7 / 8 mm aynı modelle, "
+             "kütleler güncel taslaktan.</p>" % (sayi(CDK["t"], 0), _cvs, sayi(CDK["kol_arasi_mm"], 1)))
+    rows = []
+    for v in D["varyant"]:
+        for sv in SV:
+            for t_, r in sorted(v["servo"][sv]["catal_dis_kol"].items(), key=lambda x: float(x[0])):
+                d, b = r["dis_kol"], r["horn_civata"]
+                rows.append(["×%s" % sayi(v["oran"], 2), sv, "<b>%s mm</b> <span class='not'>%s</span>" % (t_.replace(".", ","), {"taslak": "taslak geometrisi", "onceki (5 mm)": "önceki", "onceki (7 mm)": "önceki (24 Ekim)", "yalniz hesap": "yalnız hesap"}.get(r["geometri"], esc(r["geometri"])))] +
+                            [sf_html(d[k]["sf"], d[k]["sinif"]) for k in DUR] + [sf_html(b[k]["sf"], b[k]["sinif"]) for k in ("L3", "L4")])
+    o.append(tablo(["Kol", "Omuz servosu", "Dış kol"] + ["Dış kol %s" % x for x in DUR.values()] + ["Horn cıvatası ezilme L3", "L4"], rows))
+    _r = Rs["catal_dis_kol"]
+    _b = _r.get("%g" % CDK["t"])
+    _k = sorted(_r, key=float)
+    _z = lambda L_: " → ".join(sayi(_r[k]["dis_kol"][L_]["sf"], 2) for k in _k)
+    o.append("<p class='not'>×1,25 + %s (%s mm): L3 %s, L4 %s. Stall'da kol güvenli sınıfta; darbede %s. Darbe değeri enerji yöntemiyle "
+             "<span class='t'>tahmini</span>; asıl önlem jest hız sınırı (Bölüm 5).</p>" % (
+                 REC[1], " / ".join(_k), _z("L3"), _z("L4"),
+                 "1,2 sınırının altında (yetersiz)" if _b["dis_kol"]["L4"]["sf"] < 1.2 else "sınırda bandında (≥ 1,2)"))
+    _sk = [(k, _r[k].get("sikma")) for k in _k if _r[k].get("sikma")]
+    if _sk:
+        o.append(tablo(["Dış kol", "Cıvata", "Sıkışan boy mm", "Baş altı oturma mm²", "Basınç @ 0,5 N·m MPa", "İzinli sıkma torku N·m", "Horn dişi sıyırma SF"],
+                       [["%s mm" % k, esc(s_["civata"]) + ((" + %d pul" % s_["pul_n"]) if s_["pul_n"] else ""), sayi(s_["sikisan_mm"], 1), sayi(s_["oturma_alani_mm2"], 1),
+                         sayi(s_["ref_basinc_MPa"], 1), sayi(s_["izinli_tork_Nm"], 2), sayi(s_["dis_sf_izinli"], 2)] for k, s_ in _sk]))
+        o.append("<p class='not'>Pul yığını (8 mm: 2 × DIN 125-A) delik ezilmesini (PETG'de boy t) ve ucun horn'daki 3,0 mm kavramasını değiştirmez; baş altı basıncını "
+                 "Ø5,5 baştan Ø7 pula yayar → izinli sıkma torku ~2 kat (PETG kısa süreli izin 28,2 MPa). Ön yük PETG sürünmesiyle zamanla gevşer (pullu da); "
+                 "kayma olursa tork delik ezilmesiyle taşınır. Sıkma 0,5 N·m'yi geçmemeli (Al horn dişi). <span class='t'>Tahmini</span> (K 0,2, tam yayılma).</p>")
+    C5 = D.get("catal5")
+    if C5:
+        try:
+            a_ = C5["varyant"]["1.25"]
+            b_ = OZ["1.25"]
+            rr = [["S2 altı kol kütlesi, g", sayi(a_["kol_kutle_g"], 1), sayi(b_["kol_kutle_g"], 1)],
+                  ["Atalet S1, kg·cm²", sayi(a_["I_S1_kgm2"] * 1e4, 2), sayi(b_["I_S1_kgm2"] * 1e4, 2)]]
+            for sv in SV:
+                ea, eb = a_["servo"][sv], b_["servo"][sv]
+                rr.append(["%s: S1 pay statik / ivmeli" % sv, "%s / %s" % (sayi(ea["eklem"]["S1"]["pay_statik"], 2), sayi(ea["eklem"]["S1"]["pay_ivmeli"], 2)),
+                           "%s / %s" % (sayi(eb["eklem"]["S1"]["pay_statik"], 2), sayi(eb["eklem"]["S1"]["pay_ivmeli"], 2))])
+                for on_ek, et in (("Dirsek çatalı dış kolu", "dış kol"), ):
+                    for dur in ("L3", "L4"):
+                        fa = min(r["sf"] for r in ea["satir"] if r["durum"] == dur and r["eleman"].startswith(on_ek))
+                        fb = min(r["sf"] for r in eb["satir"] if r["durum"] == dur and r["eleman"].startswith(on_ek))
+                        rr.append(["%s: SF %s, %s" % (sv, et, DUR[dur]), sayi(fa, 2), sayi(fb, 2)])
+            o.append(tablo(["×1,25 (git %s → şimdi)" % esc(C5["kaynak"].split(":")[0].replace("git ", "")), "Dış kol 5 mm", "Dış kol %s mm" % sayi(CDK["t"], 0)], rr, "sayi"))
+        except (KeyError, ValueError):
+            pass
+
 # ------------------------------------------------------------------ 6 en zayif halka + duzeltmeler
 o.append("<h2>6. En zayıf halkalar ve düzeltmeler</h2>")
 b3 = {x["eleman"]: x for x in Rs["yapisal"]["baglanti"] if x["durum"] == "L3"}
@@ -335,10 +390,14 @@ zay = [
      "üst sınır %s, boşluk sınırlı tahmin %s N (<span class='t'>tahmini</span>, 125 cm tasarımda da var)" % (
          esc(g(b3, "S1 servo mili")["yuk"].split("üst sınır ")[1]), sayi(g(b3, "S1 servo mili")["deger"], 0)),
      "rulman kapağını 7 mm uzatıp ikinci 6808-2RS (2 × 106,80 TL) ile çift rulman (arası ≥ 10 mm): moment rulman çiftinde kalır, S1 yalnız döndürür (omuz raporundaki tasarım niyeti)"],
-    ["6", "Darbe: dirsek çatalı dış kolu (5 mm, katmanlar arası)", "L4 SF %s; el yakası vidaları (yaka duvarı 2,85 mm) %s; üst kol tüpü penceresi %s" % (
+    ["6", "Darbe: dirsek çatalı dış kolu (%s mm, katmanlar arası)" % sayi(GEO.get("catal_dis_kol", {}).get("t", 5.0), 0),
+     "L4 SF %s; el yakası vidaları (yaka duvarı 2,85 mm) %s; üst kol tüpü penceresi %s" % (
         sayi(g(s4, "Dirsek çatalı")["sf"], 2), sayi(g(b4, "El yakası")["sf"], 2), sayi(g(s4, "Üst kol tüpü, kablo")["sf"], 2)),
-     "dış kolu 5 → 7 mm dışa doğru (çakışma taraması yeniden) ya da PETG-CF; yaka vidası 2 → 4 adet ve yaka duvarı "
-     "kalınlaştırma; tüp penceresi uçlarına R2 yuvarlatma. Asıl önlem hız sınırı (Bölüm 5)"],
+     (("dış kol 5 → 8 mm uygulandı (karar Duffy 25 Ekim; Bölüm 5b): L4 sınırda bandına çıktı; daha fazlası için PETG-CF. ")
+      if GEO.get("catal_dis_kol", {}).get("t", 5.0) == 8.0 else
+      ("dış kol 5 → %s mm uygulandı (tasarım ajanı, Duffy onayı bekliyor; Bölüm 5b); L4 ≥ 1,2 için ~8 mm ya da PETG-CF. " % sayi(GEO["catal_dis_kol"]["t"], 0))
+      if GEO.get("catal_dis_kol", {}).get("t", 5.0) > 5.0 else "dış kolu 5 → 7 mm dışa doğru (çakışma taraması yeniden) ya da PETG-CF; ") +
+     "yaka vidası 2 → 4 adet ve yaka duvarı kalınlaştırma; tüp penceresi uçlarına R2 yuvarlatma. Asıl önlem hız sınırı (Bölüm 5)"],
 ]
 o.append(tablo(["#", "Halka", "Neden / sayı (×%s + %s)" % (sayi(REC[0], 2), REC[1]), "Düzeltme önerisi (onaylanmadı, uygulanmadı)"], zay))
 o.append("<p class='not'>Kontrol edilip sorunsuz çıkanlar (her oran ve servoda, L1–L3): kol çatalı pimi ve ön kolu, üst kol tüpü (katmanlar arası dahil; en kötü SF "

@@ -5,7 +5,10 @@
 #   FC_SCRIPT=<bu dosya> TA_BOLUM=<bolumler> [TASLAK_TABAN_W=520] [TA_ROBOT=eski] freecadcmd.exe C:/Users/Victus/.robot-cad/run_fc.py
 # Bolumler (virgulle): kutle (grup kutle/AM/atalet tensoru -> analiz/girdi-<robot>-<W>.json), dogrula (FCStd + STEP + ornek),
 #   statik (ev pozu tum parca ciftleri), kol_sag, kol_sol (kol zinciri x sabit), kolkol, kafa (pan x tilt x sabit),
-#   kafakol_sag, kafakol_sol (kafa x kol), kafakol_ince_sag, kafakol_ince_sol (kafa x kol en dar yer cevresi ince, kontrol ajani 24 Ekim 2026).
+#   kafakol_sag, kafakol_sol (kafa x kol), kafakol_ince_sag, kafakol_ince_sol (kafa x kol en dar yer cevresi ince, kontrol ajani 24 Ekim 2026),
+#   catal (dirsek catali dis kolu eski 5 mm / yeni TA.CATAL_DIS_KOL ayni hedeflere: dirsek ekseni + omuz S1 x S2 5 derece; yalniz yeni robot),
+#   catal_geo (dis kol geometri kontrolu; once TASLAK_CATAL_DIS_KOL=5 ve =7 ile -> catal-geo-5/-7.json, sonra varsayilanla -> catal-geo.json + fark;
+#   8 mm: horn civatasi + bas alti pul yigini, kontrol ajani 24 Ekim 2026 gece).
 #   TA_ROBOT=eski: ayni tarama mevcut 125 cm robotta (karsilastirma, yontem dogrulamasi). TA_BOLUM="" : yalniz robotlari kurar (import icin).
 # Cikti: analiz/<bolum>-<robot>[-<W>].json. Koordinat global (orijin zemin + robot merkezi, +X sag, +Y yukari, +Z ileri), mm, g.
 import os, sys, json, time, math, random, itertools
@@ -1119,6 +1122,279 @@ def b_kafakol_ince(Rb, taraf):
                 sure_s=round(time.time() - ts, 1))
 
 
+# ====================================================================== 8) dirsek catali dis kolu 5 -> TA.CATAL_DIS_KOL (kontrol ajani, 24 Ekim 2026)
+def b_catal(Rb):
+    """Ayni hedeflere eski (5 mm, TP.CATAL_ESKI: catal + M3x8), ara (TP.CATAL_ARA, 8 mm kosusunda 7 mm + M3x10) ve yeni catal (TP.P: catal +
+    horn civatalari + bas alti pul yigini; 8 mm: M3x12 + 2x DIN 125-A, kontrol ajani 24 Ekim 2026 gece) iki kolda:
+    (a) dirsek ekseni boyunca 0...105 (1 derece) on kol (OnKol) + el (El, bilek -90/0/90) parcalarina; es eksenli parcalar (mil, rulman ic
+        bilezigi, pim, pul) ayri raporlanir (mesafe aciyla degismez, temas beklenir: hacim kesisimi olculur);
+    (b) omuz S1 x S2 ince izgara (5 derece, aralik ici) sabit hedeflere: iskelet, kabuk, taban, kafa (ev pozu, tum gruplar), iki omuz govdesi,
+        kendi gobegi (S1 ile), karsi kol (ev pozu). En kucuk bosluk ve kesisim hacmi (eski / yeni)."""
+    ts = time.time()
+    AX, P = Rb["AX"], Rb["P"]
+    KOAKS = ("Dirsek servosu cikis mili", "625ZZ rulman (ic bilezik)", "Pim pulu M5", "Pim civatasi M5x12")
+    out = dict(kalinlik_mm=TA.CATAL_DIS_KOL, eski_mm=TA.CATAL_DIS_KOL_ESKI, ara_mm=list(TP.CATAL_ARA_T), koaks=list(KOAKS), taraf={},
+               civata=dict(boy=TA.HORN_CIVATA_L, pul_n=TA.HORN_PUL_N, pul_mm=TA.HORN_PUL_T))
+    S1g = list(range(int(KOL_ARALIK[0][0]), int(KOL_ARALIK[0][1]) + 1, 5))
+    S2g = sorted(set([int(YANA_MIN)] + [t for t in range(0, int(KOL_ARALIK[1][1]) + 1, 5) if t > YANA_MIN]))
+    out["izgara"] = dict(dirsek=[0, 105, 1], bilek_el=[-90, 0, 90], S1=S1g, S2=S2g)
+
+    def setler(taraf):
+        dr = "dirsek_" + taraf
+        yc = [p["shape"] for p in P if p["modul"] == dr and p["ad"] == "Dirsek catali"]
+        yv = [p["shape"] for p in P if p["modul"] == dr and p["ad"].startswith("Catal-horn civatasi")]
+        yp = [p["shape"] for p in P if p["modul"] == dr and p["ad"].startswith("Catal-horn pulu")]       # bas alti pul yigini (8 mm: 2x DIN 125-A)
+        E = TP.CATAL_ESKI[taraf]
+        assert len(yc) == 1 and len(yv) == 4 and len(yp) == (4 if TA.HORN_PUL_N else 0)
+        assert len(E["Dirsek catali"]) == 1 and len(E["Catal-horn civatasi M3x8"]) == 4
+        S = OrderedDict([("yeni_catal", yc), ("yeni_civata", yv + yp), ("eski_catal", E["Dirsek catali"]), ("eski_civata", E["Catal-horn civatasi M3x8"])])
+        for ta in TP.CATAL_ARA_T:                                       # ara kalinlik (8 mm kosusunda 7 mm + M3x10): ayni hedeflere
+            C = TP.CATAL_ARA[ta][taraf]
+            assert len(C["Dirsek catali"]) == 1 and len(C["civata"]) == 4
+            S["ara%g_catal" % ta] = C["Dirsek catali"]
+            S["ara%g_civata" % ta] = C["civata"] + C["pul"]
+        return S
+
+    def olc(shs, hs, pay):
+        hb = hs.BoundBox
+        en, v = None, 0.0
+        for s in shs:
+            b = App.BoundBox(s.BoundBox)
+            b.enlarge(pay)
+            if not b.intersect(hb):
+                continue
+            d = s.distToShape(hs)[0]
+            if d < 1e-6:
+                vv = kesisim(s, hs)
+                v += vv if vv > 0 else 0.0
+            en = d if en is None else min(en, d)
+        return en, v
+
+    for taraf in ("sag", "sol"):
+        dr, om = "dirsek_" + taraf, "omuz_" + taraf
+        ST = setler(taraf)
+        T = dict(dirsek=[], dirsek_parca={}, omuz=[], omuz_parca={})
+        # (a) dirsek ekseni
+        hed = [p for p in P if p["modul"] == dr and p["grup"] in ("OnKol", "El")]
+        for al in range(0, 106):
+            for be in ((-90, 0, 90) if True else (0,)):
+                if be != 0 and al % 5:
+                    continue                                    # el (bilek) yalniz 5 derecede bir; on kol her derecede
+                kay = {}
+                for q in hed:
+                    if q["grup"] == "El":
+                        M = kol_M(AX, taraf, "El", (0.0, 0.0, float(al), float(be)))
+                    elif be != 0:
+                        continue
+                    else:
+                        M = kol_M(AX, taraf, "OnKol", (0.0, 0.0, float(al)))
+                    qs = sekil(q, M)
+                    for k, shs in ST.items():
+                        d, v = olc(shs, qs, 25.0)
+                        if d is None:
+                            continue
+                        kk = (q["ad"], k)
+                        r = T["dirsek_parca"].setdefault("%s|%s" % kk, dict(parca=q["ad"], grup=q["grup"], set=k, koaks=q["ad"] in KOAKS,
+                                                                           en_az_mm=1e9, poz=None, en_cok_hacim_mm3=0.0))
+                        if d < r["en_az_mm"]:
+                            r["en_az_mm"], r["poz"] = round(d, 3), [al, be]
+                        r["en_cok_hacim_mm3"] = max(r["en_cok_hacim_mm3"], round(v, 3))
+                        if q["ad"] not in KOAKS:
+                            kay.setdefault(k, []).append((d, q["ad"], v))
+                if kay:
+                    T["dirsek"].append(dict(dirsek=al, bilek=be, **{k: [round(min(x)[0], 3), min(x)[1], round(sum(y[2] for y in x), 3)] for k, x in kay.items()}))
+        log("catal %s: dirsek ekseni bitti (%d satir)" % (taraf, len(T["dirsek"])))
+        # (b) omuz izgarasi
+        sabit = [p for p in P if p["modul"] in ("iskelet", "kabuk", "taban", "kafa") or (p["modul"].startswith("omuz_") and p["grup"] == "Govde")
+                 or (p["modul"] in ("omuz_" + ("sol" if taraf == "sag" else "sag"), "dirsek_" + ("sol" if taraf == "sag" else "sag")))]
+        gob = [p for p in P if p["modul"] == om and p["grup"] == "Gobek"]
+        gob_id = set(id(q) for q in gob)
+        for q in sabit + gob:
+            if "obb" not in q:
+                q["obb"] = bb6(q["shape"].optimalBoundingBox())
+        SB = np.array([q["obb"] for q in sabit])
+        for phi in S1g:
+            Mg = kol_M(AX, taraf, "Gobek", (float(phi),))
+            gs = [(q, sekil(q, Mg)) for q in gob]
+            for th in S2g:
+                M = kol_M(AX, taraf, "UstKol", (float(phi), float(th)))
+                tst = OrderedDict((k, [s.copy() for s in shs]) for k, shs in ST.items())
+                for shs in tst.values():
+                    for s in shs:
+                        s.transformShape(M)
+                ub = np.concatenate([np.min([bb6(s.BoundBox)[:3] for shs in tst.values() for s in shs], 0) - 30.0,
+                                     np.max([bb6(s.BoundBox)[3:] for shs in tst.values() for s in shs], 0) + 30.0])
+                yak = [sabit[j] for j in np.nonzero(bosluk_np(ub, SB) < 1e-9)[0]]
+                satir = dict(poz=[phi, th])
+                for q, qs in [(q, q["shape"]) for q in yak] + gs:
+                    for k, shs in tst.items():
+                        d, v = olc(shs, qs, 30.0)
+                        if d is None:
+                            continue
+                        hm = q["modul"] + (" gobek" if id(q) in gob_id else "")
+                        r = T["omuz_parca"].setdefault("%s|%s|%s" % (hm, q["ad"], k), dict(hedef=q["ad"], hedef_modul=hm, set=k, en_az_mm=1e9, poz=None,
+                                                                                         en_cok_hacim_mm3=0.0))
+                        if d < r["en_az_mm"]:
+                            r["en_az_mm"], r["poz"] = round(d, 3), [phi, th]
+                        r["en_cok_hacim_mm3"] = max(r["en_cok_hacim_mm3"], round(v, 3))
+                        if k not in satir or d < satir[k][0]:
+                            satir[k] = [round(d, 3), q["ad"], round(v, 3)]
+                T["omuz"].append(satir)
+        log("catal %s: omuz izgarasi bitti (%d poz)" % (taraf, len(T["omuz"])))
+
+        def ozet(rows, k):
+            v = [(r[k][0], r) for r in rows if k in r]
+            if not v:
+                return None
+            d, r = min(v, key=lambda x: x[0])
+            return dict(mm=d, parca=r[k][1], poz=r.get("poz", [r.get("dirsek"), r.get("bilek")]), hacim_toplam_mm3=sum(x[1][k][2] for x in v))
+        T["ozet"] = {bol: {k: ozet(T[bol], k) for k in ST} for bol in ("dirsek", "omuz")}
+        T["dirsek_parca"] = sorted(T["dirsek_parca"].values(), key=lambda r: (r["koaks"], r["en_az_mm"]))
+        T["omuz_parca"] = sorted(T["omuz_parca"].values(), key=lambda r: r["en_az_mm"])
+        out["taraf"][taraf] = T
+    out["sure_s"] = round(time.time() - ts, 1)
+    return out
+
+
+def b_catal_geo():
+    """Dirsek catali dis kolu geometri kontrolu (TA.CATAL_DIS_KOL ile kurulan TP.P): yeni catal ↔ 5 mm catal (TP.CATAL_ESKI), delikler, horn
+    civatalari + bas alti pul yigini (bas temasi, uc, horn'da kavrama, servo kasasina / cikis miline mesafe dirsek ekseni araliginda 1 derece),
+    45 der. destek ↔ ust kol tupu, eksenler, baski olcusu ve tum parca listesi ozeti (hacim, sinir kutusu, merkez).
+    Cikti adi: ortamda TASLAK_CATAL_DIS_KOL verilmisse catal-geo-<t>.json (5 / 7 karsilastirma kosulari), yoksa catal-geo.json; varsayilan kosu
+    catal-geo-5.json ve catal-geo-7.json ile parca parca karsilastirir (pul parcalari ayri sayilir, kalan parcalar ayni sirada eslenir).
+    Kontrol ajani 24 Ekim 2026 (gece): pullar (8 mm: M3x12 + 2x DIN 125-A) eklendi; TA_KUTLE_REF=<kutle.json> verilirse onunla da karsilastirir."""
+    def bb(s):
+        b = s.BoundBox
+        return [round(x, 4) for x in (b.XMin, b.YMin, b.ZMin, b.XMax, b.YMax, b.ZMax)]
+
+    PUL = "Catal-horn pulu"
+    out = dict(kalinlik_mm=TA.CATAL_DIS_KOL, eski_mm=TA.CATAL_DIS_KOL_ESKI, taraf={},
+               civata=dict(boy=TA.HORN_CIVATA_L, pul_n=TA.HORN_PUL_N, pul_mm=TA.HORN_PUL_T, destek_dis=TA.CATAL_DESTEK_DIS))
+    out["parca"] = [dict(ad=p["ad"], modul=p["modul"], kutle=round(float(p["kutle"]), 4), hacim=round(p["shape"].Volume, 3), bb=bb(p["shape"]),
+                         merkez=r3(V(p["merkez"]), 4)) for p in TP.P]
+    out["eksen"] = {"%s|%s" % k: dict(n=r3(v["n"], 5), u=r3(v["u"], 7)) for k, v in YENI["AX"].items()}
+    for taraf in ("sag", "sol"):
+        dr, om = "dirsek_" + taraf, "omuz_" + taraf
+        bul = lambda ad, m=dr: [p["shape"] for p in TP.P if p["modul"] == m and p["ad"] == ad][0]
+        cat, horn, servo, mil = bul("Dirsek catali"), bul("Dirsek horn 25T aluminyum disk"), bul("Dirsek servosu MG996R"), bul("Dirsek servosu cikis mili")
+        tup = bul("Ust kol tupu", om)
+        civ = [p["shape"] for p in TP.P if p["modul"] == dr and p["ad"].startswith("Catal-horn civatasi")]
+        pul = [p["shape"] for p in TP.P if p["modul"] == dr and p["ad"].startswith(PUL)]
+        E5 = TP.CATAL_ESKI[taraf]
+        cat5, civ5 = E5["Dirsek catali"][0], E5["Catal-horn civatasi M3x8"]
+        ax = YENI["AX"][(dr, "dirsek")]
+        dis = 1.0 if taraf == "sag" else -1.0                               # disari (govdeden uzak) yon, global X
+        hb, cb, cb5 = horn.BoundBox, cat.BoundBox, cat5.BoundBox
+        ek, cik = cat.cut(cat5), cat5.cut(cat)
+        K = dict(catal_bb=bb(cat), catal5_bb=bb(cat5), catal_hacim=round(cat.Volume, 2), catal5_hacim=round(cat5.Volume, 2), gecerli=cat.isValid(),
+                 kati=len(cat.Solids), eklenen_hacim=round(ek.Volume, 2), eklenen_bb=bb(ek) if ek.Volume > 1e-6 else None, cikan_hacim=round(cik.Volume, 4),
+                 horn_x=[round(hb.XMin, 3), round(hb.XMax, 3)], servo_bb=bb(servo), eksen=dict(n=r3(ax["n"], 4), u=r3(ax["u"], 6)),
+                 dis_yuz_x=round(cb.XMax if taraf == "sag" else cb.XMin, 3), dis_yuz5_x=round(cb5.XMax if taraf == "sag" else cb5.XMin, 3),
+                 ic_yuz_x=round(cb.XMin if taraf == "sag" else cb.XMax, 3), ic_yuz5_x=round(cb5.XMin if taraf == "sag" else cb5.XMax, 3),
+                 baski_olcu=sorted([round(cb.XLength, 2), round(cb.YLength, 2), round(cb.ZLength, 2)], reverse=True), tabla=TA.TABLA, hedef=TA.TABLA_HEDEF)
+        K["tabla_sigar"] = max(K["baski_olcu"]) <= TA.TABLA_HEDEF
+        if ek.Volume > 1e-6:                          # eklenen hacim: eski dis yuz duzleminin disi (dis kol + kopru) ve ici (yalniz 45 der. destek eki olmali)
+            x5 = cb5.XMax if taraf == "sag" else cb5.XMin
+            kut = Part.makeBox(400, 400, 400, V(x5 if taraf == "sag" else x5 - 400, cb.YMin - 100, cb.ZMin - 100))
+            ek_d = ek.common(kut)
+            ek_i = ek.cut(kut)
+            K["eklenen_dis"] = dict(hacim=round(ek_d.Volume, 2), bb=bb(ek_d) if ek_d.Volume > 1e-6 else None)
+            K["eklenen_ic"] = dict(hacim=round(ek_i.Volume, 2), bb=bb(ek_i) if ek_i.Volume > 1e-6 else None,
+                                   horn_mm=round(ek_i.distToShape(horn)[0], 3) if ek_i.Volume > 1e-6 else None,
+                                   servo_mm=round(ek_i.distToShape(servo)[0], 3) if ek_i.Volume > 1e-6 else None)
+        # 45 der. destek ve tup: ust kol tupu ile ortak hacim / mesafe (5 mm ile ayni olmali: oturma temasi), eklenen hacim ↔ tup mesafesi
+        K["tup"] = dict(ortak_mm3=round(cat.common(tup).Volume, 4), ortak5_mm3=round(cat5.common(tup).Volume, 4), mesafe_mm=round(cat.distToShape(tup)[0], 4),
+                        eklenen_tupe_mm=round(ek.distToShape(tup)[0], 4) if ek.Volume > 1e-6 else None)
+        dl = []
+        for s in civ:                                 # delik acik mi: civata ekseninde r 1,6 silindir, catal boyunca: yeni ve eski catalla ayni ortak hacim
+            b = s.BoundBox
+            cy = Part.makeCylinder(1.6, cb.XLength + 2, V(cb.XMin - 1, (b.YMin + b.YMax) / 2, (b.ZMin + b.ZMax) / 2), V(1, 0, 0))
+            dl.append(dict(yz=[round((b.YMin + b.YMax) / 2, 3), round((b.ZMin + b.ZMax) / 2, 3)], yeni_mm3=round(cat.common(cy).Volume, 4),
+                           eski_mm3=round(cat5.common(cy).Volume, 4)))
+        K["horn_delikleri"] = dl
+        xd = hb.XMax if taraf == "sag" else hb.XMin - 30
+        cy = Part.makeCylinder(4.4, cb.XLength + 2, V(cb.XMin - 1, ax["n"].y, ax["n"].z), V(1, 0, 0)).common(
+            Part.makeBox(30, 200, 200, V(xd, ax["n"].y - 100, ax["n"].z - 100)))
+        K["merkez_erisim_ortak_mm3"] = dict(yeni=round(cat.common(cy).Volume, 4), eski=round(cat5.common(cy).Volume, 4))
+        ky = lambda s: (round(s.BoundBox.Center.y, 2), round(s.BoundBox.Center.z, 2))
+        pul_k = {ky(q): q for q in pul}
+        cv = []
+        for s, s5 in zip(sorted(civ, key=ky), sorted(civ5, key=ky)):
+            b, b5 = s.BoundBox, s5.BoundBox
+            uc, uc5 = (b.XMin, b5.XMin) if taraf == "sag" else (b.XMax, b5.XMax)
+            r = dict(yz=list(ky(s)), eski_yz=list(ky(s5)), uc_x=round(uc, 3), eski_uc_x=round(uc5, 3), boy=round(b.XLength, 3), eski_boy=round(b5.XLength, 3),
+                     bas_catal_mm=round(s.distToShape(cat)[0], 4), catal_ortak_mm3=round(s.common(cat).Volume, 4),
+                     horn_kavrama_mm=round(min(hb.XMax, b.XMax) - max(hb.XMin, b.XMin), 3),
+                     eski_horn_kavrama_mm=round(min(hb.XMax, b5.XMax) - max(hb.XMin, b5.XMin), 3),
+                     uc_horn_alti_mm=round((hb.XMin - uc) if taraf == "sag" else (uc - hb.XMax), 3))      # < 0: uc horn icinde (cikmiyor)
+            q = pul_k.get(ky(s))
+            if q is not None:                         # pul yigini: catal dis yuzune oturur, bas pulun ustunde, ortak hacim yok, tam destekli mi
+                qb = q.BoundBox
+                q_ic = q.copy()
+                q_ic.translate(V(-dis * qb.XLength, 0, 0))   # yigin kalinligi kadar iceri kaydirilmis kopya: pulun altinda catal malzemesi (oturma alani orani)
+                alt_x = qb.XMin if taraf == "sag" else qb.XMax
+                r["pul"] = dict(x=[round(qb.XMin, 3), round(qb.XMax, 3)], kalinlik=round(qb.XLength, 3), dis_cap=round(max(qb.YLength, qb.ZLength), 3),
+                                alt_dis_yuze_mm=round(dis * (alt_x - K["dis_yuz_x"]), 4), catal_mm=round(q.distToShape(cat)[0], 4),
+                                catal_ortak_mm3=round(q.common(cat).Volume, 4), civata_mm=round(q.distToShape(s)[0], 4),
+                                civata_ortak_mm3=round(q.common(s).Volume, 4), hacim=round(q.Volume, 3), kati=len(q.Solids),
+                                oturma_orani=round(q_ic.common(cat).Volume / q.Volume, 4),
+                                kenar_bosluk_mm=round(min(qb.YMin - cb.YMin, cb.YMax - qb.YMax, qb.ZMin - cb.ZMin, cb.ZMax - qb.ZMax), 3))
+            cv.append(r)
+        K["civatalar"] = cv
+        K["pul_sayisi"] = len(pul)
+        # dirsek ekseni araligi (1 derece): servo govdesi ve cikis mili (kubbe) on kolla doner; civata + pul (catal tarafi) sabit
+        lo, hi = KOL_ARALIK[2]
+        sv = []
+        for al in range(int(math.floor(lo)), int(math.ceil(hi)) + 1):
+            M = Rm(ax, al)
+            s_, m_ = servo.copy(), mil.copy()
+            s_.transformShape(M)
+            m_.transformShape(M)
+            sv.append([al, round(min(s.distToShape(s_)[0] for s in civ + pul), 3), round(min(s.distToShape(s_)[0] for s in civ5), 3),
+                       round(min(s.distToShape(m_)[0] for s in civ + pul), 3), round(min(s.distToShape(m_)[0] for s in civ5), 3)])
+        K["civata_servo_kasasi"] = dict(yeni_en_az=min(x[1] for x in sv), eski_en_az=min(x[2] for x in sv), satir=[x[:3] for x in sv], aralik=[lo, hi])
+        K["civata_cikis_mili"] = dict(yeni_en_az=min(x[3] for x in sv), eski_en_az=min(x[4] for x in sv),
+                                     sabit=(max(x[3] for x in sv) - min(x[3] for x in sv)) < 1e-3)
+        out["taraf"][taraf] = K
+
+    def esle(A_, B_):
+        """Pul parcalari disinda ayni sirada eslenen parca farklari (ad / kutle / bb)."""
+        a_ = [x for x in A_ if not x["ad"].startswith(PUL)]
+        b_ = [x for x in B_ if not x["ad"].startswith(PUL)]
+        fark = [dict(i=i, modul=a["modul"], ad_ref=a["ad"], ad=b["ad"], kutle_ref=a["kutle"], kutle=b["kutle"], bb_ref=a["bb"], bb=b["bb"])
+                for i, (a, b) in enumerate(zip(a_, b_)) if a != b]
+        return dict(parca_ref=len(A_), parca=len(B_), pul_ref=len(A_) - len(a_), pul=len(B_) - len(b_), esit_sayi=len(a_) == len(b_), farkli=fark,
+                    kutle_ref=round(sum(p["kutle"] for p in A_), 3), kutle=round(sum(p["kutle"] for p in B_), 3))
+
+    if os.environ.get("TASLAK_CATAL_DIS_KOL") is None:
+        for tr in (5, 7):
+            yol = os.path.join(OUT, "catal-geo-%d.json" % tr)
+            if os.path.exists(yol):
+                g = json.load(open(yol, encoding="utf-8"))
+                out["fark_%d" % tr] = dict(esle(g["parca"], out["parca"]), eksen_ayni=g["eksen"] == out["eksen"])
+                out["fark_%d" % tr]["pul_parca"] = [dict(modul=p["modul"], ad=p["ad"], kutle=p["kutle"]) for p in out["parca"] if p["ad"].startswith(PUL)]
+    ref = os.environ.get("TA_KUTLE_REF")              # ornek: 7 mm kosusunun kutle.json kopyasi (birebir uretim kontrolu)
+    if ref and os.path.exists(ref):
+        K5 = json.load(open(ref, encoding="utf-8"))["parcalar"]
+        out["fark_kutle_ref"] = dict(yol=ref, parca_ref=len(K5), parca=len(out["parca"]), farkli=[
+            dict(i=i, ad=a["ad"], kutle=a["kutle"], kutle_json=b["kutle_g"]) for i, (a, b) in enumerate(zip(out["parca"], K5))
+            if a["ad"] != b["ad"] or abs(a["kutle"] - b["kutle_g"]) > 0.006 or max(abs(x - y) for x, y in zip(a["merkez"], b["am"])) > 0.006])
+    try:                                                # git 8ee72a0 kutle.json (catal oncesi, 5 mm) ile ad / kutle / merkez (pullar haric)
+        import subprocess
+        r = subprocess.run(["git", "-C", HERE, "show", "%s:tasarim/freecad/taslak-170/kutle.json" % CATAL5_GIT], capture_output=True, check=True)
+        K5 = json.loads(r.stdout.decode("utf-8"))["parcalar"]
+        pp = [p for p in out["parca"] if not p["ad"].startswith(PUL)]
+        out["fark_kutle_json_%s" % CATAL5_GIT] = [dict(i=i, ad=a["ad"], kutle=a["kutle"], kutle_json=b["kutle_g"]) for i, (a, b) in enumerate(zip(pp, K5))
+                                                 if a["ad"] != b["ad"] or abs(a["kutle"] - b["kutle_g"]) > 0.006 or
+                                                 max(abs(x - y) for x, y in zip(a["merkez"], b["am"])) > 0.006]
+    except Exception as e:
+        out["fark_kutle_json_hata"] = str(e)
+    return out
+
+
+CATAL5_GIT = "8ee72a0"          # dirsek catali 5 mm iken son kontrol kosusu (kutle.json, analiz/*.json, kol-analiz)
+
+
 # ====================================================================== kosucu
 for b in BOLUM:
     tb = time.time()
@@ -1136,6 +1412,10 @@ for b in BOLUM:
         yaz("kolkol-%s.json" % R["ad"], b_kolkol(R))
     elif b == "kafa":
         yaz("kafa-%s.json" % R["ad"], b_kafa(R))
+    elif b == "catal":
+        yaz("catal-%s.json" % R["ad"], b_catal(R))
+    elif b == "catal_geo":
+        yaz(("catal-geo-%g.json" % TA.CATAL_DIS_KOL) if os.environ.get("TASLAK_CATAL_DIS_KOL") is not None else "catal-geo.json", b_catal_geo())
     elif b in ("kafakol_ince_sag", "kafakol_ince_sol"):
         yaz("%s-%s.json" % (b, R["ad"]), b_kafakol_ince(R, b.split("_")[-1]))
     elif b in ("kafakol_sag", "kafakol_sol"):
