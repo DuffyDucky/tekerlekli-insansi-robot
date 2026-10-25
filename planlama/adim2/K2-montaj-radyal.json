@@ -1,0 +1,1913 @@
+{
+ "tarih": "2026-10-25T15:40:24",
+ "radyal": [
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "psi": [
+    190.0,
+    333.7
+   ],
+   "yon_psi": 261.9,
+   "S1": -45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "Omuz bandi sag"
+   ],
+   "yol": [
+    [
+     0.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     0.5,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     1.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     2.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     3.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     5.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     8.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     12.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     16.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     20.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     25.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     30.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     40.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     50.0,
+     0.006,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     60.0,
+     1.616,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     75.0,
+     9.345,
+     "Gogus bandi sag",
+     []
+    ],
+    [
+     90.0,
+     20.73,
+     "Gogus bandi sag",
+     []
+    ]
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "psi": [
+    190.0,
+    333.7
+   ],
+   "yon_psi": 261.9,
+   "S1": -20.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "Omuz bandi sag"
+   ],
+   "yol": [
+    [
+     0.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     0.5,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     1.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     2.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     3.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     5.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     8.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     12.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     16.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     20.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     25.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     30.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     40.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     50.0,
+     0.006,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     60.0,
+     1.616,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     75.0,
+     9.345,
+     "Gogus bandi sag",
+     []
+    ],
+    [
+     90.0,
+     20.73,
+     "Gogus bandi sag",
+     []
+    ]
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "psi": [
+    190.0,
+    333.7
+   ],
+   "yon_psi": 261.9,
+   "S1": 0.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "Omuz bandi sag"
+   ],
+   "yol": [
+    [
+     0.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     0.5,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     1.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     2.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     3.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     5.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     8.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     12.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     16.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     20.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     25.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     30.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     40.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     50.0,
+     0.006,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     60.0,
+     1.616,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     75.0,
+     9.345,
+     "Gogus bandi sag",
+     []
+    ],
+    [
+     90.0,
+     20.73,
+     "Gogus bandi sag",
+     []
+    ]
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "psi": [
+    190.0,
+    333.7
+   ],
+   "yon_psi": 261.9,
+   "S1": -45.0,
+   "S2": 5.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "Omuz bandi sag"
+   ],
+   "yol": [
+    [
+     0.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     0.5,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     1.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     2.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     3.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     5.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     8.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     12.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     16.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     20.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     25.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     30.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     40.0,
+     0.0,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     50.0,
+     0.006,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     60.0,
+     1.616,
+     "Omuz bandi sag",
+     []
+    ],
+    [
+     75.0,
+     9.345,
+     "Gogus bandi sag",
+     []
+    ],
+    [
+     90.0,
+     20.73,
+     "Gogus bandi sag",
+     []
+    ]
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "psi": [
+    190.0,
+    333.7
+   ],
+   "yon_psi": 261.9,
+   "S1": -45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    25.0,
+    "S1 kaset govdesi sag"
+   ],
+   "yol": [
+    [
+     0.0,
+     0.2,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     0.5,
+     0.2,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     1.0,
+     0.2,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     2.0,
+     0.2,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     3.0,
+     0.2,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     5.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     8.0,
+     0.838,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     12.0,
+     3.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     16.0,
+     3.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     20.0,
+     0.018,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     25.0,
+     0.0,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     30.0,
+     0.0,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     40.0,
+     0.0,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     50.0,
+     3.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     60.0,
+     8.364,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     75.0,
+     1000000000.0,
+     null,
+     []
+    ],
+    [
+     90.0,
+     1000000000.0,
+     null,
+     []
+    ]
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "psi": [
+    190.0,
+    333.7
+   ],
+   "yon_psi": 261.9,
+   "S1": -20.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    25.0,
+    "S1 kaset govdesi sag"
+   ],
+   "yol": [
+    [
+     0.0,
+     0.2,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     0.5,
+     0.2,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     1.0,
+     0.2,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     2.0,
+     0.2,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     3.0,
+     0.2,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     5.0,
+     0.2,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     8.0,
+     0.838,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     12.0,
+     3.114,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     16.0,
+     3.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     20.0,
+     0.018,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     25.0,
+     0.0,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     30.0,
+     0.0,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     40.0,
+     0.0,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     50.0,
+     3.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     60.0,
+     8.364,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     75.0,
+     1000000000.0,
+     null,
+     []
+    ],
+    [
+     90.0,
+     1000000000.0,
+     null,
+     []
+    ]
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "psi": [
+    190.0,
+    333.7
+   ],
+   "yon_psi": 261.9,
+   "S1": 0.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    25.0,
+    "S1 kaset govdesi sag"
+   ],
+   "yol": [
+    [
+     0.0,
+     0.316,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     0.5,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     1.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     2.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     3.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     5.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     8.0,
+     0.838,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     12.0,
+     3.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     16.0,
+     3.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     20.0,
+     0.018,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     25.0,
+     0.0,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     30.0,
+     0.0,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     40.0,
+     0.0,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     50.0,
+     3.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     60.0,
+     8.364,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     75.0,
+     1000000000.0,
+     null,
+     []
+    ],
+    [
+     90.0,
+     1000000000.0,
+     null,
+     []
+    ]
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "psi": [
+    190.0,
+    333.7
+   ],
+   "yon_psi": 261.9,
+   "S1": -45.0,
+   "S2": 5.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    25.0,
+    "S1 kaset govdesi sag"
+   ],
+   "yol": [
+    [
+     0.0,
+     0.2,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     0.5,
+     0.2,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     1.0,
+     0.2,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     2.0,
+     0.2,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     3.0,
+     0.2,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     5.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     8.0,
+     0.838,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     12.0,
+     3.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     16.0,
+     3.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     20.0,
+     0.018,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     25.0,
+     0.0,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     30.0,
+     0.0,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     40.0,
+     0.0,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     50.0,
+     3.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     60.0,
+     8.364,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     75.0,
+     1000000000.0,
+     null,
+     []
+    ],
+    [
+     90.0,
+     1000000000.0,
+     null,
+     []
+    ]
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.6,
+   "psi": [
+    190.0,
+    333.7
+   ],
+   "yon_psi": 261.9,
+   "S1": -45.0,
+   "S2": 90.0,
+   "cakisan": [
+    [
+     0.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       1.765
+      ]
+     ]
+    ],
+    [
+     0.5,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       1.348
+      ]
+     ]
+    ],
+    [
+     1.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.991
+      ]
+     ]
+    ],
+    [
+     2.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.446
+      ]
+     ]
+    ],
+    [
+     3.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.119
+      ]
+     ]
+    ]
+   ],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "Omuz gobegi"
+   ],
+   "yol": [
+    [
+     0.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       1.765
+      ]
+     ]
+    ],
+    [
+     0.5,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       1.348
+      ]
+     ]
+    ],
+    [
+     1.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.991
+      ]
+     ]
+    ],
+    [
+     2.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.446
+      ]
+     ]
+    ],
+    [
+     3.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.119
+      ]
+     ]
+    ],
+    [
+     5.0,
+     0.6,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     8.0,
+     0.986,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     12.0,
+     3.529,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     16.0,
+     3.59,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     20.0,
+     0.301,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     25.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     30.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     40.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     50.0,
+     3.6,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     60.0,
+     8.487,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     75.0,
+     1000000000.0,
+     null,
+     []
+    ],
+    [
+     90.0,
+     1000000000.0,
+     null,
+     []
+    ]
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.6,
+   "psi": [
+    190.0,
+    333.7
+   ],
+   "yon_psi": 261.9,
+   "S1": -20.0,
+   "S2": 90.0,
+   "cakisan": [
+    [
+     0.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       1.765
+      ]
+     ]
+    ],
+    [
+     0.5,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       1.476
+      ]
+     ]
+    ],
+    [
+     1.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       1.214
+      ]
+     ]
+    ],
+    [
+     2.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.77
+      ]
+     ]
+    ],
+    [
+     3.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.431
+      ]
+     ]
+    ],
+    [
+     5.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.049
+      ]
+     ]
+    ]
+   ],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "Omuz gobegi"
+   ],
+   "yol": [
+    [
+     0.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       1.765
+      ]
+     ]
+    ],
+    [
+     0.5,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       1.476
+      ]
+     ]
+    ],
+    [
+     1.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       1.214
+      ]
+     ]
+    ],
+    [
+     2.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.77
+      ]
+     ]
+    ],
+    [
+     3.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.431
+      ]
+     ]
+    ],
+    [
+     5.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.049
+      ]
+     ]
+    ],
+    [
+     8.0,
+     0.986,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     12.0,
+     3.108,
+     "Omuz gobegi",
+     []
+    ],
+    [
+     16.0,
+     3.59,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     20.0,
+     0.301,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     25.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     30.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     40.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     50.0,
+     3.6,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     60.0,
+     8.487,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     75.0,
+     1000000000.0,
+     null,
+     []
+    ],
+    [
+     90.0,
+     1000000000.0,
+     null,
+     []
+    ]
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.6,
+   "psi": [
+    190.0,
+    333.7
+   ],
+   "yon_psi": 261.9,
+   "S1": 0.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.3,
+    25.0,
+    "S1 kaset govdesi sag"
+   ],
+   "yol": [
+    [
+     0.0,
+     0.608,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     0.5,
+     0.6,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     1.0,
+     0.6,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     2.0,
+     0.6,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     3.0,
+     0.6,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     5.0,
+     0.6,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     8.0,
+     0.986,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     12.0,
+     3.529,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     16.0,
+     3.59,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     20.0,
+     0.301,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     25.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     30.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     40.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     50.0,
+     3.6,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     60.0,
+     8.487,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     75.0,
+     1000000000.0,
+     null,
+     []
+    ],
+    [
+     90.0,
+     1000000000.0,
+     null,
+     []
+    ]
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.6,
+   "psi": [
+    190.0,
+    333.7
+   ],
+   "yon_psi": 261.9,
+   "S1": -45.0,
+   "S2": 5.0,
+   "cakisan": [
+    [
+     0.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       1.765
+      ]
+     ]
+    ],
+    [
+     0.5,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       1.348
+      ]
+     ]
+    ],
+    [
+     1.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.991
+      ]
+     ]
+    ],
+    [
+     2.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.446
+      ]
+     ]
+    ],
+    [
+     3.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.119
+      ]
+     ]
+    ]
+   ],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "Omuz gobegi"
+   ],
+   "yol": [
+    [
+     0.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       1.765
+      ]
+     ]
+    ],
+    [
+     0.5,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       1.348
+      ]
+     ]
+    ],
+    [
+     1.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.991
+      ]
+     ]
+    ],
+    [
+     2.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.446
+      ]
+     ]
+    ],
+    [
+     3.0,
+     0.0,
+     "Omuz gobegi",
+     [
+      [
+       "Omuz gobegi",
+       0.119
+      ]
+     ]
+    ],
+    [
+     5.0,
+     0.6,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     8.0,
+     0.986,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     12.0,
+     3.529,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     16.0,
+     3.59,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     20.0,
+     0.301,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     25.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     30.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     40.0,
+     0.3,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     50.0,
+     3.6,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     60.0,
+     8.487,
+     "S1 kaset govdesi sag",
+     []
+    ],
+    [
+     75.0,
+     1000000000.0,
+     null,
+     []
+    ],
+    [
+     90.0,
+     1000000000.0,
+     null,
+     []
+    ]
+   ]
+  }
+ ],
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-15T09:27:09",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-15T09:21:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-15T09:32:14"
+ },
+ "kapak_eksenel_son": [
+  [
+   -45.0,
+   90.0,
+   3.6,
+   [
+    0.0,
+    "Omuz gobegi"
+   ],
+   [
+    [
+     "Omuz gobegi",
+     1.765
+    ]
+   ]
+  ],
+  [
+   -45.0,
+   90.0,
+   3.0,
+   [
+    0.1,
+    "S1 kaset govdesi sag"
+   ],
+   []
+  ],
+  [
+   -45.0,
+   90.0,
+   2.0,
+   [
+    0.1,
+    "S1 kaset govdesi sag"
+   ],
+   []
+  ],
+  [
+   -45.0,
+   90.0,
+   1.0,
+   [
+    0.1,
+    "S1 kaset govdesi sag"
+   ],
+   []
+  ],
+  [
+   -45.0,
+   90.0,
+   0.5,
+   [
+    0.1,
+    "S1 kaset govdesi sag"
+   ],
+   []
+  ],
+  [
+   -45.0,
+   90.0,
+   0.0,
+   [
+    0.0,
+    "S1 kaset govdesi sag"
+   ],
+   []
+  ],
+  [
+   -20.0,
+   90.0,
+   3.6,
+   [
+    0.0,
+    "Omuz gobegi"
+   ],
+   [
+    [
+     "Omuz gobegi",
+     1.765
+    ]
+   ]
+  ],
+  [
+   -20.0,
+   90.0,
+   3.0,
+   [
+    0.1,
+    "S1 kaset govdesi sag"
+   ],
+   []
+  ],
+  [
+   -20.0,
+   90.0,
+   2.0,
+   [
+    0.1,
+    "S1 kaset govdesi sag"
+   ],
+   []
+  ],
+  [
+   -20.0,
+   90.0,
+   1.0,
+   [
+    0.1,
+    "S1 kaset govdesi sag"
+   ],
+   []
+  ],
+  [
+   -20.0,
+   90.0,
+   0.5,
+   [
+    0.1,
+    "S1 kaset govdesi sag"
+   ],
+   []
+  ],
+  [
+   -20.0,
+   90.0,
+   0.0,
+   [
+    0.0,
+    "S1 kaset govdesi sag"
+   ],
+   []
+  ],
+  [
+   0.0,
+   90.0,
+   3.6,
+   [
+    0.608,
+    "S1 kaset govdesi sag"
+   ],
+   []
+  ],
+  [
+   0.0,
+   90.0,
+   3.0,
+   [
+    0.1,
+    "S1 kaset govdesi sag"
+   ],
+   []
+  ],
+  [
+   0.0,
+   90.0,
+   2.0,
+   [
+    0.1,
+    "S1 kaset govdesi sag"
+   ],
+   []
+  ],
+  [
+   0.0,
+   90.0,
+   1.0,
+   [
+    0.1,
+    "S1 kaset govdesi sag"
+   ],
+   []
+  ],
+  [
+   0.0,
+   90.0,
+   0.5,
+   [
+    0.1,
+    "S1 kaset govdesi sag"
+   ],
+   []
+  ],
+  [
+   0.0,
+   90.0,
+   0.0,
+   [
+    0.0,
+    "S1 kaset govdesi sag"
+   ],
+   []
+  ]
+ ]
+}

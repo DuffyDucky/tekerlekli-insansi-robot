@@ -44,6 +44,23 @@ rehberi (Duffy seçti, 14 Ekim).
 | 8 | **3B montaj rehberi** (A: adım verisi, B: 3B sayfa + yazdırılabilir) | 🔄 Opus-10 altyapı + taslak (şimdiki CAD'den; 6. adımdan sonra tek komutla yeniden üretilecek) | `planlama/rehber/R-gunluk.md`, `rehber/`, `tasarim/freecad/rehber/`. İskelet: `adim4/M6-montaj-sirasi.md` (48 adım) |
 | 9 | Sonuç `rapor.html` + Duffy'ye özet tablo | ⏳ | |
 
+## 1,70 m planı (25 Ekim 2026, Duffy: "ana projeye 170den devam edeceğiz", "tamam onaylıyorum go brr")
+
+Ana tasarım artık `tasarim/freecad/taslak-170/` (kol ×1,25 + omuz DS3235, dirsek çatalı dış kol 8 mm). Duffy'nin onayladığı
+ek kararlar: **göğüs Nextion kaldırılır**, **taban 520 mm + akü 75 mm öne**, **gövde direği 2 m boydan tek parça**. Ölçüm
+bekleyenler (varsayımla ilerlenir, açıkça yazılır): JGB37 durma torku, kafa 5 V akımı (Pi 5 + 10" ekran), omuz servo hattı akımı.
+Push yok (Duffy: "şimdilik yerelde kalsın"); her doğrulanan adım yerel commit. Kurallar yukarıdakiyle aynı (iki Opus ajanı).
+
+| Sıra | İş | Durum |
+|---|---|---|
+| Y1 | S1 kablo kaseti bağımsız kontrolünü bitir (`adim2/K2-s1-kontrol.md`, WIP `834b386`) | ✅ KOŞULLU GEÇTİ (125 + 170); K1–K6 düzeltmeleri Y1b |
+| Y1b | S1 düzeltmeleri K1–K5 (PVC 22 AWG ≤1,5 mm, tambur kablo kelepçesi, flanş pahı + S2 sınırı, U cebi 6,5 + yarık, önden radyal montaj sırası) + K6 (ev pozu kontrolü S2 5°) + ikinci pim, S2 kablosu göbekte | 🔄 |
+| Y2 | Taslağı ana montaja taşı: modüller + `arayuz.py` + `montaj/` (uzun direk, 10" kafa, kol ×1,25, çatal 8, DS3235, Nextion yok, taban 520 + akü öne); `eklem_sinirlari.json`, `maliyet.json`, baskı listesi, elektrik/akü hesabı, README, proje planı; demodan lidar/otonomi önerisi çıkar, 1,70 m ekle | ⏳ |
+| Y3 | M6 CAD (erişim düzeltmeleri, eski 4. adımdaki liste) | ⏳ |
+| Y4 | Tüm modüller yeniden üretilir → tam çakışma taraması → regresyon (eski 6. adım) | ⏳ |
+| Y5 | 3B montaj rehberi 1,70 m'den yeniden üretilir ve tamamlanır (eski 8. adım) | ⏳ |
+| Y6 | Belgeler + sonuç `rapor.html` (eski 7. ve 9. adım) | ⏳ |
+
 ## Günlük
 - 2026-10-14 22:45 Döngü kuruldu. Opus-1 (G + M1) ve Opus-2 (M4) çalışıyor. K4 = Pi kafada.
 - 2026-10-14 22:55 `lale-duzeltme` dalı açıldı, `c531c59` gönderildi (11 Ekim planları + 1. adımın ajan dışı kısmı).
@@ -65,3 +82,5 @@ rehberi (Duffy seçti, 14 Ekim).
 - 2026-10-15 ~19:15 Opus-9b bitti → `15a4444` (toplam betikle doğrulandı). Opus-10 montaj rehberi altyapısı (CAD'i yalnız okur); Opus-8b S1 kontrolünde. M6 CAD, S1 kontrolünden sonra.
 - 2026-10-15 ~19:30 Duffy duraklattı (yukarıdaki not). Zamanlayıcı silindi; Opus-10'a %50 checkpoint talimatı gönderildi.
 - 2026-10-15 ~23:30 PC reset: Opus-8b (S1 kontrolü) yarıda kaldı, `K2-s1-kontrol.md` kapanmadı (son tarama 22:16). Duffy: limit %82, sonra devam. Devamda yeni ajan günlükten başlar.
+- 2026-10-25 1,70 m planı kuruldu (yukarıda). Y1: S1 kontrolü yeni Opus ajanıyla, `K2-s1-kontrol.md` günlüğünden devam.
+- 2026-10-25 Y1 bitti: KOŞULLU GEÇTİ. 6 ev pozu çakışması modelleme artığı (S2 0°, kol 3,6°'de dayanıyor). Uzatma kablosu taslakta ~12,3 m. Y1b tasarım ajanı başlıyor.

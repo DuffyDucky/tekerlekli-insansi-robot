@@ -1,0 +1,1992 @@
+{
+ "tarih": "2026-10-25T15:42:18",
+ "kayis_hacim": [
+  [
+   -45.0,
+   0.01
+  ],
+  [
+   101.0,
+   0.01
+  ],
+  [
+   102.0,
+   0.06
+  ],
+  [
+   103.0,
+   0.123
+  ],
+  [
+   104.0,
+   0.169
+  ],
+  [
+   105.0,
+   0.175
+  ],
+  [
+   106.0,
+   0.175
+  ],
+  [
+   107.0,
+   0.175
+  ],
+  [
+   108.0,
+   0.175
+  ],
+  [
+   109.0,
+   0.175
+  ],
+  [
+   110.0,
+   0.175
+  ],
+  [
+   111.0,
+   0.175
+  ],
+  [
+   112.0,
+   0.144
+  ],
+  [
+   113.0,
+   0.084
+  ],
+  [
+   114.0,
+   0.026
+  ],
+  [
+   122.0,
+   0.026
+  ],
+  [
+   123.0,
+   0.084
+  ],
+  [
+   124.0,
+   0.144
+  ],
+  [
+   125.0,
+   0.175
+  ],
+  [
+   126.0,
+   0.175
+  ],
+  [
+   127.0,
+   0.175
+  ],
+  [
+   128.0,
+   0.175
+  ],
+  [
+   129.0,
+   0.175
+  ],
+  [
+   130.0,
+   0.175
+  ],
+  [
+   131.0,
+   0.175
+  ],
+  [
+   132.0,
+   0.169
+  ],
+  [
+   133.0,
+   0.123
+  ],
+  [
+   134.0,
+   0.06
+  ],
+  [
+   135.0,
+   0.01
+  ]
+ ],
+ "kayis_sektor_ic_bosluk": {
+  "en_az": [
+   -45.0,
+   0.5,
+   "Rulman kapagi"
+  ],
+  "satir": [
+   [
+    -45.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    -44.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    -43.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    -42.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    -41.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    -40.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    -39.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    -38.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    -37.0,
+    0.709,
+    "Rulman kapagi"
+   ],
+   [
+    -36.0,
+    1.216,
+    "Rulman kapagi"
+   ],
+   [
+    -35.0,
+    1.782,
+    "Rulman kapagi"
+   ],
+   [
+    -34.0,
+    2.361,
+    "Rulman kapagi"
+   ],
+   [
+    -33.0,
+    2.944,
+    "Rulman kapagi"
+   ],
+   [
+    -32.0,
+    3.526,
+    "Rulman kapagi"
+   ],
+   [
+    -31.0,
+    4.105,
+    "Rulman kapagi"
+   ],
+   [
+    -30.0,
+    4.68,
+    "Rulman kapagi"
+   ],
+   [
+    -29.0,
+    5.251,
+    "Rulman kapagi"
+   ],
+   [
+    -28.0,
+    5.818,
+    "Rulman kapagi"
+   ],
+   [
+    -27.0,
+    6.379,
+    "Rulman kapagi"
+   ],
+   [
+    -26.0,
+    6.935,
+    "Rulman kapagi"
+   ],
+   [
+    -25.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -24.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -23.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -22.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -21.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -20.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -19.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -18.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -17.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -16.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -15.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -14.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -13.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -12.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -11.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -10.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -9.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -8.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -7.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -6.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -5.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -4.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -3.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -2.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    -1.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    0.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    1.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    2.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    3.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    4.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    5.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    6.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    7.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    8.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    9.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    10.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    11.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    12.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    13.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    14.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    15.0,
+    1000000000.0,
+    null
+   ],
+   [
+    16.0,
+    1000000000.0,
+    null
+   ],
+   [
+    17.0,
+    1000000000.0,
+    null
+   ],
+   [
+    18.0,
+    1000000000.0,
+    null
+   ],
+   [
+    19.0,
+    1000000000.0,
+    null
+   ],
+   [
+    20.0,
+    1000000000.0,
+    null
+   ],
+   [
+    21.0,
+    1000000000.0,
+    null
+   ],
+   [
+    22.0,
+    1000000000.0,
+    null
+   ],
+   [
+    23.0,
+    1000000000.0,
+    null
+   ],
+   [
+    24.0,
+    1000000000.0,
+    null
+   ],
+   [
+    25.0,
+    1000000000.0,
+    null
+   ],
+   [
+    26.0,
+    1000000000.0,
+    null
+   ],
+   [
+    27.0,
+    1000000000.0,
+    null
+   ],
+   [
+    28.0,
+    1000000000.0,
+    null
+   ],
+   [
+    29.0,
+    1000000000.0,
+    null
+   ],
+   [
+    30.0,
+    1000000000.0,
+    null
+   ],
+   [
+    31.0,
+    1000000000.0,
+    null
+   ],
+   [
+    32.0,
+    1000000000.0,
+    null
+   ],
+   [
+    33.0,
+    1000000000.0,
+    null
+   ],
+   [
+    34.0,
+    1000000000.0,
+    null
+   ],
+   [
+    35.0,
+    1000000000.0,
+    null
+   ],
+   [
+    36.0,
+    1000000000.0,
+    null
+   ],
+   [
+    37.0,
+    1000000000.0,
+    null
+   ],
+   [
+    38.0,
+    1000000000.0,
+    null
+   ],
+   [
+    39.0,
+    1000000000.0,
+    null
+   ],
+   [
+    40.0,
+    1000000000.0,
+    null
+   ],
+   [
+    41.0,
+    1000000000.0,
+    null
+   ],
+   [
+    42.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    43.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    44.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    45.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    46.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    47.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    48.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    49.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    50.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    51.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    52.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    53.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    54.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    55.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    56.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    57.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    58.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    59.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    60.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    61.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    62.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    63.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    64.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    65.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    66.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    67.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    68.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    69.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    70.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    71.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    72.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    73.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    74.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    75.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    76.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    77.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    78.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    79.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    80.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    81.0,
+    6.999,
+    "Rulman kapagi"
+   ],
+   [
+    82.0,
+    6.935,
+    "Rulman kapagi"
+   ],
+   [
+    83.0,
+    6.379,
+    "Rulman kapagi"
+   ],
+   [
+    84.0,
+    5.818,
+    "Rulman kapagi"
+   ],
+   [
+    85.0,
+    5.251,
+    "Rulman kapagi"
+   ],
+   [
+    86.0,
+    4.68,
+    "Rulman kapagi"
+   ],
+   [
+    87.0,
+    4.105,
+    "Rulman kapagi"
+   ],
+   [
+    88.0,
+    3.526,
+    "Rulman kapagi"
+   ],
+   [
+    89.0,
+    2.944,
+    "Rulman kapagi"
+   ],
+   [
+    90.0,
+    2.361,
+    "Rulman kapagi"
+   ],
+   [
+    91.0,
+    1.782,
+    "Rulman kapagi"
+   ],
+   [
+    92.0,
+    1.216,
+    "Rulman kapagi"
+   ],
+   [
+    93.0,
+    0.709,
+    "Rulman kapagi"
+   ],
+   [
+    94.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    95.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    96.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    97.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    98.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    99.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    100.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    101.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    102.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    103.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    104.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    105.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    106.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    107.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    108.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    109.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    110.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    111.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    112.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    113.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    114.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    115.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    116.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    117.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    118.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    119.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    120.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    121.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    122.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    123.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    124.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    125.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    126.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    127.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    128.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    129.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    130.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    131.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    132.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    133.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    134.0,
+    0.5,
+    "Rulman kapagi"
+   ],
+   [
+    135.0,
+    0.5,
+    "Rulman kapagi"
+   ]
+  ]
+ },
+ "kayis": {
+  "model": "r 36.0...37.0, x 154.65...157.15, psi_g 146.75...157.25",
+  "tambura_giris_mm3": 0.0,
+  "en_az": [
+   -45.0,
+   0.0,
+   "Kapak civatasi M3x12"
+  ],
+  "temas_phi": [
+   -45.0,
+   101.0,
+   102.0,
+   103.0,
+   104.0,
+   105.0,
+   106.0,
+   107.0,
+   108.0,
+   109.0,
+   110.0,
+   111.0,
+   112.0,
+   113.0,
+   114.0,
+   122.0,
+   123.0,
+   124.0,
+   125.0,
+   126.0,
+   127.0,
+   128.0,
+   129.0,
+   130.0,
+   131.0,
+   132.0,
+   133.0,
+   134.0,
+   135.0
+  ],
+  "tambur_capb_en_az": [
+   -45.0,
+   0.5,
+   "Rulman kapagi"
+  ],
+  "satir": [
+   [
+    -45.0,
+    0.0,
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -44.0,
+    0.121,
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -43.0,
+    0.477,
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -42.0,
+    0.898,
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -41.0,
+    1.366,
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -40.0,
+    1.866,
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -39.0,
+    2.389,
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -38.0,
+    2.65,
+    "Rulman kapagi"
+   ],
+   [
+    -37.0,
+    2.655,
+    "Rulman kapagi"
+   ],
+   [
+    -36.0,
+    2.755,
+    "Rulman kapagi"
+   ],
+   [
+    -35.0,
+    2.97,
+    "Rulman kapagi"
+   ],
+   [
+    -34.0,
+    3.273,
+    "Rulman kapagi"
+   ],
+   [
+    -33.0,
+    3.642,
+    "Rulman kapagi"
+   ],
+   [
+    -32.0,
+    4.057,
+    "Rulman kapagi"
+   ],
+   [
+    -31.0,
+    4.502,
+    "Rulman kapagi"
+   ],
+   [
+    -30.0,
+    4.969,
+    "Rulman kapagi"
+   ],
+   [
+    -29.0,
+    5.45,
+    "Rulman kapagi"
+   ],
+   [
+    -28.0,
+    5.94,
+    "Rulman kapagi"
+   ],
+   [
+    -27.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -26.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -25.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -24.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -23.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -22.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -21.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -20.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -19.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -18.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -17.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -16.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -15.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -14.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -13.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -12.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -11.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -10.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -9.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -8.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -7.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -6.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -5.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -4.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -3.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -2.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    -1.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    0.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    1.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    2.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    3.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    4.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    5.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    6.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    7.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    8.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    9.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    10.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    11.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    12.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    13.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    14.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    15.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    16.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    17.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    18.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    19.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    20.0,
+    1000000000.0,
+    null
+   ],
+   [
+    21.0,
+    1000000000.0,
+    null
+   ],
+   [
+    22.0,
+    1000000000.0,
+    null
+   ],
+   [
+    23.0,
+    1000000000.0,
+    null
+   ],
+   [
+    24.0,
+    1000000000.0,
+    null
+   ],
+   [
+    25.0,
+    1000000000.0,
+    null
+   ],
+   [
+    26.0,
+    1000000000.0,
+    null
+   ],
+   [
+    27.0,
+    1000000000.0,
+    null
+   ],
+   [
+    28.0,
+    1000000000.0,
+    null
+   ],
+   [
+    29.0,
+    1000000000.0,
+    null
+   ],
+   [
+    30.0,
+    1000000000.0,
+    null
+   ],
+   [
+    31.0,
+    1000000000.0,
+    null
+   ],
+   [
+    32.0,
+    1000000000.0,
+    null
+   ],
+   [
+    33.0,
+    1000000000.0,
+    null
+   ],
+   [
+    34.0,
+    1000000000.0,
+    null
+   ],
+   [
+    35.0,
+    1000000000.0,
+    null
+   ],
+   [
+    36.0,
+    1000000000.0,
+    null
+   ],
+   [
+    37.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    38.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    39.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    40.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    41.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    42.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    43.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    44.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    45.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    46.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    47.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    48.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    49.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    50.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    51.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    52.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    53.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    54.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    55.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    56.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    57.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    58.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    59.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    60.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    61.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    62.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    63.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    64.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    65.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    66.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    67.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    68.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    69.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    70.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    71.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    72.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    73.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    74.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    75.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    76.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    77.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    78.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    79.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    80.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    81.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    82.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    83.0,
+    6.0,
+    "Rulman kapagi"
+   ],
+   [
+    84.0,
+    5.94,
+    "Rulman kapagi"
+   ],
+   [
+    85.0,
+    5.45,
+    "Rulman kapagi"
+   ],
+   [
+    86.0,
+    4.969,
+    "Rulman kapagi"
+   ],
+   [
+    87.0,
+    4.502,
+    "Rulman kapagi"
+   ],
+   [
+    88.0,
+    4.057,
+    "Rulman kapagi"
+   ],
+   [
+    89.0,
+    3.642,
+    "Rulman kapagi"
+   ],
+   [
+    90.0,
+    3.273,
+    "Rulman kapagi"
+   ],
+   [
+    91.0,
+    2.97,
+    "Rulman kapagi"
+   ],
+   [
+    92.0,
+    2.755,
+    "Rulman kapagi"
+   ],
+   [
+    93.0,
+    2.655,
+    "Rulman kapagi"
+   ],
+   [
+    94.0,
+    2.65,
+    "Rulman kapagi"
+   ],
+   [
+    95.0,
+    2.389,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    96.0,
+    1.866,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    97.0,
+    1.366,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    98.0,
+    0.898,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    99.0,
+    0.477,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    100.0,
+    0.121,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    101.0,
+    0.0,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    102.0,
+    0.0,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    103.0,
+    0.0,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    104.0,
+    0.0,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    105.0,
+    0.0,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    106.0,
+    0.0,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    107.0,
+    0.0,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    108.0,
+    0.0,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    109.0,
+    0.0,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    110.0,
+    0.0,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    111.0,
+    0.0,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    112.0,
+    0.0,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    113.0,
+    0.0,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    114.0,
+    0.0,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    115.0,
+    0.007,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    116.0,
+    0.329,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    117.0,
+    0.727,
+    "Kapak civatasi M3x001"
+   ],
+   [
+    118.0,
+    1.179,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    119.0,
+    0.727,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    120.0,
+    0.329,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    121.0,
+    0.007,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    122.0,
+    0.0,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    123.0,
+    0.0,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    124.0,
+    0.0,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    125.0,
+    0.0,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    126.0,
+    0.0,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    127.0,
+    0.0,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    128.0,
+    0.0,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    129.0,
+    0.0,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    130.0,
+    0.0,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    131.0,
+    0.0,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    132.0,
+    0.0,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    133.0,
+    0.0,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    134.0,
+    0.0,
+    "Kapak civatasi M3x003"
+   ],
+   [
+    135.0,
+    0.0,
+    "Kapak civatasi M3x003"
+   ]
+  ]
+ },
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-15T09:27:09",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-15T09:21:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-15T09:32:14"
+ }
+}

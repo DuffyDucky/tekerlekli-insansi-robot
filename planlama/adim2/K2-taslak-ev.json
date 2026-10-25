@@ -1,0 +1,357 @@
+{
+ "tarih": "2026-10-25T15:43:42",
+ "taslak_parca": 1060,
+ "DY": 435.0,
+ "ev_pozu": {
+  "sag": {
+   "kol_parca": [
+    "S2 horn 25T aluminyum disk (sag)",
+    "S2 horn merkez vidasi M3 (sag)",
+    "Kol catali (sag)",
+    "625ZZ rulman (dis bilezik) (sag)",
+    "Catal-horn civatasi M3x8 (sag)",
+    "Catal-horn civatasi M3x8 (sag)001",
+    "Catal-horn civatasi M3x8 (sag)002",
+    "Catal-horn civatasi M3x8 (sag)003",
+    "Ust kol tupu (sag)",
+    "Isil gomme somun M3 (catalda) (sag)",
+    "Tup civatasi M3x8 (sag)",
+    "Isil gomme somun M3 (catalda) (sag)001",
+    "Tup civatasi M3x8 (sag)001",
+    "Dirsek catali (sag)",
+    "Bilezik pulu M3 (bas) (sag)",
+    "Bilezik civatasi M3x20 (sag)",
+    "Bilezik pulu M3 (somun) (sag)",
+    "Bilezik kontra somunu M3 (sag)",
+    "Bilezik pulu M3 (bas) (sag)001",
+    "Bilezik civatasi M3x20 (sag)001",
+    "Bilezik pulu M3 (somun) (sag)001",
+    "Bilezik kontra somunu M3 (sag)001",
+    "625ZZ rulman (dis bilezik) (sag)001",
+    "Dirsek horn 25T aluminyum disk (sag)",
+    "Dirsek horn merkez vidasi M3 (sag)",
+    "Catal-horn civatasi M3x12 (sag)",
+    "Catal-horn pulu M3 (2x DIN 125-A) (sag)",
+    "Catal-horn civatasi M3x12 (sag)001",
+    "Catal-horn pulu M3 (2x DIN 125-A) (sag)001",
+    "Catal-horn civatasi M3x12 (sag)002",
+    "Catal-horn pulu M3 (2x DIN 125-A) (sag)002",
+    "Catal-horn civatasi M3x12 (sag)003",
+    "Catal-horn pulu M3 (2x DIN 125-A) (sag)003",
+    "On kol govdesi (sag)",
+    "625ZZ rulman (ic bilezik) (sag)001",
+    "Pim pulu M5 (sag)",
+    "Pim civatasi M5x12 (sag)",
+    "Isil gomme somun M5 (on kolda) (sag)",
+    "Dirsek servosu MG996R (sag)",
+    "Dirsek servosu cikis mili (sag)",
+    "Dirsek servosu kulak civatasi M4x16 (sag)",
+    "Dirsek servosu kontra somunu M4 (sag)",
+    "Dirsek servosu kulak civatasi M4x16 (sag)001",
+    "Dirsek servosu kontra somunu M4 (sag)001",
+    "Dirsek servosu kulak civatasi M4x16 (sag)002",
+    "Dirsek servosu kontra somunu M4 (sag)002",
+    "Dirsek servosu kulak civatasi M4x16 (sag)003",
+    "Dirsek servosu kontra somunu M4 (sag)003",
+    "Bilek servosu MG996R (sag)",
+    "Bilek servosu cikis mili (sag)",
+    "Bilek servosu kulak civatasi M4x16 (sag)",
+    "Bilek servosu kontra somunu M4 (sag)",
+    "Bilek servosu kulak civatasi M4x16 (sag)001",
+    "Bilek servosu kontra somunu M4 (sag)001",
+    "Bilek servosu kulak civatasi M4x16 (sag)002",
+    "Bilek servosu kontra somunu M4 (sag)002",
+    "Bilek servosu kulak civatasi M4x16 (sag)003",
+    "Bilek servosu kontra somunu M4 (sag)003",
+    "Bilek horn 25T aluminyum disk (sag)",
+    "Bilek horn merkez vidasi M3 (sag)",
+    "Bilek flansi (sag)",
+    "Flans-horn civatasi M3x8 (sag)",
+    "Flans-horn civatasi M3x8 (sag)001",
+    "Flans-horn civatasi M3x8 (sag)002",
+    "Flans-horn civatasi M3x8 (sag)003",
+    "El (sag)",
+    "Isil gomme somun M3 (flansta) (sag)",
+    "Yaka civatasi M3x6 ISO 7380 (sag)",
+    "Isil gomme somun M3 (flansta) (sag)001",
+    "Yaka civatasi M3x6 ISO 7380 (sag)001"
+   ],
+   "satir": [
+    {
+     "S2": 0.0,
+     "cakisma": [
+      [
+       "Kol catali (sag)",
+       "S1 kablo tamburu (sag)",
+       97.87
+      ],
+      [
+       "Ust kol tupu (sag)",
+       "S1 kablo tamburu (sag)",
+       65.01
+      ],
+      [
+       "Ust kol tupu (sag)",
+       "S1 kaset kapagi sag",
+       7.61
+      ]
+     ],
+     "en_kucuk": [
+      0.0,
+      "S2 horn 25T aluminyum disk (sag)",
+      "S2 servo cikis mili (sag)"
+     ]
+    },
+    {
+     "S2": 3.0,
+     "cakisma": [
+      [
+       "Kol catali (sag)",
+       "S1 kablo tamburu (sag)",
+       6.98
+      ],
+      [
+       "Ust kol tupu (sag)",
+       "S1 kablo tamburu (sag)",
+       0.84
+      ]
+     ],
+     "en_kucuk": [
+      0.0,
+      "S2 horn 25T aluminyum disk (sag)",
+      "S2 servo cikis mili (sag)"
+     ]
+    },
+    {
+     "S2": 3.5,
+     "cakisma": [
+      [
+       "Kol catali (sag)",
+       "S1 kablo tamburu (sag)",
+       0.17
+      ]
+     ],
+     "en_kucuk": [
+      0.0,
+      "S2 horn 25T aluminyum disk (sag)",
+      "S2 servo cikis mili (sag)"
+     ]
+    },
+    {
+     "S2": 3.75,
+     "cakisma": [],
+     "en_kucuk": [
+      0.0,
+      "S2 horn 25T aluminyum disk (sag)",
+      "S2 servo cikis mili (sag)"
+     ]
+    },
+    {
+     "S2": 4.0,
+     "cakisma": [],
+     "en_kucuk": [
+      0.0,
+      "S2 horn 25T aluminyum disk (sag)",
+      "S2 servo cikis mili (sag)"
+     ]
+    },
+    {
+     "S2": 4.5,
+     "cakisma": [],
+     "en_kucuk": [
+      0.0,
+      "S2 horn 25T aluminyum disk (sag)",
+      "S2 servo cikis mili (sag)"
+     ]
+    },
+    {
+     "S2": 5.0,
+     "cakisma": [],
+     "en_kucuk": [
+      0.0,
+      "S2 horn 25T aluminyum disk (sag)",
+      "S2 servo cikis mili (sag)"
+     ]
+    }
+   ]
+  },
+  "sol": {
+   "kol_parca": [
+    "S2 horn 25T aluminyum disk (sol)",
+    "S2 horn merkez vidasi M3 (sol)",
+    "Kol catali (sol)",
+    "625ZZ rulman (dis bilezik) (sol)",
+    "Catal-horn civatasi M3x8 (sol)",
+    "Catal-horn civatasi M3x8 (sol)001",
+    "Catal-horn civatasi M3x8 (sol)002",
+    "Catal-horn civatasi M3x8 (sol)003",
+    "Ust kol tupu (sol)",
+    "Isil gomme somun M3 (catalda) (sol)",
+    "Tup civatasi M3x8 (sol)",
+    "Isil gomme somun M3 (catalda) (sol)001",
+    "Tup civatasi M3x8 (sol)001",
+    "Dirsek catali (sol)",
+    "Bilezik pulu M3 (bas) (sol)",
+    "Bilezik civatasi M3x20 (sol)",
+    "Bilezik pulu M3 (somun) (sol)",
+    "Bilezik kontra somunu M3 (sol)",
+    "Bilezik pulu M3 (bas) (sol)001",
+    "Bilezik civatasi M3x20 (sol)001",
+    "Bilezik pulu M3 (somun) (sol)001",
+    "Bilezik kontra somunu M3 (sol)001",
+    "625ZZ rulman (dis bilezik) (sol)001",
+    "Dirsek horn 25T aluminyum disk (sol)",
+    "Dirsek horn merkez vidasi M3 (sol)",
+    "Catal-horn civatasi M3x12 (sol)",
+    "Catal-horn pulu M3 (2x DIN 125-A) (sol)",
+    "Catal-horn civatasi M3x12 (sol)001",
+    "Catal-horn pulu M3 (2x DIN 125-A) (sol)001",
+    "Catal-horn civatasi M3x12 (sol)002",
+    "Catal-horn pulu M3 (2x DIN 125-A) (sol)002",
+    "Catal-horn civatasi M3x12 (sol)003",
+    "Catal-horn pulu M3 (2x DIN 125-A) (sol)003",
+    "On kol govdesi (sol)",
+    "625ZZ rulman (ic bilezik) (sol)001",
+    "Pim pulu M5 (sol)",
+    "Pim civatasi M5x12 (sol)",
+    "Isil gomme somun M5 (on kolda) (sol)",
+    "Dirsek servosu MG996R (sol)",
+    "Dirsek servosu cikis mili (sol)",
+    "Dirsek servosu kulak civatasi M4x16 (sol)",
+    "Dirsek servosu kontra somunu M4 (sol)",
+    "Dirsek servosu kulak civatasi M4x16 (sol)001",
+    "Dirsek servosu kontra somunu M4 (sol)001",
+    "Dirsek servosu kulak civatasi M4x16 (sol)002",
+    "Dirsek servosu kontra somunu M4 (sol)002",
+    "Dirsek servosu kulak civatasi M4x16 (sol)003",
+    "Dirsek servosu kontra somunu M4 (sol)003",
+    "Bilek servosu MG996R (sol)",
+    "Bilek servosu cikis mili (sol)",
+    "Bilek servosu kulak civatasi M4x16 (sol)",
+    "Bilek servosu kontra somunu M4 (sol)",
+    "Bilek servosu kulak civatasi M4x16 (sol)001",
+    "Bilek servosu kontra somunu M4 (sol)001",
+    "Bilek servosu kulak civatasi M4x16 (sol)002",
+    "Bilek servosu kontra somunu M4 (sol)002",
+    "Bilek servosu kulak civatasi M4x16 (sol)003",
+    "Bilek servosu kontra somunu M4 (sol)003",
+    "Bilek horn 25T aluminyum disk (sol)",
+    "Bilek horn merkez vidasi M3 (sol)",
+    "Bilek flansi (sol)",
+    "Flans-horn civatasi M3x8 (sol)",
+    "Flans-horn civatasi M3x8 (sol)001",
+    "Flans-horn civatasi M3x8 (sol)002",
+    "Flans-horn civatasi M3x8 (sol)003",
+    "El (sol)",
+    "Isil gomme somun M3 (flansta) (sol)",
+    "Yaka civatasi M3x6 ISO 7380 (sol)",
+    "Isil gomme somun M3 (flansta) (sol)001",
+    "Yaka civatasi M3x6 ISO 7380 (sol)001"
+   ],
+   "satir": [
+    {
+     "S2": 0.0,
+     "cakisma": [
+      [
+       "Kol catali (sol)",
+       "S1 kablo tamburu (sol)",
+       97.87
+      ],
+      [
+       "Ust kol tupu (sol)",
+       "S1 kablo tamburu (sol)",
+       65.01
+      ],
+      [
+       "Ust kol tupu (sol)",
+       "S1 kaset kapagi sol",
+       7.61
+      ]
+     ],
+     "en_kucuk": [
+      0.0,
+      "S2 horn 25T aluminyum disk (sol)",
+      "S2 servo cikis mili (sol)"
+     ]
+    },
+    {
+     "S2": 3.0,
+     "cakisma": [
+      [
+       "Kol catali (sol)",
+       "S1 kablo tamburu (sol)",
+       6.98
+      ],
+      [
+       "Ust kol tupu (sol)",
+       "S1 kablo tamburu (sol)",
+       0.84
+      ]
+     ],
+     "en_kucuk": [
+      0.0,
+      "S2 horn 25T aluminyum disk (sol)",
+      "S2 servo cikis mili (sol)"
+     ]
+    },
+    {
+     "S2": 3.5,
+     "cakisma": [
+      [
+       "Kol catali (sol)",
+       "S1 kablo tamburu (sol)",
+       0.17
+      ]
+     ],
+     "en_kucuk": [
+      0.0,
+      "S2 horn 25T aluminyum disk (sol)",
+      "S2 servo cikis mili (sol)"
+     ]
+    },
+    {
+     "S2": 3.75,
+     "cakisma": [],
+     "en_kucuk": [
+      0.0,
+      "S2 horn 25T aluminyum disk (sol)",
+      "S2 servo cikis mili (sol)"
+     ]
+    },
+    {
+     "S2": 4.0,
+     "cakisma": [],
+     "en_kucuk": [
+      0.0,
+      "S2 horn 25T aluminyum disk (sol)",
+      "S2 servo cikis mili (sol)"
+     ]
+    },
+    {
+     "S2": 4.5,
+     "cakisma": [],
+     "en_kucuk": [
+      0.0,
+      "S2 horn 25T aluminyum disk (sol)",
+      "S2 servo cikis mili (sol)"
+     ]
+    },
+    {
+     "S2": 5.0,
+     "cakisma": [],
+     "en_kucuk": [
+      0.0,
+      "S2 horn 25T aluminyum disk (sol)",
+      "S2 servo cikis mili (sol)"
+     ]
+    }
+   ]
+  }
+ },
+ "girdi": {
+  "taslak-170/taslak-170.FCStd": "2026-10-24T23:25:09",
+  "omuz/omuz-montaj.FCStd": "2026-10-15T09:27:09",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-15T09:21:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-15T09:32:14"
+ }
+}

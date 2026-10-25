@@ -1,0 +1,145 @@
+{
+ "tarih": "2026-10-25T15:41:49",
+ "taslak_parca": 1060,
+ "DY": 435.0,
+ "kiyas": {
+  "sag": {
+   "modul_parca": 77,
+   "ayni": 67,
+   "farkli": [
+    {
+     "modul_parca": "Ust kol tupu",
+     "grup": "omuz/Kol",
+     "hacim": 39116.88,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Dirsek catali",
+     "grup": "dirsek/UstKol",
+     "hacim": 86109.52,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Bilezik pulu M3 (bas)",
+     "grup": "dirsek/UstKol",
+     "hacim": 15.22,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Bilezik civatasi M3x20",
+     "grup": "dirsek/UstKol",
+     "hacim": 202.9,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Bilezik pulu M3 (somun)",
+     "grup": "dirsek/UstKol",
+     "hacim": 15.22,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Bilezik kontra somunu M3",
+     "grup": "dirsek/UstKol",
+     "hacim": 76.51,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Bilezik pulu M3 (bas)001",
+     "grup": "dirsek/UstKol",
+     "hacim": 15.22,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Bilezik civatasi M3x001",
+     "grup": "dirsek/UstKol",
+     "hacim": 202.9,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Bilezik pulu M3 (somun)001",
+     "grup": "dirsek/UstKol",
+     "hacim": 15.22,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Bilezik kontra somunu M001",
+     "grup": "dirsek/UstKol",
+     "hacim": 76.51,
+     "taslak": null
+    }
+   ]
+  },
+  "sol": {
+   "modul_parca": 77,
+   "ayni": 67,
+   "farkli": [
+    {
+     "modul_parca": "Ust kol tupu",
+     "grup": "omuz/Kol",
+     "hacim": 39116.88,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Dirsek catali",
+     "grup": "dirsek/UstKol",
+     "hacim": 86109.52,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Bilezik pulu M3 (bas)",
+     "grup": "dirsek/UstKol",
+     "hacim": 15.22,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Bilezik civatasi M3x20",
+     "grup": "dirsek/UstKol",
+     "hacim": 202.9,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Bilezik pulu M3 (somun)",
+     "grup": "dirsek/UstKol",
+     "hacim": 15.22,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Bilezik kontra somunu M3",
+     "grup": "dirsek/UstKol",
+     "hacim": 76.51,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Bilezik pulu M3 (bas)001",
+     "grup": "dirsek/UstKol",
+     "hacim": 15.22,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Bilezik civatasi M3x001",
+     "grup": "dirsek/UstKol",
+     "hacim": 202.9,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Bilezik pulu M3 (somun)001",
+     "grup": "dirsek/UstKol",
+     "hacim": 15.22,
+     "taslak": null
+    },
+    {
+     "modul_parca": "Bilezik kontra somunu M001",
+     "grup": "dirsek/UstKol",
+     "hacim": 76.51,
+     "taslak": null
+    }
+   ]
+  }
+ },
+ "girdi": {
+  "taslak-170/taslak-170.FCStd": "2026-10-24T23:25:09",
+  "omuz/omuz-montaj.FCStd": "2026-10-15T09:27:09",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-15T09:21:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-15T09:32:14"
+ }
+}

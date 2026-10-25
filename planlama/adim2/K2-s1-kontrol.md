@@ -3,17 +3,24 @@
 Kontrol ajanı (bağımsız, tasarım değiştirmez). HEAD `6bb1eff` (önceki ajan `c299754`'te başladı; aradaki commit yalnız M7 kuponları /
 M6 montaj sırası, CAD analiz JSON'larına dokunmuyor) + çalışma ağacındaki S1 değişiklikleri. Ölçümler `planlama/adim2/K2-*.py`.
 Girdi FCStd'ler (değişmedi): omuz 09:27:09, kabuk 09:21:08, dirsek 09:32:14. Kaset türetilmiş değerleri güncel kaynakla birebir (`K2-tazelik.json`).
-Durum: **2. ajan devam ediyor** (2026-10-15). Önceki ajan limitte kesildi; ölçümleri tekrarlanmadı, eksikler koşuluyor.
+Durum: **kapandı — KOŞULLU GEÇTİ** (3. ajan, 2026-10-25, plan Y1; aşağıda "Sonuç"). 2. ajan 15 Ekim 22:16'da PC reset'le kesildi; girdi FCStd'ler o günden beri
+değişmedi (omuz 09:27:09, kabuk 09:21:08, dirsek 09:32:14) → önceki ölçümler geçerli, tekrarlanmadı; eksikler ve taslak-170 3. ajan günlüğünde.
+
+**KARAR (3. ajan, 25 Ekim 2026): KOŞULLU GEÇTİ** — hem 125 cm modüller hem `taslak-170` için (S1 çevresi taslakta birebir aynı).
+Kaset/tambur geometrisi, eklem aralığında kol ve göbekle çakışmasızlık, tork, baskı, cıvata, regresyon ve montaj yolu geçiyor.
+Geçmesi için 6 koşul (K1–K6, aşağıda "Önerilen düzeltmeler") tasarım ajanına; K1 ve K2 olmadan üretime geçilmemeli.
 
 | # | Kontrol | Durum | Ölçülen | Not |
 |---|---|---|---|---|
-| 1 | Kablo (S1 U lopu, dirsek/S2 lopları) | sürüyor | U: R_min 12,91–12,99 (≥ 11,9 ✔, 10 d 15,4 ✘); S2 lopu × kaset **−0,30** (S2 120, S1 ≥ 125) ✘; U ucu ↔ cep üst ucu 0,34 (L +1 mm / S1 +1,5° ile temas) ✘ | aşağıda |
-| 2 | Geometri (tambur, kaset, açıklıklar) | sürüyor | cıvata 2/2 sağ (kavrama 3,5, et ≥ 2,0, dip ≥ 1,0) ✔ | tarama koşuyor |
-| 3 | Regresyon (parça, kütle, sınırlar) | geçti (notlu) | omuz 66→73, kabuk 194→206, dirsek 53; sınırlar tutarlı | bayat çıktılar + yasak kutu |
-| 4 | Tork payları | geçti | S1 2,46 / 0,82, S2 2,40 / 0,81; izinli 57,5 / 51,6 g | tasarımcıyla aynı |
-| 5 | Baskı (çıkıntı) | geçti (notlu) | gövde 0; kapak 38,4 mm² (2× Ø6 havşa tavanı, köprü); tambur +X 917 mm² (dudak altı 855) destekli | |
-| 6 | Montaj sırası | bekliyor | | tarama koşuyor |
-| 7 | Uzatma kablosu boyları | bekliyor | | |
+| 1 | Kablo (S1 U lopu, dirsek/S2 lopları) | **koşullu** | U R_min 12,91 (7,5 d 11,90 ✔; 10 d 15,40 ✘); d ≤ 1,5 ✔, **22 AWG silikon (1,7) ✘** (R ve kanal); S2 lopu × flanş **−0,30** (S2 120, S1 ≥ 125) ✘; U ucu ↔ cep 0,34 (L +0,7 / S1 +1°) ✘; **tambur bağı kayışı ↔ kapak cıvatası 0,18 mm³** ✘ | K1–K4 |
+| 2 | Geometri (tambur, kaset, açıklıklar) | geçti | tambur ↔ sabit 0,50; ↔ kapak cıvatası 0,709; göbek ↔ kaset 3,50; kaset ↔ kol 1,254 (S2 5); cıvata kavrama 3,5 | |
+| 3 | Regresyon (parça, kütle, sınırlar) | geçti (notlu) | omuz 66→73, kabuk 194→206, dirsek 53; sınırlar tutarlı | bayat üretilmiş çıktılar (C7/Y4) |
+| 4 | Tork payları | geçti | 125: S1 2,46 / 0,82, S2 2,40 / 0,81 (DS3218); taslak DS3235: S1 2,80 (taslak hesap) | |
+| 5 | Baskı (çıkıntı) | geçti (notlu) | gövde 0; kapak 38,4 mm² köprü; tambur +X destekli | dudak ayrı pul seçeneği |
+| 6 | Montaj sırası | **geçti (yeni sıra)** | yalnız +x kaydırma ✘ (K2-kaydir); **önden radyal: gövde 0, kapak (x +3,3…5) 0**; cıvata erişimi S1 −45 / S2 90 ≥ 8 | K5 metin düzeltmesi |
+| 7 | Uzatma kablosu boyları | geçti (notlu) | 125: 1.541 / 1.105, iki kol 8,37 m; taslak ≈ 2.006 / 2.038 / 1.540, iki kol ≈ 11,2 m | DS3235 kablosu 300 ± 5 → S2 payı en kötü 5 < 7 |
+| 8 | Ev pozu (S2 0) 6 çakışması | modelleme artığı | S2 0: 97,87 / 65,01 / 7,61 mm³ (×2); S2 ≥ 3,75: 0 | K6 (kontrol pozu S2 5) |
+| 9 | taslak-170 | koşullu (125 ile aynı) | S1 çevresi 67/77 parça birebir, farklı 10 yalnız tüp/dirsek; kol ↔ kaset 1,254, ön kol/el > 3 mm | aynı K1–K6 |
 
 ## Günlük
 - (1. ajan) Okundu: CLAUDE.md, freecad README, K-kontrol, S1-kaset.md, kablo_yolu.py, arayuz OMUZ / 13 / KOL_KABLO s1, `git diff`.
@@ -144,3 +151,133 @@ Durum: **2. ajan devam ediyor** (2026-10-15). Önceki ajan limitte kesildi; öl�
 - Tambur +X (−x dudak tablada): 917 mm² (+x dudak altı 855 = C halka r 39 → 43,7, 4,7 mm konsol; 3 × 15,9 vida oturma köprüsü);
   −X yönü 2004 mm² → +X doğru seçim, **destekli** (tasarımcı 769 mm², yöntem farkı). Destek 4,8 × 4,7 mm C-kanalı doldurur ve
   kablonun sürtündüğü r 39 yüzeyinde iz bırakır: dudak ayrı pul seçeneği (tasarımcı açık sorun 4) daha temiz.
+
+
+## 3. ajan (2026-10-25, Y1)
+- Okundu: CLAUDE.md, dongu.md (Kurallar + 1,70 m planı), S1-kaset.md, bu günlük, K2-* JSON/py, KOL125/CATAL kontrol notları.
+  Girdi FCStd tarihleri değişmemiş (yukarı). `K2-tarama.py` montaj adımı hiç çıktı vermemiş (K2-tarama-montaj.json yok);
+  `K2-kaydir.json` (2. ajan, 19:14) var ama günlüğe işlenmemiş → aşağıda.
+- `K2-kaydir.json` (2. ajan, işlenmemişti): kaset gövdesi / kapağı **yalnız +x yönünden** kaydırılamıyor. Kapak t 4,0'te göbeğe
+  (S1 −45), t 3,0'te üst kol tüpüne (S1 0, S2 5); gövde t 10,5'te göbeğe (S1 −45), t 4,5'te tüpe (S1 0). Yani 2. ajanın "gövde +x'ten"
+  sırası da olmuyor → `K2-montaj.py` ile düzlem içi (radyal) yol aranıyor.
+- **Kaset cıvatası alet erişimi (`K2-montaj-erisim.json`, +x doğrusu baş üstü → x 330, göbek + kol):** S2 90'da ψ 200 cıvatası S1
+  −60…155'te, ψ 226 cıvatası her S1'de ≥ 8 mm açık; S2 5'te ψ 200 için S1 −60…−30, ψ 226 için S1 −60…0 açık ✔. Önerilen montaj pozu
+  S1 −45, S2 90 (iki cıvata da ≥ 8).
+- **Kablo kalınlığı ≤ 1,4 şartı ↔ tasarımda yazılı kablo çelişiyor (YENİ):** S1-kaset.md ve 7. madde "22 AWG silikon çok telli" diyor.
+  22 AWG 60 × 0,08 silikon dış çapı **1,7 ± 0,1 mm** (akkuteile.de veri sayfası özeti; Maplin 0,78 iletken + 0,55 yalıtım = 1,7);
+  24 AWG 40 × 0,08 silikon bile 1,6 (Maplin). 1,4'ün altına ancak ince duvarlı PVC düz servo kablosu (22 AWG, kesit ölçülmeli) ya da
+  26 AWG iner. Sonuç (S1 U modelinden, şerit 1,4 → R 12,91, 1,8 → 12,47 doğrusal ara değer): d 1,7'de R ≈ 12,58 < 8,5 d = 14,45 ✘ ve
+  eksenel genişlik 3 × 1,7 = 5,1 > tambur dudakları arası 4,8 → **demet kanala sığmaz** ✘. Eşik: R ≥ 8,5 d → d ≤ 1,50; eksenel
+  3 d + 2 × 0,3 ≤ 4,8 → d ≤ 1,40. Silikon 22 AWG için kaset h ≈ 36,6 (duvar r +4,6) ve kanal ≥ 5,7 mm gerekir.
+- **Tambur kablo bağı kayışı (`K2-montaj-kayis.json`, YENİ):** bağ yarıkları (ψ_g 148 / 156) arasında halkanın altından geçen kayış
+  (1,0 × 2,5, r 36…37) sabit omuz parçalarına çarpıyor: **kapak cıvatası M3x12 başı**, S1 101…114 ve 122…135'te 0,18 mm³'e kadar
+  (−45'te değme). Bağ sektöründe tambur iç yüzü (r 37) ↔ rulman kapağı / kapak cıvataları en az **0,50 mm** (S1 −45) → 1,0 mm kayış
+  halkanın altına sığmıyor; S1 her dönüşte kayış kilidi/ucu cıvata başına takılabilir. Tasarımda bağ yöntemi modellenmemişti.
+- **taslak-170 kıyas (`K2-taslak-kiyas.json`):** taslak FCStd'den S1 çevresindeki 77 modül parçası sağ omuz yereline (− OY − DY 435)
+  alındı: **67'si birebir** (hacim, merkez ≤ 0,05, ortak hacim oranı > 0,9999; iki yanda): tambur, göbek, kol çatalı, kaset gövde/kapak,
+  kaset cıvataları, omuz bandı, ısıl gömmeler, omuz gövdesi. Farklı 10: üst kol tüpü (+30 uç tarafta), dirsek çatalı (8 mm, −30) ve
+  bilezik cıvata/pul/somunları (dirsekle −30). Yani S1 kaseti yerel geometrisi taslakta **aynı**; 125 cm ölçümleri geçerli.
+- **Ev pozu 6 çakışması taslakta yeniden (`K2-taslak-ev.json`, kol zinciri S2 ekseninde döndürülerek, iki yan aynı):**
+  S2 0: kol çatalı ↔ tambur 97,87, tüp ↔ tambur 65,01, tüp ↔ kaset kapağı 7,61 mm³ (statik-yeni-444 ile birebir);
+  S2 3,0: 6,98 / 0,84 / 0 (kapak yok); S2 3,5: yalnız çatal ↔ tambur 0,17; **S2 3,75 / 4 / 4,5 / 5: 0**. (En küçük mesafe 0 =
+  S2 horn ↔ servo mili, eş eksen tasarım teması.)
+- **Kalınlık duyarlılığı, bağımsız çözücüyle (`K2-serit.py` → `K2-serit.json`, 3 şerit radyal yığın, φ −45 / 45 / 135):**
+
+  | tel/şerit d | duvar | R_min | sınır 7,5 d + d | eksenel 3 d (dudak arası 4,8) | sonuç |
+  |---|---|---|---|---|---|
+  | 1,4 | r 75,2 | 12,92 | 11,90 | 4,2 | ✔ (pay 1,02) |
+  | 1,5 | r 75,2 | 12,80 | 12,75 | 4,5 | ✔ sınırda (pay 0,05; eksenel her yanda 0,15) |
+  | 1,6 (24 AWG silikon) | r 75,2 | 12,69 | 13,60 | 4,8 | ✘ |
+  | 1,7 (22 AWG silikon) | r 75,2 | 12,58 | 14,45 | 5,1 | ✘ (kanala da sığmaz) |
+  | 1,6 | +3 (r 78,2) | 13,84 | 13,60 | 4,8 | ✔ R; eksenel ✘ |
+  | 1,7 | +4,6 | 14,34 | 14,45 | 5,1 | ✘ |
+  | 1,7 | +6 (r 81,2) | 14,87 | 14,45 | 5,1 | ✔ R (pay 0,42); kanal ≥ 5,7 gerekir; U ucu ψ 324,3 → 327,4 |
+  Varyantlarda L dış koşu yayıyla birlikte uzatıldı (yaklaşık: L + Δr·(110° + 0,8·90°)). Sonuç: **mevcut kaset d ≤ 1,5 mm için
+  geçerli**; silikon tel kullanılacaksa duvar +6, kanal +0,9 (görünüm ≈ +6 mm), U cebi/pim yeniden.
+- **Montaj yolu (`K2-montaj-radyal.json`, düzlem içi yaklaşma sektör ortaortayı ψ 261,9 yönünden = önden, s 90 → 0; hedef kabuk sağ
+  parçaları + göbek + kol; ortak hacim):**
+  - **Gövde** x ofset 0'da (arka plaka omuz pedine yaslı kayar): S1 −45 / −20 / 0 × S2 90 ve S1 −45 × S2 5'te **çakışma 0** (en az 0 =
+    omuz bandına kayma teması) ✔.
+  - **Kapak** x ofset 3,3'te (pim 3,0 mm + dikme başlığı alt yüzü x 158,3 = duvar üstü): dört pozda **çakışma 0** (başlık duvar üstünü
+    0 boşlukla sıyırıyor). Ofset 3,6'da S1 −45 / −20'de göbekle 0,05–1,77 mm³ ✘, **S1 0 × S2 90'da 0** (en az 0,30). Son eksenel adım
+    (3,6 → 0, pim yuvasına) çakışma 0, gövdeye 0,1 ✔.
+  - Uygulanabilir sıra: bant → göbek + tambur → kablo G2 → tambur bağı → **kaset gövdesi önden radyal** (kablo U'su henüz kanala
+    alınmadan; gövde iç r 46,5 > dudak 43,7) → U elle kanala, dış koşu duvar boyunca, ψ 214 → yarık → **kapak önden radyal, flanş
+    gövdeden ≈ 3,5 mm havada (S1 0, S2 90)** → kapak −x 3,5 mm (pim) → 2 dikme cıvatası (+x, S1 −45 / S2 90'da ≥ 8 mm açık).
+    Kapak radyal kayarken başlık alt yüzü kablonun üstünden ≥ 0,3–0,6 geçer (kanal x ≤ 158,0).
+
+## Sonuç (3. ajan, 2026-10-25) — KOŞULLU GEÇTİ
+
+### Bulgular
+| # | Bulgu | Ağırlık | Ölçüm / kaynak | 125 | taslak-170 |
+|---|---|---|---|---|---|
+| B1 | Kablo kalınlığı şartı ↔ yazılı kablo çelişkisi: 22 AWG silikon 1,7 mm → R 12,58 < 14,45, eksenel 5,1 > 4,8 | yüksek | `K2-serit.json` | ✘ | ✘ (aynı) |
+| B2 | Tambur bağı kayışı halkanın altına sığmıyor (bağ sektöründe radyal boşluk 0,50 < 1,0), S1 101…135'te kapak cıvatası başına 0,18 mm³ | yüksek | `K2-montaj-kayis.json` | ✘ | ✘ |
+| B3 | S2 lopu × kaset kapağı flanşı −0,30 (S2 120, S1 ≥ 125), aralık içinde | orta | `K2-kablo-lop.json`, `K2-ek2.json` | ✘ | ✘ |
+| B4 | U ucu ↔ cep üst ucu 0,34 (L +0,7 mm ya da S1 +1° ile temas); duvar bağı yok, L sürünebilir | orta | `K2-ek-cep.json`, `K2-yuk.json` | ✘ | ✘ |
+| B5 | Montaj: kaset +x'ten takılamıyor (S1-kaset.md sırası yanlış); önden radyal yol çakışmasız | orta (belge) | `K2-kaydir.json`, `K2-montaj-*.json` | ✔ yeni sırayla | ✔ |
+| B6 | Ev pozu 6 çakışması yalnız S2 < 3,75°'te (aralık dışı) | bilgi | `K2-taslak-ev.json` | artık | artık |
+| B7 | 10 × d (15,4) sağlanmıyor; R 12,91 = 7,5 d sınıfı | düşük-orta (ömür) | `K2-kablo-s1.json` | ⚠ | ⚠ |
+| B8 | İç koşu S1 −45'te kaset dışında dudak kavraması 1,40 (bağ 5° dışarı → −0,25) | düşük-orta | `K2-dudak.json` | ⚠ | ⚠ |
+| B9 | Kaset üst ucu konsol (ayrı çalışırsa ≈ 15 N) | düşük | `K2-yuk.json` | ⚠ | ⚠ |
+| B10 | S2 servo kablosu U'dan geçiyor (PVC, farklı sertlik); DS3235 kablosu 300 ± 5 → yarık payı en kötü 5 < 7 | orta | datasheet (aşağıda) | ⚠ | ⚠ |
+| B11 | Yasak kutu kol koşulu yana [5, 5] tek nokta | düşük (yazılım) | `K2-regresyon.json` | ⚠ | ⚠ |
+
+Geçenler: tambur ↔ sabit 0,50 / cıvata başı 0,709 (S1 −60…180); göbek ↔ kaset 3,50; kaset ↔ kol 1,254 (S2 5, S1 15…135); taslakta
+2.553 kesin pozda yine 1,254, ön kol / el / dirsek çatalı hiçbir pozda 3 mm'ye girmiyor (`K2-taslak-kolkaset.json`); U R_min 12,91 ≥
+11,90 (duyarlılık en kötü 12,07); dirsek lopu 13,03; geçiş ≥ 0,65, çıkış ≥ 0,30 net; kaset cıvatası kavrama 3,5 / et 2,0; tork, baskı;
+JR erkek 10,3 × 4 ve dişi 7,9 × 2,75 → yarık 12 × 6 ✔ (S2 servosunun dişi ucu dahil).
+
+### Ev pozu 6 çakışmasının değerlendirmesi (soru 2)
+- **Gerçek değil, modelleme artığı.** FCStd'ler kolu mekanik sıfırda (S2 0) tutuyor; S2 aralığı [5, 120]. Ölçüm (taslak, iki yan
+  aynı): S2 0 → 97,87 / 65,01 / 7,61; 3,0 → 6,98 / 0,84 / 0; 3,5 → 0,17 (yalnız çatal ↔ tambur); **≥ 3,75 → 0**. 125'te kol ↔ tambur
+  mesafesi S2 5'te 0,825 (`K2-tarama-tambur.json`). Kol S2 0'a fiziksel olarak gelemez: ≈ 3,6°'de tambur dudağına dayanır.
+- **Dayanak güvenli mi:** tambur göbeğe bağlı, kol da göbekteki S2 servosuna → aynı gövde, S1 dönerken sürtünme yok. Sabit kaset
+  kapağına temas ancak S2 < 3,0'te (tambur dayanağının ≈ 0,6° gerisinde) → dudak kırılmadıkça olmaz. Güçsüz kolun dayanağa yükü
+  (tahmini: taslak S2 statik 10,9 kg·cm × sin 3,6° ≈ 0,07 N·m, kol ≈ 25–45 mm) **≈ 1,5–3 N**: PETG-CF dudak için küçük.
+- **Geometri düzeltmesi önerilmiyor.** Önerilen en küçük değişiklik (K6): statik / ev pozu çakışma kontrolünü **yazılım ev pozunda
+  (S2 5)** yapmak, S2 0'ı "bilgi" olarak raporlamak — `omuz_montaj.py`'nin 15 Ekim'den beri yaptığı gibi (`statik_s2_0`). Y2'de
+  `taslak_analiz` statik bölümü, `carpisma.py` statik bölümü ve ana montaj raporu buna göre. FCStd yerleşimi S2 0'da kalır.
+- **FCStd ev pozunu 5°'ye almak (alternatif) — etkisi:** eklem sıfırı kayar → `eklem_sinirlari.json` / `arayuz.OMUZ` açıları ya
+  0…115'e kaydırılır ya da her yerde +5 ofset taşınır; `ana_montaj` "ev pozunda kimlik yerleşim" varsayımı, `eklem_dogrulama`
+  pozları, `carpisma` ızgaraları (YANA_MIN), kol/taslak tork pozları ve montaj rehberi adımları yeniden üretilir. Kütle/AM etkisi
+  ihmal edilebilir: kol AM'si yana ≈ L·sin 5° ≈ 15–20 mm (iki kol simetrik → toplam x değişmez), yukarı < 1 mm; devrilme ve tork
+  tabloları pratikte aynı (ev pozu göğüs bandı boşluğu 5,91 → 17,93 iyileşir). Fayda bu iş yüküne değmez → önerilmez.
+- Not: servo sıfır hatası ±1,4°'ü aşarsa S2 5 komutunda kol tambura değer (5 − 1,4 ≈ 3,6); kalibrasyonda S2 < 5 komutu verilmemeli.
+
+### taslak-170 (soru 3)
+- S1 çevresi (sağ omuz yereli, − OY − DY 435) 77 modül parçasından 67'si birebir; farklı 10 parça yalnız tüp (+30, uzak uçta),
+  dirsek çatalı (8 mm, −30) ve bilezik bağlantıları. Kaset, tambur, göbek, kol çatalı, omuz bandı aynı yerde aynı şekil → 125'teki
+  bütün kaset/kablo ölçümleri taslak için geçerli. Kol (tüp 130 + ×1,25 ön kol + el) ↔ kaset 2.553 poz: en az 1,254 (S2 5), S2 ≥ 9'da
+  > 3 mm; ön kol / el / dirsek çatalı kasete hiç 3 mm yaklaşmıyor. Ev pozu 6 çakışması aynı (yukarıda). **Sonuç: aynı koşullarla geçiyor.**
+- Taslakta farklı olanlar: uzatma boyu dirsek ≈ 1.541 + 30 + 435 ≈ 2.006, bilek ≈ 2.038, S2 ≈ 1.540 mm (kol-analiz HAT 2,0 / 2,0 /
+  1,55 ile tutarlı) → iki kol ≈ 11,2 m (+%10 ≈ 12,3 m; B1 "~8 m" Y2 maliyetinde güncellenmeli). DS3235 (tasarım stall akımı 3 A) U'dan
+  geçen S2 hattında; 22 AWG'de S1 stall gerilimi 5,48 V (kol-analiz). K1'i 26 AWG ile çözmek düşümü ~2,5× yapar → önerilmez.
+  DS3235 kablosu 300 ± 5 mm (datasheet; bir satıcıda PRO için 320) → yarık payı 10 ± 5 (şart 7).
+
+### Önerilen düzeltmeler (tasarım ajanı uygular; kontrol ajanı modül dosyalarına dokunmadı)
+- **K1 (B1, B7):** kabloyu **ince duvarlı PVC düz 22 AWG servo kablosu** olarak belirle (S1-kaset.md, M1, maliyet notundaki "22 AWG
+  silikon" yerine); alımdan önce kumpasla tel kalınlığı **≤ 1,5 mm** (tercihen ≤ 1,4) ölç. Silikon şartsa: duvar r +6 (75,2 → 81,2),
+  kanal 4,8 → ≥ 5,7, L ≈ 190,5, cep/pim yeniden (görünüm ≈ +6 mm). M7'ye kaset + gerçek kabloyla 10⁴ döngü kuponu.
+- **K2 (B2):** tambur bağı yeniden: halkanın altından kayış geçmez. Seçenekler: (a) bağ sektöründe (ψ_g ≈ 146…158) tambur yüzüne
+  (r 39 → 43,7 içinde, dudaklar arası) baskılı **kablo kelepçesi** (sırt plakası + 2 × M2 ya da geçme), kanal dışına taşmasın;
+  (b) ≤ 0,4 mm mumlu bağlama ipi (lacing). Ölçüt: bağ elemanı ↔ kapak cıvatası / rulman kapağı ≥ 0,3 (S1 −45…135); bağ açısı 0 ± 2°
+  (B8: teğet kılavuz).
+- **K3 (B3):** flanş iç kenarı dış köşesine 1,2 × 1,2 pah (S2 120 → +0,39) **ve** yasak kutu: S1 ≥ 120 iken S2 ≤ 117 (→ 0,89);
+  ya da S2 lopu bağ açısını ayarla. `eklem_sinirlari.json` yasak kutusuna (B11 ile birlikte: kol koşulu yana [5, 15]).
+- **K4 (B4):** U cebi payı u_pay 4,5 → 6,5 (hedef U ucu payı ≥ L +3 mm / S1 +4°; pim otomatik kayar, yeniden ölçülmeli) + kaset
+  gövdesine duvar bağı yarığı (ψ ≈ 228, kablo bağı) + montaj talimatı L 171,4 (−5…0) ve S1 yazılım sınırı 135 kesin.
+- **K5 (B5):** S1-kaset.md ve M6 G4 montaj sırası: gövde **önden radyal** (x ofset 0) → kablo U → kapak **önden radyal, x +3,5…5
+  (S1 0…135, S2 ≥ 30; S1 −45'te en çok +3,3)** → −x pim → 2 cıvata (S1 −45, S2 90). Kapak ofseti ≥ 3,3 şart (pim 3,0 + başlık/duvar).
+- **K6 (B6):** statik çakışma kontrolleri yazılım ev pozunda (S2 5); S2 0 bilgi. Geometri değişmez.
+- Ayrıca (önceki öneriler, geçerli): S2 servo kablosunu göbekte G2 öncesi aynı tip uzatmaya bağla (B10; U'dan 3 aynı şerit geçsin,
+  yarık payı sorunu da kalkar); ψ ≈ 300'de gövde ↔ kapak ikinci pim (B9); tambur +x dudağı ayrı pul (baskı izi).
+
+### 3. ajanın değiştirdiği / eklediği dosyalar
+`K2-s1-kontrol.md` (bu), yeni betikler `K2-montaj.py`, `K2-taslak.py`, `K2-serit.py`; çıktılar `K2-montaj-{ofset,radyal,erisim,kayis}.json`,
+`K2-taslak-{kiyas,ev,kolkaset}.json`, `K2-serit.json`. Modül dosyaları, `arayuz.py`, `montaj/`, `tasarim/cad/`, taslak-170, demo ve
+`maliyet.json`'a dokunulmadı; commit yok.
+Kaynaklar (kablo/servo): 22 AWG silikon dış çap 1,7 ± 0,1 — https://www.akkuteile.de/en/silicone-cable-22-awg-0-3-mm-200-c-300v-flexible-tinned-by-the-metre_400519_3876 ,
+https://pro.maplin.co.uk/products/red-silicone-lead-wire-22awg-60-0-08mm-price-per-metre ; 24 AWG silikon 1,6 —
+https://pro.maplin.co.uk/products/red-silicone-lead-wire-24awg-40-0-08mm-price-per-metre ; DS3235 kablo 300 ± 5 —
+https://hajim.rochester.edu/me/sites/kelley/me240/DS3235-270_datasheet.pdf (PRO 320: https://rcdrone.top/products/dsservo-25kg-35kg-coreless-servo).
