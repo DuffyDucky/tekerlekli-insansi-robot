@@ -175,7 +175,7 @@ def sektor(r0, r1, x0, x1, psi0, psi1):
 
 
 # --- S1 kablo tamburu (gobekle doner): halka r 37-39 + iki yanda dudak (ic kosuyu eksenel tutar) + gobek on yuzune 3 kol.
-#     +x dudakta kablo giris centigi; bag noktasinda kablo bagi icin iki yarik. Kapak M3 basi (r 36,3, x <= 155) -> 0,7 mm.
+#     Bag noktasinda iki baglama ipi yolu (K2, asagida). Kapak M3 basi (r 36,3, x <= 155) -> 0,7 mm.
 _tr0, _tr1 = TB["r"]
 _tx0, _tx1 = TB["x"]
 _dt = TB["dudak_t"]
@@ -185,8 +185,44 @@ _yp0, _yp1 = TB["yay_psi"]
 drum = sektor(_tr0, _tr1, _tx0, _tx1, _yp0, _yp1)
 for _xa in (_tx0, _tx1 - _dt):
     drum = drum.fuse(sektor(_tr0, TB["dudak_r"], _xa, _xa + _dt, _yp0, _yp1))
-for _ps in (TB["bag_psi"] + 3.0, TB["bag_psi"] + 11.0):         # 2,5 mm kablo bagi icin 3 x 1,6 yarik (halkadan gecer)
-    drum = drum.cut(sektor(_tr0 - 1, _tr1 + 1, 154.4, 157.4, _ps - 1.25, _ps + 1.25))
+# Kablo bagi: baglama ipi yolu (K2, 25 Ekim 2026; arayuz TB["ip"]). Eski 3 x 1,6 kayis yariklari kaldirildi: halkanin altindan gecen
+# 1,0 mm kayis kapak civatasi basina (r 36,3) 0,18 mm3 carpiyordu. Ip yolu psi = 0 cercevesinde (radyal +Y, teget -Z) kurulur,
+# kollar gibi -X ekseni etrafinda psi kadar dondurulur: iki dudagin ic yuzunde cep + halkadan radyal kanal + halka ic yuzunde oluk.
+_IP = TB["ip"]
+_ix0 = _tx0 + _dt - _IP["dudak_cep"]                             # -x dudak cebi tabani (153,2)
+_ix1 = _tx1 - _dt + _IP["dudak_cep"]                             # +x dudak cebi tabani (158,6)
+_iw = _IP["gen"] / 2
+
+
+def ip_yolu():
+    y_ust = TB["dudak_r"] + 0.1
+    y_alt = _tr0 - 0.1
+    s_ = box(_ix0, _ix0 + _IP["d"] + 0.05, y_alt, y_ust, -_iw, _iw)                    # -x: halkadan kanal + dudak cebi
+    s_ = s_.fuse(box(_ix1 - _IP["d"] - 0.05, _ix1, y_alt, y_ust, -_iw, _iw))           # +x
+    s_ = s_.fuse(box(_ix0, _ix1, y_alt, _tr0 + _IP["oluk"], -_iw, _iw))               # halka ic yuzu olugu
+    return s_.removeSplitter()
+
+
+def ip_ilmek():
+    """O0,4 ip (kare 0,4 kesit) kapali ilmek, psi = 0 cercevesinde: demet ustu (r 39 + 3 serit) -> dudak cepleri -> oluk tabani."""
+    d_ = _IP["d"]
+    y_dm = _tr1 + A.KOL_KABLO["s1"]["serit"] * A.KOL_KABLO["serit"][1]      # demet ustu (43,2)
+    y_ol = _tr0 + _IP["oluk"]                                                # oluk tabani (37,5): gergin ip buraya yaslanir
+    s_ = box(_ix0, _ix1, y_dm, y_dm + d_, -d_ / 2, d_ / 2)
+    s_ = s_.fuse(box(_ix0, _ix0 + d_, y_ol - d_, y_dm + d_, -d_ / 2, d_ / 2))
+    s_ = s_.fuse(box(_ix1 - d_, _ix1, y_ol - d_, y_dm + d_, -d_ / 2, d_ / 2))
+    s_ = s_.fuse(box(_ix0, _ix1, y_ol - d_, y_ol, -d_ / 2, d_ / 2))
+    return s_.removeSplitter()
+
+
+IP_ILMEK = []
+for _ps in TB["ip_psi"]:
+    _c = ip_yolu()
+    _c.rotate(V(0, 0, 0), V(-1, 0, 0), _ps)
+    drum = drum.cut(_c)
+    _l = ip_ilmek()
+    _l.rotate(V(0, 0, 0), V(-1, 0, 0), _ps)
+    IP_ILMEK.append(_l)
 # kollar: halkanin icinden gobek yuzune uzanan dikme; alt (-x) yuzu 45 derece pah (+X baski yonunde ice konsol yok). Kapak M3 basi
 # (x <= 155, r <= 36,3) icin pah x 155,5'te r 36,8'den baslar. Vida basi pahin icine acilan havsada (oturma x = HAVSA_X).
 _kg = TB["kol_gen"] / 2
@@ -210,6 +246,10 @@ for (y, z) in TB_VIDA:
         "Celik 8.8", kod="M3x8 DIN 912", renk="celik", patlat=(170, 0, 0))
     add("Isil gomme somun M3 (gobekte)", "Gobek", insert(3, (TB["kol_x"][1], y, z), (1, 0, 0)), "Baglanti", "Pirinc",
         kod="M3 isil gomme somun", renk="pirinc", patlat=(230, 0, 0))
+for _ps, _l in zip(TB["ip_psi"], IP_ILMEK):
+    add("S1 tambur baglama ipi", "Gobek", _l, "Baglanti", "Polyester", kod="O0,4 mumlu polyester baglama ipi (ilmek ~16 mm + dugum)",
+        renk="gri", patlat=(200, 0, 0),
+        not_="kablo bagi (K2): demeti tambura baglar, halka zarfinin icinde; psi %.0f. Dugum demetin ustunde kanal ortasinda" % _ps)
 
 body2, dome2, _ = servo_local()
 add("S2 servo DS3218MG (yana acma)", "Gobek", place(body2, (XR, 0, Z_S2), ROT_S2), "Satin", "-", kod="DS3218MG servo",
@@ -306,7 +346,7 @@ ALT_KOL = dict(m=260.0, p=(XR, -200.0, ZC), ad="Dirsek + on kol + el (eski model
 # baski parcalari: rho x etkin doluluk (arayuz.OMUZ["baski_rho"]; M4: PETG-CF 0,8-0,9 -> 0,9, PETG tup 0,8). Eskiden PETG 1,27 x 0,6.
 RHO = {m: r * d for m, (r, d) in A.OMUZ["baski_rho"].items()}
 RHO.update({"Aluminyum": 2.70, "Aluminyum 6063": 2.70, "Celik": 7.85, "Celik 8.8": 7.85,
-       "Pirinc": 8.50})
+       "Pirinc": 8.50, "Polyester": 1.38})
 for p in P:
     p["hacim"] = p["shape"].Volume
     sol = p["shape"].Solids

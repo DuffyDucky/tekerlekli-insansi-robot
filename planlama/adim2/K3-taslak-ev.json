@@ -1,0 +1,187 @@
+{
+ "tarih": "2026-10-25T20:39:14",
+ "taslak_parca": 1064,
+ "ev": {
+  "sag": [
+   {
+    "S2": 0.0,
+    "cakisma": [
+     [
+      "Kol catali (sag)",
+      "S1 kablo tamburu (sag)",
+      97.87
+     ],
+     [
+      "Ust kol tupu (sag)",
+      "S1 kablo tamburu (sag)",
+      65.01
+     ],
+     [
+      "Ust kol tupu (sag)",
+      "S1 kaset kapagi sag",
+      6.42
+     ]
+    ],
+    "en_kucuk_servo_haric": [
+     0.0,
+     "Kol catali (sag)",
+     "S1 kablo tamburu (sag)"
+    ]
+   },
+   {
+    "S2": 3.0,
+    "cakisma": [
+     [
+      "Kol catali (sag)",
+      "S1 kablo tamburu (sag)",
+      6.98
+     ],
+     [
+      "Ust kol tupu (sag)",
+      "S1 kablo tamburu (sag)",
+      0.84
+     ]
+    ],
+    "en_kucuk_servo_haric": [
+     0.0,
+     "Kol catali (sag)",
+     "S1 kablo tamburu (sag)"
+    ]
+   },
+   {
+    "S2": 3.5,
+    "cakisma": [
+     [
+      "Kol catali (sag)",
+      "S1 kablo tamburu (sag)",
+      0.17
+     ]
+    ],
+    "en_kucuk_servo_haric": [
+     0.0,
+     "Kol catali (sag)",
+     "S1 kablo tamburu (sag)"
+    ]
+   },
+   {
+    "S2": 3.75,
+    "cakisma": [],
+    "en_kucuk_servo_haric": [
+     0.063,
+     "Kol catali (sag)",
+     "S1 kablo tamburu (sag)"
+    ]
+   },
+   {
+    "S2": 4.0,
+    "cakisma": [],
+    "en_kucuk_servo_haric": [
+     0.217,
+     "Kol catali (sag)",
+     "S1 kablo tamburu (sag)"
+    ]
+   },
+   {
+    "S2": 5.0,
+    "cakisma": [],
+    "en_kucuk_servo_haric": [
+     0.825,
+     "Kol catali (sag)",
+     "S1 kablo tamburu (sag)"
+    ]
+   }
+  ],
+  "sol": [
+   {
+    "S2": 0.0,
+    "cakisma": [
+     [
+      "Kol catali (sol)",
+      "S1 kablo tamburu (sol)",
+      97.87
+     ],
+     [
+      "Ust kol tupu (sol)",
+      "S1 kablo tamburu (sol)",
+      65.01
+     ],
+     [
+      "Ust kol tupu (sol)",
+      "S1 kaset kapagi sol",
+      6.42
+     ]
+    ],
+    "en_kucuk_servo_haric": [
+     0.0,
+     "Kol catali (sol)",
+     "S1 kablo tamburu (sol)"
+    ]
+   },
+   {
+    "S2": 3.0,
+    "cakisma": [
+     [
+      "Kol catali (sol)",
+      "S1 kablo tamburu (sol)",
+      6.98
+     ],
+     [
+      "Ust kol tupu (sol)",
+      "S1 kablo tamburu (sol)",
+      0.84
+     ]
+    ],
+    "en_kucuk_servo_haric": [
+     0.0,
+     "Kol catali (sol)",
+     "S1 kablo tamburu (sol)"
+    ]
+   },
+   {
+    "S2": 3.5,
+    "cakisma": [
+     [
+      "Kol catali (sol)",
+      "S1 kablo tamburu (sol)",
+      0.17
+     ]
+    ],
+    "en_kucuk_servo_haric": [
+     0.0,
+     "Kol catali (sol)",
+     "S1 kablo tamburu (sol)"
+    ]
+   },
+   {
+    "S2": 3.75,
+    "cakisma": [],
+    "en_kucuk_servo_haric": [
+     0.063,
+     "Kol catali (sol)",
+     "S1 kablo tamburu (sol)"
+    ]
+   },
+   {
+    "S2": 4.0,
+    "cakisma": [],
+    "en_kucuk_servo_haric": [
+     0.217,
+     "Kol catali (sol)",
+     "S1 kablo tamburu (sol)"
+    ]
+   },
+   {
+    "S2": 5.0,
+    "cakisma": [],
+    "en_kucuk_servo_haric": [
+     0.825,
+     "Kol catali (sol)",
+     "S1 kablo tamburu (sol)"
+    ]
+   }
+  ]
+ },
+ "girdi": {
+  "taslak-170/taslak-170.FCStd": "2026-10-25T17:29:16"
+ }
+}

@@ -1877,6 +1877,12 @@
     54.0
    ]
   ],
+  "pim2_psi": 300.0,
+  "pah": 1.2,
+  "ip_psi": [
+   226.5,
+   230.0
+  ],
   "kaynak": "arayuz.KOL_KABLO s1"
  },
  "bosluk": {
@@ -2440,20 +2446,20 @@
   {
    "ad": "S1 kaset govdesi sag",
    "olcu": [
-    108.8,
-    108.6,
+    111.4,
+    111.2,
     6.3
    ],
-   "tabla_aci": 34,
+   "tabla_aci": 31,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0,
+   "cikinti_orani": 0.0004,
    "cikinti_alan_cm2": 0.0,
-   "yuzey_cm2": 126.0,
+   "yuzey_cm2": 129.1,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 7.7,
+   "hacim_cm3": 7.9,
    "kutle_g": 9.0,
    "filament_g": 9.0,
    "sure_saat": 0.2,
@@ -2464,20 +2470,20 @@
   {
    "ad": "S1 kaset kapagi sag",
    "olcu": [
-    108.8,
-    108.6,
+    111.4,
+    111.2,
     4.5
    ],
-   "tabla_aci": 56,
+   "tabla_aci": 59,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0037,
-   "cikinti_alan_cm2": 0.4,
-   "yuzey_cm2": 103.2,
+   "cikinti_orani": 0.0049,
+   "cikinti_alan_cm2": 0.5,
+   "yuzey_cm2": 105.0,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 5.9,
+   "hacim_cm3": 6.0,
    "kutle_g": 7.0,
    "filament_g": 7.0,
    "sure_saat": 0.1,
@@ -2488,20 +2494,20 @@
   {
    "ad": "S1 kaset govdesi sol",
    "olcu": [
-    108.8,
-    108.6,
+    111.4,
+    111.2,
     6.3
    ],
-   "tabla_aci": 56,
+   "tabla_aci": 59,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0,
+   "cikinti_orani": 0.0004,
    "cikinti_alan_cm2": 0.0,
-   "yuzey_cm2": 126.0,
+   "yuzey_cm2": 129.1,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 7.7,
+   "hacim_cm3": 7.9,
    "kutle_g": 9.0,
    "filament_g": 9.0,
    "sure_saat": 0.2,
@@ -2512,20 +2518,20 @@
   {
    "ad": "S1 kaset kapagi sol",
    "olcu": [
-    108.8,
-    108.6,
+    111.4,
+    111.2,
     4.5
    ],
-   "tabla_aci": 34,
+   "tabla_aci": 31,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0037,
-   "cikinti_alan_cm2": 0.4,
-   "yuzey_cm2": 103.2,
+   "cikinti_orani": 0.0049,
+   "cikinti_alan_cm2": 0.5,
+   "yuzey_cm2": 105.0,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 5.9,
+   "hacim_cm3": 6.0,
    "kutle_g": 7.0,
    "filament_g": 7.0,
    "sure_saat": 0.1,
@@ -2570,24 +2576,24 @@
    246.0
   ]
  },
- "kutle_g": 4921.5,
+ "kutle_g": 4922.3,
  "kutle_grup": {
   "Govde kabugu": 2059.8,
   "Taban etegi": 1791.3,
-  "S1 kablo kaseti": 34.7,
+  "S1 kablo kaseti": 35.5,
   "Gogus ekrani": 539.3,
   "Govde braketleri": 285.7,
   "Etek braketleri": 210.6
  },
  "kutle_tur": {
-  "Baski": 3830.5,
+  "Baski": 3831.3,
   "Satin": 845.0,
   "Baglanti": 245.9
  },
  "agirlik_merkezi": [
   -0.08,
-  470.08,
-  8.83
+  470.16,
+  8.84
  ],
  "bom": [
   [
@@ -2744,13 +2750,13 @@
    "Baski",
    "S1 kaset govdesi sag",
    1,
-   8.8
+   9.0
   ],
   [
    "Baski",
    "S1 kaset govdesi sol",
    1,
-   8.8
+   9.0
   ],
   [
    "Baski",
@@ -2784,5 +2790,5 @@
   ]
  ],
  "step_kati": 206,
- "sure_s": 685.6
+ "sure_s": 1305.4
 }

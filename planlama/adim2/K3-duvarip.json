@@ -1,0 +1,218 @@
+{
+ "tarih": "2026-10-25T20:31:11",
+ "adim": "duvarip",
+ "parca": {
+  "omuz": 75,
+  "ip": [
+   "S1 tambur baglama ipi",
+   "S1 tambur baglama ipi001"
+  ],
+  "kabuk_sag": 59,
+  "kaset": [
+   "S1 kaset govdesi sag",
+   "S1 kaset kapagi sag",
+   "Kaset civatasi M3x8 (sag psi 200)",
+   "Kaset civatasi M3x8 (sag psi 226)"
+  ],
+  "kol": [
+   "S2 horn 25T aluminyum disk",
+   "S2 horn merkez vidasi M3",
+   "Kol catali",
+   "625ZZ rulman (dis bilezik)",
+   "Catal-horn civatasi M3x8",
+   "Catal-horn civatasi M3x001",
+   "Catal-horn civatasi M3x002",
+   "Catal-horn civatasi M3x003",
+   "Ust kol tupu",
+   "Isil gomme somun M3 (catalda)",
+   "Tup civatasi M3x8",
+   "Isil gomme somun M3 (catalda)001",
+   "Tup civatasi M3x001",
+   "Dirsek catali",
+   "Bilezik pulu M3 (bas)",
+   "Bilezik civatasi M3x20",
+   "Bilezik pulu M3 (somun)",
+   "Bilezik kontra somunu M3",
+   "Bilezik pulu M3 (bas)001",
+   "Bilezik civatasi M3x001",
+   "Bilezik pulu M3 (somun)001",
+   "Bilezik kontra somunu M001",
+   "625ZZ rulman (dis bilezik)",
+   "Dirsek horn 25T aluminyum disk",
+   "Dirsek horn merkez vidasi M3",
+   "Catal-horn civatasi M3x8",
+   "Catal-horn civatasi M3x001",
+   "Catal-horn civatasi M3x002",
+   "Catal-horn civatasi M3x003"
+  ]
+ },
+ "delik": [
+  {
+   "psi": 226.5,
+   "arka r75.4 bos": true,
+   "arka r76.2 bos": true,
+   "arka r77.0 bos": true,
+   "arka psi-1.5 duvar": true,
+   "arka psi+1.5 duvar": true,
+   "ust r75.4 bos": true,
+   "ust r76.2 bos": true,
+   "ust r77.0 bos": true,
+   "ust psi-1.5 duvar": true,
+   "ust psi+1.5 duvar": true,
+   "dis x153.4 en_yakin": [
+    1.529,
+    "Omuz bandi sag"
+   ],
+   "dis x157.9 en_yakin": [
+    0.403,
+    "kapak"
+   ],
+   "sonda x153.6 ortak": [
+    [
+     "sonda",
+     "Omuz bandi sag",
+     1.345
+    ]
+   ],
+   "sonda x153.6 en_yakin": [
+    4.322062729257126e-14,
+    "sonda",
+    "Omuz bandi sag"
+   ],
+   "radyal bosluk x153.6": [
+    1.7335340122133183,
+    "p",
+    "Omuz bandi sag"
+   ],
+   "sonda x155.9 ortak": [],
+   "sonda x155.9 en_yakin": [
+    2.0323888452329126,
+    "sonda",
+    "Omuz bandi sag"
+   ],
+   "radyal bosluk x155.9": [
+    4.031586661176916,
+    "p",
+    "Omuz bandi sag"
+   ],
+   "sonda x157.5 ortak": [],
+   "sonda x157.5 en_yakin": [
+    1000000000.0,
+    null,
+    null
+   ],
+   "radyal bosluk x157.5": [
+    5.630231982195042,
+    "p",
+    "Omuz bandi sag"
+   ]
+  },
+  {
+   "psi": 230.0,
+   "arka r75.4 bos": true,
+   "arka r76.2 bos": true,
+   "arka r77.0 bos": true,
+   "arka psi-1.5 duvar": true,
+   "arka psi+1.5 duvar": true,
+   "ust r75.4 bos": true,
+   "ust r76.2 bos": true,
+   "ust r77.0 bos": true,
+   "ust psi-1.5 duvar": true,
+   "ust psi+1.5 duvar": true,
+   "dis x153.4 en_yakin": [
+    1.4,
+    "Omuz bandi sag"
+   ],
+   "dis x157.9 en_yakin": [
+    0.403,
+    "kapak"
+   ],
+   "sonda x153.6 ortak": [
+    [
+     "sonda",
+     "Omuz bandi sag",
+     1.719
+    ]
+   ],
+   "sonda x153.6 en_yakin": [
+    0.0,
+    "sonda",
+    "Omuz bandi sag"
+   ],
+   "radyal bosluk x153.6": [
+    1.5999999999999943,
+    "p",
+    "Omuz bandi sag"
+   ],
+   "sonda x155.9 ortak": [],
+   "sonda x155.9 en_yakin": [
+    1.9000000000000057,
+    "sonda",
+    "Omuz bandi sag"
+   ],
+   "radyal bosluk x155.9": [
+    3.9000000000000057,
+    "p",
+    "Omuz bandi sag"
+   ],
+   "sonda x157.5 ortak": [],
+   "sonda x157.5 en_yakin": [
+    1000000000.0,
+    null,
+    null
+   ],
+   "radyal bosluk x157.5": [
+    5.5,
+    "p",
+    "Omuz bandi sag"
+   ]
+  }
+ ],
+ "ilmek_ortak": {
+  "govde": [],
+  "kapak": [],
+  "kabuk": [],
+  "demet": [
+   [
+    "duvar ipi 226.5",
+    "demet 226.5",
+    0.168
+   ],
+   [
+    "duvar ipi 230.0",
+    "demet 230.0",
+    0.168
+   ]
+  ]
+ },
+ "ilmek_enaz": {
+  "kapak": [
+   0.0,
+   "duvar ipi 226.5",
+   "kapak"
+  ],
+  "kabuk": [
+   1.1999999999999886,
+   "duvar ipi 226.5",
+   "Omuz bandi sag"
+  ]
+ },
+ "eksenel_pay": {
+  "arka_plaka_demet": 0.8,
+  "demet_flans": 0.3,
+  "ip_ihtiyac": 0.8,
+  "toplam": 1.1
+ },
+ "ilmek_hareketli": [
+  5.0,
+  50.0,
+  4.768,
+  "duvar ipi 230.0",
+  "Ust kol tupu"
+ ],
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-25T16:45:52",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-25T17:09:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-25T17:19:17"
+ }
+}

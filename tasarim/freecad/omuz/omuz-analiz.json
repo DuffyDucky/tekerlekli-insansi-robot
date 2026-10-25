@@ -1,5 +1,5 @@
 {
- "parca_sayisi": 73,
+ "parca_sayisi": 75,
  "coklu_kati": [],
  "gecersiz": [],
  "statik": [],
@@ -181,12 +181,27 @@
    [
     "Kol catali",
     "S1 kablo tamburu",
-    1025.0
+    1031.8
+   ],
+   [
+    "Kol catali",
+    "S1 tambur baglama ipi",
+    1.7
+   ],
+   [
+    "Kol catali",
+    "S1 tambur baglama ipi",
+    3.6
    ],
    [
     "Ust kol tupu",
     "S1 kablo tamburu",
-    82.8
+    81.6
+   ],
+   [
+    "Ust kol tupu",
+    "S1 tambur baglama ipi",
+    1.8
    ]
   ],
   "-15": [
@@ -198,36 +213,66 @@
    [
     "Kol catali",
     "S1 kablo tamburu",
-    872.3
+    882.7
+   ],
+   [
+    "Kol catali",
+    "S1 tambur baglama ipi",
+    1.1
+   ],
+   [
+    "Kol catali",
+    "S1 tambur baglama ipi",
+    2.4
    ],
    [
     "Ust kol tupu",
     "S1 kablo tamburu",
-    97.1
+    94.2
+   ],
+   [
+    "Ust kol tupu",
+    "S1 tambur baglama ipi",
+    0.7
+   ],
+   [
+    "Ust kol tupu",
+    "S1 tambur baglama ipi",
+    1.1
    ]
   ],
   "-10": [
    [
     "Kol catali",
     "S1 kablo tamburu",
-    603.7
+    607.6
+   ],
+   [
+    "Kol catali",
+    "S1 tambur baglama ipi",
+    1.6
    ],
    [
     "Ust kol tupu",
     "S1 kablo tamburu",
-    140.0
+    140.9
    ]
   ],
   "-5": [
    [
     "Kol catali",
     "S1 kablo tamburu",
-    333.3
+    331.5
+   ],
+   [
+    "Kol catali",
+    "S1 tambur baglama ipi",
+    0.8
    ],
    [
     "Ust kol tupu",
     "S1 kablo tamburu",
-    82.9
+    82.7
    ]
   ],
   "0": [
@@ -6506,7 +6551,7 @@
    0.44
   ],
   "80,30": [
-   4.9,
+   4.91,
    0.51
   ],
   "80,35": [
@@ -6706,7 +6751,7 @@
    0.0
   ],
   "90,105": [
-   1.68,
+   1.67,
    0.0
   ],
   "90,110": [
@@ -8077,6 +8122,11 @@
    4
   ],
   [
+   "Baglanti",
+   "O0,4 mumlu polyester baglama ipi (ilmek ~16 mm + dugum)",
+   2
+  ],
+  [
    "Satin",
    "25T aluminyum disk horn",
    2
@@ -8177,5 +8227,5 @@
   }
  ],
  "joints_ok": true,
- "sure_s": 43.5
+ "sure_s": 90.5
 }

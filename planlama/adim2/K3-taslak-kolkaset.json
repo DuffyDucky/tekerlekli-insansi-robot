@@ -1,0 +1,201 @@
+{
+ "tarih": "2026-10-25T21:49:26",
+ "taslak_parca": 1064,
+ "kol_kaset": {
+  "dirsek 0.0": {
+   "kesin": [
+    [
+     [
+      60.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu (sag)"
+    ],
+    [
+     [
+      100.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu (sag)"
+    ],
+    [
+     [
+      45.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu (sag)"
+    ],
+    [
+     [
+      85.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu (sag)"
+    ],
+    [
+     [
+      115.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu (sag)"
+    ]
+   ],
+   "on_kol_el_en_az": [
+    [
+     null,
+     null
+    ],
+    1000000000.0,
+    null,
+    null
+   ],
+   "poz": 888
+  },
+  "dirsek 52.5": {
+   "kesin": [
+    [
+     [
+      60.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu (sag)"
+    ],
+    [
+     [
+      100.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu (sag)"
+    ],
+    [
+     [
+      45.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu (sag)"
+    ],
+    [
+     [
+      85.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu (sag)"
+    ],
+    [
+     [
+      115.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu (sag)"
+    ]
+   ],
+   "on_kol_el_en_az": [
+    [
+     null,
+     null
+    ],
+    1000000000.0,
+    null,
+    null
+   ],
+   "poz": 888
+  },
+  "dirsek 105.0": {
+   "kesin": [
+    [
+     [
+      60.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu (sag)"
+    ],
+    [
+     [
+      100.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu (sag)"
+    ],
+    [
+     [
+      45.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu (sag)"
+    ],
+    [
+     [
+      85.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu (sag)"
+    ],
+    [
+     [
+      115.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu (sag)"
+    ]
+   ],
+   "on_kol_el_en_az": [
+    [
+     null,
+     null
+    ],
+    1000000000.0,
+    null,
+    null
+   ],
+   "poz": 888
+  }
+ },
+ "girdi": {
+  "taslak-170/taslak-170.FCStd": "2026-10-25T17:29:16"
+ }
+}

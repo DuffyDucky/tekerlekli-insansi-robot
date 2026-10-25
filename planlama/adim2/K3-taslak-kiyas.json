@@ -1,0 +1,127 @@
+{
+ "tarih": "2026-10-25T20:37:06",
+ "taslak_parca": 1064,
+ "kiyas": {
+  "sag": {
+   "modul_parca": 70,
+   "ayni": 69,
+   "farkli": [
+    [
+     "Ust kol tupu",
+     "omuz/Kol",
+     null
+    ]
+   ],
+   "y1b": [
+    {
+     "modul_parca": "S1 kablo tamburu",
+     "grup": "omuz/Gobek",
+     "hacim": 4713.988,
+     "taslak": [
+      "S1 kablo tamburu (sag)",
+      1.0
+     ]
+    },
+    {
+     "modul_parca": "S1 tambur baglama ipi",
+     "grup": "omuz/Gobek",
+     "hacim": 3.552,
+     "taslak": [
+      "S1 tambur baglama ipi (sag)",
+      1.0
+     ]
+    },
+    {
+     "modul_parca": "S1 tambur baglama ipi001",
+     "grup": "omuz/Gobek",
+     "hacim": 3.552,
+     "taslak": [
+      "S1 tambur baglama ipi (sag)001",
+      1.0
+     ]
+    },
+    {
+     "modul_parca": "S1 kaset govdesi sag",
+     "grup": "kabuk",
+     "hacim": 7915.22,
+     "taslak": [
+      "S1 kaset govdesi sag",
+      1.0
+     ]
+    },
+    {
+     "modul_parca": "S1 kaset kapagi sag",
+     "grup": "kabuk",
+     "hacim": 5977.798,
+     "taslak": [
+      "S1 kaset kapagi sag",
+      1.0
+     ]
+    }
+   ]
+  },
+  "sol": {
+   "modul_parca": 70,
+   "ayni": 69,
+   "farkli": [
+    [
+     "Ust kol tupu",
+     "omuz/Kol",
+     null
+    ]
+   ],
+   "y1b": [
+    {
+     "modul_parca": "S1 kablo tamburu",
+     "grup": "omuz/Gobek",
+     "hacim": 4713.988,
+     "taslak": [
+      "S1 kablo tamburu (sol)",
+      1.0
+     ]
+    },
+    {
+     "modul_parca": "S1 tambur baglama ipi",
+     "grup": "omuz/Gobek",
+     "hacim": 3.552,
+     "taslak": [
+      "S1 tambur baglama ipi (sol)",
+      1.0
+     ]
+    },
+    {
+     "modul_parca": "S1 tambur baglama ipi001",
+     "grup": "omuz/Gobek",
+     "hacim": 3.552,
+     "taslak": [
+      "S1 tambur baglama ipi (sol)001",
+      1.0
+     ]
+    },
+    {
+     "modul_parca": "S1 kaset govdesi sag",
+     "grup": "kabuk",
+     "hacim": 7915.22,
+     "taslak": [
+      "S1 kaset govdesi sol",
+      1.0
+     ]
+    },
+    {
+     "modul_parca": "S1 kaset kapagi sag",
+     "grup": "kabuk",
+     "hacim": 5977.798,
+     "taslak": [
+      "S1 kaset kapagi sol",
+      1.0
+     ]
+    }
+   ]
+  }
+ },
+ "girdi": {
+  "taslak-170/taslak-170.FCStd": "2026-10-25T17:29:16",
+  "omuz/omuz-montaj.FCStd": "2026-10-25T16:45:52",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-25T17:09:08"
+ }
+}

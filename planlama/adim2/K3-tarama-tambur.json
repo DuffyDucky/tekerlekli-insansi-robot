@@ -1,0 +1,463 @@
+{
+ "tarih": "2026-10-25T21:49:27",
+ "yontem": "nokta bulutu (<= 0,6 mm) + cKDTree; en kucuk pozlarda kesin distToShape + common",
+ "tambur_ip_sabit": {
+  "kesin": [
+   [
+    70.0,
+    0.488,
+    0.5,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag",
+    []
+   ],
+   [
+    39.0,
+    0.488,
+    0.5,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag",
+    []
+   ],
+   [
+    53.0,
+    0.488,
+    0.5,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag",
+    []
+   ],
+   [
+    87.0,
+    0.488,
+    0.5,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag",
+    []
+   ],
+   [
+    63.0,
+    0.488,
+    0.5,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag",
+    []
+   ],
+   [
+    25.0,
+    0.488,
+    0.5,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag",
+    []
+   ],
+   [
+    70.0,
+    0.488,
+    0.5,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag",
+    []
+   ],
+   [
+    39.0,
+    0.488,
+    0.5,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag",
+    []
+   ],
+   [
+    53.0,
+    0.488,
+    0.5,
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag",
+    []
+   ]
+  ],
+  "cift_basina": [
+   [
+    "S1 kablo tamburu",
+    "S1 kaset govdesi sag",
+    0.488,
+    -58.0
+   ],
+   [
+    "S1 kablo tamburu",
+    "S1 kaset kapagi sag",
+    0.488,
+    -52.0
+   ]
+  ]
+ },
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-25T16:45:52",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-25T17:09:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-25T17:19:17"
+ },
+ "tambur_ip_kol": [
+  [
+   0.0,
+   0.016,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   3.0,
+   0.014,
+   "Ust kol tupu",
+   "S1 kablo tamburu"
+  ],
+  [
+   3.5,
+   0.031,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   3.75,
+   0.086,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   4.0,
+   0.221,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   4.5,
+   0.533,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   5.0,
+   0.842,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   6.0,
+   1.426,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   8.0,
+   2.705,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   10.0,
+   4.03,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   12.5,
+   5.723,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   15.0,
+   7.454,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   17.5,
+   9.22,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   20.0,
+   11.018,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   22.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   25.0,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   27.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   30.0,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   32.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   35.0,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   37.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   40.0,
+   11.675,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   42.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   45.0,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   47.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   50.0,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   52.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   55.0,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   57.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   60.0,
+   11.675,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   62.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   65.0,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   67.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   70.0,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   72.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   75.0,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   77.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   80.0,
+   11.675,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   82.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   85.0,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   87.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   90.0,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   92.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   95.0,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   97.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   100.0,
+   11.675,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   102.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   105.0,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   107.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   110.0,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   112.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   115.0,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   117.5,
+   11.674,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   120.0,
+   11.675,
+   "Kol catali",
+   "S1 kablo tamburu"
+  ],
+  [
+   "kesin",
+   3.5,
+   0.0,
+   "Kol catali",
+   "S1 kablo tamburu",
+   [
+    [
+     "Kol catali",
+     "S1 kablo tamburu",
+     0.1651
+    ]
+   ]
+  ],
+  [
+   "kesin",
+   3.75,
+   0.063,
+   "Kol catali",
+   "S1 kablo tamburu",
+   []
+  ],
+  [
+   "kesin",
+   4.0,
+   0.217,
+   "Kol catali",
+   "S1 kablo tamburu",
+   []
+  ],
+  [
+   "kesin",
+   5.0,
+   0.825,
+   "Kol catali",
+   "S1 kablo tamburu",
+   []
+  ]
+ ]
+}

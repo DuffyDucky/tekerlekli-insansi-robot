@@ -186,6 +186,8 @@ for (bant, sag), sh in ETEK.items():
 # Taban cizgisi (yz duzleminde) = S1 ekseni etrafinda halka dilimi (psi0 ... phi 135'teki U'nun dis temasi) + phi 135'teki U'nun
 # (temasli elastika, dirsek/kablo_yolu.py) ic bolgesi u_pay kadar buyutulmus + ust uc pimi. Duvar = taban cizgisinin 2 mm ic seridi
 # (tambura bakan ic kenar haric). Kabuga: 2 dikme icin omuz pedine isil gomme + boss, kablo cikisi icin ped yarigi. Sol = X aynasi.
+# Y1b (25 Ekim 2026): flans ic kenari pahi (K3), U cebi payi 6,5 (K4), duvar bagi baglama ipi delikleri (K4), duvar disi ikinci pim
+# kulagi (B9). Montaj: govde ve kapak ONDEN RADYAL takilir (K5; planlama/adim2/S1-kaset.md).
 for _p in (os.path.join(UST, "dirsek"),):
     if _p not in sys.path:
         sys.path.insert(0, _p)
@@ -258,6 +260,37 @@ _pc = _yz(_pim_psi, _pm["r"])
 k_govde = k_govde.fuse(Part.makeCylinder(_pm["post_r"], KAS_XF0 - KAS_XA + 0.01, V(KAS_XA - 0.01, _pc.y, _pc.z), V(1, 0, 0)))
 k_govde = k_govde.cut(Part.makeCylinder(_pm["d"] / 2 + 0.1, 3.2, V(KAS_XF0 - 3.1, _pc.y, _pc.z), V(1, 0, 0)))
 k_kapak = k_kapak.fuse(Part.makeCylinder(_pm["d"] / 2, 3.0, V(KAS_XF0 - 3.0, _pc.y, _pc.z), V(1, 0, 0)))
+# --- Y1b duzeltmeleri (25 Ekim 2026; planlama/adim2/K2-s1-kontrol.md K3, K4, B9; gunluk S1-duzeltme-gunluk.md)
+# ikinci pim (B9): duvarin disinda kulak (govde: dikme + kopru; kapak: flans uzantisi + O3 pim). Pim U'nun suprudugu halkaya giremez.
+_p2 = S1D["pim2"]
+_pc2 = _yz(_p2["psi"], _p2["r"])
+_e2r, _e2t = _yz(_p2["psi"], 1.0), _yz(_p2["psi"] + 90.0, 1.0)
+
+
+def _kulak(x0, x1):
+    a_, b_ = _e2r * _p2["kopru_r"], _e2r * _p2["r"]
+    w_ = _e2t * _p2["post_r"]
+    kopru = Part.Face(Part.makePolygon([a_ + w_, b_ + w_, b_ - w_, a_ - w_, a_ + w_]))
+    kopru.translate(V(x0, 0, 0))
+    return kopru.extrude(V(x1 - x0, 0, 0)).fuse(Part.makeCylinder(_p2["post_r"], x1 - x0, V(x0, _pc2.y, _pc2.z), V(1, 0, 0)))
+
+
+k_govde = k_govde.fuse(_kulak(KAS_X0, KAS_XF0 + 0.01))
+k_govde = k_govde.cut(Part.makeCylinder(_p2["d"] / 2 + 0.1, 3.2, V(KAS_XF0 - 3.1, _pc2.y, _pc2.z), V(1, 0, 0)))
+k_kapak = k_kapak.fuse(_kulak(KAS_XF0, KAS_XF1))
+k_kapak = k_kapak.fuse(Part.makeCylinder(_p2["d"] / 2, 3.0, V(KAS_XF0 - 3.0, _pc2.y, _pc2.z), V(1, 0, 0)))
+assert _p2["r"] - _p2["d"] / 2 - 0.1 > KAS_RO, "ikinci pim deligi duvara giriyor"
+# flans pahi (K3): flans ic kenarinin dis (x 159,5) kosesi, tam kalinlik 45 derece (ic yuz x 158,3'te r 44,2 korunur)
+_ph = S1D["pah"]
+k_kapak = k_kapak.cut(Part.makeCone(KAS_RI - 0.01, KAS_RI + _ph * (KAS_XF1 - KAS_XF0 + 0.02) / (KAS_XF1 - KAS_XF0) - 0.01,
+                                    KAS_XF1 - KAS_XF0 + 0.02, V(KAS_XF0 - 0.01, 0, 0), V(1, 0, 0)))
+# duvar bagi baglama ipi delikleri (K4): her ip_psi'de arka plaka dibinde radyal yarik + duvar ust kenarinda centik (O0,4 ip)
+_DI = S1D["ip"]
+for _ps in S1D["ip_psi"]:
+    for (xa_, xb_) in (_DI["arka_x"], (_DI["ust_x"][0], _DI["ust_x"][1] + 0.01)):
+        _b = Part.makeBox(xb_ - xa_, S1D["r"][1] - S1D["r"][0] + 1.0, _DI["gen"], V(xa_, S1D["r"][0] - 0.5, -_DI["gen"] / 2))
+        _b.rotate(V(0, 0, 0), V(-1, 0, 0), _ps)
+        k_govde = k_govde.cut(_b)
 # kablo cikisi: duvar bagi -> psi_c'de radyal ice -> r_don'da arka plaka + ped yarigi (radyal x teget = yarik olcusu)
 _C = S1K["cikis"]
 _yr, _yt = _C["yarik"]
@@ -280,7 +313,8 @@ def _yarik(x0, x1):
 k_govde = k_govde.cut(_yarik(KAS_X0 - 1, KAS_XA + 1)).removeSplitter()
 k_kapak = k_kapak.removeSplitter()
 S1_YARIK_KABUK = _yarik(A.OMUZ_DUVAR["x0"] - 3.0, KAS_X0 + 0.01)         # kabuk ped yarigi (yerel)
-S1_KASET = dict(pim_psi=_pim_psi, psi_a=_psi_a, psi_uc=S1U["u_uc_psi"], dikme=S1_DIKME)
+S1_KASET = dict(pim_psi=_pim_psi, psi_a=_psi_a, psi_uc=S1U["u_uc_psi"], dikme=S1_DIKME, pim2_psi=_p2["psi"], pah=_ph,
+                ip_psi=list(S1D["ip_psi"]))
 _OMUZ_Y = A.MODULLER["omuz_sag"]["konum"][1]
 
 
@@ -303,8 +337,9 @@ for sag in (True, False):
                                              patlat=(sx * 60, 0, 40), grup="S1 kablo kaseti")
     PARCA["S1 kaset kapagi %s" % t_] = dict(shape=_glob(k_kapak, sag), yukari=V(-sx, 0, 0), yon="flans dis yuzu tablada",
                                             patlat=(sx * 90, 0, 40), grup="S1 kablo kaseti")
-log("S1 kaseti: psi %.1f...%.1f (U ucu %.1f, pim %.1f), govde %.1f cm3, kapak %.1f cm3, kati %d/%d" % (
-    S1D["psi0"], _psi_a, S1U["u_uc_psi"], _pim_psi, k_govde.Volume / 1000, k_kapak.Volume / 1000, len(k_govde.Solids), len(k_kapak.Solids)))
+log("S1 kaseti: psi %.1f...%.1f (U ucu %.1f, u_pay %.1f, pim %.1f, pim2 %.1f), govde %.1f cm3, kapak %.1f cm3, kati %d/%d" % (
+    S1D["psi0"], _psi_a, S1U["u_uc_psi"], S1D["u_pay"], _pim_psi, _p2["psi"], k_govde.Volume / 1000, k_kapak.Volume / 1000,
+    len(k_govde.Solids), len(k_kapak.Solids)))
 
 
 def sahip(pt, haric=()):

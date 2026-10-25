@@ -1,6 +1,6 @@
 """kod/ortak/eklem_sinirlari.json uretici (duzeltme plani C3; yazilim plani "tek kaynak").
 
-Sinirlar elle yazilmaz: tasarim/freecad/arayuz.py (OMUZ, DIRSEK, KAFA, KAFA_KOL_YASAK) -> eklem_sinirlari() -> JSON.
+Sinirlar elle yazilmaz: tasarim/freecad/arayuz.py (OMUZ, DIRSEK, KAFA, KAFA_KOL_YASAK, KOL_KABLO s1 s2_s1_kosul) -> eklem_sinirlari() -> JSON.
 Calistir (FreeCAD gerekmez):  python kod/ortak/eklem_sinirlari_uret.py          # JSON'u yazar
                               python kod/ortak/eklem_sinirlari_uret.py --kontrol # dosya guncel mi (cikis kodu 0/1), yazmaz
 JSON'u elle duzenleme; sayi degisecekse arayuz.py'yi degistirip bu betigi yeniden calistir.
@@ -34,6 +34,12 @@ def kontrol_et(d):
     for k, v in y["sag_kol"]["kol_kosulu"].items():
         s = {"one_arka": "r_s1", "yana": "r_s2", "dirsek": "r_dirsek", "bilek": "r_bilek"}[k]
         assert e[s]["min"] <= v[0] <= v[1] <= e[s]["max"], k
+    # bagimli sinirlar (orn. S1 >= 120 iken S2 <= 117): kosul ve sinir araliklari eklem araliginin icinde, sinir gercekten daraltiyor
+    for b in d.get("bagimli", []):
+        for grup in ("kosul", "sinir"):
+            for s, v in b[grup].items():
+                assert e[s]["min"] <= v[0] <= v[1] <= e[s]["max"], (b["ad"], s, v)
+        assert any(v[0] > e[s]["min"] or v[1] < e[s]["max"] for s, v in b["sinir"].items()), b["ad"]
 
 
 def main():

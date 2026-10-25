@@ -1,0 +1,148 @@
+{
+ "tarih": "2026-10-25T17:27:10",
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-25T16:45:52",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-25T17:09:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-25T17:19:17"
+ },
+ "K2_tambur_ip": {
+  "ip_tambur_ortak_mm3": [
+   0.0
+  ],
+  "ip_en_yakin": {
+   "kaset|S1 kaset kapagi sag": [
+    0.6,
+    179,
+    0
+   ],
+   "omuz_govde|Kapak civatasi M3x12": [
+    0.809,
+    -48,
+    0
+   ],
+   "omuz_govde|Kapak civatasi M3x001": [
+    0.809,
+    112,
+    0
+   ],
+   "omuz_govde|Kapak civatasi M3x003": [
+    0.809,
+    132,
+    0
+   ],
+   "omuz_govde|Rulman kapagi": [
+    1.2,
+    124,
+    0
+   ]
+  },
+  "ip_min_mm": 0.6,
+  "ip_olcut_0_3": true,
+  "tambur_en_yakin_2derece": {
+   "omuz_govde|Rulman kapagi": [
+    0.5,
+    180
+   ],
+   "kaset|S1 kaset govdesi sag": [
+    0.5,
+    180
+   ],
+   "kaset|S1 kaset kapagi sag": [
+    0.5,
+    176
+   ]
+  }
+ },
+ "K3_pah": {
+  "x 158.35": 44.25,
+  "x 158.90": 44.8,
+  "x 159.45": 45.35
+ },
+ "pim2": {
+  "merkez_yz": [
+   40.0,
+   69.28
+  ],
+  "delik_ic_r": 78.4,
+  "duvar_ic_r": 75.2,
+  "duvar_dis_r": 77.2,
+  "kanal_payi_mm": 3.2,
+  "govde_kapak_ortak_mm3": 0.378,
+  "kulak_kabuk_en_yakin": [
+   0.0,
+   "Omuz bandi sag"
+  ],
+  "kapak_kabuk_en_yakin": [
+   1000000000.0,
+   null
+  ],
+  "kapak_pim_var": true,
+  "govde_delik_bos": true,
+  "govde_kulak_var": true
+ },
+ "duvar_ip_delik": [
+  {
+   "psi": 226.5,
+   "yer": "arka",
+   "delik_bos": true,
+   "yaninda_duvar": true
+  },
+  {
+   "psi": 226.5,
+   "yer": "ust",
+   "delik_bos": true,
+   "yaninda_duvar": true
+  },
+  {
+   "psi": 230.0,
+   "yer": "arka",
+   "delik_bos": true,
+   "yaninda_duvar": true
+  },
+  {
+   "psi": 230.0,
+   "yer": "ust",
+   "delik_bos": true,
+   "yaninda_duvar": true
+  }
+ ],
+ "kaset_kol": {
+  "Ust kol tupu|S1 kaset kapagi sag": [
+   1.358,
+   15,
+   5
+  ],
+  "Kol catali|S1 kaset kapagi sag": [
+   2.94,
+   135,
+   5
+  ]
+ },
+ "kaset_gobek": {
+  "S1 tambur baglama ipi001|S1 kaset kapagi sag": [
+   0.6,
+   170
+  ],
+  "Omuz gobegi|S1 kaset kapagi sag": [
+   3.5,
+   180
+  ],
+  "Tambur civatasi M3x8|S1 kaset kapagi sag": [
+   7.7,
+   -10
+  ],
+  "Tambur civatasi M3x001|S1 kaset kapagi sag": [
+   7.7,
+   -55
+  ],
+  "Tambur civatasi M3x002|S1 kaset kapagi sag": [
+   7.7,
+   180
+  ],
+  "Isil gomme somun M3 (gobekte)|S1 kaset kapagi sag": [
+   9.669,
+   -60
+  ]
+ },
+ "sure_s": 4031.8
+}

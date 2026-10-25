@@ -319,45 +319,83 @@ def ortak(a, b):
 
 ESIK = 0.5
 t_k = time.time()
-deg = [i for i, p in enumerate(P) if p["v"] is None]
-bbs = [p["shape"].BoundBox for p in P]
-cak, aday = [], 0
-for i in deg:
-    for j in range(len(P)):
-        if j == i or (P[j]["v"] is None and j < i):
-            continue
-        if not bbs[i].intersect(bbs[j]):
-            continue
-        aday += 1
-        v = ortak(P[i]["shape"], P[j]["shape"])
-        if v > ESIK or v < 0:
-            cak.append(dict(a=P[i]["ad"], a_modul=P[i]["modul"], b=P[j]["ad"], b_modul=P[j]["modul"], hacim_mm3=round(v, 2)))
-# tasinan parcalar arasi (farkli oteleme): orn. dirsek (DY-30) <-> omuz (DY), kafa catali (DY+H) <-> boyun mili (DY), ust kabuk <-> alt
-tas = [i for i, p in enumerate(P) if p["v"] is not None]
-for ii, i in enumerate(tas):
-    for j in tas[ii + 1:]:
-        if (P[i]["v"] - P[j]["v"]).Length < 1e-9 or not bbs[i].intersect(bbs[j]):
-            continue
-        aday += 1
-        v = ortak(P[i]["shape"], P[j]["shape"])
-        if v > ESIK or v < 0:
-            cak.append(dict(a=P[i]["ad"], a_modul=P[i]["modul"], b=P[j]["ad"], b_modul=P[j]["modul"], hacim_mm3=round(v, 2)))
-# 125 cm robotta da var mi (ayni modul + ad, en yakin merkez): mevcut tasarimdan gelen cakismalar ayrilir
+# K6 (S1 kaseti kontrolu, 25 Ekim 2026; planlama/adim2/K2-s1-kontrol.md B6): kontrol pozu YAZILIM ev pozu S1 0, S2 = EV_S2 (arayuz alt
+# siniri, 5). FCStd'ler kolu mekanik sifirda (S2 0) tutar; orada kol S1 tamburuna / kaset kapagina biner (S2 < 3,75; kol S2 ~3,6'da
+# tambura dayanir). S2 0 yalniz bilgi (ev_pozu_cakisma_s2_0). Omuz Kol + dirsek gruplari S2 ekseninde dondurulur; eklem sifiri degismez.
+EV_S2 = float(A.OMUZ["yana_aralik"][0])
+_S2_YENI = {e["modul"]: e["cerceve"] for e in TP.EKLEMLER if e["tip"] == "Revolute" and e["anahtar"] == "yana"}
+_S2_ESKI = {ad: MD.global_cerceve(ad, e["cerceve"]) for ad in MD.SIRA for e in TP.MOD[ad]["eklemler"] if e["anahtar"] == "yana"}
+
+
+def ev_M(p, th, cerceveler):
+    m = p["modul"]
+    om = m if (m.startswith("omuz_") and p["grup"] == "Kol") else ("omuz_" + m.split("_")[1] if m.startswith("dirsek_") else None)
+    if om is None or abs(th) < 1e-12:
+        return None
+    cer = cerceveler[om]
+    return App.Placement(V(0, 0, 0), App.Rotation(cer.Rotation.multVec(V(0, 0, 1)), th), cer.Base).toMatrix()
+
+
+def ev_sekil(p, th, cerceveler):
+    M_ = ev_M(p, th, cerceveler)
+    if M_ is None:
+        return p["shape"]
+    s_ = p["shape"].copy()
+    s_.transformShape(M_, True)
+    return s_
+
+
+def ev_kontrol(SH):
+    bbs_ = [s_.BoundBox for s_ in SH]
+    cak_, aday_ = [], 0
+    deg_ = [i for i, p in enumerate(P) if p["v"] is None]
+    for i in deg_:
+        for j in range(len(P)):
+            if j == i or (P[j]["v"] is None and j < i):
+                continue
+            if not bbs_[i].intersect(bbs_[j]):
+                continue
+            aday_ += 1
+            v = ortak(SH[i], SH[j])
+            if v > ESIK or v < 0:
+                cak_.append(dict(a=P[i]["ad"], a_modul=P[i]["modul"], b=P[j]["ad"], b_modul=P[j]["modul"], hacim_mm3=round(v, 2), i=i, j=j))
+    # tasinan parcalar arasi (farkli oteleme): orn. dirsek (DY-30) <-> omuz (DY), kafa catali (DY+H) <-> boyun mili (DY), ust kabuk <-> alt
+    tas_ = [i for i, p in enumerate(P) if p["v"] is not None]
+    for ii, i in enumerate(tas_):
+        for j in tas_[ii + 1:]:
+            if (P[i]["v"] - P[j]["v"]).Length < 1e-9 or not bbs_[i].intersect(bbs_[j]):
+                continue
+            aday_ += 1
+            v = ortak(SH[i], SH[j])
+            if v > ESIK or v < 0:
+                cak_.append(dict(a=P[i]["ad"], a_modul=P[i]["modul"], b=P[j]["ad"], b_modul=P[j]["modul"], hacim_mm3=round(v, 2), i=i, j=j))
+    return cak_, aday_
+
+
+cak, aday = ev_kontrol([ev_sekil(p, EV_S2, _S2_YENI) for p in P])
+_ev_m = [ev_M(p, EV_S2, _S2_YENI) is not None for p in P]
+cak_s2_0 = [c for c in ev_kontrol([p["shape"] for p in P])[0] if _ev_m[c["i"]] or _ev_m[c["j"]]]   # bilgi: mekanik sifir
+for c in cak + cak_s2_0:
+    c.pop("i"), c.pop("j")
+
+
+# 125 cm robotta da var mi (ayni modul + ad, en yakin merkez; ayni pozda): mevcut tasarimdan gelen cakismalar ayrilir
 def eski_karsi(ad, modul, merkez):
     ad_ = [q for q in TP.ESKI if q["ad"] == ad and q["modul"] == modul]
     return min(ad_, key=lambda q: (q["merkez"] - merkez).Length) if ad_ else None
 
 
 IDX = {(p["ad"], p["modul"]): p for p in P}
-for c in cak:
-    pa = next(p for p in P if p["ad"] == c["a"] and p["modul"] == c["a_modul"])
-    pb = next(p for p in P if p["ad"] == c["b"] and p["modul"] == c["b_modul"])
-    ea = eski_karsi(pa.get("eski_ad", pa["ad"]), c["a_modul"], pa["merkez"] - (pa["v"] or TP.kaydir(pa["modul"], pa["grup"])))
-    eb = eski_karsi(pb.get("eski_ad", pb["ad"]), c["b_modul"], pb["merkez"] - (pb["v"] or TP.kaydir(pb["modul"], pb["grup"])))
-    c["eski_125_hacim_mm3"] = round(ortak(ea["shape"], eb["shape"]), 2) if (ea and eb) else None
-    c["kaynak"] = "mevcut tasarim (125'te de var)" if (c["eski_125_hacim_mm3"] or 0) > ESIK else "taslak"
-log("ev pozu kontrolu: %d aday cift, %d cakisma (%d taslaktan) (%.0f s)" % (aday, len(cak), sum(1 for c in cak if c["kaynak"] == "taslak"),
-                                                                        time.time() - t_k))
+for liste, th in ((cak, EV_S2), (cak_s2_0, 0.0)):
+    for c in liste:
+        pa = next(p for p in P if p["ad"] == c["a"] and p["modul"] == c["a_modul"])
+        pb = next(p for p in P if p["ad"] == c["b"] and p["modul"] == c["b_modul"])
+        ea = eski_karsi(pa.get("eski_ad", pa["ad"]), c["a_modul"], pa["merkez"] - (pa["v"] or TP.kaydir(pa["modul"], pa["grup"])))
+        eb = eski_karsi(pb.get("eski_ad", pb["ad"]), c["b_modul"], pb["merkez"] - (pb["v"] or TP.kaydir(pb["modul"], pb["grup"])))
+        c["eski_125_hacim_mm3"] = round(ortak(ev_sekil(ea, th, _S2_ESKI), ev_sekil(eb, th, _S2_ESKI)), 2) if (ea and eb) else None
+        c["kaynak"] = "mevcut tasarim (125'te de var)" if (c["eski_125_hacim_mm3"] or 0) > ESIK else "taslak"
+log("ev pozu kontrolu (S1 0, S2 %g): %d aday cift, %d cakisma (%d taslaktan); mekanik sifir S2 0 (bilgi): %d cakisma (%.0f s)" % (
+    EV_S2, aday, len(cak), sum(1 for c in cak if c["kaynak"] == "taslak"), len(cak_s2_0), time.time() - t_k))
 
 
 def don(sh, nokta, yon, aci):
@@ -601,7 +639,8 @@ ANALIZ = dict(
                                  sigmayan_250=[b["ad"] for b in BASKI if not b["sigar_250"]], hedef_230_asan=[b["ad"] for b in BASKI if not b["hedef_230"]],
                                  tabla=TA.TABLA, hedef=TA.TABLA_HEDEF),
     baglar=TP.BAGLAR, degisen=TP.DEGISEN,
-    yerlesim=dict(ev_pozu_cakisma=cak, aday_cift=aday, esik_mm3=ESIK, kafa_suprulme=SUP, bosluk=BOSLUK, kol_kisa=KOL_TAR, catal=CATAL_K,
+    yerlesim=dict(ev_pozu_cakisma=cak, ev_pozu_poz=dict(S1=0.0, S2=EV_S2, not_="yazilim ev pozu (K6); S2 0 yalniz bilgi"),
+                  ev_pozu_cakisma_s2_0=cak_s2_0, aday_cift=aday, esik_mm3=ESIK, kafa_suprulme=SUP, bosluk=BOSLUK, kol_kisa=KOL_TAR, catal=CATAL_K,
                   not_="kisa kontrol: yeni/degisen parcalar x tum parcalar ve farkli otelenen parca ciftleri (ev pozu); kafa pan {-90,-45,0,45,90} x "
                        "tilt {-15,-7,5,0,7,5,15}; sag kol kaba izgara (on kol + el). Tam carpisma taramasi (ince kol pozlari, kafa x kol) analiz ajaninda."),
     uzatma=dict(dy=TA.DY, dikis=TA.UZATMA_DIKIS, braket_y=TA.UZATMA_BRAKET_Y, direk_mm=TA.DIREK_L_YENI),

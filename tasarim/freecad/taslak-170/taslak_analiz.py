@@ -419,29 +419,45 @@ def b_dogrula():
 
 
 # ====================================================================== 3) statik: ev pozu tum parca ciftleri
+EV_S2 = float(A.OMUZ["yana_aralik"][0])     # K6 (S1 kaseti kontrolu, 25 Ekim 2026): statik kontrol yazilim ev pozunda (S1 0, S2 5)
+
+
 def b_statik(Rb):
+    # K6: FCStd kolu mekanik sifirda (S2 0) tutar; orada kol S1 tamburuna / kaset kapagina biner (6 cift, S2 < 3,75). Kontrol pozu yazilim
+    # ev pozu S2 = EV_S2 (omuz Kol + dirsek gruplari kol_M ile); S2 0 yalniz bilgi (cakisma_s2_0). Eklem sifiri degismez.
     P = Rb["P"]
-    bbs = [p["shape"].optimalBoundingBox() for p in P]
-    for b in bbs:
+    poz = {"sag": (0.0, EV_S2, 0.0, 0.0), "sol": (0.0, EV_S2, 0.0, 0.0)}
+    M = [M_parca(Rb, p, poz) if (p["modul"].startswith(("omuz_", "dirsek_")) and p["grup"] not in ("Govde", "Gobek")) else None
+         for p in P]
+    SH = [sekil(p, m) for p, m in zip(P, M)]
+    bbs = [s_.optimalBoundingBox() for s_ in SH]
+    bb0 = [p["shape"].optimalBoundingBox() for p in P]
+    for b in bbs + bb0:
         b.enlarge(0.01)
-    cak, aday = [], 0
+    cak, aday, cak0 = [], 0, []
     for i in range(len(P)):
         for j in range(i + 1, len(P)):
+            if (M[i] is not None or M[j] is not None) and bb0[i].intersect(bb0[j]):
+                v0 = kesisim(P[i]["shape"], P[j]["shape"])
+                if v0 > TOL or v0 < 0:
+                    cak0.append(dict(a=P[i]["ad"], a_modul=P[i]["modul"], b=P[j]["ad"], b_modul=P[j]["modul"], hacim_mm3=round(v0, 2)))
             if not bbs[i].intersect(bbs[j]):
                 continue
             aday += 1
-            v = kesisim(P[i]["shape"], P[j]["shape"])
+            v = kesisim(SH[i], SH[j])
             if v > TOL or v < 0:
                 c = dict(a=P[i]["ad"], a_modul=P[i]["modul"], b=P[j]["ad"], b_modul=P[j]["modul"], hacim_mm3=round(v, 2), i=i, j=j)
                 if Rb["ad"] == "yeni":
-                    e = eski_karsilik(i, j, {})
+                    e = eski_karsilik(i, j, poz)
                     c["eski_125_hacim_mm3"] = None if e is None else round(e[1], 2)
                     c["kaynak"] = "mevcut tasarim (125'te de var)" if (e and (e[1] > TOL or e[1] < 0)) else "taslak (yeni)"
                 cak.append(c)
         if i % 200 == 0:
             log("  statik", i, "/", len(P), "aday", aday, "cakisma", len(cak))
-    return dict(robot=Rb["ad"], parca=len(P), aday_cift=aday, esik_mm3=TOL, cakisma=cak,
-                not_="ev pozu (kollar asagida, kafa duz); tum parca ciftleri, siki sinir kutusu on elemesi, common hacmi")
+    return dict(robot=Rb["ad"], parca=len(P), aday_cift=aday, esik_mm3=TOL, cakisma=cak, poz=dict(s1=0.0, s2=EV_S2),
+                cakisma_s2_0=cak0,
+                not_="yazilim ev pozu (S1 0, S2 %g; kollar asagida, kafa duz; K6); tum parca ciftleri, siki sinir kutusu on elemesi, common "
+                     "hacmi. cakisma_s2_0: mekanik sifir (FCStd yerlesimi) yalniz bilgi, hareketli kol parcasi iceren ciftler" % EV_S2)
 
 
 # ====================================================================== 4) kol zinciri x sabit hedefler (carpisma.py bolum 4 yontemi)

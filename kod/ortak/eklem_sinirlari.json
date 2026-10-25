@@ -1,7 +1,7 @@
 {
   "surum": 1,
   "birim": "derece",
-  "kaynak": "tasarim/freecad/arayuz.py (OMUZ, DIRSEK, KAFA, KAFA_KOL_YASAK)",
+  "kaynak": "tasarim/freecad/arayuz.py (OMUZ, DIRSEK, KAFA, KAFA_KOL_YASAK, KOL_KABLO s1 s2_s1_kosul)",
   "eklemler": {
     "r_s1": {
       "ad": "omuz one-arka (S1)",
@@ -104,6 +104,52 @@
     "sinirsiz": true,
     "not_": "hiz / ivme siniri yazilimda (rampada <= 0,25 m/s2 onerilir)"
   },
+  "bagimli": [
+    {
+      "ad": "S1 kaseti: S2 lopu <-> kaset kapagi flansi",
+      "taraf": "r",
+      "kosul": {
+        "r_s1": [
+          120.0,
+          135.0
+        ]
+      },
+      "sinir": {
+        "r_s2": [
+          5.0,
+          117.0
+        ]
+      },
+      "neden": "S1 >= 120 iken S2 <= 117: S2 lopu (dirsek/bilek kablolari) S2 120'de kaset kapagi flansina yaklasir (pahsiz -0,30 mm; 1,2 mm pahla S2 120 +0,39, S2 117 0,89). K3, planlama/adim2/K2-s1-kontrol.md",
+      "bosluk_mm": {
+        "S2 120 pahsiz": -0.3,
+        "S2 120 pahli": 0.39,
+        "S2 117 pahli": 0.89
+      }
+    },
+    {
+      "ad": "S1 kaseti: S2 lopu <-> kaset kapagi flansi",
+      "taraf": "l",
+      "kosul": {
+        "l_s1": [
+          120.0,
+          135.0
+        ]
+      },
+      "sinir": {
+        "l_s2": [
+          5.0,
+          117.0
+        ]
+      },
+      "neden": "S1 >= 120 iken S2 <= 117: S2 lopu (dirsek/bilek kablolari) S2 120'de kaset kapagi flansina yaklasir (pahsiz -0,30 mm; 1,2 mm pahla S2 120 +0,39, S2 117 0,89). K3, planlama/adim2/K2-s1-kontrol.md",
+      "bosluk_mm": {
+        "S2 120 pahsiz": -0.3,
+        "S2 120 pahli": 0.39,
+        "S2 117 pahli": 0.89
+      }
+    }
+  ],
   "sol_isaret": {
     "deger": -1,
     "durum": "tahmini; montajdan sonra her servo tek tek dogrulanir (duzeltme plani C4)"

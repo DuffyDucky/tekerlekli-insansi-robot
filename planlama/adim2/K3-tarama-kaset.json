@@ -1,0 +1,665 @@
+{
+ "tarih": "2026-10-25T20:32:22",
+ "yontem": "nokta bulutu (<= 0,6 mm) + cKDTree; en kucuk pozlarda kesin distToShape + common",
+ "kaset_kol": {
+  "dirsek 0.0": {
+   "kesin": [
+    [
+     [
+      82.5,
+      5.0
+     ],
+     1.364,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu",
+     []
+    ],
+    [
+     [
+      22.5,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu",
+     []
+    ],
+    [
+     [
+      42.5,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu",
+     []
+    ],
+    [
+     [
+      62.5,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu",
+     []
+    ],
+    [
+     [
+      45.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu",
+     []
+    ],
+    [
+     [
+      60.0,
+      5.0
+     ],
+     1.365,
+     1.358,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu",
+     []
+    ]
+   ],
+   "en_kucuk_10": [
+    [
+     [
+      82.5,
+      5.0
+     ],
+     1.364,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     [
+      22.5,
+      5.0
+     ],
+     1.365,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     [
+      42.5,
+      5.0
+     ],
+     1.365,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     [
+      62.5,
+      5.0
+     ],
+     1.365,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     [
+      45.0,
+      5.0
+     ],
+     1.365,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     [
+      60.0,
+      5.0
+     ],
+     1.365,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     [
+      127.5,
+      5.0
+     ],
+     1.365,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     [
+      100.0,
+      5.0
+     ],
+     1.365,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     [
+      27.5,
+      5.0
+     ],
+     1.365,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     [
+      17.5,
+      5.0
+     ],
+     1.365,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ]
+   ],
+   "S2_basina": [
+    [
+     5.0,
+     1.364,
+     82.5,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     5.5,
+     1.761,
+     130.0,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     6.0,
+     2.109,
+     22.5,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     6.5,
+     2.488,
+     82.5,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     7.0,
+     2.846,
+     62.5,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     7.5,
+     3.214,
+     127.5,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     8.0,
+     3.575,
+     130.0,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     8.5,
+     3.933,
+     130.0,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     9.0,
+     4.293,
+     135.0,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     9.5,
+     4.644,
+     130.0,
+     "S1 kaset kapagi sag",
+     "Ust kol tupu"
+    ],
+    [
+     10.0,
+     5.0,
+     62.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     10.5,
+     5.345,
+     22.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     11.0,
+     5.696,
+     45.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     11.5,
+     6.038,
+     45.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     12.0,
+     6.381,
+     85.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     12.5,
+     6.721,
+     22.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     13.0,
+     7.055,
+     45.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     13.5,
+     7.392,
+     45.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     14.0,
+     7.72,
+     85.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     14.5,
+     8.054,
+     85.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     15.0,
+     8.377,
+     107.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     15.5,
+     8.701,
+     85.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     16.0,
+     9.021,
+     65.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     16.5,
+     9.337,
+     27.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     17.0,
+     9.655,
+     65.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     17.5,
+     9.963,
+     65.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     18.0,
+     10.273,
+     65.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     18.5,
+     10.579,
+     65.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     19.0,
+     10.883,
+     32.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     19.5,
+     11.184,
+     67.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     20.0,
+     11.479,
+     27.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     20.5,
+     11.781,
+     47.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     21.0,
+     12.09,
+     47.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     21.5,
+     12.405,
+     67.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     22.0,
+     12.726,
+     45.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     22.5,
+     13.051,
+     30.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     23.0,
+     13.382,
+     30.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     23.5,
+     13.717,
+     30.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     24.0,
+     14.056,
+     30.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     24.5,
+     14.399,
+     30.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     25.0,
+     14.746,
+     50.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     25.5,
+     15.095,
+     30.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     26.0,
+     15.448,
+     45.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     26.5,
+     15.49,
+     125.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     27.0,
+     15.491,
+     117.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     27.5,
+     15.491,
+     105.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     28.0,
+     15.49,
+     107.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     28.5,
+     15.49,
+     102.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     29.0,
+     15.49,
+     135.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     29.5,
+     15.49,
+     105.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     30.0,
+     15.491,
+     130.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     35.0,
+     15.49,
+     125.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     40.0,
+     15.49,
+     102.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     45.0,
+     15.49,
+     120.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     50.0,
+     15.491,
+     130.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     55.0,
+     15.49,
+     125.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     60.0,
+     15.49,
+     102.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     65.0,
+     15.49,
+     120.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     70.0,
+     15.491,
+     130.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     75.0,
+     15.49,
+     125.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     80.0,
+     15.49,
+     102.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     85.0,
+     15.49,
+     120.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     90.0,
+     15.491,
+     130.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     95.0,
+     15.49,
+     125.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     100.0,
+     15.49,
+     102.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     105.0,
+     15.49,
+     120.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     110.0,
+     15.491,
+     130.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     115.0,
+     15.49,
+     125.0,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ],
+    [
+     120.0,
+     15.49,
+     102.5,
+     "S1 kaset kapagi sag",
+     "Kol catali"
+    ]
+   ],
+   "poz": 5037,
+   "alt_kol_el_en_az": [
+    null,
+    1000000000.0,
+    null,
+    null
+   ]
+  }
+ },
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-25T16:45:52",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-25T17:09:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-25T17:19:17"
+ }
+}

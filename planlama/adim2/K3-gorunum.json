@@ -1,0 +1,48 @@
+{
+ "once": {
+  "kaset_bb": {
+   "S1 kaset govdesi sag": [
+    152.0,
+    158.3,
+    -76.03,
+    56.38,
+    7.68,
+    77.2
+   ],
+   "S1 kaset kapagi sag": [
+    155.0,
+    159.5,
+    -76.03,
+    56.38,
+    7.68,
+    77.2
+   ]
+  },
+  "ust_tasma_mm": 26.38,
+  "on_tasma_mm": -43.68,
+  "yan_tasma_mm": 7.5
+ },
+ "simdi": {
+  "kaset_bb": {
+   "S1 kaset govdesi sag": [
+    152.0,
+    158.31,
+    -76.03,
+    58.38,
+    7.68,
+    77.2
+   ],
+   "S1 kaset kapagi sag": [
+    155.0,
+    159.5,
+    -76.03,
+    58.38,
+    7.68,
+    77.2
+   ]
+  },
+  "ust_tasma_mm": 28.38,
+  "on_tasma_mm": -43.68,
+  "yan_tasma_mm": 7.5
+ }
+}

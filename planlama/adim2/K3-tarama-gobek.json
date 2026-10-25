@@ -1,0 +1,115 @@
+{
+ "tarih": "2026-10-26T01:12:15",
+ "yontem": "nokta bulutu (<= 0,6 mm) + cKDTree; en kucuk pozlarda kesin distToShape + common",
+ "gobek_kaset_kabuk": {
+  "kesin": [
+   [
+    61.0,
+    0.632,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag",
+    []
+   ],
+   [
+    69.0,
+    0.632,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag",
+    []
+   ],
+   [
+    47.0,
+    0.632,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag",
+    []
+   ],
+   [
+    55.0,
+    0.632,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag",
+    []
+   ],
+   [
+    71.0,
+    0.632,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag",
+    []
+   ]
+  ],
+  "en_kucuk_10": [
+   [
+    61.0,
+    0.632,
+    "S1 tambur baglama ipi001",
+    "S1 kaset govdesi sag"
+   ],
+   [
+    69.0,
+    0.632,
+    "S1 tambur baglama ipi",
+    "S1 kaset govdesi sag"
+   ],
+   [
+    47.0,
+    0.632,
+    "S1 tambur baglama ipi001",
+    "S1 kaset govdesi sag"
+   ],
+   [
+    55.0,
+    0.632,
+    "S1 tambur baglama ipi",
+    "S1 kaset govdesi sag"
+   ],
+   [
+    71.0,
+    0.632,
+    "S1 tambur baglama ipi001",
+    "S1 kaset govdesi sag"
+   ],
+   [
+    79.0,
+    0.632,
+    "S1 tambur baglama ipi",
+    "S1 kaset govdesi sag"
+   ],
+   [
+    94.0,
+    0.632,
+    "S1 tambur baglama ipi001",
+    "S1 kaset govdesi sag"
+   ],
+   [
+    102.0,
+    0.632,
+    "S1 tambur baglama ipi",
+    "S1 kaset govdesi sag"
+   ],
+   [
+    123.0,
+    0.632,
+    "S1 tambur baglama ipi001",
+    "S1 kaset govdesi sag"
+   ],
+   [
+    131.0,
+    0.632,
+    "S1 tambur baglama ipi",
+    "S1 kaset govdesi sag"
+   ]
+  ]
+ },
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-25T16:45:52",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-25T17:09:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-25T17:19:17"
+ }
+}

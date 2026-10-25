@@ -184,6 +184,7 @@ def birlestir():
     out = dict(
         moduller=st.get("moduller"), ayrilmis_bolge=st.get("ayrilmis_bolge"), arayuz_uyumu=st.get("arayuz_uyumu"),
         ev_pozu_cakisma=statik, ev_pozu_kesisen_cift=st.get("ev_pozu_kesisen_cift"),
+        ev_pozu_poz=st.get("ev_pozu_poz"), ev_pozu_cakisma_s2_0=st.get("ev_pozu_cakisma_s2_0"),   # K6: S2 0 yalniz bilgi
         zarf=om.get("zarf"), tarama=tarama, kol_tarama=kol, kol_kol=kk, kafa_tarama=kafa, taban_tarama=tb,
         toplam=toplam, kutle_g=st.get("kutle_g"), kutle_toplam_g=st.get("kutle_toplam_g"), agirlik_merkezi=st.get("agirlik_merkezi"),
         tolerans_mm3=0.5, sure_s=round(sum(v["sure_s"] + v["yukleme_s"] for v in B.values() if v), 1),

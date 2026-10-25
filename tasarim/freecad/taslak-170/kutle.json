@@ -10,17 +10,17 @@
   "not_": "optimalBoundingBox; boy = kafa kabugu tepesi"
  },
  "toplam": {
-  "kutle_g": 24510.5,
+  "kutle_g": 24511.3,
   "am": [
    -0.11,
-   567.28,
+   567.31,
    -10.71
   ],
-  "parca_sayisi": 1060,
-  "kutle_payli_g": 24955.5,
+  "parca_sayisi": 1064,
+  "kutle_payli_g": 24956.3,
   "am_payli": [
    -0.1,
-   560.82,
+   560.85,
    -11.53
   ],
   "paylar": [
@@ -47,17 +47,17 @@
   ]
  },
  "eski_125": {
-  "kutle_g": 21533.4,
+  "kutle_g": 21534.2,
   "am": [
    -0.19,
-   382.69,
+   382.71,
    -12.77
   ],
-  "parca_sayisi": 948,
-  "kutle_payli_g": 21933.4,
+  "parca_sayisi": 952,
+  "kutle_payli_g": 21934.2,
   "am_payli": [
    -0.19,
-   378.45,
+   378.47,
    -13.63
   ],
   "boy": 1250.0,
@@ -340,7 +340,7 @@
       1398.02,
       -2.44
      ],
-     "parca": 29
+     "parca": 31
     },
     "ust kol: kol catali + tup + S2 servosu (S1 + S2)": {
      "kutle_g": 159.0,
@@ -386,7 +386,7 @@
      1240.8,
      -1.32
     ],
-    "parca": 99
+    "parca": 101
    },
    "S2_ile_donen": {
     "kutle_g": 556.1,
@@ -506,7 +506,7 @@
       1398.02,
       -2.44
      ],
-     "parca": 29
+     "parca": 31
     },
     "ust kol: kol catali + tup + S2 servosu (S1 + S2)": {
      "kutle_g": 159.0,
@@ -552,7 +552,7 @@
      1240.8,
      -1.32
     ],
-    "parca": 99
+    "parca": 101
    },
    "S2_ile_donen": {
     "kutle_g": 556.1,
@@ -661,7 +661,7 @@
      1374.75,
      -0.79
     ],
-    "parca": 71
+    "parca": 73
    },
    "eski": {
     "kutle_g": 555.5,
@@ -670,7 +670,7 @@
      942.79,
      -0.78
     ],
-    "parca": 71
+    "parca": 73
    }
   },
   {
@@ -682,7 +682,7 @@
      1374.75,
      -0.79
     ],
-    "parca": 71
+    "parca": 73
    },
    "eski": {
     "kutle_g": 555.5,
@@ -691,26 +691,26 @@
      942.79,
      -0.78
     ],
-    "parca": 71
+    "parca": 73
    }
   },
   {
    "ad": "kabuk",
    "yeni": {
-    "kutle_g": 6367.9,
+    "kutle_g": 6368.7,
     "am": [
      -0.07,
-     673.55,
-     6.82
+     673.64,
+     6.83
     ],
     "parca": 282
    },
    "eski": {
-    "kutle_g": 4921.5,
+    "kutle_g": 4922.3,
     "am": [
      -0.08,
-     470.08,
-     8.83
+     470.16,
+     8.84
     ],
     "parca": 206
    }
@@ -832,7 +832,7 @@
     1398.02,
     -2.44
    ],
-   "parca": 29
+   "parca": 31
   },
   {
    "isim": "OmuzSag_Kol",
@@ -865,7 +865,7 @@
     1398.02,
     -2.44
    ],
-   "parca": 29
+   "parca": 31
   },
   {
    "isim": "OmuzSol_Kol",
@@ -881,11 +881,11 @@
   {
    "isim": "Kabuk",
    "modul": "kabuk",
-   "kutle_g": 6367.9,
+   "kutle_g": 6368.7,
    "am": [
     -0.07,
-    673.55,
-    6.82
+    673.64,
+    6.83
    ],
    "parca": 282
   },
@@ -2849,11 +2849,11 @@
    "ad": "S1 kablo tamburu",
    "modul": "omuz_sag",
    "grup": "OmuzSag_Gobek",
-   "kutle_g": 4.78,
+   "kutle_g": 4.79,
    "am": [
     156.64,
-    1394.84,
-    12.23
+    1394.8,
+    12.19
    ],
    "tur": "Baski",
    "malzeme": "PETG",
@@ -2941,6 +2941,34 @@
    ],
    "tur": "Baglanti",
    "malzeme": "Pirinc",
+   "durum": "tasindi"
+  },
+  {
+   "ad": "S1 tambur baglama ipi",
+   "modul": "omuz_sag",
+   "grup": "OmuzSag_Gobek",
+   "kutle_g": 0.0,
+   "am": [
+    155.9,
+    1355.78,
+    -21.38
+   ],
+   "tur": "Baglanti",
+   "malzeme": "Polyester",
+   "durum": "tasindi"
+  },
+  {
+   "ad": "S1 tambur baglama ipi",
+   "modul": "omuz_sag",
+   "grup": "OmuzSag_Gobek",
+   "kutle_g": 0.0,
+   "am": [
+    155.9,
+    1353.14,
+    -16.41
+   ],
+   "tur": "Baglanti",
+   "malzeme": "Polyester",
    "durum": "tasindi"
   },
   {
@@ -3843,11 +3871,11 @@
    "ad": "S1 kablo tamburu",
    "modul": "omuz_sol",
    "grup": "OmuzSol_Gobek",
-   "kutle_g": 4.78,
+   "kutle_g": 4.79,
    "am": [
     -156.64,
-    1394.84,
-    12.23
+    1394.8,
+    12.19
    ],
    "tur": "Baski",
    "malzeme": "PETG",
@@ -3935,6 +3963,34 @@
    ],
    "tur": "Baglanti",
    "malzeme": "Pirinc",
+   "durum": "tasindi"
+  },
+  {
+   "ad": "S1 tambur baglama ipi",
+   "modul": "omuz_sol",
+   "grup": "OmuzSol_Gobek",
+   "kutle_g": 0.0,
+   "am": [
+    -155.9,
+    1355.78,
+    -21.38
+   ],
+   "tur": "Baglanti",
+   "malzeme": "Polyester",
+   "durum": "tasindi"
+  },
+  {
+   "ad": "S1 tambur baglama ipi",
+   "modul": "omuz_sol",
+   "grup": "OmuzSol_Gobek",
+   "kutle_g": 0.0,
+   "am": [
+    -155.9,
+    1353.14,
+    -16.41
+   ],
+   "tur": "Baglanti",
+   "malzeme": "Polyester",
    "durum": "tasindi"
   },
   {
@@ -8183,11 +8239,11 @@
    "ad": "S1 kaset govdesi sag",
    "modul": "kabuk",
    "grup": "Kabuk",
-   "kutle_g": 8.76,
+   "kutle_g": 9.05,
    "am": [
-    153.67,
-    1381.53,
-    46.83
+    153.69,
+    1383.34,
+    47.47
    ],
    "tur": "Baski",
    "malzeme": "PETG",
@@ -8197,11 +8253,11 @@
    "ad": "S1 kaset kapagi sag",
    "modul": "kabuk",
    "grup": "Kabuk",
-   "kutle_g": 6.75,
+   "kutle_g": 6.83,
    "am": [
-    158.81,
-    1379.69,
-    46.61
+    158.8,
+    1381.05,
+    46.93
    ],
    "tur": "Baski",
    "malzeme": "PETG",
@@ -8211,11 +8267,11 @@
    "ad": "S1 kaset govdesi sol",
    "modul": "kabuk",
    "grup": "Kabuk",
-   "kutle_g": 8.76,
+   "kutle_g": 9.05,
    "am": [
-    -153.67,
-    1381.53,
-    46.83
+    -153.69,
+    1383.34,
+    47.47
    ],
    "tur": "Baski",
    "malzeme": "PETG",
@@ -8225,11 +8281,11 @@
    "ad": "S1 kaset kapagi sol",
    "modul": "kabuk",
    "grup": "Kabuk",
-   "kutle_g": 6.75,
+   "kutle_g": 6.83,
    "am": [
-    -158.81,
-    1379.69,
-    46.61
+    -158.8,
+    1381.05,
+    46.93
    ],
    "tur": "Baski",
    "malzeme": "PETG",

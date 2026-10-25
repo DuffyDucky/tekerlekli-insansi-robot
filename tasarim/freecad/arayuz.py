@@ -615,11 +615,17 @@ def eklem_sinirlari():
         for k, v in tek.items():
             taraf["%s_%s" % (t, k)] = dict(v, taraf=on, ayna=(t == "l"))
     return dict(
-        surum=1, birim="derece", kaynak="tasarim/freecad/arayuz.py (OMUZ, DIRSEK, KAFA, KAFA_KOL_YASAK)",
+        surum=1, birim="derece", kaynak="tasarim/freecad/arayuz.py (OMUZ, DIRSEK, KAFA, KAFA_KOL_YASAK, KOL_KABLO s1 s2_s1_kosul)",
         eklemler=dict(taraf,
                       pan=j("kafa pan", KAFA["pan_aralik"], KAFA["servo"], "MG996R 180 derece; kablo halkasi +-90"),
                       tilt=j("kafa tilt", KAFA["tilt_aralik"], KAFA["servo"], "yazilim siniri; geometri serbest -25...40")),
         teker=dict(sinirsiz=True, not_="hiz / ivme siniri yazilimda (rampada <= 0,25 m/s2 onerilir)"),
+        bagimli=[dict(ad="S1 kaseti: S2 lopu <-> kaset kapagi flansi", taraf=t, kosul={"%s_s1" % t: [_K["s1_min"], OMUZ["one_arka_aralik"][1]]},
+                      sinir={"%s_s2" % t: [OMUZ["yana_aralik"][0], _K["s2_max"]]},
+                      neden="S1 >= %g iken S2 <= %g: S2 lopu (dirsek/bilek kablolari) S2 120'de kaset kapagi flansina yaklasir "
+                            "(pahsiz -0,30 mm; 1,2 mm pahla S2 120 +0,39, S2 117 0,89). K3, planlama/adim2/K2-s1-kontrol.md" % (_K["s1_min"], _K["s2_max"]),
+                      bosluk_mm=dict(_K["bosluk_mm"]))
+                 for t, _K in (("r", KOL_KABLO["s1"]["s2_s1_kosul"]), ("l", KOL_KABLO["s1"]["s2_s1_kosul"]))],
         sol_isaret=dict(deger=-1, durum="tahmini; montajdan sonra her servo tek tek dogrulanir (duzeltme plani C4)"),
         kafa_kol_yasak=dict(
             aciklama="kol kol_kosulu icindeyken kafa o kola dogru kutu icine girmemeli (pan x tilt); sol kol: sol_kol.kutu",
@@ -642,7 +648,14 @@ def eklem_sinirlari():
 # =====================================================================================================
 KOL_KABLO = dict(
     serit=(4.2, 1.4),                 # 22 AWG 3 damar duz servo kablosu: genislik, kalinlik (mm). Iletken 0,34 mm2 (Maplin
-                                      # Futaba 22AWG); damar dis capi ~1,4 (0,66 iletken + PVC) TAHMINI, kumpasla olculmeli
+                                      # Futaba 22AWG); damar dis capi ~1,4 (0,66 iletken + PVC) TAHMINI, kumpasla olculmeli.
+                                      # KABLO SPESIFIKASYONU (S1 K1, 25 Ekim 2026; planlama/adim2/K2-s1-kontrol.md B1): butun uzatmalar
+                                      # "ince duvarli PVC duz 22 AWG servo kablosu, tek tel (damar) <= 1,5 mm (tercihen <= 1,4)";
+                                      # ALMADAN ONCE kumpasla olculur. Neden: S1 U'su (R 12,91 >= 7,5 d + d) ve tambur kanali (dudak arasi
+                                      # 4,8 >= 3 d + 0,6) d <= 1,5'te gecer. 22 AWG silikon (60 x 0,08, dis cap 1,7 +-0,1) U'ya da kanala da
+                                      # SIGMAZ (R 12,58 < 14,45; 3 x 1,7 = 5,1 > 4,8). Yalniz not: silikon sart olursa kaset duvari r +6
+                                      # (75,2 -> 81,2), kanal >= 5,7, L ~190,5, cep/pim yeniden (gorunum ~+6 mm). 26 AWG onerilmez (gerilim
+                                      # dusumu ~2,5x; DS3235 stall 3 A).
     servo_kablo_boy=300.0,            # MG996R 30 cm (Tower Pro datasheet), DS3218 300 +-5 (DSServo datasheet)
     jr_disi=(7.9, 2.75, 14.0),        # servo ucundaki disi JR govdesi (Pololu 1924 cizimi)
     jr_erkek=(10.3, 4.0, 18.0),       # uzatmanin erkek JR govdesi (Pololu 1925 cizimi)
@@ -684,21 +697,52 @@ KOL_KABLO = dict(
     #     sabit duvar boyunca -psi yonunde (dis kosu) duvar bagina gelir. U sekli temasli elastika (kablo_yolu.u_lop): pozdan bagimsiz,
     #     yalniz doner. Tambur omuz Gobek grubunda (omuz_parcalar), kaset govdesi kabuk modulunde (kabuk_parcalar).
     s1=dict(durum="A' doner U-lop kaseti (15 Ekim 2026)",
-            serit=3,                                    # dirsek + bilek uzatmalari + S2 servosu (DS3218) kablosu
+            serit=3,                                    # dirsek + bilek + S2 uzatmalari: uc ayni PVC 22 AWG serit (K1). S2 servo
+                                                        # kablosu artik U'dan gecmez, gobekte uzatmaya eklenir (s2_birlesim; B10)
             kanal_x=(153.5, 158.3),                     # tambur dudaklari arasi eksenel kanal: demet 4,2 + 0,6
             tambur=dict(r=(37.0, 39.0), x=(152.5, 159.3), dudak_r=43.7, dudak_t=1.0,     # ic r 37: kapak M3 basi r 36,3 -> 0,7
                         kol_psi=(-30.0, 0.0, 30.0), kol_r=(31.0, 39.0), kol_gen=9.0, kol_x=(159.3, 163.0),   # gobek on yuzune 3 kol
                         vida_r=33.75, vida=(3, 8),       # M3x8 DIN 912 +x yonunde (bas tamburun ic tarafinda), gobekte isil gomme
-                        bag_psi=145.0, yay_psi=(142.0, 395.0)),   # gobek cercevesi: kablo bagi; halka yalniz ic kosunun gezdigi
+                        bag_psi=145.0, yay_psi=(142.0, 395.0),    # gobek cercevesi: kablo bagi; halka yalniz ic kosunun gezdigi
                                                         # yayda (C halka): arka-ust 35...142 bos (S2 lopu S2 120'de oradan gecer)
+                        # Kablo bagi (K2, 25 Ekim 2026; K2-s1-kontrol B2): halkanin altindan gecen 1,0 mm kablo bagi kayisi kapak
+                        # civatasina (r 36,3) carpiyordu. Kelepce sigmiyor (demet 4,2 kanalda 4,8, dudak <-> flans 0,5 radyal; kanal
+                        # disinda ankraj yeri yok) -> mumlu polyester BAGLAMA IPI O0,4 (ya da 0,3 x 1,2 serit): ip demetin ustunden,
+                        # iki dudak icinde cep (dudak_cep derinlik) boyunca, halkadan radyal kanaldan ve halka ic yuzundeki oluktan
+                        # (oluk derinlik) gecen kapali ilmek; ip halka zarfinin icinde kalir (r >= 37 + oluk - d). Iki ilmek ip_psi'de
+                        # (eski kayis yariklari: bag + 3 / bag + 11), dugum demetin ustunde kanal ortasinda.
+                        ip_psi=(148.0, 156.0), ip=dict(d=0.4, gen=1.0, oluk=0.5, dudak_cep=0.3)),
             # kaset iki baski parcasi: govde (arka plaka x 152-153 + duvar + dikmeler; arka yuz tablada) ve kapak (flans + dikme
             # basliklari + ust uc pimi; flans tablada). Arka plaka kabugun duz omuz yuzune (x 152) oturur; kabugun x 152'den geri
             # cekildigi on kose ve ust kapak ustunde de kablonun -x kenarini tutar.
             duvar=dict(r=(75.2, 77.2), x0=152.0, arka_t=1.0, flans_x=(158.3, 159.5), flans_r_ic=44.2, psi0=190.0,
-                       u_pay=4.5, ic_kes_r=46.5, bolum_x=155.0, havsa_x=156.5, pim=dict(r=57.0, d=3.0, post_r=3.5, bosluk=0.5)),
+                       u_pay=6.5, ic_kes_r=46.5, bolum_x=155.0, havsa_x=156.5, pim=dict(r=57.0, d=3.0, post_r=3.5, bosluk=0.5),
+                       # u_pay 4,5 -> 6,5 (K4, 25 Ekim 2026; B4): U ucu <-> cep ucu 0,34 mm idi (L +0,7 / S1 +1 derece ile temas)
+                       # flans ic kenarinin dis (x 159,5) kosesine tam kalinlik pah (K3; B3): S2 lopu S2 120'de flansa -0,30 ->
+                       # pahla +0,39; S1 >= 120 iken S2 <= 117 yazilim siniriyla (s2_s1_kosul) 0,89. Ic yuz (x 158,3) r 44,2 korunur.
+                       pah=1.2,
+                       # ikinci pim (B9 onerisi): ust uc psi 240...335 konsolu govde <-> kapak tek kesit calissin. Pim U'nun suprudugu
+                       # halkanin (r < 75,2, psi <= U ucu) icine konamaz -> duvarin disina kulak (govde: dikme + kopru x 152...158,3;
+                       # kapak: flans uzantisi + O3 pim -x). Delik r - d/2 - 0,1 > duvar dis r 77,2.
+                       pim2=dict(psi=300.0, r=80.0, d=3.0, post_r=3.5, kopru_r=76.2),   # kopru duvarin icinde baslar (r >= 75,2: kanala girmez)
+                       # duvar bagi (K4; B4): kaset duvarinda baglama ipi delikleri (O0,4 ip, tamburla ayni). Kayisli kablo bagi
+                       # sigmaz: demet <-> arka plaka 0,8, demet <-> flans 0,3 eksenel. Ip duvarin disindan, arka plaka dibindeki
+                       # radyal yariktan ve duvar ust kenarindaki centikten gecer, demeti duvara baglar; dugum duvarin disinda.
+                       ip_psi=(226.5, 230.0), ip=dict(gen=1.2, arka_x=(153.0, 153.8), ust_x=(157.5, 158.3))),
             alfa_min=10.0,                              # ic / dis kosu en kisa yay acisi (derece; kontrol esigi)
             bag_duvar_psi=228.3, L=171.4,               # duvar bagi (sabit) ve bagdan baga kablo boyu: phi 135'te ic kosu ~10,
                                                         # phi -45'te dis kosu ~10 derece (kontrol dirsek_montaj'da yeniden hesaplar)
+            L_tol=(-5.0, 0.0),                          # montaj talimati (K4): lop boyu L 171,4 tek yonlu -5...0 (uzun L U ucunu cebe,
+                                                        # kisa L ic kosuyu tambura daha cok sarar); S1 yazilim ust siniri 135 kesin
+            # Yazilim bagimli siniri (K3, 25 Ekim 2026; B3): S1 >= s1_min iken S2 <= s2_max. S2 lopu S2 120'de kaset kapagi flansina
+            # yaklasir (pahsiz -0,30, pahli +0,39; S2 117'de pahli 0,89). eklem_sinirlari.json "bagimli" listesine girer.
+            s2_s1_kosul=dict(s1_min=120.0, s2_max=117.0, bosluk_mm={"S2 120 pahsiz": -0.30, "S2 120 pahli": 0.39, "S2 117 pahli": 0.89}),
+            # S2 servo kablosu gobekte uzatmaya eklenir (B10; K2-s1-kontrol "Ayrica"): U'dan 3 ayni PVC serit gecer, DS3235'in 300 +-5 mm
+            # kablosunun yarik payi sorunu (en kotu 5 < 7) kalkar. Servo kablosu servodan sonra kisaltilir, ek G2'den once gobek
+            # kutusunun arka ic seridinde (sabit; S2 lopundan once) lehim + isiyla daralan makaron ile yapilir, kablo bagiyla tutturulur.
+            s2_birlesim=dict(yer="gobek arka ic seridi, G2 oncesi (sabit, S2 lopundan once)", G2_once=20.0,
+                             ek="lehim + isiyla daralan makaron (O <= 4,5, ~25 mm); JR cifti (10,3 x 4 x 26) de olur",
+                             not_="G2_once ve s2_servo_kablo tahmini; montajda yerinde olculur"),
             dikme=((200.0, 53.0), (226.0, 54.0)), dikme_r=4.0, dikme_vida=(3, 8),   # (psi, r): kabuk omuz pedinde isil gomme
             kulak=dict(x=(138.0, 152.0), z=(38.0, 56.0), t=3.0, vida_xz=(144.0, 47.0), vida=(3, 8)),   # kabuk ust kapagina yatay kulak
             cikis=dict(psi=214.0, r_don=52.0, x_ic=140.0, yarik=(12.0, 6.0)),   # duvar bagi -> duvar boyunca -> psi 214'te radyal

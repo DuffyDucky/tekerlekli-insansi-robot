@@ -838,7 +838,8 @@ KAB1, KAB1_T = kabuk_oku()
 KASET = [(a, s_) for a, s_ in KAB1 if a.startswith("S1 kaset")]
 KAB_DIGER = [(a, s_) for a, s_ in KAB1 if not a.startswith("S1 kaset")]
 TAMBUR = [(q["ad"], q["shape"]) for q in O.P if q["ad"] == "S1 kablo tamburu"]
-GOB_DIGER = [(q["ad"], q["shape"]) for q in O.P if q["grup"] == "Gobek" and q["ad"] != "S1 kablo tamburu"]
+# S1 tambur baglama ipi (Y1b K2, 25 Ekim 2026) demeti tambura baglar: kablo tasarim geregi ipin altinda (tambur gibi temas yuzeyi)
+GOB_DIGER = [(q["ad"], q["shape"]) for q in O.P if q["grup"] == "Gobek" and q["ad"] not in ("S1 kablo tamburu", "S1 tambur baglama ipi")]
 GOV1 = [(q["ad"], q["shape"]) for q in O.P if q["grup"] == "Govde" and q["tur"] != "Referans"]
 log("S1: kabuk-montaj.FCStd (%s) %d parca (kaset %d); U R_min %.2f (sinir %.2f, 10xd %.2f), l %.1f, delta %.1f, uc +%.1f" % (
     KAB1_T, len(KAB1), len(KASET), U1["R_min"], R_DIN1, R_ON1, U1["l"], U1["delta"], U1["pol_max"]))

@@ -228,18 +228,39 @@ def b_statik():
     print("arayuz uyumu:", [(u["modul"], u["ayni"]) for u in uyum])
 
     # ====================================================================== 2) ev pozunda modul ciftleri
-    statik = []
+    # K6 (S1 kaseti kontrolu, 25 Ekim 2026): kontrol pozu = YAZILIM ev pozu S1 0, S2 = YANA_MIN (5). FCStd'ler kolu mekanik sifirda
+    # (S2 0) tutar; orada kol S1 tamburuna / kaset kapagina biner (S2 < 3,75; kol S2 ~3,6'da tambura dayanir) -> S2 0 yalniz bilgi
+    # (ev_pozu_cakisma_s2_0), omuz_montaj'daki statik_s2_0 gibi. Omuz Kol grubu ve bagli dirsek parcalari Pr(S2) ile tasinir;
+    # eklem sifiri / FCStd yerlesimi degismez.
+    def ev_sekil(ad, p, th):
+        d = MODUL[ad]
+        om = ad if (d.get("hareket") and ad.startswith("omuz_") and p["grup"] == "Kol") else (d.get("zincir") or {}).get("omuz")
+        if om is None or om not in MODUL or abs(th) < 1e-12:
+            return p["g"], p["gbb"], False
+        s_ = p["g"].copy()
+        s_.transformShape(poz_matrisi(om, (0.0, th), "Kol"), True)
+        return s_, s_.optimalBoundingBox(), True
+
+    EV = {(ad, id(p)): ev_sekil(ad, p, YANA_MIN) for ad in adlar for p in aktif(MODUL[ad])}
+    statik, statik_s2_0 = [], []
     n_statik = 0
     for i in range(len(adlar)):
         for j in range(i + 1, len(adlar)):
             for a in aktif(MODUL[adlar[i]]):
                 for b in aktif(MODUL[adlar[j]]):
-                    if a["gbb"].intersect(b["gbb"]):
+                    ga, ba, ma = EV[(adlar[i], id(a))]
+                    gb, bb_, mb = EV[(adlar[j], id(b))]
+                    if ba.intersect(bb_):
                         n_statik += 1
-                    v = kesisim(a["g"], b["g"], a["gbb"], b["gbb"])
+                    v = kesisim(ga, gb, ba, bb_)
                     if v > TOL or v < 0:
                         statik.append(dict(a=adlar[i], pa=a["ad"], b=adlar[j], pb=b["ad"], hacim=round(v, 2)))
-    print("ev pozu: %d cakisma (%d sinir kutusu kesisen cift)" % (len(statik), n_statik), "%.1fs" % (time.time() - t0))
+                    if ma or mb:            # bilgi: mekanik sifir (S2 0) = FCStd yerlesimi
+                        v0 = kesisim(a["g"], b["g"], a["gbb"], b["gbb"])
+                        if v0 > TOL or v0 < 0:
+                            statik_s2_0.append(dict(a=adlar[i], pa=a["ad"], b=adlar[j], pb=b["ad"], hacim=round(v0, 2)))
+    print("ev pozu (S1 0, S2 %g): %d cakisma (%d sinir kutusu kesisen cift); mekanik sifir S2 0 (bilgi): %d" % (
+        YANA_MIN, len(statik), n_statik, len(statik_s2_0)), "%.1fs" % (time.time() - t0))
     # toplam kutle ve agirlik merkezi (ev pozu)
     m_top, cg = 0.0, V(0, 0, 0)
     km = {}
@@ -261,6 +282,8 @@ def b_statik():
                        bagli=(MODUL[ad].get("zincir") or {}).get("omuz")) for ad in KONTROL],
         ayrilmis_bolge=dict(sayi=len(bolge_parca), sahipler=sorted(set(z["sahip"] for z in A.bolgeler(haric=KONTROL)))),
         arayuz_uyumu=uyum, ev_pozu_cakisma=statik, ev_pozu_kesisen_cift=n_statik,
+        ev_pozu_poz=dict(one_arka=0.0, yana=YANA_MIN, not_="yazilim ev pozu (K6); kutle/AM FCStd yerlesiminde (S2 0)"),
+        ev_pozu_cakisma_s2_0=statik_s2_0,
         kutle_g=km, kutle_toplam_g=round(m_top, 1), agirlik_merkezi=[round(cg.x, 2), round(cg.y, 2), round(cg.z, 2)])
 
 

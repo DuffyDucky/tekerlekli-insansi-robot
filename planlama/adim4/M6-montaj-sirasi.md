@@ -24,6 +24,9 @@ Düzeltme planı M6 · 15 Ekim 2026 · Opus-7. Bu bir analiz: CAD değiştirilme
   - 2 dikme (ψ 200° / 226°) M3×8 → kabuk pedinde ısıl gömme somun,
   - üst uçta yalnız pim; kabuğa vidalı kulak yok,
   - kablo çıkışı ψ 214°'de pedde 12 × 6 yarık.
+- **Y1b (25 Ekim 2026):** kaset değişti (flanş pahı, U cebi +2 mm, duvar bağı ip delikleri, duvar dışı ikinci pim kulağı ψ 300;
+  tamburda kayış yarıkları yerine bağlama ipi yolu). Dikme cıvataları ve ped yarığı **aynı yerde**; G4 sırası önden radyal olarak
+  düzeltildi. `M6_erisim.py` / `M6_ek.py` yeniden koşulmadı (Y3 M6 CAD adımında koşulacak).
 
 ## 1. Özet
 
@@ -56,6 +59,9 @@ Düzeltme planı M6 · 15 Ekim 2026 · Opus-7. Bu bir analiz: CAD değiştirilme
   - Pim M5 tezgâhta takılır: robotta göğüs bandı 8,9 mm'de.
 - **S1 kaseti:** dikme cıvataları S1 **−45°** (kol arkada) ya da **+90°**'de takılır. Serbest boy 110 mm. S1 0°'da üst kol tüpü
   7,5 mm'de engelliyor, +45°'de kol çatalı 0,2 mm'de engelliyor.
+  - **Düzeltme (Y1b, 25 Ekim 2026; `planlama/adim2/K2-s1-kontrol.md` B5/K5):** kaset +x yönünden takılamaz (gövde t 10,5'te, kapak
+    t 4,0'te göbeğe / tüpe çarpar). Doğru sıra **önden radyal** (G4 satırı ve `planlama/adim2/S1-kaset.md` "Montaj sırası (K5)").
+    Anahtar erişimi S1 −45° / S2 90°'de iki dikme cıvatasına ≥ 8 mm.
 
 **Sırayla da çözülmeyenler → CAD değişiklik listesi (4. bölüm):**
 
@@ -121,11 +127,11 @@ Sütunlar:
 | 34 | F2 | Gövde alt + orta bantları (sağ, sol) | 12 × M3×6 ISO 7380; 2 × M5×10 + pul (braket y 400, içeriden) | alyan 2 / 4 | bindirme düz; M5 L 80 mm ama el kabuk içinde (üstten ~400 mm derin) → **K1** |
 | 35 | F3 | Göğüs bantları + Nextion | 9 × M3×6 ISO 7380; 4 × M3×6 DIN 912 ekran (içeriden); 2 × M5×10 (braket y 780) | alyan 2 / 2,5 / 4 | ekran ve braket üst açıklıktan (omuz bandı yok); M5 L 106 mm → **K1** |
 | 36 | F4 | Omuz bantları: Ø84 rulman kapağının üstünden geçer, üst kapak boynu sarar | 6 × M3×6 ISO 7380 | alyan 2 | düz. **Bu adımdan sonra omuz bandı ancak göbek sökülünce çıkar** (3. bölüm) |
-| 37 | G0 | Tezgâh: göbek + S1 kablo tamburu (×2) | 6 × M3×8 (−x yüzden) → göbekte ısıl gömme | alyan 2,5 | düz |
+| 37 | G0 | Tezgâh: göbek + S1 kablo tamburu (×2); tamburun 2 bağlama ipi yoluna Ø0,4 mumlu ip önceden geçirilir (halka altı oluk → iki dudak cebi, uçlar ~80 mm yukarıda serbest) | 6 × M3×8 (−x yüzden) → göbekte ısıl gömme | alyan 2,5 | düz |
 | 38 | G1 | Göbek → S1 hornu (6808 iç bileziğine) | 8 × M3×12 göbek–horn | alyan 2,5 | düz 4; **YOK 4** (göbek duvarı) → **C1**; S2 servosundan önce |
-| 39 | G2 | S2 servosu → göbek; mafsal 625ZZ + M5 pim | 8 × M4×16 + 8 × kontra somun; 2 × M5×12 + pul | alyan 3 / 4 + 7 mm | cıvata düz; somun 4'ü açık ağız, **4'ü YOK** → **C3** |
-| 40 | G3 | S2 hornu + merkez vidası, kol çatalı (çatal–horn), üst kol tüpü; kablo G2 → tambur (bağ ψ 145) → U lop | 2 × M3×5 horn; 8 × M3×8 çatal–horn; 4 × M3×8 tüp → ısıl gömme | PH1, alyan 2,5 | düz |
-| 41 | G4 | S1 kablo kaseti (gövde + kapak, +x'ten kaydırılır); kablo duvar bağından ped yarığına | 4 × M3×8 dikme → pedde ısıl gömme | alyan 2,5 | **S1 −45° ya da +90°'de** (düz 110 mm); ev pozunda tüp engelliyor |
+| 39 | G2 | S2 servosu → göbek; mafsal 625ZZ + M5 pim; **S2 servo kablosu G2'den ~20 mm önce, göbeğin arka iç şeridinde uzatmaya eklenir** (lehim + ısıyla daralan makaron ya da JR çifti, kablo bağı; Y1b B10) | 8 × M4×16 + 8 × kontra somun; 2 × M5×12 + pul | alyan 3 / 4 + 7 mm | cıvata düz; somun 4'ü açık ağız, **4'ü YOK** → **C3** |
+| 40 | G3 | S2 hornu + merkez vidası, kol çatalı (çatal–horn), üst kol tüpü; kablo G2 → tambur bağı (ψ 145): 3 aynı PVC şerit kanala, teğet (bağ açısı 0 ± 2°), **2 bağlama ipi** demetin üstünde düğümlenir (cerrah + kare düğüm, uç 3 mm) | 2 × M3×5 horn; 8 × M3×8 çatal–horn; 4 × M3×8 tüp → ısıl gömme | PH1, alyan 2,5 | düz |
+| 41 | G4 | **S1 kablo kaseti, önden radyal (Y1b K5):** (a) **gövde** önden radyal, x ofsetsiz (arka plaka omuz pedine yaslı kayar; S1 −45 / −20 / 0 × S2 90 ya da S1 −45 × S2 5) → (b) U elle kanala, dış koşu duvar boyunca, ψ 214'te yarıktan içeri; **lop boyu L 171,4 mm (−5…0)** tambur bağından duvar bağına (kabloda işaret) → (c) **duvar bağı:** 2 bağlama ipi (ψ 226,5 / 230) duvar deliklerinden, düğüm duvarın dışında → (d) **kapak** önden radyal, flanş gövdeden **x +3,3…5 mm havada** (S1 0…135°, S2 ≥ 30°; S1 −45°'de en çok +3,3) → (e) kapak **−x itilir**: 2 × Ø3 pim (uç ψ 331 + kulak ψ 300) yuvasına → (f) 2 dikme cıvatası | 4 × M3×8 dikme → pedde ısıl gömme; 4 × Ø0,4 ip (tambur 2 + duvar 2) / kol | alyan 2,5 | cıvatalar **S1 −45° / S2 90°**'de ≥ 8 mm açık; +x'ten kaydırma **olmaz** (gövde/kapak göbeğe ve tüpe çarpar) |
 | 42 | H0a | Tezgâh: ön kol + dirsek ve bilek servoları | 16 × M4×16 + 16 × kontra somun | alyan 3 + 7 mm | bilek: cıvata düz, somun cepte. Dirsek: **2 cıvata/kol YOK** (13,6 mm), **3 somun/kol YOK** → **C2** |
 | 43 | H0b | Tezgâh: dirsek hornu + merkez vidası | 2 × M3×5 horn | PH1 | düz; **çataldan önce** |
 | 44 | H0c | Tezgâh: dirsek çatalı → horn; 625ZZ; M5 pim (yanaktaki ısıl gömmeye) | 8 × M3×8 çatal–horn; 2 × M5×12 + pul | alyan 2,5 / 4 | düz; pim robotta erişilemez (göğüs bandı 8,9 mm) |
@@ -164,7 +170,7 @@ Rehber için sıra kuralları:
 
 **Bandı sökmek için gereken sıra (servis yolu, şu anki CAD ile):**
 1. Dirsek: 2 bilezik cıvatası.
-2. Kaset: 2 dikme cıvatası, S1 −45°'de.
+2. Kaset: 2 dikme cıvatası, S1 −45° / S2 90°'de; kapak +x 3,5 mm kaldırılıp (pimlerden çıkar) önden radyal çekilir; duvar bağı ipleri kesilir; gövde önden radyal çekilir.
 3. Kol çatalı: S2 horn vidası + 4 çatal–horn cıvatası + M5 mafsal pimi.
 4. S2 servosu: 4 × M4 + kontra somun.
 5. Göbek–horn: 4 × M3×12 (C1 yapılmadan 2'si hiç sökülemez).
@@ -244,6 +250,7 @@ Kaynak: `M6_erisim.py` (ISO 2936 yaklaşık kol boyları, tahmini).
 | Havya + ısıl gömme ucu | M3 / M5 | tüm ısıl gömme somunlar (baskıdan sonra, tezgâhta) | yatay delikler: M7 kupon C |
 | Tork tornavida (öneri) | 0,5–1,5 N·m | plastiğe giden M3 / M5 (kupon C değerleri) | — |
 | Kablo bağı, sıcak tutkal | — | K1, K2, G3, G4 | — |
+| Ø0,4 mumlu polyester bağlama ipi + makas | ~0,5 m / kol | G0, G3, G4 (S1 tambur ve duvar bağı; Y1b K2/K4) | — |
 
 ## 6. Açık sorunlar ve sınırlar
 

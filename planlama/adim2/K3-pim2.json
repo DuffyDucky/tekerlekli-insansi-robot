@@ -1,0 +1,160 @@
+{
+ "tarih": "2026-10-25T20:29:27",
+ "adim": "pim2",
+ "parca": {
+  "omuz": 75,
+  "ip": [
+   "S1 tambur baglama ipi",
+   "S1 tambur baglama ipi001"
+  ],
+  "kabuk_sag": 59,
+  "kaset": [
+   "S1 kaset govdesi sag",
+   "S1 kaset kapagi sag",
+   "Kaset civatasi M3x8 (sag psi 200)",
+   "Kaset civatasi M3x8 (sag psi 226)"
+  ],
+  "kol": [
+   "S2 horn 25T aluminyum disk",
+   "S2 horn merkez vidasi M3",
+   "Kol catali",
+   "625ZZ rulman (dis bilezik)",
+   "Catal-horn civatasi M3x8",
+   "Catal-horn civatasi M3x001",
+   "Catal-horn civatasi M3x002",
+   "Catal-horn civatasi M3x003",
+   "Ust kol tupu",
+   "Isil gomme somun M3 (catalda)",
+   "Tup civatasi M3x8",
+   "Isil gomme somun M3 (catalda)001",
+   "Tup civatasi M3x001",
+   "Dirsek catali",
+   "Bilezik pulu M3 (bas)",
+   "Bilezik civatasi M3x20",
+   "Bilezik pulu M3 (somun)",
+   "Bilezik kontra somunu M3",
+   "Bilezik pulu M3 (bas)001",
+   "Bilezik civatasi M3x001",
+   "Bilezik pulu M3 (somun)001",
+   "Bilezik kontra somunu M001",
+   "625ZZ rulman (dis bilezik)",
+   "Dirsek horn 25T aluminyum disk",
+   "Dirsek horn merkez vidasi M3",
+   "Catal-horn civatasi M3x8",
+   "Catal-horn civatasi M3x001",
+   "Catal-horn civatasi M3x002",
+   "Catal-horn civatasi M3x003"
+  ]
+ },
+ "kulak": {
+  "govde kulak": {
+   "hacim": 220.82,
+   "x": [
+    152.0,
+    158.31
+   ],
+   "r": [
+    77.21,
+    83.05
+   ]
+  },
+  "kapak kulak": {
+   "hacim": 67.96,
+   "x": [
+    155.3,
+    159.5
+   ],
+   "r": [
+    77.21,
+    83.05
+   ]
+  }
+ },
+ "govde_kapak_ortak": 0.378,
+ "govde_kapak_ortak_x": [
+  158.3,
+  158.31
+ ],
+ "kaset_kabuk_ortak": [],
+ "kulak_kabuk_enaz": [
+  1000000000.0,
+  null,
+  null
+ ],
+ "pim_kapakta": 1.0,
+ "delik_govdede_bos": 0.0,
+ "delik_cevre_et_dolu": 1.0,
+ "delik_ic_r": 78.4,
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-25T16:45:52",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-25T17:09:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-25T17:19:17"
+ },
+ "kulak_kol": {
+  "en_az": [
+   [
+    120.0,
+    5.0,
+    4.131,
+    "kapak kulak",
+    "Ust kol tupu"
+   ],
+   [
+    122.5,
+    5.0,
+    4.131,
+    "kapak kulak",
+    "Ust kol tupu"
+   ],
+   [
+    117.5,
+    5.0,
+    4.152,
+    "kapak kulak",
+    "Ust kol tupu"
+   ],
+   [
+    125.0,
+    5.0,
+    4.188,
+    "kapak kulak",
+    "Ust kol tupu"
+   ],
+   [
+    115.0,
+    5.0,
+    4.438,
+    "kapak kulak",
+    "Ust kol tupu"
+   ],
+   [
+    127.5,
+    5.0,
+    4.55,
+    "kapak kulak",
+    "Ust kol tupu"
+   ],
+   [
+    112.5,
+    5.0,
+    5.053,
+    "kapak kulak",
+    "Ust kol tupu"
+   ],
+   [
+    130.0,
+    5.0,
+    5.234,
+    "kapak kulak",
+    "Ust kol tupu"
+   ]
+  ],
+  "poz": 1022
+ },
+ "kulak_gobek": [
+  -60.0,
+  1000000000.0,
+  null,
+  null
+ ]
+}

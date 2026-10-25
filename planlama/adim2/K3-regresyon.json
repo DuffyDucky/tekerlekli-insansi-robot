@@ -1,0 +1,2723 @@
+{
+ "head": "102f246",
+ "omuz": {
+  "anahtar_eklenen": [],
+  "anahtar_silinen": [],
+  "degisen_ust_anahtar": [
+   "bom",
+   "kol_gobek",
+   "parca_sayisi",
+   "sure_s",
+   "tork"
+  ],
+  "parca_sayisi": [
+   16,
+   17
+  ],
+  "parca_eklenen": [],
+  "parca_silinen": [],
+  "kutle_degisen_parca": [],
+  "fark_sayisi": 9,
+  "fark": [
+   [
+    "/bom",
+    "(uzun 624)",
+    "(uzun 700)"
+   ],
+   [
+    "/kol_gobek/-10",
+    [
+     [
+      "Kol catali",
+      "S1 kablo tamburu",
+      603.7
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kablo tamburu",
+      140.0
+     ]
+    ],
+    [
+     [
+      "Kol catali",
+      "S1 kablo tamburu",
+      607.6
+     ],
+     [
+      "Kol catali",
+      "S1 tambur baglama ipi",
+      1.6
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kablo tamburu",
+      140.9
+     ]
+    ]
+   ],
+   [
+    "/kol_gobek/-15",
+    [
+     [
+      "Kol catali",
+      "6808-2RS rulman (ic bilezik)",
+      1.7
+     ],
+     [
+      "Kol catali",
+      "S1 kablo tamburu",
+      872.3
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kablo tamburu",
+      97.1
+     ]
+    ],
+    "(uzun 328)"
+   ],
+   [
+    "/kol_gobek/-20",
+    [
+     [
+      "Kol catali",
+      "6808-2RS rulman (ic bilezik)",
+      113.5
+     ],
+     [
+      "Kol catali",
+      "Omuz gobegi",
+      141.1
+     ],
+     [
+      "Kol catali",
+      "S1 kablo tamburu",
+      1025.0
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kablo tamburu",
+      82.8
+     ]
+    ],
+    "(uzun 321)"
+   ],
+   [
+    "/kol_gobek/-5",
+    [
+     [
+      "Kol catali",
+      "S1 kablo tamburu",
+      333.3
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kablo tamburu",
+      82.9
+     ]
+    ],
+    [
+     [
+      "Kol catali",
+      "S1 kablo tamburu",
+      331.5
+     ],
+     [
+      "Kol catali",
+      "S1 tambur baglama ipi",
+      0.8
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kablo tamburu",
+      82.7
+     ]
+    ]
+   ],
+   [
+    "/tork/80,30[0]",
+    4.9,
+    4.91
+   ],
+   [
+    "/tork/90,105[0]",
+    1.68,
+    1.67
+   ]
+  ]
+ },
+ "kabuk": {
+  "anahtar_eklenen": [],
+  "anahtar_silinen": [],
+  "degisen_ust_anahtar": [
+   "agirlik_merkezi",
+   "baski",
+   "bom",
+   "kutle_g",
+   "kutle_grup",
+   "kutle_tur",
+   "s1_kaset",
+   "sure_s"
+  ],
+  "parca_sayisi": [
+   32,
+   32
+  ],
+  "parca_eklenen": [],
+  "parca_silinen": [],
+  "kutle_degisen_parca": [],
+  "fark_sayisi": 37,
+  "fark": [
+   [
+    "/agirlik_merkezi[1]",
+    470.08,
+    470.16
+   ],
+   [
+    "/agirlik_merkezi[2]",
+    8.83,
+    8.84
+   ],
+   [
+    "/baski[15]/cikinti_orani",
+    0.0,
+    0.0004
+   ],
+   [
+    "/baski[15]/hacim_cm3",
+    7.7,
+    7.9
+   ],
+   [
+    "/baski[15]/olcu[0]",
+    108.8,
+    111.4
+   ],
+   [
+    "/baski[15]/olcu[1]",
+    108.6,
+    111.2
+   ],
+   [
+    "/baski[15]/tabla_aci",
+    34,
+    31
+   ],
+   [
+    "/baski[15]/yuzey_cm2",
+    126.0,
+    129.1
+   ],
+   [
+    "/baski[16]/cikinti_alan_cm2",
+    0.4,
+    0.5
+   ],
+   [
+    "/baski[16]/cikinti_orani",
+    0.0037,
+    0.0049
+   ],
+   [
+    "/baski[16]/hacim_cm3",
+    5.9,
+    6.0
+   ],
+   [
+    "/baski[16]/olcu[0]",
+    108.8,
+    111.4
+   ],
+   [
+    "/baski[16]/olcu[1]",
+    108.6,
+    111.2
+   ],
+   [
+    "/baski[16]/tabla_aci",
+    56,
+    59
+   ],
+   [
+    "/baski[16]/yuzey_cm2",
+    103.2,
+    105.0
+   ],
+   [
+    "/baski[17]/cikinti_orani",
+    0.0,
+    0.0004
+   ],
+   [
+    "/baski[17]/hacim_cm3",
+    7.7,
+    7.9
+   ],
+   [
+    "/baski[17]/olcu[0]",
+    108.8,
+    111.4
+   ],
+   [
+    "/baski[17]/olcu[1]",
+    108.6,
+    111.2
+   ],
+   [
+    "/baski[17]/tabla_aci",
+    56,
+    59
+   ],
+   [
+    "/baski[17]/yuzey_cm2",
+    126.0,
+    129.1
+   ],
+   [
+    "/baski[18]/cikinti_alan_cm2",
+    0.4,
+    0.5
+   ],
+   [
+    "/baski[18]/cikinti_orani",
+    0.0037,
+    0.0049
+   ],
+   [
+    "/baski[18]/hacim_cm3",
+    5.9,
+    6.0
+   ],
+   [
+    "/baski[18]/olcu[0]",
+    108.8,
+    111.4
+   ],
+   [
+    "/baski[18]/olcu[1]",
+    108.6,
+    111.2
+   ],
+   [
+    "/baski[18]/tabla_aci",
+    34,
+    31
+   ],
+   [
+    "/baski[18]/yuzey_cm2",
+    103.2,
+    105.0
+   ],
+   [
+    "/bom[25][3]",
+    8.8,
+    9.0
+   ],
+   [
+    "/bom[26][3]",
+    8.8,
+    9.0
+   ],
+   [
+    "/kutle_g",
+    4921.5,
+    4922.3
+   ],
+   [
+    "/kutle_grup/S1 kablo kaseti",
+    34.7,
+    35.5
+   ],
+   [
+    "/kutle_tur/Baski",
+    3830.5,
+    3831.3
+   ],
+   [
+    "/s1_kaset/ip_psi",
+    null,
+    [
+     226.5,
+     230.0
+    ]
+   ],
+   [
+    "/s1_kaset/pah",
+    null,
+    1.2
+   ],
+   [
+    "/s1_kaset/pim2_psi",
+    null,
+    300.0
+   ]
+  ]
+ },
+ "dirsek": {
+  "anahtar_eklenen": [],
+  "anahtar_silinen": [],
+  "degisen_ust_anahtar": [
+   "kablo",
+   "sure_s",
+   "tork"
+  ],
+  "parca_sayisi": [
+   53,
+   53
+  ],
+  "parca_eklenen": [],
+  "parca_silinen": [],
+  "kutle_degisen_parca": [],
+  "fark_sayisi": 278,
+  "fark": [
+   [
+    "/kablo/s1/L_tol",
+    null,
+    [
+     -5.0,
+     0.0
+    ]
+   ],
+   [
+    "/kablo/s1/duvar/ip",
+    null,
+    {
+     "gen": 1.2,
+     "arka_x": [
+      153.0,
+      153.8
+     ],
+     "ust_x": [
+      157.5,
+      158.3
+     ]
+    }
+   ],
+   [
+    "/kablo/s1/duvar/ip_psi",
+    null,
+    [
+     226.5,
+     230.0
+    ]
+   ],
+   [
+    "/kablo/s1/duvar/pah",
+    null,
+    1.2
+   ],
+   [
+    "/kablo/s1/duvar/pim2",
+    null,
+    {
+     "psi": 300.0,
+     "r": 80.0,
+     "d": 3.0,
+     "post_r": 3.5,
+     "kopru_r": 76.2
+    }
+   ],
+   [
+    "/kablo/s1/duvar/u_pay",
+    4.5,
+    6.5
+   ],
+   [
+    "/kablo/s1/s2_birlesim",
+    null,
+    "(uzun 249)"
+   ],
+   [
+    "/kablo/s1/tambur/ip",
+    null,
+    {
+     "d": 0.4,
+     "gen": 1.0,
+     "oluk": 0.5,
+     "dudak_cep": 0.3
+    }
+   ],
+   [
+    "/kablo/s1/tambur/ip_psi",
+    null,
+    [
+     148.0,
+     156.0
+    ]
+   ],
+   [
+    "/kablo/s1_carpisma/ozet/kaset_kol/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[0]/bosluk",
+    10.73,
+    11.04
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[1]/bosluk",
+    10.73,
+    11.04
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[2]/bosluk",
+    10.73,
+    11.04
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[3]/bosluk",
+    13.37,
+    13.55
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[4]/bosluk",
+    13.37,
+    13.55
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[5]/bosluk",
+    13.37,
+    13.55
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[6]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[7]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[8]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[9]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[10]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[11]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[12]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[13]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[14]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[15]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[16]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[17]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[18]/bosluk",
+    8.16,
+    8.31
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[19]/bosluk",
+    8.16,
+    8.31
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[20]/bosluk",
+    8.16,
+    8.31
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[21]/bosluk",
+    10.69,
+    10.83
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[22]/bosluk",
+    10.69,
+    10.83
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[23]/bosluk",
+    10.69,
+    10.83
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[24]/bosluk",
+    16.28,
+    16.29
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[25]/bosluk",
+    16.28,
+    16.29
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[26]/bosluk",
+    16.28,
+    16.29
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[27]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[28]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[29]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[30]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[31]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[32]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[33]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[34]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[35]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[36]/bosluk",
+    7.1,
+    7.47
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[37]/bosluk",
+    7.1,
+    7.47
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[38]/bosluk",
+    7.1,
+    7.47
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[39]/bosluk",
+    9.76,
+    10.19
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[40]/bosluk",
+    9.76,
+    10.19
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[41]/bosluk",
+    9.76,
+    10.19
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[42]/bosluk",
+    15.47,
+    15.71
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[43]/bosluk",
+    15.47,
+    15.71
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[44]/bosluk",
+    15.47,
+    15.71
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[45]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[46]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[47]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[48]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[49]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[50]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[51]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[52]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[53]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[54]/bosluk",
+    2.53,
+    2.69
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[55]/bosluk",
+    2.53,
+    2.69
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[56]/bosluk",
+    2.53,
+    2.69
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[57]/bosluk",
+    5.87,
+    6.12
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[58]/bosluk",
+    5.87,
+    6.12
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[59]/bosluk",
+    5.87,
+    6.12
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[60]/bosluk",
+    12.0,
+    12.32
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[61]/bosluk",
+    12.0,
+    12.32
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[62]/bosluk",
+    12.0,
+    12.32
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[63]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[64]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[65]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[66]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[67]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[68]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[69]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[70]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[71]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[72]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[73]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[74]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[75]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[75]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[76]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[76]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[77]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[77]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[78]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[79]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[80]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[81]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[82]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[83]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[84]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[85]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[86]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[87]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[88]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[89]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[90]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[91]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[92]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[93]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[93]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[94]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[94]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[95]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[95]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[96]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[97]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[98]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[99]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[100]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[101]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[102]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[103]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[104]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[105]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[106]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[107]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[108]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[109]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[110]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[111]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[111]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[112]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[112]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[113]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[113]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[114]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[115]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[116]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[117]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[118]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[119]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[120]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[121]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[122]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[123]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[124]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[125]/bosluk",
+    16.67,
+    17.38
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[126]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[127]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[128]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[129]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[129]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[130]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[130]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[131]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[131]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[132]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[133]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[134]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[135]/bosluk",
+    16.72,
+    17.4
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[136]/bosluk",
+    16.72,
+    17.4
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[137]/bosluk",
+    16.72,
+    17.4
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[138]/bosluk",
+    16.72,
+    17.4
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[139]/bosluk",
+    16.72,
+    17.4
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[140]/bosluk",
+    16.72,
+    17.4
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[141]/bosluk",
+    16.72,
+    17.4
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[142]/bosluk",
+    16.72,
+    17.4
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[143]/bosluk",
+    16.72,
+    17.4
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[144]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[145]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[146]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[147]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[147]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[148]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[148]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[149]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[149]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[150]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[151]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[152]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[153]/bosluk",
+    17.13,
+    17.88
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[154]/bosluk",
+    17.13,
+    17.88
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[155]/bosluk",
+    17.13,
+    17.88
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[156]/bosluk",
+    17.13,
+    17.88
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[157]/bosluk",
+    17.13,
+    17.88
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[158]/bosluk",
+    17.13,
+    17.88
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[159]/bosluk",
+    17.13,
+    17.88
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[160]/bosluk",
+    17.13,
+    17.88
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[161]/bosluk",
+    17.13,
+    17.88
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[162]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[163]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[164]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[165]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[165]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[166]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[166]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[167]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[167]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[168]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[169]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[170]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[171]/bosluk",
+    14.96,
+    15.8
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[172]/bosluk",
+    14.96,
+    15.8
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[173]/bosluk",
+    14.96,
+    15.8
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[174]/bosluk",
+    14.96,
+    15.8
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[175]/bosluk",
+    14.96,
+    15.8
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[176]/bosluk",
+    14.96,
+    15.8
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[177]/bosluk",
+    14.96,
+    15.8
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[178]/bosluk",
+    14.96,
+    15.8
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[179]/bosluk",
+    14.96,
+    15.8
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[180]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[181]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[182]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[183]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[183]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[184]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[184]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[185]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[185]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[186]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[187]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[188]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[189]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[190]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[191]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[192]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[193]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[194]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[195]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[196]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[197]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[198]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[199]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[200]/bosluk",
+    1.25,
+    1.36
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[201]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[201]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[202]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[202]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[203]/bosluk",
+    4.78,
+    4.99
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[203]/parca",
+    "Kol catali",
+    "Ust kol tupu"
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[204]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[205]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[206]/bosluk",
+    11.14,
+    11.48
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[207]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[208]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[209]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[210]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[211]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[212]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[213]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[214]/bosluk",
+    14.69,
+    15.49
+   ],
+   [
+    "/kablo/s1_carpisma/satir/kaset_kol[215]/bosluk",
+    14.69,
+    15.49
+   ]
+  ]
+ },
+ "omuz_baski": {
+  "anahtar_eklenen": [],
+  "anahtar_silinen": [],
+  "degisen_ust_anahtar": [
+   "girdi",
+   "parcalar",
+   "sure_s",
+   "tarih"
+  ],
+  "parca_sayisi": [
+   6,
+   6
+  ],
+  "parca_eklenen": [],
+  "parca_silinen": [],
+  "kutle_degisen_parca": [],
+  "fark_sayisi": 52,
+  "fark": [
+   [
+    "/girdi/boyut",
+    204790,
+    213535
+   ],
+   [
+    "/girdi/degistirilme",
+    "2026-10-15T09:27:09",
+    "2026-10-25T16:45:52"
+   ],
+   [
+    "/girdi/omuz_parcalar_py_degistirilme",
+    "2026-10-15T09:26:14",
+    "2026-10-25T16:42:40"
+   ],
+   [
+    "/girdi/sha256",
+    "66604bae27056f0c",
+    "ef22c48bac137af8"
+   ],
+   [
+    "/parcalar[3]/yonler/+X/cikinti45_mm2",
+    951.0,
+    951.3
+   ],
+   [
+    "/parcalar[3]/yonler/+X/cikinti45_orani",
+    0.1311,
+    0.1307
+   ],
+   [
+    "/parcalar[3]/yonler/+X/destek_alan_mm2",
+    768.9,
+    769.2
+   ],
+   [
+    "/parcalar[3]/yonler/+X/destek_bolge[0]",
+    "(uzun 203)",
+    "(uzun 203)"
+   ],
+   [
+    "/parcalar[3]/yonler/+X/destek_katman_alan_mm2",
+    768.9,
+    769.2
+   ],
+   [
+    "/parcalar[3]/yonler/+X/en_buyuk_kopru_mm",
+    7.0,
+    6.7
+   ],
+   [
+    "/parcalar[3]/yonler/+X/tavan_mm2",
+    916.9,
+    917.3
+   ],
+   [
+    "/parcalar[3]/yonler/+Y/cikinti45_mm2",
+    785.4,
+    789.2
+   ],
+   [
+    "/parcalar[3]/yonler/+Y/cikinti45_orani",
+    0.1082,
+    0.1084
+   ],
+   [
+    "/parcalar[3]/yonler/+Y/destek_alan_mm2",
+    552.9,
+    558.3
+   ],
+   [
+    "/parcalar[3]/yonler/+Y/egim_alan_mm2",
+    554.9,
+    560.7
+   ],
+   [
+    "/parcalar[3]/yonler/+Y/egim_izdusum_mm2",
+    486.1,
+    491.5
+   ],
+   [
+    "/parcalar[3]/yonler/+Y/egim_yuz[0]",
+    {
+     "yuz": "Cylinder",
+     "alan_mm2": 198.9,
+     "izdusum_mm2": 175.9,
+     "en_dik_aci": 78.7,
+     "z_mm": [
+      5.5,
+      16.0
+     ],
+     "merkez_robot": [
+      155.9,
+      -34.5,
+      4.4
+     ],
+     "yaricap": 39.0
+    },
+    {
+     "yuz": "Cylinder",
+     "alan_mm2": 206.1,
+     "izdusum_mm2": 182.5,
+     "en_dik_aci": 79.6,
+     "z_mm": [
+      5.4,
+      15.7
+     ],
+     "merkez_robot": [
+      155.9,
+      -34.5,
+      3.4
+     ],
+     "yaricap": 39.0
+    }
+   ],
+   [
+    "/parcalar[3]/yonler/+Y/egim_yuz[2]",
+    {
+     "yuz": "Cylinder",
+     "alan_mm2": 47.4,
+     "izdusum_mm2": 42.0,
+     "en_dik_aci": 79.6,
+     "z_mm": [
+      0.7,
+      12.1
+     ],
+     "merkez_robot": [
+      153.0,
+      -38.7,
+      3.0
+     ],
+     "yaricap": 43.7
+    },
+    {
+     "yuz": "Cylinder",
+     "alan_mm2": 46.7,
+     "izdusum_mm2": 41.4,
+     "en_dik_aci": 79.4,
+     "z_mm": [
+      0.8,
+      12.0
+     ],
+     "merkez_robot": [
+      153.0,
+      -38.7,
+      3.3
+     ],
+     "yaricap": 43.7
+    }
+   ],
+   [
+    "/parcalar[3]/yonler/+Y/egim_yuz[3]",
+    {
+     "yuz": "Cylinder",
+     "alan_mm2": 47.4,
+     "izdusum_mm2": 42.0,
+     "en_dik_aci": 79.6,
+     "z_mm": [
+      0.7,
+      12.1
+     ],
+     "merkez_robot": [
+      158.8,
+      -38.7,
+      3.0
+     ],
+     "yaricap": 43.7
+    },
+    {
+     "yuz": "Cylinder",
+     "alan_mm2": 46.7,
+     "izdusum_mm2": 41.4,
+     "en_dik_aci": 79.4,
+     "z_mm": [
+      0.8,
+      12.0
+     ],
+     "merkez_robot": [
+      158.8,
+      -38.7,
+      3.3
+     ],
+     "yaricap": 43.7
+    }
+   ],
+   [
+    "/parcalar[3]/yonler/+Y/tavan_mm2",
+    188.0,
+    183.0
+   ],
+   [
+    "/parcalar[3]/yonler/+Z/cikinti45_mm2",
+    611.4,
+    613.2
+   ],
+   [
+    "/parcalar[3]/yonler/+Z/destek_alan_mm2",
+    448.2,
+    449.6
+   ],
+   [
+    "/parcalar[3]/yonler/+Z/egim_alan_mm2",
+    436.0,
+    437.8
+   ],
+   [
+    "/parcalar[3]/yonler/+Z/egim_izdusum_mm2",
+    376.8,
+    378.2
+   ],
+   [
+    "/parcalar[3]/yonler/+Z/egim_yuz[5]",
+    {
+     "yuz": "Plane",
+     "alan_mm2": 6.0,
+     "izdusum_mm2": 5.2,
+     "en_dik_aci": 59.2,
+     "z_mm": [
+      7.3,
+      7.6
+     ],
+     "merkez_robot": [
+      155.9,
+      -32.7,
+      -19.4
+     ],
+     "yaricap": null
+    },
+    {
+     "yuz": "Plane",
+     "alan_mm2": 6.9,
+     "izdusum_mm2": 5.8,
+     "en_dik_aci": 58.0,
+     "z_mm": [
+      5.0,
+      7.6
+     ],
+     "merkez_robot": [
+      155.9,
+      -33.4,
+      -20.3
+     ],
+     "yaricap": null
+    }
+   ],
+   [
+    "/parcalar[3]/yonler/+Z/egim_yuz[6]",
+    {
+     "yuz": "Plane",
+     "alan_mm2": 6.0,
+     "izdusum_mm2": 5.5,
+     "en_dik_aci": 67.3,
+     "z_mm": [
+      12.1,
+      12.3
+     ],
+     "merkez_robot": [
+      155.9,
+      -35.0,
+      -14.7
+     ],
+     "yaricap": null
+    },
+    {
+     "yuz": "Plane",
+     "alan_mm2": 6.9,
+     "izdusum_mm2": 6.3,
+     "en_dik_aci": 66.0,
+     "z_mm": [
+      10.2,
+      12.2
+     ],
+     "merkez_robot": [
+      155.9,
+      -35.9,
+      -15.5
+     ],
+     "yaricap": null
+    }
+   ],
+   [
+    "/parcalar[3]/yonler/-X/cikinti45_mm2",
+    2003.5,
+    2003.9
+   ],
+   [
+    "/parcalar[3]/yonler/-X/cikinti45_orani",
+    0.2761,
+    0.2754
+   ],
+   [
+    "/parcalar[3]/yonler/-X/destek_alan_mm2",
+    1891.7,
+    1883.3
+   ],
+   [
+    "/parcalar[3]/yonler/-X/destek_bolge[1]",
+    "(uzun 203)",
+    "(uzun 202)"
+   ],
+   [
+    "/parcalar[3]/yonler/-X/destek_hacim_cm3",
+    8.39,
+    8.34
+   ],
+   [
+    "/parcalar[3]/yonler/-X/destek_katman_alan_mm2",
+    1891.7,
+    1883.3
+   ],
+   [
+    "/parcalar[3]/yonler/-X/tavan_mm2",
+    2003.5,
+    2003.9
+   ],
+   [
+    "/parcalar[3]/yonler/-Y/cikinti45_mm2",
+    855.0,
+    862.9
+   ],
+   [
+    "/parcalar[3]/yonler/-Y/cikinti45_orani",
+    0.1178,
+    0.1186
+   ],
+   [
+    "/parcalar[3]/yonler/-Y/destek_alan_mm2",
+    638.9,
+    645.8
+   ],
+   [
+    "/parcalar[3]/yonler/-Y/egim_alan_mm2",
+    627.2,
+    635.1
+   ],
+   [
+    "/parcalar[3]/yonler/-Y/egim_izdusum_mm2",
+    557.0,
+    563.9
+   ],
+   [
+    "/parcalar[3]/yonler/-Y/egim_yuz",
+    "(uzun 1079)",
+    "(uzun 1385)"
+   ],
+   [
+    "/parcalar[3]/yonler/-Z/cikinti45_mm2",
+    589.4,
+    592.9
+   ],
+   [
+    "/parcalar[3]/yonler/-Z/cikinti45_orani",
+    0.0812,
+    0.0815
+   ],
+   [
+    "/parcalar[3]/yonler/-Z/destek_alan_mm2",
+    395.3,
+    397.8
+   ],
+   [
+    "/parcalar[3]/yonler/-Z/egim_alan_mm2",
+    416.8,
+    420.0
+   ],
+   [
+    "/parcalar[3]/yonler/-Z/egim_izdusum_mm2",
+    364.1,
+    366.6
+   ],
+   [
+    "/parcalar[3]/yonler/-Z/egim_yuz[0]",
+    {
+     "yuz": "Cylinder",
+     "alan_mm2": 226.4,
+     "izdusum_mm2": 198.3,
+     "en_dik_aci": 79.5,
+     "z_mm": [
+      5.4,
+      15.7
+     ],
+     "merkez_robot": [
+      155.9,
+      0.4,
+      34.1
+     ],
+     "yaricap": 39.0
+    },
+    {
+     "yuz": "Cylinder",
+     "alan_mm2": 227.6,
+     "izdusum_mm2": 199.1,
+     "en_dik_aci": 79.5,
+     "z_mm": [
+      5.4,
+      15.7
+     ],
+     "merkez_robot": [
+      155.9,
+      0.3,
+      34.1
+     ],
+     "yaricap": 39.0
+    }
+   ],
+   [
+    "/parcalar[3]/yonler/-Z/egim_yuz[1]",
+    {
+     "yuz": "Cylinder",
+     "alan_mm2": 54.7,
+     "izdusum_mm2": 47.8,
+     "en_dik_aci": 80.0,
+     "z_mm": [
+      0.7,
+      12.4
+     ],
+     "merkez_robot": [
+      153.0,
+      0.1,
+      38.2
+     ],
+     "yaricap": 43.7
+    },
+    {
+     "yuz": "Cylinder",
+     "alan_mm2": 54.8,
+     "izdusum_mm2": 47.8,
+     "en_dik_aci": 79.9,
+     "z_mm": [
+      0.7,
+      12.4
+     ],
+     "merkez_robot": [
+      153.0,
+      0.1,
+      38.2
+     ],
+     "yaricap": 43.7
+    }
+   ],
+   [
+    "/parcalar[3]/yonler/-Z/egim_yuz[2]",
+    {
+     "yuz": "Cylinder",
+     "alan_mm2": 54.7,
+     "izdusum_mm2": 47.8,
+     "en_dik_aci": 80.0,
+     "z_mm": [
+      0.7,
+      12.4
+     ],
+     "merkez_robot": [
+      158.8,
+      0.1,
+      38.2
+     ],
+     "yaricap": 43.7
+    },
+    {
+     "yuz": "Cylinder",
+     "alan_mm2": 54.8,
+     "izdusum_mm2": 47.8,
+     "en_dik_aci": 79.9,
+     "z_mm": [
+      0.7,
+      12.4
+     ],
+     "merkez_robot": [
+      158.8,
+      0.1,
+      38.2
+     ],
+     "yaricap": 43.7
+    }
+   ],
+   [
+    "/parcalar[3]/yonler/-Z/egim_yuz[5]",
+    {
+     "yuz": "Plane",
+     "alan_mm2": 6.0,
+     "izdusum_mm2": 5.0,
+     "en_dik_aci": 56.8,
+     "z_mm": [
+      64.4,
+      64.7
+     ],
+     "merkez_robot": [
+      155.9,
+      -31.8,
+      -20.8
+     ],
+     "yaricap": null
+    },
+    {
+     "yuz": "Plane",
+     "alan_mm2": 6.9,
+     "izdusum_mm2": 5.8,
+     "en_dik_aci": 58.0,
+     "z_mm": [
+      63.8,
+      66.4
+     ],
+     "merkez_robot": [
+      155.9,
+      -32.9,
+      -21.2
+     ],
+     "yaricap": null
+    }
+   ],
+   [
+    "/parcalar[3]/yonler/-Z/egim_yuz[6]",
+    {
+     "yuz": "Plane",
+     "alan_mm2": 6.0,
+     "izdusum_mm2": 5.4,
+     "en_dik_aci": 64.7,
+     "z_mm": [
+      59.8,
+      60.1
+     ],
+     "merkez_robot": [
+      155.9,
+      -34.4,
+      -16.2
+     ],
+     "yaricap": null
+    },
+    {
+     "yuz": "Plane",
+     "alan_mm2": 6.9,
+     "izdusum_mm2": 6.3,
+     "en_dik_aci": 66.0,
+     "z_mm": [
+      59.3,
+      61.3
+     ],
+     "merkez_robot": [
+      155.9,
+      -35.5,
+      -16.4
+     ],
+     "yaricap": null
+    }
+   ],
+   [
+    "/parcalar[3]/yonler/-Z/tavan_mm2",
+    131.6,
+    131.9
+   ]
+  ]
+ },
+ "taslak_kutle": {
+  "anahtar_eklenen": [],
+  "anahtar_silinen": [],
+  "degisen_ust_anahtar": [
+   "eski_125",
+   "gruplar",
+   "kol",
+   "moduller",
+   "parcalar",
+   "toplam"
+  ],
+  "parca_sayisi": [
+   1060,
+   1064
+  ],
+  "parca_eklenen": [
+   "S1 tambur baglama ipi"
+  ],
+  "parca_silinen": [],
+  "kutle_degisen_parca": [
+   [
+    "S1 kablo tamburu",
+    [
+     4.78,
+     4.78
+    ],
+    [
+     4.79,
+     4.79
+    ]
+   ],
+   [
+    "S1 kaset govdesi sag",
+    [
+     8.76
+    ],
+    [
+     9.05
+    ]
+   ],
+   [
+    "S1 kaset govdesi sol",
+    [
+     8.76
+    ],
+    [
+     9.05
+    ]
+   ],
+   [
+    "S1 kaset kapagi sag",
+    [
+     6.75
+    ],
+    [
+     6.83
+    ]
+   ],
+   [
+    "S1 kaset kapagi sol",
+    [
+     6.75
+    ],
+    [
+     6.83
+    ]
+   ]
+  ],
+  "fark_sayisi": 30,
+  "fark": [
+   [
+    "/eski_125/am[1]",
+    382.69,
+    382.71
+   ],
+   [
+    "/eski_125/am_payli[1]",
+    378.45,
+    378.47
+   ],
+   [
+    "/eski_125/kutle_g",
+    21533.4,
+    21534.2
+   ],
+   [
+    "/eski_125/kutle_payli_g",
+    21933.4,
+    21934.2
+   ],
+   [
+    "/gruplar[2]/parca",
+    29,
+    31
+   ],
+   [
+    "/gruplar[5]/parca",
+    29,
+    31
+   ],
+   [
+    "/gruplar[7]/am[1]",
+    673.55,
+    673.64
+   ],
+   [
+    "/gruplar[7]/am[2]",
+    6.82,
+    6.83
+   ],
+   [
+    "/gruplar[7]/kutle_g",
+    6367.9,
+    6368.7
+   ],
+   [
+    "/kol/sag/S1_ile_donen/parca",
+    99,
+    101
+   ],
+   [
+    "/kol/sag/bilesenler/omuz gobegi (S1 ile doner)/parca",
+    29,
+    31
+   ],
+   [
+    "/kol/sol/S1_ile_donen/parca",
+    99,
+    101
+   ],
+   [
+    "/kol/sol/bilesenler/omuz gobegi (S1 ile doner)/parca",
+    29,
+    31
+   ],
+   [
+    "/moduller[1]/eski/parca",
+    71,
+    73
+   ],
+   [
+    "/moduller[1]/yeni/parca",
+    71,
+    73
+   ],
+   [
+    "/moduller[2]/eski/parca",
+    71,
+    73
+   ],
+   [
+    "/moduller[2]/yeni/parca",
+    71,
+    73
+   ],
+   [
+    "/moduller[3]/eski/am[1]",
+    470.08,
+    470.16
+   ],
+   [
+    "/moduller[3]/eski/am[2]",
+    8.83,
+    8.84
+   ],
+   [
+    "/moduller[3]/eski/kutle_g",
+    4921.5,
+    4922.3
+   ],
+   [
+    "/moduller[3]/yeni/am[1]",
+    673.55,
+    673.64
+   ],
+   [
+    "/moduller[3]/yeni/am[2]",
+    6.82,
+    6.83
+   ],
+   [
+    "/moduller[3]/yeni/kutle_g",
+    6367.9,
+    6368.7
+   ],
+   [
+    "/parcalar",
+    "(uzun 202730)",
+    "(uzun 203488)"
+   ],
+   [
+    "/toplam/am[1]",
+    567.28,
+    567.31
+   ],
+   [
+    "/toplam/am_payli[1]",
+    560.82,
+    560.85
+   ],
+   [
+    "/toplam/kutle_g",
+    24510.5,
+    24511.3
+   ],
+   [
+    "/toplam/kutle_payli_g",
+    24955.5,
+    24956.3
+   ]
+  ]
+ },
+ "taslak_analiz": {
+  "anahtar_eklenen": [],
+  "anahtar_silinen": [],
+  "degisen_ust_anahtar": [
+   "baski",
+   "durum",
+   "log",
+   "parca_sayisi",
+   "step_kati",
+   "sure_s",
+   "yerlesim"
+  ],
+  "parca_sayisi": [
+   0,
+   0
+  ],
+  "parca_eklenen": [],
+  "parca_silinen": [],
+  "kutle_degisen_parca": [],
+  "fark_sayisi": 63,
+  "fark": [
+   [
+    "/baski[49]/filament_g",
+    9.2,
+    9.5
+   ],
+   [
+    "/baski[49]/hacim_cm3",
+    7.7,
+    7.9
+   ],
+   [
+    "/baski[49]/kutle_g",
+    8.8,
+    9.0
+   ],
+   [
+    "/baski[49]/olcu[0]",
+    108.8,
+    111.4
+   ],
+   [
+    "/baski[49]/olcu[1]",
+    108.6,
+    111.2
+   ],
+   [
+    "/baski[49]/tabla_aci",
+    34,
+    31
+   ],
+   [
+    "/baski[50]/filament_g",
+    7.1,
+    7.2
+   ],
+   [
+    "/baski[50]/hacim_cm3",
+    5.9,
+    6.0
+   ],
+   [
+    "/baski[50]/olcu[0]",
+    108.8,
+    111.4
+   ],
+   [
+    "/baski[50]/olcu[1]",
+    108.6,
+    111.2
+   ],
+   [
+    "/baski[50]/tabla_aci",
+    56,
+    59
+   ],
+   [
+    "/baski[51]/filament_g",
+    9.2,
+    9.5
+   ],
+   [
+    "/baski[51]/hacim_cm3",
+    7.7,
+    7.9
+   ],
+   [
+    "/baski[51]/kutle_g",
+    8.8,
+    9.0
+   ],
+   [
+    "/baski[51]/olcu[0]",
+    108.8,
+    111.4
+   ],
+   [
+    "/baski[51]/olcu[1]",
+    108.6,
+    111.2
+   ],
+   [
+    "/baski[51]/tabla_aci",
+    56,
+    59
+   ],
+   [
+    "/baski[52]/filament_g",
+    7.1,
+    7.2
+   ],
+   [
+    "/baski[52]/hacim_cm3",
+    5.9,
+    6.0
+   ],
+   [
+    "/baski[52]/olcu[0]",
+    108.8,
+    111.4
+   ],
+   [
+    "/baski[52]/olcu[1]",
+    108.6,
+    111.2
+   ],
+   [
+    "/baski[52]/tabla_aci",
+    34,
+    31
+   ],
+   [
+    "/durum/tasindi",
+    403,
+    407
+   ],
+   [
+    "/step_kati",
+    1060,
+    1064
+   ],
+   [
+    "/yerlesim/aday_cift",
+    789,
+    805
+   ],
+   [
+    "/yerlesim/ev_pozu_cakisma",
+    "(uzun 744)",
+    []
+   ],
+   [
+    "/yerlesim/ev_pozu_poz",
+    null,
+    {
+     "S1": 0.0,
+     "S2": 5.0,
+     "not_": "yazilim ev pozu (K6); S2 0 yalniz bilgi"
+    }
+   ]
+  ]
+ },
+ "kabuk_bom_diff": [
+  "+++ b/tasarim/freecad/kabuk/kabuk-bom.csv",
+  "@@ -24,8 +24,8 @@ Baski;Govde orta bandi sag;1;249.4",
+  " Baski;Govde orta bandi sol;1;239.7",
+  " Baski;Omuz bandi sag;1;192.0",
+  " Baski;Omuz bandi sol;1;184.5",
+  "-Baski;S1 kaset govdesi sag;1;8.8",
+  "-Baski;S1 kaset govdesi sol;1;8.8",
+  "+Baski;S1 kaset govdesi sag;1;9.0",
+  "+Baski;S1 kaset govdesi sol;1;9.0",
+  " Baski;S1 kaset kapagi sag;1;6.8",
+  " Baski;S1 kaset kapagi sol;1;6.8",
+  " Satin;Etek tasiyici L braket 2 mm Al (bukum);6;130.8"
+ ],
+ "eklem_json_uretici_ayni": true,
+ "eklem_json_fark": [],
+ "uretici_kontrol": {
+  "kod": 0,
+  "cikti": "eklem_sinirlari.json guncel\r\n"
+ },
+ "eklem_json_head_fark": [
+  [
+   "/bagimli",
+   null,
+   "(uzun 850)"
+  ],
+  [
+   "/kaynak",
+   "tasarim/freecad/arayuz.py (OMUZ, DIRSEK, KAFA, KAFA_KOL_YASAK)",
+   "tasarim/freecad/arayuz.py (OMUZ, DIRSEK, KAFA, KAFA_KOL_YASAK, KOL_KABLO s1 s2_s1_kosul)"
+  ]
+ ],
+ "bagimli": [
+  {
+   "ad": "S1 kaseti: S2 lopu <-> kaset kapagi flansi",
+   "taraf": "r",
+   "kosul": [
+    "r_s1",
+    [
+     120.0,
+     135.0
+    ]
+   ],
+   "sinir": [
+    "r_s2",
+    [
+     5.0,
+     117.0
+    ]
+   ],
+   "kosul_ust_eklem_max": true,
+   "sinir_alt_eklem_min": true,
+   "ayni_taraf": true,
+   "s2_max": 117.0,
+   "s1_esik": 120.0,
+   "kol_kablo": {
+    "s1_min": 120.0,
+    "s2_max": 117.0,
+    "bosluk_mm": {
+     "S2 120 pahsiz": -0.3,
+     "S2 120 pahli": 0.39,
+     "S2 117 pahli": 0.89
+    }
+   }
+  },
+  {
+   "ad": "S1 kaseti: S2 lopu <-> kaset kapagi flansi",
+   "taraf": "l",
+   "kosul": [
+    "l_s1",
+    [
+     120.0,
+     135.0
+    ]
+   ],
+   "sinir": [
+    "l_s2",
+    [
+     5.0,
+     117.0
+    ]
+   ],
+   "kosul_ust_eklem_max": true,
+   "sinir_alt_eklem_min": true,
+   "ayni_taraf": true,
+   "s2_max": 117.0,
+   "s1_esik": 120.0,
+   "kol_kablo": {
+    "s1_min": 120.0,
+    "s2_max": 117.0,
+    "bosluk_mm": {
+     "S2 120 pahsiz": -0.3,
+     "S2 120 pahli": 0.39,
+     "S2 117 pahli": 0.89
+    }
+   }
+  }
+ ],
+ "eklemler_head_ayni": true,
+ "yasak_kol_kosulu": {
+  "one_arka": [
+   120.0,
+   135.0
+  ],
+  "yana": [
+   5.0,
+   5.0
+  ],
+  "dirsek": [
+   65.0,
+   105.0
+  ],
+  "bilek": [
+   -90.0,
+   90.0
+  ]
+ },
+ "bagimli_okuyan_kod": [
+  [
+   "kod\\ortak\\eklem_sinirlari_uret.py",
+   true
+  ]
+ ]
+}

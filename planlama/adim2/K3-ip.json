@@ -1,0 +1,4312 @@
+{
+ "tarih": "2026-10-25T20:23:39",
+ "adim": "ip",
+ "parca": {
+  "omuz": 75,
+  "ip": [
+   "S1 tambur baglama ipi",
+   "S1 tambur baglama ipi001"
+  ],
+  "kabuk_sag": 59,
+  "kaset": [
+   "S1 kaset govdesi sag",
+   "S1 kaset kapagi sag",
+   "Kaset civatasi M3x8 (sag psi 200)",
+   "Kaset civatasi M3x8 (sag psi 226)"
+  ],
+  "kol": [
+   "S2 horn 25T aluminyum disk",
+   "S2 horn merkez vidasi M3",
+   "Kol catali",
+   "625ZZ rulman (dis bilezik)",
+   "Catal-horn civatasi M3x8",
+   "Catal-horn civatasi M3x001",
+   "Catal-horn civatasi M3x002",
+   "Catal-horn civatasi M3x003",
+   "Ust kol tupu",
+   "Isil gomme somun M3 (catalda)",
+   "Tup civatasi M3x8",
+   "Isil gomme somun M3 (catalda)001",
+   "Tup civatasi M3x001",
+   "Dirsek catali",
+   "Bilezik pulu M3 (bas)",
+   "Bilezik civatasi M3x20",
+   "Bilezik pulu M3 (somun)",
+   "Bilezik kontra somunu M3",
+   "Bilezik pulu M3 (bas)001",
+   "Bilezik civatasi M3x001",
+   "Bilezik pulu M3 (somun)001",
+   "Bilezik kontra somunu M001",
+   "625ZZ rulman (dis bilezik)",
+   "Dirsek horn 25T aluminyum disk",
+   "Dirsek horn merkez vidasi M3",
+   "Catal-horn civatasi M3x8",
+   "Catal-horn civatasi M3x001",
+   "Catal-horn civatasi M3x002",
+   "Catal-horn civatasi M3x003"
+  ]
+ },
+ "ip_geo": [
+  {
+   "ad": "S1 tambur baglama ipi",
+   "hacim": 3.552,
+   "x": [
+    153.2,
+    158.6
+   ],
+   "r": [
+    37.101,
+    43.6
+   ],
+   "psi": 148.0,
+   "kati": 1
+  },
+  {
+   "ad": "S1 tambur baglama ipi001",
+   "hacim": 3.552,
+   "x": [
+    153.2,
+    158.6
+   ],
+   "r": [
+    37.101,
+    43.6
+   ],
+   "psi": 156.0,
+   "kati": 1
+  }
+ ],
+ "ip_tambur_ortak": [],
+ "ip_gobek_diger_ortak": [],
+ "ip_gobek_diger_enaz": [
+  1000000000.0,
+  null,
+  null
+ ],
+ "ip_yolu_kesit": [
+  {
+   "psi": 148.0,
+   "x": 153.35,
+   "tambur_dolu_r": []
+  },
+  {
+   "psi": 148.0,
+   "x": 153.6,
+   "tambur_dolu_r": []
+  },
+  {
+   "psi": 148.0,
+   "x": 153.9,
+   "tambur_dolu_r": [
+    [
+     37.5,
+     39.0
+    ]
+   ]
+  },
+  {
+   "psi": 148.0,
+   "x": 155.9,
+   "tambur_dolu_r": [
+    [
+     37.5,
+     39.0
+    ]
+   ]
+  },
+  {
+   "psi": 148.0,
+   "x": 158.0,
+   "tambur_dolu_r": [
+    [
+     37.5,
+     39.0
+    ]
+   ]
+  },
+  {
+   "psi": 148.0,
+   "x": 158.3,
+   "tambur_dolu_r": []
+  },
+  {
+   "psi": 148.0,
+   "x": 158.45,
+   "tambur_dolu_r": []
+  },
+  {
+   "psi": 156.0,
+   "x": 153.35,
+   "tambur_dolu_r": []
+  },
+  {
+   "psi": 156.0,
+   "x": 153.6,
+   "tambur_dolu_r": []
+  },
+  {
+   "psi": 156.0,
+   "x": 153.9,
+   "tambur_dolu_r": [
+    [
+     37.5,
+     39.0
+    ]
+   ]
+  },
+  {
+   "psi": 156.0,
+   "x": 155.9,
+   "tambur_dolu_r": [
+    [
+     37.5,
+     39.0
+    ]
+   ]
+  },
+  {
+   "psi": 156.0,
+   "x": 158.0,
+   "tambur_dolu_r": [
+    [
+     37.5,
+     39.0
+    ]
+   ]
+  },
+  {
+   "psi": 156.0,
+   "x": 158.3,
+   "tambur_dolu_r": []
+  },
+  {
+   "psi": 156.0,
+   "x": 158.45,
+   "tambur_dolu_r": []
+  }
+ ],
+ "ip_sabit": {
+  "en_az_aralik": [
+   34.0,
+   0.6,
+   "S1 tambur baglama ipi001",
+   "S1 kaset kapagi sag"
+  ],
+  "en_az_genis": [
+   34.0,
+   0.6,
+   "S1 tambur baglama ipi001",
+   "S1 kaset kapagi sag"
+  ],
+  "parca_basina": [
+   [
+    "S1 kaset kapagi sag",
+    0.6,
+    34.0
+   ],
+   [
+    "Kapak civatasi M3x12",
+    0.809,
+    -56.0
+   ],
+   [
+    "Rulman kapagi",
+    1.2,
+    -60.0
+   ],
+   [
+    "Omuz bandi sag",
+    1.2,
+    -44.0
+   ]
+  ],
+  "satir": [
+   [
+    -60.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Rulman kapagi"
+   ],
+   [
+    -59.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Rulman kapagi"
+   ],
+   [
+    -58.0,
+    1.016,
+    "S1 tambur baglama ipi001",
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -57.0,
+    0.862,
+    "S1 tambur baglama ipi001",
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -56.0,
+    0.809,
+    "S1 tambur baglama ipi001",
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -55.0,
+    0.817,
+    "S1 tambur baglama ipi001",
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -54.0,
+    0.91,
+    "S1 tambur baglama ipi001",
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -53.0,
+    1.101,
+    "S1 tambur baglama ipi001",
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -52.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Rulman kapagi"
+   ],
+   [
+    -51.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Rulman kapagi"
+   ],
+   [
+    -50.0,
+    1.016,
+    "S1 tambur baglama ipi",
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -49.0,
+    0.862,
+    "S1 tambur baglama ipi",
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -48.0,
+    0.809,
+    "S1 tambur baglama ipi",
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -47.0,
+    0.817,
+    "S1 tambur baglama ipi",
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -46.0,
+    0.91,
+    "S1 tambur baglama ipi",
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -45.0,
+    1.101,
+    "S1 tambur baglama ipi",
+    "Kapak civatasi M3x12"
+   ],
+   [
+    -44.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -43.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -42.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -41.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -40.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -39.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -38.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -37.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -36.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -35.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -34.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -33.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -32.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -31.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -30.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -29.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -28.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -27.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -26.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -25.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -24.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -23.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -22.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -21.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -20.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -19.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -18.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -17.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -16.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -15.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -14.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -13.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -12.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -11.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -10.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -9.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -8.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -7.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -6.0,
+    1.2,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    -5.0,
+    1.2,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    -4.0,
+    1.2,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    -3.0,
+    1.2,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    -2.0,
+    1.2,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    -1.0,
+    1.2,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    0.0,
+    1.2,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    1.0,
+    1.2,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    2.0,
+    1.2,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    3.0,
+    1.2,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    4.0,
+    1.225,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    5.0,
+    1.29,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    6.0,
+    1.394,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    7.0,
+    1.537,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    8.0,
+    1.714,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    9.0,
+    1.921,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    10.0,
+    2.153,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    11.0,
+    2.408,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    12.0,
+    2.684,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    13.0,
+    2.977,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    14.0,
+    3.288,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    15.0,
+    3.615,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    16.0,
+    3.956,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    17.0,
+    4.312,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    18.0,
+    4.681,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    19.0,
+    5.063,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    20.0,
+    5.459,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    21.0,
+    5.866,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    22.0,
+    6.286,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    23.0,
+    6.717,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    24.0,
+    7.16,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    25.0,
+    7.615,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    26.0,
+    8.08,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    27.0,
+    8.556,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    28.0,
+    9.043,
+    "S1 tambur baglama ipi",
+    "Omuz bandi sag"
+   ],
+   [
+    29.0,
+    8.556,
+    "S1 tambur baglama ipi001",
+    "Omuz bandi sag"
+   ],
+   [
+    30.0,
+    2.925,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    31.0,
+    2.181,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    32.0,
+    1.46,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    33.0,
+    0.824,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    34.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    35.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    36.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    37.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    38.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    39.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    40.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    41.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    42.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    43.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    44.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    45.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    46.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    47.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    48.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    49.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    50.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    51.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    52.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    53.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    54.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    55.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    56.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    57.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    58.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    59.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    60.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    61.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    62.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    63.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    64.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    65.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    66.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    67.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    68.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    69.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    70.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    71.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    72.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    73.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    74.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    75.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    76.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    77.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    78.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    79.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    80.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    81.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    82.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    83.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    84.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    85.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    86.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    87.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    88.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    89.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    90.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    91.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    92.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    93.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    94.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    95.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    96.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    97.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    98.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    99.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    100.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    101.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    102.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    103.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    104.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    105.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    106.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    107.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    108.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    109.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    110.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    111.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    112.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    113.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    114.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    115.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    116.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    117.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    118.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    119.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    120.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    121.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    122.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    123.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    124.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    125.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    126.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    127.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    128.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    129.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    130.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    131.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    132.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    133.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    134.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    135.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    136.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    137.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    138.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    139.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    140.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    141.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    142.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    143.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    144.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    145.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    146.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    147.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    148.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    149.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    150.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    151.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    152.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    153.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    154.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    155.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    156.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    157.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    158.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    159.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    160.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    161.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    162.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    163.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    164.0,
+    0.6,
+    "S1 tambur baglama ipi001",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    165.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    166.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    167.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    168.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    169.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    170.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    171.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    172.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    173.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    174.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    175.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    176.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    177.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    178.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    179.0,
+    0.6,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ],
+   [
+    180.0,
+    0.85,
+    "S1 tambur baglama ipi",
+    "S1 kaset kapagi sag"
+   ]
+  ]
+ },
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-25T16:45:52",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-25T17:09:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-25T17:19:17"
+ },
+ "dugum_sabit": {
+  "model": "1,2 mm kup r 43.2...44.4 x 155.3...156.5",
+  "en_az_aralik": [
+   34.0,
+   1.8,
+   "dugum psi 156",
+   "S1 kaset kapagi sag"
+  ],
+  "en_az_genis": [
+   34.0,
+   1.8,
+   "dugum psi 156",
+   "S1 kaset kapagi sag"
+  ]
+ },
+ "ip_kol": {
+  "en_az_aralik": [
+   5.0,
+   4.784,
+   "S1 tambur baglama ipi001",
+   "Kol catali"
+  ],
+  "satir": [
+   [
+    0.0,
+    1.724,
+    "S1 tambur baglama ipi001",
+    "Kol catali"
+   ],
+   [
+    3.0,
+    3.532,
+    "S1 tambur baglama ipi001",
+    "Kol catali"
+   ],
+   [
+    4.0,
+    4.155,
+    "S1 tambur baglama ipi001",
+    "Kol catali"
+   ],
+   [
+    5.0,
+    4.784,
+    "S1 tambur baglama ipi001",
+    "Kol catali"
+   ],
+   [
+    6.0,
+    5.418,
+    "S1 tambur baglama ipi001",
+    "Kol catali"
+   ],
+   [
+    8.0,
+    6.701,
+    "S1 tambur baglama ipi001",
+    "Kol catali"
+   ],
+   [
+    10.0,
+    8.003,
+    "S1 tambur baglama ipi001",
+    "Kol catali"
+   ],
+   [
+    12.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    14.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    16.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    18.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    20.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    22.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    24.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    26.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    28.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    30.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    32.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    34.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    36.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    38.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    40.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    42.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    44.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    46.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    48.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    50.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    52.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    54.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    56.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    58.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    60.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    62.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    64.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    66.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    68.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    70.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    72.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    74.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    76.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    78.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    80.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    82.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    84.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    86.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    88.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    90.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    92.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    94.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    96.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    98.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    100.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    102.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    104.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    106.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    108.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    110.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    112.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    114.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    116.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    118.0,
+    1000000000.0,
+    null,
+    null
+   ],
+   [
+    120.0,
+    1000000000.0,
+    null,
+    null
+   ]
+  ]
+ },
+ "ip_s2_lop": {
+  "r_cevrel": 2.524,
+  "en_az": [
+   5.0,
+   19.345,
+   "S1 tambur baglama ipi",
+   0.0
+  ],
+  "satir": [
+   [
+    5.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    6.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    9.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    12.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    15.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    18.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    21.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    24.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    27.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    30.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    33.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    36.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    39.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    42.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    45.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    48.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    51.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    54.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    57.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    60.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    63.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    66.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    69.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    72.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    75.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    78.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    81.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    84.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    87.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    90.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    93.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    96.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    99.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    102.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    105.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    108.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    111.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    114.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    117.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ],
+   [
+    120.0,
+    19.345,
+    "S1 tambur baglama ipi",
+    0.0
+   ]
+  ]
+ },
+ "ip_gecis": {
+  "bosluk": 7.047,
+  "parca": "S1 tambur baglama ipi",
+  "not_": "gecis son 8 mm (bag, tasarim temasi) haric; yassi yari kalinlik"
+ },
+ "ip_cikis": [
+  65.0,
+  5.498,
+  "dugum psi 148"
+ ],
+ "dugum_erisim": {
+  "acik": [
+   [
+    90.0,
+    -60.0
+   ],
+   [
+    90.0,
+    -45.0
+   ],
+   [
+    90.0,
+    -30.0
+   ],
+   [
+    90.0,
+    -15.0
+   ],
+   [
+    90.0,
+    0.0
+   ],
+   [
+    90.0,
+    15.0
+   ],
+   [
+    90.0,
+    30.0
+   ],
+   [
+    5.0,
+    -60.0
+   ],
+   [
+    5.0,
+    -45.0
+   ],
+   [
+    5.0,
+    -30.0
+   ],
+   [
+    5.0,
+    -15.0
+   ],
+   [
+    5.0,
+    0.0
+   ],
+   [
+    5.0,
+    15.0
+   ],
+   [
+    5.0,
+    30.0
+   ]
+  ],
+  "satir": [
+   {
+    "S2": 90.0,
+    "S1": -60.0,
+    "sonda": {
+     "148.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ],
+     "156.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ]
+    }
+   },
+   {
+    "S2": 90.0,
+    "S1": -45.0,
+    "sonda": {
+     "148.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ],
+     "156.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ]
+    }
+   },
+   {
+    "S2": 90.0,
+    "S1": -30.0,
+    "sonda": {
+     "148.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ],
+     "156.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ]
+    }
+   },
+   {
+    "S2": 90.0,
+    "S1": -15.0,
+    "sonda": {
+     "148.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ],
+     "156.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ]
+    }
+   },
+   {
+    "S2": 90.0,
+    "S1": 0.0,
+    "sonda": {
+     "148.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ],
+     "156.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ]
+    }
+   },
+   {
+    "S2": 90.0,
+    "S1": 15.0,
+    "sonda": {
+     "148.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ],
+     "156.0": [
+      0,
+      1.95,
+      "Omuz bandi sag"
+     ]
+    }
+   },
+   {
+    "S2": 90.0,
+    "S1": 30.0,
+    "sonda": {
+     "148.0": [
+      0,
+      2.2,
+      "Omuz bandi sag"
+     ],
+     "156.0": [
+      0,
+      1.24,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 90.0,
+    "S1": 45.0,
+    "sonda": {
+     "148.0": [
+      82.06,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      113.26,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 90.0,
+    "S1": 60.0,
+    "sonda": {
+     "148.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 90.0,
+    "S1": 75.0,
+    "sonda": {
+     "148.0": [
+      82.39,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      37.96,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 90.0,
+    "S1": 90.0,
+    "sonda": {
+     "148.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 90.0,
+    "S1": 105.0,
+    "sonda": {
+     "148.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 90.0,
+    "S1": 120.0,
+    "sonda": {
+     "148.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 90.0,
+    "S1": 135.0,
+    "sonda": {
+     "148.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 90.0,
+    "S1": 150.0,
+    "sonda": {
+     "148.0": [
+      71.76,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 90.0,
+    "S1": 165.0,
+    "sonda": {
+     "148.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      29.9,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 90.0,
+    "S1": 180.0,
+    "sonda": {
+     "148.0": [
+      127.3,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      60.5,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": -60.0,
+    "sonda": {
+     "148.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ],
+     "156.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": -45.0,
+    "sonda": {
+     "148.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ],
+     "156.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": -30.0,
+    "sonda": {
+     "148.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ],
+     "156.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": -15.0,
+    "sonda": {
+     "148.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ],
+     "156.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": 0.0,
+    "sonda": {
+     "148.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ],
+     "156.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": 15.0,
+    "sonda": {
+     "148.0": [
+      0,
+      1.9,
+      "Omuz bandi sag"
+     ],
+     "156.0": [
+      0,
+      1.95,
+      "Omuz bandi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": 30.0,
+    "sonda": {
+     "148.0": [
+      0,
+      2.2,
+      "Omuz bandi sag"
+     ],
+     "156.0": [
+      0,
+      1.24,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": 45.0,
+    "sonda": {
+     "148.0": [
+      82.06,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      113.26,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": 60.0,
+    "sonda": {
+     "148.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": 75.0,
+    "sonda": {
+     "148.0": [
+      82.39,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      37.96,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": 90.0,
+    "sonda": {
+     "148.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": 105.0,
+    "sonda": {
+     "148.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": 120.0,
+    "sonda": {
+     "148.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": 135.0,
+    "sonda": {
+     "148.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": 150.0,
+    "sonda": {
+     "148.0": [
+      71.76,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": 165.0,
+    "sonda": {
+     "148.0": [
+      25.14,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      29.9,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   },
+   {
+    "S2": 5.0,
+    "S1": 180.0,
+    "sonda": {
+     "148.0": [
+      127.3,
+      0.0,
+      "S1 kaset govdesi sag"
+     ],
+     "156.0": [
+      60.5,
+      0.0,
+      "S1 kaset govdesi sag"
+     ]
+    }
+   }
+  ]
+ },
+ "tambur_baski": [
+  {
+   "ad": "S1 kablo tamburu",
+   "adet": 2,
+   "adet_notu": "sag + sol (sol = X aynasi; yon ve sonuc ayni, dilimleyicide aynalanir)",
+   "malzeme": "PETG",
+   "model_malzeme": "PETG",
+   "model_kutle_g": 4.8,
+   "hacim_cm3": 4.71,
+   "secilen_yon": "+X",
+   "en_az_destek_yon": "-Z",
+   "yon_sirasi": [
+    "+X",
+    "-X",
+    "-Z",
+    "+Z",
+    "+Y",
+    "-Y"
+   ],
+   "desteksiz": false,
+   "desteksiz_yon_var": [],
+   "kutle_g": {
+    "0.80": 4.8
+   },
+   "filament_g": {
+    "0.80": 5.8
+   },
+   "destek_filament_g": 0.8,
+   "sure_saat": {
+    "0.80": 0.12
+   },
+   "sure_saat_yavas_cf": null,
+   "silindir": [
+    {
+     "r": 3.0,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 5.08
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 2.5
+    },
+    {
+     "r": 3.0,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 5.08
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 2.5
+    },
+    {
+     "r": 1.7,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 2.5
+    },
+    {
+     "r": 37.0,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 6.8
+    },
+    {
+     "r": 43.7,
+     "delik": false,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 1.0
+    },
+    {
+     "r": 43.7,
+     "delik": false,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 1.0
+    },
+    {
+     "r": 39.0,
+     "delik": false,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 4.8
+    },
+    {
+     "r": 3.0,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 4.97
+    }
+   ],
+   "yonler": {
+    "+X": {
+     "yukari": [
+      1,
+      0,
+      0
+     ],
+     "tabla_yuzu": "x = 152.5 yuzu tablada (robot yerel +X yukari)",
+     "olcu": [
+      87.4,
+      70.0,
+      10.5
+     ],
+     "tabla_aci": 88,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 1193.8,
+     "yukseklik_taban_orani": 0.3,
+     "cikinti45_mm2": 951.3,
+     "tavan_mm2": 917.3,
+     "cikinti45_orani": 0.1307,
+     "egim_yuz": [],
+     "egim_alan_mm2": 0,
+     "egim_izdusum_mm2": 0,
+     "kucuk_delik_cikinti_mm2": 0.0,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 769.2,
+     "destek_katman_alan_mm2": 769.2,
+     "destek_hacim_cm3": 4.23,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        6.23,
+        6.23
+       ],
+       "katman": 1,
+       "alan_mm2": 769.2,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 4.2,
+       "kopru_max_mm": 6.65,
+       "merkez_robot": [
+        158.7,
+        -0.5,
+        15.2
+       ],
+       "destek_hacim_mm3": 4231.0,
+       "tablaya": false
+      }
+     ],
+     "destek_bolge_sayi": 1,
+     "en_buyuk_kopru_mm": 6.7,
+     "en_buyuk_konsol_mm": 4.2,
+     "kopruler": [],
+     "yuk_uyum": 1.0,
+     "yuk": [
+      {
+       "ad": "tambur halkasi O78 (ic kosu sarilir, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "gobek M3 delikleri (3 kol)",
+       "ister": "dikey",
+       "bulundu": 3,
+       "uyan": 3,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 21,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "-X": {
+     "yukari": [
+      -1,
+      0,
+      0
+     ],
+     "tabla_yuzu": "x = 163.0 yuzu tablada (robot yerel -X yukari)",
+     "olcu": [
+      87.4,
+      70.0,
+      10.5
+     ],
+     "tabla_aci": 2,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 188.8,
+     "yukseklik_taban_orani": 0.76,
+     "cikinti45_mm2": 2003.9,
+     "tavan_mm2": 2003.9,
+     "cikinti45_orani": 0.2754,
+     "egim_yuz": [],
+     "egim_alan_mm2": 0,
+     "egim_izdusum_mm2": 0,
+     "kucuk_delik_cikinti_mm2": 0.0,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 1883.3,
+     "destek_katman_alan_mm2": 1883.3,
+     "destek_hacim_cm3": 8.34,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        3.73,
+        3.73
+       ],
+       "katman": 1,
+       "alan_mm2": 1120.2,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 77.59,
+       "kopru_max_mm": 21.84,
+       "merkez_robot": [
+        159.3,
+        -2.7,
+        15.6
+       ],
+       "destek_hacim_mm3": 4145.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        9.73,
+        9.73
+       ],
+       "katman": 3,
+       "alan_mm2": 763.1,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 4.2,
+       "kopru_max_mm": 2.28,
+       "merkez_robot": [
+        153.3,
+        0.0,
+        15.5
+       ],
+       "destek_hacim_mm3": 4197.0,
+       "tablaya": false
+      }
+     ],
+     "destek_bolge_sayi": 2,
+     "en_buyuk_kopru_mm": 21.8,
+     "en_buyuk_konsol_mm": 77.6,
+     "kopruler": [],
+     "yuk_uyum": 1.0,
+     "yuk": [
+      {
+       "ad": "tambur halkasi O78 (ic kosu sarilir, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 1,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "gobek M3 delikleri (3 kol)",
+       "ister": "dikey",
+       "bulundu": 3,
+       "uyan": 3,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 21,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "+Y": {
+     "yukari": [
+      0,
+      1,
+      0
+     ],
+     "tabla_yuzu": "y = -43.7 yuzu tablada (robot yerel +Y yukari)",
+     "olcu": [
+      70.6,
+      10.5,
+      87.4
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 11.8,
+     "yukseklik_taban_orani": 25.42,
+     "cikinti45_mm2": 789.2,
+     "tavan_mm2": 183.0,
+     "cikinti45_orani": 0.1084,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 206.1,
+       "izdusum_mm2": 182.5,
+       "en_dik_aci": 79.6,
+       "z_mm": [
+        5.4,
+        15.7
+       ],
+       "merkez_robot": [
+        155.9,
+        -34.5,
+        3.4
+       ],
+       "yaricap": 39.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 192.1,
+       "izdusum_mm2": 172.4,
+       "en_dik_aci": 78.3,
+       "z_mm": [
+        70.5,
+        79.9
+       ],
+       "merkez_robot": [
+        155.4,
+        33.2,
+        4.6
+       ],
+       "yaricap": 37.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 46.7,
+       "izdusum_mm2": 41.4,
+       "en_dik_aci": 79.4,
+       "z_mm": [
+        0.8,
+        12.0
+       ],
+       "merkez_robot": [
+        153.0,
+        -38.7,
+        3.3
+       ],
+       "yaricap": 43.7
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 46.7,
+       "izdusum_mm2": 41.4,
+       "en_dik_aci": 79.4,
+       "z_mm": [
+        0.8,
+        12.0
+       ],
+       "merkez_robot": [
+        158.8,
+        -38.7,
+        3.3
+       ],
+       "yaricap": 43.7
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 38.5,
+       "izdusum_mm2": 27.2,
+       "en_dik_aci": 45.0,
+       "z_mm": [
+        75.0,
+        80.5
+       ],
+       "merkez_robot": [
+        158.6,
+        33.7,
+        0.0
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 15.3,
+       "izdusum_mm2": 13.3,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        69.8,
+        71.3
+       ],
+       "merkez_robot": [
+        162.2,
+        26.8,
+        -15.5
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 15.3,
+       "izdusum_mm2": 13.3,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        69.8,
+        71.3
+       ],
+       "merkez_robot": [
+        162.2,
+        26.8,
+        15.5
+       ],
+       "yaricap": null
+      }
+     ],
+     "egim_alan_mm2": 560.7,
+     "egim_izdusum_mm2": 491.5,
+     "kucuk_delik_cikinti_mm2": 64.6,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 558.3,
+     "destek_katman_alan_mm2": 66.8,
+     "destek_hacim_cm3": 4.95,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        80.23,
+        80.73
+       ],
+       "katman": 3,
+       "alan_mm2": 66.8,
+       "turler": [
+        "konsol",
+        "kopru"
+       ],
+       "konsol_max_mm": 2.84,
+       "kopru_max_mm": 8.79,
+       "merkez_robot": [
+        155.2,
+        36.8,
+        0.0
+       ],
+       "destek_hacim_mm3": 4949.0,
+       "tablaya": false
+      }
+     ],
+     "destek_bolge_sayi": 1,
+     "en_buyuk_kopru_mm": 8.8,
+     "en_buyuk_konsol_mm": 2.8,
+     "kopruler": [
+      {
+       "z": 5.23,
+       "tur": "kopru",
+       "alan_mm2": 16.6,
+       "konsol_mm": 0.0,
+       "kopru_mm": 4.1,
+       "boyut": [
+        3.8,
+        4.4
+       ],
+       "merkez_robot": [
+        155.9,
+        -38.5,
+        -4.2
+       ],
+       "destek": false,
+       "kolon_mm": 5.2,
+       "tablaya": true
+      },
+      {
+       "z": 5.23,
+       "tur": "kopru",
+       "alan_mm2": 16.6,
+       "konsol_mm": 0.0,
+       "kopru_mm": 3.95,
+       "boyut": [
+        3.8,
+        4.4
+       ],
+       "merkez_robot": [
+        155.9,
+        -38.5,
+        4.2
+       ],
+       "destek": false,
+       "kolon_mm": 5.2,
+       "tablaya": true
+      },
+      {
+       "z": 4.73,
+       "tur": "kopru",
+       "alan_mm2": 11.6,
+       "konsol_mm": 0.0,
+       "kopru_mm": 3.83,
+       "boyut": [
+        3.8,
+        3.1
+       ],
+       "merkez_robot": [
+        155.9,
+        -39.0,
+        -0.0
+       ],
+       "destek": false,
+       "kolon_mm": 4.7,
+       "tablaya": true
+      }
+     ],
+     "yuk_uyum": 0.0,
+     "yuk": [
+      {
+       "ad": "tambur halkasi O78 (ic kosu sarilir, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "gobek M3 delikleri (3 kol)",
+       "ister": "dikey",
+       "bulundu": 3,
+       "uyan": 0,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 175,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "-Y": {
+     "yukari": [
+      0,
+      -1,
+      0
+     ],
+     "tabla_yuzu": "y = 43.7 yuzu tablada (robot yerel -Y yukari)",
+     "olcu": [
+      70.6,
+      10.5,
+      87.4
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 11.8,
+     "yukseklik_taban_orani": 25.42,
+     "cikinti45_mm2": 862.9,
+     "tavan_mm2": 216.8,
+     "cikinti45_orani": 0.1186,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 270.2,
+       "izdusum_mm2": 240.7,
+       "en_dik_aci": 79.8,
+       "z_mm": [
+        70.7,
+        80.1
+       ],
+       "merkez_robot": [
+        155.9,
+        -33.0,
+        3.3
+       ],
+       "yaricap": 37.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 148.2,
+       "izdusum_mm2": 133.3,
+       "en_dik_aci": 79.1,
+       "z_mm": [
+        5.4,
+        15.6
+       ],
+       "merkez_robot": [
+        155.6,
+        35.1,
+        5.1
+       ],
+       "yaricap": 39.0
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 59.6,
+       "izdusum_mm2": 51.6,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        8.4,
+        12.0
+       ],
+       "merkez_robot": [
+        159.3,
+        33.7,
+        -19.6
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 44.8,
+       "izdusum_mm2": 39.9,
+       "en_dik_aci": 79.0,
+       "z_mm": [
+        0.8,
+        11.9
+       ],
+       "merkez_robot": [
+        153.0,
+        38.9,
+        4.5
+       ],
+       "yaricap": 43.7
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 44.8,
+       "izdusum_mm2": 39.9,
+       "en_dik_aci": 79.0,
+       "z_mm": [
+        0.8,
+        11.9
+       ],
+       "merkez_robot": [
+        158.8,
+        38.9,
+        4.5
+       ],
+       "yaricap": 43.7
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 33.3,
+       "izdusum_mm2": 28.8,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        9.2,
+        10.7
+       ],
+       "merkez_robot": [
+        161.2,
+        33.8,
+        19.5
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 25.2,
+       "izdusum_mm2": 21.8,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        8.4,
+        11.4
+       ],
+       "merkez_robot": [
+        156.9,
+        33.8,
+        19.5
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 4.5,
+       "izdusum_mm2": 4.1,
+       "en_dik_aci": 66.0,
+       "z_mm": [
+        77.9,
+        78.0
+       ],
+       "merkez_robot": [
+        155.9,
+        -34.3,
+        -15.3
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 4.5,
+       "izdusum_mm2": 3.8,
+       "en_dik_aci": 58.0,
+       "z_mm": [
+        75.4,
+        75.6
+       ],
+       "merkez_robot": [
+        155.9,
+        -31.8,
+        -19.9
+       ],
+       "yaricap": null
+      }
+     ],
+     "egim_alan_mm2": 635.1,
+     "egim_izdusum_mm2": 563.9,
+     "kucuk_delik_cikinti_mm2": 17.1,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 645.8,
+     "destek_katman_alan_mm2": 81.9,
+     "destek_hacim_cm3": 2.3,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        4.73,
+        4.73
+       ],
+       "katman": 1,
+       "alan_mm2": 28.8,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 3.13,
+       "kopru_max_mm": 7.67,
+       "merkez_robot": [
+        161.4,
+        39.0,
+        0.0
+       ],
+       "destek_hacim_mm3": 135.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        4.73,
+        4.73
+       ],
+       "katman": 1,
+       "alan_mm2": 25.3,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 2.18,
+       "kopru_max_mm": 5.33,
+       "merkez_robot": [
+        156.3,
+        39.0,
+        0.0
+       ],
+       "destek_hacim_mm3": 119.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        80.23,
+        80.23
+       ],
+       "katman": 1,
+       "alan_mm2": 13.9,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 1.91,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        155.9,
+        -36.5,
+        6.9
+       ],
+       "destek_hacim_mm3": 1022.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        80.23,
+        80.23
+       ],
+       "katman": 1,
+       "alan_mm2": 13.9,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 1.88,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        155.9,
+        -36.5,
+        -6.9
+       ],
+       "destek_hacim_mm3": 1022.0,
+       "tablaya": false
+      }
+     ],
+     "destek_bolge_sayi": 4,
+     "en_buyuk_kopru_mm": 10.8,
+     "en_buyuk_konsol_mm": 3.1,
+     "kopruler": [
+      {
+       "z": 80.73,
+       "tur": "kopru",
+       "alan_mm2": 73.2,
+       "konsol_mm": 0.0,
+       "kopru_mm": 10.78,
+       "boyut": [
+        6.8,
+        10.8
+       ],
+       "merkez_robot": [
+        155.9,
+        -37.0,
+        -0.0
+       ],
+       "destek": false,
+       "kolon_mm": 74.5,
+       "tablaya": false
+      }
+     ],
+     "yuk_uyum": 0.0,
+     "yuk": [
+      {
+       "ad": "tambur halkasi O78 (ic kosu sarilir, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "gobek M3 delikleri (3 kol)",
+       "ister": "dikey",
+       "bulundu": 3,
+       "uyan": 0,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 175,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "+Z": {
+     "yukari": [
+      0,
+      0,
+      1
+     ],
+     "tabla_yuzu": "z = -26.9 yuzu tablada (robot yerel +Z yukari)",
+     "olcu": [
+      87.4,
+      10.5,
+      70.6
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 0.4,
+     "yukseklik_taban_orani": 110.03,
+     "cikinti45_mm2": 613.2,
+     "tavan_mm2": 117.6,
+     "cikinti45_orani": 0.0843,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 308.0,
+       "izdusum_mm2": 268.2,
+       "en_dik_aci": 79.0,
+       "z_mm": [
+        53.5,
+        63.2
+       ],
+       "merkez_robot": [
+        155.8,
+        -0.0,
+        32.2
+       ],
+       "yaricap": 37.0
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 43.2,
+       "izdusum_mm2": 37.4,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        3.9,
+        6.2
+       ],
+       "merkez_robot": [
+        160.0,
+        28.8,
+        -21.8
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 34.5,
+       "izdusum_mm2": 29.9,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        39.5,
+        42.1
+       ],
+       "merkez_robot": [
+        160.6,
+        32.8,
+        13.7
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 23.0,
+       "izdusum_mm2": 18.1,
+       "en_dik_aci": 52.0,
+       "z_mm": [
+        1.0,
+        3.7
+       ],
+       "merkez_robot": [
+        155.9,
+        -31.0,
+        -24.2
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 10.7,
+       "izdusum_mm2": 8.8,
+       "en_dik_aci": 55.0,
+       "z_mm": [
+        2.7,
+        5.3
+       ],
+       "merkez_robot": [
+        153.6,
+        32.3,
+        -22.6
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 6.9,
+       "izdusum_mm2": 5.8,
+       "en_dik_aci": 58.0,
+       "z_mm": [
+        5.0,
+        7.6
+       ],
+       "merkez_robot": [
+        155.9,
+        -33.4,
+        -20.3
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 6.9,
+       "izdusum_mm2": 6.3,
+       "en_dik_aci": 66.0,
+       "z_mm": [
+        10.2,
+        12.2
+       ],
+       "merkez_robot": [
+        155.9,
+        -35.9,
+        -15.5
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 4.6,
+       "izdusum_mm2": 3.7,
+       "en_dik_aci": 55.0,
+       "z_mm": [
+        2.7,
+        3.6
+       ],
+       "merkez_robot": [
+        158.8,
+        33.9,
+        -23.8
+       ],
+       "yaricap": null
+      }
+     ],
+     "egim_alan_mm2": 437.8,
+     "egim_izdusum_mm2": 378.2,
+     "kucuk_delik_cikinti_mm2": 37.8,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 449.6,
+     "destek_katman_alan_mm2": 71.4,
+     "destek_hacim_cm3": 2.83,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        22.73,
+        22.73
+       ],
+       "katman": 1,
+       "alan_mm2": 31.4,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 6.19,
+       "kopru_max_mm": 0.45,
+       "merkez_robot": [
+        160.8,
+        35.1,
+        -4.2
+       ],
+       "destek_hacim_mm3": 283.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        63.73,
+        63.73
+       ],
+       "katman": 1,
+       "alan_mm2": 20.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.82,
+       "kopru_max_mm": 0.43,
+       "merkez_robot": [
+        155.9,
+        5.1,
+        36.8
+       ],
+       "destek_hacim_mm3": 1274.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        63.73,
+        63.73
+       ],
+       "katman": 1,
+       "alan_mm2": 20.0,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 2.88,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        155.9,
+        -5.1,
+        36.8
+       ],
+       "destek_hacim_mm3": 1274.0,
+       "tablaya": true
+      }
+     ],
+     "destek_bolge_sayi": 3,
+     "en_buyuk_kopru_mm": 6.2,
+     "en_buyuk_konsol_mm": 6.2,
+     "kopruler": [
+      {
+       "z": 64.23,
+       "tur": "kopru",
+       "alan_mm2": 42.0,
+       "konsol_mm": 0.0,
+       "kopru_mm": 6.2,
+       "boyut": [
+        6.8,
+        6.2
+       ],
+       "merkez_robot": [
+        155.9,
+        0.0,
+        37.3
+       ],
+       "destek": false,
+       "kolon_mm": 64.2,
+       "tablaya": true
+      }
+     ],
+     "yuk_uyum": 0.0,
+     "yuk": [
+      {
+       "ad": "tambur halkasi O78 (ic kosu sarilir, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "gobek M3 delikleri (3 kol)",
+       "ister": "dikey",
+       "bulundu": 3,
+       "uyan": 0,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 141,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    },
+    "-Z": {
+     "yukari": [
+      0,
+      0,
+      -1
+     ],
+     "tabla_yuzu": "z = 43.7 yuzu tablada (robot yerel -Z yukari)",
+     "olcu": [
+      87.4,
+      10.5,
+      70.6
+     ],
+     "tabla_aci": 0,
+     "sigar": true,
+     "cift_sigar": true,
+     "ilk_katman_mm2": 11.8,
+     "yukseklik_taban_orani": 20.54,
+     "cikinti45_mm2": 592.9,
+     "tavan_mm2": 131.9,
+     "cikinti45_orani": 0.0815,
+     "egim_yuz": [
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 227.6,
+       "izdusum_mm2": 199.1,
+       "en_dik_aci": 79.5,
+       "z_mm": [
+        5.4,
+        15.7
+       ],
+       "merkez_robot": [
+        155.9,
+        0.3,
+        34.1
+       ],
+       "yaricap": 39.0
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 54.8,
+       "izdusum_mm2": 47.8,
+       "en_dik_aci": 79.9,
+       "z_mm": [
+        0.7,
+        12.4
+       ],
+       "merkez_robot": [
+        153.0,
+        0.1,
+        38.2
+       ],
+       "yaricap": 43.7
+      },
+      {
+       "yuz": "Cylinder",
+       "alan_mm2": 54.8,
+       "izdusum_mm2": 47.8,
+       "en_dik_aci": 79.9,
+       "z_mm": [
+        0.7,
+        12.4
+       ],
+       "merkez_robot": [
+        158.8,
+        0.1,
+        38.2
+       ],
+       "yaricap": 43.7
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 34.5,
+       "izdusum_mm2": 29.9,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        56.3,
+        58.9
+       ],
+       "merkez_robot": [
+        160.6,
+        32.8,
+        -13.7
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 34.5,
+       "izdusum_mm2": 29.9,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        20.7,
+        23.3
+       ],
+       "merkez_robot": [
+        160.6,
+        28.3,
+        21.5
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 6.9,
+       "izdusum_mm2": 5.8,
+       "en_dik_aci": 58.0,
+       "z_mm": [
+        63.8,
+        66.4
+       ],
+       "merkez_robot": [
+        155.9,
+        -32.9,
+        -21.2
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 6.9,
+       "izdusum_mm2": 6.3,
+       "en_dik_aci": 66.0,
+       "z_mm": [
+        59.3,
+        61.3
+       ],
+       "merkez_robot": [
+        155.9,
+        -35.5,
+        -16.4
+       ],
+       "yaricap": null
+      }
+     ],
+     "egim_alan_mm2": 420.0,
+     "egim_izdusum_mm2": 366.6,
+     "kucuk_delik_cikinti_mm2": 38.5,
+     "destek_gerekli": true,
+     "destek_alan_mm2": 397.8,
+     "destek_katman_alan_mm2": 31.2,
+     "destek_hacim_cm3": 0.27,
+     "destek_bolge": [
+      {
+       "z_mm": [
+        39.23,
+        39.23
+       ],
+       "katman": 1,
+       "alan_mm2": 31.2,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 6.1,
+       "kopru_max_mm": 0.64,
+       "merkez_robot": [
+        160.8,
+        35.1,
+        4.5
+       ],
+       "destek_hacim_mm3": 265.0,
+       "tablaya": false
+      }
+     ],
+     "destek_bolge_sayi": 1,
+     "en_buyuk_kopru_mm": 4.1,
+     "en_buyuk_konsol_mm": 6.1,
+     "kopruler": [
+      {
+       "z": 5.23,
+       "tur": "kopru",
+       "alan_mm2": 16.6,
+       "konsol_mm": 0.0,
+       "kopru_mm": 4.11,
+       "boyut": [
+        3.8,
+        4.4
+       ],
+       "merkez_robot": [
+        155.9,
+        4.2,
+        38.5
+       ],
+       "destek": false,
+       "kolon_mm": 5.2,
+       "tablaya": true
+      },
+      {
+       "z": 5.23,
+       "tur": "kopru",
+       "alan_mm2": 16.6,
+       "konsol_mm": 0.0,
+       "kopru_mm": 3.94,
+       "boyut": [
+        3.8,
+        4.4
+       ],
+       "merkez_robot": [
+        155.9,
+        -4.2,
+        38.5
+       ],
+       "destek": false,
+       "kolon_mm": 5.2,
+       "tablaya": true
+      },
+      {
+       "z": 4.73,
+       "tur": "kopru",
+       "alan_mm2": 11.6,
+       "konsol_mm": 0.0,
+       "kopru_mm": 3.82,
+       "boyut": [
+        3.8,
+        3.1
+       ],
+       "merkez_robot": [
+        155.9,
+        0.0,
+        39.0
+       ],
+       "destek": false,
+       "kolon_mm": 4.7,
+       "tablaya": true
+      }
+     ],
+     "yuk_uyum": 0.0,
+     "yuk": [
+      {
+       "ad": "tambur halkasi O78 (ic kosu sarilir, yuvarlaklik)",
+       "ister": "dikey",
+       "bulundu": 1,
+       "uyan": 0,
+       "agirlik": 2.0
+      },
+      {
+       "ad": "gobek M3 delikleri (3 kol)",
+       "ister": "dikey",
+       "bulundu": 3,
+       "uyan": 0,
+       "agirlik": 0.5
+      }
+     ],
+     "isil_gomme": [],
+     "katman_sayisi": 141,
+     "ofset_uyari": 0,
+     "atlanan_kesit": []
+    }
+   }
+  }
+ ]
+}

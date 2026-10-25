@@ -1,16 +1,16 @@
 {
  "bolum": "statik",
- "kosu": "20261008-221731",
- "baslangic": "2026-10-08T22:18:16",
- "bitis": "2026-10-08T22:18:26",
- "sure_s": 10.4,
- "yukleme_s": 44.1,
- "tepe_bellek_mb": 510,
- "tepe_sayfa_mb": 2411,
+ "kosu": "elle",
+ "baslangic": "2026-10-25T20:13:08",
+ "bitis": "2026-10-25T20:13:19",
+ "sure_s": 11.1,
+ "yukleme_s": 42.0,
+ "tepe_bellek_mb": 513,
+ "tepe_sayfa_mb": 2412,
  "ayni_surec": [
   "statik"
  ],
- "pid": 125244,
+ "pid": 236796,
  "moduller": [
   "iskelet",
   "omuz_sag",
@@ -22,16 +22,22 @@
   "taban"
  ],
  "kaynak": {
-  "carpisma.py": "46990770f1",
-  "arayuz.py": "6aa5377a61",
-  "ortak_lib.py": "ce4e4053c4",
+  "carpisma.py": "c688d738c3",
+  "arayuz.py": "8ab7549907",
+  "ortak_lib.py": "a668036c1b",
+  "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
-  "omuz/omuz_parcalar.py": "ac3c6974d4",
-  "kabuk/kabuk_parcalar.py": "49520759b6",
-  "dirsek/dirsek_parcalar.py": "029708d0b7",
-  "kafa/kafa_parcalar.py": "3b147ef083",
-  "taban/taban_parcalar.py": "e1d0b822f1",
-  "taban/taban_lib.py": "29fc99b240"
+  "omuz/omuz_parcalar.py": "6ee3ba0bec",
+  "kabuk/kabuk_parcalar.py": "f61b7c5a28",
+  "dirsek/dirsek_parcalar.py": "04a41ce1ec",
+  "kafa/kafa_parcalar.py": "9945bec319",
+  "taban/taban_parcalar.py": "b30612e464",
+  "kafa/kafa-analiz.json": "dd87889673",
+  "dirsek/dirsek_lib.py": "49ef44a3b8",
+  "kabuk/kabuk_lib.py": "39de225f64",
+  "kafa/kafa_lib.py": "7190c9a6f7",
+  "omuz/omuz_lib.py": "b5c14c4ed2",
+  "taban/taban_lib.py": "73d922d4bc"
  },
  "sonuc": {
   "moduller": [
@@ -57,7 +63,7 @@
      0.0
     ],
     "ayna": false,
-    "parca": 70,
+    "parca": 75,
     "haric": [
      "Omuz traversi (sigma 40x40 agir, 200 mm)",
      "Govde kabugu yan yuzu (referans)"
@@ -74,7 +80,7 @@
      0.0
     ],
     "ayna": true,
-    "parca": 70,
+    "parca": 75,
     "haric": [
      "Omuz traversi (sigma 40x40 agir, 200 mm)",
      "Govde kabugu yan yuzu (referans)"
@@ -91,7 +97,7 @@
      0.0
     ],
     "ayna": false,
-    "parca": 202,
+    "parca": 206,
     "haric": [],
     "haric_neden": "",
     "hareketli": false,
@@ -133,7 +139,7 @@
      0.0
     ],
     "ayna": false,
-    "parca": 99,
+    "parca": 120,
     "haric": [
      "Kablo demeti (gosterim)"
     ],
@@ -149,21 +155,21 @@
      0.0
     ],
     "ayna": false,
-    "parca": 319,
+    "parca": 329,
     "haric": [
      "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)",
      "Kablo yolu 1: 12 V ana hat: aku + -> XT60 -> ana sigorta 30 A -> ana anahtar -> sigorta kutusu",
      "Kablo yolu 2: Toprak: aku - -> WAGO yildiz noktasi (guc paneli) -> tum donusturuculer",
      "Kablo yolu 3: Motor 12 V: F1 20 A -> role -> WAGO -> BTS7960 sol/sag -> motor kablo delikleri -> 4 motor",
      "Kablo yolu 4: Motor 12 V sag kol + arka motorlar (plaka altindan z 36 deliginden)",
-     "Kablo yolu 5: Servo 6 V: F1 -> role -> WAGO -> XL4016 servo -> PCA9685 V+ -> direk arka yuzu -> omuz / kafa",
-     "Kablo yolu 6: Servo kablolari sola ve kafaya (direk ustu dagitim)",
-     "Kablo yolu 7: Pi 5,1 V: F3 10 A -> XL4016 Pi -> Pi USB-C",
-     "Kablo yolu 8: Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / Nextion / 7in LCD / sensorler",
-     "Kablo yolu 9: Acil stop: F5 -> mantar (NC) -> role bobini",
-     "Kablo yolu 10: Sinyal: sonar x3 -> ESP32 (on ara ray ustunden)",
-     "Kablo yolu 11: Sinyal: enkoder + BTS PWM/EN -> ESP32; Pi <-> ESP32 USB",
-     "Kablo yolu 12: Pi -> kafa: 2x HDMI (7in LCD), kamera FPC, USB mikrofon, hoparlor (direk on yuzu)"
+     "Kablo yolu 5: Servo 6 V A (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol + pan",
+     "Kablo yolu 6: Servo uzatmalari kafaya: pan (A) + tilt (B) (direk ustu, R62 halkasindan)",
+     "Kablo yolu 7: Servo 6 V B (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol + tilt",
+     "Kablo yolu 8: Kafa 12 V (K4/E4): F3 5 A -> 18 AWG cift -> direk on yuzu -> R62 -> kafada 5 V/5,5 A cevirici (Pi 5, LCD)",
+     "Kablo yolu 9: Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / Nextion / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)",
+     "Kablo yolu 10: Acil stop (E3): F5 -> mantar (NC) -> role bobini -> MOSFET (arayuz karti, ESP32 'devreye al') ; PC817 mantar sonrasi gerilimi okur",
+     "Kablo yolu 11: Sinyal: sonar x3 -> arayuz karti bolucu (4,7k/10k) -> ESP32 (on ara ray ustunden)",
+     "Kablo yolu 12: Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (VBUS hattinda seri 1N5819)"
     ],
     "haric_neden": "kablo yolu semalari ve ana anahtar dugmesi gosterimi (Referans grubu, 0 g); dugme kol x taban taramasinda (bolum 4c) hedef",
     "hareketli": false,
@@ -193,22 +199,43 @@
    }
   ],
   "ev_pozu_cakisma": [],
-  "ev_pozu_kesisen_cift": 693,
+  "ev_pozu_kesisen_cift": 735,
+  "ev_pozu_poz": {
+   "one_arka": 0.0,
+   "yana": 5.0,
+   "not_": "yazilim ev pozu (K6); kutle/AM FCStd yerlesiminde (S2 0)"
+  },
+  "ev_pozu_cakisma_s2_0": [
+   {
+    "a": "omuz_sag",
+    "pa": "Ust kol tupu",
+    "b": "kabuk",
+    "pb": "S1 kaset kapagi sag",
+    "hacim": 6.42
+   },
+   {
+    "a": "omuz_sol",
+    "pa": "Ust kol tupu",
+    "b": "kabuk",
+    "pb": "S1 kaset kapagi sol",
+    "hacim": 6.42
+   }
+  ],
   "kutle_g": {
    "iskelet": 5793.1,
-   "omuz_sag": 463.6,
-   "omuz_sol": 463.6,
-   "kabuk": 4925.8,
-   "dirsek_sag": 370.0,
-   "dirsek_sol": 370.0,
-   "kafa": 1366.8,
-   "taban": 7508.0
+   "omuz_sag": 555.5,
+   "omuz_sol": 555.5,
+   "kabuk": 4922.3,
+   "dirsek_sag": 367.4,
+   "dirsek_sol": 367.4,
+   "kafa": 1443.5,
+   "taban": 7529.4
   },
-  "kutle_toplam_g": 21260.9,
+  "kutle_toplam_g": 21534.2,
   "agirlik_merkezi": [
-   -0.38,
-   374.61,
-   -13.51
+   -0.19,
+   382.71,
+   -12.77
   ]
  }
 }

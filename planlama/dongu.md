@@ -54,8 +54,9 @@ Push yok (Duffy: "şimdilik yerelde kalsın"); her doğrulanan adım yerel commi
 | Sıra | İş | Durum |
 |---|---|---|
 | Y1 | S1 kablo kaseti bağımsız kontrolünü bitir (`adim2/K2-s1-kontrol.md`, WIP `834b386`) | ✅ KOŞULLU GEÇTİ (125 + 170); K1–K6 düzeltmeleri Y1b |
-| Y1b | S1 düzeltmeleri K1–K5 (PVC 22 AWG ≤1,5 mm, tambur kablo kelepçesi, flanş pahı + S2 sınırı, U cebi 6,5 + yarık, önden radyal montaj sırası) + K6 (ev pozu kontrolü S2 5°) + ikinci pim, S2 kablosu göbekte | 🔄 |
-| Y2 | Taslağı ana montaja taşı: modüller + `arayuz.py` + `montaj/` (uzun direk, 10" kafa, kol ×1,25, çatal 8, DS3235, Nextion yok, taban 520 + akü öne); `eklem_sinirlari.json`, `maliyet.json`, baskı listesi, elektrik/akü hesabı, README, proje planı; demodan lidar/otonomi önerisi çıkar, 1,70 m ekle | ⏳ |
+| Y1b | S1 düzeltmeleri K1–K6 + ikinci pim + S2 kablosu göbekte | ✅ KOŞULLU GEÇTİ (`adim2/K3-s1-duzeltme-kontrol.md`); kalan KZ1 `duvar.pim.bosluk` 0,5→1,0, KZ2 tambur ip deliği ≥0,8 mm, S1-kaset.md belge düzeltmeleri → Y2a'ya |
+| Y2a | CAD: taslağı ana montaja taşı (arayuz + modüller + montaj; Nextion yok, taban 520 + akü 75 öne, direk 2 m stok) + KZ1/KZ2 | 🔄 |
+| Y2b | Veri/belge: eklem_sinirlari, maliyet.json, baskı listesi, elektrik/akü, README, proje planı, demodan lidar/otonomi | ⏳ |
 | Y3 | M6 CAD (erişim düzeltmeleri, eski 4. adımdaki liste) | ⏳ |
 | Y4 | Tüm modüller yeniden üretilir → tam çakışma taraması → regresyon (eski 6. adım) | ⏳ |
 | Y5 | 3B montaj rehberi 1,70 m'den yeniden üretilir ve tamamlanır (eski 8. adım) | ⏳ |
@@ -84,3 +85,4 @@ Push yok (Duffy: "şimdilik yerelde kalsın"); her doğrulanan adım yerel commi
 - 2026-10-15 ~23:30 PC reset: Opus-8b (S1 kontrolü) yarıda kaldı, `K2-s1-kontrol.md` kapanmadı (son tarama 22:16). Duffy: limit %82, sonra devam. Devamda yeni ajan günlükten başlar.
 - 2026-10-25 1,70 m planı kuruldu (yukarıda). Y1: S1 kontrolü yeni Opus ajanıyla, `K2-s1-kontrol.md` günlüğünden devam.
 - 2026-10-25 Y1 bitti: KOŞULLU GEÇTİ. 6 ev pozu çakışması modelleme artığı (S2 0°, kol 3,6°'de dayanıyor). Uzatma kablosu taslakta ~12,3 m. Y1b tasarım ajanı başlıyor.
+- 2026-10-26 Y1b kontrol: KOŞULLU GEÇTİ (K4 sınırlayanı pim dikmesi; u_pay 7,0 işe yaramaz, pim boşluğu 1,0 önerildi). Y2 ikiye bölündü (Y2a CAD, Y2b veri/belge).

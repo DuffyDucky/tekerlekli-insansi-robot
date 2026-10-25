@@ -1,0 +1,152 @@
+{
+ "tarih": "2026-10-25T20:31:36",
+ "adim": "ev",
+ "parca": {
+  "omuz": 75,
+  "ip": [
+   "S1 tambur baglama ipi",
+   "S1 tambur baglama ipi001"
+  ],
+  "kabuk_sag": 59,
+  "kaset": [
+   "S1 kaset govdesi sag",
+   "S1 kaset kapagi sag",
+   "Kaset civatasi M3x8 (sag psi 200)",
+   "Kaset civatasi M3x8 (sag psi 226)"
+  ],
+  "kol": [
+   "S2 horn 25T aluminyum disk",
+   "S2 horn merkez vidasi M3",
+   "Kol catali",
+   "625ZZ rulman (dis bilezik)",
+   "Catal-horn civatasi M3x8",
+   "Catal-horn civatasi M3x001",
+   "Catal-horn civatasi M3x002",
+   "Catal-horn civatasi M3x003",
+   "Ust kol tupu",
+   "Isil gomme somun M3 (catalda)",
+   "Tup civatasi M3x8",
+   "Isil gomme somun M3 (catalda)001",
+   "Tup civatasi M3x001",
+   "Dirsek catali",
+   "Bilezik pulu M3 (bas)",
+   "Bilezik civatasi M3x20",
+   "Bilezik pulu M3 (somun)",
+   "Bilezik kontra somunu M3",
+   "Bilezik pulu M3 (bas)001",
+   "Bilezik civatasi M3x001",
+   "Bilezik pulu M3 (somun)001",
+   "Bilezik kontra somunu M001",
+   "625ZZ rulman (dis bilezik)",
+   "Dirsek horn 25T aluminyum disk",
+   "Dirsek horn merkez vidasi M3",
+   "Catal-horn civatasi M3x8",
+   "Catal-horn civatasi M3x001",
+   "Catal-horn civatasi M3x002",
+   "Catal-horn civatasi M3x003"
+  ]
+ },
+ "ev_125": [
+  {
+   "S2": 0.0,
+   "cakisma": [
+    [
+     "Kol catali",
+     "S1 kablo tamburu",
+     97.873
+    ],
+    [
+     "Ust kol tupu",
+     "S1 kablo tamburu",
+     65.008
+    ],
+    [
+     "Ust kol tupu",
+     "S1 kaset kapagi sag",
+     6.417
+    ]
+   ],
+   "en_kucuk_servo_haric": [
+    0.0,
+    "Kol catali",
+    "S1 kablo tamburu"
+   ]
+  },
+  {
+   "S2": 3.0,
+   "cakisma": [
+    [
+     "Kol catali",
+     "S1 kablo tamburu",
+     6.984
+    ],
+    [
+     "Ust kol tupu",
+     "S1 kablo tamburu",
+     0.844
+    ]
+   ],
+   "en_kucuk_servo_haric": [
+    0.0,
+    "Kol catali",
+    "S1 kablo tamburu"
+   ]
+  },
+  {
+   "S2": 3.5,
+   "cakisma": [
+    [
+     "Kol catali",
+     "S1 kablo tamburu",
+     0.165
+    ]
+   ],
+   "en_kucuk_servo_haric": [
+    0.0,
+    "Kol catali",
+    "S1 kablo tamburu"
+   ]
+  },
+  {
+   "S2": 3.75,
+   "cakisma": [],
+   "en_kucuk_servo_haric": [
+    0.063,
+    "Kol catali",
+    "S1 kablo tamburu"
+   ]
+  },
+  {
+   "S2": 4.0,
+   "cakisma": [],
+   "en_kucuk_servo_haric": [
+    0.217,
+    "Kol catali",
+    "S1 kablo tamburu"
+   ]
+  },
+  {
+   "S2": 5.0,
+   "cakisma": [],
+   "en_kucuk_servo_haric": [
+    0.825,
+    "Kol catali",
+    "S1 kablo tamburu"
+   ]
+  },
+  {
+   "S2": 6.0,
+   "cakisma": [],
+   "en_kucuk_servo_haric": [
+    1.0,
+    "Kol catali",
+    "Omuz gobegi"
+   ]
+  }
+ ],
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-25T16:45:52",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-25T17:09:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-25T17:19:17"
+ }
+}

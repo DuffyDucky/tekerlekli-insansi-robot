@@ -1,0 +1,1165 @@
+{
+ "tarih": "2026-10-25T20:40:45",
+ "radyal": [
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 266.2,
+   "S1": -45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 251.2,
+   "S1": -45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 281.2,
+   "S1": -45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 266.2,
+   "S1": -20.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 251.2,
+   "S1": -20.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 281.2,
+   "S1": -20.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 266.2,
+   "S1": 0.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 251.2,
+   "S1": 0.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 281.2,
+   "S1": 0.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 266.2,
+   "S1": -45.0,
+   "S2": 5.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 251.2,
+   "S1": -45.0,
+   "S2": 5.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 281.2,
+   "S1": -45.0,
+   "S2": 5.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 266.2,
+   "S1": 0.0,
+   "S2": 30.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 251.2,
+   "S1": 0.0,
+   "S2": 30.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 281.2,
+   "S1": 0.0,
+   "S2": 30.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 266.2,
+   "S1": 45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 251.2,
+   "S1": 45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "govde",
+   "x_ofset": 0.0,
+   "yon_psi": 281.2,
+   "S1": 45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.0,
+    0.0,
+    "kabuk:Omuz bandi sag"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 267.9,
+   "S1": -45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.002,
+    25.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 252.9,
+   "S1": -45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.007,
+    30.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 282.9,
+   "S1": -45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.005,
+    50.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 267.9,
+   "S1": -20.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.002,
+    25.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 252.9,
+   "S1": -20.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.007,
+    30.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 282.9,
+   "S1": -20.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.005,
+    50.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 267.9,
+   "S1": 0.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.002,
+    25.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 252.9,
+   "S1": 0.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.007,
+    30.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 282.9,
+   "S1": 0.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.005,
+    50.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 267.9,
+   "S1": -45.0,
+   "S2": 5.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.002,
+    25.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 252.9,
+   "S1": -45.0,
+   "S2": 5.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.007,
+    30.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 282.9,
+   "S1": -45.0,
+   "S2": 5.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.005,
+    50.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 267.9,
+   "S1": 0.0,
+   "S2": 30.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.002,
+    25.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 252.9,
+   "S1": 0.0,
+   "S2": 30.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.007,
+    30.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 282.9,
+   "S1": 0.0,
+   "S2": 30.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.005,
+    50.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 267.9,
+   "S1": 45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.002,
+    25.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 252.9,
+   "S1": 45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.007,
+    30.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.3,
+   "yon_psi": 282.9,
+   "S1": 45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.005,
+    50.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 267.9,
+   "S1": -45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.006,
+    0.0,
+    "gobek:Omuz gobegi"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 252.9,
+   "S1": -45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.006,
+    0.0,
+    "gobek:Omuz gobegi"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 282.9,
+   "S1": -45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.006,
+    0.0,
+    "gobek:Omuz gobegi"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 267.9,
+   "S1": -20.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.004,
+    0.5,
+    "gobek:Omuz gobegi"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 252.9,
+   "S1": -20.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.008,
+    0.0,
+    "gobek:Omuz gobegi"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 282.9,
+   "S1": -20.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.004,
+    0.5,
+    "gobek:Omuz gobegi"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 267.9,
+   "S1": 0.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.2,
+    25.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 252.9,
+   "S1": 0.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.2,
+    20.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 282.9,
+   "S1": 0.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.2,
+    50.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 267.9,
+   "S1": -45.0,
+   "S2": 5.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.006,
+    0.0,
+    "gobek:Omuz gobegi"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 252.9,
+   "S1": -45.0,
+   "S2": 5.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.006,
+    0.0,
+    "gobek:Omuz gobegi"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 282.9,
+   "S1": -45.0,
+   "S2": 5.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.006,
+    0.0,
+    "gobek:Omuz gobegi"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 267.9,
+   "S1": 0.0,
+   "S2": 30.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.2,
+    25.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 252.9,
+   "S1": 0.0,
+   "S2": 30.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.2,
+    20.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 282.9,
+   "S1": 0.0,
+   "S2": 30.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.2,
+    50.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 267.9,
+   "S1": 45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.2,
+    25.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 252.9,
+   "S1": 45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.2,
+    20.0,
+    "govde:govde"
+   ]
+  },
+  {
+   "parca": "kapak",
+   "x_ofset": 3.5,
+   "yon_psi": 282.9,
+   "S1": 45.0,
+   "S2": 90.0,
+   "cakisan": [],
+   "en_kucuk": [
+    0.2,
+    50.0,
+    "govde:govde"
+   ]
+  }
+ ],
+ "girdi": {
+  "omuz/omuz-montaj.FCStd": "2026-10-25T16:45:52",
+  "kabuk/kabuk-montaj.FCStd": "2026-10-25T17:09:08",
+  "dirsek/dirsek-montaj.FCStd": "2026-10-25T17:19:17"
+ },
+ "kapak_eksenel_son": [
+  [
+   -45.0,
+   90.0,
+   3.5,
+   []
+  ],
+  [
+   -45.0,
+   90.0,
+   3.0,
+   []
+  ],
+  [
+   -45.0,
+   90.0,
+   2.0,
+   []
+  ],
+  [
+   -45.0,
+   90.0,
+   1.0,
+   []
+  ],
+  [
+   -45.0,
+   90.0,
+   0.5,
+   []
+  ],
+  [
+   -45.0,
+   90.0,
+   0.0,
+   [
+    [
+     "govde",
+     0.378
+    ]
+   ]
+  ],
+  [
+   -20.0,
+   90.0,
+   3.5,
+   []
+  ],
+  [
+   -20.0,
+   90.0,
+   3.0,
+   []
+  ],
+  [
+   -20.0,
+   90.0,
+   2.0,
+   []
+  ],
+  [
+   -20.0,
+   90.0,
+   1.0,
+   []
+  ],
+  [
+   -20.0,
+   90.0,
+   0.5,
+   []
+  ],
+  [
+   -20.0,
+   90.0,
+   0.0,
+   [
+    [
+     "govde",
+     0.378
+    ]
+   ]
+  ],
+  [
+   0.0,
+   90.0,
+   3.5,
+   []
+  ],
+  [
+   0.0,
+   90.0,
+   3.0,
+   []
+  ],
+  [
+   0.0,
+   90.0,
+   2.0,
+   []
+  ],
+  [
+   0.0,
+   90.0,
+   1.0,
+   []
+  ],
+  [
+   0.0,
+   90.0,
+   0.5,
+   []
+  ],
+  [
+   0.0,
+   90.0,
+   0.0,
+   [
+    [
+     "govde",
+     0.378
+    ]
+   ]
+  ],
+  [
+   0.0,
+   30.0,
+   3.5,
+   []
+  ],
+  [
+   0.0,
+   30.0,
+   3.0,
+   []
+  ],
+  [
+   0.0,
+   30.0,
+   2.0,
+   []
+  ],
+  [
+   0.0,
+   30.0,
+   1.0,
+   []
+  ],
+  [
+   0.0,
+   30.0,
+   0.5,
+   []
+  ],
+  [
+   0.0,
+   30.0,
+   0.0,
+   [
+    [
+     "govde",
+     0.378
+    ]
+   ]
+  ]
+ ],
+ "ozet": {
+  "govde x0.0": {
+   "cakisan_poz": [],
+   "temiz_poz": [
+    [
+     -45.0,
+     90.0,
+     266.2
+    ],
+    [
+     -45.0,
+     90.0,
+     251.2
+    ],
+    [
+     -45.0,
+     90.0,
+     281.2
+    ],
+    [
+     -20.0,
+     90.0,
+     266.2
+    ],
+    [
+     -20.0,
+     90.0,
+     251.2
+    ],
+    [
+     -20.0,
+     90.0,
+     281.2
+    ],
+    [
+     0.0,
+     90.0,
+     266.2
+    ],
+    [
+     0.0,
+     90.0,
+     251.2
+    ],
+    [
+     0.0,
+     90.0,
+     281.2
+    ],
+    [
+     -45.0,
+     5.0,
+     266.2
+    ],
+    [
+     -45.0,
+     5.0,
+     251.2
+    ],
+    [
+     -45.0,
+     5.0,
+     281.2
+    ],
+    [
+     0.0,
+     30.0,
+     266.2
+    ],
+    [
+     0.0,
+     30.0,
+     251.2
+    ],
+    [
+     0.0,
+     30.0,
+     281.2
+    ],
+    [
+     45.0,
+     90.0,
+     266.2
+    ],
+    [
+     45.0,
+     90.0,
+     251.2
+    ],
+    [
+     45.0,
+     90.0,
+     281.2
+    ]
+   ]
+  },
+  "kapak x3.3": {
+   "cakisan_poz": [],
+   "temiz_poz": [
+    [
+     -45.0,
+     90.0,
+     267.9
+    ],
+    [
+     -45.0,
+     90.0,
+     252.9
+    ],
+    [
+     -45.0,
+     90.0,
+     282.9
+    ],
+    [
+     -20.0,
+     90.0,
+     267.9
+    ],
+    [
+     -20.0,
+     90.0,
+     252.9
+    ],
+    [
+     -20.0,
+     90.0,
+     282.9
+    ],
+    [
+     0.0,
+     90.0,
+     267.9
+    ],
+    [
+     0.0,
+     90.0,
+     252.9
+    ],
+    [
+     0.0,
+     90.0,
+     282.9
+    ],
+    [
+     -45.0,
+     5.0,
+     267.9
+    ],
+    [
+     -45.0,
+     5.0,
+     252.9
+    ],
+    [
+     -45.0,
+     5.0,
+     282.9
+    ],
+    [
+     0.0,
+     30.0,
+     267.9
+    ],
+    [
+     0.0,
+     30.0,
+     252.9
+    ],
+    [
+     0.0,
+     30.0,
+     282.9
+    ],
+    [
+     45.0,
+     90.0,
+     267.9
+    ],
+    [
+     45.0,
+     90.0,
+     252.9
+    ],
+    [
+     45.0,
+     90.0,
+     282.9
+    ]
+   ]
+  },
+  "kapak x3.5": {
+   "cakisan_poz": [],
+   "temiz_poz": [
+    [
+     -45.0,
+     90.0,
+     267.9
+    ],
+    [
+     -45.0,
+     90.0,
+     252.9
+    ],
+    [
+     -45.0,
+     90.0,
+     282.9
+    ],
+    [
+     -20.0,
+     90.0,
+     267.9
+    ],
+    [
+     -20.0,
+     90.0,
+     252.9
+    ],
+    [
+     -20.0,
+     90.0,
+     282.9
+    ],
+    [
+     0.0,
+     90.0,
+     267.9
+    ],
+    [
+     0.0,
+     90.0,
+     252.9
+    ],
+    [
+     0.0,
+     90.0,
+     282.9
+    ],
+    [
+     -45.0,
+     5.0,
+     267.9
+    ],
+    [
+     -45.0,
+     5.0,
+     252.9
+    ],
+    [
+     -45.0,
+     5.0,
+     282.9
+    ],
+    [
+     0.0,
+     30.0,
+     267.9
+    ],
+    [
+     0.0,
+     30.0,
+     252.9
+    ],
+    [
+     0.0,
+     30.0,
+     282.9
+    ],
+    [
+     45.0,
+     90.0,
+     267.9
+    ],
+    [
+     45.0,
+     90.0,
+     252.9
+    ],
+    [
+     45.0,
+     90.0,
+     282.9
+    ]
+   ]
+  }
+ }
+}
