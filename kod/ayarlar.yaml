@@ -1,0 +1,46 @@
+# Robot yazılımı ayarları. Varsayılanlar Windows'ta donanımsız deneme içindir:
+# klavye (STT), yazı (TTS), klavye tetik, sahte seri, pencerede yüz.
+# Pi'de gerçek donanıma geçmek için yalnız bu dosyayı değiştirin ("Pi'de:" notlarına bakın).
+# Göreli yollar kod/ klasörüne göredir.
+
+robot:
+  ad: "Robot"                     # robotun adı henüz konmadı; konunca buraya yazın
+
+icerik:
+  paket: universite               # universite | tesis | ya da bir .yaml dosyasının yolu
+  esik: 3                         # eşleşme puanı bunun altındaysa "bilmiyorum" cevabı
+
+dil:
+  saglayici: kural                # kural | gemini | anthropic  (bulut için ortam değişkeninde API anahtarı gerekir)
+  gemini_model: gemini-flash-latest      # Google AI Studio'daki güncel model adıyla değiştirilebilir
+  anthropic_model: claude-haiku-5-5
+
+stt:
+  saglayici: klavye               # klavye | vosk | google   (Pi'de mikrofon gelince: vosk)
+  vosk_model: modeller/vosk-model-small-tr-0.3
+  azami_saniye: 8                 # bir soruyu en fazla kaç saniye dinlesin
+  mikrofon: ""                    # sounddevice cihaz adı/numarası; boş = varsayılan
+
+tts:
+  saglayici: yazi                 # yazi | pyttsx3 | piper   (Pi'de bu gece: pyttsx3 ya da piper)
+  hiz: 170                        # pyttsx3 konuşma hızı (kelime/dk)
+  piper_komut: piper
+  piper_model: modeller/tr_TR-dfki-medium.onnx
+  ses_cihazi: ""                  # aplay -D değeri; boş = varsayılan. Pi 5 HDMI örneği: plughw:CARD=vc4hdmi0,DEV=0
+
+yuz:
+  etkin: true                     # false ya da --yuzsuz: yalnız terminal
+  genislik: 1280                  # 10,1" ekran: 1280x800
+  yukseklik: 800
+  tam_ekran: false                # Pi'de: true (ESC ile çıkılır)
+
+tetik:
+  saglayici: klavye               # klavye | gpio   (Pi'de düğme bağlanınca: gpio)
+  gpio_pin: 17                    # BCM numarası; düğme GPIO17 (fiziksel pin 11) ile GND arasına
+
+seri:
+  port: ""                        # boş = sahte seri (log). Pi'de ESP32 gelince: /dev/ttyUSB0 ya da /dev/ttyACM0
+  hiz: 115200
+
+jest:
+  sure: 1.0                       # jest durumunda konuşmadan önce kaç saniye beklensin

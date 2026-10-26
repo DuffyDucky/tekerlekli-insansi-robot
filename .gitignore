@@ -10,3 +10,6 @@ donanim/datasheet/rp1-peripherals.pdf
 # FreeCAD yedekleri ve animasyonun ara kareleri (GIF'te birlesik)
 *.FCBak
 tasarim/freecad/omuz/gorsel/kare/
+
+# robot yazilimi: indirilen ses/konusma modelleri depoya girmez
+kod/modeller/

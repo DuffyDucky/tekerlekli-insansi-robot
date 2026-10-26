@@ -1,0 +1,24 @@
+# Temel: bunlarla robot klavye + yazı + sahte seri ile uçtan uca çalışır, testler geçer.
+pyyaml
+pytest
+
+# --- İsteğe bağlı (gerektiğinde satırın başındaki # işaretini kaldırın) ---
+# Yüz ekranı (Pi'de apt ile: sudo apt install python3-pygame)
+# pygame
+# Seslendirme (Windows SAPI / Pi'de espeak-ng)
+# pyttsx3
+# Daha doğal Türkçe ses (Pi): piper komutu + aplay
+# piper-tts
+# Çevrimdışı konuşma tanıma (mikrofon gelince; Pi'de önce: sudo apt install portaudio19-dev)
+# vosk
+# sounddevice
+# İnternetle konuşma tanıma (Google, tr-TR)
+# SpeechRecognition
+# PyAudio
+# ESP32 seri haberleşme
+# pyserial
+# Bas-konuş düğmesi (Pi'de apt ile hazır gelir: python3-gpiozero python3-lgpio)
+# gpiozero
+# Bulut dil modeli (ortam değişkeninde API anahtarı gerekir)
+# google-genai
+# anthropic

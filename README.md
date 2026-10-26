@@ -17,6 +17,7 @@ planlama, tasarım (CAD) ve ileride yazılım kodu burada tutulur.
 | `tasarim/cad/parca-listesi.csv` · `-V2` · `-V3` | Gerçek parça listesi (model, ölçü, adet, kütle) |
 | `tasarim/cad/robot_cad.py` | Modeli üreten kod (STEP + CSV + demo) |
 | `tasarim/cad/demo_uret.py` | Demoyu şablon + model + maliyetten yeniden üretir; CadQuery gerekmez |
+| `kod/` | Robot yazılımı (Python): durum makinesi, içerik paketi, konuşma/ses arayüzleri, pygame yüz, ESP32 seri protokol; nasıl çalıştırılacağı `kod/OKU_BENI.md` |
 | `CLAUDE.md` | Bu klasörde açılan yapay zekâ oturumları için bağlam |
 
 HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünüm için internet gerekir.

@@ -1,0 +1,97 @@
+# İçerik paketi: MCBÜ Mekatronik tanıtımı (ÖRNEK).
+# "..." olan yerler bilinmiyor; doğru bilgiyle Efe/ekip dolduracak. Rakam ve isim uydurulmadı.
+# Alanlar:
+#   konular: baslik, anahtarlar (soruda geçerse +3 puan), cevap, jest (isteğe bağlı: selam | isaret | el_salla)
+#   yerler:  ad, tarif (yer sorularında robot varsayılan olarak "isaret" jesti yapar)
+#   sss:     soru, cevap (sık sorulan sorular)
+# Cevaplar 1-2 kısa cümle olsun; robot bunları sesli okuyacak.
+
+kurum: "Manisa Celal Bayar Üniversitesi Mekatronik Programı"
+rol: "bölümü tanıtan karşılama robotu"
+selamlama: "Merhaba, Mekatronik Programına hoş geldiniz! Size nasıl yardımcı olabilirim?"
+
+konular:
+  - baslik: Mekatronik programı
+    anahtarlar: [mekatronik, bölüm, program, ne öğren]
+    cevap: "Mekatronik; makine, elektronik ve yazılımı birleştiren bir programdır. Otomasyon, robotik ve gömülü sistemler üzerine dersler alırsınız."
+
+  - baslik: Laboratuvarlar
+    anahtarlar: [laboratuvar, lab, atölye, deney]
+    cevap: "Bölümde ... laboratuvarı ve ... atölyesi var. Laboratuvar saatleri için bölüm sekreterliğine danışabilirsiniz."
+    jest: isaret
+
+  - baslik: Kayıt
+    anahtarlar: [kayıt, kaydol, yerleşme, tercih]
+    cevap: "Ön lisans programlarına ÖSYM yerleştirmesiyle girilir. Kayıt tarihleri ve gerekli belgeler için ... adresine bakabilirsiniz."
+
+  - baslik: Ders programı
+    anahtarlar: [ders programı, ders saat, hangi ders, müfredat]
+    cevap: "Güncel ders programı ... adresinde ve bölüm panosunda yayımlanır."
+
+  - baslik: Staj ve işletmede mesleki eğitim
+    anahtarlar: [staj, işletme, mesleki eğitim, iş yeri]
+    cevap: "Staj ve işletmede mesleki eğitimin zamanı ve kuralları için bölüm staj sorumlusuna danışabilirsiniz: ..."
+
+  - baslik: Dikey geçiş
+    anahtarlar: [dikey geçiş, dgs, lisans, devam]
+    cevap: "Ön lisans mezunları DGS sınavıyla lisans programlarına geçebilir. Hangi bölümlere geçilebileceğini ÖSYM kılavuzundan kontrol edin."
+
+  - baslik: Mezuniyet sonrası iş
+    anahtarlar: [iş imkanı, iş bul, mezun, kariyer, maaş]
+    cevap: "Mezunlar üretim, bakım, otomasyon ve kalite gibi alanlarda teknik eleman olarak çalışabilir. Ayrıntılı bilgi için ..."
+
+  - baslik: Kütüphane
+    anahtarlar: [kütüphane, kitap, ders çalış]
+    cevap: "Kütüphane ... binasındadır. Çalışma saatleri: ..."
+    jest: isaret
+
+  - baslik: Burs ve barınma
+    anahtarlar: [burs, yurt, kredi, barınma]
+    cevap: "Burs ve yurt başvuruları için öğrenci işlerine ya da ... adresine başvurabilirsiniz."
+
+  - baslik: Öğrenci kulüpleri ve yarışmalar
+    anahtarlar: [kulüp, topluluk, teknofest, yarışma, etkinlik]
+    cevap: "Öğrenciler ... topluluğunda projeler yapar ve yarışmalara katılır. Duyurular ... adresinde."
+
+  - baslik: Bu robot
+    anahtarlar: [robot, seni kim yaptı, yapan, proje]
+    cevap: "Ben Mekatronik öğrencilerinin dönem projesi olarak yaptığı tekerlekli insansı robotum. Raspberry Pi ile konuşuyor, ESP32 ile hareket ediyorum."
+    jest: selam
+
+  - baslik: Sınavlar
+    anahtarlar: [sınav, vize, final, bütünleme, not]
+    cevap: "Sınav tarihleri akademik takvimde ve ... adresinde duyurulur."
+
+  - baslik: Ulaşım
+    anahtarlar: [ulaşım, otobüs, servis, nasıl gelir, nasıl gid, dolmuş]
+    cevap: "Kampüse ... hattındaki otobüslerle ulaşabilirsiniz. Güncel saatler için ... adresine bakın."
+
+  - baslik: İletişim
+    anahtarlar: [iletişim, telefon, e-posta, mail, sekreter]
+    cevap: "Bölüm sekreterliğine ... numarasından ya da ... e-posta adresinden ulaşabilirsiniz."
+
+yerler:
+  - ad: Kantin
+    anahtarlar: [yemek, çay, kahve, atıştır]
+    tarif: "Kantin ... katında, ... tarafında."
+
+  - ad: Bölüm sekreterliği
+    anahtarlar: [sekreterlik, öğrenci işleri]
+    tarif: "Bölüm sekreterliği ... katında, ... numaralı odada."
+
+  - ad: Lavabo
+    anahtarlar: [tuvalet, wc]
+    tarif: "Lavabolar her katta, ... tarafında."
+
+  - ad: Mekatronik laboratuvarı
+    anahtarlar: [lab nerede, laboratuvar nerede]
+    tarif: "Mekatronik laboratuvarı ... katında, ... numaralı salonda."
+
+sss:
+  - soru: "Bölüm kaç yıllık?"
+    anahtarlar: [kaç yıl, süre, yıllık]
+    cevap: "Ön lisans programıdır; normal süresi iki yıldır."
+
+  - soru: "Kablosuz internet var mı?"
+    anahtarlar: [internet, wifi, wi-fi, kablosuz, eduroam]
+    cevap: "Kampüs kablosuz ağına ... adıyla bağlanabilirsiniz; giriş bilgileri için bilgi işleme danışın."

@@ -1,0 +1,42 @@
+# İçerik paketi: bir sanayi tesisi için karşılama (ÖRNEK, firma adı yok).
+# "..." olan yerleri tesisin gerçek bilgisiyle doldurun. Alanlar universite.yaml'daki gibi.
+
+kurum: "tesis"
+rol: "ziyaretçileri karşılayan robot"
+selamlama: "Merhaba, tesisimize hoş geldiniz! Size nasıl yardımcı olabilirim?"
+
+konular:
+  - baslik: Ziyaretçi girişi
+    anahtarlar: [ziyaretçi, giriş, kart, randevu, kayıt]
+    cevap: "Ziyaretçi kaydı için kimliğinizle resepsiyona uğrayın; size ziyaretçi kartı verilecektir."
+    jest: isaret
+
+  - baslik: Güvenlik kuralları
+    anahtarlar: [güvenlik, kural, baret, gözlük, ayakkabı, kkd]
+    cevap: "Üretim alanına görevli eşliğinde ve kişisel koruyucu donanımla girilir. Gerekli donanım resepsiyonda verilir."
+
+  - baslik: Acil durum
+    anahtarlar: [acil, yangın, toplanma, tahliye]
+    cevap: "Acil durumda yeşil çıkış işaretlerini izleyin ve ... toplanma alanına gidin."
+    jest: isaret
+
+  - baslik: Ürünler
+    anahtarlar: [ürün, üretim, ne üret, imalat]
+    cevap: "Tesisimizde ... üretilmektedir. Ayrıntılı bilgi için görevlimiz size yardımcı olacaktır."
+
+  - baslik: Fotoğraf ve kayıt
+    anahtarlar: [fotoğraf, video, kamera, çekim]
+    cevap: "Tesis içinde fotoğraf ve video çekimi izne tabidir; lütfen görevliye danışın."
+
+yerler:
+  - ad: Toplantı odası
+    anahtarlar: [toplantı, salon]
+    tarif: "Toplantı odası ... katında, resepsiyonun ... tarafında."
+
+  - ad: Resepsiyon
+    anahtarlar: [danışma, karşılama]
+    tarif: "Resepsiyon girişin hemen ... tarafında."
+
+  - ad: Lavabo
+    anahtarlar: [tuvalet, wc]
+    tarif: "Lavabolar ... tarafında."
