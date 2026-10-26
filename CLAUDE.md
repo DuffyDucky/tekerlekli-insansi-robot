@@ -61,7 +61,7 @@ Robot SESLİ çalışır (Efe kararı, 26 Ekim 2026: ziyaretçi yazmaz, yapay ze
   girmez; systemd kullanıcı servisi masaüstü ortamını almaz (`DISPLAY=:0` dosyada), stdin'siz çalışır (klavye
   tetik olmaz); dokunma ekranında SDL hem FINGERDOWN hem `touch=True` fare olayı üretir, fare olayı atlanır.
 - Pi 5'te doğrulanan (26 Ekim 2026 gecesi): kurulum, 104 test, Piper/Vosk yükleme, terminal konuşma turu; ekran, ses çıkışı, mikrofon, GPIO ve seri henüz doğrulanmadı (`kod/PI5-KURULUM.md`, `kod/OKU_BENI.md` 5. bölüm).
-- Diğer proje çıktıları: `raporlar/mikrofon-secimi.md` (mikrofon kararı), `tasarim/pi5-kutu/` (Pi kutusu STL + parametrik betik; vault'tan kopya, tek kaynak burası).
+- Diğer proje çıktıları: `raporlar/mikrofon-secimi.md` (mikrofon kararı), `tasarim/pi5-kutu/` (Pi kutusu STL + parametrik betik; vault'tan kopya, tek kaynak burası), `belgeler/tubitak-2209-b/` (başvuru taslağı docx + OKU_BENI; docx'i XML düzeyinde değil Word'de düzenle, sonra commit).
 
 ### ESP32 (`kod/esp32/`) ve jestler (`kod/jestler/`)
 

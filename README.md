@@ -21,6 +21,7 @@ planlama, tasarım (CAD) ve ileride yazılım kodu burada tutulur.
 | `kod/PI5-KURULUM.md` | Pi 5 (`lale`) kurulum kaydı: kullanıcılar, ağ, seri, kurulu paketler/modeller, bağlanma komutları, sıfırdan kurma adımları, tuzaklar (26 Ekim 2026) |
 | `raporlar/mikrofon-secimi.md` | Gürültü bastırmalı mikrofon karşılaştırması (33 kaynak); karar: XVF3800 4 mikrofonlu USB dizi + yönlü mikrofon karşılaştırma kolu |
 | `tasarim/pi5-kutu/` | Pi 5 koruma kutusu: taban + standart kapak + fanlı kapak STL, parametrik `pi5_kutu.py` (manifold3d), baskı notu `OKU_BENI.txt` |
+| `belgeler/tubitak-2209-b/` | TÜBİTAK 2209-B başvuru taslağı (docx tek kaynak) + özet/son tarih notu; son başvuru 11 Kasım 2026 17:30 |
 | `CLAUDE.md` | Bu klasörde açılan yapay zekâ oturumları için bağlam |
 
 HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünüm için internet gerekir.
@@ -95,6 +96,7 @@ HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünü
 - [ ] 10,1" ekranın 5 V ≈ 0,75 A beslemesini güç planına ekle; ekran ve göz ekranı kütlelerini tartıp CAD'e gir
 - [x] Pi 5 kuruldu (26 Ekim 2026): hostname `lale`, `efe` + `duffy` kullanıcıları, robot yazılımı + Vosk/Piper modelleri, 104 test Pi'de yeşil; ayrıntı `kod/PI5-KURULUM.md`
 - [ ] Pi'ye ekran + HDMI hoparlör bağlayıp tam ekran yüz ve Piper sesini dene; sonra `kod/robot.service`
+- [ ] TÜBİTAK 2209-B: taslağı ekip + danışman okur (`belgeler/tubitak-2209-b/`); sanayi danışmanının adı, servo/kütle/maliyet (Ahmet); TYBS girişi 4 Kasım hedefi, son 11 Kasım 17:30
 - [ ] Mikrofon siparişi: XVF3800 dizi + yönlü mikrofon (`raporlar/mikrofon-secimi.md`, satın alma öncesi doğrulama listesi raporda); gelince eşik ölçümü
 - [ ] Pi 5 kutusunu bas (`tasarim/pi5-kutu/`, PETG); ilk baskıdan sonra tolerans ve kamera FFC yarığı
 - [ ] Nextion ekranı: Pi `config.txt`'de UART açık (Ahmet); ekranın yerini ve arayüzünü planda netleştir
