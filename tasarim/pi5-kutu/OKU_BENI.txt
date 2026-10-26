@@ -1,0 +1,60 @@
+RASPBERRY PI 5 KORUYUCU KUTU (2026-10-24)
+=====================================================================
+İki parça: taban + kapak. Kart tabana 4 vidayla, kapak tabana alttan 4
+vidayla bağlanır; köşelerde tam boy destek, duvar 3 mm. Dış ölçü
+94 x 65 mm; yükseklik standart kapakla 28,6 mm, fanlı kapakla 35,6 mm.
+Ölçüler Raspberry Pi 5 resmi mekanik çiziminden alındı.
+
+DOSYALAR
+  pi5-kutu-taban.stl            taban (kartın oturduğu parça)
+  pi5-kutu-kapak-standart.stl   kart üstünde 17 mm boşluk: çıplak kart ya da
+                                yapışkan pasif soğutucu
+  pi5-kutu-kapak-fanli.stl      kart üstünde 24 mm boşluk + SoC üstünde daire
+                                ızgara: resmi Active Cooler ya da fanlı soğutucu
+  pi5_kutu.py                   parametrik kaynak; ölçü değiştirip yeniden üret
+                                (py -3 pi5_kutu.py; pip install numpy manifold3d trimesh pillow)
+  onizleme.png / onizleme-baski-yonu.png
+
+BASKI (bölümdeki yazıcı, PETG ya da PLA)
+  Taban: zemin aşağı, olduğu gibi. Destek yok.
+  Kapak: TERS çevir (üst yüzü tablaya). Port ve GPIO çentikleri bu yönde
+         açık kenardan başladığı için destek gerekmez; duvarlardaki küçük
+         havalandırma pencereleri 2 mm köprü, sorunsuz.
+  Katman 0,2 mm; duvar 3 çizgi (1,2 mm); üst/alt 4 katman; dolgu %20-30.
+  PETG önerilir (ısıya ve darbeye PLA'dan dayanıklı; Pi 5 yük altında 70 °C'yi
+  geçebilir). PETG'de ilk katman 240/80 °C civarı, soğutma düşük.
+  Ağırlık: taban ~28 g, standart kapak ~26 g, fanlı kapak ~34 g (PETG, %25).
+
+VİDALAR
+  Kart → taban:   4 x M2.5 x 5 ya da 6 mm (standoff deliği 2,2 mm, vida kendi
+                  dişini açar; 6,5 mm kör delik, dibe vurmaz)
+  Kapak → taban:  4 x M2.5 x 16 mm, ALTTAN takılır; taban deliği 2,8 mm serbest
+                  geçiş + 5,5 mm havşa, kapak deliği 2,2 mm diş açar (8 mm derin)
+  Delikler dar gelirse 2,5 mm matkapla aç. Isıl insert kullanacaksan
+  pi5_kutu.py'de STANDOFF_DELIK ve KOSE_VIDA_DELIK_KAPAK'ı insert çapına çek.
+
+MONTAJ
+  1. Kartı standoff'lara oturt: USB-C / HDMI tarafı kutunun ÖN uzun kenarına,
+     microSD / güç düğmesi SOL kısa kenara, Ethernet / USB SAĞ kısa kenara,
+     GPIO pinleri ARKA uzun kenara bakar. Dört vidayla sabitle.
+  2. Varsa soğutucuyu tak (Active Cooler fanlı kapakla).
+  3. Kapağı üstten bastır: iç dudak 0,2 mm payla tabanın içine oturur.
+  4. Kutuyu ters çevir, dört köşeden M2.5x16 ile sık.
+
+AÇIKLIKLAR
+  Ön:   USB-C (13 mm) ve iki micro-HDMI (tek 20 mm pencere), fiş gövdesi sığar.
+  Sağ:  Ethernet, 2 USB yığını (kapak boşluğuna göre 16,5 / 18 mm yüksek).
+  Sol:  32 x 8 mm pencere: microSD kart (alt yüz), güç düğmesi, UART/RTC.
+  Arka: GPIO şerit kablo çentiği 55 x 11 mm (kapakta; istemezsen
+        pi5_kutu.py'de GPIO_YUVA = False).
+  Üst:  11 havalandırma yarığı; fanlı kapakta 3 halkalı ızgara. Yan duvarlarda
+        9 küçük pencere (çapraz hava akışı).
+
+KONTROL (ilk baskıdan sonra)
+  - Kart standoff'lara zorlanmadan oturmalı; oturmuyorsa BOSLUK 1,5 → 2,0.
+  - Kapak dudağı sıkıysa DUDAK_TOL 0,2 → 0,3.
+  - HDMI fişlerin ikisi aynı anda takılıyor mu bak (pencere 20 mm).
+  Not: Kamera/ekran FFC kabloları (kartın ortasındaki iki konnektör) için
+  pencere yok; robotta kamera kullanılacaksa kapağa 20 x 4 mm yarık ekleriz.
+  Kutu kapalı olduğundan robot gövdesine vidalamak için kulak (ayak) yok;
+  istenirse tabana 2 x M3 delikli kulak eklenir.

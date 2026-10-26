@@ -18,6 +18,9 @@ planlama, tasarım (CAD) ve ileride yazılım kodu burada tutulur.
 | `tasarim/cad/robot_cad.py` | Modeli üreten kod (STEP + CSV + demo) |
 | `tasarim/cad/demo_uret.py` | Demoyu şablon + model + maliyetten yeniden üretir; CadQuery gerekmez |
 | `kod/` | Robot yazılımı (Python): durum makinesi, içerik paketi, konuşma/ses arayüzleri, pygame yüz, ESP32 seri protokol; nasıl çalıştırılacağı `kod/OKU_BENI.md` |
+| `kod/PI5-KURULUM.md` | Pi 5 (`lale`) kurulum kaydı: kullanıcılar, ağ, seri, kurulu paketler/modeller, bağlanma komutları, sıfırdan kurma adımları, tuzaklar (26 Ekim 2026) |
+| `raporlar/mikrofon-secimi.md` | Gürültü bastırmalı mikrofon karşılaştırması (33 kaynak); karar: XVF3800 4 mikrofonlu USB dizi + yönlü mikrofon karşılaştırma kolu |
+| `tasarim/pi5-kutu/` | Pi 5 koruma kutusu: taban + standart kapak + fanlı kapak STL, parametrik `pi5_kutu.py` (manifold3d), baskı notu `OKU_BENI.txt` |
 | `CLAUDE.md` | Bu klasörde açılan yapay zekâ oturumları için bağlam |
 
 HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünüm için internet gerekir.
@@ -90,6 +93,11 @@ HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünü
   SolidWorks tasarımında da uygulanacak.
 - [ ] V2 kabuklarının 23 cm'lik baskı bölme çizgileri ve birleşme yerleri (SolidWorks'te)
 - [ ] 10,1" ekranın 5 V ≈ 0,75 A beslemesini güç planına ekle; ekran ve göz ekranı kütlelerini tartıp CAD'e gir
+- [x] Pi 5 kuruldu (26 Ekim 2026): hostname `lale`, `efe` + `duffy` kullanıcıları, robot yazılımı + Vosk/Piper modelleri, 104 test Pi'de yeşil; ayrıntı `kod/PI5-KURULUM.md`
+- [ ] Pi'ye ekran + HDMI hoparlör bağlayıp tam ekran yüz ve Piper sesini dene; sonra `kod/robot.service`
+- [ ] Mikrofon siparişi: XVF3800 dizi + yönlü mikrofon (`raporlar/mikrofon-secimi.md`, satın alma öncesi doğrulama listesi raporda); gelince eşik ölçümü
+- [ ] Pi 5 kutusunu bas (`tasarim/pi5-kutu/`, PETG); ilk baskıdan sonra tolerans ve kamera FFC yarığı
+- [ ] Nextion ekranı: Pi `config.txt`'de UART açık (Ahmet); ekranın yerini ve arayüzünü planda netleştir
 - [ ] Okulun 3D yazıcı tablası 25 × 25 × 25 cm (hocanın söylediği; model doğrulanmadı). Her baskı parçası
   buna sığacak şekilde bölünmeli (pay için ≤ 23 cm hedef)
 

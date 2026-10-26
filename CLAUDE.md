@@ -47,6 +47,7 @@ Robot SESLİ çalışır (Efe kararı, 26 Ekim 2026: ziyaretçi yazmaz, yapay ze
 | `kod/robot.service` | systemd kullanıcı servisi: `graphical-session.target`, `DISPLAY=:0`, `ana.py --icerik universite --tam-ekran`, `Restart=on-failure` |
 | `kod/tests/` | pytest; `conftest.py` `kod/`'u yola ekler ve örnek paketi verir; pygame testleri SDL `dummy` sürücüsüyle olay sentezler |
 | `kod/kur_pi.sh` · `requirements.txt` | Pi kurulumu (apt + `~/robot-venv --system-site-packages`), paket listesi |
+| `kod/PI5-KURULUM.md` | Gerçek Pi 5 (`lale`) kurulum kaydı ve sıfırdan kurma rehberi (cloud-init dosyaları, Imager CLI, modeller, tuzaklar); Pi'deki yol `~/tekerlekli-insansi-robot`, venv `~/robot-venv` |
 
 - Test: `py -3 -m pytest kod/tests -q` (depo kökünden; numpy gerekir, pygame/vosk/sounddevice/bulut olmadan da geçer).
 - Çalıştırma (mikrofonsuz): `py -3 kod/ana.py --gelistirici --icerik universite` (dokun + yaz), `--yuzsuz` ile
@@ -59,7 +60,8 @@ Robot SESLİ çalışır (Efe kararı, 26 Ekim 2026: ziyaretçi yazmaz, yapay ze
   gelen gpiozero + lgpio gerekir (venv `--system-site-packages`); `kod/modeller/` ve `kod/gunlukler/` depoya
   girmez; systemd kullanıcı servisi masaüstü ortamını almaz (`DISPLAY=:0` dosyada), stdin'siz çalışır (klavye
   tetik olmaz); dokunma ekranında SDL hem FINGERDOWN hem `touch=True` fare olayı üretir, fare olayı atlanır.
-- Donanımda hiçbir şey doğrulanmadı (26 Ekim 2026); doğrulama listesi `kod/OKU_BENI.md` 5. bölümde.
+- Pi 5'te doğrulanan (26 Ekim 2026 gecesi): kurulum, 104 test, Piper/Vosk yükleme, terminal konuşma turu; ekran, ses çıkışı, mikrofon, GPIO ve seri henüz doğrulanmadı (`kod/PI5-KURULUM.md`, `kod/OKU_BENI.md` 5. bölüm).
+- Diğer proje çıktıları: `raporlar/mikrofon-secimi.md` (mikrofon kararı), `tasarim/pi5-kutu/` (Pi kutusu STL + parametrik betik; vault'tan kopya, tek kaynak burası).
 
 ### ESP32 (`kod/esp32/`) ve jestler (`kod/jestler/`)
 
