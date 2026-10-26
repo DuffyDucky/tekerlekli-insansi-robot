@@ -1,5 +1,6 @@
-# Robot yazılımı ayarları. Varsayılanlar Windows'ta donanımsız deneme içindir:
-# klavye (STT), yazı (TTS), klavye tetik, sahte seri, pencerede yüz.
+# Robot yazılımı ayarları. Robot SESLİ çalışır: mikrofon konuşma başlayınca dinler (tetik: ses), Vosk tanır,
+# dinleme sessizlikle biter. Mikrofon/model yoksa robot açık bir mesajla durur; mikrofonsuz denemek için
+# --gelistirici (dokunma/Enter + ekrana/terminale yazma). TTS ve seri donanım gelene kadar yazı / sahte.
 # Pi'de gerçek donanıma geçmek için yalnız bu dosyayı değiştirin ("Pi'de:" notlarına bakın).
 # Göreli yollar kod/ klasörüne göredir.
 
@@ -14,12 +15,18 @@ dil:
   saglayici: kural                # kural | gemini | anthropic  (bulut için ortam değişkeninde API anahtarı gerekir)
   gemini_model: gemini-flash-latest      # Google AI Studio'daki güncel model adıyla değiştirilebilir
   anthropic_model: claude-haiku-5-5
+  gecmis_tur: 6                   # sohbet hafızası: son kaç soru-cevap bulut modeline geçmiş olarak gitsin
 
 stt:
-  saglayici: klavye               # klavye | vosk | google   (Pi'de mikrofon gelince: vosk)
+  saglayici: vosk                 # vosk | google | klavye   (klavye yalnız geliştirici denemesi)
   vosk_model: modeller/vosk-model-small-tr-0.3
   azami_saniye: 8                 # bir soruyu en fazla kaç saniye dinlesin
   mikrofon: ""                    # sounddevice cihaz adı/numarası; boş = varsayılan
+
+algilama:                         # konuşma algılama (robot/mikrofon.py); Pi'de eşik için: python3 -m robot.mikrofon
+  esik: 500                       # RMS ses düzeyi eşiği (int16). Gürültülü ortamda büyüt, kısık seste küçült
+  sessizlik_saniye: 0.8           # konuşmadan sonra bu kadar sessizlik olunca dinleme biter
+  vad_duzeyi: 2                   # webrtcvad kuruluysa 0 (gevşek) - 3 (sıkı); -1 = yalnız RMS
 
 tts:
   saglayici: yazi                 # yazi | pyttsx3 | piper   (Pi'de bu gece: pyttsx3 ya da piper)
@@ -35,7 +42,7 @@ yuz:
   tam_ekran: false                # Pi'de: true (ESC ile çıkılır)
 
 tetik:
-  saglayici: klavye               # klavye | gpio   (Pi'de düğme bağlanınca: gpio)
+  saglayici: ses                  # ses (düğmesiz, varsayılan) | dokunma ("Konuşmak için dokun" alanı) | gpio (düğme) | klavye
   gpio_pin: 17                    # BCM numarası; düğme GPIO17 (fiziksel pin 11) ile GND arasına
 
 seri:
@@ -44,3 +51,7 @@ seri:
 
 jest:
   sure: 1.0                       # jest durumunda konuşmadan önce kaç saniye beklensin
+
+gunluk:
+  etkin: true                     # her tur gunlukler/YYYY-MM-DD.csv dosyasına bir satır (ölçüm için)
+  klasor: gunlukler               # depoya girmez (.gitignore)

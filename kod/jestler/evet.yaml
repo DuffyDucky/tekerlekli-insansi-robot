@@ -1,0 +1,11 @@
+# Evet (baş sallama). Kafa iki kez aşağı-yukarı.
+# DURUM: taslak (mekanik ölçülmedi; kafa_tilt sınırı 70-110).
+ad: evet
+aciklama: "Başla onaylama"
+kareler:
+  - {ms: 0,    kafa_tilt: 90}
+  - {ms: 350,  kafa_tilt: 75}
+  - {ms: 700,  kafa_tilt: 95}
+  - {ms: 1050, kafa_tilt: 75}
+  - {ms: 1400, kafa_tilt: 95}
+  - {ms: 1750, kafa_tilt: 90}

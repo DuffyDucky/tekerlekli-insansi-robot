@@ -8,14 +8,15 @@ cd "$(dirname "$0")"
 echo "== apt paketleri =="
 sudo apt update
 sudo apt install -y python3-pygame python3-pip python3-venv python3-gpiozero python3-lgpio \
-    portaudio19-dev espeak-ng libespeak-ng1 alsa-utils
+    python3-numpy portaudio19-dev espeak-ng libespeak-ng1 alsa-utils
 
 echo "== sanal ortam: ~/robot-venv =="
 # --system-site-packages: apt'tan gelen pygame ve gpiozero/lgpio (Pi 5 GPIO'su için şart) venv'de de görünür
 python3 -m venv --system-site-packages ~/robot-venv
 ~/robot-venv/bin/pip install -r requirements.txt
-# Bu akşam: seslendirme ve seri port
+# Seslendirme, seri port ve sesli mod (mikrofon akışı + çevrimdışı konuşma tanıma)
 ~/robot-venv/bin/pip install pyttsx3 pyserial || echo "UYARI: pyttsx3/pyserial kurulamadı"
+~/robot-venv/bin/pip install sounddevice vosk || echo "UYARI: sounddevice/vosk kurulamadı (sesli mod çalışmaz)"
 
 mkdir -p modeller
 
@@ -26,15 +27,27 @@ mkdir -p modeller
 #   wget -P modeller https://huggingface.co/rhasspy/piper-voices/resolve/main/tr/tr_TR/dfki/medium/tr_TR-dfki-medium.onnx.json
 #   echo "Merhaba, ben robot." | piper --model modeller/tr_TR-dfki-medium.onnx --output_file /tmp/deneme.wav && aplay /tmp/deneme.wav
 #
-# Vosk küçük Türkçe model (mikrofon gelince; model adını https://alphacephei.com/vosk/models sayfasından doğrulayın):
-#   ~/robot-venv/bin/pip install vosk sounddevice
+# Vosk küçük Türkçe model (sesli mod için gerekli; model adını https://alphacephei.com/vosk/models sayfasından doğrulayın):
 #   wget https://alphacephei.com/vosk/models/vosk-model-small-tr-0.3.zip && unzip vosk-model-small-tr-0.3.zip -d modeller
+#
+# Daha iyi konuşma algılama (gürültüde insan sesini ayırır; kurulmazsa yalnız ses düzeyi eşiği kullanılır):
+#   ~/robot-venv/bin/pip install webrtcvad-wheels
+# Eşik ayarı (mikrofon takılıyken, önce sessiz durun sonra konuşun):  python3 -m robot.mikrofon
 #
 # Bulut dil modeli (anahtar ~/.bashrc içine: export GEMINI_API_KEY=... ya da export ANTHROPIC_API_KEY=...):
 #   ~/robot-venv/bin/pip install google-genai
 #   ~/robot-venv/bin/pip install anthropic
+#
+# Otomatik başlatma (masaüstü açılınca robot kendiliğinden çalışsın; ayrıntı OKU_BENI.md 7. bölüm):
+#   mkdir -p ~/.config/systemd/user
+#   cp robot.service ~/.config/systemd/user/
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now robot.service
+#   journalctl --user -u robot -f              # canlı log (çıkmak: Ctrl+C)
+#   systemctl --user stop robot                # durdur;  kalıcı kapatmak: systemctl --user disable robot
 
 echo
 echo "Kurulum bitti. Çalıştırmak için:"
 echo "  source ~/robot-venv/bin/activate"
-echo "  python3 ana.py --icerik universite"
+echo "  python3 ana.py --icerik universite              # mikrofon + Vosk modeli gerekir"
+echo "  python3 ana.py --gelistirici --icerik universite # mikrofonsuz deneme (dokun + yaz)"

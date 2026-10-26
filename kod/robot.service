@@ -1,0 +1,32 @@
+# Ne yapıyor: Pi açılıp masaüstü oturumu gelince robot yazılımını kendiliğinden başlatır (systemd KULLANICI servisi).
+# Yüz pygame penceresi olduğu için masaüstü (grafik oturum) şart; bu yüzden graphical-session.target sonrası.
+# Kurulum ve komutlar: OKU_BENI.md 7. bölüm (kısaca: ~/.config/systemd/user/ içine kopyala, enable --now).
+#
+# Yollar depo ~/tekerlekli-insansi-robot içine klonlandı ve sanal ortam ~/robot-venv diye yazıldı;
+# farklıysa aşağıdaki iki satırı düzeltin (%h = kullanıcının ev klasörü, ör. /home/efe).
+
+[Unit]
+Description=Tekerlekli insansı robot (yüz + konuşma)
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/tekerlekli-insansi-robot/kod
+ExecStart=%h/robot-venv/bin/python3 ana.py --icerik universite --tam-ekran
+# Ekran: pygame (SDL2) X11 üzerinden açılır; Wayland masaüstünde bu Xwayland'dir, DISPLAY=:0 yeterli.
+# Değerleri Pi'nin kendi terminalinde "echo $DISPLAY $WAYLAND_DISPLAY" ile kontrol edin.
+Environment=DISPLAY=:0
+# X11 oturumunda yetki dosyası (Xwayland'de yoksa zararsız)
+Environment=XAUTHORITY=%h/.Xauthority
+# Pencere açılmazsa Wayland'i doğrudan deneyin (labwc'de genelde wayland-0, wayfire'da wayland-1):
+# Environment=WAYLAND_DISPLAY=wayland-0
+# Environment=SDL_VIDEODRIVER=wayland
+Environment=PYTHONUNBUFFERED=1
+# Çökerse ya da mikrofon yoksa (çıkış kodu 2) 5 sn sonra yeniden dener; ESC ile çıkınca yeniden açılmaz.
+# Mikrofonsuz deneme için ExecStart sonuna geçici olarak --gelistirici eklenebilir.
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

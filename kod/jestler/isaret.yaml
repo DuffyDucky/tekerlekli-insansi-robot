@@ -1,0 +1,9 @@
+# İşaret etme. Sağ kol öne-yana uzanır (dirsek düz), kafa aynı yöne bakar, bir süre tutar.
+# Kullanım: "kütüphane şu tarafta" gibi cevaplarda.
+# DURUM: taslak (mekanik ölçülmedi).
+ad: isaret
+aciklama: "Sağ kolla öne doğru işaret"
+kareler:
+  - {ms: 0,    sag_omuz: 10, sag_dirsek: 15, kafa_pan: 90, kafa_tilt: 90}
+  - {ms: 1200, sag_omuz: 90, sag_dirsek: 0,  kafa_pan: 70, kafa_tilt: 90}
+  - {ms: 2700, sag_omuz: 90, sag_dirsek: 0,  kafa_pan: 70, kafa_tilt: 90}

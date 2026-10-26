@@ -1,0 +1,8 @@
+# Boşta duruşu. SON KARE "boşta duruş" sayılır: her jest bitince servolar buraya döner,
+# ESP32 açılınca da servolar buraya gider. Bu yüzden son kare TÜM kanalları yazmalı.
+# DURUM: taslak (mekanik ölçülmedi).
+ad: bosta
+aciklama: "Kollar hafif açık aşağıda, kafa ileri"
+kareler:
+  - {ms: 0,    sag_omuz: 10, sag_dirsek: 15, sol_omuz: 10, sol_dirsek: 15, kafa_pan: 90, kafa_tilt: 90}
+  - {ms: 1000, sag_omuz: 10, sag_dirsek: 15, sol_omuz: 10, sol_dirsek: 15, kafa_pan: 90, kafa_tilt: 90}

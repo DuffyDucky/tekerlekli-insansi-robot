@@ -61,7 +61,8 @@ def test_ayar_dosyasi_ve_secenekler():
 
 
 def test_varsayilan_ayarla_bilesenler_kurulur():
-    sec = ana.secenekleri_oku(["--yuzsuz"])
+    # Varsayılan sesli (mikrofon + Vosk); test makinesinde mikrofon olmadığı için geliştirici modu
+    sec = ana.secenekleri_oku(["--yuzsuz", "--gelistirici"])
     robot = ana.bilesenleri_kur(ana.secenekleri_uygula(ana.ayarlari_oku(sec.ayar), sec))
     assert isinstance(robot.seri, SahteSeri)
     assert robot.durum.durum == Durum.BEKLE

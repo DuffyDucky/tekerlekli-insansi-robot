@@ -1,11 +1,51 @@
-# Ne yapıyor: bas-konuş tetikleyicisi. bekle() kullanıcı düğmeye basana kadar bekler.
-# KlavyeTetik terminalde Enter'ı bekler (düğme yokken, varsayılan).
-# GpioTetik Pi'nin GPIO pinine bağlı düğmeyi bekler (gpiozero); paket/pin yoksa klavyeye düşer.
+# Ne yapıyor: konuşma tetikleyicisi. bekle() kullanıcı konuşmaya başlayana / dokunana / basana kadar bekler.
+# SesTetik (varsayılan, düğmesiz) mikrofonda konuşma başlayınca tetikler. DokunmaTetik ekrandaki
+# "Konuşmak için dokun" alanını, GpioTetik düğmeyi, KlavyeTetik terminalde Enter'ı bekler (geliştirici).
+
+import queue
+
+
+def kuyrugu_bosalt(kuyruk):
+    """Kuyrukta bekleyen eski öğeleri atar (ör. robot konuşurken yapılan dokunmalar)."""
+    while True:
+        try:
+            kuyruk.get_nowait()
+        except queue.Empty:
+            return
+
+
+class SesTetik:
+    """Düğmesiz: BEKLE'de mikrofonu dinler, konuşma başlayınca tetikler. Konuşmanın başı mikrofonda
+    saklanır, STT aynı mikrofondan devam eder (ilk kelime kaybolmaz)."""
+
+    def __init__(self, mikrofon):
+        self.mikrofon = mikrofon
+
+    def bekle(self):
+        print("[Dinliyorum: konuşmaya başlayın]")
+        self.mikrofon.konusma_bekle()
 
 
 class KlavyeTetik:
     def bekle(self):
         input("[Konuşmak için Enter'a basın] ")
+
+
+class DokunmaTetik:
+    """Dokunmatik ekran (ya da fare tıklaması). Yüz ANA iş parçacığında dokunmayı görür ve
+    dokunuldu() çağırır; konuşma iş parçacığı bekle() içinde kuyruktan okur.
+    İki iş parçacığı arasındaki tek bağ bu kuyruktur (queue.Queue iş parçacığı güvenlidir)."""
+
+    def __init__(self):
+        self.kuyruk = queue.Queue()
+
+    def dokunuldu(self):
+        self.kuyruk.put("dokunma")          # yüz çağırır (ana iş parçacığı)
+
+    def bekle(self):
+        kuyrugu_bosalt(self.kuyruk)          # önceki turdan kalan dokunmalar sayılmaz
+        print("[Konuşmak için ekrandaki alana dokunun]")
+        self.kuyruk.get()                    # dokunulana kadar burada bekler
 
 
 class GpioTetik:
@@ -21,7 +61,14 @@ class GpioTetik:
         self.dugme.wait_for_press()
 
 
-def tetik_sec(saglayici, gpio_pin=17):
+def tetik_sec(saglayici, gpio_pin=17, mikrofon=None):
+    """Ayardaki ada göre tetik kurar. 'ses' mikrofon ister; 'dokunma' yüz ister (ana.py denetler)."""
+    if saglayici == "ses":
+        if mikrofon is not None:
+            return SesTetik(mikrofon)
+        print("[tetik] Ses tetiği için mikrofon yok.")
+    if saglayici == "dokunma":
+        return DokunmaTetik()
     if saglayici == "gpio":
         try:
             return GpioTetik(gpio_pin)

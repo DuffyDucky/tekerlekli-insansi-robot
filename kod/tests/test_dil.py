@@ -15,7 +15,7 @@ def test_tesekkur_ve_veda(paket):
     assert "Rica" in k.cevapla("Çok teşekkürler").metin
     assert "Rica" in k.cevapla("sağ ol").metin
     veda = k.cevapla("Hoşça kal")
-    assert "Hoşça" in veda.metin and veda.jest == "el_salla"
+    assert "Hoşça" in veda.metin and veda.jest == "selam"
 
 
 def test_kimsin_kalibi(paket):

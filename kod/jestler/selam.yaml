@@ -1,0 +1,15 @@
+# El sallama. Sağ kol yukarı kalkar, dirsek üç kez sallanır, kafa hafif sağa döner.
+# DURUM: taslak (mekanik ölçülmedi; açılar ve süreler robot üstünde düzeltilecek).
+# Kural: jestte kullanılan her kanal İLK karede yazılır. Kareler arası doğrusal ara değer.
+ad: selam
+aciklama: "Sağ elle el sallama"
+kareler:
+  - {ms: 0,    sag_omuz: 10,  sag_dirsek: 15, kafa_pan: 90}
+  - {ms: 1700, sag_omuz: 150, sag_dirsek: 40, kafa_pan: 80}
+  - {ms: 2100, sag_dirsek: 80}
+  - {ms: 2500, sag_dirsek: 40}
+  - {ms: 2900, sag_dirsek: 80}
+  - {ms: 3300, sag_dirsek: 40}
+  - {ms: 3700, sag_dirsek: 80}
+  - {ms: 4100, sag_dirsek: 40}
+  - {ms: 4500, sag_omuz: 150, kafa_pan: 80}

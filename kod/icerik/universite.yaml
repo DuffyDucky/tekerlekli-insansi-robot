@@ -1,7 +1,7 @@
 # İçerik paketi: MCBÜ Mekatronik tanıtımı (ÖRNEK).
 # "..." olan yerler bilinmiyor; doğru bilgiyle Efe/ekip dolduracak. Rakam ve isim uydurulmadı.
 # Alanlar:
-#   konular: baslik, anahtarlar (soruda geçerse +3 puan), cevap, jest (isteğe bağlı: selam | isaret | el_salla)
+#   konular: baslik, anahtarlar (soruda geçerse +3 puan), cevap, jest (isteğe bağlı: selam | isaret | evet)
 #   yerler:  ad, tarif (yer sorularında robot varsayılan olarak "isaret" jesti yapar)
 #   sss:     soru, cevap (sık sorulan sorular)
 # Cevaplar 1-2 kısa cümle olsun; robot bunları sesli okuyacak.

@@ -1,6 +1,7 @@
-# Temel: bunlarla robot klavye + yazı + sahte seri ile uçtan uca çalışır, testler geçer.
+# Temel: bunlarla testler geçer ve robot --gelistirici modunda (klavye + yazı + sahte seri) çalışır.
 pyyaml
 pytest
+numpy
 
 # --- İsteğe bağlı (gerektiğinde satırın başındaki # işaretini kaldırın) ---
 # Yüz ekranı (Pi'de apt ile: sudo apt install python3-pygame)
@@ -9,12 +10,13 @@ pytest
 # pyttsx3
 # Daha doğal Türkçe ses (Pi): piper komutu + aplay
 # piper-tts
-# Çevrimdışı konuşma tanıma (mikrofon gelince; Pi'de önce: sudo apt install portaudio19-dev)
-# vosk
+# Sesli mod (varsayılan): mikrofon akışı + çevrimdışı konuşma tanıma (Pi'de önce: sudo apt install portaudio19-dev)
 # sounddevice
-# İnternetle konuşma tanıma (Google, tr-TR)
+# vosk
+# Daha iyi konuşma algılama (isteğe bağlı; yoksa yalnız ses düzeyi eşiği)
+# webrtcvad-wheels
+# İnternetle konuşma tanıma (Google, tr-TR); ses ortak mikrofondan gelir, PyAudio gerekmez
 # SpeechRecognition
-# PyAudio
 # ESP32 seri haberleşme
 # pyserial
 # Bas-konuş düğmesi (Pi'de apt ile hazır gelir: python3-gpiozero python3-lgpio)

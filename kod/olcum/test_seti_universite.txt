@@ -1,0 +1,42 @@
+# STT test seti: üniversite tanıtım robotu (ÖRNEK, 36 satır; Efe 100'e tamamlayacak).
+# Her satır bir komut/soru. Ölçümde kullanıcı satırı ekranda görür ve aynen söyler.
+# "#" ile başlayan satırlar ve boş satırlar atlanır. Noktalama ölçümü etkilemez (normalize eşleşme).
+# Yeni satır eklerken: robotun bilmesi beklenen bir konuya gitsin (icerik/universite.yaml),
+# kısa ve doğal olsun; aynı cümleyi iki kez yazmayın.
+
+Merhaba
+Günaydın
+Sen kimsin?
+Neler yapabilirsin?
+Nasılsın?
+Mekatronik bölümünde ne öğreniyoruz?
+Laboratuvarlar nerede?
+Atölyede neler var?
+Mekatronik laboratuvarı nerede?
+Kayıt için ne gerekiyor?
+Ders programına nereden bakabilirim?
+Staj ne zaman yapılıyor?
+Dikey geçiş yapabilir miyim?
+Mezun olunca iş bulabilir miyim?
+Mezunlar kariyer olarak ne yapıyor?
+Kütüphane nerede?
+Burs başvurusu nasıl yapılır?
+Yurt imkanı var mı?
+Hangi öğrenci kulüpleri var?
+Teknofest yarışmasına katılıyor musunuz?
+Seni kim yaptı?
+Vize sınavları ne zaman?
+Final sınavları ne zaman?
+Bütünleme sınavı var mı?
+Kampüse hangi otobüs gidiyor?
+Servis saatleri ne zaman?
+Bölüm sekreterliğinin telefonu ne?
+Öğrenci işleri nerede?
+Kantin nerede?
+Çay nereden alabilirim?
+Tuvalet nerede?
+Bölüm kaç yıllık?
+Kablosuz internet var mı?
+Eduroam ağına nasıl bağlanırım?
+Teşekkür ederim
+Hoşça kal

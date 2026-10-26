@@ -1,8 +1,13 @@
 # Ne yapıyor: kullanıcının söylediğini yazıya çevirir. Hepsi aynı arayüz: dinle() -> str | None.
-# KlavyeSTT klavyeden okur (mikrofon yokken, varsayılan). VoskSTT internetsiz (Türkçe küçük model),
-# GoogleSTT internetle çalışır. Paket eksikse açık bir hata mesajı verir; ana.py klavyeye düşer.
+# VoskSTT internetsiz (Türkçe küçük model), GoogleSTT internetle; ikisi de ortak mikrofondan (robot/mikrofon.py)
+# okur, dinleme sessizlikle biter. KlavyeSTT (terminal) ve EkranSTT (metin kutusu) yalnız geliştirici denemesi için.
 
 import json
+import os
+import queue
+
+from robot.mikrofon import ORNEKLEME
+from robot.tetik import kuyrugu_bosalt
 
 
 class KlavyeSTT:
@@ -13,74 +18,90 @@ class KlavyeSTT:
         return metin or None
 
 
-class VoskSTT:
-    """Çevrimdışı tanıma: vosk + sounddevice. Model klasörü ayardan (vosk-model-small-tr-...)."""
+class EkranSTT:
+    """Yalnız GELİŞTİRİCİ modu (--gelistirici, mikrofon yokken deneme): soru ekrandaki metin kutusuna
+    yazılır, Enter gönderir.
+    Yüz (ANA iş parçacığı) Enter'da gonder(metin) çağırır; dinle() kuyruktan okur."""
 
-    ORNEKLEME = 16000   # Hz, Vosk küçük modelleri 16 kHz ister
+    def __init__(self):
+        self.kuyruk = queue.Queue()
 
-    def __init__(self, model_yolu, azami_saniye=8, cihaz=None):
-        try:
-            import sounddevice
-            import vosk
-        except ImportError:
-            raise RuntimeError("VoskSTT için 'vosk' ve 'sounddevice' paketleri gerekli: "
-                               "pip install vosk sounddevice (Pi'de önce: sudo apt install portaudio19-dev)")
-        self.sd = sounddevice
-        self.model = vosk.Model(model_yolu)   # klasör yoksa vosk kendi hatasını verir
-        self.vosk = vosk
-        self.azami_saniye = azami_saniye
-        self.cihaz = cihaz or None
+    def gonder(self, metin):
+        self.kuyruk.put(metin)               # yüz çağırır (ana iş parçacığı)
 
     def dinle(self):
-        tanima = self.vosk.KaldiRecognizer(self.model, self.ORNEKLEME)
-        parca = 4000                                   # 0,25 s'lik ses parçası
-        en_fazla_parca = int(self.azami_saniye * self.ORNEKLEME / parca)
-        # Mikrofon yalnız bu blokta açık (DİNLE durumu); robot konuşurken açılmaz
-        with self.sd.RawInputStream(samplerate=self.ORNEKLEME, blocksize=parca, dtype="int16",
-                                    channels=1, device=self.cihaz) as akis:
-            for _ in range(en_fazla_parca):
-                veri, _ = akis.read(parca)
-                if tanima.AcceptWaveform(bytes(veri)):   # konuşma bitti (sessizlik algılandı)
-                    break
+        kuyrugu_bosalt(self.kuyruk)          # eski girişler sayılmaz
+        print("[Sorunuzu ekrandaki kutuya yazıp Enter'a basın]")
+        metin = self.kuyruk.get().strip()    # Enter'a basılana kadar burada bekler
+        return metin or None
+
+
+class VoskSTT:
+    """Çevrimdışı tanıma (Türkçe küçük model). Ses ortak mikrofondan gelir; dinleme sessizlikle biter."""
+
+    def __init__(self, model_yolu, mikrofon, azami_saniye=8):
+        if mikrofon is None:
+            raise RuntimeError("mikrofon yok")
+        try:
+            import vosk
+        except ImportError:
+            raise RuntimeError("'vosk' paketi gerekli: pip install vosk")
+        if not os.path.isdir(model_yolu):
+            raise RuntimeError(f"Vosk modeli bulunamadı: {model_yolu} (kur_pi.sh içindeki indirme komutuna bakın)")
+        vosk.SetLogLevel(-1)                  # Vosk'un uzun açılış yazılarını gizle
+        self.vosk = vosk
+        self.model = vosk.Model(model_yolu)
+        self.mikrofon = mikrofon
+        self.azami_saniye = azami_saniye
+
+    def dinle(self):
+        tanima = self.vosk.KaldiRecognizer(self.model, ORNEKLEME)
+        # Parçalar konuşulurken tanıyıcıya verilir; konuşma bitince (sessizlik) sonuç hemen hazır olur
+        for parca in self.mikrofon.konusma_parcalari(self.azami_saniye):
+            tanima.AcceptWaveform(parca)
         metin = json.loads(tanima.FinalResult()).get("text", "").strip()
         return metin or None
 
 
 class GoogleSTT:
-    """İnternetle tanıma: speech_recognition paketi, tr-TR. Mikrofon için PyAudio da gerekir."""
+    """İnternetle tanıma (speech_recognition paketi, tr-TR). Ses ortak mikrofondan kaydedilip gönderilir."""
 
-    def __init__(self, azami_saniye=8):
+    def __init__(self, mikrofon, azami_saniye=8):
+        if mikrofon is None:
+            raise RuntimeError("mikrofon yok")
         try:
             import speech_recognition
         except ImportError:
-            raise RuntimeError("GoogleSTT için 'SpeechRecognition' ve 'PyAudio' paketleri gerekli: "
-                               "pip install SpeechRecognition PyAudio")
+            raise RuntimeError("'SpeechRecognition' paketi gerekli: pip install SpeechRecognition")
         self.sr = speech_recognition
         self.tanima = speech_recognition.Recognizer()
+        self.mikrofon = mikrofon
         self.azami_saniye = azami_saniye
 
     def dinle(self):
+        ses = self.mikrofon.konusmayi_kaydet(self.azami_saniye)
+        if not ses:
+            return None
         try:
-            with self.sr.Microphone() as kaynak:
-                self.tanima.adjust_for_ambient_noise(kaynak, duration=0.5)
-                ses = self.tanima.listen(kaynak, timeout=5, phrase_time_limit=self.azami_saniye)
-            return self.tanima.recognize_google(ses, language="tr-TR")
-        except (self.sr.WaitTimeoutError, self.sr.UnknownValueError):
-            return None                                   # kimse konuşmadı ya da anlaşılmadı
+            veri = self.sr.AudioData(ses, ORNEKLEME, 2)          # 2 bayt = 16 bit örnek
+            return self.tanima.recognize_google(veri, language="tr-TR")
+        except self.sr.UnknownValueError:
+            return None                                   # anlaşılmadı
         except self.sr.RequestError as hata:
             print(f"[stt] Google'a ulaşılamadı: {hata}")
             return None
 
 
 def stt_sec(saglayici, vosk_model="", azami_saniye=8, mikrofon=None):
-    """Ayardaki ada göre STT kurar; kurulamazsa nedenini yazıp klavyeye düşer."""
+    """Ayardaki ada göre STT kurar; kurulamazsa nedenini yazıp klavyeye düşer
+    (ana.py bunu görür: normal modda robot durur, geliştirici modunda klavyeyle devam eder)."""
     try:
         if saglayici == "vosk":
-            return VoskSTT(vosk_model, azami_saniye, mikrofon)
+            return VoskSTT(vosk_model, mikrofon, azami_saniye)
         if saglayici == "google":
-            return GoogleSTT(azami_saniye)
+            return GoogleSTT(mikrofon, azami_saniye)
     except Exception as hata:
-        print(f"[stt] {saglayici} kurulamadı: {hata}\n[stt] Klavyeye düşüyorum.")
+        print(f"[stt] {saglayici} kurulamadı: {hata}")
         return KlavyeSTT()
     if saglayici != "klavye":
         print(f"[stt] Bilinmeyen sağlayıcı '{saglayici}'; klavye kullanıyorum.")

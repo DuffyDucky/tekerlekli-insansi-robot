@@ -1,0 +1,35 @@
+# Servo kanal tablosu: TEK KAYNAK. jest_uret.py bunu okuyup kod/esp32/src/jest_verisi.h'ye yazar.
+# Buradaki bir değeri değiştirince: py -3 kod/jestler/jest_uret.py  (sonra ESP32'yi yeniden derle/yükle)
+#
+# DURUM: TASLAK. Mekanik ölçülmedi, servolar takılmadı (26 Ekim 2026).
+# Not: tasarım revizyonunda (25 Ekim) servo modeli değişti; yeni model gelince "model", min_us/max_us güncellenir.
+#
+# AÇI KURALI ("robot açısı", 0-180 derece; jest dosyaları hep bu açıyla yazılır):
+#   omuz   : 0 = kol aşağıda gövdenin yanında, 90 = kol öne yatay, 180 = kol yukarıda
+#   dirsek : 0 = kol düz, 90 = dirsek dik açı bükük
+#   kafa_pan : 90 = ileri bakar, küçük = robotun sağına, büyük = soluna
+#   kafa_tilt: 90 = düz, küçük = aşağı, büyük = yukarı
+# Montaj: servo merkezdeyken (1500 us) korna, robot açısı 90'a denk gelecek şekilde takılır.
+# Servo ters yönde dönüyorsa (ör. sol kol sağın aynası) "ters: true" yap; jest dosyaları değişmez.
+#
+# ALANLAR:
+#   kanal   : PCA9685 çıkış numarası (0-15)
+#   min_us / max_us : servo açısı 0 ve 180 derecedeki darbe genişliği (mikrosaniye)
+#   min_aci / max_aci : izin verilen robot açısı aralığı. Bunun dışına hiçbir komut gidemez.
+#                       SINIRLAR MEKANİKTE ÖLÇÜLÜNCE DARALT (kol gövdeye/kabuğa çarpmadan önce dur).
+#   hiz     : en fazla derece/saniye (yumuşak geçiş). Jest bundan hızlı istiyorsa servo geride kalır.
+#   ters    : true ise servo açısı = 180 - robot açısı
+#
+# Başlangıç değerleri:
+#   DS3218 (omuz, büyük tork): 500-2500 us ~ 180 derece (270 derecelik sürümü varsa tablo değişir!)
+#   MG996R (dirsek, kafa): 500-2500 us, ama gerçek açı ~170-180; uçlarda zorlanır, sınırı dar tut.
+
+pwm_frekans: 50          # Hz; analog servolar için standart
+
+kanallar:
+  sag_omuz:   {kanal: 0, model: DS3218, min_us: 500, max_us: 2500, min_aci: 0,  max_aci: 160, hiz: 90,  ters: false}
+  sag_dirsek: {kanal: 1, model: MG996R, min_us: 500, max_us: 2500, min_aci: 0,  max_aci: 110, hiz: 120, ters: false}
+  sol_omuz:   {kanal: 2, model: DS3218, min_us: 500, max_us: 2500, min_aci: 0,  max_aci: 160, hiz: 90,  ters: true}
+  sol_dirsek: {kanal: 3, model: MG996R, min_us: 500, max_us: 2500, min_aci: 0,  max_aci: 110, hiz: 120, ters: true}
+  kafa_pan:   {kanal: 4, model: MG996R, min_us: 500, max_us: 2500, min_aci: 45, max_aci: 135, hiz: 90,  ters: false}
+  kafa_tilt:  {kanal: 5, model: MG996R, min_us: 500, max_us: 2500, min_aci: 70, max_aci: 110, hiz: 60,  ters: false}
