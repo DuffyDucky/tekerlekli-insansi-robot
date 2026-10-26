@@ -5,7 +5,7 @@
 # Göreli yollar kod/ klasörüne göredir.
 
 robot:
-  ad: "Robot"                     # robotun adı henüz konmadı; konunca buraya yazın
+  ad: "Lale"                     # robotun adı henüz konmadı; konunca buraya yazın
 
 icerik:
   paket: universite               # universite | tesis | ya da bir .yaml dosyasının yolu
@@ -29,17 +29,17 @@ algilama:                         # konuşma algılama (robot/mikrofon.py); Pi'd
   vad_duzeyi: 2                   # webrtcvad kuruluysa 0 (gevşek) - 3 (sıkı); -1 = yalnız RMS
 
 tts:
-  saglayici: yazi                 # yazi | pyttsx3 | piper   (Pi'de bu gece: pyttsx3 ya da piper)
+  saglayici: piper                # yazi | pyttsx3 | piper   (Pi'de bu gece: pyttsx3 ya da piper)
   hiz: 170                        # pyttsx3 konuşma hızı (kelime/dk)
   piper_komut: piper
   piper_model: modeller/tr_TR-dfki-medium.onnx
-  ses_cihazi: ""                  # aplay -D değeri; boş = varsayılan. Pi 5 HDMI örneği: plughw:CARD=vc4hdmi0,DEV=0
+  ses_cihazi: "plughw:CARD=vc4hdmi0,DEV=0"                  # aplay -D değeri; boş = varsayılan. Pi 5 HDMI örneği: plughw:CARD=vc4hdmi0,DEV=0
 
 yuz:
   etkin: true                     # false ya da --yuzsuz: yalnız terminal
   genislik: 1280                  # 10,1" ekran: 1280x800
   yukseklik: 800
-  tam_ekran: false                # Pi'de: true (ESC ile çıkılır)
+  tam_ekran: true                # Pi'de: true (ESC ile çıkılır)
 
 tetik:
   saglayici: ses                  # ses (düğmesiz, varsayılan) | dokunma ("Konuşmak için dokun" alanı) | gpio (düğme) | klavye
