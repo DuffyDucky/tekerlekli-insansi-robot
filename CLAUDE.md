@@ -70,7 +70,7 @@ Robot SESLİ çalışır (Efe kararı, 26 Ekim 2026: ziyaretçi yazmaz, yapay ze
   `kod/bakim.txt` varken robot bakımda (telefon da yazar); uzaktan sunucu portu `bilesenleri_kur`'da değil `main`'de açılır (testler port açmasın); köprünün seri yazımı kilitli ama `tek_tur` `seri.jest` kilitsiz (satırlar kısa); kalıp cevap varyantları paketin `kaliplar:` bölümünde, koddaki varsayılanlar tek metin.
 - Pi 5'te doğrulanan (26 Ekim 2026 gecesi): kurulum, 104 test, Piper/Vosk yükleme, terminal konuşma turu; ekran, ses çıkışı, mikrofon, GPIO ve seri henüz doğrulanmadı (`kod/PI5-KURULUM.md`, `kod/OKU_BENI.md` 5. bölüm).
 - Konum paketi (27 Ekim 2026) Windows'ta eduroam'da doğrulandı (tarama 7-11 BSSID, `kaydet`/`nerede`, `--konum` ile bölgeye özel tarif); Pi'de nmcli, kamera, GPS, BLE ve ESP32 odo satırları doğrulanmadı; Pi'nin apt OpenCV'sinde aruco var mı bilinmiyor.
-- Diğer proje çıktıları: `raporlar/mikrofon-secimi.md` (mikrofon kararı), `tasarim/pi5-kutu/` (Pi kutusu STL + parametrik betik; vault'tan kopya, tek kaynak burası), `belgeler/tubitak-2209-b/` (başvuru taslağı docx + OKU_BENI; docx'i XML düzeyinde değil Word'de düzenle, sonra commit).
+- Diğer proje çıktıları: `planlama/kararlar-2026-10-27.md` (27 Ekim karar günlüğü: AI beyni API/RAG, hotspot, telefon kumandası), `raporlar/yz-beyni-ve-goruntu-arastirmasi-2026-10-27.md`, `raporlar/4g-modem-secenekleri-2026-10-27.md`, `raporlar/mikrofon-secimi.md` (mikrofon kararı), `tasarim/pi5-kutu/` (Pi kutusu STL + parametrik betik; vault'tan kopya, tek kaynak burası), `belgeler/tubitak-2209-b/` (başvuru taslağı docx + OKU_BENI; docx'i XML düzeyinde değil Word'de düzenle, sonra commit).
 
 ### ESP32 (`kod/esp32/`) ve jestler (`kod/jestler/`)
 

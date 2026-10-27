@@ -22,6 +22,9 @@ planlama, tasarım (CAD) ve ileride yazılım kodu burada tutulur.
 | `kod/robot/uzaktan/` | Telefondan kumanda (27 Ekim 2026, Nextion yerine): Pi'de stdlib HTTP sunucu (`http://lale.local:8080`, PIN), D-pad sür/dur (ölü adam 0,4 s), jestler, "Söyle", bölge seçimi, bakım modu, kırmızı DUR; `kod/OKU_BENI.md` 13. bölüm |
 | `kod/robot/bakim.py` · `kod/olcum/` | Bakım modu (`--bakim`, `kod/bakim.txt`); ölçüm betikleri: bilinmeyen soru raporu, konum test turu (TÜBİTAK bölge doğruluğu tablosu), gürültü provası (SNR × tanıma); `kod/OKU_BENI.md` 10-12 |
 | `kod/PI5-KURULUM.md` | Pi 5 (`lale`) kurulum kaydı: kullanıcılar, ağ, seri, kurulu paketler/modeller, bağlanma komutları, sıfırdan kurma adımları, tuzaklar (26 Ekim 2026) |
+| `planlama/kararlar-2026-10-27.md` | 27 Ekim 2026 karar günlüğü: konum (hepsi), Nextion → telefon kumandası, AI beyni API üzerinden (RAG), model seçimi testle, görüntü cihazda / yorumlama bulutta, hızlandırıcı yok, internet = hotspot (geçici), TÜBİTAK |
+| `raporlar/yz-beyni-ve-goruntu-arastirmasi-2026-10-27.md` | Çok modlu model (cihaz vs bulut), benzer açık kaynak projeler, Pi 5 görüntü hattı araştırması (3 araştırmacı + Kimi) |
+| `raporlar/4g-modem-secenekleri-2026-10-27.md` | Robota internet: 3 modem seçeneği + hat fiyatları (şimdilik hotspot kararı) |
 | `raporlar/mikrofon-secimi.md` | Gürültü bastırmalı mikrofon karşılaştırması (33 kaynak); karar: XVF3800 4 mikrofonlu USB dizi + yönlü mikrofon karşılaştırma kolu |
 | `tasarim/pi5-kutu/` | Pi 5 koruma kutusu: taban + standart kapak + fanlı kapak STL, parametrik `pi5_kutu.py` (manifold3d), baskı notu `OKU_BENI.txt` |
 | `belgeler/tubitak-2209-b/` | TÜBİTAK 2209-B başvuru taslağı (docx tek kaynak) + özet/son tarih notu; son başvuru 11 Kasım 2026 17:30. 27 Ekim: konumlandırma ve yön tarifi metne girdi (4. araştırma sorusu, İP3) |
