@@ -2,6 +2,7 @@
 # Buradaki bir değeri değiştirince: py -3 kod/jestler/jest_uret.py  (sonra ESP32'yi yeniden derle/yükle)
 #
 # DURUM: TASLAK. Mekanik ölçülmedi, servolar takılmadı (26 Ekim 2026).
+# Sol kol kanalları (2, 3) önerilen numaralar: KABLAJDA DOĞRULA.
 # Not: tasarım revizyonunda (25 Ekim) servo modeli değişti; yeni model gelince "model", min_us/max_us güncellenir.
 #
 # AÇI KURALI ("robot açısı", 0-180 derece; jest dosyaları hep bu açıyla yazılır):
@@ -19,6 +20,19 @@
 #                       SINIRLAR MEKANİKTE ÖLÇÜLÜNCE DARALT (kol gövdeye/kabuğa çarpmadan önce dur).
 #   hiz     : en fazla derece/saniye (yumuşak geçiş). Jest bundan hızlı istiyorsa servo geride kalır.
 #   ters    : true ise servo açısı = 180 - robot açısı
+#   ayna    : bu kanalın sol/sağ karşılığı (yönlü jestlerde "sol" varyantı için; bkz. AYNA KURALI)
+#   ayna_aci: ayna kanala geçerken açı dönüşümü: "ayni" (açı aynen) ya da "180-aci"
+#
+# AYNA KURALI (27 Ekim 2026; jest_uret.py "yonler: {sol: ayna}" ile kullanır):
+#   Robot açısı iki kolda da AYNI anlamı taşır (sol kolda da omuz 0 = aşağıda, 90 = öne yatay);
+#   sol servoların ters dönmesini "ters: true" zaten düzeltir. Bu yüzden kol kanalları için ayna
+#   = yalnız kanal değiştirmek, açı aynen ("ayni"): sag_omuz 90 -> sol_omuz 90.
+#   kafa_pan ise tek servo ve açısı yönlüdür (küçük = robotun sağı, büyük = solu): aynası
+#   kendisi, açı "180-aci" (70 -> 110). kafa_tilt yukarı/aşağıdır, aynası kendisi, açı "ayni".
+#   Eşleme karşılıklı olmalı (sag_omuz -> sol_omuz ise sol_omuz -> sag_omuz); üretici denetler.
+#   Ayna açısı da hedef kanalın min_aci/max_aci sınırında olmalı; üretici her varyantı denetler.
+#   KABLAJDA DOĞRULA: sol kol kanal numaraları (2, 3) ve sol kolun "ters" yönü; bkz.
+#   kod/esp32/OKU_BENI.md "Yönlü jest". Yanlışsa sol varyant kolu ters yöne zorlar.
 #
 # Başlangıç değerleri:
 #   DS3218 (omuz, büyük tork): 500-2500 us ~ 180 derece (270 derecelik sürümü varsa tablo değişir!)
@@ -27,9 +41,9 @@
 pwm_frekans: 50          # Hz; analog servolar için standart
 
 kanallar:
-  sag_omuz:   {kanal: 0, model: DS3218, min_us: 500, max_us: 2500, min_aci: 0,  max_aci: 160, hiz: 90,  ters: false}
-  sag_dirsek: {kanal: 1, model: MG996R, min_us: 500, max_us: 2500, min_aci: 0,  max_aci: 110, hiz: 120, ters: false}
-  sol_omuz:   {kanal: 2, model: DS3218, min_us: 500, max_us: 2500, min_aci: 0,  max_aci: 160, hiz: 90,  ters: true}
-  sol_dirsek: {kanal: 3, model: MG996R, min_us: 500, max_us: 2500, min_aci: 0,  max_aci: 110, hiz: 120, ters: true}
-  kafa_pan:   {kanal: 4, model: MG996R, min_us: 500, max_us: 2500, min_aci: 45, max_aci: 135, hiz: 90,  ters: false}
-  kafa_tilt:  {kanal: 5, model: MG996R, min_us: 500, max_us: 2500, min_aci: 70, max_aci: 110, hiz: 60,  ters: false}
+  sag_omuz:   {kanal: 0, model: DS3218, min_us: 500, max_us: 2500, min_aci: 0,  max_aci: 160, hiz: 90,  ters: false, ayna: sol_omuz,   ayna_aci: ayni}
+  sag_dirsek: {kanal: 1, model: MG996R, min_us: 500, max_us: 2500, min_aci: 0,  max_aci: 110, hiz: 120, ters: false, ayna: sol_dirsek, ayna_aci: ayni}
+  sol_omuz:   {kanal: 2, model: DS3218, min_us: 500, max_us: 2500, min_aci: 0,  max_aci: 160, hiz: 90,  ters: true,  ayna: sag_omuz,   ayna_aci: ayni}
+  sol_dirsek: {kanal: 3, model: MG996R, min_us: 500, max_us: 2500, min_aci: 0,  max_aci: 110, hiz: 120, ters: true,  ayna: sag_dirsek, ayna_aci: ayni}
+  kafa_pan:   {kanal: 4, model: MG996R, min_us: 500, max_us: 2500, min_aci: 45, max_aci: 135, hiz: 90,  ters: false, ayna: kafa_pan,   ayna_aci: 180-aci}
+  kafa_tilt:  {kanal: 5, model: MG996R, min_us: 500, max_us: 2500, min_aci: 70, max_aci: 110, hiz: 60,  ters: false, ayna: kafa_tilt,  ayna_aci: ayni}

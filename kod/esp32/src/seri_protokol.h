@@ -2,8 +2,9 @@
 //
 // Pi -> ESP32 (kod/robot/seri.py ile aynı adlar):
 //   {"k":"jest","ad":"selam"}            kayıtlı jesti oynat
-//   {"k":"jest","ad":"isaret","yon":"sol"}  yon isteğe bağlı: sol|sag|ileri|arka (şimdilik cevaba
-//                                        aynen yazılır, oynatıcı henüz yön ayırmaz; bkz. jestler.h)
+//   {"k":"jest","ad":"isaret","yon":"sol"}  yon isteğe bağlı: sol|sag|ileri|arka; cevapta
+//                                        "yon" ve "yon_uygulandi" (false = jestin o yön varyantı
+//                                        yok, varsayılan oynadı; bkz. jestler.h)
 //   {"k":"sur","v":0.3,"w":0.0}          v: ileri m/s, w: dönüş rad/s (ikisi de -1..1'e kırpılır)
 //   {"k":"dur"}                          motorları ANINDA durdur, oynayan jesti kes
 //   {"k":"servo","kanal":0,"aci":90}     tek servoyu elle (kanal: 0-15 ya da "sag_omuz" gibi ad)

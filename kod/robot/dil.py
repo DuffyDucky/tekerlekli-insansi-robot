@@ -2,12 +2,15 @@
 # bolge: robotun şu an bulunduğu bölge (robot/konum); yer tariflerinde bölgeye özel tarif ve işaret yönü seçilir.
 # KuralTabanli internetsiz çalışır: önce içerik paketinde arar, sonra selam/teşekkür gibi kalıplara bakar.
 # BulutDilModeli Gemini ya da Anthropic ile sohbet eder (son N tur hafızada); sorun olursa KuralTabanli'ye düşer.
+# Kalıp cevapları (selam, teşekkür...) içerik paketinde liste olabilir: VaryantSecici rastgele seçer, art arda
+# aynı cümleyi söylemez.
 
 import os
+import random
 from collections import deque
 from dataclasses import dataclass
 
-from robot.icerik import ifade_geciyor_mu, kelimeler
+from robot.icerik import ifade_geciyor_mu, kelimeler, metin_listesi
 
 BILMIYORUM = "Bunu bilmiyorum, sizi bir görevliye yönlendireyim."
 EN_FAZLA_TOKEN = 200          # 1-2 cümle için yeter
@@ -42,34 +45,66 @@ class SohbetGecmisi:
         return liste
 
 
+class VaryantSecici:
+    """Aynı soruya hep aynı cümle söylenmesin: listeden rastgele seçer ama art arda aynısını seçmez
+    (her kalıp için son söyleneni hatırlar). Tek seçenek varsa hep onu döner. tohum: testte sabit sıra."""
+
+    def __init__(self, tohum=None):
+        self.rastgele = random.Random(tohum)
+        self.son = {}                         # kalıp adı -> son söylenen cümle
+
+    def sec(self, anahtar, secenekler):
+        secenekler = metin_listesi(secenekler)
+        if not secenekler:
+            return ""
+        adaylar = [s for s in secenekler if s != self.son.get(anahtar)] or secenekler
+        secilen = self.rastgele.choice(adaylar)
+        self.son[anahtar] = secilen
+        return secilen
+
+
 class KuralTabanli:
     """Her zaman çalışan, internetsiz cevap üretici (varsayılan)."""
 
-    def __init__(self, paket, robot_adi="Robot", gecmis_tur=GECMIS_TUR):
+    def __init__(self, paket, robot_adi="Robot", gecmis_tur=GECMIS_TUR, tohum=None):
         self.paket = paket
         self.robot_adi = robot_adi
+        self.secici = VaryantSecici(tohum)
         self.kaliplar = self._kaliplari_kur()
         self.gecmis = SohbetGecmisi(gecmis_tur)
 
     def _kaliplari_kur(self):
-        # (soruda geçen ifadeler, cevap, jest). Sıra önemli: ilk tutan kazanır.
+        # (ad, soruda geçen ifadeler, cevap ya da cevap listesi, jest). Sıra önemli: ilk tutan kazanır.
+        # İçerik paketinin 'kaliplar:' bölümünde aynı adla yazılan cevaplar koddakinin yerine geçer.
         konular = ", ".join(self.paket.konu_basliklari()[:3])
-        return [
-            (["kimsin", "adın ne", "adın"], f"Ben {self.robot_adi}, {self.paket.rol}.", "selam"),
-            (["neler yapabilir", "ne yapabilir", "yardım"],
+        selamlamalar = getattr(self.paket, "selamlamalar", None) or [self.paket.selamlama]
+        kodda = [
+            ("kimsin", ["kimsin", "adın ne", "adın"], f"Ben {self.robot_adi}, {self.paket.rol}.", "selam"),
+            ("yardim", ["neler yapabilir", "ne yapabilir", "yardım"],
              f"Bana şu konularda soru sorabilirsiniz: {konular}.", None),
-            (["nasılsın", "naber"], "İyiyim, teşekkür ederim. Size nasıl yardımcı olabilirim?", None),
-            (["teşekkür", "sağ ol", "sağol", "eyvallah", "mersi"], "Rica ederim, her zaman!", None),
-            (["hoşça kal", "görüşürüz", "güle güle", "bay bay", "iyi günler"],
+            ("nasilsin", ["nasılsın", "naber"], "İyiyim, teşekkür ederim. Size nasıl yardımcı olabilirim?", None),
+            ("tesekkur", ["teşekkür", "sağ ol", "sağol", "eyvallah", "mersi"], "Rica ederim, her zaman!", None),
+            ("hosca_kal", ["hoşça kal", "görüşürüz", "güle güle", "bay bay", "iyi günler"],
              "Hoşça kalın, iyi günler!", "selam"),  # selam jesti zaten el sallama
-            (["merhaba", "selam", "günaydın", "iyi akşamlar"], self.paket.selamlama, "selam"),
+            ("merhaba", ["merhaba", "selam", "günaydın", "iyi akşamlar"], selamlamalar, "selam"),
         ]
+        paketteki = getattr(self.paket, "kalip_cevaplari", {})
+        kaliplar = []
+        for ad, ifadeler, cevap, jest in kodda:
+            cevaplar = paketteki.get(ad) or metin_listesi(cevap)
+            kaliplar.append((ad, ifadeler, [self.yer_tutucu_doldur(c) for c in cevaplar], jest))
+        return kaliplar
+
+    def yer_tutucu_doldur(self, metin):
+        """Paketteki kalıp cevaplarında {ad} (robotun adı), {rol} ve {kurum} yazılabilir."""
+        return (metin.replace("{ad}", self.robot_adi).replace("{rol}", self.paket.rol)
+                .replace("{kurum}", self.paket.kurum))
 
     def kalip_bul(self, soru):
         soru_kelimeleri = kelimeler(soru)
-        for ifadeler, cevap, jest in self.kaliplar:
+        for ad, ifadeler, cevaplar, jest in self.kaliplar:
             if any(ifade_geciyor_mu(i, soru_kelimeleri) for i in ifadeler):
-                return Cevap(cevap, jest, "kalıp:" + ifadeler[0])
+                return Cevap(self.secici.sec(ad, cevaplar), jest, "kalıp:" + ifadeler[0])
         return None
 
     def cevapla(self, soru, bolge=None):

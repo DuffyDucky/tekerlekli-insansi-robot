@@ -187,6 +187,13 @@ class KonumYoneticisi:
             if kaynak.etkin and kaynak is not self.odometri:
                 self.tahmin_ekle(kaynak, kaynak.oku())
 
+    def tahminleri_temizle(self):
+        """Bütün kaynakların son tahminlerini ve son bilinen bölgeyi unutur (olcum/konum_turu.py her yeni
+        bölgede çağırır: önceki noktanın tahmini yeni noktanın sonucuna karışmasın)."""
+        with self.kilit:
+            self.son_tahminler.clear()
+            self.son_bilinen = None
+
     def tahmin_ekle(self, kaynak, tahmin):
         with self.kilit:
             if tahmin is None:

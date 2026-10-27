@@ -3,6 +3,7 @@
 # Hata varsa çıkış kodu 1 (--siki ile yer tutucu da hata sayılır: demodan önce son kontrol için).
 # Yerlerde bölgeye göre tarif/yön: 'yon'/'yonler' değerleri sol|sag|ileri|arka olmalı; 'tarifler'/'yonler'
 # içindeki bölge adları konum/bolgeler.yaml'da olmalı (dosya yoksa yalnız uyarı).
+# 'selamlama' ve 'kaliplar' değerleri tek metin ya da liste olabilir; boş liste hata, bilinmeyen kalıp adı uyarı.
 #
 # Örnek:  py -3 kod/icerik_kontrol.py                    (icerik/ içindeki tüm paketler)
 #         python3 icerik_kontrol.py universite --siki     (Pi'de, kod/ klasöründen)
@@ -15,7 +16,7 @@ from dataclasses import dataclass, field
 
 import yaml
 
-from robot.icerik import GECERLI_YONLER, kelimeler
+from robot.icerik import GECERLI_YONLER, KALIP_ADLARI, kelimeler, metin_listesi
 from robot.konum.bolgeler import BOLGELER_DOSYASI, bolgeleri_oku
 
 KOD_KLASORU = os.path.dirname(os.path.abspath(__file__))
@@ -115,6 +116,20 @@ def bolgeye_gore_denetle(sahip, kayit, rapor, bolge_adlari):
                 rapor.hatalar.append(f"{sahip}: '{alan}' içindeki '{bolge}' bölgesi bolgeler.yaml'da yok")
 
 
+def kaliplari_denetle(kaliplar, rapor):
+    """'kaliplar:' isteğe bağlı: {kimsin: metin ya da [metin, ...], ...}. Boş cevap hata, bilinmeyen ad uyarı."""
+    if kaliplar is None:
+        return
+    if not isinstance(kaliplar, dict):
+        rapor.hatalar.append("'kaliplar' ad -> cevap biçiminde olmalı (tesekkur: [\"...\", \"...\"])")
+        return
+    for ad, cevap in kaliplar.items():
+        if ad not in KALIP_ADLARI:
+            rapor.uyarilar.append(f"kaliplar / {ad}: bilinmeyen kalıp (bilinenler: {', '.join(KALIP_ADLARI)})")
+        if not isinstance(cevap, (str, list)) or not metin_listesi(cevap):
+            rapor.hatalar.append(f"kaliplar / {ad}: cevap boş (tek metin ya da metin listesi olmalı)")
+
+
 def anahtari_kaydet(ifade, sahip, rapor, anahtar_sahipleri):
     """Her anahtar kelimenin hangi kayıtta olduğunu tutar; ikinci kayıtta görülürse hata."""
     bicim = anahtar_bicimi(ifade)
@@ -145,8 +160,10 @@ def denetle(metin, bolge_adlari=None):
         rapor.hatalar.append("Dosya boş ya da en üstte 'kurum: ...' gibi alanlar yok")
         return rapor
     for alan in ZORUNLU_UST:
-        if bos_mu(veri.get(alan)):
+        deger = veri.get(alan)
+        if bos_mu(deger) or (isinstance(deger, list) and not metin_listesi(deger)):
             rapor.hatalar.append(f"'{alan}' alanı yok ya da boş")
+    kaliplari_denetle(veri.get("kaliplar"), rapor)
     if bos_mu(veri.get("rol")):
         rapor.uyarilar.append("'rol' yok; varsayılan 'tanıtım ve karşılama robotu' kullanılır")
     anahtar_sahipleri = {}

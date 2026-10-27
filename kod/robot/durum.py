@@ -1,4 +1,4 @@
-# Ne yapıyor: robotun o anda hangi durumda olduğunu tutar (BEKLE, DİNLE, DÜŞÜN, KONUŞ, JEST).
+# Ne yapıyor: robotun o anda hangi durumda olduğunu tutar (BEKLE, DİNLE, DÜŞÜN, KONUŞ, JEST, BAKIM).
 # İzinli geçişler tek bir tabloda (GECISLER); tabloda olmayan geçiş hata verir.
 # Her geçişte dinleyicilere (yüz, ileride LED) "eski, yeni" durumu haber verir.
 
@@ -11,16 +11,19 @@ class Durum(Enum):
     DUSUN = "DÜŞÜN"   # cevap hazırlanıyor
     KONUS = "KONUŞ"   # robot konuşuyor (mikrofon kapalı: yarım dupleks)
     JEST = "JEST"     # kol/kafa hareketi (kayıtlı servo açıları)
+    BAKIM = "BAKIM"   # bakım modu: mikrofon kapalı, motorlar durdu, robot konuşmaz (robot/bakim.py)
 
 
 # Hangi durumdan hangi durumlara geçilebilir? Tek tablo, tek yer.
 # DİNLE'ye yalnız BEKLE'den geçilir; bu yüzden robot konuşurken mikrofon açılamaz.
+# BAKIM'a da yalnız BEKLE'den girilir: süren bir konuşma turu yarıda kesilmez.
 GECISLER = {
-    Durum.BEKLE: {Durum.DINLE},
+    Durum.BEKLE: {Durum.DINLE, Durum.BAKIM},
     Durum.DINLE: {Durum.DUSUN, Durum.BEKLE},               # hiçbir şey duyulmazsa BEKLE
     Durum.DUSUN: {Durum.KONUS, Durum.JEST, Durum.BEKLE},   # hata olursa BEKLE
     Durum.JEST: {Durum.KONUS, Durum.BEKLE},
     Durum.KONUS: {Durum.BEKLE},
+    Durum.BAKIM: {Durum.BEKLE},                            # bakım bitince
 }
 
 

@@ -72,6 +72,12 @@ class Mikrofon:
         self.vad = vad_kur(vad_duzeyi)
         self.akis = None
         self.on_kayit = []        # tetik anında yakalanan konuşma başı; STT ilk bunu alır
+        self._bekleme_sifirla()
+
+    def _bekleme_sifirla(self):
+        """konusma_bekle'nin çağrılar arası belleği: son 300 ms ve art arda konuşma parçası sayısı."""
+        self._son_parcalar = deque(maxlen=ON_KAYIT_PARCA)
+        self._ardisik = 0
 
     def konusma_mi(self, parca):
         if rms(parca) < self.esik:
@@ -90,23 +96,29 @@ class Mikrofon:
             self.akis.stop()
             self.akis.close()
             self.akis = None
+        self._bekleme_sifirla()
 
     def _oku(self):
         veri, _ = self.akis.read(PARCA)
         return bytes(veri)
 
-    def konusma_bekle(self):
-        """BEKLE: konuşma başlayana kadar dinler. Akış açık kalır; konuşmanın başı on_kayit'ta saklanır."""
+    def konusma_bekle(self, zaman_asimi=None):
+        """BEKLE: konuşma başlayana kadar dinler; başlayınca True. Akış açık kalır; konuşmanın başı on_kayit'ta.
+        zaman_asimi (saniye) verilirse o sürede konuşma başlamazsa False döner (ana.py arada bakım dosyasına
+        bakar); akış ve son 300 ms korunur, sonraki çağrı kaldığı yerden sürer."""
         self.ac()
-        son_parcalar = deque(maxlen=ON_KAYIT_PARCA)
-        ardisik = 0
-        while True:
+        azami = None if zaman_asimi is None else max(1, int(zaman_asimi * 1000 / PARCA_MS))
+        okunan = 0
+        while azami is None or okunan < azami:
             parca = self._oku()
-            son_parcalar.append(parca)
-            ardisik = ardisik + 1 if self.konusma_mi(parca) else 0
-            if ardisik >= BASLAMA_PARCA:
-                self.on_kayit = list(son_parcalar)
-                return
+            okunan += 1
+            self._son_parcalar.append(parca)
+            self._ardisik = self._ardisik + 1 if self.konusma_mi(parca) else 0
+            if self._ardisik >= BASLAMA_PARCA:
+                self.on_kayit = list(self._son_parcalar)
+                self._bekleme_sifirla()
+                return True
+        return False
 
     def konusma_parcalari(self, azami_saniye=8, konusmasiz_bekleme=5):
         """DİNLE: konuşmayı parça parça verir. Konuşmadan sonra sessizlik_saniye kadar sessizlik olunca,

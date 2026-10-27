@@ -3,7 +3,21 @@
 
 kurum: "tesis"
 rol: "ziyaretçileri karşılayan robot"
-selamlama: "Merhaba, tesisimize hoş geldiniz! Size nasıl yardımcı olabilirim?"
+selamlama:                        # liste: robot rastgele birini söyler (art arda aynısı değil); {ad} = robotun adı
+  - "Merhaba, tesisimize hoş geldiniz! Size nasıl yardımcı olabilirim?"
+  - "Hoş geldiniz! Ziyaretinizle ilgili sorularınızı yanıtlayabilirim."
+  - "Merhaba, ben {ad}! Tesisimize hoş geldiniz."
+  - "İyi günler, hoş geldiniz! Size nasıl yardımcı olabilirim?"
+  - "Merhaba! Ziyaretçi girişi ve güvenlik kuralları hakkında bilgi verebilirim."
+
+kaliplar:
+  tesekkur:
+    - "Rica ederim, her zaman!"
+    - "Ne demek, yardımcı olabildiysem ne mutlu."
+  hosca_kal:
+    - "Hoşça kalın, iyi günler!"
+    - "Ziyaretiniz için teşekkürler, iyi günler!"
+    - "Güle güle, yine bekleriz!"
 
 konular:
   - baslik: Ziyaretçi girişi

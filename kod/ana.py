@@ -4,9 +4,12 @@
 # Yüz (pygame) ana iş parçacığında, konuşma döngüsü ayrı iş parçacığında; aralarında kuyruklar. Her tur
 # gunlukler/YYYY-MM-DD.csv dosyasına yazılır (robot/gunluk.py). Konum (robot/konum) kendi iş parçacıklarında
 # çalışır; her turda robotun bölgesi okunur, yer tarifi ve işaret yönü bölgeye göre seçilir.
+# Bakım modu (robot/bakim.py): --bakim, ayarlar.yaml bakim.etkin ya da kod/bakim.txt varken robot bir kez
+# "bakımdayım" der, mikrofonu kapatır, ESP32'ye dur gönderir ve dosya silinene kadar konuşmaz.
 #
 # Örnek:  python3 ana.py --icerik universite                     (Pi, kod/ klasöründen, mikrofonla)
 #         py -3 kod/ana.py --gelistirici --icerik universite      (Windows, mikrofonsuz deneme)
+#         python3 ana.py --bakim                                  (bakımda başlat)
 
 import argparse
 import os
@@ -17,6 +20,7 @@ from dataclasses import dataclass
 
 import yaml
 
+from robot.bakim import BAKIM_SOZU, Bakim
 from robot.dil import dil_sec
 from robot.durum import Durum, DurumMakinesi
 from robot.gunluk import Gunluk, Kronometre, tur_satiri
@@ -48,6 +52,7 @@ class Robot:
     jest_suresi: float = 1.0
     gunluk: Gunluk | None = None      # None ise tur kaydı tutulmaz
     konum: object | None = None       # KonumYoneticisi ya da None (konum kapalı); durum()["bolge"]
+    bakim: Bakim | None = None        # None ise bakım modu hiç denetlenmez
 
 
 # ---------- ayarlar ----------
@@ -86,13 +91,14 @@ def secenekleri_oku(argv=None):
     p.add_argument("--tts", choices=["yazi", "pyttsx3", "piper"], help="seslendirme")
     p.add_argument("--deneme-saniye", type=float, help="yüz tüm ifadeleri gösterip bu kadar saniye sonra kapanır")
     p.add_argument("--konum", help="robotun bölgesini elle ver (konum/bolgeler.yaml'daki ad, ör. giris-holu)")
+    p.add_argument("--bakim", action="store_true", help="bakım modunda başlat (yeniden başlatana kadar)")
     return p.parse_args(argv)
 
 
 def secenekleri_uygula(ayar, sec):
     """Komut satırında verilen seçenekler ayar dosyasını ezer."""
     for bolum in ("icerik", "dil", "stt", "tts", "yuz", "tetik", "seri", "robot", "jest", "gunluk", "algilama",
-                  "konum"):
+                  "konum", "bakim"):
         if ayar.get(bolum) is None:
             ayar[bolum] = {}
     # Yüz denemesi (--deneme-saniye) de bir geliştirici aracıdır; mikrofon istemez
@@ -113,6 +119,8 @@ def secenekleri_uygula(ayar, sec):
         ayar["tts"]["saglayici"] = sec.tts
     if sec.konum:
         ayar["konum"]["elle"] = {**(ayar["konum"].get("elle") or {}), "etkin": True, "bolge": sec.konum}
+    if sec.bakim:
+        ayar["bakim"]["etkin"] = True
     return ayar
 
 
@@ -147,10 +155,17 @@ def bilesenleri_kur(ayar):
         jest_suresi=ayar["jest"].get("sure", 1.0),
         gunluk=Gunluk(yol_coz(g.get("klasor", "gunlukler"))) if g.get("etkin", True) else None,
         konum=konum_kur(ayar, seri),
+        bakim=bakim_kur(ayar),
     )
     robot.durum.dinleyici_ekle(yuz.durum_degisti)   # yüz her durum değişiminden haberdar olur
     ozet_yaz(robot, paket)
     return robot
+
+
+def bakim_kur(ayar):
+    """Bakım denetçisi: kalıcı bakım (--bakim / bakim.etkin) ve bakım dosyası (varsayılan kod/bakim.txt)."""
+    b = ayar["bakim"]
+    return Bakim(b.get("etkin", False), yol_coz(b.get("dosya", "bakim.txt")), b.get("aralik_saniye", 1.0))
 
 
 def konum_kur(ayar, seri):
@@ -202,6 +217,10 @@ def sesli_modu_denetle(ayar, tetik, stt):
         sorunlar.append(f"konuşma tanıma ({ayar['stt'].get('saglayici', 'vosk')})")
     if not sorunlar:
         return tetik, stt
+    if ayar["bakim"].get("etkin") and not ayar["gelistirici"]:
+        # Kalıcı bakımda robot dinlemez; mikrofon sökülmüş olabilir, yüz yine de "bakımdayım" göstersin
+        print(f"[ana] BAKIM modu: {', '.join(sorunlar)} yok; bakımda dinlenmediği için devam ediyorum.")
+        return DokunmaTetik(), KlavyeSTT()
     if not ayar["gelistirici"]:
         raise SesliModKurulamadi(f"Kurulamadı: {', '.join(sorunlar)}. Robot sesli çalışır; mikrofonu ve "
                                  "Vosk modelini kontrol edin (OKU_BENI.md). Mikrofonsuz denemek için: --gelistirici")
@@ -237,8 +256,13 @@ def ozet_yaz(robot, paket):
 # ---------- konuşma döngüsü ----------
 
 def tek_tur(robot):
-    """Bir soru-cevap turu. Durum makinesi geçişleri sırayı zorlar; süreler günlüğe yazılır."""
-    robot.tetik.bekle()                       # BEKLE: düğmeye basılana kadar
+    """Bir soru-cevap turu. Durum makinesi geçişleri sırayı zorlar; süreler günlüğe yazılır.
+    Bakım açıksa tur yapılmaz: robot bakıma girer (bir kez söyler), sessizce bekler."""
+    if bakim_denetle(robot):
+        robot.bakim.bekle()
+        return
+    if not tetik_bekle(robot):                # BEKLE: konuşma başlayana / dokunulana kadar
+        return                                # beklerken bakım açıldı; sonraki tur bakıma girer
     sure = Kronometre()                       # süre tetik anından itibaren tutulur
     robot.durum.gec(Durum.DINLE)              # DİNLE'ye yalnız BEKLE'den geçilir (yarım dupleks)
     soru = robot.stt.dinle()
@@ -266,6 +290,51 @@ def tek_tur(robot):
     gunluge_yaz(robot, soru, cevap, sure, konum)
 
 
+# ---------- bakım modu ----------
+
+def bakim_denetle(robot):
+    """Bakım açıldıysa robotu bakıma sokar, kapandıysa BEKLE'ye döndürür. Robot bakımdaysa True.
+    Yalnız tur başında (BEKLE'deyken) çağrılır; süren konuşma yarıda kesilmez."""
+    if robot.bakim is None:
+        return False
+    acik = robot.bakim.acik_mi()
+    bakimda = robot.durum.durum == Durum.BAKIM
+    if acik and not bakimda:
+        bakima_gir(robot)
+    elif not acik and bakimda:
+        bakimdan_cik(robot)
+    return acik
+
+
+def bakima_gir(robot):
+    robot.durum.gec(Durum.BAKIM)              # yüz bakım ifadesine geçer
+    robot.seri.dur()                          # motorlar dursun (jest de kesilir)
+    mikrofon = getattr(robot.tetik, "mikrofon", None)
+    if mikrofon is not None:
+        mikrofon.kapat()                      # bakımda mikrofon kapalı
+    print(f"[bakım] Bakım modu açıldı ({robot.bakim.neden()}); robot dinlemiyor.")
+    robot.yuz.metin_goster(BAKIM_SOZU)
+    robot.tts.soyle(BAKIM_SOZU)               # yalnız girişte bir kez; bakım boyunca sessiz
+
+
+def bakimdan_cik(robot):
+    robot.durum.gec(Durum.BEKLE)
+    robot.yuz.metin_goster("")
+    print("[bakım] Bakım modu kapandı; robot yeniden dinliyor.")
+
+
+def tetik_bekle(robot):
+    """Tetiği bekler; tetiklenince True. Bakım denetimi varsa ve tetik zaman aşımı biliyorsa her
+    bakim.aralik saniyede bir bakım dosyasına bakar: beklerken bakım açılırsa False."""
+    if robot.bakim is None or not getattr(robot.tetik, "zaman_asimli", False):
+        robot.tetik.bekle()
+        return True
+    while not robot.tetik.bekle(robot.bakim.aralik):
+        if robot.bakim.acik_mi():
+            return False
+    return True
+
+
 def gunluge_yaz(robot, soru, cevap, sure, konum=None):
     if robot.gunluk is not None:
         robot.gunluk.yaz(tur_satiri(robot, soru, cevap, sure, konum))
@@ -279,7 +348,7 @@ def konusma_dongusu(robot, durdur):
             break
         except Exception as hata:              # bir turdaki hata robotu düşürmesin
             print(f"[ana] Hata: {hata}")
-            if robot.durum.durum != Durum.BEKLE:
+            if robot.durum.durum not in (Durum.BEKLE, Durum.BAKIM):   # bakımdaysa bakımda kalır
                 robot.durum.gec(Durum.BEKLE)
     durdur.set()
 

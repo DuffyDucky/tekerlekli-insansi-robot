@@ -6,20 +6,25 @@
 // Jest bitince bütün servolar boşta duruşa hedeflenir.
 // Jest verisi kod/jestler/*.yaml'dan üretilir (src/jest_verisi.h), elle yazılmaz.
 //
-// YÖN AYRIMI (TODO, henüz yapılmadı): "jest" komutu isteğe bağlı "yon" (sol|sag|ileri|arka) alır;
-// seri_protokol bunu doğrular ve cevaba yazar, ama oynatıcı şimdilik yönü KULLANMAZ.
-// Tasarım: "isaret" jestinin yalnız SAĞ kol sürümü kayıtlı. Sol kol için ikinci bir YAML yazmak
-// yerine ayna kanal eşlemesi kullanılacak: kanallar.yaml'a her kanalın aynası tanımlanır
-// (ör. sag_omuz <-> sol_omuz, sag_dirsek <-> sol_dirsek, kafa_pan: aci -> 180 - aci).
-// Sol kol servoları zaten "ters: true" olduğu için robot açıları aynı kalır, yalnız kanal yer
-// değiştirir. jest_uret.py eşlemeyi jest_verisi.h'ye yazar; jest_baslat(ad, simdi_ms, yon)
-// "sol" gelince hedefleri_yaz'da kanalı aynasına çevirir. "ileri/arka" için ayrı kareler gerekir
-// (ör. kafa_tilt ve omuz açısı); hangi jestlerin hangi yönleri desteklediği YAML'da yazılacak.
+// YÖNLÜ JEST (27 Ekim 2026): "jest" komutu isteğe bağlı "yon" (sol|sag|ileri|arka) alır.
+// Yön varyantları jest_uret.py ile ÜRETİM anında hazırlanır (YAML'da "yonler:" bölümü), ESP32
+// çalışırken açı hesaplamaz, yalnız doğru kare dizisini seçer:
+//   sag   = varsayılan kareler (aynı dizi, kopya yok)
+//   sol   = varsayılanın aynası (kanallar.yaml "ayna"/"ayna_aci": kol kanalı yer değiştirir,
+//           açı aynı; kafa_pan 180 - açı)
+//   ileri / arka = YAML'da elle yazılmış kareler
+// Jestin o yön için varyantı yoksa varsayılan kareler oynar ve yon_uygulandi = false olur.
 #pragma once
 #include <stdint.h>
 
+// Yön adının sıra numarası (jest_verisi.h YON_ADLARI); geçersiz ya da nullptr ise -1.
+int jest_yon_indeksi(const char* yon);
+
 // Adı verilen jesti baştan başlatır (çalışan jest varsa yarıda keser). Ad bilinmiyorsa false.
-bool jest_baslat(const char* ad, uint32_t simdi_ms);
+// yon: nullptr = yön yok (varsayılan kareler). Geçerli bir yön verilip jestin o yön varyantı
+// varsa onu oynatır. yon_uygulandi (nullptr olabilir): varyant oynuyorsa true, varsayılan
+// oynuyorsa false. Geçersiz yön adı da varsayılanı oynatır (false); doğrulama seri_protokol'de.
+bool jest_baslat(const char* ad, const char* yon, uint32_t simdi_ms, bool* yon_uygulandi = nullptr);
 
 // Çalışan jesti yarıda keser; servolar o anki hedefte kalır (boşta duruşa DÖNMEZ).
 void jest_durdur();

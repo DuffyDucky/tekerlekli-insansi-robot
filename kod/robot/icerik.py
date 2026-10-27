@@ -2,6 +2,8 @@
 # Soruyu Türkçe küçük harfe çevirir, noktalamayı siler, kelimelere böler ve her kaydı puanlar.
 # En iyi eşleşmeyi döner; puan eşiğin altındaysa None döner (dış kütüphane yok, yalnız kelime eşleme).
 # Yerler robotun bulunduğu bölgeye göre farklı tarif ve işaret yönü verebilir: tarifler/yonler (Kayit.tarif_sec).
+# 'selamlama' ve 'kaliplar' (kimsin, nasilsin, tesekkur, hosca_kal, merhaba) tek metin ya da liste olabilir;
+# listeden hangisinin söyleneceğini robot/dil.py seçer (rastgele, art arda aynısı değil).
 
 import re
 from dataclasses import dataclass, field
@@ -21,6 +23,10 @@ KOK_UZUNLUGU = 5
 # İşaret jestinin yönü (ESP32'ye {"k":"jest","ad":"isaret","yon":...} olarak gider)
 GECERLI_YONLER = ("sol", "sag", "ileri", "arka")
 
+VARSAYILAN_SELAMLAMA = "Merhaba, size nasıl yardımcı olabilirim?"
+# Paketin 'kaliplar:' bölümünde değiştirilebilen kalıp cevapları (robot/dil.py'deki sırayla)
+KALIP_ADLARI = ("kimsin", "yardim", "nasilsin", "tesekkur", "hosca_kal", "merhaba")
+
 ANAHTAR_PUANI = 3    # anahtar kelime geçerse
 ORTUSME_PUANI = 1    # başlık/cevaptaki bir kelime kökü soruda da varsa
 
@@ -28,6 +34,19 @@ ORTUSME_PUANI = 1    # başlık/cevaptaki bir kelime kökü soruda da varsa
 def turkce_kucuk(metin):
     """Türkçe küçük harf: İ -> i, I -> ı. Python'un lower() bunu yanlış yapar."""
     return metin.replace("İ", "i").replace("I", "ı").lower()
+
+
+def metin_listesi(deger, varsayilan=None):
+    """Tek metin ya da metin listesi -> boş olmayan metinlerin listesi. Hiç metin yoksa [varsayilan]
+    (varsayilan da yoksa boş liste). YAML'da selamlama: "..." ya da selamlama: ["...", "..."] yazılabilir."""
+    if isinstance(deger, str):
+        deger = [deger]
+    if not isinstance(deger, (list, tuple)):
+        deger = []
+    liste = [str(m).strip() for m in deger if m is not None and str(m).strip()]
+    if not liste and varsayilan:
+        liste = [varsayilan]
+    return liste
 
 
 def kelimeler(metin):
@@ -98,7 +117,11 @@ class IcerikPaketi:
     def __init__(self, veri, esik=3):
         self.kurum = veri.get("kurum", "")
         self.rol = veri.get("rol", "tanıtım ve karşılama robotu")
-        self.selamlama = veri.get("selamlama", "Merhaba, size nasıl yardımcı olabilirim?")
+        self.selamlamalar = metin_listesi(veri.get("selamlama"), VARSAYILAN_SELAMLAMA)
+        self.selamlama = self.selamlamalar[0]          # tek metin isteyen eski kullanım için ilk varyant
+        # Kalıp cevaplarını paket değiştirebilir: {kimsin: ..., nasilsin: [...], ...}; yazılmayan kodda kalır
+        kaliplar = veri.get("kaliplar") if isinstance(veri.get("kaliplar"), dict) else {}
+        self.kalip_cevaplari = {str(ad): metin_listesi(d) for ad, d in kaliplar.items() if metin_listesi(d)}
         self.esik = esik
         self.kayitlar = kayitlari_cikar(veri)
 

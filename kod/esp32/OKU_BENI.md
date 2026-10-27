@@ -2,7 +2,8 @@
 
 > **Donanımda doğrulanmadı (26 Ekim 2026).** Kod derleniyor; ama pinler, motor/enkoder yönleri,
 > servo sınırları, enkoder tik sayısı ve teker hızı tahmini. Aşağıdaki kontrol listesini sırayla uygula.
-> 27 Ekim 2026 eki (odometri yayını, `odo_sifirla`, jest `yon`, IMU iskeleti) de yalnız derlendi, kartta denenmedi.
+> 27 Ekim 2026 eki (odometri yayını, `odo_sifirla`, jest `yon`, IMU iskeleti, yönlü `isaret` jesti / sürüm 0.3.0)
+> de yalnız derlendi, kartta denenmedi.
 
 ESP32'nin işi basit: Pi'den gelen tek satırlık JSON komutları uygular. Konuşma, yapay zekâ, yüz
 hep Pi'de (`kod/`). ESP32 servoları (PCA9685 ile) ve iki tekerleği (BTS7960 ile) sürer.
@@ -52,17 +53,19 @@ başlayınca bırak. Windows'ta port görünmüyorsa kartın USB çipinin sürü
 
 ## 3. Seri monitörde elle deneme
 
-Monitörü aç, satırı yazıp Enter'a bas. Açılışta ESP32 şunu yazar: `{"k":"hazir","surum":"0.2.0","pca9685":true}`
+Monitörü aç, satırı yazıp Enter'a bas. Açılışta ESP32 şunu yazar: `{"k":"hazir","surum":"0.3.0","pca9685":true}`
 
 Sonra saniyede 10 kez `{"k":"odo",...}` satırı akar (aşağıda "Odometri telemetrisi"). Elle denerken
 kalabalık ederse geçici olarak `-DODO_YAYINI=0` ile derle; cevaplar yine aralarda görünür.
 
 | Yaz | Beklenen cevap |
 |---|---|
-| `{"k":"ping"}` | `{"ok":true,"k":"ping","surum":"0.2.0","ms":...,"pca9685":true,"odo":true,"jestler":["bosta","evet","isaret","selam"]}` |
+| `{"k":"ping"}` | `{"ok":true,"k":"ping","surum":"0.3.0","ms":...,"pca9685":true,"odo":true,"jestler":["bosta","evet","isaret","selam"]}` |
 | `{"k":"servo","kanal":"kafa_pan","aci":70}` | `{"ok":true,"k":"servo","kanal":"kafa_pan","aci":70}` (kanal numarası da olur: `"kanal":4`) |
 | `{"k":"jest","ad":"evet"}` | `{"ok":true,"k":"jest","ad":"evet"}` |
-| `{"k":"jest","ad":"isaret","yon":"sol"}` | `{"ok":true,"k":"jest","ad":"isaret","yon":"sol"}` (yön şimdilik yalnız cevaba yazılır; jest hâlâ sağ kolla oynar) |
+| `{"k":"jest","ad":"isaret","yon":"sol"}` | `{"ok":true,"k":"jest","ad":"isaret","yon":"sol","yon_uygulandi":true}` → sol kol işaret eder, kafa sola (110) |
+| `{"k":"jest","ad":"isaret","yon":"arka"}` | `{"ok":true,"k":"jest","ad":"isaret","yon":"arka","yon_uygulandi":true}` → sağ kol omuz üstünden geriyi gösterir, kafa pan sınırda (45) |
+| `{"k":"jest","ad":"selam","yon":"sol"}` | `{"ok":true,"k":"jest","ad":"selam","yon":"sol","yon_uygulandi":false}` (selam'ın yön varyantı yok; varsayılan oynar) |
 | `{"k":"jest","ad":"isaret","yon":"yukari"}` | `{"ok":false,"k":"jest","hata":"yon_gecersiz"}` (geçerli: `sol`, `sag`, `ileri`, `arka`) |
 | `{"k":"sur","v":0.1,"w":0}` | `{"ok":true,"k":"sur"}` → tekerlek döner, **0,5 s sonra kendiliğinden durur** (bekçi) |
 | `{"k":"dur"}` | `{"ok":true,"k":"dur"}` → motorlar anında durur, jest kesilir |
@@ -76,6 +79,42 @@ Hata kodları: `json_bozuk`, `k_yok`, `bilinmeyen_komut`, `ad_yok`, `yon_gecersi
 Robot sürülürken Pi `sur`'u ~200 ms'de bir yeniden göndermeli; 500 ms gelmezse motorlar durur.
 Durum mesajı (`{"k":"durum","jest":"yok","sur":[0,0],"wd":true}`, 1 s'de bir) için `platformio.ini`'de
 `-DDURUM_YAYINI=1` satırının başındaki `;` işaretini sil. `wd:true` = bekçi motorları durdurmuş.
+
+### Yönlü jest
+
+Pi `{"k":"jest","ad":"isaret","yon":"sol|sag|ileri|arka"}` gönderir (`kod/robot/seri.py`). Yön
+varyantları jest YAML'ında `yonler:` bölümüyle yazılır; `jest_uret.py` onları da denetleyip
+`src/jest_verisi.h`'ye koyar, ESP32 yalnız doğru kare dizisini seçer (çalışırken açı hesabı yok).
+
+| `yon` | `isaret` ne yapar (açılar TAHMİNİ) | Kaynağı |
+|---|---|---|
+| `sag` | sağ kol öne (omuz 90), kafa sağa (pan 70) | `kareler` olduğu gibi |
+| `sol` | sol kol öne (omuz 90), kafa sola (pan 110) | `kareler`'in **aynası**, otomatik |
+| `ileri` | iki kol öne, yataydan biraz aşağı (omuz 70), kafa düz | `yonler.ileri` kareleri |
+| `arka` | sağ kol yukarı + dirsek bükük (omuz üstünden geri), kafa pan sınırda (45) | `yonler.arka` kareleri |
+| yok | `sag` ile aynı | varsayılan |
+
+- **Ayna kuralı** (`kod/jestler/kanallar.yaml`, `ayna` + `ayna_aci`): kol kanalı karşı kola geçer, açı
+  aynı kalır (sol servolar `ters: true` olduğu için robot açısı iki kolda aynı anlama gelir); `kafa_pan`
+  açısı `180 - açı` olur, `kafa_tilt` aynen. Ayna açısı da sınır denetiminden geçer.
+- Jestin o yön için varyantı yoksa (ör. `selam`) varsayılan oynar ve cevapta `"yon_uygulandi":false` olur.
+  Geçersiz yön (`"yukari"`, sayı) yine `yon_gecersiz` hatasıdır. `yon` verilmezse cevapta iki alan da yoktur.
+- **Bellek:** varyant başına ayrı kare dizisi (kare = 28 bayt); `isaret`'in 3 ek dizisi ~252 bayt flash.
+  `sag` kopya değildir. 27 Ekim derlemesi: RAM 22848 → 22856 bayt, flash 302053 → 302549 bayt.
+- **Omuzda yana açma ekseni yok** (omuz yalnız öne-yukarı döner): `arka` bu yüzden "omuz üstünden
+  geriyi gösterme" ile yapıldı. Robot üstünde hoş görünmüyorsa `isaret.yaml` → `yonler.arka`'yı değiştir.
+
+**Kablaj doğrulama (yönlü jestten önce, kollar takılı, robot sabit):**
+
+1. Sol kol kanalları: `{"k":"servo","kanal":"sol_omuz","aci":30}` → **sol** omuz kıpırdamalı (sağ değil);
+   `sol_dirsek` için de aynısı. Yanlış kol oynuyorsa `kanallar.yaml`'da `kanal` numaralarını düzelt
+   (önerilen 2 ve 3, kablajda doğrulanmadı).
+2. Ayna yönü: sırayla `{"k":"servo","kanal":"sag_omuz","aci":60}` ve `{"k":"servo","kanal":"sol_omuz","aci":60}`.
+   İki kol da **öne** kalkmalı, aynı yükseklikte. Sol kol geriye gidiyorsa `sol_omuz` için `ters` yanlıştır
+   (değiştir); dirsek için de aynı deneme (`aci` 60 → iki dirsek aynı yöne bükülmeli).
+3. Kafa: `{"k":"servo","kanal":"kafa_pan","aci":70}` robotun **sağına** bakmalı. Tersse `kafa_pan` `ters: true`.
+4. `py -3 kod/jestler/jest_uret.py`, yeniden yükle; `isaret` jestini `sag`, `sol`, `ileri`, `arka` ile dene.
+   `sol` hareketi `sag`'ın tam aynası olmalı. `arka`'da elin kafaya çarpmadığını gözle (yavaş hız).
 
 ### Odometri telemetrisi
 
@@ -154,6 +193,7 @@ Kullanılmaması gerekenler: GPIO 6-11 (flash), 0/2/5/12/15 strapping pinleri (a
    çarpmadan önceki açıyı not et ve `kanallar.yaml`'daki `min_aci`/`max_aci`'yi daralt.
    Yön tersse `ters: true`. Sonra `py -3 kod/jestler/jest_uret.py` ve yeniden yükle.
 5. **Jest:** önce `evet` (yalnız kafa), sonra `isaret`, sonra `selam`. Bitince `bosta`ya dönmeli.
+   Yönlü `isaret` için önce bölüm 3 "Yönlü jest" kablaj doğrulaması.
 6. **Motorlar: tekerlekler HAVADA** (robot takoz üstünde), acil stop elinin altında.
    `{"k":"sur","v":0.05,"w":0}` → iki teker de İLERİ dönmeli, 0,5 s sonra durmalı.
    Ters dönen teker: `motorlar.cpp`'de `SOL/SAG_MOTOR_TERS`. `{"k":"dur"}` anında durdurmalı.

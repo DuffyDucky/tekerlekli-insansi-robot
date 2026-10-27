@@ -52,6 +52,11 @@ seri:
 jest:
   sure: 1.0                       # jest durumunda konuşmadan önce kaç saniye beklensin
 
+bakim:                            # bakım modu (robot/bakim.py): bir kez "bakımdayım" der, mikrofon kapalı, motorlar dur
+  etkin: false                    # true ya da ana.py --bakim: yeniden başlatana kadar bakımda
+  dosya: bakim.txt                # bu dosya VARKEN bakımda (telefon uygulaması yazar/siler); silinince çıkar
+  aralik_saniye: 1.0              # dosyaya kaç saniyede bir bakılır (beklerken de)
+
 gunluk:
   etkin: true                     # her tur gunlukler/YYYY-MM-DD.csv dosyasına bir satır (ölçüm için)
   klasor: gunlukler               # depoya girmez (.gitignore)

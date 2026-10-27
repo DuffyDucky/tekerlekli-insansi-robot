@@ -7,20 +7,22 @@ Robot konuşurken mikrofon kapalıdır (yarım dupleks). Mikrofon ya da Vosk mod
 mesajla durur. Mikrofonsuz deneme için **`--gelistirici`**: ekrana dokun (ya da Enter), soruyu ekrandaki
 kutuya (ya da terminale) yaz; bu yalnız geliştirici aracıdır, ziyaretçi robota bir şey yazmaz.
 Her tur `gunlukler/YYYY-MM-DD.csv` dosyasına bir satır olarak yazılır (ölçüm için). Robot bulunduğu
-bölgeyi birden çok kaynaktan bulur ve yer tarifini/işaret yönünü ona göre seçer (9. bölüm).
+bölgeyi birden çok kaynaktan bulur ve yer tarifini/işaret yönünü ona göre seçer (9. bölüm). `kod/bakim.txt`
+varken robot bakımdadır (10. bölüm); ölçüm araçları 11., yüz ifadeleri 12. bölümde.
 
 | Dosya | İş |
 |---|---|
 | `ana.py` | Ayarları okur, parçaları kurar, sesli mod denetimi, konuşma döngüsü (`tek_tur`) |
 | `ayarlar.yaml` | Tüm seçimler (sağlayıcılar, algılama eşiği, içerik paketi, ekran, GPIO pini, seri port) |
-| `robot/durum.py` | Durum makinesi; izinli geçişler `GECISLER` tablosunda |
+| `robot/durum.py` | Durum makinesi; izinli geçişler `GECISLER` tablosunda (BEKLE ↔ BAKIM dahil) |
+| `robot/bakim.py` | Bakım modu: `--bakim`, `bakim.etkin` ya da `bakim.txt` dosyası (10. bölüm) |
 | `robot/mikrofon.py` | Ortak mikrofon: 30 ms parçalar, RMS eşiği (+ varsa webrtcvad), konuşma başı/sonu algılama |
 | `robot/tetik.py` | Konuşma tetiği: `SesTetik` (varsayılan, düğmesiz), `DokunmaTetik` (ekran), `GpioTetik` (düğme), `KlavyeTetik` |
 | `robot/stt.py` | Konuşma tanıma: `VoskSTT` (varsayılan), `GoogleSTT`; geliştirici: `KlavyeSTT`, `EkranSTT` (metin kutusu) |
 | `robot/icerik.py` | İçerik paketi okuma ve kelime eşlemeli arama |
 | `robot/dil.py` | Cevap üretici: `KuralTabanli` (varsayılan), `BulutDilModeli` (gemini / anthropic); `SohbetGecmisi` (son 6 tur) |
 | `robot/tts.py` | Seslendirme: `YaziTTS` (varsayılan), `Pyttsx3TTS`, `PiperTTS` |
-| `robot/yuz.py` | pygame yüzü (ilkel şekiller), altta son söylenen metin; dokunma tetiğinde "Konuşmak için dokun" alanı |
+| `robot/yuz.py` | pygame yüzü (ilkel şekiller), altta son söylenen metin; dokunma tetiğinde "Konuşmak için dokun" alanı; ifadeler ve bakış `Ifade` (12. bölüm) |
 | `robot/gunluk.py` | Etkileşim günlüğü: her tur bir CSV satırı (tanınan, konu, puan, cevap, jest, süreler) |
 | `robot/seri.py` | ESP32'ye satır tabanlı JSON (`jest(ad, yon)`); port yoksa `SahteSeri` |
 | `robot/konum/` | Konum: Wi-Fi, GPS, BLE, ArUco, görsel, odometri, elle kaynakları + `KonumYoneticisi`; `python3 -m robot.konum` aracı (9. bölüm) |
@@ -28,6 +30,7 @@ bölgeyi birden çok kaynaktan bulur ve yer tarifini/işaret yönünü ona göre
 | `icerik/universite.yaml`, `icerik/tesis.yaml` | Örnek içerik paketleri ("..." yerleri doldurulacak) |
 | `icerik_kontrol.py` | İçerik paketi denetleyicisi: zorunlu alanlar, boş/tekrarlı anahtar kelime, "..." listesi |
 | `olcum/test_seti.py`, `olcum/test_seti_universite.txt` | STT test seti ölçümü (tanıma oranı, kelime hata oranı, süre) |
+| `olcum/bilinmeyen_rapor.py`, `konum_turu.py`, `gurultu_prova.py` | Cevapsız soru raporu, konum doğruluk turu, SNR × tanıma provası (11. bölüm) |
 | `robot.service` | Pi'de otomatik başlatma (systemd kullanıcı servisi) |
 | `tests/` | pytest testleri |
 
@@ -113,6 +116,7 @@ Piper kullanılırsa aynı değeri `tts.ses_cihazi` alanına yazın.
 | `jest.sure` | saniye | Jestten sonra konuşmaya geçmeden bekleme |
 | `gunluk.etkin`, `gunluk.klasor` | `true`/`false`, klasör (`gunlukler`) | Etkileşim günlüğü; klasör depoya girmez |
 | `konum.*` | 9. bölüm | Konum kaynakları, ağırlıklar, tazelik, son bilinen bölge; `--konum <bolge>` elle verir |
+| `bakim.etkin`, `bakim.dosya`, `bakim.aralik_saniye` | `false`, `bakim.txt`, 1.0 | Bakım modu (10. bölüm); `--bakim` = `etkin: true` |
 
 Sesli mod (ses tetiği, Vosk/Google) kurulamazsa robot durur (çıkış kodu 2); `--gelistirici` ile dokunma/Enter
 ve klavyeye düşer. Diğer eksikler (TTS, bulut, seri, GPIO) programı durdurmaz: neden yazılır ve varsayılana
@@ -318,3 +322,75 @@ alanları (`wifi.aralik` 15 s, `gps.port`, `aruco.iyi_kenar_px`, `gorsel.esik`, 
 - Odometri sabitleri TAHMİNİ (`esp32/src/motorlar.cpp` ile aynı); tekerleği 10 tur çevirip `tik_tur`'u ölçün.
   IMU yaw işareti doğrulanmadı: robotu sola çevirip `izle`'de yön artmıyorsa `yaw_isareti: -1`.
 - Donanımda (Pi'de nmcli, kamera, GPS, BLE, ESP32 odo) hiçbiri henüz denenmedi; testler sahte veriyle geçer.
+
+## 10. Bakım modu (`robot/bakim.py`)
+
+Robot bakımdayken bir kez "Şu an bakımdayım, birazdan dönerim." der, sonra susar; yüzde bakım ifadesi
+(yarı kapalı gözler, dönen dişli), mikrofon kapalı, ESP32'ye `{"k":"dur"}` gider. Süren konuşma turu yarıda
+kesilmez: bakıma yalnız BEKLE'den girilir (durum tablosunda BEKLE ↔ BAKIM).
+
+```bash
+touch ~/tekerlekli-insansi-robot/kod/bakim.txt   # çalışırken bakıma al (1 s içinde); telefon uygulaması da yazacak
+rm ~/tekerlekli-insansi-robot/kod/bakim.txt      # bakımdan çıkar, robot yeniden dinler
+python3 ana.py --bakim     # bakımda başlat (yeniden başlatana kadar); ayarda: bakim.etkin: true
+```
+
+Ayarlar: `bakim.etkin`, `bakim.dosya` (`bakim.txt`, kod/'a göre), `bakim.aralik_saniye` (1 s). Tetik beklerken de
+her saniye dosyaya bakılır (ses/dokunma/GPIO tetiği zaman aşımlı bekler; klavye tetiği Enter'a kadar bakamaz).
+`--bakim` ile mikrofon takılı olmasa da robot durmaz (bakımda dinlemediği için). Dosya depoya girmez.
+
+## 11. Ölçüm araçları (TÜBİTAK tabloları)
+
+Üçü de sonucu `olcum/sonuclar/`'a yazar (depoya girer), dış kütüphane olarak yalnız numpy kullanır.
+
+**Bilinmeyen sorular** (`olcum/bilinmeyen_rapor.py`): günlüklerden (`gunlukler/*.csv`) robotun cevaplayamadığı
+(konu boş / "bilmiyorum") ve zayıf eşleşmeyle (puan < `--esik`, varsayılan 4) cevapladığı soruları toplar,
+benzerlerini kök kelimelerle gruplar, sıklığa göre `bilinmeyen-YYYY-MM-DD.md` yazar: soru, kaç kez, örnek cümle,
+en yakın mevcut kayıt, boş "İçeriğe ekle" sütunu. Haftada bir çalıştırıp içerik paketini büyütün.
+
+```bash
+python3 olcum/bilinmeyen_rapor.py --gun 7            # son 7 gün; --esik 5, --icerik tesis, --bugun 2026-11-03
+```
+
+**Konum test turu** (`olcum/konum_turu.py`): `bolgeler.yaml`'daki bölgeleri sırayla sorar ("Robotu şu bölgeye
+götürün", Enter; 'a' atlar, Ctrl+C bitirir), her noktada `--adet` (5) tarama yapar; her kaynağın tek başına ve
+birleştiricinin tahminini `konum-turu-<etiket>.csv`'ye (bölge, kaynak, tahmin, güven, doğru mu) yazar; kaynak
+başına ve bölge başına doğruluk tablosunu (`.md`) basar. Hedef: 10 bölgede birleşik doğru bölge oranı ≥ %90.
+Her yeni bölgede önceki tahminler silinir. `elle` ve odometri ölçülmez (elle doğruyu bilir, odometri bölge vermez).
+
+```bash
+python3 olcum/konum_turu.py --etiket kampus-1 --adet 5 --kaynaklar wifi,aruco   # varsayılan: ayarda etkinler
+```
+
+**Gürültü provası** (`olcum/gurultu_prova.py`): `olcum/ses/konusma/<ad>.wav` + `<ad>.txt` (doğru metin) kayıtlarını
+`olcum/ses/gurultu/*.wav` ile `--snr` değerlerinde (20,10,5,0 dB) karıştırır, Vosk ile tanır, `test_seti.py`'nin
+ölçütleriyle (normalize eşleşme, KHO) SNR × tanıma tablosu yazar (`gurultu-<etiket>.md`; temiz kayıt taban
+satırı, gürültü türüne göre tablo, ayrıntı). Kayıtlar 16 bit wav (her hız olur, 16 kHz'e çevrilir); depoya
+girmez (kişisel ses). SNR bütün kayıt üzerinden hesaplanır: kayıtların başını/sonunu kısa kesin. Taşma olursa
+karışım bütünüyle kısılır (kırpma yok, SNR değişmez). Vosk yoksa `--stt klavye` (karışımı wav olarak yazar,
+dinleyip yazarsınız: insan tabanı) ya da `--stt referans` (betiği denemek için; hep %100).
+
+```bash
+python3 olcum/gurultu_prova.py --etiket kantin --snr 20,10,5,0       # Pi, Vosk modeliyle
+```
+
+## 12. Yüz ifadeleri ve cevap çeşitliliği
+
+| Durum | Yüz |
+|---|---|
+| BEKLE | Bakış yavaşça gezinir (2-5 s'de bir yeni nokta), gözler 3-6 s'de bir (rastgele) kırpar |
+| DİNLE | "Dinliyorum": gözler büyük, kaşlar hafif kalkık, mikrofon simgesi |
+| DÜŞÜN | Gözler yukarıda bir yana bir yana kayar, ağız yerinde üç nokta |
+| KONUŞ | Ağız metnin harflerine göre açılıp kapanır (sesli harf geniş, ünsüz dar, boşluk kapalı; 14 harf/s TAHMİNİ) |
+| JEST | Gülen gözler ve ağız |
+| BAKIM | Yarı kapalı gözler, sağ üstte dönen dişli |
+
+`Yuz.bakis_hedefi(x, y)` gözleri bir yöne çevirir (x -1 sol..+1 sağ, y -1 yukarı..+1 aşağı, 2,5 s); şimdilik
+ekrana dokunulan yere bakmakta kullanılır, ileride kamera kişinin yönünü verecek. Animasyon durumu `Ifade`
+sınıfında (pygame'siz de çalışır); yazı yüzeyleri önbellekte, her karede yeni yüzey yaratılmaz (PC'de kare başı
+0,2-0,5 ms; Pi 5'te 30 fps ölçülmedi). Ağız konuşma süresini metinden tahmin eder; Piper sesi üretirken
+(KONUŞ'un başında) ağız sesten önce kıpırdayabilir. Hepsi `--yuz --deneme-saniye 6` ile sırayla görülür.
+
+**Cevap çeşitliliği:** içerik paketinde `selamlama` ve `kaliplar` (kimsin, nasilsin, tesekkur, hosca_kal,
+merhaba, yardim) tek metin ya da liste olabilir; liste ise robot rastgele birini söyler, art arda aynısını
+söylemez. Metinlerde `{ad}` (robotun adı), `{rol}`, `{kurum}` yazılabilir. Örnekler `icerik/universite.yaml`'da.

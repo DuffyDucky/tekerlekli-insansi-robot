@@ -13,7 +13,8 @@
 #include "servolar.h"
 #include "watchdog.h"
 
-#define FIRMWARE_SURUM "0.2.0"   // 0.2.0: odo yayını, odo_sifirla, jest "yon"
+#define FIRMWARE_SURUM "0.3.0"   // 0.2.0: odo yayını, odo_sifirla, jest "yon"
+                                 // 0.3.0: jest "yon" uygulanır, cevapta "yon_uygulandi"
 
 namespace {
 
@@ -56,15 +57,6 @@ bool sayi_al(JsonVariantConst deger, float& sonuc) {
 
 // --------------------------- komutlar ---------------------------
 
-// "yon" alanı isteğe bağlı. Geçerli değerler; başka her şey (sayı dahil) yon_gecersiz.
-bool yon_gecerli(const char* yon) {
-  static const char* const YONLER[] = {"sol", "sag", "ileri", "arka"};
-  for (const char* y : YONLER) {
-    if (strcmp(yon, y) == 0) return true;
-  }
-  return false;
-}
-
 void komut_jest(JsonDocument& d, uint32_t simdi_ms) {
   const char* ad = d["ad"];
   if (ad == nullptr) return cevap_hata("jest", "ad_yok");
@@ -73,17 +65,19 @@ void komut_jest(JsonDocument& d, uint32_t simdi_ms) {
   if (!yon_alani.isNull()) {
     if (!yon_alani.is<const char*>()) return cevap_hata("jest", "yon_gecersiz");
     yon = yon_alani.as<const char*>();
-    if (!yon_gecerli(yon)) return cevap_hata("jest", "yon_gecersiz");
+    if (jest_yon_indeksi(yon) < 0) return cevap_hata("jest", "yon_gecersiz");   // sol|sag|ileri|arka
   }
   if (!servolar_hazir()) return cevap_hata("jest", "pca9685_yok");
-  // TODO(yön): jest_baslat'a yon iletilecek (bkz. jestler.h "YÖN AYRIMI"). Şimdilik yön yalnız
-  //            doğrulanıp cevaba yazılır; jest her zaman kayıtlı haliyle (isaret = sağ kol) oynar.
-  if (!jest_baslat(ad, simdi_ms)) return cevap_hata("jest", "bilinmeyen_jest");
+  bool yon_uygulandi = false;      // jestin bu yön için varyantı yoksa varsayılan oynar -> false
+  if (!jest_baslat(ad, yon, simdi_ms, &yon_uygulandi)) return cevap_hata("jest", "bilinmeyen_jest");
   JsonDocument c;
   c["ok"] = true;
   c["k"] = "jest";
   c["ad"] = ad;
-  if (yon != nullptr) c["yon"] = yon;
+  if (yon != nullptr) {
+    c["yon"] = yon;
+    c["yon_uygulandi"] = yon_uygulandi;
+  }
   gonder(c);
 }
 

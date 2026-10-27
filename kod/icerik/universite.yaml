@@ -7,11 +7,36 @@
 #                          yon: sol | sag | ileri | arka   işaret jestinin yönü; yonler: {bölge: yön} bölgeye göre
 #            Bölge adları konum/bolgeler.yaml'daki kimliklerdir. Yön "..." ise robot yönsüz işaret eder.
 #   sss:     soru, cevap (sık sorulan sorular)
+#   selamlama ve kaliplar (kimsin, nasilsin, tesekkur, hosca_kal, merhaba, yardim): tek metin ya da liste.
+#            Liste ise robot rastgele birini söyler, art arda aynısını söylemez. {ad} = robotun adı
+#            (ayarlar.yaml robot.ad), {rol} ve {kurum} bu dosyadaki değerler. Yazılmayan kalıp koddaki cevabı kullanır.
 # Cevaplar 1-2 kısa cümle olsun; robot bunları sesli okuyacak.
 
 kurum: "Manisa Celal Bayar Üniversitesi Mekatronik Programı"
 rol: "bölümü tanıtan karşılama robotu"
-selamlama: "Merhaba, Mekatronik Programına hoş geldiniz! Size nasıl yardımcı olabilirim?"
+selamlama:
+  - "Merhaba, Mekatronik Programına hoş geldiniz! Size nasıl yardımcı olabilirim?"
+  - "Hoş geldiniz! Mekatronik Programı hakkında merak ettiğiniz bir şey var mı?"
+  - "Merhaba, ben {ad}! Mekatronik Programına hoş geldiniz."
+  - "İyi ki geldiniz! Mekatronik Programıyla ilgili sorularınızı yanıtlayabilirim."
+  - "Merhaba, hoş geldiniz! Mekatronik Programı hakkında ne öğrenmek istersiniz?"
+
+kaliplar:
+  kimsin:
+    - "Ben {ad}, {rol}."
+    - "Adım {ad}. Mekatronik öğrencilerinin yaptığı bir robotum, bölümü tanıtıyorum."
+  nasilsin:
+    - "İyiyim, teşekkür ederim. Size nasıl yardımcı olabilirim?"
+    - "Teşekkür ederim, iyiyim. Merak ettiğiniz bir şey var mı?"
+    - "Gayet iyiyim, sorduğunuz için teşekkürler! Ne öğrenmek istersiniz?"
+  tesekkur:
+    - "Rica ederim, her zaman!"
+    - "Ne demek, yardımcı olabildiysem ne mutlu."
+    - "Rica ederim. Başka sorunuz olursa buradayım."
+  hosca_kal:
+    - "Hoşça kalın, iyi günler!"
+    - "Güle güle, yine bekleriz!"
+    - "İyi günler, kendinize iyi bakın!"
 
 konular:
   - baslik: Mekatronik programı

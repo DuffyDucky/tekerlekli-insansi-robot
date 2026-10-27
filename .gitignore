@@ -19,3 +19,6 @@ kod/gunlukler/
 kod/konum/gorsel_ornekler/
 kod/konum/isaretler/
 kod/konum/bolge.txt
+# bakım modu dosyası (varken robot bakımda) ve gürültü provasının ses kayıtları (kişisel ses, büyük)
+kod/bakim.txt
+kod/olcum/ses/**/*.wav
