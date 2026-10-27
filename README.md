@@ -19,6 +19,8 @@ planlama, tasarım (CAD) ve ileride yazılım kodu burada tutulur.
 | `tasarim/cad/demo_uret.py` | Demoyu şablon + model + maliyetten yeniden üretir; CadQuery gerekmez |
 | `kod/` | Robot yazılımı (Python): durum makinesi, içerik paketi, konuşma/ses arayüzleri, pygame yüz, ESP32 seri protokol; nasıl çalıştırılacağı `kod/OKU_BENI.md` |
 | `kod/robot/konum/` · `kod/konum/` | Konum paketi (27 Ekim 2026): Wi-Fi parmak izi, GPS, BLE işaretçi, ArUco, kamerayla öğrenilen yer tanıma, teker odometrisi, elle bölge; `KonumYoneticisi` birleştirir, yer sorularında bölgeye göre tarif + yönlü işaret jesti. Bölge tanımları `kod/konum/bolgeler.yaml`, parmak izi `parmak_izi.yaml`; araç `python3 -m robot.konum` (`kod/OKU_BENI.md` 9. bölüm) |
+| `kod/robot/uzaktan/` | Telefondan kumanda (27 Ekim 2026, Nextion yerine): Pi'de stdlib HTTP sunucu (`http://lale.local:8080`, PIN), D-pad sür/dur (ölü adam 0,4 s), jestler, "Söyle", bölge seçimi, bakım modu, kırmızı DUR; `kod/OKU_BENI.md` 13. bölüm |
+| `kod/robot/bakim.py` · `kod/olcum/` | Bakım modu (`--bakim`, `kod/bakim.txt`); ölçüm betikleri: bilinmeyen soru raporu, konum test turu (TÜBİTAK bölge doğruluğu tablosu), gürültü provası (SNR × tanıma); `kod/OKU_BENI.md` 10-12 |
 | `kod/PI5-KURULUM.md` | Pi 5 (`lale`) kurulum kaydı: kullanıcılar, ağ, seri, kurulu paketler/modeller, bağlanma komutları, sıfırdan kurma adımları, tuzaklar (26 Ekim 2026) |
 | `raporlar/mikrofon-secimi.md` | Gürültü bastırmalı mikrofon karşılaştırması (33 kaynak); karar: XVF3800 4 mikrofonlu USB dizi + yönlü mikrofon karşılaştırma kolu |
 | `tasarim/pi5-kutu/` | Pi 5 koruma kutusu: taban + standart kapak + fanlı kapak STL, parametrik `pi5_kutu.py` (manifold3d), baskı notu `OKU_BENI.txt` |
@@ -101,7 +103,10 @@ HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünü
 - [ ] TÜBİTAK 2209-B: taslağı ekip + danışman okur (`belgeler/tubitak-2209-b/`); sanayi danışmanının adı, servo/kütle/maliyet (Ahmet); TYBS girişi 4 Kasım hedefi, son 11 Kasım 17:30
 - [ ] Mikrofon siparişi: XVF3800 dizi + yönlü mikrofon (`raporlar/mikrofon-secimi.md`, satın alma öncesi doğrulama listesi raporda); gelince eşik ölçümü
 - [ ] Pi 5 kutusunu bas (`tasarim/pi5-kutu/`, PETG); ilk baskıdan sonra tolerans ve kamera FFC yarığı
-- [ ] Nextion ekranı: Pi `config.txt`'de UART açık (Ahmet); ekranın yerini ve arayüzünü planda netleştir
+- [x] Nextion kararı (Efe, 27 Ekim 2026): robot telefondan elle kumanda edilir (`kod/robot/uzaktan/`); Nextion UART ayarı Pi'de duruyor, kaldırma kararı Ahmet'le
+- [ ] Telefon kumandasını gerçek telefonda ve Pi'de dene (PIN'i değiştir, `.local` çözülmezse IP); bakımda sürüş serbest mi karar
+- [ ] ESP32'de yönlü `isaret` (sol kol ayna kanalları 2-3, ileri/arka açıları) gerçek servoda doğrula; "arka" = sağ kol omuz üstünden + kafa pan sınırda (omuzda yana açma ekseni yok)
+- [ ] Yapay zekâ beyni API üzerinden (Efe, 27 Ekim 2026; yerel model yok): Gemini 3.1 Flash-Lite vs Claude Haiku 5.5 50 soruluk Türkçe testle seçilir; görüntü sorusu buluta, internet yoksa "göremiyorum"; robota kendi interneti (4G/hotspot)
 - [ ] Okulun 3D yazıcı tablası 25 × 25 × 25 cm (hocanın söylediği; model doğrulanmadı). Her baskı parçası
   buna sığacak şekilde bölünmeli (pay için ≤ 23 cm hedef)
 
