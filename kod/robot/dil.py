@@ -1,4 +1,5 @@
-# Ne yapıyor: kullanıcının sorusuna cevap üretir. Tüm üreticiler aynı arayüzü kullanır: cevapla(soru) -> Cevap.
+# Ne yapıyor: kullanıcının sorusuna cevap üretir. Tüm üreticiler aynı arayüzü kullanır: cevapla(soru, bolge=None) -> Cevap.
+# bolge: robotun şu an bulunduğu bölge (robot/konum); yer tariflerinde bölgeye özel tarif ve işaret yönü seçilir.
 # KuralTabanli internetsiz çalışır: önce içerik paketinde arar, sonra selam/teşekkür gibi kalıplara bakar.
 # BulutDilModeli Gemini ya da Anthropic ile sohbet eder (son N tur hafızada); sorun olursa KuralTabanli'ye düşer.
 
@@ -20,6 +21,7 @@ class Cevap:
     jest: str | None = None   # ESP32'ye gidecek jest adı (selam, isaret, evet; kod/jestler/ ile aynı) ya da None
     konu: str | None = None   # günlük için: eşleşen içerik başlığı, "kalıp:..." ya da None (bilmiyorum)
     puan: int = 0             # günlük için: içerik eşleşme puanı (kalıpta 0)
+    yon: str | None = None    # işaret jestinin yönü (sol, sag, ileri, arka) ya da None (yönsüz, eski biçim)
 
 
 class SohbetGecmisi:
@@ -70,18 +72,19 @@ class KuralTabanli:
                 return Cevap(cevap, jest, "kalıp:" + ifadeler[0])
         return None
 
-    def cevapla(self, soru):
-        cevap = self.cevap_bul(soru)
+    def cevapla(self, soru, bolge=None):
+        cevap = self.cevap_bul(soru, bolge)
         self.gecmis.ekle(soru, cevap.metin)     # kural tabanlı geçmişi kullanmaz, yalnız kaydeder
         return cevap
 
-    def cevap_bul(self, soru):
+    def cevap_bul(self, soru, bolge=None):
         """Geçmişe yazmadan cevabı bulur (bulut modeli jest/konu için de bunu kullanır)."""
-        # 1) İçerik paketinde eşleşme varsa onu söyle ("merhaba, kantin nerede?" -> kantin tarifi)
+        # 1) İçerik paketinde eşleşme varsa onu söyle ("merhaba, kantin nerede?" -> kantin tarifi;
+        #    robotun bölgesine özel tarif varsa o, yoksa genel tarif)
         eslesme = self.paket.ara(soru)
         if eslesme:
             k = eslesme.kayit
-            return Cevap(k.cevap, k.jest, k.baslik, eslesme.puan)
+            return Cevap(k.tarif_sec(bolge), k.jest, k.baslik, eslesme.puan, k.yon_sec(bolge))
         # 2) Selam, teşekkür, vedalaşma gibi kalıplar
         kalip = self.kalip_bul(soru)
         if kalip:
@@ -90,9 +93,10 @@ class KuralTabanli:
         return Cevap(BILMIYORUM)
 
 
-def sistem_istemi(paket, robot_adi, soru):
+def sistem_istemi(paket, robot_adi, soru, bolge=None):
     """Bulut modeline giden talimat: sohbet eden, kısa cevap veren, içerik paketine öncelik veren
-    karşılama robotu. Sonuna içerik paketinden bu soruya en uygun 3 bilgi eklenir."""
+    karşılama robotu. Bölge biliniyorsa "Robot şu an: <bölge>" eklenir. Sonuna içerik paketinden bu soruya
+    en uygun 3 bilgi (yerlerde robotun bölgesine göre tarif) eklenir."""
     satirlar = [
         f"Sen {robot_adi} adında, {paket.kurum} için çalışan bir karşılama robotusun ({paket.rol}).",
         "Ziyaretçilerle sesli sohbet ediyorsun: Türkçe, sıcak ve doğal konuş; her cevap en fazla 1-2 kısa cümle.",
@@ -103,11 +107,13 @@ def sistem_istemi(paket, robot_adi, soru):
         "önceki konuşmayı hatırla ve ziyaretçiye yardımcı olmaya çalış.",
         f"Bildiğin konular: {', '.join(paket.konu_basliklari())}.",
     ]
+    if bolge:
+        satirlar.append(f"Robot şu an: {bolge}. Yer tariflerini buradan başlayarak ver.")
     baglam = paket.en_iyiler(soru, 3)
     if baglam:
         satirlar.append("Kullanabileceğin bilgiler ('...' bilinmeyen demektir, onu söyleme):")
         for e in baglam:
-            satirlar.append(f"- {e.kayit.baslik}: {e.kayit.cevap}")
+            satirlar.append(f"- {e.kayit.baslik}: {e.kayit.tarif_sec(bolge)}")
     return "\n".join(satirlar)
 
 
@@ -151,8 +157,8 @@ class BulutDilModeli:
                   "kural tabanlı cevaplara düşüyorum.")
             return None
 
-    def _sor(self, soru):
-        istem = sistem_istemi(self.paket, self.robot_adi, soru)
+    def _sor(self, soru, bolge=None):
+        istem = sistem_istemi(self.paket, self.robot_adi, soru, bolge)
         mesajlar = self.gecmis.mesajlar() + [{"role": "user", "content": soru}]   # sohbet hafızası + yeni soru
         if self.saglayici == "gemini":
             yanit = self.istemci.models.generate_content(
@@ -163,25 +169,25 @@ class BulutDilModeli:
             model=self.model, max_tokens=EN_FAZLA_TOKEN, system=istem, messages=mesajlar)
         return yanit.content[0].text
 
-    def cevapla(self, soru):
-        cevap = self._cevap_uret(soru)
+    def cevapla(self, soru, bolge=None):
+        cevap = self._cevap_uret(soru, bolge)
         self.gecmis.ekle(soru, cevap.metin)     # bir sonraki soruda modele geçmiş olarak gider
         return cevap
 
-    def _cevap_uret(self, soru):
-        # İçerik eşleşmesi: jest ve konu buradan; bulut çalışmazsa cevabın kendisi de buradan
-        yedek = self.yedek.cevap_bul(soru)
+    def _cevap_uret(self, soru, bolge=None):
+        # İçerik eşleşmesi: jest, yön ve konu buradan; bulut çalışmazsa cevabın kendisi de buradan
+        yedek = self.yedek.cevap_bul(soru, bolge)
         if not self.calisiyor:
             return yedek
         try:
-            metin = (self._sor(soru) or "").strip()
+            metin = (self._sor(soru, bolge) or "").strip()
         except Exception as hata:   # ağ, kota, anahtar hatası... robot susmasın
             print(f"[dil] Bulut hatası ({hata}); kural tabanlı cevap veriyorum.")
             return yedek
         if not metin:
             return yedek
         # Eşleşme olmasa da (yedek "bilmiyorum" dese de) bulutun sohbet cevabı söylenir
-        return Cevap(metin, yedek.jest, yedek.konu, yedek.puan)
+        return Cevap(metin, yedek.jest, yedek.konu, yedek.puan, yedek.yon)
 
 
 def gemini_icerigi(mesajlar):

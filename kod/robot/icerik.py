@@ -1,6 +1,7 @@
 # Ne yapıyor: "içerik paketi" YAML dosyasını okur (kurum, selamlama, konular, yerler, sık sorulanlar).
 # Soruyu Türkçe küçük harfe çevirir, noktalamayı siler, kelimelere böler ve her kaydı puanlar.
 # En iyi eşleşmeyi döner; puan eşiğin altındaysa None döner (dış kütüphane yok, yalnız kelime eşleme).
+# Yerler robotun bulunduğu bölgeye göre farklı tarif ve işaret yönü verebilir: tarifler/yonler (Kayit.tarif_sec).
 
 import re
 from dataclasses import dataclass, field
@@ -16,6 +17,9 @@ DURAK_KELIMELER = {
 
 # Türkçe ekler kelimenin sonuna gelir ("kantinde", "kantine"); ilk 5 harf kök sayılır.
 KOK_UZUNLUGU = 5
+
+# İşaret jestinin yönü (ESP32'ye {"k":"jest","ad":"isaret","yon":...} olarak gider)
+GECERLI_YONLER = ("sol", "sag", "ileri", "arka")
 
 ANAHTAR_PUANI = 3    # anahtar kelime geçerse
 ORTUSME_PUANI = 1    # başlık/cevaptaki bir kelime kökü soruda da varsa
@@ -59,6 +63,18 @@ class Kayit:
     cevap: str
     anahtarlar: list = field(default_factory=list)
     jest: str | None = None
+    tarifler: dict = field(default_factory=dict)   # bölge -> o bölgeden tarif (yalnız yerler)
+    yon: str | None = None                         # varsayılan işaret yönü: sol | sag | ileri | arka
+    yonler: dict = field(default_factory=dict)     # bölge -> işaret yönü
+
+    def tarif_sec(self, bolge=None):
+        """Robotun bölgesine özel tarif varsa onu, yoksa genel cevabı (tarif) döner."""
+        return self.tarifler.get(bolge) or self.cevap
+
+    def yon_sec(self, bolge=None):
+        """Bölgeye özel yön, yoksa varsayılan yön; geçersiz ya da "..." ise None (yönsüz jest)."""
+        yon = self.yonler.get(bolge) or self.yon
+        return yon if yon in GECERLI_YONLER else None
 
 
 @dataclass
@@ -121,7 +137,8 @@ def kayitlari_cikar(veri):
                               konu.get("anahtarlar") or [], konu.get("jest")))
     for yer in veri.get("yerler") or []:
         anahtarlar = [yer["ad"]] + (yer.get("anahtarlar") or [])
-        kayitlar.append(Kayit(yer["ad"], yer["tarif"], anahtarlar, yer.get("jest", "isaret")))
+        kayitlar.append(Kayit(yer["ad"], yer["tarif"], anahtarlar, yer.get("jest", "isaret"),
+                              dict(yer.get("tarifler") or {}), yer.get("yon"), dict(yer.get("yonler") or {})))
     for sss in veri.get("sss") or []:
         kayitlar.append(Kayit(sss["soru"], sss["cevap"], sss.get("anahtarlar") or [], sss.get("jest")))
     return kayitlar

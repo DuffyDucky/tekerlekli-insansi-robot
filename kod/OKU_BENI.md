@@ -6,7 +6,8 @@ başlayınca dinlemeye geçer (`SesTetik`), dinleme 0,8 sn sessizlikle biter, Vo
 Robot konuşurken mikrofon kapalıdır (yarım dupleks). Mikrofon ya da Vosk modeli yoksa robot açık bir
 mesajla durur. Mikrofonsuz deneme için **`--gelistirici`**: ekrana dokun (ya da Enter), soruyu ekrandaki
 kutuya (ya da terminale) yaz; bu yalnız geliştirici aracıdır, ziyaretçi robota bir şey yazmaz.
-Her tur `gunlukler/YYYY-MM-DD.csv` dosyasına bir satır olarak yazılır (ölçüm için).
+Her tur `gunlukler/YYYY-MM-DD.csv` dosyasına bir satır olarak yazılır (ölçüm için). Robot bulunduğu
+bölgeyi birden çok kaynaktan bulur ve yer tarifini/işaret yönünü ona göre seçer (9. bölüm).
 
 | Dosya | İş |
 |---|---|
@@ -21,7 +22,9 @@ Her tur `gunlukler/YYYY-MM-DD.csv` dosyasına bir satır olarak yazılır (ölç
 | `robot/tts.py` | Seslendirme: `YaziTTS` (varsayılan), `Pyttsx3TTS`, `PiperTTS` |
 | `robot/yuz.py` | pygame yüzü (ilkel şekiller), altta son söylenen metin; dokunma tetiğinde "Konuşmak için dokun" alanı |
 | `robot/gunluk.py` | Etkileşim günlüğü: her tur bir CSV satırı (tanınan, konu, puan, cevap, jest, süreler) |
-| `robot/seri.py` | ESP32'ye satır tabanlı JSON; port yoksa `SahteSeri` |
+| `robot/seri.py` | ESP32'ye satır tabanlı JSON (`jest(ad, yon)`); port yoksa `SahteSeri` |
+| `robot/konum/` | Konum: Wi-Fi, GPS, BLE, ArUco, görsel, odometri, elle kaynakları + `KonumYoneticisi`; `python3 -m robot.konum` aracı (9. bölüm) |
+| `konum/bolgeler.yaml`, `konum/parmak_izi.yaml` | Bölge haritası (GPS çemberi, ArUco, beacon) ve Wi-Fi parmak izi kaydı |
 | `icerik/universite.yaml`, `icerik/tesis.yaml` | Örnek içerik paketleri ("..." yerleri doldurulacak) |
 | `icerik_kontrol.py` | İçerik paketi denetleyicisi: zorunlu alanlar, boş/tekrarlı anahtar kelime, "..." listesi |
 | `olcum/test_seti.py`, `olcum/test_seti_universite.txt` | STT test seti ölçümü (tanıma oranı, kelime hata oranı, süre) |
@@ -109,6 +112,7 @@ Piper kullanılırsa aynı değeri `tts.ses_cihazi` alanına yazın.
 | `seri.port`, `seri.hiz` | boş / `/dev/ttyUSB0`, 115200 | Boşsa sahte seri |
 | `jest.sure` | saniye | Jestten sonra konuşmaya geçmeden bekleme |
 | `gunluk.etkin`, `gunluk.klasor` | `true`/`false`, klasör (`gunlukler`) | Etkileşim günlüğü; klasör depoya girmez |
+| `konum.*` | 9. bölüm | Konum kaynakları, ağırlıklar, tazelik, son bilinen bölge; `--konum <bolge>` elle verir |
 
 Sesli mod (ses tetiği, Vosk/Google) kurulamazsa robot durur (çıkış kodu 2); `--gelistirici` ile dokunma/Enter
 ve klavyeye düşer. Diğer eksikler (TTS, bulut, seri, GPIO) programı durdurmaz: neden yazılır ve varsayılana
@@ -154,7 +158,8 @@ sessizlikte dinleme bitiyor mu, robot konuşurken kendi sesiyle tetiklenmiyor mu
 
 **Etkileşim günlüğü** (`robot/gunluk.py`): her tur `gunlukler/YYYY-MM-DD.csv` dosyasına bir satır.
 Sütunlar: `zaman; tetik; stt; taninan; dil; konu; puan; cevap; jest; dinleme_ms; dusunme_ms;
-seslendirme_ms; uctan_uca_ms`. Ayraç `;`, kodlama UTF-8 (BOM'lu): Türkçe Excel'de çift tıklayınca sütunlara
+seslendirme_ms; uctan_uca_ms; bolge; konum_kaynak` (son ikisi 27 Ekim 2026'da eklendi; günün dosyası eski
+başlıkla açılmışsa yeni satırlar `YYYY-MM-DD_2.csv`'ye gider). Ayraç `;`, kodlama UTF-8 (BOM'lu): Türkçe Excel'de çift tıklayınca sütunlara
 ayrılır; Python'da `pandas.read_csv(yol, sep=";")`. Süreler: dinleme = `stt.dinle()` (ses tetiğinde konuşmanın
 başından sessizlik bitene kadar, tanıma dahil), düşünme = `dil.cevapla()`, seslendirme = `tts.soyle()` (Piper'da
 ses üretme + çalma), uçtan uca = tetikten (konuşma başı) seslendirmenin bitişine kadar tüm tur. Duyulamayan soru
@@ -225,3 +230,91 @@ tetik `ses`, `dokunma` ya da `gpio` olmalı, `klavye` tetikle hemen kapanır.
   `sudo usermod -aG dialout $USER` ve yeniden oturum aç.
 - **Bulut:** anahtar alınca `dil.saglayici: gemini` ya da `anthropic` (sohbet hafızası bulutta işe yarar).
 - **Durum doğrulaması:** hiçbir şey donanımda denenmedi; yukarıdaki listeyi bu akşam işaretleyin.
+
+## 9. Konum ve yön tarifi (`robot/konum/`)
+
+Robot bulunduğu **bölgeyi** (giriş holü, kantin önü...) birden çok kaynaktan birleştirerek bulur; yer
+sorulunca o bölgeye özel tarifi söyler ve işaret jestini doğru yöne yapar (`{"k":"jest","ad":"isaret","yon":"sol"}`).
+Bölge bilinmiyorsa genel tarif ve yönsüz işaret (eski davranış). Hedef doğruluk **bölge düzeyi (3-10 m)**;
+metre altı konum değil. Her tur günlüğe `bolge` ve `konum_kaynak` sütunlarıyla yazılır.
+
+| Kaynak | Dosya | Ne verir | Gereken | Yoksa |
+|---|---|---|---|---|
+| Elle | `elle.py` | `--konum <bolge>` ya da `konum/bolge.txt` (5 s'de bir okunur); güven 1, eskimez | - | - |
+| Wi-Fi parmak izi | `wifi.py` | Bölge (kayıtlı ölçümlere en yakın) | `nmcli` (Pi OS'te hazır), Windows'ta `netsh` | kayıt yoksa sessiz |
+| GPS | `gps.py` | Bölge (GPS çemberi), HDOP'a göre güven | NMEA seri modül + `pyserial` | `port` boşsa pasif |
+| BLE beacon | `ble.py` | En güçlü RSSI'li beacon'un bölgesi | `bleak` + beaconlar | pasif |
+| ArUco işareti | `aruco.py` | Bölge + isteğe bağlı x, y, yön | OpenCV (aruco), kamera | pasif |
+| Görsel tanıma | `gorsel.py` | Öğretilmiş karelere en benzer bölge | OpenCV, kamera; isteğe bağlı `onnxruntime` | pasif |
+| Odometri | `odometri.py` | x, y, yön (bölge değil) | ESP32 `{"k":"odo",...}` satırları (`seri.port`) | sessiz |
+
+Birleştirme (`birlestirici.py`, `KonumYoneticisi`): puan = ağırlık × güven × tazelik (yaş/`tazelik_saniye` ile
+doğrusal azalır); aynı bölgeyi söyleyenlerin puanı toplanır, en yüksek bölge seçilir. Hiç taze tahmin yoksa
+**son bilinen bölge korunur** (robot hiçbir koşulda durmaz). ArUco işaretinde x/y varsa odometri oraya
+düzeltilir, yoksa GPS (bölge merkezi `yerel` doluysa). Kalman/parçacık filtresi sonraki aşama.
+Her kaynak kendi iş parçacığında okunur; biri hata verirse yalnız o tur atlanır, kütüphanesi yoksa açık
+mesajla pasif olur (açılışta `[konum] etkin: ... | pasif: ...`).
+
+**Kurulum (Pi):** `gpsd` GEREKMEZ (NMEA satırları kodda ayrıştırılır).
+
+```bash
+sudo apt install python3-opencv            # ArUco + görsel; aruco var mı: python3 -c 'import cv2; cv2.aruco'; yoksa:
+~/robot-venv/bin/pip install opencv-contrib-python-headless
+~/robot-venv/bin/pip install bleak pyserial # BLE beacon, GPS/ESP32 seri
+sudo apt install python3-picamera2          # CSI kamera (çoğu Pi OS'te hazır); USB kamerada gerekmez
+# İsteğe bağlı daha iyi görsel özet (~14 MB, depoya girmez):
+~/robot-venv/bin/pip install onnxruntime
+wget -O modeller/mobilenet.onnx https://github.com/onnx/models/raw/main/validated/vision/classification/mobilenet/model/mobilenetv2-12.onnx
+```
+
+**Komut satırı aracı** (`kod/` klasöründen; Windows'ta `py -3 -m robot.konum ...`):
+
+```bash
+python3 -m robot.konum bolgeler                 # bölgeler + her bölgede kaç Wi-Fi ölçümü / görsel örnek var
+python3 -m robot.konum tara                     # her kaynağın ham okuması (Wi-Fi BSSID listesi, GPS fix...)
+python3 -m robot.konum tara --hepsi             # ayarda kapalı kaynaklar (kamera) dahil
+python3 -m robot.konum kaydet giris-holu --adet 5   # Wi-Fi parmak izi topla (konum/parmak_izi.yaml)
+python3 -m robot.konum ogret giris-holu --adet 5    # kameradan görsel örnek (konum/gorsel_ornekler/)
+python3 -m robot.konum nerede                   # birleştirici sonucu bir kez
+python3 -m robot.konum izle                     # sürekli (Ctrl+C)
+python3 -m robot.konum isaret 7                 # ArUco işareti PNG'si (konum/isaretler/), basıp asın
+python3 -m robot.konum sifirla-odometri         # ESP32'ye {"k":"odo_sifirla"}
+python3 ana.py --konum giris-holu               # bölgeyi elle ver (diğer kaynakları ezer)
+```
+
+Robot servisi çalışırken seri port meşguldür; `nerede`/`tara`/`sifirla-odometri` o zaman sahte seriye düşer
+(odometri görünmez). Önce `systemctl --user stop robot`.
+
+**Kampüste Wi-Fi parmak izi toplama:**
+1. `konum/bolgeler.yaml`'da bölgeleri yazın (kimlik + ad; GPS ve yerel x/y bilinmiyorsa `null` kalsın).
+2. Robotu (ya da Pi'yi) bölgenin ortasına götürün, `python3 -m robot.konum kaydet <bolge> --adet 5`.
+   Bölgenin 2-3 farklı noktasında ve günün farklı saatlerinde tekrarlayın (insan kalabalığı sinyali değiştirir).
+3. Bitince `python3 -m robot.konum izle` ile bölgeler arasında yürüyün; yanlış bölge çıkan yere daha çok ölçüm.
+4. `konum/parmak_izi.yaml` depoya girer: `git add kod/konum/parmak_izi.yaml` (ekip aynı haritayı kullanır).
+İnternet ya da ağa bağlanmak gerekmez, yalnız tarama yapılır. Telefon hotspot'ları (BSSID'nin ikinci hanesi
+2, 6, A, E olanlar çoğu zaman taşınabilir cihazdır) haritayı bozabilir; kayıt sırasında kapalı olsunlar.
+
+**Görsel öğretme:** `aruco.etkin`/`gorsel.etkin` ayarlarını kamera takılınca `true` yapın. Her bölgede robotun
+duracağı yerde `ogret <bolge> --adet 5`; robotu 20-30° döndürüp tekrarlayın, akşam ışığında bir tur daha.
+`tara --hepsi` görsel satırındaki benzerlik değeri `gorsel.esik` (0.75) ayarı için kullanılır. ArUco işareti
+(15 cm, A4) kamera yüksekliğine asılır; `bolgeler.yaml` → `isaretler: {7: giris-holu}`.
+
+**İçerik:** yerlerde `tarifler: {bolge: tarif}` ve `yon: sol|sag|ileri|arka` ya da `yonler: {bolge: yön}`
+(`icerik/universite.yaml` örnekleri "..." ile; gerçek yön ve tarifle doldurun). `icerik_kontrol.py` geçersiz
+yönü ve `bolgeler.yaml`'da olmayan bölge adını hata sayar. Bulut modeline "Robot şu an: <bölge>" eklenir.
+
+**Ayarlar** (`ayarlar.yaml` → `konum:`): `etkin`, `aralik_saniye` (GPS/BLE), `tazelik_saniye` (30),
+`son_bilinen_bolge` (açılış bölgesi), `gps_duzeltme_m`, `bolgeler`; her kaynakta `etkin`, `agirlik` ve kendi
+alanları (`wifi.aralik` 15 s, `gps.port`, `aruco.iyi_kenar_px`, `gorsel.esik`, `odometri.tik_tur`/`teker_cap_m`/
+`iz_genislik_m`/`yaw_isareti`, `elle.bolge`/`dosya`).
+
+**Sınırlar ve tuzaklar:**
+- Bölge düzeyi (3-10 m); yan yana iki bölge Wi-Fi'da benzer görünebilir (güven düşer, son bilinen korunur).
+- Wi-Fi taraması bağlantıyı 1-2 s kesebilir/yavaşlatabilir (bulut dil modeli o an gecikebilir): aralık 15 s.
+- Windows `netsh` önbellek listesini verir; kod taramayı `wlanapi` ile tetikleyip 4 s bekler (dizüstü denemesi
+  için; Windows 11'de konum izni kapalıysa liste boş gelir).
+- Görsel tanıma ışık, kalabalık ve dekor değişiminden etkilenir; ArUco en güvenilir kamera kaynağıdır.
+- GPS bina içinde çoğu zaman fix vermez; yalnız bahçe/giriş önü gibi açık alanlar.
+- Odometri sabitleri TAHMİNİ (`esp32/src/motorlar.cpp` ile aynı); tekerleği 10 tur çevirip `tik_tur`'u ölçün.
+  IMU yaw işareti doğrulanmadı: robotu sola çevirip `izle`'de yön artmıyorsa `yaw_isareti: -1`.
+- Donanımda (Pi'de nmcli, kamera, GPS, BLE, ESP32 odo) hiçbiri henüz denenmedi; testler sahte veriyle geçer.

@@ -2,7 +2,8 @@
 # Konuşma döngüsü: BEKLE -> (konuşma başladı) -> DİNLE -> stt -> DÜŞÜN -> dil -> (JEST) -> KONUŞ -> tts -> BEKLE.
 # Robot sesli çalışır; mikrofon yoksa durur. --gelistirici: mikrofonsuz deneme (dokun + ekrana yaz / terminal).
 # Yüz (pygame) ana iş parçacığında, konuşma döngüsü ayrı iş parçacığında; aralarında kuyruklar. Her tur
-# gunlukler/YYYY-MM-DD.csv dosyasına yazılır (robot/gunluk.py).
+# gunlukler/YYYY-MM-DD.csv dosyasına yazılır (robot/gunluk.py). Konum (robot/konum) kendi iş parçacıklarında
+# çalışır; her turda robotun bölgesi okunur, yer tarifi ve işaret yönü bölgeye göre seçilir.
 #
 # Örnek:  python3 ana.py --icerik universite                     (Pi, kod/ klasöründen, mikrofonla)
 #         py -3 kod/ana.py --gelistirici --icerik universite      (Windows, mikrofonsuz deneme)
@@ -20,6 +21,7 @@ from robot.dil import dil_sec
 from robot.durum import Durum, DurumMakinesi
 from robot.gunluk import Gunluk, Kronometre, tur_satiri
 from robot.icerik import IcerikPaketi
+from robot.konum import KonumYoneticisi
 from robot.mikrofon import Mikrofon, MikrofonYok
 from robot.seri import seri_sec
 from robot.stt import EkranSTT, KlavyeSTT, stt_sec
@@ -45,6 +47,7 @@ class Robot:
     yuz: Yuz
     jest_suresi: float = 1.0
     gunluk: Gunluk | None = None      # None ise tur kaydı tutulmaz
+    konum: object | None = None       # KonumYoneticisi ya da None (konum kapalı); durum()["bolge"]
 
 
 # ---------- ayarlar ----------
@@ -82,13 +85,16 @@ def secenekleri_oku(argv=None):
     p.add_argument("--stt", choices=["klavye", "vosk", "google"], help="konuşma tanıma")
     p.add_argument("--tts", choices=["yazi", "pyttsx3", "piper"], help="seslendirme")
     p.add_argument("--deneme-saniye", type=float, help="yüz tüm ifadeleri gösterip bu kadar saniye sonra kapanır")
+    p.add_argument("--konum", help="robotun bölgesini elle ver (konum/bolgeler.yaml'daki ad, ör. giris-holu)")
     return p.parse_args(argv)
 
 
 def secenekleri_uygula(ayar, sec):
     """Komut satırında verilen seçenekler ayar dosyasını ezer."""
-    for bolum in ("icerik", "dil", "stt", "tts", "yuz", "tetik", "seri", "robot", "jest", "gunluk", "algilama"):
-        ayar.setdefault(bolum, {})
+    for bolum in ("icerik", "dil", "stt", "tts", "yuz", "tetik", "seri", "robot", "jest", "gunluk", "algilama",
+                  "konum"):
+        if ayar.get(bolum) is None:
+            ayar[bolum] = {}
     # Yüz denemesi (--deneme-saniye) de bir geliştirici aracıdır; mikrofon istemez
     ayar["gelistirici"] = bool(sec.gelistirici or sec.deneme_saniye)
     if sec.icerik:
@@ -105,6 +111,8 @@ def secenekleri_uygula(ayar, sec):
         ayar["stt"]["saglayici"] = sec.stt
     if sec.tts:
         ayar["tts"]["saglayici"] = sec.tts
+    if sec.konum:
+        ayar["konum"]["elle"] = {**(ayar["konum"].get("elle") or {}), "etkin": True, "bolge": sec.konum}
     return ayar
 
 
@@ -124,6 +132,7 @@ def bilesenleri_kur(ayar):
                   s.get("azami_saniye", 8), mikrofon)
     tetik, stt = sesli_modu_denetle(ayar, tetik, stt)
     tetik, stt = ekran_girdisini_bagla(yuz, tetik, stt, ayar["gelistirici"])
+    seri = seri_sec(ayar["seri"].get("port", ""), ayar["seri"].get("hiz", 115200))
     robot = Robot(
         durum=DurumMakinesi(),
         tetik=tetik,
@@ -133,14 +142,37 @@ def bilesenleri_kur(ayar):
                     d.get("gecmis_tur", 6)),
         tts=tts_sec(t.get("saglayici", "yazi"), t.get("hiz", 170), yol_coz(t.get("piper_model", "")),
                     t.get("piper_komut", "piper"), t.get("ses_cihazi", "")),
-        seri=seri_sec(ayar["seri"].get("port", ""), ayar["seri"].get("hiz", 115200)),
+        seri=seri,
         yuz=yuz,
         jest_suresi=ayar["jest"].get("sure", 1.0),
         gunluk=Gunluk(yol_coz(g.get("klasor", "gunlukler"))) if g.get("etkin", True) else None,
+        konum=konum_kur(ayar, seri),
     )
     robot.durum.dinleyici_ekle(yuz.durum_degisti)   # yüz her durum değişiminden haberdar olur
     ozet_yaz(robot, paket)
     return robot
+
+
+def konum_kur(ayar, seri):
+    """Konum yöneticisini kurar (iş parçacıkları main()'de başlar). Kapalıysa ya da kurulamazsa None."""
+    if not ayar["konum"].get("etkin", True):
+        return None
+    try:
+        return KonumYoneticisi.ayarlardan(ayar["konum"], seri)
+    except Exception as hata:          # bozuk bolgeler.yaml vb.: robot konumsuz da çalışır
+        print(f"[konum] Kurulamadı ({hata}); bölgesiz devam ediyorum (genel tarifler).")
+        return None
+
+
+def konum_durumu(robot):
+    """Robotun o anki konum durumu; konum kapalıysa ya da hata verirse boş sözlük (robot durmaz)."""
+    if robot.konum is None:
+        return {}
+    try:
+        return robot.konum.durum()
+    except Exception as hata:
+        print(f"[konum] Durum okunamadı ({hata}); bu tur bölgesiz.")
+        return {}
 
 
 def mikrofon_gerekli_mi(ayar):
@@ -213,15 +245,17 @@ def tek_tur(robot):
     sure.adim("dinleme")
     if not soru:
         robot.durum.gec(Durum.BEKLE)
-        gunluge_yaz(robot, None, None, sure)  # duyulamayan soru da ölçüm için kaydedilir
+        gunluge_yaz(robot, None, None, sure, konum_durumu(robot))  # duyulamayan soru da kaydedilir
         return
     robot.durum.gec(Durum.DUSUN)
     robot.yuz.metin_goster(f"“{soru}”")   # duyulanı ekranda göster
-    cevap = robot.dil.cevapla(soru)
+    konum = konum_durumu(robot)
+    cevap = robot.dil.cevapla(soru, bolge=konum.get("bolge"))   # bölgeye özel tarif varsa o söylenir
     sure.adim("dusunme")
     if cevap.jest:
         robot.durum.gec(Durum.JEST)
-        robot.seri.jest(cevap.jest)           # kol hareketi ESP32'de başlar
+        # Yalnız işaret jesti yön alır; yön yoksa eski biçim gider (eski ESP32 firmware'i de anlar)
+        robot.seri.jest(cevap.jest, cevap.yon if cevap.jest == "isaret" else None)
         time.sleep(robot.jest_suresi)
     sure.adim("jest")
     robot.durum.gec(Durum.KONUS)
@@ -229,12 +263,12 @@ def tek_tur(robot):
     robot.tts.soyle(cevap.metin)              # konuşma bitene kadar burada beklenir; mikrofon kapalı
     sure.adim("seslendirme")
     robot.durum.gec(Durum.BEKLE)
-    gunluge_yaz(robot, soru, cevap, sure)
+    gunluge_yaz(robot, soru, cevap, sure, konum)
 
 
-def gunluge_yaz(robot, soru, cevap, sure):
+def gunluge_yaz(robot, soru, cevap, sure, konum=None):
     if robot.gunluk is not None:
-        robot.gunluk.yaz(tur_satiri(robot, soru, cevap, sure))
+        robot.gunluk.yaz(tur_satiri(robot, soru, cevap, sure, konum))
 
 
 def konusma_dongusu(robot, durdur):
@@ -266,6 +300,9 @@ def main(argv=None):
     except SesliModKurulamadi as hata:
         print(f"[ana] {hata}")
         return 2                     # systemd servisi bu kodla 5 sn sonra yeniden dener (mikrofon takılınca açılır)
+    if robot.konum is not None:
+        robot.konum.baslat()          # kaynaklar arka planda okunur; biri bozuksa yalnız o pasif olur
+        print(f"[konum] {robot.konum.ozet()}")
     durdur = threading.Event()
     if robot.yuz.etkin:
         # pygame ana iş parçacığında olmak zorunda; konuşma döngüsü arka planda
@@ -274,6 +311,8 @@ def main(argv=None):
         robot.yuz.calistir(durdur, sec.deneme_saniye)
     else:
         konusma_dongusu(robot, durdur)
+    if robot.konum is not None:
+        robot.konum.kapat()
     robot.seri.kapat()
     print("[ana] Robot kapandı.")
     return 0

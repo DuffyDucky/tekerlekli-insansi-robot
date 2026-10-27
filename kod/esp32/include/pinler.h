@@ -20,6 +20,13 @@
 #define PIN_I2C_SCL       22
 #define PCA9685_ADRES     0x40   // kart üstündeki A0-A5 lehim köprüleri açıksa 0x40
 
+// --- IMU (ileride; şimdilik YOK, bkz. src/imu.h, -DIMU_VAR=1 ile açılır) ---
+// I2C hattı PAYLAŞILIR: IMU, PCA9685 ile AYNI SDA/SCL'ye (21/22) paralel bağlanır, ayrı pin yok.
+// Adresler çakışmaz: PCA9685 0x40 (ve "hepsine" adresi 0x70), MPU6050 0x68/0x69, BNO055 0x28/0x29.
+// IMU'yu 3,3 V ile besle. Hattaki pull-up dirençleri: modüllerin ikisinde de varsa paralel olur
+// (ör. 2 x 4,7k = ~2,4k), sorun değil; üç-dört modül olursa fazlasını sök.
+// Wire hattı 400 kHz'te açılıyor (servolar.cpp); BNO055 saat uzatma yapar, sorun çıkarsa 100 kHz'e in.
+
 // --- BTS7960 sol motor sürücüsü ---
 #define PIN_SOL_RPWM      25     // ileri PWM
 #define PIN_SOL_LPWM      26     // geri PWM

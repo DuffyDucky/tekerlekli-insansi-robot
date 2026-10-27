@@ -27,6 +27,10 @@ void motorlar_guncelle(uint32_t simdi_ms);
 float motorlar_hedef_v();
 float motorlar_hedef_w();
 
-// Enkoder sayıları (test ve kalibrasyon için).
+// Enkoder sayıları: açılıştan (ya da son sıfırlamadan) beri toplam tik, yönü düzeltilmiş
+// (ileri dönüşte artar). Odometri telemetrisi ({"k":"odo",...}) ve kalibrasyon bunları kullanır.
 int32_t motor_sol_tik();
 int32_t motor_sag_tik();
+
+// İki tik sayacını kesme güvenli şekilde sıfırlar ({"k":"odo_sifirla"} komutu).
+void motor_tik_sifirla();

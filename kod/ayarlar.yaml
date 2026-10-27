@@ -55,3 +55,49 @@ jest:
 gunluk:
   etkin: true                     # her tur gunlukler/YYYY-MM-DD.csv dosyasına bir satır (ölçüm için)
   klasor: gunlukler               # depoya girmez (.gitignore)
+
+konum:                            # robotun bölgesi (robot/konum; OKU_BENI.md 9. bölüm). Komut: python3 -m robot.konum nerede
+  etkin: true                     # false: konum yok, hep genel tarif ve yönsüz işaret
+  aralik_saniye: 2.0              # kendi 'aralik'ı olmayan kaynakların (gps, ble) okuma aralığı
+  tazelik_saniye: 30              # bu kadar eski tahmin artık oy vermez (puan = ağırlık x güven x tazelik)
+  son_bilinen_bolge: null         # açılıştaki bölge (ör. giris-holu); hiç taze tahmin yoksa bu korunur
+  gps_duzeltme_m: 10              # odometri GPS bölge merkezinden bu kadar uzaklaşınca GPS'e çekilir
+  bolgeler: konum/bolgeler.yaml   # bölge listesi, GPS çemberleri, ArUco işaretleri, BLE beaconları
+  kamera:
+    aygit: 0                      # Picamera2 yoksa OpenCV kamera numarası
+  elle:                           # --konum <bolge> ya da konum/bolge.txt (her 5 s okunur); güven 1, eskimez
+    etkin: true
+    agirlik: 3.0                  # elle söylenen bölge diğer kaynakları ezer
+    bolge: null
+    dosya: konum/bolge.txt
+  wifi:                           # Wi-Fi parmak izi; önce: python3 -m robot.konum kaydet <bolge>
+    etkin: true
+    agirlik: 1.0
+    aralik: 15                    # tarama bağlantıyı 1-2 s kesebilir; 10 s'den kısa yapmayın
+    parmak_izi: konum/parmak_izi.yaml
+    azami_uzaklik: 250            # en yakın bölge bundan uzaksa "bu bina değil" (None)
+  gps:                            # NMEA seri GPS modülü (gpsd gerekmez); yalnız açık alanda
+    etkin: true
+    agirlik: 1.0
+    port: ""                      # boş = pasif. Pi'de: /dev/ttyAMA0 (UART) ya da /dev/ttyUSB1 (USB)
+    hiz: 9600
+  ble:                            # BLE beacon; 'pip install bleak' yoksa pasif
+    etkin: true
+    agirlik: 1.0
+  aruco:                          # duvardaki ArUco işaretleri; kamera takılınca true
+    etkin: false
+    agirlik: 2.0                  # işaret görülünce bölge neredeyse kesin
+    aralik: 1.0
+    iyi_kenar_px: 80              # işaret kenarı bu kadar pikselse tam güven; küçükse (uzak) düşer
+  gorsel:                         # kamerayla yer tanıma; önce: python3 -m robot.konum ogret <bolge>
+    etkin: false                  # kamera takılınca true
+    agirlik: 1.0
+    aralik: 5.0
+    esik: 0.75                    # kosinüs benzerliği bunun altındaysa "tanımıyorum"
+  odometri:                       # ESP32 {"k":"odo",...} satırları (seri.port doluysa); bölge değil x, y, yön verir
+    etkin: true
+    agirlik: 0.5
+    tik_tur: 1980                 # TAHMİNİ (esp32/src/motorlar.cpp ile aynı); tekerleği 10 tur çevirip ölçün
+    teker_cap_m: 0.125
+    iz_genislik_m: 0.426          # sol-sağ teker merkezleri arası; ÖLÇÜN
+    yaw_isareti: 1                # IMU yaw'ı saat yönünde artıyorsa -1 yapın (robotu sola çevirip izle ile bakın)

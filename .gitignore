@@ -15,3 +15,7 @@ tasarim/freecad/omuz/gorsel/kare/
 kod/modeller/
 # robotun etkilesim gunlukleri (her tur bir CSV satiri)
 kod/gunlukler/
+# konum: kamerayla öğretilen görsel örnekler (büyür), basılacak ArUco resimleri, elle bölge dosyası
+kod/konum/gorsel_ornekler/
+kod/konum/isaretler/
+kod/konum/bolge.txt

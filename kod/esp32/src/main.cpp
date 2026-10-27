@@ -4,6 +4,7 @@
 //   - kollar ve kafa: PCA9685 + servolar, kayıtlı jestler (servolar.*, jestler.*)
 //   - tekerlekler: 2 x BTS7960 + JGB37 enkoderli motor (motorlar.*)
 //   - güvenlik: 500 ms komut bekçisi + döngü bekçisi (watchdog.*)
+//   - konum: 10 Hz odometri yayını {"k":"odo",...} (enkoder tikleri + IMU yaw; IMU şimdilik yok, imu.*)
 //   - haberleşme: seri_protokol.*  |  pinler: include/pinler.h
 //
 // ======================= GÜÇ NOTU (kablajdan ÖNCE oku) =======================
@@ -22,6 +23,7 @@
 // Döngü yapısı: delay() yok. loop() hep döner, her iş kendi zamanı gelince yapılır.
 #include <Arduino.h>
 
+#include "imu.h"
 #include "jestler.h"
 #include "motorlar.h"
 #include "pinler.h"
@@ -33,6 +35,7 @@
 #ifndef DURUM_YAYINI
 #define DURUM_YAYINI 0
 #endif
+// Odometri yayını (ODO_YAYINI, ODO_ARALIK_MS) seri_protokol.h'de: varsayılan AÇIK, 100 ms.
 
 namespace {
 
@@ -43,6 +46,7 @@ constexpr uint32_t DURUM_ARALIK_MS = 1000;
 uint32_t son_servo_ms = 0;
 uint32_t son_motor_ms = 0;
 uint32_t son_durum_ms = 0;
+uint32_t son_odo_ms = 0;
 
 // LED: normalde 1 Hz yanıp söner (program çalışıyor). PCA9685 bulunamadıysa hızlı (5 Hz) söner.
 void led_guncelle(uint32_t simdi_ms) {
@@ -56,10 +60,11 @@ void setup() {
   pinMode(PIN_DURUM_LED, OUTPUT);
   motorlar_baslat();          // önce motorlar: sürücüler PWM=0 iken etkinleşsin
   servolar_baslat();          // I2C + PCA9685; bulunamazsa servo komutları hata döner
+  imu_baslat();               // aynı I2C hattı (Wire servolar_baslat'ta açıldı); IMU yoksa yaw null
   seri_baslat();              // {"k":"hazir",...} gönderir
   watchdog_baslat();
   uint32_t simdi = millis();
-  son_servo_ms = son_motor_ms = son_durum_ms = simdi;
+  son_servo_ms = son_motor_ms = son_durum_ms = son_odo_ms = simdi;
 }
 
 void loop() {
@@ -89,6 +94,18 @@ void loop() {
 #else
   (void)son_durum_ms;
   (void)DURUM_ARALIK_MS;
+#endif
+
+#if ODO_YAYINI
+  // Odometri: sabit aralıkla gönder (Pi ölü hesap için zaman damgası "ms"yi kullanır).
+  // Yalnız gönderir; komut bekçisini beslemez, motorları etkilemez.
+  if (simdi - son_odo_ms >= (uint32_t)ODO_ARALIK_MS) {
+    son_odo_ms += ODO_ARALIK_MS;
+    if (simdi - son_odo_ms >= (uint32_t)ODO_ARALIK_MS) son_odo_ms = simdi;   // geride kaldıysa yakala
+    seri_odo_gonder(simdi);
+  }
+#else
+  (void)son_odo_ms;
 #endif
 
   led_guncelle(simdi);

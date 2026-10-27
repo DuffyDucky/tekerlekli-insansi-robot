@@ -24,3 +24,8 @@ numpy
 # Bulut dil modeli (ortam değişkeninde API anahtarı gerekir)
 # google-genai
 # anthropic
+# Konum (OKU_BENI.md 9. bölüm): ArUco + kamerayla yer tanıma (Pi'de apt: python3-opencv), BLE beacon
+# opencv-contrib-python-headless
+# bleak
+# Daha iyi görsel özet (modeller/mobilenet.onnx ile; yoksa yalnız OpenCV ORB özeti)
+# onnxruntime

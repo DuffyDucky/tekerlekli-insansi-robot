@@ -47,10 +47,15 @@ constexpr uint32_t PWM_TAM = (1u << PWM_BIT) - 1;
 constexpr uint8_t LEDC_SOL_R = 0, LEDC_SOL_L = 1, LEDC_SAG_R = 2, LEDC_SAG_L = 3;
 // ---------------------------------------------------------------------------------------------
 
-// Enkoder sayaçları kesmede artar. 32 bit hizalı okuma ESP32'de bölünmez (atomik), ve yalnız
-// kesme yazdığı için ana döngüde kilit gerekmez. "volatile": derleyici değeri önbelleğe almasın.
+// Enkoder sayaçları kesmede artar. 32 bit hizalı okuma ESP32'de bölünmez (atomik), bu yüzden
+// OKUMAK için kilit gerekmez. "volatile": derleyici değeri önbelleğe almasın.
+// YAZMAK (odo_sifirla ile sıfırlamak) ise kilit ister: kesme "oku, 1 ekle, yaz" yaparken araya
+// sıfırlama girerse sıfır kaybolur. enkoder_kilit = ESP32'nin iki çekirdekte de çalışan kilidi
+// (portMUX); kilitliyken o çekirdekte kesmeler de bekler. Kilit çok kısa tutulur (tek atama).
+// Taşma: ~5000 tik/m ile int32 ~400 km sonra taşar; pratikte sorun değil.
 volatile int32_t sol_tik = 0;
 volatile int32_t sag_tik = 0;
+portMUX_TYPE enkoder_kilit = portMUX_INITIALIZER_UNLOCKED;
 
 struct Teker {
   uint8_t pin_r, pin_l, pin_en;
@@ -73,11 +78,18 @@ float son_v = 0.0f, son_w = 0.0f;
 
 // Kesme: A kanalı her değiştiğinde çalışır. A ile B aynıysa bir yön, farklıysa öbür yön.
 // Kesme kısa olmalı: yalnız say, hesap yapma. IRAM_ATTR: kod hızlı RAM'de dursun.
+// Pinler kilit DIŞINDA okunur; kilit yalnız sayacı değiştirirken alınır.
 void IRAM_ATTR sol_enkoder_kesme() {
-  if (digitalRead(PIN_SOL_ENK_A) == digitalRead(PIN_SOL_ENK_B)) sol_tik++; else sol_tik--;
+  int32_t adim = (digitalRead(PIN_SOL_ENK_A) == digitalRead(PIN_SOL_ENK_B)) ? 1 : -1;
+  portENTER_CRITICAL_ISR(&enkoder_kilit);
+  sol_tik += adim;
+  portEXIT_CRITICAL_ISR(&enkoder_kilit);
 }
 void IRAM_ATTR sag_enkoder_kesme() {
-  if (digitalRead(PIN_SAG_ENK_A) == digitalRead(PIN_SAG_ENK_B)) sag_tik++; else sag_tik--;
+  int32_t adim = (digitalRead(PIN_SAG_ENK_A) == digitalRead(PIN_SAG_ENK_B)) ? 1 : -1;
+  portENTER_CRITICAL_ISR(&enkoder_kilit);
+  sag_tik += adim;
+  portEXIT_CRITICAL_ISR(&enkoder_kilit);
 }
 
 float kirp(float x, float sinir) {
@@ -227,3 +239,14 @@ float motorlar_hedef_v() { return son_v; }
 float motorlar_hedef_w() { return son_w; }
 int32_t motor_sol_tik() { return tik_oku(sol); }
 int32_t motor_sag_tik() { return tik_oku(sag); }
+
+void motor_tik_sifirla() {
+  portENTER_CRITICAL(&enkoder_kilit);   // iki sayaç birlikte, araya kesme girmeden sıfırlanır
+  sol_tik = 0;
+  sag_tik = 0;
+  portEXIT_CRITICAL(&enkoder_kilit);
+  // PID'in "önceki tik"i de sıfırlanmalı; yoksa bir sonraki adımda dev bir hız sıçraması ölçülür.
+  // (motorlar_guncelle aynı döngüde çağrıldığı için burada kilit gerekmez.)
+  sol.onceki_tik = 0;
+  sag.onceki_tik = 0;
+}

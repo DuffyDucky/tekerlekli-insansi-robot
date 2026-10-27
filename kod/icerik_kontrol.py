@@ -1,6 +1,8 @@
 # Ne yapıyor: içerik paketi (icerik/*.yaml) denetleyicisi. Zorunlu alanları, boş anahtar kelime listelerini
 # ve aynı anahtar kelimenin iki kayıtta olmasını HATA sayar; "..." yer tutucularını satır satır listeler.
 # Hata varsa çıkış kodu 1 (--siki ile yer tutucu da hata sayılır: demodan önce son kontrol için).
+# Yerlerde bölgeye göre tarif/yön: 'yon'/'yonler' değerleri sol|sag|ileri|arka olmalı; 'tarifler'/'yonler'
+# içindeki bölge adları konum/bolgeler.yaml'da olmalı (dosya yoksa yalnız uyarı).
 #
 # Örnek:  py -3 kod/icerik_kontrol.py                    (icerik/ içindeki tüm paketler)
 #         python3 icerik_kontrol.py universite --siki     (Pi'de, kod/ klasöründen)
@@ -13,7 +15,8 @@ from dataclasses import dataclass, field
 
 import yaml
 
-from robot.icerik import kelimeler
+from robot.icerik import GECERLI_YONLER, kelimeler
+from robot.konum.bolgeler import BOLGELER_DOSYASI, bolgeleri_oku
 
 KOD_KLASORU = os.path.dirname(os.path.abspath(__file__))
 
@@ -53,7 +56,7 @@ def anahtar_bicimi(ifade):
     return " ".join(kelimeler(str(ifade)))
 
 
-def kaydi_denetle(bolum, sira, kayit, rapor, anahtar_sahipleri):
+def kaydi_denetle(bolum, sira, kayit, rapor, anahtar_sahipleri, bolge_adlari=None):
     ad_alani, zorunlular = BOLUMLER[bolum]
     if not isinstance(kayit, dict):
         rapor.hatalar.append(f"{bolum}[{sira}]: kayıt bir sözlük değil")
@@ -78,6 +81,38 @@ def kaydi_denetle(bolum, sira, kayit, rapor, anahtar_sahipleri):
     jestler = bilinen_jestler()
     if jest and jest not in jestler:
         rapor.uyarilar.append(f"{bolum} / {ad}: bilinmeyen jest '{jest}' (bilinenler: {', '.join(sorted(jestler))})")
+    if bolum == "yerler":
+        bolgeye_gore_denetle(f"{bolum} / {ad}", kayit, rapor, bolge_adlari)
+
+
+def yon_denetle(sahip, yon, rapor):
+    """Yön sol|sag|ileri|arka olmalı; "..." yer tutucudur (satır zaten listelenir), hata değil."""
+    if yon is None or yon in YER_TUTUCULAR or yon in GECERLI_YONLER:
+        return
+    rapor.hatalar.append(f"{sahip}: geçersiz yön '{yon}' (geçerli: {', '.join(GECERLI_YONLER)})")
+
+
+def bolgeye_gore_denetle(sahip, kayit, rapor, bolge_adlari):
+    """'tarifler' ve 'yonler' sözlük olmalı; bölge adları bolgeler.yaml'da olmalı; yönler geçerli olmalı."""
+    yon_denetle(sahip, kayit.get("yon"), rapor)
+    for alan in ("tarifler", "yonler"):
+        tablo = kayit.get(alan)
+        if tablo is None:
+            continue
+        if not isinstance(tablo, dict):
+            rapor.hatalar.append(f"{sahip}: '{alan}' bölge -> değer biçiminde olmalı (giris-holu: ...)")
+            continue
+        for bolge, deger in tablo.items():
+            if alan == "tarifler" and bos_mu(deger):
+                rapor.hatalar.append(f"{sahip}: '{bolge}' tarifi boş")
+            if alan == "yonler":
+                yon_denetle(f"{sahip} / {bolge}", deger, rapor)
+            if bolge_adlari is None:
+                uyari = "konum/bolgeler.yaml yok; 'tarifler'/'yonler' bölge adları denetlenmedi"
+                if uyari not in rapor.uyarilar:
+                    rapor.uyarilar.append(uyari)
+            elif str(bolge) not in bolge_adlari:
+                rapor.hatalar.append(f"{sahip}: '{alan}' içindeki '{bolge}' bölgesi bolgeler.yaml'da yok")
 
 
 def anahtari_kaydet(ifade, sahip, rapor, anahtar_sahipleri):
@@ -97,8 +132,9 @@ def yer_tutuculari_bul(satirlar):
             if not s.strip().startswith("#") and any(y in s for y in YER_TUTUCULAR)]
 
 
-def denetle(metin):
-    """YAML metnini denetler, Rapor döner. Dosyadan bağımsız (testler doğrudan metin verir)."""
+def denetle(metin, bolge_adlari=None):
+    """YAML metnini denetler, Rapor döner. Dosyadan bağımsız (testler doğrudan metin verir).
+    bolge_adlari: bolgeler.yaml'daki bölge kimlikleri; None = dosya yok (bölge adları yalnız uyarı)."""
     rapor = Rapor()
     try:
         veri = yaml.safe_load(metin)
@@ -118,7 +154,7 @@ def denetle(metin):
         kayitlar = veri.get(bolum) or []
         rapor.sayilar[bolum] = len(kayitlar)
         for sira, kayit in enumerate(kayitlar, 1):
-            kaydi_denetle(bolum, sira, kayit, rapor, anahtar_sahipleri)
+            kaydi_denetle(bolum, sira, kayit, rapor, anahtar_sahipleri, bolge_adlari)
     if not any(rapor.sayilar.values()):
         rapor.hatalar.append("Hiç kayıt yok: 'konular', 'yerler' ya da 'sss' bölümlerinden en az biri dolu olmalı")
     rapor.sayilar["anahtar kelime"] = len(anahtar_sahipleri)
@@ -146,6 +182,13 @@ def paket_dosyasi(ad):
     return ad if ad.endswith(".yaml") else os.path.join(KOD_KLASORU, "icerik", ad + ".yaml")
 
 
+def bolge_adlarini_oku(yol=BOLGELER_DOSYASI):
+    """bolgeler.yaml'daki bölge kimlikleri; dosya yoksa None."""
+    if not os.path.exists(yol):
+        return None
+    return set(bolgeleri_oku(yol).adlar())
+
+
 def main(argv=None):
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")   # Windows konsolunda Türkçe harfler
@@ -155,10 +198,11 @@ def main(argv=None):
     sec = p.parse_args(argv)
     dosyalar = [paket_dosyasi(a) for a in sec.paketler] or sorted(glob.glob(os.path.join(KOD_KLASORU, "icerik", "*.yaml")))
     hatali = False
+    bolge_adlari = bolge_adlarini_oku()
     for yol in dosyalar:
         try:
             with open(yol, encoding="utf-8") as dosya:
-                rapor = denetle(dosya.read())
+                rapor = denetle(dosya.read(), bolge_adlari)
         except OSError as hata:
             rapor = Rapor(hatalar=[f"Dosya açılamadı: {hata}"])
         raporu_yazdir(os.path.basename(yol), rapor)

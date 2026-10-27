@@ -2,6 +2,7 @@
 
 > **Donanımda doğrulanmadı (26 Ekim 2026).** Kod derleniyor; ama pinler, motor/enkoder yönleri,
 > servo sınırları, enkoder tik sayısı ve teker hızı tahmini. Aşağıdaki kontrol listesini sırayla uygula.
+> 27 Ekim 2026 eki (odometri yayını, `odo_sifirla`, jest `yon`, IMU iskeleti) de yalnız derlendi, kartta denenmedi.
 
 ESP32'nin işi basit: Pi'den gelen tek satırlık JSON komutları uygular. Konuşma, yapay zekâ, yüz
 hep Pi'de (`kod/`). ESP32 servoları (PCA9685 ile) ve iki tekerleği (BTS7960 ile) sürer.
@@ -16,15 +17,16 @@ Pi (kod/robot/seri.py) --USB kablo, 115200--> ESP32 --I2C--> PCA9685 --> 6 servo
 
 | Dosya | İş |
 |---|---|
-| `platformio.ini` | Kart (esp32dev), kütüphane sürümleri (sabit), monitör ayarı, `DURUM_YAYINI` anahtarı |
+| `platformio.ini` | Kart (esp32dev), kütüphane sürümleri (sabit), monitör ayarı, `DURUM_YAYINI` / `ODO_YAYINI` / `IMU_VAR` anahtarları |
 | `include/pinler.h` | Bütün pinler tek yerde (önerilen; kablajda doğrula) |
 | `src/main.cpp` | Güç notu, `setup()` ve `loop()`: her iş kendi zamanında (50 Hz), `delay()` yok |
 | `src/seri_protokol.*` | Satır okuma, JSON çözme, komutları ilgili modüle iletme, cevaplar |
 | `src/servolar.*` | PCA9685, açı → darbe (µs), sınıra kırpma, yumuşak geçiş (her 20 ms sınırlı adım) |
 | `src/jestler.*` | Jest oynatıcı: iki kare arası doğrusal ara değer, bitince boşta duruş |
 | `src/jest_verisi.h` | **Üretilir**, elle düzenlenmez: `py -3 kod/jestler/jest_uret.py` |
-| `src/motorlar.*` | v/w → sol/sağ teker, rampa, enkoder kesmesi, PID iskeleti (katsayılar 0) |
+| `src/motorlar.*` | v/w → sol/sağ teker, rampa, enkoder kesmesi, PID iskeleti (katsayılar 0), tik sayaçlarını sıfırlama |
 | `src/watchdog.*` | 500 ms komut bekçisi + 2 s döngü bekçisi |
+| `src/imu.*` | IMU arayüz **iskeleti** (`imu_baslat/imu_var/imu_yaw_derece`); IMU yok, yaw hep `null` |
 
 Jestler `kod/jestler/` klasöründe YAML olarak yazılır (`selam`, `isaret`, `evet`, `bosta`);
 servo kanal tablosu ve sınırlar `kod/jestler/kanallar.yaml`'da (tek kaynak).
@@ -50,24 +52,57 @@ başlayınca bırak. Windows'ta port görünmüyorsa kartın USB çipinin sürü
 
 ## 3. Seri monitörde elle deneme
 
-Monitörü aç, satırı yazıp Enter'a bas. Açılışta ESP32 şunu yazar: `{"k":"hazir","surum":"0.1.0","pca9685":true}`
+Monitörü aç, satırı yazıp Enter'a bas. Açılışta ESP32 şunu yazar: `{"k":"hazir","surum":"0.2.0","pca9685":true}`
+
+Sonra saniyede 10 kez `{"k":"odo",...}` satırı akar (aşağıda "Odometri telemetrisi"). Elle denerken
+kalabalık ederse geçici olarak `-DODO_YAYINI=0` ile derle; cevaplar yine aralarda görünür.
 
 | Yaz | Beklenen cevap |
 |---|---|
-| `{"k":"ping"}` | `{"ok":true,"k":"ping","surum":"0.1.0","ms":...,"pca9685":true,"jestler":["bosta","evet","isaret","selam"]}` |
+| `{"k":"ping"}` | `{"ok":true,"k":"ping","surum":"0.2.0","ms":...,"pca9685":true,"odo":true,"jestler":["bosta","evet","isaret","selam"]}` |
 | `{"k":"servo","kanal":"kafa_pan","aci":70}` | `{"ok":true,"k":"servo","kanal":"kafa_pan","aci":70}` (kanal numarası da olur: `"kanal":4`) |
 | `{"k":"jest","ad":"evet"}` | `{"ok":true,"k":"jest","ad":"evet"}` |
+| `{"k":"jest","ad":"isaret","yon":"sol"}` | `{"ok":true,"k":"jest","ad":"isaret","yon":"sol"}` (yön şimdilik yalnız cevaba yazılır; jest hâlâ sağ kolla oynar) |
+| `{"k":"jest","ad":"isaret","yon":"yukari"}` | `{"ok":false,"k":"jest","hata":"yon_gecersiz"}` (geçerli: `sol`, `sag`, `ileri`, `arka`) |
 | `{"k":"sur","v":0.1,"w":0}` | `{"ok":true,"k":"sur"}` → tekerlek döner, **0,5 s sonra kendiliğinden durur** (bekçi) |
 | `{"k":"dur"}` | `{"ok":true,"k":"dur"}` → motorlar anında durur, jest kesilir |
+| `{"k":"odo_sifirla"}` | `{"ok":true,"k":"odo_sifirla"}` → sonraki `odo` satırında `sol` ve `sag` 0'dan başlar |
 | `merhaba` | `{"ok":false,"hata":"json_bozuk"}` |
 
-Hata kodları: `json_bozuk`, `k_yok`, `bilinmeyen_komut`, `ad_yok`, `bilinmeyen_jest`, `v_w_sayi_olmali`,
-`kanal_yok`, `bilinmeyen_kanal`, `aci_sayi_olmali`, `pca9685_yok`, `satir_cok_uzun`.
+Hata kodları: `json_bozuk`, `k_yok`, `bilinmeyen_komut`, `ad_yok`, `yon_gecersiz`, `bilinmeyen_jest`,
+`v_w_sayi_olmali`, `kanal_yok`, `bilinmeyen_kanal`, `aci_sayi_olmali`, `pca9685_yok`, `satir_cok_uzun`.
 
 `sur` birimleri `seri.py` ile aynı: `v` m/s (ileri +), `w` rad/s (sola +); ESP32 ikisini de -1..1'e kırpar.
 Robot sürülürken Pi `sur`'u ~200 ms'de bir yeniden göndermeli; 500 ms gelmezse motorlar durur.
 Durum mesajı (`{"k":"durum","jest":"yok","sur":[0,0],"wd":true}`, 1 s'de bir) için `platformio.ini`'de
 `-DDURUM_YAYINI=1` satırının başındaki `;` işaretini sil. `wd:true` = bekçi motorları durdurmuş.
+
+### Odometri telemetrisi
+
+Pi robotun konumunu tekerlek tiklerinden (ölü hesap) bulur; ESP32 bunun için ham sayıları yayınlar:
+
+```
+{"k":"odo","sol":1234,"sag":1251,"yaw":null,"ms":104200}
+```
+
+| Alan | Anlamı |
+|---|---|
+| `sol`, `sag` | Açılıştan (ya da son `odo_sifirla`'dan) beri **toplam** enkoder tiki, int32. İleri dönüşte artar (yön `motorlar.cpp`'deki `*_ENKODER_TERS` ile düzeltilmiş). |
+| `yaw` | IMU'dan dönüş açısı, derece (sola +). **IMU yok → hep `null`.** IMU gelince `src/imu.*` doldurulur, `-DIMU_VAR=1`. |
+| `ms` | ESP32'nin `millis()` değeri; iki satır arası süreyi Pi bununla hesaplar (49 günde bir sıfıra döner). |
+
+- **Sıklık:** varsayılan 10 Hz (`ODO_ARALIK_MS` = 100). Değiştirmek için `platformio.ini`'de `-DODO_ARALIK_MS=...`.
+- **Varsayılan AÇIK.** Kapatmak için `platformio.ini`'de `-DODO_YAYINI=0` satırının başındaki `;` işaretini sil.
+  Pi `ping` cevabındaki `"odo":true` ile yayının açık olduğunu anlar; eski firmware'de (0.1.0) bu alan yok.
+- **Komut değildir, cevap değildir:** `ok` alanı yoktur; Pi komut cevabı beklerken `"k":"odo"` satırlarını ayıklamalı.
+  Yayın komut bekçisini beslemez: `sur` gelmezse motorlar yine 0,5 s'de durur.
+- **Sıfırlama:** `{"k":"odo_sifirla"}` iki sayacı kesme güvenli şekilde (kilitle) sıfırlar. Motorları durdurmaz.
+- **Pi tarafı:** `kod/robot/konum/odometri.py` bu satırları okur.
+
+> **Uyarı (tutarlılık):** ESP32 tik gönderir, metreye Pi çevirir. `TIK_PER_TUR` (şimdi 22 × 90 = 1980,
+> tahmini), teker çapı (`TEKER_CAPI_M` = 0,125 m) ve iz genişliği (`IZ_GENISLIGI_M` = 0,426 m) `motorlar.cpp`'de
+> ve Pi'deki `ayarlar.yaml` → `konum.odometri` altında **aynı ölçülmüş değerler** olmalı. Birini değiştirirsen
+> öbürünü de değiştir; yoksa hız kontrolü ile konum hesabı farklı robotlar varsayar.
 
 ## 4. Pi tarafı
 
@@ -91,6 +126,7 @@ Kullanıcın porta erişemiyorsa: `sudo usermod -aG dialout $USER`, sonra oturum
 | İşlev | ESP32 GPIO | Not |
 |---|---|---|
 | PCA9685 SDA / SCL | 21 / 22 | PCA9685 VCC = ESP32 3,3 V; V+ = ayrı servo beslemesi |
+| IMU SDA / SCL (ileride) | 21 / 22 | PCA9685 ile **aynı** I2C hattı; MPU6050 0x68 / BNO055 0x28, adres çakışmaz |
 | Sol BTS7960 RPWM / LPWM / EN | 25 / 26 / 27 | R_EN ve L_EN birlikte EN'e; EN'i 10k ile GND'ye çek |
 | Sağ BTS7960 RPWM / LPWM / EN | 32 / 33 / 13 | aynı |
 | Sol enkoder A / B | 18 / 19 | enkoderi 3,3 V ile besle |
@@ -123,6 +159,8 @@ Kullanılmaması gerekenler: GPIO 6-11 (flash), 0/2/5/12/15 strapping pinleri (a
    Ters dönen teker: `motorlar.cpp`'de `SOL/SAG_MOTOR_TERS`. `{"k":"dur"}` anında durdurmalı.
 7. **Enkoder:** ileri dönüşte sayı artmalı (`ENKODER_TERS`). Tekerleği elle 10 tur çevir, tik farkını
    10'a böl → `TIK_PER_TUR`. Tam PWM'de teker hızını ölç → `TEKER_AZAMI_HIZ`. İz genişliğini ölç.
+   Tikleri monitördeki `odo` satırlarından oku: önce `{"k":"odo_sifirla"}`, sonra 10 tur çevir.
+   Bulunan değerleri Pi'deki `ayarlar.yaml` → `konum.odometri`'ye de yaz.
 8. **Yerde, açık alanda, düşük hız** (`v` 0,1). PID'i ancak bundan sonra, küçük `KP` ile aç.
 9. **Pi ile:** `ayarlar.yaml`'da port, `py -3 kod/ana.py`, jest ve dur komutlarının ESP32'ye gittiğini gör.
 

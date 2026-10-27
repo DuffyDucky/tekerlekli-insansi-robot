@@ -1,0 +1,51 @@
+# Robotun bölge haritası (robot/konum/bolgeler.py okur). Bölge kimliği (ör. giris-holu) içerik paketindeki
+# 'tarifler:' ve 'yonler:' alanlarında da aynen kullanılır. "..." = doldurulacak bilgi.
+#
+# Her bölge:
+#   ad:        insanın okuyacağı ad
+#   aciklama:  nerede olduğu (kısaca)
+#   gps:       {lat, lon, yaricap_m}  açık alandaki bölgeler için GPS çemberi. Telefonla ölçüp yazın;
+#              bilinmiyorsa null bırakın (UYDURMAYIN). Bina içinde GPS çoğu zaman fix vermez.
+#   yerel:     {x, y}  yerel haritada bölge merkezi (metre; başlangıç noktası ve eksenler ekibin seçimi).
+#              Doluysa GPS odometriyi buraya düzeltebilir; boşsa yalnız bölge adı kullanılır.
+# Bölge eklemek: yeni kimlik + ad, sonra 'python3 -m robot.konum kaydet <kimlik>' ile Wi-Fi parmak izi topla.
+
+bolgeler:
+  giris-holu:
+    ad: "Giriş holü"
+    aciklama: "..."
+    gps: {lat: null, lon: null, yaricap_m: null}
+    yerel: {x: null, y: null}
+
+  kantin-onu:
+    ad: "Kantin önü"
+    aciklama: "..."
+    gps: {lat: null, lon: null, yaricap_m: null}
+    yerel: {x: null, y: null}
+
+  mekatronik-lab-kapisi:
+    ad: "Mekatronik laboratuvarı kapısı"
+    aciklama: "..."
+    gps: {lat: null, lon: null, yaricap_m: null}
+    yerel: {x: null, y: null}
+
+  bahce:
+    ad: "Bahçe"
+    aciklama: "..."
+    gps: {lat: null, lon: null, yaricap_m: null}
+    yerel: {x: null, y: null}
+
+  sekreterlik-koridoru:
+    ad: "Sekreterlik koridoru"
+    aciklama: "..."
+    gps: {lat: null, lon: null, yaricap_m: null}
+    yerel: {x: null, y: null}
+
+# ArUco işaretleri (DICT_4X4_50, kimlik 0-49). Basmak için: python3 -m robot.konum isaret <kimlik>
+# Kısa biçim:   7: giris-holu
+# Uzun biçim:   7: {bolge: giris-holu, x: 1.5, y: 0.0, yon: 90}   (işareti gören robotun yaklaşık konumu/yönü)
+isaretler: {}
+
+# BLE beaconları: MAC adresi (ya da yayın adı) -> bölge. MAC'i görmek için: python3 -m robot.konum tara --hepsi
+# Örnek:   "AA:BB:CC:DD:EE:FF": kantin-onu
+beaconlar: {}

@@ -31,21 +31,23 @@ Robot SESLİ çalışır (Efe kararı, 26 Ekim 2026: ziyaretçi yazmaz, yapay ze
 
 | Dosya | İş |
 |---|---|
-| `kod/ana.py` | Ayarları okur, bileşenleri kurar (`bilesenleri_kur` → `mikrofon_kur`, `sesli_modu_denetle`, `ekran_girdisini_bagla`), konuşma turu (`tek_tur`, `Kronometre` + günlük); yüz ana iş parçacığında, döngü ayrı iş parçacığında. Sesli mod kurulamazsa `SesliModKurulamadi` → çıkış kodu 2; `--gelistirici`/`--deneme-saniye` dokunma + klavyeye düşer |
+| `kod/ana.py` | Ayarları okur, bileşenleri kurar (`bilesenleri_kur` → `mikrofon_kur`, `sesli_modu_denetle`, `ekran_girdisini_bagla`, `konum_kur`), konuşma turu (`tek_tur`: bölge `konum_durumu` ile alınır, `dil.cevapla(soru, bolge=...)`, `isaret` jesti `yon` ile; `Kronometre` + günlük); `--konum <bolge>` elle bölge; yüz ana iş parçacığında, döngü ayrı iş parçacığında. Sesli mod kurulamazsa `SesliModKurulamadi` → çıkış kodu 2; `--gelistirici`/`--deneme-saniye` dokunma + klavyeye düşer |
 | `kod/ayarlar.yaml` | Tek ayar dosyası: sağlayıcılar (varsayılan `tetik: ses`, `stt: vosk`), `algilama` (esik, sessizlik_saniye, vad_duzeyi), `dil.gecmis_tur`, içerik paketi, ekran, GPIO, seri, `gunluk` |
 | `kod/robot/mikrofon.py` | `Mikrofon`: 16 kHz 30 ms parçalar, RMS eşiği + varsa webrtcvad; `konusma_bekle()` (3 parça = başladı, 300 ms ön kayıt), `konusma_parcalari()` (sessizlikte biter, sonra akış kapanır = yarım dupleks); `akis_ac` ile sahte akış; `python3 -m robot.mikrofon` eşik ölçer |
-| `kod/robot/gunluk.py` | `Gunluk` (`gunlukler/YYYY-MM-DD.csv`, `;` + utf-8-sig, yazamazsa yalnız uyarı), `Kronometre`, `tur_satiri`; süre tanımları dosya başında |
+| `kod/robot/gunluk.py` | `Gunluk` (`gunlukler/YYYY-MM-DD.csv`, `;` + utf-8-sig, yazamazsa yalnız uyarı), `Kronometre`, `tur_satiri` (+ `bolge`, `konum_kaynak` sütunları; günün dosyası eski başlıklıysa uyarıp `_2.csv`'ye yazar); süre tanımları dosya başında |
 | `kod/robot/durum.py` | `Durum`, `DurumMakinesi`; izinli geçişler `GECISLER` tablosu, geçersiz geçiş `GecersizGecis`, dinleyiciler `(eski, yeni)` |
-| `kod/robot/icerik.py` | İçerik paketi (YAML) ve arama: `turkce_kucuk`, kök = ilk 5 harf, anahtar 3 / ortak kelime 1 puan, eşik altı None |
-| `kod/robot/dil.py` | `Cevap(metin, jest, konu, puan)`; `SohbetGecmisi` (son N tur); `KuralTabanli` (içerik → kalıp → "bilmiyorum", geçmişi yalnız kaydeder; `cevap_bul` kaydetmeden); `BulutDilModeli` gemini/anthropic sohbet istemi + mesaj geçmişi, eşleşmesiz de sohbet eder, sorunla `KuralTabanli`'ye düşer |
+| `kod/robot/icerik.py` | İçerik paketi (YAML) ve arama: `turkce_kucuk`, kök = ilk 5 harf, anahtar 3 / ortak kelime 1 puan, eşik altı None; yerlerde `tarifler: {bolge: metin}` ve `yon`/`yonler` (`Kayit.tarif_sec(bolge)`, `yon_sec`, `GECERLI_YONLER` = sol/sag/ileri/arka) |
+| `kod/robot/dil.py` | `Cevap(metin, jest, konu, puan, yon)`; `cevapla(soru, bolge=None)` (bölge bulut istemine "Robot şu an: <bölge>" olarak gider); `SohbetGecmisi` (son N tur); `KuralTabanli` (içerik → kalıp → "bilmiyorum", geçmişi yalnız kaydeder; `cevap_bul` kaydetmeden); `BulutDilModeli` gemini/anthropic sohbet istemi + mesaj geçmişi, eşleşmesiz de sohbet eder, sorunla `KuralTabanli`'ye düşer |
 | `kod/robot/stt.py` · `tts.py` · `tetik.py` | `dinle()`, `soyle()`, `bekle()` arayüzleri; `*_sec()` ayardan kurar, olmazsa klavye/yazıya düşer. `SesTetik`/`VoskSTT`/`GoogleSTT` ortak `Mikrofon`'u kullanır; `DokunmaTetik` ve `EkranSTT` yüzle `queue.Queue` üzerinden konuşur |
 | `kod/robot/yuz.py` | pygame yüzü, `yuz_ciz()` pencere olmadan da çizer; `Yuz.dokunma_tetik`/`yazi_alici` bağlıysa alt şerit (`alt_alan`, `alanda_mi`): BEKLE'de dokunma alanı, DİNLE'de metin kutusu (yalnız geliştirici); olaylar `_olaylari_isle` (MOUSEBUTTONDOWN, FINGERDOWN, TEXTINPUT); pygame yoksa `etkin=False` |
-| `kod/robot/seri.py` | ESP32'ye satır JSON (`jest`, `sur`, `dur`), hız sınırı; port boşsa `SahteSeri` |
+| `kod/robot/seri.py` | ESP32'ye satır JSON (`jest(ad, yon=None)`, `sur`, `dur`), hız sınırı; port boşsa `SahteSeri`; gelen satırları `KonumYoneticisi` kendi iş parçacığında okur (`odo` odometriye, diğerleri yoksayılır) |
+| `kod/robot/konum/` | Konum paketi (27 Ekim 2026): `kaynak.py` (`KonumKaynagi`, `KonumTahmini(bolge, x, y, yon_derece, guven, zaman, kaynak)`), kaynaklar `wifi` (nmcli / Windows'ta wlanapi WlanScan + netsh, parmak izi en yakın bölge, ikinciye yakınsa güven düşer), `gps` (NMEA GGA/RMC elle ayrıştırma, haversine geofence), `ble` (bleak), `aruco` (cv2.aruco DICT_4X4_50, eski/yeni arayüz), `gorsel` (ORB + histogram özet, en yakın komşu kosinüs ≥ 0,75; `onnxruntime` + `kod/modeller/mobilenet.onnx` varsa onu kullanır; örnekler `kod/konum/gorsel_ornekler/*.npz`), `kamera` (tek kamera kilitle paylaşılır: Picamera2 ya da cv2), `odometri` (ESP32 `odo` satırları, diferansiyel ölü hesap, `duzelt`, `yaw_isareti`), `elle` (`--konum`, `kod/konum/bolge.txt` 5 s'de bir); `birlestirici.KonumYoneticisi`: arka plan iş parçacığı, puan = ağırlık × güven × tazelik, taze tahmin yoksa son bilinen bölge korunur, `durum()`; araç `python3 -m robot.konum tara|kaydet|ogret|nerede|izle|bolgeler|sifirla-odometri|isaret` |
+| `kod/konum/bolgeler.yaml` · `parmak_izi.yaml` | Bölgeler (ad, açıklama, `gps` merkez/yarıçap, `isaretler` ArUco id→bölge, `beaconlar` MAC→bölge; 5 örnek, değerler "..."/null) ve Wi-Fi parmak izi veritabanı; ikisi de depoya girer, `gorsel_ornekler/`, `isaretler/`, `bolge.txt` girmez |
 | `kod/icerik/*.yaml` | İçerik paketleri (`universite`, `tesis`); "..." = doldurulacak bilgi |
-| `kod/icerik_kontrol.py` | İçerik paketi denetleyicisi: zorunlu alan, boş/tekrarlı anahtar kelime = hata (çıkış 1), "..." satır listesi, bilinmeyen jest uyarısı (jest adları `kod/jestler/*.yaml`'dan); `--siki` |
+| `kod/icerik_kontrol.py` | İçerik paketi denetleyicisi: zorunlu alan, boş/tekrarlı anahtar kelime = hata (çıkış 1), "..." satır listesi, bilinmeyen jest uyarısı (jest adları `kod/jestler/*.yaml`'dan), geçersiz `yon` ve `tarifler` bölgesi `bolgeler.yaml`'da yoksa uyarı; `--siki` |
 | `kod/olcum/test_seti.py` · `test_seti_universite.txt` | STT ölçümü: tam/normalize eşleşme, KHO (Levenshtein), konu eşleşmesi, dinleme ms; `--stt --etiket --adet`; sonuç `kod/olcum/sonuclar/` (depoya girer) |
 | `kod/robot.service` | systemd kullanıcı servisi: `graphical-session.target`, `DISPLAY=:0`, `ana.py --icerik universite --tam-ekran`, `Restart=on-failure` |
-| `kod/tests/` | pytest; `conftest.py` `kod/`'u yola ekler ve örnek paketi verir; pygame testleri SDL `dummy` sürücüsüyle olay sentezler |
+| `kod/tests/` | pytest (158); `conftest.py` `kod/`'u yola ekler ve örnek paketi verir; pygame testleri SDL `dummy` sürücüsüyle olay sentezler; `test_konum*.py` sentetik parmak izi/geofence/odometri/birleştirme, cv2 yoksa kamera testleri atlanır |
 | `kod/kur_pi.sh` · `requirements.txt` | Pi kurulumu (apt + `~/robot-venv --system-site-packages`), paket listesi |
 | `kod/PI5-KURULUM.md` | Gerçek Pi 5 (`lale`) kurulum kaydı ve sıfırdan kurma rehberi (cloud-init dosyaları, Imager CLI, modeller, tuzaklar); Pi'deki yol `~/tekerlekli-insansi-robot`, venv `~/robot-venv` |
 
@@ -59,8 +61,11 @@ Robot SESLİ çalışır (Efe kararı, 26 Ekim 2026: ziyaretçi yazmaz, yapay ze
   Türkçe küçük harf için `str.lower()` değil `icerik.turkce_kucuk` (İ→i, I→ı); Pi 5 GPIO için apt'tan
   gelen gpiozero + lgpio gerekir (venv `--system-site-packages`); `kod/modeller/` ve `kod/gunlukler/` depoya
   girmez; systemd kullanıcı servisi masaüstü ortamını almaz (`DISPLAY=:0` dosyada), stdin'siz çalışır (klavye
-  tetik olmaz); dokunma ekranında SDL hem FINGERDOWN hem `touch=True` fare olayı üretir, fare olayı atlanır.
+  tetik olmaz); dokunma ekranında SDL hem FINGERDOWN hem `touch=True` fare olayı üretir, fare olayı atlanır;
+  Wi-Fi taraması bağlantıyı 1-2 s kesebilir (aralık 15 s), Windows'ta `netsh` önbellek verir (wlanapi ile tarama tetiklenir), telefon hotspot'ları (yerel MAC) parmak izini bozabilir;
+  görsel eşik 0,75 gerçek ortamda ayarlanmalı; robot servisi çalışırken seri port meşguldür (`nerede`/`tara` sahte seriye düşer); kamera kaynakları (`aruco.etkin`, `gorsel.etkin`) varsayılan kapalı.
 - Pi 5'te doğrulanan (26 Ekim 2026 gecesi): kurulum, 104 test, Piper/Vosk yükleme, terminal konuşma turu; ekran, ses çıkışı, mikrofon, GPIO ve seri henüz doğrulanmadı (`kod/PI5-KURULUM.md`, `kod/OKU_BENI.md` 5. bölüm).
+- Konum paketi (27 Ekim 2026) Windows'ta eduroam'da doğrulandı (tarama 7-11 BSSID, `kaydet`/`nerede`, `--konum` ile bölgeye özel tarif); Pi'de nmcli, kamera, GPS, BLE ve ESP32 odo satırları doğrulanmadı; Pi'nin apt OpenCV'sinde aruco var mı bilinmiyor.
 - Diğer proje çıktıları: `raporlar/mikrofon-secimi.md` (mikrofon kararı), `tasarim/pi5-kutu/` (Pi kutusu STL + parametrik betik; vault'tan kopya, tek kaynak burası), `belgeler/tubitak-2209-b/` (başvuru taslağı docx + OKU_BENI; docx'i XML düzeyinde değil Word'de düzenle, sonra commit).
 
 ### ESP32 (`kod/esp32/`) ve jestler (`kod/jestler/`)
@@ -71,11 +76,12 @@ Driver 3.0.2; sürümler sabit). Ayrıntı ve ilk çalıştırma listesi: `kod/e
 | Dosya | İş |
 |---|---|
 | `kod/esp32/include/pinler.h` | Bütün pinler tek yerde (önerilen, kablajda doğrulanacak) |
-| `kod/esp32/src/main.cpp` | Güç notu; `loop()` beklemesiz, motor ve servo/jest 50 Hz, LED; `DURUM_YAYINI` 1 s durum mesajı |
-| `kod/esp32/src/seri_protokol.*` | 115200 satır JSON: `jest`(ad) `sur`(v,w) `dur` `servo`(kanal,aci) `ping`; cevap `{"ok":..,"k":..}`, açılışta `{"k":"hazir"}` |
+| `kod/esp32/src/main.cpp` | Güç notu; `loop()` beklemesiz, motor ve servo/jest 50 Hz, LED; `DURUM_YAYINI` 1 s durum mesajı; `ODO_YAYINI` (varsayılan 1) `ODO_ARALIK_MS` (100) odometri satırı; `imu_baslat()` |
+| `kod/esp32/src/seri_protokol.*` | 115200 satır JSON: `jest`(ad, isteğe bağlı `yon` sol/sag/ileri/arka, geçersizse `yon_gecersiz`) `sur`(v,w) `dur` `servo`(kanal,aci) `ping` (cevapta `odo`) `odo_sifirla`; cevap `{"ok":..,"k":..}`, açılışta `{"k":"hazir"}`; yayın `{"k":"odo","sol","sag","yaw","ms"}` 10 Hz sabit tamponla, `ok` alanı yok, watchdog'u etkilemez (sürüm 0.2.0) |
+| `kod/esp32/src/imu.*` | IMU iskeleti: `imu_baslat`, `imu_var`, `imu_yaw_derece`; `IMU_VAR` 0 iken yaw `null`; MPU6050 0x68 / BNO055 0x28, PCA9685 ile aynı I2C (21/22) |
 | `kod/esp32/src/servolar.*` | PCA9685 50 Hz, robot açısı → µs, sınıra kırpma, `ters`, her 20 ms `hiz*0,02` derece adım |
 | `kod/esp32/src/jestler.*` | Kare oynatıcı, doğrusal ara değer, bitince `BOSTA_DURUS`; `dur`/elle `servo` jesti keser |
-| `kod/esp32/src/motorlar.*` | BTS7960 LEDC 20 kHz; v (m/s), w (rad/s) → sol/sağ, rampa 0,5 m/s², enkoder kesmesi, PID katsayıları 0 (ileri besleme = açık çevrim); TAHMİNİ sabitler dosya başında |
+| `kod/esp32/src/motorlar.*` | BTS7960 LEDC 20 kHz; v (m/s), w (rad/s) → sol/sağ, rampa 0,5 m/s², enkoder kesmesi, PID katsayıları 0 (ileri besleme = açık çevrim); `motor_tik_sifirla()` portMUX kilitli (PID önceki tikini de sıfırlar); TAHMİNİ sabitler dosya başında, `TIK_PER_TUR`/teker çapı/iz genişliği `ayarlar.yaml konum.odometri` ile aynı olmalı |
 | `kod/esp32/src/watchdog.*` | 500 ms `sur` gelmezse `motorlar_dur()`; 2 s döngü bekçisi (ESP32 reset) |
 | `kod/esp32/src/jest_verisi.h` | ÜRETİLİR, elle düzenleme: `py -3 kod/jestler/jest_uret.py` |
 | `kod/jestler/kanallar.yaml` | Servo tablosu TEK KAYNAK: ad → PCA9685 kanalı, min/max µs, açı sınırı, hız, ters; açı kuralı yorumda |
@@ -88,4 +94,4 @@ Driver 3.0.2; sürümler sabit). Ayrıntı ve ilk çalıştırma listesi: `kod/e
   güç hattını keser, yazılım bekçileri onun yerine geçmez; Pi sürerken `sur`'u ~200 ms'de bir yinelemeli
   (500 ms bekçi); Pi portu açınca DevKit resetlenir, `hazir` beklenmeli; pinler/yönler/`TIK_PER_TUR`/
   `TEKER_AZAMI_HIZ`/servo sınırları tahmini, WROVER kartta GPIO 16/17 kullanılamaz.
-- ESP32 tarafı derlendi (26 Ekim 2026, RAM %7, flash %23) ama donanımda denenmedi.
+- ESP32 tarafı derlendi (27 Ekim 2026, RAM %7, flash %23, `-Wall` uyarısız; `-DODO_YAYINI=0 -DIMU_VAR=1` ile de) ama donanımda denenmedi. Odo açıkken seri monitör kalabalıktır (elle denerken `-DODO_YAYINI=0`); Pi tarafı komut cevabı beklerken `odo` satırlarını ayıklamalı; yön ayrımlı jest (sol kol ayna kanalı) ESP32'de TODO.

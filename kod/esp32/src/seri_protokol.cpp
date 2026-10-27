@@ -4,14 +4,16 @@
 #include <Arduino.h>
 #include <ArduinoJson.h>
 #include <math.h>
+#include <stdio.h>
 #include <string.h>
 
+#include "imu.h"
 #include "jestler.h"
 #include "motorlar.h"
 #include "servolar.h"
 #include "watchdog.h"
 
-#define FIRMWARE_SURUM "0.1.0"
+#define FIRMWARE_SURUM "0.2.0"   // 0.2.0: odo yayını, odo_sifirla, jest "yon"
 
 namespace {
 
@@ -54,15 +56,34 @@ bool sayi_al(JsonVariantConst deger, float& sonuc) {
 
 // --------------------------- komutlar ---------------------------
 
+// "yon" alanı isteğe bağlı. Geçerli değerler; başka her şey (sayı dahil) yon_gecersiz.
+bool yon_gecerli(const char* yon) {
+  static const char* const YONLER[] = {"sol", "sag", "ileri", "arka"};
+  for (const char* y : YONLER) {
+    if (strcmp(yon, y) == 0) return true;
+  }
+  return false;
+}
+
 void komut_jest(JsonDocument& d, uint32_t simdi_ms) {
   const char* ad = d["ad"];
   if (ad == nullptr) return cevap_hata("jest", "ad_yok");
+  const char* yon = nullptr;                       // nullptr = yön verilmedi
+  JsonVariantConst yon_alani = d["yon"];
+  if (!yon_alani.isNull()) {
+    if (!yon_alani.is<const char*>()) return cevap_hata("jest", "yon_gecersiz");
+    yon = yon_alani.as<const char*>();
+    if (!yon_gecerli(yon)) return cevap_hata("jest", "yon_gecersiz");
+  }
   if (!servolar_hazir()) return cevap_hata("jest", "pca9685_yok");
+  // TODO(yön): jest_baslat'a yon iletilecek (bkz. jestler.h "YÖN AYRIMI"). Şimdilik yön yalnız
+  //            doğrulanıp cevaba yazılır; jest her zaman kayıtlı haliyle (isaret = sağ kol) oynar.
   if (!jest_baslat(ad, simdi_ms)) return cevap_hata("jest", "bilinmeyen_jest");
   JsonDocument c;
   c["ok"] = true;
   c["k"] = "jest";
   c["ad"] = ad;
+  if (yon != nullptr) c["yon"] = yon;
   gonder(c);
 }
 
@@ -72,6 +93,12 @@ void komut_sur(JsonDocument& d, uint32_t simdi_ms) {
   motorlar_hedef(v, w);
   watchdog_besle(simdi_ms);
   cevap_ok("sur");
+}
+
+// Enkoder tik sayaçlarını sıfırlar. Motorlara ve bekçiye dokunmaz.
+void komut_odo_sifirla() {
+  motor_tik_sifirla();
+  cevap_ok("odo_sifirla");
 }
 
 void komut_dur() {
@@ -112,6 +139,7 @@ void komut_ping(uint32_t simdi_ms) {
   c["surum"] = FIRMWARE_SURUM;
   c["ms"] = simdi_ms;
   c["pca9685"] = servolar_hazir();
+  c["odo"] = (ODO_YAYINI != 0);                    // true: bu firmware {"k":"odo",...} yayını yapıyor
   JsonArray jestler = c["jestler"].to<JsonArray>();
   for (uint8_t i = 0; i < jest_sayisi(); i++) jestler.add(jest_adi(i));
   gonder(c);
@@ -130,6 +158,7 @@ void satiri_isle(uint32_t simdi_ms) {
   else if (strcmp(k, "jest") == 0)  komut_jest(d, simdi_ms);
   else if (strcmp(k, "servo") == 0) komut_servo(d);
   else if (strcmp(k, "ping") == 0)  komut_ping(simdi_ms);
+  else if (strcmp(k, "odo_sifirla") == 0) komut_odo_sifirla();
   else                              cevap_hata(k, "bilinmeyen_komut");
 }
 
@@ -178,4 +207,21 @@ void seri_durum_gonder() {
   sur.add(motorlar_hedef_w());
   c["wd"] = watchdog_tetikli();
   gonder(c);
+}
+
+void seri_odo_gonder(uint32_t simdi_ms) {
+  // Örnek: {"k":"odo","sol":1234,"sag":-56,"yaw":null,"ms":104200}  (en uzun hali ~86 bayt)
+  static char tampon[112];
+  char yaw_metni[16];
+  float yaw = imu_var() ? imu_yaw_derece() : NAN;
+  if (isfinite(yaw) && fabsf(yaw) < 1.0e6f) {      // saçma büyük değer tamponu taşırmasın
+    snprintf(yaw_metni, sizeof(yaw_metni), "%.2f", yaw);
+  } else {
+    snprintf(yaw_metni, sizeof(yaw_metni), "null");
+  }
+  int boy = snprintf(tampon, sizeof(tampon),
+                     "{\"k\":\"odo\",\"sol\":%ld,\"sag\":%ld,\"yaw\":%s,\"ms\":%lu}\n",
+                     (long)motor_sol_tik(), (long)motor_sag_tik(), yaw_metni,
+                     (unsigned long)simdi_ms);
+  if (boy > 0 && (size_t)boy < sizeof(tampon)) Serial.write((const uint8_t*)tampon, (size_t)boy);
 }

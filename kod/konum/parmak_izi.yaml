@@ -1,0 +1,5 @@
+# Wi-Fi parmak izi veritabanı (robot/konum/wifi.py). ELLE DÜZENLEMEYİN; şu komutla doldurun:
+#   python3 -m robot.konum kaydet <bolge> --adet 5        (kod/ klasöründen, robot o bölgedeyken)
+# Biçim: bölge -> ölçüm listesi; her ölçüm {BSSID: sinyal yüzdesi}. Bölge adları konum/bolgeler.yaml ile aynı.
+# Bu dosya depoya girer (ekip aynı haritayı kullanır).
+{}

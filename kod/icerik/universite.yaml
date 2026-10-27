@@ -3,6 +3,9 @@
 # Alanlar:
 #   konular: baslik, anahtarlar (soruda geçerse +3 puan), cevap, jest (isteğe bağlı: selam | isaret | evet)
 #   yerler:  ad, tarif (yer sorularında robot varsayılan olarak "isaret" jesti yapar)
+#            isteğe bağlı: tarifler: {bölge: tarif}  robot o bölgedeyken söylenecek tarif (yoksa genel tarif)
+#                          yon: sol | sag | ileri | arka   işaret jestinin yönü; yonler: {bölge: yön} bölgeye göre
+#            Bölge adları konum/bolgeler.yaml'daki kimliklerdir. Yön "..." ise robot yönsüz işaret eder.
 #   sss:     soru, cevap (sık sorulan sorular)
 # Cevaplar 1-2 kısa cümle olsun; robot bunları sesli okuyacak.
 
@@ -74,18 +77,36 @@ yerler:
   - ad: Kantin
     anahtarlar: [yemek, çay, kahve, atıştır]
     tarif: "Kantin ... katında, ... tarafında."
+    tarifler:
+      giris-holu: "Kantin buradan ... tarafta, ... katta."
+      mekatronik-lab-kapisi: "Kantine gitmek için ... yönünde ilerleyin, ... katta."
+    yonler:
+      giris-holu: "..."
+      mekatronik-lab-kapisi: "..."
 
   - ad: Bölüm sekreterliği
     anahtarlar: [sekreterlik, öğrenci işleri]
     tarif: "Bölüm sekreterliği ... katında, ... numaralı odada."
+    tarifler:
+      giris-holu: "Sekreterlik buradan ... tarafta, ... katta, ... numaralı oda."
+      sekreterlik-koridoru: "Sekreterlik bu koridorda, ... numaralı oda."
+    yon: "..."
 
   - ad: Lavabo
     anahtarlar: [tuvalet, wc]
     tarif: "Lavabolar her katta, ... tarafında."
+    tarifler:
+      kantin-onu: "En yakın lavabo buradan ... tarafta."
+    yon: "..."
 
   - ad: Mekatronik laboratuvarı
     anahtarlar: [lab nerede, laboratuvar nerede]
     tarif: "Mekatronik laboratuvarı ... katında, ... numaralı salonda."
+    tarifler:
+      giris-holu: "Mekatronik laboratuvarı buradan ... tarafta, ... katta."
+      mekatronik-lab-kapisi: "Mekatronik laboratuvarı tam burası, bu kapıdan girebilirsiniz."
+    yonler:
+      giris-holu: "..."
 
 sss:
   - soru: "Bölüm kaç yıllık?"

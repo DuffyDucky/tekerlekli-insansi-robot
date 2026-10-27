@@ -1,5 +1,7 @@
 # Ne yapıyor: Pi'den ESP32'ye komut gönderir (USB-UART, 115200 baud, her satır bir JSON).
-# Komutlar: {"k":"jest","ad":"selam"}  {"k":"sur","v":0.3,"w":0.0}  {"k":"dur"}
+# Komutlar: {"k":"jest","ad":"selam"}  {"k":"jest","ad":"isaret","yon":"sol"}  {"k":"sur","v":0.3,"w":0.0}
+#           {"k":"dur"}  {"k":"odo_sifirla"}
+# ESP32'den gelen: {"ok":...} cevapları, {"k":"odo","sol":tik,"sag":tik,"yaw":..,"ms":..} (robot/konum okur)
 # Port yoksa SahteSeri komutları yalnız log'a yazar; ESP32 gelmeden her şey denenebilir.
 #
 # WATCHDOG (ESP32 tarafında yazılacak): ESP32 500 ms boyunca komut alamazsa motorları DURDURUR.
@@ -31,8 +33,12 @@ class SeriProtokol:
     def gonder(self, komut):
         self.satir_yaz(komut_satiri(komut))
 
-    def jest(self, ad):
-        self.gonder({"k": "jest", "ad": ad})
+    def jest(self, ad, yon=None):
+        """yon None ise eski biçim ({"k":"jest","ad":..}); eski ESP32 firmware'i de anlar."""
+        komut = {"k": "jest", "ad": ad}
+        if yon:
+            komut["yon"] = yon
+        self.gonder(komut)
 
     def sur(self, v, w):
         self.gonder({"k": "sur", "v": sinirla(v, EN_FAZLA_V), "w": sinirla(w, EN_FAZLA_W)})

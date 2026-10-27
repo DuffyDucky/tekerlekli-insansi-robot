@@ -18,10 +18,11 @@ planlama, tasarım (CAD) ve ileride yazılım kodu burada tutulur.
 | `tasarim/cad/robot_cad.py` | Modeli üreten kod (STEP + CSV + demo) |
 | `tasarim/cad/demo_uret.py` | Demoyu şablon + model + maliyetten yeniden üretir; CadQuery gerekmez |
 | `kod/` | Robot yazılımı (Python): durum makinesi, içerik paketi, konuşma/ses arayüzleri, pygame yüz, ESP32 seri protokol; nasıl çalıştırılacağı `kod/OKU_BENI.md` |
+| `kod/robot/konum/` · `kod/konum/` | Konum paketi (27 Ekim 2026): Wi-Fi parmak izi, GPS, BLE işaretçi, ArUco, kamerayla öğrenilen yer tanıma, teker odometrisi, elle bölge; `KonumYoneticisi` birleştirir, yer sorularında bölgeye göre tarif + yönlü işaret jesti. Bölge tanımları `kod/konum/bolgeler.yaml`, parmak izi `parmak_izi.yaml`; araç `python3 -m robot.konum` (`kod/OKU_BENI.md` 9. bölüm) |
 | `kod/PI5-KURULUM.md` | Pi 5 (`lale`) kurulum kaydı: kullanıcılar, ağ, seri, kurulu paketler/modeller, bağlanma komutları, sıfırdan kurma adımları, tuzaklar (26 Ekim 2026) |
 | `raporlar/mikrofon-secimi.md` | Gürültü bastırmalı mikrofon karşılaştırması (33 kaynak); karar: XVF3800 4 mikrofonlu USB dizi + yönlü mikrofon karşılaştırma kolu |
 | `tasarim/pi5-kutu/` | Pi 5 koruma kutusu: taban + standart kapak + fanlı kapak STL, parametrik `pi5_kutu.py` (manifold3d), baskı notu `OKU_BENI.txt` |
-| `belgeler/tubitak-2209-b/` | TÜBİTAK 2209-B başvuru taslağı (docx tek kaynak) + özet/son tarih notu; son başvuru 11 Kasım 2026 17:30 |
+| `belgeler/tubitak-2209-b/` | TÜBİTAK 2209-B başvuru taslağı (docx tek kaynak) + özet/son tarih notu; son başvuru 11 Kasım 2026 17:30. 27 Ekim: konumlandırma ve yön tarifi metne girdi (4. araştırma sorusu, İP3) |
 | `CLAUDE.md` | Bu klasörde açılan yapay zekâ oturumları için bağlam |
 
 HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünüm için internet gerekir.
@@ -96,6 +97,7 @@ HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünü
 - [ ] 10,1" ekranın 5 V ≈ 0,75 A beslemesini güç planına ekle; ekran ve göz ekranı kütlelerini tartıp CAD'e gir
 - [x] Pi 5 kuruldu (26 Ekim 2026): hostname `lale`, `efe` + `duffy` kullanıcıları, robot yazılımı + Vosk/Piper modelleri, 104 test Pi'de yeşil; ayrıntı `kod/PI5-KURULUM.md`
 - [ ] Pi'ye ekran + HDMI hoparlör bağlayıp tam ekran yüz ve Piper sesini dene; sonra `kod/robot.service`
+- [ ] Konum (27 Ekim 2026, Efe: "kamerayla yer tanıma dahil hepsini ekle"): kampüste 10 bölge için Wi-Fi parmak izi topla (`python3 -m robot.konum kaydet <bolge>`), `bolgeler.yaml`'daki "..." açıklamaları ve GPS merkezlerini doldur; kamera takılınca `aruco.etkin`/`gorsel.etkin` aç, ArUco levhalarını bas (`isaret <id>`), yer örnekleri öğret (`ogret`); GPS modülü (u-blox NEO-M8N sınıfı) ve gerekirse 3 ESP32 BLE işaretçi; ESP32'de odo satırları, `TIK_PER_TUR`, teker çapı ve iz genişliği gerçek kartta ölçülüp `ayarlar.yaml konum.odometri` ile eşlenir; yön ayrımlı `isaret` jesti ESP32'de (sol kol ayna kanalı)
 - [ ] TÜBİTAK 2209-B: taslağı ekip + danışman okur (`belgeler/tubitak-2209-b/`); sanayi danışmanının adı, servo/kütle/maliyet (Ahmet); TYBS girişi 4 Kasım hedefi, son 11 Kasım 17:30
 - [ ] Mikrofon siparişi: XVF3800 dizi + yönlü mikrofon (`raporlar/mikrofon-secimi.md`, satın alma öncesi doğrulama listesi raporda); gelince eşik ölçümü
 - [ ] Pi 5 kutusunu bas (`tasarim/pi5-kutu/`, PETG); ilk baskıdan sonra tolerans ve kamera FFC yarığı

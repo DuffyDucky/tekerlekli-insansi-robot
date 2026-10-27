@@ -38,6 +38,13 @@ mkdir -p modeller
 #   ~/robot-venv/bin/pip install google-genai
 #   ~/robot-venv/bin/pip install anthropic
 #
+# Konum (OKU_BENI.md 9. bölüm; gpsd GEREKMEZ). ArUco/görsel için OpenCV, BLE beacon için bleak:
+#   sudo apt install python3-opencv            # ya da: ~/robot-venv/bin/pip install opencv-contrib-python-headless
+#   ~/robot-venv/bin/pip install bleak
+#   ~/robot-venv/bin/pip install onnxruntime   # isteğe bağlı daha iyi görsel özet, model:
+#   wget -O modeller/mobilenet.onnx https://github.com/onnx/models/raw/main/validated/vision/classification/mobilenet/model/mobilenetv2-12.onnx
+#   python3 -m robot.konum tara                 # kaynaklar çalışıyor mu
+#
 # Otomatik başlatma (masaüstü açılınca robot kendiliğinden çalışsın; ayrıntı OKU_BENI.md 7. bölüm):
 #   mkdir -p ~/.config/systemd/user
 #   cp robot.service ~/.config/systemd/user/
