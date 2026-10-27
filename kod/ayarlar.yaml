@@ -49,6 +49,11 @@ seri:
   port: ""                        # boş = sahte seri (log). Pi'de ESP32 gelince: /dev/ttyUSB0 ya da /dev/ttyACM0
   hiz: 115200
 
+uzaktan:                          # telefondan kumanda (robot/uzaktan; OKU_BENI.md 10. bölüm). Telefonda: http://lale.local:8080
+  etkin: true                     # false: sunucu açılmaz
+  port: 8080                      # yalnız yerel ağ; modemde port yönlendirme YAPMAYIN (internete açmayın)
+  pin: "1234"                     # İLK İŞ değiştirin (tırnak içinde; ör. "4821"). Yanlış PIN 1 s bekletilir
+
 jest:
   sure: 1.0                       # jest durumunda konuşmadan önce kaç saniye beklensin
 

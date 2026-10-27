@@ -24,6 +24,7 @@ bölgeyi birden çok kaynaktan bulur ve yer tarifini/işaret yönünü ona göre
 | `robot/gunluk.py` | Etkileşim günlüğü: her tur bir CSV satırı (tanınan, konu, puan, cevap, jest, süreler) |
 | `robot/seri.py` | ESP32'ye satır tabanlı JSON (`jest(ad, yon)`); port yoksa `SahteSeri` |
 | `robot/konum/` | Konum: Wi-Fi, GPS, BLE, ArUco, görsel, odometri, elle kaynakları + `KonumYoneticisi`; `python3 -m robot.konum` aracı (9. bölüm) |
+| `robot/uzaktan/` | Telefondan kumanda: web sunucusu (`sunucu.py`), robota güvenli erişim (`kopru.py`), telefon sayfası (`sayfa.html`, `manifest.json`); `python3 -m robot.uzaktan` robotsuz deneme (10. bölüm) |
 | `konum/bolgeler.yaml`, `konum/parmak_izi.yaml` | Bölge haritası (GPS çemberi, ArUco, beacon) ve Wi-Fi parmak izi kaydı |
 | `icerik/universite.yaml`, `icerik/tesis.yaml` | Örnek içerik paketleri ("..." yerleri doldurulacak) |
 | `icerik_kontrol.py` | İçerik paketi denetleyicisi: zorunlu alanlar, boş/tekrarlı anahtar kelime, "..." listesi |
@@ -318,3 +319,33 @@ alanları (`wifi.aralik` 15 s, `gps.port`, `aruco.iyi_kenar_px`, `gorsel.esik`, 
 - Odometri sabitleri TAHMİNİ (`esp32/src/motorlar.cpp` ile aynı); tekerleği 10 tur çevirip `tik_tur`'u ölçün.
   IMU yaw işareti doğrulanmadı: robotu sola çevirip `izle`'de yön artmıyorsa `yaw_isareti: -1`.
 - Donanımda (Pi'de nmcli, kamera, GPS, BLE, ESP32 odo) hiçbiri henüz denenmedi; testler sahte veriyle geçer.
+
+## 10. Telefondan kumanda (`robot/uzaktan/`)
+
+Robot çalışırken Pi'de küçük bir web sunucusu da açılır (Nextion ekranı yerine; Efe kararı, 27 Ekim 2026).
+Telefon robotla **aynı Wi-Fi'da** olmalı; tarayıcıda açın:
+
+- `http://lale.local:8080` (Pi'nin adı `lale`), olmazsa açılışta terminale yazılan IP: `http://192.168.x.x:8080`.
+  Bazı Android sürümleri `.local` adını çözmez; o zaman IP'yi kullanın.
+- İlk açılışta PIN sorulur (varsayılan `1234`). Doğru PIN'den sonra telefon 30 gün hatırlanır; robot yeniden
+  başlarsa PIN bir kez daha sorulur. Yanlış PIN'e cevap 1 sn gecikir.
+- **PIN değiştirme:** `ayarlar.yaml` → `uzaktan: pin: "4821"` (tırnak içinde), robotu yeniden başlatın.
+  Port: `uzaktan.port` (8080). Kapatmak: `uzaktan.etkin: false`.
+- **Ana ekrana ekleme:** Android Chrome'da ⋮ → "Ana ekrana ekle"; iPhone Safari'de Paylaş → "Ana Ekrana Ekle".
+  Adres HTTPS olmadığı için tam "uygulama yükleme" değil kısayol olur; iş görür.
+
+Sayfada: üstte durum şeridi (bağlantı, durum, bölge), yön düğmeleri (basılı tut = sür, bırak = dur; yavaş
+0,15 m/s, normal 0,3 m/s), jestler (selam, evet, işaret ← ↑ → ↓), "Söyle" kutusu ve hazır cümleler, bölge seçimi
+(`konum/bolge.txt`'ye yazar), bakım modu anahtarı (`kod/bakim.txt`), altta her zaman görünen kırmızı **DUR**.
+"Söyle" yalnız robot BEKLE'deyken çalışır; konuşma sırasında reddedilir ve sebebi yazılır.
+
+**Güvenlik:** telefon düşer, uygulama kapanır ya da Wi-Fi koparsa Pi son `sur`dan 0,4 sn sonra kendisi
+`dur` gönderir; Pi çökerse ESP32 watchdog'u 0,5 sn'de durdurur. Donanım acil stop yine şart. Hız seri.py
+sınırlarına (0,5 m/s, 1 rad/s) kırpılır. Sunucu **yalnız yerel ağ** içindir: modemde port yönlendirme yapmayın,
+internete açmayın. PIN'i ilk iş değiştirin. Pi'de güvenlik duvarı (ufw) varsayılan kapalıdır; açtıysanız:
+`sudo ufw allow from 192.168.0.0/16 to any port 8080 proto tcp`. Kampüs ağlarında (eduroam) cihazlar çoğu zaman
+birbirini göremez; o zaman telefonun hotspot'una Pi'yi bağlayın.
+
+**Robotsuz deneme (Windows'ta da):** `kod/` içinden `py -3 -m robot.uzaktan` (ya da `--port 8080 --pin 4821`);
+sahte robotla açılır, adresleri yazar, gelen komutları `[seri] {...}` olarak gösterir. Windows güvenlik duvarı
+izin sorarsa "Özel ağlar"a izin verin.

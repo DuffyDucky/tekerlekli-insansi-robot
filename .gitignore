@@ -19,3 +19,5 @@ kod/gunlukler/
 kod/konum/gorsel_ornekler/
 kod/konum/isaretler/
 kod/konum/bolge.txt
+# telefondan acilan bakim modu isareti (robot/uzaktan)
+kod/bakim.txt
