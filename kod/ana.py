@@ -53,6 +53,7 @@ class Robot:
     gunluk: Gunluk | None = None      # None ise tur kaydı tutulmaz
     konum: object | None = None       # KonumYoneticisi ya da None (konum kapalı); durum()["bolge"]
     bakim: Bakim | None = None        # None ise bakım modu hiç denetlenmez
+    uzaktan: object | None = None     # telefondan kumanda sunucusu (robot/uzaktan) ya da None
 
 
 # ---------- ayarlar ----------
@@ -158,6 +159,7 @@ def bilesenleri_kur(ayar):
         bakim=bakim_kur(ayar),
     )
     robot.durum.dinleyici_ekle(yuz.durum_degisti)   # yüz her durum değişiminden haberdar olur
+    robot.uzaktan = uzaktan_kur(ayar, robot)         # telefondan kumanda (port main()'de açılır)
     ozet_yaz(robot, paket)
     return robot
 
@@ -166,6 +168,13 @@ def bakim_kur(ayar):
     """Bakım denetçisi: kalıcı bakım (--bakim / bakim.etkin) ve bakım dosyası (varsayılan kod/bakim.txt)."""
     b = ayar["bakim"]
     return Bakim(b.get("etkin", False), yol_coz(b.get("dosya", "bakim.txt")), b.get("aralik_saniye", 1.0))
+def uzaktan_kur(ayar, robot):
+    """Telefondan kumanda sunucusunu kurar (henüz port açmaz). Kapalıysa None."""
+    u = ayar.get("uzaktan") or {}
+    if not u.get("etkin", False):
+        return None
+    from robot.uzaktan import RobotKoprusu, UzaktanSunucu
+    return UzaktanSunucu(RobotKoprusu(robot), u.get("port", 8080), u.get("pin", "1234"))
 
 
 def konum_kur(ayar, seri):
@@ -372,6 +381,15 @@ def main(argv=None):
     if robot.konum is not None:
         robot.konum.baslat()          # kaynaklar arka planda okunur; biri bozuksa yalnız o pasif olur
         print(f"[konum] {robot.konum.ozet()}")
+    # --- uzaktan kumanda: başlat ---
+    if robot.uzaktan is not None:
+        try:
+            robot.uzaktan.baslat()
+            print(f"[uzaktan] Telefondan kumanda: {' | '.join(robot.uzaktan.adresler())}")
+        except OSError as hata:       # port meşgul vb.: robot kumandasız da çalışır
+            print(f"[uzaktan] Sunucu açılamadı ({hata}); telefondan kumanda yok.")
+            robot.uzaktan = None
+    # --- uzaktan kumanda: son ---
     durdur = threading.Event()
     if robot.yuz.etkin:
         # pygame ana iş parçacığında olmak zorunda; konuşma döngüsü arka planda
@@ -380,6 +398,8 @@ def main(argv=None):
         robot.yuz.calistir(durdur, sec.deneme_saniye)
     else:
         konusma_dongusu(robot, durdur)
+    if robot.uzaktan is not None:     # uzaktan kumanda: kapat (sürülüyorsa önce dur gönderir)
+        robot.uzaktan.kapat()
     if robot.konum is not None:
         robot.konum.kapat()
     robot.seri.kapat()

@@ -1,0 +1,453 @@
+<!doctype html>
+<!-- Ne yapıyor: robotu telefondan kumanda sayfası (robot/uzaktan/sunucu.py sunar). Tek dosya, dış kaynak yok.
+     Sürüş: yön düğmesi basılıyken 10 Hz POST /sur, bırakınca POST /dur; sayfa gizlenince ya da bağlantı
+     kopunca dur. Sunucu da son sur'dan 400 ms sonra kendisi durdurur (ölü adam). -->
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<meta name="color-scheme" content="dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lale">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/ikon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/ikon-192.png">
+<title>Lale Kumanda</title>
+<style>
+  :root {
+    --zemin: #0b1020;
+    --yuzey: #151c2f;
+    --yuzey-2: #1e2742;
+    --cizgi: #34405f;
+    --yazi: #e8ecf4;
+    --soluk: #a9b3c7;
+    --vurgu: #7cc4ff;
+    --vurgu-yazi: #06142a;
+    --iyi: #4ade80;
+    --kotu: #fca5a5;
+    --uyari: #fcd34d;
+    --acil: #c81e1e;
+    --odak: #fbbf24;
+    --dur-yukseklik: 76px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--zemin); color: var(--yazi); }
+  body {
+    font: 16px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    padding-bottom: calc(var(--dur-yukseklik) + 24px + env(safe-area-inset-bottom));
+    -webkit-tap-highlight-color: transparent;
+  }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button {
+    min-height: 52px; min-width: 52px; border-radius: 12px; border: 1px solid var(--cizgi);
+    background: var(--yuzey-2); padding: 0 14px; cursor: pointer; touch-action: manipulation;
+  }
+  button:active, button.basili { background: var(--vurgu); color: var(--vurgu-yazi); border-color: var(--vurgu); }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+  :focus-visible { outline: 3px solid var(--odak); outline-offset: 2px; }
+  h2 { font-size: 15px; font-weight: 600; color: var(--soluk); margin: 0 0 10px; letter-spacing: .02em; }
+  [hidden] { display: none !important; }
+
+  .serit {
+    position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center;
+    padding: calc(10px + env(safe-area-inset-top)) 16px 10px; background: var(--yuzey); border-bottom: 1px solid var(--cizgi);
+    font-size: 15px;
+  }
+  .serit strong { font-weight: 700; }
+  .nokta { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; background: var(--soluk); }
+  .bagli .nokta { background: var(--iyi); }
+  .kopuk .nokta { background: var(--kotu); }
+  .kopuk { color: var(--kotu); }
+  .etiket { color: var(--soluk); }
+  .rozet { border: 1px solid var(--uyari); color: var(--uyari); border-radius: 999px; padding: 1px 8px; font-size: 13px; }
+
+  main, #kumanda { display: grid; gap: 12px; }
+  main { max-width: 480px; margin: 0 auto; padding: 12px 16px; }
+  .kart { background: var(--yuzey); border: 1px solid var(--cizgi); border-radius: 16px; padding: 14px; }
+
+  .dpad {
+    display: grid; grid-template-columns: repeat(3, minmax(72px, 96px)); grid-template-rows: repeat(3, minmax(72px, 96px));
+    gap: 8px; justify-content: center; user-select: none; -webkit-user-select: none; touch-action: none;
+  }
+  .dpad button { font-size: 30px; border-radius: 18px; touch-action: none; -webkit-touch-callout: none; }
+  .dpad .bos { visibility: hidden; }
+  .dpad .orta { font-size: 16px; font-weight: 700; }
+  .ipucu { color: var(--soluk); font-size: 14px; margin: 10px 0 0; text-align: center; }
+
+  .ikili { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+  .ikili button[aria-pressed="true"] { background: var(--vurgu); color: var(--vurgu-yazi); border-color: var(--vurgu); font-weight: 700; }
+
+  .satir { display: flex; flex-wrap: wrap; gap: 8px; }
+  .satir button { flex: 1 1 auto; }
+  .yon-satiri { display: grid; grid-template-columns: auto repeat(4, 1fr); gap: 8px; align-items: center; margin-top: 8px; }
+  .yon-satiri span { color: var(--soluk); padding-right: 4px; }
+  .yon-satiri button { font-size: 22px; padding: 0; }
+
+  textarea, select, input[type=password] {
+    width: 100%; min-height: 52px; border-radius: 12px; border: 1px solid var(--cizgi); background: var(--zemin);
+    padding: 12px; font-size: 17px;
+  }
+  textarea { resize: vertical; min-height: 76px; }
+  .hizli { display: grid; gap: 8px; margin-top: 8px; }
+  .hizli button { text-align: left; font-size: 15px; }
+  .alt-bosluk { margin-top: 8px; }
+  .gonder { width: 100%; margin-top: 8px; font-weight: 600; }
+
+  .anahtar { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; }
+  .anahtar .kol { width: 56px; height: 32px; border-radius: 999px; background: var(--cizgi); position: relative; flex: none; }
+  .anahtar .kol::after {
+    content: ""; position: absolute; top: 4px; left: 4px; width: 24px; height: 24px; border-radius: 50%; background: var(--yazi);
+    transition: transform .15s;
+  }
+  .anahtar[aria-checked="true"] { border-color: var(--uyari); }
+  .anahtar[aria-checked="true"] .kol { background: var(--uyari); }
+  .anahtar[aria-checked="true"] .kol::after { transform: translateX(24px); background: var(--vurgu-yazi); }
+  .anahtar:active { background: var(--yuzey-2); color: var(--yazi); }
+
+  .konusma { font-size: 15px; color: var(--soluk); margin: 0; }
+  .konusma b { color: var(--yazi); font-weight: 600; }
+  .hata-yazi { color: var(--kotu); min-height: 1.4em; margin: 8px 0 0; }
+
+  .bildirim {
+    position: fixed; left: 16px; right: 16px; bottom: calc(var(--dur-yukseklik) + 20px + env(safe-area-inset-bottom));
+    max-width: 448px; margin: 0 auto; background: var(--yuzey-2); border: 1px solid var(--cizgi); border-radius: 12px;
+    padding: 10px 14px; font-size: 15px; z-index: 6; opacity: 0; pointer-events: none; transition: opacity .2s;
+  }
+  .bildirim.gorunur { opacity: 1; }
+  .bildirim.kotu { border-color: var(--kotu); color: var(--kotu); }
+
+  .acil {
+    position: fixed; left: 16px; right: 16px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 7;
+    max-width: 448px; margin: 0 auto; height: var(--dur-yukseklik); border-radius: 18px; border: 3px solid #ffd2d2;
+    background: var(--acil); color: #fff; font-size: 26px; font-weight: 800; letter-spacing: .08em;
+  }
+  .acil:active, .acil.basili { background: #8f1111; color: #fff; border-color: #fff; }
+
+  .giris { max-width: 360px; margin: 24px auto; }
+  .giris label { display: block; margin-bottom: 8px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="serit" aria-label="Robot durumu">
+  <span id="baglanti" class="kopuk" role="status"><span class="nokta" aria-hidden="true"></span><span id="baglanti-yazi">Bağlanıyor</span></span>
+  <span><span class="etiket">Durum:</span> <strong id="durum-yazi">—</strong></span>
+  <span><span class="etiket">Bölge:</span> <strong id="bolge-yazi">—</strong></span>
+  <span id="bakim-rozet" class="rozet" hidden>Bakım</span>
+  <span id="sahte-rozet" class="rozet" hidden title="ESP32 bağlı değil; komutlar yalnız terminale yazılıyor">Sahte seri</span>
+</header>
+
+<main>
+  <section id="giris" class="kart giris" hidden aria-labelledby="giris-baslik">
+    <h2 id="giris-baslik">Kumanda için PIN</h2>
+    <form id="giris-form">
+      <label for="pin">Robotun PIN'i</label>
+      <input id="pin" type="password" inputmode="numeric" autocomplete="current-password" required>
+      <button class="gonder" type="submit">Giriş</button>
+      <p id="giris-hata" class="hata-yazi" aria-live="assertive"></p>
+    </form>
+  </section>
+
+  <div id="kumanda" hidden>
+    <section class="kart" aria-labelledby="surus-baslik">
+      <h2 id="surus-baslik">Sürüş</h2>
+      <div class="dpad" id="dpad">
+        <span class="bos"></span>
+        <button type="button" data-yon="ileri" aria-label="İleri git (basılı tut)">↑</button>
+        <span class="bos"></span>
+        <button type="button" data-yon="sol" aria-label="Sola dön (basılı tut)">←</button>
+        <button type="button" class="orta" id="orta-dur" aria-label="Dur">DUR</button>
+        <button type="button" data-yon="sag" aria-label="Sağa dön (basılı tut)">→</button>
+        <span class="bos"></span>
+        <button type="button" data-yon="geri" aria-label="Geri git (basılı tut)">↓</button>
+        <span class="bos"></span>
+      </div>
+      <div class="ikili" role="group" aria-label="Hız">
+        <button type="button" id="hiz-yavas" aria-pressed="true">Yavaş</button>
+        <button type="button" id="hiz-normal" aria-pressed="false">Normal</button>
+      </div>
+      <p class="ipucu">Basılı tutun, bırakınca durur. Klavyede ok tuşları; Esc = DUR.</p>
+    </section>
+
+    <section class="kart" aria-labelledby="jest-baslik">
+      <h2 id="jest-baslik">Jest</h2>
+      <div class="satir">
+        <button type="button" data-jest="selam">Selam ver</button>
+        <button type="button" data-jest="evet">Evet (baş salla)</button>
+      </div>
+      <div class="yon-satiri">
+        <span>İşaret:</span>
+        <button type="button" data-jest="isaret" data-jest-yon="sol" aria-label="Sola işaret et">←</button>
+        <button type="button" data-jest="isaret" data-jest-yon="ileri" aria-label="İleriyi işaret et">↑</button>
+        <button type="button" data-jest="isaret" data-jest-yon="sag" aria-label="Sağa işaret et">→</button>
+        <button type="button" data-jest="isaret" data-jest-yon="arka" aria-label="Arkayı işaret et">↓</button>
+      </div>
+    </section>
+
+    <section class="kart" aria-labelledby="soyle-baslik">
+      <h2 id="soyle-baslik">Söyle</h2>
+      <form id="soyle-form">
+        <label for="soyle-metin" class="etiket">Robotun söyleyeceği cümle</label>
+        <textarea id="soyle-metin" maxlength="300" rows="2" class="alt-bosluk"></textarea>
+        <button class="gonder" type="submit">Söyle</button>
+      </form>
+      <div class="hizli" id="hizli" aria-label="Hazır cümleler">
+        <button type="button">Merhaba, hoş geldiniz!</button>
+        <button type="button">Bana sorunuzu sorabilirsiniz.</button>
+        <button type="button">Lütfen yol verir misiniz?</button>
+        <button type="button">Teşekkür ederim, iyi günler!</button>
+      </div>
+    </section>
+
+    <section class="kart" aria-labelledby="bolge-baslik">
+      <h2 id="bolge-baslik">Bölge</h2>
+      <label for="bolge-sec" class="etiket">Robot şu an nerede?</label>
+      <select id="bolge-sec" class="alt-bosluk">
+        <option value="">Otomatik (elle seçim yok)</option>
+      </select>
+      <button type="button" class="gonder" id="bolge-uygula">Bölgeyi ayarla</button>
+    </section>
+
+    <section class="kart" aria-labelledby="bakim-baslik">
+      <h2 id="bakim-baslik">Bakım</h2>
+      <button type="button" id="bakim" class="anahtar" role="switch" aria-checked="false">
+        <span>Bakım modu</span><span class="kol" aria-hidden="true"></span>
+      </button>
+    </section>
+
+    <section class="kart" aria-labelledby="son-baslik">
+      <h2 id="son-baslik">Son konuşma</h2>
+      <p class="konusma"><b>Soru:</b> <span id="son-soru">—</span></p>
+      <p class="konusma"><b>Cevap:</b> <span id="son-cevap">—</span></p>
+    </section>
+  </div>
+</main>
+
+<div id="bildirim" class="bildirim" role="status" aria-live="polite"></div>
+<button type="button" id="acil" class="acil" aria-label="Acil dur">DUR</button>
+
+<script>
+"use strict";
+const HIZLAR = { yavas: { v: 0.15, w: 0.6 }, normal: { v: 0.3, w: 0.9 } };   // m/s, rad/s
+const YON = { ileri: [1, 0], geri: [-1, 0], sol: [0, 1], sag: [0, -1] };       // [v işareti, w işareti]
+const DURUM_ADI = { "BEKLE": "Bekliyor", "DİNLE": "Dinliyor", "DÜŞÜN": "Düşünüyor", "KONUŞ": "Konuşuyor", "JEST": "Jest" };
+const S = { hiz: "yavas", sinir: { v: 0.5, w: 1.0 }, surus: null, zamanlayici: null, sonBasari: 0, bakim: false, oturum: false };
+const $ = (id) => document.getElementById(id);
+
+// ---------- ağ ----------
+async function istek(yol, govde, zamanAsimi = 1200) {
+  const denetci = new AbortController();
+  const sayac = setTimeout(() => denetci.abort(), zamanAsimi);
+  try {
+    const secenek = govde === undefined
+      ? { method: "GET", signal: denetci.signal, cache: "no-store" }
+      : { method: "POST", signal: denetci.signal, headers: { "Content-Type": "application/json" }, body: JSON.stringify(govde) };
+    const yanit = await fetch(yol, secenek);
+    let veri = {};
+    try { veri = await yanit.json(); } catch (e) { /* gövdesiz */ }
+    baglantiGuncelle(true);
+    if (yanit.status === 401 && yol !== "/giris") girisGoster();
+    return { ok: yanit.ok, kod: yanit.status, veri };
+  } catch (e) {
+    baglantiGuncelle(false);
+    return { ok: false, kod: 0, veri: { hata: "Robota ulaşılamıyor." } };
+  } finally {
+    clearTimeout(sayac);
+  }
+}
+
+function baglantiGuncelle(basarili) {
+  if (basarili) S.sonBasari = Date.now();
+  const bagli = Date.now() - S.sonBasari < 2500;
+  $("baglanti").className = bagli ? "bagli" : "kopuk";
+  $("baglanti-yazi").textContent = bagli ? "Bağlı" : "Bağlantı yok";
+  if (!bagli && S.surus) surDurdur();          // bağlantı koptu: sürmeyi bırak (sunucu da durdurur)
+}
+
+let bildirimSayac;
+function bildir(metin, kotu = false) {
+  const b = $("bildirim");
+  b.textContent = metin;
+  b.className = "bildirim gorunur" + (kotu ? " kotu" : "");
+  clearTimeout(bildirimSayac);
+  bildirimSayac = setTimeout(() => { b.className = "bildirim"; }, 3000);
+}
+
+function sonucBildir(s, iyiMetin) {
+  if (s.ok) { if (iyiMetin) bildir(iyiMetin); }
+  else if (s.kod !== 401) bildir(s.veri.hata || "Yapılamadı.", true);
+}
+
+// ---------- sürüş ----------
+function surGonder() {
+  if (!S.surus) return;
+  const h = HIZLAR[S.hiz], [iv, iw] = YON[S.surus];
+  istek("/sur", { v: Math.min(h.v, S.sinir.v) * iv, w: Math.min(h.w, S.sinir.w) * iw }, 800);
+}
+
+function surBaslat(yon) {
+  if (S.surus === yon) return;
+  S.surus = yon;
+  clearInterval(S.zamanlayici);
+  surGonder();
+  S.zamanlayici = setInterval(surGonder, 100);  // 10 Hz; sunucu 400 ms komut görmezse durdurur
+}
+
+function surDurdur() {
+  const surduyMu = S.surus !== null;
+  S.surus = null;
+  clearInterval(S.zamanlayici);
+  S.zamanlayici = null;
+  document.querySelectorAll("#dpad .basili").forEach((b) => b.classList.remove("basili"));
+  if (surduyMu) istek("/dur", {});
+}
+
+function acilDur() {
+  S.surus = null;
+  clearInterval(S.zamanlayici);
+  document.querySelectorAll("#dpad .basili").forEach((b) => b.classList.remove("basili"));
+  istek("/dur", {}).then((s) => {
+    if (s.ok) bildir("Durduruldu.");
+    else { istek("/dur", {}); bildir("DUR gönderilemedi: " + (s.veri.hata || "bağlantı yok") + ". Robot 0,4 s içinde kendisi durur.", true); }
+  });
+}
+
+document.querySelectorAll("#dpad [data-yon]").forEach((b) => {
+  const yon = b.dataset.yon;
+  b.addEventListener("pointerdown", (e) => {
+    e.preventDefault();
+    try { b.setPointerCapture(e.pointerId); } catch (_) {}
+    b.classList.add("basili");
+    surBaslat(yon);
+  });
+  for (const olay of ["pointerup", "pointercancel", "lostpointercapture"]) {
+    b.addEventListener(olay, () => { b.classList.remove("basili"); if (S.surus === yon) surDurdur(); });
+  }
+  b.addEventListener("contextmenu", (e) => e.preventDefault());
+  b.addEventListener("keydown", (e) => {
+    if ((e.key === "Enter" || e.key === " ") && !e.repeat) { e.preventDefault(); b.classList.add("basili"); surBaslat(yon); }
+  });
+  b.addEventListener("keyup", (e) => { if (e.key === "Enter" || e.key === " ") { b.classList.remove("basili"); surDurdur(); } });
+  b.addEventListener("blur", () => { if (S.surus === yon) surDurdur(); });
+});
+$("orta-dur").addEventListener("click", acilDur);
+
+const OK_TUSLARI = { ArrowUp: "ileri", ArrowDown: "geri", ArrowLeft: "sol", ArrowRight: "sag" };
+function yaziAlaninda(e) { return /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName); }
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") { acilDur(); return; }
+  if (!S.oturum || yaziAlaninda(e) || !OK_TUSLARI[e.key]) return;
+  e.preventDefault();
+  if (!e.repeat) surBaslat(OK_TUSLARI[e.key]);
+});
+document.addEventListener("keyup", (e) => { if (OK_TUSLARI[e.key] && S.surus === OK_TUSLARI[e.key]) surDurdur(); });
+
+// sayfa gizlenince (uygulama değişti, ekran kilitlendi) dur
+document.addEventListener("visibilitychange", () => { if (document.hidden) { surDurdur(); istek("/dur", {}); } });
+window.addEventListener("pagehide", () => {
+  try { fetch("/dur", { method: "POST", keepalive: true, headers: { "Content-Type": "application/json" }, body: "{}" }); } catch (_) {}
+});
+window.addEventListener("blur", surDurdur);
+
+const acil = $("acil");
+acil.addEventListener("pointerdown", (e) => { e.preventDefault(); acil.classList.add("basili"); acilDur(); });
+acil.addEventListener("pointerup", () => acil.classList.remove("basili"));
+acil.addEventListener("pointercancel", () => acil.classList.remove("basili"));
+acil.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); acilDur(); } });
+
+function hizSec(hiz) {
+  S.hiz = hiz;
+  $("hiz-yavas").setAttribute("aria-pressed", String(hiz === "yavas"));
+  $("hiz-normal").setAttribute("aria-pressed", String(hiz === "normal"));
+}
+$("hiz-yavas").addEventListener("click", () => hizSec("yavas"));
+$("hiz-normal").addEventListener("click", () => hizSec("normal"));
+
+// ---------- jest, söz, bölge, bakım ----------
+document.querySelectorAll("[data-jest]").forEach((b) => b.addEventListener("click", async () => {
+  const govde = { ad: b.dataset.jest };
+  if (b.dataset.jestYon) govde.yon = b.dataset.jestYon;
+  sonucBildir(await istek("/jest", govde), "Jest gönderildi: " + b.textContent.trim());
+}));
+
+async function soyle(metin) {
+  metin = metin.trim();
+  if (!metin) return;
+  const s = await istek("/soyle", { metin });
+  sonucBildir(s, "Söyleniyor: " + metin);
+  return s.ok;
+}
+$("soyle-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  if (await soyle($("soyle-metin").value)) $("soyle-metin").value = "";
+});
+document.querySelectorAll("#hizli button").forEach((b) => b.addEventListener("click", () => soyle(b.textContent)));
+
+async function bolgeleriYukle() {
+  const s = await istek("/bolgeler");
+  if (!s.ok) return;
+  const sec = $("bolge-sec");
+  sec.length = 1;
+  for (const b of s.veri.bolgeler) sec.add(new Option(b.ad, b.kimlik));
+}
+$("bolge-uygula").addEventListener("click", async () => {
+  const s = await istek("/bolge", { ad: $("bolge-sec").value });
+  if (s.ok && s.veri.uyari) bildir(s.veri.uyari, true);
+  else sonucBildir(s, s.veri.bolge ? "Bölge ayarlandı." : "Bölge otomatik bulunacak.");
+});
+
+$("bakim").addEventListener("click", async () => {
+  const s = await istek("/bakim", { ac: !S.bakim });
+  if (s.ok) bakimGoster(s.veri.bakim);
+  sonucBildir(s, s.veri.bakim ? "Bakım modu açık." : "Bakım modu kapalı.");
+});
+function bakimGoster(acik) {
+  S.bakim = !!acik;
+  $("bakim").setAttribute("aria-checked", String(S.bakim));
+  $("bakim-rozet").hidden = !S.bakim;
+}
+
+// ---------- durum ve giriş ----------
+async function durumYenile() {
+  const s = await istek("/durum");
+  if (!s.ok) return;
+  const d = s.veri;
+  if (!S.oturum) kumandaGoster();
+  S.sinir = d.sinirlar || S.sinir;
+  $("durum-yazi").textContent = (DURUM_ADI[d.durum] || d.durum) + (d.suruluyor ? " · sürülüyor" : "") + (d.konusuyor ? " · söylüyor" : "");
+  $("bolge-yazi").textContent = d.bolge_adi || d.bolge || "bilinmiyor";
+  $("son-soru").textContent = d.son_soru || "—";
+  $("son-cevap").textContent = d.son_cevap || "—";
+  $("sahte-rozet").hidden = d.seri_turu !== "SahteSeri";
+  bakimGoster(d.bakim);
+}
+
+function girisGoster() {
+  surDurdur();
+  S.oturum = false;
+  $("kumanda").hidden = true;
+  if ($("giris").hidden) { $("giris").hidden = false; $("pin").focus(); }
+}
+function kumandaGoster() {
+  S.oturum = true;
+  $("giris").hidden = true;
+  $("kumanda").hidden = false;
+  bolgeleriYukle();
+}
+
+$("giris-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  $("giris-hata").textContent = "Kontrol ediliyor…";
+  const s = await istek("/giris", { pin: $("pin").value }, 4000);
+  if (s.ok) { $("giris-hata").textContent = ""; $("pin").value = ""; kumandaGoster(); durumYenile(); }
+  else $("giris-hata").textContent = s.veri.hata || "Giriş yapılamadı.";
+});
+
+durumYenile();
+setInterval(durumYenile, 1000);
+setInterval(() => baglantiGuncelle(false), 1000);   // yanıt gelmiyorsa şeridi "Bağlantı yok"a çevirir
+</script>
+</body>
+</html>
