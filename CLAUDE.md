@@ -6,6 +6,7 @@ Duffy; mekanik, montaj, kablaj ve SolidWorks'te güçlü, yazılımı yapay zek�
 - Türkçe konuş; doğrudan ol, ilk cümlede cevaba başla. Bitmiş işi tablo veya kısa listeyle özetle.
 - Projenin güncel durumu: `README.md` (kararlar, CAD sonuçları, açık işler) ve `planlama/proje-plani.md`.
   Varsayımda bulunmadan önce bu dosyaları ve ilgili kaynak notunu oku.
+- Mekanik/elektrik tasarımı (Ahmet/Duffy) `lale-duzeltme` dalında. Tasarım ile `kod/` arasındaki farklar ve kimin karar vereceği: `planlama/kopru-mekanik-yazilim.md`. Donanım (servo sayısı, eklem sınırı, pin, güç, acil stop) hakkında varsayımda bulunmadan önce oku; tasarım dosyalarını `git show origin/lale-duzeltme:<yol>` ile okuyabilirsin.
 - Yeni rapor → `raporlar/`, dayandığı araştırma → `raporlar/kaynaklar/` (kaynak URL'li; tahminleri
   "tahmini" diye işaretle). Plan değişikliği → `planlama/`. Tasarım → `tasarim/`. Yazılım kodu → `kod/`
   (aşağıdaki "Yazılım" bölümü).
