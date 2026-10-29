@@ -39,7 +39,7 @@ vermez; çelişkileri ve kimin karar vereceğini listeler. Karar alınınca ilgi
 | F5 | **ESP32 resetlenmesi** | E3: reset = röle bırakır = **kollar düşer**. Pi seri portu **DTR/RTS kapalı** açmalı (`ser.dtr = False; ser.rts = False` sonra `open()`, Linux'ta `stty -hupcl`) | Notlarda "Pi portu açınca DevKit resetlenir, `hazir` beklenmeli" | F4'e bağlı. F4'te röle kalırsa DTR/RTS kapalı açılış zorunlu |
 | F6 | Pin çakışması | GPIO12 = K1, GPIO2 = K2, GPIO36 = akü ADC, GPIO39/34/35 = sonar echo, PCA9685 kanal 10–12 = sonar trig | GPIO 2 = LED; 12 bilinçli boş (strapping); sonar/akü ADC yok | F4 ile birlikte. GPIO12 strapping uyarısı haklı, kablajda pull-down ile birlikte bakılmalı |
 | F7 | Sensörler | 3 × HC-SR04 (30 cm'de dur), BNO055 eğim alarmı (15°), akü gerilim uyarısı (Y3) | IMU iskeleti var; sonar ve akü izleme yok | Otonomi iptalinden sonra sonar gerekli mi: ekip. Maliyette hâlâ 3 adet var |
-| F8 | **Hareket sınırları (1,65 m)** | S2 ≥ +5° (el yüze girer); insan/engel yakınında omuz ≤ ~1,5 rad/s; **rampada ivme ≤ 0,1 m/s², kollar ev pozunda** (29.10 kararıyla zorunlu: akü yerinde); düzde ≤ 0,5; el yükü ~100 g (açık); yerinde dönüş yok, yay çizerek dönüş | `motorlar.cpp` `HIZLANMA = 0.5` sabit; rampa ve dönüş sınırı yok; jest hızları `kanallar.yaml`'da | Sınırlar analizden (`yazilim-notu-stowent-170.md`); uygulanması Efe'de |
+| F8 | **Hareket sınırları (1,65 m)** | S2 ≥ +5° (el yüze girer); insan/engel yakınında omuz ≤ ~1,5 rad/s; **rampada ivme ≤ 0,1 m/s², kollar ev pozunda** (29.10 kararıyla zorunlu: akü yerinde); düzde sürüş ≤ 0,5; **fren (yazılım / acil stop) ≤ 1,8 m/s²** (29.10, tek değer; düzde 0,5 kg el yüküyle bile devrilme payı 1,54); el yükü ~100 g (açık); yerinde dönüş yok, yay çizerek dönüş | `motorlar.cpp` `HIZLANMA = 0.5` sabit; rampa ve dönüş sınırı yok; jest hızları `kanallar.yaml`'da | Sınırlar analizden (`yazilim-notu-stowent-170.md`); uygulanması Efe'de |
 | F9 | Takılma koruması | DS3235 dirseği geri sürebilir; PWM servo konum bildirmez → öneri: servo hattına akım ölçer (INA219/226) | Yok | Ekip (akım ölçer +maliyet) |
 | F10 | Pi güç ayarı | Pololu ile PD yok: EEPROM `PSU_MAX_CURRENT=5000`, `config.txt` `usb_max_current_enable=1` | `kod/PI5-KURULUM.md`'de yok (masada PD adaptörle çalışıyor olabilir) | Robota takılınca şart |
 | F11 | Elle sürüş | Y4: Bluetooth gamepad doğrudan ESP32'de (Bluepad32): Pi çökse de sürülür | Telefon kumandası Pi üzerinden (`kod/robot/uzaktan/`) | Ekip. Pi çökerse 500 ms bekçisi zaten durdurur; soru yalnız "Pi'siz sürüş gerekli mi" |
@@ -53,6 +53,22 @@ Duffy, 29 Ekim 2026; ayrıntı `planlama/kararlar-2026-10-29.md`, kaynak `planla
 2. **Rampada / eğimde kollar ev pozunda** tutulmalı (ev pozunda pay 1,58; elde 0,5 kg ileri 1,44). → F8.
 3. **Kafa tilt sınırı ±13°** (önce ±15; çakışma +18° / −17°'de başlıyor): `kod/ortak/eklem_sinirlari.json` (`lale-duzeltme`). → F2.
 4. **El yükü ~100 g ile sınırlı** (servo payı; 0,5 kg'da S1 0,97, dirsek 0,74). **Açık konu**, karar değil. → F8.
+
+İkinci tur (Duffy, 29 Ekim 2026, Y2b kontrolünden sonra; `planlama/kararlar-2026-10-29.md` 5–9, `lale-duzeltme`):
+
+5. **Fren ≤ 1,8 m/s²** (yazılım freni ve acil stop yavaşlaması; belgelerde tek değer, eski "≤ 2" / "1,5 varsayımı" kalktı). Düz zemin
+   sürüş ivmesi **≤ 0,5**, rampada / eğimde **≤ 0,1 m/s² + kollar ev pozunda** aynen. Rampada 1,8 frenle ev pozu payı 1,31 (< 1,5):
+   öneri rampada yavaşlamayı da ≤ 0,1'de tutmak (Duffy teyidi açık). → F8, `motorlar.cpp` `HIZLANMA` (hızlanma / yavaşlama ayrı sınır).
+6. **El yükü ~100 g** (açık konu, değişmedi). → F8.
+7. **Mikrofon maliyete girdi:** XVF3800 ≈ 5.500 + yönlü mikrofon kolu ≈ 2.000 = **≈ 7.500 TL (tahmini)**; `maliyet.json` genel 109.001,35 TL. → M1 kapandı.
+8. **Kafa 5 V tepe ≈ 4,1 A** (10,1" ekran + XVF3800 ~1 W varsayımıyla; XVF3800 akımı ölçülmeli). → M4, F10.
+9. **Pi–ESP32 USB kablosu 2 m** (gereken ≈ 1,64 m; Pi kafada, gövde uzadı). Tablo 1'deki "1,25 m" eski.
+10. **GPIO16 / 17 boş** (Nextion kalktı; pin planında GPIO2 = K2). → F6.
+11. **Servo beslemesi ayrı regülatörlerde (hat ayrımı):** sağ kol = hat A, sol kol = hat B, kafa pan + tilt = hat C (üç XL4016; kafa
+    servosu bir kol hattına girince hat 5 A'i aşıyordu). Yoğun / tepe: kol 4,87 / 7,24 A, kafa 1,5 / 5,0 A (tahmini). Yazılıma etkisi:
+    akım ölçer ya da hat kesme (F9) hat başına düşünülürse eşleme bu; PCA9685 kanalları (sinyal) değişmedi. → F9.
+12. **Akü gereksinimi 2 saat kullanım:** normal / tipik 5,9 sa; yoğun kullanımda hesaplanan 1,83 sa Duffy tarafından kabul edildi (29.10).
+    Akü gerilim uyarısı (F7 / Y3) bu süreye göre ayarlanabilir.
 
 ## 3. Mikrofon değişikliği (26 Ekim, Efe) ve mekaniğe etkisi
 
