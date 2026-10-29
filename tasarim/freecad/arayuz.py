@@ -681,10 +681,13 @@ def eklem_sinirlari():
         eklemler=dict(taraf,
                       pan=j("kafa pan", KAFA["pan_aralik"], KAFA["servo"], "MG996R 180 derece; kablo halkasi +-90"),
                       tilt=j("kafa tilt", KAFA["tilt_aralik"], KAFA["servo"], "yazilim siniri (karar 29 Ekim 2026, Y2a KZ3: +-15 -> +-13; ilk cakisma +18 / -17, planlama/y2/Y2a-kontrol.md); serbest aralik kafa/kafa-analiz.json")),
-        teker=dict(sinirsiz=True, not_=("hiz / ivme siniri yazilimda: duz zeminde <= 0,5 m/s2 (motor surekli torkunun ~%50'si; devrilme payi >= 1,5 "
-                                        "icin sinir ~2,0 m/s2, el yuku <= 100 g, planlama/y2/Y2b-ivme.json); rampada / egimde <= 0,1 m/s2 ve kollar "
-                                        "ev pozunda (karar 29 Ekim 2026, Y2a KZ1; aku yerinde). Yazilim / acil stop freni <= 1,8 m/s2 (karar 29 Ekim 2026, "
-                                        "Y2b): duzde el yukunde 0,5 kg ile bile pay >= 1,54 (yuksuz 1,72, 100 g 1,68; Y2b-ivme.json fren_pay)")),
+        teker=dict(sinirsiz=True,
+                   ivme_sinir_m_s2=dict(duz_surus=0.5, duz_fren=1.8, rampa_surus=0.1, rampa_fren=0.1),
+                   not_=("hiz / ivme siniri yazilimda: duz zeminde <= 0,5 m/s2 (motor surekli torkunun ~%50'si; devrilme payi >= 1,5 "
+                         "icin sinir ~2,0 m/s2, el yuku <= 100 g, planlama/y2/Y2b-ivme.json); rampada / egimde <= 0,1 m/s2 ve kollar "
+                         "ev pozunda (karar 29 Ekim 2026, Y2a KZ1; aku yerinde). Yazilim / acil stop freni duz zeminde <= 1,8 m/s2 (karar 29 Ekim 2026, "
+                         "Y2b): duzde el yukunde 0,5 kg ile bile pay >= 1,54 (yuksuz 1,72, 100 g 1,68; Y2b-ivme.json fren_pay). Rampada / egimde "
+                         "yavaslama ve fren de <= 0,1 m/s2 (karar 29 Ekim 2026, Duffy; rampada 1,8 frende ev pozu payi 2,366 / 1,8 = 1,31 < 1,5)")),
         bagimli=[dict(ad="S1 kaseti: S2 lopu <-> kaset kapagi flansi", taraf=t, kosul={"%s_s1" % t: [_K["s1_min"], OMUZ["one_arka_aralik"][1]]},
                       sinir={"%s_s2" % t: [OMUZ["yana_aralik"][0], _K["s2_max"]]},
                       neden="S1 >= %g iken S2 <= %g: S2 lopu (dirsek/bilek kablolari) S2 120'de kaset kapagi flansina yaklasir "

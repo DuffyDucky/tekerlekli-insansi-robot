@@ -314,7 +314,7 @@ def kur(dy, zb, log=print):
                     parcalar=("Kamera Raspberry Pi Camera Module 3", "Yuz kabugu (on)")))
 
     # ------------------------------------------------------------------ Pi 5 + cevirici + amfi (tablada; karsi agirlik)
-    add("Raspberry Pi 5 8GB + Active Cooler", pi5_kafa(PI_T), "Satin", "-", kod="Raspberry Pi 5 8GB + resmi Active Cooler", renk="pcb",
+    add("Raspberry Pi 5 4GB + Active Cooler", pi5_kafa(PI_T), "Satin", "-", kod="Raspberry Pi 5 4GB + resmi Active Cooler", renk="pcb",
         kutle=PI5["kutle_g"], not_="tabla ustunde, arka kabuga 3 mm; kablo kenari one (micro HDMI -> ekran, CSI -> kamera)")
     for j, (x, z) in enumerate(PI_DEL):
         add("Burc M2,5x8 (Pi %d)" % j, burc25(KP.PI_BURC, (x, Y_TABLA[1], z), (0, 1, 0)), "Satin", "Pirinc", kod="M2,5 x 8 burc, disi-disi",
@@ -324,7 +324,7 @@ def kur(dy, zb, log=print):
         add("Vida M2,5x8 (Pi %d alt)" % j, screw912_25(8.0, (x, Y_TABLA[0], z), (0, 1, 0)), "Baglanti", "Celik 8.8",
             kod="M2,5x8 DIN 912", renk="celik")
     BAG.append(dict(ad="Pi 5 -> burc -> kafa tablasi", tip="4x M2,5x8 pirinc burc + M2,5x5 (ust) + M2,5x8 (alt)", adet=4,
-                    nokta=PI_T, parcalar=("Raspberry Pi 5 8GB + Active Cooler", "Kafa iskeleti (10 in)")))
+                    nokta=PI_T, parcalar=("Raspberry Pi 5 4GB + Active Cooler", "Kafa iskeleti (10 in)")))
     for ad_, (cx_, cz_), sh_, kod_, l_, w_, m_ in (
             ("5 V cevirici Pololu D36V50F5", (-80.0, 6.0), cevirici_local(), "Pololu D36V50F5 5 V 5,5 A", CEV["l"], CEV["w"], CEV["kutle_g"]),
             ("MAX98357A I2S amfi", (80.0, 6.0), amp_local(), "Adafruit MAX98357A", AMP["l"], AMP["w"], AMP["kutle_g"])):

@@ -15,7 +15,7 @@ Bu dosya yalnız fark çıkarır; hocaya gönderilmedi.
   (Pi 5, microSD, Nextion düşülmüş). Bu tek aday; sonraki maliyet sürümü (`d823435`, 29.10) hocaya gönderilmedi.
 - **Güncel:** `planlama/maliyet.json` (29.10, Y2b + bu günün servo hattı kararı), V3 satırları, yazıcıyla, yedek ve %15 pay dahil;
   adetler `tasarim/freecad/montaj/robot-bom.csv` (1.650 mm, 1.073 parça) bağlantı / satın alma satırlarından + %5–15 pay
-  (Y2b kontrolünde BOM ile birebir doğrulandı). 96 kalem, ara 94.783,78 TL, genel **109.001,35 TL**.
+  (Y2b kontrolünde BOM ile birebir doğrulandı). 96 kalem, ara 89.710,01 TL, genel **103.166,51 TL** (29.10 Pi 4 GB düzeltmesiyle; önce 94.783,78 / 109.001,35).
 
 Fiyat farkı = (güncel adet × güncel birim) − (listedeki adet × listedeki birim), KDV dahil, pay hariç. "Tahmini" yazan fiyat satıcı
 sayfasından doğrulanmadı.
@@ -37,7 +37,7 @@ sayfasından doğrulanmadı.
 | Yüz paneli, 3 mm akrilik 190 × 115 | 1 | −250,00 | 10,1" kafada panel yok, CAD'de yok |
 | Tırtıllı somun M4 (kanal 10) | 8 | −31,28 | 1,65 m CAD'de yok (Y2b'de silindi) |
 
-## Adet veya model değişenler (21 kalem, +12.630,10 TL)
+## Adet veya model değişenler (22 kalem, +7.556,33 TL)
 
 | Kalem | Listede (17.10) | Güncel (29.10) | Fark TL | Neden |
 |---|---|---|---|---|
@@ -62,25 +62,26 @@ sayfasından doğrulanmadı.
 | Fiberli somun M3 / M4 | 48 | 62 | +14,28 | BOM 8 + 47 + pay |
 | Pul (DIN 125) | 70 | 93 | +9,20 | BOM 32 / 15 / 21 / 16 + pay |
 | T-somun M6 (kanal 10) | 50 | 60 | +37,90 | BOM 56 + 2 + pay |
+| **Ana bilgisayar (elde)** | Raspberry Pi 5, 8 GB, 12.105,35 | **Raspberry Pi 5, 4 GB RAM**, 7.031,58 | −5.073,77 | **Karar 29.10 (Duffy: "pi 4 gb"):** eldeki kart 4 GB (Pi kurulumu 17.10). Fiyat Robotistan 4 GB sayfası (29.10). Eldeki kalem: satın alma yok, elimizdekiler düşülmüş toplam değişmez |
 
-Aynı adda karşılığı olan diğer 72 kalem adet, model ve fiyatta aynı.
+Aynı adda karşılığı olan diğer 71 kalem adet, model ve fiyatta aynı.
 
 ## Net fark
 
 | | Hocadaki liste (17.10) | Güncel (29.10) | Fark |
 |---|---|---|---|
-| Kalem sayısı | 97 | 96 | +3 / −4 / 21 değişen |
-| Parçalar + kargo (ara) | 86.672,21 | 94.783,78 | **+8.111,57 TL** |
-| Genel (%15 pay dahil) | 99.673,04 | 109.001,35 | **+9.328,31 TL** |
+| Kalem sayısı | 97 | 96 | +3 / −4 / 22 değişen |
+| Parçalar + kargo (ara) | 86.672,21 | 89.710,01 | **+3.037,80 TL** |
+| Genel (%15 pay dahil) | 99.673,04 | 103.166,51 | **+3.493,47 TL** |
 | Elimizdekiler düşülmüş, genel | 72.696,96 (Pi, SD, Nextion düşülmüş) | 78.270,76 (Pi, SD, 10,1" yüz ekranı düşülmüş) | +5.573,80 TL |
 
 Farkın büyüğü: yüz ekranı +9.634 (hoca verirse 0), mikrofon değişimi +4.882 (XVF3800 + yönlü − ReSpeaker; ikisi tahmini fiyat),
-Nextion −9.160 (eldeydi), DS3235 +1.035, PETG +778. 29.10 servo hattı kararı (XL4016 + yuva + sigorta): +287,40 ara, +330,51 genel.
-Koşullu kalemler (omni teker, fan, M6 CAD bağlantıları) iki listede de toplama girmiyor; koşullularla güncel genel 114.967,06 TL.
+Nextion −9.160 (eldeydi), Pi 8 → 4 GB −5.074 (eldeki; 29.10), DS3235 +1.035, PETG +778. 29.10 servo hattı kararı (XL4016 + yuva + sigorta): +287,40 ara, +330,51 genel.
+Koşullu kalemler (omni teker, fan, M6 CAD bağlantıları) iki listede de toplama girmiyor; koşullularla güncel genel 109.132,23 TL (Pi 4 GB ile; önce 114.967,06).
 
 ## Notlar
 - XL4016 dördüncü adedi henüz CAD'de yok (`robot-bom.csv` 3 adet; etek yerleşimi Y3 / Y4'te).
 - XVF3800 ve yönlü mikrofon fiyatları tahmini, stok belirsiz: listeye eklemeden önce satıcı fiyatı alınmalı.
-- Listede "Raspberry Pi 5, 8 GB" (eldeki kalem) var; DuffyOS kurulum kaydı (17.10) eldeki Pi'nin 4 GB çıktığını yazıyor. Sipariş
-  toplamını etkilemiyor (eldeki kalem), ama listedeki ad düzeltilmeli.
+- Listede "Raspberry Pi 5, 8 GB" (eldeki kalem) vardı; DuffyOS kurulum kaydı (17.10) eldeki Pi'nin 4 GB çıktığını yazıyor, Duffy 29.10'da
+  "pi 4 gb" dedi → `maliyet.json` "Raspberry Pi 5, 4 GB RAM", 7.031,58 TL (yukarıdaki tabloda). Satın alma toplamını etkilemiyor (eldeki kalem).
 - Kaynak dosyalar: Excel'ler (yukarıda), `git show b27fd80:planlama/maliyet.json`, `planlama/maliyet.json`, `planlama/adim5/maliyet_toplam.py`.

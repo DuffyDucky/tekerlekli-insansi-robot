@@ -39,9 +39,9 @@ koşullu geçti: `planlama/y2/Y2a-kontrol.md`).
 | Kafa | 10,1" HDMI yüz ekranı (hoca verecek), Raspberry Pi 5 kafada; tilt sınırı ±13° |
 | Göğüs | Nextion ekran **yok** (25 Ekim); kumanda telefondan |
 | Ses | XVF3800 4 mikrofonlu USB dizi + yönlü mikrofon karşılaştırma kolu (Efe, 26 Ekim) |
-| Yazılım sınırları | Rampada / eğimde kollar ev pozunda ve ivme ≤ 0,1 m/s²; düz zeminde ≤ 0,5 m/s² (devrilme sınırı ≈ 2,0 m/s²); fren ≤ 1,8 m/s² (29.10); S2 ≥ +5° |
+| Yazılım sınırları | Rampada / eğimde kollar ev pozunda, ivme ve fren ≤ 0,1 m/s²; düz zeminde ≤ 0,5 m/s² (devrilme sınırı ≈ 2,0 m/s²), fren ≤ 1,8 m/s² (29.10); S2 ≥ +5° |
 | Baskı | 63 parça, 7,7 kg filament (PETG 6,75 + PETG-CF 1,0), ≈ 162 sa; kafa kabuğu sağ ön / sağ arka destekli |
-| Maliyet | **≈ 109.000 TL** (V3 satırları, yazıcıyla, yedek ve %15 pay dahil; koşullularla ≈ 115.000). Yüz ekranı hocadan gelirse ve elimizdekiler düşülürse ≈ 78.300 TL. Sipariş verilmedi; liste hocada (fark: `planlama/siparis-farki-2026-10-29.md`) |
+| Maliyet | **≈ 103.200 TL** (V3 satırları, yazıcıyla, yedek ve %15 pay dahil; koşullularla ≈ 109.100; 29.10 eldeki Pi 5 8 → 4 GB fiyatıyla, önce ≈ 109.000). Yüz ekranı hocadan gelirse ve elimizdekiler düşülürse ≈ 78.300 TL. Sipariş verilmedi; liste hocada (fark: `planlama/siparis-farki-2026-10-29.md`) |
 | Kapsam | Otonom gezinme, lidar, ROS 2 / Nav2 **yok** (hoca, 21 Ekim); kumandayla sürüş + konuşma + jest |
 
 Aşağıdaki bölümler projenin geçmişidir (Eylül–Ekim, CadQuery V1–V3, 115–125 cm); güncel sayılar yukarıda ve `planlama/` belgelerinde.
