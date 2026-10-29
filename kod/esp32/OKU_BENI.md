@@ -5,7 +5,7 @@
 > 27 Ekim 2026 eki (odometri yayını, `odo_sifirla`, jest `yon`, IMU iskeleti, yönlü `isaret` jesti / sürüm 0.3.0)
 > de yalnız derlendi, kartta denenmedi.
 > 29 Ekim 2026 eki (sürüm 0.4.0: 10 servo, eklem sınırı `kod/ortak/eklem_sinirlari.json`'dan, ayrı hızlanma/fren
-> sınırı `src/sinirlar_verisi.h`, rampa kipi, IMU eğim iskeleti) de yalnız derlendi, kartta denenmedi.
+> sınırı `src/sinirlar_verisi.h`, rampa kipi, IMU eğim iskeleti) de yalnız derlendi (RAM %7,0, flash %23,2, `-Wall` uyarısız), kartta denenmedi.
 
 ESP32'nin işi basit: Pi'den gelen tek satırlık JSON komutları uygular. Konuşma, yapay zekâ, yüz
 hep Pi'de (`kod/`). ESP32 servoları (PCA9685 ile) ve iki tekerleği (BTS7960 ile) sürer.
