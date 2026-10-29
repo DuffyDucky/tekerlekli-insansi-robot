@@ -3,14 +3,16 @@
 // ESP32'nin işi: Pi'den gelen kısa komutları (seri JSON) uygulamak.
 //   - kollar ve kafa: PCA9685 + servolar, kayıtlı jestler (servolar.*, jestler.*)
 //   - tekerlekler: 2 x BTS7960 + JGB37 enkoderli motor (motorlar.*)
-//   - güvenlik: 500 ms komut bekçisi + döngü bekçisi (watchdog.*)
+//   - güvenlik: 500 ms komut bekçisi + döngü bekçisi (watchdog.*); ivme/fren sınırı ve rampa kipi
+//     (motorlar.*, seri_protokol.*; IMU eğimi geçerliyse rampa kipi burada otomatik açılır)
 //   - konum: 10 Hz odometri yayını {"k":"odo",...} (enkoder tikleri + IMU yaw; IMU şimdilik yok, imu.*)
 //   - haberleşme: seri_protokol.*  |  pinler: include/pinler.h
 //
 // ======================= GÜÇ NOTU (kablajdan ÖNCE oku) =======================
-// 1) SERVO GÜCÜ AYRI: servolar PCA9685'in V+ klemensinden, kendi DC-DC'sinden beslenir (5-7,4 V;
-//    DS3218/MG996R için 6 V iyi). Akım toplamı: servo başına durmada ~2-2,5 A, 6 servo -> 10 A+
-//    tepe. DC-DC buna göre seçilir, V+ ile GND arasına büyük kondansatör (ör. 1000 uF) konur.
+// 1) SERVO GÜCÜ AYRI: servolar PCA9685'in V+ klemensinden, kendi DC-DC'lerinden beslenir (5-7,4 V;
+//    DS3235/MG996R için 6 V iyi). 10 servo, üç hat (elektrik notu, 29 Ekim 2026): sağ kol = A,
+//    sol kol = B, kafa pan + tilt = C (üç XL4016). Tepe akım kol hattı ~7,2 A, kafa ~5 A (tahmini).
+//    V+ ile GND arasına büyük kondansatör (ör. 1000 uF) konur.
 // 2) MANTIK AYRI: ESP32 ve Pi kendi temiz 5 V hatlarından beslenir. Pi'nin USB'sinden SERVO
 //    BESLENMEZ: servo çektiği ani akımla voltaj düşer, Pi ve ESP32 resetlenir (brownout).
 // 3) ORTAK TOPRAK: akü eksi, servo DC-DC eksi, BTS7960 GND, ESP32 GND, Pi GND birleşir.
@@ -22,6 +24,7 @@
 // DURUM: Donanımda DOĞRULANMADI (26 Ekim 2026). Pinler, yönler, sınırlar, enkoder sayısı tahmini.
 // Döngü yapısı: delay() yok. loop() hep döner, her iş kendi zamanı gelince yapılır.
 #include <Arduino.h>
+#include <math.h>
 
 #include "imu.h"
 #include "jestler.h"
@@ -43,10 +46,29 @@ constexpr uint32_t SERVO_ARALIK_MS = 20;    // servo + jest güncellemesi (50 Hz
 constexpr uint32_t MOTOR_ARALIK_MS = 20;    // motor kontrolü (50 Hz; motorlar.cpp DT ile aynı olmalı)
 constexpr uint32_t DURUM_ARALIK_MS = 1000;
 
+// Otomatik rampa kipi (IMU eğimi). Değerler TAHMİNİ: rampada ölçüp ayarla. Histerezis: eşikte
+// titreşip kip açılıp kapanmasın diye açma ve kapama eşiği farklı.
+constexpr float RAMPA_EGIM_AC = 3.0f;       // derece: bu eğimin üstünde rampa kipi açılır
+constexpr float RAMPA_EGIM_KAPAT = 1.5f;    // derece: bunun altına inince (elle açık değilse) kapanır
+constexpr uint32_t EGIM_ARALIK_MS = 100;
+
 uint32_t son_servo_ms = 0;
 uint32_t son_motor_ms = 0;
 uint32_t son_durum_ms = 0;
 uint32_t son_odo_ms = 0;
+uint32_t son_egim_ms = 0;
+bool egimde = false;
+
+// IMU eğimi geçerliyse (sonlu) histerezisle "eğimde" kararını verir ve seri_protokol'e bildirir.
+// IMU yoksa ya da değer geçersizse son karar korunur (açılışta kapalı): otomatik kip çalışmaz,
+// elle kip ({"k":"rampa"}) her durumda çalışır.
+void egim_denetle() {
+  const float egim = imu_egim_derece();
+  if (!isfinite(egim)) return;
+  if (!egimde && egim >= RAMPA_EGIM_AC) egimde = true;
+  else if (egimde && egim <= RAMPA_EGIM_KAPAT) egimde = false;
+  rampa_imu_bildir(egimde);
+}
 
 // LED: normalde 1 Hz yanıp söner (program çalışıyor). PCA9685 bulunamadıysa hızlı (5 Hz) söner.
 void led_guncelle(uint32_t simdi_ms) {
@@ -64,7 +86,7 @@ void setup() {
   seri_baslat();              // {"k":"hazir",...} gönderir
   watchdog_baslat();
   uint32_t simdi = millis();
-  son_servo_ms = son_motor_ms = son_durum_ms = son_odo_ms = simdi;
+  son_servo_ms = son_motor_ms = son_durum_ms = son_odo_ms = son_egim_ms = simdi;
 }
 
 void loop() {
@@ -72,6 +94,11 @@ void loop() {
 
   seri_isle(simdi);           // gelen komutlar (beklemez)
   watchdog_kontrol(simdi);    // 500 ms "sur" gelmediyse motorları durdur
+
+  if (simdi - son_egim_ms >= EGIM_ARALIK_MS) {
+    son_egim_ms = simdi;
+    egim_denetle();           // eğimde: rampa kipi (ivme 0,1 m/s^2, kollar ev pozunda)
+  }
 
   if (simdi - son_motor_ms >= MOTOR_ARALIK_MS) {
     son_motor_ms += MOTOR_ARALIK_MS;

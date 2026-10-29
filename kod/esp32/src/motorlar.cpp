@@ -8,6 +8,7 @@
 #include <Arduino.h>
 
 #include "pinler.h"
+#include "sinirlar_verisi.h"   // IVME_DUZ_SURUS, IVME_DUZ_FREN, IVME_RAMPA_SURUS, IVME_RAMPA_FREN (üretilir)
 
 namespace {
 
@@ -16,7 +17,8 @@ constexpr float DT = 0.020f;                  // motorlar_guncelle() aralığı,
 constexpr float TEKER_CAPI_M = 0.125f;        // 125 x 58 arazi tekerleği
 constexpr float IZ_GENISLIGI_M = 0.426f;      // sol ve sağ teker merkezleri arası (CAD: 2 x 213 mm); ÖLÇ
 constexpr float TEKER_AZAMI_HIZ = 0.39f;      // %100 PWM'de teker hızı (60 dev/dk JGB37 + 125 mm). ÖLÇ
-constexpr float HIZLANMA = 0.5f;              // m/s^2; uzun robot devrilmesin diye yumuşak. Artırma!
+// İvme sınırları burada YAZILMAZ: src/sinirlar_verisi.h (kod/ortak/eklem_sinirlari.json'dan üretilir).
+// Devrilme payı analizinden gelir (planlama/kopru-mekanik-yazilim.md F8); artırma, JSON'u Ahmet günceller.
 constexpr float GIRIS_SINIRI = 1.0f;          // v ve w bu değere kırpılır (protokol: -1..1)
 
 // Enkoder: tekerleğin BİR turunda kaç tik sayılır? JGB37-520 Hall enkoderi motor milinde 11 darbe
@@ -63,7 +65,7 @@ struct Teker {
   bool motor_ters, enkoder_ters;
   volatile int32_t* sayac;  // bu tekerin enkoder sayacı
   float hedef_hiz;        // m/s, "sur"dan gelen
-  float rampa_hiz;        // m/s, hızlanma sınırıyla hedefe yaklaşan değer
+  float rampa_hiz;        // m/s, ivme sınırıyla hedefe yaklaşan değer (motora giden)
   float integral;
   float onceki_hata;
   int32_t onceki_tik;
@@ -75,6 +77,7 @@ Teker sag = {PIN_SAG_RPWM, PIN_SAG_LPWM, PIN_SAG_EN, LEDC_SAG_R, LEDC_SAG_L,
              SAG_MOTOR_TERS, SAG_ENKODER_TERS, &sag_tik, 0, 0, 0, 0, 0};
 
 float son_v = 0.0f, son_w = 0.0f;
+bool rampa_kipi = false;      // true: IVME_RAMPA_* sınırları (eğimde)
 
 // Kesme: A kanalı her değiştiğinde çalışır. A ile B aynıysa bir yön, farklıysa öbür yön.
 // Kesme kısa olmalı: yalnız say, hesap yapma. IRAM_ATTR: kod hızlı RAM'de dursun.
@@ -142,22 +145,32 @@ void teker_kur(Teker& t) {
   teker_yaz(t, 0.0f);
 }
 
-void teker_sifirla(Teker& t) {
-  t.hedef_hiz = t.rampa_hiz = 0.0f;
-  t.integral = t.onceki_hata = 0.0f;
-  teker_yaz(t, 0.0f);
-}
-
 int32_t tik_oku(const Teker& t) {
   int32_t ham = *t.sayac;
   return t.enkoder_ters ? -ham : ham;
 }
 
+// Rampa: hızı hedefe doğru bir adım (DT) yürütür.
+//   |hız| küçülüyorsa (yavaşlama, dur, bekçi, yön değişiminin ilk yarısı) FREN sınırı,
+//   |hız| büyüyorsa HIZLANMA sınırı. Yön değişiminde 0'ın öbür yanına fren adımıyla geçilmez:
+//   o adım 0'da biter, sonraki adımlar hızlanma sınırıyla devam eder.
+float rampa_adimi(float simdiki, float hedef) {
+  const float surus = rampa_kipi ? IVME_RAMPA_SURUS : IVME_DUZ_SURUS;
+  const float fren = rampa_kipi ? IVME_RAMPA_FREN : IVME_DUZ_FREN;
+  const float fark = hedef - simdiki;
+  const bool yavasliyor = (simdiki > 0.0f && fark < 0.0f) || (simdiki < 0.0f && fark > 0.0f);
+  if (yavasliyor) {
+    float yeni = simdiki + kirp(fark, fren * DT);
+    if ((simdiki > 0.0f && yeni < 0.0f) || (simdiki < 0.0f && yeni > 0.0f)) yeni = 0.0f;
+    return yeni;
+  }
+  return simdiki + kirp(fark, surus * DT);
+}
+
 // Bir teker için bir kontrol adımı (rampa + ileri besleme + PID).
 void teker_adim(Teker& t) {
-  // 1) Rampa: hız her adımda en çok HIZLANMA*DT değişir.
-  float adim = HIZLANMA * DT;
-  t.rampa_hiz += kirp(t.hedef_hiz - t.rampa_hiz, adim);
+  // 1) Rampa: hızlanma ve fren ayrı sınırlı (bkz. motorlar.h "İVME SINIRLARI").
+  t.rampa_hiz = rampa_adimi(t.rampa_hiz, t.hedef_hiz);
 
   // 2) Ölçülen hız (enkoderden).
   int32_t tik = tik_oku(t);
@@ -224,10 +237,14 @@ void motorlar_hedef(float v, float w) {
 }
 
 void motorlar_dur() {
+  // Yalnız hedef sıfırlanır; teker_adim fren sınırıyla (düz 1,8 / rampa 0,1 m/s^2) durdurur.
   son_v = son_w = 0.0f;
-  teker_sifirla(sol);
-  teker_sifirla(sag);
+  sol.hedef_hiz = 0.0f;
+  sag.hedef_hiz = 0.0f;
 }
+
+void motorlar_rampa_modu(bool acik) { rampa_kipi = acik; }
+bool motorlar_rampa_modu_mu() { return rampa_kipi; }
 
 void motorlar_guncelle(uint32_t simdi_ms) {
   (void)simdi_ms;
