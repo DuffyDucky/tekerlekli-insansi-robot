@@ -55,7 +55,7 @@ Push yok (Duffy: "şimdilik yerelde kalsın"); her doğrulanan adım yerel commi
 |---|---|---|
 | Y1 | S1 kablo kaseti bağımsız kontrolünü bitir (`adim2/K2-s1-kontrol.md`, WIP `834b386`) | ✅ KOŞULLU GEÇTİ (125 + 170); K1–K6 düzeltmeleri Y1b |
 | Y1b | S1 düzeltmeleri K1–K6 + ikinci pim + S2 kablosu göbekte | ✅ KOŞULLU GEÇTİ (`adim2/K3-s1-duzeltme-kontrol.md`); kalan KZ1 `duvar.pim.bosluk` 0,5→1,0, KZ2 tambur ip deliği ≥0,8 mm, S1-kaset.md belge düzeltmeleri → Y2a'ya |
-| Y2a | CAD: taslağı ana montaja taşı (arayuz + modüller + montaj; Nextion yok, taban 520 + akü 75 öne, direk 2 m stok) + KZ1/KZ2 | ✅ KOŞULLU GEÇTİ (`planlama/y2/Y2a-kontrol.md`; KZ1 akü yeri/devrilme, KZ2 servo el yükü, KZ3 tilt payı, KZ4 kafa kabuğu desteği → Duffy kararı / Y2b) |
+| Y2a | CAD: taslağı ana montaja taşı (arayuz + modüller + montaj; Nextion yok, taban 520 + akü 75 öne, direk 2 m stok) + KZ1/KZ2 | ✅ KOŞULLU GEÇTİ (`planlama/y2/Y2a-kontrol.md`; KZ1 akü yeri/devrilme, KZ2 servo el yükü, KZ3 tilt payı, KZ4 kafa kabuğu desteği → Duffy kararı / Y2b). **Kararlar 29.10** (`planlama/kararlar-2026-10-29.md`): KZ1 akü yerinde + rampada kollar ev pozu + ivme ≤ 0,1 m/s²; KZ3 tilt ±13; KZ4 dikiş aynı, destekli baskı; KZ2 açık |
 | Y2b | Veri/belge: eklem_sinirlari, maliyet.json, baskı listesi, elektrik/akü, README, proje planı, demodan lidar/otonomi | ⏳ |
 | Y3 | M6 CAD (erişim düzeltmeleri, eski 4. adımdaki liste) | ⏳ |
 | Y4 | Tüm modüller yeniden üretilir → tam çakışma taraması → regresyon (eski 6. adım) | ⏳ |

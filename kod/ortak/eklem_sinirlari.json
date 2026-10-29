@@ -94,10 +94,10 @@
     },
     "tilt": {
       "ad": "kafa tilt",
-      "min": -15.0,
-      "max": 15.0,
+      "min": -13.0,
+      "max": 13.0,
       "servo": "MG996R (180 derece), pan ve tilt",
-      "neden": "yazilim siniri (karar 21 Ekim 2026, 10,1 in kafa); serbest aralik kafa/kafa-analiz.json"
+      "neden": "yazilim siniri (karar 29 Ekim 2026, Y2a KZ3: +-15 -> +-13; ilk cakisma +18 / -17, planlama/y2/Y2a-kontrol.md); serbest aralik kafa/kafa-analiz.json"
     }
   },
   "teker": {
@@ -184,6 +184,6 @@
         30.0
       ]
     },
-    "not_": "1,65 m: yasak kutu yok. 125 cm olcumu (tilt 25...30) yeni tilt araliginin (+-15) disinda; taslak-170 kafa x kol taramasi S2 >= 5'te cakisma 0 (en az 7,71 mm, El <-> yuz kabugu). Y4 tam taramasinda yeniden dogrulanacak."
+    "not_": "1,65 m: yasak kutu yok. 125 cm olcumu (tilt 25...30) yeni tilt araliginin (+-13) disinda; taslak-170 kafa x kol taramasi S2 >= 5'te cakisma 0 (en az 7,71 mm, El <-> yuz kabugu). Y4 tam taramasinda yeniden dogrulanacak."
   }
 }

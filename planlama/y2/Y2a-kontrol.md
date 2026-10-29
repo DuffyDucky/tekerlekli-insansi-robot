@@ -107,11 +107,15 @@ Y2a değişiklikleri (commit'lenmemiş). Girdi: `Y2a-brief.md`, `Y2a-gunluk.md` 
 - **KZ1 (devrilme, akü kararı):** akü yerinde kalırsa rampa 5°'de pay ölçütü 1,5 kollar geride / yukarıda-yanda (1,48–1,49) ve elde yükle
   ileri (1,44) sağlanmıyor. Duffy kararı (günlük a/b/c) gelene kadar `yazilim-notu-stowent-170.md` 3. kural (rampada kollar ev pozunda,
   ivme ≤ 0,1 m/s²) **zorunlu** ve "1,65 m / akü yerinde" diye güncellenmeli (Y2b). `taban_montaj` poz listesine ızgara en kötüsü eklenmeli.
+  **KARAR 29.10:** seçenek c — akü yerinde kalır; şart: rampada kollar ev pozunda, taban doğrusal ivme ≤ 0,1 m/s² (yazılım sınırı).
+  a (travers + direk ~80 mm kısalma) ve b reddedildi. Ayrıntı `planlama/kararlar-2026-10-29.md`.
 - **KZ2 (servo payı):** 0,5 kg el yükünde S1 / S2 0,97, dirsek 0,74 (< 1). `DIRSEK.yuk_g` 500 → 2× pay için ≤ ~100 g ya da servo değişimi;
   karar Duffy, yazılım notuna yük sınırı (Y2b).
 - **KZ3 (kafa tilt payı):** çakışma +18° / −17°'de başlıyor; ±15 yazılım sınırına pay 1,5–2,5°. Öneri: yazılım ±13 (ya da kafa kabuğu ↔
   rulman yuvası boşluğu); `kafa_montaj` tilt taraması 1° adımla sınırı raporlamalı.
+  **KARAR 29.10:** yazılım tilt sınırı ±15° → **±13°** (`arayuz.KAFA.tilt_aralik`, `kod/ortak/eklem_sinirlari.json` yeniden üretildi).
 - **KZ4 (baskı):** kafa kabuğu sağ ön / arka dikiş dili desteksiz değil (tasarımcının açık sorusu) — destekli baskı ya da dikiş biçimi kararı.
+  **KARAR 29.10:** dikiş değişmez; sağ ön ve sağ arka kafa kabuğu **destekli** basılır (16 mm şerit, ~1,25 mm konsol bölgeleri destekli).
 - **Belge:** günlük başlığı (1,70 m / 1.235,5), zaman damgaları, sehim 0,336 → 0,371, iki yorum satırı; orkestratör özetinde "teker iz
   genişliği 216" → "teker merkezi x ±216 (iz 432)".
 

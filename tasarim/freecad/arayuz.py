@@ -496,7 +496,7 @@ KAFA = dict(
     pan_aralik=(-90.0, 90.0),                  # MG996R 180 derece; kablo halkasi +-90 icin (kafa_montaj taramasi)
     tilt_nokta=(26.9, _KAFA_ALT - _KAFA_GOVDE_Y[0] - _KAFA_DENGE["dy"], 25.0),   # tilt horn alt yuzu; eksen X'e paralel, y 188,255, z 25 (V3 130)
     tilt_yon=(1.0, 0.0, 0.0),                  # +aci: basi one egme (yuz asagi)
-    tilt_aralik=(-15.0, 15.0),                 # yazilim siniri (karar 21 Ekim 2026: +-15; 125 cm -25...30)
+    tilt_aralik=(-13.0, 13.0),                 # yazilim siniri (karar 29 Ekim 2026, Y2a KZ3: +-13; once +-15, ilk cakisma +18 / -17; 125 cm -25...30)
     servo="MG996R (180 derece), pan ve tilt",
     kafa_alt_y=_KAFA_ALT,
     govde_y=_KAFA_GOVDE_Y,
@@ -653,7 +653,7 @@ KAFA_KOL_YASAK = dict(
     not_=("kol_kosulu disinda kafa-kol cakismasi taramada yok; kosulsuz uygulamak guvenli ama kafayi gereksiz kisitlar. "
           "Olculen yana 0 idi; S2 alt siniri +5 oldugundan (15 Ekim 2026, S1 kaseti) kosul yana 5...5 olur. Kutu C7 tam taramasiyla dogrulanacak.")
          if _YS_AKTIF else
-         ("1,65 m: yasak kutu yok. 125 cm olcumu (tilt 25...30) yeni tilt araliginin (+-15) disinda; taslak-170 kafa x kol taramasi S2 >= 5'te "
+         ("1,65 m: yasak kutu yok. 125 cm olcumu (tilt 25...30) yeni tilt araliginin (+-13) disinda; taslak-170 kafa x kol taramasi S2 >= 5'te "
           "cakisma 0 (en az 7,71 mm, El <-> yuz kabugu). Y4 tam taramasinda yeniden dogrulanacak."),
 )
 
@@ -680,7 +680,7 @@ def eklem_sinirlari():
         surum=1, birim="derece", kaynak="tasarim/freecad/arayuz.py (OMUZ, DIRSEK, KAFA, KAFA_KOL_YASAK, KOL_KABLO s1 s2_s1_kosul)",
         eklemler=dict(taraf,
                       pan=j("kafa pan", KAFA["pan_aralik"], KAFA["servo"], "MG996R 180 derece; kablo halkasi +-90"),
-                      tilt=j("kafa tilt", KAFA["tilt_aralik"], KAFA["servo"], "yazilim siniri (karar 21 Ekim 2026, 10,1 in kafa); serbest aralik kafa/kafa-analiz.json")),
+                      tilt=j("kafa tilt", KAFA["tilt_aralik"], KAFA["servo"], "yazilim siniri (karar 29 Ekim 2026, Y2a KZ3: +-15 -> +-13; ilk cakisma +18 / -17, planlama/y2/Y2a-kontrol.md); serbest aralik kafa/kafa-analiz.json")),
         teker=dict(sinirsiz=True, not_="hiz / ivme siniri yazilimda (rampada <= 0,25 m/s2 onerilir)"),
         bagimli=[dict(ad="S1 kaseti: S2 lopu <-> kaset kapagi flansi", taraf=t, kosul={"%s_s1" % t: [_K["s1_min"], OMUZ["one_arka_aralik"][1]]},
                       sinir={"%s_s2" % t: [OMUZ["yana_aralik"][0], _K["s2_max"]]},
