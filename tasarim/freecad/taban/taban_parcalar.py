@@ -1,5 +1,5 @@
 # Taban modulu (V3) - PARCALAR: alt plaka, elektronik kati (on) + guc paneli (arka), burclar, 4 motorlu tahrik (JGB37 + L braket
-# + kaplin + teker), aku + kayis + takoz, guc elektronigi (BTS7960 x2, XL4016 x3: servo A / servo B / cevre 5 V, sigorta kutusu,
+# + kaplin + teker), aku + kayis + takoz, guc elektronigi (BTS7960 x2, XL4016 x4: servo A sag kol / servo B sol kol / cevre 5 V / servo C kafa (Y3, guc panelinde), sigorta kutusu,
 # role, ana sigorta, ana anahtar), kartlar (ESP32 + tasiyici, PCA9685, BNO055, arayuz karti, 2 servo dagitim karti), HC-SR04 x3 +
 # tutucular, acil stop, tum baglanti elemanlari ve kablo yolu semasi (Referans).
 # 15 Ekim 2026 (duzeltme plani 3. adim): K4 Pi 5 + MAX98357A kafaya gitti (kafa/); Pi'nin XL4016'si servo B oldu (E1); eski Pi yerine
@@ -187,6 +187,12 @@ for sx in (-1, 1):
 RL = T["role"]
 RL_DEL = (RL["merkez"][0], RL["merkez"][1] - RL["olcu"][1] / 2 - 5.0)
 kes_ar.append(delik_y(RL_DEL[0], RL_DEL[1], A.CLEAR[4], y0d, td))
+# Y3 (M6 CAD): dorduncu XL4016 (hat C) ve on sarj karti (K2 + 5,6 ohm) guc panelinde -> burc delikleri
+XLK_C = T["xl_kafa"]["merkez"]
+XLK_DEL = [(XLK_C[0] + dx * L.XL["dx"] / 2, XLK_C[1] + dz * L.XL["dz"] / 2) for dx in (-1, 1) for dz in (-1, 1)]
+OS_C = T["on_sarj_karti"]["merkez"]
+OS_DEL = [(OS_C[0] + sx * (L.PERF["l"] / 2 - L.PERF["kenar"]), OS_C[1] + sz * (L.PERF["w"] / 2 - L.PERF["kenar"])) for sx in (-1, 1) for sz in (-1, 1)]
+kes_ar += [delik_y(x, z, A.CLEAR[3], y0d, td) for (x, z) in XLK_DEL + OS_DEL]
 
 # --- kart konumlari (kat ustu y = Y_DECK1)
 YD1 = A.Y_DECK1
@@ -374,6 +380,15 @@ for (x, z, gorev) in T["xl"]:
     XL_I.append(kart_burclu("XL4016 %s" % gorev, "Guc", xl_local(), x, z, A.Y_RAIL0, T["xl_burc"], d, 3, 5.5, "Naylon", "M3x8 naylon burc",
                             PLAKA, "XL4016 8 A DC-DC dusurucu", L.XL["kutle_g"], "pcb_m", (x * 0.6, 120, z * 0.3), not_=gorev))
 
+XL_I.append(kart_burclu("XL4016 %s" % T["xl_kafa"]["gorev"], "Guc", xl_local(), XLK_C[0], XLK_C[1], A.Y_DECK1, T["xl_burc"], XLK_DEL, 3, 5.5,
+                        "Naylon", "M3x8 naylon burc", KAT_AR, "XL4016 8 A DC-DC dusurucu", L.XL["kutle_g"], "pcb_m", (90, 330, 20),
+                        vida_ust=6, vida_alt=8, not_="karar 29.10: kafa servo hatti C (5 A mini hat sigortasi); guc panelinde, akunun onunde (Y3)"))
+OSI = kart_burclu("On sarj karti (E9: K2 + 5,6 ohm)", "Guc", perf_local(), OS_C[0], OS_C[1], A.Y_DECK1, T["on_sarj_karti"]["burc"], OS_DEL, 3,
+                  5.5, "Naylon", "M3x8 naylon burc", KAT_AR,
+                  "Delikli pertinaks 70 x 50: K2 rolesi JQC-3F 12 V 7 A + 5,6 ohm 11 W tas direnc + 1N4007 (tahmini zarf)",
+                  L.PERF["kutle_g"] + 25.0, "pcb_y", (-90, 330, 20), vida_ust=6, vida_alt=8,
+                  not_="E9 on sarj: K2 kontagi + 5,6 ohm K1 kontagina paralel (planlama/adim3/elektrik.md); Y3'te CAD'e girdi")
+
 # --- guc paneli (arka kat ustu): sigorta kutusu, role, ana sigorta yuvasi (tahmini zarflar), ana anahtar (etek plakasi alti)
 cx, cz = SK["merkez"]
 lx, lz, ly = SK["olcu"]
@@ -438,7 +453,7 @@ AKI = kart_burclu("Arayuz karti (E2/E3)", "Elektronik", arayuz_karti_local(), AK
                   5.5, "Naylon", "M3x8 naylon burc", KAT_ON, "Delikli pertinaks 70 x 50: PC817 x2, MOSFET + 1N4007, bolucu direncler, klemens (tahmini zarf)",
                   L.PERF["kutle_g"] + 10.0, "pcb_y", (-80, 120, 40), vida_ust=6, vida_alt=8, not_=T["arayuz_karti"]["not_"])
 SDI = {}
-for k, ad in (("A", "sag kol + pan"), ("B", "sol kol + tilt")):
+for k, ad in (("A", "sag kol"), ("B", "sol kol")):
     c = SD_C[k]
     SDI[k] = kart_burclu("Servo dagitim karti %s (%s)" % (k, ad), "Elektronik", servo_dagitim_local(), c[0], c[1], YD1, SD_C["burc"], sd_del[k],
                          3, 5.5, "Naylon", "M3x8 naylon burc", KAT_ON,
@@ -531,11 +546,11 @@ YOL += [
     ("Motor 12 V sag kol + arka motorlar (plaka altindan z 36 deliginden)", "turuncu",
      [(-50, 145, 60), (50, 145, 60), (67.5, 145, 140), (80, 120, 196), (80, 88, 200), (100 + DX, 85, 185), (80, 120, 140), (80, 112, 40),
       (80, 88, 36), (80, 87, -150), (100 + DX, 85, -185)]),
-    ("Servo 6 V A (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol + pan", "sari",
+    ("Servo 6 V A (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol", "sari",
      [(rx, YD1 + 46, rz), (-60, 182, -30), (-30, 150, 40), (0, 130, 150), (0, 140, 170), (20, 150, 160), (30, 190, 165), (SD_C["A"][0], 200, SD_C["A"][1]),
       (40, 205, 180), (25, 230, 26), (25, 262, -26), (0, 400, -26), (0, S3Y - 55, -26), (60, S3Y, -26), (100, S3Y, -26)]),
-    ("Servo uzatmalari kafaya: pan (A) + tilt (B) (direk ustu, R62 halkasindan)", "sari", [(0, S3Y - 55, -26), (0, S3Y + 20, -30), (0, S3Y + 55, -10)]),
-    ("Servo 6 V B (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol + tilt", "sari",
+    ("Servo uzatmalari kafaya: pan + tilt (hat C, XL4016 C guc panelinde; direk ustu, R62 halkasindan)", "sari", [(0, S3Y - 55, -26), (0, S3Y + 20, -30), (0, S3Y + 55, -10)]),
+    ("Servo 6 V B (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol", "sari",
      [(rx, YD1 + 46, rz), (-62, 182, -30), (-55, 150, 20), (T["xl"][0][0], 125, T["xl"][0][1]), (-40, 150, 150), (-30, 190, 165),
       (SD_C["B"][0], 200, SD_C["B"][1]), (-40, 205, 180), (-25, 230, 26), (-25, 262, -26), (-5, 400, -26), (-5, S3Y - 55, -26), (-60, S3Y, -26),
       (-100, S3Y, -26)]),

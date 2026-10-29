@@ -2,8 +2,8 @@
 
 Kaynak: `raporlar/Humanoid-Robot-Fizibilite-Raporu.html` (26 Eylül 2026). Tarihler güz dönemine göre;
 rakamların çoğu tahmin, teklif ve bölüm onayıyla kesinleşecek. Tasarımın tek kaynağı FreeCAD modeli (`tasarim/freecad/`; **29 Ekim 2026'dan
-beri 1,65 m ana tasarım**: 1.073 parça, 24,4 kg, kol başına 4 servo, omuz DS3235, 10,1" kafa, göğüste ekran yok, taban 520 mm),
-malzeme listesi `planlama/maliyet.json` (≈ 103.200 TL, %15 pay ve yedek dahil; eldeki Pi 5 4 GB fiyatıyla, 29.10), 1,65 m iş planı `planlama/dongu.md` (Y1–Y6).
+beri 1,65 m ana tasarım**: 1.120 parça (Y3), 24,6 kg, kol başına 4 servo, omuz DS3235, 10,1" kafa, göğüste ekran yok, taban 520 mm),
+malzeme listesi `planlama/maliyet.json` (≈ 103.800 TL, %15 pay ve yedek dahil; eldeki Pi 5 4 GB fiyatıyla ve Y3 M6 CAD bağlantılarıyla, 29.10), 1,65 m iş planı `planlama/dongu.md` (Y1–Y6).
 
 **Tek takvim (15 Ekim 2026, D6):** hafta numarası **dönem haftasıdır**, H1 = 28 Eylül – 4 Ekim 2026 (pazartesi başlar).
 `yazilim-plani.md` aynı numarayı kullanır. Takvim, yazılım planının 11 Ekim takvimine hizalandı: eski "H6 ilk uçtan uca sürüm"

@@ -198,13 +198,32 @@ for (x0, x1) in ((X_ALT[0], X_ALT[0] + 3.0), (X_ALT[1] - 3.0, X_ALT[1])):
     g = g.fuse(box(x0, x1, Y(S_ALT[1]), Y(S_ALT[0]), ZE - ZK, ZE + ZK))                          # alt yan duvarlar
 g = g.fuse(box(X_ALT[0], X_ALT[1], Y(S_ALT[1]), Y(S_ALT[0]), ON_DUVAR[0], ON_DUVAR[1]))           # alt on duvar
 g = g.fuse(box(X_ALT[0], X_ALT[1], Y(S_PLAKA_B[1]), Y(S_PLAKA_B[0]), ZE - ZK, ZE + ZK))          # bilek servosu plakasi
+# C2 (M6, Y3; arayuz.M6 dirsek_somun_cep): dirsek servosu kontra somunlari icin plakanin -x yuzunde altigen cep bloklari.
+# Servo govdesi (yerel y -30,5...10,2, x +-9,85) bloklardan pay_govde kadar uzak; on duvara (z ON_DUVAR) birlesir.
+_SCD = A.M6["dirsek_somun_cep"]
+_ED0, _ = mg_delikler()
+_DE0 = [gp((xx, yy, 0.0), M_E) for (xx, yy) in _ED0]
+_GOV_Y = (YE - (MG["L"] - MG["SH"]), YE + MG["SH"])                # servo govdesi y (-233,5 / -192,8)
+_GOV_Z = (ZE - MG["W"] / 2, ZE + MG["W"] / 2)
+_CEP_X = (PLAKA_E[0] - NUT985[4][1] - 0.2, PLAKA_E[0] + 0.01)      # 193,4...198,6
+for _alt in (True, False):
+    _qs = [q for q in _DE0 if (q.y < YE) == _alt]
+    _y0 = min(q.y for q in _qs) - _SCD["yari"]
+    _y1 = max(q.y for q in _qs) + _SCD["yari"]
+    _y0, _y1 = (_y0, min(_y1, _GOV_Y[0] - _SCD["pay_govde"])) if _alt else (max(_y0, _GOV_Y[1] + _SCD["pay_govde"]), _y1)
+    _z0 = min(q.z for q in _qs) - _SCD["yari"]
+    g = g.fuse(box(_CEP_X[0], _CEP_X[1], _y0, _y1, _z0, ON_DUVAR[0] + 0.01))
 g = g.common(kafa)
 # dirsek servosu yuvasi (arkadan takilir: pencere arkaya acik) + kulak delikleri
 g = g.cut(box(PLAKA_E[0] - 0.1, PLAKA_E[1] + 0.1, Y(30.7), Y(-10.4), ZE - 20, ZE + 10.05))
 ED, (tz0, tz1) = mg_delikler()
 DELIK_E = [gp((xx, yy, tz0), M_E) for (xx, yy) in ED]           # kulak taban yuzu = plaka ust yuzu (x 203.6)
 for q in DELIK_E:
-    g = g.cut(cyl(CLEAR[4] / 2, (PLAKA_E[0] - 1, q.y, q.z), (PLAKA_E[1] + 1, q.y, q.z)))
+    g = g.cut(cyl(CLEAR[4] / 2, (_CEP_X[0] - 1, q.y, q.z), (PLAKA_E[1] + 1, q.y, q.z)))
+    # C2: kontra somun cebi (somunla ayni yon: duz yuz z'ye bakar) + alt civatalar icin alt yan duvarda erisim deligi
+    g = g.cut(hexprism(NUT985[4][0] + _SCD["s_pay"], (_CEP_X[0] - 0.1, q.y, q.z), (PLAKA_E[0], q.y, q.z), (0, 0, 1)))
+    if q.y < YE:
+        g = g.cut(cyl(A.M6["dirsek_kulak_erisim"]["d"] / 2, (X_ALT[1] - 3.5, q.y, q.z), (X_ALT[1] + 0.5, q.y, q.z)))
 # bilek servosu yuvasi + kulak delikleri
 g = g.cut(box(XW + (MG["L"] / 2 - MG["SH"]) - MG["L"] / 2 - 0.2, BILEK_GOVDE_X + MG["L"] / 2 + 0.2,
               Y(S_PLAKA_B[1] + 0.1), Y(S_PLAKA_B[0] - 0.1), ZE - 20, ZE + 10.05))
@@ -247,7 +266,8 @@ for q in DELIK_E:
     i_cv = add("Dirsek servosu kulak civatasi M4x16", "OnKol", screw912(4, 16, (X_KULAK[1], q.y, q.z), (-1, 0, 0)),
                "Baglanti", "Celik 8.8", kod="M4x16 DIN 912", renk="celik", patlat=(30, -70, -60))
     i_sm = add("Dirsek servosu kontra somunu M4", "OnKol", nut(4, (PLAKA_E[0], q.y, q.z), (-1, 0, 0), "985", flat),
-               "Baglanti", "Celik", kod="M4 DIN 985 kontra somun", renk="celik", patlat=(-20, -70, -60))
+               "Baglanti", "Celik", kod="M4 DIN 985 kontra somun", renk="celik", patlat=(-20, -70, -60),
+               not_="altigen cepte (M6 C2, Y3): servodan once cebe -x yonunden itilir, anahtar gerekmez")
     BAG.append(dict(ad="Dirsek servosu kulagi", tip="servo_kulak", civata=i_cv, somun=i_sm, servo=I_SERVO_E, govde=I_ONKOL,
                     nokta=(X_KULAK[1], q.y, q.z), yon=(-1, 0, 0), yuz_bas=X_KULAK[1], yuz_somun=PLAKA_E[0], d=4, L=16.0))
 

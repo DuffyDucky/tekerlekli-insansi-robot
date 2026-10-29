@@ -118,4 +118,14 @@ def screw7380(d, L, p, direction):
     return head.fuse(Part.makeCylinder(d / 2, L, p, u)).removeSplitter()
 
 
+def percin_somun(pc, p, direction):
+    """Duz flansli percin somun, takilmis hal (M6 K1/K2, Y3): p = flansin oturdugu sac yuzu, direction = govdenin saca girdigi yon.
+    pc = arayuz.M6[...]["percin"] (d, flans_d, flans_t, govde_d, govde_L). Ic delik civata capinda (dis), cokme bolgesi cizilmez."""
+    u = unit(direction)
+    p = V(*p)
+    fl = Part.makeCylinder(pc["flans_d"] / 2, pc["flans_t"], p - u * pc["flans_t"], u)
+    gv = Part.makeCylinder(pc["govde_d"] / 2, pc["govde_L"], p, u)
+    return fl.fuse(gv).cut(Part.makeCylinder(pc["d"] / 2, pc["flans_t"] + pc["govde_L"] + 2, p - u * (pc["flans_t"] + 1), u)).removeSplitter()
+
+
 # (Nextion ekran cercevesi yardimcilari 1,65 m'de kaldirildi: gogus ekrani yok; Duffy, 25 Ekim 2026)

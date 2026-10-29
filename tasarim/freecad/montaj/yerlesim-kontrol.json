@@ -95,7 +95,7 @@
    "cakisma": []
   },
   "kabuk x taban": {
-   "cift": 1784,
+   "cift": 1914,
    "cakisma": []
   },
   "dirsek_sag x dirsek_sol": {
@@ -559,14 +559,14 @@
    90.0
   ],
   "tilt": [
-   -15.0,
+   -13.0,
    0.0,
-   15.0
+   13.0
   ],
   "pozlar": [
    {
     "pan": -90.0,
-    "tilt": -15.0,
+    "tilt": -13.0,
     "cift": 0,
     "cakisma": [],
     "en_kucuk_bosluk": null
@@ -580,14 +580,14 @@
    },
    {
     "pan": -90.0,
-    "tilt": 15.0,
+    "tilt": 13.0,
     "cift": 0,
     "cakisma": [],
     "en_kucuk_bosluk": null
    },
    {
     "pan": -45.0,
-    "tilt": -15.0,
+    "tilt": -13.0,
     "cift": 0,
     "cakisma": [],
     "en_kucuk_bosluk": null
@@ -601,14 +601,14 @@
    },
    {
     "pan": -45.0,
-    "tilt": 15.0,
+    "tilt": 13.0,
     "cift": 0,
     "cakisma": [],
     "en_kucuk_bosluk": null
    },
    {
     "pan": 0.0,
-    "tilt": -15.0,
+    "tilt": -13.0,
     "cift": 0,
     "cakisma": [],
     "en_kucuk_bosluk": null
@@ -622,14 +622,14 @@
    },
    {
     "pan": 0.0,
-    "tilt": 15.0,
+    "tilt": 13.0,
     "cift": 0,
     "cakisma": [],
     "en_kucuk_bosluk": null
    },
    {
     "pan": 45.0,
-    "tilt": -15.0,
+    "tilt": -13.0,
     "cift": 0,
     "cakisma": [],
     "en_kucuk_bosluk": null
@@ -643,14 +643,14 @@
    },
    {
     "pan": 45.0,
-    "tilt": 15.0,
+    "tilt": 13.0,
     "cift": 0,
     "cakisma": [],
     "en_kucuk_bosluk": null
    },
    {
     "pan": 90.0,
-    "tilt": -15.0,
+    "tilt": -13.0,
     "cift": 0,
     "cakisma": [],
     "en_kucuk_bosluk": null
@@ -664,7 +664,7 @@
    },
    {
     "pan": 90.0,
-    "tilt": 15.0,
+    "tilt": 13.0,
     "cift": 0,
     "cakisma": [],
     "en_kucuk_bosluk": null
@@ -673,5 +673,5 @@
   "cakisan_poz": 0,
   "en_kucuk": null
  },
- "sure_s": 126.8
+ "sure_s": 177.2
 }

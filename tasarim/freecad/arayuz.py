@@ -396,7 +396,7 @@ KABUK_ETEK_BRAKET = dict(z=(-105.0, 0.0, 105.0), t=2.0, en=30.0, x0=105.0, x_ic=
                          civata_m6=(6, 14), civata_m3=(3, 8), m3_y=121.0,
                          not_="V3 cover_bracket3 (rc:604-609): 2 mm Al L, uzun ray ust kanalina M6x14 + pul + cekic somun, "
                               "etek duvari boss'una M3x8 + M3 isil gomme somun; 520 tabanda yatay kol TABAN_DX uzun")
-ISO7380 = {3: (5.7, 1.65, 2.0)}      # bombe basli imbus M3: dk, k, s (ISO 7380-1 nominal)
+ISO7380 = {3: (5.7, 1.65, 2.0), 5: (9.5, 2.75, 3.0)}      # bombe basli imbus M3 / M5: dk, k, s (ISO 7380-1 nominal; M5 Y3 M6 K1)
 
 # --- kabuk bolgeleri: etek braketleri kabuk modulunun (V3'te taban bolgesiydi); taban elektronigi (sonar, acil stop)
 for sx in (-1, 1):
@@ -549,8 +549,15 @@ TABAN = dict(
     bts_burc=8.0,                                 # M3x8 naylon burc (Al plakaya kisa devre olmasin; ust + alt vida 7,4 mm)
     # E1 (15 Ekim 2026): servo beslemesi ikiye bolundu. K4 ile Pi kafaya gitti; Pi'nin XL4016'si (-49,2; 75) servo B oldu (sayi 3 kalir).
     # Yuk dengesi (planlama/adim3/elektrik.md): A = sag kol + pan (yogun ~4,4 A), B = sol kol + tilt (~4,7 A); XL4016 surekli <= 5 A.
-    xl=((-62.0 * V3_W / W0, 75.0, "servo 6 V B (sol kol + tilt)"), (62.0 * V3_W / W0, 75.0, "cevre 5 V"),
-        (0.0, 170.0, "servo 6 V A (sag kol + pan)")),   # rc:736 yerleri
+    # Karar 29 Ekim 2026 (planlama/kararlar-2026-10-29.md 6): A = sag kol, B = sol kol, C = kafa pan + tilt (dorduncu XL4016, guc panelinde).
+    xl=((-62.0 * V3_W / W0, 75.0, "servo 6 V B (sol kol)"), (62.0 * V3_W / W0, 75.0, "cevre 5 V"),
+        (0.0, 170.0, "servo 6 V A (sag kol)")),   # rc:736 yerleri
+    # Y3 (M6 CAD): dorduncu XL4016 (hat C, kafa pan + tilt, 5 A mini hat sigortasi) guc paneli (arka kat) ustunde, akunun onunde (z > -29):
+    # alt vidalar akunun ustune gelmez (panel alti - aku ustu 3 mm). Cikis 2 servo uzatmasina kucuk klemensle (dagitim karti yok).
+    xl_kafa=dict(merkez=(97.5, 0.0), gorev="servo 6 V C (kafa pan + tilt)"),
+    # Y3 (M6 CAD, eski 5. adim notu): E9 on sarj devresi CAD'e: K2 rolesi (JQC-3F T73 12 V 7 A) + 5,6 ohm 11 W tas direnc + 1N4007 delikli
+    # pertinaks 70 x 50 uzerinde, guc panelinde K1 rolesinin onunde (akunun onunde). Zarf tahmini.
+    on_sarj_karti=dict(merkez=(-97.5, -1.0), burc=8.0),
     xl_burc=8.0,
     # K4 (14 Ekim 2026): Raspberry Pi 5 kafada (kafa/kafa_parcalar.py). On kattaki eski Pi yeri (-90,5; 80) arayuz kartina verildi.
     arayuz_karti=dict(merkez=(-90.5, 80.0), olcu=(70.0, 50.0), burc=8.0,
@@ -599,6 +606,12 @@ for (x, z) in _T["bts"]:
 for (x, z, _) in _T["xl"]:
     _b("XL4016 %+.0f,%.0f (8 mm burc ustunde)" % (x, z), "taban", _k(x - 32.5, x + 32.5, Y_RAIL0, Y_RAIL0 + _T["xl_burc"] + 23.5, z - 23.5, z + 23.5),
        "taban_parcalar", "V3 bolgesi 8 mm yukseldi (naylon burc)")
+_xk = _T["xl_kafa"]["merkez"]
+_b("XL4016 C kafa servo hatti (guc paneli ustu, Y3)", "taban", _k(_xk[0] - 32.5, _xk[0] + 32.5, Y_DECK1, Y_DECK1 + _T["xl_burc"] + 23.5,
+                                                               _xk[1] - 23.5, _xk[1] + 23.5), "taban_parcalar", "karar 29.10: hat C (pan + tilt)")
+_os = _T["on_sarj_karti"]["merkez"]
+_b("On sarj karti K2 + 5,6 ohm (guc paneli ustu, Y3)", "taban", _k(_os[0] - 35, _os[0] + 35, Y_DECK1, Y_DECK1 + _T["on_sarj_karti"]["burc"] + 20,
+                                                                 _os[1] - 25, _os[1] + 25), "taban_parcalar", "E9 (tahmini zarf)")
 _b("Elektronik kati on yerlesimi (arayuz karti, ESP32, PCA, BNO)", "taban", _k(-136, 116, Y_DECK1, Y_DECK1 + 30, 30, 140),
    "taban_parcalar", "kartlar akunun ustunden on kata alindi; K4 (15 Ekim 2026): Pi kafaya gitti, yerinde arayuz karti")
 _b("Servo dagitim kartlari A / B (E1)", "taban", _k(-110, 110, Y_DECK1, Y_DECK1 + 30, 177, 233), "taban_parcalar",
@@ -835,6 +848,49 @@ KOL_KABLO = dict(
             govde_dikey=((0.0, S3 - 55.0, -26.0), (0.0, 400.0, -26.0), (25.0, 262.0, -26.0), (25.0, 230.0, 26.0), (40.0, 205.0, 180.0)),   # global; ilk nokta travers alti (125 cm'de 900)
             s2_servo_kablo=40.0,                        # S2 servo cikisindan G2'ye (tahmini; DS3218 300 mm kablonun kalan boyu bundan)
             jr_pay=30.0),                               # her birlesimde konnektor + bag payi (tahmini)
+)
+
+# =====================================================================================================
+# M6 CAD (Y3, 29 Ekim 2026): montaj / servis erisimi duzeltmeleri. Liste: planlama/adim4/M6-montaj-sirasi.md "4. CAD degisiklik
+# listesi" (125 cm'de olculdu; 1,65 m CAD'de planlama/y3/Y3_erisim.py ile yeniden olculur). Ayrinti: planlama/y3/Y3-gunluk.md
+# =====================================================================================================
+M6 = dict(
+    # C1 omuz gobegi: S1 horn civatalarindan z +6'daki ikisi gobegin S2 servo plakasinin (x 168...199, z 2,5...7,5) arkasinda
+    # kaliyordu (serbest 7 mm). Civata ekseninde O5 alet kanali plakayi x 168,5...200 boyunca keser (2,5 alyan: r 2,05 + pay).
+    gobek_horn_kanal=dict(d=5.0, x=(168.5, 200.5)),
+    # C3 omuz: S2 kulak somunlarindan ust (y 34,75) ikisi anahtarla tutulamiyordu (gobek ust duvari y 39 ile servo arasinda).
+    # Plakanin altina somun cebi blogu: DIN 985 M4 somun altigen cepte (s + 0,2), cepten alttan takilir, doner -> anahtar gerekmez.
+    s2_somun_cep=dict(x=(174.0, 196.0), y=(32.0, 39.0), z=(-2.5, 2.5), s_pay=0.2),
+    # C2 dirsek (on kol): dirsek servosu alt kulak civatalari (s 34,9) on kolun alt yan duvarina (x 223,7) 13,6 mm kaliyordu -> duvarda
+    # civata eksenlerinde O8 erisim deligi (3 alyan + pay). 4 kontra somun: plakanin -x yuzunde altigen cep bloklari (somun 5 mm, cep
+    # s + 0,2), servo govdesine pay_govde; ust bloklar on kol basi zarfina (R_KAFA) kirpilir.
+    dirsek_kulak_erisim=dict(d=8.0),
+    dirsek_somun_cep=dict(yari=5.5, pay_govde=0.5, s_pay=0.2),
+    # C3 kafa (egme catali): tilt servosu on kulak somunlarindan biri (y 183,3) on ag ile yandaki somun arasinda tutulamiyordu ->
+    # on kulagin iki somunu plakanin -x yuzunde, on agin ustunde altigen cep blogunda (kafa7_parcalar; 125 cm yereli, adaptorle yukari).
+    tilt_somun_cep=dict(yari=5.5, pay_govde=0.5, s_pay=0.2),
+    # K1 govde braketi: M5 DISARIDAN. ISO 7380 M5x16 kabuk dis yuzunden -> boss (O5,5 gecis) -> braket C ayaginda M5 percin somun (3 mm Al,
+    # delik O7,1; flansi boss tarafinda, boss yuzunde flans cebi; govdesi ice). Isil gomme M5 + DIN 912 + pul kalkar. Bant sokumu disaridan.
+    # K2 etek braketi: ayni yapi M3: ISO 7380 M3x14 + M3 percin somun (2 mm Al, delik O5,1); etek boss'u r 5,5 (flans cebi icin).
+    # Percin somun olculeri tahmini (duz flansli celik percin somun tipik: M5 flans O10 x 1,0, govde O7 x 9; M3 flans O7 x 0,8, govde O5 x 7).
+    govde_braket_m5=dict(civata=(5, 16), percin=dict(d=5, delik=7.1, flans_d=10.0, flans_t=1.0, govde_d=7.0, govde_L=9.0, kutle_g=2.0),
+                         cep_pay=(0.6, 0.1)),
+    etek_braket_m3=dict(civata=(3, 14), boss_r=5.5, percin=dict(d=3, delik=5.1, flans_d=7.0, flans_t=0.8, govde_d=5.0, govde_L=7.0, kutle_g=0.8),
+                        cep_pay=(0.6, 0.1)),
+    # K3 S1 ped yarigi -> O84 ile birlesik ("anahtar deligi"): yarik psi 214'te r_don - 6 (46) yerine r_ic'e kadar acilir (S1 kablosu konnektorsuz
+    # yana alinir; kol / gobek sokumunde kablo cekilmez).
+    s1_ped_yarik_r_ic=41.5,
+    oturma_derin=0.3,          # K1 / K2: ISO 7380 basi icin kabuk dis yuzunde O(dk + 1) oturma derinligi (egik duvarda bas gomulmesin)
+    # K5 etek servis kapagi H1 (sigorta kutusu ustu, etek ust plakasi; 125 cm olcusu M6_ek.py H1, 1,65 m'de sigorta kutusu x +-52,5 z -233...-173):
+    # delik x +-32 (etek dolgu seridi x +-38 icinde kalir; +-44 seridi ikiye boluyordu), z -228...-178 (r 8): 6 yollu kutunun ortasi acik,
+    # uc sigortalar kismen ortulu (gercek kutu secilince olc). Kapak 3 mm PETG x +-56, z'de 6 tasar; 4 x M3x6 ISO 7380 (x +-50, yarilarda).
+    etek_kapak_h1=dict(x=(-32.0, 32.0), z=(-228.0, -178.0), r=8.0, pay_x=24.0, pay_z=6.0, t=3.0, vida_x=(-50.0, 50.0), vida_z=(-218.0, -188.0)),
+    # K6 ana sigorta yuvasi (30 A, taban x 97...127, z -160...-100) H1'in disinda -> ikinci kucuk kapak H2 (125 cm M6_ek.py H2 olcusu).
+    etek_kapak_h2=dict(x=(94.0, 130.0), z=(-160.0, -100.0), r=6.0, pay_x=10.0, pay_z=5.0, t=3.0, vida_x=(89.0, 135.0), vida_z=(-145.0, -115.0)),
+    # K7 ana anahtar dugmesi (ASW-A01, taban ana_anahtar merkezi) icin etek ust plakasinda delik. Cap tahmini (cizim yok; satin alininca olc).
+    ana_anahtar_delik_d=30.0,
+    # K4 ust arka servis kapagi: gogus bandi arka duvari (ARKA_KAPAK ile ayni yapi; ust kenari 1268 dikisinde, alin).
+    arka_kapak_ust=dict(x=75.0, y0=1100.0, y1=883.0 + UZAMA, z0=-200.0, z1=-40.0, r=15.0),
 )
 
 

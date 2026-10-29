@@ -1,18 +1,18 @@
 {
  "dosya": "robot-montaj.FCStd",
  "step": "robot-montaj.step",
- "step_kati": 1073,
+ "step_kati": 1120,
  "bom": "robot-bom.csv",
  "bom_ozet": {
   "Baglanti": {
-   "kalem": 36,
-   "adet": 822,
-   "kutle_g": 1372.7
+   "kalem": 39,
+   "adet": 856,
+   "kutle_g": 1412.5
   },
   "Baski": {
-   "kalem": 53,
-   "adet": 63,
-   "kutle_g": 7349.3
+   "kalem": 56,
+   "adet": 66,
+   "kutle_g": 7369.0
   },
   "Imalat": {
    "kalem": 1,
@@ -22,19 +22,19 @@
   "Lazer": {
    "kalem": 3,
    "adet": 3,
-   "kutle_g": 1800.0
+   "kutle_g": 1799.8
   },
   "Satin": {
-   "kalem": 44,
-   "adet": 165,
-   "kutle_g": 13754.4
+   "kalem": 45,
+   "adet": 175,
+   "kutle_g": 13853.4
   }
  },
  "boy_mm": 1650.0,
  "s3_mm": 1340.0,
  "uzama_mm": 385.0,
  "taban_w_mm": 520.0,
- "parca_sayisi": 1073,
+ "parca_sayisi": 1120,
  "grup_sayisi": 22,
  "gecersiz": [],
  "hacim_fark_mm3": 4.656612873077393e-10,
@@ -79,11 +79,11 @@
     "Govde kabugu yan yuzu (referans)"
    ],
    "haric_neden": "travers iskeletin parcasi (iki kez sayilmaz); kabuk duvari kabuk modulunun yer tutucusu",
-   "kutle_g": 567.62,
+   "kutle_g": 567.68,
    "agirlik_merkezi": [
-    153.317,
-    1324.748,
-    -0.792
+    153.323,
+    1324.776,
+    -0.795
    ],
    "gruplar": [
     "OmuzSag_Govde",
@@ -107,11 +107,11 @@
     "Govde kabugu yan yuzu (referans)"
    ],
    "haric_neden": "travers iskeletin parcasi (iki kez sayilmaz); kabuk duvari kabuk modulunun yer tutucusu",
-   "kutle_g": 567.62,
+   "kutle_g": 567.68,
    "agirlik_merkezi": [
-    -153.317,
-    1324.748,
-    -0.792
+    -153.323,
+    1324.776,
+    -0.795
    ],
    "gruplar": [
     "OmuzSol_Govde",
@@ -128,15 +128,15 @@
    ],
    "ayna": false,
    "not_": "yerel = global; govde kabugu + taban etegi + S1 kasetleri + braketler",
-   "parca_modulde": 291,
-   "parca": 291,
+   "parca_modulde": 312,
+   "parca": 312,
    "haric": [],
    "haric_neden": "",
-   "kutle_g": 6074.65,
+   "kutle_g": 6116.56,
    "agirlik_merkezi": [
-    -0.051,
-    588.387,
-    0.639
+    0.178,
+    587.43,
+    -0.117
    ],
    "gruplar": [
     "Kabuk"
@@ -155,11 +155,11 @@
    "parca": 57,
    "haric": [],
    "haric_neden": "",
-   "kutle_g": 399.73,
+   "kutle_g": 400.49,
    "agirlik_merkezi": [
-    190.057,
-    1084.21,
-    -1.307
+    190.048,
+    1084.313,
+    -1.306
    ],
    "gruplar": [
     "DirsekSag_UstKol",
@@ -180,11 +180,11 @@
    "parca": 57,
    "haric": [],
    "haric_neden": "",
-   "kutle_g": 399.73,
+   "kutle_g": 400.49,
    "agirlik_merkezi": [
-    -190.057,
-    1084.21,
-    -1.307
+    -190.048,
+    1084.313,
+    -1.306
    ],
    "gruplar": [
     "DirsekSol_UstKol",
@@ -205,11 +205,11 @@
    "parca": 147,
    "haric": [],
    "haric_neden": "kablo demeti gosterimi (Referans grubu, 0 g); kafa analizinin parca sayisina da girmiyor",
-   "kutle_g": 2042.97,
+   "kutle_g": 2043.54,
    "agirlik_merkezi": [
-    1.397,
-    1514.347,
-    19.493
+    1.398,
+    1514.357,
+    19.499
    ],
    "gruplar": [
     "Kafa_Govde",
@@ -226,17 +226,17 @@
    ],
    "ayna": false,
    "not_": "yerel = global; plakalar, tahrik, aku, guc, elektronik kati, sonar, acil stop (statik)",
-   "parca_modulde": 329,
-   "parca": 316,
+   "parca_modulde": 355,
+   "parca": 342,
    "haric": [
     "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)",
     "Kablo yolu 1: 12 V ana hat: aku + -> XT60 -> ana sigorta 30 A -> ana anahtar -> sigorta kutusu",
     "Kablo yolu 2: Toprak: aku - -> WAGO yildiz noktasi (guc paneli) -> tum donusturuculer",
     "Kablo yolu 3: Motor 12 V: F1 20 A -> role -> WAGO -> BTS7960 sol/sag -> motor kablo delikleri -> 4 motor",
     "Kablo yolu 4: Motor 12 V sag kol + arka motorlar (plaka altindan z 36 deliginden)",
-    "Kablo yolu 5: Servo 6 V A (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol + pan",
-    "Kablo yolu 6: Servo uzatmalari kafaya: pan (A) + tilt (B) (direk ustu, R62 halkasindan)",
-    "Kablo yolu 7: Servo 6 V B (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol + tilt",
+    "Kablo yolu 5: Servo 6 V A (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol",
+    "Kablo yolu 6: Servo uzatmalari kafaya: pan + tilt (hat C, XL4016 C guc panelinde; direk ustu, R62 halkasindan)",
+    "Kablo yolu 7: Servo 6 V B (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol",
     "Kablo yolu 8: Kafa 12 V (K4/E4): F3 5 A -> 18 AWG cift -> direk on yuzu -> R62 -> kafada 5 V/5,5 A cevirici (Pi 5, LCD)",
     "Kablo yolu 9: Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)",
     "Kablo yolu 10: Acil stop (E3): F5 -> mantar (NC) -> role bobini -> MOSFET (arayuz karti, ESP32 'devreye al') ; PC817 mantar sonrasi gerilimi okur",
@@ -244,11 +244,11 @@
     "Kablo yolu 12: Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (VBUS hattinda seri 1N5819)"
    ],
    "haric_neden": "kablo yolu semalari ve ana anahtar dugmesi gosterimi (Referans grubu, 0 g); taban analizinin parca sayisina girmiyor",
-   "kutle_g": 7795.69,
+   "kutle_g": 7909.81,
    "agirlik_merkezi": [
-    -0.961,
-    118.91,
-    -44.115
+    -0.745,
+    119.971,
+    -43.474
    ],
    "gruplar": [
     "Taban_Govde",
@@ -1449,11 +1449,11 @@
    "grup": "Gobek",
    "tur": "Baski",
    "kod": "Omuz gobegi",
-   "kutle_g": 59.296,
+   "kutle_g": 59.363,
    "merkez": [
-    169.65,
-    1348.76,
-    -6.14
+    169.69,
+    1349.0,
+    -6.17
    ]
   },
   {
@@ -2398,11 +2398,11 @@
    "grup": "Gobek",
    "tur": "Baski",
    "kod": "Omuz gobegi",
-   "kutle_g": 59.296,
+   "kutle_g": 59.363,
    "merkez": [
-    -169.65,
-    1348.76,
-    -6.14
+    -169.69,
+    1349.0,
+    -6.17
    ]
   },
   {
@@ -2931,10 +2931,10 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 285.019,
+   "kutle_g": 284.922,
    "merkez": [
-    76.65,
-    374.57,
+    76.64,
+    374.56,
     0.0
    ]
   },
@@ -2944,10 +2944,10 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 266.924,
+   "kutle_g": 266.826,
    "merkez": [
-    -81.84,
-    374.53,
+    -81.82,
+    374.51,
     -0.0
    ]
   },
@@ -2957,9 +2957,9 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 260.809,
+   "kutle_g": 260.711,
    "merkez": [
-    80.63,
+    80.61,
     578.68,
     0.0
    ]
@@ -2970,9 +2970,9 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 245.203,
+   "kutle_g": 245.105,
    "merkez": [
-    -85.75,
+    -85.74,
     578.35,
     0.0
    ]
@@ -2983,9 +2983,9 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 260.825,
+   "kutle_g": 260.728,
    "merkez": [
-    80.63,
+    80.62,
     771.18,
     -0.0
    ]
@@ -2996,9 +2996,9 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 245.219,
+   "kutle_g": 245.121,
    "merkez": [
-    -85.76,
+    -85.75,
     770.86,
     0.0
    ]
@@ -3035,11 +3035,11 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 314.555,
+   "kutle_g": 271.699,
    "merkez": [
-    96.52,
-    1176.5,
-    7.67
+    106.72,
+    1174.3,
+    21.98
    ]
   },
   {
@@ -3048,11 +3048,11 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 298.452,
+   "kutle_g": 262.24,
    "merkez": [
-    -101.72,
-    1176.35,
-    7.78
+    -110.56,
+    1174.56,
+    20.34
    ]
   },
   {
@@ -3061,11 +3061,11 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 189.399,
+   "kutle_g": 191.022,
    "merkez": [
-    91.73,
-    1333.76,
-    -1.94
+    91.14,
+    1333.23,
+    -2.66
    ]
   },
   {
@@ -3074,11 +3074,11 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 182.493,
+   "kutle_g": 183.653,
    "merkez": [
-    -95.21,
-    1334.19,
-    -1.95
+    -94.8,
+    1333.79,
+    -2.51
    ]
   },
   {
@@ -3096,15 +3096,28 @@
   },
   {
    "modul": "kabuk",
+   "ad": "Ust arka servis kapagi",
+   "grup": "Kabuk",
+   "tur": "Baski",
+   "kod": "PETG baski, 3,0 mm duvar",
+   "kutle_g": 76.625,
+   "merkez": [
+    0.0,
+    1186.86,
+    -83.41
+   ]
+  },
+  {
+   "modul": "kabuk",
    "ad": "Etek arka sag",
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 354.5,
+   "kutle_g": 348.262,
    "merkez": [
-    165.89,
-    167.38,
-    -207.41
+    166.86,
+    165.64,
+    -208.85
    ]
   },
   {
@@ -3113,10 +3126,10 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 346.679,
+   "kutle_g": 344.711,
    "merkez": [
-    -169.08,
-    168.38,
+    -169.38,
+    167.79,
     -206.1
    ]
   },
@@ -3126,10 +3139,10 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 206.041,
+   "kutle_g": 206.193,
    "merkez": [
-    208.08,
-    180.84,
+    208.11,
+    180.8,
     -0.0
    ]
   },
@@ -3139,10 +3152,10 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 206.041,
+   "kutle_g": 206.193,
    "merkez": [
-    -208.08,
-    180.84,
+    -208.11,
+    180.8,
     0.0
    ]
   },
@@ -3152,11 +3165,11 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 354.021,
+   "kutle_g": 354.173,
    "merkez": [
-    166.19,
-    168.03,
-    207.11
+    166.22,
+    168.01,
+    207.06
    ]
   },
   {
@@ -3165,11 +3178,11 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 345.138,
+   "kutle_g": 345.29,
    "merkez": [
-    -169.48,
-    168.64,
-    205.86
+    -169.52,
+    168.62,
+    205.81
    ]
   },
   {
@@ -3178,11 +3191,11 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 104.065,
+   "kutle_g": 93.281,
    "merkez": [
-    -3.35,
-    196.65,
-    -213.06
+    -3.74,
+    189.27,
+    -214.23
    ]
   },
   {
@@ -3196,6 +3209,32 @@
     -3.29,
     198.18,
     212.22
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Etek servis kapagi H1 (sigorta kutusu)",
+   "grup": "Kabuk",
+   "tur": "Baski",
+   "kod": "PETG baski, 3,0 mm duvar",
+   "kutle_g": 23.11,
+   "merkez": [
+    0.0,
+    263.5,
+    -203.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Etek servis kapagi H2 (ana sigorta)",
+   "grup": "Kabuk",
+   "tur": "Baski",
+   "kod": "PETG baski, 3,0 mm duvar",
+   "kutle_g": 12.961,
+   "merkez": [
+    112.0,
+    263.5,
+    -130.0
    ]
   },
   {
@@ -3934,7 +3973,7 @@
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
-    70.0,
+    93.0,
     1273.87,
     -76.41
    ]
@@ -3947,7 +3986,7 @@
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
-    70.0,
+    93.0,
     1274.02,
     -79.6
    ]
@@ -3986,7 +4025,7 @@
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
-    -70.0,
+    -93.0,
     1273.87,
     -76.41
    ]
@@ -3999,7 +4038,7 @@
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
-    -70.0,
+    -93.0,
     1274.02,
     -79.6
    ]
@@ -4481,58 +4520,6 @@
    "kutle_g": 0.266,
    "merkez": [
     -6.0,
-    1129.87,
-    -83.18
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde x0 arka)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M3x6 ISO 7380",
-   "kutle_g": 0.634,
-   "merkez": [
-    -6.0,
-    1130.02,
-    -86.38
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde x0 arka)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
-   "merkez": [
-    -6.0,
-    1214.87,
-    -79.18
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde x0 arka)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M3x6 ISO 7380",
-   "kutle_g": 0.634,
-   "merkez": [
-    -6.0,
-    1215.02,
-    -82.38
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde x0 arka)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
-   "merkez": [
-    -6.0,
     1324.93,
     -74.78
    ]
@@ -4734,6 +4721,188 @@
   },
   {
    "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (ust arka kapak)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -45.0,
+    1106.0,
+    -83.65
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Bindirme civatasi M3x6 (ust arka kapak)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    -45.0,
+    1106.0,
+    -86.85
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (ust arka kapak)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    0.0,
+    1106.0,
+    -83.65
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Bindirme civatasi M3x6 (ust arka kapak)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    -0.0,
+    1106.0,
+    -86.85
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (ust arka kapak)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    45.0,
+    1106.0,
+    -83.65
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Bindirme civatasi M3x6 (ust arka kapak)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    45.0,
+    1106.0,
+    -86.85
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (ust arka kapak)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    69.0,
+    1159.87,
+    -81.77
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Bindirme civatasi M3x6 (ust arka kapak)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    69.0,
+    1160.02,
+    -84.97
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (ust arka kapak)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    69.0,
+    1224.87,
+    -78.71
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Bindirme civatasi M3x6 (ust arka kapak)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    69.0,
+    1225.02,
+    -81.91
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (ust arka kapak)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -69.0,
+    1159.87,
+    -81.77
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Bindirme civatasi M3x6 (ust arka kapak)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    -69.0,
+    1160.02,
+    -84.97
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (ust arka kapak)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -69.0,
+    1224.87,
+    -78.71
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Bindirme civatasi M3x6 (ust arka kapak)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    -69.0,
+    1225.02,
+    -81.91
+   ]
+  },
+  {
+   "modul": "kabuk",
    "ad": "Isil gomme somun M3 (etek x-38 on)",
    "grup": "Kabuk",
    "tur": "Baglanti",
@@ -5302,6 +5471,214 @@
     -223.22,
     200.07,
     -93.5
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (Etek servis kapagi H1 (sigorta kutusu))",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -50.0,
+    259.15,
+    -218.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Kapak civatasi M3x6 (Etek servis kapagi H1 (sigorta kutusu))",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    -50.0,
+    263.8,
+    -218.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (Etek servis kapagi H1 (sigorta kutusu))",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -50.0,
+    259.15,
+    -188.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Kapak civatasi M3x6 (Etek servis kapagi H1 (sigorta kutusu))",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    -50.0,
+    263.8,
+    -188.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (Etek servis kapagi H1 (sigorta kutusu))",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    50.0,
+    259.15,
+    -218.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Kapak civatasi M3x6 (Etek servis kapagi H1 (sigorta kutusu))",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    50.0,
+    263.8,
+    -218.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (Etek servis kapagi H1 (sigorta kutusu))",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    50.0,
+    259.15,
+    -188.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Kapak civatasi M3x6 (Etek servis kapagi H1 (sigorta kutusu))",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    50.0,
+    263.8,
+    -188.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (Etek servis kapagi H2 (ana sigorta))",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    89.0,
+    259.15,
+    -145.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Kapak civatasi M3x6 (Etek servis kapagi H2 (ana sigorta))",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    89.0,
+    263.8,
+    -145.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (Etek servis kapagi H2 (ana sigorta))",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    89.0,
+    259.15,
+    -115.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Kapak civatasi M3x6 (Etek servis kapagi H2 (ana sigorta))",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    89.0,
+    263.8,
+    -115.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (Etek servis kapagi H2 (ana sigorta))",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    135.0,
+    259.15,
+    -145.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Kapak civatasi M3x6 (Etek servis kapagi H2 (ana sigorta))",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    135.0,
+    263.8,
+    -145.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (Etek servis kapagi H2 (ana sigorta))",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    135.0,
+    259.15,
+    -115.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Kapak civatasi M3x6 (Etek servis kapagi H2 (ana sigorta))",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    135.0,
+    263.8,
+    -115.0
    ]
   },
   {
@@ -5414,10 +5791,10 @@
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Govde braketi 3 mm Al U (bukum)",
-   "kutle_g": 41.677,
+   "kutle_g": 41.55,
    "merkez": [
-    63.74,
-    412.13,
+    63.6,
+    412.09,
     0.0
    ]
   },
@@ -5475,39 +5852,26 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Pul M5 (Govde braketi sag y400)",
+   "ad": "Civata M5x16 ISO 7380 (Govde braketi sag y400)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5 DIN 125 pul",
-   "kutle_g": 0.443,
+   "kod": "M5x16 ISO 7380",
+   "kutle_g": 3.887,
    "merkez": [
-    108.36,
+    116.98,
     425.0,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M5x10 (Govde braketi sag y400)",
+   "ad": "Percin somun M5 (Govde braketi sag y400)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5x10 DIN 912",
-   "kutle_g": 3.442,
+   "kod": "M5 percin somun, duz flansli (3 mm Al)",
+   "kutle_g": 2.0,
    "merkez": [
-    108.82,
-    425.0,
-    0.0
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Isil gomme somun M5 (Govde braketi sag y400)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M5 isil gomme somun",
-   "kutle_g": 0.746,
-   "merkez": [
-    115.36,
+    108.65,
     425.0,
     0.0
    ]
@@ -5518,10 +5882,10 @@
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Govde braketi 3 mm Al U (bukum)",
-   "kutle_g": 41.677,
+   "kutle_g": 41.55,
    "merkez": [
-    -63.74,
-    412.13,
+    -63.6,
+    412.09,
     0.0
    ]
   },
@@ -5579,39 +5943,26 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Pul M5 (Govde braketi sol y400)",
+   "ad": "Civata M5x16 ISO 7380 (Govde braketi sol y400)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5 DIN 125 pul",
-   "kutle_g": 0.443,
+   "kod": "M5x16 ISO 7380",
+   "kutle_g": 3.887,
    "merkez": [
-    -108.36,
+    -116.98,
     425.0,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M5x10 (Govde braketi sol y400)",
+   "ad": "Percin somun M5 (Govde braketi sol y400)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5x10 DIN 912",
-   "kutle_g": 3.442,
+   "kod": "M5 percin somun, duz flansli (3 mm Al)",
+   "kutle_g": 2.0,
    "merkez": [
-    -108.82,
-    425.0,
-    -0.0
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Isil gomme somun M5 (Govde braketi sol y400)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M5 isil gomme somun",
-   "kutle_g": 0.746,
-   "merkez": [
-    -115.36,
+    -108.65,
     425.0,
     -0.0
    ]
@@ -5622,11 +5973,11 @@
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Govde braketi 3 mm Al U (bukum)",
-   "kutle_g": 42.434,
+   "kutle_g": 42.306,
    "merkez": [
-    65.27,
-    559.69,
-    0.0
+    65.13,
+    559.65,
+    -0.0
    ]
   },
   {
@@ -5683,41 +6034,28 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Pul M5 (Govde braketi sag y548)",
+   "ad": "Civata M5x16 ISO 7380 (Govde braketi sag y548)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5 DIN 125 pul",
-   "kutle_g": 0.443,
+   "kod": "M5x16 ISO 7380",
+   "kutle_g": 3.887,
    "merkez": [
-    111.5,
-    572.75,
-    -0.0
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Civata M5x10 (Govde braketi sag y548)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M5x10 DIN 912",
-   "kutle_g": 3.442,
-   "merkez": [
-    111.95,
-    572.75,
-    -0.0
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Isil gomme somun M5 (Govde braketi sag y548)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M5 isil gomme somun",
-   "kutle_g": 0.746,
-   "merkez": [
-    118.5,
+    120.11,
     572.75,
     0.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Percin somun M5 (Govde braketi sag y548)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M5 percin somun, duz flansli (3 mm Al)",
+   "kutle_g": 2.0,
+   "merkez": [
+    111.79,
+    572.75,
+    -0.0
    ]
   },
   {
@@ -5726,10 +6064,10 @@
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Govde braketi 3 mm Al U (bukum)",
-   "kutle_g": 42.434,
+   "kutle_g": 42.306,
    "merkez": [
-    -65.27,
-    559.69,
+    -65.13,
+    559.65,
     0.0
    ]
   },
@@ -5787,41 +6125,28 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Pul M5 (Govde braketi sol y548)",
+   "ad": "Civata M5x16 ISO 7380 (Govde braketi sol y548)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5 DIN 125 pul",
-   "kutle_g": 0.443,
+   "kod": "M5x16 ISO 7380",
+   "kutle_g": 3.887,
    "merkez": [
-    -111.5,
-    572.75,
-    0.0
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Civata M5x10 (Govde braketi sol y548)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M5x10 DIN 912",
-   "kutle_g": 3.442,
-   "merkez": [
-    -111.95,
-    572.75,
-    0.0
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Isil gomme somun M5 (Govde braketi sol y548)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M5 isil gomme somun",
-   "kutle_g": 0.746,
-   "merkez": [
-    -118.5,
+    -120.11,
     572.75,
     -0.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Percin somun M5 (Govde braketi sol y548)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M5 percin somun, duz flansli (3 mm Al)",
+   "kutle_g": 2.0,
+   "merkez": [
+    -111.79,
+    572.75,
+    0.0
    ]
   },
   {
@@ -5830,11 +6155,11 @@
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Govde braketi 3 mm Al U (bukum)",
-   "kutle_g": 42.434,
+   "kutle_g": 42.306,
    "merkez": [
-    65.27,
-    752.19,
-    0.0
+    65.13,
+    752.15,
+    -0.0
    ]
   },
   {
@@ -5891,41 +6216,28 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Pul M5 (Govde braketi sag y740)",
+   "ad": "Civata M5x16 ISO 7380 (Govde braketi sag y740)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5 DIN 125 pul",
-   "kutle_g": 0.443,
+   "kod": "M5x16 ISO 7380",
+   "kutle_g": 3.887,
    "merkez": [
-    111.5,
-    765.25,
-    -0.0
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Civata M5x10 (Govde braketi sag y740)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M5x10 DIN 912",
-   "kutle_g": 3.442,
-   "merkez": [
-    111.95,
-    765.25,
-    -0.0
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Isil gomme somun M5 (Govde braketi sag y740)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M5 isil gomme somun",
-   "kutle_g": 0.746,
-   "merkez": [
-    118.5,
+    120.11,
     765.25,
     0.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Percin somun M5 (Govde braketi sag y740)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M5 percin somun, duz flansli (3 mm Al)",
+   "kutle_g": 2.0,
+   "merkez": [
+    111.79,
+    765.25,
+    -0.0
    ]
   },
   {
@@ -5934,10 +6246,10 @@
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Govde braketi 3 mm Al U (bukum)",
-   "kutle_g": 42.434,
+   "kutle_g": 42.306,
    "merkez": [
-    -65.27,
-    752.19,
+    -65.13,
+    752.15,
     0.0
    ]
   },
@@ -5995,41 +6307,28 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Pul M5 (Govde braketi sol y740)",
+   "ad": "Civata M5x16 ISO 7380 (Govde braketi sol y740)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5 DIN 125 pul",
-   "kutle_g": 0.443,
+   "kod": "M5x16 ISO 7380",
+   "kutle_g": 3.887,
    "merkez": [
-    -111.5,
-    765.25,
-    0.0
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Civata M5x10 (Govde braketi sol y740)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M5x10 DIN 912",
-   "kutle_g": 3.442,
-   "merkez": [
-    -111.95,
-    765.25,
-    0.0
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Isil gomme somun M5 (Govde braketi sol y740)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M5 isil gomme somun",
-   "kutle_g": 0.746,
-   "merkez": [
-    -118.5,
+    -120.11,
     765.25,
     -0.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Percin somun M5 (Govde braketi sol y740)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M5 percin somun, duz flansli (3 mm Al)",
+   "kutle_g": 2.0,
+   "merkez": [
+    -111.79,
+    765.25,
+    0.0
    ]
   },
   {
@@ -6038,10 +6337,10 @@
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Govde braketi 3 mm Al U (bukum)",
-   "kutle_g": 47.953,
+   "kutle_g": 47.826,
    "merkez": [
-    76.48,
-    1175.74,
+    76.32,
+    1175.7,
     -0.0
    ]
   },
@@ -6099,41 +6398,28 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Pul M5 (Govde braketi sag y1165)",
+   "ad": "Civata M5x16 ISO 7380 (Govde braketi sag y1165)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5 DIN 125 pul",
-   "kutle_g": 0.443,
+   "kod": "M5x16 ISO 7380",
+   "kutle_g": 3.887,
    "merkez": [
-    134.38,
-    1190.0,
-    0.0
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Civata M5x10 (Govde braketi sag y1165)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M5x10 DIN 912",
-   "kutle_g": 3.442,
-   "merkez": [
-    134.84,
-    1190.0,
-    0.0
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Isil gomme somun M5 (Govde braketi sag y1165)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M5 isil gomme somun",
-   "kutle_g": 0.746,
-   "merkez": [
-    141.38,
+    143.0,
     1190.0,
     -0.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Percin somun M5 (Govde braketi sag y1165)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M5 percin somun, duz flansli (3 mm Al)",
+   "kutle_g": 2.0,
+   "merkez": [
+    134.67,
+    1190.0,
+    0.0
    ]
   },
   {
@@ -6142,10 +6428,10 @@
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Govde braketi 3 mm Al U (bukum)",
-   "kutle_g": 47.953,
+   "kutle_g": 47.826,
    "merkez": [
-    -76.48,
-    1175.74,
+    -76.32,
+    1175.7,
     -0.0
    ]
   },
@@ -6203,41 +6489,28 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Pul M5 (Govde braketi sol y1165)",
+   "ad": "Civata M5x16 ISO 7380 (Govde braketi sol y1165)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5 DIN 125 pul",
-   "kutle_g": 0.443,
+   "kod": "M5x16 ISO 7380",
+   "kutle_g": 3.887,
    "merkez": [
-    -134.38,
-    1190.0,
-    -0.0
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Civata M5x10 (Govde braketi sol y1165)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M5x10 DIN 912",
-   "kutle_g": 3.442,
-   "merkez": [
-    -134.84,
-    1190.0,
-    -0.0
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Isil gomme somun M5 (Govde braketi sol y1165)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M5 isil gomme somun",
-   "kutle_g": 0.746,
-   "merkez": [
-    -141.38,
+    -143.0,
     1190.0,
     0.0
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Percin somun M5 (Govde braketi sol y1165)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M5 percin somun, duz flansli (3 mm Al)",
+   "kutle_g": 2.0,
+   "merkez": [
+    -134.67,
+    1190.0,
+    -0.0
    ]
   },
   {
@@ -6246,10 +6519,10 @@
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Etek tasiyici L braket 2 mm Al (bukum)",
-   "kutle_g": 27.908,
+   "kutle_g": 27.847,
    "merkez": [
-    190.49,
-    133.11,
+    190.36,
+    133.13,
     -105.0
    ]
   },
@@ -6294,26 +6567,26 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M3x8 (Etek braketi sag z-105)",
+   "ad": "Civata M3x14 ISO 7380 (Etek braketi sag z-105)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M3x8 DIN 912",
-   "kutle_g": 0.927,
+   "kod": "M3x14 ISO 7380",
+   "kutle_g": 1.078,
    "merkez": [
-    251.18,
+    254.88,
     121.0,
     -105.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (Etek braketi sag z-105)",
+   "ad": "Percin somun M3 (Etek braketi sag z-105)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
+   "kod": "M3 percin somun, duz flansli (2 mm Al)",
+   "kutle_g": 0.8,
    "merkez": [
-    254.85,
+    249.37,
     121.0,
     -105.0
    ]
@@ -6324,10 +6597,10 @@
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Etek tasiyici L braket 2 mm Al (bukum)",
-   "kutle_g": 27.908,
+   "kutle_g": 27.847,
    "merkez": [
-    -190.49,
-    133.11,
+    -190.36,
+    133.13,
     -105.0
    ]
   },
@@ -6372,26 +6645,26 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M3x8 (Etek braketi sol z-105)",
+   "ad": "Civata M3x14 ISO 7380 (Etek braketi sol z-105)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M3x8 DIN 912",
-   "kutle_g": 0.927,
+   "kod": "M3x14 ISO 7380",
+   "kutle_g": 1.078,
    "merkez": [
-    -251.18,
+    -254.88,
     121.0,
     -105.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (Etek braketi sol z-105)",
+   "ad": "Percin somun M3 (Etek braketi sol z-105)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
+   "kod": "M3 percin somun, duz flansli (2 mm Al)",
+   "kutle_g": 0.8,
    "merkez": [
-    -254.85,
+    -249.37,
     121.0,
     -105.0
    ]
@@ -6402,11 +6675,11 @@
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Etek tasiyici L braket 2 mm Al (bukum)",
-   "kutle_g": 27.908,
+   "kutle_g": 27.847,
    "merkez": [
-    190.49,
-    133.11,
-    0.0
+    190.36,
+    133.13,
+    -0.0
    ]
   },
   {
@@ -6450,26 +6723,26 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M3x8 (Etek braketi sag z+0)",
+   "ad": "Civata M3x14 ISO 7380 (Etek braketi sag z+0)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M3x8 DIN 912",
-   "kutle_g": 0.927,
+   "kod": "M3x14 ISO 7380",
+   "kutle_g": 1.078,
    "merkez": [
-    251.18,
+    254.88,
     121.0,
-    -0.0
+    0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (Etek braketi sag z+0)",
+   "ad": "Percin somun M3 (Etek braketi sag z+0)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
+   "kod": "M3 percin somun, duz flansli (2 mm Al)",
+   "kutle_g": 0.8,
    "merkez": [
-    254.85,
+    249.37,
     121.0,
     -0.0
    ]
@@ -6480,11 +6753,11 @@
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Etek tasiyici L braket 2 mm Al (bukum)",
-   "kutle_g": 27.908,
+   "kutle_g": 27.847,
    "merkez": [
-    -190.49,
-    133.11,
-    -0.0
+    -190.36,
+    133.13,
+    0.0
    ]
   },
   {
@@ -6528,26 +6801,26 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M3x8 (Etek braketi sol z+0)",
+   "ad": "Civata M3x14 ISO 7380 (Etek braketi sol z+0)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M3x8 DIN 912",
-   "kutle_g": 0.927,
+   "kod": "M3x14 ISO 7380",
+   "kutle_g": 1.078,
    "merkez": [
-    -251.18,
+    -254.88,
     121.0,
-    0.0
+    -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (Etek braketi sol z+0)",
+   "ad": "Percin somun M3 (Etek braketi sol z+0)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
+   "kod": "M3 percin somun, duz flansli (2 mm Al)",
+   "kutle_g": 0.8,
    "merkez": [
-    -254.85,
+    -249.37,
     121.0,
     0.0
    ]
@@ -6558,10 +6831,10 @@
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Etek tasiyici L braket 2 mm Al (bukum)",
-   "kutle_g": 27.908,
+   "kutle_g": 27.847,
    "merkez": [
-    190.49,
-    133.11,
+    190.36,
+    133.13,
     105.0
    ]
   },
@@ -6606,26 +6879,26 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M3x8 (Etek braketi sag z+105)",
+   "ad": "Civata M3x14 ISO 7380 (Etek braketi sag z+105)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M3x8 DIN 912",
-   "kutle_g": 0.927,
+   "kod": "M3x14 ISO 7380",
+   "kutle_g": 1.078,
    "merkez": [
-    251.18,
+    254.88,
     121.0,
     105.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (Etek braketi sag z+105)",
+   "ad": "Percin somun M3 (Etek braketi sag z+105)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
+   "kod": "M3 percin somun, duz flansli (2 mm Al)",
+   "kutle_g": 0.8,
    "merkez": [
-    254.85,
+    249.37,
     121.0,
     105.0
    ]
@@ -6636,10 +6909,10 @@
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Etek tasiyici L braket 2 mm Al (bukum)",
-   "kutle_g": 27.908,
+   "kutle_g": 27.847,
    "merkez": [
-    -190.49,
-    133.11,
+    -190.36,
+    133.13,
     105.0
    ]
   },
@@ -6684,26 +6957,26 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M3x8 (Etek braketi sol z+105)",
+   "ad": "Civata M3x14 ISO 7380 (Etek braketi sol z+105)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M3x8 DIN 912",
-   "kutle_g": 0.927,
+   "kod": "M3x14 ISO 7380",
+   "kutle_g": 1.078,
    "merkez": [
-    -251.18,
+    -254.88,
     121.0,
     105.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (Etek braketi sol z+105)",
+   "ad": "Percin somun M3 (Etek braketi sol z+105)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
+   "kod": "M3 percin somun, duz flansli (2 mm Al)",
+   "kutle_g": 0.8,
    "merkez": [
-    -254.85,
+    -249.37,
     121.0,
     105.0
    ]
@@ -6974,11 +7247,11 @@
    "grup": "OnKol",
    "tur": "Baski",
    "kod": "On kol govdesi",
-   "kutle_g": 53.351,
+   "kutle_g": 54.112,
    "merkez": [
-    189.05,
-    1089.66,
-    2.77
+    188.99,
+    1090.34,
+    2.72
    ]
   },
   {
@@ -7715,11 +7988,11 @@
    "grup": "OnKol",
    "tur": "Baski",
    "kod": "On kol govdesi",
-   "kutle_g": 53.351,
+   "kutle_g": 54.112,
    "merkez": [
-    -189.05,
-    1089.66,
-    2.77
+    -188.99,
+    1090.34,
+    2.72
    ]
   },
   {
@@ -8742,11 +9015,11 @@
    "grup": "Boyun",
    "tur": "Baski",
    "kod": "Egme catali",
-   "kutle_g": 33.82,
+   "kutle_g": 34.392,
    "merkez": [
-    -5.08,
-    1529.89,
-    20.09
+    -4.89,
+    1530.17,
+    20.43
    ]
   },
   {
@@ -9791,10 +10064,10 @@
   },
   {
    "modul": "kafa",
-   "ad": "Raspberry Pi 5 8GB + Active Cooler",
+   "ad": "Raspberry Pi 5 4GB + Active Cooler",
    "grup": "Bas",
    "tur": "Satin",
-   "kod": "Raspberry Pi 5 8GB + resmi Active Cooler",
+   "kod": "Raspberry Pi 5 4GB + resmi Active Cooler",
    "kutle_g": 58.0,
    "merkez": [
     6.1,
@@ -10809,11 +11082,11 @@
    "grup": "Govde",
    "tur": "Lazer",
    "kod": "Guc paneli arka 270 x 274 x 5 huş kontrplak (lazer)",
-   "kutle_g": 240.299,
+   "kutle_g": 240.073,
    "merkez": [
-    0.03,
+    0.02,
     177.0,
-    -117.43
+    -117.54
    ]
   },
   {
@@ -12300,7 +12573,7 @@
   },
   {
    "modul": "taban",
-   "ad": "XL4016 servo 6 V B (sol kol + tilt)",
+   "ad": "XL4016 servo 6 V B (sol kol)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "XL4016 8 A DC-DC dusurucu",
@@ -12313,7 +12586,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V B (sol kol + tilt) 0)",
+   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V B (sol kol) 0)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "M3x8 naylon burc",
@@ -12326,7 +12599,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol + tilt) 0 ust)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol) 0 ust)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -12339,7 +12612,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol + tilt) 0 alt)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol) 0 alt)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -12352,7 +12625,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V B (sol kol + tilt) 1)",
+   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V B (sol kol) 1)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "M3x8 naylon burc",
@@ -12365,7 +12638,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol + tilt) 1 ust)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol) 1 ust)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -12378,7 +12651,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol + tilt) 1 alt)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol) 1 alt)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -12391,7 +12664,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V B (sol kol + tilt) 2)",
+   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V B (sol kol) 2)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "M3x8 naylon burc",
@@ -12404,7 +12677,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol + tilt) 2 ust)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol) 2 ust)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -12417,7 +12690,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol + tilt) 2 alt)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol) 2 alt)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -12430,7 +12703,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V B (sol kol + tilt) 3)",
+   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V B (sol kol) 3)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "M3x8 naylon burc",
@@ -12443,7 +12716,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol + tilt) 3 ust)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol) 3 ust)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -12456,7 +12729,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol + tilt) 3 alt)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V B (sol kol) 3 alt)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -12638,7 +12911,7 @@
   },
   {
    "modul": "taban",
-   "ad": "XL4016 servo 6 V A (sag kol + pan)",
+   "ad": "XL4016 servo 6 V A (sag kol)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "XL4016 8 A DC-DC dusurucu",
@@ -12651,7 +12924,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V A (sag kol + pan) 0)",
+   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V A (sag kol) 0)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "M3x8 naylon burc",
@@ -12664,7 +12937,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol + pan) 0 ust)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol) 0 ust)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -12677,7 +12950,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol + pan) 0 alt)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol) 0 alt)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -12690,7 +12963,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V A (sag kol + pan) 1)",
+   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V A (sag kol) 1)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "M3x8 naylon burc",
@@ -12703,7 +12976,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol + pan) 1 ust)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol) 1 ust)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -12716,7 +12989,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol + pan) 1 alt)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol) 1 alt)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -12729,7 +13002,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V A (sag kol + pan) 2)",
+   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V A (sag kol) 2)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "M3x8 naylon burc",
@@ -12742,7 +13015,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol + pan) 2 ust)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol) 2 ust)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -12755,7 +13028,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol + pan) 2 alt)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol) 2 alt)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -12768,7 +13041,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V A (sag kol + pan) 3)",
+   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V A (sag kol) 3)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "M3x8 naylon burc",
@@ -12781,7 +13054,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol + pan) 3 ust)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol) 3 ust)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -12794,7 +13067,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol + pan) 3 alt)",
+   "ad": "Vida M3x6 (XL4016 servo 6 V A (sag kol) 3 alt)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -12803,6 +13076,344 @@
     29.0,
     91.89,
     183.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "XL4016 servo 6 V C (kafa pan + tilt)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "XL4016 8 A DC-DC dusurucu",
+   "kutle_g": 60.0,
+   "merkez": [
+    90.02,
+    197.14,
+    1.31
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V C (kafa pan + tilt) 0)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "M3x8 naylon burc",
+   "kutle_g": 0.174,
+   "merkez": [
+    68.5,
+    183.5,
+    -13.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x6 (XL4016 servo 6 V C (kafa pan + tilt) 0 ust)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x6 DIN 912",
+   "kutle_g": 0.816,
+   "merkez": [
+    68.5,
+    188.71,
+    -13.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x8 (XL4016 servo 6 V C (kafa pan + tilt) 0 alt)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    68.5,
+    175.68,
+    -13.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V C (kafa pan + tilt) 1)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "M3x8 naylon burc",
+   "kutle_g": 0.174,
+   "merkez": [
+    68.5,
+    183.5,
+    13.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x6 (XL4016 servo 6 V C (kafa pan + tilt) 1 ust)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x6 DIN 912",
+   "kutle_g": 0.816,
+   "merkez": [
+    68.5,
+    188.71,
+    13.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x8 (XL4016 servo 6 V C (kafa pan + tilt) 1 alt)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    68.5,
+    175.68,
+    13.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V C (kafa pan + tilt) 2)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "M3x8 naylon burc",
+   "kutle_g": 0.174,
+   "merkez": [
+    126.5,
+    183.5,
+    -13.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x6 (XL4016 servo 6 V C (kafa pan + tilt) 2 ust)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x6 DIN 912",
+   "kutle_g": 0.816,
+   "merkez": [
+    126.5,
+    188.71,
+    -13.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x8 (XL4016 servo 6 V C (kafa pan + tilt) 2 alt)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    126.5,
+    175.68,
+    -13.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Burc M3x8 naylon burc (XL4016 servo 6 V C (kafa pan + tilt) 3)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "M3x8 naylon burc",
+   "kutle_g": 0.174,
+   "merkez": [
+    126.5,
+    183.5,
+    13.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x6 (XL4016 servo 6 V C (kafa pan + tilt) 3 ust)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x6 DIN 912",
+   "kutle_g": 0.816,
+   "merkez": [
+    126.5,
+    188.71,
+    13.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x8 (XL4016 servo 6 V C (kafa pan + tilt) 3 alt)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    126.5,
+    175.68,
+    13.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "On sarj karti (E9: K2 + 5,6 ohm)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "Delikli pertinaks 70 x 50: K2 rolesi JQC-3F 12 V 7 A + 5,6 ohm 11 W tas direnc + 1N4007 (tahmini zarf)",
+   "kutle_g": 39.0,
+   "merkez": [
+    -97.5,
+    189.23,
+    -1.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Burc M3x8 naylon burc (On sarj karti (E9: K2 + 5,6 ohm) 0)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "M3x8 naylon burc",
+   "kutle_g": 0.174,
+   "merkez": [
+    -130.0,
+    183.5,
+    -23.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x6 (On sarj karti (E9: K2 + 5,6 ohm) 0 ust)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x6 DIN 912",
+   "kutle_g": 0.816,
+   "merkez": [
+    -130.0,
+    188.71,
+    -23.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 0 alt)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    -130.0,
+    175.68,
+    -23.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Burc M3x8 naylon burc (On sarj karti (E9: K2 + 5,6 ohm) 1)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "M3x8 naylon burc",
+   "kutle_g": 0.174,
+   "merkez": [
+    -130.0,
+    183.5,
+    21.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x6 (On sarj karti (E9: K2 + 5,6 ohm) 1 ust)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x6 DIN 912",
+   "kutle_g": 0.816,
+   "merkez": [
+    -130.0,
+    188.71,
+    21.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 1 alt)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    -130.0,
+    175.68,
+    21.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Burc M3x8 naylon burc (On sarj karti (E9: K2 + 5,6 ohm) 2)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "M3x8 naylon burc",
+   "kutle_g": 0.174,
+   "merkez": [
+    -65.0,
+    183.5,
+    -23.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x6 (On sarj karti (E9: K2 + 5,6 ohm) 2 ust)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x6 DIN 912",
+   "kutle_g": 0.816,
+   "merkez": [
+    -65.0,
+    188.71,
+    -23.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 2 alt)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    -65.0,
+    175.68,
+    -23.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Burc M3x8 naylon burc (On sarj karti (E9: K2 + 5,6 ohm) 3)",
+   "grup": "Govde",
+   "tur": "Satin",
+   "kod": "M3x8 naylon burc",
+   "kutle_g": 0.174,
+   "merkez": [
+    -65.0,
+    183.5,
+    21.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x6 (On sarj karti (E9: K2 + 5,6 ohm) 3 ust)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x6 DIN 912",
+   "kutle_g": 0.816,
+   "merkez": [
+    -65.0,
+    188.71,
+    21.5
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 3 alt)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    -65.0,
+    175.68,
+    21.5
    ]
   },
   {
@@ -13145,7 +13756,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Servo dagitim karti A (sag kol + pan)",
+   "ad": "Servo dagitim karti A (sag kol)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "Delikli pertinaks 70 x 50: 16 AWG klemens, 2200 uF, 6x 3 pin cikis (tahmini zarf)",
@@ -13158,7 +13769,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Burc M3x8 naylon burc (Servo dagitim karti A (sag kol + pan) 0)",
+   "ad": "Burc M3x8 naylon burc (Servo dagitim karti A (sag kol) 0)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "M3x8 naylon burc",
@@ -13171,7 +13782,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (Servo dagitim karti A (sag kol + pan) 0 ust)",
+   "ad": "Vida M3x6 (Servo dagitim karti A (sag kol) 0 ust)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -13184,7 +13795,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x8 (Servo dagitim karti A (sag kol + pan) 0 alt)",
+   "ad": "Vida M3x8 (Servo dagitim karti A (sag kol) 0 alt)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x8 DIN 912",
@@ -13197,7 +13808,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Burc M3x8 naylon burc (Servo dagitim karti A (sag kol + pan) 1)",
+   "ad": "Burc M3x8 naylon burc (Servo dagitim karti A (sag kol) 1)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "M3x8 naylon burc",
@@ -13210,7 +13821,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (Servo dagitim karti A (sag kol + pan) 1 ust)",
+   "ad": "Vida M3x6 (Servo dagitim karti A (sag kol) 1 ust)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -13223,7 +13834,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x8 (Servo dagitim karti A (sag kol + pan) 1 alt)",
+   "ad": "Vida M3x8 (Servo dagitim karti A (sag kol) 1 alt)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x8 DIN 912",
@@ -13236,7 +13847,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Burc M3x8 naylon burc (Servo dagitim karti A (sag kol + pan) 2)",
+   "ad": "Burc M3x8 naylon burc (Servo dagitim karti A (sag kol) 2)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "M3x8 naylon burc",
@@ -13249,7 +13860,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (Servo dagitim karti A (sag kol + pan) 2 ust)",
+   "ad": "Vida M3x6 (Servo dagitim karti A (sag kol) 2 ust)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -13262,7 +13873,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x8 (Servo dagitim karti A (sag kol + pan) 2 alt)",
+   "ad": "Vida M3x8 (Servo dagitim karti A (sag kol) 2 alt)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x8 DIN 912",
@@ -13275,7 +13886,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Burc M3x8 naylon burc (Servo dagitim karti A (sag kol + pan) 3)",
+   "ad": "Burc M3x8 naylon burc (Servo dagitim karti A (sag kol) 3)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "M3x8 naylon burc",
@@ -13288,7 +13899,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (Servo dagitim karti A (sag kol + pan) 3 ust)",
+   "ad": "Vida M3x6 (Servo dagitim karti A (sag kol) 3 ust)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -13301,7 +13912,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x8 (Servo dagitim karti A (sag kol + pan) 3 alt)",
+   "ad": "Vida M3x8 (Servo dagitim karti A (sag kol) 3 alt)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x8 DIN 912",
@@ -13314,7 +13925,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Servo dagitim karti B (sol kol + tilt)",
+   "ad": "Servo dagitim karti B (sol kol)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "Delikli pertinaks 70 x 50: 16 AWG klemens, 2200 uF, 6x 3 pin cikis (tahmini zarf)",
@@ -13327,7 +13938,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Burc M3x8 naylon burc (Servo dagitim karti B (sol kol + tilt) 0)",
+   "ad": "Burc M3x8 naylon burc (Servo dagitim karti B (sol kol) 0)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "M3x8 naylon burc",
@@ -13340,7 +13951,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (Servo dagitim karti B (sol kol + tilt) 0 ust)",
+   "ad": "Vida M3x6 (Servo dagitim karti B (sol kol) 0 ust)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -13353,7 +13964,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x8 (Servo dagitim karti B (sol kol + tilt) 0 alt)",
+   "ad": "Vida M3x8 (Servo dagitim karti B (sol kol) 0 alt)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x8 DIN 912",
@@ -13366,7 +13977,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Burc M3x8 naylon burc (Servo dagitim karti B (sol kol + tilt) 1)",
+   "ad": "Burc M3x8 naylon burc (Servo dagitim karti B (sol kol) 1)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "M3x8 naylon burc",
@@ -13379,7 +13990,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (Servo dagitim karti B (sol kol + tilt) 1 ust)",
+   "ad": "Vida M3x6 (Servo dagitim karti B (sol kol) 1 ust)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -13392,7 +14003,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x8 (Servo dagitim karti B (sol kol + tilt) 1 alt)",
+   "ad": "Vida M3x8 (Servo dagitim karti B (sol kol) 1 alt)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x8 DIN 912",
@@ -13405,7 +14016,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Burc M3x8 naylon burc (Servo dagitim karti B (sol kol + tilt) 2)",
+   "ad": "Burc M3x8 naylon burc (Servo dagitim karti B (sol kol) 2)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "M3x8 naylon burc",
@@ -13418,7 +14029,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (Servo dagitim karti B (sol kol + tilt) 2 ust)",
+   "ad": "Vida M3x6 (Servo dagitim karti B (sol kol) 2 ust)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -13431,7 +14042,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x8 (Servo dagitim karti B (sol kol + tilt) 2 alt)",
+   "ad": "Vida M3x8 (Servo dagitim karti B (sol kol) 2 alt)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x8 DIN 912",
@@ -13444,7 +14055,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Burc M3x8 naylon burc (Servo dagitim karti B (sol kol + tilt) 3)",
+   "ad": "Burc M3x8 naylon burc (Servo dagitim karti B (sol kol) 3)",
    "grup": "Govde",
    "tur": "Satin",
    "kod": "M3x8 naylon burc",
@@ -13457,7 +14068,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x6 (Servo dagitim karti B (sol kol + tilt) 3 ust)",
+   "ad": "Vida M3x6 (Servo dagitim karti B (sol kol) 3 ust)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x6 DIN 912",
@@ -13470,7 +14081,7 @@
   },
   {
    "modul": "taban",
-   "ad": "Vida M3x8 (Servo dagitim karti B (sol kol + tilt) 3 alt)",
+   "ad": "Vida M3x8 (Servo dagitim karti B (sol kol) 3 alt)",
    "grup": "Govde",
    "tur": "Baglanti",
    "kod": "M3x8 DIN 912",
@@ -14648,8 +15259,8 @@
     0.0
    ],
    "sinir": [
-    -15.0,
-    15.0
+    -13.0,
+    13.0
    ],
    "kaynak": "kafa/kafa-montaj.FCStd: Tilt (Tilt (MG996R))"
   },
@@ -14822,47 +15433,47 @@
  ],
  "solve": 0,
  "ev_pozu_cozucu_sapmasi": 0.0,
- "kutle_g": 24396.08,
+ "kutle_g": 24554.34,
  "agirlik_merkezi": [
-  -0.203,
-  527.432,
-  -12.385
+  -0.079,
+  525.808,
+  -12.49
  ],
  "karsilastirma": {
   "parca": {
-   "montaj": 1073,
-   "beklenen": 1073,
-   "formul": "iskelet 59 + 2 x (omuz 75 - travers - kabuk referansi) + kabuk 291 + dirsek_sag 57 + dirsek_sol 57 + kafa 147 + taban 316",
+   "montaj": 1120,
+   "beklenen": 1120,
+   "formul": "iskelet 59 + 2 x (omuz 75 - travers - kabuk referansi) + kabuk 312 + dirsek_sag 57 + dirsek_sol 57 + kafa 147 + taban 342",
    "ayni": true
   },
   "kutle": {
-   "montaj_dosyasi": 24396.08,
-   "bellek": 24396.08,
-   "beklenen_analizlerden": 24396.2,
+   "montaj_dosyasi": 24554.34,
+   "bellek": 24554.34,
+   "beklenen_analizlerden": 24554.6,
    "carpisma": 21260.9,
-   "fark_analiz": -0.117,
-   "fark_carpisma": 3135.181
+   "fark_analiz": -0.261,
+   "fark_carpisma": 3293.437
   },
   "am": {
    "montaj_dosyasi": [
-    -0.203,
-    527.432,
-    -12.385
+    -0.079,
+    525.808,
+    -12.49
    ],
    "bellek": [
-    -0.203,
-    527.432,
-    -12.385
+    -0.079,
+    525.808,
+    -12.49
    ],
    "carpisma": [
     -0.38,
     374.61,
     -13.51
    ],
-   "fark_carpisma_mm": 152.826,
+   "fark_carpisma_mm": 151.202,
    "fark_bellek_mm": 0.0
   },
   "not_": "analiz JSON'lari 0,1 g'a yuvarlanmis; carpisma AM'si 0,01 mm'ye. 1,65 m (Y2a): carpisma-sonuc.json Y4 tam taramasina kadar ESKI (125 cm) - fark_carpisma anlamsiz, montaj/yerlesim-kontrol.json kisa kontrolu kullan"
  },
- "sure_s": 75.1
+ "sure_s": 111.0
 }

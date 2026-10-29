@@ -268,6 +268,15 @@ TED, (tz0, tz1) = mg_delikler()
 DELIK_T = [gp((xx, yy, tz0), M_T) for (xx, yy) in TED]
 for q in DELIK_T:
     cb = cb.cut(cyl(CLEAR[4] / 2, (X_EP[0] - 1, q.y, q.z), (X_EP[1] + 1, q.y, q.z)))
+# C3 (M6, Y3; arayuz.M6 tilt_somun_cep): on kulak (z > ZT) iki kontra somunu on agin ustunde altigen cep bloguna (anahtar gerekmez).
+# Blok plakanin -x yuzunde, on agin ust yuzunden (y 118) yukari, servo govdesinin on ucundan (z ZT + SH) pay_govde onde.
+_TC = A.M6["tilt_somun_cep"]
+_qs = [q for q in DELIK_T if q.z > ZT]
+cb = cb.fuse(box(X_EP[0] - NUT985[4][1] - 0.2, X_EP[0] + 0.01, 118.0 - 0.01, max(q.y for q in _qs) + _TC["yari"],
+                 ZT + MG["SH"] + _TC["pay_govde"], 44.5))
+for q in _qs:
+    cb = cb.cut(cyl(CLEAR[4] / 2, (X_EP[0] - NUT985[4][1] - 1.0, q.y, q.z), (X_EP[0] + 0.1, q.y, q.z)))
+    cb = cb.cut(hexprism(NUT985[4][0] + _TC["s_pay"], (X_EP[0] - NUT985[4][1] - 0.3, q.y, q.z), (X_EP[0], q.y, q.z), (0, 0, 1)))
 cb = cb.cut(cyl(2.75, (X_SOL[1] - 0.1, YT, ZT), (X_DUVAR[0] + 0.1, YT, ZT)))
 cb = cb.cut(insert_hole(5, (X_DUVAR[0], YT, ZT), (1, 0, 0)))
 I_CATAL = add("Egme catali", "Pan", cb.removeSplitter(), "Baski", "PETG", renk="petg", patlat=(0, 95, 0),
@@ -290,7 +299,8 @@ for q in DELIK_T:
     i_cv = add("Tilt servosu kulak civatasi M4x16", "Pan", screw912(4, 16, (X_TKUL[1], q.y, q.z), (-1, 0, 0)), "Baglanti",
                "Celik 8.8", kod="M4x16 DIN 912", renk="celik", patlat=(90, 95, 0))
     i_sm = add("Tilt servosu kontra somunu M4", "Pan", nut(4, (X_EP[0], q.y, q.z), (-1, 0, 0), "985", (0, 0, 1)), "Baglanti", "Celik",
-               kod="M4 DIN 985 kontra somun", renk="celik", patlat=(-20, 95, 0))
+               kod="M4 DIN 985 kontra somun", renk="celik", patlat=(-20, 95, 0),
+               not_="altigen cepte (M6 C3, Y3): -x yonunden cebe itilir" if q.z > ZT else "")
     BAG.append(dict(ad="Tilt servosu kulagi", tip="servo_kulak", civata=i_cv, somun=i_sm, servo=I_SERVO_T, govde=I_CATAL,
                     nokta=(X_TKUL[1], q.y, q.z), yon=(-1, 0, 0), d=4, L=16.0))
 

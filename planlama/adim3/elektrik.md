@@ -14,7 +14,7 @@ geçerli kalanlar aşağıda. Kaynak: `tasarim/freecad/taban/taban-analiz.json` 
 | Konu | 125 cm (bu dosyanın gövdesi) | 1,65 m (geçerli) |
 |---|---|---|
 | Akü | Victron SuperPack 12,8/20, taban arka bölmesi | **Aynı yerde** (75 mm öne geometrik olarak olmadı). Karar 29.10: rampada / eğimde kollar ev pozunda ve taban ivmesi ≤ 0,1 m/s²; düzde ≤ 0,5 m/s² (devrilme sınırı ≈ 2,0 m/s², `Y2b-ivme.json`). Karar 29.10 (Y2b): yazılım / acil stop freni düz zeminde **≤ 1,8 m/s²** (düzde 0,5 kg el yüküyle bile devrilme payı 1,54). Karar 29.10 (Duffy): **rampada / eğimde yavaşlama ve fren de ≤ 0,1 m/s²** (rampada 1,8 frende ev pozu payı 1,31 < 1,5) |
-| Acil stop, devreye alma (E3, E9) | K1 40 A (GPIO12, IRLZ44N #1), K2 7 A + 5,6 Ω ön şarj (GPIO2, IRLZ44N #2), PC817 #1 mantar sonrası (GPIO23), #2 anahtarlı bara (GPIO5), F5 2 A | **Değişmedi.** Devreye alma komutu Pi'den (telefon kumandası; Nextion yok). CAD'de güç panelinde K1 + soket ve ana sigorta var; K2 ve ön şarj direnci CAD'de yok (M6 CAD, Y3). Pin tablosundaki "GPIO2 boş" çelişkisi Y2b'de düzeltildi |
+| Acil stop, devreye alma (E3, E9) | K1 40 A (GPIO12, IRLZ44N #1), K2 7 A + 5,6 Ω ön şarj (GPIO2, IRLZ44N #2), PC817 #1 mantar sonrası (GPIO23), #2 anahtarlı bara (GPIO5), F5 2 A | **Değişmedi.** Devreye alma komutu Pi'den (telefon kumandası; Nextion yok). CAD'de güç panelinde K1 + soket ve ana sigorta var; **Y3 (29.10): K2 (JQC-3F 7 A) + 5,6 Ω 11 W + 1N4007 güç panelinde "Ön şarj kartı" (70 × 50 pertinaks, merkez x −97,5 / z −1, akünün önünde) olarak CAD'e girdi** (zarf tahmini). Pin tablosundaki "GPIO2 boş" çelişkisi Y2b'de düzeltildi |
 | Göğüs Nextion | UART2 (GPIO16/17), çevre 5 V'tan 0,8 A | **Yok** (25 Ekim). GPIO16/17 boş, F4 yükü −0,8 A |
 | Yüz ekranı | 7" LCD, 2,5 W | 10,1" HDMI (hoca verecek; CAD'de Waveshare 10.1" (B)), 5 V ≈ 0,75 A (≈ 3,75 W, tahmini), Pi USB-A'dan |
 | Mikrofon | ReSpeaker Lite, 0,5 W | XVF3800 USB dizi (Efe, 26 Ekim): akımı belgesiz, ~1 W varsayıldı → ölçülecek |
@@ -41,8 +41,8 @@ servo başına değerlerinden; tepe = 2 servo kalkışta (DS3235 3,0 A, MG996R 2
 - Neden kafa ayrı hatta: kafa servosu hangi kol hattına girse o hat > 5 A (pan ile 5,47, tilt ile ≈ 5,8; ikisi bir kolda ≈ 6,4). Kafayı çevre 5 V
   XL4016'sına (ESP32 / sensör beslemesi; servo gürültüsü, 5 V'ta düşük tork) ya da kafadaki Pololu'ya (kafa 5 V tepe 4,1 A + 5 A > 5,5 A) bağlamak reddedildi.
 - Kol hatları yoğunda 5 A önerisinin %97'si: sınırda kalıyor, hat akımı ölçümü (E7 yük testi) yine gerekli; aşarsa o hat için 20 A düşürücü.
-- XL4016 C etekte diğer üçünün yanında (yük A / B'den taşındı; E7 ısısına ek yalnız boşta kaybı ≈ 0,13 W); çıkış 2 servo uzatmasına küçük klemensle, dağıtım kartı gerekmez
-  (2200 µF kondansatör önerilir; maliyette yok). CAD'de 3 XL4016 var: dördüncüsü Y3 / Y4. PCA9685 kanalları (sinyal) değişmez; yalnız
+- XL4016 C güç panelinde, diğer üçünün arkasında (Y3 yerleşimi; yük A / B'den taşındı; E7 ısısına ek yalnız boşta kaybı ≈ 0,13 W); çıkış 2 servo uzatmasına küçük klemensle, dağıtım kartı gerekmez
+  (2200 µF kondansatör önerilir; maliyette yok). **Y3 (29.10): dördüncü XL4016 (C) CAD'de güç panelinin üstünde (merkez x 97,5 / z 0, 8 mm naylon burç), akünün önünde** (alt vidalar akünün üstüne gelmez); CAD'deki XL4016 adları A sağ kol / B sol kol / C kafa. Hat sigortaları kablo üstünde (CAD'de çizilmez). PCA9685 kanalları (sinyal) değişmez; yalnız
   pan / tilt kanallarının beslemesi C hattından gelir.
 
 ## Özet: ne değişti

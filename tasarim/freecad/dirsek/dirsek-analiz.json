@@ -612,12 +612,12 @@
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "On kol govdesi",
-   "kutle_g": 53.35,
-   "hacim_mm3": 52511.2,
+   "kutle_g": 54.11,
+   "hacim_mm3": 53259.7,
    "merkez": [
-    189.047,
-    -250.339,
-    2.77
+    188.993,
+    -249.655,
+    2.722
    ],
    "bb": [
     163.6,
@@ -864,7 +864,7 @@
     -70,
     -60
    ],
-   "not_": ""
+   "not_": "altigen cepte (M6 C2, Y3): servodan once cebe -x yonunden itilir, anahtar gerekmez"
   },
   {
    "i": 29,
@@ -922,7 +922,7 @@
     -70,
     -60
    ],
-   "not_": ""
+   "not_": "altigen cepte (M6 C2, Y3): servodan once cebe -x yonunden itilir, anahtar gerekmez"
   },
   {
    "i": 31,
@@ -980,7 +980,7 @@
     -70,
     -60
    ],
-   "not_": ""
+   "not_": "altigen cepte (M6 C2, Y3): servodan once cebe -x yonunden itilir, anahtar gerekmez"
   },
   {
    "i": 33,
@@ -1038,7 +1038,7 @@
     -70,
     -60
    ],
-   "not_": ""
+   "not_": "altigen cepte (M6 C2, Y3): servodan once cebe -x yonunden itilir, anahtar gerekmez"
   },
   {
    "i": 35,
@@ -6775,13 +6775,19 @@
      }
     },
     {
-     "servo": "S2 servosu (DS3218, 300 mm kablo)",
-     "servo_kablo_yariga_mm": 290.0,
-     "kalan_mm": 10.0,
-     "kalan_sart_mm": 7.0,
-     "birlesim": "kabuk icinde yarik arkasinda",
-     "uzatma_mm": 1490.0,
-     "ok": true
+     "servo": "S2 servosu (DS3235)",
+     "birlesim": "gobek arka ic seridi, G2 oncesi (sabit, S2 lopundan once)",
+     "uzatma_mm": 1770.0,
+     "parca": {
+      "birlesim_G2": 20.0,
+      "gecis": 23.9,
+      "s1_lop": 171.4,
+      "cikis_govde_ici": 238.0,
+      "govde_ici_dikeye": 0.0,
+      "dikey_dagitim": 1286.5,
+      "konnektor_payi": 30.0
+     },
+     "not_": "servo kablosu G2 oncesine s2_servo_kablo (tahmini) ile ulasir; ek lehim + makaron (lehim + isiyla daralan makaron (O <= 4,5, ~25 mm); JR cifti (10,3 x 4 x 26) de olur)"
     }
    ],
    "dagitim": "dagitim karti A (arayuz.TABAN servo_dagitim, y ~ kat ustu + 10, tahmini)",
@@ -7886,7 +7892,7 @@
     [
      "On kol govdesi",
      "Dirsek catali",
-     1997.7
+     2065.9
     ],
     [
      "On kol govdesi",
@@ -7903,12 +7909,12 @@
     [
      "On kol govdesi",
      "Dirsek catali",
-     3240.6
+     3375.3
     ],
     [
      "On kol govdesi",
      "Ust kol tupu (omuz)",
-     444.9
+     446.5
     ],
     [
      "Dirsek servosu MG996R",
@@ -7930,12 +7936,12 @@
     [
      "On kol govdesi",
      "Dirsek catali",
-     4861.9
+     5019.5
     ],
     [
      "On kol govdesi",
      "Ust kol tupu (omuz)",
-     662.9
+     663.2
     ],
     [
      "Dirsek servosu MG996R",
@@ -7957,7 +7963,7 @@
     [
      "On kol govdesi",
      "Dirsek catali",
-     6808.6
+     7036.7
     ],
     [
      "On kol govdesi",
@@ -7989,7 +7995,7 @@
     [
      "On kol govdesi",
      "Dirsek catali",
-     8256.9
+     8531.9
     ],
     [
      "On kol govdesi",
@@ -8031,7 +8037,7 @@
     [
      "On kol govdesi",
      "Dirsek catali",
-     8181.5
+     8438.5
     ],
     [
      "On kol govdesi",
@@ -8407,7 +8413,7 @@
     "servo": "DS3235",
     "stall_kgcm": 30.4,
     "stall_kaynak": "29 / 32 / 35 kg.cm @ 5 / 6 / 7,4 V (satici tablosu + datasheet); stall servo hattinda ~30,4 @ 5,48 V (taslak-170/kol-analiz HAT modeli)",
-    "yuksuz_kgcm": 10.94,
+    "yuksuz_kgcm": 10.95,
     "yuksuz_poz": [
      90,
      5,
@@ -8415,7 +8421,7 @@
      0
     ],
     "yuksuz_pay": 2.78,
-    "yuklu_kgcm": 31.21,
+    "yuklu_kgcm": 31.22,
     "yuklu_poz": [
      90,
      5,
@@ -8430,15 +8436,15 @@
     "servo": "DS3235",
     "stall_kgcm": 30.4,
     "stall_kaynak": "29 / 32 / 35 kg.cm @ 5 / 6 / 7,4 V (satici tablosu + datasheet); stall servo hattinda ~30,4 @ 5,48 V (taslak-170/kol-analiz HAT modeli)",
-    "yuksuz_kgcm": 11.14,
+    "yuksuz_kgcm": 11.16,
     "yuksuz_poz": [
      0,
      90,
      0,
      -90
     ],
-    "yuksuz_pay": 2.73,
-    "yuklu_kgcm": 31.49,
+    "yuksuz_pay": 2.72,
+    "yuklu_kgcm": 31.5,
     "yuklu_poz": [
      0,
      90,
@@ -8446,7 +8452,7 @@
      -90
     ],
     "yuklu_pay": 0.97,
-    "izinli_yuk_2x_g": 100.0
+    "izinli_yuk_2x_g": 99.0
    },
    {
     "eklem": "Dirsek",
@@ -8456,7 +8462,7 @@
     "yuksuz_kgcm": 2.42,
     "yuksuz_poz": [
      90,
-     35,
+     30,
      0,
      90
     ],
@@ -8540,8 +8546,8 @@
     "dirsek_yuklu": 0.03,
     "s1_yuksuz_omuz0": 0.1,
     "s1_yuklu_omuz0": 0.16,
-    "s1_yuksuz_omuz90": 11.0,
-    "s1_yuklu_omuz90": 31.35
+    "s1_yuksuz_omuz90": 11.01,
+    "s1_yuklu_omuz90": 31.36
    },
    {
     "al": 5,
@@ -8549,8 +8555,8 @@
     "dirsek_yuklu": 1.13,
     "s1_yuksuz_omuz0": 0.11,
     "s1_yuklu_omuz0": 0.94,
-    "s1_yuksuz_omuz90": 10.99,
-    "s1_yuklu_omuz90": 31.29
+    "s1_yuksuz_omuz90": 11.0,
+    "s1_yuklu_omuz90": 31.31
    },
    {
     "al": 10,
@@ -8558,17 +8564,17 @@
     "dirsek_yuklu": 2.22,
     "s1_yuksuz_omuz0": 0.32,
     "s1_yuklu_omuz0": 2.03,
-    "s1_yuksuz_omuz90": 10.96,
-    "s1_yuklu_omuz90": 31.15
+    "s1_yuksuz_omuz90": 10.97,
+    "s1_yuklu_omuz90": 31.16
    },
    {
     "al": 15,
     "dirsek_yuksuz": 0.65,
     "dirsek_yuklu": 3.29,
     "s1_yuksuz_omuz0": 0.53,
-    "s1_yuklu_omuz0": 3.11,
-    "s1_yuksuz_omuz90": 10.91,
-    "s1_yuklu_omuz90": 30.91
+    "s1_yuklu_omuz0": 3.1,
+    "s1_yuksuz_omuz90": 10.92,
+    "s1_yuklu_omuz90": 30.92
    },
    {
     "al": 20,
@@ -8576,8 +8582,8 @@
     "dirsek_yuklu": 4.34,
     "s1_yuksuz_omuz0": 0.73,
     "s1_yuklu_omuz0": 4.15,
-    "s1_yuksuz_omuz90": 10.85,
-    "s1_yuklu_omuz90": 30.58
+    "s1_yuksuz_omuz90": 10.86,
+    "s1_yuklu_omuz90": 30.59
    },
    {
     "al": 25,
@@ -8585,8 +8591,8 @@
     "dirsek_yuklu": 5.36,
     "s1_yuksuz_omuz0": 0.92,
     "s1_yuklu_omuz0": 5.17,
-    "s1_yuksuz_omuz90": 10.76,
-    "s1_yuklu_omuz90": 30.15
+    "s1_yuksuz_omuz90": 10.78,
+    "s1_yuklu_omuz90": 30.17
    },
    {
     "al": 30,
@@ -8594,8 +8600,8 @@
     "dirsek_yuklu": 6.33,
     "s1_yuksuz_omuz0": 1.11,
     "s1_yuklu_omuz0": 6.15,
-    "s1_yuksuz_omuz90": 10.66,
-    "s1_yuklu_omuz90": 29.64
+    "s1_yuksuz_omuz90": 10.68,
+    "s1_yuklu_omuz90": 29.66
    },
    {
     "al": 35,
@@ -8603,26 +8609,26 @@
     "dirsek_yuklu": 7.26,
     "s1_yuksuz_omuz0": 1.29,
     "s1_yuklu_omuz0": 7.07,
-    "s1_yuksuz_omuz90": 10.55,
-    "s1_yuklu_omuz90": 29.05
+    "s1_yuksuz_omuz90": 10.56,
+    "s1_yuklu_omuz90": 29.06
    },
    {
     "al": 40,
     "dirsek_yuksuz": 1.58,
     "dirsek_yuklu": 8.13,
     "s1_yuksuz_omuz0": 1.45,
-    "s1_yuklu_omuz0": 7.95,
-    "s1_yuksuz_omuz90": 10.42,
-    "s1_yuklu_omuz90": 28.38
+    "s1_yuklu_omuz0": 7.94,
+    "s1_yuksuz_omuz90": 10.43,
+    "s1_yuklu_omuz90": 28.39
    },
    {
     "al": 45,
     "dirsek_yuksuz": 1.73,
     "dirsek_yuklu": 8.94,
     "s1_yuksuz_omuz0": 1.61,
-    "s1_yuklu_omuz0": 8.76,
-    "s1_yuksuz_omuz90": 10.27,
-    "s1_yuklu_omuz90": 27.63
+    "s1_yuklu_omuz0": 8.75,
+    "s1_yuksuz_omuz90": 10.29,
+    "s1_yuklu_omuz90": 27.65
    },
    {
     "al": 50,
@@ -8630,8 +8636,8 @@
     "dirsek_yuklu": 9.68,
     "s1_yuksuz_omuz0": 1.75,
     "s1_yuklu_omuz0": 9.5,
-    "s1_yuksuz_omuz90": 10.12,
-    "s1_yuklu_omuz90": 26.82
+    "s1_yuksuz_omuz90": 10.13,
+    "s1_yuklu_omuz90": 26.83
    },
    {
     "al": 55,
@@ -8639,17 +8645,17 @@
     "dirsek_yuklu": 10.35,
     "s1_yuksuz_omuz0": 1.88,
     "s1_yuklu_omuz0": 10.17,
-    "s1_yuksuz_omuz90": 9.95,
-    "s1_yuklu_omuz90": 25.94
+    "s1_yuksuz_omuz90": 9.96,
+    "s1_yuklu_omuz90": 25.96
    },
    {
     "al": 60,
     "dirsek_yuksuz": 2.11,
     "dirsek_yuklu": 10.94,
     "s1_yuksuz_omuz0": 1.99,
-    "s1_yuklu_omuz0": 10.76,
-    "s1_yuksuz_omuz90": 9.77,
-    "s1_yuklu_omuz90": 25.01
+    "s1_yuklu_omuz0": 10.75,
+    "s1_yuksuz_omuz90": 9.78,
+    "s1_yuklu_omuz90": 25.03
    },
    {
     "al": 65,
@@ -8657,8 +8663,8 @@
     "dirsek_yuklu": 11.45,
     "s1_yuksuz_omuz0": 2.08,
     "s1_yuklu_omuz0": 11.26,
-    "s1_yuksuz_omuz90": 9.58,
-    "s1_yuklu_omuz90": 24.04
+    "s1_yuksuz_omuz90": 9.59,
+    "s1_yuklu_omuz90": 24.05
    },
    {
     "al": 70,
@@ -8666,8 +8672,8 @@
     "dirsek_yuklu": 11.87,
     "s1_yuksuz_omuz0": 2.16,
     "s1_yuklu_omuz0": 11.68,
-    "s1_yuksuz_omuz90": 9.38,
-    "s1_yuklu_omuz90": 23.02
+    "s1_yuksuz_omuz90": 9.4,
+    "s1_yuklu_omuz90": 23.03
    },
    {
     "al": 75,
@@ -8675,8 +8681,8 @@
     "dirsek_yuklu": 12.19,
     "s1_yuksuz_omuz0": 2.22,
     "s1_yuklu_omuz0": 12.01,
-    "s1_yuksuz_omuz90": 9.18,
-    "s1_yuklu_omuz90": 21.97
+    "s1_yuksuz_omuz90": 9.19,
+    "s1_yuklu_omuz90": 21.98
    },
    {
     "al": 80,
@@ -8684,8 +8690,8 @@
     "dirsek_yuklu": 12.43,
     "s1_yuksuz_omuz0": 2.27,
     "s1_yuklu_omuz0": 12.25,
-    "s1_yuksuz_omuz90": 8.97,
-    "s1_yuklu_omuz90": 20.89
+    "s1_yuksuz_omuz90": 8.99,
+    "s1_yuklu_omuz90": 20.91
    },
    {
     "al": 85,
@@ -8693,8 +8699,8 @@
     "dirsek_yuklu": 12.57,
     "s1_yuksuz_omuz0": 2.29,
     "s1_yuklu_omuz0": 12.39,
-    "s1_yuksuz_omuz90": 8.76,
-    "s1_yuklu_omuz90": 19.8
+    "s1_yuksuz_omuz90": 8.78,
+    "s1_yuklu_omuz90": 19.82
    },
    {
     "al": 90,
@@ -8702,8 +8708,8 @@
     "dirsek_yuklu": 12.62,
     "s1_yuksuz_omuz0": 2.3,
     "s1_yuklu_omuz0": 12.43,
-    "s1_yuksuz_omuz90": 8.55,
-    "s1_yuklu_omuz90": 18.7
+    "s1_yuksuz_omuz90": 8.57,
+    "s1_yuklu_omuz90": 18.72
    },
    {
     "al": 95,
@@ -8711,8 +8717,8 @@
     "dirsek_yuklu": 12.57,
     "s1_yuksuz_omuz0": 2.29,
     "s1_yuklu_omuz0": 12.38,
-    "s1_yuksuz_omuz90": 8.34,
-    "s1_yuklu_omuz90": 17.6
+    "s1_yuksuz_omuz90": 8.35,
+    "s1_yuklu_omuz90": 17.62
    },
    {
     "al": 100,
@@ -8720,8 +8726,8 @@
     "dirsek_yuklu": 12.42,
     "s1_yuksuz_omuz0": 2.26,
     "s1_yuklu_omuz0": 12.24,
-    "s1_yuksuz_omuz90": 8.13,
-    "s1_yuklu_omuz90": 16.51
+    "s1_yuksuz_omuz90": 8.15,
+    "s1_yuklu_omuz90": 16.52
    },
    {
     "al": 105,
@@ -8729,8 +8735,8 @@
     "dirsek_yuklu": 12.18,
     "s1_yuksuz_omuz0": 2.21,
     "s1_yuklu_omuz0": 12.0,
-    "s1_yuksuz_omuz90": 7.93,
-    "s1_yuklu_omuz90": 15.44
+    "s1_yuksuz_omuz90": 7.94,
+    "s1_yuklu_omuz90": 15.45
    }
   ],
   "grup": {
@@ -8743,11 +8749,11 @@
     ]
    },
    "OnKol": {
-    "m": 200.1,
+    "m": 200.9,
     "am": [
-     193.025,
-     -252.676,
-     -0.178
+     192.995,
+     -252.483,
+     -0.18
     ]
    },
    "El": {
@@ -8759,11 +8765,11 @@
     ]
    },
    "omuz_Gobek": {
-    "m": 175.2,
+    "m": 175.3,
     "am": [
-     174.119,
-     8.019,
-     -2.44
+     174.13,
+     8.1,
+     -2.45
     ]
    },
    "omuz_Kol": {
@@ -8811,16 +8817,16 @@
    "tabla_aci": 51,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0057,
-   "cikinti_alan_cm2": 1.81,
-   "yuzey_cm2": 315.3,
+   "cikinti_orani": 0.0095,
+   "cikinti_alan_cm2": 3.06,
+   "yuzey_cm2": 321.3,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 52.5,
-   "kutle_g": 53.4,
-   "filament_g": 56.0,
-   "sure_saat": 1.17,
+   "hacim_cm3": 53.3,
+   "kutle_g": 54.1,
+   "filament_g": 56.8,
+   "sure_saat": 1.18,
    "katman": 33,
    "yon": "on yuzu tablada, acik arka yukari",
    "grup": "OnKol"
@@ -8911,10 +8917,10 @@
    246.0
   ]
  },
- "kutle_g": 399.7,
+ "kutle_g": 400.5,
  "kutle_grup": {
   "UstKol": 110.7,
-  "OnKol": 200.1,
+  "OnKol": 200.9,
   "El": 89.0
  },
  "am_grup": {
@@ -8924,8 +8930,8 @@
    -3.76
   ],
   "OnKol": [
-   193.02,
-   -252.68,
+   192.99,
+   -252.48,
    -0.18
   ],
   "El": [
@@ -8935,14 +8941,14 @@
   ]
  },
  "kutle_tur": {
-  "Baski": 225.0,
+  "Baski": 225.7,
   "Baglanti": 52.9,
   "Satin": 121.9
  },
  "agirlik_merkezi": [
-  190.057,
-  -255.79,
-  -1.307
+  190.048,
+  -255.687,
+  -1.306
  ],
  "bom": [
   [
@@ -9051,7 +9057,7 @@
    "Baski",
    "On kol govdesi",
    1,
-   53.4
+   54.1
   ],
   [
    "Satin",
@@ -9141,5 +9147,5 @@
   "yuk_g": 500.0,
   "kaynak": "dirsek/dirsek_parcalar.py"
  },
- "sure_s": 246.9
+ "sure_s": 353.6
 }

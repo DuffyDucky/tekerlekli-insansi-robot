@@ -33,15 +33,15 @@ koşullu geçti: `planlama/y2/Y2a-kontrol.md`).
 | Konu | Değer |
 |---|---|
 | Boy | **1.650 mm** (yerden kafa tepesine); gövde direği 1.185,5 mm tek parça sigma 40 × 40 |
-| Parça / kütle | 1.073 parça (ana montaj), 24,40 kg (kablo payıyla ≈ 24,8 kg); AM (−0,20; 527,43; −12,38) mm |
+| Parça / kütle | 1.120 parça (ana montaj, Y3 M6 CAD sonrası; önce 1.073), 24,55 kg (kablo payıyla ≈ 24,95 kg); AM (−0,08; 525,81; −12,49) mm |
 | Taban | 520 mm, teker izi 432 mm (x ±216), 4 × JGB37; akü Victron 12,8 V 20 Ah **yerinde** (karar 29.10) |
 | Kollar | Kol başına 4 servo: omuz S1 + S2 **DS3235**, dirsek + bilek MG996R; kafa pan / tilt MG996R (toplam 10 servo). El yükü ≈ 100 g (açık konu) |
 | Kafa | 10,1" HDMI yüz ekranı (hoca verecek), Raspberry Pi 5 kafada; tilt sınırı ±13° |
 | Göğüs | Nextion ekran **yok** (25 Ekim); kumanda telefondan |
 | Ses | XVF3800 4 mikrofonlu USB dizi + yönlü mikrofon karşılaştırma kolu (Efe, 26 Ekim) |
 | Yazılım sınırları | Rampada / eğimde kollar ev pozunda, ivme ve fren ≤ 0,1 m/s²; düz zeminde ≤ 0,5 m/s² (devrilme sınırı ≈ 2,0 m/s²), fren ≤ 1,8 m/s² (29.10); S2 ≥ +5° |
-| Baskı | 63 parça, 7,7 kg filament (PETG 6,75 + PETG-CF 1,0), ≈ 162 sa; kafa kabuğu sağ ön / sağ arka destekli |
-| Maliyet | **≈ 103.200 TL** (V3 satırları, yazıcıyla, yedek ve %15 pay dahil; koşullularla ≈ 109.100; 29.10 eldeki Pi 5 8 → 4 GB fiyatıyla, önce ≈ 109.000). Yüz ekranı hocadan gelirse ve elimizdekiler düşülürse ≈ 78.300 TL. Sipariş verilmedi; liste hocada (fark: `planlama/siparis-farki-2026-10-29.md`) |
+| Baskı | 63 parça, 7,7 kg filament (PETG 6,75 + PETG-CF 1,0), ≈ 162 sa; kafa kabuğu sağ ön / sağ arka destekli. Y3: + 3 servis kapağı (üst arka, etek H1 / H2) → 66 parça; `baski-listesi.md` Y4'te yeniden üretilir |
+| Maliyet | **≈ 103.800 TL** (V3 satırları, yazıcıyla, yedek ve %15 pay dahil; koşullularla ≈ 109.100; 29.10 eldeki Pi 5 8 → 4 GB fiyatıyla ve Y3 M6 CAD bağlantılarıyla, önce ≈ 109.000). Yüz ekranı hocadan gelirse ve elimizdekiler düşülürse ≈ 78.900 TL. Sipariş verilmedi; liste hocada (fark: `planlama/siparis-farki-2026-10-29.md`) |
 | Kapsam | Otonom gezinme, lidar, ROS 2 / Nav2 **yok** (hoca, 21 Ekim); kumandayla sürüş + konuşma + jest |
 
 Aşağıdaki bölümler projenin geçmişidir (Eylül–Ekim, CadQuery V1–V3, 115–125 cm); güncel sayılar yukarıda ve `planlama/` belgelerinde.

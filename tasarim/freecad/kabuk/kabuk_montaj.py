@@ -160,34 +160,52 @@ for b in BAG:
         else:
             d = mesafe(civ["shape"], br)
             k.append(("M6 civata (pulsuz) basi brakete dayali", round(d, 4), d <= TEMAS))
-    # kabuk tarafi: isil gomme somun + civata
-    ins = el[-1]
-    civ = el[-2]
+    # kabuk tarafi (M6 K1 / K2, Y3): disaridan ISO 7380 -> kabuk boss'u -> braket ayagindaki percin somun
+    ins = el[-1]          # percin somun
+    civ = el[-2]          # ISO 7380 civata
     if b["tip"] == "govde":
-        ax, x_agiz = V(sx, 0, 0), sx * b["xw"]
+        mm, x_ayak, yc_, zc_ = A.M6["govde_braket_m5"], b["xw"], b["yc"], 0.0
         a_y = K.kesit_param(K.GK, b["yc"])[0][0]
-        nok = V(sx * b["xw"], b["yc"], 0)
-        dmet = 5
+        tb_ = A.KABUK_GOVDE_BRAKET["t"]
     else:
-        ax, x_agiz = V(sx, 0, 0), sx * A.KABUK_ETEK_BRAKET["x_ic"]
+        mm, x_ayak, yc_, zc_ = A.M6["etek_braket_m3"], A.KABUK_ETEK_BRAKET["x_ic"], A.KABUK_ETEK_BRAKET["m3_y"], b["zb"]
         a_y = K.kesit_param(K.EK, A.KABUK_ETEK_BRAKET["m3_y"])[0][0]
-        nok = V(sx * A.KABUK_ETEK_BRAKET["x_ic"], A.KABUK_ETEK_BRAKET["m3_y"], b["zb"])
-        dmet = 3
-    L_ins = A.INSERT[dmet][1]
-    uc = max(v.Point.x * sx for v in civ["shape"].Vertexes)
-    kavrama = uc - x_agiz * sx
-    et = a_y - uc
-    k.append(("M%d civata kavramasi %.1f mm (isil gomme somun %.1f, delik %.1f)" % (dmet, kavrama, L_ins, L_ins + 0.5),
-              round(kavrama, 3), dmet <= kavrama <= L_ins + 0.5))
-    k.append(("M%d civata ucundan kabuk dis yuzune kalan et %.1f mm" % (dmet, et), round(et, 3), et >= 1.0))
+        tb_ = A.KABUK_ETEK_BRAKET["t"]
+    pc = mm["percin"]
+    dmet = pc["d"]
+    ax, nok = V(sx, 0, 0), V(sx * x_ayak, yc_, zc_)
+    uc = min(v.Point.x * sx for v in civ["shape"].Vertexes)            # civata ucu (ice dogru en derin)
+    gecme = (x_ayak - tb_) - uc                                        # ucun braket ayagi ic yuzunden iceri gecisi
+    kalan = pc["govde_L"] - tb_ - gecme                                # percin somun govdesinin uctan sonra kalan boyu
+    k.append(("M%d civata ucu braket ayaginin ic yuzunden %.1f mm iceride (>= %d), percin somun govdesinde %.1f mm kalir (>= 0)"
+              % (dmet, gecme, dmet - 2, kalan), round(gecme, 3), gecme >= dmet - 2 - 1e-6 and kalan >= -1e-6))
+    d_bas = mesafe(civ["shape"], parca)
+    bas_x = max(v.Point.x * sx for v in civ["shape"].Vertexes) - A.ISO7380[dmet][1]
+    a_y = a_y - A.M6["oturma_derin"]          # dis yuzde O(dk + 1) oturma (egik duvarda bas gomulmesin)
+    k.append(("M%d ISO 7380 basi kabuk dis yuzundeki oturmada (bas alti x %.2f, oturma %.2f)" % (dmet, bas_x, a_y), round(bas_x - a_y, 4),
+              abs(bas_x - a_y) < 0.05 and d_bas <= TEMAS))
     ed = max(eksen_disi(civ["shape"], nok, ax), eksen_disi(ins["shape"], nok, ax))
-    k.append(("M%d civata ve isil gomme somun ayni eksende (braket deligi ile)" % dmet, round(ed, 4), ed < 1e-6))
+    k.append(("M%d civata ve percin somun ayni eksende (braket deligi ile)" % dmet, round(ed, 4), ed < 1e-6))
+    d = mesafe(ins["shape"], br)
+    k.append(("M%d percin somun flansi braket ayagina dayali" % dmet, round(d, 4), d <= TEMAS))
     d = mesafe(ins["shape"], parca)
-    k.append(("M%d isil gomme somun boss'ta oturuyor" % dmet, round(d, 4), d <= TEMAS))
+    k.append(("M%d percin somun flansi boss cebinde, kabuga degmiyor (%.2f mm)" % (dmet, d), round(d, 4), d >= 0.05))
     bag_kontrol.append(dict(ad=b["ad"], tip=b["tip"], parca=b["parca"], kontroller=k, tamam=all(x[2] for x in k)))
 log("braket kontrol: %d/%d tamam" % (sum(1 for s in bag_kontrol if s["tamam"]), len(bag_kontrol)))
 log("M6 vida payi: %d delik, en az somun gecme %.2f (sart >= %.1f), en az kanal tabani payi %.2f (sart >= %.1f)" % (
     len(m6_pay), min(x["somun_pay_mm"] for x in m6_pay), SOMUN_GECME, min(x["taban_pay_mm"] for x in m6_pay), TABAN_PAY))
+
+# K5 / K6 (Y3): etek servis kapagi civatalari: bas kapakta, kapak plakaya oturmus, isil gomme somun boss'ta, kavrama >= 2,5
+kapak_kontrol = []
+for v in K.KAPAK_VIDA:
+    ins, civ = P[v["i_insert"]], P[v["i_vida"]]
+    kp = PAR[v["kapak"]]
+    d_bas, d_kap, d_ins = mesafe(civ["shape"], kp), mesafe(kp, PAR[v["ic"]]), mesafe(ins["shape"], PAR[v["ic"]])
+    kav = K.VIDA_L - v["t"]
+    ok = d_bas <= TEMAS and d_kap <= TEMAS and d_ins <= TEMAS and 2.5 <= kav <= A.INSERT[3][1]
+    kapak_kontrol.append(dict(kapak=v["kapak"], ic=v["ic"], bas_kapakta=round(d_bas, 4), kapak_plakada=round(d_kap, 4),
+                              insert_bossta=round(d_ins, 4), kavrama=round(kav, 2), tamam=bool(ok)))
+log("etek kapak civatasi tamam %d/%d" % (sum(x["tamam"] for x in kapak_kontrol), len(kapak_kontrol)))
 
 vida_kontrol = []
 for v in VIDA:
@@ -238,7 +256,8 @@ log("teker-etek %.2f mm, direk-govde %.2f mm" % (teker_bosluk, direk_bosluk))
 BINDIRME_BOSLUK_MIN = 0.15
 ON_SEKIL = {}
 for (bant, sag), sh in K.GOVDE.items():
-    ON_SEKIL["Arka servis kapagi" if bant == "kapak" else "%s %s" % (K.GOVDE_AD[bant], "sag" if sag else "sol")] = (sh, K.S_dis)
+    ON_SEKIL["Arka servis kapagi" if bant == "kapak" else ("Ust arka servis kapagi" if bant == "kapak2" else
+             "%s %s" % (K.GOVDE_AD[bant], "sag" if sag else "sol"))] = (sh, K.S_dis)
 for (bant, sag), sh in K.ETEK.items():
     ON_SEKIL["%s %s" % (K.ETEK_AD[bant], "sag" if sag else "sol")] = (sh, K.Se_dis)
 for yer, sh in K.ETEK_DOLGU.items():
@@ -436,7 +455,7 @@ out = dict(
     baglanti=[dict(ad=b["ad"], tip=b["tip"], parca=b["parca"], govde=P[b["govde"]]["ad"], eleman=[P[i]["kod"] for i in b["eleman"]])
               for b in BAG],
     baglanti_kontrol=bag_kontrol, m6_vida_pay=dict(sart_somun_gecme_mm=SOMUN_GECME, sart_taban_pay_mm=TABAN_PAY, somun_ustu_mm=somun_alti,
-                                                  kanal_tabani_mm=A.KANAL_TABAN, kalemler=m6_pay), vida_kontrol=vida_kontrol, kaset_kontrol=kaset_kontrol,
+                                                  kanal_tabani_mm=A.KANAL_TABAN, kalemler=m6_pay), vida_kontrol=vida_kontrol, kaset_kontrol=kaset_kontrol, kapak_kontrol=kapak_kontrol,
     s1_kaset=dict(K.S1_KASET, dikme=[[d[0], d[1]] for d in K.S1_KASET['dikme']], kaynak='arayuz.KOL_KABLO s1'),
     bosluk=dict(teker_etek_mm=round(teker_bosluk, 2), direk_govde_mm=round(direk_bosluk, 2)),
     bindirme_bosluk=dict(sart_min_mm=BINDIRME_BOSLUK_MIN, tasarim_mm=A.KABUK_BINDIRME_BOSLUK, en_az_mm=bindirme_en_az,

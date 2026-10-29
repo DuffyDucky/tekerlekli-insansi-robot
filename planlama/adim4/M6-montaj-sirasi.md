@@ -197,6 +197,9 @@ Toplam kol başına ~25 cıvata.
 
 ## 4. CAD değişiklik listesi
 
+> **Y3 (29 Ekim 2026, 1,65 m):** C1–C3 ve K1–K7 CAD'e işlendi (seçilen çözümler, ölçüler ve doğrulama `planlama/y3/Y3-gunluk.md`,
+> sabitler `tasarim/freecad/arayuz.py` `M6`). Aşağıdaki tablo 125 cm ölçümüdür; sıra tablosu ve `M6_erisim.py` 1,65 m'de Y4'te yeniden koşulur.
+
 Sahip, dosya sahibidir. Bu ajan hiçbirini uygulamadı.
 
 | No | Modül / dosya | Değişiklik | Sabit (öneri) | Öncelik | Doğrulama |

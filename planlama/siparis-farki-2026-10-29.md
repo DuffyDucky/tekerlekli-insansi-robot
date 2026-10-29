@@ -84,4 +84,5 @@ Koşullu kalemler (omni teker, fan, M6 CAD bağlantıları) iki listede de topla
 - XVF3800 ve yönlü mikrofon fiyatları tahmini, stok belirsiz: listeye eklemeden önce satıcı fiyatı alınmalı.
 - Listede "Raspberry Pi 5, 8 GB" (eldeki kalem) vardı; DuffyOS kurulum kaydı (17.10) eldeki Pi'nin 4 GB çıktığını yazıyor, Duffy 29.10'da
   "pi 4 gb" dedi → `maliyet.json` "Raspberry Pi 5, 4 GB RAM", 7.031,58 TL (yukarıdaki tabloda). Satın alma toplamını etkilemiyor (eldeki kalem).
+- **Y3 (29.10, M6 CAD) sonrası:** güncel genel **103.767,58 TL** (+601,07: dışarıdan ISO 7380 + perçin somun + perçin aleti artık toplama giriyor, M5 ısıl gömme / M5×10 / pul düştü; `maliyet.json`). Yukarıdaki tablolar Y3 öncesi (103.166,51); fark Y6'da yeniden çıkarılır.
 - Kaynak dosyalar: Excel'ler (yukarıda), `git show b27fd80:planlama/maliyet.json`, `planlama/maliyet.json`, `planlama/adim5/maliyet_toplam.py`.

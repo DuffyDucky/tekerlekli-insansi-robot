@@ -85,6 +85,15 @@ KAPAK_IC = rrect_prizma_z(-AK["x"] + W, AK["x"] - W, AK["y0"] + W, AK["y1"], AK[
                           AK["z0"], AK["z1"])
 I_KAPAK_DIKIS = A.GOVDE_DIKIS.index(AK["y1"])                              # arka kapagin ust kenari bu dikiste (1075)
 KAPAK_DIKIS = kutu(-AK["x"], AK["x"], AK["y1"], AK["y1"] + W, -BIG, AK["z1"])   # kapak ust kenari: alin
+# K4 (M6, Y3): ust arka servis kapagi, gogus bandi arka duvari; ARKA_KAPAK ile ayni yapi (ust kenari 1268 dikisinde alin)
+AK2 = A.M6["arka_kapak_ust"]
+KAPAK2 = rrect_prizma_z(-AK2["x"], AK2["x"], AK2["y0"], AK2["y1"], AK2["r"], AK2["z0"], AK2["z1"])
+KAPAK2_IC = rrect_prizma_z(-AK2["x"] + W, AK2["x"] - W, AK2["y0"] + W, AK2["y1"], AK2["r"] - W + 0.0 if AK2["r"] > W else 1.0,
+                           AK2["z0"], AK2["z1"])
+I_KAPAK2_DIKIS = A.GOVDE_DIKIS.index(AK2["y1"])                            # 1268 (gogus | omuz)
+KAPAK2_DIKIS = kutu(-AK2["x"], AK2["x"], AK2["y1"], AK2["y1"] + W, -BIG, AK2["z1"])
+KAPAKLAR = KAPAK.fuse(KAPAK2)
+KAPAKLAR_IC = KAPAK_IC.fuse(KAPAK2_IC)
 
 
 def x_ic(sag, y_plaka):
@@ -105,12 +114,16 @@ for k in range(len(GOVDE_BANT)):
         c_ = c_.cut(KAPAK_DIKIS)
     elif k == I_KAPAK_DIKIS + 1:        # kapagin ustundeki bant (gogus)
         c_ = c_.fuse(KAPAK_DIKIS)
+    if k == I_KAPAK2_DIKIS:             # K4: ust kapagin altindaki bant (gogus)
+        c_ = c_.cut(KAPAK2_DIKIS)
+    elif k == I_KAPAK2_DIKIS + 1:       # K4: ust kapagin ustundeki bant (omuz)
+        c_ = c_.fuse(KAPAK2_DIKIS)
     y_ic.append(c_)
 GOVDE = {}
 for k, bant in enumerate(GOVDE_BANT):
     for sag in (True, False):
-        r_dis = kutu(*((0, BIG) if sag else (-BIG, 0))).common(kutu(y0=YK[k], y1=YK[k + 1])).cut(KAPAK)
-        r_ic = x_ic(sag, Y_KAPAK_PLAKA).common(y_ic[k]).cut(KAPAK_IC)
+        r_dis = kutu(*((0, BIG) if sag else (-BIG, 0))).common(kutu(y0=YK[k], y1=YK[k + 1])).cut(KAPAKLAR)
+        r_ic = x_ic(sag, Y_KAPAK_PLAKA).common(y_ic[k]).cut(KAPAKLAR_IC)
         dil = S_ic.common(r_ic).cut(S_bos.common(r_ic.cut(r_dis)))      # dil bolgesi (ic hucre - dis hucre) GB_BOS incelir
         sh = S_dis.common(r_dis).fuse(dil).removeSplitter()
         GOVDE[(bant, sag)] = sh
@@ -121,6 +134,12 @@ if _kdil.Volume > 1e-6:
     _kic = _kic.cut(S_bos.common(_kdil))
 GOVDE[("kapak", None)] = S_dis.common(KAPAK).fuse(_kic).removeSplitter()
 DIS_HUCRE['Arka servis kapagi'] = KAPAK
+_kdil2 = KAPAK2_IC.cut(KAPAK2)
+_kic2 = S_ic.common(KAPAK2_IC)
+if _kdil2.Volume > 1e-6:
+    _kic2 = _kic2.cut(S_bos.common(_kdil2))
+GOVDE[("kapak2", None)] = S_dis.common(KAPAK2).fuse(_kic2).removeSplitter()
+DIS_HUCRE['Ust arka servis kapagi'] = KAPAK2
 log("govde parcalari:", {("%s %s" % (b, {True: "sag", False: "sol", None: ""}[s])): len(v.Solids) for (b, s), v in GOVDE.items()})
 
 # ====================================================================== TABAN ETEGI
@@ -132,6 +151,20 @@ EA = A.ETEK_ACIKLIK
 Se = Se.cut(Part.Face(rrect_wire(A.Y_COV1 - 15, EA["a"], EA["b"], EA["b"], EA["r"])).extrude(V(0, 30, 0)))
 ES = A.ACIL_STOP
 Se = Se.cut(Part.makeCylinder(ES["delik_d"] / 2, 30.0, V(ES["x"], ES["y"] - 15, ES["z"]), V(0, 1, 0)))
+# K7 (M6, Y3): ana anahtar dugmesi deligi; K5 / K6: etek servis kapaklari H1 (sigorta kutusu) / H2 (ana sigorta) delikleri
+_AAM = A.TABAN["ana_anahtar"]["merkez"]
+Se = Se.cut(Part.makeCylinder(A.M6["ana_anahtar_delik_d"] / 2, 30.0, V(_AAM[0], A.Y_COV1 - 15, _AAM[1]), V(0, 1, 0)))
+
+
+def rrect_y(x, z, r, y0, y1):
+    """XZ'de kose yaricapi r dikdortgen, y0 -> y1 boyunca (etek ust plakasi delikleri / kapaklari)."""
+    b_ = Part.makeBox(x[1] - x[0], y1 - y0, z[1] - z[0], V(x[0], y0, z[0]))
+    return b_.makeFillet(r, [e for e in b_.Edges if abs(e.Vertexes[0].Point.y - e.Vertexes[-1].Point.y) > 1e-6])
+
+
+ETEK_KAPAK = {"Etek servis kapagi H1 (sigorta kutusu)": A.M6["etek_kapak_h1"], "Etek servis kapagi H2 (ana sigorta)": A.M6["etek_kapak_h2"]}
+for _h in ETEK_KAPAK.values():
+    Se = Se.cut(rrect_y(_h["x"], _h["z"], _h["r"], A.Y_COV1 - 15, A.Y_COV1 + 15))
 SN = A.SONAR
 for x in SN["x"]:
     for dx in (-SN["dx"], SN["dx"]):
@@ -191,6 +224,9 @@ for (bant, sag), sh in GOVDE.items():
     if bant == "kapak":
         ad, yuk, yon = "Arka servis kapagi", _n_arka * -1, "dis yuzu tablada"
         pat = (0, -40, -170)
+    elif bant == "kapak2":
+        ad, yuk, yon = "Ust arka servis kapagi", yuzey(GK, "arka", 0.5 * (AK2["y0"] + AK2["y1"]), 0.0)[1] * -1, "dis yuzu tablada"
+        pat = (0, 40, -170)
     else:
         ad = "%s %s" % (GOVDE_AD[bant], "sag" if sag else "sol")
         if bant == "omuz":
@@ -208,6 +244,17 @@ for (bant, sag), sh in ETEK.items():
 for yer, sh in ETEK_DOLGU.items():
     PARCA["Etek dolgu seridi %s" % yer] = dict(shape=sh, yukari=DOWN, yon="ters (ust plakasi tablada)",
                                                patlat=(0, -60, -150 if yer == "arka" else 150), grup="Taban etegi")
+
+
+# K5 / K6 (M6, Y3): etek servis kapaklari (3 mm PETG, etek ust plakasinin ustunde; duz basilir)
+for _ad, _h in ETEK_KAPAK.items():
+    _kp = rrect_y((_h["x"][0] - _h["pay_x"], _h["x"][1] + _h["pay_x"]), (_h["z"][0] - _h["pay_z"], _h["z"][1] + _h["pay_z"]),
+                  _h["r"] + min(_h["pay_x"], _h["pay_z"]), A.Y_COV1, A.Y_COV1 + _h["t"])
+    for _x in _h["vida_x"]:
+        for _z in _h["vida_z"]:
+            _kp = _kp.cut(Part.makeCylinder(CLEAR[3] / 2, _h["t"] + 2, V(_x, A.Y_COV1 - 1, _z), V(0, 1, 0)))
+    PARCA[_ad] = dict(shape=_kp.removeSplitter(), yukari=UP, yon="duz (alt yuzu tablada)", grup="Taban etegi",
+                      patlat=(0.5 * (_h["x"][0] + _h["x"][1]), 90, 0.5 * (_h["z"][0] + _h["z"][1]) - 60))
 
 
 # ====================================================================== S1 kablo kaseti (duzeltme plani M1 / S1, 15 Ekim 2026)
@@ -345,6 +392,18 @@ def _yarik(x0, x1):
 k_govde = k_govde.cut(_yarik(KAS_X0 - 1, KAS_XA + 1)).removeSplitter()
 k_kapak = k_kapak.removeSplitter()
 S1_YARIK_KABUK = _yarik(A.OMUZ_DUVAR["x0"] - 3.0, KAS_X0 + 0.01)         # kabuk ped yarigi (yerel)
+
+
+def _yarik_ic(x0, x1, r_ic):
+    """K3 (M6, Y3): ped yarigindan O84'e radyal kanal (genislik yarik tegeti), psi_c'de r_ic ... r_don."""
+    a_ = _yz(_C["psi"], r_ic)
+    kut = Part.Face(Part.makePolygon([a_ + _e_t * (_yt / 2), _m + _e_t * (_yt / 2), _m - _e_t * (_yt / 2), a_ - _e_t * (_yt / 2),
+                                      a_ + _e_t * (_yt / 2)]))
+    kut.translate(V(x0, 0, 0))
+    return kut.extrude(V(x1 - x0, 0, 0))
+
+
+S1_YARIK_KABUK = S1_YARIK_KABUK.fuse(_yarik_ic(A.OMUZ_DUVAR["x0"] - 3.0, KAS_X0 + 0.01, A.M6["s1_ped_yarik_r_ic"])).removeSplitter()
 S1_KASET = dict(pim_psi=_pim_psi, psi_a=_psi_a, psi_uc=S1U["u_uc_psi"], dikme=S1_DIKME, pim2_psi=_p2["psi"], pah=_ph,
                 ip_psi=list(S1D["ip_psi"]))
 _OMUZ_Y = A.MODULLER["omuz_sag"]["konum"][1]
@@ -423,6 +482,8 @@ for k, y_d in enumerate(A.GOVDE_DIKIS):
     ADAY += [("govde y%.0f on" % y_d, GK, "on", ym, sx * f) for sx in (1, -1)]
     if k == I_KAPAK_DIKIS:
         ADAY += [("govde y%.0f arka" % y_d, GK, "arka", ym, sx * (AK["x"] + W + 6.0)) for sx in (1, -1)]
+    elif k == I_KAPAK2_DIKIS:           # K4: 1268 dikisi ust kapagin ust kenari (alin) -> kapak disinda
+        ADAY += [("govde y%.0f arka" % y_d, GK, "arka", ym, sx * xx) for sx in (1, -1) for xx in (AK2["x"] + W + 6.0, 120.0)]
     elif k > I_KAPAK_DIKIS:
         ADAY += [("govde y%.0f arka" % y_d, GK, "arka", ym, sx * xx) for sx in (1, -1) for xx in (70.0, 120.0)]
     else:
@@ -435,11 +496,13 @@ for k, y_d in enumerate(A.GOVDE_DIKIS):
 _UZ = A.UZAMA
 _UZ_X0 = [0.5 * (A.UZATMA_DIKIS[k] + A.UZATMA_DIKIS[k + 1]) + W / 2 + d_ for k in range(A.UZATMA_BANT) for d_ in (-55.0, 55.0)]
 for yer, ys in (("on", (330.0, 420.0, *_UZ_X0, 550.0 + _UZ, 640.0 + _UZ, 741.0 + _UZ, 835.0 + _UZ, 940.0 + _UZ)),
-                ("arka", (330.0, 420.0, *_UZ_X0, 745.0 + _UZ, 830.0 + _UZ, 940.0 + _UZ))):
+                ("arka", (330.0, 420.0, *_UZ_X0, 940.0 + _UZ))):     # Y3 K4: 745 / 830 + UZAMA gogus arkasinda -> ust kapak
     ADAY += [("govde x0 %s" % yer, GK, yer, y, -W / 2) for y in ys]
 for x, y in ((-45.0, AK["y0"] + W / 2), (0.0, AK["y0"] + W / 2), (45.0, AK["y0"] + W / 2)) + \
             tuple((sx * (AK["x"] - W / 2), y + _UZ) for sx in (1, -1) for y in (570.0, 650.0)):
     ADAY.append(("arka kapak", GK, "arka", y, x))
+for x, y in ((-45.0, AK2["y0"] + W / 2), (0.0, AK2["y0"] + W / 2), (45.0, AK2["y0"] + W / 2)) +             tuple((sx * (AK2["x"] - W / 2), y) for sx in (1, -1) for y in (1160.0, 1225.0)):
+    ADAY.append(("ust arka kapak", GK, "arka", y, x))
 for yer, ys in (("on", (60.0, 200.0)), ("arka", (60.0, 115.0, 200.0))):
     for xd in A.ETEK_DIKIS_X:                 # 520: iki x dikisi (sag yari | dolgu, dolgu | sol yari); dil soldakinin dis yarisi arkasinda
         ADAY += [("etek x%+.0f %s" % (xd, yer), EK, yer, y, xd - W / 2) for y in ys]
@@ -450,7 +513,8 @@ for yer in ("sag", "sol"):
 atla = []
 BAS_BOSLUK = 0.05       # civata basi dis yuzeyden 0,05 mm: B-spline yuzeye tam temasta boolean (common) guvenilmez
 for (etiket, secs, yer, y, u) in ADAY:
-    kayan = "u" if (etiket.startswith("govde y") or (etiket == "arka kapak" and abs(y - (AK["y0"] + W / 2)) < 1e-6)) else "y"
+    kayan = "u" if (etiket.startswith("govde y") or (etiket == "arka kapak" and abs(y - (AK["y0"] + W / 2)) < 1e-6)
+                    or (etiket == "ust arka kapak" and abs(y - (AK2["y0"] + W / 2)) < 1e-6)) else "y"
     for kay in (0.0, 1.0, -1.0, 2.0, -2.0, 3.0):
         yy, uu = (y, u + kay) if kayan == "u" else (y + kay, u)
         p, n, hn = yuzey(secs, yer, yy, uu)
@@ -477,6 +541,8 @@ log("bindirme civatasi: %d yer, %d atlandi" % (len(VIDA), len(atla)), atla)
 
 # ====================================================================== iskelete baglanti boss'lari
 GB = A.KABUK_GOVDE_BRAKET
+_GM5, _EM3 = A.M6["govde_braket_m5"], A.M6["etek_braket_m3"]
+_PG, _PE = _GM5["percin"], _EM3["percin"]
 GB_YER = []
 for yb in GB["y"]:
     yc = yb + GB["m5_y"]
@@ -485,9 +551,12 @@ for yb in GB["y"]:
     for sx in (1, -1):
         p0 = V(sx * xw, yc, 0.0)
         ic = sahip(V(sx * (a - T + 0.5), yc, 0.0))
-        od5, l5 = A.INSERT[5]
         EKLE[ic].append(damla(p0, V(sx, 0, 0), 7.0, (a - H) - xw, PARCA[ic]["yukari"] * -1))
-        CIKAR[ic].append(insert_hole(5, p0, V(sx, 0, 0), extra=0.5))
+        # K1 (M6, Y3): isil gomme yerine disaridan M5 -> boss + duvarda O5,5 gecis, boss yuzunde percin somun flansi cebi
+        CIKAR[ic].append(Part.makeCylinder(CLEAR[5] / 2, a - xw + 2.0, p0 - V(sx, 0, 0), V(sx, 0, 0)))
+        CIKAR[ic].append(Part.makeCylinder(A.ISO7380[5][0] / 2 + 0.5, 6.0, V(sx * (a - A.M6["oturma_derin"]), yc, 0.0), V(sx, 0, 0)))   # dis yuzde O10,5 oturma
+        CIKAR[ic].append(Part.makeCylinder((_PG["flans_d"] + _GM5["cep_pay"][0]) / 2, _PG["flans_t"] + _GM5["cep_pay"][1], p0 - V(sx * 0.01, 0, 0),
+                                           V(sx, 0, 0)))
         GB_YER.append(dict(yb=yb, yc=yc, sx=sx, xw=xw, a=a, parca=ic))
 EB = A.KABUK_ETEK_BRAKET
 EB_YER = []
@@ -496,9 +565,24 @@ for zb in EB["z"]:
         (a, bf, bb, r), _ = kesit_param(EK, EB["m3_y"])
         p0 = V(sx * EB["x_ic"], EB["m3_y"], zb)
         ic = sahip(V(sx * (a - T + 0.5), EB["m3_y"], zb))
-        EKLE[ic].append(damla(p0, V(sx, 0, 0), 4.5, (a - H) - EB["x_ic"], PARCA[ic]["yukari"] * -1))
-        CIKAR[ic].append(insert_hole(3, p0, V(sx, 0, 0), extra=0.5))
+        EKLE[ic].append(damla(p0, V(sx, 0, 0), _EM3["boss_r"], (a - H) - EB["x_ic"], PARCA[ic]["yukari"] * -1))
+        # K2 (M6, Y3): disaridan M3 -> boss + duvarda O3,4 gecis, boss yuzunde percin somun flansi cebi
+        CIKAR[ic].append(Part.makeCylinder(CLEAR[3] / 2, a - EB["x_ic"] + 2.0, p0 - V(sx, 0, 0), V(sx, 0, 0)))
+        CIKAR[ic].append(Part.makeCylinder(A.ISO7380[3][0] / 2 + 0.5, 6.0, V(sx * (a - A.M6["oturma_derin"]), EB["m3_y"], zb), V(sx, 0, 0)))   # dis yuzde oturma
+        CIKAR[ic].append(Part.makeCylinder((_PE["flans_d"] + _EM3["cep_pay"][0]) / 2, _PE["flans_t"] + _EM3["cep_pay"][1], p0 - V(sx * 0.01, 0, 0),
+                                           V(sx, 0, 0)))
         EB_YER.append(dict(zb=zb, sx=sx, a=a, parca=ic))
+
+# K5 / K6: kapak civatalari -> etek ust plakasi altinda boss + M3 isil gomme somun (kapak + plaka disaridan)
+KAPAK_VIDA = []
+for _ad, _h in ETEK_KAPAK.items():
+    for _x in _h["vida_x"]:
+        for _z in _h["vida_z"]:
+            _ic = sahip(V(_x, A.Y_COV1 - T / 2, _z), haric=list(ETEK_KAPAK))
+            EKLE[_ic].append(Part.makeCylinder(4.0, L_I3 + 0.5 + 1.0 - T, V(_x, A.Y_COV1 - T + 0.01, _z), DOWN))
+            CIKAR[_ic].append(insert_hole(3, V(_x, A.Y_COV1, _z), DOWN, extra=0.5))
+            KAPAK_VIDA.append(dict(kapak=_ad, ic=_ic, p=V(_x, A.Y_COV1, _z), t=_h["t"]))
+log("etek kapak civatalari:", [(v["kapak"][-14:], v["ic"]) for v in KAPAK_VIDA])
 
 TEMIZLIK = []
 for ad, d in PARCA.items():
@@ -556,6 +640,13 @@ for v in VIDA:
                       screw7380(3, VIDA_L, v["p"] + v["n"] * (v["hn"] + BAS_BOSLUK), v["n"] * -1), "Baglanti", "Celik 10.9",
                       kod="M3x6 ISO 7380", renk="celik", patlat=tuple(pd + v["n"] * 25))
 
+# ====================================================================== etek kapak civatalari (K5 / K6, Y3)
+for v in KAPAK_VIDA:
+    v["i_insert"] = add("Isil gomme somun M3 (%s)" % v["kapak"], "Taban etegi", insert(3, v["p"], DOWN), "Baglanti", "Pirinc",
+                        kod="M3 isil gomme somun", renk="pirinc", patlat=tuple(V(*PARCA[v["ic"]]["patlat"])))
+    v["i_vida"] = add("Kapak civatasi M3x6 (%s)" % v["kapak"], "Taban etegi", screw7380(3, VIDA_L, v["p"] + UP * v["t"], DOWN), "Baglanti",
+                      "Celik 10.9", kod="M3x6 ISO 7380", renk="celik", patlat=tuple(V(*PARCA[v["kapak"]]["patlat"]) + UP * 25))
+
 # ====================================================================== S1 kaseti civatalari (M3x8 DIN 912, kapak havsasindan) + isil gomme somunlar
 for v in S1_VIDA:
     sx = 1 if v["sag"] else -1
@@ -591,7 +682,7 @@ for g in GB_YER:
     br = br.fuse(box(xc0, xc1, yb, yb + GB["c_boy"], -en, en))
     for dy in GB["m6_y"]:
         br = br.cut(cyl(CLEAR[6] / 2, (xa0 - 1, yb + dy, 0), (xa1 + 1, yb + dy, 0)))
-    br = br.cut(cyl(CLEAR[5] / 2, (xc0 - 1, yc, 0), (xc1 + 1, yc, 0)))
+    br = br.cut(cyl(_PG["delik"] / 2, (xc0 - 1, yc, 0), (xc1 + 1, yc, 0)))          # K1: percin somun deligi
     ad_b = "Govde braketi %s y%.0f" % ("sag" if sx > 0 else "sol", yb)
     pat = V(sx * 70, 0, 0)
     ib = add(ad_b, "Govde braketleri", br.removeSplitter(), "Satin", ALU, kod="Govde braketi 3 mm Al U (bukum)", renk="alu2",
@@ -614,13 +705,14 @@ for g in GB_YER:
                       hammer_nut(V(sx * (A.SG / 2 - A.LIP), yy, 0), nv, (0, 0, 1)), "Baglanti", "Celik",
                       kod="M6 cekic somun, kanal 10", renk="celik", patlat=tuple(pat - nv * 15)))
         m6.append(dict(pul=i_pul, civata=i_civ, somun=el[-1]))
-    p_c = V(sx * (xw - tb), yc, 0)                        # C ayaginin ic yuzu
-    el.append(add("Pul M5 (%s)" % ad_b, "Govde braketleri", washer(5, p_c, V(-sx, 0, 0)), "Baglanti", "Celik", kod="M5 DIN 125 pul",
-                  renk="celik", patlat=tuple(pat - V(sx * 20, 0, 0))))
-    el.append(add("Civata M5x%d (%s)" % (L5, ad_b), "Govde braketleri", screw912(5, L5, p_c - V(sx * t5, 0, 0), V(sx, 0, 0)),
-                  "Baglanti", "Celik 8.8", kod="M5x%d DIN 912" % L5, renk="celik", patlat=tuple(pat - V(sx * 40, 0, 0))))
-    el.append(add("Isil gomme somun M5 (%s)" % ad_b, "Govde kabugu", insert(5, V(sx * xw, yc, 0), V(sx, 0, 0)), "Baglanti",
-                  "Pirinc", kod="M5 isil gomme somun", renk="pirinc", patlat=tuple(V(*PARCA[g["parca"]]["patlat"]))))
+    # K1 (M6, Y3): M5 disaridan (kabuk dis yuzu -> boss -> C ayagindaki percin somun). Bas kabuk dis yuzunde (x = a).
+    _L5 = _GM5["civata"][1]
+    el.append(add("Civata M5x%d ISO 7380 (%s)" % (_L5, ad_b), "Govde kabugu", screw7380(5, _L5, V(sx * (g["a"] - A.M6["oturma_derin"]), yc, 0), V(-sx, 0, 0)),
+                  "Baglanti", "Celik 10.9", kod="M5x%d ISO 7380" % _L5, renk="celik", patlat=tuple(V(*PARCA[g["parca"]]["patlat"]) + V(sx * 30, 0, 0)),
+                  not_="M6 K1 (Y3): disaridan; bant sokumu disaridan"))
+    el.append(add("Percin somun M5 (%s)" % ad_b, "Govde braketleri", percin_somun(_PG, V(sx * xw, yc, 0), V(-sx, 0, 0)), "Baglanti",
+                  "Celik", kod="M5 percin somun, duz flansli (3 mm Al)", renk="celik", patlat=tuple(pat - V(sx * 20, 0, 0)),
+                  kutle=_PG["kutle_g"], not_="M6 K1 (Y3): braket ayagina tezgahta percinlenir; flans boss tarafinda"))
     BAG.append(dict(ad=ad_b, tip="govde", govde=ib, eleman=el, m6=m6, sx=sx, yb=yb, yc=yc, xw=xw, parca=g["parca"]))
 
 # ====================================================================== etek braketleri (2 mm Al L) + M6 + M3
@@ -635,7 +727,7 @@ for g in EB_YER:
     br = box(xh0, xh1, yr, yr + tb, zb - en, zb + en).fuse(box(xd0, xd1, EB["y_alt"], yr + tb, zb - en, zb + en))
     xr = sx * A.UZUN_RAY_X
     br = br.cut(cyl(CLEAR[6] / 2, (xr, yr - 1, zb), (xr, yr + tb + 1, zb)))
-    br = br.cut(cyl(CLEAR[3] / 2, (xd0 - 1, EB["m3_y"], zb), (xd1 + 1, EB["m3_y"], zb)))
+    br = br.cut(cyl(_PE["delik"] / 2, (xd0 - 1, EB["m3_y"], zb), (xd1 + 1, EB["m3_y"], zb)))   # K2: percin somun deligi
     ad_b = "Etek braketi %s z%+.0f" % ("sag" if sx > 0 else "sol", zb)
     pat = V(sx * 60, 40, 0)
     ib = add(ad_b, "Etek braketleri", br.removeSplitter(), "Satin", ALU, kod="Etek tasiyici L braket 2 mm Al (bukum)", renk="alu2",
@@ -649,11 +741,14 @@ for g in EB_YER:
                   "Celik 8.8", kod="M6x%d DIN 912" % L6e, renk="celik", patlat=tuple(pat + nv * 40)))
     el.append(add("Cekic somun M6 (%s)" % ad_b, "Etek braketleri", hammer_nut(V(xr, yr - A.LIP, zb), nv, (1, 0, 0)), "Baglanti",
                   "Celik", kod="M6 cekic somun, kanal 10", renk="celik", patlat=tuple(pat - nv * 15)))
-    p_d = V(sx * (EB["x_ic"] - tb), EB["m3_y"], zb)
-    el.append(add("Civata M3x%d (%s)" % (L3e, ad_b), "Etek braketleri", screw912(3, L3e, p_d, V(sx, 0, 0)), "Baglanti", "Celik 8.8",
-                  kod="M3x%d DIN 912" % L3e, renk="celik", patlat=tuple(pat - V(sx * 30, 0, 0))))
-    el.append(add("Isil gomme somun M3 (%s)" % ad_b, "Taban etegi", insert(3, V(sx * EB["x_ic"], EB["m3_y"], zb), V(sx, 0, 0)),
-                  "Baglanti", "Pirinc", kod="M3 isil gomme somun", renk="pirinc", patlat=tuple(V(*PARCA[g["parca"]]["patlat"]))))
+    # K2 (M6, Y3): M3 disaridan (etek dis yuzu -> boss -> L ayagindaki percin somun)
+    _L3 = _EM3["civata"][1]
+    el.append(add("Civata M3x%d ISO 7380 (%s)" % (_L3, ad_b), "Taban etegi", screw7380(3, _L3, V(sx * (g["a"] - A.M6["oturma_derin"]), EB["m3_y"], zb), V(-sx, 0, 0)),
+                  "Baglanti", "Celik 10.9", kod="M3x%d ISO 7380" % _L3, renk="celik",
+                  patlat=tuple(V(*PARCA[g["parca"]]["patlat"]) + V(sx * 30, 0, 0)), not_="M6 K2 (Y3): disaridan"))
+    el.append(add("Percin somun M3 (%s)" % ad_b, "Etek braketleri", percin_somun(_PE, V(sx * EB["x_ic"], EB["m3_y"], zb), V(-sx, 0, 0)),
+                  "Baglanti", "Celik", kod="M3 percin somun, duz flansli (2 mm Al)", renk="celik", patlat=tuple(pat - V(sx * 30, 0, 0)),
+                  kutle=_PE["kutle_g"], not_="M6 K2 (Y3): braket ayagina tezgahta percinlenir; flans boss tarafinda"))
     BAG.append(dict(ad=ad_b, tip="etek", govde=ib, eleman=el, m6=[dict(pul=el[0], civata=el[1], somun=el[2])], sx=sx, zb=zb, xr=xr,
                     parca=g["parca"]))
 

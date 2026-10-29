@@ -134,8 +134,18 @@ for g in S1_HORN:
     hub = hub.cut(cyl(CLEAR[3] / 2, (149, g.y, g.z), (160, g.y, g.z))).cut(cyl(3.3, (159, g.y, g.z), (169, g.y, g.z)))
 hub = hub.cut(box(174.5, 195.5, -10.5, 30.5, 2, 8))
 S2_HOLES = [(XR - 5, -14.75), (XR + 5, -14.75), (XR - 5, 34.75), (XR + 5, 34.75)]   # (x, y)
+# C3 (M6, Y3): ust S2 kulak somunlari (y 34,75) icin plaka alti somun cebi blogu (arayuz.M6 s2_somun_cep)
+_SC = A.M6["s2_somun_cep"]
+hub = hub.fuse(box(_SC["x"][0], _SC["x"][1], _SC["y"][0], _SC["y"][1], _SC["z"][0], _SC["z"][1] + 0.01))
 for (x, y) in S2_HOLES:
-    hub = hub.cut(cyl(CLEAR[4] / 2, (x, y, 2), (x, y, 8)))
+    hub = hub.cut(cyl(CLEAR[4] / 2, (x, y, _SC["z"][0] - 1 if y > 0 else 2), (x, y, 8)))
+    if y > 0:
+        hub = hub.cut(hexprism(NUT985[4][0] + _SC["s_pay"], (x, y, _SC["z"][0] - 0.1), (x, y, _SC["z"][1]), (0, -1, 0)))
+# C1 (M6, Y3): z +6'daki iki gobek-horn civatasinin alet kanali (arayuz.M6 gobek_horn_kanal)
+_HK = A.M6["gobek_horn_kanal"]
+for g in [gpt((x, y, 0), (X_S1, 0, 0), ROT_S1) for (x, y) in hholes]:
+    if g.z > 0:
+        hub = hub.cut(cyl(_HK["d"] / 2, (_HK["x"][0], g.y, g.z), (_HK["x"][1], g.y, g.z)))
 hub = hub.cut(insert_hole(5, (XR, 0, -28), (0, 0, 1), extra=0.0))
 # S1 kablo kaseti (A', 15 Ekim 2026; arayuz.KOL_KABLO["s1"]): tambur gobegin on yuzune (x 163) 3x M3 ile baglanir -> 3 isil gomme
 S1K = A.KOL_KABLO["s1"]
@@ -264,7 +274,8 @@ for (x, y) in S2_HOLES:
     add("S2 kulak civatasi M4x16", "Gobek", screw912(4, 16, (x, y, 10), (0, 0, -1)), "Baglanti", "Celik 8.8",
         kod="M4x16 DIN 912", renk="celik", patlat=(110, 0, 75))
     add("S2 kontra somun M4", "Gobek", nut(4, (x, y, 2.5), (0, 0, -1), "985", (0, 1 if y < 0 else -1, 0)),
-        "Baglanti", "Celik", kod="M4 DIN 985 kontra somun", renk="celik", patlat=(110, 0, -20))
+        "Baglanti", "Celik", kod="M4 DIN 985 kontra somun", renk="celik", patlat=(110, 0, -20),
+        not_="altigen cepte (M6 C3, Y3): alttan cebe takilir, anahtar gerekmez" if y > 0 else "")
 add("Isil gomme somun M5 (gobekte)", "Gobek", insert(5, (XR, 0, -28), (0, 0, 1)), "Baglanti", "Pirinc",
     kod="M5 isil gomme somun", renk="pirinc", patlat=(110, 0, -15))
 b5_in, b5_out = bearing(5, 16, 5, (XR, 0, -33), (0, 0, 1), 4.1, 6.4)
