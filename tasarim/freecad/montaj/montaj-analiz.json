@@ -7,7 +7,7 @@
   "Baglanti": {
    "kalem": 39,
    "adet": 856,
-   "kutle_g": 1412.5
+   "kutle_g": 1415.0
   },
   "Baski": {
    "kalem": 56,
@@ -132,10 +132,10 @@
    "parca": 312,
    "haric": [],
    "haric_neden": "",
-   "kutle_g": 6116.56,
+   "kutle_g": 6119.03,
    "agirlik_merkezi": [
     0.178,
-    587.43,
+    587.491,
     -0.117
    ],
    "gruplar": [
@@ -5852,13 +5852,13 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M5x16 ISO 7380 (Govde braketi sag y400)",
+   "ad": "Civata M5x18 ISO 7380 (Govde braketi sag y400)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5x16 ISO 7380",
-   "kutle_g": 3.887,
+   "kod": "M5x18 ISO 7380",
+   "kutle_g": 4.195,
    "merkez": [
-    116.98,
+    116.07,
     425.0,
     -0.0
    ]
@@ -5943,13 +5943,13 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M5x16 ISO 7380 (Govde braketi sol y400)",
+   "ad": "Civata M5x18 ISO 7380 (Govde braketi sol y400)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5x16 ISO 7380",
-   "kutle_g": 3.887,
+   "kod": "M5x18 ISO 7380",
+   "kutle_g": 4.195,
    "merkez": [
-    -116.98,
+    -116.07,
     425.0,
     0.0
    ]
@@ -6034,13 +6034,13 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M5x16 ISO 7380 (Govde braketi sag y548)",
+   "ad": "Civata M5x18 ISO 7380 (Govde braketi sag y548)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5x16 ISO 7380",
-   "kutle_g": 3.887,
+   "kod": "M5x18 ISO 7380",
+   "kutle_g": 4.195,
    "merkez": [
-    120.11,
+    119.2,
     572.75,
     0.0
    ]
@@ -6125,13 +6125,13 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M5x16 ISO 7380 (Govde braketi sol y548)",
+   "ad": "Civata M5x18 ISO 7380 (Govde braketi sol y548)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5x16 ISO 7380",
-   "kutle_g": 3.887,
+   "kod": "M5x18 ISO 7380",
+   "kutle_g": 4.195,
    "merkez": [
-    -120.11,
+    -119.2,
     572.75,
     -0.0
    ]
@@ -6216,13 +6216,13 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M5x16 ISO 7380 (Govde braketi sag y740)",
+   "ad": "Civata M5x18 ISO 7380 (Govde braketi sag y740)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5x16 ISO 7380",
-   "kutle_g": 3.887,
+   "kod": "M5x18 ISO 7380",
+   "kutle_g": 4.195,
    "merkez": [
-    120.11,
+    119.2,
     765.25,
     0.0
    ]
@@ -6307,13 +6307,13 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M5x16 ISO 7380 (Govde braketi sol y740)",
+   "ad": "Civata M5x18 ISO 7380 (Govde braketi sol y740)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5x16 ISO 7380",
-   "kutle_g": 3.887,
+   "kod": "M5x18 ISO 7380",
+   "kutle_g": 4.195,
    "merkez": [
-    -120.11,
+    -119.2,
     765.25,
     -0.0
    ]
@@ -6398,13 +6398,13 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M5x16 ISO 7380 (Govde braketi sag y1165)",
+   "ad": "Civata M5x18 ISO 7380 (Govde braketi sag y1165)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5x16 ISO 7380",
-   "kutle_g": 3.887,
+   "kod": "M5x18 ISO 7380",
+   "kutle_g": 4.195,
    "merkez": [
-    143.0,
+    142.08,
     1190.0,
     -0.0
    ]
@@ -6489,13 +6489,13 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M5x16 ISO 7380 (Govde braketi sol y1165)",
+   "ad": "Civata M5x18 ISO 7380 (Govde braketi sol y1165)",
    "grup": "Kabuk",
    "tur": "Baglanti",
-   "kod": "M5x16 ISO 7380",
-   "kutle_g": 3.887,
+   "kod": "M5x18 ISO 7380",
+   "kutle_g": 4.195,
    "merkez": [
-    -143.0,
+    -142.08,
     1190.0,
     0.0
    ]
@@ -9261,7 +9261,7 @@
    "ad": "Boyun yukseltme adaptoru",
    "grup": "Boyun",
    "tur": "Baski",
-   "kod": "Boyun yukseltme adaptoru (PETG baski)",
+   "kod": "Boyun yukseltme adaptoru (PETG-CF baski)",
    "kutle_g": 66.366,
    "merkez": [
     0.0,
@@ -15433,11 +15433,11 @@
  ],
  "solve": 0,
  "ev_pozu_cozucu_sapmasi": 0.0,
- "kutle_g": 24554.09,
+ "kutle_g": 24556.56,
  "agirlik_merkezi": [
   -0.079,
-  525.8,
-  -12.491
+  525.822,
+  -12.489
  ],
  "karsilastirma": {
   "parca": {
@@ -15447,33 +15447,33 @@
    "ayni": true
   },
   "kutle": {
-   "montaj_dosyasi": 24554.09,
-   "bellek": 24554.09,
-   "beklenen_analizlerden": 24554.2,
+   "montaj_dosyasi": 24556.56,
+   "bellek": 24556.56,
+   "beklenen_analizlerden": 24556.6,
    "carpisma": 21260.9,
-   "fark_analiz": -0.103,
-   "fark_carpisma": 3293.194
+   "fark_analiz": -0.037,
+   "fark_carpisma": 3295.66
   },
   "am": {
    "montaj_dosyasi": [
     -0.079,
-    525.8,
-    -12.491
+    525.822,
+    -12.489
    ],
    "bellek": [
     -0.079,
-    525.8,
-    -12.491
+    525.822,
+    -12.489
    ],
    "carpisma": [
     -0.38,
     374.61,
     -13.51
    ],
-   "fark_carpisma_mm": 151.194,
+   "fark_carpisma_mm": 151.215,
    "fark_bellek_mm": 0.0
   },
   "not_": "analiz JSON'lari 0,1 g'a yuvarlanmis; carpisma AM'si 0,01 mm'ye. 1,65 m (Y2a): carpisma-sonuc.json Y4 tam taramasina kadar ESKI (125 cm) - fark_carpisma anlamsiz, montaj/yerlesim-kontrol.json kisa kontrolu kullan"
  },
- "sure_s": 109.2
+ "sure_s": 79.4
 }

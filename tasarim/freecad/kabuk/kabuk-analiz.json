@@ -332,7 +332,7 @@
     "M6 cekic somun, kanal 10",
     "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
-    "M5x16 ISO 7380",
+    "M5x18 ISO 7380",
     "M5 percin somun, duz flansli (3 mm Al)"
    ]
   },
@@ -346,7 +346,7 @@
     "M6 cekic somun, kanal 10",
     "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
-    "M5x16 ISO 7380",
+    "M5x18 ISO 7380",
     "M5 percin somun, duz flansli (3 mm Al)"
    ]
   },
@@ -360,7 +360,7 @@
     "M6 cekic somun, kanal 10",
     "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
-    "M5x16 ISO 7380",
+    "M5x18 ISO 7380",
     "M5 percin somun, duz flansli (3 mm Al)"
    ]
   },
@@ -374,7 +374,7 @@
     "M6 cekic somun, kanal 10",
     "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
-    "M5x16 ISO 7380",
+    "M5x18 ISO 7380",
     "M5 percin somun, duz flansli (3 mm Al)"
    ]
   },
@@ -388,7 +388,7 @@
     "M6 cekic somun, kanal 10",
     "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
-    "M5x16 ISO 7380",
+    "M5x18 ISO 7380",
     "M5 percin somun, duz flansli (3 mm Al)"
    ]
   },
@@ -402,7 +402,7 @@
     "M6 cekic somun, kanal 10",
     "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
-    "M5x16 ISO 7380",
+    "M5x18 ISO 7380",
     "M5 percin somun, duz flansli (3 mm Al)"
    ]
   },
@@ -416,7 +416,7 @@
     "M6 cekic somun, kanal 10",
     "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
-    "M5x16 ISO 7380",
+    "M5x18 ISO 7380",
     "M5 percin somun, duz flansli (3 mm Al)"
    ]
   },
@@ -430,7 +430,7 @@
     "M6 cekic somun, kanal 10",
     "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
-    "M5x16 ISO 7380",
+    "M5x18 ISO 7380",
     "M5 percin somun, duz flansli (3 mm Al)"
    ]
   },
@@ -570,8 +570,8 @@
      true
     ],
     [
-     "M5 civata ucu braket ayaginin ic yuzunden 3.3 mm iceride (>= 3), percin somun govdesinde 2.7 mm kalir (>= 0)",
-     3.3,
+     "M5 civata ucu braket ayaginin ic yuzunden 5.3 mm iceride (>= 3), percin somun govdesinde 0.7 mm kalir (>= 0)",
+     5.3,
      true
     ],
     [
@@ -653,8 +653,8 @@
      true
     ],
     [
-     "M5 civata ucu braket ayaginin ic yuzunden 3.3 mm iceride (>= 3), percin somun govdesinde 2.7 mm kalir (>= 0)",
-     3.3,
+     "M5 civata ucu braket ayaginin ic yuzunden 5.3 mm iceride (>= 3), percin somun govdesinde 0.7 mm kalir (>= 0)",
+     5.3,
      true
     ],
     [
@@ -736,8 +736,8 @@
      true
     ],
     [
-     "M5 civata ucu braket ayaginin ic yuzunden 3.3 mm iceride (>= 3), percin somun govdesinde 2.7 mm kalir (>= 0)",
-     3.3,
+     "M5 civata ucu braket ayaginin ic yuzunden 5.3 mm iceride (>= 3), percin somun govdesinde 0.7 mm kalir (>= 0)",
+     5.3,
      true
     ],
     [
@@ -819,8 +819,8 @@
      true
     ],
     [
-     "M5 civata ucu braket ayaginin ic yuzunden 3.3 mm iceride (>= 3), percin somun govdesinde 2.7 mm kalir (>= 0)",
-     3.3,
+     "M5 civata ucu braket ayaginin ic yuzunden 5.3 mm iceride (>= 3), percin somun govdesinde 0.7 mm kalir (>= 0)",
+     5.3,
      true
     ],
     [
@@ -902,8 +902,8 @@
      true
     ],
     [
-     "M5 civata ucu braket ayaginin ic yuzunden 3.3 mm iceride (>= 3), percin somun govdesinde 2.7 mm kalir (>= 0)",
-     3.3,
+     "M5 civata ucu braket ayaginin ic yuzunden 5.3 mm iceride (>= 3), percin somun govdesinde 0.7 mm kalir (>= 0)",
+     5.3,
      true
     ],
     [
@@ -985,8 +985,8 @@
      true
     ],
     [
-     "M5 civata ucu braket ayaginin ic yuzunden 3.3 mm iceride (>= 3), percin somun govdesinde 2.7 mm kalir (>= 0)",
-     3.3,
+     "M5 civata ucu braket ayaginin ic yuzunden 5.3 mm iceride (>= 3), percin somun govdesinde 0.7 mm kalir (>= 0)",
+     5.3,
      true
     ],
     [
@@ -1068,8 +1068,8 @@
      true
     ],
     [
-     "M5 civata ucu braket ayaginin ic yuzunden 3.3 mm iceride (>= 3), percin somun govdesinde 2.7 mm kalir (>= 0)",
-     3.3,
+     "M5 civata ucu braket ayaginin ic yuzunden 5.3 mm iceride (>= 3), percin somun govdesinde 0.7 mm kalir (>= 0)",
+     5.3,
      true
     ],
     [
@@ -1151,8 +1151,8 @@
      true
     ],
     [
-     "M5 civata ucu braket ayaginin ic yuzunden 3.3 mm iceride (>= 3), percin somun govdesinde 2.7 mm kalir (>= 0)",
-     3.3,
+     "M5 civata ucu braket ayaginin ic yuzunden 5.3 mm iceride (>= 3), percin somun govdesinde 0.7 mm kalir (>= 0)",
+     5.3,
      true
     ],
     [
@@ -3801,9 +3801,9 @@
    246.0
   ]
  },
- "kutle_g": 6116.6,
+ "kutle_g": 6119.0,
  "kutle_grup": {
-  "Govde kabugu": 3219.1,
+  "Govde kabugu": 3221.6,
   "Taban etegi": 2069.9,
   "S1 kablo kaseti": 35.5,
   "Govde braketleri": 545.8,
@@ -3811,12 +3811,12 @@
  },
  "kutle_tur": {
   "Baski": 5199.4,
-  "Baglanti": 402.1,
+  "Baglanti": 404.6,
   "Satin": 515.1
  },
  "agirlik_merkezi": [
   0.18,
-  587.43,
+  587.49,
   -0.12
  ],
  "bom": [
@@ -3858,9 +3858,9 @@
   ],
   [
    "Baglanti",
-   "M5x16 ISO 7380",
+   "M5x18 ISO 7380",
    8,
-   31.1
+   33.6
   ],
   [
    "Baglanti",
@@ -4062,5 +4062,5 @@
   ]
  ],
  "step_kati": 312,
- "sure_s": 986.3
+ "sure_s": 678.6
 }

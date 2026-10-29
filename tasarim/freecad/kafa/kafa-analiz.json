@@ -1788,8 +1788,8 @@
    "ad": "Boyun yukseltme adaptoru",
    "grup": "Pan",
    "tur": "Baski",
-   "malzeme": "PETG",
-   "kod": "Boyun yukseltme adaptoru (PETG baski)",
+   "malzeme": "PETG-CF",
+   "kod": "Boyun yukseltme adaptoru (PETG-CF baski)",
    "kutle_g": 66.37,
    "hacim_mm3": 65320.5,
    "merkez": [
@@ -13684,5 +13684,5 @@
   "not_": "1,65 m: Govde/Pan olculeri kafa7 (125 cm) ile ayni; Bas (10,1 in) olculeri kafa10_lib (Bas cercevesi = tilt ekseni)"
  },
  "kablo_yolu": [],
- "sure_s": 248.4
+ "sure_s": 171.4
 }

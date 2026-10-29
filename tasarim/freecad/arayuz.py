@@ -472,7 +472,7 @@ MODULLER["dirsek_sol"] = dict(konum=(0.0, S3, 0.0), ayna=True, not_="sag dirsegi
 #     Kafa (Pan * tilt). Ayrintilar ve dayanaklari kafa/kafa_parcalar.py ve kafa/rapor.html'de.
 #     1,65 m (Y2a; karar 21 Ekim 2026): 10,1" HDMI yuz ekranli YENI KAFA (kafa/kafa10_lib.py; taslak-170/kafa10.py'den tasindi).
 #     Govde ve Pan gruplari 125 cm kafasindan (kafa/kafa7_parcalar.py, KAFA7 olculeri) aynen; egme catali + tilt servosu + 625ZZ pimi
-#     boyun yukseltme adaptoruyle (PETG, 4x M3 saplama) adaptor_h yukari; tilt ekseni kafa (Bas) grubunun AM'sinden gecer (denge).
+#     boyun yukseltme adaptoruyle (PETG-CF, karar 29.10; 4x M3 saplama) adaptor_h yukari; tilt ekseni kafa (Bas) grubunun AM'sinden gecer (denge).
 # =====================================================================================================
 KAFA7 = dict(                                  # 125 cm kafasi (7" LCD) olculeri: kafa7_parcalar (Govde + Pan + eski Bas) bunlarla kurulur
     tilt_nokta=(26.9, 130.0, 25.0), tilt_aralik=(-25.0, 30.0), kafa_kutu=(210.0, 180.0, 150.0), kafa_alt_y=95.0,
@@ -870,11 +870,12 @@ M6 = dict(
     # C3 kafa (egme catali): tilt servosu on kulak somunlarindan biri (y 183,3) on ag ile yandaki somun arasinda tutulamiyordu ->
     # on kulagin iki somunu plakanin -x yuzunde, on agin ustunde altigen cep blogunda (kafa7_parcalar; 125 cm yereli, adaptorle yukari).
     tilt_somun_cep=dict(yari=5.5, pay_govde=0.5, s_pay=0.2),
-    # K1 govde braketi: M5 DISARIDAN. ISO 7380 M5x16 kabuk dis yuzunden -> boss (O5,5 gecis) -> braket C ayaginda M5 percin somun (3 mm Al,
+    # K1 govde braketi: M5 DISARIDAN. ISO 7380 M5x18 (Duffy karari 29 Ekim 2026: M5x16 -> M5x18; uc braket ic yuzunden 3,3 -> 5,3 mm,
+    # percin somun govdesinin disli uc kismina daha cok girer; ana montajda uzayan uc baska parcaya degmiyor) kabuk dis yuzunden -> boss (O5,5 gecis) -> braket C ayaginda M5 percin somun (3 mm Al,
     # delik O7,1; flansi boss tarafinda, boss yuzunde flans cebi; govdesi ice). Isil gomme M5 + DIN 912 + pul kalkar. Bant sokumu disaridan.
     # K2 etek braketi: ayni yapi M3: ISO 7380 M3x14 + M3 percin somun (2 mm Al, delik O5,1); etek boss'u r 5,5 (flans cebi icin).
     # Percin somun olculeri tahmini (duz flansli celik percin somun tipik: M5 flans O10 x 1,0, govde O7 x 9; M3 flans O7 x 0,8, govde O5 x 7).
-    govde_braket_m5=dict(civata=(5, 16), percin=dict(d=5, delik=7.1, flans_d=10.0, flans_t=1.0, govde_d=7.0, govde_L=9.0, kutle_g=2.0),
+    govde_braket_m5=dict(civata=(5, 18), percin=dict(d=5, delik=7.1, flans_d=10.0, flans_t=1.0, govde_d=7.0, govde_L=9.0, kutle_g=2.0),
                          cep_pay=(0.6, 0.1)),
     etek_braket_m3=dict(civata=(3, 14), boss_r=5.5, percin=dict(d=3, delik=5.1, flans_d=7.0, flans_t=0.8, govde_d=5.0, govde_L=7.0, kutle_g=0.8),
                         cep_pay=(0.6, 0.1)),

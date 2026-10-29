@@ -14165,11 +14165,11 @@
  ],
  "robot": {
   "kaynak": "montaj/montaj-analiz.json (tabansiz 778 parca, ev pozu; montajdaki taban cikarildi) + taban (kablo payi dahil); kol gruplari omuz_parcalar / dirsek_parcalar'dan (Gobek, Kol, UstKol, OnKol, El)",
-  "tabansiz_kutle_g": 16644.28,
+  "tabansiz_kutle_g": 16646.75,
   "tabansiz_am": [
-   0.238,
-   718.661,
-   2.233
+   0.237,
+   718.665,
+   2.234
   ],
   "tabansiz_parca": 778,
   "hareketli_gruplar": {
@@ -14230,7 +14230,7 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 24954.1,
+    "kutle_g": 24956.6,
     "am": [
      -0.1,
      519.8,
@@ -14281,7 +14281,7 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 24954.1,
+    "kutle_g": 24956.6,
     "am": [
      -0.1,
      528.5,
@@ -14332,10 +14332,10 @@
      0
     ],
     "yuk": true,
-    "kutle_g": 25954.1,
+    "kutle_g": 25956.6,
     "am": [
      -0.1,
-     559.7,
+     559.8,
      11.5
     ],
     "duz": {
@@ -14351,7 +14351,7 @@
      "dF": 173.5,
      "dR": 196.5,
      "dS": 215.9,
-     "h": 559.7
+     "h": 559.8
     },
     "rampa5": {
      "ileri": 2.17,
@@ -14366,7 +14366,7 @@
      "dF": 173.5,
      "dR": 196.5,
      "dS": 215.9,
-     "h": 559.7
+     "h": 559.8
     }
    },
    {
@@ -14383,7 +14383,7 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 24954.1,
+    "kutle_g": 24956.6,
     "am": [
      -0.1,
      534.8,
@@ -14434,7 +14434,7 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 24954.1,
+    "kutle_g": 24956.6,
     "am": [
      -0.1,
      522.4,
@@ -14485,7 +14485,7 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 24954.1,
+    "kutle_g": 24956.6,
     "am": [
      4.3,
      524.3,
@@ -14670,7 +14670,7 @@
    "kaynak_stall": "Direnc.net sayfasi (21 kg, durma)",
    "kaynak_akim": "tahmini (06-aku-secimi.md 2,4-2,8 A)"
   },
-  "kutle_kg": 24.954,
+  "kutle_kg": 24.957,
   "am_mm": [
    -0.1,
    519.8,
@@ -14790,7 +14790,7 @@
       "teker": "arka sag",
       "omni": false,
       "N": 65.6,
-      "T_kgcm": 15.81,
+      "T_kgcm": 15.82,
       "rol": "surus",
       "oran_surekli": 2.51,
       "oran_stall": 0.75,
@@ -14808,7 +14808,7 @@
      }
     ],
     "en_cok_kgcm": 15.82,
-    "en_cok_teker": "arka sol",
+    "en_cok_teker": "arka sag",
     "en_cok_oran_surekli": 2.51,
     "en_cok_oran_stall": 0.75,
     "en_cok_akim_A": 2.14,
@@ -14830,7 +14830,7 @@
       "teker": "on sag",
       "omni": false,
       "N": 56.8,
-      "T_kgcm": 13.61,
+      "T_kgcm": 13.62,
       "rol": "surus",
       "oran_surekli": 2.16,
       "oran_stall": 0.65,
@@ -15192,7 +15192,7 @@
       "teker": "on sag",
       "omni": false,
       "N": 56.8,
-      "T_kgcm": 8.19,
+      "T_kgcm": 8.2,
       "rol": "surus",
       "oran_surekli": 1.3,
       "oran_stall": 0.39,
@@ -15320,7 +15320,7 @@
       "teker": "on sol",
       "omni": false,
       "N": 56.8,
-      "T_kgcm": 10.23,
+      "T_kgcm": 10.24,
       "rol": "tutma",
       "oran_surekli": 1.62,
       "oran_stall": 0.49,
@@ -15369,7 +15369,7 @@
       "teker": "on sag",
       "omni": false,
       "N": 56.8,
-      "T_kgcm": 10.51,
+      "T_kgcm": 10.52,
       "rol": "surus",
       "oran_surekli": 1.67,
       "oran_stall": 0.5,
@@ -15389,7 +15389,7 @@
       "teker": "arka sag",
       "omni": false,
       "N": 65.6,
-      "T_kgcm": 13.34,
+      "T_kgcm": 13.35,
       "rol": "surus",
       "oran_surekli": 2.12,
       "oran_stall": 0.64,
@@ -15406,7 +15406,7 @@
       "akim_A": 1.5
      }
     ],
-    "en_cok_kgcm": 13.34,
+    "en_cok_kgcm": 13.35,
     "en_cok_teker": "arka sag",
     "en_cok_oran_surekli": 2.12,
     "en_cok_oran_stall": 0.64,
@@ -15430,7 +15430,7 @@
       "N": 56.8,
       "T_kgcm": 13.58,
       "rol": "surus",
-      "oran_surekli": 2.15,
+      "oran_surekli": 2.16,
       "oran_stall": 0.65,
       "akim_A": 1.85
      },
@@ -15440,7 +15440,7 @@
       "N": 56.8,
       "T_kgcm": 13.58,
       "rol": "surus",
-      "oran_surekli": 2.15,
+      "oran_surekli": 2.16,
       "oran_stall": 0.65,
       "akim_A": 1.85
      },
@@ -15458,15 +15458,15 @@
       "teker": "arka sol",
       "omni": false,
       "N": 65.6,
-      "T_kgcm": 18.66,
+      "T_kgcm": 18.67,
       "rol": "surus",
       "oran_surekli": 2.96,
       "oran_stall": 0.89,
       "akim_A": 2.5
      }
     ],
-    "en_cok_kgcm": 18.66,
-    "en_cok_teker": "arka sag",
+    "en_cok_kgcm": 18.67,
+    "en_cok_teker": "arka sol",
     "en_cok_oran_surekli": 2.96,
     "en_cok_oran_stall": 0.89,
     "en_cok_akim_A": 2.5,
@@ -15600,7 +15600,7 @@
     "mu": 0.4,
     "R_mm": 0,
     "mu_t": 0.432,
-    "M_Nm": 19.58,
+    "M_Nm": 19.59,
     "en_cok_kgcm": 16.74,
     "teker": "arka sol",
     "oran_surekli": 2.66,
@@ -15699,7 +15699,7 @@
     "mu": 0.6,
     "R_mm": 500,
     "mu_t": 0.546,
-    "M_Nm": 24.73,
+    "M_Nm": 24.74,
     "en_cok_kgcm": 20.81,
     "teker": "arka sol",
     "oran_surekli": 3.3,
@@ -15724,7 +15724,7 @@
     "M_Nm": 16.78,
     "en_cok_kgcm": 14.52,
     "teker": "arka sol",
-    "oran_surekli": 2.3,
+    "oran_surekli": 2.31,
     "oran_stall": 0.69,
     "akim_A": 1.97
    }
@@ -17007,5 +17007,5 @@
    ]
   }
  ],
- "sure_s": 99.0
+ "sure_s": 82.7
 }

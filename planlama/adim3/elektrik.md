@@ -291,12 +291,15 @@ Toprak: akü − ── WAGO yıldız noktası (güç paneli) ── tüm dönü
 | F4 | 5 A | XL4016 çevre 5 V | **ikinci 5 A** (E9): sette tek 5 A var, F3 onu alır |
 | F5 | **2 A** (önce 5 A) | acil stop / röle K1 + K2 bobinleri | sette yok: yeni. K1 0,15 A + K2 ~0,03 A + PC817 |
 | Hat | 7,5 A × 2 + 5 A | XL4016 A ve B girişi; C (kafa servoları, 29.10) | kapaklı mini bıçak sigorta yuvası × 3 (yeni) |
-| Şarj | 10 A (mini) | XT60 şarj girişi → akü + (ana anahtar öncesi) | E9 / akü raporu önerisi; üçüncü kapaklı yuva (yeni). Şarj cihazı 6 A |
+| Şarj | 10 A (mini) | XT60 şarj girişi → akü + (ana anahtar öncesi) | E9 / akü raporu önerisi; dördüncü kapaklı yuva (yeni). Şarj cihazı 6 A |
 
 **Sigorta seti (E9, 5. adım):** kutudaki set 5, 10, 2 × 15, 2 × 20 (standart/ATO bıçak). F3 ve F4 iki 5 A ister, bir tane var:
 **ikinci 5 A** ve F5 için **2 A** standart bıçak eklenir. Hat yuvaları mini bıçak: 7,5 A × 2 (XL4016 A / B) + 5 A (XL4016 C, kafa
 servoları; karar 29.10) + şarj girişi 10 A. Maliyette tek satır "Bıçak sigorta (ek)" (6 adet; standart/mini ayrımı modelde), yuvalar
 "Hat sigortası yuvası" × 4. Setteki 10 A ve bir 15 A yedek kalır.
+**H1 erişimi (karar 29.10, Duffy):** etek servis kapağı H1 açıklığı değişmez (x ±32, 64 × 50; `arayuz.M6 etek_kapak_h1`). 6 yollu sigorta
+kutusu alınınca ölçülür; kutu 1 × 6 dizilişliyse uçtaki iki yuva kapak altında kalır, bu iki yuva **yedek sigorta** için ayrılır
+(F2 15 A yedek ve boş / yedek yuva). Sık değişebilecek F1, F3, F4, F5 ortadaki dört yuvaya; 2 × 3 dizilişte altısı da açıkta.
 
 ## E8: akü süreleri (5. adım, akü raporuyla hizalı)
 

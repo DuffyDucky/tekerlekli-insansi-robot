@@ -45,7 +45,7 @@ Z_CAM = ZF - KT - 6.5       # kamera PCB on yuzu (eski kafada on duvar icinden 6
 TIRNAK_X = (-80.0, 80.0)    # ekran tutucu tirnaklari (ust ve alt kenar)
 DOLULUK = 0.80              # kucuk PETG parcalar (eski kafa ile ayni, tahmini)
 HAVSA = 1.7                 # tepe dikis civatalari: ISO 7380 basi (k 1,65) yuzeyin altinda
-RHO = {"PETG": A.PETG_RHO, "Aluminyum": 2.70, "Celik": 7.85, "Celik 8.8": 7.85, "Celik 10.9": 7.85, "Pirinc": 8.50, "Kopuk": 0.10}
+RHO = {"PETG": A.PETG_RHO, "PETG-CF": A.OMUZ["baski_rho"]["PETG-CF"][0], "Aluminyum": 2.70, "Celik": 7.85, "Celik 8.8": 7.85, "Celik 10.9": 7.85, "Pirinc": 8.50, "Kopuk": 0.10}
 BIG = 1000.0
 
 # eski kafa sabitleri (eski kafa yerelinde): tilt ekseni (130, 25), yanak x araliklari, horn delikleri
@@ -420,7 +420,9 @@ def adaptor(h, log=print):
     for (x, z) in KP.FL_DEL:
         a = a.cut(cyl(CLEAR[3] / 2, (x, y0 - 1, z), (x, y1 + 1, z)))
     a = a.removeSplitter()
-    add("Boyun yukseltme adaptoru", a, "Baski", "PETG", "Boyun yukseltme adaptoru (PETG baski)", "petg2", doluluk=DOLULUK,
+    # Malzeme PETG -> PETG-CF (Duffy karari 29 Ekim 2026; pan torku ve kafa agirligi yolunda, boyun mili gibi). rho 1,27 (PETG ile ayni,
+    # tahmini) ve doluluk DOLULUK (kafanin diger CF parcalari gibi) -> kutle degismez.
+    add("Boyun yukseltme adaptoru", a, "Baski", "PETG-CF", "Boyun yukseltme adaptoru (PETG-CF baski)", "petg2", doluluk=DOLULUK,
         baski=dict(yukari=(0, 1, 0), yon="dik: alt flans tablada"),
         not_="boyun mili flansi ile egme catali arasinda %.1f mm; 4 saplama ile birlikte sikilir; ici O32 kablo yolu" % h)
     # mil flansi isil gomme somununa 5,5; ustte catal tabani (3) + pul + DIN 985 somun (4) + 1 mm tasma (Y2a: taslakta somuna yalniz

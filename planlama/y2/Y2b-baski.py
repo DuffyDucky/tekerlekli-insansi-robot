@@ -2,14 +2,14 @@
 """Y2b: 1,65 m baski listesi toplamlari ve tablo satirlari (planlama/baski-listesi.md icin). Yalniz okur.
 Kaynak: <modul>-analiz.json 'baski' (taban, kabuk, kafa, dirsek; %80 doluluk) + omuz/omuz-baski.json (M4, PETG-CF 0,8 / 0,9;
 29 Ekim 2026'da 1650 omuz FCStd'sinden yeniden kosuldu). Dirsek analizi sag kol: 4 parca x 2.
-PETG-CF: tasarim karari (baski-listesi.md) 10 tur; Y2a'da eklenen boyun yukseltme adaptoru CAD'de PETG (kafa10_lib).
+PETG-CF: tasarim karari (baski-listesi.md) 11 tur; boyun yukseltme adaptoru PETG -> PETG-CF (Duffy karari 29 Ekim 2026; kafa10_lib).
 Cikti: Y2b-baski.json + ekrana markdown satirlari.   py -3 planlama/y2/Y2b-baski.py
 """
 import json, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 FC = os.path.normpath(os.path.join(HERE, "..", "..", "tasarim", "freecad"))
 CF = {"Omuz yuvasi", "Rulman kapagi", "Omuz gobegi", "Kol catali", "Dirsek catali", "Bilek flansi",
-      "Servo yuvasi", "Rulman yuvasi", "Boyun mili", "Egme catali"}
+      "Servo yuvasi", "Rulman yuvasi", "Boyun mili", "Egme catali", "Boyun yukseltme adaptoru"}
 ADET2 = {"Dirsek catali", "On kol govdesi", "Bilek flansi", "El"}
 DESTEK_NOT = {"Yuz kabugu (on) sag": "**destekli** (dikiş dili: 16 mm şerit, ~1,25 mm konsol; karar 29.10)",
               "Arka kafa kabugu sag": "**destekli** (dikiş dili: 16 mm şerit, ~1,25 mm konsol; karar 29.10)"}

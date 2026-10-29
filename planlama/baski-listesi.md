@@ -19,26 +19,26 @@ değişmez). Diğer 53 parça desteksiz. Göğüs Nextion kaldırıldığı içi
 | 4 | Etek tasarım kararından sonra (M6 CAD) | 9 | 2,19 kg | ≈ 46 sa |
 | **Toplam** | | **63** | **7,71–7,77 kg** | **≈ 161–162 sa** |
 
-**Filament:** net **düz PETG 6,75 kg** (S1 kaseti ve tamburu dahil; 125 cm'de 5,01) + **PETG-CF 0,97–1,03 kg** (omuz doluluğu 0,8–0,9
-ve destek dahil). Tolerans kuponları ayrıca ≈ 0,1 kg PETG ve ≈ 0,2–0,3 kg PETG-CF. Başarısız baskı payıyla **9 makara beyaz PETG
-(8 + 1 "kupon + pay"; %31 pay, 125 cm'deki orana yakın) + 1,5 kg siyah PETG-CF (3 × 0,5 kg)**. `maliyet.json` (29 Ekim 2026) buna göre:
+**Filament:** net **düz PETG 6,68 kg** (S1 kaseti ve tamburu dahil; 125 cm'de 5,01) + **PETG-CF 1,04–1,10 kg** (omuz doluluğu 0,8–0,9
+ve destek dahil; 29.10: boyun yükseltme adaptörü 70 g PETG'den CF'ye geçti, toplam aynı). Tolerans kuponları ayrıca ≈ 0,1 kg PETG ve ≈ 0,2–0,3 kg PETG-CF. Başarısız baskı payıyla **9 makara beyaz PETG
+(8 + 1 "kupon + pay"; %31 pay, 125 cm'deki orana yakın) + 1,5 kg siyah PETG-CF (3 × 0,5 kg; parça + kupon 1,24–1,40 kg, %7–21 pay)**. `maliyet.json` (29 Ekim 2026) buna göre:
 Microzey HS PETG beyaz (389 TL) ve Polymaker PETG-rCF08 siyah (1.114,03 TL; stok sorulmalı).
 
 ## Renk (Duffy, 11 Ekim 2026: "Tamamen beyaz")
 
 | Renk | Parçalar |
 |---|---|
-| **Beyaz PETG** | Düz PETG'den basılan her şey: kabuk (gövde, uzatma ve göğüs bantları), etek ve dolgu şeritleri, kafa kabukları, kafa iskeleti, ekran tırnakları, boyun yükseltme adaptörü, üst kol tüpü, ön kol, el, sonar tutucular, akü takozu, servis kapağı, S1 kaseti ve tamburu |
-| **Siyah PETG-CF** | Yük taşıyan 10 tür (16 adet). Omuz ve dirsek eklemleri siyah görünür, kafa iç parçaları kabuğun içinde kalır |
+| **Beyaz PETG** | Düz PETG'den basılan her şey: kabuk (gövde, uzatma ve göğüs bantları), etek ve dolgu şeritleri, kafa kabukları, kafa iskeleti, ekran tırnakları, üst kol tüpü, ön kol, el, sonar tutucular, akü takozu, servis kapağı, S1 kaseti ve tamburu |
+| **Siyah PETG-CF** | Yük taşıyan 11 tür (17 adet). Omuz ve dirsek eklemleri siyah görünür, kafa iç parçaları kabuğun içinde kalır |
 
 ## Malzeme
 
 | Malzeme | Nereye | Neden |
 |---|---|---|
 | **PETG** (beyaz) | Yukarıdaki beyaz parçalar | Yükü az, büyük parçalar. PETG tok, kolay basılır (camsı geçiş ≈ 80 °C, tahmini). Etekteki ısı ölçülünce kontrol edilmeli (E7) |
-| **PETG-CF** | Servo torkunu ya da rulman yükünü taşıyan 10 tür (aşağıda) | Düz PETG'den rijit, sıkı geçmede ve vida sıkıştırmasında daha az akma (tahmini) |
+| **PETG-CF** | Servo torkunu ya da rulman yükünü taşıyan 11 tür (aşağıda) | Düz PETG'den rijit, sıkı geçmede ve vida sıkıştırmasında daha az akma (tahmini) |
 
-**PETG-CF ile basılacak parçalar (≈ 0,97–1,03 kg):**
+**PETG-CF ile basılacak parçalar (≈ 1,04–1,10 kg):**
 
 | Modül | Parça | Adet | Taşıdığı yük |
 |---|---|---|---|
@@ -52,9 +52,10 @@ Microzey HS PETG beyaz (389 TL) ve Polymaker PETG-rCF08 siyah (1.114,03 TL; stok
 | kafa | Rulman yuvası | 1 | 6808-2RS yuvası |
 | kafa | Boyun mili | 1 | Pan horn torku |
 | kafa | Eğme çatalı | 1 | Tilt horn torku (tilt sınırı ±13°, karar 29.10). Montajda tilt servosundan **önce** takılır (M6 C3) |
+| kafa | Boyun yükseltme adaptörü | 1 | Pan torku ve kafa ağırlığı (boyun mili ile eğme çatalı arasında; karar 29.10) |
 
-**Açık soru (Y2b notu):** Y2a'da eklenen **boyun yükseltme adaptörü** boyun mili ile eğme çatalı arasında, yani pan torku ve kafa
-ağırlığı yolunda; CAD'de (`kafa10_lib.py`) PETG yazıyor, listede de öyle bırakıldı. PETG-CF'ye alınıp alınmayacağı tasarım kararı.
+**Karar 29.10 (Duffy):** Y2a'da eklenen **boyun yükseltme adaptörü** (boyun mili ile eğme çatalı arasında, pan torku ve kafa ağırlığı
+yolunda) **PETG-CF** ile basılır; CAD'de (`kafa10_lib.py`) malzeme PETG-CF. Kütle aynı (ρ 1,27 tahmini, doluluk 0,8: 66,4 g; filament 70 g).
 
 **Neden PA-CF değil:** Nem çeker, kurutma ister, pahalı. Bu yüklerde (el yükü ≈ 100 g sınırı, jestler) PETG-CF yeterli olmalı (tahmini).
 
@@ -160,7 +161,7 @@ Tablolarda ölçü analizdeki baskı yönündeki kutu (mm), filament ve süre ad
 | ☐ | kafa | Rulman yuvası **(PETG-CF)** | 1 | 68 × 60 × 36 | 27 | 0,56 | dik: kulaklar tablada, rulman yuvası yukarı | 6808-2RS |
 | ☐ | kafa | Boyun mili **(PETG-CF)** | 1 | 60 × 60 × 48 | 41 | 0,85 | dik: horn diski tablada, flanş yukarı (45° koni) | **horn delik dizilimi** |
 | ☐ | kafa | Eğme çatalı **(PETG-CF)** | 1 | 74 × 60 × 49 | 36 | 0,74 | dik: taban tablada, duvarlar yukarı | **horn delik dizilimi** |
-| ☐ | kafa | Boyun yükseltme adaptörü | 1 | 60 × 60 × 58 | 70 | 1,45 | dik: alt flanş tablada (45° koni) | — (malzeme açık soru, yukarıda) |
+| ☐ | kafa | Boyun yükseltme adaptörü **(PETG-CF)** | 1 | 60 × 60 × 58 | 70 | 1,45 | dik: alt flanş tablada (45° koni) | — (PETG-CF, karar 29.10) |
 
 ## Parti 3 — 10,1" yüz ekranı gelip ölçülünce
 

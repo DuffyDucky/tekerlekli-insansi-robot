@@ -106,8 +106,13 @@ kaldırır). Y4 için ek: `M6_erisim.py:27` `ISO7380_S`'de M5 yok → yeni M5×1
 **Duffy kararı gerektirenler:**
 - **H1 sigorta erişimi:** gerçek 6 yollu kutu 1 × 6 dizilişliyse uçtaki iki sigorta kapak altında kalır. Seçenek: (a) kutu seçilince ölç,
   uç yuvalara yedek / boş koy; (b) dolgu şeridi dikişlerini kaydırıp açıklığı ±44'e çıkar (kabuk yeniden).
+  KARAR 29.10: (a) açıklık ±32 kalır; kutu alınınca ölçülür, uçtaki iki yuva yedek sigorta için ayrılır (`elektrik.md`, karar 14).
 - **K1 M5 boyu:** perçin somun tipi seçilince diş boyuna göre M5×16 yeterli mi bak; yetmezse M5×18 (maliyet etkisi yok denecek kadar).
+  KARAR 29.10: M5×18 ISO 7380; uzayan uç ana montajda hiçbir parçaya değmiyor (0 mm³), kabuk / ana montaj / taban / yerleşim yeniden,
+  çakışma 0, 24.556,6 g; maliyet aynı (karar 15).
 - Brief'teki açıklar sürüyor: boyun adaptörü PETG → PETG-CF, KZ2 el yükü ~100 g; K7 delik çapı ve perçin somun ölçüleri tahmini.
+  KARAR 29.10: boyun adaptörü PETG-CF (kütle aynı, CF 1,04–1,10 kg, maliyet aynı; karar 13). Pi 5, 4 GB RAM teyit (karar 12).
+  KZ2 el yükü, K7 ve perçin somun ölçüleri açık.
 
 ### Değiştirilen / eklenen dosyalar
 Yalnız `planlama/y3/Y3-kontrol.md` (bu). Erişim kopyası, takma / cep taraması, montaj çakışma ve devrilme betikleri kontrol scratchpad'inde;
