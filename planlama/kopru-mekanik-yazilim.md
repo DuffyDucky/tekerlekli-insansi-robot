@@ -25,7 +25,7 @@ vermez; çelişkileri ve kimin karar vereceğini listeler. Karar alınınca ilgi
 | Ekran | Kafada 10,1" HDMI (yüz). **Göğüs Nextion kaldırıldı** (25.10) | `planlama/dongu.md` |
 | Pi 5 | **Kafada** (K4). Kafada Pololu D36V50F5 5 V çevirici, PD yok | `planlama/adim3/elektrik.md` E4 |
 | ESP32 | Tabanda; Pi'ye tek USB kablo (1,25 m, boyundan) | aynı |
-| Taban | 520 mm, akü 75 mm öne | `planlama/dongu.md` |
+| Taban | 520 mm; **akü yerinde** (75 mm öne geometrik olarak olmadı; karar 29.10, aşağıda) | `planlama/kararlar-2026-10-29.md` |
 | Otonomi | Yok (hoca, 21.10): lidar, Nav2, haritalama kapsam dışı. Kumanda telefondan | DuffyOS kaydı, 21.10 |
 
 ## 2. Fark tablosu: tasarım ↔ `kod/`
@@ -33,17 +33,26 @@ vermez; çelişkileri ve kimin karar vereceğini listeler. Karar alınınca ilgi
 | # | Konu | Tasarım ne diyor | `kod/` ne yapıyor | Kim karar verir |
 |---|---|---|---|---|
 | F1 | **Kol servo sayısı** | Kol başına 4 eklem (S1, S2, dirsek, bilek) → 10 servo | `kod/jestler/kanallar.yaml`: kol başına 2 (omuz, dirsek) → 6 servo; "omuzda yana açma ekseni yok" notu | Ekip (Duffy + Efe). Tasarım 4 eklemle çiziliyor |
-| F2 | **Eklem sınırlarının tek kaynağı** | `kod/ortak/eklem_sinirlari.json` (CAD çakışma taramasından üretilir): S1 −45…135, **S2 +5…120**, dirsek 0…105, bilek −90…90, pan −90…90, tilt −15…15 (eklem açısı, 0 = ev pozu) | `kanallar.yaml` "TEK KAYNAK", 0–180 "robot açısı", sınırlar tahmini | Öneri: `kanallar.yaml` sınırları JSON'dan alsın (ya da `jest_uret.py` JSON'u denetlesin); açı dönüşümü tek tabloda |
+| F2 | **Eklem sınırlarının tek kaynağı** | `kod/ortak/eklem_sinirlari.json` (CAD çakışma taramasından üretilir): S1 −45…135, **S2 +5…120**, dirsek 0…105, bilek −90…90, pan −90…90, **tilt −13…13** (29.10; önce ±15) (eklem açısı, 0 = ev pozu) | `kanallar.yaml` "TEK KAYNAK", 0–180 "robot açısı", sınırlar tahmini | Öneri: `kanallar.yaml` sınırları JSON'dan alsın (ya da `jest_uret.py` JSON'u denetlesin); açı dönüşümü tek tabloda |
 | F3 | Omuz servo modeli | DS3235 | `kanallar.yaml`: DS3218 ("yeni model gelince güncellenir" notu var) | Karar verildi (24.10); yalnız güncelleme |
 | F4 | **Acil stop / devreye alma** | E3 + E9: güç rölesi K1 (GPIO12) ve ön şarj rölesi K2 (GPIO2) ESP32'de; PC817 #1 mantar durumunu, #2 anahtarlı 12 V'u okur; güç yalnız "devreye al" komutuyla gelir | `pinler.h`: "Emas acil stop ESP32'ye BAĞLI DEĞİL, gücü doğrudan keser"; röle, ön şarj, PC817 yok; GPIO 2 LED | Ekip. Basit yol da savunulabilir, ama elektrik tasarımı (kablaj, ön şarj direnci, röleler, maliyet) şu an E3/E9'a göre |
 | F5 | **ESP32 resetlenmesi** | E3: reset = röle bırakır = **kollar düşer**. Pi seri portu **DTR/RTS kapalı** açmalı (`ser.dtr = False; ser.rts = False` sonra `open()`, Linux'ta `stty -hupcl`) | Notlarda "Pi portu açınca DevKit resetlenir, `hazir` beklenmeli" | F4'e bağlı. F4'te röle kalırsa DTR/RTS kapalı açılış zorunlu |
 | F6 | Pin çakışması | GPIO12 = K1, GPIO2 = K2, GPIO36 = akü ADC, GPIO39/34/35 = sonar echo, PCA9685 kanal 10–12 = sonar trig | GPIO 2 = LED; 12 bilinçli boş (strapping); sonar/akü ADC yok | F4 ile birlikte. GPIO12 strapping uyarısı haklı, kablajda pull-down ile birlikte bakılmalı |
 | F7 | Sensörler | 3 × HC-SR04 (30 cm'de dur), BNO055 eğim alarmı (15°), akü gerilim uyarısı (Y3) | IMU iskeleti var; sonar ve akü izleme yok | Otonomi iptalinden sonra sonar gerekli mi: ekip. Maliyette hâlâ 3 adet var |
-| F8 | **Hareket sınırları (1,65 m)** | S2 ≥ +5° (el yüze girer); insan/engel yakınında omuz ≤ ~1,5 rad/s; **rampada ivme ≤ 0,1 m/s²**; düzde ≤ 0,5; yerinde dönüş yok, yay çizerek dönüş | `motorlar.cpp` `HIZLANMA = 0.5` sabit; rampa ve dönüş sınırı yok; jest hızları `kanallar.yaml`'da | Sınırlar analizden (`yazilim-notu-stowent-170.md`); uygulanması Efe'de |
+| F8 | **Hareket sınırları (1,65 m)** | S2 ≥ +5° (el yüze girer); insan/engel yakınında omuz ≤ ~1,5 rad/s; **rampada ivme ≤ 0,1 m/s², kollar ev pozunda** (29.10 kararıyla zorunlu: akü yerinde); düzde ≤ 0,5; el yükü ~100 g (açık); yerinde dönüş yok, yay çizerek dönüş | `motorlar.cpp` `HIZLANMA = 0.5` sabit; rampa ve dönüş sınırı yok; jest hızları `kanallar.yaml`'da | Sınırlar analizden (`yazilim-notu-stowent-170.md`); uygulanması Efe'de |
 | F9 | Takılma koruması | DS3235 dirseği geri sürebilir; PWM servo konum bildirmez → öneri: servo hattına akım ölçer (INA219/226) | Yok | Ekip (akım ölçer +maliyet) |
 | F10 | Pi güç ayarı | Pololu ile PD yok: EEPROM `PSU_MAX_CURRENT=5000`, `config.txt` `usb_max_current_enable=1` | `kod/PI5-KURULUM.md`'de yok (masada PD adaptörle çalışıyor olabilir) | Robota takılınca şart |
 | F11 | Elle sürüş | Y4: Bluetooth gamepad doğrudan ESP32'de (Bluepad32): Pi çökse de sürülür | Telefon kumandası Pi üzerinden (`kod/robot/uzaktan/`) | Ekip. Pi çökerse 500 ms bekçisi zaten durdurur; soru yalnız "Pi'siz sürüş gerekli mi" |
 | F12 | Tetik | Bas-konuş düğmesi (maliyette 43 mm buton) | Düğmesiz `SesTetik` (Efe kararı 26.10); GPIO tetik seçenek olarak duruyor | Karar verildi; maliyetten düğme düşer mi: ekip |
+
+### 29.10 kararları — yazılımı etkileyenler
+
+Duffy, 29 Ekim 2026; ayrıntı `planlama/kararlar-2026-10-29.md`, kaynak `planlama/y2/Y2a-kontrol.md` (ikisi de `lale-duzeltme`).
+
+1. **Taban doğrusal ivme ≤ 0,1 m/s²** (devrilme payı için; akü yerinde kalıyor, rampa 5°'de kollar geride pay 1,48–1,49, ölçüt 1,5). → F8, `motorlar.cpp` `HIZLANMA`.
+2. **Rampada / eğimde kollar ev pozunda** tutulmalı (ev pozunda pay 1,58; elde 0,5 kg ileri 1,44). → F8.
+3. **Kafa tilt sınırı ±13°** (önce ±15; çakışma +18° / −17°'de başlıyor): `kod/ortak/eklem_sinirlari.json` (`lale-duzeltme`). → F2.
+4. **El yükü ~100 g ile sınırlı** (servo payı; 0,5 kg'da S1 0,97, dirsek 0,74). **Açık konu**, karar değil. → F8.
 
 ## 3. Mikrofon değişikliği (26 Ekim, Efe) ve mekaniğe etkisi
 
