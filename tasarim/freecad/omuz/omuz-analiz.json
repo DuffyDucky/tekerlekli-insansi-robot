@@ -8053,7 +8053,7 @@
  },
  "kutle": {
   "Govde": 625.7,
-  "Gobek": 175.3,
+  "Gobek": 175.1,
   "Kol": 159.0
  },
  "alt_kol": {
@@ -8186,8 +8186,8 @@
     49.0
    ],
    "sigar": true,
-   "kutle": 59.4,
-   "hacim_cm3": 51.9
+   "kutle": 59.2,
+   "hacim_cm3": 51.8
   },
   {
    "ad": "S1 kablo tamburu",
@@ -8227,5 +8227,5 @@
   }
  ],
  "joints_ok": true,
- "sure_s": 62.4
+ "sure_s": 56.9
 }

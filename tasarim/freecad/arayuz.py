@@ -856,8 +856,9 @@ KOL_KABLO = dict(
 # =====================================================================================================
 M6 = dict(
     # C1 omuz gobegi: S1 horn civatalarindan z +6'daki ikisi gobegin S2 servo plakasinin (x 168...199, z 2,5...7,5) arkasinda
-    # kaliyordu (serbest 7 mm). Civata ekseninde O5 alet kanali plakayi x 168,5...200 boyunca keser (2,5 alyan: r 2,05 + pay).
-    gobek_horn_kanal=dict(d=5.0, x=(168.5, 200.5)),
+    # kaliyordu (serbest 7 mm). Civata ekseninde O6 kanal plakayi x 168,5...200 boyunca keser: civatanin kendisi (M3 DIN 912 basi
+    # O5,5 + pay) ve 2,5 alyan gecer. Y3 kontrolu (29 Ekim 2026): O5 alyani geciriyor, basi gecirmiyordu (2 civata takilamazdi).
+    gobek_horn_kanal=dict(d=6.0, x=(168.5, 200.5)),
     # C3 omuz: S2 kulak somunlarindan ust (y 34,75) ikisi anahtarla tutulamiyordu (gobek ust duvari y 39 ile servo arasinda).
     # Plakanin altina somun cebi blogu: DIN 985 M4 somun altigen cepte (s + 0,2), cepten alttan takilir, doner -> anahtar gerekmez.
     s2_somun_cep=dict(x=(174.0, 196.0), y=(32.0, 39.0), z=(-2.5, 2.5), s_pay=0.2),

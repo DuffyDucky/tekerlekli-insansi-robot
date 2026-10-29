@@ -21,7 +21,7 @@ geçerli kalanlar aşağıda. Kaynak: `tasarim/freecad/taban/taban-analiz.json` 
 | Ana bilgisayar | Raspberry Pi 5 8 GB (liste) | **Raspberry Pi 5, 4 GB RAM** (eldeki kart; Duffy 29.10: "pi 4 gb"). Güç bütçesi aynı bırakıldı (4 / 7 / 12 W; 8 GB ölçümlerine dayanıyordu, 4 GB'ta en çok biraz daha az) |
 | Kafa 5 V tepe | 18,7 W → 3,7 A | ≈ 20,5 W → **4,1 A** (12 V'tan ≈ 1,8 A; F3 5 A yeter). Pololu D36V50F5'in 12 V'taki sürekli akımı (açık iş 8) daha önemli hâle geldi |
 | Omuz servoları (E1) | DS3218MG; hat yoğun 4,4 / 4,7 A | **DS3235** (durma 2,1 A @6 V datasheet; tasarımda 3,0 A ihtiyatlı). Kol ×1,25 ile kol + kafa servosu bir hatta yoğun ≈ **5,45 A** (A, pan ile 5,47; B, tilt 0,9 ile ≈ 5,8), tepe 7,8 A (taslak kol analizi) → XL4016'nın sürekli 5 A önerisinin üstünde. **Karar 29.10: kafa servoları kol hatlarından ayrıldı, üç servo hattı** (aşağıdaki "Servo hatları" tablosu): kol hatları yoğun ≈ 4,87 A. Hat akımı yine ölçülmeli |
-| Servo uzatmaları | ~1,3 m | dirsek / bilek 1,93 m, S2 ≈ 1,77 m (1.769,8 mm: Y2b hesabı, göbek eki yolu = G2 öncesi 20 + geçiş 23,9 + S1 lopu 171,4 + gövde içi 238 + dikey 1.286,5 + konnektör 30; `planlama/y2/Y2b-kontrol.md` bulgu 4. `dirsek-analiz.json` `kablo.s1_boy` S2 satırı hâlâ eski yarık yolu 1.490: üreten `dirsek_montaj.py` 29.10'da düzeltildi, JSON FreeCAD ile Y4'te yeniden üretilir); durma akımında 2 × 1,93 × 0,052 × 2,5 A ≈ 0,50 V düşüm (servo ≈ 5,5 V görür; tahmini) |
+| Servo uzatmaları | ~1,3 m | dirsek / bilek 1,93 m, S2 ≈ 1,77 m (1.769,8 mm: Y2b hesabı, göbek eki yolu = G2 öncesi 20 + geçiş 23,9 + S1 lopu 171,4 + gövde içi 238 + dikey 1.286,5 + konnektör 30; `planlama/y2/Y2b-kontrol.md` bulgu 4. `dirsek-analiz.json` `kablo.s1_boy` S2 satırı Y3'te (29.10) `dirsek_montaj.py` ile yeniden üretildi: DS3235 **1.770 mm**, eski yarık yolu 1.490 kalktı); durma akımında 2 × 1,93 × 0,052 × 2,5 A ≈ 0,50 V düşüm (servo ≈ 5,5 V görür; tahmini) |
 | ESP32 – Pi USB | 1,25 m | ≈ 1,64 m → **2 m** kablo (`maliyet.json`) |
 | Kafa 12 V (18 AWG çift) | boyundan | +0,385 m; 1,8 A'de ek düşüm < 0,03 V (ihmal) |
 | Taban, dönüş (E0) | 21,73 kg, iz 356 (x ±178) | 24,80 kg, AM (−0,2; 521,3; −13,2), iz 432 (x ±216). Yerinde dönüş μ 0,5: en yüklü motor 15,7 kg·cm = sürekli ×2,49, 2,12 A; ön omniyle ×0,47. Karar aynı: önce ölç, μ ≥ 0,4 → ön omni |
@@ -294,8 +294,9 @@ Toprak: akü − ── WAGO yıldız noktası (güç paneli) ── tüm dönü
 | Şarj | 10 A (mini) | XT60 şarj girişi → akü + (ana anahtar öncesi) | E9 / akü raporu önerisi; üçüncü kapaklı yuva (yeni). Şarj cihazı 6 A |
 
 **Sigorta seti (E9, 5. adım):** kutudaki set 5, 10, 2 × 15, 2 × 20 (standart/ATO bıçak). F3 ve F4 iki 5 A ister, bir tane var:
-**ikinci 5 A** ve F5 için **2 A** standart bıçak eklenir. Hat yuvaları mini bıçak: 7,5 A × 2 + şarj girişi 10 A. Maliyette tek satır
-"Bıçak sigorta (ek)" (5 adet; standart/mini ayrımı modelde), yuvalar "Hat sigortası yuvası" × 3. Setteki 10 A ve bir 15 A yedek kalır.
+**ikinci 5 A** ve F5 için **2 A** standart bıçak eklenir. Hat yuvaları mini bıçak: 7,5 A × 2 (XL4016 A / B) + 5 A (XL4016 C, kafa
+servoları; karar 29.10) + şarj girişi 10 A. Maliyette tek satır "Bıçak sigorta (ek)" (6 adet; standart/mini ayrımı modelde), yuvalar
+"Hat sigortası yuvası" × 4. Setteki 10 A ve bir 15 A yedek kalır.
 
 ## E8: akü süreleri (5. adım, akü raporuyla hizalı)
 

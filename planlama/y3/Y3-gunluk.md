@@ -19,8 +19,9 @@ Brief: `planlama/y3/Y3-brief.md`. **Önce bu günlüğü oku, yapılanı tekrarl
   bloğu (plaka −x yüzü, servo ön ucundan 0,5). `kafa_montaj`: 147 parça, ev pozu 0, bağlantı 29/29, tilt serbest −15…15 (arayüz artık
   ±13: kafa FCStd'si ilk kez ±13 ile üretildi), çatal desteksiz, 2.043,0 → **2.043,5 g**. `Y3_erisim`: tilt 2 CEP + 2 açık ağız (önce 1 YOK).
   Kafa'da Pi parça adı artık "Raspberry Pi 5 4GB + Active Cooler" (Adım 0 kaynağı).
-- **C1–C3 özeti:** 125 cm'de 19 erişilemez bağlantının bu üç maddeye düşen 12'si (kol başına göbek–horn 2, S2 somun 2, dirsek 2 + 3; tilt 1)
-  → 0 YOK (`Y3-erisim-once.json` / `Y3-erisim-sonra.json`).
+- **C1–C3 özeti:** 125 cm'deki erişilemez bağlantılar modülde 10 / robotta 19 (`M6-montaj-sirasi.md:38`; modülde göbek–horn 2, S2
+  somun 2, dirsek 2 + 3, tilt 1; iki kolla 19, hepsi C1–C3'e düşer; önceki "12" aritmetik hataydı, Y3 kontrolü a) → 0 YOK
+  (`Y3-erisim-once.json` / `Y3-erisim-sonra.json`).
 - 29.10 (oturum sınırından sonra devam; durum doğrulandı: `59367ab` var, C1–C3 dosyaları çalışma ağacında). **Kabuk (sürüyor):** `arayuz.M6`
   K1 `govde_braket_m5` (ISO 7380 M5×16 dışarıdan + M5 perçin somun, ısıl gömme M5 + DIN 912 + pul kalkar), K2 `etek_braket_m3` (M3×14 ISO 7380
   + M3 perçin somun, boss r 5,5), K3 `s1_ped_yarik_r_ic` 41,5, K5 `etek_kapak_h1`, K6 `etek_kapak_h2`, K7 `ana_anahtar_delik_d` 30 (tahmini),
@@ -53,3 +54,21 @@ Brief: `planlama/y3/Y3-brief.md`. **Önce bu günlüğü oku, yapılanı tekrarl
   malzeme kaldırır), `baski-listesi.md` (66 parça), `kabuk_rapor.py`, görseller / rapor.html, `taban_montaj` tüketim tablosundaki "A sağ kol
   + pan / B sol kol + tilt" etiketleri (sayılar E8'de Y2b-aku.py'den). Y4 / Y6: OZET.md, taban_rapor.py, Lale-Proje-Ozeti.txt, 05-fiyat.
 - 29.10: Y3 tasarım işi bitti → tek commit (bağımsız kontrol sırada).
+- **29.10 kontrol düzeltmeleri** (`Y3-kontrol.md` "Düzeltilecek" 1–5; Duffy kararı bekleyenlere dokunulmadı):
+  1. C1: `arayuz.M6 gobek_horn_kanal` d 5,0 → **6,0** (M3 DIN 912 başı Ø5,5 + 0,25 radyal pay). Komşu geometri: kanal ekseni z 6,01, plaka
+     z 2,5…7,5 → kanal altında plaka eti 0,51 mm (Ø5'te 1,01; x 168,5…174,5 ve 195,5…199); iki kanal arası (y ±3) 6 mm, S2 kulak
+     deliklerine 3,5 mm, havşa Ø6,6 ile örtüşme aynı. Göbek +X basılıyor: 0,51 mm et dikey ince duvar, dilimleyici atarsa kanal alttan açık
+     yarık olur; taşıyıcı değil (plaka şeridi y −3…3 ve dışında tam), işlev değişmez → z −6 seçeneği gerekmedi. Takma taraması (kontrol
+     betiği, scratch): dört cıvata baş yönünde 0…45 mm kaydırıldı, göbekle ortak hacim **0 mm³** (önce z +6 ikisi 7,5 mm'de değiyordu,
+     8–14 mm'de 8,56 mm³). Yeniden: `omuz_montaj` (75 parça, statik 0, göbek 175,3 → **175,1 g**), `iskelet_montaj`, `dirsek_montaj`
+     (göbek kütlesi / AM), `ana_montaj` (1.120 parça, solve 0, STEP 1.120, **24.554,1 g**, AM (−0,08; 525,80; −12,49); BOM yalnız göbek
+     118,7 → 118,5 g, maliyet etkilenmez), `taban_montaj` (bağlantı 127/127, çakışma 0, bölge 48 / 0; robot satırı artık 1.120 parçalık
+     montaj-analiz'den: tabansız 778 parça, ev devrilme ileri / geri / yan 3,74 / 3,24 / **4,08**, rampa 5° geri **2,37**),
+     `yerlesim_kontrol` (ev S2 5 0, kol 40 poz 0, kafa 15 poz 0), `Y3_erisim` sonra (göbek–horn 4 DÜZ; sayaçlar aynı).
+     README AM satırı 525,80. Not: `iskelet-analiz.json` Y3 öncesinden kalmıştı (bölge 55 → 57; ihlal 0); `taban-analiz.json` robot
+     satırı Y3 commit'inde 1.073 parçalık eski montaj-analiz'e dayanıyordu (tabansız 757), şimdi güncel.
+  2. `elektrik.md:24` S2 cümlesi: JSON Y3'te yeniden üretildi, 1.770 mm.
+  3. "12 YOK" → modülde 10 / robotta 19: `dongu.md` Y3 satırı ve bu günlükteki C1–C3 özeti.
+  4. `adim4/M6_erisim.py` `ISO7380_S` + `"M5x": 3.0` (ISO 7380-1 M5 altıgen yuva 3 mm). Kısa koşu (scratch): `alet()` BOM'daki ISO 7380
+     kodlarında önce M5×16 × 8 atlanıyordu, şimdi alyan 3; kabuk FCStd'de 8 M5×16 → 8 DÜZ (alyan 3,0). Tam koşu Y4'te.
+  5. `elektrik.md` sigorta seti paragrafı: hat yuvaları 7,5 A × 2 + 5 A (C) + şarj 10 A, yuva × 4, ek bıçak sigorta 6 (`maliyet.json` ile aynı).

@@ -33,7 +33,7 @@ koşullu geçti: `planlama/y2/Y2a-kontrol.md`).
 | Konu | Değer |
 |---|---|
 | Boy | **1.650 mm** (yerden kafa tepesine); gövde direği 1.185,5 mm tek parça sigma 40 × 40 |
-| Parça / kütle | 1.120 parça (ana montaj, Y3 M6 CAD sonrası; önce 1.073), 24,55 kg (kablo payıyla ≈ 24,95 kg); AM (−0,08; 525,81; −12,49) mm |
+| Parça / kütle | 1.120 parça (ana montaj, Y3 M6 CAD sonrası; önce 1.073), 24,55 kg (kablo payıyla ≈ 24,95 kg); AM (−0,08; 525,80; −12,49) mm |
 | Taban | 520 mm, teker izi 432 mm (x ±216), 4 × JGB37; akü Victron 12,8 V 20 Ah **yerinde** (karar 29.10) |
 | Kollar | Kol başına 4 servo: omuz S1 + S2 **DS3235**, dirsek + bilek MG996R; kafa pan / tilt MG996R (toplam 10 servo). El yükü ≈ 100 g (açık konu) |
 | Kafa | 10,1" HDMI yüz ekranı (hoca verecek), Raspberry Pi 5 kafada; tilt sınırı ±13° |

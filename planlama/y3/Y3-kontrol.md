@@ -26,6 +26,7 @@ commit mesajındaki "12" aritmetik hata (19'un hepsi C1–C3'e düşer).
 - **C1 ✘:** Ø5 kanal 2,5 alyanı (r 2,05) geçiriyor ama M3 DIN 912 başı Ø5,5 (CAD'de ölçüldü). Takma taraması: z +6'daki iki cıvata baş
   yönünde 7,5 mm kayınca göbeğe girmeye başlıyor, 8–14 mm'de 8,56 mm³ (havşa Ø6,6 x 169'da bitiyor, kanal Ø5). Havşa yanal kapalı, S2
   penceresinden indirilen cıvata da x 168,5…174,5 boğazından geçemez → **bu iki cıvata takılamaz** (z −6'dakiler 0). M6 planı Ø6 diyordu.
+  DÜZELTİLDİ 29.10: kanal Ø6; aynı tarama 0…45 mm'de dört cıvata 0 mm³ (aşağıda "Düzeltilecek" 1).
 - C2 ✔: Ø8 delik M4 DIN 912 başını (dk 7) ve 3 alyanı geçiriyor; takma taraması 0. Dirsek / tilt / S2 cepleri s 7 + 0,2 = 7,2, derinlik
   m 5 + 0,2; 30° döndürme testi kilitli (CEP), cepten çıkış yolları açık (0 mm³), oturmada ortak hacim 0.
 
@@ -67,7 +68,7 @@ yazılım notu kural 3–4, `duzeltme-plani.md` E6, `elektrik.md` çelişkisiz. 
 
 ### g. dirsek-analiz.json S2 — KISMEN
 `kablo.s1_boy.uzatma[2]` S2 (DS3235) 20 + 23,9 + 171,4 + 238 + 1.286,5 + 30 = **1.770** ✔ (Y2b 1.769,8). Ama `elektrik.md:24` hâlâ "JSON'daki
-S2 satırı hâlâ eski yarık yolu 1.490 … Y4'te yeniden üretilir" diyor → artık yanlış.
+S2 satırı hâlâ eski yarık yolu 1.490 … Y4'te yeniden üretilir" diyor → artık yanlış. DÜZELTİLDİ 29.10 ("Düzeltilecek" 2).
 
 ### h. dongu.md Y3 tanımı — GEÇTİ
 C1–C3, K1–K7 ve ön şarj kartı yapılmış (C1 kusurlu, a). Y4'e bırakılanlar gerekçeli: tam tarama (dongu.md kuralı: tek sefer Y4'te),
@@ -90,11 +91,17 @@ kaldırır). Y4 için ek: `M6_erisim.py:27` `ISO7380_S`'de M5 yok → yeni M5×1
 **Düzeltilecek (koşul: 1. madde Y4 başlamadan):**
 1. `tasarim/freecad/arayuz.py:860` `gobek_horn_kanal` d 5,0 → **≥ 6,0** (M3 DIN 912 başı 5,5 + pay; havşa 6,6) ya da cıvatalar z −6'ya
    (M6 planı C1 b); `omuz_montaj` + ana montaj yeniden, takma (cıvata başı) kontrolü eklenmeli.
+   DÜZELTİLDİ 29.10: d 6,0 (plaka eti kanal altında 0,51 mm, taşıyıcı değil; z −6 gerekmedi); takma taraması 0…45 mm → 4 cıvata 0 mm³;
+   omuz, iskelet, dirsek, ana montaj, taban, yerleşim, `Y3_erisim` yeniden (1.120 parça, 24.554,1 g, AM y 525,80; çakışma 0). `Y3-gunluk.md`.
 2. `planlama/adim3/elektrik.md:24`: "S2 satırı hâlâ eski … Y4'te yeniden üretilir" → "Y3'te yeniden üretildi, 1.770 mm".
+   DÜZELTİLDİ 29.10: cümle "Y3'te `dirsek_montaj.py` ile yeniden üretildi: DS3235 1.770 mm".
 3. "12 YOK" → "modülde 10, robotta 19": `planlama/dongu.md:60`, `planlama/y3/Y3-gunluk.md:22` (commit mesajı geçmişte kalır).
+   DÜZELTİLDİ 29.10: iki yerde "modülde 10 / robotta 19" (`M6-montaj-sirasi.md:38` kaynağıyla).
 4. `planlama/adim4/M6_erisim.py:27` `ISO7380_S`'e `"M5x": 3.0` (Y4 koşusundan önce).
+   DÜZELTİLDİ 29.10: eklendi (ISO 7380-1 M5 s 3); kısa koşuda 8 M5×16 artık atlanmıyor (kabukta 8 DÜZ, alyan 3).
 5. Küçük, Y3 öncesinden: `elektrik.md:296-299` sigorta seti paragrafı "yuvalar × 3", "7,5 A × 2 + şarj 10 A" (C hattının 5 A yuvası yok;
    maliyet 4 yuva).
+   DÜZELTİLDİ 29.10: 7,5 A × 2 + 5 A (C) + şarj 10 A, yuva × 4, ek bıçak sigorta 6 (`maliyet.json` ile aynı).
 
 **Duffy kararı gerektirenler:**
 - **H1 sigorta erişimi:** gerçek 6 yollu kutu 1 × 6 dizilişliyse uçtaki iki sigorta kapak altında kalır. Seçenek: (a) kutu seçilince ölç,
