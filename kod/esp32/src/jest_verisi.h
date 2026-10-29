@@ -1,12 +1,13 @@
 // OTOMATIK URETILDI: kod/jestler/jest_uret.py -- ELLE DUZENLEME.
-// Kaynak: kod/jestler/kanallar.yaml ve kod/jestler/*.yaml
+// Kaynak: kod/jestler/kanallar.yaml ve kod/jestler/*.yaml; aci sinirlari
+//         kod/ortak/eklem_sinirlari.json (robot acisi = eklem acisi + eklem_ofset)
 // Degistirmek icin YAML'i duzenle, sonra: py -3 kod/jestler/jest_uret.py
 // Bu dosya yalniz servolar.cpp ve jestler.cpp tarafindan include edilir.
 #pragma once
 #include <stdint.h>
 
 #define SERVO_PWM_FREKANS 50
-#define SERVO_SAYISI 6
+#define SERVO_SAYISI 10
 #define JEST_SAYISI 4
 #define YON_SAYISI 4
 #define ACI_YOK (-1.0f)   // bu jest bu kanala dokunmaz
@@ -41,76 +42,80 @@ struct JestTanim {
 // Dizi sirasi = kanal numarasi sirasi (SERVO_TABLOSU[i].kanal ile PCA9685 cikisi bulunur)
 // Ayna (yonlu jest 'sol' varyanti) uretim aninda uygulanir; burada yalniz bilgi icin yazili.
 static const ServoTanim SERVO_TABLOSU[SERVO_SAYISI] = {
-  {"sag_omuz", 0, 500, 2500, 0.0f, 160.0f, 90.0f, false},  // DS3218, ayna: sol_omuz (ayni)
-  {"sag_dirsek", 1, 500, 2500, 0.0f, 110.0f, 120.0f, false},  // MG996R, ayna: sol_dirsek (ayni)
-  {"sol_omuz", 2, 500, 2500, 0.0f, 160.0f, 90.0f, true},  // DS3218, ayna: sag_omuz (ayni)
-  {"sol_dirsek", 3, 500, 2500, 0.0f, 110.0f, 120.0f, true},  // MG996R, ayna: sag_dirsek (ayni)
-  {"kafa_pan", 4, 500, 2500, 45.0f, 135.0f, 90.0f, false},  // MG996R, ayna: kafa_pan (180-aci)
-  {"kafa_tilt", 5, 500, 2500, 70.0f, 110.0f, 60.0f, false},  // MG996R, ayna: kafa_tilt (ayni)
+  {"sag_omuz", 0, 500, 2500, 0.0f, 180.0f, 85.0f, false},  // DS3235, eklem r_s1 +45, ayna: sol_omuz (ayni)
+  {"sag_omuz_yan", 1, 500, 2500, 5.0f, 120.0f, 85.0f, false},  // DS3235, eklem r_s2 +0, ayna: sol_omuz_yan (ayni)
+  {"sag_dirsek", 2, 500, 2500, 0.0f, 105.0f, 120.0f, false},  // MG996R, eklem r_dirsek +0, ayna: sol_dirsek (ayni)
+  {"sag_bilek", 3, 500, 2500, 0.0f, 180.0f, 120.0f, false},  // MG996R, eklem r_bilek +90, ayna: sol_bilek (ayni)
+  {"kafa_pan", 4, 500, 2500, 0.0f, 180.0f, 90.0f, false},  // MG996R, eklem pan +90, ayna: kafa_pan (180-aci)
+  {"sol_omuz", 5, 500, 2500, 0.0f, 180.0f, 85.0f, true},  // DS3235, eklem l_s1 +45, ayna: sag_omuz (ayni)
+  {"sol_omuz_yan", 6, 500, 2500, 5.0f, 120.0f, 85.0f, true},  // DS3235, eklem l_s2 +0, ayna: sag_omuz_yan (ayni)
+  {"sol_dirsek", 7, 500, 2500, 0.0f, 105.0f, 120.0f, true},  // MG996R, eklem l_dirsek +0, ayna: sag_dirsek (ayni)
+  {"sol_bilek", 8, 500, 2500, 0.0f, 180.0f, 120.0f, true},  // MG996R, eklem l_bilek +90, ayna: sag_bilek (ayni)
+  {"kafa_tilt", 9, 500, 2500, 77.0f, 103.0f, 60.0f, false},  // MG996R, eklem tilt +90, ayna: kafa_tilt (ayni)
 };
 
 // Bosta durus: bosta.yaml son karesi. Acilista ve her jest bitince servolar buraya doner.
-static const float BOSTA_DURUS[SERVO_SAYISI] = {10.0f, 15.0f, 10.0f, 15.0f, 90.0f, 90.0f};
+static const float BOSTA_DURUS[SERVO_SAYISI] = {45.0f, 5.0f, 0.0f, 90.0f, 90.0f, 45.0f, 5.0f, 0.0f, 90.0f, 90.0f};
 
-// bosta: Kollar hafif açık aşağıda, kafa ileri
-//   sutunlar: sag_omuz, sag_dirsek, sol_omuz, sol_dirsek, kafa_pan, kafa_tilt
+// bosta: Ev pozu: kollar aşağıda gövde yanında, kafa ileri
+//   sutunlar: sag_omuz, sag_omuz_yan, sag_dirsek, sag_bilek, kafa_pan, sol_omuz, sol_omuz_yan, sol_dirsek, sol_bilek, kafa_tilt
 static const JestKare JEST_BOSTA[] = {
-  {0, {10.0f, 15.0f, 10.0f, 15.0f, 90.0f, 90.0f}},
-  {1000, {10.0f, 15.0f, 10.0f, 15.0f, 90.0f, 90.0f}},
+  {0, {45.0f, 5.0f, 0.0f, 90.0f, 90.0f, 45.0f, 5.0f, 0.0f, 90.0f, 90.0f}},
+  {1000, {45.0f, 5.0f, 0.0f, 90.0f, 90.0f, 45.0f, 5.0f, 0.0f, 90.0f, 90.0f}},
 };
 
 // evet: Başla onaylama
-//   sutunlar: sag_omuz, sag_dirsek, sol_omuz, sol_dirsek, kafa_pan, kafa_tilt
+//   sutunlar: sag_omuz, sag_omuz_yan, sag_dirsek, sag_bilek, kafa_pan, sol_omuz, sol_omuz_yan, sol_dirsek, sol_bilek, kafa_tilt
 static const JestKare JEST_EVET[] = {
-  {0, {ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 90.0f}},
-  {350, {ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 75.0f}},
-  {700, {ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 95.0f}},
-  {1050, {ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 75.0f}},
-  {1400, {ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 95.0f}},
-  {1750, {ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 90.0f}},
+  {0, {ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 90.0f}},
+  {350, {ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 80.0f}},
+  {700, {ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 100.0f}},
+  {1050, {ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 80.0f}},
+  {1400, {ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 100.0f}},
+  {1750, {ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 90.0f}},
 };
 
-// isaret: Sağ kolla öne doğru işaret
-//   sutunlar: sag_omuz, sag_dirsek, sol_omuz, sol_dirsek, kafa_pan, kafa_tilt
+// isaret: Sağ kolla sağa doğru işaret
+//   sutunlar: sag_omuz, sag_omuz_yan, sag_dirsek, sag_bilek, kafa_pan, sol_omuz, sol_omuz_yan, sol_dirsek, sol_bilek, kafa_tilt
 static const JestKare JEST_ISARET[] = {
-  {0, {10.0f, 15.0f, ACI_YOK, ACI_YOK, 90.0f, 90.0f}},
-  {1200, {90.0f, 0.0f, ACI_YOK, ACI_YOK, 70.0f, 90.0f}},
-  {2700, {90.0f, 0.0f, ACI_YOK, ACI_YOK, 70.0f, 90.0f}},
+  {0, {45.0f, 5.0f, 0.0f, 90.0f, 90.0f, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 90.0f}},
+  {1200, {70.0f, 80.0f, 0.0f, 90.0f, 70.0f, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 90.0f}},
+  {2700, {70.0f, 80.0f, 0.0f, 90.0f, 70.0f, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 90.0f}},
 };
 
 // isaret yon=sol (varsayilanin aynasi)
 static const JestKare JEST_ISARET_SOL[] = {
-  {0, {ACI_YOK, ACI_YOK, 10.0f, 15.0f, 90.0f, 90.0f}},
-  {1200, {ACI_YOK, ACI_YOK, 90.0f, 0.0f, 110.0f, 90.0f}},
-  {2700, {ACI_YOK, ACI_YOK, 90.0f, 0.0f, 110.0f, 90.0f}},
+  {0, {ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 90.0f, 45.0f, 5.0f, 0.0f, 90.0f, 90.0f}},
+  {1200, {ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 110.0f, 70.0f, 80.0f, 0.0f, 90.0f, 90.0f}},
+  {2700, {ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 110.0f, 70.0f, 80.0f, 0.0f, 90.0f, 90.0f}},
 };
 
 // isaret yon=ileri (kendi kareleri)
 static const JestKare JEST_ISARET_ILERI[] = {
-  {0, {10.0f, 15.0f, 10.0f, 15.0f, 90.0f, 90.0f}},
-  {1200, {70.0f, 0.0f, 70.0f, 0.0f, 90.0f, 85.0f}},
-  {2700, {70.0f, 0.0f, 70.0f, 0.0f, 90.0f, 85.0f}},
+  {0, {45.0f, 5.0f, 0.0f, ACI_YOK, 90.0f, 45.0f, 5.0f, 0.0f, ACI_YOK, 90.0f}},
+  {1200, {135.0f, 10.0f, 0.0f, ACI_YOK, 90.0f, 135.0f, 10.0f, 0.0f, ACI_YOK, 85.0f}},
+  {2700, {135.0f, 10.0f, 0.0f, ACI_YOK, 90.0f, 135.0f, 10.0f, 0.0f, ACI_YOK, 85.0f}},
 };
 
 // isaret yon=arka (kendi kareleri)
 static const JestKare JEST_ISARET_ARKA[] = {
-  {0, {10.0f, 15.0f, ACI_YOK, ACI_YOK, 90.0f, 90.0f}},
-  {1700, {150.0f, 90.0f, ACI_YOK, ACI_YOK, 45.0f, 90.0f}},
-  {3200, {150.0f, 90.0f, ACI_YOK, ACI_YOK, 45.0f, 90.0f}},
+  {0, {45.0f, 5.0f, 0.0f, 90.0f, 90.0f, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 90.0f}},
+  {1700, {10.0f, 40.0f, 0.0f, 90.0f, 45.0f, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 90.0f}},
+  {3200, {10.0f, 40.0f, 0.0f, 90.0f, 45.0f, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, 90.0f}},
 };
 
 // selam: Sağ elle el sallama
-//   sutunlar: sag_omuz, sag_dirsek, sol_omuz, sol_dirsek, kafa_pan, kafa_tilt
+//   sutunlar: sag_omuz, sag_omuz_yan, sag_dirsek, sag_bilek, kafa_pan, sol_omuz, sol_omuz_yan, sol_dirsek, sol_bilek, kafa_tilt
 static const JestKare JEST_SELAM[] = {
-  {0, {10.0f, 15.0f, ACI_YOK, ACI_YOK, 90.0f, ACI_YOK}},
-  {1700, {150.0f, 40.0f, ACI_YOK, ACI_YOK, 80.0f, ACI_YOK}},
-  {2100, {150.0f, 80.0f, ACI_YOK, ACI_YOK, 80.0f, ACI_YOK}},
-  {2500, {150.0f, 40.0f, ACI_YOK, ACI_YOK, 80.0f, ACI_YOK}},
-  {2900, {150.0f, 80.0f, ACI_YOK, ACI_YOK, 80.0f, ACI_YOK}},
-  {3300, {150.0f, 40.0f, ACI_YOK, ACI_YOK, 80.0f, ACI_YOK}},
-  {3700, {150.0f, 80.0f, ACI_YOK, ACI_YOK, 80.0f, ACI_YOK}},
-  {4100, {150.0f, 40.0f, ACI_YOK, ACI_YOK, 80.0f, ACI_YOK}},
-  {4500, {150.0f, 40.0f, ACI_YOK, ACI_YOK, 80.0f, ACI_YOK}},
+  {0, {45.0f, 5.0f, 0.0f, 90.0f, 90.0f, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK}},
+  {1700, {75.0f, 100.0f, 60.0f, 90.0f, 80.0f, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK}},
+  {2100, {75.0f, 100.0f, 90.0f, 90.0f, 80.0f, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK}},
+  {2500, {75.0f, 100.0f, 60.0f, 90.0f, 80.0f, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK}},
+  {2900, {75.0f, 100.0f, 90.0f, 90.0f, 80.0f, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK}},
+  {3300, {75.0f, 100.0f, 60.0f, 90.0f, 80.0f, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK}},
+  {3700, {75.0f, 100.0f, 90.0f, 90.0f, 80.0f, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK}},
+  {4100, {75.0f, 100.0f, 60.0f, 90.0f, 80.0f, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK}},
+  {4500, {75.0f, 100.0f, 60.0f, 90.0f, 80.0f, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK, ACI_YOK}},
 };
 
 // {ad, varsayilan, kare sayisi, {sol, sag, ileri, arka} kareleri, ayni sirada kare sayilari}

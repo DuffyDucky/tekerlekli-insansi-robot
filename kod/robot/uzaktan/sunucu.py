@@ -3,7 +3,7 @@
 #   GET  /                 kumanda sayfası (sayfa.html)      GET /manifest.json, /ikon.svg, /ikon-192.png
 #   POST /giris {pin}      doğru PIN -> oturum çerezi; yanlış PIN 1 s bekletilir
 #   GET  /durum            robotun durumu (çerez gerekir)    GET /bolgeler   bölge listesi
-#   POST /sur {v,w}  /dur  /jest {ad,yon}  /soyle {metin}  /bolge {ad}  /bakim {ac}
+#   POST /sur {v,w}  /dur  /jest {ad,yon}  /soyle {metin}  /bolge {ad}  /bakim {ac}  /rampa {ac}
 # Güvenlik: yalnız yerel ağ için; POST yalnız JSON (application/json), gövde en çok 4 KB, başka siteden
 # gelen istek (Origin farklı) reddedilir. İnternete açmayın (port yönlendirme yok).
 
@@ -276,6 +276,8 @@ def istek_isleyici_kur(sunucu):
                     if not isinstance(veri.get("ac"), bool):
                         raise KopruHatasi("'ac' true ya da false olmalı.")
                     return self.json_gonder(200, {"ok": True, **kopru.bakim(veri["ac"])})
+                if yol == "/rampa":
+                    return self.json_gonder(200, {"ok": True, **kopru.rampa(veri.get("ac"))})
                 raise KopruHatasi("Bulunamadı.", 404)
             except KopruHatasi as h:
                 self.hata(h.kod, str(h))

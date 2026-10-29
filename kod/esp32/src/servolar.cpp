@@ -1,9 +1,9 @@
 // servolar.cpp -- bkz. servolar.h
 //
-// GÜÇ UYARISI: Servolar PCA9685'in V+ klemensinden AYRI bir hattan beslenir (5-7,4 V, servo
-// datasheet'ine bak; DS3218 ve MG996R 6 V'ta güvenli). Durma akımı servo başına ~2-2,5 A olabilir;
-// 6 servo aynı anda zorlanırsa 10 A'yı aşar, DC-DC/BEC buna göre seçilir. PCA9685'in VCC pini
-// (mantık) ESP32'nin 3,3 V'undan beslenir. Servoların gücü ASLA ESP32'den ya da Pi'nin USB'sinden
+// GÜÇ UYARISI: Servolar PCA9685'in V+ klemensinden DEĞİL, dağıtım kartından beslenir (6 V; DS3235 ve
+// MG996R 6 V'ta güvenli). Üç ayrı XL4016 hattı (karar 29 Ekim 2026): A = sağ kol, B = sol kol,
+// C = kafa pan + tilt; kol hattı yoğun ≈ 4,9 A, tepe ≈ 7,2 A (tahmini, ölçülecek). 10 servo tek hatta
+// bağlanmaz. PCA9685'in VCC pini (mantık) ESP32'nin 3,3 V'undan beslenir, V+ klemensi boş kalır. Servoların gücü ASLA ESP32'den ya da Pi'nin USB'sinden
 // alınmaz: ani akım voltajı düşürür, Pi/ESP32 kendini resetler (brownout). Topraklar ortak.
 #include "servolar.h"
 

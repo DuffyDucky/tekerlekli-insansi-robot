@@ -7,6 +7,7 @@
 #   soyle(metin)     -> robot BEKLE'deyse hemen söyler, değilse reddeder (cevapta nedeni yazar)
 #   bolge_sec(ad)    -> kod/konum/bolge.txt (elle konum kaynağı okur); boş ad dosyayı siler
 #   bakim(ac)        -> kod/bakim.txt oluşturur/siler (bakım modunu ana.py uygular)
+#   rampa(ac)        -> ESP32 rampa kipi (ivme/fren 0,1 m/s^2, kollar ev pozunda); açıkken jest reddedilir
 # ÖLÜ ADAM: son "sur" isteğinden 400 ms geçerse köprü kendisi dur() der (telefon düşerse robot durur).
 # ESP32 watchdog'u 500 ms'dir; Pi sürerken "sur"u 150 ms'de bir yineler, böylece robot takılmadan gider.
 
@@ -136,7 +137,12 @@ class RobotKoprusu:
             "suruluyor": self.suruluyor,
             "konusuyor": not self.konusma_bitti.is_set(),
             "sinirlar": {"v": EN_FAZLA_V, "w": EN_FAZLA_W},
+            "rampa": self.rampa_acik(),
         }
+
+    def rampa_acik(self):
+        """Pi'nin istediği elle rampa kipi (ESP32 IMU eğimiyle ayrıca açabilir; o burada görünmez)."""
+        return bool(getattr(self.robot.seri, "rampa_acik", False))
 
     def bolge_listesi(self):
         b = self._bolgeler()
@@ -192,6 +198,8 @@ class RobotKoprusu:
             yon = None
         elif ad != "isaret" or yon not in YONLER:
             raise KopruHatasi(f"Yön yalnız işaret jestinde ve {', '.join(YONLER)} olabilir.")
+        if self.rampa_acik():               # ESP32 de reddeder; telefona nedeni burada söylenir
+            raise KopruHatasi("Rampa kipinde jest yok: kollar ev pozunda. Önce rampa kipini kapatın.", 409)
         with self.kilit:
             self.robot.seri.jest(ad, yon)
         return {"ad": ad, "yon": yon}
@@ -260,6 +268,14 @@ class RobotKoprusu:
         elif os.path.exists(self.bakim_dosyasi):
             os.remove(self.bakim_dosyasi)
         return {"bakim": os.path.exists(self.bakim_dosyasi)}
+
+    def rampa(self, ac):
+        """Rampa kipi aç/kapa (ESP32 {"k":"rampa","ac":..}). Sürüş sürer; ivme sınırını ESP32 uygular."""
+        if not isinstance(ac, bool):
+            raise KopruHatasi("'ac' true ya da false olmalı.")
+        with self.kilit:
+            self.robot.seri.rampa(ac)
+        return {"rampa": self.rampa_acik()}
 
     # ---------- çalıştırma ----------
 

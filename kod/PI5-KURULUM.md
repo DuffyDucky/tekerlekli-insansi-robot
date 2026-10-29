@@ -7,7 +7,7 @@ kurulacağını anlatır; şifre ve Wi-Fi anahtarı içermez.
 
 | Konu | Değer |
 |---|---|
-| Kart | Raspberry Pi 5, 64 GB microSD, Active Cooler |
+| Kart | Raspberry Pi 5 **4 GB RAM** (Duffy teyit etti, 29 Ekim 2026), 64 GB microSD, Active Cooler |
 | İşletim sistemi | Raspberry Pi OS (64-bit, masaüstü) 2026-10-06, Trixie, cloud-init ile ilk kurulum |
 | Hostname | `lale` → ağda `lale.local` (avahi) |
 | Kullanıcılar | `efe` (sudo, Efe'nin PC anahtarı + şifre) ve `duffy` (sudo, Ahmet'in anahtarı; ilk kurulumdan korundu) |
@@ -91,6 +91,38 @@ Pi OS Trixie ilk kurulumu **cloud-init** ile yapar: bootfs (FAT32, Windows'ta g�
    Zayıf Wi-Fi'de tam klon (100+ MB geçmiş) çok yavaş; `--depth 1` şart. Uzun kurulumu `nohup ... &` ile
    başlatıp ayrı ssh'tan bekle.
 
+## Robota takılınca güç ayarı (29 Ekim 2026; Pi'de DENENMEDİ)
+
+Masada resmî USB-C PD adaptörle (5 V 5 A) çalışırken **gerek yok**: Pi adaptörle PD konuşup 5 A
+alabileceğini kendisi anlar. Robotta Pi kafada, Pololu **D36V50F5** 5 V çeviriciden beslenir; bu çevirici
+PD konuşmaz. Pi o zaman "güç kaynağı 3 A" sanır: USB çıkışlarını 600 mA'de sınırlar ve açılışta
+"power supply not capable of 5A" uyarısı verir (kafada XVF3800 mikrofon dizisi + USB'ler bu sınıra takılır).
+Köprü belgesi F10 (`planlama/kopru-mekanik-yazilim.md`), elektrik kararı E4 (`lale-duzeltme` dalı).
+
+1. EEPROM'a kaynağın 5 A verebildiğini yaz:
+   ```bash
+   sudo rpi-eeprom-config -e
+   ```
+   Açılan düzenleyicide `[all]` altına ekle, kaydet, çık:
+   ```
+   PSU_MAX_CURRENT=5000
+   ```
+2. USB akım sınırını kaldır: `sudo nano /boot/firmware/config.txt`, `[all]` altına:
+   ```
+   usb_max_current_enable=1
+   ```
+3. `sudo reboot`. Doğrula: `vcgencmd get_config usb_max_current_enable` → `=1`;
+   `sudo rpi-eeprom-config | grep PSU_MAX_CURRENT` → `5000`.
+
+Dikkat: bu ayar yalnız gerçekten 5 A verebilen bir 5 V kaynakla yapılır (D36V50F5 5 A sınıfı; sürekli
+akımı ve ısınmayı satıcı sayfasından / ölçerek doğrula).
+Pi'yi tekrar masaya, zayıf bir USB şarj aletine takarsan ayar onu da 5 A sanır → brownout/reset olabilir;
+masada PD adaptör kullan. Kafa 5 V tepe ≈ 4,1 A (tahmini; XVF3800 akımı ölçülmeli).
+
+**Bellek bütçesi: 4 GB.** Eski listelerdeki 8 GB varsayımı geçersiz. Vosk küçük model + Piper + pygame yüz
++ konum + uzaktan sunucu aynı süreçte; büyük yerel dil modeli/görüntü modeli koymadan önce
+`free -h` ile ölç (bulut dil modeli bellek yemez).
+
 ## Öğrenilen tuzaklar
 
 - **Daha önce açılmış bir karta** bootfs'ten Wi-Fi/kullanıcı eklemek (meta-data ve cmdline'da instance-id
@@ -107,5 +139,7 @@ Pi OS Trixie ilk kurulumu **cloud-init** ile yapar: bootfs (FAT32, Windows'ta g�
 - Ekran + HDMI hoparlör bağlanınca tam ekran yüz ve Piper sesi denemesi; sonra `robot.service`.
 - Mikrofon (XVF3800 dizi, bkz. `raporlar/mikrofon-secimi.md`) gelince eşik ölçümü ve varsayılan sesli mod.
 - `kod/icerik/*.yaml` içindeki "..." yer tutucuları (21 adet, `python3 icerik_kontrol.py` listeler).
-- ESP32 gelince `seri.port` (`/dev/ttyUSB0` ya da `/dev/ttyACM0`).
+- ESP32 gelince `seri.port` (`/dev/ttyUSB0` ya da `/dev/ttyACM0`); port açılışında ESP32 resetlenmesin
+  diye bir kez `stty -F /dev/ttyUSB0 -hupcl` (`seri.py` zaten DTR/RTS kapalı açar; `kod/esp32/OKU_BENI.md` 4. bölüm).
+- Robota takılınca güç ayarı (yukarıda): `PSU_MAX_CURRENT=5000`, `usb_max_current_enable=1`.
 - Nextion ekranı: config.txt'deki UART satırı Ahmet'in; ekranın planı ekipte netleşecek.

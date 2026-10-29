@@ -1,0 +1,195 @@
+{
+  "surum": 1,
+  "birim": "derece",
+  "kaynak": "tasarim/freecad/arayuz.py (OMUZ, DIRSEK, KAFA, KAFA_KOL_YASAK, KOL_KABLO s1 s2_s1_kosul)",
+  "eklemler": {
+    "r_s1": {
+      "ad": "omuz one-arka (S1)",
+      "min": -45.0,
+      "max": 135.0,
+      "servo": "DS3235 (180 derece), S1 ve S2",
+      "neden": "DS3235 180 derece; horn kol asagidayken 45'te; geometri -60...180 serbest",
+      "taraf": "sag",
+      "ayna": false
+    },
+    "r_s2": {
+      "ad": "omuz yana acma (S2)",
+      "min": 5.0,
+      "max": 120.0,
+      "servo": "DS3235 (180 derece), S1 ve S2",
+      "neden": "alt sinir +5 (S1 kablo kaseti: kol S2 3'te tambura/flansa yaklasir, 5'te 0,77 mm); kabuk boslugu 0'da 4,7 mm, -3'te temas",
+      "bosluk_mm": {
+        "0": 4.7,
+        "-2": 0.6,
+        "-3": 0.0
+      },
+      "taraf": "sag",
+      "ayna": false
+    },
+    "r_dirsek": {
+      "ad": "dirsek",
+      "min": 0.0,
+      "max": 105.0,
+      "servo": "MG996R (180 derece)",
+      "neden": "MG996R, catal dayanagi",
+      "taraf": "sag",
+      "ayna": false
+    },
+    "r_bilek": {
+      "ad": "bilek",
+      "min": -90.0,
+      "max": 90.0,
+      "servo": "MG996R (180 derece)",
+      "neden": "MG996R 180 derece, ev 0 = avuc ice bakar",
+      "taraf": "sag",
+      "ayna": false
+    },
+    "l_s1": {
+      "ad": "omuz one-arka (S1)",
+      "min": -45.0,
+      "max": 135.0,
+      "servo": "DS3235 (180 derece), S1 ve S2",
+      "neden": "DS3235 180 derece; horn kol asagidayken 45'te; geometri -60...180 serbest",
+      "taraf": "sol",
+      "ayna": true
+    },
+    "l_s2": {
+      "ad": "omuz yana acma (S2)",
+      "min": 5.0,
+      "max": 120.0,
+      "servo": "DS3235 (180 derece), S1 ve S2",
+      "neden": "alt sinir +5 (S1 kablo kaseti: kol S2 3'te tambura/flansa yaklasir, 5'te 0,77 mm); kabuk boslugu 0'da 4,7 mm, -3'te temas",
+      "bosluk_mm": {
+        "0": 4.7,
+        "-2": 0.6,
+        "-3": 0.0
+      },
+      "taraf": "sol",
+      "ayna": true
+    },
+    "l_dirsek": {
+      "ad": "dirsek",
+      "min": 0.0,
+      "max": 105.0,
+      "servo": "MG996R (180 derece)",
+      "neden": "MG996R, catal dayanagi",
+      "taraf": "sol",
+      "ayna": true
+    },
+    "l_bilek": {
+      "ad": "bilek",
+      "min": -90.0,
+      "max": 90.0,
+      "servo": "MG996R (180 derece)",
+      "neden": "MG996R 180 derece, ev 0 = avuc ice bakar",
+      "taraf": "sol",
+      "ayna": true
+    },
+    "pan": {
+      "ad": "kafa pan",
+      "min": -90.0,
+      "max": 90.0,
+      "servo": "MG996R (180 derece), pan ve tilt",
+      "neden": "MG996R 180 derece; kablo halkasi +-90"
+    },
+    "tilt": {
+      "ad": "kafa tilt",
+      "min": -13.0,
+      "max": 13.0,
+      "servo": "MG996R (180 derece), pan ve tilt",
+      "neden": "yazilim siniri (karar 29 Ekim 2026, Y2a KZ3: +-15 -> +-13; ilk cakisma +18 / -17, planlama/y2/Y2a-kontrol.md); serbest aralik kafa/kafa-analiz.json"
+    }
+  },
+  "teker": {
+    "sinirsiz": true,
+    "ivme_sinir_m_s2": {
+      "duz_surus": 0.5,
+      "duz_fren": 1.8,
+      "rampa_surus": 0.1,
+      "rampa_fren": 0.1
+    },
+    "not_": "hiz / ivme siniri yazilimda: duz zeminde <= 0,5 m/s2 (motor surekli torkunun ~%50'si; devrilme payi >= 1,5 icin sinir ~2,0 m/s2, el yuku <= 100 g, planlama/y2/Y2b-ivme.json); rampada / egimde <= 0,1 m/s2 ve kollar ev pozunda (karar 29 Ekim 2026, Y2a KZ1; aku yerinde). Yazilim / acil stop freni duz zeminde <= 1,8 m/s2 (karar 29 Ekim 2026, Y2b): duzde el yukunde 0,5 kg ile bile pay >= 1,54 (yuksuz 1,72, 100 g 1,68; Y2b-ivme.json fren_pay). Rampada / egimde yavaslama ve fren de <= 0,1 m/s2 (karar 29 Ekim 2026, Duffy; rampada 1,8 frende ev pozu payi 2,366 / 1,8 = 1,31 < 1,5)"
+  },
+  "bagimli": [
+    {
+      "ad": "S1 kaseti: S2 lopu <-> kaset kapagi flansi",
+      "taraf": "r",
+      "kosul": {
+        "r_s1": [
+          120.0,
+          135.0
+        ]
+      },
+      "sinir": {
+        "r_s2": [
+          5.0,
+          117.0
+        ]
+      },
+      "neden": "S1 >= 120 iken S2 <= 117: S2 lopu (dirsek/bilek kablolari) S2 120'de kaset kapagi flansina yaklasir (pahsiz -0,30 mm; 1,2 mm pahla S2 120 +0,39, S2 117 0,89). K3, planlama/adim2/K2-s1-kontrol.md",
+      "bosluk_mm": {
+        "S2 120 pahsiz": -0.3,
+        "S2 120 pahli": 0.39,
+        "S2 117 pahli": 0.89
+      }
+    },
+    {
+      "ad": "S1 kaseti: S2 lopu <-> kaset kapagi flansi",
+      "taraf": "l",
+      "kosul": {
+        "l_s1": [
+          120.0,
+          135.0
+        ]
+      },
+      "sinir": {
+        "l_s2": [
+          5.0,
+          117.0
+        ]
+      },
+      "neden": "S1 >= 120 iken S2 <= 117: S2 lopu (dirsek/bilek kablolari) S2 120'de kaset kapagi flansina yaklasir (pahsiz -0,30 mm; 1,2 mm pahla S2 120 +0,39, S2 117 0,89). K3, planlama/adim2/K2-s1-kontrol.md",
+      "bosluk_mm": {
+        "S2 120 pahsiz": -0.3,
+        "S2 120 pahli": 0.39,
+        "S2 117 pahli": 0.89
+      }
+    }
+  ],
+  "sol_isaret": {
+    "deger": -1,
+    "durum": "tahmini; montajdan sonra her servo tek tek dogrulanir (duzeltme plani C4)"
+  },
+  "kafa_kol_yasak": {
+    "aktif": false,
+    "aciklama": "kafa-kol yasak kutusu yok (eklem araliklari icinde cakisma bulunmadi)",
+    "pay": 5.0,
+    "olculen_125cm": {
+      "one_arka": [
+        125.0,
+        135.0
+      ],
+      "yana": [
+        0.0,
+        0.0
+      ],
+      "dirsek": [
+        70.0,
+        105.0
+      ],
+      "bilek": [
+        -90.0,
+        90.0
+      ],
+      "pan": [
+        30.0,
+        55.0
+      ],
+      "tilt": [
+        25.0,
+        30.0
+      ]
+    },
+    "not_": "1,65 m: yasak kutu yok. 125 cm olcumu (tilt 25...30) yeni tilt araliginin (+-13) disinda; taslak-170 kafa x kol taramasi S2 >= 5'te cakisma 0 (en az 7,71 mm, El <-> yuz kabugu). Y4 tam taramasinda yeniden dogrulanacak."
+  }
+}

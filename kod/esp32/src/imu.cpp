@@ -29,3 +29,10 @@ float imu_yaw_derece() {
   // TODO(IMU): son okunan yaw açısını döndür (derece, sola +).
   return NAN;
 }
+
+float imu_egim_derece() {
+  if (!imu_hazir) return NAN;
+  // TODO(IMU): yerçekimi vektöründen eğim = acosf(az / |a|) derece (süzgeçli, zaman sabiti ~1 s);
+  //            BNO055'te pitch/roll bileşkesi.
+  return NAN;
+}

@@ -1,49 +1,73 @@
-# Servo kanal tablosu: TEK KAYNAK. jest_uret.py bunu okuyup kod/esp32/src/jest_verisi.h'ye yazar.
+# Servo kanal tablosu: TEK KAYNAK (kanal, model, darbe, hız, ayna). jest_uret.py bunu okuyup
+# kod/esp32/src/jest_verisi.h'ye yazar.
 # Buradaki bir değeri değiştirince: py -3 kod/jestler/jest_uret.py  (sonra ESP32'yi yeniden derle/yükle)
 #
-# DURUM: TASLAK. Mekanik ölçülmedi, servolar takılmadı (26 Ekim 2026).
-# Sol kol kanalları (2, 3) önerilen numaralar: KABLAJDA DOĞRULA.
-# Not: tasarım revizyonunda (25 Ekim) servo modeli değişti; yeni model gelince "model", min_us/max_us güncellenir.
+# AÇI SINIRLARI BURADA YAZILMAZ (29 Ekim 2026): tek kaynak kod/ortak/eklem_sinirlari.json (Ahmet'in CAD
+# betiğinden üretilir; tazelemek için depo kökünde:
+#   git show origin/lale-duzeltme:kod/ortak/eklem_sinirlari.json > kod/ortak/eklem_sinirlari.json ).
+# Her kanalın "eklem" alanı JSON'daki eklem anahtarıdır; jest_uret.py min_aci/max_aci'yi şöyle türetir:
+#   robot açısı = eklem açısı + eklem_ofset    (eklem açısı: 0 = ev pozu, JSON'daki min/max bu açıyla)
+# JSON'daki "bagimli" kısıtı da (S1 >= 120 iken S2 <= 117) her jest karesinde denetlenir.
+#
+# DURUM: TASLAK. Mekanik ölçülmedi, servolar takılmadı (29 Ekim 2026).
+# PCA9685 kanal planı (elektrik notu): 0-4 hat A = sağ kol + kafa pan, 5-9 hat B = sol kol + kafa tilt,
+# 10-12 sonar trig için AYRILMIŞ (kullanma), 13-15 yedek. Kol içi sıra (S1, S2, dirsek, bilek): KABLAJDA DOĞRULA.
 #
 # AÇI KURALI ("robot açısı", 0-180 derece; jest dosyaları hep bu açıyla yazılır):
-#   omuz   : 0 = kol aşağıda gövdenin yanında, 90 = kol öne yatay, 180 = kol yukarıda
-#   dirsek : 0 = kol düz, 90 = dirsek dik açı bükük
-#   kafa_pan : 90 = ileri bakar, küçük = robotun sağına, büyük = soluna
-#   kafa_tilt: 90 = düz, küçük = aşağı, büyük = yukarı
-# Montaj: servo merkezdeyken (1500 us) korna, robot açısı 90'a denk gelecek şekilde takılır.
+#   omuz     (S1, öne-arka; ofset 45): 45 = kol aşağıda (ev), 135 = kol öne yatay, 180 = öne-yukarı 135,
+#            0 = kol geriye 45 derece. Eklem -45...135 -> robot 0...180.
+#   omuz_yan (S2, yana açma; ofset 0): 0 = kol gövde yanında, 90 = kol yana yatay, 120 = yataydan 30 yukarı.
+#            ALT SINIR 5 (eklem +5): altına inerse el yüze/kabuğa girer, kablo kaseti zorlanır. Ev = 5.
+#   dirsek   (ofset 0): 0 = kol düz, 90 = dirsek dik açı bükük, en çok 105.
+#   bilek    (ofset 90): 90 = avuç içe (gövdeye) bakar (ev), 0 / 180 = iki yöne 90 dönük. Yön KABLAJDA DOĞRULA.
+#   kafa_pan (ofset 90): 90 = ileri bakar, küçük = robotun sağına, büyük = soluna (eklem -90...90 -> 0...180).
+#   kafa_tilt(ofset 90): 90 = düz, küçük = aşağı, büyük = yukarı (eklem -13...13 -> 77...103).
+# Montaj: servo merkezdeyken (1500 us) korna, robot açısı 90'a denk gelecek şekilde takılır
+# (omuz S1'de robot 90 = eklem 45: kol öne-aşağı 45 derecede; JSON "horn kol asagidayken 45'te").
 # Servo ters yönde dönüyorsa (ör. sol kol sağın aynası) "ters: true" yap; jest dosyaları değişmez.
 #
 # ALANLAR:
 #   kanal   : PCA9685 çıkış numarası (0-15)
 #   min_us / max_us : servo açısı 0 ve 180 derecedeki darbe genişliği (mikrosaniye)
-#   min_aci / max_aci : izin verilen robot açısı aralığı. Bunun dışına hiçbir komut gidemez.
-#                       SINIRLAR MEKANİKTE ÖLÇÜLÜNCE DARALT (kol gövdeye/kabuğa çarpmadan önce dur).
+#   eklem   : kod/ortak/eklem_sinirlari.json "eklemler" anahtarı (r_s1, l_s2, pan, tilt, ...)
+#   eklem_ofset : robot açısı - eklem açısı (derece); türetilen aralık 0-180 içinde kalmalı
+#   (min_aci / max_aci ELLE YAZILMAZ; yazılırsa üretici hata verir. Daraltmak gerekirse JSON'u Ahmet günceller.)
 #   hiz     : en fazla derece/saniye (yumuşak geçiş). Jest bundan hızlı istiyorsa servo geride kalır.
+#             Omuz S1/S2 <= 85 (kural: insan yakınında omuz <= 1,5 rad/s ~ 86 der/s; tepe hız yalnız boş alanda).
 #   ters    : true ise servo açısı = 180 - robot açısı
 #   ayna    : bu kanalın sol/sağ karşılığı (yönlü jestlerde "sol" varyantı için; bkz. AYNA KURALI)
 #   ayna_aci: ayna kanala geçerken açı dönüşümü: "ayni" (açı aynen) ya da "180-aci"
 #
 # AYNA KURALI (27 Ekim 2026; jest_uret.py "yonler: {sol: ayna}" ile kullanır):
-#   Robot açısı iki kolda da AYNI anlamı taşır (sol kolda da omuz 0 = aşağıda, 90 = öne yatay);
-#   sol servoların ters dönmesini "ters: true" zaten düzeltir. Bu yüzden kol kanalları için ayna
-#   = yalnız kanal değiştirmek, açı aynen ("ayni"): sag_omuz 90 -> sol_omuz 90.
+#   Robot açısı iki kolda da AYNI anlamı taşır (sol kolda da omuz 45 = aşağıda, omuz_yan 90 = yana
+#   yatay); sol servoların ters dönmesini "ters: true" zaten düzeltir. Bu yüzden kol kanalları için
+#   ayna = yalnız kanal değiştirmek, açı aynen ("ayni"): sag_omuz 90 -> sol_omuz 90, sag_omuz_yan 80 ->
+#   sol_omuz_yan 80, dirsek ve bilek de öyle.
 #   kafa_pan ise tek servo ve açısı yönlüdür (küçük = robotun sağı, büyük = solu): aynası
 #   kendisi, açı "180-aci" (70 -> 110). kafa_tilt yukarı/aşağıdır, aynası kendisi, açı "ayni".
 #   Eşleme karşılıklı olmalı (sag_omuz -> sol_omuz ise sol_omuz -> sag_omuz); üretici denetler.
-#   Ayna açısı da hedef kanalın min_aci/max_aci sınırında olmalı; üretici her varyantı denetler.
-#   KABLAJDA DOĞRULA: sol kol kanal numaraları (2, 3) ve sol kolun "ters" yönü; bkz.
-#   kod/esp32/OKU_BENI.md "Yönlü jest". Yanlışsa sol varyant kolu ters yöne zorlar.
+#   Ayna açısı da hedef kanalın sınırında olmalı; üretici her varyantı denetler.
+#   KABLAJDA DOĞRULA: sol kol kanal numaraları (5-8) ve sol kolun "ters" yönü (TAHMİNİ; JSON
+#   "sol_isaret": -1 de tahmini); bkz. kod/esp32/OKU_BENI.md "Yönlü jest". Yanlışsa sol varyant kolu
+#   ters yöne zorlar.
 #
 # Başlangıç değerleri:
-#   DS3218 (omuz, büyük tork): 500-2500 us ~ 180 derece (270 derecelik sürümü varsa tablo değişir!)
-#   MG996R (dirsek, kafa): 500-2500 us, ama gerçek açı ~170-180; uçlarda zorlanır, sınırı dar tut.
+#   DS3235 (omuz S1 + S2, 35 kg.cm): 500-2500 us ~ 180 derece. 270 derecelik sürümü de satılıyor:
+#     o gelirse aynı darbe 270 dereceye yayılır, tablo değişir! Almadan önce "180" sürüm olduğunu doğrula.
+#   MG996R (dirsek, bilek, kafa): 500-2500 us, ama gerçek açı ~170-180; uçlarda zorlanır.
 
 pwm_frekans: 50          # Hz; analog servolar için standart
 
 kanallar:
-  sag_omuz:   {kanal: 0, model: DS3218, min_us: 500, max_us: 2500, min_aci: 0,  max_aci: 160, hiz: 90,  ters: false, ayna: sol_omuz,   ayna_aci: ayni}
-  sag_dirsek: {kanal: 1, model: MG996R, min_us: 500, max_us: 2500, min_aci: 0,  max_aci: 110, hiz: 120, ters: false, ayna: sol_dirsek, ayna_aci: ayni}
-  sol_omuz:   {kanal: 2, model: DS3218, min_us: 500, max_us: 2500, min_aci: 0,  max_aci: 160, hiz: 90,  ters: true,  ayna: sag_omuz,   ayna_aci: ayni}
-  sol_dirsek: {kanal: 3, model: MG996R, min_us: 500, max_us: 2500, min_aci: 0,  max_aci: 110, hiz: 120, ters: true,  ayna: sag_dirsek, ayna_aci: ayni}
-  kafa_pan:   {kanal: 4, model: MG996R, min_us: 500, max_us: 2500, min_aci: 45, max_aci: 135, hiz: 90,  ters: false, ayna: kafa_pan,   ayna_aci: 180-aci}
-  kafa_tilt:  {kanal: 5, model: MG996R, min_us: 500, max_us: 2500, min_aci: 70, max_aci: 110, hiz: 60,  ters: false, ayna: kafa_tilt,  ayna_aci: ayni}
+  # hat A: sağ kol + kafa pan
+  sag_omuz:     {kanal: 0, model: DS3235, min_us: 500, max_us: 2500, eklem: r_s1,     eklem_ofset: 45, hiz: 85,  ters: false, ayna: sol_omuz,     ayna_aci: ayni}
+  sag_omuz_yan: {kanal: 1, model: DS3235, min_us: 500, max_us: 2500, eklem: r_s2,     eklem_ofset: 0,  hiz: 85,  ters: false, ayna: sol_omuz_yan, ayna_aci: ayni}
+  sag_dirsek:   {kanal: 2, model: MG996R, min_us: 500, max_us: 2500, eklem: r_dirsek, eklem_ofset: 0,  hiz: 120, ters: false, ayna: sol_dirsek,   ayna_aci: ayni}
+  sag_bilek:    {kanal: 3, model: MG996R, min_us: 500, max_us: 2500, eklem: r_bilek,  eklem_ofset: 90, hiz: 120, ters: false, ayna: sol_bilek,    ayna_aci: ayni}
+  kafa_pan:     {kanal: 4, model: MG996R, min_us: 500, max_us: 2500, eklem: pan,      eklem_ofset: 90, hiz: 90,  ters: false, ayna: kafa_pan,     ayna_aci: 180-aci}
+  # hat B: sol kol + kafa tilt (sol "ters: true" TAHMİNİ, kablajda doğrula)
+  sol_omuz:     {kanal: 5, model: DS3235, min_us: 500, max_us: 2500, eklem: l_s1,     eklem_ofset: 45, hiz: 85,  ters: true,  ayna: sag_omuz,     ayna_aci: ayni}
+  sol_omuz_yan: {kanal: 6, model: DS3235, min_us: 500, max_us: 2500, eklem: l_s2,     eklem_ofset: 0,  hiz: 85,  ters: true,  ayna: sag_omuz_yan, ayna_aci: ayni}
+  sol_dirsek:   {kanal: 7, model: MG996R, min_us: 500, max_us: 2500, eklem: l_dirsek, eklem_ofset: 0,  hiz: 120, ters: true,  ayna: sag_dirsek,   ayna_aci: ayni}
+  sol_bilek:    {kanal: 8, model: MG996R, min_us: 500, max_us: 2500, eklem: l_bilek,  eklem_ofset: 90, hiz: 120, ters: true,  ayna: sag_bilek,    ayna_aci: ayni}
+  kafa_tilt:    {kanal: 9, model: MG996R, min_us: 500, max_us: 2500, eklem: tilt,     eklem_ofset: 90, hiz: 60,  ters: false, ayna: kafa_tilt,    ayna_aci: ayni}

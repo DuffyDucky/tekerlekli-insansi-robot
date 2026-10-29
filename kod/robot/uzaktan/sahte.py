@@ -1,5 +1,7 @@
 # Ne yapıyor: donanımsız robot taklidi (sahte seri, yazı TTS, pencere açmayan yüz, sohbet geçmişi).
 # `python -m robot.uzaktan` denemesi ve testler kullanır; gerçek robotta kullanılmaz.
+# Sahte seri rampa kipini de tutar (SahteSeri.rampa / rampa_acik): telefondaki "Rampa" anahtarı
+# donanımsız denenebilir; jest reddi köprüde, ivme sınırı yalnız gerçek ESP32'de.
 
 from collections import deque
 from types import SimpleNamespace

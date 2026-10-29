@@ -1,30 +1,30 @@
-# İşaret etme. Sağ kol öne-yana uzanır (dirsek düz), kafa aynı yöne bakar, bir süre tutar.
-# Kullanım: "kütüphane şu tarafta" gibi cevaplarda.
-# DURUM: taslak (mekanik ölçülmedi).
+# İşaret etme. Sağ kol yana açılır (S2) ve biraz öne gelir (S1), dirsek düz, kafa aynı yöne bakar,
+# bir süre tutar. Kullanım: "kütüphane şu tarafta" gibi cevaplarda.
+# DURUM: taslak, açılar TAHMİNİ (mekanik ölçülmedi, 29 Ekim 2026).
 #
-# YÖNLER (Pi: {"k":"jest","ad":"isaret","yon":"sol|sag|ileri|arka"}; 27 Ekim 2026, açılar TAHMİNİ):
-#   sag  : aşağıdaki "kareler" olduğu gibi (sağ kol öne, kafa robotun sağına 70).
+# YÖNLER (Pi: {"k":"jest","ad":"isaret","yon":"sol|sag|ileri|arka"}):
+#   sag  : aşağıdaki "kareler" olduğu gibi (sağ kol yana-öne, S2 80; kafa robotun sağına 70).
 #   sol  : "kareler"in aynası, üretici otomatik yapar (kanallar.yaml ayna kuralı):
 #          sol kol aynı açılarla, kafa_pan 180-70 = 110 (robotun soluna).
-#   ileri: iki kol birlikte öne, yataydan biraz aşağı (omuz 70), dirsek düz, kafa düz ileri.
-#   arka : kafa pan geriye dönemez (sınır 45-135). Omuzun yana açma ekseni de YOK (omuz yalnız
-#          öne-yukarı döner), bu yüzden "kol yana açılır" yapılamaz; yerine sağ kol yukarı kalkar,
-#          dirsek bükülür (el omuzun üstünden geriyi gösterir) ve kafa pan sınıra (45) döner.
-#          MEKANİKTE DOĞRULA: dirsek bu duruşta önkolu geriye mi getiriyor, kafaya çarpıyor mu.
+#   ileri: iki kol birlikte öne yatay (S1 robot 135 = eklem 90), S2 düşük (10), dirsek düz, kafa düz.
+#   arka : S2 (omuz yana açma) artık var: sağ kol geriye (S1 robot 10 = eklem -35) ve yana açık
+#          (S2 40), kafa robotun sağına (pan 45). Eski "omuz üstünden 150 + dirsek 90" çözümü kalktı.
+# Her kare S2 >= 5 ve bağımlı kısıta (S1 >= 120 eklem iken S2 <= 117) uyar; üretici denetler.
+# MEKANİKTE DOĞRULA: arka duruşunda el gövdeye/tekerlek kulesine yaklaşıyor mu.
 ad: isaret
-aciklama: "Sağ kolla öne doğru işaret"
+aciklama: "Sağ kolla sağa doğru işaret"
 kareler:
-  - {ms: 0,    sag_omuz: 10, sag_dirsek: 15, kafa_pan: 90, kafa_tilt: 90}
-  - {ms: 1200, sag_omuz: 90, sag_dirsek: 0,  kafa_pan: 70, kafa_tilt: 90}
-  - {ms: 2700, sag_omuz: 90, sag_dirsek: 0,  kafa_pan: 70, kafa_tilt: 90}
+  - {ms: 0,    sag_omuz: 45, sag_omuz_yan: 5,  sag_dirsek: 0, sag_bilek: 90, kafa_pan: 90, kafa_tilt: 90}
+  - {ms: 1200, sag_omuz: 70, sag_omuz_yan: 80, sag_dirsek: 0, sag_bilek: 90, kafa_pan: 70, kafa_tilt: 90}
+  - {ms: 2700, sag_omuz: 70, sag_omuz_yan: 80, sag_dirsek: 0, sag_bilek: 90, kafa_pan: 70, kafa_tilt: 90}
 yonler:
   sag: varsayilan
   sol: ayna
   ileri:
-    - {ms: 0,    sag_omuz: 10, sag_dirsek: 15, sol_omuz: 10, sol_dirsek: 15, kafa_pan: 90, kafa_tilt: 90}
-    - {ms: 1200, sag_omuz: 70, sag_dirsek: 0,  sol_omuz: 70, sol_dirsek: 0,  kafa_pan: 90, kafa_tilt: 85}
-    - {ms: 2700, sag_omuz: 70, sag_dirsek: 0,  sol_omuz: 70, sol_dirsek: 0,  kafa_pan: 90, kafa_tilt: 85}
+    - {ms: 0,    sag_omuz: 45,  sag_omuz_yan: 5,  sag_dirsek: 0, sol_omuz: 45,  sol_omuz_yan: 5,  sol_dirsek: 0, kafa_pan: 90, kafa_tilt: 90}
+    - {ms: 1200, sag_omuz: 135, sag_omuz_yan: 10, sag_dirsek: 0, sol_omuz: 135, sol_omuz_yan: 10, sol_dirsek: 0, kafa_pan: 90, kafa_tilt: 85}
+    - {ms: 2700, sag_omuz: 135, sag_omuz_yan: 10, sag_dirsek: 0, sol_omuz: 135, sol_omuz_yan: 10, sol_dirsek: 0, kafa_pan: 90, kafa_tilt: 85}
   arka:
-    - {ms: 0,    sag_omuz: 10,  sag_dirsek: 15, kafa_pan: 90, kafa_tilt: 90}
-    - {ms: 1700, sag_omuz: 150, sag_dirsek: 90, kafa_pan: 45, kafa_tilt: 90}
-    - {ms: 3200, sag_omuz: 150, sag_dirsek: 90, kafa_pan: 45, kafa_tilt: 90}
+    - {ms: 0,    sag_omuz: 45, sag_omuz_yan: 5,  sag_dirsek: 0, sag_bilek: 90, kafa_pan: 90, kafa_tilt: 90}
+    - {ms: 1700, sag_omuz: 10, sag_omuz_yan: 40, sag_dirsek: 0, sag_bilek: 90, kafa_pan: 45, kafa_tilt: 90}
+    - {ms: 3200, sag_omuz: 10, sag_omuz_yan: 40, sag_dirsek: 0, sag_bilek: 90, kafa_pan: 45, kafa_tilt: 90}

@@ -31,3 +31,9 @@ bool imu_var();
 // Robotun yaw açısı, derece (açılıştaki yön = 0, sola dönüş +; sur komutundaki w ile aynı işaret).
 // IMU yoksa NAN döner; çağıran önce imu_var()'a bakmalı.
 float imu_yaw_derece();
+
+// Gövdenin yataydan eğimi, derece (>= 0; öne-arka ve yana eğimin bileşkesi: ivmeölçerin yerçekimi
+// vektörü ile dikey eksen arasındaki açı). main.cpp bunu rampa kipini otomatik açmak için kullanır
+// (RAMPA_EGIM_AC / RAMPA_EGIM_KAPAT). IMU yoksa ya da veri geçersizse NAN: otomatik rampa kipi çalışmaz.
+// ŞİMDİLİK İSKELET: hep NAN (sürücü yazılınca: süzgeçli ivme; sürüş ivmesi eğim gibi okunur).
+float imu_egim_derece();
