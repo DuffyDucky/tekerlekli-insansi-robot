@@ -1,0 +1,242 @@
+{
+ "15": {
+  "cakisma": [],
+  "en_kucuk": [
+   0.0,
+   "Tilt horn merkez vidasi M3",
+   "Tilt servosu cikis mili"
+  ]
+ },
+ "15.5": {
+  "cakisma": [],
+  "en_kucuk": [
+   0.0,
+   "Tilt horn merkez vidasi M3",
+   "Tilt servosu cikis mili"
+  ]
+ },
+ "16": {
+  "cakisma": [],
+  "en_kucuk": [
+   0.0,
+   "Tilt horn merkez vidasi M3",
+   "Tilt servosu cikis mili"
+  ]
+ },
+ "16.5": {
+  "cakisma": [],
+  "en_kucuk": [
+   0.0,
+   "Tilt horn merkez vidasi M3",
+   "Tilt servosu cikis mili"
+  ]
+ },
+ "17": {
+  "cakisma": [],
+  "en_kucuk": [
+   0.0,
+   "Tilt horn merkez vidasi M3",
+   "Tilt servosu cikis mili"
+  ]
+ },
+ "18": {
+  "cakisma": [
+   [
+    "Yuz kabugu (on) sag",
+    "Rulman yuvasi",
+    10.78
+   ],
+   [
+    "Yuz kabugu (on) sol",
+    "Rulman yuvasi",
+    4.97
+   ]
+  ],
+  "en_kucuk": [
+   0.0,
+   "Yuz kabugu (on) sag",
+   "Rulman yuvasi"
+  ]
+ },
+ "19": {
+  "cakisma": [
+   [
+    "Yuz kabugu (on) sag",
+    "Rulman yuvasi",
+    131.8
+   ],
+   [
+    "Yuz kabugu (on) sol",
+    "Rulman yuvasi",
+    32.6
+   ],
+   [
+    "Isil gomme somun M3 (kafa sag/sol on alt (cerceve))",
+    "Rulman yuvasi",
+    0.5
+   ],
+   [
+    "Yuz ekrani 10,1 in HDMI 1280x800 (tahmini model)",
+    "Boyun mili",
+    24.48
+   ]
+  ],
+  "en_kucuk": [
+   0.0,
+   "Yuz kabugu (on) sag",
+   "Rulman yuvasi"
+  ]
+ },
+ "20": {
+  "cakisma": [
+   [
+    "Yuz kabugu (on) sag",
+    "Rulman yuvasi",
+    337.23
+   ],
+   [
+    "Yuz kabugu (on) sag",
+    "6808-2RS alt rulman (dis bilezik)",
+    11.07
+   ],
+   [
+    "Yuz kabugu (on) sag",
+    "6808-2RS ust rulman (dis bilezik)",
+    0.85
+   ],
+   [
+    "Yuz kabugu (on) sol",
+    "Rulman yuvasi",
+    66.86
+   ],
+   [
+    "Yuz kabugu (on) sol",
+    "6808-2RS alt rulman (dis bilezik)",
+    6.34
+   ]
+  ],
+  "en_kucuk": [
+   0.0,
+   "Yuz kabugu (on) sag",
+   "Rulman yuvasi"
+  ]
+ },
+ "-15": {
+  "cakisma": [],
+  "en_kucuk": [
+   0.0,
+   "Tilt horn merkez vidasi M3",
+   "Tilt servosu cikis mili"
+  ]
+ },
+ "-15.5": {
+  "cakisma": [],
+  "en_kucuk": [
+   0.0,
+   "Tilt horn merkez vidasi M3",
+   "Tilt servosu cikis mili"
+  ]
+ },
+ "-16": {
+  "cakisma": [],
+  "en_kucuk": [
+   0.0,
+   "Tilt horn merkez vidasi M3",
+   "Tilt servosu cikis mili"
+  ]
+ },
+ "-16.5": {
+  "cakisma": [],
+  "en_kucuk": [
+   0.0,
+   "Tilt horn merkez vidasi M3",
+   "Tilt servosu cikis mili"
+  ]
+ },
+ "-17": {
+  "cakisma": [
+   [
+    "Arka kafa kabugu sag",
+    "Rulman yuvasi",
+    15.83
+   ]
+  ],
+  "en_kucuk": [
+   0.0,
+   "Arka kafa kabugu sag",
+   "Rulman yuvasi"
+  ]
+ },
+ "-18": {
+  "cakisma": [
+   [
+    "Arka kafa kabugu sag",
+    "Rulman yuvasi",
+    194.05
+   ],
+   [
+    "Arka kafa kabugu sol",
+    "Rulman yuvasi",
+    34.78
+   ]
+  ],
+  "en_kucuk": [
+   0.0,
+   "Arka kafa kabugu sag",
+   "Rulman yuvasi"
+  ]
+ },
+ "-19": {
+  "cakisma": [
+   [
+    "Arka kafa kabugu sag",
+    "Rulman yuvasi",
+    472.18
+   ],
+   [
+    "Arka kafa kabugu sag",
+    "6808-2RS alt rulman (dis bilezik)",
+    23.39
+   ],
+   [
+    "Arka kafa kabugu sol",
+    "Rulman yuvasi",
+    131.49
+   ]
+  ],
+  "en_kucuk": [
+   0.0,
+   "Arka kafa kabugu sag",
+   "Rulman yuvasi"
+  ]
+ },
+ "-20": {
+  "cakisma": [
+   [
+    "Arka kafa kabugu sag",
+    "Rulman yuvasi",
+    642.06
+   ],
+   [
+    "Arka kafa kabugu sag",
+    "6808-2RS alt rulman (dis bilezik)",
+    120.47
+   ],
+   [
+    "Arka kafa kabugu sol",
+    "Rulman yuvasi",
+    226.16
+   ],
+   [
+    "Arka kafa kabugu sol",
+    "6808-2RS alt rulman (dis bilezik)",
+    24.36
+   ]
+  ],
+  "en_kucuk": [
+   0.0,
+   "Arka kafa kabugu sag",
+   "Rulman yuvasi"
+  ]
+ }
+}

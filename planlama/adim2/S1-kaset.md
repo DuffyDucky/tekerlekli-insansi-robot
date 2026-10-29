@@ -127,9 +127,11 @@ ajan kesilirse buradan devam edilir.
   açık), 4,8 g. Kaset gövdesi (arka yüz tablada) ve kapağı (flanş tablada) desteksiz, 108,8 × 108,6 × 6,3 / 4,5 mm, 8,5 / 6,6 g.
 - **Görünüm (`S1-gorunum.py` → `S1-gorunum.json`):** kaset omuz bandının üst yüzünden **26,4 mm** yukarı çıkar (ön-üst köşede, ψ ≈ 300–331°),
   yan yüzden 7,5 mm dışarı (x 159,5), önde r 77,2 omzun ön yüzünü (z ≈ 75,3) ~2 mm geçer. K'nin arka-üst önerisinin ~40 mm'sinden az.
+  **Düzeltme (K3, 26 Ekim 2026):** Y1b'de `u_pay` 4,5 → 6,5 ile üst taşma **26,38 → 28,38 mm (+2,0)**; "görünüm değişmez" notu yanlıştı.
 
 ## Açık sorunlar
-1. 10 × d (15,4) sağlanmıyor (12,91); kablo kalınlığı ölçülmedi: 1,8 çıkarsa 7,5 d sınırı da (15,3) aşılır. Kablo ölçülene dek
+1. 10 × d (15,4) sağlanmıyor (12,91); kablo kalınlığı ölçülmedi: 1,8 çıkarsa 7,5 d sınırı da (15,3) aşılır. **ESKİ (K1, 25 Ekim 2026: kablo
+   ince duvarlı PVC düz 22 AWG, tel ≤ 1,5 mm; silikon U'ya ve kanala sığmaz — aşağıdaki Y1b tablosu geçerli):** Kablo ölçülene dek
    silikon, ince (≤ 1,4 mm) yassı kablo şart; alternatif: h'yi büyütmek (r_duvar +3 → R ~14) = görünüm +3 mm.
 2. Kol S2 ≈ 3,8°'nin altında tambura (göbekle birlikte döner) dayanır, ≈ 3,5°'de sabit flanşa: S2 servosu güçsüzken kol asılı durursa
    tambur dudağı yumuşak dayanak olur; S1 elle çevrilirse sürtünme yok (aynı gövde). Servo sıfır hatası ≤ ±2° olmalı (5° alt sınır).
@@ -149,7 +151,7 @@ Ana tasarım 1,70 m (`taslak-170/`, modülleri import eder): değişiklikler mod
 | K1 | **Kablo spesifikasyonu: ince duvarlı PVC düz 22 AWG servo kablosu, tek tel (damar) ≤ 1,5 mm (tercihen ≤ 1,4), ALMADAN ÖNCE kumpasla ölçülür.** Kaset ölçüsü aynı. `arayuz.KOL_KABLO["serit"]` notu. Silikon yalnız not: gerekirse duvar r +6 (81,2), kanal ≥ 5,7, L ≈ 190,5, cep/pim yeniden (görünüm ≈ +6). 26 AWG önerilmez (gerilim düşümü). | d 1,4: R 12,91 ≥ 11,90; d 1,5: R 12,80 ≥ 12,75, eksenel 4,5 ≤ 4,8 (K2-serit) |
 | K2 | Tamburdaki kayış yarıkları kaldırıldı → **Ø0,4 mumlu polyester bağlama ipi** yolu (ψ_g 148 / 156): halka iç yüzünde 0,5 oluk, iki dudak iç yüzünde 0,3 cep, halkadan radyal kanal; ilmek halka zarfının içinde. İp omuzda parça olarak modelli (`S1 tambur baglama ipi` ×2, Gobek). Baskılı kelepçe sığmadı (kanal 4,8 / demet 4,2; dudak ↔ flanş 0,5 radyal; ankraj yeri yok). | ip ↔ kapak cıvatası **0,809**, ↔ rulman kapağı 1,20, ↔ kaset kapağı 0,60 (S1 −60…180 / 1°) ≥ 0,3 ✔; ip ↔ tambur ortak 0; tambur ↔ sabit 0,50 (değişmedi) |
 | K3 | Kapak flanşı iç kenarının dış (x 159,5) köşesine **1,2 × 1,2 pah** (iç yüz r 44,2 korunur) + yazılım bağımlı sınırı **S1 ≥ 120° iken S2 ≤ 117°** (`KOL_KABLO.s1.s2_s1_kosul` → `kod/ortak/eklem_sinirlari.json` `bagimli`, r ve l, gerekçeli). | S2 lopu ↔ flanş: S2 120 **+0,39** (önce −0,30); S2 117 **0,89**; S1 120 / S2 120 0,66 → izinli bölgede en az ≈ 0,66 |
-| K4 | `u_pay` 4,5 → **6,5**; kaset duvarına **duvar bağı ip delikleri** (ψ 226,5 / 230: arka plaka dibinde 0,8 × 1,2 radyal yarık + duvar üst kenarında 0,8 × 1,2 çentik; kayışlı bağ 0,8 / 0,3 eksenel aralığa sığmaz); montaj talimatı **L 171,4 mm (−5…0)**, S1 yazılım üst sınırı 135 kesin (`KOL_KABLO.s1.L_tol`). | U ucu ↔ cep temas eşiği **L +2,7 mm / S1 +3,8°** (önce +0,7 / +1). Kontrolün hedefi (+3 / +4°) için u_pay ≈ 7,0 gerekirdi (açık) |
+| K4 | `u_pay` 4,5 → **6,5**; kaset duvarına **duvar bağı ip delikleri** (ψ 226,5 / 230: arka plaka dibinde 0,8 × 1,2 radyal yarık + duvar üst kenarında 0,8 × 1,2 çentik; kayışlı bağ 0,8 / 0,3 eksenel aralığa sığmaz); montaj talimatı **L 171,4 mm (−5…0)**, S1 yazılım üst sınırı 135 kesin (`KOL_KABLO.s1.L_tol`). | U ucu ↔ cep temas eşiği **L +2,7 mm / S1 +3,8°** (önce +0,7 / +1). ~~Kontrolün hedefi (+3 / +4°) için u_pay ≈ 7,0 gerekirdi (açık)~~ → **KZ1** (aşağıda, Y2a): sınırlayan pim dikmesiydi, `u_pay` 6,5 kalır, pim boşluğu 0,5 → 1,0 |
 | K5 | Montaj sırası önden radyal (aşağıda, M6 G4 satırı da). | gövde x 0: S1 −45 / −20 / 0 × S2 90 ve S1 −45 × S2 5 → çakışma 0; kapak x +3,3: dört pozda 0; +3,6'da S1 −45 / −20'de göbek (önceki gibi) |
 | K6 | Statik / ev pozu çakışma kontrolü yazılım ev pozunda (S1 0, S2 5), S2 0 bilgi satırı: `carpisma.py` statik (+ `carpisma_kos` birleştirme), `taslak_montaj.py`, `taslak_analiz.py` statik. Eklem sıfırı değişmedi. | carpisma statik: S2 5'te 0 (S2 0 bilgi 2); taslak_montaj: S2 5'te 0 (S2 0 bilgi 4); omuz_montaj S2 5'te 0 |
 | B9 | **İkinci pim:** U'nun süpürdüğü halkaya konamaz → duvar dışı kulak ψ 300, r 80 (gövde: dikme + köprü; kapak: flanş uzantısı + Ø3 pim −x, 3 mm). | delik iç kenarı r 78,4 > duvar dış 77,2 (kanala 3,2); kabuk içi çakışma 0; kapak baskısı desteksiz |
@@ -161,7 +163,8 @@ Ana tasarım 1,70 m (`taslak-170/`, modülleri import eder): değişiklikler mod
 3. Kablo G2 → tambur bağı (ψ_g 145): 3 şerit kanala teğet (bağ açısı 0 ± 2°), iki ip demetin üstünde düğümlenir (cerrah + kare düğüm, uç 3 mm).
 4. **Kaset gövdesi önden radyal, x ofsetsiz** (arka plaka omuz pedine yaslı kayar; S1 −45 / −20 / 0 ve S2 90, ya da S1 −45 / S2 5).
 5. U elle kanala, dış koşu duvar boyunca, ψ 214'te radyal içeri → yarık. **L 171,4 mm (−5…0)** tambur bağından duvar bağına (kabloda işaret).
-6. **Duvar bağı:** iki ip (ψ 226,5 / 230) duvar deliklerinden, düğüm duvarın dışında.
+6. **Duvar bağı:** iki ip (ψ 226,5 / 230) duvar deliklerinden, düğüm duvarın dışında. İp sıkılırken **demet −x'e (arka plakaya) itilir**
+   (eksenel pay 0,3 mm; K3 K4b).
 7. **Kapak önden radyal, flanş gövdeden x +3,3…5 mm havada** (S1 0…135°, S2 ≥ 30°; S1 −45°'de en çok +3,3); sonra **−x itilir**: iki Ø3 pim (uç ψ 331 + kulak ψ 300) yuvasına.
 8. 2 dikme cıvatası M3×8: **S1 −45° / S2 90°**'de anahtar erişimi ≥ 8 mm. (+x yönünden kaydırma olmaz: gövde/kapak göbeğe ve tüpe çarpar.)
 
@@ -181,9 +184,15 @@ kontroller geçti, kaset baskısı desteksiz, kütle 4.922,3 g), dirsek (kablo k
 Kısa kontrol: `S1-duzeltme-kontrol.py` → `S1-duzeltme-kontrol.json`.
 
 ### Açık (Y1b sonrası)
-- U cebi payı L +2,7 / S1 +3,8° (hedef +3 / +4° için u_pay 7,0).
+- ~~U cebi payı L +2,7 / S1 +3,8° (hedef +3 / +4° için u_pay 7,0).~~ → KZ1 ile kapandı (aşağıda, Y2a).
 - Gövde kulağı ↔ kapak 0,38 mm³ modelleme bindirmesi (x 158,3'te 0,01 mm; eşik 0,5 altında), sonraki üretimde 0'a çekilebilir.
 - B11 (yasak kutu kol koşulu yana [5, 15]) uygulanmadı (kafa-kol kutusu, C7/Y4).
 - `dirsek_montaj` uzatma boyu S2'yi eski düzende hesaplıyor; ana montaj, `carpisma` diğer bölümleri, görseller ve rapor.html'ler bayat (Y4).
 - Bağlama ipi düğümü (≈ 1–1,5 mm) modelde yok; kanal ortasında, flanş / arka plakadan uzak (eksenel ≥ 1). M7'ye kaset + gerçek kablo 10⁴ döngü kuponu önerisi duruyor.
 
+
+## Y2a (29 Ekim 2026; 1,65 m ana tasarım, `planlama/y2/Y2a-gunluk.md`): KZ1 + KZ2 uygulandı
+| # | Ne yapıldı | Ölçülen (yeniden üretimden sonra) |
+|---|---|---|
+| KZ1 | `KOL_KABLO.s1.duvar.pim.bosluk` **0,5 → 1,0**; `u_pay` **6,5 kalır** | Kabuk-montaj.FCStd (29 Ekim 02:41) üzerinde K3 `cep` ölçümünün kopyası (scratch; `K3-*.json`'a dokunulmadı): U ucu ↔ cep temas eşiği **L +3,73 mm / S1 +5,19°** (önce +2,73 / +3,80; hedef ≥ +3 / +4 ✔). Pim dikmesi S1 135'te 3,75 mm (önce 3,26); uç pimi ψ 331,77. Duvar ipi deliği bölgesi −0,003 (bilinen, değişmedi) |
+| KZ2 | Tambur ip yolunun halka deliği eksenel genişliği 0,45 → **0,8** (`ip.delik_eksenel`; yalnız kanal altında, dudak cebi aynı) | omuz 75 parça, S2 5 statik 0; tambur ↔ sabit kontrolü dirsek_montaj S1 hafif taramasında 0,50 (değişmedi) |

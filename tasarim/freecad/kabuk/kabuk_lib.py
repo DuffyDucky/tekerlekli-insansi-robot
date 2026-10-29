@@ -1,6 +1,6 @@
 # Kabuk modulu - parca kutuphanesi (FreeCAD 1.1, Part). Genel elemanlar ../ortak_lib.py'de; burada kabuga ozgu:
 # yuvarlatilmis dikdortgen kesit, cizgisel (ruled) loft zarf, damla (teardrop) boss, ISO 7380 bombe basli civata,
-# ekran cercevesi donusumu ve kesit parametreleri (analitik: ruled loft'ta ara kesit = dogrusal ara deger).
+# kesit parametreleri (analitik: ruled loft'ta ara kesit = dogrusal ara deger).
 import os, sys, math
 import FreeCAD as App
 import Part
@@ -118,26 +118,4 @@ def screw7380(d, L, p, direction):
     return head.fuse(Part.makeCylinder(d / 2, L, p, u)).removeSplitter()
 
 
-# ------------------------------------------------------------------ ekran cercevesi
-def ekran_matris():
-    """Yerel (s, v, w) -> global: s = +X, v = ekran yukarisi, w = ekran normali (cam onu w = 0)."""
-    c, s = math.cos(math.radians(A.GOGUS_EGIM)), math.sin(math.radians(A.GOGUS_EGIM))
-    return matris((1, 0, 0), (0, c, -s), (0, s, c), (0.0, A.GOGUS_Y, A.GOGUS_Z))
-
-
-def ekran_olculeri():
-    """Datasheet olculerinden PCB merkezli ekran cercevesinde dikdortgenler: cam, aktif alan, pencere, delikler."""
-    N = A.NEXTION
-    L, Wd, _ = N["pcb"]
-    cl, cw = N["cam"]
-    al, aw = N["aa"]
-    k_uzun, k_kisa = N["cam_kenar"]
-    a_uzun, a_kisa = N["aa_kenar"]
-    # portre cizim: ust kenar -> +s ucu (sag, +X), sag kenar -> +v (ekranin ustu); konnektor alt kenarda (-s ucu)
-    cam = (L / 2 - k_uzun - cl, L / 2 - k_uzun, Wd / 2 - k_kisa - cw, Wd / 2 - k_kisa)
-    aa = (L / 2 - k_uzun - a_uzun - al, L / 2 - k_uzun - a_uzun, Wd / 2 - k_kisa - a_kisa - aw, Wd / 2 - k_kisa - a_kisa)
-    p = N["pencere_pay"]
-    pencere = (aa[0] - p, aa[1] + p, aa[2] - p, aa[3] + p)
-    dx, dy = N["delik_ara"][0] / 2, N["delik_ara"][1] / 2
-    delikler = [(sx * dx, sy * dy) for sx in (-1, 1) for sy in (-1, 1)]
-    return dict(cam=cam, aa=aa, pencere=pencere, delikler=delikler, pcb=(-L / 2, L / 2, -Wd / 2, Wd / 2))
+# (Nextion ekran cercevesi yardimcilari 1,65 m'de kaldirildi: gogus ekrani yok; Duffy, 25 Ekim 2026)

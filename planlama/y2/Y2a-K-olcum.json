@@ -1,0 +1,545 @@
+{
+ "parca": {
+  "iskelet": 59,
+  "omuz_sag": 73,
+  "omuz_sol": 73,
+  "kabuk": 291,
+  "dirsek_sag": 57,
+  "dirsek_sol": 57,
+  "kafa": 147,
+  "taban": 316
+ },
+ "parca_toplam": 1073,
+ "kutle_g": 24396.08,
+ "boy": {
+  "ymax": 1650.0,
+  "ymin": 0.0,
+  "en_ust": [
+   [
+    1650.0,
+    "kafa",
+    "Yuz kabugu (on) sol"
+   ],
+   [
+    1650.0,
+    "kafa",
+    "Yuz kabugu (on) sag"
+   ],
+   [
+    1650.0,
+    "kafa",
+    "Arka kafa kabugu sol"
+   ],
+   [
+    1650.0,
+    "kafa",
+    "Arka kafa kabugu sag"
+   ],
+   [
+    1649.97,
+    "kafa",
+    "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol on ust)"
+   ]
+  ]
+ },
+ "zarf": {
+  "x": [
+   -261.7,
+   261.7
+  ],
+  "z": [
+   -264.2,
+   268.0
+  ]
+ },
+ "direk": {
+  "y": [
+   134.5,
+   1320.0
+  ],
+  "L": 1185.5,
+  "x": [
+   -20.0,
+   20.0
+  ],
+  "z": [
+   -20.0,
+   20.0
+  ]
+ },
+ "tekerler": [
+  [
+   "Teker 125 x 58 (arka sol)",
+   [
+    -216.0,
+    62.5,
+    -185.0
+   ],
+   58.0,
+   -5.15
+  ],
+  [
+   "Teker 125 x 58 (on sol)",
+   [
+    -216.0,
+    62.5,
+    185.0
+   ],
+   58.0,
+   -5.15
+  ],
+  [
+   "Teker 125 x 58 (arka sag)",
+   [
+    216.0,
+    62.5,
+    -185.0
+   ],
+   58.0,
+   -5.15
+  ],
+  [
+   "Teker 125 x 58 (on sag)",
+   [
+    216.0,
+    62.5,
+    185.0
+   ],
+   58.0,
+   -5.15
+  ]
+ ],
+ "nextion_artigi": [
+  "Yuz ekrani 10,1 in HDMI 1280x800 (tahmini model)",
+  "Ekran tutucu tirnak (ust sol)",
+  "Ekran tutucu tirnak (alt sol)",
+  "Ekran tutucu tirnak (ust sag)",
+  "Ekran tutucu tirnak (alt sag)"
+ ],
+ "aku_adaylar": [
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   [
+    -90.5,
+    90.5,
+    94.5,
+    171.5,
+    -205.0,
+    -29.0
+   ]
+  ],
+  [
+   "Aku kayisi 25 mm (z -140)",
+   [
+    -92.5,
+    92.5,
+    90.0,
+    173.2,
+    -152.5,
+    -127.5
+   ]
+  ],
+  [
+   "Aku kayisi 25 mm (z -80)",
+   [
+    -92.5,
+    92.5,
+    90.0,
+    173.2,
+    -92.5,
+    -67.5
+   ]
+  ],
+  [
+   "Aku on takozu",
+   [
+    -80.0,
+    80.0,
+    94.5,
+    119.5,
+    -37.5,
+    -20.5
+   ]
+  ]
+ ],
+ "aku_dz_0": [],
+ "aku_dz_75": [
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Sase ara rayi orta",
+   131460.0
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Govde diregi",
+   26873.0
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Kose baglanti 40x40 genis (Direk-ray sag)",
+   16677.9
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Pul M6 (Direk-ray sag, ayak A)",
+   129.5
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Civata M6x16 (Direk-ray sag, ayak A)",
+   845.7
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Cekic somun M6 (Direk-ray sag, ayak A)",
+   658.6
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Pul M6 (Direk-ray sag, ayak B)",
+   129.5
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Civata M6x16 (Direk-ray sag, ayak B)",
+   845.7
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Cekic somun M6 (Direk-ray sag, ayak B)",
+   658.6
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Kose baglanti 40x40 genis (Direk-ray sol)",
+   16677.9
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Pul M6 (Direk-ray sol, ayak A)",
+   129.5
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Civata M6x16 (Direk-ray sol, ayak A)",
+   845.7
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Cekic somun M6 (Direk-ray sol, ayak A)",
+   658.6
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Pul M6 (Direk-ray sol, ayak B)",
+   129.5
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Civata M6x16 (Direk-ray sol, ayak B)",
+   845.7
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Cekic somun M6 (Direk-ray sol, ayak B)",
+   658.6
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Ic kose baglanti kanal 10 (Sase sag orta on yuz)",
+   1777.6
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Set vida M6x10 (Sase sag orta on yuz, ara ray)",
+   254.7
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Ic kose baglanti kanal 10 (Sase sag orta arka yuz)",
+   1777.6
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Set vida M6x10 (Sase sag orta arka yuz, ara ray)",
+   254.7
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Ic kose baglanti kanal 10 (Sase sol orta on yuz)",
+   1777.6
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Set vida M6x10 (Sase sol orta on yuz, ara ray)",
+   254.7
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Ic kose baglanti kanal 10 (Sase sol orta arka yuz)",
+   1777.6
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "iskelet",
+   "Set vida M6x10 (Sase sol orta arka yuz, ara ray)",
+   254.7
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "taban",
+   "Civata M6x14 (plaka, ara ray z +0, z +0)",
+   311.0
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "taban",
+   "Cekic somun M6 (plaka, ara ray z +0, z +0)",
+   658.6
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "taban",
+   "Civata M6x14 (plaka, ara ray z +0, z +0)",
+   311.0
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "taban",
+   "Cekic somun M6 (plaka, ara ray z +0, z +0)",
+   658.6
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "taban",
+   "Isil gomme somun M3 (takoz x -60)",
+   31.3
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "taban",
+   "Civata M3x8 (takoz x -60)",
+   35.3
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "taban",
+   "Isil gomme somun M3 (takoz x +60)",
+   31.3
+  ],
+  [
+   "Aku LiFePO4 12,8 V (yatik)",
+   "taban",
+   "Civata M3x8 (takoz x +60)",
+   35.3
+  ],
+  [
+   "Aku kayisi 25 mm (z -140)",
+   "taban",
+   "Alt plaka",
+   114.7
+  ],
+  [
+   "Aku kayisi 25 mm (z -80)",
+   "iskelet",
+   "Sase ara rayi orta",
+   1208.4
+  ],
+  [
+   "Aku kayisi 25 mm (z -80)",
+   "iskelet",
+   "Govde diregi",
+   604.2
+  ],
+  [
+   "Aku kayisi 25 mm (z -80)",
+   "iskelet",
+   "Ic kose baglanti kanal 10 (Sase sag orta arka yuz)",
+   102.4
+  ],
+  [
+   "Aku kayisi 25 mm (z -80)",
+   "iskelet",
+   "Ic kose baglanti kanal 10 (Sase sol orta arka yuz)",
+   102.4
+  ],
+  [
+   "Aku kayisi 25 mm (z -80)",
+   "taban",
+   "Alt plaka",
+   225.0
+  ],
+  [
+   "Aku kayisi 25 mm (z -80)",
+   "taban",
+   "Civata M6x14 (plaka, ara ray z +0, z +0)",
+   117.8
+  ],
+  [
+   "Aku kayisi 25 mm (z -80)",
+   "taban",
+   "Civata M6x14 (plaka, ara ray z +0, z +0)",
+   117.8
+  ],
+  [
+   "Aku on takozu",
+   "taban",
+   "XL4016 servo 6 V B (sol kol + tilt)",
+   303.7
+  ],
+  [
+   "Aku on takozu",
+   "taban",
+   "XL4016 cevre 5 V",
+   303.7
+  ]
+ ],
+ "tambur_bb": [
+  152.5,
+  163.0
+ ],
+ "tambur_delik": {
+  "psi+148_r37.5": [],
+  "psi+148_r38.0": [],
+  "psi+148_r38.5": [],
+  "psi-148_r37.5": [
+   [
+    153.21,
+    153.99,
+    0.79
+   ],
+   [
+    157.81,
+    158.59,
+    0.79
+   ]
+  ],
+  "psi-148_r38.0": [
+   [
+    153.21,
+    153.99,
+    0.79
+   ],
+   [
+    157.81,
+    158.59,
+    0.79
+   ]
+  ],
+  "psi-148_r38.5": [
+   [
+    153.21,
+    153.99,
+    0.79
+   ],
+   [
+    157.81,
+    158.59,
+    0.79
+   ]
+  ],
+  "psi+156_r37.5": [],
+  "psi+156_r38.0": [],
+  "psi+156_r38.5": [],
+  "psi-156_r37.5": [
+   [
+    153.21,
+    153.99,
+    0.79
+   ],
+   [
+    157.81,
+    158.59,
+    0.79
+   ]
+  ],
+  "psi-156_r38.0": [
+   [
+    153.21,
+    153.99,
+    0.79
+   ],
+   [
+    157.81,
+    158.59,
+    0.79
+   ]
+  ],
+  "psi-156_r38.5": [
+   [
+    153.21,
+    153.99,
+    0.79
+   ],
+   [
+    157.81,
+    158.59,
+    0.79
+   ]
+  ]
+ },
+ "kk_s1_keys": [
+  "durum",
+  "serit",
+  "kanal_x",
+  "tambur",
+  "duvar",
+  "alfa_min",
+  "bag_duvar_psi",
+  "L",
+  "L_tol",
+  "s2_s1_kosul",
+  "s2_birlesim",
+  "dikme",
+  "dikme_r",
+  "dikme_vida",
+  "kulak",
+  "cikis",
+  "gecis",
+  "govde_ici",
+  "govde_dikey",
+  "s2_servo_kablo",
+  "jr_pay"
+ ],
+ "kafa_kol": {
+  "cakisma": [],
+  "cakisma_n": 0,
+  "en_kucuk": [
+   26.4,
+   [
+    [
+     135.0,
+     5.0,
+     105.0,
+     30.0,
+     -15.0
+    ],
+    "El",
+    "Yuz kabugu (on) sag"
+   ]
+  ]
+ }
+}

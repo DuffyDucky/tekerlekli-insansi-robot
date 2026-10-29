@@ -6,6 +6,9 @@
 # arayuz karti (E2/E3); on kat on bandinda servo dagitim A/B (E1). K1 (a) omni secenegi arayuz.TABAN['omni']['aktif'] ya da
 # TABAN_OMNI=1 ile (varsayilan kapali). Elektrik kararlari planlama/adim3/elektrik.md. Import edilebilir: taban_montaj.py (kontroller + kayit), 2. asamada ../carpisma.py ve montaj/.
 # Koordinat = global (arayuz.py): orijin zemin + robot merkezi, +X sag, +Y yukari, +Z ileri, mm. Olculer arayuz.TABAN'dan.
+# 1,65 m / TABAN 520 (Y2a, 29 Ekim 2026; taslak-170 davranisi): tahrik her yana TABAN_DX (38) disari, alt plaka 346 genis, braket
+# M4'leri plaka ustunde DIN 985 (ray disinda), acil stop / ana anahtar etekle (arayuz). Kat ve guc paneli 270 kalir. Aku 75 mm one
+# KARARI UYGULANAMADI (arayuz TABAN notu, planlama/y2/Y2a-gunluk.md): aku yerinde.
 import os, sys, math, time
 import FreeCAD as App
 import Part
@@ -28,8 +31,12 @@ LAZER = {}      # lazer kesim parcasi -> dict(y0, malzeme, kalinlik)
 YOL = []        # kablo yolu semasi: (devre, renk, nokta listesi)
 DOLULUK = 0.8   # kucuk baski parcalari etkin doluluk (tahmini; dirsek/kafa ile ayni)
 UP, DOWN = V(0, 1, 0), V(0, -1, 0)
-X_BR = (A.W0 / 2 - 2) + (A.V3_W - A.W0) / 2          # 133 (rc:95 + xm='s')
-X_WH = X_BR + 2 + 14 + A.TEKER_W / 2                  # 178
+# TABAN 520 (Duffy, 25 Ekim 2026; Y2a): tahrik (motor + braket + kaplin + teker) her yana TABAN_DX (38) disari (taslak-170 davranisi).
+DX = A.TABAN_DX
+X_BR = (A.W0 / 2 - 2) + (A.V3_W - A.W0) / 2 + DX     # 171 (rc:95 + xm='s' 133 + TABAN_DX); arayuz._X_BR ile ayni
+X_WH = X_BR + 2 + 14 + A.TEKER_W / 2                  # 216 (125 cm: 178)
+assert abs(X_BR - A._X_BR) < 1e-9 and abs(X_WH - A._X_WH) < 1e-9
+BRK_SOMUN_KANAL = abs(T["braket_civata"]["x"] - A.UZUN_RAY_X) < A.SG / 2 - 5   # braket civatasi uzun rayin alt kanalinda mi (125 cm: evet)
 Z_WH = A.L0 / 2 - 65                                  # 185
 RX = A.UZUN_RAY_X                                     # 115
 RHO = {"Al 5754": 2.66, "Kontrplak": 0.68, "Celik": 7.85, "Celik 8.8": 7.85, "Naylon": 1.14, "Pirinc": 8.5,
@@ -107,8 +114,9 @@ for sx in (-1, 1):
         x0, x1 = sorted((sx * KAYIS_X[0], sx * KAYIS_X[1]))
         kes.append(yarik_y(x0, x1, z - T["kayis_en"] / 2 - 2.5, z + T["kayis_en"] / 2 + 2.5, y0p, tp))
 pl = pl.cut(Part.makeCompound(kes)).removeSplitter()
-PLAKA = add("Alt plaka", "Plaka", pl, "Lazer", "Al 5754", kod="Alt plaka 270 x 500 x 3 Al 5754 (lazer kesim)", renk="alu2",
-            patlat=(0, -150, 0), not_="sigma raylarina 14x M6 + cekic somun; motor braketleri 8x M4 + cekic somun")
+PLAKA = add("Alt plaka", "Plaka", pl, "Lazer", "Al 5754", kod="Alt plaka %.0f x %.0f x 3 Al 5754 (lazer kesim)" % (2 * PX, 2 * PZ), renk="alu2",
+            patlat=(0, -150, 0), not_="sigma raylarina 14x M6 + cekic somun; motor braketleri 8x M4 + %s" % (
+                "cekic somun" if BRK_SOMUN_KANAL else "DIN 985 kontra somun (plaka ustunde; 520 tabanda braket ray disinda, rijitlik acik)"))
 LAZER["Alt plaka"] = dict(y0=y0p, malzeme="Al 5754 3 mm", kalinlik=tp)
 log("alt plaka", len(kes), "kesim")
 
@@ -160,8 +168,9 @@ for sx in (-1, 1):
             aciklama="M5 cekic somun + M5x16 saplama (somunu tam gecer, kanal tabanina 2,5), burc saplamaya ~6,7 mm vidalanir")
 YK = T["kat_ayrim_z"]
 KAT_ON_Z0, KAT_ARKA_Z1 = YK + 0.25, YK - 0.25
-kat_on = plaka_xz(-PX, PX, KAT_ON_Z0, PZ, y0d, td, {(-1, 1): PR, (1, 1): PR, (-1, -1): 2.0, (1, -1): 2.0})
-kat_ar = plaka_xz(-PX, PX, -PZ, KAT_ARKA_Z1, y0d, td, {(-1, -1): PR, (1, -1): PR, (-1, 1): 2.0, (1, 1): 2.0})
+KX = A.V3_W / 2   # kat 270 genis kalir (520 tabanda yalniz alt plaka genisler; arayuz 'Elektronik kati' bolgesi V3_W)
+kat_on = plaka_xz(-KX, KX, KAT_ON_Z0, PZ, y0d, td, {(-1, 1): PR, (1, 1): PR, (-1, -1): 2.0, (1, -1): 2.0})
+kat_ar = plaka_xz(-KX, KX, -PZ, KAT_ARKA_Z1, y0d, td, {(-1, -1): PR, (1, -1): PR, (-1, 1): 2.0, (1, 1): 2.0})
 kes_on, kes_ar = [], []
 for sx in (-1, 1):
     for z in T["burc_z"]:
@@ -247,7 +256,8 @@ for sx in (-1, 1):
             it = add("Teker 125 x 58 (%s)" % k, "Tahrik", ayna(teker0, sx, sz), "Satin", "Kaucuk + plastik", kod="Arazi tekerlegi 125 x 58",
                      renk="lastik", patlat=(sx * 170, -40, sz * 40), kutle=L.TEK["kutle_g"])
         TEKER[(sx, sz)] = it
-        # braket -> plaka -> uzun ray: 2x M4x16 + pul (flans altindan) + M4 cekic somun
+        # braket -> plaka (-> uzun ray): 2x M4x16 + pul (flans altindan). 125 cm: uzun rayin alt kanalinda M4 cekic somun.
+        # 520 taban (Y2a; taslak-170 ile ayni): braket civatasi x 153 rayin (x 95...135) disinda -> plaka ustunde M4 DIN 985 kontra somun.
         yf = A.Y_PL - L.BRK["t"]
         for s in (-1, 1):
             x, z = sx * T["braket_civata"]["x"], sz * Z_WH + s * T["braket_civata"]["dz"]
@@ -256,13 +266,22 @@ for sx in (-1, 1):
                      renk="celik", patlat=(sx * 90, -80, sz * 40))
             iv = add("Civata M4x16 (braket %s %+d)" % (k, s), "Tahrik", vida912(4, 16, (x, yb, z), UP), "Baglanti", "Celik 8.8",
                      kod="M4x16 DIN 912", renk="celik", patlat=(sx * 90, -110, sz * 40))
-            isn = add("Cekic somun M4 (braket %s %+d)" % (k, s), "Tahrik", hammer_nut((x, A.Y_RAIL0 + A.LIP, z), DOWN, V(1, 0, 0), d=4),
-                      "Baglanti", "Celik", kod="M4 cekic somun, kanal 10 (tahmini olcu)", renk="celik", patlat=(sx * 40, 60, sz * 40))
             uc = yb + 16
-            bag("Motor braketi - plaka - uzun ray (%s %+d)" % (k, s), "kanal", dict(vida=iv, pul=iw, somun=isn, govde=[ibr, PLAKA]),
-                dict(d=4, uc=uc - A.Y_RAIL0, somun_ust=A.LIP + 5.0, taban=A.KANAL_TABAN, kavrama=min(uc, A.Y_RAIL0 + A.LIP + 5) - (A.Y_RAIL0 + A.LIP)),
-                temas=[(iw, ibr), (iv, iw), (ibr, PLAKA)], eksen=(V(x, 0, z), UP, [(iv, 2.0), (isn, 2.0)]),
-                aciklama="flans + plaka sikistirilir; braket motor takilmadan once baglanir (anahtar reduktorden gecmez)")
+            if BRK_SOMUN_KANAL:
+                isn = add("Cekic somun M4 (braket %s %+d)" % (k, s), "Tahrik", hammer_nut((x, A.Y_RAIL0 + A.LIP, z), DOWN, V(1, 0, 0), d=4),
+                          "Baglanti", "Celik", kod="M4 cekic somun, kanal 10 (tahmini olcu)", renk="celik", patlat=(sx * 40, 60, sz * 40))
+                bag("Motor braketi - plaka - uzun ray (%s %+d)" % (k, s), "kanal", dict(vida=iv, pul=iw, somun=isn, govde=[ibr, PLAKA]),
+                    dict(d=4, uc=uc - A.Y_RAIL0, somun_ust=A.LIP + 5.0, taban=A.KANAL_TABAN, kavrama=min(uc, A.Y_RAIL0 + A.LIP + 5) - (A.Y_RAIL0 + A.LIP)),
+                    temas=[(iw, ibr), (iv, iw), (ibr, PLAKA)], eksen=(V(x, 0, z), UP, [(iv, 2.0), (isn, 2.0)]),
+                    aciklama="flans + plaka sikistirilir; braket motor takilmadan once baglanir (anahtar reduktorden gecmez)")
+            else:
+                isn = add("Somun M4 DIN 985 (braket %s %+d)" % (k, s), "Tahrik", nut(4, (x, A.Y_RAIL0, z), UP, kind="985"),
+                          "Baglanti", "Celik", kod="M4 DIN 985 naylon somun", renk="celik", patlat=(sx * 40, 60, sz * 40))
+                m985 = A.NUT985[4][1]
+                bag("Motor braketi - plaka (%s %+d)" % (k, s), "somun", dict(vida=iv, pul=iw, somun=isn, govde=[ibr, PLAKA]),
+                    dict(d=4, uc_disari=uc - (A.Y_RAIL0 + m985), kavrama=min(uc, A.Y_RAIL0 + m985) - A.Y_RAIL0),
+                    temas=[(iw, ibr), (iv, iw), (ibr, PLAKA), (isn, PLAKA)], eksen=(V(x, 0, z), UP, [(iv, 2.0), (isn, 2.0)]),
+                    aciklama="520 taban: flans + plaka sikistirilir, plaka ustunde M4 DIN 985 (braket ray disinda; taslak-170 ile ayni)")
         # motor -> braket: 4x M3x6 DIN 912 reduktor on yuzu deliklerine (O31 daire)
         for i, (yy, zz) in enumerate(jgb_delikler()):
             if (30, 90, 150, 210, 270, 330)[i] not in L.JGB_DELIK_ACI:
@@ -498,6 +517,7 @@ log("sensor")
 
 # ====================================================================== 8) KABLO YOLU SEMASI (Referans: taramaya ve kutleye girmez)
 ex, ez = ES["x"], ES["z"]
+S3Y = A.S3   # 1,65 m: govde ici dikey hatlar omuz / kafa yuksekligine kadar (125 cm'de 955)
 SKC = V(cx, YD1 + 36, cz)
 YOL += [
     ("12 V ana hat: aku + -> XT60 -> ana sigorta 30 A -> ana anahtar -> sigorta kutusu", "kirmizi",
@@ -507,31 +527,32 @@ YOL += [
      [(65.5, 133, -29), (62, 160, -29), (60, 190, -30), (30, 186, -60), (-20, 186, -90)]),
     ("Motor 12 V: F1 20 A -> role -> WAGO -> BTS7960 sol/sag -> motor kablo delikleri -> 4 motor", "turuncu",
      [(cx - 40, YD1 + 36, cz), (rx, YD1 + 46, rz), (-60, 182, -30), (-60, 150, 0), (-50, 145, 60), (-67.5, 145, 140), (-80, 120, 196),
-      (-80, 90, 200), (-100, 85, 185)]),
+      (-80, 90, 200), (-(100 + DX), 85, 185)]),
     ("Motor 12 V sag kol + arka motorlar (plaka altindan z 36 deliginden)", "turuncu",
-     [(-50, 145, 60), (50, 145, 60), (67.5, 145, 140), (80, 120, 196), (80, 88, 200), (100, 85, 185), (80, 120, 140), (80, 112, 40),
-      (80, 88, 36), (80, 87, -150), (100, 85, -185)]),
+     [(-50, 145, 60), (50, 145, 60), (67.5, 145, 140), (80, 120, 196), (80, 88, 200), (100 + DX, 85, 185), (80, 120, 140), (80, 112, 40),
+      (80, 88, 36), (80, 87, -150), (100 + DX, 85, -185)]),
     ("Servo 6 V A (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol + pan", "sari",
      [(rx, YD1 + 46, rz), (-60, 182, -30), (-30, 150, 40), (0, 130, 150), (0, 140, 170), (20, 150, 160), (30, 190, 165), (SD_C["A"][0], 200, SD_C["A"][1]),
-      (40, 205, 180), (25, 230, 26), (25, 262, -26), (0, 400, -26), (0, 900, -26), (60, 955, -26), (100, 955, -26)]),
-    ("Servo uzatmalari kafaya: pan (A) + tilt (B) (direk ustu, R62 halkasindan)", "sari", [(0, 900, -26), (0, 975, -30), (0, 1010, -10)]),
+      (40, 205, 180), (25, 230, 26), (25, 262, -26), (0, 400, -26), (0, S3Y - 55, -26), (60, S3Y, -26), (100, S3Y, -26)]),
+    ("Servo uzatmalari kafaya: pan (A) + tilt (B) (direk ustu, R62 halkasindan)", "sari", [(0, S3Y - 55, -26), (0, S3Y + 20, -30), (0, S3Y + 55, -10)]),
     ("Servo 6 V B (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol + tilt", "sari",
      [(rx, YD1 + 46, rz), (-62, 182, -30), (-55, 150, 20), (T["xl"][0][0], 125, T["xl"][0][1]), (-40, 150, 150), (-30, 190, 165),
-      (SD_C["B"][0], 200, SD_C["B"][1]), (-40, 205, 180), (-25, 230, 26), (-25, 262, -26), (-5, 400, -26), (-5, 900, -26), (-60, 955, -26),
-      (-100, 955, -26)]),
+      (SD_C["B"][0], 200, SD_C["B"][1]), (-40, 205, 180), (-25, 230, 26), (-25, 262, -26), (-5, 400, -26), (-5, S3Y - 55, -26), (-60, S3Y, -26),
+      (-100, S3Y, -26)]),
     ("Kafa 12 V (K4/E4): F3 5 A -> 18 AWG cift -> direk on yuzu -> R62 -> kafada 5 V/5,5 A cevirici (Pi 5, LCD)", "kirmizi",
-     [(cx - 20, YD1 + 36, cz), (-62, 182, -30), (-40, 200, 20), (-24, 230, 26), (-24, 262, 26), (-24, 900, 26), (-24, 975, 30), (0, 1010, 20)]),
-    ("Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / Nextion / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)", "mavi",
+     [(cx - 20, YD1 + 36, cz), (-62, 182, -30), (-40, 200, 20), (-24, 230, 26), (-24, 262, 26), (-24, S3Y - 55, 26), (-24, S3Y + 20, 30), (0, S3Y + 55, 20)]),
+    # 1,65 m (Y2a): gogus Nextion ekrani kaldirildi (Duffy, 25 Ekim 2026) -> cevre 5 V hatti govdeye cikmaz, ESP32'de biter
+    ("Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)", "mavi",
      [(cx, YD1 + 36, cz), (62, 182, -30), (55, 150, 20), (T["xl"][1][0], 125, T["xl"][1][1]), (40, 150, 150), (40, 185, 160),
-      (ESP_C[0], 200, ESP_C[1]), (30, 205, 40), (24, 230, 26), (24, 262, 26), (24, 700, 26), (24, 800, 60)]),
+      (ESP_C[0], 200, ESP_C[1])]),
     ("Acil stop (E3): F5 -> mantar (NC) -> role bobini -> MOSFET (arayuz karti, ESP32 'devreye al') ; PC817 mantar sonrasi gerilimi okur", "yesil",
      [(cx + 30, YD1 + 36, cz), (ex, 205, ez), (ex, 214, ez), (ex - 10, 205, ez + 20), (rx, YD1 + 46, rz), (-110, 200, -60), (-100, 200, 40),
       (AK_C[0], 195, AK_C[1])]),
     ("Sinyal: sonar x3 -> arayuz karti bolucu (4,7k/10k) -> ESP32 (on ara ray ustunden)", "mor",
      [(-79.4, 95, 254), (-79.4, 90, 240), (-60, 140, 240), (-100, 150, 200), (AK_C[0], 190, AK_C[1] + 20), (0, 195, 90), (ESP_C[0], 190, 100)]),
     ("Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (VBUS hattinda seri 1N5819)", "mor",
-     [(-67.5, 140, 140), (-30, 160, 160), (ESP_C[0], 190, ESP_C[1]), (40, 205, 30), (20, 230, 26), (20, 262, 26), (20, 900, 26), (20, 975, 30),
-      (0, 1010, 20)]),
+     [(-67.5, 140, 140), (-30, 160, 160), (ESP_C[0], 190, ESP_C[1]), (40, 205, 30), (20, 230, 26), (20, 262, 26), (20, S3Y - 55, 26), (20, S3Y + 20, 30),
+      (0, S3Y + 55, 20)]),
 ]
 
 

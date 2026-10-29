@@ -7,8 +7,8 @@
       "ad": "omuz one-arka (S1)",
       "min": -45.0,
       "max": 135.0,
-      "servo": "DS3218MG (180 derece), S1 ve S2",
-      "neden": "DS3218MG 180 derece; horn kol asagidayken 45'te; geometri -60...180 serbest",
+      "servo": "DS3235 (180 derece), S1 ve S2",
+      "neden": "DS3235 180 derece; horn kol asagidayken 45'te; geometri -60...180 serbest",
       "taraf": "sag",
       "ayna": false
     },
@@ -16,7 +16,7 @@
       "ad": "omuz yana acma (S2)",
       "min": 5.0,
       "max": 120.0,
-      "servo": "DS3218MG (180 derece), S1 ve S2",
+      "servo": "DS3235 (180 derece), S1 ve S2",
       "neden": "alt sinir +5 (S1 kablo kaseti: kol S2 3'te tambura/flansa yaklasir, 5'te 0,77 mm); kabuk boslugu 0'da 4,7 mm, -3'te temas",
       "bosluk_mm": {
         "0": 4.7,
@@ -48,8 +48,8 @@
       "ad": "omuz one-arka (S1)",
       "min": -45.0,
       "max": 135.0,
-      "servo": "DS3218MG (180 derece), S1 ve S2",
-      "neden": "DS3218MG 180 derece; horn kol asagidayken 45'te; geometri -60...180 serbest",
+      "servo": "DS3235 (180 derece), S1 ve S2",
+      "neden": "DS3235 180 derece; horn kol asagidayken 45'te; geometri -60...180 serbest",
       "taraf": "sol",
       "ayna": true
     },
@@ -57,7 +57,7 @@
       "ad": "omuz yana acma (S2)",
       "min": 5.0,
       "max": 120.0,
-      "servo": "DS3218MG (180 derece), S1 ve S2",
+      "servo": "DS3235 (180 derece), S1 ve S2",
       "neden": "alt sinir +5 (S1 kablo kaseti: kol S2 3'te tambura/flansa yaklasir, 5'te 0,77 mm); kabuk boslugu 0'da 4,7 mm, -3'te temas",
       "bosluk_mm": {
         "0": 4.7,
@@ -94,10 +94,10 @@
     },
     "tilt": {
       "ad": "kafa tilt",
-      "min": -25.0,
-      "max": 30.0,
+      "min": -15.0,
+      "max": 15.0,
       "servo": "MG996R (180 derece), pan ve tilt",
-      "neden": "yazilim siniri; geometri serbest -25...40"
+      "neden": "yazilim siniri (karar 21 Ekim 2026, 10,1 in kafa); serbest aralik kafa/kafa-analiz.json"
     }
   },
   "teker": {
@@ -155,69 +155,10 @@
     "durum": "tahmini; montajdan sonra her servo tek tek dogrulanir (duzeltme plani C4)"
   },
   "kafa_kol_yasak": {
-    "aciklama": "kol kol_kosulu icindeyken kafa o kola dogru kutu icine girmemeli (pan x tilt); sol kol: sol_kol.kutu",
+    "aktif": false,
+    "aciklama": "kafa-kol yasak kutusu yok (eklem araliklari icinde cakisma bulunmadi)",
     "pay": 5.0,
-    "sag_kol": {
-      "kol_kosulu": {
-        "one_arka": [
-          120.0,
-          135.0
-        ],
-        "yana": [
-          5.0,
-          5.0
-        ],
-        "dirsek": [
-          65.0,
-          105.0
-        ],
-        "bilek": [
-          -90.0,
-          90.0
-        ]
-      },
-      "kutu": {
-        "pan": [
-          25.0,
-          60.0
-        ],
-        "tilt": [
-          20.0,
-          30.0
-        ]
-      }
-    },
-    "sol_kol": {
-      "kol_kosulu": {
-        "one_arka": [
-          120.0,
-          135.0
-        ],
-        "yana": [
-          5.0,
-          5.0
-        ],
-        "dirsek": [
-          65.0,
-          105.0
-        ],
-        "bilek": [
-          -90.0,
-          90.0
-        ]
-      },
-      "kutu": {
-        "pan": [
-          -60.0,
-          -25.0
-        ],
-        "tilt": [
-          20.0,
-          30.0
-        ]
-      }
-    },
-    "olculen": {
+    "olculen_125cm": {
       "one_arka": [
         125.0,
         135.0
@@ -243,6 +184,6 @@
         30.0
       ]
     },
-    "not_": "kol_kosulu disinda kafa-kol cakismasi taramada yok; kosulsuz uygulamak guvenli ama kafayi gereksiz kisitlar. Olculen yana 0 idi; S2 alt siniri +5 oldugundan (15 Ekim 2026, S1 kaseti) kosul yana 5...5 olur. Kutu C7 tam taramasiyla dogrulanacak."
+    "not_": "1,65 m: yasak kutu yok. 125 cm olcumu (tilt 25...30) yeni tilt araliginin (+-15) disinda; taslak-170 kafa x kol taramasi S2 >= 5'te cakisma 0 (en az 7,71 mm, El <-> yuz kabugu). Y4 tam taramasinda yeniden dogrulanacak."
   }
 }

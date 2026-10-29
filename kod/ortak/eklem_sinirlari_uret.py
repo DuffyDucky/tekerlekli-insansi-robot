@@ -27,6 +27,19 @@ def kontrol_et(d):
         if "min" in j:
             assert j["min"] < j["max"], ad
     y = d["kafa_kol_yasak"]
+    if not y.get("aktif", True):          # 1,70 m (Y2a): yasak kutu yok (aktif False); yalniz bagimli sinirlar kontrol edilir
+        y = None
+    if y is not None:
+        _yasak_kontrol(e, y)
+    # bagimli sinirlar (orn. S1 >= 120 iken S2 <= 117): kosul ve sinir araliklari eklem araliginin icinde, sinir gercekten daraltiyor
+    for b in d.get("bagimli", []):
+        for grup in ("kosul", "sinir"):
+            for s, v in b[grup].items():
+                assert e[s]["min"] <= v[0] <= v[1] <= e[s]["max"], (b["ad"], s, v)
+        assert any(v[0] > e[s]["min"] or v[1] < e[s]["max"] for s, v in b["sinir"].items()), b["ad"]
+
+
+def _yasak_kontrol(e, y):
     pan, tilt = y["sag_kol"]["kutu"]["pan"], y["sag_kol"]["kutu"]["tilt"]
     assert e["pan"]["min"] <= pan[0] < pan[1] <= e["pan"]["max"]
     assert e["tilt"]["min"] <= tilt[0] < tilt[1] <= e["tilt"]["max"]
@@ -34,12 +47,6 @@ def kontrol_et(d):
     for k, v in y["sag_kol"]["kol_kosulu"].items():
         s = {"one_arka": "r_s1", "yana": "r_s2", "dirsek": "r_dirsek", "bilek": "r_bilek"}[k]
         assert e[s]["min"] <= v[0] <= v[1] <= e[s]["max"], k
-    # bagimli sinirlar (orn. S1 >= 120 iken S2 <= 117): kosul ve sinir araliklari eklem araliginin icinde, sinir gercekten daraltiyor
-    for b in d.get("bagimli", []):
-        for grup in ("kosul", "sinir"):
-            for s, v in b[grup].items():
-                assert e[s]["min"] <= v[0] <= v[1] <= e[s]["max"], (b["ad"], s, v)
-        assert any(v[0] > e[s]["min"] or v[1] < e[s]["max"] for s, v in b["sinir"].items()), b["ad"]
 
 
 def main():

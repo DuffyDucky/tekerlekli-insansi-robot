@@ -71,8 +71,9 @@ add("Omuz yuvasi", "Govde", yuva.removeSplitter(), "Baski", "PETG-CF", renk="pet
 
 # --- S1 (one-arka servo) + kulak civatalari
 body, dome, yc = servo_local()
-add("S1 servo DS3218MG (one-arka)", "Govde", place(body, (X_S1, 0, 0), ROT_S1), "Satin", "-", kod="DS3218MG servo",
-    renk="siyah", patlat=(40, 0, 0))
+SERVO_AD, SERVO_KOD = A.OMUZ["servo_ad"], A.OMUZ["servo_kod"]   # DS3235 (karar 24 Ekim 2026; govde DS3218MG ile ayni kabul)
+add("S1 servo %s (one-arka)" % SERVO_AD, "Govde", place(body, (X_S1, 0, 0), ROT_S1), "Satin", "-", kod=SERVO_KOD,
+    renk="siyah", patlat=(40, 0, 0), not_="DS3235 (eski DS3218MG): govde ayni kabul 40x20x40, kulak 49,5 x 10, 25T; yukseklik kumpasla dogrulanacak")
 add("S1 servo cikis mili", "Govde", place(dome, (X_S1, 0, 0), ROT_S1), "Satin", "-", kod="(servo ile)", renk="siyah",
     patlat=(40, 0, 0))
 for (y, z) in S1_HOLES:
@@ -197,8 +198,11 @@ _iw = _IP["gen"] / 2
 def ip_yolu():
     y_ust = TB["dudak_r"] + 0.1
     y_alt = _tr0 - 0.1
-    s_ = box(_ix0, _ix0 + _IP["d"] + 0.05, y_alt, y_ust, -_iw, _iw)                    # -x: halkadan kanal + dudak cebi
-    s_ = s_.fuse(box(_ix1 - _IP["d"] - 0.05, _ix1, y_alt, y_ust, -_iw, _iw))           # +x
+    # KZ2 (Y2a, 26 Ekim 2026): halka deligi eksenel genisligi d + 0,05 (0,45) -> delik_eksenel (0,8): +X baskida 2 katmanlik yatay delik
+    # kopruyle kapaniyordu. Genisleyen kisim kablo kanalinin altinda (x 153,5...154,0 / 157,8...158,3); dudak cebi (0,3) ayni.
+    _de = max(_IP["d"] + 0.05, _IP.get("delik_eksenel", 0.0))
+    s_ = box(_ix0, _ix0 + _de, y_alt, y_ust, -_iw, _iw)                               # -x: halkadan kanal + dudak cebi
+    s_ = s_.fuse(box(_ix1 - _de, _ix1, y_alt, y_ust, -_iw, _iw))                      # +x
     s_ = s_.fuse(box(_ix0, _ix1, y_alt, _tr0 + _IP["oluk"], -_iw, _iw))               # halka ic yuzu olugu
     return s_.removeSplitter()
 
@@ -252,8 +256,8 @@ for _ps, _l in zip(TB["ip_psi"], IP_ILMEK):
         not_="kablo bagi (K2): demeti tambura baglar, halka zarfinin icinde; psi %.0f. Dugum demetin ustunde kanal ortasinda" % _ps)
 
 body2, dome2, _ = servo_local()
-add("S2 servo DS3218MG (yana acma)", "Gobek", place(body2, (XR, 0, Z_S2), ROT_S2), "Satin", "-", kod="DS3218MG servo",
-    renk="siyah", patlat=(110, 0, 45))
+add("S2 servo %s (yana acma)" % SERVO_AD, "Gobek", place(body2, (XR, 0, Z_S2), ROT_S2), "Satin", "-", kod=SERVO_KOD,
+    renk="siyah", patlat=(110, 0, 45), not_="DS3235 (eski DS3218MG): govde ayni kabul; yukseklik kumpasla dogrulanacak")
 add("S2 servo cikis mili", "Gobek", place(dome2, (XR, 0, Z_S2), ROT_S2), "Satin", "-", kod="(servo ile)", renk="siyah",
     patlat=(110, 0, 45))
 for (x, y) in S2_HOLES:
@@ -297,7 +301,8 @@ for g in S2_HORN:
     add("Catal-horn civatasi M3x8", "Kol", screw912(3, 8, (g.x, g.y, 30.5), (0, 0, -1)), "Baglanti", "Celik 8.8",
         kod="M3x8 DIN 912", renk="celik", patlat=(110, -40, 40))
 R_TUP_IC = 25.4 + A.GECME["tup_pim"]     # tup ic yaricapi: catal / dirsek pimi O50,8 + radyal bosluk
-tube = cyl(28, (XR, -40, ZC), (XR, -140, ZC)).cut(cyl(R_TUP_IC, (XR, -39, ZC), (XR, -141, ZC)))
+Y_TUP_UC = A.DIRSEK["tup_uc_y"]            # 1,65 m: tup 100 -> 130 mm (ucu y -170; kol x1,25, Duffy 24 Ekim 2026)
+tube = cyl(28, (XR, -40, ZC), (XR, Y_TUP_UC, ZC)).cut(cyl(R_TUP_IC, (XR, -39, ZC), (XR, Y_TUP_UC - 1, ZC)))
 _TP = A.KOL_KABLO["tup_pencere"]          # M1: arka duvarda kablo penceresi (dirsek kablolari tupten cikar); uclari 45 derece sivri
 _px, _py, _u = _TP["x"], _TP["y"], _TP["uc"]
 _pen = Part.Face(Part.makePolygon([V(_px[0], _py[0] + _u, _TP["z"][0]), V(XR, _py[0], _TP["z"][0]), V(_px[1], _py[0] + _u, _TP["z"][0]),
@@ -306,7 +311,8 @@ _pen = Part.Face(Part.makePolygon([V(_px[0], _py[0] + _u, _TP["z"][0]), V(XR, _p
 tube = tube.cut(_pen)
 for (p, d) in TUBE_S:
     tube = tube.cut(cyl(CLEAR[3] / 2, (XR, -50, ZC - 30), (XR, -50, ZC + 30)))
-add("Ust kol tupu", "Kol", tube.removeSplitter(), "Baski", "PETG", renk="petg2", patlat=(110, -120, 0))
+add("Ust kol tupu", "Kol", tube.removeSplitter(), "Baski", "PETG", renk="petg2", patlat=(110, -120, 0),
+    not_="%.0f mm (1,65 m; 125 cm'de 100); pencere ve civata delikleri ayni" % (-40 - Y_TUP_UC))
 for (p, d) in TUBE_S:
     pv, dv = V(*p), V(*d)
     add("Isil gomme somun M3 (catalda)", "Kol", insert(3, pv, dv), "Baglanti", "Pirinc", kod="M3 isil gomme somun",
@@ -317,14 +323,14 @@ for (p, d) in TUBE_S:
 
 # patlatilmis gorunum: her parca takildigi yonde, montaj sirasina gore acilir
 PATLAT = {
-    "Omuz yuvasi": (0, 0, 0), "S1 servo DS3218MG (one-arka)": (60, 0, 0), "S1 servo cikis mili": (60, 0, 0),
+    "Omuz yuvasi": (0, 0, 0), "S1 servo %s (one-arka)" % SERVO_AD: (60, 0, 0), "S1 servo cikis mili": (60, 0, 0),
     "S1 kulak civatasi M4x16": (105, 0, 0), "S1 kontra somun M4": (-35, 0, 0),
     "S1 horn 25T aluminyum disk": (125, 0, 0), "S1 horn merkez vidasi M3": (140, 0, 0),
     "Rulman kapagi": (175, 0, 0), "Kapak civatasi M3x12": (205, 0, 0), "Isil gomme somun M3 (yuvada)": (-10, 0, 0),
     "6808-2RS rulman (dis bilezik)": (190, 0, 0), "6808-2RS rulman (ic bilezik)": (190, 0, 0),
     "Omuz gobegi": (235, 0, 0), "Gobek-horn civatasi M3x12": (275, 0, 0),
     "S1 kablo tamburu": (205, 0, 0), "Tambur civatasi M3x8": (180, 0, 0), "Isil gomme somun M3 (gobekte)": (240, 0, 0),
-    "S2 servo DS3218MG (yana acma)": (235, 0, 70), "S2 servo cikis mili": (235, 0, 70),
+    "S2 servo %s (yana acma)" % SERVO_AD: (235, 0, 70), "S2 servo cikis mili": (235, 0, 70),
     "S2 kulak civatasi M4x16": (235, 0, 110), "S2 kontra somun M4": (235, 0, -30),
     "Isil gomme somun M5 (gobekte)": (235, 0, -12),
     "Kol catali": (235, -70, 0), "S2 horn 25T aluminyum disk": (235, -70, 50), "S2 horn merkez vidasi M3": (235, -70, 62),
@@ -359,8 +365,8 @@ for p in P:
         p["merkez"] = c
     else:
         p["merkez"] = p["shape"].BoundBox.Center
-    if p["kod"] == "DS3218MG servo":
-        p["kutle"] = 60.0
+    if p["kod"] == SERVO_KOD:
+        p["kutle"] = A.OMUZ["servo_kutle_g"]
     elif p["tur"] in ("Referans",) or p["kod"] == "(servo ile)":
         p["kutle"] = 0.0
     else:

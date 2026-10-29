@@ -1,5 +1,6 @@
-# Kabuk modulu (V3) - PARCALAR: govde kabugu (4 bant x sag/sol + arka kapak), taban etegi (3 bant x sag/sol), Nextion
-# gogus ekrani, iskelete baglanti braketleri ve tum baglanti elemanlari. Import edilebilir: kabuk_montaj.py (kontroller
+# Kabuk modulu (V3, 1,65 m) - PARCALAR: govde kabugu (6 bant x sag/sol + arka kapak; 2 bant 1,65 m uzatmasi), taban etegi (520:
+# 3 z bandi x sag/sol + 2 orta dolgu seridi), S1 kablo kasetleri, iskelete baglanti braketleri ve tum baglanti elemanlari.
+# Nextion gogus ekrani KALDIRILDI (Duffy, 25 Ekim 2026): gogus bandi kapali kabuk. Import edilebilir: kabuk_montaj.py (kontroller
 # + kayit), ../carpisma.py ve ../montaj/moduller.py kullanir. Koordinat = global (arayuz.py), mm.
 #
 # Yapi
@@ -71,12 +72,7 @@ for sx in (1, -1):        # O84 + asagida 45 derece damla ucu: omuz bandi ters b
 S = S.cut(Part.makeCylinder(A.BOYUN_ACIKLIK_R, 40.0, V(0, A.GOVDE_Y1 - 20, 0), V(0, 1, 0)))
 for sx in (1, -1):        # omuz yuvasi ust civatasinin basi ust kapaga girer: erisim deligi (anahtar da buradan)
     S = S.cut(Part.makeCylinder(A.UST_KAPAK_ERISIM["r"], 20.0, V(sx * A.UST_KAPAK_ERISIM["x"], A.GOVDE_Y1 - 10, 0), V(0, 1, 0)))
-EKM = ekran_matris()
-EO = ekran_olculeri()
-pw = EO["pencere"]
-PENCERE_TAM = yerlestir(box(pw[0], pw[1], pw[2], 90.0, -3.0, 8.0), EKM)       # pencere prizmasi (ust sinirsiz)
-Y_PEN = A.GOVDE_DIKIS[2]                                                      # pencere ust kenari = dikis 883
-S = S.cut(PENCERE_TAM.common(kutu(y1=Y_PEN)))
+# (125 cm: gogus bandinda Nextion penceresi vardi; 1,65 m'de ekran yok, gogus kapali)
 S = S.removeSplitter()
 S_dis = S.cut(M)
 S_ic = S.common(M)
@@ -87,8 +83,8 @@ AK = A.ARKA_KAPAK
 KAPAK = rrect_prizma_z(-AK["x"], AK["x"], AK["y0"], AK["y1"], AK["r"], AK["z0"], AK["z1"])
 KAPAK_IC = rrect_prizma_z(-AK["x"] + W, AK["x"] - W, AK["y0"] + W, AK["y1"], AK["r"] - W + 0.0 if AK["r"] > W else 1.0,
                           AK["z0"], AK["z1"])
-KAPAK_DIKIS = kutu(-AK["x"], AK["x"], A.GOVDE_DIKIS[1], A.GOVDE_DIKIS[1] + W, -BIG, AK["z1"])   # kapak ust kenari: alin
-PEN_DIL = kutu(pw[0], pw[1], Y_PEN, Y_PEN + W, 0.0, BIG)                    # pencere ustunde dil yok (alin)
+I_KAPAK_DIKIS = A.GOVDE_DIKIS.index(AK["y1"])                              # arka kapagin ust kenari bu dikiste (1075)
+KAPAK_DIKIS = kutu(-AK["x"], AK["x"], AK["y1"], AK["y1"] + W, -BIG, AK["z1"])   # kapak ust kenari: alin
 
 
 def x_ic(sag, y_plaka):
@@ -97,12 +93,19 @@ def x_ic(sag, y_plaka):
     return kutu(-BIG, -W, -BIG, y_plaka).fuse(kutu(-BIG, 0, y_plaka, BIG))
 
 
-GOVDE_BANT = ["alt", "orta", "gogus", "omuz"]
-GOVDE_AD = {"alt": "Govde alt bandi", "orta": "Govde orta bandi", "gogus": "Gogus bandi", "omuz": "Omuz bandi"}
-y_ic = [kutu(y1=YKI[1]),
-        kutu(y0=YKI[1], y1=YKI[2]).cut(KAPAK_DIKIS),
-        kutu(y0=YKI[2], y1=YKI[3]).fuse(KAPAK_DIKIS).cut(PEN_DIL),
-        kutu(y0=YKI[3]).fuse(PEN_DIL)]
+# 1,65 m (Y2a): 476,5 dikisinin ustune iki sabit kesitli uzatma bandi (arayuz UZATMA_DIKIS); dikis sirasiyla bantlar
+GOVDE_BANT = ["alt"] + ["uzatma%d" % (k + 1) for k in range(A.UZATMA_BANT)] + ["orta", "gogus", "omuz"]
+GOVDE_AD = dict({"alt": "Govde alt bandi", "orta": "Govde orta bandi", "gogus": "Gogus bandi", "omuz": "Omuz bandi"},
+                **{"uzatma%d" % (k + 1): "Govde uzatma bandi %d" % (k + 1) for k in range(A.UZATMA_BANT)})
+assert len(GOVDE_BANT) == len(A.GOVDE_DIKIS) + 1
+y_ic = []
+for k in range(len(GOVDE_BANT)):
+    c_ = kutu(y0=YKI[k], y1=YKI[k + 1])
+    if k == I_KAPAK_DIKIS:              # kapagin altindaki bant (orta): kapak ust kenarinda dil yok
+        c_ = c_.cut(KAPAK_DIKIS)
+    elif k == I_KAPAK_DIKIS + 1:        # kapagin ustundeki bant (gogus)
+        c_ = c_.fuse(KAPAK_DIKIS)
+    y_ic.append(c_)
 GOVDE = {}
 for k, bant in enumerate(GOVDE_BANT):
     for sag in (True, False):
@@ -145,15 +148,41 @@ z_dis = {"arka": kutu(z1=-ZD), "orta": kutu(z0=-ZD, z1=ZD), "on": kutu(z0=ZD)}
 z_ic = {"arka": kutu(z1=-ZD - W, y1=Y_ETEK_PLAKA).fuse(kutu(z1=-ZD, y0=Y_ETEK_PLAKA)),
         "orta": kutu(z0=-ZD - W, z1=ZD + W, y1=Y_ETEK_PLAKA).fuse(kutu(z0=-ZD, z1=ZD, y0=Y_ETEK_PLAKA)),
         "on": kutu(z0=ZD + W, y1=Y_ETEK_PLAKA).fuse(kutu(z0=ZD, y0=Y_ETEK_PLAKA))}
+# 520 taban (arayuz ETEK_DIKIS_X, Duffy 25 Ekim 2026): etek x'te uc hucre: sol yari | dolgu seridi | sag yari. Ic hucre siniri dikisten
+# KABUK_BINDIRME kadar -x'e kayik (dil soldaki komsunun dis yarisinin arkasina uzanir; 125 cm x = 0 dikisindeki kuralla ayni). Ust plakada
+# dil yok (alin). Yarilar 3 z bandina (arka / orta / on), dolgu seridi aciklikta z = 0'da ikiye (arka / on) bolunur.
+XD0, XD1 = A.ETEK_DIKIS_X
+ETEK_X = {"sol": (-BIG, XD0), "dolgu": (XD0, XD1), "sag": (XD1, BIG)}
+
+
+def etek_x(hucre, ic):
+    x0, x1 = ETEK_X[hucre]
+    if not ic:
+        return kutu(x0, x1)
+    xi0 = x0 - W if x0 > -BIG else x0
+    xi1 = x1 - W if x1 < BIG else x1
+    return kutu(xi0, xi1, -BIG, Y_ETEK_PLAKA).fuse(kutu(x0, x1, Y_ETEK_PLAKA, BIG))
+
+
 ETEK = {}
 for bant in ETEK_BANT:
     for sag in (True, False):
-        r_dis = kutu(*((0, BIG) if sag else (-BIG, 0))).common(z_dis[bant])
-        r_ic = x_ic(sag, Y_ETEK_PLAKA).common(z_ic[bant])
+        h = "sag" if sag else "sol"
+        r_dis = etek_x(h, False).common(z_dis[bant])
+        r_ic = etek_x(h, True).common(z_ic[bant])
         dil = Se_ic.common(r_ic).cut(Se_bos.common(r_ic.cut(r_dis)))
         ETEK[(bant, sag)] = Se_dis.common(r_dis).fuse(dil).removeSplitter()
-        DIS_HUCRE['%s %s' % (ETEK_AD[bant], 'sag' if sag else 'sol')] = r_dis
-log("etek parcalari:", {("%s %s" % (b, "sag" if s else "sol")): len(v.Solids) for (b, s), v in ETEK.items()})
+        DIS_HUCRE['%s %s' % (ETEK_AD[bant], h)] = r_dis
+ETEK_DOLGU = {}
+if XD1 - XD0 > 1e-6:
+    for yer, zk in (("arka", kutu(z1=0.0)), ("on", kutu(z0=0.0))):
+        r_dis = etek_x("dolgu", False).common(zk)
+        r_ic = etek_x("dolgu", True).common(zk)
+        dil = Se_ic.common(r_ic).cut(Se_bos.common(r_ic.cut(r_dis)))
+        ETEK_DOLGU[yer] = Se_dis.common(r_dis).fuse(dil).removeSplitter()
+        DIS_HUCRE["Etek dolgu seridi %s" % yer] = r_dis
+log("etek parcalari:", {("%s %s" % (b, "sag" if s else "sol")): len(v.Solids) for (b, s), v in ETEK.items()},
+    {"dolgu " + k: len(v.Solids) for k, v in ETEK_DOLGU.items()})
 
 # ====================================================================== baski yonleri
 _n_arka = yuzey(GK, "arka", 0.5 * (AK["y0"] + AK["y1"]), 0.0)[1]
@@ -169,13 +198,16 @@ for (bant, sag), sh in GOVDE.items():
         else:
             yuk, yon = UP, "dik (alt kenari tablada)"
         k = GOVDE_BANT.index(bant)
-        pat = ((130 if sag else -130), 60 * k + 40, 0)
+        pat = ((130 if sag else -130), 60 * k + 40, 0)      # (patlatma: bant sirasi)
     PARCA[ad] = dict(shape=sh, yukari=yuk, yon=yon, patlat=pat, grup="Govde kabugu")
 for (bant, sag), sh in ETEK.items():
     ad = "%s %s" % (ETEK_AD[bant], "sag" if sag else "sol")
     zp = {"arka": -150, "orta": 0, "on": 150}[bant]
     PARCA[ad] = dict(shape=sh, yukari=DOWN, yon="ters (ust plakasi tablada)", patlat=((150 if sag else -150), -60, zp),
                      grup="Taban etegi")
+for yer, sh in ETEK_DOLGU.items():
+    PARCA["Etek dolgu seridi %s" % yer] = dict(shape=sh, yukari=DOWN, yon="ters (ust plakasi tablada)",
+                                               patlat=(0, -60, -150 if yer == "arka" else 150), grup="Taban etegi")
 
 
 # ====================================================================== S1 kablo kaseti (duzeltme plani M1 / S1, 15 Ekim 2026)
@@ -382,26 +414,35 @@ for sag in (True, False):
 log("S1 kaseti: dikme somunlari", [(v["ic"], v["psi"]) for v in S1_VIDA])
 VIDA_L = 6.0                        # M3x6 ISO 7380
 ADAY = []      # (etiket, kesit tablosu, yer, y, u)
-for y_d, xs in ((A.GOVDE_DIKIS[0], None), (A.GOVDE_DIKIS[1], None)):
+# Yatay dikisler (1,65 m): 476,5 / 669 / 861,5 (uzatma) 125 cm'deki 476,5 kurali (on +-f, arka +-f, yanlar); 1075 (arka kapak ust kenari)
+# arka +-(kapak + dil + 6); 1268 (gogus | omuz) arka +-70 / +-120 ve ON +-f (125 cm'de Nextion penceresinin ust kenariydi, on civata yoktu).
+for k, y_d in enumerate(A.GOVDE_DIKIS):
     ym = y_d + W / 2
     (a, bf, bb, r), _ = kesit_param(GK, ym)
     f = 0.55 * (a - r)
     ADAY += [("govde y%.0f on" % y_d, GK, "on", ym, sx * f) for sx in (1, -1)]
-    if y_d == A.GOVDE_DIKIS[0]:
-        ADAY += [("govde y%.0f arka" % y_d, GK, "arka", ym, sx * f) for sx in (1, -1)]
-    else:
+    if k == I_KAPAK_DIKIS:
         ADAY += [("govde y%.0f arka" % y_d, GK, "arka", ym, sx * (AK["x"] + W + 6.0)) for sx in (1, -1)]
-    zc = 0.5 * ((bf - r) - (bb - r))
-    ADAY += [("govde y%.0f yan" % y_d, GK, yer, ym, zc) for yer in ("sag", "sol")]
-ym = A.GOVDE_DIKIS[2] + W / 2
-ADAY += [("govde y%.0f arka" % A.GOVDE_DIKIS[2], GK, "arka", ym, sx * xx) for sx in (1, -1) for xx in (70.0, 120.0)]
-for yer, ys in (("on", (330.0, 420.0, 550.0, 640.0, 741.0, 940.0)), ("arka", (330.0, 420.0, 745.0, 830.0, 940.0))):
+    elif k > I_KAPAK_DIKIS:
+        ADAY += [("govde y%.0f arka" % y_d, GK, "arka", ym, sx * xx) for sx in (1, -1) for xx in (70.0, 120.0)]
+    else:
+        ADAY += [("govde y%.0f arka" % y_d, GK, "arka", ym, sx * f) for sx in (1, -1)]
+    if k <= I_KAPAK_DIKIS:
+        zc = 0.5 * ((bf - r) - (bb - r))
+        ADAY += [("govde y%.0f yan" % y_d, GK, yer, ym, zc) for yer in ("sag", "sol")]
+# x = 0 dikisi (on ve arka): 125 cm'deki yerler (476,5 ustu UZAMA yukari) + her uzatma bandinda bant ortasi +-55 (taslak-170 ile ayni) +
+# gogus onunde 835 + UZAMA (125 cm'de Nextion penceresi vardi). Arka: orta bantta (861,5 ... 1075) arka kapak var -> yok.
+_UZ = A.UZAMA
+_UZ_X0 = [0.5 * (A.UZATMA_DIKIS[k] + A.UZATMA_DIKIS[k + 1]) + W / 2 + d_ for k in range(A.UZATMA_BANT) for d_ in (-55.0, 55.0)]
+for yer, ys in (("on", (330.0, 420.0, *_UZ_X0, 550.0 + _UZ, 640.0 + _UZ, 741.0 + _UZ, 835.0 + _UZ, 940.0 + _UZ)),
+                ("arka", (330.0, 420.0, *_UZ_X0, 745.0 + _UZ, 830.0 + _UZ, 940.0 + _UZ))):
     ADAY += [("govde x0 %s" % yer, GK, yer, y, -W / 2) for y in ys]
 for x, y in ((-45.0, AK["y0"] + W / 2), (0.0, AK["y0"] + W / 2), (45.0, AK["y0"] + W / 2)) + \
-            tuple((sx * (AK["x"] - W / 2), y) for sx in (1, -1) for y in (570.0, 650.0)):
+            tuple((sx * (AK["x"] - W / 2), y + _UZ) for sx in (1, -1) for y in (570.0, 650.0)):
     ADAY.append(("arka kapak", GK, "arka", y, x))
 for yer, ys in (("on", (60.0, 200.0)), ("arka", (60.0, 115.0, 200.0))):
-    ADAY += [("etek x0 %s" % yer, EK, yer, y, -W / 2) for y in ys]
+    for xd in A.ETEK_DIKIS_X:                 # 520: iki x dikisi (sag yari | dolgu, dolgu | sol yari); dil soldakinin dis yarisi arkasinda
+        ADAY += [("etek x%+.0f %s" % (xd, yer), EK, yer, y, xd - W / 2) for y in ys]
 for yer in ("sag", "sol"):
     for zz in (ZD + W / 2, -ZD - W / 2):
         ADAY += [("etek z%+.0f %s" % (math.copysign(ZD, zz), yer), EK, yer, y, zz) for y in (60.0, 85.0, 200.0)]
@@ -433,21 +474,6 @@ for (etiket, secs, yer, y, u) in ADAY:
     CIKAR[dis].append(t_del)
     VIDA.append(dict(etiket=etiket, p=p, n=n, hn=hn, ic=ic, dis=dis, tip="bindirme", kaydirma=kay))
 log("bindirme civatasi: %d yer, %d atlandi" % (len(VIDA), len(atla)), atla)
-
-# ====================================================================== Nextion yuvasi: 4x boss + M3 isil gomme somun
-N = A.NEXTION
-KAL = N["kalinlik"]
-PCB_T = N["pcb"][2]
-w_pcb_on = -(KAL - PCB_T)          # PCB on yuzu (cam onunden geride)
-for (s, v) in EO["delikler"]:
-    p_boss = EKM.multVec(V(s, v, w_pcb_on))
-    ax_in = EKM.multVec(V(s, v, w_pcb_on + 1.0)) - p_boss          # +w (one, duvara)
-    p_duvar = EKM.multVec(V(s, v, 1.0))                              # duvarin ic yarisinda bir nokta
-    ic = sahip(p_duvar)
-    L = 1.5 - w_pcb_on
-    EKLE[ic].append(damla(p_boss, ax_in, 4.0, L, PARCA[ic]["yukari"] * -1))
-    CIKAR[ic].append(insert_hole(3, p_boss, ax_in, extra=0.5))
-    VIDA.append(dict(etiket="Nextion %+.1f %+.1f" % (s, v), p=p_boss, n=ax_in * -1, hn=0.0, ic=ic, dis="Nextion", tip="ekran"))
 
 # ====================================================================== iskelete baglanti boss'lari
 GB = A.KABUK_GOVDE_BRAKET
@@ -518,29 +544,6 @@ for i, (ad, d) in enumerate(PARCA.items()):
                       renk="kabuk", patlat=d["patlat"], not_="baski: %s" % d["yon"])
     d["renk_baski"] = RENK_BASKI[i % len(RENK_BASKI)]
     BASKI[ad] = dict(yukari=d["yukari"], yon=d["yon"], renk=d["renk_baski"])
-
-# ====================================================================== Nextion (satin alinan)
-L_, Wd_, _ = N["pcb"]
-pcb = box(-L_ / 2, L_ / 2, -Wd_ / 2, Wd_ / 2, -KAL, w_pcb_on)
-for (s, v) in EO["delikler"]:
-    pcb = pcb.cut(Part.makeCylinder(N["delik_d"] / 2, 4, V(s, v, -KAL - 1), V(0, 0, 1)))
-c = EO["cam"]
-ekran = pcb.fuse(box(c[0], c[1], c[2], c[3], w_pcb_on, 0.0))
-k0, kw, kk = N["konnektor"]
-ekran = ekran.fuse(box(-L_ / 2 + 0.5, -L_ / 2 + kk, -Wd_ / 2 + k0, -Wd_ / 2 + k0 + kw, -KAL - N["bilesen_h"], -KAL))
-ekran = ekran.removeSplitter()
-I_EKRAN = add("Nextion NX1060P101_011 (10,1 in)", "Gogus ekrani", yerlestir(ekran, EKM), "Satin", "-",
-              kod="Nextion NX1060P101_011 10,1\" 1024x600", renk="siyah", patlat=(0, 60, 260), kutle=N["kutle_g"],
-              not_="olculer datasheet cizimi; konnektor yeri cizimden yorum (tahmini)")
-pat_ek = V(0, 60, 260)
-for (s, v) in EO["delikler"]:
-    p_boss = EKM.multVec(V(s, v, w_pcb_on))
-    p_pcb_arka = EKM.multVec(V(s, v, -KAL))
-    ax = EKM.multVec(V(s, v, w_pcb_on + 1.0)) - p_boss
-    add("Isil gomme somun M3 (ekran)", "Gogus ekrani", insert(3, p_boss, ax), "Baglanti", "Pirinc", kod="M3 isil gomme somun",
-        renk="pirinc", patlat=tuple(pat_ek * 0.5))
-    add("Ekran civatasi M3x6", "Gogus ekrani", screw912(3, 6, p_pcb_arka, ax), "Baglanti", "Celik 8.8", kod="M3x6 DIN 912",
-        renk="celik", patlat=tuple(pat_ek * 1.3))
 
 # ====================================================================== bindirme civatalari ve isil gomme somunlar
 for v in VIDA:

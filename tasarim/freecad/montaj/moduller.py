@@ -94,8 +94,9 @@ def yukle_kabuk():
     return dict(parcalar=[dict(_parca(p, k), grup="Kabuk", alt_grup=p["grup"]) for k, p in enumerate(K.P)],
                 gruplar=[("Kabuk", "Kabuk (sabit)")],
                 baglanti=dict(modul="iskelet", grup="Iskelet", ref="Govde diregi", nokta=(0.0, 600.0, 0.0),
-                              aciklama="govde braketleri direk yan kanallarina (4 braket x 2 M6), etek braketleri uzun ray ust "
-                                       "kanallarina (6 x M6), cekic somunla (arayuz.KABUK_GOVDE_BRAKET / KABUK_ETEK_BRAKET)"),
+                              aciklama="govde braketleri direk yan kanallarina (%d braket x 2 M6), etek braketleri uzun ray ust "
+                                       "kanallarina (6 x M6), cekic somunla (arayuz.KABUK_GOVDE_BRAKET / KABUK_ETEK_BRAKET)" % (
+                                       2 * len(A.KABUK_GOVDE_BRAKET["y"]))),
                 eklemler=[], beklenen=None, haric=[], haric_neden="")
 
 
@@ -195,8 +196,8 @@ def yukle_kafa():
 
     return dict(parcalar=[dict(_parca(p, k), grup=KAFA_GRUP.get(p["grup"], p["grup"]), alt_grup=p["grup"]) for k, p in enumerate(KP.P)],
                 gruplar=[("Govde", "Kafa govdesi: boyun plakasi + servo/rulman yuvasi + pan servosu (traverse sabit)"),
-                         ("Boyun", "Kafa pan grubu: boyun mili + egme catali + tilt servosu (pan ile doner)"),
-                         ("Bas", "Kafa: iskelet + kabuklar + LCD + kamera (pan x tilt ile doner)")],
+                         ("Boyun", "Kafa pan grubu: boyun mili + yukseltme adaptoru + egme catali + tilt servosu (pan ile doner)"),
+                         ("Bas", "Kafa: iskelet + kabuklar + 10,1 in ekran + kamera + Pi 5 (pan x tilt ile doner)")],
                 baglanti=dict(modul="iskelet", grup="Iskelet", ref="Omuz traversi", nokta=(0.0, 0.0, 0.0),
                               aciklama="boyun plakasi traversin ust kanalina 2x M6 + cekic somun (x = +-40, z = 0; arayuz.KAFA boyun_plaka)"),
                 eklemler=[dict(e) for e in kafa_eklemleri()], beklenen=beklenen,
@@ -256,7 +257,7 @@ def yukle_taban():
                         [(teker_grup(k), "Teker %s (teker + kaplin, motor milinde doner)" % k.replace("_", " ")) for k, _, _ in TEKER_KOSE],
                 baglanti=dict(modul="iskelet", grup="Iskelet", ref="Sase uzun rayi", nokta=(0.0, A.Y_RAIL0, 0.0),
                               aciklama="alt plaka uzun ve ara raylarin alt kanallarina 14x M6 + cekic somun (arayuz.TABAN plaka_ray_z / "
-                                       "plaka_ara_x); motor braketleri plaka uzerinden uzun raylara M4 + cekic somun"),
+                                       "plaka_ara_x); motor braketleri plakaya M4 + DIN 985 (520 taban: braket ray disinda; Y2a)"),
                 eklemler=eklemler, beklenen=beklenen, analiz=os.path.join("taban", "taban-analiz.json"),
                 haric=["Kablo yolu", "Ana anahtar dugmesi"],
                 haric_neden="kablo yolu semalari ve ana anahtar dugmesi gosterimi (Referans grubu, 0 g); taban analizinin parca sayisina "

@@ -1,0 +1,677 @@
+{
+ "not_": "kisa yerlesim kontrolu (Y2a); tam tarama Y4 (carpisma.py)",
+ "tol_mm3": 0.5,
+ "ev_pozu": {
+  "one_arka": 0.0,
+  "yana": 5.0,
+  "dirsek": 0.0,
+  "bilek": 0.0,
+  "pan": 0.0,
+  "tilt": 0.0
+ },
+ "ev": {
+  "iskelet x omuz_sag": {
+   "cift": 9,
+   "cakisma": []
+  },
+  "iskelet x omuz_sol": {
+   "cift": 9,
+   "cakisma": []
+  },
+  "iskelet x kabuk": {
+   "cift": 338,
+   "cakisma": []
+  },
+  "iskelet x dirsek_sag": {
+   "cift": 0,
+   "cakisma": []
+  },
+  "iskelet x dirsek_sol": {
+   "cift": 0,
+   "cakisma": []
+  },
+  "iskelet x kafa": {
+   "cift": 5,
+   "cakisma": []
+  },
+  "iskelet x taban": {
+   "cift": 81,
+   "cakisma": []
+  },
+  "omuz_sag x omuz_sol": {
+   "cift": 0,
+   "cakisma": []
+  },
+  "omuz_sag x kabuk": {
+   "cift": 74,
+   "cakisma": []
+  },
+  "omuz_sag x dirsek_sag": {
+   "cift": 1,
+   "cakisma": []
+  },
+  "omuz_sag x dirsek_sol": {
+   "cift": 0,
+   "cakisma": []
+  },
+  "omuz_sag x kafa": {
+   "cift": 0,
+   "cakisma": []
+  },
+  "omuz_sag x taban": {
+   "cift": 0,
+   "cakisma": []
+  },
+  "omuz_sol x kabuk": {
+   "cift": 74,
+   "cakisma": []
+  },
+  "omuz_sol x dirsek_sag": {
+   "cift": 0,
+   "cakisma": []
+  },
+  "omuz_sol x dirsek_sol": {
+   "cift": 1,
+   "cakisma": []
+  },
+  "omuz_sol x kafa": {
+   "cift": 0,
+   "cakisma": []
+  },
+  "omuz_sol x taban": {
+   "cift": 0,
+   "cakisma": []
+  },
+  "kabuk x dirsek_sag": {
+   "cift": 0,
+   "cakisma": []
+  },
+  "kabuk x dirsek_sol": {
+   "cift": 0,
+   "cakisma": []
+  },
+  "kabuk x kafa": {
+   "cift": 18,
+   "cakisma": []
+  },
+  "kabuk x taban": {
+   "cift": 1784,
+   "cakisma": []
+  },
+  "dirsek_sag x dirsek_sol": {
+   "cift": 0,
+   "cakisma": []
+  },
+  "dirsek_sag x kafa": {
+   "cift": 0,
+   "cakisma": []
+  },
+  "dirsek_sag x taban": {
+   "cift": 0,
+   "cakisma": []
+  },
+  "dirsek_sol x kafa": {
+   "cift": 0,
+   "cakisma": []
+  },
+  "dirsek_sol x taban": {
+   "cift": 0,
+   "cakisma": []
+  },
+  "kafa x taban": {
+   "cift": 0,
+   "cakisma": []
+  }
+ },
+ "ev_cakisma_toplam": 0,
+ "kol_kaba": {
+  "izgara": {
+   "s1": [
+    -45.0,
+    0.0,
+    45.0,
+    90.0,
+    135.0
+   ],
+   "s2": [
+    5.0,
+    45.0,
+    90.0,
+    120.0
+   ],
+   "dirsek": [
+    0.0,
+    105.0
+   ],
+   "bilek": 0.0,
+   "kosul": "S1 >= 120 iken S2 <= 117"
+  },
+  "pozlar": [
+   {
+    "poz": [
+     -45.0,
+     5.0,
+     0.0,
+     0.0
+    ],
+    "cift": 61,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     -45.0,
+     5.0,
+     105.0,
+     0.0
+    ],
+    "cift": 61,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     -45.0,
+     45.0,
+     0.0,
+     0.0
+    ],
+    "cift": 61,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     -45.0,
+     45.0,
+     105.0,
+     0.0
+    ],
+    "cift": 61,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     -45.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "cift": 61,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     -45.0,
+     90.0,
+     105.0,
+     0.0
+    ],
+    "cift": 61,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     -45.0,
+     120.0,
+     0.0,
+     0.0
+    ],
+    "cift": 61,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     -45.0,
+     120.0,
+     105.0,
+     0.0
+    ],
+    "cift": 61,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     0.0,
+     5.0,
+     0.0,
+     0.0
+    ],
+    "cift": 49,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     0.0,
+     5.0,
+     105.0,
+     0.0
+    ],
+    "cift": 49,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     0.0,
+     45.0,
+     0.0,
+     0.0
+    ],
+    "cift": 49,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     0.0,
+     45.0,
+     105.0,
+     0.0
+    ],
+    "cift": 49,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     0.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "cift": 49,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     0.0,
+     90.0,
+     105.0,
+     0.0
+    ],
+    "cift": 49,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     0.0,
+     120.0,
+     0.0,
+     0.0
+    ],
+    "cift": 49,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     0.0,
+     120.0,
+     105.0,
+     0.0
+    ],
+    "cift": 49,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     45.0,
+     5.0,
+     0.0,
+     0.0
+    ],
+    "cift": 57,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     45.0,
+     5.0,
+     105.0,
+     0.0
+    ],
+    "cift": 57,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     45.0,
+     45.0,
+     0.0,
+     0.0
+    ],
+    "cift": 57,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     45.0,
+     45.0,
+     105.0,
+     0.0
+    ],
+    "cift": 57,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     45.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "cift": 57,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     45.0,
+     90.0,
+     105.0,
+     0.0
+    ],
+    "cift": 57,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     45.0,
+     120.0,
+     0.0,
+     0.0
+    ],
+    "cift": 57,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     45.0,
+     120.0,
+     105.0,
+     0.0
+    ],
+    "cift": 57,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     90.0,
+     5.0,
+     0.0,
+     0.0
+    ],
+    "cift": 57,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     90.0,
+     5.0,
+     105.0,
+     0.0
+    ],
+    "cift": 57,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     90.0,
+     45.0,
+     0.0,
+     0.0
+    ],
+    "cift": 57,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     90.0,
+     45.0,
+     105.0,
+     0.0
+    ],
+    "cift": 57,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     90.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "cift": 57,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     90.0,
+     90.0,
+     105.0,
+     0.0
+    ],
+    "cift": 57,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     90.0,
+     120.0,
+     0.0,
+     0.0
+    ],
+    "cift": 57,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     90.0,
+     120.0,
+     105.0,
+     0.0
+    ],
+    "cift": 57,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     135.0,
+     5.0,
+     0.0,
+     0.0
+    ],
+    "cift": 61,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     135.0,
+     5.0,
+     105.0,
+     0.0
+    ],
+    "cift": 61,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     135.0,
+     45.0,
+     0.0,
+     0.0
+    ],
+    "cift": 61,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     135.0,
+     45.0,
+     105.0,
+     0.0
+    ],
+    "cift": 61,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     135.0,
+     90.0,
+     0.0,
+     0.0
+    ],
+    "cift": 61,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     135.0,
+     90.0,
+     105.0,
+     0.0
+    ],
+    "cift": 61,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     135.0,
+     117.0,
+     0.0,
+     0.0
+    ],
+    "cift": 61,
+    "cakisma": []
+   },
+   {
+    "poz": [
+     135.0,
+     117.0,
+     105.0,
+     0.0
+    ],
+    "cift": 61,
+    "cakisma": []
+   }
+  ],
+  "cakisan_poz": 0
+ },
+ "kafa_supurme": {
+  "pan": [
+   -90.0,
+   -45.0,
+   0.0,
+   45.0,
+   90.0
+  ],
+  "tilt": [
+   -15.0,
+   0.0,
+   15.0
+  ],
+  "pozlar": [
+   {
+    "pan": -90.0,
+    "tilt": -15.0,
+    "cift": 0,
+    "cakisma": [],
+    "en_kucuk_bosluk": null
+   },
+   {
+    "pan": -90.0,
+    "tilt": 0.0,
+    "cift": 0,
+    "cakisma": [],
+    "en_kucuk_bosluk": null
+   },
+   {
+    "pan": -90.0,
+    "tilt": 15.0,
+    "cift": 0,
+    "cakisma": [],
+    "en_kucuk_bosluk": null
+   },
+   {
+    "pan": -45.0,
+    "tilt": -15.0,
+    "cift": 0,
+    "cakisma": [],
+    "en_kucuk_bosluk": null
+   },
+   {
+    "pan": -45.0,
+    "tilt": 0.0,
+    "cift": 0,
+    "cakisma": [],
+    "en_kucuk_bosluk": null
+   },
+   {
+    "pan": -45.0,
+    "tilt": 15.0,
+    "cift": 0,
+    "cakisma": [],
+    "en_kucuk_bosluk": null
+   },
+   {
+    "pan": 0.0,
+    "tilt": -15.0,
+    "cift": 0,
+    "cakisma": [],
+    "en_kucuk_bosluk": null
+   },
+   {
+    "pan": 0.0,
+    "tilt": 0.0,
+    "cift": 0,
+    "cakisma": [],
+    "en_kucuk_bosluk": null
+   },
+   {
+    "pan": 0.0,
+    "tilt": 15.0,
+    "cift": 0,
+    "cakisma": [],
+    "en_kucuk_bosluk": null
+   },
+   {
+    "pan": 45.0,
+    "tilt": -15.0,
+    "cift": 0,
+    "cakisma": [],
+    "en_kucuk_bosluk": null
+   },
+   {
+    "pan": 45.0,
+    "tilt": 0.0,
+    "cift": 0,
+    "cakisma": [],
+    "en_kucuk_bosluk": null
+   },
+   {
+    "pan": 45.0,
+    "tilt": 15.0,
+    "cift": 0,
+    "cakisma": [],
+    "en_kucuk_bosluk": null
+   },
+   {
+    "pan": 90.0,
+    "tilt": -15.0,
+    "cift": 0,
+    "cakisma": [],
+    "en_kucuk_bosluk": null
+   },
+   {
+    "pan": 90.0,
+    "tilt": 0.0,
+    "cift": 0,
+    "cakisma": [],
+    "en_kucuk_bosluk": null
+   },
+   {
+    "pan": 90.0,
+    "tilt": 15.0,
+    "cift": 0,
+    "cakisma": [],
+    "en_kucuk_bosluk": null
+   }
+  ],
+  "cakisan_poz": 0,
+  "en_kucuk": null
+ },
+ "sure_s": 126.8
+}

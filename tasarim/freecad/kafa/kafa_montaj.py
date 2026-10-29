@@ -4,6 +4,8 @@
 # civata ucu payi / kavrama); bagil hareket bosluklari (gruplar arasi); pan x tilt taramasi; kabuk R62 boyun acikligina
 # uyum (analitik halka); tork (gercek parca kutleleri; tilt yercekimi + ivme, pan atalet + surtunme, tahmini profil);
 # rulman yukleri; X2D baski analizi. Moduller arasi carpisma ve ana montaj 2. asamada (carpisma.py, montaj/), dokunulmaz.
+# 1,65 m (Y2a, 29 Ekim 2026): 10,1" kafa (kafa_parcalar = kafa7 Govde/Pan + boyun yukseltme adaptoru + kafa10_lib Bas). Yeni kontroller:
+#   adaptor saplamalari (tip 'saplama'), kafa10 baglanti temaslari (KP.BAG_METIN) + civata <-> isil gomme somun; isi hesabi yeni yariklarla.
 import os, sys, json, math, time, csv
 import FreeCAD as App
 import Part
@@ -220,6 +222,27 @@ for b in BAG:
               ("625ZZ dis bilezik catala degmiyor", mesafe(S(b["rul_d"]), S(b["govde"]))),
               ("sol yanak catala degmiyor", mesafe(S(b["govde"]), S(b["catal"])))]
         k += [(a_ + " (%.2f mm)" % x_, round(x_, 3), x_ >= BOSLUK_MIN) for a_, x_ in dx]
+    elif b["tip"] == "saplama":
+        # 1,65 m (Y2a): boyun yukseltme adaptoru saplamasi. Alt ucu mil flansindaki M3 isil gomme somunda, ust ucu catal tabani ustunde
+        # pul + M3 DIN 985 (naylon halkayi gecmeli: >= 0,5; tasarim 1,0).
+        t_alt, _ = t_aralik(civ, n0, u)
+        ins = S(b["insert"])
+        L_ins = A.INSERT[d_][1]
+        kav = -t_alt
+        k.append(("alt uc isil gomme somuna %.1f mm (>= d %d, <= %.1f)" % (kav, d_, L_ins), round(kav, 3), d_ <= kav <= L_ins + 1e-6))
+        e_ = eksen_disi(ins, n0, u)
+        k.append(("isil gomme somun saplama ekseninde", round(e_, 6), e_ < 1e-6))
+        som = S(b["somun"])
+        e_ = eksen_disi(som, n0, u)
+        k.append(("somun saplama ekseninde", round(e_, 6), e_ < 1e-6))
+        _, t_som = t_aralik(som, n0, u)
+        cik = t_uc - t_som
+        k.append(("saplama ucu DIN 985 somunu %.1f mm geciyor (>= 0,5)" % cik, round(cik, 3), cik >= 0.5))
+        dl = [("pul egme catali tabanina dayali", mesafe(S(b["pul"]), S(b["catal"]))), ("somun pula dayali", mesafe(som, S(b["pul"]))),
+              ("egme catali adaptore dayali", mesafe(S(b["catal"]), S(b["adaptor"]))),
+              ("adaptor mil flansina dayali", mesafe(S(b["adaptor"]), S(b["mil"]))),
+              ("isil gomme somun mil flansinda", mesafe(ins, S(b["mil"])))]
+        k += [(a_, round(x_, 4), x_ <= TEMAS) for a_, x_ in dl]
     bag_kontrol.append(dict(ad=b["ad"], tip=b["tip"], kontroller=k, tamam=all(x[2] for x in k)))
 
 # eksen hizasi ve oturmalar
@@ -239,15 +262,52 @@ otur = [("boyun mili diski pan horn'una dayali", "Boyun mili", "Pan horn 25T alu
         ("6808 alt ic bilezik milde", "6808-2RS alt rulman (ic bilezik)", "Boyun mili"),
         ("6808 ust ic bilezik milde (omuz ustunde)", "6808-2RS ust rulman (ic bilezik)", "Boyun mili"),
         ("rulman yuvasi servo yuvasina dayali", "Rulman yuvasi", "Servo yuvasi"),
-        ("egme catali mil flansina dayali", "Egme catali", "Boyun mili"),
-        ("LCD paneli ekran yuvasi kenarina dayali", "Yuz ekrani Waveshare 7in HDMI LCD (C)", "Yuz kabugu (on)"),
-        ("vizor on yuze dayali", "Vizor (siyah akrilik)", "Yuz kabugu (on)"),
-        ("on kabuk kafa tablasi boss'una dayali", "Yuz kabugu (on)", "Kafa iskeleti"),
-        ("arka kabuk kafa tablasi boss'una dayali", "Arka kafa kabugu", "Kafa iskeleti"),
-        ("arka kabuk dikis dili on kabuga oturuyor", "Arka kafa kabugu", "Yuz kabugu (on)")]
+        ("egme catali boyun yukseltme adaptorune dayali", "Egme catali", "Boyun yukseltme adaptoru"),
+        ("boyun yukseltme adaptoru mil flansina dayali", "Boyun yukseltme adaptoru", "Boyun mili")]
 for ad_, a_, b_ in otur:
     d_ = mesafe(S(IDX[a_]), S(IDX[b_]))
     eks.append((ad_, round(d_, 4), d_ <= TEMAS))
+# 1,65 m (Y2a): 10,1" kafanin (kafa10_lib) baglantilari: birlesen parca ciftleri dayali mi (KP.BAG_METIN; ayni adli parcalardan en yakin cift)
+#   + her kafa10 civatasi en yakin M3 isil gomme somuna dayali (civata gomme somun deliginde; kavrama olcusu ayrica yok -> kontrol ajanina)
+
+
+def adaylar(ad_):
+    return [i_ for i_, p in enumerate(P) if p["ad"] == ad_] or [i_ for i_, p in enumerate(P) if p["ad"].startswith(ad_)]
+
+
+bas_bag = []
+# ara parca: Pi burclari, kopuk bant (kart -> ara parca -> tabla zinciri). Bagil hareketli cift (tilt pimi: iskelet <-> catal) temas
+# degil BOSLUK ister; o baglanti "pim" kontrolunde (625ZZ) olculur, burada bosluk >= BOSLUK_MIN aranir.
+ARA_ONEK = ("Burc M2,5x8 (Pi", "Kopuk bant")
+_ara = [i_ for i_, p in enumerate(P) if p["ad"].startswith(ARA_ONEK)]
+for bm in KP.BAG_METIN:
+    pr = bm["parcalar"]
+    for a_, b_ in zip(pr[:-1], pr[1:]):
+        ia, ib = adaylar(a_), adaylar(b_)
+        if not ia or not ib:
+            bas_bag.append(("%s: %s / %s parcasi yok" % (bm["ad"], a_, b_), None, False))
+            continue
+        d_ = min(mesafe(S(x_), S(y_)) for x_ in ia for y_ in ib)
+        if bm["ad"].startswith("Tilt pimi"):
+            bas_bag.append(("%s: %s <-> %s bagil hareket boslugu (>= %.1f)" % (bm["ad"], a_, b_, BOSLUK_MIN), round(d_, 4), d_ >= BOSLUK_MIN))
+            continue
+        if d_ > TEMAS:
+            for c_ in _ara:
+                if min(mesafe(S(x_), S(c_)) for x_ in ia) <= TEMAS and min(mesafe(S(c_), S(y_)) for y_ in ib) <= TEMAS:
+                    bas_bag.append(("%s: %s <-> %s, %s uzerinden dayali" % (bm["ad"], a_, b_, P[c_]["ad"]), 0.0, True))
+                    break
+            else:
+                bas_bag.append(("%s: %s <-> %s dayali" % (bm["ad"], a_, b_), round(d_, 4), False))
+            continue
+        bas_bag.append(("%s: %s <-> %s dayali" % (bm["ad"], a_, b_), round(d_, 4), True))
+_ins10 = [i_ for i_, p in enumerate(P) if p["grup"] == "Kafa" and p["ad"].startswith("Isil gomme somun M3")]
+for i_, p in enumerate(P):
+    if p["grup"] != "Kafa" or p["tur"] != "Baglanti" or "civatasi" not in p["ad"] or p["ad"].startswith("Yanak-horn"):
+        continue
+    j_ = min(_ins10, key=lambda q: (P[q]["bb"].Center - p["bb"].Center).Length)
+    d_ = mesafe(S(i_), S(j_))
+    bas_bag.append(("%s -> %s" % (p["ad"], P[j_]["ad"]), round(d_, 4), d_ <= TEMAS))
+bag_kontrol.append(dict(ad="10,1 in kafa baglantilari (kafa10_lib)", tip="temas", kontroller=bas_bag, tamam=all(x[2] for x in bas_bag)))
 # eksenel yuk yolu: ust rulman ic bileziginin ust yuzu = mil omzu alt yuzu; dis bilezigin alt yuzu = yuva tablasi
 r2i = S(IDX["6808-2RS ust rulman (ic bilezik)"]).BoundBox
 omuz_kesit = KP.P[KP.I_MIL]["shape"].common(cyl(22.2, (0, KP.Y_OMUZ[0], 0), (0, KP.Y_OMUZ[0] + 0.2, 0)).cut(
@@ -469,7 +529,8 @@ def atalet(gruplar, pl_map, eksen_n, eksen_u):
 # tilt: kafa grubunun yercekimi momenti (pan acisindan bagimsiz) + ivme momenti
 # K4 (15 Ekim 2026): kafa ici kisa kablolar (FPC 300 mm, micro HDMI 25-30 cm, USB-C guc, 12 V, LCD USB) parca listesinde yok:
 # tork ve rulman hesabina nokta kutle olarak eklenir (taban KABLO_PAY gibi; tahmini). Modul kutlesine (kutle_g) girmez.
-KABLO_KAFA = dict(kutle_g=25.0, merkez=(-10.0, 195.0, 15.0), not_="tahmini: FPC ~3 g, micro HDMI 25 cm ~12 g, USB-C ~6 g, 12 V 18 AWG ~4 g")
+KABLO_KAFA = dict(kutle_g=K["kablo_payi"]["kutle_g"], merkez=(-10.0, YT - 20.0, ZT - 10.0),
+                  not_="tahmini: FPC ~3 g, micro HDMI 25 cm ~12 g, USB-C ~6 g, 12 V 18 AWG ~4 g; 1,65 m: merkez tilt ekseninin 20 mm alti (tahmini)")
 mK0, cK0 = GR["Kafa"]
 mK = mK0 + KABLO_KAFA["kutle_g"]
 cK = (cK0 * mK0 + V(*KABLO_KAFA["merkez"]) * KABLO_KAFA["kutle_g"]) * (1.0 / mK)
@@ -538,16 +599,24 @@ log("tork tilt %.2f kg*cm (yercekimi %.2f @%d, ivme %.3f) pay %.1f; pan %.2f kg*
 # yukseklik farki; Q = (1/R + rho cp Vdot) dT esitligi bisection ile. (2) Iyimser sinir: fan debisinin (1,0-1,55 L/s, uretici vermiyor)
 # tamami yariklardan gecer (emis perdesinin hedefi; gercekte bir kismi). Gercek deger ikisinin arasinda; Pi ust bolmede, oradaki hava
 # ortalamadan sicak. Servo (MG996R) sinir 55 C, Pi SoC kisma 80-85 C.
-ISI = dict(ortam_C=30.0, R_kapali_K_W=1.3, yuzey_m2=0.19, verim=0.90, debi_L_s=(1.0, 1.55), servo_sinir_C=55.0, Cd=0.6,
+# 1,65 m (Y2a): 10,1" kafa (kafa10_lib) arka duvar yariklari: giris 2 x 3 yarik 35 x 3 (Bas cercevesinde y 36...53), cikis 2 x 4 (y 72...96);
+# yuzey ve ekran gucu TAHMINI (10,1" ekranin akimi olculecek: dongu.md olcum bekleyenler; Y2b elektrik). Duvar direnci R yuzeyle olceklenir.
+_KK = K["kafa_kutu"]
+YUZEY10 = 2 * (_KK[0] * _KK[1] + _KK[0] * _KK[2] + _KK[1] * _KK[2]) * 1e-6
+HAVA_ALAN = dict(giris_mm2=2 * 3 * 35.0 * 3.0, cikis_mm2=2 * 4 * 35.0 * 3.0, H_mm=(72.0 + 7.0 * 3 + 1.5) - (36.0 + 7.0 + 1.5),
+                 once=dict(KP.K7.HAVA_ALAN), not_="kafa10_lib arka kabuk yariklari (yarik 35 x 3); once = 125 cm kafasi")
+LCD_W = 4.0                                  # 10,1" HDMI LCD (TAHMINI; 7" Waveshare 2,45 W idi)
+ISI = dict(ortam_C=30.0, R_kapali_K_W=round(1.3 * 0.19 / YUZEY10, 3), yuzey_m2=round(YUZEY10, 3), verim=0.90, debi_L_s=(1.0, 1.55),
+           servo_sinir_C=55.0, Cd=0.6, lcd_W=LCD_W,
            kaynak="planlama/adim1/P-pi-kafada.md bolum 3; jeffgeerling.com (Pi 5 guc); Waveshare wiki (LCD akimi); MG996R datasheet (0-55 C); "
                   "dogal cekis: standart baca (yigin) etkisi bagintisi, Cd tahmini")
-isi = dict(varsayim=ISI, hava=dict(KP.HAVA_ALAN), senaryo={})
+isi = dict(varsayim=ISI, hava=dict(HAVA_ALAN), senaryo={})
 RHO_CP = 1.16 * 1007.0                                           # J/(m3 K), 30-40 C hava
 
 
 def cekis_dT(Q, H_mm):
     """Dogal cekis + duvar kaybi: ic hava artisi (K) ve yarik debisi (L/s)."""
-    Ag, Ac = KP.HAVA_ALAN["giris_mm2"] * 1e-6, KP.HAVA_ALAN["cikis_mm2"] * 1e-6
+    Ag, Ac = HAVA_ALAN["giris_mm2"] * 1e-6, HAVA_ALAN["cikis_mm2"] * 1e-6
     Ae = 1.0 / math.sqrt(1.0 / Ag ** 2 + 1.0 / Ac ** 2)
     lo, hi = 0.0, 80.0
     for _ in range(80):
@@ -561,12 +630,12 @@ def cekis_dT(Q, H_mm):
 
 
 for ad_, pi_W in (("bosta", 3.2), ("tipik", 7.0), ("en_kotu", 9.8)):
-    yuk = pi_W + 2.45 + 0.5 + 0.3
+    yuk = pi_W + LCD_W + 0.5 + 0.3
     Q = yuk / ISI["verim"]
     dT_kapali = Q * ISI["R_kapali_K_W"]
     dT_fan = [Q / (1.0 / ISI["R_kapali_K_W"] + RHO_CP * v / 1000.0) for v in ISI["debi_L_s"]]
-    dT_c, Vd_c = cekis_dT(Q, KP.HAVA_ALAN["H_mm"])
-    dT_c0, Vd_c0 = cekis_dT(Q, KP.HAVA_ALAN["once"]["H_mm"])
+    dT_c, Vd_c = cekis_dT(Q, HAVA_ALAN["H_mm"])
+    dT_c0, Vd_c0 = cekis_dT(Q, HAVA_ALAN["once"]["H_mm"])
     isi["senaryo"][ad_] = dict(W=round(Q, 1), kapali_ic_C=round(ISI["ortam_C"] + dT_kapali, 1),
                                yarikli_ic_C=[round(ISI["ortam_C"] + d, 1) for d in dT_fan],
                                cekis_ic_C=round(ISI["ortam_C"] + dT_c, 1), cekis_debi_L_s=round(Vd_c, 3),
@@ -574,9 +643,9 @@ for ad_, pi_W in (("bosta", 3.2), ("tipik", 7.0), ("en_kotu", 9.8)):
                                aralik_C=[round(ISI["ortam_C"] + min(dT_fan), 1), round(ISI["ortam_C"] + dT_c, 1)],
                                servo_payi_kapali_K=round(ISI["servo_sinir_C"] - ISI["ortam_C"] - dT_kapali, 1))
 for gir in ("giris_mm2", "cikis_mm2"):
-    isi["hava"][gir + "_hiz_m_s_1.55L"] = round(1.55e-3 / (KP.HAVA_ALAN[gir] * 1e-6), 2)
+    isi["hava"][gir + "_hiz_m_s_1.55L"] = round(1.55e-3 / (HAVA_ALAN[gir] * 1e-6), 2)
 log("isi (K4/T2):", {k: (v["W"], v["kapali_ic_C"], v["yarikli_ic_C"], v["cekis_ic_C"], v["cekis_once_ic_C"]) for k, v in isi["senaryo"].items()},
-    "yarik", KP.HAVA_ALAN)
+    "yarik", HAVA_ALAN)
 
 # ====================================================================== 7) baski analizi (X2D)
 baski = []
@@ -714,7 +783,9 @@ out = dict(
                                  "omuz (sag/sol; kol one 135 derece kalkinca kafa yanina yaklasir), dirsek (kol zinciri, el kafaya)",
                         haric="kafa 'Referans' grubu (kablo gosterimi); traverse ust kanalindaki cekic somunlar iskelet profiline "
                               "temasli (tasarim geregi, kanal icinde)",
-                        not_="kafa grubu en genis: x +-105, z -65...85 (pan donunce r 135); omuz/kol taramasinda pan +-90 sinirlari"),
+                        not_="kafa grubu zarfi x %.1f...%.1f, y %.1f...%.1f, z %.1f...%.1f (ev pozu); omuz/kol taramasinda pan +-90 sinirlari" % (
+                            min(p["bb"].XMin for p in KAF), max(p["bb"].XMax for p in KAF), min(p["bb"].YMin for p in KAF),
+                            max(p["bb"].YMax for p in KAF), min(p["bb"].ZMin for p in KAF), max(p["bb"].ZMax for p in KAF))),
     gecersiz=gecersiz, coklu_kati=coklu, statik=statik, cift_sayisi=n_cift, tolerans_mm3=TOL,
     baglanti_kontrol=bag_kontrol,
     bagil_bosluk=dict(en_kucuk=bagil[:12], hata=bagil_hata, esik_mm=BOSLUK_MIN),
@@ -728,8 +799,8 @@ out = dict(
     r62=dict(aciklik_r=A.BOYUN_ACIKLIK_R, kapak_y_yerel=list(y_kapak), sabit_en_kucuk=r62[:6], kapak_seviyesi_r_max=round(r_max, 2),
              kafa_en_alt_y=round(alt[0], 2), kafa_en_alt_poz=alt[1], pan_en_alt_y=round(y_pan_min, 2),
              not_="kapak seviyesinde yalniz sabit boyun (servo yuvasi + plaka kulaklari) var; hareketli parcalar y >= %.1f" % y_pan_min),
-    isi=isi, pi=dict(konum_T=list(KP.PI_T), burc_mm=KP.PI_BURC, delikler=[list(d) for d in KP.PI_DEL], cevirici=list(KP.CEV_C),
-                     amfi=list(KP.AMP_C), boyun_kablolari="12 V cift 18 AWG + ESP32 USB (VBUS hattinda seri 1N5819) + tilt servo (3 tel)",
+    isi=isi, pi=dict(konum_T_bas_cercevesi=list(KP.INFO["pi_t"]), burc_mm=KP.K7.PI_BURC, cevirici_xz=[-80.0, 6.0], amfi_xz=[80.0, 6.0],
+                     not_="10,1 in kafa: Bas cercevesi = tilt ekseni (kafa yereli y %.3f, z %.1f) orijinli" % (YT, ZT), boyun_kablolari="12 V cift 18 AWG + ESP32 USB (VBUS hattinda seri 1N5819) + tilt servo (3 tel)",
                      kaynak="planlama/adim1/P-pi-kafada.md; planlama/adim3/elektrik.md"),
     tork=dict(tilt=tilt_tork, pan=pan_tork, profil="60 derece 0,4 s'de ucgen hiz profili (tahmini): alfa %.1f rad/s2, tepe hiz %.1f rad/s" % (ALFA, OMEGA),
               stall_kaynak="MG996R datasheet 9,4 kg*cm @4,8 V (11 @6 V); dirsek ile ayni"),
@@ -739,9 +810,10 @@ out = dict(
     bom=[[t, kod, v["adet"], round(v["kutle"], 1)] for (t, kod), v in sorted(bom.items())],
     step_kati=step_kati, joints_ok=joints_ok,
     arayuz=dict((k, (list(v) if isinstance(v, tuple) else v)) for k, v in A.KAFA.items()),
-    olcu=dict(Y_PK=KP.Y_PK, Y_R1=KP.Y_R1, Y_R2=KP.Y_R2, Y_FL=KP.Y_FL, Y_CB=KP.Y_CB, Y_TABLA=KP.Y_TABLA, Z_DIKIS=KP.Z_DIKIS,
-              Z_LCD=KP.Z_LCD, Y_LCD=KP.Y_LCD, Y_CAM=KP.Y_CAM, Z_CAM=KP.Z_CAM, ACIKLIK=KP.ACIKLIK, kafa=[KP.KX, KP.KY0, KP.KY1, KP.KZ0, KP.KZ1]),
-    kablo_yolu=[list(p) for p in KP.YOL],
+    olcu=dict(Y_PK=KP.Y_PK, Y_R1=KP.Y_R1, Y_R2=KP.Y_R2, Y_FL=KP.Y_FL, Y_CB=KP.Y_CB, adaptor_h=KP.H_ADAPTOR, tilt_y=YT, tilt_z=ZT,
+              bas=dict((k, (v if isinstance(v, (int, float)) else str(v))) for k, v in KP.INFO.items()),
+              not_="1,65 m: Govde/Pan olculeri kafa7 (125 cm) ile ayni; Bas (10,1 in) olculeri kafa10_lib (Bas cercevesi = tilt ekseni)"),
+    kablo_yolu=[],          # 1,65 m: 10,1" kafada kablo gosterimi yok (125 cm kafa7.YOL eski kafaya gore)
     sure_s=round(time.time() - t0, 1),
 )
 json.dump(out, open(os.path.join(HERE, "kafa-analiz.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=str)

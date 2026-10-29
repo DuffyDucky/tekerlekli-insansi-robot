@@ -351,7 +351,7 @@ def kol_katkisi(poz_sag, poz_sol, yuk=False):
 
 
 m_ev, mom_ev = kol_katkisi((0, 0, 0), (0, 0, 0))
-XC, ZC = 178.0, 185.0          # teker temas hatti: teker merkez dulemleri (V3 hesabiyla ayni)
+XC, ZC = A._X_WH, A.L0 / 2 - 65   # teker temas hatti: teker merkez duzlemleri (520 taban x 216; 125 cm 178), z 185
 
 
 def denge(M, C, rampa=0.0):
@@ -426,12 +426,11 @@ HAT_VERIM = {"kafa 5 V": 0.90, "5 V": VERIM, "6 V": VERIM, "12 V": 0.95}   # kaf
 TUKETIM = [
     # (kalem, hat, dusuk W, orta W, yuksek W, dayanak). K4 (15 Ekim 2026): Pi 5, 7" LCD, amfi, mikrofon, kamera kafada (12 V -> kafa 5 V)
     ("Raspberry Pi 5 + Active Cooler (kafada)", "kafa 5 V", 4.0, 7.0, 12.0, "tahmini (besleme 5 V 5 A, datasheet README)"),
-    ("7\" yuz ekrani (Waveshare, kafada)", "kafa 5 V", 1.5, 2.5, 3.0, "tahmini"),
+    ("10,1\" yuz ekrani (Waveshare HDMI LCD (B), kafada)", "kafa 5 V", 1.5, 2.5, 3.0, "tahmini; 7 inc degerleri, 10,1 inc icin olculecek / Y2b"),
     ("Amfi + mikrofon + kamera (kafada)", "kafa 5 V", 0.5, 1.2, 2.5, "tahmini"),
-    ("Nextion 10,1\" gogus ekrani", "5 V", 1.5, 4.0, 4.0, "datasheet: %100 parlaklik 800 mA, uyku 170 mA"),
     ("ESP32 + sensorler + PCA/BNO mantik (3V3)", "5 V", 0.5, 1.3, 1.5, "tahmini"),
-    ("Servolar A: sag kol + pan (2 DS3218 + 3 MG996R)", "6 V", 0.5, 4.0, 12.5, "tahmini zaman ortalamasi: bosta / jest / kol yuklu tutma (elektrik.md)"),
-    ("Servolar B: sol kol + tilt (2 DS3218 + 3 MG996R)", "6 V", 0.5, 4.0, 12.5, "tahmini zaman ortalamasi (elektrik.md)"),
+    ("Servolar A: sag kol + pan (2 DS3235 + 3 MG996R)", "6 V", 0.5, 4.0, 12.5, "tahmini zaman ortalamasi: bosta / jest / kol yuklu tutma (elektrik.md)"),
+    ("Servolar B: sol kol + tilt (2 DS3235 + 3 MG996R)", "6 V", 0.5, 4.0, 12.5, "tahmini zaman ortalamasi (elektrik.md)"),
     ("Tahrik (4 JGB37, BTS7960)", "12 V", 0.5, 5.0, 25.0, "tahmini: duruyor / %30 surus / surekli surus + rampa"),
 ]
 aku = dict(wh=AKU_WH, kullanilabilir=KULLANIM, verim=VERIM, hat_verim=HAT_VERIM, senaryo={})
@@ -527,9 +526,10 @@ out = dict(
     tarama_onerisi=dict(
         statik="taban <-> iskelet ve taban <-> kabuk ev pozunda burada tarandi (bkz. iskelet, kabuk); 2. asamada carpisma.py "
                "KONTROL listesine 'taban' (yukleyici: taban_parcalar.P, grup 'sabit', haric: 'Kablo yolu', 'Ana anahtar dugmesi')",
-        kollar="omuz x dirsek x bilek tum pozlari <-> taban ust parcalari: acil stop mantari (y <= 290, x 49...109, z -230...-170), "
-               "sonar transduserleri (z <= 268, etek onunde 5,5 mm), ana anahtar dugmesi (gosterim, y 262...284); el ucu en alt y ~630 (ev)",
-        kafa="kafa taban ile etkilesmez (y >= 975)",
+        kollar=("omuz x dirsek x bilek tum pozlari <-> taban ust parcalari: acil stop mantari (y <= 290, x %.0f...%.0f, z -230...-170), "
+                "sonar transduserleri (z <= 268, etek onunde 5,5 mm), ana anahtar dugmesi (gosterim, y 262...284); el ucu en alt y ~%.0f (ev)"
+                % (A.ACIL_STOP["x"] - 30, A.ACIL_STOP["x"] + 30, A.S3 + A.DIRSEK["el_ucu"][1])),
+        kafa="kafa taban ile etkilesmez (y >= %.0f)" % (A.S3 + A.SG / 2),
         haric=["Kablo yolu*", "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)"],
         temas_beklenen="plaka <-> raylar, cekic somunlar <-> kanal dudaklari, burclar <-> ray ustu, sonar tutucu <-> on ara ray, "
                        "acil stop bilezigi <-> etek ust plakasi: temas (0 mm3)",
@@ -548,7 +548,7 @@ out = dict(
                       "kol gruplari omuz_parcalar / dirsek_parcalar'dan (Gobek, Kol, UstKol, OnKol, El)" % N_r0,
                tabansiz_kutle_g=round(M_r0, 2), tabansiz_am=vl(CG_r0), tabansiz_parca=N_r0,
                hareketli_gruplar={k: dict(kutle_g=round(v[0], 1), am_omuz_yereli=vl(v[1])) for k, v in HAREKETLI.items()},
-               temas="teker merkez duzlemleri x +-%.0f, z +-%.0f (V3 hesabi ile ayni); fren ivmesi 1,5 m/s2 (acil stop, tahmini)" % (XC, ZC),
+               temas="teker merkez duzlemleri x +-%.0f, z +-%.0f (520 taban); fren ivmesi 1,5 m/s2 (acil stop, tahmini)" % (XC, ZC),
                pozlar=robot),
     motor=motor, aks=aks, aku=aku, donus=donus, kafa_duzeltme=KAFA_DUZ, omni=TP.OMNI,
     bom=[[t, kod, v["adet"], round(v["kutle"], 1)] for (t, kod), v in sorted(bom.items())],

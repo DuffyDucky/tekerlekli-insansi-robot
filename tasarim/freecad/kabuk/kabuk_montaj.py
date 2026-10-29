@@ -75,16 +75,14 @@ bolge_ihlal, bolge_n, bolge_bosluk = [], 0, []
 for z in A.BOLGELER:
     if z["sahip"] in ("iskelet", "omuz_sag", "omuz_sol"):
         continue          # bu modullerin gercek geometrisi ayrica kontrol ediliyor
-    if z["sahip"] == "kabuk" and not z["ad"].startswith("Nextion"):
-        continue          # kabugun kendi braket bolgeleri (icinde kabuk braketleri var)
+    if z["sahip"] == "kabuk":
+        continue          # kabugun kendi braket bolgeleri (icinde kabuk braketleri var; Nextion bolgesi 1,65 m'de yok)
     kb = box(*z["kutu"])
     for c in z["bosluk"]:
         kb = kb.cut(box(*c))
     bolge_n += 1
     en_yakin = (1e9, None)
     for p in P:
-        if z["ad"].startswith("Nextion") and p["ad"].startswith("Nextion"):
-            continue      # konnektor bolgenin icinde (tasarim geregi)
         if p["obb"].intersect(kb.BoundBox):
             v = p["shape"].common(kb).Volume
             if v > TOL:
@@ -202,16 +200,8 @@ for v in VIDA:
     ok = d_bas <= K.BAS_BOSLUK + TEMAS and d_ins <= TEMAS and 3.0 <= tip_derin <= A.INSERT[3][1] and v["hn"] >= 1.2
     vida_kontrol.append(dict(etiket=v["etiket"], ic=v["ic"], dis=v["dis"], bas_dayali=round(d_bas, 4), insert_oturdu=round(d_ins, 4),
                              kavrama=round(tip_derin, 2), dudak=round(v["hn"], 2), tamam=ok))
-ekran_kontrol = []
-ekran = P[K.I_EKRAN]["shape"]
-for v in VIDA:
-    if v["tip"] != "ekran":
-        continue
-    d = mesafe(ekran, PAR[v["ic"]])
-    ekran_kontrol.append(dict(etiket=v["etiket"], parca=v["ic"], pcb_boss_temas=round(d, 4),
-                              kavrama=round(6.0 - A.NEXTION["pcb"][2], 2), tamam=d <= TEMAS))
-log("bindirme civatasi tamam %d/%d, ekran %d/%d" % (sum(x["tamam"] for x in vida_kontrol), len(vida_kontrol),
-                                                     sum(x["tamam"] for x in ekran_kontrol), len(ekran_kontrol)))
+log("bindirme civatasi tamam %d/%d (Nextion ekrani yok: ekran civatasi kontrolu kaldirildi)" % (
+    sum(x["tamam"] for x in vida_kontrol), len(vida_kontrol)))
 # S1 kablo kaseti (15 Ekim 2026): kapak havsasindaki M3x8 basi kapaga dayali, isil gomme somun boss'ta oturmus, kavrama >= d ve
 # <= isil gomme somun deligi, kaset govdesi (arka plaka) kabuk omuz yuzune oturmus, kapak govdeye oturmus.
 kaset_kontrol = []
@@ -237,17 +227,7 @@ etek_parca = [ad for ad in K.PARCA if ad.startswith("Etek")]
 teker_bosluk = min(PAR[ad].distToShape(box(*z["kutu"]))[0] for ad in etek_parca for z in teker)
 govde_parca = [ad for ad in K.PARCA if not ad.startswith("Etek")]
 direk_bosluk = min(PAR[ad].distToShape(direk)[0] for ad in govde_parca)
-ekran_cam_bosluk = A.GOGUS_Z + A.KABUK_T / math.cos(math.radians(A.GOGUS_EGIM)) - A.KABUK_T  # yatay
-# Nextion cam on yuzu <-> govde kabugu (pencere cevresindeki duvar ic yuzu): geometriden olculur (eskiden elle 0,106 x cos 15)
-from ortak_lib import yerlestir
-_c = K.EO["cam"]
-cam_sh = yerlestir(box(_c[0], _c[1], _c[2], _c[3], K.w_pcb_on, 0.0), K.EKM)
-_cbb = App.BoundBox(cam_sh.BoundBox)
-_cbb.enlarge(5.0)
-cam_olcum = sorted((cam_sh.distToShape(PAR[ad])[0], ad) for ad in govde_parca if PAR[ad].BoundBox.intersect(_cbb))
-cam_duvar = cam_olcum[0][0] if cam_olcum else None
-CAM_DUVAR_MIN = 0.05     # mm: cam duvara degmemeli (temas = 0); ust sinir yok, pencere payi ayrica
-log("teker-etek %.2f mm, direk-govde %.2f mm, cam-duvar %.4f mm (%s)" % (teker_bosluk, direk_bosluk, cam_duvar, cam_olcum[0][1] if cam_olcum else "-"))
+log("teker-etek %.2f mm, direk-govde %.2f mm" % (teker_bosluk, direk_bosluk))
 
 # ====================================================================== 5b) bindirme boslugu (M5, 14 Ekim 2026)
 # Dil (bir parcanin ic yarisi) komsunun dis yarisinin arkasina uzanir; arayuz.KABUK_BINDIRME_BOSLUK (0,25 mm) kadar iceri cekilmistir.
@@ -261,6 +241,8 @@ for (bant, sag), sh in K.GOVDE.items():
     ON_SEKIL["Arka servis kapagi" if bant == "kapak" else "%s %s" % (K.GOVDE_AD[bant], "sag" if sag else "sol")] = (sh, K.S_dis)
 for (bant, sag), sh in K.ETEK.items():
     ON_SEKIL["%s %s" % (K.ETEK_AD[bant], "sag" if sag else "sol")] = (sh, K.Se_dis)
+for yer, sh in K.ETEK_DOLGU.items():
+    ON_SEKIL["Etek dolgu seridi %s" % yer] = (sh, K.Se_dis)
 dis_yari = {}
 bindirme_bosluk = []
 for ad_b, (_, s_dis) in ON_SEKIL.items():
@@ -315,6 +297,8 @@ def baski_analiz(ad, sh, yukari):
             en = (th, w, h)
     sigar = en[1] <= UX and en[2] <= UY and (zmax - zmin) <= UZ
     sigar_cift = en[1] <= Y["kullanilabilir_cift"][1] and en[2] <= Y["kullanilabilir_cift"][0] and (zmax - zmin) <= Y["kullanilabilir_cift"][2]
+    TO = A.YAZICI_OKUL["tabla"]                 # okul yazicisi 250 x 250 x 250 (1,65 m, Y2a)
+    sigar_okul = en[1] <= TO[0] and en[2] <= TO[1] and (zmax - zmin) <= TO[2]
     # 45 derece cikinti orani (tabla yuzeyi haric)
     a, b, c3 = X[Tn[:, 0]], X[Tn[:, 1]], X[Tn[:, 2]]
     cr = np.cross(b - a, c3 - a)
@@ -336,14 +320,28 @@ def baski_analiz(ad, sh, yukari):
         except Exception:
             yuz = None
         if yuz is not None and onceki is not None:
-            try:
-                dest = [f.makeOffset2D(1.0, 0) for f in onceki.Faces]
-                dest = dest[0].fuse(dest[1:]) if len(dest) > 1 else dest[0]
-                dest.translate(V(0, 0, 1.0))          # onceki katman duzlemi -> bu katman duzlemi (es duzlemde kesim)
-                acik = yuz.cut(dest)
-            except Exception as e:
-                acik = None
-                sorun.append(dict(z=round(z - zmin, 1), hata=repr(e)[:80]))
+            acik, hata = None, None
+            # Y2a (29 Ekim 2026): OCC makeOffset2D bazen tek katmanda "result of offsetting is null" veriyor (1650'de orta bant sag
+            # z 220,5; ayni geometri 1700'de gecti). Hesap hatasi destek sorunu sayilmasin diye ofset 0,98 / 1,02 ile yeniden denenir;
+            # yine olmazsa sorun olarak kalir.
+            for _of in (1.0, 0.98, 1.02):
+                try:
+                    dest = []
+                    for f in onceki.Faces:              # yuz basina; ofseti kurulamayan yuz ofsetsiz (daha tutucu; kafa_lib ile ayni)
+                        try:
+                            dest.append(f.makeOffset2D(_of, 0))
+                        except Exception:
+                            dest.append(f)
+                    dest = dest[0].fuse(dest[1:]) if len(dest) > 1 else dest[0]
+                    dest.translate(V(0, 0, 1.0))          # onceki katman duzlemi -> bu katman duzlemi (es duzlemde kesim)
+                    acik = yuz.cut(dest)
+                    if _of != 1.0:
+                        log("baski %s z %.1f: ofset 1,0 hata verdi, %.2f ile hesaplandi" % (ad, z - zmin, _of))
+                    break
+                except Exception as e:
+                    hata = e
+            if acik is None:
+                sorun.append(dict(z=round(z - zmin, 1), hata=repr(hata)[:80]))
             if acik is not None:
                 for f in acik.Faces:
                     if f.Area < 0.5:
@@ -360,7 +358,7 @@ def baski_analiz(ad, sh, yukari):
     hac = sh.Volume
     kutle = hac / 1000 * A.PETG_RHO * A.KABUK_DOLULUK
     return dict(ad=ad, olcu=[round(en[1], 1), round(en[2], 1), round(zmax - zmin, 1)], tabla_aci=en[0], sigar=bool(sigar),
-                sigar_cift=bool(sigar_cift), cikinti_orani=round(oran, 4), cikinti_alan_cm2=round(float(alan[cik].sum()) / 100, 1),
+                sigar_cift=bool(sigar_cift), sigar_okul=bool(sigar_okul), cikinti_orani=round(oran, 4), cikinti_alan_cm2=round(float(alan[cik].sum()) / 100, 1),
                 yuzey_cm2=round(float(alan.sum()) / 100, 1), destek_sorun=sorun[:20], destek_sorun_sayi=len(sorun),
                 desteksiz=len(sorun) == 0, hacim_cm3=round(hac / 1000, 1), kutle_g=round(kutle, 0),
                 filament_g=round(kutle * 1.05, 0), sure_saat=round(hac * A.KABUK_DOLULUK / A.PETG_HACIM_HIZI / 3600, 1),
@@ -438,11 +436,9 @@ out = dict(
     baglanti=[dict(ad=b["ad"], tip=b["tip"], parca=b["parca"], govde=P[b["govde"]]["ad"], eleman=[P[i]["kod"] for i in b["eleman"]])
               for b in BAG],
     baglanti_kontrol=bag_kontrol, m6_vida_pay=dict(sart_somun_gecme_mm=SOMUN_GECME, sart_taban_pay_mm=TABAN_PAY, somun_ustu_mm=somun_alti,
-                                                  kanal_tabani_mm=A.KANAL_TABAN, kalemler=m6_pay), vida_kontrol=vida_kontrol, ekran_kontrol=ekran_kontrol, kaset_kontrol=kaset_kontrol,
+                                                  kanal_tabani_mm=A.KANAL_TABAN, kalemler=m6_pay), vida_kontrol=vida_kontrol, kaset_kontrol=kaset_kontrol,
     s1_kaset=dict(K.S1_KASET, dikme=[[d[0], d[1]] for d in K.S1_KASET['dikme']], kaynak='arayuz.KOL_KABLO s1'),
-    bosluk=dict(teker_etek_mm=round(teker_bosluk, 2), direk_govde_mm=round(direk_bosluk, 2),
-                cam_duvar_mm=round(cam_duvar, 3), cam_duvar_parca=[[ad, round(d, 4)] for d, ad in cam_olcum[:3]],
-                cam_duvar_sart_mm=CAM_DUVAR_MIN, cam_duvar_ok=bool(cam_duvar is not None and cam_duvar >= CAM_DUVAR_MIN)),
+    bosluk=dict(teker_etek_mm=round(teker_bosluk, 2), direk_govde_mm=round(direk_bosluk, 2)),
     bindirme_bosluk=dict(sart_min_mm=BINDIRME_BOSLUK_MIN, tasarim_mm=A.KABUK_BINDIRME_BOSLUK, en_az_mm=bindirme_en_az,
                          ihlal=[b for b in bindirme_bosluk if not b['tamam']], ciftler=bindirme_bosluk),
     baski=baski,

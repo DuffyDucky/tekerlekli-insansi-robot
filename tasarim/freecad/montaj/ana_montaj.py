@@ -5,7 +5,7 @@
 # kafa govdesi traverse Fixed, pan (govde -> boyun) ve tilt (boyun -> bas) Revolute (kafa/kafa-montaj.FCStd'den); taban govdesi
 # iskelete Fixed, 4 teker grubu (teker + kaplin) taban govdesine sinirsiz Revolute (motor mili ekseni, moduller.yukle_taban).
 # Calistir (yolda "ü" oldugu icin ASCII baslaticiyla): FC_SCRIPT=<bu dosya> freecadcmd run_fc.py
-#   -> robot-montaj.FCStd, robot-montaj.step, montaj-analiz.json
+#   -> robot-montaj.FCStd, robot-montaj.step, robot-bom.csv (Y2a), montaj-analiz.json
 # Not: betikle kaydedilen dosyada eklemlerin gorunum nesnesi yok; montaj_gorsel.py (GUI) bunlari kurup dosyayi yeniden kaydeder.
 import os, sys, json, time, math
 import FreeCAD as App
@@ -233,15 +233,41 @@ kars = dict(
             bellek=[round(c_top.x, 3), round(c_top.y, 3), round(c_top.z, 3)], carpisma=crp["agirlik_merkezi"],
             fark_carpisma_mm=round((c_dosya - V(*crp["agirlik_merkezi"])).Length, 3),
             fark_bellek_mm=round((c_dosya - c_top).Length, 4)),
-    not_="analiz JSON'lari 0,1 g'a yuvarlanmis; carpisma AM'si 0,01 mm'ye")
+    not_="analiz JSON'lari 0,1 g'a yuvarlanmis; carpisma AM'si 0,01 mm'ye. 1,65 m (Y2a): carpisma-sonuc.json Y4 tam taramasina kadar ESKI "
+         "(125 cm) - fark_carpisma anlamsiz, montaj/yerlesim-kontrol.json kisa kontrolu kullan")
 log("karsilastirma: parca %d/%d, kutle fark %.3f g (analiz) %.3f g (carpisma), AM fark %.3f mm" % (
     len(feats), beklenen_parca, kars["kutle"]["fark_analiz"], kars["kutle"]["fark_carpisma"], kars["am"]["fark_carpisma_mm"]))
 
+# ====================================================================== 5) parca listesi (Y2a, 1,65 m): robot-bom.csv
+# Tur + kod (baski parcalari ad ile) bazinda adet ve kutle, modul sutunu; Referans grubu (gosterim, 0 g) haric. Kaynak: bellek (dosyayla ayni).
+import csv
+BOM = {}
+for d, p in parcalar:
+    if p["tur"] == "Referans" or p["kod"].startswith("("):
+        continue
+    key = (p["tur"], p["kod"] if p["tur"] != "Baski" else p["ad"])
+    e = BOM.setdefault(key, dict(adet=0, kutle=0.0, modul=set()))
+    e["adet"] += 1
+    e["kutle"] += p["kutle"]
+    e["modul"].add(d["ad"].split("_")[0])
+with open(os.path.join(HERE, "robot-bom.csv"), "w", newline="", encoding="utf-8-sig") as fh:
+    w = csv.writer(fh, delimiter=";")
+    w.writerow(["Tur", "Kalem", "Adet", "Toplam kutle (g)", "Modul"])
+    for (t, kod), e in sorted(BOM.items()):
+        w.writerow([t, kod, e["adet"], "%.1f" % e["kutle"], ", ".join(sorted(e["modul"]))])
+bom_ozet = {t: dict(kalem=sum(1 for k in BOM if k[0] == t), adet=sum(e["adet"] for k, e in BOM.items() if k[0] == t),
+                    kutle_g=round(sum(e["kutle"] for k, e in BOM.items() if k[0] == t), 1)) for t in sorted({k[0] for k in BOM})}
+log("parca listesi: %d kalem" % len(BOM), bom_ozet)
+
 out = dict(
-    dosya="robot-montaj.FCStd", step="robot-montaj.step", step_kati=step_kati,
+    dosya="robot-montaj.FCStd", step="robot-montaj.step", step_kati=step_kati, bom="robot-bom.csv", bom_ozet=bom_ozet,
+    boy_mm=A.BOY, s3_mm=A.S3, uzama_mm=A.UZAMA, taban_w_mm=A.TABAN_W,
     parca_sayisi=len(feats), grup_sayisi=len(GRUP), gecersiz=gecersiz, hacim_fark_mm3=hacim_fark,
     ayna_merkez_fark_mm=ayna_merkez_fark,
-    moduller=mod_ozet, eklemler=EKLEM, dosyadaki_eklem=dosya_eklem, solve=r_solve, ev_pozu_cozucu_sapmasi=ev_sapma,
+    moduller=mod_ozet,
+    parcalar=[dict(modul=d["ad"], ad=p["ad"], grup=p["grup"], tur=p["tur"], kod=p["kod"], kutle_g=round(p["kutle"], 3),
+                   merkez=[round(c, 2) for c in p["gmerkez"]]) for d, p in parcalar],   # Y2a: parca parca karsilastirma (taslak, kontrol ajani)
+    eklemler=EKLEM, dosyadaki_eklem=dosya_eklem, solve=r_solve, ev_pozu_cozucu_sapmasi=ev_sapma,
     kutle_g=round(m_dosya, 2), agirlik_merkezi=kars["am"]["montaj_dosyasi"], karsilastirma=kars,
     sure_s=round(time.time() - t0, 1),
 )

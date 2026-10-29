@@ -1,4 +1,6 @@
 # Sag dirsek modulu (dirsek + on kol + bilek + el) - PARCALAR, kutle ve kinematik (FreeCAD 1.1, Part)
+# 1,65 m (Y2a, 26 Ekim 2026; taslak-170 kol x1,25 kararlari): tup ucu -170 (catal y olculeri TUC'a bagli), on kol U bolumu +32,4,
+# el yakasi +19 (ici bos), catal dis kolu 8 mm + 45 derece destek dis yuze, horn civatasi M3x12 + 2x DIN 125-A pul. Olculer arayuz.DIRSEK.
 # Import edilebilir: dirsek_montaj.py (kontroller + kayit) ve 2. asamada carpisma / ana montaj bunu kullanir.
 # Koordinat = omuz yereli: orijin travers merkezi (omuz S1 ekseni), X disari, Y yukari, Z ileri. Ev pozu: kol asagida duz.
 # Arayuz olculeri (tup ucu, dirsek/bilek ekseni, sinirlar): ../arayuz.py DIRSEK. Omuz geometrisi degismez.
@@ -22,7 +24,7 @@ import arayuz as A
 t0 = time.time()
 D = A.DIRSEK
 TX, TZ = D["tup_x"], D["tup_z"]          # ust kol tupu ekseni (omuz XR, ZC)
-TUC = D["tup_uc_y"]                      # tup ucu y (-140)
+TUC = D["tup_uc_y"]                      # tup ucu y (-170; 125 cm'de -140). Catal olculeri TUC'a gore (asagida TUC + ofset)
 YE, ZE = D["eksen_y"], D["eksen_z"]      # dirsek ekseni
 XW = D["bilek_x"]                        # bilek ekseni x
 
@@ -38,24 +40,29 @@ X_KASA = XB + MG["H"]                        # 213.6 kasa ustu (mil tarafi)
 X_HORN0 = X_KASA + HORN_MG["Z0"]             # 216.6 horn alt yuzu
 X_HORN1 = X_KASA + HORN_MG["Z1"]             # 219.9 horn ust yuzu = mil ucu
 X_KULAK = (XB + 26.6, XB + 26.6 + MG["TAB_T"])   # 203.6 / 206.1 kulak yuzleri
-DIS_KOL = (X_HORN1, X_HORN1 + 5.0)           # catal dis kolu (horn'a bagli)
+DIS_KOL = (X_HORN1, X_HORN1 + D["catal_dis_kol"])   # catal dis kolu (horn'a bagli): 8 mm (1,65 m; 125 cm'de 5), disa (+X) kalinlasir
+CATAL_EK = D["catal_dis_kol"] - 5.0              # 125 cm 5 mm dis kola gore ek (3)
 IC_KOL = (156.0, 167.0)                      # catal ic kolu (625ZZ yuvasi)
 RUL_X = 162.0                                # 625ZZ: x 162...167
 YANAK = (168.0, XB - 0.5)                    # on kol yanagi (M5 isil gomme somun)
 PLAKA_E = (X_KULAK[0] - 5.0, X_KULAK[0])     # dirsek servosu kulak plakasi 198.6...203.6
 R_KAFA = 21.0                                # on kol basinin dirsek ekseni etrafindaki yaricapi
-KOPRU_Y = (-148.0, TUC)                      # catal koprusu
+KOPRU_Y = (TUC - 8.0, TUC)                   # catal koprusu
 ON_DUVAR = (ZE + 11.0, ZE + 14.0)            # on kol on duvari (z)
 ZK = 14.0                                    # on kol yari derinligi (z)
-# --- bilek servosu (s ekseni): taban s 43.5, kasa ustu s 80.1
-S_BT = 43.5
+# --- bilek servosu (s ekseni): taban s 43.5 + on_kol_uzama (1,65 m kol x1,25: 75,9), kasa ustu s 112,5 (125 cm 80,1)
+#     Ara duvar (S_WEB) ve dirsek servosu yerinde; ara duvarin altindaki U bolum (yan duvarlar + on duvar, S_ALT) on_kol_uzama kadar uzar.
+ON_KOL_UZAMA = D["on_kol_uzama"]
+EL_UZAMA = D["el_uzama"]
+S_BT = 43.5 + ON_KOL_UZAMA
 S_KASA = S_BT + MG["H"]                      # 80.1
 S_KULAK = (S_BT + 26.6, S_BT + 26.6 + MG["TAB_T"])   # 70.1 / 72.6
 S_PLAKA_B = (S_KULAK[0] - 5.0, S_KULAK[0])   # 65.1...70.1
 S_HORN = (S_KASA + HORN_MG["Z0"], S_KASA + HORN_MG["Z1"])   # 83.1 / 86.4
 S_FLANS = (S_HORN[1], S_HORN[1] + 8.0)       # 86.4...94.4
 S_VIDA_B = S_FLANS[0] + 4.0                  # 90.4 flans civata basi oturma yuzu ve radyal isil gomme somun ekseni
-S_YAKA = (S_FLANS[0] + 0.5, S_FLANS[1] + 6.1)   # 86.9...100.5
+S_YAKA = (S_FLANS[0] + 0.5, S_FLANS[1] + 6.1 + EL_UZAMA)   # el yakasi (boyun): 125 cm 86,9...100,5; 1,65 m'de EL_UZAMA (19) uzun
+S_YAKA_BOS = (S_FLANS[1] + 6.1 + 1.5, S_YAKA[1] - 1.5)        # uzayan yakanin ici O22 bos, uclari 1,5 mm kapali (taslak-170 ile ayni)
 S_AVUC = (S_YAKA[1], S_YAKA[1] + 52.0)       # 100.5...152.5
 S_UC = S_AVUC[1]
 S_WEB = (39.5, 42.0)                         # dirsek ve bilek servosu arasindaki yatay ara duvar
@@ -94,15 +101,17 @@ R_PIM = A.TUP_PIM_R                                                             
 R_TUP_IC = R_PIM + A.GECME["tup_pim"]                                               # tup ic yaricapi (omuz_parcalar ile ayni)
 R_TUP_DIS = D["tup_ro"]                                                             # tup dis yaricapi (omuzda 28)
 R_BIL_IC = R_TUP_DIS + A.GECME["tup_bilezik"]                                       # bilezik ic yaricapi (tup dis + A.GECME)
-c = cyl(R_PIM, (TX, TUC, TZ), (TX, -115.0, TZ))                                     # pim O50,8 (tup ic bosluk A.GECME)
-c = c.fuse(cyl(31.0, (TX, TUC, TZ), (TX, -115.0, TZ)))                              # bilezik dis O62
-c = c.fuse(box(178.0, 192.0, -138.0, -115.0, TZ - 41.0, TZ - 30.0))                 # sikma kulaklari (arkada)
+c = cyl(R_PIM, (TX, TUC, TZ), (TX, TUC + 25.0, TZ))                                 # pim O50,8 (tup ic bosluk A.GECME)
+c = c.fuse(cyl(31.0, (TX, TUC, TZ), (TX, TUC + 25.0, TZ)))                          # bilezik dis O62
+c = c.fuse(box(178.0, 192.0, TUC + 2.0, TUC + 25.0, TZ - 41.0, TZ - 30.0))          # sikma kulaklari (arkada)
 c = c.fuse(cyl(31.0, (TX, KOPRU_Y[0], TZ), (TX, TUC, TZ)))                          # tup alin kapagi
 c = c.fuse(box(IC_KOL[0], DIS_KOL[1], KOPRU_Y[0], TUC, TZ - 16.0, TZ + 16.0))        # kopru
-c = c.fuse(prizma([(213.0, -128.0), (DIS_KOL[1], -139.9), (DIS_KOL[1], TUC), (213.0, TUC)], "z", TZ - 16.0, TZ + 16.0))  # 45 der. destek
+# 45 der. destek: dis kol kalinlasinca ayni egimle dis yuze kadar (1,65 m dis kol 8: ust ucu x 213'te TUC + 12 + 3); ters baskida kopru alti
+# cikinti seridi kalmaz. Tup yuvasi (asagida) destekten SONRA oyulur -> destek tup gecmesine girmez (taslakta sonradan yeniden oyuluyordu).
+c = c.fuse(prizma([(213.0, TUC + 12.0 + CATAL_EK), (DIS_KOL[1], TUC + 0.1), (DIS_KOL[1], TUC), (213.0, TUC)], "z", TZ - 16.0, TZ + 16.0))
 for (x0, x1) in (IC_KOL, DIS_KOL):
     c = c.fuse(box(x0, x1, YE, KOPRU_Y[0], ZE - 16.0, ZE + 16.0)).fuse(cyl(16.0, (x0, YE, ZE), (x1, YE, ZE)))
-c = c.cut(cyl(R_BIL_IC, (TX, TUC, TZ), (TX, -114.0, TZ)).cut(cyl(R_PIM, (TX, TUC - 1, TZ), (TX, -113.0, TZ))))  # tup yuvasi (halka)
+c = c.cut(cyl(R_BIL_IC, (TX, TUC, TZ), (TX, TUC + 26.0, TZ)).cut(cyl(R_PIM, (TX, TUC - 1, TZ), (TX, TUC + 27.0, TZ))))  # tup yuvasi (halka)
 # tup alin yuvasinda 45 der. V oluk: tup ucu oluk kenarlarina (r R_TUP_IC ve R_TUP_DIS) dayanir, ters baskida tavan kendini tasir
 _om, _od = 0.5 * (R_TUP_IC + R_TUP_DIS), 0.5 * (R_TUP_DIS - R_TUP_IC)
 oluk = Part.Face(Part.makePolygon([V(TX + R_TUP_IC, TUC, TZ), V(TX + R_TUP_DIS, TUC, TZ), V(TX + _om, TUC - _od, TZ), V(TX + R_TUP_IC, TUC, TZ)]))
@@ -110,14 +119,14 @@ c = c.cut(oluk.revolve(V(TX, 0, TZ), V(0, 1, 0), 360))
 # alin kapaginin on bolumu 45 der. pahli (bukulen on kol kapaga erken degmesin); kopru bandi (z +-16) korunur
 pah = box(140.0, 240.0, KOPRU_Y[0] - 0.1, TUC + 0.01, TZ + 16.0, TZ + 40.0).cut(koni(31.0, 23.0, (TX, TUC + 0.01, TZ), (TX, KOPRU_Y[0] - 0.01, TZ)))
 c = c.cut(pah)
-c = c.cut(cyl(21.9, (TX, -114.0, TZ), (TX, -122.0, TZ)))                            # pim ici bos
-c = c.cut(koni(21.9, 5.0, (TX, -122.0, TZ), (TX, -138.9, TZ)))                      # 45 der. tavan (ters baskida desteksiz)
-c = c.cut(cyl(5.0, (TX, -138.0, TZ), (TX, KOPRU_Y[0] - 1.0, TZ)))                   # kablo deligi (servo kablolari tupe)
+c = c.cut(cyl(21.9, (TX, TUC + 26.0, TZ), (TX, TUC + 18.0, TZ)))                    # pim ici bos
+c = c.cut(koni(21.9, 5.0, (TX, TUC + 18.0, TZ), (TX, TUC + 1.1, TZ)))               # 45 der. tavan (ters baskida desteksiz)
+c = c.cut(cyl(5.0, (TX, TUC + 2.0, TZ), (TX, KOPRU_Y[0] - 1.0, TZ)))                # kablo deligi (servo kablolari tupe)
 KO = A.KOL_KABLO["catal_oluk"]                                                       # M1: kopru + alin kapagi alti oluk, delikten arkaya:
 c = c.cut(box(KO["x"][0], KO["x"][1], KO["y"][0] - 0.01, KO["y"][1], KO["z"][0], KO["z"][1]))   # kablo 4 mm araliga inmez, dirsek arkasindan girer
 YARIK_W = D["bilezik_yarik"]                                                         # yarik genisligi (arayuz; kapaninca ic yaricap ~ W/2pi iner)
-c = c.cut(box(TX - YARIK_W / 2, TX + YARIK_W / 2, TUC, -114.0, TZ - 45.0, TZ - 27.5))   # yarik (arka; pim yariksiz)
-KELEPCE_Y = (-121.0, -132.0)
+c = c.cut(box(TX - YARIK_W / 2, TX + YARIK_W / 2, TUC, TUC + 26.0, TZ - 45.0, TZ - 27.5))   # yarik (arka; pim yariksiz)
+KELEPCE_Y = (TUC + 19.0, TUC + 8.0)
 KELEPCE_Z = TZ - 36.0
 for yb in KELEPCE_Y:
     c = c.cut(cyl(CLEAR[3] / 2, (177.0, yb, KELEPCE_Z), (193.0, yb, KELEPCE_Z)))
@@ -129,7 +138,8 @@ HORN_E = [gp((x, y, 0), M_E) for (x, y) in hholes_e]
 for g in HORN_E:
     c = c.cut(cyl(CLEAR[3] / 2, (DIS_KOL[0] - 0.01, g.y, g.z), (DIS_KOL[1] + 0.01, g.y, g.z)))
 I_CATAL = add("Dirsek catali", "UstKol", c.removeSplitter(), "Baski", "PETG", renk="petg", patlat=(0, 30, 0),
-              not_="tup ucuna pim + yarikli bilezik; kopruden iki kol; ters basilir (pim tablada)")
+              not_="tup ucuna pim + yarikli bilezik; kopruden iki kol; ters basilir (pim tablada). Dis kol %.0f mm (1,65 m; kontrol ajani "
+                   "x1,25 + DS3235'te L3 SF 2,99 / L4 1,22), kopru ve 45 derece destek dis yuze kadar" % D["catal_dis_kol"])
 
 # --- sikma bilezigi civatalari: M3x20 + 2 pul + M3 kontra somun (arka kulaklar, X yonunde)
 for yb in KELEPCE_Y:
@@ -155,12 +165,27 @@ I_HORN_E = add("Dirsek horn 25T aluminyum disk", "UstKol", yerlestir_m(horn_e, M
                kod="25T aluminyum disk horn", renk="alu", patlat=(25, 0, 0))
 add("Dirsek horn merkez vidasi M3", "UstKol", yerlestir_m(horn_vidasi_local(), M_E), "Baglanti", "Celik",
     kod="M3x5 horn vidasi (servo ile)", renk="celik", patlat=(40, 0, 0))
+# Horn civatasi: dis kol 8 mm -> M3x12 DIN 912 + 2x DIN 125-A M3 pul (arayuz DIRSEK horn_civata / horn_pul): gereken boy 8 + 3 = 11
+# (standart degil); uc 125 cm'deki yerde (x 216,9: horn'da 3,0 mm dis, kasaya 3,3). Pulsuz M3x12 cikis kubbesine 0,58 mm kalirdi (ret).
+HC_D, HC_L = D["horn_civata"]
+HP_N, HP_T = D["horn_pul"]
+assert abs((DIS_KOL[1] + HP_N * HP_T - HC_L) - (X_HORN1 - 3.0)) < 1e-9, "horn civatasi ucu horn'da 3 mm olmali"
 for g in HORN_E:
-    i = add("Catal-horn civatasi M3x8", "UstKol", screw912(3, 8, (DIS_KOL[1], g.y, g.z), (-1, 0, 0)), "Baglanti",
-            "Celik 8.8", kod="M3x8 DIN 912", renk="celik", patlat=(45, 0, 0))
-    BAG.append(dict(ad="Catal dis kolu -> dirsek horn", tip="civata_horn", civata=i, govde=I_CATAL, horn=I_HORN_E,
-                    nokta=(DIS_KOL[1], g.y, g.z), yon=(-1, 0, 0), yuz_bas=DIS_KOL[1], horn_yuz=(X_HORN1, X_HORN0),
-                    kasa=X_KASA, d=3, L=8.0))
+    yb = DIS_KOL[1] + HP_N * HP_T                          # civata basinin oturma yuzu (pul yigini ustu)
+    i = add("Catal-horn civatasi M3x%d" % HC_L, "UstKol", screw912(HC_D, HC_L, (yb, g.y, g.z), (-1, 0, 0)), "Baglanti",
+            "Celik 8.8", kod="M3x%d DIN 912" % HC_L, renk="celik", patlat=(45, 0, 0),
+            not_="dis kol %.0f mm: bas %d x DIN 125-A pul ustunde, uc 125 cm'deki yerde (horn'da 3 mm)" % (D["catal_dis_kol"], HP_N))
+    ip_ = None
+    if HP_N:
+        pul_ = washer(3, (DIS_KOL[1], g.y, g.z), (1, 0, 0))
+        for k_ in range(1, HP_N):
+            pul_ = pul_.fuse(washer(3, (DIS_KOL[1] + k_ * HP_T, g.y, g.z), (1, 0, 0)))
+        ip_ = add("Catal-horn pulu M3 (%dx DIN 125-A)" % HP_N, "UstKol", pul_.removeSplitter(), "Baglanti", "Celik",
+                  kod="%d x DIN 125-A M3 (3,2 x 7 x 0,5)" % HP_N, renk="celik", patlat=(40, 0, 0),
+                  not_="M3x%d bas alti pul yigini %.1f mm (M3x11 standart degil)" % (HC_L, HP_N * HP_T))
+    BAG.append(dict(ad="Catal dis kolu -> dirsek horn", tip="civata_horn", civata=i, pul=ip_, govde=I_CATAL, horn=I_HORN_E,
+                    nokta=(yb, g.y, g.z), yon=(-1, 0, 0), yuz_bas=yb, horn_yuz=(X_HORN1, X_HORN0),
+                    kasa=X_KASA, d=3, L=float(HC_L)))
 
 # ====================================================================== ON KOL (dirsek ekseninde doner)
 kafa = cyl(R_KAFA, (150.0, YE, ZE), (240.0, YE, ZE)).fuse(box(150.0, 240.0, Y(S_KASA + 1), YE, ZE - 30, ZE + 30))
@@ -196,7 +221,8 @@ g = g.fuse(box(KT["x"][0], KT["x"][1], YE + KT["dy"][0], YE + KT["dy"][1], ZE + 
 KC = A.KOL_KABLO["onkol_centik"]
 g = g.cut(box(KC["x"][0], KC["x"][1], Y(S_WEB[1]) - 0.01, Y(S_WEB[0]) + 0.01, ZE + KC["dz"][0], ZE + KC["dz"][1]))
 I_ONKOL = add("On kol govdesi", "OnKol", g.removeSplitter(), "Baski", "PETG", renk="petg2", patlat=(0, -70, 0),
-              not_="arkasi acik U: iki servo arkadan takilir; on yuzu tablada basilir")
+              not_="arkasi acik U: iki servo arkadan takilir; on yuzu tablada basilir. 1,65 m: ara duvarin altindaki U bolum %.1f mm uzun "
+                   "(dirsek -> bilek ekseni %.1f mm)" % (ON_KOL_UZAMA, S_HORN[0]))
 
 # --- 625ZZ ic bilezik + M5 pim civatasi + pul + isil gomme somun
 I_RUL_I = add("625ZZ rulman (ic bilezik)", "OnKol", b_in, "Satin", "Celik", kod="(625ZZ ile)", renk="celik",
@@ -265,17 +291,24 @@ for h in HORN_B:
 
 # --- el: yaka (flansa gecer) + 45 der. gecis + avuc + kanca parmaklar + basparmak (ters basilir: parmaklar tablada)
 el = cyl(17.0, (XW, Y(S_YAKA[0]), ZE), (XW, Y(S_YAKA[1]), ZE))
+if EL_UZAMA > 0:
+    # uzayan yaka ici O22 bos. Y2a (29 Ekim 2026): bosluun ust (baskida yukari, flans tarafi) ucu 45 derece koni: duz tavan O22 kopru
+    # olarak destek kontrolune takiliyordu (dirsek_montaj baski: El z 70,5, 24 mm > 15). Koni r 11 -> 0,5, 10,5 mm; kalan 5,5 mm silindir.
+    _kb = min(10.5, S_YAKA_BOS[1] - S_YAKA_BOS[0] - 1.0)
+    el = el.cut(cyl(11.0, (XW, Y(S_YAKA_BOS[0] + _kb), ZE), (XW, Y(S_YAKA_BOS[1]), ZE)))
+    el = el.cut(koni(11.0, 11.0 - _kb, (XW, Y(S_YAKA_BOS[0] + _kb + 0.01), ZE), (XW, Y(S_YAKA_BOS[0]), ZE)))
 el = el.fuse(koni(17.0, 7.0, (XW, Y(S_YAKA[1]), ZE), (XW, Y(S_YAKA[1] + 11.0), ZE)))
 el = el.fuse(box(XW - 7.0, XW + 7.0, Y(S_UC), Y(S_AVUC[0]), ZE - 25.0, ZE + 25.0))                       # avuc 14 x 50 x 52
 el = el.fuse(box(XW - 23.0, XW - 7.0, Y(S_UC), Y(S_UC - 16.0), ZE - 23.0, ZE + 23.0))                     # parmaklar (iceri bukuk)
 el = el.fuse(box(XW - 23.0, XW - 19.0, Y(S_UC - 16.0), Y(S_UC - 21.0), ZE - 23.0, ZE + 23.0))             # parmak ucu dudagi
-el = el.fuse(prizma([(Y(104.2), ZE + 24.0), (Y(104.2), ZE + 33.0), (Y(121.2), ZE + 33.0), (Y(131.2), ZE + 24.0)],
+_SY = S_YAKA[1]                                                                                              # (125 cm'de 100,5)
+el = el.fuse(prizma([(Y(_SY + 3.7), ZE + 24.0), (Y(_SY + 3.7), ZE + 33.0), (Y(_SY + 20.7), ZE + 33.0), (Y(_SY + 30.7), ZE + 24.0)],
                     "x", XW - 4.0, XW + 4.0))                                                                 # basparmak
 el = el.cut(cyl(14.15, (XW, Y(S_YAKA[0] - 0.1), ZE), (XW, Y(S_FLANS[1]), ZE)))                            # flans yuvasi
 for sx in (1, -1):
     el = el.cut(cyl(CLEAR[3] / 2, (XW + sx * 13.0, Y(S_VIDA_B), ZE), (XW + sx * 18.0, Y(S_VIDA_B), ZE)))
 I_EL = add("El", "El", el.removeSplitter(), "Baski", "PETG", renk="petg2", patlat=(0, -175, 0),
-           not_="sabit el: parmaklar 16 mm iceri bukuk + 5 mm dudak (kanca), basparmak onde")
+           not_="sabit el: parmaklar 16 mm iceri bukuk + 5 mm dudak (kanca), basparmak onde; yaka %.0f mm uzun (ici O22 bos)" % EL_UZAMA)
 for sx in (1, -1):
     i_ins = add("Isil gomme somun M3 (flansta)", "El", insert(3, (XW + sx * 14.0, Y(S_VIDA_B), ZE), (-sx, 0, 0)),
                 "Baglanti", "Pirinc", kod="M3 isil gomme somun", renk="pirinc", patlat=(0, -130, 0))

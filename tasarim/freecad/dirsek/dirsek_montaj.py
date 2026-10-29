@@ -85,7 +85,7 @@ ara = []
 d = mesafe(catal, tup)
 ara.append(("tup ucu catalin alin kapagina dayali", round(d, 4), d <= TEMAS))
 # radyal bosluklar: y = -128 kesitindeki daire yaylarinin yaricaplari (tup ekseni etrafinda)
-kes_y = -128.0
+kes_y = DP.TUC + 12.0              # (125 cm'de -128; y olculeri tup ucuna bagli)
 yaricap = []
 for w in catal.slice(V(0, 1, 0), kes_y):
     for e in w.Edges:
@@ -162,7 +162,7 @@ def S(i):
 
 
 # sikma bilezigi: civata yarigi kapatirken somun tarafi kulak (yarigin -X yani) +yarik kadar kayar; somun ve pul onunla gider
-KUL_KUTU = Part.makeBox(DP.TX - yarik_w / 2 - 170.0, 25.0, 14.0, V(170.0, -139.0, DP.TZ - 45.0))     # x 170...yarik yuzu, z TZ-45...TZ-31
+KUL_KUTU = Part.makeBox(DP.TX - yarik_w / 2 - 170.0, 25.0, 14.0, V(170.0, DP.TUC + 1.0, DP.TZ - 45.0))     # x 170...yarik yuzu, z TZ-45...TZ-31
 CATAL_KUL = catal.common(KUL_KUTU)
 CATAL_KALAN = catal.cut(KUL_KUTU)
 KUL_KAYMIS = CATAL_KUL.copy()
@@ -224,8 +224,16 @@ for b in BAG:
             k.append(("civata plaka deliginde ortali (%.2f mm)" % dg, round(dg, 3), abs(dg - (A.CLEAR[d_] - d_) / 2) < 0.02))
     elif b["tip"] == "civata_horn":
         hrn = S(b["horn"])
-        dh = mesafe(civ, S(b["govde"]))
-        k.append(("civata basi parcaya dayali", round(dh, 4), dh <= TEMAS))
+        if b.get("pul") is not None:      # 1,65 m catal dis kolu 8 mm: M3x12 basi pul yigininda (2x DIN 125-A), pul catala dayali
+            dh = mesafe(civ, S(b["pul"]))
+            k.append(("civata basi pul yiginina dayali", round(dh, 4), dh <= TEMAS))
+            dp = mesafe(S(b["pul"]), S(b["govde"]))
+            k.append(("pul yigini parcaya dayali", round(dp, 4), dp <= TEMAS))
+            ep = eksen_disi(S(b["pul"]), n0, u)
+            k.append(("pul civata ekseninde", round(ep, 6), ep < 1e-6))
+        else:
+            dh = mesafe(civ, S(b["govde"]))
+            k.append(("civata basi parcaya dayali", round(dh, 4), dh <= TEMAS))
         ix = 0 if abs(u[0]) > 0.5 else 1
 
         def tp(duz):                              # eksen dogrultusunda duzlem konumu (bas alt yuzunden)
@@ -376,12 +384,13 @@ def min_bosluk(al, be=0.0):
 bosluk = {str(al): min_bosluk(al) for al in sorted(set([0, int(ar[0]), int(ar[1]), amin, amax]))}
 log("bosluklar", bosluk)
 # bukulme boslugu: on kol + el ile ust kolun dirsek ekseninden uzak bolumu (catal koprusu/kapak/bilezik, y >= -149, ve tup)
-UST_BOLGE = Part.makeBox(200, 60, 200, V(80, -149.0, -100))
+Y_UST_B = DP.TUC - 9.0                # (125 cm'de -149)
+UST_BOLGE = Part.makeBox(200, 60, 200, V(80, Y_UST_B, -100))
 UST_UST = []
 for b in UST_SET:
-    if b["bb"].YMax < -149.0:
+    if b["bb"].YMax < Y_UST_B:
         continue
-    sh = b["shape"].common(UST_BOLGE) if b["bb"].YMin < -149.0 else b["shape"]
+    sh = b["shape"].common(UST_BOLGE) if b["bb"].YMin < Y_UST_B else b["shape"]
     if sh.Volume > 1e-6:
         UST_UST.append(dict(ad=b["ad"], shape=sh, bb=sh.BoundBox))
 
@@ -479,8 +488,8 @@ for phi in PHI_T:
                 TK.append(((phi, th, al, be), t0_, t1_))
 log("tork pozu", len(TK))
 EKLEM = ["S1 (omuz one-arka)", "S2 (omuz yana acma)", "Dirsek", "Bilek"]
-STALL = {"S1 (omuz one-arka)": ("DS3218MG", 20.0, "omuz raporundaki deger (datasheet 19 kg*cm @5 V, 21,5 @6,8 V)"),
-         "S2 (omuz yana acma)": ("DS3218MG", 20.0, "omuz raporundaki deger"),
+STALL = {"S1 (omuz one-arka)": (A.OMUZ["servo_ad"], A.OMUZ["servo_stall_kgcm"], A.OMUZ["servo_tork"]),     # DS3235 (karar 24 Ekim 2026)
+         "S2 (omuz yana acma)": (A.OMUZ["servo_ad"], A.OMUZ["servo_stall_kgcm"], A.OMUZ["servo_tork"]),
          "Dirsek": ("MG996R", 9.4, "datasheet 9,4 kg*cm @4,8 V (11 @6 V); 01-donanim-maliyet.md"),
          "Bilek": ("MG996R", 9.4, "datasheet 9,4 kg*cm @4,8 V")}
 
@@ -764,7 +773,7 @@ kablo["yol_uzatma_kol"] = yol_degerlendir("tup penceresi -> K", KK["yol_uzatma_k
 JR = KK["jr_disi"]
 jr_diag = math.hypot(JR[0], JR[1])
 gecit = []
-r_del = min(e.Curve.Radius for w in catal.slice(V(0, 1, 0), -142.0) for e in w.Edges
+r_del = min(e.Curve.Radius for w in catal.slice(V(0, 1, 0), DP.TUC - 2.0) for e in w.Edges
             if hasattr(e.Curve, "Radius") and math.hypot(e.Curve.Center.x - DP.TX, e.Curve.Center.z - DP.TZ) < 1e-6)
 gecit.append(dict(ad="catal kablo deligi (O%.1f) <- disi JR kosegeni %.2f" % (2 * r_del, jr_diag), deger=round(2 * r_del - jr_diag, 2),
                   ok=bool(2 * r_del >= jr_diag + 0.5)))
@@ -787,8 +796,14 @@ L_ust = kablo["yol_ustkol"]["boy"]
 for ad, yk in (("dirsek servosu (MG996R) -> tup ici (y %.0f)" % KK["yol_ustkol"]["nokta"][-1][1], "yol_dirsek_servo"),
                ("bilek servosu (MG996R) -> tup ici (y %.0f)" % KK["yol_ustkol"]["nokta"][-1][1], "yol_bilek_servo")):
     gerek = kablo[yk]["boy"] + DL["L"] + L_ust
-    boy.append(dict(ad=ad, gerekli_mm=round(gerek, 1), kablo_mm=KK["servo_kablo_boy"], artan_mm=round(KK["servo_kablo_boy"] - gerek, 1),
-                    ok=bool(KK["servo_kablo_boy"] - gerek >= KK["boy_payi"])))
+    # 1,65 m (Y2a): bilek servosu kablosu on kol +32,4 ile birlesime JR payi (boy_payi) kadar artanla ulasamaz -> lehimli ek (arayuz bilek_ek):
+    # sart artan >= pay_min (JR govdesi yok, makaron tupun icinde serbest)
+    lehim = yk == "yol_bilek_servo" and "bilek_ek" in KK
+    pay_ = KK["bilek_ek"]["pay_min"] if lehim else KK["boy_payi"]
+    boy.append(dict(ad=ad + (" [lehimli ek]" if lehim else " [JR]"), gerekli_mm=round(gerek, 1), kablo_mm=KK["servo_kablo_boy"],
+                    artan_mm=round(KK["servo_kablo_boy"] - gerek, 1), pay_sart_mm=pay_,
+                    ek=KK["bilek_ek"]["yontem"] if lehim else "JR (disi servo ucu + erkek uzatma)",
+                    ok=bool(KK["servo_kablo_boy"] - gerek >= pay_)))
 L_uz = kablo["yol_uzatma_kol"]["boy"] + SL["L"]
 boy.append(dict(ad="uzatma (birlesim -> G2, S1 oncesi)", gerekli_mm=round(L_uz, 1),
                 not_="S1 kaseti + govde ici + dagitim karti: kablo['s1_boy']"))

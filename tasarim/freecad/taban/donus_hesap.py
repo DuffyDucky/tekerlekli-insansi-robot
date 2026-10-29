@@ -23,9 +23,9 @@ import arayuz as A
 G = 9.81
 D = A.TABAN["donus"]
 R_W = A.TEKER_D / 2 / 1000.0                     # m
-X_W = 0.178                                      # teker merkez duzlemi (taban_parcalar X_WH)
+X_W = A._X_WH / 1000.0                           # teker merkez duzlemi (taban_parcalar X_WH; 520 taban 0,216, 125 cm 0,178)
 Z_W = 0.185                                      # aks (taban_parcalar Z_WH)
-X_OMNI = X_W                                     # omni secenegi: teker duzlemi AYNI (x 178). Farkli x'te (163,5) ayni yan hizinda
+X_OMNI = X_W                                     # omni secenegi: teker duzlemi AYNI (x X_WH). Farkli x'te (163,5) ayni yan hizinda
                                                  # on/arka teker boyuna kayar ve birbirine karsi calisir (hesapla goruldu: arka fren)
 R_OMNI = A.TABAN["omni"]["cap"] / 2 / 1000.0      # 63,5 mm: ayni motor hizinda on teker %1,6 hizli -> duz giderken cekisme
 

@@ -2,12 +2,15 @@
 Baglanti;M2,5x5 DIN 912;4;1.9
 Baglanti;M2,5x8 DIN 912;4;2.3
 Baglanti;M2x8 PT vida (plastik icin);4;1.4
-Baglanti;M3 DIN 125 pul;4;0.5
-Baglanti;M3 isil gomme somun;20;5.3
-Baglanti;M3x10 DIN 912;4;4.2
+Baglanti;M3 DIN 125 pul;8;1.0
+Baglanti;M3 DIN 985 kontra somun;4;2.4
+Baglanti;M3 isil gomme somun;29;7.7
+Baglanti;M3 saplama DIN 976, 73 mm (kesilir);4;16.0
+Baglanti;M3x10 DIN 912;8;8.3
+Baglanti;M3x5 ISO 7380;2;1.2
 Baglanti;M3x5 horn vidasi (servo ile);2;1.5
-Baglanti;M3x6 ISO 7380;4;2.5
-Baglanti;M3x8 DIN 912;16;14.8
+Baglanti;M3x6 ISO 7380;7;4.4
+Baglanti;M3x8 DIN 912;12;11.1
 Baglanti;M3x8 ISO 7380;4;3.0
 Baglanti;M4 DIN 985 kontra somun;4;4.7
 Baglanti;M4x16 DIN 912;4;10.6
@@ -17,23 +20,29 @@ Baglanti;M5x12 DIN 912;1;3.8
 Baglanti;M6 DIN 125 pul;2;2.0
 Baglanti;M6 cekic somun (kanal 10);2;10.3
 Baglanti;M6x20 DIN 912;2;15.1
-Baski;Arka kafa kabugu;1;275.3
+Baski;Arka kafa kabugu sag;1;218.2
+Baski;Arka kafa kabugu sol;1;205.1
 Baski;Boyun mili;1;38.9
+Baski;Boyun yukseltme adaptoru;1;66.4
 Baski;Egme catali;1;33.8
-Baski;Kafa iskeleti;1;110.3
+Baski;Ekran tutucu tirnak (alt sag);1;1.3
+Baski;Ekran tutucu tirnak (alt sol);1;1.3
+Baski;Ekran tutucu tirnak (ust sag);1;1.3
+Baski;Ekran tutucu tirnak (ust sol);1;1.3
+Baski;Kafa iskeleti (10 in);1;121.4
 Baski;Rulman yuvasi;1;25.6
 Baski;Servo yuvasi;1;144.5
-Baski;Yuz kabugu (on);1;170.2
+Baski;Yuz kabugu (on) sag;1;89.1
+Baski;Yuz kabugu (on) sol;1;83.0
 Imalat;Boyun plakasi 3 mm Al (lazer/su jeti);1;42.9
-Imalat;Vizor 3 mm siyah akrilik 190x115 (lazer);1;28.0
 Satin;25T aluminyum disk horn;2;7.7
 Satin;625ZZ rulman 5x16x5;1;2.8
 Satin;6808-2RS rulman 40x52x7;2;27.8
 Satin;Adafruit MAX98357A;1;2.0
 Satin;Cift tarafli kopuk bant 1 mm (VHB);2;0.1
-Satin;M2,5 x 8 burc, disi-disi, AA 5;4;4.6
+Satin;M2,5 x 8 burc, disi-disi;4;4.6
 Satin;MG996R servo;2;110.0
-Satin;Pololu D36V50F5 5 V 5,5 A (pololu.com/product/4091);1;7.0
+Satin;Pololu D36V50F5 5 V 5,5 A;1;7.0
 Satin;Raspberry Pi 5 8GB + resmi Active Cooler;1;58.0
 Satin;Raspberry Pi Camera Module 3;1;4.0
-Satin;Waveshare 7in HDMI LCD (C) 1024x600;1;230.0
+Satin;Waveshare 10.1inch HDMI LCD (B) 1280x800 (TAHMINI MODEL: hocanin verecegi ekran gelince olculecek);1;600.0

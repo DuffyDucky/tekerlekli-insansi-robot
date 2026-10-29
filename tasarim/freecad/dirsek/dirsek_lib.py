@@ -143,7 +143,14 @@ def baski_analiz(ad, sh, yukari, doluluk):
             yuz = None
         if yuz is not None and onceki is not None:
             try:
-                dest = [f.makeOffset2D(1.0, 0) for f in onceki.Faces]
+                # Y2a (29 Ekim 2026; kafa_lib ile ayni): ofseti kurulamayan yuz (ince serit / kucuk delik) ofsetsiz kullanilir
+                # (daha tutucu). El yakasi konisinin tepesinde OCC "result of offsetting is null" veriyordu.
+                dest = []
+                for f in onceki.Faces:
+                    try:
+                        dest.append(f.makeOffset2D(1.0, 0))
+                    except Exception:
+                        dest.append(f)
                 dest = dest[0].fuse(dest[1:]) if len(dest) > 1 else dest[0]
                 dest.translate(V(0, 0, 1.0))
                 acik = yuz.cut(dest)

@@ -6,7 +6,7 @@
   "sag": {
    "konum": [
     0.0,
-    955.0,
+    1340.0,
     0.0
    ],
    "ayna": false,
@@ -15,14 +15,14 @@
   "sol": {
    "konum": [
     0.0,
-    955.0,
+    1340.0,
     0.0
    ],
    "ayna": true,
    "not_": "sag dirsegin X aynasi (omuz_sol Kol grubuna bagli)"
   }
  },
- "parca_sayisi": 53,
+ "parca_sayisi": 57,
  "baski_sayisi": 4,
  "parcalar": [
   {
@@ -32,18 +32,18 @@
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "Dirsek catali",
-   "kutle_g": 87.49,
-   "hacim_mm3": 86109.5,
+   "kutle_g": 92.78,
+   "hacim_mm3": 91318.8,
    "merkez": [
-    185.959,
-    -140.848,
-    -2.419
+    188.194,
+    -171.715,
+    -2.352
    ],
    "bb": [
     154.0,
-    224.9,
-    -189.0,
-    -115.0,
+    227.9,
+    -219.0,
+    -145.0,
     -42.25,
     29.75
    ],
@@ -52,7 +52,7 @@
     30,
     0
    ],
-   "not_": "tup ucuna pim + yarikli bilezik; kopruden iki kol; ters basilir (pim tablada)"
+   "not_": "tup ucuna pim + yarikli bilezik; kopruden iki kol; ters basilir (pim tablada). Dis kol 8 mm (1,65 m; kontrol ajani x1,25 + DS3235'te L3 SF 2,99 / L4 1,22), kopru ve 45 derece destek dis yuze kadar"
   },
   {
    "i": 1,
@@ -65,14 +65,14 @@
    "hacim_mm3": 15.2,
    "merkez": [
     192.25,
-    -121.0,
+    -151.0,
     -37.25
    ],
    "bb": [
     192.0,
     192.5,
-    -124.5,
-    -117.5,
+    -154.5,
+    -147.5,
     -40.75,
     -33.75
    ],
@@ -94,14 +94,14 @@
    "hacim_mm3": 202.9,
    "merkez": [
     185.959,
-    -121.0,
+    -151.0,
     -37.25
    ],
    "bb": [
     172.5,
     195.5,
-    -123.75,
-    -118.25,
+    -153.75,
+    -148.25,
     -40.0,
     -34.5
    ],
@@ -123,14 +123,14 @@
    "hacim_mm3": 15.2,
    "merkez": [
     177.75,
-    -121.0,
+    -151.0,
     -37.25
    ],
    "bb": [
     177.5,
     178.0,
-    -124.5,
-    -117.5,
+    -154.5,
+    -147.5,
     -40.75,
     -33.75
    ],
@@ -152,14 +152,14 @@
    "hacim_mm3": 76.5,
    "merkez": [
     175.5,
-    -121.0,
+    -151.0,
     -37.25
    ],
    "bb": [
     173.5,
     177.5,
-    -124.18,
-    -117.82,
+    -154.18,
+    -147.82,
     -40.0,
     -34.5
    ],
@@ -181,14 +181,14 @@
    "hacim_mm3": 15.2,
    "merkez": [
     192.25,
-    -132.0,
+    -162.0,
     -37.25
    ],
    "bb": [
     192.0,
     192.5,
-    -135.5,
-    -128.5,
+    -165.5,
+    -158.5,
     -40.75,
     -33.75
    ],
@@ -210,14 +210,14 @@
    "hacim_mm3": 202.9,
    "merkez": [
     185.959,
-    -132.0,
+    -162.0,
     -37.25
    ],
    "bb": [
     172.5,
     195.5,
-    -134.75,
-    -129.25,
+    -164.75,
+    -159.25,
     -40.0,
     -34.5
    ],
@@ -239,14 +239,14 @@
    "hacim_mm3": 15.2,
    "merkez": [
     177.75,
-    -132.0,
+    -162.0,
     -37.25
    ],
    "bb": [
     177.5,
     178.0,
-    -135.5,
-    -128.5,
+    -165.5,
+    -158.5,
     -40.75,
     -33.75
    ],
@@ -268,14 +268,14 @@
    "hacim_mm3": 76.5,
    "merkez": [
     175.5,
-    -132.0,
+    -162.0,
     -37.25
    ],
    "bb": [
     173.5,
     177.5,
-    -135.18,
-    -128.82,
+    -165.18,
+    -158.82,
     -40.0,
     -34.5
    ],
@@ -297,14 +297,14 @@
    "hacim_mm3": 361.9,
    "merkez": [
     164.5,
-    -173.0,
+    -203.0,
     -1.25
    ],
    "bb": [
     162.0,
     167.0,
-    -181.0,
-    -165.0,
+    -211.0,
+    -195.0,
     -9.25,
     6.75
    ],
@@ -326,14 +326,14 @@
    "hacim_mm3": 1433.3,
    "merkez": [
     218.25,
-    -173.0,
+    -203.0,
     -1.25
    ],
    "bb": [
     216.6,
     219.9,
-    -185.5,
-    -160.5,
+    -215.5,
+    -190.5,
     -13.75,
     11.25
    ],
@@ -355,14 +355,14 @@
    "hacim_mm3": 96.9,
    "merkez": [
     219.88,
-    -173.0,
+    -203.0,
     -1.25
    ],
    "bb": [
     214.9,
     222.9,
-    -175.75,
-    -170.25,
+    -205.75,
+    -200.25,
     -4.0,
     1.5
    ],
@@ -375,23 +375,23 @@
   },
   {
    "i": 12,
-   "ad": "Catal-horn civatasi M3x8",
+   "ad": "Catal-horn civatasi M3x12",
    "grup": "UstKol",
    "tur": "Baglanti",
    "malzeme": "Celik 8.8",
-   "kod": "M3x8 DIN 912",
-   "kutle_g": 0.93,
-   "hacim_mm3": 118.1,
+   "kod": "M3x12 DIN 912",
+   "kutle_g": 1.15,
+   "hacim_mm3": 146.4,
    "merkez": [
-    223.717,
-    -166.99,
+    226.013,
+    -196.99,
     -7.26
    ],
    "bb": [
     216.9,
-    227.9,
-    -169.74,
-    -164.24,
+    231.9,
+    -199.74,
+    -194.24,
     -10.01,
     -4.51
    ],
@@ -400,56 +400,56 @@
     0,
     0
    ],
-   "not_": ""
+   "not_": "dis kol 8 mm: bas 2 x DIN 125-A pul ustunde, uc 125 cm'deki yerde (horn'da 3 mm)"
   },
   {
    "i": 13,
-   "ad": "Catal-horn civatasi M3x8",
+   "ad": "Catal-horn pulu M3 (2x DIN 125-A)",
    "grup": "UstKol",
    "tur": "Baglanti",
-   "malzeme": "Celik 8.8",
-   "kod": "M3x8 DIN 912",
-   "kutle_g": 0.93,
-   "hacim_mm3": 118.1,
+   "malzeme": "Celik",
+   "kod": "2 x DIN 125-A M3 (3,2 x 7 x 0,5)",
+   "kutle_g": 0.24,
+   "hacim_mm3": 30.4,
    "merkez": [
-    223.717,
-    -166.99,
-    4.76
+    228.4,
+    -196.99,
+    -7.26
    ],
    "bb": [
-    216.9,
     227.9,
-    -169.74,
-    -164.24,
-    2.01,
-    7.51
+    228.9,
+    -200.49,
+    -193.49,
+    -10.76,
+    -3.76
    ],
    "patlat": [
-    45,
+    40,
     0,
     0
    ],
-   "not_": ""
+   "not_": "M3x12 bas alti pul yigini 1.0 mm (M3x11 standart degil)"
   },
   {
    "i": 14,
-   "ad": "Catal-horn civatasi M3x8",
+   "ad": "Catal-horn civatasi M3x12",
    "grup": "UstKol",
    "tur": "Baglanti",
    "malzeme": "Celik 8.8",
-   "kod": "M3x8 DIN 912",
-   "kutle_g": 0.93,
-   "hacim_mm3": 118.1,
+   "kod": "M3x12 DIN 912",
+   "kutle_g": 1.15,
+   "hacim_mm3": 146.4,
    "merkez": [
-    223.717,
-    -179.01,
+    226.013,
+    -196.99,
     4.76
    ],
    "bb": [
     216.9,
-    227.9,
-    -181.76,
-    -176.26,
+    231.9,
+    -199.74,
+    -194.24,
     2.01,
     7.51
    ],
@@ -458,27 +458,114 @@
     0,
     0
    ],
-   "not_": ""
+   "not_": "dis kol 8 mm: bas 2 x DIN 125-A pul ustunde, uc 125 cm'deki yerde (horn'da 3 mm)"
   },
   {
    "i": 15,
-   "ad": "Catal-horn civatasi M3x8",
+   "ad": "Catal-horn pulu M3 (2x DIN 125-A)",
+   "grup": "UstKol",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "2 x DIN 125-A M3 (3,2 x 7 x 0,5)",
+   "kutle_g": 0.24,
+   "hacim_mm3": 30.4,
+   "merkez": [
+    228.4,
+    -196.99,
+    4.76
+   ],
+   "bb": [
+    227.9,
+    228.9,
+    -200.49,
+    -193.49,
+    1.26,
+    8.26
+   ],
+   "patlat": [
+    40,
+    0,
+    0
+   ],
+   "not_": "M3x12 bas alti pul yigini 1.0 mm (M3x11 standart degil)"
+  },
+  {
+   "i": 16,
+   "ad": "Catal-horn civatasi M3x12",
    "grup": "UstKol",
    "tur": "Baglanti",
    "malzeme": "Celik 8.8",
-   "kod": "M3x8 DIN 912",
-   "kutle_g": 0.93,
-   "hacim_mm3": 118.1,
+   "kod": "M3x12 DIN 912",
+   "kutle_g": 1.15,
+   "hacim_mm3": 146.4,
    "merkez": [
-    223.717,
-    -179.01,
+    226.013,
+    -209.01,
+    4.76
+   ],
+   "bb": [
+    216.9,
+    231.9,
+    -211.76,
+    -206.26,
+    2.01,
+    7.51
+   ],
+   "patlat": [
+    45,
+    0,
+    0
+   ],
+   "not_": "dis kol 8 mm: bas 2 x DIN 125-A pul ustunde, uc 125 cm'deki yerde (horn'da 3 mm)"
+  },
+  {
+   "i": 17,
+   "ad": "Catal-horn pulu M3 (2x DIN 125-A)",
+   "grup": "UstKol",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "2 x DIN 125-A M3 (3,2 x 7 x 0,5)",
+   "kutle_g": 0.24,
+   "hacim_mm3": 30.4,
+   "merkez": [
+    228.4,
+    -209.01,
+    4.76
+   ],
+   "bb": [
+    227.9,
+    228.9,
+    -212.51,
+    -205.51,
+    1.26,
+    8.26
+   ],
+   "patlat": [
+    40,
+    0,
+    0
+   ],
+   "not_": "M3x12 bas alti pul yigini 1.0 mm (M3x11 standart degil)"
+  },
+  {
+   "i": 18,
+   "ad": "Catal-horn civatasi M3x12",
+   "grup": "UstKol",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x12 DIN 912",
+   "kutle_g": 1.15,
+   "hacim_mm3": 146.4,
+   "merkez": [
+    226.013,
+    -209.01,
     -7.26
    ],
    "bb": [
     216.9,
-    227.9,
-    -181.76,
-    -176.26,
+    231.9,
+    -211.76,
+    -206.26,
     -10.01,
     -4.51
    ],
@@ -487,27 +574,56 @@
     0,
     0
    ],
-   "not_": ""
+   "not_": "dis kol 8 mm: bas 2 x DIN 125-A pul ustunde, uc 125 cm'deki yerde (horn'da 3 mm)"
   },
   {
-   "i": 16,
+   "i": 19,
+   "ad": "Catal-horn pulu M3 (2x DIN 125-A)",
+   "grup": "UstKol",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "2 x DIN 125-A M3 (3,2 x 7 x 0,5)",
+   "kutle_g": 0.24,
+   "hacim_mm3": 30.4,
+   "merkez": [
+    228.4,
+    -209.01,
+    -7.26
+   ],
+   "bb": [
+    227.9,
+    228.9,
+    -212.51,
+    -205.51,
+    -10.76,
+    -3.76
+   ],
+   "patlat": [
+    40,
+    0,
+    0
+   ],
+   "not_": "M3x12 bas alti pul yigini 1.0 mm (M3x11 standart degil)"
+  },
+  {
+   "i": 20,
    "ad": "On kol govdesi",
    "grup": "OnKol",
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "On kol govdesi",
-   "kutle_g": 42.18,
-   "hacim_mm3": 41517.9,
+   "kutle_g": 53.35,
+   "hacim_mm3": 52511.2,
    "merkez": [
-    187.432,
-    -205.911,
-    2.164
+    189.047,
+    -250.339,
+    2.77
    ],
    "bb": [
     163.6,
     226.7,
-    -253.1,
-    -152.0,
+    -315.5,
+    -182.0,
     -20.75,
     12.75
    ],
@@ -516,10 +632,10 @@
     -70,
     0
    ],
-   "not_": "arkasi acik U: iki servo arkadan takilir; on yuzu tablada basilir"
+   "not_": "arkasi acik U: iki servo arkadan takilir; on yuzu tablada basilir. 1,65 m: ara duvarin altindaki U bolum 32.4 mm uzun (dirsek -> bilek ekseni 115.5 mm)"
   },
   {
-   "i": 17,
+   "i": 21,
    "ad": "625ZZ rulman (ic bilezik)",
    "grup": "OnKol",
    "tur": "Satin",
@@ -529,14 +645,14 @@
    "hacim_mm3": 165.9,
    "merkez": [
     164.5,
-    -173.0,
+    -203.0,
     -1.25
    ],
    "bb": [
     162.0,
     167.0,
-    -177.1,
-    -168.9,
+    -207.1,
+    -198.9,
     -5.35,
     2.85
    ],
@@ -548,7 +664,7 @@
    "not_": ""
   },
   {
-   "i": 18,
+   "i": 22,
    "ad": "Pim pulu M5",
    "grup": "OnKol",
    "tur": "Baglanti",
@@ -558,14 +674,14 @@
    "hacim_mm3": 56.5,
    "merkez": [
     161.5,
-    -173.0,
+    -203.0,
     -1.25
    ],
    "bb": [
     161.0,
     162.0,
-    -178.0,
-    -168.0,
+    -208.0,
+    -198.0,
     -6.25,
     3.75
    ],
@@ -577,7 +693,7 @@
    "not_": ""
   },
   {
-   "i": 19,
+   "i": 23,
    "ad": "Pim civatasi M5x12",
    "grup": "OnKol",
    "tur": "Baglanti",
@@ -587,14 +703,14 @@
    "hacim_mm3": 477.8,
    "merkez": [
     162.779,
-    -173.0,
+    -203.0,
     -1.25
    ],
    "bb": [
     156.0,
     173.0,
-    -177.25,
-    -168.75,
+    -207.25,
+    -198.75,
     -5.5,
     3.0
    ],
@@ -606,7 +722,7 @@
    "not_": ""
   },
   {
-   "i": 20,
+   "i": 24,
    "ad": "Isil gomme somun M5 (on kolda)",
    "grup": "OnKol",
    "tur": "Baglanti",
@@ -616,14 +732,14 @@
    "hacim_mm3": 87.7,
    "merkez": [
     171.5,
-    -173.0,
+    -203.0,
     -1.25
    ],
    "bb": [
     168.0,
     175.0,
-    -176.2,
-    -169.8,
+    -206.2,
+    -199.8,
     -4.45,
     1.95
    ],
@@ -635,7 +751,7 @@
    "not_": ""
   },
   {
-   "i": 21,
+   "i": 25,
    "ad": "Dirsek servosu MG996R",
    "grup": "OnKol",
    "tur": "Satin",
@@ -645,14 +761,14 @@
    "hacim_mm3": 29818.2,
    "merkez": [
     195.451,
-    -183.15,
+    -213.15,
     -1.25
    ],
    "bb": [
     177.0,
     213.6,
-    -209.95,
-    -156.35,
+    -239.95,
+    -186.35,
     -11.1,
     8.6
    ],
@@ -664,7 +780,7 @@
    "not_": ""
   },
   {
-   "i": 22,
+   "i": 26,
    "ad": "Dirsek servosu cikis mili",
    "grup": "OnKol",
    "tur": "Satin",
@@ -674,135 +790,19 @@
    "hacim_mm3": 334.5,
    "merkez": [
     215.384,
-    -173.0,
+    -203.0,
     -1.25
    ],
    "bb": [
     213.6,
     219.9,
-    -179.5,
-    -166.5,
+    -209.5,
+    -196.5,
     -7.75,
     5.25
    ],
    "patlat": [
     0,
-    -70,
-    -60
-   ],
-   "not_": ""
-  },
-  {
-   "i": 23,
-   "ad": "Dirsek servosu kulak civatasi M4x16",
-   "grup": "OnKol",
-   "tur": "Baglanti",
-   "malzeme": "Celik 8.8",
-   "kod": "M4x16 DIN 912",
-   "kutle_g": 2.64,
-   "hacim_mm3": 336.3,
-   "merkez": [
-    202.077,
-    -207.9,
-    3.75
-   ],
-   "bb": [
-    190.1,
-    210.1,
-    -211.4,
-    -204.4,
-    0.25,
-    7.25
-   ],
-   "patlat": [
-    30,
-    -70,
-    -60
-   ],
-   "not_": ""
-  },
-  {
-   "i": 24,
-   "ad": "Dirsek servosu kontra somunu M4",
-   "grup": "OnKol",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M4 DIN 985 kontra somun",
-   "kutle_g": 1.17,
-   "hacim_mm3": 149.3,
-   "merkez": [
-    196.1,
-    -207.9,
-    3.75
-   ],
-   "bb": [
-    193.6,
-    198.6,
-    -211.94,
-    -203.86,
-    0.25,
-    7.25
-   ],
-   "patlat": [
-    -20,
-    -70,
-    -60
-   ],
-   "not_": ""
-  },
-  {
-   "i": 25,
-   "ad": "Dirsek servosu kulak civatasi M4x16",
-   "grup": "OnKol",
-   "tur": "Baglanti",
-   "malzeme": "Celik 8.8",
-   "kod": "M4x16 DIN 912",
-   "kutle_g": 2.64,
-   "hacim_mm3": 336.3,
-   "merkez": [
-    202.077,
-    -207.9,
-    -6.25
-   ],
-   "bb": [
-    190.1,
-    210.1,
-    -211.4,
-    -204.4,
-    -9.75,
-    -2.75
-   ],
-   "patlat": [
-    30,
-    -70,
-    -60
-   ],
-   "not_": ""
-  },
-  {
-   "i": 26,
-   "ad": "Dirsek servosu kontra somunu M4",
-   "grup": "OnKol",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M4 DIN 985 kontra somun",
-   "kutle_g": 1.17,
-   "hacim_mm3": 149.3,
-   "merkez": [
-    196.1,
-    -207.9,
-    -6.25
-   ],
-   "bb": [
-    193.6,
-    198.6,
-    -211.94,
-    -203.86,
-    -9.75,
-    -2.75
-   ],
-   "patlat": [
-    -20,
     -70,
     -60
    ],
@@ -819,14 +819,14 @@
    "hacim_mm3": 336.3,
    "merkez": [
     202.077,
-    -158.4,
+    -237.9,
     3.75
    ],
    "bb": [
     190.1,
     210.1,
-    -161.9,
-    -154.9,
+    -241.4,
+    -234.4,
     0.25,
     7.25
    ],
@@ -848,14 +848,14 @@
    "hacim_mm3": 149.3,
    "merkez": [
     196.1,
-    -158.4,
+    -237.9,
     3.75
    ],
    "bb": [
     193.6,
     198.6,
-    -162.44,
-    -154.36,
+    -241.94,
+    -233.86,
     0.25,
     7.25
    ],
@@ -877,14 +877,14 @@
    "hacim_mm3": 336.3,
    "merkez": [
     202.077,
-    -158.4,
+    -237.9,
     -6.25
    ],
    "bb": [
     190.1,
     210.1,
-    -161.9,
-    -154.9,
+    -241.4,
+    -234.4,
     -9.75,
     -2.75
    ],
@@ -906,14 +906,14 @@
    "hacim_mm3": 149.3,
    "merkez": [
     196.1,
-    -158.4,
+    -237.9,
     -6.25
    ],
    "bb": [
     193.6,
     198.6,
-    -162.44,
-    -154.36,
+    -241.94,
+    -233.86,
     -9.75,
     -2.75
    ],
@@ -926,6 +926,122 @@
   },
   {
    "i": 31,
+   "ad": "Dirsek servosu kulak civatasi M4x16",
+   "grup": "OnKol",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "hacim_mm3": 336.3,
+   "merkez": [
+    202.077,
+    -188.4,
+    3.75
+   ],
+   "bb": [
+    190.1,
+    210.1,
+    -191.9,
+    -184.9,
+    0.25,
+    7.25
+   ],
+   "patlat": [
+    30,
+    -70,
+    -60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 32,
+   "ad": "Dirsek servosu kontra somunu M4",
+   "grup": "OnKol",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.17,
+   "hacim_mm3": 149.3,
+   "merkez": [
+    196.1,
+    -188.4,
+    3.75
+   ],
+   "bb": [
+    193.6,
+    198.6,
+    -192.44,
+    -184.36,
+    0.25,
+    7.25
+   ],
+   "patlat": [
+    -20,
+    -70,
+    -60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 33,
+   "ad": "Dirsek servosu kulak civatasi M4x16",
+   "grup": "OnKol",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "hacim_mm3": 336.3,
+   "merkez": [
+    202.077,
+    -188.4,
+    -6.25
+   ],
+   "bb": [
+    190.1,
+    210.1,
+    -191.9,
+    -184.9,
+    -9.75,
+    -2.75
+   ],
+   "patlat": [
+    30,
+    -70,
+    -60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 34,
+   "ad": "Dirsek servosu kontra somunu M4",
+   "grup": "OnKol",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.17,
+   "hacim_mm3": 149.3,
+   "merkez": [
+    196.1,
+    -188.4,
+    -6.25
+   ],
+   "bb": [
+    193.6,
+    198.6,
+    -192.44,
+    -184.36,
+    -9.75,
+    -2.75
+   ],
+   "patlat": [
+    -20,
+    -70,
+    -60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 35,
    "ad": "Bilek servosu MG996R",
    "grup": "OnKol",
    "tur": "Satin",
@@ -935,14 +1051,14 @@
    "hacim_mm3": 29818.2,
    "merkez": [
     195.15,
-    -234.951,
+    -297.351,
     -1.25
    ],
    "bb": [
     168.35,
     221.95,
-    -253.1,
-    -216.5,
+    -315.5,
+    -278.9,
     -11.1,
     8.6
    ],
@@ -954,7 +1070,7 @@
    "not_": ""
   },
   {
-   "i": 32,
+   "i": 36,
    "ad": "Bilek servosu cikis mili",
    "grup": "OnKol",
    "tur": "Satin",
@@ -964,136 +1080,20 @@
    "hacim_mm3": 334.5,
    "merkez": [
     185.0,
-    -254.884,
+    -317.284,
     -1.25
    ],
    "bb": [
     178.5,
     191.5,
-    -259.4,
-    -253.1,
+    -321.8,
+    -315.5,
     -7.75,
     5.25
    ],
    "patlat": [
     0,
     -70,
-    -60
-   ],
-   "not_": ""
-  },
-  {
-   "i": 33,
-   "ad": "Bilek servosu kulak civatasi M4x16",
-   "grup": "OnKol",
-   "tur": "Baglanti",
-   "malzeme": "Celik 8.8",
-   "kod": "M4x16 DIN 912",
-   "kutle_g": 2.64,
-   "hacim_mm3": 336.3,
-   "merkez": [
-    219.9,
-    -241.577,
-    -6.25
-   ],
-   "bb": [
-    216.4,
-    223.4,
-    -249.6,
-    -229.6,
-    -9.75,
-    -2.75
-   ],
-   "patlat": [
-    0,
-    -95,
-    -60
-   ],
-   "not_": ""
-  },
-  {
-   "i": 34,
-   "ad": "Bilek servosu kontra somunu M4",
-   "grup": "OnKol",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M4 DIN 985 kontra somun",
-   "kutle_g": 1.17,
-   "hacim_mm3": 149.3,
-   "merkez": [
-    219.9,
-    -235.6,
-    -6.25
-   ],
-   "bb": [
-    216.4,
-    223.4,
-    -238.1,
-    -233.1,
-    -10.29,
-    -2.21
-   ],
-   "patlat": [
-    0,
-    -45,
-    -60
-   ],
-   "not_": ""
-  },
-  {
-   "i": 35,
-   "ad": "Bilek servosu kulak civatasi M4x16",
-   "grup": "OnKol",
-   "tur": "Baglanti",
-   "malzeme": "Celik 8.8",
-   "kod": "M4x16 DIN 912",
-   "kutle_g": 2.64,
-   "hacim_mm3": 336.3,
-   "merkez": [
-    219.9,
-    -241.577,
-    3.75
-   ],
-   "bb": [
-    216.4,
-    223.4,
-    -249.6,
-    -229.6,
-    0.25,
-    7.25
-   ],
-   "patlat": [
-    0,
-    -95,
-    -60
-   ],
-   "not_": ""
-  },
-  {
-   "i": 36,
-   "ad": "Bilek servosu kontra somunu M4",
-   "grup": "OnKol",
-   "tur": "Baglanti",
-   "malzeme": "Celik",
-   "kod": "M4 DIN 985 kontra somun",
-   "kutle_g": 1.17,
-   "hacim_mm3": 149.3,
-   "merkez": [
-    219.9,
-    -235.6,
-    3.75
-   ],
-   "bb": [
-    216.4,
-    223.4,
-    -238.1,
-    -233.1,
-    -0.29,
-    7.79
-   ],
-   "patlat": [
-    0,
-    -45,
     -60
    ],
    "not_": ""
@@ -1108,15 +1108,15 @@
    "kutle_g": 2.64,
    "hacim_mm3": 336.3,
    "merkez": [
-    170.4,
-    -241.577,
+    219.9,
+    -303.977,
     -6.25
    ],
    "bb": [
-    166.9,
-    173.9,
-    -249.6,
-    -229.6,
+    216.4,
+    223.4,
+    -312.0,
+    -292.0,
     -9.75,
     -2.75
    ],
@@ -1137,15 +1137,15 @@
    "kutle_g": 1.17,
    "hacim_mm3": 149.3,
    "merkez": [
-    170.4,
-    -235.6,
+    219.9,
+    -298.0,
     -6.25
    ],
    "bb": [
-    166.9,
-    173.9,
-    -238.1,
-    -233.1,
+    216.4,
+    223.4,
+    -300.5,
+    -295.5,
     -10.29,
     -2.21
    ],
@@ -1166,15 +1166,15 @@
    "kutle_g": 2.64,
    "hacim_mm3": 336.3,
    "merkez": [
-    170.4,
-    -241.577,
+    219.9,
+    -303.977,
     3.75
    ],
    "bb": [
-    166.9,
-    173.9,
-    -249.6,
-    -229.6,
+    216.4,
+    223.4,
+    -312.0,
+    -292.0,
     0.25,
     7.25
    ],
@@ -1195,15 +1195,15 @@
    "kutle_g": 1.17,
    "hacim_mm3": 149.3,
    "merkez": [
-    170.4,
-    -235.6,
+    219.9,
+    -298.0,
     3.75
    ],
    "bb": [
-    166.9,
-    173.9,
-    -238.1,
-    -233.1,
+    216.4,
+    223.4,
+    -300.5,
+    -295.5,
     -0.29,
     7.79
    ],
@@ -1216,6 +1216,122 @@
   },
   {
    "i": 41,
+   "ad": "Bilek servosu kulak civatasi M4x16",
+   "grup": "OnKol",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "hacim_mm3": 336.3,
+   "merkez": [
+    170.4,
+    -303.977,
+    -6.25
+   ],
+   "bb": [
+    166.9,
+    173.9,
+    -312.0,
+    -292.0,
+    -9.75,
+    -2.75
+   ],
+   "patlat": [
+    0,
+    -95,
+    -60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 42,
+   "ad": "Bilek servosu kontra somunu M4",
+   "grup": "OnKol",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.17,
+   "hacim_mm3": 149.3,
+   "merkez": [
+    170.4,
+    -298.0,
+    -6.25
+   ],
+   "bb": [
+    166.9,
+    173.9,
+    -300.5,
+    -295.5,
+    -10.29,
+    -2.21
+   ],
+   "patlat": [
+    0,
+    -45,
+    -60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 43,
+   "ad": "Bilek servosu kulak civatasi M4x16",
+   "grup": "OnKol",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "hacim_mm3": 336.3,
+   "merkez": [
+    170.4,
+    -303.977,
+    3.75
+   ],
+   "bb": [
+    166.9,
+    173.9,
+    -312.0,
+    -292.0,
+    0.25,
+    7.25
+   ],
+   "patlat": [
+    0,
+    -95,
+    -60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 44,
+   "ad": "Bilek servosu kontra somunu M4",
+   "grup": "OnKol",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.17,
+   "hacim_mm3": 149.3,
+   "merkez": [
+    170.4,
+    -298.0,
+    3.75
+   ],
+   "bb": [
+    166.9,
+    173.9,
+    -300.5,
+    -295.5,
+    -0.29,
+    7.79
+   ],
+   "patlat": [
+    0,
+    -45,
+    -60
+   ],
+   "not_": ""
+  },
+  {
+   "i": 45,
    "ad": "Bilek horn 25T aluminyum disk",
    "grup": "El",
    "tur": "Satin",
@@ -1225,14 +1341,14 @@
    "hacim_mm3": 1433.3,
    "merkez": [
     185.0,
-    -257.75,
+    -320.15,
     -1.25
    ],
    "bb": [
     172.5,
     197.5,
-    -259.4,
-    -256.1,
+    -321.8,
+    -318.5,
     -13.75,
     11.25
    ],
@@ -1244,7 +1360,7 @@
    "not_": ""
   },
   {
-   "i": 42,
+   "i": 46,
    "ad": "Bilek horn merkez vidasi M3",
    "grup": "El",
    "tur": "Baglanti",
@@ -1254,14 +1370,14 @@
    "hacim_mm3": 96.9,
    "merkez": [
     185.0,
-    -259.38,
+    -321.78,
     -1.25
    ],
    "bb": [
     182.25,
     187.75,
-    -262.4,
-    -254.4,
+    -324.8,
+    -316.8,
     -4.0,
     1.5
    ],
@@ -1273,7 +1389,7 @@
    "not_": ""
   },
   {
-   "i": 43,
+   "i": 47,
    "ad": "Bilek flansi",
    "grup": "El",
    "tur": "Baski",
@@ -1283,14 +1399,14 @@
    "hacim_mm3": 3963.5,
    "merkez": [
     185.0,
-    -263.37,
+    -325.77,
     -1.25
    ],
    "bb": [
     171.0,
     199.0,
-    -267.4,
-    -259.4,
+    -329.8,
+    -321.8,
     -15.25,
     12.75
    ],
@@ -1302,140 +1418,140 @@
    "not_": "horn'a 4x M3x8 (havsadan), ele 2x radyal M3"
   },
   {
-   "i": 44,
-   "ad": "Flans-horn civatasi M3x8",
-   "grup": "El",
-   "tur": "Baglanti",
-   "malzeme": "Celik 8.8",
-   "kod": "M3x8 DIN 912",
-   "kutle_g": 0.93,
-   "hacim_mm3": 118.1,
-   "merkez": [
-    178.99,
-    -262.217,
-    4.76
-   ],
-   "bb": [
-    176.24,
-    181.74,
-    -266.4,
-    -255.4,
-    2.01,
-    7.51
-   ],
-   "patlat": [
-    0,
-    -150,
-    0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 45,
-   "ad": "Flans-horn civatasi M3x8",
-   "grup": "El",
-   "tur": "Baglanti",
-   "malzeme": "Celik 8.8",
-   "kod": "M3x8 DIN 912",
-   "kutle_g": 0.93,
-   "hacim_mm3": 118.1,
-   "merkez": [
-    178.99,
-    -262.217,
-    -7.26
-   ],
-   "bb": [
-    176.24,
-    181.74,
-    -266.4,
-    -255.4,
-    -10.01,
-    -4.51
-   ],
-   "patlat": [
-    0,
-    -150,
-    0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 46,
-   "ad": "Flans-horn civatasi M3x8",
-   "grup": "El",
-   "tur": "Baglanti",
-   "malzeme": "Celik 8.8",
-   "kod": "M3x8 DIN 912",
-   "kutle_g": 0.93,
-   "hacim_mm3": 118.1,
-   "merkez": [
-    191.01,
-    -262.217,
-    -7.26
-   ],
-   "bb": [
-    188.26,
-    193.76,
-    -266.4,
-    -255.4,
-    -10.01,
-    -4.51
-   ],
-   "patlat": [
-    0,
-    -150,
-    0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 47,
-   "ad": "Flans-horn civatasi M3x8",
-   "grup": "El",
-   "tur": "Baglanti",
-   "malzeme": "Celik 8.8",
-   "kod": "M3x8 DIN 912",
-   "kutle_g": 0.93,
-   "hacim_mm3": 118.1,
-   "merkez": [
-    191.01,
-    -262.217,
-    4.76
-   ],
-   "bb": [
-    188.26,
-    193.76,
-    -266.4,
-    -255.4,
-    2.01,
-    7.51
-   ],
-   "patlat": [
-    0,
-    -150,
-    0
-   ],
-   "not_": ""
-  },
-  {
    "i": 48,
+   "ad": "Flans-horn civatasi M3x8",
+   "grup": "El",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    178.99,
+    -324.617,
+    4.76
+   ],
+   "bb": [
+    176.24,
+    181.74,
+    -328.8,
+    -317.8,
+    2.01,
+    7.51
+   ],
+   "patlat": [
+    0,
+    -150,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 49,
+   "ad": "Flans-horn civatasi M3x8",
+   "grup": "El",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    178.99,
+    -324.617,
+    -7.26
+   ],
+   "bb": [
+    176.24,
+    181.74,
+    -328.8,
+    -317.8,
+    -10.01,
+    -4.51
+   ],
+   "patlat": [
+    0,
+    -150,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 50,
+   "ad": "Flans-horn civatasi M3x8",
+   "grup": "El",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    191.01,
+    -324.617,
+    -7.26
+   ],
+   "bb": [
+    188.26,
+    193.76,
+    -328.8,
+    -317.8,
+    -10.01,
+    -4.51
+   ],
+   "patlat": [
+    0,
+    -150,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 51,
+   "ad": "Flans-horn civatasi M3x8",
+   "grup": "El",
+   "tur": "Baglanti",
+   "malzeme": "Celik 8.8",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.93,
+   "hacim_mm3": 118.1,
+   "merkez": [
+    191.01,
+    -324.617,
+    4.76
+   ],
+   "bb": [
+    188.26,
+    193.76,
+    -328.8,
+    -317.8,
+    2.01,
+    7.51
+   ],
+   "patlat": [
+    0,
+    -150,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 52,
    "ad": "El",
    "grup": "El",
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "El",
-   "kutle_g": 60.82,
-   "hacim_mm3": 59859.3,
+   "kutle_g": 74.81,
+   "hacim_mm3": 73627.8,
    "merkez": [
-    181.726,
-    -298.288,
-    -0.591
+    182.339,
+    -371.177,
+    -0.715
    ],
    "bb": [
     162.0,
     202.0,
-    -325.5,
-    -259.9,
+    -406.9,
+    -322.3,
     -26.25,
     31.75
    ],
@@ -1444,10 +1560,10 @@
     -175,
     0
    ],
-   "not_": "sabit el: parmaklar 16 mm iceri bukuk + 5 mm dudak (kanca), basparmak onde"
+   "not_": "sabit el: parmaklar 16 mm iceri bukuk + 5 mm dudak (kanca), basparmak onde; yaka 19 mm uzun (ici O22 bos)"
   },
   {
-   "i": 49,
+   "i": 53,
    "ad": "Isil gomme somun M3 (flansta)",
    "grup": "El",
    "tur": "Baglanti",
@@ -1457,14 +1573,14 @@
    "hacim_mm3": 31.3,
    "merkez": [
     196.15,
-    -263.4,
+    -325.8,
     -1.25
    ],
    "bb": [
     193.3,
     199.0,
-    -265.4,
-    -261.4,
+    -327.8,
+    -323.8,
     -3.25,
     0.75
    ],
@@ -1476,7 +1592,7 @@
    "not_": ""
   },
   {
-   "i": 50,
+   "i": 54,
    "ad": "Yaka civatasi M3x6 ISO 7380",
    "grup": "El",
    "tur": "Baglanti",
@@ -1486,14 +1602,14 @@
    "hacim_mm3": 80.8,
    "merkez": [
     200.804,
-    -263.4,
+    -325.8,
     -1.25
    ],
    "bb": [
     196.0,
     203.65,
-    -266.25,
-    -260.55,
+    -328.65,
+    -322.95,
     -4.1,
     1.6
    ],
@@ -1505,7 +1621,7 @@
    "not_": ""
   },
   {
-   "i": 51,
+   "i": 55,
    "ad": "Isil gomme somun M3 (flansta)",
    "grup": "El",
    "tur": "Baglanti",
@@ -1515,14 +1631,14 @@
    "hacim_mm3": 31.3,
    "merkez": [
     173.85,
-    -263.4,
+    -325.8,
     -1.25
    ],
    "bb": [
     171.0,
     176.7,
-    -265.4,
-    -261.4,
+    -327.8,
+    -323.8,
     -3.25,
     0.75
    ],
@@ -1534,7 +1650,7 @@
    "not_": ""
   },
   {
-   "i": 52,
+   "i": 56,
    "ad": "Yaka civatasi M3x6 ISO 7380",
    "grup": "El",
    "tur": "Baglanti",
@@ -1544,14 +1660,14 @@
    "hacim_mm3": 80.8,
    "merkez": [
     169.196,
-    -263.4,
+    -325.8,
     -1.25
    ],
    "bb": [
     166.35,
     174.0,
-    -266.25,
-    -260.55,
+    -328.65,
+    -322.95,
     -4.1,
     1.6
    ],
@@ -1580,10 +1696,14 @@
     "625ZZ rulman (dis bilezik)",
     "Dirsek horn 25T aluminyum disk",
     "Dirsek horn merkez vidasi M3",
-    "Catal-horn civatasi M3x8",
-    "Catal-horn civatasi M3x8",
-    "Catal-horn civatasi M3x8",
-    "Catal-horn civatasi M3x8"
+    "Catal-horn civatasi M3x12",
+    "Catal-horn pulu M3 (2x DIN 125-A)",
+    "Catal-horn civatasi M3x12",
+    "Catal-horn pulu M3 (2x DIN 125-A)",
+    "Catal-horn civatasi M3x12",
+    "Catal-horn pulu M3 (2x DIN 125-A)",
+    "Catal-horn civatasi M3x12",
+    "Catal-horn pulu M3 (2x DIN 125-A)"
    ]
   },
   "OnKol": {
@@ -1642,7 +1762,7 @@
    "alt": "OnKol",
    "nokta": [
     216.6,
-    -173.0,
+    -203.0,
     -1.25
    ],
    "yon": [
@@ -1669,7 +1789,7 @@
    "alt": "El",
    "nokta": [
     185.0,
-    -256.1,
+    -318.5,
     -1.25
    ],
    "yon": [
@@ -1686,7 +1806,7 @@
    "not_": "on kol ekseni; ev 0 = avuc ice (-X)"
   }
  ],
- "kinematik": "T_UstKol = Pp(phi)*Pr(th); T_OnKol = T_UstKol*Pe(al); T_El = T_OnKol*Pb(be); Pp/Pr omuz_parcalar ile ayni, Pe = Rotation((-1,0,0), al) merkez (0, -173.0, -1.25); Pb = Rotation((0,1,0), be) merkez (185.0, 0, -1.25)",
+ "kinematik": "T_UstKol = Pp(phi)*Pr(th); T_OnKol = T_UstKol*Pe(al); T_El = T_OnKol*Pb(be); Pp/Pr omuz_parcalar ile ayni, Pe = Rotation((-1,0,0), al) merkez (0, -203.0, -1.25); Pb = Rotation((0,1,0), be) merkez (185.0, 0, -1.25)",
  "tarama_onerisi": {
   "dirsek": [
    0,
@@ -1711,7 +1831,7 @@
  "gecersiz": [],
  "coklu_kati": [],
  "statik": [],
- "cift_sayisi": 142,
+ "cift_sayisi": 150,
  "tolerans_mm3": 0.5,
  "omuz_arayuzu": {
   "cakisma": [],
@@ -1841,7 +1961,8 @@
      "d": 0.4,
      "gen": 1.0,
      "oluk": 0.5,
-     "dudak_cep": 0.3
+     "dudak_cep": 0.3,
+     "delik_eksenel": 0.8
     }
    },
    "duvar": {
@@ -1865,7 +1986,7 @@
      "r": 57.0,
      "d": 3.0,
      "post_r": 3.5,
-     "bosluk": 0.5
+     "bosluk": 1.0
     },
     "pah": 1.2,
     "pim2": {
@@ -1987,7 +2108,7 @@
    "govde_dikey": [
     [
      0.0,
-     900.0,
+     1285.0,
      -26.0
     ],
     [
@@ -2383,321 +2504,321 @@
     "0.0": [
      [
       179.3,
-      -158.0,
+      -188.0,
       -17.75
      ],
      [
       179.585,
-      -158.655,
+      -188.655,
       -23.698
      ],
      [
       179.87,
-      -160.569,
+      -190.569,
       -29.377
      ],
      [
       180.155,
-      -163.245,
+      -193.245,
       -34.745
      ],
      [
       180.44,
-      -166.244,
+      -196.244,
       -39.941
      ],
      [
       180.725,
-      -169.171,
+      -199.171,
       -45.178
      ],
      [
       181.01,
-      -171.619,
+      -201.619,
       -50.651
      ],
      [
       181.295,
-      -173.126,
+      -203.126,
       -56.448
      ],
      [
       181.58,
-      -173.185,
+      -203.185,
       -62.429
      ],
      [
       181.865,
-      -171.36,
+      -201.36,
       -68.112
      ],
      [
       182.15,
-      -167.528,
+      -197.528,
       -72.674
      ],
      [
       182.435,
-      -162.136,
+      -192.136,
       -75.193
      ],
      [
       182.72,
-      -156.186,
+      -186.186,
       -75.103
      ],
      [
       183.005,
-      -150.822,
+      -180.822,
       -72.509
      ],
      [
       183.29,
-      -146.833,
+      -176.833,
       -68.069
      ],
      [
       183.575,
-      -144.444,
+      -174.444,
       -62.587
      ],
      [
       183.86,
-      -143.455,
+      -173.455,
       -56.679
      ],
      [
       184.145,
-      -143.461,
+      -173.461,
       -50.683
      ],
      [
       184.43,
-      -144.004,
+      -174.004,
       -44.708
      ],
      [
       184.715,
-      -144.633,
+      -174.633,
       -38.742
      ],
      [
       185.0,
-      -144.9,
+      -174.9,
       -32.75
      ]
     ],
     "52.5": [
      [
       179.3,
-      -176.959,
+      -206.959,
       -23.195
      ],
      [
       179.585,
-      -181.552,
+      -211.552,
       -27.051
      ],
      [
       179.87,
-      -185.642,
+      -215.642,
       -31.435
      ],
      [
       180.155,
-      -189.037,
+      -219.037,
       -36.374
      ],
      [
       180.44,
-      -191.514,
+      -221.514,
       -41.829
      ],
      [
       180.725,
-      -192.838,
+      -222.838,
       -47.67
      ],
      [
       181.01,
-      -192.796,
+      -222.796,
       -53.656
      ],
      [
       181.295,
-      -191.253,
+      -221.253,
       -59.436
      ],
      [
       181.58,
-      -188.209,
+      -218.209,
       -64.585
      ],
      [
       181.865,
-      -183.834,
+      -213.834,
       -68.66
      ],
      [
       182.15,
-      -178.467,
+      -208.467,
       -71.296
      ],
      [
       182.435,
-      -172.568,
+      -202.568,
       -72.276
      ],
      [
       182.72,
-      -166.628,
+      -196.628,
       -71.574
      ],
      [
       183.005,
-      -161.08,
+      -191.08,
       -69.333
      ],
      [
       183.29,
-      -156.237,
+      -186.237,
       -65.812
      ],
      [
       183.575,
-      -152.277,
+      -182.277,
       -61.319
      ],
      [
       183.86,
-      -149.25,
+      -179.25,
       -56.148
      ],
      [
       184.145,
-      -147.113,
+      -177.113,
       -50.547
      ],
      [
       184.43,
-      -145.766,
+      -175.766,
       -44.704
      ],
      [
       184.715,
-      -145.077,
+      -175.077,
       -38.746
      ],
      [
       185.0,
-      -144.9,
+      -174.9,
       -32.75
      ]
     ],
     "105.0": [
      [
       179.3,
-      -192.82,
+      -222.82,
       -11.468
      ],
      [
       179.585,
-      -198.754,
+      -228.754,
       -11.057
      ],
      [
       179.87,
-      -204.27,
+      -234.27,
       -13.294
      ],
      [
       180.155,
-      -208.367,
+      -238.367,
       -17.622
      ],
      [
       180.44,
-      -210.532,
+      -240.532,
       -23.183
      ],
      [
       180.725,
-      -210.725,
+      -240.725,
       -29.156
      ],
      [
       181.01,
-      -209.191,
+      -239.191,
       -34.938
      ],
      [
       181.295,
-      -206.284,
+      -236.284,
       -40.172
      ],
      [
       181.58,
-      -202.342,
+      -232.342,
       -44.683
      ],
      [
       181.865,
-      -197.648,
+      -227.648,
       -48.409
      ],
      [
       182.15,
-      -192.419,
+      -222.419,
       -51.341
      ],
      [
       182.435,
-      -186.821,
+      -216.821,
       -53.486
      ],
      [
       182.72,
-      -180.981,
+      -210.981,
       -54.843
      ],
      [
       183.005,
-      -175.011,
+      -205.011,
       -55.392
      ],
      [
       183.29,
-      -169.024,
+      -199.024,
       -55.089
      ],
      [
       183.575,
-      -163.157,
+      -193.157,
       -53.865
      ],
      [
       183.86,
-      -157.593,
+      -187.593,
       -51.641
      ],
      [
       184.145,
-      -152.592,
+      -182.592,
       -48.347
      ],
      [
       184.43,
-      -148.505,
+      -178.505,
       -43.976
      ],
      [
       184.715,
-      -145.78,
+      -175.78,
       -38.655
      ],
      [
       185.0,
-      -144.9,
+      -174.9,
       -32.75
      ]
     ]
@@ -3383,13 +3504,13 @@
    ],
    "en_kucuk_bosluk": 1.78,
    "en_yakin": "Dirsek servosu MG996R",
-   "en_yakin_poz": 75.0,
+   "en_yakin_poz": 35.0,
    "ok": true
   },
   "yol_bilek_servo": {
    "grup": "OnKol",
    "serit": 1,
-   "boy": 92.7,
+   "boy": 125.1,
    "kose_r_max": 5.75,
    "r_sinir": 5.6,
    "koseler": [
@@ -3504,17 +3625,21 @@
   ],
   "boy": [
    {
-    "ad": "dirsek servosu (MG996R) -> tup ici (y -122)",
+    "ad": "dirsek servosu (MG996R) -> tup ici (y -152) [JR]",
     "gerekli_mm": 197.6,
     "kablo_mm": 300.0,
     "artan_mm": 102.4,
+    "pay_sart_mm": 10.0,
+    "ek": "JR (disi servo ucu + erkek uzatma)",
     "ok": true
    },
    {
-    "ad": "bilek servosu (MG996R) -> tup ici (y -122)",
-    "gerekli_mm": 267.1,
+    "ad": "bilek servosu (MG996R) -> tup ici (y -152) [lehimli ek]",
+    "gerekli_mm": 299.5,
     "kablo_mm": 300.0,
-    "artan_mm": 32.9,
+    "artan_mm": 0.5,
+    "pay_sart_mm": 0.0,
+    "ek": "lehim + isiyla daralan makaron (B10 ile ayni)",
     "ok": true
    },
    {
@@ -6625,27 +6750,27 @@
    "uzatma": [
     {
      "servo": "dirsek servosu (MG996R)",
-     "uzatma_mm": 1541.0,
+     "uzatma_mm": 1926.0,
      "parca": {
       "birlesim_G2": 175.7,
       "gecis": 23.9,
       "s1_lop": 171.4,
       "cikis_govde_ici": 238.0,
       "govde_ici_dikeye": 0.0,
-      "dikey_dagitim": 901.5,
+      "dikey_dagitim": 1286.5,
       "konnektor_payi": 30.0
      }
     },
     {
      "servo": "bilek servosu (MG996R)",
-     "uzatma_mm": 1541.0,
+     "uzatma_mm": 1926.0,
      "parca": {
       "birlesim_G2": 175.7,
       "gecis": 23.9,
       "s1_lop": 171.4,
       "cikis_govde_ici": 238.0,
       "govde_ici_dikeye": 0.0,
-      "dikey_dagitim": 901.5,
+      "dikey_dagitim": 1286.5,
       "konnektor_payi": 30.0
      }
     },
@@ -6655,7 +6780,7 @@
      "kalan_mm": 10.0,
      "kalan_sart_mm": 7.0,
      "birlesim": "kabuk icinde yarik arkasinda",
-     "uzatma_mm": 1105.0,
+     "uzatma_mm": 1490.0,
      "ok": true
     }
    ],
@@ -6667,7 +6792,7 @@
  },
  "baglanti_kontrol": [
   {
-   "ad": "Sikma bilezigi y -121",
+   "ad": "Sikma bilezigi y -151",
    "tip": "civata_somun",
    "kontroller": [
     [
@@ -6734,7 +6859,7 @@
    "tamam": true
   },
   {
-   "ad": "Sikma bilezigi y -132",
+   "ad": "Sikma bilezigi y -162",
    "tip": "civata_somun",
    "kontroller": [
     [
@@ -6810,7 +6935,17 @@
      true
     ],
     [
-     "civata basi parcaya dayali",
+     "civata basi pul yiginina dayali",
+     0.0,
+     true
+    ],
+    [
+     "pul yigini parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "pul civata ekseninde",
      0.0,
      true
     ],
@@ -6842,7 +6977,17 @@
      true
     ],
     [
-     "civata basi parcaya dayali",
+     "civata basi pul yiginina dayali",
+     0.0,
+     true
+    ],
+    [
+     "pul yigini parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "pul civata ekseninde",
      0.0,
      true
     ],
@@ -6874,7 +7019,17 @@
      true
     ],
     [
-     "civata basi parcaya dayali",
+     "civata basi pul yiginina dayali",
+     0.0,
+     true
+    ],
+    [
+     "pul yigini parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "pul civata ekseninde",
      0.0,
      true
     ],
@@ -6906,7 +7061,17 @@
      true
     ],
     [
-     "civata basi parcaya dayali",
+     "civata basi pul yiginina dayali",
+     0.0,
+     true
+    ],
+    [
+     "pul yigini parcaya dayali",
+     0.0,
+     true
+    ],
+    [
+     "pul civata ekseninde",
      0.0,
      true
     ],
@@ -7732,18 +7897,13 @@
      "Dirsek servosu MG996R",
      "Dirsek catali",
      7.1
-    ],
-    [
-     "Bilek servosu MG996R",
-     "Dirsek catali",
-     5.7
     ]
    ],
    "130": [
     [
      "On kol govdesi",
      "Dirsek catali",
-     3240.2
+     3240.6
     ],
     [
      "On kol govdesi",
@@ -7764,23 +7924,13 @@
      "Dirsek servosu kontra somunu M4",
      "Dirsek catali",
      49.5
-    ],
-    [
-     "Bilek servosu MG996R",
-     "Dirsek catali",
-     232.4
-    ],
-    [
-     "Bilek servosu MG996R",
-     "Ust kol tupu (omuz)",
-     8.2
     ]
    ],
    "135": [
     [
      "On kol govdesi",
      "Dirsek catali",
-     4840.0
+     4861.9
     ],
     [
      "On kol govdesi",
@@ -7801,23 +7951,13 @@
      "Dirsek servosu kontra somunu M4",
      "Dirsek catali",
      106.8
-    ],
-    [
-     "Bilek servosu MG996R",
-     "Dirsek catali",
-     708.8
-    ],
-    [
-     "Bilek servosu MG996R",
-     "Ust kol tupu (omuz)",
-     240.4
     ]
    ],
    "140": [
     [
      "On kol govdesi",
      "Dirsek catali",
-     6714.5
+     6808.6
     ],
     [
      "On kol govdesi",
@@ -7843,23 +7983,13 @@
      "Dirsek servosu kontra somunu M4",
      "Dirsek catali",
      149.3
-    ],
-    [
-     "Bilek servosu MG996R",
-     "Dirsek catali",
-     1703.3
-    ],
-    [
-     "Bilek servosu MG996R",
-     "Ust kol tupu (omuz)",
-     671.5
     ]
    ],
    "145": [
     [
      "On kol govdesi",
      "Dirsek catali",
-     8048.9
+     8256.9
     ],
     [
      "On kol govdesi",
@@ -7895,33 +8025,18 @@
      "Dirsek servosu kontra somunu M4",
      "Dirsek catali",
      32.1
-    ],
-    [
-     "Bilek servosu MG996R",
-     "Dirsek catali",
-     3571.0
-    ],
-    [
-     "Bilek servosu MG996R",
-     "Ust kol tupu (omuz)",
-     1268.2
-    ],
-    [
-     "Bilek servosu kulak civatasi M4x16",
-     "Dirsek catali",
-     1.4
     ]
    ],
    "150": [
     [
      "On kol govdesi",
      "Dirsek catali",
-     7904.1
+     8181.5
     ],
     [
      "On kol govdesi",
      "Ust kol tupu (omuz)",
-     1365.4
+     1291.6
     ],
     [
      "Dirsek servosu MG996R",
@@ -7957,36 +8072,6 @@
      "Dirsek servosu kontra somunu M4",
      "Dirsek catali",
      88.6
-    ],
-    [
-     "Bilek servosu MG996R",
-     "Dirsek catali",
-     5625.7
-    ],
-    [
-     "Bilek servosu MG996R",
-     "Ust kol tupu (omuz)",
-     2103.5
-    ],
-    [
-     "Bilek servosu kulak civatasi M4x16",
-     "Dirsek catali",
-     61.4
-    ],
-    [
-     "Bilek servosu kulak civatasi M4x16",
-     "Ust kol tupu (omuz)",
-     10.0
-    ],
-    [
-     "Bilek servosu kontra somunu M4",
-     "Dirsek catali",
-     36.6
-    ],
-    [
-     "Bilek servosu kontra somunu M4",
-     "Ust kol tupu (omuz)",
-     14.0
     ]
    ]
   },
@@ -8203,13 +8288,7 @@
    "145,90": [],
    "150,-90": [],
    "150,-45": [],
-   "150,0": [
-    [
-     "El",
-     "Ust kol tupu (omuz)",
-     139.6
-    ]
-   ],
+   "150,0": [],
    "150,45": [],
    "150,90": []
   },
@@ -8325,72 +8404,72 @@
   "sonuc": [
    {
     "eklem": "S1 (omuz one-arka)",
-    "servo": "DS3218MG",
-    "stall_kgcm": 20.0,
-    "stall_kaynak": "omuz raporundaki deger (datasheet 19 kg*cm @5 V, 21,5 @6,8 V)",
-    "yuksuz_kgcm": 8.14,
+    "servo": "DS3235",
+    "stall_kgcm": 30.4,
+    "stall_kaynak": "29 / 32 / 35 kg.cm @ 5 / 6 / 7,4 V (satici tablosu + datasheet); stall servo hattinda ~30,4 @ 5,48 V (taslak-170/kol-analiz HAT modeli)",
+    "yuksuz_kgcm": 10.94,
     "yuksuz_poz": [
      90,
      5,
      0,
      0
     ],
-    "yuksuz_pay": 2.46,
-    "yuklu_kgcm": 24.35,
+    "yuksuz_pay": 2.78,
+    "yuklu_kgcm": 31.21,
     "yuklu_poz": [
      90,
      5,
      0,
      0
     ],
-    "yuklu_pay": 0.82,
-    "izinli_yuk_2x_g": 58.0
+    "yuklu_pay": 0.97,
+    "izinli_yuk_2x_g": 105.0
    },
    {
     "eklem": "S2 (omuz yana acma)",
-    "servo": "DS3218MG",
-    "stall_kgcm": 20.0,
-    "stall_kaynak": "omuz raporundaki deger",
-    "yuksuz_kgcm": 8.32,
+    "servo": "DS3235",
+    "stall_kgcm": 30.4,
+    "stall_kaynak": "29 / 32 / 35 kg.cm @ 5 / 6 / 7,4 V (satici tablosu + datasheet); stall servo hattinda ~30,4 @ 5,48 V (taslak-170/kol-analiz HAT modeli)",
+    "yuksuz_kgcm": 11.14,
     "yuksuz_poz": [
      0,
      90,
      0,
      -90
     ],
-    "yuksuz_pay": 2.4,
-    "yuklu_kgcm": 24.6,
+    "yuksuz_pay": 2.73,
+    "yuklu_kgcm": 31.49,
     "yuklu_poz": [
      0,
      90,
      0,
      -90
     ],
-    "yuklu_pay": 0.81,
-    "izinli_yuk_2x_g": 52.0
+    "yuklu_pay": 0.97,
+    "izinli_yuk_2x_g": 100.0
    },
    {
     "eklem": "Dirsek",
     "servo": "MG996R",
     "stall_kgcm": 9.4,
     "stall_kaynak": "datasheet 9,4 kg*cm @4,8 V (11 @6 V); 01-donanim-maliyet.md",
-    "yuksuz_kgcm": 1.54,
+    "yuksuz_kgcm": 2.42,
     "yuksuz_poz": [
      90,
-     90,
+     35,
      0,
-     -90
+     90
     ],
-    "yuksuz_pay": 6.11,
-    "yuklu_kgcm": 9.16,
+    "yuksuz_pay": 3.88,
+    "yuklu_kgcm": 12.62,
     "yuklu_poz": [
      90,
-     25,
+     120,
      0,
      0
     ],
-    "yuklu_pay": 1.03,
-    "izinli_yuk_2x_g": 207.0
+    "yuklu_pay": 0.74,
+    "izinli_yuk_2x_g": 112.0
    },
    {
     "eklem": "Bilek",
@@ -8419,12 +8498,12 @@
   "yuk_g": 500.0,
   "yuk_noktasi": [
    185.0,
-   -325.5,
+   -406.9,
    -1.25
   ],
   "kanca_noktasi": [
    172.0,
-   -305.5,
+   -386.9,
    -1.25
   ],
   "tarama": {
@@ -8450,249 +8529,249 @@
    ]
   },
   "omuz_eski": {
-   "S1": 5.77,
-   "S2": 5.93,
+   "S1": 5.95,
+   "S2": 6.12,
    "alt_kol_g": 260.0
   },
   "egri": [
    {
     "al": 0,
-    "dirsek_yuksuz": 0.02,
-    "dirsek_yuklu": 0.02,
+    "dirsek_yuksuz": 0.03,
+    "dirsek_yuklu": 0.03,
     "s1_yuksuz_omuz0": 0.1,
     "s1_yuklu_omuz0": 0.16,
-    "s1_yuksuz_omuz90": 8.18,
-    "s1_yuklu_omuz90": 24.46
+    "s1_yuksuz_omuz90": 11.0,
+    "s1_yuklu_omuz90": 31.35
    },
    {
     "al": 5,
-    "dirsek_yuksuz": 0.15,
-    "dirsek_yuklu": 0.82,
-    "s1_yuksuz_omuz0": 0.04,
-    "s1_yuklu_omuz0": 0.64,
-    "s1_yuksuz_omuz90": 8.17,
-    "s1_yuklu_omuz90": 24.42
+    "dirsek_yuksuz": 0.24,
+    "dirsek_yuklu": 1.13,
+    "s1_yuksuz_omuz0": 0.11,
+    "s1_yuklu_omuz0": 0.94,
+    "s1_yuksuz_omuz90": 10.99,
+    "s1_yuklu_omuz90": 31.29
    },
    {
     "al": 10,
-    "dirsek_yuksuz": 0.29,
-    "dirsek_yuklu": 1.61,
-    "s1_yuksuz_omuz0": 0.17,
-    "s1_yuklu_omuz0": 1.43,
-    "s1_yuksuz_omuz90": 8.15,
-    "s1_yuklu_omuz90": 24.31
+    "dirsek_yuksuz": 0.45,
+    "dirsek_yuklu": 2.22,
+    "s1_yuksuz_omuz0": 0.32,
+    "s1_yuklu_omuz0": 2.03,
+    "s1_yuksuz_omuz90": 10.96,
+    "s1_yuklu_omuz90": 31.15
    },
    {
     "al": 15,
-    "dirsek_yuksuz": 0.42,
-    "dirsek_yuklu": 2.39,
-    "s1_yuksuz_omuz0": 0.3,
-    "s1_yuklu_omuz0": 2.21,
-    "s1_yuksuz_omuz90": 8.12,
-    "s1_yuklu_omuz90": 24.14
+    "dirsek_yuksuz": 0.65,
+    "dirsek_yuklu": 3.29,
+    "s1_yuksuz_omuz0": 0.53,
+    "s1_yuklu_omuz0": 3.11,
+    "s1_yuksuz_omuz90": 10.91,
+    "s1_yuklu_omuz90": 30.91
    },
    {
     "al": 20,
-    "dirsek_yuksuz": 0.54,
-    "dirsek_yuklu": 3.15,
-    "s1_yuksuz_omuz0": 0.43,
-    "s1_yuklu_omuz0": 2.97,
-    "s1_yuksuz_omuz90": 8.08,
-    "s1_yuklu_omuz90": 23.9
+    "dirsek_yuksuz": 0.85,
+    "dirsek_yuklu": 4.34,
+    "s1_yuksuz_omuz0": 0.73,
+    "s1_yuklu_omuz0": 4.15,
+    "s1_yuksuz_omuz90": 10.85,
+    "s1_yuklu_omuz90": 30.58
    },
    {
     "al": 25,
-    "dirsek_yuksuz": 0.67,
-    "dirsek_yuklu": 3.89,
-    "s1_yuksuz_omuz0": 0.55,
-    "s1_yuklu_omuz0": 3.71,
-    "s1_yuksuz_omuz90": 8.03,
-    "s1_yuklu_omuz90": 23.59
+    "dirsek_yuksuz": 1.05,
+    "dirsek_yuklu": 5.36,
+    "s1_yuksuz_omuz0": 0.92,
+    "s1_yuklu_omuz0": 5.17,
+    "s1_yuksuz_omuz90": 10.76,
+    "s1_yuklu_omuz90": 30.15
    },
    {
     "al": 30,
-    "dirsek_yuksuz": 0.79,
-    "dirsek_yuklu": 4.6,
-    "s1_yuksuz_omuz0": 0.67,
-    "s1_yuklu_omuz0": 4.42,
-    "s1_yuksuz_omuz90": 7.97,
-    "s1_yuklu_omuz90": 23.22
+    "dirsek_yuksuz": 1.23,
+    "dirsek_yuklu": 6.33,
+    "s1_yuksuz_omuz0": 1.11,
+    "s1_yuklu_omuz0": 6.15,
+    "s1_yuksuz_omuz90": 10.66,
+    "s1_yuklu_omuz90": 29.64
    },
    {
     "al": 35,
-    "dirsek_yuksuz": 0.9,
-    "dirsek_yuklu": 5.27,
-    "s1_yuksuz_omuz0": 0.78,
-    "s1_yuklu_omuz0": 5.09,
-    "s1_yuksuz_omuz90": 7.89,
-    "s1_yuklu_omuz90": 22.79
+    "dirsek_yuksuz": 1.41,
+    "dirsek_yuklu": 7.26,
+    "s1_yuksuz_omuz0": 1.29,
+    "s1_yuklu_omuz0": 7.07,
+    "s1_yuksuz_omuz90": 10.55,
+    "s1_yuklu_omuz90": 29.05
    },
    {
     "al": 40,
-    "dirsek_yuksuz": 1.0,
-    "dirsek_yuklu": 5.91,
-    "s1_yuksuz_omuz0": 0.89,
-    "s1_yuklu_omuz0": 5.73,
-    "s1_yuksuz_omuz90": 7.81,
-    "s1_yuklu_omuz90": 22.3
+    "dirsek_yuksuz": 1.58,
+    "dirsek_yuklu": 8.13,
+    "s1_yuksuz_omuz0": 1.45,
+    "s1_yuklu_omuz0": 7.95,
+    "s1_yuksuz_omuz90": 10.42,
+    "s1_yuklu_omuz90": 28.38
    },
    {
     "al": 45,
-    "dirsek_yuksuz": 1.1,
-    "dirsek_yuklu": 6.49,
-    "s1_yuksuz_omuz0": 0.98,
-    "s1_yuklu_omuz0": 6.31,
-    "s1_yuksuz_omuz90": 7.72,
-    "s1_yuklu_omuz90": 21.76
+    "dirsek_yuksuz": 1.73,
+    "dirsek_yuklu": 8.94,
+    "s1_yuksuz_omuz0": 1.61,
+    "s1_yuklu_omuz0": 8.76,
+    "s1_yuksuz_omuz90": 10.27,
+    "s1_yuklu_omuz90": 27.63
    },
    {
     "al": 50,
-    "dirsek_yuksuz": 1.19,
-    "dirsek_yuklu": 7.03,
-    "s1_yuksuz_omuz0": 1.07,
-    "s1_yuklu_omuz0": 6.85,
-    "s1_yuksuz_omuz90": 7.62,
-    "s1_yuklu_omuz90": 21.17
+    "dirsek_yuksuz": 1.87,
+    "dirsek_yuklu": 9.68,
+    "s1_yuksuz_omuz0": 1.75,
+    "s1_yuklu_omuz0": 9.5,
+    "s1_yuksuz_omuz90": 10.12,
+    "s1_yuklu_omuz90": 26.82
    },
    {
     "al": 55,
-    "dirsek_yuksuz": 1.27,
-    "dirsek_yuklu": 7.52,
-    "s1_yuksuz_omuz0": 1.15,
-    "s1_yuklu_omuz0": 7.34,
-    "s1_yuksuz_omuz90": 7.51,
-    "s1_yuklu_omuz90": 20.53
+    "dirsek_yuksuz": 2.0,
+    "dirsek_yuklu": 10.35,
+    "s1_yuksuz_omuz0": 1.88,
+    "s1_yuklu_omuz0": 10.17,
+    "s1_yuksuz_omuz90": 9.95,
+    "s1_yuklu_omuz90": 25.94
    },
    {
     "al": 60,
-    "dirsek_yuksuz": 1.34,
-    "dirsek_yuklu": 7.95,
-    "s1_yuksuz_omuz0": 1.23,
-    "s1_yuklu_omuz0": 7.77,
-    "s1_yuksuz_omuz90": 7.4,
-    "s1_yuklu_omuz90": 19.86
+    "dirsek_yuksuz": 2.11,
+    "dirsek_yuklu": 10.94,
+    "s1_yuksuz_omuz0": 1.99,
+    "s1_yuklu_omuz0": 10.76,
+    "s1_yuksuz_omuz90": 9.77,
+    "s1_yuklu_omuz90": 25.01
    },
    {
     "al": 65,
-    "dirsek_yuksuz": 1.4,
-    "dirsek_yuklu": 8.31,
-    "s1_yuksuz_omuz0": 1.29,
-    "s1_yuklu_omuz0": 8.13,
-    "s1_yuksuz_omuz90": 7.28,
-    "s1_yuklu_omuz90": 19.15
+    "dirsek_yuksuz": 2.21,
+    "dirsek_yuklu": 11.45,
+    "s1_yuksuz_omuz0": 2.08,
+    "s1_yuklu_omuz0": 11.26,
+    "s1_yuksuz_omuz90": 9.58,
+    "s1_yuklu_omuz90": 24.04
    },
    {
     "al": 70,
-    "dirsek_yuksuz": 1.45,
-    "dirsek_yuklu": 8.62,
-    "s1_yuksuz_omuz0": 1.34,
-    "s1_yuklu_omuz0": 8.44,
-    "s1_yuksuz_omuz90": 7.15,
-    "s1_yuklu_omuz90": 18.41
+    "dirsek_yuksuz": 2.29,
+    "dirsek_yuklu": 11.87,
+    "s1_yuksuz_omuz0": 2.16,
+    "s1_yuklu_omuz0": 11.68,
+    "s1_yuksuz_omuz90": 9.38,
+    "s1_yuklu_omuz90": 23.02
    },
    {
     "al": 75,
-    "dirsek_yuksuz": 1.49,
-    "dirsek_yuklu": 8.86,
-    "s1_yuksuz_omuz0": 1.37,
-    "s1_yuklu_omuz0": 8.68,
-    "s1_yuksuz_omuz90": 7.02,
-    "s1_yuklu_omuz90": 17.65
+    "dirsek_yuksuz": 2.35,
+    "dirsek_yuklu": 12.19,
+    "s1_yuksuz_omuz0": 2.22,
+    "s1_yuklu_omuz0": 12.01,
+    "s1_yuksuz_omuz90": 9.18,
+    "s1_yuklu_omuz90": 21.97
    },
    {
     "al": 80,
-    "dirsek_yuksuz": 1.52,
-    "dirsek_yuklu": 9.03,
-    "s1_yuksuz_omuz0": 1.4,
-    "s1_yuklu_omuz0": 8.85,
-    "s1_yuksuz_omuz90": 6.89,
-    "s1_yuklu_omuz90": 16.86
+    "dirsek_yuksuz": 2.39,
+    "dirsek_yuklu": 12.43,
+    "s1_yuksuz_omuz0": 2.27,
+    "s1_yuklu_omuz0": 12.25,
+    "s1_yuksuz_omuz90": 8.97,
+    "s1_yuklu_omuz90": 20.89
    },
    {
     "al": 85,
-    "dirsek_yuksuz": 1.54,
-    "dirsek_yuklu": 9.13,
-    "s1_yuksuz_omuz0": 1.42,
-    "s1_yuklu_omuz0": 8.95,
-    "s1_yuksuz_omuz90": 6.76,
-    "s1_yuklu_omuz90": 16.07
+    "dirsek_yuksuz": 2.42,
+    "dirsek_yuklu": 12.57,
+    "s1_yuksuz_omuz0": 2.29,
+    "s1_yuklu_omuz0": 12.39,
+    "s1_yuksuz_omuz90": 8.76,
+    "s1_yuklu_omuz90": 19.8
    },
    {
     "al": 90,
-    "dirsek_yuksuz": 1.54,
-    "dirsek_yuklu": 9.16,
-    "s1_yuksuz_omuz0": 1.42,
-    "s1_yuklu_omuz0": 8.99,
-    "s1_yuksuz_omuz90": 6.62,
-    "s1_yuklu_omuz90": 15.27
+    "dirsek_yuksuz": 2.42,
+    "dirsek_yuklu": 12.62,
+    "s1_yuksuz_omuz0": 2.3,
+    "s1_yuklu_omuz0": 12.43,
+    "s1_yuksuz_omuz90": 8.55,
+    "s1_yuklu_omuz90": 18.7
    },
    {
     "al": 95,
-    "dirsek_yuksuz": 1.53,
-    "dirsek_yuklu": 9.13,
-    "s1_yuksuz_omuz0": 1.42,
-    "s1_yuklu_omuz0": 8.95,
-    "s1_yuksuz_omuz90": 6.49,
-    "s1_yuklu_omuz90": 14.47
+    "dirsek_yuksuz": 2.41,
+    "dirsek_yuklu": 12.57,
+    "s1_yuksuz_omuz0": 2.29,
+    "s1_yuklu_omuz0": 12.38,
+    "s1_yuksuz_omuz90": 8.34,
+    "s1_yuklu_omuz90": 17.6
    },
    {
     "al": 100,
-    "dirsek_yuksuz": 1.51,
-    "dirsek_yuklu": 9.02,
-    "s1_yuksuz_omuz0": 1.4,
-    "s1_yuklu_omuz0": 8.84,
-    "s1_yuksuz_omuz90": 6.36,
-    "s1_yuklu_omuz90": 13.68
+    "dirsek_yuksuz": 2.38,
+    "dirsek_yuklu": 12.42,
+    "s1_yuksuz_omuz0": 2.26,
+    "s1_yuklu_omuz0": 12.24,
+    "s1_yuksuz_omuz90": 8.13,
+    "s1_yuklu_omuz90": 16.51
    },
    {
     "al": 105,
-    "dirsek_yuksuz": 1.48,
-    "dirsek_yuklu": 8.85,
-    "s1_yuksuz_omuz0": 1.37,
-    "s1_yuklu_omuz0": 8.67,
-    "s1_yuksuz_omuz90": 6.22,
-    "s1_yuklu_omuz90": 12.9
+    "dirsek_yuksuz": 2.33,
+    "dirsek_yuklu": 12.18,
+    "s1_yuksuz_omuz0": 2.21,
+    "s1_yuklu_omuz0": 12.0,
+    "s1_yuksuz_omuz90": 7.93,
+    "s1_yuklu_omuz90": 15.44
    }
   ],
   "grup": {
    "UstKol": {
-    "m": 103.5,
+    "m": 110.7,
     "am": [
-     188.053,
-     -143.646,
-     -3.93
+     190.556,
+     -174.728,
+     -3.757
     ]
    },
    "OnKol": {
-    "m": 188.9,
+    "m": 200.1,
     "am": [
-     192.899,
-     -207.545,
-     -0.488
+     193.025,
+     -252.676,
+     -0.178
     ]
    },
    "El": {
-    "m": 75.0,
+    "m": 89.0,
     "am": [
-     182.345,
-     -291.305,
-     -0.716
+     182.762,
+     -363.621,
+     -0.8
     ]
    },
    "omuz_Gobek": {
     "m": 175.2,
     "am": [
      174.119,
-     8.018,
+     8.019,
      -2.44
     ]
    },
    "omuz_Kol": {
-    "m": 146.9,
+    "m": 159.0,
     "am": [
      185.0,
-     -49.62,
-     -0.047
+     -57.623,
+     -0.138
     ]
    }
   }
@@ -8701,23 +8780,23 @@
   {
    "ad": "Dirsek catali",
    "olcu": [
+    73.9,
     72.0,
-    70.9,
     74.0
    ],
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.037,
-   "cikinti_alan_cm2": 11.53,
-   "yuzey_cm2": 311.6,
+   "cikinti_orani": 0.0379,
+   "cikinti_alan_cm2": 12.08,
+   "yuzey_cm2": 318.7,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 86.1,
-   "kutle_g": 87.5,
-   "filament_g": 91.9,
-   "sure_saat": 1.91,
+   "hacim_cm3": 91.3,
+   "kutle_g": 92.8,
+   "filament_g": 97.4,
+   "sure_saat": 2.03,
    "katman": 73,
    "yon": "ters: pim ve bilezik ucu tablada, kollar yukari",
    "grup": "UstKol"
@@ -8725,23 +8804,23 @@
   {
    "ad": "On kol govdesi",
    "olcu": [
-    101.1,
-    63.1,
+    129.6,
+    128.9,
     33.5
    ],
-   "tabla_aci": 0,
+   "tabla_aci": 51,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0075,
+   "cikinti_orani": 0.0057,
    "cikinti_alan_cm2": 1.81,
-   "yuzey_cm2": 240.0,
+   "yuzey_cm2": 315.3,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 41.5,
-   "kutle_g": 42.2,
-   "filament_g": 44.3,
-   "sure_saat": 0.92,
+   "hacim_cm3": 52.5,
+   "kutle_g": 53.4,
+   "filament_g": 56.0,
+   "sure_saat": 1.17,
    "katman": 33,
    "yon": "on yuzu tablada, acik arka yukari",
    "grup": "OnKol"
@@ -8775,22 +8854,22 @@
    "olcu": [
     56.2,
     56.2,
-    65.6
+    84.6
    ],
    "tabla_aci": 39,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0014,
-   "cikinti_alan_cm2": 0.2,
-   "yuzey_cm2": 138.0,
+   "cikinti_orani": 0.0091,
+   "cikinti_alan_cm2": 1.56,
+   "yuzey_cm2": 171.3,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 59.9,
-   "kutle_g": 60.8,
-   "filament_g": 63.9,
-   "sure_saat": 1.33,
-   "katman": 65,
+   "hacim_cm3": 73.6,
+   "kutle_g": 74.8,
+   "filament_g": 78.5,
+   "sure_saat": 1.64,
+   "katman": 84,
    "yon": "ters: parmak ucu ve avuc alti tablada, yaka yukari",
    "grup": "El"
   }
@@ -8832,40 +8911,46 @@
    246.0
   ]
  },
- "kutle_g": 367.4,
+ "kutle_g": 399.7,
  "kutle_grup": {
-  "UstKol": 103.5,
-  "OnKol": 188.9,
-  "El": 75.0
+  "UstKol": 110.7,
+  "OnKol": 200.1,
+  "El": 89.0
  },
  "am_grup": {
   "UstKol": [
-   188.05,
-   -143.65,
-   -3.93
+   190.56,
+   -174.73,
+   -3.76
   ],
   "OnKol": [
-   192.9,
-   -207.54,
-   -0.49
+   193.02,
+   -252.68,
+   -0.18
   ],
   "El": [
-   182.34,
-   -291.3,
-   -0.72
+   182.76,
+   -363.62,
+   -0.8
   ]
  },
  "kutle_tur": {
-  "Baski": 194.5,
-  "Baglanti": 51.0,
+  "Baski": 225.0,
+  "Baglanti": 52.9,
   "Satin": 121.9
  },
  "agirlik_merkezi": [
-  189.38,
-  -206.633,
-  -1.504
+  190.057,
+  -255.79,
+  -1.307
  ],
  "bom": [
+  [
+   "Baglanti",
+   "2 x DIN 125-A M3 (3,2 x 7 x 0,5)",
+   4,
+   1.0
+  ],
   [
    "Baglanti",
    "M3 DIN 125 pul",
@@ -8883,6 +8968,12 @@
    "M3 isil gomme somun",
    2,
    0.5
+  ],
+  [
+   "Baglanti",
+   "M3x12 DIN 912",
+   4,
+   4.6
   ],
   [
    "Baglanti",
@@ -8905,8 +8996,8 @@
   [
    "Baglanti",
    "M3x8 DIN 912",
-   8,
-   7.4
+   4,
+   3.7
   ],
   [
    "Baglanti",
@@ -8948,19 +9039,19 @@
    "Baski",
    "Dirsek catali",
    1,
-   87.5
+   92.8
   ],
   [
    "Baski",
    "El",
    1,
-   60.8
+   74.8
   ],
   [
    "Baski",
    "On kol govdesi",
    1,
-   42.2
+   53.4
   ],
   [
    "Satin",
@@ -8981,27 +9072,39 @@
    110.0
   ]
  ],
- "step_kati": 53,
+ "step_kati": 57,
  "joints_ok": true,
  "arayuz": {
   "bagli": "omuz:Kol",
   "tup_x": 185.0,
   "tup_z": -1.25,
-  "tup_uc_y": -140.0,
+  "tup_uc_y": -170.0,
   "tup_ro": 28.0,
+  "tup_uzama": 30.0,
+  "on_kol_uzama": 32.4,
+  "el_uzama": 19.0,
+  "catal_dis_kol": 8.0,
+  "horn_civata": [
+   3,
+   12
+  ],
+  "horn_pul": [
+   2,
+   0.5
+  ],
   "tup_ri": 25.65,
   "bilezik_ri": 28.25,
   "bilezik_yarik": 4.0,
   "bilezik_on_yuk_min": 0.1,
-  "eksen_y": -173.0,
+  "eksen_y": -203.0,
   "eksen_z": -1.25,
   "eksen_x": [
    156.0,
-   224.9
+   227.9
   ],
   "eksen_nokta": [
    216.6,
-   -173.0,
+   -203.0,
    -1.25
   ],
   "eksen_yon": [
@@ -9018,7 +9121,7 @@
   "bilek_z": -1.25,
   "bilek_nokta": [
    185.0,
-   -256.1,
+   -318.5,
    -1.25
   ],
   "bilek_yon": [
@@ -9032,11 +9135,11 @@
   ],
   "el_ucu": [
    185.0,
-   -325.5,
+   -406.9,
    -1.25
   ],
   "yuk_g": 500.0,
   "kaynak": "dirsek/dirsek_parcalar.py"
  },
- "sure_s": 526.4
+ "sure_s": 246.9
 }

@@ -131,24 +131,27 @@ kesim = sorted([(float(p["kod"].split(",")[1].split()[0]), p["ad"]) for p in sig
 # STOK_TOL tahmini (Robolink "1 metre" kesim toleransi dogrulanmadi; siparis oncesi satici teyit etmeli). Orta ara ray 3. cubuga alindi.
 STOK_TOL = 2.0         # mm: cubuk nominalden bu kadar kisa gelebilir (tahmini)
 MIN_ARTIK = 10.0       # mm: her cubukta testere + tolerans sonrasi en az kalmasi gereken artik
+# 1,65 m (Y2a, 26 Ekim 2026): govde diregi TEK PARCA (1650: 1.185,5 mm), 2 m stok boydan (Duffy, 25/29 Ekim 2026; ek yeri yok). Ayni 2 m cubuktan
+# sol uzun ray + on ara ray da cikar; 2. cubuk (1 m) sag uzun ray + travers + arka ara ray; orta ara ray 3. cubuktan (1 m; artik yedek).
+# Toplam 2.955,5 mm (1650): 2 m + 1 m (2.996 - 7 x 3 testere) yetmez.
 KESIM_PLANI = [
-    ["Govde diregi"],
-    ["Sase uzun rayi sol", "Omuz traversi", "Sase ara rayi on"],
-    ["Sase uzun rayi sag", "Sase ara rayi arka", "Sase ara rayi orta"],
+    (A.DIREK_STOK, ["Govde diregi", "Sase uzun rayi sol", "Sase ara rayi on"]),
+    (A.STOK_BOY, ["Sase uzun rayi sag", "Omuz traversi", "Sase ara rayi arka"]),
+    (A.STOK_BOY, ["Sase ara rayi orta"]),
 ]
 boy = {ad: L for L, ad in kesim}
-assert sorted(ad for c in KESIM_PLANI for ad in c) == sorted(boy), "kesim plani tum sigma parcalarini bir kez icermeli"
+assert sorted(ad for _, c in KESIM_PLANI for ad in c) == sorted(boy), "kesim plani tum sigma parcalarini bir kez icermeli"
 cubuklar = []
-for plan in KESIM_PLANI:
-    kalan = A.STOK_BOY - STOK_TOL
+for stok, plan in KESIM_PLANI:
+    kalan = stok - STOK_TOL
     for ad in plan:
         kalan -= boy[ad] + A.TESTERE
-    cubuklar.append(dict(parcalar=[(boy[ad], ad) for ad in plan], kalan=kalan, kalan_nominal=kalan + STOK_TOL,
+    cubuklar.append(dict(stok=stok, parcalar=[(boy[ad], ad) for ad in plan], kalan=kalan, kalan_nominal=kalan + STOK_TOL,
                          kesim_sayisi=len(plan)))
 kesim_hata = ["cubuk %d artik %.1f < %.1f" % (i + 1, c["kalan"], MIN_ARTIK) for i, c in enumerate(cubuklar) if c["kalan"] < MIN_ARTIK]
 toplam_boy = sum(L for L, _ in kesim)
-print("kutle %.1f g, AM (%.1f, %.1f, %.1f), sigma %.1f mm -> %d x %d mm cubuk (artik %s), kesim hatasi %s" %
-      (M, CG.x, CG.y, CG.z, toplam_boy, len(cubuklar), A.STOK_BOY, [round(c["kalan"], 1) for c in cubuklar], kesim_hata))
+print("kutle %.1f g, AM (%.1f, %.1f, %.1f), sigma %.1f mm -> cubuklar %s mm (artik %s), kesim hatasi %s" %
+      (M, CG.x, CG.y, CG.z, toplam_boy, [c["stok"] for c in cubuklar], [round(c["kalan"], 1) for c in cubuklar], kesim_hata))
 
 # ====================================================================== 5) egilme: direk + travers
 import omuz_parcalar as O          # sag omuzun parcalari ve kinematigi (yerel koordinat)
@@ -343,7 +346,7 @@ out = dict(
     agirlik_merkezi=[round(CG.x, 2), round(CG.y, 2), round(CG.z, 2)],
     kesim=dict(parcalar=[[L, ad] for L, ad in kesim], toplam_mm=toplam_boy, stok_mm=A.STOK_BOY, testere_mm=A.TESTERE,
                stok_tolerans_mm=STOK_TOL, min_artik_mm=MIN_ARTIK, kesim_hatasi=kesim_hata,
-               cubuklar=[dict(parcalar=c["parcalar"], artik=round(c["kalan"], 1), artik_nominal=round(c["kalan_nominal"], 1),
+               cubuklar=[dict(stok_mm=c["stok"], parcalar=c["parcalar"], artik=round(c["kalan"], 1), artik_nominal=round(c["kalan_nominal"], 1),
                               kesim_sayisi=c["kesim_sayisi"]) for c in cubuklar],
                kutle_uretici_g=round(toplam_boy / 1000 * A.SG_KG_M * 1000, 0),
                kutle_model_g=round(sum(p["kutle"] for p in sigma), 1)),
