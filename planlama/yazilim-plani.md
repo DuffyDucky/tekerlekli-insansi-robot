@@ -58,8 +58,8 @@ Teslim tarihi 1–2 hafta oynayabilir (Duffy, 11 Ekim 2026).
   BTS EN = 0 ve PWM = 0, açık komut (Nextion düğmesi ya da Pi `arm`). Sonra: K2 (GPIO2) = 1 → 300 ms → PC817 #2 LOW teyidi → K1 (GPIO12) = 1
   → 100 ms → K2 = 0. PC817 #1 HIGH görülünce GPIO12 hemen 0 ve kilit. K2 en çok 1 s açık kalır.
 - **Yay çizerek dönüş (K1).** Kare teker düzeninde yerinde dönüş motorları zorlar (E0). Sürüş yazılımı her durumda yay çizerek döner
-  (`w` sınırı hıza bağlı); yerinde dönüş yalnız JGB37 ölçümü ve omni kararından sonra, sınırlı açısal hızla açılır. İvme ≤ 0,5 m/s²,
-  rampada ≤ 0,25 m/s² (Y1).
+  (`w` sınırı hıza bağlı); yerinde dönüş yalnız JGB37 ölçümü ve omni kararından sonra, sınırlı açısal hızla açılır. İvme düz zeminde ≤ 0,5 m/s²,
+  rampada / eğimde ≤ 0,1 m/s² ve kollar ev pozunda (Y1; karar 29 Ekim 2026, akü yerinde: `planlama/kararlar-2026-10-29.md`).
 - **Pi kafada (K4).** Besleme Pololu 5 V (PD yok): EEPROM `PSU_MAX_CURRENT=5000`, `config.txt` `usb_max_current_enable=1`
   (Y0 kurulum adımı). ESP32 kafadaki Pi'ye tek USB kablosuyla bağlı; HDMI ve CSI boyundan geçmez.
 - **Sonar trig PCA9685'ten** (kanal 10–12, I2C ile ≥ 10 µs darbe); echo GPIO39/34/35. Akü ADC'si tek seferlik multimetre kalibrasyonu ister.
@@ -72,7 +72,7 @@ Eklem sınırları ve yasak bölge **tek kaynaktan** gelir: `kod/ortak/eklem_sin
 | # | Paket | İçerik | Bağımlı | Kabul testi | Saat | Hafta |
 |---|---|---|---|---|---|---|
 | Y0 | Altyapı | `kod/` deposu (esp32/, pi/, ortak/, araclar/), Pi OS + SSH (Pi 5 güç ayarları), PlatformIO, protokol belgesi, `eklem_sinirlari.json`, seri port DTR/RTS kapalı açılış | — | Pi ile ESP32 `hb`/`st` alışverişi yapıyor | 6–8 | 3–4 |
-| Y1 | Tahrik | BTS7960 PWM, enkoder (yan başına bir), yan başına PID, ivme rampası (düz zeminde ≤ 0,5, rampada ≤ 0,25 m/s²), yay çizerek dönüş, watchdog | Masa düzeneği | Tekerlek havadayken hedef hızın ±%10'unda, kablo çekilince 500 ms içinde duruyor | 15–20 | 4–6 |
+| Y1 | Tahrik | BTS7960 PWM, enkoder (yan başına bir), yan başına PID, ivme rampası (düz zeminde ≤ 0,5, rampada ≤ 0,1 m/s² + kollar ev pozunda; 29.10), yay çizerek dönüş, watchdog | Masa düzeneği | Tekerlek havadayken hedef hızın ±%10'unda, kablo çekilince 500 ms içinde duruyor | 15–20 | 4–6 |
 | Y2 | Servo | PCA9685, servo başına kalibrasyon (sıfır kayması, sol kolda işaret tersliği), hız sınırlı yumuşak geçiş, sınırlar, yasak bölge, açılışta servoları sırayla güçlendirme | Masa düzeneği, Y0 | Sınır dışı komut kırpılıyor, yasak bölge reddediliyor, açılışta sıçrama yok | 12–16 | 5–7 |
 | Y3 | Güvenlik ve sensör | Acil stop algılama (PC817) → ACİL durumu, "devreye al" dizisi (K1 + ön şarj K2), ESP32 reset durumu, sonarla yavaşlama ve durma, BNO055 eğim alarmı, akü gerilim uyarısı | Y1 | 30 cm'de engel olunca duruyor, 15° eğimde alarm veriyor, düşük gerilimde uyarıyor | 10–12 | 7–8 |
 | Y4 | Teleop | Bluetooth gamepad ile sürüş ve hazır jest tuşları, ölü adam tuşu (bırakınca durur) | Y1 | Pi kapalıyken kumandayla sürülüyor | 6–8 | 6–7 |
@@ -123,5 +123,5 @@ dirençleri 3. adımın direnç setinde. Fuar / demo için mobil erişim noktas�
 |---|---|
 | Göğüs ekranı: **karar verildi (K2, 14 Ekim 2026): Nextion NX1060P101** | Arayüz Nextion Editor'da çizilir; ESP32 UART2 ile sürülür, Pi komutları ESP32 üzerinden gider (K4 sonrası boyundan ayrı sinyal geçmez). Waveshare ve ikinci HDMI düştü. |
 | Bulut sağlayıcıları (STT / LLM / TTS) ve API anahtarlarını kimin hesabı taşıyacak | Y5 başlamadan seçilmeli; aylık ≈ 10–20 $ (tahmini) |
-| Rampada motor torku %90 | Yazılımda ivme ≤ 0,25 m/s² ile çözülüyor (Y1). Daha güçlü motor alınırsa sınır gevşer. |
+| Rampada motor torku ve devrilme (1,65 m, akü yerinde) | **Karar 29 Ekim 2026:** rampada ivme ≤ 0,1 m/s² (motor sürekli torkunun ≈ %78'i) ve kollar ev pozunda (devrilme payı 1,58). Düzde ≤ 0,5 m/s² (devrilme sınırı ≈ 2,0 m/s², `planlama/y2/Y2b-ivme.json`). Daha güçlü motor alınırsa rampa sınırı yeniden hesaplanır. |
 | Sol kol servo işareti (tahmini: ters) | Y2'de montajdan sonra her servo tek tek doğrulanır |

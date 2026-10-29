@@ -1,8 +1,8 @@
-# Y2a — 1,70 m taslağını ana tasarıma taşıma (CAD tasarım ajanı günlüğü)
+# Y2a — 1,65 m taslağını ana tasarıma taşıma (CAD tasarım ajanı günlüğü)
 
-Görev (orkestratör, 26 Ekim 2026): `tasarim/freecad/taslak-170/` varyantındaki 1,70 m geometrisini modüllere (`arayuz.py`, `iskelet/
+Görev (orkestratör, 26 Ekim 2026; 29 Ekim'de boy 1,65 m oldu): `tasarim/freecad/taslak-170/` varyantındaki 1,70 m geometrisini modüllere (`arayuz.py`, `iskelet/
 kabuk/ omuz/ dirsek/ kafa/ taban/`) ve ana montaja (`montaj/`) işlemek; ek kararlar: göğüs Nextion kaldırılır, taban 520 + akü 75 mm öne,
-gövde direği 1.235,5 mm tek parça 2 m stoktan, S1 kaseti KZ1 / KZ2 + `S1-kaset.md` belge düzeltmeleri. Commit/push yok.
+gövde direği 1.235,5 mm (1,65 m'de **1.185,5 mm**) tek parça 2 m stoktan, S1 kaseti KZ1 / KZ2 + `S1-kaset.md` belge düzeltmeleri. Commit/push yok.
 Bu dosya kesintide kaldığı yerden devam için: her alt iş bitince buraya yazılır. **Önce bu günlüğü oku, yapılanı tekrarlama.**
 
 ## Plan (sıra)
@@ -60,7 +60,8 @@ Bu dosya kesintide kaldığı yerden devam için: her alt iş bitince buraya yaz
   Önceki ajan 29 Ekim 01:54–02:07'de iskelet, omuz, kabuk'u **1650 ile yeniden koşmuş** ama günlüğe yazamamış; çıktılar okundu:
   - iskelet (01:54): 59 parça, çakışma 0, bağlantı 12/12, bölge 0 ihlal (55 bölge), **6.548,1 g**, AM (0; 443,12; 0); kesim planı 2 m
     (direk 1.185,5 + sol uzun 500 + ön ara 190, artık 113,5) + 1 m (sağ uzun + travers + arka ara, 99) + 1 m (orta ara, 805);
-    direk σ 0,93 MPa / sehim 0,336 mm (emniyet 118,8; omuz ALT_KOL tahmini, Y4'te gerçek kol kütlesiyle).
+    direk σ en kötü 0,93 MPa (o pozda sehim 0,336 mm; emniyet 118,8), **en büyük tepe sehimi 0,370 mm** (ızgara, iki kol S1 90 / S2 5;
+    adlı poz "iki kol öne + 0,5 kg" 0,371) — `iskelet-analiz.json` `egilme.en_kotu`; Y2b düzeltmesi (omuz ALT_KOL tahmini, Y4'te gerçek kol kütlesiyle).
   - omuz (01:55): 75 parça, S2 5 statik 0 (S2 0'da tambur ↔ çatal/tüp, aralık dışı, bilinen), M6 pay 1,7 / 0,8, kütle Gövde 625,7 /
     Göbek 175,2 / Kol 159,0 g.
   - kabuk (02:07): 291 parça (25 baskı), kabuk içi çakışma 0, iskelet 0, bölge 0 ihlal (49), braket 14/14, M6 22/22 (pay 1,1 / 0,8),

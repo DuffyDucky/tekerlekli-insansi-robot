@@ -681,7 +681,9 @@ def eklem_sinirlari():
         eklemler=dict(taraf,
                       pan=j("kafa pan", KAFA["pan_aralik"], KAFA["servo"], "MG996R 180 derece; kablo halkasi +-90"),
                       tilt=j("kafa tilt", KAFA["tilt_aralik"], KAFA["servo"], "yazilim siniri (karar 29 Ekim 2026, Y2a KZ3: +-15 -> +-13; ilk cakisma +18 / -17, planlama/y2/Y2a-kontrol.md); serbest aralik kafa/kafa-analiz.json")),
-        teker=dict(sinirsiz=True, not_="hiz / ivme siniri yazilimda (rampada <= 0,25 m/s2 onerilir)"),
+        teker=dict(sinirsiz=True, not_=("hiz / ivme siniri yazilimda: duz zeminde <= 0,5 m/s2 (motor surekli torkunun ~%50'si; devrilme payi >= 1,5 "
+                                        "icin sinir ~2,0 m/s2, el yuku <= 100 g, planlama/y2/Y2b-ivme.json); rampada / egimde <= 0,1 m/s2 ve kollar "
+                                        "ev pozunda (karar 29 Ekim 2026, Y2a KZ1; aku yerinde). Acil stop freni 1,5 m/s2 varsayimiyla duzde pay >= 1,85")),
         bagimli=[dict(ad="S1 kaseti: S2 lopu <-> kaset kapagi flansi", taraf=t, kosul={"%s_s1" % t: [_K["s1_min"], OMUZ["one_arka_aralik"][1]]},
                       sinir={"%s_s2" % t: [OMUZ["yana_aralik"][0], _K["s2_max"]]},
                       neden="S1 >= %g iken S2 <= %g: S2 lopu (dirsek/bilek kablolari) S2 120'de kaset kapagi flansina yaklasir "

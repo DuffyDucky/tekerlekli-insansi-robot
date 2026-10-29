@@ -5,6 +5,28 @@ Tarih: 15 Ekim 2026. Tek yer: bu dosya. CAD karşılığı `tasarim/freecad/taba
 Pin planı E5'in başlangıcıdır, kesin değildir. Akü süreleri E8'in (5. adım) işi, burada yalnız anlık akımlar var.
 T2 takip düzeltmesi (15 Ekim 2026, bağımsız kontrol `K3-kontrol.md`): JGB37 tork uyarısı, ESP32 beslemesi ifadesi, DTR/RTS, ön şarj, PC817 3,3 V, Pololu akımı, kafa ısısı (`T2-takip.md`).
 
+## 1,65 m güncellemesi (Y2b, 29 Ekim 2026)
+
+Bu dosyanın gövdesi 125 cm tasarım (15 Ekim) içindir; Nextion satırları yerinde [ESKİ] işaretlendi. 1,65 m ana tasarımda değişen ve
+geçerli kalanlar aşağıda. Kaynak: `tasarim/freecad/taban/taban-analiz.json` (Y2a, robot 24,80 kg), `planlama/y2/Y2b-aku.py` →
+`Y2b-aku.json` (E8 yeniden), `planlama/y2/Y2b-ivme.json`, `planlama/kararlar-2026-10-29.md`. Yeni yük değerleri tahmini.
+
+| Konu | 125 cm (bu dosyanın gövdesi) | 1,65 m (geçerli) |
+|---|---|---|
+| Akü | Victron SuperPack 12,8/20, taban arka bölmesi | **Aynı yerde** (75 mm öne geometrik olarak olmadı). Karar 29.10: rampada / eğimde kollar ev pozunda ve taban ivmesi ≤ 0,1 m/s²; düzde ≤ 0,5 m/s² (devrilme sınırı ≈ 2,0 m/s², `Y2b-ivme.json`) |
+| Acil stop, devreye alma (E3, E9) | K1 40 A (GPIO12, IRLZ44N #1), K2 7 A + 5,6 Ω ön şarj (GPIO2, IRLZ44N #2), PC817 #1 mantar sonrası (GPIO23), #2 anahtarlı bara (GPIO5), F5 2 A | **Değişmedi.** Devreye alma komutu Pi'den (telefon kumandası; Nextion yok). CAD'de güç panelinde K1 + soket ve ana sigorta var; K2 ve ön şarj direnci CAD'de yok (M6 CAD, Y3). Pin tablosundaki "GPIO2 boş" çelişkisi Y2b'de düzeltildi |
+| Göğüs Nextion | UART2 (GPIO16/17), çevre 5 V'tan 0,8 A | **Yok** (25 Ekim). GPIO16/17 boş, F4 yükü −0,8 A |
+| Yüz ekranı | 7" LCD, 2,5 W | 10,1" HDMI (hoca verecek; CAD'de Waveshare 10.1" (B)), 5 V ≈ 0,75 A (≈ 3,75 W, tahmini), Pi USB-A'dan |
+| Mikrofon | ReSpeaker Lite, 0,5 W | XVF3800 USB dizi (Efe, 26 Ekim): akımı belgesiz, ~1 W varsayıldı → ölçülecek |
+| Kafa 5 V tepe | 18,7 W → 3,7 A | ≈ 20,5 W → **4,1 A** (12 V'tan ≈ 1,8 A; F3 5 A yeter). Pololu D36V50F5'in 12 V'taki sürekli akımı (açık iş 8) daha önemli hâle geldi |
+| Omuz servoları (E1) | DS3218MG; hat yoğun 4,4 / 4,7 A | **DS3235** (durma 2,1 A @6 V datasheet; tasarımda 3,0 A ihtiyatlı). Kol ×1,25 ile hat yoğun ≈ **5,4 A**, tepe 7,8 A (taslak kol analizi) → XL4016'nın sürekli 5 A önerisinin üstünde: **hat akımı ölçülmeli**; yetmezse o hat için 20 A düşürücü. Hat sigortası (giriş 7,8 A × 6 / 0,88 / 12,8 ≈ 4,2 A) 7,5 A'de kalır |
+| Servo uzatmaları | ~1,3 m | dirsek / bilek 1,93 m, S2 ≈ 1,77 m (`dirsek-analiz.json` `kablo.s1_boy`); durma akımında 2 × 1,93 × 0,052 × 2,5 A ≈ 0,50 V düşüm (servo ≈ 5,5 V görür; tahmini) |
+| ESP32 – Pi USB | 1,25 m | ≈ 1,64 m → **2 m** kablo (`maliyet.json`) |
+| Kafa 12 V (18 AWG çift) | boyundan | +0,385 m; 1,8 A'de ek düşüm < 0,03 V (ihmal) |
+| Taban, dönüş (E0) | 21,73 kg, iz 356 (x ±178) | 24,80 kg, AM (−0,2; 521,3; −13,2), iz 432 (x ±216). Yerinde dönüş μ 0,5: en yüklü motor 15,7 kg·cm = sürekli ×2,49, 2,12 A; ön omniyle ×0,47. Karar aynı: önce ölç, μ ≥ 0,4 → ön omni |
+| Akü süreleri (E8) | Victron boşta / normal / yoğun 10,9 / 5,7 / 2,0 sa | **12,2 / 5,9 / 1,8 sa** (akü tarafı 17,0 / 34,9 / 113,4 W; yoğun omniyle 2,1; ders 5,8, fuar 5,1 sa → 8 saatlik fuar için öğle şarjı ya da ikinci akü, değişmedi) |
+| Yedek GPIO | GPIO2 (E9 ile K2'ye gitti) | GPIO16 / 17 |
+
 ## Özet: ne değişti
 
 | Konu | Önce | Sonra |
@@ -86,7 +108,7 @@ Ana montaj yükleyicisi (`montaj/moduller.py`) teker gruplarını "Teker 125 x 5
 
 | Hat | Servolar | Bekleme | Jest anı | Yoğun (kol uzanmış tutuyor + hareket) | Gerçekçi tepe (≤ 100 ms) | Teorik (hepsi durma) |
 |---|---|---|---|---|---|---|
-| **A**: sağ kol + pan | S1, S2 (DS3218MG), dirsek, bilek, pan (MG996R) | 0,3 A | 2,8 A | **4,4 A** | 7,7 A | 12,7 A |
+| **A**: sağ kol + pan | S1, S2 (DS3218MG; 1,65 m'de DS3235, Y2b bölümü), dirsek, bilek, pan (MG996R) | 0,3 A | 2,8 A | **4,4 A** | 7,7 A | 12,7 A |
 | **B**: sol kol + tilt | S1, S2, dirsek, bilek, tilt | 0,4 A | 2,9 A | **4,7 A** | 7,7 A | 12,7 A |
 
 Servo başına varsayım (tahmini): jestte S1 0,8, S2 0,6, dirsek 0,6, bilek 0,4, pan 0,4, tilt 0,5 A; yoğunda 1,5 / 0,9 / 0,9 / 0,5 / 0,6 / 0,9 A;
@@ -112,7 +134,7 @@ kalkış anı 2,5 A (MG996R durma 2,5 A @6 V, DS3218MG 2,6 A @6,8 V; `06-aku-sec
 | PCA9685 mantık | VCC ← ESP32 3V3 (I2C pull-up'lar 3,3 V'a); OE → GND | Servo gücü V+'tan değil, dağıtım kartından |
 | BNO055 | VIN ← 3V3 | Adafruit kartı 3–5 V kabul eder |
 | JGB37 enkoder | VCC ← 3V3 (Hall çıkışı 3,3 V) | 5 V gerekirse çıkışa 4,7k/10k bölücü (ölç) |
-| Nextion TX (3,0–5,0 V) | 1 kΩ / 2 kΩ bölücü → GPIO16 | `donanim/datasheet/README.md` |
+| ~~Nextion TX (3,0–5,0 V)~~ | **[ESKİ, Y2b: göğüs Nextion kaldırıldı (25 Ekim 2026); bölücü yok, GPIO16/17 boş]** | — |
 
 **PC817 modülü 3,3 V'ta (K3 notu):** modülün giriş tarafı 3,6–24 V (12 V için uygun), ama çıkış tarafı da satıcı sayfasında "3,6–30 V" ve jumper'la yüksek/düşük seçiliyor; ESP32 tarafı 3,3 V nominalin altında.
 Montajda: çıkışı açık kolektör gibi kullan (modülün çıkış besleme ucu 3V3'e ya da boş, sinyal ESP32 GPIO'suna dahili pull-up ile), girişe 12 V verip kesip multimetreyle 3,3 V tarafında LOW < 0,4 V ve HIGH > 2,5 V gör.
@@ -128,7 +150,7 @@ F5 2 A ─── mantar NC ───┬─── röle K1 bobini (+) ── bobi
 K1 kontağı (40 A): F1 20 A ──> anahtarlı 12 V bara ──> BTS7960 sol/sağ, XL4016 A, XL4016 B  (PC817 #2 bu barayı okur)
 ```
 
-- Röle yalnız **mantar serbest ve ESP32 "devreye al" (GPIO12 = 1)** iken çeker. Mantar bırakılınca hiçbir şey olmaz; güç ancak operatör komutuyla gelir (Nextion "Devreye al" ya da Pi komutu).
+- Röle yalnız **mantar serbest ve ESP32 "devreye al" (GPIO12 = 1)** iken çeker. Mantar bırakılınca hiçbir şey olmaz; güç ancak operatör komutuyla gelir (Pi komutu: telefon kumandası; Nextion "Devreye al" düğmesi Y2b ile kalktı).
 - Yazılım kuralı (ESP32): PC817 #1 HIGH görünce GPIO12'yi hemen 0 yap ve kilitle. Yeniden devreye almadan önce:
   (1) mantar serbest, (2) PCA9685 çıkışları servoların **son bilinen konumuna** yazılmış, (3) BTS EN = 0 ve PWM = 0, (4) açık komut. Sonra GPIO12 = 1.
   PC817 #2 500 ms içinde LOW olmazsa hata ver.
@@ -146,7 +168,7 @@ K1 kontağı (40 A): F1 20 A ──> anahtarlı 12 V bara ──> BTS7960 sol/sa
 
 ## E4: Pi 5 beslemesi (K4: Pi kafada)
 
-- **Boyundan:** 12 V çift (18 AWG, F3 5 A) + ESP32 USB (veri; 1,25 m) + tilt servo (3 tel). HDMI ve CSI boyundan çıktı (`kafa-analiz.json` `pi`).
+- **Boyundan:** 12 V çift (18 AWG, F3 5 A) + ESP32 USB (veri; 1,25 m; **1,65 m'de ≈ 1,64 m → 2 m kablo**, Y2b) + tilt servo (3 tel). HDMI ve CSI boyundan çıktı (`kafa-analiz.json` `pi`).
 - **Kafada çevirici:** Pololu **D36V50F5** ([pololu.com/product/4091](https://www.pololu.com/product/4091)): giriş 5,5–50 V, çıkış 5 V (%4), tipik 5,5 A **36 V girişte**; ürün sayfasındaki 3,5–8 A aralığı **tüm giriş aralığı** içindir (giriş gerilimine ve ısıya bağlı), 12 V'a özel bir değer değildir.
   12 V girişteki sürekli akım üreticinin grafiğinden okunup teyit edilecek (açık iş 8); kafa tepe 3,7 A kısa süreli, tipik 2,3 A.
   Ters gerilim −40 V, aşırı akım, kısa devre, aşırı sıcaklık, çıkış alt/üst gerilim koruması, yumuşak başlatma. 25,4 × 25,4 × 9,5 mm, 7 g.
@@ -159,7 +181,7 @@ K1 kontağı (40 A): F1 20 A ──> anahtarlı 12 V bara ──> BTS7960 sol/sa
 - **ESP32 çift besleme (diyotlu VEYA, iki kaynak):** asıl kaynak çevre 5 V → VIN. Pi'ye giden USB kablosunun VBUS teline seri **1N5819** (anot Pi tarafında). VBUS kesilmez:
   CP2102'nin VBUS pini bağlantı algısıdır, kesilirse kart USB'de görünmeyebilir. Diyot sayesinde çevre 5 V Pi'ye geri beslemez; çevre 5 V düşerse ESP32 Pi'den ~4,4–4,7 V alır (zararsız, ESP32 çalışır).
   Kartın kendi VBUS→VIN diyodu doğrulanırsa (DOIT DevKit V1 şemasında var) bu diyot gerekmez. Montajda multimetreyle bakılacak.
-- **Nextion** artık Pi'den değil ESP32'den sürülür (UART2; Pi → ESP32 USB komutu). Boyundan sinyal geçmez. Yazılım planına iş: ESP32 Nextion sürücüsü.
+- ~~**Nextion** artık Pi'den değil ESP32'den sürülür (UART2).~~ **[ESKİ, Y2b: göğüs Nextion kaldırıldı; ESP32 Nextion sürücüsü işi düştü.]**
 
 ## K4: kafa CAD özeti (sayılar `kafa-analiz.json`)
 
@@ -215,12 +237,12 @@ Akü Victron SuperPack 12,8 V 20 Ah (BMS 30 A sürekli) ── XT60 ── Ana s
                                                                                       │        └─ PC817 #2 (bara durumu) ── ESP32 GPIO5
                                                                                       ├─ F2 15 A ── yedek
                                                                                       ├─ F3 5 A ── 18 AWG çift, direk ön yüzü, boyun ── KAFA: P6KE18A ── D36V50F5 5 V ── P6KE6.8A
-                                                                                      │                                              ├─ USB-C ── Raspberry Pi 5 ── USB-A: 7" LCD (dokunmatik+güç), mikrofon
+                                                                                      │                                              ├─ USB-C ── Raspberry Pi 5 ── USB-A: 10,1" yüz LCD (dokunmatik+güç), XVF3800 mikrofon dizisi (1,65 m, Y2b)
                                                                                       │                                              │                          ├─ micro HDMI: LCD ; CSI: Camera Module 3 (FPC 300 mm)
                                                                                       │                                              │                          └─ I2S: MAX98357A ── hoparlör (yer açık)
-                                                                                      ├─ F4 5 A ── XL4016 çevre 5 V ── ESP32 VIN, Nextion, sonar ×3, enkoder (3V3 ESP32'den), PCA9685/BNO055 mantık (3V3)
+                                                                                      ├─ F4 5 A ── XL4016 çevre 5 V ── ESP32 VIN, sonar ×3, enkoder (3V3 ESP32'den), PCA9685/BNO055 mantık (3V3)
                                                                                       └─ F5 2 A ── mantar NC ── röle K1 bobini ── IRLZ44N ── GND   (PC817 #1 mantar sonrası)
-Veri: Pi (kafa) ── USB 1,25 m (VBUS'ta 1N5819) ── ESP32 (taban) ── I2C: PCA9685 (10 servo + 3 sonar trig), BNO055 ; UART2: Nextion ; PWM/EN/IS: BTS ×2 ; enkoder ×2 (A/B)
+Veri: Pi (kafa) ── USB 1,25 m (VBUS'ta 1N5819) ── ESP32 (taban) ── I2C: PCA9685 (10 servo + 3 sonar trig), BNO055 ; PWM/EN/IS: BTS ×2 ; enkoder ×2 (A/B)
 Toprak: akü − ── WAGO yıldız noktası (güç paneli) ── tüm dönüştürücüler; kafa GND 12 V dönüşüyle
 ```
 
@@ -232,7 +254,7 @@ Toprak: akü − ── WAGO yıldız noktası (güç paneli) ── tüm dönü
 | Servo A | F1 → 7,5 A | 1,5 A (jest 2,8 A × 6 V) | 2,3 A (4,4 A) | 4,1 A (7,7 A) |
 | Servo B | F1 → 7,5 A | 1,5 A | 2,5 A (4,7 A) | 4,1 A |
 | Motorlar ×4 (BTS) | F1 | 0,9 A (düz, sabit hız) | **8,0 A (yerinde dönüş μ 0,5: 4 × 2,0)** | 11,2 A (4 × durma) |
-| Çevre 5 V (Nextion 0,8 A + ESP32 0,24 + sensör/enkoder/opto ~0,15) | F4 | 0,4 A | 0,5 A | 0,6 A |
+| Çevre 5 V (ESP32 0,24 + sensör/enkoder/opto ~0,15; Nextion 0,8 A Y2b ile çıktı) | F4 | 0,4 A [ESKİ, Nextion dahil] | 0,5 A | 0,6 A |
 | Röle bobini + PC817 | F5 | 0,15 A | 0,15 A | 0,15 A |
 | **Toplam** | | **5,3 A** | **14,6 A** | **21,8 A** (teorik) |
 
@@ -354,15 +376,15 @@ F5 2 A ── mantar NC ──┬── K1 bobini ── IRLZ44N #1 (GPIO12)    
 | 23 | Acil stop durumu (PC817 #1) | dahili pull-up |
 | 5 | Anahtarlı 12 V durumu (PC817 #2) | strapping (SDIO zamanlaması, normal açılışı etkilemez) |
 | 21 / 22 | I2C SDA / SCL (PCA9685, BNO055) | 3V3 |
-| 17 / 16 | UART2 TX / RX (Nextion) | RX'te 1k/2k bölücü |
+| 17 / 16 | **Boş** (Y2b: Nextion kaldırıldı; önce UART2) | yedek |
 | 18 / 19 | Enkoder sol arka A / B | PCNT |
 | 4 / 15 | Enkoder sağ arka A / B | 15 strapping: boot'ta yüksek olabilir, sorun değil |
 | 1 / 3 | UART0 (USB → Pi) | |
-| 2 | Boş (kart LED'i) | ADC2: Wi-Fi açıkken analog okunamaz |
+| 2 | **Ön şarj rölesi K2** (IRLZ44N #2 gate; E9) | strapping: boot'ta LOW/boş olmalı → 220 Ω seri + 10 kΩ pull-down (E9). Kart LED'i de bu pinde (yanması zararsız) |
 
 - **PCA9685 kanalları:** 0–4 hat A servoları, 5–9 hat B servoları, 10–12 **sonar trig** (3,3 V, I2C ile ≥ 10 µs darbe), 13–15 yedek. Böylece üç GPIO kazanıldı.
 - Ön motorların enkoderleri bağlanmadı (pin yok). Yandaki iki motor aynı sürücüde olduğu için yan başına bir dörtlü enkoder yeter. Ön enkoder istenirse I2C GPIO genişletici (PCF8574 yavaş; PCNT gerekir) ya da ESP32-S3: E5'te karar.
-- Kalan yedek: GPIO2. XL4016 NTC (E7 ölçümü) için ADC1 pini kalmadı: ölçüm geçici olarak multimetreyle ya da BNO055 sıcaklığıyla.
+- Kalan yedek (Y2b): GPIO2 E9 ile K2'ye gitti; Nextion kalkınca **GPIO16 / 17** boşaldı (16, 17 ADC değil). XL4016 NTC (E7 ölçümü) için ADC1 pini kalmadı: ölçüm geçici olarak multimetreyle ya da BNO055 sıcaklığıyla.
 
 ## Malzeme değişikliği (yalnız bu adım; `planlama/maliyet.json`)
 

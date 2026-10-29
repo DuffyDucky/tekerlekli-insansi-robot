@@ -8,18 +8,43 @@ planlama, tasarım (CAD) ve ileride yazılım kodu burada tutulur.
 
 | Klasör / dosya | İçerik |
 |---|---|
+| `tasarim/freecad/` | **Güncel tasarım (1,65 m):** FreeCAD modülleri (iskelet, kabuk, omuz, dirsek, kafa, taban), `arayuz.py` (tek ölçü kaynağı), ana montaj `montaj/` (FCStd, STEP, `robot-bom.csv`) |
+| `kod/ortak/eklem_sinirlari.json` | Eklem sınırları (CAD'den `eklem_sinirlari_uret.py` ile üretilir, elle düzenlenmez) |
+| `planlama/dongu.md` | İş döngüsü ve 1,65 m planı (Y1–Y6); `planlama/y2/` Y2a/Y2b günlük ve kontrolleri; `planlama/kararlar-*.md` karar günlüğü |
+| `planlama/baski-listesi.md` · `planlama/adim3/elektrik.md` · `planlama/yazilim-plani.md` | Baskı listesi (63 parça), elektrik kararları (E0–E9), yazılım planı |
 | `raporlar/Humanoid-Robot-Fizibilite-Raporu.html` | Fizibilite raporu: maliyet, ses mi görüntü mü, yetkinlik, teknik gereklilikler, profesyonel destek, takvim, finansman, riskler |
 | `raporlar/kaynaklar/` | Raporun dayandığı araştırma notları (donanım/maliyet, yazılım/yapay zekâ, referans projeler/finansman, parça ölçüleri, fiyat araştırması ve doğrulaması) |
 | `planlama/proje-plani.md` | Kapsam, takvim, roller, ilk iki hafta, riskler, açık sorular |
 | `planlama/maliyet.json` | Doğrulanmış malzeme maliyeti (satıcı, TL, bağlantı, stok); demodaki maliyet bölümünün tek kaynağı |
-| `tasarim/Robot-Tasarim-Demosu.html` | Gerçek parçalarla 3B CAD montajı; V1 / V2 düğmesi; devrilme, motor ve servo hesabı canlı; TL + USD proje maliyeti |
-| `tasarim/cad/Humanoid-Robot-Montaj.step` · `-V2` · `-V3` | SolidWorks'te açılan montaj dosyaları (V1, V2, V3) |
+| `tasarim/Robot-Tasarim-Demosu.html` | Eski CadQuery 3B montajı (V1 / V2 / V3, 125 cm); devrilme, motor ve servo hesabı canlı; TL + USD proje maliyeti (maliyetin V3 satırları 1,65 m tasarıma göre) |
+| `tasarim/cad/Humanoid-Robot-Montaj.step` · `-V2` · `-V3` | Eski CadQuery montajları (V1, V2, V3; arşiv) |
 | `tasarim/cad/parca-listesi.csv` · `-V2` · `-V3` | Gerçek parça listesi (model, ölçü, adet, kütle) |
 | `tasarim/cad/robot_cad.py` | Modeli üreten kod (STEP + CSV + demo) |
 | `tasarim/cad/demo_uret.py` | Demoyu şablon + model + maliyetten yeniden üretir; CadQuery gerekmez |
 | `CLAUDE.md` | Bu klasörde açılan yapay zekâ oturumları için bağlam |
 
 HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünüm için internet gerekir.
+
+## Güncel tasarım: 1,65 m (29 Ekim 2026)
+
+Hoca 1,70 m ve 10" kafa istedi (21 Ekim); Duffy 29 Ekim'de boyu 1,65 m'ye çekti. Ana tasarım `tasarim/freecad/` (Y2a, bağımsız kontrol
+koşullu geçti: `planlama/y2/Y2a-kontrol.md`).
+
+| Konu | Değer |
+|---|---|
+| Boy | **1.650 mm** (yerden kafa tepesine); gövde direği 1.185,5 mm tek parça sigma 40 × 40 |
+| Parça / kütle | 1.073 parça (ana montaj), 24,40 kg (kablo payıyla ≈ 24,8 kg); AM (−0,20; 527,43; −12,38) mm |
+| Taban | 520 mm, teker izi 432 mm (x ±216), 4 × JGB37; akü Victron 12,8 V 20 Ah **yerinde** (karar 29.10) |
+| Kollar | Kol başına 4 servo: omuz S1 + S2 **DS3235**, dirsek + bilek MG996R; kafa pan / tilt MG996R (toplam 10 servo). El yükü ≈ 100 g (açık konu) |
+| Kafa | 10,1" HDMI yüz ekranı (hoca verecek), Raspberry Pi 5 kafada; tilt sınırı ±13° |
+| Göğüs | Nextion ekran **yok** (25 Ekim); kumanda telefondan |
+| Ses | XVF3800 4 mikrofonlu USB dizi + yönlü mikrofon karşılaştırma kolu (Efe, 26 Ekim) |
+| Yazılım sınırları | Rampada / eğimde kollar ev pozunda ve ivme ≤ 0,1 m/s²; düz zeminde ≤ 0,5 m/s² (devrilme sınırı ≈ 2,0 m/s²); S2 ≥ +5° |
+| Baskı | 63 parça, 7,7 kg filament (PETG 6,75 + PETG-CF 1,0), ≈ 162 sa; kafa kabuğu sağ ön / sağ arka destekli |
+| Maliyet | **≈ 108.700 TL** (V3 satırları, yazıcıyla, yedek ve %15 pay dahil; koşullularla ≈ 114.600). Yüz ekranı hocadan gelirse ve elimizdekiler düşülürse ≈ 77.900 TL |
+| Kapsam | Otonom gezinme, lidar, ROS 2 / Nav2 **yok** (hoca, 21 Ekim); kumandayla sürüş + konuşma + jest |
+
+Aşağıdaki bölümler projenin geçmişidir (Eylül–Ekim, CadQuery V1–V3, 115–125 cm); güncel sayılar yukarıda ve `planlama/` belgelerinde.
 
 ## Proje çerçevesi (Duffy, 26 Eylül 2026)
 
@@ -33,7 +58,7 @@ HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünü
 
 | Konu | Öneri / sonuç |
 |---|---|
-| Ses mi görüntü mü | Önce ses + tekerlek + kayıtlı jestler. İkinci adım "hafif görüntü": yüzü algılayıp kafayı kişiye çevirme ve düğmeyle "ne görüyorsun?". Yüz **tanıma**, otonom gezinme (ROS 2 / Nav2), eşya tutan kol kapsam dışı. |
+| Ses mi görüntü mü | Önce ses + tekerlek + kayıtlı jestler. İkinci adım "hafif görüntü": yüzü algılayıp kafayı kişiye çevirme ve düğmeyle "ne görüyorsun?". Yüz **tanıma**, otonom gezinme (ROS 2 / Nav2, lidar; hoca 21 Ekim 2026: iptal), eşya tutan kol kapsam dışı. |
 | Konuşma zinciri | Bulut konuşma tanıma (Türkçe) + bulut dil modeli + seslendirme; uyandırma kelimesi yerine bas-konuş düğmesi; internet kesilirse çevrimdışı yedek mod |
 | Bütçe | CAD tasarımının doğrulanmış malzeme listesi (27 Eylül 2026): **≈ 64.500 TL ≈ 1.320 USD** (%15 pay, yedek parça ve kargo dahil); 54 kalemin 48'i satıcı sayfasından doğrulandı. Baskı hizmetiyle ≈ 68.800 TL. Aylık bulut ≈ 10–20 $. (Fizibilite tahmini ≈ 61.700 TL'ydi.) |
 | Ekip | Yazılım / yapay zekâ sorumlusu şart; güç elektroniği ve KVKK için danışman |
@@ -42,7 +67,7 @@ HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünü
 | V2 (hoca, 2 Ekim 2026) | 10,1" dokunmatik ekran göğüste, kafada iki yuvarlak göz ekranı (Pepper benzeri; Duffy A seçeneğini seçti). Tekerlekler yerinde, taban kabuğu genişleyip onları sarıyor. Malzeme ≈ 77.900 TL (%15 pay dahil; V1 64.500). |
 | V3 deneme (Duffy, 2 Ekim 2026) | V2 yorumu: "taban çok geniş", "ekran çok alçakta", "yüz ifadesi çok ruhsuz". V3: boy 125 cm, şase 27 cm (akünün sığdığı en dar), taban 44 cm ve yukarı 30 cm'ye daralan etek, 10,1" ekran üst göğüste 15° yukarı eğik (merkez 82 cm), kafada 7" yüz ekranı + siyah akrilik yüz paneli (Pi 5 iki HDMI). Malzeme ≈ 79.400 TL. |
 
-## CAD modelinden çıkanlar (varsayılan tasarım)
+## CAD modelinden çıkanlar (eski CadQuery V1 varsayılan tasarım, 115 cm)
 
 | Konu | Sonuç |
 |---|---|
@@ -78,7 +103,7 @@ HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünü
 - [ ] Rolleri yaz; yazılım sorumlusu yoksa bilgisayar mühendisliğinden ortak ara
 - [ ] Bölümde hazır malzemeyi listele (3D yazıcı, dizüstü, profil, güç kaynağı)
 - [ ] Siparişi erken ver: 27 Eylül'de enkoderli JGB37 yalnız Direnc.net'te stokta; Camera Module 3 Türkiye'de hiçbir satıcıda yok (stok alarmı ya da Adafruit)
-- [ ] Limacell 24 Ah akünün ölçüsünü satıcıya sor (CAD yuvası 181 × 77 × 167 mm)
+- [x] ~~Limacell 24 Ah akünün ölçüsünü satıcıya sor~~ → akü Victron SuperPack 12,8 V 20 Ah (K3, 14 Ekim 2026), ölçüsü CAD yuvasıyla aynı
 - [ ] Lazer kesim (Al plaka, kontrplak) için DXF ile online teklif al; tahmini 2.000 TL
 - [ ] JGB37 braketini alırken delik düzenini kontrol et (mil 7 mm kaçık; çoğu satıcı ortalı mil braketi satıyor)
 - [ ] STEP dosyasını SolidWorks'te aç (henüz denenmedi)

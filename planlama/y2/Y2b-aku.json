@@ -1,0 +1,158 @@
+{
+ "kullanilabilir": 0.81,
+ "aku_Wh": {
+  "Victron SuperPack 12,8/20 (K3)": 256.0,
+  "24 Ah (eski Limacell)": 307.2,
+  "30 Ah": 384.0
+ },
+ "verim": {
+  "kafa": 0.9,
+  "5V": 0.88,
+  "6V": 0.88,
+  "12V": 0.95
+ },
+ "kalemler": [
+  [
+   "Pi 5 + Active Cooler (kafa)",
+   "kafa",
+   4.0,
+   6.5,
+   12.0,
+   "aku raporu 4/6,5; yogun = taban-analiz 12 W tam yuk"
+  ],
+  [
+   "10,1\" yuz ekrani (kafa, Pi USB)",
+   "kafa",
+   2.0,
+   3.0,
+   3.75,
+   "tahmini: Waveshare 10.1 (B) 5 V ~0,75 A (maliyet.json notu); olculecek"
+  ],
+  [
+   "Kamera + mikrofon + amfi (kafa)",
+   "kafa",
+   1.7,
+   2.2,
+   3.2,
+   "kamera 0,7 + XVF3800 ~1,0 (belgesiz, tahmini) + amfi 0 / 0,5 / 1,5"
+  ],
+  [
+   "ESP32 + sensor + PCA/BNO mantik",
+   "5V",
+   0.8,
+   1.0,
+   1.3,
+   "ESP32 Wi-Fi ~0,5 W + sonar/BNO/PCA/enkoder (tahmini)"
+  ],
+  [
+   "Servolar A + B",
+   "6V",
+   4.199999999999999,
+   11.522901098901098,
+   40.81450549450549,
+   "E1: bekleme 0,7 A, jest 5,7 A x 6 V; normal %20 jest; yogun surekli jest"
+  ],
+  [
+   "Tahrik 4 x JGB37",
+   "12V",
+   0.3,
+   5.0,
+   39.94716833870226,
+   "bosta/normal aku raporu; yogun %40 duz/%20 ivme/%25 rampa/%15 yerinde donus (2,0 A/motor, mu 0,5)"
+  ]
+ ],
+ "sabit": [
+  [
+   "Role K1 bobini",
+   1.92,
+   "elektrik.md ~0,15 A (aku raporunda 1,5 W, taban-analiz 0,3 W)"
+  ],
+  [
+   "XL4016 x3 bosta",
+   0.4,
+   "aku raporu (tahmini)"
+  ],
+  [
+   "PC817 girisleri x2 + aku ADC bolucu",
+   0.1295,
+   "E2 (~5 mA x 2)"
+  ]
+ ],
+ "fan": [
+  1.2000000000000002,
+  "E7 kosullu 40 mm fan ~0,1 A (tahmini)"
+ ],
+ "surus_yogun_W": 39.9,
+ "surus_yogun_omni_W": 27.5,
+ "senaryo": {
+  "bosta": {
+   "yuk_W": 13.0,
+   "aku_W": 17.0,
+   "A": 1.33
+  },
+  "normal": {
+   "yuk_W": 29.2,
+   "aku_W": 34.9,
+   "A": 2.73
+  },
+  "yogun": {
+   "yuk_W": 101.0,
+   "aku_W": 113.4,
+   "A": 8.86
+  },
+  "yogun_omni": {
+   "aku_W": 100.3,
+   "A": 7.84
+  },
+  "ders (3 sa; %40 bosta, %50 normal, %10 yogun)": {
+   "aku_W": 35.6
+  },
+  "fuar (8 sa; %35 / %50 / %15)": {
+   "aku_W": 40.4
+  }
+ },
+ "sure_sa": {
+  "Victron SuperPack 12,8/20 (K3)": {
+   "bosta": 12.2,
+   "normal": 5.9,
+   "yogun": 1.8,
+   "yogun_omni": 2.1,
+   "ders (3 sa; %40 bosta, %50 normal, %10 yogun)": 5.8,
+   "fuar (8 sa; %35 / %50 / %15)": 5.1
+  },
+  "24 Ah (eski Limacell)": {
+   "bosta": 14.6,
+   "normal": 7.1,
+   "yogun": 2.2,
+   "yogun_omni": 2.5,
+   "ders (3 sa; %40 bosta, %50 normal, %10 yogun)": 7.0,
+   "fuar (8 sa; %35 / %50 / %15)": 6.2
+  },
+  "30 Ah": {
+   "bosta": 18.3,
+   "normal": 8.9,
+   "yogun": 2.7,
+   "yogun_omni": 3.1,
+   "ders (3 sa; %40 bosta, %50 normal, %10 yogun)": 8.7,
+   "fuar (8 sa; %35 / %50 / %15)": 7.7
+  }
+ },
+ "gereken": {
+  "ders (3 sa; %40 bosta, %50 normal, %10 yogun)": {
+   "nominal_Wh": 132,
+   "Ah": 10.3
+  },
+  "fuar (8 sa; %35 / %50 / %15)": {
+   "nominal_Wh": 399,
+   "Ah": 31.2
+  }
+ },
+ "victron_fan_ile_sa": {
+  "bosta": 11.39,
+  "normal": 5.74,
+  "yogun": 1.81,
+  "yogun_omni": 2.04,
+  "ders (3 sa; %40 bosta, %50 normal, %10 yogun)": 5.63,
+  "fuar (8 sa; %35 / %50 / %15)": 4.98
+ }
+}

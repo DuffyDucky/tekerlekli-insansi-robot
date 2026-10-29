@@ -27,7 +27,7 @@ def kontrol_et(d):
         if "min" in j:
             assert j["min"] < j["max"], ad
     y = d["kafa_kol_yasak"]
-    if not y.get("aktif", True):          # 1,70 m (Y2a): yasak kutu yok (aktif False); yalniz bagimli sinirlar kontrol edilir
+    if not y.get("aktif", True):          # 1,65 m (Y2a): yasak kutu yok (aktif False); yalniz bagimli sinirlar kontrol edilir
         y = None
     if y is not None:
         _yasak_kontrol(e, y)
