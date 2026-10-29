@@ -60,7 +60,7 @@ Kural gereği her modül iki ajana bölünür: önce tasarım ajanı, sonra ayr�
 | E3 | YÜKSEK | **Acil stop yeniden başlatma.** Mantar bırakılınca röle kendiliğinden çekiyor, servolar tanımsız bir anda güç alıyor. Röle bobini ESP32'den bir "devreye al" komutuyla kumanda edilsin; mantar butonun NC kontağı seri kalsın. ◐ | M |
 | E4 | YÜKSEK | Pi 5 beslemesi: düz 5,1 V ile USB'lere 600 mA sınırı geliyor. `usb_max_current_enable=1` ayarı, 5 V hattına aşırı gerilim koruması (TVS). ESP32 iki yerden besleniyor (Pi USB'si ve çevre 5 V hattı), araya diyot konur ya da tek kaynağa inilir. ○ | S |
 | E5 | ORTA | ESP32 pin planı tablosu (26 sinyal, ~24 kullanılabilir GPIO). Başlangıçta durumu önemli pinler ve ADC2 kullanılmaz. | S |
-| E6 | ORTA | Fren: acil stopta motorlar boşa düşer. Yazılım freni ≤ 2 m/s² ile sınırlanır. İsteğe bağlı: motor uçlarını röleyle kısa devre eden dinamik fren. Güç kesilince kollar düşer, bunun için yavaş düşüş çözümü. ○ | M |
+| E6 | ORTA | Fren: acil stopta motorlar boşa düşer. Yazılım freni ≤ 1,8 m/s² ile sınırlanır (karar 29.10, 1,65 m: düzde 0,5 kg el yüküyle bile devrilme payı ≥ 1,54; `planlama/y2/Y2b-ivme.json` `fren_pay`). İsteğe bağlı: motor uçlarını röleyle kısa devre eden dinamik fren. Güç kesilince kollar düşer, bunun için yavaş düşüş çözümü. ○ | M |
 | E7 | ORTA | Etek içi ısı: XL4016'ların ısıyı aktaracağı bir yol yok (naylon burç üzerinde duruyorlar). Ölçüm planı, ısı pedi, etek arkasında delik ya da fan. ○ | M |
 | E8 | ORTA | Akü sürelerini akü raporuyla hizala. Yoğun kullanım senaryosu 100 W ve üstü alınır (≈ 2,5 saat). ◐ | S |
 | E9 | DÜŞÜK | Sigorta: 5 A iki yerde (F4 ve F5) kullanılıyor ama sette bir tane var. İkinci 5 A sigorta eklenir. Ön şarj direnci ya da NTC değerlendirilir. ✔ | S |

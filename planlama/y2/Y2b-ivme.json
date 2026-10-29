@@ -132,7 +132,17 @@
    "rampa5_geri": 1.481,
    "rampa5_yan": 2.049
   },
-  "duz_a_sinir_min": 2.059
+  "duz_a_sinir_min": 2.059,
+  "fren_pay": {
+   "fren_m_s2": 1.8,
+   "duz": {
+    "duz_ileri": 1.94,
+    "duz_geri": 1.716,
+    "duz_yan": 2.191
+   },
+   "duz_min": 1.716,
+   "gecer": true
+  }
  },
  "izgara_yuk_100g": {
   "en_kotu": {
@@ -235,7 +245,17 @@
    "rampa5_geri": 1.438,
    "rampa5_yan": 2.005
   },
-  "duz_a_sinir_min": 2.015
+  "duz_a_sinir_min": 2.015,
+  "fren_pay": {
+   "fren_m_s2": 1.8,
+   "duz": {
+    "duz_ileri": 1.882,
+    "duz_geri": 1.679,
+    "duz_yan": 2.154
+   },
+   "duz_min": 1.679,
+   "gecer": true
+  }
  },
  "izgara_yuk_500g": {
   "en_kotu": {
@@ -338,6 +358,16 @@
    "rampa5_geri": 1.277,
    "rampa5_yan": 1.849
   },
-  "duz_a_sinir_min": 1.854
+  "duz_a_sinir_min": 1.854,
+  "fren_pay": {
+   "fren_m_s2": 1.8,
+   "duz": {
+    "duz_ileri": 1.672,
+    "duz_geri": 1.545,
+    "duz_yan": 2.023
+   },
+   "duz_min": 1.545,
+   "gecer": true
+  }
  }
 }

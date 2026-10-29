@@ -35,7 +35,7 @@ KALEM = [
 VERIM = {"kafa": 0.90, "5V": 0.88, "6V": 0.88, "12V": 0.95}
 SABIT = [  # aku tarafi, her senaryoda
     ("Role K1 bobini", 0.15 * V, "elektrik.md ~0,15 A (aku raporunda 1,5 W, taban-analiz 0,3 W)"),
-    ("XL4016 x3 bosta", 0.4, "aku raporu (tahmini)"),
+    ("XL4016 x4 bosta", 0.4 * 4 / 3, "aku raporu x3 icin 0,4 W (tahmini); 29.10 servo hatti C (kafa) ile 4 modul"),
     ("PC817 girisleri x2 + aku ADC bolucu", 2 * 0.005 * V + 0.0015, "E2 (~5 mA x 2)"),
 ]
 FAN = (0.1 * 12.0, "E7 kosullu 40 mm fan ~0,1 A (tahmini)")
@@ -59,10 +59,16 @@ for ad, saat in (("ders (3 sa; %40 bosta, %50 normal, %10 yogun)", 3), ("fuar (8
     wh = sen[ad]["aku_W"] * saat / KUL
     gerek[ad] = {"nominal_Wh": round(wh), "Ah": round(wh / V, 1)}
 fan_etki = {k: round(256 * KUL / (v["aku_W"] + FAN[0]), 2) for k, v in sen.items()}
+# gereksinim (Duffy, 29.10): "aku 2 saatlik kullanim icin yeterli" -> 2 sa kullanim; Victron ile karsilastirma (2 hane)
+GEREKSINIM_SA = 2.0
+VIC = AKU["Victron SuperPack 12,8/20 (K3)"]
+gereksinim = {"gereksinim_sa": GEREKSINIM_SA, "kaynak": "Duffy 29.10 (planlama/kararlar-2026-10-29.md)",
+              "victron_sa": {k: round(VIC * KUL / sen[k]["aku_W"], 2) for k in ("bosta", "normal", "yogun", "yogun_omni")}}
+gereksinim["karsilar"] = {k: v >= GEREKSINIM_SA for k, v in gereksinim["victron_sa"].items()}
 res = {"kullanilabilir": KUL, "aku_Wh": AKU, "verim": VERIM, "kalemler": KALEM, "sabit": SABIT, "fan": FAN,
        "surus_yogun_W": round(SURUS_YOGUN, 1), "surus_yogun_omni_W": round(SURUS_YOGUN_OMNI, 1),
-       "senaryo": sen, "sure_sa": sure, "gereken": gerek, "victron_fan_ile_sa": fan_etki}
+       "senaryo": sen, "sure_sa": sure, "gereken": gerek, "victron_fan_ile_sa": fan_etki, "gereksinim_2sa": gereksinim}
 with open(os.path.join(HERE, "Y2b-aku.json"), "w", encoding="utf-8") as f:
     json.dump(res, f, ensure_ascii=False, indent=1)
 print(json.dumps({"senaryo": sen, "sure_sa": sure, "gereken": gerek, "surus_yogun_W": res["surus_yogun_W"],
-                  "fan": fan_etki}, ensure_ascii=False, indent=1))
+                  "fan": fan_etki, "gereksinim_2sa": gereksinim}, ensure_ascii=False, indent=1))

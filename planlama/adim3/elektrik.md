@@ -13,19 +13,36 @@ geçerli kalanlar aşağıda. Kaynak: `tasarim/freecad/taban/taban-analiz.json` 
 
 | Konu | 125 cm (bu dosyanın gövdesi) | 1,65 m (geçerli) |
 |---|---|---|
-| Akü | Victron SuperPack 12,8/20, taban arka bölmesi | **Aynı yerde** (75 mm öne geometrik olarak olmadı). Karar 29.10: rampada / eğimde kollar ev pozunda ve taban ivmesi ≤ 0,1 m/s²; düzde ≤ 0,5 m/s² (devrilme sınırı ≈ 2,0 m/s², `Y2b-ivme.json`) |
+| Akü | Victron SuperPack 12,8/20, taban arka bölmesi | **Aynı yerde** (75 mm öne geometrik olarak olmadı). Karar 29.10: rampada / eğimde kollar ev pozunda ve taban ivmesi ≤ 0,1 m/s²; düzde ≤ 0,5 m/s² (devrilme sınırı ≈ 2,0 m/s², `Y2b-ivme.json`). Karar 29.10 (Y2b): yazılım / acil stop freni **≤ 1,8 m/s²** (düzde 0,5 kg el yüküyle bile devrilme payı 1,54) |
 | Acil stop, devreye alma (E3, E9) | K1 40 A (GPIO12, IRLZ44N #1), K2 7 A + 5,6 Ω ön şarj (GPIO2, IRLZ44N #2), PC817 #1 mantar sonrası (GPIO23), #2 anahtarlı bara (GPIO5), F5 2 A | **Değişmedi.** Devreye alma komutu Pi'den (telefon kumandası; Nextion yok). CAD'de güç panelinde K1 + soket ve ana sigorta var; K2 ve ön şarj direnci CAD'de yok (M6 CAD, Y3). Pin tablosundaki "GPIO2 boş" çelişkisi Y2b'de düzeltildi |
 | Göğüs Nextion | UART2 (GPIO16/17), çevre 5 V'tan 0,8 A | **Yok** (25 Ekim). GPIO16/17 boş, F4 yükü −0,8 A |
 | Yüz ekranı | 7" LCD, 2,5 W | 10,1" HDMI (hoca verecek; CAD'de Waveshare 10.1" (B)), 5 V ≈ 0,75 A (≈ 3,75 W, tahmini), Pi USB-A'dan |
 | Mikrofon | ReSpeaker Lite, 0,5 W | XVF3800 USB dizi (Efe, 26 Ekim): akımı belgesiz, ~1 W varsayıldı → ölçülecek |
 | Kafa 5 V tepe | 18,7 W → 3,7 A | ≈ 20,5 W → **4,1 A** (12 V'tan ≈ 1,8 A; F3 5 A yeter). Pololu D36V50F5'in 12 V'taki sürekli akımı (açık iş 8) daha önemli hâle geldi |
-| Omuz servoları (E1) | DS3218MG; hat yoğun 4,4 / 4,7 A | **DS3235** (durma 2,1 A @6 V datasheet; tasarımda 3,0 A ihtiyatlı). Kol ×1,25 ile hat yoğun ≈ **5,4 A**, tepe 7,8 A (taslak kol analizi) → XL4016'nın sürekli 5 A önerisinin üstünde: **hat akımı ölçülmeli**; yetmezse o hat için 20 A düşürücü. Hat sigortası (giriş 7,8 A × 6 / 0,88 / 12,8 ≈ 4,2 A) 7,5 A'de kalır |
-| Servo uzatmaları | ~1,3 m | dirsek / bilek 1,93 m, S2 ≈ 1,77 m (`dirsek-analiz.json` `kablo.s1_boy`); durma akımında 2 × 1,93 × 0,052 × 2,5 A ≈ 0,50 V düşüm (servo ≈ 5,5 V görür; tahmini) |
+| Omuz servoları (E1) | DS3218MG; hat yoğun 4,4 / 4,7 A | **DS3235** (durma 2,1 A @6 V datasheet; tasarımda 3,0 A ihtiyatlı). Kol ×1,25 ile kol + kafa servosu bir hatta yoğun ≈ **5,45 A** (A, pan ile 5,47; B, tilt 0,9 ile ≈ 5,8), tepe 7,8 A (taslak kol analizi) → XL4016'nın sürekli 5 A önerisinin üstünde. **Karar 29.10: kafa servoları kol hatlarından ayrıldı, üç servo hattı** (aşağıdaki "Servo hatları" tablosu): kol hatları yoğun ≈ 4,87 A. Hat akımı yine ölçülmeli |
+| Servo uzatmaları | ~1,3 m | dirsek / bilek 1,93 m, S2 ≈ 1,77 m (1.769,8 mm: Y2b hesabı, göbek eki yolu = G2 öncesi 20 + geçiş 23,9 + S1 lopu 171,4 + gövde içi 238 + dikey 1.286,5 + konnektör 30; `planlama/y2/Y2b-kontrol.md` bulgu 4. `dirsek-analiz.json` `kablo.s1_boy` S2 satırı hâlâ eski yarık yolu 1.490: üreten `dirsek_montaj.py` 29.10'da düzeltildi, JSON FreeCAD ile Y4'te yeniden üretilir); durma akımında 2 × 1,93 × 0,052 × 2,5 A ≈ 0,50 V düşüm (servo ≈ 5,5 V görür; tahmini) |
 | ESP32 – Pi USB | 1,25 m | ≈ 1,64 m → **2 m** kablo (`maliyet.json`) |
 | Kafa 12 V (18 AWG çift) | boyundan | +0,385 m; 1,8 A'de ek düşüm < 0,03 V (ihmal) |
 | Taban, dönüş (E0) | 21,73 kg, iz 356 (x ±178) | 24,80 kg, AM (−0,2; 521,3; −13,2), iz 432 (x ±216). Yerinde dönüş μ 0,5: en yüklü motor 15,7 kg·cm = sürekli ×2,49, 2,12 A; ön omniyle ×0,47. Karar aynı: önce ölç, μ ≥ 0,4 → ön omni |
-| Akü süreleri (E8) | Victron boşta / normal / yoğun 10,9 / 5,7 / 2,0 sa | **12,2 / 5,9 / 1,8 sa** (akü tarafı 17,0 / 34,9 / 113,4 W; yoğun omniyle 2,1; ders 5,8, fuar 5,1 sa → 8 saatlik fuar için öğle şarjı ya da ikinci akü, değişmedi) |
+| Akü süreleri (E8) | Victron boşta / normal / yoğun 10,9 / 5,7 / 2,0 sa | **12,1 / 5,9 / 1,83 sa** (akü tarafı 17,1 / 35,1 / 113,5 W, XL4016 × 4 boşta dahil; yoğun omniyle 2,07; ders 5,8, fuar 5,1 sa → 8 saatlik fuar için öğle şarjı ya da ikinci akü, değişmedi). **Gereksinim 2 saat kullanım; yoğun kullanımda hesaplanan 1,83 sa Duffy tarafından kabul edildi (29.10).** Normal / tipik 5,9 sa ✔ (gereksinimin ≈ 3 katı); yoğun 1,83 < 2 (kabul). Tasarım değişikliği yok (`Y2b-aku.json` `gereksinim_2sa`) |
 | Yedek GPIO | GPIO2 (E9 ile K2'ye gitti) | GPIO16 / 17 |
+
+**Servo hatları (karar 29 Ekim 2026, Duffy: "iki ayrı regülatör, sol kol / sağ kol"):** her kol kendi XL4016'sında, kafa servoları
+(pan + tilt) üçüncü bir XL4016'da (yeni; XL4016 3 → 4, `maliyet.json`). Akımlar `taslak-170/kol-analiz/kol-analiz.json` (oran 1,25, DS3235)
+servo başına değerlerinden; tepe = 2 servo kalkışta (DS3235 3,0 A, MG996R 2,5 A) + diğerleri yoğunda. Giriş = 6 V × I / 0,88 / 12,8 V. Tahmini.
+
+| Hat | Servolar | Yoğun (6 V) | Tepe (6 V) | Giriş yoğun / tepe (12,8 V) | Hat sigortası |
+|---|---|---|---|---|---|
+| A | sağ kol: S1, S2 (DS3235), dirsek, bilek | **4,87 A** (1,80 + 1,83 + 0,84 + 0,40) | **7,24 A** | 2,6 / 3,9 A | 7,5 A (aynı) |
+| B | sol kol: aynı | **4,87 A** | **7,24 A** | 2,6 / 3,9 A | 7,5 A (aynı) |
+| C (yeni) | kafa pan + tilt (MG996R) | **1,5 A** (0,6 + 0,9) | **5,0 A** | 0,8 / 2,7 A | 5 A mini (yeni yuva) |
+
+- Neden kafa ayrı hatta: kafa servosu hangi kol hattına girse o hat > 5 A (pan ile 5,47, tilt ile ≈ 5,8; ikisi bir kolda ≈ 6,4). Kafayı çevre 5 V
+  XL4016'sına (ESP32 / sensör beslemesi; servo gürültüsü, 5 V'ta düşük tork) ya da kafadaki Pololu'ya (kafa 5 V tepe 4,1 A + 5 A > 5,5 A) bağlamak reddedildi.
+- Kol hatları yoğunda 5 A önerisinin %97'si: sınırda kalıyor, hat akımı ölçümü (E7 yük testi) yine gerekli; aşarsa o hat için 20 A düşürücü.
+- XL4016 C etekte diğer üçünün yanında (yük A / B'den taşındı; E7 ısısına ek yalnız boşta kaybı ≈ 0,13 W); çıkış 2 servo uzatmasına küçük klemensle, dağıtım kartı gerekmez
+  (2200 µF kondansatör önerilir; maliyette yok). CAD'de 3 XL4016 var: dördüncüsü Y3 / Y4. PCA9685 kanalları (sinyal) değişmez; yalnız
+  pan / tilt kanallarının beslemesi C hattından gelir.
 
 ## Özet: ne değişti
 
@@ -232,8 +249,9 @@ Akü Victron SuperPack 12,8 V 20 Ah (BMS 30 A sürekli) ── XT60 ── Ana s
   └─ (anahtar sonrası) akü ADC bölücü 100k/18k ── ESP32 GPIO36                         ├─ F1 20 A ── röle K1 kontağı ── anahtarlı 12 V bara (WAGO)
                                                                                       │        ├─ BTS7960 sol ── ön sol + arka sol JGB37 (paralel)
                                                                                       │        ├─ BTS7960 sağ ── ön sağ + arka sağ JGB37 (paralel)
-                                                                                      │        ├─ 7,5 A ── XL4016 A 6 V ── 16 AWG ── dağıtım A ── sağ kol (4) + pan
-                                                                                      │        ├─ 7,5 A ── XL4016 B 6 V ── 16 AWG ── dağıtım B ── sol kol (4) + tilt
+                                                                                      │        ├─ 7,5 A ── XL4016 A 6 V ── 16 AWG ── dağıtım A ── sağ kol (4)   [29.10: pan C'ye]
+                                                                                      │        ├─ 7,5 A ── XL4016 B 6 V ── 16 AWG ── dağıtım B ── sol kol (4)   [29.10: tilt C'ye]
+                                                                                      │        ├─ 5 A ──── XL4016 C 6 V ── 16 AWG ── klemens ── kafa pan + tilt   [29.10, yeni]
                                                                                       │        └─ PC817 #2 (bara durumu) ── ESP32 GPIO5
                                                                                       ├─ F2 15 A ── yedek
                                                                                       ├─ F3 5 A ── 18 AWG çift, direk ön yüzü, boyun ── KAFA: P6KE18A ── D36V50F5 5 V ── P6KE6.8A
@@ -271,7 +289,7 @@ Toprak: akü − ── WAGO yıldız noktası (güç paneli) ── tüm dönü
 | F3 | **5 A** (önce 10 A Pi) | kafa 12 V (18 AWG) | kafa tepe 1,6 A |
 | F4 | 5 A | XL4016 çevre 5 V | **ikinci 5 A** (E9): sette tek 5 A var, F3 onu alır |
 | F5 | **2 A** (önce 5 A) | acil stop / röle K1 + K2 bobinleri | sette yok: yeni. K1 0,15 A + K2 ~0,03 A + PC817 |
-| Hat | 7,5 A × 2 | XL4016 A ve B girişi | kapaklı mini bıçak sigorta yuvası × 2 (yeni) |
+| Hat | 7,5 A × 2 + 5 A | XL4016 A ve B girişi; C (kafa servoları, 29.10) | kapaklı mini bıçak sigorta yuvası × 3 (yeni) |
 | Şarj | 10 A (mini) | XT60 şarj girişi → akü + (ana anahtar öncesi) | E9 / akü raporu önerisi; üçüncü kapaklı yuva (yeni). Şarj cihazı 6 A |
 
 **Sigorta seti (E9, 5. adım):** kutudaki set 5, 10, 2 × 15, 2 × 20 (standart/ATO bıçak). F3 ve F4 iki 5 A ister, bir tane var:
@@ -352,7 +370,7 @@ F5 2 A ── mantar NC ──┬── K1 bobini ── IRLZ44N #1 (GPIO12)    
 - **Yazılım (ESP32, E3 dizisine ek):** (1) E3 ön koşulları: mantar serbest, servo hedefleri son konumda, BTS EN = 0, açık komut;
   (2) GPIO2 = 1 (K2); (3) 300 ms bekle, PC817 #2 LOW olmalı (bara var), değilse GPIO2 = 0 ve hata; (4) GPIO12 = 1 (K1);
   (5) 100 ms sonra GPIO2 = 0; (6) PC817 #2 LOW teyidi. Reset ya da acil stopta iki pin de LOW (pull-down), iki röle de bırakır.
-- **GPIO2:** E5 pin planındaki son yedek pin (DevKit LED'i; strapping, boot'ta LOW/boş olmalı, 10 kΩ pull-down uygun). Artık yedek GPIO yok.
+- **GPIO2:** E5 pin planındaki son yedek pin (DevKit LED'i; strapping, boot'ta LOW/boş olmalı, 10 kΩ pull-down uygun). O gün yedek GPIO kalmamıştı; 1,65 m'de Nextion kalkınca **GPIO16 / 17 boş** (Y2b, pin planı).
   PCA9685 kanal 13 alternatifi önerilmez: ESP32 resetlenince PCA çıkışını korur, K2 kapalı kalabilir.
 - **Ana anahtar açılışı:** K1 açık olduğundan yalnız F3/F4/F5 girişleri bağlanır (Pololu + XL çevre girişi, tahmini ≤ 0,6 mF). BMS'in bunu kesip
   kesmediği ilk açılışta gözlenir; keserse aynı yöntem ana anahtara uygulanır (malzeme eklenmedi, ölçüme bağlı).

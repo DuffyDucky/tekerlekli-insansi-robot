@@ -3,7 +3,7 @@
 Kaynak: `raporlar/Humanoid-Robot-Fizibilite-Raporu.html` (26 Eylül 2026). Tarihler güz dönemine göre;
 rakamların çoğu tahmin, teklif ve bölüm onayıyla kesinleşecek. Tasarımın tek kaynağı FreeCAD modeli (`tasarim/freecad/`; **29 Ekim 2026'dan
 beri 1,65 m ana tasarım**: 1.073 parça, 24,4 kg, kol başına 4 servo, omuz DS3235, 10,1" kafa, göğüste ekran yok, taban 520 mm),
-malzeme listesi `planlama/maliyet.json` (≈ 108.700 TL, %15 pay ve yedek dahil), 1,65 m iş planı `planlama/dongu.md` (Y1–Y6).
+malzeme listesi `planlama/maliyet.json` (≈ 109.000 TL, %15 pay ve yedek dahil), 1,65 m iş planı `planlama/dongu.md` (Y1–Y6).
 
 **Tek takvim (15 Ekim 2026, D6):** hafta numarası **dönem haftasıdır**, H1 = 28 Eylül – 4 Ekim 2026 (pazartesi başlar).
 `yazilim-plani.md` aynı numarayı kullanır. Takvim, yazılım planının 11 Ekim takvimine hizalandı: eski "H6 ilk uçtan uca sürüm"
@@ -24,7 +24,7 @@ Kapsam 2. haftada yazılı olarak dondurulur; yeni fikirler 2. dönem listesine 
 | Hafta (tarih) | İş | Çıktı |
 |---|---|---|
 | H1–2 (28 Eyl – 11 Eki) | Rol dağılımı, hoca onayı, kapsam belgesi. FreeCAD V3 yerleşim, tork ve devrilme hesabı. Malzeme listesi | Onaylı kapsam, V3 CAD (125 cm) |
-| H3–4 (12 – 25 Eki) | Düzeltme planı (CAD ve malzeme), sipariş. Masa düzeneği: Pi ↔ ESP32 protokolü, 1 motor + 2 servo (yazılım Y0). Hoca 1,70 m + 10" kafa istedi (21 Ekim) | Masa düzeneği konuşuyor (H4); taslak 1,70 m |
+| H3–4 (12 – 25 Eki) | Düzeltme planı (CAD ve malzeme), sipariş. Masa düzeneği: Pi ↔ ESP32 protokolü, 1 motor + 2 servo (yazılım Y0). Hoca 1,70 m + 10" kafa istedi (21 Ekim) | Sipariş verilmedi; sipariş listesi hocaya iletildi (29.10 itibarıyla; 17 Ekim listesi, 125 cm V3: 99.673 TL). Masa düzeneği konuşuyor (H4); taslak 1,70 m |
 | H5–8 (26 Eki – 22 Kas) | Paralel: masada konuşan kafa (Pi + mikrofon + hoparlör, H7) · taban şasi, motorlar, ESP32 hız kontrolü, kumandayla sürüş · güç dağıtımı ve acil stop · 3D baskı (Parti 0–2) | Üç alt sistem ayrı ayrı çalışıyor |
 | **H9 (23 – 29 Kas)** | **İlk uçtan uca sürüm / ilk sürüş:** elektrik robotta, kumandayla geziyor, kollar sınırlar içinde. Bundan sonra her hafta entegrasyon testi | Çalışan ilk robot |
 | H10–14 (30 Kas – 3 Oca) | Gövde ve kollar (baskı Parti 3–4), jest kütüphanesi, yüz ekranı, davranış akışı, çevrimdışı yedek mod; konuşan + jest yapan robot (H11); tam görünüş ve hafif görüntü (yetişirse, H12–14) | Tam görünüşlü robot |
@@ -33,7 +33,7 @@ Kapsam 2. haftada yazılı olarak dondurulur; yeni fikirler 2. dönem listesine 
 
 **1,65 m geçişi (H4–5, 21–29 Ekim):** hoca 1,70 m + 10" kafa istedi, Duffy 1,65 m'ye çekti; Y2a (CAD + bağımsız kontrol) ve Y2b
 (maliyet, baskı listesi, elektrik, belgeler) bitti, kararlar 29.10 (akü yerinde, tilt ±13). Sırada Y3 M6 CAD, Y4 tam tarama, Y5 montaj
-rehberi, Y6 belgeler (`planlama/dongu.md`). Sipariş ve baskı bu sayılarla; takvim satırları değişmedi.
+rehberi, Y6 belgeler (`planlama/dongu.md`). Sipariş ve baskı bu sayılarla; hocadaki listenin güncel tasarımla farkı `planlama/siparis-farki-2026-10-29.md` (+9.328 TL; eski kalemlerde ekleme / çıkarma serbest, Duffy 29.10). Takvim satırları değişmedi.
 
 Kapasite (tahmini): 4 kişi × haftada ≈ 8 saat × 15 hafta ≈ 480 kişi-saat. Yazılım 150–220 saat,
 mekanik + elektrik + montaj 150–250 saat → 1. aşama sığar, hafif görüntü sınırda.
@@ -70,7 +70,7 @@ denenebilir (Manisa OSB). TÜBİTAK 2209-A ve 2209-B takvimi bir döneme yetişm
 | Servolar yüzünden Pi'nin yeniden başlaması | Ayrı güç hatları, ortak toprak, kondansatör |
 | Parça stoğu / kargo | İlk iki haftada sipariş, her kalem için ikinci satıcı |
 | Demo günü internet ve gürültü | Mobil modem, çevrimdışı yedek mod, bas-konuş düğmesi |
-| Devrilme, servo yetersizliği | CAD hesabı baskıdan önce; akü en altta. 1,65 m: akü yerinde → yazılımda rampada kollar ev pozunda + ivme ≤ 0,1 m/s², düzde ≤ 0,5; el yükü ≈ 100 g (0,5 kg'da servo payı < 1; açık konu) |
+| Devrilme, servo yetersizliği | CAD hesabı baskıdan önce; akü en altta. 1,65 m: akü yerinde → yazılımda rampada kollar ev pozunda + ivme ≤ 0,1 m/s², düzde ≤ 0,5, fren ≤ 1,8 m/s² (29.10); el yükü ≈ 100 g (0,5 kg'da servo payı < 1; açık konu) |
 | 2. dönemde staj | Bölüme sor; asıl hedefi 1. döneme göre kur |
 | Yazılım sorumlusunun ayrılması | Ortak depo; ikinci kişi de konuşma zincirini çalıştırabilsin |
 

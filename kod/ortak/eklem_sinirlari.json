@@ -102,7 +102,7 @@
   },
   "teker": {
     "sinirsiz": true,
-    "not_": "hiz / ivme siniri yazilimda: duz zeminde <= 0,5 m/s2 (motor surekli torkunun ~%50'si; devrilme payi >= 1,5 icin sinir ~2,0 m/s2, el yuku <= 100 g, planlama/y2/Y2b-ivme.json); rampada / egimde <= 0,1 m/s2 ve kollar ev pozunda (karar 29 Ekim 2026, Y2a KZ1; aku yerinde). Acil stop freni 1,5 m/s2 varsayimiyla duzde pay >= 1,85"
+    "not_": "hiz / ivme siniri yazilimda: duz zeminde <= 0,5 m/s2 (motor surekli torkunun ~%50'si; devrilme payi >= 1,5 icin sinir ~2,0 m/s2, el yuku <= 100 g, planlama/y2/Y2b-ivme.json); rampada / egimde <= 0,1 m/s2 ve kollar ev pozunda (karar 29 Ekim 2026, Y2a KZ1; aku yerinde). Yazilim / acil stop freni <= 1,8 m/s2 (karar 29 Ekim 2026, Y2b): duzde el yukunde 0,5 kg ile bile pay >= 1,54 (yuksuz 1,72, 100 g 1,68; Y2b-ivme.json fren_pay)"
   },
   "bagimli": [
     {

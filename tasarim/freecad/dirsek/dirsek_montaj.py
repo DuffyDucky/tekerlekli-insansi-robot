@@ -993,19 +993,15 @@ for ad in ("dirsek servosu (MG996R)", "bilek servosu (MG996R)"):
     uzat.append(dict(servo=ad, uzatma_mm=round(toplam, 0),
                      parca=dict(birlesim_G2=round(L_uz, 1), gecis=round(boy_g, 1), s1_lop=S1["L"], cikis_govde_ici=round(L_cik_ici, 1),
                                 govde_ici_dikeye=round(boy_bag, 1), dikey_dagitim=round(boy_dik, 1), konnektor_payi=S1["jr_pay"])))
-# S2 servosu (DS3218, kablosu 300): G2'ye s2_servo_kablo (tahmini) + gecis + S1 lopu + cikis -> govde icinde birlesim (kalan boy)
-s2_gerek = S1["s2_servo_kablo"] + boy_g + S1["L"]
-_c_pts = KY.s1_cikis(KK, S1O)
-_c_yarik = KY.cokgen(_c_pts[:4])[1]                     # duvar bagi -> yarigin ic agzi (x_ic)
-s2_yarik = s2_gerek + _c_yarik
-s2_kalan = KK["servo_kablo_boy"] - s2_yarik
-# kablo ucu (disi JR, 14 mm) ped ic yuzunu tamamen gecmeli: kalan + (ped ic yuzu - x_ic) >= JR boyu
-s2_kalan_sart = KK["jr_disi"][2] - (A.OMUZ_DUVAR["x0"] - S1["cikis"]["x_ic"])
-uzat.append(dict(servo="S2 servosu (DS3218, 300 mm kablo)", servo_kablo_yariga_mm=round(s2_yarik, 1), kalan_mm=round(s2_kalan, 1),
-                 kalan_sart_mm=round(s2_kalan_sart, 1),
-                 birlesim="kabuk icinde yarik arkasinda" if s2_kalan >= s2_kalan_sart else "KABLO YETMEZ: gobekte birlesim gerekir",
-                 uzatma_mm=round(L_cik_ici - _c_yarik + boy_bag + boy_dik + S1["jr_pay"] - max(s2_kalan, 0.0), 0),
-                 ok=bool(s2_kalan >= s2_kalan_sart)))
+# S2 servosu (DS3235): Y1b B10'dan beri kablosu U lopundan / yariktan gecmez; gobekte G2 oncesi (s2_birlesim) uzatmaya eklenir.
+# Uzatma dirsek / bilekle ayni yolu G2 oncesinden izler: G2_once + gecis + S1 lopu + cikis -> govde ici + dikey + konnektor payi.
+# (Eski yarik yolu "DS3218, 300 mm kablo ... uzatma 1.490" Y2b kontrolunde bulundu, 29 Ekim 2026; Y2b hesabi 1.769,8 mm.)
+_s2b = S1["s2_birlesim"]
+uzat.append(dict(servo="S2 servosu (%s)" % A.OMUZ["servo_ad"], birlesim=_s2b["yer"],
+                 uzatma_mm=round(_s2b["G2_once"] + L_s1_toplam + S1["jr_pay"], 0),
+                 parca=dict(birlesim_G2=_s2b["G2_once"], gecis=round(boy_g, 1), s1_lop=S1["L"], cikis_govde_ici=round(L_cik_ici, 1),
+                            govde_ici_dikeye=round(boy_bag, 1), dikey_dagitim=round(boy_dik, 1), konnektor_payi=S1["jr_pay"]),
+                 not_="servo kablosu G2 oncesine s2_servo_kablo (tahmini) ile ulasir; ek lehim + makaron (%s)" % _s2b["ek"]))
 kablo["s1_boy"] = dict(uzatma=uzat, dagitim=_sd_not, kaynak="KOL_KABLO s1 govde_ici / govde_dikey (taban_parcalar YOL 'Servo 6 V A', 15 Ekim)",
                        not_="kol basina 3 kablo (dirsek, bilek uzatmasi + S2 servosu); sol kol ayni (B karti). Konnektor payi tahmini.")
 log("kablo S1 boy:", [(u["servo"], u.get("uzatma_mm"), u.get("kalan_mm")) for u in uzat])

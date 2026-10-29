@@ -109,17 +109,24 @@ Tanımdaki yedi iş (eklem_sinirlari, maliyet.json, baskı listesi, elektrik/ak�
 
 **Düzeltilecek (küçük; Y2b commit'ini durdurmaz):**
 - `planlama/adim3/elektrik.md:355`: "Artık yedek GPIO yok." → "yedek GPIO16 / 17 (Nextion kalktı, Y2b)".
+  - KARAR 29.10: düzeltildi ("GPIO16 / 17 boş").
 - `tasarim/freecad/dirsek/dirsek_montaj.py:1004` → `dirsek-analiz.json` `kablo.s1_boy` S2 satırı (DS3218, yarık yolu, 1.490) göbek eki
   yoluna (≈ 1.770) çevrilmeli; `elektrik.md:23` bu alanı kaynak gösteriyor (Y4, modüller yeniden üretilirken).
+  - KARAR 29.10: betik düzeltildi (S2 = G2 öncesi + dirsek / bilekle aynı yol ≈ 1.770); JSON FreeCAD'le Y4'te yeniden üretilir; `elektrik.md` kaynağı Y2b hesabına (1.769,8) çevrildi.
 - 0,25 m/s² artıkları: `OZET.md:28, 43`, `taban_rapor.py:143, 301, 539, 547`, `Lale-Proje-Ozeti.txt:138` (Y4 / Y6).
+  - KARAR 29.10: Y4 / Y6'ya bırakıldı (dokunulmadı).
 - `Y2a-gunluk.md:114–134` zaman damgaları (isteğe bağlı).
 
 **Duffy kararı gerektirenler:**
 - **Fren sınırı:** E6 "≤ 2 m/s²" el yükü 0,5 kg'da pay 1,39. Ya el yükü ≤ 100 g kararı (KZ2) ya da fren ≤ 1,85 m/s² (0,5 kg'da pay 1,5).
   Belgelerde tek fren değeri seçilmeli (1,5 varsayım mı, ≤ 2 sınır mı).
+  - KARAR 29.10: tek fren değeri **≤ 1,8 m/s²**; düzde pay 0,5 kg 1,54 / 100 g 1,68 / yüksüz 1,72 (`Y2b-ivme.json` `fren_pay`); düz sürüş ≤ 0,5, rampada ≤ 0,1 kalır. Açık: rampada 1,8 frende ev pozu payı 1,31 → rampada yavaşlama da ≤ 0,1 önerildi.
 - **Servo hattı ≈ 5,5 A > XL4016 5 A:** ölçüm, gerekirse hat başına 20 A düşürücü (maliyet etkisi).
+  - KARAR 29.10: sağ kol / sol kol ayrı XL4016, kafa pan + tilt üçüncü XL4016 (3 → 4): kol hattı yoğun 4,87 / tepe 7,24 A, kafa 1,5 / 5,0 A; genel 109.001,35 TL. Ölçüm yine gerekli.
 - **Akü:** yoğun kullanımda 1,8 sa, fuar karışımı 5,1 sa (8 saatlik fuar için öğle şarjı ya da ikinci akü; değişmedi).
+  - KARAR 29.10: gereksinim 2 saat kullanım; yoğun kullanımda hesaplanan 1,83 sa Duffy tarafından kabul edildi (29.10). Normal 5,9 sa. Tasarım değişikliği yok.
 - `proje-plani.md:27`: "sipariş verildi" silinmesi doğru mu.
+  - KARAR 29.10: sipariş verilmedi; sipariş listesi hocaya iletildi (17 Ekim listesi). Fark: `planlama/siparis-farki-2026-10-29.md`.
 
 ### Değiştirilen / eklenen dosyalar
 Yalnız `planlama/y2/Y2b-kontrol.md` (bu). Bağımsız devrilme betiği ve akü kopya koşusu kontrol scratchpad'inde; tasarım dosyalarına

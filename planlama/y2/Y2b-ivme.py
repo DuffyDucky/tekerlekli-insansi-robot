@@ -11,6 +11,7 @@ import moduller as MD
 A = MD.A; V = App.Vector
 G = 9.81
 PAY = 1.5
+FREN = 1.8   # acil stop / yazilim freni ust siniri (karar 29.10, Duffy): duzde pay = a_dev_min / FREN >= 1,5 olmali
 P = []
 TUM = {}
 for ad in MD.SIRA:
@@ -71,8 +72,11 @@ for yuk in (0.0, 100.0, 500.0):
                     if key not in en or v < en[key][0]:
                         en[key] = (round(v, 3), kip, (s1, s2, dr), [round(c, 2) for c in C], round(m, 1))
     sinir = {k: round(v[0] / PAY, 3) for k, v in en.items()}
+    fren = {k: round(v[0] / FREN, 3) for k, v in en.items() if k.startswith("duz")}
     OUT["izgara_yuk_%dg" % int(yuk)] = dict(en_kotu=en, a_sinir_pay15=sinir,
-                                            duz_a_sinir_min=round(min(v for k, v in sinir.items() if k.startswith("duz")), 3))
+                                            duz_a_sinir_min=round(min(v for k, v in sinir.items() if k.startswith("duz")), 3),
+                                            fren_pay=dict(fren_m_s2=FREN, duz=fren, duz_min=min(fren.values()),
+                                                          gecer=min(fren.values()) >= PAY))
     print("yuk", yuk, OUT["izgara_yuk_%dg" % int(yuk)], flush=True)
 json.dump(OUT, open(os.path.join(HERE, "Y2b-ivme.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print("yazildi Y2b-ivme.json")
