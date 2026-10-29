@@ -1,8 +1,11 @@
-# Boşta duruşu. SON KARE "boşta duruş" sayılır: her jest bitince servolar buraya döner,
-# ESP32 açılınca da servolar buraya gider. Bu yüzden son kare TÜM kanalları yazmalı.
-# DURUM: taslak (mekanik ölçülmedi).
+# Boşta duruşu = EV POZU (her eklem 0; S2 alt sınırı 5). SON KARE "boşta duruş" sayılır: her jest
+# bitince servolar buraya döner, ESP32 açılınca ve rampa kipine girince de servolar buraya gider.
+# Bu yüzden son kare TÜM kanalları yazmalı.
+# Robot açısı = eklem + ofset (kanallar.yaml): omuz 45 = kol aşağıda, omuz_yan 5 = kol gövde yanında
+# (5'in ALTINA İNME: el yüze/kabuğa girer), dirsek 0 = düz, bilek 90 = avuç içe, kafa 90/90 = düz ileri.
+# DURUM: taslak (mekanik ölçülmedi, 29 Ekim 2026).
 ad: bosta
-aciklama: "Kollar hafif açık aşağıda, kafa ileri"
+aciklama: "Ev pozu: kollar aşağıda gövde yanında, kafa ileri"
 kareler:
-  - {ms: 0,    sag_omuz: 10, sag_dirsek: 15, sol_omuz: 10, sol_dirsek: 15, kafa_pan: 90, kafa_tilt: 90}
-  - {ms: 1000, sag_omuz: 10, sag_dirsek: 15, sol_omuz: 10, sol_dirsek: 15, kafa_pan: 90, kafa_tilt: 90}
+  - {ms: 0,    sag_omuz: 45, sag_omuz_yan: 5, sag_dirsek: 0, sag_bilek: 90, kafa_pan: 90, sol_omuz: 45, sol_omuz_yan: 5, sol_dirsek: 0, sol_bilek: 90, kafa_tilt: 90}
+  - {ms: 1000, sag_omuz: 45, sag_omuz_yan: 5, sag_dirsek: 0, sag_bilek: 90, kafa_pan: 90, sol_omuz: 45, sol_omuz_yan: 5, sol_dirsek: 0, sol_bilek: 90, kafa_tilt: 90}
