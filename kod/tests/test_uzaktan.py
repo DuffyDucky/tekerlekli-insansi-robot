@@ -234,6 +234,35 @@ def test_bakim_dosyasi(ortam):
     assert json_istek(ortam.sunucu, "POST", "/bakim", {"ac": "evet"}, cerez)[0] == 400
 
 
+def test_rampa_kipi(ortam):
+    cerez = giris_yap(ortam.sunucu)
+    assert json_istek(ortam.sunucu, "GET", "/durum", cerez=cerez)[1]["rampa"] is False
+    kod, veri = json_istek(ortam.sunucu, "POST", "/rampa", {"ac": True}, cerez)
+    assert kod == 200 and veri["rampa"] is True
+    assert son_komut(ortam.robot) == {"k": "rampa", "ac": True}
+    assert json_istek(ortam.sunucu, "GET", "/durum", cerez=cerez)[1]["rampa"] is True
+    # rampada kollar ev pozunda: jest reddedilir, ESP32'ye gönderilmez
+    kod, veri = json_istek(ortam.sunucu, "POST", "/jest", {"ad": "selam"}, cerez)
+    assert kod == 409 and "ev pozunda" in veri["hata"]
+    assert son_komut(ortam.robot) == {"k": "rampa", "ac": True}
+    # sürüş rampada da çalışır (ivme sınırını ESP32 uygular)
+    assert json_istek(ortam.sunucu, "POST", "/sur", {"v": 0.1, "w": 0}, cerez)[0] == 200
+    assert json_istek(ortam.sunucu, "POST", "/dur", {}, cerez)[0] == 200
+    kod, veri = json_istek(ortam.sunucu, "POST", "/rampa", {"ac": False}, cerez)
+    assert kod == 200 and veri["rampa"] is False
+    assert son_komut(ortam.robot) == {"k": "rampa", "ac": False}
+    assert json_istek(ortam.sunucu, "POST", "/jest", {"ad": "selam"}, cerez)[0] == 200
+    assert json_istek(ortam.sunucu, "POST", "/rampa", {"ac": "evet"}, cerez)[0] == 400
+    assert json_istek(ortam.sunucu, "POST", "/rampa", {"ac": True})[0] == 401
+
+
+def test_sayfada_rampa_anahtari(ortam):
+    _, icerik = istek(ortam.sunucu, "GET", "/")
+    sayfa = icerik.decode("utf-8")
+    assert 'id="rampa"' in sayfa and 'role="switch"' in sayfa
+    assert "kollar ev pozunda, yavaş" in sayfa and '"/rampa"' in sayfa
+
+
 # ---------- ana döngüyle etkileşim ----------
 
 def test_son_soru_cevap_dil_gecmisinden(ortam):

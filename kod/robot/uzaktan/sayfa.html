@@ -106,6 +106,11 @@
   .anahtar[aria-checked="true"] .kol::after { transform: translateX(24px); background: var(--vurgu-yazi); }
   .anahtar:active { background: var(--yuzey-2); color: var(--yazi); }
 
+  .rampa-uyari {
+    margin: 10px 0 0; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--uyari);
+    color: var(--uyari); background: rgba(252, 211, 77, .08); font-weight: 600;
+  }
+
   .konusma { font-size: 15px; color: var(--soluk); margin: 0; }
   .konusma b { color: var(--yazi); font-weight: 600; }
   .hata-yazi { color: var(--kotu); min-height: 1.4em; margin: 8px 0 0; }
@@ -136,6 +141,7 @@
   <span><span class="etiket">Durum:</span> <strong id="durum-yazi">—</strong></span>
   <span><span class="etiket">Bölge:</span> <strong id="bolge-yazi">—</strong></span>
   <span id="bakim-rozet" class="rozet" hidden>Bakım</span>
+  <span id="rampa-rozet" class="rozet" hidden>Rampa</span>
   <span id="sahte-rozet" class="rozet" hidden title="ESP32 bağlı değil; komutlar yalnız terminale yazılıyor">Sahte seri</span>
 </header>
 
@@ -169,6 +175,14 @@
         <button type="button" id="hiz-normal" aria-pressed="false">Normal</button>
       </div>
       <p class="ipucu">Basılı tutun, bırakınca durur. Klavyede ok tuşları; Esc = DUR.</p>
+    </section>
+
+    <section class="kart" aria-labelledby="rampa-baslik">
+      <h2 id="rampa-baslik">Rampa</h2>
+      <button type="button" id="rampa" class="anahtar" role="switch" aria-checked="false" aria-describedby="rampa-uyari">
+        <span>Rampa / eğim kipi</span><span class="kol" aria-hidden="true"></span>
+      </button>
+      <p id="rampa-uyari" class="rampa-uyari" role="status" hidden>Rampa kipi açık: kollar ev pozunda, yavaş (hızlanma ve fren en çok 0,1 m/s²). Jest yok.</p>
     </section>
 
     <section class="kart" aria-labelledby="jest-baslik">
@@ -233,7 +247,7 @@
 const HIZLAR = { yavas: { v: 0.15, w: 0.6 }, normal: { v: 0.3, w: 0.9 } };   // m/s, rad/s
 const YON = { ileri: [1, 0], geri: [-1, 0], sol: [0, 1], sag: [0, -1] };       // [v işareti, w işareti]
 const DURUM_ADI = { "BEKLE": "Bekliyor", "DİNLE": "Dinliyor", "DÜŞÜN": "Düşünüyor", "KONUŞ": "Konuşuyor", "JEST": "Jest" };
-const S = { hiz: "yavas", sinir: { v: 0.5, w: 1.0 }, surus: null, zamanlayici: null, sonBasari: 0, bakim: false, oturum: false };
+const S = { hiz: "yavas", sinir: { v: 0.5, w: 1.0 }, surus: null, zamanlayici: null, sonBasari: 0, bakim: false, rampa: false, oturum: false };
 const $ = (id) => document.getElementById(id);
 
 // ---------- ağ ----------
@@ -409,6 +423,20 @@ function bakimGoster(acik) {
   $("bakim-rozet").hidden = !S.bakim;
 }
 
+// Rampa kipi: ESP32 ivmeyi/freni 0,1 m/s²'ye indirir, kolları ev pozunda tutar; açıkken jest yok.
+$("rampa").addEventListener("click", async () => {
+  const s = await istek("/rampa", { ac: !S.rampa });
+  if (s.ok) rampaGoster(s.veri.rampa);
+  sonucBildir(s, s.veri.rampa ? "Rampa kipi açık: kollar ev pozunda, yavaş." : "Rampa kipi kapalı.");
+});
+function rampaGoster(acik) {
+  S.rampa = !!acik;
+  $("rampa").setAttribute("aria-checked", String(S.rampa));
+  $("rampa-uyari").hidden = !S.rampa;
+  $("rampa-rozet").hidden = !S.rampa;
+  document.querySelectorAll("[data-jest]").forEach((b) => { b.disabled = S.rampa; });
+}
+
 // ---------- durum ve giriş ----------
 async function durumYenile() {
   const s = await istek("/durum");
@@ -422,6 +450,7 @@ async function durumYenile() {
   $("son-cevap").textContent = d.son_cevap || "—";
   $("sahte-rozet").hidden = d.seri_turu !== "SahteSeri";
   bakimGoster(d.bakim);
+  rampaGoster(d.rampa);
 }
 
 function girisGoster() {
