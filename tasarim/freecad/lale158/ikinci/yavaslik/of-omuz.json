@@ -1,0 +1,455 @@
+{
+"ad": "Omuz bandi sag",
+"katman": 102,
+"sure": 998.7,
+"ozet": {
+"dis": {
+"n": 210,
+"top_s": 969.9,
+"hata": 34,
+"ort_s": 4.618
+},
+"ic": {
+"n": 70,
+"top_s": 4.1,
+"hata": 70,
+"ort_s": 0.059
+},
+"dagilim": {
+"<1s": [
+265,
+13.0
+],
+"1-10s": [
+1,
+9.4
+],
+">=10s": [
+14,
+951.6
+]
+}
+},
+"en_pahali": [
+{
+"k": 100,
+"tur": "dis",
+"s": 141.408,
+"ok": false,
+"kenar": 12,
+"tip": {
+"Line": 8,
+"BSplineCurve": 4
+},
+"alan": 571.321,
+"dx": 164.0,
+"dy": 146.8
+},
+{
+"k": 91,
+"tur": "dis",
+"s": 128.747,
+"ok": false,
+"kenar": 12,
+"tip": {
+"Line": 8,
+"BSplineCurve": 4
+},
+"alan": 570.784,
+"dx": 164.0,
+"dy": 146.4
+},
+{
+"k": 92,
+"tur": "dis",
+"s": 121.005,
+"ok": false,
+"kenar": 12,
+"tip": {
+"Line": 8,
+"BSplineCurve": 4
+},
+"alan": 570.844,
+"dx": 164.0,
+"dy": 146.5
+},
+{
+"k": 99,
+"tur": "dis",
+"s": 103.854,
+"ok": false,
+"kenar": 12,
+"tip": {
+"Line": 8,
+"BSplineCurve": 4
+},
+"alan": 571.261,
+"dx": 164.0,
+"dy": 146.7
+},
+{
+"k": 95,
+"tur": "dis",
+"s": 95.941,
+"ok": false,
+"kenar": 8,
+"tip": {
+"Line": 3,
+"BSplineCurve": 4,
+"Ellipse": 1
+},
+"alan": 262.246,
+"dx": 31.2,
+"dy": 146.6
+},
+{
+"k": 97,
+"tur": "dis",
+"s": 81.721,
+"ok": false,
+"kenar": 8,
+"tip": {
+"Line": 3,
+"BSplineCurve": 4,
+"Ellipse": 1
+},
+"alan": 261.219,
+"dx": 30.4,
+"dy": 146.7
+},
+{
+"k": 98,
+"tur": "dis",
+"s": 69.773,
+"ok": false,
+"kenar": 8,
+"tip": {
+"Line": 3,
+"BSplineCurve": 4,
+"Ellipse": 1
+},
+"alan": 262.595,
+"dx": 31.3,
+"dy": 146.7
+},
+{
+"k": 94,
+"tur": "dis",
+"s": 63.505,
+"ok": false,
+"kenar": 12,
+"tip": {
+"Line": 8,
+"BSplineCurve": 4
+},
+"alan": 570.963,
+"dx": 164.0,
+"dy": 146.5
+},
+{
+"k": 71,
+"tur": "dis",
+"s": 51.98,
+"ok": false,
+"kenar": 16,
+"tip": {
+"BSplineCurve": 7,
+"Line": 9
+},
+"alan": 356.789,
+"dx": 152.0,
+"dy": 44.4
+},
+{
+"k": 70,
+"tur": "dis",
+"s": 32.845,
+"ok": false,
+"kenar": 20,
+"tip": {
+"BSplineCurve": 8,
+"Line": 12
+},
+"alan": 362.881,
+"dx": 152.0,
+"dy": 45.1
+},
+{
+"k": 64,
+"tur": "dis",
+"s": 26.484,
+"ok": false,
+"kenar": 16,
+"tip": {
+"BSplineCurve": 7,
+"Line": 9
+},
+"alan": 386.92,
+"dx": 152.0,
+"dy": 49.1
+},
+{
+"k": 63,
+"tur": "dis",
+"s": 13.787,
+"ok": false,
+"kenar": 16,
+"tip": {
+"BSplineCurve": 7,
+"Line": 9
+},
+"alan": 380.395,
+"dx": 152.0,
+"dy": 48.4
+},
+{
+"k": 69,
+"tur": "dis",
+"s": 10.34,
+"ok": false,
+"kenar": 12,
+"tip": {
+"Line": 5,
+"BSplineCurve": 7
+},
+"alan": 677.971,
+"dx": 164.0,
+"dy": 58.8
+},
+{
+"k": 72,
+"tur": "dis",
+"s": 10.214,
+"ok": false,
+"kenar": 12,
+"tip": {
+"Line": 5,
+"BSplineCurve": 7
+},
+"alan": 688.054,
+"dx": 164.0,
+"dy": 61.9
+},
+{
+"k": 66,
+"tur": "dis",
+"s": 9.361,
+"ok": false,
+"kenar": 12,
+"tip": {
+"Line": 5,
+"BSplineCurve": 7
+},
+"alan": 667.141,
+"dx": 164.0,
+"dy": 55.7
+},
+{
+"k": 97,
+"tur": "ic",
+"s": 0.459,
+"ok": false,
+"kenar": 7,
+"tip": {
+"BSplineCurve": 2,
+"Line": 3,
+"Ellipse": 2
+},
+"alan": 2.524,
+"dx": 31.3,
+"dy": 4.0
+},
+{
+"k": 92,
+"tur": "ic",
+"s": 0.361,
+"ok": false,
+"kenar": 5,
+"tip": {
+"Line": 3,
+"BSplineCurve": 2
+},
+"alan": 6.045,
+"dx": 152.0,
+"dy": 4.0
+},
+{
+"k": 74,
+"tur": "ic",
+"s": 0.33,
+"ok": false,
+"kenar": 6,
+"tip": {
+"BSplineCurve": 5,
+"Line": 1
+},
+"alan": 4.115,
+"dx": 152.0,
+"dy": 5.0
+},
+{
+"k": 76,
+"tur": "ic",
+"s": 0.305,
+"ok": false,
+"kenar": 6,
+"tip": {
+"BSplineCurve": 5,
+"Line": 1
+},
+"alan": 4.096,
+"dx": 152.0,
+"dy": 4.7
+},
+{
+"k": 98,
+"tur": "ic",
+"s": 0.274,
+"ok": false,
+"kenar": 8,
+"tip": {
+"Circle": 1,
+"OffsetCurve": 1,
+"Line": 3,
+"Ellipse": 1,
+"BSplineCurve": 2
+},
+"alan": 1.945,
+"dx": 31.8,
+"dy": 4.0
+},
+{
+"k": 72,
+"tur": "dis",
+"s": 0.27,
+"ok": true,
+"kenar": 16,
+"tip": {
+"BSplineCurve": 7,
+"Line": 9
+},
+"alan": 341.152,
+"dx": 152.0,
+"dy": 43.7
+},
+{
+"k": 73,
+"tur": "ic",
+"s": 0.266,
+"ok": false,
+"kenar": 6,
+"tip": {
+"BSplineCurve": 5,
+"Line": 1
+},
+"alan": 4.125,
+"dx": 152.0,
+"dy": 5.2
+},
+{
+"k": 72,
+"tur": "ic",
+"s": 0.256,
+"ok": false,
+"kenar": 6,
+"tip": {
+"BSplineCurve": 5,
+"Line": 1
+},
+"alan": 4.135,
+"dx": 152.0,
+"dy": 5.3
+},
+{
+"k": 94,
+"tur": "ic",
+"s": 0.206,
+"ok": false,
+"kenar": 5,
+"tip": {
+"BSplineCurve": 2,
+"Line": 2,
+"Ellipse": 1
+},
+"alan": 1.237,
+"dx": 31.1,
+"dy": 4.0
+},
+{
+"k": 68,
+"tur": "dis",
+"s": 0.205,
+"ok": true,
+"kenar": 20,
+"tip": {
+"BSplineCurve": 8,
+"Line": 12
+},
+"alan": 231.61,
+"dx": 71.0,
+"dy": 46.4
+}
+],
+"en_pahali_katman": [
+[
+100,
+141.56528043746948
+],
+[
+91,
+128.8664264678955
+],
+[
+92,
+121.36549544334412
+],
+[
+99,
+103.93238615989685
+],
+[
+95,
+96.0937774181366
+],
+[
+97,
+82.18908333778381
+],
+[
+98,
+70.0600209236145
+],
+[
+94,
+63.71118521690369
+],
+[
+71,
+52.0985906124115
+],
+[
+70,
+32.89380073547363
+],
+[
+64,
+26.61124300956726
+],
+[
+63,
+13.850498914718628
+],
+[
+72,
+10.754330158233643
+],
+[
+69,
+10.488208293914795
+],
+[
+66,
+9.66700005531311
+]
+]
+}

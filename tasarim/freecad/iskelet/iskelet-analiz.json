@@ -686,25 +686,25 @@
    "taban"
   ]
  },
- "kutle_g": 6548.1,
+ "kutle_g": 6410.8,
  "kutle_grup": {
   "Sase": 3428.5,
-  "Direk": 2526.1,
+  "Direk": 2388.8,
   "Travers": 593.5
  },
  "kutle_tur": {
-  "Satin": 6413.5,
+  "Satin": 6276.2,
   "Baglanti": 134.6
  },
  "agirlik_merkezi": [
-  0.0,
-  443.12,
+  -0.0,
+  418.61,
   0.0
  ],
  "kesim": {
   "parcalar": [
    [
-    1185.5,
+    1115.5,
     "Govde diregi"
    ],
    [
@@ -732,7 +732,7 @@
     "Sase ara rayi arka"
    ]
   ],
-  "toplam_mm": 2955.5,
+  "toplam_mm": 2885.5,
   "stok_mm": 1000.0,
   "testere_mm": 3.0,
   "stok_tolerans_mm": 2.0,
@@ -743,7 +743,7 @@
     "stok_mm": 2000.0,
     "parcalar": [
      [
-      1185.5,
+      1115.5,
       "Govde diregi"
      ],
      [
@@ -755,8 +755,8 @@
       "Sase ara rayi on"
      ]
     ],
-    "artik": 113.5,
-    "artik_nominal": 115.5,
+    "artik": 183.5,
+    "artik_nominal": 185.5,
     "kesim_sayisi": 3
    },
    {
@@ -792,8 +792,8 @@
     "kesim_sayisi": 1
    }
   ],
-  "kutle_uretici_g": 5881.0,
-  "kutle_model_g": 5795.8
+  "kutle_uretici_g": 5742.0,
+  "kutle_model_g": 5658.5
  },
  "egilme": {
   "kesit": {
@@ -804,13 +804,13 @@
    "uretici_alan_mm2": 732.0
   },
   "varsayim": [
-   "Direk tabandan ankastre konsol (orta ara ray + 2 köşe bağlantı rijit kabul edildi), boy 1185.5 mm",
+   "Direk tabandan ankastre konsol (orta ara ray + 2 köşe bağlantı rijit kabul edildi), boy 1115.5 mm",
    "Travers her yarısı direk yüzünden (x = 20) ankastre konsol; köşe bağlantıların x = 57'ye kadar desteği ihmal edildi (güvenli taraf)",
    "Yük traverse omuz yuvasından (x 70…103, orta 86,5) tekil kuvvet + moment olarak girer",
    "Kol kütleleri omuz modelinden (PETG %60 doluluk, servo 60 g); dirsek ve aşağısı 260 g, omuz ekseninden 200 mm (omuz modeli, tahmini)",
    "El ucu omuz ekseninden 306 mm (rc:81 ARM0; yeni omuzda tahmini), her elde 500 g yük",
    "E = 69000 MPa, Rp0,2 = 110 MPa (6063, temper bilinmiyor: tahmini); statik hesap, dinamik etki için ×2 pay önerilir",
-   "Kabul sınırları (tahmini): direk tepe sehimi ≤ L/500 = 2.4 mm, el ucu düşey yer değiştirmesi ≤ 2.0 mm",
+   "Kabul sınırları (tahmini): direk tepe sehimi ≤ L/500 = 2.2 mm, el ucu düşey yer değiştirmesi ≤ 2.0 mm",
    "Bağlantı esnekliği (köşe bağlantı, çekiç somun sürtünmesi) hesaba katılmadı; gerçek sehim daha büyük olur"
   ],
   "adli": [
@@ -826,9 +826,9 @@
     ],
     "Mx_Nm": 4.173966486639133,
     "Mz_Nm": -1.2505552149377763e-15,
-    "sigma_direk_MPa": 0.8070603802401526,
-    "sehim_tepe_mm": 0.3712434119913754,
-    "donme_tepe_derece": 0.03588474176152211,
+    "sigma_direk_MPa": 0.8052062902401527,
+    "sehim_tepe_mm": 0.32869627931644946,
+    "donme_tepe_derece": 0.03376586202866125,
     "travers": [
      {
       "taraf": "sag",
@@ -851,7 +851,7 @@
       "donme_yuva_rad": 0.0
      }
     ],
-    "el_dususu_mm": 0.19339743903897003
+    "el_dususu_mm": 0.18208112213455685
    },
    {
     "ad": "İki kol yana tam açık (yana 90°) + 0,5 kg",
@@ -865,9 +865,9 @@
     ],
     "Mx_Nm": -0.02750644985718044,
     "Mz_Nm": 1.3642420526593924e-15,
-    "sigma_direk_MPa": 0.08280246993078329,
-    "sehim_tepe_mm": 0.002446495037618688,
-    "donme_tepe_derece": 0.00023648054028722123,
+    "sigma_direk_MPa": 0.08094837993078327,
+    "sehim_tepe_mm": 0.0021661093241167107,
+    "donme_tepe_derece": 0.0002225171174107088,
     "travers": [
      {
       "taraf": "sag",
@@ -890,7 +890,7 @@
       "donme_yuva_rad": 0.0
      }
     ],
-    "el_dususu_mm": 0.013458549065225638
+    "el_dususu_mm": 0.013458244430595578
    },
    {
     "ad": "Sağ kol yana tam açık + 0,5 kg, sol kol aşağıda",
@@ -904,9 +904,9 @@
     ],
     "Mx_Nm": -0.02750644985718043,
     "Mz_Nm": 2.1009097429331485,
-    "sigma_direk_MPa": 0.4497662141047807,
-    "sehim_tepe_mm": 0.18687637986484051,
-    "donme_tepe_derece": 0.018063648851858148,
+    "sigma_direk_MPa": 0.44791212410478065,
+    "sehim_tepe_mm": 0.16545901898759496,
+    "donme_tepe_derece": 0.016997047907421143,
     "travers": [
      {
       "taraf": "sag",
@@ -929,7 +929,7 @@
       "donme_yuva_rad": 0.0
      }
     ],
-    "el_dususu_mm": 0.16824292565266946
+    "el_dususu_mm": 0.15910309646205367
    },
    {
     "ad": "Sağ kol öne, sol kol yana tam açık + 0,5 kg",
@@ -943,9 +943,9 @@
     ],
     "Mx_Nm": 2.0732300183909755,
     "Mz_Nm": -2.1009097429331476,
-    "sigma_direk_MPa": 0.8070906459511802,
-    "sehim_tepe_mm": 0.2625254035366255,
-    "donme_tepe_derece": 0.025375955525293054,
+    "sigma_direk_MPa": 0.8052365559511803,
+    "sehim_tepe_mm": 0.23243812706511532,
+    "donme_tepe_derece": 0.02387758615644403,
     "travers": [
      {
       "taraf": "sag",
@@ -968,7 +968,7 @@
       "donme_yuva_rad": 0.0
      }
     ],
-    "el_dususu_mm": 0.15526097636883837
+    "el_dususu_mm": 0.1461964961467611
    },
    {
     "ad": "İki kol aşağıda (yüksüz referans)",
@@ -982,9 +982,9 @@
     ],
     "Mx_Nm": -0.015243949857180425,
     "Mz_Nm": -6.252776074688881e-16,
-    "sigma_direk_MPa": 0.06715374854214139,
-    "sehim_tepe_mm": 0.0013558364628274454,
-    "donme_tepe_derece": 0.00013105644374518556,
+    "sigma_direk_MPa": 0.06529965854214138,
+    "sehim_tepe_mm": 0.0012004479710560096,
+    "donme_tepe_derece": 0.00012331797806643146,
     "travers": [
      {
       "taraf": "sag",
@@ -1007,11 +1007,11 @@
       "donme_yuva_rad": 0.0
      }
     ],
-    "el_dususu_mm": 0.0010185378930475564
+    "el_dususu_mm": 0.0010183690659161218
    }
   ],
   "en_kotu": {
-   "direk_sigma_MPa": 0.9256823388217692,
+   "direk_sigma_MPa": 0.9238282488217692,
    "direk_poz": [
     [
      90,
@@ -1022,7 +1022,7 @@
      45
     ]
    ],
-   "direk_sehim_mm": 0.3363791600940706,
+   "direk_sehim_mm": 0.29782771839485717,
    "travers_sigma_MPa": 0.7114898118206315,
    "travers_poz": [
     [
@@ -1035,7 +1035,7 @@
     ]
    ],
    "travers_sehim_uc_mm": 0.0014728521142583302,
-   "sehim_tepe_mm": 0.36982129231639554,
+   "sehim_tepe_mm": 0.3274371446602916,
    "sehim_poz": [
     [
      90,
@@ -1049,12 +1049,12 @@
    "izgara_poz": 13689
   },
   "sinir": {
-   "direk_mm": 2.371,
+   "direk_mm": 2.231,
    "el_mm": 2.0,
    "Rp02_MPa": 110.0
   },
   "sonuc": {
-   "direk_emniyet": 118.83126142388181,
+   "direk_emniyet": 119.06975148280176,
    "travers_emniyet": 154.6051653480757,
    "direk_sehim_uygun": true,
    "el_uygun": true
@@ -1099,9 +1099,9 @@
   ],
   [
    "Satin",
-   "Sigma 40x40 agir kanal 10, 1185.5 mm",
+   "Sigma 40x40 agir kanal 10, 1115.5 mm",
    1,
-   2324.8
+   2187.5
   ],
   [
    "Satin",
@@ -1123,5 +1123,5 @@
   ]
  ],
  "step_kati": 59,
- "sure_s": 21.0
+ "sure_s": 37.4
 }

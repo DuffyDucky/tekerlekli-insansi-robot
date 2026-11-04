@@ -103,7 +103,7 @@ def go():
     kaydet(v, "kafa-arka.png", 1100, 1200)
 
     # 2) boyun mekanizmasi yakin plan: kabuk, LCD, vizor, kamera gizli; kafa iskeleti yari saydam
-    gizli = kabuklar + [bul("Yuz ekrani Waveshare 7in HDMI LCD (C)"), bul("Vizor (siyah akrilik)"),
+    gizli = kabuklar + [bul("Yuz ekrani WaveShare 10,1in QLED HDMI"), bul("Vizor (siyah akrilik)"),
                         bul("Kamera Raspberry Pi Camera Module 3")] + [o for o in par if o.Label in ("Kabuk civatasi M3x8 ISO 7380",
                         "LCD civatasi M3x6 ISO 7380", "Kamera vidasi M2x8 PT", "Isil gomme somun M3 (LCD boss)")]
     for o in gizli:

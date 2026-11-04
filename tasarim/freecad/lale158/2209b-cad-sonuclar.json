@@ -1,0 +1,323 @@
+{
+ "guncelleme": "2026-11-04 18:47",
+ "sekil4": {
+  "durum": "tamam, PNG gozle kontrol edildi",
+  "png": "tasarim/freecad/lale158/gorsel/sekil4-on-yan.png",
+  "png_tam_yol": "C:\\Users\\Victus\\OneDrive\\Masaüstü\\Robot\\tasarim\\freecad\\lale158\\gorsel\\sekil4-on-yan.png",
+  "yakin_goruntu": [
+   "tasarim/freecad/lale158/gorsel/sekil4-ust-govde-on.png",
+   "tasarim/freecad/lale158/gorsel/sekil4-ust-govde-uc-ceyrek.png"
+  ],
+  "tek_gorunum": [
+   "tasarim/freecad/lale158/gorsel/sekil4-on.png",
+   "tasarim/freecad/lale158/gorsel/sekil4-yan.png"
+  ],
+  "kaynak": "montaj/robot-montaj.FCStd, 04.11.2026 10:22 ana montaj (158 cm, 10,1 in QLED kafa, gogus cercevesi)",
+  "not_": "sekil4-on-yan.png 2858x3936 (2,44 piksel/mm): solda on, sagda yan. Kafa ekrani, gogus ekrani ve kamera on gorunumde gozle dogrulandi; yan gorunumde ekran yuzleri gorunmez. Isaret yok, ham. 15:46 yeniden uretildi; ilk surum 1085x1410 kamerayi net gostermiyordu.",
+  "uretim": "lale158/sekil4_gorsel.py (17 s) + lale158/sekil4_birlestir.py"
+ },
+ "aku": {
+  "durum": "tamam (20 Ah, taban_montaj kosusu 04.11.2026 16:52; hepsi tahmini tuketim, olculmedi)",
+  "bosta_saat": 12.2,
+  "tipik_saat": 5.6,
+  "yogun_saat": 2.4,
+  "senaryo_adlari": "bosta = dusuk, tipik = orta, yogun = yuksek",
+  "aku": "Victron SuperPack 12,8 V 20 Ah, 256 Wh, kullanilabilir %80 (204,8 Wh). Dogrulama: malzeme listesi v4 satir 5; planlama K3",
+  "cekilen_W": {
+   "dusuk": 16.8,
+   "orta": 36.6,
+   "yuksek": 85.2
+  },
+  "saat_24ah_karsilastirma": {
+   "dusuk": 14.6,
+   "orta": 6.7,
+   "yuksek": 2.9
+  },
+  "ekran_varsayim": {
+   "guc_W": 4.5,
+   "akim_A": 0.9,
+   "gerilim_V": 5.0,
+   "kaynak": "arayuz.KAFA_EKRAN_QLED guc_W; olculmedi",
+   "dusuk_orta_yuksek_W": [
+    2.7,
+    4.5,
+    5.4
+   ],
+   "turetme": "orta = guc_W. dusuk ve yuksek, eski 7 inc satirinin (1,5 / 2,5 / 3,0 W) orta degere oranlari ile olceklendi (0,6 / 1,2). Hepsi varsayim."
+  },
+  "duzeltme": "taban_montaj.py 24 Ah (eski Limacell) kullaniyordu, duzeltildi. Aku secimi degismedi.",
+  "kaynak": "tasarim/freecad/taban/taban-analiz.json, aku",
+  "etki": "taban-analiz.json aku degisti; devrilme, kutle, parca ayni. Modeldeki aku kutlesi 2,8 kg, Victron 3,0 kg: modele islenmedi, devrilme ve kutle 2,8 kg ile."
+ },
+ "kol": {
+  "sag": {
+   "durum": "tamam",
+   "olcum": 24152,
+   "cakisma_sayisi": 684,
+   "cakisma_s2_araligi_derece": [
+    0,
+    3
+   ],
+   "s2_en_kucuk_mm": {
+    "0": 0.0,
+    "1": 0.0,
+    "2": 0.0,
+    "3": 0.0,
+    "4": 0.604,
+    "5": 1.358,
+    "6": 2.104,
+    "8": 3.568,
+    "10": 4.993,
+    "15": 8.376
+   },
+   "s2_5_ve_ustu_en_yakin_mm": 1.358,
+   "en_yakin_cift_s2_5": "Ust kol tupu <-> S1 kaset kapagi sag, poz S1 15, S2 5, dirsek 0, bilek -90",
+   "kayitli_ornek_cift": "JSON yalniz ilk 80 cakismayi tutar (hepsi S2 0): Ust kol tupu x S1 kaset kapagi/govdesi/civatasi, Dirsek catali x M5x18 braket civatasi, El x gogus bandi. S2 basina sayi kaydedilmedi."
+  },
+  "sol": {
+   "durum": "tamam",
+   "olcum": 24152,
+   "cakisma_sayisi": 684,
+   "cakisma_s2_araligi_derece": [
+    0,
+    3
+   ],
+   "s2_en_kucuk_mm": {
+    "0": 0.0,
+    "1": 0.0,
+    "2": 0.0,
+    "3": 0.0,
+    "4": 0.604,
+    "5": 1.358,
+    "6": 2.104,
+    "8": 3.568,
+    "10": 4.993,
+    "15": 8.376
+   },
+   "s2_5_ve_ustu_en_yakin_mm": 1.358,
+   "en_yakin_cift_s2_5": "Ust kol tupu <-> S1 kaset kapagi sol, poz S1 15, S2 5, dirsek 0, bilek -90",
+   "kayitli_ornek_cift": "JSON yalniz ilk 80 cakismayi tutar (hepsi S2 0): Ust kol tupu x S1 kaset kapagi/govdesi/civatasi, Dirsek catali x M5x18 braket civatasi, El x gogus bandi. S2 basina sayi kaydedilmedi."
+  },
+  "izgara": "S2 0,1,2,3,4,5,6,8,10,15 x S1 -45...135/15 x dirsek 0,35,70,105 x bilek -90,0,90; hedef tum kabuk",
+  "kaynak": "lale158/ikinci-kontrol.json kol; log ikinci_kol.log",
+  "yorum": "Sol ve sag birebir simetrik: 684 + 684, tamami S2 0-3 derecede. S2 4 en az 0,604 mm, S2 5 en az 1,358 mm, S2 15 8,376 mm. Sayilar onceki tasarim kosusuyla ayni, yani yeni cerceve ve kafa degistirmedi; en yakin ciftler cerceve degil S1 kaseti ve M5 civata. Cakismalar geometrik olarak gercek ama izinli aralik disinda (yazilim S2 >= 5). Sinir yalniz yazilimda, mekanik durdurucu degil. Izinli aralikta 1,358 mm pay dar: baski toleransi ve kol boslugu fiziksel denemede kontrol edilmeli.",
+  "carpisma_tarama": "carpisma_kos kol_sag, kol_sol, kolkol: eklem araliginda 0, aralik disi 63'er tam poz"
+ },
+ "kafa_kontrol": {
+  "durum": "tamam (ikinci_kontrol kafa + tilt, 17:31, yeni tasarim)",
+  "zincirde_mi": true,
+  "izgara": "pan -90...90/15 x tilt -15,-13,13,15 x kol S1 75...135/15, S2 5,15,30,45,60,90, dirsek 0,35,70,90,105, bilek -90,0,90",
+  "kafa_x_kol": {
+   "sag": {
+    "olcum": 2180,
+    "cakisma_sayisi": 0,
+    "en_yakin": [
+     11.046,
+     15.0,
+     "El",
+     "Yuz kabugu (on) sag",
+     [
+      135,
+      5,
+      105,
+      -90,
+      30
+     ]
+    ]
+   },
+   "sol": {
+    "olcum": 2133,
+    "cakisma_sayisi": 0,
+    "en_yakin": [
+     11.046,
+     15.0,
+     "El",
+     "Yuz kabugu (on) sol",
+     [
+      135,
+      5,
+      105,
+      -90,
+      -30
+     ]
+    ]
+   }
+  },
+  "tilt": {
+   "-20": {
+    "en_kucuk": [
+     0.0,
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     -90
+    ],
+    "cakisma_sayisi": 20
+   },
+   "-19": {
+    "en_kucuk": [
+     0.0,
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     -90
+    ],
+    "cakisma_sayisi": 15
+   },
+   "-18": {
+    "en_kucuk": [
+     0.0,
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     -90
+    ],
+    "cakisma_sayisi": 10
+   },
+   "-17": {
+    "en_kucuk": [
+     0.0,
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     -90
+    ],
+    "cakisma_sayisi": 5
+   },
+   "-16": {
+    "en_kucuk": [
+     0.0,
+     "Tilt horn merkez vidasi M3",
+     "Tilt servosu cikis mili",
+     -90
+    ],
+    "cakisma_sayisi": 0
+   },
+   "-15": {
+    "en_kucuk": [
+     0.0,
+     "Tilt horn merkez vidasi M3",
+     "Tilt servosu cikis mili",
+     -90
+    ],
+    "cakisma_sayisi": 0
+   },
+   "-14": {
+    "en_kucuk": [
+     0.0,
+     "Tilt horn merkez vidasi M3",
+     "Tilt servosu cikis mili",
+     -90
+    ],
+    "cakisma_sayisi": 0
+   },
+   "-13": {
+    "en_kucuk": [
+     0.0,
+     "Tilt horn merkez vidasi M3",
+     "Tilt servosu cikis mili",
+     -90
+    ],
+    "cakisma_sayisi": 0
+   },
+   "13": {
+    "en_kucuk": [
+     0.0,
+     "Tilt horn merkez vidasi M3",
+     "Tilt servosu cikis mili",
+     -90
+    ],
+    "cakisma_sayisi": 0
+   },
+   "14": {
+    "en_kucuk": [
+     0.0,
+     "Tilt horn merkez vidasi M3",
+     "Tilt servosu cikis mili",
+     -90
+    ],
+    "cakisma_sayisi": 0
+   },
+   "15": {
+    "en_kucuk": [
+     0.0,
+     "Tilt horn merkez vidasi M3",
+     "Tilt servosu cikis mili",
+     -90
+    ],
+    "cakisma_sayisi": 0
+   },
+   "16": {
+    "en_kucuk": [
+     0.0,
+     "Tilt horn merkez vidasi M3",
+     "Tilt servosu cikis mili",
+     -90
+    ],
+    "cakisma_sayisi": 0
+   },
+   "17": {
+    "en_kucuk": [
+     0.0,
+     "Tilt horn merkez vidasi M3",
+     "Tilt servosu cikis mili",
+     -90
+    ],
+    "cakisma_sayisi": 0
+   },
+   "18": {
+    "en_kucuk": [
+     0.0,
+     "Yuz kabugu (on) sag",
+     "Rulman yuvasi",
+     -90
+    ],
+    "cakisma_sayisi": 10
+   },
+   "19": {
+    "en_kucuk": [
+     0.0,
+     "Yuz kabugu (on) sag",
+     "Rulman yuvasi",
+     -90
+    ],
+    "cakisma_sayisi": 15
+   },
+   "20": {
+    "en_kucuk": [
+     0.0,
+     "Yuz kabugu (on) sag",
+     "Rulman yuvasi",
+     -90
+    ],
+    "cakisma_sayisi": 35
+   }
+  },
+  "moment": {
+   "kutle_parca_g": 1472.3,
+   "kutle_g": 1497.3,
+   "am": [
+    1.51,
+    188.59,
+    24.78
+   ],
+   "eksen_yz": [
+    188.878,
+    25.0
+   ],
+   "am_eksen_mm": 0.37,
+   "statik_kgcm": 0.055,
+   "z_geri_mm": 0.22
+  },
+  "kaynak": "lale158/ikinci-kontrol.json kafa, tilt",
+  "carpisma_tarama": "carpisma_kos kafa_sabit, kafa_sag, kafa_sol 18:30'da bitti: eklem araliginda 0. Kaynak carpisma-sonuc.json"
+ },
+ "devrilme": {
+  "durum": "tamam, son model",
+  "ev_rampa5": {
+   "ileri": 1.85,
+   "geri": 1.62,
+   "yan": 2.11
+  },
+  "yuksuz_en_kotu_rampa": 1.523,
+  "elde_100g_en_kotu_rampa": 1.482,
+  "elde_500g_en_kotu_rampa": 1.331,
+  "not_": "esik 1,5; elde yukte kaliyor. Kaynak taban-analiz.json, lale158/ikinci/ivme-qled.json"
+ }
+}

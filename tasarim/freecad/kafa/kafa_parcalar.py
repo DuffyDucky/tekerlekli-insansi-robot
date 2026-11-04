@@ -1,7 +1,7 @@
-# Kafa modulu (1,65 m; boyun + pan + tilt + 10,1" kafa) - PARCALAR, kutle ve kinematik (FreeCAD 1.1, Part)
+# Kafa modulu (1,58 m; boyun + pan + tilt + 10,1" QLED ekranli kafa, 04.11.2026) - PARCALAR, kutle ve kinematik (FreeCAD 1.1, Part)
 # Import edilebilir: kafa_montaj.py (kontroller + kayit), ../carpisma.py, ../montaj/moduller.py.
-# Koordinat (kafa yereli, arayuz.MODULLER["kafa"]): orijin = traversin ust yuzu ortasi (global 0, S3 + 20 = 1360, 0), X sag, Y yukari,
-# Z ileri. Pan ekseni yerel Y ekseni (x = z = 0), tilt ekseni X'e paralel (arayuz.KAFA tilt_nokta: y 188,255, z 25). Ev pozu: duz bakis.
+# Koordinat (kafa yereli, arayuz.MODULLER["kafa"]): orijin = traversin ust yuzu ortasi (global 0, S3 + 20 = 1290, 0), X sag, Y yukari,
+# Z ileri. Pan ekseni yerel Y ekseni (x = z = 0), tilt ekseni X'e paralel (arayuz.KAFA tilt_nokta: y = kafa alt 75 + 100 - dy, z 25). Ev pozu: duz bakis.
 #
 # Y2a (26 Ekim 2026; karar 21 Ekim 2026 "yuz ekrani 10 inc sinifi HDMI", Duffy 25 Ekim "ana projeye 170den devam"): taslak-170'deki yeni kafa
 # modulun kendisi oldu. Yapi:
@@ -10,8 +10,8 @@
 #   Pan (pan ekseninde)    : 125 cm Pan grubu; egme catali + tilt MG996R + 625ZZ pimi + catal isil gomme somunu adaptor_h YUKARI;
 #                            catalin 4x M3x8 mil civatasi yerine boyun yukseltme adaptoru (PETG) + 4x M3 saplama (DIN 976; mil flansindaki
 #                            mevcut isil gomme somunlara) + pul + M3 DIN 985 (kafa10_lib.adaptor).
-#   Kafa (Pan * tilt)      : 10,1" HDMI ekranli yeni kafa (kafa10_lib.kur): iskelet (tabla + yanaklar), 4 kabuk parcasi (on/arka x sag/sol),
-#                            ekran + 4 tutucu tirnak, Camera Module 3, Pi 5 + 5 V cevirici + amfi; 125 cm'den tilt horn'u, horn vidasi, 625ZZ
+#   Kafa (Pan * tilt)      : 10,1" QLED ekranli kafa (kafa10_lib.kur): iskelet (tabla + yanaklar), 4 kabuk parcasi (on/arka x sag/sol),
+#                            ekran (4 tirnak), Camera Module 3, Pi 5 + 5 V cevirici (D24V50F5) + SY8205 + TVS + amfi + hub + USB ses karti + PAM8403; 125 cm'den tilt horn'u, horn vidasi, 625ZZ
 #                            dis bilezigi ve 4 yanak-horn civatasi (eksene gore ayni yerde). Tilt ekseni Bas grubunun AM'sinden gecer
 #                            (arayuz.KAFA denge dy / zb; kafa_montaj olcer).
 import os, sys, math, time
@@ -23,14 +23,14 @@ for _p in (HERE, UST):
         sys.path.insert(0, _p)
 import arayuz as A
 import kafa7_parcalar as K7                  # 125 cm kafasi (Govde + Pan buradan)
-import kafa10_lib as K10                     # 10,1" kafa (Bas) + boyun adaptoru
+import kafa10_lib as K10                     # kafa (Bas; QLED) + boyun adaptoru
 from kafa_lib import *   # noqa  (V, App, Part, cyl, box, MG, HORN_MG, washer, nut, ...)
 
 t0 = time.time()
 K = A.KAFA
-YT, ZT = K["tilt_nokta"][1], K["tilt_nokta"][2]      # tilt ekseni (188,255; 25)
+YT, ZT = K["tilt_nokta"][1], K["tilt_nokta"][2]      # tilt ekseni
 YT7 = A.KAFA7["tilt_nokta"][1]                       # 125 cm tilt ekseni (130)
-H_ADAPTOR = YT - YT7                                 # 58,255: catal + tilt servosu + pim bu kadar yukari
+H_ADAPTOR = YT - YT7                                 # catal + tilt servosu + pim bu kadar yukari
 assert abs(H_ADAPTOR - K["adaptor_h"]) < 1e-9
 V_PAN = V(0, H_ADAPTOR, 0)
 DOLULUK = K7.DOLULUK
@@ -88,10 +88,11 @@ for q in K10.adaptor(H_ADAPTOR, log=log):
     ADAPTOR_IDX.append(ekle(q["ad"], "Pan", q["shape"], q["tur"], q["malzeme"], q["kod"], q["renk"], kutle=q["kutle"], doluluk=q.get("doluluk"),
                             not_=q["not_"], patlat=(0, 60, 0), baski=q.get("baski")))
 
-# ====================================================================== 3) 10,1" kafa (Bas = grup "Kafa"), eksen cercevesinden kafa yereline
+# ====================================================================== 3) kafa (Bas = grup "Kafa"), eksen cercevesinden kafa yereline
 KD = K["denge"]
 P_BAS, BAG10, INFO10 = K10.kur(KD["dy"], KD["zb"], log=log)
 V_BAS = V(0, YT, ZT)
+ZARF = [dict(z, shape=tasi(z["shape"], V_BAS)) for z in INFO10.pop("zarf")]     # yer ayirma zarflari: P'de degil (kutle, BOM, carpisma disi); kafa_montaj olcer
 BAS_IDX = {}
 for q in P_BAS:
     i = ekle(q["ad"], "Kafa", tasi(q["shape"], V_BAS), q["tur"], q["malzeme"], q["kod"], q["renk"], kutle=q["kutle"], doluluk=q.get("doluluk"),
@@ -133,7 +134,7 @@ for b in K7.BAG:
             nb["horn_yuz"] = tuple(y_ + H_ADAPTOR for y_ in b["horn_yuz"])
     BAG.append(nb)
 # tilt horn: kafa iskeleti sag yanak -> horn (125 cm'deki gibi 4x M3x8; yanak olculeri ayni, eksen H yukari)
-I_ISK = I["Kafa iskeleti (10 in)"]
+I_ISK = I["Kafa iskeleti"]
 I_HORN_T = I["Tilt horn 25T aluminyum disk"]
 I_CATAL = I["Egme catali"]
 for b in K7.BAG:
@@ -214,4 +215,4 @@ Y_PK, Y_R1, Y_R2, Y_FL, Y_CB, Y_OMUZ = K7.Y_PK, K7.Y_R1, K7.Y_R2, K7.Y_FL, K7.Y_
 X_RUL, X_TH, X_SAG, X_SOL = K7.X_RUL, K7.X_TH, K7.X_SAG, K7.X_SOL
 I_MIL, I_RY = I["Boyun mili"], I["Rulman yuvasi"]
 INFO = dict(INFO10, adaptor_h=H_ADAPTOR, tilt_y=YT, dy=KD["dy"], zb=KD["zb"])
-log("kafa (1,65 m): %d parca (Govde/Pan %d, adaptor %d, Bas %d), %.1f g" % (len(P), n_gp, len(ADAPTOR_IDX), len(P_BAS), sum(p["kutle"] for p in P)))
+log("kafa (1,58 m): %d parca (Govde/Pan %d, adaptor %d, Bas %d), %.1f g" % (len(P), n_gp, len(ADAPTOR_IDX), len(P_BAS), sum(p["kutle"] for p in P)))

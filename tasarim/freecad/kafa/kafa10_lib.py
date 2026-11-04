@@ -1,4 +1,7 @@
-# Lale 1,65 m - YENI KAFA: 10,1" HDMI yuz ekrani, tilt ekseni kafa AM'sinden (FreeCAD 1.1, Part)
+# Lale 1,58 m - KAFA: 10,1" QLED HDMI yuz ekrani (Duffy 03.11.2026; arayuz.KAFA_EKRAN_QLED), tilt ekseni kafa AM'sinden (FreeCAD 1.1, Part). Dosya adi kafa10_lib kaldi.
+# QLED: vida deligi yok. Cam on duvarin ic yuzune oturur, cep duvari (1,6) kenardan yer gosterir, 4 cikarilabilir tirnak (ust/alt, x +-85; 1x M3x6 ISO 7380 + M3 isil gomme) panel disina
+# tasan cam seridine 1 mm kopuk bant uzerinden arkadan basar. Pencere = gorunen alan + 1 mm. Kabuk disi 270 x 215 x 136,9 degismedi: HEAD_UP 290 sabit. dy yeniden cozuldu, zb sabit.
+# 7" yol kodu (KAFA_EKRAN7, kafa_lib.LCD) geri donus icin duruyor: arayuz.KAFA["ekran"] = KAFA_EKRAN7 + denge dy -17,770 ile eski kafa kurulur.
 # Y2a (26 Ekim 2026): taslak-170/kafa10.py'den kafa modulune tasindi (olculer arayuz.KAFA: ekran, govde_y, kafa_alt_y, denge, tilt).
 # kafa_parcalar.py bunu kullanir (kur(dy, zb) + adaptor(h)); dengele() yalniz denge parametresini yeniden bulmak icindir.
 #
@@ -8,7 +11,7 @@
 #     yukari kalkar. Catalin 4x M3x8 civatasi yerine 4x M3 saplama (DIN 976) + pul + M3 DIN 985: saplama mil flansindaki mevcut
 #     isil gomme somunlara vidalanir, catal tabanini ve adaptoru birlikte sikar.
 #   - Kafa (Bas) grubu yeniden: kafa iskeleti (tabla + yanaklar), on (yuz) ve arka kabuk (her biri sag/sol iki baski parcasi, x = 0
-#     dikisinde bindirme dili), 10,1" ekran + 4 tutucu tirnak, Camera Module 3, Pi 5 + 5 V cevirici + amfi (tablada, ekranin arkasi).
+#     dikisinde bindirme dili), 10,1" QLED + 4 tutucu tirnak, Camera Module 3, Pi 5 + 5 V cevirici + amfi (tablada, ekranin arkasi).
 #     Eski tilt horn'u, horn vidasi, 625ZZ dis bilezigi ve 4 yanak-horn civatasi aynen (eksene gore ayni yerde).
 # Denge: tilt ekseni kafa (Bas) grubunun AM'sinden gecsin diye ekranin eksene gore yuksekligi (dy) ve arka kabugun derinligi (zb)
 #   dengele() ile cozulur (sekant). Ekran onde (catal on agi tilt suprulmesinde ekran arkasina degmesin diye cam onu eksenin 44 mm
@@ -21,17 +24,20 @@ UST = os.path.dirname(HERE)
 for _p in (HERE, UST, os.path.join(UST, "kabuk"), os.path.join(UST, "dirsek")):
     if _p not in sys.path:
         sys.path.insert(0, _p)
-from kafa_lib import *   # noqa  (ortak_lib + MG, HORN_MG, kafa_kutu, yuv_dikdortgen_*, pi5_kafa, CAM, CEV, AMP, screw7380 ...)
+from kafa_lib import *   # noqa  (ortak_lib + MG, HORN_MG, LCD, lcd_local, lcd_delikler, kafa_kutu, yuv_dikdortgen_*, pi5_kafa, CAM, CEV, AMP, screw7380 ...)
 import arayuz as A
 from kabuk_lib import damla
 
-E10 = A.KAFA["ekran"]
+EK = A.KAFA["ekran"]
+QLED = "tirnak" in EK       # True: KAFA_EKRAN_QLED (cam + tirnak); False: KAFA_EKRAN7 (kulak + M3)
 KAFA_GOVDE_Y = A.KAFA["govde_y"]          # kafa kabugu alt / ust dis yuzu, ekran merkezine gore (-100, 115)
-KX = 135.0                  # kafa yari genisligi (cam 253,96 + 2 x (0,5 bosluk + 2 cerceve) + duvar; eski 105)
+KX = 135.0                  # kafa yari genisligi (10,1" cam icin kuruldu; ic genislik 265, cam 245,8)
 KT = 2.5                    # kabuk duvari (eski kafa ile ayni)
 R_ON, R_K = 20.0, 5.0       # Z'ye paralel kenar yaricapi, on/arka yuz kenar yaricapi (5: alt cerceve dikis boss'u duz yuzde kalsin)
-ZF = 47.0                   # on dis yuz (eksenden); cam onu ZF - KT - 0,5 = 44
-Z_CAM_ON = ZF - KT - 0.5    # 44 cam on yuzu
+ZF = 47.0                   # on dis yuz (eksenden)
+Z_LCD = ZF - KT - EK["kenar"]   # ekran on yuzu: QLED cam onu 44,5 (on duvar ic yuzu); 7" 41,5 (3 mm ekran yuvasi kenari onunde)
+Z_KULAK0 = Z_LCD - LCD["panel_t"]   # 38 kulak on yuzu (boss ucu)
+Z_KULAK1 = Z_KULAK0 - LCD["arka_t"]   # 36,4 kulak arka yuzu (civata basi)
 Z_DIKIS = 10.0              # on / arka kabuk ayrimi; arka kabugun dili on kabuga 6 mm girer
 DIL_W = 16.0                # sag/sol bindirme dili (kabukta 12; kafada kamera boss'lari x -13...-8 dilin icinde kalsin diye 16)
 GB_BOS = A.KABUK_BINDIRME_BOSLUK
@@ -42,7 +48,6 @@ YARIK = dict(x=38.0, z_on=41.0, h=12.0, r=12.0)  # kafa alt duvarinda boyun acik
                                                 # altinda 12 mm centik (tilt -15'te arka-alt kose rulman yuvasina iner)
 CAM_Y = 101.0               # kamera lens ekseni (ekran merkezine gore), ekranin ustunde
 Z_CAM = ZF - KT - 6.5       # kamera PCB on yuzu (eski kafada on duvar icinden 6,5 geride)
-TIRNAK_X = (-80.0, 80.0)    # ekran tutucu tirnaklari (ust ve alt kenar)
 DOLULUK = 0.80              # kucuk PETG parcalar (eski kafa ile ayni, tahmini)
 HAVSA = 1.7                 # tepe dikis civatalari: ISO 7380 basi (k 1,65) yuzeyin altinda
 RHO = {"PETG": A.PETG_RHO, "PETG-CF": A.OMUZ["baski_rho"]["PETG-CF"][0], "Aluminyum": 2.70, "Celik": 7.85, "Celik 8.8": 7.85, "Celik 10.9": 7.85, "Pirinc": 8.50, "Kopuk": 0.10}
@@ -67,17 +72,6 @@ def _kutu(e, yb, yu, zb):
     return kafa_kutu(-KX + e, KX - e, yb + e, yu - e, zb + e, ZF - e, R_ON - e, R_K - e)
 
 
-def lcd10_local():
-    """Waveshare 10.1" (B) govdesi (robot_cad lcd10() ile ayni hacim): cam onu z = 0, merkez orijinde, -Z arkaya."""
-    l, h = E10["cam"]
-    pt, ki, kt = E10["panel_t"], E10["kart_ic"], E10["kart_t"]
-    s = box(-l / 2, l / 2, -h / 2, h / 2, -pt, 0)
-    s = s.fuse(box(-l / 2 + ki, l / 2 - ki, -h / 2 + ki, h / 2 - ki, -pt - kt, -pt))
-    k0, k1, ky = E10["konnektor"]
-    s = s.fuse(box(l / 2 - k0, l / 2 - k1, -ky, ky, -E10["kalinlik"], -pt - kt))
-    return s.removeSplitter()
-
-
 def kur(dy, zb, log=print):
     """Kafa (Bas) parcalari eksen cercevesinde. dy: ekran merkezinin eksene gore yuksekligi; zb: arka dis yuz z'si."""
     yb, yu = dy + KAFA_GOVDE_Y[0], dy + KAFA_GOVDE_Y[1]
@@ -96,8 +90,14 @@ def kur(dy, zb, log=print):
     yar = yuv_dikdortgen_y(-YARIK["x"], YARIK["x"], zb - 20.0, YARIK["z_on"], YARIK["r"], yb - 5, yb + KT + 4)
     yar = yar.fuse(yuv_dikdortgen_z(-YARIK["x"], YARIK["x"], yb - 5, yb + YARIK["h"], 6.0, zb - 5, zb + KT + 2))
     S = S.cut(yar)
-    cw, ch = E10["cam_pencere"]
-    S = S.cut(box(-cw / 2, cw / 2, dy - ch / 2, dy + ch / 2, ZF - KT - 1, ZF + 1))           # ekran penceresi
+    if QLED:
+        aw, ah = EK["gorunen"][0] / 2 + EK["pencere_pay"], EK["gorunen"][1] / 2 + EK["pencere_pay"]   # pencere = gorunen alan + 1 mm
+        y_aa = dy + EK["gorunen_dy"]                                                          # gorunen alan merkezi, cam merkezinin 3,03 ustu
+    else:
+        aw, ah = LCD["al"] / 2 + 1.0, LCD["ah"] / 2 + 1.0                                     # pencere = aktif alan + 1 mm (125 cm kafasi)
+        y_aa = dy + LCD["aa_dy"]                                                              # aktif alan merkezi, LCD merkezinin 2 mm ustu
+    PEN = box(-aw, aw, y_aa - ah, y_aa + ah, Z_LCD - 1.0, ZF + 1)
+    S = S.cut(PEN)                                                                            # ekran penceresi
     S = S.cut(cyl(4.5, (0, dy + CAM_Y, Z_CAM), (0, dy + CAM_Y, ZF + 1)))                       # kamera deligi O9
     # havalandirma (arka duvar): giris tabla ustunde Pi seviyesinde, cikis ustte (eski kafadaki baca mantigi)
     for (y0, n) in ((36.0, 3), (72.0, 4)):
@@ -109,10 +109,15 @@ def kur(dy, zb, log=print):
     S_bos = S_ic.cut(_kutu(KT / 2 + GB_BOS, yb, yu, zb))
     # arka kabugun on kabuga giren dili (ic yuzeye bitisik 1,5 mm halka, z dikis ... dikis + 6)
     dil = I.cut(_kutu(KT + 1.5, yb, yu, zb)).common(box(-BIG, BIG, -BIG, BIG, Z_DIKIS - 0.01, Z_DIKIS + 6.0)).cut(yar)
-    # ekran yuvasi kenari (cam + 0,5 bosluk + 2 cerceve), on kabugun ic yuzunden cam arkasina
-    gl, gh = E10["cam"]
-    kenar = box(-gl / 2 - 2.5, gl / 2 + 2.5, dy - gh / 2 - 2.5, dy + gh / 2 + 2.5, Z_CAM_ON - E10["panel_t"], ZF - KT + 0.05)
-    kenar = kenar.cut(box(-gl / 2 - 0.5, gl / 2 + 0.5, dy - gh / 2 - 0.5, dy + gh / 2 + 0.5, Z_CAM_ON - 10, ZF))
+    if QLED:
+        # cam cebi: cam on duvarin ic yuzune oturur; cevresinde 1,6 mm duvar (cam + 0,25), arkadan tirnak. Kose R cam R + bosluk.
+        _cw, _ch, _b, _d = EK["cam"][0] / 2, EK["cam"][1] / 2, EK["cep_bosluk"], EK["cep_duvar"]
+        _z0 = Z_LCD - EK["cep_h"]
+        kenar = yuv_dikdortgen_z(-_cw - _b - _d, _cw + _b + _d, dy - _ch - _b - _d, dy + _ch + _b + _d, EK["cam_r"] + _b + _d, _z0, ZF - KT + 0.05)
+        kenar = kenar.cut(yuv_dikdortgen_z(-_cw - _b, _cw + _b, dy - _ch - _b, dy + _ch + _b, EK["cam_r"] + _b, _z0 - 1.0, ZF - KT + 1.0))
+    else:
+        # ekran yuvasi kenari: on kabugun ic yuzunden panel on yuzune 3 mm (panel buna dayanir)
+        kenar = box(-LCD["l"] / 2 - 1.0, LCD["l"] / 2 + 1.0, dy - LCD["h"] / 2 - 1.0, dy + LCD["h"] / 2 + 1.0, Z_LCD, ZF - KT + 0.05).cut(PEN)
     ic_ozellik = {"on": [kenar], "arka": [dil]}
 
     # ------------------------------------------------------------------ 4 kabuk parcasi: (on/arka) x (sag/sol), bindirme dili sagda
@@ -197,15 +202,27 @@ def kur(dy, zb, log=print):
             kama = kama.extrude(V(0, LEDGE["y"][1] - LEDGE["y"][0], 0)).common(box(-BIG, BIG, -BIG, BIG, zb + KT - 0.5, BIG))
             EKLE[ad].append(kama)
             CIKAR[ad].append(insert_hole(3, (sx * LEDGE["civata_x"], LEDGE["y"][1], zc), (0, -1, 0), extra=0.5))
-    # --- ekran tutucu boss'lari (on kabuk ic yuzunden z 34'e, arkadan isil gomme) ve kamera boss'lari
-    TIRNAK = []
-    for xs in TIRNAK_X:
+    # --- LCD kulak boss'lari (on kabuk ic yuzunden kulak on yuzune, arkadan M3 isil gomme; 125 cm kafasi ile ayni) ve kamera boss'lari
+    LCD_DEL, TIRNAK = [], []
+    if QLED:
+        # tirnak boss'lari: cam kenarina bitisik (cep boslugu + r), on duvar ic yuzunden isil gomme somun boyu + 1 mm geri
+        _t = EK["tirnak"]
+        Z_BOSS = ZF - KT - (A.INSERT[3][1] + 0.5 + 0.5)
         for sy in (1, -1):
-            yb_ = dy + sy * (gh / 2 + 7.5)
-            ad = sahip(V(xs, yb_, ZF - KT * 0.75))              # ic yari: boss ic yuze (dil kuralina gore) baglanir
-            EKLE[ad].append(cyl(4.5, (xs, yb_, 34.0), (xs, yb_, ZF - KT + 0.05)))
-            CIKAR[ad].append(insert_hole(3, (xs, yb_, 34.0), (0, 0, 1), extra=0.5))
-            TIRNAK.append((xs, yb_, sy, ad))
+            for sx in (1, -1):
+                x_ = sx * _t["x"]
+                yb_ = dy + sy * (EK["cam"][1] / 2 + EK["cep_bosluk"] + _t["boss_r"])
+                ad = sahip(V(x_, yb_, ZF - KT * 0.75))
+                EKLE[ad].append(cyl(_t["boss_r"], (x_, yb_, Z_BOSS), (x_, yb_, ZF - KT + 0.05)))
+                CIKAR[ad].append(insert_hole(3, (x_, yb_, Z_BOSS), (0, 0, 1), extra=0.5))
+                TIRNAK.append(dict(sx=sx, sy=sy, x=x_, y=yb_, ad=ad, etk="%s %s" % ("ust" if sy > 0 else "alt", "sag" if sx > 0 else "sol")))
+    else:
+        for (x_, y_) in lcd_delikler():
+            yb_ = dy + y_
+            ad = sahip(V(x_, yb_, ZF - KT * 0.75))          # ic yari: boss ic yuze (dil kuralina gore) baglanir
+            EKLE[ad].append(cyl(3.5, (x_, yb_, Z_KULAK0), (x_, yb_, ZF - KT + 0.05)))
+            CIKAR[ad].append(insert_hole(3, (x_, yb_, Z_KULAK0), (0, 0, 1), extra=0.5))
+            LCD_DEL.append((x_, yb_, ad))
     CAM_DEL = [(x, dy + CAM_Y + y) for (x, y) in kamera_delikler()]
     for (x, y) in CAM_DEL:
         ad = sahip(V(x, y, ZF - KT * 0.75))
@@ -226,7 +243,7 @@ def kur(dy, zb, log=print):
         d_["shape"] = sh
         d_["i"] = add(ad, sh, "Baski", "PETG", kod="PETG baski, 2,5 mm duvar", renk="kabuk", doluluk=A.KABUK_DOLULUK,
                       baski=dict(yukari=tuple(d_["yukari"]), yon=d_["yon"]),
-                      not_="10,1 in kafa; x = 0 dikisinde bindirme dili (sag parcada), dikis civatalari M3x6 ISO 7380")
+                      not_="10,1 in QLED kafa; x = 0 dikisinde bindirme dili (sag parcada), dikis civatalari M3x6 ISO 7380")
 
     # ------------------------------------------------------------------ kafa iskeleti: tabla + yanaklar (eski kafanin yanak olculeri)
     zt0 = zb + KT + 0.5
@@ -250,7 +267,7 @@ def kur(dy, zb, log=print):
     for (x, z) in PI_DEL:
         ki = ki.cut(cyl(1.45, (x, Y_TABLA[0] - 1, z), (x, Y_TABLA[1] + 1, z)))
     ki = ki.removeSplitter()
-    I_ISK = add("Kafa iskeleti (10 in)", ki, "Baski", "PETG", renk="petg2", doluluk=DOLULUK,
+    I_ISK = add("Kafa iskeleti", ki, "Baski", "PETG", renk="petg2", doluluk=DOLULUK,
                 baski=dict(yukari=(0, -1, 0), yon="ters: tabla tablada, yanaklar yukari"),
                 not_="tabla 224 genis + iki yanak (eski kafa yanak olculeri): sag yanak tilt horn'una 4x M3, sol yanakta 625ZZ; "
                      "arka kabuk raflarina 4x M3x10; Pi 5 icin 4x O2,9")
@@ -264,7 +281,7 @@ def kur(dy, zb, log=print):
                       insert(3, (sx * LEDGE["civata_x"], LEDGE["y"][1], zc), (0, -1, 0)), "Baglanti", "Pirinc",
                       kod="M3 isil gomme somun", renk="pirinc")
             BAG.append(dict(ad="Kafa tablasi -> arka kabuk rafi", tip="M3x10 DIN 912 + M3 isil gomme somun (rafta)", adet=1,
-                            nokta=(sx * LEDGE["civata_x"], Y_TABLA[1], zc), parcalar=("Kafa iskeleti (10 in)", ad)))
+                            nokta=(sx * LEDGE["civata_x"], Y_TABLA[1], zc), parcalar=("Kafa iskeleti", ad)))
     for v in VIDA:
         on_ = v["etiket"].startswith("kafa on/arka")
         i_i = add("Isil gomme somun M3 (%s)" % v["etiket"], insert(3, v.get("p_ins", v["p"]), v["n"] * -1), "Baglanti", "Pirinc",
@@ -280,28 +297,51 @@ def kur(dy, zb, log=print):
         BAG.append(dict(ad=("Yuz kabugu -> arka kabuk dili" if on_ else "Kafa kabugu sag/sol dikisi"), tip="M3x6 ISO 7380 + M3 isil gomme somun (dil boss'unda)",
                         adet=1, nokta=tuple(v["p"]), parcalar=(v["dis"], v["ic"])))
 
-    # ------------------------------------------------------------------ ekran + tutucu tirnaklar
-    lcd = lcd10_local()
-    lcd.translate(V(0, dy, Z_CAM_ON))
-    I_LCD = add("Yuz ekrani 10,1 in HDMI 1280x800 (tahmini model)", lcd, "Satin", "-", kod=E10["model"], renk="siyah",
-                kutle=E10["kutle_g"], not_="cam on yuzu kenar cercevesine dayali, 4 tirnakla arkadan bastirilir; " + E10["kaynak"])
-    for (xs, yb_, sy, ad) in TIRNAK:
-        ycam = dy + sy * gh / 2
-        y0, y1 = sorted((ycam - sy * 5.0, yb_ + sy * 5.0))
-        t_ = box(xs - 8.0, xs + 8.0, y0, y1, 31.0, 34.0)
-        ty0, ty1 = sorted((ycam - sy * 5.0, ycam))
-        t_ = t_.fuse(box(xs - 8.0, xs + 8.0, ty0, ty1, 34.0 - 0.01, Z_CAM_ON - E10["panel_t"]))
-        t_ = t_.cut(cyl(CLEAR[3] / 2, (xs, yb_, 30.0), (xs, yb_, 35.0)))
-        etk = "%s %s" % ("ust" if sy > 0 else "alt", "sag" if xs > 0 else "sol")
-        i_t = add("Ekran tutucu tirnak (%s)" % etk, t_.removeSplitter(), "Baski", "PETG", renk="petg", doluluk=DOLULUK,
-                  baski=dict(yukari=(0, 0, 1), yon="plaka tablada, dil yukari"),
-                  not_="cam/panel kenarina arkadan basar (kenar bandi 5 mm; arka kart 6 mm iceride)")
-        add("Tirnak civatasi M3x8 ISO 7380 (%s)" % etk, screw7380(3, 8.0, (xs, yb_, 31.0), (0, 0, 1)), "Baglanti", "Celik 10.9",
-            kod="M3x8 ISO 7380", renk="celik")
-        add("Isil gomme somun M3 (tirnak boss %s)" % etk, insert(3, (xs, yb_, 34.0), (0, 0, 1)), "Baglanti", "Pirinc",
-            kod="M3 isil gomme somun", renk="pirinc")
-        BAG.append(dict(ad="Ekran tutucu tirnak -> yuz kabugu boss'u", tip="M3x8 ISO 7380 + M3 isil gomme somun", adet=1,
-                        nokta=(xs, yb_, 31.0), parcalar=("Ekran tutucu tirnak (%s)" % etk, ad)))
+    # ------------------------------------------------------------------ yuz ekrani
+    if QLED:
+        # 10,1" QLED: cam on duvar ic yuzune dayali, 4 tirnak + kopuk bant arkadan basar (vida deligi yok)
+        lcd = qled_local()
+        lcd.translate(V(0, dy, Z_LCD))
+        AD_EKRAN = "Yuz ekrani WaveShare 10,1in QLED HDMI"
+        add(AD_EKRAN, lcd, "Satin", "-", kod=EK["model"], renk="siyah", kutle=EK["kutle_g"],
+            not_="vida deligi yok; cam on duvar ic yuzune dayali, 4 tirnak arkadan basar; kutle VARSAYIM; " + EK["kaynak"])
+        BAG.append(dict(ad="Yuz ekrani cami -> on duvar ic yuzu", tip="dayama", adet=1, nokta=(0.0, dy, Z_LCD), parcalar=(AD_EKRAN, "Yuz kabugu (on)")))
+        z_cam_ark = Z_LCD - EK["cam_t"]
+        _t = EK["tirnak"]
+        for q in TIRNAK:
+            sy, x_, yb_ = q["sy"], q["x"], q["y"]
+            y_panel = dy + (EK["panel_y"][1] if sy > 0 else EK["panel_y"][0]) + sy * _t["panel_bosluk"]     # dil panel kenarina 0,25 kala cam seridi uzerinde
+            y0, y1 = sorted((y_panel, y_panel + sy * _t["dil"]))
+            py0, py1 = sorted((y_panel, yb_ + sy * (_t["boss_r"] + 1.0)))
+            x0, x1 = x_ - _t["en"] / 2, x_ + _t["en"] / 2
+            z_dil = z_cam_ark - _t["kopuk"]
+            tn = box(x0, x1, py0, py1, Z_BOSS - _t["t"], Z_BOSS).fuse(box(x0, x1, y0, y1, Z_BOSS - 0.01, z_dil))
+            tn = tn.cut(cyl(CLEAR[3] / 2, (x_, yb_, Z_BOSS - _t["t"] - 1), (x_, yb_, Z_BOSS + 1))).removeSplitter()
+            ad_t = "Ekran tirnagi %s" % q["etk"]
+            add(ad_t, tn, "Baski", "PETG", kod="Ekran tirnagi (PETG baski)", renk="petg2", doluluk=DOLULUK,
+                baski=dict(yukari=(0, 0, 1), yon="plaka tablada, dil yukari (desteksiz)"),
+                not_="cikarilabilir; 1x M3x6 ISO 7380; dil cam seridine 1 mm kopuk bant uzerinden basar. Cam seridi STEP'te 0,9 mm: asiri sikma yok, boy ekran gelince olculur")
+            ad_k = "Kopuk bant (tirnak %s)" % q["etk"]
+            add(ad_k, box(x0, x1, y0, y1, z_dil, z_cam_ark), "Satin", "Kopuk", kod="Cift tarafli kopuk bant 1 mm (VHB)", renk="siyah")
+            add("Tirnak civatasi M3x6 ISO 7380 (%s)" % q["etk"], screw7380(3, 6.0, (x_, yb_, Z_BOSS - _t["t"]), (0, 0, 1)), "Baglanti", "Celik 10.9", kod="M3x6 ISO 7380", renk="celik")
+            add("Isil gomme somun M3 (tirnak boss %s)" % q["etk"], insert(3, (x_, yb_, Z_BOSS), (0, 0, 1)), "Baglanti", "Pirinc", kod="M3 isil gomme somun", renk="pirinc")
+            BAG.append(dict(ad="Ekran tirnagi -> yuz kabugu boss'u", tip="M3x6 ISO 7380 + M3 isil gomme somun", adet=1, nokta=(x_, yb_, Z_BOSS), parcalar=(ad_t, q["ad"])))
+            BAG.append(dict(ad="Ekran tirnagi -> cam seridi", tip="1 mm kopuk bant", adet=1, nokta=(x_, y0, z_cam_ark), parcalar=(ad_t, ad_k, AD_EKRAN)))
+    else:
+        # 7" ekran: kulaklar 4x M3x6 ISO 7380 + isil gomme somun (125 cm kafasi ile ayni)
+        lcd = lcd_local()
+        lcd.translate(V(0, dy, Z_LCD))
+        AD_EKRAN = "Yuz ekrani Waveshare 7in HDMI LCD (C)"
+        I_LCD = add(AD_EKRAN, lcd, "Satin", "-", kod=EK["model"], renk="siyah",
+                    kutle=EK["kutle_g"], not_="panel on yuzu ekran yuvasi kenarina dayali; kulaklar 4x M3 ile boss'lara; " + EK["kaynak"])
+        for (x_, yb_, ad) in LCD_DEL:
+            etk = "%s %s" % ("ust" if yb_ > dy else "alt", "sag" if x_ > 0 else "sol")
+            add("LCD civatasi M3x6 ISO 7380 (%s)" % etk, screw7380(3, 6.0, (x_, yb_, Z_KULAK1), (0, 0, 1)), "Baglanti", "Celik 10.9",
+                kod="M3x6 ISO 7380", renk="celik")
+            add("Isil gomme somun M3 (LCD boss %s)" % etk, insert(3, (x_, yb_, Z_KULAK0), (0, 0, 1)), "Baglanti", "Pirinc",
+                kod="M3 isil gomme somun", renk="pirinc")
+            BAG.append(dict(ad="LCD kulagi -> yuz kabugu boss'u", tip="M3x6 ISO 7380 + M3 isil gomme somun", adet=1,
+                            nokta=(x_, yb_, Z_KULAK1), parcalar=(AD_EKRAN, ad)))
 
     # ------------------------------------------------------------------ kamera
     cam = kamera_local()
@@ -315,7 +355,7 @@ def kur(dy, zb, log=print):
 
     # ------------------------------------------------------------------ Pi 5 + cevirici + amfi (tablada; karsi agirlik)
     add("Raspberry Pi 5 4GB + Active Cooler", pi5_kafa(PI_T), "Satin", "-", kod="Raspberry Pi 5 4GB + resmi Active Cooler", renk="pcb",
-        kutle=PI5["kutle_g"], not_="tabla ustunde, arka kabuga 3 mm; kablo kenari one (micro HDMI -> ekran, CSI -> kamera)")
+        kutle=PI5["kutle_g"], not_="tabla ustunde, arka kabuga 3 mm; kablo kenari one (micro HDMI 0 -> yuz ekrani HDMI, micro HDMI 1 -> gogus ekrani, CSI -> kamera)")
     for j, (x, z) in enumerate(PI_DEL):
         add("Burc M2,5x8 (Pi %d)" % j, burc25(KP.PI_BURC, (x, Y_TABLA[1], z), (0, 1, 0)), "Satin", "Pirinc", kod="M2,5 x 8 burc, disi-disi",
             renk="pirinc")
@@ -324,17 +364,63 @@ def kur(dy, zb, log=print):
         add("Vida M2,5x8 (Pi %d alt)" % j, screw912_25(8.0, (x, Y_TABLA[0], z), (0, 1, 0)), "Baglanti", "Celik 8.8",
             kod="M2,5x8 DIN 912", renk="celik")
     BAG.append(dict(ad="Pi 5 -> burc -> kafa tablasi", tip="4x M2,5x8 pirinc burc + M2,5x5 (ust) + M2,5x8 (alt)", adet=4,
-                    nokta=PI_T, parcalar=("Raspberry Pi 5 4GB + Active Cooler", "Kafa iskeleti (10 in)")))
-    for ad_, (cx_, cz_), sh_, kod_, l_, w_, m_ in (
-            ("5 V cevirici Pololu D36V50F5", (-80.0, 6.0), cevirici_local(), "Pololu D36V50F5 5 V 5,5 A", CEV["l"], CEV["w"], CEV["kutle_g"]),
-            ("MAX98357A I2S amfi", (80.0, 6.0), amp_local(), "Adafruit MAX98357A", AMP["l"], AMP["w"], AMP["kutle_g"])):
+                    nokta=PI_T, parcalar=("Raspberry Pi 5 4GB + Active Cooler", "Kafa iskeleti")))
+    _tablada = [("5 V cevirici Pololu D24V50F5", (-80.0, 6.0), cevirici_local(), CEV["model"], CEV["l"], CEV["w"], CEV["kutle_g"]),
+                ("MAX98357A I2S amfi", (80.0, 6.0), amp_local(), "Adafruit MAX98357A", AMP["l"], AMP["w"], AMP["kutle_g"])]
+    if QLED:
+        # kafa ekrani ayri 5 V (planlama/adim3/elektrik.md): SY8205 + P6KE6V8A tablada, Power konnektoru tarafinda (+X); Touch USB'si Pi'ye veri, 5 V kopru yok
+        _tablada += [("SY8205 kafa ekrani 5 V", (36.0, 14.0), box(-SY8205["l"] / 2, SY8205["l"] / 2, 0, SY8205["h"], -SY8205["w"] / 2, SY8205["w"] / 2), SY8205["model"], SY8205["l"], SY8205["w"], SY8205["kutle_g"]),
+                     ("TVS P6KE6V8A kafa ekrani", (64.0, 20.0), tvs_local(), TVS["model"], TVS["l"], TVS["d"], TVS["kutle_g"])]
+    for ad_, (cx_, cz_), sh_, kod_, l_, w_, m_ in _tablada:
         add("Kopuk bant (%s)" % ad_.split()[0], box(cx_ - l_ / 2, cx_ + l_ / 2, Y_TABLA[1], Y_TABLA[1] + 1.0, cz_ - w_ / 2, cz_ + w_ / 2),
             "Satin", "Kopuk", kod="Cift tarafli kopuk bant 1 mm (VHB)", renk="siyah")
         sh_ = sh_.copy()
         sh_.translate(V(cx_, Y_TABLA[1] + 1.0, cz_))
         add(ad_, sh_, "Satin", "-", kod=kod_, renk="pcb", kutle=m_, not_="tablada kopuk bant + kablo bagi")
         BAG.append(dict(ad=ad_ + " -> kafa tablasi", tip="cift tarafli kopuk bant 1 mm + kablo bagi", adet=1, nokta=(cx_, Y_TABLA[1], cz_),
-                        parcalar=(ad_, "Kafa iskeleti (10 in)")))
+                        parcalar=(ad_, "Kafa iskeleti")))
+
+    # ------------------------------------------------------------------ yan duvarda: 4'lu USB hub (+X), USB ses karti + PAM8403 (-X). Arka kabuk yan duvar ic yuzune kopuk bant + kablo bagi;
+    # tablada yer kalmadi (hafifletme delikleri + on seritte kablo). Arka kabuk sokulurken kablolari ile gelir: hub kablosu 130 mm yeter (Pi USB -> hub ~70 mm, olcu kafa_montaj "qled").
+    YZ = {}
+    if QLED:
+        xw = KX - KT
+        for ad_, sx, (yc_, zc_), bl in (("USB Hub 4 lu", 1, (50.0, -28.0), HUB), ("USB ses karti", -1, (44.0, -19.5), SES), ("PAM8403 amfi", -1, (44.0, -56.0), PAM)):
+            duv = "Arka kafa kabugu %s" % ("sag" if sx > 0 else "sol")
+            x0, x1 = sorted((sx * (xw - 1.0), sx * (xw - 1.0 - bl["h"])))
+            fx0, fx1 = sorted((sx * xw, sx * (xw - 1.0)))
+            yy, zz = (yc_ - bl["w"] / 2, yc_ + bl["w"] / 2), (zc_ - bl["l"] / 2, zc_ + bl["l"] / 2)
+            add("Kopuk bant (%s)" % ad_, box(fx0, fx1, yy[0], yy[1], zz[0], zz[1]), "Satin", "Kopuk", kod="Cift tarafli kopuk bant 1 mm (VHB)", renk="siyah")
+            add(ad_, box(x0, x1, yy[0], yy[1], zz[0], zz[1]), "Satin", "-", kod=bl["model"], renk="pcb", kutle=bl["kutle_g"], not_="yan duvarda kopuk bant + kablo bagi; kutle ve (ses karti, PAM8403) olcu TAHMIN")
+            BAG.append(dict(ad=ad_ + " -> arka kabuk yan duvari", tip="cift tarafli kopuk bant 1 mm + kablo bagi", adet=1, nokta=(sx * xw, yc_, zc_), parcalar=(ad_, duv)))
+            YZ[ad_] = (x0, x1, yy, zz)
+
+    # ------------------------------------------------------------------ yer ayirma zarflari (P'ye girmez: kutle yok, BOM ve carpismaya girmez; kafa_montaj olcer, gorselde gosterilir)
+    ZARF = []
+    if QLED:
+        F, PT = EK["fis"], EK["port"]
+        z_p = Z_LCD - EK["cam_panel_t"]                  # panel arka yuzu
+        z_k = z_p - 1.9                                  # kart bilesen yuzu
+
+        def zr(ad, x0, x1, y0, y1, z0, z1, renk, not_):
+            ZARF.append(dict(ad=ad, shape=box(x0, x1, y0, y1, z0, z1), renk=renk, not_=not_))
+        # konnektor ekseni kart ustunde; fis kalinligi ortalanir, panel arka yuzunde kirpilir (kaliplanmis fis panele degebilir: kontrol notu)
+        for ad, q, f, rk in (("HDMI", PT["hdmi"], F["hdmi"], (0.85, 0.15, 0.15)), ("Touch USB", PT["touch"], F["usb"], (0.15, 0.35, 0.9)), ("Power USB", PT["power"], F["usb"], (0.95, 0.75, 0.05))):
+            yc = dy + q["y"]
+            zc = z_k - q["t_kart"] / 2
+            x_s = q["x"][1]
+            zr("%s fis zarfi" % ad, x_s, x_s + f[0], yc - f[1] / 2, yc + f[1] / 2, zc - f[2] / 2, min(zc + f[2] / 2, z_p), rk, "fis boyu x eni x kalinligi %s TAHMIN" % (f,))
+        # kablo payi: fis ucundan bukum (HDMI serit R 15 TAHMIN, USB O4 R 15 TAHMIN) + tablanin onundeki gecit (tabla onu z 28 ... panel arkasi) tabla ustune
+        xk = PT["hdmi"]["x"][1] + F["hdmi"][0]
+        zr("Kablo bukum payi", PT["power"]["x"][1] + F["usb"][0], xk + 15.0, dy + PT["hdmi"]["y"] - F["hdmi"][1] / 2, dy + PT["power"]["y"] + F["usb"][1] / 2, 28.5, z_p - 0.1, (0.6, 0.3, 0.8),
+           "U donus ve yukari cikis; bukum R 15 TAHMIN (kablo gelince olculur)")
+        zr("Tabla onu kablo gecidi", 60.0, 100.0, dy + PT["power"]["y"] + F["usb"][1] / 2, 44.0, 28.5, z_p - 0.1, (0.6, 0.3, 0.8), "HDMI + Touch + Power panel arkasi ile tabla onu arasindan tabla ustune")
+        zr("Tabla ustu kablo yolu", -36.0, 60.0, 38.2, 56.0, -26.0, 28.0, (0.6, 0.3, 0.8), "Pi micro HDMI 0 / USB ve SY8205 cikisina")
+        x0h, x1h, yh, zh = YZ["USB Hub 4 lu"]
+        zr("Hub USB fis payi", min(x0h, x1h) - 40.0, min(x0h, x1h), yh[0], yh[1], zh[0], zh[1], (0.15, 0.35, 0.9), "hub ustu 3 port: USB-A fis + bukum 40 mm TAHMIN")
+        # fan yeri (LISTEDE YOK; yalniz yer): 30 x 30 x 10, ust yarik bandi arkasinda, +X yarik grubu ustunde (elektrik.md: 'ust bant arkasina 25-30 mm egzoz fani')
+        zf0 = zb + KT
+        zr("Fan yeri 30x30x10 (listede yok)", 12.5, 42.5, 62.0, 92.0, zf0, zf0 + 10.0, (0.1, 0.75, 0.75), "yalniz yer ayirma; karar notu qled-cerceve-tasarim-notu.md")
 
     # ------------------------------------------------------------------ eski kafadan aynen: tilt horn, horn vidasi, 625ZZ dis bilezigi, yanak civatalari
     for p in KP.P:
@@ -343,9 +429,9 @@ def kur(dy, zb, log=print):
             sh.translate(OFS0)
             i_ = add(p["ad"], sh, p["tur"], p["malzeme"], kod=p["kod"], renk=p["renk"], kutle=p["kutle"], not_="eski kafadan aynen")
     BAG.append(dict(ad="Kafa iskeleti sag yanak -> tilt horn", tip="4x M3x8 DIN 912 (eski kafadaki gibi)", adet=4, nokta=(X_SAG[1], 0, 0),
-                    parcalar=("Kafa iskeleti (10 in)", "Tilt horn 25T aluminyum disk")))
+                    parcalar=("Kafa iskeleti", "Tilt horn 25T aluminyum disk")))
     BAG.append(dict(ad="Tilt pimi: 625ZZ dis bilezigi sol yanakta", tip="625ZZ (eski kafadaki gibi; M5x12 pim catalda)", adet=1,
-                    nokta=(X_RUL[0], 0, 0), parcalar=("Kafa iskeleti (10 in)", "Egme catali")))
+                    nokta=(X_RUL[0], 0, 0), parcalar=("Kafa iskeleti", "Egme catali")))
 
     # ------------------------------------------------------------------ kutle ve merkez
     for p in P:
@@ -362,7 +448,7 @@ def kur(dy, zb, log=print):
         else:
             d_ = p["doluluk"] if p["doluluk"] else (DOLULUK if p["malzeme"] == "PETG" else 1.0)
             p["kutle"] = vt / 1000.0 * RHO.get(p["malzeme"], 1.0) * d_
-    return P, BAG, dict(dy=dy, zb=zb, yb=yb, yu=yu, raf_z=RAF_Z, pi_t=PI_T, vida=len(VIDA))
+    return P, BAG, dict(dy=dy, zb=zb, yb=yb, yu=yu, raf_z=RAF_Z, pi_t=PI_T, vida=len(VIDA), zarf=ZARF)
 
 
 def am(P):
@@ -373,8 +459,10 @@ def am(P):
     return m, c
 
 
-def dengele(log=print, dy0=-10.0, zb0=-82.0, tol=0.3):
-    """Sekant: cy(dy) = 0 ve cz(zb) = 0 (eksenler zayif bagli; her biri kendi degiskeniyle)."""
+def dengele(log=print, dy0=-13.0, zb0=-89.893, tol=0.3, zb_sabit=True):
+    """Sekant: cy(dy) = 0 ve (zb_sabit False ise) cz(zb) = 0 (eksenler zayif bagli; her biri kendi degiskeniyle).
+    Arka yuz yerinde kalir (zb_sabit), yalniz dy cozulur: 7" ekranda (03.11.2026) tam denge zb -62,3 verdi ama arka kabuk tilt -5'te boyna carpti (serbest 0...15, yazilim +-13 saglanmaz);
+    kalan AM z farki statik tilt momenti olarak kafa_montaj tork hesabinda."""
     gecmis = []
     dy, zb = dy0, zb0
     for it in range(7):
@@ -382,7 +470,7 @@ def dengele(log=print, dy0=-10.0, zb0=-82.0, tol=0.3):
         m, c = am(P)
         gecmis.append(dict(dy=round(dy, 3), zb=round(zb, 3), m=round(m, 1), am=[round(c.x, 3), round(c.y, 3), round(c.z, 3)]))
         log("  denge %d: dy %.2f zb %.2f -> m %.1f g, AM (%.2f, %.2f, %.2f)" % (it, dy, zb, m, c.x, c.y, c.z))
-        if abs(c.y) < tol and abs(c.z) < tol:
+        if abs(c.y) < tol and (zb_sabit or abs(c.z) < tol):
             break
         if len(gecmis) == 1:
             ndy, nzb = dy - c.y / 0.85, zb - c.z / 0.30
@@ -392,7 +480,7 @@ def dengele(log=print, dy0=-10.0, zb0=-82.0, tol=0.3):
             sz = (g1["am"][2] - g0["am"][2]) / (g1["zb"] - g0["zb"]) if abs(g1["zb"] - g0["zb"]) > 1e-6 else 0.30
             ndy = dy - c.y / (sy if abs(sy) > 0.1 else 0.85)
             nzb = zb - c.z / (sz if abs(sz) > 0.05 else 0.30)
-        dy, zb = max(-30.0, min(10.0, ndy)), max(-150.0, min(-60.0, nzb))
+        dy, zb = max(-30.0, min(10.0, ndy)), (zb if zb_sabit else max(-150.0, min(-60.0, nzb)))
     return P, BAG, info, gecmis
 
 

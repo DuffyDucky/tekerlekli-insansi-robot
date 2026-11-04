@@ -334,14 +334,14 @@ H.append("<h3>Akü süresi (tahmini)</h3><div class='tw'>")
 rows = [(esc(t[0]), esc(t[1]), sayi(t[2], 1), sayi(t[3], 1), sayi(t[4], 1), esc(t[5])) for t in AKU["kalemler"]]
 rows.append(("<b>Aküden çekilen (dönüştürücü kaybı + röle bobini dahil)</b>", "12,8 V", "<b>%s</b>" % sayi(AKU["senaryo"]["dusuk"]["W"], 1),
              "<b>%s</b>" % sayi(AKU["senaryo"]["orta"]["W"], 1), "<b>%s</b>" % sayi(AKU["senaryo"]["yuksek"]["W"], 1), ""))
-rows.append(("<b>Süre, 24 Ah (307 Wh × %%%d)</b>" % round(AKU["kullanilabilir"] * 100), "", "<b>%s sa</b>" % sayi(AKU["senaryo"]["dusuk"]["saat"], 1),
+rows.append(("<b>Süre, 20 Ah (256 Wh × %%%d)</b>" % round(AKU["kullanilabilir"] * 100), "", "<b>%s sa</b>" % sayi(AKU["senaryo"]["dusuk"]["saat"], 1),
              "<b>%s sa</b>" % sayi(AKU["senaryo"]["orta"]["saat"], 1), "<b>%s sa</b>" % sayi(AKU["senaryo"]["yuksek"]["saat"], 1), "tahmini"))
-rows.append(("Süre, 20 Ah olursa (256 Wh)", "", "%s sa" % sayi(AKU["senaryo"]["dusuk"]["saat_20ah"], 1), "%s sa" % sayi(AKU["senaryo"]["orta"]["saat_20ah"], 1),
-             "%s sa" % sayi(AKU["senaryo"]["yuksek"]["saat_20ah"], 1), ""))
+rows.append(("Süre, 24 Ah olursa (307 Wh)", "", "%s sa" % sayi(AKU["senaryo"]["dusuk"]["saat_24ah"], 1), "%s sa" % sayi(AKU["senaryo"]["orta"]["saat_24ah"], 1),
+             "%s sa" % sayi(AKU["senaryo"]["yuksek"]["saat_24ah"], 1), ""))
 H.append(tablo(["Kalem", "Hat", "Düşük (W)", "Orta (W)", "Yüksek (W)", "Dayanak"], rows) + "</div>")
 H.append("<p class='not'>Tüm tüketim kalemleri tahmini (yalnız Nextion akımı datasheet'ten). XL4016 verimi 0,88, BTS7960 0,95, kullanılabilir kapasite %%80 "
-         "(01-donanim-maliyet ile aynı) varsayıldı. Orta = ekranlar açık, kollar jest yapıyor, zamanın ~%%30'unda sürüş. Akü 24 Ah Limacell "
-         "(307 Wh, 05-fiyat-arastirmasi); ölçüsü ve kütlesi henüz yok, model 20 Ah Landport yuvasıyla çizildi.</p>")
+         "(01-donanim-maliyet ile aynı) varsayıldı. Orta = ekranlar açık, kollar jest yapıyor, zamanın ~%%30'unda sürüş. Akü Victron SuperPack 20 Ah "
+         "(256 Wh, K3, malzeme listesi v4); ölçü 181 × 77 × 167 yuvayla aynı, modeldeki kütle 2,8 kg (Victron 3,0 kg, güncellenmedi).</p>")
 
 # ---------------------------------------------------------------- kablo yolu
 H.append("<h2>Güç dağıtımı ve kablo yolu</h2>")
@@ -355,7 +355,7 @@ H.append("<h3>Sigorta planı (15 Ekim 2026, planlama/adim3/elektrik.md; sette 5,
 SIG = [("Ana sigorta 30 A", "akü + → XT60 → kablolu yuva (güç panelinde)", "ana anahtar ASW-A01 → sigorta kutusu girişi"),
        ("F1 20 A", "röle K1 (40 A) kontağı → anahtarlı 12 V bara (WAGO)", "BTS7960 sol + sağ; 7,5 A hat sigortalarıyla XL4016 servo A (sağ kol + pan) ve B (sol kol + tilt)"),
        ("F2 15 A", "yedek", ""),
-       ("F3 5 A", "kafa 12 V (18 AWG çift, boyundan)", "kafada Pololu D36V50F5 5 V → Raspberry Pi 5, 7\" LCD, amfi, kamera (K4)"),
+       ("F3 5 A", "kafa 12 V (18 AWG çift, boyundan)", "kafada Pololu D24V50F5 5 V → Raspberry Pi 5, 7\" LCD, amfi, kamera (K4)"),
        ("F4 5 A", "XL4016 çevre (5 V)", "Nextion, ESP32 (VIN), sonarlar; PCA9685/BNO055 mantığı ESP32 3V3'ten"),
        ("F5 2 A", "mantar (NC) → röle bobini → IRLZ44N (ESP32 'devreye al')", "basınca röle bırakır; bırakınca güç kendiliğinden gelmez (E3). Pi ve ekranlar açık kalır"),
        ("F6", "boş", "")]
@@ -512,7 +512,7 @@ KARAR = [
     "**Ana anahtar (öneri):** etek üst plakasının altında, acil stobun aynası. Kabukta delik yok; düğme şeması Referans'ta (statik taramaya girmez, kol × taban taramasında hedef).",
     "**Tahmini zarflar:** sigorta kutusu (105 × 60 × 35), röle (30 × 30 × 45), ana sigorta yuvası (30 × 60 × 20), ana anahtar gövdesi (50 × 50 × 40), ESP32 taşıyıcı pertinaks (70 × 50). Ölçüler uydurulmadı: zarf, kumpasla ölçülünce güncellenecek.",
     "**Tahmini ölçüler:** BTS7960 delik aralığı ±21, M4/M5 çekiç somun gövdesi M6 ile aynı (16 × 10 × 5), teker iç geometrisi (altıgen yuva 17,5 mm, M4 eksenel vida), kaplin M4 dişi 12 mm, JGB37 M3 delik derinliği 6 mm, HC-SR04 pin bloğu.",
-    "**Hesap varsayımları:** fren ivmesi 1,5 m/s², temas hattı teker merkez düzlemi (V3 ile aynı; gerçek temas lastik genişliği, yana biraz daha güvenli), kablo payı 400 g (tahmini), akü 2,8 kg (20 Ah Landport; 24 Ah'ın kütlesi bilinmiyor).",
+    "**Hesap varsayımları:** fren ivmesi 1,5 m/s², temas hattı teker merkez düzlemi (V3 ile aynı; gerçek temas lastik genişliği, yana biraz daha güvenli), kablo payı 400 g (tahmini), akü 2,8 kg (20 Ah Landport; alınacak Victron 3,0 kg, modele işlenmedi).",
 ]
 H.append("<h2>Kararlar ve varsayımlar</h2><ul>" + "".join("<li>%s</li>" % md(s) for s in KARAR) + "</ul>")
 H.append("<h3>Ayrılmış bölge değişiklikleri (<code>arayuz.py</code>, yalnız ekleme)</h3><div class='tw'>")
@@ -534,7 +534,7 @@ SIRA = ["Çekiç somunlar (M6 plaka, M4 braket, M5 burç, M6 sonar) kanallara d�
         "Saplama + burçlar; güç paneli (sigorta kutusu, röle, ana sigorta önceden takılı) ve elektronik katı (kartlar önceden takılı) 8× M5.",
         "Sonar tutucular ön ara raya, sonarlar raylara sürülür; kablolama (servis halkaları), etek ve acil stop / ana anahtar."]
 H.append("<h2>Montaj sırası (öneri)</h2><ol>" + "".join("<li>%s</li>" % md(s) for s in SIRA) + "</ol>")
-ACIK = ["**Akü:** Limacell 24 Ah'ın ölçüsü ve kütlesi satıcıdan (yuva 181 × 77 × 167; kutup yönü ve yeri). Farklıysa kayış ve takoz yeniden.",
+ACIK = ["**Akü:** Victron SuperPack 20 Ah'ın kütlesi (3,0 kg) modele işlenmedi (model 2,8 kg); ölçü 181 × 77 × 167 yuvayla aynı, kutup yönü ve yeri cihazda doğrulanacak.",
         "**Motor braketi:** elde yok; JGB37 kaçık mili için delik düzeni (4 delik, Ø31 daire) ve flanş deliklerinin x 115 hizası. M4 çekiç somun (kanal 10) satın alınmalı.",
         "**Motor torku rampada %%%d:** yazılımda rampada ivme ≤ 0,25 m/s² (→ %%%d) ya da daha yüksek torklu motor; robot kütlesi V3'ten %s kg fazla." % (
             round(mot5["oran"] * 100), round(MOT["rampa5_yavas"]["oran"] * 100), sayi(EV["kutle_g"] / 1000 - 18.6, 1)),

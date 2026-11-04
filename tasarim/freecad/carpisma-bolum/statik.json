@@ -1,16 +1,16 @@
 {
  "bolum": "statik",
- "kosu": "elle",
- "baslangic": "2026-10-25T20:13:08",
- "bitis": "2026-10-25T20:13:19",
- "sure_s": 11.1,
- "yukleme_s": 42.0,
- "tepe_bellek_mb": 513,
- "tepe_sayfa_mb": 2412,
+ "kosu": "20261104-174345",
+ "baslangic": "2026-11-04T17:45:25",
+ "bitis": "2026-11-04T17:45:48",
+ "sure_s": 23.3,
+ "yukleme_s": 100.1,
+ "tepe_bellek_mb": 743,
+ "tepe_sayfa_mb": 2653,
  "ayni_surec": [
   "statik"
  ],
- "pid": 236796,
+ "pid": 4664,
  "moduller": [
   "iskelet",
   "omuz_sag",
@@ -23,19 +23,20 @@
  ],
  "kaynak": {
   "carpisma.py": "c688d738c3",
-  "arayuz.py": "8ab7549907",
+  "arayuz.py": "3263e669ab",
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
-  "omuz/omuz_parcalar.py": "6ee3ba0bec",
-  "kabuk/kabuk_parcalar.py": "f61b7c5a28",
-  "dirsek/dirsek_parcalar.py": "04a41ce1ec",
-  "kafa/kafa_parcalar.py": "9945bec319",
-  "taban/taban_parcalar.py": "b30612e464",
-  "kafa/kafa-analiz.json": "dd87889673",
-  "dirsek/dirsek_lib.py": "49ef44a3b8",
-  "kabuk/kabuk_lib.py": "39de225f64",
-  "kafa/kafa_lib.py": "7190c9a6f7",
+  "omuz/omuz_parcalar.py": "62b19c7371",
+  "kabuk/kabuk_parcalar.py": "d82f39c382",
+  "dirsek/dirsek_parcalar.py": "7182c29899",
+  "kafa/kafa_parcalar.py": "ab3398a9b6",
+  "taban/taban_parcalar.py": "c5f30375d4",
+  "kafa/kafa-analiz.json": "8d8c41b670",
+  "dirsek/dirsek_lib.py": "2f3a3b77fb",
+  "kabuk/kabuk_lib.py": "a848c28ddc",
+  "kafa/kafa10_lib.py": "3261794aef",
+  "kafa/kafa_lib.py": "1a85133046",
   "omuz/omuz_lib.py": "b5c14c4ed2",
   "taban/taban_lib.py": "73d922d4bc"
  },
@@ -59,7 +60,7 @@
     "ad": "omuz_sag",
     "konum": [
      0.0,
-     955.0,
+     1270.0,
      0.0
     ],
     "ayna": false,
@@ -76,7 +77,7 @@
     "ad": "omuz_sol",
     "konum": [
      0.0,
-     955.0,
+     1270.0,
      0.0
     ],
     "ayna": true,
@@ -97,7 +98,7 @@
      0.0
     ],
     "ayna": false,
-    "parca": 206,
+    "parca": 346,
     "haric": [],
     "haric_neden": "",
     "hareketli": false,
@@ -107,11 +108,11 @@
     "ad": "dirsek_sag",
     "konum": [
      0.0,
-     955.0,
+     1270.0,
      0.0
     ],
     "ayna": false,
-    "parca": 53,
+    "parca": 57,
     "haric": [],
     "haric_neden": "",
     "hareketli": true,
@@ -121,11 +122,11 @@
     "ad": "dirsek_sol",
     "konum": [
      0.0,
-     955.0,
+     1270.0,
      0.0
     ],
     "ayna": true,
-    "parca": 53,
+    "parca": 57,
     "haric": [],
     "haric_neden": "",
     "hareketli": true,
@@ -135,14 +136,12 @@
     "ad": "kafa",
     "konum": [
      0.0,
-     975.0,
+     1290.0,
      0.0
     ],
     "ayna": false,
-    "parca": 120,
-    "haric": [
-     "Kablo demeti (gosterim)"
-    ],
+    "parca": 161,
+    "haric": [],
     "haric_neden": "kablo demeti gosterimi (Referans grubu, 0 g); carpisma taramasina girmez",
     "hareketli": true,
     "bagli": null
@@ -155,18 +154,18 @@
      0.0
     ],
     "ayna": false,
-    "parca": 329,
+    "parca": 355,
     "haric": [
      "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)",
      "Kablo yolu 1: 12 V ana hat: aku + -> XT60 -> ana sigorta 30 A -> ana anahtar -> sigorta kutusu",
      "Kablo yolu 2: Toprak: aku - -> WAGO yildiz noktasi (guc paneli) -> tum donusturuculer",
      "Kablo yolu 3: Motor 12 V: F1 20 A -> role -> WAGO -> BTS7960 sol/sag -> motor kablo delikleri -> 4 motor",
      "Kablo yolu 4: Motor 12 V sag kol + arka motorlar (plaka altindan z 36 deliginden)",
-     "Kablo yolu 5: Servo 6 V A (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol + pan",
-     "Kablo yolu 6: Servo uzatmalari kafaya: pan (A) + tilt (B) (direk ustu, R62 halkasindan)",
-     "Kablo yolu 7: Servo 6 V B (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol + tilt",
+     "Kablo yolu 5: Servo 6 V A (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol",
+     "Kablo yolu 6: Servo uzatmalari kafaya: pan + tilt (hat C, XL4016 C guc panelinde; direk ustu, R62 halkasindan)",
+     "Kablo yolu 7: Servo 6 V B (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol",
      "Kablo yolu 8: Kafa 12 V (K4/E4): F3 5 A -> 18 AWG cift -> direk on yuzu -> R62 -> kafada 5 V/5,5 A cevirici (Pi 5, LCD)",
-     "Kablo yolu 9: Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / Nextion / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)",
+     "Kablo yolu 9: Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)",
      "Kablo yolu 10: Acil stop (E3): F5 -> mantar (NC) -> role bobini -> MOSFET (arayuz karti, ESP32 'devreye al') ; PC817 mantar sonrasi gerilimi okur",
      "Kablo yolu 11: Sinyal: sonar x3 -> arayuz karti bolucu (4,7k/10k) -> ESP32 (on ara ray ustunden)",
      "Kablo yolu 12: Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (VBUS hattinda seri 1N5819)"
@@ -199,7 +198,7 @@
    }
   ],
   "ev_pozu_cakisma": [],
-  "ev_pozu_kesisen_cift": 735,
+  "ev_pozu_kesisen_cift": 819,
   "ev_pozu_poz": {
    "one_arka": 0.0,
    "yana": 5.0,
@@ -219,23 +218,37 @@
     "b": "kabuk",
     "pb": "S1 kaset kapagi sol",
     "hacim": 6.42
+   },
+   {
+    "a": "kabuk",
+    "pa": "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+    "b": "dirsek_sag",
+    "pb": "Dirsek catali",
+    "hacim": 20.53
+   },
+   {
+    "a": "kabuk",
+    "pa": "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+    "b": "dirsek_sol",
+    "pb": "Dirsek catali",
+    "hacim": 20.53
    }
   ],
   "kutle_g": {
-   "iskelet": 5793.1,
-   "omuz_sag": 555.5,
-   "omuz_sol": 555.5,
-   "kabuk": 4922.3,
-   "dirsek_sag": 367.4,
-   "dirsek_sol": 367.4,
-   "kafa": 1443.5,
-   "taban": 7529.4
+   "iskelet": 6410.8,
+   "omuz_sag": 567.6,
+   "omuz_sol": 567.6,
+   "kabuk": 7095.8,
+   "dirsek_sag": 400.5,
+   "dirsek_sol": 400.5,
+   "kafa": 2084.4,
+   "taban": 7909.8
   },
-  "kutle_toplam_g": 21534.2,
+  "kutle_toplam_g": 25436.9,
   "agirlik_merkezi": [
-   -0.19,
-   382.71,
-   -12.77
+   -0.08,
+   529.85,
+   -8.48
   ]
  }
 }

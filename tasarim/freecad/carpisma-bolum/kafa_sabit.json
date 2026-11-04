@@ -1,16 +1,16 @@
 {
  "bolum": "kafa_sabit",
- "kosu": "20261008-221731",
- "baslangic": "2026-10-08T22:59:41",
- "bitis": "2026-10-08T23:00:00",
- "sure_s": 19.3,
- "yukleme_s": 33.4,
- "tepe_bellek_mb": 503,
- "tepe_sayfa_mb": 2404,
+ "kosu": "20261104-174345",
+ "baslangic": "2026-11-04T18:01:55",
+ "bitis": "2026-11-04T18:04:28",
+ "sure_s": 153.4,
+ "yukleme_s": 107.8,
+ "tepe_bellek_mb": 737,
+ "tepe_sayfa_mb": 2644,
  "ayni_surec": [
   "kafa_sabit"
  ],
- "pid": 124344,
+ "pid": 17520,
  "moduller": [
   "iskelet",
   "omuz_sag",
@@ -20,16 +20,23 @@
   "taban"
  ],
  "kaynak": {
-  "carpisma.py": "46990770f1",
-  "arayuz.py": "6aa5377a61",
-  "ortak_lib.py": "ce4e4053c4",
+  "carpisma.py": "c688d738c3",
+  "arayuz.py": "3263e669ab",
+  "ortak_lib.py": "a668036c1b",
+  "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
-  "omuz/omuz_parcalar.py": "ac3c6974d4",
-  "kabuk/kabuk_parcalar.py": "49520759b6",
-  "dirsek/dirsek_parcalar.py": "029708d0b7",
-  "kafa/kafa_parcalar.py": "3b147ef083",
-  "taban/taban_parcalar.py": "e1d0b822f1",
-  "taban/taban_lib.py": "29fc99b240"
+  "omuz/omuz_parcalar.py": "62b19c7371",
+  "kabuk/kabuk_parcalar.py": "d82f39c382",
+  "dirsek/dirsek_parcalar.py": "7182c29899",
+  "kafa/kafa_parcalar.py": "ab3398a9b6",
+  "taban/taban_parcalar.py": "c5f30375d4",
+  "kafa/kafa-analiz.json": "8d8c41b670",
+  "dirsek/dirsek_lib.py": "2f3a3b77fb",
+  "kabuk/kabuk_lib.py": "a848c28ddc",
+  "kafa/kafa10_lib.py": "3261794aef",
+  "kafa/kafa_lib.py": "1a85133046",
+  "omuz/omuz_lib.py": "b5c14c4ed2",
+  "taban/taban_lib.py": "73d922d4bc"
  },
  "sonuc": {
   "aralik": {
@@ -38,8 +45,8 @@
     90.0
    ],
    "tilt": [
-    -25.0,
-    30.0
+    -13.0,
+    13.0
    ]
   },
   "serbest": {
@@ -48,8 +55,8 @@
     180.0
    ],
    "tilt": [
-    -25.0,
-    40.0
+    -15.0,
+    15.0
    ]
   },
   "kaba": {
@@ -123,7 +130,7 @@
     "ad": "ev",
     "poz": [
      0,
-     0,
+     5.0,
      0,
      0
     ]
@@ -195,7 +202,7 @@
     "ad": "el yuze",
     "poz": [
      120,
-     0,
+     5.0,
      105,
      0
     ]
@@ -204,7 +211,7 @@
     "ad": "el yuze, bilek 90",
     "poz": [
      135,
-     0,
+     5.0,
      105,
      90
     ]
@@ -213,7 +220,7 @@
     "ad": "el agiza",
     "poz": [
      105,
-     0,
+     5.0,
      105,
      0
     ]
@@ -294,9 +301,9 @@
     ],
     "poz": 168
    },
-   "aday": 22083,
+   "aday": 44308,
    "ince_cift": 6,
-   "tam_olcum": 518,
+   "tam_olcum": 553,
    "cakisma_aralikta": [],
    "cakisma_aralik_disi": [],
    "cakisan_alt_poz_aralikta": 0,
@@ -345,13 +352,13 @@
     "kabuk": {
      "kafa_grup": "Kafa",
      "kafa_poz": [
-      -90.0,
-      -25.0
+      -30.0,
+      -10.0
      ],
-     "parca": "Arka kafa kabugu",
+     "parca": "Arka kafa kabugu sag",
      "hedef_modul": "kabuk",
-     "hedef": "Omuz bandi sag",
-     "bosluk_mm": 54.19,
+     "hedef": "S1 kaset govdesi sag",
+     "bosluk_mm": 37.02,
      "hacim_mm3": 0.0,
      "aralikta": true
     },
@@ -371,12 +378,12 @@
      "kafa_grup": "Kafa",
      "kafa_poz": [
       -30.0,
-      -25.0
+      -10.0
      ],
-     "parca": "Arka kafa kabugu",
+     "parca": "Arka kafa kabugu sag",
      "hedef_modul": "omuz_sag govde",
      "hedef": "Yuva baglanti civatasi M6x16",
-     "bosluk_mm": 51.62,
+     "bosluk_mm": 50.91,
      "hacim_mm3": 0.0,
      "aralikta": true
     },
@@ -384,12 +391,12 @@
      "kafa_grup": "Kafa",
      "kafa_poz": [
       30.0,
-      -25.0
+      -10.0
      ],
-     "parca": "Arka kafa kabugu",
+     "parca": "Arka kafa kabugu sol",
      "hedef_modul": "omuz_sol govde",
      "hedef": "Yuva baglanti civatasi M6x16",
-     "bosluk_mm": 51.62,
+     "bosluk_mm": 50.91,
      "hacim_mm3": 0.0,
      "aralikta": true
     }
@@ -398,13 +405,39 @@
     "kabuk": {
      "kafa_grup": "Kafa",
      "kafa_poz": [
+      -15.0,
+      -25.0
+     ],
+     "parca": "Arka kafa kabugu sag",
+     "hedef_modul": "kabuk",
+     "hedef": "S1 kaset govdesi sag",
+     "bosluk_mm": 31.31,
+     "hacim_mm3": 0.0,
+     "aralikta": false
+    },
+    "omuz_sag govde": {
+     "kafa_grup": "Kafa",
+     "kafa_poz": [
+      0.0,
+      -25.0
+     ],
+     "parca": "Arka kafa kabugu sag",
+     "hedef_modul": "omuz_sag govde",
+     "hedef": "Yuva baglanti civatasi M6x16",
+     "bosluk_mm": 38.33,
+     "hacim_mm3": 0.0,
+     "aralikta": false
+    },
+    "omuz_sol govde": {
+     "kafa_grup": "Kafa",
+     "kafa_poz": [
       -180.0,
       -25.0
      ],
-     "parca": "Arka kafa kabugu",
-     "hedef_modul": "kabuk",
-     "hedef": "Omuz bandi sag",
-     "bosluk_mm": 54.19,
+     "parca": "Arka kafa kabugu sag",
+     "hedef_modul": "omuz_sol govde",
+     "hedef": "Yuva baglanti civatasi M6x16",
+     "bosluk_mm": 38.33,
      "hacim_mm3": 0.0,
      "aralikta": false
     },
@@ -417,32 +450,6 @@
      "hedef_modul": "iskelet",
      "hedef": "Omuz traversi",
      "bosluk_mm": 43.05,
-     "hacim_mm3": 0.0,
-     "aralikta": false
-    },
-    "omuz_sag govde": {
-     "kafa_grup": "Kafa",
-     "kafa_poz": [
-      -150.0,
-      -25.0
-     ],
-     "parca": "Arka kafa kabugu",
-     "hedef_modul": "omuz_sag govde",
-     "hedef": "Yuva baglanti civatasi M6x16",
-     "bosluk_mm": 51.62,
-     "hacim_mm3": 0.0,
-     "aralikta": false
-    },
-    "omuz_sol govde": {
-     "kafa_grup": "Kafa",
-     "kafa_poz": [
-      150.0,
-      -25.0
-     ],
-     "parca": "Arka kafa kabugu",
-     "hedef_modul": "omuz_sol govde",
-     "hedef": "Yuva baglanti civatasi M6x16",
-     "bosluk_mm": 51.62,
      "hacim_mm3": 0.0,
      "aralikta": false
     }
@@ -569,10 +576,10 @@
      "aralikta": true
     }
    ],
-   "sure_s": 19.3
+   "sure_s": 153.2
   },
   "kol": {},
   "not_": "kafa pozu = (pan, tilt); kol pozu = (one-arka, yana, dirsek, bilek); alt poz: kafa Govde (), Pan (pan), Kafa (pan, tilt); kol Gobek (one-arka), Kol/UstKol (one-arka, yana), OnKol (+dirsek), El (+bilek). Eklem araligi: kafa pan +-90, tilt -25...30 ve kol araligi; aralik disi = kafa pan +-90 disi ya da tilt 40 (serbest -25...40) ya da kol ince komsulugu disi. Olculmeyen ciftlerin boslugu >= 100 mm (sinir kutusu).",
-  "sure_s": 19.3
+  "sure_s": 153.4
  }
 }

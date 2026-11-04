@@ -6,7 +6,7 @@
   "sag": {
    "konum": [
     0.0,
-    1340.0,
+    1270.0,
     0.0
    ],
    "ayna": false,
@@ -15,7 +15,7 @@
   "sol": {
    "konum": [
     0.0,
-    1340.0,
+    1270.0,
     0.0
    ],
    "ayna": true,
@@ -2108,7 +2108,7 @@
    "govde_dikey": [
     [
      0.0,
-     1285.0,
+     1215.0,
      -26.0
     ],
     [
@@ -6750,41 +6750,41 @@
    "uzatma": [
     {
      "servo": "dirsek servosu (MG996R)",
-     "uzatma_mm": 1926.0,
+     "uzatma_mm": 1856.0,
      "parca": {
       "birlesim_G2": 175.7,
       "gecis": 23.9,
       "s1_lop": 171.4,
       "cikis_govde_ici": 238.0,
       "govde_ici_dikeye": 0.0,
-      "dikey_dagitim": 1286.5,
+      "dikey_dagitim": 1216.5,
       "konnektor_payi": 30.0
      }
     },
     {
      "servo": "bilek servosu (MG996R)",
-     "uzatma_mm": 1926.0,
+     "uzatma_mm": 1856.0,
      "parca": {
       "birlesim_G2": 175.7,
       "gecis": 23.9,
       "s1_lop": 171.4,
       "cikis_govde_ici": 238.0,
       "govde_ici_dikeye": 0.0,
-      "dikey_dagitim": 1286.5,
+      "dikey_dagitim": 1216.5,
       "konnektor_payi": 30.0
      }
     },
     {
      "servo": "S2 servosu (DS3235)",
      "birlesim": "gobek arka ic seridi, G2 oncesi (sabit, S2 lopundan once)",
-     "uzatma_mm": 1770.0,
+     "uzatma_mm": 1700.0,
      "parca": {
       "birlesim_G2": 20.0,
       "gecis": 23.9,
       "s1_lop": 171.4,
       "cikis_govde_ici": 238.0,
       "govde_ici_dikeye": 0.0,
-      "dikey_dagitim": 1286.5,
+      "dikey_dagitim": 1216.5,
       "konnektor_payi": 30.0
      },
      "not_": "servo kablosu G2 oncesine s2_servo_kablo (tahmini) ile ulasir; ek lehim + makaron (lehim + isiyla daralan makaron (O <= 4,5, ~25 mm); JR cifti (10,3 x 4 x 26) de olur)"
@@ -9147,5 +9147,5 @@
   "yuk_g": 500.0,
   "kaynak": "dirsek/dirsek_parcalar.py"
  },
- "sure_s": 315.6
+ "sure_s": 454.4
 }

@@ -1,4 +1,5 @@
 # Kafa modulu - montaj, kontroller, modul ici tarama (pan x tilt), R62 uyumu, tork, baski analizi, FCStd + STEP + BOM + json
+# 1,58 m QLED (04.11.2026): yuva / gorunen alan / tirnak / zarf olcumleri bolum 7b (json "qled"), fan-yarik isi senaryolari bolum 6b.
 # Calistir (yolda "ü" oldugu icin ASCII baslaticiyla): FC_SCRIPT=<bu dosya> freecadcmd run_fc.py
 # Kontroller: her parca isValid + tek kati; ev pozunda modul ici cakisma (0,5 mm3); baglantilar (dayanma, eksen hizasi,
 # civata ucu payi / kavrama); bagil hareket bosluklari (gruplar arasi); pan x tilt taramasi; kabuk R62 boyun acikligina
@@ -307,7 +308,7 @@ for i_, p in enumerate(P):
     j_ = min(_ins10, key=lambda q: (P[q]["bb"].Center - p["bb"].Center).Length)
     d_ = mesafe(S(i_), S(j_))
     bas_bag.append(("%s -> %s" % (p["ad"], P[j_]["ad"]), round(d_, 4), d_ <= TEMAS))
-bag_kontrol.append(dict(ad="10,1 in kafa baglantilari (kafa10_lib)", tip="temas", kontroller=bas_bag, tamam=all(x[2] for x in bas_bag)))
+bag_kontrol.append(dict(ad="10,1 in QLED kafa baglantilari (kafa10_lib)", tip="temas", kontroller=bas_bag, tamam=all(x[2] for x in bas_bag)))
 # eksenel yuk yolu: ust rulman ic bileziginin ust yuzu = mil omzu alt yuzu; dis bilezigin alt yuzu = yuva tablasi
 r2i = S(IDX["6808-2RS ust rulman (ic bilezik)"]).BoundBox
 omuz_kesit = KP.P[KP.I_MIL]["shape"].common(cyl(22.2, (0, KP.Y_OMUZ[0], 0), (0, KP.Y_OMUZ[0] + 0.2, 0)).cut(
@@ -529,8 +530,8 @@ def atalet(gruplar, pl_map, eksen_n, eksen_u):
 # tilt: kafa grubunun yercekimi momenti (pan acisindan bagimsiz) + ivme momenti
 # K4 (15 Ekim 2026): kafa ici kisa kablolar (FPC 300 mm, micro HDMI 25-30 cm, USB-C guc, 12 V, LCD USB) parca listesinde yok:
 # tork ve rulman hesabina nokta kutle olarak eklenir (taban KABLO_PAY gibi; tahmini). Modul kutlesine (kutle_g) girmez.
-KABLO_KAFA = dict(kutle_g=K["kablo_payi"]["kutle_g"], merkez=(-10.0, YT - 20.0, ZT - 10.0),
-                  not_="tahmini: FPC ~3 g, micro HDMI 25 cm ~12 g, USB-C ~6 g, 12 V 18 AWG ~4 g; 1,65 m: merkez tilt ekseninin 20 mm alti (tahmini)")
+_mke = K["kablo_payi"]["merkez_eksen"]
+KABLO_KAFA = dict(kutle_g=K["kablo_payi"]["kutle_g"], merkez=(_mke[0], YT + _mke[1], ZT + _mke[2]), not_=K["kablo_payi"]["kaynak"])
 mK0, cK0 = GR["Kafa"]
 mK = mK0 + KABLO_KAFA["kutle_g"]
 cK = (cK0 * mK0 + V(*KABLO_KAFA["merkez"]) * KABLO_KAFA["kutle_g"]) * (1.0 / mK)
@@ -590,7 +591,7 @@ log("tork tilt %.2f kg*cm (yercekimi %.2f @%d, ivme %.3f) pay %.1f; pan %.2f kg*
     tilt_t, tg_max, th_tg, ti, STALL / tilt_t, pan_t, STALL / pan_t, F_ax, F_rad))
 
 # ====================================================================== 6b) K4 isi (el hesabi, P-pi-kafada.md bolum 3; tahmini)
-# Kafada harcanan guc: Pi 5 (Jeff Geerling olcumu: bosta 3,2 W, stress-ng 9,8 W; tipik 7 W tahmini) + 7" LCD 2,45 W (Waveshare 490 mA)
+# Kafada harcanan guc: Pi 5 (Jeff Geerling olcumu: bosta 3,2 W, stress-ng 9,8 W; tipik 7 W tahmini) + 10,1" QLED 4,5 W (0,9 A x 5 V VARSAYIM; 7" LCD 2,45 W)
 # + kamera ~0,5 W + amfi ortalama ~0,3 W + 5 V cevirici kaybi (%90 verim varsayimi). Kapali kabuk: yuzey ~0,19 m2, toplam isi gecirgenligi
 # ~9 W/m2K (tasinim + isinim) + PETG 2,5 mm (k 0,2) -> R ~1,3 K/W.
 # T2 (15 Ekim 2026, K3 kontrolu: onceki 'yarikli 34-42 C' iyimserdi): yarikli kafa iki sinirla hesaplanir, ikisinde de duvar kaybi (1/R)
@@ -605,7 +606,7 @@ _KK = K["kafa_kutu"]
 YUZEY10 = 2 * (_KK[0] * _KK[1] + _KK[0] * _KK[2] + _KK[1] * _KK[2]) * 1e-6
 HAVA_ALAN = dict(giris_mm2=2 * 3 * 35.0 * 3.0, cikis_mm2=2 * 4 * 35.0 * 3.0, H_mm=(72.0 + 7.0 * 3 + 1.5) - (36.0 + 7.0 + 1.5),
                  once=dict(KP.K7.HAVA_ALAN), not_="kafa10_lib arka kabuk yariklari (yarik 35 x 3); once = 125 cm kafasi")
-LCD_W = 4.0                                  # 10,1" HDMI LCD (TAHMINI; 7" Waveshare 2,45 W idi)
+LCD_W = A.KAFA["ekran"]["guc_W"]             # QLED 4,5 W VARSAYIM (0,9 A, elektrik.md; olculmedi); gogus ekrani kafa disinda (12 V)
 ISI = dict(ortam_C=30.0, R_kapali_K_W=round(1.3 * 0.19 / YUZEY10, 3), yuzey_m2=round(YUZEY10, 3), verim=0.90, debi_L_s=(1.0, 1.55),
            servo_sinir_C=55.0, Cd=0.6, lcd_W=LCD_W,
            kaynak="planlama/adim1/P-pi-kafada.md bolum 3; jeffgeerling.com (Pi 5 guc); Waveshare wiki (LCD akimi); MG996R datasheet (0-55 C); "
@@ -642,6 +643,16 @@ for ad_, pi_W in (("bosta", 3.2), ("tipik", 7.0), ("en_kotu", 9.8)):
                                cekis_once_ic_C=round(ISI["ortam_C"] + dT_c0, 1),
                                aralik_C=[round(ISI["ortam_C"] + min(dT_fan), 1), round(ISI["ortam_C"] + dT_c, 1)],
                                servo_payi_kapali_K=round(ISI["servo_sinir_C"] - ISI["ortam_C"] - dT_kapali, 1))
+# 04.11.2026 QLED: elektrik.md normal karsilama 3,57 A x 5 V = 17,85 W (hub, ReSpeaker, ses karti dahil; hesap, olculmedi); yuk altinda Pi 7 -> 9,8 W: +2,8 W. Karar fan mi yarik mi: uc durum.
+# Olcut (elektrik.md test sarti): 30 C ortamda tilt servosu govdesi <= 50 C (burada ic hava ortalamasi; servo kendi isisi ve alt bolmedeki hava bu hesapta YOK). Fan 30 x 30 x 10 serbest debi ~1,6-2,4 L/s TAHMIN; yarik direnciyle 1,0-1,6 L/s varsayildi.
+FAN_DEBI = (1.0, 1.6)
+isi["fan_yarik"] = dict(olcut_C=50.0, fan_debi_L_s=FAN_DEBI, senaryo={}, not_="yarik: mevcut arka duvar yariklari dogal cekis (boyun aciklik girisi hesaba katilmadi, tutucu); fan: ayni yariklar + 30 mm egzoz; fan listede yok")
+for ad_, yuk in (("normal_17_85W", 17.85), ("yuk_altinda_20_65W", 17.85 + 2.8)):
+    Q = yuk / ISI["verim"]
+    dT_c, Vd_c = cekis_dT(Q, HAVA_ALAN["H_mm"])
+    isi["fan_yarik"]["senaryo"][ad_] = dict(W=round(Q, 1), kapali_ic_C=round(ISI["ortam_C"] + Q * ISI["R_kapali_K_W"], 1), yarik_ic_C=round(ISI["ortam_C"] + dT_c, 1), yarik_debi_L_s=round(Vd_c, 3),
+                                            fan_ic_C=[round(ISI["ortam_C"] + Q / (1.0 / ISI["R_kapali_K_W"] + RHO_CP * v / 1000.0), 1) for v in FAN_DEBI])
+log("isi fan/yarik:", isi["fan_yarik"]["senaryo"])
 for gir in ("giris_mm2", "cikis_mm2"):
     isi["hava"][gir + "_hiz_m_s_1.55L"] = round(1.55e-3 / (HAVA_ALAN[gir] * 1e-6), 2)
 log("isi (K4/T2):", {k: (v["W"], v["kapali_ic_C"], v["yarikli_ic_C"], v["cekis_ic_C"], v["cekis_once_ic_C"]) for k, v in isi["senaryo"].items()},
@@ -657,6 +668,62 @@ for ad, bd in KP.BASKI.items():
     baski.append(r)
     log("baski %-18s %s sigar=%s cikinti %.3f destek sorunu %d" % (ad, r["olcu"], r["sigar"], r["cikinti_orani"], r["destek_sorun_sayi"]),
         r["destek_sorun"][:2])
+
+# ====================================================================== 7b) QLED: yuva, gorunen alan, tirnak, yer ayirma zarflari (04.11.2026; arayuz.KAFA_EKRAN_QLED, kafa10_lib.kur)
+qled = None
+if "tirnak" in A.KAFA["ekran"]:
+    EQ = A.KAFA["ekran"]
+    _d = A.KAFA["denge"]["dy"]
+    _ek = S(IDX["Yuz ekrani WaveShare 10,1in QLED HDMI"])
+    _on = [S(i_) for i_, p in enumerate(P) if p["ad"].startswith("Yuz kabugu (on)")]
+    _ark = [S(i_) for i_, p in enumerate(P) if p["ad"].startswith("Arka kafa kabugu")]
+    # gorunen alan: cam onunden disa prizma (kafa yereli), her Kafa parcasi ile kesisim hacmi (0 olmali)
+    _gw, _gh = EQ["gorunen"][0] / 2, EQ["gorunen"][1] / 2
+    _yg = YT + _d + EQ["gorunen_dy"]
+    _zcam = max(v.Point.z for v in _ek.Vertexes)
+    _pr = L.box(-_gw, _gw, _yg - _gh, _yg + _gh, _zcam + 0.001, _zcam + 60.0)
+    _ortu = {p["ad"]: round(p["shape"].common(_pr).Volume, 4) for p in KAF if p["bb"].intersect(_pr.BoundBox) and p["ad"] != "Yuz ekrani WaveShare 10,1in QLED HDMI"}
+    _pc = [p for p in KAF if p["ad"].startswith("Yuz kabugu (on)")]
+    _pay = min(p["shape"].distToShape(_pr)[0] for p in _pc)
+    # zarflar: Kafa ile kesisim (ekran haric) ve tilt +-13'te Pan ile mesafe
+    zarf_olc = []
+    for z_ in KP.ZARF:
+        sh_ = z_["shape"]
+        bb_ = sh_.BoundBox
+        kes_ = [(p["ad"], round(p["shape"].common(sh_).Volume, 2)) for p in KAF if p["bb"].intersect(bb_) and p["shape"].common(sh_).Volume > TOL]
+        d_pan = 1e9
+        for th_ in (TAR[0], 0, TAR[1]):
+            s2_ = tasi(sh_, Ptilt(th_))
+            for p in PAN:
+                d_pan = min(d_pan, s2_.distToShape(p["shape"])[0])
+        zarf_olc.append(dict(ad=z_["ad"], bb=[round(x, 2) for x in (bb_.XMin, bb_.XMax, bb_.YMin, bb_.YMax, bb_.ZMin, bb_.ZMax)], kesisim=kes_, pan_mm=round(d_pan, 2), not_=z_["not_"]))
+    _bos = lambda a_, b_: round(a_.distToShape(b_)[0], 3)
+    _ikl = S(IDX["Kafa iskeleti"])
+    _kmr = S(IDX["Kamera Raspberry Pi Camera Module 3"])
+    _pi = S(IDX["Raspberry Pi 5 4GB + Active Cooler"])
+    _tn = [i_ for i_, p in enumerate(P) if p["ad"].startswith("Ekran tirnagi")]
+    _ebb = _ek.BoundBox
+    ek_pan = {}
+    for th_ in (TAR[0], -5, 0, 5, TAR[1]):
+        s2_ = tasi(_ek, Ptilt(th_))
+        ek_pan[str(int(th_))] = round(min(s2_.distToShape(p["shape"])[0] for p in PAN), 2)
+    qled = dict(
+        model=EQ["model"], kutle_varsayim_g=EQ["kutle_g"],
+        cam_kafa_ici=dict(x_kenar_mm=round(A.KAFA["kafa_kutu"][0] / 2 - 2.5 - EQ["cam"][0] / 2, 2),
+                          ust_ic_mm=round(_d + 115.0 - 2.5 - (_d + EQ["cam"][1] / 2), 2), alt_ic_mm=round((_d + EQ["cam"][1] / 2 * -1) - (_d - 100.0 + 2.5), 2)),
+        pencere=[round(EQ["gorunen"][0] + 2 * EQ["pencere_pay"], 2), round(EQ["gorunen"][1] + 2 * EQ["pencere_pay"], 2)], gorunen=list(EQ["gorunen"]),
+        pencere_cam_bindirme_mm=dict(yan=round((EQ["cam"][0] - EQ["gorunen"][0]) / 2 - EQ["pencere_pay"], 2),
+                                     ust=round(EQ["cam"][1] / 2 - EQ["gorunen_dy"] - EQ["gorunen"][1] / 2 - EQ["pencere_pay"], 2),
+                                     alt=round(EQ["cam"][1] / 2 + EQ["gorunen_dy"] - EQ["gorunen"][1] / 2 - EQ["pencere_pay"], 2)),
+        gorunen_ortu_mm3=_ortu, gorunen_kabuk_pay_mm=round(_pay, 3),
+        cam_on_z_eksen=round(_ebb.ZMax - ZT, 2), ekran_arka_z_eksen=round(_ebb.ZMin - ZT, 2), panel_arka_z_eksen=round(_ebb.ZMax - ZT - EQ["cam_panel_t"], 2),
+        ekran_olcu_model=[round(_ebb.XLength, 2), round(_ebb.YLength, 2), round(_ebb.ZLength, 2)],
+        bosluk=dict(ekran_on_kabuk=min(_bos(_ek, s_) for s_ in _on), ekran_arka_kabuk=min(_bos(_ek, s_) for s_ in _ark), ekran_iskelet=_bos(_ek, _ikl), ekran_kamera=_bos(_ek, _kmr), ekran_pi=_bos(_ek, _pi),
+                    ekran_tirnak=[_bos(_ek, S(i_)) for i_ in _tn], ekran_pan_tilt=ek_pan),
+        tirnak=dict(adet=len(_tn), kutle_g=round(sum(P[i_]["kutle"] for i_ in _tn), 2), dil_cam_seridi_mm=EQ["tirnak"]["dil"], cam_t=EQ["cam_t"], baski=[b for b in baski if b["ad"].startswith("Ekran tirnagi")][:1]),
+        zarf=zarf_olc, kaynak=EQ["kaynak"])
+    log("qled:", {k: qled[k] for k in ("cam_kafa_ici", "gorunen_ortu_mm3", "gorunen_kabuk_pay_mm", "bosluk")}, [(z["ad"], z["kesisim"], z["pan_mm"]) for z in zarf_olc])
+    Part.Compound([z_["shape"] for z_ in KP.ZARF]).exportBrep(os.path.join(HERE, "kafa-zarf.brep"))
 
 # ====================================================================== 8) kutle, AM
 M = sum(p["kutle"] for p in P)
@@ -799,8 +866,8 @@ out = dict(
     r62=dict(aciklik_r=A.BOYUN_ACIKLIK_R, kapak_y_yerel=list(y_kapak), sabit_en_kucuk=r62[:6], kapak_seviyesi_r_max=round(r_max, 2),
              kafa_en_alt_y=round(alt[0], 2), kafa_en_alt_poz=alt[1], pan_en_alt_y=round(y_pan_min, 2),
              not_="kapak seviyesinde yalniz sabit boyun (servo yuvasi + plaka kulaklari) var; hareketli parcalar y >= %.1f" % y_pan_min),
-    isi=isi, pi=dict(konum_T_bas_cercevesi=list(KP.INFO["pi_t"]), burc_mm=KP.K7.PI_BURC, cevirici_xz=[-80.0, 6.0], amfi_xz=[80.0, 6.0],
-                     not_="10,1 in kafa: Bas cercevesi = tilt ekseni (kafa yereli y %.3f, z %.1f) orijinli" % (YT, ZT), boyun_kablolari="12 V cift 18 AWG + ESP32 USB (VBUS hattinda seri 1N5819) + tilt servo (3 tel)",
+    isi=isi, qled=qled, pi=dict(konum_T_bas_cercevesi=list(KP.INFO["pi_t"]), burc_mm=KP.K7.PI_BURC, cevirici_xz=[-80.0, 6.0], amfi_xz=[80.0, 6.0],
+                     not_="10,1 in QLED kafa: Bas cercevesi = tilt ekseni (kafa yereli y %.3f, z %.1f) orijinli" % (YT, ZT), boyun_kablolari="12 V cift 18 AWG + ESP32 USB (VBUS hattinda seri 1N5819) + tilt servo (3 tel) + gogus ekrani HDMI + USB dokunmatik (01.11.2026; montaj/ekran_kablo_yolu.py)",
                      kaynak="planlama/adim1/P-pi-kafada.md; planlama/adim3/elektrik.md"),
     tork=dict(tilt=tilt_tork, pan=pan_tork, profil="60 derece 0,4 s'de ucgen hiz profili (tahmini): alfa %.1f rad/s2, tepe hiz %.1f rad/s" % (ALFA, OMEGA),
               stall_kaynak="MG996R datasheet 9,4 kg*cm @4,8 V (11 @6 V); dirsek ile ayni"),
@@ -812,7 +879,7 @@ out = dict(
     arayuz=dict((k, (list(v) if isinstance(v, tuple) else v)) for k, v in A.KAFA.items()),
     olcu=dict(Y_PK=KP.Y_PK, Y_R1=KP.Y_R1, Y_R2=KP.Y_R2, Y_FL=KP.Y_FL, Y_CB=KP.Y_CB, adaptor_h=KP.H_ADAPTOR, tilt_y=YT, tilt_z=ZT,
               bas=dict((k, (v if isinstance(v, (int, float)) else str(v))) for k, v in KP.INFO.items()),
-              not_="1,65 m: Govde/Pan olculeri kafa7 (125 cm) ile ayni; Bas (10,1 in) olculeri kafa10_lib (Bas cercevesi = tilt ekseni)"),
+              not_="1,58 m: Govde/Pan olculeri kafa7 (125 cm) ile ayni; Bas (10,1 in QLED) olculeri kafa10_lib (Bas cercevesi = tilt ekseni)"),
     kablo_yolu=[],          # 1,65 m: 10,1" kafada kablo gosterimi yok (125 cm kafa7.YOL eski kafaya gore)
     sure_s=round(time.time() - t0, 1),
 )

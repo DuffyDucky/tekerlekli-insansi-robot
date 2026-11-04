@@ -419,14 +419,17 @@ for _a in donus["yerinde"]:
 log("motor duz %.2f kgcm (%.0f%%) rampa5 %.2f kgcm (%.0f%%)" % (motor["duz"]["T_kgcm"], motor["duz"]["oran"] * 100,
                                                             motor["rampa5"]["T_kgcm"], motor["rampa5"]["oran"] * 100))
 # aku suresi (tahmini tuketim)
-AKU_WH = 12.8 * 24.0          # Limacell 24 Ah: 307 Wh (05-fiyat-arastirmasi)
+AKU_WH = 12.8 * 20.0          # Victron SuperPack 12,8 V 20 Ah, 256 Wh (K3; malzeme listesi v4 satir 5). 24 Ah Limacell yalniz karsilastirma
 KULLANIM = 0.80               # kullanilabilir oran (tahmini; 01-donanim-maliyet ile ayni)
 VERIM = 0.88                  # XL4016 verimi (tahmini)
-HAT_VERIM = {"kafa 5 V": 0.90, "5 V": VERIM, "6 V": VERIM, "12 V": 0.95}   # kafa: Pololu D36V50F5 (%80-95 sayfa araligi; tahmini)
+HAT_VERIM = {"kafa 5 V": 0.90, "5 V": VERIM, "6 V": VERIM, "12 V": 0.95}   # kafa: Pololu D24V50F5 (verim 01.11.2026 D36V50F5 degeri, tahmini)
 TUKETIM = [
-    # (kalem, hat, dusuk W, orta W, yuksek W, dayanak). K4 (15 Ekim 2026): Pi 5, 7" LCD, amfi, mikrofon, kamera kafada (12 V -> kafa 5 V)
+    # (kalem, hat, dusuk W, orta W, yuksek W, dayanak). K4 (15 Ekim 2026): Pi 5, 10,1" QLED, amfi, mikrofon, kamera kafada (12 V -> kafa 5 V)
     ("Raspberry Pi 5 + Active Cooler (kafada)", "kafa 5 V", 4.0, 7.0, 12.0, "tahmini (besleme 5 V 5 A, datasheet README)"),
-    ("10,1\" yuz ekrani (Waveshare HDMI LCD (B), kafada)", "kafa 5 V", 1.5, 2.5, 3.0, "tahmini; 7 inc degerleri, 10,1 inc icin olculecek / Y2b"),
+    # orta = KAFA_EKRAN_QLED guc_W; dusuk / yuksek = eski 7" satirinin orana gore oranlari (1,5/2,5 = 0,6; 3,0/2,5 = 1,2). Olculmedi.
+    ("10,1\" QLED yuz ekrani (kafada)", "kafa 5 V", round(A.KAFA_EKRAN_QLED["guc_W"] * 0.6, 2), A.KAFA_EKRAN_QLED["guc_W"], round(A.KAFA_EKRAN_QLED["guc_W"] * 1.2, 2),
+     "varsayim: 0,9 A x 5 V = 4,5 W (arayuz.KAFA_EKRAN_QLED, olculmedi); dusuk ve yuksek eski 7 inc satirinin orta degere orani (0,6 / 1,2)"),
+    ("11,6\" gogus ekrani (Waveshare HDMI LCD (H), 12 V hat)", "12 V", 6.0, 6.0, 6.0, "12 V ~0,5 A uretici wiki (01.11.2026); dokunmatik USB 5 V ~80 mA Pi'den ayrica, kafa 5 V icinde ihmal"),
     ("Amfi + mikrofon + kamera (kafada)", "kafa 5 V", 0.5, 1.2, 2.5, "tahmini"),
     ("ESP32 + sensorler + PCA/BNO mantik (3V3)", "5 V", 0.5, 1.3, 1.5, "tahmini"),
     ("Servolar A: sag kol + pan (2 DS3235 + 3 MG996R)", "6 V", 0.5, 4.0, 12.5, "tahmini zaman ortalamasi: bosta / jest / kol yuklu tutma (elektrik.md)"),
@@ -436,7 +439,7 @@ TUKETIM = [
 aku = dict(wh=AKU_WH, kullanilabilir=KULLANIM, verim=VERIM, hat_verim=HAT_VERIM, senaryo={})
 for k, ad in ((2, "dusuk"), (3, "orta"), (4, "yuksek")):
     W = sum(t[k] / HAT_VERIM[t[1]] for t in TUKETIM) + 0.3   # role bobini ~0,3 W hep
-    aku["senaryo"][ad] = dict(W=round(W, 1), saat=round(AKU_WH * KULLANIM / W, 1), saat_20ah=round(12.8 * 20 * KULLANIM / W, 1))
+    aku["senaryo"][ad] = dict(W=round(W, 1), saat=round(AKU_WH * KULLANIM / W, 1), saat_24ah=round(12.8 * 24 * KULLANIM / W, 1))
 aku["kalemler"] = [list(t) for t in TUKETIM]
 log("aku", aku["senaryo"])
 

@@ -197,7 +197,7 @@ def yukle_kafa():
     return dict(parcalar=[dict(_parca(p, k), grup=KAFA_GRUP.get(p["grup"], p["grup"]), alt_grup=p["grup"]) for k, p in enumerate(KP.P)],
                 gruplar=[("Govde", "Kafa govdesi: boyun plakasi + servo/rulman yuvasi + pan servosu (traverse sabit)"),
                          ("Boyun", "Kafa pan grubu: boyun mili + yukseltme adaptoru + egme catali + tilt servosu (pan ile doner)"),
-                         ("Bas", "Kafa: iskelet + kabuklar + 10,1 in ekran + kamera + Pi 5 (pan x tilt ile doner)")],
+                         ("Bas", "Kafa: iskelet + kabuklar + 10,1 in QLED ekran + kamera + Pi 5 (pan x tilt ile doner)")],
                 baglanti=dict(modul="iskelet", grup="Iskelet", ref="Omuz traversi", nokta=(0.0, 0.0, 0.0),
                               aciklama="boyun plakasi traversin ust kanalina 2x M6 + cekic somun (x = +-40, z = 0; arayuz.KAFA boyun_plaka)"),
                 eklemler=[dict(e) for e in kafa_eklemleri()], beklenen=beklenen,

@@ -1,7 +1,7 @@
 # Kafa modulu - parca kutuphanesi (FreeCAD 1.1, Part)
 # Genel elemanlar ../ortak_lib.py'de; MG996R, 25T horn, ISO 7380 ve baski analizi ../dirsek/dirsek_lib.py'den (ayni cizim,
-# ayni yontem). Burada kafaya ozgu: 6808-2RS rulman (omuzdaki ile ayni), Waveshare 7" HDMI LCD (C) (rc lcd() ile ayni
-# hacim), Raspberry Pi Camera Module 3 (rc camera()), M2 vida, yuvarlatilmis kafa kutusu.
+# ayni yontem). Burada kafaya ozgu: 6808-2RS rulman (omuzdaki ile ayni), WaveShare 10,1" QLED (qled_local) ve geri donus icin Waveshare 7" HDMI LCD (C)
+# (rc lcd() ile ayni hacim), Raspberry Pi Camera Module 3 (rc camera()), M2 vida, yuvarlatilmis kafa kutusu.
 import os, sys, math
 import FreeCAD as App
 import Part
@@ -48,6 +48,42 @@ def lcd_local():
 def lcd_delikler():
     hx, hy = LCD["delik"][0] / 2, LCD["delik"][1] / 2
     return [(x, y) for x in (-hx, hx) for y in (-hy, hy)]
+
+
+# ------------------------------------------------------------------ WaveShare 10,1" QLED (arayuz.KAFA_EKRAN_QLED; olcu kaynagi orada: uretici 2D PDF + STEP)
+# Yerel: cam on yuzu z = 0 (+Z disari), cam merkezi orijinde. Tek kati: cam seridi (0,9) + panel (cam + panel 6,3) + kart (0,3 ara + 1,6) + kart ustu bilesen zarfi + konnektorler.
+def qled_local():
+    E = A.KAFA_EKRAN_QLED
+    cw, ch = E["cam"][0] / 2, E["cam"][1] / 2
+    cam = box(-cw, cw, -ch, ch, -E["cam_t"], 0.0)
+    ez = [e for e in cam.Edges if abs(e.Vertexes[0].Point.z - e.Vertexes[-1].Point.z) > 1e-6]
+    cam = cam.makeFillet(E["cam_r"], ez)
+    zp = -E["cam_panel_t"]                       # panel arka yuzu
+    panel = box(E["panel_x"][0], E["panel_x"][1], E["panel_y"][0], E["panel_y"][1], zp, -E["cam_t"])
+    zk = zp - 1.9                                # kart bilesen yuzu (STEP y -1,9)
+    kart = box(E["kart_x"][0], E["kart_x"][1], E["kart_y"][0], E["kart_y"][1], zk, zp)
+    # kart ustu bilesenler (STEP): cip / FPC / dugme zarfi 2,1; hoparlor basligi 6,0 (x -13,9...-8,9); konnektorler port tablosundan
+    ek = [box(-50.0, 43.0, E["kart_y"][0] + 2.0, E["kart_y"][1] - 2.0, zk - 2.1, zk),
+          box(-13.9, -8.9, 3.03 - 42.82, 3.03 - 32.82, zk - 6.0, zk)]
+    for ad, q in E["port"].items():
+        if ad == "durum":
+            continue
+        t = q["t_kart"] if ad != "hdmi" else E["kalinlik"] + zk      # HDMI govdesi toplam kalinliga kadar (zarf 15,03)
+        ek.append(box(q["x"][0], q["x"][1], q["y"] - q["en"] / 2, q["y"] + q["en"] / 2, zk - t, zk))
+    return cam.fuse(panel).fuse(kart).fuse(ek).removeSplitter()
+
+
+# SY8205 5 V kart: Motorobit sayfasi 43,5 x 20,2 x 5 (tubitak-2209b/malzeme-listesi/rapor.md); kutle sayfada yok, 8 g TAHMIN. P6KE6V8A: DO-15 govde O3,6 x 7,6 (tipik paket, TAHMIN), 1 g TAHMIN.
+SY8205 = dict(l=43.5, w=20.2, h=5.0, kutle_g=8.0, model="SY8205 5 V dusurucu kart (kafa ekrani ayri hat)")
+TVS = dict(d=3.6, l=7.6, kutle_g=1.0, model="P6KE6V8A TVS (kafa ekrani 5 V)")
+# Hub: Robotistan 72 x 25 x 19, 130 mm kablo (rapor.md); kutle sayfada yok, 25 g TAHMIN. USB ses karti + PAM8403: boyut sayfada yok, 45 x 18 x 11 ve 24 x 18 x 5, 8 g + 3 g TAHMIN (parca gelince olculecek).
+HUB = dict(l=72.0, w=25.0, h=19.0, kutle_g=25.0, model="USB Hub 4 lu 72 x 25 x 19")
+SES = dict(l=45.0, w=18.0, h=11.0, kutle_g=8.0, model="USB ses karti (PAM8403 girisi; olcu TAHMIN)")
+PAM = dict(l=24.0, w=18.0, h=5.0, kutle_g=3.0, model="PAM8403 2 x 3 W amfi karti (olcu TAHMIN)")
+
+
+def tvs_local():
+    return cyl(TVS["d"] / 2, (-TVS["l"] / 2, TVS["d"] / 2, 0), (TVS["l"] / 2, TVS["d"] / 2, 0))
 
 
 # ------------------------------------------------------------------ Raspberry Pi Camera Module 3 (04 + rc:390-396)
@@ -127,16 +163,16 @@ def burc25(L, p0, direction):
     return hexprism(5.0, p0, p0 + u * L, V(1, 0, 0) if abs(u.x) < 0.9 else V(0, 0, 1)).cut(Part.makeCylinder(1.25, L + 2, p0 - u, u))
 
 
-# 5 V cevirici: Pololu D36V50F5 (pololu.com/product/4091: 25,4 x 25,4 x 9,5 mm, 7 g, giris 5,5-50 V, 5 V %4, 5,5 A (giris
-# gerilimine/isiya bagli), ters gerilim korumasi -40 V, asiri akim / kisa devre / asiri sicaklik, 3x M2 delik). Bilesen yuksekligi
-# 9,5 icinde tek blok (tahmini dagilim). Yerel: kart alt yuzu y = 0, merkez orijin.
-CEV = dict(l=25.4, w=25.4, h=9.5, t=1.0, kutle_g=7.0)
+# 5 V cevirici: Pololu D24V50F5 (Duffy 01.11.2026; raporlar/kaynaklar/07 Tablo 2, Robotistan PL-2851: 17,8 x 20,3 x 8,8 mm, maks. 38 V, 5 V %4, 5 A surekli,
+# ters gerilim / asiri akim / kisa devre / termal korumali). Eski D36V50F5 25,4 x 25,4 x 9,5 idi; kuculdu, tablada yer sorunu yok. Kutle sayfada yok: 7 g eski model degeri (tahmini).
+# Bilesen yuksekligi 8,8 icinde tek blok (tahmini dagilim). Yerel: kart alt yuzu y = 0, merkez orijin.
+CEV = dict(l=17.8, w=20.3, h=8.8, t=1.0, kutle_g=7.0, model="Pololu D24V50F5 5 V 5 A")
 
 
 def cevirici_local():
     l, w = CEV["l"], CEV["w"]
     b = box(-l / 2, l / 2, 0, CEV["t"], -w / 2, w / 2)
-    return b.fuse([box(-8, 8, CEV["t"], CEV["h"], -6, 9), box(-11, -3, CEV["t"], 6.0, -11, -7)]).removeSplitter()
+    return b.fuse(box(-l / 2 + 1.5, l / 2 - 1.5, CEV["t"], CEV["h"], -w / 2 + 1.5, w / 2 - 1.5)).removeSplitter()
 
 
 # MAX98357A (taban_lib AMP: Adafruit 3006, 19,4 x 17,8, montaj deligi yok -> kopuk bant)

@@ -1,16 +1,16 @@
 {
  "bolum": "kolkol",
- "kosu": "20261008-221731",
- "baslangic": "2026-10-08T22:58:38",
- "bitis": "2026-10-08T22:59:07",
- "sure_s": 29.2,
- "yukleme_s": 4.7,
- "tepe_bellek_mb": 125,
- "tepe_sayfa_mb": 2141,
+ "kosu": "20261104-174345",
+ "baslangic": "2026-11-04T17:58:45",
+ "bitis": "2026-11-04T18:00:06",
+ "sure_s": 81.0,
+ "yukleme_s": 17.0,
+ "tepe_bellek_mb": 161,
+ "tepe_sayfa_mb": 2178,
  "ayni_surec": [
   "kolkol"
  ],
- "pid": 35604,
+ "pid": 16416,
  "moduller": [
   "omuz_sag",
   "omuz_sol",
@@ -18,16 +18,23 @@
   "dirsek_sol"
  ],
  "kaynak": {
-  "carpisma.py": "46990770f1",
-  "arayuz.py": "6aa5377a61",
-  "ortak_lib.py": "ce4e4053c4",
+  "carpisma.py": "c688d738c3",
+  "arayuz.py": "3263e669ab",
+  "ortak_lib.py": "a668036c1b",
+  "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
-  "omuz/omuz_parcalar.py": "ac3c6974d4",
-  "kabuk/kabuk_parcalar.py": "49520759b6",
-  "dirsek/dirsek_parcalar.py": "029708d0b7",
-  "kafa/kafa_parcalar.py": "3b147ef083",
-  "taban/taban_parcalar.py": "e1d0b822f1",
-  "taban/taban_lib.py": "29fc99b240"
+  "omuz/omuz_parcalar.py": "62b19c7371",
+  "kabuk/kabuk_parcalar.py": "d82f39c382",
+  "dirsek/dirsek_parcalar.py": "7182c29899",
+  "kafa/kafa_parcalar.py": "ab3398a9b6",
+  "taban/taban_parcalar.py": "c5f30375d4",
+  "kafa/kafa-analiz.json": "8d8c41b670",
+  "dirsek/dirsek_lib.py": "2f3a3b77fb",
+  "kabuk/kabuk_lib.py": "a848c28ddc",
+  "kafa/kafa10_lib.py": "3261794aef",
+  "kafa/kafa_lib.py": "1a85133046",
+  "omuz/omuz_lib.py": "b5c14c4ed2",
+  "taban/taban_lib.py": "73d922d4bc"
  },
  "sonuc": {
   "poz_cifti": 227,
@@ -36,13 +43,13 @@
    "tip": "simetrik",
    "sag": [
     -45,
-    0,
+    5.0,
     0,
     -90
    ],
    "sol": [
     -45,
-    0,
+    5.0,
     0,
     -90
    ],
@@ -52,10 +59,10 @@
     "S1 horn merkez vidasi M3"
    ],
    "cakisma": [],
-   "dirsek_bosluk_mm": 304.0,
+   "dirsek_bosluk_mm": 333.5,
    "dirsek_cift": [
-    "El",
-    "El"
+    "Dirsek catali",
+    "Dirsek catali"
    ],
    "kutu_bosluk_min": 290.0
   },
@@ -63,14 +70,14 @@
    "tip": "simetrik",
    "sag": [
     -45,
-    0,
-    0,
+    5.0,
+    105,
     -90
    ],
    "sol": [
     -45,
-    0,
-    0,
+    5.0,
+    105,
     -90
    ],
    "bosluk_mm": 290.0,
@@ -79,7 +86,7 @@
     "S1 horn merkez vidasi M3"
    ],
    "cakisma": [],
-   "dirsek_bosluk_mm": 304.0,
+   "dirsek_bosluk_mm": 331.2,
    "dirsek_cift": [
     "El",
     "El"
@@ -91,13 +98,13 @@
     "tip": "birlikte one",
     "sag": [
      90,
-     0,
+     5.0,
      0,
      -90
     ],
     "sol": [
      90,
-     0,
+     5.0,
      0,
      90
     ],
@@ -107,7 +114,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -118,13 +125,13 @@
     "tip": "birlikte one (bilek ayni)",
     "sag": [
      90,
-     0,
+     5.0,
      0,
      -90
     ],
     "sol": [
      90,
-     0,
+     5.0,
      0,
      -90
     ],
@@ -134,10 +141,10 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
-     "El",
-     "El"
+     "Dirsek catali",
+     "Dirsek catali"
     ],
     "kutu_bosluk_min": 290.0
    },
@@ -145,13 +152,13 @@
     "tip": "simetrik",
     "sag": [
      -45,
-     0,
+     5.0,
      0,
      -90
     ],
     "sol": [
      -45,
-     0,
+     5.0,
      0,
      -90
     ],
@@ -161,10 +168,10 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
-     "El",
-     "El"
+     "Dirsek catali",
+     "Dirsek catali"
     ],
     "kutu_bosluk_min": 290.0
    },
@@ -172,13 +179,13 @@
     "tip": "zit",
     "sag": [
      135,
-     0,
+     5.0,
      0,
      -90
     ],
     "sol": [
      -45,
-     0,
+     5.0,
      105,
      90
     ],
@@ -188,7 +195,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 384.4,
+    "dirsek_bosluk_mm": 444.8,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -201,13 +208,13 @@
     "tip": "simetrik",
     "sag": [
      -45,
-     0,
+     5.0,
      0,
      -90
     ],
     "sol": [
      -45,
-     0,
+     5.0,
      0,
      -90
     ],
@@ -217,7 +224,115 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     -45,
+     5.0,
+     0,
+     90
+    ],
+    "sol": [
+     -45,
+     5.0,
+     0,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     -45,
+     5.0,
+     60,
+     -90
+    ],
+    "sol": [
+     -45,
+     5.0,
+     60,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     -45,
+     5.0,
+     60,
+     90
+    ],
+    "sol": [
+     -45,
+     5.0,
+     60,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     -45,
+     5.0,
+     105,
+     -90
+    ],
+    "sol": [
+     -45,
+     5.0,
+     105,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 331.2,
     "dirsek_cift": [
      "El",
      "El"
@@ -228,14 +343,14 @@
     "tip": "simetrik",
     "sag": [
      -45,
-     0,
-     0,
+     5.0,
+     105,
      90
     ],
     "sol": [
      -45,
-     0,
-     0,
+     5.0,
+     105,
      90
     ],
     "bosluk_mm": 290.0,
@@ -244,7 +359,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -255,13 +370,67 @@
     "tip": "simetrik",
     "sag": [
      -45,
+     60,
      0,
+     -90
+    ],
+    "sol": [
+     -45,
+     60,
+     0,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     -45,
+     60,
+     0,
+     90
+    ],
+    "sol": [
+     -45,
+     60,
+     0,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     -45,
+     60,
      60,
      -90
     ],
     "sol": [
      -45,
-     0,
+     60,
      60,
      -90
     ],
@@ -271,7 +440,88 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     -45,
+     60,
+     60,
+     90
+    ],
+    "sol": [
+     -45,
+     60,
+     60,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     -45,
+     60,
+     105,
+     -90
+    ],
+    "sol": [
+     -45,
+     60,
+     105,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     -45,
+     60,
+     105,
+     90
+    ],
+    "sol": [
+     -45,
+     60,
+     105,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 568.7,
     "dirsek_cift": [
      "El",
      "El"
@@ -282,249 +532,6 @@
     "tip": "simetrik",
     "sag": [
      -45,
-     0,
-     60,
-     90
-    ],
-    "sol": [
-     -45,
-     0,
-     60,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     -45,
-     0,
-     105,
-     -90
-    ],
-    "sol": [
-     -45,
-     0,
-     105,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
-    "dirsek_cift": [
-     "El",
-     "El"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     -45,
-     0,
-     105,
-     90
-    ],
-    "sol": [
-     -45,
-     0,
-     105,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     -45,
-     60,
-     0,
-     -90
-    ],
-    "sol": [
-     -45,
-     60,
-     0,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     -45,
-     60,
-     0,
-     90
-    ],
-    "sol": [
-     -45,
-     60,
-     0,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     -45,
-     60,
-     60,
-     -90
-    ],
-    "sol": [
-     -45,
-     60,
-     60,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     -45,
-     60,
-     60,
-     90
-    ],
-    "sol": [
-     -45,
-     60,
-     60,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     -45,
-     60,
-     105,
-     -90
-    ],
-    "sol": [
-     -45,
-     60,
-     105,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     -45,
-     60,
-     105,
-     90
-    ],
-    "sol": [
-     -45,
-     60,
-     105,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     -45,
      120,
      0,
      -90
@@ -541,7 +548,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -568,7 +575,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -595,7 +602,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -622,7 +629,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -649,7 +656,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -676,34 +683,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     0,
-     0,
-     0,
-     -90
-    ],
-    "sol": [
-     0,
-     0,
-     0,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 568.7,
     "dirsek_cift": [
      "El",
      "El"
@@ -714,15 +694,15 @@
     "tip": "simetrik",
     "sag": [
      0,
+     5.0,
      0,
-     0,
-     90
+     -90
     ],
     "sol": [
      0,
+     5.0,
      0,
-     0,
-     90
+     -90
     ],
     "bosluk_mm": 290.0,
     "cift": [
@@ -730,7 +710,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -741,13 +721,40 @@
     "tip": "simetrik",
     "sag": [
      0,
+     5.0,
      0,
+     90
+    ],
+    "sol": [
+     0,
+     5.0,
+     0,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     0,
+     5.0,
      60,
      -90
     ],
     "sol": [
      0,
-     0,
+     5.0,
      60,
      -90
     ],
@@ -757,7 +764,250 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     0,
+     5.0,
+     60,
+     90
+    ],
+    "sol": [
+     0,
+     5.0,
+     60,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     0,
+     5.0,
+     105,
+     -90
+    ],
+    "sol": [
+     0,
+     5.0,
+     105,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 331.2,
+    "dirsek_cift": [
+     "El",
+     "El"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     0,
+     5.0,
+     105,
+     90
+    ],
+    "sol": [
+     0,
+     5.0,
+     105,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     0,
+     60,
+     0,
+     -90
+    ],
+    "sol": [
+     0,
+     60,
+     0,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     0,
+     60,
+     0,
+     90
+    ],
+    "sol": [
+     0,
+     60,
+     0,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     0,
+     60,
+     60,
+     -90
+    ],
+    "sol": [
+     0,
+     60,
+     60,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     0,
+     60,
+     60,
+     90
+    ],
+    "sol": [
+     0,
+     60,
+     60,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     0,
+     60,
+     105,
+     -90
+    ],
+    "sol": [
+     0,
+     60,
+     105,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     0,
+     60,
+     105,
+     90
+    ],
+    "sol": [
+     0,
+     60,
+     105,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 568.7,
     "dirsek_cift": [
      "El",
      "El"
@@ -768,249 +1018,6 @@
     "tip": "simetrik",
     "sag": [
      0,
-     0,
-     60,
-     90
-    ],
-    "sol": [
-     0,
-     0,
-     60,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     0,
-     0,
-     105,
-     -90
-    ],
-    "sol": [
-     0,
-     0,
-     105,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
-    "dirsek_cift": [
-     "El",
-     "El"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     0,
-     0,
-     105,
-     90
-    ],
-    "sol": [
-     0,
-     0,
-     105,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     0,
-     60,
-     0,
-     -90
-    ],
-    "sol": [
-     0,
-     60,
-     0,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     0,
-     60,
-     0,
-     90
-    ],
-    "sol": [
-     0,
-     60,
-     0,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     0,
-     60,
-     60,
-     -90
-    ],
-    "sol": [
-     0,
-     60,
-     60,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     0,
-     60,
-     60,
-     90
-    ],
-    "sol": [
-     0,
-     60,
-     60,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     0,
-     60,
-     105,
-     -90
-    ],
-    "sol": [
-     0,
-     60,
-     105,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     0,
-     60,
-     105,
-     90
-    ],
-    "sol": [
-     0,
-     60,
-     105,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     0,
      120,
      0,
      -90
@@ -1027,7 +1034,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -1054,7 +1061,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -1081,7 +1088,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -1108,7 +1115,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -1135,7 +1142,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -1162,34 +1169,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     45,
-     0,
-     0,
-     -90
-    ],
-    "sol": [
-     45,
-     0,
-     0,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 568.7,
     "dirsek_cift": [
      "El",
      "El"
@@ -1200,15 +1180,15 @@
     "tip": "simetrik",
     "sag": [
      45,
+     5.0,
      0,
-     0,
-     90
+     -90
     ],
     "sol": [
      45,
+     5.0,
      0,
-     0,
-     90
+     -90
     ],
     "bosluk_mm": 290.0,
     "cift": [
@@ -1216,7 +1196,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -1227,13 +1207,40 @@
     "tip": "simetrik",
     "sag": [
      45,
+     5.0,
      0,
+     90
+    ],
+    "sol": [
+     45,
+     5.0,
+     0,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     45,
+     5.0,
      60,
      -90
     ],
     "sol": [
      45,
-     0,
+     5.0,
      60,
      -90
     ],
@@ -1243,7 +1250,61 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     45,
+     5.0,
+     60,
+     90
+    ],
+    "sol": [
+     45,
+     5.0,
+     60,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     45,
+     5.0,
+     105,
+     -90
+    ],
+    "sol": [
+     45,
+     5.0,
+     105,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 331.2,
     "dirsek_cift": [
      "El",
      "El"
@@ -1254,14 +1315,14 @@
     "tip": "simetrik",
     "sag": [
      45,
-     0,
-     60,
+     5.0,
+     105,
      90
     ],
     "sol": [
      45,
-     0,
-     60,
+     5.0,
+     105,
      90
     ],
     "bosluk_mm": 290.0,
@@ -1270,7 +1331,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -1281,13 +1342,121 @@
     "tip": "simetrik",
     "sag": [
      45,
+     60,
      0,
+     -90
+    ],
+    "sol": [
+     45,
+     60,
+     0,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     45,
+     60,
+     0,
+     90
+    ],
+    "sol": [
+     45,
+     60,
+     0,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     45,
+     60,
+     60,
+     -90
+    ],
+    "sol": [
+     45,
+     60,
+     60,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     45,
+     60,
+     60,
+     90
+    ],
+    "sol": [
+     45,
+     60,
+     60,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     45,
+     60,
      105,
      -90
     ],
     "sol": [
      45,
-     0,
+     60,
      105,
      -90
     ],
@@ -1297,7 +1466,34 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     45,
+     60,
+     105,
+     90
+    ],
+    "sol": [
+     45,
+     60,
+     105,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 568.7,
     "dirsek_cift": [
      "El",
      "El"
@@ -1308,195 +1504,6 @@
     "tip": "simetrik",
     "sag": [
      45,
-     0,
-     105,
-     90
-    ],
-    "sol": [
-     45,
-     0,
-     105,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     45,
-     60,
-     0,
-     -90
-    ],
-    "sol": [
-     45,
-     60,
-     0,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     45,
-     60,
-     0,
-     90
-    ],
-    "sol": [
-     45,
-     60,
-     0,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     45,
-     60,
-     60,
-     -90
-    ],
-    "sol": [
-     45,
-     60,
-     60,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     45,
-     60,
-     60,
-     90
-    ],
-    "sol": [
-     45,
-     60,
-     60,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     45,
-     60,
-     105,
-     -90
-    ],
-    "sol": [
-     45,
-     60,
-     105,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     45,
-     60,
-     105,
-     90
-    ],
-    "sol": [
-     45,
-     60,
-     105,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     45,
      120,
      0,
      -90
@@ -1513,7 +1520,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -1540,7 +1547,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -1567,7 +1574,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -1594,7 +1601,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -1621,7 +1628,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -1648,34 +1655,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     90,
-     0,
-     0,
-     -90
-    ],
-    "sol": [
-     90,
-     0,
-     0,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 568.7,
     "dirsek_cift": [
      "El",
      "El"
@@ -1686,15 +1666,15 @@
     "tip": "simetrik",
     "sag": [
      90,
+     5.0,
      0,
-     0,
-     90
+     -90
     ],
     "sol": [
      90,
+     5.0,
      0,
-     0,
-     90
+     -90
     ],
     "bosluk_mm": 290.0,
     "cift": [
@@ -1702,7 +1682,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -1713,13 +1693,40 @@
     "tip": "simetrik",
     "sag": [
      90,
+     5.0,
      0,
+     90
+    ],
+    "sol": [
+     90,
+     5.0,
+     0,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     90,
+     5.0,
      60,
      -90
     ],
     "sol": [
      90,
-     0,
+     5.0,
      60,
      -90
     ],
@@ -1729,7 +1736,61 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     90,
+     5.0,
+     60,
+     90
+    ],
+    "sol": [
+     90,
+     5.0,
+     60,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     90,
+     5.0,
+     105,
+     -90
+    ],
+    "sol": [
+     90,
+     5.0,
+     105,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 331.2,
     "dirsek_cift": [
      "El",
      "El"
@@ -1740,14 +1801,14 @@
     "tip": "simetrik",
     "sag": [
      90,
-     0,
-     60,
+     5.0,
+     105,
      90
     ],
     "sol": [
      90,
-     0,
-     60,
+     5.0,
+     105,
      90
     ],
     "bosluk_mm": 290.0,
@@ -1756,7 +1817,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -1767,13 +1828,121 @@
     "tip": "simetrik",
     "sag": [
      90,
+     60,
      0,
+     -90
+    ],
+    "sol": [
+     90,
+     60,
+     0,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     90,
+     60,
+     0,
+     90
+    ],
+    "sol": [
+     90,
+     60,
+     0,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     90,
+     60,
+     60,
+     -90
+    ],
+    "sol": [
+     90,
+     60,
+     60,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     90,
+     60,
+     60,
+     90
+    ],
+    "sol": [
+     90,
+     60,
+     60,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     90,
+     60,
      105,
      -90
     ],
     "sol": [
      90,
-     0,
+     60,
      105,
      -90
     ],
@@ -1783,7 +1952,34 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     90,
+     60,
+     105,
+     90
+    ],
+    "sol": [
+     90,
+     60,
+     105,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 568.7,
     "dirsek_cift": [
      "El",
      "El"
@@ -1794,195 +1990,6 @@
     "tip": "simetrik",
     "sag": [
      90,
-     0,
-     105,
-     90
-    ],
-    "sol": [
-     90,
-     0,
-     105,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     90,
-     60,
-     0,
-     -90
-    ],
-    "sol": [
-     90,
-     60,
-     0,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     90,
-     60,
-     0,
-     90
-    ],
-    "sol": [
-     90,
-     60,
-     0,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     90,
-     60,
-     60,
-     -90
-    ],
-    "sol": [
-     90,
-     60,
-     60,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     90,
-     60,
-     60,
-     90
-    ],
-    "sol": [
-     90,
-     60,
-     60,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     90,
-     60,
-     105,
-     -90
-    ],
-    "sol": [
-     90,
-     60,
-     105,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     90,
-     60,
-     105,
-     90
-    ],
-    "sol": [
-     90,
-     60,
-     105,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     90,
      120,
      0,
      -90
@@ -1999,7 +2006,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2026,7 +2033,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2053,7 +2060,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2080,7 +2087,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2107,7 +2114,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2134,34 +2141,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     135,
-     0,
-     0,
-     -90
-    ],
-    "sol": [
-     135,
-     0,
-     0,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 568.7,
     "dirsek_cift": [
      "El",
      "El"
@@ -2172,15 +2152,15 @@
     "tip": "simetrik",
     "sag": [
      135,
+     5.0,
      0,
-     0,
-     90
+     -90
     ],
     "sol": [
      135,
+     5.0,
      0,
-     0,
-     90
+     -90
     ],
     "bosluk_mm": 290.0,
     "cift": [
@@ -2188,7 +2168,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2199,13 +2179,40 @@
     "tip": "simetrik",
     "sag": [
      135,
+     5.0,
      0,
+     90
+    ],
+    "sol": [
+     135,
+     5.0,
+     0,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     135,
+     5.0,
      60,
      -90
     ],
     "sol": [
      135,
-     0,
+     5.0,
      60,
      -90
     ],
@@ -2215,7 +2222,61 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     135,
+     5.0,
+     60,
+     90
+    ],
+    "sol": [
+     135,
+     5.0,
+     60,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     135,
+     5.0,
+     105,
+     -90
+    ],
+    "sol": [
+     135,
+     5.0,
+     105,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 331.2,
     "dirsek_cift": [
      "El",
      "El"
@@ -2226,14 +2287,14 @@
     "tip": "simetrik",
     "sag": [
      135,
-     0,
-     60,
+     5.0,
+     105,
      90
     ],
     "sol": [
      135,
-     0,
-     60,
+     5.0,
+     105,
      90
     ],
     "bosluk_mm": 290.0,
@@ -2242,7 +2303,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2253,13 +2314,121 @@
     "tip": "simetrik",
     "sag": [
      135,
+     60,
      0,
+     -90
+    ],
+    "sol": [
+     135,
+     60,
+     0,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     135,
+     60,
+     0,
+     90
+    ],
+    "sol": [
+     135,
+     60,
+     0,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     135,
+     60,
+     60,
+     -90
+    ],
+    "sol": [
+     135,
+     60,
+     60,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     135,
+     60,
+     60,
+     90
+    ],
+    "sol": [
+     135,
+     60,
+     60,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     135,
+     60,
      105,
      -90
     ],
     "sol": [
      135,
-     0,
+     60,
      105,
      -90
     ],
@@ -2269,7 +2438,34 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 590.1,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "simetrik",
+    "sag": [
+     135,
+     60,
+     105,
+     90
+    ],
+    "sol": [
+     135,
+     60,
+     105,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 568.7,
     "dirsek_cift": [
      "El",
      "El"
@@ -2280,195 +2476,6 @@
     "tip": "simetrik",
     "sag": [
      135,
-     0,
-     105,
-     90
-    ],
-    "sol": [
-     135,
-     0,
-     105,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     135,
-     60,
-     0,
-     -90
-    ],
-    "sol": [
-     135,
-     60,
-     0,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     135,
-     60,
-     0,
-     90
-    ],
-    "sol": [
-     135,
-     60,
-     0,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     135,
-     60,
-     60,
-     -90
-    ],
-    "sol": [
-     135,
-     60,
-     60,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     135,
-     60,
-     60,
-     90
-    ],
-    "sol": [
-     135,
-     60,
-     60,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     135,
-     60,
-     105,
-     -90
-    ],
-    "sol": [
-     135,
-     60,
-     105,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     135,
-     60,
-     105,
-     90
-    ],
-    "sol": [
-     135,
-     60,
-     105,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "simetrik",
-    "sag": [
-     135,
      120,
      0,
      -90
@@ -2485,7 +2492,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2512,7 +2519,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2539,7 +2546,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2566,7 +2573,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2593,7 +2600,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 590.1,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2620,7 +2627,34 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 538.2,
+    "dirsek_bosluk_mm": 568.7,
+    "dirsek_cift": [
+     "El",
+     "El"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "zit",
+    "sag": [
+     135,
+     5.0,
+     0,
+     -90
+    ],
+    "sol": [
+     -45,
+     5.0,
+     105,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 444.8,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2631,15 +2665,15 @@
     "tip": "zit",
     "sag": [
      135,
+     5.0,
      0,
-     0,
-     -90
+     90
     ],
     "sol": [
      -45,
-     0,
+     5.0,
      105,
-     90
+     -90
     ],
     "bosluk_mm": 290.0,
     "cift": [
@@ -2647,7 +2681,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 384.4,
+    "dirsek_bosluk_mm": 444.8,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2658,15 +2692,15 @@
     "tip": "zit",
     "sag": [
      135,
-     0,
-     0,
-     90
+     5.0,
+     105,
+     -90
     ],
     "sol": [
      -45,
+     5.0,
      0,
-     105,
-     -90
+     90
     ],
     "bosluk_mm": 290.0,
     "cift": [
@@ -2674,7 +2708,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 384.4,
+    "dirsek_bosluk_mm": 444.8,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2685,40 +2719,13 @@
     "tip": "zit",
     "sag": [
      135,
-     0,
-     105,
-     -90
-    ],
-    "sol": [
-     -45,
-     0,
-     0,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 384.4,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "zit",
-    "sag": [
-     135,
-     0,
+     5.0,
      105,
      90
     ],
     "sol": [
      -45,
-     0,
+     5.0,
      0,
      -90
     ],
@@ -2728,7 +2735,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 384.4,
+    "dirsek_bosluk_mm": 444.8,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2739,13 +2746,13 @@
     "tip": "zit",
     "sag": [
      -45,
-     0,
+     5.0,
      0,
      -90
     ],
     "sol": [
      135,
-     0,
+     5.0,
      105,
      90
     ],
@@ -2755,7 +2762,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 384.4,
+    "dirsek_bosluk_mm": 444.8,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2766,13 +2773,13 @@
     "tip": "zit",
     "sag": [
      -45,
-     0,
+     5.0,
      0,
      90
     ],
     "sol": [
      135,
-     0,
+     5.0,
      105,
      -90
     ],
@@ -2782,7 +2789,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 384.4,
+    "dirsek_bosluk_mm": 444.8,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2793,13 +2800,13 @@
     "tip": "zit",
     "sag": [
      -45,
-     0,
+     5.0,
      105,
      -90
     ],
     "sol": [
      135,
-     0,
+     5.0,
      0,
      90
     ],
@@ -2809,7 +2816,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 384.4,
+    "dirsek_bosluk_mm": 444.8,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2820,13 +2827,13 @@
     "tip": "zit",
     "sag": [
      -45,
-     0,
+     5.0,
      105,
      90
     ],
     "sol": [
      135,
-     0,
+     5.0,
      0,
      -90
     ],
@@ -2836,7 +2843,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 384.4,
+    "dirsek_bosluk_mm": 444.8,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2847,13 +2854,13 @@
     "tip": "zit",
     "sag": [
      90,
-     0,
+     5.0,
      0,
      -90
     ],
     "sol": [
      0,
-     0,
+     5.0,
      105,
      90
     ],
@@ -2863,7 +2870,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 331.6,
+    "dirsek_bosluk_mm": 362.5,
     "dirsek_cift": [
      "Dirsek catali",
      "El"
@@ -2874,13 +2881,13 @@
     "tip": "zit",
     "sag": [
      90,
-     0,
+     5.0,
      0,
      90
     ],
     "sol": [
      0,
-     0,
+     5.0,
      105,
      -90
     ],
@@ -2890,7 +2897,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 331.7,
+    "dirsek_bosluk_mm": 364.4,
     "dirsek_cift": [
      "Dirsek catali",
      "El"
@@ -2901,13 +2908,13 @@
     "tip": "zit",
     "sag": [
      90,
-     0,
+     5.0,
      105,
      -90
     ],
     "sol": [
      0,
-     0,
+     5.0,
      0,
      90
     ],
@@ -2917,7 +2924,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 344.9,
+    "dirsek_bosluk_mm": 388.4,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2928,13 +2935,13 @@
     "tip": "zit",
     "sag": [
      90,
-     0,
+     5.0,
      105,
      90
     ],
     "sol": [
      0,
-     0,
+     5.0,
      0,
      -90
     ],
@@ -2944,7 +2951,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 344.9,
+    "dirsek_bosluk_mm": 388.4,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2961,7 +2968,7 @@
     ],
     "sol": [
      -45,
-     0,
+     5.0,
      105,
      90
     ],
@@ -2971,7 +2978,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 424.2,
+    "dirsek_bosluk_mm": 464.3,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -2988,7 +2995,7 @@
     ],
     "sol": [
      -45,
-     0,
+     5.0,
      105,
      -90
     ],
@@ -2998,7 +3005,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 424.2,
+    "dirsek_bosluk_mm": 464.3,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3015,7 +3022,7 @@
     ],
     "sol": [
      -45,
-     0,
+     5.0,
      0,
      90
     ],
@@ -3025,7 +3032,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 424.2,
+    "dirsek_bosluk_mm": 464.3,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3042,7 +3049,7 @@
     ],
     "sol": [
      -45,
-     0,
+     5.0,
      0,
      -90
     ],
@@ -3052,7 +3059,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 424.2,
+    "dirsek_bosluk_mm": 464.3,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3069,7 +3076,7 @@
     ],
     "sol": [
      135,
-     0,
+     5.0,
      105,
      90
     ],
@@ -3079,7 +3086,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 430.0,
+    "dirsek_bosluk_mm": 472.3,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3096,7 +3103,7 @@
     ],
     "sol": [
      135,
-     0,
+     5.0,
      105,
      -90
     ],
@@ -3106,7 +3113,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 430.0,
+    "dirsek_bosluk_mm": 472.3,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3123,7 +3130,7 @@
     ],
     "sol": [
      135,
-     0,
+     5.0,
      0,
      90
     ],
@@ -3133,9 +3140,9 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 430.0,
+    "dirsek_bosluk_mm": 470.0,
     "dirsek_cift": [
-     "Dirsek catali",
+     "On kol govdesi",
      "Dirsek catali"
     ],
     "kutu_bosluk_min": 290.0
@@ -3150,7 +3157,7 @@
     ],
     "sol": [
      135,
-     0,
+     5.0,
      0,
      -90
     ],
@@ -3160,7 +3167,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 426.1,
+    "dirsek_bosluk_mm": 459.0,
     "dirsek_cift": [
      "El",
      "Dirsek catali"
@@ -3187,7 +3194,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 511.7,
+    "dirsek_bosluk_mm": 551.5,
     "dirsek_cift": [
      "Dirsek catali",
      "El"
@@ -3214,10 +3221,10 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 517.0,
+    "dirsek_bosluk_mm": 566.7,
     "dirsek_cift": [
      "Dirsek catali",
-     "Dirsek catali"
+     "El"
     ],
     "kutu_bosluk_min": 290.0
    },
@@ -3241,7 +3248,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 517.0,
+    "dirsek_bosluk_mm": 568.6,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3268,7 +3275,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 517.0,
+    "dirsek_bosluk_mm": 568.6,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3279,13 +3286,13 @@
     "tip": "zit",
     "sag": [
      45,
-     0,
+     5.0,
      0,
      -90
     ],
     "sol": [
      -45,
-     0,
+     5.0,
      105,
      90
     ],
@@ -3295,7 +3302,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 331.6,
+    "dirsek_bosluk_mm": 362.5,
     "dirsek_cift": [
      "Dirsek catali",
      "El"
@@ -3306,13 +3313,13 @@
     "tip": "zit",
     "sag": [
      45,
-     0,
+     5.0,
      0,
      90
     ],
     "sol": [
      -45,
-     0,
+     5.0,
      105,
      -90
     ],
@@ -3322,7 +3329,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 331.7,
+    "dirsek_bosluk_mm": 364.4,
     "dirsek_cift": [
      "Dirsek catali",
      "El"
@@ -3333,13 +3340,13 @@
     "tip": "zit",
     "sag": [
      45,
-     0,
+     5.0,
      105,
      -90
     ],
     "sol": [
      -45,
-     0,
+     5.0,
      0,
      90
     ],
@@ -3349,7 +3356,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 344.9,
+    "dirsek_bosluk_mm": 388.4,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3360,13 +3367,13 @@
     "tip": "zit",
     "sag": [
      45,
-     0,
+     5.0,
      105,
      90
     ],
     "sol": [
      -45,
-     0,
+     5.0,
      0,
      -90
     ],
@@ -3376,7 +3383,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 344.9,
+    "dirsek_bosluk_mm": 388.4,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3387,13 +3394,13 @@
     "tip": "zit",
     "sag": [
      120,
-     0,
+     5.0,
      0,
      -90
     ],
     "sol": [
      -30,
-     0,
+     5.0,
      105,
      90
     ],
@@ -3403,7 +3410,34 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 378.9,
+    "dirsek_bosluk_mm": 435.6,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "El"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "zit",
+    "sag": [
+     120,
+     5.0,
+     0,
+     90
+    ],
+    "sol": [
+     -30,
+     5.0,
+     105,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 437.0,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3414,15 +3448,15 @@
     "tip": "zit",
     "sag": [
      120,
-     0,
-     0,
-     90
+     5.0,
+     105,
+     -90
     ],
     "sol": [
      -30,
+     5.0,
      0,
-     105,
-     -90
+     90
     ],
     "bosluk_mm": 290.0,
     "cift": [
@@ -3430,7 +3464,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 378.9,
+    "dirsek_bosluk_mm": 437.0,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3441,40 +3475,13 @@
     "tip": "zit",
     "sag": [
      120,
-     0,
-     105,
-     -90
-    ],
-    "sol": [
-     -30,
-     0,
-     0,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 378.9,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "zit",
-    "sag": [
-     120,
-     0,
+     5.0,
      105,
      90
     ],
     "sol": [
      -30,
-     0,
+     5.0,
      0,
      -90
     ],
@@ -3484,7 +3491,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 378.9,
+    "dirsek_bosluk_mm": 437.0,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3495,13 +3502,13 @@
     "tip": "birlikte one",
     "sag": [
      90,
-     0,
+     5.0,
      0,
      -90
     ],
     "sol": [
      90,
-     0,
+     5.0,
      0,
      90
     ],
@@ -3511,7 +3518,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3522,13 +3529,13 @@
     "tip": "birlikte one (bilek ayni)",
     "sag": [
      90,
-     0,
+     5.0,
      0,
      -90
     ],
     "sol": [
      90,
-     0,
+     5.0,
      0,
      -90
     ],
@@ -3538,7 +3545,655 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     5.0,
+     0,
+     0
+    ],
+    "sol": [
+     90,
+     5.0,
+     0,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     5.0,
+     0,
+     0
+    ],
+    "sol": [
+     90,
+     5.0,
+     0,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     5.0,
+     0,
+     90
+    ],
+    "sol": [
+     90,
+     5.0,
+     0,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     5.0,
+     0,
+     90
+    ],
+    "sol": [
+     90,
+     5.0,
+     0,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     5.0,
+     30,
+     -90
+    ],
+    "sol": [
+     90,
+     5.0,
+     30,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     5.0,
+     30,
+     -90
+    ],
+    "sol": [
+     90,
+     5.0,
+     30,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     5.0,
+     30,
+     0
+    ],
+    "sol": [
+     90,
+     5.0,
+     30,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     5.0,
+     30,
+     0
+    ],
+    "sol": [
+     90,
+     5.0,
+     30,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     5.0,
+     30,
+     90
+    ],
+    "sol": [
+     90,
+     5.0,
+     30,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     5.0,
+     30,
+     90
+    ],
+    "sol": [
+     90,
+     5.0,
+     30,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     5.0,
+     60,
+     -90
+    ],
+    "sol": [
+     90,
+     5.0,
+     60,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     5.0,
+     60,
+     -90
+    ],
+    "sol": [
+     90,
+     5.0,
+     60,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     5.0,
+     60,
+     0
+    ],
+    "sol": [
+     90,
+     5.0,
+     60,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     5.0,
+     60,
+     0
+    ],
+    "sol": [
+     90,
+     5.0,
+     60,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     5.0,
+     60,
+     90
+    ],
+    "sol": [
+     90,
+     5.0,
+     60,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     5.0,
+     60,
+     90
+    ],
+    "sol": [
+     90,
+     5.0,
+     60,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     5.0,
+     90,
+     -90
+    ],
+    "sol": [
+     90,
+     5.0,
+     90,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     5.0,
+     90,
+     -90
+    ],
+    "sol": [
+     90,
+     5.0,
+     90,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     5.0,
+     90,
+     0
+    ],
+    "sol": [
+     90,
+     5.0,
+     90,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     5.0,
+     90,
+     0
+    ],
+    "sol": [
+     90,
+     5.0,
+     90,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     5.0,
+     90,
+     90
+    ],
+    "sol": [
+     90,
+     5.0,
+     90,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     5.0,
+     90,
+     90
+    ],
+    "sol": [
+     90,
+     5.0,
+     90,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     5.0,
+     105,
+     -90
+    ],
+    "sol": [
+     90,
+     5.0,
+     105,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     5.0,
+     105,
+     -90
+    ],
+    "sol": [
+     90,
+     5.0,
+     105,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 331.2,
     "dirsek_cift": [
      "El",
      "El"
@@ -3549,14 +4204,14 @@
     "tip": "birlikte one",
     "sag": [
      90,
-     0,
-     0,
+     5.0,
+     105,
      0
     ],
     "sol": [
      90,
-     0,
-     0,
+     5.0,
+     105,
      0
     ],
     "bosluk_mm": 290.0,
@@ -3565,7 +4220,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3576,14 +4231,14 @@
     "tip": "birlikte one (bilek ayni)",
     "sag": [
      90,
-     0,
-     0,
+     5.0,
+     105,
      0
     ],
     "sol": [
      90,
-     0,
-     0,
+     5.0,
+     105,
      0
     ],
     "bosluk_mm": 290.0,
@@ -3592,7 +4247,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3603,14 +4258,14 @@
     "tip": "birlikte one",
     "sag": [
      90,
-     0,
-     0,
+     5.0,
+     105,
      90
     ],
     "sol": [
      90,
-     0,
-     0,
+     5.0,
+     105,
      -90
     ],
     "bosluk_mm": 290.0,
@@ -3619,7 +4274,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3630,14 +4285,14 @@
     "tip": "birlikte one (bilek ayni)",
     "sag": [
      90,
-     0,
-     0,
+     5.0,
+     105,
      90
     ],
     "sol": [
      90,
-     0,
-     0,
+     5.0,
+     105,
      90
     ],
     "bosluk_mm": 290.0,
@@ -3646,7 +4301,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3657,14 +4312,14 @@
     "tip": "birlikte one",
     "sag": [
      90,
+     15,
      0,
-     30,
      -90
     ],
     "sol": [
      90,
+     15,
      0,
-     30,
      90
     ],
     "bosluk_mm": 290.0,
@@ -3673,7 +4328,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 385.2,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3684,13 +4339,175 @@
     "tip": "birlikte one (bilek ayni)",
     "sag": [
      90,
+     15,
      0,
+     -90
+    ],
+    "sol": [
+     90,
+     15,
+     0,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     15,
+     0,
+     0
+    ],
+    "sol": [
+     90,
+     15,
+     0,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     15,
+     0,
+     0
+    ],
+    "sol": [
+     90,
+     15,
+     0,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     15,
+     0,
+     90
+    ],
+    "sol": [
+     90,
+     15,
+     0,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     15,
+     0,
+     90
+    ],
+    "sol": [
+     90,
+     15,
+     0,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     15,
      30,
      -90
     ],
     "sol": [
      90,
-     0,
+     15,
+     30,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     15,
+     30,
+     -90
+    ],
+    "sol": [
+     90,
+     15,
      30,
      -90
     ],
@@ -3700,7 +4517,1357 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     15,
+     30,
+     0
+    ],
+    "sol": [
+     90,
+     15,
+     30,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     15,
+     30,
+     0
+    ],
+    "sol": [
+     90,
+     15,
+     30,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     15,
+     30,
+     90
+    ],
+    "sol": [
+     90,
+     15,
+     30,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     15,
+     30,
+     90
+    ],
+    "sol": [
+     90,
+     15,
+     30,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     15,
+     60,
+     -90
+    ],
+    "sol": [
+     90,
+     15,
+     60,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     15,
+     60,
+     -90
+    ],
+    "sol": [
+     90,
+     15,
+     60,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     15,
+     60,
+     0
+    ],
+    "sol": [
+     90,
+     15,
+     60,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     15,
+     60,
+     0
+    ],
+    "sol": [
+     90,
+     15,
+     60,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     15,
+     60,
+     90
+    ],
+    "sol": [
+     90,
+     15,
+     60,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     15,
+     60,
+     90
+    ],
+    "sol": [
+     90,
+     15,
+     60,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     15,
+     90,
+     -90
+    ],
+    "sol": [
+     90,
+     15,
+     90,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     15,
+     90,
+     -90
+    ],
+    "sol": [
+     90,
+     15,
+     90,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     15,
+     90,
+     0
+    ],
+    "sol": [
+     90,
+     15,
+     90,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     15,
+     90,
+     0
+    ],
+    "sol": [
+     90,
+     15,
+     90,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     15,
+     90,
+     90
+    ],
+    "sol": [
+     90,
+     15,
+     90,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     15,
+     90,
+     90
+    ],
+    "sol": [
+     90,
+     15,
+     90,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     15,
+     105,
+     -90
+    ],
+    "sol": [
+     90,
+     15,
+     105,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     15,
+     105,
+     -90
+    ],
+    "sol": [
+     90,
+     15,
+     105,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     15,
+     105,
+     0
+    ],
+    "sol": [
+     90,
+     15,
+     105,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     15,
+     105,
+     0
+    ],
+    "sol": [
+     90,
+     15,
+     105,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     15,
+     105,
+     90
+    ],
+    "sol": [
+     90,
+     15,
+     105,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     15,
+     105,
+     90
+    ],
+    "sol": [
+     90,
+     15,
+     105,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 385.2,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     30,
+     0,
+     -90
+    ],
+    "sol": [
+     90,
+     30,
+     0,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     30,
+     0,
+     -90
+    ],
+    "sol": [
+     90,
+     30,
+     0,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     30,
+     0,
+     0
+    ],
+    "sol": [
+     90,
+     30,
+     0,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     30,
+     0,
+     0
+    ],
+    "sol": [
+     90,
+     30,
+     0,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     30,
+     0,
+     90
+    ],
+    "sol": [
+     90,
+     30,
+     0,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     30,
+     0,
+     90
+    ],
+    "sol": [
+     90,
+     30,
+     0,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     30,
+     30,
+     -90
+    ],
+    "sol": [
+     90,
+     30,
+     30,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     30,
+     30,
+     -90
+    ],
+    "sol": [
+     90,
+     30,
+     30,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     30,
+     30,
+     0
+    ],
+    "sol": [
+     90,
+     30,
+     30,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     30,
+     30,
+     0
+    ],
+    "sol": [
+     90,
+     30,
+     30,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     30,
+     30,
+     90
+    ],
+    "sol": [
+     90,
+     30,
+     30,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     30,
+     30,
+     90
+    ],
+    "sol": [
+     90,
+     30,
+     30,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     30,
+     60,
+     -90
+    ],
+    "sol": [
+     90,
+     30,
+     60,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     30,
+     60,
+     -90
+    ],
+    "sol": [
+     90,
+     30,
+     60,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     30,
+     60,
+     0
+    ],
+    "sol": [
+     90,
+     30,
+     60,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     30,
+     60,
+     0
+    ],
+    "sol": [
+     90,
+     30,
+     60,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     30,
+     60,
+     90
+    ],
+    "sol": [
+     90,
+     30,
+     60,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     30,
+     60,
+     90
+    ],
+    "sol": [
+     90,
+     30,
+     60,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     30,
+     90,
+     -90
+    ],
+    "sol": [
+     90,
+     30,
+     90,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     30,
+     90,
+     -90
+    ],
+    "sol": [
+     90,
+     30,
+     90,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     30,
+     90,
+     0
+    ],
+    "sol": [
+     90,
+     30,
+     90,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     30,
+     90,
+     0
+    ],
+    "sol": [
+     90,
+     30,
+     90,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     30,
+     90,
+     90
+    ],
+    "sol": [
+     90,
+     30,
+     90,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     30,
+     90,
+     90
+    ],
+    "sol": [
+     90,
+     30,
+     90,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     30,
+     105,
+     -90
+    ],
+    "sol": [
+     90,
+     30,
+     105,
+     90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     30,
+     105,
+     -90
+    ],
+    "sol": [
+     90,
+     30,
+     105,
+     -90
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 461.3,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     90,
+     30,
+     105,
+     0
+    ],
+    "sol": [
+     90,
+     30,
+     105,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 458.2,
+    "dirsek_cift": [
+     "El",
+     "El"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one (bilek ayni)",
+    "sag": [
+     90,
+     30,
+     105,
+     0
+    ],
+    "sol": [
+     90,
+     30,
+     105,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 458.2,
     "dirsek_cift": [
      "El",
      "El"
@@ -3711,15 +5878,15 @@
     "tip": "birlikte one",
     "sag": [
      90,
-     0,
      30,
-     0
+     105,
+     90
     ],
     "sol": [
      90,
-     0,
      30,
-     0
+     105,
+     -90
     ],
     "bosluk_mm": 290.0,
     "cift": [
@@ -3727,7 +5894,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 461.3,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3738,68 +5905,14 @@
     "tip": "birlikte one (bilek ayni)",
     "sag": [
      90,
-     0,
      30,
-     0
-    ],
-    "sol": [
-     90,
-     0,
-     30,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     0,
-     30,
+     105,
      90
     ],
     "sol": [
      90,
-     0,
      30,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     0,
-     30,
-     90
-    ],
-    "sol": [
-     90,
-     0,
-     30,
+     105,
      90
     ],
     "bosluk_mm": 290.0,
@@ -3808,61 +5921,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     0,
-     60,
-     -90
-    ],
-    "sol": [
-     90,
-     0,
-     60,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     0,
-     60,
-     -90
-    ],
-    "sol": [
-     90,
-     0,
-     60,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
+    "dirsek_bosluk_mm": 458.2,
     "dirsek_cift": [
      "El",
      "El"
@@ -3872,15 +5931,15 @@
    {
     "tip": "birlikte one",
     "sag": [
-     90,
-     0,
      60,
+     5.0,
+     0,
      0
     ],
     "sol": [
-     90,
-     0,
      60,
+     5.0,
+     0,
      0
     ],
     "bosluk_mm": 290.0,
@@ -3889,34 +5948,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     0,
-     60,
-     0
-    ],
-    "sol": [
-     90,
-     0,
-     60,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -3926,123 +5958,15 @@
    {
     "tip": "birlikte one",
     "sag": [
-     90,
-     0,
      60,
-     90
-    ],
-    "sol": [
-     90,
-     0,
+     5.0,
      60,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     0,
-     60,
-     90
-    ],
-    "sol": [
-     90,
-     0,
-     60,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     0,
-     90,
-     -90
-    ],
-    "sol": [
-     90,
-     0,
-     90,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     0,
-     90,
-     -90
-    ],
-    "sol": [
-     90,
-     0,
-     90,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
-    "dirsek_cift": [
-     "El",
-     "El"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     0,
-     90,
      0
     ],
     "sol": [
-     90,
-     0,
-     90,
+     60,
+     5.0,
+     60,
      0
     ],
     "bosluk_mm": 290.0,
@@ -4051,34 +5975,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     0,
-     90,
-     0
-    ],
-    "sol": [
-     90,
-     0,
-     90,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -4088,122 +5985,14 @@
    {
     "tip": "birlikte one",
     "sag": [
-     90,
-     0,
-     90,
-     90
-    ],
-    "sol": [
-     90,
-     0,
-     90,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     0,
-     90,
-     90
-    ],
-    "sol": [
-     90,
-     0,
-     90,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     0,
-     105,
-     -90
-    ],
-    "sol": [
-     90,
-     0,
-     105,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     0,
-     105,
-     -90
-    ],
-    "sol": [
-     90,
-     0,
-     105,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 304.0,
-    "dirsek_cift": [
-     "El",
-     "El"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     0,
+     60,
+     5.0,
      105,
      0
     ],
     "sol": [
-     90,
-     0,
+     60,
+     5.0,
      105,
      0
     ],
@@ -4213,1789 +6002,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     0,
-     105,
-     0
-    ],
-    "sol": [
-     90,
-     0,
-     105,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     0,
-     105,
-     90
-    ],
-    "sol": [
-     90,
-     0,
-     105,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     0,
-     105,
-     90
-    ],
-    "sol": [
-     90,
-     0,
-     105,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     15,
-     0,
-     -90
-    ],
-    "sol": [
-     90,
-     15,
-     0,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     15,
-     0,
-     -90
-    ],
-    "sol": [
-     90,
-     15,
-     0,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     15,
-     0,
-     0
-    ],
-    "sol": [
-     90,
-     15,
-     0,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     15,
-     0,
-     0
-    ],
-    "sol": [
-     90,
-     15,
-     0,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     15,
-     0,
-     90
-    ],
-    "sol": [
-     90,
-     15,
-     0,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     15,
-     0,
-     90
-    ],
-    "sol": [
-     90,
-     15,
-     0,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     15,
-     30,
-     -90
-    ],
-    "sol": [
-     90,
-     15,
-     30,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     15,
-     30,
-     -90
-    ],
-    "sol": [
-     90,
-     15,
-     30,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     15,
-     30,
-     0
-    ],
-    "sol": [
-     90,
-     15,
-     30,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     15,
-     30,
-     0
-    ],
-    "sol": [
-     90,
-     15,
-     30,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     15,
-     30,
-     90
-    ],
-    "sol": [
-     90,
-     15,
-     30,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     15,
-     30,
-     90
-    ],
-    "sol": [
-     90,
-     15,
-     30,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     15,
-     60,
-     -90
-    ],
-    "sol": [
-     90,
-     15,
-     60,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     15,
-     60,
-     -90
-    ],
-    "sol": [
-     90,
-     15,
-     60,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     15,
-     60,
-     0
-    ],
-    "sol": [
-     90,
-     15,
-     60,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     15,
-     60,
-     0
-    ],
-    "sol": [
-     90,
-     15,
-     60,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     15,
-     60,
-     90
-    ],
-    "sol": [
-     90,
-     15,
-     60,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     15,
-     60,
-     90
-    ],
-    "sol": [
-     90,
-     15,
-     60,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     15,
-     90,
-     -90
-    ],
-    "sol": [
-     90,
-     15,
-     90,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     15,
-     90,
-     -90
-    ],
-    "sol": [
-     90,
-     15,
-     90,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     15,
-     90,
-     0
-    ],
-    "sol": [
-     90,
-     15,
-     90,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     15,
-     90,
-     0
-    ],
-    "sol": [
-     90,
-     15,
-     90,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     15,
-     90,
-     90
-    ],
-    "sol": [
-     90,
-     15,
-     90,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     15,
-     90,
-     90
-    ],
-    "sol": [
-     90,
-     15,
-     90,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     15,
-     105,
-     -90
-    ],
-    "sol": [
-     90,
-     15,
-     105,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     15,
-     105,
-     -90
-    ],
-    "sol": [
-     90,
-     15,
-     105,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     15,
-     105,
-     0
-    ],
-    "sol": [
-     90,
-     15,
-     105,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     15,
-     105,
-     0
-    ],
-    "sol": [
-     90,
-     15,
-     105,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     15,
-     105,
-     90
-    ],
-    "sol": [
-     90,
-     15,
-     105,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     15,
-     105,
-     90
-    ],
-    "sol": [
-     90,
-     15,
-     105,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 369.6,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     30,
-     0,
-     -90
-    ],
-    "sol": [
-     90,
-     30,
-     0,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     30,
-     0,
-     -90
-    ],
-    "sol": [
-     90,
-     30,
-     0,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     30,
-     0,
-     0
-    ],
-    "sol": [
-     90,
-     30,
-     0,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     30,
-     0,
-     0
-    ],
-    "sol": [
-     90,
-     30,
-     0,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     30,
-     0,
-     90
-    ],
-    "sol": [
-     90,
-     30,
-     0,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     30,
-     0,
-     90
-    ],
-    "sol": [
-     90,
-     30,
-     0,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     30,
-     30,
-     -90
-    ],
-    "sol": [
-     90,
-     30,
-     30,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     30,
-     30,
-     -90
-    ],
-    "sol": [
-     90,
-     30,
-     30,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     30,
-     30,
-     0
-    ],
-    "sol": [
-     90,
-     30,
-     30,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     30,
-     30,
-     0
-    ],
-    "sol": [
-     90,
-     30,
-     30,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     30,
-     30,
-     90
-    ],
-    "sol": [
-     90,
-     30,
-     30,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     30,
-     30,
-     90
-    ],
-    "sol": [
-     90,
-     30,
-     30,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     30,
-     60,
-     -90
-    ],
-    "sol": [
-     90,
-     30,
-     60,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     30,
-     60,
-     -90
-    ],
-    "sol": [
-     90,
-     30,
-     60,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     30,
-     60,
-     0
-    ],
-    "sol": [
-     90,
-     30,
-     60,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     30,
-     60,
-     0
-    ],
-    "sol": [
-     90,
-     30,
-     60,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     30,
-     60,
-     90
-    ],
-    "sol": [
-     90,
-     30,
-     60,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     30,
-     60,
-     90
-    ],
-    "sol": [
-     90,
-     30,
-     60,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     30,
-     90,
-     -90
-    ],
-    "sol": [
-     90,
-     30,
-     90,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     30,
-     90,
-     -90
-    ],
-    "sol": [
-     90,
-     30,
-     90,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     30,
-     90,
-     0
-    ],
-    "sol": [
-     90,
-     30,
-     90,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     30,
-     90,
-     0
-    ],
-    "sol": [
-     90,
-     30,
-     90,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     30,
-     90,
-     90
-    ],
-    "sol": [
-     90,
-     30,
-     90,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     30,
-     90,
-     90
-    ],
-    "sol": [
-     90,
-     30,
-     90,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     30,
-     105,
-     -90
-    ],
-    "sol": [
-     90,
-     30,
-     105,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     30,
-     105,
-     -90
-    ],
-    "sol": [
-     90,
-     30,
-     105,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     30,
-     105,
-     0
-    ],
-    "sol": [
-     90,
-     30,
-     105,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     30,
-     105,
-     0
-    ],
-    "sol": [
-     90,
-     30,
-     105,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     90,
-     30,
-     105,
-     90
-    ],
-    "sol": [
-     90,
-     30,
-     105,
-     -90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one (bilek ayni)",
-    "sag": [
-     90,
-     30,
-     105,
-     90
-    ],
-    "sol": [
-     90,
-     30,
-     105,
-     90
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 431.3,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     60,
-     0,
-     0,
-     0
-    ],
-    "sol": [
-     60,
-     0,
-     0,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     60,
-     0,
-     60,
-     0
-    ],
-    "sol": [
-     60,
-     0,
-     60,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     60,
-     0,
-     105,
-     0
-    ],
-    "sol": [
-     60,
-     0,
-     105,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -6006,13 +6013,13 @@
     "tip": "birlikte one",
     "sag": [
      75,
-     0,
+     5.0,
      0,
      0
     ],
     "sol": [
      75,
-     0,
+     5.0,
      0,
      0
     ],
@@ -6022,34 +6029,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     75,
-     0,
-     60,
-     0
-    ],
-    "sol": [
-     75,
-     0,
-     60,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -6060,13 +6040,40 @@
     "tip": "birlikte one",
     "sag": [
      75,
-     0,
+     5.0,
+     60,
+     0
+    ],
+    "sol": [
+     75,
+     5.0,
+     60,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     75,
+     5.0,
      105,
      0
     ],
     "sol": [
      75,
-     0,
+     5.0,
      105,
      0
     ],
@@ -6076,7 +6083,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -6087,13 +6094,13 @@
     "tip": "birlikte one",
     "sag": [
      105,
-     0,
+     5.0,
      0,
      0
     ],
     "sol": [
      105,
-     0,
+     5.0,
      0,
      0
     ],
@@ -6103,7 +6110,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -6114,13 +6121,13 @@
     "tip": "birlikte one",
     "sag": [
      105,
-     0,
+     5.0,
      60,
      0
     ],
     "sol": [
      105,
-     0,
+     5.0,
      60,
      0
     ],
@@ -6130,7 +6137,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -6141,13 +6148,13 @@
     "tip": "birlikte one",
     "sag": [
      105,
-     0,
+     5.0,
      105,
      0
     ],
     "sol": [
      105,
-     0,
+     5.0,
      105,
      0
     ],
@@ -6157,7 +6164,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -6168,13 +6175,13 @@
     "tip": "birlikte one",
     "sag": [
      120,
-     0,
+     5.0,
      0,
      0
     ],
     "sol": [
      120,
-     0,
+     5.0,
      0,
      0
     ],
@@ -6184,7 +6191,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -6195,94 +6202,13 @@
     "tip": "birlikte one",
     "sag": [
      120,
-     0,
+     5.0,
      60,
      0
     ],
     "sol": [
      120,
-     0,
-     60,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     120,
-     0,
-     105,
-     0
-    ],
-    "sol": [
-     120,
-     0,
-     105,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     135,
-     0,
-     0,
-     0
-    ],
-    "sol": [
-     135,
-     0,
-     0,
-     0
-    ],
-    "bosluk_mm": 290.0,
-    "cift": [
-     "S1 horn merkez vidasi M3",
-     "S1 horn merkez vidasi M3"
-    ],
-    "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
-    "dirsek_cift": [
-     "Dirsek catali",
-     "Dirsek catali"
-    ],
-    "kutu_bosluk_min": 290.0
-   },
-   {
-    "tip": "birlikte one",
-    "sag": [
-     135,
-     0,
-     60,
-     0
-    ],
-    "sol": [
-     135,
-     0,
+     5.0,
      60,
      0
     ],
@@ -6292,7 +6218,34 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     120,
+     5.0,
+     105,
+     0
+    ],
+    "sol": [
+     120,
+     5.0,
+     105,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -6303,13 +6256,67 @@
     "tip": "birlikte one",
     "sag": [
      135,
+     5.0,
      0,
+     0
+    ],
+    "sol": [
+     135,
+     5.0,
+     0,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     135,
+     5.0,
+     60,
+     0
+    ],
+    "sol": [
+     135,
+     5.0,
+     60,
+     0
+    ],
+    "bosluk_mm": 290.0,
+    "cift": [
+     "S1 horn merkez vidasi M3",
+     "S1 horn merkez vidasi M3"
+    ],
+    "cakisma": [],
+    "dirsek_bosluk_mm": 333.5,
+    "dirsek_cift": [
+     "Dirsek catali",
+     "Dirsek catali"
+    ],
+    "kutu_bosluk_min": 290.0
+   },
+   {
+    "tip": "birlikte one",
+    "sag": [
+     135,
+     5.0,
      105,
      0
     ],
     "sol": [
      135,
-     0,
+     5.0,
      105,
      0
     ],
@@ -6319,7 +6326,7 @@
      "S1 horn merkez vidasi M3"
     ],
     "cakisma": [],
-    "dirsek_bosluk_mm": 308.0,
+    "dirsek_bosluk_mm": 333.5,
     "dirsek_cift": [
      "Dirsek catali",
      "Dirsek catali"
@@ -6327,7 +6334,7 @@
     "kutu_bosluk_min": 290.0
    }
   ],
-  "sure_s": 29.2,
+  "sure_s": 81.0,
   "not_": "hareketli: iki kolun omuz gobegi + ust kol (omuz) + dirsek parcalari; poz = (one-arka, yana, dirsek, bilek), sol kolda ayni acilar aynali hareket"
  }
 }

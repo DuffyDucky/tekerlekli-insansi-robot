@@ -19,11 +19,13 @@ V3_W = 270.0                    # rc:112 sase disten genislik (aku 181 icin en d
 # boy karari hoca + ekip 21 Ekim 2026). Govde uzatmasi UZAMA = BOY'dan turer (1650 -> 385; 1700 -> 435); bantlar, direk, omuz, kol, kafa
 # konumlari bundan. Taslak varyanti
 # tasarim/freecad/taslak-170/ (arsiv) ana tasarima tasindi (Y2a, 26 Ekim 2026). 125 cm geometrisi git gecmisinde (6594c63 ve oncesi).
-BOY = 1650.0                    # yerden kafa tepesine (Duffy, 29 Ekim 2026; taslak-170'de 1700)
-HEAD_UP = 290.0                 # traversin ust yuzunden kafa tepesine: 10,1" kafa alt yuzu kafa yerelinde y 75 + govde 215 (eski V3 275)
-S3 = BOY - 20 - HEAD_UP         # omuz ekseni = travers merkezi yuksekligi (1340; V3 955)
+# 158 CM (Duffy, 01.11.2026; tubitak-2209b/BAGLAM.md 8): yalniz duz govde bandi kisalir (UZAMA 385 -> 315, iki uzatma bandi 157,5), gogus, omuz,
+# kollar ve kafa rijit olarak 70 mm asagi iner. 165 cm geometrisi git'te (f95f96b).
+BOY = 1580.0                    # yerden kafa tepesine (Duffy, 01.11.2026; onceki 1650, taslak-170'de 1700)
+HEAD_UP = 290.0                 # traversin ust yuzunden kafa tepesine: kafa alt yuzu kafa yerelinde y 75 + kabuk 215. 10,1" QLED'de kabuk disi ayni (7" ile de ayniydi; eski V3 275)
+S3 = BOY - 20 - HEAD_UP         # omuz ekseni = travers merkezi yuksekligi (1270; 165 cm'de 1340; V3 955)
 S3_V3 = V3_H - 20 - 275.0       # 955: 125 cm tasarimin omuz ekseni (uzatma referansi)
-UZAMA = S3 - S3_V3              # 385 (taslak 1,65 m'de 435): govde kabugu 476,5 dikisinden yukarisi bu kadar yukarida (iki sabit kesitli uzatma bandi)
+UZAMA = S3 - S3_V3              # 315 (1650'de 385; taslak 1700'de 435): govde kabugu 476,5 dikisinden yukarisi bu kadar yukarida (iki sabit kesitli uzatma bandi)
 # Taban genisligi 520 (Duffy, 25 Ekim 2026): tahrik + alt plaka her yana TABAN_DX, etek 520 (kabuk 9. bolum)
 TABAN_W_V3 = 444.0              # 125 cm etek genisligi (2 x 222)
 TABAN_W = 520.0
@@ -41,7 +43,7 @@ DECK_T = 5.0                    # rc:412
 Y_DECK1 = Y_DECK0 + DECK_T      # rc:89  (179.5)
 Y_COV1 = 90.0 + 172.0           # rc:90-91 taban kapagi ust kenari = govde kabugu alti (262)
 TORSO_Y0 = Y_COV1               # rc:466
-TORSO3_Y1 = S3 + 30             # rc:114 govde kabugu ustu (1370; V3 985)
+TORSO3_Y1 = S3 + 30             # rc:114 govde kabugu ustu (1300; 165 cm'de 1370; V3 985)
 
 # =====================================================================================================
 # 2) Sigma profil 40x40 agir, kanal 10 (sigma_profil.py bu degerleri kullanir)
@@ -68,7 +70,7 @@ DUDAK_ALTI = LIP                     # cekic somunun ust yuzu yuzden bu kadar ic
 KANAL_TABAN = LIP + CAV_D            # kanal tabani yuzden 11.8 mm iceride (orta 13 mm genislikte duz)
 LIP_ALTI_MERKEZ = SG / 2 - LIP       # dudak alt yuzunun profil merkezine uzakligi (15.7)
 STOK_BOY = 1000.0                    # satis boyu (Robolink "1 metre"; ozel kesim de var) mm
-DIREK_STOK = 2000.0                  # govde diregi DIREK_L (1650'de 1.185,5; 1700'de 1.235,5) mm TEK PARCA, 2 m stok boydan kesilir (Duffy, 25 Ekim 2026; ek yeri yok)
+DIREK_STOK = 2000.0                  # govde diregi DIREK_L (1580'de 1.115,5; 1650'de 1.185,5; 1700'de 1.235,5) mm TEK PARCA, 2 m stok boydan kesilir (Duffy, 25 Ekim 2026; ek yeri yok)
 TESTERE = 3.0                        # kesim payi (tahmini)
 
 # =====================================================================================================
@@ -137,8 +139,8 @@ ARA_RAY_L = V3_W - 80                              # 190 (uzun raylarin ic yuzle
 ARA_RAY_Z = (-(L0 / 2 - 20), 0.0, L0 / 2 - 20)     # rc:709
 # Govde diregi: rc:759-761 y = Y_RAIL1'den S3-20'ye (sy='col' olcegi rc:840)
 DIREK_Y0 = Y_RAIL1                                 # 134.5
-DIREK_Y1 = S3 - 20                                 # 1320 (V3 935)
-DIREK_L = DIREK_Y1 - DIREK_Y0                      # 1185.5 (V3 800.5)
+DIREK_Y1 = S3 - 20                                 # 1250 (165 cm'de 1320; V3 935)
+DIREK_L = DIREK_Y1 - DIREK_Y0                      # 1115.5 (165 cm'de 1185.5; V3 800.5)
 # Omuz traversi: rc:765-766, 200 mm, merkez y = S3
 TRAVERS_L = 200.0
 TRAVERS_Y = S3
@@ -309,9 +311,8 @@ PETG_RHO = 1.27          # g/cm3 (rc:68)
 KABUK_DOLULUK = 0.90     # 3 mm duvar: 2 x 3 cevre (~2,5 mm dolu) + %15 dolgu -> etkin doluluk (tahmini)
 PETG_HACIM_HIZI = 10.0   # mm3/s ortalama baski debisi, sure tahmini icin (tahmini; X2D en cok 40 mm3/s)
 
-# --- gogus: egik on duvar (V3 CHEST3 bicimi). Nextion gogus ekrani KALDIRILDI (Duffy, 25 Ekim 2026): ekran, tutucu boss'lar, kablo
-#     boslugu ve kabuk penceresi yok; gogus bandi duz / kapali kabuk. Egik duzlem kabuk bicimi olarak kalir (kesit gogus_z ile).
-GOGUS_Y = S3 - 135.0     # rc:118 CHEST3_Y: egik duzlemin referans yuksekligi (125 cm'de ekran merkezi 820; 1,65 m'de 1205)
+# --- gogus: egik on duvar (V3 CHEST3 bicimi). 158 cm (01.11.2026): duzlemde gomulu 11,6" kasali ekran (GOGUS_EKRAN). Nextion 25 Ekim'de kalkmisti.
+GOGUS_Y = S3 - 135.0     # rc:118 CHEST3_Y: egik duzlemin referans yuksekligi (125 cm'de ekran merkezi 820; 1,58 m'de 1135)
 GOGUS_Z = 95.0           # rc:118 CHEST3_ZC: referans yuksekliginde duzlemin (125 cm'de cam onu) z'si
 GOGUS_EGIM = 15.0        # rc:118 CHEST3_TILT: duzlem 15 derece yukari bakar
 _c15, _s15 = math.cos(math.radians(GOGUS_EGIM)), math.sin(math.radians(GOGUS_EGIM))
@@ -321,6 +322,39 @@ def gogus_z(y):
     """Gogus egik on duvarinin DIS yuzu z'si (y'de); 125 cm'de cam duzlemi + duvar."""
     return GOGUS_Z + KABUK_T / _c15 + (GOGUS_Y - y) * _s15 / _c15
 
+
+# --- gogus ekrani (Duffy, 01.11.2026): Waveshare 11.6inch HDMI LCD (H) with case, yatay, gomulu. Olcu: Waveshare Exterior-Size.jpg (raporlar/kaynaklar/07).
+#     Yerel cerceve (kabuk_parcalar.gogus_yer): X = global X, Y = duzlem boyunca yukari, Z = duzlem normali (disa), orijin cep merkezi dis yuzeyde.
+#     et: cebin alt ve ustunde birakilan duz duzlem seridi. Fizibilite (raporlar/11-6-inc-gogus-ekrani-sigma.md) +16,3 mm'yi serit olmadan (cep = duzlem) hesapladi;
+#     cerceve flansi ve civatasi icin duz serit gerekir: 192,25 + 2 x 8 = 208,25 egik -> duzlem asagi +32,3 mm (fizibilite +16,3 + 16).
+GOGUS_EKRAN = dict(
+    model="Waveshare 11.6inch HDMI LCD (H) with case, 1920x1080 IPS, 10 nokta kapasitif",
+    kasa=(284.65, 182.25, 29.5), aktif=(257.3, 145.4), pay=5.0, cep=(294.65, 192.25), et=8.0,
+    # 1.079 g uretici sayfasi "Actual Weight"; kutu ve aksesuar dahil olabilir (dogrulanmadi), devrilme icin ust sinir kabul edildi
+    kutle_g=1079.0,
+    vesa=75.0, vesa_d=4.0, vesa_derin=8.0,       # 75 x 75 M4 (uretici); delik derinligi ve kasadaki tam yeri DOGRULANMADI (foto: kasa ortasina yakin) -> plakada X yarik +-8, Y direk kanalinda ayarli
+    cam_geri=2.0,                                # kasa on yuzu cerceve on yuzunun 2 mm gerisinde (Duffy 03.11: "evet cerceveyi de ekle"; eski 0,5). VESA tasiyici ve M4'ler bununla kayar
+    # renk: "kabuk" = govde rengi; kod None = govde kabugunun kodu birebir (kabuk_parcalar varsayilani). kose: on_t on yuzden kasa onune inen kose takozu (cam_geri - 0,2 bosluk; 1,8 >= 1,5 baski en azi),
+    # r: pencere kosesi yaricapi (takoz bacagi; 14 <= BRIDGE 15 desteksiz baski), flans_x: kose flansi duvar arkasinda (civatasiz). Geri donus: cam_geri=0.5, renk="siyah", kod="PETG baski (siyah)", kose=None.
+    cerceve=dict(cep_bosluk=0.25, kasa_bosluk=0.5, derin=10.0, flans_yari=9.0, vida_x=(50.0, 120.0), renk="kabuk", kod=None, kose=dict(r=14.0, on_bosluk=0.2, flans_x=(129.0, 145.0))),
+    tasiyici=dict(plaka=(50.0, 46.0, 6.0), acik=(18.0, 40.0), yarik=8.0, web_x=(20.0, 24.0), flans_x=24.0, flans_t=6.0, flans_dy=50.0, m6_dy=30.0,
+                  m4=(4, 12), m6=(6, 18)),
+    # Port yeri (uretici fotograflari 11.6hk-bs, Exterior-Size; 03.11.2026): 3,5 mm ses, mini HDMI (VGA), HDMI, micro USB dokunmatik, 12 V jak kasa arkasinda TEK KISA KENARDAKI
+    # girintide, kenara bakar (arkadan bakinca sol = robotun solu, -X). Olcu CAD'i yok (zip'teki 116.stp kasali model degil): port duvari x ~ -110, satir ~ 66 mm TAHMINI, DOGRULANMADI.
+    # z: cam_geri 0,5 iken kasa yereli (cam_geri_ref); kablo_yolu_ekran cam_geri farkini ekler
+    port=dict(x_duvar=-110.0, y=(-33.0, 33.0), z=(-27.0, -9.0), cam_geri_ref=0.5, durum="fotograftan tahmini, dogrulanmadi"),
+    besleme="12 V ~0,5 A (uretici wiki; adaptor 12 V 1 A). LiFePO4 12,8-14,4 V ile dogrudan baglama DOGRULANMADI",
+    kaynak="waveshare.com/11.6inch-hdmi-lcd-h-with-case.htm, raporlar/kaynaklar/07-gogus-ekrani-ve-5v.md",
+)
+GOGUS_UST_Y = 905.0 + UZAMA                                 # duzlemin ustu (omuz duz yan duvari basi; 1220)
+_ge_h = GOGUS_EKRAN["cep"][1] + 2 * GOGUS_EKRAN["et"]       # 208,25 egik
+GOGUS_ALT_Y = GOGUS_UST_Y - _ge_h * _c15                    # duzlemin alti (1018,84; 165 cm esdegeri duzlem basi 1050'ydi)
+GOGUS_EKRAN_Y = GOGUS_UST_Y - (GOGUS_EKRAN["et"] + GOGUS_EKRAN["cep"][1] / 2) * _c15   # cep merkezi y (1119,42)
+GOGUS_R = 4.0                   # ekran bolgesi kose yaricapi (16 -> 4): a - r = 148 >= cep yari genislik 147,325 (cep kosede kesilmez)
+GOGUS_GECIS_Y = 645.0 + UZAMA   # orta kesit (a 138, bf 88) buraya indi (eski 690 + UZAMA): duzlem alti bf 129 ve a 152'ye gecis 58,8 mm; 45 derece ustu cikinti olmasin
+# 1268 esdegeri dikis (883 + UZAMA = 1198) pencerenin icinden gecerdi; omuz deligi yuzunden yukari tasinamaz (O84 + damla ucu 1210,6, dil 12 ile tam sinir). Cozum basamakli dikis:
+# yan ve arkada 1198 kalir, on bolgede (z >= z) y1'e cikar; cep dikisin altinda kalir.
+GOGUS_ON_DIKIS = dict(y0=883.0 + UZAMA, y1=913.0 + UZAMA, z=66.0)   # on dikis 1228 (duzlem ustu 1220 + 8); z 66: omuz pedi (r 58) onunde, yan duz yuzde
 
 # --- govde kabugu: yuvarlatilmis dikdortgen kesitler (y, a = yari genislik, bf = on, bb = arka, r = kose), cizgisel
 #     (ruled) loft. V3 elips kesitlerinin olculeri (rc:613-623: 112x82 -> 132x88 -> 152x78) korunup omuzda duz yan duvar
@@ -335,7 +369,7 @@ _GK_V3 = [                                      # 125 cm alt loft'u (V3 y), yaln
     (690.0, 138.0, 88.0, 88.0, 36.0),           # rc:613 orta elips 132 x 88 (y 705); genislik eski ekran icin 138
 ]
 UZATMA_Y0 = 476.5                               # uzatma bantlarinin alt dikisi (125 cm'deki ilk yatay dikis)
-UZATMA_BANT = 2                                 # 385 / 2 = 192,5 mm (+ 12 dil = 204,5 <= tabla 250; tek bant 397 sigmaz)
+UZATMA_BANT = 2                                 # 315 / 2 = 157,5 mm (+ 12 dil = 169,5 <= tabla 250; tek bant 327 sigmaz)
 
 
 def _gk_ara(y):
@@ -346,18 +380,34 @@ def _gk_ara(y):
 
 
 _S_UZ = _gk_ara(UZATMA_Y0)                       # (125, 85, 85, 38)
+
+
+def _bb_gecis(y):
+    """Arka yuz: uzatma ustu (bb 85) -> orta | gogus dikisi (bb 88) dogrusal."""
+    y0, y1 = UZATMA_Y0 + UZAMA, 690.0 + UZAMA
+    return 85.0 + 3.0 * (y - y0) / (y1 - y0)
+
+
+def _on_gecis(y):
+    """Gecis kesiti (GOGUS_GECIS_Y -> GOGUS_ALT_Y) ara degeri: a, bf, bb, r; bb dikiste 88."""
+    t = (y - GOGUS_GECIS_Y) / (GOGUS_ALT_Y - GOGUS_GECIS_Y)
+    return (138.0 + t * 14.0, 88.0 + t * (gogus_z(GOGUS_ALT_Y) - 88.0), 88.0, 36.0 + t * (GOGUS_R - 36.0))
+
+
 GOVDE_KESIT = [
     _GK_V3[0],
     (UZATMA_Y0,) + _S_UZ,                        # uzatmanin alt ucu
     (UZATMA_Y0 + UZAMA,) + _S_UZ,                # uzatmanin ust ucu (861,5); ustu 125 cm loft'u UZAMA yukarida
-    (690.0 + UZAMA, 138.0, 88.0, 88.0, 36.0),
-    (735.0 + UZAMA, 145.0, gogus_z(735.0 + UZAMA), 88.0, 16.0),   # gogus duzlemi basi
-    (905.0 + UZAMA, 152.0, gogus_z(905.0 + UZAMA), 80.0, 16.0),   # omuz duz yan duvari basi (x = 152)
-    (GOVDE_Y1, 152.0, gogus_z(905.0 + UZAMA), 78.0, 16.0),        # rc:613 ust elips 152 x 78
+    (GOGUS_GECIS_Y, 138.0, 88.0, _bb_gecis(GOGUS_GECIS_Y), 36.0),
+    # orta | gogus dikisinde ara kesit: arka yuz 791,5 ... 1005 arasinda tek duzlem kalsin (arka servis kapagi duz basilir; kink kapak icine dusmesin)
+    (690.0 + UZAMA, *_on_gecis(690.0 + UZAMA)),
+    (GOGUS_ALT_Y, 152.0, gogus_z(GOGUS_ALT_Y), 88.0, GOGUS_R),    # gogus duzlemi basi (a 145 -> 152, r 16 -> 4; ekran cebi)
+    (GOGUS_UST_Y, 152.0, gogus_z(GOGUS_UST_Y), 80.0, GOGUS_R),    # omuz duz yan duvari basi (x = 152)
+    (GOVDE_Y1, 152.0, gogus_z(GOGUS_UST_Y), 78.0, 16.0),          # rc:613 ust elips 152 x 78
 ]
 UZATMA_DIKIS = tuple(UZATMA_Y0 + UZAMA * k / UZATMA_BANT for k in range(UZATMA_BANT + 1))   # 476,5 / 669 / 861,5
-# yatay birlesimler (1650): 476,5 (alt bant | uzatma 1), 669 (uzatma 1 | 2), 861,5 (uzatma 2 | orta), 1075 (orta | gogus; arka kapak ust kenari),
-# 1268 (gogus | omuz; 125 cm'de ekran penceresinin ust kenariydi, pencere artik yok)
+# yatay birlesimler (1580): 476,5 (alt bant | uzatma 1), 634 (uzatma 1 | 2), 791,5 (uzatma 2 | orta), 1005 (orta | gogus; arka kapak ust kenari),
+# 1198 (gogus | omuz; onde basamakla GOGUS_ON_DIKIS y1'e cikar). 1650'de 669 / 861,5 / 1075 / 1268'di
 GOVDE_DIKIS = UZATMA_DIKIS + (690.0 + UZAMA, 883.0 + UZAMA)
 OMUZ_DUVAR = dict(x0=147.0, x1=152.0, delik_r=42.0, ped_r=58.0)   # omuz_parcalar referansi: x 147...152, O84; 5 mm ped
 UST_KAPAK_ERISIM = dict(x=86.0, r=7.0)   # omuz yuvasi ust M6 civatasi (omuz_parcalar SLEEVE x = 86, basi S3 + 26,6 ... 32,6): kapakta O14 erisim deligi
@@ -471,12 +521,20 @@ MODULLER["dirsek_sol"] = dict(konum=(0.0, S3, 0.0), ayna=True, not_="sag dirsegi
 #     eksen etrafinda). Ev pozu: duz bakis (pan 0, tilt 0). Gruplar: Govde (traverse sabit), Pan (pan ekseninde doner),
 #     Kafa (Pan * tilt). Ayrintilar ve dayanaklari kafa/kafa_parcalar.py ve kafa/rapor.html'de.
 #     1,65 m (Y2a; karar 21 Ekim 2026): 10,1" HDMI yuz ekranli YENI KAFA (kafa/kafa10_lib.py; taslak-170/kafa10.py'den tasindi).
+#     1,58 m: 01.11.2026 ayni kabukta 7" ekran (KAFA_EKRAN7, duruyor); 03.11.2026 gece 10,1" QLED karari, 04.11.2026 modele girdi (KAFA_EKRAN_QLED, dy yeniden cozuldu, zb sabit). Dosya adi kafa10_lib kaldi.
 #     Govde ve Pan gruplari 125 cm kafasindan (kafa/kafa7_parcalar.py, KAFA7 olculeri) aynen; egme catali + tilt servosu + 625ZZ pimi
 #     boyun yukseltme adaptoruyle (PETG-CF, karar 29.10; 4x M3 saplama) adaptor_h yukari; tilt ekseni kafa (Bas) grubunun AM'sinden gecer (denge).
 # =====================================================================================================
 KAFA7 = dict(                                  # 125 cm kafasi (7" LCD) olculeri: kafa7_parcalar (Govde + Pan + eski Bas) bunlarla kurulur
     tilt_nokta=(26.9, 130.0, 25.0), tilt_aralik=(-25.0, 30.0), kafa_kutu=(210.0, 180.0, 150.0), kafa_alt_y=95.0,
     not_="rc:472 head_shell 210 x 180 x 150; tilt ekseni y 130, z 25; Govde/Pan geometrisi 1,65 m kafasinda aynen kullanilir")
+# 7" KAFA EKRANI (Duffy, 01.11.2026: "7inche dusurebilriz"). Satici: Robotistan WaveShare 7" HDMI (C) 1024x600 (raporlar/kaynaklar/06-onayli-satici-B.md). Olcu 04-parca-olculeri
+# (Waveshare cizimi; kalinlik 15 tahmini); geometri kafa_lib.LCD + lcd_local. Kafa kabugu disi (270 x 215) DEGISMEDI: HEAD_UP, S3 zinciri ekrandan etkilenmez. Artik aktif degil, geri donus icin duruyor.
+KAFA_EKRAN7 = dict(
+    model="Waveshare 7inch HDMI LCD (C) 1024x600", kaynak="04-parca-olculeri.md + kafa_lib.LCD; 230 g rc (tahmini)",
+    kulakli=(164.9, 124.25), panel_h=100.0, aktif=(154.21, 85.92), delik=(156.9, 114.96), kalinlik=15.0, kutle_g=230.0,
+    guc_W=2.45, kenar=3.0,    # kenar: panel onundeki ekran yuvasi kenari (125 cm kafasi ile ayni)
+)
 KAFA_EKRAN10 = dict(
     model="Waveshare 10.1inch HDMI LCD (B) 1280x800 (TAHMINI MODEL: hocanin verecegi ekran gelince olculecek)",
     cam=(253.96, 168.60), cam_pencere=(217.96, 136.60), aktif=(216.96, 135.60), kalinlik=18.0,
@@ -484,27 +542,52 @@ KAFA_EKRAN10 = dict(
     kutle_g=600.0,
     kaynak="04-parca-olculeri.md (Waveshare 10.1inch HDMI LCD (B) 2D PDF) + robot_cad.py l10_*; kutle robot_cad m_l10 0,60 (tahmini)",
 )
+# 10,1" QLED KAFA EKRANI (Duffy, 03.11.2026 gece: "qled olsun"; Robotistan kod 20789). Kaynak (yerel klasorde yok; raporlar/ ve tubitak-2209b/malzeme-listesi/ altinda yalniz
+# tubitak-2209b/malzeme-listesi/rapor.md "10,1 QLED kararinin etkileri" bu baglantilari verir): uretici wiki waveshare.com/wiki/10.1HP-CAPQLED; 04.11.2026'da indirilip okundu:
+#   2D PDF  files.waveshare.com/wiki/10.1HP-CAPQLED/10.1HP-CAPLCD_2D_PDF.pdf         (cam, gorunen alan, panel, kart, 6,3 cam + panel)
+#   3D STEP files.waveshare.com/wiki/10.1HP-CAPQLED/10.1HP-CAPLCD_3D_Drawing.zip     (katman ve konnektor yerleri; dosya repoya konmadi)
+#   Kart    waveshare.com/w/upload/e/e7/10.1HP_CAPQLED_PCB_DIMENSIONS.png            (micro USB Power / Touch, HDMI satir yerleri)
+# Yerel cerceve: X = robot X (STEP x ile ayni), Y yukari, Z disa; orijin CAM on yuzu merkezi. Asagidaki _x/_y degerleri STEP'ten bu cerceveye cevrildi (y = 3,03 - z_STEP; z = y_STEP - 6,3).
+# STEP toplam kalinligi 14,38 (y -8,08...6,3); gorevde verilen toplam 15,03 zarf olarak kullanildi (fark 0,65: HDMI govdesi 15,03'e uzatildi, tutucu taraf).
+KAFA_EKRAN_QLED = dict(
+    model="WaveShare 10.1HP-CAPQLED 10,1 in QLED 1280x720 HDMI kapasitif (kod 20789)",
+    kaynak="waveshare.com/wiki/10.1HP-CAPQLED 2D PDF + 3D STEP + PCB dimensions (04.11.2026 okundu); kutle VARSAYIM: 600 g (uretici net kutle yok; satici brut 0,81-0,862 kg)",
+    cam=(245.80, 153.58), cam_r=4.0, gorunen=(225.64, 127.36), gorunen_dy=3.03,   # gorunen alan merkezi cam merkezinin 3,03 ustu (alt kenar 16,14, diger uc kenar 10,08)
+    kalinlik=15.03, kalinlik_step=14.38, cam_panel_t=6.3, cam_t=0.9,               # cam_t: panel disina tasan cam seridi STEP'te yalniz 0,9 mm (y 5,4...6,3); tirnak buna basar
+    panel=(235.0, 143.0), panel_x=(-116.6, 118.4), panel_y=(-71.59, 71.41),        # panel cama gore tam ortali DEGIL (STEP): tasma +X 4,5, -X 6,3, ust 5,38, alt 5,20
+    kart=(110.0, 60.0), kart_x=(-54.1, 55.9), kart_y=(-44.59, 15.41),              # surucu karti: konnektorler +X kenarinda +X'e bakar (arkadan bakinca solda)
+    port=dict(hdmi=dict(x=(44.75, 56.9), y=-35.08, en=15.0, t_kart=6.83), power=dict(x=(50.175, 55.9), y=-3.59, en=7.2, t_kart=3.0),
+              touch=dict(x=(50.175, 55.9), y=-17.29, en=7.2, t_kart=3.0), jack=dict(x=(44.15, 58.08), y=8.885, en=7.35, t_kart=4.5),
+              durum="XY: PCB dimensions + STEP; micro USB yuksekligi 3 mm tahmini"),
+    fis=dict(hdmi=(45.0, 22.0, 12.0), usb=(28.0, 12.0, 8.0), kaynak="fis boyu x eni x kalinligi, TAHMIN (kablo gelince olculecek): lehimsiz duz HDMI A, kaliplanmis micro B"),
+    kutle_g=600.0, guc_W=4.5,     # guc: 0,9 A x 5 V VARSAYIM (planlama/adim3/elektrik.md; olculmedi)
+    kenar=0.0,                    # cam dogrudan on duvarin ic yuzune oturur (7"te araya 3 mm kenar vardi): duvar derinligi 2,5, yan bakista gorunen alanin ortulmesi azalir, eksen momenti lehine one gelir
+    pencere_pay=1.0, cep_bosluk=0.25, cep_duvar=1.6, cep_h=3.0,   # pencere = gorunen alan + 1 mm (7" ile ayni kural); cep duvari 1,6 >= 1,5 baski en azi (arayuz KABUK_T notu: yarim 1,5)
+    tirnak=dict(x=85.0, en=24.0, dil=4.0, t=3.0, kopuk=1.0, boss_r=4.0, panel_bosluk=0.25),   # 4 tirnak (ust/alt, x +-85), her biri 1x M3x6 ISO 7380 + M3 isil gomme; dil ile cam arasinda 1 mm kopuk bant
+)
 _KAFA_ALT = 75.0                 # kafa kabugu alt yuzu (yerel): pan suprulmesinde omuz S1 kaseti tepesi y ~57 + 18 mm pay (V3 95)
-_KAFA_GOVDE_Y = (-100.0, 115.0)  # kafa kabugu alt / ust dis yuzu, ekran merkezine gore (215 mm)
-_KAFA_DENGE = dict(dy=-13.255, zb=-89.893,      # kafa10_lib.dengele() sonucu (ekran merkezinin tilt eksenine gore y'si, arka dis yuz z'si)
-                   kaynak="kafa10_lib.dengele (sekant, 3 tur; taslak-170 26 Ekim 2026 dokumu: Bas 1.431,7 g, AM eksenden 0,046 mm). "
+_KAFA_GOVDE_Y = (-100.0, 115.0)  # kafa kabugu alt / ust dis yuzu, ekran (cam) merkezine gore (215 mm)
+_KAFA_DENGE = dict(dy=-13.878, zb=-89.893,      # kafa10_lib.dengele() sonucu, 10,1" QLED 600 g VARSAYIM (ekran = cam merkezinin tilt eksenine gore y'si, arka dis yuz z'si; 7"te -17,770; eski tahmini 10,1" (B) modelinde -13,255)
+                   # zb SABIT (7" kosusundaki sebeple: tam denge zb -62,3 arka kabugu tilt -5'te boyna carpiyordu). QLED ile zb degismeden AM eksene geldi: safra gereksiz (olcum kafa_montaj tork, not lale158/qled-cerceve-tasarim-notu.md).
+                   kaynak="kafa10_lib.dengele (dy sekant, zb sabit; 04.11.2026, QLED 600 g: Bas 1.472,3 g parca, AM eksenden y 0,00, z -0,06, x 1,71 mm). "
                           "Sabit parametre: kafa_montaj AM'nin eksende kaldigini her kosuda olcer")
 KAFA = dict(
-    taban_y=S3 + SG / 2,                       # 1360: traversin ust yuzu (yerel y = 0)
+    taban_y=S3 + SG / 2,                       # 1290: traversin ust yuzu (yerel y = 0)
     pan_nokta=(0.0, 44.6, 0.0),                # pan horn alt yuzu (pan servosu kasa ustu 41,6 + 3)
     pan_yon=(0.0, 1.0, 0.0),                   # +aci: yuz (+Z) robotun sagina (+X) doner
     pan_aralik=(-90.0, 90.0),                  # MG996R 180 derece; kablo halkasi +-90 icin (kafa_montaj taramasi)
-    tilt_nokta=(26.9, _KAFA_ALT - _KAFA_GOVDE_Y[0] - _KAFA_DENGE["dy"], 25.0),   # tilt horn alt yuzu; eksen X'e paralel, y 188,255, z 25 (V3 130)
+    tilt_nokta=(26.9, _KAFA_ALT - _KAFA_GOVDE_Y[0] - _KAFA_DENGE["dy"], 25.0),   # tilt horn alt yuzu; eksen X'e paralel, y 188,878, z 25 (7"te 192,77; V3 130)
     tilt_yon=(1.0, 0.0, 0.0),                  # +aci: basi one egme (yuz asagi)
     tilt_aralik=(-13.0, 13.0),                 # yazilim siniri (karar 29 Ekim 2026, Y2a KZ3: +-13; once +-15, ilk cakisma +18 / -17; 125 cm -25...30)
     servo="MG996R (180 derece), pan ve tilt",
     kafa_alt_y=_KAFA_ALT,
     govde_y=_KAFA_GOVDE_Y,
     kafa_kutu=(270.0, _KAFA_GOVDE_Y[1] - _KAFA_GOVDE_Y[0], 47.0 - _KAFA_DENGE["zb"]),   # 270 x 215 x 136,9 (on dis yuz eksenin 47 onunde)
-    ekran=KAFA_EKRAN10,
+    ekran=KAFA_EKRAN_QLED,
     denge=_KAFA_DENGE,
-    adaptor_h=_KAFA_ALT - _KAFA_GOVDE_Y[0] - _KAFA_DENGE["dy"] - KAFA7["tilt_nokta"][1],    # 58,255: boyun yukseltme adaptoru
-    kablo_payi=dict(kutle_g=25.0, kaynak="FPC, micro HDMI, USB-C, 12 V (125 cm kafa analizi tahmini); tork hesabina nokta kutle"),
+    adaptor_h=_KAFA_ALT - _KAFA_GOVDE_Y[0] - _KAFA_DENGE["dy"] - KAFA7["tilt_nokta"][1],    # 58,878: boyun yukseltme adaptoru (7"te 62,77)
+    # 04.11.2026 QLED kablolari (elektrik.md 'Ekran kablosu'; kalem kutleleri TAHMIN, tartilmadi): HDMI 30 cm serit ~10 g + 2 lehimsiz fis ~16 g, Power 30 cm USB-A -> micro B ~9 g, Touch 35 cm ~11 g, kamera FPC ~3 g, USB-C ~6 g, 12 V ~4 g. Hub kablosu hub kutlesinde.
+    kablo_payi=dict(kutle_g=59.0, merkez_eksen=(30.0, -5.0, 15.0), kaynak="HDMI 26, Power 9, Touch 11, FPC 3, USB-C 6, 12 V 4 g, kalem kutleleri TAHMIN (planlama/adim3/elektrik.md kablo listesi; eski 25 g FPC + micro HDMI + USB-C + 12 V); merkez TAHMIN (eksen cercevesi): kablolarin cogu +X'te ekran arkasinda; tork hesabina nokta kutle"),
     boyun_plaka=dict(t=3.0, x=(-35.0, 35.0), z=(-25.0, 45.0), kulak_x=48.0, kulak_z=10.0, civata_x=40.0,
                      not_="V3 70x70 (rc:647) + iki yan kulak; 2x M6 traversin ust kanalina (kanal z = 0'da; rc:650'deki "
                           "z -15/35 delikleri kanala denk gelmiyordu)"),
@@ -537,7 +620,7 @@ TABAN = dict(
     kat_ayrim_z=24.0,                             # on kat z 24,25...250, arka guc paneli z -250...23,75 (0,5 mm aralik)
     kat_kesik_on=(-60.0, 60.0, 150.0, 175.0),     # rc:410 deck_cut (kablo gecisi XL4016 / BTS -> kat)
     aku=dict(merkez=(0.0, Y_RAIL0, _Z_BAT), olcu=(181.0, 77.0, 167.0), kutle_g=2800.0,
-             not_="rc:46-47 Landport LFP12-20 olcusu; alinacak Limacell 24 Ah'in olcusu yok (README acik is)"),
+             not_="rc:46-47 Landport LFP12-20 olcusu; alinacak Victron SuperPack 12,8 V 20 Ah (K3, malzeme listesi v4) 181 x 77 x 167 ayni. Kutle modelde 2,8 kg, Victron 3,0 kg: guncellenmedi"),
     # Aku 75 mm one (Duffy, 25 Ekim 2026 karari; devrilme analizi kutle noktasi olarak): GEOMETRIK OLARAK UYGULANAMADI (Y2a, 26 Ekim 2026).
     # Aku (181 x 77 x 167, yatik) arka bolmede orta ara ray (z -20...20, y 94,5...134,5) ile arka ara ray arasinda; 75 mm onde on yuzu
     # z +37'ye gelir: orta ara ray, direk dibi kose baglantilari (y 134,5...171,5) ve govde diregi (y >= 134,5) akunun icinde kalir.
@@ -892,7 +975,7 @@ M6 = dict(
     # K7 ana anahtar dugmesi (ASW-A01, taban ana_anahtar merkezi) icin etek ust plakasinda delik. Cap tahmini (cizim yok; satin alininca olc).
     ana_anahtar_delik_d=30.0,
     # K4 ust arka servis kapagi: gogus bandi arka duvari (ARKA_KAPAK ile ayni yapi; ust kenari 1268 dikisinde, alin).
-    arka_kapak_ust=dict(x=75.0, y0=1100.0, y1=883.0 + UZAMA, z0=-200.0, z1=-40.0, r=15.0),
+    arka_kapak_ust=dict(x=75.0, y0=715.0 + UZAMA, y1=883.0 + UZAMA, z0=-200.0, z1=-40.0, r=15.0),   # y0 1650'de sabit 1100 yaziliydi, UZAMA'ya baglandi (1030)
 )
 
 

@@ -1,0 +1,1409 @@
+{
+ "parca": 1168,
+ "zemin_y": 0.0,
+ "tepe_y": 1580.0,
+ "toplam_boy_mm": 1580.0,
+ "tepe_parca": "Arka kafa kabugu sol",
+ "hedef_boy": 1580.0,
+ "boy_tamam": true,
+ "zincir": {
+  "BOY": 1580.0,
+  "HEAD_UP": 290.0,
+  "S3": 1270.0,
+  "travers_ust": 1290.0,
+  "UZAMA": 315.0,
+  "uzatma_bant": 157.5,
+  "DIREK_Y1": 1250.0,
+  "DIREK_L": 1115.5,
+  "GOVDE_Y1": 1300.0,
+  "dikis": [
+   476.5,
+   634.0,
+   791.5,
+   1005.0,
+   1198.0
+  ],
+  "on_dikis": {
+   "y0": 1198.0,
+   "y1": 1228.0,
+   "z": 66.0
+  },
+  "duzlem_y": [
+   1018.85,
+   1220.0
+  ],
+  "cep_merkez_y": 1119.42,
+  "kafa_alt_y": 75.0,
+  "kafa_govde": [
+   -100.0,
+   115.0
+  ],
+  "tilt_y": 188.878,
+  "adaptor_h": 58.878,
+  "denge": {
+   "dy": -13.878,
+   "zb": -89.893
+  },
+  "zincir_metin": "BOY 1580 = S3 1270 + travers yarim 20 + HEAD_UP 290 (kafa alt 75 + kabuk 215); S3 = 955 + UZAMA 315"
+ },
+ "ekran_cakisma": [],
+ "ekran_en_yakin": [
+  [
+   "Gogus ekrani cercevesi sag",
+   "Gogus bandi sag",
+   0.0
+  ],
+  [
+   "Gogus ekrani cercevesi sol",
+   "Gogus bandi sol",
+   0.0
+  ],
+  [
+   "Gogus ekrani VESA tasiyici",
+   "Govde diregi",
+   0.0
+  ],
+  [
+   "Gogus ekrani cercevesi sol",
+   "Gogus bandi sag",
+   0.25
+  ],
+  [
+   "Gogus ekrani cercevesi sag",
+   "Gogus bandi sol",
+   0.269
+  ],
+  [
+   "Gogus ekrani cercevesi sol",
+   "Bindirme civatasi M3x6 (govde x0 on)008",
+   1.013
+  ],
+  [
+   "Gogus ekrani cercevesi sag",
+   "Govde orta bandi sag",
+   1.172
+  ],
+  [
+   "Gogus ekrani cercevesi sol",
+   "Govde orta bandi sol",
+   1.172
+  ],
+  [
+   "Gogus ekrani cercevesi sol",
+   "Isil gomme somun M3 (govde x0 on)008",
+   1.862
+  ],
+  [
+   "Gogus ekrani cercevesi sag",
+   "Omuz bandi sag",
+   3.872
+  ],
+  [
+   "Gogus ekrani cercevesi sol",
+   "Omuz bandi sol",
+   3.872
+  ],
+  [
+   "Gogus ekrani cercevesi sag",
+   "Bindirme civatasi M3x6 (govde x0 on)008",
+   4.37
+  ],
+  [
+   "Gogus ekrani VESA tasiyici",
+   "Govde braketi sag y1095",
+   5.0
+  ],
+  [
+   "Gogus ekrani VESA tasiyici",
+   "Govde braketi sol y1095",
+   5.0
+  ],
+  [
+   "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+   "Gogus bandi sag",
+   5.0
+  ],
+  [
+   "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+   "Gogus bandi sol",
+   5.0
+  ],
+  [
+   "Gogus ekrani cercevesi sag",
+   "Isil gomme somun M3 (govde x0 on)008",
+   5.22
+  ],
+  [
+   "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+   "Bindirme civatasi M3x6 (govde x0 on)008",
+   6.116
+  ],
+  [
+   "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+   "Isil gomme somun M3 (govde x0 on)008",
+   6.612
+  ],
+  [
+   "Gogus ekrani cercevesi sol",
+   "Bindirme civatasi M3x6 (govde x0 on)009",
+   8.131
+  ],
+  [
+   "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+   "Omuz bandi sag",
+   8.175
+  ],
+  [
+   "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+   "Omuz bandi sol",
+   8.175
+  ],
+  [
+   "Gogus ekrani cercevesi sag",
+   "Isil gomme somun M3 (govde y1005 on)",
+   8.415
+  ],
+  [
+   "Gogus ekrani cercevesi sol",
+   "Isil gomme somun M3 (govde y1005 on)001",
+   8.415
+  ],
+  [
+   "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+   "Govde orta bandi sag",
+   8.829
+  ],
+  [
+   "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+   "Govde orta bandi sol",
+   8.829
+  ],
+  [
+   "Gogus ekrani cercevesi sol",
+   "Govde orta bandi sag",
+   8.922
+  ],
+  [
+   "Gogus ekrani cercevesi sag",
+   "Bindirme civatasi M3x6 (govde y1005 on)",
+   9.46
+  ],
+  [
+   "Gogus ekrani cercevesi sol",
+   "Bindirme civatasi M3x6 (govde y1005 on)001",
+   9.46
+  ],
+  [
+   "Gogus ekrani cercevesi sol",
+   "Isil gomme somun M3 (govde x0 on)009",
+   9.604
+  ],
+  [
+   "Gogus ekrani cercevesi sag",
+   "Bindirme civatasi M3x6 (govde x0 on)009",
+   9.711
+  ],
+  [
+   "Gogus ekrani cercevesi sag",
+   "S1 kaset govdesi sag",
+   10.141
+  ],
+  [
+   "Gogus ekrani cercevesi sol",
+   "S1 kaset govdesi sol",
+   10.141
+  ],
+  [
+   "Gogus ekrani cercevesi sag",
+   "Isil gomme somun M3 (govde x0 on)009",
+   11.103
+  ],
+  [
+   "Gogus ekrani VESA tasiyici",
+   "Cekic somun M6 (Govde braketi sag y1095)",
+   12.0
+  ],
+  [
+   "Gogus ekrani VESA tasiyici",
+   "Cekic somun M6 (Govde braketi sag y1095)001",
+   12.0
+  ],
+  [
+   "Gogus ekrani VESA tasiyici",
+   "Cekic somun M6 (Govde braketi sol y1095)",
+   12.0
+  ],
+  [
+   "Gogus ekrani VESA tasiyici",
+   "Cekic somun M6 (Govde braketi sol y1095)001",
+   12.0
+  ],
+  [
+   "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+   "S1 kaset govdesi sag",
+   12.824
+  ],
+  [
+   "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+   "S1 kaset govdesi sol",
+   12.824
+  ]
+ ],
+ "kablo_ozet": {
+  "kablo": {
+   "HDMI": {
+    "yol_mm": 757.0,
+    "onerilen_mm": 950.0,
+    "cap_mm": 6.0,
+    "not_": "ince micro HDMI -> HDMI A, Pi HDMI1 -> ekran; ekran ucunda 90 derece fis/adaptor gerekir"
+   },
+   "USB dokunmatik": {
+    "yol_mm": 844.0,
+    "onerilen_mm": 1050.0,
+    "cap_mm": 4.0,
+    "not_": "USB A -> micro B, Pi USB -> ekran TOUCH; kutudaki kablo 35 cm, yetmez"
+   },
+   "12 V": {
+    "yol_mm": 1376.0,
+    "onerilen_mm": 1720.0,
+    "cap_mm": 5.0,
+    "not_": "ekran 12 V ~0,5 A, taban guc panelinden; LiFePO4 12,8-14,4 V ile dogrudan baglama dogrulanmadi: regulator/sigorta karari acik"
+   }
+  },
+  "kafa_ici_qled": {
+   "HDMI (serit, 2 lehimsiz fis)": {
+    "yol_mm": 254.0,
+    "liste_boyu_mm": 300.0,
+    "kalan_mm": 46.0
+   },
+   "Touch USB (kutu kablosu)": {
+    "yol_mm": 180.0,
+    "liste_boyu_mm": 350.0,
+    "kalan_mm": 170.0
+   },
+   "Power USB (30 cm, A ucu kesik)": {
+    "yol_mm": 114.0,
+    "liste_boyu_mm": 300.0,
+    "kalan_mm": 186.0
+   }
+  },
+  "boyun_demet_alan_mm2": 69.9,
+  "mevcut": [
+   [
+    "12 V cift 18 AWG",
+    10.6
+   ],
+   [
+    "ESP32 USB",
+    12.6
+   ],
+   [
+    "tilt servo 3 tel",
+    5.9
+   ]
+  ],
+  "gecis": [
+   {
+    "ad": "Boyun mili O32",
+    "alan": 804.247719318987,
+    "kisa": 32.0,
+    "doluluk": 0.087,
+    "kablo_sigar": true
+   },
+   {
+    "ad": "Egme catali deligi O28",
+    "alan": 615.7521601035994,
+    "kisa": 28.0,
+    "doluluk": 0.114,
+    "kablo_sigar": true
+   },
+   {
+    "ad": "Mil arka penceresi 20 x 10, ust 45 derece",
+    "alan": 175.0,
+    "kisa": 10.0,
+    "doluluk": 0.399,
+    "kablo_sigar": true
+   },
+   {
+    "ad": "Servo yuvasi arka kanali 20 x 7,8",
+    "alan": 156.0,
+    "kisa": 7.8,
+    "doluluk": 0.448,
+    "kablo_sigar": true
+   },
+   {
+    "ad": "Servo yuvasi alt cikisi 20 x 12, ust 45 derece",
+    "alan": 204.0,
+    "kisa": 12.0,
+    "doluluk": 0.343,
+    "kablo_sigar": true
+   }
+  ],
+  "not_": "Kablo capi ve fis olcusu tahmini (kablo secilince olculur). Mil penceresi + kanal + alt cikis 03.11.2026 genisletildi (13,7 -> 20; 12 -> 20)."
+ },
+ "kablo_tup_cakisma": {
+  "HDMI": [
+   [
+    "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+    897.1
+   ],
+   [
+    "Boyun mili",
+    15.1
+   ],
+   [
+    "Servo yuvasi",
+    1.7
+   ]
+  ],
+  "USB dokunmatik": [
+   [
+    "SY8205 kafa ekrani 5 V",
+    249.7
+   ],
+   [
+    "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+    167.6
+   ],
+   [
+    "Boyun mili",
+    1.2
+   ]
+  ],
+  "12 V": [
+   [
+    "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+    617.3
+   ]
+  ]
+ },
+ "kablo_tup_notu": "Ev pozu, tek tek kablo tupu x parcalar. Kasa zarfinin ucu (port girintisi) ve kablolarin cekic somun / kablo gosterimi gibi semaya takilan ufak hacimleri beklenir; kablolar arasi temas taranmaz. Listede rulman yuvasi, servo yuvasi, mil varsa o kablo gecisi elle bakilmali.",
+ "baski": [
+  {
+   "modul": "kabuk",
+   "ad": "Govde alt bandi sag",
+   "olcu": [
+    170.0,
+    137.0,
+    225.5
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 299.0,
+   "sa": 6.2,
+   "yon": "dik (alt kenari tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Govde alt bandi sol",
+   "olcu": [
+    170.0,
+    125.0,
+    225.5
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 280.0,
+   "sa": 5.8,
+   "yon": "dik (alt kenari tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Govde uzatma bandi 1 sag",
+   "olcu": [
+    170.0,
+    137.0,
+    169.5
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 224.0,
+   "sa": 4.7,
+   "yon": "dik (alt kenari tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Govde uzatma bandi 1 sol",
+   "olcu": [
+    170.0,
+    125.0,
+    169.5
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 211.0,
+   "sa": 4.4,
+   "yon": "dik (alt kenari tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Govde uzatma bandi 2 sag",
+   "olcu": [
+    170.0,
+    137.0,
+    169.5
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 224.0,
+   "sa": 4.7,
+   "yon": "dik (alt kenari tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Govde uzatma bandi 2 sol",
+   "olcu": [
+    170.0,
+    125.0,
+    169.5
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 211.0,
+   "sa": 4.4,
+   "yon": "dik (alt kenari tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Govde orta bandi sag",
+   "olcu": [
+    214.2,
+    161.8,
+    226.9
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 272.0,
+   "sa": 5.7,
+   "yon": "dik (alt kenari tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Govde orta bandi sol",
+   "olcu": [
+    214.2,
+    149.8,
+    226.9
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 262.0,
+   "sa": 5.4,
+   "yon": "dik (alt kenari tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Gogus bandi sag",
+   "olcu": [
+    217.2,
+    164.0,
+    235.0
+   ],
+   "sigar": true,
+   "desteksiz": false,
+   "destek_sorun": 1,
+   "g": 219.0,
+   "sa": 4.6,
+   "yon": "dik (alt kenari tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Gogus bandi sol",
+   "olcu": [
+    217.2,
+    152.0,
+    235.0
+   ],
+   "sigar": true,
+   "desteksiz": false,
+   "destek_sorun": 1,
+   "g": 215.0,
+   "sa": 4.5,
+   "yon": "dik (alt kenari tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Omuz bandi sag",
+   "olcu": [
+    164.0,
+    156.2,
+    102.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 184.0,
+   "sa": 3.8,
+   "yon": "ters (ust kapak tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Omuz bandi sol",
+   "olcu": [
+    156.2,
+    152.0,
+    102.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 178.0,
+   "sa": 3.7,
+   "yon": "ters (ust kapak tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Arka servis kapagi",
+   "olcu": [
+    190.0,
+    160.0,
+    3.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 98.0,
+   "sa": 2.0,
+   "yon": "dis yuzu tablada"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Ust arka servis kapagi",
+   "olcu": [
+    168.3,
+    150.0,
+    3.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 80.0,
+   "sa": 1.7,
+   "yon": "dis yuzu tablada"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Etek arka sag",
+   "olcu": [
+    233.7,
+    190.1,
+    227.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 366.0,
+   "sa": 7.6,
+   "yon": "ters (ust plakasi tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Etek arka sol",
+   "olcu": [
+    222.0,
+    175.0,
+    227.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 362.0,
+   "sa": 7.5,
+   "yon": "ters (ust plakasi tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Etek orta sag",
+   "olcu": [
+    222.0,
+    199.0,
+    227.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 217.0,
+   "sa": 4.5,
+   "yon": "ters (ust plakasi tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Etek orta sol",
+   "olcu": [
+    222.0,
+    199.0,
+    227.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 217.0,
+   "sa": 4.5,
+   "yon": "ters (ust plakasi tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Etek on sag",
+   "olcu": [
+    233.7,
+    190.1,
+    227.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 372.0,
+   "sa": 7.7,
+   "yon": "ters (ust plakasi tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Etek on sol",
+   "olcu": [
+    222.0,
+    175.0,
+    227.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 363.0,
+   "sa": 7.6,
+   "yon": "ters (ust plakasi tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Etek dolgu seridi arka",
+   "olcu": [
+    192.5,
+    88.0,
+    227.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 98.0,
+   "sa": 2.0,
+   "yon": "ters (ust plakasi tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Etek dolgu seridi on",
+   "olcu": [
+    192.5,
+    88.0,
+    227.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 107.0,
+   "sa": 2.2,
+   "yon": "ters (ust plakasi tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Etek servis kapagi H1 (sigorta kutusu)",
+   "olcu": [
+    111.3,
+    111.3,
+    3.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 24.0,
+   "sa": 0.5,
+   "yon": "duz (alt yuzu tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Etek servis kapagi H2 (ana sigorta)",
+   "olcu": [
+    70.0,
+    56.0,
+    3.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 14.0,
+   "sa": 0.3,
+   "yon": "duz (alt yuzu tablada)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Gogus ekrani cercevesi sag",
+   "olcu": [
+    207.2,
+    147.0,
+    10.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 31.0,
+   "sa": 0.6,
+   "yon": "arka yuzu (flans) tablada"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Gogus ekrani cercevesi sol",
+   "olcu": [
+    207.2,
+    147.0,
+    10.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 31.0,
+   "sa": 0.6,
+   "yon": "arka yuzu (flans) tablada"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Gogus ekrani VESA tasiyici",
+   "olcu": [
+    106.2,
+    100.0,
+    63.4
+   ],
+   "sigar": true,
+   "desteksiz": false,
+   "destek_sorun": 28,
+   "g": 113.0,
+   "sa": 2.4,
+   "yon": "VESA plakasi tablada; arka flans destekli"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "S1 kaset govdesi sag",
+   "olcu": [
+    111.9,
+    111.2,
+    6.3
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 10.0,
+   "sa": 0.2,
+   "yon": "arka yuzu (x 152) tablada"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "S1 kaset kapagi sag",
+   "olcu": [
+    111.9,
+    111.2,
+    4.5
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 7.0,
+   "sa": 0.1,
+   "yon": "flans dis yuzu tablada"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "S1 kaset govdesi sol",
+   "olcu": [
+    111.9,
+    111.2,
+    6.3
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 10.0,
+   "sa": 0.2,
+   "yon": "arka yuzu (x 152) tablada"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "S1 kaset kapagi sol",
+   "olcu": [
+    111.9,
+    111.2,
+    4.5
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 7.0,
+   "sa": 0.1,
+   "yon": "flans dis yuzu tablada"
+  },
+  {
+   "modul": "kafa",
+   "ad": "Servo yuvasi",
+   "olcu": [
+    88.1,
+    88.1,
+    43.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 151.5,
+   "sa": 3.16,
+   "yon": "dik: kulak flansi tablada"
+  },
+  {
+   "modul": "kafa",
+   "ad": "Rulman yuvasi",
+   "olcu": [
+    67.5,
+    60.0,
+    36.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 26.9,
+   "sa": 0.56,
+   "yon": "dik: kulaklar tablada, rulman yuvasi yukari"
+  },
+  {
+   "modul": "kafa",
+   "ad": "Boyun mili",
+   "olcu": [
+    60.0,
+    60.0,
+    48.1
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 40.7,
+   "sa": 0.85,
+   "yon": "dik: horn diski tablada, flans yukari (45 derece koni)"
+  },
+  {
+   "modul": "kafa",
+   "ad": "Egme catali",
+   "olcu": [
+    74.5,
+    60.0,
+    49.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 36.1,
+   "sa": 0.75,
+   "yon": "dik: taban tablada, duvarlar yukari"
+  },
+  {
+   "modul": "kafa",
+   "ad": "Boyun yukseltme adaptoru",
+   "olcu": [
+    59.9,
+    59.9,
+    58.9
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 70.2,
+   "sa": 1.46,
+   "yon": "dik: alt flans tablada"
+  },
+  {
+   "modul": "kafa",
+   "ad": "Yuz kabugu (on) sag",
+   "olcu": [
+    215.0,
+    151.0,
+    37.0
+   ],
+   "sigar": true,
+   "desteksiz": false,
+   "destek_sorun": 2,
+   "g": 90.9,
+   "sa": 1.89,
+   "yon": "on yuzu tablada"
+  },
+  {
+   "modul": "kafa",
+   "ad": "Yuz kabugu (on) sol",
+   "olcu": [
+    215.0,
+    135.0,
+    37.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 84.4,
+   "sa": 1.76,
+   "yon": "on yuzu tablada"
+  },
+  {
+   "modul": "kafa",
+   "ad": "Arka kafa kabugu sag",
+   "olcu": [
+    215.0,
+    151.0,
+    106.9
+   ],
+   "sigar": true,
+   "desteksiz": false,
+   "destek_sorun": 1,
+   "g": 229.2,
+   "sa": 4.77,
+   "yon": "arka yuzu tablada"
+  },
+  {
+   "modul": "kafa",
+   "ad": "Arka kafa kabugu sol",
+   "olcu": [
+    215.0,
+    135.0,
+    106.9
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 215.4,
+   "sa": 4.49,
+   "yon": "arka yuzu tablada"
+  },
+  {
+   "modul": "kafa",
+   "ad": "Kafa iskeleti",
+   "olcu": [
+    224.0,
+    114.9,
+    48.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 127.5,
+   "sa": 2.66,
+   "yon": "ters: tabla tablada, yanaklar yukari"
+  },
+  {
+   "modul": "kafa",
+   "ad": "Ekran tirnagi ust sag",
+   "olcu": [
+    24.0,
+    14.4,
+    7.8
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 1.6,
+   "sa": 0.03,
+   "yon": "plaka tablada, dil yukari (desteksiz)"
+  },
+  {
+   "modul": "kafa",
+   "ad": "Ekran tirnagi ust sol",
+   "olcu": [
+    24.0,
+    14.4,
+    7.8
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 1.6,
+   "sa": 0.03,
+   "yon": "plaka tablada, dil yukari (desteksiz)"
+  },
+  {
+   "modul": "kafa",
+   "ad": "Ekran tirnagi alt sag",
+   "olcu": [
+    24.0,
+    14.2,
+    7.8
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 1.6,
+   "sa": 0.03,
+   "yon": "plaka tablada, dil yukari (desteksiz)"
+  },
+  {
+   "modul": "kafa",
+   "ad": "Ekran tirnagi alt sol",
+   "olcu": [
+    24.0,
+    14.2,
+    7.8
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 1.6,
+   "sa": 0.03,
+   "yon": "plaka tablada, dil yukari (desteksiz)"
+  },
+  {
+   "modul": "taban",
+   "ad": "Aku on takozu",
+   "olcu": [
+    125.2,
+    125.2,
+    25.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 72.2,
+   "sa": 1.5,
+   "yon": "alt yuzu tablada"
+  },
+  {
+   "modul": "taban",
+   "ad": "Sonar tutucu sol",
+   "olcu": [
+    61.2,
+    61.0,
+    7.6
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 5.3,
+   "sa": 0.11,
+   "yon": "arka yuzu (ray tarafi) tablada"
+  },
+  {
+   "modul": "taban",
+   "ad": "Sonar tutucu orta",
+   "olcu": [
+    65.8,
+    65.8,
+    7.6
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 5.8,
+   "sa": 0.12,
+   "yon": "arka yuzu (ray tarafi) tablada"
+  },
+  {
+   "modul": "taban",
+   "ad": "Sonar tutucu sag",
+   "olcu": [
+    61.2,
+    61.0,
+    7.6
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 5.3,
+   "sa": 0.11,
+   "yon": "arka yuzu (ray tarafi) tablada"
+  },
+  {
+   "modul": "dirsek",
+   "ad": "Dirsek catali",
+   "olcu": [
+    73.9,
+    72.0,
+    74.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 97.4,
+   "sa": 2.03,
+   "yon": "ters: pim ve bilezik ucu tablada, kollar yukari"
+  },
+  {
+   "modul": "dirsek",
+   "ad": "On kol govdesi",
+   "olcu": [
+    129.6,
+    128.9,
+    33.5
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 56.8,
+   "sa": 1.18,
+   "yon": "on yuzu tablada, acik arka yukari"
+  },
+  {
+   "modul": "dirsek",
+   "ad": "Bilek flansi",
+   "olcu": [
+    28.0,
+    28.0,
+    8.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 4.2,
+   "sa": 0.09,
+   "yon": "horn yuzu tablada, havsalar yukari"
+  },
+  {
+   "modul": "dirsek",
+   "ad": "El",
+   "olcu": [
+    56.2,
+    56.2,
+    84.6
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 78.5,
+   "sa": 1.64,
+   "yon": "ters: parmak ucu ve avuc alti tablada, yaka yukari"
+  },
+  {
+   "modul": "omuz",
+   "ad": "Omuz yuvasi",
+   "olcu": [
+    76.0,
+    76.0,
+    67.0
+   ],
+   "sigar": true,
+   "desteksiz": null,
+   "destek_sorun": null,
+   "g": null,
+   "sa": null,
+   "yon": null
+  },
+  {
+   "modul": "omuz",
+   "ad": "Rulman kapagi",
+   "olcu": [
+    76.0,
+    60.0,
+    14.0
+   ],
+   "sigar": true,
+   "desteksiz": null,
+   "destek_sorun": null,
+   "g": null,
+   "sa": null,
+   "yon": null
+  },
+  {
+   "modul": "omuz",
+   "ad": "Omuz gobegi",
+   "olcu": [
+    66.0,
+    51.0,
+    49.0
+   ],
+   "sigar": true,
+   "desteksiz": null,
+   "destek_sorun": null,
+   "g": null,
+   "sa": null,
+   "yon": null
+  },
+  {
+   "modul": "omuz",
+   "ad": "S1 kablo tamburu",
+   "olcu": [
+    87.4,
+    70.6,
+    10.5
+   ],
+   "sigar": true,
+   "desteksiz": null,
+   "destek_sorun": null,
+   "g": null,
+   "sa": null,
+   "yon": null
+  },
+  {
+   "modul": "omuz",
+   "ad": "Kol catali",
+   "olcu": [
+    76.0,
+    63.5,
+    56.0
+   ],
+   "sigar": true,
+   "desteksiz": null,
+   "destek_sorun": null,
+   "g": null,
+   "sa": null,
+   "yon": null
+  },
+  {
+   "modul": "omuz",
+   "ad": "Ust kol tupu",
+   "olcu": [
+    130.0,
+    56.0,
+    56.0
+   ],
+   "sigar": true,
+   "desteksiz": null,
+   "destek_sorun": null,
+   "g": null,
+   "sa": null,
+   "yon": null
+  }
+ ],
+ "baski_sigmayan": [],
+ "tabla": [
+  246.0,
+  246.0,
+  250.0
+ ],
+ "gogus_ekrani": {
+  "boy": 1580.0,
+  "S3": 1270.0,
+  "UZAMA": 315.0,
+  "duzlem_y": [
+   1018.85,
+   1220.0
+  ],
+  "duzlem_egik": 208.25,
+  "cep": [
+   294.65,
+   192.25
+  ],
+  "kasa_olcu_model": [
+   284.65,
+   182.25,
+   29.5
+  ],
+  "cep_merkez": [
+   0.0,
+   1119.42,
+   102.28
+  ],
+  "kasa_direk_mm": 28.27,
+  "kasa_direk_sart": 20.0,
+  "kasa_direk_tamam": true,
+  "kasa_gogus_sag_mm": 5.0,
+  "kasa_gogus_sol_mm": 5.0,
+  "kasa_cerceve_mm": [
+   0.2,
+   0.2
+  ],
+  "tasiyici_direk_mm": 0.0,
+  "tasiyici_kasa_mm": 0.0,
+  "cerceve_flans_kabuk_mm": [
+   0.0,
+   0.0
+  ],
+  "m6_uc_yuzden_mm": 10.4,
+  "m6_uc_sinir": [
+   9.3,
+   11.8
+  ],
+  "vida_sayi": 8,
+  "not_": "kasa zarf modeli; port yeri ve kasa arka bicimi dogrulanmadi",
+  "cerceve_on": {
+   "aktif": [
+    257.3,
+    145.4
+   ],
+   "cam_geri": 2.0,
+   "aktif_alana_giren_parca": {},
+   "aktif_cerceve_pay_mm": 14.175,
+   "kasa_on_cerceve_on_mm": 2.0,
+   "takoz_kalinlik_mm": 1.8,
+   "takoz_r_mm": 14.0,
+   "pencere_kose_aktif_kose_mm": 23.65,
+   "not_": "aktif alan kasa merkezinde kabul; kasa kose R dogrulanmadi"
+  },
+  "baski": {
+   "Gogus ekrani cercevesi sag": {
+    "olcu": [
+     207.2,
+     147.0,
+     10.0
+    ],
+    "sigar": true,
+    "sigar_okul": true,
+    "destek_sorun": 0,
+    "filament_g": 31.0,
+    "kutle_g": 30.0,
+    "sure_saat": 0.6,
+    "kod": "PETG baski, 3,0 mm duvar",
+    "renk": "kabuk"
+   },
+   "Gogus ekrani cercevesi sol": {
+    "olcu": [
+     207.2,
+     147.0,
+     10.0
+    ],
+    "sigar": true,
+    "sigar_okul": true,
+    "destek_sorun": 0,
+    "filament_g": 31.0,
+    "kutle_g": 30.0,
+    "sure_saat": 0.6,
+    "kod": "PETG baski, 3,0 mm duvar",
+    "renk": "kabuk"
+   },
+   "Gogus ekrani VESA tasiyici": {
+    "olcu": [
+     106.2,
+     100.0,
+     63.4
+    ],
+    "sigar": true,
+    "sigar_okul": true,
+    "destek_sorun": 28,
+    "filament_g": 113.0,
+    "kutle_g": 108.0,
+    "sure_saat": 2.4,
+    "kod": "PETG-CF baski",
+    "renk": "siyah"
+   }
+  },
+  "m6_tamam": true
+ },
+ "kafa_denge_olcum": {
+  "Govde": {
+   "m": 333.6,
+   "am": [
+    0.089,
+    26.591,
+    6.421
+   ]
+  },
+  "Pan": {
+   "m": 278.6,
+   "am": [
+    0.501,
+    133.801,
+    6.873
+   ]
+  },
+  "Kafa": {
+   "m": 1472.3,
+   "am": [
+    1.708,
+    188.921,
+    24.941
+   ]
+  }
+ },
+ "sure_s": 428.8
+}

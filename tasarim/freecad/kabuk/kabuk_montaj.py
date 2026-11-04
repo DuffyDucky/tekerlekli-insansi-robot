@@ -392,6 +392,45 @@ for ad, d in K.PARCA.items():
     baski.append(r)
     log("baski %-24s %s sigar=%s cikinti %.3f destek sorunu %d" % (ad, r["olcu"], r["sigar"], r["cikinti_orani"], r["destek_sorun_sayi"]))
 
+# ====================================================================== 6b) gogus ekrani: cep, kasa, direk boslugu, flans (01.11.2026)
+GE = A.GOGUS_EKRAN
+_kasa = P[K.GE_I_KASA]["shape"]
+_kb = K.GE_PL.inverse().toMatrix()
+_kl = _kasa.copy(); _kl.transformShape(_kb, True)
+_bk = _kl.BoundBox
+_dst = lambda a_, b_: a_.distToShape(b_)[0]
+ekran = dict(
+    boy=A.BOY, S3=A.S3, UZAMA=A.UZAMA, duzlem_y=[round(A.GOGUS_ALT_Y, 2), A.GOGUS_UST_Y], duzlem_egik=round((A.GOGUS_UST_Y - A.GOGUS_ALT_Y) / math.cos(math.radians(A.GOGUS_EGIM)), 2),
+    cep=list(GE["cep"]), kasa_olcu_model=[round(_bk.XLength, 2), round(_bk.YLength, 2), round(_bk.ZLength, 2)], cep_merkez=[0.0, round(A.GOGUS_EKRAN_Y, 2), round(A.gogus_z(A.GOGUS_EKRAN_Y), 2)],
+    kasa_direk_mm=round(_dst(_kasa, direk), 2), kasa_direk_sart=20.0, kasa_direk_tamam=bool(_dst(_kasa, direk) >= 20.0),
+    kasa_gogus_sag_mm=round(_dst(_kasa, PAR["Gogus bandi sag"]), 2), kasa_gogus_sol_mm=round(_dst(_kasa, PAR["Gogus bandi sol"]), 2),
+    kasa_cerceve_mm=[round(_dst(_kasa, PAR[a_]), 3) for a_ in ("Gogus ekrani cercevesi sag", "Gogus ekrani cercevesi sol")],
+    tasiyici_direk_mm=round(_dst(PAR["Gogus ekrani VESA tasiyici"], direk), 3), tasiyici_kasa_mm=round(_dst(PAR["Gogus ekrani VESA tasiyici"], _kasa), 3),
+    cerceve_flans_kabuk_mm=[round(_dst(PAR["Gogus ekrani cercevesi sag"], PAR["Gogus bandi sag"]), 3), round(_dst(PAR["Gogus ekrani cercevesi sol"], PAR["Gogus bandi sol"]), 3)],
+    m6_uc_yuzden_mm=round(A.GOGUS_EKRAN["tasiyici"]["m6"][1] - A.GOGUS_EKRAN["tasiyici"]["flans_t"] - A.WASH125[6][2], 2),
+    m6_uc_sinir=[round(somun_alti, 2), A.KANAL_TABAN], vida_sayi=len(K.GE_VIDA), not_="kasa zarf modeli; port yeri ve kasa arka bicimi dogrulanmadi",
+)
+# 04.11.2026 cerceve: onden (duzlem normali boyunca) aktif alana giren parca var mi; pencere, takoz, kasa onu. Aktif alan kasa merkezinde KABUL (dogrulanmadi, kasa foto: ortali).
+_aw, _ah = GE["aktif"][0] / 2, GE["aktif"][1] / 2
+_akt = K.gogus_yer(box(-_aw, _aw, -_ah, _ah, -GE["cam_geri"] + 0.001, 200.0))
+_akb = _akt.BoundBox
+_ortu = {}
+for p in P:
+    if p["ad"].startswith("Gogus ekrani 11,6") or not p["obb"].intersect(_akb):
+        continue
+    v_ = p["shape"].common(_akt).Volume
+    if v_ > 1e-3:
+        _ortu[p["ad"]] = round(v_, 3)
+_cer = [PAR[a_] for a_ in ("Gogus ekrani cercevesi sag", "Gogus ekrani cercevesi sol")]
+_ks = GE["cerceve"].get("kose") or {}
+ekran["cerceve_on"] = dict(aktif=list(GE["aktif"]), cam_geri=GE["cam_geri"], aktif_alana_giren_parca=_ortu, aktif_cerceve_pay_mm=round(min(_dst(_akt, c_) for c_ in _cer), 3),
+                           kasa_on_cerceve_on_mm=GE["cam_geri"], takoz_kalinlik_mm=round(GE["cam_geri"] - _ks.get("on_bosluk", 0.0), 3) if _ks else None, takoz_r_mm=_ks.get("r"),
+                           pencere_kose_aktif_kose_mm=round(math.hypot(K._cix - _aw, K._ciy - _ah) - 0.0, 2), not_="aktif alan kasa merkezinde kabul; kasa kose R dogrulanmadi")
+_krm = {b_["ad"]: dict(olcu=b_["olcu"], sigar=b_["sigar"], sigar_okul=b_["sigar_okul"], destek_sorun=b_["destek_sorun_sayi"], filament_g=b_["filament_g"], kutle_g=b_["kutle_g"], sure_saat=b_["sure_saat"], kod=P[K.PARCA[b_["ad"]]["indeks"]]["kod"], renk=P[K.PARCA[b_["ad"]]["indeks"]]["renk"]) for b_ in baski if b_["ad"].startswith("Gogus ekrani")}
+ekran["baski"] = _krm
+ekran["m6_tamam"] = bool(ekran["m6_uc_yuzden_mm"] - somun_alti >= 0.5 and A.KANAL_TABAN - ekran["m6_uc_yuzden_mm"] >= 0.5)
+log("gogus ekrani:", ekran)
+
 # ====================================================================== 7) kutle, agirlik merkezi
 M = sum(p["kutle"] for p in P)
 CG = V(0, 0, 0)
@@ -469,5 +508,6 @@ out = dict(
     step_kati=step_kati,
     sure_s=round(time.time() - t0, 1),
 )
+out["gogus_ekrani"] = ekran
 json.dump(out, open(os.path.join(HERE, "kabuk-analiz.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=str)
 log("bitti")

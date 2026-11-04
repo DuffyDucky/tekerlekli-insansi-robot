@@ -143,7 +143,8 @@ sy = sy.cut(box(-14.0, 6.0, 6.0, 40.0, -27.0, -19.2))                           
 sy = sy.cut(box(-14.0, 6.0, 40.0, Y_BLK + 0.1, -23.0, -10.4))                     # kanal ustu -> kablo odasi (r < 27,5)
 sy = sy.cut(prizma([(40.0 - 0.01, -27.0), (40.0 - 0.01, -23.0), (44.0, -23.0)], "x", -14.0, 6.0))   # kanal tavani 45 derece
 sy = sy.cut(box(-6.0, 4.0, 5.0, 14.0, -19.5, -10.3))                              # pan servosu kablosu -> kanal
-sy = sy.cut(box(-6.0, 6.0, 6.0, 18.0, -31.0, -26.5))                              # alt kablo cikisi (arka, 12 genis)
+# alt kablo cikisi (arka; 03.11.2026: 12 x 12 idi, gogus ekrani kablolari icin altta 20, ustte 45 derece 8; 204 mm2)
+sy = sy.cut(prizma([(-14.0, 6.0), (6.0, 6.0), (6.0, 12.0), (0.0, 18.0), (-8.0, 18.0), (-14.0, 12.0)], "z", -31.0, -26.5))
 PED, _ = mg_delikler()
 DELIK_P = [gp((xx, yy, 0), M_P) for (xx, yy) in PED]
 for q in DELIK_P:
@@ -238,7 +239,8 @@ bm = bm.cut(cyl(16.0, (0, Y_DISK[1], 0), (0, Y_FL[1] + 1, 0)))                  
 bm = bm.cut(cyl(4.5, (0, Y_DISK[0] - 1, 0), (0, Y_DISK[1] + 1, 0)))                  # horn merkez vidasi
 for h in HORN_P:
     bm = bm.cut(cyl(CLEAR[3] / 2, (h.x, Y_DISK[0] - 1, h.z), (h.x, Y_DISK[1] + 1, h.z)))
-bm = bm.cut(box(-6.85, 6.85, Y_PEN[0], Y_PEN[1], -25.0, 0.0))                        # arka kablo penceresi (13,7 genis)
+# arka kablo penceresi (03.11.2026: 13,7 genisti; gogus ekrani HDMI + USB dokunmatik icin altta 20, ustte 45 derece 10: dik baskida desteksiz; 175 mm2)
+bm = bm.cut(prizma([(-10.0, Y_PEN[0]), (10.0, Y_PEN[0]), (10.0, Y_PEN[0] + 5.0), (5.0, Y_PEN[1]), (-5.0, Y_PEN[1]), (-10.0, Y_PEN[0] + 5.0)], "z", -25.0, 0.0))
 FL_DEL = [(25.0, 0.0), (0.0, 25.0), (-25.0, 0.0), (0.0, -25.0)]
 for (x, z) in FL_DEL:
     bm = bm.cut(insert_hole(3, (x, Y_FL[1], z), (0, -1, 0)))

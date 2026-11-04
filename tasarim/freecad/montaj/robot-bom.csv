@@ -5,9 +5,9 @@ Baglanti;M2,5x8 DIN 912;12;7.0;kafa, taban
 Baglanti;M2x8 PT vida (plastik icin);4;1.4;kafa
 Baglanti;M3 DIN 125 pul;16;1.9;dirsek, kafa
 Baglanti;M3 DIN 985 kontra somun;8;4.8;dirsek, kafa
-Baglanti;M3 isil gomme somun;149;39.7;dirsek, kabuk, kafa, omuz, taban
+Baglanti;M3 isil gomme somun;157;41.8;dirsek, kabuk, kafa, omuz, taban
 Baglanti;M3 percin somun, duz flansli (2 mm Al);6;4.8;kabuk
-Baglanti;M3 saplama DIN 976, 73 mm (kesilir);4;16.0;kafa
+Baglanti;M3 saplama DIN 976, 73 mm (kesilir);4;16.2;kafa
 Baglanti;M3x10 DIN 912;8;8.3;kafa
 Baglanti;M3x12 DIN 912;24;27.6;dirsek, omuz
 Baglanti;M3x14 ISO 7380;6;6.5;kabuk
@@ -15,12 +15,12 @@ Baglanti;M3x20 DIN 912;4;6.4;dirsek
 Baglanti;M3x5 ISO 7380;2;1.2;kafa
 Baglanti;M3x5 horn vidasi (servo ile);10;7.6;dirsek, kafa, omuz
 Baglanti;M3x6 DIN 912;80;65.3;taban
-Baglanti;M3x6 ISO 7380;103;65.3;dirsek, kabuk, kafa
+Baglanti;M3x6 ISO 7380;115;72.9;dirsek, kabuk, kafa
 Baglanti;M3x8 DIN 912;68;63.0;dirsek, kabuk, kafa, omuz, taban
-Baglanti;M3x8 ISO 7380;4;3.0;kafa
-Baglanti;M4 DIN 125 pul;15;4.6;taban
+Baglanti;M4 DIN 125 pul;19;5.9;kabuk, taban
 Baglanti;M4 DIN 985 kontra somun;36;42.2;dirsek, kafa, omuz
 Baglanti;M4 DIN 985 naylon somun;11;12.9;taban
+Baglanti;M4x12 DIN 912;4;9.0;kabuk
 Baglanti;M4x16 DIN 912;51;134.6;dirsek, kafa, omuz, taban
 Baglanti;M5 DIN 125 pul;13;5.8;dirsek, kafa, omuz, taban
 Baglanti;M5 cekic somun, kanal 10 (tahmini olcu);8;44.1;taban
@@ -29,13 +29,14 @@ Baglanti;M5 percin somun, duz flansli (3 mm Al);8;16.0;kabuk
 Baglanti;M5x12 DIN 912;13;48.8;dirsek, kafa, omuz, taban
 Baglanti;M5x16 DIN 913 set vida (saplama);8;18.7;taban
 Baglanti;M5x18 ISO 7380;8;33.6;kabuk
-Baglanti;M6 DIN 125 pul;16;16.3;iskelet, kabuk, kafa
+Baglanti;M6 DIN 125 pul;18;18.3;iskelet, kabuk, kafa
 Baglanti;M6 cekic somun (kanal 10);2;10.3;kafa
-Baglanti;M6 cekic somun, kanal 10;56;289.5;iskelet, kabuk, omuz, taban
+Baglanti;M6 cekic somun, kanal 10;58;299.9;iskelet, kabuk, omuz, taban
 Baglanti;M6x10 DIN 913 set vida;16;32.0;iskelet
 Baglanti;M6x14 DIN 912;36;223.0;kabuk, taban
 Baglanti;M6x14 ISO 7380;4;20.5;taban
 Baglanti;M6x16 DIN 912;16;106.2;iskelet, omuz
+Baglanti;M6x18 DIN 912;2;14.2;kabuk
 Baglanti;M6x20 DIN 912;2;15.1;kafa
 Baglanti;O0,4 mumlu polyester baglama ipi (ilmek ~16 mm + dugum);4;0.0;omuz
 Baski;Aku on takozu;1;68.7;taban
@@ -43,14 +44,14 @@ Baski;Arka kafa kabugu sag;1;218.2;kafa
 Baski;Arka kafa kabugu sol;1;205.1;kafa
 Baski;Arka servis kapagi;1;93.3;kabuk
 Baski;Bilek flansi;2;8.1;dirsek
-Baski;Boyun mili;1;38.9;kafa
-Baski;Boyun yukseltme adaptoru;1;66.4;kafa
+Baski;Boyun mili;1;38.7;kafa
+Baski;Boyun yukseltme adaptoru;1;66.9;kafa
 Baski;Dirsek catali;2;185.6;dirsek
 Baski;Egme catali;1;34.4;kafa
-Baski;Ekran tutucu tirnak (alt sag);1;1.3;kafa
-Baski;Ekran tutucu tirnak (alt sol);1;1.3;kafa
-Baski;Ekran tutucu tirnak (ust sag);1;1.3;kafa
-Baski;Ekran tutucu tirnak (ust sol);1;1.3;kafa
+Baski;Ekran tirnagi alt sag;1;1.5;kafa
+Baski;Ekran tirnagi alt sol;1;1.5;kafa
+Baski;Ekran tirnagi ust sag;1;1.5;kafa
+Baski;Ekran tirnagi ust sol;1;1.5;kafa
 Baski;El;2;149.6;dirsek
 Baski;Etek arka sag;1;348.3;kabuk
 Baski;Etek arka sol;1;344.7;kabuk
@@ -62,20 +63,23 @@ Baski;Etek orta sag;1;206.2;kabuk
 Baski;Etek orta sol;1;206.2;kabuk
 Baski;Etek servis kapagi H1 (sigorta kutusu);1;23.1;kabuk
 Baski;Etek servis kapagi H2 (ana sigorta);1;13.0;kabuk
-Baski;Gogus bandi sag;1;271.7;kabuk
-Baski;Gogus bandi sol;1;262.2;kabuk
+Baski;Gogus bandi sag;1;208.3;kabuk
+Baski;Gogus bandi sol;1;204.8;kabuk
+Baski;Gogus ekrani VESA tasiyici;1;107.7;kabuk
+Baski;Gogus ekrani cercevesi sag;1;29.5;kabuk
+Baski;Gogus ekrani cercevesi sol;1;29.5;kabuk
 Baski;Govde alt bandi sag;1;284.9;kabuk
 Baski;Govde alt bandi sol;1;266.8;kabuk
-Baski;Govde orta bandi sag;1;249.4;kabuk
-Baski;Govde orta bandi sol;1;239.7;kabuk
-Baski;Govde uzatma bandi 1 sag;1;260.7;kabuk
-Baski;Govde uzatma bandi 1 sol;1;245.1;kabuk
-Baski;Govde uzatma bandi 2 sag;1;260.7;kabuk
-Baski;Govde uzatma bandi 2 sol;1;245.1;kabuk
-Baski;Kafa iskeleti (10 in);1;121.4;kafa
+Baski;Govde orta bandi sag;1;258.8;kabuk
+Baski;Govde orta bandi sol;1;249.1;kabuk
+Baski;Govde uzatma bandi 1 sag;1;213.6;kabuk
+Baski;Govde uzatma bandi 1 sol;1;200.6;kabuk
+Baski;Govde uzatma bandi 2 sag;1;213.6;kabuk
+Baski;Govde uzatma bandi 2 sol;1;200.6;kabuk
+Baski;Kafa iskeleti;1;121.4;kafa
 Baski;Kol catali;2;187.2;omuz
-Baski;Omuz bandi sag;1;191.0;kabuk
-Baski;Omuz bandi sol;1;183.7;kabuk
+Baski;Omuz bandi sag;1;175.7;kabuk
+Baski;Omuz bandi sol;1;169.4;kabuk
 Baski;Omuz gobegi;2;118.5;omuz
 Baski;Omuz yuvasi;2;149.9;omuz
 Baski;On kol govdesi;2;108.2;dirsek
@@ -86,14 +90,14 @@ Baski;S1 kaset govdesi sag;1;9.1;kabuk
 Baski;S1 kaset govdesi sol;1;9.1;kabuk
 Baski;S1 kaset kapagi sag;1;6.8;kabuk
 Baski;S1 kaset kapagi sol;1;6.8;kabuk
-Baski;Servo yuvasi;1;144.5;kafa
+Baski;Servo yuvasi;1;144.3;kafa
 Baski;Sonar tutucu orta;1;5.6;taban
 Baski;Sonar tutucu sag;1;5.0;taban
 Baski;Sonar tutucu sol;1;5.0;taban
 Baski;Ust arka servis kapagi;1;76.6;kabuk
 Baski;Ust kol tupu;2;103.6;omuz
-Baski;Yuz kabugu (on) sag;1;89.1;kafa
-Baski;Yuz kabugu (on) sol;1;83.0;kafa
+Baski;Yuz kabugu (on) sag;1;86.6;kafa
+Baski;Yuz kabugu (on) sol;1;80.4;kafa
 Imalat;Boyun plakasi 3 mm Al (lazer/su jeti);1;42.9;kafa
 Lazer;Alt plaka 346 x 500 x 3 Al 5754 (lazer kesim);1;1363.7;taban
 Lazer;Elektronik kati on 270 x 226 x 5 huş kontrplak (lazer);1;196.0;taban
@@ -111,7 +115,7 @@ Satin;Adafruit MAX98357A;1;2.0;kafa
 Satin;Arazi tekerlegi 125 x 58;4;560.0;taban
 Satin;"BNO055 9 eksen (Adafruit 2472 delik duzeni; eldeki muadil olculecek)";1;3.0;taban
 Satin;BTS7960B 43 A (IBT-2);2;132.0;taban
-Satin;Cift tarafli kopuk bant 1 mm (VHB);2;0.1;kafa
+Satin;Cift tarafli kopuk bant 1 mm (VHB);11;0.5;kafa
 Satin;DS3235 servo;4;240.0;omuz
 Satin;"Delikli pertinaks 70 x 50 + 2x 15'li disi header (tahmini; BOM'da yok)";1;14.0;taban
 Satin;Delikli pertinaks 70 x 50: 16 AWG klemens, 2200 uF, 6x 3 pin cikis (tahmini zarf);2;58.0;taban
@@ -121,25 +125,31 @@ Satin;ESP32-WROOM-32 DevKit 30 pin;1;10.0;taban
 Satin;Emas B200E60 acil stop;1;35.0;taban
 Satin;Emas B200E60 kontak blogu;1;50.0;taban
 Satin;Etek tasiyici L braket 2 mm Al (bukum);6;167.1;kabuk
-Satin;Govde braketi 3 mm Al U (bukum);8;348.0;kabuk
+Satin;Govde braketi 3 mm Al U (bukum);8;350.0;kabuk
 Satin;HC-SR04;3;27.0;taban
 Satin;ISO mini role 12 V 40 A + soket (BOM'da yok);1;35.0;taban
 Satin;Ic kose baglanti kanal 10 (tahmini olcu);8;317.7;iskelet
 Satin;JGB37-520 12 V 60 dev/dk enkoderli;4;800.0;taban
 Satin;Kablolu kapakli bicak sigorta yuvasi 12 AWG + 30 A;1;40.0;taban
-Satin;LiFePO4 12,8 V 24 Ah (yuva 181 x 77 x 167);1;2800.0;taban
+Satin;LiFePO4 12,8 V 20 Ah Victron SuperPack (yuva 181 x 77 x 167);1;2800.0;taban
 Satin;M2,5 x 8 burc, disi-disi;4;4.6;kafa
 Satin;M2,5x8 pirinc burc;8;9.1;taban
 Satin;M3x8 naylon burc;44;7.7;taban
 Satin;M5 x 40 burc, disi-disi, AA 8;8;96.0;taban
 Satin;MG996R servo;6;330.0;dirsek, kafa
+Satin;P6KE6V8A TVS (kafa ekrani 5 V);1;1.0;kafa
+Satin;PAM8403 2 x 3 W amfi karti (olcu TAHMIN);1;3.0;kafa
 Satin;PCA9685 16 kanal (Adafruit 815 delik duzeni);1;9.0;taban
-Satin;Pololu D36V50F5 5 V 5,5 A;1;7.0;kafa
+Satin;Pololu D24V50F5 5 V 5 A;1;7.0;kafa
 Satin;Raspberry Pi 5 4GB + resmi Active Cooler;1;58.0;kafa
 Satin;Raspberry Pi Camera Module 3;1;4.0;kafa
-Satin;Sigma 40x40 agir kanal 10, 1185.5 mm;1;2324.8;iskelet
+Satin;SY8205 5 V dusurucu kart (kafa ekrani ayri hat);1;8.0;kafa
+Satin;Sigma 40x40 agir kanal 10, 1115.5 mm;1;2187.5;iskelet
 Satin;Sigma 40x40 agir kanal 10, 190 mm;3;1117.8;iskelet
 Satin;Sigma 40x40 agir kanal 10, 200 mm;1;392.2;iskelet
 Satin;Sigma 40x40 agir kanal 10, 500 mm;2;1961.0;iskelet
-Satin;Waveshare 10.1inch HDMI LCD (B) 1280x800 (TAHMINI MODEL: hocanin verecegi ekran gelince olculecek);1;600.0;kafa
+Satin;USB Hub 4 lu 72 x 25 x 19;1;25.0;kafa
+Satin;"USB ses karti (PAM8403 girisi; olcu TAHMIN)";1;8.0;kafa
+Satin;WaveShare 10.1HP-CAPQLED 10,1 in QLED 1280x720 HDMI kapasitif (kod 20789);1;600.0;kafa
+Satin;Waveshare 11.6inch HDMI LCD (H) with case, 1920x1080 IPS, 10 nokta kapasitif;1;1079.0;kabuk
 Satin;XL4016 8 A DC-DC dusurucu;4;240.0;taban

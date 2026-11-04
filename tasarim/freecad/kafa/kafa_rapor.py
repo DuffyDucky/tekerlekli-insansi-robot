@@ -74,7 +74,7 @@ TR = {"Servo yuvasi": "Servo yuvası", "Rulman yuvasi": "Rulman yuvası", "Boyun
       "M5 isil gomme somun": "M5 ısıl gömme somun", "M6 cekic somun (kanal 10)": "M6 çekiç somun (kanal 10)",
       "Boyun plakasi 3 mm Al (lazer/su jeti)": "Boyun plakası, 3 mm Al (lazer / su jeti)",
       "Vizor 3 mm siyah akrilik 190x115 (lazer)": "Vizör, 3 mm parlak siyah akrilik 190 × 115 (lazer)",
-      "Waveshare 7in HDMI LCD (C) 1024x600": "Waveshare 7\" HDMI LCD (C) 1024 × 600 (yüz ekranı)",
+      "WaveShare 10.1HP-CAPQLED 10,1 in QLED 1280x720 HDMI kapasitif (kod 20789)": "WaveShare 10,1\" QLED 1280 × 720 HDMI (yüz ekranı, kod 20789)",
       "Raspberry Pi Camera Module 3": "Raspberry Pi Camera Module 3", "M2x8 PT vida (plastik icin)": "M2×8 PT vida (plastik için)",
       "M4 DIN 985 kontra somun": "M4 DIN 985 kontra somun",
       "Pan servosu kulagi": "Pan servosu kulağı → servo yuvası", "Boyun plakasi -> traverse": "Boyun plakası + servo yuvası → traverse",
@@ -82,7 +82,7 @@ TR = {"Servo yuvasi": "Servo yuvası", "Rulman yuvasi": "Rulman yuvası", "Boyun
       "Egme catali -> boyun mili": "Eğme çatalı → boyun mili flanşı", "Tilt servosu kulagi": "Tilt servosu kulağı → çatal",
       "Kafa iskeleti sag yanak -> tilt horn": "Kafa iskeleti sağ yanağı → tilt horn'u",
       "Tilt pimi (servo karsi yatagi)": "Tilt pimi (servo karşı yatağı, 625ZZ)", "Kafa kabugu -> kafa tablasi": "Kafa kabuğu → kafa tablası",
-      "LCD kulagi -> on kabuk boss'u": "LCD kulağı → ön kabuk boss'u", "Kamera -> on kabuk boss'u": "Kamera → ön kabuk boss'u",
+      "Ekran tirnagi -> yuz kabugu boss'u": "Ekran tırnağı → yüz kabuğu boss'u", "Ekran tirnagi -> cam seridi": "Ekran tırnağı → cam şeridi", "Kamera -> on kabuk boss'u": "Kamera → ön kabuk boss'u",
       "Eksen hizasi ve oturmalar": "Eksen hizası ve oturmalar"}
 
 
@@ -139,14 +139,14 @@ BAGLANTI = [
      "yanak ile çatal arası 1 mm", "M5×12 DIN 912 + DIN 125 pul + M5 ısıl gömme somun"),
     ("Kafa kabuğu (ön + arka) → kafa tablası", "Kabuk iç yüzü tablanın kenar boss'una dayalı; arka kabuğun dikiş dili ön kabuğa 6 mm girer",
      "4× M3×8 ISO 7380 + M3 ısıl gömme somun (yanlardan)"),
-    ("Yüz ekranı (7\" LCD) → ön kabuk", "Panel ön yüzü 3 mm ekran yuvası kenarına dayalı, kulaklar boss'larda", "4× M3×6 ISO 7380 + M3 ısıl gömme somun"),
+    ("Yüz ekranı (10,1\" QLED) → ön kabuk", "Cam ön duvar iç yüzüne dayalı, 1,6 mm cep duvarı; vida deliği yok, 4 tırnak arkadan cam şeridine basar", "4× M3×6 ISO 7380 + M3 ısıl gömme somun + 1 mm köpük bant"),
     ("Kamera → ön kabuk", "PCB boss'lara dayalı, lens Ø9 delikten 1,5 mm taşar", "4× M2×8 PT vida (plastik için, tahmini)"),
     ("Vizör → ön kabuk", "Yüz düzlemine yapışık (z 85…88)", "3M VHB çift taraflı bant (tahmini; vida başı görünmesin)"),
 ]
 
 KARAR = [
     "**Yapı (V3 sırası korunarak):** boyun plakası → pan MG996R → pan karşı yatağı → eğme çatalı + tilt MG996R → kafa iskeleti → yüz ve "
-    "arka kabuk + 7\" yüz ekranı + vizör + kamera (rc:782-800). Ölçüler `arayuz.KAFA`'dan; kafa 210 × 180 × 150, tepe = HEAD_UP 275 (rc:92, rc:472).",
+    "arka kabuk + 10,1\" QLED yüz ekranı + kamera (rc:782-800). Ölçüler `arayuz.KAFA`'dan; kafa 210 × 180 × 150, tepe = HEAD_UP 275 (rc:92, rc:472).",
     "**Boyun plakası:** V3'teki 70 × 70 × 3 Al korunup iki yan kulak eklendi; 2× M6 traversin üst kanalına (x = ±40). V3'teki 4× M5 delik "
     "(z −15 / 35, rc:650) traversin tek üst kanalına (z = 0) denk gelmiyordu. Plaka kabuk üst kapağının altında (yerel y 0…3, kapak 7…10).",
     "**Pan karşı yatağı:** iki 6808-2RS (omuzdaki ile aynı rulman), merkezleri arası %s mm. Kafa ağırlığı mil omzundan üst rulmanın iç bileziğine, "
@@ -163,19 +163,19 @@ KARAR = [
     "4× M3 ile birleşir. Servo kulakları tablanın üstüne oturur (destek gerektiren tavan yok).",
     "**Kafa kabuğu:** V3 ölçüsü ve 2,5 mm duvar; z = 30'da ikiye bölündü (rc'de de 2 parça): yüz kabuğu yüz üstü, arka kabuk sırt üstü basılır, "
     "ikisi de X2D'ye tek parça sığar. Kenarlar R28 (önden) ve R12.",
-    "**Yüz ekranı yuvası:** LCD paneli ön duvarın 3 mm gerisinde bir kenara dayanır; böylece kulak boss'ları ısıl gömme somun alacak boyda (6,5 mm). "
+    "**Yüz ekranı yuvası:** QLED camı ön duvarın iç yüzüne dayanır, cep duvarı kenardan yer gösterir; tırnak boss'ları ısıl gömme somun alacak boyda (6,7 mm). "
     "Pencere = aktif alan + 1 mm (vizör penceresiyle aynı, rc:639).",
     "**Kamera:** lens ekseni y = %s (rc 247); bu düzende rc konumundaki kamera PCB'si LCD'nin üst kulağıyla çakışıyordu. Lens Ø9 delikten 1,5 mm taşar "
     "(rc ile aynı); yüz algılama için LCD'nin üstünde, kafa ortasında." % sayi(OL["Y_CAM"], 0),
-    "**Kütleler:** MG996R 55 g (datasheet), LCD 230 g (rc:39, **tahmini**; üretici kütlesi doğrulanmadı), kamera 4 g (rc:37), PETG küçük parçalarda "
+    "**Kütleler:** MG996R 55 g (datasheet), QLED 600 g (**varsayım**; üretici net kütle vermiyor, satıcı brüt 0,81–0,862 kg), kamera 4 g (rc:37), PETG küçük parçalarda "
     "%%%d, kabuklarda %%%d etkin doluluk (**tahmini**)." % (round(100 * d["doluluk"]), round(100 * d["doluluk_kabuk"])),
     "**Tork varsayımları (tahmini):** %s; MG996R 9,4 kg·cm @4,8 V; rulman sürtünme katsayısı 0,0015; kablo halkası direnci ≈ 0,3 kg·cm." % d["tork"]["profil"],
-    "**Tahmini ölçüler:** Camera Module 3 delik dizisinin dikey yeri (alt kenardan 2,0 mm, CM2 çizimi gibi), LCD kalınlığı ~15 mm (04), M2 PT vida "
+    "**Tahmini ölçüler:** Camera Module 3 delik dizisinin dikey yeri (alt kenardan 2,0 mm, CM2 çizimi gibi), QLED toplam kalınlık 15,03 (STEP 14,38), fiş zarfları (tahmin), M2 PT vida "
     "ve PETG'ye vida kavraması, 25T horn yüksekliği (dirsekle aynı).",
 ]
 
 SIRA = [
-    "Isıl gömme somunları bas: servo yuvası (4 tabla + 4 üst), boyun mili flanşı (4), eğme çatalı (M5), kafa tablası (4), ön kabuk LCD boss'ları (4).",
+    "Isıl gömme somunları bas: servo yuvası (4 tabla + 4 üst), boyun mili flanşı (4), eğme çatalı (M5), kafa tablası (4), ön kabuk tırnak boss'ları (4).",
     "Pan servosunun horn'unu servo orta konumunda (90) tak; servoyu servo yuvasına üstten indir, 4× M3×8 + pul.",
     "Alt 6808'i rulman yuvasına alttan, üst 6808'i üstten tablaya kadar pres et; rulman yuvasını 4× M3×10 ile servo yuvasına bağla.",
     "Boyun milini üstten iki rulmandan geçir; diski horn'a oturunca 4× M3×8'i milin içinden sık (gerekirse servo kulaklarının altına ince pul: "
@@ -183,7 +183,7 @@ SIRA = [
     "Eğme çatalını flanşa 4× M3×8 ile bağla; tilt servosunu +X'ten U plakaya 4× M4×16 + kontra somun (horn servo ortasında).",
     "625ZZ'yi kafa iskeletinin sol yanağına pres et; iskeleti indir, sağ yanağı horn'a 4× M3×8, sol pimi M5×12 + pul ile sık.",
     "Boyun grubunu traverse oturt: 2× M6×20 + pul + çekiç somun (somunlar traversin üst kanalında, uzun kenarı kanala dik).",
-    "LCD'yi ön kabuğa (4× M3×6), kamerayı (4× M2×8) tak; kabloları tabla üstünden sol yanak dışına, eksenin altından çatala, mil içinden kablo odasına "
+    "QLED'i ön kabuğa oturt, 4 tırnakla (4× M3×6 + köpük bant) arkadan tut, kamerayı (4× M2×8) tak; kabloları tabla üstünden sol yanak dışına, eksenin altından çatala, mil içinden kablo odasına "
     "ve servo yuvası arka kanalından aşağı geçir (pan ±90 ve tilt için gevşek halka bırak).",
     "Arka kabuğu, sonra ön kabuğu yerleştir; yanlardan 4× M3×8 ISO 7380. Vizörü VHB ile yapıştır.",
 ]
@@ -194,7 +194,7 @@ ACIK = [
     "**Hoparlör yeri** (amfi tablada): kafada üst bölme ya da göğüs; karar Duffy'nin. Mikrofon yeri CAD'de yok.",
     "Pi 5 için 4× M2,5 burç deliği 5 mm tablada: alt vida 3 mm burca girer (kupon testinde sıkma kontrolü).",
     "6808-2RS ve 625ZZ yük değerleri üretici kataloğundan doğrulanmalı (burada yalnız kuvvetler hesaplandı; değerler çok küçük).",
-    "LCD kütlesi ve kalınlığı, kamera delik yerleri parça gelince kumpas / tartı ile doğrulanmalı.",
+    "QLED kütlesi, cam şeridi kalınlığı (STEP 0,9 mm), fiş boyları, kamera delik yerleri parça gelince kumpas / tartı ile doğrulanmalı.",
     "Pan servosunun eksenel konumu: montajda ince pulla ayar; servo milinin eksenel yük almadığı elle kontrol edilmeli.",
     "Tilt'te servo miline kalan radyal pay (≈ %s N) kabul edilecek mi, yoksa sağ yanağa ikinci rulman + esnek kaplin mi (seçenek)." % sayi(ms["horn_N"], 1),
     "Yazılım sınırları: pan %s…%s°, tilt %s…%s° (`arayuz.KAFA`); servo horn'ları orta konumda = ev pozu." % (sayi(PAR[0], 0), sayi(PAR[1], 0),
@@ -460,7 +460,7 @@ H.append("<p class='karar'>%s</p>" % md(KARAR_TORK))
 
 H.append("<h2>Görünümler</h2><div class='grid'>")
 for ad, cap, w in (("kafa-izometrik.png", "İzometrik: kafa modülü + bağlam (traversin orta bölümü, kabuk üst kapağı R62 halkası yarı saydam)", ""),
-                   ("kafa-on.png", "Önden (yüz): vizör, 7\" ekran penceresi, kamera", ""),
+                   ("kafa-on.png", "Önden (yüz): 10,1\" QLED penceresi, kamera", ""),
                    ("kafa-yan.png", "Yandan (+X): boyun, rulman yuvası, kafa", ""),
                    ("kafa-arka.png", "Arkadan: arka kabuk, havalandırma yarıkları, servo yuvası kablo çıkışı", ""),
                    ("kafa-boyun-yakin.png", "Boyun mekanizması (kabuk ve ekran gizli, iskelet yarı saydam): pan, çatal, tilt servosu, horn", ""),
@@ -484,7 +484,7 @@ H.append("<h2>Yapı</h2><ul>")
 H.append("<li><b>Boyun (gövdeye sabit)</b>: boyun plakası, servo yuvası, rulman yuvası, pan MG996R gövdesi, iki 6808 dış bileziği · %s g</li>" % sayi(gr["Govde"]["m"], 0))
 H.append("<li><b>Pan grubu</b> (dikey eksende döner): pan horn'u, boyun mili, 6808 iç bilezikleri, eğme çatalı, tilt MG996R, 625ZZ iç bileziği + M5 pim · %s g</li>"
          % sayi(gr["Pan"]["m"], 0))
-H.append("<li><b>Kafa grubu</b> (tilt ekseninde döner): tilt horn'u, kafa iskeleti, 625ZZ dış bileziği, yüz ve arka kabuk, 7\" LCD, vizör, kamera · %s g, "
+H.append("<li><b>Kafa grubu</b> (tilt ekseninde döner): tilt horn'u, kafa iskeleti, 625ZZ dış bileziği, yüz ve arka kabuk, 10,1\" QLED, tırnaklar, kamera · %s g, "
          "kütle merkezi (%s; %s; %s)</li>" % (sayi(gr["Kafa"]["m"], 0), *[sayi(x, 1) for x in gr["Kafa"]["am"]]))
 H.append("<li>Pan ekseni yerel Y ekseni (x = z = 0; kabuk R62 açıklığının merkezi), pan horn'u y = %s. Tilt ekseni X'e paralel, (y, z) = (%s, %s). "
          "Yerel orijin = traversin üst yüzünün ortası (global 0, %s, 0).</li>" % (sayi(K["pan_nokta"][1], 1), sayi(K["tilt_nokta"][1], 0),
@@ -496,7 +496,7 @@ TUR = {"Baski": "Baskı (PETG)", "Satin": "Satın alınan", "Baglanti": "Bağlan
 SIRA_T = {"Baski": 0, "Imalat": 1, "Satin": 2, "Baglanti": 3}
 rows = [(TUR.get(t, t), esc(tr(k)), n, sayi(m, 1)) for t, k, n, m in sorted(d["bom"], key=lambda r: (SIRA_T.get(r[0], 9), r[1]))]
 H.append(tablo(["Tür", "Kalem", "Adet", "Kütle (g)"], rows, "sayi") + "</div>")
-H.append("<p class='not'>CSV: <code>kafa-bom.csv</code>. Satın alınanlar bütçede: 2× MG996R (6 adetlik kalemin kafa payı), 7\" LCD, Camera Module 3, "
+H.append("<p class='not'>CSV: <code>kafa-bom.csv</code>. Satın alınanlar bütçede: 2× MG996R (6 adetlik kalemin kafa payı), 10,1\" QLED, Camera Module 3, "
          "vizör (lazer kesim). Bütçede olmayanlar: 2× 6808-2RS, 1× 625ZZ, 2× 25T disk horn, boyun plakası (3 mm Al).</p>")
 
 H.append("<h2>Hangi parça neye, nasıl bağlanıyor</h2><div class='tw'>")
@@ -635,7 +635,7 @@ H.append("<h2>Kararlar ve varsayımlar</h2><ul>" + "".join("<li>%s</li>" % md(s)
 H.append("<h2>Montaj sırası (öneri)</h2><ol>" + "".join("<li>%s</li>" % md(s) for s in SIRA) + "</ol>")
 H.append("<h2>Açık işler</h2><ul>" + "".join("<li>%s</li>" % md(s) for s in ACIK) + "</ul>")
 H.append("<h2>Dosyalar</h2><ul>"
-         "<li><code>kafa_lib.py</code>: 6808-2RS, 7\" LCD (C), Camera Module 3, M2 vida, yuvarlatılmış kafa kutusu; MG996R / horn / baskı analizi dirsek_lib'den</li>"
+         "<li><code>kafa_lib.py</code>: 6808-2RS, 10,1\" QLED, 7\" LCD (C; geri dönüş), Camera Module 3, M2 vida, yuvarlatılmış kafa kutusu; MG996R / horn / baskı analizi dirsek_lib'den</li>"
          "<li><code>kafa_parcalar.py</code>: parçalar, bağlantı tanımları, kütle, kinematik (import edilebilir)</li>"
          "<li><code>kafa_montaj.py</code>: kontroller, tarama, R62, tork, baskı → <code>kafa-montaj.FCStd</code>, <code>.step</code>, <code>kafa-bom.csv</code>, "
          "<code>kafa-analiz.json</code></li>"

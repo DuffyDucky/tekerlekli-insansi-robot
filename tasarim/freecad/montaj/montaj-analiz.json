@@ -1,18 +1,18 @@
 {
  "dosya": "robot-montaj.FCStd",
  "step": "robot-montaj.step",
- "step_kati": 1120,
+ "step_kati": 1168,
  "bom": "robot-bom.csv",
  "bom_ozet": {
   "Baglanti": {
-   "kalem": 39,
-   "adet": 856,
-   "kutle_g": 1415.0
+   "kalem": 40,
+   "adet": 886,
+   "kutle_g": 1458.6
   },
   "Baski": {
-   "kalem": 56,
-   "adet": 66,
-   "kutle_g": 7368.7
+   "kalem": 59,
+   "adet": 69,
+   "kutle_g": 7216.3
   },
   "Imalat": {
    "kalem": 1,
@@ -25,20 +25,20 @@
    "kutle_g": 1799.8
   },
   "Satin": {
-   "kalem": 45,
-   "adet": 175,
-   "kutle_g": 13853.4
+   "kalem": 51,
+   "adet": 190,
+   "kutle_g": 14842.5
   }
  },
- "boy_mm": 1650.0,
- "s3_mm": 1340.0,
- "uzama_mm": 385.0,
+ "boy_mm": 1580.0,
+ "s3_mm": 1270.0,
+ "uzama_mm": 315.0,
  "taban_w_mm": 520.0,
- "parca_sayisi": 1120,
+ "parca_sayisi": 1168,
  "grup_sayisi": 22,
  "gecersiz": [],
- "hacim_fark_mm3": 4.656612873077393e-10,
- "ayna_merkez_fark_mm": 2.280358911065747e-12,
+ "hacim_fark_mm3": 6.111804395914078e-10,
+ "ayna_merkez_fark_mm": 1.1372329739376134e-12,
  "moduller": [
   {
    "ad": "iskelet",
@@ -53,10 +53,10 @@
    "parca": 59,
    "haric": [],
    "haric_neden": "",
-   "kutle_g": 6548.07,
+   "kutle_g": 6410.8,
    "agirlik_merkezi": [
-    0.0,
-    443.122,
+    -0.0,
+    418.615,
     0.0
    ],
    "gruplar": [
@@ -67,7 +67,7 @@
    "ad": "omuz_sag",
    "konum": [
     0.0,
-    1340.0,
+    1270.0,
     0.0
    ],
    "ayna": false,
@@ -82,7 +82,7 @@
    "kutle_g": 567.56,
    "agirlik_merkezi": [
     153.317,
-    1324.773,
+    1254.773,
     -0.796
    ],
    "gruplar": [
@@ -95,7 +95,7 @@
    "ad": "omuz_sol",
    "konum": [
     0.0,
-    1340.0,
+    1270.0,
     0.0
    ],
    "ayna": true,
@@ -110,7 +110,7 @@
    "kutle_g": 567.56,
    "agirlik_merkezi": [
     -153.317,
-    1324.773,
+    1254.773,
     -0.796
    ],
    "gruplar": [
@@ -128,15 +128,15 @@
    ],
    "ayna": false,
    "not_": "yerel = global; govde kabugu + taban etegi + S1 kasetleri + braketler",
-   "parca_modulde": 312,
-   "parca": 312,
+   "parca_modulde": 346,
+   "parca": 346,
    "haric": [],
    "haric_neden": "",
-   "kutle_g": 6119.03,
+   "kutle_g": 7095.83,
    "agirlik_merkezi": [
-    0.178,
-    587.491,
-    -0.117
+    0.152,
+    647.581,
+    12.607
    ],
    "gruplar": [
     "Kabuk"
@@ -146,7 +146,7 @@
    "ad": "dirsek_sag",
    "konum": [
     0.0,
-    1340.0,
+    1270.0,
     0.0
    ],
    "ayna": false,
@@ -158,7 +158,7 @@
    "kutle_g": 400.49,
    "agirlik_merkezi": [
     190.048,
-    1084.313,
+    1014.313,
     -1.306
    ],
    "gruplar": [
@@ -171,7 +171,7 @@
    "ad": "dirsek_sol",
    "konum": [
     0.0,
-    1340.0,
+    1270.0,
     0.0
    ],
    "ayna": true,
@@ -183,7 +183,7 @@
    "kutle_g": 400.49,
    "agirlik_merkezi": [
     -190.048,
-    1084.313,
+    1014.313,
     -1.306
    ],
    "gruplar": [
@@ -196,20 +196,20 @@
    "ad": "kafa",
    "konum": [
     0.0,
-    1360.0,
+    1290.0,
     0.0
    ],
    "ayna": false,
    "not_": "yerel orijin = traversin ust yuzu ortasi; gruplar Govde (sabit), Pan, Kafa (Pan * tilt)",
-   "parca_modulde": 147,
-   "parca": 147,
+   "parca_modulde": 161,
+   "parca": 161,
    "haric": [],
    "haric_neden": "kablo demeti gosterimi (Referans grubu, 0 g); kafa analizinin parca sayisina da girmiyor",
-   "kutle_g": 2043.54,
+   "kutle_g": 2084.39,
    "agirlik_merkezi": [
-    1.398,
-    1514.357,
-    19.499
+    1.287,
+    1445.576,
+    19.563
    ],
    "gruplar": [
     "Kafa_Govde",
@@ -330,11 +330,11 @@
    "ad": "Govde diregi",
    "grup": "Iskelet",
    "tur": "Satin",
-   "kod": "Sigma 40x40 agir kanal 10, 1185.5 mm",
-   "kutle_g": 2324.773,
+   "kod": "Sigma 40x40 agir kanal 10, 1115.5 mm",
+   "kutle_g": 2187.502,
    "merkez": [
-    0.0,
-    727.25,
+    -0.0,
+    692.25,
     -0.0
    ]
   },
@@ -347,7 +347,7 @@
    "kutle_g": 392.201,
    "merkez": [
     0.0,
-    1340.0,
+    1270.0,
     -0.0
    ]
   },
@@ -542,7 +542,7 @@
    "kutle_g": 75.0,
    "merkez": [
     32.72,
-    1307.28,
+    1237.28,
     -0.0
    ]
   },
@@ -555,7 +555,7 @@
    "kutle_g": 1.016,
    "merkez": [
     42.0,
-    1314.7,
+    1244.7,
     0.0
    ]
   },
@@ -568,7 +568,7 @@
    "kutle_g": 6.639,
    "merkez": [
     42.0,
-    1316.89,
+    1246.89,
     0.0
    ]
   },
@@ -581,7 +581,7 @@
    "kutle_g": 5.17,
    "merkez": [
     42.0,
-    1326.8,
+    1256.8,
     -0.0
    ]
   },
@@ -594,7 +594,7 @@
    "kutle_g": 1.016,
    "merkez": [
     25.3,
-    1298.0,
+    1228.0,
     0.0
    ]
   },
@@ -607,7 +607,7 @@
    "kutle_g": 6.639,
    "merkez": [
     23.11,
-    1298.0,
+    1228.0,
     0.0
    ]
   },
@@ -620,7 +620,7 @@
    "kutle_g": 5.17,
    "merkez": [
     13.2,
-    1298.0,
+    1228.0,
     0.0
    ]
   },
@@ -633,7 +633,7 @@
    "kutle_g": 75.0,
    "merkez": [
     -32.72,
-    1307.28,
+    1237.28,
     0.0
    ]
   },
@@ -646,7 +646,7 @@
    "kutle_g": 1.016,
    "merkez": [
     -42.0,
-    1314.7,
+    1244.7,
     -0.0
    ]
   },
@@ -659,7 +659,7 @@
    "kutle_g": 6.639,
    "merkez": [
     -42.0,
-    1316.89,
+    1246.89,
     -0.0
    ]
   },
@@ -672,7 +672,7 @@
    "kutle_g": 5.17,
    "merkez": [
     -42.0,
-    1326.8,
+    1256.8,
     -0.0
    ]
   },
@@ -685,7 +685,7 @@
    "kutle_g": 1.016,
    "merkez": [
     -25.3,
-    1298.0,
+    1228.0,
     0.0
    ]
   },
@@ -698,7 +698,7 @@
    "kutle_g": 6.639,
    "merkez": [
     -23.11,
-    1298.0,
+    1228.0,
     -0.0
    ]
   },
@@ -711,7 +711,7 @@
    "kutle_g": 5.17,
    "merkez": [
     -13.2,
-    1298.0,
+    1228.0,
     -0.0
    ]
   },
@@ -1036,7 +1036,7 @@
    "kutle_g": 74.971,
    "merkez": [
     108.05,
-    1338.01,
+    1268.01,
     0.0
    ]
   },
@@ -1049,7 +1049,7 @@
    "kutle_g": 60.0,
    "merkez": [
     124.65,
-    1330.0,
+    1260.0,
     0.0
    ]
   },
@@ -1062,7 +1062,7 @@
    "kutle_g": 0.0,
    "merkez": [
     146.24,
-    1340.0,
+    1270.0,
     -0.0
    ]
   },
@@ -1075,7 +1075,7 @@
    "kutle_g": 2.64,
    "merkez": [
     130.48,
-    1354.75,
+    1284.75,
     -5.0
    ]
   },
@@ -1088,59 +1088,7 @@
    "kutle_g": 1.172,
    "merkez": [
     124.5,
-    1354.75,
-    -5.0
-   ]
-  },
-  {
-   "modul": "omuz_sag",
-   "ad": "S1 kulak civatasi M4x16",
-   "grup": "Govde",
-   "tur": "Baglanti",
-   "kod": "M4x16 DIN 912",
-   "kutle_g": 2.64,
-   "merkez": [
-    130.48,
-    1354.75,
-    5.0
-   ]
-  },
-  {
-   "modul": "omuz_sag",
-   "ad": "S1 kontra somun M4",
-   "grup": "Govde",
-   "tur": "Baglanti",
-   "kod": "M4 DIN 985 kontra somun",
-   "kutle_g": 1.172,
-   "merkez": [
-    124.5,
-    1354.75,
-    5.0
-   ]
-  },
-  {
-   "modul": "omuz_sag",
-   "ad": "S1 kulak civatasi M4x16",
-   "grup": "Govde",
-   "tur": "Baglanti",
-   "kod": "M4x16 DIN 912",
-   "kutle_g": 2.64,
-   "merkez": [
-    130.48,
-    1305.25,
-    -5.0
-   ]
-  },
-  {
-   "modul": "omuz_sag",
-   "ad": "S1 kontra somun M4",
-   "grup": "Govde",
-   "tur": "Baglanti",
-   "kod": "M4 DIN 985 kontra somun",
-   "kutle_g": 1.172,
-   "merkez": [
-    124.5,
-    1305.25,
+    1284.75,
     -5.0
    ]
   },
@@ -1153,7 +1101,7 @@
    "kutle_g": 2.64,
    "merkez": [
     130.48,
-    1305.25,
+    1284.75,
     5.0
    ]
   },
@@ -1166,7 +1114,59 @@
    "kutle_g": 1.172,
    "merkez": [
     124.5,
-    1305.25,
+    1284.75,
+    5.0
+   ]
+  },
+  {
+   "modul": "omuz_sag",
+   "ad": "S1 kulak civatasi M4x16",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "merkez": [
+    130.48,
+    1235.25,
+    -5.0
+   ]
+  },
+  {
+   "modul": "omuz_sag",
+   "ad": "S1 kontra somun M4",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.172,
+   "merkez": [
+    124.5,
+    1235.25,
+    -5.0
+   ]
+  },
+  {
+   "modul": "omuz_sag",
+   "ad": "S1 kulak civatasi M4x16",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "merkez": [
+    130.48,
+    1235.25,
+    5.0
+   ]
+  },
+  {
+   "modul": "omuz_sag",
+   "ad": "S1 kontra somun M4",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.172,
+   "merkez": [
+    124.5,
+    1235.25,
     5.0
    ]
   },
@@ -1179,7 +1179,7 @@
    "kutle_g": 6.639,
    "merkez": [
     86.0,
-    1362.01,
+    1292.01,
     0.0
    ]
   },
@@ -1192,7 +1192,7 @@
    "kutle_g": 5.17,
    "merkez": [
     86.0,
-    1353.2,
+    1283.2,
     0.0
    ]
   },
@@ -1205,7 +1205,7 @@
    "kutle_g": 6.639,
    "merkez": [
     86.0,
-    1317.99,
+    1247.99,
     -0.0
    ]
   },
@@ -1218,7 +1218,7 @@
    "kutle_g": 5.17,
    "merkez": [
     86.0,
-    1326.8,
+    1256.8,
     -0.0
    ]
   },
@@ -1231,7 +1231,7 @@
    "kutle_g": 6.639,
    "merkez": [
     86.0,
-    1340.0,
+    1270.0,
     22.01
    ]
   },
@@ -1244,7 +1244,7 @@
    "kutle_g": 5.17,
    "merkez": [
     86.0,
-    1340.0,
+    1270.0,
     13.2
    ]
   },
@@ -1257,7 +1257,7 @@
    "kutle_g": 6.639,
    "merkez": [
     86.0,
-    1340.0,
+    1270.0,
     -22.01
    ]
   },
@@ -1270,7 +1270,7 @@
    "kutle_g": 5.17,
    "merkez": [
     86.0,
-    1340.0,
+    1270.0,
     -13.2
    ]
   },
@@ -1283,7 +1283,7 @@
    "kutle_g": 16.429,
    "merkez": [
     151.82,
-    1340.0,
+    1270.0,
     -0.0
    ]
   },
@@ -1296,7 +1296,7 @@
    "kutle_g": 13.921,
    "merkez": [
     156.5,
-    1340.0,
+    1270.0,
     -0.0
    ]
   },
@@ -1309,7 +1309,7 @@
    "kutle_g": 1.149,
    "merkez": [
     149.11,
-    1334.0,
+    1264.0,
     -33.0
    ]
   },
@@ -1322,59 +1322,7 @@
    "kutle_g": 0.266,
    "merkez": [
     143.15,
-    1334.0,
-    -33.0
-   ]
-  },
-  {
-   "modul": "omuz_sag",
-   "ad": "Kapak civatasi M3x12",
-   "grup": "Govde",
-   "tur": "Baglanti",
-   "kod": "M3x12 DIN 912",
-   "kutle_g": 1.149,
-   "merkez": [
-    149.11,
-    1334.0,
-    33.0
-   ]
-  },
-  {
-   "modul": "omuz_sag",
-   "ad": "Isil gomme somun M3 (yuvada)",
-   "grup": "Govde",
-   "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
-   "merkez": [
-    143.15,
-    1334.0,
-    33.0
-   ]
-  },
-  {
-   "modul": "omuz_sag",
-   "ad": "Kapak civatasi M3x12",
-   "grup": "Govde",
-   "tur": "Baglanti",
-   "kod": "M3x12 DIN 912",
-   "kutle_g": 1.149,
-   "merkez": [
-    149.11,
-    1346.0,
-    -33.0
-   ]
-  },
-  {
-   "modul": "omuz_sag",
-   "ad": "Isil gomme somun M3 (yuvada)",
-   "grup": "Govde",
-   "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
-   "merkez": [
-    143.15,
-    1346.0,
+    1264.0,
     -33.0
    ]
   },
@@ -1387,7 +1335,7 @@
    "kutle_g": 1.149,
    "merkez": [
     149.11,
-    1346.0,
+    1264.0,
     33.0
    ]
   },
@@ -1400,7 +1348,59 @@
    "kutle_g": 0.266,
    "merkez": [
     143.15,
-    1346.0,
+    1264.0,
+    33.0
+   ]
+  },
+  {
+   "modul": "omuz_sag",
+   "ad": "Kapak civatasi M3x12",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x12 DIN 912",
+   "kutle_g": 1.149,
+   "merkez": [
+    149.11,
+    1276.0,
+    -33.0
+   ]
+  },
+  {
+   "modul": "omuz_sag",
+   "ad": "Isil gomme somun M3 (yuvada)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    143.15,
+    1276.0,
+    -33.0
+   ]
+  },
+  {
+   "modul": "omuz_sag",
+   "ad": "Kapak civatasi M3x12",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x12 DIN 912",
+   "kutle_g": 1.149,
+   "merkez": [
+    149.11,
+    1276.0,
+    33.0
+   ]
+  },
+  {
+   "modul": "omuz_sag",
+   "ad": "Isil gomme somun M3 (yuvada)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    143.15,
+    1276.0,
     33.0
    ]
   },
@@ -1413,7 +1413,7 @@
    "kutle_g": 3.87,
    "merkez": [
     148.35,
-    1340.0,
+    1270.0,
     -0.0
    ]
   },
@@ -1426,7 +1426,7 @@
    "kutle_g": 0.76,
    "merkez": [
     149.98,
-    1340.0,
+    1270.0,
     -0.0
    ]
   },
@@ -1439,7 +1439,7 @@
    "kutle_g": 16.795,
    "merkez": [
     156.5,
-    1340.0,
+    1270.0,
     0.0
    ]
   },
@@ -1452,7 +1452,7 @@
    "kutle_g": 59.241,
    "merkez": [
     169.66,
-    1349.02,
+    1279.02,
     -6.19
    ]
   },
@@ -1465,7 +1465,7 @@
    "kutle_g": 1.149,
    "merkez": [
     156.11,
-    1346.01,
+    1276.01,
     -6.01
    ]
   },
@@ -1478,7 +1478,7 @@
    "kutle_g": 1.149,
    "merkez": [
     156.11,
-    1346.01,
+    1276.01,
     6.01
    ]
   },
@@ -1491,7 +1491,7 @@
    "kutle_g": 1.149,
    "merkez": [
     156.11,
-    1333.99,
+    1263.99,
     6.01
    ]
   },
@@ -1504,7 +1504,7 @@
    "kutle_g": 1.149,
    "merkez": [
     156.11,
-    1333.99,
+    1263.99,
     -6.01
    ]
   },
@@ -1517,7 +1517,7 @@
    "kutle_g": 4.787,
    "merkez": [
     156.64,
-    1344.81,
+    1274.81,
     12.21
    ]
   },
@@ -1530,7 +1530,7 @@
    "kutle_g": 0.927,
    "merkez": [
     161.68,
-    1369.23,
+    1299.23,
     16.87
    ]
   },
@@ -1543,7 +1543,7 @@
    "kutle_g": 0.266,
    "merkez": [
     165.85,
-    1369.23,
+    1299.23,
     16.87
    ]
   },
@@ -1556,7 +1556,7 @@
    "kutle_g": 0.927,
    "merkez": [
     161.68,
-    1373.75,
+    1303.75,
     -0.0
    ]
   },
@@ -1569,7 +1569,7 @@
    "kutle_g": 0.266,
    "merkez": [
     165.85,
-    1373.75,
+    1303.75,
     -0.0
    ]
   },
@@ -1582,7 +1582,7 @@
    "kutle_g": 0.927,
    "merkez": [
     161.68,
-    1369.23,
+    1299.23,
     -16.88
    ]
   },
@@ -1595,7 +1595,7 @@
    "kutle_g": 0.266,
    "merkez": [
     165.85,
-    1369.23,
+    1299.23,
     -16.87
    ]
   },
@@ -1608,7 +1608,7 @@
    "kutle_g": 0.005,
    "merkez": [
     155.9,
-    1305.78,
+    1235.78,
     -21.38
    ]
   },
@@ -1621,7 +1621,7 @@
    "kutle_g": 0.005,
    "merkez": [
     155.9,
-    1303.14,
+    1233.14,
     -16.41
    ]
   },
@@ -1634,7 +1634,7 @@
    "kutle_g": 60.0,
    "merkez": [
     185.0,
-    1350.0,
+    1280.0,
     0.15
    ]
   },
@@ -1647,7 +1647,7 @@
    "kutle_g": 0.0,
    "merkez": [
     185.0,
-    1340.0,
+    1270.0,
     21.74
    ]
   },
@@ -1660,7 +1660,7 @@
    "kutle_g": 2.64,
    "merkez": [
     180.0,
-    1325.25,
+    1255.25,
     5.98
    ]
   },
@@ -1673,7 +1673,7 @@
    "kutle_g": 1.172,
    "merkez": [
     180.0,
-    1325.25,
+    1255.25,
     0.0
    ]
   },
@@ -1686,7 +1686,7 @@
    "kutle_g": 2.64,
    "merkez": [
     190.0,
-    1325.25,
+    1255.25,
     5.98
    ]
   },
@@ -1699,7 +1699,7 @@
    "kutle_g": 1.172,
    "merkez": [
     190.0,
-    1325.25,
+    1255.25,
     0.0
    ]
   },
@@ -1712,7 +1712,7 @@
    "kutle_g": 2.64,
    "merkez": [
     180.0,
-    1374.75,
+    1304.75,
     5.98
    ]
   },
@@ -1725,7 +1725,7 @@
    "kutle_g": 1.172,
    "merkez": [
     180.0,
-    1374.75,
+    1304.75,
     0.0
    ]
   },
@@ -1738,7 +1738,7 @@
    "kutle_g": 2.64,
    "merkez": [
     190.0,
-    1374.75,
+    1304.75,
     5.98
    ]
   },
@@ -1751,7 +1751,7 @@
    "kutle_g": 1.172,
    "merkez": [
     190.0,
-    1374.75,
+    1304.75,
     0.0
    ]
   },
@@ -1764,7 +1764,7 @@
    "kutle_g": 0.746,
    "merkez": [
     185.0,
-    1340.0,
+    1270.0,
     -24.5
    ]
   },
@@ -1777,7 +1777,7 @@
    "kutle_g": 1.302,
    "merkez": [
     185.0,
-    1340.0,
+    1270.0,
     -30.5
    ]
   },
@@ -1790,7 +1790,7 @@
    "kutle_g": 0.443,
    "merkez": [
     185.0,
-    1340.0,
+    1270.0,
     -33.5
    ]
   },
@@ -1803,7 +1803,7 @@
    "kutle_g": 3.751,
    "merkez": [
     185.0,
-    1340.0,
+    1270.0,
     -32.22
    ]
   },
@@ -1816,7 +1816,7 @@
    "kutle_g": 3.87,
    "merkez": [
     185.0,
-    1340.0,
+    1270.0,
     23.85
    ]
   },
@@ -1829,7 +1829,7 @@
    "kutle_g": 0.76,
    "merkez": [
     185.0,
-    1340.0,
+    1270.0,
     25.48
    ]
   },
@@ -1842,7 +1842,7 @@
    "kutle_g": 93.583,
    "merkez": [
     185.0,
-    1301.69,
+    1231.69,
     -1.07
    ]
   },
@@ -1855,7 +1855,7 @@
    "kutle_g": 2.841,
    "merkez": [
     185.0,
-    1340.0,
+    1270.0,
     -30.5
    ]
   },
@@ -1868,7 +1868,7 @@
    "kutle_g": 0.927,
    "merkez": [
     178.99,
-    1333.99,
+    1263.99,
     29.32
    ]
   },
@@ -1881,7 +1881,7 @@
    "kutle_g": 0.927,
    "merkez": [
     191.01,
-    1333.99,
+    1263.99,
     29.32
    ]
   },
@@ -1894,7 +1894,7 @@
    "kutle_g": 0.927,
    "merkez": [
     191.01,
-    1346.01,
+    1276.01,
     29.32
    ]
   },
@@ -1907,7 +1907,7 @@
    "kutle_g": 0.927,
    "merkez": [
     178.99,
-    1346.01,
+    1276.01,
     29.32
    ]
   },
@@ -1920,7 +1920,7 @@
    "kutle_g": 51.815,
    "merkez": [
     185.0,
-    1234.71,
+    1164.71,
     -1.02
    ]
   },
@@ -1933,7 +1933,7 @@
    "kutle_g": 0.266,
    "merkez": [
     185.0,
-    1290.0,
+    1220.0,
     21.3
    ]
   },
@@ -1946,7 +1946,7 @@
    "kutle_g": 0.927,
    "merkez": [
     185.0,
-    1290.0,
+    1220.0,
     25.71
    ]
   },
@@ -1959,7 +1959,7 @@
    "kutle_g": 0.266,
    "merkez": [
     185.0,
-    1290.0,
+    1220.0,
     -23.8
    ]
   },
@@ -1972,7 +1972,7 @@
    "kutle_g": 0.927,
    "merkez": [
     185.0,
-    1290.0,
+    1220.0,
     -28.21
    ]
   },
@@ -1985,7 +1985,7 @@
    "kutle_g": 74.971,
    "merkez": [
     -108.05,
-    1338.01,
+    1268.01,
     0.0
    ]
   },
@@ -1998,7 +1998,7 @@
    "kutle_g": 60.0,
    "merkez": [
     -124.65,
-    1330.0,
+    1260.0,
     0.0
    ]
   },
@@ -2011,7 +2011,7 @@
    "kutle_g": 0.0,
    "merkez": [
     -146.24,
-    1340.0,
+    1270.0,
     -0.0
    ]
   },
@@ -2024,7 +2024,7 @@
    "kutle_g": 2.64,
    "merkez": [
     -130.48,
-    1354.75,
+    1284.75,
     -5.0
    ]
   },
@@ -2037,59 +2037,7 @@
    "kutle_g": 1.172,
    "merkez": [
     -124.5,
-    1354.75,
-    -5.0
-   ]
-  },
-  {
-   "modul": "omuz_sol",
-   "ad": "S1 kulak civatasi M4x16",
-   "grup": "Govde",
-   "tur": "Baglanti",
-   "kod": "M4x16 DIN 912",
-   "kutle_g": 2.64,
-   "merkez": [
-    -130.48,
-    1354.75,
-    5.0
-   ]
-  },
-  {
-   "modul": "omuz_sol",
-   "ad": "S1 kontra somun M4",
-   "grup": "Govde",
-   "tur": "Baglanti",
-   "kod": "M4 DIN 985 kontra somun",
-   "kutle_g": 1.172,
-   "merkez": [
-    -124.5,
-    1354.75,
-    5.0
-   ]
-  },
-  {
-   "modul": "omuz_sol",
-   "ad": "S1 kulak civatasi M4x16",
-   "grup": "Govde",
-   "tur": "Baglanti",
-   "kod": "M4x16 DIN 912",
-   "kutle_g": 2.64,
-   "merkez": [
-    -130.48,
-    1305.25,
-    -5.0
-   ]
-  },
-  {
-   "modul": "omuz_sol",
-   "ad": "S1 kontra somun M4",
-   "grup": "Govde",
-   "tur": "Baglanti",
-   "kod": "M4 DIN 985 kontra somun",
-   "kutle_g": 1.172,
-   "merkez": [
-    -124.5,
-    1305.25,
+    1284.75,
     -5.0
    ]
   },
@@ -2102,7 +2050,7 @@
    "kutle_g": 2.64,
    "merkez": [
     -130.48,
-    1305.25,
+    1284.75,
     5.0
    ]
   },
@@ -2115,7 +2063,59 @@
    "kutle_g": 1.172,
    "merkez": [
     -124.5,
-    1305.25,
+    1284.75,
+    5.0
+   ]
+  },
+  {
+   "modul": "omuz_sol",
+   "ad": "S1 kulak civatasi M4x16",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "merkez": [
+    -130.48,
+    1235.25,
+    -5.0
+   ]
+  },
+  {
+   "modul": "omuz_sol",
+   "ad": "S1 kontra somun M4",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.172,
+   "merkez": [
+    -124.5,
+    1235.25,
+    -5.0
+   ]
+  },
+  {
+   "modul": "omuz_sol",
+   "ad": "S1 kulak civatasi M4x16",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "merkez": [
+    -130.48,
+    1235.25,
+    5.0
+   ]
+  },
+  {
+   "modul": "omuz_sol",
+   "ad": "S1 kontra somun M4",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.172,
+   "merkez": [
+    -124.5,
+    1235.25,
     5.0
    ]
   },
@@ -2128,7 +2128,7 @@
    "kutle_g": 6.639,
    "merkez": [
     -86.0,
-    1362.01,
+    1292.01,
     0.0
    ]
   },
@@ -2141,7 +2141,7 @@
    "kutle_g": 5.17,
    "merkez": [
     -86.0,
-    1353.2,
+    1283.2,
     0.0
    ]
   },
@@ -2154,7 +2154,7 @@
    "kutle_g": 6.639,
    "merkez": [
     -86.0,
-    1317.99,
+    1247.99,
     -0.0
    ]
   },
@@ -2167,7 +2167,7 @@
    "kutle_g": 5.17,
    "merkez": [
     -86.0,
-    1326.8,
+    1256.8,
     -0.0
    ]
   },
@@ -2180,7 +2180,7 @@
    "kutle_g": 6.639,
    "merkez": [
     -86.0,
-    1340.0,
+    1270.0,
     22.01
    ]
   },
@@ -2193,7 +2193,7 @@
    "kutle_g": 5.17,
    "merkez": [
     -86.0,
-    1340.0,
+    1270.0,
     13.2
    ]
   },
@@ -2206,7 +2206,7 @@
    "kutle_g": 6.639,
    "merkez": [
     -86.0,
-    1340.0,
+    1270.0,
     -22.01
    ]
   },
@@ -2219,7 +2219,7 @@
    "kutle_g": 5.17,
    "merkez": [
     -86.0,
-    1340.0,
+    1270.0,
     -13.2
    ]
   },
@@ -2232,7 +2232,7 @@
    "kutle_g": 16.429,
    "merkez": [
     -151.82,
-    1340.0,
+    1270.0,
     -0.0
    ]
   },
@@ -2245,7 +2245,7 @@
    "kutle_g": 13.921,
    "merkez": [
     -156.5,
-    1340.0,
+    1270.0,
     -0.0
    ]
   },
@@ -2258,7 +2258,7 @@
    "kutle_g": 1.149,
    "merkez": [
     -149.11,
-    1334.0,
+    1264.0,
     -33.0
    ]
   },
@@ -2271,59 +2271,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -143.15,
-    1334.0,
-    -33.0
-   ]
-  },
-  {
-   "modul": "omuz_sol",
-   "ad": "Kapak civatasi M3x12",
-   "grup": "Govde",
-   "tur": "Baglanti",
-   "kod": "M3x12 DIN 912",
-   "kutle_g": 1.149,
-   "merkez": [
-    -149.11,
-    1334.0,
-    33.0
-   ]
-  },
-  {
-   "modul": "omuz_sol",
-   "ad": "Isil gomme somun M3 (yuvada)",
-   "grup": "Govde",
-   "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
-   "merkez": [
-    -143.15,
-    1334.0,
-    33.0
-   ]
-  },
-  {
-   "modul": "omuz_sol",
-   "ad": "Kapak civatasi M3x12",
-   "grup": "Govde",
-   "tur": "Baglanti",
-   "kod": "M3x12 DIN 912",
-   "kutle_g": 1.149,
-   "merkez": [
-    -149.11,
-    1346.0,
-    -33.0
-   ]
-  },
-  {
-   "modul": "omuz_sol",
-   "ad": "Isil gomme somun M3 (yuvada)",
-   "grup": "Govde",
-   "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
-   "merkez": [
-    -143.15,
-    1346.0,
+    1264.0,
     -33.0
    ]
   },
@@ -2336,7 +2284,7 @@
    "kutle_g": 1.149,
    "merkez": [
     -149.11,
-    1346.0,
+    1264.0,
     33.0
    ]
   },
@@ -2349,7 +2297,59 @@
    "kutle_g": 0.266,
    "merkez": [
     -143.15,
-    1346.0,
+    1264.0,
+    33.0
+   ]
+  },
+  {
+   "modul": "omuz_sol",
+   "ad": "Kapak civatasi M3x12",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x12 DIN 912",
+   "kutle_g": 1.149,
+   "merkez": [
+    -149.11,
+    1276.0,
+    -33.0
+   ]
+  },
+  {
+   "modul": "omuz_sol",
+   "ad": "Isil gomme somun M3 (yuvada)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -143.15,
+    1276.0,
+    -33.0
+   ]
+  },
+  {
+   "modul": "omuz_sol",
+   "ad": "Kapak civatasi M3x12",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x12 DIN 912",
+   "kutle_g": 1.149,
+   "merkez": [
+    -149.11,
+    1276.0,
+    33.0
+   ]
+  },
+  {
+   "modul": "omuz_sol",
+   "ad": "Isil gomme somun M3 (yuvada)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -143.15,
+    1276.0,
     33.0
    ]
   },
@@ -2362,7 +2362,7 @@
    "kutle_g": 3.87,
    "merkez": [
     -148.35,
-    1340.0,
+    1270.0,
     -0.0
    ]
   },
@@ -2375,7 +2375,7 @@
    "kutle_g": 0.76,
    "merkez": [
     -149.98,
-    1340.0,
+    1270.0,
     -0.0
    ]
   },
@@ -2388,7 +2388,7 @@
    "kutle_g": 16.795,
    "merkez": [
     -156.5,
-    1340.0,
+    1270.0,
     0.0
    ]
   },
@@ -2401,7 +2401,7 @@
    "kutle_g": 59.241,
    "merkez": [
     -169.66,
-    1349.02,
+    1279.02,
     -6.19
    ]
   },
@@ -2414,7 +2414,7 @@
    "kutle_g": 1.149,
    "merkez": [
     -156.11,
-    1346.01,
+    1276.01,
     -6.01
    ]
   },
@@ -2427,7 +2427,7 @@
    "kutle_g": 1.149,
    "merkez": [
     -156.11,
-    1346.01,
+    1276.01,
     6.01
    ]
   },
@@ -2440,7 +2440,7 @@
    "kutle_g": 1.149,
    "merkez": [
     -156.11,
-    1333.99,
+    1263.99,
     6.01
    ]
   },
@@ -2453,7 +2453,7 @@
    "kutle_g": 1.149,
    "merkez": [
     -156.11,
-    1333.99,
+    1263.99,
     -6.01
    ]
   },
@@ -2466,7 +2466,7 @@
    "kutle_g": 4.787,
    "merkez": [
     -156.64,
-    1344.81,
+    1274.81,
     12.21
    ]
   },
@@ -2479,7 +2479,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -161.68,
-    1369.23,
+    1299.23,
     16.87
    ]
   },
@@ -2492,7 +2492,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -165.85,
-    1369.23,
+    1299.23,
     16.87
    ]
   },
@@ -2505,7 +2505,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -161.68,
-    1373.75,
+    1303.75,
     -0.0
    ]
   },
@@ -2518,7 +2518,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -165.85,
-    1373.75,
+    1303.75,
     -0.0
    ]
   },
@@ -2531,7 +2531,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -161.68,
-    1369.23,
+    1299.23,
     -16.88
    ]
   },
@@ -2544,7 +2544,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -165.85,
-    1369.23,
+    1299.23,
     -16.87
    ]
   },
@@ -2557,7 +2557,7 @@
    "kutle_g": 0.005,
    "merkez": [
     -155.9,
-    1305.78,
+    1235.78,
     -21.38
    ]
   },
@@ -2570,7 +2570,7 @@
    "kutle_g": 0.005,
    "merkez": [
     -155.9,
-    1303.14,
+    1233.14,
     -16.41
    ]
   },
@@ -2583,7 +2583,7 @@
    "kutle_g": 60.0,
    "merkez": [
     -185.0,
-    1350.0,
+    1280.0,
     0.15
    ]
   },
@@ -2596,7 +2596,7 @@
    "kutle_g": 0.0,
    "merkez": [
     -185.0,
-    1340.0,
+    1270.0,
     21.74
    ]
   },
@@ -2609,7 +2609,7 @@
    "kutle_g": 2.64,
    "merkez": [
     -180.0,
-    1325.25,
+    1255.25,
     5.98
    ]
   },
@@ -2622,7 +2622,7 @@
    "kutle_g": 1.172,
    "merkez": [
     -180.0,
-    1325.25,
+    1255.25,
     0.0
    ]
   },
@@ -2635,7 +2635,7 @@
    "kutle_g": 2.64,
    "merkez": [
     -190.0,
-    1325.25,
+    1255.25,
     5.98
    ]
   },
@@ -2648,7 +2648,7 @@
    "kutle_g": 1.172,
    "merkez": [
     -190.0,
-    1325.25,
+    1255.25,
     0.0
    ]
   },
@@ -2661,7 +2661,7 @@
    "kutle_g": 2.64,
    "merkez": [
     -180.0,
-    1374.75,
+    1304.75,
     5.98
    ]
   },
@@ -2674,7 +2674,7 @@
    "kutle_g": 1.172,
    "merkez": [
     -180.0,
-    1374.75,
+    1304.75,
     0.0
    ]
   },
@@ -2687,7 +2687,7 @@
    "kutle_g": 2.64,
    "merkez": [
     -190.0,
-    1374.75,
+    1304.75,
     5.98
    ]
   },
@@ -2700,7 +2700,7 @@
    "kutle_g": 1.172,
    "merkez": [
     -190.0,
-    1374.75,
+    1304.75,
     0.0
    ]
   },
@@ -2713,7 +2713,7 @@
    "kutle_g": 0.746,
    "merkez": [
     -185.0,
-    1340.0,
+    1270.0,
     -24.5
    ]
   },
@@ -2726,7 +2726,7 @@
    "kutle_g": 1.302,
    "merkez": [
     -185.0,
-    1340.0,
+    1270.0,
     -30.5
    ]
   },
@@ -2739,7 +2739,7 @@
    "kutle_g": 0.443,
    "merkez": [
     -185.0,
-    1340.0,
+    1270.0,
     -33.5
    ]
   },
@@ -2752,7 +2752,7 @@
    "kutle_g": 3.751,
    "merkez": [
     -185.0,
-    1340.0,
+    1270.0,
     -32.22
    ]
   },
@@ -2765,7 +2765,7 @@
    "kutle_g": 3.87,
    "merkez": [
     -185.0,
-    1340.0,
+    1270.0,
     23.85
    ]
   },
@@ -2778,7 +2778,7 @@
    "kutle_g": 0.76,
    "merkez": [
     -185.0,
-    1340.0,
+    1270.0,
     25.48
    ]
   },
@@ -2791,7 +2791,7 @@
    "kutle_g": 93.583,
    "merkez": [
     -185.0,
-    1301.69,
+    1231.69,
     -1.07
    ]
   },
@@ -2804,7 +2804,7 @@
    "kutle_g": 2.841,
    "merkez": [
     -185.0,
-    1340.0,
+    1270.0,
     -30.5
    ]
   },
@@ -2817,7 +2817,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -178.99,
-    1333.99,
+    1263.99,
     29.32
    ]
   },
@@ -2830,7 +2830,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -191.01,
-    1333.99,
+    1263.99,
     29.32
    ]
   },
@@ -2843,7 +2843,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -191.01,
-    1346.01,
+    1276.01,
     29.32
    ]
   },
@@ -2856,7 +2856,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -178.99,
-    1346.01,
+    1276.01,
     29.32
    ]
   },
@@ -2869,7 +2869,7 @@
    "kutle_g": 51.815,
    "merkez": [
     -185.0,
-    1234.71,
+    1164.71,
     -1.02
    ]
   },
@@ -2882,7 +2882,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -185.0,
-    1290.0,
+    1220.0,
     21.3
    ]
   },
@@ -2895,7 +2895,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -185.0,
-    1290.0,
+    1220.0,
     25.71
    ]
   },
@@ -2908,7 +2908,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -185.0,
-    1290.0,
+    1220.0,
     -23.8
    ]
   },
@@ -2921,7 +2921,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -185.0,
-    1290.0,
+    1220.0,
     -28.21
    ]
   },
@@ -2957,10 +2957,10 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 260.711,
+   "kutle_g": 213.585,
    "merkez": [
-    80.61,
-    578.68,
+    80.55,
+    561.17,
     0.0
    ]
   },
@@ -2970,10 +2970,10 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 245.105,
+   "kutle_g": 200.619,
    "merkez": [
-    -85.74,
-    578.35,
+    -85.76,
+    560.85,
     0.0
    ]
   },
@@ -2983,11 +2983,11 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 260.728,
+   "kutle_g": 213.606,
    "merkez": [
-    80.62,
-    771.18,
-    -0.0
+    80.56,
+    718.68,
+    0.0
    ]
   },
   {
@@ -2996,10 +2996,10 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 245.121,
+   "kutle_g": 200.64,
    "merkez": [
-    -85.75,
-    770.86,
+    -85.77,
+    718.36,
     0.0
    ]
   },
@@ -3009,11 +3009,11 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 249.432,
+   "kutle_g": 258.792,
    "merkez": [
-    95.44,
-    973.49,
-    17.75
+    98.28,
+    906.08,
+    20.14
    ]
   },
   {
@@ -3022,11 +3022,11 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 239.716,
+   "kutle_g": 249.078,
    "merkez": [
-    -99.3,
-    973.68,
-    15.83
+    -102.11,
+    906.36,
+    18.21
    ]
   },
   {
@@ -3035,11 +3035,11 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 271.699,
+   "kutle_g": 208.272,
    "merkez": [
-    106.72,
-    1174.3,
-    21.98
+    127.33,
+    1104.89,
+    -8.11
    ]
   },
   {
@@ -3048,11 +3048,11 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 262.24,
+   "kutle_g": 204.813,
    "merkez": [
-    -110.56,
-    1174.56,
-    20.34
+    -129.5,
+    1104.97,
+    -8.36
    ]
   },
   {
@@ -3061,11 +3061,11 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 191.022,
+   "kutle_g": 175.663,
    "merkez": [
-    91.14,
-    1333.23,
-    -2.66
+    93.1,
+    1267.27,
+    -10.28
    ]
   },
   {
@@ -3074,11 +3074,11 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 183.653,
+   "kutle_g": 169.42,
    "merkez": [
-    -94.8,
-    1333.79,
-    -2.51
+    -96.53,
+    1267.77,
+    -9.88
    ]
   },
   {
@@ -3089,8 +3089,8 @@
    "kod": "PETG baski, 3,0 mm duvar",
    "kutle_g": 93.344,
    "merkez": [
-    0.0,
-    982.87,
+    -0.0,
+    912.87,
     -85.29
    ]
   },
@@ -3102,9 +3102,9 @@
    "kod": "PETG baski, 3,0 mm duvar",
    "kutle_g": 76.625,
    "merkez": [
-    0.0,
-    1186.86,
-    -83.41
+    -0.0,
+    1116.86,
+    -82.69
    ]
   },
   {
@@ -3239,6 +3239,45 @@
   },
   {
    "modul": "kabuk",
+   "ad": "Gogus ekrani cercevesi sag",
+   "grup": "Kabuk",
+   "tur": "Baski",
+   "kod": "PETG baski, 3,0 mm duvar",
+   "kutle_g": 29.534,
+   "merkez": [
+    101.41,
+    1118.06,
+    97.17
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Gogus ekrani cercevesi sol",
+   "grup": "Kabuk",
+   "tur": "Baski",
+   "kod": "PETG baski, 3,0 mm duvar",
+   "kutle_g": 29.534,
+   "merkez": [
+    -101.41,
+    1118.06,
+    97.17
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Gogus ekrani VESA tasiyici",
+   "grup": "Kabuk",
+   "tur": "Baski",
+   "kod": "PETG-CF baski",
+   "kutle_g": 107.727,
+   "merkez": [
+    -0.0,
+    1108.47,
+    47.89
+   ]
+  },
+  {
+   "modul": "kabuk",
    "ad": "S1 kaset govdesi sag",
    "grup": "Kabuk",
    "tur": "Baski",
@@ -3246,7 +3285,7 @@
    "kutle_g": 9.068,
    "merkez": [
     153.69,
-    1333.48,
+    1263.48,
     47.4
    ]
   },
@@ -3259,7 +3298,7 @@
    "kutle_g": 6.84,
    "merkez": [
     158.8,
-    1331.11,
+    1261.11,
     46.9
    ]
   },
@@ -3272,7 +3311,7 @@
    "kutle_g": 9.068,
    "merkez": [
     -153.69,
-    1333.48,
+    1263.48,
     47.4
    ]
   },
@@ -3285,7 +3324,7 @@
    "kutle_g": 6.84,
    "merkez": [
     -158.8,
-    1331.11,
+    1261.11,
     46.9
    ]
   },
@@ -3447,626 +3486,626 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y669 on)",
+   "ad": "Isil gomme somun M3 (govde y634 on)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
     47.85,
-    675.0,
+    640.0,
     80.65
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y669 on)",
+   "ad": "Bindirme civatasi M3x6 (govde y634 on)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
     47.85,
-    675.0,
+    640.0,
     83.85
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y669 on)",
+   "ad": "Isil gomme somun M3 (govde y634 on)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
     -47.85,
-    675.0,
+    640.0,
     80.65
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y669 on)",
+   "ad": "Bindirme civatasi M3x6 (govde y634 on)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
     -47.85,
-    675.0,
+    640.0,
     83.85
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y669 arka)",
+   "ad": "Isil gomme somun M3 (govde y634 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
     47.85,
-    675.0,
+    640.0,
     -80.65
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y669 arka)",
+   "ad": "Bindirme civatasi M3x6 (govde y634 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
     47.85,
-    675.0,
+    640.0,
     -83.85
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y669 arka)",
+   "ad": "Isil gomme somun M3 (govde y634 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
     -47.85,
-    675.0,
+    640.0,
     -80.65
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y669 arka)",
+   "ad": "Bindirme civatasi M3x6 (govde y634 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
     -47.85,
-    675.0,
+    640.0,
     -83.85
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y669 yan)",
+   "ad": "Isil gomme somun M3 (govde y634 yan)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
     120.65,
-    675.0,
+    640.0,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y669 yan)",
+   "ad": "Bindirme civatasi M3x6 (govde y634 yan)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
     123.85,
-    675.0,
+    640.0,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y669 yan)",
+   "ad": "Isil gomme somun M3 (govde y634 yan)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
     -120.65,
-    675.0,
+    640.0,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y669 yan)",
+   "ad": "Bindirme civatasi M3x6 (govde y634 yan)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
     -123.85,
-    675.0,
+    640.0,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y862 on)",
+   "ad": "Isil gomme somun M3 (govde y792 on)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
-    48.08,
-    867.54,
-    80.73
+    48.14,
+    797.55,
+    80.76
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y862 on)",
+   "ad": "Bindirme civatasi M3x6 (govde y792 on)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
-    48.08,
-    867.5,
-    83.94
+    48.14,
+    797.49,
+    83.96
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y862 on)",
+   "ad": "Isil gomme somun M3 (govde y792 on)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
-    -48.08,
-    867.54,
-    80.73
+    -48.14,
+    797.55,
+    80.76
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y862 on)",
+   "ad": "Bindirme civatasi M3x6 (govde y792 on)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
-    -48.08,
-    867.5,
-    83.94
+    -48.14,
+    797.49,
+    83.96
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y862 arka)",
+   "ad": "Isil gomme somun M3 (govde y792 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
-    48.08,
-    867.54,
+    48.14,
+    797.54,
     -80.73
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y862 arka)",
+   "ad": "Bindirme civatasi M3x6 (govde y792 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
-    48.08,
-    867.5,
+    48.14,
+    797.5,
     -83.94
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y862 arka)",
+   "ad": "Isil gomme somun M3 (govde y792 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
-    -48.08,
-    867.54,
+    -48.14,
+    797.54,
     -80.73
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y862 arka)",
+   "ad": "Bindirme civatasi M3x6 (govde y792 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
-    -48.08,
-    867.5,
+    -48.14,
+    797.5,
     -83.94
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y862 yan)",
+   "ad": "Isil gomme somun M3 (govde y792 yan)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
-    121.02,
-    867.67,
-    -0.0
+    121.12,
+    797.72,
+    0.01
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y862 yan)",
+   "ad": "Bindirme civatasi M3x6 (govde y792 yan)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
-    124.22,
-    867.48,
-    0.0
+    124.31,
+    797.47,
+    0.01
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y862 yan)",
+   "ad": "Isil gomme somun M3 (govde y792 yan)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
-    -121.02,
-    867.67,
-    0.0
+    -121.12,
+    797.72,
+    0.01
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y862 yan)",
+   "ad": "Bindirme civatasi M3x6 (govde y792 yan)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
-    -124.22,
-    867.48,
-    0.0
+    -124.31,
+    797.47,
+    0.01
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y1075 on)",
+   "ad": "Isil gomme somun M3 (govde y1005 on)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
-    58.08,
-    1082.68,
-    88.58
+    78.03,
+    1012.64,
+    119.9
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y1075 on)",
+   "ad": "Bindirme civatasi M3x6 (govde y1005 on)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
-    58.08,
-    1080.96,
-    90.94
+    78.03,
+    1010.95,
+    122.3
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y1075 on)",
+   "ad": "Isil gomme somun M3 (govde y1005 on)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
-    -58.08,
-    1082.68,
-    88.58
+    -78.03,
+    1012.64,
+    119.9
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y1075 on)",
+   "ad": "Bindirme civatasi M3x6 (govde y1005 on)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
-    -58.08,
-    1080.96,
-    90.94
+    -78.03,
+    1010.95,
+    122.3
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y1075 arka)",
+   "ad": "Isil gomme somun M3 (govde y1005 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
     98.0,
-    1081.0,
+    1011.0,
     -83.65
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y1075 arka)",
+   "ad": "Bindirme civatasi M3x6 (govde y1005 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
     98.0,
-    1081.0,
+    1011.0,
     -86.85
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y1075 arka)",
+   "ad": "Isil gomme somun M3 (govde y1005 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
     -98.0,
-    1081.0,
+    1011.0,
     -83.65
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y1075 arka)",
+   "ad": "Bindirme civatasi M3x6 (govde y1005 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
     -98.0,
-    1081.0,
+    1011.0,
     -86.85
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y1075 yan)",
+   "ad": "Isil gomme somun M3 (govde y1005 yan)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
-    134.62,
-    1081.44,
-    2.19
+    145.86,
+    1011.66,
+    17.87
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y1075 yan)",
+   "ad": "Bindirme civatasi M3x6 (govde y1005 yan)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
-    137.77,
-    1080.95,
-    2.19
+    148.94,
+    1010.93,
+    17.87
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y1075 yan)",
+   "ad": "Isil gomme somun M3 (govde y1005 yan)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
-    -134.62,
-    1081.44,
-    2.19
+    -145.86,
+    1011.66,
+    17.87
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y1075 yan)",
+   "ad": "Bindirme civatasi M3x6 (govde y1005 yan)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
-    -137.77,
-    1080.95,
-    2.19
+    -148.94,
+    1010.93,
+    17.87
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y1268 on)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
-   "merkez": [
-    74.44,
-    1273.26,
-    75.36
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y1268 on)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M3x6 ISO 7380",
-   "kutle_g": 0.634,
-   "merkez": [
-    74.44,
-    1274.08,
-    78.41
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y1268 on)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
-   "merkez": [
-    -74.44,
-    1273.26,
-    75.36
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y1268 on)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M3x6 ISO 7380",
-   "kutle_g": 0.634,
-   "merkez": [
-    -74.44,
-    1274.08,
-    78.41
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y1268 arka)",
+   "ad": "Isil gomme somun M3 (govde y1198 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
     93.0,
-    1273.87,
-    -76.41
+    1203.89,
+    -76.29
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y1268 arka)",
+   "ad": "Bindirme civatasi M3x6 (govde y1198 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
     93.0,
-    1274.02,
-    -79.6
+    1204.01,
+    -79.49
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y1268 arka)",
+   "ad": "Isil gomme somun M3 (govde y1198 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
     120.0,
-    1273.87,
-    -76.41
+    1203.89,
+    -76.29
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y1268 arka)",
+   "ad": "Bindirme civatasi M3x6 (govde y1198 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
     120.0,
-    1274.02,
-    -79.6
+    1204.01,
+    -79.49
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y1268 arka)",
+   "ad": "Isil gomme somun M3 (govde y1198 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
     -93.0,
-    1273.87,
-    -76.41
+    1203.89,
+    -76.29
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y1268 arka)",
+   "ad": "Bindirme civatasi M3x6 (govde y1198 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
     -93.0,
-    1274.02,
-    -79.6
+    1204.01,
+    -79.49
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde y1268 arka)",
+   "ad": "Isil gomme somun M3 (govde y1198 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
     -120.0,
-    1273.87,
-    -76.41
+    1203.89,
+    -76.29
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde y1268 arka)",
+   "ad": "Bindirme civatasi M3x6 (govde y1198 arka)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
     -120.0,
-    1274.02,
-    -79.6
+    1204.01,
+    -79.49
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (govde y1198 on)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    80.25,
+    1234.0,
+    70.98
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Bindirme civatasi M3x6 (govde y1198 on)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    80.24,
+    1234.0,
+    74.18
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (govde y1198 on)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -80.25,
+    1234.0,
+    70.98
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Bindirme civatasi M3x6 (govde y1198 on)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    -80.25,
+    1234.0,
+    74.18
    ]
   },
   {
@@ -4130,7 +4169,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -6.0,
-    523.75,
+    506.25,
     80.65
    ]
   },
@@ -4143,7 +4182,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -6.0,
-    523.75,
+    506.25,
     83.85
    ]
   },
@@ -4156,7 +4195,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -6.0,
-    633.75,
+    616.25,
     80.65
    ]
   },
@@ -4169,7 +4208,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -6.0,
-    633.75,
+    616.25,
     83.85
    ]
   },
@@ -4182,7 +4221,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -6.0,
-    716.25,
+    663.75,
     80.65
    ]
   },
@@ -4195,7 +4234,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -6.0,
-    716.25,
+    663.75,
     83.85
    ]
   },
@@ -4208,7 +4247,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -6.0,
-    826.25,
+    773.75,
     80.65
    ]
   },
@@ -4221,7 +4260,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -6.0,
-    826.25,
+    773.75,
     83.85
    ]
   },
@@ -4234,8 +4273,8 @@
    "kutle_g": 0.266,
    "merkez": [
     -6.0,
-    935.04,
-    81.68
+    865.05,
+    81.96
    ]
   },
   {
@@ -4247,8 +4286,8 @@
    "kutle_g": 0.634,
    "merkez": [
     -6.0,
-    935.0,
-    84.89
+    864.99,
+    85.16
    ]
   },
   {
@@ -4260,8 +4299,8 @@
    "kutle_g": 0.266,
    "merkez": [
     -6.0,
-    1025.04,
-    82.95
+    955.05,
+    83.56
    ]
   },
   {
@@ -4273,8 +4312,8 @@
    "kutle_g": 0.634,
    "merkez": [
     -6.0,
-    1025.0,
-    86.15
+    954.99,
+    86.76
    ]
   },
   {
@@ -4286,8 +4325,8 @@
    "kutle_g": 0.266,
    "merkez": [
     -6.0,
-    1125.26,
-    115.02
+    1021.97,
+    123.94
    ]
   },
   {
@@ -4299,8 +4338,8 @@
    "kutle_g": 0.634,
    "merkez": [
     -6.0,
-    1126.08,
-    118.07
+    1022.79,
+    126.99
    ]
   },
   {
@@ -4312,33 +4351,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -6.0,
-    1219.26,
-    89.83
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Bindirme civatasi M3x6 (govde x0 on)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M3x6 ISO 7380",
-   "kutle_g": 0.634,
-   "merkez": [
-    -6.0,
-    1220.08,
-    92.88
-   ]
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Isil gomme somun M3 (govde x0 on)",
-   "grup": "Kabuk",
-   "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
-   "merkez": [
-    -6.0,
-    1325.0,
+    1223.0,
     70.98
    ]
   },
@@ -4351,7 +4364,33 @@
    "kutle_g": 0.634,
    "merkez": [
     -6.0,
-    1325.0,
+    1223.0,
+    74.18
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (govde x0 on)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -6.0,
+    1255.0,
+    70.98
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Bindirme civatasi M3x6 (govde x0 on)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    -6.0,
+    1255.0,
     74.18
    ]
   },
@@ -4416,7 +4455,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -6.0,
-    523.75,
+    506.25,
     -80.65
    ]
   },
@@ -4429,7 +4468,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -6.0,
-    523.75,
+    506.25,
     -83.85
    ]
   },
@@ -4442,7 +4481,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -6.0,
-    633.75,
+    616.25,
     -80.65
    ]
   },
@@ -4455,7 +4494,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -6.0,
-    633.75,
+    616.25,
     -83.85
    ]
   },
@@ -4468,7 +4507,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -6.0,
-    716.25,
+    663.75,
     -80.65
    ]
   },
@@ -4481,7 +4520,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -6.0,
-    716.25,
+    663.75,
     -83.85
    ]
   },
@@ -4494,7 +4533,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -6.0,
-    826.25,
+    773.75,
     -80.65
    ]
   },
@@ -4507,7 +4546,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -6.0,
-    826.25,
+    773.75,
     -83.85
    ]
   },
@@ -4520,7 +4559,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -6.0,
-    1324.93,
+    1254.93,
     -74.78
    ]
   },
@@ -4533,7 +4572,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -6.0,
-    1325.01,
+    1255.01,
     -77.98
    ]
   },
@@ -4546,7 +4585,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -45.0,
-    891.04,
+    821.04,
     -81.06
    ]
   },
@@ -4559,7 +4598,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -45.0,
-    891.0,
+    821.0,
     -84.27
    ]
   },
@@ -4571,8 +4610,8 @@
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
-    0.0,
-    891.04,
+    -0.0,
+    821.04,
     -81.06
    ]
   },
@@ -4585,7 +4624,7 @@
    "kutle_g": 0.634,
    "merkez": [
     0.0,
-    891.0,
+    821.0,
     -84.27
    ]
   },
@@ -4598,7 +4637,7 @@
    "kutle_g": 0.266,
    "merkez": [
     45.0,
-    891.04,
+    821.04,
     -81.06
    ]
   },
@@ -4611,7 +4650,7 @@
    "kutle_g": 0.634,
    "merkez": [
     45.0,
-    891.0,
+    821.0,
     -84.27
    ]
   },
@@ -4624,7 +4663,7 @@
    "kutle_g": 0.266,
    "merkez": [
     74.0,
-    955.04,
+    885.04,
     -81.96
    ]
   },
@@ -4637,7 +4676,7 @@
    "kutle_g": 0.634,
    "merkez": [
     74.0,
-    955.0,
+    885.0,
     -85.17
    ]
   },
@@ -4650,7 +4689,7 @@
    "kutle_g": 0.266,
    "merkez": [
     74.0,
-    1035.04,
+    965.04,
     -83.09
    ]
   },
@@ -4663,7 +4702,7 @@
    "kutle_g": 0.634,
    "merkez": [
     74.0,
-    1035.0,
+    965.0,
     -86.29
    ]
   },
@@ -4676,8 +4715,8 @@
    "kutle_g": 0.266,
    "merkez": [
     -74.0,
-    955.04,
-    -81.96
+    886.04,
+    -81.98
    ]
   },
   {
@@ -4689,8 +4728,8 @@
    "kutle_g": 0.634,
    "merkez": [
     -74.0,
-    955.0,
-    -85.17
+    886.0,
+    -85.18
    ]
   },
   {
@@ -4702,7 +4741,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -74.0,
-    1035.04,
+    965.04,
     -83.09
    ]
   },
@@ -4715,7 +4754,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -74.0,
-    1035.0,
+    965.0,
     -86.29
    ]
   },
@@ -4728,8 +4767,8 @@
    "kutle_g": 0.266,
    "merkez": [
     -45.0,
-    1106.0,
-    -83.65
+    1035.89,
+    -82.97
    ]
   },
   {
@@ -4741,8 +4780,8 @@
    "kutle_g": 0.634,
    "merkez": [
     -45.0,
-    1106.0,
-    -86.85
+    1036.01,
+    -86.17
    ]
   },
   {
@@ -4754,8 +4793,8 @@
    "kutle_g": 0.266,
    "merkez": [
     0.0,
-    1106.0,
-    -83.65
+    1035.89,
+    -82.97
    ]
   },
   {
@@ -4767,8 +4806,8 @@
    "kutle_g": 0.634,
    "merkez": [
     -0.0,
-    1106.0,
-    -86.85
+    1036.01,
+    -86.17
    ]
   },
   {
@@ -4780,8 +4819,8 @@
    "kutle_g": 0.266,
    "merkez": [
     45.0,
-    1106.0,
-    -83.65
+    1035.89,
+    -82.97
    ]
   },
   {
@@ -4793,8 +4832,8 @@
    "kutle_g": 0.634,
    "merkez": [
     45.0,
-    1106.0,
-    -86.85
+    1036.01,
+    -86.17
    ]
   },
   {
@@ -4806,8 +4845,8 @@
    "kutle_g": 0.266,
    "merkez": [
     69.0,
-    1159.87,
-    -81.77
+    1089.89,
+    -80.82
    ]
   },
   {
@@ -4819,8 +4858,8 @@
    "kutle_g": 0.634,
    "merkez": [
     69.0,
-    1160.02,
-    -84.97
+    1090.01,
+    -84.02
    ]
   },
   {
@@ -4832,8 +4871,8 @@
    "kutle_g": 0.266,
    "merkez": [
     69.0,
-    1224.87,
-    -78.71
+    1154.89,
+    -78.24
    ]
   },
   {
@@ -4845,8 +4884,8 @@
    "kutle_g": 0.634,
    "merkez": [
     69.0,
-    1225.02,
-    -81.91
+    1155.01,
+    -81.44
    ]
   },
   {
@@ -4858,8 +4897,8 @@
    "kutle_g": 0.266,
    "merkez": [
     -69.0,
-    1159.87,
-    -81.77
+    1089.89,
+    -80.82
    ]
   },
   {
@@ -4871,8 +4910,8 @@
    "kutle_g": 0.634,
    "merkez": [
     -69.0,
-    1160.02,
-    -84.97
+    1090.01,
+    -84.02
    ]
   },
   {
@@ -4884,8 +4923,8 @@
    "kutle_g": 0.266,
    "merkez": [
     -69.0,
-    1224.87,
-    -78.71
+    1154.89,
+    -78.24
    ]
   },
   {
@@ -4897,8 +4936,8 @@
    "kutle_g": 0.634,
    "merkez": [
     -69.0,
-    1225.02,
-    -81.91
+    1155.01,
+    -81.44
    ]
   },
   {
@@ -5471,6 +5510,409 @@
     -223.22,
     200.07,
     -93.5
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+   "grup": "Kabuk",
+   "tur": "Satin",
+   "kod": "Waveshare 11.6inch HDMI LCD (H) with case, 1920x1080 IPS, 10 nokta kapasitif",
+   "kutle_g": 1079.0,
+   "merkez": [
+    -0.0,
+    1115.09,
+    86.1
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (gogus cercevesi)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    50.0,
+    1214.65,
+    70.81
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Cerceve civatasi M3x6 ISO 7380",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    50.0,
+    1215.83,
+    75.21
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (gogus cercevesi)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    50.0,
+    1021.22,
+    122.64
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Cerceve civatasi M3x6 ISO 7380",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    50.0,
+    1022.4,
+    127.04
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (gogus cercevesi)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    120.0,
+    1214.65,
+    70.81
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Cerceve civatasi M3x6 ISO 7380",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    120.0,
+    1215.83,
+    75.21
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (gogus cercevesi)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    120.0,
+    1021.22,
+    122.64
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Cerceve civatasi M3x6 ISO 7380",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    120.0,
+    1022.4,
+    127.04
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (gogus cercevesi)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -50.0,
+    1214.65,
+    70.81
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Cerceve civatasi M3x6 ISO 7380",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    -50.0,
+    1215.83,
+    75.21
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (gogus cercevesi)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -50.0,
+    1021.22,
+    122.64
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Cerceve civatasi M3x6 ISO 7380",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    -50.0,
+    1022.4,
+    127.04
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (gogus cercevesi)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -120.0,
+    1214.65,
+    70.81
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Cerceve civatasi M3x6 ISO 7380",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    -120.0,
+    1215.83,
+    75.21
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (gogus cercevesi)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -120.0,
+    1021.22,
+    122.64
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Cerceve civatasi M3x6 ISO 7380",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    -120.0,
+    1022.4,
+    127.04
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "VESA pulu M4",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M4 DIN 125 pul",
+   "kutle_g": 0.308,
+   "merkez": [
+    37.5,
+    1145.84,
+    55.97
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "VESA civatasi M4x12",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M4x12 DIN 912",
+   "kutle_g": 2.245,
+   "merkez": [
+    37.5,
+    1146.32,
+    57.77
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "VESA pulu M4",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M4 DIN 125 pul",
+   "kutle_g": 0.308,
+   "merkez": [
+    37.5,
+    1073.39,
+    75.38
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "VESA civatasi M4x12",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M4x12 DIN 912",
+   "kutle_g": 2.245,
+   "merkez": [
+    37.5,
+    1073.88,
+    77.18
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "VESA pulu M4",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M4 DIN 125 pul",
+   "kutle_g": 0.308,
+   "merkez": [
+    -37.5,
+    1145.84,
+    55.97
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "VESA civatasi M4x12",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M4x12 DIN 912",
+   "kutle_g": 2.245,
+   "merkez": [
+    -37.5,
+    1146.32,
+    57.77
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "VESA pulu M4",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M4 DIN 125 pul",
+   "kutle_g": 0.308,
+   "merkez": [
+    -37.5,
+    1073.39,
+    75.38
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "VESA civatasi M4x12",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M4x12 DIN 912",
+   "kutle_g": 2.245,
+   "merkez": [
+    -37.5,
+    1073.88,
+    77.18
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Tasiyici pulu M6",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M6 DIN 125 pul",
+   "kutle_g": 1.016,
+   "merkez": [
+    0.0,
+    1079.72,
+    26.8
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Tasiyici civatasi M6x18",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M6x18 DIN 912",
+   "kutle_g": 7.083,
+   "merkez": [
+    -0.0,
+    1079.72,
+    23.73
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Cekic somun M6 (direk on kanali)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M6 cekic somun, kanal 10",
+   "kutle_g": 5.17,
+   "merkez": [
+    -0.0,
+    1079.72,
+    13.2
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Tasiyici pulu M6",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M6 DIN 125 pul",
+   "kutle_g": 1.016,
+   "merkez": [
+    0.0,
+    1139.72,
+    26.8
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Tasiyici civatasi M6x18",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M6x18 DIN 912",
+   "kutle_g": 7.083,
+   "merkez": [
+    -0.0,
+    1139.72,
+    23.73
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Cekic somun M6 (direk on kanali)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M6 cekic somun, kanal 10",
+   "kutle_g": 5.17,
+   "merkez": [
+    -0.0,
+    1139.72,
+    13.2
    ]
   },
   {
@@ -5690,7 +6132,7 @@
    "kutle_g": 0.266,
    "merkez": [
     149.15,
-    1290.2,
+    1220.2,
     18.13
    ]
   },
@@ -5703,7 +6145,7 @@
    "kutle_g": 0.927,
    "merkez": [
     155.32,
-    1290.2,
+    1220.2,
     18.13
    ]
   },
@@ -5716,7 +6158,7 @@
    "kutle_g": 0.266,
    "merkez": [
     149.15,
-    1302.49,
+    1232.49,
     38.84
    ]
   },
@@ -5729,7 +6171,7 @@
    "kutle_g": 0.927,
    "merkez": [
     155.32,
-    1302.49,
+    1232.49,
     38.84
    ]
   },
@@ -5742,7 +6184,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -149.15,
-    1290.2,
+    1220.2,
     18.13
    ]
   },
@@ -5755,7 +6197,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -155.32,
-    1290.2,
+    1220.2,
     18.13
    ]
   },
@@ -5768,7 +6210,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -149.15,
-    1302.49,
+    1232.49,
     38.84
    ]
   },
@@ -5781,7 +6223,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -155.32,
-    1302.49,
+    1232.49,
     38.84
    ]
   },
@@ -5969,547 +6411,547 @@
   },
   {
    "modul": "kabuk",
-   "ad": "Govde braketi sag y548",
+   "ad": "Govde braketi sag y530",
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Govde braketi 3 mm Al U (bukum)",
    "kutle_g": 42.306,
    "merkez": [
     65.13,
-    559.65,
+    542.15,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M6x14 (Govde braketi sag y548)",
+   "ad": "Civata M6x14 (Govde braketi sag y530)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6x14 DIN 912",
    "kutle_g": 6.195,
    "merkez": [
     20.87,
-    562.75,
+    545.25,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Cekic somun M6 (Govde braketi sag y548)",
+   "ad": "Cekic somun M6 (Govde braketi sag y530)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6 cekic somun, kanal 10",
    "kutle_g": 5.17,
    "merkez": [
     13.2,
-    562.75,
+    545.25,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M6x14 (Govde braketi sag y548)",
+   "ad": "Civata M6x14 (Govde braketi sag y530)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6x14 DIN 912",
    "kutle_g": 6.195,
    "merkez": [
     20.87,
-    587.75,
+    570.25,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Cekic somun M6 (Govde braketi sag y548)",
+   "ad": "Cekic somun M6 (Govde braketi sag y530)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6 cekic somun, kanal 10",
    "kutle_g": 5.17,
    "merkez": [
     13.2,
-    587.75,
+    570.25,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M5x18 ISO 7380 (Govde braketi sag y548)",
+   "ad": "Civata M5x18 ISO 7380 (Govde braketi sag y530)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M5x18 ISO 7380",
    "kutle_g": 4.195,
    "merkez": [
     119.2,
-    572.75,
+    555.25,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Percin somun M5 (Govde braketi sag y548)",
+   "ad": "Percin somun M5 (Govde braketi sag y530)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M5 percin somun, duz flansli (3 mm Al)",
    "kutle_g": 2.0,
    "merkez": [
     111.79,
-    572.75,
+    555.25,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Govde braketi sol y548",
+   "ad": "Govde braketi sol y530",
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Govde braketi 3 mm Al U (bukum)",
    "kutle_g": 42.306,
    "merkez": [
     -65.13,
-    559.65,
+    542.15,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M6x14 (Govde braketi sol y548)",
+   "ad": "Civata M6x14 (Govde braketi sol y530)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6x14 DIN 912",
    "kutle_g": 6.195,
    "merkez": [
     -20.87,
-    562.75,
+    545.25,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Cekic somun M6 (Govde braketi sol y548)",
+   "ad": "Cekic somun M6 (Govde braketi sol y530)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6 cekic somun, kanal 10",
    "kutle_g": 5.17,
    "merkez": [
     -13.2,
-    562.75,
+    545.25,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M6x14 (Govde braketi sol y548)",
+   "ad": "Civata M6x14 (Govde braketi sol y530)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6x14 DIN 912",
    "kutle_g": 6.195,
    "merkez": [
     -20.87,
-    587.75,
+    570.25,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Cekic somun M6 (Govde braketi sol y548)",
+   "ad": "Cekic somun M6 (Govde braketi sol y530)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6 cekic somun, kanal 10",
    "kutle_g": 5.17,
    "merkez": [
     -13.2,
-    587.75,
+    570.25,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M5x18 ISO 7380 (Govde braketi sol y548)",
+   "ad": "Civata M5x18 ISO 7380 (Govde braketi sol y530)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M5x18 ISO 7380",
    "kutle_g": 4.195,
    "merkez": [
     -119.2,
-    572.75,
+    555.25,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Percin somun M5 (Govde braketi sol y548)",
+   "ad": "Percin somun M5 (Govde braketi sol y530)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M5 percin somun, duz flansli (3 mm Al)",
    "kutle_g": 2.0,
    "merkez": [
     -111.79,
-    572.75,
+    555.25,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Govde braketi sag y740",
+   "ad": "Govde braketi sag y688",
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Govde braketi 3 mm Al U (bukum)",
    "kutle_g": 42.306,
    "merkez": [
     65.13,
-    752.15,
+    699.65,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M6x14 (Govde braketi sag y740)",
+   "ad": "Civata M6x14 (Govde braketi sag y688)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6x14 DIN 912",
    "kutle_g": 6.195,
    "merkez": [
     20.87,
-    755.25,
+    702.75,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Cekic somun M6 (Govde braketi sag y740)",
+   "ad": "Cekic somun M6 (Govde braketi sag y688)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6 cekic somun, kanal 10",
    "kutle_g": 5.17,
    "merkez": [
     13.2,
-    755.25,
+    702.75,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M6x14 (Govde braketi sag y740)",
+   "ad": "Civata M6x14 (Govde braketi sag y688)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6x14 DIN 912",
    "kutle_g": 6.195,
    "merkez": [
     20.87,
-    780.25,
+    727.75,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Cekic somun M6 (Govde braketi sag y740)",
+   "ad": "Cekic somun M6 (Govde braketi sag y688)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6 cekic somun, kanal 10",
    "kutle_g": 5.17,
    "merkez": [
     13.2,
-    780.25,
+    727.75,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M5x18 ISO 7380 (Govde braketi sag y740)",
+   "ad": "Civata M5x18 ISO 7380 (Govde braketi sag y688)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M5x18 ISO 7380",
    "kutle_g": 4.195,
    "merkez": [
     119.2,
-    765.25,
+    712.75,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Percin somun M5 (Govde braketi sag y740)",
+   "ad": "Percin somun M5 (Govde braketi sag y688)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M5 percin somun, duz flansli (3 mm Al)",
    "kutle_g": 2.0,
    "merkez": [
     111.79,
-    765.25,
+    712.75,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Govde braketi sol y740",
+   "ad": "Govde braketi sol y688",
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Govde braketi 3 mm Al U (bukum)",
    "kutle_g": 42.306,
    "merkez": [
     -65.13,
-    752.15,
+    699.65,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M6x14 (Govde braketi sol y740)",
+   "ad": "Civata M6x14 (Govde braketi sol y688)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6x14 DIN 912",
    "kutle_g": 6.195,
    "merkez": [
     -20.87,
-    755.25,
+    702.75,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Cekic somun M6 (Govde braketi sol y740)",
+   "ad": "Cekic somun M6 (Govde braketi sol y688)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6 cekic somun, kanal 10",
    "kutle_g": 5.17,
    "merkez": [
     -13.2,
-    755.25,
+    702.75,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M6x14 (Govde braketi sol y740)",
+   "ad": "Civata M6x14 (Govde braketi sol y688)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6x14 DIN 912",
    "kutle_g": 6.195,
    "merkez": [
     -20.87,
-    780.25,
+    727.75,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Cekic somun M6 (Govde braketi sol y740)",
+   "ad": "Cekic somun M6 (Govde braketi sol y688)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6 cekic somun, kanal 10",
    "kutle_g": 5.17,
    "merkez": [
     -13.2,
-    780.25,
+    727.75,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M5x18 ISO 7380 (Govde braketi sol y740)",
+   "ad": "Civata M5x18 ISO 7380 (Govde braketi sol y688)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M5x18 ISO 7380",
    "kutle_g": 4.195,
    "merkez": [
     -119.2,
-    765.25,
+    712.75,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Percin somun M5 (Govde braketi sol y740)",
+   "ad": "Percin somun M5 (Govde braketi sol y688)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M5 percin somun, duz flansli (3 mm Al)",
    "kutle_g": 2.0,
    "merkez": [
     -111.79,
-    765.25,
+    712.75,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Govde braketi sag y1165",
+   "ad": "Govde braketi sag y1095",
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Govde braketi 3 mm Al U (bukum)",
-   "kutle_g": 47.826,
+   "kutle_g": 48.819,
    "merkez": [
-    76.32,
-    1175.7,
-    -0.0
+    78.34,
+    1105.52,
+    0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M6x14 (Govde braketi sag y1165)",
+   "ad": "Civata M6x14 (Govde braketi sag y1095)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6x14 DIN 912",
    "kutle_g": 6.195,
    "merkez": [
     20.87,
-    1180.0,
+    1110.0,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Cekic somun M6 (Govde braketi sag y1165)",
+   "ad": "Cekic somun M6 (Govde braketi sag y1095)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6 cekic somun, kanal 10",
    "kutle_g": 5.17,
    "merkez": [
     13.2,
-    1180.0,
+    1110.0,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M6x14 (Govde braketi sag y1165)",
+   "ad": "Civata M6x14 (Govde braketi sag y1095)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6x14 DIN 912",
    "kutle_g": 6.195,
    "merkez": [
     20.87,
-    1205.0,
+    1135.0,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Cekic somun M6 (Govde braketi sag y1165)",
+   "ad": "Cekic somun M6 (Govde braketi sag y1095)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6 cekic somun, kanal 10",
    "kutle_g": 5.17,
    "merkez": [
     13.2,
-    1205.0,
+    1135.0,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M5x18 ISO 7380 (Govde braketi sag y1165)",
+   "ad": "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M5x18 ISO 7380",
    "kutle_g": 4.195,
    "merkez": [
-    142.08,
-    1190.0,
+    146.2,
+    1120.0,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Percin somun M5 (Govde braketi sag y1165)",
+   "ad": "Percin somun M5 (Govde braketi sag y1095)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M5 percin somun, duz flansli (3 mm Al)",
    "kutle_g": 2.0,
    "merkez": [
-    134.67,
-    1190.0,
+    138.79,
+    1120.0,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Govde braketi sol y1165",
+   "ad": "Govde braketi sol y1095",
    "grup": "Kabuk",
    "tur": "Satin",
    "kod": "Govde braketi 3 mm Al U (bukum)",
-   "kutle_g": 47.826,
+   "kutle_g": 48.819,
    "merkez": [
-    -76.32,
-    1175.7,
+    -78.34,
+    1105.52,
     -0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M6x14 (Govde braketi sol y1165)",
+   "ad": "Civata M6x14 (Govde braketi sol y1095)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6x14 DIN 912",
    "kutle_g": 6.195,
    "merkez": [
     -20.87,
-    1180.0,
+    1110.0,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Cekic somun M6 (Govde braketi sol y1165)",
+   "ad": "Cekic somun M6 (Govde braketi sol y1095)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6 cekic somun, kanal 10",
    "kutle_g": 5.17,
    "merkez": [
     -13.2,
-    1180.0,
+    1110.0,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M6x14 (Govde braketi sol y1165)",
+   "ad": "Civata M6x14 (Govde braketi sol y1095)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6x14 DIN 912",
    "kutle_g": 6.195,
    "merkez": [
     -20.87,
-    1205.0,
+    1135.0,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Cekic somun M6 (Govde braketi sol y1165)",
+   "ad": "Cekic somun M6 (Govde braketi sol y1095)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M6 cekic somun, kanal 10",
    "kutle_g": 5.17,
    "merkez": [
     -13.2,
-    1205.0,
+    1135.0,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Civata M5x18 ISO 7380 (Govde braketi sol y1165)",
+   "ad": "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M5x18 ISO 7380",
    "kutle_g": 4.195,
    "merkez": [
-    -142.08,
-    1190.0,
+    -146.2,
+    1120.0,
     0.0
    ]
   },
   {
    "modul": "kabuk",
-   "ad": "Percin somun M5 (Govde braketi sol y1165)",
+   "ad": "Percin somun M5 (Govde braketi sol y1095)",
    "grup": "Kabuk",
    "tur": "Baglanti",
    "kod": "M5 percin somun, duz flansli (3 mm Al)",
    "kutle_g": 2.0,
    "merkez": [
-    -134.67,
-    1190.0,
+    -138.79,
+    1120.0,
     -0.0
    ]
   },
@@ -6990,7 +7432,7 @@
    "kutle_g": 92.78,
    "merkez": [
     188.19,
-    1168.28,
+    1098.28,
     -2.35
    ]
   },
@@ -7003,7 +7445,7 @@
    "kutle_g": 0.119,
    "merkez": [
     192.25,
-    1189.0,
+    1119.0,
     -37.25
    ]
   },
@@ -7016,7 +7458,7 @@
    "kutle_g": 1.593,
    "merkez": [
     185.96,
-    1189.0,
+    1119.0,
     -37.25
    ]
   },
@@ -7029,7 +7471,7 @@
    "kutle_g": 0.119,
    "merkez": [
     177.75,
-    1189.0,
+    1119.0,
     -37.25
    ]
   },
@@ -7042,7 +7484,7 @@
    "kutle_g": 0.601,
    "merkez": [
     175.5,
-    1189.0,
+    1119.0,
     -37.25
    ]
   },
@@ -7055,7 +7497,7 @@
    "kutle_g": 0.119,
    "merkez": [
     192.25,
-    1178.0,
+    1108.0,
     -37.25
    ]
   },
@@ -7068,7 +7510,7 @@
    "kutle_g": 1.593,
    "merkez": [
     185.96,
-    1178.0,
+    1108.0,
     -37.25
    ]
   },
@@ -7081,7 +7523,7 @@
    "kutle_g": 0.119,
    "merkez": [
     177.75,
-    1178.0,
+    1108.0,
     -37.25
    ]
   },
@@ -7094,7 +7536,7 @@
    "kutle_g": 0.601,
    "merkez": [
     175.5,
-    1178.0,
+    1108.0,
     -37.25
    ]
   },
@@ -7107,7 +7549,7 @@
    "kutle_g": 2.841,
    "merkez": [
     164.5,
-    1137.0,
+    1067.0,
     -1.25
    ]
   },
@@ -7120,7 +7562,7 @@
    "kutle_g": 3.87,
    "merkez": [
     218.25,
-    1137.0,
+    1067.0,
     -1.25
    ]
   },
@@ -7133,7 +7575,7 @@
    "kutle_g": 0.76,
    "merkez": [
     219.88,
-    1137.0,
+    1067.0,
     -1.25
    ]
   },
@@ -7146,7 +7588,7 @@
    "kutle_g": 1.149,
    "merkez": [
     226.01,
-    1143.01,
+    1073.01,
     -7.26
    ]
   },
@@ -7159,7 +7601,7 @@
    "kutle_g": 0.239,
    "merkez": [
     228.4,
-    1143.01,
+    1073.01,
     -7.26
    ]
   },
@@ -7172,7 +7614,7 @@
    "kutle_g": 1.149,
    "merkez": [
     226.01,
-    1143.01,
+    1073.01,
     4.76
    ]
   },
@@ -7185,7 +7627,7 @@
    "kutle_g": 0.239,
    "merkez": [
     228.4,
-    1143.01,
+    1073.01,
     4.76
    ]
   },
@@ -7198,7 +7640,7 @@
    "kutle_g": 1.149,
    "merkez": [
     226.01,
-    1130.99,
+    1060.99,
     4.76
    ]
   },
@@ -7211,7 +7653,7 @@
    "kutle_g": 0.239,
    "merkez": [
     228.4,
-    1130.99,
+    1060.99,
     4.76
    ]
   },
@@ -7224,7 +7666,7 @@
    "kutle_g": 1.149,
    "merkez": [
     226.01,
-    1130.99,
+    1060.99,
     -7.26
    ]
   },
@@ -7237,7 +7679,7 @@
    "kutle_g": 0.239,
    "merkez": [
     228.4,
-    1130.99,
+    1060.99,
     -7.26
    ]
   },
@@ -7250,7 +7692,7 @@
    "kutle_g": 54.112,
    "merkez": [
     188.99,
-    1090.34,
+    1020.34,
     2.72
    ]
   },
@@ -7263,7 +7705,7 @@
    "kutle_g": 1.302,
    "merkez": [
     164.5,
-    1137.0,
+    1067.0,
     -1.25
    ]
   },
@@ -7276,7 +7718,7 @@
    "kutle_g": 0.443,
    "merkez": [
     161.5,
-    1137.0,
+    1067.0,
     -1.25
    ]
   },
@@ -7289,7 +7731,7 @@
    "kutle_g": 3.751,
    "merkez": [
     162.78,
-    1137.0,
+    1067.0,
     -1.25
    ]
   },
@@ -7302,7 +7744,7 @@
    "kutle_g": 0.746,
    "merkez": [
     171.5,
-    1137.0,
+    1067.0,
     -1.25
    ]
   },
@@ -7315,7 +7757,7 @@
    "kutle_g": 55.0,
    "merkez": [
     195.45,
-    1126.85,
+    1056.85,
     -1.25
    ]
   },
@@ -7328,7 +7770,7 @@
    "kutle_g": 0.0,
    "merkez": [
     215.38,
-    1137.0,
+    1067.0,
     -1.25
    ]
   },
@@ -7341,7 +7783,7 @@
    "kutle_g": 2.64,
    "merkez": [
     202.08,
-    1102.1,
+    1032.1,
     3.75
    ]
   },
@@ -7354,59 +7796,7 @@
    "kutle_g": 1.172,
    "merkez": [
     196.1,
-    1102.1,
-    3.75
-   ]
-  },
-  {
-   "modul": "dirsek_sag",
-   "ad": "Dirsek servosu kulak civatasi M4x16",
-   "grup": "OnKol",
-   "tur": "Baglanti",
-   "kod": "M4x16 DIN 912",
-   "kutle_g": 2.64,
-   "merkez": [
-    202.08,
-    1102.1,
-    -6.25
-   ]
-  },
-  {
-   "modul": "dirsek_sag",
-   "ad": "Dirsek servosu kontra somunu M4",
-   "grup": "OnKol",
-   "tur": "Baglanti",
-   "kod": "M4 DIN 985 kontra somun",
-   "kutle_g": 1.172,
-   "merkez": [
-    196.1,
-    1102.1,
-    -6.25
-   ]
-  },
-  {
-   "modul": "dirsek_sag",
-   "ad": "Dirsek servosu kulak civatasi M4x16",
-   "grup": "OnKol",
-   "tur": "Baglanti",
-   "kod": "M4x16 DIN 912",
-   "kutle_g": 2.64,
-   "merkez": [
-    202.08,
-    1151.6,
-    3.75
-   ]
-  },
-  {
-   "modul": "dirsek_sag",
-   "ad": "Dirsek servosu kontra somunu M4",
-   "grup": "OnKol",
-   "tur": "Baglanti",
-   "kod": "M4 DIN 985 kontra somun",
-   "kutle_g": 1.172,
-   "merkez": [
-    196.1,
-    1151.6,
+    1032.1,
     3.75
    ]
   },
@@ -7419,7 +7809,7 @@
    "kutle_g": 2.64,
    "merkez": [
     202.08,
-    1151.6,
+    1032.1,
     -6.25
    ]
   },
@@ -7432,7 +7822,59 @@
    "kutle_g": 1.172,
    "merkez": [
     196.1,
-    1151.6,
+    1032.1,
+    -6.25
+   ]
+  },
+  {
+   "modul": "dirsek_sag",
+   "ad": "Dirsek servosu kulak civatasi M4x16",
+   "grup": "OnKol",
+   "tur": "Baglanti",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "merkez": [
+    202.08,
+    1081.6,
+    3.75
+   ]
+  },
+  {
+   "modul": "dirsek_sag",
+   "ad": "Dirsek servosu kontra somunu M4",
+   "grup": "OnKol",
+   "tur": "Baglanti",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.172,
+   "merkez": [
+    196.1,
+    1081.6,
+    3.75
+   ]
+  },
+  {
+   "modul": "dirsek_sag",
+   "ad": "Dirsek servosu kulak civatasi M4x16",
+   "grup": "OnKol",
+   "tur": "Baglanti",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "merkez": [
+    202.08,
+    1081.6,
+    -6.25
+   ]
+  },
+  {
+   "modul": "dirsek_sag",
+   "ad": "Dirsek servosu kontra somunu M4",
+   "grup": "OnKol",
+   "tur": "Baglanti",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.172,
+   "merkez": [
+    196.1,
+    1081.6,
     -6.25
    ]
   },
@@ -7445,7 +7887,7 @@
    "kutle_g": 55.0,
    "merkez": [
     195.15,
-    1042.65,
+    972.65,
     -1.25
    ]
   },
@@ -7458,7 +7900,7 @@
    "kutle_g": 0.0,
    "merkez": [
     185.0,
-    1022.72,
+    952.72,
     -1.25
    ]
   },
@@ -7471,7 +7913,7 @@
    "kutle_g": 2.64,
    "merkez": [
     219.9,
-    1036.02,
+    966.02,
     -6.25
    ]
   },
@@ -7484,7 +7926,7 @@
    "kutle_g": 1.172,
    "merkez": [
     219.9,
-    1042.0,
+    972.0,
     -6.25
    ]
   },
@@ -7497,7 +7939,7 @@
    "kutle_g": 2.64,
    "merkez": [
     219.9,
-    1036.02,
+    966.02,
     3.75
    ]
   },
@@ -7510,7 +7952,7 @@
    "kutle_g": 1.172,
    "merkez": [
     219.9,
-    1042.0,
+    972.0,
     3.75
    ]
   },
@@ -7523,7 +7965,7 @@
    "kutle_g": 2.64,
    "merkez": [
     170.4,
-    1036.02,
+    966.02,
     -6.25
    ]
   },
@@ -7536,7 +7978,7 @@
    "kutle_g": 1.172,
    "merkez": [
     170.4,
-    1042.0,
+    972.0,
     -6.25
    ]
   },
@@ -7549,7 +7991,7 @@
    "kutle_g": 2.64,
    "merkez": [
     170.4,
-    1036.02,
+    966.02,
     3.75
    ]
   },
@@ -7562,7 +8004,7 @@
    "kutle_g": 1.172,
    "merkez": [
     170.4,
-    1042.0,
+    972.0,
     3.75
    ]
   },
@@ -7575,7 +8017,7 @@
    "kutle_g": 3.87,
    "merkez": [
     185.0,
-    1019.85,
+    949.85,
     -1.25
    ]
   },
@@ -7588,7 +8030,7 @@
    "kutle_g": 0.76,
    "merkez": [
     185.0,
-    1018.22,
+    948.22,
     -1.25
    ]
   },
@@ -7601,7 +8043,7 @@
    "kutle_g": 4.027,
    "merkez": [
     185.0,
-    1014.23,
+    944.23,
     -1.25
    ]
   },
@@ -7614,7 +8056,7 @@
    "kutle_g": 0.927,
    "merkez": [
     178.99,
-    1015.38,
+    945.38,
     4.76
    ]
   },
@@ -7627,7 +8069,7 @@
    "kutle_g": 0.927,
    "merkez": [
     178.99,
-    1015.38,
+    945.38,
     -7.26
    ]
   },
@@ -7640,7 +8082,7 @@
    "kutle_g": 0.927,
    "merkez": [
     191.01,
-    1015.38,
+    945.38,
     -7.26
    ]
   },
@@ -7653,7 +8095,7 @@
    "kutle_g": 0.927,
    "merkez": [
     191.01,
-    1015.38,
+    945.38,
     4.76
    ]
   },
@@ -7666,7 +8108,7 @@
    "kutle_g": 74.806,
    "merkez": [
     182.34,
-    968.82,
+    898.82,
     -0.71
    ]
   },
@@ -7679,7 +8121,7 @@
    "kutle_g": 0.266,
    "merkez": [
     196.15,
-    1014.2,
+    944.2,
     -1.25
    ]
   },
@@ -7692,7 +8134,7 @@
    "kutle_g": 0.634,
    "merkez": [
     200.8,
-    1014.2,
+    944.2,
     -1.25
    ]
   },
@@ -7705,7 +8147,7 @@
    "kutle_g": 0.266,
    "merkez": [
     173.85,
-    1014.2,
+    944.2,
     -1.25
    ]
   },
@@ -7718,7 +8160,7 @@
    "kutle_g": 0.634,
    "merkez": [
     169.2,
-    1014.2,
+    944.2,
     -1.25
    ]
   },
@@ -7731,7 +8173,7 @@
    "kutle_g": 92.78,
    "merkez": [
     -188.19,
-    1168.28,
+    1098.28,
     -2.35
    ]
   },
@@ -7744,7 +8186,7 @@
    "kutle_g": 0.119,
    "merkez": [
     -192.25,
-    1189.0,
+    1119.0,
     -37.25
    ]
   },
@@ -7757,7 +8199,7 @@
    "kutle_g": 1.593,
    "merkez": [
     -185.96,
-    1189.0,
+    1119.0,
     -37.25
    ]
   },
@@ -7770,7 +8212,7 @@
    "kutle_g": 0.119,
    "merkez": [
     -177.75,
-    1189.0,
+    1119.0,
     -37.25
    ]
   },
@@ -7783,7 +8225,7 @@
    "kutle_g": 0.601,
    "merkez": [
     -175.5,
-    1189.0,
+    1119.0,
     -37.25
    ]
   },
@@ -7796,7 +8238,7 @@
    "kutle_g": 0.119,
    "merkez": [
     -192.25,
-    1178.0,
+    1108.0,
     -37.25
    ]
   },
@@ -7809,7 +8251,7 @@
    "kutle_g": 1.593,
    "merkez": [
     -185.96,
-    1178.0,
+    1108.0,
     -37.25
    ]
   },
@@ -7822,7 +8264,7 @@
    "kutle_g": 0.119,
    "merkez": [
     -177.75,
-    1178.0,
+    1108.0,
     -37.25
    ]
   },
@@ -7835,7 +8277,7 @@
    "kutle_g": 0.601,
    "merkez": [
     -175.5,
-    1178.0,
+    1108.0,
     -37.25
    ]
   },
@@ -7848,7 +8290,7 @@
    "kutle_g": 2.841,
    "merkez": [
     -164.5,
-    1137.0,
+    1067.0,
     -1.25
    ]
   },
@@ -7861,7 +8303,7 @@
    "kutle_g": 3.87,
    "merkez": [
     -218.25,
-    1137.0,
+    1067.0,
     -1.25
    ]
   },
@@ -7874,7 +8316,7 @@
    "kutle_g": 0.76,
    "merkez": [
     -219.88,
-    1137.0,
+    1067.0,
     -1.25
    ]
   },
@@ -7887,7 +8329,7 @@
    "kutle_g": 1.149,
    "merkez": [
     -226.01,
-    1143.01,
+    1073.01,
     -7.26
    ]
   },
@@ -7900,7 +8342,7 @@
    "kutle_g": 0.239,
    "merkez": [
     -228.4,
-    1143.01,
+    1073.01,
     -7.26
    ]
   },
@@ -7913,7 +8355,7 @@
    "kutle_g": 1.149,
    "merkez": [
     -226.01,
-    1143.01,
+    1073.01,
     4.76
    ]
   },
@@ -7926,7 +8368,7 @@
    "kutle_g": 0.239,
    "merkez": [
     -228.4,
-    1143.01,
+    1073.01,
     4.76
    ]
   },
@@ -7939,7 +8381,7 @@
    "kutle_g": 1.149,
    "merkez": [
     -226.01,
-    1130.99,
+    1060.99,
     4.76
    ]
   },
@@ -7952,7 +8394,7 @@
    "kutle_g": 0.239,
    "merkez": [
     -228.4,
-    1130.99,
+    1060.99,
     4.76
    ]
   },
@@ -7965,7 +8407,7 @@
    "kutle_g": 1.149,
    "merkez": [
     -226.01,
-    1130.99,
+    1060.99,
     -7.26
    ]
   },
@@ -7978,7 +8420,7 @@
    "kutle_g": 0.239,
    "merkez": [
     -228.4,
-    1130.99,
+    1060.99,
     -7.26
    ]
   },
@@ -7991,7 +8433,7 @@
    "kutle_g": 54.112,
    "merkez": [
     -188.99,
-    1090.34,
+    1020.34,
     2.72
    ]
   },
@@ -8004,7 +8446,7 @@
    "kutle_g": 1.302,
    "merkez": [
     -164.5,
-    1137.0,
+    1067.0,
     -1.25
    ]
   },
@@ -8017,7 +8459,7 @@
    "kutle_g": 0.443,
    "merkez": [
     -161.5,
-    1137.0,
+    1067.0,
     -1.25
    ]
   },
@@ -8030,7 +8472,7 @@
    "kutle_g": 3.751,
    "merkez": [
     -162.78,
-    1137.0,
+    1067.0,
     -1.25
    ]
   },
@@ -8043,7 +8485,7 @@
    "kutle_g": 0.746,
    "merkez": [
     -171.5,
-    1137.0,
+    1067.0,
     -1.25
    ]
   },
@@ -8056,7 +8498,7 @@
    "kutle_g": 55.0,
    "merkez": [
     -195.45,
-    1126.85,
+    1056.85,
     -1.25
    ]
   },
@@ -8069,7 +8511,7 @@
    "kutle_g": 0.0,
    "merkez": [
     -215.38,
-    1137.0,
+    1067.0,
     -1.25
    ]
   },
@@ -8082,7 +8524,7 @@
    "kutle_g": 2.64,
    "merkez": [
     -202.08,
-    1102.1,
+    1032.1,
     3.75
    ]
   },
@@ -8095,59 +8537,7 @@
    "kutle_g": 1.172,
    "merkez": [
     -196.1,
-    1102.1,
-    3.75
-   ]
-  },
-  {
-   "modul": "dirsek_sol",
-   "ad": "Dirsek servosu kulak civatasi M4x16",
-   "grup": "OnKol",
-   "tur": "Baglanti",
-   "kod": "M4x16 DIN 912",
-   "kutle_g": 2.64,
-   "merkez": [
-    -202.08,
-    1102.1,
-    -6.25
-   ]
-  },
-  {
-   "modul": "dirsek_sol",
-   "ad": "Dirsek servosu kontra somunu M4",
-   "grup": "OnKol",
-   "tur": "Baglanti",
-   "kod": "M4 DIN 985 kontra somun",
-   "kutle_g": 1.172,
-   "merkez": [
-    -196.1,
-    1102.1,
-    -6.25
-   ]
-  },
-  {
-   "modul": "dirsek_sol",
-   "ad": "Dirsek servosu kulak civatasi M4x16",
-   "grup": "OnKol",
-   "tur": "Baglanti",
-   "kod": "M4x16 DIN 912",
-   "kutle_g": 2.64,
-   "merkez": [
-    -202.08,
-    1151.6,
-    3.75
-   ]
-  },
-  {
-   "modul": "dirsek_sol",
-   "ad": "Dirsek servosu kontra somunu M4",
-   "grup": "OnKol",
-   "tur": "Baglanti",
-   "kod": "M4 DIN 985 kontra somun",
-   "kutle_g": 1.172,
-   "merkez": [
-    -196.1,
-    1151.6,
+    1032.1,
     3.75
    ]
   },
@@ -8160,7 +8550,7 @@
    "kutle_g": 2.64,
    "merkez": [
     -202.08,
-    1151.6,
+    1032.1,
     -6.25
    ]
   },
@@ -8173,7 +8563,59 @@
    "kutle_g": 1.172,
    "merkez": [
     -196.1,
-    1151.6,
+    1032.1,
+    -6.25
+   ]
+  },
+  {
+   "modul": "dirsek_sol",
+   "ad": "Dirsek servosu kulak civatasi M4x16",
+   "grup": "OnKol",
+   "tur": "Baglanti",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "merkez": [
+    -202.08,
+    1081.6,
+    3.75
+   ]
+  },
+  {
+   "modul": "dirsek_sol",
+   "ad": "Dirsek servosu kontra somunu M4",
+   "grup": "OnKol",
+   "tur": "Baglanti",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.172,
+   "merkez": [
+    -196.1,
+    1081.6,
+    3.75
+   ]
+  },
+  {
+   "modul": "dirsek_sol",
+   "ad": "Dirsek servosu kulak civatasi M4x16",
+   "grup": "OnKol",
+   "tur": "Baglanti",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "merkez": [
+    -202.08,
+    1081.6,
+    -6.25
+   ]
+  },
+  {
+   "modul": "dirsek_sol",
+   "ad": "Dirsek servosu kontra somunu M4",
+   "grup": "OnKol",
+   "tur": "Baglanti",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.172,
+   "merkez": [
+    -196.1,
+    1081.6,
     -6.25
    ]
   },
@@ -8186,7 +8628,7 @@
    "kutle_g": 55.0,
    "merkez": [
     -195.15,
-    1042.65,
+    972.65,
     -1.25
    ]
   },
@@ -8199,7 +8641,7 @@
    "kutle_g": 0.0,
    "merkez": [
     -185.0,
-    1022.72,
+    952.72,
     -1.25
    ]
   },
@@ -8212,7 +8654,7 @@
    "kutle_g": 2.64,
    "merkez": [
     -219.9,
-    1036.02,
+    966.02,
     -6.25
    ]
   },
@@ -8225,7 +8667,7 @@
    "kutle_g": 1.172,
    "merkez": [
     -219.9,
-    1042.0,
+    972.0,
     -6.25
    ]
   },
@@ -8238,7 +8680,7 @@
    "kutle_g": 2.64,
    "merkez": [
     -219.9,
-    1036.02,
+    966.02,
     3.75
    ]
   },
@@ -8251,7 +8693,7 @@
    "kutle_g": 1.172,
    "merkez": [
     -219.9,
-    1042.0,
+    972.0,
     3.75
    ]
   },
@@ -8264,7 +8706,7 @@
    "kutle_g": 2.64,
    "merkez": [
     -170.4,
-    1036.02,
+    966.02,
     -6.25
    ]
   },
@@ -8277,7 +8719,7 @@
    "kutle_g": 1.172,
    "merkez": [
     -170.4,
-    1042.0,
+    972.0,
     -6.25
    ]
   },
@@ -8290,7 +8732,7 @@
    "kutle_g": 2.64,
    "merkez": [
     -170.4,
-    1036.02,
+    966.02,
     3.75
    ]
   },
@@ -8303,7 +8745,7 @@
    "kutle_g": 1.172,
    "merkez": [
     -170.4,
-    1042.0,
+    972.0,
     3.75
    ]
   },
@@ -8316,7 +8758,7 @@
    "kutle_g": 3.87,
    "merkez": [
     -185.0,
-    1019.85,
+    949.85,
     -1.25
    ]
   },
@@ -8329,7 +8771,7 @@
    "kutle_g": 0.76,
    "merkez": [
     -185.0,
-    1018.22,
+    948.22,
     -1.25
    ]
   },
@@ -8342,7 +8784,7 @@
    "kutle_g": 4.027,
    "merkez": [
     -185.0,
-    1014.23,
+    944.23,
     -1.25
    ]
   },
@@ -8355,7 +8797,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -178.99,
-    1015.38,
+    945.38,
     4.76
    ]
   },
@@ -8368,7 +8810,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -178.99,
-    1015.38,
+    945.38,
     -7.26
    ]
   },
@@ -8381,7 +8823,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -191.01,
-    1015.38,
+    945.38,
     -7.26
    ]
   },
@@ -8394,7 +8836,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -191.01,
-    1015.38,
+    945.38,
     4.76
    ]
   },
@@ -8407,7 +8849,7 @@
    "kutle_g": 74.806,
    "merkez": [
     -182.34,
-    968.82,
+    898.82,
     -0.71
    ]
   },
@@ -8420,7 +8862,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -196.15,
-    1014.2,
+    944.2,
     -1.25
    ]
   },
@@ -8433,7 +8875,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -200.8,
-    1014.2,
+    944.2,
     -1.25
    ]
   },
@@ -8446,7 +8888,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -173.85,
-    1014.2,
+    944.2,
     -1.25
    ]
   },
@@ -8459,7 +8901,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -169.2,
-    1014.2,
+    944.2,
     -1.25
    ]
   },
@@ -8472,7 +8914,7 @@
    "kutle_g": 42.924,
    "merkez": [
     0.0,
-    1361.5,
+    1291.5,
     9.19
    ]
   },
@@ -8482,11 +8924,11 @@
    "grup": "Govde",
    "tur": "Baski",
    "kod": "Servo yuvasi",
-   "kutle_g": 144.511,
+   "kutle_g": 144.328,
    "merkez": [
-    0.19,
-    1383.49,
-    7.47
+    0.21,
+    1313.5,
+    7.52
    ]
   },
   {
@@ -8498,7 +8940,7 @@
    "kutle_g": 25.588,
    "merkez": [
     -0.0,
-    1424.34,
+    1354.34,
     1.15
    ]
   },
@@ -8511,7 +8953,7 @@
    "kutle_g": 13.921,
    "merkez": [
     -0.0,
-    1427.5,
+    1357.5,
     -0.0
    ]
   },
@@ -8524,7 +8966,7 @@
    "kutle_g": 13.921,
    "merkez": [
     -0.0,
-    1438.5,
+    1368.5,
     -0.0
    ]
   },
@@ -8537,7 +8979,7 @@
    "kutle_g": 55.0,
    "merkez": [
     -0.0,
-    1383.45,
+    1313.45,
     10.15
    ]
   },
@@ -8550,7 +8992,7 @@
    "kutle_g": 0.0,
    "merkez": [
     -0.0,
-    1403.38,
+    1333.38,
     -0.0
    ]
   },
@@ -8563,7 +9005,7 @@
    "kutle_g": 0.119,
    "merkez": [
     -5.0,
-    1394.35,
+    1324.35,
     34.9
    ]
   },
@@ -8576,7 +9018,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -5.0,
-    1393.42,
+    1323.42,
     34.9
    ]
   },
@@ -8589,7 +9031,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -5.0,
-    1388.75,
+    1318.75,
     34.9
    ]
   },
@@ -8602,7 +9044,7 @@
    "kutle_g": 0.119,
    "merkez": [
     5.0,
-    1394.35,
+    1324.35,
     34.9
    ]
   },
@@ -8615,7 +9057,7 @@
    "kutle_g": 0.927,
    "merkez": [
     5.0,
-    1393.42,
+    1323.42,
     34.9
    ]
   },
@@ -8628,7 +9070,7 @@
    "kutle_g": 0.266,
    "merkez": [
     5.0,
-    1388.75,
+    1318.75,
     34.9
    ]
   },
@@ -8641,7 +9083,7 @@
    "kutle_g": 0.119,
    "merkez": [
     -5.0,
-    1394.35,
+    1324.35,
     -14.6
    ]
   },
@@ -8654,7 +9096,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -5.0,
-    1393.42,
+    1323.42,
     -14.6
    ]
   },
@@ -8667,7 +9109,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -5.0,
-    1388.75,
+    1318.75,
     -14.6
    ]
   },
@@ -8680,7 +9122,7 @@
    "kutle_g": 0.119,
    "merkez": [
     5.0,
-    1394.35,
+    1324.35,
     -14.6
    ]
   },
@@ -8693,7 +9135,7 @@
    "kutle_g": 0.927,
    "merkez": [
     5.0,
-    1393.42,
+    1323.42,
     -14.6
    ]
   },
@@ -8706,7 +9148,7 @@
    "kutle_g": 0.266,
    "merkez": [
     5.0,
-    1388.75,
+    1318.75,
     -14.6
    ]
   },
@@ -8719,7 +9161,7 @@
    "kutle_g": 1.016,
    "merkez": [
     40.0,
-    1368.8,
+    1298.8,
     0.0
    ]
   },
@@ -8732,7 +9174,7 @@
    "kutle_g": 7.526,
    "merkez": [
     40.0,
-    1364.84,
+    1294.84,
     0.0
    ]
   },
@@ -8745,7 +9187,7 @@
    "kutle_g": 5.17,
    "merkez": [
     40.0,
-    1353.2,
+    1283.2,
     0.0
    ]
   },
@@ -8758,7 +9200,7 @@
    "kutle_g": 1.016,
    "merkez": [
     -40.0,
-    1368.8,
+    1298.8,
     0.0
    ]
   },
@@ -8771,7 +9213,7 @@
    "kutle_g": 7.526,
    "merkez": [
     -40.0,
-    1364.84,
+    1294.84,
     0.0
    ]
   },
@@ -8784,7 +9226,7 @@
    "kutle_g": 5.17,
    "merkez": [
     -40.0,
-    1353.2,
+    1283.2,
     0.0
    ]
   },
@@ -8797,7 +9239,7 @@
    "kutle_g": 1.038,
    "merkez": [
     24.0,
-    1409.98,
+    1339.98,
     32.0
    ]
   },
@@ -8810,7 +9252,7 @@
    "kutle_g": 0.266,
    "merkez": [
     24.0,
-    1403.15,
+    1333.15,
     32.0
    ]
   },
@@ -8823,7 +9265,7 @@
    "kutle_g": 1.038,
    "merkez": [
     -24.0,
-    1409.98,
+    1339.98,
     32.0
    ]
   },
@@ -8836,7 +9278,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -24.0,
-    1403.15,
+    1333.15,
     32.0
    ]
   },
@@ -8849,7 +9291,7 @@
    "kutle_g": 1.038,
    "merkez": [
     24.0,
-    1409.98,
+    1339.98,
     -24.0
    ]
   },
@@ -8862,7 +9304,7 @@
    "kutle_g": 0.266,
    "merkez": [
     24.0,
-    1403.15,
+    1333.15,
     -24.0
    ]
   },
@@ -8875,7 +9317,7 @@
    "kutle_g": 1.038,
    "merkez": [
     -24.0,
-    1409.98,
+    1339.98,
     -24.0
    ]
   },
@@ -8888,7 +9330,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -24.0,
-    1403.15,
+    1333.15,
     -24.0
    ]
   },
@@ -8901,7 +9343,7 @@
    "kutle_g": 3.87,
    "merkez": [
     -0.0,
-    1406.25,
+    1336.25,
     0.0
    ]
   },
@@ -8914,7 +9356,7 @@
    "kutle_g": 0.76,
    "merkez": [
     0.0,
-    1407.88,
+    1337.88,
     -0.0
    ]
   },
@@ -8924,11 +9366,11 @@
    "grup": "Boyun",
    "tur": "Baski",
    "kod": "Boyun mili",
-   "kutle_g": 38.902,
+   "kutle_g": 38.726,
    "merkez": [
-    -0.0,
-    1436.92,
-    0.26
+    0.0,
+    1367.01,
+    0.33
    ]
   },
   {
@@ -8940,7 +9382,7 @@
    "kutle_g": 0.927,
    "merkez": [
     6.01,
-    1411.72,
+    1341.72,
     -6.01
    ]
   },
@@ -8953,7 +9395,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -6.01,
-    1411.72,
+    1341.72,
     -6.01
    ]
   },
@@ -8966,7 +9408,7 @@
    "kutle_g": 0.927,
    "merkez": [
     -6.01,
-    1411.72,
+    1341.72,
     6.01
    ]
   },
@@ -8979,7 +9421,7 @@
    "kutle_g": 0.927,
    "merkez": [
     6.01,
-    1411.72,
+    1341.72,
     6.01
    ]
   },
@@ -8992,7 +9434,7 @@
    "kutle_g": 16.795,
    "merkez": [
     -0.0,
-    1427.5,
+    1357.5,
     0.0
    ]
   },
@@ -9005,7 +9447,7 @@
    "kutle_g": 16.795,
    "merkez": [
     -0.0,
-    1438.5,
+    1368.5,
     0.0
    ]
   },
@@ -9018,7 +9460,7 @@
    "kutle_g": 34.392,
    "merkez": [
     -4.89,
-    1530.17,
+    1460.79,
     20.43
    ]
   },
@@ -9031,7 +9473,7 @@
    "kutle_g": 0.266,
    "merkez": [
     25.0,
-    1453.15,
+    1383.15,
     0.0
    ]
   },
@@ -9044,7 +9486,7 @@
    "kutle_g": 0.266,
    "merkez": [
     0.0,
-    1453.15,
+    1383.15,
     25.0
    ]
   },
@@ -9057,7 +9499,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -25.0,
-    1453.15,
+    1383.15,
     0.0
    ]
   },
@@ -9070,7 +9512,7 @@
    "kutle_g": 0.266,
    "merkez": [
     0.0,
-    1453.15,
+    1383.15,
     -25.0
    ]
   },
@@ -9083,7 +9525,7 @@
    "kutle_g": 55.0,
    "merkez": [
     5.75,
-    1548.26,
+    1478.88,
     14.85
    ]
   },
@@ -9096,7 +9538,7 @@
    "kutle_g": 0.0,
    "merkez": [
     25.68,
-    1548.26,
+    1478.88,
     25.0
    ]
   },
@@ -9109,7 +9551,7 @@
    "kutle_g": 2.64,
    "merkez": [
     12.38,
-    1543.25,
+    1473.88,
     -9.9
    ]
   },
@@ -9122,33 +9564,7 @@
    "kutle_g": 1.172,
    "merkez": [
     6.4,
-    1543.26,
-    -9.9
-   ]
-  },
-  {
-   "modul": "kafa",
-   "ad": "Tilt servosu kulak civatasi M4x16",
-   "grup": "Boyun",
-   "tur": "Baglanti",
-   "kod": "M4x16 DIN 912",
-   "kutle_g": 2.64,
-   "merkez": [
-    12.38,
-    1553.26,
-    -9.9
-   ]
-  },
-  {
-   "modul": "kafa",
-   "ad": "Tilt servosu kontra somunu M4",
-   "grup": "Boyun",
-   "tur": "Baglanti",
-   "kod": "M4 DIN 985 kontra somun",
-   "kutle_g": 1.172,
-   "merkez": [
-    6.4,
-    1553.26,
+    1473.88,
     -9.9
    ]
   },
@@ -9161,7 +9577,33 @@
    "kutle_g": 2.64,
    "merkez": [
     12.38,
-    1543.25,
+    1483.88,
+    -9.9
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Tilt servosu kontra somunu M4",
+   "grup": "Boyun",
+   "tur": "Baglanti",
+   "kod": "M4 DIN 985 kontra somun",
+   "kutle_g": 1.172,
+   "merkez": [
+    6.4,
+    1483.88,
+    -9.9
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Tilt servosu kulak civatasi M4x16",
+   "grup": "Boyun",
+   "tur": "Baglanti",
+   "kod": "M4x16 DIN 912",
+   "kutle_g": 2.64,
+   "merkez": [
+    12.38,
+    1473.88,
     39.6
    ]
   },
@@ -9174,7 +9616,7 @@
    "kutle_g": 1.172,
    "merkez": [
     6.4,
-    1543.26,
+    1473.88,
     39.6
    ]
   },
@@ -9187,7 +9629,7 @@
    "kutle_g": 2.64,
    "merkez": [
     12.38,
-    1553.25,
+    1483.88,
     39.6
    ]
   },
@@ -9200,7 +9642,7 @@
    "kutle_g": 1.172,
    "merkez": [
     6.4,
-    1553.26,
+    1483.88,
     39.6
    ]
   },
@@ -9213,7 +9655,7 @@
    "kutle_g": 1.302,
    "merkez": [
     -26.7,
-    1548.26,
+    1478.88,
     25.0
    ]
   },
@@ -9226,7 +9668,7 @@
    "kutle_g": 0.443,
    "merkez": [
     -29.7,
-    1548.26,
+    1478.88,
     25.0
    ]
   },
@@ -9239,7 +9681,7 @@
    "kutle_g": 3.751,
    "merkez": [
     -28.42,
-    1548.26,
+    1478.88,
     25.0
    ]
   },
@@ -9252,7 +9694,7 @@
    "kutle_g": 0.746,
    "merkez": [
     -19.7,
-    1548.26,
+    1478.88,
     25.0
    ]
   },
@@ -9262,10 +9704,10 @@
    "grup": "Boyun",
    "tur": "Baski",
    "kod": "Boyun yukseltme adaptoru (PETG-CF baski)",
-   "kutle_g": 66.366,
+   "kutle_g": 66.9,
    "merkez": [
     0.0,
-    1486.66,
+    1416.98,
     -0.0
    ]
   },
@@ -9275,10 +9717,10 @@
    "grup": "Boyun",
    "tur": "Baglanti",
    "kod": "M3 saplama DIN 976, 73 mm (kesilir)",
-   "kutle_g": 4.009,
+   "kutle_g": 4.044,
    "merkez": [
     25.0,
-    1486.63,
+    1416.94,
     -0.0
    ]
   },
@@ -9291,7 +9733,7 @@
    "kutle_g": 0.119,
    "merkez": [
     25.0,
-    1517.51,
+    1448.13,
     0.0
    ]
   },
@@ -9304,7 +9746,7 @@
    "kutle_g": 0.601,
    "merkez": [
     25.0,
-    1519.76,
+    1450.38,
     0.0
    ]
   },
@@ -9314,10 +9756,10 @@
    "grup": "Boyun",
    "tur": "Baglanti",
    "kod": "M3 saplama DIN 976, 73 mm (kesilir)",
-   "kutle_g": 4.009,
+   "kutle_g": 4.044,
    "merkez": [
     0.0,
-    1486.63,
+    1416.94,
     25.0
    ]
   },
@@ -9330,7 +9772,7 @@
    "kutle_g": 0.119,
    "merkez": [
     -0.0,
-    1517.51,
+    1448.13,
     25.0
    ]
   },
@@ -9343,7 +9785,7 @@
    "kutle_g": 0.601,
    "merkez": [
     -0.0,
-    1519.75,
+    1450.38,
     25.0
    ]
   },
@@ -9353,10 +9795,10 @@
    "grup": "Boyun",
    "tur": "Baglanti",
    "kod": "M3 saplama DIN 976, 73 mm (kesilir)",
-   "kutle_g": 4.009,
+   "kutle_g": 4.044,
    "merkez": [
     -25.0,
-    1486.63,
+    1416.94,
     -0.0
    ]
   },
@@ -9369,7 +9811,7 @@
    "kutle_g": 0.119,
    "merkez": [
     -25.0,
-    1517.51,
+    1448.13,
     0.0
    ]
   },
@@ -9382,7 +9824,7 @@
    "kutle_g": 0.601,
    "merkez": [
     -25.0,
-    1519.76,
+    1450.38,
     0.0
    ]
   },
@@ -9392,10 +9834,10 @@
    "grup": "Boyun",
    "tur": "Baglanti",
    "kod": "M3 saplama DIN 976, 73 mm (kesilir)",
-   "kutle_g": 4.009,
+   "kutle_g": 4.044,
    "merkez": [
     0.0,
-    1486.63,
+    1416.94,
     -25.0
    ]
   },
@@ -9408,7 +9850,7 @@
    "kutle_g": 0.119,
    "merkez": [
     -0.0,
-    1517.51,
+    1448.13,
     -25.0
    ]
   },
@@ -9421,7 +9863,7 @@
    "kutle_g": 0.601,
    "merkez": [
     -0.0,
-    1519.75,
+    1450.38,
     -25.0
    ]
   },
@@ -9431,11 +9873,11 @@
    "grup": "Bas",
    "tur": "Baski",
    "kod": "PETG baski, 2,5 mm duvar",
-   "kutle_g": 89.142,
+   "kutle_g": 86.594,
    "merkez": [
-    87.2,
-    1550.7,
-    61.51
+    85.75,
+    1479.61,
+    61.42
    ]
   },
   {
@@ -9444,11 +9886,11 @@
    "grup": "Bas",
    "tur": "Baski",
    "kod": "PETG baski, 2,5 mm duvar",
-   "kutle_g": 82.952,
+   "kutle_g": 80.382,
    "merkez": [
-    -93.7,
-    1548.77,
-    61.29
+    -92.38,
+    1477.74,
+    61.17
    ]
   },
   {
@@ -9460,7 +9902,7 @@
    "kutle_g": 218.249,
    "merkez": [
     87.73,
-    1550.32,
+    1480.35,
     -31.45
    ]
   },
@@ -9473,20 +9915,20 @@
    "kutle_g": 205.114,
    "merkez": [
     -93.32,
-    1548.33,
+    1478.36,
     -30.64
    ]
   },
   {
    "modul": "kafa",
-   "ad": "Kafa iskeleti (10 in)",
+   "ad": "Kafa iskeleti",
    "grup": "Bas",
    "tur": "Baski",
-   "kod": "Kafa iskeleti (10 in)",
+   "kod": "Kafa iskeleti",
    "kutle_g": 121.389,
    "merkez": [
     -0.87,
-    1574.52,
+    1505.14,
     3.81
    ]
   },
@@ -9499,7 +9941,7 @@
    "kutle_g": 1.038,
    "merkez": [
     106.0,
-    1578.24,
+    1508.86,
     10.0
    ]
   },
@@ -9512,7 +9954,7 @@
    "kutle_g": 0.266,
    "merkez": [
     106.0,
-    1572.4,
+    1503.03,
     10.0
    ]
   },
@@ -9525,7 +9967,7 @@
    "kutle_g": 1.038,
    "merkez": [
     106.0,
-    1578.24,
+    1508.86,
     -49.89
    ]
   },
@@ -9538,7 +9980,7 @@
    "kutle_g": 0.266,
    "merkez": [
     106.0,
-    1572.4,
+    1503.03,
     -49.89
    ]
   },
@@ -9551,7 +9993,7 @@
    "kutle_g": 1.038,
    "merkez": [
     -106.0,
-    1578.24,
+    1508.86,
     10.0
    ]
   },
@@ -9564,7 +10006,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -106.0,
-    1572.4,
+    1503.03,
     10.0
    ]
   },
@@ -9577,7 +10019,7 @@
    "kutle_g": 1.038,
    "merkez": [
     -106.0,
-    1578.24,
+    1508.86,
     -49.89
    ]
   },
@@ -9590,7 +10032,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -106.0,
-    1572.4,
+    1503.03,
     -49.89
    ]
   },
@@ -9603,7 +10045,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -8.0,
-    1645.4,
+    1575.4,
     56.5
    ]
   },
@@ -9616,7 +10058,7 @@
    "kutle_g": 0.579,
    "merkez": [
     -8.0,
-    1647.54,
+    1577.54,
     56.5
    ]
   },
@@ -9629,7 +10071,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -8.0,
-    1445.0,
+    1375.0,
     67.9
    ]
   },
@@ -9642,7 +10084,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -8.0,
-    1445.0,
+    1375.0,
     70.85
    ]
   },
@@ -9655,7 +10097,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -8.0,
-    1645.4,
+    1575.4,
     -14.95
    ]
   },
@@ -9668,7 +10110,7 @@
    "kutle_g": 0.579,
    "merkez": [
     -8.0,
-    1647.54,
+    1577.54,
     -14.95
    ]
   },
@@ -9681,7 +10123,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -8.0,
-    1608.26,
+    1538.88,
     -60.79
    ]
   },
@@ -9694,7 +10136,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -8.0,
-    1608.26,
+    1538.88,
     -63.75
    ]
   },
@@ -9707,7 +10149,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -8.0,
-    1498.26,
+    1428.88,
     -60.79
    ]
   },
@@ -9720,7 +10162,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -8.0,
-    1498.25,
+    1428.88,
     -63.75
    ]
   },
@@ -9733,7 +10175,7 @@
    "kutle_g": 0.266,
    "merkez": [
     129.65,
-    1488.26,
+    1418.88,
     38.0
    ]
   },
@@ -9746,7 +10188,7 @@
    "kutle_g": 0.634,
    "merkez": [
     133.85,
-    1488.26,
+    1418.88,
     38.0
    ]
   },
@@ -9759,7 +10201,7 @@
    "kutle_g": 0.266,
    "merkez": [
     129.65,
-    1618.26,
+    1548.88,
     38.0
    ]
   },
@@ -9772,7 +10214,7 @@
    "kutle_g": 0.634,
    "merkez": [
     133.85,
-    1618.25,
+    1548.88,
     38.0
    ]
   },
@@ -9785,7 +10227,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -129.65,
-    1488.26,
+    1418.88,
     38.0
    ]
   },
@@ -9798,7 +10240,7 @@
    "kutle_g": 0.634,
    "merkez": [
     -133.85,
-    1488.25,
+    1418.88,
     38.0
    ]
   },
@@ -9811,7 +10253,7 @@
    "kutle_g": 0.266,
    "merkez": [
     -129.65,
-    1618.26,
+    1548.88,
     38.0
    ]
   },
@@ -9824,125 +10266,60 @@
    "kutle_g": 0.634,
    "merkez": [
     -133.85,
-    1618.26,
+    1548.88,
     38.0
    ]
   },
   {
    "modul": "kafa",
-   "ad": "Yuz ekrani 10,1 in HDMI 1280x800 (tahmini model)",
+   "ad": "Yuz ekrani WaveShare 10,1in QLED HDMI",
    "grup": "Bas",
    "tur": "Satin",
-   "kod": "Waveshare 10.1inch HDMI LCD (B) 1280x800 (TAHMINI MODEL: hocanin verecegi ekran gelince olculecek)",
+   "kod": "WaveShare 10.1HP-CAPQLED 10,1 in QLED 1280x720 HDMI kapasitif (kod 20789)",
    "kutle_g": 600.0,
    "merkez": [
-    4.64,
-    1535.0,
-    64.21
+    0.97,
+    1463.31,
+    65.83
    ]
   },
   {
    "modul": "kafa",
-   "ad": "Ekran tutucu tirnak (ust sol)",
+   "ad": "Ekran tirnagi ust sag",
    "grup": "Bas",
    "tur": "Baski",
-   "kod": "Ekran tutucu tirnak (ust sol)",
-   "kutle_g": 1.313,
+   "kod": "Ekran tirnagi (PETG baski)",
+   "kutle_g": 1.492,
    "merkez": [
-    -80.0,
-    1620.65,
-    59.17
+    85.0,
+    1542.18,
+    62.52
    ]
   },
   {
    "modul": "kafa",
-   "ad": "Tirnak civatasi M3x8 ISO 7380 (ust sol)",
+   "ad": "Kopuk bant (tirnak ust sag)",
+   "grup": "Bas",
+   "tur": "Satin",
+   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
+   "kutle_g": 0.01,
+   "merkez": [
+    85.0,
+    1538.66,
+    68.1
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Tirnak civatasi M3x6 ISO 7380 (ust sag)",
    "grup": "Bas",
    "tur": "Baglanti",
-   "kod": "M3x8 ISO 7380",
-   "kutle_g": 0.745,
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
    "merkez": [
-    -80.0,
-    1626.8,
-    58.06
-   ]
-  },
-  {
-   "modul": "kafa",
-   "ad": "Isil gomme somun M3 (tirnak boss ust sol)",
-   "grup": "Bas",
-   "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
-   "merkez": [
-    -80.0,
-    1626.8,
-    61.85
-   ]
-  },
-  {
-   "modul": "kafa",
-   "ad": "Ekran tutucu tirnak (alt sol)",
-   "grup": "Bas",
-   "tur": "Baski",
-   "kod": "Ekran tutucu tirnak (alt sol)",
-   "kutle_g": 1.313,
-   "merkez": [
-    -80.0,
-    1449.35,
-    59.17
-   ]
-  },
-  {
-   "modul": "kafa",
-   "ad": "Tirnak civatasi M3x8 ISO 7380 (alt sol)",
-   "grup": "Bas",
-   "tur": "Baglanti",
-   "kod": "M3x8 ISO 7380",
-   "kutle_g": 0.745,
-   "merkez": [
-    -80.0,
-    1443.2,
-    58.06
-   ]
-  },
-  {
-   "modul": "kafa",
-   "ad": "Isil gomme somun M3 (tirnak boss alt sol)",
-   "grup": "Bas",
-   "tur": "Baglanti",
-   "kod": "M3 isil gomme somun",
-   "kutle_g": 0.266,
-   "merkez": [
-    -80.0,
-    1443.2,
-    61.85
-   ]
-  },
-  {
-   "modul": "kafa",
-   "ad": "Ekran tutucu tirnak (ust sag)",
-   "grup": "Bas",
-   "tur": "Baski",
-   "kod": "Ekran tutucu tirnak (ust sag)",
-   "kutle_g": 1.313,
-   "merkez": [
-    80.0,
-    1620.65,
-    59.17
-   ]
-  },
-  {
-   "modul": "kafa",
-   "ad": "Tirnak civatasi M3x8 ISO 7380 (ust sag)",
-   "grup": "Bas",
-   "tur": "Baglanti",
-   "kod": "M3x8 ISO 7380",
-   "kutle_g": 0.745,
-   "merkez": [
-    80.0,
-    1626.8,
-    58.06
+    85.0,
+    1546.04,
+    61.0
    ]
   },
   {
@@ -9953,35 +10330,100 @@
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
-    80.0,
-    1626.8,
-    61.85
+    85.0,
+    1546.04,
+    65.65
    ]
   },
   {
    "modul": "kafa",
-   "ad": "Ekran tutucu tirnak (alt sag)",
+   "ad": "Ekran tirnagi ust sol",
    "grup": "Bas",
    "tur": "Baski",
-   "kod": "Ekran tutucu tirnak (alt sag)",
-   "kutle_g": 1.313,
+   "kod": "Ekran tirnagi (PETG baski)",
+   "kutle_g": 1.492,
    "merkez": [
-    80.0,
-    1449.35,
-    59.17
+    -85.0,
+    1542.18,
+    62.52
    ]
   },
   {
    "modul": "kafa",
-   "ad": "Tirnak civatasi M3x8 ISO 7380 (alt sag)",
+   "ad": "Kopuk bant (tirnak ust sol)",
+   "grup": "Bas",
+   "tur": "Satin",
+   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
+   "kutle_g": 0.01,
+   "merkez": [
+    -85.0,
+    1538.66,
+    68.1
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Tirnak civatasi M3x6 ISO 7380 (ust sol)",
    "grup": "Bas",
    "tur": "Baglanti",
-   "kod": "M3x8 ISO 7380",
-   "kutle_g": 0.745,
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
    "merkez": [
-    80.0,
-    1443.2,
-    58.06
+    -85.0,
+    1546.04,
+    61.0
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Isil gomme somun M3 (tirnak boss ust sol)",
+   "grup": "Bas",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -85.0,
+    1546.04,
+    65.65
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Ekran tirnagi alt sag",
+   "grup": "Bas",
+   "tur": "Baski",
+   "kod": "Ekran tirnagi (PETG baski)",
+   "kutle_g": 1.479,
+   "merkez": [
+    85.0,
+    1387.71,
+    62.53
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Kopuk bant (tirnak alt sag)",
+   "grup": "Bas",
+   "tur": "Satin",
+   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
+   "kutle_g": 0.01,
+   "merkez": [
+    85.0,
+    1391.16,
+    68.1
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Tirnak civatasi M3x6 ISO 7380 (alt sag)",
+   "grup": "Bas",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    85.0,
+    1383.96,
+    61.0
    ]
   },
   {
@@ -9992,9 +10434,61 @@
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
-    80.0,
-    1443.2,
-    61.85
+    85.0,
+    1383.96,
+    65.65
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Ekran tirnagi alt sol",
+   "grup": "Bas",
+   "tur": "Baski",
+   "kod": "Ekran tirnagi (PETG baski)",
+   "kutle_g": 1.479,
+   "merkez": [
+    -85.0,
+    1387.71,
+    62.53
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Kopuk bant (tirnak alt sol)",
+   "grup": "Bas",
+   "tur": "Satin",
+   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
+   "kutle_g": 0.01,
+   "merkez": [
+    -85.0,
+    1391.16,
+    68.1
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Tirnak civatasi M3x6 ISO 7380 (alt sol)",
+   "grup": "Bas",
+   "tur": "Baglanti",
+   "kod": "M3x6 ISO 7380",
+   "kutle_g": 0.634,
+   "merkez": [
+    -85.0,
+    1383.96,
+    61.0
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Isil gomme somun M3 (tirnak boss alt sol)",
+   "grup": "Bas",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -85.0,
+    1383.96,
+    65.65
    ]
   },
   {
@@ -10005,8 +10499,8 @@
    "kod": "Raspberry Pi Camera Module 3",
    "kutle_g": 4.0,
    "merkez": [
-    -0.0,
-    1634.99,
+    0.0,
+    1564.99,
     65.09
    ]
   },
@@ -10019,7 +10513,7 @@
    "kutle_g": 0.34,
    "merkez": [
     -10.5,
-    1623.6,
+    1553.6,
     63.87
    ]
   },
@@ -10032,7 +10526,7 @@
    "kutle_g": 0.34,
    "merkez": [
     -10.5,
-    1636.1,
+    1566.1,
     63.87
    ]
   },
@@ -10045,7 +10539,7 @@
    "kutle_g": 0.34,
    "merkez": [
     10.5,
-    1623.6,
+    1553.6,
     63.87
    ]
   },
@@ -10058,7 +10552,7 @@
    "kutle_g": 0.34,
    "merkez": [
     10.5,
-    1636.1,
+    1566.1,
     63.87
    ]
   },
@@ -10071,7 +10565,7 @@
    "kutle_g": 58.0,
    "merkez": [
     6.1,
-    1595.68,
+    1526.31,
     -31.38
    ]
   },
@@ -10084,7 +10578,7 @@
    "kutle_g": 1.138,
    "merkez": [
     -39.0,
-    1584.25,
+    1514.88,
     -6.39
    ]
   },
@@ -10097,7 +10591,7 @@
    "kutle_g": 0.464,
    "merkez": [
     -39.0,
-    1589.5,
+    1520.13,
     -6.39
    ]
   },
@@ -10110,7 +10604,7 @@
    "kutle_g": 0.58,
    "merkez": [
     -39.0,
-    1576.83,
+    1507.46,
     -6.39
    ]
   },
@@ -10123,7 +10617,7 @@
    "kutle_g": 1.138,
    "merkez": [
     19.0,
-    1584.26,
+    1514.88,
     -6.39
    ]
   },
@@ -10136,7 +10630,7 @@
    "kutle_g": 0.464,
    "merkez": [
     19.0,
-    1589.5,
+    1520.13,
     -6.39
    ]
   },
@@ -10149,7 +10643,7 @@
    "kutle_g": 0.58,
    "merkez": [
     19.0,
-    1576.83,
+    1507.46,
     -6.39
    ]
   },
@@ -10162,7 +10656,7 @@
    "kutle_g": 1.138,
    "merkez": [
     -39.0,
-    1584.26,
+    1514.88,
     -55.39
    ]
   },
@@ -10175,7 +10669,7 @@
    "kutle_g": 0.464,
    "merkez": [
     -39.0,
-    1589.5,
+    1520.13,
     -55.39
    ]
   },
@@ -10188,7 +10682,7 @@
    "kutle_g": 0.58,
    "merkez": [
     -39.0,
-    1576.83,
+    1507.46,
     -55.39
    ]
   },
@@ -10201,7 +10695,7 @@
    "kutle_g": 1.138,
    "merkez": [
     19.0,
-    1584.25,
+    1514.88,
     -55.39
    ]
   },
@@ -10214,7 +10708,7 @@
    "kutle_g": 0.464,
    "merkez": [
     19.0,
-    1589.5,
+    1520.13,
     -55.39
    ]
   },
@@ -10227,7 +10721,7 @@
    "kutle_g": 0.58,
    "merkez": [
     19.0,
-    1576.83,
+    1507.46,
     -55.39
    ]
   },
@@ -10237,24 +10731,24 @@
    "grup": "Bas",
    "tur": "Satin",
    "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
-   "kutle_g": 0.065,
+   "kutle_g": 0.036,
    "merkez": [
     -80.0,
-    1580.75,
+    1511.38,
     31.0
    ]
   },
   {
    "modul": "kafa",
-   "ad": "5 V cevirici Pololu D36V50F5",
+   "ad": "5 V cevirici Pololu D24V50F5",
    "grup": "Bas",
    "tur": "Satin",
-   "kod": "Pololu D36V50F5 5 V 5,5 A",
+   "kod": "Pololu D24V50F5 5 V 5 A",
    "kutle_g": 7.0,
    "merkez": [
-    -80.39,
-    1585.33,
-    31.57
+    -80.0,
+    1516.1,
+    31.0
    ]
   },
   {
@@ -10266,7 +10760,7 @@
    "kutle_g": 0.035,
    "merkez": [
     80.0,
-    1580.76,
+    1511.38,
     31.0
    ]
   },
@@ -10279,8 +10773,138 @@
    "kutle_g": 2.0,
    "merkez": [
     80.0,
-    1582.47,
+    1513.09,
     32.08
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Kopuk bant (SY8205)",
+   "grup": "Bas",
+   "tur": "Satin",
+   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
+   "kutle_g": 0.088,
+   "merkez": [
+    36.0,
+    1511.38,
+    39.0
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "SY8205 kafa ekrani 5 V",
+   "grup": "Bas",
+   "tur": "Satin",
+   "kod": "SY8205 5 V dusurucu kart (kafa ekrani ayri hat)",
+   "kutle_g": 8.0,
+   "merkez": [
+    36.0,
+    1514.38,
+    39.0
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Kopuk bant (TVS)",
+   "grup": "Bas",
+   "tur": "Satin",
+   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
+   "kutle_g": 0.003,
+   "merkez": [
+    64.0,
+    1511.38,
+    45.0
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "TVS P6KE6V8A kafa ekrani",
+   "grup": "Bas",
+   "tur": "Satin",
+   "kod": "P6KE6V8A TVS (kafa ekrani 5 V)",
+   "kutle_g": 1.0,
+   "merkez": [
+    64.0,
+    1513.68,
+    45.0
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Kopuk bant (USB Hub 4 lu)",
+   "grup": "Bas",
+   "tur": "Satin",
+   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
+   "kutle_g": 0.18,
+   "merkez": [
+    132.0,
+    1528.88,
+    -3.0
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "USB Hub 4 lu",
+   "grup": "Bas",
+   "tur": "Satin",
+   "kod": "USB Hub 4 lu 72 x 25 x 19",
+   "kutle_g": 25.0,
+   "merkez": [
+    122.0,
+    1528.88,
+    -3.0
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Kopuk bant (USB ses karti)",
+   "grup": "Bas",
+   "tur": "Satin",
+   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
+   "kutle_g": 0.081,
+   "merkez": [
+    -132.0,
+    1522.88,
+    5.5
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "USB ses karti",
+   "grup": "Bas",
+   "tur": "Satin",
+   "kod": "USB ses karti (PAM8403 girisi; olcu TAHMIN)",
+   "kutle_g": 8.0,
+   "merkez": [
+    -126.0,
+    1522.88,
+    5.5
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Kopuk bant (PAM8403 amfi)",
+   "grup": "Bas",
+   "tur": "Satin",
+   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
+   "kutle_g": 0.043,
+   "merkez": [
+    -132.0,
+    1522.88,
+    -31.0
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "PAM8403 amfi",
+   "grup": "Bas",
+   "tur": "Satin",
+   "kod": "PAM8403 2 x 3 W amfi karti (olcu TAHMIN)",
+   "kutle_g": 3.0,
+   "merkez": [
+    -129.0,
+    1522.88,
+    -31.0
    ]
   },
   {
@@ -10292,7 +10916,7 @@
    "kutle_g": 3.87,
    "merkez": [
     28.55,
-    1548.25,
+    1478.88,
     25.0
    ]
   },
@@ -10305,7 +10929,7 @@
    "kutle_g": 0.76,
    "merkez": [
     30.18,
-    1548.25,
+    1478.88,
     25.0
    ]
   },
@@ -10318,7 +10942,7 @@
    "kutle_g": 2.841,
    "merkez": [
     -26.7,
-    1548.26,
+    1478.88,
     25.0
    ]
   },
@@ -10331,7 +10955,7 @@
    "kutle_g": 0.927,
    "merkez": [
     34.02,
-    1554.27,
+    1484.89,
     31.01
    ]
   },
@@ -10344,7 +10968,7 @@
    "kutle_g": 0.927,
    "merkez": [
     34.02,
-    1542.24,
+    1472.87,
     31.01
    ]
   },
@@ -10357,7 +10981,7 @@
    "kutle_g": 0.927,
    "merkez": [
     34.02,
-    1542.24,
+    1472.87,
     18.99
    ]
   },
@@ -10370,7 +10994,7 @@
    "kutle_g": 0.927,
    "merkez": [
     34.02,
-    1554.27,
+    1484.89,
     18.99
    ]
   },
@@ -12134,7 +12758,7 @@
    "ad": "Aku LiFePO4 12,8 V (yatik)",
    "grup": "Govde",
    "tur": "Satin",
-   "kod": "LiFePO4 12,8 V 24 Ah (yuva 181 x 77 x 167)",
+   "kod": "LiFePO4 12,8 V 20 Ah Victron SuperPack (yuva 181 x 77 x 167)",
    "kutle_g": 2800.0,
    "merkez": [
     0.0,
@@ -14839,7 +15463,7 @@
    "alt": "OmuzSag_Govde",
    "nokta": [
     86.5,
-    1340.0,
+    1270.0,
     0.0
    ],
    "aciklama": "omuz yuvasi travers ucunda, 4x M6 + cekic somun (arayuz.OMUZ_YUVA_X)"
@@ -14855,7 +15479,7 @@
    "alt": "OmuzSag_Gobek",
    "nokta": [
     150.0,
-    1340.0,
+    1270.0,
     0.0
    ],
    "eksen": [
@@ -14890,7 +15514,7 @@
    "alt": "OmuzSag_Kol",
    "nokta": [
     185.0,
-    1340.0,
+    1270.0,
     20.2
    ],
    "eksen": [
@@ -14923,7 +15547,7 @@
    "alt": "OmuzSol_Govde",
    "nokta": [
     -86.5,
-    1340.0,
+    1270.0,
     0.0
    ],
    "aciklama": "omuz yuvasi travers ucunda, 4x M6 + cekic somun (arayuz.OMUZ_YUVA_X)"
@@ -14939,7 +15563,7 @@
    "alt": "OmuzSol_Gobek",
    "nokta": [
     -150.0,
-    1340.0,
+    1270.0,
     0.0
    ],
    "eksen": [
@@ -14974,7 +15598,7 @@
    "alt": "OmuzSol_Kol",
    "nokta": [
     -185.0,
-    1340.0,
+    1270.0,
     20.2
    ],
    "eksen": [
@@ -15021,7 +15645,7 @@
    "alt": "DirsekSag_UstKol",
    "nokta": [
     185.0,
-    1170.0,
+    1100.0,
     -1.25
    ],
    "aciklama": "dirsek catali ust kol tupunun ucuna: pim + yarikli sikma bilezigi, 2x M3 (arayuz.DIRSEK)"
@@ -15037,7 +15661,7 @@
    "alt": "DirsekSag_OnKol",
    "nokta": [
     216.6,
-    1137.0,
+    1067.0,
     -1.25
    ],
    "eksen": [
@@ -15072,7 +15696,7 @@
    "alt": "DirsekSag_El",
    "nokta": [
     185.0,
-    1021.5,
+    951.5,
     -1.25
    ],
    "eksen": [
@@ -15105,7 +15729,7 @@
    "alt": "DirsekSol_UstKol",
    "nokta": [
     -185.0,
-    1170.0,
+    1100.0,
     -1.25
    ],
    "aciklama": "dirsek catali ust kol tupunun ucuna: pim + yarikli sikma bilezigi, 2x M3 (arayuz.DIRSEK)"
@@ -15121,7 +15745,7 @@
    "alt": "DirsekSol_OnKol",
    "nokta": [
     -216.6,
-    1137.0,
+    1067.0,
     -1.25
    ],
    "eksen": [
@@ -15156,7 +15780,7 @@
    "alt": "DirsekSol_El",
    "nokta": [
     -185.0,
-    1021.5,
+    951.5,
     -1.25
    ],
    "eksen": [
@@ -15189,7 +15813,7 @@
    "alt": "Kafa_Govde",
    "nokta": [
     0.0,
-    1360.0,
+    1290.0,
     0.0
    ],
    "aciklama": "boyun plakasi traversin ust kanalina 2x M6 + cekic somun (x = +-40, z = 0; arayuz.KAFA boyun_plaka)"
@@ -15205,7 +15829,7 @@
    "alt": "Kafa_Boyun",
    "nokta": [
     0.0,
-    1404.6,
+    1334.6,
     0.0
    ],
    "eksen": [
@@ -15240,7 +15864,7 @@
    "alt": "Kafa_Bas",
    "nokta": [
     26.9,
-    1548.255,
+    1478.878,
     25.0
    ],
    "eksen": [
@@ -15250,7 +15874,7 @@
    ],
    "yerel_nokta": [
     26.9,
-    188.255,
+    188.878,
     25.0
    ],
    "yerel_eksen": [
@@ -15433,47 +16057,47 @@
  ],
  "solve": 0,
  "ev_pozu_cozucu_sapmasi": 0.0,
- "kutle_g": 24556.56,
+ "kutle_g": 25436.93,
  "agirlik_merkezi": [
-  -0.079,
-  525.822,
-  -12.489
+  -0.084,
+  529.845,
+  -8.476
  ],
  "karsilastirma": {
   "parca": {
-   "montaj": 1120,
-   "beklenen": 1120,
-   "formul": "iskelet 59 + 2 x (omuz 75 - travers - kabuk referansi) + kabuk 312 + dirsek_sag 57 + dirsek_sol 57 + kafa 147 + taban 342",
+   "montaj": 1168,
+   "beklenen": 1168,
+   "formul": "iskelet 59 + 2 x (omuz 75 - travers - kabuk referansi) + kabuk 346 + dirsek_sag 57 + dirsek_sol 57 + kafa 161 + taban 342",
    "ayni": true
   },
   "kutle": {
-   "montaj_dosyasi": 24556.56,
-   "bellek": 24556.56,
-   "beklenen_analizlerden": 24556.6,
-   "carpisma": 21260.9,
-   "fark_analiz": -0.037,
-   "fark_carpisma": 3295.66
+   "montaj_dosyasi": 25436.93,
+   "bellek": 25436.93,
+   "beklenen_analizlerden": 25437.0,
+   "carpisma": 25436.9,
+   "fark_analiz": -0.063,
+   "fark_carpisma": 0.035
   },
   "am": {
    "montaj_dosyasi": [
-    -0.079,
-    525.822,
-    -12.489
+    -0.084,
+    529.845,
+    -8.476
    ],
    "bellek": [
-    -0.079,
-    525.822,
-    -12.489
+    -0.084,
+    529.845,
+    -8.476
    ],
    "carpisma": [
-    -0.38,
-    374.61,
-    -13.51
+    -0.08,
+    529.85,
+    -8.48
    ],
-   "fark_carpisma_mm": 151.215,
+   "fark_carpisma_mm": 0.007,
    "fark_bellek_mm": 0.0
   },
   "not_": "analiz JSON'lari 0,1 g'a yuvarlanmis; carpisma AM'si 0,01 mm'ye. 1,65 m (Y2a): carpisma-sonuc.json Y4 tam taramasina kadar ESKI (125 cm) - fark_carpisma anlamsiz, montaj/yerlesim-kontrol.json kisa kontrolu kullan"
  },
- "sure_s": 79.4
+ "sure_s": 159.6
 }

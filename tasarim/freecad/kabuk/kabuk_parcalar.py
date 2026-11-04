@@ -1,7 +1,7 @@
-# Kabuk modulu (V3, 1,65 m) - PARCALAR: govde kabugu (6 bant x sag/sol + arka kapak; 2 bant 1,65 m uzatmasi), taban etegi (520:
+# Kabuk modulu (V3, 1,58 m) - PARCALAR: govde kabugu (6 bant x sag/sol + arka kapak; 2 bant uzatma), taban etegi (520:
 # 3 z bandi x sag/sol + 2 orta dolgu seridi), S1 kablo kasetleri, iskelete baglanti braketleri ve tum baglanti elemanlari.
-# Nextion gogus ekrani KALDIRILDI (Duffy, 25 Ekim 2026): gogus bandi kapali kabuk. Import edilebilir: kabuk_montaj.py (kontroller
-# + kayit), ../carpisma.py ve ../montaj/moduller.py kullanir. Koordinat = global (arayuz.py), mm.
+# Gogus ekrani (01.11.2026): 11,6" kasali ekran duzlemde gomulu (arayuz.GOGUS_EKRAN): cep + 2 yarim cerceve + VESA tasiyici (direk on kanali) + 4x M4. Import edilebilir:
+# kabuk_montaj.py (kontroller + kayit), ../carpisma.py ve ../montaj/moduller.py kullanir. Koordinat = global (arayuz.py), mm.
 #
 # Yapi
 # - Kabuk = dis zarf - ic zarf (cizgisel loft, arayuz.GOVDE_KESIT / ETEK_KESIT). Orta zarf (T/2) duvari dis ve ic
@@ -72,7 +72,30 @@ for sx in (1, -1):        # O84 + asagida 45 derece damla ucu: omuz bandi ters b
 S = S.cut(Part.makeCylinder(A.BOYUN_ACIKLIK_R, 40.0, V(0, A.GOVDE_Y1 - 20, 0), V(0, 1, 0)))
 for sx in (1, -1):        # omuz yuvasi ust civatasinin basi ust kapaga girer: erisim deligi (anahtar da buradan)
     S = S.cut(Part.makeCylinder(A.UST_KAPAK_ERISIM["r"], 20.0, V(sx * A.UST_KAPAK_ERISIM["x"], A.GOVDE_Y1 - 10, 0), V(0, 1, 0)))
-# (125 cm: gogus bandinda Nextion penceresi vardi; 1,65 m'de ekran yok, gogus kapali)
+# Gogus ekrani cebi (01.11.2026): yerel cerceve X = global X, Y = duzlem boyunca yukari, Z = duzlem normali (disa); orijin cep merkezi dis yuzeyde
+GE = A.GOGUS_EKRAN
+GE_YC = A.GOGUS_EKRAN_Y
+GE_ZC = A.gogus_z(GE_YC)
+GE_PL = App.Placement(V(0, GE_YC, GE_ZC), App.Rotation(V(1, 0, 0), -A.GOGUS_EGIM))
+GE_N = GE_PL.Rotation.multVec(V(0, 0, 1))        # disa normal
+GE_T = T * math.cos(math.radians(A.GOGUS_EGIM))  # duvarin normal kalinligi (2,9): kesit yatay olcekli
+
+
+def gogus_yer(sh):
+    """Gogus yerel cercevesindeki sekli global cerceveye tasir."""
+    s_ = sh.copy()
+    s_.transformShape(GE_PL.toMatrix(), True)
+    return s_
+
+
+def gp(x, y, z):
+    """Gogus yerel noktasi -> global."""
+    return GE_PL.multVec(V(x, y, z))
+
+
+_cw, _ch = GE["cep"][0] / 2, GE["cep"][1] / 2
+assert A.GOVDE_KESIT[-3][1] - A.GOVDE_KESIT[-3][4] >= _cw, "cep kose yaricapina giriyor"
+S = S.cut(gogus_yer(box(-_cw, _cw, -_ch, _ch, -GE_T - 1.0, 6.0)))
 S = S.removeSplitter()
 S_dis = S.cut(M)
 S_ic = S.common(M)
@@ -120,9 +143,21 @@ for k in range(len(GOVDE_BANT)):
         c_ = c_.fuse(KAPAK2_DIKIS)
     y_ic.append(c_)
 GOVDE = {}
+# Basamakli on dikis (arayuz.GOGUS_ON_DIKIS): 1198 dikisi on bolgede (z >= z) y1'e cikar, cep gogus bandinda kalir. Ic hucre her iki kenarda W kaydirilir (dil).
+_BD = A.GOGUS_ON_DIKIS
+_BAS_DIS = kutu(y0=_BD["y0"], y1=_BD["y1"], z0=_BD["z"])
+_BAS_IC = kutu(y0=_BD["y0"] + W, y1=_BD["y1"] + W, z0=_BD["z"] - W)
+_K_GOGUS, _K_OMUZ = GOVDE_BANT.index("gogus"), GOVDE_BANT.index("omuz")
+y_ic[_K_GOGUS] = y_ic[_K_GOGUS].fuse(_BAS_IC)
+y_ic[_K_OMUZ] = y_ic[_K_OMUZ].cut(_BAS_IC)
 for k, bant in enumerate(GOVDE_BANT):
     for sag in (True, False):
-        r_dis = kutu(*((0, BIG) if sag else (-BIG, 0))).common(kutu(y0=YK[k], y1=YK[k + 1])).cut(KAPAKLAR)
+        _yh = kutu(y0=YK[k], y1=YK[k + 1])
+        if k == _K_GOGUS:
+            _yh = _yh.fuse(_BAS_DIS)
+        elif k == _K_OMUZ:
+            _yh = _yh.cut(_BAS_DIS)
+        r_dis = kutu(*((0, BIG) if sag else (-BIG, 0))).common(_yh).cut(KAPAKLAR)
         r_ic = x_ic(sag, Y_KAPAK_PLAKA).common(y_ic[k]).cut(KAPAKLAR_IC)
         dil = S_ic.common(r_ic).cut(S_bos.common(r_ic.cut(r_dis)))      # dil bolgesi (ic hucre - dis hucre) GB_BOS incelir
         sh = S_dis.common(r_dis).fuse(dil).removeSplitter()
@@ -256,6 +291,88 @@ for _ad, _h in ETEK_KAPAK.items():
     PARCA[_ad] = dict(shape=_kp.removeSplitter(), yukari=UP, yon="duz (alt yuzu tablada)", grup="Taban etegi",
                       patlat=(0.5 * (_h["x"][0] + _h["x"][1]), 90, 0.5 * (_h["z"][0] + _h["z"][1]) - 60))
 
+
+# ====================================================================== gogus ekrani cercevesi ve VESA tasiyici (01.11.2026)
+# Cerceve: iki yarim C (sag / sol), cep ile kasa arasindaki 5 mm payi doldurur (cepte 0,25, kasada 0,5 bosluk), alt ve ustte duvar arkasina flans (M3x6 ISO 7380 disaridan + flansta
+# M3 isil gomme). Yarim C yana cekilince kasadan ayrilir: bant + cerceve ekran takiliyken sokulebilir. Arka yuzu tablada basilir (desteksiz).
+# 04.11.2026 (Duffy 03.11: "evet cerceveyi de ekle"): govde renginde (arayuz cerceve renk/kod), ekran cam_geri 2 mm iceride; kose saglamlastirma (arayuz cerceve kose): on yuzden kasa onune inen
+# yuvarlak takoz (pencere kosesi R 14, kalinlik cam_geri - 0,2; kasa kosesini onden korur, aktif alana girmez; yana cekilirken kasa onunden 0,2 bosluk ile gecer) + duvar arkasinda kose flansi.
+_GC = GE["cerceve"]
+_cdx, _cdy = _cw - _GC["cep_bosluk"], _ch - _GC["cep_bosluk"]
+_kw, _kh, _kd = GE["kasa"][0] / 2, GE["kasa"][1] / 2, GE["kasa"][2]
+_cix, _ciy = _kw + _GC["kasa_bosluk"], _kh + _GC["kasa_bosluk"]
+_cz0 = -_GC["derin"]
+_fl_y = _ch + GE["et"] - 0.5           # flans ucu: duzlem kenarina 0,5 kala
+
+
+def _cerceve_yari(sx):
+    x0, x1 = sorted((0.1 * sx, sx * _cdx))
+    r_ = box(x0, x1, -_cdy, _cdy, _cz0, 0.0)
+    xi0, xi1 = sorted((-1.0 * sx, sx * _cix))
+    r_ = r_.cut(box(xi0, xi1, -_ciy, _ciy, _cz0 - 1.0, 1.0))
+    _ks = _GC.get("kose")
+    if _ks:
+        _rk = _ks["r"]
+        _zt = -GE["cam_geri"] + _ks["on_bosluk"]         # takoz arka yuzu: kasa on yuzunun on_bosluk onunde
+        for sy_ in (1, -1):
+            x0k, x1k = sorted((sx * (_cix - _rk), sx * _cix))
+            y0k, y1k = sorted((sy_ * (_ciy - _rk), sy_ * _ciy))
+            tk = box(x0k, x1k, y0k, y1k, _zt, 0.0).cut(cyl(_rk, (sx * (_cix - _rk), sy_ * (_ciy - _rk), _zt - 1.0), (sx * (_cix - _rk), sy_ * (_ciy - _rk), 1.0)))
+            r_ = r_.fuse(tk)
+    # flans: civata basina 18 mm tampon (sag/sol, alt/ust); ic zarfa kirpilir (duzlemin altinda duvar geri kacar). Surekli flans orta bant dikis boss'una giriyordu (x +-78).
+    fl = None
+    for xv in _GC["vida_x"]:
+        fx0, fx1 = sorted((sx * (xv - _GC["flans_yari"]), sx * (xv + _GC["flans_yari"])))
+        for (y0_, y1_) in ((_cdy - 0.5, _fl_y), (-_fl_y, -_cdy + 0.5)):
+            b_ = box(fx0, fx1, y0_, y1_, _cz0, -GE_T - 0.005)
+            fl = b_ if fl is None else fl.fuse(b_)
+    if _ks:
+        for (y0_, y1_) in ((_cdy - 0.5, _fl_y), (-_fl_y, -_cdy + 0.5)):       # kose flansi: civatasiz, duvar arkasinda (ic zarfa kirpilir)
+            fx0, fx1 = sorted((sx * _ks["flans_x"][0], sx * _ks["flans_x"][1]))
+            fl = fl.fuse(box(fx0, fx1, y0_, y1_, _cz0, -GE_T - 0.005))
+    fl = gogus_yer(fl)
+    return gogus_yer(r_).fuse(fl.common(I)).removeSplitter()
+
+
+GE_CERCEVE = {}
+for sag in (True, False):
+    sx = 1 if sag else -1
+    ad_ = "Gogus ekrani cercevesi %s" % ("sag" if sag else "sol")
+    PARCA[ad_] = dict(shape=_cerceve_yari(sx), yukari=GE_N, yon="arka yuzu (flans) tablada", patlat=(sx * 130, 240, 80), grup="Gogus ekrani", renk=_GC["renk"])
+    if _GC["kod"]:                                   # None: govde kabugunun kodu birebir (asagidaki add varsayilani)
+        PARCA[ad_]["kod"] = _GC["kod"]
+    GE_CERCEVE[sx] = ad_
+
+# VESA tasiyici: arka flans direk on (+Z) yuzune 2x M6 + cekic somun (kanalda Y ayari), on plaka kasa arkasina 4x M4 (VESA 75; X yarik +-8: delik yeri dogrulanmadi).
+# Plaka ortasindaki aciklik: M6 basina ekran sokulunce onden erisim. M4 baslari arkadan: ust arka servis kapagi -> direk yani. Web'ler x +-(20...24): M4 eksenleri (x +-37,5) acik kalir.
+_GT = GE["tasiyici"]
+_pxh, _pyh, _pt = _GT["plaka"]
+_pz1 = -GE["cam_geri"] - _kd                 # kasa arka yuzu (plaka on yuzu)
+_pz0 = _pz1 - _pt
+_v = GE["vesa"] / 2
+_plaka = box(-_pxh, _pxh, -_pyh, _pyh, _pz0, _pz1)
+_plaka = _plaka.cut(box(-_GT["acik"][0], _GT["acik"][0], -_GT["acik"][1], _GT["acik"][1], _pz0 - 1, _pz1 + 1))
+_m4d = CLEAR[4]
+GE_M4 = [(sx_ * _v, sy_ * _v) for sx_ in (1, -1) for sy_ in (1, -1)]
+for (x_, y_) in GE_M4:
+    for dx_ in (-_GT["yarik"], _GT["yarik"]):
+        _plaka = _plaka.cut(cyl(_m4d / 2, (x_ + dx_, y_, _pz0 - 1), (x_ + dx_, y_, _pz1 + 1)))
+    _plaka = _plaka.cut(box(x_ - _GT["yarik"], x_ + _GT["yarik"], y_ - _m4d / 2, y_ + _m4d / 2, _pz0 - 1, _pz1 + 1))
+_tas = gogus_yer(_plaka)
+_ym = gp(0, 0, _pz0).y                        # plaka merkezi y: flans bunun cevresinde
+_z_d = A.SG / 2                               # direk on yuzu
+_zft = _z_d + _GT["flans_t"]
+_tas = _tas.fuse(box(-_GT["flans_x"], _GT["flans_x"], _ym - _GT["flans_dy"], _ym + _GT["flans_dy"], _z_d, _zft))
+_pu, _pa = gp(0, _pyh, _pz0 + 1.0), gp(0, -_pyh, _pz0 + 1.0)
+for sx_ in (1, -1):
+    wx0, wx1 = sorted((sx_ * _GT["web_x"][0], sx_ * _GT["web_x"][1]))
+    pol = [V(wx0, _ym + _GT["flans_dy"], _z_d), V(wx0, _ym - _GT["flans_dy"], _z_d), V(wx0, _pa.y, _pa.z), V(wx0, _pu.y, _pu.z), V(wx0, _ym + _GT["flans_dy"], _z_d)]
+    _tas = _tas.fuse(Part.Face(Part.makePolygon(pol)).extrude(V(wx1 - wx0, 0, 0)))
+GE_M6_Y = [_ym - _GT["m6_dy"], _ym + _GT["m6_dy"]]
+for yy_ in GE_M6_Y:
+    _tas = _tas.cut(cyl(CLEAR[6] / 2, (0, yy_, _z_d - 1), (0, yy_, _zft + 1)))
+PARCA["Gogus ekrani VESA tasiyici"] = dict(shape=_tas.removeSplitter(), yukari=GE_N * -1, yon="VESA plakasi tablada; arka flans destekli", patlat=(0, 240, 20), grup="Gogus ekrani",
+                                           malzeme="PETG-CF", kod="PETG-CF baski")
 
 # ====================================================================== S1 kablo kaseti (duzeltme plani M1 / S1, 15 Ekim 2026)
 # Doner U-lop kasetinin sabit yarisi (arayuz.KOL_KABLO["s1"]; tambur omuz modulunde). Iki baski parcasi (taraf basina):
@@ -484,6 +601,11 @@ for k, y_d in enumerate(A.GOVDE_DIKIS):
         ADAY += [("govde y%.0f arka" % y_d, GK, "arka", ym, sx * (AK["x"] + W + 6.0)) for sx in (1, -1)]
     elif k == I_KAPAK2_DIKIS:           # K4: 1268 dikisi ust kapagin ust kenari (alin) -> kapak disinda
         ADAY += [("govde y%.0f arka" % y_d, GK, "arka", ym, sx * xx) for sx in (1, -1) for xx in (AK2["x"] + W + 6.0, 120.0)]
+        # on bolge: dikis basamakla GOGUS_ON_DIKIS y1'e cikar; on civatalari orada (yukaridaki y_d + 6'da on duvarin iki yari da gogus bandi, atlanir)
+        ADAY = [q for q in ADAY if q[0] != "govde y%.0f on" % y_d]
+        _ymf = A.GOGUS_ON_DIKIS["y1"] + W / 2
+        (_af, _, _, _rf), _ = kesit_param(GK, _ymf)
+        ADAY += [("govde y%.0f on" % y_d, GK, "on", _ymf, sx * 0.55 * (_af - _rf)) for sx in (1, -1)]
     elif k > I_KAPAK_DIKIS:
         ADAY += [("govde y%.0f arka" % y_d, GK, "arka", ym, sx * xx) for sx in (1, -1) for xx in (70.0, 120.0)]
     else:
@@ -492,16 +614,18 @@ for k, y_d in enumerate(A.GOVDE_DIKIS):
         zc = 0.5 * ((bf - r) - (bb - r))
         ADAY += [("govde y%.0f yan" % y_d, GK, yer, ym, zc) for yer in ("sag", "sol")]
 # x = 0 dikisi (on ve arka): 125 cm'deki yerler (476,5 ustu UZAMA yukari) + her uzatma bandinda bant ortasi +-55 (taslak-170 ile ayni) +
-# gogus onunde 835 + UZAMA (125 cm'de Nextion penceresi vardi). Arka: orta bantta (861,5 ... 1075) arka kapak var -> yok.
+# gogus onunde 835 + UZAMA (125 cm'de Nextion penceresi vardi). Arka: orta bantta (791,5 ... 1005) arka kapak var -> yok.
+# 1,58 m: gogus onunde cep var; x = 0 dikisi cebin altinda (duz serit) ve ustunde (duzlem ustu + 2, dikis altinda) birer civata.
 _UZ = A.UZAMA
 _UZ_X0 = [0.5 * (A.UZATMA_DIKIS[k] + A.UZATMA_DIKIS[k + 1]) + W / 2 + d_ for k in range(A.UZATMA_BANT) for d_ in (-55.0, 55.0)]
-for yer, ys in (("on", (330.0, 420.0, *_UZ_X0, 550.0 + _UZ, 640.0 + _UZ, 741.0 + _UZ, 835.0 + _UZ, 940.0 + _UZ)),
+_Y_SER_ALT = A.GOGUS_ALT_Y + GE["et"] / 2 * math.cos(math.radians(A.GOGUS_EGIM))      # cep alti duz serit ortasi
+for yer, ys in (("on", (330.0, 420.0, *_UZ_X0, 550.0 + _UZ, 640.0 + _UZ, _Y_SER_ALT, A.GOGUS_UST_Y + 2.0, 940.0 + _UZ)),
                 ("arka", (330.0, 420.0, *_UZ_X0, 940.0 + _UZ))):     # Y3 K4: 745 / 830 + UZAMA gogus arkasinda -> ust kapak
     ADAY += [("govde x0 %s" % yer, GK, yer, y, -W / 2) for y in ys]
 for x, y in ((-45.0, AK["y0"] + W / 2), (0.0, AK["y0"] + W / 2), (45.0, AK["y0"] + W / 2)) + \
             tuple((sx * (AK["x"] - W / 2), y + _UZ) for sx in (1, -1) for y in (570.0, 650.0)):
     ADAY.append(("arka kapak", GK, "arka", y, x))
-for x, y in ((-45.0, AK2["y0"] + W / 2), (0.0, AK2["y0"] + W / 2), (45.0, AK2["y0"] + W / 2)) +             tuple((sx * (AK2["x"] - W / 2), y) for sx in (1, -1) for y in (1160.0, 1225.0)):
+for x, y in ((-45.0, AK2["y0"] + W / 2), (0.0, AK2["y0"] + W / 2), (45.0, AK2["y0"] + W / 2)) +             tuple((sx * (AK2["x"] - W / 2), y + _UZ) for sx in (1, -1) for y in (775.0, 840.0)):
     ADAY.append(("ust arka kapak", GK, "arka", y, x))
 for yer, ys in (("on", (60.0, 200.0)), ("arka", (60.0, 115.0, 200.0))):
     for xd in A.ETEK_DIKIS_X:                 # 520: iki x dikisi (sag yari | dolgu, dolgu | sol yari); dil soldakinin dis yarisi arkasinda
@@ -533,11 +657,29 @@ for (etiket, secs, yer, y, u) in ADAY:
         atla.append((etiket, y, u))
         continue
     asagi = PARCA[ic]["yukari"] * -1
-    EKLE[ic].append(damla(p, n * -1, 4.0, BOSS_L, asagi))
+    if etiket == "govde x0 on" and abs(yy - _Y_SER_ALT) < 3.5:
+        # cep alti serit dar (8 mm): O7 duz boss, damla ucu yok (ucu duzlem altinda duvardan tasip sol banda ve orta bant diline giriyordu)
+        EKLE[ic].append(Part.makeCylinder(3.5, BOSS_L, p, n * -1))
+    else:
+        EKLE[ic].append(damla(p, n * -1, 4.0, BOSS_L, asagi))
     CIKAR[ic].append(t_ins)
     CIKAR[dis].append(t_del)
     VIDA.append(dict(etiket=etiket, p=p, n=n, hn=hn, ic=ic, dis=dis, tip="bindirme", kaydirma=kay))
 log("bindirme civatasi: %d yer, %d atlandi" % (len(VIDA), len(atla)), atla)
+
+# --- gogus ekrani cercevesi flans civatalari: M3x6 ISO 7380 disaridan (duz seritte), duvarda O3,4, flansta M3 isil gomme
+GE_VIDA = []
+_cerc = list(GE_CERCEVE.values())
+for sx_, ad_c in GE_CERCEVE.items():
+    for x_ in _GC["vida_x"]:
+        for sy_ in (1, -1):
+            yl_ = sy_ * (_ch + GE["et"] / 2)
+            pd_, pi_ = gp(sx_ * x_, yl_, 0.0), gp(sx_ * x_, yl_, -GE_T)
+            ic_ = sahip(gp(sx_ * x_, yl_, -GE_T / 2), haric=_cerc)
+            CIKAR[ic_].append(cyl(CLEAR[3] / 2, gp(sx_ * x_, yl_, 1.0), gp(sx_ * x_, yl_, -GE_T - 1.0)))
+            CIKAR[ad_c].append(insert_hole(3, pi_, GE_N * -1, extra=0.5))
+            GE_VIDA.append(dict(cerceve=ad_c, kabuk=ic_, p_dis=pd_, p_ic=pi_, sx=sx_, sy=sy_))
+log("gogus cercevesi civatalari:", [(v["cerceve"][-3:], v["kabuk"]) for v in GE_VIDA])
 
 # ====================================================================== iskelete baglanti boss'lari
 GB = A.KABUK_GOVDE_BRAKET
@@ -624,8 +766,8 @@ log("boss ve delikler islendi; ayri kalan delik tapasi:", TEMIZLIK)
 # ====================================================================== parcalari ekle: baski parcalari
 RENK_BASKI = ["k01", "k02", "k03", "k04", "k05", "k06", "k07", "k08", "k09", "k10", "k11", "k12", "k13", "k14", "k15", "k16"]
 for i, (ad, d) in enumerate(PARCA.items()):
-    d["indeks"] = add(ad, d["grup"], d["shape"], "Baski", "PETG", kod="PETG baski, %s mm duvar" % ("%.1f" % T).replace(".", ","),
-                      renk="kabuk", patlat=d["patlat"], not_="baski: %s" % d["yon"])
+    d["indeks"] = add(ad, d["grup"], d["shape"], "Baski", d.get("malzeme", "PETG"), kod=d.get("kod", "PETG baski, %s mm duvar" % ("%.1f" % T).replace(".", ",")),
+                      renk=d.get("renk", "siyah" if d["grup"] == "Gogus ekrani" else "kabuk"), patlat=d["patlat"], not_="baski: %s" % d["yon"])
     d["renk_baski"] = RENK_BASKI[i % len(RENK_BASKI)]
     BASKI[ad] = dict(yukari=d["yukari"], yon=d["yon"], renk=d["renk_baski"])
 
@@ -639,6 +781,35 @@ for v in VIDA:
     v["i_vida"] = add("Bindirme civatasi M3x6 (%s)" % v["etiket"], PARCA[v["dis"]]["grup"],
                       screw7380(3, VIDA_L, v["p"] + v["n"] * (v["hn"] + BAS_BOSLUK), v["n"] * -1), "Baglanti", "Celik 10.9",
                       kod="M3x6 ISO 7380", renk="celik", patlat=tuple(pd + v["n"] * 25))
+
+# ====================================================================== gogus ekrani: kasa + cerceve civatalari + M4 + M6
+_kasa = box(-_kw, _kw, -_kh, _kh, _pz1, -GE["cam_geri"])
+for (x_, y_) in GE_M4:
+    _kasa = _kasa.cut(cyl(GE["vesa_d"] / 2, (x_, y_, _pz1 - 1), (x_, y_, _pz1 + GE["vesa_derin"])))
+GE_I_KASA = add("Gogus ekrani 11,6 in HDMI 1920x1080 kasali", "Gogus ekrani", gogus_yer(_kasa.removeSplitter()), "Satin", "-", kod=GE["model"], renk="siyah", patlat=(0, 240, 140),
+                kutle=GE["kutle_g"], not_="Zarf: arka yuz 29,5 duz kabul (gercek kasa kenarlara dogru egimli, port girintisi var; dogrulanmadi). " + GE["besleme"])
+for v in GE_VIDA:
+    pat_ = V(*PARCA[v["cerceve"]]["patlat"])
+    v["i_insert"] = add("Isil gomme somun M3 (gogus cercevesi)", "Gogus ekrani", insert(3, v["p_ic"], GE_N * -1), "Baglanti", "Pirinc", kod="M3 isil gomme somun", renk="pirinc", patlat=tuple(pat_))
+    v["i_vida"] = add("Cerceve civatasi M3x6 ISO 7380", "Gogus ekrani", screw7380(3, VIDA_L, v["p_dis"], GE_N * -1), "Baglanti", "Celik 10.9", kod="M3x6 ISO 7380", renk="celik",
+                      patlat=tuple(pat_ + GE_N * 25))
+_tn = V(0, 240, 20)
+GE_M4_I = []
+for (x_, y_) in GE_M4:
+    t4 = WASH125[4][2]
+    p_ = gp(x_, y_, _pz0)
+    add("VESA pulu M4", "Gogus ekrani", washer(4, p_, GE_N * -1), "Baglanti", "Celik", kod="M4 DIN 125 pul", renk="celik", patlat=tuple(_tn - GE_N * 15))
+    GE_M4_I.append(add("VESA civatasi M4x%d" % _GT["m4"][1], "Gogus ekrani", screw912(4, _GT["m4"][1], p_ - GE_N * t4, GE_N), "Baglanti", "Celik 8.8", kod="M4x%d DIN 912" % _GT["m4"][1], renk="celik",
+                       patlat=tuple(_tn - GE_N * 40)))
+_nz = V(0, 0, 1)
+GE_M6_I = []
+for yy_ in GE_M6_Y:
+    t6_ = WASH125[6][2]
+    add("Tasiyici pulu M6", "Gogus ekrani", washer(6, V(0, yy_, _zft), _nz), "Baglanti", "Celik", kod="M6 DIN 125 pul", renk="celik", patlat=tuple(_tn + _nz * 15))
+    GE_M6_I.append(add("Tasiyici civatasi M6x%d" % _GT["m6"][1], "Gogus ekrani", screw912(6, _GT["m6"][1], V(0, yy_, _zft + t6_), _nz * -1), "Baglanti", "Celik 8.8", kod="M6x%d DIN 912" % _GT["m6"][1], renk="celik",
+                       patlat=tuple(_tn + _nz * 40)))
+    add("Cekic somun M6 (direk on kanali)", "Gogus ekrani", hammer_nut(V(0, yy_, _z_d - A.LIP), _nz, (1, 0, 0)), "Baglanti", "Celik", kod="M6 cekic somun, kanal 10", renk="celik",
+        patlat=tuple(_tn - _nz * 15))
 
 # ====================================================================== etek kapak civatalari (K5 / K6, Y3)
 for v in KAPAK_VIDA:
@@ -753,7 +924,7 @@ for g in EB_YER:
                     parca=g["parca"]))
 
 # ====================================================================== kutle ve merkez
-RHO = {"PETG": A.PETG_RHO * A.KABUK_DOLULUK, ALU: 2.68, "Celik": 7.85, "Celik 8.8": 7.85, "Celik 10.9": 7.85, "Pirinc": 8.50}
+RHO = {"PETG": A.PETG_RHO * A.KABUK_DOLULUK, "PETG-CF": A.OMUZ["baski_rho"]["PETG-CF"][0] * A.OMUZ["baski_rho"]["PETG-CF"][1], ALU: 2.68, "Celik": 7.85, "Celik 8.8": 7.85, "Celik 10.9": 7.85, "Pirinc": 8.50}
 for p in P:
     sh = p["shape"]
     p["hacim"] = sh.Volume

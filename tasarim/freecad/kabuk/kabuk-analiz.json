@@ -1,14 +1,14 @@
 {
- "parca_sayisi": 312,
- "baski_sayisi": 28,
+ "parca_sayisi": 346,
+ "baski_sayisi": 31,
  "gecersiz": [],
  "coklu_kati": [],
  "temizlik": [],
  "cakisma": [],
- "cakisma_cift_sayisi": 767,
+ "cakisma_cift_sayisi": 915,
  "tolerans_mm3": 0.5,
  "iskelet_cakisma": [],
- "iskelet_cift_sayisi": 134,
+ "iskelet_cift_sayisi": 151,
  "bolge": {
   "kontrol_edilen": 51,
   "ihlal": [],
@@ -351,10 +351,10 @@
    ]
   },
   {
-   "ad": "Govde braketi sag y548",
+   "ad": "Govde braketi sag y530",
    "tip": "govde",
    "parca": "Govde uzatma bandi 1 sag",
-   "govde": "Govde braketi sag y548",
+   "govde": "Govde braketi sag y530",
    "eleman": [
     "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
@@ -365,10 +365,10 @@
    ]
   },
   {
-   "ad": "Govde braketi sol y548",
+   "ad": "Govde braketi sol y530",
    "tip": "govde",
    "parca": "Govde uzatma bandi 1 sol",
-   "govde": "Govde braketi sol y548",
+   "govde": "Govde braketi sol y530",
    "eleman": [
     "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
@@ -379,10 +379,10 @@
    ]
   },
   {
-   "ad": "Govde braketi sag y740",
+   "ad": "Govde braketi sag y688",
    "tip": "govde",
    "parca": "Govde uzatma bandi 2 sag",
-   "govde": "Govde braketi sag y740",
+   "govde": "Govde braketi sag y688",
    "eleman": [
     "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
@@ -393,10 +393,10 @@
    ]
   },
   {
-   "ad": "Govde braketi sol y740",
+   "ad": "Govde braketi sol y688",
    "tip": "govde",
    "parca": "Govde uzatma bandi 2 sol",
-   "govde": "Govde braketi sol y740",
+   "govde": "Govde braketi sol y688",
    "eleman": [
     "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
@@ -407,10 +407,10 @@
    ]
   },
   {
-   "ad": "Govde braketi sag y1165",
+   "ad": "Govde braketi sag y1095",
    "tip": "govde",
    "parca": "Gogus bandi sag",
-   "govde": "Govde braketi sag y1165",
+   "govde": "Govde braketi sag y1095",
    "eleman": [
     "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
@@ -421,10 +421,10 @@
    ]
   },
   {
-   "ad": "Govde braketi sol y1165",
+   "ad": "Govde braketi sol y1095",
    "tip": "govde",
    "parca": "Gogus bandi sol",
-   "govde": "Govde braketi sol y1165",
+   "govde": "Govde braketi sol y1095",
    "eleman": [
     "M6x14 DIN 912",
     "M6 cekic somun, kanal 10",
@@ -681,7 +681,7 @@
    "tamam": true
   },
   {
-   "ad": "Govde braketi sag y548",
+   "ad": "Govde braketi sag y530",
    "tip": "govde",
    "parca": "Govde uzatma bandi 1 sag",
    "kontroller": [
@@ -764,7 +764,7 @@
    "tamam": true
   },
   {
-   "ad": "Govde braketi sol y548",
+   "ad": "Govde braketi sol y530",
    "tip": "govde",
    "parca": "Govde uzatma bandi 1 sol",
    "kontroller": [
@@ -847,7 +847,7 @@
    "tamam": true
   },
   {
-   "ad": "Govde braketi sag y740",
+   "ad": "Govde braketi sag y688",
    "tip": "govde",
    "parca": "Govde uzatma bandi 2 sag",
    "kontroller": [
@@ -930,7 +930,7 @@
    "tamam": true
   },
   {
-   "ad": "Govde braketi sol y740",
+   "ad": "Govde braketi sol y688",
    "tip": "govde",
    "parca": "Govde uzatma bandi 2 sol",
    "kontroller": [
@@ -1013,7 +1013,7 @@
    "tamam": true
   },
   {
-   "ad": "Govde braketi sag y1165",
+   "ad": "Govde braketi sag y1095",
    "tip": "govde",
    "parca": "Gogus bandi sag",
    "kontroller": [
@@ -1073,7 +1073,7 @@
      true
     ],
     [
-     "M5 ISO 7380 basi kabuk dis yuzundeki oturmada (bas alti x 147.58, oturma 147.58)",
+     "M5 ISO 7380 basi kabuk dis yuzundeki oturmada (bas alti x 151.70, oturma 151.70)",
      0.0,
      true
     ],
@@ -1096,7 +1096,7 @@
    "tamam": true
   },
   {
-   "ad": "Govde braketi sol y1165",
+   "ad": "Govde braketi sol y1095",
    "tip": "govde",
    "parca": "Gogus bandi sol",
    "kontroller": [
@@ -1156,7 +1156,7 @@
      true
     ],
     [
-     "M5 ISO 7380 basi kabuk dis yuzundeki oturmada (bas alti x 147.58, oturma 147.58)",
+     "M5 ISO 7380 basi kabuk dis yuzundeki oturmada (bas alti x 151.70, oturma 151.70)",
      0.0,
      true
     ],
@@ -1608,7 +1608,7 @@
     "tamam": true
    },
    {
-    "braket": "Govde braketi sag y548",
+    "braket": "Govde braketi sag y530",
     "tip": "govde",
     "delik": 0,
     "uc_mm": 11.0,
@@ -1619,7 +1619,7 @@
     "tamam": true
    },
    {
-    "braket": "Govde braketi sag y548",
+    "braket": "Govde braketi sag y530",
     "tip": "govde",
     "delik": 1,
     "uc_mm": 11.0,
@@ -1630,7 +1630,7 @@
     "tamam": true
    },
    {
-    "braket": "Govde braketi sol y548",
+    "braket": "Govde braketi sol y530",
     "tip": "govde",
     "delik": 0,
     "uc_mm": 11.0,
@@ -1641,7 +1641,7 @@
     "tamam": true
    },
    {
-    "braket": "Govde braketi sol y548",
+    "braket": "Govde braketi sol y530",
     "tip": "govde",
     "delik": 1,
     "uc_mm": 11.0,
@@ -1652,7 +1652,7 @@
     "tamam": true
    },
    {
-    "braket": "Govde braketi sag y740",
+    "braket": "Govde braketi sag y688",
     "tip": "govde",
     "delik": 0,
     "uc_mm": 11.0,
@@ -1663,7 +1663,7 @@
     "tamam": true
    },
    {
-    "braket": "Govde braketi sag y740",
+    "braket": "Govde braketi sag y688",
     "tip": "govde",
     "delik": 1,
     "uc_mm": 11.0,
@@ -1674,7 +1674,7 @@
     "tamam": true
    },
    {
-    "braket": "Govde braketi sol y740",
+    "braket": "Govde braketi sol y688",
     "tip": "govde",
     "delik": 0,
     "uc_mm": 11.0,
@@ -1685,7 +1685,7 @@
     "tamam": true
    },
    {
-    "braket": "Govde braketi sol y740",
+    "braket": "Govde braketi sol y688",
     "tip": "govde",
     "delik": 1,
     "uc_mm": 11.0,
@@ -1696,7 +1696,7 @@
     "tamam": true
    },
    {
-    "braket": "Govde braketi sag y1165",
+    "braket": "Govde braketi sag y1095",
     "tip": "govde",
     "delik": 0,
     "uc_mm": 11.0,
@@ -1707,7 +1707,7 @@
     "tamam": true
    },
    {
-    "braket": "Govde braketi sag y1165",
+    "braket": "Govde braketi sag y1095",
     "tip": "govde",
     "delik": 1,
     "uc_mm": 11.0,
@@ -1718,7 +1718,7 @@
     "tamam": true
    },
    {
-    "braket": "Govde braketi sol y1165",
+    "braket": "Govde braketi sol y1095",
     "tip": "govde",
     "delik": 0,
     "uc_mm": 11.0,
@@ -1729,7 +1729,7 @@
     "tamam": true
    },
    {
-    "braket": "Govde braketi sol y1165",
+    "braket": "Govde braketi sol y1095",
     "tip": "govde",
     "delik": 1,
     "uc_mm": 11.0,
@@ -1869,7 +1869,7 @@
    "tamam": true
   },
   {
-   "etiket": "govde y669 on",
+   "etiket": "govde y634 on",
    "ic": "Govde uzatma bandi 1 sag",
    "dis": "Govde uzatma bandi 2 sag",
    "bas_dayali": 0.05,
@@ -1879,7 +1879,7 @@
    "tamam": true
   },
   {
-   "etiket": "govde y669 on",
+   "etiket": "govde y634 on",
    "ic": "Govde uzatma bandi 1 sol",
    "dis": "Govde uzatma bandi 2 sol",
    "bas_dayali": 0.05,
@@ -1889,7 +1889,7 @@
    "tamam": true
   },
   {
-   "etiket": "govde y669 arka",
+   "etiket": "govde y634 arka",
    "ic": "Govde uzatma bandi 1 sag",
    "dis": "Govde uzatma bandi 2 sag",
    "bas_dayali": 0.05,
@@ -1899,7 +1899,7 @@
    "tamam": true
   },
   {
-   "etiket": "govde y669 arka",
+   "etiket": "govde y634 arka",
    "ic": "Govde uzatma bandi 1 sol",
    "dis": "Govde uzatma bandi 2 sol",
    "bas_dayali": 0.05,
@@ -1909,7 +1909,7 @@
    "tamam": true
   },
   {
-   "etiket": "govde y669 yan",
+   "etiket": "govde y634 yan",
    "ic": "Govde uzatma bandi 1 sag",
    "dis": "Govde uzatma bandi 2 sag",
    "bas_dayali": 0.05,
@@ -1919,7 +1919,7 @@
    "tamam": true
   },
   {
-   "etiket": "govde y669 yan",
+   "etiket": "govde y634 yan",
    "ic": "Govde uzatma bandi 1 sol",
    "dis": "Govde uzatma bandi 2 sol",
    "bas_dayali": 0.05,
@@ -1929,7 +1929,7 @@
    "tamam": true
   },
   {
-   "etiket": "govde y862 on",
+   "etiket": "govde y792 on",
    "ic": "Govde uzatma bandi 2 sag",
    "dis": "Govde orta bandi sag",
    "bas_dayali": 0.05,
@@ -1939,7 +1939,7 @@
    "tamam": true
   },
   {
-   "etiket": "govde y862 on",
+   "etiket": "govde y792 on",
    "ic": "Govde uzatma bandi 2 sol",
    "dis": "Govde orta bandi sol",
    "bas_dayali": 0.05,
@@ -1949,7 +1949,7 @@
    "tamam": true
   },
   {
-   "etiket": "govde y862 arka",
+   "etiket": "govde y792 arka",
    "ic": "Govde uzatma bandi 2 sag",
    "dis": "Govde orta bandi sag",
    "bas_dayali": 0.05,
@@ -1959,7 +1959,7 @@
    "tamam": true
   },
   {
-   "etiket": "govde y862 arka",
+   "etiket": "govde y792 arka",
    "ic": "Govde uzatma bandi 2 sol",
    "dis": "Govde orta bandi sol",
    "bas_dayali": 0.05,
@@ -1969,7 +1969,7 @@
    "tamam": true
   },
   {
-   "etiket": "govde y862 yan",
+   "etiket": "govde y792 yan",
    "ic": "Govde uzatma bandi 2 sag",
    "dis": "Govde orta bandi sag",
    "bas_dayali": 0.05,
@@ -1979,7 +1979,7 @@
    "tamam": true
   },
   {
-   "etiket": "govde y862 yan",
+   "etiket": "govde y792 yan",
    "ic": "Govde uzatma bandi 2 sol",
    "dis": "Govde orta bandi sol",
    "bas_dayali": 0.05,
@@ -1989,27 +1989,27 @@
    "tamam": true
   },
   {
-   "etiket": "govde y1075 on",
+   "etiket": "govde y1005 on",
    "ic": "Govde orta bandi sag",
    "dis": "Gogus bandi sag",
    "bas_dayali": 0.05,
    "insert_oturdu": 0.0,
-   "kavrama": 4.74,
-   "dudak": 1.21,
+   "kavrama": 4.72,
+   "dudak": 1.23,
    "tamam": true
   },
   {
-   "etiket": "govde y1075 on",
+   "etiket": "govde y1005 on",
    "ic": "Govde orta bandi sol",
    "dis": "Gogus bandi sol",
    "bas_dayali": 0.05,
    "insert_oturdu": 0.0,
-   "kavrama": 4.74,
-   "dudak": 1.21,
+   "kavrama": 4.72,
+   "dudak": 1.23,
    "tamam": true
   },
   {
-   "etiket": "govde y1075 arka",
+   "etiket": "govde y1005 arka",
    "ic": "Govde orta bandi sag",
    "dis": "Gogus bandi sag",
    "bas_dayali": 0.05,
@@ -2019,7 +2019,7 @@
    "tamam": true
   },
   {
-   "etiket": "govde y1075 arka",
+   "etiket": "govde y1005 arka",
    "ic": "Govde orta bandi sol",
    "dis": "Gogus bandi sol",
    "bas_dayali": 0.05,
@@ -2029,47 +2029,27 @@
    "tamam": true
   },
   {
-   "etiket": "govde y1075 yan",
+   "etiket": "govde y1005 yan",
    "ic": "Govde orta bandi sag",
    "dis": "Gogus bandi sag",
    "bas_dayali": 0.05,
    "insert_oturdu": 0.0,
-   "kavrama": 4.47,
-   "dudak": 1.48,
+   "kavrama": 4.49,
+   "dudak": 1.46,
    "tamam": true
   },
   {
-   "etiket": "govde y1075 yan",
+   "etiket": "govde y1005 yan",
    "ic": "Govde orta bandi sol",
    "dis": "Gogus bandi sol",
    "bas_dayali": 0.05,
    "insert_oturdu": 0.0,
-   "kavrama": 4.47,
-   "dudak": 1.48,
+   "kavrama": 4.49,
+   "dudak": 1.46,
    "tamam": true
   },
   {
-   "etiket": "govde y1268 on",
-   "ic": "Gogus bandi sag",
-   "dis": "Omuz bandi sag",
-   "bas_dayali": 0.05,
-   "insert_oturdu": 0.0,
-   "kavrama": 4.5,
-   "dudak": 1.45,
-   "tamam": true
-  },
-  {
-   "etiket": "govde y1268 on",
-   "ic": "Gogus bandi sol",
-   "dis": "Omuz bandi sol",
-   "bas_dayali": 0.05,
-   "insert_oturdu": 0.0,
-   "kavrama": 4.5,
-   "dudak": 1.45,
-   "tamam": true
-  },
-  {
-   "etiket": "govde y1268 arka",
+   "etiket": "govde y1198 arka",
    "ic": "Gogus bandi sag",
    "dis": "Omuz bandi sag",
    "bas_dayali": 0.05,
@@ -2079,7 +2059,7 @@
    "tamam": true
   },
   {
-   "etiket": "govde y1268 arka",
+   "etiket": "govde y1198 arka",
    "ic": "Gogus bandi sag",
    "dis": "Omuz bandi sag",
    "bas_dayali": 0.05,
@@ -2089,7 +2069,7 @@
    "tamam": true
   },
   {
-   "etiket": "govde y1268 arka",
+   "etiket": "govde y1198 arka",
    "ic": "Gogus bandi sol",
    "dis": "Omuz bandi sol",
    "bas_dayali": 0.05,
@@ -2099,7 +2079,27 @@
    "tamam": true
   },
   {
-   "etiket": "govde y1268 arka",
+   "etiket": "govde y1198 arka",
+   "ic": "Gogus bandi sol",
+   "dis": "Omuz bandi sol",
+   "bas_dayali": 0.05,
+   "insert_oturdu": 0.0,
+   "kavrama": 4.45,
+   "dudak": 1.5,
+   "tamam": true
+  },
+  {
+   "etiket": "govde y1198 on",
+   "ic": "Gogus bandi sag",
+   "dis": "Omuz bandi sag",
+   "bas_dayali": 0.05,
+   "insert_oturdu": 0.0,
+   "kavrama": 4.45,
+   "dudak": 1.5,
+   "tamam": true
+  },
+  {
+   "etiket": "govde y1198 on",
    "ic": "Gogus bandi sol",
    "dis": "Omuz bandi sol",
    "bas_dayali": 0.05,
@@ -2204,8 +2204,8 @@
    "dis": "Gogus bandi sol",
    "bas_dayali": 0.05,
    "insert_oturdu": 0.0,
-   "kavrama": 4.5,
-   "dudak": 1.45,
+   "kavrama": 4.45,
+   "dudak": 1.5,
    "tamam": true
   },
   {
@@ -2789,12 +2789,12 @@
  },
  "bosluk": {
   "teker_etek_mm": 12.0,
-  "direk_govde_mm": 46.64
+  "direk_govde_mm": 0.0
  },
  "bindirme_bosluk": {
   "sart_min_mm": 0.15,
   "tasarim_mm": 0.25,
-  "en_az_mm": 0.1881,
+  "en_az_mm": 0.1835,
   "ihlal": [],
   "ciftler": [
    {
@@ -2832,7 +2832,7 @@
    {
     "dil": "Govde uzatma bandi 1 sag",
     "komsu": "Govde uzatma bandi 1 sol",
-    "dil_hacim_mm3": 5415.0,
+    "dil_hacim_mm3": 4365.0,
     "duvar_bosluk_mm": 0.25,
     "son_bosluk_mm": 0.0,
     "tamam": true
@@ -2864,7 +2864,7 @@
    {
     "dil": "Govde uzatma bandi 2 sag",
     "komsu": "Govde uzatma bandi 2 sol",
-    "dil_hacim_mm3": 5415.0,
+    "dil_hacim_mm3": 4365.0,
     "duvar_bosluk_mm": 0.25,
     "son_bosluk_mm": 0.0,
     "tamam": true
@@ -2872,8 +2872,8 @@
    {
     "dil": "Govde uzatma bandi 2 sag",
     "komsu": "Govde orta bandi sag",
-    "dil_hacim_mm3": 5713.0,
-    "duvar_bosluk_mm": 0.2495,
+    "dil_hacim_mm3": 5716.0,
+    "duvar_bosluk_mm": 0.2492,
     "son_bosluk_mm": 0.0,
     "tamam": true
    },
@@ -2888,8 +2888,8 @@
    {
     "dil": "Govde uzatma bandi 2 sol",
     "komsu": "Govde orta bandi sol",
-    "dil_hacim_mm3": 5353.0,
-    "duvar_bosluk_mm": 0.2495,
+    "dil_hacim_mm3": 5356.0,
+    "duvar_bosluk_mm": 0.2492,
     "son_bosluk_mm": 0.0,
     "tamam": true
    },
@@ -2897,15 +2897,15 @@
     "dil": "Govde orta bandi sag",
     "komsu": "Govde orta bandi sol",
     "dil_hacim_mm3": 3195.0,
-    "duvar_bosluk_mm": 0.25,
+    "duvar_bosluk_mm": 0.2047,
     "son_bosluk_mm": 0.0,
     "tamam": true
    },
    {
     "dil": "Govde orta bandi sag",
     "komsu": "Gogus bandi sag",
-    "dil_hacim_mm3": 5133.0,
-    "duvar_bosluk_mm": 0.1881,
+    "dil_hacim_mm3": 6262.0,
+    "duvar_bosluk_mm": 0.1835,
     "son_bosluk_mm": 0.0,
     "tamam": true
    },
@@ -2913,8 +2913,8 @@
     "dil": "Govde orta bandi sag",
     "komsu": "Gogus bandi sol",
     "dil_hacim_mm3": 180.0,
-    "duvar_bosluk_mm": 0.2019,
-    "son_bosluk_mm": 0.2019,
+    "duvar_bosluk_mm": 0.2047,
+    "son_bosluk_mm": 0.2047,
     "tamam": true
    },
    {
@@ -2928,8 +2928,8 @@
    {
     "dil": "Govde orta bandi sol",
     "komsu": "Gogus bandi sol",
-    "dil_hacim_mm3": 4953.0,
-    "duvar_bosluk_mm": 0.1881,
+    "dil_hacim_mm3": 6082.0,
+    "duvar_bosluk_mm": 0.1835,
     "son_bosluk_mm": 0.0,
     "tamam": true
    },
@@ -2944,16 +2944,16 @@
    {
     "dil": "Gogus bandi sag",
     "komsu": "Gogus bandi sol",
-    "dil_hacim_mm3": 3090.0,
-    "duvar_bosluk_mm": 0.2019,
+    "dil_hacim_mm3": 755.0,
+    "duvar_bosluk_mm": 0.2047,
     "son_bosluk_mm": 0.0,
     "tamam": true
    },
    {
     "dil": "Gogus bandi sag",
     "komsu": "Omuz bandi sag",
-    "dil_hacim_mm3": 5503.0,
-    "duvar_bosluk_mm": 0.2415,
+    "dil_hacim_mm3": 6048.0,
+    "duvar_bosluk_mm": 0.2495,
     "son_bosluk_mm": 0.0,
     "tamam": true
    },
@@ -2961,23 +2961,23 @@
     "dil": "Gogus bandi sag",
     "komsu": "Omuz bandi sol",
     "dil_hacim_mm3": 180.0,
-    "duvar_bosluk_mm": 0.2415,
-    "son_bosluk_mm": 0.2415,
+    "duvar_bosluk_mm": 0.25,
+    "son_bosluk_mm": 0.25,
     "tamam": true
    },
    {
     "dil": "Gogus bandi sag",
     "komsu": "Ust arka servis kapagi",
     "dil_hacim_mm3": 3587.0,
-    "duvar_bosluk_mm": 0.2497,
+    "duvar_bosluk_mm": 0.2498,
     "son_bosluk_mm": 0.0,
     "tamam": true
    },
    {
     "dil": "Gogus bandi sol",
     "komsu": "Omuz bandi sol",
-    "dil_hacim_mm3": 5323.0,
-    "duvar_bosluk_mm": 0.2415,
+    "dil_hacim_mm3": 5868.0,
+    "duvar_bosluk_mm": 0.2495,
     "son_bosluk_mm": 0.0,
     "tamam": true
    },
@@ -2985,15 +2985,15 @@
     "dil": "Gogus bandi sol",
     "komsu": "Ust arka servis kapagi",
     "dil_hacim_mm3": 3227.0,
-    "duvar_bosluk_mm": 0.2497,
+    "duvar_bosluk_mm": 0.2498,
     "son_bosluk_mm": 0.0,
     "tamam": true
    },
    {
     "dil": "Omuz bandi sag",
     "komsu": "Omuz bandi sol",
-    "dil_hacim_mm3": 2700.0,
-    "duvar_bosluk_mm": 0.2415,
+    "dil_hacim_mm3": 2250.0,
+    "duvar_bosluk_mm": 0.2498,
     "son_bosluk_mm": 0.0,
     "tamam": true
    },
@@ -3119,23 +3119,23 @@
    "olcu": [
     170.0,
     137.0,
-    204.5
+    169.5
    ],
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
    "sigar_okul": true,
-   "cikinti_orani": 0.0051,
-   "cikinti_alan_cm2": 8.8,
-   "yuzey_cm2": 1713.3,
+   "cikinti_orani": 0.0062,
+   "cikinti_alan_cm2": 8.9,
+   "yuzey_cm2": 1426.6,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 228.1,
-   "kutle_g": 261.0,
-   "filament_g": 274.0,
-   "sure_saat": 5.7,
-   "katman": 204,
+   "hacim_cm3": 186.9,
+   "kutle_g": 214.0,
+   "filament_g": 224.0,
+   "sure_saat": 4.7,
+   "katman": 169,
    "yon": "dik (alt kenari tablada)",
    "grup": "Govde kabugu"
   },
@@ -3144,23 +3144,23 @@
    "olcu": [
     170.0,
     125.0,
-    204.5
+    169.5
    ],
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
    "sigar_okul": true,
-   "cikinti_orani": 0.0047,
+   "cikinti_orani": 0.0057,
    "cikinti_alan_cm2": 7.6,
-   "yuzey_cm2": 1604.2,
+   "yuzey_cm2": 1334.3,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 214.4,
-   "kutle_g": 245.0,
-   "filament_g": 257.0,
-   "sure_saat": 5.4,
-   "katman": 204,
+   "hacim_cm3": 175.5,
+   "kutle_g": 201.0,
+   "filament_g": 211.0,
+   "sure_saat": 4.4,
+   "katman": 169,
    "yon": "dik (alt kenari tablada)",
    "grup": "Govde kabugu"
   },
@@ -3169,23 +3169,23 @@
    "olcu": [
     170.0,
     137.0,
-    204.5
+    169.5
    ],
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
    "sigar_okul": true,
-   "cikinti_orani": 0.0051,
+   "cikinti_orani": 0.0061,
    "cikinti_alan_cm2": 8.8,
-   "yuzey_cm2": 1713.6,
+   "yuzey_cm2": 1427.0,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 228.1,
-   "kutle_g": 261.0,
-   "filament_g": 274.0,
-   "sure_saat": 5.7,
-   "katman": 204,
+   "hacim_cm3": 186.9,
+   "kutle_g": 214.0,
+   "filament_g": 224.0,
+   "sure_saat": 4.7,
+   "katman": 169,
    "yon": "dik (alt kenari tablada)",
    "grup": "Govde kabugu"
   },
@@ -3194,47 +3194,47 @@
    "olcu": [
     170.0,
     125.0,
-    204.5
+    169.5
    ],
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
    "sigar_okul": true,
-   "cikinti_orani": 0.0047,
+   "cikinti_orani": 0.0057,
    "cikinti_alan_cm2": 7.6,
-   "yuzey_cm2": 1604.6,
+   "yuzey_cm2": 1334.8,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 214.5,
-   "kutle_g": 245.0,
-   "filament_g": 257.0,
-   "sure_saat": 5.4,
-   "katman": 204,
+   "hacim_cm3": 175.5,
+   "kutle_g": 201.0,
+   "filament_g": 211.0,
+   "sure_saat": 4.4,
+   "katman": 169,
    "yon": "dik (alt kenari tablada)",
    "grup": "Govde kabugu"
   },
   {
    "ad": "Govde orta bandi sag",
    "olcu": [
-    183.0,
-    150.1,
-    227.0
+    214.2,
+    161.8,
+    226.9
    ],
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
    "sigar_okul": true,
-   "cikinti_orani": 0.0046,
-   "cikinti_alan_cm2": 7.7,
-   "yuzey_cm2": 1673.3,
+   "cikinti_orani": 0.0044,
+   "cikinti_alan_cm2": 7.9,
+   "yuzey_cm2": 1780.9,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 218.2,
-   "kutle_g": 249.0,
-   "filament_g": 262.0,
-   "sure_saat": 5.5,
+   "hacim_cm3": 226.4,
+   "kutle_g": 259.0,
+   "filament_g": 272.0,
+   "sure_saat": 5.7,
    "katman": 226,
    "yon": "dik (alt kenari tablada)",
    "grup": "Govde kabugu"
@@ -3242,24 +3242,24 @@
   {
    "ad": "Govde orta bandi sol",
    "olcu": [
-    183.0,
-    138.1,
-    227.0
+    214.2,
+    149.8,
+    226.9
    ],
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
    "sigar_okul": true,
-   "cikinti_orani": 0.0041,
+   "cikinti_orani": 0.0039,
    "cikinti_alan_cm2": 6.6,
-   "yuzey_cm2": 1600.8,
+   "yuzey_cm2": 1706.1,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 209.7,
-   "kutle_g": 240.0,
-   "filament_g": 252.0,
-   "sure_saat": 5.2,
+   "hacim_cm3": 217.9,
+   "kutle_g": 249.0,
+   "filament_g": 262.0,
+   "sure_saat": 5.4,
    "katman": 226,
    "yon": "dik (alt kenari tablada)",
    "grup": "Govde kabugu"
@@ -3267,50 +3267,62 @@
   {
    "ad": "Gogus bandi sag",
    "olcu": [
-    208.9,
-    163.1,
-    205.0
+    217.2,
+    164.0,
+    235.0
    ],
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
    "sigar_okul": true,
-   "cikinti_orani": 0.0041,
-   "cikinti_alan_cm2": 7.6,
-   "yuzey_cm2": 1841.3,
-   "destek_sorun": [],
-   "destek_sorun_sayi": 0,
-   "desteksiz": true,
-   "hacim_cm3": 237.7,
-   "kutle_g": 272.0,
-   "filament_g": 285.0,
-   "sure_saat": 5.9,
-   "katman": 205,
+   "cikinti_orani": 0.0095,
+   "cikinti_alan_cm2": 13.7,
+   "yuzey_cm2": 1437.1,
+   "destek_sorun": [
+    {
+     "z": 207.5,
+     "alan": 454.0,
+     "boy": 158.4
+    }
+   ],
+   "destek_sorun_sayi": 1,
+   "desteksiz": false,
+   "hacim_cm3": 182.2,
+   "kutle_g": 208.0,
+   "filament_g": 219.0,
+   "sure_saat": 4.6,
+   "katman": 235,
    "yon": "dik (alt kenari tablada)",
    "grup": "Govde kabugu"
   },
   {
    "ad": "Gogus bandi sol",
    "olcu": [
-    208.9,
-    151.1,
-    205.0
+    217.2,
+    152.0,
+    235.0
    ],
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
    "sigar_okul": true,
-   "cikinti_orani": 0.0039,
-   "cikinti_alan_cm2": 6.8,
-   "yuzey_cm2": 1768.5,
-   "destek_sorun": [],
-   "destek_sorun_sayi": 0,
-   "desteksiz": true,
-   "hacim_cm3": 229.4,
-   "kutle_g": 262.0,
-   "filament_g": 275.0,
-   "sure_saat": 5.7,
-   "katman": 205,
+   "cikinti_orani": 0.0088,
+   "cikinti_alan_cm2": 12.3,
+   "yuzey_cm2": 1404.4,
+   "destek_sorun": [
+    {
+     "z": 207.5,
+     "alan": 421.0,
+     "boy": 146.4
+    }
+   ],
+   "destek_sorun_sayi": 1,
+   "desteksiz": false,
+   "hacim_cm3": 179.2,
+   "kutle_g": 205.0,
+   "filament_g": 215.0,
+   "sure_saat": 4.5,
+   "katman": 235,
    "yon": "dik (alt kenari tablada)",
    "grup": "Govde kabugu"
   },
@@ -3318,23 +3330,23 @@
    "ad": "Omuz bandi sag",
    "olcu": [
     164.0,
-    162.3,
+    156.2,
     102.0
    ],
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
    "sigar_okul": true,
-   "cikinti_orani": 0.0021,
-   "cikinti_alan_cm2": 2.6,
-   "yuzey_cm2": 1197.7,
+   "cikinti_orani": 0.002,
+   "cikinti_alan_cm2": 2.2,
+   "yuzey_cm2": 1106.1,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 167.1,
-   "kutle_g": 191.0,
-   "filament_g": 201.0,
-   "sure_saat": 4.2,
+   "hacim_cm3": 153.7,
+   "kutle_g": 176.0,
+   "filament_g": 184.0,
+   "sure_saat": 3.8,
    "katman": 102,
    "yon": "ters (ust kapak tablada)",
    "grup": "Govde kabugu"
@@ -3342,7 +3354,7 @@
   {
    "ad": "Omuz bandi sol",
    "olcu": [
-    162.3,
+    156.2,
     152.0,
     102.0
    ],
@@ -3350,16 +3362,16 @@
    "sigar": true,
    "sigar_cift": true,
    "sigar_okul": true,
-   "cikinti_orani": 0.0018,
-   "cikinti_alan_cm2": 2.0,
-   "yuzey_cm2": 1146.5,
+   "cikinti_orani": 0.0015,
+   "cikinti_alan_cm2": 1.6,
+   "yuzey_cm2": 1062.2,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 160.7,
-   "kutle_g": 184.0,
-   "filament_g": 193.0,
-   "sure_saat": 4.0,
+   "hacim_cm3": 148.2,
+   "kutle_g": 169.0,
+   "filament_g": 178.0,
+   "sure_saat": 3.7,
    "katman": 102,
    "yon": "ters (ust kapak tablada)",
    "grup": "Govde kabugu"
@@ -3377,7 +3389,7 @@
    "sigar_okul": true,
    "cikinti_orani": 0.0,
    "cikinti_alan_cm2": 0.0,
-   "yuzey_cm2": 625.7,
+   "yuzey_cm2": 625.8,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
@@ -3394,15 +3406,15 @@
    "olcu": [
     168.3,
     150.0,
-    3.4
+    3.0
    ],
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
    "sigar_okul": true,
-   "cikinti_orani": 0.0553,
-   "cikinti_alan_cm2": 28.8,
-   "yuzey_cm2": 520.2,
+   "cikinti_orani": 0.0,
+   "cikinti_alan_cm2": 0.0,
+   "yuzey_cm2": 520.1,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
@@ -3410,7 +3422,7 @@
    "kutle_g": 77.0,
    "filament_g": 80.0,
    "sure_saat": 1.7,
-   "katman": 3,
+   "katman": 2,
    "yon": "dis yuzu tablada",
    "grup": "Govde kabugu"
   },
@@ -3665,6 +3677,182 @@
    "grup": "Taban etegi"
   },
   {
+   "ad": "Gogus ekrani cercevesi sag",
+   "olcu": [
+    207.2,
+    147.0,
+    10.0
+   ],
+   "tabla_aci": 0,
+   "sigar": true,
+   "sigar_cift": true,
+   "sigar_okul": true,
+   "cikinti_orani": 0.0053,
+   "cikinti_alan_cm2": 0.9,
+   "yuzey_cm2": 161.9,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "hacim_cm3": 25.8,
+   "kutle_g": 30.0,
+   "filament_g": 31.0,
+   "sure_saat": 0.6,
+   "katman": 10,
+   "yon": "arka yuzu (flans) tablada",
+   "grup": "Gogus ekrani"
+  },
+  {
+   "ad": "Gogus ekrani cercevesi sol",
+   "olcu": [
+    207.2,
+    147.0,
+    10.0
+   ],
+   "tabla_aci": 0,
+   "sigar": true,
+   "sigar_cift": true,
+   "sigar_okul": true,
+   "cikinti_orani": 0.0053,
+   "cikinti_alan_cm2": 0.9,
+   "yuzey_cm2": 161.9,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "hacim_cm3": 25.8,
+   "kutle_g": 30.0,
+   "filament_g": 31.0,
+   "sure_saat": 0.6,
+   "katman": 10,
+   "yon": "arka yuzu (flans) tablada",
+   "grup": "Gogus ekrani"
+  },
+  {
+   "ad": "Gogus ekrani VESA tasiyici",
+   "olcu": [
+    106.2,
+    100.0,
+    63.4
+   ],
+   "tabla_aci": 0,
+   "sigar": true,
+   "sigar_cift": true,
+   "sigar_okul": true,
+   "cikinti_orani": 0.0931,
+   "cikinti_alan_cm2": 39.4,
+   "yuzey_cm2": 423.8,
+   "destek_sorun": [
+    {
+     "z": 32.5,
+     "alan": 117.1,
+     "boy": 48.0
+    },
+    {
+     "z": 33.5,
+     "alan": 103.8,
+     "boy": 38.0
+    },
+    {
+     "z": 34.5,
+     "alan": 103.8,
+     "boy": 38.0
+    },
+    {
+     "z": 35.5,
+     "alan": 103.8,
+     "boy": 38.0
+    },
+    {
+     "z": 36.5,
+     "alan": 96.9,
+     "boy": 38.0
+    },
+    {
+     "z": 37.5,
+     "alan": 43.5,
+     "boy": 16.5
+    },
+    {
+     "z": 37.5,
+     "alan": 43.5,
+     "boy": 16.5
+    },
+    {
+     "z": 38.5,
+     "alan": 104.9,
+     "boy": 38.0
+    },
+    {
+     "z": 39.5,
+     "alan": 103.8,
+     "boy": 38.0
+    },
+    {
+     "z": 40.5,
+     "alan": 103.8,
+     "boy": 38.0
+    },
+    {
+     "z": 41.5,
+     "alan": 103.8,
+     "boy": 38.0
+    },
+    {
+     "z": 42.5,
+     "alan": 103.8,
+     "boy": 38.0
+    },
+    {
+     "z": 43.5,
+     "alan": 103.8,
+     "boy": 38.0
+    },
+    {
+     "z": 44.5,
+     "alan": 103.8,
+     "boy": 38.0
+    },
+    {
+     "z": 45.5,
+     "alan": 103.8,
+     "boy": 38.0
+    },
+    {
+     "z": 46.5,
+     "alan": 103.8,
+     "boy": 38.0
+    },
+    {
+     "z": 47.5,
+     "alan": 103.8,
+     "boy": 38.0
+    },
+    {
+     "z": 48.5,
+     "alan": 103.8,
+     "boy": 38.0
+    },
+    {
+     "z": 49.5,
+     "alan": 103.8,
+     "boy": 38.0
+    },
+    {
+     "z": 50.5,
+     "alan": 103.8,
+     "boy": 38.0
+    }
+   ],
+   "destek_sorun_sayi": 28,
+   "desteksiz": false,
+   "hacim_cm3": 94.2,
+   "kutle_g": 108.0,
+   "filament_g": 113.0,
+   "sure_saat": 2.4,
+   "katman": 63,
+   "yon": "VESA plakasi tablada; arka flans destekli",
+   "grup": "Gogus ekrani"
+  },
+  {
    "ad": "S1 kaset govdesi sag",
    "olcu": [
     111.9,
@@ -3801,30 +3989,31 @@
    246.0
   ]
  },
- "kutle_g": 6119.0,
+ "kutle_g": 7095.8,
  "kutle_grup": {
-  "Govde kabugu": 3221.6,
+  "Govde kabugu": 2906.7,
   "Taban etegi": 2069.9,
+  "Gogus ekrani": 1289.8,
   "S1 kablo kaseti": 35.5,
-  "Govde braketleri": 545.8,
+  "Govde braketleri": 547.8,
   "Etek braketleri": 246.2
  },
  "kutle_tur": {
-  "Baski": 5199.4,
-  "Baglanti": 404.6,
-  "Satin": 515.1
+  "Baski": 5051.2,
+  "Baglanti": 448.5,
+  "Satin": 1596.0
  },
  "agirlik_merkezi": [
-  0.18,
-  587.49,
-  -0.12
+  0.15,
+  647.58,
+  12.61
  ],
  "bom": [
   [
    "Baglanti",
    "M3 isil gomme somun",
-   96,
-   25.6
+   104,
+   27.7
   ],
   [
    "Baglanti",
@@ -3841,14 +4030,26 @@
   [
    "Baglanti",
    "M3x6 ISO 7380",
-   92,
-   58.4
+   100,
+   63.4
   ],
   [
    "Baglanti",
    "M3x8 DIN 912",
    4,
    3.7
+  ],
+  [
+   "Baglanti",
+   "M4 DIN 125 pul",
+   4,
+   1.2
+  ],
+  [
+   "Baglanti",
+   "M4x12 DIN 912",
+   4,
+   9.0
   ],
   [
    "Baglanti",
@@ -3865,20 +4066,26 @@
   [
    "Baglanti",
    "M6 DIN 125 pul",
-   6,
-   6.1
+   8,
+   8.1
   ],
   [
    "Baglanti",
    "M6 cekic somun, kanal 10",
-   22,
-   113.7
+   24,
+   124.1
   ],
   [
    "Baglanti",
    "M6x14 DIN 912",
    22,
    136.3
+  ],
+  [
+   "Baglanti",
+   "M6x18 DIN 912",
+   2,
+   14.2
   ],
   [
    "Baski",
@@ -3950,13 +4157,31 @@
    "Baski",
    "Gogus bandi sag",
    1,
-   271.7
+   208.3
   ],
   [
    "Baski",
    "Gogus bandi sol",
    1,
-   262.2
+   204.8
+  ],
+  [
+   "Baski",
+   "Gogus ekrani VESA tasiyici",
+   1,
+   107.7
+  ],
+  [
+   "Baski",
+   "Gogus ekrani cercevesi sag",
+   1,
+   29.5
+  ],
+  [
+   "Baski",
+   "Gogus ekrani cercevesi sol",
+   1,
+   29.5
   ],
   [
    "Baski",
@@ -3974,49 +4199,49 @@
    "Baski",
    "Govde orta bandi sag",
    1,
-   249.4
+   258.8
   ],
   [
    "Baski",
    "Govde orta bandi sol",
    1,
-   239.7
+   249.1
   ],
   [
    "Baski",
    "Govde uzatma bandi 1 sag",
    1,
-   260.7
+   213.6
   ],
   [
    "Baski",
    "Govde uzatma bandi 1 sol",
    1,
-   245.1
+   200.6
   ],
   [
    "Baski",
    "Govde uzatma bandi 2 sag",
    1,
-   260.7
+   213.6
   ],
   [
    "Baski",
    "Govde uzatma bandi 2 sol",
    1,
-   245.1
+   200.6
   ],
   [
    "Baski",
    "Omuz bandi sag",
    1,
-   191.0
+   175.7
   ],
   [
    "Baski",
    "Omuz bandi sol",
    1,
-   183.7
+   169.4
   ],
   [
    "Baski",
@@ -4058,9 +4283,123 @@
    "Satin",
    "Govde braketi 3 mm Al U (bukum)",
    8,
-   348.0
+   350.0
+  ],
+  [
+   "Satin",
+   "Waveshare 11.6inch HDMI LCD (H) with case, 1920x1080 IPS, 10 nokta kapasitif",
+   1,
+   1079.0
   ]
  ],
- "step_kati": 312,
- "sure_s": 678.6
+ "step_kati": 346,
+ "sure_s": 4250.8,
+ "gogus_ekrani": {
+  "boy": 1580.0,
+  "S3": 1270.0,
+  "UZAMA": 315.0,
+  "duzlem_y": [
+   1018.85,
+   1220.0
+  ],
+  "duzlem_egik": 208.25,
+  "cep": [
+   294.65,
+   192.25
+  ],
+  "kasa_olcu_model": [
+   284.65,
+   182.25,
+   29.5
+  ],
+  "cep_merkez": [
+   0.0,
+   1119.42,
+   102.28
+  ],
+  "kasa_direk_mm": 28.27,
+  "kasa_direk_sart": 20.0,
+  "kasa_direk_tamam": true,
+  "kasa_gogus_sag_mm": 5.0,
+  "kasa_gogus_sol_mm": 5.0,
+  "kasa_cerceve_mm": [
+   0.2,
+   0.2
+  ],
+  "tasiyici_direk_mm": 0.0,
+  "tasiyici_kasa_mm": 0.0,
+  "cerceve_flans_kabuk_mm": [
+   0.0,
+   0.0
+  ],
+  "m6_uc_yuzden_mm": 10.4,
+  "m6_uc_sinir": [
+   9.3,
+   11.8
+  ],
+  "vida_sayi": 8,
+  "not_": "kasa zarf modeli; port yeri ve kasa arka bicimi dogrulanmadi",
+  "cerceve_on": {
+   "aktif": [
+    257.3,
+    145.4
+   ],
+   "cam_geri": 2.0,
+   "aktif_alana_giren_parca": {},
+   "aktif_cerceve_pay_mm": 14.175,
+   "kasa_on_cerceve_on_mm": 2.0,
+   "takoz_kalinlik_mm": 1.8,
+   "takoz_r_mm": 14.0,
+   "pencere_kose_aktif_kose_mm": 23.65,
+   "not_": "aktif alan kasa merkezinde kabul; kasa kose R dogrulanmadi"
+  },
+  "baski": {
+   "Gogus ekrani cercevesi sag": {
+    "olcu": [
+     207.2,
+     147.0,
+     10.0
+    ],
+    "sigar": true,
+    "sigar_okul": true,
+    "destek_sorun": 0,
+    "filament_g": 31.0,
+    "kutle_g": 30.0,
+    "sure_saat": 0.6,
+    "kod": "PETG baski, 3,0 mm duvar",
+    "renk": "kabuk"
+   },
+   "Gogus ekrani cercevesi sol": {
+    "olcu": [
+     207.2,
+     147.0,
+     10.0
+    ],
+    "sigar": true,
+    "sigar_okul": true,
+    "destek_sorun": 0,
+    "filament_g": 31.0,
+    "kutle_g": 30.0,
+    "sure_saat": 0.6,
+    "kod": "PETG baski, 3,0 mm duvar",
+    "renk": "kabuk"
+   },
+   "Gogus ekrani VESA tasiyici": {
+    "olcu": [
+     106.2,
+     100.0,
+     63.4
+    ],
+    "sigar": true,
+    "sigar_okul": true,
+    "destek_sorun": 28,
+    "filament_g": 113.0,
+    "kutle_g": 108.0,
+    "sure_saat": 2.4,
+    "kod": "PETG-CF baski",
+    "renk": "siyah"
+   }
+  },
+  "m6_tamam": true
+ }
 }

@@ -318,7 +318,7 @@ log("tahrik")
 # ====================================================================== 4) AKU + KAYIS + TAKOZ
 AK = T["aku"]
 AKU = add("Aku LiFePO4 12,8 V (yatik)", "Guc", tasi(aku_local(), *AK["merkez"]), "Satin", "LiFePO4",
-          kod="LiFePO4 12,8 V 24 Ah (yuva 181 x 77 x 167)", renk="aku", patlat=(0, 0, -330), kutle=AK["kutle_g"], not_=AK["not_"])
+          kod="LiFePO4 12,8 V 20 Ah Victron SuperPack (yuva 181 x 77 x 167)", renk="aku", patlat=(0, 0, -330), kutle=AK["kutle_g"], not_=AK["not_"])
 ya1 = AK["merkez"][1] + AK["olcu"][1]
 for z in T["kayis_z"]:
     z0, z1 = z - T["kayis_en"] / 2, z + T["kayis_en"] / 2
