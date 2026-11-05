@@ -726,6 +726,73 @@ for _ad, _h in ETEK_KAPAK.items():
             KAPAK_VIDA.append(dict(kapak=_ad, ic=_ic, p=V(_x, A.Y_COV1, _z), t=_h["t"]))
 log("etek kapak civatalari:", [(v["kapak"][-14:], v["ic"]) for v in KAPAK_VIDA])
 
+# ====================================================================== ses + USB, secim B (Duffy 05.11.2026; lale158/kafa-yerlesim/secenekler.md, arayuz.SES_USB)
+# Hoparlor gogus altinda orta bant sag on duvarinda, eksen duvara dik (kama yok; dinleyiciye eksen disi, secenekler.md 7). Kap, kulak ve izgara VARSAYIM: urun elde gorulmeden kesinlesmez.
+# Kap iki baski: on halka + flansli arka; tek parca kabin 2 destek sorunu vardi (kulaklar ortada), ayrilinca flans yuzu tablada.
+SU = A.SES_USB
+_HP = SU["hoparlor"]
+_h_y0, _h_z0 = _HP["ic"][0]
+_h_al = math.atan((_HP["ic"][1][1] - _h_z0) / (_HP["ic"][1][0] - _h_y0))
+HOP_C = V(_HP["x"], _HP["y"], _h_z0 + (_HP["y"] - _h_y0) * math.tan(_h_al))
+HOP_N = V(0.0, -math.sin(_h_al), math.cos(_h_al))
+_i = HOP_N * -1
+_e1 = V(1, 0, 0)
+_e2 = HOP_N.cross(_e1)
+_e2.normalize()
+HOP_MERKEZ = HOP_C + _i * 0.5                    # diyafram onu
+HOP_ARKA = HOP_C + _i * (0.5 + _HP["boy"])
+_hop = Part.makeCylinder(_HP["cap"] / 2, _HP["boy"], HOP_MERKEZ, _i)
+_R_DIS, _R_IC = 23.0, 20.5
+_kap_on = Part.makeCylinder(_R_DIS, 7.0, HOP_C + _i * 0.2, _i).cut(Part.makeCylinder(_R_IC, 9.0, HOP_C + _i * (-0.8), _i))
+_kap_ar = Part.makeCylinder(_R_DIS, 15.0, HOP_C + _i * 7.2, _i).cut(Part.makeCylinder(_R_IC, 17.0, HOP_C + _i * 6.2, _i))
+_fl = Part.makeCylinder(35.0, 3.0, HOP_C + _i * 7.2, _i).cut(Part.makeCylinder(_R_IC, 5.0, HOP_C + _i * 6.2, _i))
+_w = 11.0
+_pts = [HOP_C + _e1 * 36 + _e2 * _w, HOP_C - _e1 * 36 + _e2 * _w, HOP_C - _e1 * 36 - _e2 * _w, HOP_C + _e1 * 36 - _e2 * _w, HOP_C + _e1 * 36 + _e2 * _w]
+_kirp = Part.Face(Part.makePolygon([q + _i * 6.0 for q in _pts])).extrude(_i * 6.0)
+_kap_ar = _kap_ar.fuse(_fl.common(_kirp)).removeSplitter()
+HOP_VIDA = []
+_AD_OB = "Govde orta bandi sag"
+_izg = []
+for _a in range(-3, 4):
+    for _b in range(-3, 4):
+        _q = _e1 * (_a * 6.5 + (0.5 * 6.5 if _b % 2 else 0.0)) + _e2 * (_b * 5.63)
+        if _q.Length <= 17.0:
+            _izg.append(Part.makeCylinder(1.75, 8.0, HOP_C + _q + _i * 1.0, HOP_N))
+for _sg in (1, -1):
+    _pe = HOP_C + _e1 * (_sg * _HP["kulak_e"])
+    EKLE[_AD_OB].append(damla(_pe + HOP_N * 0.05, _i, 4.0, 7.25, DOWN))
+    CIKAR[_AD_OB].append(insert_hole(3, _pe + _i * 7.2, HOP_N, extra=0.5))
+    _kap_ar = _kap_ar.cut(Part.makeCylinder(CLEAR[3] / 2, 5.0, _pe + _i * 6.2, _i))
+    HOP_VIDA.append(_pe)
+CIKAR[_AD_OB].extend(_izg)
+_HOP_PAT = (45, 60, 190)
+for _ad, _sh, _yon in (("Hoparlor kabi on halka", _kap_on, "VARSAYIM kap; on halka, duz (desteksiz)"),
+                       ("Hoparlor kabi arka (flansli)", _kap_ar, "VARSAYIM kap; flans yuzu tablada (desteksiz)")):
+    PARCA[_ad] = dict(shape=_sh.removeSplitter(), yukari=_i, yon=_yon, patlat=_HOP_PAT, grup="Ses ve USB")
+    EKLE[_ad], CIKAR[_ad] = [], []
+
+# Hub: ust arka servis kapaginin ic yuzunde. Ic yuz egik (y 1085 z -82,37; y 1157 z -79,51), hub yatay: kapaga bitisik takoz (kapakla tek baski, dis yuz tablada) + 1 mm kopuk bant + iki yan dayama.
+# Toplam kapak-hub araligi 1...3,9 mm; takoz y 1150'de biter (ince ucu icin; kalan 7 mm'de bant yok). Hub kablolari kapak sokme payli (arayuz SES_USB kapak_sokme_pay).
+HB = SU["hub"]
+_AD_KP2 = "Ust arka servis kapagi"
+(_hy0, _hz0), (_hy1, _hz1) = HB["ic_z"]
+
+
+def _kapak_ic_z(y):
+    return _hz0 + (y - _hy0) * (_hz1 - _hz0) / (_hy1 - _hy0)
+
+
+def _yz_prizma(x0, x1, y0, y1, z_ust):
+    """Kapak ic yuzune 1 mm gomulu, ustu z_ust duz prizma."""
+    pol = [V(x0, y0, _kapak_ic_z(y0) - 1.0), V(x0, y1, _kapak_ic_z(y1) - 1.0), V(x0, y1, z_ust), V(x0, y0, z_ust), V(x0, y0, _kapak_ic_z(y0) - 1.0)]
+    return Part.Face(Part.makePolygon(pol)).extrude(V(x1 - x0, 0, 0))
+
+
+_hb_alt = HB["z_alt"]
+EKLE[_AD_KP2].append(_yz_prizma(HB["x"][0], HB["x"][1], HB["y"][0], HB["takoz_y1"], _hb_alt - HB["kopuk"]))
+for (_rx0, _rx1) in HB["ray_x"]:
+    EKLE[_AD_KP2].append(_yz_prizma(_rx0, _rx1, HB["ray_y"][0], HB["ray_y"][1], _hb_alt + HB["ray_ust"]))
+
 TEMIZLIK = []
 for ad, d in PARCA.items():
     sh = d["shape"]
@@ -811,6 +878,14 @@ for yy_ in GE_M6_Y:
     add("Cekic somun M6 (direk on kanali)", "Gogus ekrani", hammer_nut(V(0, yy_, _z_d - A.LIP), _nz, (1, 0, 0)), "Baglanti", "Celik", kod="M6 cekic somun, kanal 10", renk="celik",
         patlat=tuple(_tn - _nz * 15))
 
+# ====================================================================== ses + USB: hoparlor, kap vidalari, hub, kopuk bant (B; arayuz.SES_USB)
+add("Hoparlor 40 x 20", "Ses ve USB", _hop, "Satin", "-", kod="Hoparlor 4 ohm 3 W 40 x 20 (v4 satir 30)", renk="siyah", patlat=_HOP_PAT, kutle=_HP["kutle_g"], not_=_HP["durum"])
+for _pe in HOP_VIDA:
+    add("Isil gomme somun M3 (hoparlor boss)", "Ses ve USB", insert(3, _pe + _i * 7.2, HOP_N), "Baglanti", "Pirinc", kod="M3 isil gomme somun", renk="pirinc", patlat=tuple(V(*PARCA[_AD_OB]["patlat"])))
+    add("Hoparlor kabi civatasi M3x8", "Ses ve USB", screw912(3, 8, _pe + _i * 10.2, HOP_N), "Baglanti", "Celik 8.8", kod="M3x8 DIN 912", renk="celik", patlat=_HOP_PAT)
+add("USB Hub 4 lu (kapak ici)", "Ses ve USB", box(HB["x"][0], HB["x"][1], HB["y"][0], HB["y"][1], _hb_alt, _hb_alt + HB["h"]), "Satin", "-", kod="USB Hub 4 lu 72 x 25 x 19", renk="pcb", patlat=(0, 40, -170), kutle=HB["kutle_g"],
+    not_="ust arka servis kapagi icinde; kopuk bant + 2 yan dayama; " + HB["durum"])
+add("Kopuk bant (USB Hub kapak ici)", "Ses ve USB", box(HB["x"][0], HB["x"][1], HB["y"][0], HB["takoz_y1"], _hb_alt - HB["kopuk"], _hb_alt), "Satin", "Kopuk", kod="Cift tarafli kopuk bant 1 mm (VHB)", renk="siyah", patlat=(0, 40, -170))
 # ====================================================================== etek kapak civatalari (K5 / K6, Y3)
 for v in KAPAK_VIDA:
     v["i_insert"] = add("Isil gomme somun M3 (%s)" % v["kapak"], "Taban etegi", insert(3, v["p"], DOWN), "Baglanti", "Pirinc",
@@ -924,7 +999,7 @@ for g in EB_YER:
                     parca=g["parca"]))
 
 # ====================================================================== kutle ve merkez
-RHO = {"PETG": A.PETG_RHO * A.KABUK_DOLULUK, "PETG-CF": A.OMUZ["baski_rho"]["PETG-CF"][0] * A.OMUZ["baski_rho"]["PETG-CF"][1], ALU: 2.68, "Celik": 7.85, "Celik 8.8": 7.85, "Celik 10.9": 7.85, "Pirinc": 8.50}
+RHO = {"PETG": A.PETG_RHO * A.KABUK_DOLULUK, "PETG-CF": A.OMUZ["baski_rho"]["PETG-CF"][0] * A.OMUZ["baski_rho"]["PETG-CF"][1], ALU: 2.68, "Celik": 7.85, "Celik 8.8": 7.85, "Celik 10.9": 7.85, "Pirinc": 8.50, "Kopuk": 0.10}
 for p in P:
     sh = p["shape"]
     p["hacim"] = sh.Volume

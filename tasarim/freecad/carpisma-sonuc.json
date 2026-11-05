@@ -56,7 +56,7 @@
     0.0
    ],
    "ayna": false,
-   "parca": 346,
+   "parca": 355,
    "haric": [],
    "haric_neden": "",
    "hareketli": false,
@@ -5724,7 +5724,7 @@
     "kaba": 2860,
     "ince": 0
    },
-   "aday": 183005,
+   "aday": 193419,
    "tam_olcum": 2156,
    "cakisan_tam_poz_aralikta": 0,
    "cakisan_tam_poz_aralik_disi": 63,
@@ -8980,7 +8980,7 @@
    "yakin_aralikta": [],
    "yakin_aralikta_sayi": 0,
    "bosluk_notu": "olculmeyen ciftlerin boslugu >= 150 mm (sinir kutusu); YAKIN = 5 mm altindaki her aday tam olculdu",
-   "sure_s": 278.8
+   "sure_s": 171.8
   },
   "sol": {
    "taraf": "sol",
@@ -9053,7 +9053,7 @@
     "kaba": 2860,
     "ince": 0
    },
-   "aday": 184049,
+   "aday": 184838,
    "tam_olcum": 2156,
    "cakisan_tam_poz_aralikta": 0,
    "cakisan_tam_poz_aralik_disi": 63,
@@ -12309,7 +12309,7 @@
    "yakin_aralikta": [],
    "yakin_aralikta_sayi": 0,
    "bosluk_notu": "olculmeyen ciftlerin boslugu >= 150 mm (sinir kutusu); YAKIN = 5 mm altindaki her aday tam olculdu",
-   "sure_s": 281.7
+   "sure_s": 168.6
   }
  },
  "kol_kol": {
@@ -18610,7 +18610,7 @@
     "kutu_bosluk_min": 290.0
    }
   ],
-  "sure_s": 81.0,
+  "sure_s": 45.6,
   "not_": "hareketli: iki kolun omuz gobegi + ust kol (omuz) + dirsek parcalari; poz = (one-arka, yana, dirsek, bilek), sol kolda ayni acilar aynali hareket"
  },
  "kafa_tarama": {
@@ -19153,14 +19153,14 @@
      "aralikta": true
     }
    ],
-   "sure_s": 153.2
+   "sure_s": 102.5
   },
   "kol": {
    "sag": {
     "kol_alt_oge": 40050,
     "zarfa_yakin_alt_oge": 5580,
     "kafa_oge": 15633,
-    "aday": 938879,
+    "aday": 908873,
     "ince_aday": 0,
     "ince_tur": 0,
     "ince_isaretli": 0,
@@ -19953,13 +19953,13 @@
       "cakisan_kafa_poz": []
      }
     ],
-    "sure_s": 772.0
+    "sure_s": 496.8
    },
    "sol": {
     "kol_alt_oge": 40050,
     "zarfa_yakin_alt_oge": 5580,
     "kafa_oge": 15633,
-    "aday": 938105,
+    "aday": 906631,
     "ince_aday": 0,
     "ince_tur": 0,
     "ince_isaretli": 0,
@@ -20752,11 +20752,11 @@
       "cakisan_kafa_poz": []
      }
     ],
-    "sure_s": 739.7
+    "sure_s": 487.5
    }
   },
   "not_": "kafa pozu = (pan, tilt); kol pozu = (one-arka, yana, dirsek, bilek); alt poz: kafa Govde (), Pan (pan), Kafa (pan, tilt); kol Gobek (one-arka), Kol/UstKol (one-arka, yana), OnKol (+dirsek), El (+bilek). Eklem araligi: kafa pan +-90, tilt -25...30 ve kol araligi; aralik disi = kafa pan +-90 disi ya da tilt 40 (serbest -25...40) ya da kol ince komsulugu disi. Olculmeyen ciftlerin boslugu >= 100 mm (sinir kutusu).",
-  "sure_s": 1665.8
+  "sure_s": 1087.4
  },
  "taban_tarama": {
   "statik": {
@@ -21051,7 +21051,7 @@
      "not_": "siki tutucu kutunun alt siniri (gercek nokta en cok ~0,5 mm yukarida)"
     },
     "taban_en_ust_y_mm": 290.0,
-    "sure_s": 14.3
+    "sure_s": 7.7
    },
    "sol": {
     "poz": {
@@ -21243,7 +21243,7 @@
      "not_": "siki tutucu kutunun alt siniri (gercek nokta en cok ~0,5 mm yukarida)"
     },
     "taban_en_ust_y_mm": 290.0,
-    "sure_s": 13.3
+    "sure_s": 7.6
    }
   },
   "kafa": {
@@ -21272,7 +21272,7 @@
   "hedef_sayisi": 359,
   "yakin_mm": 5.0,
   "not_": "kol pozu = (one-arka, yana, dirsek, bilek); aralik disi halka omuz -60 / 150, yana -10. Hedef: taban parcalari (kablo yolu semalari haric), ana anahtar dugmesi gosterimi, kabuk etek parcalari. Bulunan en kucugun otesindeki ciftler olculmedi (siki kutu boslugu alt sinir).",
-  "sure_s": 50.2
+  "sure_s": 28.8
  },
  "toplam": {
   "cakisma": 364,
@@ -21291,30 +21291,30 @@
   "iskelet": 6410.8,
   "omuz_sag": 567.6,
   "omuz_sol": 567.6,
-  "kabuk": 7095.8,
+  "kabuk": 7165.4,
   "dirsek_sag": 400.5,
   "dirsek_sol": 400.5,
-  "kafa": 2084.4,
+  "kafa": 2088.5,
   "taban": 7909.8
  },
- "kutle_toplam_g": 25436.9,
+ "kutle_toplam_g": 25510.6,
  "agirlik_merkezi": [
-  -0.08,
-  529.85,
-  -8.48
+  -0.03,
+  531.47,
+  -8.39
  ],
  "tolerans_mm3": 0.5,
- "sure_s": 20419.7,
+ "sure_s": 19372.1,
  "bolumler": {
   "statik": {
    "durum": "tamam",
-   "kosu": "20261104-174345",
-   "baslangic": "2026-11-04T17:45:25",
-   "bitis": "2026-11-04T17:45:48",
-   "sure_s": 23.3,
-   "yukleme_s": 100.1,
-   "tepe_bellek_mb": 743,
-   "tepe_sayfa_mb": 2653,
+   "kosu": "20261105-185759",
+   "baslangic": "2026-11-05T18:59:06",
+   "bitis": "2026-11-05T18:59:20",
+   "sure_s": 13.9,
+   "yukleme_s": 66.9,
+   "tepe_bellek_mb": 747,
+   "tepe_sayfa_mb": 2655,
    "ayni_surec": [
     "statik"
    ],
@@ -21351,13 +21351,13 @@
   },
   "kol_sag": {
    "durum": "tamam",
-   "kosu": "20261104-174345",
-   "baslangic": "2026-11-04T17:47:29",
-   "bitis": "2026-11-04T17:52:08",
-   "sure_s": 278.9,
-   "yukleme_s": 99.8,
-   "tepe_bellek_mb": 733,
-   "tepe_sayfa_mb": 2642,
+   "kosu": "20261105-185759",
+   "baslangic": "2026-11-05T19:00:27",
+   "bitis": "2026-11-05T19:03:19",
+   "sure_s": 171.8,
+   "yukleme_s": 66.5,
+   "tepe_bellek_mb": 739,
+   "tepe_sayfa_mb": 2647,
    "ayni_surec": [
     "kol_sag"
    ],
@@ -21372,13 +21372,13 @@
   },
   "kol_sol": {
    "durum": "tamam",
-   "kosu": "20261104-174345",
-   "baslangic": "2026-11-04T17:53:46",
-   "bitis": "2026-11-04T17:58:28",
-   "sure_s": 281.8,
-   "yukleme_s": 97.3,
-   "tepe_bellek_mb": 743,
-   "tepe_sayfa_mb": 2651,
+   "kosu": "20261105-185759",
+   "baslangic": "2026-11-05T19:04:24",
+   "bitis": "2026-11-05T19:07:12",
+   "sure_s": 168.7,
+   "yukleme_s": 64.3,
+   "tepe_bellek_mb": 735,
+   "tepe_sayfa_mb": 2645,
    "ayni_surec": [
     "kol_sol"
    ],
@@ -21393,13 +21393,13 @@
   },
   "kolkol": {
    "durum": "tamam",
-   "kosu": "20261104-174345",
-   "baslangic": "2026-11-04T17:58:45",
-   "bitis": "2026-11-04T18:00:06",
-   "sure_s": 81.0,
-   "yukleme_s": 17.0,
-   "tepe_bellek_mb": 161,
-   "tepe_sayfa_mb": 2178,
+   "kosu": "20261105-185759",
+   "baslangic": "2026-11-05T19:07:25",
+   "bitis": "2026-11-05T19:08:11",
+   "sure_s": 45.6,
+   "yukleme_s": 12.3,
+   "tepe_bellek_mb": 196,
+   "tepe_sayfa_mb": 2198,
    "ayni_surec": [
     "kolkol"
    ],
@@ -21412,13 +21412,13 @@
   },
   "kafa_sabit": {
    "durum": "tamam",
-   "kosu": "20261104-174345",
-   "baslangic": "2026-11-04T18:01:55",
-   "bitis": "2026-11-04T18:04:28",
-   "sure_s": 153.4,
-   "yukleme_s": 107.8,
-   "tepe_bellek_mb": 737,
-   "tepe_sayfa_mb": 2644,
+   "kosu": "20261105-185759",
+   "baslangic": "2026-11-05T19:09:24",
+   "bitis": "2026-11-05T19:11:06",
+   "sure_s": 102.6,
+   "yukleme_s": 72.5,
+   "tepe_bellek_mb": 734,
+   "tepe_sayfa_mb": 2642,
    "ayni_surec": [
     "kafa_sabit"
    ],
@@ -21433,13 +21433,13 @@
   },
   "kafa_sag": {
    "durum": "tamam",
-   "kosu": "20261104-174345",
-   "baslangic": "2026-11-04T18:04:47",
-   "bitis": "2026-11-04T18:17:39",
-   "sure_s": 772.3,
-   "yukleme_s": 17.8,
-   "tepe_bellek_mb": 582,
-   "tepe_sayfa_mb": 2601,
+   "kosu": "20261105-185759",
+   "baslangic": "2026-11-05T19:11:25",
+   "bitis": "2026-11-05T19:19:42",
+   "sure_s": 497.0,
+   "yukleme_s": 17.7,
+   "tepe_bellek_mb": 614,
+   "tepe_sayfa_mb": 2638,
    "ayni_surec": [
     "kafa_sag"
    ],
@@ -21451,13 +21451,13 @@
   },
   "kafa_sol": {
    "durum": "tamam",
-   "kosu": "20261104-174345",
-   "baslangic": "2026-11-04T18:17:57",
-   "bitis": "2026-11-04T18:30:17",
-   "sure_s": 740.1,
-   "yukleme_s": 17.5,
-   "tepe_bellek_mb": 573,
-   "tepe_sayfa_mb": 2595,
+   "kosu": "20261105-185759",
+   "baslangic": "2026-11-05T19:19:56",
+   "bitis": "2026-11-05T19:28:04",
+   "sure_s": 487.8,
+   "yukleme_s": 14.0,
+   "tepe_bellek_mb": 625,
+   "tepe_sayfa_mb": 2644,
    "ayni_surec": [
     "kafa_sol"
    ],
@@ -21469,13 +21469,13 @@
   },
   "taban": {
    "durum": "tamam",
-   "kosu": "20261104-174345",
-   "baslangic": "2026-11-04T18:32:10",
-   "bitis": "2026-11-04T18:33:00",
-   "sure_s": 50.2,
-   "yukleme_s": 112.2,
-   "tepe_bellek_mb": 736,
-   "tepe_sayfa_mb": 2721,
+   "kosu": "20261105-185759",
+   "baslangic": "2026-11-05T19:29:17",
+   "bitis": "2026-11-05T19:29:46",
+   "sure_s": 28.8,
+   "yukleme_s": 72.5,
+   "tepe_bellek_mb": 739,
+   "tepe_sayfa_mb": 2744,
    "ayni_surec": [
     "taban"
    ],
@@ -21492,17 +21492,17 @@
   }
  },
  "kaynak": {
-  "arayuz.py": "3263e669ab",
+  "arayuz.py": "d333e41246",
   "carpisma.py": "c688d738c3",
   "dirsek/dirsek_lib.py": "2f3a3b77fb",
   "dirsek/dirsek_parcalar.py": "7182c29899",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
   "kabuk/kabuk_lib.py": "a848c28ddc",
-  "kabuk/kabuk_parcalar.py": "d82f39c382",
-  "kafa/kafa-analiz.json": "8d8c41b670",
-  "kafa/kafa10_lib.py": "3261794aef",
-  "kafa/kafa_lib.py": "1a85133046",
-  "kafa/kafa_parcalar.py": "ab3398a9b6",
+  "kabuk/kabuk_parcalar.py": "0abfd960ab",
+  "kafa/kafa-analiz.json": "ebccb84751",
+  "kafa/kafa10_lib.py": "5a75b90e69",
+  "kafa/kafa_lib.py": "8dc6d8d718",
+  "kafa/kafa_parcalar.py": "22229bcdd0",
   "omuz/omuz_lib.py": "b5c14c4ed2",
   "omuz/omuz_parcalar.py": "62b19c7371",
   "ortak_lib.py": "a668036c1b",
@@ -21511,5 +21511,5 @@
   "taban/taban_parcalar.py": "c5f30375d4"
  },
  "tek_kosu": false,
- "birlestirme_notu": "2026-11-04: EKSIK / KARISIK birlestirme: eksik bolum yok; kosu kimlikleri ['20261103-215611', '20261104-174345']; kaynak ayni: False. Tam sonuc icin 'python carpisma_kos.py' ile tum bolumleri yeniden kos."
+ "birlestirme_notu": "2026-11-05: EKSIK / KARISIK birlestirme: eksik bolum yok; kosu kimlikleri ['20261103-215611', '20261105-185759']; kaynak ayni: False. Tam sonuc icin 'python carpisma_kos.py' ile tum bolumleri yeniden kos."
 }

@@ -11,7 +11,7 @@
 #                            catalin 4x M3x8 mil civatasi yerine boyun yukseltme adaptoru (PETG) + 4x M3 saplama (DIN 976; mil flansindaki
 #                            mevcut isil gomme somunlara) + pul + M3 DIN 985 (kafa10_lib.adaptor).
 #   Kafa (Pan * tilt)      : 10,1" QLED ekranli kafa (kafa10_lib.kur): iskelet (tabla + yanaklar), 4 kabuk parcasi (on/arka x sag/sol),
-#                            ekran (4 tirnak), Camera Module 3, Pi 5 + 5 V cevirici (D24V50F5) + SY8205 + TVS + amfi + hub + USB ses karti + PAM8403; 125 cm'den tilt horn'u, horn vidasi, 625ZZ
+#                            ekran (4 tirnak), Camera Module 3, Pi 5 + 5 V cevirici (D24V50F5) + SY8205 + TVS + USB ses karti + PAM8403 (sol duvar) + ReSpeaker (tavan altinda, B + R1 05.11.2026); hub kabukta; 125 cm'den tilt horn'u, horn vidasi, 625ZZ
 #                            dis bilezigi ve 4 yanak-horn civatasi (eksene gore ayni yerde). Tilt ekseni Bas grubunun AM'sinden gecer
 #                            (arayuz.KAFA denge dy / zb; kafa_montaj olcer).
 import os, sys, math, time

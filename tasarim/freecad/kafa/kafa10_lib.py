@@ -46,6 +46,9 @@ TABLA_X = 112.0             # tabla yari genisligi (224 <= 230 baski hedefi)
 LEDGE = dict(x0=100.0, y=(19.0, Y_TABLA[0]), w=8.0, civata_x=106.0)   # arka kabuk yan duvarinda tabla rafi (2 / taraf)
 YARIK = dict(x=38.0, z_on=41.0, h=12.0, r=12.0)  # kafa alt duvarinda boyun acikligi: R30 boyun x tilt +-15 suprulmesi + 3 mm; arka duvarin
                                                 # altinda 12 mm centik (tilt -15'te arka-alt kose rulman yuvasina iner)
+SU = A.SES_USB               # kafa ici ses + USB yerlesimi (secim B + R1, Duffy 05.11.2026; lale158/kafa-yerlesim)
+STP_DIZI = os.path.join(UST, "lale158", "kafa-yerlesim", "kaynak", "RESPEAKER-MIC-3D-v2.0.stp")
+_stp_dizi = None
 CAM_Y = 101.0               # kamera lens ekseni (ekran merkezine gore), ekranin ustunde
 Z_CAM = ZF - KT - 6.5       # kamera PCB on yuzu (eski kafada on duvar icinden 6,5 geride)
 DOLULUK = 0.80              # kucuk PETG parcalar (eski kafa ile ayni, tahmini)
@@ -66,6 +69,16 @@ def _ax(p):
 HORN_T = [_ax(h) for h in KP.HORN_T]
 X_SAG, X_SOL, X_RUL = KP.X_SAG, KP.X_SOL, KP.X_RUL
 TEKRAR = ("Tilt horn 25T aluminyum disk", "Tilt horn merkez vidasi M3", "625ZZ rulman (dis bilezik)", "Yanak-horn civatasi M3x8")
+
+
+def respeaker(cx, cz, y_pcb):
+    """Uretici STEP'i -> eksen cercevesi: bilesen yuzu yukari (+Y), USB/jak kenari (STEP -y) +X'e bakar. X = -ys + cx, Y = zs + y_pcb, Z = -xs + cz."""
+    global _stp_dizi
+    if _stp_dizi is None:
+        _stp_dizi = Part.read(STP_DIZI)
+    s = _stp_dizi.copy()
+    s.transformShape(App.Matrix(0, -1, 0, cx, 0, 0, 1, y_pcb, -1, 0, 0, cz, 0, 0, 0, 1), True)
+    return s
 
 
 def _kutu(e, yb, yu, zb):
@@ -229,6 +242,27 @@ def kur(dy, zb, log=print):
         EKLE[ad].append(cyl(2.5, (x, y, Z_CAM), (x, y, ZF - KT + 0.05)))
         CIKAR[ad].append(cyl(1.0, (x, y, Z_CAM - 0.1), (x, y, Z_CAM + 7.5)))
 
+    # --- ReSpeaker R1: kabuk tavani altinda, sag yarida (tek parca "Arka kafa kabugu sag"; tepe civatasi yerinde). 4 mikrofon deligi (O3 VARSAYIM), 3 damla boss + pilot.
+    # LED'ler disaridan gorunmeyebilir; isik borusu yok (Duffy 05.11.2026).
+    AD_DIZI_KABUK = "Arka kafa kabugu sag"
+    _D = SU["dizi"]
+    Y_IC_UST = yu - KT
+    Y_PCB = Y_IC_UST - _D["gap_jak"] - _D["jak_ust"]                    # PCB ust yuzu; jak ustu tavana gap_jak
+
+    def _dizi(xs, ys, zs):
+        return (_D["cx"] - ys, Y_PCB + zs, _D["cz"] - xs)
+    DIZI_MIC = [_dizi(*m) for m in _D["mic"]]
+    DIZI_DEL = [_dizi(xs, ys, 0.0) for (xs, ys) in _D["delik"]]
+    if QLED:
+        for (x, _y, z) in DIZI_MIC:
+            CIKAR[AD_DIZI_KABUK].append(cyl(_D["mic_delik_d"] / 2, (x, Y_IC_UST - 0.5, z), (x, yu + 1.0, z)))
+        for (x, _y, z) in DIZI_DEL:
+            # damla kuyrugu PCB ustundeki 0,5 mm'lik STEP bileseniyle kesisiyordu (0,80 mm3): kuyruk PCB'ye 0,8 mm kala biter, yuvarlak boss PCB'ye iner
+            _boss = damla(V(x, Y_IC_UST + 0.05, z), V(0, -1, 0), _D["boss_r"], Y_IC_UST + 0.05 - Y_PCB, V(0, 0, -1))
+            _r = _D["boss_r"]
+            EKLE[AD_DIZI_KABUK].append(_boss.cut(box(x - 2 * _r, x + 2 * _r, Y_PCB - 1.0, Y_PCB + 0.8, z - 3 * _r, z - _r)))
+            CIKAR[AD_DIZI_KABUK].append(cyl(_D["pilot_r"], (x, Y_PCB - 0.1, z), (x, Y_PCB + _D["pilot_derin"], z)))
+
     for ad, d_ in PARCA.items():
         sh = d_["shape"]
         if EKLE[ad]:
@@ -365,8 +399,7 @@ def kur(dy, zb, log=print):
             kod="M2,5x8 DIN 912", renk="celik")
     BAG.append(dict(ad="Pi 5 -> burc -> kafa tablasi", tip="4x M2,5x8 pirinc burc + M2,5x5 (ust) + M2,5x8 (alt)", adet=4,
                     nokta=PI_T, parcalar=("Raspberry Pi 5 4GB + Active Cooler", "Kafa iskeleti")))
-    _tablada = [("5 V cevirici Pololu D24V50F5", (-80.0, 6.0), cevirici_local(), CEV["model"], CEV["l"], CEV["w"], CEV["kutle_g"]),
-                ("MAX98357A I2S amfi", (80.0, 6.0), amp_local(), "Adafruit MAX98357A", AMP["l"], AMP["w"], AMP["kutle_g"])]
+    _tablada = [("5 V cevirici Pololu D24V50F5", (-80.0, 6.0), cevirici_local(), CEV["model"], CEV["l"], CEV["w"], CEV["kutle_g"])]     # MAX98357A cikti (Duffy 04-05.11.2026: PAM8403 + USB ses karti)
     if QLED:
         # kafa ekrani ayri 5 V (planlama/adim3/elektrik.md): SY8205 + P6KE6V8A tablada, Power konnektoru tarafinda (+X); Touch USB'si Pi'ye veri, 5 V kopru yok
         _tablada += [("SY8205 kafa ekrani 5 V", (36.0, 14.0), box(-SY8205["l"] / 2, SY8205["l"] / 2, 0, SY8205["h"], -SY8205["w"] / 2, SY8205["w"] / 2), SY8205["model"], SY8205["l"], SY8205["w"], SY8205["kutle_g"]),
@@ -380,12 +413,12 @@ def kur(dy, zb, log=print):
         BAG.append(dict(ad=ad_ + " -> kafa tablasi", tip="cift tarafli kopuk bant 1 mm + kablo bagi", adet=1, nokta=(cx_, Y_TABLA[1], cz_),
                         parcalar=(ad_, "Kafa iskeleti")))
 
-    # ------------------------------------------------------------------ yan duvarda: 4'lu USB hub (+X), USB ses karti + PAM8403 (-X). Arka kabuk yan duvar ic yuzune kopuk bant + kablo bagi;
-    # tablada yer kalmadi (hafifletme delikleri + on seritte kablo). Arka kabuk sokulurken kablolari ile gelir: hub kablosu 130 mm yeter (Pi USB -> hub ~70 mm, olcu kafa_montaj "qled").
+    # ------------------------------------------------------------------ yan duvarda (secim B + R1, 05.11.2026): USB ses karti + PAM8403 sol (-X) duvar, ustte; 4'lu hub kafadan cikti (kabuk: ust arka servis kapagi ici).
+    # Arka kabuk yan duvar ic yuzune kopuk bant + kablo bagi. Ses karti y 47, z -58...-10 (USB fis -z, jak +z); PAM y 72, z -31,5...-7,5.
     YZ = {}
     if QLED:
         xw = KX - KT
-        for ad_, sx, (yc_, zc_), bl in (("USB Hub 4 lu", 1, (50.0, -28.0), HUB), ("USB ses karti", -1, (44.0, -19.5), SES), ("PAM8403 amfi", -1, (44.0, -56.0), PAM)):
+        for ad_, sx, (yc_, zc_), bl in (("USB ses karti", -1, (SU["ses"]["y"], SU["ses"]["zc"]), SES), ("PAM8403 amfi", -1, (SU["pam"]["y"], SU["pam"]["zc"]), PAM)):
             duv = "Arka kafa kabugu %s" % ("sag" if sx > 0 else "sol")
             x0, x1 = sorted((sx * (xw - 1.0), sx * (xw - 1.0 - bl["h"])))
             fx0, fx1 = sorted((sx * xw, sx * (xw - 1.0)))
@@ -394,6 +427,12 @@ def kur(dy, zb, log=print):
             add(ad_, box(x0, x1, yy[0], yy[1], zz[0], zz[1]), "Satin", "-", kod=bl["model"], renk="pcb", kutle=bl["kutle_g"], not_="yan duvarda kopuk bant + kablo bagi; kutle ve (ses karti, PAM8403) olcu TAHMIN")
             BAG.append(dict(ad=ad_ + " -> arka kabuk yan duvari", tip="cift tarafli kopuk bant 1 mm + kablo bagi", adet=1, nokta=(sx * xw, yc_, zc_), parcalar=(ad_, duv)))
             YZ[ad_] = (x0, x1, yy, zz)
+        # ReSpeaker Mic Array v2.0 + 3 vida (alttan). Kutle VARSAYIM.
+        AD_DIZI = "ReSpeaker Mic Array v2.0"
+        add(AD_DIZI, respeaker(_D["cx"], _D["cz"], Y_PCB), "Satin", "-", kod=_D["model"], renk="pcb", kutle=_D["kutle_g"], not_="tavan altinda, kabuk ici; " + _D["kutle_durum"] + "; LED disaridan gorunmeyebilir")
+        for k_, (x, _y, z) in enumerate(DIZI_DEL):
+            add("Dizi vidasi M2x8 PT (%d)" % k_, screw_m2(8.0, (x, Y_PCB - 1.2, z), (0, 1, 0)), "Baglanti", "Celik", kod="M2x8 PT vida (plastik icin)", renk="celik")
+        BAG.append(dict(ad="ReSpeaker -> arka kabuk tavan boss'lari", tip="3x M2x8 PT vida (VARSAYIM)", adet=3, nokta=(_D["cx"], Y_PCB, _D["cz"]), parcalar=(AD_DIZI, AD_DIZI_KABUK)))
 
     # ------------------------------------------------------------------ yer ayirma zarflari (P'ye girmez: kutle yok, BOM ve carpismaya girmez; kafa_montaj olcer, gorselde gosterilir)
     ZARF = []
@@ -402,8 +441,8 @@ def kur(dy, zb, log=print):
         z_p = Z_LCD - EK["cam_panel_t"]                  # panel arka yuzu
         z_k = z_p - 1.9                                  # kart bilesen yuzu
 
-        def zr(ad, x0, x1, y0, y1, z0, z1, renk, not_):
-            ZARF.append(dict(ad=ad, shape=box(x0, x1, y0, y1, z0, z1), renk=renk, not_=not_))
+        def zr(ad, x0, x1, y0, y1, z0, z1, renk, not_, kutle=0.0):
+            ZARF.append(dict(ad=ad, shape=box(x0, x1, y0, y1, z0, z1), renk=renk, not_=not_, kutle=kutle))
         # konnektor ekseni kart ustunde; fis kalinligi ortalanir, panel arka yuzunde kirpilir (kaliplanmis fis panele degebilir: kontrol notu)
         for ad, q, f, rk in (("HDMI", PT["hdmi"], F["hdmi"], (0.85, 0.15, 0.15)), ("Touch USB", PT["touch"], F["usb"], (0.15, 0.35, 0.9)), ("Power USB", PT["power"], F["usb"], (0.95, 0.75, 0.05))):
             yc = dy + q["y"]
@@ -416,8 +455,20 @@ def kur(dy, zb, log=print):
            "U donus ve yukari cikis; bukum R 15 TAHMIN (kablo gelince olculur)")
         zr("Tabla onu kablo gecidi", 60.0, 100.0, dy + PT["power"]["y"] + F["usb"][1] / 2, 44.0, 28.5, z_p - 0.1, (0.6, 0.3, 0.8), "HDMI + Touch + Power panel arkasi ile tabla onu arasindan tabla ustune")
         zr("Tabla ustu kablo yolu", -36.0, 60.0, 38.2, 56.0, -26.0, 28.0, (0.6, 0.3, 0.8), "Pi micro HDMI 0 / USB ve SY8205 cikisina")
-        x0h, x1h, yh, zh = YZ["USB Hub 4 lu"]
-        zr("Hub USB fis payi", min(x0h, x1h) - 40.0, min(x0h, x1h), yh[0], yh[1], zh[0], zh[1], (0.15, 0.35, 0.9), "hub ustu 3 port: USB-A fis + bukum 40 mm TAHMIN")
+        # B + R1: dizi USB fisi; ses karti USB-A fisi, L dirsek, uzatma disi ucu, L 3,5 mm fis (VARSAYIM; kutlesi olanlar kafa_montaj tork hesabina nokta kutle)
+        _ux, _uy, _uz = _dizi(_D["usb_x"], -35.0, 1.4)
+        _F = _D["fis"]
+        zr("Dizi USB fis zarfi", _ux, _ux + _F["boy"], _uy - _F["y"] / 2, _uy + _F["y"] / 2, _uz - _F["z"] / 2, _uz + _F["z"] / 2, (0.95, 0.7, 0.7), _F["durum"])
+        _S = SU["ses"]
+        _fz = _S["zc"] - _S["olcu"][0] / 2
+        _rk = (0.55, 0.88, 0.6)
+
+        def _dv(yc, zc, l, w, h):
+            return (-(xw - 1.0), -(xw - 1.0 - h), yc - w / 2, yc + w / 2, zc - l / 2, zc + l / 2)
+        zr("Ses karti USB-A fisi", *_dv(_S["y"], _fz - 6.0, 12.0, 12.0, 4.5), _rk, _S["ek_durum"])
+        zr("L USB dirsek", *_dv(_S["y"], _fz - 20.0, 16.0, 18.0, 12.0), _rk, _S["ek_durum"], kutle=_S["dirsek_g"])
+        zr("USB uzatma disi ucu", -(xw - 13.0), -(xw - 43.0), _S["y"] - 9.0, _S["y"] + 9.0, _fz - 25.5, _fz - 14.5, _rk, _S["ek_durum"], kutle=_S["uzatma_g"])
+        zr("L 3,5 mm fis", *_dv(_S["y"] - 5.0, _S["zc"] + _S["olcu"][0] / 2 + 8.0, 16.0, 10.0, 10.0), _rk, _S["ek_durum"], kutle=_S["jak_g"])
         # fan yeri (LISTEDE YOK; yalniz yer): 30 x 30 x 10, ust yarik bandi arkasinda, +X yarik grubu ustunde (elektrik.md: 'ust bant arkasina 25-30 mm egzoz fani')
         zf0 = zb + KT
         zr("Fan yeri 30x30x10 (listede yok)", 12.5, 42.5, 62.0, 92.0, zf0, zf0 + 10.0, (0.1, 0.75, 0.75), "yalniz yer ayirma; karar notu qled-cerceve-tasarim-notu.md")

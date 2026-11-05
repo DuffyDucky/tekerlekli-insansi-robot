@@ -1,16 +1,16 @@
 {
  "bolum": "taban",
- "kosu": "20261104-174345",
- "baslangic": "2026-11-04T18:32:10",
- "bitis": "2026-11-04T18:33:00",
- "sure_s": 50.2,
- "yukleme_s": 112.2,
- "tepe_bellek_mb": 736,
- "tepe_sayfa_mb": 2721,
+ "kosu": "20261105-185759",
+ "baslangic": "2026-11-05T19:29:17",
+ "bitis": "2026-11-05T19:29:46",
+ "sure_s": 28.8,
+ "yukleme_s": 72.5,
+ "tepe_bellek_mb": 739,
+ "tepe_sayfa_mb": 2744,
  "ayni_surec": [
   "taban"
  ],
- "pid": 22644,
+ "pid": 14904,
  "moduller": [
   "iskelet",
   "omuz_sag",
@@ -23,20 +23,20 @@
  ],
  "kaynak": {
   "carpisma.py": "c688d738c3",
-  "arayuz.py": "3263e669ab",
+  "arayuz.py": "d333e41246",
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
   "omuz/omuz_parcalar.py": "62b19c7371",
-  "kabuk/kabuk_parcalar.py": "d82f39c382",
+  "kabuk/kabuk_parcalar.py": "0abfd960ab",
   "dirsek/dirsek_parcalar.py": "7182c29899",
-  "kafa/kafa_parcalar.py": "ab3398a9b6",
+  "kafa/kafa_parcalar.py": "22229bcdd0",
   "taban/taban_parcalar.py": "c5f30375d4",
-  "kafa/kafa-analiz.json": "8d8c41b670",
+  "kafa/kafa-analiz.json": "ebccb84751",
   "dirsek/dirsek_lib.py": "2f3a3b77fb",
   "kabuk/kabuk_lib.py": "a848c28ddc",
-  "kafa/kafa10_lib.py": "3261794aef",
-  "kafa/kafa_lib.py": "1a85133046",
+  "kafa/kafa10_lib.py": "5a75b90e69",
+  "kafa/kafa_lib.py": "8dc6d8d718",
   "omuz/omuz_lib.py": "b5c14c4ed2",
   "taban/taban_lib.py": "73d922d4bc"
  },
@@ -333,7 +333,7 @@
      "not_": "siki tutucu kutunun alt siniri (gercek nokta en cok ~0,5 mm yukarida)"
     },
     "taban_en_ust_y_mm": 290.0,
-    "sure_s": 14.3
+    "sure_s": 7.7
    },
    "sol": {
     "poz": {
@@ -525,7 +525,7 @@
      "not_": "siki tutucu kutunun alt siniri (gercek nokta en cok ~0,5 mm yukarida)"
     },
     "taban_en_ust_y_mm": 290.0,
-    "sure_s": 13.3
+    "sure_s": 7.6
    }
   },
   "kafa": {
@@ -554,6 +554,6 @@
   "hedef_sayisi": 359,
   "yakin_mm": 5.0,
   "not_": "kol pozu = (one-arka, yana, dirsek, bilek); aralik disi halka omuz -60 / 150, yana -10. Hedef: taban parcalari (kablo yolu semalari haric), ana anahtar dugmesi gosterimi, kabuk etek parcalari. Bulunan en kucugun otesindeki ciftler olculmedi (siki kutu boslugu alt sinir).",
-  "sure_s": 50.2
+  "sure_s": 28.8
  }
 }

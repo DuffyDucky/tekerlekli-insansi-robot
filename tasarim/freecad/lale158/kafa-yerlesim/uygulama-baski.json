@@ -1,0 +1,75 @@
+{
+ "tarih": "2026-11-05",
+ "yontem": "kafa_lib.baski_analiz, doluluk arayuz.KABUK_DOLULUK",
+ "parca": {
+  "Ust arka servis kapagi": {
+   "ad": "Ust arka servis kapagi",
+   "olcu": [
+    168.3,
+    150.0,
+    12.5
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "destek_sorun": [],
+   "cikinti_orani": 0.0,
+   "kutle_g": 81.0,
+   "sure_saat": 1.77,
+   "ofset_uyari": 0,
+   "yon": "dis yuzu tablada"
+  },
+  "Hoparlor kabi on halka": {
+   "ad": "Hoparlor kabi on halka",
+   "olcu": [
+    45.9,
+    45.9,
+    7.0
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "destek_sorun": [],
+   "cikinti_orani": 0.0,
+   "kutle_g": 2.7,
+   "sure_saat": 0.06,
+   "ofset_uyari": 0,
+   "yon": "VARSAYIM kap; on halka, duz (desteksiz)"
+  },
+  "Hoparlor kabi arka (flansli)": {
+   "ad": "Hoparlor kabi arka (flansli)",
+   "olcu": [
+    62.5,
+    62.5,
+    15.0
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "destek_sorun": [],
+   "cikinti_orani": 0.0,
+   "kutle_g": 7.7,
+   "sure_saat": 0.17,
+   "ofset_uyari": 0,
+   "yon": "VARSAYIM kap; flans yuzu tablada (desteksiz)"
+  },
+  "Govde orta bandi sag": {
+   "ad": "Govde orta bandi sag",
+   "olcu": [
+    214.2,
+    161.8,
+    226.9
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "destek_sorun": [],
+   "cikinti_orani": 0.005,
+   "kutle_g": 259.0,
+   "sure_saat": 5.66,
+   "ofset_uyari": 9,
+   "yon": "dik (alt kenari tablada)"
+  }
+ },
+ "sure_s": 532.2
+}

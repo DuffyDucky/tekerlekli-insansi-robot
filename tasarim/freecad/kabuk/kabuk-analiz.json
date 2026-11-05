@@ -1,11 +1,11 @@
 {
- "parca_sayisi": 346,
- "baski_sayisi": 31,
+ "parca_sayisi": 355,
+ "baski_sayisi": 33,
  "gecersiz": [],
  "coklu_kati": [],
  "temizlik": [],
  "cakisma": [],
- "cakisma_cift_sayisi": 915,
+ "cakisma_cift_sayisi": 939,
  "tolerans_mm3": 0.5,
  "iskelet_cakisma": [],
  "iskelet_cift_sayisi": 151,
@@ -3225,13 +3225,13 @@
    "sigar": true,
    "sigar_cift": true,
    "sigar_okul": true,
-   "cikinti_orani": 0.0044,
-   "cikinti_alan_cm2": 7.9,
-   "yuzey_cm2": 1780.9,
+   "cikinti_orani": 0.005,
+   "cikinti_alan_cm2": 9.0,
+   "yuzey_cm2": 1787.8,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 226.4,
+   "hacim_cm3": 226.6,
    "kutle_g": 259.0,
    "filament_g": 272.0,
    "sure_saat": 5.7,
@@ -3406,7 +3406,7 @@
    "olcu": [
     168.3,
     150.0,
-    3.0
+    12.5
    ],
    "tabla_aci": 0,
    "sigar": true,
@@ -3414,15 +3414,21 @@
    "sigar_okul": true,
    "cikinti_orani": 0.0,
    "cikinti_alan_cm2": 0.0,
-   "yuzey_cm2": 520.1,
-   "destek_sorun": [],
-   "destek_sorun_sayi": 0,
-   "desteksiz": true,
-   "hacim_cm3": 67.0,
-   "kutle_g": 77.0,
-   "filament_g": 80.0,
-   "sure_saat": 1.7,
-   "katman": 2,
+   "yuzey_cm2": 540.4,
+   "destek_sorun": [
+    {
+     "z": 2.5,
+     "alan": 19667.7,
+     "boy": 156.1
+    }
+   ],
+   "destek_sorun_sayi": 1,
+   "desteksiz": false,
+   "hacim_cm3": 70.9,
+   "kutle_g": 81.0,
+   "filament_g": 85.0,
+   "sure_saat": 1.8,
+   "katman": 12,
    "yon": "dis yuzu tablada",
    "grup": "Govde kabugu"
   },
@@ -3951,6 +3957,56 @@
    "katman": 4,
    "yon": "flans dis yuzu tablada",
    "grup": "S1 kablo kaseti"
+  },
+  {
+   "ad": "Hoparlor kabi on halka",
+   "olcu": [
+    45.8,
+    45.8,
+    7.0
+   ],
+   "tabla_aci": 35,
+   "sigar": true,
+   "sigar_cift": true,
+   "sigar_okul": true,
+   "cikinti_orani": 0.0,
+   "cikinti_alan_cm2": 0.0,
+   "yuzey_cm2": 25.9,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "hacim_cm3": 2.4,
+   "kutle_g": 3.0,
+   "filament_g": 3.0,
+   "sure_saat": 0.1,
+   "katman": 7,
+   "yon": "VARSAYIM kap; on halka, duz (desteksiz)",
+   "grup": "Ses ve USB"
+  },
+  {
+   "ad": "Hoparlor kabi arka (flansli)",
+   "olcu": [
+    62.5,
+    62.5,
+    15.0
+   ],
+   "tabla_aci": 45,
+   "sigar": true,
+   "sigar_cift": true,
+   "sigar_okul": true,
+   "cikinti_orani": 0.0,
+   "cikinti_alan_cm2": 0.0,
+   "yuzey_cm2": 60.4,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "hacim_cm3": 6.7,
+   "kutle_g": 8.0,
+   "filament_g": 8.0,
+   "sure_saat": 0.2,
+   "katman": 15,
+   "yon": "VARSAYIM kap; flans yuzu tablada (desteksiz)",
+   "grup": "Ses ve USB"
   }
  ],
  "yazici": {
@@ -3989,31 +4045,32 @@
    246.0
   ]
  },
- "kutle_g": 7095.8,
+ "kutle_g": 7165.4,
  "kutle_grup": {
-  "Govde kabugu": 2906.7,
+  "Govde kabugu": 2911.3,
   "Taban etegi": 2069.9,
   "Gogus ekrani": 1289.8,
   "S1 kablo kaseti": 35.5,
+  "Ses ve USB": 64.9,
   "Govde braketleri": 547.8,
   "Etek braketleri": 246.2
  },
  "kutle_tur": {
-  "Baski": 5051.2,
-  "Baglanti": 448.5,
-  "Satin": 1596.0
+  "Baski": 5066.2,
+  "Baglanti": 450.9,
+  "Satin": 1648.2
  },
  "agirlik_merkezi": [
-  0.15,
-  647.58,
-  12.61
+  0.6,
+  651.43,
+  12.71
  ],
  "bom": [
   [
    "Baglanti",
    "M3 isil gomme somun",
-   104,
-   27.7
+   106,
+   28.2
   ],
   [
    "Baglanti",
@@ -4036,8 +4093,8 @@
   [
    "Baglanti",
    "M3x8 DIN 912",
-   4,
-   3.7
+   6,
+   5.6
   ],
   [
    "Baglanti",
@@ -4199,7 +4256,7 @@
    "Baski",
    "Govde orta bandi sag",
    1,
-   258.8
+   259.0
   ],
   [
    "Baski",
@@ -4230,6 +4287,18 @@
    "Govde uzatma bandi 2 sol",
    1,
    200.6
+  ],
+  [
+   "Baski",
+   "Hoparlor kabi arka (flansli)",
+   1,
+   7.7
+  ],
+  [
+   "Baski",
+   "Hoparlor kabi on halka",
+   1,
+   2.7
   ],
   [
    "Baski",
@@ -4271,7 +4340,13 @@
    "Baski",
    "Ust arka servis kapagi",
    1,
-   76.6
+   81.0
+  ],
+  [
+   "Satin",
+   "Cift tarafli kopuk bant 1 mm (VHB)",
+   1,
+   0.2
   ],
   [
    "Satin",
@@ -4287,13 +4362,25 @@
   ],
   [
    "Satin",
+   "Hoparlor 4 ohm 3 W 40 x 20 (v4 satir 30)",
+   1,
+   27.0
+  ],
+  [
+   "Satin",
+   "USB Hub 4 lu 72 x 25 x 19",
+   1,
+   25.0
+  ],
+  [
+   "Satin",
    "Waveshare 11.6inch HDMI LCD (H) with case, 1920x1080 IPS, 10 nokta kapasitif",
    1,
    1079.0
   ]
  ],
- "step_kati": 346,
- "sure_s": 4250.8,
+ "step_kati": 355,
+ "sure_s": 5434.4,
  "gogus_ekrani": {
   "boy": 1580.0,
   "S3": 1270.0,

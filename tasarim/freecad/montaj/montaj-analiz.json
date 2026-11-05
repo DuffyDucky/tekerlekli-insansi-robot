@@ -1,18 +1,18 @@
 {
  "dosya": "robot-montaj.FCStd",
  "step": "robot-montaj.step",
- "step_kati": 1168,
+ "step_kati": 1177,
  "bom": "robot-bom.csv",
  "bom_ozet": {
   "Baglanti": {
    "kalem": 40,
-   "adet": 886,
-   "kutle_g": 1458.6
+   "adet": 893,
+   "kutle_g": 1462.0
   },
   "Baski": {
-   "kalem": 59,
-   "adet": 69,
-   "kutle_g": 7216.3
+   "kalem": 61,
+   "adet": 71,
+   "kutle_g": 7231.6
   },
   "Imalat": {
    "kalem": 1,
@@ -25,16 +25,16 @@
    "kutle_g": 1799.8
   },
   "Satin": {
-   "kalem": 51,
+   "kalem": 52,
    "adet": 190,
-   "kutle_g": 14842.5
+   "kutle_g": 14897.5
   }
  },
  "boy_mm": 1580.0,
  "s3_mm": 1270.0,
  "uzama_mm": 315.0,
  "taban_w_mm": 520.0,
- "parca_sayisi": 1168,
+ "parca_sayisi": 1177,
  "grup_sayisi": 22,
  "gecersiz": [],
  "hacim_fark_mm3": 6.111804395914078e-10,
@@ -128,15 +128,15 @@
    ],
    "ayna": false,
    "not_": "yerel = global; govde kabugu + taban etegi + S1 kasetleri + braketler",
-   "parca_modulde": 346,
-   "parca": 346,
+   "parca_modulde": 355,
+   "parca": 355,
    "haric": [],
    "haric_neden": "",
-   "kutle_g": 7095.83,
+   "kutle_g": 7165.38,
    "agirlik_merkezi": [
-    0.152,
-    647.581,
-    12.607
+    0.598,
+    651.431,
+    12.707
    ],
    "gruplar": [
     "Kabuk"
@@ -205,11 +205,11 @@
    "parca": 161,
    "haric": [],
    "haric_neden": "kablo demeti gosterimi (Referans grubu, 0 g); kafa analizinin parca sayisina da girmiyor",
-   "kutle_g": 2084.39,
+   "kutle_g": 2088.5,
    "agirlik_merkezi": [
-    1.287,
-    1445.576,
-    19.563
+    0.347,
+    1446.441,
+    19.449
    ],
    "gruplar": [
     "Kafa_Govde",
@@ -3009,11 +3009,11 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 258.792,
+   "kutle_g": 258.986,
    "merkez": [
-    98.28,
-    906.08,
-    20.14
+    98.24,
+    906.14,
+    20.19
    ]
   },
   {
@@ -3100,11 +3100,11 @@
    "grup": "Kabuk",
    "tur": "Baski",
    "kod": "PETG baski, 3,0 mm duvar",
-   "kutle_g": 76.625,
+   "kutle_g": 81.047,
    "merkez": [
-    -0.0,
-    1116.86,
-    -82.69
+    2.59,
+    1116.6,
+    -82.5
    ]
   },
   {
@@ -3326,6 +3326,32 @@
     -158.8,
     1261.11,
     46.9
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Hoparlor kabi on halka",
+   "grup": "Kabuk",
+   "tur": "Baski",
+   "kod": "PETG baski, 3,0 mm duvar",
+   "kutle_g": 2.734,
+   "merkez": [
+    45.0,
+    984.62,
+    97.74
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Hoparlor kabi arka (flansli)",
+   "grup": "Kabuk",
+   "tur": "Baski",
+   "kod": "PETG baski, 3,0 mm duvar",
+   "kutle_g": 7.655,
+   "merkez": [
+    45.0,
+    990.13,
+    89.88
    ]
   },
   {
@@ -5913,6 +5939,97 @@
     -0.0,
     1139.72,
     13.2
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Hoparlor 40 x 20",
+   "grup": "Kabuk",
+   "tur": "Satin",
+   "kod": "Hoparlor 4 ohm 3 W 40 x 20 (v4 satir 30)",
+   "kutle_g": 27.0,
+   "merkez": [
+    45.0,
+    988.52,
+    92.17
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (hoparlor boss)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    76.0,
+    985.0,
+    97.2
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Hoparlor kabi civatasi M3x8",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    76.0,
+    987.67,
+    93.38
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Isil gomme somun M3 (hoparlor boss)",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    14.0,
+    985.0,
+    97.2
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Hoparlor kabi civatasi M3x8",
+   "grup": "Kabuk",
+   "tur": "Baglanti",
+   "kod": "M3x8 DIN 912",
+   "kutle_g": 0.927,
+   "merkez": [
+    14.0,
+    987.67,
+    93.38
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "USB Hub 4 lu (kapak ici)",
+   "grup": "Kabuk",
+   "tur": "Satin",
+   "kod": "USB Hub 4 lu 72 x 25 x 19",
+   "kutle_g": 25.0,
+   "merkez": [
+    47.5,
+    1121.0,
+    -68.98
+   ]
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Kopuk bant (USB Hub kapak ici)",
+   "grup": "Kabuk",
+   "tur": "Satin",
+   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
+   "kutle_g": 0.162,
+   "merkez": [
+    47.5,
+    1117.5,
+    -78.98
    ]
   },
   {
@@ -9899,11 +10016,11 @@
    "grup": "Bas",
    "tur": "Baski",
    "kod": "PETG baski, 2,5 mm duvar",
-   "kutle_g": 218.249,
+   "kutle_g": 218.522,
    "merkez": [
-    87.73,
-    1480.35,
-    -31.45
+    87.66,
+    1480.46,
+    -31.41
    ]
   },
   {
@@ -10753,32 +10870,6 @@
   },
   {
    "modul": "kafa",
-   "ad": "Kopuk bant (MAX98357A)",
-   "grup": "Bas",
-   "tur": "Satin",
-   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
-   "kutle_g": 0.035,
-   "merkez": [
-    80.0,
-    1511.38,
-    31.0
-   ]
-  },
-  {
-   "modul": "kafa",
-   "ad": "MAX98357A I2S amfi",
-   "grup": "Bas",
-   "tur": "Satin",
-   "kod": "Adafruit MAX98357A",
-   "kutle_g": 2.0,
-   "merkez": [
-    80.0,
-    1513.09,
-    32.08
-   ]
-  },
-  {
-   "modul": "kafa",
    "ad": "Kopuk bant (SY8205)",
    "grup": "Bas",
    "tur": "Satin",
@@ -10831,41 +10922,15 @@
   },
   {
    "modul": "kafa",
-   "ad": "Kopuk bant (USB Hub 4 lu)",
-   "grup": "Bas",
-   "tur": "Satin",
-   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
-   "kutle_g": 0.18,
-   "merkez": [
-    132.0,
-    1528.88,
-    -3.0
-   ]
-  },
-  {
-   "modul": "kafa",
-   "ad": "USB Hub 4 lu",
-   "grup": "Bas",
-   "tur": "Satin",
-   "kod": "USB Hub 4 lu 72 x 25 x 19",
-   "kutle_g": 25.0,
-   "merkez": [
-    122.0,
-    1528.88,
-    -3.0
-   ]
-  },
-  {
-   "modul": "kafa",
    "ad": "Kopuk bant (USB ses karti)",
    "grup": "Bas",
    "tur": "Satin",
    "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
-   "kutle_g": 0.081,
+   "kutle_g": 0.115,
    "merkez": [
     -132.0,
-    1522.88,
-    5.5
+    1525.88,
+    -9.0
    ]
   },
   {
@@ -10873,12 +10938,12 @@
    "ad": "USB ses karti",
    "grup": "Bas",
    "tur": "Satin",
-   "kod": "USB ses karti (PAM8403 girisi; olcu TAHMIN)",
+   "kod": "USB ses karti (PAM8403 girisi; olcu VARSAYIM, fotograftan)",
    "kutle_g": 8.0,
    "merkez": [
     -126.0,
-    1522.88,
-    5.5
+    1525.88,
+    -9.0
    ]
   },
   {
@@ -10890,8 +10955,8 @@
    "kutle_g": 0.043,
    "merkez": [
     -132.0,
-    1522.88,
-    -31.0
+    1550.88,
+    5.5
    ]
   },
   {
@@ -10903,8 +10968,60 @@
    "kutle_g": 3.0,
    "merkez": [
     -129.0,
-    1522.88,
-    -31.0
+    1550.88,
+    5.5
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "ReSpeaker Mic Array v2.0",
+   "grup": "Bas",
+   "tur": "Satin",
+   "kod": "ReSpeaker Mic Array v2.0 (Seeed STEP: lale158/kafa-yerlesim/kaynak/RESPEAKER-MIC-3D-v2.0.stp)",
+   "kutle_g": 30.0,
+   "merkez": [
+    41.07,
+    1571.06,
+    -5.24
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Dizi vidasi M2x8 PT (0)",
+   "grup": "Bas",
+   "tur": "Baglanti",
+   "kod": "M2x8 PT vida (plastik icin)",
+   "kutle_g": 0.34,
+   "merkez": [
+    51.54,
+    1572.29,
+    14.9
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Dizi vidasi M2x8 PT (1)",
+   "grup": "Bas",
+   "tur": "Baglanti",
+   "kod": "M2x8 PT vida (plastik icin)",
+   "kutle_g": 0.34,
+   "merkez": [
+    12.97,
+    1572.29,
+    2.73
+   ]
+  },
+  {
+   "modul": "kafa",
+   "ad": "Dizi vidasi M2x8 PT (2)",
+   "grup": "Bas",
+   "tur": "Baglanti",
+   "kod": "M2x8 PT vida (plastik icin)",
+   "kutle_g": 0.34,
+   "merkez": [
+    51.54,
+    1572.29,
+    -24.94
    ]
   },
   {
@@ -16057,47 +16174,47 @@
  ],
  "solve": 0,
  "ev_pozu_cozucu_sapmasi": 0.0,
- "kutle_g": 25436.93,
+ "kutle_g": 25510.6,
  "agirlik_merkezi": [
-  -0.084,
-  529.845,
-  -8.476
+  -0.035,
+  531.466,
+  -8.395
  ],
  "karsilastirma": {
   "parca": {
-   "montaj": 1168,
-   "beklenen": 1168,
-   "formul": "iskelet 59 + 2 x (omuz 75 - travers - kabuk referansi) + kabuk 346 + dirsek_sag 57 + dirsek_sol 57 + kafa 161 + taban 342",
+   "montaj": 1177,
+   "beklenen": 1177,
+   "formul": "iskelet 59 + 2 x (omuz 75 - travers - kabuk referansi) + kabuk 355 + dirsek_sag 57 + dirsek_sol 57 + kafa 161 + taban 342",
    "ayni": true
   },
   "kutle": {
-   "montaj_dosyasi": 25436.93,
-   "bellek": 25436.93,
-   "beklenen_analizlerden": 25437.0,
-   "carpisma": 25436.9,
-   "fark_analiz": -0.063,
-   "fark_carpisma": 0.035
+   "montaj_dosyasi": 25510.6,
+   "bellek": 25510.6,
+   "beklenen_analizlerden": 25510.7,
+   "carpisma": 25510.6,
+   "fark_analiz": -0.098,
+   "fark_carpisma": -0.001
   },
   "am": {
    "montaj_dosyasi": [
-    -0.084,
-    529.845,
-    -8.476
+    -0.035,
+    531.466,
+    -8.395
    ],
    "bellek": [
-    -0.084,
-    529.845,
-    -8.476
+    -0.035,
+    531.466,
+    -8.395
    ],
    "carpisma": [
-    -0.08,
-    529.85,
-    -8.48
+    -0.03,
+    531.47,
+    -8.39
    ],
    "fark_carpisma_mm": 0.007,
    "fark_bellek_mm": 0.0
   },
   "not_": "analiz JSON'lari 0,1 g'a yuvarlanmis; carpisma AM'si 0,01 mm'ye. 1,65 m (Y2a): carpisma-sonuc.json Y4 tam taramasina kadar ESKI (125 cm) - fark_carpisma anlamsiz, montaj/yerlesim-kontrol.json kisa kontrolu kullan"
  },
- "sure_s": 159.6
+ "sure_s": 102.6
 }

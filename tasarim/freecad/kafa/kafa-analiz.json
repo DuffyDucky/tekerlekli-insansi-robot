@@ -2225,12 +2225,12 @@
    "tur": "Baski",
    "malzeme": "PETG",
    "kod": "PETG baski, 2,5 mm duvar",
-   "kutle_g": 218.25,
-   "hacim_mm3": 190944.2,
+   "kutle_g": 218.52,
+   "hacim_mm3": 191182.5,
    "merkez": [
-    87.726,
-    190.346,
-    -31.452
+    87.664,
+    190.462,
+    -31.415
    ],
    "bb": [
     -16.0,
@@ -4134,64 +4134,6 @@
   },
   {
    "i": 142,
-   "ad": "Kopuk bant (MAX98357A)",
-   "grup": "Kafa",
-   "tur": "Satin",
-   "malzeme": "Kopuk",
-   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
-   "kutle_g": 0.03,
-   "hacim_mm3": 345.3,
-   "merkez": [
-    80.0,
-    221.378,
-    31.0
-   ],
-   "bb": [
-    70.3,
-    89.7,
-    220.88,
-    221.88,
-    22.1,
-    39.9
-   ],
-   "patlat": [
-    0,
-    140,
-    0
-   ],
-   "not_": ""
-  },
-  {
-   "i": 143,
-   "ad": "MAX98357A I2S amfi",
-   "grup": "Kafa",
-   "tur": "Satin",
-   "malzeme": "-",
-   "kod": "Adafruit MAX98357A",
-   "kutle_g": 2.0,
-   "hacim_mm3": 708.5,
-   "merkez": [
-    80.0,
-    223.091,
-    32.084
-   ],
-   "bb": [
-    70.3,
-    89.7,
-    221.88,
-    225.98,
-    22.1,
-    39.9
-   ],
-   "patlat": [
-    0,
-    140,
-    0
-   ],
-   "not_": "tablada kopuk bant + kablo bagi"
-  },
-  {
-   "i": 144,
    "ad": "Kopuk bant (SY8205)",
    "grup": "Kafa",
    "tur": "Satin",
@@ -4220,7 +4162,7 @@
    "not_": ""
   },
   {
-   "i": 145,
+   "i": 143,
    "ad": "SY8205 kafa ekrani 5 V",
    "grup": "Kafa",
    "tur": "Satin",
@@ -4249,7 +4191,7 @@
    "not_": "tablada kopuk bant + kablo bagi"
   },
   {
-   "i": 146,
+   "i": 144,
    "ad": "Kopuk bant (TVS)",
    "grup": "Kafa",
    "tur": "Satin",
@@ -4278,7 +4220,7 @@
    "not_": ""
   },
   {
-   "i": 147,
+   "i": 145,
    "ad": "TVS P6KE6V8A kafa ekrani",
    "grup": "Kafa",
    "tur": "Satin",
@@ -4307,26 +4249,84 @@
    "not_": "tablada kopuk bant + kablo bagi"
   },
   {
-   "i": 148,
-   "ad": "Kopuk bant (USB Hub 4 lu)",
+   "i": 146,
+   "ad": "Kopuk bant (USB ses karti)",
    "grup": "Kafa",
    "tur": "Satin",
    "malzeme": "Kopuk",
    "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
-   "kutle_g": 0.18,
-   "hacim_mm3": 1800.0,
+   "kutle_g": 0.12,
+   "hacim_mm3": 1152.0,
    "merkez": [
-    132.0,
-    238.878,
-    -3.0
+    -132.0,
+    235.878,
+    -9.0
    ],
    "bb": [
-    131.5,
-    132.5,
-    226.38,
-    251.38,
-    -39.0,
-    33.0
+    -132.5,
+    -131.5,
+    223.88,
+    247.88,
+    -33.0,
+    15.0
+   ],
+   "patlat": [
+    0,
+    140,
+    0
+   ],
+   "not_": ""
+  },
+  {
+   "i": 147,
+   "ad": "USB ses karti",
+   "grup": "Kafa",
+   "tur": "Satin",
+   "malzeme": "-",
+   "kod": "USB ses karti (PAM8403 girisi; olcu VARSAYIM, fotograftan)",
+   "kutle_g": 8.0,
+   "hacim_mm3": 12672.0,
+   "merkez": [
+    -126.0,
+    235.878,
+    -9.0
+   ],
+   "bb": [
+    -131.5,
+    -120.5,
+    223.88,
+    247.88,
+    -33.0,
+    15.0
+   ],
+   "patlat": [
+    0,
+    140,
+    0
+   ],
+   "not_": "yan duvarda kopuk bant + kablo bagi; kutle ve (ses karti, PAM8403) olcu TAHMIN"
+  },
+  {
+   "i": 148,
+   "ad": "Kopuk bant (PAM8403 amfi)",
+   "grup": "Kafa",
+   "tur": "Satin",
+   "malzeme": "Kopuk",
+   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
+   "kutle_g": 0.04,
+   "hacim_mm3": 432.0,
+   "merkez": [
+    -132.0,
+    260.878,
+    5.5
+   ],
+   "bb": [
+    -132.5,
+    -131.5,
+    251.88,
+    269.88,
+    -6.5,
+    17.5
    ],
    "patlat": [
     0,
@@ -4337,25 +4337,25 @@
   },
   {
    "i": 149,
-   "ad": "USB Hub 4 lu",
+   "ad": "PAM8403 amfi",
    "grup": "Kafa",
    "tur": "Satin",
    "malzeme": "-",
-   "kod": "USB Hub 4 lu 72 x 25 x 19",
-   "kutle_g": 25.0,
-   "hacim_mm3": 34200.0,
+   "kod": "PAM8403 2 x 3 W amfi karti (olcu TAHMIN)",
+   "kutle_g": 3.0,
+   "hacim_mm3": 2160.0,
    "merkez": [
-    122.0,
-    238.878,
-    -3.0
+    -129.0,
+    260.878,
+    5.5
    ],
    "bb": [
-    112.5,
-    131.5,
-    226.38,
-    251.38,
-    -39.0,
-    33.0
+    -131.5,
+    -126.5,
+    251.88,
+    269.88,
+    -6.5,
+    17.5
    ],
    "patlat": [
     0,
@@ -4366,25 +4366,54 @@
   },
   {
    "i": 150,
-   "ad": "Kopuk bant (USB ses karti)",
+   "ad": "ReSpeaker Mic Array v2.0",
    "grup": "Kafa",
    "tur": "Satin",
-   "malzeme": "Kopuk",
-   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
-   "kutle_g": 0.08,
-   "hacim_mm3": 810.0,
+   "malzeme": "-",
+   "kod": "ReSpeaker Mic Array v2.0 (Seeed STEP: lale158/kafa-yerlesim/kaynak/RESPEAKER-MIC-3D-v2.0.stp)",
+   "kutle_g": 30.0,
+   "hacim_mm3": 5876.3,
    "merkez": [
-    -132.0,
-    232.878,
-    5.5
+    41.071,
+    281.063,
+    -5.239
    ],
    "bb": [
-    -132.5,
-    -131.5,
-    223.88,
-    241.88,
-    -17.0,
-    28.0
+    4.63,
+    75.59,
+    273.8,
+    286.9,
+    -40.82,
+    30.92
+   ],
+   "patlat": [
+    0,
+    140,
+    0
+   ],
+   "not_": "tavan altinda, kabuk ici; VARSAYIM: uretici net kutle vermiyor (70 g brut Farnell, 18 g dogrulanmamis satici); LED disaridan gorunmeyebilir"
+  },
+  {
+   "i": 151,
+   "ad": "Dizi vidasi M2x8 PT (0)",
+   "grup": "Kafa",
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M2x8 PT vida (plastik icin)",
+   "kutle_g": 0.34,
+   "hacim_mm3": 43.3,
+   "merkez": [
+    51.54,
+    282.287,
+    14.9
+   ],
+   "bb": [
+    49.64,
+    53.44,
+    278.7,
+    288.3,
+    13.0,
+    16.8
    ],
    "patlat": [
     0,
@@ -4394,55 +4423,26 @@
    "not_": ""
   },
   {
-   "i": 151,
-   "ad": "USB ses karti",
-   "grup": "Kafa",
-   "tur": "Satin",
-   "malzeme": "-",
-   "kod": "USB ses karti (PAM8403 girisi; olcu TAHMIN)",
-   "kutle_g": 8.0,
-   "hacim_mm3": 8910.0,
-   "merkez": [
-    -126.0,
-    232.878,
-    5.5
-   ],
-   "bb": [
-    -131.5,
-    -120.5,
-    223.88,
-    241.88,
-    -17.0,
-    28.0
-   ],
-   "patlat": [
-    0,
-    140,
-    0
-   ],
-   "not_": "yan duvarda kopuk bant + kablo bagi; kutle ve (ses karti, PAM8403) olcu TAHMIN"
-  },
-  {
    "i": 152,
-   "ad": "Kopuk bant (PAM8403 amfi)",
+   "ad": "Dizi vidasi M2x8 PT (1)",
    "grup": "Kafa",
-   "tur": "Satin",
-   "malzeme": "Kopuk",
-   "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
-   "kutle_g": 0.04,
-   "hacim_mm3": 432.0,
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M2x8 PT vida (plastik icin)",
+   "kutle_g": 0.34,
+   "hacim_mm3": 43.3,
    "merkez": [
-    -132.0,
-    232.878,
-    -31.0
+    12.97,
+    282.287,
+    2.73
    ],
    "bb": [
-    -132.5,
-    -131.5,
-    223.88,
-    241.88,
-    -43.0,
-    -19.0
+    11.07,
+    14.87,
+    278.7,
+    288.3,
+    0.83,
+    4.63
    ],
    "patlat": [
     0,
@@ -4453,32 +4453,32 @@
   },
   {
    "i": 153,
-   "ad": "PAM8403 amfi",
+   "ad": "Dizi vidasi M2x8 PT (2)",
    "grup": "Kafa",
-   "tur": "Satin",
-   "malzeme": "-",
-   "kod": "PAM8403 2 x 3 W amfi karti (olcu TAHMIN)",
-   "kutle_g": 3.0,
-   "hacim_mm3": 2160.0,
+   "tur": "Baglanti",
+   "malzeme": "Celik",
+   "kod": "M2x8 PT vida (plastik icin)",
+   "kutle_g": 0.34,
+   "hacim_mm3": 43.3,
    "merkez": [
-    -129.0,
-    232.878,
-    -31.0
+    51.54,
+    282.287,
+    -24.94
    ],
    "bb": [
-    -131.5,
-    -126.5,
-    223.88,
-    241.88,
-    -43.0,
-    -19.0
+    49.64,
+    53.44,
+    278.7,
+    288.3,
+    -26.84,
+    -23.04
    ],
    "patlat": [
     0,
     140,
     0
    ],
-   "not_": "yan duvarda kopuk bant + kablo bagi; kutle ve (ses karti, PAM8403) olcu TAHMIN"
+   "not_": ""
   },
   {
    "i": 154,
@@ -4841,18 +4841,18 @@
     "Vida M2,5x8 (Pi 3 alt)",
     "Kopuk bant (5)",
     "5 V cevirici Pololu D24V50F5",
-    "Kopuk bant (MAX98357A)",
-    "MAX98357A I2S amfi",
     "Kopuk bant (SY8205)",
     "SY8205 kafa ekrani 5 V",
     "Kopuk bant (TVS)",
     "TVS P6KE6V8A kafa ekrani",
-    "Kopuk bant (USB Hub 4 lu)",
-    "USB Hub 4 lu",
     "Kopuk bant (USB ses karti)",
     "USB ses karti",
     "Kopuk bant (PAM8403 amfi)",
     "PAM8403 amfi",
+    "ReSpeaker Mic Array v2.0",
+    "Dizi vidasi M2x8 PT (0)",
+    "Dizi vidasi M2x8 PT (1)",
+    "Dizi vidasi M2x8 PT (2)",
     "Tilt horn 25T aluminyum disk",
     "Tilt horn merkez vidasi M3",
     "625ZZ rulman (dis bilezik)",
@@ -4955,7 +4955,7 @@
  "gecersiz": [],
  "coklu_kati": [],
  "statik": [],
- "cift_sayisi": 500,
+ "cift_sayisi": 498,
  "tolerans_mm3": 0.5,
  "baglanti_kontrol": [
   {
@@ -6317,11 +6317,6 @@
      true
     ],
     [
-     "MAX98357A I2S amfi -> kafa tablasi: MAX98357A I2S amfi <-> Kafa iskeleti, Kopuk bant (MAX98357A) uzerinden dayali",
-     0.0,
-     true
-    ],
-    [
      "SY8205 kafa ekrani 5 V -> kafa tablasi: SY8205 kafa ekrani 5 V <-> Kafa iskeleti, Kopuk bant (SY8205) uzerinden dayali",
      0.0,
      true
@@ -6332,17 +6327,17 @@
      true
     ],
     [
-     "USB Hub 4 lu -> arka kabuk yan duvari: USB Hub 4 lu <-> Arka kafa kabugu sag, Kopuk bant (USB Hub 4 lu) uzerinden dayali",
-     0.0,
-     true
-    ],
-    [
      "USB ses karti -> arka kabuk yan duvari: USB ses karti <-> Arka kafa kabugu sol, Kopuk bant (USB ses karti) uzerinden dayali",
      0.0,
      true
     ],
     [
      "PAM8403 amfi -> arka kabuk yan duvari: PAM8403 amfi <-> Arka kafa kabugu sol, Kopuk bant (PAM8403 amfi) uzerinden dayali",
+     0.0,
+     true
+    ],
+    [
+     "ReSpeaker -> arka kabuk tavan boss'lari: ReSpeaker Mic Array v2.0 <-> Arka kafa kabugu sag dayali",
      0.0,
      true
     ],
@@ -13108,18 +13103,74 @@
     "not_": "Pi micro HDMI 0 / USB ve SY8205 cikisina"
    },
    {
-    "ad": "Hub USB fis payi",
+    "ad": "Dizi USB fis zarfi",
     "bb": [
-     72.5,
-     112.5,
-     226.38,
-     251.38,
-     -39.0,
-     33.0
+     75.0,
+     95.0,
+     278.9,
+     286.9,
+     -3.68,
+     7.32
     ],
     "kesisim": [],
-    "pan_mm": 52.96,
-    "not_": "hub ustu 3 port: USB-A fis + bukum 40 mm TAHMIN"
+    "pan_mm": 89.57,
+    "not_": "micro USB fis zarfi VARSAYIM"
+   },
+   {
+    "ad": "Ses karti USB-A fisi",
+    "bb": [
+     -131.5,
+     -127.0,
+     229.88,
+     241.88,
+     -45.0,
+     -33.0
+    ],
+    "kesisim": [],
+    "pan_mm": 113.52,
+    "not_": "USB-A fis, L USB dirsek, uzatma disi ucu, L 3,5 mm fis zarflari VARSAYIM; urun secilmedi; listede yok"
+   },
+   {
+    "ad": "L USB dirsek",
+    "bb": [
+     -131.5,
+     -119.5,
+     226.88,
+     244.88,
+     -61.0,
+     -45.0
+    ],
+    "kesisim": [],
+    "pan_mm": 113.04,
+    "not_": "USB-A fis, L USB dirsek, uzatma disi ucu, L 3,5 mm fis zarflari VARSAYIM; urun secilmedi; listede yok"
+   },
+   {
+    "ad": "USB uzatma disi ucu",
+    "bb": [
+     -119.5,
+     -89.5,
+     226.88,
+     244.88,
+     -58.5,
+     -47.5
+    ],
+    "kesisim": [],
+    "pan_mm": 90.8,
+    "not_": "USB-A fis, L USB dirsek, uzatma disi ucu, L 3,5 mm fis zarflari VARSAYIM; urun secilmedi; listede yok"
+   },
+   {
+    "ad": "L 3,5 mm fis",
+    "bb": [
+     -131.5,
+     -121.5,
+     225.88,
+     235.88,
+     15.0,
+     31.0
+    ],
+    "kesisim": [],
+    "pan_mm": 92.31,
+    "not_": "USB-A fis, L USB dirsek, uzatma disi ucu, L 3,5 mm fis zarflari VARSAYIM; urun secilmedi; listede yok"
    },
    {
     "ad": "Fan yeri 30x30x10 (listede yok)",
@@ -13149,9 +13200,9 @@
    -80.0,
    6.0
   ],
-  "amfi_xz": [
-   80.0,
-   6.0
+  "amfi_sol_duvar_yz": [
+   72.0,
+   -19.5
   ],
   "not_": "10,1 in QLED kafa: Bas cercevesi = tilt ekseni (kafa yereli y 188.878, z 25.0) orijinli",
   "boyun_kablolari": "12 V cift 18 AWG + ESP32 USB (VBUS hattinda seri 1N5819) + tilt servo (3 tel) + gogus ekrani HDMI + USB dokunmatik (01.11.2026; montaj/ekran_kablo_yolu.py)",
@@ -13159,8 +13210,8 @@
  },
  "tork": {
   "tilt": {
-   "kutle_g": 1531.3,
-   "kutle_parca_g": 1472.3,
+   "kutle_g": 1570.8,
+   "kutle_parca_g": 1476.4,
    "kablo_payi": {
     "kutle_g": 59.0,
     "merkez": [
@@ -13170,83 +13221,181 @@
     ],
     "not_": "HDMI 26, Power 9, Touch 11, FPC 3, USB-C 6, 12 V 4 g, kalem kutleleri TAHMIN (planlama/adim3/elektrik.md kablo listesi; eski 25 g FPC + micro HDMI + USB-C + 12 V); merkez TAHMIN (eksen cercevesi): kablolarin cogu +X'te ekran arkasinda; tork hesabina nokta kutle"
    },
+   "kablo_ek": [
+    {
+     "ad": "Hub uzatmasi",
+     "yol_mm": 264.0,
+     "kutle_g": 7.9,
+     "nokta": [
+      1.7582150461814536,
+      209.01399756446926,
+      6.26862827882929
+     ]
+    },
+    {
+     "ad": "Hoparlor",
+     "yol_mm": 203.0,
+     "kutle_g": 3.0,
+     "nokta": [
+      -56.18754785866926,
+      210.52292048982167,
+      9.137509137536986
+     ]
+    },
+    {
+     "ad": "Ses karti uzatmasi",
+     "yol_mm": 217.0,
+     "kutle_g": 6.5,
+     "nokta": [
+      -19.497614406507797,
+      245.04128674796607,
+      -2.3477504459642784
+     ]
+    },
+    {
+     "ad": "Dizi USB",
+     "yol_mm": 85.0,
+     "kutle_g": 2.5,
+     "nokta": [
+      80.84102198881021,
+      254.5584929201441,
+      -7.186642584218746
+     ]
+    },
+    {
+     "ad": "3,5 mm -> PAM",
+     "yol_mm": 36.0,
+     "kutle_g": 0.5,
+     "nokta": [
+      -124.24893522164894,
+      245.37161132989354,
+      23.90127773402126
+     ]
+    },
+    {
+     "ad": "PAM 5 V",
+     "yol_mm": 64.0,
+     "kutle_g": 1.0,
+     "nokta": [
+      -101.28969035167097,
+      243.68321802090827,
+      10.907204114481553
+     ]
+    },
+    {
+     "ad": "L USB dirsek",
+     "yol_mm": null,
+     "kutle_g": 5.0,
+     "nokta": [
+      -125.5,
+      235.878,
+      -53.0
+     ]
+    },
+    {
+     "ad": "USB uzatma disi ucu",
+     "yol_mm": null,
+     "kutle_g": 6.0,
+     "nokta": [
+      -104.5,
+      235.878,
+      -53.0
+     ]
+    },
+    {
+     "ad": "L 3,5 mm fis",
+     "yol_mm": null,
+     "kutle_g": 3.0,
+     "nokta": [
+      -126.5,
+      230.878,
+      23.0
+     ]
+    }
+   ],
+   "statik_tilt15_kgcm": 0.152,
+   "toplam_tilt15_kgcm": 2.583,
+   "pay_tilt15": 3.64,
+   "pay_iki_hane": 3.65,
+   "statik_iki_yon_kgcm": 0.143,
    "am": [
-    2.8,
-    188.73,
-    25.52
+    0.29,
+    190.73,
+    24.5
    ],
    "eksen": [
     188.878,
     25.0
    ],
-   "am_eksen_mm": 0.5,
-   "yercekimi_max_kgcm": 0.08,
+   "am_eksen_mm": 1.9,
+   "yercekimi_max_kgcm": 0.14,
    "yercekimi_max_th": -13,
-   "tam_tur_max_kgcm": 0.08,
-   "I_kgm2": 0.008742,
+   "tam_tur_max_kgcm": 0.3,
+   "I_kgm2": 0.009107,
    "alfa_rad_s2": 26.2,
-   "ivme_kgcm": 2.333,
-   "toplam_kgcm": 2.42,
+   "ivme_kgcm": 2.43,
+   "toplam_kgcm": 2.57,
    "stall_kgcm": 9.4,
-   "pay": 3.89,
+   "pay": 3.65,
    "egri": [
     {
      "th": -13,
-     "yercekimi_kgcm": 0.083
+     "yercekimi_kgcm": -0.143
     },
     {
      "th": -8,
-     "yercekimi_kgcm": 0.082
+     "yercekimi_kgcm": -0.119
     },
     {
      "th": -3,
-     "yercekimi_kgcm": 0.081
+     "yercekimi_kgcm": -0.094
     },
     {
      "th": 2,
-     "yercekimi_kgcm": 0.079
+     "yercekimi_kgcm": -0.069
     },
     {
      "th": 7,
-     "yercekimi_kgcm": 0.076
+     "yercekimi_kgcm": -0.043
     },
     {
      "th": 12,
-     "yercekimi_kgcm": 0.073
+     "yercekimi_kgcm": -0.017
     }
    ],
    "mesnet": {
     "x_625": -26.7,
     "x_horn": 28.55,
-    "horn_payi": 0.534,
-    "horn_N": 8.02,
-    "pim_N": 7.0
+    "horn_payi": 0.488,
+    "horn_N": 7.53,
+    "pim_N": 7.88
    }
   },
   "pan": {
-   "kutle_g": 1809.8,
+   "kutle_g": 1849.3,
    "am": [
-    2.44,
-    180.27,
-    22.65
+    0.32,
+    182.16,
+    21.84
    ],
    "I_kgm2": {
-    "-13.0": 0.014713,
-    "0": 0.014359,
-    "13.0": 0.014163
+    "-13.0": 0.014681,
+    "0": 0.014299,
+    "13.0": 0.0141
    },
    "alfa_rad_s2": 26.2,
-   "ivme_kgcm": 3.927,
-   "rulman_kgcm": 0.0321,
+   "ivme_kgcm": 3.918,
+   "rulman_kgcm": 0.0317,
    "kablo_kgcm": 0.31,
-   "toplam_kgcm": 4.26,
+   "toplam_kgcm": 4.255,
    "stall_kgcm": 9.4,
    "pay": 2.2,
+   "pay_iki_hane": 2.21,
    "rulman": {
-    "eksenel_N": 17.75,
-    "devirme_Nm": 0.4045,
+    "eksenel_N": 18.14,
+    "devirme_Nm": 0.3963,
     "rulman_arasi_mm": 11.0,
-    "radyal_N": 36.8,
+    "radyal_N": 36.0,
     "not_": "6808: eksenel yuk ust rulmanda (mil omzu -> ic bilezik -> dis bilezik -> yuva tablasi); devirme momenti iki rulmanda kuvvet cifti; pan servosu mili yalniz dondurur"
    }
   },
@@ -13271,11 +13420,11 @@
    ]
   },
   "Kafa": {
-   "m": 1472.3,
+   "m": 1476.4,
    "am": [
-    1.708,
-    188.921,
-    24.941
+    0.376,
+    190.051,
+    24.766
    ]
   }
  },
@@ -13493,9 +13642,9 @@
    "tabla_aci": 0,
    "sigar": true,
    "sigar_cift": true,
-   "cikinti_orani": 0.0325,
-   "cikinti_alan_cm2": 52.21,
-   "yuzey_cm2": 1607.6,
+   "cikinti_orani": 0.0329,
+   "cikinti_alan_cm2": 53.07,
+   "yuzey_cm2": 1612.3,
    "destek_sorun": [
     {
      "z": 2.5,
@@ -13512,10 +13661,10 @@
    "desteksiz": false,
    "ofset_uyari": 0,
    "atlanan_katman": [],
-   "hacim_cm3": 190.9,
-   "kutle_g": 218.2,
-   "filament_g": 229.2,
-   "sure_saat": 4.77,
+   "hacim_cm3": 191.2,
+   "kutle_g": 218.5,
+   "filament_g": 229.4,
+   "sure_saat": 4.78,
    "katman": 106,
    "yon": "arka yuzu tablada",
    "grup": "Kafa"
@@ -13715,17 +13864,17 @@
    246.0
   ]
  },
- "kutle_g": 2084.4,
+ "kutle_g": 2088.5,
  "kutle_tur": {
   "Imalat": 42.9,
-  "Baski": 1027.6,
-  "Satin": 904.4,
-  "Baglanti": 109.5
+  "Baski": 1027.9,
+  "Satin": 907.2,
+  "Baglanti": 110.5
  },
  "agirlik_merkezi": [
-  1.287,
-  155.576,
-  19.563
+  0.347,
+  156.441,
+  19.449
  ],
  "bom": [
   [
@@ -13743,8 +13892,8 @@
   [
    "Baglanti",
    "M2x8 PT vida (plastik icin)",
-   4,
-   1.4
+   7,
+   2.4
   ],
   [
    "Baglanti",
@@ -13852,7 +14001,7 @@
    "Baski",
    "Arka kafa kabugu sag",
    1,
-   218.2
+   218.5
   ],
   [
    "Baski",
@@ -13958,15 +14107,9 @@
   ],
   [
    "Satin",
-   "Adafruit MAX98357A",
-   1,
-   2.0
-  ],
-  [
-   "Satin",
    "Cift tarafli kopuk bant 1 mm (VHB)",
-   11,
-   0.5
+   9,
+   0.3
   ],
   [
    "Satin",
@@ -14012,19 +14155,19 @@
   ],
   [
    "Satin",
+   "ReSpeaker Mic Array v2.0 (Seeed STEP: lale158/kafa-yerlesim/kaynak/RESPEAKER-MIC-3D-v2.0.stp)",
+   1,
+   30.0
+  ],
+  [
+   "Satin",
    "SY8205 5 V dusurucu kart (kafa ekrani ayri hat)",
    1,
    8.0
   ],
   [
    "Satin",
-   "USB Hub 4 lu 72 x 25 x 19",
-   1,
-   25.0
-  ],
-  [
-   "Satin",
-   "USB ses karti (PAM8403 girisi; olcu TAHMIN)",
+   "USB ses karti (PAM8403 girisi; olcu VARSAYIM, fotograftan)",
    1,
    8.0
   ],
@@ -14255,5 +14398,5 @@
   "not_": "1,58 m: Govde/Pan olculeri kafa7 (125 cm) ile ayni; Bas (10,1 in QLED) olculeri kafa10_lib (Bas cercevesi = tilt ekseni)"
  },
  "kablo_yolu": [],
- "sure_s": 175.5
+ "sure_s": 413.9
 }

@@ -78,7 +78,7 @@ SY8205 = dict(l=43.5, w=20.2, h=5.0, kutle_g=8.0, model="SY8205 5 V dusurucu kar
 TVS = dict(d=3.6, l=7.6, kutle_g=1.0, model="P6KE6V8A TVS (kafa ekrani 5 V)")
 # Hub: Robotistan 72 x 25 x 19, 130 mm kablo (rapor.md); kutle sayfada yok, 25 g TAHMIN. USB ses karti + PAM8403: boyut sayfada yok, 45 x 18 x 11 ve 24 x 18 x 5, 8 g + 3 g TAHMIN (parca gelince olculecek).
 HUB = dict(l=72.0, w=25.0, h=19.0, kutle_g=25.0, model="USB Hub 4 lu 72 x 25 x 19")
-SES = dict(l=45.0, w=18.0, h=11.0, kutle_g=8.0, model="USB ses karti (PAM8403 girisi; olcu TAHMIN)")
+SES = dict(l=A.SES_USB["ses"]["olcu"][0], w=A.SES_USB["ses"]["olcu"][1], h=A.SES_USB["ses"]["olcu"][2], kutle_g=A.SES_USB["ses"]["kutle_g"], model="USB ses karti (PAM8403 girisi; olcu VARSAYIM, fotograftan)")
 PAM = dict(l=24.0, w=18.0, h=5.0, kutle_g=3.0, model="PAM8403 2 x 3 W amfi karti (olcu TAHMIN)")
 
 

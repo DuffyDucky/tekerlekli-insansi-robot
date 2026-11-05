@@ -1,5 +1,5 @@
 {
- "parca": 1168,
+ "parca": 1177,
  "zemin_y": 0.0,
  "tepe_y": 1580.0,
  "toplam_boy_mm": 1580.0,
@@ -184,6 +184,11 @@
    8.922
   ],
   [
+   "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+   "Hoparlor kabi arka (flansli)",
+   9.182
+  ],
+  [
    "Gogus ekrani cercevesi sag",
    "Bindirme civatasi M3x6 (govde y1005 on)",
    9.46
@@ -240,13 +245,8 @@
   ],
   [
    "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-   "S1 kaset govdesi sag",
-   12.824
-  ],
-  [
-   "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-   "S1 kaset govdesi sol",
-   12.824
+   "Hoparlor 40 x 20",
+   12.608
   ]
  ],
  "kablo_ozet": {
@@ -254,18 +254,70 @@
    "HDMI": {
     "yol_mm": 757.0,
     "onerilen_mm": 950.0,
+    "kapak_sokme_pay_mm": 0.0,
     "cap_mm": 6.0,
     "not_": "ince micro HDMI -> HDMI A, Pi HDMI1 -> ekran; ekran ucunda 90 derece fis/adaptor gerekir"
    },
-   "USB dokunmatik": {
-    "yol_mm": 844.0,
-    "onerilen_mm": 1050.0,
+   "Hub uzatmasi": {
+    "yol_mm": 617.0,
+    "onerilen_mm": 920.0,
+    "kapak_sokme_pay_mm": 150.0,
     "cap_mm": 4.0,
-    "not_": "USB A -> micro B, Pi USB -> ekran TOUCH; kutudaki kablo 35 cm, yetmez"
+    "not_": "Pi port 3 -> hub: hub'in sabit 130 mm kablosu + ~1 m USB-A uzatma; listede yok"
+   },
+   "USB dokunmatik": {
+    "yol_mm": 395.0,
+    "onerilen_mm": 640.0,
+    "kapak_sokme_pay_mm": 150.0,
+    "cap_mm": 4.0,
+    "not_": "USB A -> micro B, HUB -> gogus ekrani TOUCH; kutudaki kablo 35 cm, yetmez; v4 satir 58, 2 m"
+   },
+   "ESP32 USB": {
+    "yol_mm": 971.0,
+    "onerilen_mm": 1360.0,
+    "kapak_sokme_pay_mm": 150.0,
+    "cap_mm": 4.0,
+    "not_": "Hub -> ESP32 (taban), VBUS'ta 1N5819; govde ici sema, v4'te 2 m"
+   },
+   "Hoparlor": {
+    "yol_mm": 823.0,
+    "onerilen_mm": 1030.0,
+    "kapak_sokme_pay_mm": 0.0,
+    "cap_mm": 4.0,
+    "not_": "PAM8403 -> hoparlor, boyundan iner; listede robot icin yok (2 x 0,75 kordon test duzeneginin sarfi)"
+   },
+   "Ses karti uzatmasi": {
+    "yol_mm": 217.0,
+    "onerilen_mm": 270.0,
+    "kapak_sokme_pay_mm": 0.0,
+    "cap_mm": 4.0,
+    "not_": "Pi port 2 -> L dirsek -> ses karti; USB-A erkek -> disi, listede yok"
+   },
+   "Dizi USB": {
+    "yol_mm": 85.0,
+    "onerilen_mm": 110.0,
+    "kapak_sokme_pay_mm": 0.0,
+    "cap_mm": 4.0,
+    "not_": "Pi port 1 -> ReSpeaker micro B; kisa kablo listede yok"
+   },
+   "3,5 mm -> PAM": {
+    "yol_mm": 36.0,
+    "onerilen_mm": 40.0,
+    "kapak_sokme_pay_mm": 0.0,
+    "cap_mm": 3.5,
+    "not_": "ses karti L 3,5 mm fis -> PAM girisi; AUX kablosu kesilir, listede robot icin yok"
+   },
+   "PAM 5 V": {
+    "yol_mm": 64.0,
+    "onerilen_mm": 80.0,
+    "kapak_sokme_pay_mm": 0.0,
+    "cap_mm": 3.0,
+    "not_": "D24V50F5 ustu -> PAM 5 V; besleme noktasi ONERI, elektrik.md'de dogrulanmadi"
    },
    "12 V": {
     "yol_mm": 1376.0,
     "onerilen_mm": 1720.0,
+    "kapak_sokme_pay_mm": 0.0,
     "cap_mm": 5.0,
     "not_": "ekran 12 V ~0,5 A, taban guc panelinden; LiFePO4 12,8-14,4 V ile dogrudan baglama dogrulanmadi: regulator/sigorta karari acik"
    }
@@ -277,9 +329,9 @@
     "kalan_mm": 46.0
    },
    "Touch USB (kutu kablosu)": {
-    "yol_mm": 180.0,
+    "yol_mm": 217.0,
     "liste_boyu_mm": 350.0,
-    "kalan_mm": 170.0
+    "kalan_mm": 133.0
    },
    "Power USB (30 cm, A ucu kesik)": {
     "yol_mm": 114.0,
@@ -292,10 +344,6 @@
    [
     "12 V cift 18 AWG",
     10.6
-   ],
-   [
-    "ESP32 USB",
-    12.6
    ],
    [
     "tilt servo 3 tel",
@@ -356,20 +404,48 @@
     1.7
    ]
   ],
-  "USB dokunmatik": [
+  "Hub uzatmasi": [
    [
-    "SY8205 kafa ekrani 5 V",
-    249.7
-   ],
-   [
-    "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-    167.6
+    "Raspberry Pi 5 4GB + Active Cooler",
+    2.9
    ],
    [
     "Boyun mili",
     1.2
    ]
   ],
+  "USB dokunmatik": [
+   [
+    "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+    167.6
+   ]
+  ],
+  "ESP32 USB": [],
+  "Hoparlor": [
+   [
+    "Boyun mili",
+    1.2
+   ]
+  ],
+  "Ses karti uzatmasi": [
+   [
+    "Raspberry Pi 5 4GB + Active Cooler",
+    2.5
+   ]
+  ],
+  "Dizi USB": [
+   [
+    "Raspberry Pi 5 4GB + Active Cooler",
+    11.8
+   ]
+  ],
+  "3,5 mm -> PAM": [
+   [
+    "PAM8403 amfi",
+    2.8
+   ]
+  ],
+  "PAM 5 V": [],
   "12 V": [
    [
     "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
@@ -580,13 +656,13 @@
    "olcu": [
     168.3,
     150.0,
-    3.0
+    12.5
    ],
    "sigar": true,
-   "desteksiz": true,
-   "destek_sorun": 0,
-   "g": 80.0,
-   "sa": 1.7,
+   "desteksiz": false,
+   "destek_sorun": 1,
+   "g": 85.0,
+   "sa": 1.8,
    "yon": "dis yuzu tablada"
   },
   {
@@ -845,6 +921,36 @@
    "yon": "flans dis yuzu tablada"
   },
   {
+   "modul": "kabuk",
+   "ad": "Hoparlor kabi on halka",
+   "olcu": [
+    45.8,
+    45.8,
+    7.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 3.0,
+   "sa": 0.1,
+   "yon": "VARSAYIM kap; on halka, duz (desteksiz)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Hoparlor kabi arka (flansli)",
+   "olcu": [
+    62.5,
+    62.5,
+    15.0
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 8.0,
+   "sa": 0.2,
+   "yon": "VARSAYIM kap; flans yuzu tablada (desteksiz)"
+  },
+  {
    "modul": "kafa",
    "ad": "Servo yuvasi",
    "olcu": [
@@ -960,8 +1066,8 @@
    "sigar": true,
    "desteksiz": false,
    "destek_sorun": 1,
-   "g": 229.2,
-   "sa": 4.77,
+   "g": 229.4,
+   "sa": 4.78,
    "yon": "arka yuzu tablada"
   },
   {
@@ -1397,13 +1503,13 @@
    ]
   },
   "Kafa": {
-   "m": 1472.3,
+   "m": 1476.4,
    "am": [
-    1.708,
-    188.921,
-    24.941
+    0.376,
+    190.051,
+    24.766
    ]
   }
  },
- "sure_s": 428.8
+ "sure_s": 172.8
 }

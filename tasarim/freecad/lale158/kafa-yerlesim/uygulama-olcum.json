@@ -1,0 +1,663 @@
+{
+ "tarih": "2026-11-05",
+ "kaynak": "montaj/robot-montaj.FCStd + kablo_yolu_ekran.py",
+ "model_adlar": {
+  "max98357a": [],
+  "hub": [
+   "USB Hub 4 lu (kapak ici)",
+   "Kopuk bant (USB Hub kapak ici)"
+  ],
+  "ses": [
+   "Kopuk bant (USB ses karti)",
+   "USB ses karti"
+  ],
+  "pam": [
+   "Kopuk bant (PAM8403 amfi)",
+   "PAM8403 amfi"
+  ],
+  "dizi": [
+   "ReSpeaker Mic Array v2.0",
+   "Dizi vidasi M2x8 PT (0)",
+   "Dizi vidasi M2x8 PT (1)",
+   "Dizi vidasi M2x8 PT (2)"
+  ],
+  "hoparlor": [
+   "Hoparlor kabi on halka",
+   "Hoparlor kabi arka (flansli)",
+   "Hoparlor 40 x 20",
+   "Hoparlor kabi civatasi M3x8",
+   "Hoparlor kabi civatasi M3x001"
+  ]
+ },
+ "mic_hoparlor": {
+  "ev_min_mm": 595.7,
+  "poz_min_mm": 574.3,
+  "poz": [
+   -90,
+   -15
+  ],
+  "poz_max_mm": 623.8,
+  "h1_40cm": true,
+  "izgara": "pan -90...90 / 15, tilt -15...15 / 5 (ayrik)"
+ },
+ "hoparlor_duvar": {
+  "C": [
+   45.0,
+   982.5,
+   100.77
+  ],
+  "n": [
+   0.0,
+   -0.574,
+   0.819
+  ],
+  "yatay_alti_derece": 35.0
+ },
+ "kablo_sy8205": {
+  "HDMI": {
+   "sy8205_mm": 15.25,
+   "sy8205_kesisim_mm3": 0.0
+  },
+  "Hub uzatmasi": {
+   "sy8205_mm": 15.45,
+   "sy8205_kesisim_mm3": 0.0
+  },
+  "USB dokunmatik": {
+   "sy8205_mm": 309.46,
+   "sy8205_kesisim_mm3": 0.0
+  },
+  "ESP32 USB": {
+   "sy8205_mm": 412.61,
+   "sy8205_kesisim_mm3": 0.0
+  },
+  "Hoparlor": {
+   "sy8205_mm": 58.17,
+   "sy8205_kesisim_mm3": 0.0
+  },
+  "Ses karti uzatmasi": {
+   "sy8205_mm": 24.84,
+   "sy8205_kesisim_mm3": 0.0
+  },
+  "Dizi USB": {
+   "sy8205_mm": 40.82,
+   "sy8205_kesisim_mm3": 0.0
+  },
+  "3,5 mm -> PAM": {
+   "sy8205_mm": 133.31,
+   "sy8205_kesisim_mm3": 0.0
+  },
+  "PAM 5 V": {
+   "sy8205_mm": 92.94,
+   "sy8205_kesisim_mm3": 0.0
+  },
+  "12 V": {
+   "sy8205_mm": 310.24,
+   "sy8205_kesisim_mm3": 0.0
+  }
+ },
+ "kafa_ici_qled_kablo": {
+  "HDMI (serit, 2 lehimsiz fis)": {
+   "sy8205_mm": 0.56,
+   "sy8205_kesisim_mm3": 0.0,
+   "cakisma": []
+  },
+  "Touch USB (kutu kablosu)": {
+   "sy8205_mm": 17.46,
+   "sy8205_kesisim_mm3": 0.0,
+   "cakisma": [
+    [
+     "Raspberry Pi 5 4GB + Active Cooler",
+     11.8
+    ]
+   ]
+  },
+  "Power USB (30 cm, A ucu kesik)": {
+   "sy8205_mm": 0.02,
+   "sy8205_kesisim_mm3": 0.0,
+   "cakisma": []
+  }
+ },
+ "dizi_usb_guc_mm": {
+  "SY8205": 40.82,
+  "D24V50F5": 120.78,
+  "TVS": 55.36,
+  "PAM 5 V": 129.79,
+  "Hoparlor kablosu": 89.54
+ },
+ "koridor_en_yakin": [
+  [
+   "Kafa iskeleti",
+   2.5
+  ],
+  [
+   "Raspberry Pi 5 4GB + Active Cooler",
+   11.729
+  ],
+  [
+   "Burc M2,5x8 (Pi 1)",
+   12.913
+  ],
+  [
+   "Burc M2,5x8 (Pi 0)",
+   13.463
+  ],
+  [
+   "Vida M2,5x5 (Pi 1 ust)",
+   14.365
+  ],
+  [
+   "Vida M2,5x8 (Pi 1 alt)",
+   14.618
+  ]
+ ],
+ "dizi": {
+  "bb_bas": [
+   4.63,
+   75.59,
+   84.92,
+   98.02,
+   -65.82,
+   5.92
+  ],
+  "en_yakin": [
+   [
+    "Arka kafa kabugu sag",
+    0.0
+   ],
+   [
+    "ReSpeaker Mic Array v2.0",
+    0.0
+   ],
+   [
+    "Dizi vidasi M2x8 PT (0)",
+    0.0
+   ],
+   [
+    "Dizi vidasi M2x8 PT (1)",
+    0.0
+   ],
+   [
+    "Dizi vidasi M2x8 PT (2)",
+    0.0
+   ],
+   [
+    "Yuz kabugu (on) sag",
+    7.78
+   ]
+  ],
+  "cakisma": [
+   [
+    "ReSpeaker Mic Array v2.0",
+    5876.35
+   ]
+  ],
+  "kati": 1,
+  "yuz": 1468,
+  "kabuk_mm": 0.0,
+  "kabuk_kesisim_mm3": 0.0042,
+  "not_": "ev pozu; boss PCB ustune degdigi icin mesafe 0 beklenir; kesisim esiksiz (0,799 mm3 duzeltmesinin dogrulamasi)"
+ },
+ "ai_hat_zarfi": {
+  "en_yakin": [
+   [
+    "Arka kafa kabugu sag",
+    0.0
+   ],
+   [
+    "Isil gomme somun M3 (kafa sag/sol arka duvar ust)",
+    0.0
+   ],
+   [
+    "Kabuk civatasi M3x6 ISO 7380 (kafa sag/sol arka duvar ust)",
+    0.0
+   ],
+   [
+    "Arka kafa kabugu sol",
+    3.0
+   ],
+   [
+    "Vida M2,5x5 (Pi 0 ust)",
+    13.5
+   ]
+  ],
+  "cakisma": [
+   [
+    "Arka kafa kabugu sag",
+    77.69
+   ],
+   [
+    "Isil gomme somun M3 (kafa sag/sol arka duvar ust)",
+    7.97
+   ],
+   [
+    "Kabuk civatasi M3x6 ISO 7380 (kafa sag/sol arka duvar ust)",
+    3.18
+   ]
+  ],
+  "dizi_mm": 24.97,
+  "not_": "v4 satir 114 listede, CAD modelinde yok; zarf VARSAYIM. Zarf Pi'nin ustunde (yerlesim_lib.ai_hat_zarf)"
+ },
+ "hub": {
+  "bb_g": [
+   35.0,
+   60.0,
+   1085.0,
+   1157.0,
+   -78.48,
+   -59.48
+  ],
+  "en_yakin": [
+   [
+    "USB Hub 4 lu (kapak ici)",
+    0.0
+   ],
+   [
+    "Kopuk bant (USB Hub kapak ici)",
+    0.0
+   ],
+   [
+    "Ust arka servis kapagi",
+    0.25
+   ],
+   [
+    "Gogus bandi sag",
+    3.17
+   ],
+   [
+    "Isil gomme somun M3 (ust arka kapak)003",
+    7.0
+   ],
+   [
+    "Isil gomme somun M3 (ust arka kapak)004",
+    7.0
+   ]
+  ],
+  "cakisma": [
+   [
+    "USB Hub 4 lu (kapak ici)",
+    34200.0
+   ]
+  ],
+  "fis_payi_en_yakin": [
+   [
+    "Govde braketi sag y1095",
+    4.48
+   ],
+   [
+    "Govde diregi",
+    15.029
+   ],
+   [
+    "Gogus bandi sag",
+    15.245
+   ],
+   [
+    "Civata M6x14 (Govde braketi sag y1095)",
+    15.674
+   ],
+   [
+    "Civata M6x14 (Govde braketi sag y1095)001",
+    15.674
+   ]
+  ],
+  "fis_payi_cakisma": [],
+  "kapak_kati": 1,
+  "kapak_gecerli": true,
+  "kapak_kutle_olcu": null,
+  "ic_z_y1125": [
+   -83.78,
+   -79.48
+  ],
+  "bos_port": 2,
+  "not_": "hub kapakla birlikte sokulur; kablolara kapak sokme payi 150 mm (TAHMIN)"
+ },
+ "hop_Hoparlor 40 x 20": {
+  "bb_g": [
+   25.0,
+   65.0,
+   966.41,
+   1010.64,
+   72.5,
+   111.83
+  ],
+  "en_yakin": [
+   [
+    "Hoparlor 40 x 20",
+    0.0
+   ],
+   [
+    "Govde orta bandi sag",
+    0.497
+   ],
+   [
+    "Hoparlor kabi on halka",
+    0.5
+   ],
+   [
+    "Hoparlor kabi arka (flansli)",
+    0.5
+   ],
+   [
+    "Hoparlor kabi civatasi M3x8",
+    8.25
+   ]
+  ],
+  "cakisma": [
+   [
+    "Hoparlor 40 x 20",
+    25132.74
+   ]
+  ]
+ },
+ "hop_Hoparlor kabi on halka": {
+  "bb_g": [
+   22.0,
+   68.0,
+   963.78,
+   1005.47,
+   81.67,
+   113.8
+  ],
+  "en_yakin": [
+   [
+    "Hoparlor kabi on halka",
+    0.0
+   ],
+   [
+    "Hoparlor kabi arka (flansli)",
+    0.0
+   ],
+   [
+    "Govde orta bandi sag",
+    0.196
+   ],
+   [
+    "Hoparlor 40 x 20",
+    0.5
+   ],
+   [
+    "Gogus bandi sag",
+    5.521
+   ]
+  ],
+  "cakisma": [
+   [
+    "Hoparlor kabi on halka",
+    2391.54
+   ]
+  ]
+ },
+ "hop_Hoparlor kabi arka (flansli)": {
+  "bb_g": [
+   10.0,
+   80.0,
+   967.79,
+   1014.07,
+   69.39,
+   108.07
+  ],
+  "en_yakin": [
+   [
+    "Govde orta bandi sag",
+    0.0
+   ],
+   [
+    "Hoparlor kabi on halka",
+    0.0
+   ],
+   [
+    "Hoparlor kabi arka (flansli)",
+    0.0
+   ],
+   [
+    "Isil gomme somun M3 (hoparlor boss)",
+    0.0
+   ],
+   [
+    "Hoparlor kabi civatasi M3x8",
+    0.0
+   ]
+  ],
+  "cakisma": [
+   [
+    "Hoparlor kabi arka (flansli)",
+    6697.1
+   ]
+  ]
+ },
+ "orta_bant": {
+  "gecerli": true,
+  "kati": 1
+ },
+ "arka_sag": {
+  "gecerli": true,
+  "kati": 1
+ },
+ "USB ses karti": {
+  "bb_bas": [
+   -131.5,
+   -120.5,
+   35.0,
+   59.0,
+   -58.0,
+   -10.0
+  ],
+  "en_yakin": [
+   [
+    "USB ses karti",
+    0.0
+   ],
+   [
+    "Arka kafa kabugu sol",
+    1.0
+   ],
+   [
+    "PAM8403 amfi",
+    4.0
+   ],
+   [
+    "Kafa iskeleti",
+    9.014
+   ]
+  ],
+  "cakisma": [
+   [
+    "USB ses karti",
+    12672.0
+   ]
+  ]
+ },
+ "PAM8403 amfi": {
+  "bb_bas": [
+   -131.5,
+   -126.5,
+   63.0,
+   81.0,
+   -31.5,
+   -7.5
+  ],
+  "en_yakin": [
+   [
+    "PAM8403 amfi",
+    0.0
+   ],
+   [
+    "Arka kafa kabugu sol",
+    1.0
+   ],
+   [
+    "USB ses karti",
+    4.0
+   ],
+   [
+    "Yuz kabugu (on) sol",
+    17.529
+   ]
+  ],
+  "cakisma": [
+   [
+    "PAM8403 amfi",
+    2160.0
+   ]
+  ]
+ },
+ "boyun": {
+  "alan_mm2": 69.9,
+  "gecis": [
+   {
+    "ad": "Boyun mili O32",
+    "doluluk": 0.087
+   },
+   {
+    "ad": "Egme catali deligi O28",
+    "doluluk": 0.114
+   },
+   {
+    "ad": "Mil arka penceresi 20 x 10, ust 45 derece",
+    "doluluk": 0.399
+   },
+   {
+    "ad": "Servo yuvasi arka kanali 20 x 7,8",
+    "doluluk": 0.448
+   },
+   {
+    "ad": "Servo yuvasi alt cikisi 20 x 12, ust 45 derece",
+    "doluluk": 0.343
+   }
+  ]
+ },
+ "kablo_listesi": {
+  "HDMI": {
+   "yol_mm": 757.0,
+   "onerilen_mm": 950.0,
+   "kapak_sokme_pay_mm": 0.0,
+   "cap_mm": 6.0,
+   "not_": "ince micro HDMI -> HDMI A, Pi HDMI1 -> ekran; ekran ucunda 90 derece fis/adaptor gerekir"
+  },
+  "Hub uzatmasi": {
+   "yol_mm": 617.0,
+   "onerilen_mm": 920.0,
+   "kapak_sokme_pay_mm": 150.0,
+   "cap_mm": 4.0,
+   "not_": "Pi port 3 -> hub: hub'in sabit 130 mm kablosu + ~1 m USB-A uzatma; listede yok"
+  },
+  "USB dokunmatik": {
+   "yol_mm": 395.0,
+   "onerilen_mm": 640.0,
+   "kapak_sokme_pay_mm": 150.0,
+   "cap_mm": 4.0,
+   "not_": "USB A -> micro B, HUB -> gogus ekrani TOUCH; kutudaki kablo 35 cm, yetmez; v4 satir 58, 2 m"
+  },
+  "ESP32 USB": {
+   "yol_mm": 971.0,
+   "onerilen_mm": 1360.0,
+   "kapak_sokme_pay_mm": 150.0,
+   "cap_mm": 4.0,
+   "not_": "Hub -> ESP32 (taban), VBUS'ta 1N5819; govde ici sema, v4'te 2 m"
+  },
+  "Hoparlor": {
+   "yol_mm": 823.0,
+   "onerilen_mm": 1030.0,
+   "kapak_sokme_pay_mm": 0.0,
+   "cap_mm": 4.0,
+   "not_": "PAM8403 -> hoparlor, boyundan iner; listede robot icin yok (2 x 0,75 kordon test duzeneginin sarfi)"
+  },
+  "Ses karti uzatmasi": {
+   "yol_mm": 217.0,
+   "onerilen_mm": 270.0,
+   "kapak_sokme_pay_mm": 0.0,
+   "cap_mm": 4.0,
+   "not_": "Pi port 2 -> L dirsek -> ses karti; USB-A erkek -> disi, listede yok"
+  },
+  "Dizi USB": {
+   "yol_mm": 85.0,
+   "onerilen_mm": 110.0,
+   "kapak_sokme_pay_mm": 0.0,
+   "cap_mm": 4.0,
+   "not_": "Pi port 1 -> ReSpeaker micro B; kisa kablo listede yok"
+  },
+  "3,5 mm -> PAM": {
+   "yol_mm": 36.0,
+   "onerilen_mm": 40.0,
+   "kapak_sokme_pay_mm": 0.0,
+   "cap_mm": 3.5,
+   "not_": "ses karti L 3,5 mm fis -> PAM girisi; AUX kablosu kesilir, listede robot icin yok"
+  },
+  "PAM 5 V": {
+   "yol_mm": 64.0,
+   "onerilen_mm": 80.0,
+   "kapak_sokme_pay_mm": 0.0,
+   "cap_mm": 3.0,
+   "not_": "D24V50F5 ustu -> PAM 5 V; besleme noktasi ONERI, elektrik.md'de dogrulanmadi"
+  },
+  "12 V": {
+   "yol_mm": 1376.0,
+   "onerilen_mm": 1720.0,
+   "kapak_sokme_pay_mm": 0.0,
+   "cap_mm": 5.0,
+   "not_": "ekran 12 V ~0,5 A, taban guc panelinden; LiFePO4 12,8-14,4 V ile dogrudan baglama dogrulanmadi: regulator/sigorta karari acik"
+  }
+ },
+ "kafa_ici_kablo_listesi": {
+  "HDMI (serit, 2 lehimsiz fis)": {
+   "yol_mm": 254.0,
+   "liste_boyu_mm": 300.0,
+   "kalan_mm": 46.0
+  },
+  "Touch USB (kutu kablosu)": {
+   "yol_mm": 217.0,
+   "liste_boyu_mm": 350.0,
+   "kalan_mm": 133.0
+  },
+  "Power USB (30 cm, A ucu kesik)": {
+   "yol_mm": 114.0,
+   "liste_boyu_mm": 300.0,
+   "kalan_mm": 186.0
+  }
+ },
+ "kafa_ici_kablo_kutle": [
+  [
+   "Hub uzatmasi",
+   264.0,
+   7.9
+  ],
+  [
+   "Hoparlor",
+   203.0,
+   3.0
+  ],
+  [
+   "Ses karti uzatmasi",
+   217.0,
+   6.5
+  ],
+  [
+   "Dizi USB",
+   85.0,
+   2.5
+  ],
+  [
+   "3,5 mm -> PAM",
+   36.0,
+   0.5
+  ],
+  [
+   "PAM 5 V",
+   64.0,
+   1.0
+  ]
+ ],
+ "pi_portlari": {
+  "1": "ReSpeaker",
+  "2": "USB ses karti (uzatma + L dirsek)",
+  "3": "Hub (hub 130 mm + uzatma)",
+  "4": "Kafa ekrani dokunmatik"
+ },
+ "hub_portlari": {
+  "1": "Gogus dokunmatik",
+  "2": "ESP32",
+  "3": "bos",
+  "4": "bos"
+ },
+ "sure_s": 483.8
+}

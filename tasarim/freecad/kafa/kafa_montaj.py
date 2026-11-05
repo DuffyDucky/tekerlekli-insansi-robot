@@ -532,12 +532,23 @@ def atalet(gruplar, pl_map, eksen_n, eksen_u):
 # tork ve rulman hesabina nokta kutle olarak eklenir (taban KABLO_PAY gibi; tahmini). Modul kutlesine (kutle_g) girmez.
 _mke = K["kablo_payi"]["merkez_eksen"]
 KABLO_KAFA = dict(kutle_g=K["kablo_payi"]["kutle_g"], merkez=(_mke[0], YT + _mke[1], ZT + _mke[2]), not_=K["kablo_payi"]["kaynak"])
+# B + R1 (05.11.2026): yeni kablolarin kafa ici kismi ve kutleli fis zarflari, 59 g payinin ustune nokta kutle (kafa-yerlesim/yerlesim_olc.py ile ayni kabul; biraz kotumser). Payin aksine pan ataletine de girer.
+sys.path.insert(0, os.path.join(UST, "lale158"))
+import kablo_yolu_ekran as KY_
+KABLO_EK = [dict(ad=q[0], yol_mm=q[1], kutle_g=q[2], nokta=q[3]) for q in KY_.kafa_ici_kablo_kutle()]
+for z_ in KP.ZARF:
+    if z_.get("kutle", 0.0) > 0:
+        _bc = z_["shape"].BoundBox.Center
+        KABLO_EK.append(dict(ad=z_["ad"], yol_mm=None, kutle_g=z_["kutle"], nokta=(_bc.x, _bc.y, _bc.z)))
 mK0, cK0 = GR["Kafa"]
-mK = mK0 + KABLO_KAFA["kutle_g"]
-cK = (cK0 * mK0 + V(*KABLO_KAFA["merkez"]) * KABLO_KAFA["kutle_g"]) * (1.0 / mK)
+mK = mK0 + KABLO_KAFA["kutle_g"] + sum(q["kutle_g"] for q in KABLO_EK)
+cK = (cK0 * mK0 + V(*KABLO_KAFA["merkez"]) * KABLO_KAFA["kutle_g"] + sum((V(*q["nokta"]) * q["kutle_g"] for q in KABLO_EK), V(0, 0, 0))) * (1.0 / mK)
 I_tilt = atalet(("Kafa",), {"Kafa": App.Placement()}, (0, YT, ZT), K["tilt_yon"])
 _kc = V(*KABLO_KAFA["merkez"]) - V(0, YT, ZT)
 I_tilt += KABLO_KAFA["kutle_g"] / 1000.0 * ((_kc.y ** 2 + _kc.z ** 2) * 1e-6)
+for q in KABLO_EK:
+    _kc2 = V(*q["nokta"]) - V(0, YT, ZT)
+    I_tilt += q["kutle_g"] / 1000.0 * ((_kc2.y ** 2 + _kc2.z ** 2) * 1e-6)
 ALFA = 4 * math.radians(60) / 0.4 ** 2       # 60 derece 0,4 s'de, ucgen hiz profili (tahmini): 26,2 rad/s2
 OMEGA = 2 * math.radians(60) / 0.4           # tepe hiz 5,2 rad/s (MG996R bossta ~6,2 rad/s @4,8 V)
 STALL = 9.4                                  # kg*cm MG996R @4,8 V (dirsek ile ayni kaynak)
@@ -552,7 +563,10 @@ ti = I_tilt * ALFA / 9.81 * 100              # N*m -> kg*cm
 tilt_t = tg_max + ti
 # tum acilarda en kotu (tam tur, bilgi): kutle merkezinin eksene uzakligi
 r_cg = math.hypot(cK.y - YT, cK.z - ZT)
-tilt_tork = dict(kutle_g=round(mK, 1), kutle_parca_g=round(mK0, 1), kablo_payi=KABLO_KAFA,
+# +-15 (secenek karsilastirmasi; yazilim siniri +-13 ayri): ayni formul
+_tg15 = max(abs(mK * (Ptilt(th).multVec(cK).z - ZT) / 1e4) for th in (-15, 15))
+tilt_tork = dict(kutle_g=round(mK, 1), kutle_parca_g=round(mK0, 1), kablo_payi=KABLO_KAFA, kablo_ek=KABLO_EK,
+                 statik_tilt15_kgcm=round(_tg15, 3), toplam_tilt15_kgcm=round(_tg15 + ti, 3), pay_tilt15=round(STALL / (_tg15 + ti), 2), pay_iki_hane=round(STALL / tilt_t, 2), statik_iki_yon_kgcm=round(tg_max, 3),
                  am=[round(cK.x, 2), round(cK.y, 2), round(cK.z, 2)], eksen=[YT, ZT],
                  am_eksen_mm=round(r_cg, 1), yercekimi_max_kgcm=round(tg_max, 2), yercekimi_max_th=th_tg,
                  tam_tur_max_kgcm=round(mK * r_cg / 1e4, 2), I_kgm2=round(I_tilt, 6), alfa_rad_s2=round(ALFA, 1),
@@ -562,6 +576,11 @@ tilt_tork = dict(kutle_g=round(mK, 1), kutle_parca_g=round(mK0, 1), kablo_payi=K
 I_pan = {}
 for th in (TAR[0], 0, TAR[1]):
     I_pan[str(th)] = atalet(("Pan", "Kafa"), {"Pan": App.Placement(), "Kafa": Ptilt(th)}, (0, 0, 0), K["pan_yon"])
+    _pl = Ptilt(th)
+    _up = V(*K["pan_yon"])
+    for q in KABLO_EK:                           # yeni kablolar pan ataletine girer (59 g pay girmez: kafa_montaj bugunku kabul)
+        _qp = _pl.multVec(V(*q["nokta"]))
+        I_pan[str(th)] += q["kutle_g"] * (_qp - _up * _qp.dot(_up)).Length ** 2 * 1e-9
 I_pmax = max(I_pan.values())
 mPK = GR["Pan"][0] + mK
 cPK = (GR["Pan"][1] * GR["Pan"][0] + cK * mK) * (1.0 / mPK)
@@ -577,7 +596,7 @@ pan_t = (T_ivme + T_rul + T_kablo) / 9.81 * 100
 pan_tork = dict(kutle_g=round(mPK, 1), am=[round(cPK.x, 2), round(cPK.y, 2), round(cPK.z, 2)],
                 I_kgm2={k: round(v, 6) for k, v in I_pan.items()}, alfa_rad_s2=round(ALFA, 1),
                 ivme_kgcm=round(T_ivme / 9.81 * 100, 3), rulman_kgcm=round(T_rul / 9.81 * 100, 4),
-                kablo_kgcm=round(T_kablo / 9.81 * 100, 2), toplam_kgcm=round(pan_t, 2), stall_kgcm=STALL, pay=round(STALL / pan_t, 1),
+                kablo_kgcm=round(T_kablo / 9.81 * 100, 2), toplam_kgcm=round(pan_t, 3), stall_kgcm=STALL, pay=round(STALL / pan_t, 1), pay_iki_hane=round(STALL / pan_t, 2),
                 rulman=dict(eksenel_N=round(F_ax, 2), devirme_Nm=round(M_dev, 4), rulman_arasi_mm=ARA_RUL, radyal_N=round(F_rad, 1),
                             not_="6808: eksenel yuk ust rulmanda (mil omzu -> ic bilezik -> dis bilezik -> yuva tablasi); "
                                  "devirme momenti iki rulmanda kuvvet cifti; pan servosu mili yalniz dondurur"))
@@ -866,7 +885,7 @@ out = dict(
     r62=dict(aciklik_r=A.BOYUN_ACIKLIK_R, kapak_y_yerel=list(y_kapak), sabit_en_kucuk=r62[:6], kapak_seviyesi_r_max=round(r_max, 2),
              kafa_en_alt_y=round(alt[0], 2), kafa_en_alt_poz=alt[1], pan_en_alt_y=round(y_pan_min, 2),
              not_="kapak seviyesinde yalniz sabit boyun (servo yuvasi + plaka kulaklari) var; hareketli parcalar y >= %.1f" % y_pan_min),
-    isi=isi, qled=qled, pi=dict(konum_T_bas_cercevesi=list(KP.INFO["pi_t"]), burc_mm=KP.K7.PI_BURC, cevirici_xz=[-80.0, 6.0], amfi_xz=[80.0, 6.0],
+    isi=isi, qled=qled, pi=dict(konum_T_bas_cercevesi=list(KP.INFO["pi_t"]), burc_mm=KP.K7.PI_BURC, cevirici_xz=[-80.0, 6.0], amfi_sol_duvar_yz=[A.SES_USB["pam"]["y"], A.SES_USB["pam"]["zc"]],
                      not_="10,1 in QLED kafa: Bas cercevesi = tilt ekseni (kafa yereli y %.3f, z %.1f) orijinli" % (YT, ZT), boyun_kablolari="12 V cift 18 AWG + ESP32 USB (VBUS hattinda seri 1N5819) + tilt servo (3 tel) + gogus ekrani HDMI + USB dokunmatik (01.11.2026; montaj/ekran_kablo_yolu.py)",
                      kaynak="planlama/adim1/P-pi-kafada.md; planlama/adim3/elektrik.md"),
     tork=dict(tilt=tilt_tork, pan=pan_tork, profil="60 derece 0,4 s'de ucgen hiz profili (tahmini): alfa %.1f rad/s2, tepe hiz %.1f rad/s" % (ALFA, OMEGA),

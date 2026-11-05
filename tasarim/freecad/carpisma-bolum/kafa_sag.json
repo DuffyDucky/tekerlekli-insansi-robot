@@ -1,16 +1,16 @@
 {
  "bolum": "kafa_sag",
- "kosu": "20261104-174345",
- "baslangic": "2026-11-04T18:04:47",
- "bitis": "2026-11-04T18:17:39",
- "sure_s": 772.3,
- "yukleme_s": 17.8,
- "tepe_bellek_mb": 582,
- "tepe_sayfa_mb": 2601,
+ "kosu": "20261105-185759",
+ "baslangic": "2026-11-05T19:11:25",
+ "bitis": "2026-11-05T19:19:42",
+ "sure_s": 497.0,
+ "yukleme_s": 17.7,
+ "tepe_bellek_mb": 614,
+ "tepe_sayfa_mb": 2638,
  "ayni_surec": [
   "kafa_sag"
  ],
- "pid": 1924,
+ "pid": 27760,
  "moduller": [
   "omuz_sag",
   "dirsek_sag",
@@ -18,20 +18,20 @@
  ],
  "kaynak": {
   "carpisma.py": "c688d738c3",
-  "arayuz.py": "3263e669ab",
+  "arayuz.py": "d333e41246",
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
   "omuz/omuz_parcalar.py": "62b19c7371",
-  "kabuk/kabuk_parcalar.py": "d82f39c382",
+  "kabuk/kabuk_parcalar.py": "0abfd960ab",
   "dirsek/dirsek_parcalar.py": "7182c29899",
-  "kafa/kafa_parcalar.py": "ab3398a9b6",
+  "kafa/kafa_parcalar.py": "22229bcdd0",
   "taban/taban_parcalar.py": "c5f30375d4",
-  "kafa/kafa-analiz.json": "8d8c41b670",
+  "kafa/kafa-analiz.json": "ebccb84751",
   "dirsek/dirsek_lib.py": "2f3a3b77fb",
   "kabuk/kabuk_lib.py": "a848c28ddc",
-  "kafa/kafa10_lib.py": "3261794aef",
-  "kafa/kafa_lib.py": "1a85133046",
+  "kafa/kafa10_lib.py": "5a75b90e69",
+  "kafa/kafa_lib.py": "8dc6d8d718",
   "omuz/omuz_lib.py": "b5c14c4ed2",
   "taban/taban_lib.py": "73d922d4bc"
  },
@@ -265,7 +265,7 @@
     "kol_alt_oge": 40050,
     "zarfa_yakin_alt_oge": 5580,
     "kafa_oge": 15633,
-    "aday": 938879,
+    "aday": 908873,
     "ince_aday": 0,
     "ince_tur": 0,
     "ince_isaretli": 0,
@@ -1058,10 +1058,10 @@
       "cakisan_kafa_poz": []
      }
     ],
-    "sure_s": 772.0
+    "sure_s": 496.8
    }
   },
   "not_": "kafa pozu = (pan, tilt); kol pozu = (one-arka, yana, dirsek, bilek); alt poz: kafa Govde (), Pan (pan), Kafa (pan, tilt); kol Gobek (one-arka), Kol/UstKol (one-arka, yana), OnKol (+dirsek), El (+bilek). Eklem araligi: kafa pan +-90, tilt -25...30 ve kol araligi; aralik disi = kafa pan +-90 disi ya da tilt 40 (serbest -25...40) ya da kol ince komsulugu disi. Olculmeyen ciftlerin boslugu >= 100 mm (sinir kutusu).",
-  "sure_s": 772.3
+  "sure_s": 497.0
  }
 }

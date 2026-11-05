@@ -979,6 +979,30 @@ M6 = dict(
 )
 
 
+# =====================================================================================================
+# Kafa ici ses + USB yerlesimi: secim B + R1 (Duffy, 05.11.2026; lale158/kafa-yerlesim/secenekler.md, uygulama-notu.md). MAX98357A modelden cikti.
+# Geometri: kafa/kafa10_lib.py (dizi, ses karti, PAM), kabuk/kabuk_parcalar.py (hoparlor, kapak ici hub); yollar: lale158/kablo_yolu_ekran.py.
+# Cerceve "bas" = tilt ekseni orijin, global ev pozu = bas + (0, KAFA taban_y + tilt y, tilt z). Aksi yazmiyorsa mm.
+# =====================================================================================================
+SES_USB = dict(
+    dizi=dict(model="ReSpeaker Mic Array v2.0 (Seeed STEP: lale158/kafa-yerlesim/kaynak/RESPEAKER-MIC-3D-v2.0.stp)", cx=40.0, cz=-30.0, gap_jak=0.6, jak_ust=5.4, kutle_g=30.0,
+              kutle_durum="VARSAYIM: uretici net kutle vermiyor (70 g brut Farnell, 18 g dogrulanmamis satici)", mic_delik_d=3.0, mic_delik_durum="O3 VARSAYIM, akustigi olculmedi",
+              mic=[(23.29, 22.33, 1.1), (-23.30, -22.43, 1.1), (-22.39, 23.24, 1.1), (22.38, -23.34, 1.1)], delik=[(-19.90, -11.54), (-7.73, 27.03), (19.94, -11.54)], usb_x=-6.82,
+              fis=dict(boy=20.0, y=8.0, z=11.0, durum="micro USB fis zarfi VARSAYIM"), boss_r=2.5, pilot_r=1.0, pilot_derin=7.0),   # pilot 7: M2x8 PT ucu PCB ustunden 6,8 mm (secenek cizimi 5 mm idi)
+    ses=dict(olcu=(48.0, 24.0, 11.0), y=47.0, zc=-34.0, kutle_g=8.0, durum="VARSAYIM: sayfada olcu yok, fotograftan (kafa-yerlesim/kaynak/ses-karti-motorobit.jpg)",
+             dirsek_g=5.0, uzatma_g=6.0, jak_g=3.0, ek_durum="USB-A fis, L USB dirsek, uzatma disi ucu, L 3,5 mm fis zarflari VARSAYIM; urun secilmedi; listede yok"),
+    pam=dict(olcu=(24.0, 18.0, 5.0), y=72.0, zc=-19.5, kutle_g=3.0, durum="model zarfi sayfadan buyuk (sayfa 21 x 18 x 3,4); kutle VARSAYIM"),
+    d24_5v=(-80.0, 44.0, 6.0),                                                                     # D24V50F5 ustu; PAM 5 V buradan (ONERI, elektrik.md besleme noktasini dogrulamiyor)
+    pi_usb=dict(p1=(46.0, 51.0, -36.9), p2=(46.0, 44.0, -36.9), p3=(46.0, 51.0, -54.9), p4=(46.0, 44.0, -54.9)),   # 1 ReSpeaker, 2 ses karti, 3 hub, 4 kafa dokunmatik. Yuva agzi VARSAYIM +-2
+    koridor=[(62.0, 47.0, -37.0), (62.0, 36.5, -14.0), (-43.5, 36.5, -13.0)],                      # boyuna inen USB: tabla ustu, SY8205 (z >= 3,9) onunde, micro HDMI fislerinin altinda
+    hoparlor=dict(x=45.0, y=982.5, ic=((970.0, 92.01), (990.0, 106.02)), kutle_g=27.0, cap=40.0, boy=20.0, kulak_e=31.0,   # ic: x = 45'te orta bant ic yuzu (y, z) isin olcumu
+                  durum="Boy Motorobit sayfasi; kutle (Adafruit 3968, baska urun), kap ve kulak VARSAYIM: urunde delik gorunmuyor, elde gorulmeden kesinlesmez"),
+    hub=dict(x=(35.0, 60.0), y=(1085.0, 1157.0), lz=-80.78, z_alt=-78.48, h=19.0, kutle_g=25.0, ic_z=((1085.0, -82.37), (1157.0, -79.51)), kopuk=1.0, takoz_y1=1150.0, ray_x=((33.25, 34.75), (60.25, 61.75)), ray_y=(1095.0, 1145.0), ray_ust=6.0,
+             fis_payi=40.0, kablo_mm=130.0, durum="Olcu satici sayfasi; port yonu VARSAYIM; 2 port bos birakildi"),
+    kablo_pay=1.25, kapak_sokme_pay=150.0,                                                         # siparis boyu = yol x 1,25 + (kapaga bagli kablolarda) kapak sokme payi 150 TAHMIN
+)
+
+
 if __name__ == "__main__":
     print("S3 =", S3, "direk", DIREK_Y0, "->", DIREK_Y1, "=", DIREK_L, "mm; uzun ray x", UZUN_RAY_X, "ara ray", ARA_RAY_L)
     print("ayrilmis bolge sayisi:", len(BOLGELER), "; sahipler:", sorted(set(b["sahip"] for b in BOLGELER)))

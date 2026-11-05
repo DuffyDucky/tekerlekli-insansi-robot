@@ -1,7 +1,7 @@
 ﻿Tur;Kalem;Adet;Toplam kutle (g)
 Baglanti;M2,5x5 DIN 912;4;1.9
 Baglanti;M2,5x8 DIN 912;4;2.3
-Baglanti;M2x8 PT vida (plastik icin);4;1.4
+Baglanti;M2x8 PT vida (plastik icin);7;2.4
 Baglanti;M3 DIN 125 pul;8;1.0
 Baglanti;M3 DIN 985 kontra somun;4;2.4
 Baglanti;M3 isil gomme somun;29;7.7
@@ -19,7 +19,7 @@ Baglanti;M5x12 DIN 912;1;3.8
 Baglanti;M6 DIN 125 pul;2;2.0
 Baglanti;M6 cekic somun (kanal 10);2;10.3
 Baglanti;M6x20 DIN 912;2;15.1
-Baski;Arka kafa kabugu sag;1;218.2
+Baski;Arka kafa kabugu sag;1;218.5
 Baski;Arka kafa kabugu sol;1;205.1
 Baski;Boyun mili;1;38.7
 Baski;Boyun yukseltme adaptoru;1;66.9
@@ -37,8 +37,7 @@ Imalat;Boyun plakasi 3 mm Al (lazer/su jeti);1;42.9
 Satin;25T aluminyum disk horn;2;7.7
 Satin;625ZZ rulman 5x16x5;1;2.8
 Satin;6808-2RS rulman 40x52x7;2;27.8
-Satin;Adafruit MAX98357A;1;2.0
-Satin;Cift tarafli kopuk bant 1 mm (VHB);11;0.5
+Satin;Cift tarafli kopuk bant 1 mm (VHB);9;0.3
 Satin;M2,5 x 8 burc, disi-disi;4;4.6
 Satin;MG996R servo;2;110.0
 Satin;P6KE6V8A TVS (kafa ekrani 5 V);1;1.0
@@ -46,7 +45,7 @@ Satin;PAM8403 2 x 3 W amfi karti (olcu TAHMIN);1;3.0
 Satin;Pololu D24V50F5 5 V 5 A;1;7.0
 Satin;Raspberry Pi 5 4GB + resmi Active Cooler;1;58.0
 Satin;Raspberry Pi Camera Module 3;1;4.0
+Satin;ReSpeaker Mic Array v2.0 (Seeed STEP: lale158/kafa-yerlesim/kaynak/RESPEAKER-MIC-3D-v2.0.stp);1;30.0
 Satin;SY8205 5 V dusurucu kart (kafa ekrani ayri hat);1;8.0
-Satin;USB Hub 4 lu 72 x 25 x 19;1;25.0
-Satin;"USB ses karti (PAM8403 girisi; olcu TAHMIN)";1;8.0
+Satin;"USB ses karti (PAM8403 girisi; olcu VARSAYIM, fotograftan)";1;8.0
 Satin;WaveShare 10.1HP-CAPQLED 10,1 in QLED 1280x720 HDMI kapasitif (kod 20789);1;600.0

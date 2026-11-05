@@ -1,0 +1,6263 @@
+{
+ "tarih": "2026-11-04",
+ "cerceve": "bas = tilt ekseni orijin; ky = bas + (0, 188.878, 25.0); g = ky + (0, 1290, 0)",
+ "urun": {
+  "respeaker": {
+   "olcu": "O70 (uretici wiki), PCB 1,2 (STEP) / 1,5 (cizim), bilesen ustu 5,4 (STEP, jak), pin alti 7,7 (STEP); toplam 13,1 (STEP) / 13,3 (Farnell)",
+   "delik": "3 x O2,2 (STEP: yaricap 1,1; cizim 27,1/7,7 ve 11,5/19,9 ile tutarli)",
+   "mikrofon": "4 x MP34DT01TR-M; port deligi O0,7 bilesen yuzunde kilifin ustunde (STEP); kare 45,7 x 45,7 (cizim)",
+   "guc": "5 V, 180 mA LED acik, 170 mA LED kapali (uretici wiki)",
+   "kutle_g": 30.0,
+   "kutle_durum": "VARSAYIM. Uretici net kutle vermiyor: 70 g brut (Farnell/RobotShop 'G.W'), 18 g tek uclu satici (dogrulanmadi). Duyarlilik 18 ve 70 g ile ayrica hesaplandi.",
+   "kaynak": "https://wiki.seeedstudio.com/ReSpeaker_Mic_Array_v2.0/ ; kaynak/RESPEAKER-MIC-3D-v2.0.stp (Seeed), kaynak/respeaker-olcu-1.png"
+  },
+  "hoparlor": {
+   "olcu": "O40 x 20 (Motorobit sayfasi: '40x20mm', 4 ohm, 3 W)",
+   "adet_v4": 1,
+   "kutle_g": 27.0,
+   "kutle_durum": "VARSAYIM: 27 g Adafruit 3968 (baska urun, raporlar/kaynaklar/04). Motorobit sayfasinda kutle yok. Montaj deligi fotografta gorunmuyor.",
+   "kaynak": "https://www.motorobit.com/speaker-4-ohm-3w-40mm (v4 satir 30)"
+  },
+  "pam": {
+   "olcu_model": [
+    24.0,
+    18.0,
+    5.0
+   ],
+   "olcu_sayfa": [
+    21.0,
+    18.0,
+    3.4
+   ],
+   "kutle_g": 3.0,
+   "kutle_durum": "VARSAYIM (kafa_lib PAM)",
+   "kaynak": "https://www.robotistan.com/23w-mini-amfi-devresi-pam8403 (v4 satir 89): 'U x G x Y 21 x 18 x 3.4 mm', 5 V; akim ve delik yok. Olcumde modelin daha buyuk 24 x 18 x 5 zarfi kullanildi."
+  },
+  "ses": {
+   "olcu": [
+    48.0,
+    24.0,
+    11.0
+   ],
+   "fis_usb": 12.0,
+   "kutle_g": 8.0,
+   "olcu_durum": "VARSAYIM: sayfada olcu yok. Fotograftan USB-A eni 12 mm olcegiyle govde ~48 x 24, fis 12 (kaynak/ses-karti-motorobit.jpg); kalinlik 11 kafa_lib tahmini. Modeldeki 45 x 18 x 11 fisi saymiyor.",
+   "kaynak": "https://www.motorobit.com/usb-71-kanal-kulaklik-mikrofon-ses-karti (v4 satir 47): 'USB 2.0', '3.5mm jack giris ve cikis'. Kablosuz, USB-A fisli cubuk (fotograf)."
+  },
+  "hub": {
+   "olcu": [
+    72.0,
+    25.0,
+    19.0
+   ],
+   "kutle_g": 25.0,
+   "kablo_mm": 130.0,
+   "kaynak": "https://www.robotistan.com/usb-hub-3lu-mini-usb-a-dahili-guc-anahtari (v4 satir 92): sayfa 72x25x19 ve 73x26x19; 24 g ve 26 g; kablo 130 mm"
+  },
+  "ai_hat": {
+   "olcu": [
+    65.0,
+    56.5
+   ],
+   "yig_mm": 16.0,
+   "kutle_g": 30.0,
+   "kutle_durum": "VARSAYIM (olcu ve kutle dogrulanmadi; v4 satir 114 listede, CAD modelinde YOK)"
+  }
+ },
+ "arka_kapak_bb_g": [
+  -137.2,
+  137.2,
+  791.5,
+  1005.0,
+  -88.0,
+  -82.0
+ ],
+ "ust_kapak_ic_z": -80.78,
+ "taban_tork": {
+  "kutle_g": 1531.3,
+  "am_eksen": [
+   2.8,
+   -0.15,
+   0.52
+  ],
+  "statik_kgcm": 0.083,
+  "statik_kgcm_tilt15": {
+   "-15": 0.083,
+   "15": 0.071
+  },
+  "I_tilt": 0.008742,
+  "tilt_toplam_kgcm": 2.416,
+  "tilt_pay": 3.89,
+  "tilt15_toplam_kgcm": 2.416,
+  "tilt15_pay": 3.89,
+  "I_pan": 0.014713,
+  "pan_kgcm": 4.264,
+  "pan_pay": 2.2
+ },
+ "taban_kablo_tup": {
+  "HDMI": [
+   [
+    "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+    897.05
+   ],
+   [
+    "Boyun mili",
+    15.09
+   ],
+   [
+    "Servo yuvasi",
+    1.7
+   ]
+  ],
+  "USB dokunmatik": [
+   [
+    "SY8205 kafa ekrani 5 V",
+    249.7
+   ],
+   [
+    "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+    167.55
+   ],
+   [
+    "Boyun mili",
+    1.17
+   ]
+  ],
+  "12 V": [
+   [
+    "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+    617.3
+   ]
+  ]
+ },
+ "mevcut_yer": {
+  "USB Hub 4 lu": {
+   "kafa_ici_en_yakin": [
+    [
+     "Tabla civatasi M3x10 (sag z-15)",
+     4.507
+    ],
+    [
+     "Kafa iskeleti",
+     5.523
+    ],
+    [
+     "Isil gomme somun M3 (kafa on/arka sag y+70)",
+     7.014
+    ],
+    [
+     "Kabuk civatasi M3x6 ISO 7380 (kafa on/arka sag y+70)",
+     7.113
+    ]
+   ],
+   "kabuk_en_yakin": [
+    [
+     "Arka kafa kabugu sag",
+     1.0
+    ],
+    [
+     "Yuz kabugu (on) sag",
+     2.236
+    ]
+   ],
+   "cakisma": [],
+   "zarf_en_yakin": [
+    [
+     "Hub USB fis payi",
+     0.0
+    ],
+    [
+     "Tabla onu kablo gecidi",
+     24.01
+    ],
+    [
+     "Tabla ustu kablo yolu",
+     52.5
+    ]
+   ],
+   "zarf_cakisma": [],
+   "ai_hat_mm": 90.0,
+   "boyun_pan_min": {
+    "mm": 89.277,
+    "parca": "Tilt servosu cikis mili",
+    "tilt": -15
+   },
+   "isi": {
+    "yarik_mm": 71.12,
+    "yarik_prizma_kesisim_mm3": 0,
+    "fan_yeri_mm": 71.27,
+    "fan_yeri_kesisim_mm3": 0.0
+   },
+   "bb_bas": [
+    112.5,
+    131.5,
+    37.5,
+    62.5,
+    -64.0,
+    8.0
+   ]
+  },
+  "USB ses karti": {
+   "kafa_ici_en_yakin": [
+    [
+     "Kopuk bant (PAM8403 amfi)",
+     2.0
+    ],
+    [
+     "PAM8403 amfi",
+     2.0
+    ],
+    [
+     "Kafa iskeleti",
+     9.014
+    ],
+    [
+     "Tabla civatasi M3x10 (sol z-15)",
+     11.75
+    ]
+   ],
+   "kabuk_en_yakin": [
+    [
+     "Arka kafa kabugu sol",
+     1.0
+    ],
+    [
+     "Yuz kabugu (on) sol",
+     7.071
+    ]
+   ],
+   "cakisma": [],
+   "zarf_en_yakin": [
+    [
+     "Tabla ustu kablo yolu",
+     84.5
+    ],
+    [
+     "Fan yeri 30x30x10 (listede yok)",
+     137.923
+    ],
+    [
+     "Tabla onu kablo gecidi",
+     182.292
+    ]
+   ],
+   "zarf_cakisma": [],
+   "ai_hat_mm": 78.136,
+   "boyun_pan_min": {
+    "mm": 90.673,
+    "parca": "Pim civatasi M5x12",
+    "tilt": -15
+   },
+   "isi": {
+    "yarik_mm": 87.58,
+    "yarik_prizma_kesisim_mm3": 0,
+    "fan_yeri_mm": 137.92,
+    "fan_yeri_kesisim_mm3": 0.0
+   },
+   "bb_bas": [
+    -131.5,
+    -120.5,
+    35.0,
+    53.0,
+    -42.0,
+    3.0
+   ]
+  },
+  "PAM8403 amfi": {
+   "kafa_ici_en_yakin": [
+    [
+     "Kopuk bant (USB ses karti)",
+     2.0
+    ],
+    [
+     "USB ses karti",
+     2.0
+    ],
+    [
+     "Kafa iskeleti",
+     14.807
+    ],
+    [
+     "Tabla civatasi M3x10 (sol z-75)",
+     18.878
+    ]
+   ],
+   "kabuk_en_yakin": [
+    [
+     "Arka kafa kabugu sol",
+     1.0
+    ],
+    [
+     "Yuz kabugu (on) sol",
+     54.009
+    ]
+   ],
+   "cakisma": [],
+   "zarf_en_yakin": [
+    [
+     "Tabla ustu kablo yolu",
+     92.273
+    ],
+    [
+     "Fan yeri 30x30x10 (listede yok)",
+     139.607
+    ],
+    [
+     "Hub USB fis payi",
+     199.0
+    ]
+   ],
+   "zarf_cakisma": [],
+   "ai_hat_mm": 84.126,
+   "boyun_pan_min": {
+    "mm": 105.056,
+    "parca": "Pim civatasi M5x12",
+    "tilt": -15
+   },
+   "isi": {
+    "yarik_mm": 83.55,
+    "yarik_prizma_kesisim_mm3": 0,
+    "fan_yeri_mm": 139.61,
+    "fan_yeri_kesisim_mm3": 0.0
+   },
+   "bb_bas": [
+    -131.5,
+    -126.5,
+    35.0,
+    53.0,
+    -68.0,
+    -44.0
+   ]
+  },
+  "mevcut_ses_fis_x_PAM": {
+   "usb_fis_pam_mm3": 621.0,
+   "uzatma_pam_mm3": 0.0,
+   "gercek_govde_pam_mm3": 0.0,
+   "not_": "Modeldeki PAM yeri (y 44, z -56) ses kartinin USB fis ekseninde. Gercek boy govde z -43,5...+4,5; fis -55,5; PAM z -68...-44."
+  }
+ },
+ "secenek": {
+  "A": {
+   "R": {
+    "ad": "R1 sag yari",
+    "merkez_bas": [
+     40.0,
+     92.622,
+     -30.0
+    ],
+    "not_": "x = 0 dikisine ve tepe civatasina dokunmaz; tek parca (Arka kafa kabugu sag)"
+   },
+   "kafa_parca": {
+    "ReSpeaker Mic Array v2.0": {
+     "kafa_ici_en_yakin": [
+      [
+       "Isil gomme somun M3 (kafa sag/sol arka ust)",
+       12.098
+      ],
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol arka ust)",
+       12.684
+      ],
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       27.422
+      ],
+      [
+       "Kamera vidasi M2x8 PT (3)",
+       36.061
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.6
+      ],
+      [
+       "Yuz kabugu (on) sag",
+       7.78
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       12.416
+      ],
+      [
+       "Hub USB fis payi",
+       28.922
+      ],
+      [
+       "Tabla ustu kablo yolu",
+       28.922
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 24.968,
+     "boyun_pan_min": {
+      "mm": 65.99,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "govde_min": {
+      "mm": 177.495,
+      "parca": "Rulman yuvasi",
+      "pan": -90,
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       107.344
+      ],
+      [
+       "USB ses karti (govde)",
+       129.646
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 21.42,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 12.42,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      4.63,
+      75.59,
+      84.92,
+      98.02,
+      -65.82,
+      5.92
+     ]
+    },
+    "Dizi USB fis zarfi": {
+     "kafa_ici_en_yakin": [
+      [
+       "USB Hub 4 lu",
+       32.615
+      ],
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       43.867
+      ],
+      [
+       "Kopuk bant (USB Hub 4 lu)",
+       45.713
+      ],
+      [
+       "Isil gomme somun M3 (kafa on/arka sag y+70)",
+       47.02
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.6
+      ],
+      [
+       "Yuz kabugu (on) sag",
+       27.687
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Hub USB fis payi",
+       27.522
+      ],
+      [
+       "Tabla ustu kablo yolu",
+       37.182
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       58.559
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 59.416,
+     "boyun_pan_min": {
+      "mm": 88.792,
+      "parca": "Tilt servosu MG996R",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       173.603
+      ],
+      [
+       "USB ses karti (govde)",
+       197.946
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 65.04,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 58.56,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      75.0,
+      95.0,
+      90.02,
+      98.02,
+      -28.68,
+      -17.68
+     ]
+    },
+    "Dizi boss 0": {
+     "kafa_ici_en_yakin": [
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       39.281
+      ],
+      [
+       "Ekran tirnagi ust sag",
+       51.503
+      ],
+      [
+       "SY8205 kafa ekrani 5 V",
+       55.819
+      ],
+      [
+       "Tirnak civatasi M3x6 ISO 7380 (ust sag)",
+       56.093
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.0
+      ],
+      [
+       "Yuz kabugu (on) sag",
+       17.6
+      ]
+     ],
+     "cakisma": [
+      [
+       "Arka kafa kabugu sag",
+       1.05
+      ]
+     ],
+     "zarf_en_yakin": [
+      [
+       "Hub USB fis payi",
+       35.329
+      ],
+      [
+       "Tabla ustu kablo yolu",
+       36.622
+      ],
+      [
+       "Tabla onu kablo gecidi",
+       61.109
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 43.833,
+     "boyun_pan_min": {
+      "mm": 80.738,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       156.084
+      ],
+      [
+       "USB ses karti (govde)",
+       172.842
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 73.05,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 64.4,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      49.04,
+      54.04,
+      92.62,
+      98.67,
+      -13.64,
+      -7.6
+     ]
+    },
+    "Dizi boss 1": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol arka ust)",
+       22.09
+      ],
+      [
+       "Isil gomme somun M3 (kafa sag/sol arka ust)",
+       22.926
+      ],
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       36.804
+      ],
+      [
+       "Vida M2,5x5 (Pi 1 ust)",
+       48.887
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.0
+      ],
+      [
+       "Arka kafa kabugu sol",
+       10.539
+      ]
+     ],
+     "cakisma": [
+      [
+       "Arka kafa kabugu sag",
+       1.05
+      ]
+     ],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       36.622
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       51.591
+      ],
+      [
+       "Hub USB fis payi",
+       64.496
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 30.494,
+     "boyun_pan_min": {
+      "mm": 69.426,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       117.473
+      ],
+      [
+       "USB ses karti (govde)",
+       135.217
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 60.59,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 51.59,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      10.47,
+      15.47,
+      92.62,
+      98.67,
+      -25.81,
+      -19.77
+     ]
+    },
+    "Dizi boss 2": {
+     "kafa_ici_en_yakin": [
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       35.29
+      ],
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol arka ust)",
+       55.028
+      ],
+      [
+       "Isil gomme somun M3 (kafa sag/sol arka ust)",
+       55.873
+      ],
+      [
+       "Vida M2,5x5 (Pi 1 ust)",
+       58.515
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.0
+      ],
+      [
+       "Arka kafa kabugu sol",
+       49.055
+      ]
+     ],
+     "cakisma": [
+      [
+       "Arka kafa kabugu sag",
+       1.05
+      ]
+     ],
+     "zarf_en_yakin": [
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       25.576
+      ],
+      [
+       "Hub USB fis payi",
+       35.329
+      ],
+      [
+       "Tabla ustu kablo yolu",
+       42.436
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 40.372,
+     "boyun_pan_min": {
+      "mm": 78.746,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       145.033
+      ],
+      [
+       "USB ses karti (govde)",
+       172.842
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 33.56,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 25.58,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      49.04,
+      54.04,
+      92.62,
+      98.67,
+      -53.48,
+      -47.44
+     ]
+    },
+    "USB ses karti (govde)": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kafa iskeleti",
+       9.014
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       11.75
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-15)",
+       14.841
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       19.513
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       1.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       20.025
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       84.5
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       134.44
+      ],
+      [
+       "Tabla onu kablo gecidi",
+       184.56
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 78.0,
+     "boyun_pan_min": {
+      "mm": 91.158,
+      "parca": "Pim civatasi M5x12",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       4.0
+      ],
+      [
+       "ReSpeaker Mic Array v2.0",
+       129.646
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 80.66,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 134.44,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -120.5,
+      35.0,
+      59.0,
+      -58.0,
+      -10.0
+     ]
+    },
+    "Ses karti USB-A fisi": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kafa iskeleti",
+       17.493
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       19.746
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-75)",
+       24.056
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       45.501
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       1.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       68.007
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       96.462
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       139.985
+      ],
+      [
+       "Hub USB fis payi",
+       199.5
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 84.625,
+     "boyun_pan_min": {
+      "mm": 113.519,
+      "parca": "Pim civatasi M5x12",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       28.324
+      ],
+      [
+       "ReSpeaker Mic Array v2.0",
+       139.748
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 83.62,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 139.99,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -127.0,
+      41.0,
+      53.0,
+      -70.0,
+      -58.0
+     ]
+    },
+    "L USB dirsek": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kafa iskeleti",
+       9.605
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       11.161
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-75)",
+       15.914
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       53.966
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       0.636
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       80.006
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       94.384
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       132.136
+      ],
+      [
+       "Hub USB fis payi",
+       192.094
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 77.017,
+     "boyun_pan_min": {
+      "mm": 112.071,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       39.131
+      ],
+      [
+       "ReSpeaker Mic Array v2.0",
+       134.231
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 74.5,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 132.14,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -119.5,
+      38.0,
+      56.0,
+      -86.0,
+      -70.0
+     ]
+    },
+    "USB uzatma disi ucu": {
+     "kafa_ici_en_yakin": [
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       3.0
+      ],
+      [
+       "Kafa iskeleti",
+       6.0
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-75)",
+       11.0
+      ],
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       45.747
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       3.893
+      ],
+      [
+       "Arka kafa kabugu sag",
+       73.603
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       70.884
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       102.176
+      ],
+      [
+       "Hub USB fis payi",
+       162.223
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 47.027,
+     "boyun_pan_min": {
+      "mm": 89.537,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       42.178
+      ],
+      [
+       "ReSpeaker Mic Array v2.0",
+       107.344
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 44.59,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 102.18,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -119.5,
+      -89.5,
+      38.0,
+      56.0,
+      -83.5,
+      -72.5
+     ]
+    },
+    "L 3,5 mm fis": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kafa iskeleti",
+       10.735
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       13.683
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-15)",
+       17.439
+      ],
+      [
+       "Kabuk civatasi M3x6 ISO 7380 (kafa on/arka sol y+70)",
+       21.487
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       1.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       4.123
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       85.5
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       150.741
+      ],
+      [
+       "Tabla onu kablo gecidi",
+       182.889
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 81.692,
+     "boyun_pan_min": {
+      "mm": 92.305,
+      "parca": "Pim civatasi M5x12",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       16.0
+      ],
+      [
+       "ReSpeaker Mic Array v2.0",
+       135.258
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 108.11,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 150.74,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -121.5,
+      37.0,
+      47.0,
+      -10.0,
+      6.0
+     ]
+    },
+    "PAM8403": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kabuk civatasi M3x6 ISO 7380 (kafa on/arka sol y+70)",
+       18.003
+      ],
+      [
+       "Isil gomme somun M3 (kafa on/arka sol y+70)",
+       18.5
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       33.152
+      ],
+      [
+       "Kafa iskeleti",
+       34.224
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       1.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       17.529
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       90.77
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       146.38
+      ],
+      [
+       "Tabla onu kablo gecidi",
+       190.891
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 84.004,
+     "boyun_pan_min": {
+      "mm": 108.81,
+      "parca": "Pim civatasi M5x12",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB ses karti (govde)",
+       4.0
+      ],
+      [
+       "L 3,5 mm fis",
+       16.0
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 98.26,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 146.38,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -126.5,
+      63.0,
+      81.0,
+      -31.5,
+      -7.5
+     ]
+    }
+   },
+   "govde_parca": {
+    "Hoparlor 40 x 20": {
+     "en_yakin": [
+      [
+       "Govde orta bandi sag",
+       0.497
+      ],
+      [
+       "Gogus bandi sag",
+       8.51
+      ],
+      [
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       12.608
+      ],
+      [
+       "Gogus ekrani cercevesi sag",
+       18.759
+      ],
+      [
+       "Isil gomme somun M3 (gogus cercevesi)001",
+       21.081
+      ]
+     ],
+     "cakisma": [],
+     "bb_g": [
+      25.0,
+      65.0,
+      966.41,
+      1010.64,
+      72.5,
+      111.83
+     ]
+    },
+    "Hoparlor kabi (baski)": {
+     "en_yakin": [
+      [
+       "Govde orta bandi sag",
+       0.196
+      ],
+      [
+       "Gogus bandi sag",
+       5.521
+      ],
+      [
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       9.182
+      ],
+      [
+       "Govde orta bandi sol",
+       13.077
+      ],
+      [
+       "Gogus ekrani cercevesi sag",
+       15.759
+      ]
+     ],
+     "cakisma": [],
+     "bb_g": [
+      10.0,
+      80.0,
+      963.78,
+      1014.07,
+      69.39,
+      113.8
+     ]
+    },
+    "Hoparlor boss 0": {
+     "en_yakin": [
+      [
+       "Govde orta bandi sag",
+       0.0
+      ],
+      [
+       "Gogus bandi sag",
+       24.361
+      ],
+      [
+       "Bindirme civatasi M3x6 (govde y1005 on)",
+       28.97
+      ],
+      [
+       "Isil gomme somun M3 (govde y1005 on)",
+       29.716
+      ],
+      [
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       33.388
+      ]
+     ],
+     "cakisma": [
+      [
+       "Govde orta bandi sag",
+       2.78
+      ]
+     ],
+     "bb_g": [
+      72.0,
+      80.0,
+      977.84,
+      989.91,
+      91.62,
+      103.1
+     ]
+    },
+    "Hoparlor boss 1": {
+     "en_yakin": [
+      [
+       "Govde orta bandi sag",
+       0.0
+      ],
+      [
+       "Govde orta bandi sol",
+       10.069
+      ],
+      [
+       "Gogus bandi sag",
+       24.361
+      ],
+      [
+       "Gogus bandi sol",
+       27.628
+      ],
+      [
+       "Bindirme civatasi M3x6 (govde x0 on)007",
+       28.665
+      ]
+     ],
+     "cakisma": [
+      [
+       "Govde orta bandi sag",
+       2.78
+      ]
+     ],
+     "bb_g": [
+      10.0,
+      18.0,
+      977.84,
+      989.91,
+      91.62,
+      103.1
+     ]
+    }
+   },
+   "dizi_usb_guc_mesafe_mm": {
+    "SY8205 kafa ekrani 5 V": 40.82,
+    "5 V cevirici Pololu D24V50F5": 120.78,
+    "TVS P6KE6V8A kafa ekrani": 55.36,
+    "PAM 5 V (VARSAYIM: D24V50F5)": 129.79,
+    "Hoparlor (PAM -> gogus)": 89.54
+   },
+   "kablo": {
+    "3,5 mm -> PAM giris": {
+     "yol_mm": 36.0,
+     "oneri_mm": 40.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 3.5,
+     "cakisma": [],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 133.31,
+     "not_": "listede robot icin yok; AUX kablosu kesilir, L fis"
+    },
+    "USB uzatma (hub -> ses karti)": {
+     "yol_mm": 208.0,
+     "oneri_mm": 260.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 4.0,
+     "cakisma": [],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 24.84,
+     "not_": "listede yok; USB-A erkek -> disi"
+    },
+    "PAM 5 V (VARSAYIM: D24V50F5)": {
+     "yol_mm": 64.0,
+     "oneri_mm": 80.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 3.0,
+     "cakisma": [],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 92.94,
+     "not_": "besleme noktasi elektrik.md'de dogrulanmadi"
+    },
+    "Dizi USB (Pi -> micro B)": {
+     "yol_mm": 85.0,
+     "oneri_mm": 110.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 4.0,
+     "cakisma": [
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       11.8
+      ]
+     ],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 40.82,
+     "not_": "listede yok (30 cm kablo ekran icin, 2 m'ler gogus + ESP32)"
+    },
+    "Hoparlor (PAM -> gogus)": {
+     "yol_mm": 823.0,
+     "oneri_mm": 1030.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 4.0,
+     "cakisma": [
+      [
+       "Boyun mili",
+       1.17
+      ]
+     ],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 58.17,
+     "not_": "boyundan iner; listede robot icin yok"
+    },
+    "Gogus dokunmatik USB (koridor)": {
+     "yol_mm": 824.0,
+     "oneri_mm": 1030.0,
+     "liste_mm": 2000.0,
+     "kalan_mm": 970.0,
+     "cap": 4.0,
+     "cakisma": [
+      [
+       "Boyun mili",
+       1.17
+      ]
+     ],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 15.45,
+     "not_": "v4 satir 58, 2 m"
+    },
+    "Hub kablosu": {
+     "yol_mm": 66.0,
+     "oneri_mm": 80.0,
+     "liste_mm": 130.0,
+     "kalan_mm": 47.0,
+     "cap": 4.0,
+     "cakisma": [
+      [
+       "USB Hub 4 lu",
+       10.6
+      ]
+     ],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 58.03,
+     "not_": "hub'in sabit kablosu"
+    }
+   },
+   "kafa_ici_kablo_kutle": [
+    [
+     "3,5 mm -> PAM giris",
+     36.0,
+     0.5
+    ],
+    [
+     "USB uzatma (hub -> ses karti)",
+     208.0,
+     6.2
+    ],
+    [
+     "PAM 5 V (VARSAYIM: D24V50F5)",
+     64.0,
+     1.0
+    ],
+    [
+     "Dizi USB (Pi -> micro B)",
+     85.0,
+     2.5
+    ],
+    [
+     "Hoparlor (PAM -> gogus)",
+     203.0,
+     3.0
+    ],
+    [
+     "Gogus dokunmatik USB (koridor)",
+     256.0,
+     7.7
+    ]
+   ],
+   "tork": {
+    "kutle_g": 1595.5,
+    "am_eksen": [
+     2.21,
+     2.61,
+     -0.92
+    ],
+    "statik_kgcm": 0.237,
+    "statik_kgcm_tilt15": {
+     "-15": -0.25,
+     "15": -0.035
+    },
+    "I_tilt": 0.009202,
+    "tilt_toplam_kgcm": 2.693,
+    "tilt_pay": 3.49,
+    "tilt15_toplam_kgcm": 2.706,
+    "tilt15_pay": 3.47,
+    "I_pan": 0.01507,
+    "pan_kgcm": 4.359,
+    "pan_pay": 2.16
+   },
+   "tork_dizi_18g": {
+    "statik": 0.177,
+    "tilt": 2.601,
+    "tilt_pay": 3.61,
+    "pan": 4.35,
+    "pan_pay": 2.16
+   },
+   "tork_dizi_70g": {
+    "statik": 0.438,
+    "tilt": 2.997,
+    "tilt_pay": 3.14,
+    "pan": 4.391,
+    "pan_pay": 2.14
+   },
+   "tork_ai_hat_ekli": {
+    "statik": 0.442,
+    "tilt": 2.953,
+    "tilt_pay": 3.18,
+    "pan": 4.38,
+    "pan_pay": 2.15,
+    "am": [
+     1.98,
+     3.67,
+     -1.94
+    ]
+   },
+   "akustik": {
+    "mic_hoparlor_ev_min_mm": 595.7,
+    "mic_hoparlor_poz_min_mm": 574.3,
+    "poz": [
+     -90,
+     -15
+    ],
+    "mic_hoparlor_poz_max_mm": 623.8,
+    "h1_40cm": true,
+    "mikrofon_yakinlik_mm": {
+     "QLED ekran": 57.7,
+     "Pi + Active Cooler": 36.8,
+     "SY8205": 56.9,
+     "D24V50F5": 103.5,
+     "Kamera": 44.7,
+     "Fan yeri (ayrilmis)": 24.2,
+     "Active Cooler ust yuzu merkezi": 44.8,
+     "Arka yarik (en yakin)": 33.1,
+     "Tilt servosu (ev pozu)": 83.9,
+     "Pan servosu (ev pozu)": 241.1
+    },
+    "mikrofon_bas": [
+     [
+      17.67,
+      93.72,
+      -53.29
+     ],
+     [
+      62.43,
+      93.72,
+      -6.7
+     ],
+     [
+      16.76,
+      93.72,
+      -7.61
+     ],
+     [
+      63.34,
+      93.72,
+      -52.38
+     ]
+    ],
+    "dizi_merkez_pan_ekseni_mm": 40.3,
+    "dizi_merkez_tilt_ekseni_mm": 97.4,
+    "port_kabuk": {
+     "port_ust_duvar_ic_mm": 4.9,
+     "duvar_mm": 2.5,
+     "delik_cap_mm": 3.0,
+     "toplam_yol_mm": 7.4,
+     "port_cap_mm": 0.7,
+     "not_": "O3 delik VARSAYIM"
+    },
+    "tepe_duz_bolge": {
+     "arka_fillet_z": -84.89,
+     "on_fillet_z": 42.0,
+     "dikis_x": 0.0,
+     "dikis_z": 10.0,
+     "delik_dikis_x_min": 15.26
+    }
+   },
+   "servis": {
+    "ReSpeaker Mic Array v2.0": {
+     "on_ufuktan_derinlik_mm": 75.8,
+     "prizma_engel": []
+    },
+    "USB ses karti (govde)": {
+     "on_ufuktan_derinlik_mm": 68.0,
+     "prizma_engel": []
+    },
+    "PAM8403": {
+     "on_ufuktan_derinlik_mm": 41.5,
+     "prizma_engel": []
+    },
+    "dizi_vida_takim": [
+     {
+      "xz": [
+       51.5,
+       -10.1
+      ],
+      "serbest_mm": 57.8,
+      "engel": "Kafa iskeleti",
+      "z_on_mm": 20.1
+     },
+     {
+      "xz": [
+       13.0,
+       -22.3
+      ],
+      "serbest_mm": 57.8,
+      "engel": "Kafa iskeleti",
+      "z_on_mm": 32.3
+     },
+     {
+      "xz": [
+       51.5,
+       -49.9
+      ],
+      "serbest_mm": 57.8,
+      "engel": "Kafa iskeleti",
+      "z_on_mm": 59.9
+     }
+    ]
+   }
+  },
+  "B": {
+   "R": {
+    "ad": "R1 sag yari",
+    "merkez_bas": [
+     40.0,
+     92.622,
+     -30.0
+    ],
+    "not_": "x = 0 dikisine ve tepe civatasina dokunmaz; tek parca (Arka kafa kabugu sag)"
+   },
+   "kafa_parca": {
+    "ReSpeaker Mic Array v2.0": {
+     "kafa_ici_en_yakin": [
+      [
+       "Isil gomme somun M3 (kafa sag/sol arka ust)",
+       12.098
+      ],
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol arka ust)",
+       12.684
+      ],
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       27.422
+      ],
+      [
+       "Kamera vidasi M2x8 PT (3)",
+       36.061
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.6
+      ],
+      [
+       "Yuz kabugu (on) sag",
+       7.78
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       12.416
+      ],
+      [
+       "Hub USB fis payi",
+       28.922
+      ],
+      [
+       "Tabla ustu kablo yolu",
+       28.922
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 24.968,
+     "boyun_pan_min": {
+      "mm": 65.99,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "govde_min": {
+      "mm": 177.495,
+      "parca": "Rulman yuvasi",
+      "pan": -90,
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       107.344
+      ],
+      [
+       "USB ses karti (govde)",
+       129.646
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 21.42,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 12.42,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      4.63,
+      75.59,
+      84.92,
+      98.02,
+      -65.82,
+      5.92
+     ]
+    },
+    "Dizi USB fis zarfi": {
+     "kafa_ici_en_yakin": [
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       43.867
+      ],
+      [
+       "Isil gomme somun M3 (kafa on/arka sag y+70)",
+       47.02
+      ],
+      [
+       "Kabuk civatasi M3x6 ISO 7380 (kafa on/arka sag y+70)",
+       48.927
+      ],
+      [
+       "Tirnak civatasi M3x6 ISO 7380 (ust sag)",
+       54.627
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.6
+      ],
+      [
+       "Yuz kabugu (on) sag",
+       27.687
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Hub USB fis payi",
+       27.522
+      ],
+      [
+       "Tabla ustu kablo yolu",
+       37.182
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       58.559
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 59.416,
+     "boyun_pan_min": {
+      "mm": 88.792,
+      "parca": "Tilt servosu MG996R",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       173.603
+      ],
+      [
+       "USB ses karti (govde)",
+       197.946
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 65.04,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 58.56,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      75.0,
+      95.0,
+      90.02,
+      98.02,
+      -28.68,
+      -17.68
+     ]
+    },
+    "Dizi boss 0": {
+     "kafa_ici_en_yakin": [
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       39.281
+      ],
+      [
+       "Ekran tirnagi ust sag",
+       51.503
+      ],
+      [
+       "SY8205 kafa ekrani 5 V",
+       55.819
+      ],
+      [
+       "Tirnak civatasi M3x6 ISO 7380 (ust sag)",
+       56.093
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.0
+      ],
+      [
+       "Yuz kabugu (on) sag",
+       17.6
+      ]
+     ],
+     "cakisma": [
+      [
+       "Arka kafa kabugu sag",
+       1.05
+      ]
+     ],
+     "zarf_en_yakin": [
+      [
+       "Hub USB fis payi",
+       35.329
+      ],
+      [
+       "Tabla ustu kablo yolu",
+       36.622
+      ],
+      [
+       "Tabla onu kablo gecidi",
+       61.109
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 43.833,
+     "boyun_pan_min": {
+      "mm": 80.738,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       156.084
+      ],
+      [
+       "USB ses karti (govde)",
+       172.842
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 73.05,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 64.4,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      49.04,
+      54.04,
+      92.62,
+      98.67,
+      -13.64,
+      -7.6
+     ]
+    },
+    "Dizi boss 1": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol arka ust)",
+       22.09
+      ],
+      [
+       "Isil gomme somun M3 (kafa sag/sol arka ust)",
+       22.926
+      ],
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       36.804
+      ],
+      [
+       "Vida M2,5x5 (Pi 1 ust)",
+       48.887
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.0
+      ],
+      [
+       "Arka kafa kabugu sol",
+       10.539
+      ]
+     ],
+     "cakisma": [
+      [
+       "Arka kafa kabugu sag",
+       1.05
+      ]
+     ],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       36.622
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       51.591
+      ],
+      [
+       "Hub USB fis payi",
+       64.496
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 30.494,
+     "boyun_pan_min": {
+      "mm": 69.426,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       117.473
+      ],
+      [
+       "USB ses karti (govde)",
+       135.217
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 60.59,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 51.59,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      10.47,
+      15.47,
+      92.62,
+      98.67,
+      -25.81,
+      -19.77
+     ]
+    },
+    "Dizi boss 2": {
+     "kafa_ici_en_yakin": [
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       35.29
+      ],
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol arka ust)",
+       55.028
+      ],
+      [
+       "Isil gomme somun M3 (kafa sag/sol arka ust)",
+       55.873
+      ],
+      [
+       "Vida M2,5x5 (Pi 1 ust)",
+       58.515
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.0
+      ],
+      [
+       "Arka kafa kabugu sol",
+       49.055
+      ]
+     ],
+     "cakisma": [
+      [
+       "Arka kafa kabugu sag",
+       1.05
+      ]
+     ],
+     "zarf_en_yakin": [
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       25.576
+      ],
+      [
+       "Hub USB fis payi",
+       35.329
+      ],
+      [
+       "Tabla ustu kablo yolu",
+       42.436
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 40.372,
+     "boyun_pan_min": {
+      "mm": 78.746,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       145.033
+      ],
+      [
+       "USB ses karti (govde)",
+       172.842
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 33.56,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 25.58,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      49.04,
+      54.04,
+      92.62,
+      98.67,
+      -53.48,
+      -47.44
+     ]
+    },
+    "USB ses karti (govde)": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kafa iskeleti",
+       9.014
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       11.75
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-15)",
+       14.841
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       19.513
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       1.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       20.025
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       84.5
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       134.44
+      ],
+      [
+       "Tabla onu kablo gecidi",
+       184.56
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 78.0,
+     "boyun_pan_min": {
+      "mm": 91.158,
+      "parca": "Pim civatasi M5x12",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       4.0
+      ],
+      [
+       "ReSpeaker Mic Array v2.0",
+       129.646
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 80.66,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 134.44,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -120.5,
+      35.0,
+      59.0,
+      -58.0,
+      -10.0
+     ]
+    },
+    "Ses karti USB-A fisi": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kafa iskeleti",
+       17.493
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       19.746
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-75)",
+       24.056
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       45.501
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       1.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       68.007
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       96.462
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       139.985
+      ],
+      [
+       "Hub USB fis payi",
+       199.5
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 84.625,
+     "boyun_pan_min": {
+      "mm": 113.519,
+      "parca": "Pim civatasi M5x12",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       28.324
+      ],
+      [
+       "ReSpeaker Mic Array v2.0",
+       139.748
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 83.62,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 139.99,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -127.0,
+      41.0,
+      53.0,
+      -70.0,
+      -58.0
+     ]
+    },
+    "L USB dirsek": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kafa iskeleti",
+       9.605
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       11.161
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-75)",
+       15.914
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       53.966
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       0.636
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       80.006
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       94.384
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       132.136
+      ],
+      [
+       "Hub USB fis payi",
+       192.094
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 77.017,
+     "boyun_pan_min": {
+      "mm": 112.071,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       39.131
+      ],
+      [
+       "ReSpeaker Mic Array v2.0",
+       134.231
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 74.5,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 132.14,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -119.5,
+      38.0,
+      56.0,
+      -86.0,
+      -70.0
+     ]
+    },
+    "USB uzatma disi ucu": {
+     "kafa_ici_en_yakin": [
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       3.0
+      ],
+      [
+       "Kafa iskeleti",
+       6.0
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-75)",
+       11.0
+      ],
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       45.747
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       3.893
+      ],
+      [
+       "Arka kafa kabugu sag",
+       73.603
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       70.884
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       102.176
+      ],
+      [
+       "Hub USB fis payi",
+       162.223
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 47.027,
+     "boyun_pan_min": {
+      "mm": 89.537,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       42.178
+      ],
+      [
+       "ReSpeaker Mic Array v2.0",
+       107.344
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 44.59,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 102.18,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -119.5,
+      -89.5,
+      38.0,
+      56.0,
+      -83.5,
+      -72.5
+     ]
+    },
+    "L 3,5 mm fis": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kafa iskeleti",
+       10.735
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       13.683
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-15)",
+       17.439
+      ],
+      [
+       "Kabuk civatasi M3x6 ISO 7380 (kafa on/arka sol y+70)",
+       21.487
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       1.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       4.123
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       85.5
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       150.741
+      ],
+      [
+       "Tabla onu kablo gecidi",
+       182.889
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 81.692,
+     "boyun_pan_min": {
+      "mm": 92.305,
+      "parca": "Pim civatasi M5x12",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       16.0
+      ],
+      [
+       "ReSpeaker Mic Array v2.0",
+       135.258
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 108.11,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 150.74,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -121.5,
+      37.0,
+      47.0,
+      -10.0,
+      6.0
+     ]
+    },
+    "PAM8403": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kabuk civatasi M3x6 ISO 7380 (kafa on/arka sol y+70)",
+       18.003
+      ],
+      [
+       "Isil gomme somun M3 (kafa on/arka sol y+70)",
+       18.5
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       33.152
+      ],
+      [
+       "Kafa iskeleti",
+       34.224
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       1.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       17.529
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       90.77
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       146.38
+      ],
+      [
+       "Tabla onu kablo gecidi",
+       190.891
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 84.004,
+     "boyun_pan_min": {
+      "mm": 108.81,
+      "parca": "Pim civatasi M5x12",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB ses karti (govde)",
+       4.0
+      ],
+      [
+       "L 3,5 mm fis",
+       16.0
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 98.26,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 146.38,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -126.5,
+      63.0,
+      81.0,
+      -31.5,
+      -7.5
+     ]
+    }
+   },
+   "govde_parca": {
+    "Hoparlor 40 x 20": {
+     "en_yakin": [
+      [
+       "Govde orta bandi sag",
+       0.497
+      ],
+      [
+       "Gogus bandi sag",
+       8.51
+      ],
+      [
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       12.608
+      ],
+      [
+       "Gogus ekrani cercevesi sag",
+       18.759
+      ],
+      [
+       "Isil gomme somun M3 (gogus cercevesi)001",
+       21.081
+      ]
+     ],
+     "cakisma": [],
+     "bb_g": [
+      25.0,
+      65.0,
+      966.41,
+      1010.64,
+      72.5,
+      111.83
+     ]
+    },
+    "Hoparlor kabi (baski)": {
+     "en_yakin": [
+      [
+       "Govde orta bandi sag",
+       0.196
+      ],
+      [
+       "Gogus bandi sag",
+       5.521
+      ],
+      [
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       9.182
+      ],
+      [
+       "Govde orta bandi sol",
+       13.077
+      ],
+      [
+       "Gogus ekrani cercevesi sag",
+       15.759
+      ]
+     ],
+     "cakisma": [],
+     "bb_g": [
+      10.0,
+      80.0,
+      963.78,
+      1014.07,
+      69.39,
+      113.8
+     ]
+    },
+    "Hoparlor boss 0": {
+     "en_yakin": [
+      [
+       "Govde orta bandi sag",
+       0.0
+      ],
+      [
+       "Gogus bandi sag",
+       24.361
+      ],
+      [
+       "Bindirme civatasi M3x6 (govde y1005 on)",
+       28.97
+      ],
+      [
+       "Isil gomme somun M3 (govde y1005 on)",
+       29.716
+      ],
+      [
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       33.388
+      ]
+     ],
+     "cakisma": [
+      [
+       "Govde orta bandi sag",
+       2.78
+      ]
+     ],
+     "bb_g": [
+      72.0,
+      80.0,
+      977.84,
+      989.91,
+      91.62,
+      103.1
+     ]
+    },
+    "Hoparlor boss 1": {
+     "en_yakin": [
+      [
+       "Govde orta bandi sag",
+       0.0
+      ],
+      [
+       "Govde orta bandi sol",
+       10.069
+      ],
+      [
+       "Gogus bandi sag",
+       24.361
+      ],
+      [
+       "Gogus bandi sol",
+       27.628
+      ],
+      [
+       "Bindirme civatasi M3x6 (govde x0 on)007",
+       28.665
+      ]
+     ],
+     "cakisma": [
+      [
+       "Govde orta bandi sag",
+       2.78
+      ]
+     ],
+     "bb_g": [
+      10.0,
+      18.0,
+      977.84,
+      989.91,
+      91.62,
+      103.1
+     ]
+    },
+    "USB Hub 4 lu (kapak ici)": {
+     "en_yakin": [
+      [
+       "Ust arka servis kapagi",
+       1.027
+      ],
+      [
+       "Gogus bandi sag",
+       3.171
+      ],
+      [
+       "Isil gomme somun M3 (ust arka kapak)003",
+       7.0
+      ],
+      [
+       "Isil gomme somun M3 (ust arka kapak)004",
+       7.0
+      ],
+      [
+       "Bindirme civatasi M3x6 (ust arka kapak)004",
+       7.421
+      ]
+     ],
+     "cakisma": [],
+     "bb_g": [
+      35.0,
+      60.0,
+      1085.0,
+      1157.0,
+      -78.48,
+      -59.48
+     ]
+    },
+    "Hub USB fis payi": {
+     "en_yakin": [
+      [
+       "Govde braketi sag y1095",
+       4.478
+      ],
+      [
+       "Govde diregi",
+       15.029
+      ],
+      [
+       "Gogus bandi sag",
+       15.247
+      ],
+      [
+       "Civata M6x14 (Govde braketi sag y1095)",
+       15.672
+      ],
+      [
+       "Civata M6x14 (Govde braketi sag y1095)001",
+       15.672
+      ]
+     ],
+     "cakisma": [],
+     "bb_g": [
+      35.0,
+      60.0,
+      1085.0,
+      1157.0,
+      -59.48,
+      -19.48
+     ]
+    }
+   },
+   "dizi_usb_guc_mesafe_mm": {
+    "SY8205 kafa ekrani 5 V": 40.82,
+    "5 V cevirici Pololu D24V50F5": 120.78,
+    "TVS P6KE6V8A kafa ekrani": 55.36,
+    "PAM 5 V (VARSAYIM: D24V50F5)": 129.79,
+    "Hoparlor (PAM -> gogus)": 89.54
+   },
+   "kablo": {
+    "3,5 mm -> PAM giris": {
+     "yol_mm": 36.0,
+     "oneri_mm": 40.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 3.5,
+     "cakisma": [],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 133.31,
+     "not_": "listede robot icin yok; AUX kablosu kesilir, L fis"
+    },
+    "PAM 5 V (VARSAYIM: D24V50F5)": {
+     "yol_mm": 64.0,
+     "oneri_mm": 80.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 3.0,
+     "cakisma": [],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 92.94,
+     "not_": "besleme noktasi elektrik.md'de dogrulanmadi"
+    },
+    "Ses karti uzatmasi (Pi -> ses karti)": {
+     "yol_mm": 217.0,
+     "oneri_mm": 270.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 4.0,
+     "cakisma": [
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       2.5
+      ]
+     ],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 24.84,
+     "not_": "listede yok; USB-A erkek -> disi"
+    },
+    "Dizi USB (Pi -> micro B)": {
+     "yol_mm": 85.0,
+     "oneri_mm": 110.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 4.0,
+     "cakisma": [
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       11.8
+      ]
+     ],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 40.82,
+     "not_": "listede yok (30 cm kablo ekran icin, 2 m'ler gogus + ESP32)"
+    },
+    "Hoparlor (PAM -> gogus)": {
+     "yol_mm": 823.0,
+     "oneri_mm": 1030.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 4.0,
+     "cakisma": [
+      [
+       "Boyun mili",
+       1.17
+      ]
+     ],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 58.17,
+     "not_": "boyundan iner; listede robot icin yok"
+    },
+    "Hub uzatmasi (Pi -> hub)": {
+     "yol_mm": 617.0,
+     "oneri_mm": 770.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 4.0,
+     "cakisma": [
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       2.93
+      ],
+      [
+       "Boyun mili",
+       1.17
+      ]
+     ],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 15.45,
+     "not_": "hub'in 130 mm kablosu + USB uzatma; listede yok"
+    },
+    "Gogus dokunmatik USB (hub'dan)": {
+     "yol_mm": 395.0,
+     "oneri_mm": 490.0,
+     "liste_mm": 2000.0,
+     "kalan_mm": 1507.0,
+     "cap": 4.0,
+     "cakisma": [],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 309.46,
+     "not_": "v4 satir 58, 2 m (kisalir)"
+    }
+   },
+   "kafa_ici_kablo_kutle": [
+    [
+     "3,5 mm -> PAM giris",
+     36.0,
+     0.5
+    ],
+    [
+     "PAM 5 V (VARSAYIM: D24V50F5)",
+     64.0,
+     1.0
+    ],
+    [
+     "Ses karti uzatmasi (Pi -> ses karti)",
+     217.0,
+     6.5
+    ],
+    [
+     "Dizi USB (Pi -> micro B)",
+     85.0,
+     2.5
+    ],
+    [
+     "Hoparlor (PAM -> gogus)",
+     203.0,
+     3.0
+    ],
+    [
+     "Hub uzatmasi (Pi -> hub)",
+     264.0,
+     7.9
+    ]
+   ],
+   "tork": {
+    "kutle_g": 1570.8,
+    "am_eksen": [
+     0.3,
+     1.86,
+     -0.51
+    ],
+    "statik_kgcm": 0.143,
+    "statik_kgcm_tilt15": {
+     "-15": -0.152,
+     "15": -0.001
+    },
+    "I_tilt": 0.009108,
+    "tilt_toplam_kgcm": 2.574,
+    "tilt_pay": 3.65,
+    "tilt15_toplam_kgcm": 2.583,
+    "tilt15_pay": 3.64,
+    "I_pan": 0.014679,
+    "pan_kgcm": 4.255,
+    "pan_pay": 2.21
+   },
+   "tork_dizi_18g": {
+    "statik": 0.083,
+    "tilt": 2.482,
+    "tilt_pay": 3.79,
+    "pan": 4.246,
+    "pan_pay": 2.21
+   },
+   "tork_dizi_70g": {
+    "statik": 0.344,
+    "tilt": 2.878,
+    "tilt_pay": 3.27,
+    "pan": 4.286,
+    "pan_pay": 2.19
+   },
+   "tork_ai_hat_ekli": {
+    "statik": 0.348,
+    "tilt": 2.834,
+    "tilt_pay": 3.32,
+    "pan": 4.275,
+    "pan_pay": 2.2,
+    "am": [
+     0.11,
+     2.95,
+     -1.55
+    ]
+   },
+   "akustik": {
+    "mic_hoparlor_ev_min_mm": 595.7,
+    "mic_hoparlor_poz_min_mm": 574.3,
+    "poz": [
+     -90,
+     -15
+    ],
+    "mic_hoparlor_poz_max_mm": 623.8,
+    "h1_40cm": true,
+    "mikrofon_yakinlik_mm": {
+     "QLED ekran": 57.7,
+     "Pi + Active Cooler": 36.8,
+     "SY8205": 56.9,
+     "D24V50F5": 103.5,
+     "Kamera": 44.7,
+     "Fan yeri (ayrilmis)": 24.2,
+     "Active Cooler ust yuzu merkezi": 44.8,
+     "Arka yarik (en yakin)": 33.1,
+     "Tilt servosu (ev pozu)": 83.9,
+     "Pan servosu (ev pozu)": 241.1
+    },
+    "mikrofon_bas": [
+     [
+      17.67,
+      93.72,
+      -53.29
+     ],
+     [
+      62.43,
+      93.72,
+      -6.7
+     ],
+     [
+      16.76,
+      93.72,
+      -7.61
+     ],
+     [
+      63.34,
+      93.72,
+      -52.38
+     ]
+    ],
+    "dizi_merkez_pan_ekseni_mm": 40.3,
+    "dizi_merkez_tilt_ekseni_mm": 97.4,
+    "port_kabuk": {
+     "port_ust_duvar_ic_mm": 4.9,
+     "duvar_mm": 2.5,
+     "delik_cap_mm": 3.0,
+     "toplam_yol_mm": 7.4,
+     "port_cap_mm": 0.7,
+     "not_": "O3 delik VARSAYIM"
+    },
+    "tepe_duz_bolge": {
+     "arka_fillet_z": -84.89,
+     "on_fillet_z": 42.0,
+     "dikis_x": 0.0,
+     "dikis_z": 10.0,
+     "delik_dikis_x_min": 15.26
+    }
+   },
+   "servis": {
+    "ReSpeaker Mic Array v2.0": {
+     "on_ufuktan_derinlik_mm": 75.8,
+     "prizma_engel": []
+    },
+    "USB ses karti (govde)": {
+     "on_ufuktan_derinlik_mm": 68.0,
+     "prizma_engel": []
+    },
+    "PAM8403": {
+     "on_ufuktan_derinlik_mm": 41.5,
+     "prizma_engel": []
+    },
+    "dizi_vida_takim": [
+     {
+      "xz": [
+       51.5,
+       -10.1
+      ],
+      "serbest_mm": 57.8,
+      "engel": "Kafa iskeleti",
+      "z_on_mm": 20.1
+     },
+     {
+      "xz": [
+       13.0,
+       -22.3
+      ],
+      "serbest_mm": 57.8,
+      "engel": "Kafa iskeleti",
+      "z_on_mm": 32.3
+     },
+     {
+      "xz": [
+       51.5,
+       -49.9
+      ],
+      "serbest_mm": 57.8,
+      "engel": "Kafa iskeleti",
+      "z_on_mm": 59.9
+     }
+    ]
+   }
+  },
+  "C": {
+   "R": {
+    "ad": "R1 sag yari",
+    "merkez_bas": [
+     40.0,
+     92.622,
+     -30.0
+    ],
+    "not_": "x = 0 dikisine ve tepe civatasina dokunmaz; tek parca (Arka kafa kabugu sag)"
+   },
+   "kafa_parca": {
+    "ReSpeaker Mic Array v2.0": {
+     "kafa_ici_en_yakin": [
+      [
+       "Isil gomme somun M3 (kafa sag/sol arka ust)",
+       12.098
+      ],
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol arka ust)",
+       12.684
+      ],
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       27.422
+      ],
+      [
+       "Kamera vidasi M2x8 PT (3)",
+       36.061
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.6
+      ],
+      [
+       "Yuz kabugu (on) sag",
+       7.78
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       12.416
+      ],
+      [
+       "Hub USB fis payi",
+       28.922
+      ],
+      [
+       "Tabla ustu kablo yolu",
+       28.922
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 24.968,
+     "boyun_pan_min": {
+      "mm": 65.99,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "govde_min": {
+      "mm": 177.495,
+      "parca": "Rulman yuvasi",
+      "pan": -90,
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       107.344
+      ],
+      [
+       "USB ses karti (govde)",
+       129.646
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 21.42,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 12.42,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      4.63,
+      75.59,
+      84.92,
+      98.02,
+      -65.82,
+      5.92
+     ]
+    },
+    "Dizi USB fis zarfi": {
+     "kafa_ici_en_yakin": [
+      [
+       "USB Hub 4 lu",
+       32.615
+      ],
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       43.867
+      ],
+      [
+       "Kopuk bant (USB Hub 4 lu)",
+       45.713
+      ],
+      [
+       "Isil gomme somun M3 (kafa on/arka sag y+70)",
+       47.02
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.6
+      ],
+      [
+       "Yuz kabugu (on) sag",
+       27.687
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Hub USB fis payi",
+       27.522
+      ],
+      [
+       "Tabla ustu kablo yolu",
+       37.182
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       58.559
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 59.416,
+     "boyun_pan_min": {
+      "mm": 88.792,
+      "parca": "Tilt servosu MG996R",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       173.603
+      ],
+      [
+       "USB ses karti (govde)",
+       197.946
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 65.04,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 58.56,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      75.0,
+      95.0,
+      90.02,
+      98.02,
+      -28.68,
+      -17.68
+     ]
+    },
+    "Dizi boss 0": {
+     "kafa_ici_en_yakin": [
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       39.281
+      ],
+      [
+       "Ekran tirnagi ust sag",
+       51.503
+      ],
+      [
+       "SY8205 kafa ekrani 5 V",
+       55.819
+      ],
+      [
+       "Tirnak civatasi M3x6 ISO 7380 (ust sag)",
+       56.093
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.0
+      ],
+      [
+       "Yuz kabugu (on) sag",
+       17.6
+      ]
+     ],
+     "cakisma": [
+      [
+       "Arka kafa kabugu sag",
+       1.05
+      ]
+     ],
+     "zarf_en_yakin": [
+      [
+       "Hub USB fis payi",
+       35.329
+      ],
+      [
+       "Tabla ustu kablo yolu",
+       36.622
+      ],
+      [
+       "Tabla onu kablo gecidi",
+       61.109
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 43.833,
+     "boyun_pan_min": {
+      "mm": 80.738,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       156.084
+      ],
+      [
+       "USB ses karti (govde)",
+       172.842
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 73.05,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 64.4,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      49.04,
+      54.04,
+      92.62,
+      98.67,
+      -13.64,
+      -7.6
+     ]
+    },
+    "Dizi boss 1": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol arka ust)",
+       22.09
+      ],
+      [
+       "Isil gomme somun M3 (kafa sag/sol arka ust)",
+       22.926
+      ],
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       36.804
+      ],
+      [
+       "Vida M2,5x5 (Pi 1 ust)",
+       48.887
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.0
+      ],
+      [
+       "Arka kafa kabugu sol",
+       10.539
+      ]
+     ],
+     "cakisma": [
+      [
+       "Arka kafa kabugu sag",
+       1.05
+      ]
+     ],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       36.622
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       51.591
+      ],
+      [
+       "Hub USB fis payi",
+       64.496
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 30.494,
+     "boyun_pan_min": {
+      "mm": 69.426,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       117.473
+      ],
+      [
+       "USB ses karti (govde)",
+       135.217
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 60.59,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 51.59,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      10.47,
+      15.47,
+      92.62,
+      98.67,
+      -25.81,
+      -19.77
+     ]
+    },
+    "Dizi boss 2": {
+     "kafa_ici_en_yakin": [
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       35.29
+      ],
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol arka ust)",
+       55.028
+      ],
+      [
+       "Isil gomme somun M3 (kafa sag/sol arka ust)",
+       55.873
+      ],
+      [
+       "Vida M2,5x5 (Pi 1 ust)",
+       58.515
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.0
+      ],
+      [
+       "Arka kafa kabugu sol",
+       49.055
+      ]
+     ],
+     "cakisma": [
+      [
+       "Arka kafa kabugu sag",
+       1.05
+      ]
+     ],
+     "zarf_en_yakin": [
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       25.576
+      ],
+      [
+       "Hub USB fis payi",
+       35.329
+      ],
+      [
+       "Tabla ustu kablo yolu",
+       42.436
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 40.372,
+     "boyun_pan_min": {
+      "mm": 78.746,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       145.033
+      ],
+      [
+       "USB ses karti (govde)",
+       172.842
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 33.56,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 25.58,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      49.04,
+      54.04,
+      92.62,
+      98.67,
+      -53.48,
+      -47.44
+     ]
+    },
+    "USB ses karti (govde)": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kafa iskeleti",
+       9.014
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       11.75
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-15)",
+       14.841
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       19.513
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       1.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       20.025
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       84.5
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       134.44
+      ],
+      [
+       "Tabla onu kablo gecidi",
+       184.56
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 78.0,
+     "boyun_pan_min": {
+      "mm": 91.158,
+      "parca": "Pim civatasi M5x12",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       4.0
+      ],
+      [
+       "Hoparlor kabi (baski)",
+       82.0
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 80.66,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 134.44,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -120.5,
+      35.0,
+      59.0,
+      -58.0,
+      -10.0
+     ]
+    },
+    "Ses karti USB-A fisi": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kafa iskeleti",
+       17.493
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       19.746
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-75)",
+       24.056
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       45.501
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       1.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       68.007
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       96.462
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       139.985
+      ],
+      [
+       "Hub USB fis payi",
+       199.5
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 84.625,
+     "boyun_pan_min": {
+      "mm": 113.519,
+      "parca": "Pim civatasi M5x12",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       28.324
+      ],
+      [
+       "Hoparlor kabi (baski)",
+       89.45
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 83.62,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 139.99,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -127.0,
+      41.0,
+      53.0,
+      -70.0,
+      -58.0
+     ]
+    },
+    "L USB dirsek": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kafa iskeleti",
+       9.605
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       11.161
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-75)",
+       15.914
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       53.966
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       0.636
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       80.006
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       94.384
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       132.136
+      ],
+      [
+       "Hub USB fis payi",
+       192.094
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 77.017,
+     "boyun_pan_min": {
+      "mm": 112.071,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       39.131
+      ],
+      [
+       "Hoparlor kabi (baski)",
+       89.089
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 74.5,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 132.14,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -119.5,
+      38.0,
+      56.0,
+      -86.0,
+      -70.0
+     ]
+    },
+    "USB uzatma disi ucu": {
+     "kafa_ici_en_yakin": [
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       3.0
+      ],
+      [
+       "Kafa iskeleti",
+       6.0
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-75)",
+       11.0
+      ],
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       45.747
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       3.893
+      ],
+      [
+       "Arka kafa kabugu sag",
+       73.603
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       70.884
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       102.176
+      ],
+      [
+       "Hub USB fis payi",
+       162.223
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 47.027,
+     "boyun_pan_min": {
+      "mm": 89.537,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       42.178
+      ],
+      [
+       "Hoparlor kabi (baski)",
+       89.784
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 44.59,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 102.18,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -119.5,
+      -89.5,
+      38.0,
+      56.0,
+      -83.5,
+      -72.5
+     ]
+    },
+    "L 3,5 mm fis": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kafa iskeleti",
+       10.735
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       13.683
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-15)",
+       17.439
+      ],
+      [
+       "Kabuk civatasi M3x6 ISO 7380 (kafa on/arka sol y+70)",
+       21.487
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       1.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       4.123
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       85.5
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       150.741
+      ],
+      [
+       "Tabla onu kablo gecidi",
+       182.889
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 81.692,
+     "boyun_pan_min": {
+      "mm": 92.305,
+      "parca": "Pim civatasi M5x12",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       16.0
+      ],
+      [
+       "Hoparlor kabi (baski)",
+       88.126
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 108.11,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 150.74,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -121.5,
+      37.0,
+      47.0,
+      -10.0,
+      6.0
+     ]
+    },
+    "PAM8403": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kabuk civatasi M3x6 ISO 7380 (kafa on/arka sol y+70)",
+       18.003
+      ],
+      [
+       "Isil gomme somun M3 (kafa on/arka sol y+70)",
+       18.5
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       33.152
+      ],
+      [
+       "Kafa iskeleti",
+       34.224
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       1.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       17.529
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       90.77
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       146.38
+      ],
+      [
+       "Tabla onu kablo gecidi",
+       190.891
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 84.004,
+     "boyun_pan_min": {
+      "mm": 108.81,
+      "parca": "Pim civatasi M5x12",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB ses karti (govde)",
+       4.0
+      ],
+      [
+       "L 3,5 mm fis",
+       16.0
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 98.26,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 146.38,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -126.5,
+      63.0,
+      81.0,
+      -31.5,
+      -7.5
+     ]
+    },
+    "Hoparlor 40 x 20": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kabuk civatasi M3x6 ISO 7380 (kafa on/arka sol y-60)",
+       31.234
+      ],
+      [
+       "Isil gomme somun M3 (kafa on/arka sol y-60)",
+       31.935
+      ],
+      [
+       "Yuz ekrani WaveShare 10,1in QLED HDMI",
+       58.2
+      ],
+      [
+       "Ekran tirnagi alt sol",
+       58.393
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       0.5
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       30.004
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       117.112
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       170.982
+      ],
+      [
+       "HDMI fis zarfi",
+       175.489
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 128.094,
+     "boyun_pan_min": {
+      "mm": 82.0,
+      "parca": "Boyun yukseltme adaptoru",
+      "tilt": -15
+     },
+     "govde_min": {
+      "mm": 61.602,
+      "parca": "S1 kaset govdesi sol",
+      "pan": 0,
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB ses karti (govde)",
+       85.0
+      ],
+      [
+       "L 3,5 mm fis",
+       91.126
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 116.83,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 170.98,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -132.0,
+      -112.0,
+      -90.0,
+      -50.0,
+      -60.0,
+      -20.0
+     ]
+    },
+    "Hoparlor kabi (baski)": {
+     "kafa_ici_en_yakin": [
+      [
+       "Isil gomme somun M3 (kafa on/arka sol y-60)",
+       17.001
+      ],
+      [
+       "Kabuk civatasi M3x6 ISO 7380 (kafa on/arka sol y-60)",
+       17.834
+      ],
+      [
+       "Yuz ekrani WaveShare 10,1in QLED HDMI",
+       43.574
+      ],
+      [
+       "Ekran tirnagi alt sol",
+       48.547
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       0.2
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       16.639
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       113.728
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       167.691
+      ],
+      [
+       "HDMI fis zarfi",
+       173.055
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 124.652,
+     "boyun_pan_min": {
+      "mm": 80.3,
+      "parca": "Boyun yukseltme adaptoru",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB ses karti (govde)",
+       82.0
+      ],
+      [
+       "L 3,5 mm fis",
+       88.126
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 113.4,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 167.69,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -132.3,
+      -110.3,
+      -93.0,
+      -47.0,
+      -75.0,
+      -5.0
+     ]
+    },
+    "Hoparlor boss 0": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kabuk civatasi M3x6 ISO 7380 (kafa on/arka sol y-60)",
+       17.496
+      ],
+      [
+       "Isil gomme somun M3 (kafa on/arka sol y-60)",
+       18.166
+      ],
+      [
+       "Yuz ekrani WaveShare 10,1in QLED HDMI",
+       44.067
+      ],
+      [
+       "Ekran tirnagi alt sol",
+       51.089
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       0.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       15.0
+      ]
+     ],
+     "cakisma": [
+      [
+       "Arka kafa kabugu sol",
+       2.68
+      ]
+     ],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       137.23
+      ],
+      [
+       "HDMI fis zarfi",
+       185.212
+      ],
+      [
+       "Touch USB fis zarfi",
+       187.346
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 149.929,
+     "boyun_pan_min": {
+      "mm": 95.3,
+      "parca": "Boyun yukseltme adaptoru",
+      "tilt": 10
+     },
+     "kendi_en_yakin": [
+      [
+       "USB ses karti (govde)",
+       101.005
+      ],
+      [
+       "L 3,5 mm fis",
+       103.0
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 150.47,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 199.79,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -132.55,
+      -125.3,
+      -74.0,
+      -66.0,
+      -14.66,
+      -5.0
+     ]
+    },
+    "Hoparlor boss 1": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kabuk civatasi M3x6 ISO 7380 (kafa on/arka sol y-60)",
+       77.783
+      ],
+      [
+       "Isil gomme somun M3 (kafa on/arka sol y-60)",
+       78.593
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-75)",
+       89.071
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       89.857
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       0.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       77.0
+      ]
+     ],
+     "cakisma": [
+      [
+       "Arka kafa kabugu sol",
+       2.68
+      ]
+     ],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       144.171
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       188.182
+      ],
+      [
+       "HDMI fis zarfi",
+       205.202
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 148.771,
+     "boyun_pan_min": {
+      "mm": 97.14,
+      "parca": "Boyun yukseltme adaptoru",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB ses karti (govde)",
+       101.802
+      ],
+      [
+       "L USB dirsek",
+       104.0
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 130.69,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 188.18,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -132.55,
+      -125.3,
+      -74.0,
+      -66.0,
+      -76.66,
+      -67.0
+     ]
+    }
+   },
+   "govde_parca": {},
+   "dizi_usb_guc_mesafe_mm": {
+    "SY8205 kafa ekrani 5 V": 40.82,
+    "5 V cevirici Pololu D24V50F5": 120.78,
+    "TVS P6KE6V8A kafa ekrani": 55.36,
+    "PAM 5 V (VARSAYIM: D24V50F5)": 129.79,
+    "Hoparlor (PAM -> kafa ici)": 132.68
+   },
+   "kablo": {
+    "3,5 mm -> PAM giris": {
+     "yol_mm": 36.0,
+     "oneri_mm": 40.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 3.5,
+     "cakisma": [],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 133.31,
+     "not_": "listede robot icin yok; AUX kablosu kesilir, L fis"
+    },
+    "USB uzatma (hub -> ses karti)": {
+     "yol_mm": 208.0,
+     "oneri_mm": 260.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 4.0,
+     "cakisma": [],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 24.84,
+     "not_": "listede yok; USB-A erkek -> disi"
+    },
+    "PAM 5 V (VARSAYIM: D24V50F5)": {
+     "yol_mm": 64.0,
+     "oneri_mm": 80.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 3.0,
+     "cakisma": [],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 92.94,
+     "not_": "besleme noktasi elektrik.md'de dogrulanmadi"
+    },
+    "Dizi USB (Pi -> micro B)": {
+     "yol_mm": 85.0,
+     "oneri_mm": 110.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 4.0,
+     "cakisma": [
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       11.8
+      ]
+     ],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 40.82,
+     "not_": "listede yok (30 cm kablo ekran icin, 2 m'ler gogus + ESP32)"
+    },
+    "Hoparlor (PAM -> kafa ici)": {
+     "yol_mm": 153.0,
+     "oneri_mm": 190.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 4.0,
+     "cakisma": [],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 113.15,
+     "not_": "boyuna girmez; listede robot icin yok"
+    },
+    "Gogus dokunmatik USB (koridor)": {
+     "yol_mm": 824.0,
+     "oneri_mm": 1030.0,
+     "liste_mm": 2000.0,
+     "kalan_mm": 970.0,
+     "cap": 4.0,
+     "cakisma": [
+      [
+       "Boyun mili",
+       1.17
+      ]
+     ],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 15.45,
+     "not_": "v4 satir 58, 2 m"
+    },
+    "Hub kablosu": {
+     "yol_mm": 66.0,
+     "oneri_mm": 80.0,
+     "liste_mm": 130.0,
+     "kalan_mm": 47.0,
+     "cap": 4.0,
+     "cakisma": [
+      [
+       "USB Hub 4 lu",
+       10.6
+      ]
+     ],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 58.03,
+     "not_": "hub'in sabit kablosu"
+    }
+   },
+   "kafa_ici_kablo_kutle": [
+    [
+     "3,5 mm -> PAM giris",
+     36.0,
+     0.5
+    ],
+    [
+     "USB uzatma (hub -> ses karti)",
+     208.0,
+     6.2
+    ],
+    [
+     "PAM 5 V (VARSAYIM: D24V50F5)",
+     64.0,
+     1.0
+    ],
+    [
+     "Dizi USB (Pi -> micro B)",
+     85.0,
+     2.5
+    ],
+    [
+     "Hoparlor (PAM -> kafa ici)",
+     153.0,
+     2.3
+    ],
+    [
+     "Gogus dokunmatik USB (koridor)",
+     256.0,
+     7.7
+    ]
+   ],
+   "tork": {
+    "kutle_g": 1634.6,
+    "am_eksen": [
+     -0.85,
+     0.82,
+     -1.91
+    ],
+    "statik_kgcm": 0.334,
+    "statik_kgcm_tilt15": {
+     "-15": -0.336,
+     "15": -0.266
+    },
+    "I_tilt": 0.009475,
+    "tilt_toplam_kgcm": 2.862,
+    "tilt_pay": 3.28,
+    "tilt15_toplam_kgcm": 2.865,
+    "tilt15_pay": 3.28,
+    "I_pan": 0.015687,
+    "pan_kgcm": 4.524,
+    "pan_pay": 2.08
+   },
+   "tork_dizi_18g": {
+    "statik": 0.276,
+    "tilt": 2.774,
+    "tilt_pay": 3.39,
+    "pan": 4.514,
+    "pan_pay": 2.08
+   },
+   "tork_dizi_70g": {
+    "statik": 0.534,
+    "tilt": 3.167,
+    "tilt_pay": 2.97,
+    "pan": 4.555,
+    "pan_pay": 2.06
+   },
+   "tork_ai_hat_ekli": {
+    "statik": 0.538,
+    "tilt": 3.123,
+    "tilt_pay": 3.01,
+    "pan": 4.544,
+    "pan_pay": 2.07,
+    "am": [
+     -1.02,
+     1.88,
+     -2.88
+    ]
+   },
+   "akustik": {
+    "mic_hoparlor_ev_min_mm": 222.2,
+    "mic_hoparlor_poz_min_mm": 222.2,
+    "poz": "kafa ile birlikte doner, sabit",
+    "mic_hoparlor_poz_max_mm": 256.4,
+    "h1_40cm": false,
+    "mikrofon_yakinlik_mm": {
+     "QLED ekran": 57.7,
+     "Pi + Active Cooler": 36.8,
+     "SY8205": 56.9,
+     "D24V50F5": 103.5,
+     "Kamera": 44.7,
+     "Fan yeri (ayrilmis)": 24.2,
+     "Active Cooler ust yuzu merkezi": 44.8,
+     "Arka yarik (en yakin)": 33.1,
+     "Tilt servosu (ev pozu)": 83.9,
+     "Pan servosu (ev pozu)": 241.1
+    },
+    "mikrofon_bas": [
+     [
+      17.67,
+      93.72,
+      -53.29
+     ],
+     [
+      62.43,
+      93.72,
+      -6.7
+     ],
+     [
+      16.76,
+      93.72,
+      -7.61
+     ],
+     [
+      63.34,
+      93.72,
+      -52.38
+     ]
+    ],
+    "dizi_merkez_pan_ekseni_mm": 40.3,
+    "dizi_merkez_tilt_ekseni_mm": 97.4,
+    "port_kabuk": {
+     "port_ust_duvar_ic_mm": 4.9,
+     "duvar_mm": 2.5,
+     "delik_cap_mm": 3.0,
+     "toplam_yol_mm": 7.4,
+     "port_cap_mm": 0.7,
+     "not_": "O3 delik VARSAYIM"
+    },
+    "tepe_duz_bolge": {
+     "arka_fillet_z": -84.89,
+     "on_fillet_z": 42.0,
+     "dikis_x": 0.0,
+     "dikis_z": 10.0,
+     "delik_dikis_x_min": 15.26
+    }
+   },
+   "servis": {
+    "ReSpeaker Mic Array v2.0": {
+     "on_ufuktan_derinlik_mm": 75.8,
+     "prizma_engel": []
+    },
+    "USB ses karti (govde)": {
+     "on_ufuktan_derinlik_mm": 68.0,
+     "prizma_engel": []
+    },
+    "PAM8403": {
+     "on_ufuktan_derinlik_mm": 41.5,
+     "prizma_engel": []
+    },
+    "Hoparlor 40 x 20": {
+     "on_ufuktan_derinlik_mm": 70.0,
+     "prizma_engel": []
+    },
+    "Hoparlor kabi (baski)": {
+     "on_ufuktan_derinlik_mm": 85.0,
+     "prizma_engel": []
+    },
+    "dizi_vida_takim": [
+     {
+      "xz": [
+       51.5,
+       -10.1
+      ],
+      "serbest_mm": 57.8,
+      "engel": "Kafa iskeleti",
+      "z_on_mm": 20.1
+     },
+     {
+      "xz": [
+       13.0,
+       -22.3
+      ],
+      "serbest_mm": 57.8,
+      "engel": "Kafa iskeleti",
+      "z_on_mm": 32.3
+     },
+     {
+      "xz": [
+       51.5,
+       -49.9
+      ],
+      "serbest_mm": 57.8,
+      "engel": "Kafa iskeleti",
+      "z_on_mm": 59.9
+     }
+    ]
+   }
+  },
+  "R2": {
+   "R": {
+    "ad": "R2 pan ekseni uzerinde",
+    "merkez_bas": [
+     0.0,
+     92.622,
+     -25.0
+    ],
+    "not_": "merkez pan ekseninde; x = 0 dikisini ve 'arka ust' tepe civatasini gecer, civata z -72'ye tasinir; disk kenari z +10 dikisine degiyor"
+   },
+   "kafa_parca": {
+    "ReSpeaker Mic Array v2.0": {
+     "kafa_ici_en_yakin": [
+      [
+       "Isil gomme somun M3 (kafa sag/sol arka ust)",
+       1.05
+      ],
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol arka ust)",
+       1.82
+      ],
+      [
+       "Isil gomme somun M3 (kafa sag/sol on ust)",
+       20.049
+      ],
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol on ust)",
+       20.348
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.0
+      ],
+      [
+       "Arka kafa kabugu sol",
+       4.9
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       18.877
+      ],
+      [
+       "Tabla ustu kablo yolu",
+       28.922
+      ],
+      [
+       "Hub USB fis payi",
+       47.58
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 22.722,
+     "boyun_pan_min": {
+      "mm": 62.165,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "govde_min": {
+      "mm": 177.036,
+      "parca": "Rulman yuvasi",
+      "pan": -90,
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       75.224
+      ],
+      [
+       "USB ses karti (govde)",
+       91.466
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 27.22,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 18.88,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -35.37,
+      35.59,
+      84.92,
+      98.02,
+      -60.82,
+      10.92
+     ]
+    },
+    "Dizi USB fis zarfi": {
+     "kafa_ici_en_yakin": [
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       33.168
+      ],
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol arka ust)",
+       43.147
+      ],
+      [
+       "Isil gomme somun M3 (kafa sag/sol arka ust)",
+       43.974
+      ],
+      [
+       "Vida M2,5x5 (Pi 1 ust)",
+       48.471
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.6
+      ],
+      [
+       "Yuz kabugu (on) sag",
+       22.688
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Hub USB fis payi",
+       32.615
+      ],
+      [
+       "Tabla ustu kablo yolu",
+       34.022
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       53.713
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 30.791,
+     "boyun_pan_min": {
+      "mm": 70.395,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       137.99
+      ],
+      [
+       "USB ses karti (govde)",
+       158.564
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 62.71,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 53.71,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      35.0,
+      55.0,
+      90.02,
+      98.02,
+      -23.68,
+      -12.68
+     ]
+    },
+    "Dizi boss 0": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol arka ust)",
+       34.067
+      ],
+      [
+       "Isil gomme somun M3 (kafa sag/sol arka ust)",
+       34.908
+      ],
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol on ust)",
+       36.148
+      ],
+      [
+       "Isil gomme somun M3 (kafa sag/sol on ust)",
+       36.989
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.0
+      ],
+      [
+       "Arka kafa kabugu sol",
+       9.119
+      ]
+     ],
+     "cakisma": [
+      [
+       "Arka kafa kabugu sag",
+       1.05
+      ]
+     ],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       36.622
+      ],
+      [
+       "Hub USB fis payi",
+       65.764
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       68.767
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 36.005,
+     "boyun_pan_min": {
+      "mm": 73.231,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       124.467
+      ],
+      [
+       "USB ses karti (govde)",
+       133.92
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 77.76,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 68.77,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      9.04,
+      14.04,
+      92.62,
+      98.67,
+      -8.64,
+      -2.6
+     ]
+    },
+    "Dizi boss 1": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol arka ust)",
+       24.153
+      ],
+      [
+       "Isil gomme somun M3 (kafa sag/sol arka ust)",
+       24.991
+      ],
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       40.0
+      ],
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol on ust)",
+       47.008
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       0.0
+      ],
+      [
+       "Arka kafa kabugu sag",
+       8.53
+      ]
+     ],
+     "cakisma": [
+      [
+       "Arka kafa kabugu sol",
+       1.05
+      ]
+     ],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       36.622
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       69.03
+      ],
+      [
+       "Hub USB fis payi",
+       101.598
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 31.237,
+     "boyun_pan_min": {
+      "mm": 76.65,
+      "parca": "Tilt servosu MG996R",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       88.788
+      ],
+      [
+       "USB ses karti (govde)",
+       96.984
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 65.59,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 69.03,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -29.53,
+      -24.53,
+      92.62,
+      98.67,
+      -20.81,
+      -14.77
+     ]
+    },
+    "Dizi boss 2": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kabuk civatasi M3x5 ISO 7380 havsada (kafa sag/sol arka ust)",
+       14.838
+      ],
+      [
+       "Isil gomme somun M3 (kafa sag/sol arka ust)",
+       15.668
+      ],
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       36.48
+      ],
+      [
+       "Vida M2,5x5 (Pi 1 ust)",
+       49.691
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sag",
+       0.0
+      ],
+      [
+       "Arka kafa kabugu sol",
+       9.119
+      ]
+     ],
+     "cakisma": [
+      [
+       "Arka kafa kabugu sag",
+       1.05
+      ]
+     ],
+     "zarf_en_yakin": [
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       28.94
+      ],
+      [
+       "Tabla ustu kablo yolu",
+       40.143
+      ],
+      [
+       "Hub USB fis payi",
+       65.764
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 30.422,
+     "boyun_pan_min": {
+      "mm": 69.328,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB uzatma disi ucu",
+       108.593
+      ],
+      [
+       "USB ses karti (govde)",
+       133.832
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 37.92,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 28.94,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      9.04,
+      14.04,
+      92.62,
+      98.67,
+      -48.48,
+      -42.44
+     ]
+    },
+    "USB ses karti (govde)": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kafa iskeleti",
+       9.014
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       11.75
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-15)",
+       14.841
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       19.513
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       1.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       20.025
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       84.5
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       134.44
+      ],
+      [
+       "Tabla onu kablo gecidi",
+       184.56
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 78.0,
+     "boyun_pan_min": {
+      "mm": 91.158,
+      "parca": "Pim civatasi M5x12",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       4.0
+      ],
+      [
+       "ReSpeaker Mic Array v2.0",
+       91.466
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 80.66,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 134.44,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -120.5,
+      35.0,
+      59.0,
+      -58.0,
+      -10.0
+     ]
+    },
+    "Ses karti USB-A fisi": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kafa iskeleti",
+       17.493
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       19.746
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-75)",
+       24.056
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       45.501
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       1.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       68.007
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       96.462
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       139.985
+      ],
+      [
+       "Hub USB fis payi",
+       199.5
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 84.625,
+     "boyun_pan_min": {
+      "mm": 113.519,
+      "parca": "Pim civatasi M5x12",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       28.324
+      ],
+      [
+       "ReSpeaker Mic Array v2.0",
+       103.637
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 83.62,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 139.99,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -127.0,
+      41.0,
+      53.0,
+      -70.0,
+      -58.0
+     ]
+    },
+    "L USB dirsek": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kafa iskeleti",
+       9.605
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       11.161
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-75)",
+       15.914
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       53.966
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       0.636
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       80.006
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       94.384
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       132.136
+      ],
+      [
+       "Hub USB fis payi",
+       192.094
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 77.017,
+     "boyun_pan_min": {
+      "mm": 112.071,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       39.131
+      ],
+      [
+       "ReSpeaker Mic Array v2.0",
+       99.264
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 74.5,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 132.14,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -119.5,
+      38.0,
+      56.0,
+      -86.0,
+      -70.0
+     ]
+    },
+    "USB uzatma disi ucu": {
+     "kafa_ici_en_yakin": [
+      [
+       "Tabla civatasi M3x10 (sol z-75)",
+       3.0
+      ],
+      [
+       "Kafa iskeleti",
+       6.0
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-75)",
+       11.0
+      ],
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       45.747
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       3.893
+      ],
+      [
+       "Arka kafa kabugu sag",
+       73.603
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       70.884
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       102.176
+      ],
+      [
+       "Hub USB fis payi",
+       162.223
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 47.027,
+     "boyun_pan_min": {
+      "mm": 89.537,
+      "parca": "Egme catali",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       42.178
+      ],
+      [
+       "ReSpeaker Mic Array v2.0",
+       75.224
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 44.59,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 102.18,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -119.5,
+      -89.5,
+      38.0,
+      56.0,
+      -83.5,
+      -72.5
+     ]
+    },
+    "L 3,5 mm fis": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kafa iskeleti",
+       10.735
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       13.683
+      ],
+      [
+       "Isil gomme somun M3 (tabla rafi sol z-15)",
+       17.439
+      ],
+      [
+       "Kabuk civatasi M3x6 ISO 7380 (kafa on/arka sol y+70)",
+       21.487
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       1.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       4.123
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       85.5
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       150.741
+      ],
+      [
+       "Tabla onu kablo gecidi",
+       182.889
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 81.692,
+     "boyun_pan_min": {
+      "mm": 92.305,
+      "parca": "Pim civatasi M5x12",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "PAM8403",
+       16.0
+      ],
+      [
+       "ReSpeaker Mic Array v2.0",
+       98.081
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 108.11,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 150.74,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -121.5,
+      37.0,
+      47.0,
+      -10.0,
+      6.0
+     ]
+    },
+    "PAM8403": {
+     "kafa_ici_en_yakin": [
+      [
+       "Kabuk civatasi M3x6 ISO 7380 (kafa on/arka sol y+70)",
+       18.003
+      ],
+      [
+       "Isil gomme somun M3 (kafa on/arka sol y+70)",
+       18.5
+      ],
+      [
+       "Tabla civatasi M3x10 (sol z-15)",
+       33.152
+      ],
+      [
+       "Kafa iskeleti",
+       34.224
+      ]
+     ],
+     "kabuk_en_yakin": [
+      [
+       "Arka kafa kabugu sol",
+       1.0
+      ],
+      [
+       "Yuz kabugu (on) sol",
+       17.529
+      ]
+     ],
+     "cakisma": [],
+     "zarf_en_yakin": [
+      [
+       "Tabla ustu kablo yolu",
+       90.77
+      ],
+      [
+       "Fan yeri 30x30x10 (listede yok)",
+       146.38
+      ],
+      [
+       "Tabla onu kablo gecidi",
+       190.891
+      ]
+     ],
+     "zarf_cakisma": [],
+     "ai_hat_mm": 84.004,
+     "boyun_pan_min": {
+      "mm": 108.81,
+      "parca": "Pim civatasi M5x12",
+      "tilt": -15
+     },
+     "kendi_en_yakin": [
+      [
+       "USB ses karti (govde)",
+       4.0
+      ],
+      [
+       "L 3,5 mm fis",
+       16.0
+      ]
+     ],
+     "isi": {
+      "yarik_mm": 98.26,
+      "yarik_prizma_kesisim_mm3": 0,
+      "fan_yeri_mm": 146.38,
+      "fan_yeri_kesisim_mm3": 0.0
+     },
+     "bb_bas": [
+      -131.5,
+      -126.5,
+      63.0,
+      81.0,
+      -31.5,
+      -7.5
+     ]
+    }
+   },
+   "govde_parca": {
+    "Hoparlor 40 x 20": {
+     "en_yakin": [
+      [
+       "Govde orta bandi sag",
+       0.497
+      ],
+      [
+       "Gogus bandi sag",
+       8.51
+      ],
+      [
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       12.608
+      ],
+      [
+       "Gogus ekrani cercevesi sag",
+       18.759
+      ],
+      [
+       "Isil gomme somun M3 (gogus cercevesi)001",
+       21.081
+      ]
+     ],
+     "cakisma": [],
+     "bb_g": [
+      25.0,
+      65.0,
+      966.41,
+      1010.64,
+      72.5,
+      111.83
+     ]
+    },
+    "Hoparlor kabi (baski)": {
+     "en_yakin": [
+      [
+       "Govde orta bandi sag",
+       0.196
+      ],
+      [
+       "Gogus bandi sag",
+       5.521
+      ],
+      [
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       9.182
+      ],
+      [
+       "Govde orta bandi sol",
+       13.077
+      ],
+      [
+       "Gogus ekrani cercevesi sag",
+       15.759
+      ]
+     ],
+     "cakisma": [],
+     "bb_g": [
+      10.0,
+      80.0,
+      963.78,
+      1014.07,
+      69.39,
+      113.8
+     ]
+    },
+    "Hoparlor boss 0": {
+     "en_yakin": [
+      [
+       "Govde orta bandi sag",
+       0.0
+      ],
+      [
+       "Gogus bandi sag",
+       24.361
+      ],
+      [
+       "Bindirme civatasi M3x6 (govde y1005 on)",
+       28.97
+      ],
+      [
+       "Isil gomme somun M3 (govde y1005 on)",
+       29.716
+      ],
+      [
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       33.388
+      ]
+     ],
+     "cakisma": [
+      [
+       "Govde orta bandi sag",
+       2.78
+      ]
+     ],
+     "bb_g": [
+      72.0,
+      80.0,
+      977.84,
+      989.91,
+      91.62,
+      103.1
+     ]
+    },
+    "Hoparlor boss 1": {
+     "en_yakin": [
+      [
+       "Govde orta bandi sag",
+       0.0
+      ],
+      [
+       "Govde orta bandi sol",
+       10.069
+      ],
+      [
+       "Gogus bandi sag",
+       24.361
+      ],
+      [
+       "Gogus bandi sol",
+       27.628
+      ],
+      [
+       "Bindirme civatasi M3x6 (govde x0 on)007",
+       28.665
+      ]
+     ],
+     "cakisma": [
+      [
+       "Govde orta bandi sag",
+       2.78
+      ]
+     ],
+     "bb_g": [
+      10.0,
+      18.0,
+      977.84,
+      989.91,
+      91.62,
+      103.1
+     ]
+    },
+    "USB Hub 4 lu (kapak ici)": {
+     "en_yakin": [
+      [
+       "Ust arka servis kapagi",
+       1.027
+      ],
+      [
+       "Gogus bandi sag",
+       3.171
+      ],
+      [
+       "Isil gomme somun M3 (ust arka kapak)003",
+       7.0
+      ],
+      [
+       "Isil gomme somun M3 (ust arka kapak)004",
+       7.0
+      ],
+      [
+       "Bindirme civatasi M3x6 (ust arka kapak)004",
+       7.421
+      ]
+     ],
+     "cakisma": [],
+     "bb_g": [
+      35.0,
+      60.0,
+      1085.0,
+      1157.0,
+      -78.48,
+      -59.48
+     ]
+    },
+    "Hub USB fis payi": {
+     "en_yakin": [
+      [
+       "Govde braketi sag y1095",
+       4.478
+      ],
+      [
+       "Govde diregi",
+       15.029
+      ],
+      [
+       "Gogus bandi sag",
+       15.247
+      ],
+      [
+       "Civata M6x14 (Govde braketi sag y1095)",
+       15.672
+      ],
+      [
+       "Civata M6x14 (Govde braketi sag y1095)001",
+       15.672
+      ]
+     ],
+     "cakisma": [],
+     "bb_g": [
+      35.0,
+      60.0,
+      1085.0,
+      1157.0,
+      -59.48,
+      -19.48
+     ]
+    }
+   },
+   "dizi_usb_guc_mesafe_mm": {
+    "SY8205 kafa ekrani 5 V": 40.82,
+    "5 V cevirici Pololu D24V50F5": 120.78,
+    "TVS P6KE6V8A kafa ekrani": 53.86,
+    "PAM 5 V (VARSAYIM: D24V50F5)": 129.79,
+    "Hoparlor (PAM -> gogus)": 89.54
+   },
+   "kablo": {
+    "3,5 mm -> PAM giris": {
+     "yol_mm": 36.0,
+     "oneri_mm": 40.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 3.5,
+     "cakisma": [],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 133.31,
+     "not_": "listede robot icin yok; AUX kablosu kesilir, L fis"
+    },
+    "PAM 5 V (VARSAYIM: D24V50F5)": {
+     "yol_mm": 64.0,
+     "oneri_mm": 80.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 3.0,
+     "cakisma": [],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 92.94,
+     "not_": "besleme noktasi elektrik.md'de dogrulanmadi"
+    },
+    "Ses karti uzatmasi (Pi -> ses karti)": {
+     "yol_mm": 217.0,
+     "oneri_mm": 270.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 4.0,
+     "cakisma": [
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       2.5
+      ]
+     ],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 24.84,
+     "not_": "listede yok; USB-A erkek -> disi"
+    },
+    "Dizi USB (Pi -> micro B)": {
+     "yol_mm": 69.0,
+     "oneri_mm": 90.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 4.0,
+     "cakisma": [
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       11.8
+      ]
+     ],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 40.82,
+     "not_": "listede yok (30 cm kablo ekran icin, 2 m'ler gogus + ESP32)"
+    },
+    "Hoparlor (PAM -> gogus)": {
+     "yol_mm": 823.0,
+     "oneri_mm": 1030.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 4.0,
+     "cakisma": [
+      [
+       "Boyun mili",
+       1.17
+      ]
+     ],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 58.17,
+     "not_": "boyundan iner; listede robot icin yok"
+    },
+    "Hub uzatmasi (Pi -> hub)": {
+     "yol_mm": 617.0,
+     "oneri_mm": 770.0,
+     "liste_mm": null,
+     "kalan_mm": null,
+     "cap": 4.0,
+     "cakisma": [
+      [
+       "Raspberry Pi 5 4GB + Active Cooler",
+       2.93
+      ],
+      [
+       "Boyun mili",
+       1.17
+      ]
+     ],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 15.45,
+     "not_": "hub'in 130 mm kablosu + USB uzatma; listede yok"
+    },
+    "Gogus dokunmatik USB (hub'dan)": {
+     "yol_mm": 395.0,
+     "oneri_mm": 490.0,
+     "liste_mm": 2000.0,
+     "kalan_mm": 1507.0,
+     "cap": 4.0,
+     "cakisma": [],
+     "gogus_ekrani_ucu_mm3": [],
+     "sy8205_mm": 309.46,
+     "not_": "v4 satir 58, 2 m (kisalir)"
+    }
+   },
+   "kafa_ici_kablo_kutle": [
+    [
+     "3,5 mm -> PAM giris",
+     36.0,
+     0.5
+    ],
+    [
+     "PAM 5 V (VARSAYIM: D24V50F5)",
+     64.0,
+     1.0
+    ],
+    [
+     "Ses karti uzatmasi (Pi -> ses karti)",
+     217.0,
+     6.5
+    ],
+    [
+     "Dizi USB (Pi -> micro B)",
+     69.0,
+     2.1
+    ],
+    [
+     "Hoparlor (PAM -> gogus)",
+     203.0,
+     3.0
+    ],
+    [
+     "Hub uzatmasi (Pi -> hub)",
+     264.0,
+     7.9
+    ]
+   ],
+   "tork": {
+    "kutle_g": 1570.4,
+    "am_eksen": [
+     -0.55,
+     1.84,
+     -0.39
+    ],
+    "statik_kgcm": 0.125,
+    "statik_kgcm_tilt15": {
+     "-15": -0.134,
+     "15": 0.015
+    },
+    "I_tilt": 0.009097,
+    "tilt_toplam_kgcm": 2.553,
+    "tilt_pay": 3.68,
+    "tilt15_toplam_kgcm": 2.562,
+    "tilt15_pay": 3.67,
+    "I_pan": 0.01461,
+    "pan_kgcm": 4.237,
+    "pan_pay": 2.22
+   },
+   "tork_dizi_18g": {
+    "statik": 0.071,
+    "tilt": 2.468,
+    "tilt_pay": 3.81,
+    "pan": 4.233,
+    "pan_pay": 2.22
+   },
+   "tork_dizi_70g": {
+    "statik": 0.306,
+    "tilt": 2.835,
+    "tilt_pay": 3.32,
+    "pan": 4.247,
+    "pan_pay": 2.21
+   },
+   "tork_ai_hat_ekli": {
+    "statik": 0.33,
+    "tilt": 2.813,
+    "tilt_pay": 3.34,
+    "pan": 4.257,
+    "pan_pay": 2.21,
+    "am": [
+     -0.73,
+     2.93,
+     -1.44
+    ]
+   },
+   "akustik": {
+    "mic_hoparlor_ev_min_mm": 595.3,
+    "mic_hoparlor_poz_min_mm": 579.5,
+    "poz": [
+     -90,
+     -15
+    ],
+    "mic_hoparlor_poz_max_mm": 613.6,
+    "h1_40cm": true,
+    "mikrofon_yakinlik_mm": {
+     "QLED ekran": 53.9,
+     "Pi + Active Cooler": 36.2,
+     "SY8205": 56.0,
+     "D24V50F5": 71.6,
+     "Kamera": 39.8,
+     "Fan yeri (ayrilmis)": 30.1,
+     "Active Cooler ust yuzu merkezi": 43.2,
+     "Arka yarik (en yakin)": 38.1,
+     "Tilt servosu (ev pozu)": 83.9,
+     "Pan servosu (ev pozu)": 241.3
+    },
+    "mikrofon_bas": [
+     [
+      -22.33,
+      93.72,
+      -48.29
+     ],
+     [
+      22.43,
+      93.72,
+      -1.7
+     ],
+     [
+      -23.24,
+      93.72,
+      -2.61
+     ],
+     [
+      23.34,
+      93.72,
+      -47.38
+     ]
+    ],
+    "dizi_merkez_pan_ekseni_mm": 0.0,
+    "dizi_merkez_tilt_ekseni_mm": 95.9,
+    "port_kabuk": {
+     "port_ust_duvar_ic_mm": 4.9,
+     "duvar_mm": 2.5,
+     "delik_cap_mm": 3.0,
+     "toplam_yol_mm": 7.4,
+     "port_cap_mm": 0.7,
+     "not_": "O3 delik VARSAYIM"
+    },
+    "tepe_duz_bolge": {
+     "arka_fillet_z": -84.89,
+     "on_fillet_z": 42.0,
+     "dikis_x": 0.0,
+     "dikis_z": 10.0,
+     "delik_dikis_x_min": 20.83
+    }
+   },
+   "servis": {
+    "ReSpeaker Mic Array v2.0": {
+     "on_ufuktan_derinlik_mm": 0.0,
+     "prizma_engel": []
+    },
+    "USB ses karti (govde)": {
+     "on_ufuktan_derinlik_mm": 68.0,
+     "prizma_engel": []
+    },
+    "PAM8403": {
+     "on_ufuktan_derinlik_mm": 41.5,
+     "prizma_engel": []
+    },
+    "dizi_vida_takim": [
+     {
+      "xz": [
+       11.5,
+       -5.1
+      ],
+      "serbest_mm": 57.8,
+      "engel": "Kafa iskeleti",
+      "z_on_mm": 15.1
+     },
+     {
+      "xz": [
+       -27.0,
+       -17.3
+      ],
+      "serbest_mm": 57.8,
+      "engel": "Kafa iskeleti",
+      "z_on_mm": 27.3
+     },
+     {
+      "xz": [
+       11.5,
+       -44.9
+      ],
+      "serbest_mm": 27.6,
+      "engel": "AI HAT+ zarfi (VARSAYIM, modelde yok)",
+      "z_on_mm": 54.9
+     }
+    ]
+   }
+  }
+ },
+ "hoparlor_yatay_eksen": {
+  "en_yakin": [
+   [
+    "Govde orta bandi sag",
+    0.411
+   ],
+   [
+    "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+    23.293
+   ],
+   [
+    "Govde orta bandi sol",
+    27.601
+   ],
+   [
+    "Gogus bandi sag",
+    32.268
+   ]
+  ],
+  "cakisma": [],
+  "not_": "eksen yatay (+Z), on duzlem z 85,9; duvar ici y 962 z 86,4 / y 1002 z 114,4; kama bosluk 0,5...28 mm"
+ },
+ "hoparlor_gogus_eksen": {
+  "duvar_normali": [
+   0.0,
+   -0.574,
+   0.819
+  ],
+  "yatayin_altinda_derece": 35.0,
+  "dinleyici": {
+   "kulak 1,6 m, 0,5 m onde": {
+    "duvara_paralel_eksen_derece": 89.1,
+    "yatay_eksen_derece": 54.2,
+    "mesafe_mm": 763.0
+   },
+   "kulak 1,6 m, 1,0 m onde": {
+    "duvara_paralel_eksen_derece": 68.1,
+    "yatay_eksen_derece": 33.2,
+    "mesafe_mm": 1131.0
+   },
+   "kulak 1,6 m, 1,5 m onde": {
+    "duvara_paralel_eksen_derece": 58.1,
+    "yatay_eksen_derece": 23.2,
+    "mesafe_mm": 1573.0
+   }
+  }
+ },
+ "kafa_ic_kosegen_mm": 362.9,
+ "boyun_demet": {
+  "C ve mevcut": {
+   "alan_mm2": 69.9,
+   "not_": "12 V, ESP32 USB, tilt, HDMI, gogus dokunmatik",
+   "gecis": [
+    {
+     "ad": "Boyun mili O32",
+     "doluluk": 0.087
+    },
+    {
+     "ad": "Egme catali deligi O28",
+     "doluluk": 0.114
+    },
+    {
+     "ad": "Mil arka penceresi 20 x 10, ust 45 derece",
+     "doluluk": 0.399
+    },
+    {
+     "ad": "Servo yuvasi arka kanali 20 x 7,8",
+     "doluluk": 0.448
+    },
+    {
+     "ad": "Servo yuvasi alt cikisi 20 x 12, ust 45 derece",
+     "doluluk": 0.343
+    }
+   ]
+  },
+  "A": {
+   "alan_mm2": 82.5,
+   "not_": "+ hoparlor",
+   "gecis": [
+    {
+     "ad": "Boyun mili O32",
+     "doluluk": 0.103
+    },
+    {
+     "ad": "Egme catali deligi O28",
+     "doluluk": 0.134
+    },
+    {
+     "ad": "Mil arka penceresi 20 x 10, ust 45 derece",
+     "doluluk": 0.471
+    },
+    {
+     "ad": "Servo yuvasi arka kanali 20 x 7,8",
+     "doluluk": 0.529
+    },
+    {
+     "ad": "Servo yuvasi alt cikisi 20 x 12, ust 45 derece",
+     "doluluk": 0.404
+    }
+   ]
+  },
+  "B": {
+   "alan_mm2": 69.9,
+   "not_": "- gogus dokunmatik - ESP32 USB + hub uzatmasi + hoparlor",
+   "gecis": [
+    {
+     "ad": "Boyun mili O32",
+     "doluluk": 0.087
+    },
+    {
+     "ad": "Egme catali deligi O28",
+     "doluluk": 0.114
+    },
+    {
+     "ad": "Mil arka penceresi 20 x 10, ust 45 derece",
+     "doluluk": 0.399
+    },
+    {
+     "ad": "Servo yuvasi arka kanali 20 x 7,8",
+     "doluluk": 0.448
+    },
+    {
+     "ad": "Servo yuvasi alt cikisi 20 x 12, ust 45 derece",
+     "doluluk": 0.343
+    }
+   ]
+  }
+ },
+ "baski": {
+  "taban Arka sag": {
+   "ad": "Arka kafa kabugu sag",
+   "olcu": [
+    215.0,
+    151.0,
+    106.9
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 1,
+   "desteksiz": false,
+   "destek_sorun": [
+    {
+     "z": 2.5,
+     "alan": 2723.2,
+     "boy": 200.4,
+     "robot": [
+      -8.5,
+      187.2,
+      -62.4
+     ]
+    }
+   ],
+   "cikinti_orani": 0.0325,
+   "kutle_g": 218.2,
+   "sure_saat": 4.77,
+   "ofset_uyari": 0
+  },
+  "taban Arka sol": {
+   "ad": "Arka kafa kabugu sol",
+   "olcu": [
+    215.0,
+    135.0,
+    106.9
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "destek_sorun": [],
+   "cikinti_orani": 0.0135,
+   "kutle_g": 205.1,
+   "sure_saat": 4.49,
+   "ofset_uyari": 0
+  },
+  "taban Orta bant sag": {
+   "ad": "Govde orta bandi sag",
+   "olcu": [
+    214.2,
+    161.8,
+    226.9
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "destek_sorun": [],
+   "cikinti_orani": 0.0044,
+   "kutle_g": 258.8,
+   "sure_saat": 5.66,
+   "ofset_uyari": 9
+  },
+  "R1 Arka sag": {
+   "ad": "Arka sag + R1",
+   "olcu": [
+    215.0,
+    151.0,
+    106.9
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 1,
+   "desteksiz": false,
+   "destek_sorun": [
+    {
+     "z": 2.5,
+     "alan": 2723.2,
+     "boy": 200.4,
+     "robot": [
+      -8.5,
+      187.2,
+      -62.4
+     ]
+    }
+   ],
+   "cikinti_orani": 0.0329,
+   "kutle_g": 218.5,
+   "sure_saat": 4.78,
+   "ofset_uyari": 0,
+   "gecerli": true,
+   "kati": 1
+  },
+  "R2 Arka sag": {
+   "ad": "Arka sag + R2",
+   "olcu": [
+    215.0,
+    151.0,
+    106.9
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 1,
+   "desteksiz": false,
+   "destek_sorun": [
+    {
+     "z": 2.5,
+     "alan": 2723.2,
+     "boy": 200.4,
+     "robot": [
+      -8.5,
+      187.2,
+      -62.4
+     ]
+    }
+   ],
+   "cikinti_orani": 0.0326,
+   "kutle_g": 218.5,
+   "sure_saat": 4.78,
+   "ofset_uyari": 0
+  },
+  "R2 Arka sol": {
+   "ad": "Arka sol + R2",
+   "olcu": [
+    215.0,
+    135.0,
+    106.9
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "destek_sorun": [],
+   "cikinti_orani": 0.0136,
+   "kutle_g": 205.2,
+   "sure_saat": 4.49,
+   "ofset_uyari": 0
+  },
+  "R2 boss yeri": [
+   "sag",
+   "sol",
+   "sag"
+  ],
+  "Gogus alti izgara + boss, Orta bant sag": {
+   "ad": "Orta bant sag + hoparlor",
+   "olcu": [
+    214.2,
+    161.8,
+    226.9
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "destek_sorun": [],
+   "cikinti_orani": 0.005,
+   "kutle_g": 258.9,
+   "sure_saat": 5.66,
+   "ofset_uyari": 9,
+   "gecerli": true,
+   "delik_sayi": 19
+  },
+  "Kafa yan izgara + boss, Arka sol": {
+   "ad": "Arka sol + hoparlor",
+   "olcu": [
+    215.0,
+    135.0,
+    106.9
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "destek_sorun": [],
+   "cikinti_orani": 0.0149,
+   "kutle_g": 205.2,
+   "sure_saat": 4.49,
+   "ofset_uyari": 0,
+   "gecerli": true
+  },
+  "Hoparlor kabi (ayri baski)": {
+   "ad": "Hoparlor kabi",
+   "olcu": [
+    62.5,
+    62.5,
+    22.0
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 2,
+   "desteksiz": false,
+   "kutle_g": 9.3,
+   "sure_saat": 0.2
+  },
+  "Hoparlor kabi (flans tablada)": {
+   "ad": "Hoparlor kabi ters",
+   "olcu": [
+    62.5,
+    62.5,
+    22.0
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 2,
+   "desteksiz": false,
+   "kutle_g": 9.3,
+   "sure_saat": 0.2
+  }
+ },
+ "R2_tasinan_civata": {
+  "yeni_boss_bas": [
+   -8.0,
+   98.622,
+   -72.0
+  ],
+  "dizi_mm": 8.71,
+  "fan_yeri_mm": 17.2,
+  "arka_duvar_ic_mm": 11.39,
+  "fillet_payi_mm": 8.89
+ },
+ "baski_not": "baski bolumu ayni betigin ilk tam kosusundan alindi (dizi/hoparlor kabuk geometrisi degismedi)",
+ "koridor": {
+  "not_": "Pi USB -> tabla ustu -> trunk: tup O4; en yakin 8 parca",
+  "en_yakin": [
+   [
+    "Kafa iskeleti",
+    2.5
+   ],
+   [
+    "Raspberry Pi 5 4GB + Active Cooler",
+    11.73
+   ],
+   [
+    "Burc M2,5x8 (Pi 1)",
+    12.91
+   ],
+   [
+    "Burc M2,5x8 (Pi 0)",
+    13.46
+   ],
+   [
+    "Vida M2,5x5 (Pi 1 ust)",
+    14.36
+   ],
+   [
+    "Vida M2,5x8 (Pi 1 alt)",
+    14.62
+   ],
+   [
+    "Vida M2,5x5 (Pi 0 ust)",
+    14.89
+   ],
+   [
+    "Vida M2,5x8 (Pi 0 alt)",
+    15.17
+   ]
+  ]
+ },
+ "ust_kapak_etiket": {
+  "adlar": [
+   "Bindirme civatasi M3x6 (ust arka kapak)",
+   "Bindirme civatasi M3x6 (ust arka kapak)001",
+   "Bindirme civatasi M3x6 (ust arka kapak)002",
+   "Bindirme civatasi M3x6 (ust arka kapak)003",
+   "Bindirme civatasi M3x6 (ust arka kapak)004",
+   "Bindirme civatasi M3x6 (ust arka kapak)005",
+   "Bindirme civatasi M3x6 (ust arka kapak)006",
+   "Isil gomme somun M3 (ust arka kapak)",
+   "Isil gomme somun M3 (ust arka kapak)001",
+   "Isil gomme somun M3 (ust arka kapak)002",
+   "Isil gomme somun M3 (ust arka kapak)003",
+   "Isil gomme somun M3 (ust arka kapak)004"
+  ],
+  "sayi": 14
+ }
+}

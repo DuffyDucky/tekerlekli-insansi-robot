@@ -1,0 +1,5232 @@
+{
+ "model": {
+  "parca": 1177,
+  "kutle_g": 25510.6,
+  "boy": {
+   "zemin_y": 0.0,
+   "zemin_parca": "Teker 125 x 58 (arka sol)",
+   "tepe_y": 1580.0,
+   "tepe_parca": "Arka kafa kabugu sol",
+   "boy_mm": 1580.0,
+   "boundbox_tepe": 1581.648,
+   "boundbox_zemin": -5.15,
+   "not_": "tum parcalarda optimalBoundingBox; BoundBox karsilastirma icin"
+  },
+  "ekran": {
+   "ekran_parca": [
+    "Gogus ekrani cercevesi sag",
+    "Gogus ekrani cercevesi sol",
+    "Gogus ekrani VESA tasiyici",
+    "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+    "Isil gomme somun M3 (gogus cercevesi)",
+    "Cerceve civatasi M3x6 ISO 7380",
+    "Isil gomme somun M3 (gogus cercevesi)001",
+    "Cerceve civatasi M3x6 ISO 7381",
+    "Isil gomme somun M3 (gogus cercevesi)002",
+    "Cerceve civatasi M3x6 ISO 7382",
+    "Isil gomme somun M3 (gogus cercevesi)003",
+    "Cerceve civatasi M3x6 ISO 7383",
+    "Isil gomme somun M3 (gogus cercevesi)004",
+    "Cerceve civatasi M3x6 ISO 7384",
+    "Isil gomme somun M3 (gogus cercevesi)005",
+    "Cerceve civatasi M3x6 ISO 7385",
+    "Isil gomme somun M3 (gogus cercevesi)006",
+    "Cerceve civatasi M3x6 ISO 7386",
+    "Isil gomme somun M3 (gogus cercevesi)007",
+    "Cerceve civatasi M3x6 ISO 7387",
+    "VESA pulu M4",
+    "VESA civatasi M4x12",
+    "VESA pulu M001",
+    "VESA civatasi M4x001",
+    "VESA pulu M002",
+    "VESA civatasi M4x002",
+    "VESA pulu M003",
+    "VESA civatasi M4x003",
+    "Tasiyici pulu M6",
+    "Tasiyici civatasi M6x18",
+    "Cekic somun M6 (direk on kanali)",
+    "Tasiyici pulu M001",
+    "Tasiyici civatasi M6x001",
+    "Cekic somun M6 (direk on kanali)001"
+   ],
+   "cift_kontrol": 68,
+   "cakisma": [],
+   "ic_cakisma": [],
+   "temas": [
+    [
+     "Gogus ekrani cercevesi sag",
+     "Gogus bandi sag",
+     0.0
+    ],
+    [
+     "Gogus ekrani cercevesi sol",
+     "Gogus bandi sol",
+     0.0
+    ],
+    [
+     "Gogus ekrani VESA tasiyici",
+     "Govde diregi",
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (gogus cercevesi)",
+     "Gogus bandi sag",
+     0.0
+    ],
+    [
+     "Cerceve civatasi M3x6 ISO 7380",
+     "Gogus bandi sag",
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (gogus cercevesi)001",
+     "Gogus bandi sag",
+     0.0
+    ],
+    [
+     "Cerceve civatasi M3x6 ISO 7381",
+     "Gogus bandi sag",
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (gogus cercevesi)002",
+     "Gogus bandi sag",
+     0.0
+    ],
+    [
+     "Cerceve civatasi M3x6 ISO 7382",
+     "Gogus bandi sag",
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (gogus cercevesi)003",
+     "Gogus bandi sag",
+     0.0
+    ],
+    [
+     "Cerceve civatasi M3x6 ISO 7383",
+     "Gogus bandi sag",
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (gogus cercevesi)004",
+     "Gogus bandi sol",
+     0.0
+    ],
+    [
+     "Cerceve civatasi M3x6 ISO 7384",
+     "Gogus bandi sol",
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (gogus cercevesi)005",
+     "Gogus bandi sol",
+     0.0
+    ],
+    [
+     "Cerceve civatasi M3x6 ISO 7385",
+     "Gogus bandi sol",
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (gogus cercevesi)006",
+     "Gogus bandi sol",
+     0.0
+    ],
+    [
+     "Cerceve civatasi M3x6 ISO 7386",
+     "Gogus bandi sol",
+     0.0
+    ],
+    [
+     "Isil gomme somun M3 (gogus cercevesi)007",
+     "Gogus bandi sol",
+     0.0
+    ],
+    [
+     "Cerceve civatasi M3x6 ISO 7387",
+     "Gogus bandi sol",
+     0.0
+    ],
+    [
+     "Cekic somun M6 (direk on kanali)",
+     "Govde diregi",
+     0.0
+    ],
+    [
+     "Cekic somun M6 (direk on kanali)001",
+     "Govde diregi",
+     0.0
+    ]
+   ],
+   "kasa_direk_mm": 28.268,
+   "kasa_bant": {
+    "Govde orta bandi sag": 8.829,
+    "Govde orta bandi sol": 8.829,
+    "Gogus bandi sag": 5.0,
+    "Gogus bandi sol": 5.0,
+    "Omuz bandi sag": 8.175,
+    "Omuz bandi sol": 8.175
+   },
+   "kasa_yerel": {
+    "x": [
+     -142.325,
+     142.325
+    ],
+    "y": [
+     -91.125,
+     91.125
+    ],
+    "z": [
+     -31.5,
+     -2.0
+    ],
+    "cep": [
+     294.65,
+     192.25
+    ],
+    "kasa_arayuz": [
+     284.65,
+     182.25,
+     29.5
+    ]
+   },
+   "kutle_g": 1079.0,
+   "kutle_arayuz": 1079.0
+  },
+  "gruplar": {
+   "Iskelet": 59,
+   "OmuzSag_Govde": 29,
+   "OmuzSag_Gobek": 31,
+   "OmuzSag_Kol": 13,
+   "OmuzSol_Govde": 29,
+   "OmuzSol_Gobek": 31,
+   "OmuzSol_Kol": 13,
+   "Kabuk": 355,
+   "DirsekSag_UstKol": 20,
+   "DirsekSag_OnKol": 25,
+   "DirsekSag_El": 12,
+   "DirsekSol_UstKol": 20,
+   "DirsekSol_OnKol": 25,
+   "DirsekSol_El": 12,
+   "Kafa_Govde": 33,
+   "Kafa_Boyun": 41,
+   "Kafa_Bas": 87,
+   "Taban_Govde": 326,
+   "Taban_ArkaSolTeker": 4,
+   "Taban_OnSolTeker": 4,
+   "Taban_ArkaSagTeker": 4,
+   "Taban_OnSagTeker": 4
+  },
+  "kabuk": {
+   "parca": 355,
+   "iskelet_parca": 59,
+   "ic_cift": 939,
+   "ic_cakisma": [],
+   "iskelet_cift": 151,
+   "iskelet_cakisma": [],
+   "bolge_sayisi": 64
+  },
+  "baski": {
+   "adet": 71,
+   "tabla": [
+    246.0,
+    246.0,
+    250.0
+   ],
+   "sigmayan_model_durusu": [],
+   "en_buyuk": [
+    [
+     "Gogus bandi sag",
+     "Kabuk",
+     [
+      235.0,
+      217.2,
+      164.0
+     ]
+    ],
+    [
+     "Gogus bandi sol",
+     "Kabuk",
+     [
+      235.0,
+      217.2,
+      152.0
+     ]
+    ],
+    [
+     "Etek arka sag",
+     "Kabuk",
+     [
+      234.0,
+      227.0,
+      175.0
+     ]
+    ],
+    [
+     "Etek on sag",
+     "Kabuk",
+     [
+      234.0,
+      227.0,
+      175.0
+     ]
+    ],
+    [
+     "Etek arka sol",
+     "Kabuk",
+     [
+      227.0,
+      222.0,
+      175.0
+     ]
+    ],
+    [
+     "Etek orta sag",
+     "Kabuk",
+     [
+      227.0,
+      222.0,
+      199.0
+     ]
+    ],
+    [
+     "Etek orta sol",
+     "Kabuk",
+     [
+      227.0,
+      222.0,
+      199.0
+     ]
+    ],
+    [
+     "Etek on sol",
+     "Kabuk",
+     [
+      227.0,
+      222.0,
+      175.0
+     ]
+    ],
+    [
+     "Etek dolgu seridi arka",
+     "Kabuk",
+     [
+      227.0,
+      192.5,
+      88.0
+     ]
+    ],
+    [
+     "Etek dolgu seridi on",
+     "Kabuk",
+     [
+      227.0,
+      192.5,
+      88.0
+     ]
+    ],
+    [
+     "Govde orta bandi sag",
+     "Kabuk",
+     [
+      226.9,
+      214.2,
+      161.8
+     ]
+    ],
+    [
+     "Govde orta bandi sol",
+     "Kabuk",
+     [
+      226.9,
+      214.2,
+      149.8
+     ]
+    ]
+   ],
+   "liste": [
+    [
+     "Omuz yuvasi (sag)",
+     "OmuzSag_Govde",
+     [
+      76.0,
+      76.0,
+      67.0
+     ]
+    ],
+    [
+     "Rulman kapagi (sag)",
+     "OmuzSag_Govde",
+     [
+      76.0,
+      60.0,
+      14.0
+     ]
+    ],
+    [
+     "Omuz gobegi (sag)",
+     "OmuzSag_Gobek",
+     [
+      66.0,
+      51.0,
+      49.0
+     ]
+    ],
+    [
+     "S1 kablo tamburu (sag)",
+     "OmuzSag_Gobek",
+     [
+      87.4,
+      70.6,
+      10.5
+     ]
+    ],
+    [
+     "Kol catali (sag)",
+     "OmuzSag_Kol",
+     [
+      76.0,
+      63.5,
+      56.0
+     ]
+    ],
+    [
+     "Ust kol tupu (sag)",
+     "OmuzSag_Kol",
+     [
+      130.0,
+      56.0,
+      56.0
+     ]
+    ],
+    [
+     "Omuz yuvasi (sol)",
+     "OmuzSol_Govde",
+     [
+      76.0,
+      76.0,
+      67.0
+     ]
+    ],
+    [
+     "Rulman kapagi (sol)",
+     "OmuzSol_Govde",
+     [
+      76.0,
+      60.0,
+      14.0
+     ]
+    ],
+    [
+     "Omuz gobegi (sol)",
+     "OmuzSol_Gobek",
+     [
+      66.0,
+      51.0,
+      49.0
+     ]
+    ],
+    [
+     "S1 kablo tamburu (sol)",
+     "OmuzSol_Gobek",
+     [
+      87.4,
+      70.6,
+      10.5
+     ]
+    ],
+    [
+     "Kol catali (sol)",
+     "OmuzSol_Kol",
+     [
+      76.0,
+      63.5,
+      56.0
+     ]
+    ],
+    [
+     "Ust kol tupu (sol)",
+     "OmuzSol_Kol",
+     [
+      130.0,
+      56.0,
+      56.0
+     ]
+    ],
+    [
+     "Govde alt bandi sag",
+     "Kabuk",
+     [
+      225.5,
+      170.0,
+      137.0
+     ]
+    ],
+    [
+     "Govde alt bandi sol",
+     "Kabuk",
+     [
+      225.5,
+      170.0,
+      125.0
+     ]
+    ],
+    [
+     "Govde uzatma bandi 1 sag",
+     "Kabuk",
+     [
+      170.0,
+      169.5,
+      137.0
+     ]
+    ],
+    [
+     "Govde uzatma bandi 1 sol",
+     "Kabuk",
+     [
+      170.0,
+      169.5,
+      125.0
+     ]
+    ],
+    [
+     "Govde uzatma bandi 2 sag",
+     "Kabuk",
+     [
+      170.0,
+      169.5,
+      137.0
+     ]
+    ],
+    [
+     "Govde uzatma bandi 2 sol",
+     "Kabuk",
+     [
+      170.0,
+      169.5,
+      125.0
+     ]
+    ],
+    [
+     "Govde orta bandi sag",
+     "Kabuk",
+     [
+      226.9,
+      214.2,
+      161.8
+     ]
+    ],
+    [
+     "Govde orta bandi sol",
+     "Kabuk",
+     [
+      226.9,
+      214.2,
+      149.8
+     ]
+    ],
+    [
+     "Gogus bandi sag",
+     "Kabuk",
+     [
+      235.0,
+      217.2,
+      164.0
+     ]
+    ],
+    [
+     "Gogus bandi sol",
+     "Kabuk",
+     [
+      235.0,
+      217.2,
+      152.0
+     ]
+    ],
+    [
+     "Omuz bandi sag",
+     "Kabuk",
+     [
+      164.0,
+      156.2,
+      102.0
+     ]
+    ],
+    [
+     "Omuz bandi sol",
+     "Kabuk",
+     [
+      156.2,
+      152.0,
+      102.0
+     ]
+    ],
+    [
+     "Arka servis kapagi",
+     "Kabuk",
+     [
+      190.0,
+      160.0,
+      5.5
+     ]
+    ],
+    [
+     "Ust arka servis kapagi",
+     "Kabuk",
+     [
+      168.0,
+      150.0,
+      15.1
+     ]
+    ],
+    [
+     "Etek arka sag",
+     "Kabuk",
+     [
+      234.0,
+      227.0,
+      175.0
+     ]
+    ],
+    [
+     "Etek arka sol",
+     "Kabuk",
+     [
+      227.0,
+      222.0,
+      175.0
+     ]
+    ],
+    [
+     "Etek orta sag",
+     "Kabuk",
+     [
+      227.0,
+      222.0,
+      199.0
+     ]
+    ],
+    [
+     "Etek orta sol",
+     "Kabuk",
+     [
+      227.0,
+      222.0,
+      199.0
+     ]
+    ],
+    [
+     "Etek on sag",
+     "Kabuk",
+     [
+      234.0,
+      227.0,
+      175.0
+     ]
+    ],
+    [
+     "Etek on sol",
+     "Kabuk",
+     [
+      227.0,
+      222.0,
+      175.0
+     ]
+    ],
+    [
+     "Etek dolgu seridi arka",
+     "Kabuk",
+     [
+      227.0,
+      192.5,
+      88.0
+     ]
+    ],
+    [
+     "Etek dolgu seridi on",
+     "Kabuk",
+     [
+      227.0,
+      192.5,
+      88.0
+     ]
+    ],
+    [
+     "Etek servis kapagi H1 (sigorta kutusu)",
+     "Kabuk",
+     [
+      112.0,
+      62.0,
+      3.0
+     ]
+    ],
+    [
+     "Etek servis kapagi H2 (ana sigorta)",
+     "Kabuk",
+     [
+      70.0,
+      56.0,
+      3.0
+     ]
+    ],
+    [
+     "Gogus ekrani cercevesi sag",
+     "Kabuk",
+     [
+      202.0,
+      147.0,
+      61.3
+     ]
+    ],
+    [
+     "Gogus ekrani cercevesi sol",
+     "Kabuk",
+     [
+      202.0,
+      147.0,
+      61.3
+     ]
+    ],
+    [
+     "Gogus ekrani VESA tasiyici",
+     "Kabuk",
+     [
+      100.0,
+      100.0,
+      63.8
+     ]
+    ],
+    [
+     "S1 kaset govdesi sag",
+     "Kabuk",
+     [
+      134.4,
+      69.5,
+      6.3
+     ]
+    ],
+    [
+     "S1 kaset kapagi sag",
+     "Kabuk",
+     [
+      134.4,
+      69.5,
+      4.5
+     ]
+    ],
+    [
+     "S1 kaset govdesi sol",
+     "Kabuk",
+     [
+      134.4,
+      69.5,
+      6.3
+     ]
+    ],
+    [
+     "S1 kaset kapagi sol",
+     "Kabuk",
+     [
+      134.4,
+      69.5,
+      4.5
+     ]
+    ],
+    [
+     "Hoparlor kabi on halka",
+     "Kabuk",
+     [
+      46.0,
+      41.7,
+      32.1
+     ]
+    ],
+    [
+     "Hoparlor kabi arka (flansli)",
+     "Kabuk",
+     [
+      70.0,
+      46.3,
+      38.7
+     ]
+    ],
+    [
+     "Dirsek catali (sag)",
+     "DirsekSag_UstKol",
+     [
+      74.0,
+      73.9,
+      72.0
+     ]
+    ],
+    [
+     "On kol govdesi (sag)",
+     "DirsekSag_OnKol",
+     [
+      133.5,
+      63.1,
+      33.5
+     ]
+    ],
+    [
+     "Bilek flansi (sag)",
+     "DirsekSag_El",
+     [
+      28.0,
+      28.0,
+      8.0
+     ]
+    ],
+    [
+     "El (sag)",
+     "DirsekSag_El",
+     [
+      84.6,
+      58.0,
+      40.0
+     ]
+    ],
+    [
+     "Dirsek catali (sol)",
+     "DirsekSol_UstKol",
+     [
+      74.0,
+      73.9,
+      72.0
+     ]
+    ],
+    [
+     "On kol govdesi (sol)",
+     "DirsekSol_OnKol",
+     [
+      133.5,
+      63.1,
+      33.5
+     ]
+    ],
+    [
+     "Bilek flansi (sol)",
+     "DirsekSol_El",
+     [
+      28.0,
+      28.0,
+      8.0
+     ]
+    ],
+    [
+     "El (sol)",
+     "DirsekSol_El",
+     [
+      84.6,
+      58.0,
+      40.0
+     ]
+    ],
+    [
+     "Servo yuvasi",
+     "Kafa_Govde",
+     [
+      96.0,
+      74.0,
+      43.0
+     ]
+    ],
+    [
+     "Rulman yuvasi",
+     "Kafa_Govde",
+     [
+      67.5,
+      60.0,
+      36.0
+     ]
+    ],
+    [
+     "Boyun mili",
+     "Kafa_Boyun",
+     [
+      60.0,
+      60.0,
+      48.1
+     ]
+    ],
+    [
+     "Egme catali",
+     "Kafa_Boyun",
+     [
+      74.5,
+      60.0,
+      49.0
+     ]
+    ],
+    [
+     "Boyun yukseltme adaptoru",
+     "Kafa_Boyun",
+     [
+      60.0,
+      60.0,
+      58.9
+     ]
+    ],
+    [
+     "Yuz kabugu (on) sag",
+     "Kafa_Bas",
+     [
+      215.0,
+      151.0,
+      37.0
+     ]
+    ],
+    [
+     "Yuz kabugu (on) sol",
+     "Kafa_Bas",
+     [
+      215.0,
+      135.0,
+      37.0
+     ]
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "Kafa_Bas",
+     [
+      215.0,
+      151.0,
+      106.9
+     ]
+    ],
+    [
+     "Arka kafa kabugu sol",
+     "Kafa_Bas",
+     [
+      215.0,
+      135.0,
+      106.9
+     ]
+    ],
+    [
+     "Kafa iskeleti",
+     "Kafa_Bas",
+     [
+      224.0,
+      114.9,
+      48.0
+     ]
+    ],
+    [
+     "Ekran tirnagi ust sag",
+     "Kafa_Bas",
+     [
+      24.0,
+      14.4,
+      7.8
+     ]
+    ],
+    [
+     "Ekran tirnagi ust sol",
+     "Kafa_Bas",
+     [
+      24.0,
+      14.4,
+      7.8
+     ]
+    ],
+    [
+     "Ekran tirnagi alt sag",
+     "Kafa_Bas",
+     [
+      24.0,
+      14.2,
+      7.8
+     ]
+    ],
+    [
+     "Ekran tirnagi alt sol",
+     "Kafa_Bas",
+     [
+      24.0,
+      14.2,
+      7.8
+     ]
+    ],
+    [
+     "Aku on takozu",
+     "Taban_Govde",
+     [
+      160.0,
+      25.0,
+      17.0
+     ]
+    ],
+    [
+     "Sonar tutucu sol",
+     "Taban_Govde",
+     [
+      62.0,
+      29.0,
+      7.6
+     ]
+    ],
+    [
+     "Sonar tutucu orta",
+     "Taban_Govde",
+     [
+      72.0,
+      29.0,
+      7.6
+     ]
+    ],
+    [
+     "Sonar tutucu sag",
+     "Taban_Govde",
+     [
+      62.0,
+      29.0,
+      7.6
+     ]
+    ]
+   ],
+   "not_": "AABB model durusunda; egik duran parca burada oldugundan buyuk gorunur, sigmayan cikarsa baski yonunde ayrica bakilir"
+  }
+ },
+ "tilt": {
+  "-20": {
+   "en_kucuk": [
+    0.0,
+    "Arka kafa kabugu sag",
+    "Rulman yuvasi",
+    -90
+   ],
+   "cakisma": [
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     -90,
+     654.86
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "6808-2RS alt rulman (dis bilezik)",
+     -90,
+     128.74
+    ],
+    [
+     "Arka kafa kabugu sol",
+     "Rulman yuvasi",
+     -90,
+     235.1
+    ],
+    [
+     "Arka kafa kabugu sol",
+     "6808-2RS alt rulman (dis bilezik)",
+     -90,
+     30.35
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     -45,
+     654.86
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "6808-2RS alt rulman (dis bilezik)",
+     -45,
+     128.74
+    ],
+    [
+     "Arka kafa kabugu sol",
+     "Rulman yuvasi",
+     -45,
+     235.1
+    ],
+    [
+     "Arka kafa kabugu sol",
+     "6808-2RS alt rulman (dis bilezik)",
+     -45,
+     30.35
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     0,
+     654.86
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "6808-2RS alt rulman (dis bilezik)",
+     0,
+     128.74
+    ]
+   ],
+   "cakisma_sayisi": 20
+  },
+  "-19": {
+   "en_kucuk": [
+    0.0,
+    "Arka kafa kabugu sag",
+    "Rulman yuvasi",
+    -90
+   ],
+   "cakisma": [
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     -90,
+     496.31
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "6808-2RS alt rulman (dis bilezik)",
+     -90,
+     32.97
+    ],
+    [
+     "Arka kafa kabugu sol",
+     "Rulman yuvasi",
+     -90,
+     142.58
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     -45,
+     496.31
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "6808-2RS alt rulman (dis bilezik)",
+     -45,
+     32.97
+    ],
+    [
+     "Arka kafa kabugu sol",
+     "Rulman yuvasi",
+     -45,
+     142.58
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     0,
+     496.31
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "6808-2RS alt rulman (dis bilezik)",
+     0,
+     32.97
+    ],
+    [
+     "Arka kafa kabugu sol",
+     "Rulman yuvasi",
+     0,
+     142.58
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     45,
+     496.31
+    ]
+   ],
+   "cakisma_sayisi": 15
+  },
+  "-18": {
+   "en_kucuk": [
+    0.0,
+    "Arka kafa kabugu sag",
+    "Rulman yuvasi",
+    -90
+   ],
+   "cakisma": [
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     -90,
+     218.75
+    ],
+    [
+     "Arka kafa kabugu sol",
+     "Rulman yuvasi",
+     -90,
+     41.99
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     -45,
+     218.75
+    ],
+    [
+     "Arka kafa kabugu sol",
+     "Rulman yuvasi",
+     -45,
+     41.99
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     0,
+     218.75
+    ],
+    [
+     "Arka kafa kabugu sol",
+     "Rulman yuvasi",
+     0,
+     41.99
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     45,
+     218.75
+    ],
+    [
+     "Arka kafa kabugu sol",
+     "Rulman yuvasi",
+     45,
+     41.99
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     90,
+     218.75
+    ],
+    [
+     "Arka kafa kabugu sol",
+     "Rulman yuvasi",
+     90,
+     41.99
+    ]
+   ],
+   "cakisma_sayisi": 10
+  },
+  "-17": {
+   "en_kucuk": [
+    0.0,
+    "Arka kafa kabugu sag",
+    "Rulman yuvasi",
+    -90
+   ],
+   "cakisma": [
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     -90,
+     23.54
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     -45,
+     23.54
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     0,
+     23.54
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     45,
+     23.54
+    ],
+    [
+     "Arka kafa kabugu sag",
+     "Rulman yuvasi",
+     90,
+     23.54
+    ]
+   ],
+   "cakisma_sayisi": 5
+  },
+  "-16": {
+   "en_kucuk": [
+    0.0,
+    "Tilt horn merkez vidasi M3",
+    "Tilt servosu cikis mili",
+    -90
+   ],
+   "cakisma": [],
+   "cakisma_sayisi": 0
+  },
+  "-15": {
+   "en_kucuk": [
+    0.0,
+    "Tilt horn merkez vidasi M3",
+    "Tilt servosu cikis mili",
+    -90
+   ],
+   "cakisma": [],
+   "cakisma_sayisi": 0
+  },
+  "-14": {
+   "en_kucuk": [
+    0.0,
+    "Tilt horn merkez vidasi M3",
+    "Tilt servosu cikis mili",
+    -90
+   ],
+   "cakisma": [],
+   "cakisma_sayisi": 0
+  },
+  "-13": {
+   "en_kucuk": [
+    0.0,
+    "Tilt horn merkez vidasi M3",
+    "Tilt servosu cikis mili",
+    -90
+   ],
+   "cakisma": [],
+   "cakisma_sayisi": 0
+  },
+  "13": {
+   "en_kucuk": [
+    0.0,
+    "Tilt horn merkez vidasi M3",
+    "Tilt servosu cikis mili",
+    -90
+   ],
+   "cakisma": [],
+   "cakisma_sayisi": 0
+  },
+  "14": {
+   "en_kucuk": [
+    0.0,
+    "Tilt horn merkez vidasi M3",
+    "Tilt servosu cikis mili",
+    -90
+   ],
+   "cakisma": [],
+   "cakisma_sayisi": 0
+  },
+  "15": {
+   "en_kucuk": [
+    0.0,
+    "Tilt horn merkez vidasi M3",
+    "Tilt servosu cikis mili",
+    -90
+   ],
+   "cakisma": [],
+   "cakisma_sayisi": 0
+  },
+  "16": {
+   "en_kucuk": [
+    0.0,
+    "Tilt horn merkez vidasi M3",
+    "Tilt servosu cikis mili",
+    -90
+   ],
+   "cakisma": [],
+   "cakisma_sayisi": 0
+  },
+  "17": {
+   "en_kucuk": [
+    0.0,
+    "Tilt horn merkez vidasi M3",
+    "Tilt servosu cikis mili",
+    -90
+   ],
+   "cakisma": [],
+   "cakisma_sayisi": 0
+  },
+  "18": {
+   "en_kucuk": [
+    0.0,
+    "Yuz kabugu (on) sag",
+    "Rulman yuvasi",
+    -90
+   ],
+   "cakisma": [
+    [
+     "Yuz kabugu (on) sag",
+     "Rulman yuvasi",
+     -90,
+     17.13
+    ],
+    [
+     "Yuz kabugu (on) sol",
+     "Rulman yuvasi",
+     -90,
+     6.82
+    ],
+    [
+     "Yuz kabugu (on) sag",
+     "Rulman yuvasi",
+     -45,
+     17.13
+    ],
+    [
+     "Yuz kabugu (on) sol",
+     "Rulman yuvasi",
+     -45,
+     6.82
+    ],
+    [
+     "Yuz kabugu (on) sag",
+     "Rulman yuvasi",
+     0,
+     17.13
+    ],
+    [
+     "Yuz kabugu (on) sol",
+     "Rulman yuvasi",
+     0,
+     6.82
+    ],
+    [
+     "Yuz kabugu (on) sag",
+     "Rulman yuvasi",
+     45,
+     17.13
+    ],
+    [
+     "Yuz kabugu (on) sol",
+     "Rulman yuvasi",
+     45,
+     6.82
+    ],
+    [
+     "Yuz kabugu (on) sag",
+     "Rulman yuvasi",
+     90,
+     17.13
+    ],
+    [
+     "Yuz kabugu (on) sol",
+     "Rulman yuvasi",
+     90,
+     6.82
+    ]
+   ],
+   "cakisma_sayisi": 10
+  },
+  "19": {
+   "en_kucuk": [
+    0.0,
+    "Yuz kabugu (on) sag",
+    "Rulman yuvasi",
+    -90
+   ],
+   "cakisma": [
+    [
+     "Yuz kabugu (on) sag",
+     "Rulman yuvasi",
+     -90,
+     148.53
+    ],
+    [
+     "Yuz kabugu (on) sol",
+     "Rulman yuvasi",
+     -90,
+     35.97
+    ],
+    [
+     "Isil gomme somun M3 (kafa sag/sol on alt (cerceve))",
+     "Rulman yuvasi",
+     -90,
+     0.95
+    ],
+    [
+     "Yuz kabugu (on) sag",
+     "Rulman yuvasi",
+     -45,
+     148.53
+    ],
+    [
+     "Yuz kabugu (on) sol",
+     "Rulman yuvasi",
+     -45,
+     35.97
+    ],
+    [
+     "Isil gomme somun M3 (kafa sag/sol on alt (cerceve))",
+     "Rulman yuvasi",
+     -45,
+     0.95
+    ],
+    [
+     "Yuz kabugu (on) sag",
+     "Rulman yuvasi",
+     0,
+     148.53
+    ],
+    [
+     "Yuz kabugu (on) sol",
+     "Rulman yuvasi",
+     0,
+     35.97
+    ],
+    [
+     "Isil gomme somun M3 (kafa sag/sol on alt (cerceve))",
+     "Rulman yuvasi",
+     0,
+     0.95
+    ],
+    [
+     "Yuz kabugu (on) sag",
+     "Rulman yuvasi",
+     45,
+     148.53
+    ]
+   ],
+   "cakisma_sayisi": 15
+  },
+  "20": {
+   "en_kucuk": [
+    0.0,
+    "Yuz kabugu (on) sag",
+    "Rulman yuvasi",
+    -90
+   ],
+   "cakisma": [
+    [
+     "Yuz kabugu (on) sag",
+     "Rulman yuvasi",
+     -90,
+     327.42
+    ],
+    [
+     "Yuz kabugu (on) sag",
+     "6808-2RS alt rulman (dis bilezik)",
+     -90,
+     16.12
+    ],
+    [
+     "Yuz kabugu (on) sag",
+     "6808-2RS ust rulman (dis bilezik)",
+     -90,
+     1.99
+    ],
+    [
+     "Yuz kabugu (on) sol",
+     "Rulman yuvasi",
+     -90,
+     69.74
+    ],
+    [
+     "Yuz kabugu (on) sol",
+     "6808-2RS alt rulman (dis bilezik)",
+     -90,
+     8.45
+    ],
+    [
+     "Isil gomme somun M3 (kafa sag/sol on alt (cerceve))",
+     "Rulman yuvasi",
+     -90,
+     10.4
+    ],
+    [
+     "Kabuk civatasi M3x6 ISO 7380 (kafa sag/sol on alt (cerceve))",
+     "Rulman yuvasi",
+     -90,
+     6.45
+    ],
+    [
+     "Yuz kabugu (on) sag",
+     "Rulman yuvasi",
+     -45,
+     327.42
+    ],
+    [
+     "Yuz kabugu (on) sag",
+     "6808-2RS alt rulman (dis bilezik)",
+     -45,
+     16.12
+    ],
+    [
+     "Yuz kabugu (on) sag",
+     "6808-2RS ust rulman (dis bilezik)",
+     -45,
+     1.99
+    ]
+   ],
+   "cakisma_sayisi": 35
+  },
+  "moment": {
+   "kutle_parca_g": 1476.4,
+   "kutle_g": 1501.4,
+   "am": [
+    0.2,
+    189.7,
+    24.6
+   ],
+   "eksen_yz": [
+    188.878,
+    25.0
+   ],
+   "am_eksen_mm": 0.91,
+   "statik_kgcm": 0.137,
+   "z_geri_mm": 0.4
+  }
+ },
+ "kafa": {
+  "izgara": "pan -90...90/15 x tilt -15,-13,13,15 x kol S1 75...135/15, S2 5,15,30,45,60,90, dirsek 0,35,70,90,105, bilek -90,0,90",
+  "sonuc": {
+   "sag": {
+    "olcum": 2180,
+    "cakisma_sayisi": 0,
+    "cakisma": [],
+    "en_kucuk_20": [
+     [
+      11.046,
+      15.0,
+      "El",
+      "Yuz kabugu (on) sag",
+      [
+       135,
+       5,
+       105,
+       -90,
+       30
+      ]
+     ],
+     [
+      11.634,
+      13.0,
+      "El",
+      "Yuz kabugu (on) sag",
+      [
+       135,
+       5,
+       105,
+       -90,
+       30
+      ]
+     ],
+     [
+      14.217,
+      -15.0,
+      "El",
+      "Arka kafa kabugu sag",
+      [
+       135,
+       5,
+       105,
+       -90,
+       -30
+      ]
+     ],
+     [
+      15.216,
+      -13.0,
+      "El",
+      "Arka kafa kabugu sag",
+      [
+       135,
+       5,
+       105,
+       -90,
+       -30
+      ]
+     ],
+     [
+      16.24,
+      -13.0,
+      "El",
+      "Yuz kabugu (on) sag",
+      [
+       135,
+       5,
+       105,
+       -90,
+       30
+      ]
+     ],
+     [
+      16.351,
+      -15.0,
+      "El",
+      "Yuz kabugu (on) sag",
+      [
+       135,
+       5,
+       105,
+       -90,
+       30
+      ]
+     ],
+     [
+      18.203,
+      15.0,
+      "El",
+      "Arka kafa kabugu sag",
+      [
+       135,
+       5,
+       105,
+       -90,
+       -30
+      ]
+     ],
+     [
+      18.52,
+      13.0,
+      "El",
+      "Arka kafa kabugu sag",
+      [
+       135,
+       5,
+       105,
+       -90,
+       -30
+      ]
+     ],
+     [
+      34.55,
+      -15.0,
+      "Ust kol tupu",
+      "Yuz kabugu (on) sag",
+      [
+       135,
+       5,
+       105,
+       90,
+       15
+      ]
+     ],
+     [
+      35.282,
+      -13.0,
+      "Ust kol tupu",
+      "Yuz kabugu (on) sag",
+      [
+       135,
+       5,
+       105,
+       90,
+       15
+      ]
+     ],
+     [
+      43.169,
+      -15.0,
+      "Ust kol tupu",
+      "Arka kafa kabugu sag",
+      [
+       135,
+       5,
+       0,
+       -90,
+       -30
+      ]
+     ],
+     [
+      43.475,
+      -13.0,
+      "Ust kol tupu",
+      "Arka kafa kabugu sag",
+      [
+       135,
+       5,
+       105,
+       90,
+       -30
+      ]
+     ],
+     [
+      49.839,
+      13.0,
+      "Ust kol tupu",
+      "Arka kafa kabugu sag",
+      [
+       135,
+       5,
+       105,
+       90,
+       -45
+      ]
+     ],
+     [
+      51.271,
+      15.0,
+      "Ust kol tupu",
+      "Arka kafa kabugu sag",
+      [
+       135,
+       5,
+       0,
+       -90,
+       -45
+      ]
+     ],
+     [
+      53.434,
+      13.0,
+      "Dirsek catali",
+      "Arka kafa kabugu sag",
+      [
+       135,
+       5,
+       0,
+       -90,
+       -45
+      ]
+     ],
+     [
+      53.829,
+      -15.0,
+      "Kol catali",
+      "Arka kafa kabugu sag",
+      [
+       135,
+       15,
+       105,
+       90,
+       -15
+      ]
+     ],
+     [
+      53.878,
+      15.0,
+      "Dirsek catali",
+      "Arka kafa kabugu sag",
+      [
+       135,
+       5,
+       105,
+       90,
+       -45
+      ]
+     ],
+     [
+      54.213,
+      13.0,
+      "Ust kol tupu",
+      "Yuz kabugu (on) sag",
+      [
+       135,
+       5,
+       105,
+       90,
+       15
+      ]
+     ],
+     [
+      54.38,
+      -15.0,
+      "Dirsek catali",
+      "Arka kafa kabugu sag",
+      [
+       135,
+       5,
+       105,
+       90,
+       -45
+      ]
+     ],
+     [
+      56.376,
+      15.0,
+      "Ust kol tupu",
+      "Yuz kabugu (on) sag",
+      [
+       135,
+       5,
+       105,
+       90,
+       15
+      ]
+     ]
+    ]
+   },
+   "sol": {
+    "olcum": 2133,
+    "cakisma_sayisi": 0,
+    "cakisma": [],
+    "en_kucuk_20": [
+     [
+      11.046,
+      15.0,
+      "El",
+      "Yuz kabugu (on) sol",
+      [
+       135,
+       5,
+       105,
+       -90,
+       -30
+      ]
+     ],
+     [
+      11.634,
+      13.0,
+      "El",
+      "Yuz kabugu (on) sol",
+      [
+       135,
+       5,
+       105,
+       -90,
+       -30
+      ]
+     ],
+     [
+      14.217,
+      -15.0,
+      "El",
+      "Arka kafa kabugu sol",
+      [
+       135,
+       5,
+       105,
+       -90,
+       30
+      ]
+     ],
+     [
+      15.216,
+      -13.0,
+      "El",
+      "Arka kafa kabugu sol",
+      [
+       135,
+       5,
+       105,
+       -90,
+       30
+      ]
+     ],
+     [
+      16.24,
+      -13.0,
+      "El",
+      "Yuz kabugu (on) sol",
+      [
+       135,
+       5,
+       105,
+       -90,
+       -30
+      ]
+     ],
+     [
+      16.351,
+      -15.0,
+      "El",
+      "Yuz kabugu (on) sol",
+      [
+       135,
+       5,
+       105,
+       -90,
+       -30
+      ]
+     ],
+     [
+      18.203,
+      15.0,
+      "El",
+      "Arka kafa kabugu sol",
+      [
+       135,
+       5,
+       105,
+       -90,
+       30
+      ]
+     ],
+     [
+      18.52,
+      13.0,
+      "El",
+      "Arka kafa kabugu sol",
+      [
+       135,
+       5,
+       105,
+       -90,
+       30
+      ]
+     ],
+     [
+      34.55,
+      -15.0,
+      "Ust kol tupu",
+      "Yuz kabugu (on) sol",
+      [
+       135,
+       5,
+       105,
+       90,
+       -15
+      ]
+     ],
+     [
+      35.282,
+      -13.0,
+      "Ust kol tupu",
+      "Yuz kabugu (on) sol",
+      [
+       135,
+       5,
+       105,
+       90,
+       -15
+      ]
+     ],
+     [
+      43.169,
+      -15.0,
+      "Ust kol tupu",
+      "Arka kafa kabugu sol",
+      [
+       135,
+       5,
+       0,
+       -90,
+       30
+      ]
+     ],
+     [
+      43.475,
+      -13.0,
+      "Ust kol tupu",
+      "Arka kafa kabugu sol",
+      [
+       135,
+       5,
+       105,
+       90,
+       30
+      ]
+     ],
+     [
+      49.839,
+      13.0,
+      "Ust kol tupu",
+      "Arka kafa kabugu sol",
+      [
+       135,
+       5,
+       105,
+       90,
+       45
+      ]
+     ],
+     [
+      51.271,
+      15.0,
+      "Ust kol tupu",
+      "Arka kafa kabugu sol",
+      [
+       135,
+       5,
+       0,
+       -90,
+       45
+      ]
+     ],
+     [
+      53.434,
+      13.0,
+      "Dirsek catali",
+      "Arka kafa kabugu sol",
+      [
+       135,
+       5,
+       0,
+       -90,
+       45
+      ]
+     ],
+     [
+      53.829,
+      -15.0,
+      "Kol catali",
+      "Arka kafa kabugu sol",
+      [
+       135,
+       15,
+       105,
+       90,
+       15
+      ]
+     ],
+     [
+      53.878,
+      15.0,
+      "Dirsek catali",
+      "Arka kafa kabugu sol",
+      [
+       135,
+       5,
+       105,
+       90,
+       45
+      ]
+     ],
+     [
+      54.213,
+      13.0,
+      "Ust kol tupu",
+      "Yuz kabugu (on) sol",
+      [
+       135,
+       5,
+       105,
+       90,
+       -15
+      ]
+     ],
+     [
+      54.38,
+      -15.0,
+      "Dirsek catali",
+      "Arka kafa kabugu sol",
+      [
+       135,
+       5,
+       105,
+       90,
+       45
+      ]
+     ],
+     [
+      56.376,
+      15.0,
+      "Ust kol tupu",
+      "Yuz kabugu (on) sol",
+      [
+       135,
+       5,
+       105,
+       90,
+       -15
+      ]
+     ]
+    ]
+   }
+  }
+ },
+ "catal": {
+  "izgara": "dirsek UstKol grubu x tum kabuk; S2 [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 10.0, 15.0] x S1 -45...135/5; AABB suzgeci 25 mm",
+  "sonuc": {
+   "sag": {
+    "olcum": 1251,
+    "cakisma_sayisi": 1,
+    "cakisma": [
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+      0,
+      0.0,
+      20.53
+     ]
+    ],
+    "s2": {
+     "0.0": [
+      [
+       0.0,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+       0
+      ],
+      [
+       2.0,
+       "Dirsek catali",
+       "Gogus bandi sag",
+       -30
+      ],
+      [
+       6.925,
+       "Dirsek catali",
+       "Gogus ekrani cercevesi sag",
+       35
+      ],
+      [
+       10.0,
+       "625ZZ rulman (dis bilezik)",
+       "Gogus bandi sag",
+       -25
+      ],
+      [
+       11.0,
+       "Dirsek catali",
+       "Percin somun M5 (Govde braketi sag y1095)",
+       0
+      ],
+      [
+       11.675,
+       "Dirsek catali",
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       25
+      ]
+     ],
+     "1.0": [
+      [
+       2.085,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+       0
+      ],
+      [
+       4.535,
+       "Dirsek catali",
+       "Gogus bandi sag",
+       -30
+      ],
+      [
+       9.465,
+       "Dirsek catali",
+       "Gogus ekrani cercevesi sag",
+       40
+      ],
+      [
+       13.407,
+       "625ZZ rulman (dis bilezik)",
+       "Gogus bandi sag",
+       30
+      ],
+      [
+       13.535,
+       "Dirsek catali",
+       "Percin somun M5 (Govde braketi sag y1095)",
+       0
+      ],
+      [
+       14.21,
+       "Dirsek catali",
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       30
+      ]
+     ],
+     "2.0": [
+      [
+       4.629,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+       0
+      ],
+      [
+       7.079,
+       "Dirsek catali",
+       "Gogus bandi sag",
+       -30
+      ],
+      [
+       12.012,
+       "Dirsek catali",
+       "Gogus ekrani cercevesi sag",
+       40
+      ],
+      [
+       16.079,
+       "Dirsek catali",
+       "Percin somun M5 (Govde braketi sag y1095)",
+       0
+      ],
+      [
+       16.754,
+       "Dirsek catali",
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       30
+      ],
+      [
+       16.819,
+       "625ZZ rulman (dis bilezik)",
+       "Gogus bandi sag",
+       -20
+      ]
+     ],
+     "3.0": [
+      [
+       7.181,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+       0
+      ],
+      [
+       9.631,
+       "Dirsek catali",
+       "Gogus bandi sag",
+       -30
+      ],
+      [
+       14.566,
+       "Dirsek catali",
+       "Gogus ekrani cercevesi sag",
+       35
+      ],
+      [
+       18.631,
+       "Dirsek catali",
+       "Percin somun M5 (Govde braketi sag y1095)",
+       0
+      ],
+      [
+       19.306,
+       "Dirsek catali",
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       30
+      ],
+      [
+       19.631,
+       "Dirsek catali",
+       "Govde braketi sag y1095",
+       -5
+      ]
+     ],
+     "4.0": [
+      [
+       9.74,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+       0
+      ],
+      [
+       12.19,
+       "Dirsek catali",
+       "Gogus bandi sag",
+       -30
+      ],
+      [
+       17.122,
+       "Dirsek catali",
+       "Gogus ekrani cercevesi sag",
+       35
+      ],
+      [
+       21.19,
+       "Dirsek catali",
+       "Percin somun M5 (Govde braketi sag y1095)",
+       0
+      ],
+      [
+       21.865,
+       "Dirsek catali",
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       30
+      ],
+      [
+       22.19,
+       "Dirsek catali",
+       "Govde braketi sag y1095",
+       -5
+      ]
+     ],
+     "5.0": [
+      [
+       12.306,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+       0
+      ],
+      [
+       14.756,
+       "Dirsek catali",
+       "Gogus bandi sag",
+       35
+      ],
+      [
+       19.685,
+       "Dirsek catali",
+       "Gogus ekrani cercevesi sag",
+       35
+      ],
+      [
+       23.756,
+       "Dirsek catali",
+       "Percin somun M5 (Govde braketi sag y1095)",
+       0
+      ],
+      [
+       24.431,
+       "Dirsek catali",
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       35
+      ],
+      [
+       24.756,
+       "Dirsek catali",
+       "Govde braketi sag y1095",
+       5
+      ]
+     ],
+     "6.0": [
+      [
+       14.876,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+       0
+      ],
+      [
+       17.326,
+       "Dirsek catali",
+       "Gogus bandi sag",
+       -30
+      ],
+      [
+       22.255,
+       "Dirsek catali",
+       "Gogus ekrani cercevesi sag",
+       35
+      ],
+      [
+       44.244,
+       "Dirsek catali",
+       "Omuz bandi sag",
+       -45
+      ],
+      [
+       65.022,
+       "Dirsek catali",
+       "S1 kaset kapagi sag",
+       125
+      ],
+      [
+       65.22,
+       "Dirsek catali",
+       "S1 kaset govdesi sag",
+       125
+      ]
+     ],
+     "7.0": [
+      [
+       17.452,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+       0
+      ],
+      [
+       19.902,
+       "Dirsek catali",
+       "Gogus bandi sag",
+       -30
+      ],
+      [
+       24.829,
+       "Dirsek catali",
+       "Gogus ekrani cercevesi sag",
+       35
+      ],
+      [
+       45.632,
+       "Dirsek catali",
+       "Omuz bandi sag",
+       -45
+      ],
+      [
+       65.715,
+       "Dirsek catali",
+       "S1 kaset kapagi sag",
+       125
+      ],
+      [
+       65.957,
+       "Dirsek catali",
+       "S1 kaset govdesi sag",
+       125
+      ]
+     ],
+     "8.0": [
+      [
+       20.032,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+       0
+      ],
+      [
+       22.482,
+       "Dirsek catali",
+       "Gogus bandi sag",
+       35
+      ],
+      [
+       47.076,
+       "Dirsek catali",
+       "Omuz bandi sag",
+       -45
+      ],
+      [
+       66.459,
+       "Dirsek catali",
+       "S1 kaset kapagi sag",
+       125
+      ],
+      [
+       66.744,
+       "Dirsek catali",
+       "S1 kaset govdesi sag",
+       125
+      ]
+     ],
+     "10.0": [
+      [
+       69.173,
+       "Dirsek catali",
+       "S1 kaset kapagi sag",
+       130
+      ],
+      [
+       69.552,
+       "Dirsek catali",
+       "S1 kaset govdesi sag",
+       130
+      ]
+     ],
+     "15.0": []
+    }
+   },
+   "sol": {
+    "olcum": 1251,
+    "cakisma_sayisi": 1,
+    "cakisma": [
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+      0,
+      0.0,
+      20.53
+     ]
+    ],
+    "s2": {
+     "0.0": [
+      [
+       0.0,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+       0
+      ],
+      [
+       2.0,
+       "Dirsek catali",
+       "Gogus bandi sol",
+       -30
+      ],
+      [
+       6.925,
+       "Dirsek catali",
+       "Gogus ekrani cercevesi sol",
+       35
+      ],
+      [
+       10.0,
+       "625ZZ rulman (dis bilezik)",
+       "Gogus bandi sol",
+       -25
+      ],
+      [
+       11.0,
+       "Dirsek catali",
+       "Percin somun M5 (Govde braketi sol y1095)",
+       0
+      ],
+      [
+       11.675,
+       "Dirsek catali",
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       25
+      ]
+     ],
+     "1.0": [
+      [
+       2.085,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+       0
+      ],
+      [
+       4.535,
+       "Dirsek catali",
+       "Gogus bandi sol",
+       -30
+      ],
+      [
+       9.465,
+       "Dirsek catali",
+       "Gogus ekrani cercevesi sol",
+       40
+      ],
+      [
+       13.407,
+       "625ZZ rulman (dis bilezik)",
+       "Gogus bandi sol",
+       30
+      ],
+      [
+       13.535,
+       "Dirsek catali",
+       "Percin somun M5 (Govde braketi sol y1095)",
+       0
+      ],
+      [
+       14.21,
+       "Dirsek catali",
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       30
+      ]
+     ],
+     "2.0": [
+      [
+       4.629,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+       0
+      ],
+      [
+       7.079,
+       "Dirsek catali",
+       "Gogus bandi sol",
+       -30
+      ],
+      [
+       12.012,
+       "Dirsek catali",
+       "Gogus ekrani cercevesi sol",
+       40
+      ],
+      [
+       16.079,
+       "Dirsek catali",
+       "Percin somun M5 (Govde braketi sol y1095)",
+       0
+      ],
+      [
+       16.754,
+       "Dirsek catali",
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       30
+      ],
+      [
+       16.819,
+       "625ZZ rulman (dis bilezik)",
+       "Gogus bandi sol",
+       -20
+      ]
+     ],
+     "3.0": [
+      [
+       7.181,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+       0
+      ],
+      [
+       9.631,
+       "Dirsek catali",
+       "Gogus bandi sol",
+       -30
+      ],
+      [
+       14.566,
+       "Dirsek catali",
+       "Gogus ekrani cercevesi sol",
+       35
+      ],
+      [
+       18.631,
+       "Dirsek catali",
+       "Percin somun M5 (Govde braketi sol y1095)",
+       0
+      ],
+      [
+       19.306,
+       "Dirsek catali",
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       30
+      ],
+      [
+       19.631,
+       "Dirsek catali",
+       "Govde braketi sol y1095",
+       -5
+      ]
+     ],
+     "4.0": [
+      [
+       9.74,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+       0
+      ],
+      [
+       12.19,
+       "Dirsek catali",
+       "Gogus bandi sol",
+       -30
+      ],
+      [
+       17.122,
+       "Dirsek catali",
+       "Gogus ekrani cercevesi sol",
+       35
+      ],
+      [
+       21.19,
+       "Dirsek catali",
+       "Percin somun M5 (Govde braketi sol y1095)",
+       0
+      ],
+      [
+       21.865,
+       "Dirsek catali",
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       30
+      ],
+      [
+       22.19,
+       "Dirsek catali",
+       "Govde braketi sol y1095",
+       -5
+      ]
+     ],
+     "5.0": [
+      [
+       12.306,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+       0
+      ],
+      [
+       14.756,
+       "Dirsek catali",
+       "Gogus bandi sol",
+       35
+      ],
+      [
+       19.685,
+       "Dirsek catali",
+       "Gogus ekrani cercevesi sol",
+       35
+      ],
+      [
+       23.756,
+       "Dirsek catali",
+       "Percin somun M5 (Govde braketi sol y1095)",
+       0
+      ],
+      [
+       24.431,
+       "Dirsek catali",
+       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+       35
+      ],
+      [
+       24.756,
+       "Dirsek catali",
+       "Govde braketi sol y1095",
+       5
+      ]
+     ],
+     "6.0": [
+      [
+       14.876,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+       0
+      ],
+      [
+       17.326,
+       "Dirsek catali",
+       "Gogus bandi sol",
+       -30
+      ],
+      [
+       22.255,
+       "Dirsek catali",
+       "Gogus ekrani cercevesi sol",
+       35
+      ],
+      [
+       44.244,
+       "Dirsek catali",
+       "Omuz bandi sol",
+       -45
+      ],
+      [
+       65.022,
+       "Dirsek catali",
+       "S1 kaset kapagi sol",
+       125
+      ],
+      [
+       65.22,
+       "Dirsek catali",
+       "S1 kaset govdesi sol",
+       125
+      ]
+     ],
+     "7.0": [
+      [
+       17.452,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+       0
+      ],
+      [
+       19.902,
+       "Dirsek catali",
+       "Gogus bandi sol",
+       -30
+      ],
+      [
+       24.829,
+       "Dirsek catali",
+       "Gogus ekrani cercevesi sol",
+       35
+      ],
+      [
+       45.632,
+       "Dirsek catali",
+       "Omuz bandi sol",
+       -45
+      ],
+      [
+       65.715,
+       "Dirsek catali",
+       "S1 kaset kapagi sol",
+       125
+      ],
+      [
+       65.957,
+       "Dirsek catali",
+       "S1 kaset govdesi sol",
+       125
+      ]
+     ],
+     "8.0": [
+      [
+       20.032,
+       "Dirsek catali",
+       "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+       0
+      ],
+      [
+       22.482,
+       "Dirsek catali",
+       "Gogus bandi sol",
+       35
+      ],
+      [
+       47.076,
+       "Dirsek catali",
+       "Omuz bandi sol",
+       -45
+      ],
+      [
+       66.459,
+       "Dirsek catali",
+       "S1 kaset kapagi sol",
+       125
+      ],
+      [
+       66.744,
+       "Dirsek catali",
+       "S1 kaset govdesi sol",
+       125
+      ]
+     ],
+     "10.0": [
+      [
+       69.173,
+       "Dirsek catali",
+       "S1 kaset kapagi sol",
+       130
+      ],
+      [
+       69.552,
+       "Dirsek catali",
+       "S1 kaset govdesi sol",
+       130
+      ]
+     ],
+     "15.0": []
+    }
+   }
+  }
+ },
+ "kol": {
+  "izgara": "S2 0,1,2,3,4,5,6,8,10,15 x S1 -45...135/15 x dirsek 0,35,70,105 x bilek -90,0,90; hareketli omuz Kol + dirsek; hedef tum kabuk modulu",
+  "sonuc": {
+   "sag": {
+    "olcum": 24152,
+    "s2_en_kucuk": {
+     "0.0": {
+      "min_mm": 0.0,
+      "hareketli": "El",
+      "hedef": "Gogus bandi sag",
+      "poz": [
+       -45,
+       0.0,
+       105,
+       -90
+      ]
+     },
+     "1.0": {
+      "min_mm": 0.0,
+      "hareketli": "Ust kol tupu",
+      "hedef": "S1 kaset govdesi sag",
+      "poz": [
+       15,
+       1.0,
+       0,
+       -90
+      ]
+     },
+     "2.0": {
+      "min_mm": 0.0,
+      "hareketli": "Ust kol tupu",
+      "hedef": "S1 kaset kapagi sag",
+      "poz": [
+       15,
+       2.0,
+       0,
+       -90
+      ]
+     },
+     "3.0": {
+      "min_mm": 0.0,
+      "hareketli": "Ust kol tupu",
+      "hedef": "S1 kaset kapagi sag",
+      "poz": [
+       15,
+       3.0,
+       0,
+       -90
+      ]
+     },
+     "4.0": {
+      "min_mm": 0.604,
+      "hareketli": "Ust kol tupu",
+      "hedef": "S1 kaset kapagi sag",
+      "poz": [
+       135,
+       4.0,
+       105,
+       90
+      ]
+     },
+     "5.0": {
+      "min_mm": 1.358,
+      "hareketli": "Ust kol tupu",
+      "hedef": "S1 kaset kapagi sag",
+      "poz": [
+       15,
+       5.0,
+       0,
+       -90
+      ]
+     },
+     "6.0": {
+      "min_mm": 2.104,
+      "hareketli": "Ust kol tupu",
+      "hedef": "S1 kaset kapagi sag",
+      "poz": [
+       135,
+       6.0,
+       105,
+       90
+      ]
+     },
+     "8.0": {
+      "min_mm": 3.568,
+      "hareketli": "Ust kol tupu",
+      "hedef": "S1 kaset kapagi sag",
+      "poz": [
+       135,
+       8.0,
+       105,
+       90
+      ]
+     },
+     "10.0": {
+      "min_mm": 4.993,
+      "hareketli": "Ust kol tupu",
+      "hedef": "S1 kaset kapagi sag",
+      "poz": [
+       135,
+       10.0,
+       105,
+       90
+      ]
+     },
+     "15.0": {
+      "min_mm": 8.376,
+      "hareketli": "Kol catali",
+      "hedef": "S1 kaset kapagi sag",
+      "poz": [
+       135,
+       15.0,
+       105,
+       90
+      ]
+     }
+    },
+    "dirsek_catali_s2": {
+     "0.0": [
+      0.0,
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+      [
+       0,
+       0.0,
+       0,
+       -90
+      ]
+     ],
+     "1.0": [
+      0.888,
+      "Kol catali",
+      "S1 kaset kapagi sag",
+      [
+       15,
+       1.0,
+       0,
+       -90
+      ]
+     ],
+     "2.0": [
+      1.668,
+      "Kol catali",
+      "S1 kaset kapagi sag",
+      [
+       15,
+       2.0,
+       0,
+       -90
+      ]
+     ],
+     "3.0": [
+      2.44,
+      "Kol catali",
+      "S1 kaset kapagi sag",
+      [
+       15,
+       3.0,
+       0,
+       -90
+      ]
+     ],
+     "4.0": [
+      2.744,
+      "Kol catali",
+      "S1 kaset kapagi sag",
+      [
+       30,
+       4.0,
+       0,
+       -90
+      ]
+     ],
+     "5.0": [
+      2.94,
+      "Kol catali",
+      "S1 kaset kapagi sag",
+      [
+       135,
+       5.0,
+       105,
+       90
+      ]
+     ],
+     "6.0": [
+      3.169,
+      "Kol catali",
+      "S1 kaset kapagi sag",
+      [
+       15,
+       6.0,
+       0,
+       -90
+      ]
+     ],
+     "8.0": [
+      3.825,
+      "Kol catali",
+      "S1 kaset kapagi sag",
+      [
+       15,
+       8.0,
+       0,
+       -90
+      ]
+     ],
+     "10.0": [
+      5.0,
+      "Kol catali",
+      "S1 kaset kapagi sag",
+      [
+       135,
+       10.0,
+       105,
+       90
+      ]
+     ],
+     "15.0": [
+      8.376,
+      "Kol catali",
+      "S1 kaset kapagi sag",
+      [
+       135,
+       15.0,
+       105,
+       90
+      ]
+     ]
+    },
+    "cakisma": [
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      0,
+      0.0,
+      0,
+      -90,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+      0,
+      0.0,
+      0,
+      -90,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      0,
+      0.0,
+      0,
+      0,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+      0,
+      0.0,
+      0,
+      0,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      0,
+      0.0,
+      0,
+      90,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+      0,
+      0.0,
+      0,
+      90,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      0,
+      0.0,
+      35,
+      -90,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+      0,
+      0.0,
+      35,
+      -90,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      0,
+      0.0,
+      35,
+      0,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+      0,
+      0.0,
+      35,
+      0,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      0,
+      0.0,
+      35,
+      90,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+      0,
+      0.0,
+      35,
+      90,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      0,
+      0.0,
+      70,
+      -90,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+      0,
+      0.0,
+      70,
+      -90,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      0,
+      0.0,
+      70,
+      0,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+      0,
+      0.0,
+      70,
+      0,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      0,
+      0.0,
+      70,
+      90,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+      0,
+      0.0,
+      70,
+      90,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      0,
+      0.0,
+      105,
+      -90,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+      0,
+      0.0,
+      105,
+      -90,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      0,
+      0.0,
+      105,
+      0,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+      0,
+      0.0,
+      105,
+      0,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      0,
+      0.0,
+      105,
+      90,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+      0,
+      0.0,
+      105,
+      90,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      15,
+      0.0,
+      0,
+      -90,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      15,
+      0.0,
+      0,
+      -90,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      15,
+      0.0,
+      0,
+      -90,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      15,
+      0.0,
+      0,
+      0,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      15,
+      0.0,
+      0,
+      0,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      15,
+      0.0,
+      0,
+      0,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      15,
+      0.0,
+      0,
+      90,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      15,
+      0.0,
+      0,
+      90,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      15,
+      0.0,
+      0,
+      90,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      15,
+      0.0,
+      35,
+      -90,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      15,
+      0.0,
+      35,
+      -90,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      15,
+      0.0,
+      35,
+      -90,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      15,
+      0.0,
+      35,
+      0,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      15,
+      0.0,
+      35,
+      0,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      15,
+      0.0,
+      35,
+      0,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      15,
+      0.0,
+      35,
+      90,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      15,
+      0.0,
+      35,
+      90,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      15,
+      0.0,
+      35,
+      90,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      15,
+      0.0,
+      70,
+      -90,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      15,
+      0.0,
+      70,
+      -90,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      15,
+      0.0,
+      70,
+      -90,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      15,
+      0.0,
+      70,
+      0,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      15,
+      0.0,
+      70,
+      0,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      15,
+      0.0,
+      70,
+      0,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      15,
+      0.0,
+      70,
+      90,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      15,
+      0.0,
+      70,
+      90,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      15,
+      0.0,
+      70,
+      90,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      15,
+      0.0,
+      105,
+      -90,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      15,
+      0.0,
+      105,
+      -90,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      15,
+      0.0,
+      105,
+      -90,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      15,
+      0.0,
+      105,
+      0,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      15,
+      0.0,
+      105,
+      0,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      15,
+      0.0,
+      105,
+      0,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      15,
+      0.0,
+      105,
+      90,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      15,
+      0.0,
+      105,
+      90,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      15,
+      0.0,
+      105,
+      90,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      30,
+      0.0,
+      0,
+      -90,
+      29.41
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      30,
+      0.0,
+      0,
+      -90,
+      748.36
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      30,
+      0.0,
+      0,
+      -90,
+      23.84
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      30,
+      0.0,
+      0,
+      0,
+      29.41
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      30,
+      0.0,
+      0,
+      0,
+      748.36
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      30,
+      0.0,
+      0,
+      0,
+      23.84
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      30,
+      0.0,
+      0,
+      90,
+      29.41
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      30,
+      0.0,
+      0,
+      90,
+      748.36
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      30,
+      0.0,
+      0,
+      90,
+      23.84
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      30,
+      0.0,
+      35,
+      -90,
+      29.41
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      30,
+      0.0,
+      35,
+      -90,
+      748.36
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      30,
+      0.0,
+      35,
+      -90,
+      23.84
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      30,
+      0.0,
+      35,
+      0,
+      29.41
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      30,
+      0.0,
+      35,
+      0,
+      748.36
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      30,
+      0.0,
+      35,
+      0,
+      23.84
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      30,
+      0.0,
+      35,
+      90,
+      29.41
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      30,
+      0.0,
+      35,
+      90,
+      748.36
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      30,
+      0.0,
+      35,
+      90,
+      23.84
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      30,
+      0.0,
+      70,
+      -90,
+      29.41
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      30,
+      0.0,
+      70,
+      -90,
+      748.36
+     ]
+    ],
+    "cakisma_sayisi": 684,
+    "en_kucuk_20": [
+     [
+      0.0,
+      0.0,
+      "El",
+      "Gogus bandi sag",
+      [
+       -45,
+       0.0,
+       105,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      0.0,
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      [
+       15,
+       0.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      0.0,
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      [
+       0,
+       0.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      0.0,
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      [
+       15,
+       0.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      0.0,
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sag y1095)",
+      [
+       0,
+       0.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      0.0,
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 226)",
+      [
+       45,
+       0.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      1.0,
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      [
+       15,
+       1.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      1.0,
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      [
+       0,
+       1.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      1.0,
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      [
+       15,
+       1.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      1.0,
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 226)",
+      [
+       45,
+       1.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      2.0,
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      [
+       15,
+       2.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      2.0,
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      [
+       15,
+       2.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      2.0,
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 226)",
+      [
+       45,
+       2.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      3.0,
+      "Ust kol tupu",
+      "S1 kaset kapagi sag",
+      [
+       15,
+       3.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.1,
+      0.0,
+      "Kol catali",
+      "S1 kaset kapagi sag",
+      [
+       135,
+       0.0,
+       105,
+       90
+      ]
+     ],
+     [
+      0.1,
+      0.0,
+      "Kol catali",
+      "Kaset civatasi M3x8 (sag psi 226)",
+      [
+       45,
+       0.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.178,
+      3.0,
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 226)",
+      [
+       45,
+       3.0,
+       105,
+       90
+      ]
+     ],
+     [
+      0.29,
+      0.0,
+      "Kol catali",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      [
+       15,
+       0.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.316,
+      2.0,
+      "Ust kol tupu",
+      "S1 kaset govdesi sag",
+      [
+       15,
+       2.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.369,
+      3.0,
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sag psi 200)",
+      [
+       15,
+       3.0,
+       0,
+       -90
+      ]
+     ]
+    ]
+   },
+   "sol": {
+    "olcum": 24152,
+    "s2_en_kucuk": {
+     "0.0": {
+      "min_mm": 0.0,
+      "hareketli": "El",
+      "hedef": "Gogus bandi sol",
+      "poz": [
+       -45,
+       0.0,
+       105,
+       -90
+      ]
+     },
+     "1.0": {
+      "min_mm": 0.0,
+      "hareketli": "Ust kol tupu",
+      "hedef": "S1 kaset govdesi sol",
+      "poz": [
+       15,
+       1.0,
+       0,
+       -90
+      ]
+     },
+     "2.0": {
+      "min_mm": 0.0,
+      "hareketli": "Ust kol tupu",
+      "hedef": "S1 kaset kapagi sol",
+      "poz": [
+       15,
+       2.0,
+       0,
+       -90
+      ]
+     },
+     "3.0": {
+      "min_mm": 0.0,
+      "hareketli": "Ust kol tupu",
+      "hedef": "S1 kaset kapagi sol",
+      "poz": [
+       15,
+       3.0,
+       0,
+       -90
+      ]
+     },
+     "4.0": {
+      "min_mm": 0.604,
+      "hareketli": "Ust kol tupu",
+      "hedef": "S1 kaset kapagi sol",
+      "poz": [
+       135,
+       4.0,
+       105,
+       90
+      ]
+     },
+     "5.0": {
+      "min_mm": 1.358,
+      "hareketli": "Ust kol tupu",
+      "hedef": "S1 kaset kapagi sol",
+      "poz": [
+       15,
+       5.0,
+       0,
+       -90
+      ]
+     },
+     "6.0": {
+      "min_mm": 2.104,
+      "hareketli": "Ust kol tupu",
+      "hedef": "S1 kaset kapagi sol",
+      "poz": [
+       135,
+       6.0,
+       105,
+       90
+      ]
+     },
+     "8.0": {
+      "min_mm": 3.568,
+      "hareketli": "Ust kol tupu",
+      "hedef": "S1 kaset kapagi sol",
+      "poz": [
+       135,
+       8.0,
+       105,
+       90
+      ]
+     },
+     "10.0": {
+      "min_mm": 4.993,
+      "hareketli": "Ust kol tupu",
+      "hedef": "S1 kaset kapagi sol",
+      "poz": [
+       135,
+       10.0,
+       105,
+       90
+      ]
+     },
+     "15.0": {
+      "min_mm": 8.376,
+      "hareketli": "Kol catali",
+      "hedef": "S1 kaset kapagi sol",
+      "poz": [
+       135,
+       15.0,
+       105,
+       90
+      ]
+     }
+    },
+    "dirsek_catali_s2": {
+     "0.0": [
+      0.0,
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+      [
+       0,
+       0.0,
+       0,
+       -90
+      ]
+     ],
+     "1.0": [
+      0.888,
+      "Kol catali",
+      "S1 kaset kapagi sol",
+      [
+       15,
+       1.0,
+       0,
+       -90
+      ]
+     ],
+     "2.0": [
+      1.668,
+      "Kol catali",
+      "S1 kaset kapagi sol",
+      [
+       15,
+       2.0,
+       0,
+       -90
+      ]
+     ],
+     "3.0": [
+      2.44,
+      "Kol catali",
+      "S1 kaset kapagi sol",
+      [
+       15,
+       3.0,
+       0,
+       -90
+      ]
+     ],
+     "4.0": [
+      2.744,
+      "Kol catali",
+      "S1 kaset kapagi sol",
+      [
+       30,
+       4.0,
+       0,
+       -90
+      ]
+     ],
+     "5.0": [
+      2.94,
+      "Kol catali",
+      "S1 kaset kapagi sol",
+      [
+       135,
+       5.0,
+       105,
+       90
+      ]
+     ],
+     "6.0": [
+      3.169,
+      "Kol catali",
+      "S1 kaset kapagi sol",
+      [
+       15,
+       6.0,
+       0,
+       -90
+      ]
+     ],
+     "8.0": [
+      3.825,
+      "Kol catali",
+      "S1 kaset kapagi sol",
+      [
+       15,
+       8.0,
+       0,
+       -90
+      ]
+     ],
+     "10.0": [
+      5.0,
+      "Kol catali",
+      "S1 kaset kapagi sol",
+      [
+       135,
+       10.0,
+       105,
+       90
+      ]
+     ],
+     "15.0": [
+      8.376,
+      "Kol catali",
+      "S1 kaset kapagi sol",
+      [
+       135,
+       15.0,
+       105,
+       90
+      ]
+     ]
+    },
+    "cakisma": [
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      0,
+      0.0,
+      0,
+      -90,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+      0,
+      0.0,
+      0,
+      -90,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      0,
+      0.0,
+      0,
+      0,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+      0,
+      0.0,
+      0,
+      0,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      0,
+      0.0,
+      0,
+      90,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+      0,
+      0.0,
+      0,
+      90,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      0,
+      0.0,
+      35,
+      -90,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+      0,
+      0.0,
+      35,
+      -90,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      0,
+      0.0,
+      35,
+      0,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+      0,
+      0.0,
+      35,
+      0,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      0,
+      0.0,
+      35,
+      90,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+      0,
+      0.0,
+      35,
+      90,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      0,
+      0.0,
+      70,
+      -90,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+      0,
+      0.0,
+      70,
+      -90,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      0,
+      0.0,
+      70,
+      0,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+      0,
+      0.0,
+      70,
+      0,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      0,
+      0.0,
+      70,
+      90,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+      0,
+      0.0,
+      70,
+      90,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      0,
+      0.0,
+      105,
+      -90,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+      0,
+      0.0,
+      105,
+      -90,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      0,
+      0.0,
+      105,
+      0,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+      0,
+      0.0,
+      105,
+      0,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      0,
+      0.0,
+      105,
+      90,
+      6.42
+     ],
+     [
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+      0,
+      0.0,
+      105,
+      90,
+      20.53
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      15,
+      0.0,
+      0,
+      -90,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      15,
+      0.0,
+      0,
+      -90,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      15,
+      0.0,
+      0,
+      -90,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      15,
+      0.0,
+      0,
+      0,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      15,
+      0.0,
+      0,
+      0,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      15,
+      0.0,
+      0,
+      0,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      15,
+      0.0,
+      0,
+      90,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      15,
+      0.0,
+      0,
+      90,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      15,
+      0.0,
+      0,
+      90,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      15,
+      0.0,
+      35,
+      -90,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      15,
+      0.0,
+      35,
+      -90,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      15,
+      0.0,
+      35,
+      -90,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      15,
+      0.0,
+      35,
+      0,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      15,
+      0.0,
+      35,
+      0,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      15,
+      0.0,
+      35,
+      0,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      15,
+      0.0,
+      35,
+      90,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      15,
+      0.0,
+      35,
+      90,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      15,
+      0.0,
+      35,
+      90,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      15,
+      0.0,
+      70,
+      -90,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      15,
+      0.0,
+      70,
+      -90,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      15,
+      0.0,
+      70,
+      -90,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      15,
+      0.0,
+      70,
+      0,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      15,
+      0.0,
+      70,
+      0,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      15,
+      0.0,
+      70,
+      0,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      15,
+      0.0,
+      70,
+      90,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      15,
+      0.0,
+      70,
+      90,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      15,
+      0.0,
+      70,
+      90,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      15,
+      0.0,
+      105,
+      -90,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      15,
+      0.0,
+      105,
+      -90,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      15,
+      0.0,
+      105,
+      -90,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      15,
+      0.0,
+      105,
+      0,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      15,
+      0.0,
+      105,
+      0,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      15,
+      0.0,
+      105,
+      0,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      15,
+      0.0,
+      105,
+      90,
+      90.99
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      15,
+      0.0,
+      105,
+      90,
+      513.57
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      15,
+      0.0,
+      105,
+      90,
+      34.19
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      30,
+      0.0,
+      0,
+      -90,
+      29.41
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      30,
+      0.0,
+      0,
+      -90,
+      748.36
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      30,
+      0.0,
+      0,
+      -90,
+      23.84
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      30,
+      0.0,
+      0,
+      0,
+      29.41
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      30,
+      0.0,
+      0,
+      0,
+      748.36
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      30,
+      0.0,
+      0,
+      0,
+      23.84
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      30,
+      0.0,
+      0,
+      90,
+      29.41
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      30,
+      0.0,
+      0,
+      90,
+      748.36
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      30,
+      0.0,
+      0,
+      90,
+      23.84
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      30,
+      0.0,
+      35,
+      -90,
+      29.41
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      30,
+      0.0,
+      35,
+      -90,
+      748.36
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      30,
+      0.0,
+      35,
+      -90,
+      23.84
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      30,
+      0.0,
+      35,
+      0,
+      29.41
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      30,
+      0.0,
+      35,
+      0,
+      748.36
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      30,
+      0.0,
+      35,
+      0,
+      23.84
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      30,
+      0.0,
+      35,
+      90,
+      29.41
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      30,
+      0.0,
+      35,
+      90,
+      748.36
+     ],
+     [
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      30,
+      0.0,
+      35,
+      90,
+      23.84
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      30,
+      0.0,
+      70,
+      -90,
+      29.41
+     ],
+     [
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      30,
+      0.0,
+      70,
+      -90,
+      748.36
+     ]
+    ],
+    "cakisma_sayisi": 684,
+    "en_kucuk_20": [
+     [
+      0.0,
+      0.0,
+      "El",
+      "Gogus bandi sol",
+      [
+       -45,
+       0.0,
+       105,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      0.0,
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      [
+       15,
+       0.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      0.0,
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      [
+       0,
+       0.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      0.0,
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      [
+       15,
+       0.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      0.0,
+      "Dirsek catali",
+      "Civata M5x18 ISO 7380 (Govde braketi sol y1095)",
+      [
+       0,
+       0.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      0.0,
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 226)",
+      [
+       45,
+       0.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      1.0,
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      [
+       15,
+       1.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      1.0,
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      [
+       0,
+       1.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      1.0,
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      [
+       15,
+       1.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      1.0,
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 226)",
+      [
+       45,
+       1.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      2.0,
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      [
+       15,
+       2.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      2.0,
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      [
+       15,
+       2.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      2.0,
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 226)",
+      [
+       45,
+       2.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.0,
+      3.0,
+      "Ust kol tupu",
+      "S1 kaset kapagi sol",
+      [
+       15,
+       3.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.1,
+      0.0,
+      "Kol catali",
+      "S1 kaset kapagi sol",
+      [
+       135,
+       0.0,
+       105,
+       90
+      ]
+     ],
+     [
+      0.1,
+      0.0,
+      "Kol catali",
+      "Kaset civatasi M3x8 (sol psi 226)",
+      [
+       45,
+       0.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.178,
+      3.0,
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 226)",
+      [
+       45,
+       3.0,
+       105,
+       90
+      ]
+     ],
+     [
+      0.29,
+      0.0,
+      "Kol catali",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      [
+       15,
+       0.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.316,
+      2.0,
+      "Ust kol tupu",
+      "S1 kaset govdesi sol",
+      [
+       15,
+       2.0,
+       0,
+       -90
+      ]
+     ],
+     [
+      0.369,
+      3.0,
+      "Ust kol tupu",
+      "Kaset civatasi M3x8 (sol psi 200)",
+      [
+       15,
+       3.0,
+       0,
+       -90
+      ]
+     ]
+    ]
+   }
+  }
+ }
+}
