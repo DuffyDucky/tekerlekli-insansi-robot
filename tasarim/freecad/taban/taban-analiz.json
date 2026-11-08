@@ -74,8 +74,8 @@
     77.0,
     167.0
    ],
-   "kutle_g": 2800.0,
-   "not_": "rc:46-47 Landport LFP12-20 olcusu; alinacak Victron SuperPack 12,8 V 20 Ah (K3, malzeme listesi v4) 181 x 77 x 167 ayni. Kutle modelde 2,8 kg, Victron 3,0 kg: guncellenmedi"
+   "kutle_g": 3000.0,
+   "not_": "rc:46-47 Landport LFP12-20 olcusu; alinacak Victron SuperPack 12,8 V 20 Ah (K3, malzeme listesi v4) 181 x 77 x 167 ayni. Kutle 3,0 kg (Victron datasheet; planlama/maliyet.json aku satiri; P1.1 08.11.2026, onceki 2,8 kg Landport)"
   },
   "aku_one_karar_mm": 75.0,
   "aku_one_uygulanan_mm": 0.0,
@@ -4201,7 +4201,7 @@
    "tur": "Satin",
    "malzeme": "LiFePO4",
    "kod": "LiFePO4 12,8 V 20 Ah Victron SuperPack (yuva 181 x 77 x 167)",
-   "kutle_g": 2800.0,
+   "kutle_g": 3000.0,
    "hacim_mm3": 2327835.2,
    "merkez": [
     0.0,
@@ -4221,7 +4221,7 @@
     0,
     -330
    ],
-   "not_": "rc:46-47 Landport LFP12-20 olcusu; alinacak Victron SuperPack 12,8 V 20 Ah (K3, malzeme listesi v4) 181 x 77 x 167 ayni. Kutle modelde 2,8 kg, Victron 3,0 kg: guncellenmedi"
+   "not_": "rc:46-47 Landport LFP12-20 olcusu; alinacak Victron SuperPack 12,8 V 20 Ah (K3, malzeme listesi v4) 181 x 77 x 167 ayni. Kutle 3,0 kg (Victron datasheet; planlama/maliyet.json aku satiri; P1.1 08.11.2026, onceki 2,8 kg Landport)"
   },
   {
    "i": 136,
@@ -10839,7 +10839,7 @@
     "Ana sigorta yuvasi 30 A (tahmini zarf)",
     "Ana anahtar ASW-A01 govdesi (tahmini zarf)"
    ],
-   "kutle_g": 3745.9
+   "kutle_g": 3945.9
   },
   "Elektronik": {
    "hareket": "sabit (sase / iskelete sabit)",
@@ -14079,7 +14079,7 @@
    "kutle_g": 240.1
   }
  ],
- "kutle_g": 7909.8,
+ "kutle_g": 8109.8,
  "kablo_payi": {
   "kutle_g": 400.0,
   "merkez": [
@@ -14089,34 +14089,34 @@
   ],
   "not_": "kablo payi (tahmini): 12 AWG ~4 m, 18 AWG ~10 m, servo uzatma ~8 m, Dupont, XT60, WAGO; parca listesine girmez"
  },
- "kutle_payli_g": 8309.8,
+ "kutle_payli_g": 8509.8,
  "agirlik_merkezi": [
-  -0.745,
-  119.971,
-  -43.474
+  -0.726,
+  120.292,
+  -45.397
  ],
  "agirlik_merkezi_payli": [
-  -0.709,
-  121.417,
-  -44.27
+  -0.692,
+  121.689,
+  -46.084
  ],
  "kutle_grup": {
   "Plaka": 2151.2,
   "Tahrik": 1677.8,
-  "Guc": 3745.9,
+  "Guc": 3945.9,
   "Elektronik": 166.1,
   "Sensor": 168.8
  },
  "kutle_tur": {
   "Lazer": 1799.8,
   "Baglanti": 452.0,
-  "Satin": 5573.7,
+  "Satin": 5773.7,
   "Baski": 84.4
  },
  "en_agir": [
   [
    "Aku LiFePO4 12,8 V (yatik)",
-   2800.0
+   3000.0
   ],
   [
    "Alt plaka",
@@ -14164,14 +14164,14 @@
   ]
  ],
  "robot": {
-  "kaynak": "montaj/montaj-analiz.json (tabansiz 835 parca, ev pozu; montajdaki taban cikarildi) + taban (kablo payi dahil); kol gruplari omuz_parcalar / dirsek_parcalar'dan (Gobek, Kol, UstKol, OnKol, El)",
-  "tabansiz_kutle_g": 17600.79,
+  "kaynak": "montaj/montaj-analiz.json (tabansiz 837 parca, ev pozu; montajdaki taban cikarildi) + taban (kablo payi dahil); kol gruplari omuz_parcalar / dirsek_parcalar'dan (Gobek, Kol, UstKol, OnKol, El)",
+  "tabansiz_kutle_g": 17605.78,
   "tabansiz_am": [
-   0.284,
-   716.392,
-   7.37
+   0.297,
+   716.472,
+   7.391
   ],
-  "tabansiz_parca": 835,
+  "tabansiz_parca": 837,
   "hareketli_gruplar": {
    "Gobek": {
     "kutle_g": 175.1,
@@ -14230,41 +14230,41 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 25910.6,
+    "kutle_g": 26115.6,
     "am": [
      -0.0,
-     525.6,
-     -9.2
+     522.7,
+     -10.0
     ],
     "duz": {
-     "ileri": 3.62,
+     "ileri": 3.66,
      "geri": 3.28,
-     "yan": 4.03,
-     "pay_ileri": 2.42,
+     "yan": 4.05,
+     "pay_ileri": 2.44,
      "pay_geri": 2.19,
-     "pay_yan": 2.69,
-     "statik_egim_ileri": 20.3,
+     "pay_yan": 2.7,
+     "statik_egim_ileri": 20.5,
      "statik_egim_geri": 18.5,
-     "statik_egim_yan": 22.3,
-     "dF": 194.2,
-     "dR": 175.8,
+     "statik_egim_yan": 22.5,
+     "dF": 195.0,
+     "dR": 175.0,
      "dS": 216.0,
-     "h": 525.6
+     "h": 522.7
     },
     "rampa5": {
-     "ileri": 2.76,
-     "geri": 2.41,
-     "yan": 3.16,
-     "pay_ileri": 1.84,
+     "ileri": 2.79,
+     "geri": 2.42,
+     "yan": 3.18,
+     "pay_ileri": 1.86,
      "pay_geri": 1.61,
-     "pay_yan": 2.11,
-     "statik_egim_ileri": 20.3,
+     "pay_yan": 2.12,
+     "statik_egim_ileri": 20.5,
      "statik_egim_geri": 18.5,
-     "statik_egim_yan": 22.3,
-     "dF": 194.2,
-     "dR": 175.8,
+     "statik_egim_yan": 22.5,
+     "dF": 195.0,
+     "dR": 175.0,
      "dS": 216.0,
-     "h": 525.6
+     "h": 522.7
     }
    },
    {
@@ -14281,41 +14281,41 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 25910.6,
+    "kutle_g": 26115.6,
     "am": [
      -0.0,
-     534.0,
-     -0.6
+     531.0,
+     -1.5
     ],
     "duz": {
-     "ileri": 3.41,
+     "ileri": 3.45,
      "geri": 3.39,
-     "yan": 3.97,
-     "pay_ileri": 2.27,
+     "yan": 3.99,
+     "pay_ileri": 2.3,
      "pay_geri": 2.26,
-     "pay_yan": 2.64,
-     "statik_egim_ileri": 19.2,
-     "statik_egim_geri": 19.0,
-     "statik_egim_yan": 22.0,
-     "dF": 185.6,
-     "dR": 184.4,
+     "pay_yan": 2.66,
+     "statik_egim_ileri": 19.4,
+     "statik_egim_geri": 19.1,
+     "statik_egim_yan": 22.1,
+     "dF": 186.5,
+     "dR": 183.5,
      "dS": 216.0,
-     "h": 534.0
+     "h": 531.0
     },
     "rampa5": {
-     "ileri": 2.54,
+     "ileri": 2.58,
      "geri": 2.52,
-     "yan": 3.1,
-     "pay_ileri": 1.69,
+     "yan": 3.12,
+     "pay_ileri": 1.72,
      "pay_geri": 1.68,
-     "pay_yan": 2.06,
-     "statik_egim_ileri": 19.2,
-     "statik_egim_geri": 19.0,
-     "statik_egim_yan": 22.0,
-     "dF": 185.6,
-     "dR": 184.4,
+     "pay_yan": 2.08,
+     "statik_egim_ileri": 19.4,
+     "statik_egim_geri": 19.1,
+     "statik_egim_yan": 22.1,
+     "dF": 186.5,
+     "dR": 183.5,
      "dS": 216.0,
-     "h": 534.0
+     "h": 531.0
     }
    },
    {
@@ -14332,41 +14332,41 @@
      0
     ],
     "yuk": true,
-    "kutle_g": 26910.6,
+    "kutle_g": 27115.6,
     "am": [
      -0.0,
-     561.3,
-     14.5
+     558.2,
+     13.5
     ],
     "duz": {
-     "ileri": 2.98,
+     "ileri": 3.01,
      "geri": 3.49,
-     "yan": 3.77,
-     "pay_ileri": 1.99,
-     "pay_geri": 2.32,
-     "pay_yan": 2.52,
-     "statik_egim_ileri": 16.9,
+     "yan": 3.8,
+     "pay_ileri": 2.01,
+     "pay_geri": 2.33,
+     "pay_yan": 2.53,
+     "statik_egim_ileri": 17.1,
      "statik_egim_geri": 19.6,
-     "statik_egim_yan": 21.0,
-     "dF": 170.5,
-     "dR": 199.5,
+     "statik_egim_yan": 21.2,
+     "dF": 171.5,
+     "dR": 198.5,
      "dS": 216.0,
-     "h": 561.3
+     "h": 558.2
     },
     "rampa5": {
-     "ileri": 2.11,
+     "ileri": 2.15,
      "geri": 2.62,
-     "yan": 2.91,
-     "pay_ileri": 1.41,
+     "yan": 2.93,
+     "pay_ileri": 1.43,
      "pay_geri": 1.75,
-     "pay_yan": 1.94,
-     "statik_egim_ileri": 16.9,
+     "pay_yan": 1.95,
+     "statik_egim_ileri": 17.1,
      "statik_egim_geri": 19.6,
-     "statik_egim_yan": 21.0,
-     "dF": 170.5,
-     "dR": 199.5,
+     "statik_egim_yan": 21.2,
+     "dF": 171.5,
+     "dR": 198.5,
      "dS": 216.0,
-     "h": 561.3
+     "h": 558.2
     }
    },
    {
@@ -14383,41 +14383,41 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 25910.6,
+    "kutle_g": 26115.6,
     "am": [
      -0.0,
-     540.0,
-     -3.1
+     537.0,
+     -3.9
     ],
     "duz": {
-     "ileri": 3.42,
+     "ileri": 3.45,
      "geri": 3.31,
-     "yan": 3.92,
-     "pay_ileri": 2.28,
-     "pay_geri": 2.2,
-     "pay_yan": 2.62,
-     "statik_egim_ileri": 19.2,
+     "yan": 3.95,
+     "pay_ileri": 2.3,
+     "pay_geri": 2.21,
+     "pay_yan": 2.63,
+     "statik_egim_ileri": 19.4,
      "statik_egim_geri": 18.6,
-     "statik_egim_yan": 21.8,
-     "dF": 188.1,
-     "dR": 181.9,
+     "statik_egim_yan": 21.9,
+     "dF": 188.9,
+     "dR": 181.1,
      "dS": 216.0,
-     "h": 540.0
+     "h": 537.0
     },
     "rampa5": {
-     "ileri": 2.55,
+     "ileri": 2.58,
      "geri": 2.44,
-     "yan": 3.05,
-     "pay_ileri": 1.7,
+     "yan": 3.08,
+     "pay_ileri": 1.72,
      "pay_geri": 1.63,
-     "pay_yan": 2.04,
-     "statik_egim_ileri": 19.2,
+     "pay_yan": 2.05,
+     "statik_egim_ileri": 19.4,
      "statik_egim_geri": 18.6,
-     "statik_egim_yan": 21.8,
-     "dF": 188.1,
-     "dR": 181.9,
+     "statik_egim_yan": 21.9,
+     "dF": 188.9,
+     "dR": 181.1,
      "dS": 216.0,
-     "h": 540.0
+     "h": 537.0
     }
    },
    {
@@ -14434,41 +14434,41 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 25910.6,
+    "kutle_g": 26115.6,
     "am": [
      -0.0,
-     528.1,
-     -15.2
+     525.2,
+     -16.0
     ],
     "duz": {
-     "ileri": 3.72,
-     "geri": 3.15,
-     "yan": 4.01,
-     "pay_ileri": 2.48,
+     "ileri": 3.75,
+     "geri": 3.16,
+     "yan": 4.03,
+     "pay_ileri": 2.5,
      "pay_geri": 2.1,
-     "pay_yan": 2.67,
-     "statik_egim_ileri": 20.8,
+     "pay_yan": 2.69,
+     "statik_egim_ileri": 20.9,
      "statik_egim_geri": 17.8,
-     "statik_egim_yan": 22.2,
-     "dF": 200.2,
-     "dR": 169.8,
+     "statik_egim_yan": 22.4,
+     "dF": 201.0,
+     "dR": 169.0,
      "dS": 216.0,
-     "h": 528.1
+     "h": 525.2
     },
     "rampa5": {
-     "ileri": 2.85,
+     "ileri": 2.88,
      "geri": 2.29,
-     "yan": 3.14,
-     "pay_ileri": 1.9,
-     "pay_geri": 1.52,
-     "pay_yan": 2.09,
-     "statik_egim_ileri": 20.8,
+     "yan": 3.16,
+     "pay_ileri": 1.92,
+     "pay_geri": 1.53,
+     "pay_yan": 2.11,
+     "statik_egim_ileri": 20.9,
      "statik_egim_geri": 17.8,
-     "statik_egim_yan": 22.2,
-     "dF": 200.2,
-     "dR": 169.8,
+     "statik_egim_yan": 22.4,
+     "dF": 201.0,
+     "dR": 169.0,
      "dS": 216.0,
-     "h": 528.1
+     "h": 525.2
     }
    },
    {
@@ -14485,41 +14485,41 @@
      0
     ],
     "yuk": false,
-    "kutle_g": 25910.6,
+    "kutle_g": 26115.6,
     "am": [
      4.2,
-     530.0,
-     -9.2
+     527.0,
+     -10.0
     ],
     "duz": {
-     "ileri": 3.59,
-     "geri": 3.25,
-     "yan": 3.92,
-     "pay_ileri": 2.4,
+     "ileri": 3.63,
+     "geri": 3.26,
+     "yan": 3.94,
+     "pay_ileri": 2.42,
      "pay_geri": 2.17,
-     "pay_yan": 2.61,
-     "statik_egim_ileri": 20.1,
+     "pay_yan": 2.63,
+     "statik_egim_ileri": 20.3,
      "statik_egim_geri": 18.4,
-     "statik_egim_yan": 21.8,
-     "dF": 194.2,
-     "dR": 175.8,
+     "statik_egim_yan": 21.9,
+     "dF": 195.0,
+     "dR": 175.0,
      "dS": 211.8,
-     "h": 530.0
+     "h": 527.0
     },
     "rampa5": {
-     "ileri": 2.73,
+     "ileri": 2.76,
      "geri": 2.39,
-     "yan": 3.05,
-     "pay_ileri": 1.82,
+     "yan": 3.07,
+     "pay_ileri": 1.84,
      "pay_geri": 1.59,
-     "pay_yan": 2.03,
-     "statik_egim_ileri": 20.1,
+     "pay_yan": 2.05,
+     "statik_egim_ileri": 20.3,
      "statik_egim_geri": 18.4,
-     "statik_egim_yan": 21.8,
-     "dF": 194.2,
-     "dR": 175.8,
+     "statik_egim_yan": 21.9,
+     "dF": 195.0,
+     "dR": 175.0,
      "dS": 211.8,
-     "h": 530.0
+     "h": 527.0
     }
    }
   ]
@@ -14528,37 +14528,37 @@
   "duz": {
    "rampa": 0.0,
    "a": 0.5,
-   "F_N": 20.6,
-   "T_kgcm": 3.28,
-   "oran": 0.52
+   "F_N": 20.7,
+   "T_kgcm": 3.31,
+   "oran": 0.525
   },
   "rampa5": {
    "rampa": 5.0,
    "a": 0.5,
-   "F_N": 42.7,
-   "T_kgcm": 6.8,
-   "oran": 1.08
+   "F_N": 43.0,
+   "T_kgcm": 6.86,
+   "oran": 1.089
   },
   "rampa5_yavas": {
    "rampa": 5.0,
    "a": 0.25,
-   "F_N": 36.2,
-   "T_kgcm": 5.77,
-   "oran": 0.916
+   "F_N": 36.5,
+   "T_kgcm": 5.82,
+   "oran": 0.923
   },
   "rampa5_durus": {
    "rampa": 5.0,
    "a": 0.0,
-   "F_N": 29.7,
-   "T_kgcm": 4.74,
-   "oran": 0.752
+   "F_N": 30.0,
+   "T_kgcm": 4.78,
+   "oran": 0.758
   },
   "rampa5_yuk2": {
    "rampa": 5.0,
    "a": 0.5,
-   "F_N": 46.0,
-   "T_kgcm": 7.33,
-   "oran": 1.163
+   "F_N": 46.3,
+   "T_kgcm": 7.38,
+   "oran": 1.172
   },
   "surekli_kgcm": 6.3,
   "stall_kgcm": 21.0,
@@ -14571,9 +14571,9 @@
   }
  },
  "aks": {
-  "on_N": 120.8,
-  "arka_N": 133.4,
-  "mu_gereken_rampa5": 0.169
+  "on_N": 121.2,
+  "arka_N": 135.0,
+  "mu_gereken_rampa5": 0.168
  },
  "aku": {
   "wh": 256.0,
@@ -14678,11 +14678,11 @@
    "kaynak_stall": "Direnc.net sayfasi (21 kg, durma)",
    "kaynak_akim": "tahmini (06-aku-secimi.md 2,4-2,8 A)"
   },
-  "kutle_kg": 25.911,
+  "kutle_kg": 26.116,
   "am_mm": [
    -0.0,
-   525.6,
-   -9.2
+   522.7,
+   -10.0
   ],
   "teker_x_mm": 216.0,
   "aks_z_mm": 185.0,
@@ -14712,55 +14712,55 @@
     "k": -1.0,
     "omni": false,
     "yaricap_mm": 0.0,
-    "ani_merkez_z_mm": -20.8,
+    "ani_merkez_z_mm": -22.6,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 10.32,
+      "N": 60.6,
+      "T_kgcm": 10.29,
       "rol": "surus",
-      "oran_surekli": 1.64,
+      "oran_surekli": 1.63,
       "oran_stall": 0.49,
-      "akim_A": 1.44
+      "akim_A": 1.43
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 10.32,
+      "N": 60.6,
+      "T_kgcm": 10.29,
       "rol": "surus",
-      "oran_surekli": 1.64,
+      "oran_surekli": 1.63,
       "oran_stall": 0.49,
-      "akim_A": 1.44
+      "akim_A": 1.43
      },
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 12.77,
+      "N": 67.5,
+      "T_kgcm": 12.97,
       "rol": "surus",
-      "oran_surekli": 2.03,
-      "oran_stall": 0.61,
-      "akim_A": 1.75
+      "oran_surekli": 2.06,
+      "oran_stall": 0.62,
+      "akim_A": 1.78
      },
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 12.77,
+      "N": 67.5,
+      "T_kgcm": 12.97,
       "rol": "surus",
-      "oran_surekli": 2.03,
-      "oran_stall": 0.61,
-      "akim_A": 1.75
+      "oran_surekli": 2.06,
+      "oran_stall": 0.62,
+      "akim_A": 1.78
      }
     ],
-    "en_cok_kgcm": 12.77,
+    "en_cok_kgcm": 12.97,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.03,
-    "en_cok_oran_stall": 0.61,
-    "en_cok_akim_A": 1.75,
-    "ivme_payi_kgcm": 0.75,
+    "en_cok_oran_surekli": 2.06,
+    "en_cok_oran_stall": 0.62,
+    "en_cok_akim_A": 1.78,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -14772,55 +14772,55 @@
     "k": -1.0,
     "omni": false,
     "yaricap_mm": 0.0,
-    "ani_merkez_z_mm": -21.1,
+    "ani_merkez_z_mm": -23.0,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 12.67,
+      "N": 60.6,
+      "T_kgcm": 12.63,
       "rol": "surus",
-      "oran_surekli": 2.01,
+      "oran_surekli": 2.0,
       "oran_stall": 0.6,
-      "akim_A": 1.74
+      "akim_A": 1.73
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 12.67,
+      "N": 60.6,
+      "T_kgcm": 12.63,
       "rol": "surus",
-      "oran_surekli": 2.01,
+      "oran_surekli": 2.0,
       "oran_stall": 0.6,
-      "akim_A": 1.74
+      "akim_A": 1.73
      },
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 15.76,
+      "N": 67.5,
+      "T_kgcm": 16.01,
       "rol": "surus",
-      "oran_surekli": 2.5,
-      "oran_stall": 0.75,
-      "akim_A": 2.13
+      "oran_surekli": 2.54,
+      "oran_stall": 0.76,
+      "akim_A": 2.16
      },
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 15.76,
+      "N": 67.5,
+      "T_kgcm": 16.01,
       "rol": "surus",
-      "oran_surekli": 2.5,
-      "oran_stall": 0.75,
-      "akim_A": 2.13
+      "oran_surekli": 2.54,
+      "oran_stall": 0.76,
+      "akim_A": 2.16
      }
     ],
-    "en_cok_kgcm": 15.76,
+    "en_cok_kgcm": 16.01,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.5,
-    "en_cok_oran_stall": 0.75,
-    "en_cok_akim_A": 2.13,
-    "ivme_payi_kgcm": 0.75,
+    "en_cok_oran_surekli": 2.54,
+    "en_cok_oran_stall": 0.76,
+    "en_cok_akim_A": 2.16,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -14832,55 +14832,55 @@
     "k": -1.0,
     "omni": false,
     "yaricap_mm": 0.0,
-    "ani_merkez_z_mm": -21.3,
+    "ani_merkez_z_mm": -23.2,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 15.0,
+      "N": 60.6,
+      "T_kgcm": 14.95,
       "rol": "surus",
-      "oran_surekli": 2.38,
+      "oran_surekli": 2.37,
       "oran_stall": 0.71,
       "akim_A": 2.03
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 15.0,
+      "N": 60.6,
+      "T_kgcm": 14.95,
       "rol": "surus",
-      "oran_surekli": 2.38,
+      "oran_surekli": 2.37,
       "oran_stall": 0.71,
       "akim_A": 2.03
      },
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 18.73,
+      "N": 67.5,
+      "T_kgcm": 19.04,
       "rol": "surus",
-      "oran_surekli": 2.97,
-      "oran_stall": 0.89,
-      "akim_A": 2.51
+      "oran_surekli": 3.02,
+      "oran_stall": 0.91,
+      "akim_A": 2.55
      },
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 18.73,
+      "N": 67.5,
+      "T_kgcm": 19.04,
       "rol": "surus",
-      "oran_surekli": 2.97,
-      "oran_stall": 0.89,
-      "akim_A": 2.51
+      "oran_surekli": 3.02,
+      "oran_stall": 0.91,
+      "akim_A": 2.55
      }
     ],
-    "en_cok_kgcm": 18.73,
+    "en_cok_kgcm": 19.04,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.97,
-    "en_cok_oran_stall": 0.89,
-    "en_cok_akim_A": 2.51,
-    "ivme_payi_kgcm": 0.75,
+    "en_cok_oran_surekli": 3.02,
+    "en_cok_oran_stall": 0.91,
+    "en_cok_akim_A": 2.55,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -14894,13 +14894,13 @@
     "k": -1.0,
     "omni": true,
     "yaricap_mm": 0.0,
-    "ani_merkez_z_mm": -182.3,
+    "ani_merkez_z_mm": -182.4,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.4,
-      "T_kgcm": 2.77,
+      "N": 60.6,
+      "T_kgcm": 2.78,
       "rol": "surus",
       "oran_surekli": 0.44,
       "oran_stall": 0.13,
@@ -14909,8 +14909,8 @@
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.4,
-      "T_kgcm": 2.77,
+      "N": 60.6,
+      "T_kgcm": 2.78,
       "rol": "surus",
       "oran_surekli": 0.44,
       "oran_stall": 0.13,
@@ -14919,8 +14919,8 @@
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 2.52,
+      "N": 67.5,
+      "T_kgcm": 2.54,
       "rol": "surus",
       "oran_surekli": 0.4,
       "oran_stall": 0.12,
@@ -14929,20 +14929,20 @@
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 2.52,
+      "N": 67.5,
+      "T_kgcm": 2.54,
       "rol": "surus",
       "oran_surekli": 0.4,
       "oran_stall": 0.12,
       "akim_A": 0.44
      }
     ],
-    "en_cok_kgcm": 2.77,
+    "en_cok_kgcm": 2.78,
     "en_cok_teker": "on sag",
     "en_cok_oran_surekli": 0.44,
     "en_cok_oran_stall": 0.13,
     "en_cok_akim_A": 0.47,
-    "ivme_payi_kgcm": 0.75,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 6
@@ -14959,8 +14959,8 @@
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.4,
-      "T_kgcm": 3.16,
+      "N": 60.6,
+      "T_kgcm": 3.17,
       "rol": "surus",
       "oran_surekli": 0.5,
       "oran_stall": 0.15,
@@ -14969,8 +14969,8 @@
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.4,
-      "T_kgcm": 3.16,
+      "N": 60.6,
+      "T_kgcm": 3.17,
       "rol": "surus",
       "oran_surekli": 0.5,
       "oran_stall": 0.15,
@@ -14979,30 +14979,30 @@
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 2.15,
+      "N": 67.5,
+      "T_kgcm": 2.17,
       "rol": "surus",
       "oran_surekli": 0.34,
       "oran_stall": 0.1,
-      "akim_A": 0.39
+      "akim_A": 0.4
      },
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 2.15,
+      "N": 67.5,
+      "T_kgcm": 2.17,
       "rol": "surus",
       "oran_surekli": 0.34,
       "oran_stall": 0.1,
-      "akim_A": 0.39
+      "akim_A": 0.4
      }
     ],
-    "en_cok_kgcm": 3.16,
+    "en_cok_kgcm": 3.17,
     "en_cok_teker": "on sag",
     "en_cok_oran_surekli": 0.5,
     "en_cok_oran_stall": 0.15,
     "en_cok_akim_A": 0.52,
-    "ivme_payi_kgcm": 0.75,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 6
@@ -15019,8 +15019,8 @@
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.4,
-      "T_kgcm": 3.63,
+      "N": 60.6,
+      "T_kgcm": 3.64,
       "rol": "surus",
       "oran_surekli": 0.58,
       "oran_stall": 0.17,
@@ -15029,8 +15029,8 @@
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.4,
-      "T_kgcm": 3.63,
+      "N": 60.6,
+      "T_kgcm": 3.64,
       "rol": "surus",
       "oran_surekli": 0.58,
       "oran_stall": 0.17,
@@ -15039,8 +15039,8 @@
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 1.69,
+      "N": 67.5,
+      "T_kgcm": 1.7,
       "rol": "surus",
       "oran_surekli": 0.27,
       "oran_stall": 0.08,
@@ -15049,20 +15049,20 @@
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 1.69,
+      "N": 67.5,
+      "T_kgcm": 1.7,
       "rol": "surus",
       "oran_surekli": 0.27,
       "oran_stall": 0.08,
       "akim_A": 0.34
      }
     ],
-    "en_cok_kgcm": 3.63,
+    "en_cok_kgcm": 3.64,
     "en_cok_teker": "on sag",
     "en_cok_oran_surekli": 0.58,
     "en_cok_oran_stall": 0.17,
     "en_cok_akim_A": 0.58,
-    "ivme_payi_kgcm": 0.75,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 6
@@ -15076,55 +15076,55 @@
     "k": -0.5,
     "omni": false,
     "yaricap_mm": 124.0,
-    "ani_merkez_z_mm": -20.1,
+    "ani_merkez_z_mm": -21.9,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 10.24,
+      "N": 60.6,
+      "T_kgcm": 10.21,
       "rol": "surus",
       "oran_surekli": 1.62,
       "oran_stall": 0.49,
-      "akim_A": 1.43
+      "akim_A": 1.42
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 10.24,
+      "N": 60.6,
+      "T_kgcm": 10.21,
       "rol": "surus",
       "oran_surekli": 1.62,
       "oran_stall": 0.49,
-      "akim_A": 1.43
+      "akim_A": 1.42
      },
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 12.57,
+      "N": 67.5,
+      "T_kgcm": 12.77,
       "rol": "surus",
-      "oran_surekli": 2.0,
-      "oran_stall": 0.6,
-      "akim_A": 1.72
+      "oran_surekli": 2.03,
+      "oran_stall": 0.61,
+      "akim_A": 1.75
      },
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 12.57,
+      "N": 67.5,
+      "T_kgcm": 12.77,
       "rol": "surus",
-      "oran_surekli": 2.0,
-      "oran_stall": 0.6,
-      "akim_A": 1.72
+      "oran_surekli": 2.03,
+      "oran_stall": 0.61,
+      "akim_A": 1.75
      }
     ],
-    "en_cok_kgcm": 12.57,
+    "en_cok_kgcm": 12.77,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.0,
-    "en_cok_oran_stall": 0.6,
-    "en_cok_akim_A": 1.72,
-    "ivme_payi_kgcm": 0.75,
+    "en_cok_oran_surekli": 2.03,
+    "en_cok_oran_stall": 0.61,
+    "en_cok_akim_A": 1.75,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 5
@@ -15135,55 +15135,55 @@
     "k": 0.0,
     "omni": false,
     "yaricap_mm": 373.0,
-    "ani_merkez_z_mm": -18.5,
+    "ani_merkez_z_mm": -20.1,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 9.99,
+      "N": 60.6,
+      "T_kgcm": 9.97,
       "rol": "surus",
-      "oran_surekli": 1.59,
-      "oran_stall": 0.48,
+      "oran_surekli": 1.58,
+      "oran_stall": 0.47,
       "akim_A": 1.39
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 8.83,
+      "N": 60.6,
+      "T_kgcm": 8.81,
       "rol": "tutma",
       "oran_surekli": 1.4,
       "oran_stall": 0.42,
-      "akim_A": 1.25
+      "akim_A": 1.24
      },
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 12.07,
+      "N": 67.5,
+      "T_kgcm": 12.26,
       "rol": "surus",
-      "oran_surekli": 1.92,
-      "oran_stall": 0.57,
-      "akim_A": 1.66
+      "oran_surekli": 1.95,
+      "oran_stall": 0.58,
+      "akim_A": 1.68
      },
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 10.8,
+      "N": 67.5,
+      "T_kgcm": 10.97,
       "rol": "tutma",
-      "oran_surekli": 1.71,
-      "oran_stall": 0.51,
-      "akim_A": 1.5
+      "oran_surekli": 1.74,
+      "oran_stall": 0.52,
+      "akim_A": 1.52
      }
     ],
-    "en_cok_kgcm": 12.07,
+    "en_cok_kgcm": 12.26,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 1.92,
-    "en_cok_oran_stall": 0.57,
-    "en_cok_akim_A": 1.66,
-    "ivme_payi_kgcm": 0.75,
+    "en_cok_oran_surekli": 1.95,
+    "en_cok_oran_stall": 0.58,
+    "en_cok_akim_A": 1.68,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -15194,13 +15194,13 @@
     "k": 0.5,
     "omni": false,
     "yaricap_mm": 1120.0,
-    "ani_merkez_z_mm": -14.4,
+    "ani_merkez_z_mm": -15.7,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 8.84,
+      "N": 60.6,
+      "T_kgcm": 8.85,
       "rol": "surus",
       "oran_surekli": 1.4,
       "oran_stall": 0.42,
@@ -15209,7 +15209,7 @@
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.4,
+      "N": 60.6,
       "T_kgcm": 6.53,
       "rol": "fren",
       "oran_surekli": 1.04,
@@ -15219,30 +15219,30 @@
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 10.26,
+      "N": 67.5,
+      "T_kgcm": 10.4,
       "rol": "surus",
-      "oran_surekli": 1.63,
-      "oran_stall": 0.49,
-      "akim_A": 1.43
+      "oran_surekli": 1.65,
+      "oran_stall": 0.5,
+      "akim_A": 1.45
      },
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 7.71,
+      "N": 67.5,
+      "T_kgcm": 7.82,
       "rol": "fren",
-      "oran_surekli": 1.22,
+      "oran_surekli": 1.24,
       "oran_stall": 0.37,
-      "akim_A": 1.1
+      "akim_A": 1.12
      }
     ],
-    "en_cok_kgcm": 10.26,
+    "en_cok_kgcm": 10.4,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 1.63,
-    "en_cok_oran_stall": 0.49,
-    "en_cok_akim_A": 1.43,
-    "ivme_payi_kgcm": 0.75,
+    "en_cok_oran_surekli": 1.65,
+    "en_cok_oran_stall": 0.5,
+    "en_cok_akim_A": 1.45,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -15253,55 +15253,55 @@
     "k": -0.5,
     "omni": false,
     "yaricap_mm": 124.0,
-    "ani_merkez_z_mm": -20.7,
+    "ani_merkez_z_mm": -22.5,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 12.6,
+      "N": 60.6,
+      "T_kgcm": 12.56,
       "rol": "surus",
-      "oran_surekli": 2.0,
+      "oran_surekli": 1.99,
       "oran_stall": 0.6,
-      "akim_A": 1.73
+      "akim_A": 1.72
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 12.6,
+      "N": 60.6,
+      "T_kgcm": 12.56,
       "rol": "surus",
-      "oran_surekli": 2.0,
+      "oran_surekli": 1.99,
       "oran_stall": 0.6,
-      "akim_A": 1.73
+      "akim_A": 1.72
      },
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 15.59,
+      "N": 67.5,
+      "T_kgcm": 15.84,
       "rol": "surus",
-      "oran_surekli": 2.48,
-      "oran_stall": 0.74,
-      "akim_A": 2.11
+      "oran_surekli": 2.51,
+      "oran_stall": 0.75,
+      "akim_A": 2.14
      },
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 15.59,
+      "N": 67.5,
+      "T_kgcm": 15.84,
       "rol": "surus",
-      "oran_surekli": 2.48,
-      "oran_stall": 0.74,
-      "akim_A": 2.11
+      "oran_surekli": 2.51,
+      "oran_stall": 0.75,
+      "akim_A": 2.14
      }
     ],
-    "en_cok_kgcm": 15.59,
+    "en_cok_kgcm": 15.84,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.48,
-    "en_cok_oran_stall": 0.74,
-    "en_cok_akim_A": 2.11,
-    "ivme_payi_kgcm": 0.75,
+    "en_cok_oran_surekli": 2.51,
+    "en_cok_oran_stall": 0.75,
+    "en_cok_akim_A": 2.14,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 5
@@ -15311,56 +15311,56 @@
     "mu": 0.5,
     "k": 0.0,
     "omni": false,
-    "yaricap_mm": 373.0,
-    "ani_merkez_z_mm": -19.5,
+    "yaricap_mm": 372.0,
+    "ani_merkez_z_mm": -21.2,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 12.4,
+      "N": 60.6,
+      "T_kgcm": 12.37,
       "rol": "surus",
-      "oran_surekli": 1.97,
+      "oran_surekli": 1.96,
       "oran_stall": 0.59,
       "akim_A": 1.7
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 11.24,
+      "N": 60.6,
+      "T_kgcm": 11.21,
       "rol": "tutma",
       "oran_surekli": 1.78,
-      "oran_stall": 0.54,
+      "oran_stall": 0.53,
       "akim_A": 1.55
      },
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 15.16,
+      "N": 67.5,
+      "T_kgcm": 15.4,
       "rol": "surus",
-      "oran_surekli": 2.41,
-      "oran_stall": 0.72,
-      "akim_A": 2.06
+      "oran_surekli": 2.44,
+      "oran_stall": 0.73,
+      "akim_A": 2.09
      },
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 13.89,
+      "N": 67.5,
+      "T_kgcm": 14.11,
       "rol": "tutma",
-      "oran_surekli": 2.2,
-      "oran_stall": 0.66,
-      "akim_A": 1.89
+      "oran_surekli": 2.24,
+      "oran_stall": 0.67,
+      "akim_A": 1.92
      }
     ],
-    "en_cok_kgcm": 15.16,
+    "en_cok_kgcm": 15.4,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.41,
-    "en_cok_oran_stall": 0.72,
-    "en_cok_akim_A": 2.06,
-    "ivme_payi_kgcm": 0.75,
+    "en_cok_oran_surekli": 2.44,
+    "en_cok_oran_stall": 0.73,
+    "en_cok_akim_A": 2.09,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -15370,13 +15370,13 @@
     "mu": 0.5,
     "k": 0.5,
     "omni": false,
-    "yaricap_mm": 1120.0,
-    "ani_merkez_z_mm": -15.8,
+    "yaricap_mm": 1119.0,
+    "ani_merkez_z_mm": -17.2,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.4,
+      "N": 60.6,
       "T_kgcm": 11.39,
       "rol": "surus",
       "oran_surekli": 1.81,
@@ -15386,8 +15386,8 @@
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 9.09,
+      "N": 60.6,
+      "T_kgcm": 9.07,
       "rol": "fren",
       "oran_surekli": 1.44,
       "oran_stall": 0.43,
@@ -15396,30 +15396,30 @@
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 13.43,
+      "N": 67.5,
+      "T_kgcm": 13.62,
       "rol": "surus",
-      "oran_surekli": 2.13,
-      "oran_stall": 0.64,
-      "akim_A": 1.83
+      "oran_surekli": 2.16,
+      "oran_stall": 0.65,
+      "akim_A": 1.86
      },
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 10.88,
+      "N": 67.5,
+      "T_kgcm": 11.04,
       "rol": "fren",
-      "oran_surekli": 1.73,
-      "oran_stall": 0.52,
-      "akim_A": 1.51
+      "oran_surekli": 1.75,
+      "oran_stall": 0.53,
+      "akim_A": 1.53
      }
     ],
-    "en_cok_kgcm": 13.43,
+    "en_cok_kgcm": 13.62,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.13,
-    "en_cok_oran_stall": 0.64,
-    "en_cok_akim_A": 1.83,
-    "ivme_payi_kgcm": 0.75,
+    "en_cok_oran_surekli": 2.16,
+    "en_cok_oran_stall": 0.65,
+    "en_cok_akim_A": 1.86,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -15430,55 +15430,55 @@
     "k": -0.5,
     "omni": false,
     "yaricap_mm": 124.0,
-    "ani_merkez_z_mm": -21.0,
+    "ani_merkez_z_mm": -22.8,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 14.94,
+      "N": 60.6,
+      "T_kgcm": 14.9,
       "rol": "surus",
-      "oran_surekli": 2.37,
+      "oran_surekli": 2.36,
       "oran_stall": 0.71,
-      "akim_A": 2.03
+      "akim_A": 2.02
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 14.94,
+      "N": 60.6,
+      "T_kgcm": 14.9,
       "rol": "surus",
-      "oran_surekli": 2.37,
+      "oran_surekli": 2.36,
       "oran_stall": 0.71,
-      "akim_A": 2.03
+      "akim_A": 2.02
      },
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 18.59,
+      "N": 67.5,
+      "T_kgcm": 18.89,
       "rol": "surus",
-      "oran_surekli": 2.95,
-      "oran_stall": 0.89,
-      "akim_A": 2.49
+      "oran_surekli": 3.0,
+      "oran_stall": 0.9,
+      "akim_A": 2.53
      },
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 18.59,
+      "N": 67.5,
+      "T_kgcm": 18.89,
       "rol": "surus",
-      "oran_surekli": 2.95,
-      "oran_stall": 0.89,
-      "akim_A": 2.49
+      "oran_surekli": 3.0,
+      "oran_stall": 0.9,
+      "akim_A": 2.53
      }
     ],
-    "en_cok_kgcm": 18.59,
+    "en_cok_kgcm": 18.89,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.95,
-    "en_cok_oran_stall": 0.89,
-    "en_cok_akim_A": 2.49,
-    "ivme_payi_kgcm": 0.75,
+    "en_cok_oran_surekli": 3.0,
+    "en_cok_oran_stall": 0.9,
+    "en_cok_akim_A": 2.53,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 5
@@ -15488,56 +15488,56 @@
     "mu": 0.6,
     "k": 0.0,
     "omni": false,
-    "yaricap_mm": 373.0,
-    "ani_merkez_z_mm": -20.1,
+    "yaricap_mm": 372.0,
+    "ani_merkez_z_mm": -21.9,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 14.78,
+      "N": 60.6,
+      "T_kgcm": 14.74,
       "rol": "surus",
-      "oran_surekli": 2.35,
+      "oran_surekli": 2.34,
       "oran_stall": 0.7,
-      "akim_A": 2.01
+      "akim_A": 2.0
      },
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 13.62,
+      "N": 60.6,
+      "T_kgcm": 13.58,
       "rol": "tutma",
       "oran_surekli": 2.16,
       "oran_stall": 0.65,
-      "akim_A": 1.86
+      "akim_A": 1.85
      },
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 18.22,
+      "N": 67.5,
+      "T_kgcm": 18.51,
       "rol": "surus",
-      "oran_surekli": 2.89,
-      "oran_stall": 0.87,
-      "akim_A": 2.45
+      "oran_surekli": 2.94,
+      "oran_stall": 0.88,
+      "akim_A": 2.48
      },
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 16.94,
+      "N": 67.5,
+      "T_kgcm": 17.22,
       "rol": "tutma",
-      "oran_surekli": 2.69,
-      "oran_stall": 0.81,
-      "akim_A": 2.28
+      "oran_surekli": 2.73,
+      "oran_stall": 0.82,
+      "akim_A": 2.32
      }
     ],
-    "en_cok_kgcm": 18.22,
+    "en_cok_kgcm": 18.51,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.89,
-    "en_cok_oran_stall": 0.87,
-    "en_cok_akim_A": 2.45,
-    "ivme_payi_kgcm": 0.75,
+    "en_cok_oran_surekli": 2.94,
+    "en_cok_oran_stall": 0.88,
+    "en_cok_akim_A": 2.48,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -15548,13 +15548,13 @@
     "k": 0.5,
     "omni": false,
     "yaricap_mm": 1119.0,
-    "ani_merkez_z_mm": -16.9,
+    "ani_merkez_z_mm": -18.4,
     "tekerler": [
      {
       "teker": "on sag",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 13.91,
+      "N": 60.6,
+      "T_kgcm": 13.89,
       "rol": "surus",
       "oran_surekli": 2.21,
       "oran_stall": 0.66,
@@ -15563,8 +15563,8 @@
      {
       "teker": "on sol",
       "omni": false,
-      "N": 60.4,
-      "T_kgcm": 11.6,
+      "N": 60.6,
+      "T_kgcm": 11.58,
       "rol": "fren",
       "oran_surekli": 1.84,
       "oran_stall": 0.55,
@@ -15573,30 +15573,30 @@
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 16.6,
+      "N": 67.5,
+      "T_kgcm": 16.84,
       "rol": "surus",
-      "oran_surekli": 2.63,
-      "oran_stall": 0.79,
-      "akim_A": 2.24
+      "oran_surekli": 2.67,
+      "oran_stall": 0.8,
+      "akim_A": 2.27
      },
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 14.05,
+      "N": 67.5,
+      "T_kgcm": 14.26,
       "rol": "fren",
-      "oran_surekli": 2.23,
-      "oran_stall": 0.67,
-      "akim_A": 1.91
+      "oran_surekli": 2.26,
+      "oran_stall": 0.68,
+      "akim_A": 1.94
      }
     ],
-    "en_cok_kgcm": 16.6,
+    "en_cok_kgcm": 16.84,
     "en_cok_teker": "arka sag",
-    "en_cok_oran_surekli": 2.63,
-    "en_cok_oran_stall": 0.79,
-    "en_cok_akim_A": 2.24,
-    "ivme_payi_kgcm": 0.75,
+    "en_cok_oran_surekli": 2.67,
+    "en_cok_oran_stall": 0.8,
+    "en_cok_akim_A": 2.27,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 4
@@ -15608,133 +15608,133 @@
     "mu": 0.4,
     "R_mm": 0,
     "mu_t": 0.432,
-    "M_Nm": 20.33,
-    "en_cok_kgcm": 17.02,
+    "M_Nm": 20.5,
+    "en_cok_kgcm": 17.23,
     "teker": "arka sol",
-    "oran_surekli": 2.7,
-    "oran_stall": 0.81,
-    "akim_A": 2.29
+    "oran_surekli": 2.73,
+    "oran_stall": 0.82,
+    "akim_A": 2.32
    },
    {
     "mu": 0.4,
     "R_mm": 500,
     "mu_t": 0.364,
-    "M_Nm": 17.12,
-    "en_cok_kgcm": 14.53,
+    "M_Nm": 17.26,
+    "en_cok_kgcm": 14.71,
     "teker": "arka sol",
-    "oran_surekli": 2.31,
-    "oran_stall": 0.69,
-    "akim_A": 1.97
+    "oran_surekli": 2.33,
+    "oran_stall": 0.7,
+    "akim_A": 2.0
    },
    {
     "mu": 0.4,
     "R_mm": 1000,
     "mu_t": 0.314,
-    "M_Nm": 14.78,
-    "en_cok_kgcm": 12.72,
+    "M_Nm": 14.9,
+    "en_cok_kgcm": 12.88,
     "teker": "arka sol",
-    "oran_surekli": 2.02,
+    "oran_surekli": 2.04,
     "oran_stall": 0.61,
-    "akim_A": 1.74
+    "akim_A": 1.76
    },
    {
     "mu": 0.4,
     "R_mm": 2000,
     "mu_t": 0.247,
-    "M_Nm": 11.61,
-    "en_cok_kgcm": 10.27,
+    "M_Nm": 11.71,
+    "en_cok_kgcm": 10.39,
     "teker": "arka sol",
-    "oran_surekli": 1.63,
+    "oran_surekli": 1.65,
     "oran_stall": 0.49,
-    "akim_A": 1.43
+    "akim_A": 1.45
    },
    {
     "mu": 0.5,
     "R_mm": 0,
     "mu_t": 0.541,
-    "M_Nm": 25.42,
-    "en_cok_kgcm": 20.96,
+    "M_Nm": 25.62,
+    "en_cok_kgcm": 21.21,
     "teker": "arka sol",
-    "oran_surekli": 3.33,
-    "oran_stall": 1.0,
-    "akim_A": 2.79
+    "oran_surekli": 3.37,
+    "oran_stall": 1.01,
+    "akim_A": 2.83
    },
    {
     "mu": 0.5,
     "R_mm": 500,
     "mu_t": 0.455,
-    "M_Nm": 21.4,
-    "en_cok_kgcm": 17.85,
+    "M_Nm": 21.57,
+    "en_cok_kgcm": 18.06,
     "teker": "arka sol",
-    "oran_surekli": 2.83,
-    "oran_stall": 0.85,
-    "akim_A": 2.4
+    "oran_surekli": 2.87,
+    "oran_stall": 0.86,
+    "akim_A": 2.43
    },
    {
     "mu": 0.5,
     "R_mm": 1000,
     "mu_t": 0.393,
-    "M_Nm": 18.48,
-    "en_cok_kgcm": 15.59,
+    "M_Nm": 18.63,
+    "en_cok_kgcm": 15.77,
     "teker": "arka sol",
-    "oran_surekli": 2.47,
-    "oran_stall": 0.74,
-    "akim_A": 2.11
+    "oran_surekli": 2.5,
+    "oran_stall": 0.75,
+    "akim_A": 2.13
    },
    {
     "mu": 0.5,
     "R_mm": 2000,
     "mu_t": 0.309,
-    "M_Nm": 14.52,
-    "en_cok_kgcm": 12.52,
+    "M_Nm": 14.63,
+    "en_cok_kgcm": 12.67,
     "teker": "arka sol",
-    "oran_surekli": 1.99,
+    "oran_surekli": 2.01,
     "oran_stall": 0.6,
-    "akim_A": 1.72
+    "akim_A": 1.74
    },
    {
     "mu": 0.6,
     "R_mm": 0,
     "mu_t": 0.649,
-    "M_Nm": 30.5,
-    "en_cok_kgcm": 24.89,
+    "M_Nm": 30.74,
+    "en_cok_kgcm": 25.19,
     "teker": "arka sol",
-    "oran_surekli": 3.95,
-    "oran_stall": 1.19,
-    "akim_A": 3.3
+    "oran_surekli": 4.0,
+    "oran_stall": 1.2,
+    "akim_A": 3.34
    },
    {
     "mu": 0.6,
     "R_mm": 500,
     "mu_t": 0.546,
-    "M_Nm": 25.68,
-    "en_cok_kgcm": 21.16,
+    "M_Nm": 25.88,
+    "en_cok_kgcm": 21.42,
     "teker": "arka sol",
-    "oran_surekli": 3.36,
-    "oran_stall": 1.01,
-    "akim_A": 2.82
+    "oran_surekli": 3.4,
+    "oran_stall": 1.02,
+    "akim_A": 2.85
    },
    {
     "mu": 0.6,
     "R_mm": 1000,
     "mu_t": 0.472,
-    "M_Nm": 22.18,
-    "en_cok_kgcm": 18.45,
+    "M_Nm": 22.35,
+    "en_cok_kgcm": 18.67,
     "teker": "arka sol",
-    "oran_surekli": 2.93,
-    "oran_stall": 0.88,
-    "akim_A": 2.47
+    "oran_surekli": 2.96,
+    "oran_stall": 0.89,
+    "akim_A": 2.5
    },
    {
     "mu": 0.6,
     "R_mm": 2000,
     "mu_t": 0.37,
-    "M_Nm": 17.42,
-    "en_cok_kgcm": 14.77,
+    "M_Nm": 17.56,
+    "en_cok_kgcm": 14.94,
     "teker": "arka sol",
-    "oran_surekli": 2.34,
-    "oran_stall": 0.7,
-    "akim_A": 2.0
+    "oran_surekli": 2.37,
+    "oran_stall": 0.71,
+    "akim_A": 2.03
    }
   ],
   "yerinde_omni_cap_esit": [
@@ -15748,7 +15748,7 @@
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.4,
+      "N": 60.6,
       "T_kgcm": 2.06,
       "rol": "surus",
       "oran_surekli": 0.33,
@@ -15758,7 +15758,7 @@
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.4,
+      "N": 60.6,
       "T_kgcm": 2.06,
       "rol": "surus",
       "oran_surekli": 0.33,
@@ -15768,8 +15768,8 @@
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 3.2,
+      "N": 67.5,
+      "T_kgcm": 3.23,
       "rol": "surus",
       "oran_surekli": 0.51,
       "oran_stall": 0.15,
@@ -15778,20 +15778,20 @@
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 3.2,
+      "N": 67.5,
+      "T_kgcm": 3.23,
       "rol": "surus",
       "oran_surekli": 0.51,
       "oran_stall": 0.15,
       "akim_A": 0.53
      }
     ],
-    "en_cok_kgcm": 3.2,
+    "en_cok_kgcm": 3.23,
     "en_cok_teker": "arka sag",
     "en_cok_oran_surekli": 0.51,
     "en_cok_oran_stall": 0.15,
     "en_cok_akim_A": 0.53,
-    "ivme_payi_kgcm": 0.75,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 5
@@ -15808,7 +15808,7 @@
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.4,
+      "N": 60.6,
       "T_kgcm": 2.05,
       "rol": "surus",
       "oran_surekli": 0.33,
@@ -15818,7 +15818,7 @@
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.4,
+      "N": 60.6,
       "T_kgcm": 2.05,
       "rol": "surus",
       "oran_surekli": 0.33,
@@ -15828,8 +15828,8 @@
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 3.21,
+      "N": 67.5,
+      "T_kgcm": 3.24,
       "rol": "surus",
       "oran_surekli": 0.51,
       "oran_stall": 0.15,
@@ -15838,20 +15838,20 @@
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 3.21,
+      "N": 67.5,
+      "T_kgcm": 3.24,
       "rol": "surus",
       "oran_surekli": 0.51,
       "oran_stall": 0.15,
       "akim_A": 0.53
      }
     ],
-    "en_cok_kgcm": 3.21,
+    "en_cok_kgcm": 3.24,
     "en_cok_teker": "arka sag",
     "en_cok_oran_surekli": 0.51,
     "en_cok_oran_stall": 0.15,
     "en_cok_akim_A": 0.53,
-    "ivme_payi_kgcm": 0.75,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 5
@@ -15868,7 +15868,7 @@
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.4,
+      "N": 60.6,
       "T_kgcm": 2.05,
       "rol": "surus",
       "oran_surekli": 0.33,
@@ -15878,7 +15878,7 @@
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.4,
+      "N": 60.6,
       "T_kgcm": 2.05,
       "rol": "surus",
       "oran_surekli": 0.33,
@@ -15888,8 +15888,8 @@
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 3.22,
+      "N": 67.5,
+      "T_kgcm": 3.24,
       "rol": "surus",
       "oran_surekli": 0.51,
       "oran_stall": 0.15,
@@ -15898,20 +15898,20 @@
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 3.22,
+      "N": 67.5,
+      "T_kgcm": 3.24,
       "rol": "surus",
       "oran_surekli": 0.51,
       "oran_stall": 0.15,
       "akim_A": 0.53
      }
     ],
-    "en_cok_kgcm": 3.22,
+    "en_cok_kgcm": 3.24,
     "en_cok_teker": "arka sag",
     "en_cok_oran_surekli": 0.51,
     "en_cok_oran_stall": 0.15,
     "en_cok_akim_A": 0.53,
-    "ivme_payi_kgcm": 0.75,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 6
@@ -15930,28 +15930,28 @@
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.4,
-      "T_kgcm": 2.22,
+      "N": 60.6,
+      "T_kgcm": 2.23,
       "rol": "surus",
       "oran_surekli": 0.35,
       "oran_stall": 0.11,
-      "akim_A": 0.4
+      "akim_A": 0.41
      },
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.4,
-      "T_kgcm": 2.22,
+      "N": 60.6,
+      "T_kgcm": 2.23,
       "rol": "surus",
       "oran_surekli": 0.35,
       "oran_stall": 0.11,
-      "akim_A": 0.4
+      "akim_A": 0.41
      },
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 0.24,
+      "N": 67.5,
+      "T_kgcm": 0.25,
       "rol": "surus",
       "oran_surekli": 0.04,
       "oran_stall": 0.01,
@@ -15960,20 +15960,20 @@
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 0.24,
+      "N": 67.5,
+      "T_kgcm": 0.25,
       "rol": "surus",
       "oran_surekli": 0.04,
       "oran_stall": 0.01,
       "akim_A": 0.15
      }
     ],
-    "en_cok_kgcm": 2.22,
+    "en_cok_kgcm": 2.23,
     "en_cok_teker": "on sag",
     "en_cok_oran_surekli": 0.35,
     "en_cok_oran_stall": 0.11,
-    "en_cok_akim_A": 0.4,
-    "ivme_payi_kgcm": 0.75,
+    "en_cok_akim_A": 0.41,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 3
@@ -15990,8 +15990,8 @@
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.4,
-      "T_kgcm": 2.81,
+      "N": 60.6,
+      "T_kgcm": 2.83,
       "rol": "surus",
       "oran_surekli": 0.45,
       "oran_stall": 0.13,
@@ -16000,8 +16000,8 @@
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.4,
-      "T_kgcm": 2.81,
+      "N": 60.6,
+      "T_kgcm": 2.83,
       "rol": "surus",
       "oran_surekli": 0.45,
       "oran_stall": 0.13,
@@ -16010,8 +16010,8 @@
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 0.34,
+      "N": 67.5,
+      "T_kgcm": 0.33,
       "rol": "fren",
       "oran_surekli": 0.05,
       "oran_stall": 0.02,
@@ -16020,20 +16020,20 @@
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
-      "T_kgcm": 0.34,
+      "N": 67.5,
+      "T_kgcm": 0.33,
       "rol": "fren",
       "oran_surekli": 0.05,
       "oran_stall": 0.02,
       "akim_A": 0.16
      }
     ],
-    "en_cok_kgcm": 2.81,
+    "en_cok_kgcm": 2.83,
     "en_cok_teker": "on sag",
     "en_cok_oran_surekli": 0.45,
     "en_cok_oran_stall": 0.13,
     "en_cok_akim_A": 0.48,
-    "ivme_payi_kgcm": 0.75,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 3
@@ -16050,8 +16050,8 @@
      {
       "teker": "on sag",
       "omni": true,
-      "N": 60.4,
-      "T_kgcm": 3.53,
+      "N": 60.6,
+      "T_kgcm": 3.55,
       "rol": "surus",
       "oran_surekli": 0.56,
       "oran_stall": 0.17,
@@ -16060,8 +16060,8 @@
      {
       "teker": "on sol",
       "omni": true,
-      "N": 60.4,
-      "T_kgcm": 3.53,
+      "N": 60.6,
+      "T_kgcm": 3.55,
       "rol": "surus",
       "oran_surekli": 0.56,
       "oran_stall": 0.17,
@@ -16070,7 +16070,7 @@
      {
       "teker": "arka sag",
       "omni": false,
-      "N": 66.7,
+      "N": 67.5,
       "T_kgcm": 1.04,
       "rol": "fren",
       "oran_surekli": 0.17,
@@ -16080,7 +16080,7 @@
      {
       "teker": "arka sol",
       "omni": false,
-      "N": 66.7,
+      "N": 67.5,
       "T_kgcm": 1.04,
       "rol": "fren",
       "oran_surekli": 0.17,
@@ -16088,12 +16088,12 @@
       "akim_A": 0.25
      }
     ],
-    "en_cok_kgcm": 3.53,
+    "en_cok_kgcm": 3.55,
     "en_cok_teker": "on sag",
     "en_cok_oran_surekli": 0.56,
     "en_cok_oran_stall": 0.17,
     "en_cok_akim_A": 0.57,
-    "ivme_payi_kgcm": 0.75,
+    "ivme_payi_kgcm": 0.76,
     "yakinsama": {
      "artik_N": 0.0,
      "iterasyon": 3
@@ -16104,14 +16104,14 @@
   "karar": {
    "mu": 0.5,
    "dayanak": "orta senaryo (mu 0,5; olcum yok)",
-   "yerinde_kgcm": 15.76,
-   "yerinde_oran_surekli": 2.5,
-   "yerinde_oran_stall": 0.75,
-   "ust_sinir_kgcm": 20.96,
-   "ust_sinir_oran_stall": 1.0,
-   "omni_kgcm": 3.16,
+   "yerinde_kgcm": 16.01,
+   "yerinde_oran_surekli": 2.54,
+   "yerinde_oran_stall": 0.76,
+   "ust_sinir_kgcm": 21.21,
+   "ust_sinir_oran_stall": 1.01,
+   "omni_kgcm": 3.17,
    "omni_oran_surekli": 0.5,
-   "sonuc": "KOTU: yerinde donus surekli degerin 250%'i (ust sinir durmanin 100%'i). K1 (a) on iki teker omni onerilir; omniyle 50%."
+   "sonuc": "KOTU: yerinde donus surekli degerin 254%'i (ust sinir durmanin 101%'i). K1 (a) on iki teker omni onerilir; omniyle 50%."
   },
   "omni_cad": {
    "aktif": false,
@@ -16371,7 +16371,7 @@
    "Satin",
    "LiFePO4 12,8 V 20 Ah Victron SuperPack (yuva 181 x 77 x 167)",
    1,
-   2800.0
+   3000.0
   ],
   [
    "Satin",
@@ -17015,5 +17015,5 @@
    ]
   }
  ],
- "sure_s": 91.8
+ "sure_s": 95.4
 }

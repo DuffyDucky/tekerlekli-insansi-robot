@@ -341,7 +341,7 @@ rows.append(("Süre, 24 Ah olursa (307 Wh)", "", "%s sa" % sayi(AKU["senaryo"]["
 H.append(tablo(["Kalem", "Hat", "Düşük (W)", "Orta (W)", "Yüksek (W)", "Dayanak"], rows) + "</div>")
 H.append("<p class='not'>Tüm tüketim kalemleri tahmini (yalnız Nextion akımı datasheet'ten). XL4016 verimi 0,88, BTS7960 0,95, kullanılabilir kapasite %%80 "
          "(01-donanim-maliyet ile aynı) varsayıldı. Orta = ekranlar açık, kollar jest yapıyor, zamanın ~%%30'unda sürüş. Akü Victron SuperPack 20 Ah "
-         "(256 Wh, K3, malzeme listesi v4); ölçü 181 × 77 × 167 yuvayla aynı, modeldeki kütle 2,8 kg (Victron 3,0 kg, güncellenmedi).</p>")
+         "(256 Wh, K3, malzeme listesi v4); ölçü 181 × 77 × 167 yuvayla aynı, modeldeki kütle 3,0 kg (Victron datasheet; F1b P1.1, 08.11.2026).</p>")
 
 # ---------------------------------------------------------------- kablo yolu
 H.append("<h2>Güç dağıtımı ve kablo yolu</h2>")
@@ -512,7 +512,7 @@ KARAR = [
     "**Ana anahtar (öneri):** etek üst plakasının altında, acil stobun aynası. Kabukta delik yok; düğme şeması Referans'ta (statik taramaya girmez, kol × taban taramasında hedef).",
     "**Tahmini zarflar:** sigorta kutusu (105 × 60 × 35), röle (30 × 30 × 45), ana sigorta yuvası (30 × 60 × 20), ana anahtar gövdesi (50 × 50 × 40), ESP32 taşıyıcı pertinaks (70 × 50). Ölçüler uydurulmadı: zarf, kumpasla ölçülünce güncellenecek.",
     "**Tahmini ölçüler:** BTS7960 delik aralığı ±21, M4/M5 çekiç somun gövdesi M6 ile aynı (16 × 10 × 5), teker iç geometrisi (altıgen yuva 17,5 mm, M4 eksenel vida), kaplin M4 dişi 12 mm, JGB37 M3 delik derinliği 6 mm, HC-SR04 pin bloğu.",
-    "**Hesap varsayımları:** fren ivmesi 1,5 m/s², temas hattı teker merkez düzlemi (V3 ile aynı; gerçek temas lastik genişliği, yana biraz daha güvenli), kablo payı 400 g (tahmini), akü 2,8 kg (20 Ah Landport; alınacak Victron 3,0 kg, modele işlenmedi).",
+    "**Hesap varsayımları:** fren ivmesi 1,5 m/s², temas hattı teker merkez düzlemi (V3 ile aynı; gerçek temas lastik genişliği, yana biraz daha güvenli), kablo payı 400 g (tahmini), akü 3,0 kg (Victron SuperPack 20 Ah; F1b P1.1, 08.11.2026, önceki 2,8 kg Landport).",
 ]
 H.append("<h2>Kararlar ve varsayımlar</h2><ul>" + "".join("<li>%s</li>" % md(s) for s in KARAR) + "</ul>")
 H.append("<h3>Ayrılmış bölge değişiklikleri (<code>arayuz.py</code>, yalnız ekleme)</h3><div class='tw'>")
@@ -534,7 +534,7 @@ SIRA = ["Çekiç somunlar (M6 plaka, M4 braket, M5 burç, M6 sonar) kanallara d�
         "Saplama + burçlar; güç paneli (sigorta kutusu, röle, ana sigorta önceden takılı) ve elektronik katı (kartlar önceden takılı) 8× M5.",
         "Sonar tutucular ön ara raya, sonarlar raylara sürülür; kablolama (servis halkaları), etek ve acil stop / ana anahtar."]
 H.append("<h2>Montaj sırası (öneri)</h2><ol>" + "".join("<li>%s</li>" % md(s) for s in SIRA) + "</ol>")
-ACIK = ["**Akü:** Victron SuperPack 20 Ah'ın kütlesi (3,0 kg) modele işlenmedi (model 2,8 kg); ölçü 181 × 77 × 167 yuvayla aynı, kutup yönü ve yeri cihazda doğrulanacak.",
+ACIK = ["**Akü:** Victron SuperPack 20 Ah, modelde 3,0 kg (datasheet; F1b P1.1); ölçü 181 × 77 × 167 yuvayla aynı, kutup yönü ve yeri cihazda doğrulanacak.",
         "**Motor braketi:** elde yok; JGB37 kaçık mili için delik düzeni (4 delik, Ø31 daire) ve flanş deliklerinin x 115 hizası. M4 çekiç somun (kanal 10) satın alınmalı.",
         "**Motor torku rampada %%%d:** yazılımda rampada ivme ≤ 0,25 m/s² (→ %%%d) ya da daha yüksek torklu motor; robot kütlesi V3'ten %s kg fazla." % (
             round(mot5["oran"] * 100), round(MOT["rampa5_yavas"]["oran"] * 100), sayi(EV["kutle_g"] / 1000 - 18.6, 1)),

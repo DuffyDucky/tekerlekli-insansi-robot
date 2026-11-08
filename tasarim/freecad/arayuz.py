@@ -620,8 +620,8 @@ TABAN = dict(
     burc_z=(-230.0, -40.0, 40.0, 230.0),          # M5x40 burc, uzun ray ust kanalinda (V3 -230/230 + kat ayrimi icin -40/40)
     kat_ayrim_z=24.0,                             # on kat z 24,25...250, arka guc paneli z -250...23,75 (0,5 mm aralik)
     kat_kesik_on=(-60.0, 60.0, 150.0, 175.0),     # rc:410 deck_cut (kablo gecisi XL4016 / BTS -> kat)
-    aku=dict(merkez=(0.0, Y_RAIL0, _Z_BAT), olcu=(181.0, 77.0, 167.0), kutle_g=2800.0,
-             not_="rc:46-47 Landport LFP12-20 olcusu; alinacak Victron SuperPack 12,8 V 20 Ah (K3, malzeme listesi v4) 181 x 77 x 167 ayni. Kutle modelde 2,8 kg, Victron 3,0 kg: guncellenmedi"),
+    aku=dict(merkez=(0.0, Y_RAIL0, _Z_BAT), olcu=(181.0, 77.0, 167.0), kutle_g=3000.0,
+             not_="rc:46-47 Landport LFP12-20 olcusu; alinacak Victron SuperPack 12,8 V 20 Ah (K3, malzeme listesi v4) 181 x 77 x 167 ayni. Kutle 3,0 kg (Victron datasheet; planlama/maliyet.json aku satiri; P1.1 08.11.2026, onceki 2,8 kg Landport)"),
     # Aku 75 mm one (Duffy, 25 Ekim 2026 karari; devrilme analizi kutle noktasi olarak): GEOMETRIK OLARAK UYGULANAMADI (Y2a, 26 Ekim 2026).
     # Aku (181 x 77 x 167, yatik) arka bolmede orta ara ray (z -20...20, y 94,5...134,5) ile arka ara ray arasinda; 75 mm onde on yuzu
     # z +37'ye gelir: orta ara ray, direk dibi kose baglantilari (y 134,5...171,5) ve govde diregi (y >= 134,5) akunun icinde kalir.

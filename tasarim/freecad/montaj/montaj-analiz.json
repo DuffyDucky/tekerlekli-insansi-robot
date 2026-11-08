@@ -27,7 +27,7 @@
   "Satin": {
    "kalem": 53,
    "adet": 191,
-   "kutle_g": 14897.5
+   "kutle_g": 15097.5
   }
  },
  "boy_mm": 1580.0,
@@ -244,11 +244,11 @@
     "Kablo yolu 12: Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (VBUS hattinda seri 1N5819)"
    ],
    "haric_neden": "kablo yolu semalari ve ana anahtar dugmesi gosterimi (Referans grubu, 0 g); taban analizinin parca sayisina girmiyor",
-   "kutle_g": 7909.81,
+   "kutle_g": 8109.81,
    "agirlik_merkezi": [
-    -0.745,
-    119.971,
-    -43.474
+    -0.726,
+    120.292,
+    -45.397
    ],
    "gruplar": [
     "Taban_Govde",
@@ -12902,7 +12902,7 @@
    "grup": "Govde",
    "tur": "Satin",
    "kod": "LiFePO4 12,8 V 20 Ah Victron SuperPack (yuva 181 x 77 x 167)",
-   "kutle_g": 2800.0,
+   "kutle_g": 3000.0,
    "merkez": [
     0.0,
     133.0,
@@ -16200,11 +16200,11 @@
  ],
  "solve": 0,
  "ev_pozu_cozucu_sapmasi": 0.0,
- "kutle_g": 25515.59,
+ "kutle_g": 25715.59,
  "agirlik_merkezi": [
   -0.026,
-  531.557,
-  -8.377
+  528.457,
+  -9.256
  ],
  "karsilastirma": {
   "parca": {
@@ -16214,33 +16214,33 @@
    "ayni": true
   },
   "kutle": {
-   "montaj_dosyasi": 25515.59,
-   "bellek": 25515.59,
-   "beklenen_analizlerden": 25515.7,
-   "carpisma": 25510.6,
+   "montaj_dosyasi": 25715.59,
+   "bellek": 25715.59,
+   "beklenen_analizlerden": 25715.7,
+   "carpisma": 25515.6,
    "fark_analiz": -0.109,
-   "fark_carpisma": 4.989
+   "fark_carpisma": 199.989
   },
   "am": {
    "montaj_dosyasi": [
     -0.026,
-    531.557,
-    -8.377
+    528.457,
+    -9.256
    ],
    "bellek": [
     -0.026,
-    531.557,
-    -8.377
+    528.457,
+    -9.256
    ],
    "carpisma": [
     -0.03,
-    531.47,
-    -8.39
+    531.56,
+    -8.38
    ],
-   "fark_carpisma_mm": 0.088,
+   "fark_carpisma_mm": 3.224,
    "fark_bellek_mm": 0.0
   },
   "not_": "analiz JSON'lari 0,1 g'a yuvarlanmis; carpisma AM'si 0,01 mm'ye. 1,65 m (Y2a): carpisma-sonuc.json Y4 tam taramasina kadar ESKI (125 cm) - fark_carpisma anlamsiz, montaj/yerlesim-kontrol.json kisa kontrolu kullan"
  },
- "sure_s": 97.8
+ "sure_s": 103.8
 }
