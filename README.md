@@ -11,6 +11,7 @@ planlama, tasarım (CAD) ve ileride yazılım kodu burada tutulur.
 | `tasarim/freecad/` | **Güncel tasarım (1,65 m):** FreeCAD modülleri (iskelet, kabuk, omuz, dirsek, kafa, taban), `arayuz.py` (tek ölçü kaynağı), ana montaj `montaj/` (FCStd, STEP, `robot-bom.csv`) |
 | `kod/ortak/eklem_sinirlari.json` | Eklem sınırları (CAD'den `eklem_sinirlari_uret.py` ile üretilir, elle düzenlenmez) |
 | `planlama/dongu.md` | İş döngüsü ve 1,65 m planı (Y1–Y6); `planlama/y2/` Y2a/Y2b günlük ve kontrolleri; `planlama/kararlar-*.md` karar günlüğü |
+| `rehber/` · `tasarim/freecad/rehber/` · `planlama/rehber/R-gunluk.md` | 3B montaj rehberi (`rehber/index.html`), onu üreten betikler ve çalışma günlüğü |
 | `planlama/baski-listesi.md` · `planlama/adim3/elektrik.md` · `planlama/yazilim-plani.md` | Baskı listesi (63 parça), elektrik kararları (E0–E9), yazılım planı |
 | `raporlar/Humanoid-Robot-Fizibilite-Raporu.html` | Fizibilite raporu: maliyet, ses mi görüntü mü, yetkinlik, teknik gereklilikler, profesyonel destek, takvim, finansman, riskler |
 | `raporlar/kaynaklar/` | Raporun dayandığı araştırma notları (donanım/maliyet, yazılım/yapay zekâ, referans projeler/finansman, parça ölçüleri, fiyat araştırması ve doğrulaması) |
@@ -117,6 +118,16 @@ Aşağıdaki bölümler projenin geçmişidir (Eylül–Ekim, CadQuery V1–V3, 
 - [ ] 10,1" ekranın 5 V ≈ 0,75 A beslemesini güç planına ekle; ekran ve göz ekranı kütlelerini tartıp CAD'e gir
 - [ ] Okulun 3D yazıcı tablası 25 × 25 × 25 cm (hocanın söylediği; model doğrulanmadı). Her baskı parçası
   buna sığacak şekilde bölünmeli (pay için ≤ 23 cm hedef)
+
+## Montaj rehberini üretme
+
+```powershell
+python tasarim/freecad/rehber/rehber_uret.py
+```
+
+Bu komut CAD modüllerinden adım verisini ve mesh'i üretir (FreeCAD, `rehber/veri/`), her adımı başsız Chrome/Edge ile kontrol eder ve görüntüleri `planlama/rehber/goruntu/` altına yazar (özet `planlama/rehber/kontrol.json`). Tüm adımlar yaklaşık 5 dakika sürer.
+Yalnız tarayıcı kontrolü için `--veri-yok`, yalnız veri için `--gorsel-yok`, seçili adımlar için `--adimlar 1,4,9`. Rehberi açmak için `rehber/index.html` (3B için internet gerekir).
+Adım yazıları `tasarim/freecad/rehber/rehber_metin.py` içinde. Üretmeden önce `planlama/rehber/R-gunluk.md` "Yapılacaklar"a bak: adım seçicileri 1,58 m'e uyarlanmadı.
 
 ## CAD'i yeniden üretme
 

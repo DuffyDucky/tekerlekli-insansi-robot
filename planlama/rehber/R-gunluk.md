@@ -10,13 +10,45 @@ Bir sonraki ajan buradan devam eder. Durum kutuları + hangi komut ne üretti.
 - [x] B1. `rehber/index.html` + `app.js` + `stil.css`: 3B görünüm, ileri/geri, açılır adım listesi, klavye (←/→, R uçuş, V görünüm, T tema),
       panelde yatay kaydırma, açık/koyu tema, localStorage (adım, kontrol kutuları, tema; try/catch), tıkla → parça adı, lejant
 - [x] B2. Uçuş animasyonu (parça kendi yönünden, cıvatalar 0,45 gecikmeli; tezgâh alt montajı bağlandığı adımda grup halinde)
-- [~] B3. Kablolama kapısı: K1/K2 adımında taban kablo yolu şemaları renkli; metin yer tutucu. **Eksik:** K2 için ayrı güzergâh (şu an
-      12 yolun hepsi K1'de; direk boyunca olanlar K2'ye ayrılmalı), KOL_KABLO geçitleri (ψ214 yarık, tüp penceresi, çatal oluğu, tırnak)
-- [~] Metin (`rehber_metin.py`): 0, A1–A3, B1a–B7, C0, K1, K2 kontrol + kablo kancası yazıldı; C1'den sonrası yalnız M6 tablosu + kısa başlık
+- [x] B3. Kablolama kapısı (04.11, kodu yazıldı, veri üretilmedi): `RM.kablo_kapisi` y > 300 olan şemaları K2'ye ayırır (K1'de 7, K2'de 5 yol beklenir; koşuda bak).
+      KOL_KABLO geçitleri metinde: ψ214 yarık (F4, G4), tüp penceresi (G3), çatal oluğu (H0c), tırnak (H0a). Şemalar bölünmedi: K2 şemasının taban kısmı K1'de bağlanır
+- [x] Metin (`rehber_metin.py`, 04.11): C1 ve sonrası 32 adım + K1 yazıldı; 125 cm / Y3 öncesi M6 satırları `is_`, `baglanti_md`, `alet`, `erisim` ile eziliyor
 - [ ] C. Yazdırılabilir sürüm (adım başına sayfa) — başlanmadı
-- [x] D. Tek komut `python tasarim/freecad/rehber/rehber_uret.py` (aşağıda). **README'ye henüz yazılmadı**
+- [x] D. Tek komut `python tasarim/freecad/rehber/rehber_uret.py` (aşağıda). Kök `README.md`'ye yazıldı (04.11)
 - [x] E. Headless Chrome kontrolü: adım 0,1,4,5,9,11,16,17 hazır, konsol hatası 0 (`planlama/rehber/kontrol.json`); görüntüler
       `planlama/rehber/goruntu/adim-NN.png` (1, 9, 17 gözle bakıldı: doğru)
+
+## Yapılacaklar (04.11.2026, sonraki ajan buradan başlar)
+Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber/veri/` eski. `rehber_metin.py` ve `rehber_veri.py` için `py_compile` geçti, başka test yok.
+
+**1. Üret ve bak.** `python tasarim/freecad/rehber/rehber_uret.py`, sonra tüm adımların görüntüsüne bak. Önce adım 2'deki seçicileri düzelt, yoksa parçalar yanlış adımda çıkar.
+
+**2. Seçiciler 125 cm'den kaldı (`planlama/adim4/M6_erisim.py`, `M6_ek.py`; yalnız metin ezildi, parça ataması değil):**
+- `_y<690` eşiği ve 4 braket varsayımı; 8 braket var (y 400 / 530,25 / 687,75 / 1095).
+- Etek `"M3x8"` seçicisi: kod artık M3×14, C0'a düşer. F1'e alınmalı.
+- "Govde uzatma bandi" F2'de yok, F5'e düşer.
+- H1, H2, üst arka kapak, dolgu şeritleri, göğüs çerçevesi, VESA taşıyıcı, adaptör ve saplamaların adımı doğrulanmadı.
+- `M6-montaj-sirasi.md` tablosu hâlâ 125 cm (F3 / K2'de Nextion). Tablo düzeltilmedi; `rehber_metin.py` üstünü örtüyor.
+
+**3. Göğüs ekranı adımı yazılacak (F3'ten sonra):** VESA taşıyıcı: kasaya 4 × M4×12 DIN 912 + pul, direk ön kanalına 2 × M6×18 DIN 912 + pul + çekiç somun (`lale158/lale158_rapor.py` satır 77–78; delik yeri ve vida derinliği orada da doğrulanmadı). Çerçeve sağ + sol, ekran 2 mm içeride, çerçeve gövde renginde. Direk ön yüzünden K2'nin kafa 12 V ve USB hattı da geçiyor: çakışma doğrulanmadı.
+- Kablo: HDMI + USB dokunmatik Pi'den boyundan iner (CAD'de böyle, **Efe teyidi yok**); uç K2'de göğüs hizasında bırakılır, K2 metnine eklenecek.
+- Besleme: 12 V, LM2577 + LM2596 kartı, 2 A sigortalı ayrı dal. Giriş noktası ve acil stop davranışı doğrulanmadı (`elektrik.md`).
+
+**4. Kafa ekranı adımı yazılacak (E3a ile E4 arasına):** 10,1" QLED, vida deliği yok, tırnak; görünen alan 225,64 × 127,36; kütle doğrulanmadı.
+- Önce model: `kafa10_lib.py`, `kafa7_parcalar.py` 10,1" için güncellenmeli. E3a parça listesindeki 7" LCD o zaman kalkar.
+- Kablo: HDMI tam boy (Pi micro HDMI 0), Power micro USB ← kesik USB-A ← SY8205 + P6KE6V8A, Touch micro USB ← Pi.
+- **Uyarı:** iki 5 V köprülenmez; Touch kablosu VBUS'u Pi'ye bağlar (`elektrik.md`).
+- SY8205, 4'lü hub, PAM8403, USB ses kartı, TVS'lerin kafadaki yeri modelde yok, doğrulanmadı.
+
+**5. Uygulama (`rehber/app.js`):** kırmızı kutu ve lejant "M6 CAD sonrası değişecek" artık boş kalır (`M6_BAYRAK_ACIK = False`); "M6 tablosu:" etiketi güncel `baglanti_md` önünde de çıkıyor, "Bağlantı:" olmalı. `not_` alanı gösterilmiyor.
+
+**6. Bilinen eksikler:**
+- `lale158/kablo_yolu_ekran.py` yolları rehbere girmedi; kablo şemaları K1 / K2 diye bölünmedi; taban_parcalar'da "kafada 5 V/5,5 A cevirici (Pi 5, LCD)" adı eski.
+- `lale158/baski_listesi_guncelle.py` tekrar koşarsa `planlama/baski-listesi.md`'de 158 cm bloğunu yeniden üretir: "1,65 m tarihli" cümlesi döner, Özet satır 3 yeniden 7" olur. Betik düzeltilmeli.
+- Kablo listesi (boy + kesit) yazılmadı; uzatma ek yeri kaynakta yok.
+- Yazdırılabilir sürüm başlanmadı (madde C).
+
+**Bağlı dosyalar:** `tasarim/freecad/arayuz.py`, `kafa10_lib.py`, `kafa7_parcalar.py`, `kabuk_parcalar.py`, `lale158/kablo_yolu_ekran.py`, `planlama/adim3/elektrik.md`, `planlama/y3/Y3-gunluk.md`, `tubitak-2209b/malzeme-listesi/` v4 xlsx.
 
 ## Komutlar ve ürettikleri
 | Komut | Üretir |
@@ -28,13 +60,12 @@ Bir sonraki ajan buradan devam eder. Durum kutuları + hangi komut ne üretti.
 | Açmak | `rehber/index.html` çift tık (file:// çalışır; three.js 0.160.0 jsdelivr'den, internet gerekir). `?adim=N`, `?cekim=1` (animasyonsuz), `?tema=dark` |
 
 ## Sıradaki işler (madde madde)
-1. README (`tasarim/freecad/README.md`) "Rehber" bölümü: tek komut, ne zaman koşulur (6. adımda modüller yeniden üretildikten ve
+1. Kök `README.md` yazıldı (04.11). `tasarim/freecad/README.md` "Rehber" bölümü hâlâ yok: tek komut, ne zaman koşulur (modüller yeniden üretildikten ve
    `M6_erisim.py` yeniden koşulduktan SONRA; adım ataması ve YOK bayrakları oradan gelir). README başka ajanın da dosyası: dikkat.
 2. Kamera: bazı adımlarda (ör. 9 B3) kadraj çok yakın; `kameraYerlestir` hedef kutuya görünen robotun bir kısmını da katmalı.
 3. Parça listesi gruplama: aynı kodlu parçalar gruplanırken ad ilk parçanınki (ör. "BTS7960 motor sürücü sol ×2"): kod tabanlı ortak ad.
-4. K1/K2 kablo ayrımı + KOL_KABLO geçitleri (G3, G4, H1 kablo kancaları) + "kablo listesi C işi, 5. hafta" yer tutucusu her iki kapıda.
-5. `rehber_metin.py`: C1, D*, E*, F*, G*, H* için kontrol listesi ve kablo kancası (M6 2. bölüm kuralları + 3. bölüm Ø84 sırası:
-   "F4'ten sonra omuz bandı ancak göbek sökülünce çıkar", G4 "S1 −45°'de", H0 sırası, H1 bilezik sıkma kupon D).
+4. Yapıldı (04.11, metin + kod): K1/K2 kablo ayrımı, KOL_KABLO geçitleri. Yer tutucu yerine "kablo listesi henüz yazılmadı" notu.
+5. Yapıldı (04.11): `rehber_metin.py` C1, D*, E*, F*, G*, H* yazıları, kontrol listesi, kablo kancası.
 6. Uçuş yönleri gözle kontrol (özellikle D1 kaydırma ±x, F bantları radyal, G/H); şu an yalnız iskelet + taban bakıldı.
 7. Yazdırılabilir sürüm: `rehber/yazdir.html` (adım başına bir sayfa: `?cekim=1` görüntüsü + listeler) + `--print-to-pdf`.
 8. Tüm 50 adımı `rehber_uret.py` ile koş, görüntülere bak, telefonda (dar pencere 390×844 görüntüsü) dene.
@@ -52,6 +83,7 @@ Bir sonraki ajan buradan devam eder. Durum kutuları + hangi komut ne üretti.
 - 2026-10-15: günlük açıldı.
 - 2026-10-15: kaynaklar okundu. Koordinatör talimatı: **%50 checkpoint'te dur** (A çalışır + B iskeleti, iskelet+taban adımları uçtan uca,
   ekran görüntüleri, konsol temiz). Yazdırılabilir sürüm ve cila sonraya.
+- 2026-11-04: C1 ve sonrası adım yazıları, K1 / K2 ayrımı, M6 bayrağı kapalı, kök README komutu. Veri üretilmedi, görsel bakılmadı. Yukarıda "Yapılacaklar".
 
 ## Kararlar (tasarım)
 - Adım ataması tek kaynak: `planlama/adim4/M6_erisim.py` içindeki `ADIMLAR` seçicileri. `rehber_veri.py` bu dosyanın

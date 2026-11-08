@@ -126,7 +126,7 @@ def tezgah_mi(kod):
 for p in P:
     if p["tur"] == "Referans":
         if p["modul"] == "taban" and p["ad"].startswith("Kablo yolu"):
-            p["kodr"], p["kablo"] = "K1", True
+            p["kodr"], p["kablo"] = RM.kablo_kapisi(p["bb"][3]), True
         elif p["modul"] == "kafa":
             p["kodr"], p["kablo"] = "E3a", True
         else:
@@ -226,6 +226,9 @@ for p in P:
         p["m6"] = "K1"
     elif p["modul"] == "kabuk" and civata_mi(p) and p["grup"].startswith("Etek_braket") and "M3x8" in p["kod"]:
         p["m6"] = "K2"
+if not RM.M6_BAYRAK_ACIK:                                   # Y3 C1-C3 / K1-K7 CAD'e islendi; bayrak 125 cm JSON'undan
+    for p in P:
+        p.pop("m6", None)
 M6SAY = collections.Counter(p.get("m6") for p in P if p.get("m6"))
 log("M6 bayragi:", dict(M6SAY), sum(M6SAY.values()))
 
@@ -536,7 +539,8 @@ for i, kod in enumerate(KODLAR):
     m6not = sorted(set(p["m6"] for p in ps if p.get("m6")))
     ADIMLAR.append(dict(
         i=i, kod=kod, no=r["no"], faz=faz(kod), baslik=mt.get("baslik") or r["is_"].split(":")[0][:60],
-        is_=r["is_"], baglanti_md=r["baglanti"], alet=r["alet"], erisim=r["erisim"], tezgah=TEZGAH_KOD.get(kod),
+        is_=mt.get("is_") or r["is_"], baglanti_md=mt.get("baglanti_md") or r["baglanti"], alet=mt.get("alet") or r["alet"],
+        erisim=mt.get("erisim") or r["erisim"], tezgah=TEZGAH_KOD.get(kod),
         baglanir=KOD_IDX[BAGLANIR[TEZGAH_KOD[kod]]] if TEZGAH_KOD.get(kod) else None,
         parcalar=list(parca.values()), baglantilar=list(bag.values()),
         kontrol=mt.get("kontrol", []), kablo=mt.get("kablo", []), not_=mt.get("not_", []),
