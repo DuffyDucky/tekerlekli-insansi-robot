@@ -1,6 +1,6 @@
 {
  "aciklama": "Kabul edilmiş taban: korunan değerler (planlama/dongu-158.md bölüm 1). Yalnız çıkış 0 olan koşu günceller. Üreten: planlama/d158/regresyon.py",
- "tarih": "2026-11-08T20:20:13+03:00",
+ "tarih": "2026-11-08T23:29:59+03:00",
  "cikis_kodu": 0,
  "degerler": {
   "boy_mm": {
@@ -8,7 +8,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/lale158/lale158-kontrol.json",
     "anahtar": "toplam_boy_mm",
-    "sha256_12": "d8a141db0960"
+    "sha256_12": "19dde8afdff3"
    },
    "yon": "esit",
    "esik": 1580.0,
@@ -34,7 +34,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/kabuk/kabuk-analiz.json",
     "anahtar": "cakisma",
-    "sha256_12": "9b60c721d717",
+    "sha256_12": "6271973a4341",
     "not_": "liste uzunluğu (çakışan çift sayısı)"
    },
    "yon": "kucuk_iyi",
@@ -47,7 +47,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/kabuk/kabuk-analiz.json",
     "anahtar": "iskelet_cakisma",
-    "sha256_12": "9b60c721d717",
+    "sha256_12": "6271973a4341",
     "not_": "liste uzunluğu (çakışan çift sayısı)"
    },
    "yon": "kucuk_iyi",
@@ -60,7 +60,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/carpisma-sonuc.json",
     "anahtar": "ev_pozu_cakisma",
-    "sha256_12": "cdf7498cfd97",
+    "sha256_12": "f5be6c482ff3",
     "not_": "liste uzunluğu (çakışan çift sayısı)"
    },
    "yon": "kucuk_iyi",
@@ -73,7 +73,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/lale158/kafa-yerlesim/uygulama-ivme.json",
     "anahtar": "izgara_yuk_0g.a_sinir_pay15.rampa5_* (en küçük)",
-    "sha256_12": "bf560c713fc1",
+    "sha256_12": "241cef5ba83e",
     "not_": "rampa5_* en küçüğü: rampa5_geri"
    },
    "yon": "buyuk_iyi",
@@ -110,7 +110,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/lale158/kafa-yerlesim/uygulama-olcum.json",
     "anahtar": "mic_hoparlor.poz_min_mm",
-    "sha256_12": "04add25b311f"
+    "sha256_12": "989e96dd430e"
    },
    "yon": "buyuk_iyi",
    "esik": 400.0,
@@ -122,7 +122,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/lale158/kafa-yerlesim/uygulama-olcum.json",
     "anahtar": "kablo_sy8205.*.sy8205_kesisim_mm3 + kafa_ici_qled_kablo.*.sy8205_kesisim_mm3",
-    "sha256_12": "04add25b311f",
+    "sha256_12": "989e96dd430e",
     "not_": "13 kablonun sy8205_kesisim_mm3 toplamı"
    },
    "yon": "kucuk_iyi",
@@ -193,7 +193,7 @@
    "durum": "aynı"
   }
  ],
- "onceki_tarih": "2026-11-08T20:15:20+03:00",
+ "onceki_tarih": "2026-11-08T23:17:06+03:00",
  "kotulesen": [],
  "esik_disi": [],
  "kaynak_yok": [],
@@ -201,10 +201,12 @@
   "carpisma_sonuc": {
    "kaynak": "tasarim/freecad/carpisma-sonuc.json : tek_kosu, birlestirme_notu, bolumler.*.kosu",
    "tek_kosu": false,
-   "birlestirme_notu": "2026-11-05: EKSIK / KARISIK birlestirme: eksik bolum yok; kosu kimlikleri ['20261103-215611', '20261105-185759']; kaynak ayni: False. Tam sonuc icin 'python carpisma_kos.py' ile tum bolumleri yeniden kos.",
+   "birlestirme_notu": "2026-11-08: EKSIK / KARISIK birlestirme: eksik bolum yok; kosu kimlikleri ['20261103-215611', '20261108-221801', '20261108-230636', '20261108-231459']; kaynak ayni: False. Tam sonuc icin 'python carpisma_kos.py' ile tum bolumleri yeniden kos.",
    "kosular": [
     "20261103-215611",
-    "20261105-185759"
+    "20261108-221801",
+    "20261108-230636",
+    "20261108-231459"
    ]
   }
  },
@@ -241,6 +243,66 @@
   },
   {
    "tarih": "2026-11-08T20:15:20+03:00",
+   "degerler": {
+    "boy_mm": 1580.0,
+    "cakisma_kafa_ici": 0.0,
+    "cakisma_kabuk_ici": 0.0,
+    "cakisma_kabuk_x_iskelet": 0.0,
+    "cakisma_ev_pozu": 0.0,
+    "rampa_yuksuz": 1.517,
+    "tilt_payi": 3.64,
+    "pan_payi": 2.21,
+    "mik_hoparlor_mm": 574.3,
+    "sy8205_x_usb_mm3": 0.0
+   }
+  },
+  {
+   "tarih": "2026-11-08T20:20:13+03:00",
+   "degerler": {
+    "boy_mm": 1580.0,
+    "cakisma_kafa_ici": 0.0,
+    "cakisma_kabuk_ici": 0.0,
+    "cakisma_kabuk_x_iskelet": 0.0,
+    "cakisma_ev_pozu": 0.0,
+    "rampa_yuksuz": 1.517,
+    "tilt_payi": 3.64,
+    "pan_payi": 2.21,
+    "mik_hoparlor_mm": 574.3,
+    "sy8205_x_usb_mm3": 0.0
+   }
+  },
+  {
+   "tarih": "2026-11-08T20:53:30+03:00",
+   "degerler": {
+    "boy_mm": 1580.0,
+    "cakisma_kafa_ici": 0.0,
+    "cakisma_kabuk_ici": 0.0,
+    "cakisma_kabuk_x_iskelet": 0.0,
+    "cakisma_ev_pozu": 0.0,
+    "rampa_yuksuz": 1.517,
+    "tilt_payi": 3.64,
+    "pan_payi": 2.21,
+    "mik_hoparlor_mm": 574.3,
+    "sy8205_x_usb_mm3": 0.0
+   }
+  },
+  {
+   "tarih": "2026-11-08T23:04:07+03:00",
+   "degerler": {
+    "boy_mm": 1580.0,
+    "cakisma_kafa_ici": 0.0,
+    "cakisma_kabuk_ici": 0.0,
+    "cakisma_kabuk_x_iskelet": 0.0,
+    "cakisma_ev_pozu": 0.0,
+    "rampa_yuksuz": 1.517,
+    "tilt_payi": 3.64,
+    "pan_payi": 2.21,
+    "mik_hoparlor_mm": 574.3,
+    "sy8205_x_usb_mm3": 0.0
+   }
+  },
+  {
+   "tarih": "2026-11-08T23:17:06+03:00",
    "degerler": {
     "boy_mm": 1580.0,
     "cakisma_kafa_ici": 0.0,

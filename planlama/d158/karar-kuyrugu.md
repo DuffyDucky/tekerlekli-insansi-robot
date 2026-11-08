@@ -60,6 +60,41 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 - **Sayısal etki:** bugün çakışma 77,69 mm³ `Arka kafa kabugu sag`, 7,97 mm³ somun, 3,18 mm³ cıvata (`KY/uygulama-notu.md:9`);
   zarf ile dizi arası 24,97 mm (`KY/uygulama-notu.md:64`). Zarf ölçüsü varsayım: 65 × 56,5, yığın 16, 30 g, CAD'de yok (`KY/secenekler.md:275`).
   Hangi seçeneğin pay ve kütleye etkisi olduğu P1.3'ten önce **ölçülmedi**.
+- **P1.3 ölçümü (F1a, 08.11.2026):** betik `KY/hat_secenek.py` (bayrak `HAT_SECENEK=0/a/b`; ana model değişmedi, `kafa10_lib.SECENEK`
+  varsayılanı bugünkü değer). Sonuçlar `KY/hat-secenek-0.json`, `-a.json`, `-b.json`; görseller `KY/gorsel/HAT-{0,a,b}-{arka,kesit}.png`.
+  HAT ölçüsü üretici ürün özetinden: kart 65 × 56,5, delikler 58 × 49, 16 mm yığın başlığı (RP-008133-DS-1, Raspberry Pi Ltd, Ekim 2024,
+  "Physical specification"). Kütle 30 g, bileşen zarfı 3,0 mm, yığın başlığının HAT üstünde 8,5 mm'si, FFC halkası 5 × 18 mm **varsayım**
+  (üretici belgesinde yok). HAT takılınca Pi'nin 4 üst M2,5×5 vidası çıkar (yerine ayak + HAT vidası).
+  - **Seçenek a (boss'u taşı):** arka duvar üst dikiş boss'u baş çerçevesinde (x −8, y 60) → (x −5, y 76): üst yarık bandının yüksekliğinde,
+    iki yarık sütununun arasında (yarık kenarına 1 mm). Dikiş cıvatası ve ısıl gömme somun onunla taşınır.
+  - **Seçenek b (yığını değiştir):** Pi 5 + AI HAT+ yığını 5 mm öne (baş çerçevesinde z +5; tabla burç delikleri ve tabla üstü kablo yolu
+    zarfı da 5 mm öne). HAT'i çevirmek (yön) uygulanabilir değil: HAT Pi'nin GPIO başlığına yığın başlığıyla takılır, kart Pi ile aynı
+    yönde durmak zorunda; yığını yükseltmek de çözmez, çünkü yığın başlığı sütunu boss yüksekliğini zaten geçiyor (`KY/hat_secenek.py` başlığı).
+
+  | Ölçüt (kaynak anahtar) | 0: bugünkü model + HAT | a: boss taşı | b: yığın 5 mm önde |
+  |---|---|---|---|
+  | Kafa içi çakışma, HAT ile (`cakisma_hatli`, > 0,5 mm³) | 8 çift: arka kabuk sağ 28,09 + 13,63 + 66,44 mm³, somun 2,78 / 3,58 / 1,61, cıvata 0,56 / 2,62 | **0** | **0** |
+  | Kafa içi çakışma, HAT'sız (`cakisma_hatsiz`) | 0 | 0 | 0 |
+  | Eski zarf × parçalar (`eski_zarf_cakisma`) | 77,69 / 7,97 / 3,18 (bugünkü sayı tekrarlandı) | 0 | 0 |
+  | HAT – dizi açıklığı (`aciklik.hat_dizi_mm`) | 24,97 mm | 24,97 mm | 24,97 mm |
+  | HAT – en yakın parça (`aciklik.hat_en_yakin`) | 0 (çakışıyor) | 3,0 arka kabuk; boss somunu 6,3 | 2,05 arka kabuk sağ (boss); somun 3,55 |
+  | HAT arka kenarı – arka duvar iç yüzü / yarık (`hat_arka_kenar_duvar_ic_mm`, `hat_yarik_mm`) | 3,0 / 3,0 mm | 3,0 / 3,0 mm | 8,0 / 8,0 mm |
+  | HAT altı – Active Cooler (`hat_alti_sogutucu_mm`) | 1,4 mm | 1,4 mm | 1,4 mm |
+  | HAT × "Fan yeri 30×30×10 (listede yok)" zarfı (`hat_fan_yeri_kesisim_mm3`) | 98,2 mm³ | 98,2 mm³ | 19,61 mm³ |
+  | Vida erişimi: HAT vidaları yukarı, Ø6 alet (`erisim`) | 36,86 / 29,64 / 36,86 / 36,86 mm | aynı | aynı |
+  | Vida erişimi: dizi vidası 1 aşağı, Ø8 alet | 57,77 mm (engel iskelet) | 57,77 mm | 27,55 mm (engel HAT bileşen zarfı) |
+  | Vida erişimi: dikiş cıvatası dışarıdan, Ø6 | ≥ 60 mm | ≥ 60 mm | ≥ 60 mm |
+  | Kafa grubu kütlesi, HAT ile / HAT'sız (`tork_hatli`, `tork_hatsiz` `.kafa_grubu_g`) | 1.598,9 / 1.570,8 g | 1.598,9 / 1.570,8 g | 1.598,9 / 1.570,8 g |
+  | Tilt payı ±15°, HAT ile / HAT'sız (`.pay_tilt15`, kafa_montaj §6 yöntemi) | 3,30 / 3,64 | 3,30 / 3,64 | 3,37 / 3,70 |
+  | Pan payı, HAT ile / HAT'sız (`.pan_pay_iki_hane`) | 2,20 / 2,21 | 2,20 / 2,21 | 2,20 / 2,21 |
+  | Tilt −15°'de kafa – pan grubu en yakın (`tilt_sinir_en_yakin`) | 3,05 mm | 3,05 mm | 3,05 mm |
+  | Baskı: arka kabuk sağ destek sorunu (`baski`, KL.baski_analiz) | 1 (bugün de 1, `kafa-analiz.json`) | 1 | 1 |
+
+  Notlar: (1) Seçenek 0 satırındaki HAT × arka kabuk 108,16 mm³, bu betiğin ayrıntılı HAT takımıyla (kart + bileşen + başlık); 77,69 eski
+  kutu zarfla. (2) Fan yeri zarfı HAT ile her seçenekte kesişiyor: K12'de fan seçilirse fan yeri taşınmalı (b'de kesişim küçük). (3) b'de
+  kablo yolları 5 mm kaydı, kablo boyu/kütle yeniden hesaplanmadı (**doğrulanmadı**); tork kütlesindeki kablo kalemleri bugünkü yoldan.
+  (4) Dizi vidası 0 ve 2 için aşağı erişim üç seçenekte de 0 mm çıkıyor (alet silindiri dizi kartının içinden başlıyor): ölçüm yöntemi sorunu,
+  HAT'ten bağımsız, **doğrulanmadı**. (5) İki seçenekte de korunan değerler sağlanıyor (tilt ≥ 3,0, pan ≥ 2,0).
 - **Varsayılan:** a, boss taşı (`dongu-158.md:137, §4 K2`).
 - **Bloke:** P1.3'ün seçimi (iki çözüm de üretilir, seçim buraya), P6.1 tam model.
 - **Durum:** açık (`KY/uygulama-notu.md:149`).
