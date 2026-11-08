@@ -40,8 +40,8 @@ tilt payı ≥ 3,0 (3,64); pan payı ≥ 2,0 (2,21); mikrofon-hoparlör ≥ 400 
 | Paket | Ajan | Yazdığı alan |
 |---|---|---|
 | F1a (P1.2, P1.3, P1.6, P1.7) | A | `tasarim/freecad/` kafa betikleri, `lale158/kafa-yerlesim/`, `planlama/d158/F1a-*`, FreeCAD makinesi |
-| P8.3 | C (kayıt) | git commit: `planlama/d158/testler/`, `F8c-*` |
-| P9.1 | A (düzeltme 1) | `planlama/proje-plani.md`, `planlama/d158/F9a-*` |
+| P8.4 | A | `planlama/d158/testler/`, `planlama/d158/F8d-*` |
+| P9.1 | C (kayıt) | `planlama/proje-plani.md`, `F9a-*`, git commit |
 
 - **Tasarım sırası:** her adım öncekini bozmamalı; tam çakışma taraması yalnız P6'da, bir kez.
 - **Karar gereken yerde durma:** Ahmet'in kararını isteyen madde `planlama/d158/karar-kuyrugu.md`'ye yazılır
@@ -132,9 +132,9 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 |---|---|---|---|---|
 | P8.1 | 158 için güncel sipariş paketi: hocadaki listeyle fark, satıcı sayfası ve stok doğrulaması, her kalem için ikinci satıcı | Fark tablosu + toplam; doğrulanmayan kalem işaretli | F4 sonrası | ⏳ |
 | P8.2 | Baskı partileri (Parti 0–4): sıra, filament kg, süre, önce basılacak test kuponları | Partilerin toplamı baskı listesine eşit | P8.1 | ⏳ |
-| P8.3 | Ölçüm ve test kâğıtları (ekip yapacak): JGB37 durma torku, QLED Power–Touch VBUS (Pi'ye takmadan), kafa 5 V akımı, PAM akımı, hub girişi gerilimi, akustik (Ø3 delik, yankı, servo gürültüsü) | Her test: amaç, malzeme, adım, kayıt tablosu, geçer sınırı | F1 ile | ⏳ |
+| P8.3 | Ölçüm ve test kâğıtları (ekip yapacak): JGB37 durma torku, QLED Power–Touch VBUS (Pi'ye takmadan), kafa 5 V akımı, PAM akımı, hub girişi gerilimi, akustik (Ø3 delik, yankı, servo gürültüsü) | Her test: amaç, malzeme, adım, kayıt tablosu, geçer sınırı | F1 ile | ✅ |
 
-| P8.4 | Ek test kâğıtları (P8.3'ten çıkan): K12 kafa ısı testi, H1 sigorta açıklığı ölçümü, perçin delik/somun ölçüsü, rampada acil stop (motor boşa düşünce yuvarlanma, `kararlar-2026-10-29.md:83`); P8.3 kontrol önerileri: T4 ilk dinlemede acil stop basılı, T1 seri multimetreyi çıkarmayı zorunlu yap | P8.3 biçiminde, sayısal geçer sınırı | P8.3 sonrası | ⏳ |
+| P8.4 | Ek test kâğıtları (P8.3'ten çıkan; `00-genel.md:3` "kontrol bekliyor" satırı da güncellenir): K12 kafa ısı testi, H1 sigorta açıklığı ölçümü, perçin delik/somun ölçüsü, rampada acil stop (motor boşa düşünce yuvarlanma, `kararlar-2026-10-29.md:83`); P8.3 kontrol önerileri: T4 ilk dinlemede acil stop basılı, T1 seri multimetreyi çıkarmayı zorunlu yap | P8.3 biçiminde, sayısal geçer sınırı | P8.3 sonrası | ⏳ |
 
 ### Faz F9: Takvim ve teslim
 
@@ -159,6 +159,10 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | K9 | El yükü 0,5 kg için servo değişimi mi, 100 g sınırı mı | 100 g sınırı |
 
 ## 5. Günlük
+
+- 2026-11-08 P9.1 B: 2 düzeltme turu → GEÇER. Sonuç: S=16.11 + erken alım (≈1.496 TL, 9.11 karar) + Parti 1 12.11 → demo 10.01; yoksa 20–24.01. C kayıtta.
+
+- 2026-11-08 **P8.3 ✅** C: regresyon 10/10, fc9c651 + rapor 15b0a30 push. Not: remote sahibinin hesap adı takma ad (URL.de görünüyor; kapsam dışı, Ahmet.e bilgi verildi). regresyon.py `--help` tanımıyor, normal koşu yapıyor (C kazası, geri kuruldu) → P4 sırasında düzelt.
 
 - 2026-11-08 P8.3 B: GEÇMEZ (T8/T9 güvenlik, multimetre) → 2 düzeltme turu → GEÇER (10/10 kâğıt). C kayıtta. P9.1 B: KOŞULLU (16.11 'Evet' erken alıma bağlı; lazer kritik yolda; kesinti 4 M6 ile çelişiyor; son sipariş ≈30.11) → düzeltme 1.
 
