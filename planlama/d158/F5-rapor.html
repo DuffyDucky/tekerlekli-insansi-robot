@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F5 Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+tr.k td{background:var(--crit-bg)}
+tr.k td:first-child{box-shadow:inset 3px 0 0 var(--crit)}
+tr.yeni td:first-child{box-shadow:inset 3px 0 0 var(--info)}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<main>
+<h1>Lale 1,58 m · F5 kayıt raporu</h1>
+<p class="sub">Faz F5 (yazılım hizası: P5.1, P5.2, P5.3), ajan C ölçüm ve kayıt, 08.11.2026 · dal <code>lale-duzeltme</code> · kaynak belgeler: <code>planlama/d158/servo-10-oneri.md</code>, <code>kablo-kurali-notu.md</code>, <code>F5-pano-taslak.md</code>, <code>F5-kontrol.md</code></p>
+
+<h2>Özet</h2>
+<div class="cards">
+  <div class="card">
+    <div class="k">Bağımsız kontrol</div>
+    <div class="v">3 / 3 GEÇER</div>
+    <div class="d">İlk kontrol P5.1, P5.2 KOŞULLU; iki düzeltme turundan sonra "Yeniden kontrol 2" GEÇER (<code>F5-kontrol.md</code>)</div>
+  </div>
+  <div class="card">
+    <div class="k">Regresyon</div>
+    <div class="v">10 / 10 aynı</div>
+    <div class="d"><code>regresyon.py --yazma</code>, çıkış 0; <code>regresyon.json</code> sha256 koşudan önce ve sonra aynı</div>
+  </div>
+  <div class="card">
+    <div class="k">Kod ↔ CAD</div>
+    <div class="v">11 çelişki</div>
+    <div class="d">3'ü kritik (Ç2, Ç4, Ç6), 2'si bunlara bağlı jest değeri (Ç8, Ç9)</div>
+  </div>
+  <div class="card">
+    <div class="k">Pano</div>
+    <div class="v">#6 açıldı</div>
+    <div class="d">Durum soru, bekleyen Efe; 1.720 karakter, 6 soru, karar yok</div>
+  </div>
+</div>
+<p class="note">Yalnız belge üretildi: <code>kod/</code> ve CAD dosyaları değişmedi, CAD betikleri koşturulmadı. Kod tarafı <code>main</code> dalından (son commit <code>84bc2b4</code>, 29.10.2026) okundu.</p>
+
+<h2>1. Önerilen 10 servo tablosu</h2>
+<p>Açılar CAD işaretiyle: işaretli derece, 0 = ev pozu. Kanal 0–5 aynen korunur, yeni 4 servo 6–9'a girer (kanal 10–12 sonar, 13–15 yedek). Yeni satırlar mavi çizgili.</p>
+<div class="tbl"><table>
+<thead><tr><th>#</th><th>Ad (kod)</th><th>EJ</th><th>Servo</th><th>Sınır (°)</th><th>Ev</th><th>Servo orta</th><th>Mevcut kod</th><th>Fark</th></tr></thead>
+<tbody>
+<tr><td class="n">0</td><td><code>sag_omuz</code></td><td><code>r_s1</code></td><td>DS3235</td><td class="n">−45 … 135</td><td class="n">0</td><td>S1 = 45</td><td>DS3218, 0 … 160, boşta 10</td><td>model; üst 160 → 135; alt 0 → −45; sıfır 45° kayık</td></tr>
+<tr><td class="n">1</td><td><code>sag_dirsek</code></td><td><code>r_dirsek</code></td><td>MG996R</td><td class="n">0 … 105</td><td class="n">0</td><td>dirsek = 52,5</td><td>0 … 110, boşta 15</td><td>üst 110 → 105; sıfır 37,5° kayık</td></tr>
+<tr><td class="n">2</td><td><code>sol_omuz</code></td><td><code>l_s1</code></td><td>DS3235</td><td class="n">−45 … 135</td><td class="n">0</td><td>S1 = 45 (aynalı)</td><td>0 … 160, <code>ters: true</code></td><td>satır 0 ile aynı</td></tr>
+<tr><td class="n">3</td><td><code>sol_dirsek</code></td><td><code>l_dirsek</code></td><td>MG996R</td><td class="n">0 … 105</td><td class="n">0</td><td>dirsek = 52,5</td><td>0 … 110, <code>ters: true</code></td><td>satır 1 ile aynı</td></tr>
+<tr><td class="n">4</td><td><code>kafa_pan</code></td><td><code>pan</code></td><td>MG996R</td><td class="n">−90 … 90</td><td class="n">0</td><td>pan = 0</td><td>45 … 135 (= ±45)</td><td>kod daha dar; işaret ters (kod = 90 − CAD)</td></tr>
+<tr class="k"><td class="n">5</td><td><code>kafa_tilt</code></td><td><code>tilt</code></td><td>MG996R</td><td class="n">−13 … 13</td><td class="n">0</td><td>tilt = 0</td><td>70 … 110 (= ±20)</td><td><strong>kod ±20, CAD ±13</strong></td></tr>
+<tr class="yeni"><td class="n">6</td><td><code>sag_omuz_yana</code></td><td><code>r_s2</code></td><td>DS3235</td><td class="n">5 … 120</td><td class="n">5</td><td>belirsiz</td><td>yok</td><td>yeni; S1 ≥ 120 iken S2 ≤ 117</td></tr>
+<tr class="yeni"><td class="n">7</td><td><code>sag_bilek</code></td><td><code>r_bilek</code></td><td>MG996R</td><td class="n">−90 … 90</td><td class="n">0</td><td>bilek = 0</td><td>yok</td><td>yeni</td></tr>
+<tr class="yeni"><td class="n">8</td><td><code>sol_omuz_yana</code></td><td><code>l_s2</code></td><td>DS3235</td><td class="n">5 … 120</td><td class="n">5</td><td>belirsiz</td><td>yok</td><td>yeni, <code>ters: true</code>; bağımlı sınır aynı</td></tr>
+<tr class="yeni"><td class="n">9</td><td><code>sol_bilek</code></td><td><code>l_bilek</code></td><td>MG996R</td><td class="n">−90 … 90</td><td class="n">0</td><td>bilek = 0</td><td>yok</td><td>yeni, <code>ters: true</code></td></tr>
+</tbody></table></div>
+<p class="note">Kod üreticisi yalnız 0 … 180 kabul eder (<code>main:kod/jestler/jest_uret.py:63</code>). Bu yüzden öneri: omuz kod = CAD + 45, bilek kod = CAD + 90, tilt kod = 90 − CAD (77 … 103). İkinci kanal düzeni seçeneği (elektrik.md blokları: 0–4 sağ kol + pan, 5–9 sol kol + tilt) sol omuz ve sol dirseği 2–3'ten 6–7'ye taşır.</p>
+
+<h2>2. Kod ↔ CAD çelişkileri (11)</h2>
+<p>Kırmızı satırlar kritik: robot çakışma bölgesine ya da mekanik sınır dışına komut alabilir.</p>
+<div class="tbl"><table>
+<thead><tr><th>#</th><th>Kodda (main)</th><th>CAD / plan</th><th>Risk</th></tr></thead>
+<tbody>
+<tr><td>Ç1</td><td>omuz <code>DS3218</code></td><td>DS3235 (karar 24.10)</td><td>darbe aralığı ve tork farklı</td></tr>
+<tr class="k"><td><span class="tag crit">Ç2</span></td><td>omuz 0 … 160</td><td>S1 −45 … 135</td><td><strong>135–160 arası komut CAD sınırının dışında</strong>; −45 … 0 kullanılamıyor</td></tr>
+<tr><td>Ç3</td><td>dirsek 0 … 110</td><td>0 … 105 (110'da boşluk 1,6 mm, 115 çarpar)</td><td>yazılım sınırı aşılıyor</td></tr>
+<tr class="k"><td><span class="tag crit">Ç4</span></td><td>tilt 70 … 110 (= ±20)</td><td>±13 (ilk çakışma +18 / −17)</td><td><strong>çakışma bölgesine komut gidebilir</strong></td></tr>
+<tr><td>Ç5</td><td>pan 45 … 135 (= ±45)</td><td>±90</td><td>güvenli taraf; bilgi</td></tr>
+<tr class="k"><td><span class="tag crit">Ç6</span></td><td>servo orta (1500 µs) = robot 90; sıfır kayması yok</td><td>S1 horn'u servo 45°'de kol aşağıda; dirsek servo ortası = 52,5°</td><td><strong>CAD talimatıyla takılıp bugünkü kodla sürülürse omuz 0 → S1 −45, dirsek 0 → −37,5</strong> (dirsek alt sınırı çatal dayanağı). Servo dönüş yönü varsayımıyla; sol kolda yön montajda doğrulanmalı</td></tr>
+<tr><td>Ç7</td><td>boşta omuz 10, dirsek 15</td><td>ev pozu S1 0, S2 5, dirsek 0, bilek 0</td><td>devrilme payları CAD ev pozuyla hesaplı; boşta pozunun etkisi hesaplanmadı</td></tr>
+<tr><td><span class="tag wait">Ç8</span></td><td><code>selam</code>, <code>isaret</code>: <code>sag_omuz: 150</code></td><td>S1 ≤ 135</td><td>sınır daraltılınca üretici kareyi reddeder (Ç2'ye bağlı)</td></tr>
+<tr><td><span class="tag wait">Ç9</span></td><td><code>evet</code>: <code>kafa_tilt: 75</code> (= CAD +15)</td><td>tilt ≤ +13</td><td>çakışma payını yiyor (Ç4'e bağlı)</td></tr>
+<tr><td>Ç10</td><td><code>SERVO_SAYISI 6</code></td><td>10 servo</td><td>S2 ve bilek sürülmüyor</td></tr>
+<tr><td>Ç11</td><td>sol omuz 2, sol dirsek 3</td><td>0–4 hat A (sağ kol + pan), 5–9 hat B (sol kol + tilt)</td><td>kablaj düzeni; kodda "kablajda doğrula" notu var</td></tr>
+</tbody></table></div>
+<p class="note">Belge ↔ belge: S2 alt sınırı güncel kaynakta +5° (<code>arayuz.py:176</code>, 18.10); C1 kararındaki +3° eski. <code>dongu-158.md</code> P2.1 satırı +5° olarak güncellendi; <code>F5-brief.md</code> tarihsel metin olarak +3° diyor.</p>
+
+<h2>3. Boyun kabloları</h2>
+<p>Eski kural "HDMI ve CSI boyundan geçmez" CAD'de (05.11 yerleşim B + R1) artık geçerli değil. Önerilen boy = yol × 1,25, hub'a bağlı kablolarda + 150 mm kapak payı (tahmin).</p>
+<div class="tbl"><table>
+<thead><tr><th>Kablo</th><th>Uçlar</th><th>Yol / önerilen (mm)</th><th>Kesit</th><th>Boyunda kesişme (mm³)</th></tr></thead>
+<tbody>
+<tr><td>Kafa 12 V</td><td>18 AWG çift, taban F3 5 A → kafa</td><td>kaynakta yok</td><td class="n">10,6 mm²</td><td>tüp modellenmedi</td></tr>
+<tr><td>Tilt servosu</td><td>3 tel, kafa → tabandaki PCA9685</td><td>kaynakta yok</td><td class="n">5,9 mm²</td><td>tüp modellenmedi</td></tr>
+<tr><td>Göğüs HDMI</td><td>Pi HDMI1 → 11,6" göğüs ekranı, ekran ucunda 90° fiş</td><td class="n">757 / 950</td><td class="n">Ø6</td><td>mil 15,1; servo yuvası 1,7</td></tr>
+<tr><td>Hub uzatması</td><td>Pi port 3 → gövdedeki USB hub</td><td class="n">617 / 920</td><td class="n">Ø4</td><td>mil 1,2</td></tr>
+<tr><td>Hoparlör</td><td>PAM8403 (kafa) → hoparlör (gövde)</td><td class="n">823 / 1.030</td><td class="n">Ø4</td><td>mil 1,2</td></tr>
+</tbody></table></div>
+<p class="note">Demet kesiti 69,9 mm²; en dolu dar kesit servo yuvası arka kanalı %44,8. Boyundan geçmeyenler: göğüs dokunmatiği ve ESP32 USB (hub'dan), göğüs ekranı 12 V, kafa ekranı HDMI şeridi, CSI. Yazılıma etkisi: iki HDMI ekran (yüz HDMI0 1280×720, kodda 1280×800), ses <code>vc4hdmi0</code>'dan USB ses kartına geçmeli, ESP32 ve göğüs dokunmatiği hub arkasında.</p>
+
+<h2>4. Efe'ye giden sorular (pano #6)</h2>
+<ol class="list" type="a">
+<li>Servo sıfırı: kod birimi mi kaydırılsın (omuz CAD + 45, dirsek CAD + 37,5, bilek CAD + 90), eklem başına sıfır kayması mı, yoksa horn'lar "servo ortası = 90" kuralına göre mi takılsın?</li>
+<li>Kanal düzeni: 0–5 aynen mi, yoksa elektrik.md blokları mı (0–4 sağ kol + pan, 5–9 sol kol + tilt)?</li>
+<li>Boyun düzeni (12 V + tilt + göğüs HDMI + hub uzatması + hoparlör) kabul mü? (karar kuyruğu K14)</li>
+<li>Yüz HDMI0, göğüs HDMI1 ataması yazılıma uygun mu?</li>
+<li>ESP32 ve göğüs dokunmatiğinin hub arkasında olması sorun olur mu?</li>
+<li>Masada ~1 m HDMI ile göğüs ekranı denenebilir mi (algılama, 1080p)?</li>
+</ol>
+
+<h2>5. Açık işler</h2>
+<div class="tbl"><table>
+<thead><tr><th>İş</th><th>Kimde</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td>Pano #6 cevabı: servo sıfırı yolu, kanal düzeni, boyun ve HDMI soruları</td><td>Efe</td><td><span class="tag wait">bekliyor</span></td></tr>
+<tr><td>S2 horn açısı: montaj talimatında (<code>omuz_rapor.py</code>) kolun pozu yazmıyor, S2 sıfırı belirsiz</td><td>Ahmet / CAD</td><td><span class="tag wait">açık</span></td></tr>
+<tr><td>K9: el yükü 0,5 kg için servo değişimi seçilirse tablonun "Servo" sütunu değişir</td><td>karar kuyruğu</td><td><span class="tag wait">açık</span></td></tr>
+<tr><td>DS3235 darbe aralığı (<code>min_us</code> / <code>max_us</code>) depoda yok: servo gelince ölçülecek</td><td>ekip</td><td><span class="tag info">ölçüm</span></td></tr>
+<tr><td>Boyun içi 4 geçiş (HDMI × mil, HDMI × servo yuvası, hub uzatması × mil, hoparlör × mil) elle bakılacak</td><td>CAD</td><td><span class="tag info">kontrol</span></td></tr>
+<tr><td>Göğüs kablo tüpleri ekran kasasıyla kesişiyor (HDMI 897,1 / 12 V 617,3 / USB 167,6 mm³); yol değişirse boylar yeniden okunmalı</td><td>P1.4</td><td><span class="tag info">sırada</span></td></tr>
+<tr><td>Boşta pozunun (omuz 10, dirsek 15) devrilme payına etkisi; rampa kuralındaki "ev pozu" hangisi</td><td>F3</td><td><span class="tag info">sırada</span></td></tr>
+<tr><td>Servo payları 1,58 m'de yeniden ölçülmedi</td><td>P3.2</td><td><span class="tag info">sırada</span></td></tr>
+<tr><td>Eski boyun kablo yazımları (<code>yazilim-plani.md</code>, <code>elektrik.md</code>) 05.11 öncesi düzeni anlatıyor</td><td>P4.1</td><td><span class="tag info">sırada</span></td></tr>
+</tbody></table></div>
+
+<footer>Ajan C (ölçüm ve kayıt) · F5 · 08.11.2026 · Belgeler commit <code>4d242eb</code> (<code>lale-duzeltme</code>) · Pano konusu #6, kaynak satırı "planlama/d158/servo-10-oneri.md lale-duzeltme 4d242eb" · Kaynaklar: <code>servo-10-oneri.md</code>, <code>kablo-kurali-notu.md</code>, <code>F5-kontrol.md</code>, <code>F5-gunluk.md</code>, <code>regresyon.py --yazma</code>.</footer>
+</main>
+</body>
+</html>
