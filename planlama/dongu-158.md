@@ -40,8 +40,8 @@ tilt payı ≥ 3,0 (3,64); pan payı ≥ 2,0 (2,21); mikrofon-hoparlör ≥ 400 
 | Paket | Ajan | Yazdığı alan |
 |---|---|---|
 | F1a (P1.2, P1.3, P1.6, P1.7) | A | `tasarim/freecad/` kafa betikleri, `lale158/kafa-yerlesim/`, `planlama/d158/F1a-*`, FreeCAD makinesi |
-| P5.1 + P5.2 | A | `planlama/d158/F5-*`, `planlama/d158/servo-10-oneri.md`, `planlama/d158/kablo-kurali-notu.md` (salt okuma: CAD, `kod/`) |
-| P8.3 | A | `planlama/d158/testler/`, `planlama/d158/F8c-*` (salt okuma) |
+| P8.3 | C (kayıt) | git commit: `planlama/d158/testler/`, `F8c-*` |
+| P9.1 | A (düzeltme 1) | `planlama/proje-plani.md`, `planlama/d158/F9a-*` |
 
 - **Tasarım sırası:** her adım öncekini bozmamalı; tam çakışma taraması yalnız P6'da, bir kez.
 - **Karar gereken yerde durma:** Ahmet'in kararını isteyen madde `planlama/d158/karar-kuyrugu.md`'ye yazılır
@@ -108,9 +108,9 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
-| P5.1 | 10 servoluk kanal tablosu önerisi: ad, PCA9685 kanalı, açı sınırı (`eklem_sinirlari`), ev pozu, servo modeli (main'de 6: bilek ve omuz yana açma yok) | Her satır CAD sınırlarıyla aynı; `d158/servo-10-oneri.md` | F1 ile | ⏳ |
-| P5.2 | Kablo kuralı farkı: `yazilim-plani.md:64` "HDMI ve CSI boyundan geçmez" ↔ göğüs HDMI + dokunmatik boyundan geçiyor; Efe için tek sayfa not | Not hazır, pano mesajı taslağı | P5.1 | ⏳ |
-| P5.3 | Panoya bilgi + soru olarak gönder (karar yok) | Pano konusu açıldı | Onaya bağlı | ⏳ |
+| P5.1 | 10 servoluk kanal tablosu önerisi: ad, PCA9685 kanalı, açı sınırı (`eklem_sinirlari`), ev pozu, servo modeli (main'de 6: bilek ve omuz yana açma yok) | Her satır CAD sınırlarıyla aynı; `d158/servo-10-oneri.md` | F1 ile | ✅ |
+| P5.2 | Kablo kuralı farkı: `yazilim-plani.md:64` "HDMI ve CSI boyundan geçmez" ↔ göğüs HDMI + dokunmatik boyundan geçiyor; Efe için tek sayfa not | Not hazır, pano mesajı taslağı | P5.1 | ✅ |
+| P5.3 | Panoya bilgi + soru olarak gönder (karar yok) | Pano konusu açıldı | Onaya bağlı | ✅ |
 
 ### Faz F6: Tam model (eski Y4)
 
@@ -134,7 +134,7 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | P8.2 | Baskı partileri (Parti 0–4): sıra, filament kg, süre, önce basılacak test kuponları | Partilerin toplamı baskı listesine eşit | P8.1 | ⏳ |
 | P8.3 | Ölçüm ve test kâğıtları (ekip yapacak): JGB37 durma torku, QLED Power–Touch VBUS (Pi'ye takmadan), kafa 5 V akımı, PAM akımı, hub girişi gerilimi, akustik (Ø3 delik, yankı, servo gürültüsü) | Her test: amaç, malzeme, adım, kayıt tablosu, geçer sınırı | F1 ile | ⏳ |
 
-| P8.4 | Ek test kâğıtları (P8.3'ten çıkan): K12 kafa ısı testi, H1 sigorta açıklığı ölçümü, perçin delik/somun ölçüsü, rampada acil stop (motor boşa düşünce yuvarlanma, `kararlar-2026-10-29.md:83`) | P8.3 biçiminde, sayısal geçer sınırı | P8.3 sonrası | ⏳ |
+| P8.4 | Ek test kâğıtları (P8.3'ten çıkan): K12 kafa ısı testi, H1 sigorta açıklığı ölçümü, perçin delik/somun ölçüsü, rampada acil stop (motor boşa düşünce yuvarlanma, `kararlar-2026-10-29.md:83`); P8.3 kontrol önerileri: T4 ilk dinlemede acil stop basılı, T1 seri multimetreyi çıkarmayı zorunlu yap | P8.3 biçiminde, sayısal geçer sınırı | P8.3 sonrası | ⏳ |
 
 ### Faz F9: Takvim ve teslim
 
@@ -159,6 +159,10 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | K9 | El yükü 0,5 kg için servo değişimi mi, 100 g sınırı mı | 100 g sınırı |
 
 ## 5. Günlük
+
+- 2026-11-08 P8.3 B: GEÇMEZ (T8/T9 güvenlik, multimetre) → 2 düzeltme turu → GEÇER (10/10 kâğıt). C kayıtta. P9.1 B: KOŞULLU (16.11 'Evet' erken alıma bağlı; lazer kritik yolda; kesinti 4 M6 ile çelişiyor; son sipariş ≈30.11) → düzeltme 1.
+
+- 2026-11-08 **F5 ✅** (B: 2 düzeltme turu → GEÇER). C: regresyon 10/10, commit 4d242eb + rapor 3159125 push; pano #6 açıldı (soru, bekleyen efe). P9.1 A başladı.
 
 - 2026-11-08 P8.3 A bitti: 9 kâğıt + testler.html (123 atıf). Bulgular: ReSpeaker yankı giderme ayrı ses kartıyla referans alamayabilir → Efe'ye soru (F5 sonrası pano); fan 3 dB çelişkisi; P8.4 eklendi. B kontrolde. F5 yeniden kontrolde. F1a A kabuk koşusunda.
 
