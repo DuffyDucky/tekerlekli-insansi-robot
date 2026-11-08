@@ -4,9 +4,15 @@ Robotun FreeCAD 1.1 modeli modül modül kuruluyor. Her modül kendi klasöründ
 Üretilmiş dosyaları (FCStd, STEP, JSON, görseller, rapor.html) elle düzenleme; betiği değiştirip yeniden çalıştır.
 Eski CadQuery modeli `tasarim/cad/robot_cad.py` yalnız ölçü kaynağı olarak okunuyor.
 
-> **1,58 m (01.11.2026 kararı, 03.11.2026 CAD):** ana tasarım 1,58 m (`arayuz.BOY` 1580, UZAMA 315, S3 1270, direk 1.115,5). Göğüste gömülü 11,6" 1080p kasalı ekran (`arayuz.GOGUS_EKRAN`: cep, 2 yarım çerçeve, VESA taşıyıcı direk ön kanalında), kafada 10,1" QLED (04.11; `arayuz.KAFA_EKRAN_QLED`, 4 tırnak, kabuk dışı aynı, `HEAD_UP` 290 sabit, denge yeniden; 7" `KAFA_EKRAN7` geri dönüş için duruyor), göğüs çerçevesi gövde renginde, ekran 2 mm içeride, köşe takozlu (`GOGUS_EKRAN` `cam_geri`, `cerceve`; tasarım notu `lale158/qled-cerceve-tasarim-notu.md`), 5 V Pololu D24V50F5. Ayrıntı, kontroller, kablo yolu: `lale158/` (`lale158_kontrol.py`, `lale158_gorsel.py`, `lale158_rapor.py`, `kablo_yolu_ekran.py` → `rapor.html`). Aşağıdaki 1,65 m sayıları eski; modül raporları regresyon sonrası yenilenecek.
+> **1,58 m (01.11.2026 kararı, 03.11.2026 CAD):** ana tasarım 1,58 m (`arayuz.BOY` 1580, UZAMA 315, S3 1270, direk 1.115,5). Göğüste gömülü 11,6" 1080p kasalı ekran (`arayuz.GOGUS_EKRAN`: cep, 2 yarım çerçeve, VESA taşıyıcı direk ön kanalında), kafada 10,1" QLED (04.11; `arayuz.KAFA_EKRAN_QLED`, 4 tırnak, kabuk dışı aynı, `HEAD_UP` 290 sabit, denge yeniden; 7" `KAFA_EKRAN7` geri dönüş için duruyor), göğüs çerçevesi gövde renginde, ekran 2 mm içeride, köşe takozlu (`GOGUS_EKRAN` `cam_geri`, `cerceve`; tasarım notu `lale158/qled-cerceve-tasarim-notu.md`), 5 V Pololu D24V50F5. Ayrıntı, kontroller, kablo yolu: `lale158/` (`lale158_kontrol.py`, `lale158_gorsel.py`, `lale158_rapor.py`, `kablo_yolu_ekran.py` → `rapor.html`). Aşağıdaki modül bölümlerindeki 125 cm / 1,65 m sayıları eski; modül raporları regresyon sonrası yenilenecek.
 >
-> **1,65 m (Y2a, 29 Ekim 2026):** ana tasarım artık 1,65 m (`arayuz.BOY` 1650, gövde uzatması 385, direk 1.185,5 tek parça). `taslak-170/` varyantının değişiklikleri (uzatma bantları, 10,1" kafa, kol ×1,25 + DS3235, dirsek çatalı 8 mm, taban 520) modüllere işlendi; göğüs Nextion kaldırıldı. Aşağıdaki modül metinlerinin bir kısmı (Nextion, 7" LCD, 955 / 975 yükseklikleri) eski; belge güncellemesi Y2b'de. Ayrıntı: `planlama/y2/Y2a-gunluk.md`.
+> **Güncel sayılar (09.11.2026):** boy 1.580,0 mm (`lale158/lale158-kontrol.json` `toplam_boy_mm`), 1.179 parça ve ana montaj 25.715,6 g (`montaj/montaj-analiz.json` `parca_sayisi`, `kutle_g`);
+> ev pozu 400 g kablo payıyla 26.115,6 g, AM (−0,03; 522,71; −10,03) (`lale158/kafa-yerlesim/uygulama-ivme.json` `ev`); akü 3,0 kg (`arayuz.py` `TABAN["aku"]["kutle_g"]` 3000);
+> 10 servo (DS3235 × 4, MG996R × 6; `montaj/robot-bom.csv`); yüksüz rampa devrilme payı 1,519 (eşik 1,5; `uygulama-ivme.json` `izgara_yuk_0g.a_sinir_pay15.rampa5_geri`);
+> tilt payı 3,64, pan payı 2,21 (`kafa/kafa-analiz.json` `tork`). Ses ve USB (05.11 B + R1): ReSpeaker v2.0, USB ses kartı ve PAM8403 kafada, hub göğüs üst arka kapağının içinde,
+> hoparlör gövde orta bandında (`arayuz.SES_USB`; `lale158/kafa-yerlesim/uygulama-notu.md`). Tam özet `OZET.md`.
+>
+> **Tarihçe — 1,65 m (Y2a, 29 Ekim 2026):** o tarihte ana tasarım 1,65 m idi (`arayuz.BOY` 1650, gövde uzatması 385, direk 1.185,5 tek parça). `taslak-170/` varyantının değişiklikleri (uzatma bantları, 10,1" kafa, kol ×1,25 + DS3235, dirsek çatalı 8 mm, taban 520) modüllere işlendi; göğüs Nextion kaldırıldı. Aşağıdaki modül metinlerinin bir kısmı (Nextion, 7" LCD, 955 / 975 yükseklikleri) eski; belge güncellemesi Y2b'de. Ayrıntı: `planlama/y2/Y2a-gunluk.md`.
 
 ## Klasör düzeni
 
@@ -17,7 +23,7 @@ Eski CadQuery modeli `tasarim/cad/robot_cad.py` yalnız ölçü kaynağı olarak
 | `sigma_profil.py` | 40×40 ağır sigma kesiti (kesit alanı üreticiye göre doğrulandı); doğrudan çalışınca test parçası üretir |
 | `omuz/` | Sağ omuz (2 eksen): `omuz_parcalar.py` parçalar + kinematik, `omuz_montaj.py` kontroller + kayıt, `omuz_gorsel.py`, `omuz_rapor.py`, `omuz_regresyon.py` |
 | `iskelet/` | Şase çerçevesi + gövde direği + omuz traversi + bağlantılar: `iskelet_parcalar.py`, `iskelet_montaj.py`, `iskelet_gorsel.py`, `iskelet_rapor.py` → `rapor.html`, `iskelet_regresyon.py` |
-| `kabuk/` | Gövde kabuğu + taban eteği + Nextion göğüs ekranı + iskelete bağlantı braketleri: `kabuk_lib.py`, `kabuk_parcalar.py`, `kabuk_montaj.py` (kontroller, baskı analizi), `kabuk_gorsel.py`, `kabuk_rapor.py` → `rapor.html` |
+| `kabuk/` | Gövde kabuğu + taban eteği + 11,6" göğüs ekranı cebi, çerçevesi ve VESA taşıyıcısı (125 cm'de Nextion) + hoparlör kabı + hub takozlu üst arka kapak + iskelete bağlantı braketleri: `kabuk_lib.py`, `kabuk_parcalar.py`, `kabuk_montaj.py` (kontroller, baskı analizi), `kabuk_gorsel.py`, `kabuk_rapor.py` → `rapor.html` |
 | `dirsek/` | Sağ dirsek + ön kol + bilek + el (sol = X aynası): `dirsek_lib.py` (MG996R, horn, baskı analizi), `dirsek_parcalar.py`, `dirsek_montaj.py` (kontroller, dirsek içi tarama, tork, baskı), `dirsek_gorsel.py`, `dirsek_rapor.py` → `rapor.html`, `dirsek-analiz.json`. Arayüz `arayuz.DIRSEK`; modüller arası tarama `carpisma.py` (kol zinciri), ana montajda `dirsek_sag` / `dirsek_sol` |
 | `kafa/` | Boyun + pan + tilt + kafa: `kafa_lib.py` (6808-2RS, 10,1" QLED, 7" LCD, Camera Module 3, baskı analizi), `kafa_parcalar.py`, `kafa_montaj.py` (kontroller, pan × tilt tarama, R62 uyumu, tork, baskı), `kafa_gorsel.py`, `kafa_rapor.py` → `rapor.html`, `kafa-analiz.json`. Arayüz `arayuz.KAFA`, `MODULLER['kafa']`; modüller arası tarama `carpisma.py` bölüm 4b, ana montajda `kafa` (pan + tilt) |
 | `taban/` | Alt plaka + elektronik katı (ön) + güç paneli (arka) + 4 motorlu tahrik + akü + güç elektroniği + kartlar + sonar + acil stop: `taban_lib.py`, `taban_parcalar.py`, `taban_montaj.py` (kontroller, iskelet/kabuk statik tarama, devrilme/motor/akü hesabı, DXF, baskı) → `taban-analiz.json`, `dxf/`; `taban_gorsel.py`, `taban_rapor.py` → `rapor.html`. Arayüz `arayuz.TABAN`, `MODULLER['taban']`; modüller arası tarama `carpisma.py` bölüm 4c, ana montajda `taban` (4 teker eklemi) |
@@ -29,7 +35,7 @@ Eski CadQuery modeli `tasarim/cad/robot_cad.py` yalnız ölçü kaynağı olarak
 | `OZET.md` | Tüm robotun tek sayfalık özeti: modüller, sayılar, kütle/AM, devrilme, motor, akü, yazılım sınırları, açık işler |
 
 Koordinat (global): orijin zemin + robot merkezi, +X robotun sağı, +Y yukarı, +Z ileri (yüz), mm.
-Her modülün yerel orijini `arayuz.MODULLER`'de (sağ omuz = travers merkezi (0, 955, 0); sol omuz = sağın X aynası).
+Her modülün yerel orijini `arayuz.MODULLER`'de (sağ omuz = travers merkezi (0, 1270, 0), 1,58 m; `montaj/montaj-analiz.json` `moduller[omuz_sag].konum`; 125 cm'de 955; sol omuz = sağın X aynası).
 
 ## Çalıştırma
 

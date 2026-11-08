@@ -8,16 +8,17 @@ planlama, tasarım (CAD) ve ileride yazılım kodu burada tutulur.
 
 | Klasör / dosya | İçerik |
 |---|---|
-| `tasarim/freecad/` | **Güncel tasarım (1,65 m):** FreeCAD modülleri (iskelet, kabuk, omuz, dirsek, kafa, taban), `arayuz.py` (tek ölçü kaynağı), ana montaj `montaj/` (FCStd, STEP, `robot-bom.csv`) |
+| `tasarim/freecad/` | **Güncel tasarım (1,58 m):** FreeCAD modülleri (iskelet, kabuk, omuz, dirsek, kafa, taban), `arayuz.py` (tek ölçü kaynağı), ana montaj `montaj/` (FCStd, STEP, `robot-bom.csv`) |
 | `kod/ortak/eklem_sinirlari.json` | Eklem sınırları (CAD'den `eklem_sinirlari_uret.py` ile üretilir, elle düzenlenmez) |
-| `planlama/dongu.md` | İş döngüsü ve 1,65 m planı (Y1–Y6); `planlama/y2/` Y2a/Y2b günlük ve kontrolleri; `planlama/kararlar-*.md` karar günlüğü |
+| `planlama/dongu-158.md` · `planlama/d158/` | Güncel iş döngüsü (1,58 m, F0–F9), paket brief / günlük / kontrol dosyaları, karar kuyruğu (`d158/karar-kuyrugu.md`) |
+| `planlama/dongu.md` | Tarihçe: 1,65 m iş döngüsü (Y1–Y6); `planlama/y2/` Y2a/Y2b günlük ve kontrolleri; `planlama/kararlar-*.md` karar günlüğü |
 | `rehber/` · `tasarim/freecad/rehber/` · `planlama/rehber/R-gunluk.md` | 3B montaj rehberi (`rehber/index.html`), onu üreten betikler ve çalışma günlüğü |
-| `planlama/baski-listesi.md` · `planlama/adim3/elektrik.md` · `planlama/yazilim-plani.md` | Baskı listesi (63 parça), elektrik kararları (E0–E9), yazılım planı |
+| `planlama/baski-listesi.md` · `planlama/adim3/elektrik.md` · `planlama/yazilim-plani.md` | Baskı listesi (1,58 m, 65 parça; 03.11, kafa satırları 7" modelinden), elektrik kararları (E0–E9; 1,58 m bölümü başta), yazılım planı |
 | `raporlar/Humanoid-Robot-Fizibilite-Raporu.html` | Fizibilite raporu: maliyet, ses mi görüntü mü, yetkinlik, teknik gereklilikler, profesyonel destek, takvim, finansman, riskler |
 | `raporlar/kaynaklar/` | Raporun dayandığı araştırma notları (donanım/maliyet, yazılım/yapay zekâ, referans projeler/finansman, parça ölçüleri, fiyat araştırması ve doğrulaması) |
 | `planlama/proje-plani.md` | Kapsam, takvim, roller, ilk iki hafta, riskler, açık sorular |
 | `planlama/maliyet.json` | Doğrulanmış malzeme maliyeti (satıcı, TL, bağlantı, stok); demodaki maliyet bölümünün tek kaynağı |
-| `tasarim/Robot-Tasarim-Demosu.html` | Eski CadQuery 3B montajı (V1 / V2 / V3, 125 cm); devrilme, motor ve servo hesabı canlı; TL + USD proje maliyeti (maliyetin V3 satırları 1,65 m tasarıma göre) |
+| `tasarim/Robot-Tasarim-Demosu.html` | Eski CadQuery 3B montajı (V1 / V2 / V3, 125 cm); devrilme, motor ve servo hesabı canlı; TL + USD proje maliyeti (maliyetin V3 satırları 29.10 listesi; 1,58 m listesi P8.1'de) |
 | `tasarim/cad/Humanoid-Robot-Montaj.step` · `-V2` · `-V3` | Eski CadQuery montajları (V1, V2, V3; arşiv) |
 | `tasarim/cad/parca-listesi.csv` · `-V2` · `-V3` | Gerçek parça listesi (model, ölçü, adet, kütle) |
 | `tasarim/cad/robot_cad.py` | Modeli üreten kod (STEP + CSV + demo) |
@@ -26,26 +27,34 @@ planlama, tasarım (CAD) ve ileride yazılım kodu burada tutulur.
 
 HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünüm için internet gerekir.
 
-## Güncel tasarım: 1,65 m (29 Ekim 2026)
+## Güncel tasarım: 1,58 m (01.11.2026 kararı, 03.11.2026 CAD; sayılar 09.11.2026)
 
-Hoca 1,70 m ve 10" kafa istedi (21 Ekim); Duffy 29 Ekim'de boyu 1,65 m'ye çekti. Ana tasarım `tasarim/freecad/` (Y2a, bağımsız kontrol
-koşullu geçti: `planlama/y2/Y2a-kontrol.md`).
+Ana tasarım `tasarim/freecad/`; iş döngüsü `planlama/dongu-158.md`, açık kararlar `planlama/d158/karar-kuyrugu.md`.
+Sayıların kaynağı: `tasarim/freecad/montaj/montaj-analiz.json` (MA), `tasarim/freecad/lale158/lale158-kontrol.json` (LK),
+`tasarim/freecad/lale158/kafa-yerlesim/uygulama-ivme.json` (UI), `tasarim/freecad/kafa/kafa-analiz.json` (KA), `tasarim/freecad/montaj/robot-bom.csv` (BOM),
+`planlama/d158/regresyon.json` (korunan değerler).
 
 | Konu | Değer |
 |---|---|
-| Boy | **1.650 mm** (yerden kafa tepesine); gövde direği 1.185,5 mm tek parça sigma 40 × 40 |
-| Parça / kütle | 1.120 parça (ana montaj, Y3 M6 CAD sonrası; önce 1.073), 24,56 kg (kablo payıyla ≈ 24,96 kg); AM (−0,08; 525,82; −12,49) mm (29.10 K1 M5×18 sonrası) |
-| Taban | 520 mm, teker izi 432 mm (x ±216), 4 × JGB37; akü Victron 12,8 V 20 Ah **yerinde** (karar 29.10) |
-| Kollar | Kol başına 4 servo: omuz S1 + S2 **DS3235**, dirsek + bilek MG996R; kafa pan / tilt MG996R (toplam 10 servo). El yükü ≈ 100 g (açık konu) |
-| Kafa | 10,1" HDMI yüz ekranı (hoca verecek), Raspberry Pi 5 kafada; tilt sınırı ±13° |
-| Göğüs | Nextion ekran **yok** (25 Ekim); kumanda telefondan |
-| Ses | XVF3800 4 mikrofonlu USB dizi + yönlü mikrofon karşılaştırma kolu (Efe, 26 Ekim) |
-| Yazılım sınırları | Rampada / eğimde kollar ev pozunda, ivme ve fren ≤ 0,1 m/s²; düz zeminde ≤ 0,5 m/s² (devrilme sınırı ≈ 2,0 m/s²), fren ≤ 1,8 m/s² (29.10); S2 ≥ +5° |
-| Baskı | 63 parça, 7,7 kg filament (PETG 6,75 + PETG-CF 1,0), ≈ 162 sa; kafa kabuğu sağ ön / sağ arka destekli. Y3: + 3 servis kapağı (üst arka, etek H1 / H2) → 66 parça; `baski-listesi.md` Y4'te yeniden üretilir |
-| Maliyet | **≈ 103.800 TL** (V3 satırları, yazıcıyla, yedek ve %15 pay dahil; koşullularla ≈ 109.100; 29.10 eldeki Pi 5 8 → 4 GB fiyatıyla ve Y3 M6 CAD bağlantılarıyla, önce ≈ 109.000). Yüz ekranı hocadan gelirse ve elimizdekiler düşülürse ≈ 78.900 TL. Sipariş verilmedi; liste hocada (fark: `planlama/siparis-farki-2026-10-29.md`) |
+| Boy | **1.580,0 mm** (yerden kafa tepesine; LK `toplam_boy_mm`, MA `boy_mm`); gövde direği 1.115,5 mm tek parça sigma 40 × 40 (BOM), omuz traversi merkezi y 1.270 mm, gövde uzatması 315 mm (MA `s3_mm`, `uzama_mm`) |
+| Parça / kütle | 1.179 parça (MA `parca_sayisi`), ana montaj 25.715,6 g (MA `kutle_g`); ev pozu, 400 g kablo payıyla **26.115,6 g**, AM (−0,03; 522,71; −10,03) mm (UI `ev`) |
+| Taban | 520 mm (MA `taban_w_mm`), teker izi 432 mm (x ±216; `planlama/y2/Y2b-ivme.json` `teker_hatti`), 4 × JGB37; akü Victron 12,8 V 20 Ah, **3,0 kg**, yerinde (BOM; karar 29.10) |
+| Devrilme | Yüksüz, 5° rampa, en kötü kol pozu: pay **1,519** (eşik 1,5; UI `izgara_yuk_0g.a_sinir_pay15.rampa5_geri`); düz zeminde 2,097 (`duz_geri`) |
+| Kollar | Kol başına 4 servo: omuz S1 + S2 **DS3235**, dirsek + bilek MG996R; kafa pan / tilt MG996R (**toplam 10 servo**; BOM: DS3235 × 4, MG996R × 6). El yükü sınırı **karar bekliyor (K3, K9)**; öneri düzde ≤ 100 g / el |
+| Kafa | 10,1" QLED 1280 × 720 HDMI yüz ekranı (BOM), Raspberry Pi 5 4 GB kafada, 5 V: Pololu D24V50F5 (Pi) + SY8205 (ekran). Kafa grubu 1.570,8 g; tilt payı (±15) 3,64, pan payı 2,21 (KA `tork`); tilt sınırı ±13° (karar 29.10, `kod/ortak/eklem_sinirlari.json`; main'deki kod ±20 kullanıyor, ±20'de çakışma var, pano #6) |
+| Göğüs | 11,6" 1080p HDMI kasalı ekran, gövdeye gömülü (BOM); kumanda telefondan |
+| Ses | ReSpeaker Mic Array v2.0 (kafa) + USB ses kartı + PAM8403 (kafa sol duvarı) + 40 mm 3 W hoparlör (gövde) (BOM); mikrofon-hoparlör en az 574,3 mm. PAM 5 V besleme noktası **karar bekliyor (K10)**; 6. USB cihazı bekliyor (K1) |
+| Elektrik | `planlama/adim3/elektrik.md` "158 cm güncellemesi": USB port dağılımı, boyun demeti (12 V + tilt + göğüs HDMI + hub uzatması + hoparlör; Efe teyidi K14), göğüs ekranı 12 V dalı (K11) |
+| Yazılım sınırları | Rampada / eğimde kollar ev pozunda, ivme ve fren ≤ 0,1 m/s²; düz zeminde ivme ≤ 0,5, fren ≤ 1,8 m/s² (`kod/ortak/eklem_sinirlari.json` `teker.ivme_sinir_m_s2`; karar 29.10); S2 ≥ +5° |
+| Baskı | 65 parça, 7,63–7,68 kg filament, 159–160 sa (`planlama/baski-listesi.md:12`; 03.11 koşusu, kafa satırları 7" modelinden, P4.3'te yenilenecek) |
+| Maliyet | `planlama/maliyet.json` henüz **29.10 listesi** (o günkü 1,65 m tasarımı); 09.11'de yalnız ses (MAX98357A → PAM8403 + USB ses kartı) ve 9 fiyatsız kablo / fiş adayı (K4) işlendi. V3 satırları, yazıcıyla, yedek ve %15 pay dahil **≈ 102.900 TL** (koşullularla ≈ 108.200); fiyatı doğrulanmamış 11 satır toplama girmiyor. Yüz ekranı hocadan gelirse ve elimizdekiler (Pi 5, hafıza kartı) düşülürse ≈ 78.000 TL. 1,58 m sipariş listesi P8.1'de; sipariş verilmedi |
 | Kapsam | Otonom gezinme, lidar, ROS 2 / Nav2 **yok** (hoca, 21 Ekim); kumandayla sürüş + konuşma + jest |
 
+**Tarihçe:** hoca 1,70 m ve 10" kafa istedi (21 Ekim); boy 29 Ekim'de 1,65 m'ye (Y2a; o tasarımda 1.650 mm, 1.120 parça, 24,56 kg,
+maliyet ≈ 103.800 TL; `planlama/y2/`), 01.11'de 1,58 m'ye indi. 1,65 m ve öncesinin sayıları git geçmişinde ve `planlama/y2/`, `planlama/dongu.md` içinde.
+
 Aşağıdaki bölümler projenin geçmişidir (Eylül–Ekim, CadQuery V1–V3, 115–125 cm); güncel sayılar yukarıda ve `planlama/` belgelerinde.
+Bu bölümlerdeki tablolar ve "Açık işler" listesi Eylül–Ekim tarihlidir (7" ekran, 2,8 kg akü gibi değerler o günün); güncel açık işler `planlama/dongu-158.md` ve karar kuyruğunda.
 
 ## Proje çerçevesi (Duffy, 26 Eylül 2026)
 

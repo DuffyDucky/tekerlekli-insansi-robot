@@ -5,11 +5,18 @@ Tarih: 15 Ekim 2026. Tek yer: bu dosya. CAD karşılığı `tasarim/freecad/taba
 Pin planı E5'in başlangıcıdır, kesin değildir. Akü süreleri E8'in (5. adım) işi, burada yalnız anlık akımlar var.
 T2 takip düzeltmesi (15 Ekim 2026, bağımsız kontrol `K3-kontrol.md`): JGB37 tork uyarısı, ESP32 beslemesi ifadesi, DTR/RTS, ön şarj, PC817 3,3 V, Pololu akımı, kafa ısısı (`T2-takip.md`).
 
-## 158 cm güncellemesi (04.11.2026)
+## 158 cm güncellemesi (04.11.2026; 09.11.2026 F4a: 05.11 B + R1 yerleşimine göre)
 
 Geçerli olan bu bölüm. Kaynak: `tubitak-2209b/BAGLAM.md` §8 (03–04.11 kararları), `tubitak-2209b/malzeme-listesi/Lale-malzeme-listesi-2026-11-03-v4.xlsx`,
 `tasarim/freecad/lale158/kablo_yolu_ekran.py`, `tasarim/freecad/kafa/kafa-analiz.json`. Aşağıdaki bölümlerde bununla çelişen eski kısımlar 04.11'de silindi ya da [ESKİ] işaretlendi; eski değerler bu tabloda duruyor, tam metin git geçmişinde (`f95f96b`).
-**CAD durumu:** 10,1" QLED, SY8205, PAM8403, hub ve göğüs 12 V regülatörü 04.11 gecesi henüz modelde yok (`kafa-bom.csv` hâlâ 7" LCD ve MAX98357A); yerleşim ve kablo boyları model güncellenince kesinleşir.
+09.11 güncellemesinin kaynakları (kısaltma **KY/** = `tasarim/freecad/lale158/kafa-yerlesim/`): `KY/uygulama-notu.md` (05.11 B + R1 seçimi, satır 3),
+`tasarim/freecad/lale158/lale158-kontrol.json` (`kablo_ozet`), `tasarim/freecad/montaj/robot-bom.csv`, `tasarim/freecad/arayuz.py` (`SES_USB`, satır 988–1003),
+`planlama/d158/kablo-kurali-notu.md`, `planlama/d158/karar-kuyrugu.md` (K1, K10, K11, K14). Açık kararlar satırında "karar bekliyor (Kn)" yazar.
+**CAD durumu (09.11):** 10,1" QLED, SY8205, Pololu D24V50F5, PAM8403, USB ses kartı, ReSpeaker Mic Array v2.0, 4'lü hub ve hoparlör modelde
+(`montaj/robot-bom.csv` satır 158, 151, 147, 145, 157, 150, 156, 133); 11,6" göğüs ekranı da modelde (satır 159). Göğüs 12 V regülatörü (LM2577 + LM2596)
+modelde yok (BOM'da satırı yok). Yerleşim: ses kartı ve PAM8403 kafa sol duvarında, hub gövdede göğüs üst arka servis kapağının içinde, hoparlör gövde orta bandı
+sağ duvarında (`KY/uygulama-notu.md:45, 47, 56, 58, 59`). I2S amfi modelde 0 parça (`KY/uygulama-notu.md:57`; K16 kapandı, 04.11).
+04.11 gecesinin "bu parçalar henüz modelde yok" notu tarihçedir.
 
 | Konu | Eski değer | Geçerli (1,58 m) | Durum |
 |---|---|---|---|
@@ -18,7 +25,7 @@ Geçerli olan bu bölüm. Kaynak: `tubitak-2209b/BAGLAM.md` §8 (03–04.11 kara
 | Kafa ekranı beslemesi | Pi USB-A'dan | **Ayrı SY8205 5 V düşürücü + P6KE6V8A**, Pi'den bağımsız. SY8205 sayfası: giriş 7–30 V, sürekli 3,7 A, koruma yazmıyor | Karar 03–04.11. QLED akımı 0,9 A **varsayım**, ölçülmedi |
 | Göğüs ekranı | 125 cm: Nextion 10,1" (UART2, çevre 5 V'tan 0,8 A). 1,65 m: yok | **11,6" 1080p HDMI, kasalı (Waveshare)**: 12 V ~0,5 A, dokunmatik USB 5 V ~80 mA. Besleme **LM2577 + LM2596 kartı 12 V'a ayarlı**, 2 A sigortalı ayrı dal. Çerçeve gövde renginde, ekran 2 mm içeride | Karar 01.11, regülatör 03.11, çerçeve 04.11. Ekran jakı ölçüsü **doğrulanmadı** |
 | Mikrofon | 125 cm: ReSpeaker Lite 0,5 W. 1,65 m: XVF3800, ~1 W varsayım | **ReSpeaker Mic Array v2.0** (XVF-3000, 16 kHz, 4 mikrofon, USB; Robotistan) | XVF3800 Türk satıcıda yok, muadil. Akımı **doğrulanmadı** |
-| Amfi | MAX98357A (I2S), 3 W tepe | **PAM8403 2 × 3 W + USB ses kartı** (analog giriş, ses kartının çıkışından) | v4 muadili. Besleme noktası ve akımı **doğrulanmadı**. Hoparlör yeri açık |
+| Amfi | [tarihçe] I2S amfi MAX98357A, 3 W tepe (04.11'de kalktı, K16) | **PAM8403 2 × 3 W + USB ses kartı** (analog giriş, ses kartının L 3,5 mm çıkışından); ikisi kafa sol duvarında (`KY/uygulama-notu.md:56`). Hoparlör 40 × 20, 4 Ω, 3 W gövde orta bandı sağ duvarında, kablosu PAM'dan boyundan iner (`KY/uygulama-notu.md:59`; `robot-bom.csv:133`) | v4 muadili. PAM 5 V besleme noktası **karar bekliyor (K10)**: varsayılan D24V50F5 (Pi hattı), modelde varsayım olarak böyle (`KY/uygulama-notu.md:97`). Akım ölçülmedi: PAM tepesi 0,71 A hesap (3 W, verim %85 varsayımı; `KY/uygulama-notu.md:98`) |
 | Kafa 5 V toplam | 125 cm: 18,7 W → 3,7 A tepe. 1,65 m: ≈ 20,5 W → 4,1 A tepe | **Normal karşılama 3,57 A** (QLED 0,9 A varsayımıyla; ≈ 17,85 W) | Hesap, ölçülmedi. Tepe değer yeni düzende hesaplanmadı |
 | "16,2 W" | Önceki kafa 5 V hesabında geçen değer | Kullanılmıyor | **Türetilmiş değerdi**, ölçüm ya da üretici verisi değil. Hangi kalemlerden türediği bu klasörde bulunamadı |
 | Pi hattı (D24V50F5) | Ekran dahil tek hat | **2,67 A** (ekran ayrı düşürücüde); 5 A'in %53'ü | Hesap, ölçülmedi |
@@ -26,10 +33,11 @@ Geçerli olan bu bölüm. Kaynak: `tubitak-2209b/BAGLAM.md` §8 (03–04.11 kara
 | Kafa 12 V (F3 5 A) | 125 cm: tepe 1,62 A. 1,65 m: tepe ≈ 1,8 A | Normal ≈ 1,55 A (3,57 A × 5 V ÷ 0,90 ÷ 12,8 V) | Hesap. SY8205 verimi bilinmiyor, Pololu'nunki alındı (0,90). F3 aynı |
 | Akü, normal kullanım | 125 cm: 5,7 sa. 1,65 m: 5,9 sa (7", göğüs ekranı yok) | **~3,8–4,4 sa** (kaba tahmin; 207 Wh kullanılabilir ile ≈ 47–55 W demek) | **Ölçülmedi.** Yoğun senaryo (1,65 m: 1,83 sa, Duffy kabul etti 29.10) yeni yüklerle yeniden hesaplanmadı |
 | Kapalı kafa, 30 °C ortam | 125 cm: en kötü 49 °C (14,5 W). 7" (`kafa-analiz.json`): en kötü 44,4 °C (14,5 W) | **~49 °C**, normal karşılama (R 0,992 K/W ile 3,57 A ÷ 0,90 ≈ 19,8 W'tan 49,7 °C: tutarlı). Servo sınırı 55 °C | **Ölçülecek.** En kötü durum yeni düzende hesaplanmadı |
-| USB | LCD, mikrofon, ESP32 doğrudan Pi'de | **6 cihaz, Pi'de 4 port, 4'lü hub listede** (USB 2.0, USB'den beslenir, tek anahtar açık kalmalı, 72 × 25 × 19 mm) | v4 cihazları tek tek saymıyor; aşağıda |
-| Boyun demeti | 12 V çift + ESP32 USB + tilt; "HDMI ve CSI boyundan çıktı" | + **göğüs ekranı HDMI + USB dokunmatik**. CSI kafada kalır | **CAD'de böyle, Efe teyidi bekliyor** |
+| USB | LCD, mikrofon, ESP32 doğrudan Pi'de. 04.11: "6 cihaz, Pi'de 4 port, 4'lü hub", hub'ın yeri açık | **Adı belli 5 cihaz** + 4'lü hub (USB 2.0, USB'den beslenir, tek anahtar açık kalmalı, 72 × 25 × 19 mm). Hub gövdede, göğüs üst arka servis kapağının içinde (`arayuz.py:1001` `SES_USB.hub`, y 1.085–1.157; `KY/uygulama-notu.md:58`; K5 kapandı). Port dağılımı aşağıda "USB" paragrafında | **6. cihaz bekliyor (K1, pano #5)**; hub'da 2 port boş (`KY/uygulama-notu.md:131-132`) |
+| Boyun demeti | 12 V çift + ESP32 USB + tilt; "HDMI ve CSI boyundan çıktı". 04.11: + göğüs HDMI + göğüs USB dokunmatik | **5 kablo:** kafa 12 V çift (18 AWG) + tilt servo + göğüs ekranı HDMI + hub uzatması (USB) + hoparlör. Göğüs USB dokunmatiği ve ESP32 USB hub'dan çıkar, boyundan geçmez; göğüs ekranı 12 V'u tabandan gelir, boyundan geçmez. CSI kafada kalır (`kablo_yolu_ekran.py:6, 31`; `planlama/d158/kablo-kurali-notu.md:20-35`) | CAD'de böyle. Efe teyidi **karar bekliyor (K14, pano #6)** |
 | Servo uzatması | 1,65 m: dirsek, bilek 1,93 m; S2 ≈ 1,77 m | Dirsek, bilek 1,86 m; S2 1,70 m (v4, model) | Hesap |
-| ESP32–Pi USB | 1,65 m: ≈ 1,64 m | ≈ 1,57 m, 2 m kablo (v4) | Hesap |
+| ESP32 USB | 1,65 m: Pi → ESP32 ≈ 1,64 m. 04.11: ≈ 1,57 m, 2 m kablo | **Hub → ESP32 (taban):** yol 971 mm, önerilen 1.360 mm (yol × 1,25 + 150 kapak sökme payı); v4'teki 2 m kablo yeter. Pi → hub: hub'ın 130 mm kablosu + uzatma, yol 617, önerilen 920 mm (`lale158-kontrol.json` `kablo_ozet.kablo`; `arayuz.py:1003`) | Hesap (yol şema, pay tahmini) |
+| Akü kütlesi | Model 2.800 g (09.11 öncesi) | **3,0 kg** (Victron datasheet; `planlama/maliyet.json` Victron satırı, `raporlar/kaynaklar/06-aku-secimi.md:119`); modelde `arayuz.py:623` 3.000 g. Robot ev pozu 26.115,6 g (400 g kablo payı dahil), yüksüz rampa devrilme payı 1,519 (`KY/uygulama-ivme.json` `ev.kutle_g`, `izgara_yuk_0g.a_sinir_pay15.rampa5_geri`) | F1b (`planlama/d158/F1b-gunluk.md` P1.1) |
 | Hat sigortası yuvası | ×2, sonra ×4 | **×5** (A, B, C, şarj + göğüs) | v4 |
 
 **Kafa güç mimarisi (geçerli):**
@@ -37,8 +45,13 @@ Geçerli olan bu bölüm. Kaynak: `tubitak-2209b/BAGLAM.md` §8 (03–04.11 kara
 ```
 F3 5 A ── 18 AWG çift ── boyun ── kafa girişi: P6KE18A
    ├─ Pololu D24V50F5 5 V ── P6KE6V8A ── USB-C ── Raspberry Pi 5 + diğer kafa yükleri   (2,67 A, hesap)
+   │     └─ PAM8403 5 V (kablo yol 64 / önerilen 80 mm)                                    (karar bekliyor, K10; tepe 0,71 A hesap)
    └─ SY8205 5 V ──────────── P6KE6V8A ── micro USB Power ── 10,1" QLED                  (0,9 A, varsayım)
 ```
+
+PAM'ın D24V50F5'e bağlanması K10'un varsayılanıdır, karar değil (`karar-kuyrugu.md` K10). Bu varsayılanla Pi hattının tepesi 3,28–3,38 A
+(5 A'in %66–68'i; `KY/uygulama-notu.md:98`); seçenekler b) SY8205, c) ayrı düşürücü. PAM 5 V kablo boyu `lale158-kontrol.json`
+`kablo_ozet.kablo."PAM 5 V"`.
 
 - **İki 5 V kaynağı köprülenmez.** QLED'in Touch micro USB'si Pi'ye veri için gider. Touch VBUS'u ekran içinde Power girişine bağlıysa Pi'nin 5 V'u ile SY8205 çıkışı Touch kablosu üzerinden birleşir. Ekranın iç bağlantısı **doğrulanmadı**: kart gelince Pi'ye takmadan multimetreyle Power ile Touch VBUS arasına bak. Bağlıysa çözüm o ölçümle seçilir (tahmini çözüm yazılmadı).
 - **Ekran kablosu:** kafa içi kısa HDMI 30 cm şerit + iki lehimsiz fiş (Pi ucu micro HDMI düz, ekran ucu HDMI düz; v4'te üç satır, tek kablo). Power: 30 cm USB-A → micro B kablonun USB-A ucu kesilir, SY8205 çıkışına bağlanır. Touch: kutudaki USB kablosu.
@@ -46,28 +59,48 @@ F3 5 A ── 18 AWG çift ── boyun ── kafa girişi: P6KE18A
 **Göğüs ekranı dalı (geçerli):**
 
 ```
-Taban güç paneli ── mini bıçak 2 A (hat sigortası yuvası) ── LM2577 + LM2596 kartı (giriş 4–35 V, 12 V'a ayarlı) ── 18 AWG ── 11,6" ekran 12 V jakı
-Pi 5 micro HDMI ── 1,5 m HDMI kablosu ── boyun ── ekran HDMI (ekran ucunda gerekirse 90° adaptör)      CAD'de böyle, Efe teyidi bekliyor
-Pi 5 USB ── 2 m USB-A → micro B ── boyun ── ekran TOUCH                                                  CAD'de böyle, Efe teyidi bekliyor
+Taban güç paneli ── mini bıçak 2 A (hat sigortası yuvası) ── LM2577 + LM2596 kartı (giriş 4–35 V, 12 V'a ayarlı) ── 18 AWG ── 11,6" ekran 12 V jakı (90° fiş)   giriş noktası: karar bekliyor (K11); boyundan geçmez
+Pi 5 micro HDMI 1 ── HDMI (v4 1,5 m) ── boyun ── ekran HDMI (ekran ucunda 90° fiş / adaptör)                                    CAD'de böyle; Efe teyidi karar bekliyor (K14)
+Hub (göğüs üst arka kapağı içi) ── USB-A → micro B (v4 2 m) ── ekran TOUCH (90° fiş)                                              boyundan geçmez; hub'a Pi port 3'ten boyundan gelen uzatmayla bağlı
 ```
 
 - Regülatörü ekrana bağlamadan multimetreyle 12 V'a ayarla (akü 12,8–14,4 V, v4). Ekran fişi: kutudaki adaptör kablosu kesilebilir (v4).
-- **Doğrulanmadı:** dalın girişi hangi noktadan alınacak (ana anahtar sonrası mı, anahtarlı bara mı). Bu, ekranın acil stopta açık kalıp kalmayacağını belirler; karar yok. Port yeri fotoğraftan tahmini (`arayuz.GOGUS_EKRAN` port).
-- Yol boyları (`kablo_yolu_ekran.py`, %25 payla, tahmini): HDMI 950 mm, USB dokunmatik 1.060 mm, 12 V 1.720 mm.
+- **Karar bekliyor (K11):** dalın girişi hangi noktadan alınacak: a) ana anahtar sonrası, röle öncesi (acil stopta ekran açık; önerilen varsayılan), b) anahtarlı bara (acil stopta ekran kapanır) (`karar-kuyrugu.md` K11). Port yeri fotoğraftan tahmini (`arayuz.GOGUS_EKRAN` port; `arayuz.py:343-346`).
+- **90° fiş üç kabloda:** HDMI, USB dokunmatik (micro B) ve 12 V jakı. Kablo ekranın −X kısa kenarındaki port girintisine 18 mm yatay girer; düz fiş bu dönüşü yapamaz (`planlama/d158/F1b-kontrol.md` madde 12 ve "90° fiş" maddesi). Fiş gövdeleri modelde yok; port girintisi modelde yok, ekran gelince ölçülecek (P1.4 🟡).
+- Yol / önerilen boy (yol × 1,25, hub'a bağlı kablolarda + 150 mm kapak sökme payı; ikisi de tahmin; `lale158-kontrol.json` `kablo_ozet.kablo`, `arayuz.py:1003`):
+  HDMI 757 / 950 mm, USB dokunmatik 395 / 640 mm, 12 V 1.376 / 1.720 mm. 04.11'deki USB dokunmatik 1.060 mm Pi'den boyundan inen eski yola aitti (tarihçe).
+  Göğüs ekranı kasası × kablo tüpü gerçek çakışma 0; port ucu temas hacmi HDMI 897,1 / USB 391,5 / 12 V 617,3 mm³, port girintisi varsayımıyla (`lale158-kontrol.json` `kablo_tup_uc_temas`; F1b).
 
-**USB (6 cihaz, 4 port + hub):** adı belli olanlar kafa ekranı Touch, göğüs ekranı Touch, ReSpeaker v2.0, USB ses kartı, ESP32 (CP2102). Altıncı cihaz v4'te adıyla yazmıyor: yönlü mikrofonun USB ses kartı olması olası, **doğrulanmadı**. Hangi cihazın hub'a gireceği ve hub'ın kafa içindeki yeri karara bağlanmadı.
+**USB (adı belli 5 cihaz; 4 Pi portu + 4'lü hub):** port dağılımı modelde (`KY/uygulama-notu.md:123-132`; `arayuz.py:997` `SES_USB.pi_usb`):
+
+| Port | Cihaz | Kablo (yol / önerilen mm; `lale158-kontrol.json` `kablo_ozet.kablo`) |
+|---|---|---|
+| Pi 1 | ReSpeaker Mic Array v2.0 | Dizi USB, kısa micro USB 85 / 110 |
+| Pi 2 | USB ses kartı (→ L 3,5 mm → PAM8403) | ~30 cm USB-A uzatma + L USB-A dirsek, 217 / 270 |
+| Pi 3 | 4'lü hub (gövde, göğüs üst arka kapağı içi) | Hub'ın 130 mm kablosu + ~1 m USB-A uzatma, boyundan, 617 / 920 |
+| Pi 4 | Kafa ekranı (10,1" QLED) Touch | Kutu kablosu 350 mm, kafa içi yol 217 (`kablo_ozet.kafa_ici_qled`) |
+| Hub 1 | Göğüs ekranı (11,6") Touch | USB-A → micro B, 395 / 640 (v4 2 m) |
+| Hub 2 | ESP32 (CP2102), VBUS'ta 1N5819 | 971 / 1.360 (v4 2 m) |
+| Hub 3, 4 | Boş | — |
+
+- **6. cihaz: bekliyor (K1, pano #5).** v4 "6 cihaz" diyor, adıyla yazmıyor; ne olduğu ve nerede duracağı Efe'nin cevabına bağlı. Varsayılan K1 a): 5 cihaz + hub'da 2 boş port.
+  Altıncı cihaz kafada olursa yerleşim B zayıflar (`KY/secenekler.md:26`; `karar-kuyrugu.md` K1).
+- Hub kapanırsa ESP32 bağlantısı ve göğüs dokunmatiği birlikte düşer (`kablo-kurali-notu.md:54-55`). Hub girişindeki gerilim ölçülmedi (`KY/uygulama-notu.md:100`).
+- Listede olmayan 6 kablo kalemi (K4) ve göğüs ekranının 3 adet 90° fişi `planlama/maliyet.json`'a fiyatsız, koşullu aday olarak girdi (P4.2, 09.11).
 
 **Sigorta dalları (geçerli):** ana 30 A → F1 20 A (röle K1 → anahtarlı bara: BTS7960 × 2, hat 7,5 A → XL4016 A, hat 7,5 A → XL4016 B, hat 5 A → XL4016 C), F2 15 A yedek, F3 5 A kafa, F4 5 A XL4016 çevre, F5 2 A acil stop; ayrıca göğüs ekranı hat sigortası mini 2 A, şarj girişi mini 10 A. Ayrıntı "Sigorta listesi".
 
 **v4 muadilleri (elektriği etkiler, bölümler yeniden yazılmadı):** röle K1 MAH-112-C-4 30/40 A (dahili diyot yazmıyor, 1N4007 kullan); ön şarj rölesi K2 JQC-3FF 10 A (E9'daki JQC-3F(T73) 7 A yerine; ayak düzeni pertinakta kontrol edilir); motor sürücü BTS7960B (pin adları EN1/EN2, IN1/IN2: pin planındaki adlardan farklı; 3,3 V lojik sayfada yok, kart gelince kontrol); acil stop NP2 BE102 (CAD 60 mm B200E60; etek deliği kontrol); hızlı klemens 2273-203 en çok 2,5 mm², 12 AWG ana kabloda kullanılmaz; şarj cihazı IMAX B6 (4S'te ≈ 3,4 A; 14,6 V kesme cihazda ölçülecek).
 
-## 1,65 m güncellemesi (Y2b, 29 Ekim 2026)
+## 1,65 m güncellemesi (Y2b, 29 Ekim 2026) [tarihçe]
 
-Bu dosyanın gövdesi 125 cm tasarım (15 Ekim) içindir. Yüz ekranı, göğüs ekranı, mikrofon ve kafa 5 V satırları 04.11'de üstteki tabloya taşındı. 1,65 m ana tasarımda değişen ve
+**Tarihçe (09.11 notu):** ana tasarım 01.11'den beri 1,58 m; bu bölüm o günkü 1,65 m tasarımını anlatır. 1,58 m'de değişenler üstteki bölümde, burada yalnız
+"[1,58 m: …]" işaretli satırlar ve 1,58'de değişmeyen kararlar (akü yeri, acil stop, servo hatları, Pi 4 GB) geçerli.
+Bu dosyanın gövdesi 125 cm tasarım (15 Ekim) içindir. Yüz ekranı, göğüs ekranı, mikrofon ve kafa 5 V satırları 04.11'de üstteki tabloya taşındı. O günkü 1,65 m tasarımında değişen ve
 geçerli kalanlar aşağıda. Kaynak: `tasarim/freecad/taban/taban-analiz.json` (Y2a, robot 24,80 kg), `planlama/y2/Y2b-aku.py` →
 `Y2b-aku.json` (E8 yeniden), `planlama/y2/Y2b-ivme.json`, `planlama/kararlar-2026-10-29.md`. Yeni yük değerleri tahmini.
 
-| Konu | 125 cm (bu dosyanın gövdesi) | 1,65 m (geçerli) |
+| Konu | 125 cm (bu dosyanın gövdesi) | 1,65 m (29.10; 1,58 m'de değişmeyenler geçerli) |
 |---|---|---|
 | Akü | Victron SuperPack 12,8/20, taban arka bölmesi | **Aynı yerde** (75 mm öne geometrik olarak olmadı). Karar 29.10: rampada / eğimde kollar ev pozunda ve taban ivmesi ≤ 0,1 m/s²; düzde ≤ 0,5 m/s² (devrilme sınırı ≈ 2,0 m/s², `Y2b-ivme.json`). Karar 29.10 (Y2b): yazılım / acil stop freni düz zeminde **≤ 1,8 m/s²** (düzde 0,5 kg el yüküyle bile devrilme payı 1,54). Karar 29.10 (Duffy): **rampada / eğimde yavaşlama ve fren de ≤ 0,1 m/s²** (rampada 1,8 frende ev pozu payı 1,31 < 1,5) |
 | Acil stop, devreye alma (E3, E9) | K1 40 A (GPIO12, IRLZ44N #1), K2 7 A + 5,6 Ω ön şarj (GPIO2, IRLZ44N #2), PC817 #1 mantar sonrası (GPIO23), #2 anahtarlı bara (GPIO5), F5 2 A | **Değişmedi.** Devreye alma komutu Pi'den (telefon kumandası; Nextion yok). CAD'de güç panelinde K1 + soket ve ana sigorta var; **Y3 (29.10): K2 (JQC-3F 7 A) + 5,6 Ω 11 W + 1N4007 güç panelinde "Ön şarj kartı" (70 × 50 pertinaks, merkez x −97,5 / z −1, akünün önünde) olarak CAD'e girdi** (zarf tahmini). Pin tablosundaki "GPIO2 boş" çelişkisi Y2b'de düzeltildi |
@@ -109,7 +142,7 @@ servo başına değerlerinden; tepe = 2 servo kalkışta (DS3235 3,0 A, MG996R 2
 | PCA9685 / BNO055 mantık (E2) | 5 V | 3V3 (ESP32 regülatörü) |
 | Acil stop yeniden başlatma (E3) | Mantar bırakılınca röle kendiliğinden çeker | Bobin: F5 → mantar NC → bobin → MOSFET (ESP32 "devreye al", GPIO12). Bırakmak gücü vermez |
 | ESP32 beslemesi (E4) | Pi USB'si + çevre 5 V birlikte | Diyotlu VEYA (iki kaynak): asıl çevre 5 V (VIN); USB kablosunun VBUS teline seri 1N5819 (anot Pi tarafında). Pi'ye geri besleme yok, CP2102 VBUS algısı sürer |
-| Amfi | Tabanda (I2S 1 m boyundan) | Kafada, Pi'nin yanında (04.11: PAM8403 + USB ses kartı, I2S kalktı) |
+| Amfi | Tabanda (I2S 1 m boyundan) | Kafada (04.11: PAM8403 + USB ses kartı, I2S kalktı; 05.11 B + R1: kafa sol duvarı, `KY/uygulama-notu.md:56`) |
 | Etek ısısı (E7) | Pi + 3 XL4016 + 2 BTS kapalı etekte | Pi ve onun XL'i çıktı (≈ −8…11 W). Fan yeri ayrıldı (ölçüme bağlı), ölçüm planı aşağıda |
 
 ## E0: dönüş yükü ve K1
@@ -239,7 +272,7 @@ K1 kontağı (40 A): F1 20 A ──> anahtarlı 12 V bara ──> BTS7960 sol/sa
 
 Tarih notu 04.11.2026: düşürücü, bütçe, ekran beslemesi ve boyun demeti 1,58 m'e göre yeniden yazıldı (eski değerler üstteki tabloda).
 
-- **Boyundan:** 12 V çift (18 AWG, F3 5 A) + ESP32 USB (veri; ≈ 1,57 m, 2 m kablo) + tilt servo (3 tel) + göğüs ekranı HDMI + göğüs ekranı USB dokunmatik (son ikisi **CAD'de böyle, Efe teyidi bekliyor**). CSI kafada kalır.
+- **Boyundan (09.11, 05.11 B + R1):** 12 V çift (18 AWG, F3 5 A) + tilt servo (3 tel) + göğüs ekranı HDMI (757 / 950 mm) + hub uzatması (USB, Pi port 3 → gövdedeki hub; 617 / 920 mm) + hoparlör kablosu (PAM8403 → gövde orta bandı; 824 / 1.030 mm). ESP32 USB ve göğüs USB dokunmatik hub'dan çıkar, boyundan geçmez. CSI kafada kalır. Boylar yol / önerilen (`lale158-kontrol.json` `kablo_ozet.kablo`); düzen CAD'de böyle, Efe teyidi **karar bekliyor (K14, pano #6)**.
 - **Kafada Pi düşürücüsü:** Pololu **D24V50F5** (Robotistan): giriş en çok 38 V, çıkış 5 V ±%4, 5 A sürekli, 17,8 × 20,3 × 8,8 mm; ters gerilim, aşırı akım, kısa devre, aşırı sıcaklık koruması, yumuşak başlatma, düşük gerilim kilitleme (`raporlar/kaynaklar/07-gogus-ekrani-ve-5v.md`). 12 V girişteki sürekli akım üretici eğrisinden teyit edilecek (açık iş 8).
 - **Kafada ekran düşürücüsü:** SY8205 (Motorobit): giriş 7–30 V, sürekli 3,7 A, sayfada koruma yazmıyor; çıkışında P6KE6V8A var. Pi hattından ayrı (üstteki mimari).
 - **Kafa 5 V bütçesi:** normal karşılama toplam **3,57 A**, ekran ayrı düşürücüde **Pi hattı 2,67 A**, QLED **0,9 A varsayım**. Hesap, ölçülmedi; tepe değer yeni düzende hesaplanmadı.
@@ -263,13 +296,13 @@ Tarih notu 04.11.2026: düşürücü, bütçe, ekran beslemesi ve boyun demeti 1
 
 - Yer: Pi kartı köşesi (x −34, z +1), kart altı y 191 (4 × M2,5×8 pirinç burç; alttan M2,5×8 tabladan, üstten M2,5×5; tabla delikleri Ø2,9).
   Pi ↔ kafa iskeleti 6,6 mm, ↔ arka kabuk 7,5 mm; tilt taramasında (−25…30°) Pan/Gövde grubuna en az 31,6 mm. Soğutucu üstü y 208,5, tavana 64 mm.
-- Çevirici (−75; 44) ve amfi (65; 44; CAD'de hâlâ MAX98357A) tablada 1 mm köpük bant + kablo bağıyla. Çevirici ↔ kablo geçişi ~25 mm, amfi ↔ LCD HDMI bloğu 11,6 mm.
+- [ESKİ, 125 cm kafası] Çevirici (−75; 44) ve amfi (65; 44; o günkü I2S amfi MAX98357A) tablada 1 mm köpük bant + kablo bağıyla. Çevirici ↔ kablo geçişi ~25 mm, amfi ↔ LCD HDMI bloğu 11,6 mm. 1,58 m'de I2S amfi modelde yok; PAM8403 ve USB ses kartı kafa sol duvarında (`KY/uygulama-notu.md:45, 56-57`).
 - Kamera FPC **300 mm** (Pi 5 22 pin 0,5 mm → 15 pin 1 mm); kafa ekranına 30 cm şerit HDMI; kısa USB-C güç ucu. Kafa içi kablolar referans (kütleye 25 g nokta yük olarak tork hesabında).
 - **Havalandırma (güncel kabuk, `kafa-analiz.json`):** arka kabuk yarıkları giriş 630 mm², çıkış 840 mm², yükseklik farkı 50 mm. Yerleşim 10,1" QLED modelinde yeniden bakılacak.
 - **Isı (el hesabı, 30 °C ortam, R 0,992 K/W; `kafa-analiz.json` `isi`):** 7" kafada boşta / tipik / en kötü 7,2 / 11,4 / 14,5 W → kapalı 37,1 / 41,3 / 44,4 °C. 10,1" QLED ile normal karşılamada **~49 °C** (servo sınırı 55 °C), ölçülecek. Önceki 125 cm değerleri (39 / 45 / 49 °C, "yarıklı 34–42 °C") 04.11'de kaldırıldı.
   Test şartı (değişmedi): kafa kapalı, stres (stress-ng + animasyon), SoC ≤ 75 °C, tilt servosu gövdesi ≤ 50 °C. Yazılım SoC > 75 °C'de animasyon FPS düşürür. Aşılırsa üst bant arkasına 25–30 mm egzoz fanı.
 - **Servis (125 cm kafası; yeni kabukta doğrulanmadı):** microSD −X'e bakar (x −49…−34, z −17…−37). Arka kabuk 2 vidayla (x ±105, z −30) sökülünce SD, USB-A ve Ethernet erişilir. Ön kabuk ve LCD yerinde kalır.
-- **Kablo listesi (boyun; `lale158/kablo_yolu_ekran.py`, 03.11 genişletmesi):** 12 V çift 18 AWG + ESP32 USB + tilt servo + göğüs HDMI + göğüs USB dokunmatik ≈ 69,9 mm² (kablo çapları tahmini). Dar kesitler: mil arka penceresi 20 × 10 (175 mm², %40), servo yuvası arka kanalı 20 × 7,8 (156 mm², %45), alt çıkış 20 × 12 (204 mm², %34). HDMI + USB **CAD'de böyle, Efe teyidi bekliyor**. Hoparlör yeri açık: göğüste olursa +2 tel.
+- **Kablo listesi (boyun; `lale158/kablo_yolu_ekran.py`, 05.11 B + R1):** 12 V çift 18 AWG + tilt servo + göğüs HDMI (Ø6) + hub uzatması (Ø4) + hoparlör (Ø4) ≈ 69,9 mm² (kablo çapları tahmini; `kablo_yolu_ekran.py:31, 197`). Dar kesitler: mil arka penceresi 20 × 10 (175 mm², %39,9), servo yuvası arka kanalı 20 × 7,8 (156 mm², %44,8), alt çıkış 20 × 12 (204 mm², %34,3) (`lale158-kontrol.json` `kablo_ozet.boyun_demet_alan_mm2`, `gecis`). Düzen **karar bekliyor (K14)**. Hoparlör yeri kapandı: gövde orta bandı sağ duvarı (`KY/uygulama-notu.md:59`).
 - **Tabanda boşalan Pi yeri** (−90,5; 80): E2/E3 arayüz kartı (70 × 50 pertinaks: bölücüler, PC817, IRLZ44N + 1N4007, klemens).
 
 ## E7: etek içi ısı
@@ -298,10 +331,10 @@ Akü Victron SuperPack 12,8 V 20 Ah (BMS 30 A sürekli) ── XT60 ── Ana s
                                                                                       │        └─ PC817 #2 (bara durumu) ── ESP32 GPIO5
                                                                                       ├─ F2 15 A ── yedek
                                                                                       ├─ F3 5 A ── 18 AWG çift, direk ön yüzü, boyun ── KAFA: P6KE18A ─┬─ D24V50F5 5 V ── P6KE6V8A
-                                                                                      │                                                                │  ├─ USB-C ── Raspberry Pi 5 ── USB: ReSpeaker v2.0, USB ses kartı ── PAM8403 ── hoparlör (yer açık), iki ekranın Touch'u, ESP32; 4'lü hub
-                                                                                      │                                                                │  └─ micro HDMI 0: kafa ekranı ; micro HDMI 1: göğüs ekranı (CAD'de böyle, Efe teyidi bekliyor) ; CSI: Camera Module 3 (FPC 300 mm)
+                                                                                      │                                                                │  ├─ USB-C ── Raspberry Pi 5 ── USB: 1 ReSpeaker v2.0, 2 USB ses kartı ── PAM8403 (5 V: K10) ── hoparlör (gövde), 3 hub (gövde: göğüs Touch, ESP32, 2 boş; 6. cihaz K1), 4 kafa ekranı Touch
+                                                                                      │                                                                │  └─ micro HDMI 0: kafa ekranı ; micro HDMI 1: göğüs ekranı (CAD'de böyle, K14) ; CSI: Camera Module 3 (FPC 300 mm)
                                                                                       │                                                                └─ SY8205 5 V ── P6KE6V8A ── micro USB Power: 10,1" QLED (Touch'tan 5 V köprülenmez)
-                                                                                      ├─ mini 2 A ── LM2577 + LM2596 12 V ── 11,6" göğüs ekranı 12 V [giriş noktası doğrulanmadı]
+                                                                                      ├─ mini 2 A ── LM2577 + LM2596 12 V ── 11,6" göğüs ekranı 12 V [giriş noktası karar bekliyor, K11]
                                                                                       ├─ F4 5 A ── XL4016 çevre 5 V ── ESP32 VIN, sonar ×3, enkoder (3V3 ESP32'den), PCA9685/BNO055 mantık (3V3)
                                                                                       └─ F5 2 A ── mantar NC ── röle K1 bobini ── IRLZ44N ── GND   (PC817 #1 mantar sonrası)
 Veri: Pi (kafa) ── USB ≈ 1,57 m (VBUS'ta 1N5819) ── ESP32 (taban) ── I2C: PCA9685 (10 servo + 3 sonar trig), BNO055 ; PWM/EN/IS: BTS ×2 ; enkoder ×2 (A/B)
@@ -312,7 +345,7 @@ Toprak: akü − ── WAGO yıldız noktası (güç paneli) ── tüm dönü
 
 | Yük | Hat | Tipik | Yoğun | Tepe |
 |---|---|---|---|---|
-| Kafa (Pi + 10,1" QLED + kamera + amfi + mikrofon; 04.11) | F3 | ≈ 1,55 A (normal karşılama, 3,57 A @5 V; hesap) | hesaplanmadı | hesaplanmadı |
+| Kafa (Pi + 10,1" QLED + kamera + amfi + mikrofon; 04.11) | F3 | ≈ 1,55 A (normal karşılama, 3,57 A @5 V; hesap) | hesaplanmadı | hesaplanmadı (yalnız Pi hattı: PAM D24V50F5'te ise 3,28–3,38 A @5 V, K10 varsayılanı; `KY/uygulama-notu.md:98`) |
 | Göğüs ekranı (04.11) | mini 2 A | ~0,5 A @12 V (ekran; regülatör kaybı dahil değil) | hesaplanmadı | hesaplanmadı |
 | Servo A | F1 → 7,5 A | 1,5 A (jest 2,8 A × 6 V) | 2,3 A (4,4 A) | 4,1 A (7,7 A) |
 | Servo B | F1 → 7,5 A | 1,5 A | 2,5 A (4,7 A) | 4,1 A |
@@ -335,7 +368,7 @@ Toprak: akü − ── WAGO yıldız noktası (güç paneli) ── tüm dönü
 | F4 | 5 A | XL4016 çevre 5 V | **ikinci 5 A** (E9): sette tek 5 A var, F3 onu alır |
 | F5 | **2 A** (önce 5 A) | acil stop / röle K1 + K2 bobinleri | sette yok: yeni. K1 0,15 A + K2 ~0,03 A + PC817 |
 | Hat | 7,5 A × 2 + 5 A | XL4016 A ve B girişi; C (kafa servoları, 29.10) | kapaklı mini bıçak sigorta yuvası × 3 (yeni) |
-| Göğüs | mini 2 A (04.11) | LM2577 + LM2596 → 11,6" göğüs ekranı | ayrı yuva; ekran ~0,5 A. Girişin bağlandığı nokta doğrulanmadı |
+| Göğüs | mini 2 A (04.11) | LM2577 + LM2596 → 11,6" göğüs ekranı | ayrı yuva; ekran ~0,5 A. Girişin bağlandığı nokta karar bekliyor (K11) |
 | Şarj | 10 A (mini) | XT60 şarj girişi → akü + (ana anahtar öncesi) | E9 / akü raporu önerisi; dördüncü kapaklı yuva (yeni). Şarj cihazı 6 A |
 
 **Sigorta seti (E9, 5. adım):** kutudaki set 5, 10, 2 × 15, 2 × 20 (standart/ATO bıçak). F3 ve F4 iki 5 A ister, bir tane var:
@@ -463,7 +496,7 @@ F5 2 A ── mantar NC ──┬── K1 bobini ── IRLZ44N #1 (GPIO12)    
 ## Açık işler
 
 1. **Ölçüm (K1):** JGB37 durma torku ve akımı, zemin μ → `arayuz.TABAN['donus']`.
-2. **Kabuk:** omni seçilirse etek ön bantta teker boşluğu 10,55 → 12 mm (1,5 mm). Etek arka bandına havalandırma yarıkları (E7). Hoparlör yeri.
+2. **Kabuk:** omni seçilirse etek ön bantta teker boşluğu 10,55 → 12 mm (1,5 mm). Etek arka bandına havalandırma yarıkları (E7). Hoparlör yeri kapandı (09.11 notu: gövde orta bandı sağ duvarı, `KY/uygulama-notu.md:59`).
 3. **Montaj:** `montaj/moduller.py` omni teker adı; ana montaj ve tam tarama (6. adım). `carpisma-sonuc.json` taban ve kafa bölümleri eskidi.
 4. **E5:** pin planı kesinleşmesi (ön enkoderler).
 5. **E8/E9 (5. adım):** akü süreleri (Victron 256 Wh, röle 1,8 W), sigorta seti.
@@ -476,8 +509,8 @@ F5 2 A ── mantar NC ──┬── K1 bobini ── IRLZ44N #1 (GPIO12)    
 12. E9 ön şarj: röle her "devreye al"da yeniden çektiği için öncelik arttı (E3).
 13. Kafa ısı testi: normal karşılamada kapalı kafa ~49 °C hesap, ölçülecek; aşılırsa 25–30 mm egzoz fanı.
 14. **10,1" QLED (04.11):** kütle (600 g varsayım), akım (0,9 A varsayım), Touch VBUS ile Power arasındaki bağ ölçülecek.
-15. **Efe teyidi:** göğüs ekranı HDMI ve USB dokunmatiğin boyundan inmesi (CAD'de böyle). micro HDMI 0 / 1 ataması da CAD notu.
-16. **Göğüs ekranı dalı:** giriş noktası ve acil stop davranışı; jak ölçüsü; port yeri (fotoğraftan tahmini).
-17. **USB:** altıncı cihaz, hangi cihazın hub'a gireceği, hub ve SY8205 + PAM8403 + USB ses kartının kafa içi yeri (modelde yok).
+15. **Efe teyidi, karar bekliyor (K14, pano #6):** boyun demeti 12 V + tilt + göğüs HDMI + hub uzatması + hoparlör (CAD'de böyle). micro HDMI 0 / 1 ataması da CAD notu.
+16. **Göğüs ekranı dalı:** giriş noktası ve acil stop davranışı karar bekliyor (K11); jak ölçüsü; port yeri ve girintisi (fotoğraftan tahmini; P1.4 🟡); üç 90° fiş.
+17. **USB:** 6. cihaz bekliyor (K1, pano #5). Hub (gövde, göğüs üst arka kapağı), SY8205, PAM8403 ve USB ses kartı (kafa sol duvarı) yerleri 05.11'de modele girdi (K5 kapandı). Hub girişi gerilimi ölçülecek. PAM 5 V besleme noktası karar bekliyor (K10).
 18. **Akü süresi:** normal ~3,8–4,4 sa kaba tahmin; yoğun senaryo yeniden hesaplanacak, ölçüm yapılacak (gereksinim 2 saat; 1,83 sa kabulü 1,65 m yükleri içindi).
 19. **v4 muadilleri:** BTS7960B pin adları ve 3,3 V lojik (pin planı adları güncellenecek), K2 JQC-3FF ayak düzeni.

@@ -1,11 +1,16 @@
 LALE — TEKERLEKLİ İNSANSI ROBOT: PROJE ÖZETİ
-(Başka bir yapay zekâya bağlam vermek için hazırlandı. Tarih: 17 Ekim 2026)
+(Başka bir yapay zekâya bağlam vermek için hazırlandı. Tarih: 17 Ekim 2026; bölüm 2, 3, 4 ve 6
+ 09.11.2026'da 1,58 m ana tasarıma göre güncellendi.)
 =====================================================================
 
 Kaynak dosyalar (proje klasörü "Robot/"): README.md, tasarim/freecad/OZET.md,
 planlama/proje-plani.md, planlama/yazilim-plani.md, planlama/adim3/elektrik.md,
-planlama/duzeltme-plani.md, planlama/adim5/B-malzeme-plan.md, kod/ortak/eklem_sinirlari.json.
+planlama/dongu-158.md, planlama/d158/karar-kuyrugu.md, kod/ortak/eklem_sinirlari.json.
+Sayılar (09.11): tasarim/freecad/montaj/montaj-analiz.json (MA), tasarim/freecad/montaj/robot-bom.csv (BOM),
+tasarim/freecad/lale158/lale158-kontrol.json (LK), tasarim/freecad/lale158/kafa-yerlesim/uygulama-ivme.json (UI),
+tasarim/freecad/taban/taban-analiz.json (TA), tasarim/freecad/kafa/kafa-analiz.json (KA).
 "Tahmini" yazan değerler ölçülmedi; parçalar henüz elde değil, robot fiziksel olarak yapılmadı.
+"Karar bekliyor (Kn)" = planlama/d158/karar-kuyrugu.md içindeki açık madde.
 
 
 1. PROJE NEDİR
@@ -26,63 +31,78 @@ Kapsam
 
 2. GENEL YAPI VE BOYUTLAR
 -------------------------
-- Boy ≈ 125 cm (V3), kütle ≈ 21,7 kg (kablo payı dahil, CAD hesabı).
-- Ağırlık merkezi yerden ≈ 370 mm (ağır parçalar en altta: akü, motorlar, alüminyum plaka).
-- Teker yerleşimi kare: iz 356 mm (x ±178), aks arası 370 mm (z ±185), teker Ø125 × 58.
-- Devrilme eşiği (ev pozu): ileri/geri/yana 5,3 / 4,5 / 4,7 m/s² (fren ivmesinin ≈ 3×'i).
-  Statik devrilme eğimi ≈ 25–28°.
+- Ana tasarım 1,58 m (01.11.2026 kararı, 03.11.2026 CAD). Önceki ana tasarımlar tarihçe: 125 cm V3 (Ekim başı),
+  1,65 m (29.10 – 01.11).
+- Boy 1.580,0 mm (LK toplam_boy_mm). Kütle: ana montaj 25.715,6 g (MA kutle_g); ev pozu, 400 g kablo payıyla
+  26.115,6 g (UI ev.kutle_g). Akü 3,0 kg (BOM, Victron satırı).
+- Ağırlık merkezi ev pozunda yerden 522,7 mm (UI ev.am; ağır parçalar en altta: akü, motorlar, alüminyum plaka).
+- Teker yerleşimi kare: iz 432 mm (x ±216), aks arası 370 mm (z ±185) (planlama/y2/Y2b-ivme.json teker_hatti),
+  teker Ø125 × 58; taban 520 mm (MA taban_w_mm).
+- Devrilme (ev pozu, TA robot.pozlar[ev]): ileri/geri/yana 3,66 / 3,28 / 4,05 m/s²; statik devrilme eğimi
+  20,5 / 18,5 / 22,5°. Tüm yüksüz kol pozlarında 5° rampa en kötü pay 1,519 (eşik 1,5; UI izgara_yuk_0g.a_sinir_pay15).
+  Elde 100 g ile 1,479, 500 g ile 1,329 (< 1,5): el yükü sınırı karar bekliyor (K3, K9; öneri düzde ≤ 100 g / el).
 - Koordinat sistemi (CAD ve yazılımda): orijin zemin + robot merkezi, +X sağ, +Y yukarı,
   +Z ileri (yüz), birim mm.
 
-Modüller (FreeCAD V3 ana montajı: 907 parça, 44 PETG baskı parçası, 22 eklem)
-| Modül          | Kütle    | İçerik |
-| İskelet        | 5,8 kg   | 40×40 ağır sigma alüminyum profil: şase çerçevesi + tek gövde direği + omuz traversi |
-| Taban          | 7,5 kg   | 3 mm Al alt plaka, 5 mm kontrplak elektronik katı, 4 motor, akü, güç elektroniği, kartlar, 3 sonar, acil stop |
-| Kabuk          | 4,9 kg   | PETG gövde kabuğu (4 bant × sağ/sol + arka servis kapağı) + taban eteği; göğüste 15° eğik 10,1" ekran |
-| Omuz (×2)      | 460 g    | 2 eksenli omuz, her biri 2 × DS3218MG servo |
-| Dirsek+el (×2) | 369 g    | dirsek + bilek MG996R, sabit kancalı el (tutma yok) |
-| Kafa           | ≈ 1,44 kg| boyun, pan + tilt MG996R, 7" LCD yüz ekranı, Camera Module 3, Raspberry Pi 5 |
-- Kabuk parçaları okulun 3D yazıcısına (kullanılabilir hacim 246 × 246 × 250 mm) sığacak şekilde
-  bölünmüş; birleşimler bindirme dili + M3 ısıl gömme somun ile.
+Modüller (FreeCAD ana montajı: 1.179 parça, 72 baskı adedi (BOM, 62 kalem), 22 eklem; MA moduller ve eklemler)
+| Modül          | Kütle      | İçerik |
+| İskelet        | 6,41 kg    | 40×40 ağır sigma alüminyum profil: şase çerçevesi + tek gövde direği (1.115,5 mm) + omuz traversi |
+| Taban          | 8,11 kg    | 3 mm Al alt plaka, 5 mm kontrplak elektronik katı, 4 motor, akü 3,0 kg, güç elektroniği, kartlar, 3 sonar, acil stop |
+| Kabuk          | 7,17 kg    | PETG gövde kabuğu (bantlar sağ/sol + servis kapakları) + taban eteği; göğüse gömülü 11,6" ekran (cep, çerçeve, VESA taşıyıcı), hoparlör kabı, hub takozlu üst arka kapak |
+| Omuz (×2)      | 2 × 568 g  | 2 eksenli omuz, her biri 2 × DS3235 servo |
+| Dirsek+el (×2) | 2 × 400 g  | dirsek + bilek MG996R, sabit kancalı el (tutma yok) |
+| Kafa           | 2,09 kg    | boyun, pan + tilt MG996R, 10,1" QLED yüz ekranı, Camera Module 3, Raspberry Pi 5, ReSpeaker v2.0, USB ses kartı + PAM8403 |
+- Baskı parçaları okulun 3D yazıcısına (kullanılabilir hacim 246 × 246 × 250 mm) sığıyor (LK tabla, baski_sigmayan boş);
+  birleşimler bindirme dili + M3 ısıl gömme somun ile. Baskı listesi: planlama/baski-listesi.md (65 parça, 03.11; P4.3'te yenilenecek).
 - Sol kol, sağ kolun X aynası.
 
 
 3. PARÇA LİSTESİ (ANA BİLEŞENLER)
 ---------------------------------
 Hesaplama / kontrol
-- Raspberry Pi 5 — KAFADA. Ana beyin (Python). Kafa içinde Pololu D36V50F5 ile 12 V → 5 V beslenir.
+- Raspberry Pi 5, 4 GB — KAFADA. Ana beyin (Python). Kafa içinde Pololu D24V50F5 ile 12 V → 5 V beslenir;
+  kafa ekranının ayrı SY8205 5 V düşürücüsü var (BOM; elektrik.md "Kafa güç mimarisi").
 - ESP32-WROOM-32 DevKit — TABANDA. Alt kontrolcü (motor, servo, sensör, güvenlik), 100 Hz döngü.
+  Pi'ye USB ile, gövdedeki 4'lü hub üzerinden bağlı (elektrik.md "USB" tablosu).
 - PCA9685 — 16 kanallı I2C PWM kartı: 10 servo + 3 sonar tetik sinyali.
 
 Hareket
 - 4 × JGB37-520 12 V 60 dev/dk enkoderli redüktörlü DC motor (her yanda 2, paralel sürülür).
 - 2 × BTS7960 motor sürücü (her yan için bir tane).
 - Seçenek (karar bekliyor): ön iki teker omni (Nexus 14075, Ø127) — yerinde dönüş sorunu için.
-- 4 × DS3218MG servo (omuzlar: her kolda öne-arka S1 ve yana açma S2).
-- 6 × MG996R servo (2 × dirsek, 2 × bilek, kafa pan, kafa tilt).
+- 4 × DS3235 servo (omuzlar: her kolda öne-arka S1 ve yana açma S2) (BOM).
+- 6 × MG996R servo (2 × dirsek, 2 × bilek, kafa pan, kafa tilt) (BOM). Toplam 10 servo.
 
 Algılama / etkileşim
 - 3 × HC-SR04 ultrasonik mesafe sensörü (engel algılama).
 - BNO055 IMU (eğim / devrilme alarmı).
 - Camera Module 3 (CSI, kafada).
-- ReSpeaker Lite USB mikrofon + MAX98357A I2S amfi + hoparlör (hoparlör yeri henüz açık).
-- 7" HDMI LCD (kafada yüz ekranı: göz-ağız animasyonu).
-- Nextion NX1060P101 10,1" dokunmatik ekran (göğüste; menü ve durum; ESP32'den UART ile sürülür).
+- ReSpeaker Mic Array v2.0 (USB, 4 mikrofon; kafa tavanının altında) + USB ses kartı + PAM8403 2 × 3 W amfi
+  (ikisi kafa sol duvarında) + 40 mm 3 W hoparlör (gövde orta bandı sağ duvarında) (BOM; 04.11 kararı K16:
+  I2S amfi yok). PAM'ın 5 V besleme noktası karar bekliyor (K10). Mikrofon-hoparlör en az 574,3 mm.
+- 10,1" QLED 1280 × 720 HDMI dokunmatik (kafada yüz ekranı: göz-ağız animasyonu; Pi HDMI 0).
+- 11,6" 1080p HDMI dokunmatik ekran (göğüse gömülü; Pi HDMI 1, dokunmatik USB'si hub'dan; 12 V ayrı dal).
+  Nextion yok (25 Ekim).
 - Bas-konuş düğmesi (uyandırma kelimesi yok).
 - Bluetooth gamepad (manuel sürüş).
+- USB: adı belli 5 cihaz (ReSpeaker, ses kartı, kafa dokunmatiği Pi'de; göğüs dokunmatiği ve ESP32 hub'da);
+  6. cihaz bekliyor (K1).
 
 Güç
-- Akü: Victron SuperPack LiFePO4 12,8 V 20 Ah (256 Wh, dahili BMS 30 A) — güncel seçim.
-  Ucuz alternatif: Limacell 24 Ah (ölçü/kutup teyidi bekliyor). LiPo bilinçli olarak seçilmedi.
+- Akü: Victron SuperPack LiFePO4 12,8 V 20 Ah (256 Wh, dahili BMS 30 A, 3,0 kg). LiPo bilinçli olarak seçilmedi.
 - XT60 bağlantı, 30 A ana sigorta, ASW-A01 ana anahtar, 6 yollu sigorta kutusu (F1–F5).
-- 3 × XL4016 düşürücü: servo hattı A (6 V), servo hattı B (6 V), çevre 5 V.
-- Pololu D36V50F5 (kafada 5 V, Pi için).
+- 4 × XL4016 düşürücü: servo hattı A (sağ kol, 6 V), B (sol kol, 6 V), C (kafa pan + tilt, 6 V), çevre 5 V
+  (BOM; elektrik.md "Servo hatları").
+- Pololu D24V50F5 (kafada 5 V, Pi için) + SY8205 (kafa ekranı). Göğüs ekranı: LM2577 + LM2596 12 V,
+  mini 2 A sigortalı ayrı dal; dalın giriş noktası karar bekliyor (K11).
 - Acil stop mantar butonu (NC) + 12 V 40 A röle K1 + ön şarj rölesi K2 + IRLZ44N MOSFET'ler.
 - PC817 optokuplörler (acil stop ve anahtarlı bara durumunu ESP32'ye okutmak için).
-- Tahmini çalışma süresi: boşta ≈ 11 sa, normal ≈ 5,7 sa, yoğun ≈ 2 sa.
+- Tahmini çalışma süresi (TA aku, yükler tahmini): düşük ≈ 12,2 sa, orta ≈ 5,6 sa, yüksek ≈ 2,4 sa.
+  elektrik.md'nin 04.11 kaba tahmini normal kullanımda ~3,8–4,4 sa; ikisi de ölçülmedi.
 
-Malzeme maliyeti (planlama/maliyet.json, %15 pay dahil): ≈ 99.000 TL; koşullu kalemlerle
-(omni teker, fan vb.) ≈ 105.000 TL. Sipariş henüz verilmedi.
+Malzeme maliyeti (planlama/maliyet.json, %15 pay ve yedek dahil): ≈ 102.900 TL; koşullu kalemlerle ≈ 108.200 TL
+(planlama/adim5/maliyet_toplam.py, 09.11). Liste henüz 29.10 listesi (o günkü 1,65 m tasarımı); 09.11'de yalnız ses
+ve 9 fiyatsız kablo / fiş adayı işlendi. 1,58 m sipariş listesi P8.1'de. Sipariş henüz verilmedi.
 
 
 4. ÇALIŞMA MANTIĞI
@@ -95,16 +115,18 @@ Malzeme maliyeti (planlama/maliyet.json, %15 pay dahil): ≈ 99.000 TL; koşullu
    ├─ yedek     : internet yoksa Vosk (small-tr) sabit komutlar + Piper TTS
    ├─ davranış  : durum makinesi BEKLE / DİNLE / DÜŞÜN / KONUŞ / JEST / ACİL
    │              LLM cevabındaki etiket (örn. [el_salla]) → jest + yüz ifadesi
-   ├─ yüz       : 7" LCD'de pygame ile göz/ağız animasyonu (mutlu, düşünüyor, dinliyor, şaşkın)
+   ├─ yüz       : 10,1" QLED'de (HDMI 0) pygame ile göz/ağız animasyonu (mutlu, düşünüyor, dinliyor, şaşkın)
+   ├─ göğüs     : 11,6" ekran HDMI 1'de, dokunmatiği USB (hub); arayüzün nasıl çizileceği karara bağlanmadı
+   │              (planlama/d158/kablo-kurali-notu.md "Yazılıma etkisi")
+   ├─ ses çıkışı: USB ses kartı → PAM8403 → hoparlör (HDMI sesi değil)
    ├─ görüş     : (esnek) MediaPipe yüz algılama → kafa pan/tilt takibi; düğmeyle bulut VLM
-   └─ seri      : USB kablo boyundan tabana, 115200 baud, satır başına bir JSON mesajı
+   └─ seri      : USB, Pi port 3 → boyundan gövdedeki hub → ESP32 (taban; CAD'de böyle, Efe teyidi K14), 115200 baud, satır başına bir JSON mesajı
                           │
   ESP32 (taban) — 100 Hz döngü
    ├─ tahrik    : 2 × BTS7960, yan başına enkoder ve hız PID'i, ivme rampası
    ├─ servo     : PCA9685 üzerinden 10 servo; hız sınırlı yumuşak geçiş
    ├─ sensör    : 3 sonar, BNO055, akü gerilimi (ADC), acil stop durumu (PC817)
    ├─ güç       : "devreye al" röle dizisi
-   ├─ göğüs     : Nextion ekran (UART2); Pi'nin ekran komutları ESP32 üzerinden gider
    ├─ güvenlik  : 500 ms Pi'den mesaj yoksa tekerler DURUR; eklem sınırları ve kafa-kol yasak
    │              bölgesi HER komutta yeniden kontrol edilir (Pi yanlış komut verse de kol kabuğa giremez)
    └─ teleop    : Bluetooth gamepad (Bluepad32) — Pi çökse bile robot kumandayla sürülür
@@ -127,15 +149,18 @@ Malzeme maliyeti (planlama/maliyet.json, %15 pay dahil): ≈ 99.000 TL; koşullu
   Dirsek           : 0…105°
   Bilek            : −90…90°
   Kafa pan         : −90…90°
-  Kafa tilt        : −25…30°
+  Kafa tilt        : −13…13°   (tasarım sınırı, karar 29.10; tilt payı ±15'te 3,64, KA). main'deki kod bugün ±20
+                   (70…110) kullanıyor; ±20'de kafa gövdeye çarpıyor (KA tarama 327,4 / 654,9 mm³), Efe'ye soruldu (pano #6).
   Teker            : sınırsız (yalnız hız/ivme sınırı)
-  Kafa-kol yasak bölgesi: kol öne 120…135°, yana 5°, dirsek 65…105° iken (el yüzün önünde),
-    kafa o kola doğru pan 25…60° (sol kol −60…−25°) VE tilt 20…30° birlikte verilmez.
+  S1 ≥ 120° iken S2 ≤ 117° (S1 kablo kaseti kapağı flanşı).
+  Kafa-kol yasak kutusu şu an yok (eklem aralıklarında çakışma bulunmadı; tam taramada yeniden doğrulanacak).
+  125 cm'deki kutu (kol öne 125…135°, dirsek 70…105° iken kafa pan 30…55° ve tilt 25…30°) tilt ±13 aralığının dışında.
   Sol kol servolarının komut işareti ters (tahmini; montajda tek tek doğrulanacak).
 
 4.5 Sürüş kuralları
   - Diferansiyel sürüş (her yandaki iki motor aynı hızda).
-  - İvme ≤ 0,5 m/s², rampada ≤ 0,25 m/s². Hız ≈ 0,39 m/s.
+  - Düz zeminde ivme ≤ 0,5 m/s², fren ≤ 1,8 m/s²; rampada / eğimde ivme ve fren ≤ 0,1 m/s² ve kollar
+    ev pozunda (kod/ortak/eklem_sinirlari.json teker; karar 29.10). Hız ≈ 0,39 m/s (TA motor).
   - Kare teker düzeninde yerinde dönüş motorları zorlar → yazılım YAY ÇİZEREK döner; yerinde
     dönüş en çok 90° ve ω ≤ 0,6 rad/s, ardından dinlenme. Motor akımı izlenir.
   - Sonar: ≈ 30 cm'de engel → dur. BNO055: 15° eğimde alarm. Düşük akü geriliminde uyarı.
@@ -143,18 +168,21 @@ Malzeme maliyeti (planlama/maliyet.json, %15 pay dahil): ≈ 99.000 TL; koşullu
 4.6 Güç ve güvenlik zinciri
   Akü → ana sigorta 30 A → ana anahtar → sigorta kutusu:
    F1 20 A → röle K1 kontağı → "anahtarlı 12 V bara" → 2 × BTS7960 (motorlar),
-             XL4016 A (6 V: sağ kol + pan), XL4016 B (6 V: sol kol + tilt)
+             7,5 A → XL4016 A (6 V: sağ kol), 7,5 A → XL4016 B (6 V: sol kol),
+             5 A → XL4016 C (6 V: kafa pan + tilt; karar 29.10)
    F2 15 A → yedek
-   F3 5 A  → boyundan kafaya 12 V → Pololu 5 V → Pi 5 (+ LCD, kamera, amfi, mikrofon)
-   F4 5 A  → XL4016 çevre 5 V → ESP32, Nextion, sonarlar, mantık beslemeleri (3,3 V ESP32'den)
+   F3 5 A  → boyundan kafaya 12 V → Pololu D24V50F5 5 V → Pi 5 (+ kamera, mikrofon, USB cihazları;
+             PAM8403 5 V burada mı karar bekliyor, K10) ; SY8205 5 V → 10,1" QLED
+   F4 5 A  → XL4016 çevre 5 V → ESP32, sonarlar, mantık beslemeleri (3,3 V ESP32'den)
    F5 2 A  → acil stop mantarı (NC) → K1 bobini → MOSFET → GND
-  Servolar PCA9685'in V+ ucundan DEĞİL, iki ayrı dağıtım kartından beslenir (Pi'nin servo
-  akımı yüzünden resetlenmemesi için ayrı hatlar + ortak yıldız toprak).
+   mini 2 A → LM2577 + LM2596 12 V → 11,6" göğüs ekranı (giriş noktası karar bekliyor, K11)
+  Servolar PCA9685'in V+ ucundan DEĞİL, üç ayrı XL4016 hattından beslenir (Pi'nin servo
+  akımı yüzünden resetlenmemesi için ayrı hatlar + ortak yıldız toprak). Ayrıntı: planlama/adim3/elektrik.md.
 
   Acil stop mantığı:
   - Mantara basılınca röle bobini kesilir → motor ve servo gücü gider (Pi ve ESP32 açık kalır).
   - Mantar bırakılınca güç KENDİLİĞİNDEN GELMEZ. Güç yalnız açık bir "devreye al" komutuyla
-    (Nextion düğmesi ya da Pi "arm") gelir. Önkoşullar: mantar serbest, PCA9685 çıkışları
+    (Pi "arm"; telefon kumandasından) gelir. Önkoşullar: mantar serbest, PCA9685 çıkışları
     servoların son bilinen konumunda, motor PWM = 0.
   - Dizi: ön şarj rölesi K2 açılır → 300 ms → bara geriliminin geldiği teyit edilir → K1 çeker →
     K2 kapanır (BMS'in kondansatör dolum darbesiyle kesmemesi için).
@@ -163,9 +191,14 @@ Malzeme maliyeti (planlama/maliyet.json, %15 pay dahil): ≈ 99.000 TL; koşullu
     resetler ve kollar düşer.
 
 
-5. TAKVİM (dönem haftası; H1 = 28 Eylül 2026)
---------------------------------------------
-  H3–4   düzeltme planı, sipariş, masa düzeneği (Pi ↔ ESP32 + 1 motor + 2 servo)
+5. TAKVİM
+---------
+  08.11.2026 (P9.1): sipariş verilmedi; takvim artık sipariş gününe göre (S = sipariş günü, S+n = n hafta
+  sonra). Kapı 1 ilk sürüş S+2 → S+3, Kapı 2 konuşan + gezen + jest yapan robot S+6 → S+7, Kapı 3 demo
+  hazır S+7 → S+8. Tam tablo ve kritik yol: planlama/proje-plani.md "Takvim (sipariş gününe göre; 08.11.2026)".
+
+  [Tarihçe] 15 Ekim takvimi (dönem haftası; H1 = 28 Eylül 2026; sipariş Ekim ortası varsayımıyla, 08.11'de geçersiz):
+  H3–4  düzeltme planı, sipariş, masa düzeneği (Pi ↔ ESP32 + 1 motor + 2 servo)
   H5–8   paralel: masada konuşan kafa (H7), taban + motorlar + kumandayla sürüş, güç ve acil stop, 3D baskı
   H9     İLK UÇTAN UCA SÜRÜM: elektrik robotta, kumandayla geziyor, kollar sınırlar içinde
   H10–14 gövde/kollar, jest kütüphanesi, yüz ekranı, davranış, çevrimdışı mod; konuşan + jest yapan robot (H11)
@@ -174,24 +207,28 @@ Malzeme maliyeti (planlama/maliyet.json, %15 pay dahil): ≈ 99.000 TL; koşullu
   Yazılım tahmini ≈ 160–215 saat (12 iş paketi Y0–Y12).
 
 
-6. ŞU ANKİ DURUM (17 Ekim 2026)
--------------------------------
-- Tasarım: FreeCAD 1.1 V3 modeli tamam; tüm modüller Python betikleriyle üretiliyor
-  (tasarim/freecad/; tek ölçü kaynağı arayuz.py). Modüller arası çakışma taraması yapıldı:
-  eklem aralığında tek çakışma kafa-kol yasak bölgesi (yazılımla engelleniyor).
-- Düzeltme planı (11 Ekim): 1–5. adımlar yapıldı ve "lale-duzeltme" git dalında commit'lendi
-  (kablo yolu, omuz baskı analizi, elektrik kararları, montaj sırası analizi, malzeme listesi).
-  3B montaj rehberi ≈ %50'de durdu.
-- Duraklatıldı: omuz S1 kablo kaseti bağımsız kontrolü yarıda (3 kablo bulgusu açık), montaj
-  sırası/erişim CAD düzeltmeleri (M6) ve tam çakışma taraması bekliyor.
-- Sipariş verilmedi; parça yok; yazılım kodu yok (yalnız eklem sınırları JSON'u ve üreticisi).
+6. ŞU ANKİ DURUM (09.11.2026; kaynak planlama/dongu-158.md)
+-----------------------------------------------------------
+- Tasarım: 1,58 m FreeCAD modeli (tasarim/freecad/lale158/; tek ölçü kaynağı arayuz.py), 1.179 parça.
+  158 döngüsünde F0, F1 (akü 3,0 kg, MAX98357A çıktı, AI HAT+ için iki çözüm (ana modelde yok, K2), kabuk/kafa betikleri, hoparlör
+  tutucusu; göğüs kablo tüpleri × ekran yalnız port girintisi varsayımıyla 0, ekran gelince yeniden), F5 (10 servo kanal önerisi, kablo kuralı notu, panoya soru), P8.3 / P8.4 (test
+  kâğıtları) ve P9.1 (sipariş gününe göre takvim) tamam.
+- Sürüyor: omuz mekanik durdurucu ve omuz çakışma taraması (F2), belgeler (F4a). F3 (elde yük, servo payları) tamam; karar K3/K9'da.
+- Bekliyor: tam çakışma taraması (tek koşu, P6.1), baskı analizi (P6.2), 3B rehberin 158'den
+  yeniden üretimi (≈ %50, 1,65 m'den kalma; P7), 158 sipariş paketi (P8.1).
+- Sipariş verilmedi; parça yok. Depodaki kod yalnız eklem sınırları JSON'u ve üreticisi (kod/ortak/).
+- Kararı bekleyenler: 6. USB cihazı (K1, pano #5), kablo kalemleri (K4), PAM 5 V noktası (K10),
+  göğüs 12 V kolu girişi (K11), boyun demeti onayı (K14, pano #6), elde yük sınırı (K3/K9), AI HAT+ × cıvata boss'u (K2).
+  Ayrıntı: planlama/d158/karar-kuyrugu.md.
 
 Açık riskler / kararlar
 - JGB37 torku belirsiz: satıcı "21 kg·cm" diyor, üretici tablosu ≈ 9–10 kg·cm. 9 ise robot
   standart tekerle yerinde dönemez → ön omni teker gerekir. Sipariş öncesi motor durma torku
   ve zemin sürtünmesi ölçülmeli (~1 saat).
-- 5° rampada motor torku sürekli sınırın ≈ %90'ı → yazılım ivme sınırı.
+- 5° rampada a 0,5 m/s² ile motor torku 6,86 kg·cm, sürekli sınırın (6,3) 1,09 katı; a 0,25 ile
+  0,92, duruşta 0,76 (TA motor) → rampada ivme ≤ 0,1 m/s² (yazılım sınırı).
 - Bulut sağlayıcıları (STT/LLM/TTS) ve API hesabı seçilmedi (aylık ≈ 10–20 $ tahmini).
-- Kafa içi ısı (Pi 5 + servo): hesap 34–46 °C; kapalı kafa stres testi gerekecek.
+- Kafa içi ısı (Pi 5 + servo + QLED): 1,58 m'de normal karşılamada ~49 °C, servo sınırı 55 °C;
+  en kötü durum yeni düzende hesaplanmadı, kapalı kafa testi gerekecek (planlama/adim3/elektrik.md).
 - KVKK: yüz algılama var, tanıma yok, kayıt yok, bilgilendirme levhası.
 - Yazılım sorumlusu ekipte yok (şart).

@@ -112,7 +112,7 @@ B + R1 modele işlendi, zincir omuz bölümü hariç koştu. Yeni çakışma yok
 | 3,5 mm → PAM | Ses kartı L 3,5 mm → PAM girişi | 36 | 40 | - | L 3,5 mm fişli kısa kablo: listede yok |
 | PAM 5 V | D24V50F5 → PAM (VARSAYIM) | 64 | 80 | - | Sarf; besleme noktası doğrulanmadı |
 | HDMI | Pi HDMI 1 → göğüs ekranı (boyundan) | 757 | 950 | - | v4, 1,5 m: yeter |
-| 12 V | Taban → göğüs ekranı (boyundan) | 1.376 | 1.720 | - | Değişmedi |
+| 12 V | Taban → göğüs ekranı (tabandan, boyundan geçmez; kaynak: `kablo_yolu_ekran.py:116` yolu, en üst nokta y 1.205 = S3 − 65 < omuz 1.270; `lale158-kontrol.json` `kablo_ozet.kablo["12 V"]`: "taban guc panelinden") | 1.376 | 1.720 | - | Değişmedi |
 
 | Kafa içi kablo | Nereden, nereye | Yol mm | Boy mm | Kalan mm |
 |---|---|---|---|---|

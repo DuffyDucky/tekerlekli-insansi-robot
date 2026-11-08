@@ -140,6 +140,7 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 - **Sayısal etki:** sipariş boyları 920, 270, 110, 1.030, 40 mm ve dirsek (`KY/uygulama-notu.md:106-112`). TL etkisi **doğrulanmadı** (fiyat yok).
 - **Varsayılan:** a (`dongu-158.md:139, §4 K4`).
 - **Bloke:** P4.2, P8.1.
+- **Not (F4a, 09.11.2026):** P4.2 (09.11): 9 kablo/fiş adayı + PAM8403 + USB ses kartı `maliyet.json`'a fiyatsız (`fiyat_bekliyor`, toplam dışı) eklendi; fiyat P8.1'de.
 - **Durum:** açık (`KY/uygulama-notu.md:150`, `KY/secenekler.md:341`).
 
 ## K5 · Hub ve ses kartı arka kabuk yan duvarında, servis için kabul mü — KAPANDI
@@ -196,6 +197,7 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
   akımı ölçülmeden belirsiz. c) maliyet ve yer **doğrulanmadı**. Akımların hepsi hesap, ölçülmedi.
 - **Varsayılan:** a (model bunu varsayım olarak kullanıyor: `KY/uygulama-notu.md:97`; P1.2 tanımı da a: `dongu-158.md:63, §3 P1.2`).
 - **Bloke:** P1.2 (`elektrik.md` metni), P4.1, P8.3 (PAM akımı testi).
+- **Not (F4a B çekincesi, 09.11.2026):** PAM tepe 0,71 A (`uygulama-notu.md:98`); Pi tam yük tepesiyle birlikte ölçülmeden 'sınırda değil' denmez (P8.3 testi).
 - **Durum:** açık (`KY/secenekler.md:338`, `KY/uygulama-notu.md:152`).
 
 ## K11 · Göğüs ekranı 12 V dalının girişi

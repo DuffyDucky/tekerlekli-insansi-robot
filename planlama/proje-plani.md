@@ -3,11 +3,12 @@
 Kaynak: `raporlar/Humanoid-Robot-Fizibilite-Raporu.html` (26 Eylül 2026). Tarihler güz dönemine göre;
 rakamların çoğu tahmin, teklif ve bölüm onayıyla kesinleşecek. Tasarımın tek kaynağı FreeCAD modeli (`tasarim/freecad/`).
 **Ana tasarım 1,58 m** (03.11.2026'dan beri, `planlama/baski-listesi.md`; iş döngüsü `planlama/dongu-158.md`): boy 1.580,0 mm ve
-1.177 parça (`tasarim/freecad/lale158/lale158-kontrol.json`, `toplam_boy_mm`, `parca`), kütle 25.910,6 g (400 g kablo payı dahil;
-`tasarim/freecad/lale158/kafa-yerlesim/uygulama-ivme.json`, `ev.kutle_g`), 10 servo (kol başına 4: omuz S1 ve S2 DS3235, dirsek ve
-bilek MG996R; kafada pan + tilt MG996R; `planlama/d158/servo-10-oneri.md`), kafada 10,1" QLED (1280×720), göğüste 11,6" 1080p gömülü ekran.
-Malzeme listesi `planlama/maliyet.json` henüz 1,65 m sayılarıyla (29.10; ≈ 103.800 TL, %15 pay ve yedek dahil); 1,58 m sipariş
-paketi P8.1'de çıkacak. Önceki ana tasarımlar tarihçedir: 125 cm V3 (Ekim başı) ve 1,65 m (29.10 – 03.11; 1.120 parça, 24,6 kg,
+1.179 parça (`tasarim/freecad/lale158/lale158-kontrol.json`, `toplam_boy_mm`, `parca`), ev pozu kütlesi 26.115,6 g (400 g kablo payı dahil;
+`tasarim/freecad/lale158/kafa-yerlesim/uygulama-ivme.json`, `ev.kutle_g`), akü 3,0 kg (`tasarim/freecad/montaj/robot-bom.csv`, Victron satırı),
+yüksüz rampa devrilme payı 1,519 (eşik 1,5; aynı dosya, `izgara_yuk_0g.a_sinir_pay15.rampa5_geri`), 10 servo (kol başına 4: omuz S1 ve S2 DS3235, dirsek ve
+bilek MG996R; kafada pan + tilt MG996R; `planlama/d158/servo-10-oneri.md`), kafada 10,1" QLED (1280×720), göğüste 11,6" 1080p gömülü ekran (09.11 sayıları).
+Malzeme listesi `planlama/maliyet.json` henüz 29.10 listesi (o günkü 1,65 m tasarımı; 09.11'de yalnız ses ve fiyatsız kablo adayları işlendi):
+≈ 102.900 TL, %15 pay ve yedek dahil (`planlama/adim5/maliyet_toplam.py`); 1,58 m sipariş paketi P8.1'de çıkacak. Önceki ana tasarımlar tarihçedir: 125 cm V3 (Ekim başı) ve 1,65 m (29.10 – 03.11; 1.120 parça, 24,6 kg,
 kol başına 4 servo, iş planı `planlama/dongu.md` Y1–Y6).
 
 **Tek takvim (15 Ekim 2026, D6):** hafta numarası **dönem haftasıdır**, H1 = 28 Eylül – 4 Ekim 2026 (pazartesi başlar).

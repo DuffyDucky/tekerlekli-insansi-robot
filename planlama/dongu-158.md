@@ -40,8 +40,7 @@ tilt payı ≥ 3,0 (3,64); pan payı ≥ 2,0 (2,21); mikrofon-hoparlör ≥ 400 
 | Paket | Ajan | Yazdığı alan |
 |---|---|---|
 | F2 (P2.1, P2.2) | A | `tasarim/freecad/omuz/`, `arayuz.py` (yalnız omuz bloğu), `kabuk/` (durdurucu kabukta ise), `carpisma-bolum/omuz.json` + `carpisma-sonuc.json`, `planlama/d158/F2-*`, **FreeCAD makinesi** |
-| F4a (P4.1, P4.2, P4.4) | A | `planlama/adim3/elektrik.md`, `planlama/maliyet.json`, `README.md`, `OZET.md`, `tasarim/freecad/README.md`/`OZET.md`, `planlama/proje-plani.md` (yalnız başlık sayıları), `planlama/d158/F4a-*`; FreeCAD yok; `karar-kuyrugu.md`'ye yazmaz |
-| F3a (P3.1, P3.2) | C kayıt (+ `karar-kuyrugu.md` K3/K9, pano #6 bilgi) | yalnız yeni dosyalar `planlama/d158/F3a-*`; FreeCAD yok; `karar-kuyrugu.md`'ye yazmaz |
+| F4a (P4.1, P4.2, P4.4) | C kayıt (+ `uygulama-notu.md:115`, `karar-kuyrugu.md` K4/K10 notları) | `planlama/adim3/elektrik.md`, `planlama/maliyet.json`, `README.md`, `OZET.md`, `tasarim/freecad/README.md`/`OZET.md`, `planlama/proje-plani.md` (yalnız başlık sayıları), `planlama/d158/F4a-*`; FreeCAD yok; `karar-kuyrugu.md`'ye yazmaz |
 
 - **Tasarım sırası:** her adım öncekini bozmamalı; tam çakışma taraması yalnız P6'da, bir kez.
 - **Karar gereken yerde durma:** Ahmet'in kararını isteyen madde `planlama/d158/karar-kuyrugu.md`'ye yazılır
@@ -91,14 +90,14 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
-| P3.1 | Düz zeminde elde yük sınırı: 0 / 50 / 100 / 200 / 500 g için devrilme payı ve servo payı tablosu | Tablo + önerilen sınır karar kuyruğuna | F2 ile | 🔄 |
-| P3.2 | Servo payları 3,0 kg akü ve AI HAT+ sonrası yeniden (S1, S2, dirsek, bilek, pan, tilt) | Hepsi ≥ 1 ya da madde karar kuyruğuna | P3.1 | 🔄 |
+| P3.1 | Düz zeminde elde yük sınırı: 0 / 50 / 100 / 200 / 500 g için devrilme payı ve servo payı tablosu | Tablo + önerilen sınır karar kuyruğuna | F2 ile | ✅ (karar K3/K9 Ahmet'te) |
+| P3.2 | Servo payları 3,0 kg akü ve AI HAT+ sonrası yeniden (S1, S2, dirsek, bilek, pan, tilt) | Hepsi ≥ 1 ya da madde karar kuyruğuna | P3.1 | ✅ (karar K3/K9 Ahmet'te) |
 
 ### Faz F4: Elektrik ve belgeler 158 ile aynı dili konuşsun
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
-| P4.1 | `elektrik.md`: hub yeri, boyun demeti (göğüs HDMI + USB dokunmatik), USB cihaz listesi (6. cihaz Efe cevabına göre); ses: PAM8403 + USB ses kartı, MAX98357A satırları :12, 21, 266 ve PAM besleme noktası (K10) | Belgedeki her sayı bir JSON'a ya da kaynağa bağlı | F1 sonrası | 🔄 |
+| P4.1 | `elektrik.md`: hub yeri (gövde, üst arka göğüs servis kapağı içi; K5), boyun demeti (5 kablo: kafa 12 V, tilt servo, göğüs HDMI, hub uzatması, hoparlör; dokunmatik ve ESP32 USB gövdedeki hub'dan, göğüs 12 V tabandan — F4a A düzeltmesi), USB cihaz listesi (6. cihaz Efe cevabına göre); ses: PAM8403 + USB ses kartı, MAX98357A satırları :12, 21, 266 ve PAM besleme noktası (K10) | Belgedeki her sayı bir JSON'a ya da kaynağa bağlı | F1 sonrası | 🔄 |
 | P4.2 | Listede olmayan 6 kablo kalemini (USB dokunmatik ve 12 V için de 90° fiş, F1b B) aday olarak `maliyet.json`'a "koşullu" işaretle ekle (satıcı sayfası doğrulanmadan fiyat yazılmaz) | Genel toplam ve koşullu toplam ayrı | P4.1 | 🔄 |
 | P4.3 | Baskı listesi: hub takozlu kapak, 2 yeni kap parçası, VESA taşıyıcı malzemesi (PETG-CF) | `baski_listesi_guncelle.py` ile model aynı | P4.1 | ⏳ |
 | P4.4 | README 1,65 → 1,58 m, `OZET.md`, `planlama/y2/Y2b-*.json` eski sayılar, `proje-plani.md` başlık sayıları | Depoda "1,65 m ana tasarım" ifadesi yalnız tarihçede | P4.1 | 🔄 |
@@ -159,6 +158,12 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | K9 | El yükü 0,5 kg için servo değişimi mi, 100 g sınırı mı | 100 g sınırı |
 
 ## 5. Günlük
+
+- 2026-11-09 F4a B: KOŞULLU GEÇER (tüm sayılar kaynakla birebir; hub/boyun A haklı; 6 metin koşulu C'de: tilt ±13 tasarım / kod ±20 çerçevesi, F3 bitti, K2 açık listede, K14 işareti, 78.000 TL koşulu). K10 "sınırda değil" ölçülmeden yazılmaz.
+
+- 2026-11-09 F4a A bitti: 7 belge 1,58'e; maliyet genel 103.767,58 → 102.919,71 (MAX çıktı), koşullu dahil 108.208,77; 11 fiyatsız aday (`fiyat_bekliyor`, toplam dışı). Orkestratör brief hatası: hub yeri ve boyun demeti kaynaklarla çelişiyordu, A kaynağa uydu; P4.1 satırı düzeltildi. Takma ad kalıntıları (17) P4.5'e. B kontrolde.
+
+- 2026-11-09 **F3 ✅** C: 9cca013 (K3/K9 kuyruğa, öneri ≤ 100 g/el), rapor 1a319f2 push; pano #6 mesaj 17 (tilt ±20 çakışması bilgi + "±13 mümkün mü" sorusu). Koşan: F2 A, F4a A.
 
 - 2026-11-09 F3a B: KOŞULLU (6 küçük metin koşulu, C'de). Yöntem ve sayılar bağımsız doğrulandı. Ek: ivmeli kol payı kaba tahmini 100 g/el S1 ≈ 1,1, 200 g/el < 1 → ≤ 100 g önerisini destekler. Tilt ±20 çakışması pano #6'ya bilgi olarak eklenecek.
 
