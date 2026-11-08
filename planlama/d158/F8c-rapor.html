@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale P8.3 Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+tr.k td:first-child{box-shadow:inset 3px 0 0 var(--crit)}
+td.kod{font-weight:650;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale P8.3: ekip için ölçüm ve test kâğıtları</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 08.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>planlama/d158/testler/</code>, <code>F8c-kontrol.md</code>, <code>F8c-gunluk.md</code></p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">Bağımsız kontrol</div><div class="v"><span class="tag ok">GEÇER</span></div><div class="d">Yeniden kontrol 2, 10/10 kâğıt</div></div>
+  <div class="card"><div class="k">Kâğıt</div><div class="v">9 + 1</div><div class="d">T1–T9 ve ortak kurallar (00-genel)</div></div>
+  <div class="card"><div class="k">Düzeltme turu</div><div class="v">2</div><div class="d">15 madde, sonra R1–R6</div></div>
+  <div class="card"><div class="k">Regresyon</div><div class="v"><span class="tag ok">10/10 aynı</span></div><div class="d"><code>--yazma</code>, çıkış 0, taban değişmedi</div></div>
+</div>
+
+<p class="note">P8.3 yalnız belgedir: CAD ya da kod değişmedi. Kâğıtlar sipariş ya da karar değildir; sonuç ilgili belgeye işlenir,
+karar gerekirse proje sahibine gider. Regresyon <code>regresyon.py --yazma</code> ile koşuldu; <code>regresyon.json</code> sha256 koşu öncesi ve sonrası aynı
+(<code>1f457ffa…2ac0</code>).</p>
+
+<h2>Dokuz kâğıt</h2>
+<p>Önerilen sıra: T2 ve T7 ilk (yanlış bağlantı parçayı yakar), T1 ve T9-A omni siparişinden önce, sonra T3 → T4 → T5, T8, en son T6 ve T9-B.</p>
+<div class="tbl"><table>
+<thead><tr><th>Kod</th><th>Ne zaman</th><th>Doğruladığı varsayım</th><th>Geçer sınırı</th><th>Gereken alet</th></tr></thead>
+<tbody>
+<tr><td class="kod">T1<br>JGB37 durma torku</td><td>Motorlar gelince, omni siparişinden önce</td>
+<td>Durma torku 21 kg·cm (satıcı etiketi, birimsiz), durma akımı 2,8 A (tahmini); sürekli = durmanın %30'u</td>
+<td>GEÇER: tork ≥ 21,0 kg·cm ve akım ≤ 2,8 A. KOŞULLU: 17,2–21,0 kg·cm ya da 2,8–5,0 A. KALIR: tork &lt; 17,2 (5° rampa, 0,1 m/s²) ya da kaynak 5,0 A sınırına girdi. "Ağır" eşik μ'ye göre 9,2 / 10,5 / 12,1 kg·cm</td>
+<td>Lab kaynağı (≥ 5 A, akım sınırlı), multimetre ×2, el kantarı, 100 mm kol, mengene, kumpas, kronometre, gözlük</td></tr>
+<tr><td class="kod">T2<br>QLED VBUS</td><td>QLED gelince, Pi'ye takmadan</td>
+<td>Touch VBUS ile Power VBUS ekran içinde bağlı değil (doğrulanmamıştı)</td>
+<td>VBUS↔VBUS açık devre (OL), diyot iki yönde OL, boştaki uçta ≤ 0,5 V; GND↔GND &lt; 1 Ω kontrolü. &lt; 10 Ω doğrudan bağ = KALIR</td>
+<td>Multimetre (direnç, diyot, V), USB-A→micro-B ×2, USB-A test kartı ×2, telefon 5 V adaptörü. Pi kullanılmaz</td></tr>
+<tr><td class="kod">T3<br>Kafa 5 V hatları</td><td>Kafa elektroniği kurulunca, T2'den sonra</td>
+<td>Pi hattı normal 2,67 A, QLED 0,9 A (varsayım), kafa 5 V toplamı 3,57 A, 12 V girişi ≈ 1,55 A</td>
+<td>Pi hattı 4,80–5,20 V ve &lt; 5,0 A; ekran hattı 4,75–5,25 V ve &lt; 3,7 A; 12 V girişi &lt; 5,0 A (F3); <code>get_throttled</code> = 0x0</td>
+<td>DC akım pensi (S2 30 dk yalnız pensle), multimetre ×2, lab kaynağı 12,8 V / 5 A ya da akü + F3, Pi'de <code>vcgencmd</code>, <code>stress-ng</code></td></tr>
+<tr><td class="kod">T4<br>PAM8403 + ses kartı</td><td>T3'ten sonra</td>
+<td>PAM'ın Pi hattından beslenmesi (K10 açık), PAM tepe 0,71 A (verim %85 varsayım), Pi hattı tepede %66–68</td>
+<td>PAM ≤ 0,71 A; Pi hattı A4 + stres &lt; 5,0 A ve ≥ 4,80 V; ses kartı ≤ 0,5 A; <code>get_throttled</code> 0x0</td>
+<td>T3 düzeneği, PAM girişine köprü ya da pens, USB V/A ölçer, 1 kHz ve konuşma dosyası, kulak koruyucu</td></tr>
+<tr><td class="kod">T5<br>USB hub girişi</td><td>Hub ve uzatma takılınca</td>
+<td>Uzatma (920 mm) + hub sonrası gerilim yeterli (ölçülmemişti); Pi USB toplamı 1,6 A</td>
+<td>Hub çıkışı (cihaz ucu) ≥ 4,40 V; hub girişi ≥ 4,75 V (varsayım); Pi USB toplamı ≤ 1,6 A; dokunmatik ve ESP32 kopmuyor, reset yok</td>
+<td>USB V/A ölçer (×1, varsa ×2), multimetre, isteğe bağlı 0,5 A USB yük kartı</td></tr>
+<tr><td class="kod">T6<br>Akustik</td><td>Kafa ve göğüs kapanınca</td>
+<td>Tavanda 4 × Ø3 delik (çap varsayım), mikrofon–hoparlör ≥ 400 mm, servo + motor açıkken gürültü artışı ≤ 3 dB</td>
+<td>Mesafe ≥ 400 mm; 4 delik, Ø3,0 uç giriyor; gürültü artışı ≤ 3 dB (oda ≤ 40 dB(A)). C kısmı (tavan kaybı ≤ 3 dB, DOA ≤ 10°, yankı ≥ 10 dB) kaynaksız: kalırsa KOŞULLU</td>
+<td>Şerit metre, kumpas, Ø3,0 / Ø3,5 matkap ucu (pim), dB(A) ölçer, test hoparlörü, tripod, <code>arecord</code> / <code>sox</code>, ReSpeaker <code>tuning.py</code></td></tr>
+<tr><td class="kod">T7<br>Göğüs ekranı 12 V</td><td>Ekran ve regülatör kartı gelince, ekrana bağlamadan önce</td>
+<td>LM2577 + LM2596 kartı 12 V'a ayarlanır (ayarsız gelir), ekran ~12 V / 0,5 A, dal sigortası 2 A, jak ölçüsü (doğrulanmamıştı)</td>
+<td>Çıkış 11,4–12,6 V (±%5 varsayım) 10,0 / 12,8 / 14,6 V girişte; ekran ≤ 1,0 A; giriş &lt; 2,0 A; kutup ve jak uyuyor</td>
+<td>Lab kaynağı (≥ 3 A, akım sınırlı), multimetre ×2, 24 Ω / ≥ 10 W direnç, kumpas, tornavida, 2 A sigorta, ekran + HDMI kaynağı</td></tr>
+<tr><td class="kod">T8<br>Servo hatları</td><td>Güç paneli kurulunca, kollardan önce başlar</td>
+<td>Üç ayrı 6 V hat (A sağ kol, B sol kol, C pan + tilt); yoğun akım A/B 4,87 A, C 1,5 A; servo ucunda ~0,5 V düşüm</td>
+<td>Hatlar ayrı (V+ arası OL); yük direnciyle 30 dk çıkış ≥ 5,85 V (varsayım); soğutucu ≤ 80 °C; yoğun akım ≤ 5,0 A; bilek servosu ucu ≥ 5,5 V; reset/titreme 0</td>
+<td>Multimetre ×2, akım pensi ≥ 10 A, 1,33 Ω / 30 W direnç, termometre, kronometre, ≥ 1 m ölçü telli servo Y-ara kablosu</td></tr>
+<tr><td class="kod">T9<br>Zemin ve rampa</td><td>Sürtünme kısmı önce; rampa robot yürüyünce</td>
+<td>μ 0,4–0,6 (ölçülmemişti), 5° rampada ivme ≤ 0,1 m/s², devrilme payı ≥ 1,5, kütle 25,911 kg (P1.1 öncesi)</td>
+<td>0,4 ≤ μ ≤ 0,6; eğim ≤ 5°; rampada ivme ≤ 0,10 m/s² (video ile 1 s'de ≤ 5,0 cm ya da enkoder); düzde duruş ≤ 1,8 m/s²; teker kalkması 0</td>
+<td>El kantarı, baskül, çıta, su terazisi, şerit metre, enkoder kaydı ya da video + bant, iki emniyet ipi (200 kg) + sabit dayanak</td></tr>
+</tbody></table></div>
+
+<h2>Güvenlik özeti</h2>
+<ul class="list">
+<li><b>Ortak (00-genel):</b> akülü ya da servolu kâğıtta acil stop elde ve bir kez denenmiş; 30 A ana ve dal sigortası takılı olmadan enerji yok; en az iki kişi; saat, yüzük, bileklik çıkar; hareketli parçaya el uzatılmaz, ölçü ucu enerji yokken bağlanır ve alet hareket alanı dışında okunur.</li>
+<li><b>Multimetreyle akım (T1, T3, T4, T7, T8):</b> kırmızı uç 10 A soketine, yalnız seri, enerji kapalıyken bağla ve sök; bitince kırmızı uç hemen V soketine. 10 A kademesinin süre sınırına uy; dakikalar süren ölçümde pens. Seri ölçer takılıyken gerilim yük tarafında okunur.</li>
+<li><b>T2 ve T7:</b> önce bağlantıyı doğrula, sonra parçayı tak (QLED Pi'ye takılmaz; ekran regülatör yük direnciyle ayarlanmadan bağlanmaz, kart girişinin kutbu kontrol edilir).</li>
+<li><b>T1:</b> kaynak akım sınırlı (5 A); CC'yi yalnız kaynağın lambası ya da göstergesi belirler; durma denemesi en çok 5 s, arada soğuma.</li>
+<li><b>T4:</b> BTL çıkışı GND'ye bağlanmaz; servo barası açıkken kimse kol erişim alanına girmez, dinleme alan dışından ya da telefon kaydından.</li>
+<li><b>T8:</b> ilk ayar servosuz, yük direnciyle; bilek konnektörüne enerji yokken uzun telli ara kablo, hareket varken prob tutulmaz.</li>
+<li><b>T9:</b> acil stopta motorlar boşa düşer, robot rampada kayar. Durdurucu iptir: kayma için taban ipi sabit dayanaktan, devrilme için omuz altı ip ayrı; ipçi ve sürücü düşme hattı dışında; ilk deneme düşük hızla.</li>
+</ul>
+
+<h2>Varsayım listesi</h2>
+<p>Kâğıtlarda "varsayım" ya da "dış kaynak" diye işaretli, üretici ya da ölçüm dayanağı olmayan değerler. Ölçüm bunları doğrular ya da çürütür.</p>
+<div class="tbl"><table>
+<thead><tr><th>Kâğıt</th><th>Değer</th><th>Dayanak</th></tr></thead>
+<tbody>
+<tr><td>T1</td><td>21 kg·cm durma torku, 2,8 A durma akımı</td><td>Satıcı etiketi birimsiz; akım tahmini</td></tr>
+<tr><td>T1, T9</td><td>Robot kütlesi 25,911 kg</td><td>Akü 3,0 kg güncellemesi (P1.1) öncesi model; T9 tartıyor</td></tr>
+<tr><td>T2</td><td>GND &lt; 1 Ω, boştaki uç ≤ 0,5 V, diyot düşümü 0,1–0,8 V</td><td>Kaynakta sayısal eşik yok</td></tr>
+<tr><td>T3</td><td>QLED akımı 0,9 A; ekran hattı 4,75–5,25 V</td><td>Varsayım; gerilim USB 2.0 Tablo 7-7 (dış kaynak)</td></tr>
+<tr><td>T4</td><td>PAM Pi hattından (K10 açık), verim %85; ses kartı ≤ 0,5 A</td><td>Varsayım; akım USB 2.0 (dış kaynak)</td></tr>
+<tr><td>T5</td><td>Hub girişi ≥ 4,75 V; cihaz ucu ≥ 4,40 V</td><td>Giriş varsayım; uç USB 2.0 (dış kaynak)</td></tr>
+<tr><td>T6</td><td>Delik çapı Ø3; C1 tavan kaybı ≤ 3 dB, DOA ≤ 10°; C2 yankı bastırma ≥ 10 dB</td><td>Kaynakta sınır yok; C'de kalma KOŞULLU sayılır</td></tr>
+<tr><td>T7</td><td>Çıkış 11,4–12,6 V (12 V ±%5)</td><td>Üretici toleransı kaynakta yok</td></tr>
+<tr><td>T8</td><td>Yükte XL4016 çıkışı ≥ 5,85 V</td><td>Regülatör çıkışı için kaynakta eşik yok; kesin ölçüt servo ucu ≥ 5,5 V</td></tr>
+<tr><td>T9</td><td>İpçi mesafesi 1,6 m, 4–6 cm değerleri</td><td>Varsayım, gerekçesi kâğıtta</td></tr>
+</tbody></table></div>
+
+<h2>Kontrol turları</h2>
+<div class="tbl"><table>
+<thead><tr><th>Tur</th><th>Karar</th><th>Özet</th></tr></thead>
+<tbody>
+<tr class="k"><td>İlk kontrol</td><td><span class="tag crit">GEÇMEZ</span></td><td>T2, T6 GEÇER; 00-genel, T1, T3, T4, T5, T7 KOŞULLU; <b>T8</b> (yükte bilek ölçümü kişiyi kol hareket alanına sokuyor) ve <b>T9</b> (rampada tek önlem gevşek, omuzdan bağlı ip; telefon ivmeölçeri 0,1 m/s²'yi çözemiyor) GEÇMEZ. Ortak eksik: multimetreyle akım ölçüm kuralı. 15 madde (6 zorunlu).</td></tr>
+<tr><td>Yeniden kontrol 1</td><td><span class="tag wait">KOŞULLU</span></td><td>15 maddenin 15'i uygulanmış, iki GEÇMEZ sebebi giderilmiş. Kalan zorunlu: R1 (T4'te servo barası açıkken 10 cm'den dinleme), R2 (T1'de 11,8 V kuralı yanlış CC ve yanlış KALIR üretebilir). Öneri R3–R6.</td></tr>
+<tr><td>Yeniden kontrol 2</td><td><span class="tag ok">GEÇER</span></td><td>R1–R6 uygulanmış; 10/10 kâğıt GEÇER. Bara kapalıyken hiçbir servo ya da motorun güç almadığı şemadan doğrulandı; 12,8 V üst sınırı güvenli. <code>testler_html.py --kontrol</code>: 10 bölüm, 41 iç bağlantı, 118 id, 58 tablo; takma ad 0.</td></tr>
+</tbody></table></div>
+
+<h2>Açık öneriler</h2>
+<p>Bağımsız kontrolün kalan iki önerisi kararı değiştirmiyor, ama ilk ölçümden önce kâğıtlara işlenmeli. <code>dongu-158.md</code>'de P8.4'e bağlandı.</p>
+<div class="oneri"><b>T4 adım 5:</b> ilk dinlemede acil stop mantarı basılı tutulsun. Röle yazılım hatasıyla çekebilir (<code>elektrik.md:227</code>); mantar bobini donanımla keser, "bara kapalı" yazılımdan bağımsız garanti olur.</div>
+<div class="oneri"><b>T1 adım 5:</b> kaynak 12,8 V'ta da motor ucu 12,0 V'a ulaşmıyorsa (&gt; 0,8 V düşüm) seri multimetrenin çıkarılması zorunlu olsun; kâğıtta şimdi "istersen" yazıyor.</div>
+<p>Uygulayıcının bulguları (karar değil):</p>
+<ul class="list">
+<li>Fan ve 3 dB çelişkisi: <code>secenekler.md:251</code> soğutucu fanını 3 dB ölçütüne katıyor, öneri metni ayrı raporluyor; T6 öneri metnini izliyor.</li>
+<li>ReSpeaker yankı giderme, ses ayrı USB kartından çalınınca referans alabiliyor mu doğrulanmadı; T6 C2 ölçer, yazılım ekibine soru.</li>
+<li>P8.4 ek kâğıtları: K12 kafa ısı testi, H1 sigorta açıklığı, perçin delik ve somun ölçüsü, rampada acil stop.</li>
+<li>Robot kütlesi P1.1 öncesi modelden; T9 tartımı sonucu hesaplara işlenmeli.</li>
+</ul>
+
+<footer>Ajan C (ölçüm ve kayıt) · P8.3 · 08.11.2026 · Belgeler commit <code>fc9c651</code> (<code>lale-duzeltme</code>) · Regresyon <code>regresyon.py --yazma</code>: GEÇER, 10/10 aynı · Kaynaklar: <code>testler/00-genel.md</code>, <code>testler/T1–T9</code>, <code>F8c-kontrol.md</code>, <code>F8c-gunluk.md</code>.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
