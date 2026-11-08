@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale P9.1 Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a; --band:#e6f4ea;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93; --band:#183326;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93; --band:#183326;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+tr.k td:first-child{box-shadow:inset 3px 0 0 var(--crit)}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+.fig{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;overflow-x:auto}
+.fig svg{display:block;min-width:820px;width:100%;height:auto}
+.fig svg text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;fill:var(--ink)}
+.fig svg .m{fill:var(--muted)}
+.fig svg .box{fill:var(--panel);stroke:var(--ink);stroke-width:1.2}
+.fig svg .boxk{fill:var(--crit-bg);stroke:var(--crit);stroke-width:1.6}
+.fig svg .boxp{fill:var(--info-bg);stroke:var(--info);stroke-width:1.2}
+.fig svg .ar{stroke:var(--ink);stroke-width:1.3;fill:none}
+.fig svg .arp{stroke:var(--info);stroke-width:1.3;fill:none;stroke-dasharray:4 3}
+.fig svg .grid{stroke:var(--line);stroke-width:1}
+.fig svg .band{fill:var(--band)}
+.fig svg .s1{fill:var(--info)}
+.fig svg .s2{fill:var(--accent)}
+.fig svg .s3{fill:var(--accent);opacity:.4}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.85rem;color:var(--muted);margin:8px 2px 0}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div>
+    <h1>Lale P9.1: sipariş gününe göre takvim ve kritik yol</h1>
+    <p class="sub">08.11.2026 · 1,58 m ana tasarım · kaynak <code>planlama/proje-plani.md</code> (commit 979b995) · bağımsız kontrol: GEÇER (iki düzeltme turundan sonra)</p>
+  </div>
+  <button class="tema" id="tema" type="button">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">Sipariş</div><div class="v">verilmedi</div><div class="d">08.11 itibarıyla; liste hocada. Takvim artık S'ye (sipariş günü) göre</div></div>
+  <div class="card"><div class="k">Durum A: S → demo hazır</div><div class="v">8 hf</div><div class="d">iyimser 7,5 · kötümser 13; iki koşula bağlı</div></div>
+  <div class="card"><div class="k">Durum B: S → demo hazır</div><div class="v">9,5–10 hf</div><div class="d">erken kupon alımı ve hızlı lazer yoksa</div></div>
+  <div class="card"><div class="k">Son güvenli sipariş günü</div><div class="v">16.11</div><div class="d">yalnız durum A'da, bir hafta tamponla</div></div>
+  <div class="card"><div class="k">Regresyon</div><div class="v">10/10</div><div class="d">aynı, <code>--yazma</code>; taban değişmedi</div></div>
+</div>
+
+<h2>Kritik yol</h2>
+<p>Kutulardaki süre nominal hafta (parantez içi aralık). Kırmızı kenarlı kutular kritik yolda. Mavi kesikli yol baskı: durum A'da
+yan yolda kalır, durum B'de aşama 8'i bekletir.</p>
+<div class="fig">
+<svg viewBox="0 0 1000 300" role="img" aria-label="Kritik yol şeması: sipariş, teslim ve lazer, taban, elektrik, ilk sürüş, gövde ve kabuk, kollar, kalibrasyon, jest, sağlamlaştırma; baskı yan yolu gövde aşamasına bağlanır">
+  <defs>
+    <marker id="ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink)"/></marker>
+    <marker id="okp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--info)"/></marker>
+  </defs>
+  <!-- satır 1 -->
+  <rect class="boxk" x="10" y="30" width="110" height="62" rx="8"/>
+  <text x="65" y="54" text-anchor="middle" font-size="13" font-weight="650">1 · Sipariş (S)</text>
+  <text x="65" y="74" text-anchor="middle" font-size="11" class="m">hoca onayı + ödeme</text>
+
+  <rect class="boxk" x="150" y="30" width="150" height="62" rx="8"/>
+  <text x="225" y="50" text-anchor="middle" font-size="13" font-weight="650">2 / 2a · Teslim, lazer</text>
+  <text x="225" y="68" text-anchor="middle" font-size="12">1 hf (0,5–2)</text>
+  <text x="225" y="84" text-anchor="middle" font-size="10.5" class="m">lazer ≤ 1 hf: DXF S'den önce</text>
+
+  <rect class="boxk" x="330" y="30" width="130" height="62" rx="8"/>
+  <text x="395" y="50" text-anchor="middle" font-size="13" font-weight="650">5 · Taban</text>
+  <text x="395" y="68" text-anchor="middle" font-size="12">1 hf</text>
+  <text x="395" y="84" text-anchor="middle" font-size="10.5" class="m">M6 adım 1–16; akü (2b)</text>
+
+  <rect class="boxk" x="490" y="30" width="130" height="62" rx="8"/>
+  <text x="555" y="50" text-anchor="middle" font-size="13" font-weight="650">6 · Elektrik</text>
+  <text x="555" y="68" text-anchor="middle" font-size="12">1 hf (1–1,5)</text>
+  <text x="555" y="84" text-anchor="middle" font-size="10.5" class="m">K1 + devreye alma</text>
+
+  <rect class="boxk" x="650" y="30" width="150" height="62" rx="8"/>
+  <text x="725" y="50" text-anchor="middle" font-size="13" font-weight="650">7 · İlk sürüş</text>
+  <text x="725" y="68" text-anchor="middle" font-size="12">kapı 1 → S+3</text>
+  <text x="725" y="84" text-anchor="middle" font-size="10.5" class="m">kolsuz, kabuksuz</text>
+
+  <rect class="boxk" x="830" y="30" width="160" height="62" rx="8"/>
+  <text x="910" y="50" text-anchor="middle" font-size="13" font-weight="650">8 · Gövde + kabuk</text>
+  <text x="910" y="68" text-anchor="middle" font-size="12">2 hf (1,5–2,5)</text>
+  <text x="910" y="84" text-anchor="middle" font-size="10.5" class="m">M6 adım 18–36</text>
+
+  <path class="ar" d="M120,61 H148" marker-end="url(#ok)"/>
+  <path class="ar" d="M300,61 H328" marker-end="url(#ok)"/>
+  <path class="ar" d="M460,61 H488" marker-end="url(#ok)"/>
+  <path class="ar" d="M620,61 H648" marker-end="url(#ok)"/>
+  <path class="ar" d="M800,61 H828" marker-end="url(#ok)"/>
+  <path class="ar" d="M910,92 V118 H185 V140" marker-end="url(#ok)"/>
+
+  <!-- satır 2 -->
+  <rect class="boxk" x="110" y="142" width="150" height="62" rx="8"/>
+  <text x="185" y="162" text-anchor="middle" font-size="13" font-weight="650">9 · Kollar</text>
+  <text x="185" y="180" text-anchor="middle" font-size="12">0,5 hf (0,5–1)</text>
+  <text x="185" y="196" text-anchor="middle" font-size="10.5" class="m">kabuktan sonra (M6 kural 4)</text>
+
+  <rect class="boxk" x="290" y="142" width="150" height="62" rx="8"/>
+  <text x="365" y="162" text-anchor="middle" font-size="13" font-weight="650">10 · Kalibrasyon</text>
+  <text x="365" y="180" text-anchor="middle" font-size="12">0,5 hf (0,5–1)</text>
+  <text x="365" y="196" text-anchor="middle" font-size="10.5" class="m">10 servo</text>
+
+  <rect class="boxk" x="470" y="142" width="160" height="62" rx="8"/>
+  <text x="550" y="162" text-anchor="middle" font-size="13" font-weight="650">11 · Jest + davranış</text>
+  <text x="550" y="180" text-anchor="middle" font-size="12">1 hf (1–2)</text>
+  <text x="550" y="196" text-anchor="middle" font-size="10.5" class="m">kapı 2 → S+7</text>
+
+  <rect class="boxk" x="660" y="142" width="160" height="62" rx="8"/>
+  <text x="740" y="162" text-anchor="middle" font-size="13" font-weight="650">12 · Sağlamlaştırma</text>
+  <text x="740" y="180" text-anchor="middle" font-size="12">1 hf (1–2)</text>
+  <text x="740" y="196" text-anchor="middle" font-size="10.5" class="m">3 senaryo × 20</text>
+
+  <rect class="box" x="850" y="142" width="140" height="62" rx="8"/>
+  <text x="920" y="162" text-anchor="middle" font-size="13" font-weight="650">Demo hazır</text>
+  <text x="920" y="180" text-anchor="middle" font-size="12">kapı 3 → S+8</text>
+  <text x="920" y="196" text-anchor="middle" font-size="10.5" class="m">H15–16: 4–17.01</text>
+
+  <path class="ar" d="M260,173 H288" marker-end="url(#ok)"/>
+  <path class="ar" d="M440,173 H468" marker-end="url(#ok)"/>
+  <path class="ar" d="M630,173 H658" marker-end="url(#ok)"/>
+  <path class="ar" d="M820,173 H848" marker-end="url(#ok)"/>
+
+  <!-- baskı yan yolu -->
+  <rect class="boxp" x="10" y="232" width="640" height="54" rx="8"/>
+  <text x="330" y="254" text-anchor="middle" font-size="13" font-weight="650">Baskı (tek yazıcı): Parti 0 kupon → 3 · kupon/CAD/STL → Parti 1 → 2 → 3 → 4</text>
+  <text x="330" y="273" text-anchor="middle" font-size="11" class="m">65 parça, 159–160 sa, haftada 32–40 sa · A: Parti 1 S−0,5 → S+1,5, hepsi ≈ S+4,5 · B: S+1,5 → S+5,5–6,5</text>
+  <path class="arp" d="M650,259 H996 V61 H993" marker-end="url(#okp)"/>
+  <text x="822" y="252" text-anchor="middle" font-size="10.5" style="fill:var(--info)">Parti 2: adım 19, 23 · 3: 29–31 · 4: 33</text>
+</svg>
+</div>
+<p class="note">Kritik yol: 1 → max(2, 2a) → 5 → 6 → 7 → 8 → 9 → 10 → 11 → 12. XVF3800 (4 hf, ithal) kritik yolda değil; gelene kadar masadaki
+mikrofon kullanılır. M6 montaj tablosu 125 cm modelinden; 1,58 m'de göğüs ve kafa ekranı adımları henüz yazılmadı, adım numaraları kayabilir.</p>
+
+<h2>Dört senaryo</h2>
+<p><b>Durum A</b> iki koşul ister: (a) kupon parçaları erken alınır, Parti 1 S'den yarım hafta önce başlar ve ≈ S+1,5'te biter, baskının tamamı ≈ S+4,5'te biter;
+(b) lazer kesim ≤ 1 hf (DXF ve teklif S'den önce). <b>Durum B</b>: bu koşullar yok; baskı S+1,5'te başlar, lazer 1,5 hf olabilir. Lazerin
+yarım haftası, aşama 8'in baskıyı beklediği sürenin içinde kalır, toplama ayrıca eklenmez.</p>
+<div class="tbl"><table>
+<thead><tr><th>Kapı</th><th>A göreli</th><th>S = 16.11, A</th><th>S = 30.11, A</th><th>B göreli</th><th>S = 16.11, B</th><th>S = 30.11, B</th></tr></thead>
+<tbody>
+<tr><td>Teslim (stoklu)</td><td class="n">S+1</td><td class="n">22.11 (H8)</td><td class="n">6.12 (H10)</td><td class="n">S+1</td><td class="n">22.11 (H8)</td><td class="n">6.12 (H10)</td></tr>
+<tr><td>Taban</td><td class="n">S+2</td><td class="n">29.11 (H9)</td><td class="n">13.12 (H11)</td><td class="n">S+2,5</td><td class="n">3.12 (H10)</td><td class="n">17.12 (H12)</td></tr>
+<tr><td><b>İlk sürüş</b></td><td class="n">S+3</td><td class="n"><b>6.12 (H10)</b></td><td class="n"><b>20.12 (H12)</b></td><td class="n">S+3,5</td><td class="n"><b>10.12 (H11)</b></td><td class="n"><b>24.12 (H13)</b></td></tr>
+<tr><td>Gövde + kabuk</td><td class="n">S+5</td><td class="n">20.12 (H12)</td><td class="n">3.01 (H14)</td><td class="n">S+6,5–7</td><td class="n">31.12 – 3.01 (H14)</td><td class="n">14–17.01 (H16)</td></tr>
+<tr><td>Kollar + kalibrasyon</td><td class="n">S+6</td><td class="n">27.12 (H13)</td><td class="n">10.01 (H15)</td><td class="n">S+7,5–8</td><td class="n">7–10.01 (H15)</td><td class="n">21–24.01</td></tr>
+<tr><td><b>Konuşan + jest yapan robot</b></td><td class="n">S+7</td><td class="n"><b>3.01 (H14)</b></td><td class="n"><b>17.01 (H16)</b></td><td class="n">S+8,5–9</td><td class="n"><b>14–17.01 (H16)</b></td><td class="n"><b>28–31.01</b></td></tr>
+<tr><td><b>Demo hazır</b></td><td class="n">S+8</td><td class="n"><b>10.01 (H15)</b></td><td class="n"><b>24.01</b></td><td class="n">S+9,5–10</td><td class="n"><b>21–24.01</b></td><td class="n"><b>4–7.02</b></td></tr>
+<tr class="k"><td><b>H15–16'ya sığar mı</b></td><td></td><td><span class="tag ok">Evet</span> H16 bir hafta tampon</td><td><span class="tag crit">Hayır</span> ≈ 1 hf açık</td><td></td><td><span class="tag crit">Hayır</span> ≈ 0,5–1 hf açık</td><td><span class="tag crit">Hayır</span> ≈ 2,5–3 hf açık</td></tr>
+<tr><td>Kesinti 2 + 3 ile (≈ −1 hf)</td><td></td><td>3.01, iki hafta tampon</td><td>17.01: tampon yok, yalnız demo H16'nın son günündeyse</td><td></td><td>≈ 14–17.01: tampon yok</td><td>≈ 28–31.01: sığmaz</td></tr>
+</tbody></table></div>
+
+<div class="fig" style="margin-top:12px">
+<svg viewBox="0 0 960 250" role="img" aria-label="Zaman çizelgesi: dört senaryoda sipariş, ilk sürüş ve demo hazır tarihleri; yeşil bant H15–16 teslim penceresi">
+  <!-- x = 160 + 8 × (9.11'den gün) -->
+  <rect class="band" x="608" y="22" width="112" height="196"/>
+  <text x="664" y="16" text-anchor="middle" font-size="11" style="fill:var(--ok)" font-weight="600">H15–16 teslim</text>
+  <g class="grid">
+    <line x1="160" y1="22" x2="160" y2="218"/><line x1="216" y1="22" x2="216" y2="218"/><line x1="272" y1="22" x2="272" y2="218"/>
+    <line x1="328" y1="22" x2="328" y2="218"/><line x1="384" y1="22" x2="384" y2="218"/><line x1="440" y1="22" x2="440" y2="218"/>
+    <line x1="496" y1="22" x2="496" y2="218"/><line x1="552" y1="22" x2="552" y2="218"/><line x1="608" y1="22" x2="608" y2="218"/>
+    <line x1="664" y1="22" x2="664" y2="218"/><line x1="720" y1="22" x2="720" y2="218"/><line x1="776" y1="22" x2="776" y2="218"/>
+    <line x1="832" y1="22" x2="832" y2="218"/><line x1="888" y1="22" x2="888" y2="218"/>
+  </g>
+  <g font-size="10.5" class="m" text-anchor="middle">
+    <text x="188" y="236" class="m">H7</text><text x="244" y="236" class="m">H8</text><text x="300" y="236" class="m">H9</text>
+    <text x="356" y="236" class="m">H10</text><text x="412" y="236" class="m">H11</text><text x="468" y="236" class="m">H12</text>
+    <text x="524" y="236" class="m">H13</text><text x="580" y="236" class="m">H14</text><text x="636" y="236" class="m">H15</text>
+    <text x="692" y="236" class="m">H16</text><text x="804" y="236" class="m">dönem sonrası</text>
+    <text x="160" y="249" class="m">9.11</text><text x="328" y="249" class="m">30.11</text><text x="552" y="249" class="m">28.12</text>
+    <text x="720" y="249" class="m">18.01</text><text x="888" y="249" class="m">8.02</text>
+  </g>
+  <!-- satırlar -->
+  <g font-size="12.5" font-weight="600">
+    <text x="10" y="56">S = 16.11, A</text><text x="10" y="102">S = 30.11, A</text>
+    <text x="10" y="148">S = 16.11, B</text><text x="10" y="194">S = 30.11, B</text>
+  </g>
+  <!-- 16.11 A: S 216, ilk 384, demo 664 -->
+  <rect class="s1" x="216" y="42" width="168" height="18" rx="3"/><rect class="s2" x="384" y="42" width="280" height="18" rx="3"/>
+  <text x="668" y="56" font-size="11">10.01</text>
+  <!-- 30.11 A: S 328, ilk 496, demo 776 -->
+  <rect class="s1" x="328" y="88" width="168" height="18" rx="3"/><rect class="s2" x="496" y="88" width="280" height="18" rx="3"/>
+  <text x="780" y="102" font-size="11">24.01</text>
+  <!-- 16.11 B: S 216, ilk 416, demo 752–776 -->
+  <rect class="s1" x="216" y="134" width="200" height="18" rx="3"/><rect class="s2" x="416" y="134" width="336" height="18" rx="3"/>
+  <rect class="s3" x="752" y="134" width="24" height="18" rx="3"/>
+  <text x="780" y="148" font-size="11">21–24.01</text>
+  <!-- 30.11 B: S 328, ilk 528, demo 864–888 -->
+  <rect class="s1" x="328" y="180" width="200" height="18" rx="3"/><rect class="s2" x="528" y="180" width="336" height="18" rx="3"/>
+  <rect class="s3" x="864" y="180" width="24" height="18" rx="3"/>
+  <text x="892" y="194" font-size="11">4–7.02</text>
+</svg>
+<div class="legend">
+  <span style="--c:var(--info)">S → ilk sürüş</span>
+  <span style="--c:var(--accent)">ilk sürüş → demo hazır</span>
+  <span style="--c:var(--ok-bg)">H15–16 (4–17.01)</span>
+</div>
+</div>
+
+<h2>Son güvenli sipariş günleri</h2>
+<p>Demo günü kaynaklarda yok. "Tamponsuz" = demo H16'nın son günü (17.01).</p>
+<div class="tbl"><table>
+<thead><tr><th></th><th>Bir hafta tamponla (demo hazır 10.01)</th><th>Tamponsuz</th><th>Kesinti 2 + 3 ile, tamponsuz</th></tr></thead>
+<tbody>
+<tr class="k"><td><b>Durum A</b> (8 hf)</td><td><b>16.11</b></td><td>23.11</td><td>30.11</td></tr>
+<tr><td><b>Durum B</b> (9,5–10 hf)</td><td>2–6.11 <span class="tag crit">geçti</span></td><td>9–13.11 <span class="tag wait">fiilen kaçırıldı</span> (varsayım: hoca onayı ve ödeme birkaç günde beklenmiyor)</td><td>16–19.11</td></tr>
+</tbody></table></div>
+<p class="note">30.11'den sonra (A) ya da ≈ 16–19.11'den sonra (B) kesintiyle de sığmaz: teslim kaydırma kararı gerekir (teslim 1–2 hafta oynayabilir, 11 Ekim notu; hoca kararı).
+Kesinti 2: jest 8 → 4 (≈ −0,5 hf). Kesinti 3: sağlamlaştırma 3 × 20 → 2 × 10 (≈ −0,5 hf). Kesinti 1 ve 4 kritik yolu kısaltmaz.</p>
+
+<h2>Durum A hazırlık takvimi (S = 16.11)</h2>
+<p>Tek yazıcı, haftada 32–40 sa. Her şey ≈ 12.11'e kadar hazır olmalı; bir gün kayma Parti 1'in bitişini bir gün kaydırır.</p>
+<div class="tbl"><table>
+<thead><tr><th>Tarih</th><th>İş</th><th>Not</th></tr></thead>
+<tbody>
+<tr class="k"><td class="n">9.11 (pzt, H7)</td><td>Kupon parçalarının erken alımı: karar ve sipariş</td><td>≈ 1.496 TL; karar Ahmet'in</td></tr>
+<tr><td class="n">9–10.11</td><td>Parti 0 kuponları basılır</td><td>≈ 3 sa</td></tr>
+<tr><td class="n">11–12.11</td><td>Parçalar gelir; kupon değerlendirmesi, CAD düzeltmesi, STL dışa aktarma</td><td><span class="tag wait">varsayım</span> stoklu satıcı 2–3 iş günü; plandaki 0,5 haftalık aşama bir güne indirildi</td></tr>
+<tr class="k"><td class="n"><b>12.11</b></td><td><b>Parti 1 başlar</b> (24 parça, 68–69 sa)</td><td>S−0,5; akü takozu (1,5 sa) araya girer</td></tr>
+<tr><td class="n">16.11 (S)</td><td>Sipariş; lazer kesim siparişi (DXF + teklif hazır)</td><td>2209-B e-imza haftasıyla çakışır (16–23.11)</td></tr>
+<tr><td class="n">22.11</td><td>Stoklu kalemler ve servolar gelir</td><td>S+1; servo ölçülünce Parti 2 sıraya girer</td></tr>
+<tr><td class="n">≈ 25.11</td><td>Parti 1 biter → Parti 2 başlar</td><td>32 sa/hf ile 26.11, 40 sa/hf ile 23.11</td></tr>
+<tr><td class="n">29.11</td><td>Taban + iskelet tamam</td><td>S+2</td></tr>
+<tr><td class="n">≈ 1.12</td><td>Parti 2 biter (omuz yuvası, kafa servo yuvası) → Parti 3</td><td>Aşama 8'in ilk adımları (19, 23) bunu ister; en geç 3.12</td></tr>
+<tr><td class="n">≈ 5.12</td><td>Parti 3 biter (kafa) → Parti 4</td><td>En geç 6.12; QLED ve 10,1" kafa modeli ön koşul</td></tr>
+<tr class="k"><td class="n"><b>6.12</b></td><td><b>Kapı 1: ilk sürüş</b> (kolsuz, kabuksuz)</td><td>S+3; aşama 8 7.12'de başlar</td></tr>
+<tr><td class="n">≈ 17.12</td><td>Parti 4 biter (etek)</td><td>S+4,5; aşama 8'in sonu 20.12, 3 gün pay</td></tr>
+</tbody></table></div>
+<p class="note">Parti 1 16.11'de başlarsa baskı ≈ S+5'te biter, aşama 8 ≈ 0,5 hf kayar. Servo kargosu 2 hf'ye uzarsa Parti 2 ≈ 1 gün kayar (sınırda).
+S = 30.11 için aynı hazırlığın son günü ≈ 26.11.</p>
+
+<h2>Ahmet'in kararları</h2>
+<div class="oneri"><b>1. Kupon parçalarının erken alımı, ≈ 1.496 TL (bu hafta, 9.11).</b> 6808 × 4 ve 625ZZ × 5 rulman, M3 × 168 ve M5 × 6 ısıl gömme somun,
+kupon D için 2 × M3×20 + 4 pul + 2 × DIN 985 (427,20 + 148,35 + 876,96 + 37,62 + 6,24; <code>maliyet.json</code> birim fiyatları, M5 ve bağlantı
+elemanı fiyatları tahmini). Alınmazsa durum B'ye düşülür ve 16.11 siparişi bile sığmaz.</div>
+<div class="oneri"><b>2. Sipariş günü S.</b> Hoca onayı + ödeme. 16.11 = bir hafta tamponlu son gün (yalnız A); 23.11 tamponsuz; 30.11 ancak kesinti 2 + 3 ile.
+Sonrası teslim kaydırma (hoca kararı).</div>
+<div class="oneri"><b>3. Lazer kesim DXF'i ve teklif (S'den önce).</b> Alt plaka 346 × 500, 14 bükme braket, 2 kontrplak. Taban adım 4–15 ve 18 buna bağlı;
+koşul: atölye ≤ 1 hf. Süre ve fiyat varsayım.</div>
+<p class="note">Ayrıca karar maddesi (tarihlere katılmadı): gövde kabuğu F2–F4 tamamen dışarıda demo. Bedeli: sonradan takmak kol başına ≈ 25 cıvata söküm,
+göğüs ekranı da ertelenir. Kabuğun bir kısmını sonraya bırakmak M6 sırasıyla çelişiyor.</p>
+
+<h2>Riskler</h2>
+<div class="tbl"><table>
+<thead><tr><th>Risk</th><th>Etki</th><th>Önlem / not</th></tr></thead>
+<tbody>
+<tr class="k"><td>Sipariş gecikmesi</td><td>Her hafta demoyu bir hafta kaydırır</td><td>Bu hafta (H7): liste (P8.1), DXF teklifi, stok teyidi, erken kupon alımı</td></tr>
+<tr class="k"><td>Baskı kapasitesi (tek, paylaşımlı yazıcı)</td><td>Parti 1 S+3'e kadar sürerse Parti 2–4 S+5,3–5,8'e kayar; A'nın 8 haftası tutmaz</td><td>Haftada 32–40 sa ayrılmalı; gerekirse parçaların bir kısmı online baskı hizmetine</td></tr>
+<tr><td>11–12.11 sıkıştırması</td><td>Kupon değerlendirmesi + CAD + STL bir güne indirildi (varsayım)</td><td>Bir gün kayma = Parti 1 bir gün geç</td></tr>
+<tr><td>Lazer atölyesi</td><td>1,5 hf sürerse ilk sürüş S+3,5</td><td>DXF ve teklif S'den önce</td></tr>
+<tr><td>Stoksuz kalemler</td><td>Mesafe burcu M5 × 40 (Türkiye'de bulunamadı), ön şarj rölesi K2, optokuplör, kart burcu seti kritik yolda</td><td>İkinci satıcı (P8.1); burç için baskılı burç + uzun cıvata seçeneği</td></tr>
+<tr><td>Akü tek stok</td><td>Victron sayfada stok 1 (15.10)</td><td>Yedek Limacell (özel üretim, ort. 3 iş günü + kargo)</td></tr>
+<tr><td>Yılbaşı haftası (H14)</td><td>A'da jest işine, B'de gövde aşamasına denk gelir</td><td>Ekip ve kargo kapasitesinin düşmesi varsayım</td></tr>
+<tr><td>2209-B rektör e-imzası 16–23.11</td><td>S = 16.11'in ilk haftasıyla çakışır</td><td>Kaynak Ahmet'in bildirimi; depoda belge yok</td></tr>
+<tr><td>Demo günü ve final haftaları bilinmiyor</td><td>"Tamponsuz" senaryoların geçerliliği buna bağlı</td><td>Doğrulanmadı</td></tr>
+<tr><td>M6 dayanağı 125 cm</td><td>1,58 m'de göğüs ve kafa ekranı adımları yok; adım numaraları kayabilir</td><td>Rehber yeniden üretilince güncellenir</td></tr>
+<tr><td>Kötümser süreler</td><td>A'da +5 hf (13 hf): 16.11 bile sığmaz</td><td>Kesinti sırası hazır; teslim kaydırma hoca kararı</td></tr>
+</tbody></table></div>
+
+<h2>Süreç</h2>
+<ul class="list">
+  <li>Uygulayıcı (A) planı yazdı; bağımsız kontrol (B): KOŞULLU → düzeltme turu 1 (10 madde) → KOŞULLU → düzeltme turu 2 (Y1–Y4) → <b>GEÇER</b>.</li>
+  <li>Kayıt ajanı (C) kontrolün iki küçük notunu uyguladı: B'nin yarım haftalı dört tarihi bir gün ileri (10.12 / 24.12, 7.01 / 21.01, 21.01 / 4.02);
+    11–12.11 sıkıştırması varsayım diye işaretlendi.</li>
+  <li>Regresyon <code>py -3 planlama/d158/regresyon.py --yazma</code>: GEÇER, 10/10 aynı (boy 1.580 mm, çakışmalar 0, rampa payı 1,517, tilt 3,64, pan 2,21). <code>regresyon.json</code> sha önce = sonra.</li>
+  <li>Belgeler commit 979b995 (<code>proje-plani.md</code>, <code>F9a-brief.md</code>, <code>F9a-gunluk.md</code>, <code>F8d-brief.md</code>). Kontrol dosyası ve döngü dosyası ad taramasında eşleşme verdiği için o commit'e girmedi.</li>
+</ul>
+
+<footer>Tarihler: kapının bittiği gün (tam haftada pazar, yarım haftada perşembe). H1 = 28.09.2026 pazartesi. Kaynaksız her süre plan içinde "varsayım" diye işaretli.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
