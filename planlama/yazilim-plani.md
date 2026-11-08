@@ -61,7 +61,7 @@ Teslim tarihi 1–2 hafta oynayabilir (Duffy, 11 Ekim 2026).
   (`w` sınırı hıza bağlı); yerinde dönüş yalnız JGB37 ölçümü ve omni kararından sonra, sınırlı açısal hızla açılır. İvme düz zeminde ≤ 0,5 m/s²,
   rampada / eğimde ≤ 0,1 m/s² ve kollar ev pozunda (Y1; karar 29 Ekim 2026, akü yerinde: `planlama/kararlar-2026-10-29.md`).
 - **Pi kafada (K4).** Besleme Pololu 5 V (PD yok): EEPROM `PSU_MAX_CURRENT=5000`, `config.txt` `usb_max_current_enable=1`
-  (Y0 kurulum adımı). ESP32 kafadaki Pi'ye tek USB kablosuyla bağlı; HDMI ve CSI boyundan geçmez.
+  (Y0 kurulum adımı). ESP32 kafadaki Pi'ye tek USB kablosuyla bağlı; CSI kafada kalır. Göğüs ekranının HDMI ve USB dokunmatik kabloları Pi'den boyundan iner: **CAD'de böyle, Efe teyidi bekliyor** (04.11.2026; eski kural "HDMI boyundan geçmez" kalktı).
 - **Sonar trig PCA9685'ten** (kanal 10–12, I2C ile ≥ 10 µs darbe); echo GPIO39/34/35. Akü ADC'si tek seferlik multimetre kalibrasyonu ister.
 
 Eklem sınırları ve yasak bölge **tek kaynaktan** gelir: `kod/ortak/eklem_sinirlari.json`. Değerler
@@ -121,7 +121,7 @@ dirençleri 3. adımın direnç setinde. Fuar / demo için mobil erişim noktas�
 
 | Karar | Etki |
 |---|---|
-| Göğüs ekranı: **karar verildi (K2, 14 Ekim 2026): Nextion NX1060P101** | Arayüz Nextion Editor'da çizilir; ESP32 UART2 ile sürülür, Pi komutları ESP32 üzerinden gider (K4 sonrası boyundan ayrı sinyal geçmez). Waveshare ve ikinci HDMI düştü. |
+| Göğüs ekranı: **Nextion kalktı (25 Ekim 2026); yerine 11,6" 1080p HDMI + USB dokunmatik (01.11.2026)** | Ekran Pi 5'ten sürülür, kablolar boyundan iner: **CAD'de böyle, Efe teyidi bekliyor**. Arayüzün nasıl çizileceği, dokunma olaylarının nasıl işleneceği ve "devreye al" komutunun nereden geleceği karara bağlanmadı (Efe). Bu plandaki diğer Nextion atıfları (mimari şemadaki `gogus`, "Devreye al" dizisi, Y10) bu karardan önce yazıldı; teyitten sonra güncellenecek. |
 | Bulut sağlayıcıları (STT / LLM / TTS) ve API anahtarlarını kimin hesabı taşıyacak | Y5 başlamadan seçilmeli; aylık ≈ 10–20 $ (tahmini) |
 | Rampada motor torku ve devrilme (1,65 m, akü yerinde) | **Karar 29 Ekim 2026:** rampada ivme ≤ 0,1 m/s² (motor sürekli torkunun ≈ %78'i) ve kollar ev pozunda (devrilme payı 1,58). Düzde ≤ 0,5 m/s² (devrilme sınırı ≈ 2,0 m/s², `planlama/y2/Y2b-ivme.json`). Daha güçlü motor alınırsa rampa sınırı yeniden hesaplanır. |
 | Sol kol servo işareti (tahmini: ters) | Y2'de montajdan sonra her servo tek tek doğrulanır |
