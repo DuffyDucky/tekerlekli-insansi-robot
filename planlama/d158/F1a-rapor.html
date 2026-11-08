@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F1a Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F1a: kafa tutarlılığı (P1.2, P1.3, P1.6, P1.7)</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 08.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>F1a-brief.md</code>, <code>F1a-gunluk.md</code>, <code>F1a-kontrol.md</code>, JSON çıktıları (aşağıda anahtarlarıyla)</p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">Bağımsız kontrol</div><div class="v"><span class="tag wait">KOŞULLU</span></div><div class="d">3 koşul; A'nın yeniden çalışması gerekmedi, üçü kapandı</div></div>
+  <div class="card"><div class="k">Paket</div><div class="v">4 / 4</div><div class="d">P1.2, P1.3, P1.6, P1.7 geçti (P1.2 kalanları sahip paketlerde)</div></div>
+  <div class="card"><div class="k">K2 seçenekleri</div><div class="v">a · b</div><div class="d">İkisinde de kafa içi çakışma 0; karar Ahmet Yorulmaz'da</div></div>
+  <div class="card"><div class="k">Regresyon</div><div class="v"><span class="tag ok">10/10 aynı</span></div><div class="d">Normal mod, çıkış 0, taban güncellendi (23:29:59)</div></div>
+</div>
+
+<p class="note">Sayılar A ve B'nin raporlarından değil, C'nin JSON okumasından: <code>hat-secenek-a.json</code>, <code>hat-secenek-b.json</code>,
+<code>kabuk/kabuk-analiz.json</code>, <code>montaj/montaj-analiz.json</code>, <code>carpisma-sonuc.json</code>, <code>lale158-kontrol.json</code>,
+<code>uygulama-olcum.json</code> ve <code>regresyon.py</code> çıktısı. Hepsi A'nın günlüğü ve B'nin kontrolüyle aynı çıktı. FreeCAD bu adımda açılmadı.</p>
+
+<h2>Paketler ve sonuçlar</h2>
+<div class="tbl"><table>
+<thead><tr><th>Paket</th><th>İş</th><th>Sonuç (kaynak)</th><th>Karar</th></tr></thead>
+<tbody>
+<tr><td class="kod">P1.2</td><td>MAX98357A kalıntıları (ses: PAM8403 + USB ses kartı)</td>
+<td>Yalnız yorum/metin/rapor kodu değişti, geometri aynı. <code>kafa-bom.csv</code>, <code>robot-bom.csv</code>, <code>montaj-analiz.json</code> ve kafa/taban/iskelet raporlarında MAX98357 0. Kalan satırlar başka paketlerin dosyalarında (aşağıda).</td>
+<td><span class="tag wait">koşullu geçti</span></td></tr>
+<tr><td class="kod">P1.3</td><td>AI HAT+ 26T için K2 seçenekleri (ana modele uygulanmadı)</td>
+<td><code>hat_secenek.py</code> (<code>HAT_SECENEK=0/a/b</code>). Seçenek 0, F0'daki 77,69 / 7,97 / 3,18 mm³ çakışmayı yeniden üretti; a ve b'de çakışma 0. HAT'sız tork <code>kafa-analiz.json</code> ile aynı (1.570,8 g; 3,64; 2,21).</td>
+<td><span class="tag ok">geçti</span></td></tr>
+<tr><td class="kod">P1.6</td><td>Eski betikler 158'e</td>
+<td><code>kafa_rapor.py</code> ve <code>lale158_rapor.py</code> çıkış 0 (B'nin koşusu depodakiyle bayt bayt aynı). <code>kafa_gorsel.py</code> StopIteration kaynağı gitti, 17 görsel. <code>ikinci_ozet.py:142</code>'de düzeltilecek metin yoktu.</td>
+<td><span class="tag ok">geçti</span></td></tr>
+<tr><td class="kod">P1.7</td><td>Hoparlör kabı arka tutucu (ana modele)</td>
+<td>Kelepçe 56,6 × 56,6 × 14,3 mm, 4,0 g, destek sorunu 0, desteksiz (<code>kabuk-analiz.json</code> <code>baski</code>). Kabuk 357 parça, 7.170,4 g; çakışma, iskelet çakışması, geçersiz, çoklu katı hepsi boş. Robot 25.515,59 g, 1.179 parça. Hoparlör kablo tüpü yalnız boyun mili 1,2 mm³ (önceden var).</td>
+<td><span class="tag ok">geçti</span></td></tr>
+<tr><td class="kod">Tarama</td><td>P1.7 sonrası 8 bölüm (omuz hariç)</td>
+<td><code>carpisma-sonuc.json</code>: ev pozu çakışma 0 (819 kesişen çift), toplam 364, eklem aralığında 0; 9 bölüm "tamam", yalnız omuz eski kaynakla (03.11, P2.2/P6.1'e).</td>
+<td><span class="tag ok">temiz</span></td></tr>
+</tbody>
+</table></div>
+
+<h2>K2: AI HAT+ çakışması, iki seçenek</h2>
+<p>Seçenek a: arka duvar üst dikiş boss'u (x −8, y 60) → (x −5, y 76). Seçenek b: Pi 5 + AI HAT+ yığını 5 mm öne (<code>pi_dz = 5</code>). HAT ölçüsü üretici ürün özetinden (RP-008133-DS-1); kütle 30 g, bileşen yüksekliği ve başlık boyu varsayım.</p>
+<div class="tbl"><table>
+<thead><tr><th>Ölçüt (anahtar)</th><th>a: boss taşı</th><th>b: yığın 5 mm önde</th></tr></thead>
+<tbody>
+<tr><td>Kafa içi çakışma, HAT ile / HAT'sız (<code>cakisma_hatli</code>, <code>cakisma_hatsiz</code>)</td><td class="n">0 / 0</td><td class="n">0 / 0</td></tr>
+<tr><td>HAT en yakın parça (<code>aciklik.hat_en_yakin</code>)</td><td class="n">3,0 mm arka kabuk; somun 6,3</td><td class="n">2,05 mm arka kabuk sağ; somun 3,55</td></tr>
+<tr><td>HAT × fan yeri zarfı (<code>hat_fan_yeri_kesisim_mm3</code>)</td><td class="n">98,2 mm³</td><td class="n">19,61 mm³</td></tr>
+<tr><td>Mikrofon dizisi vidası 1 erişimi, aşağı Ø8 (<code>erisim</code>)</td><td class="n">57,77 mm (engel iskelet)</td><td class="n">27,55 mm (engel HAT bileşen zarfı)</td></tr>
+<tr><td>HAT vidaları erişimi, yukarı Ø6</td><td class="n">36,86 / 29,64 / 36,86 / 36,86</td><td class="n">aynı</td></tr>
+<tr><td>Tilt payı ±15°, HAT ile (<code>tork_hatli.pay_tilt15</code>)</td><td class="n">3,30 (2,846 kg·cm)</td><td class="n">3,37 (2,785 kg·cm)</td></tr>
+<tr><td>Pan payı, HAT ile (<code>pan_pay_iki_hane</code>)</td><td class="n">2,20</td><td class="n">2,20</td></tr>
+<tr><td>Kafa grubu kütlesi, HAT ile</td><td class="n">1.598,9 g</td><td class="n">1.598,9 g</td></tr>
+</tbody>
+</table></div>
+<p class="note">Dizi vidası 0 ve 2'nin aşağı erişimi iki seçenekte de 0 mm çıkıyor: alet silindiri kartın içinden başlıyor, ölçüm yöntemi sorunu, doğrulanmadı. b'de kablo boyları yeniden hesaplanmadı. a'da boss havalandırma yarığına 1 mm, dikişe 2,15 mm; kenar mesafesi ve duvar dayanımı ölçülmedi. Fan yeri zarfı her iki seçenekte HAT'le kesişiyor (K12).</p>
+
+<h2>Korunan değerler (regresyon)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Değer</th><th>Taban (23:17:06)</th><th>Şimdi (23:29:59)</th><th>Eşik</th><th>Durum</th><th>Kaynak</th></tr></thead>
+<tbody>
+<tr><td>Boy</td><td class="n">1.580</td><td class="n">1.580</td><td class="n">1.580 ± 0,05</td><td><span class="tag ok">aynı</span></td><td><code>lale158-kontrol.json : toplam_boy_mm</code></td></tr>
+<tr><td>Kafa içi çakışma</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="tag ok">aynı</span></td><td><code>kafa-analiz.json : statik</code></td></tr>
+<tr><td>Kabuk içi çakışma</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="tag ok">aynı</span></td><td><code>kabuk-analiz.json : cakisma</code></td></tr>
+<tr><td>Kabuk × iskelet</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="tag ok">aynı</span></td><td><code>kabuk-analiz.json : iskelet_cakisma</code></td></tr>
+<tr><td>Ev pozu çakışma</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="tag ok">aynı</span></td><td><code>carpisma-sonuc.json : ev_pozu_cakisma</code></td></tr>
+<tr><td>Yüksüz rampa payı</td><td class="n">1,517</td><td class="n">1,517</td><td class="n">≥ 1,5</td><td><span class="tag ok">aynı</span></td><td><code>uygulama-ivme.json : rampa5_*</code> (en küçük)</td></tr>
+<tr><td>Tilt payı</td><td class="n">3,64</td><td class="n">3,64</td><td class="n">≥ 3,0</td><td><span class="tag ok">aynı</span></td><td><code>kafa-analiz.json : tork.tilt.pay_tilt15</code></td></tr>
+<tr><td>Pan payı</td><td class="n">2,21</td><td class="n">2,21</td><td class="n">≥ 2,0</td><td><span class="tag ok">aynı</span></td><td><code>kafa-analiz.json : tork.pan.pay_iki_hane</code></td></tr>
+<tr><td>Mikrofon–hoparlör</td><td class="n">574,3 mm</td><td class="n">574,3 mm</td><td class="n">≥ 400</td><td><span class="tag ok">aynı</span></td><td><code>uygulama-olcum.json : mic_hoparlor.poz_min_mm</code></td></tr>
+<tr><td>SY8205 × USB</td><td class="n">0 mm³</td><td class="n">0 mm³</td><td class="n">0</td><td><span class="tag ok">aynı</span></td><td><code>uygulama-olcum.json : kablo_sy8205.*</code></td></tr>
+</tbody>
+</table></div>
+
+<h2>B'nin koşulları ve kapanışı</h2>
+<div class="tbl"><table>
+<thead><tr><th>Koşul</th><th>İçerik</th><th>Nasıl kapandı</th></tr></thead>
+<tbody>
+<tr><td class="kod">1</td><td>P1.2'nin kalan MAX98357A satırlarının sahip paketlere yazılması; <code>elektrik.md</code> PAM besleme noktası sahipsiz</td>
+<td><span class="tag ok">kapandı</span> Orkestratör <code>dongu-158.md</code>'ye yazdı: P4.1 satırına ses ve K10; §5'e P4.2 / P4.4 / P5.2 / P7.1 / P9.2 dağılımı; P1.5'e <code>kabuk_rapor.py</code> KeyError. Commit <code>93089df</code>.</td></tr>
+<tr><td class="kod">2</td><td>Kelepçe köprüsü 70 mm, raporda 72 yazıyordu</td>
+<td><span class="tag ok">kapandı</span> C: <code>f1a_rapor.py:216</code> "72 × 10" → "70 × 10", <code>py -3 f1a_rapor.py</code> çıkış 0; <code>F1a-rapor.html</code>'de "70 × 10 köprü" var, "72 × 10" 0. <code>kabuk_parcalar.py:733</code> yorumuna dokunulmadı (tarama kaynağı, P6.1'de).</td></tr>
+<tr><td class="kod">3</td><td>Commit'e girmeyecek dosyalar</td>
+<td><span class="tag ok">kapandı</span> Açık <code>git add</code> listesi; <code>kvkk/</code>, <code>rapor/</code>, <code>tubitak-2209b/</code>, <code>kafa-yerlesim/kaynak/</code>, <code>Y2b-ivme.json</code>, <code>montaj/yerlesim-kontrol.json</code>, 13 kabuk görseli, F5/F5b dosyaları, <code>raporlar/</code>, <code>solidworks/</code>, <code>lale_dongu.*</code> dışarıda. Ayrıca <code>F1a-kontrol.md</code> dışarıda: kontrol satırının kendisi takma adı içeriyor.</td></tr>
+</tbody>
+</table></div>
+
+<h2>İleri taşınan maddeler</h2>
+<ul class="list">
+<li><span class="tag info">P1.2 kalanları</span> <code>maliyet.json:75</code> → P4.2 · <code>Lale-Proje-Ozeti.txt:68</code> → P4.4 · <code>yazilim-plani.md:23, 114</code> → P5.2 · <code>rehber_metin.py:276</code> + <code>rehber/veri</code> → P7.1 · <code>Robot-Tasarim-Demosu.html</code> → P9.2 · <code>elektrik.md:12, 21, 266</code> ve PAM besleme noktası → P4.1 (K10).</li>
+<li><span class="tag wait">P1.5</span> <code>kabuk_rapor.py:130, 331, 376</code> <code>d["ekran_kontrol"]</code> okuyor, anahtar 15.10'dan beri yok: <code>kabuk/rapor.html</code> yenilenemiyor, içinde 1 MAX98357 satırı ve eski kabuk.</li>
+<li><span class="tag wait">P6.1</span> <code>kabuk_parcalar.py:733</code> yorumu <code>72 x 10 kopru</code> → <code>70 x 10 kopru</code>; tam taramadan önce (yorum değişikliği 8 bölümü "eskimiş" yapar).</li>
+<li><span class="tag crit">K2 uygulanınca</span> P6.1'de seçilen seçenek ana modele girer; korunan tilt payı 3,64 → 3,30 (a) ya da 3,37 (b) iner, eşik 3,0 sağlanıyor. Regresyon tabanı o koşuda bilinçli olarak güncellenmeli, yoksa "kötüleşti" der.</li>
+<li><span class="tag info">Not</span> <code>montaj-analiz.json</code> kütle farkı 4,989 g ve AM farkı 0,088 mm: <code>ana_montaj</code> taramadan önce koştu; sonraki koşuda kendiliğinden kapanır.</li>
+<li><span class="tag info">Not</span> <code>ikinci_ozet.py:153-157</code> cp1254 konsolda düşüyor (<code>PYTHONIOENCODING=utf-8</code> ile çalışır); <code>uygulama_olc.py:105</code> bekçisi "I2S amfi" adını da arasın. İkisi acil değil.</li>
+<li><span class="tag info">Not</span> <code>kafa/gorsel/</code>'de 125 cm'den kalan 3 poz görseli duruyor (silme yasak; rapor göstermiyor). Silinmeleri Ahmet Yorulmaz'ın onayına.</li>
+</ul>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th><th>Dosya</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>76a5701</code></td><td>Model, betikler ve üretilen çıktılar (kabuk/montaj FCStd + STEP + analiz, kafa görselleri, raporlar, K2 betik ve JSON'ları, <code>F1a-rapor.html</code>)</td><td class="n">62</td></tr>
+<tr><td class="kod"><code>d37a671</code></td><td>Çakışma taraması: 8 bölüm JSON'u + <code>carpisma-sonuc.json</code></td><td class="n">9</td></tr>
+<tr><td class="kod"><code>93089df</code></td><td>Planlama: <code>F1a-gunluk.md</code>, <code>karar-kuyrugu.md</code> (K2), <code>regresyon.json</code>, <code>regresyon-son-kosu.json</code>, <code>dongu-158.md</code></td><td class="n">5</td></tr>
+</tbody>
+</table></div>
+<p class="note">Push: <code>5cc17c4..93089df lale-duzeltme → lale-duzeltme</code>. Her commit öncesi eklenen satırlarda takma ad 0. <code>F1a-brief.md</code> önceki commit'te (<code>4d242eb</code>) zaten vardı, değişmedi. Bu rapor ayrı commit'te.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F1a · 08.11.2026 · Commit <code>76a5701</code>, <code>d37a671</code>, <code>93089df</code> (<code>lale-duzeltme</code>) · Regresyon <code>regresyon.py</code> normal mod: GEÇER, 10/10 aynı · Kaynaklar: <code>F1a-brief.md</code>, <code>F1a-gunluk.md</code>, <code>F1a-kontrol.md</code>, <code>karar-kuyrugu.md</code> K2.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
