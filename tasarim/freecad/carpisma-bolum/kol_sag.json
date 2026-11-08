@@ -1,16 +1,16 @@
 {
  "bolum": "kol_sag",
- "kosu": "20261105-185759",
- "baslangic": "2026-11-05T19:00:27",
- "bitis": "2026-11-05T19:03:19",
- "sure_s": 171.8,
- "yukleme_s": 66.5,
- "tepe_bellek_mb": 739,
- "tepe_sayfa_mb": 2647,
+ "kosu": "20261108-221801",
+ "baslangic": "2026-11-08T22:20:28",
+ "bitis": "2026-11-08T22:23:35",
+ "sure_s": 186.8,
+ "yukleme_s": 68.2,
+ "tepe_bellek_mb": 744,
+ "tepe_sayfa_mb": 2653,
  "ayni_surec": [
   "kol_sag"
  ],
- "pid": 26660,
+ "pid": 27220,
  "moduller": [
   "iskelet",
   "omuz_sag",
@@ -21,22 +21,22 @@
  ],
  "kaynak": {
   "carpisma.py": "c688d738c3",
-  "arayuz.py": "d333e41246",
+  "arayuz.py": "4d1b65e513",
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
   "omuz/omuz_parcalar.py": "62b19c7371",
-  "kabuk/kabuk_parcalar.py": "0abfd960ab",
+  "kabuk/kabuk_parcalar.py": "9214ad0ecb",
   "dirsek/dirsek_parcalar.py": "7182c29899",
   "kafa/kafa_parcalar.py": "22229bcdd0",
-  "taban/taban_parcalar.py": "c5f30375d4",
+  "taban/taban_parcalar.py": "b86289a0c4",
   "kafa/kafa-analiz.json": "ebccb84751",
   "dirsek/dirsek_lib.py": "2f3a3b77fb",
   "kabuk/kabuk_lib.py": "a848c28ddc",
-  "kafa/kafa10_lib.py": "5a75b90e69",
-  "kafa/kafa_lib.py": "8dc6d8d718",
+  "kafa/kafa10_lib.py": "7395cfc654",
+  "kafa/kafa_lib.py": "d7818f5c0b",
   "omuz/omuz_lib.py": "b5c14c4ed2",
-  "taban/taban_lib.py": "73d922d4bc"
+  "taban/taban_lib.py": "638881cefc"
  },
  "sonuc": {
   "taraf": "sag",
@@ -109,7 +109,7 @@
    "kaba": 2860,
    "ince": 0
   },
-  "aday": 193419,
+  "aday": 196156,
   "tam_olcum": 2156,
   "cakisan_tam_poz_aralikta": 0,
   "cakisan_tam_poz_aralik_disi": 63,
@@ -3365,6 +3365,6 @@
   "yakin_aralikta": [],
   "yakin_aralikta_sayi": 0,
   "bosluk_notu": "olculmeyen ciftlerin boslugu >= 150 mm (sinir kutusu); YAKIN = 5 mm altindaki her aday tam olculdu",
-  "sure_s": 171.8
+  "sure_s": 186.8
  }
 }

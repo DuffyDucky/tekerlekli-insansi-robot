@@ -1,16 +1,16 @@
 {
  "bolum": "kolkol",
- "kosu": "20261105-185759",
- "baslangic": "2026-11-05T19:07:25",
- "bitis": "2026-11-05T19:08:11",
- "sure_s": 45.6,
- "yukleme_s": 12.3,
- "tepe_bellek_mb": 196,
+ "kosu": "20261108-221801",
+ "baslangic": "2026-11-08T22:28:04",
+ "bitis": "2026-11-08T22:28:52",
+ "sure_s": 48.8,
+ "yukleme_s": 12.5,
+ "tepe_bellek_mb": 197,
  "tepe_sayfa_mb": 2198,
  "ayni_surec": [
   "kolkol"
  ],
- "pid": 24212,
+ "pid": 27036,
  "moduller": [
   "omuz_sag",
   "omuz_sol",
@@ -19,22 +19,22 @@
  ],
  "kaynak": {
   "carpisma.py": "c688d738c3",
-  "arayuz.py": "d333e41246",
+  "arayuz.py": "4d1b65e513",
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
   "omuz/omuz_parcalar.py": "62b19c7371",
-  "kabuk/kabuk_parcalar.py": "0abfd960ab",
+  "kabuk/kabuk_parcalar.py": "9214ad0ecb",
   "dirsek/dirsek_parcalar.py": "7182c29899",
   "kafa/kafa_parcalar.py": "22229bcdd0",
-  "taban/taban_parcalar.py": "c5f30375d4",
+  "taban/taban_parcalar.py": "b86289a0c4",
   "kafa/kafa-analiz.json": "ebccb84751",
   "dirsek/dirsek_lib.py": "2f3a3b77fb",
   "kabuk/kabuk_lib.py": "a848c28ddc",
-  "kafa/kafa10_lib.py": "5a75b90e69",
-  "kafa/kafa_lib.py": "8dc6d8d718",
+  "kafa/kafa10_lib.py": "7395cfc654",
+  "kafa/kafa_lib.py": "d7818f5c0b",
   "omuz/omuz_lib.py": "b5c14c4ed2",
-  "taban/taban_lib.py": "73d922d4bc"
+  "taban/taban_lib.py": "638881cefc"
  },
  "sonuc": {
   "poz_cifti": 227,
@@ -6334,7 +6334,7 @@
     "kutu_bosluk_min": 290.0
    }
   ],
-  "sure_s": 45.6,
+  "sure_s": 48.8,
   "not_": "hareketli: iki kolun omuz gobegi + ust kol (omuz) + dirsek parcalari; poz = (one-arka, yana, dirsek, bilek), sol kolda ayni acilar aynali hareket"
  }
 }

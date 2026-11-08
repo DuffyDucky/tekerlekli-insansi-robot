@@ -1,16 +1,16 @@
 {
  "bolum": "statik",
- "kosu": "20261105-185759",
- "baslangic": "2026-11-05T18:59:06",
- "bitis": "2026-11-05T18:59:20",
- "sure_s": 13.9,
- "yukleme_s": 66.9,
- "tepe_bellek_mb": 747,
- "tepe_sayfa_mb": 2655,
+ "kosu": "20261108-221801",
+ "baslangic": "2026-11-08T22:19:05",
+ "bitis": "2026-11-08T22:19:19",
+ "sure_s": 14.2,
+ "yukleme_s": 63.5,
+ "tepe_bellek_mb": 733,
+ "tepe_sayfa_mb": 2642,
  "ayni_surec": [
   "statik"
  ],
- "pid": 20684,
+ "pid": 20788,
  "moduller": [
   "iskelet",
   "omuz_sag",
@@ -23,22 +23,22 @@
  ],
  "kaynak": {
   "carpisma.py": "c688d738c3",
-  "arayuz.py": "d333e41246",
+  "arayuz.py": "4d1b65e513",
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
   "omuz/omuz_parcalar.py": "62b19c7371",
-  "kabuk/kabuk_parcalar.py": "0abfd960ab",
+  "kabuk/kabuk_parcalar.py": "9214ad0ecb",
   "dirsek/dirsek_parcalar.py": "7182c29899",
   "kafa/kafa_parcalar.py": "22229bcdd0",
-  "taban/taban_parcalar.py": "c5f30375d4",
+  "taban/taban_parcalar.py": "b86289a0c4",
   "kafa/kafa-analiz.json": "ebccb84751",
   "dirsek/dirsek_lib.py": "2f3a3b77fb",
   "kabuk/kabuk_lib.py": "a848c28ddc",
-  "kafa/kafa10_lib.py": "5a75b90e69",
-  "kafa/kafa_lib.py": "8dc6d8d718",
+  "kafa/kafa10_lib.py": "7395cfc654",
+  "kafa/kafa_lib.py": "d7818f5c0b",
   "omuz/omuz_lib.py": "b5c14c4ed2",
-  "taban/taban_lib.py": "73d922d4bc"
+  "taban/taban_lib.py": "638881cefc"
  },
  "sonuc": {
   "moduller": [
@@ -98,7 +98,7 @@
      0.0
     ],
     "ayna": false,
-    "parca": 355,
+    "parca": 357,
     "haric": [],
     "haric_neden": "",
     "hareketli": false,
@@ -238,17 +238,17 @@
    "iskelet": 6410.8,
    "omuz_sag": 567.6,
    "omuz_sol": 567.6,
-   "kabuk": 7165.4,
+   "kabuk": 7170.4,
    "dirsek_sag": 400.5,
    "dirsek_sol": 400.5,
    "kafa": 2088.5,
    "taban": 7909.8
   },
-  "kutle_toplam_g": 25510.6,
+  "kutle_toplam_g": 25515.6,
   "agirlik_merkezi": [
    -0.03,
-   531.47,
-   -8.39
+   531.56,
+   -8.38
   ]
  }
 }
