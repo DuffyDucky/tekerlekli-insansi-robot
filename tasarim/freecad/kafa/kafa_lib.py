@@ -175,7 +175,8 @@ def cevirici_local():
     return b.fuse(box(-l / 2 + 1.5, l / 2 - 1.5, CEV["t"], CEV["h"], -w / 2 + 1.5, w / 2 - 1.5)).removeSplitter()
 
 
-# MAX98357A (taban_lib AMP: Adafruit 3006, 19,4 x 17,8, montaj deligi yok -> kopuk bant)
+# I2S amfi (taban_lib AMP: Adafruit 3006, 19,4 x 17,8, montaj deligi yok -> kopuk bant). YALNIZ 125 cm kafasi (kafa7_parcalar) kullanir;
+# 1,58 m kafasinda ses yukseltici PAM8403 + USB ses karti (asagida SES, PAM; kafa10_lib).
 AMP = dict(l=19.4, w=17.8, kutle_g=2.0)
 
 

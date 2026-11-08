@@ -97,7 +97,11 @@ def yollar():
     ym, lz = 0.5 * sum(HB["y"]), HB["lz"]
     hc = hoparlor_merkez()
     a_ = tuple(hc["C"][k] - hc["n"][k] * (0.5 + S["hoparlor"]["boy"]) for k in range(3))    # hoparlor arka yuzu
-    hop_uc = [(30.0, 1190.0, -32.0), (62.0, 1185.0, -32.0), (62.0, 1185.0, 35.0), (62.0, 1060.0, 35.0), (62.0, 1003.0, 62.0), (a_[0] + 4.0, a_[1] + 2.0, a_[2] - 2.0)]
+    # F1a P1.7 (08.11.2026): arka yuzun ortasinda e2 +-5 seridinde hoparlor kelepcesinin koprusu var (kabuk_parcalar KEL); kablo ucu
+    # koprunun altina, hoparlor kenarina yakin (e2 -14; e2 = n x X) alindi. Uc yeri / lehim tirnagi VARSAYIM (urun elde yok).
+    e2_ = (0.0, hc["n"][2], -hc["n"][1])
+    hop_uc = [(30.0, 1190.0, -32.0), (62.0, 1185.0, -32.0), (62.0, 1185.0, 35.0), (62.0, 1060.0, 35.0), (62.0, 1003.0, 62.0),
+              tuple(a_[k] + (4.0, 0.0, 0.0)[k] - 14.0 * e2_[k] - 2.5 * hc["n"][k] for k in range(3))]
     p1, p2, p3 = PI["p1"], PI["p2"], PI["p3"]
     yol = {
         "HDMI": pi_hdmi + trunk + inis + ekran_ucu(5.0, 0.0),

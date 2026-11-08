@@ -729,6 +729,10 @@ log("etek kapak civatalari:", [(v["kapak"][-14:], v["ic"]) for v in KAPAK_VIDA])
 # ====================================================================== ses + USB, secim B (Duffy 05.11.2026; lale158/kafa-yerlesim/secenekler.md, arayuz.SES_USB)
 # Hoparlor gogus altinda orta bant sag on duvarinda, eksen duvara dik (kama yok; dinleyiciye eksen disi, secenekler.md 7). Kap, kulak ve izgara VARSAYIM: urun elde gorulmeden kesinlesmez.
 # Kap iki baski: on halka + flansli arka; tek parca kabin 2 destek sorunu vardi (kulaklar ortada), ayrilinca flans yuzu tablada.
+# P1.7 (08.11.2026, planlama/d158/F1a-brief.md): hoparlor arkadan tutuluyor. Arka tup hoparlorun arka yuzunde (eksenden 20,5) biter; ustune
+# "Hoparlor kelepcesi" (ayri baski: 72 x 10 kopru + 2 bacak) oturur, iki bacagi flans kulaklarindaki M3 civatalarla (M3x20, havsada) duvar
+# boss'larina sikilir. Kopru 1 mm kopuk ped uzerinden hoparlorun arka yuzune basar, hoparloru duvara (on yuzunde 0,5 mm, urunun kopuk kenari
+# VARSAYIM) sikistirir. Kopru arkasi acik (Ø40 arka yuzun yalniz 10 mm seridi kapali): kablo ve arka hacim icin. Olculer VARSAYIM (urun elde yok).
 SU = A.SES_USB
 _HP = SU["hoparlor"]
 _h_y0, _h_z0 = _HP["ic"][0]
@@ -744,7 +748,7 @@ HOP_ARKA = HOP_C + _i * (0.5 + _HP["boy"])
 _hop = Part.makeCylinder(_HP["cap"] / 2, _HP["boy"], HOP_MERKEZ, _i)
 _R_DIS, _R_IC = 23.0, 20.5
 _kap_on = Part.makeCylinder(_R_DIS, 7.0, HOP_C + _i * 0.2, _i).cut(Part.makeCylinder(_R_IC, 9.0, HOP_C + _i * (-0.8), _i))
-_kap_ar = Part.makeCylinder(_R_DIS, 15.0, HOP_C + _i * 7.2, _i).cut(Part.makeCylinder(_R_IC, 17.0, HOP_C + _i * 6.2, _i))
+_kap_ar = Part.makeCylinder(_R_DIS, 13.3, HOP_C + _i * 7.2, _i).cut(Part.makeCylinder(_R_IC, 17.0, HOP_C + _i * 6.2, _i))   # P1.7: tup 7,2...20,5 (hoparlor arka yuzu); once 22,2
 _fl = Part.makeCylinder(35.0, 3.0, HOP_C + _i * 7.2, _i).cut(Part.makeCylinder(_R_IC, 5.0, HOP_C + _i * 6.2, _i))
 _w = 11.0
 _pts = [HOP_C + _e1 * 36 + _e2 * _w, HOP_C - _e1 * 36 + _e2 * _w, HOP_C - _e1 * 36 - _e2 * _w, HOP_C + _e1 * 36 - _e2 * _w, HOP_C + _e1 * 36 + _e2 * _w]
@@ -765,10 +769,30 @@ for _sg in (1, -1):
     _kap_ar = _kap_ar.cut(Part.makeCylinder(CLEAR[3] / 2, 5.0, _pe + _i * 6.2, _i))
     HOP_VIDA.append(_pe)
 CIKAR[_AD_OB].extend(_izg)
+# P1.7 kelepce: kopru (e1 -35...35, e2 -5...5, eksenden 21,5...24,5) + iki bacak (e1 +-26...35, flans ustu 10,2'den kopruye); her bacakta
+# O3,4 gecme + O6,5 havsa (M3x20 DIN 912 basi 22,2'de: uc 2,2'de, isil gomme somunda 5 mm kavrama, eski M3x8 ile ayni uc).
+KEL = dict(kopru_e1=35.0, w=5.0, a_ped=(20.5, 21.5), a_kopru=(21.5, 24.5), a_flans=10.2, bacak_e1=(26.0, 35.0), havsa_d=6.5, a_bas=22.2, civata_L=20.0)
+
+
+def _kel_kutu(e1a, e1b, e2a, e2b, a0, a1):
+    p = [HOP_C + _e1 * e1a + _e2 * e2a, HOP_C + _e1 * e1b + _e2 * e2a, HOP_C + _e1 * e1b + _e2 * e2b, HOP_C + _e1 * e1a + _e2 * e2b]
+    return Part.Face(Part.makePolygon([q + _i * a0 for q in p] + [p[0] + _i * a0])).extrude(_i * (a1 - a0))
+
+
+_kel = _kel_kutu(-KEL["kopru_e1"], KEL["kopru_e1"], -KEL["w"], KEL["w"], *KEL["a_kopru"])
+for _sg in (1, -1):
+    _b0, _b1 = sorted((_sg * KEL["bacak_e1"][0], _sg * KEL["bacak_e1"][1]))
+    _kel = _kel.fuse(_kel_kutu(_b0, _b1, -KEL["w"], KEL["w"], KEL["a_flans"], KEL["a_kopru"][1]))
+for _pe in HOP_VIDA:
+    _kel = _kel.cut(Part.makeCylinder(CLEAR[3] / 2, 20.0, _pe + _i * (KEL["a_flans"] - 1.0), _i))
+    _kel = _kel.cut(Part.makeCylinder(KEL["havsa_d"] / 2, 5.0, _pe + _i * KEL["a_bas"], _i))
+_kel = _kel.removeSplitter()
+_kel_ped = _kel_kutu(-10.0, 10.0, -KEL["w"], KEL["w"], *KEL["a_ped"])
 _HOP_PAT = (45, 60, 190)
 for _ad, _sh, _yon in (("Hoparlor kabi on halka", _kap_on, "VARSAYIM kap; on halka, duz (desteksiz)"),
-                       ("Hoparlor kabi arka (flansli)", _kap_ar, "VARSAYIM kap; flans yuzu tablada (desteksiz)")):
-    PARCA[_ad] = dict(shape=_sh.removeSplitter(), yukari=_i, yon=_yon, patlat=_HOP_PAT, grup="Ses ve USB")
+                       ("Hoparlor kabi arka (flansli)", _kap_ar, "VARSAYIM kap; flans yuzu tablada (desteksiz)"),
+                       ("Hoparlor kelepcesi", _kel, "VARSAYIM; kopru ust yuzu tablada, bacaklar yukari (desteksiz)")):
+    PARCA[_ad] = dict(shape=_sh.removeSplitter(), yukari=(HOP_N if _ad == "Hoparlor kelepcesi" else _i), yon=_yon, patlat=_HOP_PAT, grup="Ses ve USB")
     EKLE[_ad], CIKAR[_ad] = [], []
 
 # Hub: ust arka servis kapaginin ic yuzunde. Ic yuz egik (y 1085 z -82,37; y 1157 z -79,51), hub yatay: kapaga bitisik takoz (kapakla tek baski, dis yuz tablada) + 1 mm kopuk bant + iki yan dayama.
@@ -882,7 +906,9 @@ for yy_ in GE_M6_Y:
 add("Hoparlor 40 x 20", "Ses ve USB", _hop, "Satin", "-", kod="Hoparlor 4 ohm 3 W 40 x 20 (v4 satir 30)", renk="siyah", patlat=_HOP_PAT, kutle=_HP["kutle_g"], not_=_HP["durum"])
 for _pe in HOP_VIDA:
     add("Isil gomme somun M3 (hoparlor boss)", "Ses ve USB", insert(3, _pe + _i * 7.2, HOP_N), "Baglanti", "Pirinc", kod="M3 isil gomme somun", renk="pirinc", patlat=tuple(V(*PARCA[_AD_OB]["patlat"])))
-    add("Hoparlor kabi civatasi M3x8", "Ses ve USB", screw912(3, 8, _pe + _i * 10.2, HOP_N), "Baglanti", "Celik 8.8", kod="M3x8 DIN 912", renk="celik", patlat=_HOP_PAT)
+    add("Hoparlor kelepce civatasi M3x20", "Ses ve USB", screw912(3, KEL["civata_L"], _pe + _i * KEL["a_bas"], HOP_N), "Baglanti", "Celik 8.8", kod="M3x20 DIN 912", renk="celik", patlat=_HOP_PAT)
+add("Kopuk ped (hoparlor kelepcesi)", "Ses ve USB", _kel_ped, "Satin", "Kopuk", kod="Cift tarafli kopuk bant 1 mm (VHB), 20 x 10", renk="siyah", patlat=_HOP_PAT,
+    not_="kelepce koprusu ile hoparlor arka yuzu arasinda; hoparloru duvara sikistirir (VARSAYIM)")
 add("USB Hub 4 lu (kapak ici)", "Ses ve USB", box(HB["x"][0], HB["x"][1], HB["y"][0], HB["y"][1], _hb_alt, _hb_alt + HB["h"]), "Satin", "-", kod="USB Hub 4 lu 72 x 25 x 19", renk="pcb", patlat=(0, 40, -170), kutle=HB["kutle_g"],
     not_="ust arka servis kapagi icinde; kopuk bant + 2 yan dayama; " + HB["durum"])
 add("Kopuk bant (USB Hub kapak ici)", "Ses ve USB", box(HB["x"][0], HB["x"][1], HB["y"][0], HB["takoz_y1"], _hb_alt - HB["kopuk"], _hb_alt), "Satin", "Kopuk", kod="Cift tarafli kopuk bant 1 mm (VHB)", renk="siyah", patlat=(0, 40, -170))

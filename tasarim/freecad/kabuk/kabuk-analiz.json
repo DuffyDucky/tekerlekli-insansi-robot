@@ -1,11 +1,11 @@
 {
- "parca_sayisi": 355,
- "baski_sayisi": 33,
+ "parca_sayisi": 357,
+ "baski_sayisi": 34,
  "gecersiz": [],
  "coklu_kati": [],
  "temizlik": [],
  "cakisma": [],
- "cakisma_cift_sayisi": 939,
+ "cakisma_cift_sayisi": 952,
  "tolerans_mm3": 0.5,
  "iskelet_cakisma": [],
  "iskelet_cift_sayisi": 151,
@@ -3988,7 +3988,7 @@
    "olcu": [
     62.5,
     62.5,
-    15.0
+    13.3
    ],
    "tabla_aci": 45,
    "sigar": true,
@@ -3996,16 +3996,41 @@
    "sigar_okul": true,
    "cikinti_orani": 0.0,
    "cikinti_alan_cm2": 0.0,
-   "yuzey_cm2": 60.4,
+   "yuzey_cm2": 55.7,
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
-   "hacim_cm3": 6.7,
-   "kutle_g": 8.0,
-   "filament_g": 8.0,
+   "hacim_cm3": 6.1,
+   "kutle_g": 7.0,
+   "filament_g": 7.0,
    "sure_saat": 0.2,
-   "katman": 15,
+   "katman": 13,
    "yon": "VARSAYIM kap; flans yuzu tablada (desteksiz)",
+   "grup": "Ses ve USB"
+  },
+  {
+   "ad": "Hoparlor kelepcesi",
+   "olcu": [
+    56.6,
+    56.6,
+    14.3
+   ],
+   "tabla_aci": 45,
+   "sigar": true,
+   "sigar_cift": true,
+   "sigar_okul": true,
+   "cikinti_orani": 0.0157,
+   "cikinti_alan_cm2": 0.5,
+   "yuzey_cm2": 30.5,
+   "destek_sorun": [],
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "hacim_cm3": 3.8,
+   "kutle_g": 4.0,
+   "filament_g": 5.0,
+   "sure_saat": 0.1,
+   "katman": 14,
+   "yon": "VARSAYIM; kopru ust yuzu tablada, bacaklar yukari (desteksiz)",
    "grup": "Ses ve USB"
   }
  ],
@@ -4045,25 +4070,25 @@
    246.0
   ]
  },
- "kutle_g": 7165.4,
+ "kutle_g": 7170.4,
  "kutle_grup": {
   "Govde kabugu": 2911.3,
   "Taban etegi": 2069.9,
   "Gogus ekrani": 1289.8,
   "S1 kablo kaseti": 35.5,
-  "Ses ve USB": 64.9,
+  "Ses ve USB": 69.9,
   "Govde braketleri": 547.8,
   "Etek braketleri": 246.2
  },
  "kutle_tur": {
-  "Baski": 5066.2,
-  "Baglanti": 450.9,
+  "Baski": 5069.9,
+  "Baglanti": 452.3,
   "Satin": 1648.2
  },
  "agirlik_merkezi": [
-  0.6,
-  651.43,
-  12.71
+  0.63,
+  651.67,
+  12.76
  ],
  "bom": [
   [
@@ -4086,6 +4111,12 @@
   ],
   [
    "Baglanti",
+   "M3x20 DIN 912",
+   2,
+   3.2
+  ],
+  [
+   "Baglanti",
    "M3x6 ISO 7380",
    100,
    63.4
@@ -4093,8 +4124,8 @@
   [
    "Baglanti",
    "M3x8 DIN 912",
-   6,
-   5.6
+   4,
+   3.7
   ],
   [
    "Baglanti",
@@ -4292,13 +4323,19 @@
    "Baski",
    "Hoparlor kabi arka (flansli)",
    1,
-   7.7
+   7.0
   ],
   [
    "Baski",
    "Hoparlor kabi on halka",
    1,
    2.7
+  ],
+  [
+   "Baski",
+   "Hoparlor kelepcesi",
+   1,
+   4.3
   ],
   [
    "Baski",
@@ -4350,6 +4387,12 @@
   ],
   [
    "Satin",
+   "Cift tarafli kopuk bant 1 mm (VHB), 20 x 10",
+   1,
+   0.0
+  ],
+  [
+   "Satin",
    "Etek tasiyici L braket 2 mm Al (bukum)",
    6,
    167.1
@@ -4379,8 +4422,8 @@
    1079.0
   ]
  ],
- "step_kati": 355,
- "sure_s": 5434.4,
+ "step_kati": 357,
+ "sure_s": 4736.7,
  "gogus_ekrani": {
   "boy": 1580.0,
   "S3": 1270.0,

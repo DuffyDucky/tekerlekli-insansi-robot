@@ -155,7 +155,7 @@ for ad, cap, w in (
         ("taban-yan.png", "Yandan (+X), etek yarı saydam: aks 62,5, plaka 91,5, ray 94,5–134,5, kat 174,5, etek üstü 262", ""),
         ("taban-on.png", "Önden: sonarlar etek deliklerinde, teker–etek 12 mm", ""),
         ("taban-alt.png", "Alttan: plaka cıvataları (14× M6), motor braketleri (8× M4), kayış dönüşü, kablo delikleri", ""),
-        ("taban-elektronik-kati.png", "Elektronik katı (ön): arayüz kartı (E2/E3, eski Pi 5 yeri), servo dağıtım A/B, ESP32 taşıyıcı, PCA9685, BNO055 (Pi 5 ve MAX98357A K4 ile kafada)", ""),
+        ("taban-elektronik-kati.png", "Elektronik katı (ön): arayüz kartı (E2/E3, eski Pi 5 yeri), servo dağıtım A/B, ESP32 taşıyıcı, PCA9685, BNO055 (Pi 5 K4 ile kafada; ses yükselticisi PAM8403 + USB ses kartı da kafada)", ""),
         ("taban-guc-paneli.png", "Güç paneli (arka): sigorta kutusu, röle, ana sigorta; üstte acil stop ve ana anahtar gövdesi", ""),
         ("taban-aku-yakin.png", "Akü yakın plan (katlar gizli): iki cırt kayış plaka yarıklarından döner, ön takoz", ""),
         ("taban-teker-yakin.png", "Teker grubu: teker, kaplin, L braket, JGB37", ""),
@@ -176,7 +176,7 @@ H.append("<p>Koordinat global (taban yereli = global): +X sağ, +Y yukarı, +Z i
 H.append("<li><b>Alt plaka</b> (3 mm Al 5754, y 91,5–94,5): şase raylarının altına 14× M6 + çekiç somun (uzun raylar z ±90 / ±235, ara raylar x ±50). "
          "Altında 4 motor braketi, üstünde (raylar arasında) akü, 2× BTS7960, 3× XL4016.</li>")
 H.append("<li><b>Elektronik katı (ön)</b> (5 mm huş kontrplak, z 24,25–250, y 174,5–179,5): arayüz kartı (E2/E3), servo dağıtım kartı A/B (E1), ESP32 taşıyıcı, PCA9685, BNO055. "
-         "Raspberry Pi 5 ve MAX98357A amfi K4 ile kafada (kafa raporu). "
+         "Raspberry Pi 5 K4 ile kafada; ses yükselticisi (PAM8403 + USB ses kartı) da kafada, sol duvarda (kafa raporu). "
          "4× M5×40 burç (z 40 / 230).</li>")
 H.append("<li><b>Güç paneli (arka)</b> (5 mm kontrplak, z −250–23,75, direk cebi önden açık): sigorta kutusu, röle, ana sigorta yuvası. "
          "Akünün üstünde; akü değişiminde elektroniğe dokunmadan sökülür. 4× M5×40 burç (z −40 / −230).</li></ul>")
@@ -191,7 +191,7 @@ for ad, yer, dayanak in (
         ("Servo dağıtım A / B (E1)", "ön kat (72; 205) / (−72; 205)", "planlama/adim3/elektrik.md"),
         ("ESP32 + taşıyıcı", "ön kat (80; 75)", "V3 (51,6; −135) → taşındı"),
         ("PCA9685", "ön kat (83; 125)", "V3 (51,6; −65) → taşındı"),
-        ("BNO055", "(0; 60)", "rc:742 (aynı); MAX98357A K4 ile kafaya gitti"),
+        ("BNO055", "(0; 60)", "rc:742 (aynı); tabandaki amfi K4 ile kalktı"),
         ("Sigorta kutusu · röle · ana sigorta", "güç paneli (0; −203) · (−112; −130) · (112; −130)", "yeni (tahmini zarflar)"),
         ("Sonar HC-SR04 ×3", "x 0, ±79,4; y 110; PCB ön yüzü z 256", "rc:752 + kabuk delikleri"),
         ("Acil stop · ana anahtar", "etek üst plakası (79,4; −200) · aynası (−79,4; −200)", "rc:757 · yeni öneri")):

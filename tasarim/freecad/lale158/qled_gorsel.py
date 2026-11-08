@@ -121,7 +121,7 @@ def go():
     Gui.updateGui()
     kamera(v, (-0.25, 0.3, -1.0), 330, (0, yk, ZT)); kaydet(v, "qled-kafa-arka-acik.png", 1300, 1100)
     # ---- ekran arkasi: iskelet, Pi, tabla ustu ve boyun da gizli
-    icler = [o for o in par if o.Label.startswith(("Kafa iskeleti", "Raspberry", "Burc M2,5", "Vida M2,5", "Tabla civatasi", "5 V cevirici", "MAX98357A", "SY8205", "TVS P6KE", "USB Hub", "USB ses", "PAM8403", "Kopuk bant (5", "Kopuk bant (MAX", "Kopuk bant (SY", "Kopuk bant (TVS", "Kopuk bant (USB", "Kopuk bant (PAM", "Tilt horn", "625ZZ", "Yanak-horn"))]
+    icler = [o for o in par if o.Label.startswith(("Kafa iskeleti", "Raspberry", "Burc M2,5", "Vida M2,5", "Tabla civatasi", "5 V cevirici", "SY8205", "TVS P6KE", "USB Hub", "USB ses", "PAM8403", "Kopuk bant (5", "Kopuk bant (SY", "Kopuk bant (TVS", "Kopuk bant (USB", "Kopuk bant (PAM", "Tilt horn", "625ZZ", "Yanak-horn"))]
     pan = [o for o in par if o.Label.startswith(("Egme catali", "Tilt servosu", "Boyun yukseltme", "Boyun mili", "Saplama", "Pul M3 (saplama", "Somun M3 DIN 985 (saplama", "Pim ", "Isil gomme somun M5", "Isil gomme somun M3 (mil", "Servo yuvasi", "Rulman yuvasi", "Pan ", "6808", "Boyun plakasi"))]
     gizle(icler + pan)
     Gui.updateGui()

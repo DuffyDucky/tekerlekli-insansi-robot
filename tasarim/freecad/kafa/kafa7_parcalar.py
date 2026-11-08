@@ -22,7 +22,8 @@
 #       ekran yuvasi, 4x M3), siyah akrilik vizor (VHB bant), Camera Module 3 (on kabukta, 4x M2).
 #   K4 (15 Ekim 2026, duzeltme plani 3. adim): Raspberry Pi 5 + Active Cooler kafa tablasinin ustunde (planlama/adim1/P-pi-kafada.md
 #       secilen konum: kart kosesi x -34, z +1, kablo kenari one; burc 8 mm ile kart alti y 191), 4x M2,5x8 pirinc burc (alttan
-#       M2,5x8 tabladan, ustten M2,5x5). 5 V / 5,5 A cevirici (Pololu D36V50F5) ve MAX98357A amfi tablada kopuk bantla. Arka kabukta
+#       M2,5x8 tabladan, ustten M2,5x5). 5 V / 5,5 A cevirici (Pololu D36V50F5) ve I2S amfi (Adafruit 3006) tablada kopuk bantla
+#       (yalniz bu 125 cm arsivinde; 1,58 m kafasinda amfi PAM8403 + USB ses karti, kafa10_lib). Arka kabukta
 #       giris (arka duvar alt bandi 10 yarik) ve cikis (arka duvar ust bandi 8 yarik + iki yan duvarin en ust 2'ser yarigi) havalandirmasi,
 #       giris ile cikis arasinda emis perdesi (T2, 15 Ekim 2026: baca etkisi, K3 kontrolu). Boyundan: 12 V cift + ESP32 USB + tilt servo.
 import os, sys, math, time
@@ -486,8 +487,8 @@ for j, (x, z) in enumerate(PI_DEL):
 for ad_, (cx_, cz_), sh_, kod_, l_, w_, m_, nt in (
         ("5 V cevirici Pololu D36V50F5", CEV_C, cevirici_local(), "Pololu D36V50F5 5 V 5,5 A (pololu.com/product/4091)", CEV["l"], CEV["w"],
          CEV["kutle_g"], "12 V boyundan gelir (kablo gecisi x -50...-37); cikis kisa USB-C kabloyla Pi'ye, LCD Pi USB'sinden; TVS cikista"),
-        ("MAX98357A I2S amfi", AMP_C, amp_local(), "Adafruit MAX98357A", AMP["l"], AMP["w"], AMP["kutle_g"],
-         "Pi GPIO I2S (kisa); hoparlor yeri acik (Duffy karari)")):
+        ("I2S amfi (125 cm)", AMP_C, amp_local(), "Adafruit 3006 I2S amfi (125 cm arsivi)", AMP["l"], AMP["w"], AMP["kutle_g"],
+         "Pi GPIO I2S (kisa); 125 cm arsivi, 1,58 m modelinde yok (PAM8403 + USB ses karti)")):
     add("Kopuk bant (%s)" % ad_.split()[0], "Kafa", box(cx_ - l_ / 2, cx_ + l_ / 2, Y_TABLA[1], Y_TABLA[1] + KOPUK_T, cz_ - w_ / 2, cz_ + w_ / 2),
         "Satin", "Kopuk", kod="Cift tarafli kopuk bant 1 mm (VHB)", renk="siyah", patlat=(0, 200, 0))
     sh_ = sh_.copy()

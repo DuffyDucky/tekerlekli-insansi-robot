@@ -11,7 +11,8 @@
 #     yukari kalkar. Catalin 4x M3x8 civatasi yerine 4x M3 saplama (DIN 976) + pul + M3 DIN 985: saplama mil flansindaki mevcut
 #     isil gomme somunlara vidalanir, catal tabanini ve adaptoru birlikte sikar.
 #   - Kafa (Bas) grubu yeniden: kafa iskeleti (tabla + yanaklar), on (yuz) ve arka kabuk (her biri sag/sol iki baski parcasi, x = 0
-#     dikisinde bindirme dili), 10,1" QLED + 4 tutucu tirnak, Camera Module 3, Pi 5 + 5 V cevirici + amfi (tablada, ekranin arkasi).
+#     dikisinde bindirme dili), 10,1" QLED + 4 tutucu tirnak, Camera Module 3, Pi 5 + 5 V cevirici (tablada, ekranin arkasi);
+#     ses: USB ses karti + PAM8403 sol duvarda, ReSpeaker tavan altinda (B + R1, 05.11.2026).
 #     Eski tilt horn'u, horn vidasi, 625ZZ dis bilezigi ve 4 yanak-horn civatasi aynen (eksene gore ayni yerde).
 # Denge: tilt ekseni kafa (Bas) grubunun AM'sinden gecsin diye ekranin eksene gore yuksekligi (dy) ve arka kabugun derinligi (zb)
 #   dengele() ile cozulur (sekant). Ekran onde (catal on agi tilt suprulmesinde ekran arkasina degmesin diye cam onu eksenin 44 mm
@@ -55,6 +56,10 @@ DOLULUK = 0.80              # kucuk PETG parcalar (eski kafa ile ayni, tahmini)
 HAVSA = 1.7                 # tepe dikis civatalari: ISO 7380 basi (k 1,65) yuzeyin altinda
 RHO = {"PETG": A.PETG_RHO, "PETG-CF": A.OMUZ["baski_rho"]["PETG-CF"][0], "Aluminyum": 2.70, "Celik": 7.85, "Celik 8.8": 7.85, "Celik 10.9": 7.85, "Pirinc": 8.50, "Kopuk": 0.10}
 BIG = 1000.0
+# K2 secenekleri (P1.3, 08.11.2026; lale158/kafa-yerlesim/hat_secenek.py): ana model bu varsayilanlarla kurulur ve DEGISMEZ.
+# Secenek betigi kur()'dan once degistirir: arka_ust_boss = arka duvar ust dikis civatasi boss'u (x, y) eksen cercevesinde;
+# pi_dz = Pi 5 (ve tabla ustu kablo yolu zarfi) z kaydirmasi, + one.
+SECENEK = dict(arka_ust_boss=(-DIL_W / 2, 60.0), pi_dz=0.0)
 
 # eski kafa sabitleri (eski kafa yerelinde): tilt ekseni (130, 25), yanak x araliklari, horn delikleri
 import kafa7_parcalar as KP  # noqa  125 cm kafasi (gruplar Govde / Pan / Kafa); yeniden kullanilan parcalar buradan
@@ -171,7 +176,7 @@ def kur(dy, zb, log=print):
     for etk, p, n in (("on ust", V(-DIL_W / 2, yu - KT / 2, zm_on), V(0, 1, 0)),
                       ("on alt (cerceve)", V(-DIL_W / 2, dy - 90.0, ZF - KT / 2), V(0, 0, 1)),
                       ("arka ust", V(-DIL_W / 2, yu - KT / 2, zm_ar), V(0, 1, 0)),
-                      ("arka duvar ust", V(-DIL_W / 2, 60.0, zb + KT / 2), V(0, 0, -1)),
+                      ("arka duvar ust", V(SECENEK["arka_ust_boss"][0], SECENEK["arka_ust_boss"][1], zb + KT / 2), V(0, 0, -1)),
                       ("arka duvar alt", V(-DIL_W / 2, -50.0, zb + KT / 2), V(0, 0, -1))):
         hn = KT / 2
         ic, dis = sahip(p - n * (hn * 0.5)), sahip(p + n * (hn * 0.5))
@@ -296,7 +301,7 @@ def kur(dy, zb, log=print):
     for sx in (1, -1):
         for zc in RAF_Z:
             ki = ki.cut(cyl(CLEAR[3] / 2, (sx * LEDGE["civata_x"], Y_TABLA[0] - 1, zc), (sx * LEDGE["civata_x"], Y_TABLA[1] + 1, zc)))
-    PI_T = (-42.5, Y_TABLA[1] + KP.PI_BURC, zt0 + 3.0 + PI5["w"])          # Pi kablo kenari one, kart arka kabuga 3 mm
+    PI_T = (-42.5, Y_TABLA[1] + KP.PI_BURC, zt0 + 3.0 + PI5["w"] + SECENEK["pi_dz"])   # Pi kablo kenari one, kart arka kabuga 3 mm (pi_dz: K2 secenegi, ana modelde 0)
     PI_DEL = pi5_delikler_kafa(PI_T)
     for (x, z) in PI_DEL:
         ki = ki.cut(cyl(1.45, (x, Y_TABLA[0] - 1, z), (x, Y_TABLA[1] + 1, z)))
@@ -387,7 +392,7 @@ def kur(dy, zb, log=print):
     BAG.append(dict(ad="Kamera -> yuz kabugu boss'lari", tip="4x M2x8 PT vida", adet=4, nokta=(0, dy + CAM_Y, Z_CAM),
                     parcalar=("Kamera Raspberry Pi Camera Module 3", "Yuz kabugu (on)")))
 
-    # ------------------------------------------------------------------ Pi 5 + cevirici + amfi (tablada; karsi agirlik)
+    # ------------------------------------------------------------------ Pi 5 + cevirici + SY8205 + TVS (tablada; karsi agirlik)
     add("Raspberry Pi 5 4GB + Active Cooler", pi5_kafa(PI_T), "Satin", "-", kod="Raspberry Pi 5 4GB + resmi Active Cooler", renk="pcb",
         kutle=PI5["kutle_g"], not_="tabla ustunde, arka kabuga 3 mm; kablo kenari one (micro HDMI 0 -> yuz ekrani HDMI, micro HDMI 1 -> gogus ekrani, CSI -> kamera)")
     for j, (x, z) in enumerate(PI_DEL):
@@ -399,7 +404,7 @@ def kur(dy, zb, log=print):
             kod="M2,5x8 DIN 912", renk="celik")
     BAG.append(dict(ad="Pi 5 -> burc -> kafa tablasi", tip="4x M2,5x8 pirinc burc + M2,5x5 (ust) + M2,5x8 (alt)", adet=4,
                     nokta=PI_T, parcalar=("Raspberry Pi 5 4GB + Active Cooler", "Kafa iskeleti")))
-    _tablada = [("5 V cevirici Pololu D24V50F5", (-80.0, 6.0), cevirici_local(), CEV["model"], CEV["l"], CEV["w"], CEV["kutle_g"])]     # MAX98357A cikti (Duffy 04-05.11.2026: PAM8403 + USB ses karti)
+    _tablada = [("5 V cevirici Pololu D24V50F5", (-80.0, 6.0), cevirici_local(), CEV["model"], CEV["l"], CEV["w"], CEV["kutle_g"])]     # I2S amfi cikti (Ahmet 04-05.11.2026): ses yukseltici PAM8403 + USB ses karti, sol duvarda (asagida)
     if QLED:
         # kafa ekrani ayri 5 V (planlama/adim3/elektrik.md): SY8205 + P6KE6V8A tablada, Power konnektoru tarafinda (+X); Touch USB'si Pi'ye veri, 5 V kopru yok
         _tablada += [("SY8205 kafa ekrani 5 V", (36.0, 14.0), box(-SY8205["l"] / 2, SY8205["l"] / 2, 0, SY8205["h"], -SY8205["w"] / 2, SY8205["w"] / 2), SY8205["model"], SY8205["l"], SY8205["w"], SY8205["kutle_g"]),
@@ -454,7 +459,7 @@ def kur(dy, zb, log=print):
         zr("Kablo bukum payi", PT["power"]["x"][1] + F["usb"][0], xk + 15.0, dy + PT["hdmi"]["y"] - F["hdmi"][1] / 2, dy + PT["power"]["y"] + F["usb"][1] / 2, 28.5, z_p - 0.1, (0.6, 0.3, 0.8),
            "U donus ve yukari cikis; bukum R 15 TAHMIN (kablo gelince olculur)")
         zr("Tabla onu kablo gecidi", 60.0, 100.0, dy + PT["power"]["y"] + F["usb"][1] / 2, 44.0, 28.5, z_p - 0.1, (0.6, 0.3, 0.8), "HDMI + Touch + Power panel arkasi ile tabla onu arasindan tabla ustune")
-        zr("Tabla ustu kablo yolu", -36.0, 60.0, 38.2, 56.0, -26.0, 28.0, (0.6, 0.3, 0.8), "Pi micro HDMI 0 / USB ve SY8205 cikisina")
+        zr("Tabla ustu kablo yolu", -36.0, 60.0, 38.2, 56.0, -26.0 + SECENEK["pi_dz"], 28.0, (0.6, 0.3, 0.8), "Pi micro HDMI 0 / USB ve SY8205 cikisina")
         # B + R1: dizi USB fisi; ses karti USB-A fisi, L dirsek, uzatma disi ucu, L 3,5 mm fis (VARSAYIM; kutlesi olanlar kafa_montaj tork hesabina nokta kutle)
         _ux, _uy, _uz = _dizi(_D["usb_x"], -35.0, 1.4)
         _F = _D["fis"]

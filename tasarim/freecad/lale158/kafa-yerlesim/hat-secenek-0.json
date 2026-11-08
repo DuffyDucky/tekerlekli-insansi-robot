@@ -1,0 +1,402 @@
+{
+ "tarih": "2026-11-08 20:38",
+ "secenek": "0",
+ "ayar": {},
+ "varsayilan": {
+  "arka_ust_boss": [
+   -8.0,
+   60.0
+  ],
+  "pi_dz": 0.0
+ },
+ "kaynak": "kafa_parcalar (kafa10_lib.SECENEK) + bu betikteki AI HAT+ takimi",
+ "hat": {
+  "olcu": "65 x 56,5 kart, delik 58 x 49, centik 10 x 16, yigin 16 (uretici RP-008133-DS-1)",
+  "kutle_g": 30.0,
+  "varsayim": "kutle 30 g, bilesen zarfi 3,0 mm, yigin basligi HAT ustunde 8,5 mm, FFC halkasi 5 x 18 mm, ayak O5",
+  "pi_ust_vidalari_kaldirildi": 4
+ },
+ "gecersiz": [],
+ "coklu_kati": [
+  [
+   "AI HAT+ GPIO yigin basligi zarfi",
+   2
+  ]
+ ],
+ "arka_ust_civata_bb": [
+  [
+   -10.85,
+   -5.15,
+   57.15,
+   62.85,
+   -91.59,
+   -83.94
+  ]
+ ],
+ "log_uyari": [],
+ "cakisma_hatli": [
+  [
+   "Arka kafa kabugu sag",
+   "AI HAT+ kart",
+   28.093
+  ],
+  [
+   "Arka kafa kabugu sag",
+   "AI HAT+ bilesen zarfi",
+   13.629
+  ],
+  [
+   "Arka kafa kabugu sag",
+   "AI HAT+ GPIO yigin basligi zarfi",
+   66.435
+  ],
+  [
+   "Isil gomme somun M3 (kafa sag/sol arka duvar ust)",
+   "AI HAT+ kart",
+   2.78
+  ],
+  [
+   "Isil gomme somun M3 (kafa sag/sol arka duvar ust)",
+   "AI HAT+ bilesen zarfi",
+   3.581
+  ],
+  [
+   "Isil gomme somun M3 (kafa sag/sol arka duvar ust)",
+   "AI HAT+ GPIO yigin basligi zarfi",
+   1.611
+  ],
+  [
+   "Kabuk civatasi M3x6 ISO 7380 (kafa sag/sol arka duvar ust)",
+   "AI HAT+ kart",
+   0.564
+  ],
+  [
+   "Kabuk civatasi M3x6 ISO 7380 (kafa sag/sol arka duvar ust)",
+   "AI HAT+ bilesen zarfi",
+   2.617
+  ]
+ ],
+ "cift_hatli": 533,
+ "cakisma_hatsiz": [],
+ "eski_zarf_cakisma": [
+  [
+   "Arka kafa kabugu sag",
+   77.69
+  ],
+  [
+   "Isil gomme somun M3 (kafa sag/sol arka duvar ust)",
+   7.97
+  ],
+  [
+   "Kabuk civatasi M3x6 ISO 7380 (kafa sag/sol arka duvar ust)",
+   3.18
+  ]
+ ],
+ "hat_x_zarf": [
+  [
+   "HDMI fis zarfi",
+   104.02,
+   0.0
+  ],
+  [
+   "Touch USB fis zarfi",
+   96.6,
+   0.0
+  ],
+  [
+   "Power USB fis zarfi",
+   87.7,
+   0.0
+  ],
+  [
+   "Kablo bukum payi",
+   100.9,
+   0.0
+  ],
+  [
+   "Tabla onu kablo gecidi",
+   69.08,
+   0.0
+  ],
+  [
+   "Tabla ustu kablo yolu",
+   2.48,
+   0.0
+  ],
+  [
+   "Dizi USB fis zarfi",
+   59.42,
+   0.0
+  ],
+  [
+   "Ses karti USB-A fisi",
+   79.5,
+   0.0
+  ],
+  [
+   "L USB dirsek",
+   72.18,
+   0.0
+  ],
+  [
+   "USB uzatma disi ucu",
+   42.68,
+   0.0
+  ],
+  [
+   "L 3,5 mm fis",
+   81.69,
+   0.0
+  ],
+  [
+   "Fan yeri 30x30x10 (listede yok)",
+   0.0,
+   98.2
+  ]
+ ],
+ "pi_x_zarf": [
+  [
+   "Tabla ustu kablo yolu",
+   0.19,
+   0.0
+  ],
+  [
+   "Fan yeri 30x30x10 (listede yok)",
+   4.5,
+   0.0
+  ]
+ ],
+ "aciklik": {
+  "hat_dizi_mm": 24.97,
+  "hat_kart_dizi_mm": 24.97,
+  "hat_fan_yeri_mm": 0.0,
+  "hat_fan_yeri_kesisim_mm3": 98.2,
+  "hat_kart_fan_yeri_kesisim_mm3": 4.15,
+  "hat_yarik_mm": 3.0,
+  "hat_alti_sogutucu_mm": 1.4,
+  "hat_arka_kenar_duvar_ic_mm": 3.0,
+  "pi_arka_kenar_duvar_ic_mm": 3.5,
+  "hat_ust_en_yakin": [
+   [
+    "Arka kafa kabugu sag",
+    0.0
+   ],
+   [
+    "Isil gomme somun M3 (kafa sag/sol arka duvar ust)",
+    0.0
+   ],
+   [
+    "Kabuk civatasi M3x6 ISO 7380 (kafa sag/sol arka duvar ust)",
+    0.0
+   ],
+   [
+    "Arka kafa kabugu sol",
+    3.0
+   ],
+   [
+    "Burc M2,5x8 (Pi 2)",
+    11.05
+   ]
+  ],
+  "hat_en_yakin": [
+   [
+    "Arka kafa kabugu sag",
+    0.0
+   ],
+   [
+    "Isil gomme somun M3 (kafa sag/sol arka duvar ust)",
+    0.0
+   ],
+   [
+    "Kabuk civatasi M3x6 ISO 7380 (kafa sag/sol arka duvar ust)",
+    0.0
+   ],
+   [
+    "Arka kafa kabugu sol",
+    3.0
+   ],
+   [
+    "Kafa iskeleti",
+    9.6
+   ],
+   [
+    "ReSpeaker Mic Array v2.0",
+    24.97
+   ],
+   [
+    "Egme catali",
+    27.72
+   ],
+   [
+    "Dizi vidasi M2x8 PT (1)",
+    27.92
+   ]
+  ],
+  "pi_en_yakin": [
+   [
+    "Raspberry Pi 5 4GB + Active Cooler",
+    0.0
+   ],
+   [
+    "Arka kafa kabugu sag",
+    3.5
+   ],
+   [
+    "Arka kafa kabugu sol",
+    3.5
+   ],
+   [
+    "Kafa iskeleti",
+    6.6
+   ],
+   [
+    "Isil gomme somun M3 (kafa sag/sol arka duvar ust)",
+    6.75
+   ],
+   [
+    "Kabuk civatasi M3x6 ISO 7380 (kafa sag/sol arka duvar ust)",
+    7.52
+   ]
+  ]
+ },
+ "erisim": {
+  "HAT vidasi 0 (yukari, O6)": {
+   "serbest_mm": 36.86,
+   "engel": "Arka kafa kabugu sol"
+  },
+  "HAT vidasi 1 (yukari, O6)": {
+   "serbest_mm": 29.64,
+   "engel": "ReSpeaker Mic Array v2.0"
+  },
+  "HAT vidasi 2 (yukari, O6)": {
+   "serbest_mm": 36.86,
+   "engel": "Arka kafa kabugu sol"
+  },
+  "HAT vidasi 3 (yukari, O6)": {
+   "serbest_mm": 36.86,
+   "engel": "Arka kafa kabugu sag"
+  },
+  "Dizi vidasi M2x8 PT (0) (asagi, O8)": {
+   "serbest_mm": 0.0,
+   "engel": "ReSpeaker Mic Array v2.0"
+  },
+  "Dizi vidasi M2x8 PT (1) (asagi, O8)": {
+   "serbest_mm": 57.77,
+   "engel": "Kafa iskeleti"
+  },
+  "Dizi vidasi M2x8 PT (2) (asagi, O8)": {
+   "serbest_mm": 0.0,
+   "engel": "ReSpeaker Mic Array v2.0"
+  },
+  "Kabuk civatasi M3x6 ISO 7380 (kafa sag/sol arka duvar ust) (disaridan, O6)": {
+   "serbest_mm": 60.0,
+   "engel": null,
+   "not_": ">= 60.0 (tavan aranmadi)"
+  }
+ },
+ "tilt_sinir_en_yakin": {
+  "-15": [
+   3.05,
+   [
+    "Arka kafa kabugu sag",
+    "Rulman yuvasi"
+   ]
+  ],
+  "15": [
+   8.0,
+   [
+    "Arka kafa kabugu sag",
+    "Rulman yuvasi"
+   ]
+  ]
+ },
+ "tork_hatsiz": {
+  "kafa_grubu_g": 1570.8,
+  "kafa_parca_g": 1476.4,
+  "am": [
+   0.29,
+   190.73,
+   24.5
+  ],
+  "statik_tilt15_kgcm": 0.152,
+  "toplam_tilt15_kgcm": 2.583,
+  "pay_tilt15": 3.64,
+  "statik_iki_yon_kgcm": 0.143,
+  "pay_iki_hane": 3.65,
+  "I_tilt": 0.009107,
+  "ivme_kgcm": 2.43,
+  "pan_toplam_kgcm": 4.255,
+  "pan_pay_iki_hane": 2.21
+ },
+ "tork_hatli": {
+  "kafa_grubu_g": 1598.9,
+  "kafa_parca_g": 1504.5,
+  "am": [
+   0.07,
+   191.74,
+   23.44
+  ],
+  "statik_tilt15_kgcm": 0.359,
+  "toplam_tilt15_kgcm": 2.845,
+  "pay_tilt15": 3.3,
+  "statik_iki_yon_kgcm": 0.346,
+  "pay_iki_hane": 3.32,
+  "I_tilt": 0.009315,
+  "ivme_kgcm": 2.486,
+  "pan_toplam_kgcm": 4.277,
+  "pan_pay_iki_hane": 2.2
+ },
+ "baski": {
+  "Arka kafa kabugu sag": {
+   "olcu": [
+    215.0,
+    151.0,
+    106.9
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 1,
+   "desteksiz": false,
+   "destek_sorun": [
+    {
+     "z": 2.5,
+     "alan": 2723.2,
+     "boy": 200.4,
+     "robot": [
+      -8.5,
+      187.2,
+      -62.4
+     ]
+    }
+   ],
+   "kutle_g": 218.5,
+   "sure_saat": 4.78
+  },
+  "Arka kafa kabugu sol": {
+   "olcu": [
+    215.0,
+    135.0,
+    106.9
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "destek_sorun": [],
+   "kutle_g": 205.1,
+   "sure_saat": 4.49
+  },
+  "Kafa iskeleti": {
+   "olcu": [
+    224.0,
+    114.9,
+    48.0
+   ],
+   "sigar": true,
+   "destek_sorun_sayi": 0,
+   "desteksiz": true,
+   "destek_sorun": [],
+   "kutle_g": 121.4,
+   "sure_saat": 2.66
+  }
+ },
+ "sure_s": 91.3
+}

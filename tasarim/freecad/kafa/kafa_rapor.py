@@ -1,5 +1,8 @@
 # Kafa modulu raporu (rapor.html, gorseller gomulu). Sistem Python'u ile calisir (FreeCAD gerekmez).
 # Girdiler: kafa-analiz.json (kafa_montaj.py), gorsel/*.png (kafa_gorsel.py), ../arayuz.py.
+# F1a P1.6 (08.11.2026): 1,58 m kafasina (10,1 in QLED, Pi 5, ReSpeaker, USB ses karti + PAM8403) gore yenilendi; 125 cm
+# metinleri ve kafa-analiz.json'da artik olmayan anahtarlar (olcu.ACIKLIK / Y_CAM, pi.konum_T / cevirici / amfi, isi.hava.giris_y ...)
+# kaldirildi. Ozet: kafa grubu (tork kutlesi, kablo payi dahil), tilt payi tilt +-15 (pay_tilt15), pan payi pay_iki_hane.
 # 2. asama: ../carpisma-sonuc.json (kafa_tarama), ../montaj/montaj-analiz.json, eklem-dogrulama.json, gui-kontrol.json ve
 # ../montaj/gorsel/montaj-kafa*.png varsa "Moduller arasi carpisma ve ana montaj" bolumu doldurulur.
 import os, sys, json, base64, html
@@ -67,7 +70,10 @@ def md(s):
 OK = "<span class='ok'>tamam</span>"
 NO = "<span class='no'>HATA</span>"
 TR = {"Servo yuvasi": "Servo yuvası", "Rulman yuvasi": "Rulman yuvası", "Boyun mili": "Boyun mili", "Egme catali": "Eğme çatalı",
-      "Kafa iskeleti": "Kafa iskeleti", "Yuz kabugu (on)": "Yüz kabuğu (ön)", "Arka kafa kabugu": "Arka kafa kabuğu",
+      "Kafa iskeleti": "Kafa iskeleti", "Yuz kabugu (on) sag": "Yüz kabuğu (ön) sağ", "Yuz kabugu (on) sol": "Yüz kabuğu (ön) sol",
+      "Arka kafa kabugu sag": "Arka kafa kabuğu sağ", "Arka kafa kabugu sol": "Arka kafa kabuğu sol",
+      "Boyun yukseltme adaptoru": "Boyun yükseltme adaptörü", "Ekran tirnagi alt sag": "Ekran tırnağı alt sağ",
+      "Ekran tirnagi alt sol": "Ekran tırnağı alt sol", "Ekran tirnagi ust sag": "Ekran tırnağı üst sağ", "Ekran tirnagi ust sol": "Ekran tırnağı üst sol",
       "MG996R servo": "MG996R servo (180°)", "25T aluminyum disk horn": "25T alüminyum disk horn",
       "M3x5 horn vidasi (servo ile)": "M3×5 horn vidası (servo ile gelir)", "625ZZ rulman 5x16x5": "625ZZ rulman 5×16×5",
       "6808-2RS rulman 40x52x7": "6808-2RS rulman 40×52×7", "M3 isil gomme somun": "M3 ısıl gömme somun",
@@ -93,7 +99,7 @@ def tr(s):
 
 def pay(x):
     cls = "ok" if x >= 2 else ("no" if x < 1.2 else "uy")
-    return "<span class='%s'>%s×</span>" % (cls, sayi(x, 1))
+    return "<span class='%s'>%s×</span>" % (cls, sayi(x, 2))
 
 
 # ---------------------------------------------------------------- ozetler
@@ -118,11 +124,12 @@ bag_min = d["bagil_bosluk"]["en_kucuk"][0] if d["bagil_bosluk"]["en_kucuk"] else
 ms = tt["mesnet"]
 OL = d["olcu"]
 
-KARAR_TORK = ("**Tork:** tilt MG996R en kötü açıda %s kg·cm (yerçekimi %s + ivme %s; kafa grubu %s g, kütle merkezi tilt ekseninden %s mm) → "
-              "pay %s×; pan MG996R %s kg·cm (atalet + rulman + kablo, tahmini profil) → pay %s×. İki eksende de mevcut MG996R yeterli; "
-              "kafa ağırlığı ve devirme momenti pan'da iki 6808-2RS'de, tilt'te 625ZZ pim ile horn arasında paylaşılıyor."
-              % (sayi(tt["toplam_kgcm"], 2), sayi(tt["yercekimi_max_kgcm"], 2), sayi(tt["ivme_kgcm"], 2), sayi(tt["kutle_g"], 0),
-                 sayi(tt["am_eksen_mm"], 0), sayi(tt["pay"], 1), sayi(tp["toplam_kgcm"], 2), sayi(tp["pay"], 0)))
+KARAR_TORK = ("**Tork (1,58 m):** tilt MG996R, tilt ±15° en kötü durumda %s kg·cm (yerçekimi %s + ivme %s; kafa grubu %s g, kablo payı dahil; "
+              "kütle merkezi tilt ekseninden %s mm) → pay **%s×**; pan MG996R %s kg·cm (atalet + rulman + kablo, tahmini profil) → pay **%s×**. "
+              "İki eksende de mevcut MG996R yeterli (ölçüt tilt ≥ 3,0, pan ≥ 2,0); kafa ağırlığı ve devirme momenti pan'da iki 6808-2RS'de, "
+              "tilt'te 625ZZ pim ile horn arasında paylaşılıyor."
+              % (sayi(tt["toplam_tilt15_kgcm"], 2), sayi(tt["statik_tilt15_kgcm"], 2), sayi(tt["ivme_kgcm"], 2), sayi(tt["kutle_g"], 1),
+                 sayi(tt["am_eksen_mm"], 1), sayi(tt["pay_tilt15"], 2), sayi(tp["toplam_kgcm"], 2), sayi(tp["pay_iki_hane"], 2)))
 
 BAGLANTI = [
     ("Boyun plakası + servo yuvası → traverse", "Plaka traversin üst yüzünde (y = 0), servo yuvasının kulak flanşı plakada; ikisi birlikte "
@@ -137,62 +144,75 @@ BAGLANTI = [
     ("Kafa iskeleti → tilt horn'u (sağ)", "Sağ yanak horn'a dayalı", "4× M3×8 DIN 912 (horn dişli delik)"),
     ("Kafa iskeleti ↔ eğme çatalı (sol, karşı yatak)", "625ZZ dış bileziği sol yanakta, iç bileziği M5 pimle çatal dayamasına sıkılı; "
      "yanak ile çatal arası 1 mm", "M5×12 DIN 912 + DIN 125 pul + M5 ısıl gömme somun"),
-    ("Kafa kabuğu (ön + arka) → kafa tablası", "Kabuk iç yüzü tablanın kenar boss'una dayalı; arka kabuğun dikiş dili ön kabuğa 6 mm girer",
-     "4× M3×8 ISO 7380 + M3 ısıl gömme somun (yanlardan)"),
-    ("Yüz ekranı (10,1\" QLED) → ön kabuk", "Cam ön duvar iç yüzüne dayalı, 1,6 mm cep duvarı; vida deliği yok, 4 tırnak arkadan cam şeridine basar", "4× M3×6 ISO 7380 + M3 ısıl gömme somun + 1 mm köpük bant"),
-    ("Kamera → ön kabuk", "PCB boss'lara dayalı, lens Ø9 delikten 1,5 mm taşar", "4× M2×8 PT vida (plastik için, tahmini)"),
-    ("Vizör → ön kabuk", "Yüz düzlemine yapışık (z 85…88)", "3M VHB çift taraflı bant (tahmini; vida başı görünmesin)"),
+    ("Boyun yükseltme adaptörü → eğme çatalı / kafa iskeleti", "1,58 m'de baş 10,1\" kafaya göre yükseltildi (adaptör %s mm); dört saplama "
+     "adaptörü boydan boya geçer" % sayi(OL["adaptor_h"], 1), "4× M3×73 DIN 976 saplama + M3 pul + M3 DIN 985 somun"),
+    ("Kafa kabuğu (ön sağ/sol + arka sağ/sol) → kafa iskeleti tablası", "Dört kabuk yarısı (dikey dikiş + ön/arka dikiş); tabla rafı "
+     "sağ/sol yanaklarda", "4× M3×10 tabla cıvatası + 9× kabuk cıvatası (M3×6 / M3×5 ISO 7380) + M3 ısıl gömme somun"),
+    ("Yüz ekranı (10,1\" QLED) → ön kabuk", "Cam ön duvar iç yüzüne dayalı; vida deliği yok, 4 tırnak arkadan cam şeridine basar",
+     "4× M3×6 ISO 7380 + M3 ısıl gömme somun + 1 mm köpük bant"),
+    ("Kamera → ön kabuk", "PCB boss'lara dayalı, lens ekranın üstünde ortada", "4× M2×8 PT vida (plastik için, tahmini)"),
+    ("Raspberry Pi 5 + Active Cooler → kafa tablası", "4× M2,5×8 pirinç burç", "alttan 4× M2,5×8, üstten 4× M2,5×5"),
+    ("ReSpeaker Mic Array v2.0 → kafa tepesi", "Dizi kartı tepe duvarına dayalı (mikrofonlar yukarı)", "3× M2×8 PT vida"),
+    ("USB ses kartı, PAM8403, SY8205, TVS, 5 V çevirici", "Kafa içinde (PAM8403 sol duvarda), köpük bantla", "1 mm çift taraflı köpük bant (VHB)"),
 ]
 
 KARAR = [
-    "**Yapı (V3 sırası korunarak):** boyun plakası → pan MG996R → pan karşı yatağı → eğme çatalı + tilt MG996R → kafa iskeleti → yüz ve "
-    "arka kabuk + 10,1\" QLED yüz ekranı + kamera (rc:782-800). Ölçüler `arayuz.KAFA`'dan; kafa 210 × 180 × 150, tepe = HEAD_UP 275 (rc:92, rc:472).",
-    "**Boyun plakası:** V3'teki 70 × 70 × 3 Al korunup iki yan kulak eklendi; 2× M6 traversin üst kanalına (x = ±40). V3'teki 4× M5 delik "
-    "(z −15 / 35, rc:650) traversin tek üst kanalına (z = 0) denk gelmiyordu. Plaka kabuk üst kapağının altında (yerel y 0…3, kapak 7…10).",
+    "**Yapı (1,58 m):** boyun plakası → pan MG996R → pan karşı yatağı → eğme çatalı + tilt MG996R → boyun yükseltme adaptörü → kafa iskeleti → "
+    "yüz ve arka kabuk (sağ/sol yarılar) + 10,1\" QLED yüz ekranı + kamera + Pi 5 + ReSpeaker + ses (USB ses kartı + PAM8403). "
+    "Boyun ve pan grubu 125 cm kafasıyla aynı geometri (`kafa7_parcalar`), baş `kafa10_lib`'den. Kafa kutusu %s × %s × %s mm (`arayuz.KAFA`)."
+    % tuple(sayi(x, 0) for x in K["kafa_kutu"]),
+    "**Boyun plakası:** 70 × 70 × 3 Al + iki yan kulak; 2× M6 traversin üst kanalına (x = ±40). Plaka kabuk üst kapağının altında "
+    "(yerel y 0…3, kapak %s…%s)." % (sayi(r62["kapak_y_yerel"][0], 0), sayi(r62["kapak_y_yerel"][1], 0)),
     "**Pan karşı yatağı:** iki 6808-2RS (omuzdaki ile aynı rulman), merkezleri arası %s mm. Kafa ağırlığı mil omzundan üst rulmanın iç bileziğine, "
     "oradan yuva tablasına iner; devirme momenti iki rulmanda kuvvet çifti olur (her birinde ≈ %s N). Pan servosu yalnız döndürür; mil içi boş (Ø32), "
     "kablolar eksenden iner." % (sayi(tp["rulman"]["rulman_arasi_mm"], 0), sayi(tp["rulman"]["radyal_N"], 0)),
     "**Tilt karşı yatağı:** dirsekteki çözümün aynısı: sağda horn, solda 625ZZ + M5 pim. Kafa ağırlığı iki mesnet arasında bölünür: servo miline "
     "≈ %%%d (%s N) radyal yük kalır, pime %s N; eksenel yük ve devirme momenti yok (dirsekte de aynı durum). Mili tamamen boşaltmak istenirse "
-    "seçenek: sağ yanağa ikinci rulman + horn'a esnek kaplin (karar Duffy'nin)." % (round(100 * ms["horn_payi"]), sayi(ms["horn_N"], 1), sayi(ms["pim_N"], 1)),
-    "**Tilt ekseni kafanın içinde** (y = %s, z = %s; kafa altından 35 mm yukarıda): kafa kütle merkezi eksenin %s mm üstünde, bu yüzden "
-    "yerçekimi momenti küçük (rc'deki eksen kafa altının 22 mm altındaydı). Bedeli: kafa alt duvarında %s × %s mm boyun açıklığı (rc: Ø56)."
-    % (sayi(K["tilt_nokta"][1], 0), sayi(K["tilt_nokta"][2], 0), sayi(tt["am_eksen_mm"], 0), sayi(2 * OL["ACIKLIK"]["x"], 0),
-       sayi(OL["ACIKLIK"]["z"][1] - OL["ACIKLIK"]["z"][0], 0)),
+    "seçenek: sağ yanağa ikinci rulman + horn'a esnek kaplin (karar Ahmet'in)." % (round(100 * ms["horn_payi"]), sayi(ms["horn_N"], 1), sayi(ms["pim_N"], 1)),
+    "**Tilt ekseni kafanın içinde** (y = %s, z = %s; kafa altından %s mm yukarıda): kafa grubunun kütle merkezi eksenden %s mm uzakta, bu yüzden "
+    "yerçekimi momenti küçük (tilt ±15°'de statik %s kg·cm); torkun çoğu ivmeden (%s kg·cm)."
+    % (sayi(OL["tilt_y"], 1), sayi(OL["tilt_z"], 0), sayi(OL["tilt_y"] - K["kafa_alt_y"], 0), sayi(tt["am_eksen_mm"], 1),
+       sayi(tt["statik_tilt15_kgcm"], 2), sayi(tt["ivme_kgcm"], 2)),
     "**Boyun gövdesi iki parça:** pan servosu kulaklarıyla (53,6 mm) Ø52 rulman yuvasından geçemediği için servo yuvası ve rulman yuvası ayrı basılır, "
     "4× M3 ile birleşir. Servo kulakları tablanın üstüne oturur (destek gerektiren tavan yok).",
-    "**Kafa kabuğu:** V3 ölçüsü ve 2,5 mm duvar; z = 30'da ikiye bölündü (rc'de de 2 parça): yüz kabuğu yüz üstü, arka kabuk sırt üstü basılır, "
-    "ikisi de X2D'ye tek parça sığar. Kenarlar R28 (önden) ve R12.",
-    "**Yüz ekranı yuvası:** QLED camı ön duvarın iç yüzüne dayanır, cep duvarı kenardan yer gösterir; tırnak boss'ları ısıl gömme somun alacak boyda (6,7 mm). "
-    "Pencere = aktif alan + 1 mm (vizör penceresiyle aynı, rc:639).",
-    "**Kamera:** lens ekseni y = %s (rc 247); bu düzende rc konumundaki kamera PCB'si LCD'nin üst kulağıyla çakışıyordu. Lens Ø9 delikten 1,5 mm taşar "
-    "(rc ile aynı); yüz algılama için LCD'nin üstünde, kafa ortasında." % sayi(OL["Y_CAM"], 0),
-    "**Kütleler:** MG996R 55 g (datasheet), QLED 600 g (**varsayım**; üretici net kütle vermiyor, satıcı brüt 0,81–0,862 kg), kamera 4 g (rc:37), PETG küçük parçalarda "
-    "%%%d, kabuklarda %%%d etkin doluluk (**tahmini**)." % (round(100 * d["doluluk"]), round(100 * d["doluluk_kabuk"])),
+    "**Kafa kabuğu:** 2,5 mm duvar, dört parça: ön ve arka, her biri sağ/sol yarı (X2D tablasına sığması için dikey dikiş); yarılar dikiş dili ve "
+    "M3 ISO 7380 kabuk cıvatalarıyla birleşir. Yüz kabukları yüz üstü, arka kabuklar sırt üstü basılır.",
+    "**Yüz ekranı yuvası:** QLED camı ön duvarın iç yüzüne dayanır; pencere %s × %s mm, görünen alanın her yanında %s mm kabuk payı; tırnaklar cam "
+    "şeridine %s mm basar." % (sayi(d["qled"]["pencere"][0], 1), sayi(d["qled"]["pencere"][1], 1), sayi(d["qled"]["gorunen_kabuk_pay_mm"], 1),
+                                sayi(d["qled"]["tirnak"]["dil_cam_seridi_mm"], 1)),
+    "**Kamera:** ekranın üstünde, kafa ortasında; ekrana boşluk %s mm (`kafa-analiz.json` qled.bosluk)." % sayi(d["qled"]["bosluk"]["ekran_kamera"], 1),
+    "**Kütleler:** MG996R 55 g (datasheet), QLED 600 g (**varsayım**; üretici net kütle vermiyor, satıcı brüt 0,81–0,862 kg), kamera 4 g, PETG küçük parçalarda "
+    "%%%d, kabuklarda %%%d etkin doluluk (**tahmini**). Tork kütlesine kablo payı %s g ve kafa içi kablo/fiş kalemleri eklenir (tahmini)."
+    % (round(100 * d["doluluk"]), round(100 * d["doluluk_kabuk"]), sayi(tt["kablo_payi"]["kutle_g"], 0)),
     "**Tork varsayımları (tahmini):** %s; MG996R 9,4 kg·cm @4,8 V; rulman sürtünme katsayısı 0,0015; kablo halkası direnci ≈ 0,3 kg·cm." % d["tork"]["profil"],
-    "**Tahmini ölçüler:** Camera Module 3 delik dizisinin dikey yeri (alt kenardan 2,0 mm, CM2 çizimi gibi), QLED toplam kalınlık 15,03 (STEP 14,38), fiş zarfları (tahmin), M2 PT vida "
-    "ve PETG'ye vida kavraması, 25T horn yüksekliği (dirsekle aynı).",
+    "**Tahmini ölçüler:** Camera Module 3 delik dizisinin dikey yeri, QLED toplam kalınlık 15,03 (STEP 14,38), fiş zarfları, USB ses kartı ve PAM8403 "
+    "ölçüleri, M2 PT vida ve PETG'ye vida kavraması, 25T horn yüksekliği (dirsekle aynı).",
 ]
 
 SIRA = [
-    "Isıl gömme somunları bas: servo yuvası (4 tabla + 4 üst), boyun mili flanşı (4), eğme çatalı (M5), kafa tablası (4), ön kabuk tırnak boss'ları (4).",
+    "Isıl gömme somunları bas: servo yuvası (4 tabla + 4 üst), boyun mili flanşı (4), eğme çatalı (M5), tabla rafları (4), kabuk dikişleri, "
+    "ön kabuk tırnak boss'ları (4).",
     "Pan servosunun horn'unu servo orta konumunda (90) tak; servoyu servo yuvasına üstten indir, 4× M3×8 + pul.",
     "Alt 6808'i rulman yuvasına alttan, üst 6808'i üstten tablaya kadar pres et; rulman yuvasını 4× M3×10 ile servo yuvasına bağla.",
     "Boyun milini üstten iki rulmandan geçir; diski horn'a oturunca 4× M3×8'i milin içinden sık (gerekirse servo kulaklarının altına ince pul: "
     "mil omzu rulmanda otururken servo milini eksenel itmemeli).",
     "Eğme çatalını flanşa 4× M3×8 ile bağla; tilt servosunu +X'ten U plakaya 4× M4×16 + kontra somun (horn servo ortasında).",
-    "625ZZ'yi kafa iskeletinin sol yanağına pres et; iskeleti indir, sağ yanağı horn'a 4× M3×8, sol pimi M5×12 + pul ile sık.",
+    "625ZZ'yi kafa iskeletinin sol yanağına pres et; iskeleti indir, sağ yanağı horn'a 4× M3×8, sol pimi M5×12 + pul ile sık; boyun yükseltme "
+    "adaptörünü 4× M3×73 saplamayla bağla.",
     "Boyun grubunu traverse oturt: 2× M6×20 + pul + çekiç somun (somunlar traversin üst kanalında, uzun kenarı kanala dik).",
-    "QLED'i ön kabuğa oturt, 4 tırnakla (4× M3×6 + köpük bant) arkadan tut, kamerayı (4× M2×8) tak; kabloları tabla üstünden sol yanak dışına, eksenin altından çatala, mil içinden kablo odasına "
-    "ve servo yuvası arka kanalından aşağı geçir (pan ±90 ve tilt için gevşek halka bırak).",
-    "Arka kabuğu, sonra ön kabuğu yerleştir; yanlardan 4× M3×8 ISO 7380. Vizörü VHB ile yapıştır.",
+    "Pi 5'i burçlara, ReSpeaker'ı tepeye, ses kartı / PAM8403 / SY8205 / TVS'yi köpük bantla yerleştir; QLED'i ön kabuğa oturt, 4 tırnakla "
+    "(4× M3×6 + köpük bant) arkadan tut, kamerayı (4× M2×8) tak; kabloları zarflarda gösterilen yollardan geçir (pan ±90 ve tilt için gevşek halka).",
+    "Arka kabuk yarılarını, sonra ön kabuk yarılarını yerleştir; tabla cıvataları (4× M3×10) ve kabuk cıvataları (M3 ISO 7380).",
 ]
 
 ACIK = [
     "**K4 (14-15 Ekim 2026): Pi 5 kafada.** Kamera FPC 300 mm ve micro HDMI → HDMI 25–30 cm kafa içinde kalır; boyundan HDMI ve CSI geçmez. "
     "Isı testi (kafa kapalı, stres): SoC ≤ 75 °C, tilt servosu gövdesi ≤ 50 °C. Active Cooler debisi üreticiden yok (varsayım 1,0–1,55 L/s); yarıklı tahmin bir aralık (doğal çekiş ile fanın tam katkısı arası), test şart. Aşılırsa üst bant arkasına 25–30 mm egzoz fanı.",
-    "**Hoparlör yeri** (amfi tablada): kafada üst bölme ya da göğüs; karar Duffy'nin. Mikrofon yeri CAD'de yok.",
-    "Pi 5 için 4× M2,5 burç deliği 5 mm tablada: alt vida 3 mm burca girer (kupon testinde sıkma kontrolü).",
+    "**Ses:** mikrofon dizisi (ReSpeaker) kafa tepesinde, USB ses kartı + PAM8403 kafada (PAM8403 sol duvarda); hoparlör gövdede (kabuk, "
+    "göğüs bandı arkası). Mikrofon–hoparlör uzaklığı `lale158/kafa-yerlesim/uygulama-olcum.json` (ölçüt ≥ 400 mm).",
+    "**AI HAT+ (K2, karar Ahmet'te):** ana modelde yok. Pi 5 üstüne yığın arka üst dikiş boss'uyla çakışıyor; iki seçenek "
+    "`lale158/kafa-yerlesim/hat_secenek.py` ile ölçüldü (`hat-secenek-a/b.json`, F1a raporu).",
+    "Pi 5 için 4× M2,5 burç deliği tablada: alt vida burca girer (kupon testinde sıkma kontrolü).",
     "6808-2RS ve 625ZZ yük değerleri üretici kataloğundan doğrulanmalı (burada yalnız kuvvetler hesaplandı; değerler çok küçük).",
     "QLED kütlesi, cam şeridi kalınlığı (STEP 0,9 mm), fiş boyları, kamera delik yerleri parça gelince kumpas / tartı ile doğrulanmalı.",
     "Pan servosunun eksenel konumu: montajda ince pulla ayar; servo milinin eksenel yük almadığı elle kontrol edilmeli.",
@@ -410,7 +430,7 @@ def asama2():
 # ---------------------------------------------------------------- HTML
 H = []
 H.append("""<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kafa Modülü V3</title><style>
+<title>Kafa Modülü 1,58 m</title><style>
 :root{--bg:#f6f4ef;--card:#fff;--ink:#1d1f22;--mut:#666;--line:#e3e0d8;--acc:#7b8794;--acc2:#2f86d4;--ok:#2e8b57;--no:#c0392b;--uy:#b7791f}
 @media (prefers-color-scheme:dark){:root{--bg:#16171a;--card:#202226;--ink:#ececec;--mut:#9a9a9a;--line:#33363b}}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,Segoe UI,sans-serif}
@@ -434,10 +454,10 @@ ol li,ul li{margin:5px 0}code{background:rgba(127,127,127,.15);padding:1px 5px;b
 .uyari{border-left:4px solid var(--no);background:var(--card);padding:10px 14px;border-radius:6px}
 .karar{border-left:4px solid var(--ok);background:var(--card);padding:10px 14px;border-radius:6px}
 </style></head><body><main>""")
-H.append("<h1>Kafa modülü: boyun + pan + tilt + yüz ekranı</h1>")
+H.append("<h1>Kafa modülü (1,58 m): boyun + pan + tilt + 10,1\" yüz ekranı</h1>")
 H.append(__import__("carpisma_kos").eskime_html())   # C6: carpisma-sonuc.json eskidiyse uyari kutusu (bos dize = guncel)
 H.append("<div class='sub'>1. aşama (tasarım) + 2. aşama (modüller arası, ana montaj) · FreeCAD 1.1 · <code>kafa_montaj.py</code> · %d parça (%d baskı) · ölçüler <code>arayuz.KAFA</code>'dan, "
-         "V3 kafa düzeni (robot_cad) · yazıcı %s · 2. aşama: modüller arası tarama (<code>carpisma.py</code>) ve ana montaj (<code>montaj/</code>) aşağıda</div>"
+         "boyun/pan 125 cm ile aynı, baş 10,1\" QLED (<code>kafa10_lib</code>) · yazıcı %s · 2. aşama: modüller arası tarama (<code>carpisma.py</code>) ve ana montaj (<code>montaj/</code>) aşağıda</div>"
          % (d["parca_sayisi"], d["baski_sayisi"], esc(Y["model"])))
 kpi = [
     ("%d / %d" % (d["baski_sayisi"], d["parca_sayisi"]),
@@ -448,10 +468,12 @@ kpi = [
     ("%s…%s°" % (sayi(TAR[0], 0), sayi(TAR[1], 0)), "tilt yazılım sınırı (+ öne eğme) · tarama %s…%s° serbest, sınırda en az %s mm"
      % (sayi(tmin, 0), sayi(tmax, 0), sayi(bos_kp, 1))),
     ("%d / %d" % (sigan, len(baski)), "X2D'ye sığan baskı parçası · desteksiz %d / %d" % (destek, len(baski))),
-    ("%s g" % sayi(d["kutle_g"], 0), "modül toplamı · kafa (tilt) %s g, pan grubu %s g, boyun %s g" % (sayi(gr["Kafa"]["m"], 0), sayi(gr["Pan"]["m"], 0),
-                                                                                                  sayi(gr["Govde"]["m"], 0))),
-    ("%s×" % sayi(tt["pay"], 1), "tilt MG996R payı (en kötü açı %s kg·cm, yerçekimi + ivme)" % sayi(tt["toplam_kgcm"], 2)),
-    ("%s×" % sayi(tp["pay"], 0), "pan MG996R payı (%s kg·cm, atalet + sürtünme, tahmini)" % sayi(tp["toplam_kgcm"], 2)),
+    ("%s g" % sayi(tt["kutle_g"], 1), "kafa grubu (tilt ekseninde döner; parçalar %s g + kablo payı ve kafa içi kablolar, tork kütlesi)"
+     % sayi(tt["kutle_parca_g"], 1)),
+    ("%s g" % sayi(d["kutle_g"], 1), "modül toplamı (parçalar) · kafa %s g, pan grubu %s g, boyun %s g" % (sayi(gr["Kafa"]["m"], 1), sayi(gr["Pan"]["m"], 1),
+                                                                                                       sayi(gr["Govde"]["m"], 1))),
+    ("%s×" % sayi(tt["pay_tilt15"], 2), "tilt MG996R payı, tilt ±15° (%s kg·cm, yerçekimi + ivme; ölçüt ≥ 3,0)" % sayi(tt["toplam_tilt15_kgcm"], 2)),
+    ("%s×" % sayi(tp["pay_iki_hane"], 2), "pan MG996R payı (%s kg·cm, atalet + sürtünme, tahmini; ölçüt ≥ 2,0)" % sayi(tp["toplam_kgcm"], 2)),
     ("r %s / %s" % (sayi(r62["kapak_seviyesi_r_max"], 1), sayi(r62["aciklik_r"], 0)),
      "kabuk kapağı seviyesinde boyunun en büyük yarıçapı / R62 açıklık · halkaya en az %s mm" % sayi(r62["sabit_en_kucuk"][0][0], 1)),
 ]
@@ -462,19 +484,20 @@ H.append("<h2>Görünümler</h2><div class='grid'>")
 for ad, cap, w in (("kafa-izometrik.png", "İzometrik: kafa modülü + bağlam (traversin orta bölümü, kabuk üst kapağı R62 halkası yarı saydam)", ""),
                    ("kafa-on.png", "Önden (yüz): 10,1\" QLED penceresi, kamera", ""),
                    ("kafa-yan.png", "Yandan (+X): boyun, rulman yuvası, kafa", ""),
-                   ("kafa-arka.png", "Arkadan: arka kabuk, havalandırma yarıkları, servo yuvası kablo çıkışı", ""),
-                   ("kafa-boyun-yakin.png", "Boyun mekanizması (kabuk ve ekran gizli, iskelet yarı saydam): pan, çatal, tilt servosu, horn", ""),
+                   ("kafa-arka.png", "Arkadan: arka kabuk yarıları, havalandırma yarıkları", ""),
+                   ("kafa-boyun-yakin.png", "Boyun mekanizması (kafa grubundan yalnız iskelet yarı saydam, tilt horn'u, 625ZZ): pan, çatal, tilt servosu, adaptör", ""),
                    ("kafa-boyun-yakin-arka.png", "Boyun mekanizması arkadan: 625ZZ karşı yatağı (sol yanak), M5 pim", ""),
                    ("kafa-kesit-pan.png", "Pan ekseni kesiti (x = 0): servo yuvası, pan servosu, iki 6808, boyun mili, çatal, tilt servosu, kafa", ""),
-                   ("kafa-kesit-pan-yakin.png", "Pan yatağı yakın: mil omzu → üst 6808 iç bileziği → yuva tablası; alt 6808; kablo odası ve mil penceresi", ""),
-                   ("kafa-kesit-tilt.png", "Tilt ekseni kesiti (z = 25): sağda horn + yanak, solda 625ZZ + M5 pim + ısıl gömme somun", ""),
-                   ("kafa-kablo-yolu.png", "Kablo yolu (kırmızı şema): ekran / kamera → tabla → sol yanak → eksen altı → çatal → mil içi → kablo odası → arka kanal", ""),
-                   ("kafa-patlatilmis.png", "Patlatılmış: boyun (gövde), pan grubu, kafa grubu", "")):
+                   ("kafa-kesit-pan-yakin.png", "Pan yatağı yakın: mil omzu → üst 6808 iç bileziği → yuva tablası; alt 6808", ""),
+                   ("kafa-kesit-tilt.png", "Tilt ekseni kesiti (z = %s): sağda horn + yanak, solda 625ZZ + M5 pim; üstte tabla, Pi 5, ReSpeaker" % sayi(OL["tilt_z"], 0), ""),
+                   ("kafa-kablo-yolu.png", "Kafa içi yerleşim (kabuk saydam, ekran gizli); kırmızı: yer ayırma zarfları (fiş, kablo yolu, fan yeri)", ""),
+                   ("kafa-yerlesim-ust.png", "Üstten: tabla üstü yerleşim ve zarflar", ""),
+                   ("kafa-patlatilmis.png", "Patlatılmış: boyun (gövde), pan grubu, kafa grubu (baş tek blok kaldırılmış)", "")):
     if os.path.exists(os.path.join(G, ad)):
         H.append("<figure class='%s'><img src='%s' alt='%s'><figcaption>%s</figcaption></figure>" % (w, img64(ad), esc(cap), esc(cap)))
 H.append("</div>")
 H.append("<h3>Pan / tilt pozları</h3><div class='grid4'>")
-for psi, th in ((45, 0), (-60, 20), (0, 30), (0, -25), (90, 0)):
+for psi, th in ((45, 0), (-60, 10), (0, 13), (0, -13), (90, 0)):   # kafa_gorsel.POZ ile ayni
     ad = "kafa-poz-pan%+03d-tilt%+03d.png" % (psi, th)
     if os.path.exists(os.path.join(G, ad)):
         H.append("<figure><img src='%s' alt='poz'><figcaption>Pan %+d°, tilt %+d°</figcaption></figure>" % (img64(ad), psi, th))
@@ -484,7 +507,8 @@ H.append("<h2>Yapı</h2><ul>")
 H.append("<li><b>Boyun (gövdeye sabit)</b>: boyun plakası, servo yuvası, rulman yuvası, pan MG996R gövdesi, iki 6808 dış bileziği · %s g</li>" % sayi(gr["Govde"]["m"], 0))
 H.append("<li><b>Pan grubu</b> (dikey eksende döner): pan horn'u, boyun mili, 6808 iç bilezikleri, eğme çatalı, tilt MG996R, 625ZZ iç bileziği + M5 pim · %s g</li>"
          % sayi(gr["Pan"]["m"], 0))
-H.append("<li><b>Kafa grubu</b> (tilt ekseninde döner): tilt horn'u, kafa iskeleti, 625ZZ dış bileziği, yüz ve arka kabuk, 10,1\" QLED, tırnaklar, kamera · %s g, "
+H.append("<li><b>Kafa grubu</b> (tilt ekseninde döner): tilt horn'u, kafa iskeleti, 625ZZ dış bileziği, yüz ve arka kabuk (sağ/sol), 10,1\" QLED, tırnaklar, kamera, "
+         "Pi 5 + Active Cooler, ReSpeaker, USB ses kartı, PAM8403, SY8205, TVS, 5 V çevirici · %s g, "
          "kütle merkezi (%s; %s; %s)</li>" % (sayi(gr["Kafa"]["m"], 0), *[sayi(x, 1) for x in gr["Kafa"]["am"]]))
 H.append("<li>Pan ekseni yerel Y ekseni (x = z = 0; kabuk R62 açıklığının merkezi), pan horn'u y = %s. Tilt ekseni X'e paralel, (y, z) = (%s, %s). "
          "Yerel orijin = traversin üst yüzünün ortası (global 0, %s, 0).</li>" % (sayi(K["pan_nokta"][1], 1), sayi(K["tilt_nokta"][1], 0),
@@ -496,8 +520,7 @@ TUR = {"Baski": "Baskı (PETG)", "Satin": "Satın alınan", "Baglanti": "Bağlan
 SIRA_T = {"Baski": 0, "Imalat": 1, "Satin": 2, "Baglanti": 3}
 rows = [(TUR.get(t, t), esc(tr(k)), n, sayi(m, 1)) for t, k, n, m in sorted(d["bom"], key=lambda r: (SIRA_T.get(r[0], 9), r[1]))]
 H.append(tablo(["Tür", "Kalem", "Adet", "Kütle (g)"], rows, "sayi") + "</div>")
-H.append("<p class='not'>CSV: <code>kafa-bom.csv</code>. Satın alınanlar bütçede: 2× MG996R (6 adetlik kalemin kafa payı), 10,1\" QLED, Camera Module 3, "
-         "vizör (lazer kesim). Bütçede olmayanlar: 2× 6808-2RS, 1× 625ZZ, 2× 25T disk horn, boyun plakası (3 mm Al).</p>")
+H.append("<p class='not'>CSV: <code>kafa-bom.csv</code>. Bütçe karşılaştırması bu raporda yapılmadı (maliyet: <code>planlama/maliyet.json</code>).</p>")
 
 H.append("<h2>Hangi parça neye, nasıl bağlanıyor</h2><div class='tw'>")
 H.append(tablo(["Bağlantı", "Nasıl oturuyor", "Bağlantı elemanı"], [(esc(a), esc(b), esc(c)) for a, b, c in BAGLANTI]) + "</div>")
@@ -537,12 +560,15 @@ H.append("<p class='not'>Kullanılabilir hacim %s × %s × %s mm (X2D ana nozul 
             round(d["doluluk_kabuk"] * 100), sayi(A.PETG_HACIM_HIZI, 0)))
 
 H.append("<h2>Tork</h2><div class='tw'>")
-rows = [("Tilt (başı öne / arkaya)", "MG996R", sayi(tt["kutle_g"], 0) + " g (kafa grubu)",
-         "yerçekimi %s (en kötü %+d°) + ivme %s" % (sayi(tt["yercekimi_max_kgcm"], 2), tt["yercekimi_max_th"], sayi(tt["ivme_kgcm"], 3)),
+rows = [("Tilt (başı öne / arkaya), tilt ±15°", "MG996R", sayi(tt["kutle_g"], 1) + " g (kafa grubu)",
+         "yerçekimi %s + ivme %s" % (sayi(tt["statik_tilt15_kgcm"], 3), sayi(tt["ivme_kgcm"], 3)),
+         sayi(tt["toplam_tilt15_kgcm"], 2), "9,4", pay(tt["pay_tilt15"])),
+        ("Tilt, yazılım aralığı (en kötü %+d°)" % tt["yercekimi_max_th"], "MG996R", sayi(tt["kutle_g"], 1) + " g (kafa grubu)",
+         "yerçekimi %s + ivme %s" % (sayi(tt["yercekimi_max_kgcm"], 2), sayi(tt["ivme_kgcm"], 3)),
          sayi(tt["toplam_kgcm"], 2), "9,4", pay(tt["pay"])),
         ("Pan (sağa / sola)", "MG996R", sayi(tp["kutle_g"], 0) + " g (pan + kafa)",
          "atalet %s + rulman %s + kablo %s" % (sayi(tp["ivme_kgcm"], 3), sayi(tp["rulman_kgcm"], 4), sayi(tp["kablo_kgcm"], 2)),
-         sayi(tp["toplam_kgcm"], 2), "9,4", pay(tp["pay"]))]
+         sayi(tp["toplam_kgcm"], 2), "9,4", pay(tp["pay_iki_hane"]))]
 H.append(tablo(["Eklem", "Servo", "Taşınan kütle", "Bileşenler (kg·cm)", "Gereken (kg·cm)", "Stall (kg·cm)", "Pay"], rows, "sayi") + "</div>")
 egri = tt["egri"]
 H.append("<h3>Tilt yerçekimi momenti - açı</h3><div class='tw'>" + tablo(["Tilt (°)"] + ["%+d" % e["th"] for e in egri],
@@ -574,43 +600,41 @@ H.append("<details><summary class='not'>Tilt açısına göre kafa ↔ pan grubu
                                                            for k, v in sorted(ta["bosluk_kafa_pan"].items(), key=lambda kv: int(kv[0]))], "sayi") + "</div></details>")
 
 H.append("<h2>Kabuk R62 boyun açıklığına uyum</h2>")
-H.append("<p>Kabuk üst kapağı global y 982…985 (kafa yerelinde %s…%s), boyun deliği R%s (kabuk_parcalar). Kapak seviyesinde yalnız sabit boyun var: servo yuvası "
+H.append("<p>Kabuk üst kapağı kafa yerelinde y %s…%s (global y = yerel + %s), boyun deliği R%s (kabuk_parcalar). Kapak seviyesinde yalnız sabit boyun var: servo yuvası "
          "bloğu (60 × 74 mm) ve kulak flanşı; en büyük yarıçap <b>%s mm</b> → deliğe en az %s mm. Pan grubunun en alt noktası y = %s (kapağın %s mm üstünde), "
          "kafa grubunun tüm pozlardaki en alt noktası y = %s (%s). Boyun plakası kapağın altında (y 0…3), kulakları x ±48'e uzanır.</p>"
-         % (sayi(r62["kapak_y_yerel"][0], 0), sayi(r62["kapak_y_yerel"][1], 0), sayi(r62["aciklik_r"], 0), sayi(r62["kapak_seviyesi_r_max"], 1),
+         % (sayi(r62["kapak_y_yerel"][0], 0), sayi(r62["kapak_y_yerel"][1], 0), sayi(K["taban_y"], 0), sayi(r62["aciklik_r"], 0), sayi(r62["kapak_seviyesi_r_max"], 1),
             sayi(r62["sabit_en_kucuk"][0][0], 1), sayi(r62["pan_en_alt_y"], 1), sayi(r62["pan_en_alt_y"] - r62["kapak_y_yerel"][1], 0),
             sayi(r62["kafa_en_alt_y"], 1), esc("pan %s, tilt %s: %s" % tuple(r62["kafa_en_alt_poz"]))))
 
 H.append("<h2>Kablo yolu</h2>")
-H.append("<ol>"
-         "<li>Yüz ekranı (HDMI + USB) ve kamera (FPC) kafa tablasının üstünden sol yanağın dışındaki 13 × 24 mm geçişe.</li>"
-         "<li>Sol yanak boyunca aşağı, tilt ekseninin ≈ 18 mm altından çatalın sol duvarına geçer: tilt ±30° için hareket ≈ 10 mm, 15-20 mm gevşek halka.</li>"
-         "<li>Çatal tabanındaki Ø28 delikten boyun milinin içine (Ø32, pan ekseninde: pan dönüşü burada yalnız burulma).</li>"
-         "<li>Milin arka penceresinden (13,7 × 10 mm) kablo odasına: rulman yuvasının altında r 20…27,5 halka. Pan ±90° için halkada ≈ 70 mm pay "
-         "(saat yayı gibi sarılır).</li>"
-         "<li>Servo yuvasının arka kanalından (20 × 8 mm) aşağı; pan servosu kablosu da buraya katılır.</li>"
-         "<li>Arka alt pencereden (12 × 12 mm) çıkıp traversin arkasından, kabuk üst kapağının R62 halkasından gövdeye iner.</li></ol>")
-H.append("<p class='not'>Kablolar modelde yalnız şema (<code>Referans</code> grubu, çakışma ve kütleye girmez). K4 ile boyundan yalnız 12 V çifti (18 AWG), "
-         "ESP32 USB'si (VBUS hattında seri 1N5819) ve tilt servosu geçer; ekran, kamera ve güç kabloları kafa içinde kısa kalır.</p>")
+H.append("<p><b>Kafa içi:</b> kablolar modelde yer ayırma zarfı olarak duruyor (kütle ve çakışmaya girmez; <code>kafa_montaj</code> her zarfın parçalarla "
+         "kesişimini ve pan grubuna boşluğunu ölçer). Boyundan inenler: %s.</p>" % esc(d["pi"]["boyun_kablolari"]))
+_z = d["qled"].get("zarf") or []
+if _z:
+    H.append("<div class='tw'>" + tablo(["Zarf", "Kesişen parça", "Pan grubuna boşluk (mm)", "Not"],
+             [(esc(z_["ad"]), esc(", ".join(str(x) for x in z_.get("kesisim") or [])) or "yok",
+               sayi(z_["pan_mm"], 1) if z_.get("pan_mm") is not None else "–", "<span class='not'>%s</span>" % esc(z_.get("not_", ""))) for z_ in _z]) + "</div>")
+H.append("<p class='not'>Boyun bölümü (çatal tabanı → boyun mili içi → kablo odası → servo yuvası arka kanalı → R62) 125 cm kafasıyla aynı "
+         "geometri (<code>kafa7_parcalar</code> Govde/Pan); 1,58 m'de ayrı kablo şeması yok (Referans grubu boş).</p>")
 
 # ---------------------------------------------------------------- K4: Pi 5 kafada (15 Ekim 2026)
 PI_ = d.get("pi")
 ISI_ = d.get("isi")
 if PI_ and ISI_:
     H.append("<h2>Raspberry Pi 5 kafada (K4, düzeltme planı 3. adım)</h2>")
-    H.append("<ul><li>Pi 5 + Active Cooler kafa tablasının üstünde: kart köşesi (x %s, z %s), kart altı y %s; 4× M2,5×8 pirinç burç (alttan M2,5×8 tabladan, "
-             "üstten M2,5×5). Kablo kenarı (USB-C, 2× micro HDMI, 2× CSI) öne, microSD −X'e: arka kabuk 2 vidayla sökülünce erişilir.</li>"
-             % (sayi(PI_["konum_T"][0], 0), sayi(PI_["konum_T"][2], 0), sayi(PI_["konum_T"][1], 0)))
-    H.append("<li>5 V çevirici Pololu D36V50F5 (%s; %s) ve MAX98357A (%s; %s) tablada köpük bantla. Boyundan: %s.</li>"
-             % (sayi(PI_["cevirici"][0], 0), sayi(PI_["cevirici"][1], 0), sayi(PI_["amfi"][0], 0), sayi(PI_["amfi"][1], 0), esc(PI_["boyun_kablolari"])))
+    H.append("<ul><li>Pi 5 + Active Cooler kafa tablasının üstünde: kart köşesi baş çerçevesinde (x %s, y %s, z %s; baş çerçevesi = tilt ekseni), "
+             "4× M2,5×8 pirinç burç (alttan M2,5×8, üstten M2,5×5).</li>"
+             % (sayi(PI_["konum_T_bas_cercevesi"][0], 1), sayi(PI_["konum_T_bas_cercevesi"][1], 1), sayi(PI_["konum_T_bas_cercevesi"][2], 1)))
+    H.append("<li>5 V çevirici Pololu D24V50F5 tablada (x %s, z %s; baş çerçevesi); ses yükseltici PAM8403, USB ses kartının analog çıkışından, "
+             "sol duvarda (y %s, z %s); kafa ekranı için ayrı SY8205 + P6KE6V8A TVS. Boyundan: %s.</li>"
+             % (sayi(PI_["cevirici_xz"][0], 0), sayi(PI_["cevirici_xz"][1], 0), sayi(PI_["amfi_sol_duvar_yz"][0], 0),
+                sayi(PI_["amfi_sol_duvar_yz"][1], 1), esc(PI_["boyun_kablolari"])))
     hv = ISI_["hava"]
-    H.append("<li>Havalandırma (T2, baca etkisi): giriş arka duvarın alt bandında %s mm² (Pi'nin arkası, y %s), çıkış arka duvarın üst bandında %s mm² + "
-             "yan duvarların en üstünde %s mm² (toplam %s mm², ortalama y %s); giriş–çıkış yükseklik farkı %s mm (önce %s mm). "
-             "Aralarında emiş perdesi: arka kabuktan Active Cooler'ın üstüne uzanan 2 mm levha (y %s–%s), taze hava perde altından fana gider, "
-             "sıcak hava üst banttan çıkar. 1,55 L/s'de yarık hızı %s / %s m/s; eski alt yarıklar %s mm².</li></ul>"
-             % (sayi(hv["giris_mm2"], 0), sayi(hv["giris_y"], 1), sayi(hv["cikis_arka_mm2"], 0), sayi(hv["cikis_yan_mm2"], 0), sayi(hv["cikis_mm2"], 0),
-                sayi(hv["cikis_y"], 1), sayi(hv["H_mm"], 1), sayi(hv["once"]["H_mm"], 1), sayi(hv["perde"]["y"][0], 0), sayi(hv["perde"]["y"][1], 0),
-                sayi(hv["giris_mm2_hiz_m_s_1.55L"], 2), sayi(hv["cikis_mm2_hiz_m_s_1.55L"], 2), sayi(hv["eski_yan_mm2"], 0)))
+    H.append("<li>Havalandırma: arka kabuk yarıkları (yarık 35 × 3), giriş %s mm², çıkış %s mm², giriş–çıkış yükseklik farkı %s mm; "
+             "1,55 L/s'de yarık hızı %s / %s m/s. (125 cm kafasında giriş %s, çıkış %s mm².)</li></ul>"
+             % (sayi(hv["giris_mm2"], 0), sayi(hv["cikis_mm2"], 0), sayi(hv["H_mm"], 1), sayi(hv["giris_mm2_hiz_m_s_1.55L"], 2),
+                sayi(hv["cikis_mm2_hiz_m_s_1.55L"], 2), sayi(hv["once"]["giris_mm2"], 0), sayi(hv["once"]["cikis_mm2"], 0)))
     rows = []
     for k_, ad_ in (("bosta", "Boşta (Pi 3,2 W)"), ("tipik", "Tipik (Pi 7 W)"), ("en_kotu", "En kötü (Pi 9,8 W)")):
         v_ = ISI_["senaryo"][k_]
@@ -623,7 +647,7 @@ if PI_ and ISI_:
     H.append("<p class='not'>El hesabı, %s °C ortam, kafa içi ortalama hava (tahmini; kaynak: %s). Kapalı kabuk R ≈ %s K/W. Doğal çekiş: "
              "V̇ = C<sub>d</sub> A<sub>ef</sub> √(2 g H ΔT / T), C<sub>d</sub> %s, duvar kaybı paralel. Kafa küçük olduğu için baca etkisi zayıf "
              "(birkaç 0,1 L/s); asıl kazanç Active Cooler'ın perde altından taze hava emmesi, o da fan hızına ve sızıntıya bağlı. Active Cooler "
-             "SoC ~50 °C altında durur, boşta doğal çekiş sınırı geçerli. Pi üst bölmede: oradaki hava ortalamadan sıcak. "
+             "SoC ~50 °C altında durur, boşta doğal çekiş sınırı geçerli. "
              "Karar ölçümle: kafa kapalı, stres testinde SoC ≤ 75 °C, tilt servosu gövdesi ≤ 50 °C. Aşılırsa 25–30 mm egzoz fanı (üst bant arkasına).</p>"
              % (sayi(ISI_["varsayim"]["ortam_C"], 0), esc(ISI_["varsayim"]["kaynak"]), sayi(ISI_["varsayim"]["R_kapali_K_W"], 1),
                 sayi(ISI_["varsayim"].get("Cd", 0.6), 1)))
@@ -635,12 +659,13 @@ H.append("<h2>Kararlar ve varsayımlar</h2><ul>" + "".join("<li>%s</li>" % md(s)
 H.append("<h2>Montaj sırası (öneri)</h2><ol>" + "".join("<li>%s</li>" % md(s) for s in SIRA) + "</ol>")
 H.append("<h2>Açık işler</h2><ul>" + "".join("<li>%s</li>" % md(s) for s in ACIK) + "</ul>")
 H.append("<h2>Dosyalar</h2><ul>"
-         "<li><code>kafa_lib.py</code>: 6808-2RS, 10,1\" QLED, 7\" LCD (C; geri dönüş), Camera Module 3, M2 vida, yuvarlatılmış kafa kutusu; MG996R / horn / baskı analizi dirsek_lib'den</li>"
-         "<li><code>kafa_parcalar.py</code>: parçalar, bağlantı tanımları, kütle, kinematik (import edilebilir)</li>"
+         "<li><code>kafa_lib.py</code>: 6808-2RS, 10,1\" QLED, Camera Module 3, M2 vida, yuvarlatılmış kafa kutusu; MG996R / horn / baskı analizi dirsek_lib'den</li>"
+         "<li><code>kafa7_parcalar.py</code>: boyun + pan grubu (125 cm ile ortak); <code>kafa10_lib.py</code>: 1,58 m başı (10,1\" QLED, Pi 5, ReSpeaker, ses)</li>"
+         "<li><code>kafa_parcalar.py</code>: parçalar (kafa7 Govde/Pan + adaptör + kafa10 Bas), bağlantı tanımları, kütle, kinematik, yer ayırma zarfları</li>"
          "<li><code>kafa_montaj.py</code>: kontroller, tarama, R62, tork, baskı → <code>kafa-montaj.FCStd</code>, <code>.step</code>, <code>kafa-bom.csv</code>, "
          "<code>kafa-analiz.json</code></li>"
          "<li><code>kafa_gorsel.py</code> (FreeCAD GUI) → <code>gorsel/</code>; <code>kafa_rapor.py</code> → bu sayfa</li>"
-         "<li><code>../arayuz.py</code>: <code>KAFA</code> (eksenler, sınırlar, plaka) ve <code>MODULLER['kafa']</code>; yeni bölge: boyun plakası kulakları</li></ul>")
+         "<li><code>../arayuz.py</code>: <code>KAFA</code> (eksenler, sınırlar, plaka) ve <code>MODULLER['kafa']</code></li></ul>")
 H.append("<p class='not'>Üretildi: kafa_rapor.py · analiz süresi %s s · STEP %d katı · eklemler %s</p>" % (sayi(d["sure_s"], 1), d["step_kati"],
                                                                                             "kuruldu" if d["joints_ok"] is True else esc(d["joints_ok"])))
 H.append("</main></body></html>")

@@ -24,9 +24,10 @@
   "hoparlor": [
    "Hoparlor kabi on halka",
    "Hoparlor kabi arka (flansli)",
+   "Hoparlor kelepcesi",
    "Hoparlor 40 x 20",
-   "Hoparlor kabi civatasi M3x8",
-   "Hoparlor kabi civatasi M3x001"
+   "Hoparlor kelepce civatasi M3x20",
+   "Hoparlor kelepce civatasi M3x001"
   ]
  },
  "mic_hoparlor": {
@@ -326,6 +327,10 @@
     0.0
    ],
    [
+    "Kopuk ped (hoparlor kelepcesi)",
+    0.0
+   ],
+   [
     "Govde orta bandi sag",
     0.497
    ],
@@ -336,10 +341,6 @@
    [
     "Hoparlor kabi arka (flansli)",
     0.5
-   ],
-   [
-    "Hoparlor kabi civatasi M3x8",
-    8.25
    ]
   ],
   "cakisma": [
@@ -376,8 +377,8 @@
     0.5
    ],
    [
-    "Gogus bandi sag",
-    5.521
+    "Hoparlor kelepcesi",
+    4.243
    ]
   ],
   "cakisma": [
@@ -392,8 +393,8 @@
    10.0,
    80.0,
    967.79,
-   1014.07,
-   69.39,
+   1013.1,
+   70.78,
    108.07
   ],
   "en_yakin": [
@@ -410,18 +411,18 @@
     0.0
    ],
    [
-    "Isil gomme somun M3 (hoparlor boss)",
+    "Hoparlor kelepcesi",
     0.0
    ],
    [
-    "Hoparlor kabi civatasi M3x8",
+    "Isil gomme somun M3 (hoparlor boss)",
     0.0
    ]
   ],
   "cakisma": [
    [
     "Hoparlor kabi arka (flansli)",
-    6697.1
+    6116.3
    ]
   ]
  },
@@ -556,7 +557,7 @@
    "not_": "Hub -> ESP32 (taban), VBUS'ta 1N5819; govde ici sema, v4'te 2 m"
   },
   "Hoparlor": {
-   "yol_mm": 823.0,
+   "yol_mm": 824.0,
    "onerilen_mm": 1030.0,
    "kapak_sokme_pay_mm": 0.0,
    "cap_mm": 4.0,
@@ -659,5 +660,5 @@
   "3": "bos",
   "4": "bos"
  },
- "sure_s": 483.8
+ "sure_s": 461.7
 }

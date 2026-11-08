@@ -64,7 +64,7 @@ kontrol_sat = [
     ("Kasa ölçüsü modelde", " × ".join(tr(v, 2) for v in GE.get("kasa_olcu_model", [])), "284,65 × 182,25 × 29,5", "geçti"),
     ("Kasa ↔ direk", "%s mm" % tr(GE.get("kasa_direk_mm"), 2), "≥ 20", "geçti" if GE.get("kasa_direk_tamam") else "KALDI"),
     ("Kasa ↔ göğüs bandı (sağ/sol)", "%s / %s mm" % (tr(GE.get("kasa_gogus_sag_mm"), 2), tr(GE.get("kasa_gogus_sol_mm"), 2)), "> 0", "geçti"),
-    ("Kasa ↔ çerçeve (sağ/sol)", " / ".join(tr(v, 3) for v in GE.get("kasa_cerceve_mm", [])), "0,5 (uçlarda)", "bilgi"),
+    ("Kasa ↔ çerçeve (sağ/sol)", " / ".join(tr(v, 3) for v in GE.get("kasa_cerceve_mm", [])), "0,2 (köşe takozu önü; takoz = cam_geri − 0,2)", "bilgi"),
     ("Taşıyıcı M6 ucu, direk yüzünden", "%s mm" % tr(GE.get("m6_uc_yuzden_mm"), 2), "somun üstü 9,3 + 0,5; kanal tabanı 11,8 − 0,5", "geçti" if GE.get("m6_tamam") else "KALDI"),
     ("Tablaya sığmayan baskı parçası", str(len(K.get("baski_sigmayan", []))), "0 (246 × 246 × 250)", "geçti" if not K.get("baski_sigmayan") else "KALDI"),
     ("Ekran parçaları × robot, ev pozu çakışma", str(len(K.get("ekran_cakisma", []))), "0", "geçti" if not K.get("ekran_cakisma") else "BAK"),

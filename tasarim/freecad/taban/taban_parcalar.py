@@ -2,7 +2,7 @@
 # + kaplin + teker), aku + kayis + takoz, guc elektronigi (BTS7960 x2, XL4016 x4: servo A sag kol / servo B sol kol / cevre 5 V / servo C kafa (Y3, guc panelinde), sigorta kutusu,
 # role, ana sigorta, ana anahtar), kartlar (ESP32 + tasiyici, PCA9685, BNO055, arayuz karti, 2 servo dagitim karti), HC-SR04 x3 +
 # tutucular, acil stop, tum baglanti elemanlari ve kablo yolu semasi (Referans).
-# 15 Ekim 2026 (duzeltme plani 3. adim): K4 Pi 5 + MAX98357A kafaya gitti (kafa/); Pi'nin XL4016'si servo B oldu (E1); eski Pi yerine
+# 15 Ekim 2026 (duzeltme plani 3. adim): K4 Pi 5 + o gunku I2S amfi kafaya gitti (kafa/; amfi 04-05.11.2026'da PAM8403 + USB ses karti oldu); Pi'nin XL4016'si servo B oldu (E1); eski Pi yerine
 # arayuz karti (E2/E3); on kat on bandinda servo dagitim A/B (E1). K1 (a) omni secenegi arayuz.TABAN['omni']['aktif'] ya da
 # TABAN_OMNI=1 ile (varsayilan kapali). Elektrik kararlari planlama/adim3/elektrik.md. Import edilebilir: taban_montaj.py (kontroller + kayit), 2. asamada ../carpisma.py ve montaj/.
 # Koordinat = global (arayuz.py): orijin zemin + robot merkezi, +X sag, +Y yukari, +Z ileri, mm. Olculer arayuz.TABAN'dan.
@@ -473,7 +473,7 @@ ESP_I = add("ESP32 DevKit 30 pin", "Elektronik", tasi(esp_local(), ESP_C[0], y_e
             renk="pcb_k", patlat=(80, 170, 20), kutle=L.ESP["kutle_g"], not_="disi header'a takili (pin 6 mm)")
 bag("ESP32 - tasiyici header", "gecme", dict(govde=[PERF_I], kart=ESP_I), dict(d=0.64, kavrama=6.0), temas=[(ESP_I, PERF_I)],
     aciklama="ESP32 pinleri 15'li disi header'lara 6 mm gecer")
-# K4: MAX98357A amfi Pi ile kafaya gitti (I2S boyundan gecmez; kafa_parcalar).
+# K4: tabanda amfi yok (Pi ile kafaya gitti; 1,58 m'de ses yukseltici PAM8403 + USB ses karti, kafa sol duvarinda).
 log("elektronik kati")
 
 # ====================================================================== 7) SONARLAR + TUTUCULAR, ACIL STOP

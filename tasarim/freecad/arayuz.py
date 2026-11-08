@@ -271,7 +271,8 @@ for sx in (-1, 1):
            "rc:729")
 # Etek tasiyici L braketleri (rc:604-609, V3'te taban bolgesiydi) artik kabuk modulunun parcasi: bolgeleri asagida
 # (8. bolum, KABUK_ETEK_BRAKET) kabuk sahipli olarak tanimli.
-# K4 (3. adim): Raspberry Pi 5 ve MAX98357A kafada (kafa_parcalar; KAFA modulu cizili): eski V3 taban bolgeleri kaldirildi (K3 kontrolu).
+# K4 (3. adim): Raspberry Pi 5 ve o gunku I2S amfi kafaya gitti (kafa_parcalar; KAFA modulu cizili): eski V3 taban bolgeleri kaldirildi (K3 kontrolu).
+# 04-05.11.2026: I2S amfi modelden cikti; ses PAM8403 + USB ses karti, kafa sol duvarinda (SES_USB, kafa10_lib).
 for (x, z, l, w, ad) in ((65, -135, 52, 28, "ESP32"), (65, -65, 62.2, 25.4, "PCA9685"),
                          (0, 60, 27, 20, "BNO055")):
     _b(ad + " (elektronik kati)", "taban", _k(_xs(x) - l / 2 - 3, _xs(x) + l / 2 + 3, Y_DECK1, Y_DECK1 + 25, z - w / 2 - 3, z + w / 2 + 3),
@@ -650,7 +651,7 @@ TABAN = dict(
     esp=dict(merkez=(80.0, 75.0), tasiyici=(70.0, 50.0), burc=8.0),   # ESP32 delikli pertinaks tasiyici + disi header ustunde
     pca=dict(merkez=(83.0, 125.0), burc=8.0),
     bno=dict(merkez=(0.0, 60.0), burc=8.0),       # rc:742 (0, 60)
-    amp=None,                                     # K4: MAX98357A Pi ile kafaya gitti (I2S boyundan gecmesin); eski yer (-51,6; 40)
+    amp=None,                                     # K4: tabandaki I2S amfi kalkti (eski yer -51,6; 40); ses kafada PAM8403 + USB ses karti (SES_USB)
     sigorta_kutusu=dict(merkez=(0.0, -203.0), olcu=(105.0, 60.0, 35.0), delik_x=47.0, delik_z=-213.0),   # tahmini zarf; somun akunun arkasinda
     role=dict(merkez=(-112.0, -130.0), olcu=(30.0, 30.0, 45.0)),                         # ISO mini role + soket, tahmini zarf
     ana_sigorta=dict(merkez=(112.0, -130.0), olcu=(30.0, 60.0, 20.0)),                   # kablolu kapakli yuva, tahmini zarf
@@ -980,7 +981,7 @@ M6 = dict(
 
 
 # =====================================================================================================
-# Kafa ici ses + USB yerlesimi: secim B + R1 (Duffy, 05.11.2026; lale158/kafa-yerlesim/secenekler.md, uygulama-notu.md). MAX98357A modelden cikti.
+# Kafa ici ses + USB yerlesimi: secim B + R1 (Ahmet, 05.11.2026; lale158/kafa-yerlesim/secenekler.md, uygulama-notu.md). I2S amfi modelden cikti; ses yukseltici tek: PAM8403 (USB ses kartinin analog cikisindan).
 # Geometri: kafa/kafa10_lib.py (dizi, ses karti, PAM), kabuk/kabuk_parcalar.py (hoparlor, kapak ici hub); yollar: lale158/kablo_yolu_ekran.py.
 # Cerceve "bas" = tilt ekseni orijin, global ev pozu = bas + (0, KAFA taban_y + tilt y, tilt z). Aksi yazmiyorsa mm.
 # =====================================================================================================

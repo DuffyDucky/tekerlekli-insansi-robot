@@ -1,7 +1,7 @@
 # Taban modulu - parca kutuphanesi (FreeCAD 1.1, Part)
 # Genel elemanlar ../ortak_lib.py'de; baski analizi ../dirsek/dirsek_lib.py'den (kabuk/kafa ile ayni yontem).
 # Burada tabana ozgu: JGB37-520 motor + L braket + 12 mm altigen kaplin + 125 x 58 teker (rc:204-258), LiFePO4 aku (rc:339),
-# kartlar (Pi 5 + Active Cooler, ESP32, PCA9685, BNO055, MAX98357A, BTS7960, XL4016; rc:302-337 + 04), HC-SR04 (rc:349),
+# kartlar (Pi 5 + Active Cooler, ESP32, PCA9685, BNO055, I2S amfi (AMP, yalniz eski V3 yeri), BTS7960, XL4016; rc:302-337 + 04), HC-SR04 (rc:349),
 # Emas acil stop (rc:357), tahmini zarflar (sigorta kutusu, role, ana anahtar, ana sigorta yuvasi), burclar, plaka yardimcilari,
 # M2,5 / M4 / M5 / ISO 7380 M6 elemanlari ve DXF (R12) yazici. Yerel cizimler global eksenlerde, cagiran yerlestirir.
 import os, sys, math

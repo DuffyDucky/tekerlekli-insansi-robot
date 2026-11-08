@@ -1,5 +1,5 @@
 {
- "parca": 1177,
+ "parca": 1179,
  "zemin_y": 0.0,
  "tepe_y": 1580.0,
  "toplam_boy_mm": 1580.0,
@@ -184,11 +184,6 @@
    8.922
   ],
   [
-   "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-   "Hoparlor kabi arka (flansli)",
-   9.182
-  ],
-  [
    "Gogus ekrani cercevesi sag",
    "Bindirme civatasi M3x6 (govde y1005 on)",
    9.46
@@ -217,6 +212,11 @@
    "Gogus ekrani cercevesi sol",
    "S1 kaset govdesi sol",
    10.141
+  ],
+  [
+   "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+   "Hoparlor kabi arka (flansli)",
+   10.298
   ],
   [
    "Gogus ekrani cercevesi sag",
@@ -280,7 +280,7 @@
     "not_": "Hub -> ESP32 (taban), VBUS'ta 1N5819; govde ici sema, v4'te 2 m"
    },
    "Hoparlor": {
-    "yol_mm": 823.0,
+    "yol_mm": 824.0,
     "onerilen_mm": 1030.0,
     "kapak_sokme_pay_mm": 0.0,
     "cap_mm": 4.0,
@@ -941,14 +941,29 @@
    "olcu": [
     62.5,
     62.5,
-    15.0
+    13.3
    ],
    "sigar": true,
    "desteksiz": true,
    "destek_sorun": 0,
-   "g": 8.0,
+   "g": 7.0,
    "sa": 0.2,
    "yon": "VARSAYIM kap; flans yuzu tablada (desteksiz)"
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Hoparlor kelepcesi",
+   "olcu": [
+    56.6,
+    56.6,
+    14.3
+   ],
+   "sigar": true,
+   "desteksiz": true,
+   "destek_sorun": 0,
+   "g": 5.0,
+   "sa": 0.1,
+   "yon": "VARSAYIM; kopru ust yuzu tablada, bacaklar yukari (desteksiz)"
   },
   {
    "modul": "kafa",
@@ -1511,5 +1526,5 @@
    ]
   }
  },
- "sure_s": 172.8
+ "sure_s": 174.7
 }
