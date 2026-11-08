@@ -1,8 +1,11 @@
 # Kabuk modulu raporu (rapor.html, gorseller gomulu). Sistem Python'u ile calisir (FreeCAD gerekmez).
-# Girdiler: kabuk-analiz.json (kabuk_montaj.py), ../carpisma-sonuc.json (carpisma.py), ../montaj/montaj-analiz.json
-# (ana_montaj.py), onceki/*.json (kabuk oncesi montaj ve carpisma), ../omuz/regresyon/fark.json,
-# ../iskelet/regresyon/fark.json, ../omuz/omuz-analiz.json, ../arayuz.py, gorsel/*.png (kabuk_gorsel.py)
+# Girdiler: kabuk-analiz.json (kabuk_montaj.py), ../carpisma-sonuc.json (carpisma_kos.py birlestir), ../montaj/montaj-analiz.json
+# (ana_montaj.py), ../omuz/omuz-analiz.json, ../arayuz.py, gorsel/*.png (kabuk_gorsel.py).
+# F1b P1.5 (08.11.2026): 1,58 m ve guncel duzene getirildi: Nextion (125 cm / V3) yerine 11,6" kasali gogus ekrani
+# (kabuk-analiz.json 'gogus_ekrani'; eski 'ekran_kontrol' anahtari artik yok), ses ve USB grubu (hoparlor kabi + kelepce, hub);
+# kabuk oncesi karsilastirmasi (onceki/*.json) ve omuz/iskelet regresyonu (Ekim 2026, V3 kabuk calismasi) rapordan cikti.
 import os, sys, json, base64, re, html
+from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 UST = os.path.dirname(HERE)
@@ -19,11 +22,9 @@ def js(*p):
 d = js(HERE, "kabuk-analiz.json")
 c = js(UST, "carpisma-sonuc.json")
 m = js(UST, "montaj", "montaj-analiz.json")
-m0 = js(HERE, "onceki", "montaj-analiz-once.json")
-c0 = js(HERE, "onceki", "carpisma-once.json")
-ro = js(UST, "omuz", "regresyon", "fark.json")
-ri = js(UST, "iskelet", "regresyon", "fark.json")
 omz = js(UST, "omuz", "omuz-analiz.json")
+GE = A.GOGUS_EKRAN
+ge = d["gogus_ekrani"]
 
 
 def sayi(x, n=1):
@@ -117,7 +118,9 @@ for k in ("gobek_govde",):
                 omuz_ic.add((int(phi), th))
 kabuk_poz = {ad: set(tuple(p) for p in t.get("modul_cakisan_poz", {}).get("kabuk", [])) for ad, t in tar.items()}
 kabuk_ek = {ad: sorted(v - omuz_ic) for ad, v in kabuk_poz.items()}
-eklem_ici = lambda pz: A.OMUZ["one_arka_aralik"][0] <= pz[0] <= A.OMUZ["one_arka_aralik"][1] and A.OMUZ["yana_aralik"][0] <= pz[1] <= A.OMUZ["yana_aralik"][1]
+OA, YA = A.OMUZ["one_arka_aralik"], A.OMUZ["yana_aralik"]
+eklem_ici = lambda pz: OA[0] <= pz[0] <= OA[1] and YA[0] <= pz[1] <= YA[1]
+aralik_metni = "öne %s…%s°, yana %s…%s°" % tuple(sayi(v, 0) for v in (OA[0], OA[1], YA[0], YA[1]))
 kabuk_eklem = {ad: [p for p in v if eklem_ici(p)] for ad, v in kabuk_poz.items()}
 min_bosluk = min((b[0] for b in kol_kabuk.values() if b), default=None)
 min_yer = next((b for b in kol_kabuk.values() if b and b[0] == min_bosluk), None)
@@ -127,7 +130,22 @@ desteksiz_degil = [b for b in baski if not b["desteksiz"]]
 sigmayan = [b for b in baski if not b["sigar"]]
 bag_ok = sum(1 for b in d["baglanti_kontrol"] if b["tamam"])
 vida_ok = sum(1 for v in d["vida_kontrol"] if v["tamam"])
-ekr_ok = sum(1 for v in d["ekran_kontrol"] if v["tamam"])
+# gogus ekrani kontrolleri (kabuk_montaj 6b, 'gogus_ekrani'): olcu, sart, sonuc
+_on = ge.get("cerceve_on", {})
+ge_kont = [
+    ("Kasa ↔ gövde direği", "%s mm" % sayi(ge["kasa_direk_mm"], 2), "≥ %s mm" % sayi(ge["kasa_direk_sart"], 0), ge["kasa_direk_tamam"]),
+    ("Kasa ↔ göğüs bandı sağ / sol", "%s / %s mm" % (sayi(ge["kasa_gogus_sag_mm"], 2), sayi(ge["kasa_gogus_sol_mm"], 2)), "> 0",
+     min(ge["kasa_gogus_sag_mm"], ge["kasa_gogus_sol_mm"]) > 0),
+    ("Kasa ↔ çerçeve sağ / sol", "%s / %s mm" % tuple(sayi(v, 2) for v in ge["kasa_cerceve_mm"]), "> 0 (köşe takozu önü)", min(ge["kasa_cerceve_mm"]) > 0),
+    ("VESA taşıyıcı ↔ direk / kasa", "%s / %s mm" % (sayi(ge["tasiyici_direk_mm"], 2), sayi(ge["tasiyici_kasa_mm"], 2)), "0 (dayalı)",
+     ge["tasiyici_direk_mm"] < 0.01 and ge["tasiyici_kasa_mm"] < 0.01),
+    ("Çerçeve flanşı ↔ göğüs bandı sağ / sol", "%s / %s mm" % tuple(sayi(v, 2) for v in ge["cerceve_flans_kabuk_mm"]), "0 (dayalı)",
+     max(ge["cerceve_flans_kabuk_mm"]) < 0.01),
+    ("M6 cıvata ucu (taşıyıcı flanşı → direk kanalı)", "%s mm" % sayi(ge["m6_uc_yuzden_mm"], 1), "%s…%s mm" % tuple(sayi(v, 1) for v in ge["m6_uc_sinir"]),
+     ge["m6_tamam"]),
+    ("Aktif alana önden giren parça", "%d" % len(_on.get("aktif_alana_giren_parca", {})), "0", not _on.get("aktif_alana_giren_parca")),
+]
+ekr_ok = sum(1 for k in ge_kont if k[3])
 CG = d["agirlik_merkezi"]
 kut_baski = sum(b["kutle_g"] for b in baski)
 fil = sum(b["filament_g"] for b in baski)
@@ -163,21 +181,33 @@ bs_satir.append(["<b>Toplam (%d parça)</b>" % len(baski), "", "%d / %d" % (len(
                  "%d parça destekli" % len(desteksiz_degil), "<b>%s g</b><br><span class='not'>filament %s g</span>" % (sayi(kut_baski, 0), sayi(fil, 0)),
                  "<b>%s sa</b>" % sayi(sure, 0)])
 
-GB, EB = A.KABUK_GOVDE_BRAKET, A.KABUK_ETEK_BRAKET
 M6P = d["m6_vida_pay"]["kalemler"]      # kabuk_montaj.py: M6 vida ucu payi (somun ustu / kanal tabani)
 GB_M6 = [x for x in M6P if x["tip"] == "govde"]
 EB_M6 = [x for x in M6P if x["tip"] == "etek"]
-GB_M6_METIN = "%d× %s%s + %d× M6 çekiç somun" % (len(GB_M6), GB_M6[0]["vida"], " + %d× M6 pul" % len(GB_M6) if GB_M6[0]["pul"] else " (pulsuz)", len(GB_M6))
-EB_M6_METIN = "%d× %s%s + %d× M6 çekiç somun" % (len(EB_M6), EB_M6[0]["vida"], " + %d× M6 pul" % len(EB_M6) if EB_M6[0]["pul"] else " (pulsuz)", len(EB_M6))
+
+
+def eleman_metni(tip):
+    """kabuk-analiz.json 'baglanti' listesinden bu tipteki braketlerin baglanti elemanlari (adet x kalem)."""
+    say = Counter(e for b in d["baglanti"] if b["tip"] == tip for e in b["eleman"])
+    return " + ".join("%d× %s" % (n, k) for k, n in sorted(say.items(), key=lambda x: (-x[1], x[0])))
+
+
+def braket_yerleri(tip):
+    return sorted(set(b["ad"].split()[-1] for b in d["baglanti"] if b["tip"] == tip), key=lambda s_: float(s_.lstrip("yz").replace("+", "")))
+
+
+N_GB = sum(1 for b in d["baglanti"] if b["tip"] == "govde")
+N_EB = sum(1 for b in d["baglanti"] if b["tip"] == "etek")
+HP, HB = A.SES_USB["hoparlor"], A.SES_USB["hub"]
 bag_satir = [
     ["<b>Gövde kabuğu → gövde direği</b>",
-     esc("4 adet 3 mm Al U braket (y = 400 ve 780, sağ ve sol). A ayağı direğin ±X yüzüne dayanır, 2× M6 kanalda çekiç somuna; "
-         "C ayağı gövde yan duvarındaki Ø14 damla boss'a (M5 ısıl gömme somun) dayanır."),
-     esc(GB_M6_METIN + " · 4× M5×10 DIN 912 + 4× M5 pul + 4× M5 ısıl gömme somun"), "4"],
+     esc("%d adet 3 mm Al U braket (sağ ve sol; %s). Braket direğin yan kanalına 2× M6 ve çekiç somunla, kabuk yan duvarındaki "
+         "damla boss'a M5 perçin somunla bağlanır." % (N_GB, ", ".join(braket_yerleri("govde")))),
+     esc(eleman_metni("govde")), "%d" % N_GB],
     ["<b>Taban eteği → şase uzun rayları</b>",
-     esc("6 adet 2 mm Al L braket (V3 cover_bracket3): yatay ayak uzun rayın üst yüzünde (z = −175, 0, 175), aşağı bükülü uç eteğin "
-         "dik duvarındaki Ø9 boss'a (M3 ısıl gömme somun) dayanır. Etek braketlerinin bölgeleri tabandan kabuğa geçti."),
-     esc(EB_M6_METIN + " · 6× M3×8 DIN 912 + 6× M3 ısıl gömme somun"), "6"],
+     esc("%d adet 2 mm Al L braket (sağ ve sol; %s): yatay ayak uzun rayın üst kanalına M6 ve çekiç somunla, bükülü uç eteğin "
+         "dik duvarına M3 perçin somunla bağlanır." % (N_EB, ", ".join(braket_yerleri("etek")))),
+     esc(eleman_metni("etek")), "%d" % N_EB],
     ["<b>Baskı parçaları arası (bindirme)</b>",
      esc("Bir parçanın iç yarısı (1,5 mm) komşusunun dış yarısının arkasına 12 mm dil olarak uzanır. Dilde Ø8 damla boss + M3 ısıl gömme "
          "somun, komşunun dudağından M3 bombe başlı cıvata. Ust kapak ve etek ust plakasında alın birleşim (plakada dil havada kalırdı)." +
@@ -186,10 +216,22 @@ bag_satir = [
              sayi(d["bindirme_bosluk"]["tasarim_mm"], 2), "" if not d["bindirme_bosluk"]["ihlal"] else "; İHLAL %d" % len(d["bindirme_bosluk"]["ihlal"])))
           if d.get("bindirme_bosluk") and d["bindirme_bosluk"]["ciftler"] else "")),
      esc("%d× M3×6 ISO 7380 + %d× M3 ısıl gömme somun" % (len(d["vida_kontrol"]), len(d["vida_kontrol"]))), "%d" % len(d["vida_kontrol"])],
-    ["<b>Nextion → göğüs ön duvarı</b>",
-     esc("Cam ön yüzü duvar iç yüzüne %s mm; PCB ön yüzü 4 adet Ø8 boss'a dayanır (boss boyu cam + LCD = %s mm). Pencere = aktif alan + "
-         "%s mm her kenarda." % (sayi(d.get("bosluk", {}).get("cam_duvar_mm", 0.1), 1), sayi(A.NEXTION["kalinlik"] - A.NEXTION["pcb"][2], 1), sayi(A.NEXTION["pencere_pay"], 1))),
-     esc("4× M3×6 DIN 912 + 4× M3 ısıl gömme somun (PCB delikleri Ø3,2, 251,6 × 145,6)"), "4"],
+    ["<b>Göğüs ekranı (11,6\" kasalı) → göğüs bandı ve direk</b>",
+     esc("Kasa (%s × %s × %s mm, zarf) eğik göğüs düzlemindeki cebe gömülü (cep %s × %s); önde iki yarım baskı çerçeve göğüs bandına "
+         "cıvatalı, kasa önü çerçeve önünün %s mm gerisinde. Arkada VESA %s taşıyıcı: kasaya 4× M%d, direğin ön kanalına M%d ve çekiç somun." % (
+             sayi(GE["kasa"][0], 2), sayi(GE["kasa"][1], 2), sayi(GE["kasa"][2], 1), sayi(GE["cep"][0], 2), sayi(GE["cep"][1], 2),
+             sayi(GE["cam_geri"], 1), sayi(GE["vesa"], 0), GE["tasiyici"]["m4"][0], GE["tasiyici"]["m6"][0])),
+     esc("%d× çerçeve cıvatası + ısıl gömme somun · 4× M%d×%d (VESA) · M%d×%d + çekiç somun (direk)" % (
+         ge["vida_sayi"], GE["tasiyici"]["m4"][0], GE["tasiyici"]["m4"][1], GE["tasiyici"]["m6"][0], GE["tasiyici"]["m6"][1])), "%d" % ge["vida_sayi"]],
+    ["<b>Hoparlör → gövde orta bandı sağ (iç yüz)</b>",
+     esc("Hoparlör Ø%s × %s mm, orta bandın iç yüzünde (x %s, y %s), eksen duvara dik (K6 açık). Kap: ön halka + flanşlı arka tüp; "
+         "arkada baskı kelepçe (köprü + iki bacak) ve 1 mm köpük ped hoparlörü kaba bastırır (F1a P1.7). Kap, kelepçe ve hoparlör ölçüsü VARSAYIM." % (
+             sayi(HP["cap"], 0), sayi(HP["boy"], 0), sayi(HP["x"], 0), sayi(HP["y"], 1))),
+     esc("2× M3×20 DIN 912 (kelepçe + flanş) + 2× M3 ısıl gömme somun (orta bant boss'u) + köpük ped 20 × 10"), "2"],
+    ["<b>USB hub → üst arka servis kapağının içi</b>",
+     esc("4 portlu hub (%s g) üst arka servis kapağının iç yüzünde (y %s…%s), raylı yuvada köpük bantla; kapakla birlikte sökülür. "
+         "Ölçü satıcı sayfasından, port yönü VARSAYIM." % (sayi(HB["kutle_g"], 0), sayi(HB["y"][0], 0), sayi(HB["y"][1], 0))),
+     esc("1 mm çift taraflı köpük bant"), "–"],
 ]
 kont_satir = []
 for b in d["baglanti_kontrol"]:
@@ -219,84 +261,71 @@ for ad, t in tar.items():
 
 bol_satir = [[esc(s), esc(a), sayi(dd, 1) + " mm", esc(p)] for s, a, dd, p in d["bolge"]["en_yakin"]]
 
-# kutle ve AM degisimi
-mm_once, mm_sonra = m0["kutle_g"], m["kutle_g"]
-am0, am1 = m0["agirlik_merkezi"], m["agirlik_merkezi"]
+# kutle ve AM (guncel ana montaj ve kabuk modulu)
+am1 = m["agirlik_merkezi"]
 km_satir = [
-    ["Ana montaj (FreeCAD dosyasından)", "%d parça · %s g" % (m0["parca_sayisi"], sayi(mm_once, 1)),
-     "%d parça · %s g" % (m["parca_sayisi"], sayi(mm_sonra, 1)), "+%s g" % sayi(mm_sonra - mm_once, 1)],
-    ["Ağırlık merkezi (x; y; z) mm", "(%s; %s; %s)" % tuple(sayi(v, 1) for v in am0), "(%s; %s; %s)" % tuple(sayi(v, 1) for v in am1),
-     "y %s mm" % sayi(am1[1] - am0[1], 1)],
-    ["Kabuk modülü", "–", "%s g · AM (%s; %s; %s)" % ((sayi(d["kutle_g"], 1),) + tuple(sayi(v, 1) for v in CG)), ""],
-    ["carpisma.py toplamı", "%s g" % sayi(c0["kutle_toplam_g"], 1), "%s g" % sayi(c["kutle_toplam_g"], 1),
-     "AM y %s → %s" % (sayi(c0["agirlik_merkezi"][1], 1), sayi(c["agirlik_merkezi"][1], 1))],
+    ["Ana montaj (<code>montaj-analiz.json</code>)", "%d parça · <b>%s g</b>" % (m["parca_sayisi"], sayi(m["kutle_g"], 1)),
+     "(%s; %s; %s)" % tuple(sayi(v, 1) for v in am1)],
+    ["Kabuk modülü (<code>kabuk-analiz.json</code>)", "%d parça · <b>%s g</b>" % (d["parca_sayisi"], sayi(d["kutle_g"], 1)),
+     "(%s; %s; %s)" % tuple(sayi(v, 1) for v in CG)],
+    ["Çakışma taraması toplamı (<code>carpisma-sonuc.json</code>)", "%s g" % sayi(c["kutle_toplam_g"], 1),
+     "(%s; %s; %s)" % tuple(sayi(v, 1) for v in c["agirlik_merkezi"])],
 ]
 kg_satir = [[esc(k), sayi(v, 0) + " g"] for k, v in sorted(d["kutle_grup"].items(), key=lambda x: -x[1])]
 
 
-def reg_tablo(r):
-    out = []
-    for s in r["satirlar"]:
-        f = "–" if s["fark"] is None else ("0" if s["fark"] == 0 else "%.2e" % s["fark"])
-        out.append([esc(s["olcut"]), esc(s["once"]), esc(s["sonra"]), f, "<span class='ok'>aynı</span>" if s["ayni"] else NO.replace("HATA", "farklı")])
-    return out
-
-
+AK, AK2, OD = A.ARKA_KAPAK, A.M6["arka_kapak_ust"], A.OMUZ_DUVAR
+destekli = [b for b in baski if b["destek_sorun_sayi"]]
 KARAR = [
     "**Yazıcı Bambu Lab X2D (doğrulandı):** üretici teknik sayfasında ana nozül 256 × 256 × 260 mm, yardımcı ve çift nozül 235,5 × 256 × 256 mm, "
-    "aktif ısıtmalı hazne 65 °C. Parçalar tek malzeme PETG ile ana nozülde basılacak; her eksende 10 mm pay (tahmini) → 246 × 246 × 250. "
-    "Eski 250³ / PRINT_MAX 230 varsayımı kullanılmadı. Hiçbir parça destek istemediği için ikinci nozül (destek malzemesi) gerekmedi.",
-    "**Duvar 3,0 mm (V3 2,5):** bindirmede her yarı 1,5 mm = 0,42 mm çizgiyle 3–4 çevre; 2,5 mm'de 1,25 mm'lik dudak cıvata başı altında ezilir. "
-    "Eğilme rijitliği t³ ile %73 artar, kütle %20 artar. Eğik yüzlerde yatay ofset kullanıldı: normal kalınlık göğüs çıkıntısında (36°) 2,4 mm'ye iner.",
-    "**Kesit V3 elips → yuvarlatılmış dikdörtgen (V3 ölçüleriyle):** omuz arayüzü x = 147…152 düz duvar ve Ø84 delik ister; elips kesitte "
-    "bu yalnız tek çizgide düz. Köşe yarıçapı altta 40, göğüs ve omuzda 16 mm. Omuz bölgesinde yan duvar 5 mm (x 147…152, R58 ped), omuz "
-    "modülündeki referans duvarla birebir.",
-    "**Eğik göğüs, çıkıntılı çerçeve kutusu yerine:** V3'teki ekran kutusunun alt ve üst duvarları hangi yönde basılsa biri tavan kalıyordu. "
-    "Burada göğüs ön duvarı ekran düzleminde 15° eğik (cam düzlemi V3 ile aynı: merkez y 820, z 95); ekranın altında 36° eğimli bir çıkıntı "
-    "gövdeye iner. Desteksiz basılıyor, ekran duvarın arkasına oturuyor.",
-    "**Nextion NX1060P101_011 yuvası datasheet'ten:** PCB 258 × 152 × 1,6, cam 236,8 × 144,8, kalınlık 9,8, aktif alan 222,72 × 125,28, "
-    "delikler Ø3,2 / 251,6 × 145,6, 535 g. Pencere = aktif alan + 1,5 mm (tahmini). Konnektör (4 pin XH2.54) çizimdeki alt kenar ölçüsünden "
-    "−X ucunda kabul edildi; arkasında 30 mm kablo boşluğu ayrılmış bölge (`Nextion konnektor ve kablo boslugu`).",
-    "**Bölme ve dikiş yerleri:** gövde 4 yatay bant × sağ/sol + arka kapak (9), etek 3 bant × sağ/sol (6) = 15 baskı parçası. Yatay dikişler "
-    "y = 476,5 (alt gövde), 690 (göğüs çıkıntısının kırılma çizgisi), 883 (ekran penceresinin üst kenarı: pencere üstte köprü kalmasın diye). "
-    "Dikey dikiş x = 0 simetri çizgisi; etekte z = ±87,5 yan yüzlerde. Hepsi düz yüzlerde.",
-    "**Baskı yönleri:** gövde bantları dik (alt kenar tablada), omuz bandı yan yüzü (omuz duvarı) tablada, arka kapak dış yüzü tablada, "
-    "etek ters (üst plaka tablada). Boss'lar baskı yönünde 45° damla şekilli; kontrol katman katman (1 mm, 45° kuralı, 2 mm'den dar ve "
-    "15 mm'den kısa açıklık köprü sayıldı).",
-    "**İskelete bağlantı:** gövde 4 U braket ile direğe (direk yan kanalları y 400–450 ve 780–830 boş), etek 6 L braket ile uzun raylara "
-    "(V3'teki 4 yerine 6: her etek parçası bir brakete oturuyor). Gövde etek plakasından 1 mm yukarıda (y 263): yük etekten değil direkten.",
-    "**Etek köşe yarıçapı 15 (V3 25) ve derinlik 525 (V3 520):** V3 ölçüsünde teker köşesinde 7 mm, önde-arkada 10 mm kalıyordu. Şimdi "
-    "tekerin her yönünde 12 mm.",
-    "**Üst kapakta omuz yuvası erişim delikleri (Ø14, x = ±86):** ilk taramada omuz yuvasının üst M6 cıvatasının başı (y 981,6…987,6) "
-    "üst kapağa giriyordu (ev pozunda 214 mm³). Kapakta delik açıldı; cıvataya anahtar da buradan girer.",
-    "**Arka servis kapağı (160 × 190, 7 cıvata):** üst kenarı y = 690 dikişine alın dayanır, üç kenarında gövdenin iç yarısı 12 mm'lik "
-    "kenet (ledge) bırakır. Açık bırakıldığında direk, alt braketler ve kablolar görülür.",
+    "aktif ısıtmalı hazne 65 °C. Parçalar tek malzeme PETG (VESA taşıyıcı PETG-CF) ile ana nozülde basılacak; her eksende 10 mm pay (tahmini).",
+    "**Duvar %s mm:** bindirmede her yarı %s mm. Eğik yüzlerde yatay ofset kullanıldı; eğik göğüs duvarının normal kalınlığı daha incedir." % (
+        sayi(A.KABUK_T, 1), sayi(A.KABUK_T / 2, 2)),
+    "**Kesit:** yuvarlatılmış dikdörtgen, çizgisel loft (`arayuz.GOVDE_KESIT`). Omuz bölgesinde yan duvar %s mm düz (x %s…%s, R%s ped) ve Ø%s delik; "
+    "omuz modülündeki referans duvarla birebir." % (sayi(OD["x1"] - OD["x0"], 0), sayi(OD["x0"], 0), sayi(OD["x1"], 0), sayi(OD["ped_r"], 0), sayi(2 * OD["delik_r"], 0)),
+    "**1,58 m boyu:** gövde %s mm uzatıldı (UZAMA); araya sabit kesitli %d uzatma bandı girdi (%s mm her biri). Toplam boy %s mm (`lale158-kontrol.json`)." % (
+        sayi(A.UZAMA, 0), A.UZATMA_BANT, sayi(A.UZAMA / A.UZATMA_BANT, 1), sayi(A.BOY, 1)),
+    "**Bölme ve dikiş yerleri:** gövdede yatay dikişler y = %s; dikey dikiş x = 0 simetri çizgisi. Gövde %d, etek %d baskı parçası (servis kapakları dahil)." % (
+        ", ".join(sayi(v, 1).replace(",0", "") for v in A.GOVDE_DIKIS), sum(1 for b in baski if b["grup"] == "Govde kabugu"),
+        sum(1 for b in baski if b["grup"] == "Taban etegi")),
+    "**Eğik göğüs ve 11,6\" ekran:** göğüs ön duvarı %s° eğik düzlem (y %s…%s); kasalı ekran düzlemdeki cebe gömülü, iki yarım çerçeve ve "
+    "VESA taşıyıcıyla tutulur (yukarıdaki bağlantı tablosu ve göğüs ekranı kontrolleri)." % (
+        sayi(A.GOGUS_EGIM, 0), sayi(A.GOGUS_ALT_Y, 1), sayi(A.GOGUS_UST_Y, 1)),
+    "**Ses ve USB (yerleşim B + R1, 05.11.2026):** hoparlör gövde orta bandı sağ iç yüzünde, kap + kelepçeyle; USB hub üst arka servis kapağının "
+    "içinde. Ses yükseltici PAM8403 ve USB ses kartı kafada (sol duvar), kabukta değil (K16, 04.11.2026).",
+    "**Baskı yönleri:** gövde bantları dik (alt kenar tablada), omuz bandı ters (üst kapak tablada), servis kapakları dış yüzü tablada, "
+    "etek ters (üst plaka tablada). Boss'lar baskı yönünde 45° damla şekilli; kontrol katman katman (1 mm, 45° kuralı).",
+    "**İskelete bağlantı:** gövde %d U braket ile direğe, etek %d L braket ile uzun raylara. Teker ↔ etek en az %s mm." % (
+        N_GB, N_EB, sayi(d["bosluk"]["teker_etek_mm"], 1)),
+    "**Üst kapakta omuz yuvası erişim delikleri (Ø%s, x = ±%s):** omuz yuvasının üst M6 cıvatası başı için; anahtar da buradan girer. "
+    "Boyun açıklığı R%s." % (sayi(2 * A.UST_KAPAK_ERISIM["r"], 0), sayi(A.UST_KAPAK_ERISIM["x"], 0), sayi(A.BOYUN_ACIKLIK_R, 0)),
+    "**Servis kapakları:** arka servis kapağı %s × %s (y %s…%s), üst arka servis kapağı %s × %s (y %s…%s); üst kenarları dikişe alın dayanır." % (
+        sayi(2 * AK["x"], 0), sayi(AK["y1"] - AK["y0"], 0), sayi(AK["y0"], 0), sayi(AK["y1"], 0),
+        sayi(2 * AK2["x"], 0), sayi(AK2["y1"] - AK2["y0"], 0), sayi(AK2["y0"], 0), sayi(AK2["y1"], 0)),
 ]
 ACIK = [
-    "**Kol yana 0°'nin altına inerse kabuğa çarpar:** eklem aralığında (öne −45…135°, yana 0…120°) kabuk çakışması 0. Tarama aralığının dışındaki "
-    "yana −5…−20° pozlarında kol kabuğa çarpıyor (sağ %d, sol %d poz). Bunların %d'i yana −5°'de ve omuzun kendi parçalarına çarpmadığı pozlar "
-    "(kabuk kaynaklı); −10° ve altında omuz kendi rulman kapağına da çarpıyor. Servo sınırı yazılımda 0°'de tutulmalı." % (
-        len(kabuk_poz.get("omuz_sag", [])), len(kabuk_poz.get("omuz_sol", [])), len(kabuk_ek.get("omuz_sag", []))),
-    "**Nextion ölçüleri sahada doğrulanmalı:** konnektör konumu ve arka bileşen yüksekliği (6 mm) çizimden yorum; ekran gelince kumpasla "
-    "ölçülüp `arayuz.NEXTION` güncellenmeli. Dokunmatik tipi (C/R) kutudan doğrulanacak.",
-    "**Kütle, filament ve süre tahmini:** PETG 1,27 g/cm³ × %90 doluluk (3 mm duvar = 2 × 3 çevre + %15 dolgu), filament +%5 atık, süre 10 mm³/s "
-    "ortalama debiyle. Gerçek değerler Bambu Studio dilimlemesinden alınmalı.",
-    "**Isıl gömme somun ölçüleri tahmini** (`arayuz.INSERT`: M3 Ø4,6 × 5,7, M5 Ø7 × 7). Alınacak ürünün ölçüsüyle boss ve delik güncellenmeli.",
-    "**Bindirme cıvataları dışarıdan görünür** (bombe baş, 1,65 mm çıkıntı). Ekran üstündeki 883 dikişinde önde cıvata yok (yer Nextion "
-    "boss'larında); o dikiş arkadan 4 cıvata ve iki yandaki dille tutuluyor.",
-    "**Braket ayrıntıları tahmini:** Al sac kalınlığı (3 ve 2 mm), büküm yarıçapı modelde yok, M5 ve M3 kavrama boyları ısıl gömme somun boyuna göre.",
-    "**V3'teki hoparlör ızgarası** (göğüs altında, CHEST3_SPK) bu modülde yok; hoparlör yeri seçilince ön duvara eklenir.",
-    "**Kafa modülü** boyun açıklığına (üst kapakta R62) ve `Kafa pan servosu ve boyun` bölgesine uymalı (kabuk o bölgeye 5 mm). "
-    "**Taban modülü** sonar (3 adet) ve acil stop için yeni ayrılmış bölgelere uymalı; etek braketleri artık kabuk bölgesi.",
-    "**Montaj sırası (öneri):** etek parçaları birbirine cıvatalanır, raylardaki braketlere oturtulur; gövde braketleri direğe takılır; gövde "
-    "sağ yarısı (bantlar birbirine bağlı) braketlere, sonra sol yarı; Nextion göğüs boss'larına önceden takılır; son olarak arka kapak. "
-    "Sol yarının M5 cıvatalarına arka kapak açıklığından ulaşılır (tahmini, denenmeli).",
+    "**Kol yana alt sınırın altına inerse kabuğa çarpar:** eklem aralığında (%s) kabuk çakışması %d. Tarama aralığının dışındaki pozlarda kol kabuğa "
+    "çarpıyor (sağ %d, sol %d poz); bunların %d'i omuzun kendi parçalarına çarpmadığı pozlar (kabuk kaynaklı). Servo sınırı yazılımda tutulmalı. "
+    "Omuz bölümü 03.11.2026 koşusundan (yeniden tarama P2.2/P6)." % (
+        aralik_metni, sum(len(v) for v in kabuk_eklem.values()), len(kabuk_poz.get("omuz_sag", [])), len(kabuk_poz.get("omuz_sol", [])),
+        len(kabuk_ek.get("omuz_sag", []))),
+    "**Göğüs ekranı doğrulanacak:** kasa zarf modeli (arka yüz düz kabul; gerçek kasa kenara doğru eğimli, port girintisi var); port yeri fotoğraftan "
+    "tahmini; kütle %s g üretici sayfasındaki \"Actual Weight\" (kutu dahil olabilir); VESA delik derinliği doğrulanmadı." % sayi(GE["kutle_g"], 0),
+    "**Destek isteyen baskılar:** %s. Katman kontrolü kaba (1 mm katman, 45°); dilimleyicide yeniden bakılmalı." % (
+        ", ".join("%s (%d katman)" % (b["ad"], b["destek_sorun_sayi"]) for b in destekli) if destekli else "yok"),
+    "**Hoparlör, kap, kelepçe, köpük ped ve hub VARSAYIM:** ürünler elde yok (%s; hub: %s). Hoparlör ekseni K6'da açık." % (HP["durum"], HB["durum"]),
+    "**Kütle, filament ve süre tahmini:** PETG yoğunluğu × doluluk, filament +%5 atık, süre ortalama debiyle. Gerçek değerler dilimleyiciden alınmalı.",
+    "**Isıl gömme somun ve perçin somun ölçüleri tahmini** (`arayuz.INSERT`). Alınacak ürünün ölçüsüyle boss ve delik güncellenmeli.",
+    "**Bindirme cıvataları dışarıdan görünür** (bombe baş).",
+    "**Braket ayrıntıları tahmini:** Al sac kalınlığı (3 ve 2 mm), büküm yarıçapı modelde yok.",
+    "**Görseller 03.11.2026 kabuk koşusundan:** `gorsel/*.png` K23 ara çıktısı (çerçeve, hoparlör kelepçesi ve P1.7 öncesi); `kabuk_gorsel.py` "
+    "P6.1'de yeniden koşulacak. 125 cm ekran yuvasının iki eski görseli (`kabuk-nextion-on.png`, `kabuk-nextion-ic.png`) rapora alınmadı.",
 ]
 
 # ---------------------------------------------------------------- HTML
 H = []
 H.append("""<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kabuk Modülü V3</title><style>
+<title>Kabuk Modülü 1,58 m</title><style>
 :root{--bg:#f6f4ef;--card:#fff;--ink:#1d1f22;--mut:#666;--line:#e3e0d8;--acc:#7b8794;--acc2:#2f86d4;--ok:#2e8b57;--no:#c0392b}
 @media (prefers-color-scheme:dark){:root{--bg:#16171a;--card:#202226;--ink:#ececec;--mut:#9a9a9a;--line:#33363b}}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,Segoe UI,sans-serif}
@@ -316,40 +345,41 @@ ol li,ul li{margin:5px 0}code{background:rgba(127,127,127,.15);padding:1px 5px;b
 .ok{color:var(--ok);font-weight:600}.no{color:var(--no);font-weight:600}.wide{grid-column:1/-1}
 .not{color:var(--mut);font-size:13px}a{color:var(--acc2)}
 </style></head><body><main>""")
-H.append("<h1>Kabuk modülü (V3): gövde kabuğu + taban eteği</h1>")
+H.append("<h1>Kabuk modülü (1,58 m): gövde kabuğu + taban eteği</h1>")
 H.append(__import__("carpisma_kos").eskime_html())   # C6: carpisma-sonuc.json eskidiyse uyari kutusu (bos dize = guncel)
-H.append("<div class='sub'>FreeCAD 1.1 · <code>kabuk_montaj.py</code> · %d parça (%d baskı) · PETG %s mm duvar · göğüste Nextion NX1060P101_011 · "
-         "ölçüler <code>arayuz.py</code>'den (robot_cad V3 torso_shell3 / base_cover3) · yazıcı %s</div>" % (
-             d["parca_sayisi"], d["baski_sayisi"], sayi(A.KABUK_T, 1), esc(Y["model"])))
+H.append("<div class='sub'>FreeCAD 1.1 · <code>kabuk_montaj.py</code> · %d parça (%d baskı) · PETG %s mm duvar · boy %s mm · göğüste %s · "
+         "ölçüler <code>arayuz.py</code>'den · yazıcı %s</div>" % (
+             d["parca_sayisi"], d["baski_sayisi"], sayi(A.KABUK_T, 1), sayi(A.BOY, 0), esc(GE["model"]), esc(Y["model"])))
 kpi = [
     ("%d / %d" % (d["baski_sayisi"], d["parca_sayisi"]), "baskı parçası / toplam parça · hepsi geçerli, tek katı" if not d["gecersiz"] and not d["coklu_kati"] else "GEÇERSİZ PARÇA VAR"),
     ("%d" % len(d["cakisma"]), "kabuk içi çakışma (%d çift sınandı)" % d["cakisma_cift_sayisi"]),
     ("%d" % len(d["iskelet_cakisma"]), "kabuk ↔ iskelet çakışma · ayrılmış bölge ihlali %d" % len(d["bolge"]["ihlal"])),
     ("%d" % sum(len(v) for v in kabuk_eklem.values()), "kol ↔ kabuk çakışma, eklem aralığında (iki omuz, %d poz)" % poz_say),
     ("%s mm" % (sayi(min_bosluk, 1) if min_bosluk is not None else "–"), "en küçük kol-kabuk boşluğu (eklem aralığında)"),
-    ("%d / %d" % (len(baski) - len(sigmayan), len(baski)), "X2D'ye sığan parça (246 × 246 × 250) · desteksiz basılamayan %d" % len(desteksiz_degil)),
-    ("%d / %d" % (bag_ok, len(d["baglanti_kontrol"])), "iskelete bağlantı kontrolü · bindirme %d/%d, ekran %d/%d" % (vida_ok, len(d["vida_kontrol"]), ekr_ok, len(d["ekran_kontrol"]))),
-    ("%s kg" % sayi(d["kutle_g"] / 1000, 2), "kabuk kütlesi (baskı %s kg, Nextion 0,54) · AM yerden %s mm" % (sayi(kut_baski / 1000, 2), sayi(CG[1], 0))),
-    ("aynı" if ro["hepsi_ayni"] and ri["hepsi_ayni"] else "FARK", "omuz ve iskelet regresyonu (geometri değişmedi)"),
+    ("%d / %d" % (len(baski) - len(sigmayan), len(baski)), "X2D'ye sığan parça (%s × %s × %s) · desteksiz basılamayan %d" % (
+        sayi(UX, 0), sayi(UY, 0), sayi(UZ, 0), len(desteksiz_degil))),
+    ("%d / %d" % (bag_ok, len(d["baglanti_kontrol"])), "iskelete bağlantı kontrolü · bindirme %d/%d, göğüs ekranı %d/%d" % (
+        vida_ok, len(d["vida_kontrol"]), ekr_ok, len(ge_kont))),
+    ("%s kg" % sayi(d["kutle_g"] / 1000, 2), "kabuk kütlesi (baskı %s kg, göğüs ekranı %s kg) · AM yerden %s mm" % (
+        sayi(kut_baski / 1000, 2), sayi(GE["kutle_g"] / 1000, 2), sayi(CG[1], 0))),
 ]
 H.append("<div class='k'>" + "".join("<div class='kpi'><b>%s</b><span>%s</span></div>" % (a, esc(b)) for a, b in kpi) + "</div>")
 
 H.append("<h2>Görünümler</h2><div class='grid'>")
-for ad, cap, w in (("kabuk-izometrik.png", "İzometrik: kabuk, iskelet, iki omuz", ""), ("kabuk-on.png", "Önden", ""),
+for ad, cap, w in (("kabuk-izometrik.png", "İzometrik: kabuk, iskelet, iki omuz, göğüs ekranı", ""), ("kabuk-on.png", "Önden", ""),
                    ("kabuk-yan.png", "Yandan (+X)", ""),
                    ("kabuk-arka-kapak-acik.png", "Arkadan: servis kapağı açık (dışarı çekilmiş); direk ve alt braketler görünür", ""),
-                   ("kabuk-kesit.png", "Kesit x = 0: gövde, eğik göğüs, Nextion, direk, etek", ""),
-                   ("kabuk-kesit-gogus.png", "Kesit yakın: göğüs duvarı, cam, PCB, boss, dikişler", ""),
+                   ("kabuk-kesit.png", "Kesit x = 0: gövde, eğik göğüs, direk, etek", ""),
+                   ("kabuk-kesit-gogus.png", "Kesit yakın: gövde duvarı, boss'lar, dikişler", ""),
                    ("kabuk-patlatilmis.png", "Patlatılmış: her baskı parçası ayrı renk", "wide"),
                    ("kabuk-patlatilmis-on.png", "Patlatılmış, önden", ""),
-                   ("kabuk-nextion-on.png", "Nextion yuvası önden: pencere = aktif alan + 1,5 mm", ""),
-                   ("kabuk-nextion-ic.png", "Nextion yuvası içten (göğüs parçalarının ön yarısı, arkadan bakış): 4 boss, M3 cıvata, konnektör", ""),
-                   ("kabuk-omuz-duvari.png", "Omuz bölgesi: 5 mm düz yan duvar, Ø84 delik (kabuk yarı saydam)", ""),
-                   ("kabuk-baglanti-govde.png", "Gövde braketi (y 780): direğe 2× M6 + çekiç somun, gövde boss'una M5 (kabuk yarı saydam)", ""),
+                   ("kabuk-omuz-duvari.png", "Omuz bölgesi: düz yan duvar, omuz deliği (kabuk yarı saydam)", ""),
+                   ("kabuk-baglanti-govde.png", "Gövde braketi: direğe 2× M6 + çekiç somun, gövde boss'una M5 (kabuk yarı saydam)", ""),
                    ("kabuk-baglanti-etek.png", "Etek braketi: uzun ray üst kanalına M6, etek boss'una M3 (kabuk yarı saydam)", "")):
     if os.path.exists(os.path.join(G, ad)):
         H.append("<figure class='%s'><img src='%s' alt='%s'><figcaption>%s</figcaption></figure>" % (w, img64(ad), esc(cap), esc(cap)))
-H.append("</div>")
+H.append("</div><p class='not'>Görseller 03.11.2026 kabuk koşusundan (K23 ara çıktısı): çerçeve, hoparlör kelepçesi ve sonraki "
+         "değişiklikleri göstermez; <code>kabuk_gorsel.py</code> P6.1'de yeniden koşulacak.</p>")
 
 H.append("<h2>3D yazıcı</h2><div class='tw'>" + tablo(["", ""], yz_satir) + "</div>")
 H.append("<h2>Baskı parçaları</h2><div class='tw'>")
@@ -372,8 +402,11 @@ H.append("</div><p class='not'>Her braket: braket profile ve kabuk boss'una daya
              sayi(EB_M6[0]["uc_mm"], 1), sayi(min(x["somun_pay_mm"] for x in EB_M6), 1), sayi(min(x["taban_pay_mm"] for x in EB_M6), 1)))
 H.append("<h3>Bindirme cıvataları</h3><div class='tw'>")
 H.append(tablo(["Dikiş", "Adet", "Isıl gömme somun (dil)", "Cıvata (dudak)", "En kısa kavrama", "Dudak", "Sonuç"], vk_satir))
-H.append("</div><p class='not'>Cıvata başı dudağa dayalı, ısıl gömme somun boss'ta oturuyor, kavrama 3…5,7 mm, dudak ≥ 1,2 mm. Ekran: 4 cıvata, PCB "
-         "boss'lara dayalı (%d/%d), kavrama %s mm.</p>" % (ekr_ok, len(d["ekran_kontrol"]), sayi(d["ekran_kontrol"][0]["kavrama"], 1) if d["ekran_kontrol"] else "–"))
+H.append("</div><p class='not'>Cıvata başı dudağa dayalı, ısıl gömme somun boss'ta oturuyor, kavrama 3…5,7 mm, dudak ≥ 1,2 mm.</p>")
+H.append("<h3>Göğüs ekranı kontrolleri (<code>kabuk-analiz.json</code> → <code>gogus_ekrani</code>)</h3><div class='tw'>")
+H.append(tablo(["Kontrol", "Ölçülen", "Şart", "Sonuç"], [[esc(a), b, esc(c_), OK if ok else NO] for a, b, c_, ok in ge_kont]))
+H.append("</div><p class='not'>%s. Kasa ölçüsü üreticinin kasalı ekranı için zarf (%s); port girintisi modelde yok, port yeri fotoğraftan tahmini "
+         "(<code>arayuz.GOGUS_EKRAN['port']</code>: %s).</p>" % (esc(ge["not_"]), esc(GE["model"]), esc(GE["port"]["durum"])))
 
 H.append("<h2>Çakışma sonuçları</h2><ul>")
 H.append("<li>Kabuk içi: <b>%d çakışma</b> (%d parça, %d sınır kutusu kesişen çift gerçek kesişimle sınandı, eşik %s mm³).</li>" % (
@@ -386,25 +419,21 @@ H.append("<li>Modüller arası (<code>carpisma.py</code>, ev pozu): <b>%d çakı
     len(c["ev_pozu_cakisma"]), c["ev_pozu_kesisen_cift"]))
 H.append("<div class='tw'>" + tablo(["Omuz", "Taranan poz", "Kabuğa çarpan poz (tümü)", "Eklem aralığında", "Kabuk kaynaklı (omuz kendine çarpmıyor)",
                                      "En küçük kol-kabuk boşluğu (eklem aralığında)"], car_satir) + "</div>")
-H.append("<p class='not'>Tarama: öne-arka −60…180° (10°), yana −20…150° (5°), her omuz %d poz. Eklem aralığı öne −45…135°, yana 0…120°. "
-         "Kabuğa çarpan pozların hepsi yana 0°'nin altında: %s. Kabuk kaynaklı olanlar (omuzun kendi parçaları serbest) yalnız yana −5°: "
-         "orada kolun iç kenarı x = 152 düz duvarına giriyor (omuz modülündeki referans duvarla aynı sonuç). −10° ve altında omuz kendi rulman kapağına da çarpıyor.</p>" % (
-             list(tar.values())[0]["poz_sayisi"],
-             ", ".join(sorted(set("yana %d°" % p[1] for v in kabuk_poz.values() for p in v)))))
+H.append("<p class='not'>Tarama: %s; her omuz %d poz. Eklem aralığı %s. Kabuğa çarpan pozların yana açıları: %s. Omuz bölümü "
+         "03.11.2026 koşusundan (<code>carpisma-sonuc.json</code> <code>bolumler.omuz</code>); yeniden tarama P2.2/P6.</p>" % (
+             esc(list(tar.values())[0].get("aciklama", "")), list(tar.values())[0]["poz_sayisi"], aralik_metni,
+             ", ".join(sorted(set("%d°" % p[1] for v in kabuk_poz.values() for p in v), key=lambda x: int(x[:-1])))))
 H.append("<h3>Kabuğun ayrılmış bölgelere en yakın noktası</h3><div class='tw'>" + tablo(["Sahip", "Bölge", "En küçük boşluk", "Kabuk parçası"], bol_satir) + "</div>")
 
 H.append("<h2>Kütle ve ağırlık merkezi</h2><div class='grid'><div>")
-H.append(tablo(["", "Kabuktan önce", "Güncel ana montaj (%s)" % ", ".join(x["ad"] for x in m["moduller"]), "Değişim"], km_satir))
+H.append(tablo(["", "Parça · kütle", "AM (x; y; z) mm"], km_satir))
 H.append("</div><div>" + tablo(["Grup", "Kütle"], kg_satir, "sayi") + "</div></div>")
-H.append("<p class='not'>Ana montaj: %s. Kütle karşılaştırması %s g fark (analiz JSON'ları 0,1 g yuvarlı).</p>" % (
-    esc(m["karsilastirma"]["parca"]["formul"]), sayi(m["karsilastirma"]["kutle"]["fark_analiz"], 2)))
+H.append("<p class='not'>Ana montaj modülleri: %s. Parça: %s. Kütle karşılaştırması %s g fark (analiz JSON'ları 0,1 g yuvarlı). "
+         "Çakışma taraması toplamı birleştirilen bölüm koşularından; ana montajdan farklıysa tarama, son kütle değişikliğinden önce koşulmuştur.</p>" % (
+    esc(", ".join(x["ad"] for x in m["moduller"])), esc(m["karsilastirma"]["parca"]["formul"]), sayi(m["karsilastirma"]["kutle"]["fark_analiz"], 2)))
 
-H.append("<h2>Regresyon: omuz ve iskelet değişmedi</h2><h3>Omuz (<code>omuz/omuz_regresyon.py</code>)</h3><div class='tw'>")
-H.append(tablo(["Ölçüt", "Önce", "Sonra", "En büyük fark", "Sonuç"], reg_tablo(ro)) + "</div>")
-H.append("<h3>İskelet (<code>iskelet/iskelet_regresyon.py</code>, yeni)</h3><div class='tw'>")
-H.append(tablo(["Ölçüt", "Önce", "Sonra", "En büyük fark", "Sonuç"], reg_tablo(ri)) + "</div>")
-H.append("<p class='not'>“Önce”: kabuk çalışmasından önce, değişmemiş <code>arayuz.py</code> ile alınan özet. “Sonra”: kabuk bölümleri eklendikten "
-         "sonra. Omuz taramasındaki çakışan pozlar (yana −20…−5°) omuzun kendi referans duvarına ve parçalarınadır, öncekiyle aynı.</p>")
+H.append("<p class='not'>Robotun korunan değerleri (boy, çakışmalar, rampa, tilt/pan payı, mikrofon–hoparlör, SY8205): "
+         "<code>planlama/d158/regresyon.py</code>.</p>")
 
 H.append("<h2>Kararlar</h2><ul>" + "".join("<li>%s</li>" % esc(s) for s in KARAR) + "</ul>")
 H.append("<h2>Açık işler ve varsayımlar</h2><ul>" + "".join("<li>%s</li>" % esc(s) for s in ACIK) + "</ul>")
@@ -413,7 +442,7 @@ H.append("<h2>Dosyalar</h2><ul>"
          "<code>kabuk-analiz.json</code> · <code>gorsel/</code></li>"
          "<li><code>kabuk_lib.py</code> (kesit, zarf, damla boss, ISO 7380) · <code>kabuk_parcalar.py</code> · <code>kabuk_montaj.py</code> "
          "(kontroller, baskı analizi, kayıt) · <code>kabuk_gorsel.py</code> · <code>kabuk_rapor.py</code></li>"
-         "<li>Ortak: <code>../arayuz.py</code> (YAZICI, KABUK_*, GOVDE_KESIT, ETEK_KESIT, NEXTION, yeni bölgeler) · <code>../carpisma.py</code> · "
+         "<li>Ortak: <code>../arayuz.py</code> (YAZICI, KABUK_*, GOVDE_KESIT, ETEK_KESIT, GOGUS_EKRAN, SES_USB, bölgeler) · <code>../carpisma.py</code> · "
          "<code>../montaj/moduller.py</code></li></ul>" % d["step_kati"])
 H.append("</main></body></html>")
 open(os.path.join(HERE, "rapor.html"), "w", encoding="utf-8").write("\n".join(H))

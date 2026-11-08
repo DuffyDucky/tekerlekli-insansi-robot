@@ -329,15 +329,35 @@ def baski_analiz(ad, sh, yukari):
     oran = float(alan[cik].sum() / alan.sum())
     # katman katman destek kontrolu (1 mm katman, 45 derece -> katman basina 1 mm tasma serbest)
     sorun = []
+    kaydir = []          # F1b P1.5: acik tel yuzunden kaydirilarak kesilen katmanlar (z, dz)
     onceki = None
     n_kat = int((zmax - zmin) // 1.0)
     for kk in range(n_kat):
         z = zmin + 0.5 + kk * 1.0
-        try:
-            ws = s.slice(V(0, 0, 1), z)
-            yuz = Part.makeFace(ws, "Part::FaceMakerBullseye") if ws else None
-        except Exception:
-            yuz = None
+        # F1b P1.5 (08.11.2026): OCC kesiti govde bantlarinda 16 katmanda acik tel veriyordu (uclari ust uste ama kapali sayilmayan tel
+        # ya da 6,2 / 47 mm eksik kenarli tel; kok neden: kesit duzlemi yatay eksenli delik silindirinin tepesine / dibine tam teget:
+        # R 2,0 delik eksen +-2 mm, R 5,25 havsa dibi; 0,05 mm kaydirma bu tegetligi kaldirir; F1b-kontrol). makeFace bunlarda "Wire is not closed" atip
+        # katmani (ve sonrakinin kontrolunu) atliyordu. Simdi teller kapali degilse makeFace cagrilmaz; duzlem 0,05 / 0,1 / 0,25 mm
+        # kaydirilip yeniden kesilir, yuz katman duzlemine geri tasinir (es duzlem kesimi bozulmasin). Kapanmazsa sorun olarak kalir.
+        yuz = None
+        for _dz in (0.0, 0.05, -0.05, 0.1, -0.1, 0.25, -0.25):
+            try:
+                ws = s.slice(V(0, 0, 1), z + _dz)
+            except Exception:
+                ws = None
+            if not ws:
+                break
+            if all(w.isClosed() for w in ws):
+                try:
+                    yuz = Part.makeFace(ws, "Part::FaceMakerBullseye")
+                except Exception:
+                    yuz = None
+                if yuz is not None and _dz != 0.0:
+                    yuz.translate(V(0, 0, -_dz))
+                    kaydir.append((round(z - zmin, 1), _dz))
+                break
+        else:
+            sorun.append(dict(z=round(z - zmin, 1), hata="kesit teli kapanmadi (z +-0,25 mm)"))
         if yuz is not None and onceki is not None:
             acik, hata = None, None
             # Y2a (29 Ekim 2026): OCC makeOffset2D bazen tek katmanda "result of offsetting is null" veriyor (1650'de orta bant sag
@@ -379,7 +399,7 @@ def baski_analiz(ad, sh, yukari):
     return dict(ad=ad, olcu=[round(en[1], 1), round(en[2], 1), round(zmax - zmin, 1)], tabla_aci=en[0], sigar=bool(sigar),
                 sigar_cift=bool(sigar_cift), sigar_okul=bool(sigar_okul), cikinti_orani=round(oran, 4), cikinti_alan_cm2=round(float(alan[cik].sum()) / 100, 1),
                 yuzey_cm2=round(float(alan.sum()) / 100, 1), destek_sorun=sorun[:20], destek_sorun_sayi=len(sorun),
-                desteksiz=len(sorun) == 0, hacim_cm3=round(hac / 1000, 1), kutle_g=round(kutle, 0),
+                desteksiz=len(sorun) == 0, kesit_kaydirma=kaydir, hacim_cm3=round(hac / 1000, 1), kutle_g=round(kutle, 0),
                 filament_g=round(kutle * 1.05, 0), sure_saat=round(hac * A.KABUK_DOLULUK / A.PETG_HACIM_HIZI / 3600, 1),
                 katman=n_kat)
 
