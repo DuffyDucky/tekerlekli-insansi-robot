@@ -1,0 +1,258 @@
+{
+ "aciklama": "Kabul edilmiş taban: korunan değerler (planlama/dongu-158.md bölüm 1). Yalnız çıkış 0 olan koşu günceller. Üreten: planlama/d158/regresyon.py",
+ "tarih": "2026-11-08T20:20:13+03:00",
+ "cikis_kodu": 0,
+ "degerler": {
+  "boy_mm": {
+   "etiket": "Toplam boy, mm",
+   "kaynak": {
+    "dosya": "tasarim/freecad/lale158/lale158-kontrol.json",
+    "anahtar": "toplam_boy_mm",
+    "sha256_12": "d8a141db0960"
+   },
+   "yon": "esit",
+   "esik": 1580.0,
+   "tol": 0.05,
+   "deger": 1580.0,
+   "esik_durumu": "sağlıyor"
+  },
+  "cakisma_kafa_ici": {
+   "etiket": "Çakışma, kafa içi",
+   "kaynak": {
+    "dosya": "tasarim/freecad/kafa/kafa-analiz.json",
+    "anahtar": "statik",
+    "sha256_12": "ad17cd1aba34",
+    "not_": "liste uzunluğu (çakışan çift sayısı)"
+   },
+   "yon": "kucuk_iyi",
+   "esik": 0.0,
+   "deger": 0.0,
+   "esik_durumu": "sağlıyor"
+  },
+  "cakisma_kabuk_ici": {
+   "etiket": "Çakışma, kabuk içi",
+   "kaynak": {
+    "dosya": "tasarim/freecad/kabuk/kabuk-analiz.json",
+    "anahtar": "cakisma",
+    "sha256_12": "9b60c721d717",
+    "not_": "liste uzunluğu (çakışan çift sayısı)"
+   },
+   "yon": "kucuk_iyi",
+   "esik": 0.0,
+   "deger": 0.0,
+   "esik_durumu": "sağlıyor"
+  },
+  "cakisma_kabuk_x_iskelet": {
+   "etiket": "Çakışma, kabuk × iskelet",
+   "kaynak": {
+    "dosya": "tasarim/freecad/kabuk/kabuk-analiz.json",
+    "anahtar": "iskelet_cakisma",
+    "sha256_12": "9b60c721d717",
+    "not_": "liste uzunluğu (çakışan çift sayısı)"
+   },
+   "yon": "kucuk_iyi",
+   "esik": 0.0,
+   "deger": 0.0,
+   "esik_durumu": "sağlıyor"
+  },
+  "cakisma_ev_pozu": {
+   "etiket": "Çakışma, ev pozu (tam model)",
+   "kaynak": {
+    "dosya": "tasarim/freecad/carpisma-sonuc.json",
+    "anahtar": "ev_pozu_cakisma",
+    "sha256_12": "cdf7498cfd97",
+    "not_": "liste uzunluğu (çakışan çift sayısı)"
+   },
+   "yon": "kucuk_iyi",
+   "esik": 0.0,
+   "deger": 0.0,
+   "esik_durumu": "sağlıyor"
+  },
+  "rampa_yuksuz": {
+   "etiket": "Devrilme payı, yüksüz, rampa 5° (ızgara en kötü)",
+   "kaynak": {
+    "dosya": "tasarim/freecad/lale158/kafa-yerlesim/uygulama-ivme.json",
+    "anahtar": "izgara_yuk_0g.a_sinir_pay15.rampa5_* (en küçük)",
+    "sha256_12": "bf560c713fc1",
+    "not_": "rampa5_* en küçüğü: rampa5_geri"
+   },
+   "yon": "buyuk_iyi",
+   "esik": 1.5,
+   "deger": 1.517,
+   "esik_durumu": "sağlıyor"
+  },
+  "tilt_payi": {
+   "etiket": "Tilt servo payı, ±15",
+   "kaynak": {
+    "dosya": "tasarim/freecad/kafa/kafa-analiz.json",
+    "anahtar": "tork.tilt.pay_tilt15",
+    "sha256_12": "ad17cd1aba34"
+   },
+   "yon": "buyuk_iyi",
+   "esik": 3.0,
+   "deger": 3.64,
+   "esik_durumu": "sağlıyor"
+  },
+  "pan_payi": {
+   "etiket": "Pan servo payı",
+   "kaynak": {
+    "dosya": "tasarim/freecad/kafa/kafa-analiz.json",
+    "anahtar": "tork.pan.pay_iki_hane",
+    "sha256_12": "ad17cd1aba34"
+   },
+   "yon": "buyuk_iyi",
+   "esik": 2.0,
+   "deger": 2.21,
+   "esik_durumu": "sağlıyor"
+  },
+  "mik_hoparlor_mm": {
+   "etiket": "Mikrofon-hoparlör, tüm pozlarda en az, mm",
+   "kaynak": {
+    "dosya": "tasarim/freecad/lale158/kafa-yerlesim/uygulama-olcum.json",
+    "anahtar": "mic_hoparlor.poz_min_mm",
+    "sha256_12": "04add25b311f"
+   },
+   "yon": "buyuk_iyi",
+   "esik": 400.0,
+   "deger": 574.3,
+   "esik_durumu": "sağlıyor"
+  },
+  "sy8205_x_usb_mm3": {
+   "etiket": "SY8205 × kafa kabloları (USB dahil, 13 kablo) kesişimi, mm³",
+   "kaynak": {
+    "dosya": "tasarim/freecad/lale158/kafa-yerlesim/uygulama-olcum.json",
+    "anahtar": "kablo_sy8205.*.sy8205_kesisim_mm3 + kafa_ici_qled_kablo.*.sy8205_kesisim_mm3",
+    "sha256_12": "04add25b311f",
+    "not_": "13 kablonun sy8205_kesisim_mm3 toplamı"
+   },
+   "yon": "kucuk_iyi",
+   "esik": 0.0,
+   "deger": 0.0,
+   "esik_durumu": "sağlıyor"
+  }
+ },
+ "karsilastirma": [
+  {
+   "ad": "boy_mm",
+   "onceki": 1580.0,
+   "simdi": 1580.0,
+   "durum": "aynı"
+  },
+  {
+   "ad": "cakisma_kafa_ici",
+   "onceki": 0.0,
+   "simdi": 0.0,
+   "durum": "aynı"
+  },
+  {
+   "ad": "cakisma_kabuk_ici",
+   "onceki": 0.0,
+   "simdi": 0.0,
+   "durum": "aynı"
+  },
+  {
+   "ad": "cakisma_kabuk_x_iskelet",
+   "onceki": 0.0,
+   "simdi": 0.0,
+   "durum": "aynı"
+  },
+  {
+   "ad": "cakisma_ev_pozu",
+   "onceki": 0.0,
+   "simdi": 0.0,
+   "durum": "aynı"
+  },
+  {
+   "ad": "rampa_yuksuz",
+   "onceki": 1.517,
+   "simdi": 1.517,
+   "durum": "aynı"
+  },
+  {
+   "ad": "tilt_payi",
+   "onceki": 3.64,
+   "simdi": 3.64,
+   "durum": "aynı"
+  },
+  {
+   "ad": "pan_payi",
+   "onceki": 2.21,
+   "simdi": 2.21,
+   "durum": "aynı"
+  },
+  {
+   "ad": "mik_hoparlor_mm",
+   "onceki": 574.3,
+   "simdi": 574.3,
+   "durum": "aynı"
+  },
+  {
+   "ad": "sy8205_x_usb_mm3",
+   "onceki": 0.0,
+   "simdi": 0.0,
+   "durum": "aynı"
+  }
+ ],
+ "onceki_tarih": "2026-11-08T20:15:20+03:00",
+ "kotulesen": [],
+ "esik_disi": [],
+ "kaynak_yok": [],
+ "bilgi": {
+  "carpisma_sonuc": {
+   "kaynak": "tasarim/freecad/carpisma-sonuc.json : tek_kosu, birlestirme_notu, bolumler.*.kosu",
+   "tek_kosu": false,
+   "birlestirme_notu": "2026-11-05: EKSIK / KARISIK birlestirme: eksik bolum yok; kosu kimlikleri ['20261103-215611', '20261105-185759']; kaynak ayni: False. Tam sonuc icin 'python carpisma_kos.py' ile tum bolumleri yeniden kos.",
+   "kosular": [
+    "20261103-215611",
+    "20261105-185759"
+   ]
+  }
+ },
+ "gecmis": [
+  {
+   "tarih": "2026-11-08T19:55:31+03:00",
+   "degerler": {
+    "boy_mm": 1580.0,
+    "cakisma_kafa_ici": 0.0,
+    "cakisma_kabuk_ici": 0.0,
+    "cakisma_kabuk_x_iskelet": 0.0,
+    "cakisma_ev_pozu": 0.0,
+    "rampa_yuksuz": 1.517,
+    "tilt_payi": 3.64,
+    "pan_payi": 2.21,
+    "mik_hoparlor_mm": 574.3,
+    "sy8205_x_usb_mm3": 0.0
+   }
+  },
+  {
+   "tarih": "2026-11-08T19:55:40+03:00",
+   "degerler": {
+    "boy_mm": 1580.0,
+    "cakisma_kafa_ici": 0.0,
+    "cakisma_kabuk_ici": 0.0,
+    "cakisma_kabuk_x_iskelet": 0.0,
+    "cakisma_ev_pozu": 0.0,
+    "rampa_yuksuz": 1.517,
+    "tilt_payi": 3.64,
+    "pan_payi": 2.21,
+    "mik_hoparlor_mm": 574.3,
+    "sy8205_x_usb_mm3": 0.0
+   }
+  },
+  {
+   "tarih": "2026-11-08T20:15:20+03:00",
+   "degerler": {
+    "boy_mm": 1580.0,
+    "cakisma_kafa_ici": 0.0,
+    "cakisma_kabuk_ici": 0.0,
+    "cakisma_kabuk_x_iskelet": 0.0,
+    "cakisma_ev_pozu": 0.0,
+    "rampa_yuksuz": 1.517,
+    "tilt_payi": 3.64,
+    "pan_payi": 2.21,
+    "mik_hoparlor_mm": 574.3,
+    "sy8205_x_usb_mm3": 0.0
+   }
+  }
+ ]
+}
