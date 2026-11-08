@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F1b Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F1b: gövde tutarlılığı (P1.1, P1.4, P1.5)</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 09.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>F1b-brief.md</code>, <code>F1b-gunluk.md</code>, <code>F1b-kontrol.md</code>, JSON çıktıları (aşağıda anahtarlarıyla)</p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">Bağımsız kontrol</div><div class="v"><span class="tag wait">KOŞULLU GEÇER</span></div><div class="d">P1.1 ve P1.5 geçti; P1.4 girinti varsayımına bağlı (🟡); 2 koşul kapandı</div></div>
+  <div class="card"><div class="k">Yüksüz rampa payı</div><div class="v">1,519</div><div class="d">Akü 3,0 kg ile 1,517'den; eşik ≥ 1,5 sağlanıyor</div></div>
+  <div class="card"><div class="k">Göğüs kabloları, bölge dışı</div><div class="v">0 mm³</div><div class="d">Uç bölgesi içi hacim girinti varsayımıyla 0 sayılıyor; ekran gelince yeniden ölçülecek</div></div>
+  <div class="card"><div class="k">"Wire is not closed"</div><div class="v">16 → 0</div><div class="d">Kesit düzlemi deliğe teğetti; 0,05 mm kaydırma</div></div>
+  <div class="card"><div class="k">Regresyon</div><div class="v"><span class="tag ok">10/10 aynı</span></div><div class="d">Normal mod, çıkış 0 (09.11 02:17:55)</div></div>
+</div>
+
+<p class="note">Sayılar A ve B'nin raporlarından değil, C'nin JSON okumasından: <code>taban-analiz.json</code>, <code>montaj-analiz.json</code>,
+<code>uygulama-ivme.json</code>, <code>planlama/y2/Y2b-ivme.json</code>, <code>lale158-kontrol.json</code>, <code>kabuk-analiz.json</code>,
+<code>carpisma-sonuc.json</code> ve <code>regresyon.py</code> çıktısı. Hepsi A'nın günlüğü ve B'nin kontrolüyle aynı. Bu adımda FreeCAD açılmadı;
+<code>carpisma_kos.py kontrol</code> ve <code>regresyon.py</code> yalnız dosya okur.</p>
+
+<h2>Paketler ve sonuçlar</h2>
+<div class="tbl"><table>
+<thead><tr><th>Paket</th><th>İş</th><th>Sonuç (kaynak)</th><th>Karar</th></tr></thead>
+<tbody>
+<tr><td class="kod">P1.1</td><td>Akü 2,8 → 3,0 kg (Victron BAT512020705)</td>
+<td><code>arayuz.py</code> <code>TABAN["aku"]["kutle_g"]</code> 2800 → 3000; ölçü ve yer aynı. Kaynak: <code>maliyet.json:82</code> ve <code>06-aku-secimi.md:119</code> (üretici datasheet); malzeme listesi v4'te kütle sütunu yok. Taban, montaj, ivme ve <code>Y2b-ivme</code> yeniden üretildi.</td>
+<td><span class="tag ok">geçti</span></td></tr>
+<tr><td class="kod">P1.4</td><td>Göğüs kablo tüpleri × göğüs ekranı kasası</td>
+<td>Kasa ∩ tüp hacmi port uç bölgesi içi (<code>kablo_tup_uc_temas</code>) ve dışı (<code>kablo_tup_cakisma</code>) olarak ayrıldı. Bölge dışı 0. Uç bölgesinin yaklaşık yarısı, tüpün modelde olmayan port girintisine inişi.</td>
+<td><span class="tag wait">🟡 girinti varsayımıyla 0</span></td></tr>
+<tr><td class="kod">P1.5</td><td>Kabuk "Wire is not closed" ve <code>kabuk_rapor.py</code></td>
+<td>Log 16 → 0; 8 parçada 16 katman +0,05 mm kaydırılarak kesiliyor (<code>baski[].kesit_kaydirma</code>). Kütle, AM, çakışma, destek sonuçları aynı. <code>kabuk/rapor.html</code> 1,58 m ve PAM8403 düzenine göre yeniden üretildi.</td>
+<td><span class="tag ok">geçti</span></td></tr>
+<tr><td class="kod">Tarama</td><td>8 bölüm (omuz hariç)</td>
+<td><code>carpisma-sonuc.json</code>: ev pozu çakışma 0 (819 kesişen çift), toplam 364, eklem aralığında 0; dokuz bölüm "tamam"; eskiyen yalnız omuz (P6).</td>
+<td><span class="tag ok">temiz</span></td></tr>
+</tbody>
+</table></div>
+
+<h2>P1.1: akü 3,0 kg, öncesi ve sonrası</h2>
+<div class="tbl"><table>
+<thead><tr><th>Değer (JSON : anahtar)</th><th>Önce</th><th>Sonra</th></tr></thead>
+<tbody>
+<tr><td>Akü parçası (<code>taban-analiz.json</code>)</td><td class="n">2.800,0 g</td><td class="n">3.000,0 g</td></tr>
+<tr><td>Taban modülü (<code>kutle_g</code> / <code>kutle_payli_g</code>)</td><td class="n">7.909,8 / 8.309,8 g</td><td class="n">8.109,8 / 8.509,8 g</td></tr>
+<tr><td>Ana montaj (<code>montaj-analiz.json : kutle_g</code>)</td><td class="n">25.515,59 g</td><td class="n">25.715,59 g</td></tr>
+<tr><td>Ana montaj AM (x; y; z)</td><td class="n">(−0,026; 531,557; −8,377)</td><td class="n">(−0,026; 528,457; −9,256)</td></tr>
+<tr><td>Robot, ev pozu, kablo payı dahil (<code>uygulama-ivme.json : ev.kutle_g</code>)</td><td class="n">25.915,6 g</td><td class="n">26.115,6 g</td></tr>
+<tr><td>AM yüksekliği, ev (<code>ev.am[1]</code>)</td><td class="n">525,71 mm</td><td class="n">522,71 mm</td></tr>
+<tr><td>AM z, ev (<code>ev.am[2]</code>)</td><td class="n">−9,17</td><td class="n">−10,03 (0,86 mm arkaya)</td></tr>
+<tr><td>Statik devrilme açısı, ev: ileri / geri / yan (<code>robot.pozlar[0].duz</code>)</td><td class="n">20,3 / 18,5 / 22,3°</td><td class="n">20,5 / 18,5 / 22,5°</td></tr>
+<tr><td>Statik devrilme, kollar geride (S1 −45)</td><td class="n">20,8 / 17,8 / 22,2°</td><td class="n">20,9 / 17,8 / 22,4°</td></tr>
+<tr><td>Statik devrilme, kollar önde + 0,5 kg</td><td class="n">16,9 / 19,6 / 21,0°</td><td class="n">17,1 / 19,6 / 21,2°</td></tr>
+<tr><td>Devrilme ivmesi, düz: ileri / geri / yan (<code>ev.duz</code>)</td><td class="n">3,623 / 3,281 / 4,030 m/s²</td><td class="n">3,660 / 3,284 / 4,053 m/s²</td></tr>
+<tr><td>Devrilme ivmesi, rampa 5° (<code>ev.rampa5</code>)</td><td class="n">2,755 / 2,414 / 3,160 m/s²</td><td class="n">2,791 / 2,416 / 3,183 m/s²</td></tr>
+<tr><td><b>Yüksüz rampa payı</b> (<code>izgara_yuk_0g.a_sinir_pay15.rampa5_geri</code>)</td><td class="n">1,517</td><td class="n"><b>1,519</b> <span class="tag ok">≥ 1,5</span></td></tr>
+<tr><td>Rampa 100 g / 500 g</td><td class="n">1,477 / 1,327</td><td class="n">1,479 / 1,329 (K3'te zaten açık)</td></tr>
+<tr><td>Fren 1,8 m/s² düz payı 0 / 100 / 500 g (<code>fren_pay.duz_min</code>)</td><td class="n">1,746 / 1,712 / 1,587</td><td class="n">1,748 / 1,714 / 1,589</td></tr>
+</tbody>
+</table></div>
+<p>Akü taban arkasında ve alçakta (y ≈ 133, z ≈ −121). +200 g ağırlık merkezini 3,0 mm indirdi (iyi), 0,86 mm arkaya aldı ("geri" devrilmesi için kötü). İki etki neredeyse dengelendi: rampa5_geri +0,002; ileri ve yan biraz iyileşti. Karar kuyruğuna yeni madde gerekmedi.</p>
+<div class="oneri"><b><code>Y2b-ivme.json</code> neden 1,564 → 1,519 (−0,045)?</b> Bu farkın yalnız <b>+0,002</b>'si aküden. Kalan <b>−0,047</b>, 03.11 ara çıktısının eski modelinden: o dosya 25.467,9 g ve AM y 510,42 ile hesaplanmıştı; P1.1 öncesi güncel model 25.915,6 g ve AM y 525,71 (+447,7 g, AM 15,3 mm yukarı). Yeni <code>Y2b-ivme.json</code>, <code>uygulama-ivme.json</code> ile anahtar anahtar aynı (ev 26.115,6 g, rampa 1,519). K23'e "P1.1 güncel modelle yeniden üretti" notu düşüldü; dosya bu kez commit'e girdi.</div>
+
+<h2>P1.4: göğüs kablo tüpleri × ekran kasası</h2>
+<p>Üç kablonun son iki segmenti: x −128'de arkadan dikey iniş (z −43,5 → −19,5), sonra port duvarına 18 mm yatay (x −128 → −110). Kasa modelde düz bir kutu; port girintisi yok. Port yeri (x −110, satır ±33) fotoğraftan tahmin. B, uç bölgesindeki hacmi ikiye ayırdı: tüpün kasanın arka yüzünü delip 12 mm içeri inmesi (<b>girinti inişi</b>) ve bükümden sonraki yatay segment ile fiş küresi (<b>fiş ucu</b>).</p>
+<div class="tbl"><table>
+<thead><tr><th>Kablo (Ø)</th><th>Toplam uç hacmi<br><code>kablo_tup_uc_temas</code></th><th>Girinti inişi</th><th>Fiş ucu</th><th>Bölge dışı<br><code>kablo_tup_cakisma</code></th><th>Bölge dışı tüp → kasa</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td class="kod">HDMI (6)</td><td class="n">897,1 mm³</td><td class="n">416,4 mm³</td><td class="n">480,7 mm³</td><td class="n">0</td><td class="n">13,61 mm</td><td><span class="tag wait">🟡</span></td></tr>
+<tr><td class="kod">12 V (5)</td><td class="n">617,3 mm³</td><td class="n">280,2 mm³</td><td class="n">337,1 mm³</td><td class="n">0</td><td class="n">3,64 mm</td><td><span class="tag wait">🟡</span></td></tr>
+<tr><td class="kod">USB dokunmatik (4)</td><td class="n">391,5 mm³</td><td class="n">173,6 mm³</td><td class="n">217,8 mm³</td><td class="n">0</td><td class="n">14,81 mm</td><td><span class="tag wait">🟡</span></td></tr>
+</tbody>
+</table></div>
+<div class="oneri"><b>🟡 Girinti varsayımıyla 0, ekran gelince yeniden ölçülecek.</b> Girinti inişi hacmi (416,4 / 280,2 / 173,6 mm³) ancak gerçek kasada girinti arkaya açıksa, arka yüzden en az 12 + r mm derinse ve kenardan en az 14,3 + r mm genişse çakışma sayılmaz. Varsayım yanlışsa bu hacim gerçek çakışmadır. Port duvarı x, girinti derinliği/genişliği ve port satırının y aralığı (12 V'nin payı 3,5 mm) ekran elde edilince ya da kasalı ölçü çizimi bulununca ölçülmeli, en geç P6.1'den önce.</div>
+<p class="note">Fiş ucu ve girinti inişi sütunları B'nin sıkı uç tanımıyla ölçüldü (<code>F1b-kontrol.md</code> madde 10). USB'de iki parçanın toplamı 391,4, toplam 391,5: yuvarlama. "Bölge dışı tüp → kasa": tüpün uç bölgesi dışındaki kısmının kasaya en kısa uzaklığı; 12 V'nin 3,64 mm'si port satırının y sınırına olan pay. Kesit görseli: <code>planlama/d158/F1b-kablo-kesit.png</code>.</p>
+
+<h3 style="font-size:1rem;margin:20px 0 8px">USB dokunmatik 167,6 → 391,5 mm³ düzeltmesi</h3>
+<p>HEAD'deki 167,6 eksik ölçülmüştü. Tüp ardışık <code>fuse</code> ile kurulunca son (yatay) segment kayboluyordu: tüp hacmi 4.742,9 mm³ iken π r² L 4.958,8. Silindirler ve uç küreleri tek <code>multiFuse</code> ile kurulunca tek katı, 4.966,8 mm³ ve kasa ortak hacmi <b>391,5</b> (dikey 150,8 + yatay 226,2 mm³, küreler ayrı). HDMI ve 12 V'de iki yöntem aynı sonucu verdi. <code>lale158-kontrol.json : kablo_tup_hacim</code> artık her tüpün hacmini π r² L ile yan yana yazıyor; on tüpün hepsi tek katı ve geçerli.</p>
+
+<h2>P1.5: "Wire is not closed" kök nedeni ve çözüm</h2>
+<div class="tbl"><table>
+<thead><tr><th>Konu</th><th>Bulgu</th></tr></thead>
+<tbody>
+<tr><td class="kod">Yer</td><td><code>kabuk_montaj.baski_analiz()</code>: katman döngüsünde <code>s.slice</code> + <code>Part.makeFace</code>. Hata <code>makeFace</code>'ten; <code>slice</code> hata vermiyor (A buldu).</td></tr>
+<tr><td class="kod">Kök neden</td><td>16 sorunlu katmanın her biri, yatay eksenli bir delik silindirinin tepesine ya da dibine <b>tam teğet</b>: alt, uzatma 1 ve orta bantta R 2,0 delikler (eksen y 482,5 / 640,0 / 1011,0 → katman ±2 mm), uzatma 1 ve 2 bantta R 5,25 havşanın 0,3 mm derin dibi. Teğet kesit OCC'de dejenere kenar ve açık tel üretir. Geometri kusuru değil, analiz düzleminin konumu (B buldu, <code>F1b-kontrol.md</code> madde 14).</td></tr>
+<tr><td class="kod">Önceki etki</td><td>Bu 16 katman ve her birinin bir sonraki katmanı destek kontrolünden sessizce atlanıyordu (<code>yuz = None</code>).</td></tr>
+<tr><td class="kod">Çözüm</td><td>Teller kapalı değilse <code>makeFace</code> çağrılmaz; düzlem 0,05 / ±0,1 / ±0,25 mm kaydırılıp yeniden kesilir, yüz katman düzlemine geri taşınır. 0,05 mm teğetliği kaldırır; 16 katmanın hepsi +0,05'te kapandı. Kapanmazsa katman destek sorunu sayılır. Kabuk geometrisi (<code>kabuk_parcalar.py</code>) değişmedi.</td></tr>
+<tr><td class="kod">Sonuç</td><td>Logda "Wire is not closed" 16 → 0, exception/traceback 0. <code>kabuk-analiz.json</code>: <code>kesit_kaydirma</code> 8 parçada 16 katman; toplam destek sorunu 31 → 31 (yeni sorun yok); kütle 7.170,4 g; çakışma ve iskelet çakışması boş; bağlantı 14/14, vida 84/84.</td></tr>
+<tr><td class="kod">Rapor</td><td><code>kabuk_rapor.py</code> <code>ekran_kontrol</code> KeyError giderildi; ekran kontrolü <code>gogus_ekrani</code> verisinden. <code>kabuk/rapor.html</code> 1,58 m'ye göre: MAX98357 0, "V3" 0, takma ad 0. İçindeki 11 kabuk görseli 03.11'den, altlarında "P6.1'de yenilenecek" notu.</td></tr>
+</tbody>
+</table></div>
+
+<h2>Çakışma bölümleri</h2>
+<p><code>arayuz.py</code> değiştiği için dokuz bölümün kaynağı eskimişti; omuz dışındaki 8 bölüm tek tek, sırayla koşuldu (tek FreeCAD süreci).</p>
+<div class="tbl"><table>
+<thead><tr><th>Bölüm</th><th>Süre</th><th>Tepe bellek</th><th>Sonuç</th></tr></thead>
+<tbody>
+<tr><td class="kod">statik</td><td class="n">91 s</td><td class="n">738 MB</td><td><span class="tag ok">tamam</span></td></tr>
+<tr><td class="kod">kol_sag</td><td class="n">237 s</td><td class="n">733 MB</td><td><span class="tag ok">tamam</span></td></tr>
+<tr><td class="kod">kol_sol</td><td class="n">237 s</td><td class="n">733 MB</td><td><span class="tag ok">tamam</span></td></tr>
+<tr><td class="kod">kolkol</td><td class="n">56 s</td><td class="n">195 MB</td><td><span class="tag ok">tamam</span></td></tr>
+<tr><td class="kod">kafa_sabit</td><td class="n">157 s</td><td class="n">745 MB</td><td><span class="tag ok">tamam</span></td></tr>
+<tr><td class="kod">kafa_sag</td><td class="n">475 s</td><td class="n">624 MB</td><td><span class="tag ok">tamam</span></td></tr>
+<tr><td class="kod">kafa_sol</td><td class="n">471 s</td><td class="n">619 MB</td><td><span class="tag ok">tamam</span></td></tr>
+<tr><td class="kod">taban</td><td class="n">86 s</td><td class="n">741 MB</td><td><span class="tag ok">tamam</span></td></tr>
+<tr><td class="kod">omuz</td><td class="n">—</td><td class="n">—</td><td><span class="tag info">04.11 sonucu, eskimiş</span> (~4,8 sa; P6)</td></tr>
+</tbody>
+</table></div>
+<p class="note">Birleşik sonuç (<code>carpisma-sonuc.json</code>): <code>ev_pozu_cakisma</code> [] (0), <code>ev_pozu_kesisen_cift</code> 819, <code>toplam.cakisma</code> 364, eklem aralığında 0; çakışma ve boşluk sayıları öncekiyle aynı. C'nin koşusu, koşul 2'deki yorum değişikliğinden sonra: <code>py -3 tasarim\freecad\carpisma_kos.py kontrol</code> → "kaynagi eskimis bolumler: omuz" (yalnız omuz; <code>kabuk_montaj.py</code> kaynak özetinde yok).</p>
+
+<h2>Korunan değerler (regresyon)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Değer</th><th>Taban (01:57:45)</th><th>Şimdi (02:17:55)</th><th>Eşik</th><th>Durum</th><th>Kaynak</th></tr></thead>
+<tbody>
+<tr><td>Boy</td><td class="n">1.580</td><td class="n">1.580</td><td class="n">1.580 ± 0,05</td><td><span class="tag ok">aynı</span></td><td><code>lale158-kontrol.json : toplam_boy_mm</code></td></tr>
+<tr><td>Kafa içi çakışma</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="tag ok">aynı</span></td><td><code>kafa-analiz.json : statik</code></td></tr>
+<tr><td>Kabuk içi çakışma</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="tag ok">aynı</span></td><td><code>kabuk-analiz.json : cakisma</code></td></tr>
+<tr><td>Kabuk × iskelet</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="tag ok">aynı</span></td><td><code>kabuk-analiz.json : iskelet_cakisma</code></td></tr>
+<tr><td>Ev pozu çakışma</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="tag ok">aynı</span></td><td><code>carpisma-sonuc.json : ev_pozu_cakisma</code></td></tr>
+<tr><td>Yüksüz rampa payı</td><td class="n">1,519</td><td class="n">1,519</td><td class="n">≥ 1,5</td><td><span class="tag ok">aynı</span></td><td><code>uygulama-ivme.json : rampa5_*</code> (en küçük)</td></tr>
+<tr><td>Tilt payı</td><td class="n">3,64</td><td class="n">3,64</td><td class="n">≥ 3,0</td><td><span class="tag ok">aynı</span></td><td><code>kafa-analiz.json : tork.tilt.pay_tilt15</code></td></tr>
+<tr><td>Pan payı</td><td class="n">2,21</td><td class="n">2,21</td><td class="n">≥ 2,0</td><td><span class="tag ok">aynı</span></td><td><code>kafa-analiz.json : tork.pan.pay_iki_hane</code></td></tr>
+<tr><td>Mikrofon–hoparlör</td><td class="n">574,3 mm</td><td class="n">574,3 mm</td><td class="n">≥ 400</td><td><span class="tag ok">aynı</span></td><td><code>uygulama-olcum.json : mic_hoparlor.poz_min_mm</code></td></tr>
+<tr><td>SY8205 × USB</td><td class="n">0 mm³</td><td class="n">0 mm³</td><td class="n">0</td><td><span class="tag ok">aynı</span></td><td><code>uygulama-olcum.json : kablo_sy8205.*</code></td></tr>
+</tbody>
+</table></div>
+<p class="note">F1a sonundaki taban (23:29:59) rampa için 1,517 idi; A'nın 01:57:45 koşusu 1,519'u "iyileşti" olarak yazdı ve tabanı güncelledi. C'nin koşusu normal modda (bayraksız): çıkış 0, "GEÇER", 10/10 aynı.</p>
+
+<h2>B'nin koşulları ve kapanışı</h2>
+<div class="tbl"><table>
+<thead><tr><th>Koşul</th><th>İçerik</th><th>Nasıl kapandı</th></tr></thead>
+<tbody>
+<tr><td class="kod">1</td><td>P1.4 sonucu port girintisi varsayımına bağlı olarak işaretlenmeli, doğrulama plana bağlanmalı; raporda girinti inişi ile fiş ucu ayrı verilmeli</td>
+<td><span class="tag ok">kapandı</span> Orkestratör <code>dongu-158.md</code>'ye yazdı: P1.4 🟡 "girinti varsayımıyla 0 … ekran gelince yeniden ölçülecek"; P6.1'e port girintisi geometrisi ve dört dosyada kesit kaydırması; P4.2'ye USB ve 12 V için 90° fiş. Ayrım bu raporun P1.4 tablosunda. Commit <code>da17f1d</code>.</td></tr>
+<tr><td class="kod">2</td><td>P1.5 kök nedeni kayda geçmeli (yalnız yorum ve günlük)</td>
+<td><span class="tag ok">kapandı</span> C: <code>kabuk_montaj.py:338-339</code> yorumu "kesit düzlemi yatay eksenli delik silindirinin tepesine / dibine tam teğet: R 2,0 delik eksen ±2 mm, R 5,25 havşa dibi; 0,05 mm kaydırma bu teğetliği kaldırır". <code>F1b-gunluk.md</code> açık 9 "kapandı (B buldu)". <code>carpisma_kos.py kontrol</code>: eskiyen yalnız omuz. Commit <code>409d521</code> (yorum), <code>da17f1d</code> (günlük).</td></tr>
+</tbody>
+</table></div>
+
+<h2>İleri taşınan maddeler</h2>
+<ul class="list">
+<li><span class="tag wait">P1.4 doğrulaması</span> Ekran ya da kasalı ölçü çizimi gelince: port duvarı x (şimdi −110), girinti derinliği (≥ 12 + r), genişliği (≥ 18 + r), port satırının y aralığı. <code>arayuz.GOGUS_EKRAN["port"]</code> güncellenir. Ölçüm tutmazsa yol kasa kenarının dışından yeniden çizilir.</li>
+<li><span class="tag wait">P6.1</span> Aynı sessiz katman atlama kalıbına 0,05 mm kesit kaydırması dört dosyada: <code>kafa/kafa_lib.py:265</code>, <code>dirsek/dirsek_lib.py:141</code>, <code>omuz/omuz_baski.py:201</code>, <code>kafa-yerlesim/uygulama_tani.py:30</code> (<code>*_lib.py</code> değişikliği çakışma kaynak özetini eskitir). Göğüs ekranı port girintisi kasa modeline geometri olarak eklenir; hariç tutma kutusu kalkar. <code>kabuk_parcalar.py:733</code> yorumu 72 → 70. Kabuk görselleri yeniden üretilir.</li>
+<li><span class="tag info">P4.2</span> HDMI'ye ek olarak USB dokunmatik (micro B) ve 12 V jak için de 90° fiş gerekiyor (rota 18 mm yatay, sıfır yarıçaplı büküm); <code>maliyet.json</code>'a "koşullu" aday. Fiş gövdeleri modellenince çerçeve soluna (14,6 mm) ve göğüs bandına (18 mm) pay ölçülmeli.</li>
+<li><span class="tag info">K23</span> <code>montaj/yerlesim-kontrol.json</code> ve 13 <code>kabuk/gorsel/*.png</code> 03.11 hâlinde, commit dışı; karar kuyruğunda. <code>Y2b-ivme.json</code> artık güncel modelden ve commit'te.</li>
+<li><span class="tag info">Not</span> <code>lale158-kontrol.json</code>'daki kafa/boyun kablo girdileri (HDMI × boyun mili 15,1 ve servo yuvası 1,7; Pi ve PAM uç temasları 2,5–11,8) ayrıştırılmadı; F1b kapsamı dışında.</li>
+<li><span class="tag info">Not</span> Eski "2,8 kg" metinleri tarihçe dosyalarında duruyor (<code>ikinci_ozet.py:143</code>, <code>lale158-regresyon.json:266</code> ve benzeri). <code>karar-kuyrugu.md:107</code> K3'ün eski satırında fren 100 g "1,713", P1.1 öncesi JSON 1,712.</li>
+</ul>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th><th>Dosya</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>f567ac2</code></td><td>P1.1: <code>arayuz.py</code>, <code>taban_rapor.py</code>, taban ve montaj analiz/FCStd/STEP/BOM, <code>taban/rapor.html</code>, <code>uygulama-ivme.json</code>, <code>uygulama-olcum.json</code>, <code>Y2b-ivme.json</code></td><td class="n">14</td></tr>
+<tr><td class="kod"><code>fc8d7b5</code></td><td>P1.4: <code>kablo_yolu_ekran.py</code>, <code>lale158_kontrol.py</code>, <code>lale158-kontrol.json</code>, <code>F1b-kablo-kesit.png</code></td><td class="n">4</td></tr>
+<tr><td class="kod"><code>409d521</code></td><td>P1.5: <code>kabuk_montaj.py</code> (koşul 2 yorumu dahil), <code>kabuk_rapor.py</code>, kabuk analiz/FCStd/STEP, <code>kabuk/rapor.html</code></td><td class="n">6</td></tr>
+<tr><td class="kod"><code>da17f1d</code></td><td>Çakışma 8 bölüm JSON'u + <code>carpisma-sonuc.json</code>; <code>F1b-brief/gunluk/kontrol.md</code>, <code>karar-kuyrugu.md</code>, <code>regresyon.json</code>, <code>regresyon-son-kosu.json</code>, <code>dongu-158.md</code></td><td class="n">16</td></tr>
+</tbody>
+</table></div>
+<p class="note">Push: <code>24a703d..da17f1d lale-duzeltme → lale-duzeltme</code>. Her commit öncesi eklenen satırlarda takma ad 0. Açık <code>git add</code> listesi; dışarıda: <code>kvkk/</code>, <code>rapor/</code>, <code>tubitak-2209b/</code>, <code>tasarim/solidworks/</code>, <code>raporlar/</code> altındaki 4 izlenmeyen dosya, <code>kafa-yerlesim/kaynak/</code>, <code>lale_dongu.FCMacro</code>, <code>lale_dongu_ac.bat</code>, K23 dosyaları, <code>F1a-kontrol.md</code>, F5/F5b ve F3a dosyaları, <code>carpisma-bolum/omuz.json</code> (değişmedi). <code>taban/dxf</code> ve <code>kabuk-bom.csv</code> yeniden yazıldı ama git farkı yok. Bu rapor ayrı commit'te.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F1b · 09.11.2026 · Commit <code>f567ac2</code>, <code>fc8d7b5</code>, <code>409d521</code>, <code>da17f1d</code> (<code>lale-duzeltme</code>) · Regresyon <code>regresyon.py</code> normal mod: GEÇER, 10/10 aynı · Kaynaklar: <code>F1b-brief.md</code>, <code>F1b-gunluk.md</code>, <code>F1b-kontrol.md</code>, <code>karar-kuyrugu.md</code> K3, K23.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
