@@ -40,7 +40,7 @@ tilt payı ≥ 3,0 (3,64); pan payı ≥ 2,0 (2,21); mikrofon-hoparlör ≥ 400 
 | Paket | Ajan | Yazdığı alan |
 |---|---|---|
 | F1a (P1.2, P1.3, P1.6, P1.7) | A | `tasarim/freecad/` kafa betikleri, `lale158/kafa-yerlesim/`, `planlama/d158/F1a-*`, FreeCAD makinesi |
-| P8.4 | C (kayıt) | `planlama/d158/testler/`, `F8d-*`, git commit |
+| F5b | C (kayıt + pano) | `planlama/d158/F5b-*`, git commit |
 
 - **Tasarım sırası:** her adım öncekini bozmamalı; tam çakışma taraması yalnız P6'da, bir kez.
 - **Karar gereken yerde durma:** Ahmet'in kararını isteyen madde `planlama/d158/karar-kuyrugu.md`'ye yazılır
@@ -158,6 +158,8 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | K9 | El yükü 0,5 kg için servo değişimi mi, 100 g sınırı mı | 100 g sınırı |
 
 ## 5. Günlük
+
+- 2026-11-08 **P8.4 ✅** C: K1/K2 uygulandı, f747bb0 + rapor 7e78b45 push. Küçük açık: 00-genel kural 1 "yandan uzanılır" ↔ T13 adım 4 ana yol "üst taraftan, arka köşeden" (sonraki test düzeltmesinde hizala). F5b A çalışıyor.
 
 - 2026-11-08 P8.4 B: GEÇMEZ (T13 C) → 2 tur → GEÇER + K1/K2 (iki satır; B: ayrı tur gerekmez, diff yeter) → C uygular + kayıt. Kural notu: 2 tur sınırından sonra yalnız kontrolün metnini birebir verdiği ≤2 satırlık koşullar C'de uygulanabilir; daha fazlası karar kuyruğuna.
 
