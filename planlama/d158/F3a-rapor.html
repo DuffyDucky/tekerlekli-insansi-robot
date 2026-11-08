@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F3a Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F3a: elde yük tablosu ve servo payları (P3.1, P3.2)</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 09.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>F3a-brief.md</code>, <code>F3a-gunluk.md</code>, <code>F3a-kontrol.md</code>, <code>F3a-yuk.json</code> ve kaynak JSON'lar (aşağıda anahtarlarıyla)</p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">Bağımsız kontrol</div><div class="v"><span class="tag wait">KOŞULLU</span></div><div class="d">Yöntem ve sayılar doğrulandı; 6 küçük metin koşulu C'de uygulandı</div></div>
+  <div class="card"><div class="k">Önerilen sınır (öneri)</div><div class="v">≤ 100 g</div><div class="d">Her elde, yalnız düz zeminde; rampada yüksüz. Karar Ahmet'in (K3 / K9)</div></div>
+  <div class="card"><div class="k">500 g elde servo payı</div><div class="v">0,97 / 0,74</div><div class="d">S1 / S2 0,97, dirsek 0,74: 1'in altında</div></div>
+  <div class="card"><div class="k">Tilt kod ±20</div><div class="v"><span class="tag crit">çakışıyor</span></div><div class="d">Güncel kafada ±20'de 327,4 / 654,9 mm³; ±15 serbest. Pano #6'ya bilgi</div></div>
+  <div class="card"><div class="k">Regresyon</div><div class="v"><span class="tag ok">10/10 aynı</span></div><div class="d"><code>--yazma</code>, GEÇER (09.11 02:25:39)</div></div>
+</div>
+
+<p class="note">Sayılar C'nin JSON okumasından: <code>F3a-yuk.json</code> (<code>P3_1.tablo</code>, <code>P3_1.izgara</code>, <code>P3_1.sinir_her_elde_g</code>, <code>P3_2.kafa</code>),
+<code>KY/uygulama-ivme.json</code> (<code>izgara_yuk_{0,100,500}g</code>), <code>dirsek-analiz.json</code> (<code>tork.sonuc</code>), <code>kafa-analiz.json</code> (<code>tarama</code>, <code>tork</code>),
+<code>taslak-170/kol-analiz/kol-analiz.json</code> ve <code>regresyon.py</code> çıktısı. 0 / 100 / 500 g için <code>F3a-yuk.json</code> ile UI ve DA değerleri birebir aynı.
+FreeCAD açılmadı. <code>KY/</code> = <code>tasarim/freecad/lale158/kafa-yerlesim/</code>.</p>
+
+<h2>P3.1: elde yük tablosu (yük her iki elde)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Her elde (toplam)</th><th>Düz devrilme</th><th>Fren 1,8 m/s²</th><th>Rampa 5° (ızgara)</th><th>Rampa 5°, kollar ev pozunda</th><th>S1</th><th>S2</th><th>Dirsek</th><th>Bilek</th></tr></thead>
+<tbody>
+<tr><td class="kod">0 g (0)</td><td class="n">2,097</td><td class="n">1,748</td><td class="n">1,519</td><td class="n">1,611</td><td class="n">2,78</td><td class="n">2,72</td><td class="n">3,88</td><td class="n">463</td></tr>
+<tr><td class="kod">50 g (100)</td><td class="n">2,077</td><td class="n">1,731</td><td class="n"><span class="tag crit">1,499</span></td><td class="n">1,606</td><td class="n">2,34</td><td class="n">2,30</td><td class="n">2,73</td><td class="n">111</td></tr>
+<tr><td class="kod">100 g (200)</td><td class="n">2,057</td><td class="n">1,714</td><td class="n"><span class="tag crit">1,479</span></td><td class="n">1,601</td><td class="n">2,03</td><td class="n">2,00 (1,996)</td><td class="n">2,11</td><td class="n">62,7</td></tr>
+<tr><td class="kod">200 g (400)</td><td class="n">2,017</td><td class="n">1,681</td><td class="n"><span class="tag crit">1,440</span></td><td class="n">1,591</td><td class="n">1,59</td><td class="n">1,58</td><td class="n">1,45</td><td class="n">33,6</td></tr>
+<tr><td class="kod">500 g (1.000)</td><td class="n">1,907</td><td class="n">1,589</td><td class="n"><span class="tag crit">1,329</span></td><td class="n">1,563</td><td class="n"><span class="tag crit">0,97</span></td><td class="n"><span class="tag crit">0,97</span></td><td class="n"><span class="tag crit">0,74</span></td><td class="n">14,0</td></tr>
+</tbody>
+</table></div>
+<p class="note">Ölçüt: devrilme / fren / rampa ≥ 1,5 (<code>a_sinir_pay15</code>, <code>fren_pay.duz_min</code>), servo pay = stall / en kötü statik tork ≥ 1 (DS3235 30,4 kg·cm, MG996R 9,4 kg·cm).
+En kötü devrilme yönü her yükte "geri": iki kol simetrik, S2 120, S1 75 → 90 → 105. Servo en kötü pozları: S1 kol öne yatay (90, 5, 0), S2 kol yana yatay (0, 90, 0), dirsek ön kol yatay (S1 90, dirsek 0).
+Servo torkları kg·cm, 0 / 50 / 100 / 200 / 500 g: S1 10,95 / 12,98 / 15,01 / 19,06 / 31,22; S2 11,16 / 13,19 / 15,23 / 19,29 / 31,50; dirsek 2,42 / 3,44 / 4,46 / 6,50 / 12,62.</p>
+
+<h2>Eşik geçişleri (her elde)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Ölçüt</th><th>Geçtiği en büyük yük</th><th>Kaynak</th></tr></thead>
+<tbody>
+<tr><td>Rampa 5° ızgara ≥ 1,5</td><td class="n"><b>≈ 48 g</b> (40 g 10 g adımla; 48 g 1,500, 50 g 1,499)</td><td><code>sinir_her_elde_g.rampa5_izgara_1_5</code> 40; 48 g B'nin taraması (<code>F3a-kontrol.md</code> madde 11)</td></tr>
+<tr><td>Servo pay ≥ 2 (2× referansı)</td><td class="n"><b>S2 99 g</b>, S1 105 g, dirsek 112 g</td><td><code>servo_*_pay2</code> = DA <code>izinli_yuk_2x_g</code></td></tr>
+<tr><td>Servo pay ≥ 1</td><td class="n"><b>dirsek 342 g</b>, S2 473 g, S1 480 g, bilek &gt; 5.000 g</td><td><code>servo_*_pay1</code></td></tr>
+<tr><td>Fren 1,8 m/s² ≥ 1,5</td><td class="n">810 g</td><td><code>fren18_1_5</code></td></tr>
+<tr><td>Düz devrilme ≥ 1,5</td><td class="n">≥ 1.000 g (tarama sonu)</td><td><code>duz_devrilme_1_5</code></td></tr>
+<tr><td>Rampa 5°, kollar ev pozunda ≥ 1,5</td><td class="n">≥ 1.000 g</td><td><code>rampa5_ev_pozu_1_5</code></td></tr>
+</tbody>
+</table></div>
+<p>Bağlayan ölçüt servo, devrilme değil. Düzde 100 g her elde: devrilme 2,057, fren 1,714, servolar ≈ 2 ve üstü (en düşük S2 1,996). Rampada 50 g bile eşiğin altında; kollar ev pozuna zorlanırsa 100 g ile 1,601 (yazılımın ev pozunu zorlamasına bağlı, SO Ç7). AI HAT+ (30 g varsayım, net 28,1 g) yüksüz rampayı 1,519 → 1,515, düzü 2,097 → 2,093 yapıyor (<code>duyarlilik_AI_HAT</code>).</p>
+
+<div class="oneri"><b>İvmeli kol payı (bilgi, B kaba tahmini).</b> Bu paketteki kol payları <b>statik</b> (yerçekimi). Projede yüksüz ivmeli pay zaten var: <code>taslak-170/kol-analiz/kol-analiz.json</code> (×1,25, DS3235) <code>pay_ivmeli</code> S1 1,64, S2 1,62, dirsek 3,18 (α 26,2 rad/s², 60° / 0,4 s).
+B'nin kaba tahmini, yük nokta kütle ataletiyle: S1 100 g'da ≈ 1,12, 200 g'da ≈ 0,86; dirsek 100 g'da ≈ 1,46, 200 g'da ≈ 0,98. Statik "2×" ile ivmeli "≥ 1" yaklaşık aynı yükte (~100 g) buluşuyor; "statik ölçüt ≈ 340 g'a izin veriyor" cümlesi yalnız statik için geçerli. <b>Doğrulanmadı</b> (kol ataleti 1,70 taslağından).</div>
+
+<h2>P3.2: kafa pan / tilt payları</h2>
+<div class="tbl"><table>
+<thead><tr><th>Model</th><th>Kafa grubu</th><th>Tilt CAD ±13</th><th>Tilt ±15</th><th>Tilt kod ±20</th><th>Pan CAD</th><th>Pan kod (tilt ±20)</th></tr></thead>
+<tbody>
+<tr><td class="kod">Bugünkü model (HAT yok)</td><td class="n">1.570,8 g</td><td class="n">3,65</td><td class="n">3,64</td><td class="n">3,61</td><td class="n">2,21</td><td class="n">2,17*</td></tr>
+<tr><td class="kod">K2 a, boss taşı (HAT'lı)</td><td class="n">1.598,9 g</td><td class="n">3,32</td><td class="n">3,30</td><td class="n">3,27</td><td class="n">2,20</td><td class="n">2,16*</td></tr>
+<tr><td class="kod">K2 b, yığın 5 mm önde (HAT'lı)</td><td class="n">1.598,9 g</td><td class="n">3,39</td><td class="n">3,38</td><td class="n">3,34</td><td class="n">2,20</td><td class="n">2,17*</td></tr>
+</tbody>
+</table></div>
+<p class="note">Kaynak <code>F3a-yuk.json P3_2.kafa.&lt;model&gt;.{tilt_cad13, tilt_15, tilt_kod20, pan_cad, pan_kod}.pay</code>; tilt = yerçekimi + I·α, stall 9,4. Eşikler: tilt ≥ 3,0, pan ≥ 2,0; en düşük K2 a kod sınırında 3,27 / 2,16.
+* Pan kod ekstrapolasyon: I(θ) üç noktadan (−13 / 0 / +13) uydurulup ±20'ye uzatıldı (0,014681 → 0,014936 kg·m²); B'nin hata tahmini payda &lt; 0,01.
+Kol servolarında kod sınırı (S1 0…160, dirsek 0…110) en kötü pozu değiştirmiyor: CAD = kod.</p>
+
+<h2>Tilt ±20 çakışması ve pano</h2>
+<p>Kodun tilt aralığı 70…110 (±20), CAD ±13. Tork açısından sorun yok; sorun çakışma. Güncel kafa modeli (<code>kafa-analiz.json</code>, 05.11, QLED kafa) <code>tarama.serbest_tilt</code> [−15, 15], <code>tarama.ilk_carpan</code>:</p>
+<div class="tbl"><table>
+<thead><tr><th>Açı</th><th>Çakışan çift (en büyük)</th><th>Hacim</th><th>Ötekiler</th></tr></thead>
+<tbody>
+<tr><td class="kod">+20°</td><td>Yüz kabuğu (ön) sağ × rulman yuvası</td><td class="n">327,4 mm³</td><td>× alt rulman 16,1; × üst rulman 2,0; yüz kabuğu sol × rulman yuvası 69,7 mm³</td></tr>
+<tr><td class="kod">−20°</td><td>Arka kafa kabuğu sağ × rulman yuvası</td><td class="n">654,9 mm³</td><td>× alt rulman 128,7; arka kabuk sol × rulman yuvası 235,1; × alt rulman 30,4 mm³</td></tr>
+</tbody>
+</table></div>
+<p class="note">Tarama 5° adımlı: ilk temas 15° ile 20° arasında, kesin açı ölçülmedi. Önceki "+18° / −17°" 29.10 ölçümü (<code>y2/Y2a-kontrol.md:54</code>, QLED öncesi kafa, 0,5° adım).</p>
+<div class="tbl"><table>
+<thead><tr><th>Pano</th><th>Tür</th><th>İçerik</th><th>Durum (gönderim sonrası <code>konular</code>)</th></tr></thead>
+<tbody>
+<tr><td class="kod">#6, mesaj #17</td><td><span class="tag info">bilgi + soru</span></td><td>Tilt ±20 çakışması (yukarıdaki sayılar); elde yük özeti (0 / 100 / 500 g servo payları, rampa 50 g 1,499); "yük sınırı kararı Ahmet'te (K3 / K9)". Soru: "Kodda tilt sınırını CAD ile aynı (±13, 77…103) yapmak mümkün mü?" Karar dili yok. Gövde <code>planlama/d158/F3a-pano-govde.txt</code>.</td><td>[soru], bekleyen: efe (değişmedi)</td></tr>
+</tbody>
+</table></div>
+
+<h2>Karar kuyruğu: K3 ve K9 (ikisi de açık, karar Ahmet'in)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Madde</th><th>Eklenen</th><th>Önerilen varsayılan (yalnız öneri)</th></tr></thead>
+<tbody>
+<tr><td class="kod">K3</td><td>Seçenek b "≤ 100 g her elde". P3.1 tablosu (0 / 50 / 100 / 200 / 500 g, kaynak anahtarlarıyla), bağlayan ölçüt servo (≥ 1: 342 g dirsek; ≥ 2: 99 g S2), rampa ve ev pozu satırları, AI HAT+ satırı (30 g varsayım), ivmeli pay satırı (B kaba tahmini). Önceki F1b notları korundu.</td><td>b: her elde ≤ 100 g (toplam ≤ 200 g), yalnız düz zeminde; rampada yüksüz. c (500 g) ancak K9 b ile. Alternatif: rampada kollar ev pozunda ≤ 100 g (1,601; SO Ç7).</td></tr>
+<tr><td class="kod">K9</td><td>"1,65 m modelinden; yeniden ölçülmedi" cümlesi yerine 1,58 m yeniden hesabı (500 g: S1 / S2 0,97, dirsek 0,74, aynı); rampa 1,327 → 1,329; b'nin servo gereksinimi (pay ≥ 1: S1 ≥ 31,2, S2 ≥ 31,5, dirsek ≥ 12,6 kg·cm; ≥ 2: 62,4 / 63,0 / 25,2); pan / tilt için karar gerekmediği.</td><td>a: her elde ≤ 100 g (K3 b ile aynı sınır); değişmedi. b'nin maliyeti, kütlesi ve ağır dirsek servosunun S1 / S2'ye etkisi hesaplanmadı.</td></tr>
+</tbody>
+</table></div>
+<p class="note">Özet tablodaki K3 / K9 satırları güncellendi; durum <b>açık</b>. <code>karar-kuyrugu.md</code>'deki F1a / F1b notlarına dokunulmadı.</p>
+
+<h2>B'nin koşulları ve kapanışı</h2>
+<div class="tbl"><table>
+<thead><tr><th>Koşul</th><th>Yer (<code>F3a-gunluk.md</code>)</th><th>İçerik</th><th>Nasıl kapandı</th></tr></thead>
+<tbody>
+<tr><td class="kod">1</td><td>:93, :154</td><td>"2× hedefini tutan" ve "≥ 2,0" ifadeleri S2 1,996 ile çelişiyordu</td><td><span class="tag ok">kapandı</span> "2× referansına en yakın yuvarlak değer (kesin 2× sınırı 99 g, S2)"; "≈ 2 ve üstü (en düşük S2 1,996)"</td></tr>
+<tr><td class="kod">2</td><td>:152</td><td>Tilt ilk temas +18 / −17 eski modelin ölçümüydü</td><td><span class="tag ok">kapandı</span> Güncel <code>tarama.ilk_carpan</code> ±20 çakışma (327,4 / 654,9 mm³, ±15 serbest); +18 / −17 29.10 ölçümü olarak işaretli</td></tr>
+<tr><td class="kod">3</td><td>:167</td><td>Kolun mevcut ivmeli payı yazılmamıştı</td><td><span class="tag ok">kapandı</span> <code>kol-analiz.json</code> S1 1,64, S2 1,62, dirsek 3,18; yüklü ivmeli hesaplanmadı (B kaba tahmini)</td></tr>
+<tr><td class="kod">4</td><td>:118</td><td>AI HAT+ kütlesinin varsayım olduğu yazılmamıştı</td><td><span class="tag ok">kapandı</span> "30 g varsayım, net 28,1 g; 30 g ile de 1,515"</td></tr>
+<tr><td class="kod">5</td><td>:119</td><td>K3 eki "Öneri" satırı varsayılan satırının yerine geçecek biçimde değildi</td><td><span class="tag ok">kapandı</span> "Varsayılan (K3 'Varsayılan' satırının yerine)": her elde, c yalnız K9 b ile; karar kuyruğuna aynı metin aktarıldı</td></tr>
+</tbody>
+</table></div>
+<p class="note">B altı değişikliği beş maddede topladı (koşul 1 iki satır). Satır numaraları B'nin (düzeltme öncesi). Metinler <code>F3a-kontrol.md</code> "Koşullar" bölümünden birebir; günlükte başka değişiklik yok. B'nin öbür notları (servo gerilim tabanı karışık: MG996R hat geriliminde dirsek ≥ 1 sınırı ≈ 386 g, 2× ≈ 134 g, öneri değişmez; DS3235 stall kaynağı zayıf, proje genelinin açığı) kayıtta, iş açılmadı.</p>
+
+<h2>Korunan değerler (regresyon)</h2>
+<p><code>py -3 planlama\d158\regresyon.py --yazma</code> (02:25:39; taban 02:17:55): boy 1.580, dört çakışma 0, yüksüz rampa 1,519, tilt 3,64, pan 2,21, mikrofon–hoparlör 574,3 mm, SY8205 × USB 0. <span class="tag ok">GEÇER, 10/10 aynı</span>. F3a model dosyası değiştirmedi; taban yazılmadı.</p>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th><th>Dosya</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>9cca013</code></td><td>P3.1–P3.2: <code>F3a-brief.md</code>, <code>F3a-gunluk.md</code> (koşullar), <code>F3a-kontrol.md</code>, <code>F3a-yuk.py</code>, <code>F3a-yuk.json</code>, <code>F3a-pano-govde.txt</code>, <code>karar-kuyrugu.md</code> (K3 / K9), <code>dongu-158.md</code></td><td class="n">8</td></tr>
+</tbody>
+</table></div>
+<p class="note">Push: <code>74cf048..9cca013 lale-duzeltme → lale-duzeltme</code>. Eklenen satırlarda takma ad 0. Açık <code>git add</code> listesi; dışarıda: paralel F2 (omuz, <code>arayuz.py</code>, kabuk, çakışma, <code>F2-*</code>) ve F4a (<code>elektrik.md</code>, <code>maliyet.json</code>, README / OZET, <code>proje-plani.md</code>, <code>F4a-*</code>) dosyaları, <code>regresyon*.json</code>, K23 kabuk görselleri ve <code>yerlesim-kontrol.json</code>, <code>F1a-kontrol.md</code>, F5 / F5b dosyaları, <code>kvkk/</code>, <code>rapor/</code>, <code>tubitak-2209b/</code>, <code>tasarim/solidworks/</code>, <code>raporlar/</code> izlenmeyenleri, <code>KY/kaynak/</code>, <code>lale_dongu.*</code>. Bu rapor ayrı commit'te.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F3a · 09.11.2026 · Commit <code>9cca013</code> (<code>lale-duzeltme</code>) · Regresyon <code>regresyon.py --yazma</code>: GEÇER, 10/10 aynı · Pano #6 mesaj #17 · Kaynaklar: <code>F3a-brief.md</code>, <code>F3a-gunluk.md</code>, <code>F3a-kontrol.md</code>, <code>F3a-yuk.json</code>, <code>karar-kuyrugu.md</code> K3, K9.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
