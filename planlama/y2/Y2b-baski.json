@@ -139,15 +139,15 @@
    "olcu": [
     170.0,
     137.0,
-    204.5
+    169.5
    ],
    "g": [
-    274.0,
-    274.0
+    224.0,
+    224.0
    ],
    "sa": [
-    5.7,
-    5.7
+    4.7,
+    4.7
    ],
    "desteksiz": true,
    "yon": "dik (alt kenari tablada)",
@@ -161,15 +161,15 @@
    "olcu": [
     170.0,
     125.0,
-    204.5
+    169.5
    ],
    "g": [
-    257.0,
-    257.0
+    211.0,
+    211.0
    ],
    "sa": [
-    5.4,
-    5.4
+    4.4,
+    4.4
    ],
    "desteksiz": true,
    "yon": "dik (alt kenari tablada)",
@@ -183,15 +183,15 @@
    "olcu": [
     170.0,
     137.0,
-    204.5
+    169.5
    ],
    "g": [
-    274.0,
-    274.0
+    224.0,
+    224.0
    ],
    "sa": [
-    5.7,
-    5.7
+    4.7,
+    4.7
    ],
    "desteksiz": true,
    "yon": "dik (alt kenari tablada)",
@@ -205,15 +205,15 @@
    "olcu": [
     170.0,
     125.0,
-    204.5
+    169.5
    ],
    "g": [
-    257.0,
-    257.0
+    211.0,
+    211.0
    ],
    "sa": [
-    5.4,
-    5.4
+    4.4,
+    4.4
    ],
    "desteksiz": true,
    "yon": "dik (alt kenari tablada)",
@@ -225,79 +225,13 @@
    "ad": "Govde orta bandi sag",
    "adet": 1,
    "olcu": [
-    183.0,
-    150.1,
-    227.0
+    214.2,
+    161.8,
+    226.9
    ],
    "g": [
-    262.0,
-    262.0
-   ],
-   "sa": [
-    5.5,
-    5.5
-   ],
-   "desteksiz": true,
-   "yon": "dik (alt kenari tablada)",
-   "cf": false,
-   "parti": 1
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Govde orta bandi sol",
-   "adet": 1,
-   "olcu": [
-    183.0,
-    138.1,
-    227.0
-   ],
-   "g": [
-    252.0,
-    252.0
-   ],
-   "sa": [
-    5.2,
-    5.2
-   ],
-   "desteksiz": true,
-   "yon": "dik (alt kenari tablada)",
-   "cf": false,
-   "parti": 1
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Gogus bandi sag",
-   "adet": 1,
-   "olcu": [
-    208.9,
-    163.1,
-    205.0
-   ],
-   "g": [
-    285.0,
-    285.0
-   ],
-   "sa": [
-    5.9,
-    5.9
-   ],
-   "desteksiz": true,
-   "yon": "dik (alt kenari tablada)",
-   "cf": false,
-   "parti": 1
-  },
-  {
-   "modul": "kabuk",
-   "ad": "Gogus bandi sol",
-   "adet": 1,
-   "olcu": [
-    208.9,
-    151.1,
-    205.0
-   ],
-   "g": [
-    275.0,
-    275.0
+    272.0,
+    272.0
    ],
    "sa": [
     5.7,
@@ -310,20 +244,86 @@
   },
   {
    "modul": "kabuk",
+   "ad": "Govde orta bandi sol",
+   "adet": 1,
+   "olcu": [
+    214.2,
+    149.8,
+    226.9
+   ],
+   "g": [
+    262.0,
+    262.0
+   ],
+   "sa": [
+    5.4,
+    5.4
+   ],
+   "desteksiz": true,
+   "yon": "dik (alt kenari tablada)",
+   "cf": false,
+   "parti": 1
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Gogus bandi sag",
+   "adet": 1,
+   "olcu": [
+    217.2,
+    164.0,
+    235.0
+   ],
+   "g": [
+    219.0,
+    219.0
+   ],
+   "sa": [
+    4.6,
+    4.6
+   ],
+   "desteksiz": false,
+   "yon": "dik (alt kenari tablada)",
+   "cf": false,
+   "parti": 1
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Gogus bandi sol",
+   "adet": 1,
+   "olcu": [
+    217.2,
+    152.0,
+    235.0
+   ],
+   "g": [
+    215.0,
+    215.0
+   ],
+   "sa": [
+    4.5,
+    4.5
+   ],
+   "desteksiz": false,
+   "yon": "dik (alt kenari tablada)",
+   "cf": false,
+   "parti": 1
+  },
+  {
+   "modul": "kabuk",
    "ad": "Omuz bandi sag",
    "adet": 1,
    "olcu": [
     164.0,
-    162.3,
+    156.2,
     102.0
    ],
    "g": [
-    201.0,
-    201.0
+    184.0,
+    184.0
    ],
    "sa": [
-    4.2,
-    4.2
+    3.8,
+    3.8
    ],
    "desteksiz": true,
    "yon": "ters (ust kapak tablada)",
@@ -335,17 +335,17 @@
    "ad": "Omuz bandi sol",
    "adet": 1,
    "olcu": [
-    162.3,
+    156.2,
     152.0,
     102.0
    ],
    "g": [
-    193.0,
-    193.0
+    178.0,
+    178.0
    ],
    "sa": [
-    4.0,
-    4.0
+    3.7,
+    3.7
    ],
    "desteksiz": true,
    "yon": "ters (ust kapak tablada)",
@@ -381,7 +381,7 @@
    "olcu": [
     168.3,
     150.0,
-    3.4
+    3.0
    ],
    "g": [
     80.0,
@@ -618,6 +618,72 @@
   },
   {
    "modul": "kabuk",
+   "ad": "Gogus ekrani cercevesi sag",
+   "adet": 1,
+   "olcu": [
+    207.2,
+    147.0,
+    10.0
+   ],
+   "g": [
+    29.0,
+    29.0
+   ],
+   "sa": [
+    0.6,
+    0.6
+   ],
+   "desteksiz": true,
+   "yon": "arka yuzu (flans) tablada",
+   "cf": false,
+   "parti": 1
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Gogus ekrani cercevesi sol",
+   "adet": 1,
+   "olcu": [
+    207.2,
+    147.0,
+    10.0
+   ],
+   "g": [
+    29.0,
+    29.0
+   ],
+   "sa": [
+    0.6,
+    0.6
+   ],
+   "desteksiz": true,
+   "yon": "arka yuzu (flans) tablada",
+   "cf": false,
+   "parti": 1
+  },
+  {
+   "modul": "kabuk",
+   "ad": "Gogus ekrani VESA tasiyici",
+   "adet": 1,
+   "olcu": [
+    106.6,
+    100.0,
+    64.8
+   ],
+   "g": [
+    114.0,
+    114.0
+   ],
+   "sa": [
+    2.4,
+    2.4
+   ],
+   "desteksiz": false,
+   "yon": "VESA plakasi tablada; arka flans destekli",
+   "cf": true,
+   "parti": 1
+  },
+  {
+   "modul": "kabuk",
    "ad": "S1 kaset govdesi sag",
    "adet": 1,
    "olcu": [
@@ -714,8 +780,8 @@
     43.0
    ],
    "g": [
-    151.7,
-    151.7
+    151.5,
+    151.5
    ],
    "sa": [
     3.16,
@@ -758,8 +824,8 @@
     48.1
    ],
    "g": [
-    40.8,
-    40.8
+    40.7,
+    40.7
    ],
    "sa": [
     0.85,
@@ -799,15 +865,15 @@
    "olcu": [
     59.9,
     59.9,
-    58.3
+    62.8
    ],
    "g": [
-    69.7,
-    69.7
+    73.8,
+    73.8
    ],
    "sa": [
-    1.45,
-    1.45
+    1.54,
+    1.54
    ],
    "desteksiz": true,
    "yon": "dik: alt flans tablada",
@@ -824,12 +890,12 @@
     37.0
    ],
    "g": [
-    93.6,
-    93.6
+    119.4,
+    119.4
    ],
    "sa": [
-    1.95,
-    1.95
+    2.49,
+    2.49
    ],
    "desteksiz": false,
    "yon": "on yuzu tablada",
@@ -846,12 +912,12 @@
     37.0
    ],
    "g": [
-    87.1,
-    87.1
+    109.8,
+    109.8
    ],
    "sa": [
-    1.81,
-    1.81
+    2.29,
+    2.29
    ],
    "desteksiz": true,
    "yon": "on yuzu tablada",
@@ -890,8 +956,8 @@
     106.9
    ],
    "g": [
-    215.4,
-    215.4
+    215.3,
+    215.3
    ],
    "sa": [
     4.49,
@@ -904,7 +970,7 @@
   },
   {
    "modul": "kafa",
-   "ad": "Kafa iskeleti (10 in)",
+   "ad": "Kafa iskeleti",
    "adet": 1,
    "olcu": [
     224.0,
@@ -921,94 +987,6 @@
    ],
    "desteksiz": true,
    "yon": "ters: tabla tablada, yanaklar yukari",
-   "cf": false,
-   "parti": 3
-  },
-  {
-   "modul": "kafa",
-   "ad": "Ekran tutucu tirnak (ust sol)",
-   "adet": 1,
-   "olcu": [
-    17.5,
-    16.0,
-    9.0
-   ],
-   "g": [
-    1.4,
-    1.4
-   ],
-   "sa": [
-    0.03,
-    0.03
-   ],
-   "desteksiz": true,
-   "yon": "plaka tablada, dil yukari",
-   "cf": false,
-   "parti": 3
-  },
-  {
-   "modul": "kafa",
-   "ad": "Ekran tutucu tirnak (alt sol)",
-   "adet": 1,
-   "olcu": [
-    17.5,
-    16.0,
-    9.0
-   ],
-   "g": [
-    1.4,
-    1.4
-   ],
-   "sa": [
-    0.03,
-    0.03
-   ],
-   "desteksiz": true,
-   "yon": "plaka tablada, dil yukari",
-   "cf": false,
-   "parti": 3
-  },
-  {
-   "modul": "kafa",
-   "ad": "Ekran tutucu tirnak (ust sag)",
-   "adet": 1,
-   "olcu": [
-    17.5,
-    16.0,
-    9.0
-   ],
-   "g": [
-    1.4,
-    1.4
-   ],
-   "sa": [
-    0.03,
-    0.03
-   ],
-   "desteksiz": true,
-   "yon": "plaka tablada, dil yukari",
-   "cf": false,
-   "parti": 3
-  },
-  {
-   "modul": "kafa",
-   "ad": "Ekran tutucu tirnak (alt sag)",
-   "adet": 1,
-   "olcu": [
-    17.5,
-    16.0,
-    9.0
-   ],
-   "g": [
-    1.4,
-    1.4
-   ],
-   "sa": [
-    0.03,
-    0.03
-   ],
-   "desteksiz": true,
-   "yon": "plaka tablada, dil yukari",
    "cf": false,
    "parti": 3
   },
@@ -1234,22 +1212,22 @@
   }
  ],
  "toplam": {
-  "adet": 66,
+  "adet": 65,
   "g": [
-   7738.599999999999,
-   7795.799999999999
+   7627.200000000001,
+   7684.400000000001
   ],
   "sa": [
-   160.91,
-   162.09
+   158.7,
+   159.88
   ],
   "cf_g": [
-   1039.6000000000001,
-   1096.8
+   1157.4,
+   1214.6
   ],
   "petg_g": [
-   6699.0,
-   6699.0
+   6469.800000000001,
+   6469.800000000001
   ],
   "parti": {
    "4": {
@@ -1264,40 +1242,55 @@
     ]
    },
    "1": {
-    "adet": 21,
+    "adet": 24,
     "g": [
-     3442.8,
-     3446.6000000000004
+     3284.8,
+     3288.6000000000004
     ],
     "sa": [
-     71.64000000000001,
-     71.72000000000001
+     68.44000000000001,
+     68.52000000000001
     ]
    },
    "2": {
     "adet": 25,
     "g": [
-     1325.2,
-     1378.6
+     1329.0,
+     1382.4
     ],
     "sa": [
-     27.569999999999997,
-     28.669999999999995
+     27.659999999999997,
+     28.759999999999998
     ]
    },
    "3": {
-    "adet": 9,
+    "adet": 5,
     "g": [
-     758.3999999999999,
-     758.3999999999999
+     801.2,
+     801.2
     ],
     "sa": [
-     15.799999999999997,
-     15.799999999999997
+     16.700000000000003,
+     16.700000000000003
     ]
    }
   },
   "destekli": [
+   [
+    "kabuk",
+    "Gogus bandi sag",
+    1
+   ],
+   [
+    "kabuk",
+    "Gogus bandi sol",
+    1
+   ],
+   [
+    "kabuk",
+    "Gogus ekrani VESA tasiyici",
+    1
+   ],
    [
     "kafa",
     "Yuz kabugu (on) sag",

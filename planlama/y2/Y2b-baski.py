@@ -9,7 +9,7 @@ import json, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 FC = os.path.normpath(os.path.join(HERE, "..", "..", "tasarim", "freecad"))
 CF = {"Omuz yuvasi", "Rulman kapagi", "Omuz gobegi", "Kol catali", "Dirsek catali", "Bilek flansi",
-      "Servo yuvasi", "Rulman yuvasi", "Boyun mili", "Egme catali", "Boyun yukseltme adaptoru"}
+      "Servo yuvasi", "Rulman yuvasi", "Boyun mili", "Egme catali", "Boyun yukseltme adaptoru", "Gogus ekrani VESA tasiyici"}
 ADET2 = {"Dirsek catali", "On kol govdesi", "Bilek flansi", "El"}
 DESTEK_NOT = {"Yuz kabugu (on) sag": "**destekli** (dikiş dili: 16 mm şerit, ~1,25 mm konsol; karar 29.10)",
               "Arka kafa kabugu sag": "**destekli** (dikiş dili: 16 mm şerit, ~1,25 mm konsol; karar 29.10)"}
@@ -24,7 +24,7 @@ def parti(mod, ad):
     if mod == "omuz" and ad in ("Rulman kapagi", "Ust kol tupu"): return 1
     if mod in ("omuz", "dirsek"): return 2
     if mod == "kafa" and ad in ("Servo yuvasi", "Rulman yuvasi", "Boyun mili", "Egme catali", "Boyun yukseltme adaptoru"): return 2
-    return 3   # kafa kabugu, iskelet, ekran tirnaklari: 10,1" ekran gelince
+    return 3   # kafa kabugu, iskelet: 7" ekran gelince (03.11.2026; tirnak kalkti)
 
 
 satir = []

@@ -1,34 +1,46 @@
-# Baskı listesi (1,65 m ana tasarım; 29 Ekim 2026, Y2b)
+# Baskı listesi (1,58 m ana tasarım; 03.11.2026)
 
-Önceki sürüm 125 cm V3 içindi (11 / 15 Ekim 2026, 50 parça); bu liste 1,65 m ana montajdan (`tasarim/freecad/montaj/`, 1.073 parça,
-baskı 63 adet) yeniden çıkarıldı. Kaynak: modül analizleri `tasarim/freecad/<modül>/<modül>-analiz.json` (`baski` alanı; %80 doluluk,
-10 mm³/s) ve omuz için M4 baskı analizi `tasarim/freecad/omuz/omuz-baski.json` (PETG-CF doluluk 0,8–0,9; 29 Ekim 2026'da 1650 omuz
-FCStd'sinden yeniden koşuldu: üst kol tüpü 100 → 130 mm). Toplamlar ve tablolar `planlama/y2/Y2b-baski.py` → `Y2b-baski.json`.
-Yazıcı: Bambu Lab X2D (246 × 246 × 250 mm); **63 parçanın hepsi X2D'ye ve okul tablasına (250³) sığıyor** (kabuk analizi 25/25).
-**10 adet destekli** basılır: omuzda omuz yuvası, omuz göbeği, kol çatalı, S1 kablo tamburu (ikişer) ve **kafa kabuğunun sağ ön
+Önceki sürümler: 125 cm V3 (11 / 15 Ekim 2026, 50 parça) ve 1,65 m (29 Ekim 2026, 63 parça). Bu liste 1,58 m ana montaja (`tasarim/freecad/montaj/`, 1.150 parça, baskı 65 adet; `tasarim/freecad/lale158/lale158-kontrol.json`) göre güncellendi. Kaynak: modül analizleri `tasarim/freecad/<modül>/<modül>-analiz.json` (`baski` alanı; %80 doluluk,
+10 mm³/s) ve omuz için M4 baskı analizi `tasarim/freecad/omuz/omuz-baski.json` (PETG-CF doluluk 0,8–0,9; 29 Ekim 2026'da 1650 omuz FCStd'sinden koşuldu; 158 cm'de omuz ve kollar yalnız aşağı indi, geometri değişmedi). Toplamlar ve tablolar `planlama/y2/Y2b-baski.py` → `Y2b-baski.json`.
+Yazıcı: Bambu Lab X2D (246 × 246 × 250 mm); **65 parçanın hepsi X2D'ye ve okul tablasına (250³) sığıyor** (en büyük ölçü 235 mm, `Y2b-baski.json`).
+**13 adet destekli** basılır: omuzda omuz yuvası, omuz göbeği, kol çatalı, S1 kablo tamburu (ikişer), **kafa kabuğunun sağ ön
 (yüz kabuğu sağ) ve sağ arka parçası** (karar 29 Ekim 2026: dikiş dili 16 mm şerit, ~1,25 mm konsol bölgeleri destekli; dikiş biçimi
-değişmez). Diğer 53 parça desteksiz. Göğüs Nextion kaldırıldığı için göğüs bantları artık ekran beklemiyor (Parti 1).
+değişmez), göğüs bandı sağ ve sol (cep üst kenarı), göğüs ekranı VESA taşıyıcı. Diğer 52 parça desteksiz. Göğüs bantlarında 11,6" gömülü ekran cebi var; bantlar Parti 1'de.
+
+## 158 cm güncellemesi (03.11.2026)
+
+Boy 1,58 m, göğüste 11,6" gömülü ekran. Kafa satırları hâlâ 7" ekranlı modelden: 10,1" QLED kararı (03.11 gece) modele girince kafa iskeleti ve kafa kabukları değişecek, adet ve gram o zaman yenilenir. Kabuk ve kafa satırları `*-analiz.json`'dan güncellendi. Güncel toplam **65 parça, 7,63–7,68 kg, 159–160 sa** (`planlama/y2/Y2b-baski.py`, 6,47 kg PETG + 1,16–1,21 kg PETG-CF).
+Ekran tutucu tırnaklar kalktı. Değişen baskılar: göğüs bandı, orta bant, omuz bandı (basamak), uzatma bantları (157,5), üst arka kapak, kafa kabukları (ekran yuvası), kafa iskeleti, boyun mili ve servo yuvası (kablo penceresi), boyun adaptörü (62,8). Aşağıdaki tablolarda satırı olmayan parçalar:
+
+| Parça | Adet | Ölçü (mm) | Filament (g) | Süre (sa) | Yön | Destek |
+|---|---|---|---|---|---|---|
+| Ust arka servis kapagi | 1 | 168 × 150 × 3 | 80 | 1,70 | dis yuzu tablada | desteksiz |
+| Etek servis kapagi H1 (sigorta kutusu) | 1 | 111 × 111 × 3 | 24 | 0,50 | duz (alt yuzu tablada) | desteksiz |
+| Etek servis kapagi H2 (ana sigorta) | 1 | 70 × 56 × 3 | 14 | 0,30 | duz (alt yuzu tablada) | desteksiz |
+| Gogus ekrani cercevesi sag | 1 | 207 × 147 × 10 | 29 | 0,60 | arka yuzu (flans) tablada | desteksiz |
+| Gogus ekrani cercevesi sol | 1 | 207 × 147 × 10 | 29 | 0,60 | arka yuzu (flans) tablada | desteksiz |
+| Gogus ekrani VESA tasiyici | 1 | 107 × 100 × 65 | 114 | 2,40 | VESA plakasi tablada; arka flans destekli | destekli |
+
+Kabukta destek isteyen parçalar: Gogus bandi sag, Gogus bandi sol, Gogus ekrani VESA tasiyici.
 
 ## Özet
 
 | Parti | Ne zaman | Adet | Filament | Baskı süresi |
 |---|---|---|---|---|
-| 1 | Hemen | 20 | 3,44–3,45 kg | ≈ 72 sa |
-| 2 | Servo ve horn gelip ölçülünce | 25 | 1,32–1,38 kg | ≈ 28–29 sa |
-| 3 | 10,1" yüz ekranı gelip ölçülünce (hoca verecek) | 9 | 0,76 kg | ≈ 16 sa |
-| 4 | Etek tasarım kararından sonra (M6 CAD) | 9 | 2,19 kg | ≈ 46 sa |
-| **Toplam** | | **63** | **7,71–7,77 kg** | **≈ 161–162 sa** |
+| 1 | Hemen | 24 | 3,28–3,29 kg | ≈ 68–69 sa |
+| 2 | Servo ve horn gelip ölçülünce | 25 | 1,33–1,38 kg | ≈ 28–29 sa |
+| 3 | 10,1" QLED yüz ekranı gelip ölçülünce | 5 | 0,80 kg | ≈ 17 sa |
+| 4 | Etek tasarım kararından sonra (M6 CAD) | 11 | 2,21 kg | ≈ 46 sa |
+| **Toplam** | | **65** | **7,63–7,68 kg** | **≈ 159–160 sa** |
 
-**Filament:** net **düz PETG 6,68 kg** (S1 kaseti ve tamburu dahil; 125 cm'de 5,01) + **PETG-CF 1,04–1,10 kg** (omuz doluluğu 0,8–0,9
-ve destek dahil; 29.10: boyun yükseltme adaptörü 70 g PETG'den CF'ye geçti, toplam aynı). Tolerans kuponları ayrıca ≈ 0,1 kg PETG ve ≈ 0,2–0,3 kg PETG-CF. Başarısız baskı payıyla **9 makara beyaz PETG
-(8 + 1 "kupon + pay"; %31 pay, 125 cm'deki orana yakın) + 1,5 kg siyah PETG-CF (3 × 0,5 kg; parça + kupon 1,24–1,40 kg, %7–21 pay)**. `maliyet.json` (29 Ekim 2026) buna göre:
-Microzey HS PETG beyaz (389 TL) ve Polymaker PETG-rCF08 siyah (1.114,03 TL; stok sorulmalı).
+**Filament:** net **düz PETG 6,47 kg** (S1 kaseti dahil) + **PETG-CF 1,16–1,21 kg** (`Y2b-baski.json`; omuz doluluğu 0,8–0,9
+ve destek dahil; 29.10: boyun yükseltme adaptörü 70 g PETG'den CF'ye geçti, toplam aynı). Tolerans kuponları ayrıca ≈ 0,1 kg PETG ve ≈ 0,2–0,3 kg PETG-CF. Başarısız baskı payıyla **9 makara beyaz PETG + 1,5 kg siyah PETG-CF (3 × 0,5 kg)** (v4 malzeme listesi; filamenti firma + ekip karşılar, satın alınmaz). Parça + kupon PETG-CF 1,36–1,51 kg: 1,5 kg'de pay neredeyse yok, doğrulanmadı.
 
 ## Renk (Duffy, 11 Ekim 2026: "Tamamen beyaz")
 
 | Renk | Parçalar |
 |---|---|
-| **Beyaz PETG** | Düz PETG'den basılan her şey: kabuk (gövde, uzatma ve göğüs bantları), etek ve dolgu şeritleri, kafa kabukları, kafa iskeleti, ekran tırnakları, üst kol tüpü, ön kol, el, sonar tutucular, akü takozu, servis kapağı, S1 kaseti ve tamburu |
+| **Beyaz PETG** | Düz PETG'den basılan her şey: kabuk (gövde, uzatma ve göğüs bantları), etek ve dolgu şeritleri, kafa kabukları, kafa iskeleti, kafa ekranı tırnakları (10,1" QLED modeliyle gelecek), göğüs ekranı çerçevesi (gövde renginde, 04.11) ve VESA taşıyıcı, üst kol tüpü, ön kol, el, sonar tutucular, akü takozu, servis kapakları, S1 kaseti |
 | **Siyah PETG-CF** | Yük taşıyan 11 tür (17 adet). Omuz ve dirsek eklemleri siyah görünür, kafa iç parçaları kabuğun içinde kalır |
 
 ## Malzeme
@@ -38,7 +50,7 @@ Microzey HS PETG beyaz (389 TL) ve Polymaker PETG-rCF08 siyah (1.114,03 TL; stok
 | **PETG** (beyaz) | Yukarıdaki beyaz parçalar | Yükü az, büyük parçalar. PETG tok, kolay basılır (camsı geçiş ≈ 80 °C, tahmini). Etekteki ısı ölçülünce kontrol edilmeli (E7) |
 | **PETG-CF** | Servo torkunu ya da rulman yükünü taşıyan 11 tür (aşağıda) | Düz PETG'den rijit, sıkı geçmede ve vida sıkıştırmasında daha az akma (tahmini) |
 
-**PETG-CF ile basılacak parçalar (≈ 1,04–1,10 kg):**
+**PETG-CF ile basılacak parçalar (toplam PETG-CF ≈ 1,16–1,21 kg):**
 
 | Modül | Parça | Adet | Taşıdığı yük |
 |---|---|---|---|
@@ -48,7 +60,7 @@ Microzey HS PETG beyaz (389 TL) ve Polymaker PETG-rCF08 siyah (1.114,03 TL; stok
 | omuz | Kol çatalı | 2 | S2 horn torku (DS3235) + 625ZZ yuvası |
 | dirsek | Dirsek çatalı | 2 | Dirsek horn torku; dış kol 8 mm, horn cıvatası M3×12 + 2 pul |
 | dirsek | Bilek flanşı | 2 | Bilek horn bağlantısı |
-| kafa | Servo yuvası | 1 | Kafanın tamamı (10,1" kafa, 2,04 kg) bunun üstünde |
+| kafa | Servo yuvası | 1 | Kafanın tamamı bunun üstünde (kütle `kafa-analiz.json`; 10,1" QLED modelinde değişecek) |
 | kafa | Rulman yuvası | 1 | 6808-2RS yuvası |
 | kafa | Boyun mili | 1 | Pan horn torku |
 | kafa | Eğme çatalı | 1 | Tilt horn torku (tilt sınırı ±13°, karar 29.10). Montajda tilt servosundan **önce** takılır (M6 C3) |
@@ -69,19 +81,17 @@ malzemeyle basılmalı.**
 yüzü tablada baskıda ~1,25 mm yükseklikte konsol bırakıyor (çıkıntı 26,1 / 52,3 cm², `Y2a-kontrol.md`). Dilimleyicide yalnız bu
 bölgelere destek ("support on build plate only" yeterli değilse boyalı destek); destek dil yüzünden temizlenmeli, dil 1,3 mm et.
 
-**Süre:** ≈ 162 saat; yazıcı hiç durmazsa 6,7 gün. Okul yazıcısı paylaşımlıysa gerçekçi süre 4–5 hafta (tahmini). Parti 1 hemen başlamalı.
+**Süre:** ≈ 159–160 saat; yazıcı hiç durmazsa ≈ 6,7 gün. Okul yazıcısı paylaşımlıysa gerçekçi süre 4–5 hafta (tahmini). Parti 1 hemen başlamalı.
 
 ## Sıralama mantığı
 
 1. **Parti 0, ilk gün tolerans kuponları** (`tasarim/freecad/test/`, aşağıda). Seçilen ölçü CAD'e girer, büyük parçalar sonra basılır.
-2. **Parti 1:** ölçüsü elimizdeki parçaya pek bağlı olmayanlar: gövde, uzatma, göğüs ve omuz bantları, servis kapağı, sonar tutucular,
+2. **Parti 1:** ölçüsü elimizdeki parçaya pek bağlı olmayanlar: gövde, uzatma, göğüs ve omuz bantları, göğüs ekranı çerçevesi ve VESA taşıyıcı, arka ve üst arka servis kapakları, sonar tutucular,
    rulman kapağı, üst kol tüpü (S1 kontrolü Y1/Y1b'de geçti, artık beklemiyor).
 3. **Parti 2:** horn delik dizilimi tahmini (25T disk, M3 delikler 8,5 mm yarıçapta) ve servo gövdeleri (DS3235, MG996R). Gelince
    kumpasla ölçülür, CAD güncellenir, sonra basılır.
-4. **Parti 3:** 10,1" yüz ekranı **hoca verecek** (21 Ekim); CAD'deki Waveshare 10.1" (B) tahmini model. Ekran gelince ölçülür, kafa
-   iskeleti ve kafa kabukları sonra basılır.
-5. **Parti 4:** etek üst plakasına ana anahtar deliği (M6 K7), XT60 şarj girişi ve sigorta/servis kapağı (M6 K5) henüz çizilmedi (Y3),
-   etek ısı/havalandırma kararı bekliyor (E7). Akü **yerinde** (karar 29.10); takoz akü gelince teyit edilip basılır.
+4. **Parti 3:** kafa ekranı 10,1" QLED 1280×720 (WaveShare, kod 20789; 03.11 gece). Vida deliği yok, tırnakla tutulur; kütle doğrulanmadı. Model güncellenince ve ekran gelip ölçülünce kafa iskeleti ve kafa kabukları basılır. Aşağıdaki satırlar henüz 7" modelden.
+5. **Parti 4:** etek ana anahtar deliği (M6 K7) ve H1, H2 servis kapakları (M6 K5, K6) Y3'te CAD'e girdi; etek ısı/havalandırma kararı bekliyor (E7). Akü **yerinde** (karar 29.10); takoz akü gelince teyit edilip basılır.
 
 ## Tolerans (CAD'de)
 
@@ -111,14 +121,14 @@ söyleyin, CAD'e uygulanır ve STL'ler yeniden çıkarılır.
 
 ## STL durumu
 
-Omuz STL'leri (`tasarim/freecad/omuz/stl/`, 1650 omuzdan) ve kuponlar (`tasarim/freecad/test/stl/`) var. Diğer modüllerin baskı
+Omuz STL'leri (`tasarim/freecad/omuz/stl/`, 1650 omuzdan; 158 cm'de omuz geometrisi değişmedi) ve kuponlar (`tasarim/freecad/test/stl/`) var. Diğer modüllerin baskı
 parçaları kupon sonucundan sonra FreeCAD'den toplu dışa aktarılmalı (açık iş; Y4'te modüller yeniden üretilirken).
 
 Tablolarda ölçü analizdeki baskı yönündeki kutu (mm), filament ve süre adet başına; omuz satırlarında aralık doluluk 0,8–0,9.
 
 ## Parti 1 — hemen basılabilir
 
-20 adet · 3,44–3,45 kg filament · ≈ 72 saat
+Özet'e göre 24 adet · 3,28–3,29 kg filament · ≈ 68–69 saat (tabloda 20 satır; üst arka kapak, 2 çerçeve ve VESA taşıyıcı yukarıdaki 158 cm tablosunda). 1,65 m'deki satır: 20 adet · 3,44–3,45 kg · ≈ 72 saat.
 
 | ☐ | Modül | Parça | Adet | Ölçü (mm) | Filament (g/adet) | Süre (sa/adet) | Tabla yönü |
 |---|---|---|---|---|---|---|---|
@@ -127,23 +137,23 @@ Tablolarda ölçü analizdeki baskı yönündeki kutu (mm), filament ve süre ad
 | ☐ | taban | Sonar tutucu sağ | 1 | 61 × 61 × 8 | 5 | 0,11 | arka yüzü (ray tarafı) tablada |
 | ☐ | kabuk | Gövde alt bandı sağ | 1 | 170 × 137 × 226 | 299 | 6,20 | dik (alt kenarı tablada) |
 | ☐ | kabuk | Gövde alt bandı sol | 1 | 170 × 125 × 226 | 280 | 5,80 | dik (alt kenarı tablada) |
-| ☐ | kabuk | Gövde uzatma bandı 1 sağ | 1 | 170 × 137 × 204 | 274 | 5,70 | dik (alt kenarı tablada) |
-| ☐ | kabuk | Gövde uzatma bandı 1 sol | 1 | 170 × 125 × 204 | 257 | 5,40 | dik (alt kenarı tablada) |
-| ☐ | kabuk | Gövde uzatma bandı 2 sağ | 1 | 170 × 137 × 204 | 274 | 5,70 | dik (alt kenarı tablada) |
-| ☐ | kabuk | Gövde uzatma bandı 2 sol | 1 | 170 × 125 × 204 | 257 | 5,40 | dik (alt kenarı tablada) |
-| ☐ | kabuk | Gövde orta bandı sağ | 1 | 183 × 150 × 227 | 262 | 5,50 | dik (alt kenarı tablada) |
-| ☐ | kabuk | Gövde orta bandı sol | 1 | 183 × 138 × 227 | 252 | 5,20 | dik (alt kenarı tablada) |
-| ☐ | kabuk | Göğüs bandı sağ (Nextion yok, kapalı) | 1 | 209 × 163 × 205 | 330 | 6,90 | dik (alt kenarı tablada) |
-| ☐ | kabuk | Göğüs bandı sol (Nextion yok, kapalı) | 1 | 209 × 151 × 205 | 313 | 6,50 | dik (alt kenarı tablada) |
-| ☐ | kabuk | Omuz bandı sağ | 1 | 164 × 162 × 102 | 199 | 4,10 | ters (üst kapak tablada) |
-| ☐ | kabuk | Omuz bandı sol | 1 | 162 × 152 × 102 | 192 | 4,00 | ters (üst kapak tablada) |
+| ☐ | kabuk | Gövde uzatma bandı 1 sağ | 1 | 170 × 137 × 170 | 224 | 4,70 | dik (alt kenarı tablada) |
+| ☐ | kabuk | Gövde uzatma bandı 1 sol | 1 | 170 × 125 × 170 | 211 | 4,40 | dik (alt kenarı tablada) |
+| ☐ | kabuk | Gövde uzatma bandı 2 sağ | 1 | 170 × 137 × 170 | 224 | 4,70 | dik (alt kenarı tablada) |
+| ☐ | kabuk | Gövde uzatma bandı 2 sol | 1 | 170 × 125 × 170 | 211 | 4,40 | dik (alt kenarı tablada) |
+| ☐ | kabuk | Gövde orta bandı sağ | 1 | 214 × 162 × 227 | 272 | 5,70 | dik (alt kenarı tablada) |
+| ☐ | kabuk | Gövde orta bandı sol | 1 | 214 × 150 × 227 | 262 | 5,40 | dik (alt kenarı tablada) |
+| ☐ | kabuk | Göğüs bandı sağ (gömülü 11,6" cep) | 1 | 217 × 164 × 235 | 219 | 4,60 | dik (alt kenarı tablada), **destekli: cep üst kenarı (köprü ~150 mm)** |
+| ☐ | kabuk | Göğüs bandı sol (gömülü 11,6" cep) | 1 | 217 × 152 × 235 | 215 | 4,50 | dik (alt kenarı tablada), **destekli: cep üst kenarı (köprü ~150 mm)** |
+| ☐ | kabuk | Omuz bandı sağ | 1 | 164 × 156 × 102 | 184 | 3,80 | ters (üst kapak tablada) |
+| ☐ | kabuk | Omuz bandı sol | 1 | 156 × 152 × 102 | 178 | 3,70 | ters (üst kapak tablada) |
 | ☐ | kabuk | Arka servis kapağı | 1 | 190 × 160 × 3 | 98 | 2,00 | dış yüzü tablada |
 | ☐ | omuz | Rulman kapağı **(PETG-CF)** | 2 | 76 × 60 × 14 | 15–17 | 0,32–0,36 | +X: x = 146 yüzü tablada, Ø52 yuva yukarı (desteksiz) |
 | ☐ | omuz | Üst kol tüpü | 2 | 130 × 56 × 56 | 54 | 1,13 | +Y: uç tablada, brim (desteksiz) |
 
 ## Parti 2 — servo ve horn gelip ölçülünce
 
-25 adet · 1,32–1,38 kg filament · ≈ 28–29 saat (omuz doluluk 0,8–0,9)
+Özet'e göre 25 adet · 1,33–1,38 kg filament · ≈ 28–29 saat (omuz doluluk 0,8–0,9).
 
 | ☐ | Modül | Parça | Adet | Ölçü (mm) | Filament (g/adet) | Süre (sa/adet) | Tabla yönü | Bağlı olduğu ölçü |
 |---|---|---|---|---|---|---|---|---|
@@ -160,34 +170,33 @@ Tablolarda ölçü analizdeki baskı yönündeki kutu (mm), filament ve süre ad
 | ☐ | kafa | Servo yuvası **(PETG-CF)** | 1 | 88 × 88 × 43 | 152 | 3,16 | dik: kulak flanşı tablada | MG996R gövdesi |
 | ☐ | kafa | Rulman yuvası **(PETG-CF)** | 1 | 68 × 60 × 36 | 27 | 0,56 | dik: kulaklar tablada, rulman yuvası yukarı | 6808-2RS |
 | ☐ | kafa | Boyun mili **(PETG-CF)** | 1 | 60 × 60 × 48 | 41 | 0,85 | dik: horn diski tablada, flanş yukarı (45° koni) | **horn delik dizilimi** |
-| ☐ | kafa | Eğme çatalı **(PETG-CF)** | 1 | 74 × 60 × 49 | 36 | 0,74 | dik: taban tablada, duvarlar yukarı | **horn delik dizilimi** |
-| ☐ | kafa | Boyun yükseltme adaptörü **(PETG-CF)** | 1 | 60 × 60 × 58 | 70 | 1,45 | dik: alt flanş tablada (45° koni) | — (PETG-CF, karar 29.10) |
+| ☐ | kafa | Eğme çatalı **(PETG-CF)** | 1 | 74 × 60 × 49 | 36 | 0,75 | dik: taban tablada, duvarlar yukarı | **horn delik dizilimi** |
+| ☐ | kafa | Boyun yükseltme adaptörü **(PETG-CF)** | 1 | 60 × 60 × 63 | 74 | 1,54 | dik: alt flanş tablada (45° koni) | — (PETG-CF, karar 29.10) |
 
-## Parti 3 — 10,1" yüz ekranı gelip ölçülünce
+## Parti 3 — 10,1" QLED yüz ekranı gelip ölçülünce
 
-9 adet · 0,76 kg filament · ≈ 16 saat
+Özet'e göre 5 adet · 0,80 kg filament · ≈ 17 saat (7" modelden; ekran tırnakları kalktı). 1,65 m'deki satır: 9 adet · 0,76 kg · ≈ 16 saat.
 
 | ☐ | Modül | Parça | Adet | Ölçü (mm) | Filament (g/adet) | Süre (sa/adet) | Tabla yönü | Bağlı olduğu ölçü |
 |---|---|---|---|---|---|---|---|---|
-| ☐ | kafa | Kafa iskeleti (10 in) | 1 | 224 × 115 × 48 | 128 | 2,66 | ters: tabla tablada, yanaklar yukarı | **10,1" ekran + kamera delikleri** |
-| ☐ | kafa | Yüz kabuğu (ön) sağ | 1 | 215 × 151 × 37 | 94 | 1,95 | ön yüzü tablada, **destekli: dikiş dili (16 mm şerit, ~1,25 mm konsol), karar 29.10** | **10,1" ekran ölçüsü** |
-| ☐ | kafa | Yüz kabuğu (ön) sol | 1 | 215 × 135 × 37 | 87 | 1,81 | ön yüzü tablada | **10,1" ekran ölçüsü** |
-| ☐ | kafa | Arka kafa kabuğu sağ | 1 | 215 × 151 × 107 | 229 | 4,77 | arka yüzü tablada, **destekli: dikiş dili (16 mm şerit, ~1,25 mm konsol), karar 29.10** | 10,1" ekran ölçüsü |
-| ☐ | kafa | Arka kafa kabuğu sol | 1 | 215 × 135 × 107 | 215 | 4,49 | arka yüzü tablada | 10,1" ekran ölçüsü |
-| ☐ | kafa | Ekran tutucu tırnak (4 köşe) | 4 | 18 × 16 × 9 | 1 | 0,03 | plaka tablada, dil yukarı | 10,1" ekran kalınlığı |
+| ☐ | kafa | Kafa iskeleti | 1 | 224 × 115 × 48 | 128 | 2,66 | ters: tabla tablada, yanaklar yukarı | 7" ekran kulak delikleri (04) + kamera delikleri |
+| ☐ | kafa | Yüz kabuğu (ön) sağ | 1 | 215 × 151 × 37 | 119 | 2,49 | ön yüzü tablada, **destekli: dikiş dili (16 mm şerit, ~1,25 mm konsol), karar 29.10** | 7" ekran ölçüsü |
+| ☐ | kafa | Yüz kabuğu (ön) sol | 1 | 215 × 135 × 37 | 110 | 2,29 | ön yüzü tablada | 7" ekran ölçüsü |
+| ☐ | kafa | Arka kafa kabuğu sağ | 1 | 215 × 151 × 107 | 229 | 4,77 | arka yüzü tablada, **destekli: dikiş dili (16 mm şerit, ~1,25 mm konsol), karar 29.10** | 7" ekran ölçüsü |
+| ☐ | kafa | Arka kafa kabuğu sol | 1 | 215 × 135 × 107 | 215 | 4,49 | arka yüzü tablada | 7" ekran ölçüsü |
 
 ## Parti 4 — tasarım kararından sonra (etek, akü)
 
-9 adet · 2,19 kg filament · ≈ 46 saat
+Özet'e göre 11 adet · 2,21 kg filament · ≈ 46 saat (tabloda 9 satır; H1 ve H2 kapakları yukarıdaki 158 cm tablosunda). 1,65 m'deki satır: 9 adet · 2,19 kg · ≈ 46 saat.
 
 | ☐ | Modül | Parça | Adet | Ölçü (mm) | Filament (g/adet) | Süre (sa/adet) | Tabla yönü | Bağlı olduğu ölçü |
 |---|---|---|---|---|---|---|---|---|
 | ☐ | taban | Akü ön takozu | 1 | 125 × 125 × 25 | 72 | 1,50 | alt yüzü tablada | Victron ölçüsü (akü yerinde, karar 29.10); akü gelince teyit |
-| ☐ | kabuk | Etek arka sağ | 1 | 234 × 190 × 227 | 372 | 7,80 | ters (üst plakası tablada) | **ana anahtar (M6 K7) + XT60 + sigorta kapağı (M6 K5), havalandırma (E7)** |
-| ☐ | kabuk | Etek arka sol | 1 | 222 × 175 × 227 | 364 | 7,60 | ters (üst plakası tablada) | **ana anahtar (M6 K7) + XT60 + sigorta kapağı (M6 K5), havalandırma (E7)** |
-| ☐ | kabuk | Etek orta sağ | 1 | 222 × 199 × 227 | 216 | 4,50 | ters (üst plakası tablada) | havalandırma kararı |
-| ☐ | kabuk | Etek orta sol | 1 | 222 × 199 × 227 | 216 | 4,50 | ters (üst plakası tablada) | havalandırma kararı |
+| ☐ | kabuk | Etek arka sağ | 1 | 234 × 190 × 227 | 366 | 7,60 | ters (üst plakası tablada) | **ana anahtar (M6 K7) + XT60 + sigorta kapağı (M6 K5), havalandırma (E7)** |
+| ☐ | kabuk | Etek arka sol | 1 | 222 × 175 × 227 | 362 | 7,50 | ters (üst plakası tablada) | **ana anahtar (M6 K7) + XT60 + sigorta kapağı (M6 K5), havalandırma (E7)** |
+| ☐ | kabuk | Etek orta sağ | 1 | 222 × 199 × 227 | 217 | 4,50 | ters (üst plakası tablada) | havalandırma kararı |
+| ☐ | kabuk | Etek orta sol | 1 | 222 × 199 × 227 | 217 | 4,50 | ters (üst plakası tablada) | havalandırma kararı |
 | ☐ | kabuk | Etek ön sağ | 1 | 234 × 190 × 227 | 372 | 7,70 | ters (üst plakası tablada) | havalandırma kararı |
-| ☐ | kabuk | Etek ön sol | 1 | 222 × 175 × 227 | 362 | 7,50 | ters (üst plakası tablada) | havalandırma kararı |
-| ☐ | kabuk | Etek dolgu şeridi arka (520 taban) | 1 | 192 × 88 × 227 | 109 | 2,30 | ters (üst plakası tablada) | — |
+| ☐ | kabuk | Etek ön sol | 1 | 222 × 175 × 227 | 363 | 7,60 | ters (üst plakası tablada) | havalandırma kararı |
+| ☐ | kabuk | Etek dolgu şeridi arka (520 taban) | 1 | 192 × 88 × 227 | 98 | 2,00 | ters (üst plakası tablada) | — |
 | ☐ | kabuk | Etek dolgu şeridi ön (520 taban) | 1 | 192 × 88 × 227 | 107 | 2,20 | ters (üst plakası tablada) | — |
