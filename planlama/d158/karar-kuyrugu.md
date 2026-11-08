@@ -107,6 +107,8 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
   - Düz zemin fren 1,8 m/s²: 1,746 / 1,713 / 1,587 (`izgara_yuk_*.fren_pay.duz_min`); üçü de ≥ 1,5.
   - Rampa 5°: 1,517 / 1,477 / 1,327 (`izgara_yuk_*.a_sinir_pay15.rampa5_geri`); 100 g ve 500 g eşik 1,5'in altında.
   - Düzde devrilme sınırlamıyor; sınırı servo payı belirliyor (K9).
+  - F1b P1.1 (akü 3,0 kg, 08.11.2026) sonrası aynı anahtarlar: düz 2,097 / 2,057 / 1,907; fren 1,748 / 1,714 / 1,589; rampa 5° 1,519 / 1,479 / 1,329
+    (K9'daki 500 g rampa 1,327 → 1,329). 100 g ve 500 g rampada yine < 1,5; seçeneklerin sonucu değişmedi.
 - **Varsayılan:** P3.1 tablosu (0 / 50 / 100 / 200 / 500 g) çıkınca; ön öneri b, ≤ 100 g ve rampada yüksüz (`dongu-158.md:138, §4 K3`).
 - **Bloke:** P3.1'in önerisi, P3.2, P9.3 rapor.
 - **Durum:** açık (`qled-cerceve-tasarim-notu.md:128`; KZ2 açık: `planlama/y3/Y3-kontrol.md:115`, `planlama/kararlar-2026-10-29.md:23-24`).
@@ -278,6 +280,9 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 - **Varsayılan:** a.
 - **Bloke:** P0.1.
 - **Durum:** açık (P0.1).
+- **Not (F1b P1.1, 08.11.2026):** `planlama/y2/Y2b-ivme.json` P1.1 güncel modelle yeniden üretti (`planlama/y2/Y2b-ivme.py`, akü 3,0 kg):
+  ev kütlesi 26.115,6 g, yüksüz rampa5_geri 1,519 (`KY/uygulama-ivme.json` ile aynı). Artık 03.11 ara çıktısı değil. K23'ün öteki dosyaları
+  (`montaj/yerlesim-kontrol.json`, `kabuk/gorsel/*.png`) bilerek yazılmadı, 03.11 hâlinde (`planlama/d158/F1b-gunluk.md` P1.1).
 
 ## K24 · G4 öncesi 11,6" raporundaki iki satır temizlensin mi
 - **Soru:** `raporlar/11-6-inc-gogus-ekrani-sigma.md:40` ve `:59` depo dışındaki hafıza kasasının arşiv dosya adlarını ve takma adı içeriyor.

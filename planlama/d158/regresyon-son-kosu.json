@@ -1,8 +1,8 @@
 {
  "aciklama": "Son regresyon koşusu (taban değil). Üreten: planlama/d158/regresyon.py",
- "tarih": "2026-11-08T23:29:59+03:00",
+ "tarih": "2026-11-09T02:17:55+03:00",
  "cikis_kodu": 0,
- "taban_tarih": "2026-11-08T23:17:06+03:00",
+ "taban_tarih": "2026-11-09T01:57:45+03:00",
  "taban_guncellendi": true,
  "degerler": {
   "boy_mm": {
@@ -10,7 +10,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/lale158/lale158-kontrol.json",
     "anahtar": "toplam_boy_mm",
-    "sha256_12": "19dde8afdff3"
+    "sha256_12": "9dedd36ff18e"
    },
    "yon": "esit",
    "esik": 1580.0,
@@ -36,7 +36,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/kabuk/kabuk-analiz.json",
     "anahtar": "cakisma",
-    "sha256_12": "6271973a4341",
+    "sha256_12": "5a30c4a7aedc",
     "not_": "liste uzunluğu (çakışan çift sayısı)"
    },
    "yon": "kucuk_iyi",
@@ -49,7 +49,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/kabuk/kabuk-analiz.json",
     "anahtar": "iskelet_cakisma",
-    "sha256_12": "6271973a4341",
+    "sha256_12": "5a30c4a7aedc",
     "not_": "liste uzunluğu (çakışan çift sayısı)"
    },
    "yon": "kucuk_iyi",
@@ -62,7 +62,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/carpisma-sonuc.json",
     "anahtar": "ev_pozu_cakisma",
-    "sha256_12": "f5be6c482ff3",
+    "sha256_12": "af958449b389",
     "not_": "liste uzunluğu (çakışan çift sayısı)"
    },
    "yon": "kucuk_iyi",
@@ -75,12 +75,12 @@
    "kaynak": {
     "dosya": "tasarim/freecad/lale158/kafa-yerlesim/uygulama-ivme.json",
     "anahtar": "izgara_yuk_0g.a_sinir_pay15.rampa5_* (en küçük)",
-    "sha256_12": "241cef5ba83e",
+    "sha256_12": "cacaf5cb52ab",
     "not_": "rampa5_* en küçüğü: rampa5_geri"
    },
    "yon": "buyuk_iyi",
    "esik": 1.5,
-   "deger": 1.517,
+   "deger": 1.519,
    "esik_durumu": "sağlıyor"
   },
   "tilt_payi": {
@@ -112,7 +112,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/lale158/kafa-yerlesim/uygulama-olcum.json",
     "anahtar": "mic_hoparlor.poz_min_mm",
-    "sha256_12": "989e96dd430e"
+    "sha256_12": "16cb160e09e2"
    },
    "yon": "buyuk_iyi",
    "esik": 400.0,
@@ -124,7 +124,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/lale158/kafa-yerlesim/uygulama-olcum.json",
     "anahtar": "kablo_sy8205.*.sy8205_kesisim_mm3 + kafa_ici_qled_kablo.*.sy8205_kesisim_mm3",
-    "sha256_12": "989e96dd430e",
+    "sha256_12": "16cb160e09e2",
     "not_": "13 kablonun sy8205_kesisim_mm3 toplamı"
    },
    "yon": "kucuk_iyi",
@@ -166,8 +166,8 @@
   },
   {
    "ad": "rampa_yuksuz",
-   "onceki": 1.517,
-   "simdi": 1.517,
+   "onceki": 1.519,
+   "simdi": 1.519,
    "durum": "aynı"
   },
   {
@@ -202,12 +202,17 @@
   "carpisma_sonuc": {
    "kaynak": "tasarim/freecad/carpisma-sonuc.json : tek_kosu, birlestirme_notu, bolumler.*.kosu",
    "tek_kosu": false,
-   "birlestirme_notu": "2026-11-08: EKSIK / KARISIK birlestirme: eksik bolum yok; kosu kimlikleri ['20261103-215611', '20261108-221801', '20261108-230636', '20261108-231459']; kaynak ayni: False. Tam sonuc icin 'python carpisma_kos.py' ile tum bolumleri yeniden kos.",
+   "birlestirme_notu": "2026-11-09: EKSIK / KARISIK birlestirme: eksik bolum yok; kosu kimlikleri ['20261103-215611', '20261109-012656', '20261109-012829', '20261109-013228', '20261109-013626', '20261109-013723', '20261109-014001', '20261109-014757', '20261109-015550']; kaynak ayni: False. Tam sonuc icin 'python carpisma_kos.py' ile tum bolumleri yeniden kos.",
    "kosular": [
     "20261103-215611",
-    "20261108-221801",
-    "20261108-230636",
-    "20261108-231459"
+    "20261109-012656",
+    "20261109-012829",
+    "20261109-013228",
+    "20261109-013626",
+    "20261109-013723",
+    "20261109-014001",
+    "20261109-014757",
+    "20261109-015550"
    ]
   }
  }

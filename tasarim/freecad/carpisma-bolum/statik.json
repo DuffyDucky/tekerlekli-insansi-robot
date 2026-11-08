@@ -1,16 +1,16 @@
 {
  "bolum": "statik",
- "kosu": "20261108-221801",
- "baslangic": "2026-11-08T22:19:05",
- "bitis": "2026-11-08T22:19:19",
- "sure_s": 14.2,
- "yukleme_s": 63.5,
- "tepe_bellek_mb": 733,
- "tepe_sayfa_mb": 2642,
+ "kosu": "20261109-012656",
+ "baslangic": "2026-11-09T01:28:12",
+ "bitis": "2026-11-09T01:28:27",
+ "sure_s": 14.9,
+ "yukleme_s": 73.8,
+ "tepe_bellek_mb": 738,
+ "tepe_sayfa_mb": 2646,
  "ayni_surec": [
   "statik"
  ],
- "pid": 20788,
+ "pid": 26904,
  "moduller": [
   "iskelet",
   "omuz_sag",
@@ -23,7 +23,7 @@
  ],
  "kaynak": {
   "carpisma.py": "c688d738c3",
-  "arayuz.py": "4d1b65e513",
+  "arayuz.py": "c085ca8123",
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
@@ -242,13 +242,13 @@
    "dirsek_sag": 400.5,
    "dirsek_sol": 400.5,
    "kafa": 2088.5,
-   "taban": 7909.8
+   "taban": 8109.8
   },
-  "kutle_toplam_g": 25515.6,
+  "kutle_toplam_g": 25715.6,
   "agirlik_merkezi": [
    -0.03,
-   531.56,
-   -8.38
+   528.46,
+   -9.26
   ]
  }
 }

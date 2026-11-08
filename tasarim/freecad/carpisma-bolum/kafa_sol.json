@@ -1,16 +1,16 @@
 {
  "bolum": "kafa_sol",
- "kosu": "20261108-230636",
- "baslangic": "2026-11-08T23:06:50",
- "bitis": "2026-11-08T23:14:48",
- "sure_s": 478.4,
- "yukleme_s": 12.7,
- "tepe_bellek_mb": 620,
- "tepe_sayfa_mb": 2640,
+ "kosu": "20261109-014757",
+ "baslangic": "2026-11-09T01:48:09",
+ "bitis": "2026-11-09T01:55:49",
+ "sure_s": 459.4,
+ "yukleme_s": 11.7,
+ "tepe_bellek_mb": 619,
+ "tepe_sayfa_mb": 2642,
  "ayni_surec": [
   "kafa_sol"
  ],
- "pid": 10652,
+ "pid": 27140,
  "moduller": [
   "omuz_sol",
   "dirsek_sol",
@@ -18,7 +18,7 @@
  ],
  "kaynak": {
   "carpisma.py": "c688d738c3",
-  "arayuz.py": "4d1b65e513",
+  "arayuz.py": "c085ca8123",
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
@@ -1058,10 +1058,10 @@
       "cakisan_kafa_poz": []
      }
     ],
-    "sure_s": 478.2
+    "sure_s": 459.2
    }
   },
   "not_": "kafa pozu = (pan, tilt); kol pozu = (one-arka, yana, dirsek, bilek); alt poz: kafa Govde (), Pan (pan), Kafa (pan, tilt); kol Gobek (one-arka), Kol/UstKol (one-arka, yana), OnKol (+dirsek), El (+bilek). Eklem araligi: kafa pan +-90, tilt -25...30 ve kol araligi; aralik disi = kafa pan +-90 disi ya da tilt 40 (serbest -25...40) ya da kol ince komsulugu disi. Olculmeyen ciftlerin boslugu >= 100 mm (sinir kutusu).",
-  "sure_s": 478.4
+  "sure_s": 459.4
  }
 }

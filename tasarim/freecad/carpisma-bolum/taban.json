@@ -1,16 +1,16 @@
 {
  "bolum": "taban",
- "kosu": "20261108-231459",
- "baslangic": "2026-11-08T23:16:06",
- "bitis": "2026-11-08T23:16:33",
- "sure_s": 27.0,
- "yukleme_s": 67.2,
- "tepe_bellek_mb": 744,
- "tepe_sayfa_mb": 2747,
+ "kosu": "20261109-015550",
+ "baslangic": "2026-11-09T01:56:52",
+ "bitis": "2026-11-09T01:57:16",
+ "sure_s": 24.0,
+ "yukleme_s": 61.5,
+ "tepe_bellek_mb": 741,
+ "tepe_sayfa_mb": 2743,
  "ayni_surec": [
   "taban"
  ],
- "pid": 9976,
+ "pid": 27416,
  "moduller": [
   "iskelet",
   "omuz_sag",
@@ -23,7 +23,7 @@
  ],
  "kaynak": {
   "carpisma.py": "c688d738c3",
-  "arayuz.py": "4d1b65e513",
+  "arayuz.py": "c085ca8123",
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
@@ -333,7 +333,7 @@
      "not_": "siki tutucu kutunun alt siniri (gercek nokta en cok ~0,5 mm yukarida)"
     },
     "taban_en_ust_y_mm": 290.0,
-    "sure_s": 7.1
+    "sure_s": 6.3
    },
    "sol": {
     "poz": {
@@ -525,7 +525,7 @@
      "not_": "siki tutucu kutunun alt siniri (gercek nokta en cok ~0,5 mm yukarida)"
     },
     "taban_en_ust_y_mm": 290.0,
-    "sure_s": 7.3
+    "sure_s": 6.5
    }
   },
   "kafa": {
@@ -554,6 +554,6 @@
   "hedef_sayisi": 359,
   "yakin_mm": 5.0,
   "not_": "kol pozu = (one-arka, yana, dirsek, bilek); aralik disi halka omuz -60 / 150, yana -10. Hedef: taban parcalari (kablo yolu semalari haric), ana anahtar dugmesi gosterimi, kabuk etek parcalari. Bulunan en kucugun otesindeki ciftler olculmedi (siki kutu boslugu alt sinir).",
-  "sure_s": 27.0
+  "sure_s": 24.0
  }
 }

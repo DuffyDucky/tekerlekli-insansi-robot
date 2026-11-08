@@ -39,7 +39,8 @@ tilt payı ≥ 3,0 (3,64); pan payı ≥ 2,0 (2,21); mikrofon-hoparlör ≥ 400 
 
 | Paket | Ajan | Yazdığı alan |
 |---|---|---|
-| F1a (P1.2, P1.3, P1.6, P1.7) | C kayıt | `tasarim/freecad/` kafa betikleri, `lale158/kafa-yerlesim/`, `planlama/d158/F1a-*`, FreeCAD makinesi |
+| F1b (P1.1, P1.4, P1.5) | C kayıt | `tasarim/freecad/` taban, kabuk, göğüs/kablo betikleri ve çıktıları, `carpisma-bolum/` (omuz hariç), `planlama/y2/`, `planlama/d158/F1b-*`, FreeCAD makinesi |
+| F3a (P3.1, P3.2) | B kontrol (A bitti) | yalnız yeni dosyalar `planlama/d158/F3a-*`; FreeCAD yok; `karar-kuyrugu.md`'ye yazmaz |
 
 - **Tasarım sırası:** her adım öncekini bozmamalı; tam çakışma taraması yalnız P6'da, bir kez.
 - **Karar gereken yerde durma:** Ahmet'in kararını isteyen madde `planlama/d158/karar-kuyrugu.md`'ye yazılır
@@ -70,13 +71,13 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
-| P1.1 | Akü 2,8 → 3,0 kg (Victron, malzeme listesi v4) modele; devrilme ve ivme yeniden | Rampa payı ≥ 1,5 kalır ya da sonuç karar kuyruğuna | – | ⏳ |
-| P1.2 | Modelde kalan MAX98357A'yı çıkar (04.11 karar: PAM8403 + USB ses kartı); `elektrik.md`'de PAM 5 V besleme noktası D24V50F5 olarak | Modelde ses yükseltici tek; kafa içi çakışma 0 | P1.1 | ⏳ |
-| P1.3 | AI HAT+ 26T'yi modele ekle (65 × 56,5, yığın 16, 30 g); arka üst cıvata boss'u çakışmasına (77,69 mm³) **iki çözüm** üret: boss taşı / HAT yönünü çevir | İki seçenek de çakışma 0; seçim karar kuyruğuna, varsayılan "boss taşı" | P1.1 | ⏳ |
-| P1.4 | USB dokunmatik kablo yolu SY8205 kartından geçiyor (249,7 mm³): şema yolunu kartın yanından geçir | kablo_tup_cakisma 0 | P1.3 | ⏳ |
-| P1.5 | `kabuk1.log` 16 × "Wire is not closed" kaynağını bul ve düzelt; `kabuk_rapor.py` `ekran_kontrol` KeyError → `kabuk/rapor.html` yenilensin (eski MAX satırı gider) | Temiz koşuda 0 satır | P1.1 | ⏳ |
-| P1.6 | Eski metin ve betikler: `ikinci_ozet.py:142`, `lale158_rapor.py` "kasa↔çerçeve"; `kafa_rapor.py`, `kafa_gorsel.py` (125 cm, StopIteration) 158'e | İki betik hatasız koşar, rapor 158 sayılarıyla | P1.5 | ⏳ |
-| P1.7 | Hoparlör kabı arka tutucu + kelepçe (modelde yok) | Çakışma 0, baskı analizi 0 destek sorunu | P1.3 | ⏳ |
+| P1.1 | Akü 2,8 → 3,0 kg (Victron, malzeme listesi v4) modele; devrilme ve ivme yeniden | Rampa payı ≥ 1,5 kalır ya da sonuç karar kuyruğuna | – | 🔄 |
+| P1.2 | Modelde kalan MAX98357A'yı çıkar (04.11 karar: PAM8403 + USB ses kartı); `elektrik.md`'de PAM 5 V besleme noktası D24V50F5 olarak | Modelde ses yükseltici tek; kafa içi çakışma 0 | P1.1 | ✅ |
+| P1.3 | AI HAT+ 26T'yi modele ekle (65 × 56,5, yığın 16, 30 g); arka üst cıvata boss'u çakışmasına (77,69 mm³) **iki çözüm** üret: boss taşı / HAT yönünü çevir | İki seçenek de çakışma 0; seçim karar kuyruğuna, varsayılan "boss taşı" | P1.1 | ✅ |
+| P1.4 | Göğüs kablo tüpleri × göğüs ekranı (F0: SY8205 kesişimi zaten 0; HDMI 897,1 / 12 V 617,3 / USB 391,5 mm³ port ucunda): gerçek çakışmayı uç temasından ayır | kablo_tup_cakisma 0 | P1.3 | 🟡 girinti varsayımıyla 0 (HDMI 416,4 / 12 V 280,2 / USB 173,6 mm³ kasaya 12 mm iniş, port girintisi modelde yok); ekran gelince yeniden ölçülecek |
+| P1.5 | `kabuk1.log` 16 × "Wire is not closed" kaynağını bul ve düzelt; `kabuk_rapor.py` `ekran_kontrol` KeyError → `kabuk/rapor.html` yenilensin (eski MAX satırı gider) | Temiz koşuda 0 satır | P1.1 | 🔄 (B: kök neden delik tepesine teğet kesit düzlemi; 0,05 mm kaydırma çözüm) |
+| P1.6 | Eski metin ve betikler: `ikinci_ozet.py:142`, `lale158_rapor.py` "kasa↔çerçeve"; `kafa_rapor.py`, `kafa_gorsel.py` (125 cm, StopIteration) 158'e | İki betik hatasız koşar, rapor 158 sayılarıyla | P1.5 | ✅ |
+| P1.7 | Hoparlör kabı arka tutucu + kelepçe (modelde yok) | Çakışma 0, baskı analizi 0 destek sorunu | P1.3 | ✅ |
 
 ### Faz F2: Omuz
 
@@ -89,15 +90,15 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
-| P3.1 | Düz zeminde elde yük sınırı: 0 / 50 / 100 / 200 / 500 g için devrilme payı ve servo payı tablosu | Tablo + önerilen sınır karar kuyruğuna | F2 ile | ⏳ |
-| P3.2 | Servo payları 3,0 kg akü ve AI HAT+ sonrası yeniden (S1, S2, dirsek, bilek, pan, tilt) | Hepsi ≥ 1 ya da madde karar kuyruğuna | P3.1 | ⏳ |
+| P3.1 | Düz zeminde elde yük sınırı: 0 / 50 / 100 / 200 / 500 g için devrilme payı ve servo payı tablosu | Tablo + önerilen sınır karar kuyruğuna | F2 ile | 🔄 |
+| P3.2 | Servo payları 3,0 kg akü ve AI HAT+ sonrası yeniden (S1, S2, dirsek, bilek, pan, tilt) | Hepsi ≥ 1 ya da madde karar kuyruğuna | P3.1 | 🔄 |
 
 ### Faz F4: Elektrik ve belgeler 158 ile aynı dili konuşsun
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
 | P4.1 | `elektrik.md`: hub yeri, boyun demeti (göğüs HDMI + USB dokunmatik), USB cihaz listesi (6. cihaz Efe cevabına göre); ses: PAM8403 + USB ses kartı, MAX98357A satırları :12, 21, 266 ve PAM besleme noktası (K10) | Belgedeki her sayı bir JSON'a ya da kaynağa bağlı | F1 sonrası | ⏳ |
-| P4.2 | Listede olmayan 6 kablo kalemini aday olarak `maliyet.json`'a "koşullu" işaretle ekle (satıcı sayfası doğrulanmadan fiyat yazılmaz) | Genel toplam ve koşullu toplam ayrı | P4.1 | ⏳ |
+| P4.2 | Listede olmayan 6 kablo kalemini (USB dokunmatik ve 12 V için de 90° fiş, F1b B) aday olarak `maliyet.json`'a "koşullu" işaretle ekle (satıcı sayfası doğrulanmadan fiyat yazılmaz) | Genel toplam ve koşullu toplam ayrı | P4.1 | ⏳ |
 | P4.3 | Baskı listesi: hub takozlu kapak, 2 yeni kap parçası, VESA taşıyıcı malzemesi (PETG-CF) | `baski_listesi_guncelle.py` ile model aynı | P4.1 | ⏳ |
 | P4.4 | README 1,65 → 1,58 m, `OZET.md`, `planlama/y2/Y2b-*.json` eski sayılar, `proje-plani.md` başlık sayıları | Depoda "1,65 m ana tasarım" ifadesi yalnız tarihçede | P4.1 | ⏳ |
 | P4.5 | Takma ad temizliği: kodda ~43 dosya (GitHub'a gidiyor) → "Ahmet Yorulmaz" ya da nötr | `git grep -i <takma ad>` yalnız tarihçe/hafıza dosyalarında | P4.4 | ⏳ |
@@ -114,7 +115,7 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
-| P6.1 | Önce `kabuk_parcalar.py:733` yorumu `72 x 10 kopru` → `70 x 10 kopru` (F1a B; tarama kaynağı olduğu için burada); sonra bütün modüller yeniden üretilir → tam çakışma taraması (tek koşu) → `eklem_dogrulama`, `montaj_gorsel`, modül görselleri | Çakışma 0, `tek_kosu: true`, korunan değerler aynı | – (makine ~2–6 sa) | ⏳ |
+| P6.1 | Önce `kabuk_parcalar.py:733` yorumu `72 x 10 kopru` → `70 x 10 kopru` (F1a B; tarama kaynağı olduğu için burada); `kafa_lib.py:265`, `dirsek_lib.py:141`, `omuz_baski.py:201`, `uygulama_tani.py:30` sessiz katman atlama kalıbına P1.5 kesit kaydırması (F1b B); göğüs ekranı port girintisini kasa modeline geometri olarak ekle (ekran ölçülünce, hariç tutma kutusu kalkar); sonra bütün modüller yeniden üretilir → tam çakışma taraması (tek koşu) → `eklem_dogrulama`, `montaj_gorsel`, modül görselleri | Çakışma 0, `tek_kosu: true`, korunan değerler aynı | – (makine ~2–6 sa) | ⏳ |
 | P6.2 | Baskı analizi tüm parçalar; kapakta iki analizin uyuşmazlığı (19.667,7 mm² ↔ 5,01 mm²) çözülür | Tek analiz, tek sonuç | P6.1 sonrası | ⏳ |
 
 ### Faz F7: Montaj rehberi (eski Y5)
@@ -157,6 +158,14 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | K9 | El yükü 0,5 kg için servo değişimi mi, 100 g sınırı mı | 100 g sınırı |
 
 ## 5. Günlük
+
+- 2026-11-09 F1b B: KOŞULLU GEÇER. P1.1 ve P1.5 temiz (B kök nedeni buldu: kesit düzlemi yatay deliğe teğet). P1.4 ölçüm doğru ama 0, modelde olmayan port girintisi varsayımına bağlı → 🟡. `Y2b-ivme` farkının −0,047'si 03.11 ara çıktısının eski modelinden. Koşul 1 plana yazıldı; koşul 2 (`kabuk_montaj.py:338` yorumu + günlük açık 9) C'de.
+
+- 2026-11-09 F3a A bitti (FreeCAD'siz, mevcut yöntemler saf Python; 0/100/500 g 18 anahtar birebir). Her elde: 50 g rampa 1,499 (< 1,5); 500 g S1/S2 0,97, dirsek 0,74. Öneri ≤ 100 g/el düzde, rampada yüksüz (servo 2× hedefi). Tilt kod ±20 ilk temas +18/−17°. AI HAT+ ile yüksüz rampa 1,515. B kontrolde.
+
+- 2026-11-09 F1b A bitti: akü 3,0 kg (rampa 1,517 → 1,519, devrilme açıları ≈ aynı); göğüs kablo hacimleri port ucu teması olarak ayrı alana (`kablo_tup_uc_temas`; USB 167,6 eksik ölçülmüş, doğrusu 391,5), gerçek çakışma 0; kabuk "Wire is not closed" 16 → 0 (0,05 mm kaydırma, geçici çare), kabuk_rapor çalışıyor. 8 bölüm yeniden tarandı, ev pozu 0. Regresyon 10/10 (A normal modda koştu, taban rampa 1,519). B kontrolde. Paralel: F3a A (P3.1 + P3.2, FreeCAD'siz).
+
+- 2026-11-08 **F1a ✅** (B: KOŞULLU → koşul 1 plana, koşul 2 C'de). C: regresyon 10/10; 76a5701 (62 dosya), d37a671, 93089df, rapor 24a703d push. `F1a-kontrol.md:35` takma adı içerdiği için commit dışı → P4.5. P1.3 K2 kararı Ahmet'te. F1b A başladı.
 
 - 2026-11-08 F1a B: KOŞULLU (geometri, çakışma, regresyon temiz). P1.2 kalanları → P4.2 maliyet.json:75 · P4.4 Lale-Proje-Ozeti.txt:68 · P5.2 yazilim-plani.md:23,114 · P7.1 rehber_metin.py:276 + rehber/veri · P9.2 Robot-Tasarim-Demosu.html · kabuk/rapor.html (kabuk_rapor.py KeyError → P1.5). K2 uygulanınca korunan tilt 3,64 → 3,30 (a) / 3,37 (b); regresyon tabanı o an güncellenir. Koşul 2 (f1a_rapor.py:216 72→70) C'de.
 

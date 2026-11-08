@@ -1,16 +1,16 @@
 {
  "bolum": "kolkol",
- "kosu": "20261108-221801",
- "baslangic": "2026-11-08T22:28:04",
- "bitis": "2026-11-08T22:28:52",
- "sure_s": 48.8,
- "yukleme_s": 12.5,
- "tepe_bellek_mb": 197,
- "tepe_sayfa_mb": 2198,
+ "kosu": "20261109-013626",
+ "baslangic": "2026-11-09T01:36:38",
+ "bitis": "2026-11-09T01:37:22",
+ "sure_s": 44.4,
+ "yukleme_s": 11.2,
+ "tepe_bellek_mb": 195,
+ "tepe_sayfa_mb": 2197,
  "ayni_surec": [
   "kolkol"
  ],
- "pid": 27036,
+ "pid": 14924,
  "moduller": [
   "omuz_sag",
   "omuz_sol",
@@ -19,7 +19,7 @@
  ],
  "kaynak": {
   "carpisma.py": "c688d738c3",
-  "arayuz.py": "4d1b65e513",
+  "arayuz.py": "c085ca8123",
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
@@ -6334,7 +6334,7 @@
     "kutu_bosluk_min": 290.0
    }
   ],
-  "sure_s": 48.8,
+  "sure_s": 44.4,
   "not_": "hareketli: iki kolun omuz gobegi + ust kol (omuz) + dirsek parcalari; poz = (one-arka, yana, dirsek, bilek), sol kolda ayni acilar aynali hareket"
  }
 }
