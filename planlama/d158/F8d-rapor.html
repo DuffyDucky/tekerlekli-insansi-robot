@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale P8.4 Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+tr.k td:first-child{box-shadow:inset 3px 0 0 var(--crit)}
+td.kod{font-weight:650;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale P8.4: ek test kâğıtları T10–T13</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 08.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>planlama/d158/testler/</code>, <code>F8d-kontrol.md</code>, <code>F8d-gunluk.md</code></p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">Bağımsız kontrol</div><div class="v"><span class="tag ok">GEÇER</span></div><div class="d">Yeniden kontrol 2; T13 için K1, K2 koşulu kayda geçti</div></div>
+  <div class="card"><div class="k">Yeni kâğıt</div><div class="v">4 + 2 ek</div><div class="d">T10–T13; T1 ve T4'e güvenlik ekleri</div></div>
+  <div class="card"><div class="k">Düzeltme turu</div><div class="v">2</div><div class="d">16 madde, sonra R1–R3; K1/K2 kayıt ajanında</div></div>
+  <div class="card"><div class="k">Regresyon</div><div class="v"><span class="tag ok">10/10 aynı</span></div><div class="d"><code>--yazma</code>, taban değişmedi</div></div>
+</div>
+
+<p class="note">P8.4 yalnız belgedir: CAD ya da kod değişmedi. Kâğıtlar sipariş ya da karar değildir; sonuç ilgili belgeye işlenir, karar gerekirse
+proje sahibine gider. <code>testler_html.py --kontrol</code>: md 14 (kâğıt 13), HTML bölümü 14, iç bağlantı 87, id 166, çıkış 0.
+Regresyon <code>regresyon.py --yazma</code>: <code>regresyon.json</code> sha256 koşu öncesi ve sonrası aynı (<code>1f457ffa…2ac0</code>).</p>
+
+<h2>Dört yeni kâğıt</h2>
+<p>Önerilen sıra (<code>00-genel.md</code>): T11 ve T12 parçalar gelir gelmez (sigorta kutusu kablolanmadan, braketler delinmeden, etek basılmadan önce); T10 kafa kapanınca; T13 en son, T9-B'nin hemen ardından.</p>
+<div class="tbl"><table>
+<thead><tr><th>Kod</th><th>Ne zaman</th><th>Ölçtüğü / doğruladığı</th><th>Geçer sınırı</th><th>Gereken alet</th></tr></thead>
+<tbody>
+<tr><td class="kod">T10<br>Kafa ısısı</td><td>Kafa kapanınca, T3'ten sonra</td>
+<td>Kapalı kafada tilt servosu gövdesi, kafa içi hava ve Pi SoC sıcaklığı; 30 mm egzoz fanı kararına (K12) veri</td>
+<td>Tilt servo (düzeltilmiş, S2 sonu) ≤ 50 °C; SoC ≤ 75 °C; <code>get_throttled</code> = 0x0; durdurma kuralı (servo 55 °C, SoC 80 °C) işlemedi. Kafa içi hava ve 12 V gücü yalnız kayıt (hesap: S1 48,2 °C / 19,8 W, S2 50,9 °C / 22,9 W)</td>
+<td>K tipi termokupl ×3 (≥ 1,5 m) ve okuyucu, alüminyum bant, ortam termometresi, Pi'de <code>vcgencmd</code> ve <code>stress-ng</code>; isteğe bağlı DC akım pensi</td></tr>
+<tr><td class="kod">T11<br>H1 sigorta açıklığı</td><td>Sigorta kutusu gelince, kablolamadan önce</td>
+<td>6 yollu sigorta kutusunun ölçüsü ve H1 servis kapağından (64 × 50 mm) hangi sigortaların çekilip takılabildiği</td>
+<td>Açıkta yuva ≥ 4 (F1, F3, F4, F5); kutu ≤ 105 × 60 × 35 mm; delik aralığı 94 ± 0,5 mm. Yuva ≥ 4 ama ölçü ya da delik farklı → KOŞULLU; yuva &lt; 4 → KALIR</td>
+<td>Kumpas, karton şablon (64 × 50 mm, R8), 45 mm takozlar, sigorta pensesi ve seti</td></tr>
+<tr><td class="kod">T12<br>Perçin somun ve etek delikleri</td><td>Perçin somun, ana anahtar ve acil stop gelince; braket delinmeden, etek basılmadan önce</td>
+<td>M5/M3 perçin somun ölçüleri, kuponda kavrama ve dönme; ana anahtar (ASW-A01) ve takılacak acil stop için etek delikleri</td>
+<td>Flanş M5 ≤ 10,6 / 1,1 mm, M3 ≤ 7,6 / 0,9 mm; kavrama ≥ 5 tam tur; somun dönmez; ana anahtar geçen kısım ≤ 30,0 mm (30–40,8 KOŞULLU); acil stop dişli gövde ≤ 22,4 mm; mantar basınca kilitlenir (kilitlenmezse KOŞULLU)</td>
+<td>Kumpas (0,02 mm), perçin somun pensesi, 3 mm ve 2 mm alüminyum kupon, Ø7,1 / Ø5,1 matkap, M5×18 ve M3×14 cıvata, gözlük</td></tr>
+<tr class="k"><td class="kod">T13<br>Rampada acil stop</td><td>T9-B GEÇER olunca, aynı gün ve aynı ip düzeneğiyle; önce düz zeminde D1–D4</td>
+<td>Acil stopta motorlar boşa düşünce robot rampada kendini tutuyor mu: ip yükü (A), durarak kayma (B), hareket hâlinde duruş yolu (C)</td>
+<td>A: F_acil − F_ön ≤ 0,10 kg (tam asılma 2,26 kg); B: 30 s'de kayma ≤ 1,0 cm, ip gerilmedi; C: 31·v² ≤ d ≤ 500·v² cm, ek kayma ≤ 1,0 cm, teker kalkması 0. C yalnız A, B GEÇER ve D1–D3 sağlandıysa</td>
+<td>T9-B düzeneği (iki ip, sabit dayanak, şerit, tripod video), el kantarı (10 g), kumanda ve ESP32 kaydı, karabina; en az 3 kişi</td></tr>
+</tbody>
+</table></div>
+
+<h2>T1 ve T4 ekleri</h2>
+<ul class="list">
+<li><b>T1 adım 5:</b> kaynak 12,8 V'a çıktığı hâlde motor ucunda 12,0 V okunmuyorsa seri multimetreyi çıkarmak artık zorunlu; düzelene kadar o denemenin torku "düşük V" notuyla yazılır, değerlendirmeye girmez.</li>
+<li><b>T4 adım 5:</b> ilk dinleme anahtarlı bara kapalı <b>ve acil stop mantarı basılıyken</b> yapılır (röle bobini donanımla kesik). Mantar, yazılım kaydında GPIO12 = 0 görülmeden bırakılmaz; herkes alan dışındayken robotun arkasından bırakılır.</li>
+</ul>
+
+<h2>Güvenlik kararları</h2>
+<div class="oneri"><b>Efe teyidine kadar rampa denemesi yok.</b> T9-B ve T13'te acil stop kumandadaki "devreden çıkar" komutuyla verilir. Bu komutun varlığını Efe yazılı teyit etmeden (D1), komut düz zeminde 3 kez ≤ 0,5 s'de barayı düşürmeden (D2) ve kumanda bağlantısı kopunca tekerler ≤ 0,5 s'de durmadan (D3) hiçbir rampa denemesi yapılmaz. C ayrıca A ve B GEÇER olmadan yapılmaz.</div>
+<div class="oneri"><b>Elde taşınan acil stop yok.</b> Mantar etek plakasının arka-sağ köşesinde (<code>arayuz.py:436</code>, <code>:466</code>). Akülü ya da servolu her kâğıtta görevi yalnız mantar olan ayrı bir kişi vardır; mantara hareketli parçaların erişim alanına ve düşme hattına girmeden uzanamıyorsa test yapılmaz (<code>00-genel.md</code> ortak kural 1). Rampa kâğıtları bu kuralın tek istisnası: orada durdurma, doğrulanmış komut ve iki emniyet ipidir.</div>
+<div class="oneri"><b>Mantar yaklaşımı (T13 "komut çalışmazsa").</b> Robot ipte hareketsizken: rampanın üst tarafından, arka köşeden, kol hizasının arkasından, tek kolla; gövde alt tarafa geçmez, devrilme ipi gergin. Arka köşe rampanın altına bakıyorsa uzanılmaz: iki ip de sabit noktalara bağlanır (devrilme ipi elde tutulmaz, K2), robot alan dışından izlenir; bağlantı en çok 5 dk (varsayım) içinde gelmezse mantara rampaya dik, <b>yandan</b> uzanılır (rampada devrilme ipler sabitken rampa boyuncadır; ev pozu <code>rampa5.yan</code> 3,16 m/s², en büyük pay).</div>
+<div class="oneri"><b>D3 robotu yürütmeden (K1).</b> Esas düzen tekerler havada (takozlar şasiye). Yedek düzen robot yerde, taban ipi arkadaki dayanağa ≤ 0,5 m boşlukla bağlı: hız ≤ 0,1 m/s (varsayım; ip birden gerilince daha hızlı robot öne devrilebilir, düz zeminde ev pozu öne devrilme 3,62 m/s²), devrilme ipi omuz altından bağlı ve elde (≤ 10 cm), düşme hattında kimse yok. 0,1 m/s'ye inilemiyorsa yalnız "tekerler havada".</div>
+
+<h2>Kontrol geçmişi</h2>
+<div class="tbl"><table>
+<thead><tr><th>Tur</th><th>Karar</th><th>Ne değişti</th></tr></thead>
+<tbody>
+<tr><td class="kod">İlk kontrol</td><td><span class="tag crit">GEÇMEZ</span></td><td>T13 C'de hareketli robotun tek durdurma yolu doğrulanmamış bir yazılım komutu, yedeği yok. Diğer kâğıtlar sağlam.</td></tr>
+<tr><td class="kod">Düzeltme 1</td><td><span class="tag wait">KOŞULLU</span></td><td>16 madde: D1–D4 ön şartları, C için sıra kuralı, ortak kural 1'in yeni hâli, çıkışta gidiş doğrultusunun boş tutulması.</td></tr>
+<tr><td class="kod">Düzeltme 2</td><td><span class="tag ok">GEÇER (K1, K2)</span></td><td>R1 D3 tekerler havada ya da kısa iple; R2 mantara yaklaşma yönü, D4'ün aynı telsiz bağlantısına bağlı olduğu; R3 takılacak acil stop parçası T12'de işaretlenir.</td></tr>
+<tr><td class="kod">Kayıt (C)</td><td><span class="tag ok">uygulandı</span></td><td>K1 T13 D3 yedek düzene ve T9 D3 parantezine; K2 T13 adım 4'e. Kontrol metniyle tek tek karşılaştırması <code>F8d-gunluk.md</code>'de.</td></tr>
+</tbody>
+</table></div>
+
+<h2>Açık işler</h2>
+<ul class="list">
+<li><span class="tag wait">Ö1</span> <b>Mantar kişisinin yeri:</b> mantarın (yerden 0,26 m, arka-sağ köşe) T8'in "tam uzanmış kol + 0,5 m" bölgesinin dışında kalıp kalmadığı kol tarama hacmiyle kontrol edilmedi. Kural 1 güvenli yönde işliyor ama T6-B ve T8'i durdurabilir. Tasarım ajanına: yeri bir kez işaretlemek.</li>
+<li><span class="tag crit">Çelişki</span> <b>Acil stop parçası:</b> <code>elektrik.md:62</code> alınan parçayı NP2 BE102 (CAD 60 mm B200E60) diye yazıyor, <code>arayuz.py:660</code> "elde B200E-E (40 mm mantar)" diyor. Hangisinin takılacağı T12 C'de işaretlenir; kaynaklardan biri tasarım ajanınca düzeltilmeli.</li>
+<li><span class="tag info">Efe</span> <b>"Devreden çıkar" komutu var mı, hangi kumandada?</b> (T13 D1). Aynı toplu soru listesinde: ReSpeaker yankı giderme ayrı USB ses kartıyla referans alır mı; elde taşınan uzaktan acil stopun donanım karşılığı tanımsız (T6, T8, T9, T13).</li>
+<li><span class="tag info">Not</span> <code>karar-kuyrugu.md:298</code> "K7 perçin delik çapı" iki ayrı açığı birleştiriyor (ana anahtar deliği ve perçin somun); T12 ikisini de kapsıyor.</li>
+</ul>
+
+<footer>Ajan C (ölçüm ve kayıt) · P8.4 · 08.11.2026 · Belgeler commit <code>f747bb0</code> (<code>lale-duzeltme</code>) · Regresyon <code>regresyon.py --yazma</code>: GEÇER, 10/10 aynı · Kaynaklar: <code>testler/00-genel.md</code>, <code>testler/T10–T13</code>, <code>F8d-kontrol.md</code>, <code>F8d-gunluk.md</code>.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
