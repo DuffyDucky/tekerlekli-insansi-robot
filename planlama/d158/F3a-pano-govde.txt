@@ -1,0 +1,11 @@
+Efe merhaba, 10 servo konusuna iki bilgi ve bir soru. Karar yok, koda dokunmadık.
+
+Bilgi 1, tilt sınırı: kodda tilt 70…110 (±20), CAD ±13. Güncel kafa modelinde (kafa-analiz.json, 05.11) ±20'de kafa kabuğu rulman yuvasına çarpıyor: +20'de yüz kabuğu (ön) sağ × rulman yuvası 327,4 mm³, −20'de arka kafa kabuğu sağ × rulman yuvası 654,9 mm³. ±15 serbest (5° adımla tarandı; ilk temas 15° ile 20° arasında, kesin açı ölçülmedi). Tork açısından ±20 sorun değil (tilt payı en düşük 3,27, pan 2,16); sorun çakışma.
+
+Bilgi 2, elde yük (planlama/d158/F3a-gunluk.md, statik hesap, yük her iki elde): servo payları (stall / en kötü tork)
+- 0 g: S1 2,78, S2 2,72, dirsek 3,88
+- 100 g: S1 2,03, S2 2,00, dirsek 2,11
+- 500 g: S1 0,97, S2 0,97, dirsek 0,74 (1'in altında)
+Rampada (5°) 50 g'da bile devrilme payı 1,499 < 1,5. Yük sınırı kararı Ahmet'te (karar kuyruğu K3 / K9); öneri her elde ≤ 100 g, yalnız düz zeminde.
+
+Soru: Kodda tilt sınırını CAD ile aynı (±13, yani 77…103) yapmak mümkün mü? Evet jestindeki 75 bu aralığın dışında kalıyor; öneri olarak soruyoruz.

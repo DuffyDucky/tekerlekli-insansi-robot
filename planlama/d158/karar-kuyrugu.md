@@ -15,13 +15,13 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 |---|---|---|---|---|
 | K1 | Altıncı USB cihazı | **açık** (Efe'de, pano #5) | 5 cihaz + 2 boş hub portu | P4.1, P8.1 |
 | K2 | AI HAT+ × arka üst boss: boss taşı / HAT yönü | **açık** | Boss taşı | P1.3 seçimi, P6.1 |
-| K3 | Düz zeminde elde yük sınırı | **açık** | P3.1 tablosundan sonra; ön öneri ≤ 100 g | P3.1 sonucu, P3.2, P9.3 |
+| K3 | Düz zeminde elde yük sınırı | **açık** (P3.1 tablosu eklendi, F3a) | b: her elde ≤ 100 g, yalnız düz zeminde; rampada yüksüz | P3.1 sonucu, P3.2, P9.3 |
 | K4 | Listede olmayan 6 kablo kalemi | **açık** | Koşullu kalem, fiyatsız | P4.2, P8.1 |
 | K5 | Hub ve ses kartı arka kabuk yan duvarında, servis | kapandı (B + R1) | — | — |
 | K6 | Hoparlör duvara paralel / yatay eksene kama | **açık** | Paralel, ölçümden sonra yeniden | P1.7, P8.3 |
 | K7 | Dizi kabuğun altında: "kafanın üstü" ifadesi kabul mü | **açık** (yalnız ifade; yer kapandı) | Kabul | P9.3 |
 | K8 | H1 sigorta erişimi | kapandı (29.10, seçenek a) | — | — |
-| K9 | El yükü 0,5 kg: servo değişimi mi 100 g sınırı mı | **açık** | 100 g sınırı | P3.2, P5.1, P8.1 |
+| K9 | El yükü 0,5 kg: servo değişimi mi 100 g sınırı mı | **açık** (1,58 m'de yeniden hesaplandı, F3a) | a: her elde ≤ 100 g | P3.2, P5.1, P8.1 |
 | K10 | PAM8403 5 V besleme noktası | **açık** | D24V50F5 (Pi hattı) | P1.2, P4.1, P8.3 |
 | K11 | Göğüs ekranı 12 V dalının girişi (acil stopta ekran) | **açık** | Ana anahtar sonrası, röle öncesi | P4.1, P4.2, P7.2 |
 | K12 | Kafa havalandırması: yarık / 30 mm fan | **açık** | Yarıklar kalsın, fan yeri ayrılı | P8.1, P8.3 |
@@ -101,7 +101,7 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 
 ## K3 · Düz zeminde elde yük sınırı
 - **Soru:** Robot elinde en çok ne kadar yük taşısın (düz zemin)?
-- **Seçenekler:** a) yük yok (yalnız boş el); b) ≤ 100 g; c) ≤ 500 g yalnız düz zeminde, rampada yüksüz.
+- **Seçenekler:** a) yük yok (yalnız boş el); b) ≤ 100 g her elde; c) ≤ 500 g yalnız düz zeminde, rampada yüksüz.
 - **Sayısal etki (güncel model, `KY/uygulama-ivme.json`):**
   - Düz zemin devrilme payı (en kötü yön): 0 g 2,095, 100 g 2,055, 500 g 1,905 (`izgara_yuk_{0,100,500}g.a_sinir_pay15.duz_geri`).
   - Düz zemin fren 1,8 m/s²: 1,746 / 1,713 / 1,587 (`izgara_yuk_*.fren_pay.duz_min`); üçü de ≥ 1,5.
@@ -109,7 +109,27 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
   - Düzde devrilme sınırlamıyor; sınırı servo payı belirliyor (K9).
   - F1b P1.1 (akü 3,0 kg, 08.11.2026) sonrası aynı anahtarlar: düz 2,097 / 2,057 / 1,907; fren 1,748 / 1,714 / 1,589; rampa 5° 1,519 / 1,479 / 1,329
     (K9'daki 500 g rampa 1,327 → 1,329). 100 g ve 500 g rampada yine < 1,5; seçeneklerin sonucu değişmedi.
-- **Varsayılan:** P3.1 tablosu (0 / 50 / 100 / 200 / 500 g) çıkınca; ön öneri b, ≤ 100 g ve rampada yüksüz (`dongu-158.md:138, §4 K3`).
+  - **P3.1 tablosu (F3a, 09.11.2026; `planlama/d158/F3a-yuk.json`, betik `F3a-yuk.py`, FreeCAD'siz, `uygulama_ivme.py` ve `dirsek_montaj.py`
+    yöntemi aynen; 0 / 100 / 500 g UI ve DA sayılarını birebir üretti; B kontrolü KOŞULLU, koşullar uygulandı `F3a-kontrol.md`):** yük her iki elde.
+
+    | Elde yük | Düz devrilme | Fren 1,8 | Rampa 5° | S1 | S2 | Dirsek |
+    |---|---|---|---|---|---|---|
+    | 0 g | 2,097 | 1,748 | 1,519 | 2,78 | 2,72 | 3,88 |
+    | 50 g | 2,077 | 1,731 | 1,499 | 2,34 | 2,30 | 2,73 |
+    | 100 g | 2,057 | 1,714 | 1,479 | 2,03 | 2,00 | 2,11 |
+    | 200 g | 2,017 | 1,681 | 1,440 | 1,59 | 1,58 | 1,45 |
+    | 500 g | 1,907 | 1,589 | 1,329 | 0,97 | 0,97 | 0,74 |
+
+    Kaynak anahtarlar: `izgara_yuk_*.a_sinir_pay15.duz_geri`, `.fren_pay.duz_min`, `.a_sinir_pay15.rampa5_geri` (0 / 100 / 500 UI, 50 / 200
+    `F3a-yuk.json P3_1.izgara`); servo DA `tork.sonuc` (0 / 500) ve `F3a-yuk.json P3_1.tablo` (50 / 100 / 200). Bilek her yükte ≥ 14.
+  - Bağlayan ölçüt servo: pay ≥ 1 için ≤ 342 g (dirsek), pay ≥ 2 için ≤ 99 g (S2). Düz devrilme ≥ 1,5 1.000 g'a kadar, fren ≥ 1,5 810 g'a kadar tutuyor.
+  - Rampa ızgara payı 50 g'da 1,499 (< 1,5); kollar ev pozunda 100 g ile 1,601, 500 g ile 1,563.
+  - AI HAT+ (K2; 30 g varsayım, Pi'nin 4 üst vidası çıkınca net 28,1 g: HS `kafa_grubu_g` farkı) eklenince yüksüz rampa 1,519 → 1,515, düz 2,097 → 2,093
+    (a ve b aynı; 30 g ile de 1,515); sonuç değişmiyor.
+  - İvme torkuyla (60° / 0,4 s) S1 payı 100 g'da ≈ 1,1, 200 g'da < 1 (B kaba tahmini, `F3a-kontrol.md`; taslak-170 kol ataleti; doğrulanmadı).
+- **Önerilen varsayılan (F3a P3.1 sonrası; öneri, karar Ahmet'in):** b, her elde ≤ 100 g (iki elde toplam ≤ 200 g), yalnız düz zeminde; rampada yüksüz.
+  c (500 g) ancak K9 b ile (500 g'da S1 / S2 0,97, dirsek 0,74). Alternatif: rampada kollar ev pozunda zorlanırsa ≤ 100 g (1,601; SO Ç7'ye bağlı:
+  `planlama/d158/servo-10-oneri.md` Ç7). Önceki ön öneri: `dongu-158.md:153, §4 K3`.
 - **Bloke:** P3.1'in önerisi, P3.2, P9.3 rapor.
 - **Durum:** açık (`qled-cerceve-tasarim-notu.md:128`; KZ2 açık: `planlama/y3/Y3-kontrol.md:115`, `planlama/kararlar-2026-10-29.md:23-24`).
 
@@ -158,9 +178,14 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 ## K9 · El yükü 0,5 kg: servo değişimi mi, 100 g sınırı mı
 - **Seçenekler:** a) el yükü ≤ 100 g (yazılım ve kullanım kuralı); b) S1/S2 ve dirsek için daha güçlü servo.
 - **Sayısal etki:** 0,5 kg'da S1/S2 payı 0,97, dirsek 0,74 (< 1); 2× pay için ~100 g (`planlama/kararlar-2026-10-29.md:24`).
-  Bu sayılar 1,65 m modelinden; 1,58 m'de yeniden ölçülmedi (P3.2). b seçilse de 500 g ile rampa payı 1,327 < 1,5
-  (`KY/uygulama-ivme.json izgara_yuk_500g.a_sinir_pay15.rampa5_geri`): rampada yük yine yasak kalır. b'nin maliyeti ve kütle etkisi **hesaplanmadı**.
-- **Varsayılan:** a (`dongu-158.md:144, §4 K9`).
+  1,58 m modelinde yeniden hesaplandı (F3a P3.2, 09.11.2026, `F3a-yuk.json P3_2`): 500 g elde S1 0,97, S2 0,97, dirsek 0,74;
+  1,65 m sayılarıyla aynı (kol geometrisi ve kütlesi değişmedi, DA 400,5 g). b seçilse de 500 g ile rampa payı 1,329 < 1,5
+  (`KY/uygulama-ivme.json izgara_yuk_500g.a_sinir_pay15.rampa5_geri`, F1b P1.1 sonrası): rampada yük yine yasak kalır (yalnız kollar ev pozunda 1,563).
+  b'nin maliyeti ve kütle etkisi **hesaplanmadı**.
+  - **b'nin servo gereksinimi** (F3a, aynı statik yöntem, el ucunda 500 g): pay ≥ 1 için S1 ≥ 31,2, S2 ≥ 31,5, dirsek ≥ 12,6 kg·cm stall;
+    pay ≥ 2 için S1 ≥ 62,4, S2 ≥ 63,0, dirsek ≥ 25,2 kg·cm. Daha ağır dirsek servosu S1 / S2 torkunu da büyütür; bu etki ve maliyet **hesaplanmadı**.
+  - Pan / tilt için karar gerekmiyor (F3a P3.2): en düşük K2 a, kod sınırında tilt 3,27 ≥ 3,0, pan 2,16 ≥ 2,0 (pan ekstrapolasyon).
+- **Varsayılan:** a (`dongu-158.md:144, §4 K9`). F3a sonrası öneri değişmedi: a (her elde ≤ 100 g; K3 b ile aynı sınır). Öneri; karar Ahmet'in.
 - **Bloke:** P3.2, P5.1 (servo modeli sütunu), P8.1.
 - **Durum:** açık (`kararlar-2026-10-29.md:23` "AÇIK (karar değil)").
 
