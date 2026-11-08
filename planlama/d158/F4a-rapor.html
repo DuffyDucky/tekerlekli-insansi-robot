@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F4a Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F4a: elektrik ve belgeler 1,58 m (P4.1, P4.2, P4.4)</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 09.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>F4a-brief.md</code>, <code>F4a-gunluk.md</code>, <code>F4a-kontrol.md</code>, <code>planlama/maliyet.json</code>, <code>maliyet_toplam.py</code> çıktısı, <code>regresyon.py</code> çıktısı</p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">Bağımsız kontrol</div><div class="v"><span class="tag wait">KOŞULLU</span></div><div class="d">37 maddenin sayıları kaynakla birebir; 6 metin koşulu C'de birebir uygulandı</div></div>
+  <div class="card"><div class="k">Genel toplam (V3)</div><div class="v">102.919,71</div><div class="d">Önce 103.767,58 TL; fark −847,87 (MAX98357A V3'ten çıktı)</div></div>
+  <div class="card"><div class="k">Koşullular dahil</div><div class="v">108.208,77</div><div class="d">Önce 109.056,64 TL; koşullu grup 4.599,18 değişmedi</div></div>
+  <div class="card"><div class="k">Fiyatsız aday</div><div class="v">11</div><div class="d"><code>fiyat_bekliyor</code>, toplam dışı; fiyat P8.1'de satıcı sayfasıyla</div></div>
+  <div class="card"><div class="k">Regresyon</div><div class="v"><span class="tag ok">10/10 aynı</span></div><div class="d"><code>--yazma</code>, GEÇER (09.11 02:54:07)</div></div>
+</div>
+
+<p class="note">Sayılar C'nin yeniden okumasından: <code>maliyet.json</code> geçerli JSON, 130 kalem; <code>py -3 planlama/adim5/maliyet_toplam.py</code> çıkış 0; <code>py -3 planlama/d158/regresyon.py --yazma</code> çıkış 0.
+FreeCAD açılmadı. <code>KY/</code> = <code>tasarim/freecad/lale158/kafa-yerlesim/</code>.</p>
+
+<h2>Dosya başına değişiklik</h2>
+<div class="tbl"><table>
+<thead><tr><th>Dosya</th><th>Paket</th><th>Değişiklik</th><th>Kim</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>planlama/adim3/elektrik.md</code></td><td>P4.1</td><td>05.11 B + R1 düzeni: hub gövdede, boyun demeti 5 kablo, USB port tablosu (Pi1–4, Hub1–4), PAM8403 + USB ses kartı, MAX98357A [tarihçe], akü 3,0 kg satırı, göğüs ekranı dalı (90° fişler, LK boyları), K1 / K10 / K11 / K14 işaretleri; 1,65 m bölümü [tarihçe]</td><td>A</td></tr>
+<tr><td class="kod"><code>planlama/maliyet.json</code></td><td>P4.2</td><td>MAX98357A <code>"ver": "v1,v2"</code> (silinmedi, V3'ten çıktı); 11 fiyatsız kalem; <code>fiyat_bekliyor</code> notu; 1,65 m notları tarihçe</td><td>A</td></tr>
+<tr><td class="kod"><code>README.md</code></td><td>P4.4</td><td>"Güncel tasarım (1,58 m)" tablosu, belge tablosu, tarihçe paragrafı. C: <code>:44</code> tilt ±13 / kod ±20 çerçevesi, <code>:50</code> 78.000 TL koşulu</td><td>A + C</td></tr>
+<tr><td class="kod"><code>tasarim/freecad/README.md</code></td><td>P4.4</td><td>"Güncel sayılar (09.11.2026)" bloğu, 1,65 m paragrafı tarihçe, 11,6" göğüs ekranı</td><td>A</td></tr>
+<tr><td class="kod"><code>tasarim/freecad/OZET.md</code></td><td>P4.4</td><td>Başa 1,58 m özeti; 9 Ekim 125 cm metni tarihçe başlığı altında. C: <code>:34-35</code> kol servo payları "hesaplandı" (F3a, K2, K3 / K9)</td><td>A + C</td></tr>
+<tr><td class="kod"><code>planlama/proje-plani.md</code></td><td>P4.4</td><td>Yalnız başlık sayıları: parça 1.179, kütle 26.115,6 g, akü 3,0 kg, rampa 1,519, maliyet ≈ 102.900</td><td>A</td></tr>
+<tr><td class="kod"><code>Lale-Proje-Ozeti.txt</code></td><td>P4.4</td><td>Bölüm 2–6 1,58 m'ye. C: <code>:123</code> K14 işareti, <code>:152</code> tilt ±13 tasarım / kod ±20 (2 satır), <code>:212</code> AI HAT+ K2, <code>:215</code> F3 tamam, <code>:220</code> K2 açık listede</td><td>A + C</td></tr>
+<tr><td class="kod"><code>KY/uygulama-notu.md</code></td><td>ek</td><td><code>:115</code> göğüs 12 V "(boyundan)" → "(tabandan, boyundan geçmez; kaynak: <code>kablo_yolu_ekran.py:116</code> yolu, en üst nokta y 1.205 = S3 − 65 &lt; omuz 1.270; <code>lale158-kontrol.json</code> <code>kablo_ozet.kablo["12 V"]</code>: "taban guc panelinden")"</td><td>C</td></tr>
+<tr><td class="kod"><code>planlama/d158/karar-kuyrugu.md</code></td><td>ek</td><td>K4 ve K10'a birer not satırı; durumlar <b>açık</b>, mevcut notlara dokunulmadı</td><td>C</td></tr>
+<tr><td class="kod"><code>planlama/d158/F4a-gunluk.md</code></td><td>kayıt</td><td>A'nın günlüğü. C: §4'teki yanlış cümle → "README akü süresi vermiyor; OZET ve özet ikisini de, 'ölçülmedi' notuyla veriyor."</td><td>A + C</td></tr>
+<tr><td class="kod"><code>F4a-brief.md</code>, <code>F4a-kontrol.md</code></td><td>kayıt</td><td>Değişmeden kayda girdi (brief tarihçe olarak; hata §3'te açıklanıyor)</td><td>orkestratör / B</td></tr>
+<tr><td class="kod"><code>planlama/dongu-158.md</code></td><td>kayıt</td><td>Orkestratörün değişikliği: kilit tablosu, P3.1 / P3.2 ✅, P4.1 satırı düzeltmesi, günlük girişleri</td><td>orkestratör</td></tr>
+</tbody>
+</table></div>
+
+<h2>Maliyet: önce / sonra</h2>
+<div class="tbl"><table>
+<thead><tr><th></th><th>Önce (F4a öncesi)</th><th>Sonra (C ölçümü)</th><th>Fark</th></tr></thead>
+<tbody>
+<tr><td class="kod">V3 görünen kalem</td><td class="n">99</td><td class="n">98</td><td class="n">−1 (MAX98357A)</td></tr>
+<tr><td class="kod">Ara toplam</td><td class="n">90.232,68</td><td class="n">89.495,40</td><td class="n">−737,28</td></tr>
+<tr><td class="kod">Genel (%15 pay)</td><td class="n">103.767,58</td><td class="n"><b>102.919,71</b></td><td class="n">−847,87 (= 737,28 × 1,15; 847,872 kuruşa yuvarlandı)</td></tr>
+<tr><td class="kod">Koşullular dahil ara</td><td class="n">94.831,86</td><td class="n">94.094,58</td><td class="n">−737,28</td></tr>
+<tr><td class="kod">Koşullular dahil genel</td><td class="n">109.056,64</td><td class="n"><b>108.208,77</b></td><td class="n">−847,87</td></tr>
+<tr><td class="kod">Koşullu grup</td><td class="n">4.599,18</td><td class="n">4.599,18</td><td class="n">0 (omni 4.539,18 + fan 60; yeni adaylar fiyatsız)</td></tr>
+</tbody>
+</table></div>
+<p class="note">"Önce" sütunu A'nın ve B'nin ayrı ayrı ölçtüğü değer (<code>F4a-gunluk.md</code> §1, <code>F4a-kontrol.md</code> madde 27); "Sonra" sütunu C'nin <code>maliyet_toplam.py</code> koşusu. MAX98357A kalemi (737,28 TL, adet 1) silinmedi: V1 / V2'de duruyor, notu K16 (04.11) gerekçesini yazıyor. B'nin sayfa öykünmesi (24 durum): V1 / V2 aynı, V3'te fark yalnız −847,87; NaN yok.</p>
+
+<h2>11 fiyatsız aday (<code>tl: null</code>, <code>durum "dogrulanmadi"</code>, <code>secenek "fiyat_bekliyor"</code>)</h2>
+<div class="tbl"><table>
+<thead><tr><th>#</th><th>Kalem</th><th>Bağ</th><th>Yol / önerilen boy (LK)</th></tr></thead>
+<tbody>
+<tr><td class="n">1</td><td>Ses amfisi PAM8403 2 × 3 W (1,58 m)</td><td>K16 (04.11)</td><td>—</td></tr>
+<tr><td class="n">2</td><td>USB ses kartı, 3,5 mm stereo çıkış; ürün seçilmedi</td><td>K16 (04.11)</td><td>—</td></tr>
+<tr><td class="n">3</td><td>USB-A uzatma ~30 cm (Pi → ses kartı)</td><td><code>kosullu "K4"</code></td><td class="n">217 / 270 mm</td></tr>
+<tr><td class="n">4</td><td>USB-A uzatma ~1 m (Pi → hub)</td><td><code>kosullu "K4"</code></td><td class="n">617 / 920 mm</td></tr>
+<tr><td class="n">5</td><td>L USB-A dirsek</td><td><code>kosullu "K4"</code></td><td>—</td></tr>
+<tr><td class="n">6</td><td>Kısa micro USB kablo (ReSpeaker)</td><td><code>kosullu "K4"</code></td><td class="n">85 / 110 mm</td></tr>
+<tr><td class="n">7</td><td>Hoparlör kablosu ~1,1 m</td><td><code>kosullu "K4"</code></td><td class="n">824 / 1.030 mm</td></tr>
+<tr><td class="n">8</td><td>L 3,5 mm fişli kısa kablo</td><td><code>kosullu "K4"</code></td><td class="n">36 / 40 mm</td></tr>
+<tr><td class="n">9</td><td>90° HDMI fiş / adaptör (göğüs ekranı)</td><td><code>kosullu "F1b"</code></td><td>v4'te olabilir, P8.1 mükerrerlik kontrolü</td></tr>
+<tr><td class="n">10</td><td>90° micro USB fiş / adaptör (göğüs dokunmatiği)</td><td><code>kosullu "F1b"</code></td><td>—</td></tr>
+<tr><td class="n">11</td><td>90° DC jak fişi (göğüs ekranı 12 V)</td><td><code>kosullu "F1b"</code></td><td>jak ölçüsü doğrulanmadı</td></tr>
+</tbody>
+</table></div>
+<p class="note">Uydurulmuş fiyat yok; 01.11 PAM8403 fiyatı bilerek kullanılmadı (izlenmeyen satıcı dosyasında, P8.1'de doğrulanınca). Risk (B önerisi, sahibi P8.1): <code>tl</code> yazılıp <code>secenek</code> değiştirilmezse kalem sessizce toplam dışında kalır; <code>maliyet_toplam.py</code>'a "fiyatsız N kalem" satırı önerildi, betiğe bu pakette dokunulmadı.
+Gözlem (C): 9 ve 10 numaralı fiş adaptörleri <code>g "ses"</code> grubunda; fiyatsız oldukları için toplamı etkilemiyor, P8.1'de grup gözden geçirilmeli.</p>
+
+<h2>Açık kararlar ve belgelerdeki işaretleri</h2>
+<div class="tbl"><table>
+<thead><tr><th>Karar</th><th>Konu</th><th>Belgelerde</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td class="kod">K1</td><td>6. USB cihazı</td><td><code>elektrik.md</code> "bekliyor (K1, pano #5)"; her yerde "adı belli 5 cihaz" + 6. cihaz bekliyor; hub'da 2 port boş. Eski "yönlü mikrofonun ses kartı olabilir" tahmini metinden çıktı</td><td><span class="tag wait">açık</span></td></tr>
+<tr><td class="kod">K4</td><td>Listede olmayan kablo kalemleri</td><td><code>maliyet.json</code> 6 kalem <code>kosullu "K4"</code> + <code>fiyat_bekliyor</code>; <code>karar-kuyrugu.md</code> K4'e P4.2 notu (C, 09.11)</td><td><span class="tag wait">açık</span></td></tr>
+<tr><td class="kod">K10</td><td>PAM8403 5 V besleme noktası</td><td><code>elektrik.md</code> "karar bekliyor (K10)", D24V50F5 "K10'un varsayılanıdır, karar değil"; <code>karar-kuyrugu.md</code> K10'a B'nin çekincesi (C, 09.11): PAM tepe 0,71 A, Pi tam yük tepesiyle birlikte ölçülmeden "sınırda değil" denmez (P8.3)</td><td><span class="tag wait">açık</span></td></tr>
+<tr><td class="kod">K11</td><td>Göğüs ekranı 12 V dalının girişi</td><td><code>elektrik.md</code> "karar bekliyor (K11)", sigorta tablosunda; varsayılan a "önerilen varsayılan"; <code>Lale-Proje-Ozeti.txt</code> 4.6 mini 2 A dalı K11</td><td><span class="tag wait">açık</span></td></tr>
+<tr><td class="kod">K14</td><td>Boyun demeti (Efe teyidi)</td><td><code>elektrik.md</code> "karar bekliyor (K14, pano #6)"; <code>Lale-Proje-Ozeti.txt:123</code> seri yolunda "CAD'de böyle, Efe teyidi K14" (C, koşul 3)</td><td><span class="tag wait">açık</span></td></tr>
+</tbody>
+</table></div>
+<p class="note">Aynı belgelerde K2 (AI HAT+ × cıvata boss'u) ve K3 / K9 (elde yük) de açık listede; K2 C'nin koşul 2 uygulamasıyla <code>Lale-Proje-Ozeti.txt</code> durum bölümüne girdi. Hiçbir karar kapatılmadı.</p>
+
+<h2>Brief hatası ve düzeltilmesi</h2>
+<div class="oneri"><b>Orkestratör brief'i kaynaklarla çelişiyordu; A kaynağa uydu, B doğruladı.</b>
+<ul>
+<li><b>Hub yeri.</b> Brief: "kafa arka kabuk yan duvarı, K5 kapandı". Kaynak: K5'in kapanış kaydı ve <code>KY/uygulama-notu.md:58</code> hub <b>gövdede</b>, üst arka göğüs servis kapağının içinde (y 1.085–1.157, omuz 1.270'in altı). Ses kartı ve PAM kafanın sol duvarında.</li>
+<li><b>Boyun demeti.</b> Brief: "göğüs HDMI + USB dokunmatik + 12 V". Kaynak (<code>kablo-kurali-notu.md:34-35</code>, <code>kablo_yolu_ekran.py:6, 31, 197</code>): boyundan <b>5 kablo</b> geçer: kafa 12 V, tilt servo, göğüs HDMI, hub uzatması, hoparlör. Göğüs dokunmatiği ve ESP32 USB'si gövdedeki hub'dan; göğüs 12 V tabandan (en üst nokta y 1.205 &lt; 1.270).</li>
+<li><b>Düzeltme.</b> Orkestratör <code>dongu-158.md</code> P4.1 satırını düzeltti; <code>F4a-brief.md</code> tarihçe olarak olduğu gibi kaldı. Kaynaktaki tek çelişen ifade (<code>KY/uygulama-notu.md:115</code> "boyundan") C'nin ek düzeltmesiyle kapandı. <code>kablo_yolu_ekran.py:2</code> başlık yorumu da eski düzeni anlatıyor; dokunulmadı (P4.5 ile birlikte).</li>
+</ul></div>
+
+<h2>B'nin koşulları ve kapanışı</h2>
+<div class="tbl"><table>
+<thead><tr><th>Koşul</th><th>Yer</th><th>İçerik</th><th>Nasıl kapandı</th></tr></thead>
+<tbody>
+<tr><td class="kod">1</td><td><code>Lale-Proje-Ozeti.txt:152</code>, <code>README.md:44</code></td><td>Tilt ±13 "yazılım sınırı" diye düz yazılmış; main'deki kodun ±20 (70…110) kullandığı ve ±20'de çakışma söylenmiyordu</td><td><span class="tag ok">kapandı</span> "tasarım sınırı, karar 29.10" + kod ±20, KA tarama 327,4 / 654,9 mm³, pano #6</td></tr>
+<tr><td class="kod">2</td><td><code>Lale-Proje-Ozeti.txt:212, 215, 220</code></td><td>Durum bölümü eski: F3 "sürüyor", AI HAT+ çözülmüş gibi, K2 açık listede yok</td><td><span class="tag ok">kapandı</span> "AI HAT+ için iki çözüm (ana modelde yok, K2)"; "F3 tamam; karar K3/K9'da"; açık listeye K2</td></tr>
+<tr><td class="kod">3</td><td><code>Lale-Proje-Ozeti.txt:123</code></td><td>Seri yolunda K14 işareti yok</td><td><span class="tag ok">kapandı</span> "taban; CAD'de böyle, Efe teyidi K14"</td></tr>
+<tr><td class="kod">4</td><td><code>tasarim/freecad/OZET.md:34-35</code></td><td>"P3.2'de yeniden hesaplanıyor" (F3 bitti)</td><td><span class="tag ok">kapandı</span> "hesaplandı (<code>F3a-yuk.json</code>; AI HAT+ ana modelde yok, K2); el yükü önerisi düzde ≤ 100 g / el (K3, K9)"</td></tr>
+<tr><td class="kod">5</td><td><code>README.md:50</code></td><td>≈ 78.000 TL'nin koşulu (yüz ekranı hocadan) kaybolmuş</td><td><span class="tag ok">kapandı</span> "Yüz ekranı hocadan gelirse ve elimizdekiler (Pi 5, hafıza kartı) düşülürse"</td></tr>
+<tr><td class="kod">6</td><td><code>F4a-gunluk.md</code> §4</td><td>Kayıt notu: "README ve özet yalnız elektrik.md tahminini verdi" cümlesi yanlış</td><td><span class="tag ok">kapandı</span> "README akü süresi vermiyor; OZET ve özet ikisini de, 'ölçülmedi' notuyla veriyor."</td></tr>
+</tbody>
+</table></div>
+<p class="note">Metinler <code>F4a-kontrol.md</code> "Koşullar" bölümünden birebir; başka değişiklik yok. B'nin koşul dışı önerileri (<code>arayuz.py</code> satır atıfları F2 commit'iyle +6 kayacak; "Kafa grubu" → "tilt grubu"; <code>tasarim/freecad/README.md</code> modül bölümleri P6 / P7) kayıtta, iş açılmadı.</p>
+
+<h2>P4.5'e kalan takma ad kalıntıları</h2>
+<div class="tbl"><table>
+<thead><tr><th>Dosya</th><th>Satır sayısı</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>planlama/adim3/elektrik.md</code></td><td class="n">6</td></tr>
+<tr><td class="kod"><code>planlama/maliyet.json</code></td><td class="n">2</td></tr>
+<tr><td class="kod"><code>README.md</code></td><td class="n">8</td></tr>
+<tr><td class="kod"><code>Lale-Proje-Ozeti.txt</code></td><td class="n">1</td></tr>
+<tr><td class="kod">Toplam</td><td class="n"><b>17</b></td></tr>
+</tbody>
+</table></div>
+<p class="note">Hepsi bu paketin değiştirmediği eski satırlarda; commit'in eklenen satırlarında takma ad 0, yerel yol 0, başka öğrenci / danışman soyadı 0 (<code>git diff --cached -U0</code> taraması). Dokunulan öbür 9 dosyada 0.</p>
+
+<h2>Korunan değerler (regresyon)</h2>
+<p><code>py -3 planlama\d158\regresyon.py --yazma</code> (02:54:07; taban 02:17:55): boy 1.580, dört çakışma 0, yüksüz rampa 1,519, tilt 3,64, pan 2,21, mikrofon–hoparlör 574,3 mm, SY8205 × USB 0. <span class="tag ok">GEÇER, 10/10 aynı</span>. Paralel F2'nin çalışma kopyasındaki değişiklikler hiçbir değeri oynatmadı; taban yazılmadı.</p>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th><th>Dosya</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>79fb383</code></td><td>P4.1 / P4.2 / P4.4: <code>elektrik.md</code>, <code>maliyet.json</code>, <code>README.md</code>, <code>tasarim/freecad/README.md</code>, <code>tasarim/freecad/OZET.md</code>, <code>proje-plani.md</code>, <code>Lale-Proje-Ozeti.txt</code>, <code>KY/uygulama-notu.md</code>, <code>karar-kuyrugu.md</code>, <code>F4a-brief.md</code>, <code>F4a-gunluk.md</code>, <code>F4a-kontrol.md</code>, <code>dongu-158.md</code></td><td class="n">13</td></tr>
+</tbody>
+</table></div>
+<p class="note">Push: <code>1a319f2..79fb383 lale-duzeltme → lale-duzeltme</code>. Açık <code>git add</code> listesi; dışarıda: paralel F2 (<code>arayuz.py</code>, <code>omuz/</code>, <code>kabuk/</code> görselleri, <code>montaj/yerlesim-kontrol.json</code>, <code>F2-*</code>), <code>regresyon*.json</code>, K23 dosyaları, <code>F1a-kontrol.md</code>, F5 / F5b dosyaları, <code>kvkk/</code>, <code>rapor/</code>, <code>tubitak-2209b/</code>, <code>tasarim/solidworks/</code>, <code>raporlar/</code> izlenmeyenleri, <code>KY/kaynak/</code>, <code>lale_dongu.*</code>. Bu rapor ayrı commit'te.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F4a · 09.11.2026 · Commit <code>79fb383</code> (<code>lale-duzeltme</code>) · Regresyon <code>regresyon.py --yazma</code>: GEÇER, 10/10 aynı · Maliyet genel 102.919,71, koşullu dahil 108.208,77 · Kaynaklar: <code>F4a-brief.md</code>, <code>F4a-gunluk.md</code>, <code>F4a-kontrol.md</code>, <code>maliyet.json</code>, <code>karar-kuyrugu.md</code> K1, K4, K10, K11, K14.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
