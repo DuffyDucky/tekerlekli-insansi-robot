@@ -62,30 +62,68 @@ sonuc["ekran_en_yakin"] = yakin[:40]
 print("ekran cakisma", len(cakisma), "%.1fs" % (time.time() - t0))
 
 # ------------------------------------------------------------ kablo tupleri (kasa haric)
-TUP = {}
+# F1b P1.4 (08.11.2026): tup, silindirler ve uc kureleri AYRI arguman olarak tek multiFuse ile kurulur. Eski ardisik fuse
+# (silindir+kure, sonra birlestir) 'USB dokunmatik'te son segmenti yutuyordu (tup 4.742,9 mm3, pi r2 L 4.958,8; ekran kasasiyla ortak
+# 167,6 yerine 391,5 mm3 olmaliydi). Oteki kablolarda hacim ve kesisim ayni. Hacim, kati sayisi, gecerlilik kablo_tup_hacim'e yazilir.
+TUP, TUP_HACIM = {}, {}
 for ad, yol in KY.yollar().items():
     r = KY.KABLO[ad][0] / 2
-    t = None
+    sil_, kur_ = [], []
     for a_, b_ in zip(yol[:-1], yol[1:]):
         a_, b_ = V(*a_), V(*b_)
         if (b_ - a_).Length < 1e-6:
             continue
-        c = Part.makeCylinder(r, (b_ - a_).Length, a_, b_ - a_).fuse(Part.makeSphere(r, b_))
-        t = c if t is None else t.fuse(c)
+        sil_.append(Part.makeCylinder(r, (b_ - a_).Length, a_, b_ - a_))
+        kur_.append(Part.makeSphere(r, b_))
+    parca_ = sil_ + kur_
+    t = parca_[0].multiFuse(parca_[1:])
     TUP[ad] = t
+    TUP_HACIM[ad] = dict(hacim_mm3=round(t.Volume, 1), pi_r2_L=round(math.pi * r * r * KY.uzunluk(yol), 1), gecerli=t.isValid(), kati=len(t.Solids))
 sonuc["kablo_ozet"] = KY.ozet()
-kablo_cak = {}
+# F1b P1.4 (08.11.2026): gogus ekranina giren kablolarda (KY.EKRAN_PORT_KABLO) ekran kasasi kesisimi ikiye ayrilir: uc bolgesi (port girintisi +
+# fis ucu, KY.uc_bolgesi; kasa zarfinda girinti yok) icindeki hacim beklenen temas -> kablo_tup_uc_temas; bolge disindaki hacim gercek cakisma ->
+# kablo_tup_cakisma. Oteki kablo / parca ciftleri eskisi gibi.
+_GE_PL = App.Placement(V(0, A.GOGUS_EKRAN_Y, A.gogus_z(A.GOGUS_EKRAN_Y)), App.Rotation(V(1, 0, 0), -A.GOGUS_EGIM))
+
+
+def uc_kutu(r):
+    b = KY.uc_bolgesi(r)
+    k = Part.makeBox(b["x"][1] - b["x"][0], b["y"][1] - b["y"][0], b["z"][1] - b["z"][0], V(b["x"][0], b["y"][0], b["z"][0]))
+    k.transformShape(_GE_PL.toMatrix(), True)
+    return k
+
+
+kablo_cak, kablo_uc = {}, {}
 for ad, t in TUP.items():
-    r_ = []
+    r_, u_ = [], []
     tb = t.BoundBox
+    zon = uc_kutu(KY.KABLO[ad][0] / 2) if ad in KY.EKRAN_PORT_KABLO else None
     for p in P:
         if p["bb"].intersect(tb):
-            v = p["sh"].common(t).Volume
+            if zon is not None and p["ad"].startswith("Gogus ekrani 11,6"):
+                v_uc = p["sh"].common(zon).common(t).Volume
+                if v_uc > 0.5:
+                    u_.append((p["ad"], round(v_uc, 1)))
+                v = p["sh"].cut(zon).common(t).Volume
+            else:
+                v = p["sh"].common(t).Volume
             if v > 0.5:
                 r_.append((p["ad"], round(v, 1)))
     kablo_cak[ad] = sorted(r_, key=lambda q: -q[1])[:25]
+    if zon is not None:
+        kablo_uc[ad] = sorted(u_, key=lambda q: -q[1])
 sonuc["kablo_tup_cakisma"] = kablo_cak
-sonuc["kablo_tup_notu"] = ("Ev pozu, tek tek kablo tupu x parcalar. Kasa zarfinin ucu (port girintisi) ve kablolarin cekic somun / kablo gosterimi gibi semaya takilan ufak hacimleri beklenir; kablolar arasi temas taranmaz. "
+sonuc["kablo_tup_hacim"] = TUP_HACIM
+sonuc["kablo_tup_uc_temas"] = kablo_uc
+sonuc["kablo_tup_uc_bolgesi"] = dict(
+    kablolar=list(KY.EKRAN_PORT_KABLO), parca="Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
+    yerel={ad: KY.uc_bolgesi(KY.KABLO[ad][0] / 2) for ad in KY.EKRAN_PORT_KABLO},
+    cerceve="gogus ekrani yerel: X kasa uzun kenari, Y duzlem boyunca yukari, Z duzlem normali (disa); orijin cep merkezi (kablo_yolu_ekran.gp)",
+    gerekce=("Kasa modeli duz zarf, port girintisi yok; portlar -X kisa kenardaki girintide kenara bakar (arayuz.GOGUS_EKRAN port, fotograftan TAHMINI). "
+             "Sema tupu girintiye arkadan girer, port duvarina (x_duvar) yatay ulasir; uc kuresi duvari kablo yaricapi kadar gecer (fis konnektorde). "
+             "Bu bolgedeki hacim beklenen temastir; bolge disi kesisim gercek cakismadir ve kablo_tup_cakisma'da kalir. Port yeri dogrulaninca bolge de dogrulanir."))
+sonuc["kablo_tup_notu"] = ("Ev pozu, tek tek kablo tupu x parcalar. Gogus ekrani kablolarinin kasa ucu (port girintisi + fis) kablo_tup_uc_temas'ta ayri sayilir (kablo_tup_uc_bolgesi); "
+                           "kablolarin cekic somun / kablo gosterimi gibi semaya takilan ufak hacimleri beklenir; kablolar arasi temas taranmaz. "
                            "Listede rulman yuvasi, servo yuvasi, mil varsa o kablo gecisi elle bakilmali.")
 print("kablo", "%.1fs" % (time.time() - t0))
 

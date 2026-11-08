@@ -118,6 +118,24 @@ def yollar():
     return yol
 
 
+# F1b P1.4 (08.11.2026): gogus ekranina giren kablolar (yollar() 'ekran_ucu' ile biter) ve uc bolgesi. Kasa modeli duz zarf (arayuz.GOGUS_EKRAN
+# kasa; port girintisi modelde YOK), oysa portlar kasanin -X kisa kenarindaki girintide, kenara bakar (arayuz.GOGUS_EKRAN 'port', fotograftan
+# TAHMINI). Sema tupu girintiye arkadan girip port duvarina (x_duvar) yatay ulasir: zarfin girinti hacmine dusen kisim ve port duvarini
+# kablo yaricapi kadar gecen uc kuresi (fisin konnektore girmesi) beklenen temastir, cakisma sayilmaz. Bolge disinda kalan kesisim gercek
+# cakismadir (yol yeniden cizilmeli). lale158_kontrol.py bu bolgeyle ayirir; FreeCAD'siz tanim, gogus yerel cercevesinde (gp ile ayni).
+EKRAN_PORT_KABLO = ("HDMI", "USB dokunmatik", "12 V")
+
+
+def uc_bolgesi(r):
+    """Gogus ekrani yerel kutusu (x, y, z araliklari; gp() cercevesi): port girintisi (kasa -X kenari ... port duvari) + fis ucu (port
+    duvarindan r ileri). z: kasa arkasi ... port satirinin ustu (cam_geri farki ekli, yollar() ile ayni)."""
+    G = A.GOGUS_EKRAN
+    P = G["port"]
+    dz = G["cam_geri"] - P.get("cam_geri_ref", G["cam_geri"])
+    kw, pz1 = G["kasa"][0] / 2, -G["cam_geri"] - G["kasa"][2]
+    return dict(x=(-kw - 1.0, P["x_duvar"] + r), y=tuple(P["y"]), z=(pz1 - 1.0, max(P["z"]) - dz))
+
+
 def kafa_ici_qled():
     """10,1" QLED kafa ici kablolari (Bas cercevesi: tilt ekseni orijin, mm). Konnektorler +X kenarinda (arayuz.KAFA_EKRAN_QLED port). Sema: fis ucundan U donus -> panel arkasi / tabla onu gecidi -> tabla ustu.
     Doner: ad -> (nokta listesi, liste kablo boyu mm). HDMI yolu fis ucundan basliyor (30 cm serit fislerin arasinda). Bukum R ve fis boyu TAHMIN."""
