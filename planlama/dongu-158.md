@@ -30,6 +30,19 @@ tilt payı ≥ 3,0 (3,64); pan payı ≥ 2,0 (2,21); mikrofon-hoparlör ≥ 400 
   uyanış günlükten devam eder; eski ajan devam ettirilemezse aynı brief + "önce günlüğü oku" ile yeni ajan.
 - **Ajan düzeni:** üç Opus ajanı (A tasarım, B kontrol, C ölçüm + kayıt); görsel üreten ajan da Opus.
 - **Orkestratör:** ana oturum **hiç iş yapmaz** (Ahmet, 08.11: "asla bu oturum iş yapmasın sadece alt agentlar iş yapsın"): yalnız brief yazar, ajan başlatır, rapor okur, bu dosyayı ve hafızayı günceller. Ölçüm, commit ve push da ajanda. Aynı dosyaya iki ajan aynı anda dokunmaz. Bağımsız iki paket paralel koşabilir (aşağıda "paralel" sütunu).
+- **Paralel çalışma (Ahmet, 08.11: "birbiri ile çakışmıyorsa paralel agent çalıştırmanı istiyorum"):** dosya alanları
+  çakışmayan paketler aynı anda koşar. Başlatmadan önce aşağıdaki kilit tablosuna paketin yazacağı alanı yaz; alanı
+  başka bir koşan paketle kesişen iş başlatılmaz. Aynı anda en çok bir FreeCAD koşusu (makine). Commit yalnız ajan C'de
+  ve açık `git add` listesiyle; iki C aynı anda commit atmaz. Paket bitince kilit satırı silinir.
+
+### Kilit tablosu (koşan paketler)
+
+| Paket | Ajan | Yazdığı alan |
+|---|---|---|
+| F1a (P1.2, P1.3, P1.6, P1.7) | A | `tasarim/freecad/` kafa betikleri, `lale158/kafa-yerlesim/`, `planlama/d158/F1a-*`, FreeCAD makinesi |
+| P5.1 + P5.2 | A | `planlama/d158/F5-*`, `planlama/d158/servo-10-oneri.md`, `planlama/d158/kablo-kurali-notu.md` (salt okuma: CAD, `kod/`) |
+| P8.3 | A | `planlama/d158/testler/`, `planlama/d158/F8c-*` (salt okuma) |
+
 - **Tasarım sırası:** her adım öncekini bozmamalı; tam çakışma taraması yalnız P6'da, bir kez.
 - **Karar gereken yerde durma:** Ahmet'in kararını isteyen madde `planlama/d158/karar-kuyrugu.md`'ye yazılır
   (seçenekler + önerilen varsayılan + etkisi). Döngü varsayılanla ilerlemez; o maddeye bağlı olmayan işe geçer.
@@ -51,9 +64,9 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
-| P0.1 | Commitlenmemiş 25 dosya + izlenmeyen klasörleri sınıflandır (rehber_metin.py +356 satır kimden?, `kvkk/`, `rapor/`, `raporlar/07-*`, `solidworks/`, `lale_dongu.FCMacro`). Projeye ait olanları konu başına ayrı commit; kaynağı belirsiz olanı karar kuyruğuna | `git status` yalnız bilinçli dışlananlar; her commit tek konu | – | ⏳ |
-| P0.2 | Karar kuyruğunu aç: aşağıdaki "Bilinen kararlar" listesini seçenek + varsayılan + etkiyle yaz | Her maddede en az 2 seçenek ve sayısal etki | P0.1 | ⏳ |
-| P0.3 | Regresyon betiği `d158/regresyon.py`: korunan değerleri JSON'lardan toplar, öncekiyle karşılaştırır | Bugünkü değerlerle koşar, hepsi "aynı" | P0.1 | ⏳ |
+| P0.1 | Commitlenmemiş 25 dosya + izlenmeyen klasörleri sınıflandır (rehber_metin.py +356 satır kimden?, `kvkk/`, `rapor/`, `raporlar/07-*`, `solidworks/`, `lale_dongu.FCMacro`). Projeye ait olanları konu başına ayrı commit; kaynağı belirsiz olanı karar kuyruğuna | `git status` yalnız bilinçli dışlananlar; her commit tek konu | – | ✅ |
+| P0.2 | Karar kuyruğunu aç: aşağıdaki "Bilinen kararlar" listesini seçenek + varsayılan + etkiyle yaz | Her maddede en az 2 seçenek ve sayısal etki | P0.1 | ✅ |
+| P0.3 | Regresyon betiği `d158/regresyon.py`: korunan değerleri JSON'lardan toplar, öncekiyle karşılaştırır | Bugünkü değerlerle koşar, hepsi "aynı" | P0.1 | ✅ |
 
 ### Faz F1: 158 modelini tutarlı yap (kafa ve gövde)
 
@@ -71,7 +84,7 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
-| P2.1 | Omuz mekanik durdurucu (S2 alt sınır +3°, C1 kararı): servo bozulsa kol kabuğa vurmasın | Durdurucuda temas, kabukta 0; baskı analizi geçer | F1 ile | ⏳ |
+| P2.1 | Omuz mekanik durdurucu (S2 alt sınır +5° (`arayuz.py:176`, 18.10; C1 kararındaki +3° eski)): servo bozulsa kol kabuğa vurmasın | Durdurucuda temas, kabukta 0; baskı analizi geçer | F1 ile | ⏳ |
 | P2.2 | Omuz bölümü çakışma taraması (QLED + çerçeve sonrası hiç koşmadı, ~4,8 sa makine) + `omuz_regresyon`, `iskelet_regresyon` | `tek_kosu: true`, çakışma 0 | – (makine dolu) | ⏳ |
 
 ### Faz F3: Yük ve hareket sınırları
@@ -121,6 +134,8 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | P8.2 | Baskı partileri (Parti 0–4): sıra, filament kg, süre, önce basılacak test kuponları | Partilerin toplamı baskı listesine eşit | P8.1 | ⏳ |
 | P8.3 | Ölçüm ve test kâğıtları (ekip yapacak): JGB37 durma torku, QLED Power–Touch VBUS (Pi'ye takmadan), kafa 5 V akımı, PAM akımı, hub girişi gerilimi, akustik (Ø3 delik, yankı, servo gürültüsü) | Her test: amaç, malzeme, adım, kayıt tablosu, geçer sınırı | F1 ile | ⏳ |
 
+| P8.4 | Ek test kâğıtları (P8.3'ten çıkan): K12 kafa ısı testi, H1 sigorta açıklığı ölçümü, perçin delik/somun ölçüsü, rampada acil stop (motor boşa düşünce yuvarlanma, `kararlar-2026-10-29.md:83`) | P8.3 biçiminde, sayısal geçer sınırı | P8.3 sonrası | ⏳ |
+
 ### Faz F9: Takvim ve teslim
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
@@ -144,6 +159,12 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | K9 | El yükü 0,5 kg için servo değişimi mi, 100 g sınırı mı | 100 g sınırı |
 
 ## 5. Günlük
+
+- 2026-11-08 P8.3 A bitti: 9 kâğıt + testler.html (123 atıf). Bulgular: ReSpeaker yankı giderme ayrı ses kartıyla referans alamayabilir → Efe'ye soru (F5 sonrası pano); fan 3 dB çelişkisi; P8.4 eklendi. B kontrolde. F5 yeniden kontrolde. F1a A kabuk koşusunda.
+
+- 2026-11-08 F5 A bitti: 10 servo tablosu (yeni kanallar 6–9), kod↔CAD 11 çelişki (en kritik: horn sıfır kayması kodda yok; tilt ±20↔±13; omuz 160↔135), kablo notu 4 soru, pano taslağı 1.563 kr. **P2.1 notu:** S2 alt sınırı güncel kaynakta +5° (`arayuz.py:176`), plandaki +3° eski olabilir → B doğruluyor. F1a A kabuk koşusunu bekliyor. P8.3 A çalışıyor.
+
+- 2026-11-08 ~21:50 **F0 ✅** (B: 1. turda 3 KOŞULLU → düzeltme → GEÇER). C: regresyon 10/10 aynı; commit 8dcc4eb, 0b8a245, fa49caa, 680b965, 93da9af, c1bb4ed push. Bekleyen gruplar G4 (K24), G6 (K22), G7 (K23), G9 (K18–K22). Bulgu: göğüs kablo_tup_cakisma HDMI 897,1 / 12 V 617,3 / USB 167,6 mm³ → P1.4. F1a (kafa) A ajanı başladı.
 
 - 2026-11-08 ~21:00 F0 ajan A bitti: 9 commit grubu (G1–G5 kararsız), karar kuyruğu 23 madde (18 açık, K8 ve K5 kapanmış), regresyon 10/10 aynı. Bulgu: P1.2 model kısmı zaten yapılmış; depo herkese açık → kvkk/, rapor/, tubitak-2209b/, satıcı dosyaları dışlanacak. Ajan B kontrolde.
 - 2026-11-08 Ahmet: orkestratör iş yapmaz (ölçüm/commit ajana); PC kapanmaz (uyku zaten kapalı + uyku engelleyici süreç). 
