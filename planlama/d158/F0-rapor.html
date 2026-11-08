@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F0 Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:980px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+p.sub{color:var(--muted);margin:0 0 20px}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ul.list li{margin:4px 0}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<main>
+<h1>Lale 1,58 m · F0 kayıt raporu</h1>
+<p class="sub">Faz F0 (zemin), ajan C ölçüm ve kayıt, 08.11.2026 · dal <code>lale-duzeltme</code> · kaynak: <code>planlama/dongu-158.md</code> §1 adım 5–7</p>
+
+<h2>Özet</h2>
+<div class="cards">
+  <div class="card">
+    <div class="k">Paket kararları</div>
+    <div class="v">3 / 3 GEÇER</div>
+    <div class="d">P0.1, P0.2, P0.3: ilk kontrol KOŞULLU, yeniden kontrol 1 GEÇER (<code>F0-kontrol.md</code>)</div>
+  </div>
+  <div class="card">
+    <div class="k">Regresyon</div>
+    <div class="v">10 / 10 aynı</div>
+    <div class="d">Çıkış kodu 0, kötüleşen yok; 10 değer JSON'dan ayrıca elle okundu, betikle aynı</div>
+  </div>
+  <div class="card">
+    <div class="k">Karar kuyruğu</div>
+    <div class="v">19 açık · 5 kapalı</div>
+    <div class="d">Toplam 24 (K1–K24); K14 Efe'nin teyidi, diğer açıklar Ahmet'te</div>
+  </div>
+  <div class="card">
+    <div class="k">Commit</div>
+    <div class="v">5 + 1</div>
+    <div class="d">G1, G2, G3, G5, G8 ayrı commit; bu rapor G8 eki; hepsi push edildi</div>
+  </div>
+</div>
+
+<h2>Paket kararları</h2>
+<div class="tbl"><table>
+<thead><tr><th>Paket</th><th>İş</th><th>İlk kontrol</th><th>Yeniden kontrol 1</th></tr></thead>
+<tbody>
+<tr><td>P0.1</td><td>Commitlenmemiş dosyaların sınıflandırması, 9 commit grubu</td><td><span class="tag wait">KOŞULLU</span></td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>P0.2</td><td>Karar kuyruğu (24 madde)</td><td><span class="tag wait">KOŞULLU</span></td><td><span class="tag ok">GEÇER</span> (1 satır atıf, bu turda düzeltildi)</td></tr>
+<tr><td>P0.3</td><td>Regresyon betiği <code>regresyon.py</code></td><td><span class="tag wait">KOŞULLU</span></td><td><span class="tag ok">GEÇER</span></td></tr>
+</tbody></table></div>
+
+<h2>Regresyon: korunan 10 değer</h2>
+<div class="tbl"><table>
+<thead><tr><th>Değer</th><th class="n">Taban</th><th class="n">Şimdi</th><th class="n">Eşik</th><th>Durum</th><th>Kaynak (dosya : anahtar)</th></tr></thead>
+<tbody>
+<tr><td>Boy (mm)</td><td class="n">1580,0</td><td class="n">1580,0</td><td class="n">1580 ± 0,05</td><td><span class="tag ok">aynı</span></td><td><code>lale158/lale158-kontrol.json : toplam_boy_mm</code></td></tr>
+<tr><td>Çakışma, kafa içi</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="tag ok">aynı</span></td><td><code>kafa/kafa-analiz.json : statik</code></td></tr>
+<tr><td>Çakışma, kabuk içi</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="tag ok">aynı</span></td><td><code>kabuk/kabuk-analiz.json : cakisma</code></td></tr>
+<tr><td>Çakışma, kabuk × iskelet</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="tag ok">aynı</span></td><td><code>kabuk/kabuk-analiz.json : iskelet_cakisma</code></td></tr>
+<tr><td>Çakışma, ev pozu</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="tag ok">aynı</span></td><td><code>carpisma-sonuc.json : ev_pozu_cakisma</code> (<code>tek_kosu</code> false)</td></tr>
+<tr><td>Rampa yüksüz payı</td><td class="n">1,517</td><td class="n">1,517</td><td class="n">≥ 1,5</td><td><span class="tag ok">aynı</span></td><td><code>KY/uygulama-ivme.json : izgara_yuk_0g.a_sinir_pay15.rampa5_*</code> en küçük (ileri 1,689 · geri 1,517 · yan 2,033)</td></tr>
+<tr><td>Tilt payı</td><td class="n">3,64</td><td class="n">3,64</td><td class="n">≥ 3,0</td><td><span class="tag ok">aynı</span></td><td><code>kafa/kafa-analiz.json : tork.tilt.pay_tilt15</code></td></tr>
+<tr><td>Pan payı</td><td class="n">2,21</td><td class="n">2,21</td><td class="n">≥ 2,0</td><td><span class="tag ok">aynı</span></td><td><code>kafa/kafa-analiz.json : tork.pan.pay_iki_hane</code></td></tr>
+<tr><td>Mikrofon-hoparlör (mm)</td><td class="n">574,3</td><td class="n">574,3</td><td class="n">≥ 400</td><td><span class="tag ok">aynı</span></td><td><code>KY/uygulama-olcum.json : mic_hoparlor.poz_min_mm</code></td></tr>
+<tr><td>SY8205 × kafa kabloları (mm³)</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="tag ok">aynı</span></td><td><code>KY/uygulama-olcum.json</code>: 13 kablo (<code>kablo_sy8205</code> 10 + <code>kafa_ici_qled_kablo</code> 3), toplam 0,0</td></tr>
+</tbody></table></div>
+<p class="sub" style="margin-top:8px">Koşu: <code>py -3 planlama/d158/regresyon.py</code>, 08.11.2026 20:20, çıkış 0. Yollar <code>tasarim/freecad/</code> altında; <code>KY/</code> = <code>tasarim/freecad/lale158/kafa-yerlesim/</code>.</p>
+
+<h2>Commit'ler (push: <code>origin/lale-duzeltme</code>, <code>d26c7e7..93da9af</code>)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Kimlik</th><th>Grup</th><th>Konu</th><th class="n">Dosya</th><th class="n">+ / −</th></tr></thead>
+<tbody>
+<tr><td><code>8dcc4eb</code></td><td>G1</td><td>Montaj rehberi metni (04.11 gecesi)</td><td class="n">4</td><td class="n">385 / 38</td></tr>
+<tr><td><code>0b8a245</code></td><td>G2</td><td>Elektrik ve yazılım planı 1,58 m (04.11)</td><td class="n">2</td><td class="n">108 / 69</td></tr>
+<tr><td><code>fa49caa</code></td><td>G3</td><td>Baskı listesi 1,58 m (03.11 koşusu)</td><td class="n">3</td><td class="n">253 / 251</td></tr>
+<tr><td><code>680b965</code></td><td>G5</td><td>Tasarım demosu: gövde ekranı denemesi (30.10)</td><td class="n">1</td><td class="n">300 / 0</td></tr>
+<tr><td><code>93da9af</code></td><td>G8</td><td>Döngü planı ve F0 çıktıları (<code>regresyon-son-kosu.json</code> dahil)</td><td class="n">9</td><td class="n">1842 / 0</td></tr>
+<tr><td>bu rapor</td><td>G8 eki</td><td><code>planlama/d158/F0-rapor.html</code> (kimliği <code>git log</code>'da)</td><td class="n">1</td><td class="n">—</td></tr>
+</tbody></table></div>
+<p class="sub" style="margin-top:8px">Her commit'ten önce <code>git diff --cached --stat</code> ile yalnız o grubun yolları sahnede görüldü ve sahnelenen dosyalarda kişisel veri taraması yapıldı (e-posta, telefon, ekipteki diğer öğrencilerin ve danışmanın soyadı; tam içerik + eklenen satırlar). Engelleyici eşleşme 0; yanlış pozitifler: demo dosyasında sıfat olarak geçen bir kelime, G8'de commit ortak yazar adresi.</p>
+
+<h2>Bekleyen gruplar</h2>
+<div class="tbl"><table>
+<thead><tr><th>Grup</th><th>İçerik</th><th class="n">Yol</th><th>Bağlı olduğu karar</th></tr></thead>
+<tbody>
+<tr><td>G4</td><td>Araştırma raporları: onaylı satıcı, 11,6" göğüs ekranı sığma, korumalı 5 V (01.11)</td><td class="n">4</td><td><span class="tag wait">K24</span> varsayılan: iki satır (yerel hafıza yolu + takma ad) commit öncesi temizlensin</td></tr>
+<tr><td>G6</td><td>Hareket döngüsü makrosu ve SolidWorks STEP renk betikleri (29–30.10)</td><td class="n">5</td><td><span class="tag wait">K22</span> varsayılan: betik + makro commit, STEP'ler dışla</td></tr>
+<tr><td>G7</td><td>03.11 ara çıktıları: <code>Y2b-ivme.json</code>, <code>yerlesim-kontrol.json</code>, 13 kabuk görseli</td><td class="n">15</td><td><span class="tag wait">K23</span> varsayılan: "ara çıktı" diye commit</td></tr>
+<tr><td>G9</td><td><code>.gitignore</code>: <code>tubitak-2209b/</code>, <code>kvkk/</code>, <code>rapor/</code>, <code>KY/kaynak/</code>, <code>tasarim/solidworks/*.step</code>, Word kilit dosyaları</td><td class="n">1</td><td><span class="tag wait">K18–K22</span> varsayılan: hepsi dışla</td></tr>
+</tbody></table></div>
+<p class="sub" style="margin-top:8px">Döngü varsayılanla ilerlemez (<code>dongu-158.md</code> §2 "Karar gereken yerde durma"); bu gruplara dokunulmadı. P0.1 kabul ölçütü ("git status yalnız bilinçli dışlananlar") G4, G6, G7, G9 kapanınca sağlanır.</p>
+
+<h2>Bu turda yapılan düzeltmeler</h2>
+<ul class="list">
+<li><code>karar-kuyrugu.md:102</code>: K6 atfı <code>dongu-158.md:140</code> → <code>:141</code> (satır 141 = §4 K6).</li>
+<li><code>P0.1-siniflandirma.md:7</code>: "5 yeni dosya" → 7 (A 5, B <code>F0-kontrol.md</code>, <code>regresyon-son-kosu.json</code>); bu raporla 8. <code>regresyon-son-kosu.json</code> G8 <code>git add</code> listesine eklendi (<code>:194</code>, not <code>:196</code>).</li>
+<li>Takma ad, açık depoya giren orkestratör dosyalarından çıkarıldı: <code>F0-brief.md:15,18</code>, <code>dongu-158.md:21,40,92</code>. Satır sayıları değişmedi, mevcut satır atıfları geçerli.</li>
+</ul>
+
+<h2>Açık işler</h2>
+<ul class="list">
+<li><span class="tag info">P4.5</span> Commit'lenen G1, G2, G3, G5 dosyalarında takma ad hâlâ geçiyor (HEAD'den gelen metin, bu işte değiştirilmedi): <code>README.md</code> 9, <code>elektrik.md</code> 6, <code>yazilim-plani.md</code> 2, <code>baski-listesi.md</code> 2, <code>Y2b-baski.py</code> 1, <code>Robot-Tasarim-Demosu.html</code> 2 satır. <code>planlama/d158/</code> ve <code>dongu-158.md</code>'de 0.</li>
+<li><span class="tag info">Orkestratör</span> <code>planlama/d158/F1a-brief.md</code> bu iş sırasında oluştu; hiçbir gruba ait değil, commit'lenmedi; satır 38'de takma ad geçiyor.</li>
+<li><span class="tag info">Bilgi</span> G8 ile açık depoya girenler: <code>F0-brief.md:3</code> yerel Windows depo yolu; <code>F0-kontrol.md:59</code> yerel hafıza kasasının iki arşiv dosya adı (takma ad yok). Kişisel veri kriterine girmiyor, P4.5'te bakılabilir.</li>
+<li><span class="tag info">P1.4</span> <code>dongu-158.md</code> P1.4 sayısı eski (SY8205 249,7 → bugün 0); <code>kablo_tup_cakisma</code> göğüs ekranıyla sıfır değil (HDMI 897,1 · 12 V 617,3 · USB dokunmatik 167,6 mm³). Brief yazılmadan önce yeniden ölçülmeli (<code>F0-kontrol.md</code> B2.5).</li>
+<li><span class="tag info">P2.2 / P6.1</span> <code>carpisma-sonuc.json</code> <code>tek_kosu</code> false (koşular 20261103-215611 ve 20261105-185759): "ev pozu 0" tek bir koşudan gelmiyor.</li>
+<li><span class="tag info">Kayıt</span> <code>regresyon-son-kosu.json</code> artık izleniyor; her regresyon koşusunda değişir, sonraki paketin G8 benzeri commit'ine girmeli.</li>
+</ul>
+
+<footer>Ajan C (ölçüm ve kayıt) · F0 · 08.11.2026 · Kaynaklar: <code>planlama/d158/F0-kontrol.md</code>, <code>P0.1-siniflandirma.md</code>, <code>karar-kuyrugu.md</code>, <code>regresyon-son-kosu.json</code>, <code>git log</code>.</footer>
+</main>
+</body>
+</html>
