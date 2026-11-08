@@ -1,6 +1,6 @@
 # T2 · 10,1" QLED: Power ↔ Touch VBUS bağı (Pi'ye takmadan)
 
-Kâğıt T2 / 9 · Lale 1,58 m · sürüm 08.11.2026
+Kâğıt T2 / 13 · Lale 1,58 m · sürüm 08.11.2026
 
 | Tarih | Ölçen | Yazan | Kontrol eden | Multimetre markası/modeli |
 |---|---|---|---|---|

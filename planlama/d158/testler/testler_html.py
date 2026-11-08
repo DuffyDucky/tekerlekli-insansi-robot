@@ -1,4 +1,4 @@
-"""Test kâğıtlarını (00-genel.md, T1..T9 .md) tek, yazdırılabilir testler.html'ye çevirir.
+"""Test kâğıtlarını (00-genel.md, T1..T13 .md) tek, yazdırılabilir testler.html'ye çevirir.
 
 Kullanım (bu klasörde):
     py -3 testler_html.py            # testler.html'yi yeniden üretir
@@ -261,7 +261,7 @@ def uret():
         '<!doctype html>\n<html lang="tr">\n<head>\n<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
         "<title>Lale test kâğıtları</title>\n<style>%s</style>\n</head>\n<body>\n"
-        '<header class="ust"><h1>Lale 1,58 m · ölçüm ve test kâğıtları (P8.3)</h1>'
+        '<header class="ust"><h1>Lale 1,58 m · ölçüm ve test kâğıtları (P8.3, P8.4)</h1>'
         '<span><button id="yazdir" type="button">Yazdır</button> <button id="tema" type="button">Tema</button></span></header>\n'
         '<nav id="icindekiler"><h2>İçindekiler</h2><ol>%s</ol>'
         "<p>Bu sayfa <code>planlama/d158/testler/*.md</code> dosyalarından <code>testler_html.py</code> ile üretildi; "

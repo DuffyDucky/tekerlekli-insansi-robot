@@ -1,6 +1,6 @@
 # T6 · Akustik: Ø3 delikler, mikrofon–hoparlör, gürültü tabanı
 
-Kâğıt T6 / 9 · Lale 1,58 m · sürüm 08.11.2026
+Kâğıt T6 / 13 · Lale 1,58 m · sürüm 08.11.2026
 
 | Tarih | Ölçen | Yazan | Kontrol eden | Ses seviyesi ölçer markası/modeli |
 |---|---|---|---|---|
@@ -51,7 +51,7 @@ Seviye dBFS olarak okunur (negatif sayı). Fark = açık − kapalı (dB).
 
 ## Güvenlik
 
-- **B bölümünde servolar güçlü ve konum tutuyor:** kolların erişim alanında kimse durmaz, acil stop elde ve denenmiş. Servo gücü verilmeden
+- **B bölümünde servolar güçlü ve konum tutuyor:** kolların erişim alanında kimse durmaz; acil stop [00-genel.md](00-genel.md) ortak kural 1'e göre hazır (görevi yalnız mantar olan ayrı kişi; "devreden çıkar" komutu varsa düz zeminde denenmiş). Servo gücü verilmeden
   önce yazılım servo hedeflerini son konuma yazmış olmalı (`elektrik.md:224`), yoksa kollar ani hareket eder.
 - Motor gücü açıkken tekerlerin altı takozlu, robot zeminden kaçamaz; PWM 0.
 - Akü: ana sigorta ve dal sigortaları takılı.

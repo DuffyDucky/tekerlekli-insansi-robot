@@ -1,6 +1,6 @@
 # T8 · Servo hatları: XL4016 A / B / C yükte
 
-Kâğıt T8 / 9 · Lale 1,58 m · sürüm 08.11.2026
+Kâğıt T8 / 13 · Lale 1,58 m · sürüm 08.11.2026
 
 | Tarih | Ölçen | Yazan | Kontrol eden | Alet markası/modeli |
 |---|---|---|---|---|
@@ -46,7 +46,7 @@ Hat akımları hesap: kol hatları yoğun kullanımda 4,87 A, yani XL4016 için 
 - **Akü:** ana sigorta 30 A, F1 20 A ve hat sigortaları takılı. Kısa devre akü akımı çok yüksektir: ölçü ucu kayarsa iki ucu birden değdirme,
   saat ve yüzük çıkar.
 - **Servo:** servo gücü verilmeden önce yazılım hedefleri son konuma yazılmış olmalı (`elektrik.md:224`); yoksa kollar ani hareket eder.
-  Kolların ve kafanın erişim alanında kimse durmaz, parmak eklem aralarına girmez. Acil stop elde ve bir kez denenmiş.
+  Kolların ve kafanın erişim alanında kimse durmaz, parmak eklem aralarına girmez. Acil stop [00-genel.md](00-genel.md) ortak kural 1'e göre hazır (görevi yalnız mantar olan ayrı kişi; "devreden çıkar" komutu varsa düz zeminde denenmiş).
 - **Hareket varken prob tutulmaz, kola ya da konnektöre el uzatılmaz.** Hareketli parçadaki her ölçü ucu enerji yokken bağlanır, teli erişim
   alanının dışına çıkarılır; multimetre ve pens göstergesi alan dışında okunur. Komutları veren kişi de alanın dışındadır. Erişim alanı:
   tam uzanmış kolun ulaşabileceği yer + 0,5 m (varsayım).

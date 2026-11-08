@@ -1,6 +1,6 @@
 # T3 · Kafa 5 V hatları: gerilim ve akım
 
-Kâğıt T3 / 9 · Lale 1,58 m · sürüm 08.11.2026
+Kâğıt T3 / 13 · Lale 1,58 m · sürüm 08.11.2026
 
 | Tarih | Ölçen | Yazan | Kontrol eden | Alet markası/modeli |
 |---|---|---|---|---|

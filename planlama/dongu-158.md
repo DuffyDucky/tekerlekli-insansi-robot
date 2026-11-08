@@ -40,8 +40,7 @@ tilt payı ≥ 3,0 (3,64); pan payı ≥ 2,0 (2,21); mikrofon-hoparlör ≥ 400 
 | Paket | Ajan | Yazdığı alan |
 |---|---|---|
 | F1a (P1.2, P1.3, P1.6, P1.7) | A | `tasarim/freecad/` kafa betikleri, `lale158/kafa-yerlesim/`, `planlama/d158/F1a-*`, FreeCAD makinesi |
-| P8.4 | A | `planlama/d158/testler/`, `planlama/d158/F8d-*` |
-| P9.1 | C (kayıt) | `planlama/proje-plani.md`, `F9a-*`, git commit |
+| P8.4 | C (kayıt) | `planlama/d158/testler/`, `F8d-*`, git commit |
 
 - **Tasarım sırası:** her adım öncekini bozmamalı; tam çakışma taraması yalnız P6'da, bir kez.
 - **Karar gereken yerde durma:** Ahmet'in kararını isteyen madde `planlama/d158/karar-kuyrugu.md`'ye yazılır
@@ -134,13 +133,13 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | P8.2 | Baskı partileri (Parti 0–4): sıra, filament kg, süre, önce basılacak test kuponları | Partilerin toplamı baskı listesine eşit | P8.1 | ⏳ |
 | P8.3 | Ölçüm ve test kâğıtları (ekip yapacak): JGB37 durma torku, QLED Power–Touch VBUS (Pi'ye takmadan), kafa 5 V akımı, PAM akımı, hub girişi gerilimi, akustik (Ø3 delik, yankı, servo gürültüsü) | Her test: amaç, malzeme, adım, kayıt tablosu, geçer sınırı | F1 ile | ✅ |
 
-| P8.4 | Ek test kâğıtları (P8.3'ten çıkan; `00-genel.md:3` "kontrol bekliyor" satırı da güncellenir): K12 kafa ısı testi, H1 sigorta açıklığı ölçümü, perçin delik/somun ölçüsü, rampada acil stop (motor boşa düşünce yuvarlanma, `kararlar-2026-10-29.md:83`); P8.3 kontrol önerileri: T4 ilk dinlemede acil stop basılı, T1 seri multimetreyi çıkarmayı zorunlu yap | P8.3 biçiminde, sayısal geçer sınırı | P8.3 sonrası | ⏳ |
+| P8.4 | Ek test kâğıtları (P8.3'ten çıkan; `00-genel.md:3` "kontrol bekliyor" satırı da güncellenir): K12 kafa ısı testi, H1 sigorta açıklığı ölçümü, perçin delik/somun ölçüsü, rampada acil stop (motor boşa düşünce yuvarlanma, `kararlar-2026-10-29.md:83`); P8.3 kontrol önerileri: T4 ilk dinlemede acil stop basılı, T1 seri multimetreyi çıkarmayı zorunlu yap | P8.3 biçiminde, sayısal geçer sınırı | P8.3 sonrası | ✅ |
 
 ### Faz F9: Takvim ve teslim
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
-| P9.1 | `proje-plani.md` takvimi: H9 (23–29 Kas) ilk sürüş sipariş verilmeden gerçekçi değil → sipariş tarihine bağlı yeni takvim + kritik yol | Her hafta satırı bir bağımlılığa bağlı | F8 ile | ⏳ |
+| P9.1 | `proje-plani.md` takvimi: H9 (23–29 Kas) ilk sürüş sipariş verilmeden gerçekçi değil → sipariş tarihine bağlı yeni takvim + kritik yol | Her hafta satırı bir bağımlılığa bağlı | F8 ile | ✅ |
 | P9.2 | Demo sayfası 158 sayılarıyla (lale-duzeltme'de); `main`'e birleştirme yalnız onayla | Sayfa yerelde açılır, sayılar JSON ile aynı | P6 sonrası | ⏳ |
 | P9.3 | Sonuç `rapor.html` + Ahmet'e özet tablo | Tüm paketlerin durumu, açık kararlar | En son | ⏳ |
 
@@ -159,6 +158,12 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | K9 | El yükü 0,5 kg için servo değişimi mi, 100 g sınırı mı | 100 g sınırı |
 
 ## 5. Günlük
+
+- 2026-11-08 P8.4 B: GEÇMEZ (T13 C) → 2 tur → GEÇER + K1/K2 (iki satır; B: ayrı tur gerekmez, diff yeter) → C uygular + kayıt. Kural notu: 2 tur sınırından sonra yalnız kontrolün metnini birebir verdiği ≤2 satırlık koşullar C'de uygulanabilir; daha fazlası karar kuyruğuna.
+
+- 2026-11-08 P8.4 A bitti (T10–T13 + T1/T4 ekleri). B kontrolde. **Efe'ye toplu soru listesi (pano, P8.4 sonrası):** (1) ReSpeaker yankı giderme ayrı USB ses kartıyla referans alır mı; (2) yazılımda "devreden çıkar" (röle bırakma) komutu var mı; (3) elde taşınan uzaktan acil stop yok — donanım karşılığı tanımsız (T6, T8, T9, T13). Karar kuyruğu: K7 ana anahtar deliği ve perçin somun ayrı maddeler (`karar-kuyrugu.md:298`).
+
+- 2026-11-08 **P9.1 ✅** C: 979b995, 92efdb0 (rapor), e700636 push.
 
 - 2026-11-08 P9.1 B: 2 düzeltme turu → GEÇER. Sonuç: S=16.11 + erken alım (≈1.496 TL, 9.11 karar) + Parti 1 12.11 → demo 10.01; yoksa 20–24.01. C kayıtta.
 

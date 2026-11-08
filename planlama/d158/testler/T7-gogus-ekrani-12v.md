@@ -1,6 +1,6 @@
 # T7 · Göğüs ekranı 12 V dalı ve jak ölçüsü
 
-Kâğıt T7 / 9 · Lale 1,58 m · sürüm 08.11.2026
+Kâğıt T7 / 13 · Lale 1,58 m · sürüm 08.11.2026
 
 | Tarih | Ölçen | Yazan | Kontrol eden | Alet markası/modeli |
 |---|---|---|---|---|

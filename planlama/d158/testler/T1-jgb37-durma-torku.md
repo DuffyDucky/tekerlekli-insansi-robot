@@ -1,6 +1,6 @@
 # T1 · JGB37-520 durma torku ve akımı
 
-Kâğıt T1 / 9 · Lale 1,58 m · sürüm 08.11.2026
+Kâğıt T1 / 13 · Lale 1,58 m · sürüm 08.11.2026
 
 | Tarih | Ölçen | Yazan | Kontrol eden | Alet markası/modeli |
 |---|---|---|---|---|
@@ -82,7 +82,11 @@ Kaynak yöntem: `elektrik.md:173-175` ("100 mm kol + el kantarı, F × 0,1 m").
    durduysa bu denemenin torku **geçersizdir** (motor tam gerilim görmedi). Tabloya "CC" yaz ve sonucu aşağıdaki "kaynak sınıra girdi" satırıyla değerlendir.
    **Kaynak CC'de değil ama motor ucundaki gerilim 12,0 V'un altındaysa** bu CC değildir: seri multimetre ve kablolar gerilim düşürür. Enerjiyi
    kes, kaynağın gerilimini biraz artır (en çok 12,8 V, akü nominali `elektrik.md:54`) ve denemeyi tekrarla; motor ucunda **12,0 V** okunana
-   kadar böyle ayarla. Bu ayarı yapmaya gerek kalmasın istersen seri multimetreyi çıkar, akımı kaynağın kendi göstergesinden oku.
+   kadar böyle ayarla. **Kaynak 12,8 V'a çıktığı hâlde motor ucunda 12,0 V okunmuyorsa seri multimetreyi çıkarmak zorunludur:** enerjiyi
+   kes, multimetreyi hattan çıkar (kırmızı ucu V soketine geri tak), kabloyu doğrudan bağla, akımı kaynağın kendi göstergesinden oku ve denemeyi
+   tekrarla. Seri multimetre çıkmışken de motor ucu 12,0 V'a ulaşmıyorsa kablo ve bağlantıları (kısa, kalın kablo; sıkı klemens) düzelt;
+   düzelene kadar o denemenin torku tabloya "düşük V" notuyla yazılır, değerlendirmeye katılmaz. Bu ayarlarla uğraşmamak için baştan da
+   seri multimetresiz çalışabilirsin.
 6. Tork (kg·cm) = kantar (kg) × L (cm). L = 10 cm ise kantar × 10.
 7. 1 dk bekle, 5–6. adımı iki kez daha yap (3 deneme). Ortalamayı yaz.
 8. Dört motor için 1–7'yi tekrarla.

@@ -1,6 +1,6 @@
 # T4 · PAM8403 + USB ses kartı: besleme noktası ve akım
 
-Kâğıt T4 / 9 · Lale 1,58 m · sürüm 08.11.2026
+Kâğıt T4 / 13 · Lale 1,58 m · sürüm 08.11.2026
 
 | Tarih | Ölçen | Yazan | Kontrol eden | Alet markası/modeli |
 |---|---|---|---|---|
@@ -64,9 +64,13 @@ PAM'in besleme noktası karara bağlanmadı (`karar-kuyrugu.md` K10, satır 165)
    - **A4 1 kHz sinüs, en yüksek ses:** en kötü durum. 30 s'den uzun tutma.
 4. A4'ü T3'teki **S2 stres** senaryosuyla birlikte bir kez daha yap (Pi tam yükte + en yüksek ses). Pi hattının toplam akımını (N2, **yalnız pensle**)
    ve `vcgencmd get_throttled` çıktısını yaz. Bu adımda Pi hattında seri multimetre bulunmaz (gerilimi düşürür, `get_throttled`'ı bozar).
-5. **Uğultu:** önce, **anahtarlı bara kapalıyken** (servo ve motor gücü yok), ses yokken (A1) hoparlöre 10 cm'den kulak ver: uğultu ya da
-   cızırtı var mı? Sonra **enerji yokken** bir telefonu (ses kaydı ya da ses seviyesi uygulaması) hoparlörün 10 cm önüne sabitle (bantla ya da
-   sehpaya koy) ve kayda başlat; herkes kolların erişim alanının dışına çıkar. Ancak o zaman **anahtarlı barayı aç** (kol ve kafa servoları ile
+5. **Uğultu:** önce, **anahtarlı bara kapalıyken ve acil stop mantarı basılıyken** (servo ve motor gücü yok), ses yokken (A1) hoparlöre
+   10 cm'den kulak ver: uğultu ya da cızırtı var mı? Mantar basılıyken röle K1'in bobini donanımla kesilir; yazılım hatası olsa bile bara
+   açılamaz (`elektrik.md:216`, `elektrik.md:222`, `elektrik.md:227`). Mantar basılı kalmıyorsa (takılan mantarın kilitlenip kilitlenmediği **doğrulanmadı**, [T12](T12-percin-somun.md) C) hoparlöre yaklaşmayan ikinci
+   kişi basılı tutar. Sonra, mantar hâlâ basılıyken, bir telefonu (ses kaydı ya da ses seviyesi uygulaması) hoparlörün 10 cm önüne sabitle
+   (bantla ya da sehpaya koy) ve kayda başlat; herkes kolların erişim alanının dışına çıkar. Mantarı serbest bırakmadan önce yazılım kaydından
+   **GPIO12 = 0** ("devreye al" yok) olduğunu doğrula; değilse bırakma. Mantarı ancak herkes alan dışındayken, robotun **arkasından**
+   uzanarak bırak ve eli hemen çek (normalde tek başına güç vermez, `elektrik.md:222`; yazılım hatasında röle yeniden çekebilir, `elektrik.md:227`). Ancak o zaman **anahtarlı barayı aç** (kol ve kafa servoları ile
    motor sürücüsü de güç alır; `elektrik.md:60`), hareket komutu verme. Uğultuyu yalnız alan dışından dinle ya da telefonun kaydından izle;
    **servo gücü açıkken kimse kolların erişim alanına girmez**, hoparlöre yaklaşmaz. Bitince anahtarlı barayı kapat, telefonu sonra al.
    Bu ölçüm değil, gözlemdir; sayısal karşılığı [T6](T6-akustik.md) B bölümündedir.

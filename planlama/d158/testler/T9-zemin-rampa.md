@@ -1,6 +1,6 @@
 # T9 · Zemin sürtünmesi ve rampa denemesi
 
-Kâğıt T9 / 9 · Lale 1,58 m · sürüm 08.11.2026
+Kâğıt T9 / 13 · Lale 1,58 m · sürüm 08.11.2026
 
 | Tarih | Ölçen | Yazan | Kontrol eden | Alet markası/modeli |
 |---|---|---|---|---|
@@ -52,13 +52,20 @@ kalkmadığını görmek.
   kollar ev pozunda. İkinci kişi robotun çekilme doğrultusunun dışında (önünde ya da arkasında) durur, gövdeyi itmeden yalnız hafifçe tutar.
 - **Rampada acil stop robotu durdurmaz.** Acil stopta motorlar boşa düşer (`kararlar:83`), robot rampadan aşağı yuvarlanır. Rampada robotu
   durduran şey **taban ipidir**; acil stop yalnız motor ve servo gücünü keser.
+- **Acil stop B'de kumanda komutuyla verilir.** Mantar etek plakasındadır, robot rampadayken düşme hattının dışından ona ulaşılamaz;
+  elde taşınan uzaktan acil stop yoktur ([00-genel.md](00-genel.md) ortak kural 1). B'den önce [T13](T13-rampada-acil-stop.md) ön şartları
+  D1 (komut teyitli), D2 (düz zeminde bara ≤ 0,5 s'de düşer, 3 deneme) ve D3 (kumanda bağlantısı kopunca tekerler ≤ 0,5 s'de durur; tekerler havadayken ya da taban ipi arkadaki dayanağa ≤ 0,5 m
+  boşlukla bağlıyken ve hız ≤ 0,1 m/s iken, varsayım; T13 D3)
+  sağlanmış olmalı; değilse B yapılmaz. Komut 1 s içinde barayı
+  düşürmezse T13'teki "komut çalışmazsa" adımları uygulanır. En az 3 kişi: taban ipi, devrilme ipi, kumanda; kumandayı tutan ip tutmaz.
+  Çıkışta ipler robotu durdurmaz: robotun gidiş doğrultusu boş, dayanak ve ipi tutan kişi doğrultunun dışında, üst ucun yanında.
 - **İki ayrı ip (B):**
   - **Taban ipi** (kayma ve yuvarlanma için): tabanın şasisine, teker aksı yüksekliğine bağlanır, rampanın üstündeki sabit dayanaktan geçer.
     İpi tutan kişi robot ilerledikçe boşluğu alır ya da verir; **boşluk her an en çok 10 cm**.
   - **Devrilme ipi**: gövdeye omuz altından kayışla bağlanır, ikinci kişi tutar; **boşluk en çok 10 cm**. Bu ip yalnız devrilmeyi tutar,
     robotu çekmek için kullanılmaz.
 - **Düşme hattı:** robotun rampa boyunca önü ve arkası ile çevresinde robot boyu kadar (**1,6 m**, varsayım: robot 1,58 m, devrilirse tepesi
-  bu kadar uzağa düşer) alan. İpleri tutanlar, video çeken kişi ve robotu süren / acil stopu tutan kişi bu alanın **dışında**, rampanın yanında ve robottan yukarıda (yan çaprazda) durur; hiç kimse robotun tam arkasında ya da rampanın alt ucunda
+  bu kadar uzağa düşer) alan. İpleri tutanlar, video çeken kişi ve kumandayı tutan kişi (sürüş ve "devreden çıkar"; ip tutmaz) bu alanın **dışında**, rampanın yanında ve robottan yukarıda (yan çaprazda) durur; hiç kimse robotun tam arkasında ya da rampanın alt ucunda
   durmaz. Taban ipi dayanaktan geçtiği için ipi tutan kişi robotla aynı doğrultuda durmak zorunda değildir.
 - **Hareket varken kimse robota, tekerlere, kollara ya da iplerin robot ucuna el uzatmaz.** Ölçüm aletleri (telefon, bant işareti) enerji
   yokken ve robot düz zemindeyken takılır; deneme sırasında düzeltilmez. Bir şey gevşerse: ipler gerilir, acil stop, robot ipler gergin
@@ -107,7 +114,8 @@ kalkmadığını görmek.
     yeterlidir: en büyük mutlak değeri 0,5 s kayan ortalamayla yaz (varsayım: titreşimi süzmek için).
 12. **Teker kalkması:** videodan, her tekerin altında zeminle teker arasında boşluk görünüyor mu, kare kare bak.
 13. İsteğe bağlı, **yalnız taban ipi boşluksuz gerili ve herkes düşme hattının dışındayken**: robot rampanın ortasında dururken motor gücünü
-    kes (PWM 0, sürücü kapalı) ve ipin taşıdığı yükü, adım 8'de dayanak tarafına takılan kantardan alan dışından oku; sonra aynısını acil stop düğmesiyle yap.
+    kes (PWM 0, sürücü kapalı) ve ipin taşıdığı yükü, adım 8'de dayanak tarafına takılan kantardan alan dışından oku; acil stopla ip yükü burada ölçülmez,
+    [T13](T13-rampada-acil-stop.md) A'da ölçülür (mantara basmak için kimse düşme hattına girmez).
     Robot ipe asılı kalır, serbest bırakılmaz. (Kayıt içindir; `kararlar:83` riskini ölçer.)
 
 ## Kayıt tablosu
@@ -149,7 +157,6 @@ Tablo 2: düz zemin ve teker
 | İsteğe bağlı (taban ipi gerili) | İpteki yük, kantar (kg) |
 |---|---|
 | Motor gücü kesik | |
-| Acil stop | |
 
 ## Geçer / kalır sınırı
 

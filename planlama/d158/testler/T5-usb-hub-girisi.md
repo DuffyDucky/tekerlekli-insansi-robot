@@ -1,6 +1,6 @@
 # T5 · USB hub girişinde gerilim (yükte)
 
-Kâğıt T5 / 9 · Lale 1,58 m · sürüm 08.11.2026
+Kâğıt T5 / 13 · Lale 1,58 m · sürüm 08.11.2026
 
 | Tarih | Ölçen | Yazan | Kontrol eden | USB ölçer markası/modeli |
 |---|---|---|---|---|
