@@ -56,12 +56,16 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K41 | S1 yazılım aralığı: kod 0…160 ↔ CAD −45…135 | **açık** (F2 + F5) | a: kod −45…135 | `kod/` eklem sınırları, P5.1 |
 | K42 | PETG-CF miktarı: 1,5 kg yetmiyor | **açık** (F4c) | a: +1 makara (4 × 0,5 = 2,0 kg), +1.114,03 TL | S siparişi filament satırı, K34, Parti 0/2 |
 | K43 | Isıl gömme somun adedi: M3 177, M5 21 (plan 168 / 6) | **açık** (F4c) | Erken alımda M3 177 + pay, M5 21 + pay | K29, K31, Parti 0 kuponları |
+| K44 | `eklem_sinirlari.json`'un `kod/`'a yazılması | **açık** (F6a) | a: Ahmet onayıyla `kod/`'a yazılır + Efe'ye pano bilgisi | `kod/ortak/eklem_sinirlari.json` güncelliği, K2/K3 regresyon betikleri, P4.5 (`kod/`) |
+| K45 | S2 darbe hız sınırı (K38'i sayısallaştırır) | **açık** (F6a) | Kayıtta yok (a / b / c) | K38, `kod/` hareket planlayıcısı, K39 ölçümü |
 
-**Açık: 38** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 43 madde.
+**Açık: 40** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 45 madde.
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
 P4.3 + P8.2 (F4c, 09.11.2026) karar taslakları KT-F4c-1…2 → K42–K43, B'nin metinleriyle (`planlama/d158/F4c-kontrol.md`; K43 B-1 düzeltmesiyle M5 21).
+P6.1 + P4.5 (F6a, 09.11.2026) karar taslakları KT-F6a-1 → K44, KT-F6a-2 → K45 (`planlama/d158/F6a-gunluk.md` §4, B düzeltmeleriyle `F6a-kontrol.md` O-2).
+KT-F6a-3…5 karar değil, iş olarak kapandı (sondaki bölüm).
 
 ---
 
@@ -567,6 +571,7 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
   Güç kesilmeden önce iki kol S2 ≤ 15°'ye indirilir. Acil durdurmada kolun yüksekten düşebileceği kabul edilir; diş kırılırsa kol tambura ve
   kaset kapağına (3,65° / 3,21°) dayanır. Sahibi `kod/`; CAD değişmez. Gerekçe: F2-gunluk darbe tablosu ve F2-kontrol B-1/B-2." Yalnız öneri.
 - **Bloke:** `kod/` hareket planlayıcısı ve kapanma betiği (Efe'nin alanı; panoya yalnız bilgi/soru); K39 ölçümü sınırı gevşetebilir.
+- **F6a notu:** diş kökü r 1,5 yayı uygulandı, K_t 1,45; emniyet sayıları K_t ile yeniden hesaplandı. Sayısal hız sınırı için K45'e bakın.
 - **Durum:** açık.
 
 ## K39 · Durdurucu güçlendirme (KT-F2-2)
@@ -584,6 +589,7 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
   (c) metal diş. (b) seçilirse `eklem_sinirlari.json` ve ev pozu değişir." (Alıntıdaki (b)/(c) B'nin harflemesi: (b) = bu maddede c + a,
   (c) = bu maddede b.) Yalnız öneri.
 - **Bloke:** P6.1 (kök yarıçapı `omuz_parcalar.py`'de; zaten plana yazıldı), P8.3 benzeri ölçüm kâğıdı (DS3235 gelince), K38'in gevşetilmesi.
+- **F6a notu:** (1) yapıldı: kök yarıçapı r 1,5 uygulandı (temas 4,30° ve 5°'te 0,34 mm korundu), K_t 1,45. (2) DS3235 düşme ölçümü açık. K45'e bakın.
 - **Durum:** açık.
 
 ## K40 · S2 sıfır kalibrasyonu ve sınır metni (KT-F2-3)
@@ -654,6 +660,52 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
 - **Bloke:** K29 (erken alım), K31, Parti 0 kupon B/C.
 - **Durum:** açık.
 
+<!-- K44–K45: P6.1 + P4.5 kalanı (F6a, 09.11.2026), kaynak `planlama/d158/F6a-gunluk.md` §4 KT-F6a-1…2, sayılar B'nin bağımsız hesabıyla
+(`planlama/d158/F6a-kontrol.md` O-2, madde 5, D-2). -->
+
+## K44 · `eklem_sinirlari.json`'un `kod/`'a yazılması (KT-F6a-1)
+- **Soru:** F6a `arayuz.py`'deki S2 sınır metnini ve `yana_alt_bosluk_mm`'yi 158 modeline göre güncelledi. `kod/ortak/eklem_sinirlari.json`
+  bu yüzden eski (`py -3 kod/ortak/eklem_sinirlari_uret.py --kontrol` → "ESKI ya da yok", çıkış 1). Yeni içerik `kod/`'a yazılsın mı, kim yazsın?
+- **Kaynak:** öneri dosyası `planlama/d158/F6a-eklem_sinirlari-oneri.json`. Üreticinin `uret()` çıktısıyla bayt bayt aynı, 6133 bayt (`F6a-kontrol.md` madde 5).
+- **Fark (eski ↔ öneri, `F6a-gunluk.md` §1g):**
+  - Sayısal sınır farkı **yok** (`min`/`max`, `bagimli`, `kafa_kol_yasak`, `teker.ivme_sinir_m_s2` aynı).
+  - `r_s2` / `l_s2` `neden` metni: eski "kabuk boşluğu 0'da 4,7 mm, −3'te temas" yerine mekanik durdurucu 4,3°, 5°'te dişe 0,34 mm; durdurucusuz
+    ilk temas S1 tamburu 3,65°, kaset kapağı 3,21°.
+  - `bosluk_mm` {"0": 4.7, "-2": 0.6, "-3": 0.0} → {"5": 0.34, "4.3": 0.0}. Anahtar adı aynı, **anlamı değişti**: eski kol ↔ kabuk, yeni kol çatalı
+    ↔ durdurucu dişi (D-2). `kod/` içinde bu alanı okuyan betik yok.
+  - Yeni alan `temas_derece` {"durdurucu": 4.3, "s1_tambur": 3.65, "s1_kaset_kapagi": 3.21}.
+  - `teker.not_` içinde takma ad "Ahmet" ile değişiyor.
+- **Seçenekler:**
+  a) Ahmet onayıyla `py -3 kod/ortak/eklem_sinirlari_uret.py` koşulup `kod/`'a yazılır; Efe'ye pano bilgisi gider (S2 alt sınırı +5 aynı,
+     gerekçe artık durdurucu 4,3°; `bosluk_mm` anahtarlarının anlamı değişti).
+  b) Efe'ye bırakılır: üretimi `kod/` sahibi kendi takviminde yapar; öneri dosyası o zamana kadar `planlama/d158/` altında durur.
+- **Not:** `kod/` dosyası yenilenene kadar takma ad herkese açık dalda (`kod/ortak/eklem_sinirlari.json` teker notu) durur; P4.5 kabul ölçütü
+  bu dosya için ancak üretimden sonra sağlanır. `planlama/adim2/K2-regresyon.py`, `K3-regresyon.py` JSON ↔ üretici eşitliğini denetler; üretime kadar
+  "eşit değil" derler.
+- **Önerilen varsayılan:** a. Yalnız öneri.
+- **Bloke:** `kod/ortak/eklem_sinirlari.json` güncelliği, P4.5'in `kod/` kalanı, K2/K3 regresyon betikleri.
+- **Durum:** açık.
+
+## K45 · S2 darbe hız sınırı (KT-F6a-2; K38'i sayısallaştırır)
+- **Soru:** Kök yayından (r 1,5, K_t 1,45) sonra S2 durdurucuya yaklaşırken hangi açısal hız sınırı yazılsın?
+- **Sayılar** (`F6a-gunluk.md` §1d ve §9 tablosu; B'nin bağımsız hesabıyla aynı, `F6a-kontrol.md` O-2):
+  - F2 rijitlik varsayımında (k_lin = k_diş/2, kol esnek) emniyet 2 için ≤ **59°/s** yüksüz, ≤ **30°/s** 500 g yükte.
+  - Rijit uçta (k_lin = k_diş, kol rijit) emniyet 2 için **27 / 14°/s** gerekiyor; 59 / 30°/s'de emniyet **1,14** (500 g ile 1,15). Esnek uçta 59 / 30°/s'de 2,13 / 2,14.
+  - Yük temas şeridinin ucuna kayarsa F2 rijitliğinde emniyet 2 için ≈ 40 / 20°/s.
+  - Güç kesikken (servo torku yok) düşme sınırı: emniyet 2'de S2 ≤ **15,5°**, emniyet 1,5'te ≤ **20,4°** (F2 rijitliği; rijitte 8,1° / 10,2°).
+  - K_t'li emniyet: stall 2,57; 1,5 rad/s yüksüz 1,54; 500 g ile 0,91; kaçak servo ve 30°'den yüksek güç kesik düşme < 1. Keskin köşeli F2
+    geometrisine göre (K_t 2,73…3,64; stall 1,0–1,4) iyileşme; "3,73 → 2,57 düştü" diye okunmamalı.
+- **K38 ile ilişkisi:** K38'in "S2 < 20°'de ≤ 60°/s (yüklü ≤ 30°/s)" önerisini sayısallaştırır. Bu sınır yalnız F2 rijitlik varsayımında emniyet ≈ 2;
+  rijit alt sınırda ≈ 1,15. K38'deki "kapanmada S2 ≤ 15°" güç kesik düşme sınırıyla (15,5°) uyumlu.
+- **Seçenekler:**
+  a) Tutucu: 27 / 14°/s (rijit uçta da emniyet 2).
+  b) 59 / 30°/s (K38 a) ve rijitlik ölçümü; ölçüm rijit uca yakın çıkarsa sınır düşürülür.
+  c) Karar baskı kuponu testine kadar beklesin (kök yayı baskıda ve K39 DS3235 düşme ölçümü).
+- **Önerilen varsayılan:** kayıtta yok; A'nın taslağı a ile b arasında bırakıyor. Kaçak servo ve güç kesik düşme için mekanik çözüm (yumuşak
+  durdurucu / sönüm) K39'da.
+- **Bloke:** K38, `kod/` hareket planlayıcısı (Efe'nin alanı), K39 ölçümünün yorumu.
+- **Durum:** açık.
+
 ---
 
 ## Karar değil, iş (kuyruğa alınmadı)
@@ -661,3 +713,12 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
 - `elektrik.md` boyun/hub satırları ve baskı listesi yeni düzene (`KY/uygulama-notu.md:153`): P4.1, P4.3.
 - K7 perçin delik çapı ve perçin somun ölçüleri (`Y3-kontrol.md:115`): ölçüm, P8.3.
 - Ölçülmesi gerekenler (akustik, yankı, hub girişi gerilimi; `KY/secenekler.md:248-254`): P8.3.
+- F6a (09.11.2026), kapandı:
+  - KT-F6a-3: omuz ve iskelet regresyon referansları (`tasarim/freecad/omuz/regresyon/once.json`, `iskelet/regresyon/once.json`) C'de
+    `planlama/d158/F6a-regresyon-oneri/` önerileriyle yenilendi (md5 aynı; B her farkı bir değişikliğe bağladı).
+  - KT-F6a-4: F4c betikleri (`F4c-dogrula.py` `YAMA = []`, K39 şablonları) düzeltme 1'de uyarlandı; `F4c-dogrula.py` çıkış 0.
+  - KT-F6a-5: `montaj_gorsel.py` yasak kutu koruması düzeltme 1'de eklendi; kadraj ve poz tilt'i düzeltme 2'de.
+- F6a'dan açık iş:
+  - Göğüs ekranı port girintisi: ekran ölçülünce (`arayuz.GOGUS_EKRAN["port"]`, kasa girintisi, `lale158_kontrol` hariç tutma kutusu birlikte).
+  - `montaj-hareket.gif` ve 5 GUI ekran görüntüsü (`montaj-gui-*.png`) yenilenmedi (D-10).
+  - Dilimleyicide kök yayı önizlemesi (r 1,5 yayın katman çözünürlüğü, diş tabanı desteği) baskıdan önce.

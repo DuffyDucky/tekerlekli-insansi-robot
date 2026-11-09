@@ -1,0 +1,8713 @@
+{
+"parca_sayisi": 75,
+"parcalar": [
+{
+"ad": "Omuz traversi (sigma 40x40 agir, 200 mm)",
+"grup": "Govde",
+"hacim": 145259.701463103,
+"kati": 1,
+"gecerli": true,
+"kutle": 392.20119395,
+"merkez": [
+0.0,
+0.0,
+0.0
+],
+"bb": [
+-100.0,
+100.0,
+-20.0,
+20.0,
+-20.0,
+20.0
+]
+},
+{
+"ad": "Omuz yuvasi",
+"grup": "Govde",
+"hacim": 65591.518427834,
+"kati": 1,
+"gecerli": true,
+"kutle": 74.971105563,
+"merkez": [
+108.045239775,
+-1.992470072,
+0.0
+],
+"bb": [
+70.0,
+146.0,
+-42.0,
+25.0,
+-38.0,
+38.0
+]
+},
+{
+"ad": "S1 servo DS3235 (one-arka)",
+"grup": "Govde",
+"hacim": 32878.809748625,
+"kati": 1,
+"gecerli": true,
+"kutle": 60.0,
+"merkez": [
+124.648715399,
+-10.0,
+0.0
+],
+"bb": [
+104.3,
+144.7,
+-37.25,
+17.25,
+-10.0,
+10.0
+]
+},
+{
+"ad": "S1 servo cikis mili",
+"grup": "Govde",
+"hacim": 315.189707749,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.0,
+"merkez": [
+146.236930867,
+-0.0,
+-0.0
+],
+"bb": [
+144.7,
+150.0,
+-6.5,
+6.5,
+-6.5,
+6.5
+]
+},
+{
+"ad": "S1 kulak civatasi M4x16",
+"grup": "Govde",
+"hacim": 336.293821134,
+"kati": 1,
+"gecerli": true,
+"kutle": 2.639906496,
+"merkez": [
+130.476742688,
+14.75,
+-5.0
+],
+"bb": [
+118.5,
+138.5,
+11.25,
+18.25,
+-8.5,
+-1.5
+]
+},
+{
+"ad": "S1 kontra somun M4",
+"grup": "Govde",
+"hacim": 149.344370855,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.172353311,
+"merkez": [
+124.5,
+14.75,
+-5.0
+],
+"bb": [
+122.0,
+127.0,
+11.25,
+18.25,
+-9.041451884,
+-0.958548116
+]
+},
+{
+"ad": "S1 kulak civatasi M4x16",
+"grup": "Govde",
+"hacim": 336.293821134,
+"kati": 1,
+"gecerli": true,
+"kutle": 2.639906496,
+"merkez": [
+130.476742688,
+14.75,
+5.0
+],
+"bb": [
+118.5,
+138.5,
+11.25,
+18.25,
+1.5,
+8.5
+]
+},
+{
+"ad": "S1 kontra somun M4",
+"grup": "Govde",
+"hacim": 149.344370855,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.172353311,
+"merkez": [
+124.5,
+14.75,
+5.0
+],
+"bb": [
+122.0,
+127.0,
+11.25,
+18.25,
+0.958548116,
+9.041451884
+]
+},
+{
+"ad": "S1 kulak civatasi M4x16",
+"grup": "Govde",
+"hacim": 336.293821134,
+"kati": 1,
+"gecerli": true,
+"kutle": 2.639906496,
+"merkez": [
+130.476742688,
+-34.75,
+-5.0
+],
+"bb": [
+118.5,
+138.5,
+-38.25,
+-31.25,
+-8.5,
+-1.5
+]
+},
+{
+"ad": "S1 kontra somun M4",
+"grup": "Govde",
+"hacim": 149.344370855,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.172353311,
+"merkez": [
+124.5,
+-34.75,
+-5.0
+],
+"bb": [
+122.0,
+127.0,
+-38.25,
+-31.25,
+-9.041451884,
+-0.958548116
+]
+},
+{
+"ad": "S1 kulak civatasi M4x16",
+"grup": "Govde",
+"hacim": 336.293821134,
+"kati": 1,
+"gecerli": true,
+"kutle": 2.639906496,
+"merkez": [
+130.476742688,
+-34.75,
+5.0
+],
+"bb": [
+118.5,
+138.5,
+-38.25,
+-31.25,
+1.5,
+8.5
+]
+},
+{
+"ad": "S1 kontra somun M4",
+"grup": "Govde",
+"hacim": 149.344370855,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.172353311,
+"merkez": [
+124.5,
+-34.75,
+5.0
+],
+"bb": [
+122.0,
+127.0,
+-38.25,
+-31.25,
+0.958548116,
+9.041451884
+]
+},
+{
+"ad": "Yuva baglanti civatasi M6x16",
+"grup": "Govde",
+"hacim": 845.685953815,
+"kati": 1,
+"gecerli": true,
+"kutle": 6.638634737,
+"merkez": [
+86.0,
+22.00508725,
+0.0
+],
+"bb": [
+81.0,
+91.0,
+9.0,
+31.0,
+-5.0,
+5.0
+]
+},
+{
+"ad": "Cekic somun M6 (kanal 10)",
+"grup": "Govde",
+"hacim": 658.628330588,
+"kati": 1,
+"gecerli": true,
+"kutle": 5.170232395,
+"merkez": [
+86.0,
+13.2,
+0.0
+],
+"bb": [
+81.0,
+91.0,
+10.7,
+15.7,
+-8.0,
+8.0
+]
+},
+{
+"ad": "Yuva baglanti civatasi M6x16",
+"grup": "Govde",
+"hacim": 845.685953815,
+"kati": 1,
+"gecerli": true,
+"kutle": 6.638634737,
+"merkez": [
+86.0,
+-22.00508725,
+-0.0
+],
+"bb": [
+81.0,
+91.0,
+-31.0,
+-9.0,
+-5.0,
+5.0
+]
+},
+{
+"ad": "Cekic somun M6 (kanal 10)",
+"grup": "Govde",
+"hacim": 658.628330588,
+"kati": 1,
+"gecerli": true,
+"kutle": 5.170232395,
+"merkez": [
+86.0,
+-13.2,
+-0.0
+],
+"bb": [
+81.0,
+91.0,
+-15.7,
+-10.7,
+-8.0,
+8.0
+]
+},
+{
+"ad": "Yuva baglanti civatasi M6x16",
+"grup": "Govde",
+"hacim": 845.685953815,
+"kati": 1,
+"gecerli": true,
+"kutle": 6.638634737,
+"merkez": [
+86.0,
+-0.0,
+22.00508725
+],
+"bb": [
+81.0,
+91.0,
+-5.0,
+5.0,
+9.0,
+31.0
+]
+},
+{
+"ad": "Cekic somun M6 (kanal 10)",
+"grup": "Govde",
+"hacim": 658.628330588,
+"kati": 1,
+"gecerli": true,
+"kutle": 5.170232395,
+"merkez": [
+86.0,
+0.0,
+13.2
+],
+"bb": [
+81.0,
+91.0,
+-8.0,
+8.0,
+10.7,
+15.7
+]
+},
+{
+"ad": "Yuva baglanti civatasi M6x16",
+"grup": "Govde",
+"hacim": 845.685953815,
+"kati": 1,
+"gecerli": true,
+"kutle": 6.638634737,
+"merkez": [
+86.0,
+-0.0,
+-22.00508725
+],
+"bb": [
+81.0,
+91.0,
+-5.0,
+5.0,
+-31.0,
+-9.0
+]
+},
+{
+"ad": "Cekic somun M6 (kanal 10)",
+"grup": "Govde",
+"hacim": 658.628330588,
+"kati": 1,
+"gecerli": true,
+"kutle": 5.170232395,
+"merkez": [
+86.0,
+0.0,
+-13.2
+],
+"bb": [
+81.0,
+91.0,
+-8.0,
+8.0,
+-15.7,
+-10.7
+]
+},
+{
+"ad": "Rulman kapagi",
+"grup": "Govde",
+"hacim": 14373.521214747,
+"kati": 1,
+"gecerli": true,
+"kutle": 16.428934748,
+"merkez": [
+151.818216571,
+0.0,
+-0.0
+],
+"bb": [
+146.0,
+160.0,
+-30.0,
+30.0,
+-38.0,
+38.0
+]
+},
+{
+"ad": "6808-2RS rulman (dis bilezik)",
+"grup": "Govde",
+"hacim": 1773.366221098,
+"kati": 1,
+"gecerli": true,
+"kutle": 13.920924836,
+"merkez": [
+156.5,
+0.0,
+-0.0
+],
+"bb": [
+153.0,
+160.0,
+-26.0,
+26.0,
+-26.0,
+26.0
+]
+},
+{
+"ad": "Kapak civatasi M3x12",
+"grup": "Govde",
+"hacim": 146.355099183,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.148887529,
+"merkez": [
+149.113284488,
+-6.0,
+-33.0
+],
+"bb": [
+140.0,
+155.0,
+-8.75,
+-3.25,
+-35.75,
+-30.25
+]
+},
+{
+"ad": "Isil gomme somun M3 (yuvada)",
+"grup": "Govde",
+"hacim": 31.33738672,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.266367787,
+"merkez": [
+143.15,
+-6.0,
+-33.0
+],
+"bb": [
+140.3,
+146.0,
+-8.0,
+-4.0,
+-35.0,
+-31.0
+]
+},
+{
+"ad": "Kapak civatasi M3x12",
+"grup": "Govde",
+"hacim": 146.355099183,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.148887529,
+"merkez": [
+149.113284488,
+-6.0,
+33.0
+],
+"bb": [
+140.0,
+155.0,
+-8.75,
+-3.25,
+30.25,
+35.75
+]
+},
+{
+"ad": "Isil gomme somun M3 (yuvada)",
+"grup": "Govde",
+"hacim": 31.33738672,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.266367787,
+"merkez": [
+143.15,
+-6.0,
+33.0
+],
+"bb": [
+140.3,
+146.0,
+-8.0,
+-4.0,
+31.0,
+35.0
+]
+},
+{
+"ad": "Kapak civatasi M3x12",
+"grup": "Govde",
+"hacim": 146.355099183,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.148887529,
+"merkez": [
+149.113284488,
+6.0,
+-33.0
+],
+"bb": [
+140.0,
+155.0,
+3.25,
+8.75,
+-35.75,
+-30.25
+]
+},
+{
+"ad": "Isil gomme somun M3 (yuvada)",
+"grup": "Govde",
+"hacim": 31.33738672,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.266367787,
+"merkez": [
+143.15,
+6.0,
+-33.0
+],
+"bb": [
+140.3,
+146.0,
+4.0,
+8.0,
+-35.0,
+-31.0
+]
+},
+{
+"ad": "Kapak civatasi M3x12",
+"grup": "Govde",
+"hacim": 146.355099183,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.148887529,
+"merkez": [
+149.113284488,
+6.0,
+33.0
+],
+"bb": [
+140.0,
+155.0,
+3.25,
+8.75,
+30.25,
+35.75
+]
+},
+{
+"ad": "Isil gomme somun M3 (yuvada)",
+"grup": "Govde",
+"hacim": 31.33738672,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.266367787,
+"merkez": [
+143.15,
+6.0,
+33.0
+],
+"bb": [
+140.3,
+146.0,
+4.0,
+8.0,
+31.0,
+35.0
+]
+},
+{
+"ad": "Govde kabugu yan yuzu (referans)",
+"grup": "Govde",
+"hacim": 311319.276810926,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.0,
+"merkez": [
+149.5,
+-145.690771542,
+-0.0
+],
+"bb": [
+147.0,
+152.0,
+-300.0,
+30.0,
+-102.0,
+102.0
+]
+},
+{
+"ad": "S1 horn 25T aluminyum disk",
+"grup": "Gobek",
+"hacim": 1433.273108384,
+"kati": 1,
+"gecerli": true,
+"kutle": 3.869837393,
+"merkez": [
+148.35,
+-0.0,
+-0.0
+],
+"bb": [
+146.7,
+150.0,
+-12.5,
+12.5,
+-12.5,
+12.5
+]
+},
+{
+"ad": "S1 horn merkez vidasi M3",
+"grup": "Gobek",
+"hacim": 96.875014889,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.760468867,
+"merkez": [
+149.98033736,
+0.0,
+-0.0
+],
+"bb": [
+145.0,
+153.0,
+-2.75,
+2.75,
+-2.75,
+2.75
+]
+},
+{
+"ad": "6808-2RS rulman (ic bilezik)",
+"grup": "Gobek",
+"hacim": 2139.518844874,
+"kati": 1,
+"gecerli": true,
+"kutle": 16.795222932,
+"merkez": [
+156.5,
+0.0,
+0.0
+],
+"bb": [
+153.0,
+160.0,
+-22.3,
+22.3,
+-22.3,
+22.3
+]
+},
+{
+"ad": "Omuz gobegi",
+"grup": "Gobek",
+"hacim": 54000.263893439,
+"kati": 1,
+"gecerli": true,
+"kutle": 61.72230163,
+"merkez": [
+169.432364394,
+7.54455321,
+-5.65105598
+],
+"bb": [
+150.0,
+199.0,
+-34.0,
+43.0,
+-28.0,
+23.0
+]
+},
+{
+"ad": "Gobek-horn civatasi M3x12",
+"grup": "Gobek",
+"hacim": 146.355099183,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.148887529,
+"merkez": [
+156.113284488,
+6.01040764,
+-6.01040764
+],
+"bb": [
+147.0,
+162.0,
+3.26040764,
+8.76040764,
+-8.76040764,
+-3.26040764
+]
+},
+{
+"ad": "Gobek-horn civatasi M3x12",
+"grup": "Gobek",
+"hacim": 146.355099183,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.148887529,
+"merkez": [
+156.113284488,
+6.01040764,
+6.01040764
+],
+"bb": [
+147.0,
+162.0,
+3.26040764,
+8.76040764,
+3.26040764,
+8.76040764
+]
+},
+{
+"ad": "Gobek-horn civatasi M3x12",
+"grup": "Gobek",
+"hacim": 146.355099183,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.148887529,
+"merkez": [
+156.113284488,
+-6.01040764,
+6.01040764
+],
+"bb": [
+147.0,
+162.0,
+-8.76040764,
+-3.26040764,
+3.26040764,
+8.76040764
+]
+},
+{
+"ad": "Gobek-horn civatasi M3x12",
+"grup": "Gobek",
+"hacim": 146.355099183,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.148887529,
+"merkez": [
+156.113284488,
+-6.01040764,
+-6.01040764
+],
+"bb": [
+147.0,
+162.0,
+-8.76040764,
+-3.26040764,
+-8.76040764,
+-3.26040764
+]
+},
+{
+"ad": "S1 kablo tamburu",
+"grup": "Gobek",
+"hacim": 4711.889910587,
+"kati": 1,
+"gecerli": true,
+"kutle": 4.787280149,
+"merkez": [
+156.644118851,
+4.814794966,
+12.20537986
+],
+"bb": [
+152.5,
+163.0,
+-43.7,
+43.7,
+-26.904406472,
+43.7
+]
+},
+{
+"ad": "Tambur civatasi M3x8",
+"grup": "Gobek",
+"hacim": 118.0807653,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.926934008,
+"merkez": [
+161.683445889,
+29.228357378,
+16.875
+],
+"bb": [
+157.5,
+168.5,
+26.478357378,
+31.978357378,
+14.125,
+19.625
+]
+},
+{
+"ad": "Isil gomme somun M3 (gobekte)",
+"grup": "Gobek",
+"hacim": 31.33738672,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.266367787,
+"merkez": [
+165.85,
+29.228357378,
+16.875
+],
+"bb": [
+163.0,
+168.7,
+27.228357378,
+31.228357378,
+14.875,
+18.875
+]
+},
+{
+"ad": "Tambur civatasi M3x8",
+"grup": "Gobek",
+"hacim": 118.0807653,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.926934008,
+"merkez": [
+161.683445889,
+33.75,
+-0.0
+],
+"bb": [
+157.5,
+168.5,
+31.0,
+36.5,
+-2.75,
+2.75
+]
+},
+{
+"ad": "Isil gomme somun M3 (gobekte)",
+"grup": "Gobek",
+"hacim": 31.33738672,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.266367787,
+"merkez": [
+165.85,
+33.75,
+-0.0
+],
+"bb": [
+163.0,
+168.7,
+31.75,
+35.75,
+-2.0,
+2.0
+]
+},
+{
+"ad": "Tambur civatasi M3x8",
+"grup": "Gobek",
+"hacim": 118.0807653,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.926934008,
+"merkez": [
+161.683445889,
+29.228357378,
+-16.875
+],
+"bb": [
+157.5,
+168.5,
+26.478357378,
+31.978357378,
+-19.625,
+-14.125
+]
+},
+{
+"ad": "Isil gomme somun M3 (gobekte)",
+"grup": "Gobek",
+"hacim": 31.33738672,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.266367787,
+"merkez": [
+165.85,
+29.228357378,
+-16.875
+],
+"bb": [
+163.0,
+168.7,
+27.228357378,
+31.228357378,
+-18.875,
+-14.875
+]
+},
+{
+"ad": "S1 tambur baglama ipi",
+"grup": "Gobek",
+"hacim": 3.552,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.00490176,
+"merkez": [
+155.9,
+-34.21874068,
+-21.382242312
+],
+"bb": [
+153.2,
+158.6,
+-37.080880845,
+-31.356600515,
+-23.27408954,
+-19.490395084
+]
+},
+{
+"ad": "S1 tambur baglama ipi",
+"grup": "Gobek",
+"hacim": 3.552,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.00490176,
+"merkez": [
+155.9,
+-36.861559216,
+-16.411823548
+],
+"bb": [
+153.2,
+158.6,
+-39.911929282,
+-33.81118915,
+-17.91642673,
+-14.907220367
+]
+},
+{
+"ad": "S2 servo DS3235 (yana acma)",
+"grup": "Gobek",
+"hacim": 32878.809748625,
+"kati": 1,
+"gecerli": true,
+"kutle": 60.0,
+"merkez": [
+185.0,
+10.0,
+0.148715399
+],
+"bb": [
+175.0,
+195.0,
+-17.25,
+37.25,
+-20.2,
+20.2
+]
+},
+{
+"ad": "S2 servo cikis mili",
+"grup": "Gobek",
+"hacim": 315.189707749,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.0,
+"merkez": [
+185.0,
+0.0,
+21.736930867
+],
+"bb": [
+178.5,
+191.5,
+-6.5,
+6.5,
+20.2,
+25.5
+]
+},
+{
+"ad": "S2 kulak civatasi M4x16",
+"grup": "Gobek",
+"hacim": 336.293821134,
+"kati": 1,
+"gecerli": true,
+"kutle": 2.639906496,
+"merkez": [
+180.0,
+-14.75,
+5.976742688
+],
+"bb": [
+176.5,
+183.5,
+-18.25,
+-11.25,
+-6.0,
+14.0
+]
+},
+{
+"ad": "S2 kontra somun M4",
+"grup": "Gobek",
+"hacim": 149.344370855,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.172353311,
+"merkez": [
+180.0,
+-14.75,
+0.0
+],
+"bb": [
+175.958548116,
+184.041451884,
+-18.25,
+-11.25,
+-2.5,
+2.5
+]
+},
+{
+"ad": "S2 kulak civatasi M4x16",
+"grup": "Gobek",
+"hacim": 336.293821134,
+"kati": 1,
+"gecerli": true,
+"kutle": 2.639906496,
+"merkez": [
+190.0,
+-14.75,
+5.976742688
+],
+"bb": [
+186.5,
+193.5,
+-18.25,
+-11.25,
+-6.0,
+14.0
+]
+},
+{
+"ad": "S2 kontra somun M4",
+"grup": "Gobek",
+"hacim": 149.344370855,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.172353311,
+"merkez": [
+190.0,
+-14.75,
+0.0
+],
+"bb": [
+185.958548116,
+194.041451884,
+-18.25,
+-11.25,
+-2.5,
+2.5
+]
+},
+{
+"ad": "S2 kulak civatasi M4x16",
+"grup": "Gobek",
+"hacim": 336.293821134,
+"kati": 1,
+"gecerli": true,
+"kutle": 2.639906496,
+"merkez": [
+180.0,
+34.75,
+5.976742688
+],
+"bb": [
+176.5,
+183.5,
+31.25,
+38.25,
+-6.0,
+14.0
+]
+},
+{
+"ad": "S2 kontra somun M4",
+"grup": "Gobek",
+"hacim": 149.344370855,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.172353311,
+"merkez": [
+180.0,
+34.75,
+0.0
+],
+"bb": [
+175.958548116,
+184.041451884,
+31.25,
+38.25,
+-2.5,
+2.5
+]
+},
+{
+"ad": "S2 kulak civatasi M4x16",
+"grup": "Gobek",
+"hacim": 336.293821134,
+"kati": 1,
+"gecerli": true,
+"kutle": 2.639906496,
+"merkez": [
+190.0,
+34.75,
+5.976742688
+],
+"bb": [
+186.5,
+193.5,
+31.25,
+38.25,
+-6.0,
+14.0
+]
+},
+{
+"ad": "S2 kontra somun M4",
+"grup": "Gobek",
+"hacim": 149.344370855,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.172353311,
+"merkez": [
+190.0,
+34.75,
+0.0
+],
+"bb": [
+185.958548116,
+194.041451884,
+31.25,
+38.25,
+-2.5,
+2.5
+]
+},
+{
+"ad": "Isil gomme somun M5 (gobekte)",
+"grup": "Gobek",
+"hacim": 87.744682815,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.745829804,
+"merkez": [
+185.0,
+-0.0,
+-24.5
+],
+"bb": [
+181.8,
+188.2,
+-3.2,
+3.2,
+-28.0,
+-21.0
+]
+},
+{
+"ad": "625ZZ rulman (ic bilezik)",
+"grup": "Gobek",
+"hacim": 165.87609211,
+"kati": 1,
+"gecerli": true,
+"kutle": 1.302127323,
+"merkez": [
+185.0,
+-0.0,
+-30.5
+],
+"bb": [
+180.9,
+189.1,
+-4.1,
+4.1,
+-33.0,
+-28.0
+]
+},
+{
+"ad": "Mafsal pulu M5",
+"grup": "Gobek",
+"hacim": 56.47798193,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.443352158,
+"merkez": [
+185.0,
+-0.0,
+-33.5
+],
+"bb": [
+180.0,
+190.0,
+-5.0,
+5.0,
+-34.0,
+-33.0
+]
+},
+{
+"ad": "Mafsal civatasi M5x12",
+"grup": "Gobek",
+"hacim": 477.775316165,
+"kati": 1,
+"gecerli": true,
+"kutle": 3.750536232,
+"merkez": [
+185.0,
+0.0,
+-32.221138228
+],
+"bb": [
+180.75,
+189.25,
+-4.25,
+4.25,
+-39.0,
+-22.0
+]
+},
+{
+"ad": "S2 horn 25T aluminyum disk",
+"grup": "Kol",
+"hacim": 1433.273108384,
+"kati": 1,
+"gecerli": true,
+"kutle": 3.869837393,
+"merkez": [
+185.0,
+-0.0,
+23.85
+],
+"bb": [
+172.5,
+197.5,
+-12.5,
+12.5,
+22.2,
+25.5
+]
+},
+{
+"ad": "S2 horn merkez vidasi M3",
+"grup": "Kol",
+"hacim": 96.875014889,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.760468867,
+"merkez": [
+185.0,
+0.0,
+25.48033736
+],
+"bb": [
+182.25,
+187.75,
+-2.75,
+2.75,
+20.5,
+28.5
+]
+},
+{
+"ad": "Kol catali",
+"grup": "Kol",
+"hacim": 81875.082232408,
+"kati": 1,
+"gecerli": true,
+"kutle": 93.583218992,
+"merkez": [
+184.999970348,
+-38.307176994,
+-1.069358201
+],
+"bb": [
+157.0,
+213.0,
+-60.0,
+16.0,
+-33.0,
+30.5
+]
+},
+{
+"ad": "625ZZ rulman (dis bilezik)",
+"grup": "Kol",
+"hacim": 361.911473694,
+"kati": 1,
+"gecerli": true,
+"kutle": 2.841005068,
+"merkez": [
+185.0,
+0.0,
+-30.5
+],
+"bb": [
+177.0,
+193.0,
+-8.0,
+8.0,
+-33.0,
+-28.0
+]
+},
+{
+"ad": "Catal-horn civatasi M3x8",
+"grup": "Kol",
+"hacim": 118.0807653,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.926934008,
+"merkez": [
+178.98959236,
+-6.01040764,
+29.316554111
+],
+"bb": [
+176.23959236,
+181.73959236,
+-8.76040764,
+-3.26040764,
+22.5,
+33.5
+]
+},
+{
+"ad": "Catal-horn civatasi M3x8",
+"grup": "Kol",
+"hacim": 118.0807653,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.926934008,
+"merkez": [
+191.01040764,
+-6.01040764,
+29.316554111
+],
+"bb": [
+188.26040764,
+193.76040764,
+-8.76040764,
+-3.26040764,
+22.5,
+33.5
+]
+},
+{
+"ad": "Catal-horn civatasi M3x8",
+"grup": "Kol",
+"hacim": 118.0807653,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.926934008,
+"merkez": [
+191.01040764,
+6.01040764,
+29.316554111
+],
+"bb": [
+188.26040764,
+193.76040764,
+3.26040764,
+8.76040764,
+22.5,
+33.5
+]
+},
+{
+"ad": "Catal-horn civatasi M3x8",
+"grup": "Kol",
+"hacim": 118.0807653,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.926934008,
+"merkez": [
+178.98959236,
+6.01040764,
+29.316554111
+],
+"bb": [
+176.23959236,
+181.73959236,
+3.26040764,
+8.76040764,
+22.5,
+33.5
+]
+},
+{
+"ad": "Ust kol tupu",
+"grup": "Kol",
+"hacim": 50999.405368877,
+"kati": 1,
+"gecerli": true,
+"kutle": 51.815395855,
+"merkez": [
+184.999988853,
+-105.292491056,
+-1.015150307
+],
+"bb": [
+157.0,
+213.0,
+-170.0,
+-40.0,
+-29.25,
+26.75113415
+]
+},
+{
+"ad": "Isil gomme somun M3 (catalda)",
+"grup": "Kol",
+"hacim": 31.33738672,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.266367787,
+"merkez": [
+185.0,
+-50.0,
+21.3
+],
+"bb": [
+183.0,
+187.0,
+-52.0,
+-48.0,
+18.45,
+24.15
+]
+},
+{
+"ad": "Tup civatasi M3x8",
+"grup": "Kol",
+"hacim": 118.0807653,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.926934008,
+"merkez": [
+185.0,
+-50.0,
+25.706554111
+],
+"bb": [
+182.25,
+187.75,
+-52.75,
+-47.25,
+18.89,
+29.89
+]
+},
+{
+"ad": "Isil gomme somun M3 (catalda)",
+"grup": "Kol",
+"hacim": 31.33738672,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.266367787,
+"merkez": [
+185.0,
+-50.0,
+-23.8
+],
+"bb": [
+183.0,
+187.0,
+-52.0,
+-48.0,
+-26.65,
+-20.95
+]
+},
+{
+"ad": "Tup civatasi M3x8",
+"grup": "Kol",
+"hacim": 118.0807653,
+"kati": 1,
+"gecerli": true,
+"kutle": 0.926934008,
+"merkez": [
+185.0,
+-50.0,
+-28.206554111
+],
+"bb": [
+182.25,
+187.75,
+-52.75,
+-47.25,
+-32.39,
+-21.39
+]
+}
+],
+"statik": [],
+"bosluk": {
+"Kol-Gobek": [
+0.0,
+"S2 horn 25T aluminyum disk",
+"S2 servo cikis mili"
+],
+"Kol-Govde": [
+6.293053,
+"Kol catali",
+"Rulman kapagi"
+],
+"Gobek-Govde": [
+0.0,
+"S1 horn 25T aluminyum disk",
+"S1 servo cikis mili"
+]
+},
+"kol_gobek": {
+"-20": [
+[
+"Kol catali",
+"6808-2RS rulman (ic bilezik)",
+113.5
+],
+[
+"Kol catali",
+"Omuz gobegi",
+2170.5
+],
+[
+"Kol catali",
+"S1 kablo tamburu",
+1030.2
+],
+[
+"Kol catali",
+"S1 tambur baglama ipi",
+1.7
+],
+[
+"Kol catali",
+"S1 tambur baglama ipi",
+3.6
+],
+[
+"Ust kol tupu",
+"S1 kablo tamburu",
+81.0
+],
+[
+"Ust kol tupu",
+"S1 tambur baglama ipi",
+1.8
+]
+],
+"-15": [
+[
+"Kol catali",
+"6808-2RS rulman (ic bilezik)",
+1.7
+],
+[
+"Kol catali",
+"Omuz gobegi",
+1890.6
+],
+[
+"Kol catali",
+"S1 kablo tamburu",
+881.4
+],
+[
+"Kol catali",
+"S1 tambur baglama ipi",
+1.1
+],
+[
+"Kol catali",
+"S1 tambur baglama ipi",
+2.4
+],
+[
+"Ust kol tupu",
+"S1 kablo tamburu",
+94.1
+],
+[
+"Ust kol tupu",
+"S1 tambur baglama ipi",
+0.7
+],
+[
+"Ust kol tupu",
+"S1 tambur baglama ipi",
+1.1
+]
+],
+"-10": [
+[
+"Kol catali",
+"Omuz gobegi",
+1654.9
+],
+[
+"Kol catali",
+"S1 kablo tamburu",
+607.0
+],
+[
+"Kol catali",
+"S1 tambur baglama ipi",
+1.6
+],
+[
+"Ust kol tupu",
+"S1 kablo tamburu",
+140.9
+]
+],
+"-5": [
+[
+"Kol catali",
+"Omuz gobegi",
+1139.4
+],
+[
+"Kol catali",
+"S1 kablo tamburu",
+331.1
+],
+[
+"Kol catali",
+"S1 tambur baglama ipi",
+0.8
+],
+[
+"Ust kol tupu",
+"S1 kablo tamburu",
+82.7
+]
+],
+"0": [
+[
+"Kol catali",
+"Omuz gobegi",
+395.8
+],
+[
+"Kol catali",
+"S1 kablo tamburu",
+97.9
+],
+[
+"Ust kol tupu",
+"S1 kablo tamburu",
+65.0
+]
+],
+"5": [],
+"10": [],
+"15": [],
+"20": [],
+"25": [],
+"30": [],
+"35": [],
+"40": [],
+"45": [],
+"50": [],
+"55": [],
+"60": [],
+"65": [],
+"70": [],
+"75": [],
+"80": [],
+"85": [],
+"90": [],
+"95": [],
+"100": [],
+"105": [],
+"110": [],
+"115": [],
+"120": [],
+"125": [
+[
+"Kol catali",
+"Omuz gobegi",
+146.1
+]
+],
+"130": [
+[
+"Kol catali",
+"Omuz gobegi",
+727.4
+],
+[
+"Kol catali",
+"S2 servo DS3235 (yana acma)",
+5.0
+]
+],
+"135": [
+[
+"Kol catali",
+"Omuz gobegi",
+1451.3
+],
+[
+"Kol catali",
+"S2 servo DS3235 (yana acma)",
+43.9
+],
+[
+"Kol catali",
+"S2 kulak civatasi M4x16",
+44.3
+],
+[
+"Kol catali",
+"S2 kontra somun M4",
+28.8
+]
+],
+"140": [
+[
+"Kol catali",
+"Omuz gobegi",
+2153.4
+],
+[
+"Kol catali",
+"S2 servo DS3235 (yana acma)",
+143.0
+],
+[
+"Kol catali",
+"S2 kulak civatasi M4x16",
+259.1
+],
+[
+"Kol catali",
+"S2 kontra somun M4",
+69.6
+],
+[
+"Ust kol tupu",
+"Omuz gobegi",
+11.7
+]
+],
+"145": [
+[
+"Kol catali",
+"Omuz gobegi",
+2963.5
+],
+[
+"Kol catali",
+"S2 servo DS3235 (yana acma)",
+333.3
+],
+[
+"Kol catali",
+"S2 kulak civatasi M4x16",
+335.3
+],
+[
+"Kol catali",
+"S2 kontra somun M4",
+145.1
+],
+[
+"Ust kol tupu",
+"Omuz gobegi",
+31.2
+]
+],
+"150": [
+[
+"Kol catali",
+"Omuz gobegi",
+3881.6
+],
+[
+"Kol catali",
+"S2 servo DS3235 (yana acma)",
+567.8
+],
+[
+"Kol catali",
+"S2 kulak civatasi M4x16",
+14.2
+],
+[
+"Kol catali",
+"S2 kontra somun M4",
+18.7
+],
+[
+"Kol catali",
+"S2 kulak civatasi M4x16",
+336.3
+],
+[
+"Kol catali",
+"S2 kontra somun M4",
+149.3
+],
+[
+"Ust kol tupu",
+"Omuz gobegi",
+47.1
+]
+]
+},
+"gobek_govde": {
+"-60": [],
+"-50": [],
+"-40": [],
+"-30": [],
+"-20": [],
+"-10": [],
+"0": [],
+"10": [],
+"20": [],
+"30": [],
+"40": [],
+"50": [],
+"60": [],
+"70": [],
+"80": [],
+"90": [],
+"100": [],
+"110": [],
+"120": [],
+"130": [],
+"140": [],
+"150": [],
+"160": [],
+"170": [],
+"180": []
+},
+"kol_govde": {
+"-60,-20": [
+[
+"Kol catali",
+"Omuz yuvasi",
+4.4
+],
+[
+"Kol catali",
+"Rulman kapagi",
+2276.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+84.9
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+9.6
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"Omuz yuvasi",
+96.8
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+155.6
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+19.1
+],
+[
+"Ust kol tupu",
+"Isil gomme somun M3 (yuvada)",
+2.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2042.5
+]
+],
+"-60,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+969.9
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+73.3
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+108.3
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+5.2
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2350.3
+]
+],
+"-60,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+74.8
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+38.6
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+9.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3332.1
+]
+],
+"-60,-5": [
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2307.0
+]
+],
+"-60,0": [],
+"-60,5": [],
+"-60,10": [],
+"-60,15": [],
+"-60,20": [],
+"-60,25": [],
+"-60,30": [],
+"-60,35": [],
+"-60,40": [],
+"-60,45": [],
+"-60,50": [],
+"-60,55": [],
+"-60,60": [],
+"-60,65": [],
+"-60,70": [],
+"-60,75": [],
+"-60,80": [],
+"-60,85": [],
+"-60,90": [],
+"-60,95": [],
+"-60,100": [],
+"-60,105": [],
+"-60,110": [],
+"-60,115": [],
+"-60,120": [],
+"-60,125": [],
+"-60,130": [],
+"-60,135": [],
+"-60,140": [],
+"-60,145": [],
+"-60,150": [],
+"-50,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+2030.8
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+74.6
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"Omuz yuvasi",
+1.7
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+141.2
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+4.1
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2394.8
+]
+],
+"-50,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+885.3
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+34.5
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+21.0
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2701.9
+]
+],
+"-50,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+0.6
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3748.9
+]
+],
+"-50,-5": [
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3323.2
+]
+],
+"-50,0": [],
+"-50,5": [],
+"-50,10": [],
+"-50,15": [],
+"-50,20": [],
+"-50,25": [],
+"-50,30": [],
+"-50,35": [],
+"-50,40": [],
+"-50,45": [],
+"-50,50": [],
+"-50,55": [],
+"-50,60": [],
+"-50,65": [],
+"-50,70": [],
+"-50,75": [],
+"-50,80": [],
+"-50,85": [],
+"-50,90": [],
+"-50,95": [],
+"-50,100": [],
+"-50,105": [],
+"-50,110": [],
+"-50,115": [],
+"-50,120": [],
+"-50,125": [],
+"-50,130": [],
+"-50,135": [],
+"-50,140": [],
+"-50,145": [],
+"-50,150": [],
+"-40,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+1930.7
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+12.5
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+25.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2981.3
+]
+],
+"-40,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+848.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3034.4
+]
+],
+"-40,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4119.0
+]
+],
+"-40,-5": [
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4369.2
+]
+],
+"-40,0": [],
+"-40,5": [],
+"-40,10": [],
+"-40,15": [],
+"-40,20": [],
+"-40,25": [],
+"-40,30": [],
+"-40,35": [],
+"-40,40": [],
+"-40,45": [],
+"-40,50": [],
+"-40,55": [],
+"-40,60": [],
+"-40,65": [],
+"-40,70": [],
+"-40,75": [],
+"-40,80": [],
+"-40,85": [],
+"-40,90": [],
+"-40,95": [],
+"-40,100": [],
+"-40,105": [],
+"-40,110": [],
+"-40,115": [],
+"-40,120": [],
+"-40,125": [],
+"-40,130": [],
+"-40,135": [],
+"-40,140": [],
+"-40,145": [],
+"-40,150": [],
+"-30,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+1898.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+21.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3697.5
+]
+],
+"-30,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+848.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3407.0
+]
+],
+"-30,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4480.3
+]
+],
+"-30,-5": [
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4919.8
+]
+],
+"-30,0": [],
+"-30,5": [],
+"-30,10": [],
+"-30,15": [],
+"-30,20": [],
+"-30,25": [],
+"-30,30": [],
+"-30,35": [],
+"-30,40": [],
+"-30,45": [],
+"-30,50": [],
+"-30,55": [],
+"-30,60": [],
+"-30,65": [],
+"-30,70": [],
+"-30,75": [],
+"-30,80": [],
+"-30,85": [],
+"-30,90": [],
+"-30,95": [],
+"-30,100": [],
+"-30,105": [],
+"-30,110": [],
+"-30,115": [],
+"-30,120": [],
+"-30,125": [],
+"-30,130": [],
+"-30,135": [],
+"-30,140": [],
+"-30,145": [],
+"-30,150": [],
+"-20,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+1898.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"S1 servo DS3235 (one-arka)",
+1.8
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+21.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3697.5
+]
+],
+"-20,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+848.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3526.3
+]
+],
+"-20,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4589.8
+]
+],
+"-20,-5": [
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4920.8
+]
+],
+"-20,0": [],
+"-20,5": [],
+"-20,10": [],
+"-20,15": [],
+"-20,20": [],
+"-20,25": [],
+"-20,30": [],
+"-20,35": [],
+"-20,40": [],
+"-20,45": [],
+"-20,50": [],
+"-20,55": [],
+"-20,60": [],
+"-20,65": [],
+"-20,70": [],
+"-20,75": [],
+"-20,80": [],
+"-20,85": [],
+"-20,90": [],
+"-20,95": [],
+"-20,100": [],
+"-20,105": [],
+"-20,110": [],
+"-20,115": [],
+"-20,120": [],
+"-20,125": [],
+"-20,130": [],
+"-20,135": [],
+"-20,140": [],
+"-20,145": [],
+"-20,150": [],
+"-10,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+1898.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"S1 servo DS3235 (one-arka)",
+3.5
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+21.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3697.5
+]
+],
+"-10,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+848.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3526.3
+]
+],
+"-10,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4589.8
+]
+],
+"-10,-5": [
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4920.8
+]
+],
+"-10,0": [],
+"-10,5": [],
+"-10,10": [],
+"-10,15": [],
+"-10,20": [],
+"-10,25": [],
+"-10,30": [],
+"-10,35": [],
+"-10,40": [],
+"-10,45": [],
+"-10,50": [],
+"-10,55": [],
+"-10,60": [],
+"-10,65": [],
+"-10,70": [],
+"-10,75": [],
+"-10,80": [],
+"-10,85": [],
+"-10,90": [],
+"-10,95": [],
+"-10,100": [],
+"-10,105": [],
+"-10,110": [],
+"-10,115": [],
+"-10,120": [],
+"-10,125": [],
+"-10,130": [],
+"-10,135": [],
+"-10,140": [],
+"-10,145": [],
+"-10,150": [],
+"0,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+1898.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"S1 servo DS3235 (one-arka)",
+1.2
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+21.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3697.5
+]
+],
+"0,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+848.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3526.3
+]
+],
+"0,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4589.8
+]
+],
+"0,-5": [
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4920.8
+]
+],
+"0,0": [],
+"0,5": [],
+"0,10": [],
+"0,15": [],
+"0,20": [],
+"0,25": [],
+"0,30": [],
+"0,35": [],
+"0,40": [],
+"0,45": [],
+"0,50": [],
+"0,55": [],
+"0,60": [],
+"0,65": [],
+"0,70": [],
+"0,75": [],
+"0,80": [],
+"0,85": [],
+"0,90": [],
+"0,95": [],
+"0,100": [],
+"0,105": [],
+"0,110": [],
+"0,115": [],
+"0,120": [],
+"0,125": [],
+"0,130": [],
+"0,135": [],
+"0,140": [],
+"0,145": [],
+"0,150": [],
+"10,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+1898.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"S1 servo DS3235 (one-arka)",
+2.4
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+21.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3697.5
+]
+],
+"10,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+848.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3526.3
+]
+],
+"10,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4589.8
+]
+],
+"10,-5": [
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4920.8
+]
+],
+"10,0": [],
+"10,5": [],
+"10,10": [],
+"10,15": [],
+"10,20": [],
+"10,25": [],
+"10,30": [],
+"10,35": [],
+"10,40": [],
+"10,45": [],
+"10,50": [],
+"10,55": [],
+"10,60": [],
+"10,65": [],
+"10,70": [],
+"10,75": [],
+"10,80": [],
+"10,85": [],
+"10,90": [],
+"10,95": [],
+"10,100": [],
+"10,105": [],
+"10,110": [],
+"10,115": [],
+"10,120": [],
+"10,125": [],
+"10,130": [],
+"10,135": [],
+"10,140": [],
+"10,145": [],
+"10,150": [],
+"20,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+1898.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"S1 servo DS3235 (one-arka)",
+3.2
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+21.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3697.5
+]
+],
+"20,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+848.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3526.3
+]
+],
+"20,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4589.8
+]
+],
+"20,-5": [
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4920.8
+]
+],
+"20,0": [],
+"20,5": [],
+"20,10": [],
+"20,15": [],
+"20,20": [],
+"20,25": [],
+"20,30": [],
+"20,35": [],
+"20,40": [],
+"20,45": [],
+"20,50": [],
+"20,55": [],
+"20,60": [],
+"20,65": [],
+"20,70": [],
+"20,75": [],
+"20,80": [],
+"20,85": [],
+"20,90": [],
+"20,95": [],
+"20,100": [],
+"20,105": [],
+"20,110": [],
+"20,115": [],
+"20,120": [],
+"20,125": [],
+"20,130": [],
+"20,135": [],
+"20,140": [],
+"20,145": [],
+"20,150": [],
+"30,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+1898.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+21.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3697.5
+]
+],
+"30,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+848.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3467.2
+]
+],
+"30,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4529.1
+]
+],
+"30,-5": [
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4920.8
+]
+],
+"30,0": [],
+"30,5": [],
+"30,10": [],
+"30,15": [],
+"30,20": [],
+"30,25": [],
+"30,30": [],
+"30,35": [],
+"30,40": [],
+"30,45": [],
+"30,50": [],
+"30,55": [],
+"30,60": [],
+"30,65": [],
+"30,70": [],
+"30,75": [],
+"30,80": [],
+"30,85": [],
+"30,90": [],
+"30,95": [],
+"30,100": [],
+"30,105": [],
+"30,110": [],
+"30,115": [],
+"30,120": [],
+"30,125": [],
+"30,130": [],
+"30,135": [],
+"30,140": [],
+"30,145": [],
+"30,150": [],
+"40,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+1904.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+1.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+21.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3041.1
+]
+],
+"40,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+848.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3068.9
+]
+],
+"40,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4154.7
+]
+],
+"40,-5": [
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+4429.0
+]
+],
+"40,0": [],
+"40,5": [],
+"40,10": [],
+"40,15": [],
+"40,20": [],
+"40,25": [],
+"40,30": [],
+"40,35": [],
+"40,40": [],
+"40,45": [],
+"40,50": [],
+"40,55": [],
+"40,60": [],
+"40,65": [],
+"40,70": [],
+"40,75": [],
+"40,80": [],
+"40,85": [],
+"40,90": [],
+"40,95": [],
+"40,100": [],
+"40,105": [],
+"40,110": [],
+"40,115": [],
+"40,120": [],
+"40,125": [],
+"40,130": [],
+"40,135": [],
+"40,140": [],
+"40,145": [],
+"40,150": [],
+"50,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+1963.0
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+51.6
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+113.8
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+5.3
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2447.6
+]
+],
+"50,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+860.7
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+11.3
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+3.6
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2750.1
+]
+],
+"50,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3803.3
+]
+],
+"50,-5": [
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3446.8
+]
+],
+"50,0": [],
+"50,5": [],
+"50,10": [],
+"50,15": [],
+"50,20": [],
+"50,25": [],
+"50,30": [],
+"50,35": [],
+"50,40": [],
+"50,45": [],
+"50,50": [],
+"50,55": [],
+"50,60": [],
+"50,65": [],
+"50,70": [],
+"50,75": [],
+"50,80": [],
+"50,85": [],
+"50,90": [],
+"50,95": [],
+"50,100": [],
+"50,105": [],
+"50,110": [],
+"50,115": [],
+"50,120": [],
+"50,125": [],
+"50,130": [],
+"50,135": [],
+"50,140": [],
+"50,145": [],
+"50,150": [],
+"60,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+2163.7
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+75.5
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+0.9
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"Omuz yuvasi",
+57.4
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+168.6
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+20.0
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2077.0
+]
+],
+"60,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+917.5
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+62.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+89.0
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+7.3
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2384.3
+]
+],
+"60,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+66.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+17.5
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+1.6
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3372.4
+]
+],
+"60,-5": [
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2406.7
+]
+],
+"60,0": [],
+"60,5": [],
+"60,10": [],
+"60,15": [],
+"60,20": [],
+"60,25": [],
+"60,30": [],
+"60,35": [],
+"60,40": [],
+"60,45": [],
+"60,50": [],
+"60,55": [],
+"60,60": [],
+"60,65": [],
+"60,70": [],
+"60,75": [],
+"60,80": [],
+"60,85": [],
+"60,90": [],
+"60,95": [],
+"60,100": [],
+"60,105": [],
+"60,110": [],
+"60,115": [],
+"60,120": [],
+"60,125": [],
+"60,130": [],
+"60,135": [],
+"60,140": [],
+"60,145": [],
+"60,150": [],
+"70,-20": [
+[
+"Kol catali",
+"Omuz yuvasi",
+27.7
+],
+[
+"Kol catali",
+"Rulman kapagi",
+2416.9
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+97.1
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+47.9
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"Omuz yuvasi",
+165.5
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+187.7
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+18.3
+],
+[
+"Ust kol tupu",
+"Isil gomme somun M3 (yuvada)",
+10.2
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+4.0
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+1855.9
+]
+],
+"70,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+1053.0
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+71.4
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+8.7
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+166.7
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+16.4
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2155.7
+]
+],
+"70,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+87.5
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+58.4
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+39.2
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+4.0
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+3093.4
+]
+],
+"70,-5": [
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+3.9
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+1746.7
+]
+],
+"70,0": [],
+"70,5": [],
+"70,10": [],
+"70,15": [],
+"70,20": [],
+"70,25": [],
+"70,30": [],
+"70,35": [],
+"70,40": [],
+"70,45": [],
+"70,50": [],
+"70,55": [],
+"70,60": [],
+"70,65": [],
+"70,70": [],
+"70,75": [],
+"70,80": [],
+"70,85": [],
+"70,90": [],
+"70,95": [],
+"70,100": [],
+"70,105": [],
+"70,110": [],
+"70,115": [],
+"70,120": [],
+"70,125": [],
+"70,130": [],
+"70,135": [],
+"70,140": [],
+"70,145": [],
+"70,150": [],
+"80,-20": [
+[
+"Kol catali",
+"Omuz yuvasi",
+60.6
+],
+[
+"Kol catali",
+"Rulman kapagi",
+2674.7
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+105.4
+],
+[
+"Kol catali",
+"Isil gomme somun M3 (yuvada)",
+1.7
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+73.7
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"Omuz yuvasi",
+276.3
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+194.4
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+17.7
+],
+[
+"Ust kol tupu",
+"Isil gomme somun M3 (yuvada)",
+13.6
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+20.2
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+1734.4
+]
+],
+"80,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+1179.6
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+77.4
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+60.8
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Omuz yuvasi",
+1.5
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+254.5
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+17.2
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+6.9
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2027.2
+]
+],
+"80,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+106.4
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+65.3
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+14.8
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+76.7
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+4.4
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2933.1
+]
+],
+"80,-5": [
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+16.6
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+1414.2
+]
+],
+"80,0": [],
+"80,5": [],
+"80,10": [],
+"80,15": [],
+"80,20": [],
+"80,25": [],
+"80,30": [],
+"80,35": [],
+"80,40": [],
+"80,45": [],
+"80,50": [],
+"80,55": [],
+"80,60": [],
+"80,65": [],
+"80,70": [],
+"80,75": [],
+"80,80": [],
+"80,85": [],
+"80,90": [],
+"80,95": [],
+"80,100": [],
+"80,105": [],
+"80,110": [],
+"80,115": [],
+"80,120": [],
+"80,125": [],
+"80,130": [],
+"80,135": [],
+"80,140": [],
+"80,145": [],
+"80,150": [],
+"90,-20": [
+[
+"Kol catali",
+"Omuz yuvasi",
+59.3
+],
+[
+"Kol catali",
+"Rulman kapagi",
+2855.0
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+100.8
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+96.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"Omuz yuvasi",
+339.0
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+176.9
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+18.0
+],
+[
+"Ust kol tupu",
+"Isil gomme somun M3 (yuvada)",
+12.1
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+18.4
+],
+[
+"Ust kol tupu",
+"Isil gomme somun M3 (yuvada)",
+9.7
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+1692.3
+]
+],
+"90,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+1259.3
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+74.6
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+71.0
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+322.9
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+16.4
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+16.1
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+1982.4
+]
+],
+"90,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+111.6
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+64.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+57.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+81.3
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+2.8
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+3.8
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2876.5
+]
+],
+"90,-5": [
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+8.4
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+3.2
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+1305.8
+]
+],
+"90,0": [],
+"90,5": [],
+"90,10": [],
+"90,15": [],
+"90,20": [],
+"90,25": [],
+"90,30": [],
+"90,35": [],
+"90,40": [],
+"90,45": [],
+"90,50": [],
+"90,55": [],
+"90,60": [],
+"90,65": [],
+"90,70": [],
+"90,75": [],
+"90,80": [],
+"90,85": [],
+"90,90": [],
+"90,95": [],
+"90,100": [],
+"90,105": [],
+"90,110": [],
+"90,115": [],
+"90,120": [],
+"90,125": [],
+"90,130": [],
+"90,135": [],
+"90,140": [],
+"90,145": [],
+"90,150": [],
+"100,-20": [
+[
+"Kol catali",
+"Omuz yuvasi",
+63.0
+],
+[
+"Kol catali",
+"Rulman kapagi",
+2773.5
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+83.4
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+105.2
+],
+[
+"Kol catali",
+"Isil gomme somun M3 (yuvada)",
+1.6
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1817.9
+],
+[
+"Ust kol tupu",
+"Omuz yuvasi",
+306.7
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+182.6
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+19.2
+],
+[
+"Ust kol tupu",
+"Isil gomme somun M3 (yuvada)",
+2.0
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+17.7
+],
+[
+"Ust kol tupu",
+"Isil gomme somun M3 (yuvada)",
+13.6
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+1053.8
+]
+],
+"100,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+1222.2
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+73.0
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+77.3
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1330.6
+],
+[
+"Ust kol tupu",
+"Omuz yuvasi",
+0.7
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+277.8
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+4.3
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+17.2
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+1440.5
+]
+],
+"100,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+111.1
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+34.8
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+65.1
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+81.9
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+4.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2522.3
+]
+],
+"100,-5": [
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+16.3
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+1385.6
+]
+],
+"100,0": [],
+"100,5": [],
+"100,10": [],
+"100,15": [],
+"100,20": [],
+"100,25": [],
+"100,30": [],
+"100,35": [],
+"100,40": [],
+"100,45": [],
+"100,50": [],
+"100,55": [],
+"100,60": [],
+"100,65": [],
+"100,70": [],
+"100,75": [],
+"100,80": [],
+"100,85": [],
+"100,90": [],
+"100,95": [],
+"100,100": [],
+"100,105": [],
+"100,110": [],
+"100,115": [],
+"100,120": [],
+"100,125": [],
+"100,130": [],
+"100,135": [],
+"100,140": [],
+"100,145": [],
+"100,150": [],
+"110,-20": [
+[
+"Kol catali",
+"Omuz yuvasi",
+42.7
+],
+[
+"Kol catali",
+"Rulman kapagi",
+2520.8
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+74.0
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+101.4
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1711.9
+],
+[
+"Ust kol tupu",
+"Omuz yuvasi",
+202.0
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+177.5
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+2.7
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+17.9
+],
+[
+"Ust kol tupu",
+"Isil gomme somun M3 (yuvada)",
+12.4
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+848.5
+]
+],
+"110,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+1117.8
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+29.6
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+74.9
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1317.4
+],
+[
+"Ust kol tupu",
+"Omuz yuvasi",
+1.4
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+185.4
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+16.7
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+1151.5
+]
+],
+"110,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+96.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+64.4
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+204.3
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+53.6
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+2.9
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+2047.9
+]
+],
+"110,-5": [
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+9.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+827.9
+]
+],
+"110,0": [],
+"110,5": [],
+"110,10": [],
+"110,15": [],
+"110,20": [],
+"110,25": [],
+"110,30": [],
+"110,35": [],
+"110,40": [],
+"110,45": [],
+"110,50": [],
+"110,55": [],
+"110,60": [],
+"110,65": [],
+"110,70": [],
+"110,75": [],
+"110,80": [],
+"110,85": [],
+"110,90": [],
+"110,95": [],
+"110,100": [],
+"110,105": [],
+"110,110": [],
+"110,115": [],
+"110,120": [],
+"110,125": [],
+"110,130": [],
+"110,135": [],
+"110,140": [],
+"110,145": [],
+"110,150": [],
+"120,-20": [
+[
+"Kol catali",
+"Omuz yuvasi",
+4.4
+],
+[
+"Kol catali",
+"Rulman kapagi",
+2276.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+9.6
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+84.9
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1357.5
+],
+[
+"Ust kol tupu",
+"Omuz yuvasi",
+96.8
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+155.6
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+19.1
+],
+[
+"Ust kol tupu",
+"Isil gomme somun M3 (yuvada)",
+2.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+849.8
+]
+],
+"120,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+969.9
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+73.3
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+1105.2
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+108.3
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+5.2
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+1038.1
+]
+],
+"120,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+74.8
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+38.6
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+185.4
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+9.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+1599.0
+]
+],
+"120,-5": [
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+31.0
+]
+],
+"120,0": [],
+"120,5": [],
+"120,10": [],
+"120,15": [],
+"120,20": [],
+"120,25": [],
+"120,30": [],
+"120,35": [],
+"120,40": [],
+"120,45": [],
+"120,50": [],
+"120,55": [],
+"120,60": [],
+"120,65": [],
+"120,70": [],
+"120,75": [],
+"120,80": [],
+"120,85": [],
+"120,90": [],
+"120,95": [],
+"120,100": [],
+"120,105": [],
+"120,110": [],
+"120,115": [],
+"120,120": [],
+"120,125": [],
+"120,130": [],
+"120,135": [],
+"120,140": [],
+"120,145": [],
+"120,150": [],
+"130,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+2030.8
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+74.6
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+992.0
+],
+[
+"Ust kol tupu",
+"Omuz yuvasi",
+1.7
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+141.2
+],
+[
+"Ust kol tupu",
+"Kapak civatasi M3x12",
+4.1
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+583.7
+]
+],
+"130,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+885.3
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+34.5
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+707.7
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+21.0
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+639.1
+]
+],
+"130,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+0.6
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+72.1
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+533.8
+]
+],
+"130,-5": [],
+"130,0": [],
+"130,5": [],
+"130,10": [],
+"130,15": [],
+"130,20": [],
+"130,25": [],
+"130,30": [],
+"130,35": [],
+"130,40": [],
+"130,45": [],
+"130,50": [],
+"130,55": [],
+"130,60": [],
+"130,65": [],
+"130,70": [],
+"130,75": [],
+"130,80": [],
+"130,85": [],
+"130,90": [],
+"130,95": [],
+"130,100": [],
+"130,105": [],
+"130,110": [],
+"130,115": [],
+"130,120": [],
+"130,125": [],
+"130,130": [],
+"130,135": [],
+"130,140": [],
+"130,145": [],
+"130,150": [],
+"140,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+1930.7
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Kapak civatasi M3x12",
+12.5
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+593.5
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+25.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+340.1
+]
+],
+"140,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+848.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+233.1
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+322.3
+]
+],
+"140,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+92.0
+]
+],
+"140,-5": [],
+"140,0": [],
+"140,5": [],
+"140,10": [],
+"140,15": [],
+"140,20": [],
+"140,25": [],
+"140,30": [],
+"140,35": [],
+"140,40": [],
+"140,45": [],
+"140,50": [],
+"140,55": [],
+"140,60": [],
+"140,65": [],
+"140,70": [],
+"140,75": [],
+"140,80": [],
+"140,85": [],
+"140,90": [],
+"140,95": [],
+"140,100": [],
+"140,105": [],
+"140,110": [],
+"140,115": [],
+"140,120": [],
+"140,125": [],
+"140,130": [],
+"140,135": [],
+"140,140": [],
+"140,145": [],
+"140,150": [],
+"150,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+1898.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+130.8
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+21.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+157.1
+]
+],
+"150,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+848.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+9.6
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+72.7
+]
+],
+"150,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+1.1
+]
+],
+"150,-5": [],
+"150,0": [],
+"150,5": [],
+"150,10": [],
+"150,15": [],
+"150,20": [],
+"150,25": [],
+"150,30": [],
+"150,35": [],
+"150,40": [],
+"150,45": [],
+"150,50": [],
+"150,55": [],
+"150,60": [],
+"150,65": [],
+"150,70": [],
+"150,75": [],
+"150,80": [],
+"150,85": [],
+"150,90": [],
+"150,95": [],
+"150,100": [],
+"150,105": [],
+"150,110": [],
+"150,115": [],
+"150,120": [],
+"150,125": [],
+"150,130": [],
+"150,135": [],
+"150,140": [],
+"150,145": [],
+"150,150": [],
+"160,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+1898.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Kol catali",
+"Govde kabugu yan yuzu (referans)",
+0.9
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+21.5
+],
+[
+"Ust kol tupu",
+"Govde kabugu yan yuzu (referans)",
+22.8
+]
+],
+"160,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+848.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+]
+],
+"160,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+]
+],
+"160,-5": [],
+"160,0": [],
+"160,5": [],
+"160,10": [],
+"160,15": [],
+"160,20": [],
+"160,25": [],
+"160,30": [],
+"160,35": [],
+"160,40": [],
+"160,45": [],
+"160,50": [],
+"160,55": [],
+"160,60": [],
+"160,65": [],
+"160,70": [],
+"160,75": [],
+"160,80": [],
+"160,85": [],
+"160,90": [],
+"160,95": [],
+"160,100": [],
+"160,105": [],
+"160,110": [],
+"160,115": [],
+"160,120": [],
+"160,125": [],
+"160,130": [],
+"160,135": [],
+"160,140": [],
+"160,145": [],
+"160,150": [],
+"170,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+1898.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+21.5
+]
+],
+"170,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+848.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+]
+],
+"170,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+]
+],
+"170,-5": [],
+"170,0": [],
+"170,5": [],
+"170,10": [],
+"170,15": [],
+"170,20": [],
+"170,25": [],
+"170,30": [],
+"170,35": [],
+"170,40": [],
+"170,45": [],
+"170,50": [],
+"170,55": [],
+"170,60": [],
+"170,65": [],
+"170,70": [],
+"170,75": [],
+"170,80": [],
+"170,85": [],
+"170,90": [],
+"170,95": [],
+"170,100": [],
+"170,105": [],
+"170,110": [],
+"170,115": [],
+"170,120": [],
+"170,125": [],
+"170,130": [],
+"170,135": [],
+"170,140": [],
+"170,145": [],
+"170,150": [],
+"180,-20": [
+[
+"Kol catali",
+"Rulman kapagi",
+1898.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+271.2
+],
+[
+"Ust kol tupu",
+"Rulman kapagi",
+21.5
+]
+],
+"180,-15": [
+[
+"Kol catali",
+"Rulman kapagi",
+848.4
+],
+[
+"Kol catali",
+"6808-2RS rulman (dis bilezik)",
+88.4
+]
+],
+"180,-10": [
+[
+"Kol catali",
+"Rulman kapagi",
+64.2
+]
+],
+"180,-5": [],
+"180,0": [],
+"180,5": [],
+"180,10": [],
+"180,15": [],
+"180,20": [],
+"180,25": [],
+"180,30": [],
+"180,35": [],
+"180,40": [],
+"180,45": [],
+"180,50": [],
+"180,55": [],
+"180,60": [],
+"180,65": [],
+"180,70": [],
+"180,75": [],
+"180,80": [],
+"180,85": [],
+"180,90": [],
+"180,95": [],
+"180,100": [],
+"180,105": [],
+"180,110": [],
+"180,115": [],
+"180,120": [],
+"180,125": [],
+"180,130": [],
+"180,135": [],
+"180,140": [],
+"180,145": [],
+"180,150": []
+},
+"tork": {
+"-60,-20": [
+4.89815398,
+1.045897948
+],
+"-60,-15": [
+5.037101124,
+0.791468947
+],
+"-60,-10": [
+5.137111395,
+0.53101639
+],
+"-60,-5": [
+5.197423654,
+0.266522477
+],
+"-60,0": [
+5.217578888,
+1.68e-07
+],
+"-60,5": [
+5.197423704,
+0.266522143
+],
+"-60,10": [
+5.137111496,
+0.53101606
+],
+"-60,15": [
+5.037101274,
+0.791468623
+],
+"-60,20": [
+4.898154178,
+1.045897633
+],
+"-60,25": [
+4.721327679,
+1.29236673
+],
+"-60,30": [
+4.507967534,
+1.529000135
+],
+"-60,35": [
+4.259697541,
+1.753996927
+],
+"-60,40": [
+3.978407185,
+1.965644743
+],
+"-60,45": [
+3.666237256,
+2.162332815
+],
+"-60,50": [
+3.325563556,
+2.342564229
+],
+"-60,55": [
+2.958978816,
+2.504967315
+],
+"-60,60": [
+2.569272969,
+2.648306087
+],
+"-60,65": [
+2.159411911,
+2.77148965
+],
+"-60,70": [
+1.732514932,
+2.873580504
+],
+"-60,75": [
+1.291830976,
+2.953801675
+],
+"-60,80": [
+0.840713914,
+3.011542632
+],
+"-60,85": [
+0.382597019,
+3.046363931
+],
+"-60,90": [
+0.079033163,
+3.058000561
+],
+"-60,95": [
+0.540663346,
+3.04636396
+],
+"-60,100": [
+0.998780248,
+3.01154269
+],
+"-60,105": [
+1.449897321,
+2.953801762
+],
+"-60,110": [
+1.890581292,
+2.873580619
+],
+"-60,115": [
+2.317478291,
+2.771489792
+],
+"-60,120": [
+2.727339372,
+2.648306254
+],
+"-60,125": [
+3.117045246,
+2.504967507
+],
+"-60,130": [
+3.483630017,
+2.342564444
+],
+"-60,135": [
+3.824303751,
+2.162333052
+],
+"-60,140": [
+4.136473718,
+1.965644999
+],
+"-60,145": [
+4.417764113,
+1.753997201
+],
+"-60,150": [
+4.666034149,
+1.529000426
+],
+"-50,-20": [
+4.347893201,
+1.344580483
+],
+"-50,-15": [
+4.470799166,
+1.017492865
+],
+"-50,-10": [
+4.559263444,
+0.682661512
+],
+"-50,-5": [
+4.612612769,
+0.342634692
+],
+"-50,0": [
+4.63044112,
+2.15e-07
+],
+"-50,5": [
+4.612612814,
+0.342634263
+],
+"-50,10": [
+4.559263533,
+0.682661087
+],
+"-50,15": [
+4.470799299,
+1.017492449
+],
+"-50,20": [
+4.347893377,
+1.344580078
+],
+"-50,25": [
+4.191481155,
+1.661434642
+],
+"-50,30": [
+4.002753027,
+1.965644684
+],
+"-50,35": [
+3.783145325,
+2.254894984
+],
+"-50,40": [
+3.534329398,
+2.526984171
+],
+"-50,45": [
+3.258198884,
+2.779841483
+],
+"-50,50": [
+2.956855305,
+3.011542523
+],
+"-50,55": [
+2.632592066,
+3.220323905
+],
+"-50,60": [
+2.287877006,
+3.404596678
+],
+"-50,65": [
+1.925333616,
+3.562958415
+],
+"-50,70": [
+1.547721069,
+3.694203887
+],
+"-50,75": [
+1.157913224,
+3.797334237
+],
+"-50,80": [
+0.758876756,
+3.87156458
+],
+"-50,85": [
+0.353648572,
+3.916329979
+],
+"-50,90": [
+0.054687296,
+3.931289742
+],
+"-50,95": [
+0.463023167,
+3.916330016
+],
+"-50,100": [
+0.868251356,
+3.871564655
+],
+"-50,105": [
+1.267287834,
+3.797334348
+],
+"-50,110": [
+1.657095692,
+3.694204034
+],
+"-50,115": [
+2.034708256,
+3.562958597
+],
+"-50,120": [
+2.397251667,
+3.404596894
+],
+"-50,125": [
+2.741966751,
+3.220324152
+],
+"-50,130": [
+3.066230017,
+3.0115428
+],
+"-50,135": [
+3.367573627,
+2.779841788
+],
+"-50,140": [
+3.643704174,
+2.526984501
+],
+"-50,145": [
+3.892520136,
+2.254895337
+],
+"-50,150": [
+4.112127876,
+1.965645058
+],
+"-40,-20": [
+3.665523887,
+1.602408622
+],
+"-40,-15": [
+3.768654237,
+1.212600778
+],
+"-40,-10": [
+3.84288458,
+0.813564309
+],
+"-40,-5": [
+3.887649979,
+0.408336125
+],
+"-40,0": [
+3.902609742,
+2.57e-07
+],
+"-40,5": [
+3.887650017,
+0.408335614
+],
+"-40,10": [
+3.842884655,
+0.813563803
+],
+"-40,15": [
+3.768654349,
+1.212600281
+],
+"-40,20": [
+3.665524035,
+1.602408139
+],
+"-40,25": [
+3.534278598,
+1.980020703
+],
+"-40,30": [
+3.375916894,
+2.342564114
+],
+"-40,35": [
+3.191644153,
+2.687279198
+],
+"-40,40": [
+2.9828628,
+3.011542464
+],
+"-40,45": [
+2.751161788,
+3.312886074
+],
+"-40,50": [
+2.498304502,
+3.589016621
+],
+"-40,55": [
+2.226215337,
+3.837832583
+],
+"-40,60": [
+1.936965058,
+4.057440323
+],
+"-40,65": [
+1.632755033,
+4.246168491
+],
+"-40,70": [
+1.315900484,
+4.402580754
+],
+"-40,75": [
+0.988812866,
+4.525486719
+],
+"-40,80": [
+0.653981512,
+4.613950997
+],
+"-40,85": [
+0.313954693,
+4.667300322
+],
+"-40,90": [
+0.028679784,
+4.685128673
+],
+"-40,95": [
+0.371314262,
+4.667300367
+],
+"-40,100": [
+0.711341087,
+4.613951086
+],
+"-40,105": [
+1.046172448,
+4.525486852
+],
+"-40,110": [
+1.373260078,
+4.40258093
+],
+"-40,115": [
+1.690114641,
+4.246168709
+],
+"-40,120": [
+1.994324684,
+4.05744058
+],
+"-40,125": [
+2.283574983,
+3.837832878
+],
+"-40,130": [
+2.555664171,
+3.589016951
+],
+"-40,135": [
+2.808521482,
+3.312886437
+],
+"-40,140": [
+3.040222522,
+3.011542858
+],
+"-40,145": [
+3.249003905,
+2.687279619
+],
+"-40,150": [
+3.433276678,
+2.342564559
+],
+"-30,-20": [
+2.871779485,
+1.811548385
+],
+"-30,-15": [
+2.952000656,
+1.370864429
+],
+"-30,-10": [
+3.009741613,
+0.919747367
+],
+"-30,-5": [
+3.044562912,
+0.461630472
+],
+"-30,0": [
+3.056199542,
+2.9e-07
+],
+"-30,5": [
+3.044562941,
+0.461629893
+],
+"-30,10": [
+3.009741671,
+0.919746795
+],
+"-30,15": [
+2.952000743,
+1.370863868
+],
+"-30,20": [
+2.8717796,
+1.811547839
+],
+"-30,25": [
+2.769688773,
+2.238444838
+],
+"-30,30": [
+2.646505236,
+2.648305919
+],
+"-30,35": [
+2.503166488,
+3.038011793
+],
+"-30,40": [
+2.340763426,
+3.404596564
+],
+"-30,45": [
+2.160532033,
+3.745270298
+],
+"-30,50": [
+1.963843981,
+4.057440265
+],
+"-30,55": [
+1.752196183,
+4.33873066
+],
+"-30,60": [
+1.527199407,
+4.587000696
+],
+"-30,65": [
+1.290566015,
+4.800360887
+],
+"-30,70": [
+1.044096929,
+4.977187433
+],
+"-30,75": [
+0.789667928,
+5.116134577
+],
+"-30,80": [
+0.529215371,
+5.216144848
+],
+"-30,85": [
+0.264721458,
+5.276457107
+],
+"-30,90": [
+0.001800851,
+5.296612341
+],
+"-30,95": [
+0.268323162,
+5.276457157
+],
+"-30,100": [
+0.532817078,
+5.216144949
+],
+"-30,105": [
+0.793269642,
+5.116134727
+],
+"-30,110": [
+1.047698651,
+4.977187631
+],
+"-30,115": [
+1.294167748,
+4.800361132
+],
+"-30,120": [
+1.530801154,
+4.587000986
+],
+"-30,125": [
+1.755797946,
+4.338730993
+],
+"-30,130": [
+1.967445761,
+4.057440638
+],
+"-30,135": [
+2.164133834,
+3.745270709
+],
+"-30,140": [
+2.344365248,
+3.404597009
+],
+"-30,145": [
+2.506768333,
+3.038012269
+],
+"-30,150": [
+2.650107105,
+2.648306422
+],
+"-20,-20": [
+1.990777517,
+1.965645167
+],
+"-20,-15": [
+2.04565203,
+1.487475058
+],
+"-20,-10": [
+2.08514917,
+0.997984366
+],
+"-20,-5": [
+2.108968342,
+0.50089841
+],
+"-20,0": [
+2.116928265,
+3.15e-07
+],
+"-20,5": [
+2.108968362,
+0.500897783
+],
+"-20,10": [
+2.08514921,
+0.997983745
+],
+"-20,15": [
+2.045652089,
+1.48747445
+],
+"-20,20": [
+1.990777595,
+1.965644575
+],
+"-20,25": [
+1.920943357,
+2.428854958
+],
+"-20,30": [
+1.836680854,
+2.873580289
+],
+"-20,35": [
+1.738631377,
+3.296435938
+],
+"-20,40": [
+1.627541139,
+3.694203719
+],
+"-20,45": [
+1.504255606,
+4.06385638
+],
+"-20,50": [
+1.369713054,
+4.402580639
+],
+"-20,55": [
+1.224937434,
+4.707798602
+],
+"-20,60": [
+1.071030575,
+4.977187375
+],
+"-20,65": [
+0.909163801,
+5.208696746
+],
+"-20,70": [
+0.740569017,
+5.40056479
+],
+"-20,75": [
+0.56652933,
+5.551331275
+],
+"-20,80": [
+0.388369289,
+5.659848777
+],
+"-20,85": [
+0.207444797,
+5.725291412
+],
+"-20,90": [
+0.0251328,
+5.747161123
+],
+"-20,95": [
+0.157179198,
+5.725291467
+],
+"-20,100": [
+0.338103693,
+5.659848886
+],
+"-20,105": [
+0.516263739,
+5.551331438
+],
+"-20,110": [
+0.690303431,
+5.400565005
+],
+"-20,115": [
+0.858898223,
+5.208697012
+],
+"-20,120": [
+1.020765006,
+4.97718769
+],
+"-20,125": [
+1.174671875,
+4.707798963
+],
+"-20,130": [
+1.319447508,
+4.402581044
+],
+"-20,135": [
+1.453990073,
+4.063856825
+],
+"-20,140": [
+1.577275622,
+3.694204202
+],
+"-20,145": [
+1.688365875,
+3.296436454
+],
+"-20,150": [
+1.78641537,
+2.873580834
+],
+"-10,-20": [
+1.049286781,
+2.060016815
+],
+"-10,-15": [
+1.077147301,
+1.558889511
+],
+"-10,-10": [
+1.097200525,
+1.045898115
+],
+"-10,-5": [
+1.109293835,
+0.524946804
+],
+"-10,0": [
+1.113335194,
+3.3e-07
+],
+"-10,5": [
+1.109293845,
+0.524946146
+],
+"-10,10": [
+1.097200545,
+1.045897465
+],
+"-10,15": [
+1.077147331,
+1.558888873
+],
+"-10,20": [
+1.049286821,
+2.060016195
+],
+"-10,25": [
+1.013831049,
+2.54546555
+],
+"-10,30": [
+0.971049855,
+3.011542375
+],
+"-10,35": [
+0.92126883,
+3.454699544
+],
+"-10,40": [
+0.864866839,
+3.871564364
+],
+"-10,45": [
+0.802273133,
+4.258964241
+],
+"-10,50": [
+0.733964089,
+4.613950829
+],
+"-10,55": [
+0.66045958,
+4.933822465
+],
+"-10,60": [
+0.58231902,
+5.216144733
+],
+"-10,65": [
+0.500137105,
+5.45876899
+],
+"-10,70": [
+0.41453929,
+5.659848719
+],
+"-10,75": [
+0.326177026,
+5.817853581
+],
+"-10,80": [
+0.235722802,
+5.931581065
+],
+"-10,85": [
+0.14386503,
+6.000165635
+],
+"-10,90": [
+0.051302803,
+6.023085322
+],
+"-10,95": [
+0.041259424,
+6.000165693
+],
+"-10,100": [
+0.133117197,
+5.93158118
+],
+"-10,105": [
+0.223571423,
+5.817853752
+],
+"-10,110": [
+0.311933691,
+5.659848945
+],
+"-10,115": [
+0.39753151,
+5.458769269
+],
+"-10,120": [
+0.479713429,
+5.216145063
+],
+"-10,125": [
+0.557853995,
+4.933822844
+],
+"-10,130": [
+0.63135851,
+4.613951254
+],
+"-10,135": [
+0.699667561,
+4.258964708
+],
+"-10,140": [
+0.762261274,
+3.87156487
+],
+"-10,145": [
+0.818663274,
+3.454700085
+],
+"-10,150": [
+0.868444307,
+3.011542947
+],
+"0,-20": [
+0.075913997,
+2.091795895
+],
+"0,-15": [
+0.075913997,
+1.582937894
+],
+"0,-10": [
+0.075913997,
+1.06203278
+],
+"0,-5": [
+0.075913997,
+0.533044954
+],
+"0,0": [
+0.075913997,
+3.35e-07
+],
+"0,5": [
+0.075913997,
+0.533044286
+],
+"0,10": [
+0.075913997,
+1.062032119
+],
+"0,15": [
+0.075913997,
+1.582937246
+],
+"0,20": [
+0.075913997,
+2.091795265
+],
+"0,25": [
+0.075913997,
+2.584733459
+],
+"0,30": [
+0.075913997,
+3.058000271
+],
+"0,35": [
+0.075913997,
+3.507993854
+],
+"0,40": [
+0.075913997,
+3.931289485
+],
+"0,45": [
+0.075913997,
+4.32466563
+],
+"0,50": [
+0.075913997,
+4.685128458
+],
+"0,55": [
+0.075913997,
+5.009934629
+],
+"0,60": [
+0.075913997,
+5.296612173
+],
+"0,65": [
+0.075913997,
+5.5429793
+],
+"0,70": [
+0.075913997,
+5.747161008
+],
+"0,75": [
+0.075913997,
+5.90760335
+],
+"0,80": [
+0.075913997,
+6.023085264
+],
+"0,85": [
+0.075913997,
+6.092727862
+],
+"0,90": [
+0.075913997,
+6.116001122
+],
+"0,95": [
+0.075913997,
+6.09272792
+],
+"0,100": [
+0.075913997,
+6.02308538
+],
+"0,105": [
+0.075913997,
+5.907603524
+],
+"0,110": [
+0.075913997,
+5.747161238
+],
+"0,115": [
+0.075913997,
+5.542979584
+],
+"0,120": [
+0.075913997,
+5.296612509
+],
+"0,125": [
+0.075913997,
+5.009935014
+],
+"0,130": [
+0.075913997,
+4.685128889
+],
+"0,135": [
+0.075913997,
+4.324666104
+],
+"0,140": [
+0.075913997,
+3.931289999
+],
+"0,145": [
+0.075913997,
+3.507994403
+],
+"0,150": [
+0.075913997,
+3.058000851
+],
+"10,-20": [
+0.899765395,
+2.060016815
+],
+"10,-15": [
+0.927625916,
+1.558889511
+],
+"10,-10": [
+0.947679139,
+1.045898115
+],
+"10,-5": [
+0.95977245,
+0.524946804
+],
+"10,0": [
+0.963813809,
+3.3e-07
+],
+"10,5": [
+0.95977246,
+0.524946146
+],
+"10,10": [
+0.94767916,
+1.045897465
+],
+"10,15": [
+0.927625946,
+1.558888873
+],
+"10,20": [
+0.899765435,
+2.060016195
+],
+"10,25": [
+0.864309663,
+2.54546555
+],
+"10,30": [
+0.821528469,
+3.011542375
+],
+"10,35": [
+0.771747445,
+3.454699544
+],
+"10,40": [
+0.715345453,
+3.871564364
+],
+"10,45": [
+0.652751747,
+4.258964241
+],
+"10,50": [
+0.584442704,
+4.613950829
+],
+"10,55": [
+0.510938195,
+4.933822465
+],
+"10,60": [
+0.432797635,
+5.216144733
+],
+"10,65": [
+0.35061572,
+5.45876899
+],
+"10,70": [
+0.265017905,
+5.659848719
+],
+"10,75": [
+0.17665564,
+5.817853581
+],
+"10,80": [
+0.086201416,
+5.931581065
+],
+"10,85": [
+0.005656356,
+6.000165635
+],
+"10,90": [
+0.098218582,
+6.023085322
+],
+"10,95": [
+0.19078081,
+6.000165693
+],
+"10,100": [
+0.282638583,
+5.93158118
+],
+"10,105": [
+0.373092809,
+5.817853752
+],
+"10,110": [
+0.461455076,
+5.659848945
+],
+"10,115": [
+0.547052896,
+5.458769269
+],
+"10,120": [
+0.629234815,
+5.216145063
+],
+"10,125": [
+0.707375381,
+4.933822844
+],
+"10,130": [
+0.780879896,
+4.613951254
+],
+"10,135": [
+0.849188946,
+4.258964708
+],
+"10,140": [
+0.911782659,
+3.87156487
+],
+"10,145": [
+0.968184659,
+3.454700085
+],
+"10,150": [
+1.017965692,
+3.011542947
+],
+"20,-20": [
+1.848105871,
+1.965645167
+],
+"20,-15": [
+1.902980384,
+1.487475058
+],
+"20,-10": [
+1.942477525,
+0.997984366
+],
+"20,-5": [
+1.966296696,
+0.50089841
+],
+"20,0": [
+1.97425662,
+3.15e-07
+],
+"20,5": [
+1.966296716,
+0.500897783
+],
+"20,10": [
+1.942477565,
+0.997983745
+],
+"20,15": [
+1.902980443,
+1.48747445
+],
+"20,20": [
+1.84810595,
+1.965644575
+],
+"20,25": [
+1.778271711,
+2.428854958
+],
+"20,30": [
+1.694009209,
+2.873580289
+],
+"20,35": [
+1.595959731,
+3.296435938
+],
+"20,40": [
+1.484869494,
+3.694203719
+],
+"20,45": [
+1.36158396,
+4.06385638
+],
+"20,50": [
+1.227041408,
+4.402580639
+],
+"20,55": [
+1.082265788,
+4.707798602
+],
+"20,60": [
+0.928358929,
+4.977187375
+],
+"20,65": [
+0.766492155,
+5.208696746
+],
+"20,70": [
+0.597897371,
+5.40056479
+],
+"20,75": [
+0.423857685,
+5.551331275
+],
+"20,80": [
+0.245697643,
+5.659848777
+],
+"20,85": [
+0.064773151,
+5.725291412
+],
+"20,90": [
+0.117538846,
+5.747161123
+],
+"20,95": [
+0.299850844,
+5.725291467
+],
+"20,100": [
+0.480775338,
+5.659848886
+],
+"20,105": [
+0.658935384,
+5.551331438
+],
+"20,110": [
+0.832975077,
+5.400565005
+],
+"20,115": [
+1.001569869,
+5.208697012
+],
+"20,120": [
+1.163436651,
+4.97718769
+],
+"20,125": [
+1.317343521,
+4.707798963
+],
+"20,130": [
+1.462119154,
+4.402581044
+],
+"20,135": [
+1.596661719,
+4.063856825
+],
+"20,140": [
+1.719947267,
+3.694204202
+],
+"20,145": [
+1.831037521,
+3.296436454
+],
+"20,150": [
+1.929087015,
+2.873580834
+],
+"30,-20": [
+2.740292586,
+1.811548385
+],
+"30,-15": [
+2.820513757,
+1.370864429
+],
+"30,-10": [
+2.878254713,
+0.919747367
+],
+"30,-5": [
+2.913076012,
+0.461630472
+],
+"30,0": [
+2.924712642,
+2.9e-07
+],
+"30,5": [
+2.913076042,
+0.461629893
+],
+"30,10": [
+2.878254772,
+0.919746795
+],
+"30,15": [
+2.820513843,
+1.370863868
+],
+"30,20": [
+2.7402927,
+1.811547839
+],
+"30,25": [
+2.638201873,
+2.238444838
+],
+"30,30": [
+2.515018336,
+2.648305919
+],
+"30,35": [
+2.371679588,
+3.038011793
+],
+"30,40": [
+2.209276526,
+3.404596564
+],
+"30,45": [
+2.029045133,
+3.745270298
+],
+"30,50": [
+1.832357081,
+4.057440265
+],
+"30,55": [
+1.620709283,
+4.33873066
+],
+"30,60": [
+1.395712507,
+4.587000696
+],
+"30,65": [
+1.159079115,
+4.800360887
+],
+"30,70": [
+0.912610029,
+4.977187433
+],
+"30,75": [
+0.658181028,
+5.116134577
+],
+"30,80": [
+0.397728471,
+5.216144848
+],
+"30,85": [
+0.133234559,
+5.276457107
+],
+"30,90": [
+0.133287751,
+5.296612341
+],
+"30,95": [
+0.399810062,
+5.276457157
+],
+"30,100": [
+0.664303978,
+5.216144949
+],
+"30,105": [
+0.924756542,
+5.116134727
+],
+"30,110": [
+1.179185551,
+4.977187631
+],
+"30,115": [
+1.425654648,
+4.800361132
+],
+"30,120": [
+1.662288054,
+4.587000986
+],
+"30,125": [
+1.887284845,
+4.338730993
+],
+"30,130": [
+2.098932661,
+4.057440638
+],
+"30,135": [
+2.295620734,
+3.745270709
+],
+"30,140": [
+2.475852148,
+3.404597009
+],
+"30,145": [
+2.638255233,
+3.038012269
+],
+"30,150": [
+2.781594005,
+2.648306422
+],
+"40,-20": [
+3.549216896,
+1.602408622
+],
+"40,-15": [
+3.652347246,
+1.212600778
+],
+"40,-10": [
+3.726577589,
+0.813564309
+],
+"40,-5": [
+3.771342988,
+0.408336125
+],
+"40,0": [
+3.786302751,
+2.57e-07
+],
+"40,5": [
+3.771343026,
+0.408335614
+],
+"40,10": [
+3.726577664,
+0.813563803
+],
+"40,15": [
+3.652347357,
+1.212600281
+],
+"40,20": [
+3.549217044,
+1.602408139
+],
+"40,25": [
+3.417971607,
+1.980020703
+],
+"40,30": [
+3.259609903,
+2.342564114
+],
+"40,35": [
+3.075337162,
+2.687279198
+],
+"40,40": [
+2.866555809,
+3.011542464
+],
+"40,45": [
+2.634854797,
+3.312886074
+],
+"40,50": [
+2.381997511,
+3.589016621
+],
+"40,55": [
+2.109908346,
+3.837832583
+],
+"40,60": [
+1.820658067,
+4.057440323
+],
+"40,65": [
+1.516448042,
+4.246168491
+],
+"40,70": [
+1.199593493,
+4.402580754
+],
+"40,75": [
+0.872505874,
+4.525486719
+],
+"40,80": [
+0.537674521,
+4.613950997
+],
+"40,85": [
+0.197647701,
+4.667300322
+],
+"40,90": [
+0.144986775,
+4.685128673
+],
+"40,95": [
+0.487621253,
+4.667300367
+],
+"40,100": [
+0.827648078,
+4.613951086
+],
+"40,105": [
+1.16247944,
+4.525486852
+],
+"40,110": [
+1.489567069,
+4.40258093
+],
+"40,115": [
+1.806421632,
+4.246168709
+],
+"40,120": [
+2.110631675,
+4.05744058
+],
+"40,125": [
+2.399881975,
+3.837832878
+],
+"40,130": [
+2.671971162,
+3.589016951
+],
+"40,135": [
+2.924828474,
+3.312886437
+],
+"40,140": [
+3.156529513,
+3.011542858
+],
+"40,145": [
+3.365310896,
+2.687279619
+],
+"40,150": [
+3.549583669,
+2.342564559
+],
+"50,-20": [
+4.250300048,
+1.344580483
+],
+"50,-15": [
+4.373206012,
+1.017492865
+],
+"50,-10": [
+4.46167029,
+0.682661512
+],
+"50,-5": [
+4.515019616,
+0.342634692
+],
+"50,0": [
+4.532847967,
+2.15e-07
+],
+"50,5": [
+4.51501966,
+0.342634263
+],
+"50,10": [
+4.46167038,
+0.682661087
+],
+"50,15": [
+4.373206145,
+1.017492449
+],
+"50,20": [
+4.250300223,
+1.344580078
+],
+"50,25": [
+4.093888002,
+1.661434642
+],
+"50,30": [
+3.905159873,
+1.965644684
+],
+"50,35": [
+3.685552171,
+2.254894984
+],
+"50,40": [
+3.436736244,
+2.526984171
+],
+"50,45": [
+3.160605731,
+2.779841483
+],
+"50,50": [
+2.859262151,
+3.011542523
+],
+"50,55": [
+2.534998912,
+3.220323905
+],
+"50,60": [
+2.190283853,
+3.404596678
+],
+"50,65": [
+1.827740462,
+3.562958415
+],
+"50,70": [
+1.450127915,
+3.694203887
+],
+"50,75": [
+1.060320071,
+3.797334237
+],
+"50,80": [
+0.661283603,
+3.87156458
+],
+"50,85": [
+0.256055419,
+3.916329979
+],
+"50,90": [
+0.15228045,
+3.931289742
+],
+"50,95": [
+0.56061632,
+3.916330016
+],
+"50,100": [
+0.96584451,
+3.871564655
+],
+"50,105": [
+1.364880988,
+3.797334348
+],
+"50,110": [
+1.754688845,
+3.694204034
+],
+"50,115": [
+2.13230141,
+3.562958597
+],
+"50,120": [
+2.494844821,
+3.404596894
+],
+"50,125": [
+2.839559904,
+3.220324152
+],
+"50,130": [
+3.163823171,
+3.0115428
+],
+"50,135": [
+3.465166781,
+2.779841788
+],
+"50,140": [
+3.741297327,
+2.526984501
+],
+"50,145": [
+3.99011329,
+2.254895337
+],
+"50,150": [
+4.209721029,
+1.965645058
+],
+"60,-20": [
+4.822239983,
+1.045897948
+],
+"60,-15": [
+4.961187127,
+0.791468947
+],
+"60,-10": [
+5.061197398,
+0.53101639
+],
+"60,-5": [
+5.121509657,
+0.266522477
+],
+"60,0": [
+5.141664891,
+1.68e-07
+],
+"60,5": [
+5.121509707,
+0.266522143
+],
+"60,10": [
+5.061197499,
+0.53101606
+],
+"60,15": [
+4.961187277,
+0.791468623
+],
+"60,20": [
+4.822240181,
+1.045897633
+],
+"60,25": [
+4.645413682,
+1.29236673
+],
+"60,30": [
+4.432053537,
+1.529000135
+],
+"60,35": [
+4.183783543,
+1.753996927
+],
+"60,40": [
+3.902493188,
+1.965644743
+],
+"60,45": [
+3.590323259,
+2.162332815
+],
+"60,50": [
+3.249649559,
+2.342564229
+],
+"60,55": [
+2.883064819,
+2.504967315
+],
+"60,60": [
+2.493358972,
+2.648306087
+],
+"60,65": [
+2.083497914,
+2.77148965
+],
+"60,70": [
+1.656600935,
+2.873580504
+],
+"60,75": [
+1.215916979,
+2.953801675
+],
+"60,80": [
+0.764799917,
+3.011542632
+],
+"60,85": [
+0.306683022,
+3.046363931
+],
+"60,90": [
+0.15494716,
+3.058000561
+],
+"60,95": [
+0.616577343,
+3.04636396
+],
+"60,100": [
+1.074694245,
+3.01154269
+],
+"60,105": [
+1.525811318,
+2.953801762
+],
+"60,110": [
+1.966495289,
+2.873580619
+],
+"60,115": [
+2.393392288,
+2.771489792
+],
+"60,120": [
+2.803253369,
+2.648306254
+],
+"60,125": [
+3.192959243,
+2.504967507
+],
+"60,130": [
+3.559544014,
+2.342564444
+],
+"60,135": [
+3.900217748,
+2.162333052
+],
+"60,140": [
+4.212387715,
+1.965644999
+],
+"60,145": [
+4.49367811,
+1.753997201
+],
+"60,150": [
+4.741948146,
+1.529000426
+],
+"70,-20": [
+5.247658596,
+0.715436332
+],
+"70,-15": [
+5.398425081,
+0.541396645
+],
+"70,-10": [
+5.506942583,
+0.363236603
+],
+"70,-5": [
+5.572385219,
+0.182312112
+],
+"70,0": [
+5.594254929,
+1.15e-07
+],
+"70,5": [
+5.572385273,
+0.182311883
+],
+"70,10": [
+5.506942693,
+0.363236378
+],
+"70,15": [
+5.398425244,
+0.541396424
+],
+"70,20": [
+5.247658812,
+0.715436116
+],
+"70,25": [
+5.055790818,
+0.884030908
+],
+"70,30": [
+4.824281496,
+1.045897691
+],
+"70,35": [
+4.55489277,
+1.199804561
+],
+"70,40": [
+4.249674851,
+1.344580193
+],
+"70,45": [
+3.910950632,
+1.479122759
+],
+"70,50": [
+3.541298008,
+1.602408307
+],
+"70,55": [
+3.14353026,
+1.71349856
+],
+"70,60": [
+2.720674641,
+1.811548055
+],
+"70,65": [
+2.275949336,
+1.895810575
+],
+"70,70": [
+1.812738973,
+1.965644832
+],
+"70,75": [
+1.334568864,
+2.020519345
+],
+"70,80": [
+0.845078172,
+2.060016485
+],
+"70,85": [
+0.347992217,
+2.083835657
+],
+"70,90": [
+0.152905879,
+2.09179558
+],
+"70,95": [
+0.653803976,
+2.083835677
+],
+"70,100": [
+1.150889939,
+2.060016525
+],
+"70,105": [
+1.640380643,
+2.020519404
+],
+"70,110": [
+2.118550769,
+1.96564491
+],
+"70,115": [
+2.581761152,
+1.895810672
+],
+"70,120": [
+3.026486482,
+1.811548169
+],
+"70,125": [
+3.449342132,
+1.713498692
+],
+"70,130": [
+3.847109913,
+1.602408454
+],
+"70,135": [
+4.216762573,
+1.479122921
+],
+"70,140": [
+4.555486833,
+1.344580369
+],
+"70,145": [
+4.860704796,
+1.199804748
+],
+"70,150": [
+5.130093568,
+1.045897889
+],
+"80,-20": [
+5.513629759,
+0.363236545
+],
+"80,-15": [
+5.671634621,
+0.274874281
+],
+"80,-10": [
+5.785362105,
+0.184420057
+],
+"80,-5": [
+5.853946675,
+0.092562285
+],
+"80,0": [
+5.876866362,
+5.8e-08
+],
+"80,5": [
+5.853946733,
+0.092562169
+],
+"80,10": [
+5.78536222,
+0.184419942
+],
+"80,15": [
+5.671634792,
+0.274874168
+],
+"80,20": [
+5.513629984,
+0.363236436
+],
+"80,25": [
+5.312550309,
+0.448834255
+],
+"80,30": [
+5.069926103,
+0.531016174
+],
+"80,35": [
+4.787603884,
+0.60915674
+],
+"80,40": [
+4.467732294,
+0.682661255
+],
+"80,45": [
+4.112745748,
+0.750970306
+],
+"80,50": [
+3.72534591,
+0.813564019
+],
+"80,55": [
+3.308481125,
+0.869966019
+],
+"80,60": [
+2.865323987,
+0.919747052
+],
+"80,65": [
+2.399247188,
+0.962528254
+],
+"80,70": [
+1.913797855,
+0.997984036
+],
+"80,75": [
+1.412670551,
+1.025844556
+],
+"80,80": [
+0.899679155,
+1.04589778
+],
+"80,85": [
+0.378727844,
+1.05799109
+],
+"80,90": [
+0.14621863,
+1.062032449
+],
+"80,95": [
+0.671165106,
+1.0579911
+],
+"80,100": [
+1.192116425,
+1.0458978
+],
+"80,105": [
+1.705107833,
+1.025844586
+],
+"80,110": [
+2.206235155,
+0.997984076
+],
+"80,115": [
+2.69168451,
+0.962528304
+],
+"80,120": [
+3.157761335,
+0.91974711
+],
+"80,125": [
+3.600918505,
+0.869966085
+],
+"80,130": [
+4.017783324,
+0.813564094
+],
+"80,135": [
+4.405183202,
+0.750970388
+],
+"80,140": [
+4.760169789,
+0.682661344
+],
+"80,145": [
+5.080041425,
+0.609156835
+],
+"80,150": [
+5.362363693,
+0.531016275
+],
+"90,-20": [
+5.612072071,
+0.0
+],
+"90,-15": [
+5.772514413,
+0.0
+],
+"90,-10": [
+5.887996327,
+0.0
+],
+"90,-5": [
+5.957638924,
+0.0
+],
+"90,0": [
+5.980912184,
+0.0
+],
+"90,5": [
+5.957638983,
+0.0
+],
+"90,10": [
+5.887996443,
+0.0
+],
+"90,15": [
+5.772514587,
+0.0
+],
+"90,20": [
+5.6120723,
+0.0
+],
+"90,25": [
+5.407890647,
+0.0
+],
+"90,30": [
+5.161523571,
+0.0
+],
+"90,35": [
+4.874846077,
+0.0
+],
+"90,40": [
+4.550039952,
+0.0
+],
+"90,45": [
+4.189577167,
+0.0
+],
+"90,50": [
+3.796201061,
+0.0
+],
+"90,55": [
+3.372905465,
+0.0
+],
+"90,60": [
+2.922911914,
+0.0
+],
+"90,65": [
+2.449645129,
+0.0
+],
+"90,70": [
+1.956706958,
+0.0
+],
+"90,75": [
+1.447848957,
+0.0
+],
+"90,80": [
+0.926943842,
+0.0
+],
+"90,85": [
+0.397956017,
+0.0
+],
+"90,90": [
+0.135088602,
+0.0
+],
+"90,95": [
+0.668133224,
+0.0
+],
+"90,100": [
+1.197121057,
+0.0
+],
+"90,105": [
+1.718026184,
+0.0
+],
+"90,110": [
+2.226884203,
+0.0
+],
+"90,115": [
+2.719822396,
+0.0
+],
+"90,120": [
+3.193089208,
+0.0
+],
+"90,125": [
+3.643082791,
+0.0
+],
+"90,130": [
+4.066378422,
+0.0
+],
+"90,135": [
+4.459754567,
+0.0
+],
+"90,140": [
+4.820217395,
+0.0
+],
+"90,145": [
+5.145023567,
+0.0
+],
+"90,150": [
+5.431701111,
+0.0
+],
+"100,-20": [
+5.539994413,
+0.363236545
+],
+"100,-15": [
+5.697999276,
+0.274874281
+],
+"100,-10": [
+5.811726759,
+0.184420057
+],
+"100,-5": [
+5.88031133,
+0.092562285
+],
+"100,0": [
+5.903231017,
+5.8e-08
+],
+"100,5": [
+5.880311387,
+0.092562169
+],
+"100,10": [
+5.811726874,
+0.184419942
+],
+"100,15": [
+5.697999446,
+0.274874168
+],
+"100,20": [
+5.539994639,
+0.363236436
+],
+"100,25": [
+5.338914963,
+0.448834255
+],
+"100,30": [
+5.096290758,
+0.531016174
+],
+"100,35": [
+4.813968538,
+0.60915674
+],
+"100,40": [
+4.494096948,
+0.682661255
+],
+"100,45": [
+4.139110403,
+0.750970306
+],
+"100,50": [
+3.751710565,
+0.813564019
+],
+"100,55": [
+3.33484578,
+0.869966019
+],
+"100,60": [
+2.891688641,
+0.919747052
+],
+"100,65": [
+2.425611843,
+0.962528254
+],
+"100,70": [
+1.94016251,
+0.997984036
+],
+"100,75": [
+1.439035205,
+1.025844556
+],
+"100,80": [
+0.92604381,
+1.04589778
+],
+"100,85": [
+0.405092498,
+1.05799109
+],
+"100,90": [
+0.119853975,
+1.062032449
+],
+"100,95": [
+0.644800452,
+1.0579911
+],
+"100,100": [
+1.165751771,
+1.0458978
+],
+"100,105": [
+1.678743178,
+1.025844586
+],
+"100,110": [
+2.1798705,
+0.997984076
+],
+"100,115": [
+2.665319856,
+0.962528304
+],
+"100,120": [
+3.131396681,
+0.91974711
+],
+"100,125": [
+3.57455385,
+0.869966085
+],
+"100,130": [
+3.99141867,
+0.813564094
+],
+"100,135": [
+4.378818547,
+0.750970388
+],
+"100,140": [
+4.733805135,
+0.682661344
+],
+"100,145": [
+5.053676771,
+0.609156835
+],
+"100,150": [
+5.335999039,
+0.531016275
+],
+"110,-20": [
+5.299586828,
+0.715436332
+],
+"110,-15": [
+5.450353313,
+0.541396645
+],
+"110,-10": [
+5.558870815,
+0.363236603
+],
+"110,-5": [
+5.624313451,
+0.182312112
+],
+"110,0": [
+5.646183161,
+1.15e-07
+],
+"110,5": [
+5.624313506,
+0.182311883
+],
+"110,10": [
+5.558870925,
+0.363236378
+],
+"110,15": [
+5.450353477,
+0.541396424
+],
+"110,20": [
+5.299587044,
+0.715436116
+],
+"110,25": [
+5.107719051,
+0.884030908
+],
+"110,30": [
+4.876209728,
+1.045897691
+],
+"110,35": [
+4.606821002,
+1.199804561
+],
+"110,40": [
+4.301603083,
+1.344580193
+],
+"110,45": [
+3.962878864,
+1.479122759
+],
+"110,50": [
+3.593226241,
+1.602408307
+],
+"110,55": [
+3.195458493,
+1.71349856
+],
+"110,60": [
+2.772602873,
+1.811548055
+],
+"110,65": [
+2.327877568,
+1.895810575
+],
+"110,70": [
+1.864667206,
+1.965644832
+],
+"110,75": [
+1.386497097,
+2.020519345
+],
+"110,80": [
+0.897006405,
+2.060016485
+],
+"110,85": [
+0.399920449,
+2.083835657
+],
+"110,90": [
+0.100977646,
+2.09179558
+],
+"110,95": [
+0.601875744,
+2.083835677
+],
+"110,100": [
+1.098961707,
+2.060016525
+],
+"110,105": [
+1.588452411,
+2.020519404
+],
+"110,110": [
+2.066622536,
+1.96564491
+],
+"110,115": [
+2.52983292,
+1.895810672
+],
+"110,120": [
+2.97455825,
+1.811548169
+],
+"110,125": [
+3.397413899,
+1.713498692
+],
+"110,130": [
+3.795181681,
+1.602408454
+],
+"110,135": [
+4.164834341,
+1.479122921
+],
+"110,140": [
+4.503558601,
+1.344580369
+],
+"110,145": [
+4.808776563,
+1.199804748
+],
+"110,150": [
+5.078165336,
+1.045897889
+],
+"120,-20": [
+4.89815398,
+1.045897948
+],
+"120,-15": [
+5.037101124,
+0.791468947
+],
+"120,-10": [
+5.137111395,
+0.53101639
+],
+"120,-5": [
+5.197423654,
+0.266522477
+],
+"120,0": [
+5.217578888,
+1.68e-07
+],
+"120,5": [
+5.197423704,
+0.266522143
+],
+"120,10": [
+5.137111496,
+0.53101606
+],
+"120,15": [
+5.037101274,
+0.791468623
+],
+"120,20": [
+4.898154178,
+1.045897633
+],
+"120,25": [
+4.721327679,
+1.29236673
+],
+"120,30": [
+4.507967534,
+1.529000135
+],
+"120,35": [
+4.259697541,
+1.753996927
+],
+"120,40": [
+3.978407185,
+1.965644743
+],
+"120,45": [
+3.666237256,
+2.162332815
+],
+"120,50": [
+3.325563556,
+2.342564229
+],
+"120,55": [
+2.958978816,
+2.504967315
+],
+"120,60": [
+2.569272969,
+2.648306087
+],
+"120,65": [
+2.159411911,
+2.77148965
+],
+"120,70": [
+1.732514932,
+2.873580504
+],
+"120,75": [
+1.291830976,
+2.953801675
+],
+"120,80": [
+0.840713914,
+3.011542632
+],
+"120,85": [
+0.382597019,
+3.046363931
+],
+"120,90": [
+0.079033163,
+3.058000561
+],
+"120,95": [
+0.540663346,
+3.04636396
+],
+"120,100": [
+0.998780248,
+3.01154269
+],
+"120,105": [
+1.449897321,
+2.953801762
+],
+"120,110": [
+1.890581292,
+2.873580619
+],
+"120,115": [
+2.317478291,
+2.771489792
+],
+"120,120": [
+2.727339372,
+2.648306254
+],
+"120,125": [
+3.117045246,
+2.504967507
+],
+"120,130": [
+3.483630017,
+2.342564444
+],
+"120,135": [
+3.824303751,
+2.162333052
+],
+"120,140": [
+4.136473718,
+1.965644999
+],
+"120,145": [
+4.417764113,
+1.753997201
+],
+"120,150": [
+4.666034149,
+1.529000426
+],
+"130,-20": [
+4.347893201,
+1.344580483
+],
+"130,-15": [
+4.470799166,
+1.017492865
+],
+"130,-10": [
+4.559263444,
+0.682661512
+],
+"130,-5": [
+4.612612769,
+0.342634692
+],
+"130,0": [
+4.63044112,
+2.15e-07
+],
+"130,5": [
+4.612612814,
+0.342634263
+],
+"130,10": [
+4.559263533,
+0.682661087
+],
+"130,15": [
+4.470799299,
+1.017492449
+],
+"130,20": [
+4.347893377,
+1.344580078
+],
+"130,25": [
+4.191481155,
+1.661434642
+],
+"130,30": [
+4.002753027,
+1.965644684
+],
+"130,35": [
+3.783145325,
+2.254894984
+],
+"130,40": [
+3.534329398,
+2.526984171
+],
+"130,45": [
+3.258198884,
+2.779841483
+],
+"130,50": [
+2.956855305,
+3.011542523
+],
+"130,55": [
+2.632592066,
+3.220323905
+],
+"130,60": [
+2.287877006,
+3.404596678
+],
+"130,65": [
+1.925333616,
+3.562958415
+],
+"130,70": [
+1.547721069,
+3.694203887
+],
+"130,75": [
+1.157913224,
+3.797334237
+],
+"130,80": [
+0.758876756,
+3.87156458
+],
+"130,85": [
+0.353648572,
+3.916329979
+],
+"130,90": [
+0.054687296,
+3.931289742
+],
+"130,95": [
+0.463023167,
+3.916330016
+],
+"130,100": [
+0.868251356,
+3.871564655
+],
+"130,105": [
+1.267287834,
+3.797334348
+],
+"130,110": [
+1.657095692,
+3.694204034
+],
+"130,115": [
+2.034708256,
+3.562958597
+],
+"130,120": [
+2.397251667,
+3.404596894
+],
+"130,125": [
+2.741966751,
+3.220324152
+],
+"130,130": [
+3.066230017,
+3.0115428
+],
+"130,135": [
+3.367573627,
+2.779841788
+],
+"130,140": [
+3.643704174,
+2.526984501
+],
+"130,145": [
+3.892520136,
+2.254895337
+],
+"130,150": [
+4.112127876,
+1.965645058
+],
+"140,-20": [
+3.665523887,
+1.602408622
+],
+"140,-15": [
+3.768654237,
+1.212600778
+],
+"140,-10": [
+3.84288458,
+0.813564309
+],
+"140,-5": [
+3.887649979,
+0.408336125
+],
+"140,0": [
+3.902609742,
+2.57e-07
+],
+"140,5": [
+3.887650017,
+0.408335614
+],
+"140,10": [
+3.842884655,
+0.813563803
+],
+"140,15": [
+3.768654349,
+1.212600281
+],
+"140,20": [
+3.665524035,
+1.602408139
+],
+"140,25": [
+3.534278598,
+1.980020703
+],
+"140,30": [
+3.375916894,
+2.342564114
+],
+"140,35": [
+3.191644153,
+2.687279198
+],
+"140,40": [
+2.9828628,
+3.011542464
+],
+"140,45": [
+2.751161788,
+3.312886074
+],
+"140,50": [
+2.498304502,
+3.589016621
+],
+"140,55": [
+2.226215337,
+3.837832583
+],
+"140,60": [
+1.936965058,
+4.057440323
+],
+"140,65": [
+1.632755033,
+4.246168491
+],
+"140,70": [
+1.315900484,
+4.402580754
+],
+"140,75": [
+0.988812866,
+4.525486719
+],
+"140,80": [
+0.653981512,
+4.613950997
+],
+"140,85": [
+0.313954693,
+4.667300322
+],
+"140,90": [
+0.028679784,
+4.685128673
+],
+"140,95": [
+0.371314262,
+4.667300367
+],
+"140,100": [
+0.711341087,
+4.613951086
+],
+"140,105": [
+1.046172448,
+4.525486852
+],
+"140,110": [
+1.373260078,
+4.40258093
+],
+"140,115": [
+1.690114641,
+4.246168709
+],
+"140,120": [
+1.994324684,
+4.05744058
+],
+"140,125": [
+2.283574983,
+3.837832878
+],
+"140,130": [
+2.555664171,
+3.589016951
+],
+"140,135": [
+2.808521482,
+3.312886437
+],
+"140,140": [
+3.040222522,
+3.011542858
+],
+"140,145": [
+3.249003905,
+2.687279619
+],
+"140,150": [
+3.433276678,
+2.342564559
+],
+"150,-20": [
+2.871779485,
+1.811548385
+],
+"150,-15": [
+2.952000656,
+1.370864429
+],
+"150,-10": [
+3.009741613,
+0.919747367
+],
+"150,-5": [
+3.044562912,
+0.461630472
+],
+"150,0": [
+3.056199542,
+2.9e-07
+],
+"150,5": [
+3.044562941,
+0.461629893
+],
+"150,10": [
+3.009741671,
+0.919746795
+],
+"150,15": [
+2.952000743,
+1.370863868
+],
+"150,20": [
+2.8717796,
+1.811547839
+],
+"150,25": [
+2.769688773,
+2.238444838
+],
+"150,30": [
+2.646505236,
+2.648305919
+],
+"150,35": [
+2.503166488,
+3.038011793
+],
+"150,40": [
+2.340763426,
+3.404596564
+],
+"150,45": [
+2.160532033,
+3.745270298
+],
+"150,50": [
+1.963843981,
+4.057440265
+],
+"150,55": [
+1.752196183,
+4.33873066
+],
+"150,60": [
+1.527199407,
+4.587000696
+],
+"150,65": [
+1.290566015,
+4.800360887
+],
+"150,70": [
+1.044096929,
+4.977187433
+],
+"150,75": [
+0.789667928,
+5.116134577
+],
+"150,80": [
+0.529215371,
+5.216144848
+],
+"150,85": [
+0.264721458,
+5.276457107
+],
+"150,90": [
+0.001800851,
+5.296612341
+],
+"150,95": [
+0.268323162,
+5.276457157
+],
+"150,100": [
+0.532817078,
+5.216144949
+],
+"150,105": [
+0.793269642,
+5.116134727
+],
+"150,110": [
+1.047698651,
+4.977187631
+],
+"150,115": [
+1.294167748,
+4.800361132
+],
+"150,120": [
+1.530801154,
+4.587000986
+],
+"150,125": [
+1.755797946,
+4.338730993
+],
+"150,130": [
+1.967445761,
+4.057440638
+],
+"150,135": [
+2.164133834,
+3.745270709
+],
+"150,140": [
+2.344365248,
+3.404597009
+],
+"150,145": [
+2.506768333,
+3.038012269
+],
+"150,150": [
+2.650107105,
+2.648306422
+],
+"160,-20": [
+1.990777517,
+1.965645167
+],
+"160,-15": [
+2.04565203,
+1.487475058
+],
+"160,-10": [
+2.08514917,
+0.997984366
+],
+"160,-5": [
+2.108968342,
+0.50089841
+],
+"160,0": [
+2.116928265,
+3.15e-07
+],
+"160,5": [
+2.108968362,
+0.500897783
+],
+"160,10": [
+2.08514921,
+0.997983745
+],
+"160,15": [
+2.045652089,
+1.48747445
+],
+"160,20": [
+1.990777595,
+1.965644575
+],
+"160,25": [
+1.920943357,
+2.428854958
+],
+"160,30": [
+1.836680854,
+2.873580289
+],
+"160,35": [
+1.738631377,
+3.296435938
+],
+"160,40": [
+1.627541139,
+3.694203719
+],
+"160,45": [
+1.504255606,
+4.06385638
+],
+"160,50": [
+1.369713054,
+4.402580639
+],
+"160,55": [
+1.224937434,
+4.707798602
+],
+"160,60": [
+1.071030575,
+4.977187375
+],
+"160,65": [
+0.909163801,
+5.208696746
+],
+"160,70": [
+0.740569017,
+5.40056479
+],
+"160,75": [
+0.56652933,
+5.551331275
+],
+"160,80": [
+0.388369289,
+5.659848777
+],
+"160,85": [
+0.207444797,
+5.725291412
+],
+"160,90": [
+0.0251328,
+5.747161123
+],
+"160,95": [
+0.157179198,
+5.725291467
+],
+"160,100": [
+0.338103693,
+5.659848886
+],
+"160,105": [
+0.516263739,
+5.551331438
+],
+"160,110": [
+0.690303431,
+5.400565005
+],
+"160,115": [
+0.858898223,
+5.208697012
+],
+"160,120": [
+1.020765006,
+4.97718769
+],
+"160,125": [
+1.174671875,
+4.707798963
+],
+"160,130": [
+1.319447508,
+4.402581044
+],
+"160,135": [
+1.453990073,
+4.063856825
+],
+"160,140": [
+1.577275622,
+3.694204202
+],
+"160,145": [
+1.688365875,
+3.296436454
+],
+"160,150": [
+1.78641537,
+2.873580834
+],
+"170,-20": [
+1.049286781,
+2.060016815
+],
+"170,-15": [
+1.077147301,
+1.558889511
+],
+"170,-10": [
+1.097200525,
+1.045898115
+],
+"170,-5": [
+1.109293835,
+0.524946804
+],
+"170,0": [
+1.113335194,
+3.3e-07
+],
+"170,5": [
+1.109293845,
+0.524946146
+],
+"170,10": [
+1.097200545,
+1.045897465
+],
+"170,15": [
+1.077147331,
+1.558888873
+],
+"170,20": [
+1.049286821,
+2.060016195
+],
+"170,25": [
+1.013831049,
+2.54546555
+],
+"170,30": [
+0.971049855,
+3.011542375
+],
+"170,35": [
+0.92126883,
+3.454699544
+],
+"170,40": [
+0.864866839,
+3.871564364
+],
+"170,45": [
+0.802273133,
+4.258964241
+],
+"170,50": [
+0.733964089,
+4.613950829
+],
+"170,55": [
+0.66045958,
+4.933822465
+],
+"170,60": [
+0.58231902,
+5.216144733
+],
+"170,65": [
+0.500137105,
+5.45876899
+],
+"170,70": [
+0.41453929,
+5.659848719
+],
+"170,75": [
+0.326177026,
+5.817853581
+],
+"170,80": [
+0.235722802,
+5.931581065
+],
+"170,85": [
+0.14386503,
+6.000165635
+],
+"170,90": [
+0.051302803,
+6.023085322
+],
+"170,95": [
+0.041259424,
+6.000165693
+],
+"170,100": [
+0.133117197,
+5.93158118
+],
+"170,105": [
+0.223571423,
+5.817853752
+],
+"170,110": [
+0.311933691,
+5.659848945
+],
+"170,115": [
+0.39753151,
+5.458769269
+],
+"170,120": [
+0.479713429,
+5.216145063
+],
+"170,125": [
+0.557853995,
+4.933822844
+],
+"170,130": [
+0.63135851,
+4.613951254
+],
+"170,135": [
+0.699667561,
+4.258964708
+],
+"170,140": [
+0.762261274,
+3.87156487
+],
+"170,145": [
+0.818663274,
+3.454700085
+],
+"170,150": [
+0.868444307,
+3.011542947
+],
+"180,-20": [
+0.075913997,
+2.091795895
+],
+"180,-15": [
+0.075913997,
+1.582937894
+],
+"180,-10": [
+0.075913997,
+1.06203278
+],
+"180,-5": [
+0.075913997,
+0.533044954
+],
+"180,0": [
+0.075913997,
+3.35e-07
+],
+"180,5": [
+0.075913997,
+0.533044286
+],
+"180,10": [
+0.075913997,
+1.062032119
+],
+"180,15": [
+0.075913997,
+1.582937246
+],
+"180,20": [
+0.075913997,
+2.091795265
+],
+"180,25": [
+0.075913997,
+2.584733459
+],
+"180,30": [
+0.075913997,
+3.058000271
+],
+"180,35": [
+0.075913997,
+3.507993854
+],
+"180,40": [
+0.075913997,
+3.931289485
+],
+"180,45": [
+0.075913997,
+4.32466563
+],
+"180,50": [
+0.075913997,
+4.685128458
+],
+"180,55": [
+0.075913997,
+5.009934629
+],
+"180,60": [
+0.075913997,
+5.296612173
+],
+"180,65": [
+0.075913997,
+5.5429793
+],
+"180,70": [
+0.075913997,
+5.747161008
+],
+"180,75": [
+0.075913997,
+5.90760335
+],
+"180,80": [
+0.075913997,
+6.023085264
+],
+"180,85": [
+0.075913997,
+6.092727862
+],
+"180,90": [
+0.075913997,
+6.116001122
+],
+"180,95": [
+0.075913997,
+6.09272792
+],
+"180,100": [
+0.075913997,
+6.02308538
+],
+"180,105": [
+0.075913997,
+5.907603524
+],
+"180,110": [
+0.075913997,
+5.747161238
+],
+"180,115": [
+0.075913997,
+5.542979584
+],
+"180,120": [
+0.075913997,
+5.296612509
+],
+"180,125": [
+0.075913997,
+5.009935014
+],
+"180,130": [
+0.075913997,
+4.685128889
+],
+"180,135": [
+0.075913997,
+4.324666104
+],
+"180,140": [
+0.075913997,
+3.931289999
+],
+"180,145": [
+0.075913997,
+3.507994403
+],
+"180,150": [
+0.075913997,
+3.058000851
+]
+},
+"bom": [
+[
+"Baglanti",
+"M3 isil gomme somun",
+9
+],
+[
+"Baglanti",
+"M3x12 DIN 912",
+8
+],
+[
+"Baglanti",
+"M3x5 horn vidasi (servo ile)",
+2
+],
+[
+"Baglanti",
+"M3x8 DIN 912",
+9
+],
+[
+"Baglanti",
+"M4 DIN 985 kontra somun",
+8
+],
+[
+"Baglanti",
+"M4x16 DIN 912",
+8
+],
+[
+"Baglanti",
+"M5 DIN 125 pul",
+1
+],
+[
+"Baglanti",
+"M5 isil gomme somun",
+1
+],
+[
+"Baglanti",
+"M5x12 DIN 912",
+1
+],
+[
+"Baglanti",
+"M6 cekic somun, kanal 10",
+4
+],
+[
+"Baglanti",
+"M6x16 DIN 912",
+4
+],
+[
+"Baglanti",
+"O0,4 mumlu polyester baglama ipi (ilmek ~16 mm + dugum)",
+2
+],
+[
+"Satin",
+"25T aluminyum disk horn",
+2
+],
+[
+"Satin",
+"625ZZ rulman 5x16x5",
+1
+],
+[
+"Satin",
+"6808-2RS rulman 40x52x7",
+1
+],
+[
+"Satin",
+"DS3235 servo",
+2
+],
+[
+"Satin",
+"Sigma 40x40 agir kanal 10, 200 mm",
+1
+]
+]
+}

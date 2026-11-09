@@ -1,8 +1,8 @@
 {
  "aciklama": "Son regresyon koşusu (taban değil). Üreten: planlama/d158/regresyon.py",
- "tarih": "2026-11-09T07:32:32+03:00",
+ "tarih": "2026-11-09T14:30:50+03:00",
  "cikis_kodu": 0,
- "taban_tarih": "2026-11-09T02:17:55+03:00",
+ "taban_tarih": "2026-11-09T07:32:32+03:00",
  "taban_guncellendi": true,
  "degerler": {
   "boy_mm": {
@@ -10,7 +10,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/lale158/lale158-kontrol.json",
     "anahtar": "toplam_boy_mm",
-    "sha256_12": "9dedd36ff18e"
+    "sha256_12": "55edf339ec74"
    },
    "yon": "esit",
    "esik": 1580.0,
@@ -23,7 +23,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/kafa/kafa-analiz.json",
     "anahtar": "statik",
-    "sha256_12": "ad17cd1aba34",
+    "sha256_12": "d84b2e7b597e",
     "not_": "liste uzunluğu (çakışan çift sayısı)"
    },
    "yon": "kucuk_iyi",
@@ -36,7 +36,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/kabuk/kabuk-analiz.json",
     "anahtar": "cakisma",
-    "sha256_12": "5a30c4a7aedc",
+    "sha256_12": "8c6252ccfa52",
     "not_": "liste uzunluğu (çakışan çift sayısı)"
    },
    "yon": "kucuk_iyi",
@@ -49,7 +49,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/kabuk/kabuk-analiz.json",
     "anahtar": "iskelet_cakisma",
-    "sha256_12": "5a30c4a7aedc",
+    "sha256_12": "8c6252ccfa52",
     "not_": "liste uzunluğu (çakışan çift sayısı)"
    },
    "yon": "kucuk_iyi",
@@ -62,7 +62,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/carpisma-sonuc.json",
     "anahtar": "ev_pozu_cakisma",
-    "sha256_12": "3ee69a9a49ed",
+    "sha256_12": "d85e4119d47f",
     "not_": "liste uzunluğu (çakışan çift sayısı)"
    },
    "yon": "kucuk_iyi",
@@ -75,7 +75,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/lale158/kafa-yerlesim/uygulama-ivme.json",
     "anahtar": "izgara_yuk_0g.a_sinir_pay15.rampa5_* (en küçük)",
-    "sha256_12": "6208aa854f1d",
+    "sha256_12": "ae7492cbd5f6",
     "not_": "rampa5_* en küçüğü: rampa5_geri"
    },
    "yon": "buyuk_iyi",
@@ -88,7 +88,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/kafa/kafa-analiz.json",
     "anahtar": "tork.tilt.pay_tilt15",
-    "sha256_12": "ad17cd1aba34"
+    "sha256_12": "d84b2e7b597e"
    },
    "yon": "buyuk_iyi",
    "esik": 3.0,
@@ -100,7 +100,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/kafa/kafa-analiz.json",
     "anahtar": "tork.pan.pay_iki_hane",
-    "sha256_12": "ad17cd1aba34"
+    "sha256_12": "d84b2e7b597e"
    },
    "yon": "buyuk_iyi",
    "esik": 2.0,
@@ -112,7 +112,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/lale158/kafa-yerlesim/uygulama-olcum.json",
     "anahtar": "mic_hoparlor.poz_min_mm",
-    "sha256_12": "16cb160e09e2"
+    "sha256_12": "49c989b8f16f"
    },
    "yon": "buyuk_iyi",
    "esik": 400.0,
@@ -124,7 +124,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/lale158/kafa-yerlesim/uygulama-olcum.json",
     "anahtar": "kablo_sy8205.*.sy8205_kesisim_mm3 + kafa_ici_qled_kablo.*.sy8205_kesisim_mm3",
-    "sha256_12": "16cb160e09e2",
+    "sha256_12": "49c989b8f16f",
     "not_": "13 kablonun sy8205_kesisim_mm3 toplamı"
    },
    "yon": "kucuk_iyi",
@@ -202,9 +202,9 @@
   "carpisma_sonuc": {
    "kaynak": "tasarim/freecad/carpisma-sonuc.json : tek_kosu, birlestirme_notu, bolumler.*.kosu",
    "tek_kosu": true,
-   "birlestirme_notu": "2026-11-09: birlestirilmemis, tek seferlik tam kosu (kosu 20261109-033441, 2026-11-09T03:35:44 ... 2026-11-09T07:29:41). Dokuz bolum (statik, omuz, kol_sag, kol_sol, kolkol, kafa_sabit, kafa_sag, kafa_sol, taban) ayri freecadcmd sureclerinde sirayla kostu; her bolumun suresi ve tepe bellegi 'bolumler'de. Tum bolumler ayni kaynak dosyalarla (md5 ozetleri 'kaynak') kostu; onceki kosulardan veri alinmadi.",
+   "birlestirme_notu": "2026-11-09: birlestirilmemis, tek seferlik tam kosu (kosu 20261109-084522, 2026-11-09T10:06:29 ... 2026-11-09T14:00:08). Dokuz bolum (statik, omuz, kol_sag, kol_sol, kolkol, kafa_sabit, kafa_sag, kafa_sol, taban) ayri freecadcmd sureclerinde sirayla kostu; her bolumun suresi ve tepe bellegi 'bolumler'de. Tum bolumler ayni kaynak dosyalarla (md5 ozetleri 'kaynak') kostu; onceki kosulardan veri alinmadi.",
    "kosular": [
-    "20261109-033441"
+    "20261109-084522"
    ]
   }
  }
