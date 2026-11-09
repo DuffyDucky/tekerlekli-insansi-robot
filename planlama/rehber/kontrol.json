@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-09 19:49",
+ "tarih": "2026-11-09 21:13",
  "tarayici": "chrome.exe",
  "ozet": {
   "adim": 50,
@@ -14,7 +14,7 @@
    "hic_gorunmeyen": []
   },
   "sema": 13,
-  "veri_uretim": "2026-11-09 19:45",
+  "veri_uretim": "2026-11-09 20:26",
   "kaynak_cad": {
    "iskelet": "2026-11-09 14:27",
    "omuz_sag": "2026-11-09 14:27",
@@ -1313,13 +1313,13 @@
  },
  "yazdir": {
   "pdf": "planlama/rehber/Lale-montaj-rehberi.pdf",
-  "pdf_sayfa": 53,
+  "pdf_sayfa": 54,
   "pdf_yeni": true,
-  "html_sayfa": 53,
+  "html_sayfa": 54,
   "adim": 50,
   "tasan": [],
   "kucuk_yazi": [],
-  "boyut_kb": 3915,
+  "boyut_kb": 3932,
   "sayfa_esleme": {
    "0": [
     1
@@ -1429,53 +1429,54 @@
     37
    ],
    "35": [
-    38
-   ],
-   "36": [
+    38,
     39
    ],
-   "37": [
+   "36": [
     40
    ],
-   "38": [
+   "37": [
     41
    ],
-   "39": [
+   "38": [
     42
    ],
-   "40": [
+   "39": [
     43
    ],
-   "41": [
+   "40": [
     44
    ],
-   "42": [
+   "41": [
     45
    ],
-   "43": [
+   "42": [
     46
    ],
-   "44": [
+   "43": [
     47
    ],
-   "45": [
+   "44": [
     48
    ],
-   "46": [
+   "45": [
     49
    ],
-   "47": [
+   "46": [
     50
    ],
-   "48": [
+   "47": [
     51
    ],
+   "48": [
+    52
+   ],
    "49": [
-    52,
-    53
+    53,
+    54
    ]
   },
-  "devam_sayfasi": 3,
+  "devam_sayfasi": 4,
   "en_kucuk_yazi_pt_dom": 8.1,
   "en_kucuk_yazi_pt_pdf": 8.1,
   "yazi_alt_sinir_pt": 8.0,
@@ -1517,6 +1518,14 @@
     "ifade": "köprülenmez",
     "cumle": "İki 5 V hattı birbirine köprülenmez.",
     "istisna": "olumsuz biçim: köprülenmez"
+   },
+   {
+    "adim": "F5",
+    "alan": "not_",
+    "yasak": "röleyi elle kapatma",
+    "ifade": "röleler elle kapatılmaz",
+    "cumle": "Ön şarj dizisi ESP32 yazılımında (`planlama/adim3/elektrik.md` E9, adım 1–6): yazılım hazır değilse aşama 2 yapılmaz, röleler elle kapatılmaz (kaynakta yok, doğrulanmadı)",
+    "istisna": "olumsuz biçim: kapatılmaz"
    }
   ],
   "kopya_eki": [],
@@ -1739,6 +1748,26 @@
      "var": true
     },
     {
+     "adim": "F1",
+     "uyari": "F1 mantar ölçümü DC V, uç akü ayrıkken",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 sökme sırası (akü ayrıldıktan sonra uçlar)",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 aşama 1: şarj girişi 10 A takılı değil",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 mantar NC sürekliliği (akü ayrık)",
+     "var": true
+    },
+    {
      "adim": "F5",
      "uyari": "F5 ilk enerji aşama 2 (ön şarj, mantar)",
      "var": true
@@ -1746,6 +1775,31 @@
     {
      "adim": "F5",
      "uyari": "F5 tekerlekler yerden kesik",
+     "var": true
+    },
+    {
+     "adim": "F5",
+     "uyari": "F5 sigortalar akü ayrıkken",
+     "var": true
+    },
+    {
+     "adim": "F5",
+     "uyari": "F5 mantarda kollar düşer",
+     "var": true
+    },
+    {
+     "adim": "F5",
+     "uyari": "F5 şarj girişi 10 A takılı değil",
+     "var": true
+    },
+    {
+     "adim": "F5",
+     "uyari": "F5 kollar aşağıda başlar",
+     "var": true
+    },
+    {
+     "adim": "F5",
+     "uyari": "F5 şarj pimleri sigortadan sonra gerilimli",
      "var": true
     },
     {
@@ -1782,13 +1836,53 @@
      "adim": "F3",
      "uyari": "göğüs 12 V fişten önce ölçüm",
      "var": true
+    },
+    {
+     "adim": "F3",
+     "uyari": "F3 göğüs 2 A akü ayrıkken",
+     "var": true
+    },
+    {
+     "adim": "F3",
+     "uyari": "F3 ölçüm: akü ana anahtar kapalıyken",
+     "var": true
+    },
+    {
+     "adim": "F3",
+     "uyari": "F3 ölçüm sonu: ana anahtar, akü, uçlar",
+     "var": true
+    },
+    {
+     "adim": "F3",
+     "uyari": "F3 K11 b: ölçülmeden fiş takılmaz",
+     "var": true
+    },
+    {
+     "adim": "F3",
+     "uyari": "F3 regülatör ölçümü DC V",
+     "var": true
+    },
+    {
+     "adim": "F3",
+     "uyari": "F3 ölçümden önce saat, yüzük, bileklik",
+     "var": true
+    },
+    {
+     "adim": "F3",
+     "uyari": "F3 ölçümde 12 V fiş ucu yalıtılı",
+     "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "K1 şarj kolu XT60'ın robot tarafından",
+     "var": true
     }
    ],
    "zorunlu_eksik": []
   },
   "zorunlu_eksik": 0,
   "metin_sayisi": {
-   "veri": 4637,
+   "veri": 4640,
    "tarayici": 58
   },
   "parca": 1192,

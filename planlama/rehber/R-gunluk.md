@@ -20,6 +20,15 @@ Bir sonraki ajan buradan devam eder. Durum kutuları + hangi komut ne üretti.
       alma + ön şarj + motor yön testi), mantar metni K1 düşer, B3 / B5a / B6a tezgâh ayarı satırı, denetimde yasak talimat taraması
       (köprüleme, akü bağlıyken iş, enerji varken bağlantı) + "yerden kesik" zorunlu satırı + görünen adda FreeCAD eki, PDF en küçük
       yazı 8,1 pt (devam sayfasıyla 53 sayfa; eşleme `kontrol.json` `yazdir.sayfa_esleme`). `kontrol.json` 50/50, konsol 0, 1192 ↔ 1192
+- [x] P7.4 (F7d, 09.11 20:26 veri, 20:31 kontrol; ayrıntı `planlama/d158/F7d-gunluk.md`): F3 göğüs regülatörü ölçüm sırası açık (ana
+      anahtar kapalıyken akü tak → aç → ölç → kapat → akü ayır → uçları sök), K11 b'de fiş F5 aşama 2'de ölçümden sonra; mantar ve
+      regülatör ölçümünde DC V kademesi, V soketi, klemensin + ucu; F1 mantar NC süreklilik denemesi; şarj girişi 10 A (K1 kablo, F1 etek,
+      aşama 1 / 2 "takılı değil"); denetimde köprüleme eş anlamlıları, "röleyi elle kapat", "açtıktan sonra … tak", pencere sıra
+      bağlacında kesilir, `ZORUNLU` 35. PDF 54 sayfa (adım 31, 32, 35, 49 iki sayfa), en küçük yazı 8,1 pt. `kontrol.json` 50/50, konsol 0
+      Düzeltme turu 1 (F7d-kontrol KOŞULLU; 21:13 kontrol): pencere yalnız enerjiyi bitiren ifadede kesilir (olumsuz ekli biçim kesmez),
+      "artı" / "eksi" kelime sınırıyla; K1 şarj kolu akü XT60'ının robot tarafından (doğrulanmadı), − ucu / kutup doğrulanmadı; F5 notunda
+      sigortadan sonra gerilimli şarj pimi uyarısı (KT-F7d-1'e kadar); F3 ölçümünden önce takı ve fiş ucu yalıtımı; `ZORUNLU` 40. Veri
+      FreeCAD'siz yazıldı (yalnız metin alanları, `rehber_veri.py` kuralı; `uretim` 20:26 kaldı). PDF yine 54 sayfa, en küçük 8,1 pt
 
 ## Durum (15 Ekim 19:20, Opus-10 checkpoint'te durdu: koordinatör talimatı "en yakın checkpoint")
 - [x] 0. Kaynaklar okundu (CLAUDE.md, README, OZET, dongu, M6 md + JSON + M6_erisim.py, baski-listesi, elektrik.md, KOL_KABLO, taban YOL)
@@ -124,6 +133,13 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
   kontrol 19:10: 50/50, konsol 0, 1192 ↔ 1192, PDF 52 sayfa (adım 31 ve 32 iki sayfa), en küçük yazı 8,1 pt, denetim 0.
   Düzeltme 1 (F7c-kontrol O-1, O-2, D-1, D-2, D-3): veri 19:44, kontrol 19:49: 50/50, konsol 0, 1192 ↔ 1192, PDF 53 sayfa (adım 31,
   32, 49 iki sayfa), en küçük yazı 8,1 pt, denetim 0 (zorunlu 0 / 23, yasak 0).
+- 2026-11-09 (F7d, P7.4; `planlama/d158/F7d-gunluk.md`): F7c-kontrol D-5, D-6', D-7, D-8, D-9, D-10. Veri 20:26 (FreeCAD, kilit altında),
+  kontrol 20:31: 50/50, konsol 0, 1192 ↔ 1192, PDF 54 sayfa (adım 31, 32, 35, 49 iki sayfa), en küçük yazı 8,1 pt, denetim 0
+  (zorunlu 0 / 35, yasak 0, istisna 5). Demo "Bu sayfa hakkında" metni `F9b-dogrula.py`'nin gerçek denetimlerine göre yazıldı.
+- 2026-11-09 (F7d düzeltme turu 1; `planlama/d158/F7d-kontrol.md` O-1, O-2, D-1, D-2, D-4, D-5): FreeCAD koşulmadı; adım metni
+  `rehber-veri.json` / `.js`'e `rehber_veri.py`'nin alan kuralı ve yazma biçimiyle yazıldı (değişiksiz yeniden yazım FreeCAD çıktısıyla bayt
+  bayt aynı; fark yalnız K1 `is_`, F3 `is_`, F5 `not_`). Kontrol 21:13: 50/50, konsol 0, 1192 ↔ 1192, PDF 54 sayfa, en küçük 8,1 pt,
+  denetim 0 (zorunlu 0 / 40, yasak 0, istisna 5); F9b, `kontrol`, regresyon 0.
 
 ## Kararlar (tasarım)
 - 09.11 (F7b): Göğüs ekranı / kafa kablo yolları (`lale158/kablo_yolu_ekran.py`) `semalar` olarak girer, `parcalar`a değil: gösterim

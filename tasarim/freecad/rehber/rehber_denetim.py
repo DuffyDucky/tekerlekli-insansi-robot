@@ -24,6 +24,13 @@
 #    F7c düzeltme 1 (F7c-kontrol D-1, D-2): olumsuzlama yalnız eşleşme sonunun yan cümlesinde geçerli ("takılı değil, köprüle" yakalanır);
 #    ek kalıplar "devre dışı bırak", "kısa devre et / yap", "yerine tel / kablo", "sigortası / XT60 takılıyken", "gerilim varken",
 #    fiil "değiştir", "bağlantı yap"; "akü … takılı" yalnız öznesi akü iken ("Akü ön takozu … takılı" tutmaz).
+#    F7d (F7c-kontrol D-6', D-7): köprüleme eş anlamlıları ("mantar NC uçlarını birleştir", "iki ucunu birbirine bağla / lehimle /
+#    değdir"; yalnız mantar, acil stop, NC, ana anahtar, sigorta, röle, kontak, 5 / 12 V, artı / eksi bağlamında), "röleyi elle kapat",
+#    enerji önekine "ana anahtarı açtıktan sonra", "aküyü taktıktan sonra", "enerji verdikten sonra". Önek ile fiil arasındaki pencere
+#    (en çok 120 karakter) yalnız enerjiyi bitiren ifadede ("ana anahtarı kapat", "aküyü ayır", "enerjiyi kes"; olumsuz ekli
+#    "ayırmadan", "kesmeden" kesmez) kesilir: "Ana anahtar açıkken … gözle, bitince … ayır ve uçları sök" tutmaz; çıplak sıra bağlacı
+#    (F7d düzeltme 1, O-1: "açıkken birkaç saniye sonra … tak" tutar), virgül ve "ve" kesmez (liste içi: "açıkken F1 (20 A), F3 (5 A,
+#    kafa) ve hat sigortalarını tak" tutar). "artı" / "eksi" kelime sınırıyla ("artık", "eksik" tutmaz; D-2).
 # 7) Görünen parça adında FreeCAD kopya eki (sondaki 0NN; F7b-kontrol D-6) 0 olmalı.
 import os, re, sys, json, collections
 
@@ -85,6 +92,9 @@ enerji gerilimsiz sonu sonunda takozda tekerlekler verilmez yerden zaman
 ver kapanmaz komutu yokken yine tekerlerin kimse mantarda kural portu resetlenmemeli boot dizisi hedefleri almadan zaten
 komutuyla tekere kesmedi teyidiyle bitti devam
 saat bileklik bobinleri kolu program bilinmiyor pini kapatabilir klemensine siyah panelindeki dal ise
+anahtardan etekteki sigortadan kesiti kademesinde serbestken bip gerilimli olurdu multimetreyi kademesine otomatik soketine
+soketinde atar klemensinin ucuna klemensin okundu barada teli
+hattan rehberdeki buna hangi kuyruklu ucundaki metal pimleri gerilimlidir kesmez pimlere cinsi verilene
 """.split())
 
 # 3) Kafa / hoparlör / hub: (bileşen anahtarı parça adında, metinde aranacak kelimeler)
@@ -115,10 +125,22 @@ ZORUNLU = [
     # F7c düzeltme 1 (O-1): aşama 1'de F1 takılı değil (röle kontakları enerjisiz, ESP32 programı bilinmese de); mantar ölçü noktası (O-2)
     ("F1", r"İlk enerji, aşama 1 \(F1 sonu, kafasız\).*röle K1 ve K2'nin kontakları enerjisiz.*BTS EN = 0", "F1 ilk enerji aşama 1 (bara enerjisiz)"),
     ("F1", r"F1 \(20 A[^)]*\)[^.]*takılı değil", "F1 aşama 1: F1 (20 A) ve dal sigortaları takılı değil"),
-    ("F1", r"PC817 #1 giriş klemensine.*WAGO GND.*mantar uçlarına takma", "F1 mantar ölçü noktası"),
+    ("F1", r"PC817 #1 giriş klemensinin \+ ucuna.*WAGO GND.*mantar uçlarına takma", "F1 mantar ölçü noktası"),
     ("F1", r"[Tt]ekerlekler yerden kesik", "F1 tekerlekler yerden kesik"),
+    # F7d (F7c-kontrol D-6', D-8, D-10): kademe, uçların takılma / sökülme sırası, şarj girişi
+    ("F1", r"akü ayrıkken multimetreyi DC V kademesine al.*kırmızı ucu V soketine", "F1 mantar ölçümü DC V, uç akü ayrıkken"),
+    ("F1", r"XT60'tan ayır, sonra ölçü uçlarını sök", "F1 sökme sırası (akü ayrıldıktan sonra uçlar)"),
+    ("F1", r"şarj girişi mini 10 A takılı değil", "F1 aşama 1: şarj girişi 10 A takılı değil"),
+    ("F1", r"süreklilik kademesinde", "F1 mantar NC sürekliliği (akü ayrık)"),
     ("F5", r"İlk enerji, aşama 2.*BTS EN = 0.*ön şarj dizisi.*K1 düşer", "F5 ilk enerji aşama 2 (ön şarj, mantar)"),
     ("F5", r"[Tt]ekerlekler yerden kesik", "F5 tekerlekler yerden kesik"),
+    ("F5", r"Akü XT60 ayrık, ana anahtar kapalıyken F1 \(20 A\).*tak", "F5 sigortalar akü ayrıkken"),
+    ("F5", r"kollar düşer", "F5 mantarda kollar düşer"),
+    ("F5", r"Şarj girişi mini 10 A bu aşamada da takılı değil", "F5 şarj girişi 10 A takılı değil"),
+    # F7d düzeltme 1 (F7d-kontrol D-1, O-2): "Kollar aşağıda başlar" kendi satırıyla; sigortadan sonra şarj pimleri gerilimli
+    ("F5", r"Kollar aşağıda başlar", "F5 kollar aşağıda başlar"),
+    ("F5", r"pimleri, akü XT60'tan ayrılmadıkça gerilimlidir: ana anahtar da mantar da bu kolu kesmez",
+     "F5 şarj pimleri sigortadan sonra gerilimli"),
     # F7c (D-12): XL4016 ayarı ve PC817 ölçümü kartların takıldığı adımda da yazar
     ("B3", r"Kartlar takılmadan tezgâhta.*XL4016 A / B", "B3 XL4016 tezgâhta ayar"),
     ("B5a", r"Kartlar takılmadan tezgâhta.*XL4016 C", "B5a XL4016 C tezgâhta ayar"),
@@ -127,6 +149,17 @@ ZORUNLU = [
     ("K2", r"1N5819: anot hub \(Pi\)\s+tarafında, katot ESP32", "1N5819 yönü"),
     ("K2", r"regülatörü \(LM2577 \+ LM2596\) ekrana bağlanmadan", "göğüs regülatörü 12 V ayarı"),
     ("F3", r"regülatör çıkışını yeniden ölç", "göğüs 12 V fişten önce ölçüm"),
+    # F7d (D-5, D-9): göğüs 2 A akü ayrıkken; ölçüm sırası açık; K11 b'de ölçümsüz fiş yok
+    ("F3", r"Akü XT60 ayrık, ana anahtar kapalıyken göğüs ekranı mini 2 A", "F3 göğüs 2 A akü ayrıkken"),
+    ("F3", r"Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç", "F3 ölçüm: akü ana anahtar kapalıyken"),
+    ("F3", r"Bitince ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök", "F3 ölçüm sonu: ana anahtar, akü, uçlar"),
+    ("F3", r"K11 b[^.]*ölçülemez\. 12 V fişini bu adımda takma", "F3 K11 b: ölçülmeden fiş takılmaz"),
+    ("F3", r"DC V kademesine", "F3 regülatör ölçümü DC V"),
+    # F7d düzeltme 1 (F7d-kontrol D-4): K11 a ölçümünden önce takı ve gerilimli fiş ucu
+    ("F3", r"Ölçümden önce saat, yüzük, bileklik çıkar", "F3 ölçümden önce saat, yüzük, bileklik"),
+    ("F3", r"fişin metal ucunu bantla yalıt", "F3 ölçümde 12 V fiş ucu yalıtılı"),
+    # F7d düzeltme 1 (F7d-kontrol O-2): şarj kolu akü XT60'ının robot tarafından
+    ("K1", r"Kolu akü XT60'ının robot tarafından, ana hattan al", "K1 şarj kolu XT60'ın robot tarafından"),
 ]
 
 # 6) Yasak talimat kalıpları: (ad, desen, olumsuz biçim deseni). Desen cümlede (. ; ! ? ve satır sonuyla bölünür) aranır, büyük / küçük
@@ -137,15 +170,32 @@ _FIIL = _KOK + r"\w*"
 _FIIL_OLUMSUZ = (r"(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|yap)(?:ma|me)(?:z|dan|den|yın|yin|yınız|yiniz|malı|meli)?"
                  r"|(?:bağla|tak|sök|çıkar|kes|değiştir|yap)(?:ıl|il|ul|ül)?(?:maz|mez)")
 _OLUMSUZ_GENEL = r"\w+(?:ma|me)(?:z|dan|den|yın|yin|yınız|yiniz|malı|meli)?|\w+(?:maz|mez)"
+# F7d (D-7): önek ile fiil arasındaki pencere yalnız enerjiyi bitiren ifadede kesilir (virgül, "ve" kesmez).
+# F7d düzeltme 1 (F7d-kontrol O-1): çıplak sıra bağlacı ("sonra", "bitince", "ardından") kesmez ("Ana anahtar açıkken birkaç saniye
+# sonra … tak" yakalanır); olumsuz ekli biçim ("ayırmadan", "kapatmadan", "kesmeden") kesmez.
+_SINIR = (r"(?:\bana\s+anahtar\w*\s+kapat|\bakü\w*\s+(?:XT60\S*\s+)?ayır|\bXT60\S*\s+ayır|\benerjiyi\s+kes)(?!ma|me)")
+_PENCERE = r"(?:(?!" + _SINIR + r")[^.;!?\n]){0,120}?"
+# F7d (D-6'): köprüleme eş anlamlıları yalnız anahtarlama / besleme nesnesi bağlamında ("GND uçlarını WAGO'da birleştir" tutmaz)
+# F7d düzeltme 1 (F7d-kontrol D-2): "artı" / "eksi" yalnız ad çekim ekleriyle ve kelime sınırıyla ("artık", "eksik" tutmaz)
+_KOPRU_NESNE = (r"\b(?:mantar\w*|acil\s+stop\w*|NC|ana\s+anahtar\w*|sigorta\w*|röle\w*|kontak\w*|\d+\s*V|"
+                r"(?:artı|eksi)(?:sı|si|sını|sini|yı|yi|ya|ye|nın|nin|ları|leri|lar|ler)?)"
+                r"(?![\w])[^.;!?\n]{0,60}?")
 YASAK = [
     ("köprüleme talimatı", r"\bköprüle\w*", r"köprüle(?:n)?me(?:z|di|meli|yin|yiniz|den)?|köprülenemez"),
     ("köprü teli / jumper", r"\b(?:köprü|jumper|atlama)\s*(?:kablo|tel)\w*", r"$^"),
+    ("köprüleme (birleştir)", _KOPRU_NESNE + r"\bbirleştir\w*", _OLUMSUZ_GENEL),
+    ("köprüleme (birbirine bağla)", _KOPRU_NESNE + r"\bbirbirine\s+(?:bağla|değdir|lehimle|tuttur|kıskaçla)\w*", _OLUMSUZ_GENEL),
+    ("röleyi elle kapatma", r"\bröle\w*(?:\s+\w+){0,2}?\s+elle\s+(?:kapat|çek|bastır|kapa)\w*", _OLUMSUZ_GENEL),
     # D-2: yalnız öznesi akü olan "akü (XT60) bağlı / takılı" ("Akü ön takozu … takılı", "Akü kayışları takılı" tutmaz)
     ("akü bağlıyken iş", r"\bakü(?:yü|nün|sü)?\s+(?:XT60\S*\s+)?(?:bağlı|takılı)\w*(?:\s+(?:iken|olabilir|kalabilir|kalsın|durumda\w*))?",
      r"$^"),
     ("enerji varken bağlantı", r"\b(?:enerjili(?:yken|ken)?|enerji\s+(?:varken|açıkken|verilmişken|altında)|gerilim\s+(?:altında|varken)|"
                                r"gerilimli(?:yken)?|sigorta\w*\s+takılı(?:yken|\s+iken)|XT60\S*\s+(?:takılı|bağlı)(?:yken|\s+iken)|"
-                               r"ana\s+anahtar\s+açıkken)\b[^.;!?\n]{0,120}?\b" + _FIIL,
+                               r"ana\s+anahtar\s+açıkken|"
+                               # F7d (D-6' K5): "açtıktan / taktıktan / verdikten sonra … tak"
+                               r"ana\s+anahtar\w*\s+(?:açtıktan\s+sonra|açınca|açıldıktan\s+sonra|açılınca)|"
+                               r"akü\w*\s+(?:XT60\S*\s+)?(?:taktıktan\s+sonra|takınca|bağladıktan\s+sonra|bağlayınca)|"
+                               r"enerji\s+(?:verdikten\s+sonra|verince|verildikten\s+sonra))\b" + _PENCERE + r"\b" + _FIIL,
      _FIIL_OLUMSUZ),
     # D-1: kalıp dışı anlatımlar
     ("devre dışı bırakma", r"\bdevre\s*dışı\s*bırak\w*", _OLUMSUZ_GENEL),
