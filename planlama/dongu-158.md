@@ -39,7 +39,8 @@ tilt payı ≥ 3,0 (3,64); pan payı ≥ 2,0 (2,21); mikrofon-hoparlör ≥ 400 
 
 | Paket | Ajan | Yazdığı alan |
 |---|---|---|
-| F7b + F9b (P7.2, P9.2) | C (tek ajan, sıralı: F7b commit/push + rapor → F9b `demo_uret` + `F9b-dogrula` → commit/push + rapor → `dongu-158.md`); git yazma yalnız bu ajanda; FreeCAD, silme YOK |
+| F7c (P7.3) | C (ölçüm + 19 dosya commit + `F7c-rapor.html` + `dongu-158.md`, push; git yazma yalnız bu ajanda; FreeCAD, silme YOK) |
+| F9d (P9.4) | A | `README.md`, `planlama/d158/` eski belgeler (yalnız yol), tarama kaynağı olmayan betikler (yalnız yol), `F9d-*`; rehber/demo/`tasarim/cad/`/F7c/dongu YOK, FreeCAD YOK |
 
 - **Tasarım sırası:** her adım öncekini bozmamalı; tam çakışma taraması yalnız P6'da, bir kez.
 - **Karar gereken yerde durma:** Ahmet'in kararını isteyen madde `planlama/d158/karar-kuyrugu.md`'ye yazılır
@@ -122,8 +123,9 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
 | P7.1 | 3B rehber 158 modelinden yeniden üretilir (şu an ~%50, 1,65 m'den) | 48 + F5 adım, her adımda parça görünürlüğü doğru | P6 sonrası | ✅ (F7a: 50 adım, 1192 parça tek adımda, konsol 0; 1 düzeltme turu; 887bcfe, rapor 3946ad5) |
-| P7.2 | Yazdırılabilir sürüm + kafa (QLED, ses, hub) adımları | PDF/HTML, konsol temiz, ekran görüntüleri | P7.1 | 🔄 F7b |
-| P7.3 | Rehber kalanları (F7b B): D-10 F1 "İlk enerji" kafa (Pi) takılı değilken devreye alma yapılamaz → iki aşamalı ilk enerji; D-11 mantar testinde yalnız K1 düşer; D-12 XL4016/PC817 tezgâh ayarı B3/B5a metnine; D-1' denetim "köprüle" gibi çelişkili eklemeleri yakalamıyor; D-3 E4/K2 PDF 7,2 pt; D-6 tıklama etiketinde FreeCAD `0NN` eki; F7b açık: TVS kutbu veri sayfası, ikinci P6KE6V8A modelde/BOM'da yok, göğüs regülatörü + 2 A sigorta yeri modelde yok | Her madde kapalı ya da gerekçeli; denetim 0, 50/50 | P7.2 | ⏳ |
+| P7.2 | Yazdırılabilir sürüm + kafa (QLED, ses, hub) adımları | PDF/HTML, konsol temiz, ekran görüntüleri | P7.1 | ✅ (F7b: PDF 50 sayfa, elektrik güvenliği O-1…O-4, 2 düzeltme turu; 649885f, rapor 2d1f412) |
+| P7.3 | Rehber kalanları (F7b B): D-10 F1 "İlk enerji" kafa (Pi) takılı değilken devreye alma yapılamaz → iki aşamalı ilk enerji; D-11 mantar testinde yalnız K1 düşer; D-12 XL4016/PC817 tezgâh ayarı B3/B5a metnine; D-1' denetim "köprüle" gibi çelişkili eklemeleri yakalamıyor; D-3 E4/K2 PDF 7,2 pt; D-6 tıklama etiketinde FreeCAD `0NN` eki; F7b açık: TVS kutbu veri sayfası, ikinci P6KE6V8A modelde/BOM'da yok, göğüs regülatörü + 2 A sigorta yeri modelde yok | Her madde kapalı ya da gerekçeli; denetim 0, 50/50 | P7.2 | ✅ (F7c: ilk enerji iki aşamalı + sigorta tablosu, mantar ölçümü, yasak talimat denetimi 43/43, PDF 53 sayfa ≥ 8,1 pt, 1 düzeltme turu; commit C'de) |
+| P7.4 | F7c B düşük açıkları: D-5 F3 "enerjiyi kes" belirsiz, D-6' denetimde "birleştir/birbirine bağla" kalıpları, D-7 pencere bağlaçta kesilsin, D-8 multimetre kademesi, D-9 K11 b'de F3 ölçümsüz fiş, D-10 şarj girişi 10 A sigortası rehberde; demo "Bu sayfa hakkında" "model kopyası" → göreli bağlantı | Altısı kapalı, denetim 0, PDF ≥ 8 pt, `F9b-dogrula` 0 | F7c C sonrası | ⏳ |
 
 ### Faz F8: Sipariş ve üretim hazırlığı (sipariş verilmez)
 
@@ -140,8 +142,9 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
 | P9.1 | `proje-plani.md` takvimi: H9 (23–29 Kas) ilk sürüş sipariş verilmeden gerçekçi değil → sipariş tarihine bağlı yeni takvim + kritik yol | Her hafta satırı bir bağımlılığa bağlı | F8 ile | ✅ |
-| P9.2 | Demo sayfası 158 sayılarıyla (lale-duzeltme'de); `main`'e birleştirme yalnız onayla | Sayfa yerelde açılır, sayılar JSON ile aynı | P6 sonrası | 🔄 F9b |
-| P9.3 | Sonuç `rapor.html` + Ahmet'e özet tablo | Tüm paketlerin durumu, açık kararlar | En son | ⏳ |
+| P9.2 | Demo sayfası 158 sayılarıyla (lale-duzeltme'de); `main`'e birleştirme yalnız onayla | Sayfa yerelde açılır, sayılar JSON ile aynı | P6 sonrası | ✅ (F9b: 127 JSON anahtarı, model göreli bağlantı, 14 karar "karar bekliyor", 118.666,22 TL; a3fbcd6, rapor 8ce30ec; main birleştirme Ahmet onayında) |
+| P9.4 | Herkese açık depo temizliği: eski belgelerde yerel kullanıcı yolu, takma ad sayımı, README demo/rehber satırları; D-9 `.gitignore`, `lale158-model.js`, izlenmeyenler için karar taslakları | Yazılabilir alanda yerel yol 0, README = JSON | P7.4 ile (alan ayrı) | 🔄 F9d |
+| P9.3 | Sonuç `rapor.html` + Ahmet'e özet tablo | Tüm paketlerin durumu, açık kararlar | En son (P7.4 + P9.4 sonrası) | ⏳ |
 
 ## 4. Bilinen kararlar (P0.2 kuyruğa yazar)
 
@@ -159,6 +162,12 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 
 ## 5. Günlük
 
+- 2026-11-09 Orkestratör: F7c B'nin 6 düşük açığı + demo "model kopyası" metni P9.3'ten ayrıldı → **P7.4 (F7d)**, F7c C bitince (rehber alanı C commit'inde). Herkese açık depo temizliği → **P9.4 (F9d)** A başladı, F7c C ile paralel (alan ayrı). P9.3 sonuç raporu ikisinden sonra.
+- 2026-11-09 F7c B yeniden kontrol: **GEÇER** (O-1/O-2 kapandı: aşama 1'de açıkta gerilimli uç yok, F1 takılı değil → bara enerjisiz; PC817 #1 mantar sonrası, köprüleme riski yok). Açık düşük 6 → P9.3 açıkları: D-5 F3 "enerjiyi kes" belirsiz, D-6' "birleştir/birbirine bağla" kalıpları, D-7 pencere bağlaçta kesilmeli, D-8 multimetre kademesi, D-9 K11 b'de F3 ölçümsüz fiş, D-10 şarj girişi 10 A sigortası rehberde yok. **Faz F7 bitti** (C kaydı sürüyor). Sırada P9.3.
+- 2026-11-09 19:49 F7c A düzeltme 1: O-1 aşama 1 sigortaları kaynaktan (takılı: ana 30 A, F4 5 A, F5 2 A; takılı değil: F1 20 A, F3, A/B/C, göğüs 2 A; K1/K2 kontakları F1'den → enerjisiz, K2 tıklayabilir), göğüs 2 A F3'te, F5 aşama 2'de F1/F3/A/B/C akü ayrıkken; O-2 ölçüm PC817 #1 ↔ WAGO GND, kıskaç uyarısı; D-1 (43/43, negatif 12/12), D-2, D-3. PDF 53 sayfa/8,1 pt, 50/50, denetim 0, demo 0, `kontrol` 0, regresyon 0. B dar yeniden kontrolde.
+- 2026-11-09 F7c B: KOŞULLU (kritik 0, orta 2, düşük 4). Geçen: aşama sıraları E3/E9 ile tutarlı, PDF 52/8,1 pt, kopyada üretim 50/50, demo bayt bayt, D-6 22 vida adı geometriyle, KT-F7c-1…3 doğru. O-1 aşama 1'de hangi sigortanın takılı olduğu yazmıyor; "röle kapanmaz" yalnız yazılıma dayalı (K2 = GPIO2 LED pini); göğüs 12 V ucu gerilimli kalabilir. O-2 mantar ölçüm noktası/GND yok, kıskaç mantarı köprüleyebilir. Düzeltme 1 (+ D-1 kalıplar, D-2, D-3).
+- 2026-11-09 19:10 F7c A bitti: D-10 iki aşamalı ilk enerji (F1 kafasız: anahtar/BMS/mantar, röle kapanmaz; F5: Pi'li ön şarj + motor yön), D-11, D-12 (B3/B5a/B6a), D-1' yasak kalıp denetimi 14/14, D-3 PDF 52 sayfa en küçük 8,1 pt, D-6 FreeCAD eki 327 → 0; 50/50, denetim 0 (zorunlu 0/21), demo yeniden (yalnız parmak izi), `F9b-dogrula` 0, `kontrol` 0, regresyon 0. KT-F7c-1 TVS veri sayfası (Diodes, bant = katot; parça OBSOLETE), -2 ikinci TVS (`maliyet.json` zaten 2 adet, model/BOM 1), -3 regülatör + sigorta yeri (K11). **Kural sapması:** izlenmeyen `__pycache__` silindi. B başladı.
+- 2026-11-09 **F7b ✅ (P7.2), F9b ✅ (P9.2).** C: F7b 649885f (122) + rapor 2d1f412; F9b `demo_uret` yeniden (yalnız rehber parmak izi değişti, sayılar aynı), `F9b-dogrula` 0, a3fbcd6 (18) + rapor 8ce30ec; plan 059a849; push. Kalan: `tasarim/cad/lale158-model.js` takip dışı artık (silme/`.gitignore` Ahmet); demo "Bu sayfa hakkında" metni hâlâ "model kopyası" diyor → P9.3. **F7c (P7.3) A başladı.** Sonra P9.3.
 - 2026-11-09 F7b B son kontrol: **GEÇER** (O-4 kapandı; 50 adımda köprüleme/akülü bağlantı talimatı 0; enjeksiyon 8/9; sha1 iddiası doğru). Açık düşük 7 → yeni paket **P7.3** (D-10 ilk enerji Pi'siz, D-11, D-12, D-1', D-3, D-6). C başladı: tek ajan sıralı F7b → F9b (göreli model bağı nedeniyle) → plan.
 - 2026-11-09 18:26 F7b A düzeltme 2: K1 "enerji verilmez" (köprüleme yok, XL4016/PC817 tezgâhta), motor yön + BMS F1 sonuna; F1 "Bağlarken akü ayrık" + 6 adımlı "İlk enerji" (ön şarj K2 → 300 ms → K1, mantar testi; tekerlek adımı doğrulanmadı); ZORUNLU 15. 50/50, PDF 50, 360 px 0, denetim 0, `kontrol` 0, regresyon 0. B son kontrolde.
 - 2026-11-09 F7b B yeniden kontrol: KOŞULLU. O-1…O-3, D-1/D-2/D-4/D-5/D-7 kapandı; TVS kutbu genel kuralla doğru; 16 enjeksiyondan 12'si yakalandı; `--cikti` depoya 0 yazma. Yeni O-4 (orta): K1 madde 6 enerjili ölçüm istiyor ama mantar/ana anahtar F1'de → köprülemesiz yapılamaz, akü seçeneğinde 12 AWG uç gerilimli; F1 "akü ayrık" demiyor. **Düzeltme turu 2 (son)**: K1 tezgâh ölçümü, motor yön/BMS F1 sonrası, F1 "İlk enerji" satırı.
