@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F9c Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+h3{font-size:1rem;margin:20px 0 8px}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+figure{margin:12px 0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px}
+figure img{display:block;width:100%;height:auto;border-radius:6px;background:#fff}
+figcaption{color:var(--muted);font-size:.88rem;margin-top:8px}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F9c: sonuç raporu, ölçüm ve kayıt (P9.3)</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 09.11.2026 · dal <code>lale-duzeltme</code> · 1,58 m döngüsünün son paketi · kaynaklar: <code>F9c-brief.md</code>, <code>F9c-gunluk.md</code> (orkestratör turu ve düzeltme 1 dahil), <code>F9c-kontrol.md</code> (yeniden kontrol, düzeltme 1: GEÇER), <code>karar-kuyrugu.md</code>, <code>regresyon-son-kosu.json</code></p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<p>Asıl çıktı: <a href="sonuc-rapor.html"><b>sonuç raporu (<code>sonuc-rapor.html</code>)</b></a>. Ahmet için tek tablo özet, 36 paketin envanteri, açık kararlar, korunan değerler, sayılarla robot, takvim ve açık düşükler orada. Bu sayfa yalnız C'nin commit öncesi ölçümlerini ve kaydını özetler.</p>
+
+<div class="cards">
+  <div class="card"><div class="k">Paket envanteri</div><div class="v">36</div><div class="d">plan 36, rapor 36, tekrar / eksik 0; 33 ✅ · 1 🟡 · 1 ⛔ · 1 🔄 (bu paket)</div></div>
+  <div class="card"><div class="k">Açık karar</div><div class="v">47 / 52</div><div class="d">C'nin sayımı kuyrukla aynı; aciliyet önerisi 20 / 14 / 13</div></div>
+  <div class="card"><div class="k">Açık düşük</div><div class="v">47</div><div class="d">elektrik ve acil stop 18, diğer 29</div></div>
+  <div class="card"><div class="k">Doğrulama</div><div class="v"><span class="tag ok">0</span></div><div class="d"><code>F9c-dogrula.py</code> hata 0; yeniden üretim bayt bayt aynı</div></div>
+  <div class="card"><div class="k">Bağımsız kontrol</div><div class="v"><span class="tag ok">GEÇER</span></div><div class="d">orkestratör turu + 1 düzeltme turundan sonra; kritik 0, orta 0, yeni düşük 1 (D-11)</div></div>
+</div>
+
+<p class="note">C'nin commit öncesi koşuları (22:43–22:46, depo kökünden, <code>py -3 -B</code>, <code>PYTHONIOENCODING=utf-8</code>; FreeCAD açılmadı, süreç 0). <code>F9c-uret.py</code> çıktısı depodaki dosyanın üzerine yazılmasın diye depo dışındaki bir kopyaya yönlendirildi; demo yerinde üretildi ve önceden alınan kopyayla karşılaştırıldı. Koşulardan sonra <code>git status --porcelain</code> koşudan öncekiyle aynı; kalan headless Chrome süreci 0. Takma ad, soyad ve yerel kullanıcı yolu araması, adlar komut satırına ve hiçbir dosyaya yazılmadan, çalışma anında türetilerek yapıldı (takma ad git uzak adresinin sahibinden, soyadlar ekip tablosundan); tarayıcının kendi denetimi bir öz testle sınandı.</p>
+
+<h2>Kabul ölçütleri (C'nin ölçümleri)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Ölçüt (brief)</th><th>Ölçülen</th><th>Kaynak</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td>Her paket raporda bir kez; sayısı <code>dongu-158.md</code> ile eşit</td><td>plan 36, tablo 36, tekrar / eksik 0; her satırın durum emojisi plandakiyle aynı; döngü commit'i 66, plandaki bulunamayan hash 0, pakete bağlanamayan commit 0</td><td><code>F9c-dogrula.py</code> [5]; <code>F9c-uret.py</code> özeti</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Her sayı bir kaynağa bağlı; doğrulama 0</td><td><code>data-j</code> 81 değer, <code>data-h</code> 46 sayım, <code>data-kaynak</code> 524 öğe / 548 sayı, <code>data-satir</code> 129; bağsız sayı 0; takvim 9 / 9 satır, hücre farkı 0; P8.1 93 / 136; düşük satırları sayfa = JSON (47)</td><td><code>F9c-dogrula.py</code> [1]–[5b]</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Açık karar sayısı kuyrukla eşit</td><td>C'nin kendi sayımı: özet tablosunda 52 <code>| Kn |</code> satırı (benzersiz 52), durumu <b>açık</b> olan 47; gövdede 52 <code>## K</code> başlığı, 5'i KAPANDI; kuyruğun "Açık: 47 … Kapandı: 5 … Toplam 52 madde" satırı aynı. Raporun tablosu 47</td><td><code>karar-kuyrugu.md</code>; <code>F9c-dogrula.py</code> [6]</td><td><span class="tag ok">GEÇER</span> (47 / 52)</td></tr>
+<tr><td>Bağlantılar 0 kırık</td><td>göreli 71 (benzersiz 33), kırık 0; sayfa içi çapa 10, hedefsiz 0; dış bağlantı 0</td><td><code>F9c-dogrula.py</code> [7]</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Konsol 0, 360 px 0</td><td>headless Chrome, <code>file://</code>: 1400 px ve 360 px'te konsol hatası 0, taşan öğe 0; 360 px'te innerWidth = scrollWidth = clientWidth = 360</td><td><code>F9c-dogrula.py</code> [9]</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Yeniden üretim bayt bayt aynı</td><td><code>F9c-uret.py</code> (çıktı depo dışına): 133.566 bayt, sha256 <code>7a2fe2108095</code>; depodaki <code>sonuc-rapor.html</code> ile <code>cmp</code> fark 0</td><td>C, 22:44</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Demo bayt bayt aynı; F9b 0</td><td><code>demo_uret.py</code> çıkış 0 (127 sayı anahtarı, 14 karar, 153 kalem, 1192 düğüm); önceki kopyayla <code>cmp</code> fark 0, sha256 <code>e0cc5ff4e5a7</code>. <code>F9b-dogrula.py --tarayicisiz</code> çıkış 0, "GECER (hata 0)"</td><td>C, 22:45</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>carpisma_kos.py kontrol</code></td><td>çıkış 0 ("izlenen 17 dosyanin ozetleri kayitla ayni")</td><td>C, 22:43</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>regresyon.py --yazma</code></td><td>çıkış 0, 10 / 10 "aynı" (tablo aşağıda)</td><td>C, 22:43:45; taban 14:30:50</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Takma ad, soyad, yerel yol, artifact adresi</td><td>commit listesinin 20 dosyasında 0 (10 PNG'nin baytları ve metin parçaları dahil); 1. commit'in staged içeriğinde 17 dosyada 0, 2. commit'in staged içeriğinde 2 dosyada 0. <code>F9c-dogrula.py</code> [8] ayrıca 7 dosyada 0</td><td>C, çalışma anında türetilen adlar</td><td><span class="tag ok">GEÇER</span></td></tr>
+</tbody>
+</table></div>
+
+<h3>Ölçümler: komut ve çıkış kodu</h3>
+<div class="tbl"><table>
+<thead><tr><th>#</th><th>Komut</th><th>Çıkış</th><th>Sonuç</th></tr></thead>
+<tbody>
+<tr><td class="kod">1</td><td><code>py -3 -B tasarim/freecad/carpisma_kos.py kontrol</code></td><td class="n">0</td><td>17 özet kayıtla aynı</td></tr>
+<tr><td class="kod">2</td><td><code>py -3 -B planlama/d158/regresyon.py --yazma</code></td><td class="n">0</td><td>GEÇER, kötüleşen yok, dosya yazılmadı</td></tr>
+<tr><td class="kod">3</td><td><code>F9c-uret.py</code> (<code>main()</code>, <code>CIKTI</code> depo dışına) + <code>cmp</code></td><td class="n">0 / 0</td><td>36 paket (✅ 33, 🟡 1, ⛔ 1, 🔄 1), 66 commit, karar 52 / açık 47; faz F0 7, F1 3, F2 4, F3 2, F4 8, F5 1, F6 3, F7 3, F8 12, F9 4; bayt bayt aynı</td></tr>
+<tr><td class="kod">4</td><td><code>py -3 -B planlama/d158/F9c-dogrula.py</code> (tarayıcı dahil; <code>TAKMA_AD</code> / <code>SOYADLAR</code> ortam değişkeniyle, değerler basılmadan)</td><td class="n">0</td><td>"SONUÇ: GEÇER (hata 0)"; görüntü yazılmadı (<code>--goruntu</code> yok)</td></tr>
+<tr><td class="kod">5</td><td><code>py -3 -B tasarim/cad/demo_uret.py</code> + <code>cmp</code></td><td class="n">0 / 0</td><td>demo değişmedi</td></tr>
+<tr><td class="kod">6</td><td><code>py -3 -X utf8 -B planlama/d158/F9b-dogrula.py --tarayicisiz</code></td><td class="n">0</td><td>"GECER (hata 0)"; 1,65 eşleşmesi 12, hepsi gömülü <code>maliyet.json</code> kopyasında (bilinen, KT-F9b-3)</td></tr>
+<tr><td class="kod">7</td><td>Karar kuyruğu sayımı (<code>grep</code>)</td><td class="n">0</td><td>açık 47 / toplam 52</td></tr>
+<tr><td class="kod">8</td><td>Ad / yol / artifact taraması (çalışma ağacı, staged, PNG)</td><td class="n">0</td><td>20 + 17 + 2 dosya, hepsi 0</td></tr>
+<tr><td class="kod">9</td><td><code>sha256sum karar-kuyrugu.md Robot-Tasarim-Demosu.html</code></td><td class="n">0</td><td><code>27e97f88e0ac</code>, <code>e0cc5ff4e5a7</code>: B'nin yeniden kontrolündeki değerlerle aynı</td></tr>
+</tbody>
+</table></div>
+
+<h3>Regresyon değerleri (<code>regresyon.py --yazma</code>, 22:43:45)</h3>
+<div class="tbl"><table>
+<thead><tr><th>Değer</th><th>Taban</th><th>Şimdi</th><th>Eşik</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td><code>boy_mm</code></td><td class="n">1580</td><td class="n">1580</td><td class="n">1580 ± 0,05</td><td>aynı</td></tr>
+<tr><td><code>cakisma_kafa_ici</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>cakisma_kabuk_ici</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>cakisma_kabuk_x_iskelet</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>cakisma_ev_pozu</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>rampa_yuksuz</code></td><td class="n">1,519</td><td class="n">1,519</td><td class="n">≥ 1,5</td><td>aynı</td></tr>
+<tr><td><code>tilt_payi</code></td><td class="n">3,64</td><td class="n">3,64</td><td class="n">≥ 3</td><td>aynı</td></tr>
+<tr><td><code>pan_payi</code></td><td class="n">2,21</td><td class="n">2,21</td><td class="n">≥ 2</td><td>aynı</td></tr>
+<tr><td><code>mik_hoparlor_mm</code></td><td class="n">574,3</td><td class="n">574,3</td><td class="n">≥ 400</td><td>aynı</td></tr>
+<tr><td><code>sy8205_x_usb_mm3</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+</tbody>
+</table></div>
+<p class="note">Sonuç: "GEÇER (hepsi okundu, kötüleşen yok)". Döngü başıyla karşılaştırma sonuç raporunda: 10 değerin 9'u döngü başıyla aynı, rampa payı 1,517 → 1,519 (P1.1, iyileşme).</p>
+
+<h2>Düzeltme turları</h2>
+<div class="tbl"><table>
+<thead><tr><th>Tur</th><th>Girdi</th><th>Yapılan (A)</th><th>Sonuç</th></tr></thead>
+<tbody>
+<tr><td class="kod">İlk tur</td><td>Brief (P9.3)</td><td>Rapor <code>F9c-uret.py</code> ile üretildi, <code>F9c-dogrula.py</code> 0. Tutarsızlıklar günlükte "orkestratöre" diye yazıldı (§7, 9 madde)</td><td>açık karar 45 / 50</td></tr>
+<tr><td class="kod">Orkestratör turu</td><td>Orkestratörün altı kararı (A'nın düzeltme turu 1, günlük §11)</td><td>(1) <code>dongu-158.md</code> son C ajanında commit'lenir, rapor çalışma ağacını esas alır. (2) §1 rampa metni orkestratörce düzeltildi. (3) KT-F7c-2 / -3 kuyruğa K51, K52 olarak girdi (55 ekleme, 1 değişen satır). (4) <code>demo_uret.py</code> koşuldu; yalnız gömülü kuyruk izi değişti (<code>ba78d2666dfe</code> → <code>27e97f88e0ac</code>). (5) P5.3 = F5 + F5b. (6) Artifact adresi yazılmaz</td><td>açık karar 47 / 52; K51, K52 A grubunda</td></tr>
+<tr><td class="kod">İlk kontrol (B)</td><td>A'nın orkestratör turu sonrası çıktısı</td><td>—</td><td><span class="tag wait">KOŞULLU</span>: kritik 0, orta 2 (O-1 takvimin 9 satırından 3'ü düşmüş; O-2 KT-F7c-1 elektrik listesinde yok), düşük 10 (D-1 … D-10)</td></tr>
+<tr><td class="kod">Düzeltme 1</td><td>O-1, O-2, D-1 … D-10 (A'nın düzeltme turu 2, günlük §12)</td><td>O-1: takvim döngüsü ayraç satırını atlıyor, boş hücreyi koruyor; 9 / 9 satır, sonuç cümlesi tam alıntı. O-2: <code>F9c-dusukler.json</code>'a KT-F7c-1 (elektrik 17 → 18, toplam 47). D-1: [5b] bağımsız denetimler (takvim, P8.1, düşükler, KT kapsamı). D-2: P8.1 94 → 93. D-3: K47 / K48 / K49 "önerilen varsayılan". D-4: K3 C → B. D-5 … D-10 metin ve atıf düzeltmeleri. 10 PNG yenilendi</td><td>—</td></tr>
+<tr><td class="kod">Yeniden kontrol (B)</td><td>Düzeltme 1</td><td>—</td><td><span class="tag ok">GEÇER</span>: O-1, O-2 kapandı; D-1 … D-10 kapandı ya da sınırıyla yazıldı. Bozma testleri: 8 bozmanın 8'i yakalandı, tutarlı silme (3d) yakalanmadı → yeni düşük D-11. Kritik 0, orta 0</td></tr>
+</tbody>
+</table></div>
+
+<h2>Açık düşük ve sonraki tura bırakılanlar</h2>
+<p>Hiçbiri commit'i engellemiyor. Bugünkü rapor doğru; bunlar denetimin ve belgelerin sınırları.</p>
+<ol class="list">
+<li><b>D-11</b> (düşük, yeni; B'nin yeniden kontrolü): <code>F9c-dogrula.py</code> [5b] bir KT kodunu "karşılandı" saymak için kodun düşük JSON'unda, kuyrukta ya da günlük §6'da <i>herhangi bir yerde</i> geçmesini yeterli buluyor. KT-F7c-1 §6'da "satır olarak eklendi" açıklamasıyla geçtiği için satır sayfadan ve JSON'dan tutarlı biçimde silinince denetim 0 dönüyor (test 3d). Yani O-2 türünden bir eksik bugün de yakalanmazdı. Öneri: §6'da ayrı bir "dışarıda bırakılanlar" listesi aransın ya da açık düşük için JSON'un <code>kod</code> alanına bakılsın. Sonraki pakette.</li>
+<li><b>KT-F9b-3</b> (iş, karar değil; sahibi <code>maliyet.json</code>): eski metinler (CadQuery / 125 cm notu, 1,65 m ölçülerine dayanan 8 kalem notu), Nextion'a dayanan kalemler ve kuyrukla çakışan eski K numaraları (ör. <code>maliyet.json</code>'daki "K3" akü). Değişince <code>demo_uret.py</code> koşulur. Bugün <code>F9b-dogrula.py</code>'nin 12 "1,65" eşleşmesi bu gömülü kopyadan.</li>
+<li><b>KT-F9b-4</b> (iş, karar değil; sahibi belge sahibi): depodaki <code>CLAUDE.md</code> 12–13. satırlar, <code>README.md:21</code> ve <code>proje-plani.md:235</code> eski demo tarifini (<code>robot_cad.py</code> / <code>viewer-template.html</code>) taşıyor; demo artık <code>demo_uret.py</code> ile 1,58 m kaynaklardan üretiliyor. <code>CLAUDE.md</code>'de K25 da açık; ikisi birlikte düzeltilebilir.</li>
+</ol>
+<p class="note">KT-F9b-3 ve KT-F9b-4 orkestratör kararıyla düşük tablosuna alınmadı (sayım 47 korunuyor); gerekçe <code>F9c-gunluk.md</code> §6 ve §7 madde 9. Ayrıca günlükte (§7 madde 6): demonun karar listesi <code>demo_uret.py</code>'deki <code>KARARLAR</code> sabitinden geliyor (14 madde) ve K50, K51, K52'yi göstermiyor; eklemek betiği düzenlemeyi gerektirir. Doğrulamanın sınırlı denetimleri (grup sayıları, <code>data-kaynak</code> alt dize araması, <code>data-satir</code> yalnız aralık) günlük §12'de.</p>
+
+<h2>Görüntü</h2>
+<figure><img src="F9c-goruntu-1400-ust.png" alt="Sonuç raporunun üst kısmı, 1400 px: başlık, bölüm bağlantıları, altı özet kartı (paket 36, açık karar 47 / 52, korunan değerler 10 / 10, boy 1.580 mm, maliyet 118.666,22 TL, commit 66) ve Ahmet için faz özeti tablosu"><figcaption>Sonuç raporu, 1400 px üst kısım (A'nın düzeltme 1 koşusu). Özet kartları ve Ahmet için faz tablosu: faz, durum, ana sonuç, açık karar. 360 px görüntüleri ve öbür bölümler <code>F9c-goruntu-*.png</code>.</figcaption></figure>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th><th>Dosya</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>58238f7</code></td><td>Sonuç raporu ve Ahmet'e özet: <code>sonuc-rapor.html</code>, <code>F9c-uret.py</code>, <code>F9c-dogrula.py</code>, <code>F9c-dusukler.json</code>, <code>F9c-brief.md</code>, <code>F9c-gunluk.md</code>, <code>F9c-kontrol.md</code>, 10 PNG</td><td class="n">17</td></tr>
+<tr><td class="kod"><code>a209e30</code></td><td>Karar kuyruğu K51–K52 ve demo kuyruk izi: <code>karar-kuyrugu.md</code>, <code>Robot-Tasarim-Demosu.html</code></td><td class="n">2</td></tr>
+<tr><td class="kod">bu rapor</td><td><code>F9c-rapor.html</code> (ayrı commit; hash'i <code>dongu-158.md</code> P9.3 satırında)</td><td class="n">1</td></tr>
+<tr><td class="kod">plan</td><td><code>dongu-158.md</code>: P9.3 ✅, kilit satırı silindi (döngü sonu)</td><td class="n">1</td></tr>
+</tbody>
+</table></div>
+<p class="note">Commit'ler B'nin kesin <code>git add</code> listesiyle atıldı (açık liste; <code>-A</code>, <code>.</code> ya da klasör kullanılmadı); her commit'ten önce <code>git diff --cached --stat</code> listeyle birebir. 1. commit: 17 yeni dosya, +2.677 satır; staged içerik çalışma ağacıyla bayt bayt aynı. 2. commit: 2 değişen dosya, +56 / −2. <code>dongu-158.md</code>'de C'nin kaydında yalnız iki mekanik değişiklik yapıldı (P9.3 durum hücresi ve kilit satırı); rapor yeniden üretilmedi, raporun 🔄'ı "bu paket" diye açıklanıyor. Dışarıda kalanlar: <code>FREECAD-KILIT.txt</code>, K23 (13 kabuk PNG ve <code>montaj/yerlesim-kontrol.json</code>), <code>tasarim/cad/lale158-model.js</code> (K48), <code>F5-pano-govde.txt</code>, <code>F5b-pano-govde.txt</code>, <code>lale_dongu*</code>, <code>kafa-yerlesim/kaynak/</code>, <code>raporlar/</code>, <code>tasarim/solidworks/</code>, <code>kvkk/</code>, <code>rapor/</code>, <code>tubitak-2209b/</code>.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F9c · 09.11.2026 · Commit <code>58238f7</code>, <code>a209e30</code> (<code>lale-duzeltme</code>) · <a href="sonuc-rapor.html">sonuç raporu</a>: 36 paket, açık karar 47 / 52, açık düşük 47 (elektrik 18) · doğrulama 0, yeniden üretim bayt bayt aynı · bağlantı kırık 0, konsol 0, 360 px taşma 0 · demo bayt bayt aynı, F9b 0 · Çakışma <code>kontrol</code> 0 · Regresyon <code>--yazma</code>: GEÇER, 10/10 aynı · Kaynaklar: <code>F9c-brief.md</code>, <code>F9c-gunluk.md</code>, <code>F9c-kontrol.md</code>.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
