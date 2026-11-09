@@ -37,8 +37,10 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K22 | `tasarim/solidworks/` ve hareket makrosu | **açık** | Betik + makro commit, STEP'ler dışla | P0.1 |
 | K23 | 03.11 ara çıktıları (Y2b-ivme, yerleşim kontrolü, kabuk görselleri) | **açık** | "Ara çıktı" diye commit | P0.1 |
 | K24 | G4 öncesi 11,6" raporundaki iki satır (yerel hafıza yolu + takma ad) | **açık** | G4'ten önce temizle | G4 commit'i, P0.1 |
+| K25 | Depodaki `CLAUDE.md` içindeki takma ad | **açık** | b: ad değişimi (3 satır) | P4.5 kabul ölçütü |
+| K26 | GitHub hesap adı (depo adresi ve Pages bağlantıları) | **açık** | a: şimdilik bırak | P4.5 kabul ölçütü (`index.html:49,92`) |
 
-**Açık: 19** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 24 madde.
+**Açık: 21** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 26 madde.
 
 ---
 
@@ -297,6 +299,8 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 - **Varsayılan:** a.
 - **Bloke:** P0.1.
 - **Durum:** açık (P0.1).
+- **Not (F4b B, 09.11.2026):** izlenmeyen `tasarim/solidworks/renkler.md:63` takma ad taşıyor; klasör depoya alınırsa önce temizlenmeli
+  (`planlama/d158/F4b-kontrol.md` madde 20).
 
 ## K23 · 03.11 ara çıktıları
 - **Soru:** `planlama/y2/Y2b-ivme.json`, `tasarim/freecad/montaj/yerlesim-kontrol.json` ve 13 kabuk görseli 03.11 koşusundan (QLED, çerçeve
@@ -321,6 +325,45 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 - **Varsayılan:** a, G4'ten önce temizle.
 - **Bloke:** G4 commit'i (P0.1).
 - **Durum:** açık (F0 kontrolü, `planlama/d158/F0-kontrol.md` B1.5 ve düzeltme maddesi 5).
+
+## K25 · Depodaki `CLAUDE.md` içindeki takma ad
+- **Soru:** Depo kökündeki `CLAUDE.md` (yapay zekâ oturumları için bağlam dosyası) takma adı 3 satırda taşıyor: satır 3 (robot adının
+  kimin kararı olduğu), satır 4 (proje sahibinin tanıtımı: mekanik, montaj, kablaj, SolidWorks; yazılımı yapay zekâyla yazıyor), satır 22
+  (projenin takma adlı not deposu oturumundan yönetildiği, tercih tarihi 26 Eylül 2026). P4.5a bu dosyaya dokunmadı
+  (`planlama/d158/F4b-gunluk.md` §4 ve §5 K-F4b-1).
+- **Seçenekler:**
+  a) Olduğu gibi bırak.
+  b) Ad değişimi: satır 3'te "adı Ahmet'in kararı", satır 4'te "Proje sahibi Ahmet Yorulmaz;", satır 22'de "kişisel not deposu (vault)
+     oturumundan yönetiliyor (Ahmet'in tercihi, 26 Eylül 2026)".
+  c) Dosyayı izlemeden çıkar (`git rm --cached` + `.gitignore`), yerelde kalsın.
+- **Etki:** a) herkese açık depoda 3 satır takma ad kalır; P4.5 kabul ölçütü hiçbir zaman tam temiz olmaz; ajan davranışı değişmez.
+  b) depo temizlenir; bu klasörde açılan ajanlar sahibine "Ahmet" diye atıf yapar (resmî ad kuralıyla uyumlu); not deposunun kendi
+  talimatları ayrı dosyada olduğundan oradaki oturumlar etkilenmez; risk düşük. c) herkese açık son sürümde görünmez, ama ekip üyelerinin
+  (Efe) ajanları bu bağlamı kaybeder; silme sayıldığı için ayrıca onay ister.
+- **Git geçmişi:** üç seçenekte de git geçmişi eski metni taşır (P4.5'teki bütün dosyalar için geçerli); geçmişten silmek geçmişi yeniden
+  yazmayı gerektirir (`dongu-158.md` §2 "Yapılmayacaklar": onaysız yapılmaz). Ayrı karar konusu.
+- **Önerilen varsayılan:** b (`F4b-gunluk.md` §5 K-F4b-1; B kontrolü Koşul 2 ile satır metinleri netleşti: `F4b-kontrol.md` madde 18).
+- **Bloke:** P4.5 kabul ölçütü (`git grep -i <takma ad>` yalnız tarihçe / hafıza dosyalarında).
+- **Durum:** açık.
+
+## K26 · GitHub hesap adı (depo adresi ve Pages bağlantıları)
+- **Soru:** `tasarim/freecad/index.html:49` ("Tek sayfa özet") ve `:92` ("GitHub deposu") bağlantıları deponun GitHub adresine gidiyor;
+  adresin hesap kısmı, yani hesap adı takma adı içeriyor. Deponun `origin` adresi ve Pages adresi de aynı hesap adını taşıyor; bu iki
+  satır depo adresinin kendisinden fazlasını açığa çıkarmıyor. Yayındaki hâli `main`'de (Pages); bu dalda değiştirmek siteyi birleştirmeye
+  kadar etkilemez (`F4b-gunluk.md` §5 K-F4b-2; `F4b-kontrol.md` madde 14).
+- **Seçenekler:**
+  a) Şimdilik bırak.
+  b) Göreli bağlantı (`OZET.md`, `./`).
+  c) Yer tutucu.
+  d) Depoyu hesap adında takma ad olmayan bir hesaba / organizasyona taşı ya da hesap adını değiştir.
+- **Etki:** a) bağlantılar çalışır; hesap adı zaten depo / Pages adresinde; P4.5 kabul listesinde gerekçeli kapsam dışı.
+  b) hesap adı bu dosyadan kalkar; ama Pages'te `.md` dosyası Jekyll ile işlenirse `OZET.md` bağlantısı 404 olabilir, "Kaynak dosyalar"
+  bağlantısı GitHub kod görünümü yerine site klasörüne gider; denenmeli. c) bağlantılar kırılır; önerilmez. d) tek kalıcı çözüm; `origin`,
+  Pages adresi ve paylaşılmış bağlantılar değişir (GitHub depo web / git bağlantılarını yönlendirir; **Pages adresi yönlendirilmez**,
+  paylaşılmış site linkleri kırılır: GitHub belgesi "Transferring a repository", `F4b-kontrol.md` madde 19).
+- **Önerilen varsayılan:** a, şimdilik bırak (`F4b-gunluk.md` §5 K-F4b-2).
+- **Bloke:** P4.5 kabul ölçütü (`index.html:49,92`).
+- **Durum:** açık.
 
 ---
 

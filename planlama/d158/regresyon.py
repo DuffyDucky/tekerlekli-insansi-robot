@@ -5,6 +5,9 @@ Yalnız standart kütüphane. Kullanım (depo kökünden ya da herhangi bir yerd
 
     py -3 planlama/d158/regresyon.py            # ölç, tabanla karşılaştır, sonucu yaz
     py -3 planlama/d158/regresyon.py --yazma    # ölç ve karşılaştır, hiçbir dosyaya yazma
+    py -3 planlama/d158/regresyon.py --help     # (ya da -h) bu metni bas, ölçme, hiçbir dosyaya yazma, çıkış 0
+
+Başka her argüman (tanımsız bayrak) hata: mesaj basılır, ölçülmez, hiçbir dosyaya yazılmaz, çıkış 2.
 
 Dosyalar:
     regresyon.json           kabul edilmiş TABAN. Yalnız çıkış 0 olan koşu günceller; kötüleşen ya da okunamayan
@@ -224,8 +227,19 @@ def _fmt(x):
 def main(argv):
     try:
         sys.stdout.reconfigure(encoding="utf-8")  # Windows konsolunda Türkçe harfler bozulmasın
+        sys.stderr.reconfigure(encoding="utf-8")
     except (AttributeError, ValueError):
         pass
+    # Bayraklar her şeyden önce: --help/-h ya da tanımsız bayrak ölçmeden ve hiçbir dosyaya yazmadan çıkar
+    # (08.11: tanınmayan bayrakla normal koşu tabanı yeniden yazmıştı).
+    if "--help" in argv or "-h" in argv:
+        print(__doc__)
+        return 0
+    tanimsiz = [a for a in argv if a != "--yazma"]
+    if tanimsiz:
+        print("Hata: tanımsız argüman: %s. Geçerli: --yazma, --help / -h. Hiçbir dosyaya yazılmadı." % " ".join(tanimsiz),
+              file=sys.stderr)
+        return 2
     yazma_yok = "--yazma" in argv
     onceki_kayit = None
     if os.path.isfile(CIKTI):

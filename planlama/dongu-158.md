@@ -40,7 +40,7 @@ tilt payı ≥ 3,0 (3,64); pan payı ≥ 2,0 (2,21); mikrofon-hoparlör ≥ 400 
 | Paket | Ajan | Yazdığı alan |
 |---|---|---|
 | F2 (P2.1, P2.2) | A | `tasarim/freecad/omuz/`, `arayuz.py` (yalnız omuz bloğu), `kabuk/` (durdurucu kabukta ise), `carpisma-bolum/omuz.json` + `carpisma-sonuc.json`, `planlama/d158/F2-*`, **FreeCAD makinesi** |
-| F4a (P4.1, P4.2, P4.4) | C kayıt (+ `uygulama-notu.md:115`, `karar-kuyrugu.md` K4/K10 notları) | `planlama/adim3/elektrik.md`, `planlama/maliyet.json`, `README.md`, `OZET.md`, `tasarim/freecad/README.md`/`OZET.md`, `planlama/proje-plani.md` (yalnız başlık sayıları), `planlama/d158/F4a-*`; FreeCAD yok; `karar-kuyrugu.md`'ye yazmaz |
+| F4b (P4.5a + regresyon.py bayrak koruması) | C kayıt (+ `karar-kuyrugu.md` K25/K26) | takma ad geçen dosyalar **hariç**: tarama kaynakları (`carpisma_kos.py` KAYNAK + `*_lib.py`), `kod/`, `CLAUDE.md`, F2 alanı, izlenmeyen `raporlar/`; `planlama/d158/regresyon.py`, `F1a-kontrol.md`, `F5b-gunluk.md`, `planlama/d158/F4b-*`; FreeCAD yok |
 
 - **Tasarım sırası:** her adım öncekini bozmamalı; tam çakışma taraması yalnız P6'da, bir kez.
 - **Karar gereken yerde durma:** Ahmet'in kararını isteyen madde `planlama/d158/karar-kuyrugu.md`'ye yazılır
@@ -97,11 +97,11 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
-| P4.1 | `elektrik.md`: hub yeri (gövde, üst arka göğüs servis kapağı içi; K5), boyun demeti (5 kablo: kafa 12 V, tilt servo, göğüs HDMI, hub uzatması, hoparlör; dokunmatik ve ESP32 USB gövdedeki hub'dan, göğüs 12 V tabandan — F4a A düzeltmesi), USB cihaz listesi (6. cihaz Efe cevabına göre); ses: PAM8403 + USB ses kartı, MAX98357A satırları :12, 21, 266 ve PAM besleme noktası (K10) | Belgedeki her sayı bir JSON'a ya da kaynağa bağlı | F1 sonrası | 🔄 |
-| P4.2 | Listede olmayan 6 kablo kalemini (USB dokunmatik ve 12 V için de 90° fiş, F1b B) aday olarak `maliyet.json`'a "koşullu" işaretle ekle (satıcı sayfası doğrulanmadan fiyat yazılmaz) | Genel toplam ve koşullu toplam ayrı | P4.1 | 🔄 |
+| P4.1 | `elektrik.md`: hub yeri (gövde, üst arka göğüs servis kapağı içi; K5), boyun demeti (5 kablo: kafa 12 V, tilt servo, göğüs HDMI, hub uzatması, hoparlör; dokunmatik ve ESP32 USB gövdedeki hub'dan, göğüs 12 V tabandan — F4a A düzeltmesi), USB cihaz listesi (6. cihaz Efe cevabına göre); ses: PAM8403 + USB ses kartı, MAX98357A satırları :12, 21, 266 ve PAM besleme noktası (K10) | Belgedeki her sayı bir JSON'a ya da kaynağa bağlı | F1 sonrası | ✅ |
+| P4.2 | Listede olmayan 6 kablo kalemini (USB dokunmatik ve 12 V için de 90° fiş, F1b B) aday olarak `maliyet.json`'a "koşullu" işaretle ekle (satıcı sayfası doğrulanmadan fiyat yazılmaz) | Genel toplam ve koşullu toplam ayrı | P4.1 | ✅ |
 | P4.3 | Baskı listesi: hub takozlu kapak, 2 yeni kap parçası, VESA taşıyıcı malzemesi (PETG-CF) | `baski_listesi_guncelle.py` ile model aynı | P4.1 | ⏳ |
-| P4.4 | README 1,65 → 1,58 m, `OZET.md`, `planlama/y2/Y2b-*.json` eski sayılar, `proje-plani.md` başlık sayıları | Depoda "1,65 m ana tasarım" ifadesi yalnız tarihçede | P4.1 | 🔄 |
-| P4.5 | Takma ad temizliği: kodda ~43 dosya (GitHub'a gidiyor) → "Ahmet Yorulmaz" ya da nötr | `git grep -i <takma ad>` yalnız tarihçe/hafıza dosyalarında | P4.4 | ⏳ |
+| P4.4 | README 1,65 → 1,58 m, `OZET.md`, `planlama/y2/Y2b-*.json` eski sayılar, `proje-plani.md` başlık sayıları | Depoda "1,65 m ana tasarım" ifadesi yalnız tarihçede | P4.1 | ✅ |
+| P4.5 | Takma ad temizliği: kodda ~43 dosya (GitHub'a gidiyor) → "Ahmet Yorulmaz" ya da nötr | `git grep -i <takma ad>` yalnız tarihçe/hafıza dosyalarında | P4.4 | 🔄 (P4.5a: tarama kaynakları, `kod/`, `CLAUDE.md` hariç; onlar P6.1 öncesi) |
 
 ### Faz F5: Yazılım hizası (Efe'nin alanı; biz yalnız hazırlarız)
 
@@ -129,7 +129,7 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
-| P8.1 | 158 için güncel sipariş paketi: hocadaki listeyle fark, satıcı sayfası ve stok doğrulaması, her kalem için ikinci satıcı | Fark tablosu + toplam; doğrulanmayan kalem işaretli | F4 sonrası | ⏳ |
+| P8.1 | 158 için güncel sipariş paketi (`maliyet.json` 11 fiyatsız aday; 90° HDMI/micro USB adaptörleri yanlışlıkla "ses" grubunda): hocadaki listeyle fark, satıcı sayfası ve stok doğrulaması, her kalem için ikinci satıcı | Fark tablosu + toplam; doğrulanmayan kalem işaretli | F4 sonrası | ⏳ |
 | P8.2 | Baskı partileri (Parti 0–4): sıra, filament kg, süre, önce basılacak test kuponları | Partilerin toplamı baskı listesine eşit | P8.1 | ⏳ |
 | P8.3 | Ölçüm ve test kâğıtları (ekip yapacak): JGB37 durma torku, QLED Power–Touch VBUS (Pi'ye takmadan), kafa 5 V akımı, PAM akımı, hub girişi gerilimi, akustik (Ø3 delik, yankı, servo gürültüsü) | Her test: amaç, malzeme, adım, kayıt tablosu, geçer sınırı | F1 ile | ✅ |
 
@@ -158,6 +158,12 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | K9 | El yükü 0,5 kg için servo değişimi mi, 100 g sınırı mı | 100 g sınırı |
 
 ## 5. Günlük
+
+- 2026-11-09 F4b B: KOŞULLU GEÇER (195 satırın hepsi yalnız ad; tarama kaynaklarıyla kesişim boş; regresyon.py testleri tekrarlandı). Koşullar: 2 günlük cümlesi + commit öncesi numstat karşılaştırması (F2 çıktı yeniden üretebilir). `yerlesim_lib.py` tarama kaynağı değil → şimdi temizlenebilir. Ek: izlenmeyen `tasarim/solidworks/renkler.md:63` takma ad (K22 notu).
+
+- 2026-11-09 F4b A bitti: 62 dosya / 197 satır (yalnız ad satırları); kalan 12 dosya: `CLAUDE.md` (karar), `kod/…eklem_sinirlari.json` (P6.1 üretim), 9 tarama kaynağı (P6.1), `tasarim/freecad/index.html` (GitHub hesap adı bağlantıda; karar). regresyon.py: --help/-h 0, tanımsız bayrak 2, dosyaya yazmıyor (sha aynı). B kontrolde. F2 omuz taraması sürüyor.
+
+- 2026-11-09 **F4a ✅** C: 79fb383 (13 dosya), rapor 233ce00 push; maliyet 102.919,71 / koşullu 108.208,77. F4b A (P4.5a takma ad temizliği, tarama kaynakları hariç + regresyon.py --help koruması) başladı. P4.3 F2'yi bekliyor (durdurucu yeni baskı parçası).
 
 - 2026-11-09 F4a B: KOŞULLU GEÇER (tüm sayılar kaynakla birebir; hub/boyun A haklı; 6 metin koşulu C'de: tilt ±13 tasarım / kod ±20 çerçevesi, F3 bitti, K2 açık listede, K14 işareti, 78.000 TL koşulu). K10 "sınırda değil" ölçülmeden yazılmaz.
 
