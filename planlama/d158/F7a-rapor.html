@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F7a Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+h3{font-size:1rem;margin:20px 0 8px}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+figure{margin:12px 0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px}
+figure img{display:block;width:100%;height:auto;border-radius:6px;background:#fff}
+figcaption{color:var(--muted);font-size:.88rem;margin-top:8px}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.figs figure{margin:0}
+.figs figure img{max-height:520px;object-fit:contain}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F7a: 3B montaj rehberi 1,58 m modelinden (P7.1)</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 09.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>F7a-brief.md</code>, <code>F7a-gunluk.md</code> (düzeltme turu 1 dahil), <code>F7a-kontrol.md</code> (yeniden kontrol: GEÇER), <code>R-gunluk.md</code>, <code>rehber/veri/rehber-veri.json</code>, <code>planlama/rehber/kontrol.json</code></p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">Adım</div><div class="v">50</div><div class="d">Hazırlık + M6 tablosunun 48 satırı + F5</div></div>
+  <div class="card"><div class="k">Parça</div><div class="v">1192 ↔ 1192</div><div class="d">Model ↔ rehber, fark 0; atanmamış 0, birden çok adımda 0, hiç görünmeyen 0</div></div>
+  <div class="card"><div class="k">Tarayıcı kontrolü</div><div class="v"><span class="tag ok">50 / 50</span></div><div class="d"><code>kontrol.json</code> (16:30); konsol hatası 0</div></div>
+  <div class="card"><div class="k">Tarama kaynakları</div><div class="v"><span class="tag ok">0 / 0</span></div><div class="d"><code>carpisma_kos.py kontrol</code> 0, <code>regresyon.py --yazma</code> 0 (10/10 aynı)</div></div>
+  <div class="card"><div class="k">Bağımsız kontrol</div><div class="v"><span class="tag ok">GEÇER</span></div><div class="d">Düzeltme turu 1'den sonra; kritik 0, orta 0, açık düşük 4 (bilgi / P7.2)</div></div>
+</div>
+
+<p class="note">C'nin commit öncesi koşuları (FreeCAD açılmadı, tarayıcıda yeniden üretim yapılmadı; rehber verisi ve görüntüler A'nın 16:27–16:30 koşusundan, B 16:36'da kendi Chrome koşusuyla 50/50 doğruladı): <code>carpisma_kos.py kontrol</code> çıkış 0 (16:39:11); <code>regresyon.py --yazma</code> çıkış 0 (16:39:20). Takma ad araması, ad komut satırına ve hiçbir dosyaya yazılmadan, çalışma anında türetilerek yapıldı (büyük / küçük harf ve Türkçe i / İ / ı biçimleri dahil).</p>
+
+<h2>Kabul ölçütleri (C'nin ölçümleri)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Ölçüt</th><th>Ölçülen</th><th>Kaynak</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td>48 + F5 adım (+ hazırlık)</td><td class="n">50 adım (0 hazırlık, A1 … H1, F5)</td><td><code>rehber-veri.json</code> <code>adimlar</code></td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Her model parçası tam bir adımda</td><td class="n">1192 parça; <code>atanmamis</code> <code>[]</code>; <code>her_parca_tek_adimda.gecti</code> true, birden çok adımda <code>{}</code>, hiç görünmeyen <code>[]</code></td><td><code>rehber-veri.json</code>, <code>kontrol.json</code> <code>ozet</code></td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Rehber ↔ mesh</td><td class="n"><code>parca_rehber</code> 1192, <code>parca_mesh</code> 1192</td><td><code>kontrol.json</code> <code>ozet</code></td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>kontrol.json</code> tüm adımlarda geçer</td><td class="n">50 / 50 (<code>sonuc[*].gecti</code> hepsi true; her adımda <code>fark</code> ve <code>eksik_mesh</code> boş)</td><td><code>kontrol.json</code>, tarih 2026-11-09 16:30</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Konsol hatası</td><td class="n">0</td><td><code>kontrol.json</code> <code>ozet.konsol_hatasi</code></td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Veri 1,58 m modelinden</td><td class="n"><code>kaynak.cad</code>: iskelet 14:27, omuz 14:27, kabuk 14:28, dirsek 14:28, taban 14:29, kafa 08:54 (09.11) = F6a modül FCStd'leri (<code>a051281</code>); <code>uretim</code> 16:28</td><td><code>rehber-veri.json</code> <code>kaynak.cad</code>; B: GLB boyu 1580,0 mm</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>carpisma_kos.py kontrol</code></td><td class="n">çıkış 0 ("izlenen 17 dosyanin ozetleri kayitla ayni")</td><td>C, 16:39:11 ve rapor push'undan önce</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>regresyon.py --yazma</code></td><td class="n">çıkış 0, 10/10 "aynı" (tablo aşağıda)</td><td>C, 16:39:20; taban 14:30:50</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Takma ad</td><td class="n">Commit'in 66 dosyasında 0 (<code>robot-glb.js</code> base64 çözülmüş hâliyle, 50 PNG dahil); staged diff'in eklenen satırlarında 0; <code>git grep --cached -il</code> yalnız kapsam dışı 3 dosya: <code>CLAUDE.md</code>, <code>kod/ortak/eklem_sinirlari.json</code>, <code>tasarim/freecad/index.html</code></td><td><code>git grep -il</code>, staged içerik</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>F6b dosyası commit'te</td><td class="n">0 (<code>git diff --cached --name-only</code> F6b / F4c / y2 / baskı / kilit / <code>dongu-158</code> / <code>karar-kuyrugu</code> taraması boş)</td><td>commit'ten önce</td><td><span class="tag ok">GEÇER</span></td></tr>
+</tbody>
+</table></div>
+
+<h3>Regresyon değerleri (<code>regresyon.py --yazma</code>, 16:39:20)</h3>
+<div class="tbl"><table>
+<thead><tr><th>Değer</th><th>Taban</th><th>Şimdi</th><th>Eşik</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td><code>boy_mm</code></td><td class="n">1580</td><td class="n">1580</td><td class="n">1580 ± 0,05</td><td>aynı</td></tr>
+<tr><td><code>cakisma_kafa_ici</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>cakisma_kabuk_ici</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>cakisma_kabuk_x_iskelet</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>cakisma_ev_pozu</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>rampa_yuksuz</code></td><td class="n">1,519</td><td class="n">1,519</td><td class="n">≥ 1,5</td><td>aynı</td></tr>
+<tr><td><code>tilt_payi</code></td><td class="n">3,64</td><td class="n">3,64</td><td class="n">≥ 3</td><td>aynı</td></tr>
+<tr><td><code>pan_payi</code></td><td class="n">2,21</td><td class="n">2,21</td><td class="n">≥ 2</td><td>aynı</td></tr>
+<tr><td><code>mik_hoparlor_mm</code></td><td class="n">574,3</td><td class="n">574,3</td><td class="n">≥ 400</td><td>aynı</td></tr>
+<tr><td><code>sy8205_x_usb_mm3</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+</tbody>
+</table></div>
+<p class="note">Sonuç: "GEÇER (hepsi okundu, kötüleşen yok)". Tarama kaynaklarına dokunulmadığının kanıtı; A'nın 15:43, 16:02, 16:32 ve B'nin 16:36 koşularıyla aynı.</p>
+
+<h2>Parça sayımı (model ↔ rehber, modül modül)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Modül</th><th>Model (FCStd, <code>m6_yukle</code> kuralı)</th><th>Rehber (<code>rehber-veri.json</code>)</th><th>Fark</th></tr></thead>
+<tbody>
+<tr><td>iskelet</td><td class="n">59</td><td class="n">59</td><td class="n">0</td></tr>
+<tr><td>omuz_sag / omuz_sol</td><td class="n">73 / 73</td><td class="n">73 / 73</td><td class="n">0</td></tr>
+<tr><td>kabuk</td><td class="n">357</td><td class="n">357</td><td class="n">0</td></tr>
+<tr><td>dirsek_sag / dirsek_sol</td><td class="n">57 / 57</td><td class="n">57 / 57</td><td class="n">0</td></tr>
+<tr><td>kafa</td><td class="n">161</td><td class="n">161</td><td class="n">0</td></tr>
+<tr><td>taban</td><td class="n">355</td><td class="n">355</td><td class="n">0</td></tr>
+<tr><td><b>Toplam</b></td><td class="n"><b>1192</b></td><td class="n"><b>1192</b></td><td class="n"><b>0</b></td></tr>
+</tbody>
+</table></div>
+<p class="note">Rehber sütunu C'nin <code>rehber-veri.json</code> sayımı; model sütunu A'nın FreeCAD dökümü ve B'nin FCStd <code>Document.xml</code> okuması (ikisi aynı). Tür: Bağlantı 893, Satın 210, Baskı 72 (baskı listesiyle aynı), Referans 13 (12 kablo şeması: K1'de 7, K2'de 5; ana anahtar düğmesi gösterimi F1), Lazer 3, İmalat 1. Gerekçeli hariç tutma (<code>m6_yukle.HARIC</code>, eskisi gibi): omuz dosyasındaki "Omuz traversi" kopyası ve "Govde kabugu yan yuzu (referans)", sağ + sol 4 nesne; asılları iskelet A3'te ve kabukta. Seçiciler yeni dosyada: <code>tasarim/freecad/rehber/rehber_secici.py</code> (rehberin kendi katmanı; <code>M6_erisim.py</code>, <code>M6_ek.py</code>, <code>M6_erisim_sonuc.json</code> ve <code>M6-montaj-sirasi.md</code> değişmedi).</p>
+
+<h3>Adım başına yeni görünen parça (<code>kontrol.json</code>)</h3>
+<p class="note">"+ alt" = o adımda robota bağlanan tezgâh alt montajı (önceki tezgâh adımlarında sayıldı). A1 29 · A2 15 · A3 15 · B1a 46 · B1 28 + alt 46 · B2a 28 · B2b 20 · B2 16 · B3 28 · B4 24 · C0 30 · B5a 39 · B5 8 + alt 39 · B6a 80 · B6 8 + alt 80 · B7 14 · K1 7 · C1 48 · D1a 22 · D1b 20 · D1c 4 · D1 16 + alt 46 · E1a 27 · E1 6 + alt 27 · E2a 2 · E2b 7 · E2c 18 · E2 14 · E3a 23 · E3 4 + alt 23 · E4 60 · K2 5 · F1 62 · F2 87 · F3 54 · F4 18 · G0 16 · G1 14 + alt 16 · G2 28 · G3 26 · G4 12 · H0a 42 · H0b 4 · H0c 28 · H0d 4 · H0e 10 · H0f 10 · H1 16 + alt 98 · F5 50. Toplam 1192.</p>
+
+<h2>Düzeltme turu 1 (F7a-kontrol O-1, O-2)</h2>
+<p>B'nin "havada parça" taraması (her adımda yeni görünen parçanın kutusu o adımda görünen başka bir parçaya 1,5 mm payla değiyor mu) tüm modelde tam 2 parça buldu. İkisi de 125 cm seçicilerinden kalmaydı. A seçiciyi ve metni düzeltti, veriyi ve 50 adımı yeniden üretti (16:27:34–16:30:57); B dar yeniden kontrolde havada parçayı 0 buldu ve başka hiçbir parçanın adımı değişmedi.</p>
+<div class="tbl"><table>
+<thead><tr><th>#</th><th>Parça</th><th>Önce</th><th>Sonra</th><th>Gerekçe ve değişiklik</th></tr></thead>
+<tbody>
+<tr><td class="kod">O-1</td><td>625ZZ rulman (iç bilezik), kafa</td><td>E2b (boyun mili), eğme çatalından önce havada</td><td><b>E2</b> (tilt servosu)</td><td>E2b seçicisindeki "ic bilezik" eşleşmesi 6808'lerle sınırlandı: <code>_ve(_ad("6808"), _ad("ic bilezik"))</code>. Parça tilt pimi M5 ve çatal yanağında (y 185…193); E2 metni zaten "Karşı yanağa 625ZZ ve M5 pimi tak".</td></tr>
+<tr><td class="kod">O-2</td><td>Ana anahtar ASW-A01 gövdesi, taban</td><td>B5a güç paneli tezgâhında, panelle teması yok</td><td><b>F1</b> (taban eteği)</td><td>Model gövdeyi etek üst plakasının altına, acil stobun karşısına koyuyor (<code>taban_parcalar.py:10</code>, <code>:392</code>, <code>:444</code>). İkinci B5a satırından çıkarıldı, F1 satırına eklendi; ilk B5a satırına (y &gt; 170) <code>_degil(_ad("Ana anahtar"))</code> eklendi. Metin: B5a'da ana anahtar yok; K1'de uçlar bırakılır; F1 madde 4 yeri "öneri, doğrulanmadı" diye işaretli.</td></tr>
+</tbody>
+</table></div>
+
+<h3>Adım sayıları önce / sonra</h3>
+<div class="tbl"><table>
+<thead><tr><th>Adım</th><th>Önce (16:02)</th><th>Sonra (16:30)</th></tr></thead>
+<tbody>
+<tr><td>12 B5a</td><td class="n">40</td><td class="n">39</td></tr>
+<tr><td>13 B5 (alt montaj)</td><td class="n">8 + alt 40</td><td class="n">8 + alt 39</td></tr>
+<tr><td>26 E2b</td><td class="n">8</td><td class="n">7</td></tr>
+<tr><td>28 E2</td><td class="n">13</td><td class="n">14</td></tr>
+<tr><td>33 F1</td><td class="n">61</td><td class="n">62</td></tr>
+</tbody>
+</table></div>
+<p class="note">Aynı turda kapananlar: D-2 (günlükteki görüntü saatleri, <code>R-gunluk.md</code> "16 görüntü"), D-6 (<code>app.js:294</code> "(erişim notuna bak)"), commit listesine <code>F7a-brief.md</code> eklendi, <code>FREECAD-KILIT.txt</code> commit dışı.</p>
+
+<h2>Göğüs ekranı F3'te (ayrı adım açılmadı)</h2>
+<div class="oneri"><b>Karar.</b> Göğüs ekranı F3 "Göğüs bantları + göğüs ekranı" adımının içinde. Gerekçe: kabul "48 + F5 adım (+ hazırlık)" diyor; ayrı bir adım 51 adım ederdi ve kabulle çelişirdi. M6 tablosunun F3 satırı zaten "Göğüs bantları + Nextion", yani göğüs ekranının yeri. B bunu "GEÇER (yorum kabul edilebilir)" diye değerlendirdi.</div>
+<ul class="list">
+<li>Sıra: bant → VESA taşıyıcı (2 × M6×18 + pul + çekiç somun, direk ön kanalı, cepten) → ekran (4 × M4×12 + pul, arkadan, üst arka kapak açıkken) → çerçeve sağ + sol (8 × M3×6 ISO 7380 → ısıl gömme).</li>
+<li>F3'teki göğüs ekranı parçaları 34: ekran, taşıyıcı, çerçeve 2, çerçeve cıvatası 8 + ısıl gömme 8, taşıyıcı M6×18 2 + pul 2 + çekiç somun 2, VESA M4×12 4 + pul 4. F3 toplamı 54.</li>
+<li>F3 "Notlar"da doğrulanmadı diye işaretli 6 madde: sıra kaynakta yok; VESA delik yeri ve vida derinliği; taşıyıcı ↔ K2 kafa 12 V hattı çakışması; port yeri; HDMI'nin boyundan, dokunmatiğin hub'dan gelmesi (teyit yok); 12 V dalı giriş noktası ve acil stop (<code>elektrik.md</code> K11).</li>
+<li>K2'ye madde 6 eklendi: göğüs ekranı HDMI + 12 V uçları göğüs hizasında bırakılır.</li>
+<li>Kaynaklar: <code>lale158/lale158_rapor.py</code> bağlantı tablosu ve açıklar, <code>lale158/kablo_yolu_ekran.py</code>, <code>planlama/adim3/elektrik.md</code>.</li>
+</ul>
+
+<h2>Adım görüntüleri (A'nın 16:28–16:30 koşusu)</h2>
+<div class="figs">
+<figure><img src="../rehber/goruntu/adim-00.png" alt="Adım 0, hazırlık: bitmiş robotun tamamı turuncu; sağda kontrol listesi, hedef 1192 parça"><figcaption>Adım 0 · Hazırlık: bitmiş robot, hedef 1192 parça; kontrol listesinde 72 baskı parçası.</figcaption></figure>
+<figure><img src="../rehber/goruntu/adim-33.png" alt="Adım 33, F1 taban eteği: etek bantları turuncu, direk ve braketler gri; parça listesinde ana anahtar gövdesi"><figcaption>Adım 33 · F1 taban eteği: 6 bant + 2 dolgu şeridi, acil stop; düzeltme turundan sonra listede ana anahtar ASW-A01 gövdesi (etek altında, dışarıdan görünmüyor).</figcaption></figure>
+<figure><img src="../rehber/goruntu/adim-35.png" alt="Adım 35, F3 göğüs bantları ve göğüs ekranı: turuncu bant, mavi ekran; sağda Notlar kutusu"><figcaption>Adım 35 · F3 göğüs bantları + göğüs ekranı: VESA taşıyıcı, ekran, çerçeve; "Notlar" kutusunda doğrulanmamış maddeler.</figcaption></figure>
+<figure><img src="../rehber/goruntu/adim-49.png" alt="Adım 49, F5 servis kapakları: robot arkadan, arka ve üst arka kapaklar ile etek H1 ve H2 turuncu"><figcaption>Adım 49 · F5 servis kapakları (arkadan kamera): arka + üst arka kapak (hub ve köpük bant içte), etek H1 / H2.</figcaption></figure>
+</div>
+<p class="note">Tüm görüntüler <code>planlama/rehber/goruntu/adim-00.png</code> … <code>adim-49.png</code> (50 dosya; 8'i 15.10'dan güncellendi, 42'si yeni). A 16 adıma, B ayrıca 12, 26, 28, 33 ve 35'e gözle baktı; C bu dört görüntüye baktı, metin ve kadraj adımla tutarlı.</p>
+
+<h2>P7.2'ye kalanlar</h2>
+<ol class="list">
+<li><b>Kafa metinleri</b> (E3a, E4): E3a metni hâlâ kamera ve 7" LCD diyor; kamera, QLED, tırnaklar, ReSpeaker, USB ses kartı, PAM8403, tabla → raf cıvataları artık E4'te görünüyor. E4 <code>baglanti_md</code>'si QLED tırnaklarını, kamera ve ReSpeaker vidalarını saymıyor. Ayrı kafa ekranı adımı istenirse adım sayısı 51 olur.</li>
+<li><b>Ses:</b> hoparlör grubu F2'de görünür, F2 metninde yok; PAM8403 → hoparlör kablosu.</li>
+<li><b>Hub:</b> 4'lü hub + köpük bant F5'te görünür, F5 metninde yok; hub uzatması, göğüs dokunmatiği ve ESP32 USB bağlantıları.</li>
+<li><b>K2 madde 3</b> ("ESP32 USB … direk ön yüzü → boyun") 05.11 kararıyla çelişiyor (ESP32 USB hub'dan çıkar). Taban kablo şeması 8'in adı ("kafada 5 V/5,5 A çevirici (Pi 5, LCD)") eski; yollar <code>taban_parcalar.py</code>'de.</li>
+<li><code>lale158/kablo_yolu_ekran.py</code> göğüs ekranı yolları rehber şemasına girmedi.</li>
+<li><b>Parça listesi gruplama:</b> aynı kod tek satırda, ilk parçanın adıyla (F2 "Gövde alt bandı sağ ×11", H0a "Dirsek servosu MG996R ×4", F5 "Arka servis kapağı ×4", F1 "Etek arka sağ ×8"). Yanıltıcı.</li>
+<li>TR sözlüğü eksikleri ("mantari", "cikis", "govdesi" ASCII kalıyor).</li>
+<li>Yazdırılabilir sürüm (madde C), telefon görünümü (390 × 844), bazı adımlarda yakın kadraj.</li>
+<li><code>M6_erisim.py</code> 1,58 m'de koşulmadı; erişim sınıfları 125 cm'den. Yeniden koşulursa adımlar <code>rehber_secici.py</code>'den alınmalı. <code>M6-montaj-sirasi.md</code> tablosu için güncelleme önerisi F7a günlüğünde (dosya değiştirilmedi).</li>
+</ol>
+
+<h2>Açıklar</h2>
+<ul class="list">
+<li><span class="tag wait">doğrulanmadı</span> Göğüs ekranı montaj sırası kaynakta yok; F3'teki sıra erişim notlarından çıkarıldı, metinde işaretli.</li>
+<li><span class="tag wait">yargı</span> Kaynakla gerekçeli ama montajda denenmemiş atamalar: ısıl gömme somunlar bağlı oldukları cıvatanın adımında (etek H1 / H2 kapak ısıl gömmeleri fiziksel olarak etek plakasında ama F5'te; kafa dikiş ısıl gömmeleri E4'te); kamera E4'te; hoparlör F2'de; hub F5'te (B D-1, bilgi).</li>
+<li><span class="tag wait">doğrulanmadı</span> Ana anahtar gövdesinin yeri modelde "öneri, tahmini zarf"; bağlantı elemanı modelde yok (F1 madde 4).</li>
+<li><span class="tag info">P7.2</span> Kafa adımlarının metni görünen parçalarla şu an uyumsuz (madde 1).</li>
+<li><span class="tag info">süreç</span> <code>FREECAD-KILIT.txt</code> OneDrive'da bir kez eski içeriğe geri döndü (15:55:39). F6b de aynı dosyayı kullanıyor: kilit dosyası OneDrive dışında olmalı ya da yazdıktan sonra birkaç saniye beklenip yeniden okunmalı (öneri; dosya bu commit'lere girmedi).</li>
+<li><span class="tag info">araç</span> <code>rehber_uret.py</code> çıktı yolları sabit (B D-5); B kendi koşusunu ayrı betikle yaptı.</li>
+</ul>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th><th>Dosya</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>887bcfe</code></td><td>Rehber 1,58 m: <code>rehber_secici.py</code> (yeni), <code>rehber_veri.py</code>, <code>rehber_metin.py</code>, <code>rehber_uret.py</code>; <code>rehber/app.js</code>, <code>index.html</code>, <code>stil.css</code>; veri (<code>rehber-veri.json/.js</code>, <code>robot.glb</code>, <code>robot-glb.js</code>); <code>kontrol.json</code>; 50 adım PNG'si; <code>R-gunluk.md</code>; <code>F7a-brief.md</code>, <code>F7a-gunluk.md</code>, <code>F7a-kontrol.md</code></td><td class="n">66</td></tr>
+</tbody>
+</table></div>
+<p class="note">Push: <code>22bcfd2..887bcfe lale-duzeltme → lale-duzeltme</code>. B'nin kesin <code>git add</code> listesiyle (4 betik + 3 web + 4 veri + <code>kontrol.json</code> + 50 PNG + <code>R-gunluk.md</code> + 3 F7a belgesi = 66); glob açılımı önceden sayıldı (<code>adim-*.png</code> 50). <code>git diff --cached --stat</code>: 66 dosya, +12.025 / −5.559 satır; F6b dosyası yok. Dışarıda: <code>FREECAD-KILIT.txt</code> (koordinasyon), <code>dongu-158.md</code> ve <code>karar-kuyrugu.md</code> (orkestratör / F6b C), F6b alanı (<code>planlama/y2/</code>, <code>baski-listesi.md</code>, <code>F4c-*</code>, <code>F6b-*</code>, <code>baski_*</code>, <code>baski-analiz.json</code>), K23 (13 kabuk PNG + <code>montaj/yerlesim-kontrol.json</code>), <code>kvkk/</code>, <code>rapor/</code>, <code>raporlar/</code>, <code>tubitak-2209b/</code>, <code>tasarim/solidworks/</code>, <code>kafa-yerlesim/kaynak/</code>, <code>lale_dongu.*</code>, <code>F5-pano-govde.txt</code>, <code>F5b-pano-govde.txt</code>. Bu rapor ayrı commit'te.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F7a · 09.11.2026 · Commit <code>887bcfe</code> (<code>lale-duzeltme</code>) · <code>kontrol.json</code> 50/50, konsol 0 · 1192 ↔ 1192 · Çakışma <code>kontrol</code> 0 · Regresyon <code>--yazma</code>: GEÇER, 10/10 aynı · Kaynaklar: <code>F7a-brief.md</code>, <code>F7a-gunluk.md</code>, <code>F7a-kontrol.md</code>, <code>R-gunluk.md</code>.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
