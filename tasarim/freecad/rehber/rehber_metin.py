@@ -115,7 +115,10 @@ ADIM = {
         baslik="Alt kat kartları ve akü",
         kontrol=["BTS7960 ve XL4016'lar burçlara üstten; kartın altı plakaya değmiyor (8 mm burç)",
                  "Akü kutupları güç paneline bakar; kayışları sık, akü kaymasın",
-                 "Aküyü şimdi BAĞLAMA: XT60 uçları ayrık, kutuplar bantlı"],
+                 "Aküyü şimdi BAĞLAMA: XT60 uçları ayrık, kutuplar bantlı",
+                 "Kartlar takılmadan tezgâhta (bu adımdan önce): XL4016 A / B 6 V, çevre 5 V'a ayarlandı; akım sınırlı tezgâh kaynağıyla "
+                 "12 V giriş, yüksüz, çıkış ölçülerek (K1 kontrolü). PC817 ölçümü de arayüz kartı takılmadan tezgâhta (B6a). Takıldıktan sonra "
+                 "ayar vidasına erişim ölçülmedi; bu sıra kaynakta yok, doğrulanmadı"],
         kablo=["XL4016 giriş/çıkış klemensleri erişilebilir kalsın (17. adım K1)",
                "Akü kayışlarının tokası yanda, kablo yolunun üstünde değil"],
         ucus=(0, 1, 0),
@@ -139,7 +142,9 @@ ADIM = {
         kontrol=["Sigorta kutusu, röle ve ana sigorta yuvası panele (M4 + naylon somun)",
                  "Ön şarj direnci (5,6 Ω) panelden ≥ 5 mm yüksekte, kablo demetine değmez (E9)",
                  "XL4016 C ve ön şarj kartı da bu panelde (Y3 yerleşimi); giriş, çıkış klemensleri erişilebilir",
-                 "Sigortaları henüz takma"],
+                 "Sigortaları henüz takma",
+                 "Kartlar takılmadan tezgâhta (bu adımdan önce): XL4016 C 6 V'a ayarlandı; akım sınırlı tezgâh kaynağıyla 12 V giriş, yüksüz, "
+                 "çıkış ölçülerek (K1 kontrolü). PC817 ölçümü de arayüz kartı takılmadan tezgâhta (B6a). Bu sıra kaynakta yok, doğrulanmadı"],
         kablo=["Panelde WAGO yıldız noktası ve sigorta kutusu girişleri erişilebilir kalsın"],
     ),
     "B5": dict(
@@ -150,7 +155,9 @@ ADIM = {
     "B6a": dict(
         baslik="Tezgâh: elektronik katı",
         kontrol=["Burçlar alttan, kartlar üstten (arayüz kartı, 2 dağıtım kartı, PCA9685, BNO055, ESP32 taşıyıcı)",
-                 "BNO055 yönü: kartın X oku robotun önüne (+z)"],
+                 "BNO055 yönü: kartın X oku robotun önüne (+z)",
+                 "Kartlar takılmadan tezgâhta (bu adımdan önce): arayüz kartındaki PC817 3,3 V'ta ölçüldü: girişe akım sınırlı tezgâh "
+                 "kaynağıyla 12 V ver ve kes, çıkış LOW < 0,4 V, HIGH > 2,5 V (`planlama/adim3/elektrik.md` E3 notu; K1 kontrolü). Sıra kaynakta yok, doğrulanmadı"],
         kablo=["Kart konnektörleri erişilebilir; servo dağıtım çıkışları direğe bakar"],
     ),
     "B6": dict(
@@ -175,23 +182,24 @@ ADIM = {
             "5. Direğe çıkacak hatların taban kısmını da burada bağla (servo A / B / kafa, kafa 12 V, ESP32 USB). Yukarısı K2'de.\n"
             "6. K1'de enerji verilmez: ana anahtar ve acil stop mantarı F1'de takılır. Mantar ve ana anahtar uçları hiçbir zaman "
             "köprülenmez; akü XT60 ayrık kalır, boştaki ana hat uçları gerilimsiz ve bantlı. XL4016 ayarı ve PC817 ölçümü kartlar takılmadan "
-            "önce tezgâhta, akım sınırlı tezgâh kaynağıyla yapılır (kontrol); motor yön testi ve ilk açılış F1'in sonunda (İlk enerji). "
+            "önce tezgâhta, akım sınırlı tezgâh kaynağıyla yapılır (kontrol; B3, B5a, B6a). İlk enerji iki aşamalı: F1 sonunda kafasız "
+            "(aşama 1: ana anahtar, BMS, mantar; F1 takılı değil, anahtarlı bara enerjisiz), devreye alma ve motor yön testi F5'te (aşama 2). "
             "Bu sıra kaynakta yok, doğrulanmadı.",
         baglanti_md="Klemens, kablo pabucu, kablo bağı (adet: kablo listesi henüz yazılmadı)",
         alet="Multimetre, kablo soyucu, pabuç pensesi, tornavida",
         erisim="Kabuk yok; her yana düz erişim",
         kontrol=[
             "Akü ayrıkken multimetre: artı ile eksi arasında kısa devre yok",
-            "Tezgâhta (kart takılmadan, B3 / B5a öncesi): XL4016 A / B / C 6 V, çevre 5 V'a ayarlandı; akım sınırlı tezgâh kaynağıyla "
+            "Tezgâhta (kart takılmadan, B3 / B5a öncesi; B3 ve B5a kontrolünde de var): XL4016 A / B / C 6 V, çevre 5 V'a ayarlandı; akım sınırlı tezgâh kaynağıyla "
             "12 V giriş, yüksüz, çıkış ölçülerek",
             "Mantar ve ana anahtar uçları köprülenmedi; boştaki ana hat uçları bantlı, akü XT60 ayrık",
             "Röle bobinine ters paralel 1N4007 takılı (MAH-112-C-4 dahili diyot yazmıyor)",
             "Hızlı klemens en çok 2,5 mm²: 12 AWG ana hatta kullanma",
             "BTS7960B kartının pin adları şemadakinden farklı olabilir: kart üstü yazıya göre bağla",
             "İsim karıştırma: burada K1 / K2 röle adıdır; Kablolama kapısı K1 / K2 ayrı şey",
-            "Tezgâhta (akım sınırlı tezgâh kaynağıyla): PC817 modülü 3,3 V'ta ölçüldü: LOW < 0,4 V, HIGH > 2,5 V; tutmazsa `elektrik.md` E3'teki yedek devre",
+            "Tezgâhta (arayüz kartı takılmadan, B6a öncesi; akım sınırlı tezgâh kaynağıyla): PC817 modülü 3,3 V'ta ölçüldü: LOW < 0,4 V, HIGH > 2,5 V; tutmazsa `elektrik.md` E3'teki yedek devre",
             "Akü ayrıkken: bara kapasitesi multimetrenin kapasite kademesiyle ölçüldü (ön şarj değeri için)",
-            "Motor yön testi ve ilk açılışta BMS gözlemi burada değil: F1 \"İlk enerji\"",
+            "İlk açılış ve BMS gözlemi burada değil: F1 \"İlk enerji, aşama 1\"; devreye alma ve motor yön testi F5 \"İlk enerji, aşama 2\"",
         ],
         kablo=["Burada: 12 V ana hat, toprak, iki motor hattı, çevre 5 V, acil stop, sonar sinyal. Şemada renkli",
                "Direk boyunca gidenler K2 listesinde; o hatların taban kısmı da bu adımda bağlanır (şema bölünmedi)",
@@ -416,11 +424,20 @@ ADIM = {
         alet="alyan 2 (acil stop için ayrıca anahtar)",
         erisim="Düz, dışarıdan",
         kontrol=["Acil stop NP2 BE102: CAD 60 mm; delik gerçek parçayla tutuyor mu bak",
-                 "İlk enerji (F1 sonu): ana anahtar ve mantar bağlı, ana sigorta takılı, F3 (kafa) takılı değil; tekerlekler yerden kesik "
-                 "(şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Ana anahtarı aç: BMS kesiyor mu gözle "
-                 "(röle K1 açık, yalnız F3 / F4 / F5 girişleri). Devreye alma ön şarjla: röle K2 → 300 ms → röle K1 (ESP32 yazılımı). Mantara basınca iki "
-                 "röle de düşüyor. Motor yön testi: her yan ileri komutta ileri döner. Bitince ana anahtarı kapat, aküyü XT60'tan ayır "
-                 "(`planlama/adim3/elektrik.md` E9). Bu sıra ve \"yerden kesik\" düzeni bu adım için kaynakta yok, doğrulanmadı"],
+                 "İlk enerji, aşama 1 (F1 sonu, kafasız): ana anahtar ve mantar bağlı. Saat, yüzük, bileklik çıkar "
+                 "(`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken ana sigortayı (30 A), F4 (5 A, XL4016 "
+                 "çevre 5 V: ESP32) ve F5 (2 A, acil stop: mantar, röle bobinleri) tak. F1 (20 A: röle K1 ve ön şarj kolu K2), F3 (5 A, kafa), "
+                 "XL4016 hat sigortaları (A 7,5 A, B 7,5 A, C 5 A) ve göğüs ekranı mini 2 A takılı değil (`planlama/adim3/elektrik.md` sigorta "
+                 "listesi): anahtarlı bara, kafa ve göğüs ekranı dalı enerjisiz, Pi enerjisiz. Devreye alma komutu Pi'den gelir (E3). ESP32'deki "
+                 "program bilinmiyor: K2'yi süren GPIO2 kartın LED pini (E9), LED yakıp söndüren hazır bir program K2'yi açıp kapatabilir. F1 "
+                 "takılı olmadığı için röle K1 ve K2'nin kontakları enerjisiz, anahtarlı bara enerjisiz kalır. Tekerlekler yerden kesik (şasi "
+                 "takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Mantar ölçümü: akü ayrıkken multimetrenin kırmızı ucunu "
+                 "arayüz kartındaki PC817 #1 giriş klemensine (mantar sonrası düğüm, E3), siyah ucunu güç panelindeki WAGO GND yıldız noktasına "
+                 "bağla. Ölçü kıskacını mantar uçlarına takma. Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: BMS kesiyor mu "
+                 "gözle (röle K1 açık; F3 takılı olmadığı için yalnız F4 / F5 girişleri, tam açılış aşama 2'de). Mantara basınca PC817 #1 girişi "
+                 "0 V, bırakınca akü gerilimi (12,8–14,4 V). Bitince ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök. Devreye "
+                 "alma, ön şarj ve motor yön testi F5'te (İlk enerji, aşama 2). Bu aşamalar, sigorta sırası, ölçü noktası ve \"yerden kesik\" "
+                 "düzeni bu adım için kaynakta yok, doğrulanmadı"],
         kablo=["Etek bandını takarken K1 hatları sıkışmasın"],
         ucus="radyal",
     ),
@@ -453,7 +470,9 @@ ADIM = {
             "y 1095 braketine dışarıdan M5×18 tak.\n"
             "2. VESA taşıyıcı (PETG-CF): ekran cebinden direğin ön (+Z) kanalına, 2 × M6×18 + pul + çekiç somun. Yükseklik kanalda ayarlanır; "
             "cıvatalara ekran takılmadan, plakanın ortasından ulaşılır.\n"
-            "3. 11,6\" ekranı (kasalı) cebe koy. 12 V fişini takmadan önce regülatör çıkışını yeniden ölç: 12 V (K2'de ayarlandı; "
+            "3. 11,6\" ekranı (kasalı) cebe koy. Akü XT60 ayrık, ana anahtar kapalıyken göğüs ekranı mini 2 A sigortasını tak (F1 aşama "
+            "1'de takılı değildi; dal girişi K11'in varsayılanı a: ana anahtar sonrası, röle öncesi; b seçilirse bu ölçüm F5 aşama 2'ye "
+            "kalır, doğrulanmadı). 12 V fişini takmadan önce regülatör çıkışını yeniden ölç: 12 V (K2'de ayarlandı; "
             "ölçünce enerjiyi kes). Sonra K2'de bırakılan HDMI ve 12 V uçlarını enerjisizken tak (90° fişler).\n"
             "4. Ekranı taşıyıcıya arkadan 4 × M4×12 + pul ile bağla (VESA 75 × 75): üst arka servis kapağı açık, direğin yanından.\n"
             "5. Çerçeve sağ + sol: göğüs bandına dışarıdan, yarı başına 4 × M3×6 ISO 7380, çerçeve flanşındaki ısıl gömmeye. "
@@ -598,7 +617,20 @@ ADIM = {
         is_="1. 4'lü USB hub üst arka servis kapağının içinde: hub'ı kapağın takozuna, iki yan dayamanın arasına 1 mm köpük bantla yapıştır. "
             "Bağla: hub kablosu ← Pi USB 3'ten boyundan gelen uzatma (K2), Hub 1 → göğüs ekranı dokunmatiği (F3'te boşta bırakılan USB), "
             "Hub 2 → ESP32 USB (K2'de direk arka yüzünden çıkarılan uç; 1N5819 yönü K2 madde 4). Hub 3 ve 4 boş. Hub'ın anahtarı açık kalmalı.\n"
-            "2. Devreye alma testi kapaklar açıkken yapılır; hub bu testte bağlı olmalı (ESP32 ile Pi hub üzerinden konuşur).\n"
+            "2. İlk enerji, aşama 2 (devreye alma testi): kapaklar açık, hub bağlı (ESP32 ile Pi hub üzerinden konuşur). Saat, yüzük, "
+            "bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken F1 (20 A), F3 (5 A, kafa) "
+            "ve XL4016 hat sigortalarını (A 7,5 A, B 7,5 A, C 5 A) tak (`planlama/adim3/elektrik.md` sigorta listesi). Tekerlekler yerden "
+            "kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Kollar aşağıda başlar: mantara basınca "
+            "servo gücü de kesilir ve kollar düşer (E3 DTR / RTS notu). Kolların erişim alanında ve düşme hattında, kafanın ve tekerlerin "
+            "erişim alanında kimse yok, bir kişi yalnız mantarda (kural 1 ve 7). Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana "
+            "anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 / F4 / F5 girişleri, Pololu dahil; K11 a ise göğüs ekranı dalı da). "
+            "Pi açılır; ESP32, Pi seri portu açılınca resetlenmemeli (boot mesajı yok; E3 DTR / RTS). Pi'den devreye al, ESP32 ön şarj "
+            "dizisi (E9): ön koşul (mantar serbest, servo hedefleri son konumda, BTS EN = 0 ve PWM = 0) → röle K2 → 300 ms → PC817 #2 LOW "
+            "(bara var) → röle K1 → 100 ms sonra K2 bırakılır → PC817 #2 LOW teyidi. Mantara basınca K1 düşer (K2 devreye almadan 100 ms "
+            "sonra zaten bırakıldı), anahtarlı bara kesilir (PC817 #2 HIGH), kollar düşer. Mantarı bırak: röle kendiliğinden çekmez, "
+            "yeniden devreye alma yalnız Pi komutuyla. "
+            "Motor yön testi: her yan ileri komutta ileri döner; dönen tekere el uzatılmaz. Bitince ana anahtarı kapat, aküyü XT60'tan ayır "
+            "(`planlama/adim3/elektrik.md` E3, E9). Bu adımdaki sıra kaynakta yok, doğrulanmadı.\n"
             "3. Testten sonra kapat: arka servis kapağı, üst arka servis kapağı (hub'la birlikte), etek H1 ve H2.\n"
             "H1 sigorta kutusuna açılır: uç yuvalar yedek, sık değişen F1, F3, F4, F5 ortada (29.10).",
         baglanti_md="1,58 m: arka kapak 7 × M3×6 ISO 7380; üst arka kapak 7 × M3×6 ISO 7380; H1 4 × M3×6 (x ±50); H2 4 × M3×6; hepsi "
@@ -606,11 +638,15 @@ ADIM = {
         alet="alyan 2",
         erisim="Düz. Hub kapağın iç yüzünde: kapak açıkken bağlanır",
         kontrol=["Hub köpük banda oturdu, yan dayamalar arasında; anahtarı açık",
+                 "İlk enerji, aşama 2 (madde 2): BMS kesmedi; ön şarj dizisi PC817 #2 teyidiyle bitti; mantara basınca K1 düştü, bara kesildi; "
+                 "her yan ileri komutta ileri döndü; sonunda akü XT60'tan ayrıldı",
                  "Testte ESP32 ve göğüs dokunmatiği hub üzerinden görünüyor",
                  "Kapak açılınca hub'a bağlı üç kablo gerilmiyor (yaklaşık 150 mm söküm payı)",
                  "E7 ve kafa ısı ölçümü kabuk kapalı yapıldı (kafada hesap ≈ 49 °C, ölçülmedi)", "Kapak altında kablo sıkışmadı"],
         kablo=["Hub: Pi USB 3 → boyun → hub (uzatma), Hub 1 → göğüs dokunmatiği, Hub 2 → ESP32. Hub kapanırsa ESP32 ve göğüs dokunmatiği birlikte düşer"],
-        not_=["Hub'ın kapakla birlikte açılması ve 150 mm söküm payı tahmin; testten önce hub bağlantısının yapılması montaj mantığından, "
+        not_=["Ön şarj dizisi ESP32 yazılımında (`planlama/adim3/elektrik.md` E9, adım 1–6): yazılım hazır değilse aşama 2 yapılmaz, "
+              "röleler elle kapatılmaz (kaynakta yok, doğrulanmadı)",
+              "Hub'ın kapakla birlikte açılması ve 150 mm söküm payı tahmin; testten önce hub bağlantısının yapılması montaj mantığından, "
               "kaynakta sıra yok: doğrulanmadı",
               "Hub girişindeki gerilim ölçülmedi (hub USB'den beslenir)",
               "Altıncı USB cihazı karar bekliyor (K1): şimdilik hub'da 2 port boş"],
@@ -715,6 +751,23 @@ def _kelime(w):
     if w[0].isupper() and w[1:] == w[1:].lower():
         return _buyuk(v)
     return w
+
+
+def kopya_eki_sil(ad, kod=""):
+    """D-6 (F7c): FreeCAD aynı etiketi ikinci kez verince sondaki sayıyı atıp 3 haneli ek koyar ("... M3x8" -> "... M3x001",
+    "... M4" -> "... M001"). Görünen ad için ek atılır; ekle birlikte düşen ölçü parçanın kodundan geri yazılır (kod "M3x8 DIN 912" ->
+    "M3x8"). Kimlik, kod ve sayım değişmez; yalnız görünen ad (tıklama etiketi)."""
+    import re
+    m = re.match(r"^(.*\D)0\d\d$", ad or "")
+    if not m:
+        return ad
+    a = m.group(1)
+    k = re.match(r"(M\d+(?:,\d+)?)(?:x(\d+(?:,\d+)?))?\b", kod or "")
+    if k and k.group(2) and a.endswith(k.group(1) + "x"):
+        a += k.group(2)
+    elif k and re.search(r"\bM$", a):
+        a += k.group(1)[1:]
+    return a
 
 
 def tr(s):

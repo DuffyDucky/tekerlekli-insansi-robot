@@ -16,6 +16,15 @@
 # 4) Zorunlu uyarılar (F7b-kontrol D-1, O-1…O-3): güvenlik talimatı adım metninde duruyor mu (Touch VBUS, köprülenmez, regülatör
 #    ayarı, 1N5819 yönü, TVS kutbu, enerjisiz çalışma).
 # 5) Bağlantı satırları: adımın her bağlantı elemanı parçası tam bir bağlantı satırında (satır tümden düşerse yakalanır).
+# 6) Yasak talimat (F7c, F7b-kontrol D-1'): (4) yalnız uyarının VARLIĞINA bakar; eklenen yasak talimatı yakalamaz. Bu denetim tüm adım
+#    metinlerinde yasak kalıpları arar: köprüleme ("köprüle", "köprülenir", "köprü teli"), akü bağlıyken iş ("akü bağlıyken bağla",
+#    "akü bağlı olabilir"), enerji varken bağlantı ("enerjiliyken tak", "gerilim altında lehimle"). Olumsuz biçim ("köprülenmez",
+#    "köprüleme", "takma") ve olumsuzlama kelimesi ("asla", "hiçbir zaman", "yasak", "değil") istisnadır; istisnalar
+#    "yasak_affedilen" listesine yazılır (insan gözden geçirsin). "değilse" olumsuzlama sayılmaz (koşul: "takılı değilse köprüle").
+#    F7c düzeltme 1 (F7c-kontrol D-1, D-2): olumsuzlama yalnız eşleşme sonunun yan cümlesinde geçerli ("takılı değil, köprüle" yakalanır);
+#    ek kalıplar "devre dışı bırak", "kısa devre et / yap", "yerine tel / kablo", "sigortası / XT60 takılıyken", "gerilim varken",
+#    fiil "değiştir", "bağlantı yap"; "akü … takılı" yalnız öznesi akü iken ("Akü ön takozu … takılı" tutmaz).
+# 7) Görünen parça adında FreeCAD kopya eki (sondaki 0NN; F7b-kontrol D-6) 0 olmalı.
 import os, re, sys, json, collections
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -29,7 +38,7 @@ KISALTMA = {
     "DS", "MG", "SY", "ASW", "NP", "BE", "CP", "PAM", "UART", "IMU", "DC", "AC", "LIPO", "LFP", "PCB", "STEP", "SOL", "TOUCH",
     "IN", "OUT", "GND", "VCC", "VIN", "RGB", "SD", "OK", "ID", "XVF", "MAX", "IMAX", "HP", "CAPQLED", "AA", "AAA", "SMD", "NO",
     "FPC", "AI", "HAT", "KAPI", "ZZ", "RS", "NTC", "IP", "MCB", "SSR", "MP", "ABS", "NPT", "ISB", "NEMA", "DSP", "LPC", "MAH", "JQC",
-    "BMS", "KAPAK", "IPS", "JGB", "LOW", "HIGH", "WROOM", "RESPEAKER", "MIC",
+    "BMS", "KAPAK", "IPS", "JGB", "LOW", "HIGH", "WROOM", "RESPEAKER", "MIC", "DTR", "RTS",
 }
 # Türkçe harfi olmayan doğru kelimeler ve teknik terimler (küçük harf). Yeni bir ASCII kelime ekrana girerse denetim "bilinmeyen"
 # der: ya TR_EK'e karşılığı eklenir ya da gözden geçirilip buraya yazılır.
@@ -73,6 +82,9 @@ ucunda ucunun veri vidala yanaklar yap yasla yerine yerini yerleri profil yeni r
 beslemez bitince depo diyodu direnciyle enerjili enerjisiz enerjisizken enerjiyi genel gerekmez ikinci kademesiyle kapasite kaynakla
 katot kendi kes kontroller kutbunu madde multimetrenin teline tek tutar varsa yazan yeniden
 enerji gerilimsiz sonu sonunda takozda tekerlekler verilmez yerden zaman
+ver kapanmaz komutu yokken yine tekerlerin kimse mantarda kural portu resetlenmemeli boot dizisi hedefleri almadan zaten
+komutuyla tekere kesmedi teyidiyle bitti devam
+saat bileklik bobinleri kolu program bilinmiyor pini kapatabilir klemensine siyah panelindeki dal ise
 """.split())
 
 # 3) Kafa / hoparlör / hub: (bileşen anahtarı parça adında, metinde aranacak kelimeler)
@@ -99,12 +111,96 @@ ZORUNLU = [
     ("K1", r"K1'de enerji verilmez", "K1'de enerjili ölçüm yok (tezgâhta)"),
     ("K1", r"köprülenmez", "mantar / ana anahtar köprülenmez"),
     ("F1", r"Bağlarken akü ayrık", "F1 bağlarken akü ayrık"),
-    ("F1", r"İlk enerji \(F1 sonu\).*BTS EN = 0.*ön şarj", "F1 ilk enerji sırası"),
+    # F7c (D-10): ilk enerji iki aşamalı; F1'de kafasız (röle kapanmaz), devreye alma / ön şarj / motor yön testi F5'te
+    # F7c düzeltme 1 (O-1): aşama 1'de F1 takılı değil (röle kontakları enerjisiz, ESP32 programı bilinmese de); mantar ölçü noktası (O-2)
+    ("F1", r"İlk enerji, aşama 1 \(F1 sonu, kafasız\).*röle K1 ve K2'nin kontakları enerjisiz.*BTS EN = 0", "F1 ilk enerji aşama 1 (bara enerjisiz)"),
+    ("F1", r"F1 \(20 A[^)]*\)[^.]*takılı değil", "F1 aşama 1: F1 (20 A) ve dal sigortaları takılı değil"),
+    ("F1", r"PC817 #1 giriş klemensine.*WAGO GND.*mantar uçlarına takma", "F1 mantar ölçü noktası"),
+    ("F1", r"[Tt]ekerlekler yerden kesik", "F1 tekerlekler yerden kesik"),
+    ("F5", r"İlk enerji, aşama 2.*BTS EN = 0.*ön şarj dizisi.*K1 düşer", "F5 ilk enerji aşama 2 (ön şarj, mantar)"),
+    ("F5", r"[Tt]ekerlekler yerden kesik", "F5 tekerlekler yerden kesik"),
+    # F7c (D-12): XL4016 ayarı ve PC817 ölçümü kartların takıldığı adımda da yazar
+    ("B3", r"Kartlar takılmadan tezgâhta.*XL4016 A / B", "B3 XL4016 tezgâhta ayar"),
+    ("B5a", r"Kartlar takılmadan tezgâhta.*XL4016 C", "B5a XL4016 C tezgâhta ayar"),
+    ("B6a", r"Kartlar takılmadan tezgâhta.*PC817", "B6a PC817 tezgâhta ölçüm"),
     ("K2", r"akü XT60 ayrık", "K2 enerjisiz"),
     ("K2", r"1N5819: anot hub \(Pi\)\s+tarafında, katot ESP32", "1N5819 yönü"),
     ("K2", r"regülatörü \(LM2577 \+ LM2596\) ekrana bağlanmadan", "göğüs regülatörü 12 V ayarı"),
     ("F3", r"regülatör çıkışını yeniden ölç", "göğüs 12 V fişten önce ölçüm"),
 ]
+
+# 6) Yasak talimat kalıpları: (ad, desen, olumsuz biçim deseni). Desen cümlede (. ; ! ? ve satır sonuyla bölünür) aranır, büyük / küçük
+#    harf duyarsız. Olumsuz biçim deseni eşleşmenin son kelimesine (fiil) uygulanır; tutarsa ya da eşleşmenin ±40 karakterinde ve
+#    eşleşme sonunun yan cümlesinde (virgül, iki nokta ya da bağlaçla bölünür; F7c düzeltme 1, D-1) olumsuzlama kelimesi varsa istisna.
+_KOK = r"(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|bağlantı\s+yap)"
+_FIIL = _KOK + r"\w*"
+_FIIL_OLUMSUZ = (r"(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|yap)(?:ma|me)(?:z|dan|den|yın|yin|yınız|yiniz|malı|meli)?"
+                 r"|(?:bağla|tak|sök|çıkar|kes|değiştir|yap)(?:ıl|il|ul|ül)?(?:maz|mez)")
+_OLUMSUZ_GENEL = r"\w+(?:ma|me)(?:z|dan|den|yın|yin|yınız|yiniz|malı|meli)?|\w+(?:maz|mez)"
+YASAK = [
+    ("köprüleme talimatı", r"\bköprüle\w*", r"köprüle(?:n)?me(?:z|di|meli|yin|yiniz|den)?|köprülenemez"),
+    ("köprü teli / jumper", r"\b(?:köprü|jumper|atlama)\s*(?:kablo|tel)\w*", r"$^"),
+    # D-2: yalnız öznesi akü olan "akü (XT60) bağlı / takılı" ("Akü ön takozu … takılı", "Akü kayışları takılı" tutmaz)
+    ("akü bağlıyken iş", r"\bakü(?:yü|nün|sü)?\s+(?:XT60\S*\s+)?(?:bağlı|takılı)\w*(?:\s+(?:iken|olabilir|kalabilir|kalsın|durumda\w*))?",
+     r"$^"),
+    ("enerji varken bağlantı", r"\b(?:enerjili(?:yken|ken)?|enerji\s+(?:varken|açıkken|verilmişken|altında)|gerilim\s+(?:altında|varken)|"
+                               r"gerilimli(?:yken)?|sigorta\w*\s+takılı(?:yken|\s+iken)|XT60\S*\s+(?:takılı|bağlı)(?:yken|\s+iken)|"
+                               r"ana\s+anahtar\s+açıkken)\b[^.;!?\n]{0,120}?\b" + _FIIL,
+     _FIIL_OLUMSUZ),
+    # D-1: kalıp dışı anlatımlar
+    ("devre dışı bırakma", r"\bdevre\s*dışı\s*bırak\w*", _OLUMSUZ_GENEL),
+    ("kısa devre talimatı", r"\bkısa\s*devre\s*(?:et|yap|oluştur|kur)\w*", _OLUMSUZ_GENEL),
+    ("sigorta / mantar yerine tel", r"\byerine\s+(?:bir\s+)?(?:tel|kablo|köprü|jumper)\w*(?:\s+\w+)?", _OLUMSUZ_GENEL),
+]
+OLUMSUZLAMA = r"\b(?:asla|hiçbir zaman|hiçbir şekilde|yasak\w*|gerekmez|gerek yok|değil|değildir)(?!\w)"
+OLUMSUZ_PENCERE = 40
+YAN_CUMLE = r"[,:]|\s(?:ve|ama|fakat|ancak|sonra|ardından|veya|ya da|çünkü)\s"
+
+
+def yan_cumle(cumle, i):
+    """cumle içinde i konumunu içeren yan cümlenin (bas, son) sınırı (virgül, iki nokta, bağlaç)."""
+    bas, son = 0, len(cumle)
+    for m in re.finditer(YAN_CUMLE, cumle, re.I):
+        if m.end() <= i:
+            bas = m.end()
+        elif m.start() >= i:
+            son = m.start()
+            break
+    return bas, son
+
+
+def yasak_tara(V):
+    """Adım metinlerinde (iş, bağlantı, alet, erişim, kontrol, kablo, not) yasak talimat: (bulgu, istisna)."""
+    bulgu, istisna = [], []
+    for a in V["adimlar"]:
+        alan = [(k, a.get(k) or "") for k in ("baslik", "is_", "baglanti_md", "alet", "erisim")]
+        alan += [(k, t) for k in ("kontrol", "kablo", "not_") for t in (a.get(k) or [])]
+        for k, metin in alan:
+            for cumle in re.split(r"(?<=[.;!?])\s+|\n", metin):
+                for ad, desen, olumsuz in YASAK:
+                    for t in re.finditer(desen, cumle, re.I):
+                        son = re.findall(r"\w+", t.group(0))[-1].lower()
+                        yb, ys = yan_cumle(cumle, t.end() - 1)
+                        cevre = cumle[max(yb, t.start() - OLUMSUZ_PENCERE):min(ys, t.end() + OLUMSUZ_PENCERE)]
+                        neden = ("olumsuz biçim: " + son) if re.fullmatch(olumsuz, son) else None
+                        if not neden:
+                            o = re.search(OLUMSUZLAMA, cevre, re.I)
+                            neden = ("olumsuzlama: " + o.group(0)) if o else None
+                        d = dict(adim=a["kod"], alan=k, yasak=ad, ifade=t.group(0), cumle=cumle[:200])
+                        if neden:
+                            d["istisna"] = neden
+                            istisna.append(d)
+                        else:
+                            bulgu.append(d)
+    return bulgu, istisna
+
+
+KOPYA_EKI = r"\D0\d\d$"
+
+
+def kopya_eki(V):
+    """Görünen parça adında FreeCAD kopya eki (D-6): sondaki 0NN."""
+    return [dict(id=p["id"], ad=p["ad"]) for p in V["parcalar"] if re.search(KOPYA_EKI, p["ad"])]
 
 
 def gorunen_metinler(V):
@@ -231,26 +327,34 @@ def denetle(V, ek_metinler=()):
     asc = ascii_kalinti(m + list(ek_metinler))
     gr = gruplama(V)
     tu = tutarlilik(V, m)
-    return dict(ascii_kalinti=asc, ascii_kalinti_sayi=len(asc), gruplama_yanlis=len(gr["yanlis"]) + len(gr["eksik"]), gruplama=gr,
+    ya, ya_ist = yasak_tara(V)
+    ke = kopya_eki(V)
+    return dict(yasak=ya, yasak_sayi=len(ya), yasak_affedilen=ya_ist, kopya_eki=ke[:20], kopya_eki_sayi=len(ke),
+                ascii_kalinti=asc, ascii_kalinti_sayi=len(asc), gruplama_yanlis=len(gr["yanlis"]) + len(gr["eksik"]), gruplama=gr,
                 tutarlilik_celiski=len(tu["celiski"]) + len(tu["anmayan"]), tutarlilik=tu,
                 zorunlu_eksik=len(tu["zorunlu_eksik"]),
                 metin_sayisi=dict(veri=len(m), tarayici=len(ek_metinler)),
                 parca=len(V["parcalar"]), sema=len(V.get("semalar", [])),
                 gecti=not asc and not gr["yanlis"] and not gr["eksik"] and not tu["celiski"] and not tu["anmayan"]
-                and not tu["zorunlu_eksik"])
+                and not tu["zorunlu_eksik"] and not ya and not ke)
 
 
 def ozet_yaz(d):
     print("denetim: ascii kalinti %d, gruplama yanlis %d (eski kural ayni veride %d satir), kafa/hoparlor/hub celiski %d, "
-          "zorunlu uyari eksik %d / %d, baglamla affedilen %d; parca %d, sema %d" % (
+          "zorunlu uyari eksik %d / %d, baglamla affedilen %d; yasak talimat %d (istisna %d), kopya eki %d; parca %d, sema %d" % (
         d["ascii_kalinti_sayi"], d["gruplama_yanlis"], d["gruplama"]["eski_kural_yanlis"], d["tutarlilik_celiski"], d["zorunlu_eksik"],
-        len(d["tutarlilik"]["zorunlu"]), len(d["tutarlilik"]["affedilen"]), d["parca"], d["sema"]))
+        len(d["tutarlilik"]["zorunlu"]), len(d["tutarlilik"]["affedilen"]), d["yasak_sayi"], len(d["yasak_affedilen"]),
+        d["kopya_eki_sayi"], d["parca"], d["sema"]))
     for x in d["ascii_kalinti"][:60]:
         print("  ASCII %-18s %s%s" % (x["kelime"], x["ilk_yer"], " (sozlukte var)" if x["sozlukte"] else ""))
     for x in d["gruplama"]["yanlis"][:20] + d["gruplama"]["eksik"][:20]:
         print("  GRUP", x)
     for x in d["tutarlilik"]["celiski"][:20] + d["tutarlilik"]["anmayan"][:20] + d["tutarlilik"]["zorunlu_eksik"]:
         print("  TUTARLILIK", x)
+    for x in d["yasak"][:20]:
+        print("  YASAK", x)
+    for x in d["kopya_eki"][:5]:
+        print("  KOPYA EKI", x)
 
 
 if __name__ == "__main__":

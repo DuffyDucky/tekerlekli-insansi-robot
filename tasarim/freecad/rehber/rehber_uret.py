@@ -15,7 +15,9 @@
 #   5) telefon: 360 px görüntü alanında birkaç adım (DevTools protokolü, Emulation.setDeviceMetricsOverride; Python websockets
 #      paketi gerekir; --window-size Chrome'da ~500 px'in altına inmiyor); yatay taşma = belge genişliği - görüntü alanı (0 olmalı) ->
 #      <çıktı>/goruntu/telefon-360-adim-NN.png
-#   6) yazdırılabilir sürüm rehber/yazdir.html -> headless Chrome --print-to-pdf -> <çıktı>/Lale-montaj-rehberi.pdf; sayfa sayısı = adım
+#   6) yazdırılabilir sürüm rehber/yazdir.html -> headless Chrome --print-to-pdf -> <çıktı>/Lale-montaj-rehberi.pdf; F7c: her adım ≥ 1
+#      sayfa (sığmayan adımda "devam" sayfası), PDF sayfası = HTML sayfası, taşan 0, en küçük yazı ≥ 8 pt (DOM + PyMuPDF);
+#      adım -> sayfa eşlemesi kontrol.json "yazdir.sayfa_esleme"
 #   7) rehber_denetim.py: ASCII kalıntı (veri + tarayıcının bastığı panel ve yazdir metni), parça listesi gruplama, kafa / hoparlör /
 #      hub tutarlılığı -> kontrol.json "denetim"
 #   --cikti <klasör>: tüm çıktılar o klasöre (bağımsız kontrol depoyu değiştirmeden koşabilsin; F7a-kontrol D-5, F7b-kontrol D-4):
@@ -283,8 +285,28 @@ def pdf_sayfa(yol):
         return len(re.findall(rb"/Type\s*/Page[^s]", b))
 
 
+YAZI_ALT_PT = 8.0                                                   # F7c (F7b-kontrol D-3): PDF'de en küçük yazı
+
+
+def pdf_en_kucuk(yol):
+    """PDF'deki en küçük yazı boyu (pt; PyMuPDF metin aralıkları, boş aralıklar hariç). PyMuPDF yoksa None (kabul geçmez)."""
+    try:
+        import fitz
+    except ImportError:
+        return None
+    enk = None
+    with fitz.open(yol) as doc:
+        for sf in doc:
+            for b in sf.get_text("dict")["blocks"]:
+                for ln in b.get("lines", []):
+                    for sp in ln["spans"]:
+                        if sp["text"].strip() and (enk is None or sp["size"] < enk):
+                            enk = sp["size"]
+    return round(enk, 2) if enk is not None else None
+
+
 def yazdir(tb, n_adim):
-    """rehber/yazdir.html -> <çıktı>/Lale-montaj-rehberi.pdf (A4, adım başına bir sayfa)."""
+    """rehber/yazdir.html -> <çıktı>/Lale-montaj-rehberi.pdf (A4; adım başına en az bir sayfa, sığmayan adımda "devam" sayfası)."""
     ortak = ortak_arg(tb, (1200, 1700), sanal=15000)
     u = url(None, sayfa="yazdir.html", kok=YAZDIR_KOK)
     dom = dom_al(ortak, u)
@@ -297,13 +319,30 @@ def yazdir(tb, n_adim):
     subprocess.run(ortak + ["--no-pdf-header-footer", "--print-to-pdf-no-header", "--print-to-pdf=" + pdf, u], capture_output=True)
     yeni = os.path.exists(pdf) and os.path.getmtime(pdf) >= t0     # eski PDF sayılmasın
     sayfa = pdf_sayfa(pdf) if yeni else 0
+    es = re.search(r'<body[^>]*data-esleme="([^"]*)"', dom)
+    enk = re.search(r'<body[^>]*data-en-kucuk-pt="([^"]*)"', dom)
+    try:
+        esleme = {int(k): v for k, v in json.loads(html.unescape(es.group(1))).items()} if es else {}
+    except ValueError:
+        esleme = {}
     d = dict(pdf=os.path.relpath(pdf, ROBOT).replace("\\", "/"), pdf_sayfa=sayfa, pdf_yeni=yeni, html_sayfa=int(say.group(1)) if say else None,
              adim=n_adim, tasan=[x for x in (tas.group(1) if tas else "?").split(",") if x],
              kucuk_yazi=[x for x in (kuc.group(1) if kuc else "").split(",") if x],
-             boyut_kb=round(os.path.getsize(pdf) / 1024) if yeni else 0)
-    d["gecti"] = yeni and sayfa == n_adim and d["html_sayfa"] == n_adim and not d["tasan"]
-    print("yazdirilabilir: pdf %d sayfa (adim %d), html %s, tasan %s, kucuk yazi %s, %d kB" % (
-        sayfa, n_adim, d["html_sayfa"], d["tasan"] or "-", d["kucuk_yazi"] or "-", d["boyut_kb"]))
+             boyut_kb=round(os.path.getsize(pdf) / 1024) if yeni else 0,
+             # F7c (D-3): adım -> PDF sayfaları (devam sayfaları dahil), en küçük yazı (DOM ve PDF), alt sınır 8 pt
+             sayfa_esleme={str(k): esleme[k] for k in sorted(esleme)}, devam_sayfasi=sum(len(v) - 1 for v in esleme.values()),
+             en_kucuk_yazi_pt_dom=float(enk.group(1)) if enk else None, en_kucuk_yazi_pt_pdf=pdf_en_kucuk(pdf) if yeni else None,
+             yazi_alt_sinir_pt=YAZI_ALT_PT)
+    sirali = [p for k in sorted(esleme) for p in esleme[k]]
+    d["esleme_tutarli"] = (sorted(esleme) == list(range(n_adim)) and all(len(v) >= 1 for v in esleme.values())
+                           and sirali == list(range(1, len(sirali) + 1)) and len(sirali) == d["html_sayfa"])
+    kucuk_ok = all(x is not None and x >= YAZI_ALT_PT - 0.01 for x in (d["en_kucuk_yazi_pt_dom"], d["en_kucuk_yazi_pt_pdf"]))
+    # kabul (F7c): her adım ≥ 1 sayfa (eşleme sıralı ve kesintisiz), PDF sayfası = HTML sayfası ≥ adım, taşan 0, en küçük yazı ≥ 8 pt
+    d["gecti"] = bool(yeni and sayfa == d["html_sayfa"] and sayfa >= n_adim and d["esleme_tutarli"] and not d["tasan"]
+                      and not d["kucuk_yazi"] and kucuk_ok)
+    print("yazdirilabilir: pdf %d sayfa (adim %d, devam %d), html %s, esleme %s, tasan %s, en kucuk yazi dom %s / pdf %s pt, %d kB" % (
+        sayfa, n_adim, d["devam_sayfasi"], d["html_sayfa"], "tutarli" if d["esleme_tutarli"] else "TUTARSIZ", d["tasan"] or "-",
+        d["en_kucuk_yazi_pt_dom"], d["en_kucuk_yazi_pt_pdf"], d["boyut_kb"]))
     return d, [("yazdır", gorunen_metin(dom, r'<div id="sayfalar">.*</body>'))]
 
 

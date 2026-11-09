@@ -505,7 +505,7 @@ def gorunen_ad(p):
             KABLO_UYARI.append(uy)
             log("UYARI", uy)
         return ad
-    return tr(p["ad"])
+    return tr(RM.kopya_eki_sil(p["ad"], p["kod"]))                  # F7c (D-6): FreeCAD 0NN eki tıklama etiketinde görünmez
 
 
 PARCA = []

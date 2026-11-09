@@ -1,6 +1,6 @@
 {
 "surum": 1,
-"uretim": "2026-11-09 18:21",
+"uretim": "2026-11-09 19:45",
 "betik": "tasarim/freecad/rehber/rehber_veri.py",
 "kaynak": {
 "m6": "planlama/adim4/M6-montaj-sirasi.md (adım sırası ve tablo metni)",
@@ -1695,7 +1695,8 @@
 "kontrol": [
 "BTS7960 ve XL4016'lar burçlara üstten; kartın altı plakaya değmiyor (8 mm burç)",
 "Akü kutupları güç paneline bakar; kayışları sık, akü kaymasın",
-"Aküyü şimdi BAĞLAMA: XT60 uçları ayrık, kutuplar bantlı"
+"Aküyü şimdi BAĞLAMA: XT60 uçları ayrık, kutuplar bantlı",
+"Kartlar takılmadan tezgâhta (bu adımdan önce): XL4016 A / B 6 V, çevre 5 V'a ayarlandı; akım sınırlı tezgâh kaynağıyla 12 V giriş, yüksüz, çıkış ölçülerek (K1 kontrolü). PC817 ölçümü de arayüz kartı takılmadan tezgâhta (B6a). Takıldıktan sonra ayar vidasına erişim ölçülmedi; bu sıra kaynakta yok, doğrulanmadı"
 ],
 "kablo": [
 "XL4016 giriş/çıkış klemensleri erişilebilir kalsın (17. adım K1)",
@@ -2074,7 +2075,8 @@
 "Sigorta kutusu, röle ve ana sigorta yuvası panele (M4 + naylon somun)",
 "Ön şarj direnci (5,6 Ω) panelden ≥ 5 mm yüksekte, kablo demetine değmez (E9)",
 "XL4016 C ve ön şarj kartı da bu panelde (Y3 yerleşimi); giriş, çıkış klemensleri erişilebilir",
-"Sigortaları henüz takma"
+"Sigortaları henüz takma",
+"Kartlar takılmadan tezgâhta (bu adımdan önce): XL4016 C 6 V'a ayarlandı; akım sınırlı tezgâh kaynağıyla 12 V giriş, yüksüz, çıkış ölçülerek (K1 kontrolü). PC817 ölçümü de arayüz kartı takılmadan tezgâhta (B6a). Bu sıra kaynakta yok, doğrulanmadı"
 ],
 "kablo": [
 "Panelde WAGO yıldız noktası ve sigorta kutusu girişleri erişilebilir kalsın"
@@ -2366,7 +2368,8 @@
 ],
 "kontrol": [
 "Burçlar alttan, kartlar üstten (arayüz kartı, 2 dağıtım kartı, PCA9685, BNO055, ESP32 taşıyıcı)",
-"BNO055 yönü: kartın X oku robotun önüne (+z)"
+"BNO055 yönü: kartın X oku robotun önüne (+z)",
+"Kartlar takılmadan tezgâhta (bu adımdan önce): arayüz kartındaki PC817 3,3 V'ta ölçüldü: girişe akım sınırlı tezgâh kaynağıyla 12 V ver ve kes, çıkış LOW < 0,4 V, HIGH > 2,5 V (`planlama/adim3/elektrik.md` E3 notu; K1 kontrolü). Sıra kaynakta yok, doğrulanmadı"
 ],
 "kablo": [
 "Kart konnektörleri erişilebilir; servo dağıtım çıkışları direğe bakar"
@@ -2523,7 +2526,7 @@
 "no": "17",
 "faz": "Kablolama kapısı",
 "baslik": "Kablolama kapısı 1: taban",
-"is_": "Kabuk takılmadan önce burada dur. Bağlarken akü ayrık (XT60 açık); sırayla:\n1. Ana hat (12 AWG): XT60 → 30 A ana sigorta → ana anahtar → sigorta kutusu. Ana anahtar henüz yerinde değil (F1'de etek plakasının altına takılır): ana anahtara gidecek iki uç bırakılır, F1'de bağlanır.\n2. F1 20 A → röle K1 → anahtarlı bara. Baradan: iki BTS7960B; hat sigortasıyla XL4016 A ve B (7,5 A), C (5 A).\n3. F3 kafa hattı (uç direk dibinde bırakılır), F4 XL4016 çevre 5 V, F5 acil stop hattı.\n4. Motor + enkoder ve sonarları bağla. Acil stop ucunu bırak: mantar F1'de takılır.\n5. Direğe çıkacak hatların taban kısmını da burada bağla (servo A / B / kafa, kafa 12 V, ESP32 USB). Yukarısı K2'de.\n6. K1'de enerji verilmez: ana anahtar ve acil stop mantarı F1'de takılır. Mantar ve ana anahtar uçları hiçbir zaman köprülenmez; akü XT60 ayrık kalır, boştaki ana hat uçları gerilimsiz ve bantlı. XL4016 ayarı ve PC817 ölçümü kartlar takılmadan önce tezgâhta, akım sınırlı tezgâh kaynağıyla yapılır (kontrol); motor yön testi ve ilk açılış F1'in sonunda (İlk enerji). Bu sıra kaynakta yok, doğrulanmadı.",
+"is_": "Kabuk takılmadan önce burada dur. Bağlarken akü ayrık (XT60 açık); sırayla:\n1. Ana hat (12 AWG): XT60 → 30 A ana sigorta → ana anahtar → sigorta kutusu. Ana anahtar henüz yerinde değil (F1'de etek plakasının altına takılır): ana anahtara gidecek iki uç bırakılır, F1'de bağlanır.\n2. F1 20 A → röle K1 → anahtarlı bara. Baradan: iki BTS7960B; hat sigortasıyla XL4016 A ve B (7,5 A), C (5 A).\n3. F3 kafa hattı (uç direk dibinde bırakılır), F4 XL4016 çevre 5 V, F5 acil stop hattı.\n4. Motor + enkoder ve sonarları bağla. Acil stop ucunu bırak: mantar F1'de takılır.\n5. Direğe çıkacak hatların taban kısmını da burada bağla (servo A / B / kafa, kafa 12 V, ESP32 USB). Yukarısı K2'de.\n6. K1'de enerji verilmez: ana anahtar ve acil stop mantarı F1'de takılır. Mantar ve ana anahtar uçları hiçbir zaman köprülenmez; akü XT60 ayrık kalır, boştaki ana hat uçları gerilimsiz ve bantlı. XL4016 ayarı ve PC817 ölçümü kartlar takılmadan önce tezgâhta, akım sınırlı tezgâh kaynağıyla yapılır (kontrol; B3, B5a, B6a). İlk enerji iki aşamalı: F1 sonunda kafasız (aşama 1: ana anahtar, BMS, mantar; F1 takılı değil, anahtarlı bara enerjisiz), devreye alma ve motor yön testi F5'te (aşama 2). Bu sıra kaynakta yok, doğrulanmadı.",
 "baglanti_md": "Klemens, kablo pabucu, kablo bağı (adet: kablo listesi henüz yazılmadı)",
 "alet": "Multimetre, kablo soyucu, pabuç pensesi, tornavida",
 "erisim": "Kabuk yok; her yana düz erişim",
@@ -2533,15 +2536,15 @@
 "baglantilar": [],
 "kontrol": [
 "Akü ayrıkken multimetre: artı ile eksi arasında kısa devre yok",
-"Tezgâhta (kart takılmadan, B3 / B5a öncesi): XL4016 A / B / C 6 V, çevre 5 V'a ayarlandı; akım sınırlı tezgâh kaynağıyla 12 V giriş, yüksüz, çıkış ölçülerek",
+"Tezgâhta (kart takılmadan, B3 / B5a öncesi; B3 ve B5a kontrolünde de var): XL4016 A / B / C 6 V, çevre 5 V'a ayarlandı; akım sınırlı tezgâh kaynağıyla 12 V giriş, yüksüz, çıkış ölçülerek",
 "Mantar ve ana anahtar uçları köprülenmedi; boştaki ana hat uçları bantlı, akü XT60 ayrık",
 "Röle bobinine ters paralel 1N4007 takılı (MAH-112-C-4 dahili diyot yazmıyor)",
 "Hızlı klemens en çok 2,5 mm²: 12 AWG ana hatta kullanma",
 "BTS7960B kartının pin adları şemadakinden farklı olabilir: kart üstü yazıya göre bağla",
 "İsim karıştırma: burada K1 / K2 röle adıdır; Kablolama kapısı K1 / K2 ayrı şey",
-"Tezgâhta (akım sınırlı tezgâh kaynağıyla): PC817 modülü 3,3 V'ta ölçüldü: LOW < 0,4 V, HIGH > 2,5 V; tutmazsa `elektrik.md` E3'teki yedek devre",
+"Tezgâhta (arayüz kartı takılmadan, B6a öncesi; akım sınırlı tezgâh kaynağıyla): PC817 modülü 3,3 V'ta ölçüldü: LOW < 0,4 V, HIGH > 2,5 V; tutmazsa `elektrik.md` E3'teki yedek devre",
 "Akü ayrıkken: bara kapasitesi multimetrenin kapasite kademesiyle ölçüldü (ön şarj değeri için)",
-"Motor yön testi ve ilk açılışta BMS gözlemi burada değil: F1 \"İlk enerji\""
+"İlk açılış ve BMS gözlemi burada değil: F1 \"İlk enerji, aşama 1\"; devreye alma ve motor yön testi F5 \"İlk enerji, aşama 2\""
 ],
 "kablo": [
 "Burada: 12 V ana hat, toprak, iki motor hattı, çevre 5 V, acil stop, sonar sinyal. Şemada renkli",
@@ -4214,7 +4217,7 @@
 ],
 "kontrol": [
 "Acil stop NP2 BE102: CAD 60 mm; delik gerçek parçayla tutuyor mu bak",
-"İlk enerji (F1 sonu): ana anahtar ve mantar bağlı, ana sigorta takılı, F3 (kafa) takılı değil; tekerlekler yerden kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Ana anahtarı aç: BMS kesiyor mu gözle (röle K1 açık, yalnız F3 / F4 / F5 girişleri). Devreye alma ön şarjla: röle K2 → 300 ms → röle K1 (ESP32 yazılımı). Mantara basınca iki röle de düşüyor. Motor yön testi: her yan ileri komutta ileri döner. Bitince ana anahtarı kapat, aküyü XT60'tan ayır (`planlama/adim3/elektrik.md` E9). Bu sıra ve \"yerden kesik\" düzeni bu adım için kaynakta yok, doğrulanmadı"
+"İlk enerji, aşama 1 (F1 sonu, kafasız): ana anahtar ve mantar bağlı. Saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken ana sigortayı (30 A), F4 (5 A, XL4016 çevre 5 V: ESP32) ve F5 (2 A, acil stop: mantar, röle bobinleri) tak. F1 (20 A: röle K1 ve ön şarj kolu K2), F3 (5 A, kafa), XL4016 hat sigortaları (A 7,5 A, B 7,5 A, C 5 A) ve göğüs ekranı mini 2 A takılı değil (`planlama/adim3/elektrik.md` sigorta listesi): anahtarlı bara, kafa ve göğüs ekranı dalı enerjisiz, Pi enerjisiz. Devreye alma komutu Pi'den gelir (E3). ESP32'deki program bilinmiyor: K2'yi süren GPIO2 kartın LED pini (E9), LED yakıp söndüren hazır bir program K2'yi açıp kapatabilir. F1 takılı olmadığı için röle K1 ve K2'nin kontakları enerjisiz, anahtarlı bara enerjisiz kalır. Tekerlekler yerden kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Mantar ölçümü: akü ayrıkken multimetrenin kırmızı ucunu arayüz kartındaki PC817 #1 giriş klemensine (mantar sonrası düğüm, E3), siyah ucunu güç panelindeki WAGO GND yıldız noktasına bağla. Ölçü kıskacını mantar uçlarına takma. Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 takılı olmadığı için yalnız F4 / F5 girişleri, tam açılış aşama 2'de). Mantara basınca PC817 #1 girişi 0 V, bırakınca akü gerilimi (12,8–14,4 V). Bitince ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök. Devreye alma, ön şarj ve motor yön testi F5'te (İlk enerji, aşama 2). Bu aşamalar, sigorta sırası, ölçü noktası ve \"yerden kesik\" düzeni bu adım için kaynakta yok, doğrulanmadı"
 ],
 "kablo": [
 "Etek bandını takarken K1 hatları sıkışmasın"
@@ -4477,7 +4480,7 @@
 "no": "35",
 "faz": "Kabuk ve etek",
 "baslik": "Göğüs bantları + göğüs ekranı",
-"is_": "1. Göğüs bantları sağ + sol, dikiş y 1005. Bindirmeleri bağla (x = 0'da cep altı y 1022,7 ve cep üstü y 1222 dahil), y 1095 braketine dışarıdan M5×18 tak.\n2. VESA taşıyıcı (PETG-CF): ekran cebinden direğin ön (+Z) kanalına, 2 × M6×18 + pul + çekiç somun. Yükseklik kanalda ayarlanır; cıvatalara ekran takılmadan, plakanın ortasından ulaşılır.\n3. 11,6\" ekranı (kasalı) cebe koy. 12 V fişini takmadan önce regülatör çıkışını yeniden ölç: 12 V (K2'de ayarlandı; ölçünce enerjiyi kes). Sonra K2'de bırakılan HDMI ve 12 V uçlarını enerjisizken tak (90° fişler).\n4. Ekranı taşıyıcıya arkadan 4 × M4×12 + pul ile bağla (VESA 75 × 75): üst arka servis kapağı açık, direğin yanından.\n5. Çerçeve sağ + sol: göğüs bandına dışarıdan, yarı başına 4 × M3×6 ISO 7380, çerçeve flanşındaki ısıl gömmeye. Ekran camı çerçevenin 2 mm gerisinde, köşe takozlarına dayalı.\nNextion kalktı. Bu sıra kaynaktaki erişim notlarından çıkarıldı, doğrulanmadı.",
+"is_": "1. Göğüs bantları sağ + sol, dikiş y 1005. Bindirmeleri bağla (x = 0'da cep altı y 1022,7 ve cep üstü y 1222 dahil), y 1095 braketine dışarıdan M5×18 tak.\n2. VESA taşıyıcı (PETG-CF): ekran cebinden direğin ön (+Z) kanalına, 2 × M6×18 + pul + çekiç somun. Yükseklik kanalda ayarlanır; cıvatalara ekran takılmadan, plakanın ortasından ulaşılır.\n3. 11,6\" ekranı (kasalı) cebe koy. Akü XT60 ayrık, ana anahtar kapalıyken göğüs ekranı mini 2 A sigortasını tak (F1 aşama 1'de takılı değildi; dal girişi K11'in varsayılanı a: ana anahtar sonrası, röle öncesi; b seçilirse bu ölçüm F5 aşama 2'ye kalır, doğrulanmadı). 12 V fişini takmadan önce regülatör çıkışını yeniden ölç: 12 V (K2'de ayarlandı; ölçünce enerjiyi kes). Sonra K2'de bırakılan HDMI ve 12 V uçlarını enerjisizken tak (90° fişler).\n4. Ekranı taşıyıcıya arkadan 4 × M4×12 + pul ile bağla (VESA 75 × 75): üst arka servis kapağı açık, direğin yanından.\n5. Çerçeve sağ + sol: göğüs bandına dışarıdan, yarı başına 4 × M3×6 ISO 7380, çerçeve flanşındaki ısıl gömmeye. Ekran camı çerçevenin 2 mm gerisinde, köşe takozlarına dayalı.\nNextion kalktı. Bu sıra kaynaktaki erişim notlarından çıkarıldı, doğrulanmadı.",
 "baglanti_md": "1,58 m: bindirme M3×6 ISO 7380; y 1095 M5×18 ISO 7380 + M5 perçin somun. Ekran: taşıyıcı 2 × M6×18 DIN 912 + pul + çekiç somun; kasa 4 × M4×12 DIN 912 + DIN 125 pul; çerçeve 8 × M3×6 ISO 7380 → ısıl gömme. M6'daki Nextion DIN 912'leri eski",
 "alet": "alyan 2 / 3 / 5",
 "erisim": "Bant, çerçeve: düz, dışarıdan. Taşıyıcı M6: cepten, ekran takılmadan. VESA M4: arkadan, üst arka kapak açıkken direk yanından (`lale158/lale158_rapor.py` bağlantı tablosu; 1,58 m'de alet erişimi ölçülmedi)",
@@ -5774,7 +5777,7 @@
 "no": "—",
 "faz": "Son",
 "baslik": "Servis kapakları (test sonrası)",
-"is_": "1. 4'lü USB hub üst arka servis kapağının içinde: hub'ı kapağın takozuna, iki yan dayamanın arasına 1 mm köpük bantla yapıştır. Bağla: hub kablosu ← Pi USB 3'ten boyundan gelen uzatma (K2), Hub 1 → göğüs ekranı dokunmatiği (F3'te boşta bırakılan USB), Hub 2 → ESP32 USB (K2'de direk arka yüzünden çıkarılan uç; 1N5819 yönü K2 madde 4). Hub 3 ve 4 boş. Hub'ın anahtarı açık kalmalı.\n2. Devreye alma testi kapaklar açıkken yapılır; hub bu testte bağlı olmalı (ESP32 ile Pi hub üzerinden konuşur).\n3. Testten sonra kapat: arka servis kapağı, üst arka servis kapağı (hub'la birlikte), etek H1 ve H2.\nH1 sigorta kutusuna açılır: uç yuvalar yedek, sık değişen F1, F3, F4, F5 ortada (29.10).",
+"is_": "1. 4'lü USB hub üst arka servis kapağının içinde: hub'ı kapağın takozuna, iki yan dayamanın arasına 1 mm köpük bantla yapıştır. Bağla: hub kablosu ← Pi USB 3'ten boyundan gelen uzatma (K2), Hub 1 → göğüs ekranı dokunmatiği (F3'te boşta bırakılan USB), Hub 2 → ESP32 USB (K2'de direk arka yüzünden çıkarılan uç; 1N5819 yönü K2 madde 4). Hub 3 ve 4 boş. Hub'ın anahtarı açık kalmalı.\n2. İlk enerji, aşama 2 (devreye alma testi): kapaklar açık, hub bağlı (ESP32 ile Pi hub üzerinden konuşur). Saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken F1 (20 A), F3 (5 A, kafa) ve XL4016 hat sigortalarını (A 7,5 A, B 7,5 A, C 5 A) tak (`planlama/adim3/elektrik.md` sigorta listesi). Tekerlekler yerden kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Kollar aşağıda başlar: mantara basınca servo gücü de kesilir ve kollar düşer (E3 DTR / RTS notu). Kolların erişim alanında ve düşme hattında, kafanın ve tekerlerin erişim alanında kimse yok, bir kişi yalnız mantarda (kural 1 ve 7). Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 / F4 / F5 girişleri, Pololu dahil; K11 a ise göğüs ekranı dalı da). Pi açılır; ESP32, Pi seri portu açılınca resetlenmemeli (boot mesajı yok; E3 DTR / RTS). Pi'den devreye al, ESP32 ön şarj dizisi (E9): ön koşul (mantar serbest, servo hedefleri son konumda, BTS EN = 0 ve PWM = 0) → röle K2 → 300 ms → PC817 #2 LOW (bara var) → röle K1 → 100 ms sonra K2 bırakılır → PC817 #2 LOW teyidi. Mantara basınca K1 düşer (K2 devreye almadan 100 ms sonra zaten bırakıldı), anahtarlı bara kesilir (PC817 #2 HIGH), kollar düşer. Mantarı bırak: röle kendiliğinden çekmez, yeniden devreye alma yalnız Pi komutuyla. Motor yön testi: her yan ileri komutta ileri döner; dönen tekere el uzatılmaz. Bitince ana anahtarı kapat, aküyü XT60'tan ayır (`planlama/adim3/elektrik.md` E3, E9). Bu adımdaki sıra kaynakta yok, doğrulanmadı.\n3. Testten sonra kapat: arka servis kapağı, üst arka servis kapağı (hub'la birlikte), etek H1 ve H2.\nH1 sigorta kutusuna açılır: uç yuvalar yedek, sık değişen F1, F3, F4, F5 ortada (29.10).",
 "baglanti_md": "1,58 m: arka kapak 7 × M3×6 ISO 7380; üst arka kapak 7 × M3×6 ISO 7380; H1 4 × M3×6 (x ±50); H2 4 × M3×6; hepsi ısıl gömmeye. Hub: 1 mm köpük bant (kapak takozunda). Üst kapak, H2 ve hub M6'da yok",
 "alet": "alyan 2",
 "erisim": "Düz. Hub kapağın iç yüzünde: kapak açıkken bağlanır",
@@ -5912,6 +5915,7 @@
 ],
 "kontrol": [
 "Hub köpük banda oturdu, yan dayamalar arasında; anahtarı açık",
+"İlk enerji, aşama 2 (madde 2): BMS kesmedi; ön şarj dizisi PC817 #2 teyidiyle bitti; mantara basınca K1 düştü, bara kesildi; her yan ileri komutta ileri döndü; sonunda akü XT60'tan ayrıldı",
 "Testte ESP32 ve göğüs dokunmatiği hub üzerinden görünüyor",
 "Kapak açılınca hub'a bağlı üç kablo gerilmiyor (yaklaşık 150 mm söküm payı)",
 "E7 ve kafa ısı ölçümü kabuk kapalı yapıldı (kafada hesap ≈ 49 °C, ölçülmedi)",
@@ -5921,6 +5925,7 @@
 "Hub: Pi USB 3 → boyun → hub (uzatma), Hub 1 → göğüs dokunmatiği, Hub 2 → ESP32. Hub kapanırsa ESP32 ve göğüs dokunmatiği birlikte düşer"
 ],
 "not_": [
+"Ön şarj dizisi ESP32 yazılımında (`planlama/adim3/elektrik.md` E9, adım 1–6): yazılım hazır değilse aşama 2 yapılmaz, röleler elle kapatılmaz (kaynakta yok, doğrulanmadı)",
 "Hub'ın kapakla birlikte açılması ve 150 mm söküm payı tahmin; testten önce hub bağlantısının yapılması montaj mantığından, kaynakta sıra yok: doğrulanmadı",
 "Hub girişindeki gerilim ölçülmedi (hub USB'den beslenir)",
 "Altıncı USB cihazı karar bekliyor (K1): şimdilik hub'da 2 port boş"
@@ -7176,7 +7181,7 @@
 },
 {
 "id": "p0064",
-"ad": "S1 kulak cıvatası M4x001",
+"ad": "S1 kulak cıvatası M4x16",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M4x16 DIN 912",
@@ -7200,7 +7205,7 @@
 },
 {
 "id": "p0065",
-"ad": "S1 kontra somun M001",
+"ad": "S1 kontra somun M4",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M4 DIN 985 kontra somun",
@@ -7224,7 +7229,7 @@
 },
 {
 "id": "p0066",
-"ad": "S1 kulak cıvatası M4x002",
+"ad": "S1 kulak cıvatası M4x16",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M4x16 DIN 912",
@@ -7248,7 +7253,7 @@
 },
 {
 "id": "p0067",
-"ad": "S1 kontra somun M002",
+"ad": "S1 kontra somun M4",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M4 DIN 985 kontra somun",
@@ -7272,7 +7277,7 @@
 },
 {
 "id": "p0068",
-"ad": "S1 kulak cıvatası M4x003",
+"ad": "S1 kulak cıvatası M4x16",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M4x16 DIN 912",
@@ -7296,7 +7301,7 @@
 },
 {
 "id": "p0069",
-"ad": "S1 kontra somun M003",
+"ad": "S1 kontra somun M4",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M4 DIN 985 kontra somun",
@@ -7358,7 +7363,7 @@
 },
 {
 "id": "p0072",
-"ad": "Yuva bağlantı cıvatası M6x001",
+"ad": "Yuva bağlantı cıvatası M6x16",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M6x16 DIN 912",
@@ -7377,7 +7382,7 @@
 },
 {
 "id": "p0073",
-"ad": "Çekiç somun M6 (kanal 10)001",
+"ad": "Çekiç somun M6 (kanal 10)",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M6 çekiç somun, kanal 10",
@@ -7396,7 +7401,7 @@
 },
 {
 "id": "p0074",
-"ad": "Yuva bağlantı cıvatası M6x002",
+"ad": "Yuva bağlantı cıvatası M6x16",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M6x16 DIN 912",
@@ -7415,7 +7420,7 @@
 },
 {
 "id": "p0075",
-"ad": "Çekiç somun M6 (kanal 10)002",
+"ad": "Çekiç somun M6 (kanal 10)",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M6 çekiç somun, kanal 10",
@@ -7434,7 +7439,7 @@
 },
 {
 "id": "p0076",
-"ad": "Yuva bağlantı cıvatası M6x003",
+"ad": "Yuva bağlantı cıvatası M6x16",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M6x16 DIN 912",
@@ -7453,7 +7458,7 @@
 },
 {
 "id": "p0077",
-"ad": "Çekiç somun M6 (kanal 10)003",
+"ad": "Çekiç somun M6 (kanal 10)",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M6 çekiç somun, kanal 10",
@@ -7568,7 +7573,7 @@
 },
 {
 "id": "p0082",
-"ad": "Kapak cıvatası M3x001",
+"ad": "Kapak cıvatası M3x12",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M3x12 DIN 912",
@@ -7592,7 +7597,7 @@
 },
 {
 "id": "p0083",
-"ad": "Isıl gömme somun M3 (yuvada)001",
+"ad": "Isıl gömme somun M3 (yuvada)",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M3 ısıl gömme somun",
@@ -7616,7 +7621,7 @@
 },
 {
 "id": "p0084",
-"ad": "Kapak cıvatası M3x002",
+"ad": "Kapak cıvatası M3x12",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M3x12 DIN 912",
@@ -7640,7 +7645,7 @@
 },
 {
 "id": "p0085",
-"ad": "Isıl gömme somun M3 (yuvada)002",
+"ad": "Isıl gömme somun M3 (yuvada)",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M3 ısıl gömme somun",
@@ -7664,7 +7669,7 @@
 },
 {
 "id": "p0086",
-"ad": "Kapak cıvatası M3x003",
+"ad": "Kapak cıvatası M3x12",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M3x12 DIN 912",
@@ -7688,7 +7693,7 @@
 },
 {
 "id": "p0087",
-"ad": "Isıl gömme somun M3 (yuvada)003",
+"ad": "Isıl gömme somun M3 (yuvada)",
 "modul": "omuz_sag",
 "grup": "Govde_sabit",
 "kod": "M3 ısıl gömme somun",
@@ -7822,7 +7827,7 @@
 },
 {
 "id": "p0093",
-"ad": "Göbek-horn cıvatası M3x001",
+"ad": "Göbek-horn cıvatası M3x12",
 "modul": "omuz_sag",
 "grup": "Omuz_gobegi_doner",
 "kod": "M3x12 DIN 912",
@@ -7841,7 +7846,7 @@
 },
 {
 "id": "p0094",
-"ad": "Göbek-horn cıvatası M3x002",
+"ad": "Göbek-horn cıvatası M3x12",
 "modul": "omuz_sag",
 "grup": "Omuz_gobegi_doner",
 "kod": "M3x12 DIN 912",
@@ -7860,7 +7865,7 @@
 },
 {
 "id": "p0095",
-"ad": "Göbek-horn cıvatası M3x003",
+"ad": "Göbek-horn cıvatası M3x12",
 "modul": "omuz_sag",
 "grup": "Omuz_gobegi_doner",
 "kod": "M3x12 DIN 912",
@@ -7951,7 +7956,7 @@
 },
 {
 "id": "p0099",
-"ad": "Tambur cıvatası M3x001",
+"ad": "Tambur cıvatası M3x8",
 "modul": "omuz_sag",
 "grup": "Omuz_gobegi_doner",
 "kod": "M3x8 DIN 912",
@@ -7975,7 +7980,7 @@
 },
 {
 "id": "p0100",
-"ad": "Isıl gömme somun M3 (göbekte)001",
+"ad": "Isıl gömme somun M3 (göbekte)",
 "modul": "omuz_sag",
 "grup": "Omuz_gobegi_doner",
 "kod": "M3 ısıl gömme somun",
@@ -7999,7 +8004,7 @@
 },
 {
 "id": "p0101",
-"ad": "Tambur cıvatası M3x002",
+"ad": "Tambur cıvatası M3x8",
 "modul": "omuz_sag",
 "grup": "Omuz_gobegi_doner",
 "kod": "M3x8 DIN 912",
@@ -8023,7 +8028,7 @@
 },
 {
 "id": "p0102",
-"ad": "Isıl gömme somun M3 (göbekte)002",
+"ad": "Isıl gömme somun M3 (göbekte)",
 "modul": "omuz_sag",
 "grup": "Omuz_gobegi_doner",
 "kod": "M3 ısıl gömme somun",
@@ -8066,7 +8071,7 @@
 },
 {
 "id": "p0104",
-"ad": "S1 tambur bağlama ipi001",
+"ad": "S1 tambur bağlama ipi",
 "modul": "omuz_sag",
 "grup": "Omuz_gobegi_doner",
 "kod": "Ø0,4 mumlu polyester bağlama ipi (ilmek ~16 mm + düğüm)",
@@ -8161,7 +8166,7 @@
 },
 {
 "id": "p0109",
-"ad": "S2 kulak cıvatası M4x001",
+"ad": "S2 kulak cıvatası M4x16",
 "modul": "omuz_sag",
 "grup": "Omuz_gobegi_doner",
 "kod": "M4x16 DIN 912",
@@ -8180,7 +8185,7 @@
 },
 {
 "id": "p0110",
-"ad": "S2 kontra somun M001",
+"ad": "S2 kontra somun M4",
 "modul": "omuz_sag",
 "grup": "Omuz_gobegi_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -8199,7 +8204,7 @@
 },
 {
 "id": "p0111",
-"ad": "S2 kulak cıvatası M4x002",
+"ad": "S2 kulak cıvatası M4x16",
 "modul": "omuz_sag",
 "grup": "Omuz_gobegi_doner",
 "kod": "M4x16 DIN 912",
@@ -8218,7 +8223,7 @@
 },
 {
 "id": "p0112",
-"ad": "S2 kontra somun M002",
+"ad": "S2 kontra somun M4",
 "modul": "omuz_sag",
 "grup": "Omuz_gobegi_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -8237,7 +8242,7 @@
 },
 {
 "id": "p0113",
-"ad": "S2 kulak cıvatası M4x003",
+"ad": "S2 kulak cıvatası M4x16",
 "modul": "omuz_sag",
 "grup": "Omuz_gobegi_doner",
 "kod": "M4x16 DIN 912",
@@ -8256,7 +8261,7 @@
 },
 {
 "id": "p0114",
-"ad": "S2 kontra somun M003",
+"ad": "S2 kontra somun M4",
 "modul": "omuz_sag",
 "grup": "Omuz_gobegi_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -8446,7 +8451,7 @@
 },
 {
 "id": "p0124",
-"ad": "Çatal-horn cıvatası M3x001",
+"ad": "Çatal-horn cıvatası M3x8",
 "modul": "omuz_sag",
 "grup": "Ust_kol_doner",
 "kod": "M3x8 DIN 912",
@@ -8465,7 +8470,7 @@
 },
 {
 "id": "p0125",
-"ad": "Çatal-horn cıvatası M3x002",
+"ad": "Çatal-horn cıvatası M3x8",
 "modul": "omuz_sag",
 "grup": "Ust_kol_doner",
 "kod": "M3x8 DIN 912",
@@ -8484,7 +8489,7 @@
 },
 {
 "id": "p0126",
-"ad": "Çatal-horn cıvatası M3x003",
+"ad": "Çatal-horn cıvatası M3x8",
 "modul": "omuz_sag",
 "grup": "Ust_kol_doner",
 "kod": "M3x8 DIN 912",
@@ -8560,7 +8565,7 @@
 },
 {
 "id": "p0130",
-"ad": "Isıl gömme somun M3 (çatalda)001",
+"ad": "Isıl gömme somun M3 (çatalda)",
 "modul": "omuz_sag",
 "grup": "Ust_kol_doner",
 "kod": "M3 ısıl gömme somun",
@@ -8579,7 +8584,7 @@
 },
 {
 "id": "p0131",
-"ad": "Tüp cıvatası M3x001",
+"ad": "Tüp cıvatası M3x8",
 "modul": "omuz_sag",
 "grup": "Ust_kol_doner",
 "kod": "M3x8 DIN 912",
@@ -8718,7 +8723,7 @@
 },
 {
 "id": "p0137",
-"ad": "S1 kulak cıvatası M4x001",
+"ad": "S1 kulak cıvatası M4x16",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M4x16 DIN 912",
@@ -8742,7 +8747,7 @@
 },
 {
 "id": "p0138",
-"ad": "S1 kontra somun M001",
+"ad": "S1 kontra somun M4",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M4 DIN 985 kontra somun",
@@ -8766,7 +8771,7 @@
 },
 {
 "id": "p0139",
-"ad": "S1 kulak cıvatası M4x002",
+"ad": "S1 kulak cıvatası M4x16",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M4x16 DIN 912",
@@ -8790,7 +8795,7 @@
 },
 {
 "id": "p0140",
-"ad": "S1 kontra somun M002",
+"ad": "S1 kontra somun M4",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M4 DIN 985 kontra somun",
@@ -8814,7 +8819,7 @@
 },
 {
 "id": "p0141",
-"ad": "S1 kulak cıvatası M4x003",
+"ad": "S1 kulak cıvatası M4x16",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M4x16 DIN 912",
@@ -8838,7 +8843,7 @@
 },
 {
 "id": "p0142",
-"ad": "S1 kontra somun M003",
+"ad": "S1 kontra somun M4",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M4 DIN 985 kontra somun",
@@ -8900,7 +8905,7 @@
 },
 {
 "id": "p0145",
-"ad": "Yuva bağlantı cıvatası M6x001",
+"ad": "Yuva bağlantı cıvatası M6x16",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M6x16 DIN 912",
@@ -8919,7 +8924,7 @@
 },
 {
 "id": "p0146",
-"ad": "Çekiç somun M6 (kanal 10)001",
+"ad": "Çekiç somun M6 (kanal 10)",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M6 çekiç somun, kanal 10",
@@ -8938,7 +8943,7 @@
 },
 {
 "id": "p0147",
-"ad": "Yuva bağlantı cıvatası M6x002",
+"ad": "Yuva bağlantı cıvatası M6x16",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M6x16 DIN 912",
@@ -8957,7 +8962,7 @@
 },
 {
 "id": "p0148",
-"ad": "Çekiç somun M6 (kanal 10)002",
+"ad": "Çekiç somun M6 (kanal 10)",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M6 çekiç somun, kanal 10",
@@ -8976,7 +8981,7 @@
 },
 {
 "id": "p0149",
-"ad": "Yuva bağlantı cıvatası M6x003",
+"ad": "Yuva bağlantı cıvatası M6x16",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M6x16 DIN 912",
@@ -8995,7 +9000,7 @@
 },
 {
 "id": "p0150",
-"ad": "Çekiç somun M6 (kanal 10)003",
+"ad": "Çekiç somun M6 (kanal 10)",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M6 çekiç somun, kanal 10",
@@ -9110,7 +9115,7 @@
 },
 {
 "id": "p0155",
-"ad": "Kapak cıvatası M3x001",
+"ad": "Kapak cıvatası M3x12",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M3x12 DIN 912",
@@ -9134,7 +9139,7 @@
 },
 {
 "id": "p0156",
-"ad": "Isıl gömme somun M3 (yuvada)001",
+"ad": "Isıl gömme somun M3 (yuvada)",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M3 ısıl gömme somun",
@@ -9158,7 +9163,7 @@
 },
 {
 "id": "p0157",
-"ad": "Kapak cıvatası M3x002",
+"ad": "Kapak cıvatası M3x12",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M3x12 DIN 912",
@@ -9182,7 +9187,7 @@
 },
 {
 "id": "p0158",
-"ad": "Isıl gömme somun M3 (yuvada)002",
+"ad": "Isıl gömme somun M3 (yuvada)",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M3 ısıl gömme somun",
@@ -9206,7 +9211,7 @@
 },
 {
 "id": "p0159",
-"ad": "Kapak cıvatası M3x003",
+"ad": "Kapak cıvatası M3x12",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M3x12 DIN 912",
@@ -9230,7 +9235,7 @@
 },
 {
 "id": "p0160",
-"ad": "Isıl gömme somun M3 (yuvada)003",
+"ad": "Isıl gömme somun M3 (yuvada)",
 "modul": "omuz_sol",
 "grup": "Govde_sabit",
 "kod": "M3 ısıl gömme somun",
@@ -9364,7 +9369,7 @@
 },
 {
 "id": "p0166",
-"ad": "Göbek-horn cıvatası M3x001",
+"ad": "Göbek-horn cıvatası M3x12",
 "modul": "omuz_sol",
 "grup": "Omuz_gobegi_doner",
 "kod": "M3x12 DIN 912",
@@ -9383,7 +9388,7 @@
 },
 {
 "id": "p0167",
-"ad": "Göbek-horn cıvatası M3x002",
+"ad": "Göbek-horn cıvatası M3x12",
 "modul": "omuz_sol",
 "grup": "Omuz_gobegi_doner",
 "kod": "M3x12 DIN 912",
@@ -9402,7 +9407,7 @@
 },
 {
 "id": "p0168",
-"ad": "Göbek-horn cıvatası M3x003",
+"ad": "Göbek-horn cıvatası M3x12",
 "modul": "omuz_sol",
 "grup": "Omuz_gobegi_doner",
 "kod": "M3x12 DIN 912",
@@ -9493,7 +9498,7 @@
 },
 {
 "id": "p0172",
-"ad": "Tambur cıvatası M3x001",
+"ad": "Tambur cıvatası M3x8",
 "modul": "omuz_sol",
 "grup": "Omuz_gobegi_doner",
 "kod": "M3x8 DIN 912",
@@ -9517,7 +9522,7 @@
 },
 {
 "id": "p0173",
-"ad": "Isıl gömme somun M3 (göbekte)001",
+"ad": "Isıl gömme somun M3 (göbekte)",
 "modul": "omuz_sol",
 "grup": "Omuz_gobegi_doner",
 "kod": "M3 ısıl gömme somun",
@@ -9541,7 +9546,7 @@
 },
 {
 "id": "p0174",
-"ad": "Tambur cıvatası M3x002",
+"ad": "Tambur cıvatası M3x8",
 "modul": "omuz_sol",
 "grup": "Omuz_gobegi_doner",
 "kod": "M3x8 DIN 912",
@@ -9565,7 +9570,7 @@
 },
 {
 "id": "p0175",
-"ad": "Isıl gömme somun M3 (göbekte)002",
+"ad": "Isıl gömme somun M3 (göbekte)",
 "modul": "omuz_sol",
 "grup": "Omuz_gobegi_doner",
 "kod": "M3 ısıl gömme somun",
@@ -9608,7 +9613,7 @@
 },
 {
 "id": "p0177",
-"ad": "S1 tambur bağlama ipi001",
+"ad": "S1 tambur bağlama ipi",
 "modul": "omuz_sol",
 "grup": "Omuz_gobegi_doner",
 "kod": "Ø0,4 mumlu polyester bağlama ipi (ilmek ~16 mm + düğüm)",
@@ -9703,7 +9708,7 @@
 },
 {
 "id": "p0182",
-"ad": "S2 kulak cıvatası M4x001",
+"ad": "S2 kulak cıvatası M4x16",
 "modul": "omuz_sol",
 "grup": "Omuz_gobegi_doner",
 "kod": "M4x16 DIN 912",
@@ -9722,7 +9727,7 @@
 },
 {
 "id": "p0183",
-"ad": "S2 kontra somun M001",
+"ad": "S2 kontra somun M4",
 "modul": "omuz_sol",
 "grup": "Omuz_gobegi_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -9741,7 +9746,7 @@
 },
 {
 "id": "p0184",
-"ad": "S2 kulak cıvatası M4x002",
+"ad": "S2 kulak cıvatası M4x16",
 "modul": "omuz_sol",
 "grup": "Omuz_gobegi_doner",
 "kod": "M4x16 DIN 912",
@@ -9760,7 +9765,7 @@
 },
 {
 "id": "p0185",
-"ad": "S2 kontra somun M002",
+"ad": "S2 kontra somun M4",
 "modul": "omuz_sol",
 "grup": "Omuz_gobegi_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -9779,7 +9784,7 @@
 },
 {
 "id": "p0186",
-"ad": "S2 kulak cıvatası M4x003",
+"ad": "S2 kulak cıvatası M4x16",
 "modul": "omuz_sol",
 "grup": "Omuz_gobegi_doner",
 "kod": "M4x16 DIN 912",
@@ -9798,7 +9803,7 @@
 },
 {
 "id": "p0187",
-"ad": "S2 kontra somun M003",
+"ad": "S2 kontra somun M4",
 "modul": "omuz_sol",
 "grup": "Omuz_gobegi_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -9988,7 +9993,7 @@
 },
 {
 "id": "p0197",
-"ad": "Çatal-horn cıvatası M3x001",
+"ad": "Çatal-horn cıvatası M3x8",
 "modul": "omuz_sol",
 "grup": "Ust_kol_doner",
 "kod": "M3x8 DIN 912",
@@ -10007,7 +10012,7 @@
 },
 {
 "id": "p0198",
-"ad": "Çatal-horn cıvatası M3x002",
+"ad": "Çatal-horn cıvatası M3x8",
 "modul": "omuz_sol",
 "grup": "Ust_kol_doner",
 "kod": "M3x8 DIN 912",
@@ -10026,7 +10031,7 @@
 },
 {
 "id": "p0199",
-"ad": "Çatal-horn cıvatası M3x003",
+"ad": "Çatal-horn cıvatası M3x8",
 "modul": "omuz_sol",
 "grup": "Ust_kol_doner",
 "kod": "M3x8 DIN 912",
@@ -10102,7 +10107,7 @@
 },
 {
 "id": "p0203",
-"ad": "Isıl gömme somun M3 (çatalda)001",
+"ad": "Isıl gömme somun M3 (çatalda)",
 "modul": "omuz_sol",
 "grup": "Ust_kol_doner",
 "kod": "M3 ısıl gömme somun",
@@ -10121,7 +10126,7 @@
 },
 {
 "id": "p0204",
-"ad": "Tüp cıvatası M3x001",
+"ad": "Tüp cıvatası M3x8",
 "modul": "omuz_sol",
 "grup": "Ust_kol_doner",
 "kod": "M3x8 DIN 912",
@@ -10824,7 +10829,7 @@
 },
 {
 "id": "p0241",
-"ad": "Isıl gömme somun M3 (gövde y476 ön)001",
+"ad": "Isıl gömme somun M3 (gövde y476 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -10843,7 +10848,7 @@
 },
 {
 "id": "p0242",
-"ad": "Bindirme cıvatası M3x6 (gövde y476 ön)001",
+"ad": "Bindirme cıvatası M3x6 (gövde y476 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -10900,7 +10905,7 @@
 },
 {
 "id": "p0245",
-"ad": "Isıl gömme somun M3 (gövde y476 arka)001",
+"ad": "Isıl gömme somun M3 (gövde y476 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -10919,7 +10924,7 @@
 },
 {
 "id": "p0246",
-"ad": "Bindirme cıvatası M3x6 (gövde y476 arka)001",
+"ad": "Bindirme cıvatası M3x6 (gövde y476 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -10976,7 +10981,7 @@
 },
 {
 "id": "p0249",
-"ad": "Isıl gömme somun M3 (gövde y476 yan)001",
+"ad": "Isıl gömme somun M3 (gövde y476 yan)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -10995,7 +11000,7 @@
 },
 {
 "id": "p0250",
-"ad": "Bindirme cıvatası M3x6 (gövde y476 yan)001",
+"ad": "Bindirme cıvatası M3x6 (gövde y476 yan)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -11052,7 +11057,7 @@
 },
 {
 "id": "p0253",
-"ad": "Isıl gömme somun M3 (gövde y634 ön)001",
+"ad": "Isıl gömme somun M3 (gövde y634 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -11071,7 +11076,7 @@
 },
 {
 "id": "p0254",
-"ad": "Bindirme cıvatası M3x6 (gövde y634 ön)001",
+"ad": "Bindirme cıvatası M3x6 (gövde y634 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -11128,7 +11133,7 @@
 },
 {
 "id": "p0257",
-"ad": "Isıl gömme somun M3 (gövde y634 arka)001",
+"ad": "Isıl gömme somun M3 (gövde y634 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -11147,7 +11152,7 @@
 },
 {
 "id": "p0258",
-"ad": "Bindirme cıvatası M3x6 (gövde y634 arka)001",
+"ad": "Bindirme cıvatası M3x6 (gövde y634 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -11204,7 +11209,7 @@
 },
 {
 "id": "p0261",
-"ad": "Isıl gömme somun M3 (gövde y634 yan)001",
+"ad": "Isıl gömme somun M3 (gövde y634 yan)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -11223,7 +11228,7 @@
 },
 {
 "id": "p0262",
-"ad": "Bindirme cıvatası M3x6 (gövde y634 yan)001",
+"ad": "Bindirme cıvatası M3x6 (gövde y634 yan)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -11280,7 +11285,7 @@
 },
 {
 "id": "p0265",
-"ad": "Isıl gömme somun M3 (gövde y792 ön)001",
+"ad": "Isıl gömme somun M3 (gövde y792 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -11299,7 +11304,7 @@
 },
 {
 "id": "p0266",
-"ad": "Bindirme cıvatası M3x6 (gövde y792 ön)001",
+"ad": "Bindirme cıvatası M3x6 (gövde y792 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -11356,7 +11361,7 @@
 },
 {
 "id": "p0269",
-"ad": "Isıl gömme somun M3 (gövde y792 arka)001",
+"ad": "Isıl gömme somun M3 (gövde y792 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -11375,7 +11380,7 @@
 },
 {
 "id": "p0270",
-"ad": "Bindirme cıvatası M3x6 (gövde y792 arka)001",
+"ad": "Bindirme cıvatası M3x6 (gövde y792 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -11432,7 +11437,7 @@
 },
 {
 "id": "p0273",
-"ad": "Isıl gömme somun M3 (gövde y792 yan)001",
+"ad": "Isıl gömme somun M3 (gövde y792 yan)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -11451,7 +11456,7 @@
 },
 {
 "id": "p0274",
-"ad": "Bindirme cıvatası M3x6 (gövde y792 yan)001",
+"ad": "Bindirme cıvatası M3x6 (gövde y792 yan)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -11508,7 +11513,7 @@
 },
 {
 "id": "p0277",
-"ad": "Isıl gömme somun M3 (gövde y1005 ön)001",
+"ad": "Isıl gömme somun M3 (gövde y1005 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -11527,7 +11532,7 @@
 },
 {
 "id": "p0278",
-"ad": "Bindirme cıvatası M3x6 (gövde y1005 ön)001",
+"ad": "Bindirme cıvatası M3x6 (gövde y1005 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -11584,7 +11589,7 @@
 },
 {
 "id": "p0281",
-"ad": "Isıl gömme somun M3 (gövde y1005 arka)001",
+"ad": "Isıl gömme somun M3 (gövde y1005 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -11603,7 +11608,7 @@
 },
 {
 "id": "p0282",
-"ad": "Bindirme cıvatası M3x6 (gövde y1005 arka)001",
+"ad": "Bindirme cıvatası M3x6 (gövde y1005 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -11660,7 +11665,7 @@
 },
 {
 "id": "p0285",
-"ad": "Isıl gömme somun M3 (gövde y1005 yan)001",
+"ad": "Isıl gömme somun M3 (gövde y1005 yan)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -11679,7 +11684,7 @@
 },
 {
 "id": "p0286",
-"ad": "Bindirme cıvatası M3x6 (gövde y1005 yan)001",
+"ad": "Bindirme cıvatası M3x6 (gövde y1005 yan)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -11736,7 +11741,7 @@
 },
 {
 "id": "p0289",
-"ad": "Isıl gömme somun M3 (gövde y1198 arka)001",
+"ad": "Isıl gömme somun M3 (gövde y1198 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -11755,7 +11760,7 @@
 },
 {
 "id": "p0290",
-"ad": "Bindirme cıvatası M3x6 (gövde y1198 arka)001",
+"ad": "Bindirme cıvatası M3x6 (gövde y1198 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -11774,7 +11779,7 @@
 },
 {
 "id": "p0291",
-"ad": "Isıl gömme somun M3 (gövde y1198 arka)002",
+"ad": "Isıl gömme somun M3 (gövde y1198 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -11793,7 +11798,7 @@
 },
 {
 "id": "p0292",
-"ad": "Bindirme cıvatası M3x6 (gövde y1198 arka)002",
+"ad": "Bindirme cıvatası M3x6 (gövde y1198 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -11812,7 +11817,7 @@
 },
 {
 "id": "p0293",
-"ad": "Isıl gömme somun M3 (gövde y1198 arka)003",
+"ad": "Isıl gömme somun M3 (gövde y1198 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -11831,7 +11836,7 @@
 },
 {
 "id": "p0294",
-"ad": "Bindirme cıvatası M3x6 (gövde y1198 arka)003",
+"ad": "Bindirme cıvatası M3x6 (gövde y1198 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -11888,7 +11893,7 @@
 },
 {
 "id": "p0297",
-"ad": "Isıl gömme somun M3 (gövde y1198 ön)001",
+"ad": "Isıl gömme somun M3 (gövde y1198 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -11907,7 +11912,7 @@
 },
 {
 "id": "p0298",
-"ad": "Bindirme cıvatası M3x6 (gövde y1198 ön)001",
+"ad": "Bindirme cıvatası M3x6 (gövde y1198 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -11964,7 +11969,7 @@
 },
 {
 "id": "p0301",
-"ad": "Isıl gömme somun M3 (gövde x0 ön)001",
+"ad": "Isıl gömme somun M3 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -11983,7 +11988,7 @@
 },
 {
 "id": "p0302",
-"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)001",
+"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12002,7 +12007,7 @@
 },
 {
 "id": "p0303",
-"ad": "Isıl gömme somun M3 (gövde x0 ön)002",
+"ad": "Isıl gömme somun M3 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12021,7 +12026,7 @@
 },
 {
 "id": "p0304",
-"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)002",
+"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12040,7 +12045,7 @@
 },
 {
 "id": "p0305",
-"ad": "Isıl gömme somun M3 (gövde x0 ön)003",
+"ad": "Isıl gömme somun M3 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12059,7 +12064,7 @@
 },
 {
 "id": "p0306",
-"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)003",
+"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12078,7 +12083,7 @@
 },
 {
 "id": "p0307",
-"ad": "Isıl gömme somun M3 (gövde x0 ön)004",
+"ad": "Isıl gömme somun M3 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12097,7 +12102,7 @@
 },
 {
 "id": "p0308",
-"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)004",
+"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12116,7 +12121,7 @@
 },
 {
 "id": "p0309",
-"ad": "Isıl gömme somun M3 (gövde x0 ön)005",
+"ad": "Isıl gömme somun M3 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12135,7 +12140,7 @@
 },
 {
 "id": "p0310",
-"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)005",
+"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12154,7 +12159,7 @@
 },
 {
 "id": "p0311",
-"ad": "Isıl gömme somun M3 (gövde x0 ön)006",
+"ad": "Isıl gömme somun M3 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12173,7 +12178,7 @@
 },
 {
 "id": "p0312",
-"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)006",
+"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12192,7 +12197,7 @@
 },
 {
 "id": "p0313",
-"ad": "Isıl gömme somun M3 (gövde x0 ön)007",
+"ad": "Isıl gömme somun M3 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12211,7 +12216,7 @@
 },
 {
 "id": "p0314",
-"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)007",
+"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12230,7 +12235,7 @@
 },
 {
 "id": "p0315",
-"ad": "Isıl gömme somun M3 (gövde x0 ön)008",
+"ad": "Isıl gömme somun M3 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12249,7 +12254,7 @@
 },
 {
 "id": "p0316",
-"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)008",
+"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12268,7 +12273,7 @@
 },
 {
 "id": "p0317",
-"ad": "Isıl gömme somun M3 (gövde x0 ön)009",
+"ad": "Isıl gömme somun M3 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12287,7 +12292,7 @@
 },
 {
 "id": "p0318",
-"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)009",
+"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12306,7 +12311,7 @@
 },
 {
 "id": "p0319",
-"ad": "Isıl gömme somun M3 (gövde x0 ön)010",
+"ad": "Isıl gömme somun M3 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12325,7 +12330,7 @@
 },
 {
 "id": "p0320",
-"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)010",
+"ad": "Bindirme cıvatası M3x6 (gövde x0 ön)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12382,7 +12387,7 @@
 },
 {
 "id": "p0323",
-"ad": "Isıl gömme somun M3 (gövde x0 arka)001",
+"ad": "Isıl gömme somun M3 (gövde x0 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12401,7 +12406,7 @@
 },
 {
 "id": "p0324",
-"ad": "Bindirme cıvatası M3x6 (gövde x0 arka)001",
+"ad": "Bindirme cıvatası M3x6 (gövde x0 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12420,7 +12425,7 @@
 },
 {
 "id": "p0325",
-"ad": "Isıl gömme somun M3 (gövde x0 arka)002",
+"ad": "Isıl gömme somun M3 (gövde x0 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12439,7 +12444,7 @@
 },
 {
 "id": "p0326",
-"ad": "Bindirme cıvatası M3x6 (gövde x0 arka)002",
+"ad": "Bindirme cıvatası M3x6 (gövde x0 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12458,7 +12463,7 @@
 },
 {
 "id": "p0327",
-"ad": "Isıl gömme somun M3 (gövde x0 arka)003",
+"ad": "Isıl gömme somun M3 (gövde x0 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12477,7 +12482,7 @@
 },
 {
 "id": "p0328",
-"ad": "Bindirme cıvatası M3x6 (gövde x0 arka)003",
+"ad": "Bindirme cıvatası M3x6 (gövde x0 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12496,7 +12501,7 @@
 },
 {
 "id": "p0329",
-"ad": "Isıl gömme somun M3 (gövde x0 arka)004",
+"ad": "Isıl gömme somun M3 (gövde x0 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12515,7 +12520,7 @@
 },
 {
 "id": "p0330",
-"ad": "Bindirme cıvatası M3x6 (gövde x0 arka)004",
+"ad": "Bindirme cıvatası M3x6 (gövde x0 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12534,7 +12539,7 @@
 },
 {
 "id": "p0331",
-"ad": "Isıl gömme somun M3 (gövde x0 arka)005",
+"ad": "Isıl gömme somun M3 (gövde x0 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12553,7 +12558,7 @@
 },
 {
 "id": "p0332",
-"ad": "Bindirme cıvatası M3x6 (gövde x0 arka)005",
+"ad": "Bindirme cıvatası M3x6 (gövde x0 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12572,7 +12577,7 @@
 },
 {
 "id": "p0333",
-"ad": "Isıl gömme somun M3 (gövde x0 arka)006",
+"ad": "Isıl gömme somun M3 (gövde x0 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12591,7 +12596,7 @@
 },
 {
 "id": "p0334",
-"ad": "Bindirme cıvatası M3x6 (gövde x0 arka)006",
+"ad": "Bindirme cıvatası M3x6 (gövde x0 arka)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12648,7 +12653,7 @@
 },
 {
 "id": "p0337",
-"ad": "Isıl gömme somun M3 (arka kapak)001",
+"ad": "Isıl gömme somun M3 (arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12667,7 +12672,7 @@
 },
 {
 "id": "p0338",
-"ad": "Bindirme cıvatası M3x6 (arka kapak)001",
+"ad": "Bindirme cıvatası M3x6 (arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12686,7 +12691,7 @@
 },
 {
 "id": "p0339",
-"ad": "Isıl gömme somun M3 (arka kapak)002",
+"ad": "Isıl gömme somun M3 (arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12705,7 +12710,7 @@
 },
 {
 "id": "p0340",
-"ad": "Bindirme cıvatası M3x6 (arka kapak)002",
+"ad": "Bindirme cıvatası M3x6 (arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12724,7 +12729,7 @@
 },
 {
 "id": "p0341",
-"ad": "Isıl gömme somun M3 (arka kapak)003",
+"ad": "Isıl gömme somun M3 (arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12743,7 +12748,7 @@
 },
 {
 "id": "p0342",
-"ad": "Bindirme cıvatası M3x6 (arka kapak)003",
+"ad": "Bindirme cıvatası M3x6 (arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12762,7 +12767,7 @@
 },
 {
 "id": "p0343",
-"ad": "Isıl gömme somun M3 (arka kapak)004",
+"ad": "Isıl gömme somun M3 (arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12781,7 +12786,7 @@
 },
 {
 "id": "p0344",
-"ad": "Bindirme cıvatası M3x6 (arka kapak)004",
+"ad": "Bindirme cıvatası M3x6 (arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12800,7 +12805,7 @@
 },
 {
 "id": "p0345",
-"ad": "Isıl gömme somun M3 (arka kapak)005",
+"ad": "Isıl gömme somun M3 (arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12819,7 +12824,7 @@
 },
 {
 "id": "p0346",
-"ad": "Bindirme cıvatası M3x6 (arka kapak)005",
+"ad": "Bindirme cıvatası M3x6 (arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12838,7 +12843,7 @@
 },
 {
 "id": "p0347",
-"ad": "Isıl gömme somun M3 (arka kapak)006",
+"ad": "Isıl gömme somun M3 (arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12857,7 +12862,7 @@
 },
 {
 "id": "p0348",
-"ad": "Bindirme cıvatası M3x6 (arka kapak)006",
+"ad": "Bindirme cıvatası M3x6 (arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12914,7 +12919,7 @@
 },
 {
 "id": "p0351",
-"ad": "Isıl gömme somun M3 (üst arka kapak)001",
+"ad": "Isıl gömme somun M3 (üst arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12933,7 +12938,7 @@
 },
 {
 "id": "p0352",
-"ad": "Bindirme cıvatası M3x6 (üst arka kapak)001",
+"ad": "Bindirme cıvatası M3x6 (üst arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12952,7 +12957,7 @@
 },
 {
 "id": "p0353",
-"ad": "Isıl gömme somun M3 (üst arka kapak)002",
+"ad": "Isıl gömme somun M3 (üst arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -12971,7 +12976,7 @@
 },
 {
 "id": "p0354",
-"ad": "Bindirme cıvatası M3x6 (üst arka kapak)002",
+"ad": "Bindirme cıvatası M3x6 (üst arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -12990,7 +12995,7 @@
 },
 {
 "id": "p0355",
-"ad": "Isıl gömme somun M3 (üst arka kapak)003",
+"ad": "Isıl gömme somun M3 (üst arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -13009,7 +13014,7 @@
 },
 {
 "id": "p0356",
-"ad": "Bindirme cıvatası M3x6 (üst arka kapak)003",
+"ad": "Bindirme cıvatası M3x6 (üst arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -13028,7 +13033,7 @@
 },
 {
 "id": "p0357",
-"ad": "Isıl gömme somun M3 (üst arka kapak)004",
+"ad": "Isıl gömme somun M3 (üst arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -13047,7 +13052,7 @@
 },
 {
 "id": "p0358",
-"ad": "Bindirme cıvatası M3x6 (üst arka kapak)004",
+"ad": "Bindirme cıvatası M3x6 (üst arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -13066,7 +13071,7 @@
 },
 {
 "id": "p0359",
-"ad": "Isıl gömme somun M3 (üst arka kapak)005",
+"ad": "Isıl gömme somun M3 (üst arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -13085,7 +13090,7 @@
 },
 {
 "id": "p0360",
-"ad": "Bindirme cıvatası M3x6 (üst arka kapak)005",
+"ad": "Bindirme cıvatası M3x6 (üst arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -13104,7 +13109,7 @@
 },
 {
 "id": "p0361",
-"ad": "Isıl gömme somun M3 (üst arka kapak)006",
+"ad": "Isıl gömme somun M3 (üst arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3 ısıl gömme somun",
@@ -13123,7 +13128,7 @@
 },
 {
 "id": "p0362",
-"ad": "Bindirme cıvatası M3x6 (üst arka kapak)006",
+"ad": "Bindirme cıvatası M3x6 (üst arka kapak)",
 "modul": "kabuk",
 "grup": "Govde_kabugu",
 "kod": "M3x6 ISO 7380",
@@ -13180,7 +13185,7 @@
 },
 {
 "id": "p0365",
-"ad": "Isıl gömme somun M3 (etek x-38 ön)001",
+"ad": "Isıl gömme somun M3 (etek x-38 ön)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -13199,7 +13204,7 @@
 },
 {
 "id": "p0366",
-"ad": "Bindirme cıvatası M3x6 (etek x-38 ön)001",
+"ad": "Bindirme cıvatası M3x6 (etek x-38 ön)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -13256,7 +13261,7 @@
 },
 {
 "id": "p0369",
-"ad": "Isıl gömme somun M3 (etek x+38 ön)001",
+"ad": "Isıl gömme somun M3 (etek x+38 ön)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -13275,7 +13280,7 @@
 },
 {
 "id": "p0370",
-"ad": "Bindirme cıvatası M3x6 (etek x+38 ön)001",
+"ad": "Bindirme cıvatası M3x6 (etek x+38 ön)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -13332,7 +13337,7 @@
 },
 {
 "id": "p0373",
-"ad": "Isıl gömme somun M3 (etek x-38 arka)001",
+"ad": "Isıl gömme somun M3 (etek x-38 arka)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -13351,7 +13356,7 @@
 },
 {
 "id": "p0374",
-"ad": "Bindirme cıvatası M3x6 (etek x-38 arka)001",
+"ad": "Bindirme cıvatası M3x6 (etek x-38 arka)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -13370,7 +13375,7 @@
 },
 {
 "id": "p0375",
-"ad": "Isıl gömme somun M3 (etek x-38 arka)002",
+"ad": "Isıl gömme somun M3 (etek x-38 arka)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -13389,7 +13394,7 @@
 },
 {
 "id": "p0376",
-"ad": "Bindirme cıvatası M3x6 (etek x-38 arka)002",
+"ad": "Bindirme cıvatası M3x6 (etek x-38 arka)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -13446,7 +13451,7 @@
 },
 {
 "id": "p0379",
-"ad": "Isıl gömme somun M3 (etek x+38 arka)001",
+"ad": "Isıl gömme somun M3 (etek x+38 arka)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -13465,7 +13470,7 @@
 },
 {
 "id": "p0380",
-"ad": "Bindirme cıvatası M3x6 (etek x+38 arka)001",
+"ad": "Bindirme cıvatası M3x6 (etek x+38 arka)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -13484,7 +13489,7 @@
 },
 {
 "id": "p0381",
-"ad": "Isıl gömme somun M3 (etek x+38 arka)002",
+"ad": "Isıl gömme somun M3 (etek x+38 arka)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -13503,7 +13508,7 @@
 },
 {
 "id": "p0382",
-"ad": "Bindirme cıvatası M3x6 (etek x+38 arka)002",
+"ad": "Bindirme cıvatası M3x6 (etek x+38 arka)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -13560,7 +13565,7 @@
 },
 {
 "id": "p0385",
-"ad": "Isıl gömme somun M3 (etek z+88 sağ)001",
+"ad": "Isıl gömme somun M3 (etek z+88 sağ)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -13579,7 +13584,7 @@
 },
 {
 "id": "p0386",
-"ad": "Bindirme cıvatası M3x6 (etek z+88 sağ)001",
+"ad": "Bindirme cıvatası M3x6 (etek z+88 sağ)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -13598,7 +13603,7 @@
 },
 {
 "id": "p0387",
-"ad": "Isıl gömme somun M3 (etek z+88 sağ)002",
+"ad": "Isıl gömme somun M3 (etek z+88 sağ)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -13617,7 +13622,7 @@
 },
 {
 "id": "p0388",
-"ad": "Bindirme cıvatası M3x6 (etek z+88 sağ)002",
+"ad": "Bindirme cıvatası M3x6 (etek z+88 sağ)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -13674,7 +13679,7 @@
 },
 {
 "id": "p0391",
-"ad": "Isıl gömme somun M3 (etek z-88 sağ)001",
+"ad": "Isıl gömme somun M3 (etek z-88 sağ)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -13693,7 +13698,7 @@
 },
 {
 "id": "p0392",
-"ad": "Bindirme cıvatası M3x6 (etek z-88 sağ)001",
+"ad": "Bindirme cıvatası M3x6 (etek z-88 sağ)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -13712,7 +13717,7 @@
 },
 {
 "id": "p0393",
-"ad": "Isıl gömme somun M3 (etek z-88 sağ)002",
+"ad": "Isıl gömme somun M3 (etek z-88 sağ)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -13731,7 +13736,7 @@
 },
 {
 "id": "p0394",
-"ad": "Bindirme cıvatası M3x6 (etek z-88 sağ)002",
+"ad": "Bindirme cıvatası M3x6 (etek z-88 sağ)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -13788,7 +13793,7 @@
 },
 {
 "id": "p0397",
-"ad": "Isıl gömme somun M3 (etek z+88 sol)001",
+"ad": "Isıl gömme somun M3 (etek z+88 sol)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -13807,7 +13812,7 @@
 },
 {
 "id": "p0398",
-"ad": "Bindirme cıvatası M3x6 (etek z+88 sol)001",
+"ad": "Bindirme cıvatası M3x6 (etek z+88 sol)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -13826,7 +13831,7 @@
 },
 {
 "id": "p0399",
-"ad": "Isıl gömme somun M3 (etek z+88 sol)002",
+"ad": "Isıl gömme somun M3 (etek z+88 sol)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -13845,7 +13850,7 @@
 },
 {
 "id": "p0400",
-"ad": "Bindirme cıvatası M3x6 (etek z+88 sol)002",
+"ad": "Bindirme cıvatası M3x6 (etek z+88 sol)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -13902,7 +13907,7 @@
 },
 {
 "id": "p0403",
-"ad": "Isıl gömme somun M3 (etek z-88 sol)001",
+"ad": "Isıl gömme somun M3 (etek z-88 sol)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -13921,7 +13926,7 @@
 },
 {
 "id": "p0404",
-"ad": "Bindirme cıvatası M3x6 (etek z-88 sol)001",
+"ad": "Bindirme cıvatası M3x6 (etek z-88 sol)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -13940,7 +13945,7 @@
 },
 {
 "id": "p0405",
-"ad": "Isıl gömme somun M3 (etek z-88 sol)002",
+"ad": "Isıl gömme somun M3 (etek z-88 sol)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -13959,7 +13964,7 @@
 },
 {
 "id": "p0406",
-"ad": "Bindirme cıvatası M3x6 (etek z-88 sol)002",
+"ad": "Bindirme cıvatası M3x6 (etek z-88 sol)",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -14035,7 +14040,7 @@
 },
 {
 "id": "p0410",
-"ad": "Isıl gömme somun M3 (göğüs çerçevesi)001",
+"ad": "Isıl gömme somun M3 (göğüs çerçevesi)",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M3 ısıl gömme somun",
@@ -14073,7 +14078,7 @@
 },
 {
 "id": "p0412",
-"ad": "Isıl gömme somun M3 (göğüs çerçevesi)002",
+"ad": "Isıl gömme somun M3 (göğüs çerçevesi)",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M3 ısıl gömme somun",
@@ -14111,7 +14116,7 @@
 },
 {
 "id": "p0414",
-"ad": "Isıl gömme somun M3 (göğüs çerçevesi)003",
+"ad": "Isıl gömme somun M3 (göğüs çerçevesi)",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M3 ısıl gömme somun",
@@ -14149,7 +14154,7 @@
 },
 {
 "id": "p0416",
-"ad": "Isıl gömme somun M3 (göğüs çerçevesi)004",
+"ad": "Isıl gömme somun M3 (göğüs çerçevesi)",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M3 ısıl gömme somun",
@@ -14187,7 +14192,7 @@
 },
 {
 "id": "p0418",
-"ad": "Isıl gömme somun M3 (göğüs çerçevesi)005",
+"ad": "Isıl gömme somun M3 (göğüs çerçevesi)",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M3 ısıl gömme somun",
@@ -14225,7 +14230,7 @@
 },
 {
 "id": "p0420",
-"ad": "Isıl gömme somun M3 (göğüs çerçevesi)006",
+"ad": "Isıl gömme somun M3 (göğüs çerçevesi)",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M3 ısıl gömme somun",
@@ -14263,7 +14268,7 @@
 },
 {
 "id": "p0422",
-"ad": "Isıl gömme somun M3 (göğüs çerçevesi)007",
+"ad": "Isıl gömme somun M3 (göğüs çerçevesi)",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M3 ısıl gömme somun",
@@ -14339,7 +14344,7 @@
 },
 {
 "id": "p0426",
-"ad": "VESA pulu M001",
+"ad": "VESA pulu M4",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M4 DIN 125 pul",
@@ -14358,7 +14363,7 @@
 },
 {
 "id": "p0427",
-"ad": "VESA cıvatası M4x001",
+"ad": "VESA cıvatası M4x12",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M4x12 DIN 912",
@@ -14377,7 +14382,7 @@
 },
 {
 "id": "p0428",
-"ad": "VESA pulu M002",
+"ad": "VESA pulu M4",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M4 DIN 125 pul",
@@ -14396,7 +14401,7 @@
 },
 {
 "id": "p0429",
-"ad": "VESA cıvatası M4x002",
+"ad": "VESA cıvatası M4x12",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M4x12 DIN 912",
@@ -14415,7 +14420,7 @@
 },
 {
 "id": "p0430",
-"ad": "VESA pulu M003",
+"ad": "VESA pulu M4",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M4 DIN 125 pul",
@@ -14434,7 +14439,7 @@
 },
 {
 "id": "p0431",
-"ad": "VESA cıvatası M4x003",
+"ad": "VESA cıvatası M4x12",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M4x12 DIN 912",
@@ -14510,7 +14515,7 @@
 },
 {
 "id": "p0435",
-"ad": "Taşıyıcı pulu M001",
+"ad": "Taşıyıcı pulu M6",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M6 DIN 125 pul",
@@ -14529,7 +14534,7 @@
 },
 {
 "id": "p0436",
-"ad": "Taşıyıcı cıvatası M6x001",
+"ad": "Taşıyıcı cıvatası M6x18",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M6x18 DIN 912",
@@ -14548,7 +14553,7 @@
 },
 {
 "id": "p0437",
-"ad": "Çekiç somun M6 (direk ön kanalı)001",
+"ad": "Çekiç somun M6 (direk ön kanalı)",
 "modul": "kabuk",
 "grup": "Gogus_ekrani",
 "kod": "M6 çekiç somun, kanal 10",
@@ -14624,7 +14629,7 @@
 },
 {
 "id": "p0441",
-"ad": "Isıl gömme somun M3 (hoparlör boss)001",
+"ad": "Isıl gömme somun M3 (hoparlör boss)",
 "modul": "kabuk",
 "grup": "Ses_ve_USB",
 "kod": "M3 ısıl gömme somun",
@@ -14643,7 +14648,7 @@
 },
 {
 "id": "p0442",
-"ad": "Hoparlör kelepçe cıvatası M3x001",
+"ad": "Hoparlör kelepçe cıvatası M3x20",
 "modul": "kabuk",
 "grup": "Ses_ve_USB",
 "kod": "M3x20 DIN 912",
@@ -14757,7 +14762,7 @@
 },
 {
 "id": "p0448",
-"ad": "Isıl gömme somun M3 (Etek servis kapağı H1 (sigorta kutusu))001",
+"ad": "Isıl gömme somun M3 (Etek servis kapağı H1 (sigorta kutusu))",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -14776,7 +14781,7 @@
 },
 {
 "id": "p0449",
-"ad": "Kapak cıvatası M3x6 (Etek servis kapağı H1 (sigorta kutusu))001",
+"ad": "Kapak cıvatası M3x6 (Etek servis kapağı H1 (sigorta kutusu))",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -14795,7 +14800,7 @@
 },
 {
 "id": "p0450",
-"ad": "Isıl gömme somun M3 (Etek servis kapağı H1 (sigorta kutusu))002",
+"ad": "Isıl gömme somun M3 (Etek servis kapağı H1 (sigorta kutusu))",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -14814,7 +14819,7 @@
 },
 {
 "id": "p0451",
-"ad": "Kapak cıvatası M3x6 (Etek servis kapağı H1 (sigorta kutusu))002",
+"ad": "Kapak cıvatası M3x6 (Etek servis kapağı H1 (sigorta kutusu))",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -14833,7 +14838,7 @@
 },
 {
 "id": "p0452",
-"ad": "Isıl gömme somun M3 (Etek servis kapağı H1 (sigorta kutusu))003",
+"ad": "Isıl gömme somun M3 (Etek servis kapağı H1 (sigorta kutusu))",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -14852,7 +14857,7 @@
 },
 {
 "id": "p0453",
-"ad": "Kapak cıvatası M3x6 (Etek servis kapağı H1 (sigorta kutusu))003",
+"ad": "Kapak cıvatası M3x6 (Etek servis kapağı H1 (sigorta kutusu))",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -14909,7 +14914,7 @@
 },
 {
 "id": "p0456",
-"ad": "Isıl gömme somun M3 (Etek servis kapağı H2 (ana sigorta))001",
+"ad": "Isıl gömme somun M3 (Etek servis kapağı H2 (ana sigorta))",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -14928,7 +14933,7 @@
 },
 {
 "id": "p0457",
-"ad": "Kapak cıvatası M3x6 (Etek servis kapağı H2 (ana sigorta))001",
+"ad": "Kapak cıvatası M3x6 (Etek servis kapağı H2 (ana sigorta))",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -14947,7 +14952,7 @@
 },
 {
 "id": "p0458",
-"ad": "Isıl gömme somun M3 (Etek servis kapağı H2 (ana sigorta))002",
+"ad": "Isıl gömme somun M3 (Etek servis kapağı H2 (ana sigorta))",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -14966,7 +14971,7 @@
 },
 {
 "id": "p0459",
-"ad": "Kapak cıvatası M3x6 (Etek servis kapağı H2 (ana sigorta))002",
+"ad": "Kapak cıvatası M3x6 (Etek servis kapağı H2 (ana sigorta))",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -14985,7 +14990,7 @@
 },
 {
 "id": "p0460",
-"ad": "Isıl gömme somun M3 (Etek servis kapağı H2 (ana sigorta))003",
+"ad": "Isıl gömme somun M3 (Etek servis kapağı H2 (ana sigorta))",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3 ısıl gömme somun",
@@ -15004,7 +15009,7 @@
 },
 {
 "id": "p0461",
-"ad": "Kapak cıvatası M3x6 (Etek servis kapağı H2 (ana sigorta))003",
+"ad": "Kapak cıvatası M3x6 (Etek servis kapağı H2 (ana sigorta))",
 "modul": "kabuk",
 "grup": "Taban_etegi",
 "kod": "M3x6 ISO 7380",
@@ -15232,7 +15237,7 @@
 },
 {
 "id": "p0473",
-"ad": "Cıvata M6x14 (Gövde braketi sağ y400)001",
+"ad": "Cıvata M6x14 (Gövde braketi sağ y400)",
 "modul": "kabuk",
 "grup": "Govde_braketleri",
 "kod": "M6x14 DIN 912",
@@ -15251,7 +15256,7 @@
 },
 {
 "id": "p0474",
-"ad": "Çekiç somun M6 (Gövde braketi sağ y400)001",
+"ad": "Çekiç somun M6 (Gövde braketi sağ y400)",
 "modul": "kabuk",
 "grup": "Govde_braketleri",
 "kod": "M6 çekiç somun, kanal 10",
@@ -15365,7 +15370,7 @@
 },
 {
 "id": "p0480",
-"ad": "Cıvata M6x14 (Gövde braketi sol y400)001",
+"ad": "Cıvata M6x14 (Gövde braketi sol y400)",
 "modul": "kabuk",
 "grup": "Govde_braketleri",
 "kod": "M6x14 DIN 912",
@@ -15384,7 +15389,7 @@
 },
 {
 "id": "p0481",
-"ad": "Çekiç somun M6 (Gövde braketi sol y400)001",
+"ad": "Çekiç somun M6 (Gövde braketi sol y400)",
 "modul": "kabuk",
 "grup": "Govde_braketleri",
 "kod": "M6 çekiç somun, kanal 10",
@@ -15498,7 +15503,7 @@
 },
 {
 "id": "p0487",
-"ad": "Cıvata M6x14 (Gövde braketi sağ y530)001",
+"ad": "Cıvata M6x14 (Gövde braketi sağ y530)",
 "modul": "kabuk",
 "grup": "Govde_braketleri",
 "kod": "M6x14 DIN 912",
@@ -15517,7 +15522,7 @@
 },
 {
 "id": "p0488",
-"ad": "Çekiç somun M6 (Gövde braketi sağ y530)001",
+"ad": "Çekiç somun M6 (Gövde braketi sağ y530)",
 "modul": "kabuk",
 "grup": "Govde_braketleri",
 "kod": "M6 çekiç somun, kanal 10",
@@ -15631,7 +15636,7 @@
 },
 {
 "id": "p0494",
-"ad": "Cıvata M6x14 (Gövde braketi sol y530)001",
+"ad": "Cıvata M6x14 (Gövde braketi sol y530)",
 "modul": "kabuk",
 "grup": "Govde_braketleri",
 "kod": "M6x14 DIN 912",
@@ -15650,7 +15655,7 @@
 },
 {
 "id": "p0495",
-"ad": "Çekiç somun M6 (Gövde braketi sol y530)001",
+"ad": "Çekiç somun M6 (Gövde braketi sol y530)",
 "modul": "kabuk",
 "grup": "Govde_braketleri",
 "kod": "M6 çekiç somun, kanal 10",
@@ -15764,7 +15769,7 @@
 },
 {
 "id": "p0501",
-"ad": "Cıvata M6x14 (Gövde braketi sağ y688)001",
+"ad": "Cıvata M6x14 (Gövde braketi sağ y688)",
 "modul": "kabuk",
 "grup": "Govde_braketleri",
 "kod": "M6x14 DIN 912",
@@ -15783,7 +15788,7 @@
 },
 {
 "id": "p0502",
-"ad": "Çekiç somun M6 (Gövde braketi sağ y688)001",
+"ad": "Çekiç somun M6 (Gövde braketi sağ y688)",
 "modul": "kabuk",
 "grup": "Govde_braketleri",
 "kod": "M6 çekiç somun, kanal 10",
@@ -15897,7 +15902,7 @@
 },
 {
 "id": "p0508",
-"ad": "Cıvata M6x14 (Gövde braketi sol y688)001",
+"ad": "Cıvata M6x14 (Gövde braketi sol y688)",
 "modul": "kabuk",
 "grup": "Govde_braketleri",
 "kod": "M6x14 DIN 912",
@@ -15916,7 +15921,7 @@
 },
 {
 "id": "p0509",
-"ad": "Çekiç somun M6 (Gövde braketi sol y688)001",
+"ad": "Çekiç somun M6 (Gövde braketi sol y688)",
 "modul": "kabuk",
 "grup": "Govde_braketleri",
 "kod": "M6 çekiç somun, kanal 10",
@@ -16030,7 +16035,7 @@
 },
 {
 "id": "p0515",
-"ad": "Cıvata M6x14 (Gövde braketi sağ y1095)001",
+"ad": "Cıvata M6x14 (Gövde braketi sağ y1095)",
 "modul": "kabuk",
 "grup": "Govde_braketleri",
 "kod": "M6x14 DIN 912",
@@ -16049,7 +16054,7 @@
 },
 {
 "id": "p0516",
-"ad": "Çekiç somun M6 (Gövde braketi sağ y1095)001",
+"ad": "Çekiç somun M6 (Gövde braketi sağ y1095)",
 "modul": "kabuk",
 "grup": "Govde_braketleri",
 "kod": "M6 çekiç somun, kanal 10",
@@ -16163,7 +16168,7 @@
 },
 {
 "id": "p0522",
-"ad": "Cıvata M6x14 (Gövde braketi sol y1095)001",
+"ad": "Cıvata M6x14 (Gövde braketi sol y1095)",
 "modul": "kabuk",
 "grup": "Govde_braketleri",
 "kod": "M6x14 DIN 912",
@@ -16182,7 +16187,7 @@
 },
 {
 "id": "p0523",
-"ad": "Çekiç somun M6 (Gövde braketi sol y1095)001",
+"ad": "Çekiç somun M6 (Gövde braketi sol y1095)",
 "modul": "kabuk",
 "grup": "Govde_braketleri",
 "kod": "M6 çekiç somun, kanal 10",
@@ -17023,7 +17028,7 @@
 },
 {
 "id": "p0567",
-"ad": "Bilezik pulu M3 (baş)001",
+"ad": "Bilezik pulu M3 (baş)",
 "modul": "dirsek_sag",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "M3 DIN 125 pul",
@@ -17042,7 +17047,7 @@
 },
 {
 "id": "p0568",
-"ad": "Bilezik cıvatası M3x001",
+"ad": "Bilezik cıvatası M3x20",
 "modul": "dirsek_sag",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "M3x20 DIN 912",
@@ -17061,7 +17066,7 @@
 },
 {
 "id": "p0569",
-"ad": "Bilezik pulu M3 (somun)001",
+"ad": "Bilezik pulu M3 (somun)",
 "modul": "dirsek_sag",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "M3 DIN 125 pul",
@@ -17080,7 +17085,7 @@
 },
 {
 "id": "p0570",
-"ad": "Bilezik kontra somunu M001",
+"ad": "Bilezik kontra somunu M3",
 "modul": "dirsek_sag",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "M3 DIN 985 kontra somun",
@@ -17219,7 +17224,7 @@
 },
 {
 "id": "p0576",
-"ad": "Çatal-horn cıvatası M3x001",
+"ad": "Çatal-horn cıvatası M3x12",
 "modul": "dirsek_sag",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "M3x12 DIN 912",
@@ -17243,7 +17248,7 @@
 },
 {
 "id": "p0577",
-"ad": "Çatal-horn pulu M3 (2x DIN 125-A)001",
+"ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
 "modul": "dirsek_sag",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "2 x DIN 125-A M3 (3,2 x 7 x 0,5)",
@@ -17267,7 +17272,7 @@
 },
 {
 "id": "p0578",
-"ad": "Çatal-horn cıvatası M3x002",
+"ad": "Çatal-horn cıvatası M3x12",
 "modul": "dirsek_sag",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "M3x12 DIN 912",
@@ -17291,7 +17296,7 @@
 },
 {
 "id": "p0579",
-"ad": "Çatal-horn pulu M3 (2x DIN 125-A)002",
+"ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
 "modul": "dirsek_sag",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "2 x DIN 125-A M3 (3,2 x 7 x 0,5)",
@@ -17315,7 +17320,7 @@
 },
 {
 "id": "p0580",
-"ad": "Çatal-horn cıvatası M3x003",
+"ad": "Çatal-horn cıvatası M3x12",
 "modul": "dirsek_sag",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "M3x12 DIN 912",
@@ -17339,7 +17344,7 @@
 },
 {
 "id": "p0581",
-"ad": "Çatal-horn pulu M3 (2x DIN 125-A)003",
+"ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
 "modul": "dirsek_sag",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "2 x DIN 125-A M3 (3,2 x 7 x 0,5)",
@@ -17579,7 +17584,7 @@
 },
 {
 "id": "p0591",
-"ad": "Dirsek servosu kulak cıvatası M4x001",
+"ad": "Dirsek servosu kulak cıvatası M4x16",
 "modul": "dirsek_sag",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4x16 DIN 912",
@@ -17603,7 +17608,7 @@
 },
 {
 "id": "p0592",
-"ad": "Dirsek servosu kontra somunu M001",
+"ad": "Dirsek servosu kontra somunu M4",
 "modul": "dirsek_sag",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -17627,7 +17632,7 @@
 },
 {
 "id": "p0593",
-"ad": "Dirsek servosu kulak cıvatası M4x002",
+"ad": "Dirsek servosu kulak cıvatası M4x16",
 "modul": "dirsek_sag",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4x16 DIN 912",
@@ -17651,7 +17656,7 @@
 },
 {
 "id": "p0594",
-"ad": "Dirsek servosu kontra somunu M002",
+"ad": "Dirsek servosu kontra somunu M4",
 "modul": "dirsek_sag",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -17675,7 +17680,7 @@
 },
 {
 "id": "p0595",
-"ad": "Dirsek servosu kulak cıvatası M4x003",
+"ad": "Dirsek servosu kulak cıvatası M4x16",
 "modul": "dirsek_sag",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4x16 DIN 912",
@@ -17699,7 +17704,7 @@
 },
 {
 "id": "p0596",
-"ad": "Dirsek servosu kontra somunu M003",
+"ad": "Dirsek servosu kontra somunu M4",
 "modul": "dirsek_sag",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -17819,7 +17824,7 @@
 },
 {
 "id": "p0601",
-"ad": "Bilek servosu kulak cıvatası M4x001",
+"ad": "Bilek servosu kulak cıvatası M4x16",
 "modul": "dirsek_sag",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4x16 DIN 912",
@@ -17843,7 +17848,7 @@
 },
 {
 "id": "p0602",
-"ad": "Bilek servosu kontra somunu M001",
+"ad": "Bilek servosu kontra somunu M4",
 "modul": "dirsek_sag",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -17867,7 +17872,7 @@
 },
 {
 "id": "p0603",
-"ad": "Bilek servosu kulak cıvatası M4x002",
+"ad": "Bilek servosu kulak cıvatası M4x16",
 "modul": "dirsek_sag",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4x16 DIN 912",
@@ -17891,7 +17896,7 @@
 },
 {
 "id": "p0604",
-"ad": "Bilek servosu kontra somunu M002",
+"ad": "Bilek servosu kontra somunu M4",
 "modul": "dirsek_sag",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -17915,7 +17920,7 @@
 },
 {
 "id": "p0605",
-"ad": "Bilek servosu kulak cıvatası M4x003",
+"ad": "Bilek servosu kulak cıvatası M4x16",
 "modul": "dirsek_sag",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4x16 DIN 912",
@@ -17939,7 +17944,7 @@
 },
 {
 "id": "p0606",
-"ad": "Bilek servosu kontra somunu M003",
+"ad": "Bilek servosu kontra somunu M4",
 "modul": "dirsek_sag",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -18059,7 +18064,7 @@
 },
 {
 "id": "p0611",
-"ad": "Flanş-horn cıvatası M3x001",
+"ad": "Flanş-horn cıvatası M3x8",
 "modul": "dirsek_sag",
 "grup": "El_bilekte_doner",
 "kod": "M3x8 DIN 912",
@@ -18083,7 +18088,7 @@
 },
 {
 "id": "p0612",
-"ad": "Flanş-horn cıvatası M3x002",
+"ad": "Flanş-horn cıvatası M3x8",
 "modul": "dirsek_sag",
 "grup": "El_bilekte_doner",
 "kod": "M3x8 DIN 912",
@@ -18107,7 +18112,7 @@
 },
 {
 "id": "p0613",
-"ad": "Flanş-horn cıvatası M3x003",
+"ad": "Flanş-horn cıvatası M3x8",
 "modul": "dirsek_sag",
 "grup": "El_bilekte_doner",
 "kod": "M3x8 DIN 912",
@@ -18203,7 +18208,7 @@
 },
 {
 "id": "p0617",
-"ad": "Isıl gömme somun M3 (flanşta)001",
+"ad": "Isıl gömme somun M3 (flanşta)",
 "modul": "dirsek_sag",
 "grup": "El_bilekte_doner",
 "kod": "M3 ısıl gömme somun",
@@ -18351,7 +18356,7 @@
 },
 {
 "id": "p0624",
-"ad": "Bilezik pulu M3 (baş)001",
+"ad": "Bilezik pulu M3 (baş)",
 "modul": "dirsek_sol",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "M3 DIN 125 pul",
@@ -18370,7 +18375,7 @@
 },
 {
 "id": "p0625",
-"ad": "Bilezik cıvatası M3x001",
+"ad": "Bilezik cıvatası M3x20",
 "modul": "dirsek_sol",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "M3x20 DIN 912",
@@ -18389,7 +18394,7 @@
 },
 {
 "id": "p0626",
-"ad": "Bilezik pulu M3 (somun)001",
+"ad": "Bilezik pulu M3 (somun)",
 "modul": "dirsek_sol",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "M3 DIN 125 pul",
@@ -18408,7 +18413,7 @@
 },
 {
 "id": "p0627",
-"ad": "Bilezik kontra somunu M001",
+"ad": "Bilezik kontra somunu M3",
 "modul": "dirsek_sol",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "M3 DIN 985 kontra somun",
@@ -18547,7 +18552,7 @@
 },
 {
 "id": "p0633",
-"ad": "Çatal-horn cıvatası M3x001",
+"ad": "Çatal-horn cıvatası M3x12",
 "modul": "dirsek_sol",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "M3x12 DIN 912",
@@ -18571,7 +18576,7 @@
 },
 {
 "id": "p0634",
-"ad": "Çatal-horn pulu M3 (2x DIN 125-A)001",
+"ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
 "modul": "dirsek_sol",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "2 x DIN 125-A M3 (3,2 x 7 x 0,5)",
@@ -18595,7 +18600,7 @@
 },
 {
 "id": "p0635",
-"ad": "Çatal-horn cıvatası M3x002",
+"ad": "Çatal-horn cıvatası M3x12",
 "modul": "dirsek_sol",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "M3x12 DIN 912",
@@ -18619,7 +18624,7 @@
 },
 {
 "id": "p0636",
-"ad": "Çatal-horn pulu M3 (2x DIN 125-A)002",
+"ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
 "modul": "dirsek_sol",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "2 x DIN 125-A M3 (3,2 x 7 x 0,5)",
@@ -18643,7 +18648,7 @@
 },
 {
 "id": "p0637",
-"ad": "Çatal-horn cıvatası M3x003",
+"ad": "Çatal-horn cıvatası M3x12",
 "modul": "dirsek_sol",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "M3x12 DIN 912",
@@ -18667,7 +18672,7 @@
 },
 {
 "id": "p0638",
-"ad": "Çatal-horn pulu M3 (2x DIN 125-A)003",
+"ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
 "modul": "dirsek_sol",
 "grup": "Dirsek_ust_omuz_Kol_grubuna_sabit",
 "kod": "2 x DIN 125-A M3 (3,2 x 7 x 0,5)",
@@ -18907,7 +18912,7 @@
 },
 {
 "id": "p0648",
-"ad": "Dirsek servosu kulak cıvatası M4x001",
+"ad": "Dirsek servosu kulak cıvatası M4x16",
 "modul": "dirsek_sol",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4x16 DIN 912",
@@ -18931,7 +18936,7 @@
 },
 {
 "id": "p0649",
-"ad": "Dirsek servosu kontra somunu M001",
+"ad": "Dirsek servosu kontra somunu M4",
 "modul": "dirsek_sol",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -18955,7 +18960,7 @@
 },
 {
 "id": "p0650",
-"ad": "Dirsek servosu kulak cıvatası M4x002",
+"ad": "Dirsek servosu kulak cıvatası M4x16",
 "modul": "dirsek_sol",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4x16 DIN 912",
@@ -18979,7 +18984,7 @@
 },
 {
 "id": "p0651",
-"ad": "Dirsek servosu kontra somunu M002",
+"ad": "Dirsek servosu kontra somunu M4",
 "modul": "dirsek_sol",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -19003,7 +19008,7 @@
 },
 {
 "id": "p0652",
-"ad": "Dirsek servosu kulak cıvatası M4x003",
+"ad": "Dirsek servosu kulak cıvatası M4x16",
 "modul": "dirsek_sol",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4x16 DIN 912",
@@ -19027,7 +19032,7 @@
 },
 {
 "id": "p0653",
-"ad": "Dirsek servosu kontra somunu M003",
+"ad": "Dirsek servosu kontra somunu M4",
 "modul": "dirsek_sol",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -19147,7 +19152,7 @@
 },
 {
 "id": "p0658",
-"ad": "Bilek servosu kulak cıvatası M4x001",
+"ad": "Bilek servosu kulak cıvatası M4x16",
 "modul": "dirsek_sol",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4x16 DIN 912",
@@ -19171,7 +19176,7 @@
 },
 {
 "id": "p0659",
-"ad": "Bilek servosu kontra somunu M001",
+"ad": "Bilek servosu kontra somunu M4",
 "modul": "dirsek_sol",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -19195,7 +19200,7 @@
 },
 {
 "id": "p0660",
-"ad": "Bilek servosu kulak cıvatası M4x002",
+"ad": "Bilek servosu kulak cıvatası M4x16",
 "modul": "dirsek_sol",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4x16 DIN 912",
@@ -19219,7 +19224,7 @@
 },
 {
 "id": "p0661",
-"ad": "Bilek servosu kontra somunu M002",
+"ad": "Bilek servosu kontra somunu M4",
 "modul": "dirsek_sol",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -19243,7 +19248,7 @@
 },
 {
 "id": "p0662",
-"ad": "Bilek servosu kulak cıvatası M4x003",
+"ad": "Bilek servosu kulak cıvatası M4x16",
 "modul": "dirsek_sol",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4x16 DIN 912",
@@ -19267,7 +19272,7 @@
 },
 {
 "id": "p0663",
-"ad": "Bilek servosu kontra somunu M003",
+"ad": "Bilek servosu kontra somunu M4",
 "modul": "dirsek_sol",
 "grup": "On_kol_dirsekte_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -19387,7 +19392,7 @@
 },
 {
 "id": "p0668",
-"ad": "Flanş-horn cıvatası M3x001",
+"ad": "Flanş-horn cıvatası M3x8",
 "modul": "dirsek_sol",
 "grup": "El_bilekte_doner",
 "kod": "M3x8 DIN 912",
@@ -19411,7 +19416,7 @@
 },
 {
 "id": "p0669",
-"ad": "Flanş-horn cıvatası M3x002",
+"ad": "Flanş-horn cıvatası M3x8",
 "modul": "dirsek_sol",
 "grup": "El_bilekte_doner",
 "kod": "M3x8 DIN 912",
@@ -19435,7 +19440,7 @@
 },
 {
 "id": "p0670",
-"ad": "Flanş-horn cıvatası M3x003",
+"ad": "Flanş-horn cıvatası M3x8",
 "modul": "dirsek_sol",
 "grup": "El_bilekte_doner",
 "kod": "M3x8 DIN 912",
@@ -19531,7 +19536,7 @@
 },
 {
 "id": "p0674",
-"ad": "Isıl gömme somun M3 (flanşta)001",
+"ad": "Isıl gömme somun M3 (flanşta)",
 "modul": "dirsek_sol",
 "grup": "El_bilekte_doner",
 "kod": "M3 ısıl gömme somun",
@@ -19819,7 +19824,7 @@
 },
 {
 "id": "p0686",
-"ad": "Pan servosu kulak pulu M001",
+"ad": "Pan servosu kulak pulu M3",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M3 DIN 125 pul",
@@ -19843,7 +19848,7 @@
 },
 {
 "id": "p0687",
-"ad": "Pan servosu kulak cıvatası M3x001",
+"ad": "Pan servosu kulak cıvatası M3x8",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M3x8 DIN 912",
@@ -19867,7 +19872,7 @@
 },
 {
 "id": "p0688",
-"ad": "Isıl gömme somun M3 (servo yuvası)001",
+"ad": "Isıl gömme somun M3 (servo yuvası)",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M3 ısıl gömme somun",
@@ -19891,7 +19896,7 @@
 },
 {
 "id": "p0689",
-"ad": "Pan servosu kulak pulu M002",
+"ad": "Pan servosu kulak pulu M3",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M3 DIN 125 pul",
@@ -19915,7 +19920,7 @@
 },
 {
 "id": "p0690",
-"ad": "Pan servosu kulak cıvatası M3x002",
+"ad": "Pan servosu kulak cıvatası M3x8",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M3x8 DIN 912",
@@ -19939,7 +19944,7 @@
 },
 {
 "id": "p0691",
-"ad": "Isıl gömme somun M3 (servo yuvası)002",
+"ad": "Isıl gömme somun M3 (servo yuvası)",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M3 ısıl gömme somun",
@@ -19963,7 +19968,7 @@
 },
 {
 "id": "p0692",
-"ad": "Pan servosu kulak pulu M003",
+"ad": "Pan servosu kulak pulu M3",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M3 DIN 125 pul",
@@ -19987,7 +19992,7 @@
 },
 {
 "id": "p0693",
-"ad": "Pan servosu kulak cıvatası M3x003",
+"ad": "Pan servosu kulak cıvatası M3x8",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M3x8 DIN 912",
@@ -20011,7 +20016,7 @@
 },
 {
 "id": "p0694",
-"ad": "Isıl gömme somun M3 (servo yuvası)003",
+"ad": "Isıl gömme somun M3 (servo yuvası)",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M3 ısıl gömme somun",
@@ -20092,7 +20097,7 @@
 },
 {
 "id": "p0698",
-"ad": "Boyun cıvata pulu M001",
+"ad": "Boyun cıvata pulu M6",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M6 DIN 125 pul",
@@ -20111,7 +20116,7 @@
 },
 {
 "id": "p0699",
-"ad": "Boyun cıvatası M6x001",
+"ad": "Boyun cıvatası M6x20",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M6x20 DIN 912",
@@ -20130,7 +20135,7 @@
 },
 {
 "id": "p0700",
-"ad": "Çekiç somun M6 (travers üst kanalı)001",
+"ad": "Çekiç somun M6 (travers üst kanalı)",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M6 çekiç somun (kanal 10)",
@@ -20197,7 +20202,7 @@
 },
 {
 "id": "p0703",
-"ad": "Rulman yuvası cıvatası M3x001",
+"ad": "Rulman yuvası cıvatası M3x10",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M3x10 DIN 912",
@@ -20221,7 +20226,7 @@
 },
 {
 "id": "p0704",
-"ad": "Isıl gömme somun M3 (servo yuvası üstü)001",
+"ad": "Isıl gömme somun M3 (servo yuvası üstü)",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M3 ısıl gömme somun",
@@ -20245,7 +20250,7 @@
 },
 {
 "id": "p0705",
-"ad": "Rulman yuvası cıvatası M3x002",
+"ad": "Rulman yuvası cıvatası M3x10",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M3x10 DIN 912",
@@ -20269,7 +20274,7 @@
 },
 {
 "id": "p0706",
-"ad": "Isıl gömme somun M3 (servo yuvası üstü)002",
+"ad": "Isıl gömme somun M3 (servo yuvası üstü)",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M3 ısıl gömme somun",
@@ -20293,7 +20298,7 @@
 },
 {
 "id": "p0707",
-"ad": "Rulman yuvası cıvatası M3x003",
+"ad": "Rulman yuvası cıvatası M3x10",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M3x10 DIN 912",
@@ -20317,7 +20322,7 @@
 },
 {
 "id": "p0708",
-"ad": "Isıl gömme somun M3 (servo yuvası üstü)003",
+"ad": "Isıl gömme somun M3 (servo yuvası üstü)",
 "modul": "kafa",
 "grup": "Boyun_traverse_sabit",
 "kod": "M3 ısıl gömme somun",
@@ -20417,7 +20422,7 @@
 },
 {
 "id": "p0713",
-"ad": "Mil-horn cıvatası M3x001",
+"ad": "Mil-horn cıvatası M3x8",
 "modul": "kafa",
 "grup": "Pan_dikey_eksende_doner",
 "kod": "M3x8 DIN 912",
@@ -20436,7 +20441,7 @@
 },
 {
 "id": "p0714",
-"ad": "Mil-horn cıvatası M3x002",
+"ad": "Mil-horn cıvatası M3x8",
 "modul": "kafa",
 "grup": "Pan_dikey_eksende_doner",
 "kod": "M3x8 DIN 912",
@@ -20455,7 +20460,7 @@
 },
 {
 "id": "p0715",
-"ad": "Mil-horn cıvatası M3x003",
+"ad": "Mil-horn cıvatası M3x8",
 "modul": "kafa",
 "grup": "Pan_dikey_eksende_doner",
 "kod": "M3x8 DIN 912",
@@ -20550,7 +20555,7 @@
 },
 {
 "id": "p0720",
-"ad": "Isıl gömme somun M3 (mil flanşı)001",
+"ad": "Isıl gömme somun M3 (mil flanşı)",
 "modul": "kafa",
 "grup": "Pan_dikey_eksende_doner",
 "kod": "M3 ısıl gömme somun",
@@ -20569,7 +20574,7 @@
 },
 {
 "id": "p0721",
-"ad": "Isıl gömme somun M3 (mil flanşı)002",
+"ad": "Isıl gömme somun M3 (mil flanşı)",
 "modul": "kafa",
 "grup": "Pan_dikey_eksende_doner",
 "kod": "M3 ısıl gömme somun",
@@ -20588,7 +20593,7 @@
 },
 {
 "id": "p0722",
-"ad": "Isıl gömme somun M3 (mil flanşı)003",
+"ad": "Isıl gömme somun M3 (mil flanşı)",
 "modul": "kafa",
 "grup": "Pan_dikey_eksende_doner",
 "kod": "M3 ısıl gömme somun",
@@ -20683,7 +20688,7 @@
 },
 {
 "id": "p0727",
-"ad": "Tilt servosu kulak cıvatası M4x001",
+"ad": "Tilt servosu kulak cıvatası M4x16",
 "modul": "kafa",
 "grup": "Pan_dikey_eksende_doner",
 "kod": "M4x16 DIN 912",
@@ -20702,7 +20707,7 @@
 },
 {
 "id": "p0728",
-"ad": "Tilt servosu kontra somunu M001",
+"ad": "Tilt servosu kontra somunu M4",
 "modul": "kafa",
 "grup": "Pan_dikey_eksende_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -20721,7 +20726,7 @@
 },
 {
 "id": "p0729",
-"ad": "Tilt servosu kulak cıvatası M4x002",
+"ad": "Tilt servosu kulak cıvatası M4x16",
 "modul": "kafa",
 "grup": "Pan_dikey_eksende_doner",
 "kod": "M4x16 DIN 912",
@@ -20740,7 +20745,7 @@
 },
 {
 "id": "p0730",
-"ad": "Tilt servosu kontra somunu M002",
+"ad": "Tilt servosu kontra somunu M4",
 "modul": "kafa",
 "grup": "Pan_dikey_eksende_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -20759,7 +20764,7 @@
 },
 {
 "id": "p0731",
-"ad": "Tilt servosu kulak cıvatası M4x003",
+"ad": "Tilt servosu kulak cıvatası M4x16",
 "modul": "kafa",
 "grup": "Pan_dikey_eksende_doner",
 "kod": "M4x16 DIN 912",
@@ -20778,7 +20783,7 @@
 },
 {
 "id": "p0732",
-"ad": "Tilt servosu kontra somunu M003",
+"ad": "Tilt servosu kontra somunu M4",
 "modul": "kafa",
 "grup": "Pan_dikey_eksende_doner",
 "kod": "M4 DIN 985 kontra somun",
@@ -22831,7 +22836,7 @@
 },
 {
 "id": "p0834",
-"ad": "Yanak-horn cıvatası M3x001",
+"ad": "Yanak-horn cıvatası M3x8",
 "modul": "kafa",
 "grup": "Kafa_tilt_ekseninde_doner",
 "kod": "M3x8 DIN 912",
@@ -22850,7 +22855,7 @@
 },
 {
 "id": "p0835",
-"ad": "Yanak-horn cıvatası M3x002",
+"ad": "Yanak-horn cıvatası M3x8",
 "modul": "kafa",
 "grup": "Kafa_tilt_ekseninde_doner",
 "kod": "M3x8 DIN 912",
@@ -22869,7 +22874,7 @@
 },
 {
 "id": "p0836",
-"ad": "Yanak-horn cıvatası M3x003",
+"ad": "Yanak-horn cıvatası M3x8",
 "modul": "kafa",
 "grup": "Kafa_tilt_ekseninde_doner",
 "kod": "M3x8 DIN 912",
@@ -23330,7 +23335,7 @@
 },
 {
 "id": "p0860",
-"ad": "Cıvata M6x14 (plaka, ara ray z -230, z -230)001",
+"ad": "Cıvata M6x14 (plaka, ara ray z -230, z -230)",
 "modul": "taban",
 "grup": "Plaka_kat_burclar",
 "kod": "M6x14 DIN 912",
@@ -23349,7 +23354,7 @@
 },
 {
 "id": "p0861",
-"ad": "Çekiç somun M6 (plaka, ara ray z -230, z -230)001",
+"ad": "Çekiç somun M6 (plaka, ara ray z -230, z -230)",
 "modul": "taban",
 "grup": "Plaka_kat_burclar",
 "kod": "M6 çekiç somun, kanal 10",
@@ -23368,7 +23373,7 @@
 },
 {
 "id": "p0862",
-"ad": "Cıvata M6x14 (plaka, ara ray z +0, z +0)001",
+"ad": "Cıvata M6x14 (plaka, ara ray z +0, z +0)",
 "modul": "taban",
 "grup": "Plaka_kat_burclar",
 "kod": "M6x14 DIN 912",
@@ -23387,7 +23392,7 @@
 },
 {
 "id": "p0863",
-"ad": "Çekiç somun M6 (plaka, ara ray z +0, z +0)001",
+"ad": "Çekiç somun M6 (plaka, ara ray z +0, z +0)",
 "modul": "taban",
 "grup": "Plaka_kat_burclar",
 "kod": "M6 çekiç somun, kanal 10",
@@ -23406,7 +23411,7 @@
 },
 {
 "id": "p0864",
-"ad": "Cıvata M6x14 (plaka, ara ray z +230, z +230)001",
+"ad": "Cıvata M6x14 (plaka, ara ray z +230, z +230)",
 "modul": "taban",
 "grup": "Plaka_kat_burclar",
 "kod": "M6x14 DIN 912",
@@ -23425,7 +23430,7 @@
 },
 {
 "id": "p0865",
-"ad": "Çekiç somun M6 (plaka, ara ray z +230, z +230)001",
+"ad": "Çekiç somun M6 (plaka, ara ray z +230, z +230)",
 "modul": "taban",
 "grup": "Plaka_kat_burclar",
 "kod": "M6 çekiç somun, kanal 10",

@@ -15,6 +15,11 @@ Bir sonraki ajan buradan devam eder. Durum kutuları + hangi komut ne üretti.
       kartı, PAM8403, hoparlör, hub; ESP32 USB hub'dan), `kablo_yolu_ekran.py` 13 gösterim şeması (parça değil; 1192 ↔ 1192), gruplama
       anahtarı kod + ad, TR sözlüğü + `rehber_denetim.py` (ASCII 0, gruplama 0, çelişki 0), `rehber/yazdir.html` → PDF 50 sayfa,
       360 px taşma 0 (7 adım), kadraj E1 / B3. `kontrol.json` 50/50, konsol 0
+- [x] P7.3 (F7c, 09.11 19:10, düzeltme 1 19:49; ayrıntı `planlama/d158/F7c-gunluk.md`): ilk enerji iki aşamalı (F1 kafasız: ana
+      30 A, F4, F5 takılı; F1 20 A, F3, hat A / B / C, göğüs 2 A takılı değil, bara enerjisiz; F5 devreye
+      alma + ön şarj + motor yön testi), mantar metni K1 düşer, B3 / B5a / B6a tezgâh ayarı satırı, denetimde yasak talimat taraması
+      (köprüleme, akü bağlıyken iş, enerji varken bağlantı) + "yerden kesik" zorunlu satırı + görünen adda FreeCAD eki, PDF en küçük
+      yazı 8,1 pt (devam sayfasıyla 53 sayfa; eşleme `kontrol.json` `yazdir.sayfa_esleme`). `kontrol.json` 50/50, konsol 0, 1192 ↔ 1192
 
 ## Durum (15 Ekim 19:20, Opus-10 checkpoint'te durdu: koordinatör talimatı "en yakın checkpoint")
 - [x] 0. Kaynaklar okundu (CLAUDE.md, README, OZET, dongu, M6 md + JSON + M6_erisim.py, baski-listesi, elektrik.md, KOL_KABLO, taban YOL)
@@ -115,6 +120,10 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
 - 2026-11-09 (F7b düzeltme turu 1, `planlama/d158/F7b-kontrol.md`): elektrik güvenliği talimatları (göğüs regülatörü 12 V ayarı, 1N5819 yönü,
   iki P6KE6V8A + kutup, K1 / K2 enerji durumu), `--cikti` tam yalıtım, başlatıcı yolu ortam değişkeni / ev klasörü, denetime zorunlu uyarı
   ve bağlantı satırı denetimi. Veri 17:54'te yeniden üretildi.
+- 2026-11-09 (F7c, P7.3; `planlama/d158/F7c-gunluk.md`): F7b-kontrol D-10, D-11, D-12, D-1', D-3, D-6. Veri 19:05 (FreeCAD, kilit altında),
+  kontrol 19:10: 50/50, konsol 0, 1192 ↔ 1192, PDF 52 sayfa (adım 31 ve 32 iki sayfa), en küçük yazı 8,1 pt, denetim 0.
+  Düzeltme 1 (F7c-kontrol O-1, O-2, D-1, D-2, D-3): veri 19:44, kontrol 19:49: 50/50, konsol 0, 1192 ↔ 1192, PDF 53 sayfa (adım 31,
+  32, 49 iki sayfa), en küçük yazı 8,1 pt, denetim 0 (zorunlu 0 / 23, yasak 0).
 
 ## Kararlar (tasarım)
 - 09.11 (F7b): Göğüs ekranı / kafa kablo yolları (`lale158/kablo_yolu_ekran.py`) `semalar` olarak girer, `parcalar`a değil: gösterim
