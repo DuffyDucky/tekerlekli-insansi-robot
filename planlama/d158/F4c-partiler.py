@@ -85,7 +85,7 @@ META = {
     "Dirsek catali": ("Dirsek horn delik dizilimi; kupon D1/D2", "44 (H0c)"), "On kol govdesi": ("MG996R gövdesi", "42 (H0a)"),
     "Bilek flansi": ("Bilek horn delik dizilimi", "46 (H0e)"), "El": ("—", "47 (H0f)"),
     "Omuz yuvasi": ("DS3235 gövdesi, çekiç somun", "19 (D1a)"), "Rulman kapagi": ("6808-2RS (kupon A)", "20 (D1b)"),
-    "Omuz gobegi": ("S1 horn delik dizilimi; K39 kök yarıçapı (P6.1)", "37–38 (G0, G1)"),
+    "Omuz gobegi": ("S1 horn delik dizilimi; kök yarıçapı r 1,5 F6a'da uygulandı (K39 DS3235 düşme ölçümü açık)", "37–38 (G0, G1)"),
     "S1 kablo tamburu": ("Göbekle birlikte", "37 (G0)"), "Kol catali": ("S2 horn delik dizilimi", "40 (G3)"),
     "Ust kol tupu": ("Kupon E (tüp–pim geçmesi)", "40 (G3)"),
 }
@@ -109,7 +109,7 @@ PARTI = {
             montaj="16 (sonar), 20 (rulman kapağı), 34–36 (bantlar, göğüs ekranı), 40 (üst kol tüpü), F5 (kapaklar)",
             takvim="≈ S−0,5 → S+1,5; akü takozu (Parti 4) bu partinin arasında basılır"),
     2: dict(ad="Servo ve horn gelip ölçülünce", ne_zaman="Servo ve horn gelip kumpasla ölçülünce",
-            bagimlilik="DS3235, MG996R, 25T horn (teslim S+1); omuz göbeği ayrıca K39 kök yarıçapı (P6.1); S1 kaseti kablo kalınlığı (K1)",
+            bagimlilik="DS3235, MG996R, 25T horn (teslim S+1); omuz göbeği kök yarıçapı r 1,5 F6a'da uygulandı (K39 DS3235 düşme ölçümü açık); S1 kaseti kablo kalınlığı (K1)",
             montaj="19–28 (omuz yuvası, boyun), 37–47 (göbek, kol, dirsek, el), 41 (S1 kaseti)",
             takvim="≈ S+1,5 → S+2,3"),
     3: dict(ad="10,1\" QLED yüz ekranı gelip ölçülünce", ne_zaman="QLED gelip ölçülünce",
@@ -241,7 +241,7 @@ def main():
               petg_g=[round(sum(x["g"][i] for x in kup if x["malzeme"] == "PETG"), 1) for i in (0, 1)],
               d2siz_sa=[round(sum(x["sa"][i] for x in kup if not x["kosullu"]), 2) for i in (0, 1)])
     P[0] = dict(PARTI[0], parti=0, kuponlar=kup, toplam=k0,
-                omuz_disi_koku="Kupon yok. K39 (açık, varsayılan d): kök +x iç köşesine ≥ 1,5 mm yarıçap/pah P6.1'de; öneri: göbeğin kendisi P6.1 sonrası Parti 2'nin ilk işi, S2 5°'te sentille 0,3 mm boşluk kontrolü (F2-gunluk madde 9) + DS3235 düşme ölçümü (K39)")
+                omuz_disi_koku="Kupon yok. K39 (varsayılan d): kök +x iç köşesi r 1,5 yay F6a'da uygulandı (P6.1); öneri: göbeğin kendisi Parti 2'nin ilk işi, S2 5°'te sentille 0,3 mm boşluk kontrolü (F2-gunluk madde 9) + DS3235 düşme ölçümü (K39)")
     liste = topla(rows)
     y2 = Y["toplam"]
     kontrol = dict(adet=liste["adet"] == y2["adet"],
@@ -336,7 +336,7 @@ def md(o):
     s += ["", "Okuma: haftada 40 sa'te her parti plandan önce biter. 32 sa'te ara bitişler 1–2 gün kayar (Parti 1 ≈ S+%s, Parti 2 ≈ S+%s, Parti 3 ≈ S+%s),"
           " baskının sonu (≈ S+%s) plandaki ≈ S+4,5 ile aynı kalır; aşama 8'in ilk adımları (S+3) Parti 2'yi beklemez. Plan Parti 1'i ≈ 34,5 sa/hf ile hesaplamış" % (
               f(tk["32"][1], 2), f(tk["32"][2], 2), f(tk["32"][3], 2), f(tk["32"][4], 2)) +
-          " (69 sa / 2 hf). Asıl risk sayı değil bağımlılık: Parti 1 STL dışa aktarmaya (FreeCAD, açık iş), Parti 2'nin göbeği K39 / P6.1'e,"
+          " (69 sa / 2 hf). Asıl risk sayı değil bağımlılık: Parti 1 STL dışa aktarmaya (FreeCAD, açık iş), Parti 2'nin göbeği DS3235 düşme ölçümüne (K39; kök yarıçapı F6a'da uygulandı),"
           " Parti 3 QLED'e (K32) ve K2'ye (P6.1), Parti 4 E7 havalandırma CAD'ine bağlı. Öneriler günlükte (`F4c-gunluk.md`), `proje-plani.md` değişmedi.", ""]
     return "\n".join(s)
 

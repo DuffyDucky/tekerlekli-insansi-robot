@@ -46,7 +46,7 @@ Süre `tasarim/freecad/test/README.md` yöntemiyle: hacim (g / 1,27) ÷ 10 mm³/
 | C: ruthex RX-M3x5.7 | Ø4,0–4,2 | B'de Ø4,0 / 4,1, C'de Ø4,0 / 4,1 | Kupon değişmez; tedarik takvime yetişmez (K31) |
 | M5: Rhino ID5 OD7 L7 | Ø6,7–6,8 | Uymaz (Ø6,2–6,6) | M5 delikleri büyütülür ya da başka ürün (K31, önerilen varsayılan yok) |
 
-**Omuz dişi kökü:** Kupon yok. K39 (açık, varsayılan d): kök +x iç köşesine ≥ 1,5 mm yarıçap/pah P6.1'de; öneri: göbeğin kendisi P6.1 sonrası Parti 2'nin ilk işi, S2 5°'te sentille 0,3 mm boşluk kontrolü (F2-gunluk madde 9) + DS3235 düşme ölçümü (K39).
+**Omuz dişi kökü:** Kupon yok. K39 (varsayılan d): kök +x iç köşesi r 1,5 yay F6a'da uygulandı (P6.1); öneri: göbeğin kendisi Parti 2'nin ilk işi, S2 5°'te sentille 0,3 mm boşluk kontrolü (F2-gunluk madde 9) + DS3235 düşme ölçümü (K39).
 
 ## Parti 1 — Hemen
 
@@ -84,7 +84,7 @@ Süre `tasarim/freecad/test/README.md` yöntemiyle: hacim (g / 1,27) ÷ 10 mm³/
 
 ## Parti 2 — Servo ve horn gelip ölçülünce
 
-25 adet · 1,33–1,38 kg (PETG 0,32, PETG-CF 1,01–1,07) · ≈ 27,7–28,8 sa. Bağımlılık: DS3235, MG996R, 25T horn (teslim S+1); omuz göbeği ayrıca K39 kök yarıçapı (P6.1); S1 kaseti kablo kalınlığı (K1). Montaj (M6): 19–28 (omuz yuvası, boyun), 37–47 (göbek, kol, dirsek, el), 41 (S1 kaseti). Takvim: ≈ S+1,5 → S+2,3.
+25 adet · 1,33–1,38 kg (PETG 0,32, PETG-CF 1,01–1,07) · ≈ 27,7–28,8 sa. Bağımlılık: DS3235, MG996R, 25T horn (teslim S+1); omuz göbeği kök yarıçapı r 1,5 F6a'da uygulandı (K39 DS3235 düşme ölçümü açık); S1 kaseti kablo kalınlığı (K1). Montaj (M6): 19–28 (omuz yuvası, boyun), 37–47 (göbek, kol, dirsek, el), 41 (S1 kaseti). Takvim: ≈ S+1,5 → S+2,3.
 
 | Modül | Parça | Adet | Malzeme | g/adet | sa/adet | Bağlı olduğu kalem | M6 adımı | Not |
 |---|---|---|---|---|---|---|---|---|
@@ -102,7 +102,7 @@ Süre `tasarim/freecad/test/README.md` yöntemiyle: hacim (g / 1,27) ÷ 10 mm³/
 | dirsek | Bilek flanşı | 2 | PETG-CF | 4 | 0,09 | Bilek horn delik dizilimi | 46 (H0e) |  |
 | dirsek | El | 2 | PETG | 78 | 1,64 | — | 47 (H0f) |  |
 | omuz | Omuz yuvası | 2 | PETG-CF | 81–90 | 1,70–1,88 | DS3235 gövdesi, çekiç somun | 19 (D1a) |  |
-| omuz | Omuz göbeği | 2 | PETG-CF | 63–70 | 1,32–1,47 | S1 horn delik dizilimi; K39 kök yarıçapı (P6.1) | 37–38 (G0, G1) |  |
+| omuz | Omuz göbeği | 2 | PETG-CF | 63–70 | 1,32–1,47 | S1 horn delik dizilimi; kök yarıçapı r 1,5 F6a'da uygulandı (K39 DS3235 düşme ölçümü açık) | 37–38 (G0, G1) |  |
 | omuz | S1 kablo tamburu | 2 | PETG | 6 | 0,12 | Göbekle birlikte | 37 (G0) |  |
 | omuz | Kol çatalı | 2 | PETG-CF | 99–110 | 2,07–2,30 | S2 horn delik dizilimi | 40 (G3) |  |
 
@@ -152,4 +152,4 @@ Değerler S'ye göre hafta (parti bitişi, üst süreyle).
 | 3 | S+2,38 | S+3,09 | S+2,8 | +0,29 hf (≈ +2 gün) |
 | 4 | S+3,49 | S+4,48 | S+4–4,5 | −0,02 hf (≈ 0 gün) |
 
-Okuma: haftada 40 sa'te her parti plandan önce biter. 32 sa'te ara bitişler 1–2 gün kayar (Parti 1 ≈ S+1,70, Parti 2 ≈ S+2,60, Parti 3 ≈ S+3,09), baskının sonu (≈ S+4,48) plandaki ≈ S+4,5 ile aynı kalır; aşama 8'in ilk adımları (S+3) Parti 2'yi beklemez. Plan Parti 1'i ≈ 34,5 sa/hf ile hesaplamış (69 sa / 2 hf). Asıl risk sayı değil bağımlılık: Parti 1 STL dışa aktarmaya (FreeCAD, açık iş), Parti 2'nin göbeği K39 / P6.1'e, Parti 3 QLED'e (K32) ve K2'ye (P6.1), Parti 4 E7 havalandırma CAD'ine bağlı. Öneriler günlükte (`F4c-gunluk.md`), `proje-plani.md` değişmedi.
+Okuma: haftada 40 sa'te her parti plandan önce biter. 32 sa'te ara bitişler 1–2 gün kayar (Parti 1 ≈ S+1,70, Parti 2 ≈ S+2,60, Parti 3 ≈ S+3,09), baskının sonu (≈ S+4,48) plandaki ≈ S+4,5 ile aynı kalır; aşama 8'in ilk adımları (S+3) Parti 2'yi beklemez. Plan Parti 1'i ≈ 34,5 sa/hf ile hesaplamış (69 sa / 2 hf). Asıl risk sayı değil bağımlılık: Parti 1 STL dışa aktarmaya (FreeCAD, açık iş), Parti 2'nin göbeği DS3235 düşme ölçümüne (K39; kök yarıçapı F6a'da uygulandı), Parti 3 QLED'e (K32) ve K2'ye (P6.1), Parti 4 E7 havalandırma CAD'ine bağlı. Öneriler günlükte (`F4c-gunluk.md`), `proje-plani.md` değişmedi.

@@ -162,7 +162,7 @@
      9.51
     ]
    },
-   "omuz_disi_koku": "Kupon yok. K39 (açık, varsayılan d): kök +x iç köşesine ≥ 1,5 mm yarıçap/pah P6.1'de; öneri: göbeğin kendisi P6.1 sonrası Parti 2'nin ilk işi, S2 5°'te sentille 0,3 mm boşluk kontrolü (F2-gunluk madde 9) + DS3235 düşme ölçümü (K39)"
+   "omuz_disi_koku": "Kupon yok. K39 (varsayılan d): kök +x iç köşesi r 1,5 yay F6a'da uygulandı (P6.1); öneri: göbeğin kendisi Parti 2'nin ilk işi, S2 5°'te sentille 0,3 mm boşluk kontrolü (F2-gunluk madde 9) + DS3235 düşme ölçümü (K39)"
   },
   "1": {
    "ad": "Hemen",
@@ -1100,7 +1100,7 @@
   "2": {
    "ad": "Servo ve horn gelip ölçülünce",
    "ne_zaman": "Servo ve horn gelip kumpasla ölçülünce",
-   "bagimlilik": "DS3235, MG996R, 25T horn (teslim S+1); omuz göbeği ayrıca K39 kök yarıçapı (P6.1); S1 kaseti kablo kalınlığı (K1)",
+   "bagimlilik": "DS3235, MG996R, 25T horn (teslim S+1); omuz göbeği kök yarıçapı r 1,5 F6a'da uygulandı (K39 DS3235 düşme ölçümü açık); S1 kaseti kablo kalınlığı (K1)",
    "montaj": "19–28 (omuz yuvası, boyun), 37–47 (göbek, kol, dirsek, el), 41 (S1 kaseti)",
    "takvim": "≈ S+1,5 → S+2,3",
    "parti": 2,
@@ -1607,7 +1607,7 @@
       49.0
      ],
      "g": [
-      63.2,
+      63.3,
       70.4
      ],
      "sa": [
@@ -1626,7 +1626,7 @@
       49.0
      ],
      "parti": 2,
-     "bagli": "S1 horn delik dizilimi; K39 kök yarıçapı (P6.1)",
+     "bagli": "S1 horn delik dizilimi; kök yarıçapı r 1,5 F6a'da uygulandı (K39 DS3235 düşme ölçümü açık)",
      "montaj_adimi": "37–38 (G0, G1)",
      "basim_notu": ""
     },
@@ -1704,7 +1704,7 @@
    "toplam": {
     "adet": 25,
     "g": [
-     1330.6,
+     1330.8,
      1384.6
     ],
     "sa": [
@@ -1716,7 +1716,7 @@
      316.2
     ],
     "cf_g": [
-     1014.4,
+     1014.6,
      1068.4
     ]
    }
@@ -2483,7 +2483,7 @@
  "liste_toplam": {
   "adet": 72,
   "g": [
-   7604.6,
+   7604.8,
    7662.4
   ],
   "sa": [
@@ -2495,14 +2495,14 @@
    6446.6
   ],
   "cf_g": [
-   1158.0,
+   1158.2,
    1215.8
   ]
  },
  "y2b_toplam": {
   "adet": 72,
   "g": [
-   7604.6,
+   7604.800000000001,
    7662.400000000001
   ],
   "sa": [
@@ -2514,7 +2514,7 @@
    6446.600000000001
   ],
   "cf_g": [
-   1158.0,
+   1158.2,
    1215.8000000000002
   ]
  },

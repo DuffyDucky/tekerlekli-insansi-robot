@@ -33,9 +33,9 @@ Kabukta destek isteyen parçalar: Gogus bandi sag, Gogus bandi sol, Ust arka ser
 | Değişti | Kafa kabukları (QLED ekran yuvası) | 0 | −53,6 g | −1,12 sa | Yüz sağ 119 → 91, yüz sol 110 → 84, arka sağ / sol +0,2 / +0,1 g (QLED `bcaa6df` 04.11, arka sağ B + R1 `d26c7e7` 05.11; `kafa/baski[5…8]`) |
 | Değişti | Boyun yükseltme adaptörü | 0 | −3,6 g | −0,08 sa | Yükseklik 62,8 → 58,9 mm (QLED `bcaa6df` 04.11; `kafa/baski[4]`) |
 | Değişti | Göğüs ekranı çerçevesi sağ / sol, VESA taşıyıcı | 0 | +4 g / −1 g | 0 | Çerçeve 29 → 31 g (×2), VESA 114 → 113 g ve 64,8 → 63,4 mm (`bcaa6df`, 04.11) |
-| Değişti | Omuz göbeği (S2 durdurucu dişi, F2) | 0 | +5,2–5,8 g | +0,10–0,12 sa | Ölçü 66 → 77 mm, adet başına 60,6–67,5 → 63,2–70,4 g, destek 5,2 → 5,7 g (`omuz-baski/parcalar[2]`, F2 `ff1c2e9`) |
+| Değişti | Omuz göbeği (S2 durdurucu dişi F2, diş kökü r 1,5 F6a) | 0 | +5,4–5,8 g | +0,10–0,12 sa | Ölçü 66 → 77 mm, adet başına 60,6–67,5 → 63,3–70,4 g, destek 5,2 → 5,7 g (`omuz-baski/parcalar[2]`, F2 `ff1c2e9`; kök yayı F6a +0,1 g alt uçta) |
 | Malzeme | Göğüs ekranı VESA taşıyıcı | 0 | 0 | 0 | Model PETG-CF (`kabuk_parcalar.py:375-376`, `malzeme="PETG-CF"`) ve `Y2b-baski.py` CF kümesi; eski Renk tablosu beyaz PETG diyordu, düzeltildi |
-| **Fark toplamı** | 65 → **72** parça | **+7** | 7,63–7,68 → **7,60–7,66 kg** (−22,6 / −22,0 g) | 158,7–159,9 → **158,2–159,4 sa** (−0,48 / −0,46) | PETG 6,47 → 6,45 kg; PETG-CF 1,16–1,21 → 1,16–1,22 kg |
+| **Fark toplamı** | 65 → **72** parça | **+7** | 7,63–7,68 → **7,60–7,66 kg** (−22,4 / −22,0 g) | 158,7–159,9 → **158,2–159,4 sa** (−0,48 / −0,46) | PETG 6,47 → 6,45 kg; PETG-CF 1,16–1,21 → 1,16–1,22 kg |
 
 Kafa satırlarındaki düşüş, 03.11 listesinin kafa satırlarının 7" modelden kalmasından: QLED modeli (04–05.11) yüz kabuklarını inceltti.
 Parça sayısının 65 → 72 artışı yalnız küçük parçalardan (en büyüğü 7 g); filament ve süre neredeyse aynı kaldı.
@@ -68,7 +68,7 @@ kabuk ve kafa satırlarında destek malzemesi sayılmadı; VESA taşıyıcının
 Plan: **9 makara beyaz PETG + 1,5 kg siyah PETG-CF (3 × 0,5 kg)** (`planlama/maliyet.json` `kalemler[107–109]`).
 - **PETG yetiyor:** parça + kupon 6,53–6,57 kg, 9 kg'de ≈ 2,4–2,5 kg pay (≈ %38).
 - **PETG-CF 1,5 kg sınırda, yetmiyor sayılmalı:** parça + kupon 1,33–1,52 kg; 1,5 kg'de pay 166 g (doluluk 0,8 ve kuponların tahmini kütlesiyle) ile −17 g
-  (doluluk 0,9 ve %100 kupon). D2 kuponu basılmazsa pay 69–208 g. En büyük CF parçası (kafa servo yuvası) 152 g: tek bir başarısız baskı alt
+  (doluluk 0,9 ve %100 kupon). D2 kuponu basılmazsa pay 69–207 g. En büyük CF parçası (kafa servo yuvası) 152 g: tek bir başarısız baskı alt
   durumdaki payı bitiriyor. Karar taslağı `planlama/d158/F4c-gunluk.md` (KT-F4c-1: +1 makara, 0,5 kg, 1.114,03 TL; %15 payla 1.281,13 TL).
 
 ## Renk (Ahmet, 11 Ekim 2026: "Tamamen beyaz")
@@ -131,7 +131,7 @@ bakılmalı ve P6.1'de kesitle doğrulanmalı (`planlama/d158/F4c-gunluk.md`). L
    hoparlör kabı ve kelepçesi (8 Ω hoparlör), göğüs ekranı çerçevesi sağ/sol ve VESA taşıyıcı (11,6" göğüs ekranı; VESA deliklerinin
    kasadaki yeri ve derinliği doğrulanmadı, `arayuz.py:342`). 7 adet, ≈ 5,8 sa; Parti 1 tablosunun son satırları (`F4c-partiler.md`).
 3. **Parti 2:** horn delik dizilimi tahmini (25T disk, M3 delikler 8,5 mm yarıçapta) ve servo gövdeleri (DS3235, MG996R). Gelince
-   kumpasla ölçülür, CAD güncellenir, sonra basılır. Omuz göbeği ayrıca K39'a bağlı (diş kökü yarıçapı, P6.1).
+   kumpasla ölçülür, CAD güncellenir, sonra basılır. Omuz göbeğinin diş kökü yarıçapı (r 1,5) F6a'da uygulandı; DS3235 düşme ölçümü (K39) açık.
 4. **Parti 3:** kafa ekranı 10,1" QLED 1280×720 (WaveShare, kod 20789). Vida deliği yok, 4 ekran tırnağıyla tutulur; kütle doğrulanmadı.
    Ekran gelip ölçülünce (K32: hocadan mı satın alma mı) ve K2 (AI HAT / boss, P6.1) modele girince kafa iskeleti, kabuklar ve tırnaklar basılır.
 5. **Parti 4:** etek ana anahtar deliği (M6 K7) ve H1, H2 servis kapakları (M6 K5, K6) CAD'de; etek havalandırma yarıkları (E7) bekliyor.
@@ -218,7 +218,7 @@ geometriyi değiştirmedi: `F1a-kontrol.md` P1.3). Ayrıntı `planlama/d158/F4c-
 
 ## Parti 2 — Servo ve horn gelip ölçülünce
 
-25 adet · 1,33–1,38 kg filament (PETG 0,32, PETG-CF 1,01–1,07) · ≈ 27,7–28,8 saat. Bağımlılık: DS3235, MG996R, 25T horn (teslim S+1); omuz göbeği ayrıca K39 kök yarıçapı (P6.1); S1 kaseti kablo kalınlığı (K1).
+25 adet · 1,33–1,38 kg filament (PETG 0,32, PETG-CF 1,01–1,07) · ≈ 27,7–28,8 saat. Bağımlılık: DS3235, MG996R, 25T horn (teslim S+1); omuz göbeği kök yarıçapı r 1,5 F6a'da uygulandı (K39 DS3235 düşme ölçümü açık); S1 kaseti kablo kalınlığı (K1).
 
 | ☐ | Modül | Parça | Adet | Ölçü (mm) | Filament (g/adet) | Süre (sa/adet) | Malzeme | Tabla yönü | Destek | X2D | Kaynak (JSON) | Bağlı olduğu kalem |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -236,7 +236,7 @@ geometriyi değiştirmedi: `F1a-kontrol.md` P1.3). Ayrıntı `planlama/d158/F4c-
 | ☐ | dirsek | Bilek flanşı | 2 | 28 × 28 × 8 | 4 | 0,09 | PETG-CF | horn yüzü tablada, havşalar yukarı | desteksiz | sığar | `dirsek/baski[2]` · Y2b[54] | Bilek horn delik dizilimi |
 | ☐ | dirsek | El | 2 | 56 × 56 × 85 | 78 | 1,64 | PETG | ters: parmak ucu ve avuç altı tablada, yaka yukarı | desteksiz | sığar | `dirsek/baski[3]` · Y2b[55] | — |
 | ☐ | omuz | Omuz yuvası | 2 | 76 × 76 × 67 | 81–90 | 1,70–1,88 | PETG-CF | -Y: y = 25 yüzü tablada | **destekli**: manşon içi + S1 penceresi | sığar | `omuz-baski/parcalar[0]` · Y2b[56] | DS3235 gövdesi, çekiç somun |
-| ☐ | omuz | Omuz göbeği | 2 | 77 × 51 × 49 | 63–70 | 1,32–1,47 | PETG-CF | +X: x = 150 yüzü tablada | **destekli**: flanş altı + diş (5,7 g) | sığar | `omuz-baski/parcalar[2]` · Y2b[58] | S1 horn delik dizilimi; K39 kök yarıçapı (P6.1) |
+| ☐ | omuz | Omuz göbeği | 2 | 77 × 51 × 49 | 63–70 | 1,32–1,47 | PETG-CF | +X: x = 150 yüzü tablada | **destekli**: flanş altı + diş (5,7 g) | sığar | `omuz-baski/parcalar[2]` · Y2b[58] | S1 horn delik dizilimi; kök yarıçapı r 1,5 F6a'da uygulandı (K39 DS3235 düşme ölçümü açık) |
 | ☐ | omuz | S1 kablo tamburu | 2 | 87 × 71 × 10 | 6 | 0,12 | PETG | +X: x = 152,5 yüzü tablada | **destekli**: +x dudak altı | sığar | `omuz-baski/parcalar[3]` · Y2b[59] | Göbekle birlikte |
 | ☐ | omuz | Kol çatalı | 2 | 76 × 64 × 56 | 99–110 | 2,07–2,30 | PETG-CF | -Z: z = 30,5 yüzü tablada | **destekli**: horn kulağı | sığar | `omuz-baski/parcalar[4]` · Y2b[60] | S2 horn delik dizilimi |
 

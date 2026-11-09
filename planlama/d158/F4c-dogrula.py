@@ -5,8 +5,8 @@ r"""F4c (P4.3 + P8.2) dogrulama. Yalniz okur; kaynak betikleri DEGISTIRMEZ (kopy
   3. baski-listesi.md parca satirlari: her satir tek bir Y2b satirina bagli (modul + ad), adet / olcu / g / sa / malzeme / destek / X2D /
      kaynak anahtari / parti JSON ile ayni; her Y2b satiri tam bir kez.
   4. Ozet tablosu ve F4c-partiler.json: parti toplamlari = Y2b toplam.parti, Parti 1-4 toplami = Y2b toplam (adet, g, sa, PETG, PETG-CF).
-  5. tasarim/freecad/lale158/baski_listesi_guncelle.py (a) oldugu gibi, (b) F4c-gunluk.md'deki onerilen yamayla (YAMA) gecici kopya uzerinde
-     kosulur; (b)'nin ciktisi baski-listesi.md ile satir satir ayni olmali (sabit nokta), (a)'nin farki listelenir.
+  5. tasarim/freecad/lale158/baski_listesi_guncelle.py (a) oldugu gibi, (b) YAMA ile (F6a 1i'den beri bos: Y1-Y7 kaynakta kalici, eski liste
+     YAMA_F4C) gecici kopya uzerinde kosulur; (b)'nin ciktisi baski-listesi.md ile satir satir ayni olmali (sabit nokta), (a)'nin farki listelenir.
 Kullanim:  py -3 planlama/d158/F4c-dogrula.py      (cikis 0 = hepsi gecti)
 """
 import contextlib, csv, difflib, io, json, os, re, sys, tempfile, unicodedata
@@ -24,8 +24,10 @@ PARTI = os.path.join(HERE, "F4c-partiler.json")
 FC = os.path.join(KOK, "tasarim", "freecad")
 TR = str.maketrans("ığüşöçİĞÜŞÖÇ", "igusocIGUSOC")
 
-# baski_listesi_guncelle.py icin onerilen yama (F4c-gunluk.md "Betik yamasi"); (eski, yeni) kaynak metni, her eski tam bir kez gecmeli
-YAMA = [
+# baski_listesi_guncelle.py icin F4c'nin onerdigi yama (F4c-gunluk.md "Betik yamasi"); (eski, yeni) kaynak metni, her eski tam bir kez gecmeli.
+# F6a (P6.1 madde 1i): Y1-Y7 kaynaga kalici uygulandi; liste yalniz kayit icin YAMA_F4C adiyla duruyor, denetim YAMA = [] ile kosar
+# (yamali kaynakta eski metinler yok; Y1'in eski metni yeninin oneki oldugu icin "uygulanmissa atla" denetimi de yetmez, F6a-kontrol O-1).
+YAMA_F4C = [
     # Y1 kat(): betigin kendi yazdigi "(gomulu 11,6" cep)" ekini de at (yoksa ikinci kosuda gogus bantlari "yeni" sayiliyor)
     (r'''.replace(" (Nextion yok, kapalı)", "")''', r'''.replace(" (Nextion yok, kapalı)", "").replace(" (gömülü 11,6\" cep)", "")'''),
     # Y2 10,1" -> 7" metin cevirileri (03.11 oncesi icin yazilmis; QLED'de ters yone yanlis)
@@ -49,6 +51,7 @@ YAMA = [
     # Y7 Parti 3 basligini 7"'ye cevirme
     (r'''        cikti[k_] = L.replace('10,1" yüz ekranı', '7" yüz ekranı')''', r'''        cikti[k_] = L'''),
 ]
+YAMA = []
 
 
 def kat(s):
