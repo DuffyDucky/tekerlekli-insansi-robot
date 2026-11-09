@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F4c Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F4c: baskı listesi ve baskı partileri (P4.3, P8.2)</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 09.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>F4c-brief.md</code>, <code>F4c-gunluk.md</code> (§11 düzeltme turu 1 dahil), <code>F4c-kontrol.md</code>, <code>F4c-partiler.json</code>, <code>Y2b-baski.json</code>, <code>karar-kuyrugu.md</code> K42–K43</p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">Baskı parçası</div><div class="v">72</div><div class="d">62 tür; ana montaj BOM'u ile birebir (03.11: 65)</div></div>
+  <div class="card"><div class="k">Filament</div><div class="v">7,60–7,66 kg</div><div class="d">PETG 6,45 + PETG-CF 1,16–1,22 (12 tür, 18 adet)</div></div>
+  <div class="card"><div class="k">Baskı süresi</div><div class="v">158–159 sa</div><div class="d">158,2–159,4 sa; 14 adet destekli; hepsi X2D'ye sığıyor</div></div>
+  <div class="card"><div class="k">Bağımsız kontrol</div><div class="v"><span class="tag wait">KOŞULLU</span></div><div class="d">Kritik yok; 2 orta bulgu düzeltme turu 1'de kapandı, C doğruladı</div></div>
+  <div class="card"><div class="k">Regresyon</div><div class="v"><span class="tag ok">10/10 aynı</span></div><div class="d"><code>--yazma</code> GEÇER; çakışma <code>kontrol</code> 0</div></div>
+</div>
+
+<p class="note">C'nin commit öncesi koşuları (<code>PYTHONIOENCODING=utf-8</code>): <code>Y2b-baski.py</code> → <code>F4c-partiler.py</code> → <code>F4c-liste.py</code> → <code>F4c-dogrula.py</code>, dördü de çıkış 0, doğrulama 7/7 GEÇTİ; koşudan önce ve sonra 8 dosyanın sha256'sı ve <code>git status</code> aynı (idempotent). <code>regresyon.py --yazma</code> çıkış 0, <code>carpisma_kos.py kontrol</code> çıkış 0 ("izlenen 17 dosyanin ozetleri kayitla ayni"). FreeCAD açılmadı; <code>tasarim/</code> ve <code>kod/</code> altında değişiklik yok.</p>
+
+<h2>03.11 listesine göre fark</h2>
+<div class="tbl"><table>
+<thead><tr><th></th><th>03.11 (<code>fa49caa</code>)</th><th>09.11 (F4c)</th><th>Fark</th><th>Neden</th></tr></thead>
+<tbody>
+<tr><td>Parça</td><td class="n">65</td><td class="n"><b>72</b></td><td class="n">+7</td><td>Hoparlör kabı ön halka ve arka, hoparlör kelepçesi, 4 QLED ekran tırnağı</td></tr>
+<tr><td>Filament</td><td class="n">7,63–7,68 kg</td><td class="n"><b>7,60–7,66 kg</b></td><td class="n">−22,6 / −22,0 g</td><td>QLED'li kafa yüz kabukları −53,6 g, boyun adaptörü −3,6; yeni parçalar +21,4; hub takozu +5; göğüs çerçeveleri +4, VESA −1; omuz göbeği dişi +5,2–5,8</td></tr>
+<tr><td>PETG</td><td class="n">6,47 kg</td><td class="n"><b>6,45 kg</b></td><td class="n">−23,2 g</td><td>yukarıdaki PETG parçalar</td></tr>
+<tr><td>PETG-CF</td><td class="n">1,16–1,21 kg</td><td class="n"><b>1,16–1,22 kg</b></td><td class="n">+0,6 / +1,2 g</td><td>omuz göbeği dişi, adaptör, VESA</td></tr>
+<tr><td>Süre</td><td class="n">158,7–159,9 sa</td><td class="n"><b>158,2–159,4 sa</b></td><td class="n">−0,5 sa</td><td>aynı kalemler</td></tr>
+<tr><td>Destekli</td><td class="n">13</td><td class="n"><b>14</b></td><td class="n">+1</td><td>Hub takozlu üst arka servis kapağı (analiz destek istiyor; aşağıda açık 2)</td></tr>
+</tbody>
+</table></div>
+<p class="note">Her analiz geometri kaynağından yeni; "eski analiz" satırı yok (B tarih ve <code>git log</code> ile ayrıca doğruladı). VESA taşıyıcı listede modele göre PETG-CF (eski renk tablosu beyaz PETG diyordu).</p>
+
+<h2>Partiler</h2>
+<div class="tbl"><table>
+<thead><tr><th>Parti</th><th>Ne zaman / bağımlılık</th><th>Adet</th><th>Filament</th><th>Süre</th></tr></thead>
+<tbody>
+<tr><td class="kod">0</td><td>İlk gün (S'den önce); tolerans kuponları. Rulman, insert ve vidalar elde olmalı (K29, K31)</td><td class="n">8 baskı (6 kupon)</td><td class="n">0,26–0,42 kg</td><td class="n">≈ 7,3–12,0 sa</td></tr>
+<tr><td class="kod">1</td><td>Hemen: Parti 0 sonucu CAD'e girip STL çıkınca. Sona bırakılan 7 parça ilgili kalem gelip ölçülünce</td><td class="n">27</td><td class="n">3,31 kg</td><td class="n">≈ 69 sa</td></tr>
+<tr><td class="kod">2</td><td>Servo ve horn gelip kumpasla ölçülünce; omuz göbeği K39 kök yarıçapından (P6.1) sonra</td><td class="n">25</td><td class="n">1,33–1,38 kg</td><td class="n">≈ 28–29 sa</td></tr>
+<tr><td class="kod">3</td><td>10,1" QLED yüz ekranı gelip ölçülünce (K32) ve K2 modele girince</td><td class="n">9</td><td class="n">0,75 kg</td><td class="n">≈ 16 sa</td></tr>
+<tr><td class="kod">4</td><td>Etek havalandırması (E7) CAD'e girince; akü takozu akü gelince (K30), Parti 1 arasında basılır</td><td class="n">11</td><td class="n">2,21 kg</td><td class="n">≈ 46 sa</td></tr>
+<tr><td class="kod">1–4</td><td></td><td class="n"><b>72</b></td><td class="n"><b>7,60–7,66 kg</b></td><td class="n"><b>158,2–159,4 sa</b></td></tr>
+</tbody>
+</table></div>
+<p class="note">Parti toplamları baskı listesiyle betikle karşılaştırıldı: adet, kg, saat, PETG ve PETG-CF aynı; her parça tam bir partide. Kuponlar parça toplamına katılmaz.</p>
+
+<div class="oneri"><b>Parti 1'in sonuna bırakılanlar (düzeltme turu 1).</b> Satın alınan parçaya bağlı 7 parça (275 g, PETG-CF 113 g, ≈ 5,8 sa) Parti 1'de kaldı ama sona alındı ve "ilgili kalem gelip ölçülünce basılır" notu aldı: üst arka servis kapağı (USB hub), hoparlör kabı ön/arka ve kelepçe (8 Ω hoparlör, K36/K6), <b>göğüs ekranı çerçevesi sağ/sol ve VESA taşıyıcı</b> (11,6" ekran; VESA deliklerinin kasadaki yeri doğrulanmadı). Ekran S siparişinde geliyor, Parti 1 ise S−0,5'te başlıyor.</div>
+
+<h3 style="font-size:1rem;margin:20px 0 8px">Takvim (tek yazıcı, partiler sırayla; partinin bitişi)</h3>
+<div class="tbl"><table>
+<thead><tr><th>Parti</th><th>40 sa/hafta</th><th>32 sa/hafta</th><th>Plan (Durum A)</th></tr></thead>
+<tbody>
+<tr><td class="kod">1</td><td class="n">S+1,26</td><td class="n">S+1,70</td><td class="n">S+1,5</td></tr>
+<tr><td class="kod">2</td><td class="n">S+1,98</td><td class="n">S+2,60</td><td class="n">S+2,3</td></tr>
+<tr><td class="kod">3</td><td class="n">S+2,38</td><td class="n">S+3,09</td><td class="n">S+2,8</td></tr>
+<tr><td class="kod">4</td><td class="n">S+3,49</td><td class="n">S+4,48</td><td class="n">S+4–4,5</td></tr>
+</tbody>
+</table></div>
+<p class="note">40 sa/hafta'da plan tutuyor. 32 sa/hafta'da ara bitişler 1–2 gün kayıyor, son (≈ S+4,5) aynı kalıyor. Sayıdan büyük risk bağımlılıklar: STL dışa aktarma, Parti 0 sonucu, P6.1 (S = 16.11 için ≈ 25.11'e kadar), QLED (K32), E7 ve akü (K30). <code>proje-plani.md</code>'deki "Parti 0 ≈ 3 sa" ve "65 parça" metinleri değiştirilmedi; öneri günlükte (§8).</p>
+
+<h2>Parti 0: kuponlar</h2>
+<div class="tbl"><table>
+<thead><tr><th>Kupon</th><th>Malzeme</th><th>Ne denenir</th><th>Filament (g)</th><th>Süre (sa)</th></tr></thead>
+<tbody>
+<tr><td class="kod">A</td><td>PETG-CF</td><td>6808-2RS dış bileziği Ø52,0…52,3</td><td class="n">26,0</td><td class="n">0,74</td></tr>
+<tr><td class="kod">B ×2</td><td>PETG-CF + PETG</td><td>625ZZ yuvası, Ø40 mil, M3/M5 dikey insert delikleri</td><td class="n">2 × 60,0–87,9</td><td class="n">2 × 1,71–2,50</td></tr>
+<tr><td class="kod">C ×2</td><td>PETG-CF + PETG</td><td>Isıl gömme L + 1: M3 Ø3,9…4,1, M5 Ø6,2…6,6</td><td class="n">2 × 7,5–13,4</td><td class="n">2 × 0,21–0,38</td></tr>
+<tr><td class="kod">D1</td><td>PETG-CF</td><td>Dirsek kelepçesi, kesiksiz</td><td class="n">40,9–87,9</td><td class="n">1,16–2,50</td></tr>
+<tr><td class="kod">D2</td><td>PETG-CF</td><td>Dirsek kelepçesi, boşaltmalı (koşullu)</td><td class="n">41,4–86,2</td><td class="n">1,18–2,45</td></tr>
+<tr><td class="kod">E</td><td>PETG</td><td>Üst kol tüpü halkası</td><td class="n">14,3–17,9</td><td class="n">0,41–0,51</td></tr>
+<tr><td class="kod">Toplam</td><td></td><td>PETG 81,8–119,2 g, PETG-CF 175,8–301,4 g</td><td class="n"><b>257,6–420,6</b></td><td class="n"><b>7,32–11,96</b></td></tr>
+</tbody>
+</table></div>
+<p class="note">Plandaki "≈ 3 sa" yalnız M7 kuponlarını (C bir kez, D1, D2, E) sayıyordu. A, B ve iki malzemeli B/C eklenince <b>≈ 7,3 sa</b> (D2'siz ≈ 6,2 sa); S = 16.11 örneğinde paylaşımlı yazıcıda iki günün neredeyse tamamı. Süre tahmini yöntemle; dilimleyicinin verdiği esastır.</p>
+
+<h2>Karar kuyruğu: K42–K43</h2>
+<div class="tbl"><table>
+<thead><tr><th>#</th><th>Karar</th><th>Sayılar</th><th>Önerilen varsayılan</th><th>Bloke</th></tr></thead>
+<tbody>
+<tr><td class="kod">K42</td><td>PETG-CF miktarı: 1,5 kg yetmiyor</td><td>Parça 1.158–1.216 g + CF kuponlar 176–301 g = 1.334–1.517 g. 1,5 kg'de pay +166 … −17 g; en büyük CF parçası 151,5 g, tek başarısız baskı payı bitiriyor</td><td>a: +1 makara (2,0 kg), <b>+1.114,03 TL</b> (%15 payla 1.281,13 TL)</td><td>S siparişi filament satırı, K34, Parti 0/2</td></tr>
+<tr><td class="kod">K43</td><td>Isıl gömme somun adedi</td><td>Model M3 159, M5 5; iki malzemede B ve C kuponları M3 18, M5 16 → <b>M3 177, M5 21</b> (plan 168 / 6). M5'in 2'si PETG ön kol gövdesinde</td><td>Erken alımda M3 177 + pay, M5 21 + pay; M5 6 → 21: <b>+95,25 TL</b> (M3 +47,61 TL)</td><td>K29 (erken alımdaki "insert 168"), K31 (ürün seçimi; M5 ürünü seçilmeden M5 alınmaz), Parti 0 kupon B/C</td></tr>
+</tbody>
+</table></div>
+<p class="note">Metinler B'nin önerisiyle (<code>F4c-kontrol.md</code>); K43 B-1 düzeltmesiyle (ilk taslak M5 13 diyordu). Karar kuyruğu şimdi <b>açık 38 / 43</b>. Hepsi Ahmet'in kararı; döngü varsayılanla ilerlemez.</p>
+
+<h2>Açık kalanlar</h2>
+<ol class="list">
+<li><b>STL dışa aktarımı:</b> Parti 1'in ön koşulu; FreeCAD gerektiriyor, açık iş.</li>
+<li><b>Üst arka servis kapağı destek anomalisi → P6.2:</b> analiz z 2,5'te 19.667,7 mm² destek gösteriyor (3 mm plakanın neredeyse tamamı). Takoz iç yüze gömülü prizma; dış yüz tablada basılınca destek gerekmemeli. Dilimleyicide bakılıp kesitle doğrulanacak; listede şimdilik "destekli".</li>
+<li><b><code>baski_listesi_guncelle.py</code> yaması → F6a:</b> yamasız betik 19 metin satırını eski hâle çeviriyor (03.11 tarihi, 7" ekran, "69–69 sa"); parça satırları aynı. Y1–Y7 yamasıyla çıktı listeyle birebir. Yama uygulanana kadar listeyi <code>F4c-liste.py</code> ile yeniden üret.</li>
+<li>Düşük öncelikli notlar (B-3…B-8): <code>Y2b-baski.py</code> yönlendirilmiş çıktıda <code>PYTHONIOENCODING=utf-8</code> istiyor; 6 PETG-CF türü model kaynağında "PETG" yazıyor (kütle etkilenmiyor, P6.1); Parti 2'deki 4 tür Parti 1'e alınabilir (öneri).</li>
+</ol>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th><th>Dosya</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>f7ed8c4</code></td><td><code>baski-listesi.md</code>, <code>Y2b-baski.json</code>, <code>F4c-*</code> (brief, günlük, partiler .md/.json/.py, liste, doğrula, kontrol, kontrol-sayım .py/.json), <code>F6a-brief.md</code>, <code>karar-kuyrugu.md</code> (K42–K43), <code>dongu-158.md</code></td><td class="n">15</td></tr>
+</tbody>
+</table></div>
+<p class="note">Push: <code>33d2f76..f7ed8c4 lale-duzeltme → lale-duzeltme</code>. Açık <code>git add</code> listesi; eklenen satırlarda takma ad 0, başka öğrenci/danışman soyadı 0. Dışarıda: K23 (13 kabuk PNG + <code>montaj/yerlesim-kontrol.json</code>), <code>kvkk/</code>, <code>rapor/</code>, <code>tubitak-2209b/</code>, <code>tasarim/solidworks/</code>, <code>kafa-yerlesim/kaynak/</code>, <code>lale_dongu.*</code>, izlenmeyen <code>raporlar/</code> dosyaları, <code>F5-pano-govde.txt</code>, <code>F5b-pano-govde.txt</code>. Bu rapor ayrı commit'te.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F4c · 09.11.2026 · Commit <code>f7ed8c4</code> (<code>lale-duzeltme</code>) · Zincir 4/4 çıkış 0, doğrulama 7/7, idempotent · Regresyon <code>regresyon.py --yazma</code>: GEÇER, 10/10 aynı · Çakışma <code>kontrol</code> 0 · Kaynaklar: <code>F4c-brief.md</code>, <code>F4c-gunluk.md</code>, <code>F4c-kontrol.md</code>, <code>karar-kuyrugu.md</code> K42–K43.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
