@@ -49,7 +49,6 @@ td{border-top:1px solid var(--line);padding:5px 4px;vertical-align:top}td.n{text
   width:3.5em;font-weight:600}
 td .t{color:var(--mut);font-size:12px}
 .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:0}
-tr.m6 td{color:var(--no)}
 ul.kontrol,ul.kablo{list-style:none;padding:0;margin:4px 0}
 ul.kontrol li{display:flex;gap:8px;align-items:flex-start;padding:4px 0;border-top:1px solid var(--line)}
 ul.kontrol li:first-child,ul.kablo li:first-child{border-top:0}
@@ -58,9 +57,9 @@ ul.kontrol li.tamam span{color:var(--mut);text-decoration:line-through}
 ul.kablo li{padding:4px 0 4px 18px;border-top:1px solid var(--line);position:relative}
 ul.kablo li:before{content:"⌁";position:absolute;left:2px;color:var(--uyar)}
 .bos{color:var(--mut);font-size:13px;margin:4px 0}
-.uyari{border:1px solid var(--no);border-left-width:4px;border-radius:8px;padding:8px 12px;margin:10px 0;background:var(--card)}
-.uyari b{color:var(--no)}
-.uyari ul{margin:4px 0 0;padding-left:18px;font-size:13.5px}
+.notlar{border:1px solid var(--line);border-left:4px solid var(--uyar);border-radius:8px;padding:8px 12px;margin:10px 0;background:var(--card)}
+.notlar b{color:var(--uyar)}
+.notlar ul{margin:4px 0 0;padding-left:18px;font-size:13.5px}
 .not{color:var(--mut);font-size:13.5px;white-space:pre-line}
 code{background:var(--gol);padding:1px 5px;border-radius:4px;font-size:.92em}
 .alt{display:flex;gap:10px;padding:8px 16px calc(8px + env(safe-area-inset-bottom));border-top:1px solid var(--line);

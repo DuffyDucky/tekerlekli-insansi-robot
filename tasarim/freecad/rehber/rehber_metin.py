@@ -4,6 +4,8 @@
 # M6 tablosu 125 cm ve Y3 öncesi: C1 ve sonrasında iş metni, bağlantı, alet ve erişim buradan ezilir (04.11.2026). Kaynak: arayuz.py,
 # BOM'lar, planlama/y1, y2, y3, adim3/elektrik.md, v4 malzeme listesi. Sayılar kol / omuz başına; toplam adet CAD parça listesinden gelir.
 # M6_erisim 1,58 m'de koşulmadı; erişim mesafeleri 125 cm'den, Y3_erisim 1,65 m modülünden. Bir adım burada yoksa rehber yalnız M6 tablosuyla çalışır.
+# F7a (09.11.2026): parça ataması 1,58 m'ye göre rehber_secici.py'de; F3'e göğüs ekranı, K2'ye göğüs ekranı uçları eklendi. Kafa (QLED,
+# ses, hub) metinleri P7.2'de yazılacak: parçalar doğru adımda görünür, metin henüz eski (planlama/d158/F7a-gunluk.md).
 #
 # Alanlar (hepsi isteğe bağlı):
 #   baslik  : kısa başlık (yoksa M6 "Parça / iş" sütunu)
@@ -12,7 +14,8 @@
 #   ucus    : bu adımın ana parçalarının geliş yönü (sağ taraf için; sol parçalarda X aynalanır). (x, y, z) ya da "radyal"
 #   ucus_bag: alt montaj (tezgâh) robota bağlanırken geliş yönü
 #   sure_dk : süre (dakika, tahmini); yoksa bağlantı sayısından tahmin edilir
-#   not_    : ek uyarılar (app.js şu an göstermiyor)
+#   not_    : ek uyarılar, doğrulanmamış bilgiler (app.js "Notlar" kutusunda gösterir; F7a)
+#   kamera  : "arka" ise görünüm arkadan (yeni parçalar robotun arkasındaysa; F7a)
 #   is_, baglanti_md, alet, erisim : M6 tablosundaki aynı sütunu ezer
 
 FAZ = [  # (kod öneki, faz adı); ilk eşleşen kazanır
@@ -26,7 +29,7 @@ HAZIRLIK = dict(
     is_="Baskı parçaları basılmış, destekleri temizlenmiş ve ısıl gömme somunları takılmış olmalı. Profiller kesilmiş, "
         "lazer parçalar gelmiş. Alet seti ve bağlantı elemanları adım adım kutulara ayrılmış.",
     kontrol=[
-        "Baskı listesi (`planlama/baski-listesi.md`): 65 parça basıldı, destekler temizlendi",
+        "Baskı listesi (`planlama/baski-listesi.md`): 72 parça basıldı, destekler temizlendi",
         "Isıl gömme somunlar havyayla takıldı (M3 / M5; M7 kuponundaki sıcaklık ve derinlik)",
         "Sigma profiller kesildi: 2 uzun ray, 3 ara ray, gövde direği, omuz traversi; uçlar çapaksız, dik",
         "Alt plaka (Al 3 mm) ve iki kontrplak kat lazerden geldi; delikler kumpasla tutuyor",
@@ -126,7 +129,10 @@ ADIM = {
     ),
     "B5a": dict(
         baslik="Tezgâh: güç paneli",
-        kontrol=["Sigorta kutusu, röle, ana sigorta yuvası ve ana anahtar panele (M4 + naylon somun)",
+        # M6 tablosu "ana anahtar" da diyor; 1,58 m modelinde gövde etek plakasının altında, F1'de (F7a-kontrol O-2).
+        is_="Tezgâh: güç paneline sigorta kutusu, röle ve ana sigorta yuvası. XL4016 C ve ön şarj kartı da burada. "
+            "Ana anahtar bu panele girmez: etek üst plakasının altına F1'de takılır.",
+        kontrol=["Sigorta kutusu, röle ve ana sigorta yuvası panele (M4 + naylon somun)",
                  "Ön şarj direnci (5,6 Ω) panelden ≥ 5 mm yüksekte, kablo demetine değmez (E9)",
                  "XL4016 C ve ön şarj kartı da bu panelde (Y3 yerleşimi); giriş, çıkış klemensleri erişilebilir",
                  "Sigortaları henüz takma"],
@@ -157,7 +163,8 @@ ADIM = {
     "K1": dict(
         baslik="Kablolama kapısı 1: taban",
         is_="Kabuk takılmadan önce burada dur. Akü ayrık kalır; sırayla:\n"
-            "1. Ana hat (12 AWG): XT60 → 30 A ana sigorta → ana anahtar → sigorta kutusu.\n"
+            "1. Ana hat (12 AWG): XT60 → 30 A ana sigorta → ana anahtar → sigorta kutusu. Ana anahtar henüz yerinde değil "
+            "(F1'de etek plakasının altına takılır): ana anahtara gidecek iki uç bırakılır, F1'de bağlanır.\n"
             "2. F1 20 A → röle K1 → anahtarlı bara. Baradan: iki BTS7960B; hat sigortasıyla XL4016 A ve B (7,5 A), C (5 A).\n"
             "3. F3 kafa hattı (uç direk dibinde bırakılır), F4 XL4016 çevre 5 V, F5 acil stop hattı.\n"
             "4. Motor + enkoder ve sonarları bağla. Acil stop ucunu bırak: mantar F1'de takılır.\n"
@@ -299,7 +306,9 @@ ADIM = {
             "3. Kafa 12 V (18 AWG) ve ESP32 USB (VBUS'ta 1N5819): direk ön yüzü (z +26) → boyun.\n"
             "4. Boyun yolu: alt çıkış → servo yuvası arka kanalı → kablo odası → mil penceresi → Ø32 adaptör → sol yanak dışı → tabla geçişi (x −50…−37).\n"
             "5. Kablo bağıyla direğe tuttur. S1 uçları travers arkasında kalır: G4'te yarıktan girer.\n"
-            "Göğüs ekranı kabloları bu adımda yazılmadı (`planlama/rehber/R-gunluk.md`).",
+            "6. Göğüs ekranı uçları (doğrulanmadı): HDMI boyundan iner (Pi micro HDMI 1), 12 V tabandan ayrı daldan gelir "
+            "(mini 2 A → LM2577 + LM2596, 12 V). İkisini de göğüs hizasında, direğin solunda, ekran arkasında boşta bırak; F3'te ekrana takılır. "
+            "Dokunmatik USB hub'dan gelir (hub F5'te üst arka kapakla takılır).",
         baglanti_md="Kablo bağı (adet: kablo listesi henüz yazılmadı)",
         alet="Kumpas, yan keski, multimetre",
         erisim="Kabuk yok; arkadan ve önden düz erişim",
@@ -308,15 +317,20 @@ ADIM = {
                  "Pan ve tilt elle tam açıda: boyunda kablo gerilmiyor",
                  "Her hat iki ucundan etiketli, süreklilik ölçüldü"],
         kablo=["Burada: servo A, servo B, servo kafa, kafa 12 V, enkoder / BTS sinyalleri + ESP32 → kafa USB. Şemada renkli",
+               "Göğüs ekranı: HDMI ve 12 V uçları göğüs hizasında bırakılır (yol `lale158/kablo_yolu_ekran.py`: travers arkası → direk solu → ekran arkası; "
+               "kablo çapı ve port yeri doğrulanmadı). Bu yollar rehber şemasına henüz girmedi",
                "Şemada taban kısımları da görünür: onlar K1'de bağlandı",
                "Kablo listesi (boy + kesit) henüz yazılmadı"],
+        not_=["Göğüs ekranı kablo yolu ve 12 V dalının giriş noktası doğrulanmadı (`planlama/adim3/elektrik.md` K11: giriş noktası ve "
+              "acil stop davranışı karar bekliyor)"],
     ),
     "F1": dict(
         baslik="Taban eteği",
         is_="1. 6 bant + 2 dolgu şeridi: orta → ön → arka (dolgu şeritleri modelde var, M6'da yok; sırası doğrulanmadı). Bindirmeleri bağla.\n"
             "2. Etek braketlerine dışarıdan M3×14 (L brakette M3 perçin somun, delik Ø5,1).\n"
             "3. Acil stop mantarını panel somunuyla tak, K1'de bırakılan ucu bağla.\n"
-            "4. Ana anahtar düğmesi: delik Ø30 tahmini, anahtarı ölç.",
+            "4. Ana anahtar ASW-A01 gövdesini etek üst plakasının altına, acil stobun karşısına tak (model yeri öneri, ölçü tahmini zarf; "
+            "bağlantı elemanı modelde yok, doğrulanmadı). K1'de bırakılan iki ana hat ucunu bağla. Düğme: delik Ø30 tahmini, anahtarı ölç.",
         baglanti_md="1,58 m: bindirme M3×6 ISO 7380; braket 6 × M3×14 ISO 7380 dışarıdan + M3 perçin somun (Y3 K2). M6'daki içeriden M3×8 eski",
         alet="alyan 2 (acil stop için ayrıca anahtar)",
         erisim="Düz, dışarıdan",
@@ -335,13 +349,33 @@ ADIM = {
         ucus="radyal",
     ),
     "F3": dict(
-        baslik="Göğüs bantları",
-        is_="Göğüs bantları sağ + sol, dikiş y 1005. Bindirmeleri bağla, y 1095 braketine dışarıdan M5×18 tak.\n"
-            "Nextion kalktı. 11,6\" göğüs ekranı, çerçeve ve VESA taşıyıcının montajı ve kablosu bu adımda yazılmadı (`planlama/rehber/R-gunluk.md`).",
-        baglanti_md="1,58 m: bindirme M3×6 ISO 7380; y 1095 M5×18 ISO 7380 + M5 perçin somun. M6'daki Nextion DIN 912'leri eski",
-        alet="alyan 2 / 3",
-        erisim="Düz, dışarıdan",
-        kontrol=["Cep üst kenarı köprü: destek temiz alındı, kenar kırık değil"],
+        baslik="Göğüs bantları + göğüs ekranı",
+        is_="1. Göğüs bantları sağ + sol, dikiş y 1005. Bindirmeleri bağla (x = 0'da cep altı y 1022,7 ve cep üstü y 1222 dahil), "
+            "y 1095 braketine dışarıdan M5×18 tak.\n"
+            "2. VESA taşıyıcı (PETG-CF): ekran cebinden direğin ön (+Z) kanalına, 2 × M6×18 + pul + çekiç somun. Yükseklik kanalda ayarlanır; "
+            "cıvatalara ekran takılmadan, plakanın ortasından ulaşılır.\n"
+            "3. 11,6\" ekranı (kasalı) cebe koy. K2'de bırakılan HDMI ve 12 V uçlarını tak (90° fişler).\n"
+            "4. Ekranı taşıyıcıya arkadan 4 × M4×12 + pul ile bağla (VESA 75 × 75): üst arka servis kapağı açık, direğin yanından.\n"
+            "5. Çerçeve sağ + sol: göğüs bandına dışarıdan, yarı başına 4 × M3×6 ISO 7380, çerçeve flanşındaki ısıl gömmeye. "
+            "Ekran camı çerçevenin 2 mm gerisinde, köşe takozlarına dayalı.\n"
+            "Nextion kalktı. Bu sıra kaynaktaki erişim notlarından çıkarıldı, doğrulanmadı.",
+        baglanti_md="1,58 m: bindirme M3×6 ISO 7380; y 1095 M5×18 ISO 7380 + M5 perçin somun. Ekran: taşıyıcı 2 × M6×18 DIN 912 + pul + "
+                    "çekiç somun; kasa 4 × M4×12 DIN 912 + DIN 125 pul; çerçeve 8 × M3×6 ISO 7380 → ısıl gömme. M6'daki Nextion DIN 912'leri eski",
+        alet="alyan 2 / 3 / 5",
+        erisim="Bant, çerçeve: düz, dışarıdan. Taşıyıcı M6: cepten, ekran takılmadan. VESA M4: arkadan, üst arka kapak açıkken "
+               "direk yanından (`lale158/lale158_rapor.py` bağlantı tablosu; 1,58 m'de alet erişimi ölçülmedi)",
+        kontrol=["Cep üst kenarı köprü: destek temiz alındı, kenar kırık değil",
+                 "Ekran kasası direğe değmiyor (modelde ≥ 20 mm), göğüs bandına sürtmüyor",
+                 "HDMI ve 12 V fişleri kasaya ezilmiyor; dokunmatik USB ucu F5'e kadar boşta, etiketli",
+                 "Ekran camı çerçeveyle aynı açıda, köşelerde boşluk eşit"],
+        kablo=["K2'de bırakılan göğüs ekranı HDMI ve 12 V uçları burada ekrana takılır; dokunmatik USB F5'te hub'a"],
+        not_=["Göğüs ekranının montaj sırası kaynakta yok: bant → taşıyıcı → ekran → çerçeve sırası `lale158_rapor.py` erişim "
+              "notlarından çıkarıldı, doğrulanmadı",
+              "VESA deliklerinin kasadaki yeri ve M4 vida derinliği doğrulanmadı (plaka X yarığı ±8 mm ayar verir; vida 5,2 mm giriyor)",
+              "Taşıyıcı direğin ön kanalında; K2'deki kafa 12 V hattı da direk ön yüzünden geçiyor: çakışma doğrulanmadı",
+              "Ekran port yeri fotoğraftan tahmini (x ≈ −110, kısa kenar); ekran gelince ölçülecek",
+              "HDMI'nin boyundan, dokunmatik USB'nin hub'dan gelmesi CAD'e göre; teyit yok, doğrulanmadı",
+              "12 V dalı (mini 2 A → LM2577 + LM2596): giriş noktası ve acil stop davranışı karar bekliyor (`planlama/adim3/elektrik.md` K11)"],
         ucus="radyal",
     ),
     "F4": dict(
@@ -465,6 +499,7 @@ ADIM = {
         erisim="Düz",
         kontrol=["E7 ve kafa ısı ölçümü kabuk kapalı yapıldı (kafada hesap ≈ 49 °C, ölçülmedi)", "Kapak altında kablo sıkışmadı"],
         ucus=(0, 0, -1),
+        kamera="arka",
     ),
 }
 
@@ -504,4 +539,9 @@ TR = {
     "kapagi": "kapağı", "Kapak": "Kapak", "yuvasi": "yuvası", "Rulman": "Rulman", "dis": "dış", "ic": "iç", "bilezik": "bilezik",
     "mili": "mili", "Boyun": "Boyun", "plakasi": "plakası", "braketi": "braketi", "etegi": "eteği", "Etek": "Etek", "ekrani": "ekranı",
     "yatik": "yatık", "Pul": "Pul", "kontra": "kontra", "somunu": "somunu", "Saplama": "Saplama", "agir": "ağır", "uzatma": "uzatma",
+    # F7a (1,58 m parçaları)
+    "Cerceve": "Çerçeve", "cercevesi": "çerçevesi", "Tasiyici": "Taşıyıcı", "tasiyici": "taşıyıcı", "kasali": "kasalı",
+    "Hoparlor": "Hoparlör", "hoparlor": "hoparlör", "kabi": "kabı", "kelepcesi": "kelepçesi", "kelepce": "kelepçe", "seridi": "şeridi",
+    "tirnagi": "tırnağı", "Tirnak": "Tırnak", "tirnak": "tırnak", "yukseltme": "yükseltme", "adaptoru": "adaptörü", "Percin": "Perçin",
+    "percin": "perçin", "ici": "içi", "rafi": "rafı",
 }

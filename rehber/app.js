@@ -19,7 +19,7 @@
   const SINIF = {
     baski: ["#f0932b", "Baskı (PETG)"], cf: ["#3d5a80", "Baskı (PETG-CF)"], profil: ["#16a085", "Sigma profil"],
     satin: ["#2f86d4", "Satın alınan"], lazer: ["#8e44ad", "Lazer kesim"], imalat: ["#d35400", "İmalat"],
-    baglanti: ["#d4ac0d", "Bağlantı elemanı"], m6: ["#e5383b", "M6 CAD sonrası değişecek"], kablo: ["#c0392b", "Kablo yolu"],
+    baglanti: ["#d4ac0d", "Bağlantı elemanı"], kablo: ["#c0392b", "Kablo yolu"],
     ref: ["#95a5a6", "Gösterim"], onceki: ["#b5b5b0", "Önceki adımlar"]
   };
   function tema() {
@@ -107,21 +107,23 @@
       return "onceki";
     }
 
-    function sinif(p) { return p.m6 ? "m6" : p.r; }
+    function sinif(p) { return SINIF[p.r] ? p.r : "satin"; }
 
     function uygula(s, ucus) {
       const gizle = $("onceki-gizle").checked;
       const kutu = new THREE.Box3(), gorunur = new THREE.Box3(), altKutu = new THREE.Box3();
       const uc = [];
       const sinifSay = {};
+      const yeni = { simdi: [], alt: [], hedef: [] }, eksik = [];   // kontrol: bu adımda yeni görünenler (duruma göre), mesh'i olmayanlar
       let altVar = false;
       for (const id in PAR) {
         const k = PAR[id]; const p = k.v; const o = k.obj;
-        if (!o) continue;
+        if (!o) { eksik.push(p.id); continue; }
         const d = durum(p, s);
         o.position.copy(k.taban);
         if (d === "gizli" || (d === "onceki" && gizle && !p.renk)) { o.visible = false; continue; }
         o.visible = true;
+        if (yeni[d]) yeni[d].push(p.id);
         o.updateMatrixWorld(true);
         const b = new THREE.Box3().setFromObject(o);
         gorunur.union(b);
@@ -147,7 +149,7 @@
       });
       lejant(sinifSay, s);
       if (ucus && !CEKIM) baslatUcus(uc); else ciz();
-      return { kutu: kutu.isEmpty() ? gorunur : kutu, gorunur: gorunur };
+      return { kutu: kutu.isEmpty() ? gorunur : kutu, gorunur: gorunur, yeni: yeni, eksik: eksik };
     }
 
     function baslatUcus(uc) {
@@ -179,6 +181,7 @@
       let yon = new THREE.Vector3(0.85, 0.62, 1.25);
       const alttan = st && (st.kod === "B1" || st.kod === "B1a");
       if (alttan) yon.set(0.9, -0.55, 1.2);
+      if (st && st.kamera === "arka") yon.set(0.85, 0.62, -1.25);   // rehber_metin "kamera": yeni parçalar arkada (F5 kapaklar)
       yon.normalize();
       const fov = kamera.fov * Math.PI / 180;
       const asp = Math.max(0.5, Math.min(1, kamera.aspect));
@@ -203,7 +206,13 @@
       $("cubuk").style.width = (100 * s / (N - 1)) + "%";
       $("sayac").textContent = "Adım " + s + " / " + (N - 1);
       $("etiket").hidden = true;
-      if (CEKIM) requestAnimationFrame(() => { ciz(); document.body.dataset.hazir = "1"; });
+      if (CEKIM) {
+        // rehber_uret.py kontrolü --dump-dom ile okur: adım başına yeni görünen parça kimlikleri ve mesh'i bulunmayan parçalar
+        const kv = $("kontrol-veri");
+        if (kv) kv.textContent = JSON.stringify({ adim: s, kod: ADIM[s].kod, simdi: k.yeni.simdi.sort(), alt: k.yeni.alt.sort(),
+          hedef: k.yeni.hedef.length, eksik: k.eksik });
+        requestAnimationFrame(() => { ciz(); document.body.dataset.hazir = "1"; });
+      }
     }
 
     // ---------------------------------------------------------------- çizim
@@ -235,7 +244,7 @@
       if (!hit) { et.hidden = true; return; }
       const p = PAR[hit.object.userData.id].v;
       et.innerHTML = "<b>" + esc(p.ad) + "</b><br><span class='not'>" + esc(p.kod) + " · " + esc(p.modul) + " · adım " +
-        p.a + " (" + esc(ADIM[p.a].kod) + ")" + (p.m6 ? " · <span style='color:var(--no)'>M6 " + p.m6 + "</span>" : "") + "</span>";
+        p.a + " (" + esc(ADIM[p.a].kod) + ")</span>";
       et.hidden = false;
     });
 
@@ -253,9 +262,10 @@
       $("rozetler").innerHTML = roz.join("");
       $("adim-baslik").textContent = s + ". " + st.baslik;
       $("adim-is").innerHTML = md(st.is_);
-      // M6 uyarısı
-      $("m6-uyari").innerHTML = st.m6.length ? "<div class='uyari'><b>M6 CAD sonrası değişecek</b><ul>" +
-        st.m6.map((m) => "<li>" + m.adet + " bağlantı: " + esc(m.not_) + "</li>").join("") + "</ul></div>" : "";
+      // notlar (rehber_metin.py not_: doğrulanmamış bilgiler, uyarılar)
+      const nt = st.not_ || [];
+      $("notlar").innerHTML = nt.length ? "<div class='notlar'><b>Notlar</b><ul>" + nt.map((t) => "<li>" + md(t) + "</li>").join("") +
+        "</ul></div>" : "";
       // KPI
       const nb = st.baglantilar.reduce((a, b) => a + b.adet, 0), np = st.parcalar.reduce((a, b) => a + b.adet, 0);
       $("kpi").innerHTML = [
@@ -275,14 +285,13 @@
         "</table>" : "<p class='bos'>" + (s === 0 ? "Hedef: bitmiş robot (" + VERI.parcalar.length + " parça)." : "Bu adımda yeni parça yok.") + "</p>") + bag + altNot;
       // bağlantılar
       $("baglantilar").innerHTML = (st.baglantilar.length ? "<table>" + st.baglantilar.map((x) =>
-        "<tr class='" + (x.m6 ? "m6" : "") + "'><td>" + esc(x.kod) + (x.m6 ? "<div class='t'>" + x.m6 + " tanesi M6 CAD sonrası değişecek</div>" : "") +
-        "</td><td class='n'>×" + x.adet + "</td></tr>").join("") + "</table>" : "<p class='bos'>Yok.</p>") +
-        (st.baglanti_md ? "<p class='not'>M6 tablosu: " + md(st.baglanti_md) + "</p>" : "");
+        "<tr><td>" + esc(x.kod) + "</td><td class='n'>×" + x.adet + "</td></tr>").join("") + "</table>" : "<p class='bos'>Yok.</p>") +
+        (st.baglanti_md ? "<p class='not'>Bağlantı: " + md(st.baglanti_md) + "</p>" : "");
       // kontrol listesi
       const kk = (oku().kontrol || {})[st.kod] || [];
       $("kontrol").innerHTML = st.kontrol.length ? st.kontrol.map((t, i) =>
         "<li class='" + (kk[i] ? "tamam" : "") + "'><input type='checkbox' data-i='" + i + "'" + (kk[i] ? " checked" : "") + "><span>" + md(t) + "</span></li>").join("")
-        : "<li class='bos'>Bu adım için kontrol listesi henüz yazılmadı (M6 erişim notuna bak).</li>";
+        : "<li class='bos'>Bu adım için kontrol listesi henüz yazılmadı (erişim notuna bak).</li>";
       // kablo kancası
       const kab = st.kablo.map((t) => "<li>" + md(t) + "</li>");
       VERI.parcalar.forEach((p) => {
@@ -303,6 +312,7 @@
       const k = Object.keys(say);
       if (s > 0) k.push("onceki");
       $("lejant").innerHTML = k.map((c) => "<span><i style='background:" + SINIF[c][0] + "'></i>" + SINIF[c][1] + "</span>").join("");
+      $("lejant").hidden = !k.length;
     }
 
     // ---------------------------------------------------------------- gezinme

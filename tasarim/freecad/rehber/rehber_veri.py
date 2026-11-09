@@ -8,8 +8,8 @@
 #   rehber-veri.js    aynı JSON (window.REHBER_VERI)
 #
 # Yöntem
-# - Adım ataması: planlama/adim4/M6_erisim.py içindeki ADIMLAR seçicileri (dosyanın "yukle" işaretine kadarki kısmı exec edilir).
-#   İç kod -> rehber kodu: E4a -> E4; kafa "Yanak-horn" cıvataları E3a -> E3 (M6 tablosunda E3 ayrı adım).
+# - Adım ataması: tasarim/freecad/rehber/rehber_secici.py (1,58 m seçicileri, F7a). Adım kodları M6 tablosundaki kodlardır;
+#   seçicide olmayan kod tabloda yoksa betik durur. Atanamayan parça "atanmamis" listesine yazılır (kontrol bunu hata sayar).
 # - Adım metinleri: M6-montaj-sirasi.md 2. bölüm tablosu (ayrıştırılır) + rehber_metin.py.
 # - Mesh: parça şekli modül yerelinde üçgenlenir. Aynı şekiller (hacim, alan, asal momentler, asal çerçevede sınır kutusu) tek
 #   mesh; düğüm matrisi = modül yerleşimi (sol = X aynası) · kütle merkezi · asal çerçeve. Normaller tarayıcıda hesaplanır.
@@ -39,13 +39,11 @@ def log(*a):
     sys.stdout.flush()
 
 
-# ------------------------------------------------------------------ M6 adım seçicileri (tek kaynak)
-_m6 = os.path.join(ADIM4, "M6_erisim.py")
-_src = open(_m6, encoding="utf-8").read().split("# ---------------------------------------------------------------- yukle")[0]
-NS = {"__file__": _m6, "__name__": "m6_secici"}
-exec(compile(_src, _m6, "exec"), NS)
-Y = NS["Y"]
-IC_ADIM = {a[0]: (a[1], a[4]) for a in NS["ADIMLAR"]}         # ic no -> (kod, tezgah)
+# ------------------------------------------------------------------ adım seçicileri (tek kaynak: rehber_secici.py, 1,58 m; F7a 09.11.2026)
+# Önceden planlama/adim4/M6_erisim.py ADIMLAR exec ediliyordu (125 cm seçicileri); neden ayrıldığı rehber_secici.py başında.
+import rehber_secici as RS
+sys.path.insert(0, ADIM4)
+import m6_yukle as Y                                          # modül dosyaları, hariç tutma, global yerleşim (yalnız okur)
 
 
 # ------------------------------------------------------------------ M6 tablosu (Markdown)
@@ -67,18 +65,11 @@ TABLO = m6_tablo()
 log("M6 tablosu: %d satir" % len(TABLO))
 KODLAR = ["0"] + [r["kod"] for r in TABLO]
 KOD_IDX = {k: i for i, k in enumerate(KODLAR)}
-TEZGAH_KOD = {kod: tz for _no, (kod, tz) in IC_ADIM.items() if tz}
-TEZGAH_KOD.pop("E4a", None)
-BAGLANIR = {"plaka": "B1", "guc": "B5", "kat": "B6", "omuz": "D1", "boyun": "E1", "kafa": "E3", "gobek": "G1", "dirsek": "H1"}
-
-
-def rehber_kodu(p, ic_no):
-    kod = IC_ADIM[ic_no][0]
-    if kod == "E4a":
-        return "E4"
-    if kod == "E3a" and "Yanak-horn" in p["ad"]:
-        return "E3"
-    return kod
+TEZGAH_KOD = dict(RS.TEZGAH)
+BAGLANIR = dict(RS.BAGLANIR)
+_bilinmeyen = [k for k, _t, _f in RS.ADIMLAR if k not in KOD_IDX]
+if _bilinmeyen:
+    raise SystemExit("rehber_secici kodu M6 tablosunda yok: %s" % _bilinmeyen)
 
 
 # ------------------------------------------------------------------ yükleme (m6_yukle ile aynı kural, yerel şekil de tutulur)
@@ -123,6 +114,7 @@ def tezgah_mi(kod):
     return TEZGAH_KOD.get(kod)
 
 
+ATANMAMIS = []
 for p in P:
     if p["tur"] == "Referans":
         if p["modul"] == "taban" and p["ad"].startswith("Kablo yolu"):
@@ -132,12 +124,13 @@ for p in P:
         else:
             p["kodr"] = "F1"                                       # ana anahtar düğmesi gösterimi (etek deliği K7)
         continue
-    ic = NS["adim_bul"](p)
-    if ic not in IC_ADIM or IC_ADIM[ic][0] == "X":
+    kod = RS.adim_bul(p)
+    if kod is None:
         log("UYARI atanamadi:", p["ad"], p["modul"])
-        p["kodr"] = "F5"
+        ATANMAMIS.append("%s [%s]" % (p["ad"], p["modul"]))
+        p["kodr"] = "F5"                                           # görünür kalsın; kontrol.json bunu hata sayar
         continue
-    p["kodr"] = rehber_kodu(p, ic)
+    p["kodr"] = kod
 for p in P:
     p["a"] = KOD_IDX[p["kodr"]]
     tz = tezgah_mi(p["kodr"])
@@ -543,20 +536,21 @@ for i, kod in enumerate(KODLAR):
         erisim=mt.get("erisim") or r["erisim"], tezgah=TEZGAH_KOD.get(kod),
         baglanir=KOD_IDX[BAGLANIR[TEZGAH_KOD[kod]]] if TEZGAH_KOD.get(kod) else None,
         parcalar=list(parca.values()), baglantilar=list(bag.values()),
-        kontrol=mt.get("kontrol", []), kablo=mt.get("kablo", []), not_=mt.get("not_", []),
+        kontrol=mt.get("kontrol", []), kablo=mt.get("kablo", []), not_=mt.get("not_", []), kamera=mt.get("kamera"),
         m6=[dict(kod=k, not_=RM.M6_CAD_NOT[k], adet=sum(1 for p in ps if p.get("m6") == k)) for k in m6not],
         sure_dk=sure, sure_tahmini=not mt.get("sure_dk"),
         kablolama=kod in ("K1", "K2")))
 
 VERI = dict(
     surum=1, uretim=time.strftime("%Y-%m-%d %H:%M"), betik="tasarim/freecad/rehber/rehber_veri.py",
-    kaynak=dict(m6="planlama/adim4/M6-montaj-sirasi.md + M6_erisim.py (ADIMLAR) + M6_erisim_sonuc.json",
+    kaynak=dict(m6="planlama/adim4/M6-montaj-sirasi.md (adım sırası ve tablo metni)",
+                secici="tasarim/freecad/rehber/rehber_secici.py (parça -> adım, 1,58 m)",
                 cad={m: time.strftime("%Y-%m-%d %H:%M", time.localtime(os.path.getmtime(os.path.join(FC, f))))
                      for m, f in Y.DOSYA.items() if not m.endswith("_sol")}),
     koordinat="mm; +X sag, +Y yukari, +Z ileri (yuz)",
     m6_bayrak=dict(M6SAY), mesh=dict(benzersiz=len(MESH), parca=len(P), ucgen=sum(len(m[1]) for m in MESH),
                                      glb_mb=round(len(glb) / 1e6, 2)),
-    adimlar=ADIMLAR, parcalar=PARCA)
+    atanmamis=ATANMAMIS, adimlar=ADIMLAR, parcalar=PARCA)
 js = json.dumps(VERI, ensure_ascii=False, separators=(",", ":"))
 open(os.path.join(CIKTI, "rehber-veri.json"), "w", encoding="utf-8").write(json.dumps(VERI, ensure_ascii=False, indent=0))
 open(os.path.join(CIKTI, "rehber-veri.js"), "w", encoding="utf-8").write("window.REHBER_VERI=" + js + ";\n")

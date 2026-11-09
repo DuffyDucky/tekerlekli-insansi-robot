@@ -36,13 +36,13 @@ var ce=console.error;console.error=function(){k(Array.prototype.join.call(argume
       <h1 id="adim-baslik">–</h1>
       <p class="is" id="adim-is"></p>
     </div>
-    <div id="m6-uyari"></div>
+    <div id="notlar"></div>
     <div class="kpi-satir" id="kpi"></div>
     <details open><summary>Parçalar</summary><div id="parcalar"></div></details>
     <details open><summary>Bağlantı elemanları</summary><div id="baglantilar"></div></details>
     <details open><summary>Kontrol listesi</summary><ul class="kontrol" id="kontrol"></ul></details>
     <details open><summary>Kablo kancası</summary><ul class="kablo" id="kablo"></ul></details>
-    <details><summary>Erişim notu (M6)</summary><p class="not" id="erisim"></p></details>
+    <details><summary>Erişim notu</summary><p class="not" id="erisim"></p></details>
   </aside>
 </main>
 <nav class="alt">
@@ -50,6 +50,7 @@ var ce=console.error;console.error=function(){k(Array.prototype.join.call(argume
   <select id="secim" aria-label="Adım seç"></select>
   <button class="btn ana" id="ileri" title="Sonraki adım (→)">İleri →</button>
 </nav>
+<script type="application/json" id="kontrol-veri"></script>
 <script src="veri/rehber-veri.js"></script>
 <script src="veri/robot-glb.js"></script>
 <script src="app.js"></script>

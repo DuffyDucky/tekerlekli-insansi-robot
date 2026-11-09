@@ -2,6 +2,17 @@
 
 Bir sonraki ajan buradan devam eder. Durum kutuları + hangi komut ne üretti.
 
+## Durum (09.11.2026 16:05, F7a / P7.1: 1,58 m modelinden yeniden üretildi; ayrıntı `planlama/d158/F7a-gunluk.md`)
+- [x] F7a-1. Seçiciler 1,58 m: `tasarim/freecad/rehber/rehber_secici.py` (rehberin kendi katmanı; M6_erisim.py / M6_ek.py değişmedi, gerekçe
+      dosya başında). 1192 parça (1179 + 13 referans), atanmamış 0; model ↔ rehber modül modül fark 0
+- [x] F7a-2. Üretildi: `rehber_uret.py` tek komut (veri 22 s + 50 adım tarayıcı ≈ 3 dk). `kaynak.cad` = F6a modül FCStd saatleri
+      (iskelet / omuz 14:27, kabuk / dirsek 14:28, taban 14:29, kafa 08:54). Mesh 288 benzersiz, 189.934 üçgen, GLB 2,56 MB
+- [x] F7a-3. Göğüs ekranı F3 içinde (bant → VESA taşıyıcı → ekran → çerçeve); doğrulanmamışlar F3 "Notlar"da. K2'ye göğüs ekranı uçları
+- [x] F7a-4. Uygulama: "M6 tablosu:" → "Bağlantı:", M6 kırmızı kutusu / lejantı kaldırıldı (boş lejant gizlenir), `not_` "Notlar" kutusunda,
+      adım başına `kamera: "arka"` (F5)
+- [x] F7a-5. `kontrol.json`: 50/50 adım geçti, konsol hatası 0, her adımda yeni görünen parçalar beklenenle aynı, her parça tam bir adımda
+- [ ] P7.2: kafa (QLED, ses, hub) metinleri, yazdırılabilir sürüm (C), parça listesi gruplama; liste `planlama/d158/F7a-gunluk.md` "P7.2'ye kalanlar"
+
 ## Durum (15 Ekim 19:20, Opus-10 checkpoint'te durdu: koordinatör talimatı "en yakın checkpoint")
 - [x] 0. Kaynaklar okundu (CLAUDE.md, README, OZET, dongu, M6 md + JSON + M6_erisim.py, baski-listesi, elektrik.md, KOL_KABLO, taban YOL)
 - [x] A1. `tasarim/freecad/rehber/rehber_veri.py` çalışıyor: 50 adım (0 hazırlık + M6'nın 48'i + F5), 962 parça (13+5 kablo/gösterim referansı dahil)
@@ -18,6 +29,12 @@ Bir sonraki ajan buradan devam eder. Durum kutuları + hangi komut ne üretti.
 - [x] E. Headless Chrome kontrolü: adım 0,1,4,5,9,11,16,17 hazır, konsol hatası 0 (`planlama/rehber/kontrol.json`); görüntüler
       `planlama/rehber/goruntu/adim-NN.png` (1, 9, 17 gözle bakıldı: doğru)
 
+## Yapılacaklar 04.11 → durum 09.11 (F7a)
+1 yapıldı (üret ve bak: 50 adım, 16 görüntüye gözle bakıldı). 2 yapıldı (seçiciler `rehber_secici.py`'de; M6 tablosu hâlâ 125 cm,
+öneri F7a günlüğünde). 3 yapıldı (F3 + K2; doğrulanmamışlar işaretli). 4 P7.2'ye (parçalar E4'te görünür, metin eski). 5 yapıldı.
+6: kablo_yolu_ekran.py yolları, kablo listesi, yazdırılabilir sürüm, baski_listesi_guncelle.py hâlâ açık.
+Aşağıdaki metin 04.11 kaydıdır (tarihçe).
+
 ## Yapılacaklar (04.11.2026, sonraki ajan buradan başlar)
 Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber/veri/` eski. `rehber_metin.py` ve `rehber_veri.py` için `py_compile` geçti, başka test yok.
 
@@ -31,7 +48,7 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
 - `M6-montaj-sirasi.md` tablosu hâlâ 125 cm (F3 / K2'de Nextion). Tablo düzeltilmedi; `rehber_metin.py` üstünü örtüyor.
 
 **3. Göğüs ekranı adımı yazılacak (F3'ten sonra):** VESA taşıyıcı: kasaya 4 × M4×12 DIN 912 + pul, direk ön kanalına 2 × M6×18 DIN 912 + pul + çekiç somun (`lale158/lale158_rapor.py` satır 77–78; delik yeri ve vida derinliği orada da doğrulanmadı). Çerçeve sağ + sol, ekran 2 mm içeride, çerçeve gövde renginde. Direk ön yüzünden K2'nin kafa 12 V ve USB hattı da geçiyor: çakışma doğrulanmadı.
-- Kablo: HDMI + USB dokunmatik Pi'den boyundan iner (CAD'de böyle, **Efe teyidi yok**); uç K2'de göğüs hizasında bırakılır, K2 metnine eklenecek.
+- Kablo: HDMI boyundan iner, dokunmatik USB hub'dan (05.11 B kararı; CAD'de böyle, teyit yok); uç K2'de göğüs hizasında bırakılır (09.11'de K2'ye eklendi).
 - Besleme: 12 V, LM2577 + LM2596 kartı, 2 A sigortalı ayrı dal. Giriş noktası ve acil stop davranışı doğrulanmadı (`elektrik.md`).
 
 **4. Kafa ekranı adımı yazılacak (E3a ile E4 arasına):** 10,1" QLED, vida deliği yok, tırnak; görünen alan 225,64 × 127,36; kütle doğrulanmadı.
@@ -53,7 +70,7 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
 ## Komutlar ve ürettikleri
 | Komut | Üretir |
 |---|---|
-| `python tasarim/freecad/rehber/rehber_uret.py` | 1) freecadcmd + `rehber_veri.py` (~20 s) → `rehber/veri/rehber-veri.json`, `rehber-veri.js`, `robot.glb`, `robot-glb.js`; 2) her adım için headless Chrome `--dump-dom` (hata/hazır) + `--screenshot` → `planlama/rehber/goruntu/adim-NN.png`, `planlama/rehber/kontrol.json` (tüm 50 adım ~5 dk) |
+| `python tasarim/freecad/rehber/rehber_uret.py` | 1) freecadcmd + `rehber_veri.py` (~22 s) → `rehber/veri/rehber-veri.json`, `rehber-veri.js`, `robot.glb`, `robot-glb.js`; 2) her adım için headless Chrome `--dump-dom` (hata/hazır + `kontrol-veri`: yeni görünen parçalar) + `--screenshot` → `planlama/rehber/goruntu/adim-NN.png`, `planlama/rehber/kontrol.json` (tüm 50 adım ≈ 3 dk; çıkış 0 = hepsi geçti) |
 | `... rehber_uret.py --veri-yok --adimlar 1,4,9` | yalnız tarayıcı kontrolü + seçili görüntüler |
 | `... --gorsel-yok` | yalnız veri + mesh |
 | Doğrudan: `FC_SCRIPT=<rehber_veri.py> freecadcmd run_fc.py` | yalnız veri + mesh |
@@ -84,10 +101,19 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
 - 2026-10-15: kaynaklar okundu. Koordinatör talimatı: **%50 checkpoint'te dur** (A çalışır + B iskeleti, iskelet+taban adımları uçtan uca,
   ekran görüntüleri, konsol temiz). Yazdırılabilir sürüm ve cila sonraya.
 - 2026-11-04: C1 ve sonrası adım yazıları, K1 / K2 ayrımı, M6 bayrağı kapalı, kök README komutu. Veri üretilmedi, görsel bakılmadı. Yukarıda "Yapılacaklar".
+- 2026-11-09 (F7a, P7.1): 1,58 m modelinden yeniden üretildi; seçiciler `rehber_secici.py`; göğüs ekranı F3; uygulama düzeltmeleri; kontrol 50/50.
+- 2026-11-09 (F7a düzeltme turu 1, `planlama/d158/F7a-kontrol.md` O-1 / O-2): kafadaki 625ZZ iç bilezik E2b → E2, ana anahtar ASW-A01 gövdesi B5a → F1 (etek plakası altı); B5a / K1 / F1 metni buna göre. Yeniden üretildi: 50/50, konsol 0, 1192 ↔ 1192.
 
 ## Kararlar (tasarım)
-- Adım ataması tek kaynak: `planlama/adim4/M6_erisim.py` içindeki `ADIMLAR` seçicileri. `rehber_veri.py` bu dosyanın
-  "yukle" işaretine kadarki kısmını `exec` eder (kopya yok). İç kod → rehber kodu: `E4a→E4`; kafa "Yanak-horn civatasi" → `E3`.
+- 09.11 (F7a): Adım ataması tek kaynak `tasarim/freecad/rehber/rehber_secici.py` (1,58 m; saf Python, FreeCAD'siz test edilir). Kodlar
+  doğrudan M6 tablosu kodları (E4a / E3a ara kodu yok). M6_erisim.py'nin ADIMLAR'ı 125 cm kaydı olarak kaldı; M6 analizi 1,58 m'de
+  yeniden koşulursa seçicileri buradan almalı.
+- 09.11 (F7a): Göğüs ekranı ayrı adım değil, F3'ün içinde (M6 F3 satırı zaten "göğüs bantları + Nextion"); adım sayısı 48 + F5 + hazırlık kaldı.
+- 09.11 (F7a): Isıl gömme somunlar bağlandıkları cıvatanın adımında listelenir (bindirme, kapak). Bir parçaya vidalanan alt parça o parçayla
+  aynı adımda: kamera / QLED / tırnaklar yüz kabuğuyla, ReSpeaker / ses kartı / PAM8403 arka kabukla (E4); hub üst arka kapakla (F5);
+  hoparlör orta bantla (F2); XL4016 C ve ön şarj kartı güç paneliyle (B5a); etek H1 / H2 kapakları F5.
+- (15.10) Adım ataması tek kaynak: `planlama/adim4/M6_erisim.py` içindeki `ADIMLAR` seçicileri. `rehber_veri.py` bu dosyanın
+  "yukle" işaretine kadarki kısmını `exec` eder (kopya yok). İç kod → rehber kodu: `E4a→E4`; kafa "Yanak-horn civatasi" → `E3`. [09.11'de değişti]
 - Adım metinleri (iş, bağlantı, alet, erişim) `M6-montaj-sirasi.md` 2. bölüm tablosundan **ayrıştırılır** (48 satır + F5). Ek
   metin (kontrol listesi, kablo kancası, süre, uçuş yönü) `tasarim/freecad/rehber/rehber_metin.py` (adım koduna bağlı, CAD'den bağımsız).
 - Mesh: tek GLB (`rehber/veri/robot.glb`), parça başına bir düğüm (ad `p####`), aynı parçalar tek mesh (eylemsizlik çerçevesiyle
