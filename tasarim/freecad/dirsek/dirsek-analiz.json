@@ -8767,9 +8767,9 @@
    "omuz_Gobek": {
     "m": 177.6,
     "am": [
-     173.983,
-     7.611,
-     -2.322
+     173.982,
+     7.606,
+     -2.321
     ]
    },
    "omuz_Kol": {
@@ -8799,6 +8799,7 @@
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
+   "kesit_kaydirma": [],
    "hacim_cm3": 91.3,
    "kutle_g": 92.8,
    "filament_g": 97.4,
@@ -8823,6 +8824,7 @@
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
+   "kesit_kaydirma": [],
    "hacim_cm3": 53.3,
    "kutle_g": 54.1,
    "filament_g": 56.8,
@@ -8847,6 +8849,7 @@
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
+   "kesit_kaydirma": [],
    "hacim_cm3": 4.0,
    "kutle_g": 4.0,
    "filament_g": 4.2,
@@ -8871,6 +8874,7 @@
    "destek_sorun": [],
    "destek_sorun_sayi": 0,
    "desteksiz": true,
+   "kesit_kaydirma": [],
    "hacim_cm3": 73.6,
    "kutle_g": 74.8,
    "filament_g": 78.5,
@@ -9147,5 +9151,5 @@
   "yuk_g": 500.0,
   "kaynak": "dirsek/dirsek_parcalar.py"
  },
- "sure_s": 234.6
+ "sure_s": 234.5
 }
