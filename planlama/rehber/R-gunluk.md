@@ -11,7 +11,10 @@ Bir sonraki ajan buradan devam eder. Durum kutuları + hangi komut ne üretti.
 - [x] F7a-4. Uygulama: "M6 tablosu:" → "Bağlantı:", M6 kırmızı kutusu / lejantı kaldırıldı (boş lejant gizlenir), `not_` "Notlar" kutusunda,
       adım başına `kamera: "arka"` (F5)
 - [x] F7a-5. `kontrol.json`: 50/50 adım geçti, konsol hatası 0, her adımda yeni görünen parçalar beklenenle aynı, her parça tam bir adımda
-- [ ] P7.2: kafa (QLED, ses, hub) metinleri, yazdırılabilir sürüm (C), parça listesi gruplama; liste `planlama/d158/F7a-gunluk.md` "P7.2'ye kalanlar"
+- [x] P7.2 (F7b, 09.11 17:26; ayrıntı `planlama/d158/F7b-gunluk.md`): E3a / E4 / K2 / F2 / F5 metinleri (QLED, kamera, ReSpeaker, ses
+      kartı, PAM8403, hoparlör, hub; ESP32 USB hub'dan), `kablo_yolu_ekran.py` 13 gösterim şeması (parça değil; 1192 ↔ 1192), gruplama
+      anahtarı kod + ad, TR sözlüğü + `rehber_denetim.py` (ASCII 0, gruplama 0, çelişki 0), `rehber/yazdir.html` → PDF 50 sayfa,
+      360 px taşma 0 (7 adım), kadraj E1 / B3. `kontrol.json` 50/50, konsol 0
 
 ## Durum (15 Ekim 19:20, Opus-10 checkpoint'te durdu: koordinatör talimatı "en yakın checkpoint")
 - [x] 0. Kaynaklar okundu (CLAUDE.md, README, OZET, dongu, M6 md + JSON + M6_erisim.py, baski-listesi, elektrik.md, KOL_KABLO, taban YOL)
@@ -24,7 +27,7 @@ Bir sonraki ajan buradan devam eder. Durum kutuları + hangi komut ne üretti.
 - [x] B3. Kablolama kapısı (04.11, kodu yazıldı, veri üretilmedi): `RM.kablo_kapisi` y > 300 olan şemaları K2'ye ayırır (K1'de 7, K2'de 5 yol beklenir; koşuda bak).
       KOL_KABLO geçitleri metinde: ψ214 yarık (F4, G4), tüp penceresi (G3), çatal oluğu (H0c), tırnak (H0a). Şemalar bölünmedi: K2 şemasının taban kısmı K1'de bağlanır
 - [x] Metin (`rehber_metin.py`, 04.11): C1 ve sonrası 32 adım + K1 yazıldı; 125 cm / Y3 öncesi M6 satırları `is_`, `baglanti_md`, `alet`, `erisim` ile eziliyor
-- [ ] C. Yazdırılabilir sürüm (adım başına sayfa) — başlanmadı
+- [x] C. Yazdırılabilir sürüm (adım başına sayfa): F7b'de yapıldı (`rehber/yazdir.html`, `planlama/rehber/Lale-montaj-rehberi.pdf`)
 - [x] D. Tek komut `python tasarim/freecad/rehber/rehber_uret.py` (aşağıda). Kök `README.md`'ye yazıldı (04.11)
 - [x] E. Headless Chrome kontrolü: adım 0,1,4,5,9,11,16,17 hazır, konsol hatası 0 (`planlama/rehber/kontrol.json`); görüntüler
       `planlama/rehber/goruntu/adim-NN.png` (1, 9, 17 gözle bakıldı: doğru)
@@ -71,6 +74,10 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
 | Komut | Üretir |
 |---|---|
 | `python tasarim/freecad/rehber/rehber_uret.py` | 1) freecadcmd + `rehber_veri.py` (~22 s) → `rehber/veri/rehber-veri.json`, `rehber-veri.js`, `robot.glb`, `robot-glb.js`; 2) her adım için headless Chrome `--dump-dom` (hata/hazır + `kontrol-veri`: yeni görünen parçalar) + `--screenshot` → `planlama/rehber/goruntu/adim-NN.png`, `planlama/rehber/kontrol.json` (tüm 50 adım ≈ 3 dk; çıkış 0 = hepsi geçti) |
+| (F7b ekleri, aynı komut) | `rehber/goruntu/adim-NN.png` (yalnız 3B, `?sahne=1`), `planlama/rehber/goruntu/telefon-360-adim-NN.png` (DevTools ile 360 px; Python `websockets` gerekir), `planlama/rehber/Lale-montaj-rehberi.pdf` (`rehber/yazdir.html`), `kontrol.json` `telefon` / `yazdir` / `denetim` alanları. Tüm adımlar ≈ 5 dk |
+| `... --veri-yok --cikti <klasör>` / `--ek-yok` | tüm çıktılar o klasöre (kontrol.json, goruntu/, PDF, `<klasör>/rehber/` yazdir.html + veri kopyası + 3B görüntüler; depodaki `rehber/` yalnız okunur, F7b-kontrol D-4) / telefon, PDF ve denetimi atla |
+| FreeCAD başlatıcısı | `LALE_FC_LAUNCH` ortam değişkeni, yoksa `~/.robot-cad/run_fc.py` (ASCII yol; F7b-kontrol D-5) |
+| `python tasarim/freecad/rehber/rehber_denetim.py` | yalnız veri üzerinde ASCII kalıntı, gruplama (parça + bağlantı satırları), kafa / hoparlör / hub tutarlılığı, zorunlu güvenlik uyarıları (çıkış 0 = temiz) |
 | `... rehber_uret.py --veri-yok --adimlar 1,4,9` | yalnız tarayıcı kontrolü + seçili görüntüler |
 | `... --gorsel-yok` | yalnız veri + mesh |
 | Doğrudan: `FC_SCRIPT=<rehber_veri.py> freecadcmd run_fc.py` | yalnız veri + mesh |
@@ -103,8 +110,17 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
 - 2026-11-04: C1 ve sonrası adım yazıları, K1 / K2 ayrımı, M6 bayrağı kapalı, kök README komutu. Veri üretilmedi, görsel bakılmadı. Yukarıda "Yapılacaklar".
 - 2026-11-09 (F7a, P7.1): 1,58 m modelinden yeniden üretildi; seçiciler `rehber_secici.py`; göğüs ekranı F3; uygulama düzeltmeleri; kontrol 50/50.
 - 2026-11-09 (F7a düzeltme turu 1, `planlama/d158/F7a-kontrol.md` O-1 / O-2): kafadaki 625ZZ iç bilezik E2b → E2, ana anahtar ASW-A01 gövdesi B5a → F1 (etek plakası altı); B5a / K1 / F1 metni buna göre. Yeniden üretildi: 50/50, konsol 0, 1192 ↔ 1192.
+- 2026-11-09 (F7b, P7.2): kafa / hoparlör / hub metinleri, göğüs ekranı kablo şemaları, gruplama, TR denetimi, yazdırılabilir PDF (50 sayfa),
+  360 px. Yeniden üretildi 17:21 (veri) / 17:26 (kontrol): 50/50, konsol 0, 1192 ↔ 1192, denetim temiz. `planlama/d158/F7b-gunluk.md`.
+- 2026-11-09 (F7b düzeltme turu 1, `planlama/d158/F7b-kontrol.md`): elektrik güvenliği talimatları (göğüs regülatörü 12 V ayarı, 1N5819 yönü,
+  iki P6KE6V8A + kutup, K1 / K2 enerji durumu), `--cikti` tam yalıtım, başlatıcı yolu ortam değişkeni / ev klasörü, denetime zorunlu uyarı
+  ve bağlantı satırı denetimi. Veri 17:54'te yeniden üretildi.
 
 ## Kararlar (tasarım)
+- 09.11 (F7b): Göğüs ekranı / kafa kablo yolları (`lale158/kablo_yolu_ekran.py`) `semalar` olarak girer, `parcalar`a değil: gösterim
+  tüpü, parça sayısına ve "her parça tek adımda" denetimine katılmaz. Taban kablo şemalarının görünen adı `rehber_metin.KABLO_AD`'dan
+  (CAD etiketi `taban_parcalar.py`'de, tarama kaynağı).
+- 09.11 (F7b): Parça listesi satırı = (kod, tür, renk, sağ / sol atılmış taban ad); satır `ids` taşır, denetim betikle doğrular.
 - 09.11 (F7a): Adım ataması tek kaynak `tasarim/freecad/rehber/rehber_secici.py` (1,58 m; saf Python, FreeCAD'siz test edilir). Kodlar
   doğrudan M6 tablosu kodları (E4a / E3a ara kodu yok). M6_erisim.py'nin ADIMLAR'ı 125 cm kaydı olarak kaldı; M6 analizi 1,58 m'de
   yeniden koşulursa seçicileri buradan almalı.

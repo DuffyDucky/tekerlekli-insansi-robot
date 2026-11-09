@@ -4,8 +4,12 @@
 # M6 tablosu 125 cm ve Y3 öncesi: C1 ve sonrasında iş metni, bağlantı, alet ve erişim buradan ezilir (04.11.2026). Kaynak: arayuz.py,
 # BOM'lar, planlama/y1, y2, y3, adim3/elektrik.md, v4 malzeme listesi. Sayılar kol / omuz başına; toplam adet CAD parça listesinden gelir.
 # M6_erisim 1,58 m'de koşulmadı; erişim mesafeleri 125 cm'den, Y3_erisim 1,65 m modülünden. Bir adım burada yoksa rehber yalnız M6 tablosuyla çalışır.
-# F7a (09.11.2026): parça ataması 1,58 m'ye göre rehber_secici.py'de; F3'e göğüs ekranı, K2'ye göğüs ekranı uçları eklendi. Kafa (QLED,
-# ses, hub) metinleri P7.2'de yazılacak: parçalar doğru adımda görünür, metin henüz eski (planlama/d158/F7a-gunluk.md).
+# F7a (09.11.2026): parça ataması 1,58 m'ye göre rehber_secici.py'de; F3'e göğüs ekranı, K2'ye göğüs ekranı uçları eklendi.
+# F7b (09.11.2026, P7.2): kafa (E3a, E4: 10,1" QLED, tırnaklar, kamera, ReSpeaker, USB ses kartı, PAM8403), hoparlör (F2), hub (F5) ve
+# K2 (05.11 B kararı: ESP32 USB hub'dan) metinleri; taban kablo şemalarının görünen adları (KABLO_AD); göğüs ekranı / ses / hub kablo
+# yolları gösterim şeması olarak (SEMA, lale158/kablo_yolu_ekran.py); TR sözlüğü (ekranda ASCII kalıntı 0, rehber_denetim.py).
+# Kaynaklar: kafa/kafa10_lib.py, arayuz.py SES_USB, lale158/kafa-yerlesim/uygulama-notu.md, planlama/adim3/elektrik.md,
+# planlama/d158/karar-kuyrugu.md (K1, K6, K10, K11, K14, K16, K17). Ayrıntı planlama/d158/F7b-gunluk.md.
 #
 # Alanlar (hepsi isteğe bağlı):
 #   baslik  : kısa başlık (yoksa M6 "Parça / iş" sütunu)
@@ -162,26 +166,32 @@ ADIM = {
     ),
     "K1": dict(
         baslik="Kablolama kapısı 1: taban",
-        is_="Kabuk takılmadan önce burada dur. Akü ayrık kalır; sırayla:\n"
+        is_="Kabuk takılmadan önce burada dur. Bağlarken akü ayrık (XT60 açık); sırayla:\n"
             "1. Ana hat (12 AWG): XT60 → 30 A ana sigorta → ana anahtar → sigorta kutusu. Ana anahtar henüz yerinde değil "
             "(F1'de etek plakasının altına takılır): ana anahtara gidecek iki uç bırakılır, F1'de bağlanır.\n"
             "2. F1 20 A → röle K1 → anahtarlı bara. Baradan: iki BTS7960B; hat sigortasıyla XL4016 A ve B (7,5 A), C (5 A).\n"
             "3. F3 kafa hattı (uç direk dibinde bırakılır), F4 XL4016 çevre 5 V, F5 acil stop hattı.\n"
             "4. Motor + enkoder ve sonarları bağla. Acil stop ucunu bırak: mantar F1'de takılır.\n"
-            "5. Direğe çıkacak hatların taban kısmını da burada bağla (servo A / B / kafa, kafa 12 V, ESP32 USB). Yukarısı K2'de.",
+            "5. Direğe çıkacak hatların taban kısmını da burada bağla (servo A / B / kafa, kafa 12 V, ESP32 USB). Yukarısı K2'de.\n"
+            "6. K1'de enerji verilmez: ana anahtar ve acil stop mantarı F1'de takılır. Mantar ve ana anahtar uçları hiçbir zaman "
+            "köprülenmez; akü XT60 ayrık kalır, boştaki ana hat uçları gerilimsiz ve bantlı. XL4016 ayarı ve PC817 ölçümü kartlar takılmadan "
+            "önce tezgâhta, akım sınırlı tezgâh kaynağıyla yapılır (kontrol); motor yön testi ve ilk açılış F1'in sonunda (İlk enerji). "
+            "Bu sıra kaynakta yok, doğrulanmadı.",
         baglanti_md="Klemens, kablo pabucu, kablo bağı (adet: kablo listesi henüz yazılmadı)",
         alet="Multimetre, kablo soyucu, pabuç pensesi, tornavida",
         erisim="Kabuk yok; her yana düz erişim",
         kontrol=[
             "Akü ayrıkken multimetre: artı ile eksi arasında kısa devre yok",
-            "XL4016 A / B / C 6 V, çevre 5 V'a ayarlandı (yükten önce, çıkış ölçülerek)",
+            "Tezgâhta (kart takılmadan, B3 / B5a öncesi): XL4016 A / B / C 6 V, çevre 5 V'a ayarlandı; akım sınırlı tezgâh kaynağıyla "
+            "12 V giriş, yüksüz, çıkış ölçülerek",
+            "Mantar ve ana anahtar uçları köprülenmedi; boştaki ana hat uçları bantlı, akü XT60 ayrık",
             "Röle bobinine ters paralel 1N4007 takılı (MAH-112-C-4 dahili diyot yazmıyor)",
             "Hızlı klemens en çok 2,5 mm²: 12 AWG ana hatta kullanma",
             "BTS7960B kartının pin adları şemadakinden farklı olabilir: kart üstü yazıya göre bağla",
             "İsim karıştırma: burada K1 / K2 röle adıdır; Kablolama kapısı K1 / K2 ayrı şey",
-            "Motor yön testi: her yan ileri komutta ileri döner",
-            "PC817 modülü 3,3 V'ta ölçüldü: LOW < 0,4 V, HIGH > 2,5 V; tutmazsa `elektrik.md` E3'teki yedek devre",
-            "Bara kapasitesi ölçüldü (ön şarj değeri için); ilk açılışta BMS kesiyor mu gözlendi",
+            "Tezgâhta (akım sınırlı tezgâh kaynağıyla): PC817 modülü 3,3 V'ta ölçüldü: LOW < 0,4 V, HIGH > 2,5 V; tutmazsa `elektrik.md` E3'teki yedek devre",
+            "Akü ayrıkken: bara kapasitesi multimetrenin kapasite kademesiyle ölçüldü (ön şarj değeri için)",
+            "Motor yön testi ve ilk açılışta BMS gözlemi burada değil: F1 \"İlk enerji\"",
         ],
         kablo=["Burada: 12 V ana hat, toprak, iki motor hattı, çevre 5 V, acil stop, sonar sinyal. Şemada renkli",
                "Direk boyunca gidenler K2 listesinde; o hatların taban kısmı da bu adımda bağlanır (şema bölünmedi)",
@@ -273,15 +283,32 @@ ADIM = {
         kontrol=["Tilt elle engelsiz, pim sıkıyken 625ZZ dönüyor"],
     ),
     "E3a": dict(
-        baslik="Tezgâh: kafa içi",
-        is_="Kafa iskeletine sırayla: Pi 5 (burç üstüne), kamera, D24V50F5 ve amfi (köpük bant + kablo bağı), tilt hornu.\n"
-            "Kafa ekranı burada yazılmadı: model 7\", karar 10,1\" QLED; listedeki LCD satırına bakma (`planlama/rehber/R-gunluk.md`).",
-        baglanti_md="Pi 4 × M2,5×8 burç + 4 × M2,5×5; kamera 4 × M2×8 PT; horn 1 × M3×5",
-        alet="alyan 2, PH0, PH1",
+        baslik="Tezgâh: kafa içi (Pi 5, 5 V çeviriciler)",
+        # 1,58 m (kafa10_lib.py): tablada Pi 5 + D24V50F5 + SY8205 + TVS; QLED, tırnaklar, kamera, ReSpeaker, ses kartı, PAM8403 E4'te.
+        is_="Kafa iskeletinin (tabla + yanaklar) üstüne, tezgâhta:\n"
+            "1. Pi 5'i 4 pirinç burca tak: burç alttan M2,5×8, Pi üstten M2,5×5. Kablo kenarı öne: micro HDMI 0 kafa ekranına, "
+            "micro HDMI 1 göğüs ekranına, CSI kameraya gidecek.\n"
+            "2. Tablaya 1 mm köpük bant + kablo bağıyla: Pololu D24V50F5 (Pi'nin 5 V'u) ve SY8205 (kafa ekranının ayrı 5 V hattı). "
+            "Her iki 5 V çıkışına bir P6KE6V8A TVS: SY8205 → QLED hattındaki modelde var, D24V50F5 → Pi hattındaki modelde ve BOM'da yok "
+            "(ikinci TVS'i ayrıca al). TVS tek yönlü: katot (çizgili uç) +5 V'a, anot GND'ye.\n"
+            "3. Sol yanağa 625ZZ dış bileziği; tilt hornu (25T alüminyum disk) ve merkez vidası bu adımın listesinde (M6 tablosu). "
+            "Hornun önce servoya mı yanağa mı takılacağı kaynakta yok, doğrulanmadı.\n"
+            "Kafa ekranı (10,1\" QLED), tırnaklar, kamera, ReSpeaker, USB ses kartı ve PAM8403 bu adımda takılmaz: kabuklarla birlikte E4'te.",
+        baglanti_md="Pi: 4 × M2,5×8 pirinç burç + 4 × M2,5×5 (üst) + 4 × M2,5×8 DIN 912 (alt); D24V50F5, SY8205, TVS: 1 mm çift taraflı "
+                    "köpük bant + kablo bağı; horn 1 × M3×5. M6'daki LCD 4 × M3×6 ve kamera 4 × M2×8 PT bu adımda yok (QLED tırnaklı, kamera E4'te)",
+        alet="alyan 2, PH1, yan keski",
         kontrol=["v4 listesi burcu 6 mm plastik diyor, tasarım 8 mm pirinç: Pi yüksekliğini kontrol et",
-                 "Kamera FPC'si (300 mm) kırılmadan Pi'ye ulaşıyor; D24V50F5 → Pi USB-C yaklaşık 10 cm",
-                 "Amfi CAD'de MAX98357A görünür; karar PAM8403"],
-        kablo=["SY8205, 4'lü hub, USB ses kartı ve P6KE TVS'lerin kafadaki yeri modelde yok: doğrulanmadı, yer açık bırak"],
+                 "D24V50F5 → Pi USB-C yaklaşık 10 cm; çeviriciler köpük banda tam oturdu, kablo bağı sıkı",
+                 "SY8205 çıkışı yük bağlanmadan, akım sınırlı tezgâh kaynağıyla (12 V, sınır 1 A) ölçüldü: 5 V (kafa ekranı hattı). "
+                 "SY8205'te ters kutup koruması yazmıyor: kaynağın kutbunu bağlamadan önce kontrol et",
+                 "Tabla geçişi (x −50…−37) boş: boyun kabloları K2'de buradan girer"],
+        kablo=["Pi micro HDMI 0 (kafa ekranı) ve micro HDMI 1 (göğüs ekranı) fiş yerleri erişilebilir kalsın",
+               "Kafa 12 V'u K2'de boyundan gelir: girişte P6KE18A (modelde yok), oradan D24V50F5 ve SY8205"],
+        not_=["İki 5 V hattı birbirine köprülenmez: D24V50F5 Pi'yi, SY8205 kafa ekranını besler. Touch USB uyarısı E4'te "
+              "(`planlama/adim3/elektrik.md`)",
+              "SY8205 ve QLED hattı P6KE6V8A'sının tabladaki yeri modelde var; Pi hattı P6KE6V8A'sı modelde yok, yeri doğrulanmadı. "
+              "TVS kutup yönü (katot +5 V'a) tek yönlü TVS'in genel bağlanışı; depo kaynağında yazmıyor, veri sayfasıyla doğrulanmadı",
+              "QLED akımı 0,9 A varsayım, ölçülmedi"],
     ),
     "E3": dict(
         baslik="Kafa → tilt hornu",
@@ -291,42 +318,96 @@ ADIM = {
         ucus_bag=(0, 1, 0),
     ),
     "E4": dict(
-        baslik="Kafa kabukları",
-        is_="Yüz kabuğu sağ + sol ve arka kabuk sağ + sol. Önce kafa içi uçlar bağlanmalı (mantıksal sıra, doğrulanmadı): K2'deki 12 V ve USB gelince kabuk kapanır.",
-        baglanti_md="1,58 m: dikiş M3×6 ISO 7380 (havşalı yerde M3×5); tabla → arka kabuk rafı 4 × M3×10 → ısıl gömme. M6'daki M3×8 + vizör eski, BOM'da vizör yok",
-        alet="alyan 2 / 2,5",
-        erisim="Düz. Servis arka kabuktan (125 cm'den; doğrulanmadı)",
-        kontrol=["Dikişler aralıksız, kablo sıkışmadı", "Kafa pan ve tilt'te kabuğa sürtmüyor"],
+        baslik="Kafa kabukları + yüz ekranı, kamera, ses",
+        # kafa10_lib.py: QLED vida deliksiz, 4 tırnak (x ±85, üst / alt) M3×6 ISO 7380 + ısıl gömme, 1 mm köpük bant; kamera yüz kabuğu
+        # boss'larına 4 × M2×8 PT; ReSpeaker sağ arka kabuk tavan boss'larına 3 × M2×8 PT; ses kartı + PAM8403 sol arka kabuk yan duvarı.
+        is_="Kafa robotta, tilt hornunda (E3). Sıra kaynakta yok, montaj mantığından çıkarıldı: doğrulanmadı.\n"
+            "1. Yüz kabuğu sağ + sol: kamerayı (Camera Module 3) ön duvarın içindeki boss'lara 4 × M2×8 PT ile vidala; lens ekranın üstündeki "
+            "Ø9 delikte. CSI şeridini Pi'ye tak.\n"
+            "2. 10,1\" QLED (vida deliği yok): camı yüz kabuğu ön duvarının iç yüzüne yasla, cep duvarı yerini gösterir. 4 tırnağı (üst ve alt, "
+            "x ±85) cam şeridine 1 mm köpük bant üstünden arkadan bastır; her tırnak 1 × M3×6 ISO 7380 ile boss'taki ısıl gömmeye.\n"
+            "3. QLED kabloları: HDMI (30 cm şerit, Pi micro HDMI 0), Power (SY8205 çıkışı, A ucu kesik micro USB kablo), Touch (Pi USB 4). "
+            "Touch'ı takmadan önce Notlar'daki ölçümü yap.\n"
+            "4. Arka kabuk sağ + sol: ReSpeaker Mic Array v2.0 tavanın altına, sağ arka kabuktaki boss'lara 3 × M2×8 PT. USB ses kartı ve "
+            "PAM8403 sol arka kabuğun yan duvarına köpük bant + kablo bağıyla. Bağla: ReSpeaker → Pi USB 1, ses kartı → Pi USB 2 (uzatma + "
+            "L dirsek), ses kartı L 3,5 mm → PAM girişi, PAM 5 V → D24V50F5 (varsayım, K10).\n"
+            "5. Kabukları yerine koy, tabla → arka kabuk rafı 4 × M3×10. Boyundan gelen uçlar (kafa 12 V, göğüs HDMI, hub uzatması, "
+            "hoparlör) K2'de bağlanır: arka kabuğun dikiş cıvatalarını K2'den sonra sık.",
+        baglanti_md="1,58 m: tırnak 4 × M3×6 ISO 7380 → ısıl gömme + 4 köpük bant (1 mm); kamera 4 × M2×8 PT; ReSpeaker 3 × M2×8 PT (vida "
+                    "tipi varsayım); ses kartı ve PAM8403 köpük bant + kablo bağı; tabla → arka kabuk rafı 4 × M3×10 DIN 912 → ısıl gömme; "
+                    "kabuk dikişi 9 cıvata → ısıl gömme: 7 × M3×6 ISO 7380 + 2 × M3×5 ISO 7380 (havşalı tepe dikişi). M6'daki M3×8 + vizör "
+                    "eski, BOM'da vizör yok",
+        alet="alyan 2 / 2,5, PH0 / PH1 (M2 PT vidalar), yan keski",
+        erisim="Düz. Kamera, tırnaklar ve QLED kabloları arka kabuk takılmadan kafanın içinden. Servis arka kabuktan (125 cm notu; "
+               "1,58 m'de doğrulanmadı)",
+        kontrol=["QLED camı ön duvarın iç yüzüne her kenarda dayalı; tırnak cama bastırıyor (cıvata tırnağı boss'a tutar), camı zorlamıyor",
+                 "Kamera lensi Ø9 deliğin ortasında; CSI şeridi kırılmadan Pi'ye ulaşıyor",
+                 "Touch takılmadan ölçüldü: QLED Power ile Touch VBUS arasında bağ var mı (Notlar)",
+                 "ReSpeaker, ses kartı ve PAM8403 yerinde; kablo bağları fişleri zorlamıyor",
+                 "Kafa pan ve tilt'te kabuğa sürtmüyor",
+                 "Dikişler aralıksız, kablo sıkışmadı (dikiş cıvataları K2'den sonra)"],
+        kablo=["Kafa içi: HDMI şerit Pi micro HDMI 0 → QLED, Touch Pi USB 4 → QLED, Power SY8205 → QLED, CSI Pi → kamera",
+               "Ses: ReSpeaker → Pi USB 1, ses kartı → Pi USB 2, ses kartı L 3,5 mm → PAM8403, PAM 5 V → D24V50F5 (varsayım, K10). "
+               "PAM çıkışından hoparlöre giden kablo K2'de boyundan iner",
+               "Boyun uçları (kafa 12 V, göğüs HDMI → Pi micro HDMI 1, hub uzatması → Pi USB 3, hoparlör) K2'de bağlanır"],
+        not_=["İki 5 V hattı birbirine köprülenmez. QLED'in Touch micro USB'si Pi'ye veri için gider; Touch VBUS ekranın içinde Power "
+              "girişine bağlıysa Pi'nin 5 V'u ile SY8205 çıkışı Touch kablosu üzerinden birleşir. Bu iç bağ doğrulanmadı: Touch'ı Pi'ye "
+              "takmadan multimetreyle Power ile Touch VBUS arasına bak; bağlıysa takma, çözüm o ölçümle seçilir (`planlama/adim3/elektrik.md`)",
+              "Montaj sırası kaynakta yok (montaj mantığından), doğrulanmadı. Boyun uçları K2'de geldiği için arka kabuk dikişleri K2'den sonra sıkılır",
+              "PAM8403'ün 5 V besleme noktası karar bekliyor (K10; varsayılan D24V50F5). Ses kartı ve PAM8403 ölçüsü tahmini; ReSpeaker vida "
+              "tipi ve kütlesi varsayım",
+              "Kafa ekranının kütlesi (600 g) ve akımı (0,9 A) varsayım, ölçülmedi"],
     ),
     "K2": dict(
         baslik="Kablolama kapısı 2: gövde içi",
-        is_="Kabuktan önce dur. Taban ucu K1'de bağlandı; burada direk boyunca çıkar:\n"
+        # 05.11 B kararı (karar-kuyrugu.md K5 / K17; lale158/kablo_yolu_ekran.py:6; elektrik.md "Boyun demeti" ve USB tablosu):
+        # ESP32 USB ve göğüs dokunmatiği gövdedeki hub'dan çıkar, boyundan geçmez. Boyunda 5 kablo: kafa 12 V, tilt, göğüs HDMI, hub uzatması, hoparlör.
+        is_="Kabuktan önce dur. Enerjisiz çalış: akü XT60 ayrık, F3 (kafa) takılı değil; kafa uçları enerjisiz bağlanır. "
+            "Taban uçları K1'de bağlandı; burada direk ve boyun boyunca çıkar:\n"
             "1. Kol servo uzatmaları: dağıtım A / B → etek → direk arka yüzü (z −26) → travers altı (y ≈ 1215) arkası → omuz.\n"
-            "2. Kafa servoları: hat C → direk üstü R62 halkası.\n"
-            "3. Kafa 12 V (18 AWG) ve ESP32 USB (VBUS'ta 1N5819): direk ön yüzü (z +26) → boyun.\n"
-            "4. Boyun yolu: alt çıkış → servo yuvası arka kanalı → kablo odası → mil penceresi → Ø32 adaptör → sol yanak dışı → tabla geçişi (x −50…−37).\n"
-            "5. Kablo bağıyla direğe tuttur. S1 uçları travers arkasında kalır: G4'te yarıktan girer.\n"
-            "6. Göğüs ekranı uçları (doğrulanmadı): HDMI boyundan iner (Pi micro HDMI 1), 12 V tabandan ayrı daldan gelir "
-            "(mini 2 A → LM2577 + LM2596, 12 V). İkisini de göğüs hizasında, direğin solunda, ekran arkasında boşta bırak; F3'te ekrana takılır. "
-            "Dokunmatik USB hub'dan gelir (hub F5'te üst arka kapakla takılır).",
+            "2. Kafa servoları: hat C → direk üstü R62 halkası; tilt kablosu boyundan kafaya.\n"
+            "3. Kafa 12 V (18 AWG çift): direk ön yüzü (z +26) → R62 → boyun → kafa girişi (D24V50F5 ve SY8205).\n"
+            "4. ESP32 USB boyuna girmez (05.11 kararı): ESP32'den (taban) direk arka yüzü (z −26) boyunca yukarı; ucu "
+            "üst arka kapak hizasında (y ≈ 1.085–1.157) hub için bırakılır, F5'te hub'a takılır. VBUS teline seri 1N5819: anot hub (Pi) "
+            "tarafında, katot ESP32 tarafında; çevre 5 V hub'a / Pi'ye geri beslemez. ESP32 kartının kendi VBUS→VIN diyodu varsa "
+            "gerekmez: multimetreyle bak (doğrulanmadı).\n"
+            "5. Boyun demeti, 5 kablo: kafa 12 V, tilt servo, göğüs HDMI (Pi micro HDMI 1), hub uzatması (Pi USB 3 → hub), hoparlör (PAM8403 → "
+            "hoparlör). Yol: alt çıkış → servo yuvası arka kanalı → kablo odası → mil penceresi → Ø32 adaptör → sol yanak dışı → tabla "
+            "geçişi (x −50…−37). Kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı), sonra dikişleri sık.\n"
+            "6. Boyundan inenler travers arkasından gövdeye: HDMI direğin solundan ekran arkasına (F3); hub uzatmasının ucu üst arka kapak "
+            "hizasında (F5); hoparlör kablosu sağ önden göğüs altına (y ≈ 1.000; F2'de hoparlöre).\n"
+            "7. Göğüs ekranı 12 V boyundan geçmez: tabandan ayrı daldan (mini 2 A → LM2577 + LM2596, 12 V) direk arka yüzünden çıkar, "
+            "travers altında direğin soluna geçer, ekran arkasında bırakılır (F3). Regülatör ekrana bağlanmadan 12 V'a ayarlanır (kontrol).\n"
+            "8. Kablo bağıyla direğe tuttur. S1 uçları travers arkasında kalır: G4'te yarıktan girer.",
         baglanti_md="Kablo bağı (adet: kablo listesi henüz yazılmadı)",
         alet="Kumpas, yan keski, multimetre",
-        erisim="Kabuk yok; arkadan ve önden düz erişim",
+        erisim="Kabuk yok; arkadan ve önden düz erişim. Kafa uçları arka kabuk dikişleri açıkken",
         kontrol=["Uzatma: ince duvarlı PVC düz 22 AWG, damar ≤ 1,5 mm; kumpasla ölç (silikon 22 AWG sığmaz)",
                  "v4 uzatmalar 1 m: dirsek ve bilek 1,86 m, S2 1,70 m gerekir, ek yapılacak. Ek yeri kaynakta yok (doğrulanmadı); ek U kasetine girmesin (3 aynı şerit)",
-                 "Pan ve tilt elle tam açıda: boyunda kablo gerilmiyor",
-                 "Her hat iki ucundan etiketli, süreklilik ölçüldü"],
-        kablo=["Burada: servo A, servo B, servo kafa, kafa 12 V, enkoder / BTS sinyalleri + ESP32 → kafa USB. Şemada renkli",
-               "Göğüs ekranı: HDMI ve 12 V uçları göğüs hizasında bırakılır (yol `lale158/kablo_yolu_ekran.py`: travers arkası → direk solu → ekran arkası; "
-               "kablo çapı ve port yeri doğrulanmadı). Bu yollar rehber şemasına henüz girmedi",
+                 "Pan ve tilt elle tam açıda: boyunda 5 kablo gerilmiyor (boyun yuva kanalı %44,8 dolu, hesap)",
+                 "Hub'a gidecek uçlarda (hub uzatması, ESP32 USB) yaklaşık 150 mm kapak söküm payı var",
+                 "Kafa uçları bağlandı, arka kabuk dikişleri sıkıldı",
+                 "Her hat iki ucundan etiketli, süreklilik ölçüldü",
+                 "Göğüs ekranı regülatörü (LM2577 + LM2596) ekrana bağlanmadan, çıkışı multimetreyle 12 V'a ayarlandı: tezgâhta akım "
+                 "sınırlı kaynakla (sınır 2 A) ve yük direnciyle (`planlama/adim3/elektrik.md`; `planlama/d158/testler/T7-gogus-ekrani-12v.md`)"],
+        kablo=["Burada: servo A, servo B, servo kafa, kafa 12 V, enkoder / BTS sinyalleri (tabanda), boyun demeti, ESP32 USB ve göğüs ekranı "
+               "kabloları. Şemada renkli",
+               "Göğüs ekranı, hub ve ses yolları gösterim şemasıdır (`lale158/kablo_yolu_ekran.py`): parça sayısına girmez; kablo çapı, büküm "
+               "yarıçapı ve port yeri doğrulanmadı",
+               "Taban şeması 12'nin direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); geçerli yol \"ESP32 USB\" şemasında",
                "Şemada taban kısımları da görünür: onlar K1'de bağlandı",
-               "Kablo listesi (boy + kesit) henüz yazılmadı"],
-        not_=["Göğüs ekranı kablo yolu ve 12 V dalının giriş noktası doğrulanmadı (`planlama/adim3/elektrik.md` K11: giriş noktası ve "
-              "acil stop davranışı karar bekliyor)"],
+               "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.360, hoparlör 1.030, "
+               "göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`). Kablo listesi (boy + kesit) henüz yazılmadı"],
+        not_=["Göğüs HDMI'si ve hub uzatmasının boyundan inmesi CAD'e göre; ekip teyidi bekliyor (K14), doğrulanmadı",
+              "Göğüs ekranı 12 V dalının giriş noktası ve acil stop davranışı karar bekliyor (K11, `planlama/adim3/elektrik.md`)",
+              "LM2577 + LM2596 kartı ve mini 2 A sigorta modelde yok; takılacakları yer (şemada güç paneli) doğrulanmadı",
+              "Hoparlör kablosu (~1,1 m) ve hub uzatması (~1 m USB-A) robot için listede yok",
+              "Hub kapanırsa ESP32 bağlantısı ve göğüs dokunmatiği birlikte düşer; hub girişindeki gerilim ölçülmedi"],
     ),
     "F1": dict(
         baslik="Taban eteği",
-        is_="1. 6 bant + 2 dolgu şeridi: orta → ön → arka (dolgu şeritleri modelde var, M6'da yok; sırası doğrulanmadı). Bindirmeleri bağla.\n"
+        is_="Bağlarken akü ayrık (XT60 açık).\n"
+            "1. 6 bant + 2 dolgu şeridi: orta → ön → arka (dolgu şeritleri modelde var, M6'da yok; sırası doğrulanmadı). Bindirmeleri bağla.\n"
             "2. Etek braketlerine dışarıdan M3×14 (L brakette M3 perçin somun, delik Ø5,1).\n"
             "3. Acil stop mantarını panel somunuyla tak, K1'de bırakılan ucu bağla.\n"
             "4. Ana anahtar ASW-A01 gövdesini etek üst plakasının altına, acil stobun karşısına tak (model yeri öneri, ölçü tahmini zarf; "
@@ -334,18 +415,36 @@ ADIM = {
         baglanti_md="1,58 m: bindirme M3×6 ISO 7380; braket 6 × M3×14 ISO 7380 dışarıdan + M3 perçin somun (Y3 K2). M6'daki içeriden M3×8 eski",
         alet="alyan 2 (acil stop için ayrıca anahtar)",
         erisim="Düz, dışarıdan",
-        kontrol=["Acil stop NP2 BE102: CAD 60 mm; delik gerçek parçayla tutuyor mu bak", "Mantara basınca röle düşüyor"],
+        kontrol=["Acil stop NP2 BE102: CAD 60 mm; delik gerçek parçayla tutuyor mu bak",
+                 "İlk enerji (F1 sonu): ana anahtar ve mantar bağlı, ana sigorta takılı, F3 (kafa) takılı değil; tekerlekler yerden kesik "
+                 "(şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Ana anahtarı aç: BMS kesiyor mu gözle "
+                 "(röle K1 açık, yalnız F3 / F4 / F5 girişleri). Devreye alma ön şarjla: röle K2 → 300 ms → röle K1 (ESP32 yazılımı). Mantara basınca iki "
+                 "röle de düşüyor. Motor yön testi: her yan ileri komutta ileri döner. Bitince ana anahtarı kapat, aküyü XT60'tan ayır "
+                 "(`planlama/adim3/elektrik.md` E9). Bu sıra ve \"yerden kesik\" düzeni bu adım için kaynakta yok, doğrulanmadı"],
         kablo=["Etek bandını takarken K1 hatları sıkışmasın"],
         ucus="radyal",
     ),
     "F2": dict(
         baslik="Gövde alt ve orta bantları",
-        is_="Gövde alt, uzatma 1, uzatma 2 ve orta bantları, sağ + sol, aşağıdan yukarı (uzatmalar M6'da yok; sıra doğrulanmadı). Dikişler y 476,5 / 634 / 791,5.\n"
-            "Bindirmeleri bağla, sonra y 400, 530,25 ve 687,75 braketlerine dışarıdan M5×18 tak.",
-        baglanti_md="1,58 m: bindirme M3×6 ISO 7380; braket M5×18 ISO 7380 dışarıdan, pulsuz, M5 perçin somuna (y 400, 530,25, 687,75; Y3 K1). M6'daki içeriden M5×10 eski",
-        alet="alyan 2 / 3",
-        erisim="Düz, dışarıdan",
-        kontrol=["M5 başı 0,3 mm oturma yuvasında", "Kablo ve bağ uçları bant arkasında sıkışmadı"],
+        # Hoparlör: kabuk_parcalar.py orta bant sağ duvarı (19 Ø3,5 delik, 2 boss), kap ön halka + flanşlı arka, kelepçe + köpük ped;
+        # kablo ucu kelepçe köprüsünün altında, yer VARSAYIM (lale158/kablo_yolu_ekran.py F1a P1.7 notu).
+        is_="1. Gövde alt, uzatma 1, uzatma 2 ve orta bantları, sağ + sol, aşağıdan yukarı (uzatmalar M6'da yok; sıra doğrulanmadı). Dikişler y 476,5 / 634 / 791,5.\n"
+            "2. Bindirmeleri bağla, sonra y 400, 530,25 ve 687,75 braketlerine dışarıdan M5×18 tak.\n"
+            "3. Hoparlör (40 × 20, 4 Ω, 3 W) orta bant sağın ön duvarında, ızgara deliklerinin arkasında: kabın ön halkasını duvara, "
+            "hoparlörü içine, flanşlı arka kabı arkasına koy; kelepçeyi köpük pedle 2 × M3×20 ile boss'lardaki ısıl gömmeye sık. Orta bandı "
+            "takmadan önce K2'de göğüs altında bırakılan hoparlör kablosunu (PAM8403'ten boyundan iner) hoparlöre bağla. Hoparlörün bu sıradaki "
+            "yeri kaynakta yok, doğrulanmadı.",
+        baglanti_md="1,58 m: bindirme M3×6 ISO 7380; braket M5×18 ISO 7380 dışarıdan, pulsuz, M5 perçin somuna (y 400, 530,25, 687,75; Y3 K1). "
+                    "Hoparlör kelepçesi 2 × M3×20 DIN 912 → ısıl gömme (boss) + köpük ped. M6'daki içeriden M5×10 eski",
+        alet="alyan 2 / 2,5 / 3, havya (hoparlör ucu)",
+        erisim="Düz, dışarıdan. Hoparlör orta bant takılmadan, bandın iç yüzünden",
+        kontrol=["M5 başı 0,3 mm oturma yuvasında", "Kablo ve bağ uçları bant arkasında sıkışmadı",
+                 "Hoparlör kablosu bağlandı, kelepçe köprüsünün altında ezilmiyor; kutup işaretli",
+                 "Hoparlör kabı ızgara deliklerine ortalı, kelepçe hoparlörü sallanmadan tutuyor"],
+        kablo=["Hoparlör kablosu: PAM8403 → boyun → travers arkası → sağ ön → göğüs altı (K2'de bırakıldı); burada hoparlöre bağlanır"],
+        not_=["Hoparlör ekseni duvara paralel (yatayın 35° altı); kama kararı açık (K6), duyulabilirlik ölçülmedi",
+              "Hoparlör kabı, kulakları, ızgarası ve kelepçesi varsayım: ürün elde görülmeden kesinleşmez (`kabuk_parcalar.py`), doğrulanmadı",
+              "Hoparlör kablosunun ucunun yeri ve bağlantı biçimi (lehim tırnağı) varsayım: ürün elde yok, doğrulanmadı"],
         ucus="radyal",
     ),
     "F3": dict(
@@ -354,7 +453,8 @@ ADIM = {
             "y 1095 braketine dışarıdan M5×18 tak.\n"
             "2. VESA taşıyıcı (PETG-CF): ekran cebinden direğin ön (+Z) kanalına, 2 × M6×18 + pul + çekiç somun. Yükseklik kanalda ayarlanır; "
             "cıvatalara ekran takılmadan, plakanın ortasından ulaşılır.\n"
-            "3. 11,6\" ekranı (kasalı) cebe koy. K2'de bırakılan HDMI ve 12 V uçlarını tak (90° fişler).\n"
+            "3. 11,6\" ekranı (kasalı) cebe koy. 12 V fişini takmadan önce regülatör çıkışını yeniden ölç: 12 V (K2'de ayarlandı; "
+            "ölçünce enerjiyi kes). Sonra K2'de bırakılan HDMI ve 12 V uçlarını enerjisizken tak (90° fişler).\n"
             "4. Ekranı taşıyıcıya arkadan 4 × M4×12 + pul ile bağla (VESA 75 × 75): üst arka servis kapağı açık, direğin yanından.\n"
             "5. Çerçeve sağ + sol: göğüs bandına dışarıdan, yarı başına 4 × M3×6 ISO 7380, çerçeve flanşındaki ısıl gömmeye. "
             "Ekran camı çerçevenin 2 mm gerisinde, köşe takozlarına dayalı.\n"
@@ -375,7 +475,8 @@ ADIM = {
               "Taşıyıcı direğin ön kanalında; K2'deki kafa 12 V hattı da direk ön yüzünden geçiyor: çakışma doğrulanmadı",
               "Ekran port yeri fotoğraftan tahmini (x ≈ −110, kısa kenar); ekran gelince ölçülecek",
               "HDMI'nin boyundan, dokunmatik USB'nin hub'dan gelmesi CAD'e göre; teyit yok, doğrulanmadı",
-              "12 V dalı (mini 2 A → LM2577 + LM2596): giriş noktası ve acil stop davranışı karar bekliyor (`planlama/adim3/elektrik.md` K11)"],
+              "12 V dalı (mini 2 A → LM2577 + LM2596): giriş noktası ve acil stop davranışı karar bekliyor (`planlama/adim3/elektrik.md` K11)",
+              "Regülatör kartı ve mini 2 A sigorta modelde yok; yerleri doğrulanmadı"],
         ucus="radyal",
     ),
     "F4": dict(
@@ -492,12 +593,27 @@ ADIM = {
     ),
     "F5": dict(
         baslik="Servis kapakları (test sonrası)",
-        is_="Devreye alma testinden sonra kapat: arka servis kapağı, üst arka servis kapağı, etek H1 ve H2.\n"
+        # Hub: arayuz.py SES_USB hub (y 1.085–1.157), kabuk_parcalar.py üst arka kapak hub takozu + 2 yan dayama + köpük bant;
+        # port dağılımı elektrik.md USB tablosu (Hub 1 göğüs dokunmatiği, Hub 2 ESP32, Hub 3-4 boş; K1).
+        is_="1. 4'lü USB hub üst arka servis kapağının içinde: hub'ı kapağın takozuna, iki yan dayamanın arasına 1 mm köpük bantla yapıştır. "
+            "Bağla: hub kablosu ← Pi USB 3'ten boyundan gelen uzatma (K2), Hub 1 → göğüs ekranı dokunmatiği (F3'te boşta bırakılan USB), "
+            "Hub 2 → ESP32 USB (K2'de direk arka yüzünden çıkarılan uç; 1N5819 yönü K2 madde 4). Hub 3 ve 4 boş. Hub'ın anahtarı açık kalmalı.\n"
+            "2. Devreye alma testi kapaklar açıkken yapılır; hub bu testte bağlı olmalı (ESP32 ile Pi hub üzerinden konuşur).\n"
+            "3. Testten sonra kapat: arka servis kapağı, üst arka servis kapağı (hub'la birlikte), etek H1 ve H2.\n"
             "H1 sigorta kutusuna açılır: uç yuvalar yedek, sık değişen F1, F3, F4, F5 ortada (29.10).",
-        baglanti_md="1,58 m: arka kapak 7 × M3×6 ISO 7380; H1 4 × M3×6 (x ±50); üst kapak ve H2 parça listesinden (M6'da yok)",
+        baglanti_md="1,58 m: arka kapak 7 × M3×6 ISO 7380; üst arka kapak 7 × M3×6 ISO 7380; H1 4 × M3×6 (x ±50); H2 4 × M3×6; hepsi "
+                    "ısıl gömmeye. Hub: 1 mm köpük bant (kapak takozunda). Üst kapak, H2 ve hub M6'da yok",
         alet="alyan 2",
-        erisim="Düz",
-        kontrol=["E7 ve kafa ısı ölçümü kabuk kapalı yapıldı (kafada hesap ≈ 49 °C, ölçülmedi)", "Kapak altında kablo sıkışmadı"],
+        erisim="Düz. Hub kapağın iç yüzünde: kapak açıkken bağlanır",
+        kontrol=["Hub köpük banda oturdu, yan dayamalar arasında; anahtarı açık",
+                 "Testte ESP32 ve göğüs dokunmatiği hub üzerinden görünüyor",
+                 "Kapak açılınca hub'a bağlı üç kablo gerilmiyor (yaklaşık 150 mm söküm payı)",
+                 "E7 ve kafa ısı ölçümü kabuk kapalı yapıldı (kafada hesap ≈ 49 °C, ölçülmedi)", "Kapak altında kablo sıkışmadı"],
+        kablo=["Hub: Pi USB 3 → boyun → hub (uzatma), Hub 1 → göğüs dokunmatiği, Hub 2 → ESP32. Hub kapanırsa ESP32 ve göğüs dokunmatiği birlikte düşer"],
+        not_=["Hub'ın kapakla birlikte açılması ve 150 mm söküm payı tahmin; testten önce hub bağlantısının yapılması montaj mantığından, "
+              "kaynakta sıra yok: doğrulanmadı",
+              "Hub girişindeki gerilim ölçülmedi (hub USB'den beslenir)",
+              "Altıncı USB cihazı karar bekliyor (K1): şimdilik hub'da 2 port boş"],
         ucus=(0, 0, -1),
         kamera="arka",
     ),
@@ -545,3 +661,123 @@ TR = {
     "tirnagi": "tırnağı", "Tirnak": "Tırnak", "tirnak": "tırnak", "yukseltme": "yükseltme", "adaptoru": "adaptörü", "Percin": "Perçin",
     "percin": "perçin", "ici": "içi", "rafi": "rafı",
 }
+
+# ---------------------------------------------------------------- F7b (P7.2): görünen metin katmanı (yalnız görüntü; kimlik, kod ve sayım değişmez)
+# CAD etiketleri ASCII. TR_EK küçük harf anahtarlıdır; tr() büyük harfle başlayan kelimeyi de çevirir (Türkçe büyük harf: i -> İ).
+# Ekranda ASCII kalıntı denetimi: tasarim/freecad/rehber/rehber_denetim.py (rehber_uret.py her koşuda çağırır).
+TR_EK = {
+    "acma": "açma", "adaptoru": "adaptörü", "agir": "ağır", "aku": "akü", "altigen": "altıgen", "altindan": "altından",
+    "aluminyum": "alüminyum", "arayuz": "arayüz", "ayirici": "ayırıcı", "ayri": "ayrı", "baglama": "bağlama", "baglanti": "bağlantı",
+    "bas": "baş", "baski": "baskı", "bicak": "bıçak", "blogu": "bloğu", "bolucu": "bölücü", "bukum": "büküm", "burc": "burç",
+    "catal": "çatal", "catalda": "çatalda", "catali": "çatalı", "cekic": "çekiç", "celik": "çelik", "cerceve": "çerçeve",
+    "cercevesi": "çerçevesi", "cevre": "çevre", "cevirici": "çevirici", "cift": "çift", "cikis": "çıkış", "cirt": "cırt",
+    "deligi": "deliği", "deliginden": "deliğinden", "direnc": "direnç", "direncler": "dirençler", "disi": "dişi", "dokum": "döküm",
+    "donusturuculer": "dönüştürücüler", "dugum": "düğüm", "dusurucu": "düşürücü", "duz": "düz", "duzeni": "düzeni", "egme": "eğme",
+    "ekrani": "ekranı", "flans": "flanş", "flansi": "flanşı", "flansli": "flanşlı", "flansta": "flanşta", "fotograftan": "fotoğraftan",
+    "genis": "geniş", "girisi": "girişi", "gobegi": "göbeği", "gobek": "göbek", "gobekte": "göbekte", "gomme": "gömme",
+    "gosterim": "gösterim", "govde": "gövde", "govdesi": "gövdesi", "guc": "güç", "halkasindan": "halkasından", "hattinda": "hattında",
+    "havsada": "havşada", "hoparlor": "hoparlör", "ic": "iç", "icin": "için", "imalat": "imalat", "isil": "ısıl", "kanali": "kanalı",
+    "kapagi": "kapağı", "kapakli": "kapaklı", "karti": "kartı", "kati": "katı", "kaucuk": "kauçuk", "kayis": "kayış", "kopuk": "köpük",
+    "kose": "köşe", "mantari": "mantarı", "noktasi": "noktası", "olcu": "ölçü", "olculecek": "ölçülecek", "on": "ön", "one": "öne",
+    "percin": "perçin", "pirinc": "pirinç", "plakasi": "plakası", "regulatorunden": "regülatöründen", "role": "röle", "rolesi": "rölesi",
+    "sag": "sağ", "sarj": "şarj", "satin": "satın", "satir": "satır", "sensorler": "sensörler", "sigortasi": "sigortası",
+    "sonrasi": "sonrası", "tarafli": "taraflı", "tasiyici": "taşıyıcı", "tekerlegi": "tekerleği", "tirnagi": "tırnağı", "tum": "tüm",
+    "tup": "tüp", "tupu": "tüpü", "ust": "üst", "ustu": "üstü", "ustunden": "üstünden", "uzatmalari": "uzatmaları", "vidasi": "vidası",
+    "yerlesim": "yerleşim", "yildiz": "yıldız", "yukseltme": "yükseltme", "yuvasi": "yuvası", "yuz": "yüz", "yuzu": "yüzü",
+    "olculer": "ölçüler", "dis": "dış", "kelepce": "kelepçe",
+}
+# Kelime düzeyinde çevrilemeyenler (büyük harfli Türkçe, birleşik yazım, çap işareti, ok). Sıra önemli; tr() önce bunları uygular.
+TR_IFADE = [
+    (r"(\d+(?:,\d+)?) ?in\b", r'\1"'),               # 10,1in -> 10,1"
+    (r"\bO(\d)", r"Ø\1"),                              # O0,4 / O32 -> Ø
+    (r"\bone-arka\b", "ön-arka"), (r"\b4 lu\b", "4'lü"), (r"\bVARSAYIM\b", "varsayım"), (r"\bTAHMINI\b", "tahmini"), (r"\bTAHMIN\b", "tahmin"),
+    (r"\bDOGRULANMADI\b", "doğrulanmadı"), (r" ?-> ?", " → "), (r"\bpsi (\d)", r"ψ \1"), (r"\btas diren[cç]", "taş direnç"),
+]
+TUR_AD = {"Baski": "Baskı", "Satin": "Satın alınan", "Lazer": "Lazer kesim", "Imalat": "İmalat", "Baglanti": "Bağlantı elemanı",
+          "Referans": "Gösterim"}
+MODUL_AD = {"iskelet": "iskelet", "omuz_sag": "sağ omuz", "omuz_sol": "sol omuz", "kabuk": "kabuk", "dirsek_sag": "sağ dirsek",
+            "dirsek_sol": "sol dirsek", "kafa": "kafa", "taban": "taban"}
+
+
+def _buyuk(s):
+    return ("İ" if s[0] == "i" else "I" if s[0] == "ı" else s[0].upper()) + s[1:]
+
+
+def _kelime(w):
+    if w in TR:
+        return TR[w]
+    k = w.lower()
+    v = TR_EK.get(k) or TR.get(k)
+    if v is None:
+        return w
+    if w == k:
+        return v
+    if w[0].isupper() and w[1:] == w[1:].lower():
+        return _buyuk(v)
+    return w
+
+
+def tr(s):
+    """CAD'den gelen ASCII metni ekranda Türkçe göster (parça adı, kod, malzeme, kablo adı). Kimlik ve sayım bundan etkilenmez."""
+    import re
+    if not s:
+        return s
+    for a, b in TR_IFADE:
+        s = re.sub(a, b, s)
+    return re.sub(r"[A-Za-z]+", lambda m: _kelime(m.group(0)), s)
+
+
+# Taban kablo yolu şemalarının görünen adı (CAD etiketi taban_parcalar.py'de; tarama kaynağı olduğu için orada değiştirilmedi).
+# no -> (beklenen CAD etiketi başı, görünen ad). Etiket başı tutmazsa tr(CAD etiketi) gösterilir ve rehber_veri.py uyarı yazar.
+KABLO_AD = {
+    1: ("12 V ana hat", "12 V ana hat: akü + → XT60 → ana sigorta 30 A → ana anahtar → sigorta kutusu"),
+    2: ("Toprak", "Toprak: akü − → WAGO yıldız noktası (güç paneli) → tüm dönüştürücüler"),
+    3: ("Motor 12 V: F1", "Motor 12 V: F1 20 A → röle → WAGO → BTS7960 sol / sağ → motor kablo delikleri → 4 motor"),
+    4: ("Motor 12 V sag", "Motor 12 V sağ kol + arka motorlar (plaka altından, z 36 deliğinden)"),
+    5: ("Servo 6 V A", "Servo 6 V A (E1): röle → WAGO → 7,5 A hat sigortası → XL4016 A (0; 170) → 16 AWG → dağıtım A (72; 205) → uzatmalar: sağ kol"),
+    6: ("Servo uzatmalari kafaya", "Servo uzatmaları kafaya: pan + tilt (hat C, XL4016 C güç panelinde; direk üstü, R62 halkasından)"),
+    7: ("Servo 6 V B", "Servo 6 V B (E1): röle → WAGO → 7,5 A hat sigortası → XL4016 B (−49; 75) → 16 AWG → dağıtım B (−72; 205) → sol kol"),
+    # F7a P7.2 madde 4: CAD adı "kafada 5 V/5,5 A cevirici (Pi 5, LCD)" eski (LCD kalktı; kafada iki 5 V hattı: elektrik.md kafa güç mimarisi)
+    8: ("Kafa 12 V", "Kafa 12 V (K4 / E4): F3 5 A → 18 AWG çift → direk ön yüzü → R62 → boyun → kafa girişi → Pololu D24V50F5 "
+                     "(Pi 5; PAM8403 varsayım, K10) + SY8205 (10,1\" QLED)"),
+    9: ("Cevre 5 V", "Çevre 5 V: F4 5 A → XL4016 çevre → ESP32 / sensörler / PCA ve BNO 3V3 (ESP32 regülatöründen)"),
+    10: ("Acil stop", "Acil stop (E3): F5 → mantar (NC) → röle bobini → MOSFET (arayüz kartı, ESP32 \"devreye al\"); PC817 mantar sonrası gerilimi okur"),
+    11: ("Sinyal: sonar", "Sinyal: sonar ×3 → arayüz kartı bölücü (4,7k / 10k) → ESP32 (ön ara ray üstünden)"),
+    # 05.11 B kararı: ESP32 USB hub'dan, direk arka yüzünden (kablo_yolu_ekran.py "ESP32 USB"); bu şemanın geometrisi CAD'de eski yol
+    12: ("Sinyal: enkoder", "Sinyal: enkoder + BTS PWM / EN / IS → ESP32. Şemanın direkten kafaya çıkan kısmı eski (05.11 öncesi "
+                            "ESP32 → kafa USB); ESP32 USB artık hub'dan: \"ESP32 USB\" şeması"),
+}
+
+
+def kablo_ad(cad_ad):
+    """Taban kablo şeması için görünen ad: (ad, uyarı ya da None)."""
+    import re
+    m = re.match(r"Kablo yolu (\d+): (.*)$", cad_ad)
+    if not m or int(m.group(1)) not in KABLO_AD:
+        return tr(cad_ad), None
+    bas, ad = KABLO_AD[int(m.group(1))]
+    if not m.group(2).startswith(bas):
+        return tr(cad_ad), "KABLO_AD %s: CAD etiketi beklenenle tutmuyor: %s" % (m.group(1), cad_ad)
+    return "Kablo yolu %s: %s" % (m.group(1), ad), None
+
+
+# Gösterim şemaları: lale158/kablo_yolu_ekran.py yolları (global, ev pozu; kafa_ici_qled tilt ekseni çerçevesinde, rehber_veri.py
+# çevirir). Parça değil: rehber-veri.json "semalar"; parça sayısı ve kontrol.json parça denetimi bundan etkilenmez.
+# (kaynak işlev, kaynak ad, adım kodu, görünen ad, renk)
+SEMA = [
+    ("yollar", "HDMI", "K2", "Göğüs ekranı HDMI: Pi micro HDMI 1 → boyun → travers arkası → direk solu → ekran (F3'te takılır)", "#6c5ce7"),
+    ("yollar", "Hub uzatmasi", "K2", "Hub uzatması (USB): Pi USB 3 → boyun → travers arkası → üst arka kapak içi hub (F5)", "#00a3a3"),
+    ("yollar", "ESP32 USB", "K2", "ESP32 USB: hub (Hub 2) → direk arka yüzü → ESP32 (taban); VBUS'ta seri 1N5819: anot hub (Pi) tarafında, katot ESP32 "
+     "tarafında; kartın kendi diyodu varsa gerekmez, multimetreyle bak (doğrulanmadı)", "#00a3a3"),
+    ("yollar", "Hoparlor", "K2", "Hoparlör: PAM8403 → boyun → travers arkası → sağ ön → hoparlör (F2'de bağlanır)", "#e84393"),
+    ("yollar", "12 V", "K2", "Göğüs ekranı 12 V: güç paneli (mini 2 A → LM2577 + LM2596) → direk arka yüzü → direk solu → ekran; "
+                           "boyundan geçmez", "#d63031"),
+    ("yollar", "USB dokunmatik", "F3", "Göğüs dokunmatiği (USB): ekran TOUCH → hub (Hub 1); F5'te hub'a takılır", "#00a3a3"),
+    ("yollar", "Dizi USB", "E4", "ReSpeaker USB: Pi USB 1 → ReSpeaker (kısa micro USB)", "#00a3a3"),
+    ("yollar", "Ses karti uzatmasi", "E4", "Ses kartı uzatması: Pi USB 2 → L dirsek → USB ses kartı", "#00a3a3"),
+    ("yollar", "3,5 mm -> PAM", "E4", "Ses: ses kartı L 3,5 mm → PAM8403 girişi", "#e84393"),
+    ("yollar", "PAM 5 V", "E4", "PAM8403 5 V: D24V50F5 → PAM (besleme noktası varsayım, K10)", "#2f86d4"),
+    ("kafa_ici_qled", "HDMI (serit, 2 lehimsiz fis)", "E4", "Kafa ekranı HDMI (30 cm şerit): Pi micro HDMI 0 → QLED", "#6c5ce7"),
+    ("kafa_ici_qled", "Touch USB (kutu kablosu)", "E4", "Kafa ekranı Touch: Pi USB 4 → QLED (VBUS uyarısı: Notlar)", "#00a3a3"),
+    ("kafa_ici_qled", "Power USB (30 cm, A ucu kesik)", "E4", "Kafa ekranı Power: SY8205 → QLED (ayrı 5 V hattı)", "#2f86d4"),
+]

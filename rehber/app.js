@@ -9,6 +9,11 @@
   const $ = (id) => document.getElementById(id);
   const P = new URLSearchParams(location.search);
   const CEKIM = P.get("cekim") === "1";               // ekran görüntüsü kipi: animasyon yok, sabit kamera
+  const SAHNE = P.get("sahne") === "1";               // F7b: yalnız 3B görünüm (yazdırılabilir sürümün görüntüsü; panel, üst ve alt şerit gizli)
+  if (SAHNE) document.documentElement.classList.add("yalniz-sahne");
+  const TUR_AD = (VERI && VERI.tur_ad) || {};
+  const MODUL_AD = (VERI && VERI.modul_ad) || {};
+  const SEMA = (VERI && VERI.semalar) || [];          // F7b: gösterim şemaları (lale158/kablo_yolu_ekran.py); parça değil
 
   // ---------------------------------------------------------------- güvenli yerel kayıt (hata verirse sessizce düşer)
   const KAYIT = "lale-rehber-v1";
@@ -79,10 +84,36 @@
         o.userData.id = kayit.v.id;
       });
       sahne.add(gltf.scene);
+      semaKur();
       $("yukleniyor").hidden = true;
       sahneRengi();
       git(baslangic(), false);
     }, (h) => { $("yukleniyor").textContent = "GLB okunamadı: " + h; console.error(h); });
+
+    // ---------------------------------------------------------------- gösterim şemaları (F7b): çoklu doğru parçası -> ince tüp
+    const SEMA_OBJ = [];
+    function semaKur() {
+      SEMA.forEach((s, i) => {
+        if (!s.pts || s.pts.length < 2) return;
+        const yol = new THREE.CurvePath();
+        for (let k = 1; k < s.pts.length; k++) {
+          const a = new THREE.Vector3(...s.pts[k - 1]), b = new THREE.Vector3(...s.pts[k]);
+          if (a.distanceTo(b) > 1e-6) yol.add(new THREE.LineCurve3(a, b));
+        }
+        const g = new THREE.TubeGeometry(yol, Math.max(24, s.pts.length * 12), 2.5, 6, false);
+        const o = new THREE.Mesh(g, malzeme(s.renk));
+        o.userData.sema = i;
+        o.visible = false;
+        sahne.add(o);
+        SEMA_OBJ[i] = o;
+      });
+    }
+    function semaDurum(s, adim) {                    // "gizli" | "simdi" | "onceki" | "hedef"
+      if (adim === 0) return "hedef";
+      if (ADIM[adim].tezgah) return s.a === adim ? "simdi" : "gizli";
+      if (s.a > adim) return "gizli";
+      return s.a === adim ? "simdi" : "onceki";
+    }
 
     // ---------------------------------------------------------------- adım durumu
     let su = 0, anim = null;
@@ -138,6 +169,17 @@
         if (d === "alt") { altVar = true; altKutu.union(b); }
         uc.push({ k: k, d: d });
       }
+      const semaYeni = [];
+      SEMA_OBJ.forEach((o, i) => {
+        if (!o) return;
+        const d = semaDurum(SEMA[i], s);
+        o.visible = d !== "gizli";
+        if (!o.visible) return;
+        o.material = malzeme(SEMA[i].renk, d === "onceki");
+        const b = new THREE.Box3().setFromObject(o);
+        gorunur.union(b);
+        if (d === "simdi") { kutu.union(b); semaYeni.push(i); sinifSay.kablo = 1; }
+      });
       // uçuş vektörleri
       const altBoy = altVar ? Math.max(120, altKutu.getSize(new THREE.Vector3()).length() * 0.8) : 0;
       uc.forEach((x) => {
@@ -149,7 +191,7 @@
       });
       lejant(sinifSay, s);
       if (ucus && !CEKIM) baslatUcus(uc); else ciz();
-      return { kutu: kutu.isEmpty() ? gorunur : kutu, gorunur: gorunur, yeni: yeni, eksik: eksik };
+      return { kutu: kutu.isEmpty() ? gorunur : kutu, gorunur: gorunur, yeni: yeni, eksik: eksik, sema: semaYeni };
     }
 
     function baslatUcus(uc) {
@@ -173,10 +215,14 @@
     let sonKutu = null;
     function kameraYerlestir(k) {
       const kutu = k.kutu.isEmpty() ? new THREE.Box3(new THREE.Vector3(-300, 0, -300), new THREE.Vector3(300, 1300, 300)) : k.kutu.clone();
-      // bağlam: hedef kutu çok küçükse görünen parçaların bir kısmını da kadraja al
+      // bağlam: hedef kutu çok küçükse görünen parçaların bir kısmını da kadraja al (F7b, F7a-kontrol D-4: E1, B3 çok yakındı).
+      // Yarıçap: yeni parçaların %10 payla sığdığı değer; yeni parçalar görünenin küçük bir kısmıysa görünenin %30'una kadar
+      // (en çok yeni parça yarıçapının 2,2 katı) açılır, yeni parçalar ortada kalır.
       const r0 = kutu.getSize(new THREE.Vector3()).length() / 2;
+      const rg = k.gorunur && !k.gorunur.isEmpty() ? k.gorunur.getSize(new THREE.Vector3()).length() / 2 : r0;
       const merkez = kutu.getCenter(new THREE.Vector3());
-      const r = Math.max(60, r0 * 0.95);
+      const r = Math.max(70, r0 * 1.1, Math.min(rg * 0.3, r0 * 2.2));
+      k.kadraj = { r0: Math.round(r0), rg: Math.round(rg), r: Math.round(r) };
       const st = ADIM[su];
       let yon = new THREE.Vector3(0.85, 0.62, 1.25);
       const alttan = st && (st.kod === "B1" || st.kod === "B1a");
@@ -210,8 +256,15 @@
         // rehber_uret.py kontrolü --dump-dom ile okur: adım başına yeni görünen parça kimlikleri ve mesh'i bulunmayan parçalar
         const kv = $("kontrol-veri");
         if (kv) kv.textContent = JSON.stringify({ adim: s, kod: ADIM[s].kod, simdi: k.yeni.simdi.sort(), alt: k.yeni.alt.sort(),
-          hedef: k.yeni.hedef.length, eksik: k.eksik });
-        requestAnimationFrame(() => { ciz(); document.body.dataset.hazir = "1"; });
+          hedef: k.yeni.hedef.length, eksik: k.eksik, sema: k.sema, kadraj: k.kadraj });
+        requestAnimationFrame(() => {
+          ciz();
+          // F7b: telefon kontrolü (rehber_uret.py --telefon): yatay taşma = belge genişliği - pencere genişliği
+          const de = document.documentElement;
+          de.dataset.genislik = String(window.innerWidth);
+          de.dataset.tasma = String(Math.max(de.scrollWidth, document.body.scrollWidth) - de.clientWidth);
+          document.body.dataset.hazir = "1";
+        });
       }
     }
 
@@ -243,7 +296,7 @@
       const et = $("etiket");
       if (!hit) { et.hidden = true; return; }
       const p = PAR[hit.object.userData.id].v;
-      et.innerHTML = "<b>" + esc(p.ad) + "</b><br><span class='not'>" + esc(p.kod) + " · " + esc(p.modul) + " · adım " +
+      et.innerHTML = "<b>" + esc(p.ad) + "</b><br><span class='not'>" + esc(p.kod) + " · " + esc(MODUL_AD[p.modul] || p.modul) + " · adım " +
         p.a + " (" + esc(ADIM[p.a].kod) + ")</span>";
       et.hidden = false;
     });
@@ -281,11 +334,12 @@
       const altNot = altlar.length ? "<p class='not'>Robota gelen alt montaj: " + altlar.map((a) => a.i + ". " + esc(a.kod)).join(", ") + "</p>" : "";
       $("parcalar").innerHTML = (st.parcalar.length ? "<table>" + st.parcalar.map((x) =>
         "<tr><td><i class='sw' style='background:" + (SINIF[x.r] || SINIF.satin)[0] +
-        "'></i>" + esc(x.ad) + "<div class='t'>" + esc(x.tur) + (x.malzeme ? " · " + esc(x.malzeme) : "") + "</div></td><td class='n'>×" + x.adet + "</td></tr>").join("") +
+        "'></i>" + esc(x.ad) + "<div class='t'>" + esc(TUR_AD[x.tur] || x.tur) + (x.malzeme && x.malzeme !== "-" ? " · " + esc(x.malzeme) : "") + "</div></td><td class='n'>×" + x.adet + "</td></tr>").join("") +
         "</table>" : "<p class='bos'>" + (s === 0 ? "Hedef: bitmiş robot (" + VERI.parcalar.length + " parça)." : "Bu adımda yeni parça yok.") + "</p>") + bag + altNot;
       // bağlantılar
       $("baglantilar").innerHTML = (st.baglantilar.length ? "<table>" + st.baglantilar.map((x) =>
-        "<tr><td>" + esc(x.kod) + "</td><td class='n'>×" + x.adet + "</td></tr>").join("") + "</table>" : "<p class='bos'>Yok.</p>") +
+        "<tr><td>" + esc(x.kod) + (x.onceden ? "<div class='t'>Baskıdan sonra takılı (hazırlık); burada yalnız sayılır</div>" : "") +
+        "</td><td class='n'>×" + x.adet + "</td></tr>").join("") + "</table>" : "<p class='bos'>Yok.</p>") +
         (st.baglanti_md ? "<p class='not'>Bağlantı: " + md(st.baglanti_md) + "</p>" : "");
       // kontrol listesi
       const kk = (oku().kontrol || {})[st.kod] || [];
@@ -296,6 +350,9 @@
       const kab = st.kablo.map((t) => "<li>" + md(t) + "</li>");
       VERI.parcalar.forEach((p) => {
         if (p.renk && p.a === s) kab.push("<li><i class='sw' style='background:" + p.renk + "'></i>" + esc(p.ad) + "</li>");
+      });
+      SEMA.forEach((x) => {
+        if (x.a === s) kab.push("<li><i class='sw' style='background:" + x.renk + "'></i>" + esc(x.ad) + " <span class='t'>(şema)</span></li>");
       });
       $("kablo").innerHTML = kab.length ? kab.join("") : "<li class='bos'>Bu adımda özel kablo işi yok.</li>";
       $("erisim").innerHTML = st.erisim ? md(st.erisim) : "—";

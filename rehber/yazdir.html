@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lale Montaj Rehberi: yazdırılabilir</title>
+<!-- F7b (P7.2, R-gunluk C): adım başına bir A4 sayfa. Veri veri/rehber-veri.js (rehber_veri.py), görüntü goruntu/adim-NN.png
+     (rehber_uret.py, ?sahne=1). PDF: rehber_uret.py headless Chrome --print-to-pdf -> planlama/rehber/Lale-montaj-rehberi.pdf.
+     Sayfaya sığmayan adımda önce görüntü (84 -> 46 mm), sonra yazı (9,6 -> 6,6 pt) küçülür; yine sığmazsa <body data-tasma> artar (rehber_uret.py hata sayar). -->
+<style>
+@page{size:A4;margin:0}
+:root{--ink:#1d1f22;--mut:#5c6066;--line:#d9d6ce;--acc:#2f86d4;--uyar:#b9770e;--mor:#7d5ba6;--zemin:#eceae4}
+*{box-sizing:border-box}
+html,body{margin:0;background:#8a8a86;color:var(--ink);font-family:system-ui,"Segoe UI",Arial,sans-serif;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.sayfa{width:210mm;height:297mm;margin:6mm auto;background:#fff;overflow:hidden;position:relative;padding:9mm 11mm 12mm}
+@media print{html,body{background:#fff}.sayfa{margin:0;break-after:page}.sayfa:last-child{break-after:auto}}
+.ic{font-size:var(--fs,9.6pt);line-height:1.33;height:100%;overflow:hidden}
+.ust{display:flex;justify-content:space-between;align-items:baseline;font-size:7.6pt;color:var(--mut);border-bottom:.3mm solid var(--line);
+  padding-bottom:1.2mm;margin-bottom:2mm}
+.ust b{color:var(--ink)}
+h1{font-size:1.55em;margin:0 0 1.2mm;line-height:1.2}
+.rozetler{display:flex;gap:1.4mm;flex-wrap:wrap;margin-bottom:1.6mm}
+.rozet{font-size:.78em;border-radius:99px;padding:.2mm 2.2mm;background:#efede7;color:var(--mut)}
+.rozet.kod{background:var(--acc);color:#fff;font-weight:600}.rozet.tezgah{background:var(--mor);color:#fff}
+.rozet.kapi{background:var(--uyar);color:#fff}
+.gorsel{width:100%;height:var(--gh,84mm);object-fit:contain;background:var(--zemin);border-radius:1.5mm;display:block}
+.gorsel-yok{height:var(--gh,84mm);display:grid;place-items:center;background:var(--zemin);color:var(--mut);border-radius:1.5mm}
+.kpi{display:grid;grid-template-columns:auto auto 1fr auto auto;gap:1.5mm 4mm;margin:2mm 0;font-size:.92em;align-items:baseline}
+.kpi span{color:var(--mut);font-size:.88em;margin-left:1mm}
+.is{white-space:pre-line;margin:1.5mm 0}
+.notlar{border:.3mm solid var(--line);border-left:1.2mm solid var(--uyar);border-radius:1.2mm;padding:1.2mm 2.5mm;margin:1.8mm 0}
+.notlar b{color:var(--uyar)}
+.notlar ul{margin:.6mm 0 0;padding-left:4mm}
+.iki{column-count:2;column-gap:5mm;column-fill:balance;margin-top:1.5mm}   /* iki sütun dengeli akar (F7b: K2'de sağ sütun taşıyordu) */
+.iki h2{break-after:avoid}.iki tr,.iki li,.iki p{break-inside:avoid}.iki h2:first-child{margin-top:0}
+h2{font-size:1.02em;margin:1.8mm 0 .8mm;border-bottom:.3mm solid var(--line);padding-bottom:.4mm}
+table{border-collapse:collapse;width:100%}
+td{border-top:.2mm solid var(--line);padding:.55mm .8mm;vertical-align:top}
+tr:first-child td{border-top:0}
+td.n{text-align:right;white-space:nowrap;font-weight:600;width:3em}
+.t{color:var(--mut);font-size:.84em}
+.sw{display:inline-block;width:2.2mm;height:2.2mm;border-radius:.4mm;margin-right:1.2mm}
+ul.kontrol,ul.kablo{list-style:none;padding:0;margin:.4mm 0}
+ul.kontrol li{display:flex;gap:1.6mm;padding:.5mm 0;border-top:.2mm solid var(--line)}
+ul.kontrol li:before{content:"";flex:none;width:3mm;height:3mm;border:.3mm solid var(--ink);border-radius:.5mm;margin-top:.4mm}
+ul.kablo li{padding:.5mm 0 .5mm 3.4mm;border-top:.2mm solid var(--line);position:relative}
+ul.kablo li:before{content:"⌁";position:absolute;left:0;color:var(--uyar)}
+ul li:first-child{border-top:0}
+.not{color:var(--mut)}
+.bos{color:var(--mut)}
+code{background:#efede7;padding:0 1mm;border-radius:.6mm;font-size:.9em;overflow-wrap:anywhere}
+.ic,td,li{overflow-wrap:anywhere}
+.alt{position:absolute;left:11mm;right:11mm;bottom:5mm;display:flex;justify-content:space-between;font-size:7.2pt;color:var(--mut);
+  border-top:.3mm solid var(--line);padding-top:1mm}
+</style>
+</head>
+<body>
+<div id="sayfalar"></div>
+<script src="veri/rehber-veri.js"></script>
+<script>
+(function () {
+  "use strict";
+  var V = window.REHBER_VERI;
+  var kok = document.getElementById("sayfalar");
+  if (!V) { kok.textContent = "Veri bulunamadı: veri/rehber-veri.js gerekli (rehber_veri.py)."; return; }
+  var A = V.adimlar, N = A.length, TUR = V.tur_ad || {}, SEMA = V.semalar || [];
+  var SINIF = { baski: "#f0932b", cf: "#3d5a80", profil: "#16a085", satin: "#2f86d4", lazer: "#8e44ad", imalat: "#d35400",
+    baglanti: "#d4ac0d", kablo: "#c0392b", ref: "#95a5a6" };
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function md(s) { return esc(s).replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>").replace(/`([^`]+)`/g, "<code>$1</code>"); }
+  function iki(n) { return (n < 10 ? "0" : "") + n; }
+
+  A.forEach(function (st, s) {
+    var h = [];
+    h.push("<div class='ust'><span><b>Lale</b> · 3B montaj rehberi, yazdırılabilir sürüm (taslak)</span><span>Adım " + s + " / " + (N - 1) + "</span></div>");
+    var roz = ["<span class='rozet kod'>" + esc(st.kod) + "</span>", "<span class='rozet'>" + esc(st.faz) + "</span>"];
+    if (st.tezgah) roz.push("<span class='rozet tezgah'>Tezgâh: masada yap</span>");
+    if (st.kablolama) roz.push("<span class='rozet kapi'>Kablolama kapısı: kabuktan önce dur</span>");
+    if (st.no && st.no !== "0") roz.push("<span class='rozet'>M6 no " + esc(st.no) + "</span>");
+    h.push("<h1>" + s + ". " + esc(st.baslik) + "</h1><div class='rozetler'>" + roz.join("") + "</div>");
+    h.push("<img class='gorsel' alt='Adım " + s + " 3B görünüm' src='goruntu/adim-" + iki(s) + ".png' onerror=\"this.outerHTML='<div class=gorsel-yok>Görüntü yok: <code>rehber_uret.py</code> ile üret</div>'\">");
+    var np = st.parcalar.reduce(function (a, b) { return a + b.adet; }, 0), nb = st.baglantilar.reduce(function (a, b) { return a + b.adet; }, 0);
+    h.push("<div class='kpi'><div><b>~" + st.sure_dk + " dk</b><span>süre" + (st.sure_tahmini ? " (tahmini)" : "") + "</span></div>" +
+      "<div><b>" + np + "</b><span>parça</span></div><div><b>" + (st.alet ? md(st.alet) : "—") + "</b><span>alet</span></div>" +
+      "<div><b>" + nb + "</b><span>bağlantı elemanı</span></div><div></div></div>");
+    h.push("<div class='is'>" + md(st.is_) + "</div>");
+    if ((st.not_ || []).length) h.push("<div class='notlar'><b>Notlar ve uyarılar</b><ul>" + st.not_.map(function (t) { return "<li>" + md(t) + "</li>"; }).join("") + "</ul></div>");
+    // sol sütun: parçalar + bağlantı elemanları
+    var sol = ["<h2>Parçalar</h2>"];
+    if (st.parcalar.length) {
+      sol.push("<table>" + st.parcalar.map(function (x) {
+        return "<tr><td><i class='sw' style='background:" + (SINIF[x.r] || SINIF.satin) + "'></i>" + esc(x.ad) + "<div class='t'>" +
+          esc(TUR[x.tur] || x.tur) + (x.malzeme && x.malzeme !== "-" ? " · " + esc(x.malzeme) : "") + "</div></td><td class='n'>×" + x.adet + "</td></tr>";
+      }).join("") + "</table>");
+    } else sol.push("<p class='bos'>" + (s === 0 ? "Hedef: bitmiş robot (" + V.parcalar.length + " parça)." : "Bu adımda yeni parça yok.") + "</p>");
+    if (st.baglanir != null) sol.push("<p class='not'>Bu alt montaj " + st.baglanir + ". adımda (" + esc(A[st.baglanir].kod) + ") robota bağlanır.</p>");
+    var altlar = [];
+    if (!st.tezgah && s > 0) A.forEach(function (a) { if (a.baglanir === s) altlar.push(a.i + ". " + esc(a.kod)); });
+    if (altlar.length) sol.push("<p class='not'>Robota gelen alt montaj: " + altlar.join(", ") + "</p>");
+    sol.push("<h2>Bağlantı elemanları</h2>");
+    sol.push(st.baglantilar.length ? "<table>" + st.baglantilar.map(function (x) {
+      return "<tr><td>" + esc(x.kod) + (x.onceden ? "<div class='t'>Baskıdan sonra takılı (hazırlık); burada yalnız sayılır</div>" : "") +
+        "</td><td class='n'>×" + x.adet + "</td></tr>";
+    }).join("") + "</table>" : "<p class='bos'>Yok.</p>");
+    if (st.baglanti_md) sol.push("<p class='not'>Bağlantı: " + md(st.baglanti_md) + "</p>");
+    // sağ sütun: kontrol, kablo, erişim
+    var sag = ["<h2>Kontrol listesi</h2>"];
+    sag.push(st.kontrol.length ? "<ul class='kontrol'>" + st.kontrol.map(function (t) { return "<li><span>" + md(t) + "</span></li>"; }).join("") + "</ul>"
+      : "<p class='bos'>Bu adım için kontrol listesi yazılmadı (erişim notuna bak).</p>");
+    var kab = st.kablo.map(function (t) { return "<li>" + md(t) + "</li>"; });
+    V.parcalar.forEach(function (p) { if (p.renk && p.a === s) kab.push("<li><i class='sw' style='background:" + p.renk + "'></i>" + esc(p.ad) + "</li>"); });
+    SEMA.forEach(function (x) { if (x.a === s) kab.push("<li><i class='sw' style='background:" + x.renk + "'></i>" + esc(x.ad) + " <span class='t'>(şema)</span></li>"); });
+    sag.push("<h2>Kablo kancası</h2>" + (kab.length ? "<ul class='kablo'>" + kab.join("") + "</ul>" : "<p class='bos'>Bu adımda özel kablo işi yok.</p>"));
+    sag.push("<h2>Erişim notu</h2><p class='not'>" + (st.erisim ? md(st.erisim) : "—") + "</p>");
+    h.push("<div class='iki'>" + sol.join("") + sag.join("") + "</div>");
+    var d = document.createElement("section");
+    d.className = "sayfa";
+    d.dataset.adim = String(s);
+    d.innerHTML = "<div class='ic'>" + h.join("") + "</div><div class='alt'><span>Veri: rehber-veri.js, üretim " + esc(V.uretim) +
+      " · ölçüler mm</span><span>Sayfa " + (s + 1) + " / " + N + "</span></div>";
+    kok.appendChild(d);
+  });
+
+  // Sığdırma: önce görüntü 84 -> 46 mm, sonra yazı 9,6 -> 6,6 pt. Sığmayan sayfa data-tasma'ya yazılır.
+  var tasma = [], kucuk = [];
+  Array.prototype.forEach.call(document.querySelectorAll(".sayfa"), function (sf) {
+    var ic = sf.querySelector(".ic");
+    function tasiyor() { return ic.scrollHeight > ic.clientHeight + 1; }
+    var gh = 84, fs = 9.6;
+    while (tasiyor() && gh > 46) { gh -= 4; ic.style.setProperty("--gh", gh + "mm"); }
+    while (tasiyor() && fs > 6.6) { fs = Math.round((fs - 0.2) * 10) / 10; ic.style.setProperty("--fs", fs + "pt"); }
+    sf.dataset.gh = String(gh); sf.dataset.fs = String(fs);
+    if (fs < 8) kucuk.push(sf.dataset.adim + ":" + fs);
+    if (tasiyor()) tasma.push(sf.dataset.adim);
+  });
+  document.body.dataset.sayfa = String(document.querySelectorAll(".sayfa").length);
+  document.body.dataset.tasma = tasma.join(",");
+  document.body.dataset.kucuk = kucuk.join(",");
+  document.body.dataset.hazir = "1";
+})();
+</script>
+</body>
+</html>

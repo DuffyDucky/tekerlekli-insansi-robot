@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-09 16:30",
+ "tarih": "2026-11-09 18:26",
  "tarayici": "chrome.exe",
  "ozet": {
   "adim": 50,
@@ -13,7 +13,8 @@
    "birden_cok_adimda": {},
    "hic_gorunmeyen": []
   },
-  "veri_uretim": "2026-11-09 16:28",
+  "sema": 13,
+  "veri_uretim": "2026-11-09 18:21",
   "kaynak_cad": {
    "iskelet": "2026-11-09 14:27",
    "omuz_sag": "2026-11-09 14:27",
@@ -39,6 +40,13 @@
    "gorunen_hedef": 1192,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 1007,
+    "rg": 1007,
+    "r": 1108
+   },
    "gecti": true
   },
   {
@@ -56,6 +64,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 312,
+    "rg": 312,
+    "r": 344
+   },
    "gecti": true
   },
   {
@@ -73,6 +88,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 573,
+    "rg": 664,
+    "r": 630
+   },
    "gecti": true
   },
   {
@@ -90,6 +112,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 119,
+    "rg": 690,
+    "r": 207
+   },
    "gecti": true
   },
   {
@@ -107,6 +136,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 304,
+    "rg": 304,
+    "r": 335
+   },
    "gecti": true
   },
   {
@@ -124,6 +160,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 304,
+    "rg": 695,
+    "r": 335
+   },
    "gecti": true
   },
   {
@@ -141,6 +184,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 283,
+    "rg": 717,
+    "r": 312
+   },
    "gecti": true
   },
   {
@@ -158,6 +208,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 278,
+    "rg": 717,
+    "r": 305
+   },
    "gecti": true
   },
   {
@@ -175,6 +232,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 354,
+    "rg": 749,
+    "r": 389
+   },
    "gecti": true
   },
   {
@@ -192,6 +256,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 236,
+    "rg": 749,
+    "r": 259
+   },
    "gecti": true
   },
   {
@@ -209,6 +280,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 267,
+    "rg": 749,
+    "r": 294
+   },
    "gecti": true
   },
   {
@@ -226,6 +304,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 282,
+    "rg": 752,
+    "r": 310
+   },
    "gecti": true
   },
   {
@@ -243,6 +328,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 202,
+    "rg": 202,
+    "r": 223
+   },
    "gecti": true
   },
   {
@@ -260,6 +352,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 202,
+    "rg": 752,
+    "r": 226
+   },
    "gecti": true
   },
   {
@@ -277,6 +376,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 177,
+    "rg": 177,
+    "r": 195
+   },
    "gecti": true
   },
   {
@@ -294,6 +400,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 177,
+    "rg": 752,
+    "r": 226
+   },
    "gecti": true
   },
   {
@@ -311,6 +424,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 110,
+    "rg": 752,
+    "r": 226
+   },
    "gecti": true
   },
   {
@@ -328,6 +448,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 363,
+    "rg": 759,
+    "r": 399
+   },
    "gecti": true
   },
   {
@@ -345,6 +472,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 403,
+    "rg": 759,
+    "r": 443
+   },
    "gecti": true
   },
   {
@@ -362,6 +496,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 161,
+    "rg": 161,
+    "r": 178
+   },
    "gecti": true
   },
   {
@@ -379,6 +520,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 167,
+    "rg": 169,
+    "r": 184
+   },
    "gecti": true
   },
   {
@@ -396,6 +544,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 154,
+    "rg": 169,
+    "r": 169
+   },
    "gecti": true
   },
   {
@@ -413,6 +568,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 169,
+    "rg": 759,
+    "r": 228
+   },
    "gecti": true
   },
   {
@@ -430,6 +592,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 79,
+    "rg": 79,
+    "r": 87
+   },
    "gecti": true
   },
   {
@@ -447,6 +616,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 82,
+    "rg": 788,
+    "r": 180
+   },
    "gecti": true
   },
   {
@@ -464,6 +640,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 18,
+    "rg": 788,
+    "r": 70
+   },
    "gecti": true
   },
   {
@@ -481,6 +664,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 54,
+    "rg": 796,
+    "r": 118
+   },
    "gecti": true
   },
   {
@@ -498,6 +688,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 104,
+    "rg": 850,
+    "r": 228
+   },
    "gecti": true
   },
   {
@@ -515,6 +712,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 46,
+    "rg": 850,
+    "r": 100
+   },
    "gecti": true
   },
   {
@@ -532,6 +736,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 135,
+    "rg": 135,
+    "r": 148
+   },
    "gecti": true
   },
   {
@@ -549,6 +760,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 135,
+    "rg": 860,
+    "r": 258
+   },
    "gecti": true
   },
   {
@@ -566,6 +784,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 7,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 258,
+    "rg": 888,
+    "r": 283
+   },
    "gecti": true
   },
   {
@@ -583,6 +808,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 5,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 784,
+    "rg": 888,
+    "r": 863
+   },
    "gecti": true
   },
   {
@@ -600,6 +832,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 597,
+    "rg": 1007,
+    "r": 657
+   },
    "gecti": true
   },
   {
@@ -617,6 +856,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 509,
+    "rg": 1007,
+    "r": 560
+   },
    "gecti": true
   },
   {
@@ -634,6 +880,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 1,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 274,
+    "rg": 1007,
+    "r": 302
+   },
    "gecti": true
   },
   {
@@ -651,6 +904,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 221,
+    "rg": 1007,
+    "r": 302
+   },
    "gecti": true
   },
   {
@@ -668,6 +928,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 249,
+    "rg": 249,
+    "r": 274
+   },
    "gecti": true
   },
   {
@@ -685,6 +952,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 249,
+    "rg": 1007,
+    "r": 302
+   },
    "gecti": true
   },
   {
@@ -702,6 +976,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 200,
+    "rg": 1007,
+    "r": 302
+   },
    "gecti": true
   },
   {
@@ -719,6 +1000,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 237,
+    "rg": 1007,
+    "r": 302
+   },
    "gecti": true
   },
   {
@@ -736,6 +1024,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 182,
+    "rg": 1007,
+    "r": 302
+   },
    "gecti": true
   },
   {
@@ -753,6 +1048,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 258,
+    "rg": 258,
+    "r": 284
+   },
    "gecti": true
   },
   {
@@ -770,6 +1072,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 224,
+    "rg": 258,
+    "r": 246
+   },
    "gecti": true
   },
   {
@@ -787,6 +1096,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 247,
+    "rg": 271,
+    "r": 271
+   },
    "gecti": true
   },
   {
@@ -804,6 +1120,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 198,
+    "rg": 271,
+    "r": 218
+   },
    "gecti": true
   },
   {
@@ -821,6 +1144,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 200,
+    "rg": 271,
+    "r": 220
+   },
    "gecti": true
   },
   {
@@ -838,6 +1168,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 214,
+    "rg": 289,
+    "r": 235
+   },
    "gecti": true
   },
   {
@@ -855,6 +1192,13 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 289,
+    "rg": 1007,
+    "r": 318
+   },
    "gecti": true
   },
   {
@@ -872,7 +1216,348 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
+   "sema": 0,
+   "sema_fark": [],
+   "kadraj": {
+    "r0": 493,
+    "rg": 1007,
+    "r": 542
+   },
    "gecti": true
   }
- ]
+ ],
+ "yazdir_goruntu": {
+  "adim": 50,
+  "klasor": "rehber/goruntu",
+  "eksik": []
+ },
+ "telefon": {
+  "pencere": [
+   360,
+   1600
+  ],
+  "yontem": "CDP Emulation.setDeviceMetricsOverride (mobile)",
+  "sonuc": [
+   {
+    "adim": 0,
+    "genislik": 360,
+    "belge_genislik": 360,
+    "tasma_px": 0,
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/telefon-360-adim-00.png",
+    "gecti": true
+   },
+   {
+    "adim": 9,
+    "genislik": 360,
+    "belge_genislik": 360,
+    "tasma_px": 0,
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/telefon-360-adim-09.png",
+    "gecti": true
+   },
+   {
+    "adim": 24,
+    "genislik": 360,
+    "belge_genislik": 360,
+    "tasma_px": 0,
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/telefon-360-adim-24.png",
+    "gecti": true
+   },
+   {
+    "adim": 31,
+    "genislik": 360,
+    "belge_genislik": 360,
+    "tasma_px": 0,
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/telefon-360-adim-31.png",
+    "gecti": true
+   },
+   {
+    "adim": 32,
+    "genislik": 360,
+    "belge_genislik": 360,
+    "tasma_px": 0,
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/telefon-360-adim-32.png",
+    "gecti": true
+   },
+   {
+    "adim": 35,
+    "genislik": 360,
+    "belge_genislik": 360,
+    "tasma_px": 0,
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/telefon-360-adim-35.png",
+    "gecti": true
+   },
+   {
+    "adim": 49,
+    "genislik": 360,
+    "belge_genislik": 360,
+    "tasma_px": 0,
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/telefon-360-adim-49.png",
+    "gecti": true
+   }
+  ],
+  "gecti": true
+ },
+ "yazdir": {
+  "pdf": "planlama/rehber/Lale-montaj-rehberi.pdf",
+  "pdf_sayfa": 50,
+  "pdf_yeni": true,
+  "html_sayfa": 50,
+  "adim": 50,
+  "tasan": [],
+  "kucuk_yazi": [
+   "31:7.2",
+   "32:7.2"
+  ],
+  "boyut_kb": 3894,
+  "gecti": true
+ },
+ "denetim": {
+  "ascii_kalinti": [],
+  "ascii_kalinti_sayi": 0,
+  "gruplama_yanlis": 0,
+  "gruplama": {
+   "yanlis": [],
+   "eksik": [],
+   "eski_kural_yanlis": 17,
+   "eski_kural_ornek": [
+    "A1: Şase ara rayı arka | Şase ara rayı orta | Şase ara rayı ön",
+    "B3: XL4016 servo 6 V A | XL4016 servo 6 V B | XL4016 çevre 5 V",
+    "C0: Etek braketi z+0 | Etek braketi z+105 | Etek braketi z-105",
+    "B6a: Servo dağıtım kartı A | Servo dağıtım kartı B",
+    "B7: Sonar tutucu | Sonar tutucu orta",
+    "C1: Gövde braketi y1095 | Gövde braketi y400 | Gövde braketi y530 | Gövde braketi y688",
+    "E1a: 6808-2RS alt rulman | 6808-2RS üst rulman",
+    "E2b: 6808-2RS alt rulman | 6808-2RS üst rulman"
+   ]
+  },
+  "tutarlilik_celiski": 0,
+  "tutarlilik": {
+   "anma": [
+    {
+     "bilesen": "Yüz ekranı WaveShare",
+     "adim": "E4",
+     "metinde": true
+    },
+    {
+     "bilesen": "Ekran tırnağı",
+     "adim": "E4",
+     "metinde": true
+    },
+    {
+     "bilesen": "Kamera Raspberry Pi Camera",
+     "adim": "E4",
+     "metinde": true
+    },
+    {
+     "bilesen": "ReSpeaker",
+     "adim": "E4",
+     "metinde": true
+    },
+    {
+     "bilesen": "USB ses kartı",
+     "adim": "E4",
+     "metinde": true
+    },
+    {
+     "bilesen": "PAM8403",
+     "adim": "E4",
+     "metinde": true
+    },
+    {
+     "bilesen": "PAM8403",
+     "adim": "K2",
+     "metinde": true
+    },
+    {
+     "bilesen": "Pololu D24V50F5",
+     "adim": "E3a",
+     "metinde": true
+    },
+    {
+     "bilesen": "Pololu D24V50F5",
+     "adim": "K2",
+     "metinde": true
+    },
+    {
+     "bilesen": "SY8205",
+     "adim": "E3a",
+     "metinde": true
+    },
+    {
+     "bilesen": "SY8205",
+     "adim": "K2",
+     "metinde": true
+    },
+    {
+     "bilesen": "TVS P6KE6V8A",
+     "adim": "E3a",
+     "metinde": true
+    },
+    {
+     "bilesen": "Hoparlör 40",
+     "adim": "F2",
+     "metinde": true
+    },
+    {
+     "bilesen": "USB Hub",
+     "adim": "F5",
+     "metinde": true
+    }
+   ],
+   "anmayan": [],
+   "celiski": [],
+   "affedilen": [
+    {
+     "ifade": "LCD (göğüs ekranı ürün kodu \"11.6inch HDMI LCD\" hariç)",
+     "yer": "adım 29 E3a baglanti_md",
+     "cumle": "M6'daki LCD 4 × M3×6 ve kamera 4 × M2×8 PT bu adımda yok (QLED tırnaklı, kamera E4'te)",
+     "baglam": [
+      "yok"
+     ]
+    },
+    {
+     "ifade": "ESP32 USB boyundan",
+     "yer": "adım 32 K2 is_",
+     "cumle": "ESP32 USB boyuna girmez (05.11 kararı): ESP32'den (taban) direk arka yüzü (z −26) boyunca yukarı;",
+     "baglam": [
+      "girmez"
+     ]
+    },
+    {
+     "ifade": "ESP32 → kafa USB",
+     "yer": "adım 32 K2 kablo",
+     "cumle": "Taban şeması 12'nin direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB);",
+     "baglam": [
+      "eski",
+      "05.11 öncesi"
+     ]
+    },
+    {
+     "ifade": "Nextion",
+     "yer": "adım 35 F3 is_",
+     "cumle": "Nextion kalktı.",
+     "baglam": [
+      "kalktı"
+     ]
+    },
+    {
+     "ifade": "Nextion",
+     "yer": "adım 35 F3 baglanti_md",
+     "cumle": "M6'daki Nextion DIN 912'leri eski",
+     "baglam": [
+      "eski"
+     ]
+    },
+    {
+     "ifade": "ESP32 → kafa USB",
+     "yer": "parça p1191 ad",
+     "cumle": "Şemanın direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB);",
+     "baglam": [
+      "eski",
+      "05.11 öncesi"
+     ]
+    }
+   ],
+   "zorunlu": [
+    {
+     "adim": "E3a",
+     "uyari": "iki 5 V hattı köprülenmez",
+     "var": true
+    },
+    {
+     "adim": "E3a",
+     "uyari": "iki P6KE6V8A (Pi hattındaki modelde yok)",
+     "var": true
+    },
+    {
+     "adim": "E3a",
+     "uyari": "TVS kutbu",
+     "var": true
+    },
+    {
+     "adim": "E3a",
+     "uyari": "SY8205 ölçümü akım sınırlı kaynakla",
+     "var": true
+    },
+    {
+     "adim": "E4",
+     "uyari": "Touch VBUS ölçümü",
+     "var": true
+    },
+    {
+     "adim": "E4",
+     "uyari": "iki 5 V hattı köprülenmez",
+     "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "bağlarken akü ayrık",
+     "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "K1'de enerjili ölçüm yok (tezgâhta)",
+     "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "mantar / ana anahtar köprülenmez",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 bağlarken akü ayrık",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 ilk enerji sırası",
+     "var": true
+    },
+    {
+     "adim": "K2",
+     "uyari": "K2 enerjisiz",
+     "var": true
+    },
+    {
+     "adim": "K2",
+     "uyari": "1N5819 yönü",
+     "var": true
+    },
+    {
+     "adim": "K2",
+     "uyari": "göğüs regülatörü 12 V ayarı",
+     "var": true
+    },
+    {
+     "adim": "F3",
+     "uyari": "göğüs 12 V fişten önce ölçüm",
+     "var": true
+    }
+   ],
+   "zorunlu_eksik": []
+  },
+  "zorunlu_eksik": 0,
+  "metin_sayisi": {
+   "veri": 4632,
+   "tarayici": 58
+  },
+  "parca": 1192,
+  "sema": 13,
+  "gecti": true
+ }
 }

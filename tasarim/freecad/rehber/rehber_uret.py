@@ -3,19 +3,38 @@
 #   python tasarim/freecad/rehber/rehber_uret.py --veri-yok      # FreeCAD'i atla, yalnız tarayıcı kontrolü + görüntüler
 #   python tasarim/freecad/rehber/rehber_uret.py --adimlar 1,4,9  # yalnız seçilen adımların görüntüsü (varsayılan: tümü)
 # Adımlar:
-#   1) rehber_veri.py (freecadcmd, ASCII başlatıcı C:/Users/Victus/.robot-cad/run_fc.py) -> rehber/veri/{rehber-veri.json,.js, robot.glb, robot-glb.js}
+#   1) rehber_veri.py (freecadcmd, ASCII başlatıcı: LALE_FC_LAUNCH ortam değişkeni, yoksa ~/.robot-cad/run_fc.py; depo yolu ASCII
+#      olmadığı için freecadcmd betiği doğrudan açamıyor) -> rehber/veri/{rehber-veri.json,.js, robot.glb, robot-glb.js}
 #   2) her adım için headless Chrome/Edge: rehber/index.html?adim=N&cekim=1 -> --dump-dom ile <html data-hata> (konsol hatası) ve
 #      <body data-hazir> kontrolü; --screenshot -> planlama/rehber/goruntu/adim-NN.png
 #   3) özet: planlama/rehber/kontrol.json (adım başına hata / hazır / görüntü; F7a: app.js'in <script id="kontrol-veri"> içine yazdığı
 #      yeni görünen parça kimlikleri rehber-veri.json'dan beklenen listeyle karşılaştırılır; tüm adımlar koşulunca her parçanın tam
 #      bir adımda yeni göründüğü de denetlenir)
-import os, sys, json, subprocess, re, time, urllib.parse, argparse, tempfile
+# F7b (P7.2) ekleri:
+#   4) her adımın yalnız 3B görüntüsü (?sahne=1, açık tema) -> rehber/goruntu/adim-NN.png (yazdırılabilir sürüm bunları kullanır)
+#   5) telefon: 360 px görüntü alanında birkaç adım (DevTools protokolü, Emulation.setDeviceMetricsOverride; Python websockets
+#      paketi gerekir; --window-size Chrome'da ~500 px'in altına inmiyor); yatay taşma = belge genişliği - görüntü alanı (0 olmalı) ->
+#      <çıktı>/goruntu/telefon-360-adim-NN.png
+#   6) yazdırılabilir sürüm rehber/yazdir.html -> headless Chrome --print-to-pdf -> <çıktı>/Lale-montaj-rehberi.pdf; sayfa sayısı = adım
+#   7) rehber_denetim.py: ASCII kalıntı (veri + tarayıcının bastığı panel ve yazdir metni), parça listesi gruplama, kafa / hoparlör /
+#      hub tutarlılığı -> kontrol.json "denetim"
+#   --cikti <klasör>: tüm çıktılar o klasöre (bağımsız kontrol depoyu değiştirmeden koşabilsin; F7a-kontrol D-5, F7b-kontrol D-4):
+#      kontrol.json, goruntu/ (kontrol + telefon), Lale-montaj-rehberi.pdf ve <klasör>/rehber/ (yazdir.html + veri/rehber-veri.js
+#      kopyası + goruntu/adim-NN.png). Depodaki rehber/ yalnız okunur; veri üretimi rehber/veri'ye yazdığı için --veri-yok gerekir.
+#   --ek-yok: 4–7'yi atla.
+import os, sys, json, subprocess, re, time, urllib.parse, argparse, tempfile, html
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROBOT = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
 REHBER = os.path.join(ROBOT, "rehber")
-GORUNTU = os.path.join(ROBOT, "planlama", "rehber", "goruntu")
-LAUNCH = r"C:\Users\Victus\.robot-cad\run_fc.py"
+CIKTI = os.path.join(ROBOT, "planlama", "rehber")                  # --cikti ile değişir (D-5)
+GORUNTU = os.path.join(CIKTI, "goruntu")
+YAZDIR_KOK = REHBER                                                 # yazdir.html'in okunduğu klasör (--cikti ile kopya)
+YAZDIR_GORUNTU = os.path.join(REHBER, "goruntu")                    # yazdir.html'in adım görüntüleri (yalnız 3B)
+TELEFON_ADIM = (0, 9, 24, 31, 32, 35, 49)
+sys.path.insert(0, HERE)
+# ASCII yoldaki FreeCAD başlatıcısı (F7b-kontrol D-5: yerel kullanıcı yolu depoda yazılmaz)
+LAUNCH = os.environ.get("LALE_FC_LAUNCH") or os.path.join(os.path.expanduser("~"), ".robot-cad", "run_fc.py")
 FCCMD = os.path.join(os.environ.get("LOCALAPPDATA", ""), "Programs", "FreeCAD 1.1", "bin", "freecadcmd.exe")
 TARAYICI = [r"C:\Program Files\Google\Chrome\Application\chrome.exe",
             r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"]
@@ -43,9 +62,10 @@ def tarayici():
     sys.exit("Chrome / Edge bulunamadi")
 
 
-def url(adim):
-    yol = os.path.join(REHBER, "index.html").replace("\\", "/")
-    return "file:///" + urllib.parse.quote(yol, safe="/:") + "?adim=%d&cekim=1" % adim
+def url(adim, ek="", sayfa="index.html", kok=None):
+    yol = os.path.join(kok or REHBER, sayfa).replace("\\", "/")
+    q = ("?adim=%d&cekim=1" % adim if adim is not None else "") + ek
+    return "file:///" + urllib.parse.quote(yol, safe="/:") + q
 
 
 def beklenen(V, s):
@@ -61,19 +81,40 @@ def beklenen(V, s):
     return ({p["id"] for p in P if p["b"] == s and p["a"] == s}, {p["id"] for p in P if p["b"] == s and p["a"] != s}, 0)
 
 
+def ortak_arg(tb, boyut, sanal=25000):
+    return [tb, "--headless=new", "--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--hide-scrollbars",
+            "--window-size=%d,%d" % boyut, "--virtual-time-budget=%d" % sanal, "--no-first-run", "--disable-extensions",
+            "--user-data-dir=" + os.path.join(tempfile.gettempdir(), "lale-rehber-chrome")]   # açık Chrome profiline bağlanmasın
+
+
+def dom_al(ortak, u):
+    return subprocess.run(ortak + ["--dump-dom", u], capture_output=True, text=True, encoding="utf-8", errors="replace").stdout
+
+
+def gorunen_metin(dom, *bolum):
+    """DOM dökümünden ekranda görünen metin (kod parçaları ve betikler hariç). bolum: aranacak etiket desenleri."""
+    dom = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", dom or "", flags=re.S)   # önce betikler (bölüm deseni içlerine taşmasın)
+    parca = []
+    for b in bolum:
+        parca += re.findall(b, dom, re.S)
+    t = " \n ".join(parca) if bolum else dom
+    t = re.sub(r"<code>.*?</code>", " ", t, flags=re.S)
+    t = re.sub(r"<(?:[^>\"']|\"[^\"]*\"|'[^']*')*>", " ", t)          # etiket (öznitelik değerindeki > dahil)
+    return html.unescape(t)
+
+
 def kontrol(adimlar, boyut=(1400, 900)):
     tb = tarayici()
     os.makedirs(GORUNTU, exist_ok=True)
     V = json.load(open(os.path.join(REHBER, "veri", "rehber-veri.json"), encoding="utf-8"))
     AD = {p["id"]: "%s [%s]" % (p["ad"], p["modul"]) for p in V["parcalar"]}
-    ortak = [tb, "--headless=new", "--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--hide-scrollbars",
-             "--window-size=%d,%d" % boyut, "--virtual-time-budget=25000", "--no-first-run", "--disable-extensions",
-             "--user-data-dir=" + os.path.join(tempfile.gettempdir(), "lale-rehber-chrome")]   # açık Chrome profiline bağlanmasın
+    ortak = ortak_arg(tb, boyut)
     sonuc = []
+    metin = []                                                      # denetim için tarayıcının bastığı panel metni
     simdi_say = {}                                                  # parça -> yeni (simdi) göründüğü adımlar (0 hariç)
     for a in adimlar:
         u = url(a)
-        dom = subprocess.run(ortak + ["--dump-dom", u], capture_output=True, text=True, encoding="utf-8", errors="replace").stdout
+        dom = dom_al(ortak, u)
         hata = re.search(r'<html[^>]*data-hata="([^"]*)"', dom)
         hazir = 'data-hazir="1"' in dom
         kv = re.search(r'<script type="application/json" id="kontrol-veri">(.*?)</script>', dom, re.S)
@@ -81,6 +122,8 @@ def kontrol(adimlar, boyut=(1400, 900)):
             g = json.loads(kv.group(1)) if kv and kv.group(1).strip() else None
         except ValueError:
             g = None
+        metin.append(("tarayıcı adım %d" % a, gorunen_metin(dom, r'<aside class="panel".*?</aside>', r'<select id="secim".*?</select>',
+                                                             r'<div class="lejant".*?</div>')))
         png = os.path.join(GORUNTU, "adim-%02d.png" % a)
         subprocess.run(ortak + ["--screenshot=" + png, u], capture_output=True)
         b_simdi, b_alt, b_hedef = beklenen(V, a)
@@ -92,16 +135,18 @@ def kontrol(adimlar, boyut=(1400, 900)):
                 if a > 0:
                     simdi_say.setdefault(i, []).append(a)
             fark = sorted(g_simdi ^ b_simdi) + sorted(g_alt ^ b_alt)
+            b_sema = sorted(i for i, x in enumerate(V.get("semalar", [])) if x["a"] == a) if a > 0 else []
             s.update(beklenen_simdi=len(b_simdi), gorunen_simdi=len(g_simdi), beklenen_alt=len(b_alt), gorunen_alt=len(g_alt),
                      beklenen_hedef=b_hedef, gorunen_hedef=g["hedef"], eksik_mesh=[AD.get(i, i) for i in g["eksik"]],
-                     fark=[AD.get(i, i) for i in fark])
-            s["gecti"] = bool(hazir and not s["hata"] and not fark and not g["eksik"] and g["hedef"] == b_hedef)
+                     fark=[AD.get(i, i) for i in fark], sema=len(g.get("sema") or []), sema_fark=sorted(set(g.get("sema") or []) ^ set(b_sema)),
+                     kadraj=g.get("kadraj"))
+            s["gecti"] = bool(hazir and not s["hata"] and not fark and not g["eksik"] and g["hedef"] == b_hedef and not s["sema_fark"])
         else:
             s["gecti"] = False
         sonuc.append(s)
-        print("  adim %2d %-4s hazir=%s hata=%s yeni %s/%s alt %s/%s %s" % (
+        print("  adim %2d %-4s hazir=%s hata=%s yeni %s/%s alt %s/%s sema %s kadraj %s %s" % (
             a, s["kod"], hazir, s["hata"] or "-", s.get("gorunen_simdi"), s.get("beklenen_simdi"), s.get("gorunen_alt"),
-            s.get("beklenen_alt"), "GECTI" if s["gecti"] else "KALDI"))
+            s.get("beklenen_alt"), s.get("sema"), s.get("kadraj"), "GECTI" if s["gecti"] else "KALDI"))
     # her parça tam bir adımda (yalnız tüm adımlar koşulduysa anlamlı)
     tum = sorted(adimlar) == list(range(len(V["adimlar"])))
     tek = None
@@ -111,24 +156,197 @@ def kontrol(adimlar, boyut=(1400, 900)):
         tek = dict(gecti=not coklu and not hic and not V.get("atanmamis"), birden_cok_adimda=coklu, hic_gorunmeyen=hic)
     ozet = dict(adim=len(sonuc), gecen=sum(1 for s in sonuc if s["gecti"]), konsol_hatasi=sum(1 for s in sonuc if s["hata"]),
                 parca_rehber=len(V["parcalar"]), parca_mesh=V["mesh"]["parca"], atanmamis=V.get("atanmamis", []),
-                her_parca_tek_adimda=tek, veri_uretim=V["uretim"], kaynak_cad=V["kaynak"]["cad"])
-    json.dump(dict(tarih=time.strftime("%Y-%m-%d %H:%M"), tarayici=os.path.basename(tb), ozet=ozet, sonuc=sonuc),
-              open(os.path.join(ROBOT, "planlama", "rehber", "kontrol.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    kotu = [s for s in sonuc if not s["gecti"]]
-    print("tarayici kontrolu: %d adim, %d gecti, %d sorunlu, konsol hatasi %d; her parca tek adimda: %s" % (
-        len(sonuc), ozet["gecen"], len(kotu), ozet["konsol_hatasi"], tek["gecti"] if tek else "-"))
-    return not kotu and (tek is None or tek["gecti"])
+                her_parca_tek_adimda=tek, sema=len(V.get("semalar", [])), veri_uretim=V["uretim"], kaynak_cad=V["kaynak"]["cad"])
+    return V, tb, sonuc, ozet, metin, tek
+
+
+def sahne_goruntu(tb, adimlar):
+    """Yazdırılabilir sürüm için yalnız 3B görünüm (açık tema): rehber/goruntu/adim-NN.png."""
+    os.makedirs(YAZDIR_GORUNTU, exist_ok=True)
+    ortak = ortak_arg(tb, (1200, 720))
+    hata = []
+    for a in adimlar:
+        png = os.path.join(YAZDIR_GORUNTU, "adim-%02d.png" % a)
+        subprocess.run(ortak + ["--screenshot=" + png, url(a, "&sahne=1&tema=light")], capture_output=True)
+        if not os.path.exists(png) or os.path.getmtime(png) < time.time() - 120:
+            hata.append(a)
+    print("yazdir goruntusu: %d adim, eksik %s" % (len(adimlar), hata or "-"))
+    return dict(adim=len(adimlar), klasor=os.path.relpath(YAZDIR_GORUNTU, ROBOT).replace("\\", "/"), eksik=hata)
+
+
+class Cdp:
+    """Headless Chrome'u DevTools protokolüyle sürer (telefon kontrolü). Masaüstü Chrome pencere genişliğini ~500 px'in altına
+    indirmediği için 360 px, --window-size ile değil Emulation.setDeviceMetricsOverride ile verilir (gerçek 360 px görüntü alanı)."""
+
+    def __init__(self, tb):
+        import websockets.sync.client as WS                        # yalnız telefon kontrolü için gerekir
+        prof = os.path.join(tempfile.gettempdir(), "lale-rehber-chrome-cdp")
+        os.makedirs(prof, exist_ok=True)
+        pf = os.path.join(prof, "DevToolsActivePort")
+        t0 = time.time() - 1
+        self.p = subprocess.Popen([tb, "--headless=new", "--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--hide-scrollbars",
+                                   "--remote-debugging-port=0", "--no-first-run", "--disable-extensions", "--user-data-dir=" + prof,
+                                   "about:blank"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        port = None
+        for _ in range(150):                                         # DevToolsActivePort bu koşuda yazılana kadar (en çok 30 s)
+            if os.path.exists(pf) and os.path.getmtime(pf) >= t0:
+                satir = open(pf).read().split()
+                if satir:
+                    port = int(satir[0])
+                    break
+            time.sleep(0.2)
+        if port is None:
+            self.kapat()
+            raise RuntimeError("Chrome DevTools portu okunamadi")
+        import urllib.request
+        hedef = None
+        for _ in range(50):
+            try:
+                hedef = [x for x in json.load(urllib.request.urlopen("http://127.0.0.1:%d/json/list" % port)) if x.get("type") == "page"]
+                if hedef:
+                    break
+            except OSError:
+                pass
+            time.sleep(0.2)
+        self.ws = WS.connect(hedef[0]["webSocketDebuggerUrl"], max_size=None, open_timeout=20)
+        self.n = 0
+
+    def cmd(self, method, **params):
+        self.n += 1
+        self.ws.send(json.dumps(dict(id=self.n, method=method, params=params)))
+        while True:
+            m = json.loads(self.ws.recv(timeout=60))
+            if m.get("id") == self.n:
+                if "error" in m:
+                    raise RuntimeError("%s: %s" % (method, m["error"]))
+                return m.get("result", {})
+
+    def js(self, ifade):
+        return self.cmd("Runtime.evaluate", expression=ifade, returnByValue=True).get("result", {}).get("value")
+
+    def kapat(self):
+        try:
+            self.ws.close()
+        except Exception:
+            pass
+        self.p.terminate()
+        try:
+            self.p.wait(15)
+        except subprocess.TimeoutExpired:
+            self.p.kill()
+
+
+def telefon(tb, adimlar=TELEFON_ADIM, boyut=(360, 1600)):
+    """360 px: yatay taşma (belge genişliği - görüntü alanı) her adımda 0 olmalı; görüntü <çıktı>/goruntu/telefon-360-adim-NN.png."""
+    import base64
+    os.makedirs(GORUNTU, exist_ok=True)
+    sonuc, metin = [], []
+    try:
+        c = Cdp(tb)
+    except Exception as e:                                           # websockets yoksa ya da Chrome açılmazsa kontrol geçmez
+        print("telefon kontrolu kosamadi: %s" % e)
+        return dict(pencere=list(boyut), sonuc=[], gecti=False, hata=str(e)), []
+    try:
+        c.cmd("Emulation.setDeviceMetricsOverride", width=boyut[0], height=boyut[1], deviceScaleFactor=1, mobile=True)
+        for a in adimlar:
+            c.cmd("Page.navigate", url=url(a, "&tema=light"))
+            t = time.time()
+            while time.time() - t < 60 and c.js("document.body && document.body.dataset.hazir") != "1":
+                time.sleep(0.3)
+            o = c.js("(function(){var d=document.documentElement,p=document.querySelector('.panel');var o={g:window.innerWidth,"
+                     "sw:Math.max(d.scrollWidth,document.body.scrollWidth),cw:d.clientWidth,h:d.dataset.hata||null,"
+                     "hz:document.body.dataset.hazir||null,m:''};if(p){var w=document.createTreeWalker(p,NodeFilter.SHOW_TEXT),t=[],x;"
+                     "while((x=w.nextNode())){if(!x.parentElement.closest('code,script,style'))t.push(x.nodeValue);}o.m=t.join(' ');}"
+                     "return o;})()") or {}                     # metin düğümleri ayrı (yan yana öğeler birleşmesin), kod hariç
+            png = os.path.join(GORUNTU, "telefon-360-adim-%02d.png" % a)
+            ek = c.cmd("Page.captureScreenshot", format="png", captureBeyondViewport=False)
+            open(png, "wb").write(base64.b64decode(ek["data"]))
+            d = dict(adim=a, genislik=o.get("g"), belge_genislik=o.get("sw"), tasma_px=(o["sw"] - o["cw"]) if "sw" in o else None,
+                     hazir=o.get("hz") == "1", hata=o.get("h"), goruntu=os.path.relpath(png, ROBOT).replace("\\", "/"))
+            d["gecti"] = d["genislik"] == boyut[0] and d["tasma_px"] is not None and d["tasma_px"] <= 0 and d["hazir"] and not d["hata"]
+            sonuc.append(d)
+            metin.append(("telefon adım %d" % a, o.get("m") or ""))
+    finally:
+        c.kapat()
+    print("telefon %d px: %s" % (boyut[0], ", ".join("%d:%s/%s%s" % (d["adim"], d["genislik"], d["tasma_px"], "" if d["hazir"] else " hazir degil")
+                                                      for d in sonuc)))
+    return dict(pencere=list(boyut), yontem="CDP Emulation.setDeviceMetricsOverride (mobile)", sonuc=sonuc,
+                gecti=bool(sonuc) and all(d["gecti"] for d in sonuc)), metin
+
+
+def pdf_sayfa(yol):
+    try:
+        from pypdf import PdfReader
+        return len(PdfReader(yol).pages)
+    except ImportError:
+        b = open(yol, "rb").read()
+        return len(re.findall(rb"/Type\s*/Page[^s]", b))
+
+
+def yazdir(tb, n_adim):
+    """rehber/yazdir.html -> <çıktı>/Lale-montaj-rehberi.pdf (A4, adım başına bir sayfa)."""
+    ortak = ortak_arg(tb, (1200, 1700), sanal=15000)
+    u = url(None, sayfa="yazdir.html", kok=YAZDIR_KOK)
+    dom = dom_al(ortak, u)
+    say = re.search(r'<body[^>]*data-sayfa="(\d+)"', dom)
+    tas = re.search(r'<body[^>]*data-tasma="([^"]*)"', dom)
+    kuc = re.search(r'<body[^>]*data-kucuk="([^"]*)"', dom)
+    pdf = os.path.join(CIKTI, "Lale-montaj-rehberi.pdf")
+    os.makedirs(CIKTI, exist_ok=True)
+    t0 = time.time() - 1
+    subprocess.run(ortak + ["--no-pdf-header-footer", "--print-to-pdf-no-header", "--print-to-pdf=" + pdf, u], capture_output=True)
+    yeni = os.path.exists(pdf) and os.path.getmtime(pdf) >= t0     # eski PDF sayılmasın
+    sayfa = pdf_sayfa(pdf) if yeni else 0
+    d = dict(pdf=os.path.relpath(pdf, ROBOT).replace("\\", "/"), pdf_sayfa=sayfa, pdf_yeni=yeni, html_sayfa=int(say.group(1)) if say else None,
+             adim=n_adim, tasan=[x for x in (tas.group(1) if tas else "?").split(",") if x],
+             kucuk_yazi=[x for x in (kuc.group(1) if kuc else "").split(",") if x],
+             boyut_kb=round(os.path.getsize(pdf) / 1024) if yeni else 0)
+    d["gecti"] = yeni and sayfa == n_adim and d["html_sayfa"] == n_adim and not d["tasan"]
+    print("yazdirilabilir: pdf %d sayfa (adim %d), html %s, tasan %s, kucuk yazi %s, %d kB" % (
+        sayfa, n_adim, d["html_sayfa"], d["tasan"] or "-", d["kucuk_yazi"] or "-", d["boyut_kb"]))
+    return d, [("yazdır", gorunen_metin(dom, r'<div id="sayfalar">.*</body>'))]
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--veri-yok", action="store_true")
     ap.add_argument("--gorsel-yok", action="store_true")
+    ap.add_argument("--ek-yok", action="store_true", help="yazdır görüntüsü, telefon, PDF ve metin denetimini atla")
     ap.add_argument("--adimlar", default="")
+    ap.add_argument("--cikti", default="", help="kontrol.json, kontrol görüntüleri ve PDF için klasör (varsayılan planlama/rehber)")
     g = ap.parse_args()
+    if g.cikti:
+        if not g.veri_yok:
+            sys.exit("--cikti ile --veri-yok kullan: veri üretimi depodaki rehber/veri/'ye yazar")
+        import shutil
+        CIKTI = os.path.abspath(g.cikti)
+        GORUNTU = os.path.join(CIKTI, "goruntu")
+        YAZDIR_KOK = os.path.join(CIKTI, "rehber")                    # yazdir.html + veri kopyası; görüntüler de burada
+        YAZDIR_GORUNTU = os.path.join(YAZDIR_KOK, "goruntu")
+        os.makedirs(os.path.join(YAZDIR_KOK, "veri"), exist_ok=True)
+        shutil.copy2(os.path.join(REHBER, "yazdir.html"), YAZDIR_KOK)
+        shutil.copy2(os.path.join(REHBER, "veri", "rehber-veri.js"), os.path.join(YAZDIR_KOK, "veri"))
     if not g.veri_yok:
         veri()
     if not g.gorsel_yok:
         n = len(json.load(open(os.path.join(REHBER, "veri", "rehber-veri.json"), encoding="utf-8"))["adimlar"])
         ad = [int(x) for x in g.adimlar.split(",") if x.strip()] or list(range(n))
-        sys.exit(0 if kontrol(ad) else 2)
+        V, tb, sonuc, ozet, metin, tek = kontrol(ad)
+        ek = {}
+        if not g.ek_yok:
+            import rehber_denetim as RD
+            ek["yazdir_goruntu"] = sahne_goruntu(tb, ad)
+            ek["telefon"], m2 = telefon(tb)
+            ek["yazdir"], m3 = yazdir(tb, n)
+            ek["denetim"] = RD.denetle(V, metin + m2 + m3)
+            RD.ozet_yaz(ek["denetim"])
+        os.makedirs(CIKTI, exist_ok=True)
+        json.dump(dict(tarih=time.strftime("%Y-%m-%d %H:%M"), tarayici=os.path.basename(tb), ozet=ozet, sonuc=sonuc, **ek),
+                  open(os.path.join(CIKTI, "kontrol.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        kotu = [s for s in sonuc if not s["gecti"]]
+        ek_kotu = [k for k in ("telefon", "yazdir", "denetim") if k in ek and not ek[k]["gecti"]]
+        if ek.get("yazdir_goruntu", {}).get("eksik"):
+            ek_kotu.append("yazdir_goruntu")
+        print("tarayici kontrolu: %d adim, %d gecti, %d sorunlu, konsol hatasi %d; her parca tek adimda: %s; ek kontrol sorunlu: %s" % (
+            len(sonuc), ozet["gecen"], len(kotu), ozet["konsol_hatasi"], tek["gecti"] if tek else "-", ek_kotu or "-"))
+        sys.exit(0 if not kotu and (tek is None or tek["gecti"]) and not ek_kotu else 2)

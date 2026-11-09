@@ -1,6 +1,7 @@
 # 3B montaj rehberi, A: adım verisi + hafif mesh. CAD'i YALNIZ OKUR (modül FCStd'leri), hiçbir CAD dosyasına yazmaz.
 # Çalıştırma (README başlatıcısı; tek komut için rehber_uret.py bunu çağırır):
-#   FC_SCRIPT=<bu dosya> "%LOCALAPPDATA%/Programs/FreeCAD 1.1/bin/freecadcmd.exe" C:/Users/Victus/.robot-cad/run_fc.py
+#   FC_SCRIPT=<bu dosya> "%LOCALAPPDATA%/Programs/FreeCAD 1.1/bin/freecadcmd.exe" ~/.robot-cad/run_fc.py
+#   (başlatıcı ASCII yolda; rehber_uret.py önce LALE_FC_LAUNCH ortam değişkenine bakar)
 # Çıktı (Robot/rehber/veri/):
 #   rehber-veri.json  adımlar (M6 tablosu + rehber_metin.py), parçalar (adım, alt montaj, uçuş yönü, bayrak), mesh düğüm adları
 #   robot.glb         tüm parçalar; aynı geometri tek mesh, parça başına bir düğüm (ad = parça kimliği "p0001")
@@ -467,19 +468,49 @@ def kablo_rengi(ad):
     return "#c0392b"
 
 
-def tr(ad):
-    return re.sub(r"[A-Za-z]+", lambda m: RM.TR.get(m.group(0), m.group(0)), ad)
+tr = RM.tr                                                          # F7b: görünen metin katmanı rehber_metin.py'de (TR + TR_EK + TR_IFADE)
 
 
 def temiz_ad(ad):
-    a = re.sub(r"\s*\((?:[^()]|\([^()]*\))*\)\s*$", "", ad)
-    a = re.sub(r"(\D)\d{3}$", r"\1", a).strip()
+    """Grup adı için: sondaki parantezli açıklama ve FreeCAD kopya eki (001…099) atılır. F7b: eski kural sondaki her 3 haneyi
+    atıyordu ("Govde braketi sag y400" -> "... y"); yalnız 0 ile başlayan ek atılır."""
+    a = re.sub(r"(\D)0\d\d$", r"\1", ad)
+    a = re.sub(r"\s*\((?:[^()]|\([^()]*\))*\)\s*$", "", a).strip()
     return a or ad
+
+
+def yan_sil(ad):
+    """Gruplama kökü: "sag" / "sol" kelimesi atılır (sağ ve sol parça aynı satırda, satır adında "(sağ + sol)")."""
+    return re.sub(r"\s+", " ", re.sub(r"\b(?:sag|sol)\b", " ", ad)).strip() or ad
+
+
+def yanlar(ps):
+    y = set()
+    for p in ps:
+        a = temiz_ad(p["ad"])                                        # parantezli açıklamadaki "sag" sayılmaz
+        if re.search(r"\bsag\b", a) or p["modul"].endswith("_sag"):
+            y.add("sağ")
+        if re.search(r"\bsol\b", a) or p["modul"].endswith("_sol"):
+            y.add("sol")
+    return y
+
+
+KABLO_UYARI = []
+
+
+def gorunen_ad(p):
+    if p.get("kablo") and p["modul"] == "taban":
+        ad, uy = RM.kablo_ad(p["ad"])
+        if uy:
+            KABLO_UYARI.append(uy)
+            log("UYARI", uy)
+        return ad
+    return tr(p["ad"])
 
 
 PARCA = []
 for p in P:
-    d = dict(id=p["id"], ad=tr(p["ad"]), modul=p["modul"], grup=p["grup"], kod=p["kod"], tur=p["tur"], malzeme=p["malzeme"],
+    d = dict(id=p["id"], ad=gorunen_ad(p), modul=p["modul"], grup=p["grup"], kod=tr(p["kod"]), tur=p["tur"], malzeme=tr(p["malzeme"]),
              r=renk_sinifi(p), a=p["a"], b=p["b"], t=p["t"], u=p["ucus"], d=p["ucus_mm"])
     if p.get("ucus_bag"):
         d["ub"] = p["ucus_bag"]
@@ -510,22 +541,35 @@ for i, kod in enumerate(KODLAR):
     ps = [p for p in P if p["a"] == i]
     parca = collections.OrderedDict()
     bag = collections.OrderedDict()
+    uye = collections.defaultdict(list)
     for p in ps:
         if p["tur"] == "Referans":
             continue
         if p["tur"] == "Baglanti":
             k = p["kod"]
-            e = bag.setdefault(k, dict(kod=k, adet=0, m6=0))
+            e = bag.setdefault(k, dict(kod=tr(k), adet=0, m6=0, ids=[],
+                                       onceden=("isil gomme" in k.lower())))   # D-1: ısıl gömme baskıdan sonra takılı (hazırlık)
             e["adet"] += 1
             e["m6"] += 1 if p.get("m6") else 0
+            e["ids"].append(p["id"])
         else:
-            k = (p["kod"], p["tur"], renk_sinifi(p))
-            e = parca.setdefault(k, dict(ad=p["ad"], kod=p["kod"], tur=p["tur"], malzeme=p["malzeme"], r=k[2], adet=0))
-            e["adet"] += 1
-            if e["adet"] > 1:
-                e["ad"] = temiz_ad(e["ad"])
-    for e in parca.values():
-        e["ad"] = tr(e["ad"])
+            # F7b (P7.2 madde 5, F7a-kontrol D-3): anahtar kod + ad. Eskiden (kod, tür, renk) idi: aynı koddaki farklı parçalar
+            # ilk parçanın adıyla tek satırda toplanıyordu (F2 "Gövde alt bandı sağ ×11"). Sağ / sol aynı satırda kalır.
+            k = (p["kod"], p["tur"], renk_sinifi(p), yan_sil(temiz_ad(p["ad"])))
+            parca.setdefault(k, dict(kod=tr(p["kod"]), tur=p["tur"], malzeme=tr(p["malzeme"]), r=k[2], adet=0, ids=[]))
+            parca[k]["adet"] += 1
+            parca[k]["ids"].append(p["id"])
+            uye[k].append(p)
+    for k, e in parca.items():
+        ps_ = uye[k]
+        tam = {p["ad"] for p in ps_}
+        if len(tam) == 1:
+            ad = next(iter(tam))
+            yn = yanlar(ps_) if ps_[0]["modul"].endswith(("_sag", "_sol")) else set()
+        else:
+            ad = k[3] if len({temiz_ad(p["ad"]) for p in ps_}) > 1 else temiz_ad(ps_[0]["ad"])
+            yn = yanlar(ps_)
+        e["ad"] = tr(ad) + (" (sağ + sol)" if len(yn) == 2 else (" " + next(iter(yn)) if yn and next(iter(yn)) not in tr(ad) else ""))
     nciv = sum(1 for p in ps if civata_mi(p))
     nsom = sum(1 for p in ps if p["tur"] == "Baglanti" and not civata_mi(p))
     sure = mt.get("sure_dk") or int(round(5 + 1.0 * nciv + 0.3 * nsom + 0.8 * sum(e["adet"] for e in parca.values())))
@@ -541,16 +585,43 @@ for i, kod in enumerate(KODLAR):
         sure_dk=sure, sure_tahmini=not mt.get("sure_dk"),
         kablolama=kod in ("K1", "K2")))
 
+
+# ------------------------------------------------------------------ gösterim şemaları (F7b, P7.2 madde 4): lale158/kablo_yolu_ekran.py
+# Parça DEĞİL: GLB'ye ve "parcalar"a girmez, parça sayısı modeldeki gibi kalır. app.js çizgi tüp olarak çizer (kendi adımında renkli,
+# sonra saydam). Kaynak yalnız okunur (import; dosya değişmez).
+sys.path.insert(0, os.path.join(FC, "lale158"))
+import kablo_yolu_ekran as KYE                                     # noqa: E402
+_yol, _qi = KYE.yollar(), KYE.kafa_ici_qled()
+_K = A.KAFA
+_Y0, _YT, _ZT = A.S3 + A.SG / 2, _K["tilt_nokta"][1], _K["tilt_nokta"][2]
+
+
+def _bas(q):                                                       # kafa_ici_qled: tilt ekseni çerçevesi -> global (yollar() bas() ile aynı)
+    return (q[0], _Y0 + _YT + q[1], _ZT + q[2])
+
+
+SEMALAR = []
+for kaynak, ad_k, kod, ad, renk in RM.SEMA:
+    pts = _yol.get(ad_k) if kaynak == "yollar" else ([_bas(q) for q in _qi[ad_k][0]] if ad_k in _qi else None)
+    if not pts:
+        raise SystemExit("SEMA yolu bulunamadi: %s / %s (lale158/kablo_yolu_ekran.py)" % (kaynak, ad_k))
+    boy = sum(math.dist(a, b) for a, b in zip(pts[:-1], pts[1:]))
+    SEMALAR.append(dict(ad=ad, kaynak="%s:%s" % (kaynak, ad_k), a=KOD_IDX[kod], renk=renk, boy_mm=round(boy),
+                        pts=[[round(c, 1) for c in q] for q in pts]))
+log("gosterim semasi: %d (kablo_yolu_ekran.py)" % len(SEMALAR))
+
 VERI = dict(
     surum=1, uretim=time.strftime("%Y-%m-%d %H:%M"), betik="tasarim/freecad/rehber/rehber_veri.py",
     kaynak=dict(m6="planlama/adim4/M6-montaj-sirasi.md (adım sırası ve tablo metni)",
                 secici="tasarim/freecad/rehber/rehber_secici.py (parça -> adım, 1,58 m)",
+                sema="tasarim/freecad/lale158/kablo_yolu_ekran.py (gösterim şemaları; parça değil)",
                 cad={m: time.strftime("%Y-%m-%d %H:%M", time.localtime(os.path.getmtime(os.path.join(FC, f))))
                      for m, f in Y.DOSYA.items() if not m.endswith("_sol")}),
     koordinat="mm; +X sag, +Y yukari, +Z ileri (yuz)",
     m6_bayrak=dict(M6SAY), mesh=dict(benzersiz=len(MESH), parca=len(P), ucgen=sum(len(m[1]) for m in MESH),
                                      glb_mb=round(len(glb) / 1e6, 2)),
-    atanmamis=ATANMAMIS, adimlar=ADIMLAR, parcalar=PARCA)
+    atanmamis=ATANMAMIS, kablo_ad_uyari=KABLO_UYARI, tur_ad=RM.TUR_AD, modul_ad=RM.MODUL_AD, semalar=SEMALAR,
+    adimlar=ADIMLAR, parcalar=PARCA)
 js = json.dumps(VERI, ensure_ascii=False, separators=(",", ":"))
 open(os.path.join(CIKTI, "rehber-veri.json"), "w", encoding="utf-8").write(json.dumps(VERI, ensure_ascii=False, indent=0))
 open(os.path.join(CIKTI, "rehber-veri.js"), "w", encoding="utf-8").write("window.REHBER_VERI=" + js + ";\n")
