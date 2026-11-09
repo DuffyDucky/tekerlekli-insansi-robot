@@ -39,8 +39,21 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K24 | G4 öncesi 11,6" raporundaki iki satır (yerel hafıza yolu + takma ad) | **açık** | G4'ten önce temizle | G4 commit'i, P0.1 |
 | K25 | Depodaki `CLAUDE.md` içindeki takma ad | **açık** | b: ad değişimi (3 satır) | P4.5 kabul ölçütü |
 | K26 | GitHub hesap adı (depo adresi ve Pages bağlantıları) | **açık** | a: şimdilik bırak | P4.5 kabul ölçütü (`index.html:49,92`) |
+| K27 | Hocadaki liste: 17.10 Excel mi, 03.11 v4 mü | **açık** (F8a) | b: v4, §2.2 farkı | Fark iletimi, K28, P8.1 onayı |
+| K28 | Bütçe farkı (≈ +29.545 TL) hocaya bildirilsin mi | **açık** (F8a) | a: siparişten önce | P8.1 onayı (S = 16.11) |
+| K29 | Erken alım: bu hafta mı, okul mu kişisel mi | **açık** (F8a) | Bu hafta, insert 168; okul/kişisel için yok | P9.1 kupon, kritik yol 1 |
+| K30 | Akü zamanlaması: Atakale bu hafta / S'de / Limacell | **açık** (F8a) | a: Atakale bu hafta; biterse Limacell S'de | Dal 2b, taban adım 9 |
+| K31 | Isıl gömme insert A/B/C (M3 ve M5) | **açık** (F8a) | M3: A (OD4 L4); M5: yok | K29, kupon C, P4.3 |
+| K32 | Kafa ekranı: hocadan mı, satın alma mı | **açık** (F8a) | Kayıtta yok | `maliyet.json` öneri 8, K28, Parti 3 |
+| K33 | M6×16: ikinci satıcı / paslanmaz / fosfat şartı | **açık** (F8a) | a: paslanmaz DIN 912 A2 | Taban (aşama 5) |
+| K34 | 3B baskı hizmeti ücretli mi, teklif | **açık** (F8a) | a: teklif S'den önce | K28, `maliyet.json` öneri 10 |
+| K35 | Onaylı olmayan satıcılar (6.063,11 TL) hocaya nasıl | **açık** (F8a) | Kayıtta yok | P8.1 liste biçimi, K29 |
+| K36 | 8 Ω hoparlör (PAKET A) stok 1 < 3 | **açık** (F8a) | Kayıtta yok | PAKET A siparişi |
+| K37 | Kamera Module 3 tükendi | **açık** (F8a) | a: S'de yeniden bak | Görüntü (ikinci aşama) |
 
-**Açık: 21** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 26 madde.
+**Açık: 32** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 37 madde.
+P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
+erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 
 ---
 
@@ -54,6 +67,8 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
   Tilt payı 3,47 ≥ 3,0 ve pan 2,16 ≥ 2,0 eşikleri yine sağlar (`dongu-158.md:25, §1 korunan değerler`).
 - **Varsayılan:** a (`dongu-158.md:136, §4 K1`).
 - **Bloke:** P4.1 ("6. cihaz Efe cevabına göre", `dongu-158.md:88, §3 P4.1`), P8.1 sipariş paketi.
+- **Not (F8a P8.1, 09.11.2026):** maliyet etkisi a 0 TL; c 0 – 76,24 TL (Robotistan micro USB 1,5 m, stok 90; cihaz bilinmediği için kablo
+  tipi doğrulanmadı); b doğrulanmadı (`planlama/d158/F8a-siparis.md` §6, §9 madde 8). Sipariş paketi varsayılan a ile K1'siz verilebiliyor.
 - **Durum:** açık. Efe'ye soruldu, pano #5 (`dongu-158.md:136,150, §4 K1 ve §5 günlük`); `KY/secenekler.md:336`, `KY/uygulama-notu.md:151`.
 
 ## K2 · AI HAT+ zarfı × arka üst cıvata boss'u
@@ -99,6 +114,9 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
   HAT'ten bağımsız, **doğrulanmadı**. (5) İki seçenekte de korunan değerler sağlanıyor (tilt ≥ 3,0, pan ≥ 2,0).
 - **Varsayılan:** a, boss taşı (`dongu-158.md:137, §4 K2`).
 - **Bloke:** P1.3'ün seçimi (iki çözüm de üretilir, seçim buraya), P6.1 tam model.
+- **Not (F8a P8.1, 09.11.2026), bütçe sorusu:** AI HAT+ (26T) PAKET A'da (TÜBİTAK önerisi, okul toplamına girmez): Robotistan 6.978,88 TL,
+  stok 23. Açık soru: TÜBİTAK desteği gelmezse kart okul bütçesine mi eklenir (+6.978,88; okul bütçesi 93.538,38 → 100.517,26)?
+  Yerleşim seçeneği a/b'nin maliyet etkisi 0 (yalnız baskı geometrisi). Kaynak: `planlama/d158/F8a-siparis.md` §5.7, §6, §9 madde 9.
 - **Durum:** açık (`KY/uygulama-notu.md:149`).
 
 ## K3 · Düz zeminde elde yük sınırı
@@ -143,6 +161,11 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 - **Varsayılan:** a (`dongu-158.md:139, §4 K4`).
 - **Bloke:** P4.2, P8.1.
 - **Not (F4a, 09.11.2026):** P4.2 (09.11): 9 kablo/fiş adayı + PAM8403 + USB ses kartı `maliyet.json`'a fiyatsız (`fiyat_bekliyor`, toplam dışı) eklendi; fiyat P8.1'de.
+- **Not (F8a P8.1, 09.11.2026):** 4 kablo sayfada fiyatlandı: USB-A uzatma 30 cm 77,46 (Robotistan), 1 m 214,20 (Motorobit), kısa micro USB
+  38,42 (Robotistan), hoparlör kablosu 2 × 30,60 (Motorobit); toplam **+391,28 TL** (a: koşullu, genel toplam dışı, 0; c: +391,28).
+  L USB-A dirsek ve L 3,5 mm kısa kablo onaylı sitelerde bulunamadı. `maliyet.json` (09.11, P8.1 kaydı): dört satır fiyatlı ve
+  `secenek: kosullu` (koşullu toplama giriyor), iki satır `fiyat_bekliyor` kaldı. F8a önerisi: bu iki kablo P4.2'de kablo yarıçapıyla
+  yeniden değerlendirilsin (`planlama/d158/F8a-siparis.md` §5.3, §6, §9 madde 6).
 - **Durum:** açık (`KY/uygulama-notu.md:150`, `KY/secenekler.md:341`).
 
 ## K5 · Hub ve ses kartı arka kabuk yan duvarında, servis için kabul mü — KAPANDI
@@ -189,6 +212,11 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
     pay ≥ 2 için S1 ≥ 62,4, S2 ≥ 63,0, dirsek ≥ 25,2 kg·cm. Daha ağır dirsek servosu S1 / S2 torkunu da büyütür; bu etki ve maliyet **hesaplanmadı**.
   - Pan / tilt için karar gerekmiyor (F3a P3.2): en düşük K2 a, kod sınırında tilt 3,27 ≥ 3,0, pan 2,16 ≥ 2,0 (pan ekstrapolasyon).
 - **Varsayılan:** a (`dongu-158.md:144, §4 K9`). F3a sonrası öneri değişmedi: a (her elde ≤ 100 g; K3 b ile aynı sınır). Öneri; karar Ahmet'in.
+- **Not (F8a P8.1, 09.11.2026), b'nin maliyeti (sayfa fiyatları; kütle etkisi yine hesaplanmadı):**
+  - pay ≥ 1: dirsekte 2 MG996R → DS3218MG (2 + 1 yedek) **+2.332,50 TL** (Robocombo 980,00, stok 4; ikinci satıcı Motorobit 1.315,80 ile +3.339,90).
+  - pay ≥ 2: 6–8,4 V'ta stoklu ≥ 62,4 kg·cm servo yok: Motorobit RDS5180 80 kg (2.876,40) ve RDS51150 150 kg (3.672,00) tükendi;
+    Robocombo DES220 220 kg **24 V** 15.075,00 stok 5 (24 V servo hattı gerekir). DS5160 60 kg·cm (5 adet +3.195,00) eşiğin altında
+    (60 < 62,4). Dirsek ≥ 25,2 için DS3235: +4.819,50. Kaynak: `planlama/d158/F8a-siparis.md` §6, §9 madde 7; `F8a-kontrol.md` §2.3.
 - **Bloke:** P3.2, P5.1 (servo modeli sütunu), P8.1.
 - **Durum:** açık (`kararlar-2026-10-29.md:23` "AÇIK (karar değil)").
 
@@ -200,6 +228,8 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 - **Varsayılan:** a (model bunu varsayım olarak kullanıyor: `KY/uygulama-notu.md:97`; P1.2 tanımı da a: `dongu-158.md:63, §3 P1.2`).
 - **Bloke:** P1.2 (`elektrik.md` metni), P4.1, P8.3 (PAM akımı testi).
 - **Not (F4a B çekincesi, 09.11.2026):** PAM tepe 0,71 A (`uygulama-notu.md:98`); Pi tam yük tepesiyle birlikte ölçülmeden 'sınırda değil' denmez (P8.3 testi).
+- **Not (F8a P8.1, 09.11.2026):** maliyet etkisi a ve b 0 TL; c +61,20 TL (Motorobit 5 V 3 A düşürücü, stok 459; ikinci Robotistan
+  163,45, stok 361); yer ve ölçü doğrulanmadı (`planlama/d158/F8a-siparis.md` §6, §9 madde 8).
 - **Durum:** açık (`KY/secenekler.md:338`, `KY/uygulama-notu.md:152`).
 
 ## K11 · Göğüs ekranı 12 V dalının girişi
@@ -210,6 +240,8 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
   Kafa F3 5 A dalı röleden önce (`elektrik.md:60`): Pi acil stopta açık kalıyor.
 - **Varsayılan:** a. Gerekçe: Pi açık kaldığı için ekran acil stop durumunu gösterebilir. Bu bir öneri; güvenlik açısından **doğrulanmadı**.
 - **Bloke:** P4.1, P4.2 (kablo boyu), P7.2 (göğüs ekranı montaj adımı, `R-gunluk.md:33-35`).
+- **Not (F8a P8.1, 09.11.2026):** maliyet etkisi ≈ 0 TL: iki seçenekte parçalar aynı (12 V regülatör, mini yuva, 2 A sigorta v4'te);
+  kablo boyu farkı ölçülmedi (`planlama/d158/F8a-siparis.md` §6, §9 madde 8).
 - **Durum:** açık (`elektrik.md:55`).
 
 ## K12 · Kafa havalandırması: mevcut yarıklar mı, 30 mm fan mı
@@ -219,6 +251,8 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
   Yarıklı sonuç yükte 0,9 K aşım veriyor; hesap karşılaştırma içindir.
 - **Varsayılan:** a; stres testinde tilt servo gövdesi 50 °C'yi geçerse fan eklenir (`qled-cerceve-tasarim-notu.md:119`).
 - **Bloke:** P8.1 (fan kalemi), P8.3 (ısı testi kâğıdı).
+- **Not (F8a P8.1, 09.11.2026):** a 0 TL; b 30 mm 12 V fan +66,07 TL (Motorobit, stok 526; ikinci Robotistan 90,87, stok 97). Fan yeri
+  zarfı AI HAT+ zarfıyla kesişiyor (K2 notu) (`planlama/d158/F8a-siparis.md` §6, §9 madde 8).
 - **Durum:** açık; notta "öneri", Ahmet kararı kayıtta yok.
 
 ## K13 · ReSpeaker LED'leri görünmese olur mu
@@ -363,6 +397,147 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
   paylaşılmış site linkleri kırılır: GitHub belgesi "Transferring a repository", `F4b-kontrol.md` madde 19).
 - **Önerilen varsayılan:** a, şimdilik bırak (`F4b-gunluk.md` §5 K-F4b-2).
 - **Bloke:** P4.5 kabul ölçütü (`index.html:49,92`).
+- **Durum:** açık.
+
+<!-- K27–K37: P8.1 sipariş paketi (F8a, 09.11.2026), kaynak `planlama/d158/F8a-siparis.md` §9. Sipariş verilmedi. -->
+
+## K27 · Hocadaki liste: 17.10 Excel mi, 03.11 v4 mü
+- **Soru:** Okulun siparişi için hocaya giden son malzeme listesi hangisi? Fark tablosu buna göre iletilir.
+- **Kaynak çelişkisi:** `planlama/siparis-farki-2026-10-29.md` 17.10 Excel'i (= `maliyet.json` `b27fd80`) gösteriyor;
+  `tubitak-2209b/BAGLAM.md:221-222` v4'ün (03.11) hocanın öğrencisine gittiğini ve beğenildiğini, `tubitak-2209b/malzeme-listesi/rapor.md:4`
+  "Liste gönderilmedi" diyor (`F8a-siparis.md` §2, `F8a-kontrol.md` madde 10).
+- **Seçenekler:**
+  a) 17.10 Excel hocada: iletilecek fark `F8a-siparis.md` §2.1.
+  b) v4 (03.11) hocada: iletilecek fark §2.2.
+- **Sayısal etki:** a) 15 satır grubu (44 satır) eklenen, 8 grup (10 satır) çıkan, 37 grup değişen; 17.10 genel 99.673,04 (pay, elde ve
+  kargo dahil) ↔ 158 okul bütçesi 93.538,38 (pay, elde ve kargo yok). b) 8 eklenen satır (K4 kabloları 6 + F1b 90° micro USB ve DC jak; 2'si
+  fiyatsız) +491,34 TL; 1 satıcı değişimi (tırtıllı somun M5: Robotistan tükendi → CNC Marketi, 297,20 → 31,68); 1 model değişimi (625ZZ
+  "BGR (Karbon)", 29,67 → 30,04); 24 satırda fiyat değişimi (site satırları 68.219,82 → 67.995,98).
+- **Önerilen varsayılan:** b, v4 hocada sayılır ve §2.2 farkı iletilir (`F8a-siparis.md` §9 madde 1). Yalnız öneri.
+- **Bloke:** hocaya fark iletimi, K28, P8.1 siparişinin onayı (S = 16.11).
+- **Durum:** açık.
+
+## K28 · Bütçe farkı hocaya bildirilsin mi
+- **Soru:** 158 sipariş paketi README'deki eski tutarın üstünde; fark sipariş öncesi hocaya bildirilecek mi?
+- **Seçenekler:** a) siparişten önce bildir (fark tablosu + köprü, `F8a-siparis.md` §7); b) sipariş günü (S) bildir; c) önce K32 (kafa ekranı)
+  ve K34 (baskı hizmeti) netleşsin, sonra tek seferde bildir.
+- **Sayısal etki:** 158 alınacaklar (pay dahil, kargo hariç) **107.569,14 TL**. README'deki eski ≈ 78.000'e (`maliyet.json` 29.10 + F4a,
+  elimizdekiler düşülmüş 78.023,96) göre **≈ +29.545**; elde dahil kıyasla 116.845,70 ↔ 102.919,71 → +13.925,99 (`F8a-siparis.md` §7).
+  Güncel `maliyet.json` (09.11, P8.1 kaydı) elimizdekiler düşülmüş 93.770,47 ↔ 107.569,14: **+13.798,67**; bu farkın kalemleri kafa
+  ekranı QLED +8.300,64 (K32), baskı hizmeti − filament +5.412,95 (K34), K4 + F1b koşullu kalemler +617,83, insert/vida/köşe/kamera/köpük
+  bant +179,10, kargo satırı −711,85 (hepsi × 1,15). c'de K32 ve K34 farkı ≈ 13.700 TL oynatabiliyor.
+- **Önerilen varsayılan:** a (`F8a-siparis.md` §9 madde 2). Yalnız öneri.
+- **Bloke:** P8.1 siparişinin onayı (S = 16.11).
+- **Durum:** açık.
+
+## K29 · Erken alım: bu hafta mı, okul siparişi mi kişisel mi
+- **Soru:** P9.1 erken alımı (rulmanlar, ısıl gömme somunlar, kupon D vidaları) bu hafta yapılacak mı; satıcılar onaylı listede olmadığı için
+  okul siparişi mi kişisel alım mı?
+- **Seçenekler:** a) bu hafta (H7), okul siparişi; b) bu hafta, kişisel alım; c) S'de (16.11) ana siparişle birlikte.
+- **Sayısal etki:** bugün **1.515,90 TL** (plan 1.496,37; +19,53), Rhino3DPrinter kargosuyla **1.654,90 TL** (139 TL; Rulmanal ve
+  paslanmazcivata.ist eşik altı, ücret sayfada yok). Insert 176 alınırsa 1.558,22. Satıcılar: Rulmanal (stok 51 / 8.398), Rhino3DPrinter
+  (stokta, adet yok), paslanmazcivata.ist. Plan: S = 16.11 yalnız erken kupon alımıyla tutuyor (`F8a-siparis.md` §3; `proje-plani.md:71, 119`);
+  c'de kupon basımı ve kritik yol 1 kayar (gün sayısı hesaplanmadı).
+- **Önerilen varsayılan:** bu hafta (H7), insert 168, fark 8 P4.3'te (`F8a-siparis.md` §9 madde 3). Okul / kişisel ayrımı için önerilen
+  varsayılan yok. Yalnız öneri.
+- **Bloke:** P9.1 kupon basımı, kritik yol adım 1; K31'e bağlı (insert varyantı).
+- **Durum:** açık.
+
+## K30 · Akü zamanlaması: Atakale bu hafta / S'de / Limacell
+- **Soru:** Victron 20 Ah (Atakale, onaylı satıcı) "7 gün içinde tedarik" diyor ve stok 1; akü ne zaman, kimden alınacak?
+- **Seçenekler (varış tahmini: sayfadaki kargoya veriliş + taşıma 1–3 iş günü varsayımı, `F8a-siparis.md` §3.1):**
+  a) Atakale Victron 20 Ah, erken alımla bu hafta (10–12.11): kargoya ≤ 17–19.11, varış ≈ 18–24.11; adım 9'a (≈ 25–26.11) yetişir.
+     Stok 1: o güne kadar satılmazsa. S'den önce ödeme ve hoca onayı gerekir.
+  b) Atakale, S'de (16.11): kargoya ≤ 23.11, varış ≈ 24–28.11; adım 9 için **sınırda / geç** (0–3 gün bekleme).
+  c) Limacell 12 V 24 Ah (Geçersun Enerji, onaylı değil), S'de: ortalama hazırlanma 3 iş günü, varış ≈ 20–24.11; yetişir.
+  d) Limacell, bu hafta: sayfa 09.11 siparişi için "en geç 12 Kasım" kargoda diyor, varış ≈ 13–17.11.
+- **Sayısal etki:** Atakale **12.680,70 TL**; Limacell **4.814,86 TL** (havale 4.622,27; 3.000 TL üzeri kargo ücretsiz), Atakale'den
+  −7.865,84. Limacell'in ölçü ve kütlesi sayfada yok, CAD akü yuvasıyla kontrol edilmedi; 30 A sürekli deşarj sınırının motor tepe akımı ve
+  ana sigortayla uyumu doğrulanmadı; özel üretim olduğu için iade yok. `maliyet.json` akü satırında Limacell artık 2. satıcı (`alt`, 09.11).
+- **Önerilen varsayılan:** a; Atakale biterse c (`F8a-siparis.md` §9 madde 4). Yalnız öneri.
+- **Bloke:** kritik yol dalı 2b, taban adım 9 (aşama 5, ≈ 25–26.11).
+- **Durum:** açık.
+
+## K31 · Isıl gömme insert seçeneği A/B/C (M3 ve M5)
+- **Soru:** CAD'in M3 insert'i (boy 5,7, delik Ø4,0; `arayuz.INSERT`) Rhino3DPrinter sayfasında yok. Erken alımda hangi varyant alınacak;
+  M5 için kupon deliği uyuyor mu?
+- **Seçenekler (M3, `F8a-siparis.md` §4.1):**
+  A) Rhino ID3 OD4 L4: Rhino kuralıyla delik Ø3,8–3,9; kupondaki Ø3,8 ve 3,9 delikleri bunu dener, kupon değişmez; diş boyu 1,7 mm kısa,
+     CAD boyu P4.3'te 4'e çekilir.
+  B) Rhino ID3 OD5 L6: delik Ø4,8–4,9; kupon delikleri (Ø3,8–4,1) uymaz, kupon ve CAD deliği büyütülür (FreeCAD işi); kupon basımı gecikir.
+  C) ruthex RX-M3x5.7 (dış çap 4,6, üretici deliği 4,0–4,2): CAD Ø4,0 ile uyumlu; Türkiye'de satıcı bulunamadı, fiyat / teslim / gümrük
+     doğrulanmadı; erken alım takvimine (11–12.11) yetişmesi beklenmez.
+- **M5:** CAD kupon delikleri Ø6,2 / 6,4 / 6,6, derinlik 7,5; Rhino'da ID5 OD7 L7 var, kurala göre delik Ø6,7–6,8 (kupondakilerden büyük).
+  Seçenek: kupon M5 deliklerini Ø6,7–6,8'e büyütmek ya da başka ürün; M3 ile aynı soru (`F8a-siparis.md` §4.1, §9 madde 3).
+- **Sayısal etki:** fiyatlar taban (M3 5,29, M5 6,35; varyant fiyatı sepete eklemeden görünmedi). M3 adedi 168 (plan, `maliyet.json`) ↔
+  176 (v4): fark 8 adet +42,32 TL. Yanlış varyant erken alımı boşa çıkarır (kuponun amacı geçme denemesi, `F8a-kontrol.md` D3).
+- **Önerilen varsayılan:** M3 için A (`F8a-siparis.md` §9 madde 3). M5 için önerilen varsayılan yok. Yalnız öneri.
+- **Bloke:** K29 (erken alım), kupon C basımı, P4.3 (insert boyu ve adedi). `maliyet.json` insert satırlarında yalnız not var (09.11).
+- **Durum:** açık.
+
+## K32 · Kafa ekranı: hocadan mı gelecek, satın mı alınacak
+- **Soru:** README ve `maliyet.json` notu "yüz ekranı 10,1" HDMI'yı hoca verecek" diyor; v4 (03.11) QLED'i satın alma satırı yapıyor. Hangisi?
+- **Seçenekler:** a) hocadan gelir: `maliyet.json`'da V3 Waveshare 10,1" (B) satırı `elde` kalır, toplam değişmez;
+  b) satın alınır: QLED 10,1" Robotistan, `maliyet.json` öneri 8 uygulanır (QLED satırı eklenir, Waveshare V3'ten çıkar).
+- **Sayısal etki:** QLED Robotistan **7.217,95 TL** (indirimli; liste 8.124,85, indirim bitince +906,90), **stok 2** (v4'te 4); ikinci
+  satıcı Motorobit 15.300,00 (stok 10, +8.082,05); Direnc 8.523,08 tükendi. b'de `maliyet.json` V3 ara −5.206,55 (genel −5.987,53:
+  118.666,22 → 112.678,69); "elimizdekiler düşülmüş" toplam +8.300,64 (93.770,47 → 102.071,11).
+- **Önerilen varsayılan:** kayıtta yok. F8a önerisi: alınacaksa S'nin ilk partisinde; stok 1'e düşerse öne alınsın (`F8a-siparis.md` §9
+  madde 5; `F8a-gunluk.md` §5 öneri 8). Yalnız öneri.
+- **Bloke:** `maliyet.json` öneri 8, K28 (bütçe rakamı), Parti 3 kafa ekranı siparişi.
+- **Durum:** açık.
+
+## K33 · M6×16 cıvata: ikinci satıcı / paslanmaz / fosfat şartı
+- **Soru:** `maliyet.json` M6×16 fosfat (18 adet, CNC Marketi) satırında CNC'de yalnız 2 adet var. Hangi cıvata alınacak; fosfat şartı gerekli mi?
+- **Seçenekler:**
+  a) paslanmaz DIN 912 A2 M6×16 (paslanmazcivata.ist, taban 3,89, ürün stoğu 322.514, boy ayrımı yok): baş şekli aynı; dayanım sınıfı
+     farkı (A2-70 ↔ fosfat; sınıf sayfada yok) sigma bağlantısı için kontrol edilmedi.
+  b) CNC Marketi M6×16 fosfat **bombe başlı** 4,80 (stok 235): sigma ve T-somunla tek kargo; baş şekli CAD'le kontrol edilmedi.
+  c) CNC'deki 2 fosfat + 16 başka satıcıdan.
+- **Sayısal etki:** a 18 × 3,89 = 70,02 TL (fosfat 64,80'e göre +5,22; F8a tutarı bununla); b 86,40 TL (+21,60). Fosfat şartının kaynağı
+  bulunamadı (`maliyet.json` notu yalnız "CAD M6×16 = 16 + 2 yedek"). CNC'de M6×12 ve M6×20 fosfat allen de tükendi.
+- **Önerilen varsayılan:** a (`F8a-siparis.md` §9 madde 11). `maliyet.json` satırı değiştirilmedi (satıcı değişimi bu karara bağlı). Yalnız öneri.
+- **Bloke:** taban (aşama 5) sigma bağlantıları; sigma / T-somun siparişiyle aynı gün gelmesi gerekiyor (`F8a-kontrol.md` D2).
+- **Durum:** açık.
+
+## K34 · 3B baskı hizmeti: anlaşmalı firma ücretli mi, teklif alınacak mı
+- **Soru:** 03.11'de filament firma / ekipten, baskı anlaşmalı firmadan denmişti. Baskı hizmeti ücretli mi; ücretliyse teklif ne zaman istenecek?
+- **Seçenekler:** a) ücretli, teklif S'den önce istenir; b) ücretsiz (okul / firma anlaşması); c) ekip yazıcısı + filament (`maliyet.json` yazıcı modu).
+- **Sayısal etki:** F8a tahmini **11.550 TL** (7,7 kg × 1.500 TL/kg, teklif yok); okul bütçesi 93.538,38 bu tutarı içeriyor (b'de 81.988,38).
+  `maliyet.json` V3 genel: yazıcı modu (filament 6.843,09) 118.666,22, hizmet modu 124.079,17.
+- **Önerilen varsayılan:** a; teklif gelene kadar `maliyet.json`'a fiyatlı baskı hizmeti satırı yazılmaz (F8a öneri 10 geri çekildi;
+  `F8a-siparis.md` §9 madde 10). Yalnız öneri.
+- **Bloke:** K28 (bütçe rakamı), `maliyet.json` öneri 10.
+- **Durum:** açık.
+
+## K35 · Onaylı olmayan satıcılar hocaya nasıl gidecek
+- **Soru:** Onaylı sitelerde bulunamayan kalemler (rulman, sigma profil, T-somun, köşe bağlantı, paslanmaz vida, insert) beş onaylı olmayan
+  satıcıdan. Hocanın öğrencisine URL'siz (a) grubu olarak mı gidecek?
+- **Seçenekler:** a) v4 biçiminde URL'siz (a) grubu; b) URL'lerle; c) okul siparişi dışında (kişisel alım, K29 gibi).
+- **Sayısal etki:** **6.063,11 TL**: CNC Marketi 3.392,52 (4 satır), paslanmazcivata.ist 993,17 (25), Rhino3DPrinter 969,14 (2), Rulmanal
+  582,84 (2), Otomasyoncu 125,44 (1). Kargo: CNC eşiği geçiyor (2.400); Rhino +139; diğer üçünde ücret sayfada yok (`F8a-siparis.md` §8).
+  Tırtıllı somun M5 Robotistan'da (onaylı) tükendi; F8a önerisi CNC Marketi (M6 somun ve sigmayla aynı sipariş).
+- **Önerilen varsayılan:** kayıtta yok (`F8a-siparis.md` §9 madde 12).
+- **Bloke:** P8.1 sipariş listesinin hocaya giden biçimi; K29 (erken alım satıcıları da onaylı değil).
+- **Durum:** açık.
+
+## K36 · 8 Ω hoparlör (PAKET A): stok yetmiyor
+- **Soru:** PAKET A'daki kutulu pasif hoparlör (8 Ω 5 W, 3 adet) Robotistan'da stok 1, fiyat sayfada görünmüyor. Ne yapılacak?
+- **Seçenekler:** a) ikinci satıcı aranır; b) adet 1'e düşer; c) PAKET A'dan çıkar.
+- **Sayısal etki:** v4 yaklaşık fiyatı 3 × 166,41 = 499,23 TL (bugün doğrulanmadı); b'de 166,41 (−332,82). PAKET A toplamı 14.215,11 TL
+  (TÜBİTAK önerisi; okul toplamına girmez). İkinci satıcı aranmadı (F8a kapsamı dışı).
+- **Önerilen varsayılan:** kayıtta yok; F8a önerisi "ikinci satıcı ya da adet düşürme" (`F8a-siparis.md` §9 madde 13).
+- **Bloke:** PAKET A siparişi; okul siparişini bloke etmiyor.
+- **Durum:** açık.
+
+## K37 · Kamera Module 3 tükendi
+- **Soru:** Raspberry Pi Camera Module 3 ve NoIR Module 3 bugün her onaylı sitede tükendi. Ne zaman / nereden?
+- **Seçenekler:** a) S'de (16.11) yeniden bakılır; b) NoIR (v4 notu "gelmezse NoIR"; o da Robotistan'da tükendi); c) ithal
+  (`maliyet.json` notu: Adafruit 29,25 USD + kargo; kargo ve gümrük doğrulanmadı).
+- **Sayısal etki:** son sayfa fiyatı 1.835,13 TL (Robotistan, tükendi); F8a toplamında "doğrulanmamış" olarak var. Kamera kritik yolda
+  değil (`proje-plani.md:138`; görüntü projenin ikinci aşaması).
+- **Önerilen varsayılan:** a (`F8a-siparis.md` §9 madde 14). Yalnız öneri.
+- **Bloke:** görüntü işleri (ikinci aşama); kritik yolu bloke etmiyor.
 - **Durum:** açık.
 
 ---

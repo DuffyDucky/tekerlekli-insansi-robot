@@ -2,7 +2,7 @@
 
 Plan: `planlama/dongu-158.md` §3 F4 (P4.5). Depo GitHub'da **herkese açık** (`lale-duzeltme`). Proje sahibinin resmî adı
 **Ahmet Yorulmaz**; depoda onun takma adı (bundan sonra "takma ad"; bu brief'te bile yazılmıyor, `git grep -il` ile ara: büyük/küçük
-harf duyarsız, kelime "D-u-f-f-y") ~72 dosyada geçiyor. Paralel koşan paket: **F2** (omuz; FreeCAD makinesi, `tasarim/freecad/omuz/`,
+harf duyarsız) ~72 dosyada geçiyor. Paralel koşan paket: **F2** (omuz; FreeCAD makinesi, `tasarim/freecad/omuz/`,
 `arayuz.py`, `kabuk/`, `carpisma-*`, `planlama/d158/F2-*`). Onun dosyalarına dokunma. **FreeCAD kullanma.**
 
 ## P4.5a Kapsam

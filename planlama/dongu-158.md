@@ -40,7 +40,7 @@ tilt payı ≥ 3,0 (3,64); pan payı ≥ 2,0 (2,21); mikrofon-hoparlör ≥ 400 
 | Paket | Ajan | Yazdığı alan |
 |---|---|---|
 | F2 (P2.1, P2.2) | A | `tasarim/freecad/omuz/`, `arayuz.py` (yalnız omuz bloğu), `kabuk/` (durdurucu kabukta ise), `carpisma-bolum/omuz.json` + `carpisma-sonuc.json`, `planlama/d158/F2-*`, **FreeCAD makinesi** |
-| F4b (P4.5a + regresyon.py bayrak koruması) | C kayıt (+ `karar-kuyrugu.md` K25/K26) | takma ad geçen dosyalar **hariç**: tarama kaynakları (`carpisma_kos.py` KAYNAK + `*_lib.py`), `kod/`, `CLAUDE.md`, F2 alanı, izlenmeyen `raporlar/`; `planlama/d158/regresyon.py`, `F1a-kontrol.md`, `F5b-gunluk.md`, `planlama/d158/F4b-*`; FreeCAD yok |
+| F8a (P8.1) | C kayıt (+ `maliyet.json`, `karar-kuyrugu.md`, README/proje-plani maliyet satırı, `F4b-brief.md` düzeltmesi) | yalnız yeni `planlama/d158/F8a-*`; web okuma (sipariş/hesap yok); FreeCAD yok; `maliyet.json`/`karar-kuyrugu.md`'ye yazmaz |
 
 - **Tasarım sırası:** her adım öncekini bozmamalı; tam çakışma taraması yalnız P6'da, bir kez.
 - **Karar gereken yerde durma:** Ahmet'in kararını isteyen madde `planlama/d158/karar-kuyrugu.md`'ye yazılır
@@ -129,7 +129,7 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
-| P8.1 | 158 için güncel sipariş paketi (`maliyet.json` 11 fiyatsız aday; 90° HDMI/micro USB adaptörleri yanlışlıkla "ses" grubunda): hocadaki listeyle fark, satıcı sayfası ve stok doğrulaması, her kalem için ikinci satıcı | Fark tablosu + toplam; doğrulanmayan kalem işaretli | F4 sonrası | ⏳ |
+| P8.1 | 158 için güncel sipariş paketi (`maliyet.json` 11 fiyatsız aday; 90° HDMI/micro USB adaptörleri yanlışlıkla "ses" grubunda): hocadaki listeyle fark, satıcı sayfası ve stok doğrulaması, her kalem için ikinci satıcı | Fark tablosu + toplam; doğrulanmayan kalem işaretli | F4 sonrası | 🔄 (P4.3 F2 bekliyor; durdurucu sonra eklenir) |
 | P8.2 | Baskı partileri (Parti 0–4): sıra, filament kg, süre, önce basılacak test kuponları | Partilerin toplamı baskı listesine eşit | P8.1 | ⏳ |
 | P8.3 | Ölçüm ve test kâğıtları (ekip yapacak): JGB37 durma torku, QLED Power–Touch VBUS (Pi'ye takmadan), kafa 5 V akımı, PAM akımı, hub girişi gerilimi, akustik (Ø3 delik, yankı, servo gürültüsü) | Her test: amaç, malzeme, adım, kayıt tablosu, geçer sınırı | F1 ile | ✅ |
 
@@ -158,6 +158,18 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | K9 | El yükü 0,5 kg için servo değişimi mi, 100 g sınırı mı | 100 g sınırı |
 
 ## 5. Günlük
+
+- 2026-11-09 F8a B yeniden kontrol: KOŞULLU → 6 kısa metin (T1-1…T1-6) C'de, sonra GEÇER. Toplamlar ve 6 sayfa bağımsız tutuyor. maliyet.json'a 18 öneri (8 koşullu: kafa ekranı Ahmet'e bağlı; 10 ret). C başladı.
+
+- 2026-11-09 F8a düzeltme 1 bitti: kıyas aynı esasla (+29.545 alınacaklar); M6×16 ikinci satıcı; insert 5,7 mm yok → A/B/C (Ahmet); akü: Atakale 16.11'de sınırda, bu hafta ya da Limacell (4.814,86, 3 gün) yetişir; maliyet.json önerileri uygulanabilir hâle. Ahmet listesi 14 madde. B yeniden kontrolde.
+
+- 2026-11-09 F8a B: KOŞULLU. Toplamlar kuruşu kuruşuna, kritik fiyatlar tutuyor; ama maliyet.json kıyası yanlış esasta (doğrusu satın alınacaklarda +29.539, elde dahil +13.920; README ≈ 78.000'den ~29.500 fazla), M6×16 stok 2/18, insert 5,7 mm varyantı yok, akü yedeği Limacell atlanmış. Düzeltme 1 A'da. Ahmet'e 12 karar (hocadaki liste, bütçe farkı hocaya, erken alım, kafa ekranı hocadan mı).
+
+- 2026-11-09 F8a A bitti: 136 satır, 94 tam doğrulandı; okul bütçesi 93.533,16 TL (%15 payla 107.563,13; maliyet.json'dan +4.643,42: iki ekran satın alınıyor, DS3235). Erken alım 1.515,90 TL (hâlâ geçerli). Kritik: akü stok 1 + 7 gün tedarik, ikinci satıcı yok; QLED stok 2; Kamera Module 3 tükendi; M5 mesafe burcu yok. Ahmet'e: hocadaki liste 17.10 mı v4 mü; erken alım okul mu kişisel mi. B kontrolde.
+
+- 2026-11-09 F8a A (P8.1 sipariş paketi: fark tablosu, satıcı/stok doğrulaması, ikinci satıcı) başladı; 16.11 sipariş günü için öne alındı. Yalnız yeni dosyalar.
+
+- 2026-11-09 **F4b ✅ (P4.5a)** C: c7f9af4 (63 dosya), 34d0cc0, rapor 0979d70 push; kalan 11 dosya (8 tarama kaynağı + `kod/` üretimi → P6.1; K25 `CLAUDE.md`; K26 hesap adı). **Orkestratör hatası:** `F4b-brief.md:5` takma adı harf harf yazıyordu, 34d0cc0 ile herkese açık dala girdi; satır düzeltildi (commit bekliyor: sonraki C), geçmişte kalır. regresyon.py artık --help/tanımsız bayrakta yazmıyor.
 
 - 2026-11-09 F4b B: KOŞULLU GEÇER (195 satırın hepsi yalnız ad; tarama kaynaklarıyla kesişim boş; regresyon.py testleri tekrarlandı). Koşullar: 2 günlük cümlesi + commit öncesi numstat karşılaştırması (F2 çıktı yeniden üretebilir). `yerlesim_lib.py` tarama kaynağı değil → şimdi temizlenebilir. Ek: izlenmeyen `tasarim/solidworks/renkler.md:63` takma ad (K22 notu).
 
