@@ -54,18 +54,21 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K39 | Omuz durdurucu güçlendirme | **açık** (F2) | d: kök yarıçapı (P6.1) + DS3235 düşme ölçümü, sonra gerekirse | P6.1, ölçüm kâğıdı, K38 |
 | K40 | S2 sıfır kalibrasyonu ve sınır metni (`yana_alt_bosluk_mm`) | **açık** (F2) | a: horn dişe dayalı takılır; metin P6.1'de | P6.1, P7.1, `eklem_sinirlari.json` |
 | K41 | S1 yazılım aralığı: kod 0…160 ↔ CAD −45…135 | **açık** (F2 + F5) | a: kod −45…135 | `kod/` eklem sınırları, P5.1 |
-| K42 | PETG-CF miktarı: 1,5 kg yetmiyor | **açık** (F4c) | a: +1 makara (4 × 0,5 = 2,0 kg), +1.114,03 TL | S siparişi filament satırı, K34, Parti 0/2 |
+| K42 | PETG-CF miktarı: 1,5 kg yetmiyor | **açık** (F4c; F6b notu eklendi) | a: +1 makara (4 × 0,5 = 2,0 kg), +1.114,03 TL | S siparişi filament satırı, K34, Parti 0/2 |
 | K43 | Isıl gömme somun adedi: M3 177, M5 21 (plan 168 / 6) | **açık** (F4c) | Erken alımda M3 177 + pay, M5 21 + pay | K29, K31, Parti 0 kuponları |
 | K44 | `eklem_sinirlari.json`'un `kod/`'a yazılması | **açık** (F6a) | a: Ahmet onayıyla `kod/`'a yazılır + Efe'ye pano bilgisi | `kod/ortak/eklem_sinirlari.json` güncelliği, K2/K3 regresyon betikleri, P4.5 (`kod/`) |
 | K45 | S2 darbe hız sınırı (K38'i sayısallaştırır) | **açık** (F6a) | Kayıtta yok (a / b / c) | K38, `kod/` hareket planlayıcısı, K39 ölçümü |
+| K46 | Destek azaltma geometri önerileri (VESA, omuz yuvası, kol çatalı, omuz göbeği, göğüs bandı) | **açık** (F6b) | Şimdilik değişiklik yok; Parti 0 kuponundan sonra karar | Parti 1–2 dilimleme, K42 payı, tam tarama (geometri değişirse) |
 
-**Açık: 40** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 45 madde.
+**Açık: 41** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 46 madde.
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
 P4.3 + P8.2 (F4c, 09.11.2026) karar taslakları KT-F4c-1…2 → K42–K43, B'nin metinleriyle (`planlama/d158/F4c-kontrol.md`; K43 B-1 düzeltmesiyle M5 21).
 P6.1 + P4.5 (F6a, 09.11.2026) karar taslakları KT-F6a-1 → K44, KT-F6a-2 → K45 (`planlama/d158/F6a-gunluk.md` §4, B düzeltmeleriyle `F6a-kontrol.md` O-2).
 KT-F6a-3…5 karar değil, iş olarak kapandı (sondaki bölüm).
+P6.2 (F6b, 09.11.2026) karar taslakları KT-F6b-1 → K42'ye F6b notu, KT-F6b-3 → K46 (`planlama/d158/F6b-gunluk.md` §5–6, B düzeltmesiyle
+`F6b-kontrol.md` O-1). KT-F6b-2 karar değil, iş (sondaki bölüm).
 
 ---
 
@@ -642,6 +645,14 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
 - **Sayısal etki:** a: +1.114,03 TL (`kalemler[109]` birim fiyatı, 11 Ekim; stok yeniden doğrulanmadı); %15 payla +1.281,13 TL. b: 0 TL.
 - **Ayrıca netleşmeli:** `F8a-siparis.md:78` "filament firma ve ekipten, satın alınmaz", ama `maliyet.json` filamenti V3 toplamında sayıyor
   (`secenek` "yazici"). VESA taşıyıcının PETG-CF olması modelde (`kabuk_parcalar.py:375-376`), Ahmet'in kararına dayanmıyor (F4c-kontrol B-5).
+- **F6b notu (P6.2, 09.11.2026; `planlama/d158/F6b-gunluk.md` §6 KT-F6b-1, B'nin hesabıyla `F6b-kontrol.md` madde 5d):**
+  - Tek analiz (`tasarim/freecad/lale158/baski-analiz.json`) destek filamentini her parçada sayıyor. PETG-CF parçalar 1.194,0–1.251,8 g
+    (`planlama/y2/Y2b-baski.json` `toplam.cf_g`; +35,8 / +36,0 g, çoğu VESA taşıyıcı desteği 31,7 g). Kuponla birlikte 1.369,8–1.553,2 g,
+    yani **1,37–1,55 kg**. 1,5 kg'a göre pay **+130 / −53 g** (önce +166 / −17). Yukarıdaki "VESA desteği sayılmadı" cümlesi bununla karşılandı.
+  - Tam doluluk senaryosu (bütün PETG-CF parçalara omuzdaki 0,8–0,9 aralığı; bugün yalnız omuz): CF üst sınırı **+66,1 g**
+    (`baski-analiz.json` `parca_g` × 0,125), üst pay −119 g.
+  - **a seçeneği (+1 makara, 2,0 kg) yine yetiyor:** pay ≥ **446,8 g** (1.500 + 500 − 1.553,2). CF desteği 91,9 g ±%50 tahmin
+    belirsizliğinde de pay ≥ 400 g. Önerilen varsayılan değişmedi.
 - **Önerilen varsayılan:** a. Yalnız öneri.
 - **Bloke:** S siparişindeki filament satırı; Parti 0 CF kuponları ve Parti 2.
 - **Durum:** açık.
@@ -706,10 +717,35 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
 - **Bloke:** K38, `kod/` hareket planlayıcısı (Efe'nin alanı), K39 ölçümünün yorumu.
 - **Durum:** açık.
 
+<!-- K46: P6.2 tek baskı analizi (F6b, 09.11.2026), kaynak `planlama/d158/F6b-gunluk.md` §5 ve §6 KT-F6b-3, e seçeneği B'nin düzeltmesiyle
+(`planlama/d158/F6b-kontrol.md` O-1; a–d madde 6b). -->
+
+## K46 · Destek azaltma geometri önerileri (KT-F6b-3)
+- **Soru:** Destek oranı en yüksek parçalarda geometri ya da baskı yönü değiştirilerek destek azaltılsın mı; ne zaman?
+- **Sayılar** (`tasarim/freecad/lale158/baski-analiz.json` `parcalar[]`, tasarım yönü, 45° eşik; destek g = destek hacmi × 0,15 × 1,27, tahmini):
+  toplam destek 124,5 g (9 tür / 13 adet). VESA taşıyıcı 31,7 g (destek oranı %21,9), omuz yuvası 2 × 11,5 g (%14,1), kol çatalı 2 × 12,7 g
+  (%12,7), omuz göbeği 2 × 5,9 g (%9,3), göğüs bandı sağ / sol 15,6 / 14,1 g (%6,7 / %6,1).
+- **Seçenekler:**
+  a) VESA taşıyıcının arka flanşı altına 45° kaburga (≈ 26 g PETG-CF).
+  b) Omuz yuvasında manşon içi tavanına 45° kemer / damla (≈ 2 × 9 g PETG-CF).
+  c) Kol çatalında horn kulağı altına 45° kaburga (≈ 2 × 10 g PETG-CF).
+  d) Omuz göbeği −Y baskı yönü: destek 5,9 → 2,8 g, tabla teması 1.153 → 1.070 mm²; ama horn ekseni katman düzlemine yatar. Kupon / K39
+     ölçümünden sonra.
+  e) Göğüs bandı: geometri önerisi yok. Cep tavanı 2,8 mm, altında 207 mm boşluk, 148–160 mm açık uçlu açıklık; pah ya da kemer taşımaz.
+     (i) destek kalsın (dilimleyicide yalnız bu bölgeye boyalı destek) ya da (ii) yatık baskı (±X, 1,6 g; yüzey ve bant tutarlılığı bozulur).
+- **Sayısal etki:** a–c birlikte ≈ 64 g destek düşüşü, hepsi PETG-CF (K42 payına ≈ +64 g). e için tasarruf tahmini yok. Destek g tahmini
+  ±%50 belirsiz; dilimleyici esastır (göğüs bantlarında ızgara duyarlılığı ≈ +%15, `F6b-gunluk.md` §7 açık 7).
+- **Not:** a–c geometri değişikliğidir ve tarama kaynaklarını değiştirir (`tasarim/freecad/kabuk/kabuk_parcalar.py`,
+  `tasarim/freecad/omuz/omuz_parcalar.py` / `omuz_lib.py`; `carpisma_kos.kaynak_listesi()`). Uygulanırsa tam tarama gerekir. d yalnız
+  baskı yönü; geometri değişmez.
+- **Önerilen varsayılan:** şimdilik değişiklik yok; Parti 0 kuponundan sonra karar. Yalnız öneri.
+- **Bloke:** Parti 1 (göğüs bantları, VESA) ve Parti 2 (omuz PETG-CF) dilimleme ayarı; K42 payı.
+- **Durum:** açık.
+
 ---
 
 ## Karar değil, iş (kuyruğa alınmadı)
-- Kapak baskı analizinde iki sonuç (19.667,7 mm² ↔ 5,01 mm², `KY/uygulama-notu.md:68`): P6.2.
+- Kapak baskı analizinde iki sonuç (19.667,7 mm² ↔ 5,01 mm², `KY/uygulama-notu.md:68`): P6.2. F6b'de kapandı (aşağıda).
 - `elektrik.md` boyun/hub satırları ve baskı listesi yeni düzene (`KY/uygulama-notu.md:153`): P4.1, P4.3.
 - K7 perçin delik çapı ve perçin somun ölçüleri (`Y3-kontrol.md:115`): ölçüm, P8.3.
 - Ölçülmesi gerekenler (akustik, yankı, hub girişi gerilimi; `KY/secenekler.md:248-254`): P8.3.
@@ -722,3 +758,17 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
   - Göğüs ekranı port girintisi: ekran ölçülünce (`arayuz.GOGUS_EKRAN["port"]`, kasa girintisi, `lale158_kontrol` hariç tutma kutusu birlikte).
   - `montaj-hareket.gif` ve 5 GUI ekran görüntüsü (`montaj-gui-*.png`) yenilenmedi (D-10).
   - Dilimleyicide kök yayı önizlemesi (r 1,5 yayın katman çözünürlüğü, diş tabanı desteği) baskıdan önce.
+- F6b (09.11.2026), kapandı:
+  - Kapaktaki iki sonuç: üst arka servis kapağı baskı yönüne 2,27° eğik, flanş üstü z 1,4988. `kabuk_montaj`'ın z 1,5 kesiti bu yüze teğet
+    düşüyor, ters normalli yüz üretiyor ve sahte 19.667,7 mm² veriyor. Gerçek fark 5,01 mm², 45° payı içinde; destek 0
+    (`planlama/d158/F6b-gunluk.md` §2, B'nin FreeCAD ölçümü `F6b-kontrol.md` madde 2).
+- F6b'den açık iş:
+  - KT-F6b-2 (seçenek b şimdi): modül JSON'larındaki eski `baski` alanları zincir dışında; belgelerde "eski, zincir dışı" diye
+    işaretli (bu madde, `F6b-gunluk.md` §6), JSON'ların kendisine dokunulmadı. `kabuk-analiz.json` kapak değeri
+    (`baski[13]`, 19.667,7 mm²) hatalı. Bir sonraki geometri işinde modül betikleri tek analize (`baski_analiz_ortak.py`) yönlendirilecek.
+    Bu alanı okuyan betikler: `tasarim/freecad/kabuk/kabuk_rapor.py:128`, `tasarim/freecad/dirsek/dirsek_rapor.py:93`,
+    `planlama/adim5/baski_toplam.py:16`, `planlama/d158/F4c-kontrol-sayim.py:37`.
+  - (C ölçümü) `baski-analiz.json` `parcalar[].malzeme` 6 türde (kafa servo yuvası, rulman yuvası, boyun mili, eğme çatalı; dirsek çatalı,
+    bilek flanşı; 8 adet, 458,4 g) "PETG" diyor; etiket modül `*_parcalar.py` `malzeme` alanından geliyor. Zincir PETG-CF ayrımını
+    `planlama/y2/Y2b-baski.py` `CF` kümesinden (12 tür / 18 adet) alıyor; liste ve toplamlar doğru. JSON'u tek başına okuyan CF'yi
+    735,6–793,4 g sanar. Aynı geometri işinde etiket tek kaynağa bağlanmalı.
