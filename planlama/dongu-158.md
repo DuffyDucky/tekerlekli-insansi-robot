@@ -21,7 +21,7 @@ Her paket aynı sekiz adımdan geçer. Bir adım geçmeden sonrakine geçilmez.
 | 8 | **Karar**: C'nin sayılarını A/B raporlarıyla karşılaştırır, bu dosyayı ve Ahmet'in hafıza kasasını günceller, sonraki paketi başlatır | Orkestratör | Durum tablosu |
 
 **Korunan değerler** (her paketten sonra yeniden ölçülür; biri kötüleşirse paket GEÇMEZ):
-boy 1.580,0 mm; çakışma (kafa içi, kabuk içi, kabuk × iskelet, ev pozu) 0; yüksüz rampa devrilme payı ≥ 1,5 (şimdi 1,517);
+boy 1.580,0 mm; çakışma (kafa içi, kabuk içi, kabuk × iskelet, ev pozu) 0; yüksüz rampa devrilme payı ≥ 1,5 (başta 1,517, şimdi 1,519);
 tilt payı ≥ 3,0 (3,64); pan payı ≥ 2,0 (2,21); mikrofon-hoparlör ≥ 400 mm (574,3); SY8205 × USB 0 mm³.
 
 ## 2. Otonomi kuralları
@@ -39,7 +39,6 @@ tilt payı ≥ 3,0 (3,64); pan payı ≥ 2,0 (2,21); mikrofon-hoparlör ≥ 400 
 
 | Paket | Ajan | Yazdığı alan |
 |---|---|---|
-| F7d (P7.4) + F9d (P9.4) | C (tek ajan, sırayla: F7d 18 dosya + rapor → F9d 40 dosya + rapor → karar kuyruğu K47–K50 → `dongu-158.md`, push; FreeCAD, silme YOK) |
 
 - **Tasarım sırası:** her adım öncekini bozmamalı; tam çakışma taraması yalnız P6'da, bir kez.
 - **Karar gereken yerde durma:** Ahmet'in kararını isteyen madde `planlama/d158/karar-kuyrugu.md`'ye yazılır
@@ -100,7 +99,7 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | P4.2 | Listede olmayan 6 kablo kalemini (USB dokunmatik ve 12 V için de 90° fiş, F1b B) aday olarak `maliyet.json`'a "koşullu" işaretle ekle (satıcı sayfası doğrulanmadan fiyat yazılmaz) | Genel toplam ve koşullu toplam ayrı | P4.1 | ✅ |
 | P4.3 | Baskı listesi: hub takozlu kapak, 2 yeni kap parçası, VESA taşıyıcı malzemesi (PETG-CF) | `baski_listesi_guncelle.py` ile model aynı | P4.1 | ✅ (F4c: 72 parça, 7,60–7,66 kg; betik yaması Y1–Y7 F6a'da) |
 | P4.4 | README 1,65 → 1,58 m, `OZET.md`, `planlama/y2/Y2b-*.json` eski sayılar, `proje-plani.md` başlık sayıları | Depoda "1,65 m ana tasarım" ifadesi yalnız tarihçede | P4.1 | ✅ |
-| P4.5 | Takma ad temizliği: kodda ~43 dosya (GitHub'a gidiyor) → "Ahmet Yorulmaz" ya da nötr | `git grep -i <takma ad>` yalnız tarihçe/hafıza dosyalarında | P4.4 | 🔄 (P4.5a: tarama kaynakları, `kod/`, `CLAUDE.md` hariç; onlar P6.1 öncesi) |
+| P4.5 | Takma ad temizliği: kodda ~43 dosya (GitHub'a gidiyor) → "Ahmet Yorulmaz" ya da nötr | `git grep -i <takma ad>` yalnız tarihçe/hafıza dosyalarında | P4.4 | ⛔ (P4.5a ✅; kalan izlenen 3 dosya: `CLAUDE.md` K25, `tasarim/freecad/index.html` K26, `kod/ortak/eklem_sinirlari.json` Efe/K44 — F9d sayımı) |
 
 ### Faz F5: Yazılım hizası (Efe'nin alanı; biz yalnız hazırlarız)
 
@@ -124,7 +123,7 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | P7.1 | 3B rehber 158 modelinden yeniden üretilir (şu an ~%50, 1,65 m'den) | 48 + F5 adım, her adımda parça görünürlüğü doğru | P6 sonrası | ✅ (F7a: 50 adım, 1192 parça tek adımda, konsol 0; 1 düzeltme turu; 887bcfe, rapor 3946ad5) |
 | P7.2 | Yazdırılabilir sürüm + kafa (QLED, ses, hub) adımları | PDF/HTML, konsol temiz, ekran görüntüleri | P7.1 | ✅ (F7b: PDF 50 sayfa, elektrik güvenliği O-1…O-4, 2 düzeltme turu; 649885f, rapor 2d1f412) |
 | P7.3 | Rehber kalanları (F7b B): D-10 F1 "İlk enerji" kafa (Pi) takılı değilken devreye alma yapılamaz → iki aşamalı ilk enerji; D-11 mantar testinde yalnız K1 düşer; D-12 XL4016/PC817 tezgâh ayarı B3/B5a metnine; D-1' denetim "köprüle" gibi çelişkili eklemeleri yakalamıyor; D-3 E4/K2 PDF 7,2 pt; D-6 tıklama etiketinde FreeCAD `0NN` eki; F7b açık: TVS kutbu veri sayfası, ikinci P6KE6V8A modelde/BOM'da yok, göğüs regülatörü + 2 A sigorta yeri modelde yok | Her madde kapalı ya da gerekçeli; denetim 0, 50/50 | P7.2 | ✅ (F7c: ilk enerji iki aşamalı + sigorta tablosu, mantar ölçümü, yasak talimat denetimi 43/43, PDF 53 sayfa ≥ 8,1 pt, 1 düzeltme turu; e448eab, rapor 00a2f56) |
-| P7.4 | F7c B düşük açıkları: D-5 F3 "enerjiyi kes" belirsiz, D-6' denetimde "birleştir/birbirine bağla" kalıpları, D-7 pencere bağlaçta kesilsin, D-8 multimetre kademesi, D-9 K11 b'de F3 ölçümsüz fiş, D-10 şarj girişi 10 A sigortası rehberde; demo "Bu sayfa hakkında" "model kopyası" → göreli bağlantı | Altısı kapalı, denetim 0, PDF ≥ 8 pt, `F9b-dogrula` 0 | F7c C sonrası | 🔄 F7d |
+| P7.4 | F7c B düşük açıkları: D-5 F3 "enerjiyi kes" belirsiz, D-6' denetimde "birleştir/birbirine bağla" kalıpları, D-7 pencere bağlaçta kesilsin, D-8 multimetre kademesi, D-9 K11 b'de F3 ölçümsüz fiş, D-10 şarj girişi 10 A sigortası rehberde; demo "Bu sayfa hakkında" "model kopyası" → göreli bağlantı | Altısı kapalı, denetim 0, PDF ≥ 8 pt, `F9b-dogrula` 0 | F7c C sonrası | ✅ (F7d: 6 düşük kapandı, şarj girişi uyarısı, denetim 36/36 + 15/15, PDF 54 ≥ 8,1 pt, 1 düzeltme turu; 1a67071, rapor c96ed03) |
 
 ### Faz F8: Sipariş ve üretim hazırlığı (sipariş verilmez)
 
@@ -142,8 +141,8 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 |---|---|---|---|---|
 | P9.1 | `proje-plani.md` takvimi: H9 (23–29 Kas) ilk sürüş sipariş verilmeden gerçekçi değil → sipariş tarihine bağlı yeni takvim + kritik yol | Her hafta satırı bir bağımlılığa bağlı | F8 ile | ✅ |
 | P9.2 | Demo sayfası 158 sayılarıyla (lale-duzeltme'de); `main`'e birleştirme yalnız onayla | Sayfa yerelde açılır, sayılar JSON ile aynı | P6 sonrası | ✅ (F9b: 127 JSON anahtarı, model göreli bağlantı, 14 karar "karar bekliyor", 118.666,22 TL; a3fbcd6, rapor 8ce30ec; main birleştirme Ahmet onayında) |
-| P9.4 | Herkese açık depo temizliği: eski belgelerde yerel kullanıcı yolu, takma ad sayımı, README demo/rehber satırları; D-9 `.gitignore`, `lale158-model.js`, izlenmeyenler için karar taslakları | Yazılabilir alanda yerel yol 0, README = JSON | P7.4 ile (alan ayrı) | 🔄 F9d |
-| P9.3 | Sonuç `rapor.html` + Ahmet'e özet tablo | Tüm paketlerin durumu, açık kararlar | En son (P7.4 + P9.4 sonrası) | ⏳ |
+| P9.4 | Herkese açık depo temizliği: eski belgelerde yerel kullanıcı yolu, takma ad sayımı, README demo/rehber satırları; D-9 `.gitignore`, `lale158-model.js`, izlenmeyenler için karar taslakları | Yazılabilir alanda yerel yol 0, README = JSON | P7.4 ile (alan ayrı) | ✅ (F9d: yerel yol 48 → 4 satır, yazılabilir alanda 0; README 38 satır = JSON; K47–K49; 1 düzeltme turu; afea121, rapor 5d1fbd1) |
+| P9.3 | Sonuç `rapor.html` + Ahmet'e özet tablo | Tüm paketlerin durumu, açık kararlar | En son (P7.4 + P9.4 sonrası) | ✅ (F9c: sonuç raporu, 36 paket, açık karar 47/52, açık düşük 47; 1 orkestratör + 1 düzeltme turu; 58238f7, rapor 63cede7) |
 
 ## 4. Bilinen kararlar (P0.2 kuyruğa yazar)
 
@@ -161,6 +160,12 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 
 ## 5. Günlük
 
+- 2026-11-09 F9c B yeniden kontrol: **GEÇER** (kritik 0, orta 0, yeni düşük 1: D-11 KT denetimi kodun günlük §6'da geçmesini yeterli sayıyor → sonraki tur). Takvim 9/9, KT-F7c-1 tutarlı, 93, K3 B, bozma 9'un 8'i yakalandı (istenen 3/3), `F9c-uret` bayt bayt aynı, tüm denetimler 0. 20 dosya. C başladı.
+- 2026-11-09 F9c A düzeltme 1: takvim 9/9 (F9: "S = 16.11 yalnız durum A'da sığar, bir hafta tampon"), KT-F7c-1 elektrik grubunda (18, toplam 47), P8.1 93, K3 → B (A 20 / B 14 / C 13), K47–K49 "önerilen varsayılan"; `F9c-dogrula` takvim/P8.1/23 KT/emoji bağımsız denetimi; 81 JSON + 548 metin sayısı, 0. Orkestratör: KT-F9b-3 (`maliyet.json` eski 1,65/Nextion notları, K numarası çakışması) ve KT-F9b-4 (`CLAUDE.md`/README/`proje-plani.md` eski demo tarifi) günlük §6'da kalır → sonraki tur. B yeniden kontrolde.
+- 2026-11-09 F9c B: **KOŞULLU** (kritik 0, orta 2, düşük 10). Bağımsız: 36 paket = plan, 118 hash, 60+ sayı (yalnız P8.1 94 → 93 eski), maliyet iki hesapla 118.666,22, kuyruk 47/52 + K51/K52 kaynaklı, demo bayt bayt aynı, konsol 0, 71 bağlantı 0 kırık, 360 px 0. O-1 takvim 9 satırın 6'sı (H15–16 sığma, kesinti, stoklu teslim düştü; `F9c-uret.py` döngü hatası); O-2 KT-F7c-1 TVS açığı raporda yok; D-1 `F9c-dogrula` kısmen totoloji; K3 → B grubu, K49/K47 ifadesi. Düzeltme 1.
+- 2026-11-09 F9c A düzeltme: K51 (ikinci P6KE6V8A, öneri a: modele + BOM, 0 TL) ve K52 (göğüs regülatörü + mini 2 A + hat sigortası yuvası, öneri a: K11 ile B5a'ya) kuyruğa → açık **47/52**, aciliyet A 20 / B 13 / C 14; demo `demo_uret` ile yeniden (yalnız kuyruk izi değişti, 127 anahtar aynı), `F9b-dogrula` 0; `F9c-dogrula` 0, bağlantı 0 kırık, konsol 0, 360 px 0, `kontrol` 0, regresyon 0. Orkestratör: demonun karar listesi (`demo_uret.py` `KARARLAR`, 14 madde) yalnız demoda gösterilen değerlere bağlı kararları gösterir; K50–K52 demo değeri değil → demo betiği değişmez. B başladı.
+- 2026-11-09 F9c A bitti: 36 paket (33 ✅, 1 🟡, 1 ⛔, 1 🔄), 66 commit, hash 118/118, `F9c-dogrula` 0 (77 JSON değeri, 519 metin sayısı), açık karar 45/50 → aciliyet A 18 / B 13 / C 14, açık düşük 46 (17 güvenlik), bağlantı 71/0 kırık, konsol 0, 360 px 0. Tutarsızlıklar → orkestratör: §1 rampa 1,517 → "başta 1,517, şimdi 1,519" (düzeltildi); KT-F7c-2 (ikinci P6KE6V8A) ve KT-F7c-3 (göğüs regülatörü + 2 A + hat sigortası yuvası) kuyrukta yoktu → K51–K52; demo karar izi K50 öncesi → `demo_uret` yeniden. A'ya düzeltme turu, sonra B.
+- 2026-11-09 **F7d ✅ (P7.4), F9d ✅ (P9.4).** C: `kontrol` 0, regresyon 10/10, denetim 0/40, 50/50, 1192 ↔ 1192, PDF 54 ≥ 8,10 pt, demo bayt bayt aynı, `F9b-dogrula` 0, ad/yol 0; 1a67071 (18) + rapor c96ed03; F9d şartları 0 → afea121 (40) + rapor 5d1fbd1; karar kuyruğu K47–K50 e7e6f0d (açık **45/50**); plan 0089d97; push. Orkestratör: P4.5 🔄 → ⛔ (kalanlar K25/K26/kod/). **F9c (P9.3) A başladı** (son paket).
 - 2026-11-09 F7d B yeniden kontrol: **GEÇER** (kritik 0, orta 0, düşük 4: D-8 üretim damgası 20:26 eski, D-9 F5 "kuyruğa girmedi" ifadesi K kaydından sonra eskir, D-2' NB9/NB10 yanlış alarm (güvenli yön), D-3 bilinen sınırlar). FreeCAD'siz veri yazımı bağımsız doğrulandı (fark yalnız 3 alan, listeler aynı, metin 50/50 birebir; FreeCAD koşusu yalnız saati değiştirirdi) → orkestratör: kabul. Tek C ajanı: F7d → F9d → K47–K50 (KT-F9d-1…3, KT-F7d-1).
 - 2026-11-09 F7d A düzeltme 1: O-1 pencere yalnız enerji bitiren ifadede kesiliyor (B19/B20/B13 yakalanıyor, D-7 doğru cümleler temiz), O-2 K1 kol akü XT60'ın robot tarafı (doğrulanmadı) + F5 pim gerilimi uyarısı, D-1 S3 zorunlu satırı, "artı/eksi" kelime sınırı, F3 takı (`00-genel.md` k.8) + 12 V fiş bandı (genel güvenlik), demo metni. Enjeksiyon 36/36, olumsuz 15/15, zorunlu 0/40; PDF 54 ≥ 8,1 pt; `F9b-dogrula` 0, `kontrol` 0, regresyon 0. **Sapma:** veri FreeCAD'siz, scratchpad betiğiyle yazıldı (değişiksiz koşu FreeCAD çıktısıyla bayt bayt aynı; `uretim` damgası 20:26 kaldı) → B yeniden kontrolde yeterliliğine bakıyor.
 - 2026-11-09 F7d B: **KOŞULLU** (kritik 0, orta 2, düşük 7). Bağımsız: denetim 0/35, PDF 54 ≥ 8,10 pt, kopyada üretim 54/54 aynı, demo bayt bayt aynı, eski J/K 31/31 + P 8/8. O-1 D-7 pencere bağlaçta kesince 3 yeni kaçak (enerjili "sonra … tak") → yalnız enerji bitiren ifadede kes; O-2 şarj girişi: kol akü XT60'ın hangi tarafı, F5 "ilk şarjdan önce tak" uyarısız (XT60E-M pimleri gerilimli) → KT-F7d-1 (dişi panel / yalnız şarjda tak / ana anahtar sonrası / kapak; karar Ahmet). Düzeltme 1: O-1, O-2, D-1 S3 zorunlu satırı, "birleştir" yanlış alarm, F3 saat/yüzük + 12 V fiş bandı, demo "kopya tutmadan".
