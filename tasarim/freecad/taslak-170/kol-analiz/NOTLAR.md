@@ -63,7 +63,7 @@ Durum: başladı (2026-10-24). Bulgular ilerledikçe buraya eklenir.
   S1 statik 10,72 → 10,78 kg·cm (pay 2,84 → 2,82, ivmeli 1,66 → 1,65, elde 111 → 109 g). L4'te en zayıf hâlâ dış kol (1,07), sonra kol çatalı ön kolu 1,42.
   Ayrıntı: ../CATAL-KONTROL-NOTLAR.md.
 
-## Dirsek çatalı dış kolu 8 mm (karar Duffy 25 Ekim; kontrol ajanı 24 Ekim gece)
+## Dirsek çatalı dış kolu 8 mm (karar Ahmet 25 Ekim; kontrol ajanı 24 Ekim gece)
 - kol_analiz.py: T_DIS_HESAP {5, 7, 8} (8 varsayılanken 7 düşüyordu), 7 etiketi "onceki (7 mm)"; `horn_sikma(t)`: M3x12 + 2× DIN 125-A pul etkisi
   (baş altı oturma 14,7 → 29,4 mm², izinli sıkma torku ~0,25 → ~0,5 N·m, Al horn dişi sıyırma SF 1,69 izinli ön yükte; tahmini).
 - ×1,25 + DS3235 dış kol SF L3 1,86 / 2,61 / 2,99, L4 0,76 / 1,07 / 1,22 (5 / 7 / 8, güncel kütleyle). S1 statik 10,85 kg·cm (pay 2,80, ivmeli 1,64, elde 108 g).

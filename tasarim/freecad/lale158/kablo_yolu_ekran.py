@@ -1,9 +1,9 @@
 # Lale 1,58 m - gogus ekrani kablo yollari (saf Python; FreeCAD'siz import edilir). Global koordinat, ev pozu (pan 0, tilt 0), mm.
-# Pi 5 kafada; gogus ekrani HDMI + USB dokunmatik boyundan iner (eski kural "HDMI boyundan gecmez" yazilim-plani.md:64 bu nedenle degisti, karar Duffy/ekip: acik-noktalar madde 12).
+# Pi 5 kafada; gogus ekrani HDMI + USB dokunmatik boyundan iner (eski kural "HDMI boyundan gecmez" yazilim-plani.md:64 bu nedenle degisti, karar Ahmet/ekip: acik-noktalar madde 12).
 # Kafa ici ve boyun: kafa7_parcalar.YOL hatti (tabla kablo gecisi x -50...-37 -> sol yanak disi -> catal tabani -> adaptor + mil O32 -> mil penceresi -> kablo odasi ->
 # servo yuvasi arka kanali -> alt cikis). Govdede: traversin arkasi -> direk solu -> ekran arkasi -> port girintisi (-X; port yeri DOGRULANMADI, arayuz.GOGUS_EKRAN port).
 # Bu cizim semadir: kablo capi tahmini, kablo gercek bukum yaricapi ve fis olcusu dogrulanmadi.
-# Secim B + R1 (Duffy 05.11.2026; lale158/kafa-yerlesim): hub gogus ust arka kapaginin icinde. Boyundan HDMI, Hub uzatmasi, Hoparlor, 12 V, tilt iner; gogus dokunmatigi ve ESP32 USB hub'dan, kafaya girmez.
+# Secim B + R1 (Ahmet 05.11.2026; lale158/kafa-yerlesim): hub gogus ust arka kapaginin icinde. Boyundan HDMI, Hub uzatmasi, Hoparlor, 12 V, tilt iner; gogus dokunmatigi ve ESP32 USB hub'dan, kafaya girmez.
 # Pi portlari: 1 ReSpeaker, 2 ses karti, 3 hub, 4 kafa dokunmatik. Hub: gogus dokunmatik, ESP32, 2 bos. Boyuna inen USB z ~ -14'te SY8205'in onunden (A.SES_USB koridor).
 import math
 import os

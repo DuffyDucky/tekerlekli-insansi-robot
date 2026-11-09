@@ -59,10 +59,10 @@ for ad, saat in (("ders (3 sa; %40 bosta, %50 normal, %10 yogun)", 3), ("fuar (8
     wh = sen[ad]["aku_W"] * saat / KUL
     gerek[ad] = {"nominal_Wh": round(wh), "Ah": round(wh / V, 1)}
 fan_etki = {k: round(256 * KUL / (v["aku_W"] + FAN[0]), 2) for k, v in sen.items()}
-# gereksinim (Duffy, 29.10): "aku 2 saatlik kullanim icin yeterli" -> 2 sa kullanim; Victron ile karsilastirma (2 hane)
+# gereksinim (Ahmet, 29.10): "aku 2 saatlik kullanim icin yeterli" -> 2 sa kullanim; Victron ile karsilastirma (2 hane)
 GEREKSINIM_SA = 2.0
 VIC = AKU["Victron SuperPack 12,8/20 (K3)"]
-gereksinim = {"gereksinim_sa": GEREKSINIM_SA, "kaynak": "Duffy 29.10 (planlama/kararlar-2026-10-29.md)",
+gereksinim = {"gereksinim_sa": GEREKSINIM_SA, "kaynak": "Ahmet 29.10 (planlama/kararlar-2026-10-29.md)",
               "victron_sa": {k: round(VIC * KUL / sen[k]["aku_W"], 2) for k in ("bosta", "normal", "yogun", "yogun_omni")}}
 gereksinim["karsilar"] = {k: v >= GEREKSINIM_SA for k, v in gereksinim["victron_sa"].items()}
 res = {"kullanilabilir": KUL, "aku_Wh": AKU, "verim": VERIM, "kalemler": KALEM, "sabit": SABIT, "fan": FAN,

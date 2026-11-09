@@ -181,7 +181,7 @@ for side in ("sag", "sol"):
 DEGISEN.append(("Omuz (sag + sol)", "tum omuz", "%.0f mm yukari" % DY))
 DEGISEN.append(("Omuz (sag + sol)", "Ust kol tupu", "100 -> %.0f mm (PETG); dirsek catali tupun yeni ucunda" % (100 + TA.UST_KOL_UZAMA)))
 if TA.OMUZ_SERVO["ad"] != TA.OMUZ_SERVO_ESKI["ad"]:
-    DEGISEN.append(("Omuz (sag + sol)", "S1 + S2 servolari (4 adet)", "%s -> %s (karar: Duffy, 24 Ekim 2026); tork %s kg.cm; govde ayni kabul (40 x 20 x 40, "
+    DEGISEN.append(("Omuz (sag + sol)", "S1 + S2 servolari (4 adet)", "%s -> %s (karar: Ahmet, 24 Ekim 2026); tork %s kg.cm; govde ayni kabul (40 x 20 x 40, "
                     "kulak delikleri 49,5 x 10, 25T), geometri degismedi, %.0f g. Govde yuksekligi kaynaklarda 38,5 / 40 / 40,5 mm: servo gelince "
                     "kumpasla dogrulanacak" % (TA.OMUZ_SERVO_ESKI["ad"], TA.OMUZ_SERVO["ad"], TA.OMUZ_SERVO["tork_kgcm"], TA.OMUZ_SERVO["kutle_g"])))
 
@@ -331,7 +331,7 @@ for side in ("sag", "sol"):
 DEGISEN.append(("Dirsek + el (sag + sol)", "tum dirsek", "%.0f mm yukari (omuzla birlikte %.0f, tup uzadi -%.0f)" % (
     DY - TA.UST_KOL_UZAMA, DY, TA.UST_KOL_UZAMA)))
 if TA.ON_KOL_UZAMA > 0:
-    DEGISEN.append(("Dirsek + el (sag + sol)", "On kol govdesi", "%.1f mm uzadi (karar: kol x%.2f, Duffy 24 Ekim 2026): dirsek ekseni -> bilek ekseni %.1f -> %.1f mm; "
+    DEGISEN.append(("Dirsek + el (sag + sol)", "On kol govdesi", "%.1f mm uzadi (karar: kol x%.2f, Ahmet 24 Ekim 2026): dirsek ekseni -> bilek ekseni %.1f -> %.1f mm; "
                     "dirsek servosu ile bilek servosu arasindaki U bolum (yan duvarlar + on duvar) s %.2f'te kesit uzatmasiyla; tek baski parcasi kaldi" % (
                         TA.ON_KOL_UZAMA, TA.KOL_ORAN_HEDEF, DP.S_HORN[0], DP.S_HORN[0] + TA.ON_KOL_UZAMA, TA.ON_KOL_KES_S)))
     DEGISEN.append(("Dirsek + el (sag + sol)", "Bilek servosu (+ 4 M4 + somun) + bilek flansi + el", "%.1f mm daha asagi (on kolla); dirsek servosu ve dirsek ekseni yerinde" % TA.ON_KOL_UZAMA))
@@ -340,7 +340,7 @@ DEGISEN.append(("Dirsek + el (sag + sol)", "El", "yaka %.0f mm uzadi (O34 / O22 
 if CATAL_EK > 0:
     DEGISEN.append(("Dirsek + el (sag + sol)", "Dirsek catali (dis kol)", "dis kol (horn tarafi) %.0f -> %.0f mm, disa (+X; x %.1f -> %.1f): kol analizi dis kol "
                     "L3 SF 1,86 / L4 0,77 (kontrol ajani, 24 Ekim 2026); kopru ayni duzleme uzadi; ic yuz, horn, 625ZZ, pim, delikler ve eksen ayni; "
-                    "%.1f -> %.1f g (kol basina). Onay: Duffy (gorunum + carpisma sartiyla)" % (
+                    "%.1f -> %.1f g (kol basina). Onay: Ahmet (gorunum + carpisma sartiyla)" % (
                         TA.CATAL_DIS_KOL_ESKI, TA.CATAL_DIS_KOL, DP.DIS_KOL[1], X_DIS1, CATAL_INFO["sag"]["eski_g"], CATAL_INFO["sag"]["yeni_g"])))
     if TA.HORN_PUL_N:
         DEGISEN.append(("Dirsek + el (sag + sol)", "Catal-horn civatasi (4 x 2)", "M3x8 -> M3x%.0f DIN 912 + %d x DIN 125-A M3 pul (%.1f mm; M3x11 standart degil); "

@@ -8,7 +8,7 @@
 #   servo     dirsek/dirsek_montaj.py tork(): yercekimi torku S1 x S2 x dirsek x bilek izgarasinda (5 derece), pay = stall / tork;
 #             kafa kafa/kafa_montaj.py: tilt = yercekimi (+25 g kablo) + I alfa, pan = I alfa + rulman + kablo, alfa 26,2 rad/s2
 #             (60 derece 0,4 s'de ucgen profil, tahmini). Kollara ayni alfa ile ivme torku ek bilgi olarak.
-#   kol orani x1,00 / x1,15 / x1,25 / x1,36. Kontrol ajani (24 Ekim 2026, karar Duffy: x1,25 + omuz DS3235): taslak geometrisi TASLAK_KOL
+#   kol orani x1,00 / x1,15 / x1,25 / x1,36. Kontrol ajani (24 Ekim 2026, karar Ahmet: x1,25 + omuz DS3235): taslak geometrisi TASLAK_KOL
 #             secimine gore (girdi ile tutarlilik assert'li). '125': x1,25 taslak geometrisi (ek on kolda); x1,15 = on kol uzatmasi geri alinir,
 #             x1,36 = ek boy yine on kola (dogrusal); omuz stall'i servo geriliminde (OMUZ_SERVO_VERI, kol-analiz modeli). '115' + DS3218MG:
 #             eski yol (ek boy tup:yaka 30:19, stall 20) -> ayni girdiyle eski hesap.json bayt bayt ayni cikar (regresyon, 24 Ekim 2026).
@@ -32,7 +32,7 @@ ALFA = 4 * math.radians(60) / 0.4 ** 2           # kafa_montaj.py ile ayni profi
 STALL_DS, STALL_MG = 20.0, 9.4                  # DS3218MG (omuz raporu), MG996R @4,8 V (datasheet)
 AN = os.environ.get("TASLAK_HESAP_AN", os.path.join(HERE, "analiz"))     # girdi/cikti klasoru (regresyon icin degistirilebilir)
 
-# Omuz servosu verisi (kontrol ajani, 24 Ekim 2026; karar Duffy 24 Ekim: S1/S2 DS3235). Veri kol-analiz/NOTLAR.md "1) Servo verisi":
+# Omuz servosu verisi (kontrol ajani, 24 Ekim 2026; karar Ahmet 24 Ekim: S1/S2 DS3235). Veri kol-analiz/NOTLAR.md "1) Servo verisi":
 #   DS3218MG: proje degeri 20 kg*cm sabit (125 cm ve x1,15 hesaplari bununla; birebir korunur).
 #   DS3235  : 29 / 32 / 35 kg*cm @5 / 6 / 7,4 V (Robocombo tablosu + datasheet), 60 g; stall akimi tasarimda 3,0 A @6 V (tahmini, ihtiyatli).
 #             Stall, servonun S1 kalkisinda gordugu gerilimde (kol-analiz/kol_analiz.py ile ayni model): hat 6,0 V - 16 AWG ana hat

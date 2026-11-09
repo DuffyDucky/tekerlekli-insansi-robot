@@ -2,7 +2,7 @@
 # FC_SCRIPT=<bu dosya> freecad.exe <ascii baslatici>      (ana_montaj.py'den SONRA calistir)
 # 1) Betikle kaydedilen dosyada gizli gelen montaj/gruplar/parcalari gorunur yapar, renkleri verir, eklemlere gorunum
 #    nesnesi (ViewProviderJoint) kurar, "Kollari_oynat" simulasyonunu (Create Simulation nesneleri) ekler ve dosyayi
-#    GUI'den yeniden kaydeder: boylece Duffy dosyayi actiginda eklemler gorunur, simulasyon oynatilabilir.
+#    GUI'den yeniden kaydeder: boylece Ahmet dosyayi actiginda eklemler gorunur, simulasyon oynatilabilir.
 # 2) On, yan, izometrik gorunumler -> gorsel/
 # 3) Simulasyonun cozucu karelerinden iki kolun ve kafanin birlikte hareketi (omuz + dirsek + bilek + pan + tilt) -> %TEMP%/robot-montaj-kare/
 #    (GIF montaj_rapor.py'de)

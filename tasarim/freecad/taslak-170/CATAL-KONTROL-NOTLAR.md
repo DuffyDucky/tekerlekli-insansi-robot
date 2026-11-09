@@ -70,7 +70,7 @@ kol-analiz/, rapor.html'leri yeniden üret. Mevcut modüllere, arayuz.py, montaj
   "Dirsek çatalı kontrolü" bölümü id=catal, açık iş satırı). "Yeniden hesaplanacak" notu yok.
 - Konsolda cp1254 hatası: taslak_hesap / raporlar PYTHONIOENCODING=utf-8 ile koşulmalı (betik sorunu değil).
 
-## Durum: bitti. Açık: Duffy onayı; L4 1,07 < 1,2 (8 mm hesapla 1,23; onaylanmamış seçenek); M3x10 maliyet.json'da yok; 45° destek kozmetik basamak.
+## Durum: bitti. Açık: Ahmet onayı; L4 1,07 < 1,2 (8 mm hesapla 1,23; onaylanmamış seçenek); M3x10 maliyet.json'da yok; 45° destek kozmetik basamak.
 
 # Dış kol 7 → 8 mm (M3x12 + 2× DIN 125-A pul): CAD kontrol ajanı notları (ara kayıt)
 

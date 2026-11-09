@@ -3,7 +3,7 @@
 Dört inceleme ajanı (mekanik, çakışma ve hareket, elektrik ve malzeme, kod ve belge) projeyi yalnız okuyarak taradı.
 Kritik ve yüksek bulguların hepsini orkestratör kaynak koddan ya da hesaptan yeniden kontrol etti
 (✔ = orkestratör doğruladı, ◐ = ajan ölçtü/hesapladı, ○ = olası, ölçüm ya da datasheet gerekiyor).
-**Hiçbir düzeltme uygulanmadı. Duffy "başla" deyince başlanacak.**
+**Hiçbir düzeltme uygulanmadı. Ahmet "başla" deyince başlanacak.**
 
 ## Önce bilinmesi gerekenler (baskı ve siparişi şimdiden etkiliyor)
 
@@ -16,7 +16,7 @@ Kritik ve yüksek bulguların hepsini orkestratör kaynak koddan ya da hesaptan 
 4. **5 V sonar sinyali 3,3 V'luk ESP32 girişine doğrudan bağlanıyor.** Arada gerilim bölücü yok, ESP32 girişi zarar
    görebilir. ✔ (malzeme listesinde direnç yok)
 
-## Duffy'nin vereceği kararlar (plan buna göre dallanır)
+## Ahmet'in vereceği kararlar (plan buna göre dallanır)
 
 | # | Karar | Seçenekler | Önerim |
 |---|---|---|---|
@@ -26,10 +26,10 @@ Kritik ve yüksek bulguların hepsini orkestratör kaynak koddan ya da hesaptan 
 | K4 | Kamera bağlantısı | CSI şerit kablo yaklaşık 1,3 m gerekiyor, bu uzunluk sınırda ve kafa dönerken kablo bükülür / USB kamera | USB kamera: pan bükülmesine dayanıklı. Camera Module 3 alındıysa CSI'dan HDMI'a çeviren uzatıcı. |
 | K5 | Depo boyutu | Büyük üretilmiş dosyalar (STEP 18 MB, rapor.html sayfaları toplam ~15 MB) her güncellemede depoya yeniden giriyor. `.git` şimdiden 86 MB. | Bunları GitHub "Release" eki yap, depoda yalnız betikler ve küçük dosyalar kalsın. |
 
-**14 Ekim 2026 kararları (Duffy: "önerilerin tamam"):** K1 önce ölç, kötüyse ön iki teker omni; yay çizerek dönüş her
-durumda. K2 Nextion. K3 Victron SuperPack 12,8/20. K5 büyük dosyalar Release ekine. **K4 açık:** Duffy Pi 5'i kafaya
+**14 Ekim 2026 kararları (Ahmet: "önerilerin tamam"):** K1 önce ölç, kötüyse ön iki teker omni; yay çizerek dönüş her
+durumda. K2 Nextion. K3 Victron SuperPack 12,8/20. K5 büyük dosyalar Release ekine. **K4 açık:** Ahmet Pi 5'i kafaya
 koymayı düşünüyor ("şerit kablo için, tam kararlaştıramadım"); USB kamera ile karşılaştırılacak.
-**K4 kararı (14 Ekim 2026, akşam):** Pi 5 kafaya gider, havalandırma yarıklarıyla (Duffy, önerilen seçeneği seçti).
+**K4 kararı (14 Ekim 2026, akşam):** Pi 5 kafaya gider, havalandırma yarıklarıyla (Ahmet, önerilen seçeneği seçti).
 Dayanak `planlama/adim1/P-pi-kafada.md`: yer sığıyor, eğme servosu payı ≈1,96×, kafa içi ≈49 °C (servo sınırı 55 °C).
 Boyundan 12 V + tek veri kablosu geçer, kafada 5 V çevirici; kamera şeridi 300 mm. İş 3. adıma girer.
 
@@ -60,7 +60,7 @@ Kural gereği her modül iki ajana bölünür: önce tasarım ajanı, sonra ayr�
 | E3 | YÜKSEK | **Acil stop yeniden başlatma.** Mantar bırakılınca röle kendiliğinden çekiyor, servolar tanımsız bir anda güç alıyor. Röle bobini ESP32'den bir "devreye al" komutuyla kumanda edilsin; mantar butonun NC kontağı seri kalsın. ◐ | M |
 | E4 | YÜKSEK | Pi 5 beslemesi: düz 5,1 V ile USB'lere 600 mA sınırı geliyor. `usb_max_current_enable=1` ayarı, 5 V hattına aşırı gerilim koruması (TVS). ESP32 iki yerden besleniyor (Pi USB'si ve çevre 5 V hattı), araya diyot konur ya da tek kaynağa inilir. ○ | S |
 | E5 | ORTA | ESP32 pin planı tablosu (26 sinyal, ~24 kullanılabilir GPIO). Başlangıçta durumu önemli pinler ve ADC2 kullanılmaz. | S |
-| E6 | ORTA | Fren: acil stopta motorlar boşa düşer. Yazılım freni düz zeminde ≤ 1,8 m/s² ile sınırlanır (karar 29.10, 1,65 m: düzde 0,5 kg el yüküyle bile devrilme payı ≥ 1,54; `planlama/y2/Y2b-ivme.json` `fren_pay`); rampada / eğimde yavaşlama ve fren de ≤ 0,1 m/s² (karar 29.10, Duffy: rampada 1,8 frende ev pozu payı 1,31 < 1,5). İsteğe bağlı: motor uçlarını röleyle kısa devre eden dinamik fren. Güç kesilince kollar düşer, bunun için yavaş düşüş çözümü. ○ | M |
+| E6 | ORTA | Fren: acil stopta motorlar boşa düşer. Yazılım freni düz zeminde ≤ 1,8 m/s² ile sınırlanır (karar 29.10, 1,65 m: düzde 0,5 kg el yüküyle bile devrilme payı ≥ 1,54; `planlama/y2/Y2b-ivme.json` `fren_pay`); rampada / eğimde yavaşlama ve fren de ≤ 0,1 m/s² (karar 29.10, Ahmet: rampada 1,8 frende ev pozu payı 1,31 < 1,5). İsteğe bağlı: motor uçlarını röleyle kısa devre eden dinamik fren. Güç kesilince kollar düşer, bunun için yavaş düşüş çözümü. ○ | M |
 | E7 | ORTA | Etek içi ısı: XL4016'ların ısıyı aktaracağı bir yol yok (naylon burç üzerinde duruyorlar). Ölçüm planı, ısı pedi, etek arkasında delik ya da fan. ○ | M |
 | E8 | ORTA | Akü sürelerini akü raporuyla hizala. Yoğun kullanım senaryosu 100 W ve üstü alınır (≈ 2,5 saat). ◐ | S |
 | E9 | DÜŞÜK | Sigorta: 5 A iki yerde (F4 ve F5) kullanılıyor ama sette bir tane var. İkinci 5 A sigorta eklenir. Ön şarj direnci ya da NTC değerlendirilir. ✔ | S |

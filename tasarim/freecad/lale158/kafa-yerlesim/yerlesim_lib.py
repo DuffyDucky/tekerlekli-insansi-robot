@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Lale 1,58 m - kafa ici ses/USB yerlesim SECENEKLERI: secenek geometrisi (mevcut modeli DEGISTIRMEZ; hicbir dosyaya yazmaz).
 # Cerceveler: "bas" = tilt ekseni orijin (kafa10_lib), "ky" = kafa yereli (bas + (0, YT, ZT)), "g" = global ev pozu (ky + (0, 1290, 0)).
-# Duffy kararlari 04.11.2026: PAM8403 + USB ses karti kalir; MAX98357A secimle birlikte cikacak (burada yalniz kutle hesabinda dusulur, model degismez).
+# Ahmet kararlari 04.11.2026: PAM8403 + USB ses karti kalir; MAX98357A secimle birlikte cikacak (burada yalniz kutle hesabinda dusulur, model degismez).
 import os, sys, math
 sys.dont_write_bytecode = True
 import FreeCAD as App

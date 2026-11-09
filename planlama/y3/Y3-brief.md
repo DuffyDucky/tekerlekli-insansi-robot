@@ -16,7 +16,7 @@ CAD'de yok → M6 CAD ile. Çelişkide dongu.md esas. **Liste 125 cm CAD'de öl�
 - Y4: `dirsek-analiz.json` yeniden üretimi (S2 ~1.770 mm; Y3'te dirsek yeniden koşulursa erken düzelir), `kabuk_rapor.py` (Nextion), tam
   çakışma taraması, M6_erisim / M6_ek yeniden koşusu, regresyon.
 - Y4 / Y6: `tasarim/freecad/OZET.md`, `taban/taban_rapor.py` (0,25 m/s²), `Lale-Proje-Ozeti.txt`, `raporlar/kaynaklar/05-fiyat-arastirmasi.md`.
-- Duffy kararı (karar verme, sor): boyun adaptörü PETG → PETG-CF; KZ2 el yükü ~100 g.
+- Ahmet kararı (karar verme, sor): boyun adaptörü PETG → PETG-CF; KZ2 el yükü ~100 g.
 - main'de, dokunma, listele: köprü notundaki "USB 1,25 m" satırı.
 
 ## Depo ve sınırlar
@@ -32,5 +32,5 @@ CAD'de yok → M6 CAD ile. Çelişkide dongu.md esas. **Liste 125 cm CAD'de öl�
 yerinde, servo besleme 3 hat (sağ kol / sol kol / kafa pan + tilt), maliyet genel 103.166,51 TL (Adım 0'dan sonra; önce 109.001,35).
 
 ## Bitince
-`planlama/dongu.md` Y3 satırı, tek commit, rapor (≤ 15 satır): hash, yapılanlar (sayısal), yapılamayanlar, Duffy kararları, köprü notuna
+`planlama/dongu.md` Y3 satırı, tek commit, rapor (≤ 15 satır): hash, yapılanlar (sayısal), yapılamayanlar, Ahmet kararları, köprü notuna
 eklenecekler, bağımsız kontrol için 3–5 kritik iddia. İlerleme: `planlama/y3/Y3-gunluk.md`.

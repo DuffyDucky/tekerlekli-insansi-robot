@@ -1,7 +1,7 @@
 # Dirsek çatalı dış kolu 5 → 7 mm: CAD tasarım ajanı notları (ara kayıt)
 
 Durum: başladı (24 Ekim 2026). Gerekçe: kontrol ajanı (KOL125-KONTROL-NOTLAR.md, kol-analiz/) dirsek çatalı dış kolu
-L3 (servo stall) SF 1,86, L4 (darbe) 0,77. Duffy'nin şartı: "absürd gözükmez ve çarpışmaya yol açmazsa onaylarım".
+L3 (servo stall) SF 1,86, L4 (darbe) 0,77. Ahmet'in şartı: "absürd gözükmez ve çarpışmaya yol açmazsa onaylarım".
 Onaysız öneriler (6806, 6808 çifti, kelepçeli horn, 20 AWG, XL4016 6,4 V) uygulanmaz.
 
 ## Hangi kol "dış" kol
@@ -44,9 +44,9 @@ Onaysız öneriler (6806, 6808 çifti, kelepçeli horn, 20 AWG, XL4016 6,4 V) uy
   L4 ≥ 1,2 için t ≈ 8 mm gerekir (8 mm: ~1,23). Kontrol ajanı kol_analiz'de PLAKA_5x32 ve horn ezilme t 5'i 7'ye almalı.
 - Bilinen: analiz/*.json ve kol-analiz eski kütleyle (fark +6,4 g, ihmal edilebilir); maliyet.json / BOM'a M3x10 (8 adet) eklenmedi
   (dokunulmadı); 45° destek x 224,9'da bitiyor, dış 2 mm şerit köprü üstünde düz (baskıda 2 mm çıkıntı).
-- Durum: Duffy onayı bekliyor ("absürd gözükmez ve çarpışmaya yol açmazsa").
+- Durum: Ahmet onayı bekliyor ("absürd gözükmez ve çarpışmaya yol açmazsa").
 
-# Dış kol 7 → 8 mm (Duffy kararı "8mm yap 3 ünün görünümünü ver"): CAD tasarım ajanı notları
+# Dış kol 7 → 8 mm (Ahmet kararı "8mm yap 3 ünün görünümünü ver"): CAD tasarım ajanı notları
 
 ## Durum (24 Ekim 22:51, 3 saatlik aradan dönüş)
 - Ara öncesi yalnız okuma yapıldı (CLAUDE.md, CATAL-NOTLAR, CATAL-KONTROL-NOTLAR, taslak_ayar/parcalar/montaj/gorsel, dirsek_lib). Hiçbir dosya

@@ -586,7 +586,7 @@
    "hedef": 1.25,
    "secilen": 1.2501,
    "secim": "125",
-   "karar": "Duffy, 24 Ekim 2026: x1,25 + omuz DS3235; ek 32,4 mm on kola (406,9 mm, x1,2501)",
+   "karar": "Ahmet, 24 Ekim 2026: x1,25 + omuz DS3235; ek 32,4 mm on kola (406,9 mm, x1,2501)",
    "boy_eski_mm": 325.5,
    "boy_yeni_mm": 406.9,
    "ust_kol_uzama_mm": 30.0,
@@ -605,7 +605,7 @@
      "ust_kol": 30.0,
      "on_kol": 32.4,
      "el": 19.0,
-     "karar": "Duffy, 24 Ekim 2026: x1,25 + omuz DS3235; ek 32,4 mm on kola (406,9 mm, x1,2501)"
+     "karar": "Ahmet, 24 Ekim 2026: x1,25 + omuz DS3235; ek 32,4 mm on kola (406,9 mm, x1,2501)"
     }
    },
    "omuz_servo": {

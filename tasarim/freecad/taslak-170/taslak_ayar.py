@@ -4,7 +4,7 @@
 # (kesin model belli degil), otonomi yok (lidar / lidar diregi / haritalama kapsam disi), kumanda telefondan.
 # Bu klasor mevcut modulleri ve ana montaji DEGISTIRMEZ: modul betikleri (../<modul>/*_parcalar.py) oldugu gibi import edilir,
 # varyant farklari (uzayan direk, uzatma kabuk bantlari, yeni kafa, uzun kol) burada ve taslak_parcalar.py'de uygulanir.
-# Kararlar (24 Ekim 2026, Duffy): kol x1,25 (ek on kola), omuz S1/S2 servolari DS3235 (bolum 2).
+# Kararlar (24 Ekim 2026, Ahmet): kol x1,25 (ek on kola), omuz S1/S2 servolari DS3235 (bolum 2).
 # Koordinat: global (../arayuz.py): orijin zemin + robot merkezi, +X sag, +Y yukari, +Z ileri (yuz), mm.
 # Kaynagi olmayan deger "tahmini".
 import os, sys, math
@@ -41,7 +41,7 @@ DIREK_Y1_YENI = A.DIREK_Y1 + DY             # 1370
 DIREK_L_YENI = DIREK_Y1_YENI - A.DIREK_Y0   # 1235,5 (1 m stok yetmez: 1,5 / 2 m boy ya da ozel kesim; acik is)
 
 # =====================================================================================================
-# 2) Kol (boyla orantili x1,36 yerine). KARAR (Duffy, 24 Ekim 2026): x1,25 (kol analizi kol-analiz/rapor.html onerisi).
+# 2) Kol (boyla orantili x1,36 yerine). KARAR (Ahmet, 24 Ekim 2026): x1,25 (kol analizi kol-analiz/rapor.html onerisi).
 #    Eski x1,15 secenegi geri alinabilir: TASLAK_KOL=115 ortam degiskeniyle yeniden uretilir (varsayilan 125).
 #    Uzatma uc yere dagitilir (omuz ekseninden el ucuna):
 #      UST_KOL_UZAMA: ust kol tupu (omuz Kol grubu, PETG tup), dirsek ekseni bu kadar asagi
@@ -56,7 +56,7 @@ DIREK_L_YENI = DIREK_Y1_YENI - A.DIREK_Y0   # 1235,5 (1 m stok yetmez: 1,5 / 2 m
 KOL_BOY_ESKI = -A.DIRSEK["el_ucu"][1]       # omuz ekseninden el ucuna 325,5
 KOL_SECENEK = {
     "115": dict(oran=1.15, ust_kol=30.0, on_kol=0.0, el=19.0, karar="21 Ekim 2026 taslak (tasarim ajani): 374,5 mm, x1,1505"),
-    "125": dict(oran=1.25, ust_kol=30.0, on_kol=32.4, el=19.0, karar="Duffy, 24 Ekim 2026: x1,25 + omuz DS3235; ek 32,4 mm on kola (406,9 mm, x1,2501)"),
+    "125": dict(oran=1.25, ust_kol=30.0, on_kol=32.4, el=19.0, karar="Ahmet, 24 Ekim 2026: x1,25 + omuz DS3235; ek 32,4 mm on kola (406,9 mm, x1,2501)"),
 }
 KOL_SECIM = os.environ.get("TASLAK_KOL", "125")
 assert KOL_SECIM in KOL_SECENEK, "TASLAK_KOL 115 ya da 125 olmali"
@@ -70,7 +70,7 @@ KOL_BOY_YENI = KOL_BOY_ESKI + UST_KOL_UZAMA + ON_KOL_UZAMA + EL_UZAMA     # x1,2
 KOL_ORAN = KOL_BOY_YENI / KOL_BOY_ESKI
 ON_KOL_KES_S = 42.75                        # on kol kesit yeri: dirsek ekseninden on kol boyunca (ara duvar alti 42,0 ile bilek servosu tabani 43,5 arasi)
 
-# Omuz servolari (S1 one-arka, S2 yana acma; iki kol). KARAR (Duffy, 24 Ekim 2026): DS3218MG -> DS3235.
+# Omuz servolari (S1 one-arka, S2 yana acma; iki kol). KARAR (Ahmet, 24 Ekim 2026): DS3218MG -> DS3235.
 # Govde DS3218 ile ayni kabul (40 x 20 x 40, kulak delikleri 49,5 x 10, 25T cikis): geometri DEGISMEDI, yalniz ad / kod / not.
 # Govde yuksekligi kaynaklarda 38,5 (DS3235 datasheet, Rochester ME240 kopyasi) / 40 (Robocombo tablosu) / 40,5 (probots) ->
 # servo gelince kumpasla dogrulanacak. Kutle 60 g (datasheet; DS3218 ile ayni). Veri: kol-analiz/NOTLAR.md "1) Servo verisi".
@@ -86,9 +86,9 @@ OMUZ_SERVO_ESKI = OMUZ_SERVO_SECENEK["DS3218MG"]
 # Dirsek catali DIS kolu (horn tarafi, govdeden uzak; dirsek_parcalar.DIS_KOL x 219,9...224,9) kalinligi. Kol analizi (kontrol ajani,
 # 24 Ekim 2026): x1,25 + DS3235'te dis kol L3 (stall) SF 1,86, L4 (darbe) 0,77 -> 5 -> 7 mm (tasarim ajani, CATAL-NOTLAR.md).
 # Ic yuzu horn'a oturdugu icin kalinlastirma DISA (+X): x 224,9 -> 224,9 + (t - 5); kopru de ayni duzleme uzar; 4 horn civatasi
-# M3x(8 + t - 5) (uc ayni yerde). Delikler, 625ZZ, pim, eksenler degismez. ONAY: Duffy ("absurd gozukmez ve carpismaya yol acmazsa").
+# M3x(8 + t - 5) (uc ayni yerde). Delikler, 625ZZ, pim, eksenler degismez. ONAY: Ahmet ("absurd gozukmez ve carpismaya yol acmazsa").
 # TASLAK_CATAL_DIS_KOL=5 eski geometriyi birebir verir.
-# KARAR (Duffy, 25 Ekim 2026: "8mm yap 3 unun gorunumunu ver"): 8 mm (kontrol ajani hesabi: L3 SF 2,99, L4 1,23). 7 mm (24 Ekim)
+# KARAR (Ahmet, 25 Ekim 2026: "8mm yap 3 unun gorunumunu ver"): 8 mm (kontrol ajani hesabi: L3 SF 2,99, L4 1,23). 7 mm (24 Ekim)
 # TASLAK_CATAL_DIS_KOL=7 ile birebir yeniden uretilir (45 der. destek o zaman eski haliyle, asagida).
 CATAL_DIS_KOL_ESKI = 5.0
 CATAL_DIS_KOL = float(os.environ.get("TASLAK_CATAL_DIS_KOL", "8"))

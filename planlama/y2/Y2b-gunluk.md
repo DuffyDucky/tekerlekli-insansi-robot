@@ -18,7 +18,7 @@ Brief: `planlama/y2/Y2b-brief.md`. **Önce bu günlüğü ve `git status`'u oku,
 ## Günlük
 - 2026-10-29: başladı (HEAD `2b07779`). Okundu: dongu.md, Y2a-kontrol, Y2a-gunluk, Y2a-brief, kararlar-2026-10-29.
   Lidar/otonomi: `c8c4de7` demoya "Otonomi (öneri)" düğmesi + paneli eklemiş; hoca kararı 21.10 "otonomi iptal, ROS 2 yok"
-  (DuffyOS günlüğü) ve taslak-170 "otonomi kapsam dışı" → demodan kaldırılacak.
+  (not deposu günlüğü) ve taslak-170 "otonomi kapsam dışı" → demodan kaldırılacak.
 - **4 İvme (bitti).** Betik `planlama/y2/Y2b-ivme.py` → `Y2b-ivme.json` (FreeCAD, ~2 dk). Yöntem Y2a kontrolünün aynısı
   (`Y2a-K-devrilme.py`): parça kütle merkezlerinden AM (poz = `moduller.beklenen`, +400 g kablo payı), teker merkez hattı
   x ±216 (iz 432) / z ±185, a_dev = g (d cos θ − h sin θ) / h; pay = a_dev / a_robot, ölçüt ≥ 1,5 ⇒ **a_sınır = a_dev,min / 1,5**.

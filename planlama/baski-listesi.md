@@ -36,7 +36,7 @@ Kabukta destek isteyen parçalar: Gogus bandi sag, Gogus bandi sol, Gogus ekrani
 **Filament:** net **düz PETG 6,47 kg** (S1 kaseti dahil) + **PETG-CF 1,16–1,21 kg** (`Y2b-baski.json`; omuz doluluğu 0,8–0,9
 ve destek dahil; 29.10: boyun yükseltme adaptörü 70 g PETG'den CF'ye geçti, toplam aynı). Tolerans kuponları ayrıca ≈ 0,1 kg PETG ve ≈ 0,2–0,3 kg PETG-CF. Başarısız baskı payıyla **9 makara beyaz PETG + 1,5 kg siyah PETG-CF (3 × 0,5 kg)** (v4 malzeme listesi; filamenti firma + ekip karşılar, satın alınmaz). Parça + kupon PETG-CF 1,36–1,51 kg: 1,5 kg'de pay neredeyse yok, doğrulanmadı.
 
-## Renk (Duffy, 11 Ekim 2026: "Tamamen beyaz")
+## Renk (Ahmet, 11 Ekim 2026: "Tamamen beyaz")
 
 | Renk | Parçalar |
 |---|---|
@@ -66,7 +66,7 @@ ve destek dahil; 29.10: boyun yükseltme adaptörü 70 g PETG'den CF'ye geçti, 
 | kafa | Eğme çatalı | 1 | Tilt horn torku (tilt sınırı ±13°, karar 29.10). Montajda tilt servosundan **önce** takılır (M6 C3) |
 | kafa | Boyun yükseltme adaptörü | 1 | Pan torku ve kafa ağırlığı (boyun mili ile eğme çatalı arasında; karar 29.10) |
 
-**Karar 29.10 (Duffy):** Y2a'da eklenen **boyun yükseltme adaptörü** (boyun mili ile eğme çatalı arasında, pan torku ve kafa ağırlığı
+**Karar 29.10 (Ahmet):** Y2a'da eklenen **boyun yükseltme adaptörü** (boyun mili ile eğme çatalı arasında, pan torku ve kafa ağırlığı
 yolunda) **PETG-CF** ile basılır; CAD'de (`kafa10_lib.py`) malzeme PETG-CF. Kütle aynı (ρ 1,27 tahmini, doluluk 0,8: 66,4 g; filament 70 g).
 
 **Neden PA-CF değil:** Nem çeker, kurutma ister, pahalı. Bu yüklerde (el yükü ≈ 100 g sınırı, jestler) PETG-CF yeterli olmalı (tahmini).

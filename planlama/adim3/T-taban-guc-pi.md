@@ -44,7 +44,7 @@ Dokunulmayan: omuz, dirsek, kabuk, iskelet, montaj; `tasarim/cad/demo_uret.py` (
    **Motor + zemin ölçümü omni siparişinden önce.** Ayrıntı `elektrik.md` E0.
 2. Omni açılırsa: etek ön teker boşluğu 10,55 mm (kabuk), `montaj/moduller.py` teker adı, göbek adaptörü teyidi, Ø127/Ø125 %1,6 hız farkı.
 3. Etek arka bandına havalandırma yarıkları (kabuk), E7 ölçümü sonrası fan.
-4. Hoparlör yeri (Duffy), mikrofon yeri CAD'de yok.
+4. Hoparlör yeri (Ahmet), mikrofon yeri CAD'de yok.
 5. Pololu D36V50F5 TR'de yok (ithal) — eşdeğer arama.
 6. Pin planı: ön enkoderlere pin yok (E5).
 7. Röle bobini gerçek gücü (~1,8 W) akü hesabında 0,3 W (E8, 5. adım).

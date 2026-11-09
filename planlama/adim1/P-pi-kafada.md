@@ -90,7 +90,7 @@ Dar boğaz ≈ **137 mm²** (mil penceresi). Kesitler tipik kablo çaplarıyla (
   Pi'ye USB-C kablo kırığı ile verilirse PD yok → USB 600 mA sınırı; `usb_max_current_enable=1` (E4'te zaten açık iş).
 - **ESP32:** USB (CP210x/CH340) 1,25 m, ±90° burulur; yalnız veri (VBUS kesik) kablo, çünkü ESP32 çevre 5 V'tan besleniyor (E4: iki kaynak). UART (3,3 V) seçeneği gürültüye daha açık.
 - **Nextion:** UART'ı Pi'den değil **ESP32'den** sür (Pi → ESP32 JSON komutu); böylece boyundan sinyal geçmez, 5 V çevre hattı zaten tabandan göğüse gidiyor (YOL 11). Nextion TX 3,0-5,0 V → okuyan taraf için 1k/2k bölücü (`donanim/datasheet/README.md`). Pi'den sürmek istenirse TX/RX 2 tel ~0,7 m (kesite +2,3 mm²).
-- **Hoparlör:** MAX98357A I2S (BCLK ~1,4 MHz) boyundan **geçirilmemeli** (korumasız ~0,7 m, risk; doğrulanmadı). Amfi Pi yanında (kafada, 2 g); hoparlör ya kafada (Ø40×20, 27 g, üst bölmede yer var; tilt'e +27 g) ya göğüste (2 tel). Hoparlör yeri CAD'de hâlâ yok (`kabuk_rapor.py` "hoparlör yeri seçilince"); karar Duffy'nin.
+- **Hoparlör:** MAX98357A I2S (BCLK ~1,4 MHz) boyundan **geçirilmemeli** (korumasız ~0,7 m, risk; doğrulanmadı). Amfi Pi yanında (kafada, 2 g); hoparlör ya kafada (Ø40×20, 27 g, üst bölmede yer var; tilt'e +27 g) ya göğüste (2 tel). Hoparlör yeri CAD'de hâlâ yok (`kabuk_rapor.py` "hoparlör yeri seçilince"); karar Ahmet'in.
 - **Mikrofon:** kafada (USB, Pi'nin USB'sine kısa). CAD'de yeri yok; ReSpeaker Lite ölçüsü doğrulanmadı.
 - Boyundan geçen yalnız 12 V, ESP32 USB, tilt servo (6 V + sinyal) ve opsiyonel Nextion/hoparlör kalır; CSI, HDMI ve LCD/mikrofon USB'si kafa içinde kısa kalır. Şerit/HDMI dönen mil içinde bükülmez.
 

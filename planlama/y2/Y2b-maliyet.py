@@ -98,7 +98,7 @@ guncelle("ESP32 – Pi USB kablosu", model="USB-A → micro USB, 2 m, veri",
 
 # --- uretim: baski (Y2b-baski.json), lazer, braket, baglanti (robot-bom.csv)
 guncelle("PETG filament", "Microzey HS PETG beyaz", ver="v3", adet=8,
-         **{"not": "Duffy 11 Ekim 2026: tamamen beyaz. Y2b (1,65 m): düz PETG parçalar 6,75 kg (63 parça, planlama/y2/Y2b-baski.json); "
+         **{"not": "Ahmet 11 Ekim 2026: tamamen beyaz. Y2b (1,65 m): düz PETG parçalar 6,75 kg (63 parça, planlama/y2/Y2b-baski.json); "
                    "8 + 1 (kupon + pay) makara = %31 pay. Fiyat 11 Ekim 2026"})
 guncelle("PETG filament (kupon + pay)", **{"not": "PETG kuponlar (B, C, E) ≈ 0,1 kg + fire payı; 9. makara (ihtiyaç 6,85 kg, 9 kg). Fiyat 11 Ekim 2026"})
 guncelle("PETG-CF filament (eklem parçaları)",

@@ -57,7 +57,7 @@ Seçim: **C** (en az geometri, çakışma imkânı yalnız ölçülerek; yeni pa
   | Aynı uçlar, 1 tur spiral (gövdesiz saat yayı) | R ≈ 38 ama uç pozda r ≈ 80–90'a şişiyor ve tüpün sektöründen geçiyor (yana küçükken çarpar) |
   | 2 tur spiral, L 600 | r 34…61, yine tüp sektöründen geçiyor + katlar üst üste biniyor |
   | G göbek üstünde (tüpün tam karşısı, hep 180° uzak), J kabuk ped üst-arka, yalnız üst yarıda lop | en iyi R 10,2 mm (< 10,5 sınır), lop eksenden ~95 mm'ye taşıyor, kontrolsüz |
-- Sağlam çözüm için **yeni parça gerekiyor** (en az geometri ilkesinin dışında, karar Duffy/orkestratörün):
+- Sağlam çözüm için **yeni parça gerekiyor** (en az geometri ilkesinin dışında, karar Ahmet/orkestratörün):
   1. **Kablo kaseti (yuvarlanan U lop):** göbeğe bağlı ince tambur halkası (r ≈ 31,5–33, x 153…161, rulman kapağını 1,5 mm boşlukla sarar) + gövdeye bağlı üst-arka yay duvarı (r ≈ 61–64, tüpün hiç girmediği ~145° sektörde). U yarıçapı ≈ (61 − 33 − 4,2)/2 ≈ 12 mm ≥ 11,2; S1 180° dönünce U ≈ 90° kayar, sektöre sığar (125° < 145°, pay az). Tambur halkası göbekte (M4'ün baskı analizindeki parça) değişiklik, yay duvarı yeni baskı parçası + kabuk üst kapağına bağlantı.
   2. **Omuz üstü büyük serbest lop** (G göbek üstü, J üst kapak/arka): ek parça yok ama R ≈ 10 (sınırın altı), lop omuzdan ~95 mm dışarı taşıyor, kontrolsüz.
   3. **S1 aralığını daraltmak** (yazılım): 180° → ör. 120° olursa serbest lop küçülür; bu bir kinematik/jest kararı, ölçülmedi.

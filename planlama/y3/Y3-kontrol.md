@@ -39,7 +39,7 @@ tablaya çöker, dilimleyicide bakılmalı. K4: 1268 dikişi arka bindirmesi ±9
 kalktı; arkada iki yarıyı artık kapağın 7 M3'ü bağlıyor (kapak açıkken göğüs arkası y 1100…1268 serbest; servis için kabul). H1 ±32:
 dolgu şeridi tek katı, iki yanda 6 mm et, kapak vidaları şeridin dışında (x ±50) ✔. Ø30 anahtar deliği H1 kapağına 8,4 mm, düğme
 zarfı (Ø40) 3,4 mm ✔. **Sigorta erişimi:** kutu 105 × 60, açıklık 64 × 50; 2 × 3 dizilişte altı sigorta açıkta, 1 × 6 dizilişte uçtaki
-ikisi kapak altında → gerçek kutu seçilince karar (bkz. Duffy). **K1 vida boyu:** M5×16 ucu braket iç yüzünden 3,3 mm içeride; perçin
+ikisi kapak altında → gerçek kutu seçilince karar (bkz. Ahmet). **K1 vida boyu:** M5×16 ucu braket iç yüzünden 3,3 mm içeride; perçin
 somunun dişi gövdenin uç kısmındadır (yakın kısım çökme bölgesi) → kavrama ~2 diş olabilir; kontrol yalnız "dibe vurmuyor" bakıyor.
 
 ### c. Taban — GEÇTİ
@@ -103,7 +103,7 @@ kaldırır). Y4 için ek: `M6_erisim.py:27` `ISO7380_S`'de M5 yok → yeni M5×1
    maliyet 4 yuva).
    DÜZELTİLDİ 29.10: 7,5 A × 2 + 5 A (C) + şarj 10 A, yuva × 4, ek bıçak sigorta 6 (`maliyet.json` ile aynı).
 
-**Duffy kararı gerektirenler:**
+**Ahmet kararı gerektirenler:**
 - **H1 sigorta erişimi:** gerçek 6 yollu kutu 1 × 6 dizilişliyse uçtaki iki sigorta kapak altında kalır. Seçenek: (a) kutu seçilince ölç,
   uç yuvalara yedek / boş koy; (b) dolgu şeridi dikişlerini kaydırıp açıklığı ±44'e çıkar (kabuk yeniden).
   KARAR 29.10: (a) açıklık ±32 kalır; kutu alınınca ölçülür, uçtaki iki yuva yedek sigorta için ayrılır (`elektrik.md`, karar 14).

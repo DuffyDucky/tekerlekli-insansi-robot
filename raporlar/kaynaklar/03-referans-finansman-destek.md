@@ -4,7 +4,7 @@ created: 2026-09-26
 ---
 
 > Claude Opus alt ajan raporu, 26 Eylül 2026, olduğu gibi. Rakamlar ajanın beyanıdır; "(t)", "tahmini", "doğrulanmadı" işaretleri korunmuştur.
-> Not (Echo): Ajan tek kişilik ve 2 dönemlik bir proje varsaydı. Duffy'nin cevabı: 4 kişi, normalde 1 dönem, başarılı olursa 2 dönem, okul/hoca destekli bütçe. Birleşik rapor buna göre düzeltildi.
+> Not (Echo): Ajan tek kişilik ve 2 dönemlik bir proje varsaydı. Ahmet'in cevabı: 4 kişi, normalde 1 dönem, başarılı olursa 2 dönem, okul/hoca destekli bütçe. Birleşik rapor buna göre düzeltildi.
 
 # Tekerlekli insansı robot projesi: araştırma raporu (Eylül 2026)
 

@@ -1,6 +1,6 @@
 # Lale 1,70 m TASLAK - KOL ANALIZI: kol orani (x1,15 / x1,25 / x1,36) x omuz servosu (DS3218MG / DS3235)
 # Kol analiz ajani, 24 Ekim 2026. Sistem Python'u (numpy), FreeCAD gerekmez. Ana taslak dosyalarini DEGISTIRMEZ.
-# Kontrol ajani, 24 Ekim 2026 (karar Duffy: x1,25 + omuz DS3235, ek on kolda): taban geometrisi artik x1,25 taslak (parcalardan);
+# Kontrol ajani, 24 Ekim 2026 (karar Ahmet: x1,25 + omuz DS3235, ek on kolda): taban geometrisi artik x1,25 taslak (parcalardan);
 # varyantlar taslak_hesap.kol_orani_on_kol ile ayni (ek boy on kolda); onceki sonuc (git e8697ac, dogrusal tup:yaka) 'onceki' altinda.
 #
 # Girdi: ../analiz/girdi-yeni-444.json (+520) (taslak_analiz.py kutle bolumu), ../kutle.json (parca kutle/AM), ../taslak_hesap.py

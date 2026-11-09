@@ -57,7 +57,7 @@ o = ["<!doctype html><html lang='tr'><head><meta charset='utf-8'><meta name='vie
 o.append("<h1>Kol analizi: ×1,25 (ek ön kolda) + DS3235 <span class='rozet'>TASLAK</span></h1>")
 GEO = D["geometri"]
 o.append("<div class='sub'>Lale 1,70 m taslağı (<code>taslak-170/</code>). İlk analiz 24 Ekim 2026 (kol analiz ajanı, ×1,25 doğrusal tüp : yaka varsayımıyla); "
-         "<b>Duffy'nin kararından sonra (kol ×1,25 + omuz S1/S2 DS3235) kontrol ajanı gerçek taslak geometrisiyle yeniden koştu</b>: ek %s mm ön kolda "
+         "<b>Ahmet'in kararından sonra (kol ×1,25 + omuz S1/S2 DS3235) kontrol ajanı gerçek taslak geometrisiyle yeniden koştu</b>: ek %s mm ön kolda "
          "(dirsek → bilek %s mm), tüp %s mm, yaka %s mm. ×1,15 = ön kol uzatması geri alınmış taslak, ×1,36 = ek yine ön kola (<span class='t'>doğrusal, "
          "modellenmedi</span>). Omuzda DS3218MG ve DS3235 karşılaştırmalı. Ana taslak dosyaları bu betikte değiştirilmedi. <span class='t'>Tahmini</span> "
          "işaretli değerler ölçülmedi ya da kaynaktan türetildi. <a href='../rapor.html'>← taslak raporu</a></div>" % (
@@ -122,7 +122,7 @@ o.append("<p class='not'>Önceki analizle (doğrusal ×1,25, ek tüp : yaka) far
          "kelepçeli horn, 20 AWG, XL4016 6,4 V, yazılım hız / temas sınırı) <b>onaylanmadı, uygulanmadı</b>; aşağıda öneri olarak duruyor.</p></div>")
 
 # ------------------------------------------------------------------ KPI
-kp = [("×1,25 + DS3235", "karar (Duffy, 24 Ekim 2026): kol %s mm, ön kol %s mm (×1,15: %s, ×1,36: %s)" % (
+kp = [("×1,25 + DS3235", "karar (Ahmet, 24 Ekim 2026): kol %s mm, ön kol %s mm (×1,15: %s, ×1,36: %s)" % (
           sayi(R["kol_boy_mm"], 1), sayi(R["on_kol_boy_mm"], 1), sayi(var(1.15)["kol_boy_mm"], 1), sayi(var(1.36)["kol_boy_mm"], 1))),
       ("%s× / %s×" % (sayi(r_s1["pay_statik"], 2), sayi(r_s1["pay_ivmeli"], 2)), "S1 statik / ivmeli pay, servo gerilimi %s V (DS3218: %s× / %s×)" % (
           sayi(Rs["hat"]["V_servo_S1_stall"]["22AWG"], 2), sayi(ek(1.25, "DS3218MG", "S1")["pay_statik"], 2), sayi(ek(1.25, "DS3218MG", "S1")["pay_ivmeli"], 2))),
@@ -315,7 +315,7 @@ if CDK and "catal_dis_kol" in Rs:
     _cv = CDK.get("civata") or dict(boy=8 + CDK["t"] - CDK["eski"], pul_n=0)
     _cvs = "M3x%s%s" % (sayi(_cv["boy"], 0), (" + %d × DIN 125-A M3 pul" % _cv["pul_n"]) if _cv.get("pul_n") else "")
     o.append("<h2>5b. Dirsek çatalı dış kolu %s → %s mm%s</h2>" % (sayi(CDK["eski"], 0), sayi(CDK["t"], 0),
-             " (karar: Duffy, 25 Ekim 2026)" if CDK["t"] == 8.0 else " (tasarım ajanı, Duffy onayı bekliyor)"))
+             " (karar: Ahmet, 25 Ekim 2026)" if CDK["t"] == 8.0 else " (tasarım ajanı, Ahmet onayı bekliyor)"))
     o.append("<p>5 mm'de en zayıf baskı parçası dış koldu (L3 stall SF 1,86, L4 darbe 0,77). Tasarım ajanı kolu dışa doğru önce 7, sonra %s mm yaptı (horn cıvataları "
              "M3x8 → %s; uç horn'da aynı yerde). Analizde dış kol kesiti t × 32 mm (düzlem içi eğilme t·32²/6, alan 32·t), horn cıvatası ezilme boyu t ve kollar arası çift "
              "kuvvet kolu %s mm (61 + (t − 5)/2) kalınlığa bağlandı; t = 5 önceki koşuyu birebir verir (672 satır, fark 0). 5 / 7 / 8 mm aynı modelle, "
@@ -393,9 +393,9 @@ zay = [
     ["6", "Darbe: dirsek çatalı dış kolu (%s mm, katmanlar arası)" % sayi(GEO.get("catal_dis_kol", {}).get("t", 5.0), 0),
      "L4 SF %s; el yakası vidaları (yaka duvarı 2,85 mm) %s; üst kol tüpü penceresi %s" % (
         sayi(g(s4, "Dirsek çatalı")["sf"], 2), sayi(g(b4, "El yakası")["sf"], 2), sayi(g(s4, "Üst kol tüpü, kablo")["sf"], 2)),
-     (("dış kol 5 → 8 mm uygulandı (karar Duffy 25 Ekim; Bölüm 5b): L4 sınırda bandına çıktı; daha fazlası için PETG-CF. ")
+     (("dış kol 5 → 8 mm uygulandı (karar Ahmet 25 Ekim; Bölüm 5b): L4 sınırda bandına çıktı; daha fazlası için PETG-CF. ")
       if GEO.get("catal_dis_kol", {}).get("t", 5.0) == 8.0 else
-      ("dış kol 5 → %s mm uygulandı (tasarım ajanı, Duffy onayı bekliyor; Bölüm 5b); L4 ≥ 1,2 için ~8 mm ya da PETG-CF. " % sayi(GEO["catal_dis_kol"]["t"], 0))
+      ("dış kol 5 → %s mm uygulandı (tasarım ajanı, Ahmet onayı bekliyor; Bölüm 5b); L4 ≥ 1,2 için ~8 mm ya da PETG-CF. " % sayi(GEO["catal_dis_kol"]["t"], 0))
       if GEO.get("catal_dis_kol", {}).get("t", 5.0) > 5.0 else "dış kolu 5 → 7 mm dışa doğru (çakışma taraması yeniden) ya da PETG-CF; ") +
      "yaka vidası 2 → 4 adet ve yaka duvarı kalınlaştırma; tüp penceresi uçlarına R2 yuvarlatma. Asıl önlem hız sınırı (Bölüm 5)"],
 ]
@@ -489,8 +489,8 @@ else:
 o.append("<h2>Açık işler</h2>")
 o.append(tablo(["İş", "Neden", "Öneri", "Kimde"], [
     ["DS3235 modelini teyit", "Robocombo açıklamasında RDS3235 / U braket geçiyor; gövde 38,5 / 40 / 40,5 mm farklı kaynaklarda", "satıcıya sor; gelince kumpas: gövde, kulak deliği 49,5 × 10, mil konumu, 25T", "satın alma"],
-    ["Kol oranı kararı", "verildi (Duffy, 24 Ekim 2026): ×1,25 + omuz DS3235; ek ön kolda (tasarım ajanı)", "uygulandı ve bu raporda gerçek geometriyle yeniden hesaplandı; tam çarpışma taraması taslak raporunda", "–"],
-    ["Dirsek geri sürme (ön kol uzadı)", "DS3235 stall'ı el ucundan dirseğe MG996R stall'ının %s katı" % sayi(Rs["dirsek_geri_surme_kati"], 2), "yazılımda konum hatası izleme + tork geri alma; donanım seçeneği dirseği daha güçlü servo yapmak (onaylanmadı)", "yazılım + Duffy"],
+    ["Kol oranı kararı", "verildi (Ahmet, 24 Ekim 2026): ×1,25 + omuz DS3235; ek ön kolda (tasarım ajanı)", "uygulandı ve bu raporda gerçek geometriyle yeniden hesaplandı; tam çarpışma taraması taslak raporunda", "–"],
+    ["Dirsek geri sürme (ön kol uzadı)", "DS3235 stall'ı el ucundan dirseğe MG996R stall'ının %s katı" % sayi(Rs["dirsek_geri_surme_kati"], 2), "yazılımda konum hatası izleme + tork geri alma; donanım seçeneği dirseği daha güçlü servo yapmak (onaylanmadı)", "yazılım + Ahmet"],
     ["S2 horn tarafı destek rulmanı", "S2 mili radyal yükü (ivmeli ~40 N, stall ~80 N)", "omuz modülünde göbek ön plakası + kol çatalı ön koluna eş eksenli ince rulman (ör. 6806-2RS); çakışma ve tarama yeniden", "omuz"],
     ["Omuz 6808 çifti", "S1 mili ile 6808 arası 8,15 mm", "rulman kapağı + ikinci 6808; S1 servoyu tork-only yap", "omuz"],
     ["Servo hattı ölçümü", "yoğun akım 5 A'i geçebilir (×1,25+)", "E1 / E7 ölçümü (yük direnci ya da kollar uzanmış); > 5 A sürekli ise 20 A düşürücü; XL çıkışı 6,4 V", "elektrik"],

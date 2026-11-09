@@ -1,15 +1,15 @@
 # Sipariş listesi farkı: hocaya iletilen liste ↔ güncel 1,65 m tasarım (29 Ekim 2026)
 
-**Durum (Duffy, 29.10):** sipariş verilmedi; sipariş listesi hocaya iletildi. Eski kalemlerde ekleme / çıkarma yapılabilir.
+**Durum (Ahmet, 29.10):** sipariş verilmedi; sipariş listesi hocaya iletildi. Eski kalemlerde ekleme / çıkarma yapılabilir.
 Bu dosya yalnız fark çıkarır; hocaya gönderilmedi.
 
 ## Hangi liste "hocaya iletilen" sayıldı
 
 - **Liste:** demo sayfasının maliyet düğmesinden indirilen iki Excel, 17 Ekim 2026:
-  `robot-maliyet-V3-2026-10-17.xlsx` (tam liste) ve `robot-maliyet-V3-elimizdekiler-dusuldu-2026-10-17.xlsx` (Duffy'nin
+  `robot-maliyet-V3-2026-10-17.xlsx` (tam liste) ve `robot-maliyet-V3-elimizdekiler-dusuldu-2026-10-17.xlsx` (Ahmet'in
   İndirilenler klasörü; depoda yok). 15:25'teki ilk indirme ile 15:38'deki "(1)" kopyası bayt bayt aynı (md5 aynı).
-- **Gerekçe:** DuffyOS kaydı (17.10, 15:40): sorumlu hocaya "Lale Robot Maliyet Listesi" e-postası hazırlandı, 2 Excel eki (tam liste
-  + elimizdekiler düşülmüş), Duffy kendisi gönderecekti; 29.10'da "sipariş listesi hocaya iletildi" dedi. Dosya adındaki "sipariş" / "hoca" araması depoda (üç dal) bir liste
+- **Gerekçe:** not deposu kaydı (17.10, 15:40): sorumlu hocaya "Lale Robot Maliyet Listesi" e-postası hazırlandı, 2 Excel eki (tam liste
+  + elimizdekiler düşülmüş), Ahmet kendisi gönderecekti; 29.10'da "sipariş listesi hocaya iletildi" dedi. Dosya adındaki "sipariş" / "hoca" araması depoda (üç dal) bir liste
   bulmadı. Excel'in içeriği `planlama/maliyet.json` `b27fd80` sürümü (17 Ekim, "fiyat ve stok güncellemesi"; `2b07779`'a kadar
   değişmedi): 97 kalem, ara 86.672,21 TL, genel **99.673,04 TL** (`maliyet_toplam.py` ile aynı). Elimizdekiler düşülmüş: genel 72.696,96 TL
   (Pi 5, microSD, Nextion düşülmüş). Bu tek aday; sonraki maliyet sürümü (`d823435`, 29.10) hocaya gönderilmedi.
@@ -62,7 +62,7 @@ sayfasından doğrulanmadı.
 | Fiberli somun M3 / M4 | 48 | 62 | +14,28 | BOM 8 + 47 + pay |
 | Pul (DIN 125) | 70 | 93 | +9,20 | BOM 32 / 15 / 21 / 16 + pay |
 | T-somun M6 (kanal 10) | 50 | 60 | +37,90 | BOM 56 + 2 + pay |
-| **Ana bilgisayar (elde)** | Raspberry Pi 5, 8 GB, 12.105,35 | **Raspberry Pi 5, 4 GB RAM**, 7.031,58 | −5.073,77 | **Karar 29.10 (Duffy: "pi 4 gb"):** eldeki kart 4 GB (Pi kurulumu 17.10). Fiyat Robotistan 4 GB sayfası (29.10). Eldeki kalem: satın alma yok, elimizdekiler düşülmüş toplam değişmez |
+| **Ana bilgisayar (elde)** | Raspberry Pi 5, 8 GB, 12.105,35 | **Raspberry Pi 5, 4 GB RAM**, 7.031,58 | −5.073,77 | **Karar 29.10 (Ahmet: "pi 4 gb"):** eldeki kart 4 GB (Pi kurulumu 17.10). Fiyat Robotistan 4 GB sayfası (29.10). Eldeki kalem: satın alma yok, elimizdekiler düşülmüş toplam değişmez |
 
 Aynı adda karşılığı olan diğer 71 kalem adet, model ve fiyatta aynı.
 
@@ -82,7 +82,7 @@ Koşullu kalemler (omni teker, fan, M6 CAD bağlantıları) iki listede de topla
 ## Notlar
 - XL4016 dördüncü adedi henüz CAD'de yok (`robot-bom.csv` 3 adet; etek yerleşimi Y3 / Y4'te).
 - XVF3800 ve yönlü mikrofon fiyatları tahmini, stok belirsiz: listeye eklemeden önce satıcı fiyatı alınmalı.
-- Listede "Raspberry Pi 5, 8 GB" (eldeki kalem) vardı; DuffyOS kurulum kaydı (17.10) eldeki Pi'nin 4 GB çıktığını yazıyor, Duffy 29.10'da
+- Listede "Raspberry Pi 5, 8 GB" (eldeki kalem) vardı; not deposundaki kurulum kaydı (17.10) eldeki Pi'nin 4 GB çıktığını yazıyor, Ahmet 29.10'da
   "pi 4 gb" dedi → `maliyet.json` "Raspberry Pi 5, 4 GB RAM", 7.031,58 TL (yukarıdaki tabloda). Satın alma toplamını etkilemiyor (eldeki kalem).
 - **Y3 (29.10, M6 CAD) sonrası:** güncel genel **103.767,58 TL** (+601,07: dışarıdan ISO 7380 + perçin somun + perçin aleti artık toplama giriyor, M5 ısıl gömme / M5×10 / pul düştü; `maliyet.json`). Yukarıdaki tablolar Y3 öncesi (103.166,51); fark Y6'da yeniden çıkarılır.
 - Kaynak dosyalar: Excel'ler (yukarıda), `git show b27fd80:planlama/maliyet.json`, `planlama/maliyet.json`, `planlama/adim5/maliyet_toplam.py`.

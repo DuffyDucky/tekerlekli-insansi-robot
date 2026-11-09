@@ -54,7 +54,7 @@ Brief: `planlama/y3/Y3-brief.md`. **Önce bu günlüğü oku, yapılanı tekrarl
   malzeme kaldırır), `baski-listesi.md` (66 parça), `kabuk_rapor.py`, görseller / rapor.html, `taban_montaj` tüketim tablosundaki "A sağ kol
   + pan / B sol kol + tilt" etiketleri (sayılar E8'de Y2b-aku.py'den). Y4 / Y6: OZET.md, taban_rapor.py, Lale-Proje-Ozeti.txt, 05-fiyat.
 - 29.10: Y3 tasarım işi bitti → tek commit (bağımsız kontrol sırada).
-- **29.10 kontrol düzeltmeleri** (`Y3-kontrol.md` "Düzeltilecek" 1–5; Duffy kararı bekleyenlere dokunulmadı):
+- **29.10 kontrol düzeltmeleri** (`Y3-kontrol.md` "Düzeltilecek" 1–5; Ahmet kararı bekleyenlere dokunulmadı):
   1. C1: `arayuz.M6 gobek_horn_kanal` d 5,0 → **6,0** (M3 DIN 912 başı Ø5,5 + 0,25 radyal pay). Komşu geometri: kanal ekseni z 6,01, plaka
      z 2,5…7,5 → kanal altında plaka eti 0,51 mm (Ø5'te 1,01; x 168,5…174,5 ve 195,5…199); iki kanal arası (y ±3) 6 mm, S2 kulak
      deliklerine 3,5 mm, havşa Ø6,6 ile örtüşme aynı. Göbek +X basılıyor: 0,51 mm et dikey ince duvar, dilimleyici atarsa kanal alttan açık

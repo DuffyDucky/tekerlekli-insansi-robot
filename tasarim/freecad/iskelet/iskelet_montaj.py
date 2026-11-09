@@ -131,7 +131,7 @@ kesim = sorted([(float(p["kod"].split(",")[1].split()[0]), p["ad"]) for p in sig
 # STOK_TOL tahmini (Robolink "1 metre" kesim toleransi dogrulanmadi; siparis oncesi satici teyit etmeli). Orta ara ray 3. cubuga alindi.
 STOK_TOL = 2.0         # mm: cubuk nominalden bu kadar kisa gelebilir (tahmini)
 MIN_ARTIK = 10.0       # mm: her cubukta testere + tolerans sonrasi en az kalmasi gereken artik
-# 1,65 m (Y2a, 26 Ekim 2026): govde diregi TEK PARCA (1650: 1.185,5 mm), 2 m stok boydan (Duffy, 25/29 Ekim 2026; ek yeri yok). Ayni 2 m cubuktan
+# 1,65 m (Y2a, 26 Ekim 2026): govde diregi TEK PARCA (1650: 1.185,5 mm), 2 m stok boydan (Ahmet, 25/29 Ekim 2026; ek yeri yok). Ayni 2 m cubuktan
 # sol uzun ray + on ara ray da cikar; 2. cubuk (1 m) sag uzun ray + travers + arka ara ray; orta ara ray 3. cubuktan (1 m; artik yedek).
 # Toplam 2.955,5 mm (1650): 2 m + 1 m (2.996 - 7 x 3 testere) yetmez.
 KESIM_PLANI = [

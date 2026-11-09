@@ -174,7 +174,7 @@ Tarama: 21 ilan / ürün. Direnc.net, Robotistan, Robotsepeti ve Motorobit'te 12
 - **Servo akımı:** DS3218MG 2,6 A satıcı değeri, MG996R 2,5 A datasheet kopyası. Gerçek jest akımını ölç (güç ölçerli bench testi).
 - **Pi 5 + ekranlar:** Pi'nin kamera + USB ile gerçek çekimini ve iki ekranın seçilen parlaklıktaki akımını ölç; ekran parlaklığı (4 + 2,5 W) bütçedeki en büyük ayar noktası.
 - **Röle bobini ve XL4016 boşta akımı** ölçülmedi (1,9 W toplam, tahmini); boşta senaryonun %13'ü.
-- **Hedef süre:** kullanım senaryosunu Duffy / hocayla netleştir (3 saat ders mi, 8 saat fuar mı). 8 saat gerekiyorsa tek akü 30 Ah sınıfı ya da öğle şarjı / ikinci akü gerekir.
+- **Hedef süre:** kullanım senaryosunu Ahmet / hocayla netleştir (3 saat ders mi, 8 saat fuar mı). 8 saat gerekiyorsa tek akü 30 Ah sınıfı ya da öğle şarjı / ikinci akü gerekir.
 - **Burç uzatma seçeneği:** M5×50 burçla yükseklik 89 mm'ye çıkar, ama çakışma taraması koşulmadı (doğrulanmadı).
 - **Ürün sayfaları:** Hepsiburada ve n11 ürün sayfaları doğrudan açılmadı (403); Bataryasan 24 Ah, AHB 24 Ah, Electroll 20 Ah doğrulanamadı. Fiyat ve stok 11.10.2026'da değişebilir.
 - **UserPil şarj cihazı** kesme gerilimi (adında 14,4 V) hâlâ teyitsiz (05-fiyat-arastirmasi.md açık iş 2).

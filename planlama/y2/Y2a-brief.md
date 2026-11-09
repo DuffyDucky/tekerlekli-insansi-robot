@@ -3,7 +3,7 @@
 Yeni oturumda bu ajan SendMessage ile devam ettirilemezse: aynı brief ile **yeni Opus ajanı** (general-purpose, `model: opus`)
 başlat ve "önce `planlama/y2/Y2a-gunluk.md`'yi ve `git status`'u oku, yapılanı tekrarlama" de.
 
-## Görev (Duffy 25.10 "ana projeye 170den devam", 29.10 "165 olsun")
+## Görev (Ahmet 25.10 "ana projeye 170den devam", 29.10 "165 olsun")
 1,65 m tasarımı ana tasarıma taşı: `tasarim/freecad/taslak-170/` varyantındaki değişiklikler (uzun direk + gövde uzatma bantları,
 10" kafa `kafa10.py`, kol ×1,25 ek uzama ön kolda, omuz DS3235, dirsek çatalı dış kol 8 mm + M3x12 + 2× DIN125 pul + 45° destek,
 taban genişliği) modüllere, `arayuz.py`'ye ve `montaj/`'a işlenir; taslak klasörü arşiv olur.

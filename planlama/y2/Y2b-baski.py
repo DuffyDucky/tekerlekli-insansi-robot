@@ -2,7 +2,7 @@
 """Y2b: 1,65 m baski listesi toplamlari ve tablo satirlari (planlama/baski-listesi.md icin). Yalniz okur.
 Kaynak: <modul>-analiz.json 'baski' (taban, kabuk, kafa, dirsek; %80 doluluk) + omuz/omuz-baski.json (M4, PETG-CF 0,8 / 0,9;
 29 Ekim 2026'da 1650 omuz FCStd'sinden yeniden kosuldu). Dirsek analizi sag kol: 4 parca x 2.
-PETG-CF: tasarim karari (baski-listesi.md) 11 tur; boyun yukseltme adaptoru PETG -> PETG-CF (Duffy karari 29 Ekim 2026; kafa10_lib).
+PETG-CF: tasarim karari (baski-listesi.md) 11 tur; boyun yukseltme adaptoru PETG -> PETG-CF (Ahmet karari 29 Ekim 2026; kafa10_lib).
 Cikti: Y2b-baski.json + ekrana markdown satirlari.   py -3 planlama/y2/Y2b-baski.py
 """
 import json, os

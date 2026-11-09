@@ -56,9 +56,9 @@ maliyet ≈ 103.800 TL; `planlama/y2/`), 01.11'de 1,58 m'ye indi. 1,65 m ve önc
 Aşağıdaki bölümler projenin geçmişidir (Eylül–Ekim, CadQuery V1–V3, 115–125 cm); güncel sayılar yukarıda ve `planlama/` belgelerinde.
 Bu bölümlerdeki tablolar ve "Açık işler" listesi Eylül–Ekim tarihlidir (7" ekran, 2,8 kg akü gibi değerler o günün); güncel açık işler `planlama/dongu-158.md` ve karar kuyruğunda.
 
-## Proje çerçevesi (Duffy, 26 Eylül 2026)
+## Proje çerçevesi (Ahmet Yorulmaz, 26 Eylül 2026)
 
-- Robotun adı: **Lale** (Duffy, 11 Ekim 2026)
+- Robotun adı: **Lale** (Ahmet, 11 Ekim 2026)
 - Ekip: **4 kişi**
 - Süre: **normalde 1 dönem**, proje başarılı giderse muhtemelen 2 dönem
 - Bütçe: **okul / hoca destekli**
@@ -74,8 +74,8 @@ Bu bölümlerdeki tablolar ve "Açık işler" listesi Eylül–Ekim tarihlidir (
 | Ekip | Yazılım / yapay zekâ sorumlusu şart; güç elektroniği ve KVKK için danışman |
 | Güvenlik | LiPo yerine LiFePO4 akü, donanımsal acil stop, servo ve işlemci için ayrı güç hatları |
 | Mekanik | Ağırlığı alta topla, tabanı geniş tut, robotu kat kat kur ve her katta test et |
-| V2 (hoca, 2 Ekim 2026) | 10,1" dokunmatik ekran göğüste, kafada iki yuvarlak göz ekranı (Pepper benzeri; Duffy A seçeneğini seçti). Tekerlekler yerinde, taban kabuğu genişleyip onları sarıyor. Malzeme ≈ 77.900 TL (%15 pay dahil; V1 64.500). |
-| V3 deneme (Duffy, 2 Ekim 2026) | V2 yorumu: "taban çok geniş", "ekran çok alçakta", "yüz ifadesi çok ruhsuz". V3: boy 125 cm, şase 27 cm (akünün sığdığı en dar), taban 44 cm ve yukarı 30 cm'ye daralan etek, 10,1" ekran üst göğüste 15° yukarı eğik (merkez 82 cm), kafada 7" yüz ekranı + siyah akrilik yüz paneli (Pi 5 iki HDMI). Malzeme ≈ 79.400 TL. |
+| V2 (hoca, 2 Ekim 2026) | 10,1" dokunmatik ekran göğüste, kafada iki yuvarlak göz ekranı (Pepper benzeri; Ahmet A seçeneğini seçti). Tekerlekler yerinde, taban kabuğu genişleyip onları sarıyor. Malzeme ≈ 77.900 TL (%15 pay dahil; V1 64.500). |
+| V3 deneme (Ahmet, 2 Ekim 2026) | V2 yorumu: "taban çok geniş", "ekran çok alçakta", "yüz ifadesi çok ruhsuz". V3: boy 125 cm, şase 27 cm (akünün sığdığı en dar), taban 44 cm ve yukarı 30 cm'ye daralan etek, 10,1" ekran üst göğüste 15° yukarı eğik (merkez 82 cm), kafada 7" yüz ekranı + siyah akrilik yüz paneli (Pi 5 iki HDMI). Malzeme ≈ 79.400 TL. |
 
 ## CAD modelinden çıkanlar (eski CadQuery V1 varsayılan tasarım, 115 cm)
 
@@ -97,14 +97,14 @@ Bu bölümlerdeki tablolar ve "Açık işler" listesi Eylül–Ekim tarihlidir (
 1. **Fizibilite araştırması:** üç paralel araştırma (donanım-maliyet, yazılım-yapay zekâ, referans
    projeler-finansman-destek) → `raporlar/`. Ajan çıktılarında iki düzeltme yapıldı: 2 JGB37 motor
    15–20 kg'a yetmez (≤15 kg ya da 4 motor); LiPo yerine LiFePO4.
-2. **Fiziksel yapı endişesi:** Duffy: "beni korkutan fiziksel yapısı". Yaklaşım: robot aslında
+2. **Fiziksel yapı endişesi:** Ahmet: "beni korkutan fiziksel yapısı". Yaklaşım: robot aslında
    "insan gibi görünen bir servis arabası"; ağırlık alta, katman katman yapım ve test.
 3. **Tasarım demosu v1:** basit kutularla 3B model, kaydırıcılarla devrilme/motor/servo hesabı.
-4. **Gerçek parçalarla CAD (v2):** Duffy: "buna reel bir görünüm kazandır kullanacağın parçalar
+4. **Gerçek parçalarla CAD (v2):** Ahmet: "buna reel bir görünüm kazandır kullanacağın parçalar
    gerçek olsun hatta solid gibi bir yerde çiz". Bilgisayarda CAD programı olmadığı için CadQuery
    ile gerçek ölçülü montaj kuruldu; 19 parçanın ölçüsü araştırıldı (12'si üretici çiziminden) →
    `raporlar/kaynaklar/04-parca-olculeri.md`. STEP dosyası geri okuma testinden geçti (218 geçerli katı).
-5. **Taşıma:** proje DuffyOS vault'undan bu klasöre taşındı; bundan sonraki çalışmalar burada.
+5. **Taşıma:** proje kişisel not deposundan (vault) bu klasöre taşındı; bundan sonraki çalışmalar burada.
 
 ## Açık işler
 
@@ -120,7 +120,7 @@ Bu bölümlerdeki tablolar ve "Açık işler" listesi Eylül–Ekim tarihlidir (
 - [ ] Parçalar gelince tahmini ölçüleri kumpasla doğrula (enkoder boyu, braket delikleri, BTS7960 delikleri)
 - [ ] Ağırlık için hafif profil (40×40 hafif veya 30×30) seçeneğini değerlendir (≈ 2 kg, tahmini)
 - [x] Hoca geri bildirimi (2 Ekim 2026): (1) ekran daha büyük olsun (şu an 7"); (2) tekerlekler dışarıda
-  değil, kabuğun içine gömülü olsun. Hoca: ekran gövdede de olabilir. Karar (Duffy): tekerlekler yerinde kalır,
+  değil, kabuğun içine gömülü olsun. Hoca: ekran gövdede de olabilir. Karar (Ahmet): tekerlekler yerinde kalır,
   kabuk dışa genişleyip tekerlekleri sarar; yüz A seçeneği (göğüste ekran + kafada göz ekranları). → Demoda V2.
   SolidWorks tasarımında da uygulanacak.
 - [ ] V2 kabuklarının 23 cm'lik baskı bölme çizgileri ve birleşme yerleri (SolidWorks'te)

@@ -108,7 +108,7 @@ CHEST_SPK = S0 - 330                                    # V2 hoparlor: ekranin a
 CHEST_ZF = 92.0                                         # ekran cercevesinin on yuzu
 HEAD2 = dict(w=180.0, h=150.0, d=140.0)                 # V2 kafa: ekran yok, iki goz
 EYE_X, EYE_Y = 38.0, 70.0                               # goz merkezi (kafa yerel)
-# --- V3 (Duffy, 02.10.2026: "taban cok genis", "ekran cok alcakta", "yuz ifadesi cok ruhsuz")
+# --- V3 (Ahmet, 02.10.2026: "taban cok genis", "ekran cok alcakta", "yuz ifadesi cok ruhsuz")
 V3 = dict(H=1250.0, W=270.0)                            # boy 125 cm, sase 27 cm (taban ~44 cm; aku 181 genislik icin en dar)
 S3 = V3['H'] - 20 - HEAD_UP                             # V3 omuz ekseni (955)
 TORSO3_Y1 = S3 + 30

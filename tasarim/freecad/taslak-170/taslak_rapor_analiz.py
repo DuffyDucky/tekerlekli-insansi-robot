@@ -841,9 +841,9 @@ def acik_isler(TA, KF, uzatma_g, ek=()):
         ["Kablo uzamaları", "gövde +%s mm (12 V, ESP32 USB, servo uzatmaları), kol tüpü +%s mm, ön kol +%s mm (bilek servosu), tilt servo +%s mm (adaptör)" % (
             sayi(TA.DY, 0), sayi(TA.UST_KOL_UZAMA, 0), sayi(getattr(TA, "ON_KOL_UZAMA", 0.0), 1), sayi(KF["adaptor_h_mm"], 0)),
          "servo uzatması ~1,3 → ~1,8 m: 22 AWG'de 2,5 A'de düşüm 0,34 → ~0,46 V (servo ~5,5 V görür, <span class='t'>tahmini</span>); dağıtım kartlarını traverse seviyesine taşımak (E1 açık işi) artık daha anlamlı. Kablo payı 45 g tahmini", "elektrik"],
-        (["Kol oranı kararı", "×1,15 taslakta; ×1,25 / ×1,36 omuz servosunu 2× payın altına indirir", "Kol oranı tablosu (yukarıda). ×1,25+ seçilirse omuz servosu ve omuz yuvası değişir; kafa × kol taraması yeniden", "Duffy"]
+        (["Kol oranı kararı", "×1,15 taslakta; ×1,25 / ×1,36 omuz servosunu 2× payın altına indirir", "Kol oranı tablosu (yukarıda). ×1,25+ seçilirse omuz servosu ve omuz yuvası değişir; kafa × kol taraması yeniden", "Ahmet"]
          if getattr(TA, "KOL_SECIM", "115") == "115" else
-         ["Kol oranı kararı", "verildi (Duffy, 24 Ekim 2026): ×1,25 + omuz %s; taslak geometrisi ×1,25 (ek ön kolda)" % getattr(TA, "OMUZ_SERVO", {}).get("ad", "DS3235"),
+         ["Kol oranı kararı", "verildi (Ahmet, 24 Ekim 2026): ×1,25 + omuz %s; taslak geometrisi ×1,25 (ek ön kolda)" % getattr(TA, "OMUZ_SERVO", {}).get("ad", "DS3235"),
           "uygulandı; analiz bölümleri ×1,25 + %s ile yeniden koşuldu (kontrol ajanı, 24 Ekim 2026): yeni çakışma %d, kafa × kol en dar %s" % (
               getattr(TA, "OMUZ_SERVO", {}).get("ad", "DS3235"), len(yeni_cak_say()[0]), kafakol_en_dar()), "–"]),
         ["Yüz ekranı modeli", "hocanın vereceği HDMI ekran belli değil; CAD Waveshare 10.1\" (B), 600 g <span class='t'>tahmini</span>",

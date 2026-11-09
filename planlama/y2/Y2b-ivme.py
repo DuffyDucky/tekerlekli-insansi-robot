@@ -11,7 +11,7 @@ import moduller as MD
 A = MD.A; V = App.Vector
 G = 9.81
 PAY = 1.5
-FREN = 1.8   # acil stop / yazilim freni ust siniri (karar 29.10, Duffy): duzde pay = a_dev_min / FREN >= 1,5 olmali
+FREN = 1.8   # acil stop / yazilim freni ust siniri (karar 29.10, Ahmet): duzde pay = a_dev_min / FREN >= 1,5 olmali
 P = []
 TUM = {}
 for ad in MD.SIRA:

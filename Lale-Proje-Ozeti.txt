@@ -18,7 +18,7 @@ tasarim/freecad/taban/taban-analiz.json (TA), tasarim/freecad/kafa/kafa-analiz.j
 - Manisa Celal Bayar Üniversitesi Mekatronik MYO'da 4 kişilik öğrenci ekibinin dönem projesi.
 - Bacaksız, tekerlekle hareket eden; gövde + kafa + 2 kollu insansı robot ("insan gibi görünen bir
   servis arabası"). Pepper'a benzer: göğüste dokunmatik ekran, kafada yüz ekranı.
-- Proje lideri ve mekanik sorumlusu: Duffy (mekanik, montaj, kablaj, CAD'de güçlü; yazılımı yapay
+- Proje lideri ve mekanik sorumlusu: Ahmet Yorulmaz (mekanik, montaj, kablaj, CAD'de güçlü; yazılımı yapay
   zekâ yardımıyla yazıyor). Diğer roller (elektrik, yazılım/YZ, gömülü+test) henüz atanmadı.
 - Süre: 1 dönem (güz 2026, ≈ 15 hafta + pay), başarılı olursa 2. dönem. Bütçe okul/hoca destekli.
 

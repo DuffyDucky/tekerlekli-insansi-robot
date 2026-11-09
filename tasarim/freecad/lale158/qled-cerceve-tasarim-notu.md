@@ -125,13 +125,13 @@ S2 < 5 çakışmaları (üst kol tüpü ↔ S1 kaseti, çatal ↔ M5 cıvata, el
 **Yeni bulgular (04.11):**
 
 - USB dokunmatik şema yolu kafada `SY8205 kafa ekrani 5 V` kartından geçiyor, 249,7 mm³ (`lale158-kontrol.json` kablo_tup_cakisma). Boyun mili 15,1 ve 1,2 mm³, servo yuvası 1,7 mm³ eski tür şema temasları. Yol şeması düzeltilmedi; kart yeri tasarım kararı değil, kablo elle yanından geçirilir, kontrol edilmeli.
-- Elde 100 g ile rampa payı 1,482'ye indi (7" modelde 1,521 geçiyordu). Elde yük sınırı Duffy'nin kararı.
+- Elde 100 g ile rampa payı 1,482'ye indi (7" modelde 1,521 geçiyordu). Elde yük sınırı Ahmet'in kararı.
 - Akü modelde 2,8 kg, malzeme listesi v4'teki Victron 3,0 kg. Devrilme ve kütle 2,8 kg ile; modele işlenmedi.
 - `taban_montaj.py` 24 Ah kullanıyordu; malzeme listesi v4 (satır 5) ve K3 kararı 20 Ah. Kapasite, BOM etiketi ve `arayuz` notu düzeltildi. Seçim değişmedi.
 
 **Önceki maddeler:**
 
-1. **`kabuk1.log` içinde 16 satır `<Exception> Wire is not closed.`** var. Kafa logunda yok. Kaynağı belirlenmedi; eski bir kabuk logu olmadığından yeni olup olmadığı bilinmiyor. `Exception while` aramasına **takılmaz**, ayrıca aranmalı. Yarım log: `C:\Users\Victus\AppData\Local\Temp\claude\C--Users-Victus-Documents-DuffyOS\f8c032b7-125c-482c-81d2-c6c0e512f0ee\scratchpad\kabuk1.log`
+1. **`kabuk1.log` içinde 16 satır `<Exception> Wire is not closed.`** var. Kafa logunda yok. Kaynağı belirlenmedi; eski bir kabuk logu olmadığından yeni olup olmadığı bilinmiyor. `Exception while` aramasına **takılmaz**, ayrıca aranmalı. Yarım log: `...\scratchpad\kabuk1.log`
 2. `kabuk_parcalar.py` denenmemiş kodla `carpisma.py` ve `moduller.py` içine import edilir. Taramadan önce `kabuk_montaj.py` temiz bitmeli.
 3. Köşe flanşı (`flans_x` 129–145) boss'a çarpabilir, flanş çerçeveyi yatak sınırına yaklaştırabilir.
 4. Panel dışında cam şeridi yalnız 0,9 mm ve tırnak buraya baskı yapabilir; sıkma riski fiziksel denemeyle kontrol edilmeli.
@@ -140,7 +140,7 @@ S2 < 5 çakışmaları (üst kol tüpü ↔ S1 kaseti, çatal ↔ M5 cıvata, el
 7. Eski metinler: `ikinci_ozet.py:142` ve `lale158_rapor.py` içinde "kasa↔çerçeve". `baski-listesi` Beyaz PETG altında VESA taşıyıcı yazıyor, model ve Y2b PETG-CF diyor; dokunulmadı.
 8. `kafa_rapor.py` ve `kafa_gorsel.py` eski içerikli (125 cm, StopIteration), koşulmadı. Planlama belgeleri (`elektrik.md`) güncellenmedi.
 
-## Duffy'ye sorular
+## Ahmet'e sorular
 
 - MAX98357A modelde kaldı, malzeme listesi PAM8403 ve ses kartı diyor; ikisi de modelde. Hangisi kalacak?
 - ReSpeaker kafada olacak mı? Yeri modellenmedi.

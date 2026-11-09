@@ -467,7 +467,7 @@ Claude Opus alt ajanı yaptı; orkestratör seçilen iki ürünün fiyatını ve
 
 ## 5. FreeCAD V3 filament (11 Ekim 2026)
 
-Duffy renk kararı: "Tamamen beyaz". Baskı listesi (`planlama/baski-listesi.md`): düz PETG ≈ 4,94 kg, yük taşıyan 10 parça
+Ahmet renk kararı: "Tamamen beyaz". Baskı listesi (`planlama/baski-listesi.md`): düz PETG ≈ 4,94 kg, yük taşıyan 10 parça
 PETG-CF ≈ 0,79 kg. Fiyatlar orkestratörün ürün sayfası okumasıyla (WebFetch).
 
 | Kalem | Satıcı | Fiyat | Stok | Bağlantı | Not |

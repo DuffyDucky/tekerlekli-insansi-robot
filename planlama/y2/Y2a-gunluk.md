@@ -50,7 +50,7 @@ Bu dosya kesintide kaldığı yerden devam için: her alt iş bitince buraya yaz
   Kafa: `kafa/kafa7_parcalar.py` (eski kafa_parcalar, KAFA7 ölçüleri), `kafa/kafa10_lib.py` (taslak kafa10), yeni `kafa/kafa_parcalar.py`
   (Govde/Pan + adaptör + 10" Bas; BAG yeniden eşlendi; saplama DIN 985'i +1 mm geçecek boyda — taslakta somuna 3 mm giriyordu).
   dirsek_montaj: horn cıvatası pul kontrolü, S1/S2 stall DS3235, kablo boyu bilek lehimli ek, y literalleri tüp ucuna bağlı.
-- **2026-10-29 devam — BOY DEĞİŞİKLİĞİ (Duffy, 29 Ekim): 1650 mm.** `arayuz.BOY` tek parametre: S3 1340, UZAMA 385, direk 1.185,5
+- **2026-10-29 devam — BOY DEĞİŞİKLİĞİ (Ahmet, 29 Ekim): 1650 mm.** `arayuz.BOY` tek parametre: S3 1340, UZAMA 385, direk 1.185,5
   (2 m stok), uzatma 2 bant × 192,5 (+12 dil = 204,5 ≤ 250; tek bant 397 sığmaz), dikişler 476,5 / 669 / 861,5 / 1075 / 1268, gövde
   braketleri 400 / 547,75 / 740,25 / 1165, arka kapak 885…1075, kafa tabanı 1360. Kabukta göğüs önü x0 cıvatası 1270 → 835 + UZAMA (gövde
   bandına bağlı). Yorumlarda "1,70 m" → "1,65 m". 1700 çıktıları (iskelet, kabuk, omuz) geçersiz → hepsi yeniden koşulacak.
@@ -131,7 +131,7 @@ Bu dosya kesintide kaldığı yerden devam için: her alt iş bitince buraya yaz
   **Yerleşim kontrolü** (`montaj/yerlesim-kontrol.json`, 127 s): (1) ev pozu S2 5: 28 modül çifti, 2.394 bb çifti, **çakışma 0**;
   (2) sağ kol kaba 40 poz: **çakışan 0**; (3) kafa pan ±90 × tilt ±15 (15 poz): çakışma 0, 15 mm içinde komşu parça yok. Poz uygulaması
   ayrıca doğrulandı (El/bilek ve yüz kabuğu bb'leri pozla değişiyor).
-- 2026-10-29 03:35 **Y2a tasarım işi bitti → kontrol ajanına.** Kalan / açık: (1) akü 75 mm öne UYGULANAMADI (Duffy kararı a/b/c);
+- 2026-10-29 03:35 **Y2a tasarım işi bitti → kontrol ajanına.** Kalan / açık: (1) akü 75 mm öne UYGULANAMADI (Ahmet kararı a/b/c);
   (2) kafa kabuğu sağ parçaları dikiş dili baskı desteği; (3) servo payları 0,5 kg el yükünde < 1 (S1/S2 0,97, dirsek 0,74; ≤ ~100 g
   için 2×); (4) 10,1" ekran gücü / ısı tahmini; (5) tam çarpışma taraması + devrilme/motor kontrolü (Y4 / kontrol ajanı).
   **Kapsam dışı notlar:** `kabuk_rapor.py` `A.NEXTION`'a bakıyor (çalışmaz), tüm `rapor.html` / görseller / `OZET.md` / `carpisma-sonuc.json`

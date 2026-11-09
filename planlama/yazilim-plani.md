@@ -4,7 +4,7 @@ Kaynak: mimari önerisi `raporlar/kaynaklar/02-yazilim-yapay-zeka.md`, donanım 
 `tasarim/freecad/OZET.md`, modül BOM'ları, elektrik kararları `planlama/adim3/elektrik.md`. Saatler **tahmini**.
 **Hafta numarası dönem haftasıdır** (proje planıyla tek takvim, 15 Ekim 2026 D6): H1 = 28 Eylül – 4 Ekim, H3 = 12–18 Ekim,
 H16 = 11–17 Ocak. (Bu planın 11 Ekim sürümündeki "hafta 1" = H3; bütün haftalar +2 kaydırıldı.)
-Teslim tarihi 1–2 hafta oynayabilir (Duffy, 11 Ekim 2026).
+Teslim tarihi 1–2 hafta oynayabilir (Ahmet, 11 Ekim 2026).
 
 ## İlke
 
@@ -106,7 +106,7 @@ Araştırmadaki tahmin (150–220 saat) ile uyumlu. Y11 yetişmezse 2. döneme k
 | Gömülü / test | Y0 (ESP32 tarafı), Y1, Y2, Y3, Y4 |
 | Yazılım / YZ | Y0 (Pi tarafı), Y5, Y6, Y7, Y11 |
 | Arayüz | Y9, Y10 |
-| Duffy (mekanik + jest) | Y8 (FreeCAD modelini en iyi bilen kişi), Y12 test liderliği |
+| Ahmet (mekanik + jest) | Y8 (FreeCAD modelini en iyi bilen kişi), Y12 test liderliği |
 
 ## Hemen sipariş edilmesi gerekenler (masa düzeneği)
 

@@ -160,7 +160,7 @@ h.append("<h1>Lale 1,70 m taslak montajı <span class='rozet'>TASLAK</span></h1>
 h.append("<div class='sub'>21 Ekim 2026 kararları (hoca + ekip): boy 1700 mm (yerden kafa tepesine), yüz kafada 10\" sınıfı HDMI ekran (model belli değil), "
          "otonomi yok (lidar / lidar direği / haritalama kapsam dışı), kumanda telefondan. Mevcut modüller ve ana montaj değiştirilmedi; varyant "
          "<code>tasarim/freecad/taslak-170/</code> klasöründe. <span class='t'>Tahmini</span> işaretli değerler ölçülmedi.</div>")
-h.append("<div class='karar'><b>Karar (Duffy, 24 Ekim 2026):</b> kol ×%s (%s), omuz servoları (S1, S2; iki kol) <b>%s</b> (eski %s; gövde aynı kabul, "
+h.append("<div class='karar'><b>Karar (Ahmet, 24 Ekim 2026):</b> kol ×%s (%s), omuz servoları (S1, S2; iki kol) <b>%s</b> (eski %s; gövde aynı kabul, "
          "geometri değişmedi). Uzatma: üst kol tüpü +%s mm (×1,15'ten), ön kol +%s mm (yeni), el yakası +%s mm (×1,15'ten). Eski ×1,15 taslak "
          "<code>TASLAK_KOL=115</code> ile yeniden üretilir.</div>" % (
              sayi(o["hedef"], 2), esc(o.get("karar", "")), esc(SERVO), esc(TA.OMUZ_SERVO_ESKI["ad"]), sayi(o["ust_kol_uzama_mm"], 0),
@@ -180,7 +180,7 @@ h.append("</div>")
 
 # ---------------------------------------------------------------------- degisenler
 h.append("<h2>Değişenler (125 cm → 170 cm)</h2>")
-karar_sat = [["<b>Kol + omuz (karar, Duffy 24 Ekim 2026)</b>", "kol oranı, omuz S1/S2 servoları",
+karar_sat = [["<b>Kol + omuz (karar, Ahmet 24 Ekim 2026)</b>", "kol oranı, omuz S1/S2 servoları",
               "kol ×1,15 → ×%s (el ucu omuz ekseninden %s mm); ek ön kola (+%s mm), tüp ve yaka ×1,15'teki gibi; omuz servoları %s → %s "
               "(4 adet, iki kol; gövde aynı kabul, geometri değişmedi)" % (sayi(o["hedef"], 2), sayi(o["boy_yeni_mm"], 1), sayi(o.get("on_kol_uzama_mm", 0), 1),
                                                                           esc(TA.OMUZ_SERVO_ESKI["ad"]), esc(SERVO))]]
@@ -278,7 +278,7 @@ if _CK and TA.CATAL_DIS_KOL > TA.CATAL_DIS_KOL_ESKI:
                  ("M3x%s + %d × DIN 125-A M3 pul (%s mm; M3x11 standart değil)" % (sayi(TA.HORN_CIVATA_L, 0), TA.HORN_PUL_N, sayi(TA.HORN_PUL_T, 1)))
                  if TA.HORN_PUL_N else "M3x%s" % sayi(TA.HORN_CIVATA_L, 0),
                  sayi(TA.HORN_CIVATA_L - 8.0, 0), sayi(_ci["eski_g"], 1), sayi(_ci["yeni_g"], 1), _sf,
-                 "<b>Karar: Duffy, 25 Ekim 2026 (8 mm).</b>" if TA.CATAL_DIS_KOL == 8.0 else "<span class='uy'>Duffy onayı bekliyor</span> (görünüm + çarpışma şartı)."))
+                 "<b>Karar: Ahmet, 25 Ekim 2026 (8 mm).</b>" if TA.CATAL_DIS_KOL == 8.0 else "<span class='uy'>Ahmet onayı bekliyor</span> (görünüm + çarpışma şartı)."))
 h.append("<li>Değişen PETG parçalar: üst kol tüpü, ön kol gövdesi (tek parça kaldı), el%s; servolar, flanş aynen. Dirsek çatalı / ön kol / el ↔ gövde "
          "kabuğu ev pozunda %s mm (125 cm ~3,8).</li></ul>" % (
              ", dirsek çatalı (dış kol)" if TA.CATAL_DIS_KOL > TA.CATAL_DIS_KOL_ESKI else "; dirsek çatalı", sayi(_b["mm"], 1) if _b else "−"))
@@ -408,7 +408,7 @@ if TA.CATAL_DIS_KOL > TA.CATAL_DIS_KOL_ESKI:
 # ---------------------------------------------------------------------- acik isler, varsayimlar
 acik_ek = [
     ["Göğüs Nextion ekranı", "taslakta yerinde (merkez y %s mm), karar açık" % sayi(A.GOGUS_Y + TA.DY, 0),
-     "kaldırılırsa göğüs bandı penceresi kapanır, 535 g düşer (AM y ~15 mm iner; devrilmeye etkisi küçük, Önlemler tablosu)", "Duffy"],
+     "kaldırılırsa göğüs bandı penceresi kapanır, 535 g düşer (AM y ~15 mm iner; devrilmeye etkisi küçük, Önlemler tablosu)", "Ahmet"],
     ["Uzatma bandı dikiş basamağı", "kesit dikişin 12 mm üstündeki kesit: alt (476,5) ve üst (911,5) dikişte ~0,7 mm dışa basamak", "görünür, zararsız", "kabuk"],
     ["Kafanın altı açık", "boyun açıklığı + arka çentik", "toz / parmak için esnek boyun körüğü düşünülebilir", "tasarım"],
     ["Kafa içi kablolar", "micro HDMI Pi → ekran (sağda), CSI FPC Pi → kamera (~200 mm)", "kablo boyları ve kafa içi kablo payı (25 g, tahmini) doğrulanacak", "elektrik"],
@@ -416,23 +416,23 @@ acik_ek = [
     ["×%s + %s yeniden analiz" % (sayi(o["hedef"], 2), esc(SERVO)), "devrilme, servo payları, kol oranı, tam çarpışma taraması ve sonuç kutusu ×1,15 + DS3218MG geometrisine ait",
      "kontrol ajanı: <code>taslak_analiz.py</code> (tüm bölümler) + <code>taslak_hesap.py</code>", "kontrol ajanı"]] if ANALIZ_ESKI else []) + [
     ["%s gövde yüksekliği" % esc(SERVO), "kaynaklarda 38,5 / 40 / 40,5 mm (DS3218 ile aynı kabul edildi)", "servo gelince kumpasla ölç; farklıysa omuz yuvası / horn düzlemi "
-     "kontrolü. Robocombo ilanı açıklamada 'RDS3235 ... U braket dahil' diyor: satıcıya sorulacak (kol-analiz NOTLAR)", "Duffy + satın alma"],
+     "kontrolü. Robocombo ilanı açıklamada 'RDS3235 ... U braket dahil' diyor: satıcıya sorulacak (kol-analiz NOTLAR)", "Ahmet + satın alma"],
     ["Ön kol uzaması: kablo ve baskı", "bilek servosu kablosu +%s mm (MG996R 30 cm kablo); ön kol gövdesi tek parça (baskı tablosunda)" % sayi(o.get("on_kol_uzama_mm", 0), 1),
      "kablo yolu (<code>dirsek/kablo_yolu.py</code>, arayuz.KOL_KABLO) ön kol boyuna göre güncellenmeli; servo uzatma boyu", "elektrik + tasarım"],
 ] + ([
-    (["Dirsek çatalı dış kolu 8 mm (karar: Duffy, 25 Ekim 2026)",
+    (["Dirsek çatalı dış kolu 8 mm (karar: Ahmet, 25 Ekim 2026)",
       "tasarım ajanı: 8 mm + M3x12 + 2 × DIN 125-A M3 pul, 45° destek dış yüze (gorsel/catal-5-7-8.png). Kontrol ajanı (24 Ekim gece): geometri, tam "
       "çarpışma taraması ve kol analizi 8 mm ile yeniden koşuldu (<a href='#catal'>Dirsek çatalı kontrolü</a>)",
       "BOM'a M3x12 (8) + DIN 125-A M3 pul (16) maliyet.json'da eklenmedi; horn cıvatası sıkma torku PETG'de ~0,5 N·m'yi geçmemeli (pul ile; "
-      "<span class='t'>tahmini</span>)", "Duffy"] if TA.CATAL_DIS_KOL == 8.0 else
-     ["Dirsek çatalı dış kolu %s mm (Duffy onayı)" % sayi(TA.CATAL_DIS_KOL, 0),
+      "<span class='t'>tahmini</span>)", "Ahmet"] if TA.CATAL_DIS_KOL == 8.0 else
+     ["Dirsek çatalı dış kolu %s mm (Ahmet onayı)" % sayi(TA.CATAL_DIS_KOL, 0),
       "kontrol: geometri tuttu, çarpışma taramalarında 5 mm ile fark yok; stall SF güvenli, darbe (L4) hâlâ 1,2 altında (Dirsek çatalı kontrolü bölümü)",
-      "onay Duffy'de (görünüm: gorsel/catal-5-7.png). L4 için seçenekler (onaylanmadı, uygulanmadı): 8 mm (yalnız hesapla L4 ~1,2), PETG-CF, jest hız sınırı; "
-      "BOM'a M3x10 (8 adet) maliyet.json'da eklenmedi; 45° destek x 224,9'da bitiyor (dış 2 mm şerit köprü üstünde düz)", "Duffy"])]
+      "onay Ahmet'te (görünüm: gorsel/catal-5-7.png). L4 için seçenekler (onaylanmadı, uygulanmadı): 8 mm (yalnız hesapla L4 ~1,2), PETG-CF, jest hız sınırı; "
+      "BOM'a M3x10 (8 adet) maliyet.json'da eklenmedi; 45° destek x 224,9'da bitiyor (dış 2 mm şerit köprü üstünde düz)", "Ahmet"])]
     if TA.CATAL_DIS_KOL > TA.CATAL_DIS_KOL_ESKI else []) + [
     ["Onaylanmamış öneriler (kol analizi, UYGULANMADI)", "kol-analiz/rapor.html Düzeltmeler: S2 horn tarafı destek rulmanı (6806-2RS), göbekte ikinci 6808, kelepçeli "
      "horn (25T Al horn kanalı DS3235 durmada SF ~1,3), S1/S2 uzatmalarında 20 AWG, XL4016 çıkışı 6,4 V, yazılım hız / temas sınırları",
-     "Duffy onaylarsa ayrı iş olarak modellenir (omuz yuvası, göbek, elektrik); bu taslakta geometri değişmedi", "Duffy"],
+     "Ahmet onaylarsa ayrı iş olarak modellenir (omuz yuvası, göbek, elektrik); bu taslakta geometri değişmedi", "Ahmet"],
 ]
 h.append("<h2>Açık işler</h2>" + RA.acik_isler(TA, KF, uzatma_g, acik_ek))
 vars_ = [
@@ -440,7 +440,7 @@ vars_ = [
     "Kafa kabukları 2,5 mm PETG, etkin doluluk 0,90; küçük PETG parçalar 0,80 (eski kafa / dirsek ile aynı, <span class='t'>tahmini</span>).",
     "Kablo payları: taban 400 g (mevcut tahmin), gövde uzaması 45 g, kafa içi 25 g (kafa AM'sine katılmadı); hepsi <span class='t'>tahmini</span>.",
     "Baskı süresi 10 mm³/s ortalama debiyle <span class='t'>tahmini</span>; okul yazıcısı 25 × 25 × 25 cm (hocanın söylediği, model doğrulanmadı).",
-    "Kol ×%s Duffy'nin kararı (24 Ekim 2026, kol analizi önerisi); ek boyun ön kola verilmesi tasarım ajanının kaba moment karşılaştırmasıyla (S1 momenti ön kolda ~8.000, tüpte ~15.000 g·mm artış, <span class='t'>tahmini</span>). Eski ×1,15: <code>TASLAK_KOL=115</code>." % sayi(o["hedef"], 2),
+    "Kol ×%s Ahmet'in kararı (24 Ekim 2026, kol analizi önerisi); ek boyun ön kola verilmesi tasarım ajanının kaba moment karşılaştırmasıyla (S1 momenti ön kolda ~8.000, tüpte ~15.000 g·mm artış, <span class='t'>tahmini</span>). Eski ×1,15: <code>TASLAK_KOL=115</code>." % sayi(o["hedef"], 2),
     "Omuz servosu %s: gövde DS3218 ile aynı (40 × 20 × 40, kulak delikleri 49,5 × 10, 25T), 60 g; yükseklik <span class='t'>doğrulanmadı</span> (38,5 / 40 / 40,5)." % esc(SERVO),
     "Devrilmede fren 1,5 m/s² (acil stop, <span class='t'>tahmini</span>); motor durma torku 21 kg·cm satıcı etiketi (ölçülmedi); servo ivme profili 60°/0,4 s (<span class='t'>tahmini</span>).",
     "M3 saplama DIN 976 ve DIN 985 somun stokta varsayıldı; saplama %s mm'ye kesilir." % sayi(KF["adaptor_h_mm"] + 13.0, 0),

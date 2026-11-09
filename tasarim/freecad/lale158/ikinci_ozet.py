@@ -114,7 +114,7 @@ bolumler = [
          sutun=("Poz", "Kütle g", "AM y", "Rampa 5° pay ileri", "Rampa 5° pay geri", "Pay yan"),
          satir=[(p["ad"], t(p["kutle_g"], 1), t(p["am"][1], 1), t(p["rampa5"]["pay_ileri"]), t(p["rampa5"]["pay_geri"]), t(p["rampa5"]["pay_yan"])) for p in TB["robot"]["pozlar"]]),
     dict(baslik="Devrilmede dikkat", liste=[
-        "Elde yük varken rampa ölçütü tutmuyor: iki kol önde + elde 0,5 kg pay ileri %s; 500 g ızgara en kötü %s (önceki 7\" modelde 1,362); 100 g ızgara en kötü %s, bu da eşik altına indi (önceki modelde 1,521). Yüksüz en kötü %s, eşiğe 0,02 kala geçiyor. Elde yük sınırı Duffy'nin kararı."
+        "Elde yük varken rampa ölçütü tutmuyor: iki kol önde + elde 0,5 kg pay ileri %s; 500 g ızgara en kötü %s (önceki 7\" modelde 1,362); 100 g ızgara en kötü %s, bu da eşik altına indi (önceki modelde 1,521). Yüksüz en kötü %s, eşiğe 0,02 kala geçiyor. Elde yük sınırı Ahmet'in kararı."
         % (t(P["one_yuk"]["rampa5"]["pay_ileri"]), t(g5["a_sinir_pay15"]["rampa5_geri"], 3), t(g1["a_sinir_pay15"]["rampa5_geri"], 3), t(g0["a_sinir_pay15"]["rampa5_geri"], 3)),
         "400 g kablo payına yeni göğüs kabloları (HDMI, USB, 12 V) eklenmedi. Formül elle de doğrulandı (ev pozu rampa geri kendi hesabım 2,492).",
         "Rampa payı 1,5 m/s² frene göre; fren 1,8 ölçümü yalnız düz zemin için.",

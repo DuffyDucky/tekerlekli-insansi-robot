@@ -1,6 +1,6 @@
 # Kol ×1,25 + DS3235: CAD tasarım ajanı çalışma notları (ara kayıt)
 
-Durum: başladı (24 Ekim 2026). Karar (Duffy, 24 Ekim 2026): taslak-170 kolu ×1,25, omuz S1/S2 (iki kol) DS3218MG yerine DS3235.
+Durum: başladı (24 Ekim 2026). Karar (Ahmet, 24 Ekim 2026): taslak-170 kolu ×1,25, omuz S1/S2 (iki kol) DS3218MG yerine DS3235.
 
 ## Okunan bağlam
 - Kol zinciri (omuz yereli, S1 ekseni y 0): dirsek ekseni y -173 (tüp ucu -140'tan 33 aşağı), bilek horn s 83,1 (y -256,1), el ucu s 152,5 (y -325,5).

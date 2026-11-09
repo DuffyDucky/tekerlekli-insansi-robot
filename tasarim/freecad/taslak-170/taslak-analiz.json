@@ -1816,7 +1816,7 @@
   [
    "Omuz (sag + sol)",
    "S1 + S2 servolari (4 adet)",
-   "DS3218MG -> DS3235 (karar: Duffy, 24 Ekim 2026); tork 29 / 32 / 35 @ 5 / 6 / 7,4 V (satici tablosu + datasheet) kg.cm; govde ayni kabul (40 x 20 x 40, kulak delikleri 49,5 x 10, 25T), geometri degismedi, 60 g. Govde yuksekligi kaynaklarda 38,5 / 40 / 40,5 mm: servo gelince kumpasla dogrulanacak"
+   "DS3218MG -> DS3235 (karar: Ahmet, 24 Ekim 2026); tork 29 / 32 / 35 @ 5 / 6 / 7,4 V (satici tablosu + datasheet) kg.cm; govde ayni kabul (40 x 20 x 40, kulak delikleri 49,5 x 10, 25T), geometri degismedi, 60 g. Govde yuksekligi kaynaklarda 38,5 / 40 / 40,5 mm: servo gelince kumpasla dogrulanacak"
   ],
   [
    "Dirsek + el (sag + sol)",
@@ -1826,7 +1826,7 @@
   [
    "Dirsek + el (sag + sol)",
    "On kol govdesi",
-   "32.4 mm uzadi (karar: kol x1.25, Duffy 24 Ekim 2026): dirsek ekseni -> bilek ekseni 83.1 -> 115.5 mm; dirsek servosu ile bilek servosu arasindaki U bolum (yan duvarlar + on duvar) s 42.75'te kesit uzatmasiyla; tek baski parcasi kaldi"
+   "32.4 mm uzadi (karar: kol x1.25, Ahmet 24 Ekim 2026): dirsek ekseni -> bilek ekseni 83.1 -> 115.5 mm; dirsek servosu ile bilek servosu arasindaki U bolum (yan duvarlar + on duvar) s 42.75'te kesit uzatmasiyla; tek baski parcasi kaldi"
   ],
   [
    "Dirsek + el (sag + sol)",
@@ -1841,7 +1841,7 @@
   [
    "Dirsek + el (sag + sol)",
    "Dirsek catali (dis kol)",
-   "dis kol (horn tarafi) 5 -> 8 mm, disa (+X; x 224.9 -> 227.9): kol analizi dis kol L3 SF 1,86 / L4 0,77 (kontrol ajani, 24 Ekim 2026); kopru ayni duzleme uzadi; ic yuz, horn, 625ZZ, pim, delikler ve eksen ayni; 87.5 -> 92.8 g (kol basina). Onay: Duffy (gorunum + carpisma sartiyla)"
+   "dis kol (horn tarafi) 5 -> 8 mm, disa (+X; x 224.9 -> 227.9): kol analizi dis kol L3 SF 1,86 / L4 0,77 (kontrol ajani, 24 Ekim 2026); kopru ayni duzleme uzadi; ic yuz, horn, 625ZZ, pim, delikler ve eksen ayni; 87.5 -> 92.8 g (kol basina). Onay: Ahmet (gorunum + carpisma sartiyla)"
   ],
   [
    "Dirsek + el (sag + sol)",

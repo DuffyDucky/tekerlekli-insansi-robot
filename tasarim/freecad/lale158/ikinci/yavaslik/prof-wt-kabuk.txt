@@ -11,19 +11,19 @@ toplam duvar saati 8293.9 s
      4911  172.611    0.035  172.611    0.035 {method 'cut' of 'Part.Shape' objects}
      1652   84.175    0.051   84.175    0.051 {method 'common' of 'Part.Shape' objects}
       946   30.917    0.033   30.917    0.033 {method 'fuse' of 'Part.Shape' objects}
-        1   16.554   16.554  101.960  101.960 C:\Users\Victus\AppData\Local\Temp\claude\C--Users-Victus-Documents-DuffyOS\f8c032b7-125c-482c-81d2-c6c0e512f0ee\scratchpad\wt\freecad\kabuk\kabuk_parcalar.py:1(<module>)
+        1   16.554   16.554  101.960  101.960 ...\scratchpad\wt\freecad\kabuk\kabuk_parcalar.py:1(<module>)
      4182   13.505    0.003   13.505    0.003 {built-in method makeFace}
         1    6.707    6.707    6.707    6.707 {built-in method read}
       362    5.413    0.015    5.413    0.015 {method 'removeSplitter' of 'Part.Shape' objects}
       455    4.798    0.011    4.798    0.011 {method 'isInside' of 'Part.Shape' objects}
       346    3.241    0.009    3.241    0.009 {method 'isValid' of 'Part.Shape' objects}
-       31    3.101    0.100 7660.800  247.123 C:/Users/Victus/AppData/Local/Temp/claude/C--Users-Victus-Documents-DuffyOS/f8c032b7-125c-482c-81d2-c6c0e512f0ee/scratchpad/wt/freecad/kabuk/kabuk_montaj.py:298(baski_analiz)
+       31    3.101    0.100 7660.800  247.123 .../scratchpad/wt/freecad/kabuk/kabuk_montaj.py:298(baski_analiz)
        31    2.875    0.093    2.875    0.093 {built-in method meshFromShape}
         1    2.537    2.537    2.537    2.537 {method 'exportStep' of 'Part.Shape' objects}
-        1    1.679    1.679 8293.832 8293.832 C:/Users/Victus/AppData/Local/Temp/claude/C--Users-Victus-Documents-DuffyOS/f8c032b7-125c-482c-81d2-c6c0e512f0ee/scratchpad/wt/freecad/kabuk/kabuk_montaj.py:1(<module>)
+        1    1.679    1.679 8293.832 8293.832 .../scratchpad/wt/freecad/kabuk/kabuk_montaj.py:1(<module>)
         1    1.651    1.651    1.651    1.651 {method 'saveAs' of 'App.Document' objects}
-      206    1.447    0.007    6.275    0.030 C:\Users\Victus\AppData\Local\Temp\claude\C--Users-Victus-Documents-DuffyOS\f8c032b7-125c-482c-81d2-c6c0e512f0ee\scratchpad\wt\freecad\kabuk\kabuk_parcalar.py:536(sahip)
-      692    1.058    0.002    1.058    0.002 C:\Users\Victus\AppData\Local\Temp\claude\C--Users-Victus-Documents-DuffyOS\f8c032b7-125c-482c-81d2-c6c0e512f0ee\scratchpad\wt\freecad\kabuk\kabuk_parcalar.py:916(<genexpr>)
+      206    1.447    0.007    6.275    0.030 ...\scratchpad\wt\freecad\kabuk\kabuk_parcalar.py:536(sahip)
+      692    1.058    0.002    1.058    0.002 ...\scratchpad\wt\freecad\kabuk\kabuk_parcalar.py:916(<genexpr>)
     75/74    0.659    0.009    0.668    0.009 {built-in method _imp.create_dynamic}
       344    0.595    0.002    0.595    0.002 {method 'copy' of 'Part.Shape' objects}
       411    0.581    0.001    0.581    0.001 {built-in method io.open_code}
@@ -32,7 +32,7 @@ toplam duvar saati 8293.9 s
        95    0.217    0.002    0.217    0.002 {method 'transformShape' of 'Part.Shape' objects}
       405    0.203    0.001    0.203    0.001 {method 'optimalBoundingBox' of 'Part.Shape' objects}
    100684    0.188    0.000    0.188    0.000 {method 'intersect' of 'Base.BoundBox' objects}
-        1    0.177    0.177    1.222    1.222 C:\Users\Victus\AppData\Local\Temp\claude\C--Users-Victus-Documents-DuffyOS\f8c032b7-125c-482c-81d2-c6c0e512f0ee\scratchpad\wt\freecad\iskelet\iskelet_parcalar.py:1(<module>)
+        1    0.177    0.177    1.222    1.222 ...\scratchpad\wt\freecad\iskelet\iskelet_parcalar.py:1(<module>)
         3    0.148    0.049    0.148    0.049 {method 'mirror' of 'Part.Shape' objects}
       303    0.141    0.000    0.141    0.000 {method 'extrude' of 'Part.Shape' objects}
 
@@ -47,30 +47,30 @@ toplam duvar saati 8293.9 s
         1    0.000    0.000 8293.832 8293.832 <frozen runpy>:91(_run_module_code)
         1    0.000    0.000 8293.832 8293.832 <frozen runpy>:65(_run_code)
     442/1    0.016    0.000 8293.832 8293.832 {built-in method builtins.exec}
-        1    1.679    1.679 8293.832 8293.832 C:/Users/Victus/AppData/Local/Temp/claude/C--Users-Victus-Documents-DuffyOS/f8c032b7-125c-482c-81d2-c6c0e512f0ee/scratchpad/wt/freecad/kabuk/kabuk_montaj.py:1(<module>)
-       31    3.101    0.100 7660.800  247.123 C:/Users/Victus/AppData/Local/Temp/claude/C--Users-Victus-Documents-DuffyOS/f8c032b7-125c-482c-81d2-c6c0e512f0ee/scratchpad/wt/freecad/kabuk/kabuk_montaj.py:298(baski_analiz)
+        1    1.679    1.679 8293.832 8293.832 .../scratchpad/wt/freecad/kabuk/kabuk_montaj.py:1(<module>)
+       31    3.101    0.100 7660.800  247.123 .../scratchpad/wt/freecad/kabuk/kabuk_montaj.py:298(baski_analiz)
      5622 6934.655    1.233 6934.655    1.233 {method 'makeOffset2D' of 'Part.Shape' objects}
      4182  553.702    0.132  553.702    0.132 {method 'slice' of 'Part.Shape' objects}
       580  447.196    0.771  447.196    0.771 {method 'distToShape' of 'Part.Shape' objects}
-      322    0.014    0.000  432.330    1.343 C:/Users/Victus/AppData/Local/Temp/claude/C--Users-Victus-Documents-DuffyOS/f8c032b7-125c-482c-81d2-c6c0e512f0ee/scratchpad/wt/freecad/kabuk/kabuk_montaj.py:103(mesafe)
+      322    0.014    0.000  432.330    1.343 .../scratchpad/wt/freecad/kabuk/kabuk_montaj.py:103(mesafe)
      4911  172.611    0.035  172.611    0.035 {method 'cut' of 'Part.Shape' objects}
     525/7    0.009    0.000  103.283   14.755 <frozen importlib._bootstrap>:1165(_find_and_load)
     523/7    0.006    0.000  103.283   14.755 <frozen importlib._bootstrap>:1120(_find_and_load_unlocked)
     500/7    0.005    0.000  103.268   14.753 <frozen importlib._bootstrap>:666(_load_unlocked)
   1259/18    0.002    0.000  103.244    5.736 <frozen importlib._bootstrap>:233(_call_with_frames_removed)
     405/5    0.005    0.000  103.228   20.646 <frozen importlib._bootstrap_external>:934(exec_module)
-        1   16.554   16.554  101.960  101.960 C:\Users\Victus\AppData\Local\Temp\claude\C--Users-Victus-Documents-DuffyOS\f8c032b7-125c-482c-81d2-c6c0e512f0ee\scratchpad\wt\freecad\kabuk\kabuk_parcalar.py:1(<module>)
+        1   16.554   16.554  101.960  101.960 ...\scratchpad\wt\freecad\kabuk\kabuk_parcalar.py:1(<module>)
      1652   84.175    0.051   84.175    0.051 {method 'common' of 'Part.Shape' objects}
-     1066    0.083    0.000   55.827    0.052 C:/Users/Victus/AppData/Local/Temp/claude/C--Users-Victus-Documents-DuffyOS/f8c032b7-125c-482c-81d2-c6c0e512f0ee/scratchpad/wt/freecad/kabuk/kabuk_montaj.py:35(kes)
+     1066    0.083    0.000   55.827    0.052 .../scratchpad/wt/freecad/kabuk/kabuk_montaj.py:35(kes)
       946   30.917    0.033   30.917    0.033 {method 'fuse' of 'Part.Shape' objects}
      4182   13.505    0.003   13.505    0.003 {built-in method makeFace}
         1    6.707    6.707    6.707    6.707 {built-in method read}
-      206    1.447    0.007    6.275    0.030 C:\Users\Victus\AppData\Local\Temp\claude\C--Users-Victus-Documents-DuffyOS\f8c032b7-125c-482c-81d2-c6c0e512f0ee\scratchpad\wt\freecad\kabuk\kabuk_parcalar.py:536(sahip)
+      206    1.447    0.007    6.275    0.030 ...\scratchpad\wt\freecad\kabuk\kabuk_parcalar.py:536(sahip)
     10734    0.004    0.000    6.101    0.001 {built-in method builtins.min}
-       22    0.001    0.000    5.636    0.256 C:/Users/Victus/AppData/Local/Temp/claude/C--Users-Victus-Documents-DuffyOS/f8c032b7-125c-482c-81d2-c6c0e512f0ee/scratchpad/wt/freecad/kabuk/kabuk_montaj.py:247(<genexpr>)
+       22    0.001    0.000    5.636    0.256 .../scratchpad/wt/freecad/kabuk/kabuk_montaj.py:247(<genexpr>)
       362    5.413    0.015    5.413    0.015 {method 'removeSplitter' of 'Part.Shape' objects}
       455    4.798    0.011    4.798    0.011 {method 'isInside' of 'Part.Shape' objects}
-        1    0.011    0.011    3.252    3.252 C:/Users/Victus/AppData/Local/Temp/claude/C--Users-Victus-Documents-DuffyOS/f8c032b7-125c-482c-81d2-c6c0e512f0ee/scratchpad/wt/freecad/kabuk/kabuk_montaj.py:45(<listcomp>)
+        1    0.011    0.011    3.252    3.252 .../scratchpad/wt/freecad/kabuk/kabuk_montaj.py:45(<listcomp>)
       346    3.241    0.009    3.241    0.009 {method 'isValid' of 'Part.Shape' objects}
        31    2.875    0.093    2.875    0.093 {built-in method meshFromShape}
 
