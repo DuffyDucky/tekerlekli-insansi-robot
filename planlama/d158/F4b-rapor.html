@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F4b Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F4b: takma ad temizliği, birinci kısım (P4.5a) + <code>regresyon.py</code> bayrak koruması</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 09.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>F4b-brief.md</code>, <code>F4b-gunluk.md</code>, <code>F4b-kontrol.md</code>, <code>git diff --numstat</code> / <code>-U0</code> taraması, <code>regresyon.py --yazma</code> çıktısı</p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">Bağımsız kontrol</div><div class="v"><span class="tag wait">KOŞULLU</span></div><div class="d">Temizlik ve <code>regresyon.py</code> tam geçer; 2 günlük cümlesi + commit önkoşulu C'de uygulandı</div></div>
+  <div class="card"><div class="k">Temizlenen dosya</div><div class="v">63</div><div class="d">60 izlenen + ilk kez giren 2 dosya + <code>yerlesim_lib.py</code></div></div>
+  <div class="card"><div class="k">Değişen satır</div><div class="v">198</div><div class="d">İzlenen 196 (+196 / −196, her dosyada eklenen = silinen) + izlenmeyen 2 dosyada 1'er</div></div>
+  <div class="card"><div class="k">Kalan takma adlı dosya</div><div class="v">11</div><div class="d"><code>git grep -il</code>, HEAD; başta 72. Hepsi gerekçeli kapsam dışı (P6.1, K25, K26)</div></div>
+  <div class="card"><div class="k">Regresyon</div><div class="v"><span class="tag ok">10/10 aynı</span></div><div class="d"><code>--yazma</code>, GEÇER (09.11 03:15:29); taban yazılmadı</div></div>
+</div>
+
+<p class="note">Sayılar C'nin yeniden ölçümünden: commit'ten hemen önce 60 izlenen dosyada <code>git diff --numstat</code> günlük §2 tablosuyla karşılaştırıldı (60/60 eşleşti, toplam +195 / −195); eklenen satırlarda takma ad 0, yerel kullanıcı yolu 0; satır çiftlerinde yeni giren büyük harfli sözcükler yalnız "Ahmet" (181) ve "Yorulmaz" (3). FreeCAD açılmadı. Bu raporda takma ad, hesap adı ve kişisel yol yazılmaz.</p>
+
+<h2>Değişiklik özeti</h2>
+<div class="tbl"><table>
+<thead><tr><th>Tür</th><th>Dosya</th><th>Satır</th><th>Ne değişti</th><th>Kim</th></tr></thead>
+<tbody>
+<tr><td class="kod">Markdown belgeler</td><td class="n">28</td><td class="n">94</td><td>Kişiye atıf → "Ahmet"; resmî tanıtım → "Ahmet Yorulmaz" (<code>README.md:59</code>, <code>kararlar-2026-10-29.md:1</code>); not deposu adı → "not deposu" / "kişisel not deposu (vault)"; ssh kullanıcısı → <code>&lt;kullanıcı&gt;</code></td><td>A</td></tr>
+<tr><td class="kod"><code>Lale-Proje-Ozeti.txt</code></td><td class="n">1</td><td class="n">1</td><td>Proje lideri satırı (<code>:21</code>) → "Ahmet Yorulmaz"</td><td>A</td></tr>
+<tr><td class="kod">Python betikleri</td><td class="n">17</td><td class="n">45</td><td>Yorum ve rapor dizgeleri: <code>taslak-170/*.py</code>, <code>kol_rapor.py</code>, <code>Y2b-*.py</code>, <code>ikinci_ozet.py</code>, <code>kablo_yolu_ekran.py</code>, <code>montaj_gorsel.py</code>, <code>iskelet_montaj.py</code>, <code>robot_cad.py</code> (A, 16 dosya / 44 satır) + <code>KY/yerlesim_lib.py:4</code> (C, 1 satır); hiçbiri tarama kaynağı değil</td><td>A + C</td></tr>
+<tr><td class="kod">HTML</td><td class="n">6</td><td class="n">16</td><td><code>taslak-170/rapor.html</code> 6, <code>kol-analiz/rapor.html</code> 5, <code>Robot-Tasarim-Demosu.html</code> 2, <code>lale158/rapor.html</code>, <code>raporlar/aku-secimi/rapor.html</code>, <code>cad/viewer-template.html</code> 1'er</td><td>A</td></tr>
+<tr><td class="kod">JSON</td><td class="n">7</td><td class="n">11</td><td><code>maliyet.json</code> 2, <code>Y2b-aku.json</code> 1, <code>lale158-regresyon.json</code> 1, <code>kutle.json</code> 2, <code>taslak-analiz.json</code> 3, iki <code>hesap.json</code> 1'er</td><td>A</td></tr>
+<tr><td class="kod">Profil <code>.txt</code></td><td class="n">2</td><td class="n">29</td><td>Geçici klasör yolunun takma adlı öneki → <code>...</code>; sayı sütunları aynı</td><td>A</td></tr>
+<tr><td class="kod">İlk kez depoya giren</td><td class="n">2</td><td class="n">2</td><td><code>F1a-kontrol.md:35</code>, <code>F5b-gunluk.md:63</code>: arama terimi → "takma ad" (dosyalar tam hâliyle girdi: 60 + 64 satır)</td><td>A</td></tr>
+<tr><td class="kod">Toplam temizlik</td><td class="n"><b>63</b></td><td class="n"><b>198</b></td><td>İzlenen 61 dosyada +196 / −196, her dosyada eklenen = silinen</td><td></td></tr>
+<tr><td class="kod"><code>planlama/d158/regresyon.py</code></td><td class="n">1</td><td class="n">+14 / −0</td><td>Bayrak koruması (aşağıda)</td><td>A</td></tr>
+<tr><td class="kod">Planlama kaydı</td><td class="n">5</td><td class="n">—</td><td><code>F4b-brief.md</code>, <code>F4b-gunluk.md</code> (Koşul 1–2), <code>F4b-kontrol.md</code>, <code>karar-kuyrugu.md</code> (K25, K26, K22 notu; +44 / −1), <code>dongu-158.md</code> (orkestratör)</td><td>orkestratör / A / B / C</td></tr>
+</tbody>
+</table></div>
+<p class="note">Dosya başına sayı <code>F4b-gunluk.md</code> §2'de; tür sayıları C'nin <code>git show --numstat c7f9af4</code> ölçümü. B'nin karakter düzeyi sınıflaması (<code>F4b-kontrol.md</code> madde 3): takma ad → "Ahmet" 177, Türkçe ek uyumu (<code>'nin→'in</code> 18, <code>'ye→'e</code> 4, <code>'de→'te</code> 1), → "Ahmet Yorulmaz" 3, not deposu adı 6, ssh kullanıcısı 1, geçici klasör yolu öneki → <code>...</code> 30; başka fark yok. Sayı, tarih, karar metni ve alıntı içeriği değişmedi (madde 4, 8).</p>
+
+<h2>Makine çıktıları ne oldu</h2>
+<div class="tbl"><table>
+<thead><tr><th>Çıktı</th><th>Kaynak betik</th><th>Yöntem</th><th>Sonra</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>planlama/y2/Y2b-aku.json:160</code></td><td><code>Y2b-aku.py:62,65</code></td><td><span class="tag ok">yeniden üretildi</span> bayt bayt aynı</td><td>—</td></tr>
+<tr><td class="kod"><code>taslak-170/kol-analiz/rapor.html</code> (5)</td><td><code>kol_rapor.py</code> (7)</td><td><span class="tag ok">yeniden üretildi</span> bayt bayt aynı</td><td>—</td></tr>
+<tr><td class="kod"><code>taslak-170/rapor.html</code> (6)</td><td><code>taslak_rapor.py</code>, <code>taslak_rapor_analiz.py</code></td><td><span class="tag wait">elle</span> yeniden üretim girdi kayması verdi (<code>arayuz.py</code> 1,58 m; 24 sayısal fark)</td><td>Arşiv (1,70 m); yeniden üretilmez</td></tr>
+<tr><td class="kod"><code>taslak-170/kutle.json</code>, <code>taslak-analiz.json</code></td><td><code>taslak_ayar.py:59</code>, <code>taslak_parcalar.py</code> (FreeCAD)</td><td><span class="tag wait">elle</span></td><td>Arşiv; betik aynı metni verir</td></tr>
+<tr><td class="kod"><code>analiz/hesap.json</code>, <code>onceki-7mm/hesap.json</code></td><td><code>taslak_hesap.py</code></td><td><span class="tag wait">elle</span> (yeniden hesap sayıları değiştirirdi)</td><td>Arşiv</td></tr>
+<tr><td class="kod"><code>lale158-regresyon.json:209</code>, <code>lale158/rapor.html:22</code></td><td><code>ikinci_ozet.py:117</code> → <code>lale158_rapor.py</code></td><td><span class="tag wait">elle</span> (F2'nin güncel tarama sonucuyla 62 satır fark)</td><td><b>P6.1'de yeniden üretilecek</b></td></tr>
+<tr><td class="kod"><code>planlama/maliyet.json</code> (2)</td><td><code>Y2b-maliyet.py:101</code> (dosyayı yerinde değiştirir)</td><td><span class="tag wait">elle</span>, betik koşulmadı</td><td>—</td></tr>
+<tr><td class="kod"><code>tasarim/Robot-Tasarim-Demosu.html</code> (2)</td><td><code>demo_uret.py</code></td><td><span class="tag wait">elle</span> (yeniden üretim 1.940 satır kayma)</td><td>Ayrı iş (P9.2)</td></tr>
+<tr><td class="kod"><code>prof-head-kabuk.txt</code>, <code>prof-wt-kabuk.txt</code> (29)</td><td>cProfile, betik yok</td><td>Yol öneki → <code>...</code>, sayı sütunları aynı</td><td>Gerekmez</td></tr>
+</tbody>
+</table></div>
+<p class="note">B 7 JSON'u <code>json.load</code> ile açtı ve HEAD ile yapısal ağaç karşılaştırması yaptı: anahtar sırası, liste uzunluğu, sayı / bool değerleri aynı; farklı 11 dizgenin hepsi ad değişimi (madde 6). Betik dizgeleri çıktı dizgeleriyle eşleşiyor (madde 5). Commit önkoşulunda (Koşul 3) F2'nin bu çıktıları yeniden üretmediği görüldü: <code>lale158-regresyon.json</code> ve <code>lale158/rapor.html</code> numstat 1 / 1, günlükle aynı.</p>
+
+<h2>Kalan 11 dosya ve nedeni</h2>
+<div class="tbl"><table>
+<thead><tr><th>Dosya</th><th>Neden</th><th>Ne zaman / kim</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>tasarim/freecad/arayuz.py</code></td><td>Tarama kaynağı (<code>KAYNAK_SABIT</code>) + F2 alanı</td><td>P6.1, taramadan hemen önce</td></tr>
+<tr><td class="kod"><code>kabuk/kabuk_lib.py</code>, <code>kabuk/kabuk_parcalar.py</code></td><td>Tarama kaynağı + F2 alanı</td><td>P6.1</td></tr>
+<tr><td class="kod"><code>omuz/omuz_parcalar.py</code></td><td>Tarama kaynağı + F2 alanı</td><td>P6.1</td></tr>
+<tr><td class="kod"><code>kafa/kafa10_lib.py</code>, <code>kafa/kafa_lib.py</code>, <code>kafa/kafa_parcalar.py</code></td><td>Tarama kaynağı</td><td>P6.1</td></tr>
+<tr><td class="kod"><code>taban/taban_parcalar.py</code></td><td>Tarama kaynağı</td><td>P6.1</td></tr>
+<tr><td class="kod"><code>kod/ortak/eklem_sinirlari.json:111</code></td><td>Efe'nin alanı; metin <code>arayuz.py:793</code>'ten <code>eklem_sinirlari_uret.py</code> ile üretiliyor</td><td>P6.1 sonrası yeniden üretim</td></tr>
+<tr><td class="kod"><code>CLAUDE.md:3,4,22</code></td><td>Ajan bağlam dosyası; değiştirmek Ahmet'in kararı</td><td><span class="tag wait">K25</span></td></tr>
+<tr><td class="kod"><code>tasarim/freecad/index.html:49,92</code></td><td>Hesap adı takma adı içeriyor; iki çalışan bağlantının içinde, yer tutucu bağlantıyı kırar</td><td><span class="tag wait">K26</span></td></tr>
+</tbody>
+</table></div>
+<p class="note">Gerçek tarama kaynağı 8 dosya (<code>carpisma_kos.py</code> <code>kaynak_listesi()</code>, import etmeden kopyalandı: 17 izlenen yol; F4b listesi ∩ bu liste = boş). <code>KY/yerlesim_lib.py</code> iki klasör derinde, glob'a girmiyor (C bir kez daha doğruladı) → bu pakette temizlendi; başta 12 olan kalan liste 11'e indi. İzlenmeyen <code>raporlar/11-6-inc-gogus-ekrani-sigma.md</code> (K24) ve <code>tasarim/solidworks/renkler.md:63</code> (K22 notu) takma ad taşıyor; depoda değiller.</p>
+
+<h2>Karar kuyruğu</h2>
+<div class="tbl"><table>
+<thead><tr><th>Madde</th><th>Konu</th><th>Seçenekler</th><th>Önerilen varsayılan</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td class="kod">K25</td><td>Depodaki <code>CLAUDE.md</code> içindeki takma ad (3 satır)</td><td>a) bırak · b) ad değişimi (satır 3 "adı Ahmet'in kararı", satır 4 "Proje sahibi Ahmet Yorulmaz;", satır 22 "kişisel not deposu (vault)") · c) izlemeden çıkar</td><td>b</td><td><span class="tag wait">açık</span></td></tr>
+<tr><td class="kod">K26</td><td>GitHub hesap adı (depo adresi ve Pages bağlantıları)</td><td>a) şimdilik bırak · b) göreli bağlantı (Jekyll 404 riski, denenmeli) · c) yer tutucu (kırar) · d) taşı / adı değiştir (Pages adresi yönlendirilmez)</td><td>a</td><td><span class="tag wait">açık</span></td></tr>
+<tr><td class="kod">K22</td><td><code>tasarim/solidworks/</code></td><td>Not eklendi: izlenmeyen <code>renkler.md:63</code> takma ad taşıyor; klasör depoya alınırsa önce temizlenmeli (F4b B)</td><td>değişmedi (a)</td><td><span class="tag wait">açık</span></td></tr>
+</tbody>
+</table></div>
+<p class="note">Özet tablosuna K25 ve K26 satırları eklendi; sayım "Açık: 21, Kapandı: 5, Toplam 26". Mevcut maddelerin metnine (K22 notu dışında) dokunulmadı. Her iki yeni maddede de git geçmişinin eski metni taşıdığı ve geçmişi yeniden yazmanın onaysız yapılmadığı yazıyor.</p>
+
+<h2><code>regresyon.py</code> bayrak koruması: test</h2>
+<div class="tbl"><table>
+<thead><tr><th>Komut</th><th>Çıkış</th><th><code>regresyon.json</code> sha256</th><th><code>regresyon-son-kosu.json</code> sha256</th><th>Koşan</th></tr></thead>
+<tbody>
+<tr><td class="kod">(önce)</td><td class="n">—</td><td><code>e6f288ff5b7ba0a1…</code></td><td><code>ced8869015652586…</code></td><td>A, B, C</td></tr>
+<tr><td class="kod"><code>--help</code></td><td class="n">0</td><td>aynı</td><td>aynı</td><td>A, B</td></tr>
+<tr><td class="kod"><code>-h</code></td><td class="n">0</td><td>aynı</td><td>aynı</td><td>A, B</td></tr>
+<tr><td class="kod"><code>--xyz</code></td><td class="n">2</td><td>aynı</td><td>aynı</td><td>A, B</td></tr>
+<tr><td class="kod"><code>--yazma --xyz</code></td><td class="n">2</td><td>aynı</td><td>aynı</td><td>A, B</td></tr>
+<tr><td class="kod"><code>x</code> (konumsal)</td><td class="n">2</td><td>aynı</td><td>aynı</td><td>A, B</td></tr>
+<tr><td class="kod"><code>--help --xyz</code></td><td class="n">0</td><td>aynı</td><td>aynı</td><td>B (yardım öncelikli, argparse ile aynı)</td></tr>
+<tr><td class="kod"><code>--yazma</code></td><td class="n">0</td><td>aynı</td><td>aynı</td><td>A, B, C (GEÇER, ölçtü, yazmadı)</td></tr>
+</tbody>
+</table></div>
+<p class="note">Değişiklik <code>main()</code> başında, <code>CIKTI</code> okunmadan ve <code>olc()</code> çağrılmadan önce; <code>yazma_yok</code> satırından sonrası değişmedi (B, madde 15). Normal mod hiçbir ajan tarafından koşulmadı (tabanı F2 yazacak).</p>
+
+<h2>Korunan değerler (regresyon)</h2>
+<p><code>py -3 planlama\d158\regresyon.py --yazma</code> (03:15:29; taban 02:17:55): boy 1.580, dört çakışma 0, yüksüz rampa 1,519, tilt 3,64, pan 2,21, mikrofon–hoparlör 574,3 mm, SY8205 × USB 0. <span class="tag ok">GEÇER, 10/10 aynı</span>. "Değişti" yok; paralel F2'nin çalışma kopyası hiçbir değeri oynatmadı. İki JSON'un sha256'sı koşudan önce ve sonra aynı. F4b model dosyası içermiyor.</p>
+
+<h2>B'nin koşulları ve kapanışı</h2>
+<div class="tbl"><table>
+<thead><tr><th>Koşul</th><th>Yer</th><th>İçerik</th><th>Nasıl kapandı</th></tr></thead>
+<tbody>
+<tr><td class="kod">1</td><td><code>F4b-gunluk.md:166</code> (K-F4b-2, seçenek d)</td><td>"GitHub yönlendirme verir" yalnız depo bağlantıları için doğru; Pages adresi yönlendirilmez</td><td><span class="tag ok">kapandı</span> "(GitHub depo web / git bağlantılarını yönlendirir; Pages adresi yönlendirilmez, paylaşılmış site linkleri kırılır)"</td></tr>
+<tr><td class="kod">2</td><td><code>F4b-gunluk.md:148</code> (K-F4b-1, seçenek b)</td><td>Hangi adın hangi satıra gideceği belirsizdi</td><td><span class="tag ok">kapandı</span> "satır 3'te "adı Ahmet'in kararı", satır 4'te "Proje sahibi Ahmet Yorulmaz;""</td></tr>
+<tr><td class="kod">3</td><td>Commit önkoşulu</td><td><code>git add</code>'den hemen önce 60 izlenen dosyada numstat = günlük §2; eklenen = silinen</td><td><span class="tag ok">kapandı</span> 60/60 eşleşti, +195 / −195; tutmayan dosya 0, dışarıda bırakılan 0</td></tr>
+<tr><td class="kod">Ek</td><td><code>KY/yerlesim_lib.py:4</code></td><td>B: tarama kaynağı değil, şimdi temizlenebilir (madde 13)</td><td><span class="tag ok">kapandı</span> C <code>kaynak_listesi()</code> mantığını import etmeden yeniden kurdu (17 yol, dosya yok); yalnız satır 4, +1 / −1</td></tr>
+</tbody>
+</table></div>
+<p class="note">Koşul metinleri <code>F4b-kontrol.md</code> "Koşullar" bölümünden birebir. Koşul dışı öneriler kayıtta, iş açılmadı: <code>kararlar-2026-10-29.md:28,74,97</code> tur başlıklarında "Ahmet Yorulmaz" tutarlılığı; P6.1 sayımı 8 tarama kaynağı + <code>eklem_sinirlari.json</code> (+ <code>CLAUDE.md</code>, <code>index.html</code> karar).</p>
+
+<div class="oneri"><b>C bulgusu (commit sonrası): <code>F4b-brief.md:5</code> takma adı harf harf ayrılmış biçimde içeriyor.</b>
+Brief, arama terimini tireyle bölünmüş olarak yazmış; düz <code>git grep -i</code> taraması bunu yakalamıyor, B'nin listesinde de yok. Dosya F4b-kontrol'ün açık <code>git add</code> listesindeydi ve commit <code>34d0cc0</code> ile herkese açık dala girdi. İki commit'in eklenen satırlarında başka eşleşme yok (harf arası ayraçlı desenle tarandı). Önerilen düzeltme (orkestratör kararı): satırdaki terimi "takma ad" yapan tek satırlık bir commit; git geçmişinde kalır (K25 / K26'daki geçmiş notuyla aynı durum).</div>
+<p class="note">Ayrıca <code>F4b-gunluk.md:18</code> ve <code>:96</code> <code>C:\Users\...</code> biçiminde kısaltılmış bir yol deseni anlatıyor; kullanıcı adı içermiyor, yerel yol değil (önceki paket belgelerinde de aynı kalıp var).</p>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th><th>Dosya</th><th>Satır</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>c7f9af4</code></td><td>Lale P4.5a: ad temizliği (yalnız ad satırları, 63 dosya): 60 izlenen + <code>F1a-kontrol.md</code> + <code>F5b-gunluk.md</code> + <code>yerlesim_lib.py</code></td><td class="n">63</td><td class="n">+320 / −196 (iki yeni dosya 124 satır)</td></tr>
+<tr><td class="kod"><code>34d0cc0</code></td><td>Lale P4.5a: <code>regresyon.py</code> --help / tanımsız bayrak koruması + planlama (<code>F4b-brief.md</code>, <code>F4b-gunluk.md</code>, <code>F4b-kontrol.md</code>, <code>karar-kuyrugu.md</code>, <code>dongu-158.md</code>)</td><td class="n">6</td><td class="n">+466 / −7</td></tr>
+</tbody>
+</table></div>
+<p class="note">Push: <code>233ce00..34d0cc0 lale-duzeltme → lale-duzeltme</code>; <code>main</code>'e dokunulmadı. Açık <code>git add</code> listesi; dışarıda: paralel F2 (<code>arayuz.py</code>, <code>omuz/</code>, <code>F2-*</code>), K23 dosyaları (<code>kabuk/gorsel/*.png</code> 13, <code>montaj/yerlesim-kontrol.json</code>), <code>regresyon*.json</code>, <code>CLAUDE.md</code>, <code>kod/</code>, <code>kvkk/</code>, <code>rapor/</code>, <code>tubitak-2209b/</code>, <code>tasarim/solidworks/</code>, <code>raporlar/</code> izlenmeyenleri, <code>KY/kaynak/</code>, <code>lale_dongu.*</code>, <code>F5-pano-govde.txt</code>, <code>F5b-pano-govde.txt</code>, <code>__pycache__</code>. Bu rapor ayrı commit'te.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F4b · 09.11.2026 · Commit <code>c7f9af4</code>, <code>34d0cc0</code> (<code>lale-duzeltme</code>) · Regresyon <code>regresyon.py --yazma</code>: GEÇER, 10/10 aynı · Kalan takma adlı dosya 11 (P6.1: 9, K25: 1, K26: 1) · Kaynaklar: <code>F4b-brief.md</code>, <code>F4b-gunluk.md</code>, <code>F4b-kontrol.md</code>, <code>karar-kuyrugu.md</code> K22, K25, K26.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
