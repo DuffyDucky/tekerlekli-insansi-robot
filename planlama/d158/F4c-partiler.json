@@ -1,0 +1,2550 @@
+{
+ "tarih": "2026-11-09",
+ "kaynak": "planlama/y2/Y2b-baski.json (Y2b-baski.py); parti alanı Y2b parti()",
+ "partiler": {
+  "0": {
+   "ad": "Tolerans kuponları",
+   "ne_zaman": "İlk gün (S'den önce)",
+   "bagimlilik": "Kupon STL'leri hazır. Değerlendirme için 6808-2RS, 625ZZ, M3/M5 ısıl gömme somun ve kupon D vidaları elde (K29 erken alım; K31 insert varyantı)",
+   "montaj": "Sonuç CAD'e (arayuz.INSERT_DELIK, rulman yuvaları, GECME) → STL dışa aktarma (FreeCAD, açık iş) → Parti 1",
+   "takvim": "S = 16.11 için 9–10.11 (proje-plani.md, Durum A)",
+   "parti": 0,
+   "kuponlar": [
+    {
+     "kod": "A",
+     "stl": "tasarim/freecad/test/stl/kupon-a-rulman-O52.stl",
+     "malzeme": "PETG-CF",
+     "g": [
+      26.0,
+      26.0
+     ],
+     "sa": [
+      0.739,
+      0.739
+     ],
+     "denenen": "6808-2RS dış bileziği: Ø52,0 / 52,1 / 52,2 / 52,3 (omuz rulman kapağı, kafa rulman yuvası)",
+     "kutle_kaynak": "STL hacmi × 1,27 (%100; tahmini değer yok)",
+     "kosullu": false
+    },
+    {
+     "kod": "B",
+     "stl": "tasarim/freecad/test/stl/kupon-b-yuva-mil-somun.stl",
+     "malzeme": "PETG-CF",
+     "g": [
+      60.0,
+      87.9
+     ],
+     "sa": [
+      1.706,
+      2.499
+     ],
+     "denenen": "625ZZ Ø16,0…16,3 · Ø40 mil Ø39,8…40,1 · M3 Ø3,8…4,1 / M5 Ø6,2…6,6 dikey (L + 0,5)",
+     "kutle_kaynak": "alt 60 g: 03.11 listesi (kaynağı yazılmamış); üst STL %100",
+     "kosullu": false
+    },
+    {
+     "kod": "B",
+     "stl": "tasarim/freecad/test/stl/kupon-b-yuva-mil-somun.stl",
+     "malzeme": "PETG",
+     "g": [
+      60.0,
+      87.9
+     ],
+     "sa": [
+      1.706,
+      2.499
+     ],
+     "denenen": "aynı kupon beyaz PETG'de (kabuk ısıl gömme delikleri)",
+     "kutle_kaynak": "aynı",
+     "kosullu": false
+    },
+    {
+     "kod": "C",
+     "stl": "tasarim/freecad/test/stl/kupon-c-isil-gomme-L1.stl",
+     "malzeme": "PETG-CF",
+     "g": [
+      7.5,
+      13.4
+     ],
+     "sa": [
+      0.213,
+      0.381
+     ],
+     "denenen": "Isıl gömme L + 1: M3 Ø3,9…4,1, M5 Ø6,2…6,6, yatay + dikey",
+     "kutle_kaynak": "m7-kupon-sonuc.json",
+     "kosullu": false
+    },
+    {
+     "kod": "C",
+     "stl": "tasarim/freecad/test/stl/kupon-c-isil-gomme-L1.stl",
+     "malzeme": "PETG",
+     "g": [
+      7.5,
+      13.4
+     ],
+     "sa": [
+      0.213,
+      0.381
+     ],
+     "denenen": "aynı kupon beyaz PETG'de",
+     "kutle_kaynak": "m7-kupon-sonuc.json",
+     "kosullu": false
+    },
+    {
+     "kod": "D1",
+     "stl": "tasarim/freecad/test/stl/kupon-d1-kelepce-kesiksiz.stl",
+     "malzeme": "PETG-CF",
+     "g": [
+      40.9,
+      87.9
+     ],
+     "sa": [
+      1.163,
+      2.499
+     ],
+     "denenen": "Dirsek kelepçesi (çatal dilimi), kesiksiz",
+     "kutle_kaynak": "m7-kupon-sonuc.json",
+     "kosullu": false
+    },
+    {
+     "kod": "D2",
+     "stl": "tasarim/freecad/test/stl/kupon-d2-kelepce-bosaltmali.stl",
+     "malzeme": "PETG-CF",
+     "g": [
+      41.4,
+      86.2
+     ],
+     "sa": [
+      1.177,
+      2.451
+     ],
+     "denenen": "Dirsek kelepçesi, kökte boşaltmalı (D1 geçerse yalnız karşılaştırma)",
+     "kutle_kaynak": "m7-kupon-sonuc.json",
+     "kosullu": true
+    },
+    {
+     "kod": "E",
+     "stl": "tasarim/freecad/test/stl/kupon-e-tup-halkasi.stl",
+     "malzeme": "PETG",
+     "g": [
+      14.3,
+      17.9
+     ],
+     "sa": [
+      0.407,
+      0.509
+     ],
+     "denenen": "Üst kol tüpü halkası (tüp–pim / tüp–bilezik geçmesi)",
+     "kutle_kaynak": "m7-kupon-sonuc.json",
+     "kosullu": false
+    }
+   ],
+   "toplam": {
+    "adet": 8,
+    "g": [
+     257.6,
+     420.6
+    ],
+    "sa": [
+     7.32,
+     11.96
+    ],
+    "cf_g": [
+     175.8,
+     301.4
+    ],
+    "petg_g": [
+     81.8,
+     119.2
+    ],
+    "d2siz_sa": [
+     6.15,
+     9.51
+    ]
+   },
+   "omuz_disi_koku": "Kupon yok. K39 (açık, varsayılan d): kök +x iç köşesine ≥ 1,5 mm yarıçap/pah P6.1'de; öneri: göbeğin kendisi P6.1 sonrası Parti 2'nin ilk işi, S2 5°'te sentille 0,3 mm boşluk kontrolü (F2-gunluk madde 9) + DS3235 düşme ölçümü (K39)"
+  },
+  "1": {
+   "ad": "Hemen",
+   "ne_zaman": "Hemen (Parti 0 sonucu CAD'e girip STL çıkınca)",
+   "bagimlilik": "Parti 0 sonucu + STL dışa aktarma. Satın alınan parçaya bağlı 7 satır partinin sonunda, ilgili kalem gelip ölçülünce basılır: üst arka kapak (USB hub), hoparlör kabı ve kelepçesi (8 Ω hoparlör, K36/K6), göğüs ekranı çerçevesi sağ/sol ve VESA taşıyıcı (11,6\" göğüs ekranı; VESA delik yeri doğrulanmadı, `arayuz.py:342`; F4c-kontrol B-2)",
+   "montaj": "16 (sonar), 20 (rulman kapağı), 34–36 (bantlar, göğüs ekranı), 40 (üst kol tüpü), F5 (kapaklar)",
+   "takvim": "≈ S−0,5 → S+1,5; akü takozu (Parti 4) bu partinin arasında basılır",
+   "parti": 1,
+   "parcalar": [
+    {
+     "y2b": 1,
+     "modul": "taban",
+     "ad": "Sonar tutucu sol",
+     "ad_tr": "Sonar tutucu sol",
+     "adet": 1,
+     "olcu": [
+      61.2,
+      61.0,
+      7.6
+     ],
+     "g": [
+      5.3,
+      5.3
+     ],
+     "sa": [
+      0.11,
+      0.11
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "arka yüzü (ray tarafı) tablada",
+     "kaynak": "taban/baski[1]",
+     "x2d": true,
+     "olcu_baski": [
+      61.2,
+      61.0,
+      7.6
+     ],
+     "parti": 1,
+     "bagli": "—",
+     "montaj_adimi": "16 (B7)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 2,
+     "modul": "taban",
+     "ad": "Sonar tutucu orta",
+     "ad_tr": "Sonar tutucu orta",
+     "adet": 1,
+     "olcu": [
+      65.8,
+      65.8,
+      7.6
+     ],
+     "g": [
+      5.8,
+      5.8
+     ],
+     "sa": [
+      0.12,
+      0.12
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "arka yüzü (ray tarafı) tablada",
+     "kaynak": "taban/baski[2]",
+     "x2d": true,
+     "olcu_baski": [
+      65.8,
+      65.8,
+      7.6
+     ],
+     "parti": 1,
+     "bagli": "—",
+     "montaj_adimi": "16 (B7)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 3,
+     "modul": "taban",
+     "ad": "Sonar tutucu sag",
+     "ad_tr": "Sonar tutucu sağ",
+     "adet": 1,
+     "olcu": [
+      61.2,
+      61.0,
+      7.6
+     ],
+     "g": [
+      5.3,
+      5.3
+     ],
+     "sa": [
+      0.11,
+      0.11
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "arka yüzü (ray tarafı) tablada",
+     "kaynak": "taban/baski[3]",
+     "x2d": true,
+     "olcu_baski": [
+      61.2,
+      61.0,
+      7.6
+     ],
+     "parti": 1,
+     "bagli": "—",
+     "montaj_adimi": "16 (B7)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 4,
+     "modul": "kabuk",
+     "ad": "Govde alt bandi sag",
+     "ad_tr": "Gövde alt bandı sağ",
+     "adet": 1,
+     "olcu": [
+      170.0,
+      137.0,
+      225.5
+     ],
+     "g": [
+      299.0,
+      299.0
+     ],
+     "sa": [
+      6.2,
+      6.2
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "dik (alt kenarı tablada)",
+     "kaynak": "kabuk/baski[0]",
+     "x2d": true,
+     "olcu_baski": [
+      170.0,
+      137.0,
+      225.5
+     ],
+     "parti": 1,
+     "bagli": "Kupon B/C (ısıl gömme deliği)",
+     "montaj_adimi": "34 (F2)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 5,
+     "modul": "kabuk",
+     "ad": "Govde alt bandi sol",
+     "ad_tr": "Gövde alt bandı sol",
+     "adet": 1,
+     "olcu": [
+      170.0,
+      125.0,
+      225.5
+     ],
+     "g": [
+      280.0,
+      280.0
+     ],
+     "sa": [
+      5.8,
+      5.8
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "dik (alt kenarı tablada)",
+     "kaynak": "kabuk/baski[1]",
+     "x2d": true,
+     "olcu_baski": [
+      170.0,
+      125.0,
+      225.5
+     ],
+     "parti": 1,
+     "bagli": "Kupon B/C",
+     "montaj_adimi": "34 (F2)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 6,
+     "modul": "kabuk",
+     "ad": "Govde uzatma bandi 1 sag",
+     "ad_tr": "Gövde uzatma bandı 1 sağ",
+     "adet": 1,
+     "olcu": [
+      170.0,
+      137.0,
+      169.5
+     ],
+     "g": [
+      224.0,
+      224.0
+     ],
+     "sa": [
+      4.7,
+      4.7
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "dik (alt kenarı tablada)",
+     "kaynak": "kabuk/baski[2]",
+     "x2d": true,
+     "olcu_baski": [
+      170.0,
+      137.0,
+      169.5
+     ],
+     "parti": 1,
+     "bagli": "Kupon B/C",
+     "montaj_adimi": "34 (F2) ile; M6'da satırı yok",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 7,
+     "modul": "kabuk",
+     "ad": "Govde uzatma bandi 1 sol",
+     "ad_tr": "Gövde uzatma bandı 1 sol",
+     "adet": 1,
+     "olcu": [
+      170.0,
+      125.0,
+      169.5
+     ],
+     "g": [
+      211.0,
+      211.0
+     ],
+     "sa": [
+      4.4,
+      4.4
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "dik (alt kenarı tablada)",
+     "kaynak": "kabuk/baski[3]",
+     "x2d": true,
+     "olcu_baski": [
+      170.0,
+      125.0,
+      169.5
+     ],
+     "parti": 1,
+     "bagli": "Kupon B/C",
+     "montaj_adimi": "34 (F2) ile; M6'da satırı yok",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 8,
+     "modul": "kabuk",
+     "ad": "Govde uzatma bandi 2 sag",
+     "ad_tr": "Gövde uzatma bandı 2 sağ",
+     "adet": 1,
+     "olcu": [
+      170.0,
+      137.0,
+      169.5
+     ],
+     "g": [
+      224.0,
+      224.0
+     ],
+     "sa": [
+      4.7,
+      4.7
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "dik (alt kenarı tablada)",
+     "kaynak": "kabuk/baski[4]",
+     "x2d": true,
+     "olcu_baski": [
+      170.0,
+      137.0,
+      169.5
+     ],
+     "parti": 1,
+     "bagli": "Kupon B/C",
+     "montaj_adimi": "34 (F2) ile; M6'da satırı yok",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 9,
+     "modul": "kabuk",
+     "ad": "Govde uzatma bandi 2 sol",
+     "ad_tr": "Gövde uzatma bandı 2 sol",
+     "adet": 1,
+     "olcu": [
+      170.0,
+      125.0,
+      169.5
+     ],
+     "g": [
+      211.0,
+      211.0
+     ],
+     "sa": [
+      4.4,
+      4.4
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "dik (alt kenarı tablada)",
+     "kaynak": "kabuk/baski[5]",
+     "x2d": true,
+     "olcu_baski": [
+      170.0,
+      125.0,
+      169.5
+     ],
+     "parti": 1,
+     "bagli": "Kupon B/C",
+     "montaj_adimi": "34 (F2) ile; M6'da satırı yok",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 10,
+     "modul": "kabuk",
+     "ad": "Govde orta bandi sag",
+     "ad_tr": "Gövde orta bandı sağ",
+     "adet": 1,
+     "olcu": [
+      214.2,
+      161.8,
+      226.9
+     ],
+     "g": [
+      272.0,
+      272.0
+     ],
+     "sa": [
+      5.7,
+      5.7
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "dik (alt kenarı tablada)",
+     "kaynak": "kabuk/baski[6]",
+     "x2d": true,
+     "olcu_baski": [
+      214.2,
+      161.8,
+      226.9
+     ],
+     "parti": 1,
+     "bagli": "Kupon B/C",
+     "montaj_adimi": "34 (F2)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 11,
+     "modul": "kabuk",
+     "ad": "Govde orta bandi sol",
+     "ad_tr": "Gövde orta bandı sol",
+     "adet": 1,
+     "olcu": [
+      214.2,
+      149.8,
+      226.9
+     ],
+     "g": [
+      262.0,
+      262.0
+     ],
+     "sa": [
+      5.4,
+      5.4
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "dik (alt kenarı tablada)",
+     "kaynak": "kabuk/baski[7]",
+     "x2d": true,
+     "olcu_baski": [
+      214.2,
+      149.8,
+      226.9
+     ],
+     "parti": 1,
+     "bagli": "Kupon B/C",
+     "montaj_adimi": "34 (F2)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 12,
+     "modul": "kabuk",
+     "ad": "Gogus bandi sag",
+     "ad_tr": "Göğüs bandı sağ",
+     "adet": 1,
+     "olcu": [
+      217.2,
+      164.0,
+      235.0
+     ],
+     "g": [
+      219.0,
+      219.0
+     ],
+     "sa": [
+      4.6,
+      4.6
+     ],
+     "malzeme": "PETG",
+     "destekli": true,
+     "destek_not": "cep üst kenarı, köprü 158 mm",
+     "yon": "dik (alt kenarı tablada)",
+     "kaynak": "kabuk/baski[8]",
+     "x2d": true,
+     "olcu_baski": [
+      217.2,
+      164.0,
+      235.0
+     ],
+     "parti": 1,
+     "bagli": "Kupon B/C; 11,6\" ekran cebi",
+     "montaj_adimi": "35 (F3)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 13,
+     "modul": "kabuk",
+     "ad": "Gogus bandi sol",
+     "ad_tr": "Göğüs bandı sol",
+     "adet": 1,
+     "olcu": [
+      217.2,
+      152.0,
+      235.0
+     ],
+     "g": [
+      215.0,
+      215.0
+     ],
+     "sa": [
+      4.5,
+      4.5
+     ],
+     "malzeme": "PETG",
+     "destekli": true,
+     "destek_not": "cep üst kenarı, köprü 146 mm",
+     "yon": "dik (alt kenarı tablada)",
+     "kaynak": "kabuk/baski[9]",
+     "x2d": true,
+     "olcu_baski": [
+      217.2,
+      152.0,
+      235.0
+     ],
+     "parti": 1,
+     "bagli": "Kupon B/C; 11,6\" ekran cebi",
+     "montaj_adimi": "35 (F3)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 14,
+     "modul": "kabuk",
+     "ad": "Omuz bandi sag",
+     "ad_tr": "Omuz bandı sağ",
+     "adet": 1,
+     "olcu": [
+      164.0,
+      156.2,
+      102.0
+     ],
+     "g": [
+      184.0,
+      184.0
+     ],
+     "sa": [
+      3.8,
+      3.8
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "ters (üst kapak tablada)",
+     "kaynak": "kabuk/baski[10]",
+     "x2d": true,
+     "olcu_baski": [
+      164.0,
+      156.2,
+      102.0
+     ],
+     "parti": 1,
+     "bagli": "Kupon B/C",
+     "montaj_adimi": "36 (F4)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 15,
+     "modul": "kabuk",
+     "ad": "Omuz bandi sol",
+     "ad_tr": "Omuz bandı sol",
+     "adet": 1,
+     "olcu": [
+      156.2,
+      152.0,
+      102.0
+     ],
+     "g": [
+      178.0,
+      178.0
+     ],
+     "sa": [
+      3.7,
+      3.7
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "ters (üst kapak tablada)",
+     "kaynak": "kabuk/baski[11]",
+     "x2d": true,
+     "olcu_baski": [
+      156.2,
+      152.0,
+      102.0
+     ],
+     "parti": 1,
+     "bagli": "Kupon B/C",
+     "montaj_adimi": "36 (F4)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 16,
+     "modul": "kabuk",
+     "ad": "Arka servis kapagi",
+     "ad_tr": "Arka servis kapağı",
+     "adet": 1,
+     "olcu": [
+      190.0,
+      160.0,
+      3.0
+     ],
+     "g": [
+      98.0,
+      98.0
+     ],
+     "sa": [
+      2.0,
+      2.0
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "dış yüzü tablada",
+     "kaynak": "kabuk/baski[12]",
+     "x2d": true,
+     "olcu_baski": [
+      190.0,
+      160.0,
+      3.0
+     ],
+     "parti": 1,
+     "bagli": "—",
+     "montaj_adimi": "F5 (son)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 57,
+     "modul": "omuz",
+     "ad": "Rulman kapagi",
+     "ad_tr": "Rulman kapağı",
+     "adet": 2,
+     "olcu": [
+      76.0,
+      60.0,
+      14.0
+     ],
+     "g": [
+      15.3,
+      17.2
+     ],
+     "sa": [
+      0.32,
+      0.36
+     ],
+     "malzeme": "PETG-CF",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "+X: x = 146 yüzü tablada",
+     "kaynak": "omuz-baski/parcalar[1]",
+     "x2d": true,
+     "olcu_baski": [
+      76.0,
+      60.0,
+      14.0
+     ],
+     "parti": 1,
+     "bagli": "6808-2RS (kupon A)",
+     "montaj_adimi": "20 (D1b)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 61,
+     "modul": "omuz",
+     "ad": "Ust kol tupu",
+     "ad_tr": "Üst kol tüpü",
+     "adet": 2,
+     "olcu": [
+      130.0,
+      56.0,
+      56.0
+     ],
+     "g": [
+      54.4,
+      54.4
+     ],
+     "sa": [
+      1.13,
+      1.13
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "+Y: y = -170 yüzü tablada",
+     "kaynak": "omuz-baski/parcalar[5]",
+     "x2d": true,
+     "olcu_baski": [
+      56.0,
+      56.0,
+      130.0
+     ],
+     "parti": 1,
+     "bagli": "Kupon E (tüp–pim geçmesi)",
+     "montaj_adimi": "40 (G3)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 17,
+     "modul": "kabuk",
+     "ad": "Ust arka servis kapagi",
+     "ad_tr": "Üst arka servis kapağı",
+     "adet": 1,
+     "olcu": [
+      168.3,
+      150.0,
+      12.5
+     ],
+     "g": [
+      85.0,
+      85.0
+     ],
+     "sa": [
+      1.8,
+      1.8
+     ],
+     "malzeme": "PETG",
+     "destekli": true,
+     "destek_not": "analizde z 2,5'te 197 cm², nedeni açık (günlük)",
+     "yon": "dış yüzü tablada",
+     "kaynak": "kabuk/baski[13]",
+     "x2d": true,
+     "olcu_baski": [
+      168.3,
+      150.0,
+      12.5
+     ],
+     "parti": 1,
+     "bagli": "USB hub 4'lü (72 × 25 × 19) ölçüsü: hub takozu",
+     "montaj_adimi": "F5 (son); M6 §4 K4",
+     "basim_notu": "Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır"
+    },
+    {
+     "y2b": 28,
+     "modul": "kabuk",
+     "ad": "Gogus ekrani cercevesi sag",
+     "ad_tr": "Göğüs ekranı çerçevesi sağ",
+     "adet": 1,
+     "olcu": [
+      207.2,
+      147.0,
+      10.0
+     ],
+     "g": [
+      31.0,
+      31.0
+     ],
+     "sa": [
+      0.6,
+      0.6
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "arka yüzü (flanş) tablada",
+     "kaynak": "kabuk/baski[24]",
+     "x2d": true,
+     "olcu_baski": [
+      207.2,
+      147.0,
+      10.0
+     ],
+     "parti": 1,
+     "bagli": "11,6\" göğüs ekranı kasası (284,65 × 182,25)",
+     "montaj_adimi": "35 (F3) ile; M6'da 1,58 m adımı yok",
+     "basim_notu": "Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır"
+    },
+    {
+     "y2b": 29,
+     "modul": "kabuk",
+     "ad": "Gogus ekrani cercevesi sol",
+     "ad_tr": "Göğüs ekranı çerçevesi sol",
+     "adet": 1,
+     "olcu": [
+      207.2,
+      147.0,
+      10.0
+     ],
+     "g": [
+      31.0,
+      31.0
+     ],
+     "sa": [
+      0.6,
+      0.6
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "arka yüzü (flanş) tablada",
+     "kaynak": "kabuk/baski[25]",
+     "x2d": true,
+     "olcu_baski": [
+      207.2,
+      147.0,
+      10.0
+     ],
+     "parti": 1,
+     "bagli": "11,6\" göğüs ekranı kasası (284,65 × 182,25)",
+     "montaj_adimi": "35 (F3) ile; M6'da 1,58 m adımı yok",
+     "basim_notu": "Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır"
+    },
+    {
+     "y2b": 30,
+     "modul": "kabuk",
+     "ad": "Gogus ekrani VESA tasiyici",
+     "ad_tr": "Göğüs ekranı VESA taşıyıcı",
+     "adet": 1,
+     "olcu": [
+      106.2,
+      100.0,
+      63.4
+     ],
+     "g": [
+      113.0,
+      113.0
+     ],
+     "sa": [
+      2.4,
+      2.4
+     ],
+     "malzeme": "PETG-CF",
+     "destekli": true,
+     "destek_not": "arka flanş (28 katman)",
+     "yon": "VESA plakası tablada; arka flanş destekli",
+     "kaynak": "kabuk/baski[26]",
+     "x2d": true,
+     "olcu_baski": [
+      106.2,
+      100.0,
+      63.4
+     ],
+     "parti": 1,
+     "bagli": "11,6\" göğüs ekranı VESA delikleri (yer ve derinlik doğrulanmadı, `arayuz.py:342`)",
+     "montaj_adimi": "35 (F3) ile; M6'da 1,58 m adımı yok",
+     "basim_notu": "Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır"
+    },
+    {
+     "y2b": 35,
+     "modul": "kabuk",
+     "ad": "Hoparlor kabi on halka",
+     "ad_tr": "Hoparlör kabı ön halka",
+     "adet": 1,
+     "olcu": [
+      45.8,
+      45.8,
+      7.0
+     ],
+     "g": [
+      3.0,
+      3.0
+     ],
+     "sa": [
+      0.1,
+      0.1
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "VARSAYIM kap; ön halka, düz (desteksiz)",
+     "kaynak": "kabuk/baski[31]",
+     "x2d": true,
+     "olcu_baski": [
+      45.8,
+      45.8,
+      7.0
+     ],
+     "parti": 1,
+     "bagli": "8 Ω hoparlör (K36 stok, K6 yön); kap ölçüsü VARSAYIM",
+     "montaj_adimi": "34 (F2) öncesi, orta bant sağ; M6'da yok",
+     "basim_notu": "Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır"
+    },
+    {
+     "y2b": 36,
+     "modul": "kabuk",
+     "ad": "Hoparlor kabi arka (flansli)",
+     "ad_tr": "Hoparlör kabı arka (flanşlı)",
+     "adet": 1,
+     "olcu": [
+      62.5,
+      62.5,
+      13.3
+     ],
+     "g": [
+      7.0,
+      7.0
+     ],
+     "sa": [
+      0.2,
+      0.2
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "VARSAYIM kap; flanş yüzü tablada (desteksiz)",
+     "kaynak": "kabuk/baski[32]",
+     "x2d": true,
+     "olcu_baski": [
+      62.5,
+      62.5,
+      13.3
+     ],
+     "parti": 1,
+     "bagli": "8 Ω hoparlör (K36, K6); VARSAYIM",
+     "montaj_adimi": "34 (F2) öncesi; M6'da yok",
+     "basim_notu": "Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır"
+    },
+    {
+     "y2b": 37,
+     "modul": "kabuk",
+     "ad": "Hoparlor kelepcesi",
+     "ad_tr": "Hoparlör kelepçesi",
+     "adet": 1,
+     "olcu": [
+      56.6,
+      56.6,
+      14.3
+     ],
+     "g": [
+      5.0,
+      5.0
+     ],
+     "sa": [
+      0.1,
+      0.1
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "VARSAYIM; köprü üst yüzü tablada, bacaklar yukarı (desteksiz)",
+     "kaynak": "kabuk/baski[33]",
+     "x2d": true,
+     "olcu_baski": [
+      56.6,
+      56.6,
+      14.3
+     ],
+     "parti": 1,
+     "bagli": "8 Ω hoparlör (K36, K6); VARSAYIM",
+     "montaj_adimi": "34 (F2) öncesi; M6'da yok",
+     "basim_notu": "Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır"
+    }
+   ],
+   "toplam": {
+    "adet": 27,
+    "g": [
+     3307.8,
+     3311.6
+    ],
+    "sa": [
+     68.94,
+     69.02
+    ],
+    "petg_g": [
+     3164.2,
+     3164.2
+    ],
+    "cf_g": [
+     143.6,
+     147.4
+    ]
+   },
+   "sona_birakilan": {
+    "adet": 7,
+    "g": [
+     275.0,
+     275.0
+    ],
+    "sa": [
+     5.8,
+     5.8
+    ],
+    "petg_g": [
+     162.0,
+     162.0
+    ],
+    "cf_g": [
+     113.0,
+     113.0
+    ],
+    "parcalar": [
+     "Üst arka servis kapağı",
+     "Göğüs ekranı çerçevesi sağ",
+     "Göğüs ekranı çerçevesi sol",
+     "Göğüs ekranı VESA taşıyıcı",
+     "Hoparlör kabı ön halka",
+     "Hoparlör kabı arka (flanşlı)",
+     "Hoparlör kelepçesi"
+    ],
+    "not_": "Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır"
+   }
+  },
+  "2": {
+   "ad": "Servo ve horn gelip ölçülünce",
+   "ne_zaman": "Servo ve horn gelip kumpasla ölçülünce",
+   "bagimlilik": "DS3235, MG996R, 25T horn (teslim S+1); omuz göbeği ayrıca K39 kök yarıçapı (P6.1); S1 kaseti kablo kalınlığı (K1)",
+   "montaj": "19–28 (omuz yuvası, boyun), 37–47 (göbek, kol, dirsek, el), 41 (S1 kaseti)",
+   "takvim": "≈ S+1,5 → S+2,3",
+   "parti": 2,
+   "parcalar": [
+    {
+     "y2b": 31,
+     "modul": "kabuk",
+     "ad": "S1 kaset govdesi sag",
+     "ad_tr": "S1 kaset gövdesi sağ",
+     "adet": 1,
+     "olcu": [
+      111.9,
+      111.2,
+      6.3
+     ],
+     "g": [
+      10.0,
+      10.0
+     ],
+     "sa": [
+      0.2,
+      0.2
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "arka yüzü (x 152) tablada",
+     "kaynak": "kabuk/baski[27]",
+     "x2d": true,
+     "olcu_baski": [
+      111.9,
+      111.2,
+      6.3
+     ],
+     "parti": 2,
+     "bagli": "Kablo kalınlığı ≤ 1,4 mm (K1)",
+     "montaj_adimi": "41 (G4)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 32,
+     "modul": "kabuk",
+     "ad": "S1 kaset kapagi sag",
+     "ad_tr": "S1 kaset kapağı sağ",
+     "adet": 1,
+     "olcu": [
+      111.9,
+      111.2,
+      4.5
+     ],
+     "g": [
+      7.0,
+      7.0
+     ],
+     "sa": [
+      0.1,
+      0.1
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "flanş dış yüzü tablada",
+     "kaynak": "kabuk/baski[28]",
+     "x2d": true,
+     "olcu_baski": [
+      111.9,
+      111.2,
+      4.5
+     ],
+     "parti": 2,
+     "bagli": "—",
+     "montaj_adimi": "41 (G4)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 33,
+     "modul": "kabuk",
+     "ad": "S1 kaset govdesi sol",
+     "ad_tr": "S1 kaset gövdesi sol",
+     "adet": 1,
+     "olcu": [
+      111.9,
+      111.2,
+      6.3
+     ],
+     "g": [
+      10.0,
+      10.0
+     ],
+     "sa": [
+      0.2,
+      0.2
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "arka yüzü (x 152) tablada",
+     "kaynak": "kabuk/baski[29]",
+     "x2d": true,
+     "olcu_baski": [
+      111.9,
+      111.2,
+      6.3
+     ],
+     "parti": 2,
+     "bagli": "Kablo kalınlığı ≤ 1,4 mm (K1)",
+     "montaj_adimi": "41 (G4)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 34,
+     "modul": "kabuk",
+     "ad": "S1 kaset kapagi sol",
+     "ad_tr": "S1 kaset kapağı sol",
+     "adet": 1,
+     "olcu": [
+      111.9,
+      111.2,
+      4.5
+     ],
+     "g": [
+      7.0,
+      7.0
+     ],
+     "sa": [
+      0.1,
+      0.1
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "flanş dış yüzü tablada",
+     "kaynak": "kabuk/baski[30]",
+     "x2d": true,
+     "olcu_baski": [
+      111.9,
+      111.2,
+      4.5
+     ],
+     "parti": 2,
+     "bagli": "—",
+     "montaj_adimi": "41 (G4)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 38,
+     "modul": "kafa",
+     "ad": "Servo yuvasi",
+     "ad_tr": "Servo yuvası",
+     "adet": 1,
+     "olcu": [
+      88.1,
+      88.1,
+      43.0
+     ],
+     "g": [
+      151.5,
+      151.5
+     ],
+     "sa": [
+      3.16,
+      3.16
+     ],
+     "malzeme": "PETG-CF",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "dik: kulak flanşı tablada",
+     "kaynak": "kafa/baski[0]",
+     "x2d": true,
+     "olcu_baski": [
+      88.1,
+      88.1,
+      43.0
+     ],
+     "parti": 2,
+     "bagli": "MG996R gövdesi",
+     "montaj_adimi": "23 (E1a)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 39,
+     "modul": "kafa",
+     "ad": "Rulman yuvasi",
+     "ad_tr": "Rulman yuvası",
+     "adet": 1,
+     "olcu": [
+      67.5,
+      60.0,
+      36.0
+     ],
+     "g": [
+      26.9,
+      26.9
+     ],
+     "sa": [
+      0.56,
+      0.56
+     ],
+     "malzeme": "PETG-CF",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "dik: kulaklar tablada, rulman yuvası yukarı",
+     "kaynak": "kafa/baski[1]",
+     "x2d": true,
+     "olcu_baski": [
+      67.5,
+      60.0,
+      36.0
+     ],
+     "parti": 2,
+     "bagli": "6808-2RS (kupon A)",
+     "montaj_adimi": "23 (E1a)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 40,
+     "modul": "kafa",
+     "ad": "Boyun mili",
+     "ad_tr": "Boyun mili",
+     "adet": 1,
+     "olcu": [
+      60.0,
+      60.0,
+      48.1
+     ],
+     "g": [
+      40.7,
+      40.7
+     ],
+     "sa": [
+      0.85,
+      0.85
+     ],
+     "malzeme": "PETG-CF",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "dik: horn diski tablada, flanş yukarı (45 derece koni)",
+     "kaynak": "kafa/baski[2]",
+     "x2d": true,
+     "olcu_baski": [
+      60.0,
+      60.0,
+      48.1
+     ],
+     "parti": 2,
+     "bagli": "Pan horn delik dizilimi",
+     "montaj_adimi": "26 (E2b)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 41,
+     "modul": "kafa",
+     "ad": "Egme catali",
+     "ad_tr": "Eğme çatalı",
+     "adet": 1,
+     "olcu": [
+      74.5,
+      60.0,
+      49.0
+     ],
+     "g": [
+      36.1,
+      36.1
+     ],
+     "sa": [
+      0.75,
+      0.75
+     ],
+     "malzeme": "PETG-CF",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "dik: taban tablada, duvarlar yukarı",
+     "kaynak": "kafa/baski[3]",
+     "x2d": true,
+     "olcu_baski": [
+      74.5,
+      60.0,
+      49.0
+     ],
+     "parti": 2,
+     "bagli": "Tilt horn delik dizilimi",
+     "montaj_adimi": "27 (E2c)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 42,
+     "modul": "kafa",
+     "ad": "Boyun yukseltme adaptoru",
+     "ad_tr": "Boyun yükseltme adaptörü",
+     "adet": 1,
+     "olcu": [
+      59.9,
+      59.9,
+      58.9
+     ],
+     "g": [
+      70.2,
+      70.2
+     ],
+     "sa": [
+      1.46,
+      1.46
+     ],
+     "malzeme": "PETG-CF",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "dik: alt flanş tablada",
+     "kaynak": "kafa/baski[4]",
+     "x2d": true,
+     "olcu_baski": [
+      59.9,
+      59.9,
+      58.9
+     ],
+     "parti": 2,
+     "bagli": "—",
+     "montaj_adimi": "26–27 arası; M6'da satırı yok",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 52,
+     "modul": "dirsek",
+     "ad": "Dirsek catali",
+     "ad_tr": "Dirsek çatalı",
+     "adet": 2,
+     "olcu": [
+      73.9,
+      72.0,
+      74.0
+     ],
+     "g": [
+      97.4,
+      97.4
+     ],
+     "sa": [
+      2.03,
+      2.03
+     ],
+     "malzeme": "PETG-CF",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "ters: pim ve bilezik ucu tablada, kollar yukarı",
+     "kaynak": "dirsek/baski[0]",
+     "x2d": true,
+     "olcu_baski": [
+      73.9,
+      72.0,
+      74.0
+     ],
+     "parti": 2,
+     "bagli": "Dirsek horn delik dizilimi; kupon D1/D2",
+     "montaj_adimi": "44 (H0c)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 53,
+     "modul": "dirsek",
+     "ad": "On kol govdesi",
+     "ad_tr": "Ön kol gövdesi",
+     "adet": 2,
+     "olcu": [
+      129.6,
+      128.9,
+      33.5
+     ],
+     "g": [
+      56.8,
+      56.8
+     ],
+     "sa": [
+      1.18,
+      1.18
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "ön yüzü tablada, açık arka yukarı",
+     "kaynak": "dirsek/baski[1]",
+     "x2d": true,
+     "olcu_baski": [
+      129.6,
+      128.9,
+      33.5
+     ],
+     "parti": 2,
+     "bagli": "MG996R gövdesi",
+     "montaj_adimi": "42 (H0a)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 54,
+     "modul": "dirsek",
+     "ad": "Bilek flansi",
+     "ad_tr": "Bilek flanşı",
+     "adet": 2,
+     "olcu": [
+      28.0,
+      28.0,
+      8.0
+     ],
+     "g": [
+      4.2,
+      4.2
+     ],
+     "sa": [
+      0.09,
+      0.09
+     ],
+     "malzeme": "PETG-CF",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "horn yüzü tablada, havşalar yukarı",
+     "kaynak": "dirsek/baski[2]",
+     "x2d": true,
+     "olcu_baski": [
+      28.0,
+      28.0,
+      8.0
+     ],
+     "parti": 2,
+     "bagli": "Bilek horn delik dizilimi",
+     "montaj_adimi": "46 (H0e)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 55,
+     "modul": "dirsek",
+     "ad": "El",
+     "ad_tr": "El",
+     "adet": 2,
+     "olcu": [
+      56.2,
+      56.2,
+      84.6
+     ],
+     "g": [
+      78.5,
+      78.5
+     ],
+     "sa": [
+      1.64,
+      1.64
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "ters: parmak ucu ve avuç altı tablada, yaka yukarı",
+     "kaynak": "dirsek/baski[3]",
+     "x2d": true,
+     "olcu_baski": [
+      56.2,
+      56.2,
+      84.6
+     ],
+     "parti": 2,
+     "bagli": "—",
+     "montaj_adimi": "47 (H0f)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 56,
+     "modul": "omuz",
+     "ad": "Omuz yuvasi",
+     "ad_tr": "Omuz yuvası",
+     "adet": 2,
+     "olcu": [
+      76.0,
+      76.0,
+      67.0
+     ],
+     "g": [
+      81.0,
+      89.9
+     ],
+     "sa": [
+      1.7,
+      1.88
+     ],
+     "malzeme": "PETG-CF",
+     "destekli": true,
+     "destek_not": "manşon içi + S1 penceresi",
+     "yon": "-Y: y = 25 yüzü tablada",
+     "kaynak": "omuz-baski/parcalar[0]",
+     "x2d": true,
+     "olcu_baski": [
+      76.0,
+      76.0,
+      67.0
+     ],
+     "parti": 2,
+     "bagli": "DS3235 gövdesi, çekiç somun",
+     "montaj_adimi": "19 (D1a)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 58,
+     "modul": "omuz",
+     "ad": "Omuz gobegi",
+     "ad_tr": "Omuz göbeği",
+     "adet": 2,
+     "olcu": [
+      77.0,
+      51.0,
+      49.0
+     ],
+     "g": [
+      63.2,
+      70.4
+     ],
+     "sa": [
+      1.32,
+      1.47
+     ],
+     "malzeme": "PETG-CF",
+     "destekli": true,
+     "destek_not": "flanş altı + diş (5,7 g)",
+     "yon": "+X: x = 150 yüzü tablada",
+     "kaynak": "omuz-baski/parcalar[2]",
+     "x2d": true,
+     "olcu_baski": [
+      77.0,
+      51.0,
+      49.0
+     ],
+     "parti": 2,
+     "bagli": "S1 horn delik dizilimi; K39 kök yarıçapı (P6.1)",
+     "montaj_adimi": "37–38 (G0, G1)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 59,
+     "modul": "omuz",
+     "ad": "S1 kablo tamburu",
+     "ad_tr": "S1 kablo tamburu",
+     "adet": 2,
+     "olcu": [
+      87.4,
+      70.6,
+      10.5
+     ],
+     "g": [
+      5.8,
+      5.8
+     ],
+     "sa": [
+      0.12,
+      0.12
+     ],
+     "malzeme": "PETG",
+     "destekli": true,
+     "destek_not": "+x dudak altı",
+     "yon": "+X: x = 152,5 yüzü tablada",
+     "kaynak": "omuz-baski/parcalar[3]",
+     "x2d": true,
+     "olcu_baski": [
+      87.4,
+      70.0,
+      10.5
+     ],
+     "parti": 2,
+     "bagli": "Göbekle birlikte",
+     "montaj_adimi": "37 (G0)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 60,
+     "modul": "omuz",
+     "ad": "Kol catali",
+     "ad_tr": "Kol çatalı",
+     "adet": 2,
+     "olcu": [
+      76.0,
+      63.5,
+      56.0
+     ],
+     "g": [
+      98.7,
+      109.6
+     ],
+     "sa": [
+      2.07,
+      2.3
+     ],
+     "malzeme": "PETG-CF",
+     "destekli": true,
+     "destek_not": "horn kulağı",
+     "yon": "-Z: z = 30,5 yüzü tablada",
+     "kaynak": "omuz-baski/parcalar[4]",
+     "x2d": true,
+     "olcu_baski": [
+      76.0,
+      56.0,
+      63.5
+     ],
+     "parti": 2,
+     "bagli": "S2 horn delik dizilimi",
+     "montaj_adimi": "40 (G3)",
+     "basim_notu": ""
+    }
+   ],
+   "toplam": {
+    "adet": 25,
+    "g": [
+     1330.6,
+     1384.6
+    ],
+    "sa": [
+     27.68,
+     28.8
+    ],
+    "petg_g": [
+     316.2,
+     316.2
+    ],
+    "cf_g": [
+     1014.4,
+     1068.4
+    ]
+   }
+  },
+  "3": {
+   "ad": "10,1\" QLED yüz ekranı gelip ölçülünce",
+   "ne_zaman": "QLED gelip ölçülünce",
+   "bagimlilik": "10,1\" QLED (K32: hocadan mı satın alma mı), K2 (AI HAT / boss, P6.1'de kafa modeline)",
+   "montaj": "29–31 (kafa içi, kafa → tilt hornu, kafa kabukları)",
+   "takvim": "≈ S+2,3 → S+2,8",
+   "parti": 3,
+   "parcalar": [
+    {
+     "y2b": 43,
+     "modul": "kafa",
+     "ad": "Yuz kabugu (on) sag",
+     "ad_tr": "Yüz kabuğu (ön) sağ",
+     "adet": 1,
+     "olcu": [
+      215.0,
+      151.0,
+      37.0
+     ],
+     "g": [
+      90.9,
+      90.9
+     ],
+     "sa": [
+      1.89,
+      1.89
+     ],
+     "malzeme": "PETG",
+     "destekli": true,
+     "destek_not": "dikiş dili (16 mm şerit, ~1,25 mm konsol; karar 29.10)",
+     "yon": "ön yüzü tablada",
+     "kaynak": "kafa/baski[5]",
+     "x2d": true,
+     "olcu_baski": [
+      215.0,
+      151.0,
+      37.0
+     ],
+     "parti": 3,
+     "bagli": "QLED (K32) + K2 (P6.1)",
+     "montaj_adimi": "31 (E4)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 44,
+     "modul": "kafa",
+     "ad": "Yuz kabugu (on) sol",
+     "ad_tr": "Yüz kabuğu (ön) sol",
+     "adet": 1,
+     "olcu": [
+      215.0,
+      135.0,
+      37.0
+     ],
+     "g": [
+      84.4,
+      84.4
+     ],
+     "sa": [
+      1.76,
+      1.76
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "ön yüzü tablada",
+     "kaynak": "kafa/baski[6]",
+     "x2d": true,
+     "olcu_baski": [
+      215.0,
+      135.0,
+      37.0
+     ],
+     "parti": 3,
+     "bagli": "QLED (K32) + K2 (P6.1)",
+     "montaj_adimi": "31 (E4)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 45,
+     "modul": "kafa",
+     "ad": "Arka kafa kabugu sag",
+     "ad_tr": "Arka kafa kabuğu sağ",
+     "adet": 1,
+     "olcu": [
+      215.0,
+      151.0,
+      106.9
+     ],
+     "g": [
+      229.4,
+      229.4
+     ],
+     "sa": [
+      4.78,
+      4.78
+     ],
+     "malzeme": "PETG",
+     "destekli": true,
+     "destek_not": "dikiş dili (16 mm şerit, ~1,25 mm konsol; karar 29.10)",
+     "yon": "arka yüzü tablada",
+     "kaynak": "kafa/baski[7]",
+     "x2d": true,
+     "olcu_baski": [
+      215.0,
+      151.0,
+      106.9
+     ],
+     "parti": 3,
+     "bagli": "QLED (K32) + K2 (P6.1)",
+     "montaj_adimi": "31 (E4)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 46,
+     "modul": "kafa",
+     "ad": "Arka kafa kabugu sol",
+     "ad_tr": "Arka kafa kabuğu sol",
+     "adet": 1,
+     "olcu": [
+      215.0,
+      135.0,
+      106.9
+     ],
+     "g": [
+      215.4,
+      215.4
+     ],
+     "sa": [
+      4.49,
+      4.49
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "arka yüzü tablada",
+     "kaynak": "kafa/baski[8]",
+     "x2d": true,
+     "olcu_baski": [
+      215.0,
+      135.0,
+      106.9
+     ],
+     "parti": 3,
+     "bagli": "QLED (K32) + K2 (P6.1)",
+     "montaj_adimi": "31 (E4)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 47,
+     "modul": "kafa",
+     "ad": "Kafa iskeleti",
+     "ad_tr": "Kafa iskeleti",
+     "adet": 1,
+     "olcu": [
+      224.0,
+      114.9,
+      48.0
+     ],
+     "g": [
+      127.5,
+      127.5
+     ],
+     "sa": [
+      2.66,
+      2.66
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "ters: tabla tablada, yanaklar yukarı",
+     "kaynak": "kafa/baski[9]",
+     "x2d": true,
+     "olcu_baski": [
+      224.0,
+      114.9,
+      48.0
+     ],
+     "parti": 3,
+     "bagli": "QLED + kamera delikleri; K2 (P6.1)",
+     "montaj_adimi": "29 (E3a)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 48,
+     "modul": "kafa",
+     "ad": "Ekran tirnagi ust sag",
+     "ad_tr": "Ekran tırnağı üst sağ",
+     "adet": 1,
+     "olcu": [
+      24.0,
+      14.4,
+      7.8
+     ],
+     "g": [
+      1.6,
+      1.6
+     ],
+     "sa": [
+      0.03,
+      0.03
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "plaka tablada, dil yukarı (desteksiz)",
+     "kaynak": "kafa/baski[10]",
+     "x2d": true,
+     "olcu_baski": [
+      24.0,
+      14.4,
+      7.8
+     ],
+     "parti": 3,
+     "bagli": "QLED kasa ölçüsü",
+     "montaj_adimi": "29 (E3a)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 49,
+     "modul": "kafa",
+     "ad": "Ekran tirnagi ust sol",
+     "ad_tr": "Ekran tırnağı üst sol",
+     "adet": 1,
+     "olcu": [
+      24.0,
+      14.4,
+      7.8
+     ],
+     "g": [
+      1.6,
+      1.6
+     ],
+     "sa": [
+      0.03,
+      0.03
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "plaka tablada, dil yukarı (desteksiz)",
+     "kaynak": "kafa/baski[11]",
+     "x2d": true,
+     "olcu_baski": [
+      24.0,
+      14.4,
+      7.8
+     ],
+     "parti": 3,
+     "bagli": "QLED kasa ölçüsü",
+     "montaj_adimi": "29 (E3a)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 50,
+     "modul": "kafa",
+     "ad": "Ekran tirnagi alt sag",
+     "ad_tr": "Ekran tırnağı alt sağ",
+     "adet": 1,
+     "olcu": [
+      24.0,
+      14.2,
+      7.8
+     ],
+     "g": [
+      1.6,
+      1.6
+     ],
+     "sa": [
+      0.03,
+      0.03
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "plaka tablada, dil yukarı (desteksiz)",
+     "kaynak": "kafa/baski[12]",
+     "x2d": true,
+     "olcu_baski": [
+      24.0,
+      14.2,
+      7.8
+     ],
+     "parti": 3,
+     "bagli": "QLED kasa ölçüsü",
+     "montaj_adimi": "29 (E3a)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 51,
+     "modul": "kafa",
+     "ad": "Ekran tirnagi alt sol",
+     "ad_tr": "Ekran tırnağı alt sol",
+     "adet": 1,
+     "olcu": [
+      24.0,
+      14.2,
+      7.8
+     ],
+     "g": [
+      1.6,
+      1.6
+     ],
+     "sa": [
+      0.03,
+      0.03
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "plaka tablada, dil yukarı (desteksiz)",
+     "kaynak": "kafa/baski[13]",
+     "x2d": true,
+     "olcu_baski": [
+      24.0,
+      14.2,
+      7.8
+     ],
+     "parti": 3,
+     "bagli": "QLED kasa ölçüsü",
+     "montaj_adimi": "29 (E3a)",
+     "basim_notu": ""
+    }
+   ],
+   "toplam": {
+    "adet": 9,
+    "g": [
+     754.0,
+     754.0
+    ],
+    "sa": [
+     15.7,
+     15.7
+    ],
+    "petg_g": [
+     754.0,
+     754.0
+    ],
+    "cf_g": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "4": {
+   "ad": "Etek tasarım kararından sonra (M6 CAD)",
+   "ne_zaman": "E7 havalandırma CAD'e girince; akü takozu akü gelince",
+   "bagimlilik": "E7 etek havalandırma yarıkları (elektrik.md:499); akü (K30) → akü takozu",
+   "montaj": "33 (etek, H1/H2), 4 (akü takozu, öne alınır)",
+   "takvim": "≈ S+2,8 → S+4–4,5",
+   "parti": 4,
+   "parcalar": [
+    {
+     "y2b": 0,
+     "modul": "taban",
+     "ad": "Aku on takozu",
+     "ad_tr": "Akü ön takozu",
+     "adet": 1,
+     "olcu": [
+      125.2,
+      125.2,
+      25.0
+     ],
+     "g": [
+      72.2,
+      72.2
+     ],
+     "sa": [
+      1.5,
+      1.5
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "alt yüzü tablada",
+     "kaynak": "taban/baski[0]",
+     "x2d": true,
+     "olcu_baski": [
+      125.2,
+      125.2,
+      25.0
+     ],
+     "parti": 4,
+     "bagli": "Akü (K30) gelince ölçü teyidi",
+     "montaj_adimi": "4 (B1a)",
+     "basim_notu": "Parti 1 arasında basılır (M6 adım 4 taban aşamasında lazım; proje-plani.md kritik yol 4–5)"
+    },
+    {
+     "y2b": 18,
+     "modul": "kabuk",
+     "ad": "Etek arka sag",
+     "ad_tr": "Etek arka sağ",
+     "adet": 1,
+     "olcu": [
+      233.7,
+      190.1,
+      227.0
+     ],
+     "g": [
+      366.0,
+      366.0
+     ],
+     "sa": [
+      7.6,
+      7.6
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "ters (üst plakası tablada)",
+     "kaynak": "kabuk/baski[14]",
+     "x2d": true,
+     "olcu_baski": [
+      233.7,
+      190.1,
+      227.0
+     ],
+     "parti": 4,
+     "bagli": "E7 havalandırma yarıkları CAD'e; ana anahtar (M6 K7) + XT60 + H1 (K5)",
+     "montaj_adimi": "33 (F1)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 19,
+     "modul": "kabuk",
+     "ad": "Etek arka sol",
+     "ad_tr": "Etek arka sol",
+     "adet": 1,
+     "olcu": [
+      222.0,
+      175.0,
+      227.0
+     ],
+     "g": [
+      362.0,
+      362.0
+     ],
+     "sa": [
+      7.5,
+      7.5
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "ters (üst plakası tablada)",
+     "kaynak": "kabuk/baski[15]",
+     "x2d": true,
+     "olcu_baski": [
+      222.0,
+      175.0,
+      227.0
+     ],
+     "parti": 4,
+     "bagli": "E7 havalandırma yarıkları CAD'e; ana anahtar (M6 K7) + XT60 + H1 (K5)",
+     "montaj_adimi": "33 (F1)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 20,
+     "modul": "kabuk",
+     "ad": "Etek orta sag",
+     "ad_tr": "Etek orta sağ",
+     "adet": 1,
+     "olcu": [
+      222.0,
+      199.0,
+      227.0
+     ],
+     "g": [
+      217.0,
+      217.0
+     ],
+     "sa": [
+      4.5,
+      4.5
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "ters (üst plakası tablada)",
+     "kaynak": "kabuk/baski[16]",
+     "x2d": true,
+     "olcu_baski": [
+      222.0,
+      199.0,
+      227.0
+     ],
+     "parti": 4,
+     "bagli": "E7 havalandırma kararı",
+     "montaj_adimi": "33 (F1)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 21,
+     "modul": "kabuk",
+     "ad": "Etek orta sol",
+     "ad_tr": "Etek orta sol",
+     "adet": 1,
+     "olcu": [
+      222.0,
+      199.0,
+      227.0
+     ],
+     "g": [
+      217.0,
+      217.0
+     ],
+     "sa": [
+      4.5,
+      4.5
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "ters (üst plakası tablada)",
+     "kaynak": "kabuk/baski[17]",
+     "x2d": true,
+     "olcu_baski": [
+      222.0,
+      199.0,
+      227.0
+     ],
+     "parti": 4,
+     "bagli": "E7 havalandırma kararı",
+     "montaj_adimi": "33 (F1)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 22,
+     "modul": "kabuk",
+     "ad": "Etek on sag",
+     "ad_tr": "Etek ön sağ",
+     "adet": 1,
+     "olcu": [
+      233.7,
+      190.1,
+      227.0
+     ],
+     "g": [
+      372.0,
+      372.0
+     ],
+     "sa": [
+      7.7,
+      7.7
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "ters (üst plakası tablada)",
+     "kaynak": "kabuk/baski[18]",
+     "x2d": true,
+     "olcu_baski": [
+      233.7,
+      190.1,
+      227.0
+     ],
+     "parti": 4,
+     "bagli": "E7 havalandırma kararı",
+     "montaj_adimi": "33 (F1)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 23,
+     "modul": "kabuk",
+     "ad": "Etek on sol",
+     "ad_tr": "Etek ön sol",
+     "adet": 1,
+     "olcu": [
+      222.0,
+      175.0,
+      227.0
+     ],
+     "g": [
+      363.0,
+      363.0
+     ],
+     "sa": [
+      7.6,
+      7.6
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "ters (üst plakası tablada)",
+     "kaynak": "kabuk/baski[19]",
+     "x2d": true,
+     "olcu_baski": [
+      222.0,
+      175.0,
+      227.0
+     ],
+     "parti": 4,
+     "bagli": "E7 havalandırma kararı",
+     "montaj_adimi": "33 (F1)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 24,
+     "modul": "kabuk",
+     "ad": "Etek dolgu seridi arka",
+     "ad_tr": "Etek dolgu şeridi arka",
+     "adet": 1,
+     "olcu": [
+      192.5,
+      88.0,
+      227.0
+     ],
+     "g": [
+      98.0,
+      98.0
+     ],
+     "sa": [
+      2.0,
+      2.0
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "ters (üst plakası tablada)",
+     "kaynak": "kabuk/baski[20]",
+     "x2d": true,
+     "olcu_baski": [
+      192.5,
+      88.0,
+      227.0
+     ],
+     "parti": 4,
+     "bagli": "—",
+     "montaj_adimi": "33 (F1)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 25,
+     "modul": "kabuk",
+     "ad": "Etek dolgu seridi on",
+     "ad_tr": "Etek dolgu şeridi ön",
+     "adet": 1,
+     "olcu": [
+      192.5,
+      88.0,
+      227.0
+     ],
+     "g": [
+      107.0,
+      107.0
+     ],
+     "sa": [
+      2.2,
+      2.2
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "ters (üst plakası tablada)",
+     "kaynak": "kabuk/baski[21]",
+     "x2d": true,
+     "olcu_baski": [
+      192.5,
+      88.0,
+      227.0
+     ],
+     "parti": 4,
+     "bagli": "—",
+     "montaj_adimi": "33 (F1)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 26,
+     "modul": "kabuk",
+     "ad": "Etek servis kapagi H1 (sigorta kutusu)",
+     "ad_tr": "Etek servis kapağı H1 (sigorta kutusu)",
+     "adet": 1,
+     "olcu": [
+      111.3,
+      111.3,
+      3.0
+     ],
+     "g": [
+      24.0,
+      24.0
+     ],
+     "sa": [
+      0.5,
+      0.5
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "düz (alt yüzü tablada)",
+     "kaynak": "kabuk/baski[22]",
+     "x2d": true,
+     "olcu_baski": [
+      111.3,
+      111.3,
+      3.0
+     ],
+     "parti": 4,
+     "bagli": "—",
+     "montaj_adimi": "33 (F1) / F5 (M6 K5)",
+     "basim_notu": ""
+    },
+    {
+     "y2b": 27,
+     "modul": "kabuk",
+     "ad": "Etek servis kapagi H2 (ana sigorta)",
+     "ad_tr": "Etek servis kapağı H2 (ana sigorta)",
+     "adet": 1,
+     "olcu": [
+      70.0,
+      56.0,
+      3.0
+     ],
+     "g": [
+      14.0,
+      14.0
+     ],
+     "sa": [
+      0.3,
+      0.3
+     ],
+     "malzeme": "PETG",
+     "destekli": false,
+     "destek_not": "",
+     "yon": "düz (alt yüzü tablada)",
+     "kaynak": "kabuk/baski[23]",
+     "x2d": true,
+     "olcu_baski": [
+      70.0,
+      56.0,
+      3.0
+     ],
+     "parti": 4,
+     "bagli": "—",
+     "montaj_adimi": "33 (F1) / F5 (M6 K6)",
+     "basim_notu": ""
+    }
+   ],
+   "toplam": {
+    "adet": 11,
+    "g": [
+     2212.2,
+     2212.2
+    ],
+    "sa": [
+     45.9,
+     45.9
+    ],
+    "petg_g": [
+     2212.2,
+     2212.2
+    ],
+    "cf_g": [
+     0.0,
+     0.0
+    ]
+   }
+  }
+ },
+ "liste_toplam": {
+  "adet": 72,
+  "g": [
+   7604.6,
+   7662.4
+  ],
+  "sa": [
+   158.22,
+   159.42
+  ],
+  "petg_g": [
+   6446.6,
+   6446.6
+  ],
+  "cf_g": [
+   1158.0,
+   1215.8
+  ]
+ },
+ "y2b_toplam": {
+  "adet": 72,
+  "g": [
+   7604.6,
+   7662.400000000001
+  ],
+  "sa": [
+   158.21999999999997,
+   159.42
+  ],
+  "petg_g": [
+   6446.600000000001,
+   6446.600000000001
+  ],
+  "cf_g": [
+   1158.0,
+   1215.8000000000002
+  ]
+ },
+ "kontrol": {
+  "adet": true,
+  "g": true,
+  "sa": true,
+  "cf": true,
+  "parti_esit": true,
+  "her_parca_bir_partide": true
+ },
+ "takvim_hafta_sonu": {
+  "32": {
+   "1": 1.7,
+   "2": 2.6,
+   "3": 3.09,
+   "4": 4.48
+  },
+  "40": {
+   "1": 1.26,
+   "2": 1.98,
+   "3": 2.38,
+   "4": 3.49
+  },
+  "plan_A": {
+   "1": 1.5,
+   "2": 2.3,
+   "3": 2.8,
+   "4": 4.5
+  }
+ },
+ "takvim_not": "S'ye göre hafta; tek yazıcı; Parti 2 en erken S+1; akü takozu (1,5 sa) Parti 1 arasında"
+}

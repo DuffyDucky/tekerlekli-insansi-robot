@@ -54,11 +54,14 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K39 | Omuz durdurucu güçlendirme | **açık** (F2) | d: kök yarıçapı (P6.1) + DS3235 düşme ölçümü, sonra gerekirse | P6.1, ölçüm kâğıdı, K38 |
 | K40 | S2 sıfır kalibrasyonu ve sınır metni (`yana_alt_bosluk_mm`) | **açık** (F2) | a: horn dişe dayalı takılır; metin P6.1'de | P6.1, P7.1, `eklem_sinirlari.json` |
 | K41 | S1 yazılım aralığı: kod 0…160 ↔ CAD −45…135 | **açık** (F2 + F5) | a: kod −45…135 | `kod/` eklem sınırları, P5.1 |
+| K42 | PETG-CF miktarı: 1,5 kg yetmiyor | **açık** (F4c) | a: +1 makara (4 × 0,5 = 2,0 kg), +1.114,03 TL | S siparişi filament satırı, K34, Parti 0/2 |
+| K43 | Isıl gömme somun adedi: M3 177, M5 21 (plan 168 / 6) | **açık** (F4c) | Erken alımda M3 177 + pay, M5 21 + pay | K29, K31, Parti 0 kuponları |
 
-**Açık: 36** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 41 madde.
+**Açık: 38** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 43 madde.
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
+P4.3 + P8.2 (F4c, 09.11.2026) karar taslakları KT-F4c-1…2 → K42–K43, B'nin metinleriyle (`planlama/d158/F4c-kontrol.md`; K43 B-1 düzeltmesiyle M5 21).
 
 ---
 
@@ -617,6 +620,38 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
   açısında çarpışmıyor; sınırı yalnız kablo U lopu belirliyor (≈ 140,2°'de kasete sıkışır). S1 için mekanik durdurucu istenirse ayrı tasarım
   paketi açılır. Sahibi `kod/`." F5 bulgusuyla tek karar. Yalnız öneri.
 - **Bloke:** `kod/` eklem sınırları (Efe'nin alanı; pano #6 Ç2 ile aynı konu), P5.1 satır 0 ve 2.
+- **Durum:** açık.
+
+<!-- K42–K43: P4.3 baskı listesi + P8.2 baskı partileri (F4c, 09.11.2026), kaynak `planlama/d158/F4c-gunluk.md` §7 KT-F4c-1…2, metinler B'nin
+önerisiyle (`planlama/d158/F4c-kontrol.md` "Karar kuyruğuna girecek metin"; K43 B-1 düzeltmesiyle). -->
+
+## K42 · PETG-CF miktarı: 1,5 kg yetmiyor (KT-F4c-1)
+- **Soru:** PETG-CF 3 × 0,5 kg (1,5 kg; `planlama/maliyet.json` `kalemler[109]`) parçalara ve kuponlara yetiyor mu, kaç makara alınsın?
+- **Sayılar:** parçalar 1.158,0–1.215,8 g (`planlama/y2/Y2b-baski.json` `toplam.cf_g`; 12 tür, 18 adet, VESA taşıyıcı 113 g dahil). Parti 0
+  CF kuponları 175,8–301,4 g (`planlama/d158/F4c-partiler.json` `partiler.0.toplam.cf_g`). Toplam 1.333,8–1.517,2 g. 1,5 kg'de pay +166 … −17 g;
+  D2 kuponu basılmazsa +69 … +208 g. En büyük CF parçası kafa servo yuvası 151,5 g: tek başarısız baskı alt durumdaki payı bitiriyor. VESA
+  taşıyıcının destek malzemesi (28 katman) sayılmadı.
+- **Seçenekler:** a) +1 makara (2,0 kg; pay 483–666 g). b) 1,5 kg'de kal; D2 basılmaz, başarısızlıkta yeniden sipariş (gecikme riski).
+  c) K34 (baskı hizmeti) netleşince karar ver.
+- **Sayısal etki:** a: +1.114,03 TL (`kalemler[109]` birim fiyatı, 11 Ekim; stok yeniden doğrulanmadı); %15 payla +1.281,13 TL. b: 0 TL.
+- **Ayrıca netleşmeli:** `F8a-siparis.md:78` "filament firma ve ekipten, satın alınmaz", ama `maliyet.json` filamenti V3 toplamında sayıyor
+  (`secenek` "yazici"). VESA taşıyıcının PETG-CF olması modelde (`kabuk_parcalar.py:375-376`), Ahmet'in kararına dayanmıyor (F4c-kontrol B-5).
+- **Önerilen varsayılan:** a. Yalnız öneri.
+- **Bloke:** S siparişindeki filament satırı; Parti 0 CF kuponları ve Parti 2.
+- **Durum:** açık.
+
+## K43 · Isıl gömme somun adedi (KT-F4c-2, F4c-kontrol B-1 düzeltmesiyle)
+- **Soru:** Erken alımda (K29) kaç M3 ve M5 ısıl gömme somun alınsın?
+- **Sayılar:** model (`tasarim/freecad/montaj/robot-bom.csv`, 09.11) **M3 159, M5 5**. M5'lerin yeri: ön kol gövdesi ×2 (**PETG**,
+  `dirsek_parcalar.py:235, 253`), eğme çatalı ×1 (PETG-CF), omuz göbeği ×2 (PETG-CF). Kuponlar iki malzemede basılıyor: B (M3 4, M5 3) ve C
+  (M3 5, M5 5) → M3 18, M5 16 (`tasarim/freecad/test/tolerans_kuponu.py:8-9`, `m7-kupon-sonuc.json` `kupon_c_delikler`). Gereken (pay hariç):
+  **M3 177, M5 21**. M5 yalnız C kuponu PETG'de denenirse 18.
+- **Plan:** M3 168 (`maliyet.json`) / 176 (v4), M5 6. M3 kupona yetmiyor (−9); M5 modele ve kupona yetmiyor (−15).
+- **Sayısal etki (taban fiyat, `F8a-siparis.md` §4.1):** M3 168 → 177: +9 × 5,29 = +47,61 TL. M5 6 → 21: +15 × 6,35 = +95,25 TL.
+- **Önerilen varsayılan:** erken alımda M3 177 + pay, M5 21 + pay (pay oranı Ahmet'in). K31'in M3 varyantı (A/B/C) adedi değiştirmez; K31 M5 ürünü
+  seçilmeden M5 alınmamalı (kupon delikleri Rhino M5 için küçük). Yalnız öneri.
+- **İlişki:** K29'un önerisindeki "insert 168" bu maddeyle M3 177 + pay olur; K31 ürün seçimini, K43 adedi belirler.
+- **Bloke:** K29 (erken alım), K31, Parti 0 kupon B/C.
 - **Durum:** açık.
 
 ---

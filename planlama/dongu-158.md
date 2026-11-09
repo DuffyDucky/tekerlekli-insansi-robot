@@ -39,8 +39,7 @@ tilt payı ≥ 3,0 (3,64); pan payı ≥ 2,0 (2,21); mikrofon-hoparlör ≥ 400 
 
 | Paket | Ajan | Yazdığı alan |
 |---|---|---|
-| F2 (P2.1, P2.2) | C (commit + push + `F2-rapor.html` + karar kuyruğu K38–K41; kaynak dosyalara dokunmaz) |
-| F4c (P4.3, P8.2) | A | `planlama/baski-listesi.md`, `planlama/y2/Y2b-baski.json` (betikle), `planlama/d158/F4c-*`; FreeCAD yok, git yazma yok | `tasarim/freecad/omuz/`, `arayuz.py` (yalnız omuz bloğu), `kabuk/` (durdurucu kabukta ise), `carpisma-bolum/omuz.json` + `carpisma-sonuc.json`, `planlama/d158/F2-*`, **FreeCAD makinesi** |
+| F4c (P4.3, P8.2) | C (commit + push + `F4c-rapor.html` + K42–K43) | `planlama/baski-listesi.md`, `planlama/y2/Y2b-baski.json` (betikle), `planlama/d158/F4c-*`; FreeCAD yok, git yazma yok | `tasarim/freecad/omuz/`, `arayuz.py` (yalnız omuz bloğu), `kabuk/` (durdurucu kabukta ise), `carpisma-bolum/omuz.json` + `carpisma-sonuc.json`, `planlama/d158/F2-*`, **FreeCAD makinesi** |
 
 - **Tasarım sırası:** her adım öncekini bozmamalı; tam çakışma taraması yalnız P6'da, bir kez.
 - **Karar gereken yerde durma:** Ahmet'in kararını isteyen madde `planlama/d158/karar-kuyrugu.md`'ye yazılır
@@ -116,7 +115,7 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
 | P6.1 | Önce `kabuk_parcalar.py:733` yorumu `72 x 10 kopru` → `70 x 10 kopru` (F1a B; tarama kaynağı olduğu için burada); `kafa_lib.py:265`, `dirsek_lib.py:141`, `omuz_baski.py:201`, `uygulama_tani.py:30` sessiz katman atlama kalıbına P1.5 kesit kaydırması (F1b B); göğüs ekranı port girintisini kasa modeline geometri olarak ekle (ekran ölçülünce, hariç tutma kutusu kalkar); F2 B: omuz durdurucu dişinin kök iç köşesine ≥ 1,5 mm yarıçap/pah (`omuz_parcalar.py`), "horn/dişli yük almaz" yorumlarını "tork almaz, radyal yük S2 mafsalında" diye düzelt, `arayuz.py:178` `yana_alt_bosluk_mm` eski "−3° kabuk" değerini 158 modeline (tambur 3,65°, diş 4,30°) güncelle ve `eklem_sinirlari.json`'u yeniden üret (Efe'ye bilgi); omuz ve iskelet regresyon referanslarını yenile (karar sonrası); sonra bütün modüller yeniden üretilir → tam çakışma taraması (tek koşu) → `eklem_dogrulama`, `montaj_gorsel`, modül görselleri | Çakışma 0, `tek_kosu: true`, korunan değerler aynı | – (makine ~2–6 sa) | ⏳ |
-| P6.2 | Baskı analizi tüm parçalar; kapakta iki analizin uyuşmazlığı (19.667,7 mm² ↔ 5,01 mm²) çözülür | Tek analiz, tek sonuç | P6.1 sonrası | ⏳ |
+| P6.2 | Baskı analizi tüm parçalar; kapakta iki analizin uyuşmazlığı (19.667,7 mm² ↔ 5,01 mm²) çözülür (F4c: hub takozlu üst arka kapak 3 mm plakanın neredeyse tamamında destek gösteriyor; kabuk/kafa analizleri destek filamentini saymıyor) | Tek analiz, tek sonuç | P6.1 sonrası | ⏳ |
 
 ### Faz F7: Montaj rehberi (eski Y5)
 
@@ -158,6 +157,10 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | K9 | El yükü 0,5 kg için servo değişimi mi, 100 g sınırı mı | 100 g sınırı |
 
 ## 5. Günlük
+
+- 2026-11-09 F4c A: 72 parça (03.11: 65; +2 hoparlör kabı, kelepçe, 4 QLED tırnağı), 7,60–7,66 kg (PETG 6,45, PETG-CF 1,16–1,22), 158,2–159,4 sa; Parti 1–4: 27/25/9/11; Parti 0 kupon ≈ 7,3 sa (plan 3 sa yalnız M7). B: KOŞULLU GEÇER (bağımsız sayım birebir). Orta: M5 insert 13 değil 21; göğüs çerçeveleri + VESA Parti 1 sonuna (ekran S'de gelir). Düzeltme turu 1 A'da. Karar taslakları K42 (PETG-CF +1 makara ≈ 1.281 TL), K43 (insert M3 177 / M5 21). F6a brief hazır (P6.1); F4c commit'inden sonra başlar (analiz JSON'ları ortak).
+
+- 2026-11-09 **F2 ✅ (P2.1, P2.2)** C: ff1c2e9 (34 dosya model + tarama), b7c7cb8 (belgeler, K38–K41), rapor 33d2f76 push. kontrol 0, regresyon 10/10. Karar kuyruğu açık 36 / 41. F4c A (P4.3 baskı listesi + P8.2 partiler) koşuyor. Sırada P6.1 (tarama kaynakları temizliği + F2 B devirleri + tam tarama).
 
 - 2026-11-09 F2 B: KOŞULLU GEÇER, kritik yok. Ölçüm bağımsız (temas 4,3003°, 5°'te 0,3436 mm, kol–kabuk en küçük 0,8309 mm), kontrol 0, regresyon --yazma 0, 34 dosya listesi birebir; "FARK VAR" eski referanslardan. Orta: (1) darbenin ~%88'i S2 mafsalına radyal (horn/rulman), yansıyan rotor ataleti dişliye stall'ın 1,4–2,1 katı; (2) emniyet varsayıma duyarlı (1,5 rad/s yüksüz 1,22–2,57), diş kökünde keskin iç köşe; (3) `arayuz.py:178` eski −3° değeri `eklem_sinirlari.json`'a gidiyor. **Orkestratör kararı:** düzeltme turu yok (kök yarıçapı omuz kaynağını değiştirir → 3,5 sa yeniden tarama); kök yarıçapı, yorumlar ve `yana_alt_bosluk_mm` P6.1'e eklendi (zaten tam tarama yapacak). C başladı: kaynak dosyalara dokunmadan commit, rapor emniyet ifadesi aralıkla, K38–K41.
 

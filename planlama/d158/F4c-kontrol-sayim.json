@@ -1,0 +1,149 @@
+{
+ "toplam": {
+  "tur": 62,
+  "adet": 72,
+  "g": [
+   7604.6,
+   7662.4
+  ],
+  "sa": [
+   158.22,
+   159.42
+  ],
+  "petg_g": [
+   6446.6,
+   6446.6
+  ],
+  "cf_g": [
+   1158.0,
+   1215.8
+  ],
+  "cf_tur": 12,
+  "cf_adet": 18,
+  "destekli_adet": 14
+ },
+ "bom_baski_kalem": 62,
+ "bom_baski_adet": 72,
+ "analiz_bom_ad_esit": true,
+ "adet_fark_analiz_bom": [
+  [
+   "dirsek",
+   "Dirsek catali",
+   1,
+   2
+  ],
+  [
+   "dirsek",
+   "On kol govdesi",
+   1,
+   2
+  ],
+  [
+   "dirsek",
+   "Bilek flansi",
+   1,
+   2
+  ],
+  [
+   "dirsek",
+   "El",
+   1,
+   2
+  ]
+ ],
+ "kafa_kutle_fark_bom_eksi_analiz_g": {
+  "Servo yuvasi": 0.0,
+  "Rulman yuvasi": 0.0,
+  "Boyun mili": 0.0,
+  "Egme catali": 0.0,
+  "Boyun yukseltme adaptoru": 0.0,
+  "Yuz kabugu (on) sag": 0.0,
+  "Yuz kabugu (on) sol": 0.0,
+  "Arka kafa kabugu sag": 0.0,
+  "Arka kafa kabugu sol": 0.0,
+  "Kafa iskeleti": 0.0,
+  "Ekran tirnagi ust sag": 0.0,
+  "Ekran tirnagi ust sol": 0.0,
+  "Ekran tirnagi alt sag": 0.0,
+  "Ekran tirnagi alt sol": 0.0
+ },
+ "cf_turleri": [
+  "Bilek flansi",
+  "Boyun mili",
+  "Boyun yukseltme adaptoru",
+  "Dirsek catali",
+  "Egme catali",
+  "Gogus ekrani VESA tasiyici",
+  "Kol catali",
+  "Omuz gobegi",
+  "Omuz yuvasi",
+  "Rulman kapagi",
+  "Rulman yuvasi",
+  "Servo yuvasi"
+ ],
+ "eski_0311": {
+  "adet": 65,
+  "g": [
+   7627.200000000001,
+   7684.400000000001
+  ],
+  "sa": [
+   158.7,
+   159.88
+  ],
+  "cf_g": [
+   1157.4,
+   1214.6
+  ]
+ },
+ "yeni_parcalar": [
+  "Ekran tirnagi alt sag",
+  "Ekran tirnagi alt sol",
+  "Ekran tirnagi ust sag",
+  "Ekran tirnagi ust sol",
+  "Hoparlor kabi arka (flansli)",
+  "Hoparlor kabi on halka",
+  "Hoparlor kelepcesi"
+ ],
+ "kalkan": [],
+ "x2d_disi": [],
+ "isil_gomme": {
+  "bom": {
+   "3": 159,
+   "5": 5
+  },
+  "kupon_b": {
+   "3": 4,
+   "5": 3
+  },
+  "kupon_c": {
+   "3": 5,
+   "5": 5
+  },
+  "m5_yerleri": [
+   {
+    "dosya": "dirsek/dirsek_parcalar.py",
+    "satir": 253,
+    "etiket": "Isil gomme somun M5 (on kolda)",
+    "parca": "On kol govdesi (PETG; g.cut, :235 -> I_ONKOL :242)"
+   },
+   {
+    "dosya": "kafa/kafa7_parcalar.py",
+    "satir": 317,
+    "etiket": "Isil gomme somun M5 (catal)",
+    "parca": "Egme catali (PETG-CF listede; cb.cut :284)"
+   },
+   {
+    "dosya": "omuz/omuz_parcalar.py",
+    "satir": 291,
+    "etiket": "Isil gomme somun M5 (gobekte)",
+    "parca": "Omuz gobegi (PETG-CF; hub.cut :149)"
+   }
+  ],
+  "gereken": {
+   "M3": 177,
+   "M5_yalniz_cf_kupon": 13,
+   "M5_iki_malzeme_kupon": 21
+  }
+ }
+}
