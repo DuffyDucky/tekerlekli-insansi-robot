@@ -1,6 +1,6 @@
 {
  "tarih": "2026-11-09",
- "kaynak": "planlama/y2/Y2b-baski.json (Y2b-baski.py); parti alanı Y2b parti()",
+ "kaynak": "planlama/y2/Y2b-baski.json (Y2b-baski.py ← tasarim/freecad/lale158/baski-analiz.json, F6b tek analiz); parti alanı Y2b parti()",
  "partiler": {
   "0": {
    "ad": "Tolerans kuponları",
@@ -194,8 +194,12 @@
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "arka yüzü (ray tarafı) tablada",
-     "kaynak": "taban/baski[1]",
+     "kaynak": "baski-analiz/parcalar[1]",
      "x2d": true,
      "olcu_baski": [
       61.2,
@@ -229,8 +233,12 @@
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "arka yüzü (ray tarafı) tablada",
-     "kaynak": "taban/baski[2]",
+     "kaynak": "baski-analiz/parcalar[2]",
      "x2d": true,
      "olcu_baski": [
       65.8,
@@ -264,8 +272,12 @@
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "arka yüzü (ray tarafı) tablada",
-     "kaynak": "taban/baski[3]",
+     "kaynak": "baski-analiz/parcalar[3]",
      "x2d": true,
      "olcu_baski": [
       61.2,
@@ -289,18 +301,22 @@
       225.5
      ],
      "g": [
-      299.0,
-      299.0
+      299.2,
+      299.2
      ],
      "sa": [
-      6.2,
-      6.2
+      6.23,
+      6.23
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "dik (alt kenarı tablada)",
-     "kaynak": "kabuk/baski[0]",
+     "kaynak": "baski-analiz/parcalar[4]",
      "x2d": true,
      "olcu_baski": [
       170.0,
@@ -324,18 +340,22 @@
       225.5
      ],
      "g": [
-      280.0,
-      280.0
+      280.2,
+      280.2
      ],
      "sa": [
-      5.8,
-      5.8
+      5.84,
+      5.84
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "dik (alt kenarı tablada)",
-     "kaynak": "kabuk/baski[1]",
+     "kaynak": "baski-analiz/parcalar[5]",
      "x2d": true,
      "olcu_baski": [
       170.0,
@@ -359,18 +379,22 @@
       169.5
      ],
      "g": [
-      224.0,
-      224.0
+      224.3,
+      224.3
      ],
      "sa": [
-      4.7,
-      4.7
+      4.67,
+      4.67
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "dik (alt kenarı tablada)",
-     "kaynak": "kabuk/baski[2]",
+     "kaynak": "baski-analiz/parcalar[6]",
      "x2d": true,
      "olcu_baski": [
       170.0,
@@ -394,18 +418,22 @@
       169.5
      ],
      "g": [
-      211.0,
-      211.0
+      210.7,
+      210.7
      ],
      "sa": [
-      4.4,
-      4.4
+      4.39,
+      4.39
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "dik (alt kenarı tablada)",
-     "kaynak": "kabuk/baski[3]",
+     "kaynak": "baski-analiz/parcalar[7]",
      "x2d": true,
      "olcu_baski": [
       170.0,
@@ -429,18 +457,22 @@
       169.5
      ],
      "g": [
-      224.0,
-      224.0
+      224.3,
+      224.3
      ],
      "sa": [
-      4.7,
-      4.7
+      4.67,
+      4.67
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "dik (alt kenarı tablada)",
-     "kaynak": "kabuk/baski[4]",
+     "kaynak": "baski-analiz/parcalar[8]",
      "x2d": true,
      "olcu_baski": [
       170.0,
@@ -464,18 +496,22 @@
       169.5
      ],
      "g": [
-      211.0,
-      211.0
+      210.7,
+      210.7
      ],
      "sa": [
-      4.4,
-      4.4
+      4.39,
+      4.39
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "dik (alt kenarı tablada)",
-     "kaynak": "kabuk/baski[5]",
+     "kaynak": "baski-analiz/parcalar[9]",
      "x2d": true,
      "olcu_baski": [
       170.0,
@@ -499,18 +535,22 @@
       226.9
      ],
      "g": [
-      272.0,
-      272.0
+      271.9,
+      271.9
      ],
      "sa": [
-      5.7,
-      5.7
+      5.66,
+      5.66
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "dik (alt kenarı tablada)",
-     "kaynak": "kabuk/baski[6]",
+     "kaynak": "baski-analiz/parcalar[10]",
      "x2d": true,
      "olcu_baski": [
       214.2,
@@ -534,18 +574,22 @@
       226.9
      ],
      "g": [
-      262.0,
-      262.0
+      261.5,
+      261.5
      ],
      "sa": [
-      5.4,
-      5.4
+      5.45,
+      5.45
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "dik (alt kenarı tablada)",
-     "kaynak": "kabuk/baski[7]",
+     "kaynak": "baski-analiz/parcalar[11]",
      "x2d": true,
      "olcu_baski": [
       214.2,
@@ -569,18 +613,22 @@
       235.0
      ],
      "g": [
-      219.0,
-      219.0
+      234.3,
+      234.3
      ],
      "sa": [
-      4.6,
-      4.6
+      4.9,
+      4.9
      ],
      "malzeme": "PETG",
      "destekli": true,
-     "destek_not": "cep üst kenarı, köprü 158 mm",
+     "destek_not": "10,7 cm², 15,6 g; cep üst kenarı (köprü 160 mm) + z 12–15'te alt kenar çıkıntısı",
+     "destek_g": [
+      15.6,
+      15.6
+     ],
      "yon": "dik (alt kenarı tablada)",
-     "kaynak": "kabuk/baski[8]",
+     "kaynak": "baski-analiz/parcalar[12]",
      "x2d": true,
      "olcu_baski": [
       217.2,
@@ -604,18 +652,22 @@
       235.0
      ],
      "g": [
-      215.0,
-      215.0
+      229.1,
+      229.1
      ],
      "sa": [
-      4.5,
-      4.5
+      4.79,
+      4.79
      ],
      "malzeme": "PETG",
      "destekli": true,
-     "destek_not": "cep üst kenarı, köprü 146 mm",
+     "destek_not": "3,6 cm², 14,1 g; cep üst kenarı (köprü 148 mm)",
+     "destek_g": [
+      14.1,
+      14.1
+     ],
      "yon": "dik (alt kenarı tablada)",
-     "kaynak": "kabuk/baski[9]",
+     "kaynak": "baski-analiz/parcalar[13]",
      "x2d": true,
      "olcu_baski": [
       217.2,
@@ -639,18 +691,22 @@
       102.0
      ],
      "g": [
-      184.0,
-      184.0
+      184.4,
+      184.4
      ],
      "sa": [
-      3.8,
-      3.8
+      3.84,
+      3.84
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "ters (üst kapak tablada)",
-     "kaynak": "kabuk/baski[10]",
+     "kaynak": "baski-analiz/parcalar[14]",
      "x2d": true,
      "olcu_baski": [
       164.0,
@@ -674,18 +730,22 @@
       102.0
      ],
      "g": [
-      178.0,
-      178.0
+      177.9,
+      177.9
      ],
      "sa": [
-      3.7,
-      3.7
+      3.71,
+      3.71
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "ters (üst kapak tablada)",
-     "kaynak": "kabuk/baski[11]",
+     "kaynak": "baski-analiz/parcalar[15]",
      "x2d": true,
      "olcu_baski": [
       156.2,
@@ -713,14 +773,18 @@
       98.0
      ],
      "sa": [
-      2.0,
-      2.0
+      2.04,
+      2.04
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "dış yüzü tablada",
-     "kaynak": "kabuk/baski[12]",
+     "kaynak": "baski-analiz/parcalar[16]",
      "x2d": true,
      "olcu_baski": [
       190.0,
@@ -739,13 +803,13 @@
      "ad_tr": "Rulman kapağı",
      "adet": 2,
      "olcu": [
-      76.0,
-      60.0,
+      70.7,
+      70.7,
       14.0
      ],
      "g": [
       15.3,
-      17.2
+      17.3
      ],
      "sa": [
       0.32,
@@ -754,12 +818,16 @@
      "malzeme": "PETG-CF",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "+X: x = 146 yüzü tablada",
-     "kaynak": "omuz-baski/parcalar[1]",
+     "kaynak": "baski-analiz/parcalar[57]",
      "x2d": true,
      "olcu_baski": [
-      76.0,
-      60.0,
+      70.7,
+      70.7,
       14.0
      ],
      "parti": 1,
@@ -774,9 +842,9 @@
      "ad_tr": "Üst kol tüpü",
      "adet": 2,
      "olcu": [
-      130.0,
       56.0,
-      56.0
+      56.0,
+      130.0
      ],
      "g": [
       54.4,
@@ -789,8 +857,12 @@
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "+Y: y = -170 yüzü tablada",
-     "kaynak": "omuz-baski/parcalar[5]",
+     "kaynak": "baski-analiz/parcalar[61]",
      "x2d": true,
      "olcu_baski": [
       56.0,
@@ -814,18 +886,22 @@
       12.5
      ],
      "g": [
-      85.0,
-      85.0
+      85.1,
+      85.1
      ],
      "sa": [
-      1.8,
-      1.8
+      1.77,
+      1.77
      ],
      "malzeme": "PETG",
-     "destekli": true,
-     "destek_not": "analizde z 2,5'te 197 cm², nedeni açık (günlük)",
+     "destekli": false,
+     "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "dış yüzü tablada",
-     "kaynak": "kabuk/baski[13]",
+     "kaynak": "baski-analiz/parcalar[17]",
      "x2d": true,
      "olcu_baski": [
       168.3,
@@ -844,7 +920,7 @@
      "ad_tr": "Göğüs ekranı çerçevesi sağ",
      "adet": 1,
      "olcu": [
-      207.2,
+      207.3,
       147.0,
       10.0
      ],
@@ -853,17 +929,21 @@
       31.0
      ],
      "sa": [
-      0.6,
-      0.6
+      0.65,
+      0.65
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "arka yüzü (flanş) tablada",
-     "kaynak": "kabuk/baski[24]",
+     "kaynak": "baski-analiz/parcalar[28]",
      "x2d": true,
      "olcu_baski": [
-      207.2,
+      207.3,
       147.0,
       10.0
      ],
@@ -879,7 +959,7 @@
      "ad_tr": "Göğüs ekranı çerçevesi sol",
      "adet": 1,
      "olcu": [
-      207.2,
+      207.3,
       147.0,
       10.0
      ],
@@ -888,17 +968,21 @@
       31.0
      ],
      "sa": [
-      0.6,
-      0.6
+      0.65,
+      0.65
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "arka yüzü (flanş) tablada",
-     "kaynak": "kabuk/baski[25]",
+     "kaynak": "baski-analiz/parcalar[29]",
      "x2d": true,
      "olcu_baski": [
-      207.2,
+      207.3,
       147.0,
       10.0
      ],
@@ -919,18 +1003,22 @@
       63.4
      ],
      "g": [
-      113.0,
-      113.0
+      144.8,
+      144.8
      ],
      "sa": [
-      2.4,
-      2.4
+      3.05,
+      3.05
      ],
      "malzeme": "PETG-CF",
      "destekli": true,
-     "destek_not": "arka flanş (28 katman)",
+     "destek_not": "38,1 cm², 31,7 g; arka flanş (z 32–58)",
+     "destek_g": [
+      31.7,
+      31.7
+     ],
      "yon": "VESA plakası tablada; arka flanş destekli",
-     "kaynak": "kabuk/baski[26]",
+     "kaynak": "baski-analiz/parcalar[30]",
      "x2d": true,
      "olcu_baski": [
       106.2,
@@ -949,27 +1037,31 @@
      "ad_tr": "Hoparlör kabı ön halka",
      "adet": 1,
      "olcu": [
-      45.8,
-      45.8,
+      45.9,
+      45.9,
       7.0
      ],
      "g": [
-      3.0,
-      3.0
+      2.9,
+      2.9
      ],
      "sa": [
-      0.1,
-      0.1
+      0.06,
+      0.06
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "VARSAYIM kap; ön halka, düz (desteksiz)",
-     "kaynak": "kabuk/baski[31]",
+     "kaynak": "baski-analiz/parcalar[35]",
      "x2d": true,
      "olcu_baski": [
-      45.8,
-      45.8,
+      45.9,
+      45.9,
       7.0
      ],
      "parti": 1,
@@ -989,18 +1081,22 @@
       13.3
      ],
      "g": [
-      7.0,
-      7.0
+      7.3,
+      7.3
      ],
      "sa": [
-      0.2,
-      0.2
+      0.15,
+      0.15
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "VARSAYIM kap; flanş yüzü tablada (desteksiz)",
-     "kaynak": "kabuk/baski[32]",
+     "kaynak": "baski-analiz/parcalar[36]",
      "x2d": true,
      "olcu_baski": [
       62.5,
@@ -1024,18 +1120,22 @@
       14.3
      ],
      "g": [
-      5.0,
-      5.0
+      4.5,
+      4.5
      ],
      "sa": [
-      0.1,
-      0.1
+      0.09,
+      0.09
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "VARSAYIM; köprü üst yüzü tablada, bacaklar yukarı (desteksiz)",
-     "kaynak": "kabuk/baski[33]",
+     "kaynak": "baski-analiz/parcalar[37]",
      "x2d": true,
      "olcu_baski": [
       56.6,
@@ -1051,39 +1151,39 @@
    "toplam": {
     "adet": 27,
     "g": [
-     3307.8,
-     3311.6
+     3368.9,
+     3372.9
     ],
     "sa": [
-     68.94,
-     69.02
+     70.24,
+     70.32
     ],
     "petg_g": [
-     3164.2,
-     3164.2
+     3193.5,
+     3193.5
     ],
     "cf_g": [
-     143.6,
-     147.4
+     175.4,
+     179.4
     ]
    },
    "sona_birakilan": {
     "adet": 7,
     "g": [
-     275.0,
-     275.0
+     306.6,
+     306.6
     ],
     "sa": [
-     5.8,
-     5.8
+     6.42,
+     6.42
     ],
     "petg_g": [
-     162.0,
-     162.0
+     161.8,
+     161.8
     ],
     "cf_g": [
-     113.0,
-     113.0
+     144.8,
+     144.8
     ],
     "parcalar": [
      "Üst arka servis kapağı",
@@ -1113,12 +1213,12 @@
      "adet": 1,
      "olcu": [
       111.9,
-      111.2,
+      111.1,
       6.3
      ],
      "g": [
-      10.0,
-      10.0
+      9.5,
+      9.5
      ],
      "sa": [
       0.2,
@@ -1127,12 +1227,16 @@
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "arka yüzü (x 152) tablada",
-     "kaynak": "kabuk/baski[27]",
+     "kaynak": "baski-analiz/parcalar[31]",
      "x2d": true,
      "olcu_baski": [
       111.9,
-      111.2,
+      111.1,
       6.3
      ],
      "parti": 2,
@@ -1148,26 +1252,30 @@
      "adet": 1,
      "olcu": [
       111.9,
-      111.2,
+      111.1,
       4.5
      ],
      "g": [
-      7.0,
-      7.0
+      7.2,
+      7.2
      ],
      "sa": [
-      0.1,
-      0.1
+      0.15,
+      0.15
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "flanş dış yüzü tablada",
-     "kaynak": "kabuk/baski[28]",
+     "kaynak": "baski-analiz/parcalar[32]",
      "x2d": true,
      "olcu_baski": [
       111.9,
-      111.2,
+      111.1,
       4.5
      ],
      "parti": 2,
@@ -1183,12 +1291,12 @@
      "adet": 1,
      "olcu": [
       111.9,
-      111.2,
+      111.1,
       6.3
      ],
      "g": [
-      10.0,
-      10.0
+      9.5,
+      9.5
      ],
      "sa": [
       0.2,
@@ -1197,12 +1305,16 @@
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "arka yüzü (x 152) tablada",
-     "kaynak": "kabuk/baski[29]",
+     "kaynak": "baski-analiz/parcalar[33]",
      "x2d": true,
      "olcu_baski": [
       111.9,
-      111.2,
+      111.1,
       6.3
      ],
      "parti": 2,
@@ -1218,26 +1330,30 @@
      "adet": 1,
      "olcu": [
       111.9,
-      111.2,
+      111.1,
       4.5
      ],
      "g": [
-      7.0,
-      7.0
+      7.2,
+      7.2
      ],
      "sa": [
-      0.1,
-      0.1
+      0.15,
+      0.15
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "flanş dış yüzü tablada",
-     "kaynak": "kabuk/baski[30]",
+     "kaynak": "baski-analiz/parcalar[34]",
      "x2d": true,
      "olcu_baski": [
       111.9,
-      111.2,
+      111.1,
       4.5
      ],
      "parti": 2,
@@ -1267,8 +1383,12 @@
      "malzeme": "PETG-CF",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "dik: kulak flanşı tablada",
-     "kaynak": "kafa/baski[0]",
+     "kaynak": "baski-analiz/parcalar[38]",
      "x2d": true,
      "olcu_baski": [
       88.1,
@@ -1302,8 +1422,12 @@
      "malzeme": "PETG-CF",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "dik: kulaklar tablada, rulman yuvası yukarı",
-     "kaynak": "kafa/baski[1]",
+     "kaynak": "baski-analiz/parcalar[39]",
      "x2d": true,
      "olcu_baski": [
       67.5,
@@ -1337,8 +1461,12 @@
      "malzeme": "PETG-CF",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "dik: horn diski tablada, flanş yukarı (45 derece koni)",
-     "kaynak": "kafa/baski[2]",
+     "kaynak": "baski-analiz/parcalar[40]",
      "x2d": true,
      "olcu_baski": [
       60.0,
@@ -1372,8 +1500,12 @@
      "malzeme": "PETG-CF",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "dik: taban tablada, duvarlar yukarı",
-     "kaynak": "kafa/baski[3]",
+     "kaynak": "baski-analiz/parcalar[41]",
      "x2d": true,
      "olcu_baski": [
       74.5,
@@ -1407,8 +1539,12 @@
      "malzeme": "PETG-CF",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "dik: alt flanş tablada",
-     "kaynak": "kafa/baski[4]",
+     "kaynak": "baski-analiz/parcalar[42]",
      "x2d": true,
      "olcu_baski": [
       59.9,
@@ -1442,8 +1578,12 @@
      "malzeme": "PETG-CF",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "ters: pim ve bilezik ucu tablada, kollar yukarı",
-     "kaynak": "dirsek/baski[0]",
+     "kaynak": "baski-analiz/parcalar[52]",
      "x2d": true,
      "olcu_baski": [
       73.9,
@@ -1477,8 +1617,12 @@
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "ön yüzü tablada, açık arka yukarı",
-     "kaynak": "dirsek/baski[1]",
+     "kaynak": "baski-analiz/parcalar[53]",
      "x2d": true,
      "olcu_baski": [
       129.6,
@@ -1512,8 +1656,12 @@
      "malzeme": "PETG-CF",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "horn yüzü tablada, havşalar yukarı",
-     "kaynak": "dirsek/baski[2]",
+     "kaynak": "baski-analiz/parcalar[54]",
      "x2d": true,
      "olcu_baski": [
       28.0,
@@ -1547,8 +1695,12 @@
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "ters: parmak ucu ve avuç altı tablada, yaka yukarı",
-     "kaynak": "dirsek/baski[3]",
+     "kaynak": "baski-analiz/parcalar[55]",
      "x2d": true,
      "olcu_baski": [
       56.2,
@@ -1572,18 +1724,22 @@
       67.0
      ],
      "g": [
-      81.0,
-      89.9
+      81.5,
+      90.2
      ],
      "sa": [
-      1.7,
-      1.88
+      1.71,
+      1.89
      ],
      "malzeme": "PETG-CF",
      "destekli": true,
-     "destek_not": "manşon içi + S1 penceresi",
+     "destek_not": "22,6 cm², 11,5 g; manşon içi + S1 penceresi",
+     "destek_g": [
+      11.5,
+      11.5
+     ],
      "yon": "-Y: y = 25 yüzü tablada",
-     "kaynak": "omuz-baski/parcalar[0]",
+     "kaynak": "baski-analiz/parcalar[56]",
      "x2d": true,
      "olcu_baski": [
       76.0,
@@ -1607,18 +1763,22 @@
       49.0
      ],
      "g": [
-      63.3,
-      70.4
+      63.5,
+      70.7
      ],
      "sa": [
-      1.32,
-      1.47
+      1.33,
+      1.48
      ],
      "malzeme": "PETG-CF",
      "destekli": true,
-     "destek_not": "flanş altı + diş (5,7 g)",
+     "destek_not": "24,3 cm², 5,9 g; flanş altı + diş",
+     "destek_g": [
+      5.9,
+      5.9
+     ],
      "yon": "+X: x = 150 yüzü tablada",
-     "kaynak": "omuz-baski/parcalar[2]",
+     "kaynak": "baski-analiz/parcalar[58]",
      "x2d": true,
      "olcu_baski": [
       77.0,
@@ -1637,8 +1797,8 @@
      "ad_tr": "S1 kablo tamburu",
      "adet": 2,
      "olcu": [
-      87.4,
-      70.6,
+      87.0,
+      86.9,
       10.5
      ],
      "g": [
@@ -1651,13 +1811,17 @@
      ],
      "malzeme": "PETG",
      "destekli": true,
-     "destek_not": "+x dudak altı",
+     "destek_not": "8,6 cm², 0,8 g; +x dudak altı",
+     "destek_g": [
+      0.8,
+      0.8
+     ],
      "yon": "+X: x = 152,5 yüzü tablada",
-     "kaynak": "omuz-baski/parcalar[3]",
+     "kaynak": "baski-analiz/parcalar[59]",
      "x2d": true,
      "olcu_baski": [
-      87.4,
-      70.0,
+      87.0,
+      86.9,
       10.5
      ],
      "parti": 2,
@@ -1673,22 +1837,26 @@
      "adet": 2,
      "olcu": [
       76.0,
-      63.5,
-      56.0
+      56.0,
+      63.5
      ],
      "g": [
-      98.7,
-      109.6
+      100.0,
+      111.0
      ],
      "sa": [
-      2.07,
-      2.3
+      2.1,
+      2.32
      ],
      "malzeme": "PETG-CF",
      "destekli": true,
-     "destek_not": "horn kulağı",
+     "destek_not": "20,4 cm², 12,7 g; horn kulağı",
+     "destek_g": [
+      12.7,
+      12.7
+     ],
      "yon": "-Z: z = 30,5 yüzü tablada",
-     "kaynak": "omuz-baski/parcalar[4]",
+     "kaynak": "baski-analiz/parcalar[60]",
      "x2d": true,
      "olcu_baski": [
       76.0,
@@ -1704,20 +1872,20 @@
    "toplam": {
     "adet": 25,
     "g": [
-     1330.8,
-     1384.6
+     1334.2,
+     1388.0
     ],
     "sa": [
-     27.68,
-     28.8
+     27.88,
+     28.98
     ],
     "petg_g": [
-     316.2,
-     316.2
+     315.6,
+     315.6
     ],
     "cf_g": [
-     1014.6,
-     1068.4
+     1018.6,
+     1072.4
     ]
    }
   },
@@ -1741,18 +1909,22 @@
       37.0
      ],
      "g": [
-      90.9,
-      90.9
+      91.3,
+      91.3
      ],
      "sa": [
-      1.89,
-      1.89
+      1.9,
+      1.9
      ],
      "malzeme": "PETG",
      "destekli": true,
-     "destek_not": "dikiş dili (16 mm şerit, ~1,25 mm konsol; karar 29.10)",
+     "destek_not": "12,3 cm², 0,4 g; dikiş dili (karar 29.10)",
+     "destek_g": [
+      0.4,
+      0.4
+     ],
      "yon": "ön yüzü tablada",
-     "kaynak": "kafa/baski[5]",
+     "kaynak": "baski-analiz/parcalar[43]",
      "x2d": true,
      "olcu_baski": [
       215.0,
@@ -1786,8 +1958,12 @@
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "ön yüzü tablada",
-     "kaynak": "kafa/baski[6]",
+     "kaynak": "baski-analiz/parcalar[44]",
      "x2d": true,
      "olcu_baski": [
       215.0,
@@ -1811,18 +1987,22 @@
       106.9
      ],
      "g": [
-      229.4,
-      229.4
+      230.3,
+      230.3
      ],
      "sa": [
-      4.78,
-      4.78
+      4.8,
+      4.8
      ],
      "malzeme": "PETG",
      "destekli": true,
-     "destek_not": "dikiş dili (16 mm şerit, ~1,25 mm konsol; karar 29.10)",
+     "destek_not": "30,6 cm², 0,9 g; dikiş dili (karar 29.10)",
+     "destek_g": [
+      0.9,
+      0.9
+     ],
      "yon": "arka yüzü tablada",
-     "kaynak": "kafa/baski[7]",
+     "kaynak": "baski-analiz/parcalar[45]",
      "x2d": true,
      "olcu_baski": [
       215.0,
@@ -1856,8 +2036,12 @@
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "arka yüzü tablada",
-     "kaynak": "kafa/baski[8]",
+     "kaynak": "baski-analiz/parcalar[46]",
      "x2d": true,
      "olcu_baski": [
       215.0,
@@ -1891,8 +2075,12 @@
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "ters: tabla tablada, yanaklar yukarı",
-     "kaynak": "kafa/baski[9]",
+     "kaynak": "baski-analiz/parcalar[47]",
      "x2d": true,
      "olcu_baski": [
       224.0,
@@ -1926,8 +2114,12 @@
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "plaka tablada, dil yukarı (desteksiz)",
-     "kaynak": "kafa/baski[10]",
+     "kaynak": "baski-analiz/parcalar[48]",
      "x2d": true,
      "olcu_baski": [
       24.0,
@@ -1961,8 +2153,12 @@
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "plaka tablada, dil yukarı (desteksiz)",
-     "kaynak": "kafa/baski[11]",
+     "kaynak": "baski-analiz/parcalar[49]",
      "x2d": true,
      "olcu_baski": [
       24.0,
@@ -1996,8 +2192,12 @@
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "plaka tablada, dil yukarı (desteksiz)",
-     "kaynak": "kafa/baski[12]",
+     "kaynak": "baski-analiz/parcalar[50]",
      "x2d": true,
      "olcu_baski": [
       24.0,
@@ -2031,8 +2231,12 @@
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "plaka tablada, dil yukarı (desteksiz)",
-     "kaynak": "kafa/baski[13]",
+     "kaynak": "baski-analiz/parcalar[51]",
      "x2d": true,
      "olcu_baski": [
       24.0,
@@ -2048,16 +2252,16 @@
    "toplam": {
     "adet": 9,
     "g": [
-     754.0,
-     754.0
+     755.3,
+     755.3
     ],
     "sa": [
-     15.7,
-     15.7
+     15.73,
+     15.73
     ],
     "petg_g": [
-     754.0,
-     754.0
+     755.3,
+     755.3
     ],
     "cf_g": [
      0.0,
@@ -2095,8 +2299,12 @@
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "alt yüzü tablada",
-     "kaynak": "taban/baski[0]",
+     "kaynak": "baski-analiz/parcalar[0]",
      "x2d": true,
      "olcu_baski": [
       125.2,
@@ -2120,18 +2328,22 @@
       227.0
      ],
      "g": [
-      366.0,
-      366.0
+      365.7,
+      365.7
      ],
      "sa": [
-      7.6,
-      7.6
+      7.62,
+      7.62
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "ters (üst plakası tablada)",
-     "kaynak": "kabuk/baski[14]",
+     "kaynak": "baski-analiz/parcalar[18]",
      "x2d": true,
      "olcu_baski": [
       233.7,
@@ -2155,18 +2367,22 @@
       227.0
      ],
      "g": [
-      362.0,
-      362.0
+      361.9,
+      361.9
      ],
      "sa": [
-      7.5,
-      7.5
+      7.54,
+      7.54
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "ters (üst plakası tablada)",
-     "kaynak": "kabuk/baski[15]",
+     "kaynak": "baski-analiz/parcalar[19]",
      "x2d": true,
      "olcu_baski": [
       222.0,
@@ -2190,18 +2406,22 @@
       227.0
      ],
      "g": [
-      217.0,
-      217.0
+      216.5,
+      216.5
      ],
      "sa": [
-      4.5,
-      4.5
+      4.51,
+      4.51
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "ters (üst plakası tablada)",
-     "kaynak": "kabuk/baski[16]",
+     "kaynak": "baski-analiz/parcalar[20]",
      "x2d": true,
      "olcu_baski": [
       222.0,
@@ -2225,18 +2445,22 @@
       227.0
      ],
      "g": [
-      217.0,
-      217.0
+      216.5,
+      216.5
      ],
      "sa": [
-      4.5,
-      4.5
+      4.51,
+      4.51
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "ters (üst plakası tablada)",
-     "kaynak": "kabuk/baski[17]",
+     "kaynak": "baski-analiz/parcalar[21]",
      "x2d": true,
      "olcu_baski": [
       222.0,
@@ -2260,18 +2484,22 @@
       227.0
      ],
      "g": [
-      372.0,
-      372.0
+      371.9,
+      371.9
      ],
      "sa": [
-      7.7,
-      7.7
+      7.75,
+      7.75
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "ters (üst plakası tablada)",
-     "kaynak": "kabuk/baski[18]",
+     "kaynak": "baski-analiz/parcalar[22]",
      "x2d": true,
      "olcu_baski": [
       233.7,
@@ -2295,18 +2523,22 @@
       227.0
      ],
      "g": [
-      363.0,
-      363.0
+      362.6,
+      362.6
      ],
      "sa": [
-      7.6,
-      7.6
+      7.55,
+      7.55
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "ters (üst plakası tablada)",
-     "kaynak": "kabuk/baski[19]",
+     "kaynak": "baski-analiz/parcalar[23]",
      "x2d": true,
      "olcu_baski": [
       222.0,
@@ -2330,18 +2562,22 @@
       227.0
      ],
      "g": [
-      98.0,
-      98.0
+      97.9,
+      97.9
      ],
      "sa": [
-      2.0,
-      2.0
+      2.04,
+      2.04
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "ters (üst plakası tablada)",
-     "kaynak": "kabuk/baski[20]",
+     "kaynak": "baski-analiz/parcalar[24]",
      "x2d": true,
      "olcu_baski": [
       192.5,
@@ -2365,18 +2601,22 @@
       227.0
      ],
      "g": [
-      107.0,
-      107.0
+      107.4,
+      107.4
      ],
      "sa": [
-      2.2,
-      2.2
+      2.24,
+      2.24
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "ters (üst plakası tablada)",
-     "kaynak": "kabuk/baski[21]",
+     "kaynak": "baski-analiz/parcalar[25]",
      "x2d": true,
      "olcu_baski": [
       192.5,
@@ -2395,27 +2635,31 @@
      "ad_tr": "Etek servis kapağı H1 (sigorta kutusu)",
      "adet": 1,
      "olcu": [
-      111.3,
-      111.3,
+      111.4,
+      111.4,
       3.0
      ],
      "g": [
-      24.0,
-      24.0
+      24.3,
+      24.3
      ],
      "sa": [
-      0.5,
-      0.5
+      0.51,
+      0.51
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "düz (alt yüzü tablada)",
-     "kaynak": "kabuk/baski[22]",
+     "kaynak": "baski-analiz/parcalar[26]",
      "x2d": true,
      "olcu_baski": [
-      111.3,
-      111.3,
+      111.4,
+      111.4,
       3.0
      ],
      "parti": 4,
@@ -2435,18 +2679,22 @@
       3.0
      ],
      "g": [
-      14.0,
-      14.0
+      13.6,
+      13.6
      ],
      "sa": [
-      0.3,
-      0.3
+      0.28,
+      0.28
      ],
      "malzeme": "PETG",
      "destekli": false,
      "destek_not": "",
+     "destek_g": [
+      0.0,
+      0.0
+     ],
      "yon": "düz (alt yüzü tablada)",
-     "kaynak": "kabuk/baski[23]",
+     "kaynak": "baski-analiz/parcalar[27]",
      "x2d": true,
      "olcu_baski": [
       70.0,
@@ -2462,16 +2710,16 @@
    "toplam": {
     "adet": 11,
     "g": [
-     2212.2,
-     2212.2
+     2210.5,
+     2210.5
     ],
     "sa": [
-     45.9,
-     45.9
+     46.05,
+     46.05
     ],
     "petg_g": [
-     2212.2,
-     2212.2
+     2210.5,
+     2210.5
     ],
     "cf_g": [
      0.0,
@@ -2483,39 +2731,39 @@
  "liste_toplam": {
   "adet": 72,
   "g": [
-   7604.8,
-   7662.4
+   7668.9,
+   7726.7
   ],
   "sa": [
-   158.22,
-   159.42
+   159.9,
+   161.08
   ],
   "petg_g": [
-   6446.6,
-   6446.6
+   6474.9,
+   6474.9
   ],
   "cf_g": [
-   1158.2,
-   1215.8
+   1194.0,
+   1251.8
   ]
  },
  "y2b_toplam": {
   "adet": 72,
   "g": [
-   7604.800000000001,
-   7662.400000000001
+   7668.9000000000015,
+   7726.700000000001
   ],
   "sa": [
-   158.21999999999997,
-   159.42
+   159.90000000000006,
+   161.0800000000001
   ],
   "petg_g": [
-   6446.600000000001,
-   6446.600000000001
+   6474.9000000000015,
+   6474.9000000000015
   ],
   "cf_g": [
-   1158.2,
-   1215.8000000000002
+   1194.0,
+   1251.8
   ]
  },
  "kontrol": {
@@ -2528,16 +2776,16 @@
  },
  "takvim_hafta_sonu": {
   "32": {
-   "1": 1.7,
-   "2": 2.6,
-   "3": 3.09,
-   "4": 4.48
+   "1": 1.74,
+   "2": 2.65,
+   "3": 3.14,
+   "4": 4.53
   },
   "40": {
-   "1": 1.26,
-   "2": 1.98,
-   "3": 2.38,
-   "4": 3.49
+   "1": 1.3,
+   "2": 2.02,
+   "3": 2.41,
+   "4": 3.53
   },
   "plan_A": {
    "1": 1.5,

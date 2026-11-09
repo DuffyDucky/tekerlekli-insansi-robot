@@ -5,6 +5,8 @@ r"""F4c (P4.3 + P8.2) dogrulama. Yalniz okur; kaynak betikleri DEGISTIRMEZ (kopy
   3. baski-listesi.md parca satirlari: her satir tek bir Y2b satirina bagli (modul + ad), adet / olcu / g / sa / malzeme / destek / X2D /
      kaynak anahtari / parti JSON ile ayni; her Y2b satiri tam bir kez.
   4. Ozet tablosu ve F4c-partiler.json: parti toplamlari = Y2b toplam.parti, Parti 1-4 toplami = Y2b toplam (adet, g, sa, PETG, PETG-CF).
+  6. (F6b) tek baski analizi tasarim/freecad/lale158/baski-analiz.json: her baski parcasi tam bir kez (modul + ad), sayisi ve adet
+     toplami Y2b / BOM ile ayni, Y2b satirlarinin g / sa / destek / olcu / yon degerleri bu JSON'dan.
   5. tasarim/freecad/lale158/baski_listesi_guncelle.py (a) oldugu gibi, (b) YAMA ile (F6a 1i'den beri bos: Y1-Y7 kaynakta kalici, eski liste
      YAMA_F4C) gecici kopya uzerinde kosulur; (b)'nin ciktisi baski-listesi.md ile satir satir ayni olmali (sabit nokta), (a)'nin farki listelenir.
 Kullanim:  py -3 planlama/d158/F4c-dogrula.py      (cikis 0 = hepsi gecti)
@@ -21,6 +23,7 @@ Y2B = os.path.join(KOK, "planlama", "y2", "Y2b-baski.json")
 GUNC = os.path.join(KOK, "tasarim", "freecad", "lale158", "baski_listesi_guncelle.py")
 BOM = os.path.join(KOK, "tasarim", "freecad", "montaj", "robot-bom.csv")
 PARTI = os.path.join(HERE, "F4c-partiler.json")
+BA = os.path.join(KOK, "tasarim", "freecad", "lale158", "baski-analiz.json")
 FC = os.path.join(KOK, "tasarim", "freecad")
 TR = str.maketrans("ığüşöçİĞÜŞÖÇ", "igusocIGUSOC")
 
@@ -121,14 +124,24 @@ def main():
         y2[s["ad"]] = y2.get(s["ad"], 0) + s["adet"]
     kontrol(bom == y2, "2 robot-bom.csv Baski = Y2b", "BOM %d kalem / %d adet" % (len(bom), sum(bom.values())))
 
-    # kaynak anahtarlari (analiz index'i)
+    # kaynak anahtarlari: tek analiz (F6b) baski-analiz.json
+    BAJ = json.load(open(BA, encoding="utf-8"))
     anah = {}
-    for mod in ("taban", "kabuk", "kafa", "dirsek"):
-        for i, p in enumerate(json.load(open(os.path.join(FC, mod, mod + "-analiz.json"), encoding="utf-8"))["baski"]):
-            anah[(mod, p["ad"])] = ("%s/baski[%d]" % (mod, i), p["olcu"], p.get("sigar"))
-    for i, p in enumerate(json.load(open(os.path.join(FC, "omuz", "omuz-baski.json"), encoding="utf-8"))["parcalar"]):
-        y = p["yonler"][p["secilen_yon"]]
-        anah[("omuz", p["ad"])] = ("omuz-baski/parcalar[%d]" % i, y["olcu"], y.get("sigar"), p["secilen_yon"])
+    for i, p in enumerate(BAJ["parcalar"]):
+        anah[(p["modul"], p["ad"])] = ("baski-analiz/parcalar[%d]" % i, p["olcu"], p["x2d_sigar"], p["yon"])
+
+    # 6 tek analiz: her parca bir kez, Y2b ile ayni degerler
+    cift = [k for k in anah if sum(1 for p in BAJ["parcalar"] if (p["modul"], p["ad"]) == k) != 1]
+    y2k = [(s["modul"], s["ad"]) for s in S]
+    uyusmaz = []
+    for i, (s, p) in enumerate(zip(S, BAJ["parcalar"])):
+        if ((s["modul"], s["ad"]) != (p["modul"], p["ad"]) or s["adet"] != p["adet"] or list(s["g"]) != p["toplam_g"] or list(s["sa"]) != p["sure_sa"]
+                or s["desteksiz"] != p["desteksiz"] or list(s["destek_g"]) != p["destek_g"] or s["olcu"] != p["olcu"] or s["yon"] != p["yon"]):
+            uyusmaz.append(i)
+    adet_ba = sum(p["adet"] for p in BAJ["parcalar"])
+    kontrol(not cift and len(BAJ["parcalar"]) == len(S) and sorted(anah) == sorted(y2k) and not uyusmaz and adet_ba == T["adet"] == sum(bom.values()),
+            "6 baski-analiz.json: her baski parcasi bir kez, Y2b ve BOM ile ayni",
+            "%d tur / %d adet (Y2b %d / %d, BOM %d); cift %s; uyusmayan satir %s" % (len(BAJ["parcalar"]), adet_ba, len(S), T["adet"], sum(bom.values()), cift, uyusmaz[:6]))
 
     # 3 liste satirlari
     metin = open(MD, encoding="utf-8").read()
@@ -164,10 +177,7 @@ def main():
             if bek[k] != gercek[k]:
                 sorun.append("%d: %s %s %s: liste %r, JSON %r" % (no, mod, ad, k, gercek[k], bek[k]))
         yk = kat(yon)
-        if mod == "omuz":
-            if not yk.startswith(kat(a[3]) + ":"):
-                sorun.append("%d: %s yon %r, secilen_yon %s" % (no, ad, yon, a[3]))
-        elif yk != kat(s["yon"] or ""):
+        if yk != kat(a[3] or "") or yk != kat(s["yon"] or ""):
             sorun.append("%d: %s yon %r, JSON %r" % (no, ad, yon, s["yon"]))
     eksik = [S[i]["ad"] for i in range(len(S)) if gorulen.get(i, 0) != 1]
     kontrol(not sorun and not eksik, "3 baski-listesi.md satirlari = Y2b (her satir bir JSON anahtarina bagli, her parca bir kez)",

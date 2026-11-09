@@ -2,7 +2,7 @@
 # F4c (P4.3): planlama/baski-listesi.md'yi F4c-partiler.json'dan kurar; metni F4c-dogrula.py YAMA'li baski_listesi_guncelle.py'den
 # (bellekte, gecici kopyada) iki kez gecirip sabit nokta oldugunu dogrular ve yazar. Kaynak betikleri degistirmez. FreeCAD istemez.
 # Sira: py -3 planlama/y2/Y2b-baski.py ; py -3 planlama/d158/F4c-partiler.py ; py -3 planlama/d158/F4c-liste.py ; py -3 planlama/d158/F4c-dogrula.py
-import importlib.util, json, os, sys
+import importlib.util, json, os, subprocess, sys
 
 D = os.path.dirname(os.path.abspath(__file__))
 KOK = os.path.normpath(os.path.join(D, "..", ".."))
@@ -39,24 +39,59 @@ BASLIK = ["| ☐ | Modül | Parça | Adet | Ölçü (mm) | Filament (g/adet) | S
 cf_alt, cf_ust = L["cf_g"][0] + k0["cf_g"][0], L["cf_g"][1] + k0["cf_g"][1]
 d2 = [x for x in P["partiler"]["0"]["kuponlar"] if x["kosullu"]][0]
 cf_d2siz = (cf_alt - d2["g"][0], cf_ust - d2["g"][1])
+# F6b (P6.2): tek analiz baski-analiz.json; destekli satirlar ve "once" (F6a sonu Y2b, commit 4d1898a) karsilastirmasi
+BA = json.load(open(os.path.join(KOK, "tasarim", "freecad", "lale158", "baski-analiz.json"), encoding="utf-8"))
+ROWS = [r for k in ("1", "2", "3", "4") for r in P["partiler"][k]["parcalar"]]
+DESTEKLI = [r for r in ROWS if r["destekli"]]
+D_ADET = sum(r["adet"] for r in DESTEKLI)
+D_G = [sum(r["adet"] * r["destek_g"][i] for r in ROWS) for i in (0, 1)]
+ONCE_REF = "4d1898a"
+ONCE = json.loads(subprocess.run(["git", "-C", KOK, "show", ONCE_REF + ":planlama/y2/Y2b-baski.json"], capture_output=True, check=True).stdout.decode("utf-8"))
+ONCE_S = {(x["modul"], x["ad"]): x for x in ONCE["satirlar"]}
+YENI_S = json.load(open(os.path.join(KOK, "planlama", "y2", "Y2b-baski.json"), encoding="utf-8"))
+OT, YT = ONCE["toplam"], YENI_S["toplam"]
+
+
+def _adlar(rr):
+    return ", ".join("%s (%s%s)" % (r["ad_tr"], r["modul"], ", ×%d" % r["adet"] if r["adet"] > 1 else "") for r in rr)
 
 s = []
 s += ["# Baskı listesi (1,58 m ana tasarım; 09.11.2026)", "",
       "Önceki sürümler: 125 cm V3 (11 / 15 Ekim 2026, 50 parça), 1,65 m (29 Ekim 2026, 63 parça) ve 1,58 m'nin ilk listesi (03.11.2026, 65 parça;",
       "kafa satırları o gün 7\" modelden). Bu liste 09.11.2026'da güncel ana modele göre yenilendi (F4c / P4.3): 10,1\" QLED kafa, göğüs ekranı",
       "çerçevesi ve VESA taşıyıcı, hub takozlu üst arka kapak, hoparlör kabı ve kelepçesi, omuz göbeği durdurucu dişi.",
-      "**Kaynak zinciri:** modül analizleri `tasarim/freecad/<modül>/<modül>-analiz.json` (`baski` alanı; %80 doluluk, 10 mm³/s) ve omuz için",
-      "`tasarim/freecad/omuz/omuz-baski.json` (PETG-CF doluluk 0,8–0,9; 09.11.2026 F2 koşusu, göbek dişi dahil) → `planlama/y2/Y2b-baski.py` →",
+      "**Kaynak zinciri (F6b, P6.2: tek analiz):** bütün baskı parçaları tek yöntemle `tasarim/freecad/lale158/baski_analiz_ortak.py` (FreeCAD;",
+      "geometri modüllerin `*_parcalar.py`'sinden, FCStd nesnesinin hacmiyle eşit) → `tasarim/freecad/lale158/baski-analiz.json` (yön, destek alanı ve",
+      "filamenti, g, süre, X2D; 45° eşik, tasarım yönü; doluluk kabuk 0,9, küçük parça 0,8, omuz PETG-CF 0,8–0,9; 10 mm³/s) → `planlama/y2/Y2b-baski.py` →",
       "`planlama/y2/Y2b-baski.json` → bu dosya. Kabuk ve kafa satırlarını `tasarim/freecad/lale158/baski_listesi_guncelle.py` yazar; öteki",
       "satırlar, ek sütunlar ve parti planı F4c'den (`planlama/d158/F4c-partiler.md`). Denetim: `py -3 planlama/d158/F4c-dogrula.py` (her satırın",
-      "JSON anahtarı, toplamlar, betik çıktısı). Ana montajın BOM'u (`tasarim/freecad/montaj/robot-bom.csv`, `Baski` satırları) aynı 72 parçayı sayıyor.",
-      "Yazıcı: Bambu Lab X2D (246 × 246 × 250 mm); **72 parçanın hepsi X2D'ye ve okul tablasına (250³) sığıyor** (en büyük ölçü 235 mm, göğüs",
-      "bandı yüksekliği; analizlerdeki `sigar` ve baskı yönündeki ölçü). **14 adet destekli** basılır: omuzda omuz yuvası, omuz göbeği, kol çatalı,",
-      "S1 kablo tamburu (ikişer); kafa kabuğunun sağ ön (yüz kabuğu sağ) ve sağ arka parçası (karar 29.10: dikiş dili); göğüs bandı sağ ve sol",
-      "(cep üst kenarı); göğüs ekranı VESA taşıyıcı (arka flanş); üst arka servis kapağı (hub takozlu, analiz destek istiyor, aşağıda not). Diğer 58 parça desteksiz.",
+      "JSON anahtarı, toplamlar, betik çıktısı, tek analizde her parça bir kez). Ana montajın BOM'u (`tasarim/freecad/montaj/robot-bom.csv`, `Baski` satırları) aynı %d parçayı sayıyor." % L["adet"],
+      "Yazıcı: Bambu Lab X2D (246 × 246 × 250 mm); **%d parçanın hepsi X2D'ye sığıyor** (tek analiz `x2d_sigar`; en büyük ölçü %s mm, göğüs" % (L["adet"], f(max(max(r["olcu_baski"]) for r in ROWS), 1)),
+      "bandı yüksekliği). **%d adet destekli** basılır (%d tür): %s. Diğer %d parça desteksiz. Filament ve süreye destek malzemesi dahil" % (D_ADET, len(DESTEKLI), _adlar(DESTEKLI), L["adet"] - D_ADET),
+      "(toplam %s g, tahmini: destek hacmi × 0,15 × 1,27 g/cm³; dilimleyicinin verdiği esastır)." % ar(D_G, 0),
       "", "## 158 cm güncellemesi", ""]   # yamali betik bu bolumu yeniden yazar
 
-s += ["## 03.11 → 09.11 farkı", "",
+s += ["## F6b farkı: tek baskı analizi (09.11.2026, P6.2)", "",
+      "Önce = F6a sonu (`%s:planlama/y2/Y2b-baski.json`; modül analizleri + omuz-baski), sonra = `baski-analiz.json`. Satır başına adet × g;" % ONCE_REF,
+      "yalnız fark ≥ 1 g ya da destek var/yok değişen satırlar. Nedenler `planlama/d158/F6b-gunluk.md` §3.", "",
+      "| Parça | Adet | Önce (g) | Sonra (g) | Destek (g, sonra) | Destek önce → sonra |", "|---|---|---|---|---|---|"]
+for r in ROWS:
+    o = ONCE_S[(r["modul"], r["ad"])]
+    dg = [r["adet"] * (r["g"][i] - o["g"][i]) for i in (0, 1)]
+    if max(abs(x) for x in dg) >= 1.0 or o["desteksiz"] == r["destekli"]:
+        s.append("| %s %s | %d | %s | %s | %s | %s → %s |" % (r["modul"], r["ad_tr"], r["adet"], ar([r["adet"] * x for x in o["g"]], 1), ar([r["adet"] * x for x in r["g"]], 1),
+                                                         ar([r["adet"] * x for x in r["destek_g"]], 1), "yok" if o["desteksiz"] else "var", "var" if r["destekli"] else "yok"))
+s += ["| **Toplam (72 parça)** | **%d** | **%s** | **%s** | **%s** | %d → %d adet destekli |" % (YT["adet"], ar(OT["g"], 1), ar(YT["g"], 1), ar(YT["destek_g"], 1),
+                                                                                             sum(x["adet"] for x in ONCE["satirlar"] if not x["desteksiz"]), D_ADET),
+      "", "| Toplam | Önce (F6a) | Sonra (F6b) | Fark |", "|---|---|---|---|",
+      "| Adet | %d | %d | %d |" % (OT["adet"], YT["adet"], YT["adet"] - OT["adet"]),
+      "| Filament | %s kg | %s kg | %s / %s g |" % (ar(OT["g"], 2, 1000), ar(YT["g"], 2, 1000), FP.isaretli(YT["g"][0] - OT["g"][0], 1), FP.isaretli(YT["g"][1] - OT["g"][1], 1)),
+      "| PETG | %s kg | %s kg | %s / %s g |" % (ar(OT["petg_g"], 2, 1000), ar(YT["petg_g"], 2, 1000), FP.isaretli(YT["petg_g"][0] - OT["petg_g"][0], 1), FP.isaretli(YT["petg_g"][1] - OT["petg_g"][1], 1)),
+      "| PETG-CF | %s kg | %s kg | %s / %s g |" % (ar(OT["cf_g"], 2, 1000), ar(YT["cf_g"], 2, 1000), FP.isaretli(YT["cf_g"][0] - OT["cf_g"][0], 1), FP.isaretli(YT["cf_g"][1] - OT["cf_g"][1], 1)),
+      "| Süre | %s sa | %s sa | %s / %s sa |" % (ar(OT["sa"], 1), ar(YT["sa"], 1), FP.isaretli(YT["sa"][0] - OT["sa"][0], 2), FP.isaretli(YT["sa"][1] - OT["sa"][1], 2)),
+      ""]
+
+s += ["## 03.11 → 09.11 farkı (F4c)", "",
       "| Değişiklik | Parça | Adet | Filament | Süre | Neden ve kaynak |", "|---|---|---|---|---|---|",
       "| Yeni | Hoparlör kabı ön halka, hoparlör kabı arka (flanşlı) | +2 | +10 g | +0,3 sa | 05.11 B + R1 ses yerleşimi (`d26c7e7`); `kabuk/baski[31]`, `[32]` |",
       "| Yeni | Hoparlör kelepçesi | +1 | +5 g | +0,1 sa | F1a P1.7 arka tutucu (`76a5701`); `kabuk/baski[33]` |",
@@ -84,8 +119,8 @@ s += ["| **Parçalar** | **%s kg** | **%s kg** |" % (kg(L["petg_g"]), kg(L["cf_g
       "| Parti 0 kuponları | %s kg | %s kg |" % (kg(k0["petg_g"]), kg(k0["cf_g"])),
       "| **Parça + kupon** | **%s kg** | **%s kg** |" % (kg([L["petg_g"][0] + k0["petg_g"][0], L["petg_g"][1] + k0["petg_g"][1]]), kg([cf_alt, cf_ust])), "",
       "Parti ayrıntısı, bağımlılıklar, montaj adımı ve takvim kontrolü: `planlama/d158/F4c-partiler.md`.", "",
-      "**Filament:** parçalar net **düz PETG %s kg** + **PETG-CF %s kg** (`Y2b-baski.json`; omuz doluluğu 0,8–0,9, omuz desteği dahil;" % (kg(L["petg_g"]), kg(L["cf_g"])),
-      "kabuk ve kafa satırlarında destek malzemesi sayılmadı; VESA taşıyıcının 28 destekli katmanı da). Kuponlar (Parti 0) PETG %s kg, PETG-CF %s kg." % (kg(k0["petg_g"]), kg(k0["cf_g"])),
+      "**Filament:** parçalar **düz PETG %s kg** + **PETG-CF %s kg** (`Y2b-baski.json`; omuz doluluğu 0,8–0,9; bütün satırlarda destek dahil," % (kg(L["petg_g"]), kg(L["cf_g"])),
+      "toplam %s g, F6b). Kuponlar (Parti 0) PETG %s kg, PETG-CF %s kg." % (ar(D_G, 0), kg(k0["petg_g"]), kg(k0["cf_g"])),
       "Plan: **9 makara beyaz PETG + 1,5 kg siyah PETG-CF (3 × 0,5 kg)** (`planlama/maliyet.json` `kalemler[107–109]`).",
       "- **PETG yetiyor:** parça + kupon %s kg, 9 kg'de ≈ %s kg pay (≈ %%%s)." % (kg([L["petg_g"][0] + k0["petg_g"][0], L["petg_g"][1] + k0["petg_g"][1]]),
                                                                               ar([9000 - L["petg_g"][1] - k0["petg_g"][1], 9000 - L["petg_g"][0] - k0["petg_g"][0]], 1, 1000),
@@ -125,10 +160,12 @@ s += ["## Renk (Ahmet, 11 Ekim 2026: \"Tamamen beyaz\")", "", "| Renk | Parçala
       "malzemeyle basılmalı.**", "",
       "**Destekli kafa kabuğu (karar 29.10):** yüz kabuğu (ön) sağ ve arka kafa kabuğu sağ, x = 0 dikiş dilinde (16 mm şerit, iç yarı duvar)",
       "yüzü tablada baskıda ~1,25 mm yükseklikte konsol bırakıyor. Dilimleyicide yalnız bu bölgelere destek (\"support on build plate only\"",
-      "yeterli değilse boyalı destek); destek dil yüzünden temizlenmeli, dil 1,3 mm et.", "",
-      "**Üst arka servis kapağı (hub takozlu):** analiz (`kabuk/baski[13]`) z 2,5'te 197 cm² destek istiyor (156 mm boy). 3 mm plakanın iç",
-      "yüzüne yapışık takozun dış yüzü tablada basılırken destek istemesi beklenmez; neden incelenmedi (FreeCAD gerekiyor), dilimleyicide",
-      "bakılmalı ve P6.1'de kesitle doğrulanmalı (`planlama/d158/F4c-gunluk.md`). Listede analizdeki gibi \"destekli\".", "",
+      "yeterli değilse boyalı destek); destek dil yüzünden temizlenmeli, dil 1,3 mm et. F6b tek analizi aynı iki parçayı buldu, yalnız dikiş",
+      "dilinde (x ≈ −8, tabladan 1,2–2,3 mm; yüz sağ 12,3 cm², arka sağ 30,6 cm², ikisi birlikte ≈ 1,3 g destek; `baski-analiz.json` `destek_bolge`).", "",
+      "**Üst arka servis kapağı (hub takozlu): desteksiz.** F4c'deki \"z 2,5'te 197 cm²\" (`kabuk-analiz.json` `baski[13]`) kesit hatasıydı: kapak",
+      "baskı yönüne 2,27° eğik, flanşın üst yüzü tabladan 1,4988 mm'de; eski yöntemin z 1,5 kesiti bu yüze 1,2 µm yakın düşüp ters normalli yüz",
+      "verdi ve bir sonraki katmanın tamamı desteksiz sayıldı. Aynı iki katmanın gerçek farkı 5,01 mm² (45° payının içinde). Tek analiz: destek 0.",
+      "Kanıt `baski-analiz.json` `kapak_tani`, `planlama/d158/F6b-gunluk.md` §2.", "",
       "**Süre:** ≈ %s saat; yazıcı hiç durmazsa ≈ %s gün. Paylaşımlı okul yazıcısında haftada 32–40 sa ile ≈ %s hafta (tahmini). Parti 1 hemen başlamalı."
       % (ar(L["sa"], 0), f(L["sa"][1] / 24, 1), ar([L["sa"][0] / 40, L["sa"][1] / 32], 1)), ""]
 
@@ -170,12 +207,12 @@ s += ["",
       "Omuz STL'leri (`tasarim/freecad/omuz/stl/`, 09.11 F2 koşusu; `omuz-gobegi.stl` dişli) ve kuponlar (`tasarim/freecad/test/stl/`) var. Diğer",
       "modüllerin baskı parçaları kupon sonucundan sonra FreeCAD'den toplu dışa aktarılmalı (açık iş; P6.1'de modüller yeniden üretilirken).", "",
       "## Parti tabloları", "",
-      "Sütunlar: ölçü analizdeki baskı yönündeki kutu (mm; omuzda `omuz-analiz.json` `baski.olcu`), filament ve süre adet başına (omuz satırlarında aralık",
-      "doluluk 0,8–0,9, destek dahil). Malzeme `Y2b-baski.py` CF kümesinden. Kaynak: `<modül>/baski[i]` = `tasarim/freecad/<modül>/<modül>-analiz.json`",
-      "→ `baski[i]`; `omuz-baski/parcalar[i]` = `tasarim/freecad/omuz/omuz-baski.json` → `parcalar[i]` (yön `secilen_yon`); `Y2b[i]` =",
-      "`planlama/y2/Y2b-baski.json` → `satirlar[i]`. X2D: analizdeki `sigar` ve ölçü ≤ 246 × 246 × 250. Montaj adımları `F4c-partiler.md`'de.",
-      "**Eski analiz:** yok. Beş kaynağın hepsi son geometriden (taban, kabuk, omuz, dirsek 09.11; kafa 05.11, F1a'nın 08.11 kaynak değişikliği",
-      "geometriyi değiştirmedi: `F1a-kontrol.md` P1.3). Ayrıntı `planlama/d158/F4c-gunluk.md`.", ""]
+      "Sütunlar: ölçü tek analizdeki baskı yönündeki kutu (mm), filament ve süre adet başına, destek dahil (omuz PETG-CF satırlarında aralık doluluk",
+      "0,8–0,9). Malzeme `Y2b-baski.py` CF kümesinden. Destek sütununda alan ve destek filamenti (`baski-analiz.json` `destek_alan_mm2`, `destek_g`).",
+      "Kaynak: `baski-analiz/parcalar[i]` = `tasarim/freecad/lale158/baski-analiz.json` → `parcalar[i]` (yön, destek bölgeleri, en az destekli aday yön,",
+      "FCStd nesnesi); `Y2b[i]` = `planlama/y2/Y2b-baski.json` → `satirlar[i]`. X2D: tek analizdeki `x2d_sigar` ve ölçü ≤ 246 × 246 × 250.",
+      "Montaj adımları `F4c-partiler.md`'de. **Eski analiz:** yok; tek analiz %s tarihli, geometri her modülün `*_parcalar.py`'sinden yeniden" % BA["tarih"],
+      "üretildi ve FCStd'lerle hacimce eşit (`kaynak.hacim_esit`; eşit olmayan: %s). Ayrıntı `planlama/d158/F6b-gunluk.md`." % (", ".join(BA["toplam"]["fcstd_hacim_esit_degil"]) or "yok"), ""]
 
 for k in ("1", "2", "3", "4"):
     p = P["partiler"][k]

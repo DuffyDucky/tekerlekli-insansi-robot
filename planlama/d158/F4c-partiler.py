@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """F4c (P8.2): baski partileri Parti 0-4. Yalniz okur, FreeCAD istemez.
-Girdi: planlama/y2/Y2b-baski.json (parca satirlari, parti alani `Y2b-baski.py` parti()), modul analizleri (kaynak anahtari, X2D),
-tasarim/freecad/omuz/omuz-baski.json (omuz yonu), tasarim/freecad/test/ (kupon STL hacmi, m7-kupon-sonuc.json).
+Girdi: planlama/y2/Y2b-baski.json (parca satirlari, parti alani `Y2b-baski.py` parti()), tasarim/freecad/lale158/baski-analiz.json
+(F6b tek baski analizi: kaynak anahtari, yon, X2D, destek), tasarim/freecad/test/ (kupon STL hacmi, m7-kupon-sonuc.json).
 Cikti: planlama/d158/F4c-partiler.json ve F4c-partiler.md.      py -3 planlama/d158/F4c-partiler.py
 Parti numaralari Y2b ile ayni (baski-listesi.md Ozet'i ile tutarli olsun diye); "basim sirasi" notlari (aku takozu one alinir) ayri.
 """
@@ -11,6 +11,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 KOK = os.path.normpath(os.path.join(HERE, "..", ".."))
 FC = os.path.join(KOK, "tasarim", "freecad")
 Y2B = os.path.join(KOK, "planlama", "y2", "Y2b-baski.json")
+BA = os.path.join(FC, "lale158", "baski-analiz.json")
 X2D = (246.0, 246.0, 250.0)          # Bambu Lab X2D tabla (baski-listesi.md); olcu analizdeki baski yonunde
 RHO, HIZ, PAY = 1.27, 10.0, 1.3       # kupon suresi: test/README.md yontemi (g/cm3, mm3/s, hareket payi)
 
@@ -89,16 +90,23 @@ META = {
     "S1 kablo tamburu": ("Göbekle birlikte", "37 (G0)"), "Kol catali": ("S2 horn delik dizilimi", "40 (G3)"),
     "Ust kol tupu": ("Kupon E (tüp–pim geçmesi)", "40 (G3)"),
 }
-# destek notu (kaynak: analiz destek_sorun / omuz-baski; 03.11 listesindeki tarifler)
-DESTEK = {
-    "Gogus bandi sag": "cep üst kenarı, köprü 158 mm", "Gogus bandi sol": "cep üst kenarı, köprü 146 mm",
-    "Ust arka servis kapagi": "analizde z 2,5'te 197 cm², nedeni açık (günlük)",
-    "Gogus ekrani VESA tasiyici": "arka flanş (28 katman)",
-    "Yuz kabugu (on) sag": "dikiş dili (16 mm şerit, ~1,25 mm konsol; karar 29.10)",
-    "Arka kafa kabugu sag": "dikiş dili (16 mm şerit, ~1,25 mm konsol; karar 29.10)",
-    "Omuz yuvasi": "manşon içi + S1 penceresi", "Omuz gobegi": "flanş altı + diş (5,7 g)",
+# destek notu: alan ve g baski-analiz.json'dan (F6b); TARIF yalniz bolgenin elle yazilmis tarifi (bolge merkezleri JSON destek_bolge)
+TARIF = {
+    "Gogus bandi sag": "cep üst kenarı (köprü 160 mm) + z 12–15'te alt kenar çıkıntısı", "Gogus bandi sol": "cep üst kenarı (köprü 148 mm)",
+    "Gogus ekrani VESA tasiyici": "arka flanş (z 32–58)",
+    "Yuz kabugu (on) sag": "dikiş dili (karar 29.10)", "Arka kafa kabugu sag": "dikiş dili (karar 29.10)",
+    "Omuz yuvasi": "manşon içi + S1 penceresi", "Omuz gobegi": "flanş altı + diş",
     "S1 kablo tamburu": "+x dudak altı", "Kol catali": "horn kulağı",
 }
+
+
+def destek_notu(s):
+    if s["desteksiz"]:
+        return ""
+    t = "%s cm², %s g" % (f(s["destek_alan_mm2"] / 100.0, 1), aralik(s["destek_g"], 1))
+    return t + ("; " + TARIF[s["ad"]] if s["ad"] in TARIF else "")
+
+
 PARTI = {
     0: dict(ad="Tolerans kuponları", ne_zaman="İlk gün (S'den önce)",
             bagimlilik="Kupon STL'leri hazır. Değerlendirme için 6808-2RS, 625ZZ, M3/M5 ısıl gömme somun ve kupon D vidaları elde (K29 erken alım; K31 insert varyantı)",
@@ -170,16 +178,10 @@ def kuponlar():
 
 
 def kaynaklar():
-    """(modul, ad) -> (kaynak anahtari, sigar, baski yonundeki olcu)"""
+    """(modul, ad) -> (kaynak anahtari, sigar, baski yonundeki olcu, yon) -- tek analiz baski-analiz.json (F6b)"""
     d = {}
-    for mod in ("taban", "kabuk", "kafa", "dirsek"):
-        for i, p in enumerate(json.load(open(os.path.join(FC, mod, mod + "-analiz.json"), encoding="utf-8"))["baski"]):
-            d[(mod, p["ad"])] = ("%s/baski[%d]" % (mod, i), bool(p.get("sigar")), p["olcu"], p.get("yon"))
-    ob = json.load(open(os.path.join(FC, "omuz", "omuz-baski.json"), encoding="utf-8"))
-    for i, p in enumerate(ob["parcalar"]):
-        y = p["yonler"][p["secilen_yon"]]
-        ty = re.sub(r"(\d)\.(\d)", r"\1,\2", re.sub(r"\.0\b", "", y["tabla_yuzu"].split(" (")[0]))
-        d[("omuz", p["ad"])] = ("omuz-baski/parcalar[%d]" % i, bool(y.get("sigar")), y["olcu"], "%s: %s" % (p["secilen_yon"], ty))
+    for i, p in enumerate(json.load(open(BA, encoding="utf-8"))["parcalar"]):
+        d[(p["modul"], p["ad"])] = ("baski-analiz/parcalar[%d]" % i, bool(p["x2d_sigar"]), p["olcu"], p["yon"])
     return d
 
 
@@ -195,8 +197,8 @@ def satirlar():
         key, sigar, olcu_b, yon = K[(s["modul"], s["ad"])]
         bagli, adim = META[s["ad"]]
         out.append(dict(y2b=i, modul=s["modul"], ad=s["ad"], ad_tr=trk(s["ad"]), adet=s["adet"], olcu=s["olcu"], g=s["g"], sa=s["sa"],
-                        malzeme="PETG-CF" if s["cf"] else "PETG", destekli=not s["desteksiz"], destek_not=DESTEK.get(s["ad"], ""),
-                        yon=trk(yon or s.get("yon") or ""), kaynak=key, x2d=bool(sigar and x2d_sigar(olcu_b)), olcu_baski=olcu_b,
+                        malzeme="PETG-CF" if s["cf"] else "PETG", destekli=not s["desteksiz"], destek_not=destek_notu(s),
+                        destek_g=s["destek_g"], yon=trk(yon or s.get("yon") or ""), kaynak=key, x2d=bool(sigar and x2d_sigar(olcu_b)), olcu_baski=olcu_b,
                         parti=s["parti"], bagli=bagli, montaj_adimi=adim, basim_notu=ONE_AL.get(s["ad"], "") or (SONA_NOT if s["ad"] in SONA else "")))
     return Y, out
 
@@ -253,7 +255,7 @@ def main():
                                   for k in (1, 2, 3, 4)),
                    her_parca_bir_partide=sorted(r["y2b"] for k in (1, 2, 3, 4) for r in P[k]["parcalar"]) == list(range(len(Y["satirlar"]))))
     tk = {"32": takvim(P, 32.0), "40": takvim(P, 40.0), "plan_A": {1: 1.5, 2: 2.3, 3: 2.8, 4: 4.5}}
-    out = dict(tarih="2026-11-09", kaynak="planlama/y2/Y2b-baski.json (Y2b-baski.py); parti alanı Y2b parti()", partiler={str(k): P[k] for k in (0, 1, 2, 3, 4)},
+    out = dict(tarih="2026-11-09", kaynak="planlama/y2/Y2b-baski.json (Y2b-baski.py ← tasarim/freecad/lale158/baski-analiz.json, F6b tek analiz); parti alanı Y2b parti()", partiler={str(k): P[k] for k in (0, 1, 2, 3, 4)},
                liste_toplam=liste, y2b_toplam={k: y2[k] for k in ("adet", "g", "sa", "petg_g", "cf_g")}, kontrol=kontrol,
                takvim_hafta_sonu=tk, takvim_not="S'ye göre hafta; tek yazıcı; Parti 2 en erken S+1; akü takozu (1,5 sa) Parti 1 arasında")
     json.dump(out, open(os.path.join(HERE, "F4c-partiler.json"), "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
@@ -273,7 +275,7 @@ def md(o):
     L = o["liste_toplam"]
     k0 = P[0]["toplam"]
     s = ["# F4c baskı partileri (Parti 0–4) — 09.11.2026", "",
-         "Üreten: `py -3 planlama/d158/F4c-partiler.py` (bu dosya ve `F4c-partiler.json`). Parça satırları `planlama/y2/Y2b-baski.json`'dan,",
+         "Üreten: `py -3 planlama/d158/F4c-partiler.py` (bu dosya ve `F4c-partiler.json`). Parça satırları `planlama/y2/Y2b-baski.json`'dan (o da F6b tek analizi `tasarim/freecad/lale158/baski-analiz.json`'dan; destek filamenti dahil),",
          "parti numaraları `Y2b-baski.py` `parti()` ile aynı (yani `planlama/baski-listesi.md` Özet'i ile aynı). Bağımlılık ve montaj adımı sütunları",
          "elle (`F4c-partiler.py` `META`); montaj adımları `planlama/adim4/M6-montaj-sirasi.md` §2 (125 cm tablosu; 1,58 m'de göğüs ekranı,",
          "QLED, uzatma bandı, hoparlör ve hub adımları henüz yok). Toplamların doğrulaması: `py -3 planlama/d158/F4c-dogrula.py`.", "",
