@@ -50,10 +50,15 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K35 | Onaylı olmayan satıcılar (6.063,11 TL) hocaya nasıl | **açık** (F8a) | Kayıtta yok | P8.1 liste biçimi, K29 |
 | K36 | 8 Ω hoparlör (PAKET A) stok 1 < 3 | **açık** (F8a) | Kayıtta yok | PAKET A siparişi |
 | K37 | Kamera Module 3 tükendi | **açık** (F8a) | a: S'de yeniden bak | Görüntü (ikinci aşama) |
+| K38 | S2 alt bölge hız sınırı ve kapanma sırası | **açık** (F2) | a: S2 < 20°'de ≤ 60°/s (yüklü ≤ 30°/s); kapanmada S2 ≤ 15° | `kod/` hareket planlayıcısı, kapanma |
+| K39 | Omuz durdurucu güçlendirme | **açık** (F2) | d: kök yarıçapı (P6.1) + DS3235 düşme ölçümü, sonra gerekirse | P6.1, ölçüm kâğıdı, K38 |
+| K40 | S2 sıfır kalibrasyonu ve sınır metni (`yana_alt_bosluk_mm`) | **açık** (F2) | a: horn dişe dayalı takılır; metin P6.1'de | P6.1, P7.1, `eklem_sinirlari.json` |
+| K41 | S1 yazılım aralığı: kod 0…160 ↔ CAD −45…135 | **açık** (F2 + F5) | a: kod −45…135 | `kod/` eklem sınırları, P5.1 |
 
-**Açık: 32** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 37 madde.
+**Açık: 36** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 41 madde.
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
+P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
 
 ---
 
@@ -538,6 +543,80 @@ erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan
   değil (`proje-plani.md:138`; görüntü projenin ikinci aşaması).
 - **Önerilen varsayılan:** a (`F8a-siparis.md` §9 madde 14). Yalnız öneri.
 - **Bloke:** görüntü işleri (ikinci aşama); kritik yolu bloke etmiyor.
+- **Durum:** açık.
+
+<!-- K38–K41: P2.1 omuz durdurucu (F2, 09.11.2026), kaynak `planlama/d158/F2-gunluk.md` "Karar taslakları" KT-F2-1…4, metinler B'nin
+düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yorum"). -->
+
+## K38 · S2 alt bölge hız sınırı ve kapanma sırası (KT-F2-1)
+- **Soru:** Omuz durdurucu dişi (S2 4,30°) stall'u karşılıyor ama hızlı çarpma ve güç kesik düşmede emniyeti varsayıma bağlı. Yazılım S2'nin alt
+  bölgesinde hızı sınırlasın mı, kapanmadan önce kolları indirsin mi?
+- **Seçenekler:**
+  a) B'nin önerisi: S2 < 20° bölgesinde açısal hız ölçüm gelene kadar ≤ 60°/s (elde yük varsa ≤ 30°/s); güç kesilmeden önce iki kol S2 ≤ 15°'ye
+     indirilir.
+  b) A'nın taslağı: ≤ 100°/s yüksüz, ≤ 50°/s yüklü (emniyet 2 hedefiyle; B-2 yüzünden sağlam değil).
+  c) Sınır yok; durdurucuya ve acil stoptaki düşmeye güvenilir.
+- **Sayısal etki:** diş emniyeti (`F2-gunluk.md` darbe tablosu; B aralıkları `F2-kontrol.md` B-2): stall 3,73; 1,5 rad/s yüksüz 2,24 (varsayıma göre
+  1,22…2,57; kök köşesi hesapta yok); 1,5 rad/s 500 g 1,32 (0,67…1,55); kaçak servo tam hız 0,54; S2 30°'den güç kesik düşme 1,48 (0,69…1,78).
+  Darbe kuvvetinin ~%88'i S2 mafsalına (horn/servo mili + 625ZZ) radyal gider; rotorun yansıyan eylemsizliği 1,5 rad/s'de dişliye stall'ın
+  1,4…2,1 katı yük bindirir (B-1).
+- **Önerilen varsayılan:** a. "K38 · S2 alt bölge hız sınırı: S2 < 20° bölgesinde açısal hız ölçüm gelene kadar ≤ 60°/s (elde yük varsa ≤ 30°/s).
+  Güç kesilmeden önce iki kol S2 ≤ 15°'ye indirilir. Acil durdurmada kolun yüksekten düşebileceği kabul edilir; diş kırılırsa kol tambura ve
+  kaset kapağına (3,65° / 3,21°) dayanır. Sahibi `kod/`; CAD değişmez. Gerekçe: F2-gunluk darbe tablosu ve F2-kontrol B-1/B-2." Yalnız öneri.
+- **Bloke:** `kod/` hareket planlayıcısı ve kapanma betiği (Efe'nin alanı; panoya yalnız bilgi/soru); K39 ölçümü sınırı gevşetebilir.
+- **Durum:** açık.
+
+## K39 · Durdurucu güçlendirme (KT-F2-2)
+- **Soru:** Diş, kaçak servo ve yüksekten güç kesik düşmede tek başına yetmiyor (emniyet < 1). Durdurucu güçlendirilsin mi, nasıl?
+- **Seçenekler:**
+  a) Dişe TPU (Shore 95A) ped 1–1,5 mm: tepe kuvvet ~√k ile azalır; 3,65…5° penceresi ~0,37 mm boşluk bıraktığı için yalnız c ile birlikte.
+  b) Metal diş (ör. 3 mm alüminyum köşebent, 2 × M3): dayanım ×4 civarı, parça sayısı +3.
+  c) S2 yazılım alt sınırı 5 → 8°: pencere 3,65…8° (≈ 2,3 mm), ped ve kalın diş sığar; `eklem_sinirlari.json` ve ev pozu değişir (kollar 3° daha açık).
+  d) Önce en ucuz adım: kök yarıçapı + ölçüm, sonra gerekirse a/b/c.
+- **Sayısal etki:** diş kökü t 5,67 mm, izin 20,6 MPa (sürekli) / 45,7 MPa (darbe); kök +x iç köşesi 90° keskin, 1,5…2 kat gerilme yığılmasıyla
+  1,5 rad/s yüksüz emniyet ≈ 1,1…1,5 (`F2-kontrol.md` B-2). Kiriş 4,3°'de y ≈ −29'un altında, köşe y −23'te: yarıçap için ≈ 4 mm yer var.
+- **Önerilen varsayılan:** d. "K39 · Durdurucu güçlendirme: (1) dişin kök +x iç köşesine ≥ 1,5 mm yarıçap/pah (sonraki taramalı pakette, P6.1).
+  (2) Bir DS3235 ile ölçüm: güç kesikken S2 30 / 60 / 90°'den bırakılıp düşme süresi ölçülür. Bu ölçüm geri sürme sürtünmesini ve gerçek darbe
+  enerjisini verir. Mümkünse rotor eylemsizliği de tahmin edilir. (3) Ölçüm emniyet < 1,5 gösterirse (b) S2 alt sınırı 5 → 8° ve TPU ped, ya da
+  (c) metal diş. (b) seçilirse `eklem_sinirlari.json` ve ev pozu değişir." (Alıntıdaki (b)/(c) B'nin harflemesi: (b) = bu maddede c + a,
+  (c) = bu maddede b.) Yalnız öneri.
+- **Bloke:** P6.1 (kök yarıçapı `omuz_parcalar.py`'de; zaten plana yazıldı), P8.3 benzeri ölçüm kâğıdı (DS3235 gelince), K38'in gevşetilmesi.
+- **Durum:** açık.
+
+## K40 · S2 sıfır kalibrasyonu ve sınır metni (KT-F2-3)
+- **Soru:** S2 horn'u durdurucuya göre mi takılsın; `arayuz.py`'deki eski "kabuk −3°" tablosu ve `eklem_sinirlari.json` metni F2 ölçümüyle
+  güncellensin mi?
+- **Seçenekler:**
+  a) Kalibrasyon dişe göre + sınır metni P6.1'de güncellenir (B'nin önerisi).
+  b) Yalnız kalibrasyon talimatı değişir; `yana_alt_bosluk_mm` olduğu gibi kalır.
+  c) Mevcut talimat (OR:114 "S2'yi 30° konumuna getir, horn'u tak") kalır.
+- **Sayısal etki:** sıfır hatası > 0,7° olursa S2 5 komutunda kol dişe dayanır ve servo sürekli stall'da kalır (98 N; diş emniyeti 3,73, servo
+  ısınır). Tolerans: baskı ±0,2 mm ≈ ±0,38°, 500 g ile 1,5 rad/s çarpmada çatal sapması 0,47°; toplam 0,85° tambur payını (0,65°) aşabiliyor
+  (`F2-kontrol.md` B-5). **`yana_alt_bosluk_mm` / `eklem_sinirlari.json` notu:** `tasarim/freecad/arayuz.py:178` hâlâ
+  `yana_alt_bosluk_mm={0: 4.7, -2: 0.6, -3: 0.0}` diyor; `eklem_sinirlari()` (`arayuz.py:772-774`) bunu "5'te 0,77 mm; kabuk boşluğu 0'da 4,7 mm,
+  −3'te temas" metniyle `kod/ortak/eklem_sinirlari.json`'a (`:20`, `:61`) yazıyor. Bugünkü 158 modelinde: S1 kaset kapağı teması 3,21°, tambur
+  3,65°, mekanik durdurucu 4,30°, 5°'te dişe 0,344 mm. Yazılım tarafı eski metni "5°'in altında 8° pay var" diye okuyabilir (B-3).
+- **Önerilen varsayılan:** a. "K40 · S2 kalibrasyonu ve sınır metni: Horn kol dişe dayalıyken (S2 = 4,3°) takılır. S2 5 komutunda dişle 0,3 mm
+  sentil geçmeli, 0,4 geçmemeli; geçmiyorsa diş yüzü zımparalanır. Aynı adımda `arayuz.OMUZ['yana_alt_bosluk_mm']` ve `eklem_sinirlari()` 'neden'
+  metni F2 ölçümüyle güncellenir (kaset 3,21°, tambur 3,65°, durdurucu 4,3°, 5°'te dişe 0,344 mm). `kod/ortak/eklem_sinirlari.json` sahibi
+  yeniden üretir. `arayuz.py` değiştiği için bu, taramalı bir pakette yapılır." Yalnız öneri.
+- **Bloke:** P6.1 (`arayuz.py:178` ve üreteç; zaten plana yazıldı), P7.1 montaj rehberi (S2 horn adımı ve sentil kontrolü), Efe'ye bilgi (`kod/`).
+- **Durum:** açık.
+
+## K41 · S1 yazılım aralığı: kod 0…160 ↔ CAD −45…135 (KT-F2-4 + F5 Ç2)
+- **Soru:** Kodda omuz öne-arka (S1) 0…160 (`planlama/d158/servo-10-oneri.md:29, 81` Ç2), CAD ve `eklem_sinirlari.json` −45…135. Kod sınırı
+  CAD'e çekilsin mi; S1 için mekanik durdurucu gerekli mi?
+- **Seçenekler:**
+  a) Kod S1 aralığı −45…135 (CAD ile aynı); mekanik durdurucu yok.
+  b) a + S1 mekanik durdurucusu için ayrı tasarım paketi (kaset U'su yerine yük taşıyan pim/omuz).
+  c) Kod 0…160 kalır.
+- **Sayısal etki:** omuz parçaları hiçbir S1 açısında çarpışmıyor (S1 180→330 ve −60→−210, S2 5…120: temas yok; `F2-gunluk.md` S1 bölümü).
+  Sınırı yalnız kablo U lopu belirliyor: U ucu ↔ cep teması S1 ≈ 140,2° (`planlama/adim2/S1-kaset.md` KZ1); c'de kod 160'a giderse ~20° aşar,
+  kablo kasete sıkışır (kol ↔ kabuk çarpışması yok). Kodda −45…0 da kullanılamıyor.
+- **Önerilen varsayılan:** a. "K41 · S1 yazılım aralığı: kod 0…160 → −45…135 (`eklem_sinirlari.json` zaten −45…135). Omuz parçaları hiçbir S1
+  açısında çarpışmıyor; sınırı yalnız kablo U lopu belirliyor (≈ 140,2°'de kasete sıkışır). S1 için mekanik durdurucu istenirse ayrı tasarım
+  paketi açılır. Sahibi `kod/`." F5 bulgusuyla tek karar. Yalnız öneri.
+- **Bloke:** `kod/` eklem sınırları (Efe'nin alanı; pano #6 Ç2 ile aynı konu), P5.1 satır 0 ve 2.
 - **Durum:** açık.
 
 ---

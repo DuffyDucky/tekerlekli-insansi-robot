@@ -39,8 +39,8 @@ tilt payı ≥ 3,0 (3,64); pan payı ≥ 2,0 (2,21); mikrofon-hoparlör ≥ 400 
 
 | Paket | Ajan | Yazdığı alan |
 |---|---|---|
-| F2 (P2.1, P2.2) | A | `tasarim/freecad/omuz/`, `arayuz.py` (yalnız omuz bloğu), `kabuk/` (durdurucu kabukta ise), `carpisma-bolum/omuz.json` + `carpisma-sonuc.json`, `planlama/d158/F2-*`, **FreeCAD makinesi** |
-| F8a (P8.1) | C kayıt (+ `maliyet.json`, `karar-kuyrugu.md`, README/proje-plani maliyet satırı, `F4b-brief.md` düzeltmesi) | yalnız yeni `planlama/d158/F8a-*`; web okuma (sipariş/hesap yok); FreeCAD yok; `maliyet.json`/`karar-kuyrugu.md`'ye yazmaz |
+| F2 (P2.1, P2.2) | C (commit + push + `F2-rapor.html` + karar kuyruğu K38–K41; kaynak dosyalara dokunmaz) |
+| F4c (P4.3, P8.2) | A | `planlama/baski-listesi.md`, `planlama/y2/Y2b-baski.json` (betikle), `planlama/d158/F4c-*`; FreeCAD yok, git yazma yok | `tasarim/freecad/omuz/`, `arayuz.py` (yalnız omuz bloğu), `kabuk/` (durdurucu kabukta ise), `carpisma-bolum/omuz.json` + `carpisma-sonuc.json`, `planlama/d158/F2-*`, **FreeCAD makinesi** |
 
 - **Tasarım sırası:** her adım öncekini bozmamalı; tam çakışma taraması yalnız P6'da, bir kez.
 - **Karar gereken yerde durma:** Ahmet'in kararını isteyen madde `planlama/d158/karar-kuyrugu.md`'ye yazılır
@@ -83,8 +83,8 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
-| P2.1 | Omuz mekanik durdurucu (S2 alt sınır +5° (`arayuz.py:176`, 18.10; C1 kararındaki +3° eski)): servo bozulsa kol kabuğa vurmasın | Durdurucuda temas, kabukta 0; baskı analizi geçer | F1 ile | 🔄 |
-| P2.2 | Omuz bölümü çakışma taraması (QLED + çerçeve sonrası hiç koşmadı, ~4,8 sa makine) + `omuz_regresyon`, `iskelet_regresyon` | `tek_kosu: true`, çakışma 0 | – (makine dolu) | 🔄 |
+| P2.1 | Omuz mekanik durdurucu (S2 alt sınır +5° (`arayuz.py:176`, 18.10; C1 kararındaki +3° eski)): servo bozulsa kol kabuğa vurmasın | Durdurucuda temas, kabukta 0; baskı analizi geçer | F1 ile | ✅ (diş 4,30°; kök yarıçapı P6.1'de) |
+| P2.2 | Omuz bölümü çakışma taraması (QLED + çerçeve sonrası hiç koşmadı, ~4,8 sa makine) + `omuz_regresyon`, `iskelet_regresyon` | `tek_kosu: true`, çakışma 0 | – (makine dolu) | ✅ (20261109-033441; omuz/iskelet referansları eski, P6.1) |
 
 ### Faz F3: Yük ve hareket sınırları
 
@@ -115,7 +115,7 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
-| P6.1 | Önce `kabuk_parcalar.py:733` yorumu `72 x 10 kopru` → `70 x 10 kopru` (F1a B; tarama kaynağı olduğu için burada); `kafa_lib.py:265`, `dirsek_lib.py:141`, `omuz_baski.py:201`, `uygulama_tani.py:30` sessiz katman atlama kalıbına P1.5 kesit kaydırması (F1b B); göğüs ekranı port girintisini kasa modeline geometri olarak ekle (ekran ölçülünce, hariç tutma kutusu kalkar); sonra bütün modüller yeniden üretilir → tam çakışma taraması (tek koşu) → `eklem_dogrulama`, `montaj_gorsel`, modül görselleri | Çakışma 0, `tek_kosu: true`, korunan değerler aynı | – (makine ~2–6 sa) | ⏳ |
+| P6.1 | Önce `kabuk_parcalar.py:733` yorumu `72 x 10 kopru` → `70 x 10 kopru` (F1a B; tarama kaynağı olduğu için burada); `kafa_lib.py:265`, `dirsek_lib.py:141`, `omuz_baski.py:201`, `uygulama_tani.py:30` sessiz katman atlama kalıbına P1.5 kesit kaydırması (F1b B); göğüs ekranı port girintisini kasa modeline geometri olarak ekle (ekran ölçülünce, hariç tutma kutusu kalkar); F2 B: omuz durdurucu dişinin kök iç köşesine ≥ 1,5 mm yarıçap/pah (`omuz_parcalar.py`), "horn/dişli yük almaz" yorumlarını "tork almaz, radyal yük S2 mafsalında" diye düzelt, `arayuz.py:178` `yana_alt_bosluk_mm` eski "−3° kabuk" değerini 158 modeline (tambur 3,65°, diş 4,30°) güncelle ve `eklem_sinirlari.json`'u yeniden üret (Efe'ye bilgi); omuz ve iskelet regresyon referanslarını yenile (karar sonrası); sonra bütün modüller yeniden üretilir → tam çakışma taraması (tek koşu) → `eklem_dogrulama`, `montaj_gorsel`, modül görselleri | Çakışma 0, `tek_kosu: true`, korunan değerler aynı | – (makine ~2–6 sa) | ⏳ |
 | P6.2 | Baskı analizi tüm parçalar; kapakta iki analizin uyuşmazlığı (19.667,7 mm² ↔ 5,01 mm²) çözülür | Tek analiz, tek sonuç | P6.1 sonrası | ⏳ |
 
 ### Faz F7: Montaj rehberi (eski Y5)
@@ -129,7 +129,7 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 
 | Kod | İş | Kabul ölçütü | Paralel | Durum |
 |---|---|---|---|---|
-| P8.1 | 158 için güncel sipariş paketi (`maliyet.json` 11 fiyatsız aday; 90° HDMI/micro USB adaptörleri yanlışlıkla "ses" grubunda): hocadaki listeyle fark, satıcı sayfası ve stok doğrulaması, her kalem için ikinci satıcı | Fark tablosu + toplam; doğrulanmayan kalem işaretli | F4 sonrası | 🔄 (P4.3 F2 bekliyor; durdurucu sonra eklenir) |
+| P8.1 | 158 için güncel sipariş paketi (`maliyet.json` 11 fiyatsız aday; 90° HDMI/micro USB adaptörleri yanlışlıkla "ses" grubunda): hocadaki listeyle fark, satıcı sayfası ve stok doğrulaması, her kalem için ikinci satıcı | Fark tablosu + toplam; doğrulanmayan kalem işaretli | F4 sonrası | ✅ (kararlar K27–K37 Ahmet'te) |
 | P8.2 | Baskı partileri (Parti 0–4): sıra, filament kg, süre, önce basılacak test kuponları | Partilerin toplamı baskı listesine eşit | P8.1 | ⏳ |
 | P8.3 | Ölçüm ve test kâğıtları (ekip yapacak): JGB37 durma torku, QLED Power–Touch VBUS (Pi'ye takmadan), kafa 5 V akımı, PAM akımı, hub girişi gerilimi, akustik (Ø3 delik, yankı, servo gürültüsü) | Her test: amaç, malzeme, adım, kayıt tablosu, geçer sınırı | F1 ile | ✅ |
 
@@ -158,6 +158,12 @@ Durum: ⏳ sırada · 🔄 çalışıyor · ✅ geçti · 🟡 koşullu geçti �
 | K9 | El yükü 0,5 kg için servo değişimi mi, 100 g sınırı mı | 100 g sınırı |
 
 ## 5. Günlük
+
+- 2026-11-09 F2 B: KOŞULLU GEÇER, kritik yok. Ölçüm bağımsız (temas 4,3003°, 5°'te 0,3436 mm, kol–kabuk en küçük 0,8309 mm), kontrol 0, regresyon --yazma 0, 34 dosya listesi birebir; "FARK VAR" eski referanslardan. Orta: (1) darbenin ~%88'i S2 mafsalına radyal (horn/rulman), yansıyan rotor ataleti dişliye stall'ın 1,4–2,1 katı; (2) emniyet varsayıma duyarlı (1,5 rad/s yüksüz 1,22–2,57), diş kökünde keskin iç köşe; (3) `arayuz.py:178` eski −3° değeri `eklem_sinirlari.json`'a gidiyor. **Orkestratör kararı:** düzeltme turu yok (kök yarıçapı omuz kaynağını değiştirir → 3,5 sa yeniden tarama); kök yarıçapı, yorumlar ve `yana_alt_bosluk_mm` P6.1'e eklendi (zaten tam tarama yapacak). C başladı: kaynak dosyalara dokunmadan commit, rapor emniyet ifadesi aralıkla, K38–K41.
+
+- 2026-11-09 F2 A bitti (P2.1 + P2.2): omuz göbeğine PETG-CF diş, temas S2 4,30° (S2 5°'te 0,344 mm boşluk; kol–kabuk 0, en küçük 0,831 mm). Durdurucusuz ilk temas kabuk değil S1 tamburu (3,65°). Darbe emniyeti: stall 3,73, yüksüz 1,5 rad/s 2,24, 500 g 1,32, kaçak tam hız 0,54, 30°'den düşme 1,48 (KT-F2-1/2). Tarama 20261109-033441 tek koşu, 9 bölüm rc 0, eskimiş 0, ev pozu 0, aralıkta 0; omuz 3 sa 25 dk, bellek en düşük 4,51 GB. regresyon.py 0 (rampa 1,519). Omuz/iskelet regresyon "FARK VAR" (eski referanslar, F2 kaynaklı değil iddiası). Karar taslakları KT-F2-1…4. B kontrolde.
+
+- 2026-11-09 **F8a ✅ (P8.1)** C: a35cab1, 76fd4b2 (maliyet.json V3 102.919,71 → 118.666,22; koşullu 124.573,11; elde düşülmüş 93.770,47), fbaa7ab, rapor 2879c86 push. Karar kuyruğu K27–K37 (açık 32 / 37). Sipariş verilmedi. P8.2 P4.3'ü, P4.3 F2'yi bekliyor.
 
 - 2026-11-09 F8a B yeniden kontrol: KOŞULLU → 6 kısa metin (T1-1…T1-6) C'de, sonra GEÇER. Toplamlar ve 6 sayfa bağımsız tutuyor. maliyet.json'a 18 öneri (8 koşullu: kafa ekranı Ahmet'e bağlı; 10 ret). C başladı.
 
