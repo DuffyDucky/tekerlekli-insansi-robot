@@ -156,7 +156,7 @@
   }
  ],
  "ev_pozu_cakisma": [],
- "ev_pozu_kesisen_cift": 819,
+ "ev_pozu_kesisen_cift": 821,
  "ev_pozu_poz": {
   "one_arka": 0.0,
   "yana": 5.0,
@@ -215,7 +215,7 @@
    "poz_sayisi": 875,
    "cakisan_poz": 116,
    "eklem_araliginda_cakisan": 0,
-   "kesisim_testi": 19808,
+   "kesisim_testi": 20299,
    "ortak_tarama": [],
    "aciklama": "omuz_montaj taramasi: one-arka -60...180, yana -20...150 (5-10 derece adim)",
    "en_kucuk_bosluk_mm": 0.0,
@@ -1454,7 +1454,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      3727.1
+      4134.8
      ],
      [
       "Ust kol tupu",
@@ -1528,7 +1528,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      1832.8
+      2151.1
      ],
      [
       "Ust kol tupu",
@@ -1596,7 +1596,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      358.5
+      507.8
      ],
      [
       "Ust kol tupu",
@@ -1758,7 +1758,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      5966.8
+      5878.1
      ]
     ],
     "(30, -15)": [
@@ -1838,7 +1838,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      5107.5
+      5188.5
      ],
      [
       "Ust kol tupu",
@@ -1924,7 +1924,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      3498.1
+      3693.9
      ],
      [
       "Ust kol tupu",
@@ -2086,7 +2086,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani cercevesi sag",
-      204.6
+      401.4
      ],
      [
       "Ust kol tupu",
@@ -2104,7 +2104,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      6833.8
+      6940.8
      ],
      [
       "Ust kol tupu",
@@ -2172,7 +2172,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani cercevesi sag",
-      144.1
+      328.5
      ],
      [
       "Ust kol tupu",
@@ -2190,7 +2190,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      6094.3
+      6061.2
      ],
      [
       "Ust kol tupu",
@@ -2258,7 +2258,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani cercevesi sag",
-      262.9
+      263.5
      ],
      [
       "Ust kol tupu",
@@ -2276,7 +2276,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      4174.6
+      3964.7
      ],
      [
       "Ust kol tupu",
@@ -2438,7 +2438,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      4238.3
+      3938.6
      ],
      [
       "Ust kol tupu",
@@ -2935,7 +2935,7 @@
    "poz_sayisi": 875,
    "cakisan_poz": 116,
    "eklem_araliginda_cakisan": 0,
-   "kesisim_testi": 19808,
+   "kesisim_testi": 20299,
    "ortak_tarama": [],
    "aciklama": "omuz_montaj taramasi: one-arka -60...180, yana -20...150 (5-10 derece adim)",
    "en_kucuk_bosluk_mm": 0.0,
@@ -4174,7 +4174,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      3727.1
+      4134.8
      ],
      [
       "Ust kol tupu",
@@ -4248,7 +4248,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      1832.8
+      2151.1
      ],
      [
       "Ust kol tupu",
@@ -4316,7 +4316,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      358.5
+      507.8
      ],
      [
       "Ust kol tupu",
@@ -4478,7 +4478,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      5966.8
+      5878.1
      ]
     ],
     "(30, -15)": [
@@ -4558,7 +4558,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      5107.5
+      5188.5
      ],
      [
       "Ust kol tupu",
@@ -4644,7 +4644,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      3498.1
+      3693.9
      ],
      [
       "Ust kol tupu",
@@ -4806,7 +4806,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani cercevesi sol",
-      204.6
+      401.4
      ],
      [
       "Ust kol tupu",
@@ -4824,7 +4824,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      6833.8
+      6940.8
      ],
      [
       "Ust kol tupu",
@@ -4892,7 +4892,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani cercevesi sol",
-      144.1
+      328.5
      ],
      [
       "Ust kol tupu",
@@ -4910,7 +4910,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      6094.3
+      6061.2
      ],
      [
       "Ust kol tupu",
@@ -4978,7 +4978,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani cercevesi sol",
-      262.9
+      263.5
      ],
      [
       "Ust kol tupu",
@@ -4996,7 +4996,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      4174.6
+      3964.7
      ],
      [
       "Ust kol tupu",
@@ -5158,7 +5158,7 @@
       "Ust kol tupu",
       "kabuk",
       "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-      4238.3
+      3938.6
      ],
      [
       "Ust kol tupu",
@@ -5724,8 +5724,8 @@
     "kaba": 2860,
     "ince": 0
    },
-   "aday": 196156,
-   "tam_olcum": 2156,
+   "aday": 197666,
+   "tam_olcum": 2164,
    "cakisan_tam_poz_aralikta": 0,
    "cakisan_tam_poz_aralik_disi": 63,
    "cakisan_alt_poz_aralikta": 0,
@@ -8980,7 +8980,7 @@
    "yakin_aralikta": [],
    "yakin_aralikta_sayi": 0,
    "bosluk_notu": "olculmeyen ciftlerin boslugu >= 150 mm (sinir kutusu); YAKIN = 5 mm altindaki her aday tam olculdu",
-   "sure_s": 171.8
+   "sure_s": 173.4
   },
   "sol": {
    "taraf": "sol",
@@ -9053,8 +9053,8 @@
     "kaba": 2860,
     "ince": 0
    },
-   "aday": 185060,
-   "tam_olcum": 2156,
+   "aday": 186570,
+   "tam_olcum": 2164,
    "cakisan_tam_poz_aralikta": 0,
    "cakisan_tam_poz_aralik_disi": 63,
    "cakisan_alt_poz_aralikta": 0,
@@ -12309,7 +12309,7 @@
    "yakin_aralikta": [],
    "yakin_aralikta_sayi": 0,
    "bosluk_notu": "olculmeyen ciftlerin boslugu >= 150 mm (sinir kutusu); YAKIN = 5 mm altindaki her aday tam olculdu",
-   "sure_s": 169.6
+   "sure_s": 170.6
   }
  },
  "kol_kol": {
@@ -18610,7 +18610,7 @@
     "kutu_bosluk_min": 290.0
    }
   ],
-  "sure_s": 44.4,
+  "sure_s": 46.1,
   "not_": "hareketli: iki kolun omuz gobegi + ust kol (omuz) + dirsek parcalari; poz = (one-arka, yana, dirsek, bilek), sol kolda ayni acilar aynali hareket"
  },
  "kafa_tarama": {
@@ -19153,14 +19153,14 @@
      "aralikta": true
     }
    ],
-   "sure_s": 95.4
+   "sure_s": 98.5
   },
   "kol": {
    "sag": {
     "kol_alt_oge": 40050,
     "zarfa_yakin_alt_oge": 5580,
     "kafa_oge": 15633,
-    "aday": 908873,
+    "aday": 909085,
     "ince_aday": 0,
     "ince_tur": 0,
     "ince_isaretli": 0,
@@ -19168,7 +19168,7 @@
     "sinir_aday": 0,
     "sinir_yakinsadi": true,
     "yasak_kural": [],
-    "tam_olcum": 4054,
+    "tam_olcum": 4070,
     "kafaya_yakin_tam_kol_pozu": 323,
     "kol_pozu": 1770,
     "kafa_pozu": 168,
@@ -19953,13 +19953,13 @@
       "cakisan_kafa_poz": []
      }
     ],
-    "sure_s": 462.7
+    "sure_s": 467.0
    },
    "sol": {
     "kol_alt_oge": 40050,
     "zarfa_yakin_alt_oge": 5580,
     "kafa_oge": 15633,
-    "aday": 906631,
+    "aday": 906843,
     "ince_aday": 0,
     "ince_tur": 0,
     "ince_isaretli": 0,
@@ -19967,7 +19967,7 @@
     "sinir_aday": 0,
     "sinir_yakinsadi": true,
     "yasak_kural": [],
-    "tam_olcum": 4018,
+    "tam_olcum": 4034,
     "kafaya_yakin_tam_kol_pozu": 323,
     "kol_pozu": 1770,
     "kafa_pozu": 168,
@@ -20752,11 +20752,11 @@
       "cakisan_kafa_poz": []
      }
     ],
-    "sure_s": 459.2
+    "sure_s": 459.9
    }
   },
   "not_": "kafa pozu = (pan, tilt); kol pozu = (one-arka, yana, dirsek, bilek); alt poz: kafa Govde (), Pan (pan), Kafa (pan, tilt); kol Gobek (one-arka), Kol/UstKol (one-arka, yana), OnKol (+dirsek), El (+bilek). Eklem araligi: kafa pan +-90, tilt -25...30 ve kol araligi; aralik disi = kafa pan +-90 disi ya da tilt 40 (serbest -25...40) ya da kol ince komsulugu disi. Olculmeyen ciftlerin boslugu >= 100 mm (sinir kutusu).",
-  "sure_s": 1017.8
+  "sure_s": 1025.9
  },
  "taban_tarama": {
   "statik": {
@@ -21272,7 +21272,7 @@
   "hedef_sayisi": 359,
   "yakin_mm": 5.0,
   "not_": "kol pozu = (one-arka, yana, dirsek, bilek); aralik disi halka omuz -60 / 150, yana -10. Hedef: taban parcalari (kablo yolu semalari haric), ana anahtar dugmesi gosterimi, kabuk etek parcalari. Bulunan en kucugun otesindeki ciftler olculmedi (siki kutu boslugu alt sinir).",
-  "sure_s": 24.0
+  "sure_s": 24.4
  },
  "toplam": {
   "cakisma": 364,
@@ -21289,32 +21289,32 @@
  },
  "kutle_g": {
   "iskelet": 6410.8,
-  "omuz_sag": 567.6,
-  "omuz_sol": 567.6,
+  "omuz_sag": 570.0,
+  "omuz_sol": 570.0,
   "kabuk": 7170.4,
   "dirsek_sag": 400.5,
   "dirsek_sol": 400.5,
   "kafa": 2088.5,
   "taban": 8109.8
  },
- "kutle_toplam_g": 25715.6,
+ "kutle_toplam_g": 25720.5,
  "agirlik_merkezi": [
   -0.03,
-  528.46,
-  -9.26
+  528.59,
+  -9.25
  ],
  "tolerans_mm3": 0.5,
- "sure_s": 19271.9,
+ "sure_s": 14093.8,
  "bolumler": {
   "statik": {
    "durum": "tamam",
-   "kosu": "20261109-012656",
-   "baslangic": "2026-11-09T01:28:12",
-   "bitis": "2026-11-09T01:28:27",
-   "sure_s": 14.9,
-   "yukleme_s": 73.8,
-   "tepe_bellek_mb": 738,
-   "tepe_sayfa_mb": 2646,
+   "kosu": "20261109-033441",
+   "baslangic": "2026-11-09T03:35:44",
+   "bitis": "2026-11-09T03:35:57",
+   "sure_s": 12.6,
+   "yukleme_s": 62.6,
+   "tepe_bellek_mb": 733,
+   "tepe_sayfa_mb": 2644,
    "ayni_surec": [
     "statik"
    ],
@@ -21331,13 +21331,13 @@
   },
   "omuz": {
    "durum": "tamam",
-   "kosu": "20261103-215611",
-   "baslangic": "2026-11-03T22:00:16",
-   "bitis": "2026-11-04T02:50:10",
-   "sure_s": 17393.9,
-   "yukleme_s": 75.3,
-   "tepe_bellek_mb": 730,
-   "tepe_sayfa_mb": 2638,
+   "kosu": "20261109-033441",
+   "baslangic": "2026-11-09T04:05:52",
+   "bitis": "2026-11-09T07:29:41",
+   "sure_s": 12229.2,
+   "yukleme_s": 59.4,
+   "tepe_bellek_mb": 740,
+   "tepe_sayfa_mb": 2648,
    "ayni_surec": [
     "omuz"
    ],
@@ -21351,13 +21351,13 @@
   },
   "kol_sag": {
    "durum": "tamam",
-   "kosu": "20261109-012829",
-   "baslangic": "2026-11-09T01:29:34",
-   "bitis": "2026-11-09T01:32:26",
-   "sure_s": 171.9,
-   "yukleme_s": 64.9,
-   "tepe_bellek_mb": 733,
-   "tepe_sayfa_mb": 2641,
+   "kosu": "20261109-033441",
+   "baslangic": "2026-11-09T03:37:05",
+   "bitis": "2026-11-09T03:39:58",
+   "sure_s": 173.4,
+   "yukleme_s": 67.1,
+   "tepe_bellek_mb": 747,
+   "tepe_sayfa_mb": 2655,
    "ayni_surec": [
     "kol_sag"
    ],
@@ -21372,13 +21372,13 @@
   },
   "kol_sol": {
    "durum": "tamam",
-   "kosu": "20261109-013228",
-   "baslangic": "2026-11-09T01:33:35",
-   "bitis": "2026-11-09T01:36:25",
-   "sure_s": 169.7,
-   "yukleme_s": 64.2,
-   "tepe_bellek_mb": 733,
-   "tepe_sayfa_mb": 2641,
+   "kosu": "20261109-033441",
+   "baslangic": "2026-11-09T03:41:01",
+   "bitis": "2026-11-09T03:43:52",
+   "sure_s": 170.7,
+   "yukleme_s": 62.0,
+   "tepe_bellek_mb": 745,
+   "tepe_sayfa_mb": 2653,
    "ayni_surec": [
     "kol_sol"
    ],
@@ -21393,13 +21393,13 @@
   },
   "kolkol": {
    "durum": "tamam",
-   "kosu": "20261109-013626",
-   "baslangic": "2026-11-09T01:36:38",
-   "bitis": "2026-11-09T01:37:22",
-   "sure_s": 44.4,
-   "yukleme_s": 11.2,
-   "tepe_bellek_mb": 195,
-   "tepe_sayfa_mb": 2197,
+   "kosu": "20261109-033441",
+   "baslangic": "2026-11-09T03:44:04",
+   "bitis": "2026-11-09T03:44:50",
+   "sure_s": 46.1,
+   "yukleme_s": 11.7,
+   "tepe_bellek_mb": 198,
+   "tepe_sayfa_mb": 2199,
    "ayni_surec": [
     "kolkol"
    ],
@@ -21412,13 +21412,13 @@
   },
   "kafa_sabit": {
    "durum": "tamam",
-   "kosu": "20261109-013723",
-   "baslangic": "2026-11-09T01:38:24",
-   "bitis": "2026-11-09T01:40:00",
-   "sure_s": 95.5,
-   "yukleme_s": 61.0,
-   "tepe_bellek_mb": 745,
-   "tepe_sayfa_mb": 2653,
+   "kosu": "20261109-033441",
+   "baslangic": "2026-11-09T03:45:54",
+   "bitis": "2026-11-09T03:47:33",
+   "sure_s": 98.6,
+   "yukleme_s": 63.4,
+   "tepe_bellek_mb": 746,
+   "tepe_sayfa_mb": 2654,
    "ayni_surec": [
     "kafa_sabit"
    ],
@@ -21433,13 +21433,13 @@
   },
   "kafa_sag": {
    "durum": "tamam",
-   "kosu": "20261109-014001",
-   "baslangic": "2026-11-09T01:40:13",
-   "bitis": "2026-11-09T01:47:56",
-   "sure_s": 462.9,
-   "yukleme_s": 11.7,
+   "kosu": "20261109-033441",
+   "baslangic": "2026-11-09T03:47:45",
+   "bitis": "2026-11-09T03:55:33",
+   "sure_s": 467.2,
+   "yukleme_s": 12.0,
    "tepe_bellek_mb": 624,
-   "tepe_sayfa_mb": 2643,
+   "tepe_sayfa_mb": 2647,
    "ayni_surec": [
     "kafa_sag"
    ],
@@ -21451,13 +21451,13 @@
   },
   "kafa_sol": {
    "durum": "tamam",
-   "kosu": "20261109-014757",
-   "baslangic": "2026-11-09T01:48:09",
-   "bitis": "2026-11-09T01:55:49",
-   "sure_s": 459.4,
-   "yukleme_s": 11.7,
-   "tepe_bellek_mb": 619,
-   "tepe_sayfa_mb": 2642,
+   "kosu": "20261109-033441",
+   "baslangic": "2026-11-09T03:55:45",
+   "bitis": "2026-11-09T04:03:25",
+   "sure_s": 460.1,
+   "yukleme_s": 11.8,
+   "tepe_bellek_mb": 627,
+   "tepe_sayfa_mb": 2646,
    "ayni_surec": [
     "kafa_sol"
    ],
@@ -21469,13 +21469,13 @@
   },
   "taban": {
    "durum": "tamam",
-   "kosu": "20261109-015550",
-   "baslangic": "2026-11-09T01:56:52",
-   "bitis": "2026-11-09T01:57:16",
-   "sure_s": 24.0,
+   "kosu": "20261109-033441",
+   "baslangic": "2026-11-09T04:04:27",
+   "bitis": "2026-11-09T04:04:52",
+   "sure_s": 24.4,
    "yukleme_s": 61.5,
-   "tepe_bellek_mb": 741,
-   "tepe_sayfa_mb": 2743,
+   "tepe_bellek_mb": 742,
+   "tepe_sayfa_mb": 2747,
    "ayni_surec": [
     "taban"
    ],
@@ -21492,7 +21492,7 @@
   }
  },
  "kaynak": {
-  "arayuz.py": "c085ca8123",
+  "arayuz.py": "98a38dd81e",
   "carpisma.py": "c688d738c3",
   "dirsek/dirsek_lib.py": "2f3a3b77fb",
   "dirsek/dirsek_parcalar.py": "7182c29899",
@@ -21504,12 +21504,12 @@
   "kafa/kafa_lib.py": "d7818f5c0b",
   "kafa/kafa_parcalar.py": "22229bcdd0",
   "omuz/omuz_lib.py": "b5c14c4ed2",
-  "omuz/omuz_parcalar.py": "62b19c7371",
+  "omuz/omuz_parcalar.py": "3ba1a5a8e2",
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "taban/taban_lib.py": "638881cefc",
   "taban/taban_parcalar.py": "b86289a0c4"
  },
- "tek_kosu": false,
- "birlestirme_notu": "2026-11-09: EKSIK / KARISIK birlestirme: eksik bolum yok; kosu kimlikleri ['20261103-215611', '20261109-012656', '20261109-012829', '20261109-013228', '20261109-013626', '20261109-013723', '20261109-014001', '20261109-014757', '20261109-015550']; kaynak ayni: False. Tam sonuc icin 'python carpisma_kos.py' ile tum bolumleri yeniden kos."
+ "tek_kosu": true,
+ "birlestirme_notu": "2026-11-09: birlestirilmemis, tek seferlik tam kosu (kosu 20261109-033441, 2026-11-09T03:35:44 ... 2026-11-09T07:29:41). Dokuz bolum (statik, omuz, kol_sag, kol_sol, kolkol, kafa_sabit, kafa_sag, kafa_sol, taban) ayri freecadcmd sureclerinde sirayla kostu; her bolumun suresi ve tepe bellegi 'bolumler'de. Tum bolumler ayni kaynak dosyalarla (md5 ozetleri 'kaynak') kostu; onceki kosulardan veri alinmadi."
 }

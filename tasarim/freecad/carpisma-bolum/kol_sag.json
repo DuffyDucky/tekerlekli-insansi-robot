@@ -1,16 +1,16 @@
 {
  "bolum": "kol_sag",
- "kosu": "20261109-012829",
- "baslangic": "2026-11-09T01:29:34",
- "bitis": "2026-11-09T01:32:26",
- "sure_s": 171.9,
- "yukleme_s": 64.9,
- "tepe_bellek_mb": 733,
- "tepe_sayfa_mb": 2641,
+ "kosu": "20261109-033441",
+ "baslangic": "2026-11-09T03:37:05",
+ "bitis": "2026-11-09T03:39:58",
+ "sure_s": 173.4,
+ "yukleme_s": 67.1,
+ "tepe_bellek_mb": 747,
+ "tepe_sayfa_mb": 2655,
  "ayni_surec": [
   "kol_sag"
  ],
- "pid": 14244,
+ "pid": 2880,
  "moduller": [
   "iskelet",
   "omuz_sag",
@@ -21,11 +21,11 @@
  ],
  "kaynak": {
   "carpisma.py": "c688d738c3",
-  "arayuz.py": "c085ca8123",
+  "arayuz.py": "98a38dd81e",
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
-  "omuz/omuz_parcalar.py": "62b19c7371",
+  "omuz/omuz_parcalar.py": "3ba1a5a8e2",
   "kabuk/kabuk_parcalar.py": "9214ad0ecb",
   "dirsek/dirsek_parcalar.py": "7182c29899",
   "kafa/kafa_parcalar.py": "22229bcdd0",
@@ -109,8 +109,8 @@
    "kaba": 2860,
    "ince": 0
   },
-  "aday": 196156,
-  "tam_olcum": 2156,
+  "aday": 197666,
+  "tam_olcum": 2164,
   "cakisan_tam_poz_aralikta": 0,
   "cakisan_tam_poz_aralik_disi": 63,
   "cakisan_alt_poz_aralikta": 0,
@@ -3365,6 +3365,6 @@
   "yakin_aralikta": [],
   "yakin_aralikta_sayi": 0,
   "bosluk_notu": "olculmeyen ciftlerin boslugu >= 150 mm (sinir kutusu); YAKIN = 5 mm altindaki her aday tam olculdu",
-  "sure_s": 171.8
+  "sure_s": 173.4
  }
 }

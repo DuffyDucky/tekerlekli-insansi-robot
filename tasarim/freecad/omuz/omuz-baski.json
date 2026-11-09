@@ -1,14 +1,14 @@
 {
- "tarih": "2026-10-29T12:24:32",
+ "tarih": "2026-11-09T03:25:32",
  "betik": "omuz/omuz_baski.py",
  "girdi": {
   "dosya": "omuz/omuz-montaj.FCStd",
-  "degistirilme": "2026-10-29T01:55:05",
-  "boyut": 213698,
-  "sha256": "9ee7aae5f925ecd0",
-  "deneme": 1,
+  "degistirilme": "2026-11-09T03:20:54",
+  "boyut": 221488,
+  "sha256": "53e93d625aed3710",
+  "deneme": 2,
   "yontem": "fcstd",
-  "omuz_parcalar_py_degistirilme": "2026-10-29T01:53:39"
+  "omuz_parcalar_py_degistirilme": "2026-11-09T02:38:21"
  },
  "yazici": {
   "model": "Bambu Lab X2D",
@@ -2785,8 +2785,8 @@
    "adet_notu": "sag + sol (sol = X aynasi; yon ve sonuc ayni, dilimleyicide aynalanir)",
    "malzeme": "PETG-CF",
    "model_malzeme": "PETG-CF",
-   "model_kutle_g": 59.3,
-   "hacim_cm3": 51.88,
+   "model_kutle_g": 61.7,
+   "hacim_cm3": 53.97,
    "secilen_yon": "+X",
    "en_az_destek_yon": "-Y",
    "yon_sirasi": [
@@ -2800,21 +2800,21 @@
    "desteksiz": false,
    "desteksiz_yon_var": [],
    "kutle_g": {
-    "0.80": 52.7,
-    "0.90": 59.3
+    "0.80": 54.8,
+    "0.90": 61.7
    },
    "filament_g": {
-    "0.80": 60.6,
-    "0.90": 67.5
+    "0.80": 63.2,
+    "0.90": 70.4
    },
-   "destek_filament_g": 5.2,
+   "destek_filament_g": 5.7,
    "sure_saat": {
-    "0.80": 1.27,
-    "0.90": 1.41
+    "0.80": 1.32,
+    "0.90": 1.47
    },
    "sure_saat_yavas_cf": {
-    "0.80": 1.81,
-    "0.90": 2.02
+    "0.80": 1.89,
+    "0.90": 2.1
    },
    "silindir": [
     {
@@ -2968,24 +2968,44 @@
      "boy": 10.0
     },
     {
-     "r": 2.25,
+     "r": 3.0,
      "delik": true,
      "eksen": [
+      1.0,
       0.0,
-      0.0,
-      1.0
+      0.0
      ],
-     "boy": 5.0
+     "boy": 5.5
     },
     {
-     "r": 2.25,
+     "r": 3.0,
      "delik": true,
      "eksen": [
+      1.0,
       0.0,
-      0.0,
-      1.0
+      0.0
      ],
-     "boy": 5.0
+     "boy": 3.5
+    },
+    {
+     "r": 3.0,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 5.5
+    },
+    {
+     "r": 3.0,
+     "delik": true,
+     "eksen": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "boy": 3.5
     },
     {
      "r": 2.25,
@@ -3016,6 +3036,26 @@
       1.0
      ],
      "boy": 7.0
+    },
+    {
+     "r": 2.25,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 5.0
+    },
+    {
+     "r": 2.25,
+     "delik": true,
+     "eksen": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "boy": 5.0
     }
    ],
    "yonler": {
@@ -3027,7 +3067,7 @@
      ],
      "tabla_yuzu": "x = 150.0 yuzu tablada (robot yerel +X yukari)",
      "olcu": [
-      66.0,
+      77.0,
       51.0,
       49.0
      ],
@@ -3036,56 +3076,121 @@
      "cift_sigar": true,
      "ilk_katman_mm2": 1156.7,
      "yukseklik_taban_orani": 1.44,
-     "cikinti45_mm2": 2427.8,
-     "tavan_mm2": 2342.4,
-     "cikinti45_orani": 0.1221,
-     "egim_yuz": [],
-     "egim_alan_mm2": 0,
-     "egim_izdusum_mm2": 0,
+     "cikinti45_mm2": 2764.4,
+     "tavan_mm2": 2605.7,
+     "cikinti45_orani": 0.1325,
+     "egim_yuz": [
+      {
+       "yuz": "Plane",
+       "alan_mm2": 20.8,
+       "izdusum_mm2": 18.0,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        42.8,
+        43.5
+       ],
+       "merkez_robot": [
+        193.1,
+        36.6,
+        0.0
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 20.8,
+       "izdusum_mm2": 18.0,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        32.8,
+        33.5
+       ],
+       "merkez_robot": [
+        183.1,
+        36.6,
+        0.0
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 15.9,
+       "izdusum_mm2": 13.8,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        33.1,
+        33.6
+       ],
+       "merkez_robot": [
+        183.4,
+        33.4,
+        0.0
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 15.9,
+       "izdusum_mm2": 13.7,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        43.1,
+        43.6
+       ],
+       "merkez_robot": [
+        193.4,
+        33.4,
+        0.0
+       ],
+       "yaricap": null
+      }
+     ],
+     "egim_alan_mm2": 73.4,
+     "egim_izdusum_mm2": 63.5,
      "kucuk_delik_cikinti_mm2": 85.4,
      "destek_gerekli": true,
-     "destek_alan_mm2": 2020.6,
-     "destek_katman_alan_mm2": 2020.6,
-     "destek_hacim_cm3": 27.52,
+     "destek_alan_mm2": 2352.7,
+     "destek_katman_alan_mm2": 2289.2,
+     "destek_hacim_cm3": 29.69,
      "destek_bolge": [
       {
        "z_mm": [
         13.23,
         13.23
        ],
-       "katman": 2,
-       "alan_mm2": 1550.4,
+       "katman": 1,
+       "alan_mm2": 1432.3,
        "turler": [
         "konsol"
        ],
-       "konsol_max_mm": 26.41,
-       "kopru_max_mm": 1.66,
+       "konsol_max_mm": 26.28,
+       "kopru_max_mm": 4.77,
        "merkez_robot": [
         163.2,
-        19.2,
-        -4.2
+        22.2,
+        -5.9
        ],
-       "destek_hacim_mm3": 20465.0,
+       "destek_hacim_mm3": 18906.0,
        "tablaya": true
       },
       {
        "z_mm": [
         10.23,
-        10.23
+        11.23
        ],
-       "katman": 1,
-       "alan_mm2": 270.2,
+       "katman": 2,
+       "alan_mm2": 673.0,
        "turler": [
         "konsol"
        ],
-       "konsol_max_mm": 2.0,
+       "konsol_max_mm": 16.71,
        "kopru_max_mm": 1.87,
        "merkez_robot": [
-        160.2,
-        0.0,
-        0.0
+        160.8,
+        -15.9,
+        5.0
        ],
-       "destek_hacim_mm3": 2756.0,
+       "destek_hacim_mm3": 7267.0,
        "tablaya": true
       },
       {
@@ -3094,24 +3199,44 @@
         45.73
        ],
        "katman": 1,
-       "alan_mm2": 200.0,
+       "alan_mm2": 154.6,
        "turler": [
         "kopru"
        ],
        "konsol_max_mm": 0,
-       "kopru_max_mm": 40.03,
+       "kopru_max_mm": 40.02,
        "merkez_robot": [
         195.7,
-        10.0,
-        5.0
+        12.9,
+        4.9
        ],
-       "destek_hacim_mm3": 4300.0,
+       "destek_hacim_mm3": 3324.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        24.23,
+        24.23
+       ],
+       "katman": 1,
+       "alan_mm2": 29.3,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 4.38,
+       "kopru_max_mm": 8.93,
+       "merkez_robot": [
+        174.2,
+        35.3,
+        -0.2
+       ],
+       "destek_hacim_mm3": 190.0,
        "tablaya": false
       }
      ],
-     "destek_bolge_sayi": 3,
+     "destek_bolge_sayi": 4,
      "en_buyuk_kopru_mm": 40.0,
-     "en_buyuk_konsol_mm": 26.4,
+     "en_buyuk_konsol_mm": 26.3,
      "kopruler": [
       {
        "z": 3.23,
@@ -3130,44 +3255,6 @@
        ],
        "destek": false,
        "kolon_mm": 3.2,
-       "tablaya": true
-      },
-      {
-       "z": 19.23,
-       "tur": "kopru",
-       "alan_mm2": 20.3,
-       "konsol_mm": 0.0,
-       "kopru_mm": 5.52,
-       "boyut": [
-        4.3,
-        5.6
-       ],
-       "merkez_robot": [
-        169.2,
-        -6.0,
-        5.6
-       ],
-       "destek": false,
-       "kolon_mm": 19.2,
-       "tablaya": true
-      },
-      {
-       "z": 19.23,
-       "tur": "kopru",
-       "alan_mm2": 20.3,
-       "konsol_mm": 0.0,
-       "kopru_mm": 5.52,
-       "boyut": [
-        4.3,
-        5.6
-       ],
-       "merkez_robot": [
-        169.2,
-        6.0,
-        5.6
-       ],
-       "destek": false,
-       "kolon_mm": 19.2,
        "tablaya": true
       },
       {
@@ -3226,8 +3313,8 @@
        "boy": "M3",
        "merkez_robot": [
         165.5,
-        29.2,
-        -16.9
+        33.8,
+        0.0
        ],
        "eksen_robot": [
         1.0,
@@ -3245,8 +3332,8 @@
        "boy": "M3",
        "merkez_robot": [
         165.5,
-        33.8,
-        0.0
+        29.2,
+        -16.9
        ],
        "eksen_robot": [
         1.0,
@@ -3311,26 +3398,91 @@
      ],
      "tabla_yuzu": "x = 199.0 yuzu tablada (robot yerel -X yukari)",
      "olcu": [
-      66.0,
+      77.0,
       51.0,
       49.0
      ],
      "tabla_aci": 0,
      "sigar": true,
      "cift_sigar": true,
-     "ilk_katman_mm2": 809.0,
-     "yukseklik_taban_orani": 1.72,
-     "cikinti45_mm2": 2766.5,
-     "tavan_mm2": 2681.1,
-     "cikinti45_orani": 0.1391,
-     "egim_yuz": [],
-     "egim_alan_mm2": 0,
-     "egim_izdusum_mm2": 0,
+     "ilk_katman_mm2": 763.6,
+     "yukseklik_taban_orani": 1.77,
+     "cikinti45_mm2": 3149.4,
+     "tavan_mm2": 2990.6,
+     "cikinti45_orani": 0.151,
+     "egim_yuz": [
+      {
+       "yuz": "Plane",
+       "alan_mm2": 20.8,
+       "izdusum_mm2": 18.0,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        11.8,
+        12.5
+       ],
+       "merkez_robot": [
+        186.9,
+        36.6,
+        -0.0
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 20.8,
+       "izdusum_mm2": 18.0,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        21.8,
+        22.5
+       ],
+       "merkez_robot": [
+        176.9,
+        36.6,
+        -0.0
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 15.9,
+       "izdusum_mm2": 13.7,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        22.1,
+        22.6
+       ],
+       "merkez_robot": [
+        176.6,
+        33.4,
+        -0.0
+       ],
+       "yaricap": null
+      },
+      {
+       "yuz": "Plane",
+       "alan_mm2": 15.9,
+       "izdusum_mm2": 13.7,
+       "en_dik_aci": 60.0,
+       "z_mm": [
+        12.1,
+        12.6
+       ],
+       "merkez_robot": [
+        186.6,
+        33.4,
+        -0.0
+       ],
+       "yaricap": null
+      }
+     ],
+     "egim_alan_mm2": 73.4,
+     "egim_izdusum_mm2": 63.4,
      "kucuk_delik_cikinti_mm2": 92.5,
      "destek_gerekli": true,
-     "destek_alan_mm2": 2449.4,
-     "destek_katman_alan_mm2": 2449.4,
-     "destek_hacim_cm3": 74.48,
+     "destek_alan_mm2": 2763.7,
+     "destek_katman_alan_mm2": 2700.3,
+     "destek_hacim_cm3": 82.15,
      "destek_bolge": [
       {
        "z_mm": [
@@ -3354,26 +3506,67 @@
       },
       {
        "z_mm": [
+        31.73,
+        32.23
+       ],
+       "katman": 2,
+       "alan_mm2": 267.0,
+       "turler": [
+        "ada",
+        "konsol"
+       ],
+       "konsol_max_mm": 6.13,
+       "kopru_max_mm": 7.67,
+       "merkez_robot": [
+        167.0,
+        -29.1,
+        6.5
+       ],
+       "destek_hacim_mm3": 8553.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
         24.73,
         24.73
        ],
        "katman": 1,
-       "alan_mm2": 200.0,
+       "alan_mm2": 154.6,
        "turler": [
         "kopru"
        ],
        "konsol_max_mm": 0,
-       "kopru_max_mm": 40.03,
+       "kopru_max_mm": 40.02,
        "merkez_robot": [
         174.3,
-        10.0,
-        5.0
+        12.9,
+        4.9
        ],
-       "destek_hacim_mm3": 4300.0,
+       "destek_hacim_mm3": 3324.0,
        "tablaya": false
+      },
+      {
+       "z_mm": [
+        3.23,
+        3.23
+       ],
+       "katman": 1,
+       "alan_mm2": 29.3,
+       "turler": [
+        "kopru"
+       ],
+       "konsol_max_mm": 4.38,
+       "kopru_max_mm": 8.75,
+       "merkez_robot": [
+        195.8,
+        35.3,
+        -0.3
+       ],
+       "destek_hacim_mm3": 94.0,
+       "tablaya": true
       }
      ],
-     "destek_bolge_sayi": 2,
+     "destek_bolge_sayi": 4,
      "en_buyuk_kopru_mm": 40.7,
      "en_buyuk_konsol_mm": 15.1,
      "kopruler": [
@@ -3412,8 +3605,8 @@
         6.0
        ],
        "destek": false,
-       "kolon_mm": 10.5,
-       "tablaya": false
+       "kolon_mm": 40.2,
+       "tablaya": true
       },
       {
        "z": 40.23,
@@ -3450,8 +3643,8 @@
         6.0
        ],
        "destek": false,
-       "kolon_mm": 10.5,
-       "tablaya": false
+       "kolon_mm": 40.2,
+       "tablaya": true
       },
       {
        "z": 17.23,
@@ -3465,7 +3658,7 @@
        ],
        "merkez_robot": [
         181.8,
-        0.0,
+        -0.0,
         -24.5
        ],
        "destek": false,
@@ -3509,8 +3702,8 @@
        "boy": "M3",
        "merkez_robot": [
         165.5,
-        29.2,
-        -16.9
+        33.8,
+        0.0
        ],
        "eksen_robot": [
         1.0,
@@ -3528,8 +3721,8 @@
        "boy": "M3",
        "merkez_robot": [
         165.5,
-        33.8,
-        0.0
+        29.2,
+        -16.9
        ],
        "eksen_robot": [
         1.0,
@@ -3583,7 +3776,7 @@
       }
      ],
      "katman_sayisi": 98,
-     "ofset_uyari": 25,
+     "ofset_uyari": 21,
      "atlanan_kesit": []
     },
     "+Y": {
@@ -3592,20 +3785,20 @@
       1,
       0
      ],
-     "tabla_yuzu": "y = -23.0 yuzu tablada (robot yerel +Y yukari)",
+     "tabla_yuzu": "y = -34.0 yuzu tablada (robot yerel +Y yukari)",
      "olcu": [
       51.0,
       49.0,
-      66.0
+      77.0
      ],
      "tabla_aci": 0,
      "sigar": true,
      "cift_sigar": true,
-     "ilk_katman_mm2": 250.0,
-     "yukseklik_taban_orani": 4.17,
-     "cikinti45_mm2": 2079.2,
-     "tavan_mm2": 1349.8,
-     "cikinti45_orani": 0.1046,
+     "ilk_katman_mm2": 188.3,
+     "yukseklik_taban_orani": 5.61,
+     "cikinti45_mm2": 2230.3,
+     "tavan_mm2": 1488.0,
+     "cikinti45_orani": 0.1069,
      "egim_yuz": [
       {
        "yuz": "Cylinder",
@@ -3613,8 +3806,8 @@
        "izdusum_mm2": 209.8,
        "en_dik_aci": 79.0,
        "z_mm": [
-        3.4,
-        8.5
+        14.4,
+        19.5
        ],
        "merkez_robot": [
         155.0,
@@ -3625,93 +3818,73 @@
       },
       {
        "yuz": "Cylinder",
-       "alan_mm2": 82.3,
-       "izdusum_mm2": 72.3,
-       "en_dik_aci": 79.7,
+       "alan_mm2": 46.8,
+       "izdusum_mm2": 39.9,
+       "en_dik_aci": 78.3,
        "z_mm": [
-        0.9,
-        6.7
+        12.0,
+        18.0
        ],
        "merkez_robot": [
-        161.5,
-        -19.7,
-        0.0
+        161.1,
+        -19.2,
+        -5.2
        ],
        "yaricap": 22.5
       }
      ],
-     "egim_alan_mm2": 321.6,
-     "egim_izdusum_mm2": 282.1,
-     "kucuk_delik_cikinti_mm2": 360.6,
+     "egim_alan_mm2": 286.1,
+     "egim_izdusum_mm2": 249.7,
+     "kucuk_delik_cikinti_mm2": 411.7,
      "destek_gerekli": true,
-     "destek_alan_mm2": 1477.4,
-     "destek_katman_alan_mm2": 1195.3,
-     "destek_hacim_cm3": 47.44,
+     "destek_alan_mm2": 1488.7,
+     "destek_katman_alan_mm2": 1239.0,
+     "destek_hacim_cm3": 55.61,
      "destek_bolge": [
       {
        "z_mm": [
-        62.23,
-        62.23
+        73.23,
+        73.23
        ],
        "katman": 1,
-       "alan_mm2": 686.3,
+       "alan_mm2": 571.4,
        "turler": [
         "kopru"
        ],
-       "konsol_max_mm": 0,
-       "kopru_max_mm": 23.76,
+       "konsol_max_mm": 2.66,
+       "kopru_max_mm": 19.05,
        "merkez_robot": [
-        183.8,
+        183.5,
         39.2,
-        -9.2
+        -11.0
        ],
-       "destek_hacim_mm3": 42688.0,
+       "destek_hacim_mm3": 41826.0,
        "tablaya": true
       },
       {
        "z_mm": [
-        1.23,
-        1.23
+        11.23,
+        12.23
        ],
-       "katman": 1,
-       "alan_mm2": 183.0,
+       "katman": 3,
+       "alan_mm2": 459.8,
        "turler": [
         "konsol"
        ],
        "konsol_max_mm": 30.38,
-       "kopru_max_mm": 0,
+       "kopru_max_mm": 2.47,
        "merkez_robot": [
-        183.8,
-        -21.8,
-        -24.0
+        179.0,
+        -22.1,
+        -10.8
        ],
-       "destek_hacim_mm3": 220.0,
+       "destek_hacim_mm3": 5485.0,
        "tablaya": true
       },
       {
        "z_mm": [
-        1.23,
-        1.23
-       ],
-       "katman": 1,
-       "alan_mm2": 152.5,
-       "turler": [
-        "konsol"
-       ],
-       "konsol_max_mm": 30.38,
-       "kopru_max_mm": 0,
-       "merkez_robot": [
-        183.8,
-        -21.8,
-        5.0
-       ],
-       "destek_hacim_mm3": 183.0,
-       "tablaya": true
-      },
-      {
-       "z_mm": [
-        53.73,
-        53.73
+        64.73,
+        64.73
        ],
        "katman": 1,
        "alan_mm2": 100.0,
@@ -3730,8 +3903,8 @@
       },
       {
        "z_mm": [
-        3.23,
-        3.23
+        14.23,
+        14.23
        ],
        "katman": 1,
        "alan_mm2": 57.5,
@@ -3745,36 +3918,114 @@
         -19.8,
         0.0
        ],
-       "destek_hacim_mm3": 184.0,
+       "destek_hacim_mm3": 816.0,
        "tablaya": true
       },
       {
        "z_mm": [
-        0.73,
-        0.73
+        66.23,
+        66.23
        ],
        "katman": 1,
-       "alan_mm2": 16.0,
+       "alan_mm2": 20.7,
        "turler": [
         "konsol"
        ],
-       "konsol_max_mm": 2.38,
-       "kopru_max_mm": 1.29,
+       "konsol_max_mm": 4.38,
+       "kopru_max_mm": 0,
        "merkez_robot": [
-        161.3,
-        -22.3,
-        0.0
+        185.0,
+        32.2,
+        -0.2
        ],
-       "destek_hacim_mm3": 11.0,
+       "destek_hacim_mm3": 1370.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        66.23,
+        66.23
+       ],
+       "katman": 1,
+       "alan_mm2": 14.8,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 4.38,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        194.4,
+        32.2,
+        -0.2
+       ],
+       "destek_hacim_mm3": 980.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        66.23,
+        66.23
+       ],
+       "katman": 1,
+       "alan_mm2": 14.8,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 4.38,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        175.6,
+        32.2,
+        -0.2
+       ],
+       "destek_hacim_mm3": 980.0,
        "tablaya": true
       }
      ],
-     "destek_bolge_sayi": 6,
-     "en_buyuk_kopru_mm": 23.8,
+     "destek_bolge_sayi": 7,
+     "en_buyuk_kopru_mm": 20.0,
      "en_buyuk_konsol_mm": 30.4,
      "kopruler": [
       {
-       "z": 26.23,
+       "z": 72.73,
+       "tur": "kopru",
+       "alan_mm2": 14.8,
+       "konsol_mm": 0.0,
+       "kopru_mm": 3.56,
+       "boyut": [
+        3.3,
+        4.5
+       ],
+       "merkez_robot": [
+        190.0,
+        38.7,
+        -0.2
+       ],
+       "destek": false,
+       "kolon_mm": 72.7,
+       "tablaya": true
+      },
+      {
+       "z": 72.73,
+       "tur": "kopru",
+       "alan_mm2": 14.8,
+       "konsol_mm": 0.0,
+       "kopru_mm": 3.56,
+       "boyut": [
+        3.3,
+        4.5
+       ],
+       "merkez_robot": [
+        180.0,
+        38.7,
+        -0.2
+       ],
+       "destek": false,
+       "kolon_mm": 72.7,
+       "tablaya": true
+      },
+      {
+       "z": 37.23,
        "tur": "kopru",
        "alan_mm2": 16.4,
        "konsol_mm": 0.0,
@@ -3793,7 +4044,7 @@
        "tablaya": false
       },
       {
-       "z": 27.73,
+       "z": 38.73,
        "tur": "kopru",
        "alan_mm2": 5.2,
        "konsol_mm": 0.0,
@@ -3848,8 +4099,8 @@
        "boy": "M3",
        "merkez_robot": [
         165.5,
-        29.2,
-        -16.9
+        33.8,
+        0.0
        ],
        "eksen_robot": [
         1.0,
@@ -3867,8 +4118,8 @@
        "boy": "M3",
        "merkez_robot": [
         165.5,
-        33.8,
-        0.0
+        29.2,
+        -16.9
        ],
        "eksen_robot": [
         1.0,
@@ -3921,7 +4172,7 @@
        "derinlik_mm": 7.0
       }
      ],
-     "katman_sayisi": 132,
+     "katman_sayisi": 154,
      "ofset_uyari": 0,
      "atlanan_kesit": []
     },
@@ -3935,16 +4186,16 @@
      "olcu": [
       51.0,
       49.0,
-      66.0
+      77.0
      ],
      "tabla_aci": 0,
      "sigar": true,
      "cift_sigar": true,
      "ilk_katman_mm2": 1069.5,
-     "yukseklik_taban_orani": 2.02,
-     "cikinti45_mm2": 1259.7,
-     "tavan_mm2": 530.3,
-     "cikinti45_orani": 0.0634,
+     "yukseklik_taban_orani": 2.35,
+     "cikinti45_mm2": 1330.5,
+     "tavan_mm2": 553.3,
+     "cikinti45_orani": 0.0638,
      "egim_yuz": [
       {
        "yuz": "Cylinder",
@@ -3964,26 +4215,26 @@
       },
       {
        "yuz": "Cylinder",
-       "alan_mm2": 82.3,
-       "izdusum_mm2": 72.3,
-       "en_dik_aci": 79.7,
+       "alan_mm2": 81.7,
+       "izdusum_mm2": 71.0,
+       "en_dik_aci": 78.4,
        "z_mm": [
-        20.9,
-        26.7
+        21.0,
+        27.1
        ],
        "merkez_robot": [
         161.5,
-        19.7,
-        0.0
+        19.5,
+        -0.2
        ],
        "yaricap": 22.5
       }
      ],
-     "egim_alan_mm2": 321.6,
-     "egim_izdusum_mm2": 282.1,
-     "kucuk_delik_cikinti_mm2": 360.6,
+     "egim_alan_mm2": 321.0,
+     "egim_izdusum_mm2": 280.8,
+     "kucuk_delik_cikinti_mm2": 411.7,
      "destek_gerekli": true,
-     "destek_alan_mm2": 688.2,
+     "destek_alan_mm2": 686.9,
      "destek_katman_alan_mm2": 406.1,
      "destek_hacim_cm3": 6.09,
      "destek_bolge": [
@@ -4147,8 +4398,8 @@
        "boy": "M3",
        "merkez_robot": [
         165.5,
-        29.2,
-        -16.9
+        33.8,
+        0.0
        ],
        "eksen_robot": [
         1.0,
@@ -4166,8 +4417,8 @@
        "boy": "M3",
        "merkez_robot": [
         165.5,
-        33.8,
-        0.0
+        29.2,
+        -16.9
        ],
        "eksen_robot": [
         1.0,
@@ -4220,7 +4471,7 @@
        "derinlik_mm": 7.0
       }
      ],
-     "katman_sayisi": 132,
+     "katman_sayisi": 154,
      "ofset_uyari": 0,
      "atlanan_kesit": []
     },
@@ -4232,7 +4483,7 @@
      ],
      "tabla_yuzu": "z = -28.0 yuzu tablada (robot yerel +Z yukari)",
      "olcu": [
-      66.0,
+      77.0,
       49.0,
       51.0
      ],
@@ -4241,9 +4492,9 @@
      "cift_sigar": true,
      "ilk_katman_mm2": 18.1,
      "yukseklik_taban_orani": 11.99,
-     "cikinti45_mm2": 4021.2,
-     "tavan_mm2": 3423.3,
-     "cikinti45_orani": 0.2022,
+     "cikinti45_mm2": 4091.4,
+     "tavan_mm2": 3497.2,
+     "cikinti45_orani": 0.1961,
      "egim_yuz": [
       {
        "yuz": "Cylinder",
@@ -4263,28 +4514,28 @@
       },
       {
        "yuz": "Cylinder",
-       "alan_mm2": 82.3,
-       "izdusum_mm2": 71.4,
-       "en_dik_aci": 78.4,
+       "alan_mm2": 81.8,
+       "izdusum_mm2": 71.9,
+       "en_dik_aci": 79.4,
        "z_mm": [
-        6.0,
-        11.8
+        5.9,
+        11.5
        ],
        "merkez_robot": [
         161.5,
         -0.0,
-        -19.5
+        -19.8
        ],
        "yaricap": 22.5
       }
      ],
-     "egim_alan_mm2": 341.5,
-     "egim_izdusum_mm2": 298.0,
+     "egim_alan_mm2": 341.0,
+     "egim_izdusum_mm2": 298.5,
      "kucuk_delik_cikinti_mm2": 264.6,
      "destek_gerekli": true,
-     "destek_alan_mm2": 3581.1,
-     "destek_katman_alan_mm2": 3283.1,
-     "destek_hacim_cm3": 25.39,
+     "destek_alan_mm2": 3617.4,
+     "destek_katman_alan_mm2": 3318.9,
+     "destek_hacim_cm3": 25.69,
      "destek_bolge": [
       {
        "z_mm": [
@@ -4312,18 +4563,58 @@
         30.73
        ],
        "katman": 1,
-       "alan_mm2": 919.9,
+       "alan_mm2": 827.3,
        "turler": [
         "kopru"
        ],
-       "konsol_max_mm": 30.18,
-       "kopru_max_mm": 65.32,
+       "konsol_max_mm": 30.2,
+       "kopru_max_mm": 66.78,
        "merkez_robot": [
-        182.5,
-        6.5,
+        182.2,
+        3.3,
         2.7
        ],
-       "destek_hacim_mm3": 22078.0,
+       "destek_hacim_mm3": 19855.0,
+       "tablaya": false
+      },
+      {
+       "z_mm": [
+        20.23,
+        20.23
+       ],
+       "katman": 1,
+       "alan_mm2": 67.3,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 10.54,
+       "kopru_max_mm": 2.46,
+       "merkez_robot": [
+        163.9,
+        -28.6,
+        -7.8
+       ],
+       "destek_hacim_mm3": 1359.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        25.73,
+        25.73
+       ],
+       "katman": 1,
+       "alan_mm2": 61.1,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 6.38,
+       "kopru_max_mm": 7.67,
+       "merkez_robot": [
+        185.0,
+        35.5,
+        -2.3
+       ],
+       "destek_hacim_mm3": 1161.0,
        "tablaya": false
       },
       {
@@ -4367,8 +4658,8 @@
        "tablaya": true
       }
      ],
-     "destek_bolge_sayi": 4,
-     "en_buyuk_kopru_mm": 65.3,
+     "destek_bolge_sayi": 6,
+     "en_buyuk_kopru_mm": 66.8,
      "en_buyuk_konsol_mm": 42.5,
      "kopruler": [
       {
@@ -4383,7 +4674,7 @@
        ],
        "merkez_robot": [
         151.2,
-        0.0,
+        -0.0,
         4.7
        ],
        "destek": false,
@@ -4427,8 +4718,8 @@
        "boy": "M3",
        "merkez_robot": [
         165.5,
-        29.2,
-        -16.9
+        33.8,
+        0.0
        ],
        "eksen_robot": [
         1.0,
@@ -4446,8 +4737,8 @@
        "boy": "M3",
        "merkez_robot": [
         165.5,
-        33.8,
-        0.0
+        29.2,
+        -16.9
        ],
        "eksen_robot": [
         1.0,
@@ -4512,7 +4803,7 @@
      ],
      "tabla_yuzu": "z = 23.0 yuzu tablada (robot yerel -Z yukari)",
      "olcu": [
-      66.0,
+      77.0,
       49.0,
       51.0
      ],
@@ -4521,9 +4812,9 @@
      "cift_sigar": true,
      "ilk_katman_mm2": 325.0,
      "yukseklik_taban_orani": 2.83,
-     "cikinti45_mm2": 3701.8,
-     "tavan_mm2": 3111.4,
-     "cikinti45_orani": 0.1862,
+     "cikinti45_mm2": 3774.5,
+     "tavan_mm2": 3131.9,
+     "cikinti45_orani": 0.1809,
      "egim_yuz": [
       {
        "yuz": "Cylinder",
@@ -4543,28 +4834,28 @@
       },
       {
        "yuz": "Cylinder",
-       "alan_mm2": 82.3,
-       "izdusum_mm2": 71.4,
-       "en_dik_aci": 77.5,
+       "alan_mm2": 66.8,
+       "izdusum_mm2": 59.0,
+       "en_dik_aci": 77.6,
        "z_mm": [
-        1.1,
-        7.0
+        1.0,
+        6.9
        ],
        "merkez_robot": [
-        161.5,
-        0.0,
-        19.5
+        161.4,
+        2.9,
+        19.9
        ],
        "yaricap": 22.5
       }
      ],
-     "egim_alan_mm2": 321.6,
-     "egim_izdusum_mm2": 278.5,
-     "kucuk_delik_cikinti_mm2": 298.1,
+     "egim_alan_mm2": 306.1,
+     "egim_izdusum_mm2": 266.1,
+     "kucuk_delik_cikinti_mm2": 362.6,
      "destek_gerekli": true,
-     "destek_alan_mm2": 3217.2,
-     "destek_katman_alan_mm2": 2938.7,
-     "destek_hacim_cm3": 60.23,
+     "destek_alan_mm2": 3191.2,
+     "destek_katman_alan_mm2": 2925.1,
+     "destek_hacim_cm3": 58.87,
      "destek_bolge": [
       {
        "z_mm": [
@@ -4592,18 +4883,58 @@
         15.73
        ],
        "katman": 1,
-       "alan_mm2": 1052.1,
+       "alan_mm2": 556.4,
        "turler": [
         "konsol"
        ],
-       "konsol_max_mm": 30.35,
-       "kopru_max_mm": 41.67,
+       "konsol_max_mm": 30.3,
+       "kopru_max_mm": 10.48,
        "merkez_robot": [
-        182.7,
-        11.0,
+        182.6,
+        30.5,
         7.3
        ],
-       "destek_hacim_mm3": 16518.0,
+       "destek_hacim_mm3": 8735.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        15.73,
+        15.73
+       ],
+       "katman": 1,
+       "alan_mm2": 335.6,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 30.33,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        183.5,
+        -16.1,
+        7.3
+       ],
+       "destek_hacim_mm3": 5269.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        2.23,
+        2.23
+       ],
+       "katman": 1,
+       "alan_mm2": 84.4,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 10.54,
+       "kopru_max_mm": 7.67,
+       "merkez_robot": [
+        163.5,
+        -26.0,
+        20.8
+       ],
+       "destek_hacim_mm3": 186.0,
        "tablaya": true
       },
       {
@@ -4628,6 +4959,46 @@
       },
       {
        "z_mm": [
+        15.73,
+        15.73
+       ],
+       "katman": 1,
+       "alan_mm2": 39.1,
+       "turler": [
+        "konsol"
+       ],
+       "konsol_max_mm": 5.88,
+       "kopru_max_mm": 1.07,
+       "merkez_robot": [
+        171.5,
+        0.0,
+        7.3
+       ],
+       "destek_hacim_mm3": 614.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
+        15.73,
+        15.73
+       ],
+       "katman": 1,
+       "alan_mm2": 23.0,
+       "turler": [
+        "ada"
+       ],
+       "konsol_max_mm": 0,
+       "kopru_max_mm": 0,
+       "merkez_robot": [
+        197.2,
+        0.0,
+        7.3
+       ],
+       "destek_hacim_mm3": 361.0,
+       "tablaya": true
+      },
+      {
+       "z_mm": [
         0.73,
         0.73
        ],
@@ -4647,9 +5018,9 @@
        "tablaya": true
       }
      ],
-     "destek_bolge_sayi": 4,
+     "destek_bolge_sayi": 8,
      "en_buyuk_kopru_mm": 64.8,
-     "en_buyuk_konsol_mm": 30.4,
+     "en_buyuk_konsol_mm": 30.3,
      "kopruler": [
       {
        "z": 27.73,
@@ -4707,8 +5078,8 @@
        "boy": "M3",
        "merkez_robot": [
         165.5,
-        29.2,
-        -16.9
+        33.8,
+        0.0
        ],
        "eksen_robot": [
         1.0,
@@ -4726,8 +5097,8 @@
        "boy": "M3",
        "merkez_robot": [
         165.5,
-        33.8,
-        0.0
+        29.2,
+        -16.9
        ],
        "eksen_robot": [
         1.0,
@@ -8745,13 +9116,13 @@
   ],
   "desteksiz_iddia_tutmayan_adet": 8,
   "kutle_toplam_g": {
-   "0.80": 547.0,
-   "0.90": 602.0
+   "0.80": 552.0,
+   "0.90": 607.0
   },
   "sure_toplam_saat": {
-   "0.80": 13.2,
-   "0.90": 14.4
+   "0.80": 13.3,
+   "0.90": 14.5
   }
  },
- "sure_s": 278.4
+ "sure_s": 275.8
 }

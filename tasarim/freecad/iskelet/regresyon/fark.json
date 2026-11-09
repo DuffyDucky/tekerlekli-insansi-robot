@@ -1,5 +1,5 @@
 {
- "hepsi_ayni": true,
+ "hepsi_ayni": false,
  "satirlar": [
   {
    "olcut": "parca sayisi",
@@ -18,30 +18,30 @@
   {
    "olcut": "parca hacmi (en buyuk fark, mm3)",
    "once": 1991282.422,
-   "sonra": 1991282.422,
-   "fark": 0.0,
-   "ayni": true
+   "sonra": 2220066.451,
+   "fark": 228784.0298043869,
+   "ayni": false
   },
   {
    "olcut": "sinir kutusu (en buyuk fark, mm)",
    "once": "59 x 6 deger",
    "sonra": "59 x 6 deger",
-   "fark": 0.0,
-   "ayni": true
+   "fark": 315.0000000000001,
+   "ayni": false
   },
   {
    "olcut": "parca kutlesi (en buyuk fark, g)",
    "once": 5793.087,
-   "sonra": 5793.087,
-   "fark": 0.0,
-   "ayni": true
+   "sonra": 6410.804,
+   "fark": 617.7168804720002,
+   "ayni": false
   },
   {
    "olcut": "parca agirlik merkezi (en buyuk fark, mm)",
    "once": "59 x 3",
    "sonra": "59 x 3",
-   "fark": 0.0,
-   "ayni": true
+   "fark": 315.0,
+   "ayni": false
   },
   {
    "olcut": "kati sayisi + isValid",
@@ -59,11 +59,11 @@
    ],
    "sonra": [
     -0.0,
-    314.486827577,
+    418.614977933,
     0.0
    ],
-   "fark": 0.0,
-   "ayni": true
+   "fark": 104.12815035599999,
+   "ayni": false
   },
   {
    "olcut": "parca ici cakisma",

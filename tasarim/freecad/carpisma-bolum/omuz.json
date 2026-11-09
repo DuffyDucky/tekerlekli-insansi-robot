@@ -1,16 +1,16 @@
 {
  "bolum": "omuz",
- "kosu": "20261103-215611",
- "baslangic": "2026-11-03T22:00:16",
- "bitis": "2026-11-04T02:50:10",
- "sure_s": 17393.9,
- "yukleme_s": 75.3,
- "tepe_bellek_mb": 730,
- "tepe_sayfa_mb": 2638,
+ "kosu": "20261109-033441",
+ "baslangic": "2026-11-09T04:05:52",
+ "bitis": "2026-11-09T07:29:41",
+ "sure_s": 12229.2,
+ "yukleme_s": 59.4,
+ "tepe_bellek_mb": 740,
+ "tepe_sayfa_mb": 2648,
  "ayni_surec": [
   "omuz"
  ],
- "pid": 21152,
+ "pid": 12060,
  "moduller": [
   "iskelet",
   "omuz_sag",
@@ -20,22 +20,22 @@
  ],
  "kaynak": {
   "carpisma.py": "c688d738c3",
-  "arayuz.py": "a26dec0864",
+  "arayuz.py": "98a38dd81e",
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
-  "omuz/omuz_parcalar.py": "62b19c7371",
-  "kabuk/kabuk_parcalar.py": "5a3f44b62c",
+  "omuz/omuz_parcalar.py": "3ba1a5a8e2",
+  "kabuk/kabuk_parcalar.py": "9214ad0ecb",
   "dirsek/dirsek_parcalar.py": "7182c29899",
-  "kafa/kafa_parcalar.py": "7175fec90c",
-  "taban/taban_parcalar.py": "80bf1cdf24",
-  "kafa/kafa-analiz.json": "9150220597",
+  "kafa/kafa_parcalar.py": "22229bcdd0",
+  "taban/taban_parcalar.py": "b86289a0c4",
+  "kafa/kafa-analiz.json": "ebccb84751",
   "dirsek/dirsek_lib.py": "2f3a3b77fb",
   "kabuk/kabuk_lib.py": "a848c28ddc",
-  "kafa/kafa10_lib.py": "0a84e1e6c0",
-  "kafa/kafa_lib.py": "1a753a074a",
+  "kafa/kafa10_lib.py": "7395cfc654",
+  "kafa/kafa_lib.py": "d7818f5c0b",
   "omuz/omuz_lib.py": "b5c14c4ed2",
-  "taban/taban_lib.py": "73d922d4bc"
+  "taban/taban_lib.py": "638881cefc"
  },
  "sonuc": {
   "zarf": {
@@ -61,7 +61,7 @@
     "poz_sayisi": 875,
     "cakisan_poz": 116,
     "eklem_araliginda_cakisan": 0,
-    "kesisim_testi": 19808,
+    "kesisim_testi": 20299,
     "ortak_tarama": [],
     "aciklama": "omuz_montaj taramasi: one-arka -60...180, yana -20...150 (5-10 derece adim)",
     "en_kucuk_bosluk_mm": 0.0,
@@ -1300,7 +1300,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       3727.1
+       4134.8
       ],
       [
        "Ust kol tupu",
@@ -1374,7 +1374,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       1832.8
+       2151.1
       ],
       [
        "Ust kol tupu",
@@ -1442,7 +1442,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       358.5
+       507.8
       ],
       [
        "Ust kol tupu",
@@ -1604,7 +1604,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       5966.8
+       5878.1
       ]
      ],
      "(30, -15)": [
@@ -1684,7 +1684,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       5107.5
+       5188.5
       ],
       [
        "Ust kol tupu",
@@ -1770,7 +1770,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       3498.1
+       3693.9
       ],
       [
        "Ust kol tupu",
@@ -1932,7 +1932,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani cercevesi sag",
-       204.6
+       401.4
       ],
       [
        "Ust kol tupu",
@@ -1950,7 +1950,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       6833.8
+       6940.8
       ],
       [
        "Ust kol tupu",
@@ -2018,7 +2018,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani cercevesi sag",
-       144.1
+       328.5
       ],
       [
        "Ust kol tupu",
@@ -2036,7 +2036,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       6094.3
+       6061.2
       ],
       [
        "Ust kol tupu",
@@ -2104,7 +2104,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani cercevesi sag",
-       262.9
+       263.5
       ],
       [
        "Ust kol tupu",
@@ -2122,7 +2122,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       4174.6
+       3964.7
       ],
       [
        "Ust kol tupu",
@@ -2284,7 +2284,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       4238.3
+       3938.6
       ],
       [
        "Ust kol tupu",
@@ -2781,7 +2781,7 @@
     "poz_sayisi": 875,
     "cakisan_poz": 116,
     "eklem_araliginda_cakisan": 0,
-    "kesisim_testi": 19808,
+    "kesisim_testi": 20299,
     "ortak_tarama": [],
     "aciklama": "omuz_montaj taramasi: one-arka -60...180, yana -20...150 (5-10 derece adim)",
     "en_kucuk_bosluk_mm": 0.0,
@@ -4020,7 +4020,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       3727.1
+       4134.8
       ],
       [
        "Ust kol tupu",
@@ -4094,7 +4094,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       1832.8
+       2151.1
       ],
       [
        "Ust kol tupu",
@@ -4162,7 +4162,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       358.5
+       507.8
       ],
       [
        "Ust kol tupu",
@@ -4324,7 +4324,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       5966.8
+       5878.1
       ]
      ],
      "(30, -15)": [
@@ -4404,7 +4404,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       5107.5
+       5188.5
       ],
       [
        "Ust kol tupu",
@@ -4490,7 +4490,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       3498.1
+       3693.9
       ],
       [
        "Ust kol tupu",
@@ -4652,7 +4652,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani cercevesi sol",
-       204.6
+       401.4
       ],
       [
        "Ust kol tupu",
@@ -4670,7 +4670,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       6833.8
+       6940.8
       ],
       [
        "Ust kol tupu",
@@ -4738,7 +4738,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani cercevesi sol",
-       144.1
+       328.5
       ],
       [
        "Ust kol tupu",
@@ -4756,7 +4756,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       6094.3
+       6061.2
       ],
       [
        "Ust kol tupu",
@@ -4824,7 +4824,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani cercevesi sol",
-       262.9
+       263.5
       ],
       [
        "Ust kol tupu",
@@ -4842,7 +4842,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       4174.6
+       3964.7
       ],
       [
        "Ust kol tupu",
@@ -5004,7 +5004,7 @@
        "Ust kol tupu",
        "kabuk",
        "Gogus ekrani 11,6 in HDMI 1920x1080 kasali",
-       4238.3
+       3938.6
       ],
       [
        "Ust kol tupu",

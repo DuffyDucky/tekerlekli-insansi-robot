@@ -14167,18 +14167,18 @@
   "kaynak": "montaj/montaj-analiz.json (tabansiz 837 parca, ev pozu; montajdaki taban cikarildi) + taban (kablo payi dahil); kol gruplari omuz_parcalar / dirsek_parcalar'dan (Gobek, Kol, UstKol, OnKol, El)",
   "tabansiz_kutle_g": 17605.78,
   "tabansiz_am": [
-   0.297,
-   716.472,
-   7.391
+   0.296,
+   716.471,
+   7.392
   ],
   "tabansiz_parca": 837,
   "hareketli_gruplar": {
    "Gobek": {
-    "kutle_g": 175.1,
+    "kutle_g": 177.6,
     "am_omuz_yereli": [
-     174.125,
-     8.106,
-     -2.455
+     173.983,
+     7.611,
+     -2.322
     ]
    },
    "Kol": {
@@ -17015,5 +17015,5 @@
    ]
   }
  ],
- "sure_s": 95.4
+ "sure_s": 84.9
 }

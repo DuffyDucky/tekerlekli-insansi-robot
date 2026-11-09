@@ -176,6 +176,12 @@ OMUZ = dict(
     yana_aralik=(5.0, 120.0),            # S2: alt sinir 0 -> +3 (C1, 14 Ekim) -> +5 (S1 kablo kaseti, 15 Ekim 2026): kol S2 3'te
                                          # x 158,8'e, 5'te 160,07'ye iner; tambur / flans x <= 159,5 (planlama/adim2/S1-kaset.md)
     yana_alt_bosluk_mm={0: 4.7, -2: 0.6, -3: 0.0},   # kol/el <-> kabuk en kucuk bosluk (duzeltme plani C1, tarama; -3'te temas)
+    # P2.1 S2 mekanik durdurucu (F2, 9 Kasim 2026; planlama/d158/F2-gunluk.md). Gobek ic duvarinin (x 163...168) altinda dis, gobekle
+    # tek parca (PETG-CF): kol catali capraz kirisinin ic uc yuzune (catal yereli x 165, y -34...-28) S2 = temas_aci'da yuz yuze dayanir.
+    # Durdurucusuz ilk temaslar (F2 olcumu, 0,004 derece): kol <-> S1 kablo tamburu 3,65; kol <-> S1 kaset kapagi (kabuk) 3,21 (S1 20...150);
+    # kol <-> govde/omuz bandi -1,7...-3,3. Pencere 3,65...5 (yazilim alt siniri): temas_aci ortada (iki yana ~0,7 derece = ~0,37 mm).
+    # y: dis alti / ust kok; z: genislik (arka ucu S1 gecis kablosundan, on ucu S2 horn'undan uzak); x0: kapak yuzune (x 160) 1 mm.
+    durdurucu=dict(temas_aci=4.3, x0=161.0, x1=168.0, y=(-34.0, -10.0), z=(-8.0, 21.0)),
     servo="DS3235 (180 derece), S1 ve S2",
     # Karar (Duffy, 24 Ekim 2026; taslak-170 kol x1,25): DS3218MG -> DS3235. Govde DS3218 ile ayni kabul (40 x 20 x 40, kulak delikleri
     # 49,5 x 10, 25T): geometri degismedi. Govde yuksekligi kaynaklarda 38,5 / 40 / 40,5: servo gelince kumpasla dogrulanacak. 60 g (datasheet).

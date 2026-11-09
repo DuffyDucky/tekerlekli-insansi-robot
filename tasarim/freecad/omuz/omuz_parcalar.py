@@ -161,7 +161,19 @@ def psi_yz(psi, r):
 TB_VIDA = [psi_yz(ps, TB["vida_r"]) for ps in TB["kol_psi"]]
 for (y, z) in TB_VIDA:
     hub = hub.cut(insert_hole(3, (TB["kol_x"][1], y, z), (1, 0, 0)))
-add("Omuz gobegi", "Gobek", hub.removeSplitter(), "Baski", "PETG-CF", renk="petg2", patlat=(110, 0, 0))
+# P2.1 S2 mekanik durdurucu (arayuz.OMUZ["durdurucu"], F2 9 Kasim 2026): ic duvarin (x 163...168) altinda y -34'e inen dis + duvarin
+# -x yuzunde y -10'a kadar kok plakasi (x0...163; kapak yuzu x 160'a 1 mm). Disin +x yuzu, kol catali capraz kirisinin ic uc yuzunun
+# (catal yereli x = XR - 20, y -34...-28) S2 = temas_aci'daki duzlemi: o acida yuz yuze temas, ustunde bosluk, altinda kol durur.
+# Yuk kirisin ic ucundan gobek duvarina gecer (servo horn'u ve dislisi yuk yolunda degil). DURDURUCU olcum icin ayrica tutulur.
+_DR = A.OMUZ["durdurucu"]
+_dz = _DR["z"]
+DURDURUCU = box(_DR["x0"], _DR["x1"], _DR["y"][0], -22.0, _dz[0], _dz[1]).fuse(box(_DR["x0"], 163.5, -23.0, _DR["y"][1], _dz[0], _dz[1]))
+_kiris = box(XR - 20, XR + 60, -80, 10, _dz[0] - 1, _dz[1] + 1)      # catal yerelinde kirisin ic uc yuzunun disari yani (x >= XR - 20)
+_kiris.transformShape(App.Placement(V(0, 0, 0), App.Rotation(V(0, 0, 1), _DR["temas_aci"]), V(XR, 0, 0)).toMatrix(), True)   # = Pr(temas_aci)
+DURDURUCU = DURDURUCU.cut(_kiris).removeSplitter()
+hub = hub.fuse(DURDURUCU)
+add("Omuz gobegi", "Gobek", hub.removeSplitter(), "Baski", "PETG-CF", renk="petg2", patlat=(110, 0, 0),
+    not_="S2 mekanik durdurucu disi dahil (P2.1): kol S2 %.1f derecede capraz kiris ic ucuyla dayanir" % _DR["temas_aci"])
 for g in S1_HORN:
     add("Gobek-horn civatasi M3x12", "Gobek", screw912(3, 12, (159, g.y, g.z), (-1, 0, 0)), "Baglanti", "Celik 8.8",
         kod="M3x12 DIN 912", renk="celik", patlat=(140, 0, 0))

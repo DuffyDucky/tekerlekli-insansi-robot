@@ -1,8 +1,8 @@
 {
  "aciklama": "Son regresyon koşusu (taban değil). Üreten: planlama/d158/regresyon.py",
- "tarih": "2026-11-09T02:17:55+03:00",
+ "tarih": "2026-11-09T07:32:32+03:00",
  "cikis_kodu": 0,
- "taban_tarih": "2026-11-09T01:57:45+03:00",
+ "taban_tarih": "2026-11-09T02:17:55+03:00",
  "taban_guncellendi": true,
  "degerler": {
   "boy_mm": {
@@ -62,7 +62,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/carpisma-sonuc.json",
     "anahtar": "ev_pozu_cakisma",
-    "sha256_12": "af958449b389",
+    "sha256_12": "3ee69a9a49ed",
     "not_": "liste uzunluğu (çakışan çift sayısı)"
    },
    "yon": "kucuk_iyi",
@@ -75,7 +75,7 @@
    "kaynak": {
     "dosya": "tasarim/freecad/lale158/kafa-yerlesim/uygulama-ivme.json",
     "anahtar": "izgara_yuk_0g.a_sinir_pay15.rampa5_* (en küçük)",
-    "sha256_12": "cacaf5cb52ab",
+    "sha256_12": "6208aa854f1d",
     "not_": "rampa5_* en küçüğü: rampa5_geri"
    },
    "yon": "buyuk_iyi",
@@ -201,18 +201,10 @@
  "bilgi": {
   "carpisma_sonuc": {
    "kaynak": "tasarim/freecad/carpisma-sonuc.json : tek_kosu, birlestirme_notu, bolumler.*.kosu",
-   "tek_kosu": false,
-   "birlestirme_notu": "2026-11-09: EKSIK / KARISIK birlestirme: eksik bolum yok; kosu kimlikleri ['20261103-215611', '20261109-012656', '20261109-012829', '20261109-013228', '20261109-013626', '20261109-013723', '20261109-014001', '20261109-014757', '20261109-015550']; kaynak ayni: False. Tam sonuc icin 'python carpisma_kos.py' ile tum bolumleri yeniden kos.",
+   "tek_kosu": true,
+   "birlestirme_notu": "2026-11-09: birlestirilmemis, tek seferlik tam kosu (kosu 20261109-033441, 2026-11-09T03:35:44 ... 2026-11-09T07:29:41). Dokuz bolum (statik, omuz, kol_sag, kol_sol, kolkol, kafa_sabit, kafa_sag, kafa_sol, taban) ayri freecadcmd sureclerinde sirayla kostu; her bolumun suresi ve tepe bellegi 'bolumler'de. Tum bolumler ayni kaynak dosyalarla (md5 ozetleri 'kaynak') kostu; onceki kosulardan veri alinmadi.",
    "kosular": [
-    "20261103-215611",
-    "20261109-012656",
-    "20261109-012829",
-    "20261109-013228",
-    "20261109-013626",
-    "20261109-013723",
-    "20261109-014001",
-    "20261109-014757",
-    "20261109-015550"
+    "20261109-033441"
    ]
   }
  }

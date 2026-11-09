@@ -4,14 +4,14 @@
   {
    "olcut": "parca sayisi",
    "once": 70,
-   "sonra": 66,
-   "fark": 4.0,
+   "sonra": 75,
+   "fark": 5.0,
    "ayni": false
   },
   {
    "olcut": "parca adlari ve sirasi",
    "once": 70,
-   "sonra": 66,
+   "sonra": 75,
    "fark": null,
    "ayni": false
   },
@@ -32,9 +32,9 @@
   {
    "olcut": "bosluk Kol-Govde (mm)",
    "once": 4.0,
-   "sonra": 4.0,
-   "fark": 0.0,
-   "ayni": true
+   "sonra": 6.293053,
+   "fark": 2.2930529999999996,
+   "ayni": false
   },
   {
    "olcut": "bosluk Gobek-Govde (mm)",
@@ -46,9 +46,9 @@
   {
    "olcut": "tarama kol_gobek: cakisan poz",
    "once": 8,
-   "sonra": 8,
+   "sonra": 11,
    "fark": null,
-   "ayni": true
+   "ayni": false
   },
   {
    "olcut": "tarama gobek_govde: cakisan poz",
@@ -62,19 +62,19 @@
    "once": 94,
    "sonra": 94,
    "fark": null,
-   "ayni": true
+   "ayni": false
   },
   {
    "olcut": "tork tablosu (875 poz, en buyuk fark kg*cm)",
    "once": 5.722398563,
-   "sonra": 5.722398563,
-   "fark": 0.0,
-   "ayni": true
+   "sonra": 6.116001122,
+   "fark": 0.3936025590000005,
+   "ayni": false
   },
   {
    "olcut": "BOM",
    "once": 17,
-   "sonra": 16,
+   "sonra": 17,
    "fark": null,
    "ayni": false
   }

@@ -1,16 +1,16 @@
 {
  "bolum": "statik",
- "kosu": "20261109-012656",
- "baslangic": "2026-11-09T01:28:12",
- "bitis": "2026-11-09T01:28:27",
- "sure_s": 14.9,
- "yukleme_s": 73.8,
- "tepe_bellek_mb": 738,
- "tepe_sayfa_mb": 2646,
+ "kosu": "20261109-033441",
+ "baslangic": "2026-11-09T03:35:44",
+ "bitis": "2026-11-09T03:35:57",
+ "sure_s": 12.6,
+ "yukleme_s": 62.6,
+ "tepe_bellek_mb": 733,
+ "tepe_sayfa_mb": 2644,
  "ayni_surec": [
   "statik"
  ],
- "pid": 26904,
+ "pid": 7860,
  "moduller": [
   "iskelet",
   "omuz_sag",
@@ -23,11 +23,11 @@
  ],
  "kaynak": {
   "carpisma.py": "c688d738c3",
-  "arayuz.py": "c085ca8123",
+  "arayuz.py": "98a38dd81e",
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
-  "omuz/omuz_parcalar.py": "62b19c7371",
+  "omuz/omuz_parcalar.py": "3ba1a5a8e2",
   "kabuk/kabuk_parcalar.py": "9214ad0ecb",
   "dirsek/dirsek_parcalar.py": "7182c29899",
   "kafa/kafa_parcalar.py": "22229bcdd0",
@@ -198,7 +198,7 @@
    }
   ],
   "ev_pozu_cakisma": [],
-  "ev_pozu_kesisen_cift": 819,
+  "ev_pozu_kesisen_cift": 821,
   "ev_pozu_poz": {
    "one_arka": 0.0,
    "yana": 5.0,
@@ -236,19 +236,19 @@
   ],
   "kutle_g": {
    "iskelet": 6410.8,
-   "omuz_sag": 567.6,
-   "omuz_sol": 567.6,
+   "omuz_sag": 570.0,
+   "omuz_sol": 570.0,
    "kabuk": 7170.4,
    "dirsek_sag": 400.5,
    "dirsek_sol": 400.5,
    "kafa": 2088.5,
    "taban": 8109.8
   },
-  "kutle_toplam_g": 25715.6,
+  "kutle_toplam_g": 25720.5,
   "agirlik_merkezi": [
    -0.03,
-   528.46,
-   -9.26
+   528.59,
+   -9.25
   ]
  }
 }

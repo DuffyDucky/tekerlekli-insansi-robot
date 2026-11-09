@@ -12,7 +12,7 @@
   "Baski": {
    "kalem": 62,
    "adet": 72,
-   "kutle_g": 7235.2
+   "kutle_g": 7240.1
   },
   "Imalat": {
    "kalem": 1,
@@ -79,11 +79,11 @@
     "Govde kabugu yan yuzu (referans)"
    ],
    "haric_neden": "travers iskeletin parcasi (iki kez sayilmaz); kabuk duvari kabuk modulunun yer tutucusu",
-   "kutle_g": 567.56,
+   "kutle_g": 570.01,
    "agirlik_merkezi": [
-    153.317,
-    1254.773,
-    -0.796
+    153.362,
+    1254.719,
+    -0.762
    ],
    "gruplar": [
     "OmuzSag_Govde",
@@ -107,11 +107,11 @@
     "Govde kabugu yan yuzu (referans)"
    ],
    "haric_neden": "travers iskeletin parcasi (iki kez sayilmaz); kabuk duvari kabuk modulunun yer tutucusu",
-   "kutle_g": 567.56,
+   "kutle_g": 570.01,
    "agirlik_merkezi": [
-    -153.317,
-    1254.773,
-    -0.796
+    -153.362,
+    1254.719,
+    -0.762
    ],
    "gruplar": [
     "OmuzSol_Govde",
@@ -1449,11 +1449,11 @@
    "grup": "Gobek",
    "tur": "Baski",
    "kod": "Omuz gobegi",
-   "kutle_g": 59.241,
+   "kutle_g": 61.691,
    "merkez": [
-    169.66,
-    1279.02,
-    -6.19
+    169.43,
+    1277.56,
+    -5.66
    ]
   },
   {
@@ -2398,11 +2398,11 @@
    "grup": "Gobek",
    "tur": "Baski",
    "kod": "Omuz gobegi",
-   "kutle_g": 59.241,
+   "kutle_g": 61.691,
    "merkez": [
-    -169.66,
-    1279.02,
-    -6.19
+    -169.43,
+    1277.56,
+    -5.66
    ]
   },
   {
@@ -16200,11 +16200,11 @@
  ],
  "solve": 0,
  "ev_pozu_cozucu_sapmasi": 0.0,
- "kutle_g": 25715.59,
+ "kutle_g": 25720.49,
  "agirlik_merkezi": [
   -0.026,
-  528.457,
-  -9.256
+  528.593,
+  -9.253
  ],
  "karsilastirma": {
   "parca": {
@@ -16214,33 +16214,33 @@
    "ayni": true
   },
   "kutle": {
-   "montaj_dosyasi": 25715.59,
-   "bellek": 25715.59,
-   "beklenen_analizlerden": 25715.7,
-   "carpisma": 25515.6,
-   "fark_analiz": -0.109,
-   "fark_carpisma": 199.989
+   "montaj_dosyasi": 25720.49,
+   "bellek": 25720.49,
+   "beklenen_analizlerden": 25720.7,
+   "carpisma": 25715.6,
+   "fark_analiz": -0.21,
+   "fark_carpisma": 4.887
   },
   "am": {
    "montaj_dosyasi": [
     -0.026,
-    528.457,
-    -9.256
+    528.593,
+    -9.253
    ],
    "bellek": [
     -0.026,
-    528.457,
-    -9.256
+    528.593,
+    -9.253
    ],
    "carpisma": [
     -0.03,
-    531.56,
-    -8.38
+    528.46,
+    -9.26
    ],
-   "fark_carpisma_mm": 3.224,
+   "fark_carpisma_mm": 0.133,
    "fark_bellek_mm": 0.0
   },
   "not_": "analiz JSON'lari 0,1 g'a yuvarlanmis; carpisma AM'si 0,01 mm'ye. 1,65 m (Y2a): carpisma-sonuc.json Y4 tam taramasina kadar ESKI (125 cm) - fark_carpisma anlamsiz, montaj/yerlesim-kontrol.json kisa kontrolu kullan"
  },
- "sure_s": 103.8
+ "sure_s": 91.1
 }

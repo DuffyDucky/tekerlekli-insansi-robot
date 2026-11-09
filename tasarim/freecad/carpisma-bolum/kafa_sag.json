@@ -1,16 +1,16 @@
 {
  "bolum": "kafa_sag",
- "kosu": "20261109-014001",
- "baslangic": "2026-11-09T01:40:13",
- "bitis": "2026-11-09T01:47:56",
- "sure_s": 462.9,
- "yukleme_s": 11.7,
+ "kosu": "20261109-033441",
+ "baslangic": "2026-11-09T03:47:45",
+ "bitis": "2026-11-09T03:55:33",
+ "sure_s": 467.2,
+ "yukleme_s": 12.0,
  "tepe_bellek_mb": 624,
- "tepe_sayfa_mb": 2643,
+ "tepe_sayfa_mb": 2647,
  "ayni_surec": [
   "kafa_sag"
  ],
- "pid": 27260,
+ "pid": 23448,
  "moduller": [
   "omuz_sag",
   "dirsek_sag",
@@ -18,11 +18,11 @@
  ],
  "kaynak": {
   "carpisma.py": "c688d738c3",
-  "arayuz.py": "c085ca8123",
+  "arayuz.py": "98a38dd81e",
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
-  "omuz/omuz_parcalar.py": "62b19c7371",
+  "omuz/omuz_parcalar.py": "3ba1a5a8e2",
   "kabuk/kabuk_parcalar.py": "9214ad0ecb",
   "dirsek/dirsek_parcalar.py": "7182c29899",
   "kafa/kafa_parcalar.py": "22229bcdd0",
@@ -265,7 +265,7 @@
     "kol_alt_oge": 40050,
     "zarfa_yakin_alt_oge": 5580,
     "kafa_oge": 15633,
-    "aday": 908873,
+    "aday": 909085,
     "ince_aday": 0,
     "ince_tur": 0,
     "ince_isaretli": 0,
@@ -273,7 +273,7 @@
     "sinir_aday": 0,
     "sinir_yakinsadi": true,
     "yasak_kural": [],
-    "tam_olcum": 4054,
+    "tam_olcum": 4070,
     "kafaya_yakin_tam_kol_pozu": 323,
     "kol_pozu": 1770,
     "kafa_pozu": 168,
@@ -1058,10 +1058,10 @@
       "cakisan_kafa_poz": []
      }
     ],
-    "sure_s": 462.7
+    "sure_s": 467.0
    }
   },
   "not_": "kafa pozu = (pan, tilt); kol pozu = (one-arka, yana, dirsek, bilek); alt poz: kafa Govde (), Pan (pan), Kafa (pan, tilt); kol Gobek (one-arka), Kol/UstKol (one-arka, yana), OnKol (+dirsek), El (+bilek). Eklem araligi: kafa pan +-90, tilt -25...30 ve kol araligi; aralik disi = kafa pan +-90 disi ya da tilt 40 (serbest -25...40) ya da kol ince komsulugu disi. Olculmeyen ciftlerin boslugu >= 100 mm (sinir kutusu).",
-  "sure_s": 462.9
+  "sure_s": 467.2
  }
 }
