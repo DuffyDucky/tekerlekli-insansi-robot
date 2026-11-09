@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F7d Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+h3{font-size:1rem;margin:20px 0 8px}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+figure{margin:12px 0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px}
+figure img{display:block;width:100%;height:auto;border-radius:6px;background:#fff}
+figcaption{color:var(--muted);font-size:.88rem;margin-top:8px}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F7d: rehberde son düşükler + demo metni (P7.4)</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 09.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>F7d-brief.md</code>, <code>F7d-gunluk.md</code> (düzeltme turu 1 dahil), <code>F7d-kontrol.md</code> (yeniden kontrol, düzeltme 1: GEÇER), <code>planlama/rehber/kontrol.json</code>, <code>planlama/rehber/Lale-montaj-rehberi.pdf</code>, <code>planlama/adim3/elektrik.md</code></p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">Tarayıcı kontrolü</div><div class="v"><span class="tag ok">50 / 50</span></div><div class="d"><code>kontrol.json</code> (21:13); konsol 0; parça 1192 ↔ 1192</div></div>
+  <div class="card"><div class="k">Yazdırılabilir PDF</div><div class="v">54 sayfa</div><div class="d">en küçük yazı 8,10 pt; 8 pt altı sayfa 0; devam sayfası 4; taşan 0</div></div>
+  <div class="card"><div class="k">Telefon 360 px</div><div class="v"><span class="tag ok">taşma 0</span></div><div class="d">7 adımda görüntü alanı 360, belge 360</div></div>
+  <div class="card"><div class="k">Denetim</div><div class="v"><span class="tag ok">0</span></div><div class="d">zorunlu eksik 0 / 40, yasak 0 (istisna 5), kopya eki 0, ASCII 0</div></div>
+  <div class="card"><div class="k">Bağımsız kontrol</div><div class="v"><span class="tag ok">GEÇER</span></div><div class="d">1 düzeltme turundan sonra; kritik 0, orta 0, açık düşük 4</div></div>
+</div>
+
+<p class="note">C'nin commit öncesi koşuları (21:31–21:32, <code>py -3 -B</code>, <code>PYTHONDONTWRITEBYTECODE=1</code>; FreeCAD açılmadı, süreç 0, kilit "boş"; rehber yeniden üretilmedi, veri ve görüntüler A'nın düzeltme turu 1 koşusundan, 21:08–21:13). <code>carpisma_kos.py kontrol</code>, <code>regresyon.py --yazma</code>, <code>rehber_denetim.py</code>, <code>demo_uret.py</code> ve <code>F9b-dogrula.py --tarayicisiz</code> çıkış 0. Koşulardan sonra <code>git status --porcelain</code> koşudan öncekiyle aynı. Takma ad, soyad ve yerel kullanıcı yolu araması, adlar komut satırına ve hiçbir dosyaya yazılmadan, çalışma anında türetilerek yapıldı (takma ad git geçmişinden, soyadlar ekip tablosundan).</p>
+
+<h2>Kabul ölçütleri (C'nin ölçümleri)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Ölçüt</th><th>Ölçülen</th><th>Kaynak</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td>D-5 + D-9: F3 ölçüm sırası açık, K11 b'de ölçümsüz fiş yok</td><td>F3 madde 3'te tam sıra; veride "enerjiyi kes" 0; K11 b'de 12 V fişi F3'te takılmaz, ölçüm ve fiş F5 aşama 2'de. Sıra kaynakta yok, metinde "doğrulanmadı"</td><td>B §1 (iki tur); aşağıdaki tablo</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>D-8: multimetre kademesi ve klemens ucu</td><td>DC V, kırmızı uç V soketinde, 10 A soketi uyarısı; PC817 #1 girişinin + ucu, regülatör çıkışının + / − klemensi; F1'de mantar NC süreklilik denemesi (akü ayrık)</td><td><code>testler/00-genel.md</code> multimetre kuralı; B §1</td><td><span class="tag ok">GEÇER</span> (aralık ve + uç etiketi doğrulanmadı)</td></tr>
+<tr><td>D-10: şarj girişi rehberde, "takılı değil" listesinde</td><td>K1 madde 1 kablo, F1 madde 5 etek konnektörü; F1 aşama 1 ve F5 aşama 2'de "şarj girişi mini 10 A takılı değil"; kol tarafı ve pim uyarısı (O-2)</td><td><code>elektrik.md:372</code>, <code>:41</code>, <code>:91</code>; B §2</td><td><span class="tag ok">GEÇER</span> (yer doğrulanmadı)</td></tr>
+<tr><td>D-6' + D-7: köprüleme kalıpları, pencere sınırı, ≥ 6 enjeksiyon, ≥ 2 olumsuz</td><td>A: 36 / 36 yakalandı, 15 / 15 olumsuz temiz. B: R 8 / 8, RN 3 / 3; B13, B19, B20 yakalanıyor; J/K 31 / 31, S 3 / 3, P 8 / 8</td><td>günlük, düzeltme turu 1; B §2</td><td><span class="tag ok">GEÇER</span> (sınırlar aşağıda)</td></tr>
+<tr><td>Demo metni gerçeğe uygun</td><td>"Bu sayfa hakkında" <code>F9b-dogrula.py</code>'nin sekiz denetimini sayıyor; [4] "göreli bağlantıyla (<code>&lt;script src&gt;</code>) yüklediği … sayfaya gömülü bir kopya ayrıca aranmaz"</td><td><code>viewer-template.html:260</code>; B §2 (D-5)</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>kontrol.json</code> 50/50, konsol 0, 1192 ↔ 1192</td><td>50 / 50; konsol 0; <code>parca_rehber</code> 1192, <code>parca_mesh</code> 1192; şema 13</td><td><code>kontrol.json</code> <code>ozet</code>, tarih 2026-11-09 21:13</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>360 px yatay kaydırma yok</td><td>adım 0, 9, 24, 31, 32, 35, 49: genişlik 360, belge 360, taşma 0 px</td><td><code>kontrol.json</code> <code>telefon</code></td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>rehber_denetim.py</code></td><td>çıkış 0: ASCII 0, gruplama 0, çelişki 0, zorunlu eksik 0 / 40, bağlamla affedilen 6, yasak 0 (istisna 5), kopya eki 0; parça 1192, şema 13</td><td>C, 21:31</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>PDF ≥ 8 pt, her adım ≥ 1 sayfa, taşan 0</td><td>54 sayfa (pypdf ve PyMuPDF); en küçük 8,10 pt; 8 pt altı sayfa 0; taşan metin aralığı 0; "Sayfa i / 54" 54 / 54; eşlemenin en büyük sayfası 54, <code>esleme_tutarli</code> true</td><td>C: PyMuPDF + pypdf; <code>kontrol.json</code> <code>yazdir</code></td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>carpisma_kos.py kontrol</code></td><td>çıkış 0 ("izlenen 17 dosyanin ozetleri kayitla ayni")</td><td>C, 21:31</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>regresyon.py --yazma</code></td><td>çıkış 0, 10 / 10 "aynı" (tablo aşağıda)</td><td>C, 21:31:09; taban 14:30:50</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Demo yeniden üretimi bayt bayt aynı</td><td><code>demo_uret.py</code> çıkış 0 (127 sayı anahtarı, 14 karar, 153 kalem, 1192 düğüm); sha1 önce ve sonra <code>e6537a6bce81</code>, <code>cmp</code> fark 0</td><td>C, 21:32</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>F9b-dogrula.py --tarayicisiz</code></td><td>çıkış 0, "GECER (hata 0)"; 119 bağlı sayı, 0 bağsız; maliyet 153 kalem, genel 118.666,22 TL; tarayıcı adımı atlandı (B'nin tarayıcılı koşusu 0)</td><td>C, 21:32</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Takma ad, soyad, yerel yol</td><td>commit'in 18 dosyasında 0 (PDF metni ve metası, PNG baytları dahil); staged diff'in eklenen 4.642 satırında 0</td><td>C, çalışma anında türetilen adlar</td><td><span class="tag ok">GEÇER</span></td></tr>
+</tbody>
+</table></div>
+
+<h3>Regresyon değerleri (<code>regresyon.py --yazma</code>, 21:31:09)</h3>
+<div class="tbl"><table>
+<thead><tr><th>Değer</th><th>Taban</th><th>Şimdi</th><th>Eşik</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td><code>boy_mm</code></td><td class="n">1580</td><td class="n">1580</td><td class="n">1580 ± 0,05</td><td>aynı</td></tr>
+<tr><td><code>cakisma_kafa_ici</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>cakisma_kabuk_ici</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>cakisma_kabuk_x_iskelet</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>cakisma_ev_pozu</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>rampa_yuksuz</code></td><td class="n">1,519</td><td class="n">1,519</td><td class="n">≥ 1,5</td><td>aynı</td></tr>
+<tr><td><code>tilt_payi</code></td><td class="n">3,64</td><td class="n">3,64</td><td class="n">≥ 3</td><td>aynı</td></tr>
+<tr><td><code>pan_payi</code></td><td class="n">2,21</td><td class="n">2,21</td><td class="n">≥ 2</td><td>aynı</td></tr>
+<tr><td><code>mik_hoparlor_mm</code></td><td class="n">574,3</td><td class="n">574,3</td><td class="n">≥ 400</td><td>aynı</td></tr>
+<tr><td><code>sy8205_x_usb_mm3</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+</tbody>
+</table></div>
+<p class="note">Sonuç: "GEÇER (hepsi okundu, kötüleşen yok)". Model geometrisi ve tarama kaynakları değişmedi: <code>robot.glb</code>, <code>robot-glb.js</code>, <code>rehber_veri.py</code>, <code>rehber_uret.py</code> ve <code>yazdir.html</code> HEAD ile aynı.</p>
+
+<h2>D-5 … D-10 nasıl kapandı</h2>
+<p class="note">F7c raporunda "P9.3 açıkları" başlığıyla listelenen D-5 … D-10 bu pakete, P7.4'e taşındı ve burada kapandı; F7c raporu değiştirilmedi.</p>
+<div class="tbl"><table>
+<thead><tr><th>#</th><th>F7c'deki açık</th><th>F7d'de yapılan</th><th>B'nin sonucu</th></tr></thead>
+<tbody>
+<tr><td class="kod">D-5</td><td>F3: "ölçünce enerjiyi kes" belirsiz</td><td>F3 madde 3: akü ayrıkken ölçü uçları bağlanır → ana anahtar kapalıyken akü XT60'tan takılır → ana anahtar açılır → çıkış okunur (12 V) → ana anahtar kapatılır → akü XT60'tan ayrılır → uçlar sökülür → HDMI ve 12 V fişi enerjisizken takılır. Ölçümden önce takı çıkarılır, 12 V fiş ucu bantla yalıtılır (D-4, düzeltme 1)</td><td><span class="tag ok">kapalı</span>: sıra <code>00-genel.md</code> kural 7 ile tutarlı; kaynakta sıra yok, metinde "doğrulanmadı"</td></tr>
+<tr><td class="kod">D-6'</td><td>Denetimde "birleştir", "birbirine bağla", "açtıktan sonra … tak", "röleyi elle kapat" kaçıyor; yeni güvenlik cümlelerini koruyan <code>ZORUNLU</code> yok</td><td>Köprüleme eş anlamlıları (nesne + 60 karakter içinde "birleştir / birbirine bağla / değdir / lehimle / tuttur / kıskaçla"), "röleyi elle kapat / çek / bastır", enerji önekine "açtıktan / taktıktan / verdikten sonra". <code>ZORUNLU</code> 23 → 35 → 40 (F5 "Kollar aşağıda başlar" düzeltme 1'de ayrı satır)</td><td><span class="tag ok">kapalı</span>: S1–S3 yakalanıyor; kalıp sınırları D-3'te</td></tr>
+<tr><td class="kod">D-7</td><td>120 karakterlik pencere doğru cümlede (P5) yanlış alarm veriyor</td><td>İlk tur: sıra bağlacında ve enerjiyi bitiren ifadede kesildi; bu, O-1 kaçağını açtı. Düzeltme 1: yalnız enerjiyi bitiren dört ifade ("ana anahtarı kapat", "aküyü (XT60'tan) ayır", "XT60'tan ayır", "enerjiyi kes") ve olumsuz ek değilse (<code>(?!ma|me)</code>) keser</td><td><span class="tag ok">kapalı</span>: P5, NB1–NB3, A'nın N1–N4'ü temiz</td></tr>
+<tr><td class="kod">D-8</td><td>Mantar ölçümünde kademe ve klemensin ucu yok</td><td>"DC V kademesi (20 V aralığı ya da otomatik), kırmızı uç V soketinde; 10 A soketinde kalırsa bu noktayı GND'ye bağlar ve F5 2 A atar"; PC817 #1 girişinin + ucu; F3 / F5'te regülatör çıkışının + / − klemensi; F1 madde 3 mantar NC süreklilik denemesi (akü ayrık)</td><td><span class="tag ok">kapalı</span>: aralık, + uç etiketi ve süreklilik denemesi "doğrulanmadı"</td></tr>
+<tr><td class="kod">D-9</td><td>K11 b seçilirse 12 V fişi ölçümsüz takılıyor; ölçüm için akü ve ana anahtar sırası yok</td><td>K11 b: fiş F3'te takılmaz, ucu bantlı kalır. F5 aşama 2'de ölçü ucu akü ayrıkken bağlanır, tel erişim alanının dışına çıkarılır, değer dışarıdan okunur; fiş akü ayrıldıktan sonra takılır</td><td><span class="tag ok">kapalı</span>: T7 "ekrana bağlamadan ölç" kuralına uyuyor</td></tr>
+<tr><td class="kod">D-10</td><td>Şarj girişi mini 10 A rehberde yok</td><td>K1 madde 1'de kol (akü + hattı, ana anahtar öncesi, kapaklı mini 10 A yuvası); F1 madde 5'te etek konnektörü (delik modelde yok); aşama 1 ve 2 listelerinde "takılı değil"; F5 notunda gerilimli pim uyarısı (O-2)</td><td><span class="tag ok">kapalı</span>: yer, bağlantı noktası ve takılma sırası "doğrulanmadı"; rehberin kapsadığı sürede pimler enerjisiz</td></tr>
+</tbody>
+</table></div>
+
+<h2>Düzeltme turu (O-1, O-2)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Tur</th><th>Girdi (B)</th><th>Yapılan (A)</th><th>Sonuç (B)</th></tr></thead>
+<tbody>
+<tr><td class="kod">İlk kontrol</td><td colspan="2">A'nın ilk turu (20:20–20:3x): D-5 … D-10, demo metni; FreeCAD'li veri koşusu (20:26, kilit altında); PDF 54 sayfa, <code>ZORUNLU</code> 35</td><td>KOŞULLU: kritik 0, orta 2 (O-1, O-2), düşük 7 (D-1 … D-7)</td></tr>
+<tr><td class="kod">O-1</td><td>D-7 düzeltmesi yeni kaçak açtı: çıplak sıra bağlacı ("sonra", "bitince") pencereyi kesiyor, kök olumsuz eki de tutuyor ("ayırmadan", "kesmeden"). B19 "Ana anahtar açıkken birkaç saniye sonra F1 sigortasını tak", B20 ve B13 kaçıyordu; HEAD denetimi yakalıyordu</td><td><code>_SINIR</code> B'nin önerisiyle: yalnız enerjiyi bitiren ifade, <code>(?!ma|me)</code> ile. A'nın Y24–Y29'u (B19, B20, B13 ve "sonra", "kapatmadan", "ardından" denemeleri)</td><td><span class="tag ok">kapandı</span>: B13, B19, B20 yakalanıyor; D-7'nin doğru cümleleri temiz</td></tr>
+<tr><td class="kod">O-2</td><td>Şarj kolunun akü XT60'ının hangi tarafından alındığı yazmıyor; sigorta takıldıktan sonra XT60E-M erkek pimleri gerilimli, uyarı yok; − ucu ve kutup yok</td><td>K1: "Kolu akü XT60'ının robot tarafından, ana hattan al: akü XT60'tan ayrılınca kol da enerjisiz kalır", taraf "doğrulanmadı"; − ucu ve kutup "doğrulanmadı"; kesit için 16AWG yuva ipucu. F5 notu: pim uyarısı, "Pimlere metal değdirme", KT-F7d-1'e kadar geçerli. <code>ZORUNLU</code>'ya K1 kol tarafı ve F5 pim uyarısı</td><td><span class="tag ok">kapandı</span>: B'nin R1 ve R2'si yakalandı; yeni tehlike yok</td></tr>
+<tr><td class="kod">Aynı turda</td><td>D-1, D-2, D-4, D-5 (ilk kontrolün düşükleri)</td><td>D-1: F5 "Kollar aşağıda başlar" ayrı <code>ZORUNLU</code>. D-2: <code>artı</code> / <code>eksi</code> yalnız ad çekim ekleriyle ("artık", "eksik" tutmaz). D-4: F3'te takı kuralı ve fiş yalıtımı. D-5: demo [4] metni F9b'nin baktığıyla sınırlandı. <code>ZORUNLU</code> 40</td><td><span class="tag ok">GEÇER</span>: NB7, NB8 temiz; R5, R6 hâlâ yakalanıyor; R3, R4 yakalandı</td></tr>
+</tbody>
+</table></div>
+
+<h2>FreeCAD'siz veri yazımı ve B'nin bağımsız doğrulaması</h2>
+<ul class="list">
+<li><b>Neden.</b> Adım metni <code>rehber-veri.json</code>'a yalnız FreeCAD altında koşan <code>rehber_veri.py</code> ile girer; <code>--veri-yok</code> metni almaz. Düzeltme turunda FreeCAD yasaktı.</li>
+<li><b>A'nın yöntemi.</b> Metin alanları scratchpad'deki bir betikle, <code>rehber_veri.py:533-586</code> kuralıyla (adım 0 <code>HAZIRLIK</code>, öbürleri <code>ADIM</code>) ve <code>:625-627</code> yazım biçimiyle (json <code>indent=0</code>, <code>ensure_ascii=False</code>; js kompakt JSON) yazıldı. Değişiklik uygulanmadan yeniden yazılan dosyalar FreeCAD çıktısıyla bayt bayt aynıydı. İlk denemede adım 0'ın <code>kontrol</code> / <code>kablo</code> listesi boşaldı; yedekten geri yazıldı, betik düzeltildi.</li>
+<li><b>B'nin bağımsız ölçümü</b> (A'nın betiği koşulmadı): ilk turun FreeCAD verisine göre fark yalnız 3 yolda (<code>K1.is_</code>, <code>F3.is_</code>, <code>F5.not_</code>). 50 adımda parça, bağlantı, kontrol, kablo, alet listeleri ilk turla ve HEAD ile aynı; üst alanlar aynı; js = json; yazım biçimi birebir; <code>rehber_metin.py</code> → veri farkı 0.</li>
+<li><b>Hüküm (B).</b> FreeCAD'li bir koşu aynı içeriği üretirdi; FreeCAD'li tam veri koşusu commit için gerekmiyor. Tek fark üretim damgası (D-8, aşağıda).</li>
+<li><span class="tag wait">sınır</span> Yazım betiği depoda yok; bir sonraki ajan aynı adımı tekrarlayamaz. Tekrar gerekirse <code>rehber_veri.py</code>'ye metin modu ayrı iş olarak önerildi.</li>
+</ul>
+
+<h2>Şarj girişi uyarısı ve KT-F7d-1</h2>
+<p>Rehber şarj sigortasını hiçbir adımda taktırmıyor, bu yüzden rehberin kapsadığı sürede şarj pimleri enerjisiz. Rehberden sonraki ilk şarj için F5 notu uyarıyor: sigorta takıldıktan sonra etekteki XT60E-M panel erkek konnektörün pimleri akü XT60'tan ayrılmadıkça gerilimlidir; ana anahtar da mantar da bu kolu kesmez (<code>elektrik.md:372</code> "ana anahtar öncesi"). Akü 12,8 V LFP; çarpma tehlikesi düşük, asıl risk pimler arasında kısa devre (10 A sigorta atana kadar akım; genel bilgi). Kolun akü XT60'ının robot tarafından alınması rehberin önerisi, kaynakta yok.</p>
+<div class="tbl"><table>
+<thead><tr><th>Seçenek</th><th>Ne</th><th>Etki</th></tr></thead>
+<tbody>
+<tr><td class="kod">a</td><td>XT60E-M kalır; şarj sigortası yalnız şarj sırasında takılır, bitince çıkarılır</td><td>Parça ve maliyet aynı (XT60E-M 61,20 TL, <code>maliyet.json:111</code>, 09.11 doğrulandı). Pimler yalnız şarjda gerilimli. Her şarjda sigorta yuvasına erişim gerekir; yuvanın yeri modelde yok, H1 / H2'den erişim doğrulanmadı. Unutulursa d'ye döner</td></tr>
+<tr><td class="kod">b</td><td>XT60E-F (dişi) panel konnektöre geçilir</td><td>Gerilimli taraf gömük soket olur. Şarj kablosunun ucu erkek XT60 olur (<code>maliyet.json:93</code>'te XT60H-M × 5 var). <code>maliyet.json:111</code> satırı değişir; fiyat ve stok doğrulanmadı, yeni bakım gerekir. Panel deliği yeni parçayla ölçülür; rehberde K1, F1 ve F5 metni değişir</td></tr>
+<tr><td class="kod">c</td><td>Kol ana anahtar sonrasına alınır</td><td>Ana anahtar kapalıyken pimler enerjisiz; ama şarj ancak ana anahtar açıkken olur, F4 / F5 dalları, ESP32, akü ADC bölücüsü (ve K11 a'da göğüs dalı) enerjilenir; ana anahtar şarj akımını taşır. <code>elektrik.md:372</code> ve akü raporu önerisiyle çelişir</td></tr>
+<tr><td class="kod">d</td><td>Bugünkü gibi: XT60E-M, sigorta kalıcı takılı; konnektöre kapak ve uyarı etiketi</td><td>Parça değişmez; kapak <code>maliyet.json</code>'a fiyatsız aday olarak girer. Rehberdeki geçici uyarı kalıcı olur</td></tr>
+</tbody>
+</table></div>
+<div class="oneri"><b>B'nin görüşü: b, olmazsa a.</b> Gerilimli tarafı dokunmaya kapalı yapan tek seçenek b; a her seferinde hatırlamaya dayanır; c güvenlik düzenini şarj için değiştirir; d riski kabul eder. Karar Ahmet'te (tasarım). Kayıt ajanı bu maddeyi karar kuyruğuna K50 olarak taşıdı (ayrı commit).</div>
+
+<h2>Denetim: enjeksiyon sonuçları</h2>
+<p class="note">Bütün denemeler bellek içinde, depo dışındaki kopyada yapıldı; depo değişmedi. Yakalanma yalnız hedeflenen denetimle (yasak, zorunlu, kopya eki) sayıldı.</p>
+<div class="tbl"><table>
+<thead><tr><th>Küme</th><th>Kim</th><th>Ne</th><th>Sonuç</th></tr></thead>
+<tbody>
+<tr><td class="kod">Y1–Y36</td><td>A</td><td>yeni enjeksiyonlar: köprüleme (birleştir, birbirine bağla / lehimle / değdir), röleyi elle kapatma, "açtıktan / taktıktan / verdikten sonra", sıra bozma, silinen <code>ZORUNLU</code> cümleleri, B13 / B19 / B20, kol tarafı, pim uyarısı</td><td class="n"><span class="tag ok">36 / 36 yakalandı</span></td></tr>
+<tr><td class="kod">N1–N15</td><td>A</td><td>olumsuz denemeler (doğru metin); D-7 cümlesiyle 4, "artık / eksik" 3, enerjiyi bitiren ifadeyle 2</td><td class="n"><span class="tag ok">15 / 15 temiz</span></td></tr>
+<tr><td class="kod">ESKI</td><td>A</td><td>F7c regresyonu: B'nin J1–J12, J17, J20'si; P1–P8</td><td class="n">14 / 14; 8 / 8 temiz</td></tr>
+<tr><td class="kod">R1–R8, RN1–RN3</td><td>B</td><td>düzeltme 1'e yönelik: kol tarafı, pim uyarısı, takı, fiş yalıtımı, "artısıyla eksisini birleştir", "sonra da ardından … tak", "kapatmadan … bağla"</td><td class="n"><span class="tag ok">8 / 8 yakalandı</span>; 3 / 3 temiz</td></tr>
+<tr><td class="kod">B1–B20</td><td>B</td><td>ilk kontroldeki bağımsız set</td><td class="n">14 / 20; kaçan 6'sı bilinen sınır (D-3)</td></tr>
+<tr><td class="kod">NB1–NB10</td><td>B</td><td>olumsuz denemeler</td><td class="n">8 / 10 temiz; NB9, NB10 yanlış alarm (D-2')</td></tr>
+<tr><td class="kod">J/K, S, P</td><td>B</td><td>F7c regresyonu (yeni metne uyarlanmış)</td><td class="n">31 / 31; 3 / 3; 8 / 8 temiz</td></tr>
+<tr><td class="kod">Gerçek veri</td><td>C</td><td>depodaki <code>rehber_denetim.py</code></td><td class="n">yasak 0 (istisna 5), zorunlu 0 / 40</td></tr>
+</tbody>
+</table></div>
+<p class="note">Gerçek verideki 5 istisna doğru olumsuz biçim: K1 ×2, E3a ve E4 "köprülenmez / köprülenmedi"; F5 "röleler elle kapatılmaz".</p>
+
+<h2>PDF: 54 sayfa, 8,1 pt</h2>
+<ul class="list">
+<li><b>Ölçüm (C).</b> pypdf ve PyMuPDF 54 sayfa. En küçük yazı 8,10 pt, 8 pt altı sayfa 0, sayfa dışına taşan metin aralığı 0, "Sayfa i / 54" alt bilgisi 54 / 54 doğru. PDF sha1 <code>2d50a7393bfa</code>, 3.932 kB.</li>
+<li><b>Sayfa eşlemesi</b> (<code>kontrol.json</code> <code>yazdir.sayfa_esleme</code>, <code>esleme_tutarli</code> true; B'nin başlıktan kurduğu eşlemeyle aynı): iki sayfalı adımlar 31 (E4) → 32, 33; 32 (K2) → 34, 35; 35 (F3) → 38, 39; 49 (F5) → 53, 54. Devam sayfası 4 (F7c'de 3). F3'ün devam sayfasında yalnız "Erişim notu" var; bu bir taşma değil.</li>
+<li><b>Bakılan sayfalar.</b> B: 18 (K1: kol tarafı, − ucu, kesit), 38 (F3: takı ve fiş yalıtımı, sıra tam), 53 (F5 aşama 2, pim uyarısı); B'nin kendi üretimiyle metin 54 / 54 aynı. C: 53 (aşama 2 tam; notta pim uyarısı ve KT-F7d-1; alt bilgi "Sayfa 53 / 54", "üretim 2026-11-09 20:26").</li>
+<li>README'deki "(54 sayfa)" F9d'nin alanında; F7d önce commit'lendiği için HEAD'de tutarlı (D-6, commit sırası).</li>
+</ul>
+
+<h2>Açık düşükler</h2>
+<p>B'nin yeniden kontrolünde açık kalan düşük bulgular. Hiçbiri commit'i engellemiyor.</p>
+<ol class="list">
+<li><b>D-8</b> (üretim damgası): <code>rehber-veri.json</code> <code>uretim</code>, <code>kontrol.json</code> <code>ozet.veri_uretim</code> ve PDF / rehber alt bilgisi "üretim 2026-11-09 20:26" diyor; metin 21:08'de yazıldı. İçerik doğru. Bir sonraki FreeCAD'li koşu saati düzeltir.</li>
+<li><b>D-9</b> (F5 notunda "kuyruğa girmedi"): KT-F7d-1 bu kayıtta K50 olarak kuyruğa girdi; ifade eskidi. Sonraki rehber turunda kuyruk satırına bağlanmalı.</li>
+<li><b>D-2'</b> (NB9 / NB10): "Sigorta kutusunun GND uçlarını WAGO'da birleştir" ve "12 V çift kablonun uzatmasını lehimle birleştir" yanlış alarm veriyor. Gerçek veride 0; hata güvenli yönde (fazladan uyarı). Öneri: nesne ile "birleştir" arasında "GND / uzatma / ek" geçiyorsa istisna.</li>
+<li><b>D-3</b> (bilinen denetim sınırları): B8 (F1'de "ana anahtar kapalıyken" sırası korunmuyor), B14 ("enerjiyi kesmeden … değiştir"), B15 / B18 (şarj sigortası "takılmaz" → "tak" çelişkisi fark edilmiyor), B16 ("aynı klemense bağla"), B17 (ad biçimi "birleştirme işini yap").</li>
+</ol>
+<p class="note">Ayrıca açık: şarj kolunun tarafı, − ucu, kutup, ana sigortaya göre yeri ve kesit doğrulanmadı; F3 fiş yalıtımı genel güvenlik (kaynakta yok); K11 b'de 12 V fişine F5'te servis kapağından erişim ölçülmedi (K11 açık); K1'deki "artı ile eksi arasında kısa devre yok" satırında kademe yok.</p>
+
+<h2>Görüntü</h2>
+<figure><img src="../rehber/goruntu/adim-35.png" alt="Adım 35, F3 göğüs bantları ve göğüs ekranı: turuncu göğüs bandında mavi ekran; sağ panelde madde 3'ün K11 a ölçüm sırası, takı kuralı ve fiş yalıtımı"><figcaption>Adım 35 · F3 göğüs bantları + göğüs ekranı (kontrol ekran görüntüsü, A'nın düzeltme turu 1 koşusu). Madde 3: göğüs ekranı mini 2 A akü ayrıkken; K11 a: ölçümden önce takı çıkar, 12 V fiş ucunu yalıt, DC V kademesi ve V soketi, regülatör çıkışının + / − klemensi, ana anahtar kapalıyken akü tak → aç → oku → kapat → akü ayır → uçları sök; K11 b: fiş bu adımda takılmaz.</figcaption></figure>
+<p class="note">Bu commit'te değişen kontrol görüntüleri <code>adim-17.png</code> (K1), <code>adim-33.png</code> (F1), <code>adim-35.png</code> (F3), <code>adim-49.png</code> (F5), <code>telefon-360-adim-35.png</code> ve <code>telefon-360-adim-49.png</code>; öbür PNG'ler aynı.</p>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th><th>Dosya</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>1a67071</code></td><td>Rehber betikleri (<code>rehber_metin.py</code>, <code>rehber_denetim.py</code>); <code>viewer-template.html</code>; <code>rehber-veri.json/.js</code>; <code>R-gunluk.md</code>; <code>kontrol.json</code>; PDF; 6 kontrol PNG'si; demo (yalnız <code>demo_uret.py</code> ile); <code>F7d-brief.md</code>, <code>F7d-gunluk.md</code>, <code>F7d-kontrol.md</code></td><td class="n">18</td></tr>
+</tbody>
+</table></div>
+<p class="note">Commit B'nin kesin <code>git add</code> listesiyle atıldı (açık liste; <code>-A</code>, <code>.</code> ya da klasör kullanılmadı). <code>git diff --cached --stat</code>: 18 dosya (3 yeni, 15 değişen), +1.466 / −50 satır; stage listeyle birebir. Commit'ten sonra <code>git diff --quiet HEAD -- planlama/rehber/kontrol.json</code> 0 (F9d kayıt şartı). Dışarıda kalanlar: <code>FREECAD-KILIT.txt</code>, <code>dongu-158.md</code> (ayrı commit), K23 (13 kabuk PNG ve <code>montaj/yerlesim-kontrol.json</code>), <code>tasarim/cad/lale158-model.js</code>, <code>__pycache__/</code>, <code>F5-pano-govde.txt</code>, <code>F5b-pano-govde.txt</code>, <code>lale_dongu*</code>, <code>kafa-yerlesim/kaynak/</code>, <code>raporlar/</code>, <code>tasarim/solidworks/</code>, <code>kvkk/</code>, <code>rapor/</code>, <code>tubitak-2209b/</code> ve F9d'nin dosyaları (F9d sonraki commit). Bu rapor ayrı commit'te.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F7d · 09.11.2026 · Commit <code>1a67071</code> (<code>lale-duzeltme</code>) · <code>kontrol.json</code> 50/50, konsol 0 · 1192 ↔ 1192 · PDF 54 sayfa, en küçük yazı 8,10 pt · 360 px taşma 0 · denetim 0 (zorunlu 0 / 40) · demo bayt bayt aynı, F9b 0 · Çakışma <code>kontrol</code> 0 · Regresyon <code>--yazma</code>: GEÇER, 10/10 aynı · Kaynaklar: <code>F7d-brief.md</code>, <code>F7d-gunluk.md</code>, <code>F7d-kontrol.md</code>.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
