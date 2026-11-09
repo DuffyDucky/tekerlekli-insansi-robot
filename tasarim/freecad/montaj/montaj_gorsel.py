@@ -30,21 +30,24 @@ RENK = {"alu": (0.78, 0.80, 0.83), "alu2": (0.55, 0.60, 0.68), "celik": (0.50, 0
 # (yazilim alt siniri arayuz.OMUZ, 14 Ekim 2026; eskiden 0'dan basliyordu), dirsek 0...103 derece (sinir 0...105), bilek -69...+69 derece (sinir +-90).
 # Sag ve sol kol zit fazda one-arka sallanir, ikisi birlikte one kalkip yana acilir; sag dirsek 4 s'de iki kez bukulur,
 # sol dirsek 8 s'de bir kez; bilekler zit yonde doner. Kafa pan -46...+46 derece (sinir +-90) saga sola bakar, tilt
-# -14...+14 derece (sinir -25...30) iki kez basini egip kaldirir. Tekerler (sinirsiz) 8 s'de bir tur ileri yuvarlanir.
+# -12,6...+12,6 derece (sinir +-13, Y2a) iki kez basini egip kaldirir. Tekerler (sinirsiz) 8 s'de bir tur ileri yuvarlanir.
 # Her formul t = 0'da 0 (ev pozundan baslar); yana acma t = 0'da Y0 (sinir ici en alt konum). animasyon_kontrol() her karede
 # sinirlari ve kafa-kol yasak kutusunu (arayuz.KAFA_KOL_YASAK) denetler; ihlalde betik durur.
 SURE, ADIM = 8.0, 0.05
+# Kamera (F6a duzeltme turu 2, O-3): kafa / omuz / dirsek gorunum merkezleri A.UZAMA kadar yukarida (14.10 degerleri UZAMA'siz modeldi);
+# tam boy gorunumler A.BOY / 2'ye bakar, gorunur yukseklik 14.10 degeri x TAM (boy orani BOY / (BOY - UZAMA) ~ 1,25, x 1,03 kadraj payi).
+TAM = A.BOY / (A.BOY - A.UZAMA) * 1.03
 FORMUL = {
     "OmuzSag_OneArka": "0.75*sin(2*pi*time/4) + 0.6*(1 - cos(2*pi*time/8))",
     "OmuzSol_OneArka": "-0.75*sin(2*pi*time/4) + 0.6*(1 - cos(2*pi*time/8))",
-    "OmuzSag_Yana": "%.6f + %.6f*(1 - cos(2*pi*time/8))" % (math.radians(Y0), (1.2 - math.radians(Y0)) / 2),   # Y0 ... 1,2 rad
-    "OmuzSol_Yana": "%.6f + %.6f*(1 - cos(2*pi*time/8))" % (math.radians(Y0), (1.2 - math.radians(Y0)) / 2),
+    "OmuzSag_Yana": "%.9f + %.9f*(1 - cos(2*pi*time/8))" % (math.radians(Y0), (1.2 - math.radians(Y0)) / 2),   # Y0 ... 1,2 rad (%.9f: %.6f Y0'i 4,99997 yapiyordu)
+    "OmuzSol_Yana": "%.9f + %.9f*(1 - cos(2*pi*time/8))" % (math.radians(Y0), (1.2 - math.radians(Y0)) / 2),
     "DirsekSag_Dirsek": "0.9*(1 - cos(2*pi*time/4))",
     "DirsekSol_Dirsek": "0.9*(1 - cos(2*pi*time/8))",
     "DirsekSag_Bilek": "1.2*sin(2*pi*time/8)",
     "DirsekSol_Bilek": "-1.2*sin(2*pi*time/8)",
     "Kafa_Pan": "0.8*sin(2*pi*time/8)",
-    "Kafa_Tilt": "0.25*sin(2*pi*time/4)",
+    "Kafa_Tilt": "0.22*sin(2*pi*time/4)",   # +-12,6 derece (tilt siniri +-13; eskiden 0,25 = +-14,3)
     "Taban_TekerOnSag": "2*pi*time/8", "Taban_TekerOnSol": "2*pi*time/8",
     "Taban_TekerArkaSag": "2*pi*time/8", "Taban_TekerArkaSol": "2*pi*time/8",
 }
@@ -55,14 +58,14 @@ POZ_GORSEL = [
     ("montaj-poz-selam.png", {"omuz_sag": dict(one_arka=20.0, yana=100.0), "dirsek_sag": dict(dirsek=95.0, bilek=-60.0),
                               "omuz_sol": dict(one_arka=10.0, yana=10.0), "dirsek_sol": dict(dirsek=30.0, bilek=0.0),
                               "kafa": dict(pan=30.0, tilt=-10.0)},
-     ((0.35, 0.25, 1.0), 1000, (0, 820, 0))),
+     ((0.35, 0.25, 1.0), 1000, (0, 820 + A.UZAMA, 0))),
     ("montaj-poz-one.png", {"omuz_sag": dict(one_arka=90.0, yana=Y0), "dirsek_sag": dict(dirsek=60.0, bilek=45.0),
                             "omuz_sol": dict(one_arka=90.0, yana=Y0), "dirsek_sol": dict(dirsek=60.0, bilek=45.0),
-                            "kafa": dict(pan=0.0, tilt=25.0)},
-     ((0.8, 0.45, 1.0), 900, (0, 860, 120))),
-    ("montaj-poz-kafa.png", {"kafa": dict(pan=45.0, tilt=20.0), "omuz_sag": dict(one_arka=45.0, yana=20.0),
+                            "kafa": dict(pan=0.0, tilt=12.0)},
+     ((0.8, 0.45, 1.0), 900, (0, 900 + A.UZAMA, 120))),
+    ("montaj-poz-kafa.png", {"kafa": dict(pan=45.0, tilt=12.0), "omuz_sag": dict(one_arka=45.0, yana=20.0),
                              "dirsek_sag": dict(dirsek=60.0, bilek=0.0)},
-     ((0.7, 0.35, 1.0), 560, (0, 1090, 30))),
+     ((0.7, 0.35, 1.0), 560, (0, 1090 + A.UZAMA, 30))),
 ]
 
 
@@ -95,7 +98,8 @@ def animasyon_kontrol():
             uc[ad] = (min(lo, a), max(hi, a))
             if not s[0] - 1e-9 <= a <= s[1] + 1e-9:
                 hata.append("t=%.2f %s %.2f sinir disi %s" % (t, ad, a, s))
-        for taraf, kutu in (("Sag", Y["kutu_sag_kol"]), ("Sol", Y["kutu_sol_kol"])):
+        # yasak kutu yalniz etkinse denetlenir (1,65 m'den beri aktif=False, kutu / kol_kosulu None; F6a duzeltme turu 1)
+        for taraf, kutu in ((("Sag", Y["kutu_sag_kol"]), ("Sol", Y["kutu_sol_kol"])) if Y.get("aktif") else ()):
             kol = dict(one_arka=d["Omuz%s_OneArka" % taraf], yana=d["Omuz%s_Yana" % taraf],
                        dirsek=d["Dirsek%s_Dirsek" % taraf], bilek=d["Dirsek%s_Bilek" % taraf])
             kosul = all(Y["kol_kosulu"][k][0] <= v <= Y["kol_kosulu"][k][1] for k, v in kol.items())
@@ -188,17 +192,17 @@ def go():
     for j in eklemler:
         j.ViewObject.Visibility = False
     Gui.updateGui()
-    kamera(v, (0.85, 0.55, 1.0), 1000, (0, 640, 0))
+    kamera(v, (0.85, 0.55, 1.0), 1080 * TAM, (0, A.BOY / 2, 0))
     kaydet(v, "montaj-izometrik.png", 1000, 1300)
-    kamera(v, (0, 0, 1), 790, (0, 635, 0))
+    kamera(v, (0, 0, 1), 790 * TAM, (0, A.BOY / 2, 0))
     kaydet(v, "montaj-on.png", 800, 1300)
-    kamera(v, (1, 0, 0), 790, (0, 635, 0))
+    kamera(v, (1, 0, 0), 790 * TAM, (0, A.BOY / 2, 0))
     kaydet(v, "montaj-yan.png", 800, 1300)
-    kamera(v, (0.7, 0.35, 1.0), 520, (0, 1080, 20))
+    kamera(v, (0.7, 0.35, 1.0), 520, (0, 1080 + A.UZAMA, 20))
     kaydet(v, "montaj-kafa.png", 1200, 1000)
-    kamera(v, (0.6, 0.35, 1.0), 360, (0, 900, 20))
+    kamera(v, (0.6, 0.35, 1.0), 360, (0, 900 + A.UZAMA, 20))
     kaydet(v, "montaj-omuzlar.png", 1400, 900)
-    kamera(v, (0.9, 0.3, 0.6), 420, (150, 790, 0))
+    kamera(v, (0.9, 0.3, 0.6), 420, (150, 790 + A.UZAMA, 0))
     kaydet(v, "montaj-dirsek.png", 1200, 1000)
     # taban yakindan: etek arkasi (acil stop, ana anahtar) ve tekerler; etek parcalari gizlenip ic yerlesim ayrica
     kamera(v, (0.75, 0.55, -1.0), 700, (0, 190, 0))
@@ -255,7 +259,7 @@ def go():
     for f in os.listdir(KARE):
         if f.endswith(".png") or f == "pozlar.txt":
             os.remove(os.path.join(KARE, f))
-    kamera(v, (0.75, 0.4, 1.0), 1340, (0, 650, 40))      # tam robot (tabanli)
+    kamera(v, (0.75, 0.4, 1.0), 1340 * TAM, (0, A.BOY / 2, 40))      # tam robot (tabanli)
     satir = []
     k_out = 0
     for k in range(1, n, 2):
