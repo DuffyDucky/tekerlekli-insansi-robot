@@ -8,7 +8,7 @@
 #   OMUZ_BASKI_KAYNAK=parcalar -> omuz_parcalar.py import edilir (FCStd uretilmeden once denemek icin).
 # Cikti: omuz-baski.json
 # Calistir (yolda "u" oldugu icin ASCII baslaticiyla):
-#   FC_SCRIPT=<bu dosya> "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecadcmd.exe" C:/Users/Victus/.robot-cad/run_fc.py
+#   FC_SCRIPT=<bu dosya> "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecadcmd.exe" ~/.robot-cad/run_fc.py
 # Yontem diger modullerle ayni kural (kafa_lib.baski_analiz): onceki katmanin h kadar ofseti (45 derece) destek sayilir,
 # 2 mm'den dar serit serbest, 15 mm'den uzun kopru destek ister. Fark: katman 0,5 mm; destekte kalan her bolge
 # kopru (iki karsi kenardan tutunan), konsol (tek kenardan) ya da ada (altinda hic malzeme yok) diye ayrilir,

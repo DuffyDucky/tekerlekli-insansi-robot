@@ -1,7 +1,7 @@
 # Y3 (M6 CAD): C1 / C2 / C3 alet erisimi, 1,65 m modul FCStd'lerinde. CAD'i YALNIZ OKUR.
 # Olcum modeli planlama/adim4/M6_erisim.py ile birebir (fonksiyonlar o dosyadan okunur: eksen, serbest, kol_salinim, egik,
 # somun_erisim, erisim); burada yalniz montaj adimi ve engel kumesi elle secilir (modul yerel koordinati yeterli: engeller ayni modulde).
-# Calistir: FC_SCRIPT=<bu dosya> Y3_ETIKET=once|sonra "%LOCALAPPDATA%/Programs/FreeCAD 1.1/bin/freecadcmd.exe" C:/Users/Victus/.robot-cad/run_fc.py
+# Calistir: FC_SCRIPT=<bu dosya> Y3_ETIKET=once|sonra "%LOCALAPPDATA%/Programs/FreeCAD 1.1/bin/freecadcmd.exe" %USERPROFILE%/.robot-cad/run_fc.py
 # Cikti: planlama/y3/Y3-erisim-<etiket>.json
 import os, sys, json, time, math
 import FreeCAD as App

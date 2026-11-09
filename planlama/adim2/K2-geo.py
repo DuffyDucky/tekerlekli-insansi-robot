@@ -1,6 +1,6 @@
 # K2 kontrolu 2: geometri, taramalar, civata / isil gomme, baski cikintisi, montaj erisimi, kutle + tork. Yalniz okur (FCStd gecici
 # kopya). K2_ADIM = tambur | kaset_kol | gobek | civata | baski | montaj | tork (bos: hepsi). Cikti: K2-geo-<adim>.json
-# Calistir: K2_ADIM=<adim> FC_SCRIPT=<bu dosya> "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecadcmd.exe" C:/Users/Victus/.robot-cad/run_fc.py
+# Calistir: K2_ADIM=<adim> FC_SCRIPT=<bu dosya> "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecadcmd.exe" ~/.robot-cad/run_fc.py
 import os, sys, math, time, json, importlib.util
 HERE = os.path.dirname(os.path.abspath(__file__))
 _sp = importlib.util.spec_from_file_location("k2_ortak", os.path.join(HERE, "K2-ortak.py"))

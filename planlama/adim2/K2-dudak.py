@@ -1,7 +1,7 @@
 # K2 (2. ajan): (1) demet tutma: tambur dudaklari + kaset flans / arka plaka + kabuk ped arasindaki kanalin (x, r) haritasi; kanaldan
 # eksenel kacis acikligi (r bandi, x). (2) ic kosunun tamburdan kalktigi yer (sabit psi), o noktada dudak kavramasi ve flans var mi.
 # (3) S2 lopu <-> kaset kapagi: flans ic kenarina pah onerisinin etkisi (gecici kesimle, dosya yazilmaz). Yalniz okur. Cikti: K2-dudak.json
-# Calistir: FC_SCRIPT=<bu dosya> "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecadcmd.exe" C:/Users/Victus/.robot-cad/run_fc.py
+# Calistir: FC_SCRIPT=<bu dosya> "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecadcmd.exe" ~/.robot-cad/run_fc.py
 import os, sys, math, time, json, importlib.util
 HERE = os.path.dirname(os.path.abspath(__file__))
 _sp = importlib.util.spec_from_file_location("k2_ortak", os.path.join(HERE, "K2-ortak.py"))

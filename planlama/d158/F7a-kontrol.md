@@ -17,7 +17,7 @@ Ama iki parça montaj mantığına aykırı adımda görünüyor; ikisi de B'nin
 
 Kritik 0, orta 2, düşük 6.
 
-Kısaltmalar: `TF/` = `tasarim/freecad/`, `SPB/` = B'nin klasörü (depo dışı): `C:\Users\Victus\AppData\Local\Temp\claude\6eb585d8171c6c4f\bc1094ac-141c-42e4-99c1-30e40153afa9\scratchpad\f7a-b`.
+Kısaltmalar: `TF/` = `tasarim/freecad/`, `SPB/` = B'nin klasörü (depo dışı): `%USERPROFILE%\AppData\Local\Temp\claude\6eb585d8171c6c4f\bc1094ac-141c-42e4-99c1-30e40153afa9\scratchpad\f7a-b`.
 
 B'nin depoya yazdığı tek dosya bu dosya. B FreeCAD koşmadı: parça listesi FCStd içindeki `Document.xml`'den, konumlar `.brp` köşe noktalarından, analiz JSON'larından ve GLB'den alındı. Kilit dosyasına yazılmadı; 16:13'te F6b satırı vardı. Git'e yazılmadı. `git status --porcelain` B'nin koşularından önce ve sonra aynı.
 

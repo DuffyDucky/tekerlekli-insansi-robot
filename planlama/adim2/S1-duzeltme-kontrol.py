@@ -6,7 +6,7 @@
 #   3) ikinci pim: delik <-> duvar ic yuzu (U'nun suprudugu halka r < 75,2), pim <-> delik; kulak <-> kabuk diger parcalari
 #   4) duvar bagi ip delikleri: kaset govdesinde bosluk var mi (radyal isinla)
 #   5) kaset (govde + kapak + civata) <-> kol (omuz Kol + dirsek UstKol) S1 -45...135 / 5 x S2 {5, 10, 20, 45, 90, 120}; <-> gobek S1 -60...180 / 5
-# Calistir: FC_SCRIPT=<bu dosya> "%LOCALAPPDATA%/Programs/FreeCAD 1.1/bin/freecadcmd.exe" C:/Users/Victus/.robot-cad/run_fc.py
+# Calistir: FC_SCRIPT=<bu dosya> "%LOCALAPPDATA%/Programs/FreeCAD 1.1/bin/freecadcmd.exe" %USERPROFILE%/.robot-cad/run_fc.py
 import os, sys, math, time, json, importlib.util
 HERE = os.path.dirname(os.path.abspath(__file__))
 _sp = importlib.util.spec_from_file_location("k2_ortak", os.path.join(HERE, "K2-ortak.py"))

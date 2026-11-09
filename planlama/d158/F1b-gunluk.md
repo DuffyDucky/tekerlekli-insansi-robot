@@ -2,8 +2,8 @@
 
 Brief: `planlama/d158/F1b-brief.md`. Plan: `planlama/dongu-158.md` §3 F1. Karar kuyruğu: `planlama/d158/karar-kuyrugu.md`.
 Dal `lale-duzeltme`. Kısaltmalar: `TF/` = `tasarim/freecad/`, `KY/` = `TF/lale158/kafa-yerlesim/`, `SP/` = oturum scratchpad klasörü (depo dışı,
-`C:\Users\Victus\AppData\Local\Temp\claude\6eb585d8171c6c4f\bc1094ac-141c-42e4-99c1-30e40153afa9\scratchpad`). Önceki durumun kopyaları `SP/f1b/once/`.
-FreeCAD 1.1, başlatıcı `C:\Users\Victus\.robot-cad\run_fc.py` (`FC_SCRIPT=<betik> freecadcmd.exe run_fc.py`).
+`%USERPROFILE%\AppData\Local\Temp\claude\6eb585d8171c6c4f\bc1094ac-141c-42e4-99c1-30e40153afa9\scratchpad`). Önceki durumun kopyaları `SP/f1b/once/`.
+FreeCAD 1.1, başlatıcı `%USERPROFILE%\.robot-cad\run_fc.py` (`FC_SCRIPT=<betik> freecadcmd.exe run_fc.py`).
 
 ## Başlangıç (23:34)
 - `py -3 planlama/d158/regresyon.py --yazma` (23:34:51, taban 23:29:59): çıkış 0, "GEÇER", 10 değer "aynı".

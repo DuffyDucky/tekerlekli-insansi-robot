@@ -110,5 +110,5 @@ Büyük düzeltme yok; A'ya tur gerekmez. Koşullar uygulanmazsa paket yine de d
 
 - Devrilme ızgarası 15° adım ve bilek 0'da (UI ile aynı); daha sık ızgara payları yalnız düşürebilir. Rampa 50 g'daki 0,001'lik fark bu çözünürlüğün içinde.
 - Kafa ataleti (`I_kgm2` 3 nokta) ve kablo kütleleri kaynak JSON'lardan; FreeCAD ile yeniden ölçülmedi. Kol ivme tablosu B'nin kaba tahminidir.
-- Scratchpad: betik kopyası, çıktı ve koşu günlüğü `C:\Users\Victus\AppData\Local\Temp\claude\6eb585d8171c6c4f\bc1094ac-141c-42e4-99c1-30e40153afa9\scratchpad\f3a\`
+- Scratchpad: betik kopyası, çıktı ve koşu günlüğü `%USERPROFILE%\AppData\Local\Temp\claude\6eb585d8171c6c4f\bc1094ac-141c-42e4-99c1-30e40153afa9\scratchpad\f3a\`
   (depoya girmez).

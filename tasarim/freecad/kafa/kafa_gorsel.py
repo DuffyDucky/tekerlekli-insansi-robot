@@ -1,5 +1,5 @@
 # Kafa modulu gorselleri, Lale 1,58 m (10,1 in QLED kafa; FreeCAD GUI icinde calisir):
-#   FC_SCRIPT=<bu dosya> freecad.exe C:\Users\Victus\.robot-cad\run_fc.py
+#   FC_SCRIPT=<bu dosya> freecad.exe %USERPROFILE%\.robot-cad\run_fc.py
 # kafa_montaj.py'den SONRA. kafa-montaj.FCStd'nin GECICI KOPYASINI acar (depodaki dosya degismez, kaydedilmez); renkler
 # parcanin Renk ozelliginden. Baglam icin traversin orta bolumu ve kabuk ust kapagi halkasi (R62 delikli, sema) eklenir.
 # Gorseller: izometrik, on (yuz), yan, arka, boyun mekanizmasi yakin (on / arka), pan ekseni kesiti (+ yakin), tilt ekseni

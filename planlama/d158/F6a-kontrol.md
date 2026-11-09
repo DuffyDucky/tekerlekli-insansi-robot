@@ -16,14 +16,14 @@ Kritik bulgu yok. İki orta bulgu var:
 İkisi de tarama kaynağına dokunmadan düzelir. Tarama ve modül çıktıları geçerli kalır.
 
 Kısaltmalar: `TF/` = `tasarim/freecad/`, `KY/` = `TF/lale158/kafa-yerlesim/`, `SP/` = A'nın scratchpad klasörü.
-`SPB/` = B'nin klasörü (depo dışı): `C:\Users\Victus\AppData\Local\Temp\claude\6eb585d8171c6c4f\bc1094ac-141c-42e4-99c1-30e40153afa9\scratchpad\f6a-b`.
+`SPB/` = B'nin klasörü (depo dışı): `%USERPROFILE%\AppData\Local\Temp\claude\6eb585d8171c6c4f\bc1094ac-141c-42e4-99c1-30e40153afa9\scratchpad\f6a-b`.
 
 B'nin depoya yazdığı tek dosya bu dosya. Kaynaklara, modül çıktılarına, `kod/`'a ve git'e yazılmadı.
 
 B FreeCAD'i bir kez, tek süreç olarak koştu: `SPB/F6a-kontrol-olc.py` → `SPB/F6a-kontrol-olc.json`.
 - Süre 14:41:00–14:41:04, 4 s, rc 0.
 - Önce boş bellek 2,08 GB, çalışan FreeCAD süreci 0; sonra 2,06 GB.
-- Başlatıcı `C:\Users\Victus\.robot-cad\run_fc.py`, FreeCAD 1.1.4.
+- Başlatıcı `%USERPROFILE%\.robot-cad\run_fc.py`, FreeCAD 1.1.4.
 - Karşılaştırma için HEAD (F2) sürümü: `SPB/HEAD_omuz_parcalar.py` (`git show HEAD:`). A'nın `olc_dis.py`'si kullanılmadı.
 
 Takma ad aramaları, takma ad komut satırına yazılmadan yapıldı: ad `git show HEAD:TF/kafa/kafa_parcalar.py` satır 6'dan çalışma anında türetildi (`SPB/ayikla_diff.py`). Arama büyük/küçük harf duyarsız ve alt dizge araması. HEAD'de geçen dört biçimin (5, 7, 9, 10 karakter; ekli ve hesap adı biçimleri) hepsi bu aramaya giriyor. A'nın günlüğü biçimleri açık yazmıyor, yalnız "`git grep -il <takma ad>`" diyor.

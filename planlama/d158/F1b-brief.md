@@ -2,7 +2,7 @@
 
 Plan: `planlama/dongu-158.md` §3 F1. Karar kuyruğu: `planlama/d158/karar-kuyrugu.md`. Regresyon: `py -3 planlama/d158/regresyon.py`
 (yalnız normal mod ya da `--yazma`; `--help` ya da tanımsız bayrak KULLANMA, betik onları tanımıyor ve taban çizgisini yeniden yazar).
-FreeCAD 1.1 başlatıcı `C:\Users\Victus\.robot-cad\run_fc.py` ("ü"lü yolda freecadcmd doğrudan çöker; başlatıcıyı kullan).
+FreeCAD 1.1 başlatıcı `%USERPROFILE%\.robot-cad\run_fc.py` ("ü"lü yolda freecadcmd doğrudan çöker; başlatıcıyı kullan).
 Önceki paket: F1a (kafa) bitti; `planlama/d158/F1a-gunluk.md` ve `F1a-kontrol.md` çakışma taramasını nasıl bölüm bölüm koştuğunu anlatır.
 
 ## P1.1 Akü 2,8 → 3,0 kg

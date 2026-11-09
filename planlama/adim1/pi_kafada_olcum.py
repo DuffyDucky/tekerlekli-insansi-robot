@@ -1,5 +1,5 @@
 # Pi 5 kafada mi? - GECICI olcum betigi (modul dosyalarina yazmaz; yalniz kafa_parcalar'i import eder).
-# Calistir: FC_SCRIPT=<bu dosya> PYTHONDONTWRITEBYTECODE=1 freecadcmd C:\Users\Victus\.robot-cad\run_fc.py
+# Calistir: FC_SCRIPT=<bu dosya> PYTHONDONTWRITEBYTECODE=1 freecadcmd %USERPROFILE%\.robot-cad\run_fc.py
 # Cikti: pi_kafada_sonuc.json (bu klasorde) + konsol.
 #  1) kafa ici bos hacim: kabuk ici (KP.ic) + tum kafa parcalari + tilt taramasinda Pan/Govde parcalari, 2,5 mm voxel
 #  2) Pi 5 + Active Cooler + konnektor/kablo/fan/SD koruma hacimleri, 24 yonelim, FFT korelasyonla tum konumlar

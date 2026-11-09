@@ -1,7 +1,7 @@
 # K kontrolu (2. adim): tasarim ajaninin (G + M1) bildirdigi degerleri MEVCUT URETILMIS GEOMETRIDEN bagimsiz olcer.
 # Yalniz okur: FCStd dosyalari gecici kopyadan acilir, modul uretilmez, hicbir tasarim dosyasina yazilmaz.
 # Cikti: planlama/adim2/K-olcum.json
-# Calistir: FC_SCRIPT=<bu dosya> "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecadcmd.exe" C:/Users/Victus/.robot-cad/run_fc.py
+# Calistir: FC_SCRIPT=<bu dosya> "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecadcmd.exe" ~/.robot-cad/run_fc.py
 # Kablo loplari: ajanin cozucusunden (kablo_yolu.elastika, Gauss-Newton) BAGIMSIZ bir cozucuyle (scipy SLSQP, farkli N,
 # dal secimi enerjiyle) yeniden cozulur; bosluk FCStd'deki parcalara + (S2 lopu icin) gercek kabuk omuz bandina olculur.
 import os, sys, json, math, time, shutil, tempfile, datetime

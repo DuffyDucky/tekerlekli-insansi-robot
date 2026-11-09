@@ -5,7 +5,7 @@ Plan: `planlama/dongu-158.md` §3 F6 (P6.1 satırı: bütün maddeler orada) ve 
 günlüğü, `kontrol`, `birlestir`). F2 kontrolü: `planlama/d158/F2-kontrol.md` (bulgu 1–3). F4b takma ad listesi: `planlama/d158/F4b-gunluk.md` §4.
 F4c (baskı listesi) günlüğü: `planlama/d158/F4c-gunluk.md` (`baski_listesi_guncelle.py` yaması Y1–Y7, üst arka kapak destek notu).
 Regresyon: `py -3 planlama/d158/regresyon.py` (normal mod / `--yazma`; `--help` artık güvenli). FreeCAD 1.1 başlatıcı
-`C:\Users\Victus\.robot-cad\run_fc.py` ("ü"lü yolda freecadcmd doğrudan çöker). **FreeCAD makinesi yalnız sende.**
+`%USERPROFILE%\.robot-cad\run_fc.py` ("ü"lü yolda freecadcmd doğrudan çöker). **FreeCAD makinesi yalnız sende.**
 
 Bu paket tarama kaynaklarını (`carpisma_kos.py` `KAYNAK_SABIT` + `*_lib.py`, `*/*_lib.py`) değiştirdiği için **bütün kaynak düzeltmelerini
 önce yap, sonra tek bir tam tarama koş** (bölüm zinciri, omuz en son). Tarama başladıktan sonra kaynaklara dokunma (yorum bile).

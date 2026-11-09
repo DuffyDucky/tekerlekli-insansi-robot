@@ -20,12 +20,12 @@ CAD'de yok → M6 CAD ile. Çelişkide dongu.md esas. **Liste 125 cm CAD'de öl�
 - main'de, dokunma, listele: köprü notundaki "USB 1,25 m" satırı.
 
 ## Depo ve sınırlar
-- `C:\Users\Victus\OneDrive\Masaüstü\Robot`, dal `lale-duzeltme`. **Push yok**, tek yerel commit (Türkçe, `Lale: Y3 ...`, boş satır +
+- `%USERPROFILE%\OneDrive\Masaüstü\Robot`, dal `lale-duzeltme`. **Push yok**, tek yerel commit (Türkçe, `Lale: Y3 ...`, boş satır +
   `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`). Adım 0 commit'i `59367ab` (rampa freni ≤ 0,1, Pi 4 GB).
 - `tasarim/solidworks/` izlenmiyor: dokunma, commit'e ekleme. `main` / `yazilim-baslangic`'e dokunma.
 - Her dosyayı değiştirmeden önce oku. Üretilen dosyaları elle düzenleme (FCStd, STEP, JSON, BOM, `eklem_sinirlari.json`, demo, maliyet türevleri):
   kaynağı değiştir, betiği koş. Kapsam dışı sorun: raporda listele, dokunma.
-- FreeCAD: `tasarim/freecad/README.md` "Çalıştırma" (ASCII başlatıcı `C:\Users\Victus\.robot-cad\run_fc.py`, `FC_SCRIPT`).
+- FreeCAD: `tasarim/freecad/README.md` "Çalıştırma" (ASCII başlatıcı `%USERPROFILE%\.robot-cad\run_fc.py`, `FC_SCRIPT`).
 
 ## Bilinen durum (Y2a / Y2b + 29.10 kararları)
 1650 mm, direk 1.185,5, 1.073 parça, 24.396 g, AM (−0,20; 527,43; −12,38), teker izi 432 mm, 10 servo (omuz DS3235), kafa tilt ±13, akü

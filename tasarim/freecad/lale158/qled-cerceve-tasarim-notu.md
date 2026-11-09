@@ -34,7 +34,7 @@
 | `lale158/lale158_rapor.py` | QLED metinleri (`rapor.html` üretilmedi) |
 | `lale158/qled_gorsel.py` | Yeni, koşulmadı |
 
-Yedekler: `C:\Users\Victus\.robot-cad\yedek-qled-oncesi\` ve `yedek-cerceve-oncesi\`. İkincisi kafa işinin ilk düzenlemesinden sonra alındı; sonraki bir düzenleme hem kafa ölçümlerini hem çerçeveyi içerdiği için iki iş arasındaki ayrım tam değil. Yedekler CRLF, çalışma kopyaları LF; karşılaştırmada `diff --strip-trailing-cr` kullanılmalı.
+Yedekler: `%USERPROFILE%\.robot-cad\yedek-qled-oncesi\` ve `yedek-cerceve-oncesi\`. İkincisi kafa işinin ilk düzenlemesinden sonra alındı; sonraki bir düzenleme hem kafa ölçümlerini hem çerçeveyi içerdiği için iki iş arasındaki ayrım tam değil. Yedekler CRLF, çalışma kopyaları LF; karşılaştırmada `diff --strip-trailing-cr` kullanılmalı.
 
 ## Yeni parametreler
 

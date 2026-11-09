@@ -1,7 +1,7 @@
 # F1a brief: kafa tutarlılığı (P1.2, P1.3, P1.6, P1.7) — 08.11.2026
 
 Plan: `planlama/dongu-158.md` §3 F1. Karar kuyruğu: `planlama/d158/karar-kuyrugu.md`. Regresyon: `py -3 planlama/d158/regresyon.py`.
-FreeCAD 1.1 başlatıcı `C:\Users\Victus\.robot-cad\run_fc.py` ("ü"lü yolda freecadcmd doğrudan çöker; başlatıcıyı kullan).
+FreeCAD 1.1 başlatıcı `%USERPROFILE%\.robot-cad\run_fc.py` ("ü"lü yolda freecadcmd doğrudan çöker; başlatıcıyı kullan).
 Kafa yerleşim bağlamı: `tasarim/freecad/lale158/kafa-yerlesim/` (`uygulama-notu.md`, `secenekler.md`, `rapor.html`).
 
 ## P1.2 Eski ses yükseltici kalıntıları

@@ -16,7 +16,7 @@ taban genişliği) modüllere, `arayuz.py`'ye ve `montaj/`'a işlenir; taslak kl
 - Sıra: arayuz → iskelet → kabuk → omuz → dirsek → kafa → taban → ana montaj; her modülden sonra kendi kontrolleri.
 - Bağlantı elemanları modellenir; ana montaj FCStd/STEP/parça listesi/kütle-AM; kısa yerleşim kontrolü (ev pozu S2 5°).
 - Dokunma: `tasarim/cad/`, `planlama/maliyet.json`, README dışı belgeler (Y2b). Commit/push yok (orkestratör commit'ler, push yok).
-- FreeCAD: `%LOCALAPPDATA%\Programs\FreeCAD 1.1\bin\freecadcmd.exe`, başlatıcı `C:\Users\Victus\.robot-cad\run_fc.py`
+- FreeCAD: `%LOCALAPPDATA%\Programs\FreeCAD 1.1\bin\freecadcmd.exe`, başlatıcı `%USERPROFILE%\.robot-cad\run_fc.py`
   (FC_SCRIPT, ASCII yol), GUI'yi `App.closeDocument` + pencere kapatarak bitir, `PYTHONIOENCODING=utf-8`.
 - Rapor: modül modül değişiklik, ana montaj sayıları + taslakla fark (50 mm boy farkı ayrı), Nextion/taban/akü yerleşimi,
   KZ1/KZ2 ölçümleri, değişen dosyalar, kontrol ajanına kalanlar.

@@ -6,7 +6,7 @@ ayrılan hacmin yaklaşık yarısı fişin konnektöre değmesi değil. Bu kıs�
 inişi. Sonuç "girinti varsayımıyla 0" olarak kayda geçmeli ve doğrulama işi plana bağlanmalı (Koşul 1).
 
 Kısaltmalar: `TF/` = `tasarim/freecad/`, `KY/` = `TF/lale158/kafa-yerlesim/`, `SPB/` = B'nin ölçüm klasörü
-`C:\Users\Victus\AppData\Local\Temp\claude\6eb585d8171c6c4f\bc1094ac-141c-42e4-99c1-30e40153afa9\scratchpad\b-f1b` (depo dışı).
+`%USERPROFILE%\AppData\Local\Temp\claude\6eb585d8171c6c4f\bc1094ac-141c-42e4-99c1-30e40153afa9\scratchpad\b-f1b` (depo dışı).
 A'nın öncesi kopyaları: aynı scratchpad altında `f1b/once/`. B depoya yalnız bu dosyayı yazdı. FreeCAD üç kısa ölçümde tek süreç olarak koştu (başta boş bellek 6,06 GB, süreç yok).
 
 ## Madde tablosu

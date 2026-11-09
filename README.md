@@ -12,17 +12,17 @@ planlama, tasarım (CAD) ve ileride yazılım kodu burada tutulur.
 | `kod/ortak/eklem_sinirlari.json` | Eklem sınırları (CAD'den `eklem_sinirlari_uret.py` ile üretilir, elle düzenlenmez) |
 | `planlama/dongu-158.md` · `planlama/d158/` | Güncel iş döngüsü (1,58 m, F0–F9), paket brief / günlük / kontrol dosyaları, karar kuyruğu (`d158/karar-kuyrugu.md`) |
 | `planlama/dongu.md` | Tarihçe: 1,65 m iş döngüsü (Y1–Y6); `planlama/y2/` Y2a/Y2b günlük ve kontrolleri; `planlama/kararlar-*.md` karar günlüğü |
-| `rehber/` · `tasarim/freecad/rehber/` · `planlama/rehber/R-gunluk.md` | 3B montaj rehberi (`rehber/index.html`), onu üreten betikler ve çalışma günlüğü |
-| `planlama/baski-listesi.md` · `planlama/adim3/elektrik.md` · `planlama/yazilim-plani.md` | Baskı listesi (1,58 m, 65 parça; 03.11, kafa satırları 7" modelinden), elektrik kararları (E0–E9; 1,58 m bölümü başta), yazılım planı |
+| `rehber/` · `tasarim/freecad/rehber/` · `planlama/rehber/R-gunluk.md` | 3B montaj rehberi (`rehber/index.html`; 1,58 m modelinden, 50 adım, 1.192 parça), yazdırılabilir rehber `planlama/rehber/Lale-montaj-rehberi.pdf` (54 sayfa), onu üreten betikler ve çalışma günlüğü. Sayıların kaynağı `planlama/rehber/kontrol.json` (`ozet.adim`, `ozet.parca_rehber`, `yazdir.pdf_sayfa` / `yazdir.sayfa_esleme`) |
+| `planlama/baski-listesi.md` · `planlama/adim3/elektrik.md` · `planlama/yazilim-plani.md` | Baskı listesi (1,58 m, 72 parça; 09.11, tek analiz `tasarim/freecad/lale158/baski-analiz.json`), elektrik kararları (E0–E9; 1,58 m bölümü başta), yazılım planı |
 | `raporlar/Humanoid-Robot-Fizibilite-Raporu.html` | Fizibilite raporu: maliyet, ses mi görüntü mü, yetkinlik, teknik gereklilikler, profesyonel destek, takvim, finansman, riskler |
 | `raporlar/kaynaklar/` | Raporun dayandığı araştırma notları (donanım/maliyet, yazılım/yapay zekâ, referans projeler/finansman, parça ölçüleri, fiyat araştırması ve doğrulaması) |
 | `planlama/proje-plani.md` | Kapsam, takvim, roller, ilk iki hafta, riskler, açık sorular |
 | `planlama/maliyet.json` | Doğrulanmış malzeme maliyeti (satıcı, TL, bağlantı, stok); demodaki maliyet bölümünün tek kaynağı |
-| `tasarim/Robot-Tasarim-Demosu.html` | Eski CadQuery 3B montajı (V1 / V2 / V3, 125 cm); devrilme, motor ve servo hesabı canlı; TL + USD proje maliyeti (maliyetin V3 satırları 29.10 listesi; 1,58 m listesi P8.1'de) |
+| `tasarim/Robot-Tasarim-Demosu.html` | Lale tasarım demosu, 1,58 m (P9.2, `planlama/d158/F9b-*`): sayfadaki sayılar 127 JSON anahtarından üretilir (boy 1.580 mm: `tasarim/freecad/lale158/lale158-kontrol.json` `toplam_boy_mm`); 3B model rehberin GLB'si (`rehber/veri/robot-glb.js`, `rehber-veri.js`) göreli bağlantıyla, 1.192 parça; açık kararlar "karar bekliyor"; maliyet `planlama/maliyet.json`. Bu sürüm `lale-duzeltme` dalında |
 | `tasarim/cad/Humanoid-Robot-Montaj.step` · `-V2` · `-V3` | Eski CadQuery montajları (V1, V2, V3; arşiv) |
 | `tasarim/cad/parca-listesi.csv` · `-V2` · `-V3` | Gerçek parça listesi (model, ölçü, adet, kütle) |
-| `tasarim/cad/robot_cad.py` | Modeli üreten kod (STEP + CSV + demo) |
-| `tasarim/cad/demo_uret.py` | Demoyu şablon + model + maliyetten yeniden üretir; CadQuery gerekmez |
+| `tasarim/cad/robot_cad.py` | Eski CadQuery modelini üreten kod (STEP + CSV; arşiv); bu model artık demoda kullanılmaz |
+| `tasarim/cad/demo_uret.py` | Demoyu şablon + kaynak JSON'lar + maliyetten yeniden üretir; FreeCAD / CadQuery gerekmez; denetimi `planlama/d158/F9b-dogrula.py` |
 | `CLAUDE.md` | Bu klasörde açılan yapay zekâ oturumları için bağlam |
 
 HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünüm için internet gerekir.
@@ -37,7 +37,7 @@ Sayıların kaynağı: `tasarim/freecad/montaj/montaj-analiz.json` (MA), `tasari
 | Konu | Değer |
 |---|---|
 | Boy | **1.580,0 mm** (yerden kafa tepesine; LK `toplam_boy_mm`, MA `boy_mm`); gövde direği 1.115,5 mm tek parça sigma 40 × 40 (BOM), omuz traversi merkezi y 1.270 mm, gövde uzatması 315 mm (MA `s3_mm`, `uzama_mm`) |
-| Parça / kütle | 1.179 parça (MA `parca_sayisi`), ana montaj 25.715,6 g (MA `kutle_g`); ev pozu, 400 g kablo payıyla **26.115,6 g**, AM (−0,03; 522,71; −10,03) mm (UI `ev`) |
+| Parça / kütle | 1.179 parça (MA `parca_sayisi`), ana montaj 25.720,55 g (MA `kutle_g`); ev pozu, 400 g kablo payıyla (UI `kablo_payi.kutle_g`) **26.120,6 g** (UI `ev.kutle_g`), AM (−0,03; 522,84; −10,03) mm (UI `ev.am`) |
 | Taban | 520 mm (MA `taban_w_mm`), teker izi 432 mm (x ±216; `planlama/y2/Y2b-ivme.json` `teker_hatti`), 4 × JGB37; akü Victron 12,8 V 20 Ah, **3,0 kg**, yerinde (BOM; karar 29.10) |
 | Devrilme | Yüksüz, 5° rampa, en kötü kol pozu: pay **1,519** (eşik 1,5; UI `izgara_yuk_0g.a_sinir_pay15.rampa5_geri`); düz zeminde 2,097 (`duz_geri`) |
 | Kollar | Kol başına 4 servo: omuz S1 + S2 **DS3235**, dirsek + bilek MG996R; kafa pan / tilt MG996R (**toplam 10 servo**; BOM: DS3235 × 4, MG996R × 6). El yükü sınırı **karar bekliyor (K3, K9)**; öneri düzde ≤ 100 g / el |
@@ -46,7 +46,7 @@ Sayıların kaynağı: `tasarim/freecad/montaj/montaj-analiz.json` (MA), `tasari
 | Ses | ReSpeaker Mic Array v2.0 (kafa) + USB ses kartı + PAM8403 (kafa sol duvarı) + 40 mm 3 W hoparlör (gövde) (BOM); mikrofon-hoparlör en az 574,3 mm. PAM 5 V besleme noktası **karar bekliyor (K10)**; 6. USB cihazı bekliyor (K1) |
 | Elektrik | `planlama/adim3/elektrik.md` "158 cm güncellemesi": USB port dağılımı, boyun demeti (12 V + tilt + göğüs HDMI + hub uzatması + hoparlör; Efe teyidi K14), göğüs ekranı 12 V dalı (K11) |
 | Yazılım sınırları | Rampada / eğimde kollar ev pozunda, ivme ve fren ≤ 0,1 m/s²; düz zeminde ivme ≤ 0,5, fren ≤ 1,8 m/s² (`kod/ortak/eklem_sinirlari.json` `teker.ivme_sinir_m_s2`; karar 29.10); S2 ≥ +5° |
-| Baskı | 65 parça, 7,63–7,68 kg filament, 159–160 sa (`planlama/baski-listesi.md:12`; 03.11 koşusu, kafa satırları 7" modelinden, P4.3'te yenilenecek) |
+| Baskı | 72 parça (13'ü destekli), destek dahil 7.668,9–7.726,7 g filament, 159,9–161,08 sa (`tasarim/freecad/lale158/baski-analiz.json` `toplam`; F6b tek analiz, liste `planlama/baski-listesi.md`) |
 | Maliyet | `planlama/maliyet.json` (tarih 2026-11-09): 29.10 listesi P8.1 sipariş paketiyle (`planlama/d158/F8a-siparis.md`) 1,58 m'ye kısmen güncellendi: satıcı ve fiyatlar 09.11 sayfalarından, göğüs ekranı 11,6", ReSpeaker v2.0, D24V50F5, kafa kabloları. V3 satırları, yazıcıyla, yedek ve %15 pay dahil **≈ 118.700 TL** (koşullularla ≈ 124.600); bulunamayan 2 kablo fiyatsız, toplama girmiyor. Yüz ekranı hocadan gelirse ve elimizdekiler (Pi 5, hafıza kartı) düşülürse ≈ 93.800 TL; yüz ekranı satın alınırsa (QLED, K32) ≈ 102.100. Sipariş paketinin kendi toplamı (baskı hizmetiyle, pay dahil) ≈ 107.600 TL; sipariş verilmedi |
 | Kapsam | Otonom gezinme, lidar, ROS 2 / Nav2 **yok** (hoca, 21 Ekim); kumandayla sürüş + konuşma + jest |
 
@@ -136,12 +136,13 @@ python tasarim/freecad/rehber/rehber_uret.py
 
 Bu komut CAD modüllerinden adım verisini ve mesh'i üretir (FreeCAD, `rehber/veri/`), her adımı başsız Chrome/Edge ile kontrol eder ve görüntüleri `planlama/rehber/goruntu/` altına yazar (özet `planlama/rehber/kontrol.json`). Tüm adımlar yaklaşık 5 dakika sürer.
 Yalnız tarayıcı kontrolü için `--veri-yok`, yalnız veri için `--gorsel-yok`, seçili adımlar için `--adimlar 1,4,9`. Rehberi açmak için `rehber/index.html` (3B için internet gerekir).
-Adım yazıları `tasarim/freecad/rehber/rehber_metin.py` içinde. Üretmeden önce `planlama/rehber/R-gunluk.md` "Yapılacaklar"a bak: adım seçicileri 1,58 m'e uyarlanmadı.
+Adım yazıları `tasarim/freecad/rehber/rehber_metin.py`, adım seçicileri (1,58 m) `tasarim/freecad/rehber/rehber_secici.py` içinde. Üretmeden önce `planlama/rehber/R-gunluk.md` "Yapılacaklar"daki açık maddelere bak.
 
 ## CAD'i yeniden üretme
 
-`tasarim/cad/robot_cad.py` başındaki ölçü ve yerleşim değerleri değiştirilip çalıştırılınca STEP,
-parça listesi ve demo birlikte yenilenir. Python 3.12 + CadQuery 2.8 gerekir (`requirements.txt`).
+Bu bölüm eski CadQuery modeli (V1–V3, 125 cm) içindir. `tasarim/cad/robot_cad.py` başındaki ölçü ve yerleşim
+değerleri değiştirilip çalıştırılınca STEP ve parça listesi yenilenir; sonunda demo da yeniden üretilir ama CadQuery
+modeli demoya girmez. Python 3.12 + CadQuery 2.8 gerekir (`requirements.txt`).
 Sanal ortamı OneDrive dışında kur (yüzlerce MB):
 
 ```powershell
@@ -153,6 +154,6 @@ cd tasarim\cad
 
 Koordinatlar SolidWorks ile aynı: Y yukarı, Z ileri (robotun yüzü +Z), X sağ-sol, birim mm.
 
-Yalnız fiyat ya da demo arayüzü değiştiyse CadQuery gerekmez: `planlama/maliyet.json` veya
-`tasarim/cad/viewer-template.html` düzenlendikten sonra `python tasarim\cad\demo_uret.py` demoyu yeniler
-(3B modeli mevcut demodan alır).
+Demo için CadQuery gerekmez: `planlama/maliyet.json`, kaynak JSON'lar ya da `tasarim/cad/viewer-template.html`
+değiştikten sonra `py -3 tasarim/cad/demo_uret.py` demoyu yeniler (3B model `rehber/veri/robot-glb.js` ve
+`rehber-veri.js` dosyalarından göreli bağlantıyla okunur; sayfa `rehber/` klasörüyle birlikte açılmalı).

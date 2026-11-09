@@ -2,7 +2,7 @@
 # Analiz ajani (21 Ekim 2026). Tasarim ajaninin ciktilarini (kutle.json, taslak-analiz.json) KULLANMAZ; parcalari
 # taslak_parcalar.py'den yeniden kurar, FCStd ve STEP'i ayrica okur. Mevcut modullere ve taslak betiklerine yazmaz.
 # Calistir (yolda "ü" var, ASCII baslatici):
-#   FC_SCRIPT=<bu dosya> TA_BOLUM=<bolumler> [TASLAK_TABAN_W=520] [TA_ROBOT=eski] freecadcmd.exe C:/Users/Victus/.robot-cad/run_fc.py
+#   FC_SCRIPT=<bu dosya> TA_BOLUM=<bolumler> [TASLAK_TABAN_W=520] [TA_ROBOT=eski] freecadcmd.exe ~/.robot-cad/run_fc.py
 # Bolumler (virgulle): kutle (grup kutle/AM/atalet tensoru -> analiz/girdi-<robot>-<W>.json), dogrula (FCStd + STEP + ornek),
 #   statik (ev pozu tum parca ciftleri), kol_sag, kol_sol (kol zinciri x sabit), kolkol, kafa (pan x tilt x sabit),
 #   kafakol_sag, kafakol_sol (kafa x kol), kafakol_ince_sag, kafakol_ince_sol (kafa x kol en dar yer cevresi ince, kontrol ajani 24 Ekim 2026),

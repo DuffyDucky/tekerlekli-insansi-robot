@@ -1,7 +1,7 @@
 # K2 kontrolu 1: kablo. S1 U lopu bagimsiz cozucuyle (K2-u.py) tam aralik + asim + duyarlilik; 3B demet (4,2 x 4,2 dikdortgen kesit)
 # ile parcalar arasi bosluk ve giris hacmi; S2 lopu ve dirsek lopu bagimsiz serbest elastikayla; S2 lopu + gecis yolu <-> kaset / kabuk
 # S1 x S2 izgarasinda; cikis yolu. Yalniz okur (FCStd gecici kopya). Cikti: planlama/adim2/K2-kablo.json
-# Calistir: FC_SCRIPT=<bu dosya> "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecadcmd.exe" C:/Users/Victus/.robot-cad/run_fc.py
+# Calistir: FC_SCRIPT=<bu dosya> "$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecadcmd.exe" ~/.robot-cad/run_fc.py
 import os, sys, math, time, importlib.util
 HERE = os.path.dirname(os.path.abspath(__file__))
 _sp = importlib.util.spec_from_file_location("k2_ortak", os.path.join(HERE, "K2-ortak.py"))

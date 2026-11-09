@@ -10,7 +10,7 @@ Y2a brief'indeki ek: maliyet.json — `taslak-170/maliyet-farki.md` + uzatma kab
 `c8c4de7`. Çelişkide dongu.md esas.
 
 ## Depo ve sınırlar
-- `C:\Users\Victus\OneDrive\Masaüstü\Robot`, dal `lale-duzeltme` (başlangıç `2b07779`). **Push yok**, tek yerel commit (Türkçe mesaj,
+- `%USERPROFILE%\OneDrive\Masaüstü\Robot`, dal `lale-duzeltme` (başlangıç `2b07779`). **Push yok**, tek yerel commit (Türkçe mesaj,
   boş satır + `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`).
 - `tasarim/solidworks/` izlenmiyor: dokunma, commit'e ekleme. `main` / `yazilim-baslangic` dallarına dokunma (Efe'nin yazılımı).
   Köprü notu (`planlama/kopru-mekanik-yazilim.md`, main) bu adımda **değişmez**; Efe'yi ilgilendirenler raporda listelenir.

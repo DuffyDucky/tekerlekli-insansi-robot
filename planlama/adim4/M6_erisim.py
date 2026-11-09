@@ -1,6 +1,6 @@
 # M6 (duzeltme plani, 4. adim): montaj sirasi + alet erisimi. CAD'i YALNIZ OKUR (modul FCStd'leri), hicbir modul dosyasina yazmaz.
 # Cikti: planlama/adim4/M6_erisim_sonuc.json. Calistirma (README baslaticisi):
-#   FC_SCRIPT=<bu dosya> "%LOCALAPPDATA%/Programs/FreeCAD 1.1/bin/freecadcmd.exe" C:/Users/Victus/.robot-cad/run_fc.py
+#   FC_SCRIPT=<bu dosya> "%LOCALAPPDATA%/Programs/FreeCAD 1.1/bin/freecadcmd.exe" %USERPROFILE%/.robot-cad/run_fc.py
 #
 # Yontem
 # - Tum moduller ev pozunda global koordinata yuklenir (m6_yukle.py; sol = X aynasi). Her parca bir montaj ADIMINA atanir

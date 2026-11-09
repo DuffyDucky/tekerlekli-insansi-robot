@@ -15,7 +15,7 @@ Kritik bulgu yok. Üç orta bulgu, durdurucunun **yük ve dayanım anlatımıyla
 Koşullar kayıt ve rapor metniyle sınırlı. Kaynak dosyalara dokunulursa tarama eskir, bu yüzden kaynak düzeltmesi bu commit'te yapılmamalı (Koşul 1).
 
 Kısaltmalar: `TF/` = `tasarim/freecad/`, `KY/` = `TF/lale158/kafa-yerlesim/`, `SP/` = A'nın scratchpad klasörü (günlükteki gibi). `SPB/` = B'nin klasörü
-`C:\Users\Victus\AppData\Local\Temp\claude\6eb585d8171c6c4f\bc1094ac-141c-42e4-99c1-30e40153afa9\scratchpad\b-f2` (depo dışı). B depoya yalnız bu dosyayı yazdı.
+`%USERPROFILE%\AppData\Local\Temp\claude\6eb585d8171c6c4f\bc1094ac-141c-42e4-99c1-30e40153afa9\scratchpad\b-f2` (depo dışı). B depoya yalnız bu dosyayı yazdı.
 B FreeCAD'i bir kez kısa ölçüm için tek süreç olarak koştu: `SPB/F2-kontrol-olc.py` → `SPB/F2-kontrol-olc.json`, 52 s, rc 0. Başlangıçta boş bellek 4,76 GB, çalışan FreeCAD süreci yoktu.
 HEAD karşılaştırma kopyaları `SPB/HEAD_*.json` ve `SPB/HEAD_omuz_parcalar.py` (`git show HEAD:`). Darbe kontrolü: `SPB/F2-kontrol-darbe.py` → `.json`.
 

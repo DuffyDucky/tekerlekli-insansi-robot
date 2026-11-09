@@ -1,6 +1,6 @@
 # K3 bagimsiz CAD olcumu (FreeCAD 1.1, freecadcmd). Uretilmis dosyalara YAZMAZ: FCStd'lerin %TEMP%\k3 kopyasini acar,
 # taban_parcalar'i yalniz bellekte (TABAN_OMNI=1) kurar. Sonuc: planlama/adim3/K3_cad_sonuc.json
-# Calistirma: FC_SCRIPT=<bu dosya> freecadcmd C:\Users\Victus\.robot-cad\run_fc.py
+# Calistirma: FC_SCRIPT=<bu dosya> freecadcmd %USERPROFILE%\.robot-cad\run_fc.py
 import os, sys, json, math, shutil
 import FreeCAD as App
 import Part

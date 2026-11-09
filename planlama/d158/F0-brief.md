@@ -1,6 +1,6 @@
 # F0 brief (P0.1, P0.2, P0.3) — 08.11.2026
 
-Plan: `planlama/dongu-158.md`. Depo: `C:\Users\Victus\OneDrive\Masaüstü\Robot`, dal `lale-duzeltme`.
+Plan: `planlama/dongu-158.md`. Depo: `%USERPROFILE%\OneDrive\Masaüstü\Robot`, dal `lale-duzeltme`.
 
 ## P0.1 Commitlenmemiş dosyaları sınıflandır
 `git status` ve `git diff --stat` ile her değişiklik/izlenmeyen yol için: ne değişmiş (özet), hangi işe ait

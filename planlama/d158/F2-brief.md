@@ -2,7 +2,7 @@
 
 Plan: `planlama/dongu-158.md` §3 F2. Karar kuyruğu: `planlama/d158/karar-kuyrugu.md`. Regresyon: `py -3 planlama/d158/regresyon.py`
 (yalnız normal mod ya da `--yazma`; `--help` ya da tanımsız bayrak KULLANMA, betik onları tanımıyor ve tabanı yeniden yazar).
-FreeCAD 1.1 başlatıcı `C:\Users\Victus\.robot-cad\run_fc.py` ("ü"lü yolda freecadcmd doğrudan çöker; başlatıcıyı kullan).
+FreeCAD 1.1 başlatıcı `%USERPROFILE%\.robot-cad\run_fc.py` ("ü"lü yolda freecadcmd doğrudan çöker; başlatıcıyı kullan).
 Önceki paketler: F1a, F1b (commit'li). Çakışma taramasının bölüm bölüm nasıl koşulduğu: `planlama/d158/F1b-gunluk.md`.
 Paralel koşan paketler: F4a (yalnız belgeler: `elektrik.md`, `maliyet.json`, README/OZET; FreeCAD yok) ve F3a kontrolü
 (`planlama/d158/F3a-*`). Onların dosyalarına dokunma. **FreeCAD makinesi yalnız sende.**

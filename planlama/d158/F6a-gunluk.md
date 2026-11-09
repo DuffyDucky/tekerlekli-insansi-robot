@@ -2,9 +2,9 @@
 
 Brief: `planlama/d158/F6a-brief.md`. Plan: `planlama/dongu-158.md` §3 F6 (P6.1, P4.5). Dal `lale-duzeltme`. Bu günlükte takma ad yazılmaz; "takma ad" denir.
 Kısaltmalar: `TF/` = `tasarim/freecad/`, `KY/` = `TF/lale158/kafa-yerlesim/`, `SP/` = oturum scratchpad klasörü (depo dışı,
-`C:\Users\Victus\AppData\Local\Temp\claude\6eb585d8171c6c4f\bc1094ac-141c-42e4-99c1-30e40153afa9\scratchpad\f6a`). Önceki durumun kopyaları `SP/once/`
+`%USERPROFILE%\AppData\Local\Temp\claude\6eb585d8171c6c4f\bc1094ac-141c-42e4-99c1-30e40153afa9\scratchpad\f6a`). Önceki durumun kopyaları `SP/once/`
 (`src/` değişen kaynaklar, `json/` `TF/` altındaki bütün izlenen JSON/CSV'ler, `kod/ortak/eklem_sinirlari.json`, regresyon tabanı, baskı listesi, `Y2b-baski.json`).
-FreeCAD 1.1, başlatıcı `C:\Users\Victus\.robot-cad\run_fc.py`. Tek tek koşular `SP/fc.sh` (F2 `fc.sh` kopyası), zincirler `SP/zincir.py` / `SP/zincir2.py`
+FreeCAD 1.1, başlatıcı `%USERPROFILE%\.robot-cad\run_fc.py`. Tek tek koşular `SP/fc.sh` (F2 `fc.sh` kopyası), zincirler `SP/zincir.py` / `SP/zincir2.py`
 (her adımdan önce boş bellek ≥ 2 GB ve çalışan `freecadcmd`/`freecad` 0 denetimi, koşu boyunca 5 dk'da bir boş bellek `SP/bellek.log`'a, adım başarısızsa durur,
 yeniden başlatmaz; özet `SP/zincir_<kosu>.json`, çıktı `SP/zincir.out`).
 

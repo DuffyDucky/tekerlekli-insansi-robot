@@ -1,6 +1,6 @@
 # Lale 1,70 m TASLAK - montaj + kayit + kutle/AM + baski tablosu + kisa yerlesim kontrolu (FreeCAD 1.1)
 # Calistir (yolda "ü" oldugu icin ASCII baslaticiyla):
-#   FC_SCRIPT=<bu dosya> "%LOCALAPPDATA%/Programs/FreeCAD 1.1/bin/freecadcmd.exe" C:/Users/Victus/.robot-cad/run_fc.py
+#   FC_SCRIPT=<bu dosya> "%LOCALAPPDATA%/Programs/FreeCAD 1.1/bin/freecadcmd.exe" %USERPROFILE%/.robot-cad/run_fc.py
 # Cikti (bu klasor): taslak-170.FCStd (Assembly: gruplar + eklemler), taslak-170.step, kutle.json, taslak-analiz.json
 #   %TEMP%/taslak170-gorsel.FCStd: renk bazinda bilesik (yeni + eski 125 cm), taslak_gorsel.py (GUI) bunu cizer.
 # Tam carpisma taramasi BURADA YOK (analiz ajani): yalniz ev pozunda yeni/degisen parcalarin cakismasi, kafa tilt +-15 ve pan +-90

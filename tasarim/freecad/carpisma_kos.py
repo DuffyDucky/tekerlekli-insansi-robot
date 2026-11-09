@@ -44,7 +44,7 @@ def kaynak_listesi():
 
 KAYNAK = kaynak_listesi()
 FC = os.path.join(os.environ.get("LOCALAPPDATA", ""), "Programs", "FreeCAD 1.1", "bin", "freecadcmd.exe")
-BASLATICI = r"C:\Users\Victus\.robot-cad\run_fc.py"
+BASLATICI = os.path.join(os.path.expanduser("~"), ".robot-cad", "run_fc.py")   # %USERPROFILE%\.robot-cad\run_fc.py
 
 
 def bolum_coz(metin):

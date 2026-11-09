@@ -1,5 +1,5 @@
 # Pi 5 kafa tablasina DOGRUDAN vidalanabilir mi? - GECICI olcum betigi (modul dosyalarina yazmaz).
-# Calistir: FC_SCRIPT=<bu dosya> PYTHONDONTWRITEBYTECODE=1 freecadcmd C:\Users\Victus\.robot-cad\run_fc.py
+# Calistir: FC_SCRIPT=<bu dosya> PYTHONDONTWRITEBYTECODE=1 freecadcmd %USERPROFILE%\.robot-cad\run_fc.py
 # Kafa tablasi (Kafa iskeleti, y 178-183) uzerinde: 4 Pi deligi (58 x 49) tabla katisina >= R_ETLI mm icinde dusen konumlar
 # (hafifletme cepleri ve kablo gecisi disarida), 4 yonelim (bilesen yukari), 1 mm adim; sonra kesin cakisma (Part common)
 # ile Pi govdesi + S1 koruma hacimleri (fan ustu 10, kablo kenari 30, USB tarafi 20, SD 15) kafa parcalariyla cakisiyor mu.

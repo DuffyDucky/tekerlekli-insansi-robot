@@ -40,12 +40,12 @@ Her modülün yerel orijini `arayuz.MODULLER`'de (sağ omuz = travers merkezi (0
 ## Çalıştırma
 
 `freecadcmd`, yolunda "ü" (Masaüstü) olan betiği doğrudan alınca çöküyor. Betikler ASCII yoldaki başlatıcıyla çalışır
-(`C:\Users\Victus\.robot-cad\run_fc.py`, hedef betik `FC_SCRIPT` ortam değişkeninde). Konsol çıktısı ASCII.
+(`%USERPROFILE%\.robot-cad\run_fc.py`, hedef betik `FC_SCRIPT` ortam değişkeninde). Konsol çıktısı ASCII.
 
 ```bash
 FC="$LOCALAPPDATA/Programs/FreeCAD 1.1/bin/freecadcmd.exe"   # GUI gerektirenler için freecad.exe
-R="C:/Users/Victus/OneDrive/Masaüstü/Robot/tasarim/freecad"
-L=C:/Users/Victus/.robot-cad/run_fc.py
+R="$USERPROFILE/OneDrive/Masaüstü/Robot/tasarim/freecad"
+L=$USERPROFILE/.robot-cad/run_fc.py
 
 # iskelet: montaj + kontroller + eğilme + STEP/BOM/JSON (~15 s), görseller (GUI), rapor (sistem Python'u)
 FC_SCRIPT=$R/iskelet/iskelet_montaj.py "$FC" $L
@@ -89,7 +89,7 @@ python $R/taban/taban_rapor.py
 Not: `omuz_regresyon.py` `omuz_montaj.py`'yi çalıştırıp omuz çıktılarını yeniden yazar (FCStd GUI durumu kaybolur). Sonuç birebir
 aynıysa üretilmiş omuz dosyaları `git checkout` ile geri alınabilir.
 
-PowerShell'de: `$env:FC_SCRIPT="<betik>"; & "$env:LOCALAPPDATA\Programs\FreeCAD 1.1\bin\freecadcmd.exe" C:\Users\Victus\.robot-cad\run_fc.py`
+PowerShell'de: `$env:FC_SCRIPT="<betik>"; & "$env:LOCALAPPDATA\Programs\FreeCAD 1.1\bin\freecadcmd.exe" $env:USERPROFILE\.robot-cad\run_fc.py`
 
 Sıra: `arayuz.py` veya `ortak_lib.py` değişirse → omuz ve iskelet regresyonu → iskelet montajı → kabuk montajı → dirsek montajı → `carpisma.py` →
 `carpisma_kos.py` → ana montaj (`ana_montaj.py` + `montaj_gorsel.py` + `montaj_gui_kontrol.py` + `eklem_dogrulama.py`) → görseller → raporlar
