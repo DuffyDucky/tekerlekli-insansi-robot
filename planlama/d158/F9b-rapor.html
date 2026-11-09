@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F9b Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+h3{font-size:1rem;margin:20px 0 8px}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+figure{margin:12px 0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px}
+figure img{display:block;width:100%;height:auto;border-radius:6px;background:#fff}
+figcaption{color:var(--muted);font-size:.88rem;margin-top:8px}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.figs figure{margin:0}
+.figs figure img{max-height:520px;object-fit:contain}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F9b: demo sayfası 1,58 m sayılarıyla (P9.2)</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 09.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>F9b-brief.md</code>, <code>F9b-gunluk.md</code> (§10 düzeltme turu 1 dahil), <code>F9b-kontrol.md</code> (yeniden kontrol, düzeltme 1: GEÇER), <code>F9b-dogrula.py</code> çıktısı</p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">Doğrulama</div><div class="v"><span class="tag ok">0</span></div><div class="d"><code>F9b-dogrula.py</code> "GECER (hata 0)": 127 anahtar, 130 bağlı eleman; DOM 1.638 bağlı, 0 bağsız</div></div>
+  <div class="card"><div class="k">Tarayıcı</div><div class="v"><span class="tag ok">konsol 0</span></div><div class="d"><code>file://</code>, 1400 ve 360 px; model çizildi (<code>data-hazir=1</code>); 360 px taşma 0</div></div>
+  <div class="card"><div class="k">Boy · kütle</div><div class="v">1.580 mm</div><div class="d">25,72 kg (25.720,55 g); önceki sayfa 125 cm / 18,57 kg (CadQuery V3)</div></div>
+  <div class="card"><div class="k">Maliyet</div><div class="v">118.666,22 TL</div><div class="d">121 kalem, ara 103.188,02; <code>maliyet.json</code> ile aynı (153 kalem)</div></div>
+  <div class="card"><div class="k">Bağımsız kontrol</div><div class="v"><span class="tag ok">GEÇER</span></div><div class="d">Düzeltme turu 1'den sonra; kritik 0, orta 0, açık düşük 2 (D-8, D-9)</div></div>
+</div>
+
+<p class="note">C'nin koşuları F7b commit'i (<code>649885f</code>) ve raporu (<code>2d1f412</code>) push edildikten sonra yapıldı (18:41–18:44, <code>PYTHONIOENCODING=utf-8</code>, <code>py -3 -B</code>; FreeCAD açılmadı, kilit "boş"). Sıra B'nin O-3 kuralına uygun: önce F7b'nin <code>rehber/veri/</code> dosyaları commit'lendi, sonra <code>demo_uret.py</code> ve <code>F9b-dogrula.py</code> bu son hâlle koşuldu. Koşudan sonra headless Chrome süreci 0. Takma ad araması, ad hiçbir yere yazılmadan, git geçmişinden çalışma anında türetilerek yapıldı.</p>
+
+<h2>Yeniden üretim (F7b'nin son <code>rehber-veri.js</code>'iyle)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Adım</th><th>Sonuç</th></tr></thead>
+<tbody>
+<tr><td><code>py -3 tasarim/cad/demo_uret.py</code></td><td>Çıkış 0: "model: goreli ../rehber/veri/rehber-veri.js, ../rehber/veri/robot-glb.js · 1192 dugum; sayi anahtari: 127 · karar: 14 · maliyet: 153 kalem; demo 163 KB". Yazılan tek dosya sayfa (<code>find -newer</code>); <code>lale158-model.js</code> üretilmedi.</td></tr>
+<tr><td>Sayfa baytları</td><td><b>Değişti</b>: sha256 <code>9613ce541bb3</code> (B'nin onayladığı hâl, F7b 17:54 verisiyle) → <code>6301edf7452a</code>. Fark tek satır: gömülü <code>&lt;script id="kaynak"&gt;</code> JSON'unda yalnız <code>dosyalar["rehber/veri/rehber-veri.json"]</code> parmak izi <code>2c512b2b95c1</code> → <code>4b35d3edf72c</code> (commit'lenen F7b dosyasının sha256'sı). Bu bir kaynak dosya özeti; sayfada sayı olarak gösterilmiyor.</td></tr>
+<tr><td>Sayılar, model ve parça adları</td><td><b>Değişmedi.</b> Gömülü JSON anahtar anahtar karşılaştırıldı: başka fark 0; <code>glb_dugum</code>, <code>glb_ref</code>, <code>glb_kablo</code>, <code>rehber_adim</code> ve 127 anahtarın hepsi aynı. Bu yüzden commit atıldı.</td></tr>
+<tr><td>Görüntüler</td><td><code>--goruntu</code> koşulmadı; 10 PNG B'nin onayladığı hâliyle kaldı. Görünen içerik değişmediği için sayfayı temsil ediyorlar.</td></tr>
+</tbody>
+</table></div>
+
+<h2>Kabul ölçütleri (C'nin ölçümleri)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Ölçüt</th><th>Ölçülen</th><th>Kaynak</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td>Sayfa yerelde (<code>file://</code>) açılıyor, konsol hatası 0</td><td class="n">1400 px ve 360 px: konsol 0, <code>data-hata=''</code>, <code>data-hazir=1</code> (model göreli dosyalardan çizildi)</td><td><code>F9b-dogrula.py</code> [8], C 18:42</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>F9b-dogrula.py</code> 0, her sayı bir JSON anahtarına bağlı</td><td>çıkış 0; [1] 127 anahtar / 130 eleman; [2] statik 119 bağlı, 5 muaf (pay seçenekleri), 0 bağsız; [8] DOM <code>data-k</code> 131, <code>data-mk</code> 978, 1.638 bağlı, 0 bağsız</td><td><code>F9b-dogrula.py</code> (<code>-X utf8</code>, çıktı dosyaya)</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Model: göreli dosyalar o anki hâlleriyle tutarlı</td><td><code>robot-glb.js</code> GLB 2.559.336 bayt = <code>robot.glb</code> (sha256 <code>760bf1ff5955</code>); <code>rehber-veri.js</code> = <code>.json</code>, 1.192 parça; 1.192 GLB düğümünün hepsi <code>parcalar</code>'da</td><td>[4]</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Maliyet</td><td>gömülü JSON = <code>planlama/maliyet.json</code> (153 kalem); sayfa kuralı 121 kalem, ara 103.188,02, genel 118.666,22 TL</td><td>[3]</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Açık kararlar "karar bekliyor"</td><td>14 karar, 33 etiket, hepsi kuyrukta açık (K2, K3, K9, K11, K28, K29, K32, K34, K38, K41, K42, K44, K45, K46)</td><td>[5]</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Kafa QLED 10,1", 10 servo, göğüs 11,6", boy 1,58 m</td><td>servo 10 = 4 DS3235 + 6 MG996R; brief sayıları kaynakla aynı: boy 1580, rampa 1,519, tilt 3,64, pan 2,21, mik–hoparlör 574,3; eklem sınırları <code>kod/</code> ile aynı</td><td>[6]</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Eski 1,65 kalmamış, kalanların gerekçesi var</td><td>23 eşleşme (sayfa 12 + DOM 11), hepsi dokunulmaz <code>maliyet.json</code> metni ve "eski tasarım notu" etiketli; şablon ve üreticide 0</td><td>[7]; günlük §5</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>360 px yatay kaydırma yok</td><td class="n">innerWidth 360 = scrollWidth 360 = clientWidth 360</td><td>[8]</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>carpisma_kos.py kontrol</code></td><td class="n">çıkış 0 (18:43, commit öncesi ve commit sonrası)</td><td>C</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>regresyon.py --yazma</code></td><td>çıkış 0, "GEÇER (hepsi okundu, kötüleşen yok)", 10 / 10 aynı (değerler F7b raporundaki tabloyla aynı)</td><td>C, 18:43</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Takma ad</td><td>commit'in 18 dosyasında 0 (sayfanın görünen metni ve gömülü JSON'ları, PNG metin parçaları dahil); staged içerikte 0. Ahmet'in kendi tam adı yalnız brief'in kişi atıf kuralında geçiyor; başka öğrenci / danışman soyadı 0</td><td>C, çalışma anında türetilen ad</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Yerel kullanıcı yolu</td><td>0. Desen eşleşmelerinin hepsi tarayıcı penceresi genişliğini anlatan cümleler (günlük, kontrol, doğrulama betiği); yol değil</td><td>C, 18 dosya + staged içerik</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Commit sonrası</td><td><code>F9b-dogrula.py --tarayicisiz</code> 0; <code>carpisma_kos.py kontrol</code> 0</td><td>C (B'nin notu)</td><td><span class="tag ok">GEÇER</span></td></tr>
+</tbody>
+</table></div>
+
+<h2>Envanter özeti (eski → yeni)</h2>
+<p>Önceki sayfa (son içerik değişikliği <code>680b965</code>, 30.10) eski CadQuery modelini (V1 / V2 / V3) ve 1,65 m gövde ekranı denemesini gösteriyordu: metinde 232 ham sayı, gömülü 54 parçalık model ve 29.10 tarihli maliyet JSON'u. Hiçbiri aynen kalmadı; yeni sayfada her sayı bir JSON anahtarından (<code>data-k</code>) ya da <code>maliyet.json</code>'dan (<code>data-mk</code>) geliyor.</p>
+<div class="tbl"><table>
+<thead><tr><th>Konu</th><th>Eski sayfa</th><th>Yeni sayfa</th><th>Kaynak anahtarı</th></tr></thead>
+<tbody>
+<tr><td>Boy</td><td class="n">125 cm (V3; V1 115)</td><td class="n">1.580 mm</td><td><code>lale158-kontrol.json toplam_boy_mm</code></td></tr>
+<tr><td>Kütle</td><td class="n">18,57 kg (V3; V1 17,75, V2 18,90)</td><td class="n">25,72 kg (25.720,55 g)</td><td><code>montaj-analiz.json kutle_g</code></td></tr>
+<tr><td>Ağırlık merkezi yüksekliği</td><td class="n">337 mm</td><td class="n">528,6 mm</td><td><code>montaj-analiz.json agirlik_merkezi.1</code></td></tr>
+<tr><td>Parça</td><td>54 CadQuery parçası</td><td>1.179 (baskı 72, satın 210 katı / alım listesinde 191, bağlantı 893, lazer 3, imalat 1)</td><td><code>montaj-analiz.json parca_sayisi</code>, <code>parcalar[tur=…]#say</code>, <code>bom_ozet.Satin.adet</code></td></tr>
+<tr><td>Servo</td><td>DS3218 / MG996R / STS3215 seçici</td><td class="n">10 = 4 DS3235 + 6 MG996R</td><td><code>F6a-eklem_sinirlari-oneri.json</code>, <code>montaj-analiz.json</code></td></tr>
+<tr><td>Kafa ekranı</td><td>7" (V1 / V3), iki GC9A01 göz (V2)</td><td class="n">10,1" QLED 1280 × 720</td><td><code>montaj-analiz.json parcalar[ad=Yuz ekrani …]</code></td></tr>
+<tr><td>Göğüs ekranı</td><td>10,1" (V3'te 15° eğik)</td><td class="n">11,6" 1920 × 1080</td><td><code>montaj-analiz.json parcalar[ad=Gogus ekrani …]</code></td></tr>
+<tr><td>Devrilme / motor / servo kartları</td><td>kaydırıcılı hesap (V3 modelinden)</td><td>rampa payı 1,519 (≥ 1,5); tilt 3,64, pan 2,21; teker ivme sınırları</td><td><code>regresyon-son-kosu.json</code>, <code>F6a-…oneri.json teker</code></td></tr>
+<tr><td>Eklem aralıkları</td><td>yok</td><td>S1 −45…135, S2 5…120, dirsek 0…105, bilek −90…90, pan −90…90, tilt −13…13</td><td><code>F6a-…oneri.json eklemler.*</code></td></tr>
+<tr><td>Baskı</td><td>okul yazıcısı 25 cm, PETG 2,5 mm</td><td>X2D 246 × 246 × 250 mm; 72 parça; 7.668,9–7.726,7 g; 159,90–161,08 sa</td><td><code>baski-analiz.json</code>, <code>Y2b-baski.json</code></td></tr>
+<tr><td>Maliyet genel toplam</td><td class="n">103.767,58 TL (29.10, 119 kalem)</td><td class="n">118.666,22 TL (09.11, 121 kalem)</td><td><code>planlama/maliyet.json</code></td></tr>
+<tr><td>Takvim</td><td>"2 Ekim 2026", yapım adımları</td><td>tarih yazılmaz; S ↔ K28 / K29 "karar bekliyor"; montaj rehberi (50 adım) bağlantısı</td><td><code>proje-plani.md</code>, <code>rehber-veri.json adimlar#say</code></td></tr>
+<tr><td>Gövde ekranı denemesi (1,65 m), kaydırıcılar, V1→V3 listesi, vida payı</td><td>vardı</td><td>kaldırıldı (git geçmişinde: <code>680b965</code>, <code>c7f9af4</code>)</td><td>—</td></tr>
+<tr><td>Açık kararlar</td><td>yok</td><td>14 karar "karar bekliyor"</td><td><code>karar-kuyrugu.md</code> özet tablosu</td></tr>
+</tbody>
+</table></div>
+<p class="note">Tam envanter (29 satır) <code>F9b-gunluk.md</code> §1'de; sayım <code>F9b-envanter.py</code>.</p>
+
+<h2>Düzeltme turu 1</h2>
+<div class="tbl"><table>
+<thead><tr><th>#</th><th>Bulgu (B)</th><th>Yapılan</th><th>Yeniden kontrol</th></tr></thead>
+<tbody>
+<tr><td class="kod">O-1</td><td>Maliyet tablosunda işaretsiz eski kafa ekranı ve Nextion / 7" iddiaları; kalem 33 "Waveshare 10.1" HDMI LCD (B)" KPI kartındaki QLED ile çelişiyor</td><td>Sayfa katmanında işaret (<code>maliyet.json</code>'a dokunulmadı): kalem 33'ün altına "F9b notu: K32'ye bağlı; CAD'deki kafa ekranı QLED 10,1"" (10,1 <code>kafa_in</code> anahtarından <code>data-k</code>); kalem 36 ve 78'in Nextion notlarına "eski tasarım notu". Üretici kalem adını ve aranan metni denetler, <code>maliyet.json</code> kayarsa üretim durur; doğrulama DOM'da üç işareti arar.</td><td><span class="tag ok">kapandı</span></td></tr>
+<tr><td class="kod">O-2</td><td>"Satın alınan 210", alım listesindeki 191 ile uyuşmuyor</td><td>Parça kartı: "satın alınan 210 katı (alım listesinde 191 adet; fark servo çıkış milleri ve rulman bilezikleri)". 191 yeni <code>p_satin_bom</code> ← <code>bom_ozet.Satin.adet</code>. Fark 19 katı: 10 servo çıkış mili + 9 rulman bileziği; adları "(" ile başladığı için alım listesine yazılmıyor. 210, kırılım 1.179'a tutsun diye kaldı.</td><td><span class="tag ok">kapandı</span></td></tr>
+<tr><td class="kod">KT-F9b-2 = b</td><td>O-3: model kopyası (<code>lale158-model.js</code>, 3,4 MB) F7b'nin commit'lenmemiş verisine bağlı</td><td>Orkestratör kararı b: kopya kaldırıldı; sayfa <code>../rehber/veri/rehber-veri.js</code> ve <code>robot-glb.js</code>'i <code>&lt;script&gt;</code> ile göreli yükler (<code>file://</code>'da çalışır). Doğrulama [4] dosyaların o anki hâlini okur, sabit sha yok.</td><td><span class="tag ok">kapandı</span> (sıra kuralı bu commit'te uygulandı)</td></tr>
+<tr><td class="kod">D-2 … D-7</td><td>"13 kablo yolu" ifadesi, brief listede yok, silme çelişkisi, kapsam dışı eski tarifler, yönlendirmede çökme, iki "K3"</td><td>"13 gösterim parçası (12 kablo yolu ve ana anahtar düğmesi)" (<code>glb_kablo</code> anahtarı); brief listede; günlük 3. satır; KT-F9b-3 / 4 genişletildi; <code>stdout.reconfigure</code></td><td><span class="tag ok">kapandı</span></td></tr>
+<tr><td class="kod">D-1</td><td>Doğrulama betiğinin dört açığı</td><td>Brief sayıları artık hata; <code>eski</code> / <code>duzeltme</code> muafiyeti kapandı</td><td><span class="tag wait">kısmen</span> (kalanı D-9)</td></tr>
+</tbody>
+</table></div>
+<p class="note">B'nin yeniden kontrolünde 16 bozmanın 12'si yakalandı; geçen 4'ü D-9. Bu turda dosya silinmedi.</p>
+
+<div class="figs">
+<figure><img src="F9b-goruntu-1400-ust.png" alt="Demo sayfası 1400 px: başlık, altı sayı kartı (boy 1.580 mm, kütle 25,72 kg, parça 1.179, servo 10, kafa ekranı 10,1 inç QLED, göğüs ekranı 11,6 inç) ve turuncu 3B model"><figcaption>1400 px üst: KPI kartları (noktalı çizgili sayılar <code>data-k</code> bağlı), "karar bekliyor · K32 / K11" etiketleri, rehber GLB'sinden çizilen 1,58 m model.</figcaption></figure>
+<figure><img src="F9b-goruntu-1400-kararlar.png" alt="Demo sayfası 1400 px: maliyet toplamı 118.666,22, takvim, bu sayfa hakkında ve 14 açık kararın tablosu"><figcaption>1400 px alt: genel toplam 118.666,22; takvim tarihsiz (K28 / K29); 14 açık karar "karar bekliyor"; <code>main</code>'e birleştirme Ahmet'in onayına bağlı.</figcaption></figure>
+</div>
+
+<h2>Karar taslakları (yalnız öneri)</h2>
+<div class="tbl"><table>
+<thead><tr><th>#</th><th>Konu</th><th>Öneri / durum</th></tr></thead>
+<tbody>
+<tr><td class="kod">KT-F9b-1</td><td><code>main</code>'e birleştirme (GitHub Pages; kök <code>index.html</code> bu sayfaya yönlendiriyor)</td><td>Ahmet'in onayına bağlı. Seçenekler: (a) onaydan sonra birleştir; (b) P9.3 sonuç raporuyla birlikte. Önerilen b. Bu pakette birleştirme yapılmadı.</td></tr>
+<tr><td class="kod">KT-F9b-2</td><td>Model kopyası depoya girsin mi</td><td><b>Karar verildi: b</b> (orkestratör). Göreli bağlantı; <code>tasarim/cad/lale158-model.js</code> commit dışı.</td></tr>
+<tr><td class="kod">KT-F9b-3</td><td><code>maliyet.json</code> eski metinleri (iş)</td><td><code>notlar[0]</code> "Demodaki 3B model eski CadQuery V3 (125 cm)"; 1,65 m ölçülerine dayanan 8 kalem notu (5, 8, 14, 19, 33, 92, 107, 139); kalem 33 / 36 / 78 (kafa ekranı LCD, Nextion); K numaralama çakışması (<code>maliyet.json</code> K3'ü akü için kullanıyor, kuyrukta K3 "düz zeminde elde yük sınırı"). <code>maliyet.json</code> sahibi gözden geçirsin; sonra <code>demo_uret.py</code> koşulur.</td></tr>
+<tr><td class="kod">KT-F9b-4</td><td>Eski demo tarifi (iş)</td><td>Depodaki <code>CLAUDE.md</code> 12–13. satırlar, <code>README.md:21</code>, <code>planlama/proje-plani.md:235</code>: demo artık 1,58 m FreeCAD montajını rehber dosyalarından gösteriyor, sayıları <code>demo_uret.py</code> kaynak JSON'lardan alıyor. Üçü birlikte güncellenmeli (<code>CLAUDE.md</code>'deki K25 ile birlikte).</td></tr>
+</tbody>
+</table></div>
+
+<h2>Açıklar</h2>
+<ul class="list">
+<li><span class="tag wait">D-8</span> Sayfa depo dışında (yalnız HTML, başka klasörde) açılınca model yüklenmez: <code>data-hazir="model-yok"</code>, konsolda 3 hata. Yedek metin nedeni yanlış söylüyor ("three.js için internet bağlantısı ve WebGL gerekiyor"). Göreli yol depo yapısına bağlı (<code>tasarim/</code> ile <code>rehber/</code> yan yana). Depo içi <code>file://</code> ve GitHub Pages sorunsuz; kabul ölçütü sağlanıyor. Öneri: <code>model-yok</code> için ayrı metin ("sayfa depo içinden açılmalı") ve model notuna aynı cümle.</li>
+<li><span class="tag info">D-9</span> Doğrulamanın kalan açıkları (bugünkü sayfada bunlardan yararlanan sayı yok): harfe bitişik sayı ("1590mm"), <code>title</code> özniteliği, <code>data-ui="secim"</code> muafiyeti, anahtarın başka bir JSON yoluna bağlanması (<code>p_satin_bom</code> → <code>Baski.adet</code>). Öneri: <code>secim</code>'i yalnız <code>#info</code>'ya sınırla; <code>p_satin − p_satin_bom</code> = "(" kodlu katı sayısı denetimi.</li>
+<li><span class="tag info">C gözlemi</span> "Bu sayfa hakkında" maddesi hâlâ doğrulamanın "model kopyasının güncelliğini" denetlediğini söylüyor (şablonda da aynı). KT-F9b-2 = b'den sonra kopya yok; doğrulama göreli dosyaların tutarlılığını denetliyor. Sayı değil, metin; P9.3'te şablonda düzeltilebilir.</li>
+<li><span class="tag info">artık dosya</span> <code>tasarim/cad/lale158-model.js</code> (3,4 MB, ilk turdan) takip dışı; sayfa ve doğrulama kullanmıyor. Silinmedi, dokunulmadı; silme ya da <code>.gitignore</code> kararı Ahmet'in.</li>
+<li><span class="tag info">çevrimdışı</span> 3B görünüm three.js r128'i CDN'den yükler; internetsiz açılışta model görünmez (sayılar ve maliyet görünür).</li>
+<li><span class="tag info">kaynak</span> Maliyet toplamı açık kararlara bağlı (K28, K32, K34, K42); sayfa bunu yazıyor. Tilt payı etiketi "±15" kaynaktaki gibi, eklem aralığı ±13 (pay tutucu tarafta hesaplanmış). Eski kaydırıcılı devrilme / motor / servo hesabı 1,58 m için yeniden kurulmadı (kaynak JSON'larda karşılığı yok).</li>
+</ul>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th><th>Dosya</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>a3fbcd6</code></td><td><code>tasarim/Robot-Tasarim-Demosu.html</code>, <code>tasarim/cad/demo_uret.py</code>, <code>tasarim/cad/viewer-template.html</code> (değişen); <code>F9b-brief.md</code>, <code>F9b-gunluk.md</code>, <code>F9b-kontrol.md</code>, <code>F9b-dogrula.py</code>, <code>F9b-envanter.py</code>, 10 × <code>F9b-goruntu-*.png</code> (6 × 1400 px, 4 × 360 px) (yeni)</td><td class="n">18</td></tr>
+</tbody>
+</table></div>
+<p class="note">Push: <code>2d1f412..a3fbcd6 lale-duzeltme → lale-duzeltme</code>. B'nin kesin <code>git add</code> listesiyle; liste <code>git status --porcelain -uall</code> ile 18 / 18 eşleşti, F9b alanında liste dışı kalan tek yol <code>tasarim/cad/lale158-model.js</code> (artık, kasıtlı dışarıda). <code>git diff --cached --stat</code>: 18 dosya (15 yeni, 3 değişen), +2.478 / −1.539 satır; F7b, <code>dongu-158.md</code> ve kilit dosyası yok. Dışarıda kalanlar F7b raporundaki dışlama listesiyle aynı (F9b dosyaları artık içeride). <code>main</code>'e dokunulmadı. Bu rapor ayrı commit'te.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F9b · 09.11.2026 · Commit <code>a3fbcd6</code> (<code>lale-duzeltme</code>) · <code>F9b-dogrula.py</code> 0 · konsol 0 (1400 / 360 px) · 360 px taşma 0 · Çakışma <code>kontrol</code> 0 · Regresyon <code>--yazma</code>: GEÇER · Kaynaklar: <code>F9b-brief.md</code>, <code>F9b-gunluk.md</code>, <code>F9b-kontrol.md</code>.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
