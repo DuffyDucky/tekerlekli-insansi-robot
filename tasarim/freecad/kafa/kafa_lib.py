@@ -163,7 +163,7 @@ def burc25(L, p0, direction):
     return hexprism(5.0, p0, p0 + u * L, V(1, 0, 0) if abs(u.x) < 0.9 else V(0, 0, 1)).cut(Part.makeCylinder(1.25, L + 2, p0 - u, u))
 
 
-# 5 V cevirici: Pololu D24V50F5 (Duffy 01.11.2026; raporlar/kaynaklar/07 Tablo 2, Robotistan PL-2851: 17,8 x 20,3 x 8,8 mm, maks. 38 V, 5 V %4, 5 A surekli,
+# 5 V cevirici: Pololu D24V50F5 (Ahmet 01.11.2026; raporlar/kaynaklar/07 Tablo 2, Robotistan PL-2851: 17,8 x 20,3 x 8,8 mm, maks. 38 V, 5 V %4, 5 A surekli,
 # ters gerilim / asiri akim / kisa devre / termal korumali). Eski D36V50F5 25,4 x 25,4 x 9,5 idi; kuculdu, tablada yer sorunu yok. Kutle sayfada yok: 7 g eski model degeri (tahmini).
 # Bilesen yuksekligi 8,8 icinde tek blok (tahmini dagilim). Yerel: kart alt yuzu y = 0, merkez orijin.
 CEV = dict(l=17.8, w=20.3, h=8.8, t=1.0, kutle_g=7.0, model="Pololu D24V50F5 5 V 5 A")
@@ -255,19 +255,41 @@ def baski_analiz(ad, sh, yukari, doluluk):
     cik = (nz < -math.cos(math.radians(45))) & ~tabla
     oran = float(alan[cik].sum() / alan.sum())
     sorun, uyari, atla = [], 0, []
+    kaydir = []          # F6a (P6.1; F1b P1.5 kalibi): acik tel / gecersiz yuz yuzunden kaydirilarak kesilen katmanlar (z, dz)
     onceki = None
     n_kat = int((zmax - zmin) // 1.0)
     inv = App.Placement(V(0, 0, 0), rot).inverse()
     for kk in range(n_kat):
         z = zmin + 0.47 + kk * 1.0      # 0,5 yerine 0,47: 2,5 mm duvarin ic yuzu kesit duzlemiyle cakismasin
-        try:
-            ws = s.slice(V(0, 0, 1), z)
-            yuz = Part.makeFace(ws, "Part::FaceMakerBullseye") if ws else None
-        except Exception:
-            yuz = None
-        if yuz is not None and not yuz.isValid():
-            yuz = None                    # gecersiz kesit yuzu (teget fillet katmani): katman karsilastirmasi atlanir
-            atla.append(round(z - zmin, 1))
+        # F6a (P6.1; F1b P1.5 kabuk_montaj.baski_analiz kalibi, F1b-kontrol 14): kesit duzlemi yatay eksenli bir silindire / fillete teget
+        # gelince OCC acik tel ya da gecersiz yuz veriyor; eskiden makeFace hatasi katmani sessizce atliyordu. Simdi teller kapali degilse
+        # (ya da yuz gecersizse) duzlem 0,05 / 0,1 / 0,25 mm kaydirilip yeniden kesilir, yuz katman duzlemine geri tasinir. Hic kapanmazsa
+        # destek sorunu sayilir; yalniz gecersiz kalirsa eskisi gibi atlanir (atlanan_katman).
+        yuz, gecersiz = None, False
+        for _dz in (0.0, 0.05, -0.05, 0.1, -0.1, 0.25, -0.25):
+            try:
+                ws = s.slice(V(0, 0, 1), z + _dz)
+            except Exception:
+                ws = None
+            if not ws:
+                break
+            if all(w.isClosed() for w in ws):
+                try:
+                    yuz = Part.makeFace(ws, "Part::FaceMakerBullseye")
+                except Exception:
+                    yuz = None
+                if yuz is not None and not yuz.isValid():
+                    yuz, gecersiz = None, True    # gecersiz kesit yuzu (teget fillet katmani): kaydirilarak yeniden denenir
+                    continue
+                if yuz is not None and _dz != 0.0:
+                    yuz.translate(V(0, 0, -_dz))
+                    kaydir.append((round(z - zmin, 1), _dz))
+                break
+        else:
+            if gecersiz:
+                atla.append(round(z - zmin, 1))
+            else:
+                sorun.append(dict(z=round(z - zmin, 1), hata="kesit teli kapanmadi (z +-0,25 mm)"))
         if yuz is not None and onceki is not None:
             dl = []
             for f in onceki.Faces:
@@ -304,5 +326,5 @@ def baski_analiz(ad, sh, yukari, doluluk):
     return dict(ad=ad, olcu=[round(en[1], 1), round(en[2], 1), round(zmax - zmin, 1)], tabla_aci=en[0], sigar=bool(sigar),
                 sigar_cift=bool(sigar_cift), cikinti_orani=round(oran, 4), cikinti_alan_cm2=round(float(alan[cik].sum()) / 100, 2),
                 yuzey_cm2=round(float(alan.sum()) / 100, 1), destek_sorun=sorun[:20], destek_sorun_sayi=len(sorun),
-                desteksiz=len(sorun) == 0, ofset_uyari=uyari, atlanan_katman=atla, hacim_cm3=round(hac / 1000, 1), kutle_g=round(kutle, 1),
+                desteksiz=len(sorun) == 0, ofset_uyari=uyari, atlanan_katman=atla, kesit_kaydirma=kaydir, hacim_cm3=round(hac / 1000, 1), kutle_g=round(kutle, 1),
                 filament_g=round(kutle * 1.05, 1), sure_saat=round(hac * doluluk / A.PETG_HACIM_HIZI / 3600, 2), katman=n_kat)

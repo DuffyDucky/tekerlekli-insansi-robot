@@ -164,16 +164,55 @@ for (y, z) in TB_VIDA:
 # P2.1 S2 mekanik durdurucu (arayuz.OMUZ["durdurucu"], F2 9 Kasim 2026): ic duvarin (x 163...168) altinda y -34'e inen dis + duvarin
 # -x yuzunde y -10'a kadar kok plakasi (x0...163; kapak yuzu x 160'a 1 mm). Disin +x yuzu, kol catali capraz kirisinin ic uc yuzunun
 # (catal yereli x = XR - 20, y -34...-28) S2 = temas_aci'daki duzlemi: o acida yuz yuze temas, ustunde bosluk, altinda kol durur.
-# Yuk kirisin ic ucundan gobek duvarina gecer (servo horn'u ve dislisi yuk yolunda degil). DURDURUCU olcum icin ayrica tutulur.
+# Yuk kirisin ic ucundan gobek duvarina gecer: servo horn'u ve dislisi tork almaz (tork dislilerden once durdurucuda karsilanir);
+# carpma kuvvetinin buyuk kismi (~%88) S2 mafsalina radyal yuk olarak gider (horn + servo mili, 625ZZ + M5; F2-kontrol B-1).
+# DURDURUCU olcum icin ayrica tutulur.
 _DR = A.OMUZ["durdurucu"]
 _dz = _DR["z"]
 DURDURUCU = box(_DR["x0"], _DR["x1"], _DR["y"][0], -22.0, _dz[0], _dz[1]).fuse(box(_DR["x0"], 163.5, -23.0, _DR["y"][1], _dz[0], _dz[1]))
 _kiris = box(XR - 20, XR + 60, -80, 10, _dz[0] - 1, _dz[1] + 1)      # catal yerelinde kirisin ic uc yuzunun disari yani (x >= XR - 20)
 _kiris.transformShape(App.Placement(V(0, 0, 0), App.Rotation(V(0, 0, 1), _DR["temas_aci"]), V(XR, 0, 0)).toMatrix(), True)   # = Pr(temas_aci)
 DURDURUCU = DURDURUCU.cut(_kiris).removeSplitter()
+
+
+def _kok_dolgu():
+    """F6a (P6.1, F2-kontrol B-2): disin +x (cekme) yuzu ile ic duvarin alt yuzu (y -23, x ~166,7...168) arasindaki 85,7 derecelik keskin
+    ic kose yerine kok_r yaricapli yay + duvar kosesine (x1, -23) teget dogru. Yay dis yuzune y = kok_teget_y'de tegetle baslar
+    (yuzey surekli), dogru duvarin +x yuzune (x1) 138 derecelik dis koseyle baglanir. Basamak 1,33 mm oldugu icin r 1,5'lik yay iki yuze
+    birden teget sigmiyor (en cok 1,23); yay + teget dogru bu yuzden. Temas yuzu (y -34...-29,4) degismez; dolgu kirise >= 3 mm uzak."""
+    th = math.radians(_DR["temas_aci"])
+    n = (math.cos(th), math.sin(th))                     # dis yuzunun normali (bos tarafa)
+    x0p, y0p = XR - 20 * math.cos(th), -20 * math.sin(th)    # catal yereli x 165 duzleminin bir noktasi (Pr(temas_aci))
+
+    def xd(y):
+        return x0p - math.tan(th) * (y - y0p)
+
+    r, yt = _DR["kok_r"], _DR["kok_teget_y"]
+    T = (xd(yt), yt)                                     # yayin dis yuzune teget noktasi
+    O = (T[0] + r * n[0], T[1] + r * n[1])               # yay merkezi
+    K = (_DR["x1"], -23.0)                               # duvar alt yuzu ile +x yuzunun kosesi
+    dx, dy = K[0] - O[0], K[1] - O[1]
+    d = math.hypot(dx, dy)
+    a_t = math.atan2(dy, dx) + math.acos(r / d)          # K'dan cembere ust-sol teget noktasi
+    U = (O[0] + r * math.cos(a_t), O[1] + r * math.sin(a_t))
+    a0 = math.atan2(T[1] - O[1], T[0] - O[0]) % (2 * math.pi)     # T: 180 + temas_aci derece
+    am = (a0 + a_t % (2 * math.pi)) / 2                           # T -> U (~138 derece) kisa yay ortasi
+    M = (O[0] + r * math.cos(am), O[1] + r * math.sin(am))
+    z0 = _dz[0]
+    P = lambda q: V(q[0], q[1], z0)
+    ic1, ic2 = (K[0] - 0.1, -22.5), (T[0] - 0.8, -22.5)   # duvar / dis malzemesinin icinde (ortusme: es duzlem birlesimi yok)
+    ic3 = (T[0] - 0.8, T[1])
+    kenar = [Part.Arc(P(T), P(M), P(U)).toShape(), Part.LineSegment(P(U), P(K)).toShape(), Part.LineSegment(P(K), P(ic1)).toShape(),
+             Part.LineSegment(P(ic1), P(ic2)).toShape(), Part.LineSegment(P(ic2), P(ic3)).toShape(), Part.LineSegment(P(ic3), P(T)).toShape()]
+    f = Part.Face(Part.Wire(kenar))
+    return f.extrude(V(0, 0, _dz[1] - _dz[0])), dict(T=T, O=O, U=U, K=K)
+
+
+KOK_DOLGU, KOK_NOKTA = _kok_dolgu()
+DURDURUCU = DURDURUCU.fuse(KOK_DOLGU).removeSplitter()
 hub = hub.fuse(DURDURUCU)
 add("Omuz gobegi", "Gobek", hub.removeSplitter(), "Baski", "PETG-CF", renk="petg2", patlat=(110, 0, 0),
-    not_="S2 mekanik durdurucu disi dahil (P2.1): kol S2 %.1f derecede capraz kiris ic ucuyla dayanir" % _DR["temas_aci"])
+    not_="S2 mekanik durdurucu disi dahil (P2.1): kol S2 %.1f derecede capraz kiris ic ucuyla dayanir; kok ic kosesi r %.1f yay (F6a)" % (_DR["temas_aci"], _DR["kok_r"]))
 for g in S1_HORN:
     add("Gobek-horn civatasi M3x12", "Gobek", screw912(3, 12, (159, g.y, g.z), (-1, 0, 0)), "Baglanti", "Celik 8.8",
         kod="M3x12 DIN 912", renk="celik", patlat=(140, 0, 0))
@@ -324,7 +363,7 @@ for g in S2_HORN:
     add("Catal-horn civatasi M3x8", "Kol", screw912(3, 8, (g.x, g.y, 30.5), (0, 0, -1)), "Baglanti", "Celik 8.8",
         kod="M3x8 DIN 912", renk="celik", patlat=(110, -40, 40))
 R_TUP_IC = 25.4 + A.GECME["tup_pim"]     # tup ic yaricapi: catal / dirsek pimi O50,8 + radyal bosluk
-Y_TUP_UC = A.DIRSEK["tup_uc_y"]            # 1,65 m: tup 100 -> 130 mm (ucu y -170; kol x1,25, Duffy 24 Ekim 2026)
+Y_TUP_UC = A.DIRSEK["tup_uc_y"]            # 1,65 m: tup 100 -> 130 mm (ucu y -170; kol x1,25, Ahmet 24 Ekim 2026)
 tube = cyl(28, (XR, -40, ZC), (XR, Y_TUP_UC, ZC)).cut(cyl(R_TUP_IC, (XR, -39, ZC), (XR, Y_TUP_UC - 1, ZC)))
 _TP = A.KOL_KABLO["tup_pencere"]          # M1: arka duvarda kablo penceresi (dirsek kablolari tupten cikar); uclari 45 derece sivri
 _px, _py, _u = _TP["x"], _TP["y"], _TP["uc"]

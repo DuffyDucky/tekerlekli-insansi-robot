@@ -132,15 +132,33 @@ def baski_analiz(ad, sh, yukari, doluluk):
     cik = (nz < -math.cos(math.radians(45))) & ~tabla
     oran = float(alan[cik].sum() / alan.sum())
     sorun = []
+    kaydir = []          # F6a (P6.1; F1b P1.5 kalibi): acik tel yuzunden kaydirilarak kesilen katmanlar (z, dz)
     onceki = None
     n_kat = int((zmax - zmin) // 1.0)
     for kk in range(n_kat):
         z = zmin + 0.5 + kk * 1.0
-        try:
-            ws = s.slice(V(0, 0, 1), z)
-            yuz = Part.makeFace(ws, "Part::FaceMakerBullseye") if ws else None
-        except Exception:
-            yuz = None
+        # F6a (P6.1; F1b P1.5 kabuk_montaj.baski_analiz kalibi, F1b-kontrol 14): kesit duzlemi yatay eksenli bir delige teget gelince OCC
+        # acik tel veriyor; eskiden makeFace hatasi katmani (ve sonrakinin kontrolunu) sessizce atliyordu. Simdi teller kapali degilse
+        # duzlem 0,05 / 0,1 / 0,25 mm kaydirilip yeniden kesilir, yuz katman duzlemine geri tasinir. Kapanmazsa destek sorunu sayilir.
+        yuz = None
+        for _dz in (0.0, 0.05, -0.05, 0.1, -0.1, 0.25, -0.25):
+            try:
+                ws = s.slice(V(0, 0, 1), z + _dz)
+            except Exception:
+                ws = None
+            if not ws:
+                break
+            if all(w.isClosed() for w in ws):
+                try:
+                    yuz = Part.makeFace(ws, "Part::FaceMakerBullseye")
+                except Exception:
+                    yuz = None
+                if yuz is not None and _dz != 0.0:
+                    yuz.translate(V(0, 0, -_dz))
+                    kaydir.append((round(z - zmin, 1), _dz))
+                break
+        else:
+            sorun.append(dict(z=round(z - zmin, 1), hata="kesit teli kapanmadi (z +-0,25 mm)"))
         if yuz is not None and onceki is not None:
             try:
                 # Y2a (29 Ekim 2026; kafa_lib ile ayni): ofseti kurulamayan yuz (ince serit / kucuk delik) ofsetsiz kullanilir
@@ -175,6 +193,6 @@ def baski_analiz(ad, sh, yukari, doluluk):
     return dict(ad=ad, olcu=[round(en[1], 1), round(en[2], 1), round(zmax - zmin, 1)], tabla_aci=en[0], sigar=bool(sigar),
                 sigar_cift=bool(sigar_cift), cikinti_orani=round(oran, 4), cikinti_alan_cm2=round(float(alan[cik].sum()) / 100, 2),
                 yuzey_cm2=round(float(alan.sum()) / 100, 1), destek_sorun=sorun[:20], destek_sorun_sayi=len(sorun),
-                desteksiz=len(sorun) == 0, hacim_cm3=round(hac / 1000, 1), kutle_g=round(kutle, 1),
+                desteksiz=len(sorun) == 0, kesit_kaydirma=kaydir, hacim_cm3=round(hac / 1000, 1), kutle_g=round(kutle, 1),
                 filament_g=round(kutle * 1.05, 1), sure_saat=round(hac * doluluk / A.PETG_HACIM_HIZI / 3600, 2),
                 katman=n_kat)

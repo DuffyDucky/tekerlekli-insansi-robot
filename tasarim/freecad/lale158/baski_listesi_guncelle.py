@@ -10,7 +10,7 @@ TR = str.maketrans("ığüşöçİĞÜŞÖÇ", "igusocIGUSOC")
 
 
 def kat(s):
-    s = re.sub(r"\*\*.*?\*\*", "", s).replace(" (520 taban)", "").replace(" (Nextion yok, kapalı)", "").replace("sağ / sol", "sağ").translate(TR)
+    s = re.sub(r"\*\*.*?\*\*", "", s).replace(" (520 taban)", "").replace(" (Nextion yok, kapalı)", "").replace(" (gömülü 11,6\" cep)", "").replace("sağ / sol", "sağ").translate(TR)
     return re.sub(r"\s+", " ", unicodedata.normalize("NFKD", s)).strip().lower()
 
 
@@ -35,7 +35,7 @@ for L in METIN:
         continue
     gorulen.add(ad)
     o = " × ".join(f(x) for x in s["olcu"]) if s["olcu"] else m.group(4)
-    r = m.group(7).replace('**10,1" ekran + kamera delikleri**', '7" ekran kulak delikleri (04) + kamera delikleri').replace('**10,1" ekran ölçüsü**', '7" ekran ölçüsü').replace('10,1" ekran ölçüsü', '7" ekran ölçüsü')
+    r = m.group(7)
     ad_md = m.group(2).replace("Kafa iskeleti (10 in)", "Kafa iskeleti").replace("(Nextion yok, kapalı)", "(gömülü 11,6\" cep)")
     if ad.startswith("s1 kaset"):
         gorulen.add(ad.replace(" sag", " sol"))
@@ -44,22 +44,22 @@ for L in METIN:
     cikti.append("| ☐ | %s | %s | %s | %s | %s | %s | %s" % (m.group(1), ad_md, m.group(3), o, f(s["g"][0]), f(s["sa"][0], 2), r))
 yeni = [s for k, s in SAT.items() if k not in gorulen]
 t = JS["toplam"]
-bas = ["## 158 cm güncellemesi (03.11.2026)", "",
-       "Boy 1,58 m, göğüste 11,6\" gömülü ekran, kafada 7\" ekran. Kabuk ve kafa satırları `*-analiz.json`'dan güncellendi; dosyadaki eski açıklamalar (1,65 m, 10,1\") yalnız tarihsel. "
-       "Güncel toplam **%d parça, %s–%s kg, %s–%s sa** (`planlama/y2/Y2b-baski.py`, %s kg PETG + %s–%s kg PETG-CF); giriş ve renk metinleri 1,65 m tarihli." % (t["adet"], f(t["g"][0] / 1000, 2), f(t["g"][1] / 1000, 2), f(t["sa"][0]), f(t["sa"][1]), f(t["petg_g"][0] / 1000, 2), f(t["cf_g"][0] / 1000, 2), f(t["cf_g"][1] / 1000, 2)),
-       "Ekran tutucu tırnaklar kalktı. Değişen baskılar: göğüs bandı, orta bant, omuz bandı (basamak), uzatma bantları (157,5), üst arka kapak, kafa kabukları (ekran yuvası), kafa iskeleti, boyun mili ve servo yuvası (kablo penceresi), boyun adaptörü (62,8). Aşağıdaki tablolarda satırı olmayan parçalar:", "",
-       "| Parça | Adet | Ölçü (mm) | Filament (g) | Süre (sa) | Yön | Destek |", "|---|---|---|---|---|---|---|"]
+bas = ["## 158 cm güncellemesi (09.11.2026)", "",
+       "Boy 1,58 m, göğüste 11,6\" gömülü ekran, kafada 10,1\" QLED. Kabuk ve kafa satırları bu betikle `Y2b-baski.json`'dan; öteki satırlar ve ek sütunlar F4c'de (denetim `planlama/d158/F4c-dogrula.py`). "
+       "Güncel toplam **%d parça, %s–%s kg, %s–%s sa** (`planlama/y2/Y2b-baski.py`, %s kg PETG + %s–%s kg PETG-CF)." % (t["adet"], f(t["g"][0] / 1000, 2), f(t["g"][1] / 1000, 2), f(t["sa"][0]), f(t["sa"][1]), f(t["petg_g"][0] / 1000, 2), f(t["cf_g"][0] / 1000, 2), f(t["cf_g"][1] / 1000, 2)),
+       "Parti tablolarında satırı olmayan kabuk / kafa parçası:", "",
+       ] + (["| Parça | Adet | Ölçü (mm) | Filament (g) | Süre (sa) | Yön | Destek |", "|---|---|---|---|---|---|---|"] if yeni else ["yok."])
 for s in yeni:
     bas.append("| %s | %d | %s | %s | %s | %s | %s |" % (s["ad"], s["adet"], " × ".join(f(x) for x in s["olcu"]) if s["olcu"] else "—", f(s["g"][0]), f(s["sa"][0], 2), s["yon"] or "", "desteksiz" if s["desteksiz"] else "destekli"))
 ds = [s["ad"] for s in JS["satirlar"] if s["modul"] in ("kabuk",) and not s["desteksiz"]]
 bas += ["", "Kabukta destek isteyen parçalar: " + (", ".join(ds) or "yok") + ".", ""]
 # parti ozeti ve basliklar
 _P = {int(k): v for k, v in t["parti"].items()}
-_ADI = {1: "| 1 | Hemen |", 2: "| 2 | Servo ve horn gelip ölçülünce |", 3: "| 3 | 7\" yüz ekranı gelip ölçülünce |", 4: "| 4 | Etek tasarım kararından sonra (M6 CAD) |"}
+_ADI = {1: "| 1 | Hemen |", 2: "| 2 | Servo ve horn gelip ölçülünce |", 3: "| 3 | 10,1\" QLED yüz ekranı gelip ölçülünce |", 4: "| 4 | Etek tasarım kararından sonra (M6 CAD) |"}
 
 
 def _ar(v, n, b=1.0):
-    return f(v[0] / b, n) if abs(v[0] - v[1]) < 1e-9 else "%s–%s" % (f(v[0] / b, n), f(v[1] / b, n))
+    return f(v[0] / b, n) if f(v[0] / b, n) == f(v[1] / b, n) else "%s–%s" % (f(v[0] / b, n), f(v[1] / b, n))
 
 
 for k_, L in enumerate(cikti):
@@ -70,9 +70,9 @@ for k_, L in enumerate(cikti):
     elif L.startswith("| **Toplam** |"):
         cikti[k_] = "| **Toplam** | | **%d** | **%s kg** | **≈ %s sa** |" % (t["adet"], _ar(t["g"], 2, 1000.0), _ar(t["sa"], 0))
     elif L.startswith("# Baskı listesi"):
-        cikti[k_] = "# Baskı listesi (1,58 m ana tasarım; 03.11.2026)"
+        cikti[k_] = "# Baskı listesi (1,58 m ana tasarım; 09.11.2026)"
     elif L.startswith("## Parti 3"):
-        cikti[k_] = L.replace('10,1" yüz ekranı', '7" yüz ekranı')
+        cikti[k_] = L
     elif re.match(r"\d+ adet · .* kg filament · ≈", L):
         pass
 # ilk '## ' basligindan once ekle

@@ -3,7 +3,7 @@
 # Koordinat (kafa yereli, arayuz.MODULLER["kafa"]): orijin = traversin ust yuzu ortasi (global 0, S3 + 20 = 1290, 0), X sag, Y yukari,
 # Z ileri. Pan ekseni yerel Y ekseni (x = z = 0), tilt ekseni X'e paralel (arayuz.KAFA tilt_nokta: y = kafa alt 75 + 100 - dy, z 25). Ev pozu: duz bakis.
 #
-# Y2a (26 Ekim 2026; karar 21 Ekim 2026 "yuz ekrani 10 inc sinifi HDMI", Duffy 25 Ekim "ana projeye 170den devam"): taslak-170'deki yeni kafa
+# Y2a (26 Ekim 2026; karar 21 Ekim 2026 "yuz ekrani 10 inc sinifi HDMI", Ahmet 25 Ekim "ana projeye 170den devam"): taslak-170'deki yeni kafa
 # modulun kendisi oldu. Yapi:
 #   Govde (traverse sabit) : 125 cm kafasinin Govde grubu AYNEN (kafa7_parcalar): boyun plakasi, servo yuvasi, rulman yuvasi, 6808 cifti,
 #                            pan MG996R + baglantilari.

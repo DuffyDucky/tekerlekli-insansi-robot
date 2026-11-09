@@ -216,7 +216,7 @@ z_dis = {"arka": kutu(z1=-ZD), "orta": kutu(z0=-ZD, z1=ZD), "on": kutu(z0=ZD)}
 z_ic = {"arka": kutu(z1=-ZD - W, y1=Y_ETEK_PLAKA).fuse(kutu(z1=-ZD, y0=Y_ETEK_PLAKA)),
         "orta": kutu(z0=-ZD - W, z1=ZD + W, y1=Y_ETEK_PLAKA).fuse(kutu(z0=-ZD, z1=ZD, y0=Y_ETEK_PLAKA)),
         "on": kutu(z0=ZD + W, y1=Y_ETEK_PLAKA).fuse(kutu(z0=ZD, y0=Y_ETEK_PLAKA))}
-# 520 taban (arayuz ETEK_DIKIS_X, Duffy 25 Ekim 2026): etek x'te uc hucre: sol yari | dolgu seridi | sag yari. Ic hucre siniri dikisten
+# 520 taban (arayuz ETEK_DIKIS_X, Ahmet 25 Ekim 2026): etek x'te uc hucre: sol yari | dolgu seridi | sag yari. Ic hucre siniri dikisten
 # KABUK_BINDIRME kadar -x'e kayik (dil soldaki komsunun dis yarisinin arkasina uzanir; 125 cm x = 0 dikisindeki kuralla ayni). Ust plakada
 # dil yok (alin). Yarilar 3 z bandina (arka / orta / on), dolgu seridi aciklikta z = 0'da ikiye (arka / on) bolunur.
 XD0, XD1 = A.ETEK_DIKIS_X
@@ -295,7 +295,7 @@ for _ad, _h in ETEK_KAPAK.items():
 # ====================================================================== gogus ekrani cercevesi ve VESA tasiyici (01.11.2026)
 # Cerceve: iki yarim C (sag / sol), cep ile kasa arasindaki 5 mm payi doldurur (cepte 0,25, kasada 0,5 bosluk), alt ve ustte duvar arkasina flans (M3x6 ISO 7380 disaridan + flansta
 # M3 isil gomme). Yarim C yana cekilince kasadan ayrilir: bant + cerceve ekran takiliyken sokulebilir. Arka yuzu tablada basilir (desteksiz).
-# 04.11.2026 (Duffy 03.11: "evet cerceveyi de ekle"): govde renginde (arayuz cerceve renk/kod), ekran cam_geri 2 mm iceride; kose saglamlastirma (arayuz cerceve kose): on yuzden kasa onune inen
+# 04.11.2026 (Ahmet 03.11: "evet cerceveyi de ekle"): govde renginde (arayuz cerceve renk/kod), ekran cam_geri 2 mm iceride; kose saglamlastirma (arayuz cerceve kose): on yuzden kasa onune inen
 # yuvarlak takoz (pencere kosesi R 14, kalinlik cam_geri - 0,2; kasa kosesini onden korur, aktif alana girmez; yana cekilirken kasa onunden 0,2 bosluk ile gecer) + duvar arkasinda kose flansi.
 _GC = GE["cerceve"]
 _cdx, _cdy = _cw - _GC["cep_bosluk"], _ch - _GC["cep_bosluk"]
@@ -726,11 +726,11 @@ for _ad, _h in ETEK_KAPAK.items():
             KAPAK_VIDA.append(dict(kapak=_ad, ic=_ic, p=V(_x, A.Y_COV1, _z), t=_h["t"]))
 log("etek kapak civatalari:", [(v["kapak"][-14:], v["ic"]) for v in KAPAK_VIDA])
 
-# ====================================================================== ses + USB, secim B (Duffy 05.11.2026; lale158/kafa-yerlesim/secenekler.md, arayuz.SES_USB)
+# ====================================================================== ses + USB, secim B (Ahmet 05.11.2026; lale158/kafa-yerlesim/secenekler.md, arayuz.SES_USB)
 # Hoparlor gogus altinda orta bant sag on duvarinda, eksen duvara dik (kama yok; dinleyiciye eksen disi, secenekler.md 7). Kap, kulak ve izgara VARSAYIM: urun elde gorulmeden kesinlesmez.
 # Kap iki baski: on halka + flansli arka; tek parca kabin 2 destek sorunu vardi (kulaklar ortada), ayrilinca flans yuzu tablada.
 # P1.7 (08.11.2026, planlama/d158/F1a-brief.md): hoparlor arkadan tutuluyor. Arka tup hoparlorun arka yuzunde (eksenden 20,5) biter; ustune
-# "Hoparlor kelepcesi" (ayri baski: 72 x 10 kopru + 2 bacak) oturur, iki bacagi flans kulaklarindaki M3 civatalarla (M3x20, havsada) duvar
+# "Hoparlor kelepcesi" (ayri baski: 70 x 10 kopru + 2 bacak) oturur, iki bacagi flans kulaklarindaki M3 civatalarla (M3x20, havsada) duvar
 # boss'larina sikilir. Kopru 1 mm kopuk ped uzerinden hoparlorun arka yuzune basar, hoparloru duvara (on yuzunde 0,5 mm, urunun kopuk kenari
 # VARSAYIM) sikistirir. Kopru arkasi acik (Ø40 arka yuzun yalniz 10 mm seridi kapali): kablo ve arka hacim icin. Olculer VARSAYIM (urun elde yok).
 SU = A.SES_USB

@@ -193,15 +193,38 @@ def silindirler(sh):
     return gr
 
 
-def kesit(s, z):
-    try:
-        ws = s.slice(V(0, 0, 1), z)
+KESIT_KAYDIR = (0.0, 0.05, -0.05, 0.1, -0.1, 0.25, -0.25)
+
+
+def kesit_k(s, z):
+    """F6a (P6.1; F1b P1.5 kabuk_montaj.baski_analiz kalibi, F1b-kontrol 14): kesit duzlemi yatay eksenli bir delige teget gelince OCC
+    acik tel / gecersiz yuz veriyor; eskiden katman sessizce atlaniyordu. Teller kapali degilse ya da yuz gecersizse duzlem 0,05 / 0,1 /
+    0,25 mm kaydirilip yeniden kesilir, yuz katman duzlemine geri tasinir. Doner: (yuz, dz, durum); durum tamam | bos | acik | gecersiz."""
+    durum = "bos"
+    for dz in KESIT_KAYDIR:
+        try:
+            ws = s.slice(V(0, 0, 1), z + dz)
+        except Exception:
+            ws = None
         if not ws:
-            return None
-        f = Part.makeFace(ws, "Part::FaceMakerBullseye")
-        return f if f.isValid() and f.Area > 1e-6 else None
-    except Exception:
-        return None
+            return None, 0.0, ("bos" if dz == 0.0 else durum)
+        if not all(w.isClosed() for w in ws):
+            durum = "acik"
+            continue
+        try:
+            f = Part.makeFace(ws, "Part::FaceMakerBullseye")
+        except Exception:
+            f = None
+        if f is not None and f.isValid() and f.Area > 1e-6:
+            if dz != 0.0:
+                f.translate(V(0, 0, -dz))
+            return f, dz, "tamam"
+        durum = "gecersiz"
+    return None, 0.0, durum
+
+
+def kesit(s, z):
+    return kesit_k(s, z)[0]
 
 
 def ofset(face, d):
@@ -295,16 +318,20 @@ def katman_analizi(s, inv):
     """s: baski yonune cevrilmis, zmin = 0. Desteksiz kalan bolgeler ve kopruler."""
     zmax = s.BoundBox.ZMax
     kat = []          # (z, yuz) destek yuksekligi icin
-    bolgeler, kopruler, uyari, atla = [], [], 0, []
+    bolgeler, kopruler, uyari, atla, kaydir = [], [], 0, [], []
     onceki = None
     k = 0
     while True:
         z = Z0 + k * KATMAN
         if z >= zmax:
             break
-        yuz = kesit(s, z)
+        yuz, dz, durum = kesit_k(s, z)
+        if dz:
+            kaydir.append((round(z, 2), dz))
         if yuz is None:
             atla.append(round(z, 2))
+            if durum == "acik":          # F6a: kaydirmayla da kapanmayan kesit destek sorunu sayilir (kabuk_montaj ile ayni)
+                bolgeler.append(dict(z=round(z, 2), hata="kesit teli kapanmadi (z +-0,25 mm)", destek=True, tur="hata"))
         elif onceki is not None:
             dest, u_ = ofset(onceki, KATMAN)
             uyari += u_
@@ -342,7 +369,7 @@ def katman_analizi(s, inv):
         kat.append((z, yuz))
         onceki = yuz if yuz is not None else onceki
         k += 1
-    return bolgeler, kopruler, uyari, atla, k
+    return bolgeler, kopruler, uyari, atla, k, kaydir
 
 
 def kumele(bolgeler):
@@ -473,7 +500,7 @@ def yon_analizi(ad, sh, yukari, cyl):
     egim_alan = sum(e["alan_mm2"] for e in egim)
     egim_izdusum = sum(e["izdusum_mm2"] for e in egim)
     # katmanlar
-    bolgeler, kopruler, uyari, atla, nkat = katman_analizi(s, inv)
+    bolgeler, kopruler, uyari, atla, nkat, kaydir = katman_analizi(s, inv)
     kume = kumele(bolgeler)
     destek_alan = sum(b["alan_mm2"] for b in bolgeler if "alan_mm2" in b)
     destek_hacim = sum(b["alan_mm2"] * b["kolon_mm"] for b in bolgeler if "alan_mm2" in b)
@@ -531,7 +558,7 @@ def yon_analizi(ad, sh, yukari, cyl):
         destek_katman_alan_mm2=round(destek_alan, 1), destek_hacim_cm3=round(destek_hacim / 1000, 2),
         destek_bolge=kume, destek_bolge_sayi=len(kume), en_buyuk_kopru_mm=round(en_kopru, 1), en_buyuk_konsol_mm=round(en_konsol, 1),
         kopruler=kopruler[:8], yuk_uyum=round(uyum, 3), yuk=yuk, isil_gomme=somun,
-        katman_sayisi=nkat, ofset_uyari=uyari, atlanan_kesit=atla[:10])
+        katman_sayisi=nkat, ofset_uyari=uyari, atlanan_kesit=atla[:10], kesit_kaydirma=kaydir[:20], kesit_kaydirma_sayi=len(kaydir))
 
 
 def yon_sec(sonuc):

@@ -31,7 +31,7 @@ LAZER = {}      # lazer kesim parcasi -> dict(y0, malzeme, kalinlik)
 YOL = []        # kablo yolu semasi: (devre, renk, nokta listesi)
 DOLULUK = 0.8   # kucuk baski parcalari etkin doluluk (tahmini; dirsek/kafa ile ayni)
 UP, DOWN = V(0, 1, 0), V(0, -1, 0)
-# TABAN 520 (Duffy, 25 Ekim 2026; Y2a): tahrik (motor + braket + kaplin + teker) her yana TABAN_DX (38) disari (taslak-170 davranisi).
+# TABAN 520 (Ahmet, 25 Ekim 2026; Y2a): tahrik (motor + braket + kaplin + teker) her yana TABAN_DX (38) disari (taslak-170 davranisi).
 DX = A.TABAN_DX
 X_BR = (A.W0 / 2 - 2) + (A.V3_W - A.W0) / 2 + DX     # 171 (rc:95 + xm='s' 133 + TABAN_DX); arayuz._X_BR ile ayni
 X_WH = X_BR + 2 + 14 + A.TEKER_W / 2                  # 216 (125 cm: 178)
@@ -556,7 +556,7 @@ YOL += [
       (-100, S3Y, -26)]),
     ("Kafa 12 V (K4/E4): F3 5 A -> 18 AWG cift -> direk on yuzu -> R62 -> kafada 5 V/5,5 A cevirici (Pi 5, LCD)", "kirmizi",
      [(cx - 20, YD1 + 36, cz), (-62, 182, -30), (-40, 200, 20), (-24, 230, 26), (-24, 262, 26), (-24, S3Y - 55, 26), (-24, S3Y + 20, 30), (0, S3Y + 55, 20)]),
-    # 1,65 m (Y2a): gogus Nextion ekrani kaldirildi (Duffy, 25 Ekim 2026) -> cevre 5 V hatti govdeye cikmaz, ESP32'de biter
+    # 1,65 m (Y2a): gogus Nextion ekrani kaldirildi (Ahmet, 25 Ekim 2026) -> cevre 5 V hatti govdeye cikmaz, ESP32'de biter
     ("Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)", "mavi",
      [(cx, YD1 + 36, cz), (62, 182, -30), (55, 150, 20), (T["xl"][1][0], 125, T["xl"][1][1]), (40, 150, 150), (40, 185, 160),
       (ESP_C[0], 200, ESP_C[1])]),

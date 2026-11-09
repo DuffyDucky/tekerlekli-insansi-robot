@@ -1,4 +1,4 @@
-# Lale 1,58 m - KAFA: 10,1" QLED HDMI yuz ekrani (Duffy 03.11.2026; arayuz.KAFA_EKRAN_QLED), tilt ekseni kafa AM'sinden (FreeCAD 1.1, Part). Dosya adi kafa10_lib kaldi.
+# Lale 1,58 m - KAFA: 10,1" QLED HDMI yuz ekrani (Ahmet 03.11.2026; arayuz.KAFA_EKRAN_QLED), tilt ekseni kafa AM'sinden (FreeCAD 1.1, Part). Dosya adi kafa10_lib kaldi.
 # QLED: vida deligi yok. Cam on duvarin ic yuzune oturur, cep duvari (1,6) kenardan yer gosterir, 4 cikarilabilir tirnak (ust/alt, x +-85; 1x M3x6 ISO 7380 + M3 isil gomme) panel disina
 # tasan cam seridine 1 mm kopuk bant uzerinden arkadan basar. Pencere = gorunen alan + 1 mm. Kabuk disi 270 x 215 x 136,9 degismedi: HEAD_UP 290 sabit. dy yeniden cozuldu, zb sabit.
 # 7" yol kodu (KAFA_EKRAN7, kafa_lib.LCD) geri donus icin duruyor: arayuz.KAFA["ekran"] = KAFA_EKRAN7 + denge dy -17,770 ile eski kafa kurulur.
@@ -47,7 +47,7 @@ TABLA_X = 112.0             # tabla yari genisligi (224 <= 230 baski hedefi)
 LEDGE = dict(x0=100.0, y=(19.0, Y_TABLA[0]), w=8.0, civata_x=106.0)   # arka kabuk yan duvarinda tabla rafi (2 / taraf)
 YARIK = dict(x=38.0, z_on=41.0, h=12.0, r=12.0)  # kafa alt duvarinda boyun acikligi: R30 boyun x tilt +-15 suprulmesi + 3 mm; arka duvarin
                                                 # altinda 12 mm centik (tilt -15'te arka-alt kose rulman yuvasina iner)
-SU = A.SES_USB               # kafa ici ses + USB yerlesimi (secim B + R1, Duffy 05.11.2026; lale158/kafa-yerlesim)
+SU = A.SES_USB               # kafa ici ses + USB yerlesimi (secim B + R1, Ahmet 05.11.2026; lale158/kafa-yerlesim)
 STP_DIZI = os.path.join(UST, "lale158", "kafa-yerlesim", "kaynak", "RESPEAKER-MIC-3D-v2.0.stp")
 _stp_dizi = None
 CAM_Y = 101.0               # kamera lens ekseni (ekran merkezine gore), ekranin ustunde
@@ -248,7 +248,7 @@ def kur(dy, zb, log=print):
         CIKAR[ad].append(cyl(1.0, (x, y, Z_CAM - 0.1), (x, y, Z_CAM + 7.5)))
 
     # --- ReSpeaker R1: kabuk tavani altinda, sag yarida (tek parca "Arka kafa kabugu sag"; tepe civatasi yerinde). 4 mikrofon deligi (O3 VARSAYIM), 3 damla boss + pilot.
-    # LED'ler disaridan gorunmeyebilir; isik borusu yok (Duffy 05.11.2026).
+    # LED'ler disaridan gorunmeyebilir; isik borusu yok (Ahmet 05.11.2026).
     AD_DIZI_KABUK = "Arka kafa kabugu sag"
     _D = SU["dizi"]
     Y_IC_UST = yu - KT
@@ -564,7 +564,7 @@ def adaptor(h, log=print):
     for (x, z) in KP.FL_DEL:
         a = a.cut(cyl(CLEAR[3] / 2, (x, y0 - 1, z), (x, y1 + 1, z)))
     a = a.removeSplitter()
-    # Malzeme PETG -> PETG-CF (Duffy karari 29 Ekim 2026; pan torku ve kafa agirligi yolunda, boyun mili gibi). rho 1,27 (PETG ile ayni,
+    # Malzeme PETG -> PETG-CF (Ahmet karari 29 Ekim 2026; pan torku ve kafa agirligi yolunda, boyun mili gibi). rho 1,27 (PETG ile ayni,
     # tahmini) ve doluluk DOLULUK (kafanin diger CF parcalari gibi) -> kutle degismez.
     add("Boyun yukseltme adaptoru", a, "Baski", "PETG-CF", "Boyun yukseltme adaptoru (PETG-CF baski)", "petg2", doluluk=DOLULUK,
         baski=dict(yukari=(0, 1, 0), yon="dik: alt flans tablada"),

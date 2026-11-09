@@ -27,8 +27,27 @@ for k in range(0, 13):
     if z >= bb.ZMax:
         break
     ws = s.slice(V(0, 0, 1), z)
-    yuz = Part.makeFace(ws, "Part::FaceMakerBullseye") if ws else None
-    r = dict(z=round(z - zmin, 2), tel=len(ws), kapali=[w.isClosed() for w in ws][:12], alan=round(yuz.Area, 1) if yuz else None, yuz=len(yuz.Faces) if yuz else 0)
+    # F6a (P6.1; F1b P1.5 kabuk_montaj.baski_analiz kalibi): teller kapali degilse makeFace cagrilmaz (eskiden hata katmani atlatiyor /
+    # betigi durduruyordu); duzlem 0,05 / 0,1 / 0,25 mm kaydirilip yeniden kesilir, yuz katman duzlemine geri tasinir (kaydirma alaninda).
+    yuz, kdz = None, None
+    for _dz in (0.0, 0.05, -0.05, 0.1, -0.1, 0.25, -0.25):
+        try:
+            ws2 = s.slice(V(0, 0, 1), z + _dz)
+        except Exception:
+            ws2 = None
+        if not ws2:
+            break
+        if all(w.isClosed() for w in ws2):
+            try:
+                yuz = Part.makeFace(ws2, "Part::FaceMakerBullseye")
+            except Exception:
+                yuz = None
+            if yuz is not None and _dz != 0.0:
+                yuz.translate(V(0, 0, -_dz))
+            kdz = _dz
+            break
+    r = dict(z=round(z - zmin, 2), tel=len(ws), kapali=[w.isClosed() for w in ws][:12], alan=round(yuz.Area, 1) if yuz else None, yuz=len(yuz.Faces) if yuz else 0,
+             kaydirma=kdz)
     if yuz is not None and onceki is not None:
         dest = []
         hata = []

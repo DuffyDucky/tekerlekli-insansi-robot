@@ -128,4 +128,4 @@ def percin_somun(pc, p, direction):
     return fl.fuse(gv).cut(Part.makeCylinder(pc["d"] / 2, pc["flans_t"] + pc["govde_L"] + 2, p - u * (pc["flans_t"] + 1), u)).removeSplitter()
 
 
-# (Nextion ekran cercevesi yardimcilari 1,65 m'de kaldirildi: gogus ekrani yok; Duffy, 25 Ekim 2026)
+# (Nextion ekran cercevesi yardimcilari 1,65 m'de kaldirildi: gogus ekrani yok; Ahmet, 25 Ekim 2026)

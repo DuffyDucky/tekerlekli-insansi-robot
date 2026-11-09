@@ -15,18 +15,18 @@ W0 = 340.0                      # rc:78  V1 sase genisligi (V3 olceklemesinin ta
 L0 = 500.0                      # rc:79  sase derinligi (V3'te de ayni)
 V3_H = 1250.0                   # rc:112 toplam boy (V3 / 125 cm tasarim; yalniz referans)
 V3_W = 270.0                    # rc:112 sase disten genislik (aku 181 icin en dar)
-# BOY TEK PARAMETRE: 1,65 m (Duffy, 29 Ekim 2026: "boy 1700 degil 1650"). 25 Ekim: "ana projeye 170den devam edeceğiz" (taslak 1,65 m,
+# BOY TEK PARAMETRE: 1,65 m (Ahmet, 29 Ekim 2026: "boy 1700 degil 1650"). 25 Ekim: "ana projeye 170den devam edeceğiz" (taslak 1,65 m,
 # boy karari hoca + ekip 21 Ekim 2026). Govde uzatmasi UZAMA = BOY'dan turer (1650 -> 385; 1700 -> 435); bantlar, direk, omuz, kol, kafa
 # konumlari bundan. Taslak varyanti
 # tasarim/freecad/taslak-170/ (arsiv) ana tasarima tasindi (Y2a, 26 Ekim 2026). 125 cm geometrisi git gecmisinde (6594c63 ve oncesi).
-# 158 CM (Duffy, 01.11.2026; tubitak-2209b/BAGLAM.md 8): yalniz duz govde bandi kisalir (UZAMA 385 -> 315, iki uzatma bandi 157,5), gogus, omuz,
+# 158 CM (Ahmet, 01.11.2026; tubitak-2209b/BAGLAM.md 8): yalniz duz govde bandi kisalir (UZAMA 385 -> 315, iki uzatma bandi 157,5), gogus, omuz,
 # kollar ve kafa rijit olarak 70 mm asagi iner. 165 cm geometrisi git'te (f95f96b).
-BOY = 1580.0                    # yerden kafa tepesine (Duffy, 01.11.2026; onceki 1650, taslak-170'de 1700)
+BOY = 1580.0                    # yerden kafa tepesine (Ahmet, 01.11.2026; onceki 1650, taslak-170'de 1700)
 HEAD_UP = 290.0                 # traversin ust yuzunden kafa tepesine: kafa alt yuzu kafa yerelinde y 75 + kabuk 215. 10,1" QLED'de kabuk disi ayni (7" ile de ayniydi; eski V3 275)
 S3 = BOY - 20 - HEAD_UP         # omuz ekseni = travers merkezi yuksekligi (1270; 165 cm'de 1340; V3 955)
 S3_V3 = V3_H - 20 - 275.0       # 955: 125 cm tasarimin omuz ekseni (uzatma referansi)
 UZAMA = S3 - S3_V3              # 315 (1650'de 385; taslak 1700'de 435): govde kabugu 476,5 dikisinden yukarisi bu kadar yukarida (iki sabit kesitli uzatma bandi)
-# Taban genisligi 520 (Duffy, 25 Ekim 2026): tahrik + alt plaka her yana TABAN_DX, etek 520 (kabuk 9. bolum)
+# Taban genisligi 520 (Ahmet, 25 Ekim 2026): tahrik + alt plaka her yana TABAN_DX, etek 520 (kabuk 9. bolum)
 TABAN_W_V3 = 444.0              # 125 cm etek genisligi (2 x 222)
 TABAN_W = 520.0
 TABAN_DX = (TABAN_W - TABAN_W_V3) / 2   # 38
@@ -70,7 +70,7 @@ DUDAK_ALTI = LIP                     # cekic somunun ust yuzu yuzden bu kadar ic
 KANAL_TABAN = LIP + CAV_D            # kanal tabani yuzden 11.8 mm iceride (orta 13 mm genislikte duz)
 LIP_ALTI_MERKEZ = SG / 2 - LIP       # dudak alt yuzunun profil merkezine uzakligi (15.7)
 STOK_BOY = 1000.0                    # satis boyu (Robolink "1 metre"; ozel kesim de var) mm
-DIREK_STOK = 2000.0                  # govde diregi DIREK_L (1580'de 1.115,5; 1650'de 1.185,5; 1700'de 1.235,5) mm TEK PARCA, 2 m stok boydan kesilir (Duffy, 25 Ekim 2026; ek yeri yok)
+DIREK_STOK = 2000.0                  # govde diregi DIREK_L (1580'de 1.115,5; 1650'de 1.185,5; 1700'de 1.235,5) mm TEK PARCA, 2 m stok boydan kesilir (Ahmet, 25 Ekim 2026; ek yeri yok)
 TESTERE = 3.0                        # kesim payi (tahmini)
 
 # =====================================================================================================
@@ -175,15 +175,24 @@ OMUZ = dict(
     one_arka_aralik=(-45.0, 135.0),      # S1: DS3235 180 derece, horn kol asagidayken 45'te; geometri -60...180 serbest
     yana_aralik=(5.0, 120.0),            # S2: alt sinir 0 -> +3 (C1, 14 Ekim) -> +5 (S1 kablo kaseti, 15 Ekim 2026): kol S2 3'te
                                          # x 158,8'e, 5'te 160,07'ye iner; tambur / flans x <= 159,5 (planlama/adim2/S1-kaset.md)
-    yana_alt_bosluk_mm={0: 4.7, -2: 0.6, -3: 0.0},   # kol/el <-> kabuk en kucuk bosluk (duzeltme plani C1, tarama; -3'te temas)
+    # S2 alt bolge (1,58 m modeli; F2 + F6a olcumu, planlama/d158/F2-gunluk.md, F6a-gunluk.md). Eski C1 tablosu {0: 4,7, -2: 0,6, -3: 0}
+    # ("-3'te kabuk temasi", 14 Ekim) S1 kaseti ve durdurucudan once olculmustu, gecersiz. Simdi kol once durdurucu disine dayanir.
+    # yana_alt_bosluk_mm: S2 (derece) -> kol catali <-> en yakin engel (durdurucu disi) bosluk; ayni acida kol <-> S1 tamburu 0,83 / 0,40,
+    # kol zinciri <-> kabuk 1,36 / 0,83 mm (5 / 4,3 derece). yana_alt_temas: durdurucusuz ilk temas acilari (kol <-> ...), durdurucu dahil.
+    yana_alt_bosluk_mm={5.0: 0.34, 4.3: 0.0},
+    yana_alt_temas=dict(durdurucu=4.3, s1_tambur=3.65, s1_kaset_kapagi=3.21),
     # P2.1 S2 mekanik durdurucu (F2, 9 Kasim 2026; planlama/d158/F2-gunluk.md). Gobek ic duvarinin (x 163...168) altinda dis, gobekle
     # tek parca (PETG-CF): kol catali capraz kirisinin ic uc yuzune (catal yereli x 165, y -34...-28) S2 = temas_aci'da yuz yuze dayanir.
     # Durdurucusuz ilk temaslar (F2 olcumu, 0,004 derece): kol <-> S1 kablo tamburu 3,65; kol <-> S1 kaset kapagi (kabuk) 3,21 (S1 20...150);
     # kol <-> govde/omuz bandi -1,7...-3,3. Pencere 3,65...5 (yazilim alt siniri): temas_aci ortada (iki yana ~0,7 derece = ~0,37 mm).
     # y: dis alti / ust kok; z: genislik (arka ucu S1 gecis kablosundan, on ucu S2 horn'undan uzak); x0: kapak yuzune (x 160) 1 mm.
-    durdurucu=dict(temas_aci=4.3, x0=161.0, x1=168.0, y=(-34.0, -10.0), z=(-8.0, 21.0)),
+    # Yuk yolu (F2-kontrol B-1): servo torku dislilerden once durdurucuda karsilanir (tork almaz); carpma kuvvetinin buyuk kismi (~%88)
+    # S2 mafsalina radyal yuk olarak gider (ustte horn + servo mili, altta 625ZZ + M5); rotor eylemsizligi dislilerden gecer.
+    # kok_r / kok_teget_y (F6a, P6.1; F2-kontrol B-2): disin +x yuzu ile duvar alt yuzu (y -23) arasindaki keskin ic kose yerine
+    # kok_r yaricapli yay (dis yuzune y = kok_teget_y'de tegetle baslar) + duvar kosesine (x1, -23) teget dogru.
+    durdurucu=dict(temas_aci=4.3, x0=161.0, x1=168.0, y=(-34.0, -10.0), z=(-8.0, 21.0), kok_r=1.5, kok_teget_y=-25.0),
     servo="DS3235 (180 derece), S1 ve S2",
-    # Karar (Duffy, 24 Ekim 2026; taslak-170 kol x1,25): DS3218MG -> DS3235. Govde DS3218 ile ayni kabul (40 x 20 x 40, kulak delikleri
+    # Karar (Ahmet, 24 Ekim 2026; taslak-170 kol x1,25): DS3218MG -> DS3235. Govde DS3218 ile ayni kabul (40 x 20 x 40, kulak delikleri
     # 49,5 x 10, 25T): geometri degismedi. Govde yuksekligi kaynaklarda 38,5 / 40 / 40,5: servo gelince kumpasla dogrulanacak. 60 g (datasheet).
     servo_kod="DS3235 servo", servo_ad="DS3235", servo_kutle_g=60.0,
     servo_tork="29 / 32 / 35 kg.cm @ 5 / 6 / 7,4 V (satici tablosu + datasheet); stall servo hattinda ~30,4 @ 5,48 V (taslak-170/kol-analiz HAT modeli)",
@@ -286,7 +295,7 @@ for (x, z, l, w, ad) in ((65, -135, 52, 28, "ESP32"), (65, -65, 62.2, 25.4, "PCA
 
 
 # =====================================================================================================
-# 8) 3D yazici (ekibin yazicisi, Duffy 08.10.2026: "bizim 3D makine X2D")
+# 8) 3D yazici (ekibin yazicisi, Ahmet 08.10.2026: "bizim 3D makine X2D")
 #    Uretici teknik sayfasi (08.10.2026'da okundu): https://bambulab.com/en/x2d/specs
 # =====================================================================================================
 YAZICI = dict(
@@ -330,7 +339,7 @@ def gogus_z(y):
     return GOGUS_Z + KABUK_T / _c15 + (GOGUS_Y - y) * _s15 / _c15
 
 
-# --- gogus ekrani (Duffy, 01.11.2026): Waveshare 11.6inch HDMI LCD (H) with case, yatay, gomulu. Olcu: Waveshare Exterior-Size.jpg (raporlar/kaynaklar/07).
+# --- gogus ekrani (Ahmet, 01.11.2026): Waveshare 11.6inch HDMI LCD (H) with case, yatay, gomulu. Olcu: Waveshare Exterior-Size.jpg (raporlar/kaynaklar/07).
 #     Yerel cerceve (kabuk_parcalar.gogus_yer): X = global X, Y = duzlem boyunca yukari, Z = duzlem normali (disa), orijin cep merkezi dis yuzeyde.
 #     et: cebin alt ve ustunde birakilan duz duzlem seridi. Fizibilite (raporlar/11-6-inc-gogus-ekrani-sigma.md) +16,3 mm'yi serit olmadan (cep = duzlem) hesapladi;
 #     cerceve flansi ve civatasi icin duz serit gerekir: 192,25 + 2 x 8 = 208,25 egik -> duzlem asagi +32,3 mm (fizibilite +16,3 + 16).
@@ -340,7 +349,7 @@ GOGUS_EKRAN = dict(
     # 1.079 g uretici sayfasi "Actual Weight"; kutu ve aksesuar dahil olabilir (dogrulanmadi), devrilme icin ust sinir kabul edildi
     kutle_g=1079.0,
     vesa=75.0, vesa_d=4.0, vesa_derin=8.0,       # 75 x 75 M4 (uretici); delik derinligi ve kasadaki tam yeri DOGRULANMADI (foto: kasa ortasina yakin) -> plakada X yarik +-8, Y direk kanalinda ayarli
-    cam_geri=2.0,                                # kasa on yuzu cerceve on yuzunun 2 mm gerisinde (Duffy 03.11: "evet cerceveyi de ekle"; eski 0,5). VESA tasiyici ve M4'ler bununla kayar
+    cam_geri=2.0,                                # kasa on yuzu cerceve on yuzunun 2 mm gerisinde (Ahmet 03.11: "evet cerceveyi de ekle"; eski 0,5). VESA tasiyici ve M4'ler bununla kayar
     # renk: "kabuk" = govde rengi; kod None = govde kabugunun kodu birebir (kabuk_parcalar varsayilani). kose: on_t on yuzden kasa onune inen kose takozu (cam_geri - 0,2 bosluk; 1,8 >= 1,5 baski en azi),
     # r: pencere kosesi yaricapi (takoz bacagi; 14 <= BRIDGE 15 desteksiz baski), flans_x: kose flansi duvar arkasinda (civatasiz). Geri donus: cam_geri=0.5, renk="siyah", kod="PETG baski (siyah)", kose=None.
     cerceve=dict(cep_bosluk=0.25, kasa_bosluk=0.5, derin=10.0, flans_yari=9.0, vida_x=(50.0, 120.0), renk="kabuk", kod=None, kose=dict(r=14.0, on_bosluk=0.2, flans_x=(129.0, 145.0))),
@@ -422,7 +431,7 @@ BOYUN_ACIKLIK_R = 62.0      # ust kapakta boyun deligi: kafa bolgesi (x+-35, z -
 ARKA_KAPAK = dict(x=80.0, y0=500.0 + UZAMA, y1=690.0 + UZAMA, z0=-200.0, z1=-40.0, r=15.0)   # sokulebilir servis kapagi (ust kenari dikiste)
 
 # --- taban etegi: V3 base_cover3 (rc:582-602). Teker etrafinda her yonde 12 mm (rc:105 COV2_GAP)
-# TABAN 520 (Duffy, 25 Ekim 2026; taslak TASLAK_TABAN_W=520 davranisi): tahrik (motor + braket + kaplin + teker) ve alt plaka her yana
+# TABAN 520 (Ahmet, 25 Ekim 2026; taslak TASLAK_TABAN_W=520 davranisi): tahrik (motor + braket + kaplin + teker) ve alt plaka her yana
 # TABAN_DX; etek her yana TABAN_DX genis. Etek x'te UC hucreye bolunur: sag / sol yarilar (125 cm etek yarilariyla ayni sekil, TABAN_DX
 # kaymis) + ortada 2 x TABAN_DX dolgu seridi (arka ve on). Boylece her baski parcasi 250 tablaya sigar.
 _X_WH3 = (W0 / 2 - 2) + (V3_W - W0) / 2 + 2 + 14 + TEKER_W / 2 + TABAN_DX     # 216 (teker merkezi; V3 178)
@@ -488,13 +497,13 @@ DIRSEK = dict(
     bagli="omuz:Kol",                         # ust grup omuzun Kol grubuna sabit (Pp(phi) * Pr(th))
     tup_x=185.0, tup_z=-1.25,                 # omuz_parcalar XR, ZC
     tup_uc_y=-170.0, tup_ro=28.0,             # omuz_parcalar "Ust kol tupu" (dis yaricap omuzda elle 28); 1,65 m: tup 100 -> 130 (125 cm'de -140)
-    # Kol x1,25 (Duffy, 24 Ekim 2026; taslak-170 KOL125-NOTLAR.md): omuz ekseninden el ucuna 325,5 -> 406,9 mm. Uzama uc yerde:
+    # Kol x1,25 (Ahmet, 24 Ekim 2026; taslak-170 KOL125-NOTLAR.md): omuz ekseninden el ucuna 325,5 -> 406,9 mm. Uzama uc yerde:
     #   tup_uzama   : ust kol tupu 100 -> 130 (omuz modulu); dirsek ekseni bu kadar asagi
     #   on_kol_uzama: on kol govdesi, dirsek servosu ile bilek servosu arasindaki U bolum (ara duvar alti s 42 ile bilek servosu
     #                 tabani arasi); bilek servosu + bilek flansi + el bu kadar daha asagi (dirsek_parcalar S sabitleri)
     #   el_uzama    : el yakasi (boyun) 13,6 -> 32,6 mm (O34; ici O22 bos, uclari 1,5 kapali)
     tup_uzama=30.0, on_kol_uzama=32.4, el_uzama=19.0,
-    # Dirsek catali DIS kolu (horn tarafi) 5 -> 8 mm, disa (+X) kalinlastirma (Duffy, 25 Ekim 2026: "8mm yap"; kontrol ajani L3 SF 2,99,
+    # Dirsek catali DIS kolu (horn tarafi) 5 -> 8 mm, disa (+X) kalinlastirma (Ahmet, 25 Ekim 2026: "8mm yap"; kontrol ajani L3 SF 2,99,
     # L4 1,22). Kopru ayni duzleme uzar, kopru ustundeki 45 derece destek dis yuze kadar. Horn civatasi M3x12 + 2x DIN 125-A M3 pul
     # (M3x11 standart degil; uc eski yerde x 216,9: horn'da 3,0 mm dis, kasaya 3,3; pulsuz M3x12 cikis kubbesine 0,58 -> ret).
     catal_dis_kol=8.0, horn_civata=(3, 12), horn_pul=(2, 0.5),
@@ -535,7 +544,7 @@ MODULLER["dirsek_sol"] = dict(konum=(0.0, S3, 0.0), ayna=True, not_="sag dirsegi
 KAFA7 = dict(                                  # 125 cm kafasi (7" LCD) olculeri: kafa7_parcalar (Govde + Pan + eski Bas) bunlarla kurulur
     tilt_nokta=(26.9, 130.0, 25.0), tilt_aralik=(-25.0, 30.0), kafa_kutu=(210.0, 180.0, 150.0), kafa_alt_y=95.0,
     not_="rc:472 head_shell 210 x 180 x 150; tilt ekseni y 130, z 25; Govde/Pan geometrisi 1,65 m kafasinda aynen kullanilir")
-# 7" KAFA EKRANI (Duffy, 01.11.2026: "7inche dusurebilriz"). Satici: Robotistan WaveShare 7" HDMI (C) 1024x600 (raporlar/kaynaklar/06-onayli-satici-B.md). Olcu 04-parca-olculeri
+# 7" KAFA EKRANI (Ahmet, 01.11.2026: "7inche dusurebilriz"). Satici: Robotistan WaveShare 7" HDMI (C) 1024x600 (raporlar/kaynaklar/06-onayli-satici-B.md). Olcu 04-parca-olculeri
 # (Waveshare cizimi; kalinlik 15 tahmini); geometri kafa_lib.LCD + lcd_local. Kafa kabugu disi (270 x 215) DEGISMEDI: HEAD_UP, S3 zinciri ekrandan etkilenmez. Artik aktif degil, geri donus icin duruyor.
 KAFA_EKRAN7 = dict(
     model="Waveshare 7inch HDMI LCD (C) 1024x600", kaynak="04-parca-olculeri.md + kafa_lib.LCD; 230 g rc (tahmini)",
@@ -549,7 +558,7 @@ KAFA_EKRAN10 = dict(
     kutle_g=600.0,
     kaynak="04-parca-olculeri.md (Waveshare 10.1inch HDMI LCD (B) 2D PDF) + robot_cad.py l10_*; kutle robot_cad m_l10 0,60 (tahmini)",
 )
-# 10,1" QLED KAFA EKRANI (Duffy, 03.11.2026 gece: "qled olsun"; Robotistan kod 20789). Kaynak (yerel klasorde yok; raporlar/ ve tubitak-2209b/malzeme-listesi/ altinda yalniz
+# 10,1" QLED KAFA EKRANI (Ahmet, 03.11.2026 gece: "qled olsun"; Robotistan kod 20789). Kaynak (yerel klasorde yok; raporlar/ ve tubitak-2209b/malzeme-listesi/ altinda yalniz
 # tubitak-2209b/malzeme-listesi/rapor.md "10,1 QLED kararinin etkileri" bu baglantilari verir): uretici wiki waveshare.com/wiki/10.1HP-CAPQLED; 04.11.2026'da indirilip okundu:
 #   2D PDF  files.waveshare.com/wiki/10.1HP-CAPQLED/10.1HP-CAPLCD_2D_PDF.pdf         (cam, gorunen alan, panel, kart, 6,3 cam + panel)
 #   3D STEP files.waveshare.com/wiki/10.1HP-CAPQLED/10.1HP-CAPLCD_3D_Drawing.zip     (katman ve konnektor yerleri; dosya repoya konmadi)
@@ -628,7 +637,7 @@ TABAN = dict(
     kat_kesik_on=(-60.0, 60.0, 150.0, 175.0),     # rc:410 deck_cut (kablo gecisi XL4016 / BTS -> kat)
     aku=dict(merkez=(0.0, Y_RAIL0, _Z_BAT), olcu=(181.0, 77.0, 167.0), kutle_g=3000.0,
              not_="rc:46-47 Landport LFP12-20 olcusu; alinacak Victron SuperPack 12,8 V 20 Ah (K3, malzeme listesi v4) 181 x 77 x 167 ayni. Kutle 3,0 kg (Victron datasheet; planlama/maliyet.json aku satiri; P1.1 08.11.2026, onceki 2,8 kg Landport)"),
-    # Aku 75 mm one (Duffy, 25 Ekim 2026 karari; devrilme analizi kutle noktasi olarak): GEOMETRIK OLARAK UYGULANAMADI (Y2a, 26 Ekim 2026).
+    # Aku 75 mm one (Ahmet, 25 Ekim 2026 karari; devrilme analizi kutle noktasi olarak): GEOMETRIK OLARAK UYGULANAMADI (Y2a, 26 Ekim 2026).
     # Aku (181 x 77 x 167, yatik) arka bolmede orta ara ray (z -20...20, y 94,5...134,5) ile arka ara ray arasinda; 75 mm onde on yuzu
     # z +37'ye gelir: orta ara ray, direk dibi kose baglantilari (y 134,5...171,5) ve govde diregi (y >= 134,5) akunun icinde kalir.
     # Akunun kutuplari on yuzde (9 mm cikinti) ve takoz araligindan kablolanir -> yerinde birakildi. Secenekler planlama/y2/Y2a-gunluk.md.
@@ -770,8 +779,12 @@ def eklem_sinirlari():
         "s1": j("omuz one-arka (S1)", OMUZ["one_arka_aralik"], OMUZ["servo"],
                 "DS3235 180 derece; horn kol asagidayken 45'te; geometri -60...180 serbest"),
         "s2": j("omuz yana acma (S2)", OMUZ["yana_aralik"], OMUZ["servo"],
-                "alt sinir +5 (S1 kablo kaseti: kol S2 3'te tambura/flansa yaklasir, 5'te 0,77 mm); kabuk boslugu 0'da 4,7 mm, -3'te temas",
-                bosluk_mm={str(k): v for k, v in OMUZ["yana_alt_bosluk_mm"].items()}),
+                ("alt sinir +5; mekanik durdurucu (omuz gobegi disi) %g'te dayanir, 5'te dise %g mm; durdurucusuz ilk temas S1 tamburu %g, "
+                 "S1 kaset kapagi (kabuk) %g; kol <-> kabuk 5'te 1,36 mm, %g'te 0,83 mm (1,58 m modeli, F2 / F6a olcumu)"
+                 % (OMUZ["yana_alt_temas"]["durdurucu"], OMUZ["yana_alt_bosluk_mm"][5.0], OMUZ["yana_alt_temas"]["s1_tambur"],
+                    OMUZ["yana_alt_temas"]["s1_kaset_kapagi"], OMUZ["yana_alt_temas"]["durdurucu"])).replace(".", ","),
+                bosluk_mm={("%g" % k): v for k, v in OMUZ["yana_alt_bosluk_mm"].items()},
+                temas_derece=dict(OMUZ["yana_alt_temas"])),
         "dirsek": j("dirsek", DIRSEK["aralik"], DIRSEK["servo"], "MG996R, catal dayanagi"),
         "bilek": j("bilek", DIRSEK["bilek_aralik"], DIRSEK["servo"], "MG996R 180 derece, ev 0 = avuc ice bakar"),
     }
@@ -790,7 +803,7 @@ def eklem_sinirlari():
                          "icin sinir ~2,0 m/s2, el yuku <= 100 g, planlama/y2/Y2b-ivme.json); rampada / egimde <= 0,1 m/s2 ve kollar "
                          "ev pozunda (karar 29 Ekim 2026, Y2a KZ1; aku yerinde). Yazilim / acil stop freni duz zeminde <= 1,8 m/s2 (karar 29 Ekim 2026, "
                          "Y2b): duzde el yukunde 0,5 kg ile bile pay >= 1,54 (yuksuz 1,72, 100 g 1,68; Y2b-ivme.json fren_pay). Rampada / egimde "
-                         "yavaslama ve fren de <= 0,1 m/s2 (karar 29 Ekim 2026, Duffy; rampada 1,8 frende ev pozu payi 2,366 / 1,8 = 1,31 < 1,5)")),
+                         "yavaslama ve fren de <= 0,1 m/s2 (karar 29 Ekim 2026, Ahmet; rampada 1,8 frende ev pozu payi 2,366 / 1,8 = 1,31 < 1,5)")),
         bagimli=[dict(ad="S1 kaseti: S2 lopu <-> kaset kapagi flansi", taraf=t, kosul={"%s_s1" % t: [_K["s1_min"], OMUZ["one_arka_aralik"][1]]},
                       sinir={"%s_s2" % t: [OMUZ["yana_aralik"][0], _K["s2_max"]]},
                       neden="S1 >= %g iken S2 <= %g: S2 lopu (dirsek/bilek kablolari) S2 120'de kaset kapagi flansina yaklasir "
@@ -960,7 +973,7 @@ M6 = dict(
     # C3 kafa (egme catali): tilt servosu on kulak somunlarindan biri (y 183,3) on ag ile yandaki somun arasinda tutulamiyordu ->
     # on kulagin iki somunu plakanin -x yuzunde, on agin ustunde altigen cep blogunda (kafa7_parcalar; 125 cm yereli, adaptorle yukari).
     tilt_somun_cep=dict(yari=5.5, pay_govde=0.5, s_pay=0.2),
-    # K1 govde braketi: M5 DISARIDAN. ISO 7380 M5x18 (Duffy karari 29 Ekim 2026: M5x16 -> M5x18; uc braket ic yuzunden 3,3 -> 5,3 mm,
+    # K1 govde braketi: M5 DISARIDAN. ISO 7380 M5x18 (Ahmet karari 29 Ekim 2026: M5x16 -> M5x18; uc braket ic yuzunden 3,3 -> 5,3 mm,
     # percin somun govdesinin disli uc kismina daha cok girer; ana montajda uzayan uc baska parcaya degmiyor) kabuk dis yuzunden -> boss (O5,5 gecis) -> braket C ayaginda M5 percin somun (3 mm Al,
     # delik O7,1; flansi boss tarafinda, boss yuzunde flans cebi; govdesi ice). Isil gomme M5 + DIN 912 + pul kalkar. Bant sokumu disaridan.
     # K2 etek braketi: ayni yapi M3: ISO 7380 M3x14 + M3 percin somun (2 mm Al, delik O5,1); etek boss'u r 5,5 (flans cebi icin).
