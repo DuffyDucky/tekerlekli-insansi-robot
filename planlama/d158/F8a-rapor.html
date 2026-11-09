@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F8a Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+h3{font-size:.98rem;margin:18px 0 8px}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+tr.top td{font-weight:650}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ul.list li{margin:4px 0}
+.banner{background:var(--crit-bg);border:1px solid var(--line);border-left:4px solid var(--crit);border-radius:10px;padding:12px 16px;margin:0 0 18px;font-weight:600;color:var(--crit)}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F8a: 158 sipariş paketi (P8.1), <code>maliyet.json</code> güncellemesi, karar kuyruğu</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 09.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>F8a-brief.md</code>, <code>F8a-siparis.md</code> / <code>.json</code>, <code>F8a-gunluk.md</code>, <code>F8a-kontrol.md</code>, <code>maliyet_toplam.py</code>, sayfa öykünmesi, <code>regresyon.py --yazma</code></p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="banner">Sipariş verilmedi. Sepete ürün eklenmedi, satıcıya yazılmadı, hesap açılmadı. Fiyatlar 09.11.2026'da satıcı sayfalarında görülen KDV dahil fiyatlardır, kargo hariç.</div>
+
+<div class="cards">
+  <div class="card"><div class="k">Bağımsız kontrol</div><div class="v"><span class="tag ok">GEÇER</span></div><div class="d">Tur 1 KOŞULLU → 6 kısa metin (T1-1…T1-6) C'de uygulandı; sayı değişmedi</div></div>
+  <div class="card"><div class="k">Okul bütçesi × 1,15</div><div class="v">107.569</div><div class="d">93.538,38 TL (parça + hizmet, doğrulanmamış ve K4 dahil) × 1,15</div></div>
+  <div class="card"><div class="k"><code>maliyet.json</code> V3 genel</div><div class="v">118.666</div><div class="d">Eski 102.919,71; koşullu dahil 124.573,11 (eski 108.208,77)</div></div>
+  <div class="card"><div class="k">Erken alım</div><div class="v">1.515,90</div><div class="d">Plan 1.496,37 (+19,53); Rhino kargosuyla 1.654,90 TL</div></div>
+  <div class="card"><div class="k">Yeni karar maddesi</div><div class="v">11</div><div class="d">K27–K37, hepsi açık; 7 maddeye not. Açık 32 / toplam 37</div></div>
+  <div class="card"><div class="k">Regresyon</div><div class="v"><span class="tag ok">10/10 aynı</span></div><div class="d"><code>--yazma</code>, GEÇER (04:58:16); taban yazılmadı</div></div>
+</div>
+
+<h2>Bütçe özeti</h2>
+<h3>Sipariş paketi (F8a, <code>F8a-siparis.md</code> §1, §7)</h3>
+<div class="tbl"><table>
+<thead><tr><th>Kalem</th><th>TL</th><th>Not</th></tr></thead>
+<tbody>
+<tr><td>Doğrulanmış (86 onaylı + 7 onaylı olmayan satıcı satırı)</td><td class="n">72.556,44</td><td>Fiyat ve stok bugün sayfada</td></tr>
+<tr><td>Kısmen (27 satır: paslanmaz vida, M6×16, insert)</td><td class="n">1.962,31</td><td>Taban fiyat, boy/varyant seçilmeden</td></tr>
+<tr><td>Doğrulanmamış (9 satır v4 yaklaşık + kamera, stok yok)</td><td class="n">4.629,63</td><td>Bugün fiyat görülmedi</td></tr>
+<tr class="top"><td>Parça toplamı</td><td class="n">79.148,38</td><td>Doğrulanmamış hariç 74.518,75</td></tr>
+<tr><td>Hizmet (3B baskı 11.550 + lazer/bükme 2.840)</td><td class="n">14.390,00</td><td>Tahmini, teklif yok (K34)</td></tr>
+<tr class="top"><td>Okul bütçesi (parça + hizmet), doğrulanmamış ve K4 dahil</td><td class="n">93.538,38</td><td>Kararsız kalemler hariç 93.147,10</td></tr>
+<tr class="top"><td>Okul bütçesi × 1,15 (<code>maliyet.json</code> pay yöntemi)</td><td class="n">107.569,14</td><td>Kararsız hariç × 1,15: 107.119,16; koşullu dahil × 1,15: 112.844,97</td></tr>
+<tr><td>Elde dahil × 1,15 (Pi 5 4 GB + microSD bugünkü fiyat 8.066,58)</td><td class="n">116.845,70</td><td></td></tr>
+<tr><td>PAKET A (TÜBİTAK önerisi; okul toplamına girmez)</td><td class="n">14.215,11</td><td>13 satır; AI HAT+ 6.978,88 dahil</td></tr>
+</tbody>
+</table></div>
+
+<h3><code>planlama/maliyet.json</code>: eski (29.10 + F4a) ↔ yeni (09.11, bu paket)</h3>
+<div class="tbl"><table>
+<thead><tr><th>Görünüm (sayfa / <code>maliyet_toplam.py</code>)</th><th>Eski</th><th>Yeni</th><th>Fark</th></tr></thead>
+<tbody>
+<tr><td>V3 görünen kalem</td><td class="n">98</td><td class="n">121</td><td class="n">+23</td></tr>
+<tr><td>V3 ara toplam (yazıcı, yedek dahil)</td><td class="n">89.495,40</td><td class="n">103.188,02</td><td class="n">+13.692,62</td></tr>
+<tr class="top"><td>V3 genel (%15 pay)</td><td class="n">102.919,71</td><td class="n">118.666,22</td><td class="n">+15.746,51</td></tr>
+<tr><td>V3 koşullular dahil genel</td><td class="n">108.208,77</td><td class="n">124.573,11</td><td class="n">+16.364,34</td></tr>
+<tr><td>V3, elimizdekiler düşülmüş (yüz ekranı hocadan gelirse)</td><td class="n">78.023,96</td><td class="n">93.770,47</td><td class="n">+15.746,51</td></tr>
+<tr><td>V3, baskı hizmetiyle</td><td class="n">108.332,66</td><td class="n">124.079,17</td><td class="n">+15.746,51</td></tr>
+<tr><td>Doğrulanan fiyat (V3 genel kalemleri)</td><td class="n">—</td><td class="n">98 / 121</td><td>23 tahmini</td></tr>
+</tbody>
+</table></div>
+<p class="note">JSON geçerli; <code>py -3 planlama/adim5/maliyet_toplam.py</code> çıkış 0. Demo sayfası mantığı (<code>viewer-template.html</code> <code>on()</code> / <code>calc()</code>) DOM'suz öykünüldü: 3 sürüm × 2 baskı × yedek × elde = 24 durum, NaN ya da null tutar 0. V3'te stok sorunu gösteren satır 2 (geniş köşe CNC, kamera); fiyatsız 2 satır (L USB-A dirsek, L 3,5 mm kısa kablo) toplama girmiyor. Demo HTML'i yeniden üretilmedi (<code>demo_uret.py</code> koşulmadı; P9.2).</p>
+
+<h3>Aynı esasla kıyaslar (pay dahil, kargo hariç)</h3>
+<div class="tbl"><table>
+<thead><tr><th>Kıyas</th><th>F8a</th><th><code>maliyet.json</code></th><th>Fark</th></tr></thead>
+<tbody>
+<tr><td>Alınacaklar ↔ eski "elimizdekiler düşülmüş" (README ≈ 78.000)</td><td class="n">107.569,14</td><td class="n">78.023,96</td><td class="n">+29.545,18</td></tr>
+<tr><td>Elde dahil ↔ eski genel</td><td class="n">116.845,70</td><td class="n">102.919,71</td><td class="n">+13.925,99</td></tr>
+<tr class="top"><td>Alınacaklar ↔ yeni "elimizdekiler düşülmüş"</td><td class="n">107.569,14</td><td class="n">93.770,47</td><td class="n">+13.798,67</td></tr>
+<tr><td>Elde dahil ↔ yeni genel</td><td class="n">116.845,70</td><td class="n">118.666,22</td><td class="n">−1.820,52</td></tr>
+</tbody>
+</table></div>
+<p class="note">Son satır yalnız bilgi: <code>maliyet.json</code> "elde" kalemlerine Waveshare 10,1" (12.424,50, hocadan gelirse) ve 29.10 fiyatlı Pi / microSD (9.223,98) giriyor; F8a'nın elde tutarı bugünkü Pi + microSD (8.066,58), kafa ekranı yerine QLED satın alma satırı.</p>
+
+<h3>Yeni <code>maliyet.json</code> neden F8a ile aynı değil (köprü, kuruşu kuruşuna)</h3>
+<div class="tbl"><table>
+<thead><tr><th>Adım</th><th>TL</th><th>Neden</th></tr></thead>
+<tbody>
+<tr><td>Yeni <code>maliyet.json</code> V3 ara (yazıcı)</td><td class="n">103.188,02</td><td></td></tr>
+<tr><td>− elde kalemler</td><td class="n">−21.648,48</td><td>Pi 5 7.031,58 + microSD 2.192,40 + Waveshare 10,1" 12.424,50 (<code>maliyet.json</code> genel toplama katıyor)</td></tr>
+<tr><td>− filament</td><td class="n">−6.843,09</td><td>F8a'da filament yok (03.11: firma / ekipten)</td></tr>
+<tr><td>− kargo satırları</td><td class="n">−619,00</td><td>4 × 120 tahmini + Rhino 139; F8a toplamı kargo hariç</td></tr>
+<tr><td>+ kafa ekranı QLED</td><td class="n">+7.217,95</td><td>Öneri 8 uygulanmadı (K32)</td></tr>
+<tr><td>+ baskı hizmeti</td><td class="n">+11.550,00</td><td>Öneri 10 ret; tahmini (K34). Lazer / bükme 2.840 ikisinde de var</td></tr>
+<tr><td>+ K4 (4 kablo) + F1b üç fiş</td><td class="n">+537,24</td><td><code>maliyet.json</code>'da <code>secenek: kosullu</code> (391,28 + 145,96); F8a okul bütçesi sayıyor</td></tr>
+<tr><td>+ kalan farklar</td><td class="n">+155,74</td><td>Insert M3 168 × 5,22 → 176 × 5,29 +54,08; köpük bant (<code>maliyet.json</code>'da satır yok) +44,50; geniş köşe CNC 24,68 → Otomasyoncu 31,36 +26,72; kamera 1.812,19 → 1.835,13 +22,94; M6×16 3,50 → 3,89 +7,02; insert M5 6,27 → 6,35 +0,48. Hepsi C'nin uygulamadığı kalemler</td></tr>
+<tr class="top"><td>= F8a okul bütçesi</td><td class="n">93.538,38</td><td>× 1,15 = 107.569,14 (yeni elde düşülmüş 93.770,47 ile fark 13.798,67)</td></tr>
+</tbody>
+</table></div>
+<p class="note">Beklentiyle uyum: günlükte uygulanmış <code>maliyet.json</code> için hedef sayı yazmıyor; beklenti, aktarılan satırların F8a fiyat / adediyle aynı olması ve kalan farkın açık kararlara (K31, K32, K33, K34) ve aktarılmayan kısmen / doğrulanmamış satırlara düşmesiydi. Köprü bunu artıksız gösteriyor.</p>
+
+<h2><code>maliyet.json</code>: uygulanan ve uygulanmayan öneriler</h2>
+<div class="tbl"><table>
+<thead><tr><th>Sıra</th><th>Öneri</th><th>Ne yapıldı</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td class="kod">1</td><td>18 satıcı / model aktarımı</td><td>51 satır sondan başa (126 → 0), <code>ad</code> 51/51 tuttu; <code>satici</code>, <code>url</code>, <code>tl</code>, <code>durum</code>, <code>stok</code>, <code>model</code>, adet F8a'dan; 13 satır bölündü → 21 yeni satır; not'a F8a kimliği</td><td><span class="tag ok">uygulandı</span></td></tr>
+<tr><td class="kod">2</td><td>1 fiyatsız adaylar</td><td>PAM8403 21,96 ve USB ses kartı 91,80: <code>secenek</code> kaldırıldı; K4a/b/d/e ve F1a/b/c: fiyat + <code>secenek: kosullu</code>; F1b notu "adaptör değil, 90° kablo"; K4c, K4f <code>fiyat_bekliyor</code> kaldı</td><td><span class="tag ok">uygulandı</span></td></tr>
+<tr><td class="kod">3</td><td>2 grup</td><td>90° HDMI ve 90° micro USB <code>ses</code> → <code>elektronik</code></td><td><span class="tag ok">uygulandı</span></td></tr>
+<tr><td class="kod">4–7</td><td>3, 4, 5, 6</td><td>DS3235 1.171,50 → 1.809,00 (idx 14, 124); MG996R 199 → 202,50 (15, 125); XVF3800 → ReSpeaker v2.0 6.680,04 (38); D36V50F5 → D24V50F5 2.266,93 (61)</td><td><span class="tag ok">uygulandı</span></td></tr>
+<tr><td class="kod">8</td><td>7 göğüs ekranı</td><td>Yeni: 11,6" 9.367,79, 12 V regülatör 275,67, HDMI 1,5 m 117,10 (V3); <code>notlar[1]</code> "P8.1'de girecek" → "09.11'de girdi"</td><td><span class="tag ok">uygulandı</span></td></tr>
+<tr><td class="kod">9</td><td>8 kafa ekranı QLED</td><td>Dokunulmadı: Waveshare 10,1" <code>elde</code> kalır</td><td><span class="tag wait">uygulanmadı (K32)</span></td></tr>
+<tr><td class="kod">10</td><td>9 kafa satırları</td><td>Yeni: SY8205 146,88, micro USB 30 cm 34,76, USB hub 187,23; "Ekran kablosu" → DIY HDMI şerit 105,51 + iki fiş 247,61</td><td><span class="tag ok">uygulandı</span></td></tr>
+<tr><td class="kod">11</td><td>10 baskı hizmeti</td><td>Dokunulmadı</td><td><span class="tag crit">ret</span></td></tr>
+<tr><td class="kod">12</td><td>11 gamepad, perçin aleti</td><td><code>ver: "v1,v2"</code> + not; satır silinmedi, idx kaymadı</td><td><span class="tag ok">uygulandı</span></td></tr>
+<tr><td class="kod">13</td><td>12 kargo</td><td>Kargo adet 12 → 4 (120 tahmini, not); yeni "Rhino3DPrinter kargosu" 1 × 139</td><td><span class="tag ok">uygulandı</span></td></tr>
+<tr><td class="kod">14</td><td>13 insert</td><td>Yalnız not (taban 5,29 / 6,35; L 5,7 yok); <code>tl</code>, <code>durum</code>, adet aynı</td><td><span class="tag ok">uygulandı</span></td></tr>
+<tr><td class="kod">15–18</td><td>14, 15, 16, 17</td><td>Rulman 108,16 / 30,04 + 625ZZ "BGR (Karbon)"; T-somun M5 3,96, M6 3,90 ve adet 62; geniş köşe <code>stok: yok</code> + <code>alt</code> Otomasyoncu 31,36; akü notu + <code>alt</code> Limacell 4.814,86</td><td><span class="tag ok">uygulandı</span></td></tr>
+<tr><td class="kod">19</td><td>19 adetler</td><td>Bombe M3 130 → 138, M4 56 → 60, M6 42 → 44, pul 84 → 90 (model dökümü v4'ten); servo uzatma 19, 18 AWG 14, hat yuvası 5, bıçak 7, TVS 3, pertinaks 5, USB kablo 2 kontrolle doğrulandı</td><td><span class="tag ok">uygulandı</span></td></tr>
+<tr><td class="kod">20</td><td>20 tarih</td><td><code>"2026-10-29"</code> → <code>"2026-11-09"</code>; <code>notlar[0]</code> "kısmen" kaldı; kısmen / doğrulanmamış satır <code>dogrulandi</code> yapılmadı</td><td><span class="tag ok">uygulandı (en son)</span></td></tr>
+<tr><td class="kod">—</td><td>Kapsam dışı</td><td>M6×16 satıcı değişimi (K33), insert varyantı ve adedi 168 ↔ 176 (K31), K4 / K9 seçimleri</td><td><span class="tag wait">C uygulamadı</span></td></tr>
+</tbody>
+</table></div>
+<p class="note">Atlanan satır yok (ad karşılaştırmasında tutmayan 0). Yedek: scratchpad'de <code>maliyet.json</code> kopyası. Silme yok. Fiyatı sayfada doğrulanmamış hiçbir kalem fiyatlı yapılmadı; taban fiyat <code>dogrulandi</code> yapılmadı. Liste dışı küçük tutarlılık düzeltmeleri: güncellenen satırların <code>not</code>'undaki artık geçersiz "Fiyat doğrulanmadı" cümlesi çıkarıldı; USB ses kartı modelindeki "ürün seçilmedi" yerine ürün adı; DS3235 <code>url</code> F8a'nın doğruladığı sayfaya; kargo satırının <code>model</code>'i 4 satıcıya. Dosya biçimi korundu (satır başına bir kalem, gruplar arası boş satır).</p>
+<div class="oneri"><b>Fark edilen (dokunulmadı):</b> öneri 18 <code>alt</code> alanını kapsamıyordu; iki satırda eski <code>alt</code> artık birincille aynı sayfa: "Motor montaj braketi" (<code>alt</code> Robotistan 377,62, birincil aynı URL 764,79/paket) ve "Optokuplör modülü" (<code>alt</code> Robotistan 94,55, birincil aynı URL 74,10). Bir sonraki kayıtta <code>alt</code> F8a'nın ikinci satıcısıyla değiştirilebilir.</div>
+
+<h2>Hocadaki listeyle fark (iki liste için)</h2>
+<p>Hangi listenin hocada olduğu belirsiz: <code>siparis-farki-2026-10-29.md</code> 17.10 Excel'i, <code>tubitak-2209b/</code> notları v4'ün (03.11) gittiğini ve beğenildiğini, aynı klasördeki rapor "gönderilmedi" diyor. Karar K27'de.</p>
+<div class="tbl"><table>
+<thead><tr><th>Liste</th><th>Eklenen</th><th>Çıkan</th><th>Değişen</th><th>Tutar</th></tr></thead>
+<tbody>
+<tr><td class="kod">17.10 Excel (<code>b27fd80</code>)</td><td>15 satır grubu (44 satır): 11,6" göğüs ekranı ve yan parçaları, 90° fişler, SY8205, PAM8403 + USB ses kartı, USB hub, yönlü mikrofon, perçin somun, dişli çubuk, göğüs vidaları, K4 kabloları, PAKET A (13), baskı hizmeti</td><td>8 grup (10 satır): Nextion (elde), ReSpeaker Lite, MAX98357A, akrilik yüz paneli, M4 tırtıllı somun, gamepad, filamentler, kargo satırı</td><td>37 grup: omuz DS3218MG → DS3235 1.809; yüz ekranı 7" → QLED 10,1"; D36V50F5 → D24V50F5; şarj cihazı, acil stop, röle, Wago, XT60; adetler (servo uzatma 14 → 19, XL4016 3 → 4, vidalar)</td><td>17.10 genel 99.673,04 (pay, elde, kargo dahil) ↔ okul bütçesi 93.538,38 (pay, elde, kargo yok); %15 payla 107.569,14</td></tr>
+<tr><td class="kod">v4 (03.11)</td><td>8 satır: K4 kabloları (6) + F1b 90° micro USB ve DC jak (2; 90° HDMI v4'te var); 2'si fiyatsız</td><td>0</td><td>Satıcı: tırtıllı somun M5 Robotistan (tükendi) → CNC Marketi; model: 625ZZ "BGR (Karbon)"; 24 satırda fiyat (Robotistan %0,1–0,3 yukarı, P6KE6V8A 9,07 → 6,05)</td><td>+491,34 TL ekleme; site satırları 68.219,82 → 67.995,98</td></tr>
+</tbody>
+</table></div>
+
+<h2>Kritik yol ve stok riskleri</h2>
+<h3>Akü takvimi (<code>F8a-siparis.md</code> §3.1; taban adım 9 ≈ 25–26.11)</h3>
+<div class="tbl"><table>
+<thead><tr><th>Seçenek</th><th>Sipariş</th><th>Kargoya veriliş (sayfa)</th><th>Varış</th><th>Adım 9'a</th><th>Not</th></tr></thead>
+<tbody>
+<tr><td>Atakale Victron 20 Ah, S'de</td><td>16.11</td><td>≤ 23.11 ("7 gün içinde … tedarik")</td><td>≈ 24–28.11</td><td><span class="tag crit">sınırda / geç</span></td><td>Onaylı satıcı, stok 1, 12.680,70</td></tr>
+<tr><td>Atakale, erken alımla</td><td>10–12.11</td><td>≤ 17–19.11</td><td>≈ 18–24.11</td><td><span class="tag ok">yetişir</span></td><td>Stok 1: o güne kadar satılmazsa</td></tr>
+<tr><td>Limacell 12 V 24 Ah, S'de</td><td>16.11</td><td>≈ 19.11 (ort. 3 iş günü)</td><td>≈ 20–24.11 (varsayım)</td><td><span class="tag ok">yetişir</span></td><td>Onaylı değil; 4.814,86; ölçü ve 30 A sürekli akım kontrol edilmedi</td></tr>
+<tr><td>Limacell, bu hafta</td><td>09–12.11</td><td>"en geç 12 Kasım" kargoda</td><td>≈ 13–17.11 (varsayım)</td><td><span class="tag ok">yetişir</span></td><td>Aynı</td></tr>
+</tbody>
+</table></div>
+<p class="note">Taşıma süresi sayfalarda yok: Limacell için 1–3 iş günü varsayım; Atakale koli süresi 1–5 gün (mesafeye göre). Karar K30.</p>
+<div class="tbl"><table>
+<thead><tr><th>Risk</th><th>Durum (09.11)</th><th>Etki / seçenek</th><th>Karar</th></tr></thead>
+<tbody>
+<tr><td class="kod">QLED 10,1" (kafa)</td><td>Robotistan <b>stok 2</b> (v4'te 4), indirimli 7.217,95 (liste 8.124,85)</td><td>Biterse Motorobit 15.300,00 (+8.082,05, stok 10); Direnc tükendi</td><td><span class="tag wait">K32</span></td></tr>
+<tr><td class="kod">Kamera Module 3</td><td><b>Tükendi</b> (Robotistan iki sayfa; NoIR de); Robocombo v4'te tükendi</td><td>Kritik yolda değil; son fiyat 1.835,13</td><td><span class="tag wait">K37</span></td></tr>
+<tr><td class="kod">M6×16 fosfat ×18</td><td>CNC Marketi <b>stok 2</b></td><td>Paslanmaz DIN 912 A2 3,89 (F8a tutarı; dayanım sınıfı kontrol edilmedi) ya da CNC fosfat bombe başlı 4,80 (stok 235)</td><td><span class="tag wait">K33</span></td></tr>
+<tr><td class="kod">Mesafe burcu M5×40</td><td>Onaylı sitelerde ve v4'te <b>bulunamadı</b></td><td>Plan önerisi baskılı burç + uzun cıvata ya da M5 uzatma somunu; tutar v4 yaklaşık 8 × 40</td><td>iş (P4.3)</td></tr>
+<tr><td class="kod">Tırtıllı somun M5</td><td>Robotistan tükendi</td><td>CNC Marketi kanal 10 M5 3,96 (onaylı değil), 8 × = 31,68</td><td><span class="tag wait">K35</span></td></tr>
+<tr><td class="kod">Diğer kritik yol</td><td>Motor JGB37 Direnc stok 25 (tek satıcı); motor tutucu stok 5 paket; arazi tekerleği 7; insert L 5,7 Rhino'da yok</td><td>Insert seçenekleri A/B/C</td><td><span class="tag wait">K31</span></td></tr>
+</tbody>
+</table></div>
+
+<h2>Erken alım listesi (P9.1)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Kalem</th><th>Adet</th><th>Satıcı</th><th>Plan</th><th>Bugün birim</th><th>Bugün tutar</th><th>Stok</th></tr></thead>
+<tbody>
+<tr><td>Rulman 6808-2RS</td><td class="n">4</td><td>Rulmanal</td><td class="n">427,20</td><td class="n">108,16</td><td class="n">432,64</td><td>51</td></tr>
+<tr><td>Rulman 625ZZ ("BGR (Karbon)")</td><td class="n">5</td><td>Rulmanal</td><td class="n">148,35</td><td class="n">30,04</td><td class="n">150,20</td><td>8.398</td></tr>
+<tr><td>Isıl gömme somun M3 (taban; L 5,7 yok)</td><td class="n">168</td><td>Rhino3DPrinter</td><td class="n">876,96</td><td class="n">5,29</td><td class="n">888,72</td><td>stokta</td></tr>
+<tr><td>Isıl gömme somun M5 (taban)</td><td class="n">6</td><td>Rhino3DPrinter</td><td class="n">37,62</td><td class="n">6,35</td><td class="n">38,10</td><td>stokta</td></tr>
+<tr><td>Kupon D: 2 × M3×20 + 4 pul + 2 fiberli somun</td><td class="n">8</td><td>paslanmazcivata.ist</td><td class="n">6,24</td><td>taban</td><td class="n">6,24</td><td>vida 77.199</td></tr>
+<tr class="top"><td>Toplam</td><td></td><td></td><td class="n">1.496,37</td><td></td><td class="n">1.515,90</td><td>+19,53</td></tr>
+<tr><td>Kargo: Rhino3DPrinter (eşik 2.500 altı)</td><td></td><td></td><td></td><td></td><td class="n">+139,00</td><td></td></tr>
+<tr class="top"><td>Bilinen kargoyla</td><td></td><td></td><td></td><td></td><td class="n">1.654,90</td><td></td></tr>
+</tbody>
+</table></div>
+<p class="note">Üç satıcı da onaylı listede değil (okul / kişisel: K29). Insert 176 alınırsa 1.558,22. Rulmanal ve paslanmazcivata.ist eşik altı, kargo ücreti sayfada yok.</p>
+
+<h2>Karara bağlı kalemler (var olan maddeler; not eklendi)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Madde</th><th>Seçenekler ve maliyet etkisi</th><th>Önerilen varsayılan</th></tr></thead>
+<tbody>
+<tr><td class="kod">K1</td><td>a 0 · c 0 – 76,24 (micro USB 1,5 m) · b doğrulanmadı</td><td>a</td></tr>
+<tr><td class="kod">K2</td><td>Yerleşim a / b 0 TL; AI HAT+ PAKET A'da 6.978,88; destek gelmezse okul bütçesine +6.978,88 (açık soru)</td><td>a (boss taşı)</td></tr>
+<tr><td class="kod">K4</td><td>a koşullu 0 (satın alınırsa +391,28) · b 0 · c +391,28; L USB-A dirsek ve L 3,5 mm bulunamadı</td><td>a</td></tr>
+<tr><td class="kod">K9</td><td>a 0 · b pay ≥ 1 +2.332,50 (DS3218MG, stok 4) · b pay ≥ 2: 6–8,4 V'ta stoklu servo yok (80 / 150 kg tükendi, 220 kg yalnız 24 V)</td><td>a (≤ 100 g)</td></tr>
+<tr><td class="kod">K10</td><td>a, b 0 · c +61,20</td><td>a</td></tr>
+<tr><td class="kod">K11</td><td>a, b ≈ 0 (parçalar aynı)</td><td>a</td></tr>
+<tr><td class="kod">K12</td><td>a 0 · b +66,07 (30 mm fan; fan yeri HAT zarfıyla kesişiyor)</td><td>a</td></tr>
+</tbody>
+</table></div>
+
+<h2>Ahmet'in kararları (yeni: K27–K37, hepsi açık)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Madde</th><th>Soru</th><th>Sayısal etki</th><th>Önerilen varsayılan</th><th>Bloke ettiği</th></tr></thead>
+<tbody>
+<tr><td class="kod">K27</td><td>Hocadaki liste: 17.10 Excel mi, v4 mü</td><td>a: 44 ekleme / 10 çıkış / 37 değişim · b: 8 ekleme +491,34</td><td>b (v4)</td><td>Fark iletimi, K28, P8.1 onayı</td></tr>
+<tr><td class="kod">K28</td><td>Bütçe farkı hocaya bildirilsin mi</td><td>≈ +29.545 (README ≈ 78.000'e göre); yeni <code>maliyet.json</code>'a göre +13.798,67</td><td>a (siparişten önce)</td><td>P8.1 onayı (S = 16.11)</td></tr>
+<tr><td class="kod">K29</td><td>Erken alım: bu hafta mı; okul mu kişisel mi</td><td>1.515,90; kargolu 1.654,90</td><td>Bu hafta, insert 168; okul / kişisel için yok</td><td>P9.1 kupon, kritik yol 1</td></tr>
+<tr><td class="kod">K30</td><td>Akü: Atakale bu hafta / S'de / Limacell</td><td>Atakale 12.680,70; Limacell 4.814,86 (−7.865,84)</td><td>Atakale bu hafta; biterse Limacell S'de</td><td>Dal 2b, taban adım 9</td></tr>
+<tr><td class="kod">K31</td><td>Insert A/B/C (M3 ve M5)</td><td>Taban 5,29 / 6,35; 168 ↔ 176 +42,32; M5 kupon delikleri Ø6,2–6,6 ↔ gereken Ø6,7–6,8</td><td>M3: A; M5: yok</td><td>K29, kupon C, P4.3</td></tr>
+<tr><td class="kod">K32</td><td>Kafa ekranı: hocadan mı, satın alma mı</td><td>QLED 7.217,95 (stok 2); <code>maliyet.json</code> genel −5.987,53, elde düşülmüş +8.300,64</td><td>Kayıtta yok</td><td>Öneri 8, K28, Parti 3</td></tr>
+<tr><td class="kod">K33</td><td>M6×16: ikinci satıcı / paslanmaz / fosfat şartı</td><td>Paslanmaz 70,02 (+5,22) · CNC bombe başlı 86,40</td><td>a (paslanmaz DIN 912)</td><td>Taban (aşama 5)</td></tr>
+<tr><td class="kod">K34</td><td>3B baskı hizmeti ücretli mi, teklif</td><td>11.550 tahmini; ücretsizse okul bütçesi 81.988,38</td><td>a (teklif S'den önce)</td><td>K28, öneri 10</td></tr>
+<tr><td class="kod">K35</td><td>Onaylı olmayan satıcılar hocaya nasıl</td><td>6.063,11 (5 satıcı)</td><td>Kayıtta yok</td><td>P8.1 liste biçimi, K29</td></tr>
+<tr><td class="kod">K36</td><td>8 Ω hoparlör (PAKET A) stok 1 &lt; 3</td><td>3 × 166,41 = 499,23 (doğrulanmadı)</td><td>Kayıtta yok</td><td>PAKET A siparişi</td></tr>
+<tr><td class="kod">K37</td><td>Kamera Module 3 tükendi</td><td>Son fiyat 1.835,13</td><td>a (S'de yeniden bak)</td><td>Görüntü (ikinci aşama)</td></tr>
+</tbody>
+</table></div>
+<p class="note">F8a §9'daki 14 sorudan 10'u 11 yeni madde oldu (madde 3, K29 erken alım ve K31 insert diye bölündü); 4'ü (madde 6, 7, 8, 9) K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak girdi. Özet tablosu güncel: açık 32, kapandı 5, toplam 37. Varsayılanlar yalnız öneri; karar Ahmet'in.</p>
+
+<h2>B'nin koşulları ve kapanışı</h2>
+<div class="tbl"><table>
+<thead><tr><th>Tur</th><th>Sonuç</th><th>Kapanış</th></tr></thead>
+<tbody>
+<tr><td class="kod">İlk kontrol</td><td><span class="tag wait">KOŞULLU</span>: <code>maliyet.json</code> kıyası yanlış esasta (4.643,42 yerine +29.539), M6×16 stok 2/18, insert L 5,7 yok, Limacell sonucu yok, 4 öneri birebir uygulanamıyor</td><td>A düzeltme turu: 12 küçük koşul + D1–D5 kapandı (kıyas +29.545,18; M6×16 ikinci satıcı +5,22; insert A/B/C; akü takvimi; öneri 18 eşleme tablosu)</td></tr>
+<tr><td class="kod">Tur 1</td><td><span class="tag wait">KOŞULLU</span>, yalnız 6 birebir metin; toplamlar ve 6 sayfa bağımsız tuttu</td><td>C uyguladı → <span class="tag ok">GEÇER</span></td></tr>
+</tbody>
+</table></div>
+<div class="tbl" style="margin-top:10px"><table>
+<thead><tr><th>Koşul</th><th>Yer</th><th>Uygulanan metin (özet)</th></tr></thead>
+<tbody>
+<tr><td class="kod">T1-1</td><td><code>F8a-gunluk.md</code> §5 öneri 18</td><td>"idx'ler kayıt öncesi maliyet.json (c7f9af4) içindir; 18 ilk uygulanır, sondan başa (126 → 0); model alanı da F8a urun'üyle değişir."</td></tr>
+<tr><td class="kod">T1-2</td><td>§5 öneri 11</td><td>"V3'ten çıkarılsın: ver "v1,v2" + not (… satır silinmez, idx kaymaz; …)"</td></tr>
+<tr><td class="kod">T1-3</td><td>§5 öneri 1</td><td>"→ <code>secenek: kosullu</code> (Ahmet kesin derse kaldırılır; 90° HDMI v4'te kesin)"</td></tr>
+<tr><td class="kod">T1-4</td><td>§5 öneri 3, 8, 17</td><td>Hedef idx: 14 ve 124 (ver v3); 33; 48</td></tr>
+<tr><td class="kod">T1-5</td><td><code>F8a-siparis.md</code> §9/11</td><td>"Dayanım sınıfı farkı (A2-70 ↔ fosfat; sınıf sayfada yok) sigma bağlantısı için kontrol edilmedi."</td></tr>
+<tr><td class="kod">T1-6</td><td>§9/3</td><td>"M5 için de aynı karar: kupon delikleri Ø6,2–6,6, Rhino OD 7 kuralıyla Ø6,7–6,8 gerekir (§4.1)."</td></tr>
+</tbody>
+</table></div>
+<p class="note">Başka metin değişikliği yok; sayı değişmedi. Satır numaraları B'nin tur 1 listesindekiyle aynı çıktı (F8a-gunluk 615, 617, 622, 625, 631, 632; F8a-siparis 572, 580).</p>
+
+<h2>Korunan değerler (regresyon)</h2>
+<p><code>py -3 planlama\d158\regresyon.py --yazma</code> (04:58:16; taban 02:17:55): boy 1.580, dört çakışma 0, yüksüz rampa 1,519, tilt 3,64, pan 2,21, mikrofon–hoparlör 574,3 mm, SY8205 × USB 0. <span class="tag ok">GEÇER, 10/10 aynı</span>. "Değişti" yok; paralel F2'nin çalışma kopyası hiçbir değeri oynatmadı. Normal mod koşulmadı (taban F2'de). F8a model dosyası içermiyor.</p>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th><th>Dosya</th><th>Satır</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>a35cab1</code></td><td>Lale P8.1: sipariş paketi (F8a) + B yeniden kontrol koşulları T1-1…T1-6: <code>F8a-brief.md</code>, <code>F8a-siparis.md</code>, <code>F8a-siparis.json</code>, <code>F8a-gunluk.md</code>, <code>F8a-kontrol.md</code></td><td class="n">5</td><td class="n">+7.724</td></tr>
+<tr><td class="kod"><code>76fd4b2</code></td><td>Lale P8.1: <code>maliyet.json</code> güncellemesi + <code>README.md</code> ve <code>proje-plani.md</code> maliyet satırı</td><td class="n">3</td><td class="n">+110 / −87</td></tr>
+<tr><td class="kod"><code>fbaa7ab</code></td><td>Lale P8.1: karar kuyruğu K27–K37 + planlama (<code>karar-kuyrugu.md</code>, <code>F4b-brief.md</code> orkestratör düzeltmesi, <code>dongu-158.md</code>)</td><td class="n">3</td><td class="n">+192 / −5</td></tr>
+</tbody>
+</table></div>
+<p class="note">Push: <code>0979d70..fbaa7ab lale-duzeltme → lale-duzeltme</code>; <code>main</code>'e dokunulmadı. Açık <code>git add</code> listesi. Eklenen satırlar tarandı: takma ad (harf arası ayraçlı desen dahil) 0, yerel kullanıcı yolu 0, başka öğrenci / danışman soyadı 0. Dışarıda: F2 (<code>tasarim/freecad/</code>, <code>F2-*</code>), <code>regresyon*.json</code>, K23 dosyaları, <code>kvkk/</code>, <code>rapor/</code>, <code>tubitak-2209b/</code>, <code>tasarim/solidworks/</code>, <code>raporlar/</code> izlenmeyenleri, <code>KY/kaynak/</code>, <code>lale_dongu.*</code>, <code>CLAUDE.md</code>, <code>kod/</code>, <code>__pycache__</code>, F5 / F5b pano gövdeleri. FreeCAD açılmadı; web'e çıkılmadı. Bu rapor ayrı commit'te.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F8a (P8.1) · 09.11.2026 · Commit <code>a35cab1</code>, <code>76fd4b2</code>, <code>fbaa7ab</code> (<code>lale-duzeltme</code>) · Regresyon <code>--yazma</code>: GEÇER, 10/10 aynı · <code>maliyet.json</code> V3 genel 118.666,22 / koşullu 124.573,11 · Sipariş verilmedi · Kaynaklar: <code>F8a-siparis.md</code>, <code>F8a-gunluk.md</code>, <code>F8a-kontrol.md</code>, <code>karar-kuyrugu.md</code> K27–K37.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
