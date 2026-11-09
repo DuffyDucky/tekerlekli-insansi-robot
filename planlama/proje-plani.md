@@ -7,8 +7,8 @@ rakamların çoğu tahmin, teklif ve bölüm onayıyla kesinleşecek. Tasarımı
 `tasarim/freecad/lale158/kafa-yerlesim/uygulama-ivme.json`, `ev.kutle_g`), akü 3,0 kg (`tasarim/freecad/montaj/robot-bom.csv`, Victron satırı),
 yüksüz rampa devrilme payı 1,519 (eşik 1,5; aynı dosya, `izgara_yuk_0g.a_sinir_pay15.rampa5_geri`), 10 servo (kol başına 4: omuz S1 ve S2 DS3235, dirsek ve
 bilek MG996R; kafada pan + tilt MG996R; `planlama/d158/servo-10-oneri.md`), kafada 10,1" QLED (1280×720), göğüste 11,6" 1080p gömülü ekran (09.11 sayıları).
-Malzeme listesi `planlama/maliyet.json` henüz 29.10 listesi (o günkü 1,65 m tasarımı; 09.11'de yalnız ses ve fiyatsız kablo adayları işlendi):
-≈ 102.900 TL, %15 pay ve yedek dahil (`planlama/adim5/maliyet_toplam.py`); 1,58 m sipariş paketi P8.1'de çıkacak. Önceki ana tasarımlar tarihçedir: 125 cm V3 (Ekim başı) ve 1,65 m (29.10 – 03.11; 1.120 parça, 24,6 kg,
+Malzeme listesi `planlama/maliyet.json` (tarih 2026-11-09; 29.10 listesi P8.1 sipariş paketiyle 1,58 m'ye kısmen güncellendi, `planlama/d158/F8a-siparis.md`):
+≈ 118.700 TL, %15 pay ve yedek dahil (koşullularla ≈ 124.600; `planlama/adim5/maliyet_toplam.py`); sipariş verilmedi. Önceki ana tasarımlar tarihçedir: 125 cm V3 (Ekim başı) ve 1,65 m (29.10 – 03.11; 1.120 parça, 24,6 kg,
 kol başına 4 servo, iş planı `planlama/dongu.md` Y1–Y6).
 
 **Tek takvim (15 Ekim 2026, D6):** hafta numarası **dönem haftasıdır**, H1 = 28 Eylül – 4 Ekim 2026 (pazartesi başlar).
