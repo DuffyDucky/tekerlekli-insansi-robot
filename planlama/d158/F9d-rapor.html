@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F9d Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+h3{font-size:1rem;margin:20px 0 8px}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F9d: herkese açık depo temizliği (P9.4)</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 09.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>F9d-brief.md</code>, <code>F9d-gunluk.md</code> (düzeltme turu 1 dahil), <code>F9d-kontrol.md</code> (yeniden kontrol, düzeltme 1: GEÇER, kayıt sırası şartıyla), <code>F9d-tarama.py</code></p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">Yerel kullanıcı yolu</div><div class="v">48 → 4</div><div class="d">izlenen satır; dosya 39 → 4; yazılabilir alanda 0</div></div>
+  <div class="card"><div class="k">Takma ad (izlenen)</div><div class="v">6 satır</div><div class="d">3 dosya; hepsi açık karara bağlı (K25, K26, <code>kod/</code>)</div></div>
+  <div class="card"><div class="k">README ↔ JSON</div><div class="v"><span class="tag ok">38 / 38</span></div><div class="d">uyuşmazlık 0; PDF 54 sayfa F7d commit'iyle tutarlı</div></div>
+  <div class="card"><div class="k">Karar taslakları</div><div class="v">3</div><div class="d">KT-F9d-1…3 → karar kuyruğunda K47–K49</div></div>
+  <div class="card"><div class="k">Bağımsız kontrol</div><div class="v"><span class="tag ok">GEÇER</span></div><div class="d">1 düzeltme turundan sonra; kritik 0, orta 0, açık düşük 1 (D-6)</div></div>
+</div>
+
+<p class="note">C'nin ölçümleri (21:31–21:37, <code>py -3 -B</code>, <code>PYTHONDONTWRITEBYTECODE=1</code>; FreeCAD yok). Ortak ölçüm F7d commit'inden önce koşuldu (<code>carpisma_kos.py kontrol</code> 0, <code>regresyon.py --yazma</code> 0, <code>rehber_denetim.py</code> 0, PDF 54 sayfa / 8,10 pt, demo bayt bayt aynı, <code>F9b-dogrula.py --tarayicisiz</code> 0). Kayıt şartı F7d commit'inden (<code>1a67071</code>) sonra denendi. Takma ad, soyad ve kullanıcı adı komut satırına ve hiçbir dosyaya yazılmadan, çalışma anında türetildi; bu raporda yalnız sayılar var.</p>
+
+<h2>Kabul ölçütleri (C'nin ölçümleri)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Ölçüt</th><th>Ölçülen</th><th>Kaynak</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td>Kayıt şartı 1: F7d'nin <code>kontrol.json</code>'u commit'te</td><td><code>git diff --quiet HEAD -- planlama/rehber/kontrol.json</code> → 0</td><td>C, F7d commit'inden sonra</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Kayıt şartı 2: tarama</td><td><code>F9d-tarama.py --ozet</code> → 0: yerel yol 4 satır / 4 dosya, yazılabilir alanda 0; takma ad izlenen 6 / 3; README 38 satırın 38'i var, uyuşmazlık 0</td><td>C, 21:36</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Yerel yol: yazılabilir alanda 0, kalanlar gerekçeli</td><td>HEAD'de kullanıcı adı geçen satır 4 / dosya 4 (F7d öncesi taban <code>4c7e2ec</code>'te 48); kalan 4'ün gerekçesi aşağıda</td><td>C: <code>git grep -I -i -F</code>, ad ortam değişkeninden</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Takma ad: sayı ve liste raporlu</td><td>izlenen 6 satır / 3 dosya; izlenmeyen 232 / 48; geçmiş içerikte 48 / 125 commit</td><td>günlük §2; B §5; C <code>F9d-tarama.py</code></td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>README sayıları JSON ile aynı</td><td>38 / 38 satır, uyuşmazlık 0; maliyet satırları hesapla aynı</td><td><code>F9d-tarama.py</code>; B (düzeltme 1) §1</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Karar taslakları üç maddede tam</td><td>KT-F9d-1…3: seçenekler, önerilen varsayılan, sayısal etki</td><td>günlük §4; B §6</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>carpisma_kos.py kontrol</code></td><td>çıkış 0 (17 izlenen dosya kayıtla aynı); B: HEAD kodu ↔ yeni kod çıktısı bayt bayt aynı</td><td>C, 21:31; B §2</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>regresyon.py --yazma</code></td><td>çıkış 0, 10 / 10 "aynı"</td><td>C, 21:31:09</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Commit içeriği</td><td>staged = B'nin 40 dosyalık listesi (4 yeni, 36 değişen), +1.215 / −57; <code>git diff --cached --check</code> 0; eklenen 1.215 satırda takma ad 0, başka öğrenci / danışman soyadı 0, kullanıcı adı 0, yerel yol 0</td><td>C</td><td><span class="tag ok">GEÇER</span></td></tr>
+</tbody>
+</table></div>
+
+<h2>Yerel kullanıcı yolu: önce / sonra</h2>
+<div class="tbl"><table>
+<thead><tr><th>Alan (<code>F9d-tarama.py</code>)</th><th>Önce (satır / dosya)</th><th>İlk tur sonrası</th><th>Düzeltme 1 sonrası</th></tr></thead>
+<tbody>
+<tr><td><b>yazılabilir</b> (kök README, <code>planlama/d158/</code> belgeleri, tarama kaynağı olmayan betikler)</td><td class="n">35 / 30</td><td class="n">0 / 0</td><td class="n"><b>0 / 0</b></td></tr>
+<tr><td>brief listesinde yok (Y2a, Y2b, Y3 brief'leri, <code>tasarim/freecad/README.md</code>, QLED çerçeve notu)</td><td class="n">9 / 5</td><td class="n">9 / 5</td><td class="n">0 / 0</td></tr>
+<tr><td>üretici betik</td><td class="n">1 / 1</td><td class="n">1 / 1</td><td class="n">1 / 1</td></tr>
+<tr><td>üretilmiş çıktı</td><td class="n">2 / 2</td><td class="n">2 / 2</td><td class="n">2 / 2</td></tr>
+<tr><td>üretilmiş JSON</td><td class="n">1 / 1</td><td class="n">1 / 1</td><td class="n">1 / 1</td></tr>
+<tr><td><b>toplam</b></td><td class="n"><b>48 / 39</b></td><td class="n">13 / 9</td><td class="n"><b>4 / 4</b></td></tr>
+</tbody>
+</table></div>
+<ul class="list">
+<li><b>Dönüşüm.</b> Yalnız yol öneki değişti: belgelerde <code>%USERPROFILE%</code>, betik yorumlarında <code>~</code> ya da <code>%USERPROFILE%</code>; <code>tasarim/freecad/README.md</code> komutlarında kabuğun kendi yazımı (bash <code>$USERPROFILE</code>, PowerShell <code>$env:USERPROFILE</code>), çünkü <code>%USERPROFILE%</code> orada açılmaz. Her dosyada eklenen = silinen satır.</li>
+<li><b>Betikler.</b> 16 betiğin hiçbiri tarama kaynağı değil (<code>carpisma_kos.kaynak_listesi()</code>, 17 dosya). 15'inde yalnız yorum değişti: AST HEAD ile aynı. <code>carpisma_kos.py</code>'de <code>BASLATICI</code> artık <code>os.path.expanduser("~")</code> ile kuruluyor; bu makinede değer eski dizeyle aynı, <code>kontrol</code> çıktısı bayt bayt aynı.</li>
+</ul>
+<h3>Kalan 4 satır ve gerekçesi</h3>
+<div class="tbl"><table>
+<thead><tr><th>Dosya</th><th>Tür</th><th>Neden ele alınmadı</th></tr></thead>
+<tbody>
+<tr><td><code>tasarim/freecad/taslak-170/taslak_rapor.py</code></td><td>üretici betik</td><td>Yol ürettiği HTML'in metnine gidiyor; değiştirmek çıktıyı değiştirir (brief: "çıktıyı değiştirmiyorsa düzelt").</td></tr>
+<tr><td><code>tasarim/freecad/taslak-170/rapor.html</code></td><td>üretilmiş çıktı</td><td>Yukarıdaki betiğin çıktısı; elle değil yeniden üretimle değişir. İkisi birlikte düzeltilmeli.</td></tr>
+<tr><td><code>tasarim/freecad/lale158/2209b-cad-sonuclar.json</code></td><td>üretilmiş JSON (kaçışlı)</td><td>Üretilmiş JSON dokunulmaz; anahtarı izlenen hiçbir betikte geçmiyor, üreticisi bulunmalı.</td></tr>
+<tr><td><code>tasarim/freecad/lale158/ikinci/yavaslik/prof-head-kabuk.txt</code></td><td>üretilmiş çıktı (profil)</td><td>FreeCAD kurulumunun kütüphane yolu; ölçüm çıktısı.</td></tr>
+</tbody>
+</table></div>
+<div class="oneri"><b>Eski commit'lerde yol kalır.</b> Geçmiş yeniden yazılmadı. B'nin ölçümünde 125 commit'in 29'unun içeriğinde yerel kullanıcı yolu geçiyor; GitHub'daki geçmişte de duruyor. C'nin bugünkü ölçümü 128 commit'te 30: fark, yolları silen F9d commit'inin kendisi (<code>-G</code> silinen satırı da sayar). Yazar ve committer alanlarında 0. Yalnız HEAD temiz.</div>
+
+<h2>Takma ad sayımı (yalnız sayı)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Küme</th><th>Satır</th><th>Dosya</th><th>Not</th></tr></thead>
+<tbody>
+<tr><td>İzlenen, hafıza</td><td class="n">3</td><td class="n">1</td><td>K25 (açık), dokunulmadı</td></tr>
+<tr><td>İzlenen, diğer</td><td class="n">3</td><td class="n">2</td><td><code>kod/</code> (K44 bekliyor) ve K26 (hesap adı bağlantıların içinde)</td></tr>
+<tr><td><b>İzlenen toplam</b></td><td class="n"><b>6</b></td><td class="n"><b>3</b></td><td>C'nin <code>F9d-tarama.py</code> koşusunda da 6 / 3</td></tr>
+<tr><td>İzlenmeyen, hafıza</td><td class="n">27</td><td class="n">1</td><td>K18 alanı</td></tr>
+<tr><td>İzlenmeyen, tarihçe</td><td class="n">129</td><td class="n">24</td><td>K18 alanı</td></tr>
+<tr><td>İzlenmeyen, diğer</td><td class="n">76</td><td class="n">23</td><td>21'i K18 alanı; ayrıca K24 ve K22</td></tr>
+<tr><td><b>İzlenmeyen toplam</b></td><td class="n"><b>232</b></td><td class="n"><b>48</b></td><td>46 dosya K18 alanında</td></tr>
+<tr><td>Git geçmişi</td><td colspan="2">içerikte 48 / 125 commit; commit mesajında 3; yazar / committer 0</td><td>geçmiş yeniden yazılmadı</td></tr>
+</tbody>
+</table></div>
+<p class="note">F9d'nin değiştirdiği ve eklediği satırlarda takma ad 0. Depo adresi de takma adı taşıyor (K26, açık).</p>
+
+<h2>README: sayı ve kaynak</h2>
+<p class="note"><code>F9d-tarama.py</code> her satırı JSON'dan biçimleyip README'de arıyor; dosyaları çalışma ağacından okur. Bu yüzden F7d önce commit'lendi: README "(54 sayfa)" ile HEAD'deki <code>kontrol.json</code> artık aynı. Pages bağlantısı yok, değiştirilmedi; <code>main</code>'e birleştirme iddiası yok.</p>
+<div class="tbl"><table>
+<thead><tr><th>README</th><th>Kaynak · anahtar</th><th>Değer</th></tr></thead>
+<tbody>
+<tr><td>rehber 50 adım; 1.192 parça; (54 sayfa)</td><td><code>planlama/rehber/kontrol.json</code> · <code>ozet.adim</code>, <code>ozet.parca_rehber</code>, <code>yazdir.pdf_sayfa</code> (eşlemenin son sayfası)</td><td class="n">50; 1192; 54</td></tr>
+<tr><td>demo 127 JSON anahtarı</td><td>demo <code>script#kaynak</code> <code>anahtarlar</code> sayısı (F9b)</td><td class="n">127</td></tr>
+<tr><td>boy 1.580 mm; 1.580,0 mm</td><td><code>lale158-kontrol.json</code> · <code>toplam_boy_mm</code> (MA <code>boy_mm</code> aynı)</td><td class="n">1580,0</td></tr>
+<tr><td>gövde direği 1.115,5 mm</td><td><code>robot-bom.csv</code> · Sigma 40x40 ağır kanal kalemi</td><td class="n">1 adet</td></tr>
+<tr><td>merkezi y 1.270; uzatma 315</td><td><code>montaj-analiz.json</code> · <code>s3_mm</code>, <code>uzama_mm</code></td><td class="n">1270; 315</td></tr>
+<tr><td>1.179 parça; ana montaj 25.720,55 g; taban 520</td><td><code>montaj-analiz.json</code> · <code>parca_sayisi</code>, <code>kutle_g</code>, <code>taban_w_mm</code></td><td class="n">1179; 25.720,55; 520</td></tr>
+<tr><td>kablo payı 400 g; ev pozu 26.120,6 g; AM (−0,03; 522,84; −10,03)</td><td><code>uygulama-ivme.json</code> · <code>kablo_payi.kutle_g</code>, <code>ev.kutle_g</code>, <code>ev.am</code></td><td class="n">400; 26.120,6; [−0,03, 522,84, −10,03]</td></tr>
+<tr><td>teker izi 432, x ±216</td><td><code>Y2b-ivme.json</code> · <code>teker_hatti.iz_genisligi</code>, <code>.x</code></td><td class="n">432; 216</td></tr>
+<tr><td>akü 3,0 kg</td><td><code>robot-bom.csv</code> · LiFePO4 kalemi toplam kütle</td><td class="n">3000 g</td></tr>
+<tr><td>pay 1,519; düz 2,097</td><td><code>uygulama-ivme.json</code> · <code>izgara_yuk_0g.a_sinir_pay15.rampa5_geri</code> / <code>.duz_geri</code></td><td class="n">1,519; 2,097</td></tr>
+<tr><td>DS3235 × 4, MG996R × 6, toplam 10 servo</td><td><code>robot-bom.csv</code> · adetler</td><td class="n">4; 6; 10</td></tr>
+<tr><td>kafa grubu 1.570,8 g; tilt 3,64; pan 2,21</td><td><code>kafa-analiz.json</code> · <code>tork.tilt.kutle_g</code>, <code>.pay_tilt15</code>, <code>tork.pan.pay_iki_hane</code></td><td class="n">1570,8; 3,64; 2,21</td></tr>
+<tr><td>tilt ±13°; S2 ≥ +5°; ivme ve fren sınırları</td><td><code>kod/ortak/eklem_sinirlari.json</code> (yalnız okundu) · <code>eklemler.tilt</code>, <code>eklemler.r_s2.min</code>, <code>teker.ivme_sinir_m_s2</code></td><td class="n">±13; 5; 0,1 / 0,5 / 1,8</td></tr>
+<tr><td>mikrofon-hoparlör en az 574,3 mm</td><td><code>uygulama-olcum.json</code> · <code>mic_hoparlor.poz_min_mm</code></td><td class="n">574,3</td></tr>
+<tr><td>baskı 72 parça (13'ü destekli); 7.668,9–7.726,7 g; 159,9–161,08 sa</td><td><code>baski-analiz.json</code> · <code>toplam.adet</code>, <code>.destekli_adet</code>, <code>.toplam_g</code>, <code>.sure_sa</code></td><td class="n">72; 13</td></tr>
+<tr><td>maliyet ≈ 118.700; koşullularla ≈ 124.600; elde düşülürse ≈ 93.800 TL</td><td><code>planlama/maliyet.json</code> · sayfa kuralıyla hesap (V3, yazıcı, yedek, %15)</td><td class="n">118.666,22; 124.573,11; 93.770,47</td></tr>
+<tr><td>QLED alınırsa ≈ 102.100; sipariş paketi ≈ 107.600 TL</td><td><code>F8a-siparis.json</code> · S76 <code>birincil.fiyat</code> ile hesap; <code>toplamlar.okul_butcesi_dahil_pay15</code></td><td class="n">102.071,11; 107.569,14</td></tr>
+</tbody>
+</table></div>
+<p class="note">Düzeltme turunda (B'nin O-2'si) eski kalan üç sayı düzeldi: ana montaj 25.715,6 → 25.720,55 g, ev pozu 26.115,6 → 26.120,6 g, AM y 522,71 → 522,84; ayrıca baskı satırı 65 → 72 parça. PDF "(53 sayfa)" → "(54 sayfa)" (O-1).</p>
+
+<h2>Karar taslakları (karar kuyruğuna K47–K49 olarak taşındı)</h2>
+<div class="tbl"><table>
+<thead><tr><th>#</th><th>Konu</th><th>Seçenekler ve sayısal etki</th><th>Önerilen varsayılan</th></tr></thead>
+<tbody>
+<tr><td class="kod">KT-F9d-1 → K47</td><td>D-9: <code>planlama/rehber/goruntu/adim-*.png</code> depoda nasıl tutulsun</td><td>Ölçüm: geçmişte yalnız <code>adim-*.png</code> 111 blob, ham 14.845.781 B (telefon dahil 120 / 15.665.471 B); üç rehber üretim commit'i 25,6 MB ekledi; tam görsel değişiminde ≈ 6,5 MB, değişmeyen adım 0 B. a) <code>.gitignore</code> + izlemeden çıkar: sonraki üretim 0 B, geçmiş kalır, en çok 14 dosyadaki görüntü bağlantısı GitHub'da kırılır. b) yalnız sürüm commit'i: ara turlarda <code>git add</code>'e alınmaz, araç değişmez. c) Git LFS: işaretçi ~130 B, ekipte herkes kurmalı, Pages LFS dosyası sunmaz, kota doğrulanmadı.</td><td>b</td></tr>
+<tr><td class="kod">KT-F9d-2 → K48</td><td><code>tasarim/cad/lale158-model.js</code> (izlenmeyen artık dosya)</td><td>3.495.365 B; F9b ilk turunda <code>demo_uret.py</code> üretti, artık üretmiyor; demo ona bağlı değil (F9b bağlanırsa hata veriyor); içindeki GLB bugünkü <code>robot.glb</code> ile aynı. a) sil: disk −3,5 MB, <code>git status</code> −1 satır. b) <code>.gitignore</code>: −1 satır, dosya kalır. c) bırak: açık listesiz bir <code>git add</code> 3,5 MB'ı herkese açık depoya sokabilir.</td><td>a: sil (Ahmet onayıyla)</td></tr>
+<tr><td class="kod">KT-F9d-3 → K49</td><td>Kalıcı izlenmeyenler ve <code>.gitignore</code></td><td>Girdi başına öneri: <code>kvkk/</code>, <code>rapor/</code>, <code>tubitak-2209b/</code>, <code>kafa-yerlesim/kaynak/</code>, <code>FREECAD-KILIT.txt</code> → <code>.gitignore</code> (5 girdi, ≈ 128,1 MB, <code>git status</code> −5 satır); <code>raporlar/kaynaklar/</code> üç dosya ve <code>F5-pano-govde.txt</code>, <code>F5b-pano-govde.txt</code> → commit; <code>tasarim/solidworks/</code>, hareket makrosu, 11,6" raporu, K23 → bekle (bağlı kararlar K22, K24, K23).</td><td>tablodaki satır önerileri</td></tr>
+</tbody>
+</table></div>
+
+<h2>Açık düşük</h2>
+<ol class="list">
+<li><b>D-6</b> (B, düzeltme 1): <code>tasarim/freecad/README.md</code> bash örneğinde <code>L=$USERPROFILE/...</code> ve <code>"$FC" $L</code> tırnaksız. Profil yolunda boşluk olan başka bir makinede sözcük bölünür; bu makinede 1 sözcük, eski metin de tırnaksızdı. Öneri: <code>L="$USERPROFILE/.robot-cad/run_fc.py"</code> ve <code>"$L"</code>. Commit'i engellemiyor.</li>
+</ol>
+<p class="note">Yanıtlanan öbür düşükler: D-4 (README demo satırındaki "bu sürüm <code>lale-duzeltme</code> dalında" ifadesi <code>main</code>'e birleştirme commit'inde kaldırılmalı; birleştirme Ahmet onayında), D-5 (<code>expanduser("~")</code> başka kullanıcıda o kullanıcının profilini gösterir; amaç bu), D-3 (bir betikte karışık satır sonu önceden vardı; commit'lenen blob LF).</p>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th><th>Dosya</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>afea121</code></td><td>Kök <code>README.md</code>; 19 belgede yol öneki (14 eski <code>planlama/d158/</code> belgesi, Y2a / Y2b / Y3 brief'leri, <code>tasarim/freecad/README.md</code>, QLED çerçeve notu); 16 betikte yol öneki; <code>F9d-brief.md</code>, <code>F9d-tarama.py</code>, <code>F9d-gunluk.md</code>, <code>F9d-kontrol.md</code></td><td class="n">40</td></tr>
+</tbody>
+</table></div>
+<p class="note">Commit B'nin kesin <code>git add</code> listesiyle, F7d commit'inden (<code>1a67071</code>) ve iki kayıt şartından sonra atıldı (açık liste; <code>-A</code>, <code>.</code> ya da klasör yok). 40 dosya (4 yeni, 36 değişen), +1.215 / −57 satır. <code>.gitignore</code> değiştirilmedi (K49 kararı Ahmet'te). Bu rapor ayrı commit'te.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F9d · 09.11.2026 · Commit <code>afea121</code> (<code>lale-duzeltme</code>) · yerel yol 48 → 4 satır, yazılabilir alanda 0 · takma ad izlenen 6 / 3 · README 38 / 38 · <code>F9d-tarama.py --ozet</code> 0 · Çakışma <code>kontrol</code> 0 · Regresyon <code>--yazma</code>: GEÇER, 10/10 aynı · Kaynaklar: <code>F9d-brief.md</code>, <code>F9d-gunluk.md</code>, <code>F9d-kontrol.md</code>.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
