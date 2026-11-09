@@ -63,8 +63,10 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K48 | `tasarim/cad/lale158-model.js` artık dosyası | **açık** (F9d) | a: sil (Ahmet onayıyla) | `git status` temizliği (P0.1) |
 | K49 | Kalıcı izlenmeyenler ve `.gitignore` | **açık** (F9d) | 5 girdi `.gitignore`, 5 dosya commit, kalanı bağlı kararını bekler | P0.1 (git status temiz); K18–K24 ile birlikte |
 | K50 | Şarj girişi konnektörü: sigortadan sonra gerilimli erkek pimler | **açık** (F7d) | b: XT60E-F (dişi) panel; olmazsa a | İlk şarj, rehber F5 notu, `maliyet.json:111` |
+| K51 | Pi hattındaki ikinci P6KE6V8A: maliyette 2, model BOM'unda 1 | **açık** (F7c) | a: modele ve BOM'a 1 adet ekle (0 TL) | Model / BOM güncellemesi, rehber E3a TVS notu, çakışma taraması |
+| K52 | Göğüs ekranı regülatörü (LM2577 + LM2596), mini 2 A ve hat sigortası yuvasının yeri: modelde ve BOM'da yok | **açık** (F7c) | a: K11 kararıyla birlikte güç paneline (B5a) ekle | K11, model / BOM güncellemesi, rehber B5a, `maliyet.json:122-123` notları |
 
-**Açık: 45** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 50 madde.
+**Açık: 47** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 52 madde.
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
@@ -75,6 +77,8 @@ P6.2 (F6b, 09.11.2026) karar taslakları KT-F6b-1 → K42'ye F6b notu, KT-F6b-3 
 `F6b-kontrol.md` O-1). KT-F6b-2 karar değil, iş (sondaki bölüm).
 P9.4 (F9d, 09.11.2026) karar taslakları KT-F9d-1…3 → K47–K49 (`planlama/d158/F9d-gunluk.md` §4, D-2 düzeltmesiyle; B `F9d-kontrol.md` madde 6).
 P7.4 (F7d, 09.11.2026) karar taslağı KT-F7d-1 → K50, B'nin son metniyle (`planlama/d158/F7d-kontrol.md` "KT-F7d-1 (son hâl)").
+P9.3 (F9c, 09.11.2026, orkestratör kararı) F7c karar taslakları KT-F7c-2 → K51, KT-F7c-3 → K52 (`planlama/d158/F7c-gunluk.md:215, :224`;
+B doğrulaması `F7c-kontrol.md` "KT-F7c-2.", "KT-F7c-3.").
 
 ---
 
@@ -841,6 +845,56 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **Not:** Rehberin F5 notundaki "kuyruğa girmedi" ifadesi bu maddeyle eskidi (`F7d-kontrol.md` D-9); sonraki rehber turunda bu maddeye bağlanır.
   Karar ne olursa olsun K1 kol tarafı ve F5 pim uyarısı metni rehberde kalır.
 - **Bloke:** ilk şarj; rehber F5 notu (ve b / c'de K1, F1 metni); `maliyet.json:111`.
+- **Durum:** açık.
+
+---
+
+## K51 · Pi hattındaki ikinci P6KE6V8A: maliyette 2, model BOM'unda 1 (KT-F7c-2)
+- **Soru:** Elektrik mimarisi her iki kafa 5 V çıkışına P6KE6V8A koyuyor (`planlama/adim3/elektrik.md:282` "her iki 5 V çıkışına P6KE6V8A";
+  `:47` Pi hattı D24V50F5 çıkışı, `:49` QLED hattı SY8205 çıkışı). Satın alma listesinde 2 adet var, modelde ve model BOM'unda 1 adet.
+  Eksik olan Pi hattındaki TVS. Model ve BOM nasıl hizalansın?
+- **Durum bilgisi:**
+  - `planlama/maliyet.json:103`: "P6KE6V8A Transil Diyot", adet 2, 6,05 TL, Direnc.net, doğrulandı (F8a S15, stok 1.210).
+  - `tasarim/freecad/montaj/robot-bom.csv:144`: "P6KE6V8A TVS (kafa ekrani 5 V)", adet 1.
+  - Rehber E3a'daki "(ikinci TVS'i ayrıca al)" ifadesi, satın alma listesinde 2 adet olduğu için yanıltıcı olabilir (`F7c-gunluk.md:221`).
+  - B iki atfı da doğruladı (`F7c-kontrol.md` "KT-F7c-2.").
+- **Seçenekler:**
+  a) Modele 1 adet P6KE6V8A, D24V50F5 çıkışında (kafa, Pi hattı); BOM'a +1 (toplam 2). Model kaynağı tarama kaynağı olduğu için ayrı pakette,
+     `carpisma_kos.py` yeniden.
+  b) Modele dokunma; yalnız rehber E3a metni "modelde ve model BOM'unda yok; satın alma listesinde (`maliyet.json`) 2 adet" olsun. Model BOM'u
+     satın alma listesinden 1 eksik kalır.
+  c) Pi hattında TVS'den vazgeç: `maliyet.json:103` adet 1'e iner, `elektrik.md:47` ve `:282` değişir.
+- **Sayısal etki:** a ve b: 0 TL (`maliyet.json`'da adet zaten 2; 2 × 6,05 = 12,10 TL hesapta). a'da BOM 1 → 2 ve bir tarama koşusu. c: −6,05 TL,
+  Pi hattı (2,67 A, hesap; `elektrik.md:47`) aşırı gerilim korumasız kalır.
+- **Önerilen varsayılan:** a (F7c önerisi, `F7c-gunluk.md:218-219`); b'deki metin düzeltmesi a ile birlikte yapılır. Yalnız öneri; karar Ahmet'te.
+- **Bloke:** model / BOM güncellemesi ve çakışma taraması; rehber E3a TVS notu.
+- **Durum:** açık.
+
+---
+
+## K52 · Göğüs ekranı regülatörü, mini 2 A ve hat sigortası yuvasının yeri: modelde ve BOM'da yok (KT-F7c-3)
+- **Soru:** Göğüs ekranı dalı `planlama/adim3/elektrik.md:60-62`: "Taban güç paneli ── mini bıçak 2 A (hat sigortası yuvası) ── LM2577 + LM2596
+  kartı (giriş 4–35 V, 12 V'a ayarlı) ── 18 AWG ── 11,6" ekran 12 V jakı"; giriş noktası K11'e bağlı. Bu üç parça (regülatör kartı, mini 2 A sigorta,
+  hat sigortası yuvası) modelde ve model BOM'unda yok. Nereye ve ne zaman eklensin?
+- **Durum bilgisi:**
+  - `tasarim/freecad/montaj/robot-bom.csv`: yalnız `:113` 6 yollu bıçak sigorta kutusu ve `:137` 30 A ana sigorta yuvası var; regülatör, mini 2 A
+    ve hat yuvası yok (B doğrulaması `F7c-kontrol.md` "KT-F7c-3.").
+  - `planlama/maliyet.json:190`: göğüs ekranı 12 V regülatörü (LM2577 + LM2596), adet 1, 275,67 TL.
+  - `planlama/maliyet.json:123`: "2A Mini Alçak Profil Oto Sigorta", adet 1, 7,34 TL; notu göğüs dalını anmıyor ("F5 2 A standart"; F5 için ayrıca
+    standart 2 A satırı var). Bu adetin göğüs dalına ayrıldığı **doğrulanmadı**.
+  - `planlama/maliyet.json:122`: hat sigortası yuvası, adet 5, 36,72 TL; notu 4 kullanım sayıyor (A, B, C, XT60 şarj). `elektrik.md:41` ve `:377`
+    beşinciyi göğüs ekranına veriyor.
+  - Regülatör kartının ölçüsü ürün sayfasından bakılmadı: **doğrulanmadı** (`F7c-gunluk.md:229-230`).
+- **Seçenekler:**
+  a) K11 kararı verilince güç paneline (rehber B5a) 1 regülatör kartı zarfı + 1 hat sigortası yuvası (mini 2 A) eklenir; yer K11'e göre (K11 a
+     seçilirse ana anahtar sonrası, röle öncesi bara ucuna yakın). Kart ölçüsü eklemeden önce ürün sayfasından ya da parçadan alınır.
+  b) Şimdi K11'in varsayılanına (a) göre eklenir; K11 başka seçilirse parça taşınır, tarama yeniden.
+  c) Modele eklenmez; dal yalnız `elektrik.md` ve rehber metninde kalır. Çakışma taraması güç panelindeki bu üç parçayı görmez.
+- **Sayısal etki:** maliyet 0 TL (regülatör `:190` ve 5. yuva `:122` zaten listede); mini 2 A göğüse ayrılmamışsa +1 × 7,34 TL. a ve b'de BOM'a
+  3 satır ve bir tarama koşusu; c'de model değişmez.
+- **Önerilen varsayılan:** a (F7c önerisi, `F7c-gunluk.md:229-231`); `maliyet.json:122-123` notlarının göğüs dalını anması `maliyet.json`
+  sahibinde. Yalnız öneri; karar Ahmet'te.
+- **Bloke:** K11 sonrası model / BOM güncellemesi; rehber B5a'daki "göğüs regülatörü + mini 2 A yuvası" satırı; göğüs dalının montajı.
 - **Durum:** açık.
 
 ---
