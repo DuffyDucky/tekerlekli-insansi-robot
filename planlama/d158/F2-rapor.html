@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F2 Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+figure{margin:12px 0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px}
+figure img{display:block;width:100%;height:auto;border-radius:6px;background:#fff}
+figcaption{color:var(--muted);font-size:.88rem;margin-top:8px}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F2: omuz mekanik durdurucu ve omuz taraması (P2.1, P2.2)</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 09.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>F2-brief.md</code>, <code>F2-gunluk.md</code>, <code>F2-kontrol.md</code>, <code>carpisma_kos.py kontrol</code> ve <code>regresyon.py --yazma</code> çıktıları, <code>karar-kuyrugu.md</code> K38–K41</p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">Bağımsız kontrol</div><div class="v"><span class="tag wait">KOŞULLU</span></div><div class="d">Kritik yok; 3 orta bulgu yük/dayanım anlatımında, P6.1'e devredildi (düzeltme turu yok)</div></div>
+  <div class="card"><div class="k">Durdurucu teması</div><div class="v">S2 4,30°</div><div class="d">B: 4,3003°; yüz yüze 133 mm²; S2 5°'te dişe 0,344 mm</div></div>
+  <div class="card"><div class="k">Kol–kabuk (4,3°'de)</div><div class="v">0</div><div class="d">En küçük boşluk 0,831 mm (tüp ↔ S1 kaset kapağı)</div></div>
+  <div class="card"><div class="k">Çakışma taraması</div><div class="v"><span class="tag ok">tek koşu</span></div><div class="d">20261109-033441, 9 bölüm; ev pozu 0, eklem aralığında 0</div></div>
+  <div class="card"><div class="k">Regresyon</div><div class="v"><span class="tag ok">10/10 aynı</span></div><div class="d"><code>--yazma</code>, GEÇER; rampa 1,519</div></div>
+</div>
+
+<p class="note">C'nin commit öncesi koşuları: <code>py -3 tasarim/freecad/carpisma_kos.py kontrol</code> çıkış 0 ("izlenen 17 dosyanin ozetleri kayitla ayni"; commit'ten hemen önce bir kez daha 0); <code>py -3 planlama/d158/regresyon.py --yazma</code> (09.11 07:49:43, taban 07:32:32) çıkış 0. FreeCAD açılmadı. Bu commit'te <code>tasarim/freecad/</code> altındaki hiçbir kaynak dosyasına dokunulmadı (tarama eskimesin diye; B Koşul 1).</p>
+
+<h2>Durdurucu: ne, nerede, neden 4,30°</h2>
+<ul class="list">
+<li><b>Ne:</b> omuz göbeğiyle tek parça PETG-CF bir diş (ek parça, vida yok; BOM değişmez). Kol S2 ekseninde içe (−) döndüğünde kol çatalının çapraz kirişinin iç ucu dişin 4,3° eğik yüzüne yüz yüze dayanır. Kaynak: <code>arayuz.OMUZ['durdurucu']</code>, <code>omuz_parcalar.py</code> (göbek: 2142,8 mm³ eklendi, çıkan 0).</li>
+<li><b>Nerede:</b> göbeğin iç duvarının altında (omuz yereli x 161…168, y −34…−10, z −8…21), S2 eksenine 30,3 mm. Göbek S1 ile döndüğü için durdurucu S1'in her açısında aynı yerde çalışır.</li>
+<li><b>Neden 4,30°:</b> brief'teki "kabuk teması −3°" 14 Ekim ölçümüydü, S1 kablo kasetinden önce. Durdurucusuz bugünkü modelde kol önce <b>S1 kablo tamburuna 3,65°</b>'de, <b>S1 kaset kapağına 3,21°</b>'de değiyor. Durdurucu bu yüzden 3,65° (tambur) ile 5° (yazılım alt sınırı, <code>arayuz.py:176</code>) arasına, yaklaşık ortaya kondu: 4,3°'de tambura 0,400 mm, 5°'te dişe 0,344 mm boşluk. Eski 0…+2° önerisi tamburu ve kaseti korumazdı.</li>
+<li><b>Pay dar:</b> baskı toleransı ±0,2 mm ≈ ±0,38°, 500 g ile 1,5 rad/s çarpmada çatal sapması 0,47°; toplam 0,85°, tambur payını (0,65°) aşabiliyor. İlk montajda sentil kontrolü (S2 5°'te 0,3 mm geçer, 0,4 geçmez) önerildi (K40).</li>
+</ul>
+
+<figure>
+<img src="F2-durdurucu-kesit.png" alt="Sağ omuz S2 durdurucusu, z 6,5 ve z −1,25 mm kesitleri: göbek mavi, diş kırmızı, kol çatalı turuncu (4,3° temas, 5° kesikli, 0° noktalı), S1 kablo tamburu gri">
+<figcaption>Kesit (z 6,5 ve −1,25 mm): diş kırmızı, kol çatalı 4,3°'de (temas), 5°'te (kesikli, yazılım alt sınırı) ve 0°'de (noktalı, durdurucusuz). Gri tambur S1 kablo tamburu. Dişin kök +x iç köşesi (y −23) keskin; yarıçap P6.1'de. Kaynak: <code>F2-durdurucu-kesit.png</code>.</figcaption>
+</figure>
+<figure>
+<img src="F2-durdurucu-yakin.png" alt="S2 4,3° temas anı, içten ve alttan 3B bakış: diş kırmızı, kol çatalı turuncu, göbek yarı saydam mavi">
+<figcaption>Temas anı (S2 4,3°), içten ve alttan bakış. Görsel kalabalık, başlık eksen etiketlerine biniyor (B-7); okunacak ana görsel yukarıdaki kesit. Kaynak: <code>F2-durdurucu-yakin.png</code>.</figcaption>
+</figure>
+
+<h2>Kabul ölçütleri</h2>
+<div class="tbl"><table>
+<thead><tr><th>Ölçüt (brief)</th><th>Sonuç</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td>P2.1: durdurucu açısında kol–durdurucu teması</td><td class="n">İlk temas 4,3002° (A) / 4,3003° (B); 4,29°'de ortak hacim 0,705 mm³, 4,30°'de 0</td><td><span class="tag ok">geçer</span></td></tr>
+<tr><td>P2.1: kol–kabuk 0 (çakışma ölçümüyle)</td><td>4,3°'de temas 0, en küçük 0,831 mm; S2 5°'te 1,358 mm; kol zinciri (dirsek/bilek pozlarıyla) çakışma 0</td><td><span class="tag ok">geçer</span></td></tr>
+<tr><td>P2.1: baskı analizi destek sorunu 0 ya da gerekçeli</td><td>Gerekçeli: göbek zaten destekli parça; dişin alt yüzü iç duvarın mevcut destek bölgesiyle birleşti (270 → 673 mm²). Destek 5,2 → 5,7 g; bunun <b>F2 payı ≈ +0,56 g</b>, ≈ −0,15 g Y3 (C1–C3) farkı. "Önce" sütunu 29.10 C1–C3 öncesinden. 4 eğik yüz C3 somun cepleri, F2'den değil (B-4).</td><td><span class="tag ok">geçer</span></td></tr>
+<tr><td>P2.1: omuz kütle/tork payları (S1, S2) tablosu</td><td>Aşağıdaki tablo; pay değişimi ≤ 0,01</td><td><span class="tag ok">geçer</span></td></tr>
+<tr><td>P2.1: eklem aralığında yeni çakışma 0</td><td><code>carpisma-sonuc.json</code> eklem aralığında 0 (toplam 364, hepsi aralık dışı, F2 öncesiyle aynı)</td><td><span class="tag ok">geçer</span></td></tr>
+<tr><td>P2.2: <code>tek_kosu: true</code>, eskimiş bölüm 0</td><td>true (20261109-033441); <code>kontrol</code> çıkış 0 (A, B ve C koşuları)</td><td><span class="tag ok">geçer</span></td></tr>
+<tr><td>P2.2: ev pozu çakışması 0, eklem aralığında 0</td><td><code>ev_pozu_cakisma</code> [], aralıkta 0</td><td><span class="tag ok">geçer</span></td></tr>
+<tr><td>P2.2: omuz ve iskelet regresyonları geçer</td><td>İkisi de "FARK VAR", ama referanslar eski (omuz 14.10, iskelet 08.10); F2 öncesi modelle karşılaştırmada F2 kaynaklı fark yok (B iddia 8). Referans yenileme P6.1'de, karar sonrası.</td><td><span class="tag wait">koşullu</span></td></tr>
+<tr><td>Korunan değerler (<code>regresyon.py</code>)</td><td>Çıkış 0, 10/10 aynı (boy 1580, çakışmalar 0, rampa 1,519, tilt 3,64, pan 2,21, mik–hoparlör 574,3, SY8205 × USB 0)</td><td><span class="tag ok">geçer</span></td></tr>
+</tbody>
+</table></div>
+
+<h2>Kütle ve tork</h2>
+<div class="tbl"><table>
+<thead><tr><th>Değer (kaynak)</th><th>Önce</th><th>Sonra</th></tr></thead>
+<tbody>
+<tr><td>Omuz göbeği (<code>omuz-analiz.json</code> <code>kutle.Gobek</code>)</td><td class="n">175,1 g</td><td class="n">177,6 g</td></tr>
+<tr><td>Robot (<code>montaj-analiz.json</code> <code>kutle_g</code>)</td><td class="n">25.715,59 g</td><td class="n">25.720,49 g (+4,9)</td></tr>
+<tr><td>S1 tam kol payı, yüksüz / 500 g (<code>dirsek-analiz.json</code> <code>tork.sonuc</code>)</td><td class="n">2,78 / 0,97</td><td class="n">2,77 / 0,97</td></tr>
+<tr><td>S2 tam kol payı, yüksüz / 500 g</td><td class="n">2,72 / 0,97</td><td class="n">2,72 / 0,97</td></tr>
+<tr><td>Yüksüz rampa devrilme payı (<code>uygulama-ivme.json</code>)</td><td class="n">1,519</td><td class="n">1,519</td></tr>
+</tbody>
+</table></div>
+<p class="note">500 g'da payın 1'in altında olması F2'den önce de böyleydi (K9). BOM'da Omuz göbeği 118,5 → 123,4 g iki adedin toplamı.</p>
+
+<h2>Tarama özeti</h2>
+<ul class="list">
+<li>Dokuz bölüm tek koşu kimliğiyle: statik, kol_sag, kol_sol, kolkol, kafa_sabit, kafa_sag, kafa_sol, taban, omuz (en son). Hepsi rc 0. Omuz bölümü 3 sa 25 dk.</li>
+<li><code>birlestir</code>: tek koşu true, eksik yok, toplam çakışma 364, <b>eklem aralığında 0</b>; ev pozu (S1 0, S2 5) 0.</li>
+<li>Bellek: her bölümden önce ≥ 2 GB denetimi; omuz koşusunda en düşük boş bellek 4,51 GB; süreç ölümü yok.</li>
+<li><code>carpisma-sonuc.json</code> B'nin koşusundan önce ve sonra bayt bayt aynı; C'nin iki <code>kontrol</code> koşusu da 0.</li>
+</ul>
+
+<h2>Darbe emniyeti (kaba hesap, aralıkla)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Durum</th><th>Tepe kuvvet</th><th>Diş emniyeti</th></tr></thead>
+<tbody>
+<tr><td>Stall (30,4 kg·cm), statik, sürekli</td><td class="n">98 N</td><td class="n">3,7</td></tr>
+<tr><td>1,5 rad/s, yüksüz</td><td class="n">≈ 364 N</td><td class="n">≈ 2,2 (varsayıma göre 1,2–2,6; kök köşesi hesapta yok)</td></tr>
+<tr><td>1,5 rad/s, elde 500 g</td><td class="n">≈ 618 N</td><td class="n">≈ 1,3 (0,67–1,55)</td></tr>
+<tr><td>Kaçak servo, tam hız (8,06 rad/s), yüksüz</td><td class="n">≈ 1526 N</td><td class="n">0,54</td></tr>
+<tr><td>Güç kesik, S2 30°'den düşme, yüksüz</td><td class="n">≈ 554 N</td><td class="n">1,48 (0,69–1,78)</td></tr>
+</tbody>
+</table></div>
+<p class="note">Yöntem: tek serbestlik dereceli enerji, tepe tork = √(2·E·kθ); malzeme PETG-CF XY 59,8 MPa (<code>kol_analiz.py</code>), izin darbede 45,7 MPa. Aralıklar B'nin duyarlılığından: kol esnekliği ihmal edilir ya da diş rijitliği tam alınırsa sonuç bu aralığa yayılıyor. Dişin kök +x iç köşesi 90° keskin; 1,5…2 kat gerilme yığılmasıyla 1,5 rad/s yüksüz emniyet ≈ 1,1…1,5 olur. Servo geri sürme sürtünmesi ve rotor eylemsizliği ölçülmedi.</p>
+
+<div class="oneri"><b>Radyal yük bulgusu (B-1).</b> Durdurucu torku dişliden önce karşılıyor; "horn ve dişli yük almıyor" yalnız tork için doğru. Durdurucu S2 eksenine 30,3 mm, kolun vurma merkezi 263,6 mm uzakta olduğu için darbe kuvvetinin <b>≈ %88</b>'i S2 mafsalına radyal yük olarak gidiyor (≈ 0,885·F): 1,5 rad/s yüksüzde ≈ 320 N, 500 g ile ≈ 550 N. Bu yük üstte çatal plakası → M3 → alüminyum horn → 25T servo mili ile altta 625ZZ + M5 pim arasında paylaşılıyor; yarısından fazlası servo miline düşüyor. Ayrıca rotorun dişliler üzerinden yansıyan eylemsizliği (oran 373, J_rotor 0,3…1,0 g·cm² kabulü, ölçülmedi) 1,5 rad/s çarpmada dişliye stall torkunun 1,4…2,1 katını bindirir.</div>
+
+<h2>P6.1'e devredilenler (bu commit'te kaynak değişmedi)</h2>
+<ol class="list">
+<li>Diş kökünün +x iç köşesine ≥ 1,5 mm yarıçap ya da pah (<code>omuz_parcalar.py</code>; kiriş ile köşe arasında ≈ 4 mm yer var).</li>
+<li>Yorumlar: <code>omuz_parcalar.py:167</code> ve <code>arayuz.py:179-184</code> "horn/dişli yük almaz" → "tork almaz; darbede kuvvetin ~%88'i S2 mafsalında radyal; rotor eylemsizliği dişlide".</li>
+<li><code>arayuz.py:178</code> <code>yana_alt_bosluk_mm={0: 4.7, -2: 0.6, -3: 0.0}</code> eski "−3° kabuk" değeri 158 modeline (kaset 3,21°, tambur 3,65°, diş 4,30°); <code>eklem_sinirlari()</code> metni ve <code>kod/ortak/eklem_sinirlari.json</code> yeniden üretim (<code>kod/</code> sahibine bilgi).</li>
+<li>Omuz ve iskelet regresyon referanslarının yenilenmesi (karar sonrası, gerekçesi yazılarak).</li>
+</ol>
+<p class="note">Bunlar <code>dongu-158.md</code> P6.1 satırına yazıldı. Kaynak değişince <code>carpisma_kos.py kontrol</code> bütün bölümleri eskimiş gösterir; P6.1 zaten tam tarama yapacak.</p>
+
+<h2>Karar kuyruğu: K38–K41</h2>
+<div class="tbl"><table>
+<thead><tr><th>#</th><th>Karar</th><th>Önerilen varsayılan</th><th>Sahibi / bloke</th></tr></thead>
+<tbody>
+<tr><td class="kod">K38</td><td>S2 alt bölge hız sınırı ve kapanma sırası (KT-F2-1)</td><td>S2 &lt; 20°'de ölçüm gelene kadar ≤ 60°/s (yüklü ≤ 30°/s); güç kesilmeden önce iki kol S2 ≤ 15°</td><td><code>kod/</code>; CAD değişmez</td></tr>
+<tr><td class="kod">K39</td><td>Durdurucu güçlendirme (KT-F2-2)</td><td>Önce kök yarıçapı (P6.1) + DS3235 güç kesik düşme ölçümü; emniyet &lt; 1,5 çıkarsa alt sınır 8° + TPU ped ya da metal diş</td><td>P6.1, ölçüm</td></tr>
+<tr><td class="kod">K40</td><td>S2 sıfır kalibrasyonu ve sınır metni (KT-F2-3)</td><td>Horn kol dişe dayalıyken (4,3°) takılır; S2 5'te 0,3 mm sentil geçer, 0,4 geçmez; <code>yana_alt_bosluk_mm</code> ve <code>eklem_sinirlari.json</code> metni P6.1'de güncellenir</td><td>P6.1, P7.1</td></tr>
+<tr><td class="kod">K41</td><td>S1 yazılım aralığı: kod 0…160 ↔ CAD −45…135 (KT-F2-4 + F5)</td><td>Kod −45…135; omuz parçaları S1'i hiçbir açıda durdurmuyor, sınırı kablo U lopu belirliyor (≈ 140,2°)</td><td><code>kod/</code></td></tr>
+</tbody>
+</table></div>
+<p class="note">Metinler B'nin düzeltilmiş önerileriyle (<code>F2-kontrol.md</code> son bölüm). Karar kuyruğu şimdi <b>açık 36 / 41</b>. Hepsi Ahmet'in kararı; döngü varsayılanla ilerlemez.</p>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th><th>Dosya</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>ff1c2e9</code></td><td>Model + tarama: <code>arayuz.py</code>, <code>omuz_parcalar.py</code>, omuz/dirsek/taban/ana montaj çıktıları (JSON, FCStd, STEP, STL, BOM), <code>uygulama-ivme.json</code>, <code>carpisma-bolum/*.json</code> (9), <code>carpisma-sonuc.json</code>, omuz ve iskelet regresyon çıktıları, <code>regresyon.json</code>, <code>regresyon-son-kosu.json</code></td><td class="n">34</td></tr>
+<tr><td class="kod"><code>b7c7cb8</code></td><td>Belgeler: <code>F2-brief.md</code>, <code>F2-gunluk.md</code> (Açık kalanlar 10: B koşulu), <code>F2-kontrol.md</code>, iki görsel, <code>karar-kuyrugu.md</code> (K38–K41), <code>dongu-158.md</code> (orkestratörün F2 ve F8a satırları)</td><td class="n">7</td></tr>
+</tbody>
+</table></div>
+<p class="note">Push: <code>2879c86..b7c7cb8 lale-duzeltme → lale-duzeltme</code>. Açık <code>git add</code> listesi; <code>git status</code> B'nin 34 dosyalık listesiyle birebir, beklenmedik dosya yok. Eklenen satırlarda takma ad 0, başka öğrenci/danışman soyadı 0. Dışarıda: K23 (13 kabuk PNG + <code>montaj/yerlesim-kontrol.json</code>), <code>kvkk/</code>, <code>rapor/</code>, <code>tubitak-2209b/</code>, <code>tasarim/solidworks/</code>, <code>KY/kaynak/</code>, <code>lale_dongu.*</code>, izlenmeyen <code>raporlar/</code> dosyaları, <code>F5-pano-govde.txt</code>, <code>F5b-pano-govde.txt</code>. Bu rapor ayrı commit'te.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F2 · 09.11.2026 · Commit <code>ff1c2e9</code>, <code>b7c7cb8</code> (<code>lale-duzeltme</code>) · Çakışma <code>kontrol</code> 0, tek koşu 20261109-033441 · Regresyon <code>regresyon.py --yazma</code>: GEÇER, 10/10 aynı · Kaynaklar: <code>F2-brief.md</code>, <code>F2-gunluk.md</code>, <code>F2-kontrol.md</code>, <code>karar-kuyrugu.md</code> K38–K41.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
