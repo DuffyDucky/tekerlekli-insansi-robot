@@ -59,8 +59,12 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K44 | `eklem_sinirlari.json`'un `kod/`'a yazılması | **açık** (F6a) | a: Ahmet onayıyla `kod/`'a yazılır + Efe'ye pano bilgisi | `kod/ortak/eklem_sinirlari.json` güncelliği, K2/K3 regresyon betikleri, P4.5 (`kod/`) |
 | K45 | S2 darbe hız sınırı (K38'i sayısallaştırır) | **açık** (F6a) | Kayıtta yok (a / b / c) | K38, `kod/` hareket planlayıcısı, K39 ölçümü |
 | K46 | Destek azaltma geometri önerileri (VESA, omuz yuvası, kol çatalı, omuz göbeği, göğüs bandı) | **açık** (F6b) | Şimdilik değişiklik yok; Parti 0 kuponundan sonra karar | Parti 1–2 dilimleme, K42 payı, tam tarama (geometri değişirse) |
+| K47 | Rehber kontrol görüntüleri (`planlama/rehber/goruntu/adim-*.png`) depoda nasıl tutulsun | **açık** (F9d) | b: yalnız sürüm commit'inde | Rehber turlarının `git add` listesi, depo büyümesi |
+| K48 | `tasarim/cad/lale158-model.js` artık dosyası | **açık** (F9d) | a: sil (Ahmet onayıyla) | `git status` temizliği (P0.1) |
+| K49 | Kalıcı izlenmeyenler ve `.gitignore` | **açık** (F9d) | 5 girdi `.gitignore`, 5 dosya commit, kalanı bağlı kararını bekler | P0.1 (git status temiz); K18–K24 ile birlikte |
+| K50 | Şarj girişi konnektörü: sigortadan sonra gerilimli erkek pimler | **açık** (F7d) | b: XT60E-F (dişi) panel; olmazsa a | İlk şarj, rehber F5 notu, `maliyet.json:111` |
 
-**Açık: 41** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 46 madde.
+**Açık: 45** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 50 madde.
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
@@ -69,6 +73,8 @@ P6.1 + P4.5 (F6a, 09.11.2026) karar taslakları KT-F6a-1 → K44, KT-F6a-2 → K
 KT-F6a-3…5 karar değil, iş olarak kapandı (sondaki bölüm).
 P6.2 (F6b, 09.11.2026) karar taslakları KT-F6b-1 → K42'ye F6b notu, KT-F6b-3 → K46 (`planlama/d158/F6b-gunluk.md` §5–6, B düzeltmesiyle
 `F6b-kontrol.md` O-1). KT-F6b-2 karar değil, iş (sondaki bölüm).
+P9.4 (F9d, 09.11.2026) karar taslakları KT-F9d-1…3 → K47–K49 (`planlama/d158/F9d-gunluk.md` §4, D-2 düzeltmesiyle; B `F9d-kontrol.md` madde 6).
+P7.4 (F7d, 09.11.2026) karar taslağı KT-F7d-1 → K50, B'nin son metniyle (`planlama/d158/F7d-kontrol.md` "KT-F7d-1 (son hâl)").
 
 ---
 
@@ -740,6 +746,101 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
   baskı yönü; geometri değişmez.
 - **Önerilen varsayılan:** şimdilik değişiklik yok; Parti 0 kuponundan sonra karar. Yalnız öneri.
 - **Bloke:** Parti 1 (göğüs bantları, VESA) ve Parti 2 (omuz PETG-CF) dilimleme ayarı; K42 payı.
+- **Durum:** açık.
+
+<!-- K47–K49: P9.4 herkese açık depo temizliği (F9d, 09.11.2026), kaynak `planlama/d158/F9d-gunluk.md` §4 KT-F9d-1…3 (KT-F9d-1 etiketi
+D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F9d-kontrol.md` madde 6). -->
+
+## K47 · Rehber kontrol görüntüleri depoda nasıl tutulsun (KT-F9d-1, D-9)
+- **Soru:** `planlama/rehber/goruntu/adim-*.png` her tam yeniden üretimde yeniden yazılıyor. Bunlar `.gitignore`'a mı alınsın, yalnız sürüm
+  commit'inde mi girsin, Git LFS'e mi taşınsın?
+- **Sayılar** (`F9d-gunluk.md` §4; B aynı):
+  - `git count-objects -vH`: gevşek 2.975 nesne 439,65 MiB, paket 267 nesne 474,60 KiB; `.git` 461.680.698 B.
+  - Çalışma ağacı (F9d ölçümü): `planlama/rehber/goruntu/` 57 PNG 7.101.641 B, bunun `adim-*.png` 50 dosyası 6.482.146 B; `rehber/goruntu/` 50 PNG
+    3.261.137 B; PDF 4.008.893 B.
+  - Geçmişte yalnız `adim-*.png`: 111 blob, ham 14.845.781 B, diskte 14.489.931 B (telefon PNG'leriyle 120 / 15.665.471 / 15.287.573 B).
+  - Üç rehber üretim commit'i (`887bcfe`, `649885f`, `e448eab`) birlikte 25,6 MB ekledi (`rehber/veri` hariç); tam görsel değişiminde ≈ 6,5 MB
+    adım PNG'si. Görüntüler belirlenimci: görüntüsü değişmeyen adım 0 B ekliyor (`e448eab`'de 50 adımdan 3'ü değişti).
+  - 14 izlenen dosya `goruntu/adim-` yollarına bağlantı veriyor (`kontrol.json` `sonuc[].goruntu`, F7a/F7b/F7c belgeleri, `R-gunluk.md`, `rehber_uret.py`).
+- **Seçenekler:**
+  a) `.gitignore` + izlemeden çıkarma (`git rm --cached`, kayıt ajanı): sonraki üretimler 0 B; geçmişteki 14,5 MB kalır; görüntüye bağlanan en çok
+     14 dosyanın bağlantısı GitHub'da kırılır, rehber kanıtı yalnız yerelde kalır.
+  b) Yalnız sürüm commit'i: PNG'ler yalnız paket kayıt commit'inde (ya da Ahmet'in "sürüm" dediği commit'te) girer, ara düzeltme turlarında `git add`
+     listesine alınmaz. Araç ve `.gitignore` değişmez; ara turlarda `git status` kirli kalır (K23'e benzer).
+  c) Git LFS (`git-lfs/3.7.1` kurulu): geçmişe PNG başına ~130 B işaretçi, LFS deposuna yine ≈ 6,5 MB / tam üretim; mevcut 14,5 MB geçmişte kalır;
+     ekipte herkes `git lfs install` yapmalı; GitHub Pages LFS dosyalarını sunmaz (yalnız `planlama/rehber/goruntu/` için uygun); ücretsiz kota
+     doğrulanmadı.
+- **Sayısal etki:** a: sonraki her üretim 0 B, 14 bağlantı kırılır. b: gün başına tek commit, tam üretimde ≈ 6,5 MB + değişen PDF; bugünkü
+  akışta 3 commit'le 25,6 MB eklenmişti. c: commit başına ~6,5 kB işaretçi, LFS'de ≈ 6,5 MB.
+- **Önerilen varsayılan:** b. Kanıt bağlantıları korunur, araç değişmez; belirlenimci üretim yüzünden artış yalnız görsel değiştiğinde.
+  Yalnız öneri. (Karar değil, not: gevşek nesneler yerel bakım işi, `git gc` GitHub'daki boyu değiştirmez.)
+- **Bloke:** rehber turlarının `git add` listesi (ara turda PNG girsin mi), depo büyümesi.
+- **Durum:** açık.
+
+## K48 · `tasarim/cad/lale158-model.js` artık dosyası (KT-F9d-2)
+- **Soru:** İzlenmeyen `tasarim/cad/lale158-model.js` ne olsun?
+- **Bulgular** (`F9d-gunluk.md` §4; B `F9d-kontrol.md` madde 6):
+  - 3.495.365 B, 09.11 17:30; başlıkta "Ureten: tasarim/cad/demo_uret.py" (F9b ilk turu). KT-F9b-2 = b ile sayfa göreli bağlantıya geçti; betik
+    artık üretmiyor (`demo_uret.py:20`).
+  - Demo kullanmıyor: sayfada bu adla 0 geçiş; `F9b-dogrula.py:522-523` sayfa bu dosyaya bağlanırsa hata veriyor.
+  - Git geçmişinde 0 commit. İçindeki GLB sha256 (`760bf1ff5955…`) bugünkü `rehber/veri/robot.glb` ile aynı: yinelenen kopya.
+  - `rapor/` altındaki aynı adlı dosya (K20) ayrı bir dosya; bu madde onu kapsamaz.
+- **Seçenekler:**
+  a) Sil: disk −3,5 MB, `git status` −1 satır, depo etkisi 0; içerik `rehber/veri/`'de, yeniden üretmeye gerek yok.
+  b) `.gitignore`'a ekle: `git status` −1 satır, `.gitignore` +1 satır, 3,5 MB OneDrive'da kalır.
+  c) Bırak: 1 `??` satırı kalır; açık listesiz bir `git add` 3,5 MB'ı herkese açık depoya sokabilir.
+- **Önerilen varsayılan:** a. Silme yalnız Ahmet onayıyla (kayıt ajanları silmez). Yalnız öneri.
+- **Bloke:** `git status` temizliği (P0.1).
+- **Durum:** açık.
+
+## K49 · Kalıcı izlenmeyenler ve `.gitignore` (KT-F9d-3)
+- **Soru:** `git status`'ta kalıcı duran izlenmeyen girdiler commit mi edilsin, `.gitignore`'a mı alınsın, bağlı kararı mı beklesin?
+- **Girdiler** (`F9d-gunluk.md` §4 tablosu, `git status --porcelain` 20:23; boyutlar B'nin tekrarıyla aynı):
+  - `.gitignore` önerilen 5 girdi: `kvkk/` (16 dosya, 3.142.451 B; K19), `rapor/` (20 dosya, 11.087.000 B; K20), `tubitak-2209b/` (267 dosya,
+    110.862.910 B; K18), `tasarim/freecad/lale158/kafa-yerlesim/kaynak/` (5 dosya, 3.047.767 B; K21), `planlama/d158/FREECAD-KILIT.txt`
+    (6 B, koşu kilidi; izlenirse her FreeCAD koşusu fark üretir, silinmez).
+  - Commit önerilen 5 dosya: `raporlar/kaynaklar/06-onayli-satici-A.md`, `-B.md`, `07-gogus-ekrani-ve-5v.md` (40.862 B; izlenen `arayuz.py:347,531`
+    ve `elektrik.md:16` bunlara atıf yapıyor) ve `planlama/d158/F5-pano-govde.txt`, `F5b-pano-govde.txt` (1.862 + 2.310 B; öncülü
+    `F3a-pano-govde.txt` commit'li). Beşinde de takma ad 0, yerel yol 0 (B).
+  - Bekle: `tasarim/solidworks/` (28.676.311 B; K22: betikler commit, STEP'ler dışla, önce bir dosyada takma ad temizliği),
+    `tasarim/freecad/montaj/lale_dongu.FCMacro`, `lale_dongu_ac.bat` (K22 ile birlikte), `raporlar/11-6-inc-gogus-ekrani-sigma.md` (K24),
+    K23 dosyaları (13 kabuk PNG, `montaj/yerlesim-kontrol.json`). `tasarim/cad/lale158-model.js` K48'de.
+- **Seçenekler** (girdi başına): commit / `.gitignore` / bekle. Önerilen küme yukarıdaki gruplama.
+- **Sayısal etki:** `.gitignore` 5 girdi: `git status` −5 satır, ≈ 128,1 MB izlenmeyen veri dışarıda kalır; `.gitignore` +5 satır. Commit 5 dosya:
+  ≈ 45 kB, sarkan 3 atıf kapanır. Bekleyenler bağlı kararlarla (K22, K23, K24) kapanır.
+- **Önerilen varsayılan:** yukarıdaki gruplama; `.gitignore` değişikliği ve commit Ahmet kararından sonra kayıt ajanınca. Yalnız öneri.
+- **Bloke:** P0.1 (`git status` temiz); K18–K24 ile birlikte uygulanır.
+- **Durum:** açık.
+
+<!-- K50: P7.4 rehberde son düşükler (F7d, 09.11.2026), kaynak `planlama/d158/F7d-kontrol.md` "KT-F7d-1 (son hâl)" (B), O-2 bulgusu ve
+`planlama/d158/F7d-gunluk.md` "Düzeltme turu 1". -->
+
+## K50 · Şarj girişi konnektörü: sigortadan sonra gerilimli erkek pimler (KT-F7d-1)
+- **Soru:** Şarj girişi kolu ana anahtar öncesinde (`planlama/adim3/elektrik.md:372`). Şarj sigortası takılınca etekteki XT60E-M panel **erkek**
+  konnektörün pimleri akü bağlı olduğu sürece gerilimli kalıyor. Konnektör ve sigorta düzeni nasıl olsun?
+- **Durum bilgisi** (B `F7d-kontrol.md`):
+  - `planlama/maliyet.json:111`: XT60E-M panel erkek, 61,20 TL, Motorobit, 09.11 doğrulandı.
+  - Şarj akü yerindeyken, akü XT60 bağlıyken yapılıyor (`tasarim/freecad/taban/rapor.html` "Servis erişimi"). Ana anahtar da mantar da bu kolu kesmiyor.
+  - Rehber şarj sigortasını hiçbir adımda taktırmıyor (F1 aşama 1 ve F5 aşama 2'de "takılı değil"); rehberin kapsadığı sürede pimler enerjisiz.
+    F5 notunda geçici uyarı var ("Pimlere metal değdirme"; karar verilene kadar geçerli).
+  - Kolun akü XT60'ının robot tarafından alınması rehberin önerisi, kaynakta yok.
+- **Seçenekler:**
+  a) XT60E-M kalır; şarj sigortası yalnız şarj sırasında takılır, bitince çıkarılır. Pimler yalnız şarjda gerilimli; her şarjda sigorta yuvasına
+     erişim gerekir (yuvanın yeri modelde yok, H1 / H2'den erişim doğrulanmadı); unutulursa d'ye döner.
+  b) XT60E-F (dişi) panel konnektöre geçilir: gerilimli taraf gömük soket olur. Şarj kablosunun ucu erkek XT60 olur (`maliyet.json:93`'te XT60H-M × 5
+     var). Fiyat ve stok doğrulanmadı; yeni bakım gerekir. Panel deliği yeni parçayla ölçülür.
+  c) Kol ana anahtar sonrasına alınır: ana anahtar kapalıyken pimler enerjisiz, ama şarj ancak ana anahtar açıkken olur (F4 / F5 dalları, ESP32, akü
+     ADC bölücüsü, K11 a'da göğüs dalı da enerjilenir; ana anahtar şarj akımını taşır). `elektrik.md:372` ve akü raporu önerisiyle çelişir; E3 / E9
+     yeniden okunmalı.
+  d) Bugünkü gibi: XT60E-M, sigorta kalıcı takılı; konnektöre kapak ve uyarı etiketi. Kapak `maliyet.json`'a fiyatsız aday olarak girer.
+- **Sayısal etki:** a: parça ve maliyet aynı (61,20 TL). b: `maliyet.json:111` satırı değişir, fiyat farkı doğrulanmadı; rehberde K1, F1 ve F5
+  metni değişir. c: parça aynı; `elektrik.md` E3 / E9 ve rehber metni değişir. d: parça aynı, kapak fiyatsız; 12,8 V'ta çarpma tehlikesi düşük,
+  açık pimler arasında kısa devre 10 A sigorta atana kadar akım çeker (genel bilgi); rehberdeki geçici uyarı kalıcı olur.
+- **Önerilen varsayılan:** b, olmazsa a (B'nin görüşü). Gerilimli tarafı dokunmaya kapalı yapan tek seçenek b; a her seferinde hatırlamaya dayanır;
+  c güvenlik düzenini şarj için değiştirir; d riski kabul eder. Yalnız öneri; karar Ahmet'te (tasarım).
+- **Not:** Rehberin F5 notundaki "kuyruğa girmedi" ifadesi bu maddeyle eskidi (`F7d-kontrol.md` D-9); sonraki rehber turunda bu maddeye bağlanır.
+  Karar ne olursa olsun K1 kol tarafı ve F5 pim uyarısı metni rehberde kalır.
+- **Bloke:** ilk şarj; rehber F5 notu (ve b / c'de K1, F1 metni); `maliyet.json:111`.
 - **Durum:** açık.
 
 ---
