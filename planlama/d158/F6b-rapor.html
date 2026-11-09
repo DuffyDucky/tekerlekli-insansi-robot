@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F6b Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+h3{font-size:1rem;margin:20px 0 8px}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F6b: tek baskı analizi, tüm parçalar (P6.2)</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 09.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>F6b-brief.md</code>, <code>F6b-gunluk.md</code> (§0–§9, düzeltme turu 1), <code>F6b-kontrol.md</code> (yeniden kontrol: GEÇER), <code>tasarim/freecad/lale158/baski-analiz.json</code>, <code>planlama/y2/Y2b-baski.json</code>, <code>karar-kuyrugu.md</code> K42 notu ve K46</p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">Tek analiz</div><div class="v">62 / 72</div><div class="d">Tür / adet; her parça bir kez; liste, Y2b ve BOM ile aynı</div></div>
+  <div class="card"><div class="k">Filament (destek dahil)</div><div class="v">7,67–7,73 kg</div><div class="d">7.668,9–7.726,7 g; destek 124,5 g; 159,90–161,08 sa</div></div>
+  <div class="card"><div class="k">Üst arka kapak</div><div class="v"><span class="tag ok">desteksiz</span></div><div class="d">19.667,7 mm² kesit hatasıydı; gerçek fark 5,01 mm²</div></div>
+  <div class="card"><div class="k">Denetimler</div><div class="v"><span class="tag ok">0 / 0 / 0</span></div><div class="d"><code>kontrol</code>, regresyon <code>--yazma</code> (10/10 aynı), <code>F4c-dogrula</code></div></div>
+  <div class="card"><div class="k">Karar kuyruğu</div><div class="v">41 / 46</div><div class="d">Açık / toplam; yeni K46, K42'ye F6b notu</div></div>
+</div>
+
+<p class="note">C'nin commit öncesi koşuları (<code>PYTHONIOENCODING=utf-8</code>, FreeCAD açılmadı, kilit "boş", FreeCAD süreci yok): <code>carpisma_kos.py kontrol</code> çıkış 0 (commit öncesi ve 2. commit'ten sonra); <code>regresyon.py --yazma</code> çıkış 0 (16:58:34); <code>F4c-dogrula.py</code> çıkış 0 (commit öncesi ve 2. commit'ten sonra). 13 betik / JSON / liste dosyasından 10'unun sha1'i B'nin §9 tablosuyla aynı; <code>F6b-brief.md</code> 16:57'de orkestratörün D-9 düzeltmesiyle değişti (başlatıcı yolu <code>%USERPROFILE%</code> ile kısaltıldı). Takma ad araması, ad komut satırına ve dosyalara yazılmadan, çalışma anında türetilerek, büyük/küçük harf duyarsız alt dizge olarak yapıldı.</p>
+
+<h2>Kabul ölçütleri (C'nin ölçümleri)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Ölçüt</th><th>Ölçülen</th><th>Kaynak</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td>Tek JSON'da her baskı parçası bir kez</td><td class="n">62 tür / 72 adet; liste 62 satır, BOM 62 kalem / 72 adet; çift 0</td><td><code>baski-analiz.json</code> <code>toplam.adet</code>; <code>F4c-dogrula</code> 1, 2, 6</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Toplam g ve süre</td><td class="n">7.668,9–7.726,7 g · 159,90–161,08 sa</td><td><code>toplam.toplam_g</code>, <code>toplam.sure_sa</code></td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>PETG / PETG-CF</td><td class="n">PETG 6.474,9 g · PETG-CF 1.194,0–1.251,8 g (12 tür / 18 adet)</td><td><code>Y2b-baski.json</code> <code>toplam.petg_g</code>, <code>cf_g</code> (malzeme <code>Y2b-baski.py</code> <code>CF</code> kümesinden)</td><td><span class="tag ok">GEÇER</span> <span class="tag info">not</span></td></tr>
+<tr><td>Destek filamenti</td><td class="n">124,5 g (PETG 32,6 · PETG-CF 91,9)</td><td><code>toplam.destek_g</code>; satır toplamı aynı</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>X2D'ye sığmayan</td><td class="n">0 (246 × 246 × 250; en büyük ölçü 235,0 mm)</td><td><code>toplam.x2d_sigmayan</code> = []</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Destekli parça</td><td class="n">9 tür / 13 adet (önce 10 / 14)</td><td><code>toplam.destekli_tur</code>, <code>destekli_adet</code></td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>FCStd hacmi = analiz hacmi</td><td class="n">eşit olmayan 0</td><td><code>toplam.fcstd_hacim_esit_degil</code> = []</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Kapak kök nedeni kanıtlı</td><td>2,27° eğim, flanş üstü z 1,4988, teğet kesit, ters normal (aşağıda)</td><td><code>kapak_tani</code>; B'nin bağımsız FreeCAD ölçümü</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>baski-listesi.md</code> = JSON</td><td class="n">72 parça, 7,67–7,73 kg, 160–161 sa; 13 adet destekli (9 tür); 72/72 X2D'ye sığar; destek 124 g</td><td><code>baski-listesi.md</code> özet satırları; <code>F4c-dogrula</code> 3, 4a, 4b, 5a, 5b</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>carpisma_kos.py kontrol</code></td><td class="n">çıkış 0, "izlenen 17 dosyanin ozetleri kayitla ayni"</td><td>tarama eskimedi</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>regresyon.py --yazma</code></td><td class="n">çıkış 0, 10/10 "aynı"</td><td>tablo aşağıda</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td><code>F4c-dogrula.py</code></td><td class="n">çıkış 0, "SONUC: GECTI" (1, 2, 6, 3, 4a, 4b, 5a, 5b)</td><td>depoda</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Takma ad</td><td>commit'e giren 15 dosyada ve staged içerikte 0. <code>git grep -il</code> depo genelinde yalnız kapsam dışı 3 dosya: <code>CLAUDE.md</code> (K25), <code>kod/ortak/eklem_sinirlari.json</code> (K44), <code>tasarim/freecad/index.html</code> (K26)</td><td>çalışma anında türetilen desen</td><td><span class="tag ok">GEÇER</span></td></tr>
+<tr><td>Yerel kullanıcı klasörü yolu</td><td class="n">commit'e giren 15 dosyada 0</td><td><code>grep</code> + staged eklenen satırlar</td><td><span class="tag ok">GEÇER</span></td></tr>
+</tbody>
+</table></div>
+<p class="note">Not (C ölçümü, engel değil): <code>baski-analiz.json</code> <code>parcalar[].malzeme</code> 6 türde (kafa servo yuvası, rulman yuvası, boyun mili, eğme çatalı; dirsek çatalı, bilek flanşı; 8 adet, 458,4 g) "PETG" diyor. Etiket modül <code>*_parcalar.py</code> <code>malzeme</code> alanından geliyor. JSON tek başına toplanırsa CF 735,6–793,4 g çıkar. Zincir PETG-CF ayrımını <code>Y2b-baski.py</code> <code>CF</code> kümesinden alıyor; liste ve toplamlar doğru. Karar kuyruğunda "iş" olarak kaydedildi.</p>
+
+<h3>Regresyon değerleri (<code>regresyon.py --yazma</code>, 16:58)</h3>
+<div class="tbl"><table>
+<thead><tr><th>Değer</th><th>Taban</th><th>Şimdi</th><th>Eşik</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td><code>boy_mm</code></td><td class="n">1580</td><td class="n">1580</td><td class="n">1580 ± 0,05</td><td>aynı</td></tr>
+<tr><td><code>cakisma_kafa_ici</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>cakisma_kabuk_ici</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>cakisma_kabuk_x_iskelet</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>cakisma_ev_pozu</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>rampa_yuksuz</code></td><td class="n">1,519</td><td class="n">1,519</td><td class="n">≥ 1,5</td><td>aynı</td></tr>
+<tr><td><code>tilt_payi</code></td><td class="n">3,64</td><td class="n">3,64</td><td class="n">≥ 3</td><td>aynı</td></tr>
+<tr><td><code>pan_payi</code></td><td class="n">2,21</td><td class="n">2,21</td><td class="n">≥ 2</td><td>aynı</td></tr>
+<tr><td><code>mik_hoparlor_mm</code></td><td class="n">574,3</td><td class="n">574,3</td><td class="n">≥ 400</td><td>aynı</td></tr>
+<tr><td><code>sy8205_x_usb_mm3</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+</tbody>
+</table></div>
+<p class="note">Sonuç: "GEÇER (hepsi okundu, kötüleşen yok)". Taban 14:30:50 (F6a). F6b geometriye dokunmadığı için değerlerin aynı kalması bekleniyordu.</p>
+
+<h2>Kapak uyuşmazlığının kök nedeni (19.667,7 ↔ 5,01 mm²)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Adım</th><th>Ölçülen</th><th>Kaynak</th></tr></thead>
+<tbody>
+<tr><td>Aynı parça, aynı yön, aynı eşik</td><td>İki sonuç da "Ust arka servis kapagi", dış yüzü tablada, 45° / 1 mm katman. Fark yalnız kesit düzleminin yeri: <code>kabuk_montaj</code> z = zmin + 0,5 + k, <code>kafa_lib</code> (KY) z = zmin + 0,47 + k</td><td><code>kapak_tani.kabuk_montaj_yontemi</code>, <code>kafa_lib_yontemi</code></td></tr>
+<tr><td>Eğim</td><td class="n">kenar yüzleri n_z ±0,0397 → kapak baskı yönüne <b>2,27°</b> eğik (B: 2,2753°)</td><td><code>kapak_tani.egik_duz_yuzler</code></td></tr>
+<tr><td>Yatay yüzler (baskı çerçevesi)</td><td class="n">tabla z 0 (25.059,7 mm²) · flanş üstü <b>z 1,4988</b> (5.392,0 mm²) = 1,5 · cos 2,27° · plaka üstü z 2,9976 (17.891,3 mm²)</td><td><code>kapak_tani.yatay_yuzler</code></td></tr>
+<tr><td>Teğet kesit</td><td><code>kabuk_montaj</code>'ın z 1,5 kesiti flanş üst yüzüne 1,2 µm yakın düşüyor. Çıkan yüz ters normalli (n_z −1,0; z 1,498811, dz 0,00119, tolerans 0,00119), tel kapalı</td><td><code>boolean_deneme["1.5-2.5"].alt</code></td></tr>
+<tr><td>Sahte destek</td><td class="n">z 2,5 katmanı (n_z +1) bundan çıkarılınca <code>common</code> 0, <code>cut</code> <b>19.667,673 mm²</b>: katmanın tamamı "desteksiz" = <code>kabuk-analiz.json</code> <code>baski[13].destek_sorun</code></td><td><code>boolean_deneme</code>, <code>kabuk_montaj_yontemi.katman[2]</code></td></tr>
+<tr><td>Gerçek fark</td><td class="n">kaydırılmış kesitlerde (1,6 → 2,6, 1,9 → 2,9) <code>cut</code> <b>5,01 mm²</b>, <code>common</code> 19.662,66. Eğik kenarlardan gelen şerit; 1 mm ofset (45° payı) karşılıyor: destek 0. B: dört çiftte 5,006 mm²</td><td><code>boolean_deneme</code>; <code>F6b-kontrol.md</code> madde 2</td></tr>
+<tr><td>Tek analiz</td><td class="n">kapakta destek 0, 85,0 → 85,1 g. B'nin iki bağımsız yöntemi (BRep, kolon) de 0</td><td><code>baski-analiz.json</code> <code>parcalar[17]</code></td></tr>
+</tbody>
+</table></div>
+<p class="note">P1.5 kesit kaydırma kalıbı bu hatayı yakalamazdı: teller kapalı, kalıp yalnız açık telde kaydırıyor. Yeni yöntemde kesit ve 2B boolean yok (mesh'e dikey ışın), bu yüzden "yüze teğet kesit" hatası oluşmuyor. Düz arka servis kapağıyla yapılan karşılaştırma kontrol yerine geçmiyor (BoundBox zmin'e göre kesildi, bir kenarı 0,45 mm toleranslı; D-2); kök neden ona dayanmıyor.</p>
+
+<h2>Toplamlar: önce / sonra (<code>4d1898a</code> → şimdi)</h2>
+<div class="tbl"><table>
+<thead><tr><th></th><th>Önce (F6a, <code>4d1898a</code>)</th><th>Sonra (F6b, <code>0f8e1ad</code>)</th><th>Fark</th></tr></thead>
+<tbody>
+<tr><td>Adet</td><td class="n">72</td><td class="n">72</td><td class="n">0</td></tr>
+<tr><td>Filament</td><td class="n">7.604,8–7.662,4 g</td><td class="n">7.668,9–7.726,7 g</td><td class="n">+64,1 / +64,3 g</td></tr>
+<tr><td>PETG</td><td class="n">6.446,6 g</td><td class="n">6.474,9 g</td><td class="n">+28,3 g</td></tr>
+<tr><td>PETG-CF</td><td class="n">1.158,2–1.215,8 g</td><td class="n">1.194,0–1.251,8 g</td><td class="n">+35,8 / +36,0 g</td></tr>
+<tr><td>Destek (dahil)</td><td class="n">yalnız omuz, 58,0 g</td><td class="n">124,5 g</td><td class="n">+66,5 g</td></tr>
+<tr><td>Süre</td><td class="n">158,22–159,42 sa</td><td class="n">159,90–161,08 sa</td><td class="n">+1,68 / +1,66 sa</td></tr>
+<tr><td>Destekli</td><td class="n">10 tür / 14 adet</td><td class="n">9 tür / 13 adet</td><td class="n">−1 (üst arka kapak)</td></tr>
+<tr><td>Parti 1</td><td class="n">27 · 3.307,8–3.311,6 g · 68,94–69,02 sa</td><td class="n">27 · 3.368,9–3.372,9 g · 70,24–70,32 sa</td><td class="n">+61,1 g (göğüs bantları, VESA)</td></tr>
+<tr><td>Parti 2</td><td class="n">25 · 1.330,8–1.384,6 g</td><td class="n">25 · 1.334,2–1.388,0 g</td><td class="n">+3,4 g</td></tr>
+<tr><td>Parti 3</td><td class="n">9 · 754,0 g</td><td class="n">9 · 755,3 g</td><td class="n">+1,3 g</td></tr>
+<tr><td>Parti 4</td><td class="n">11 · 2.212,2 g</td><td class="n">11 · 2.210,5 g</td><td class="n">−1,7 g (yuvarlama)</td></tr>
+<tr><td>PETG-CF + Parti 0 kuponu</td><td class="n">1,33–1,52 kg</td><td class="n">1.369,8–1.553,2 g (1,37–1,55 kg)</td><td class="n">1,5 kg payı +166 / −17 → <b>+130 / −53 g</b></td></tr>
+</tbody>
+</table></div>
+<p class="note">C'nin hesabı: <code>git show 4d1898a:planlama/y2/Y2b-baski.json</code> ↔ <code>planlama/y2/Y2b-baski.json</code> <code>toplam</code>; kupon <code>F4c-partiler.json</code> <code>partiler.0.toplam.cf_g</code> 175,8–301,4 g. +64,1 g'ın ayrışımı (B): +66,5 g net destek (124,5 − eski omuz desteği 58,0) − 2,4 g yuvarlama (kabuk satırları eskiden tam sayıydı). Listede yuvarlanmış toplam: <b>72 parça, 7,67–7,73 kg, 160–161 sa</b> (önce 7,60–7,66 kg, 158–159 sa).</p>
+
+<h2>En çok destekli parçalar (tasarım yönü)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Parça</th><th>Malzeme</th><th>Adet</th><th>Destek alanı</th><th>Destek hacmi</th><th>Destek g / adet</th><th>Oran</th><th>Yer</th></tr></thead>
+<tbody>
+<tr><td>Göğüs ekranı VESA taşıyıcı</td><td>PETG-CF</td><td class="n">1</td><td class="n">3.806,5 mm²</td><td class="n">166,4 cm³</td><td class="n"><b>31,7</b></td><td class="n">%21,9</td><td>arka flanş altı z 32–58 (15° eğik tek yüz)</td></tr>
+<tr><td>Kol çatalı</td><td>PETG-CF</td><td class="n">2</td><td class="n">2.044,0 mm²</td><td class="n">66,7 cm³</td><td class="n">12,7</td><td class="n">%12,7</td><td>horn kulağı tavanı z 58,5</td></tr>
+<tr><td>Omuz yuvası</td><td>PETG-CF</td><td class="n">2</td><td class="n">2.262,2 mm²</td><td class="n">60,4 cm³</td><td class="n">11,5</td><td class="n">%14,1</td><td>manşon içi tavanı z 45 + S1 penceresi</td></tr>
+<tr><td>Göğüs bandı sağ</td><td>PETG</td><td class="n">1</td><td class="n">1.067,3 mm²</td><td class="n">81,8 cm³</td><td class="n">15,6</td><td class="n">%6,7</td><td>cep üst kenarı (köprü 160 mm) + z 12–15 alt kenar</td></tr>
+<tr><td>Göğüs bandı sol</td><td>PETG</td><td class="n">1</td><td class="n">356,8 mm²</td><td class="n">73,8 cm³</td><td class="n">14,1</td><td class="n">%6,1</td><td>cep üst kenarı (köprü 148 mm)</td></tr>
+<tr><td>Omuz göbeği</td><td>PETG-CF</td><td class="n">2</td><td class="n">2.434,8 mm²</td><td class="n">31,1 cm³</td><td class="n">5,9</td><td class="n">%9,3</td><td>flanş altı z 13 + diş</td></tr>
+<tr><td>Arka kafa kabuğu sağ</td><td>PETG</td><td class="n">1</td><td class="n">3.056,0 mm²</td><td class="n">4,6 cm³</td><td class="n">0,9</td><td class="n">%0,4</td><td>dikiş dili (16 mm şerit)</td></tr>
+<tr><td>S1 kablo tamburu</td><td>PETG</td><td class="n">2</td><td class="n">860,0 mm²</td><td class="n">4,1 cm³</td><td class="n">0,8</td><td class="n">%13,8</td><td>+x dudak altı</td></tr>
+<tr><td>Yüz kabuğu (ön) sağ</td><td>PETG</td><td class="n">1</td><td class="n">1.228,2 mm²</td><td class="n">1,9 cm³</td><td class="n">0,4</td><td class="n">%0,4</td><td>dikiş dili</td></tr>
+</tbody>
+</table></div>
+<p class="note">Kaynak <code>baski-analiz.json</code> <code>parcalar[]</code> (<code>destek_alan_mm2</code>, <code>destek_hacim_cm3</code>, <code>destek_g</code>, <code>destek_orani</code>); sıra adet × destek g'ye göre. Büyük fark (> %10 ya da var/yok değişimi) yalnız iki satır: üst arka kapak (destekli → desteksiz) ve VESA (+%28,1; tamamı artık sayılan 31,7 g destek). B'nin BRep ölçümü VESA'da 3.809 mm² / 166,7 cm³ verdi.</p>
+
+<h2>Yöntem ve sınırları</h2>
+<div class="tbl"><table>
+<thead><tr><th>Konu</th><th>Uygulama</th><th>Sınır / belirsizlik</th></tr></thead>
+<tbody>
+<tr><td>Çıkıntı eşiği</td><td>45° (1° mesh toleransıyla: yataydan 44°'den az eğimli alt yüzey destek ister); tek sabit <code>ACI</code></td><td>Cura gibi tutucu; Bambu Studio varsayılanı 30°. B'nin ölçümünde 30° eşikte toplam destek <b>≈ −1,1 g</b> (124,5 → ≈ 123,4; %1), çünkü destekli yüzler 0° ya da 15° eğimli</td></tr>
+<tr><td>Destek kolonu</td><td>0,5 mm ızgarada dikey ışın; alt yüzeyin altındaki hava kolonu tablaya ya da alttaki malzemeye kadar. Kesit ve 2B boolean yok</td><td>Eşiğe yakın ince şeritlerde sonuç ızgara fazına duyarlı: göğüs bantlarında gerçek değer ≈ +%15 (≈ +5,5 g PETG; D-1). Öteki parçalarda ≤ %1</td></tr>
+<tr><td>Köprü / şerit</td><td>XY boyu ≤ 15 mm bölge ve ≤ 2 mm şerit serbest (eski dört yöntemle aynı sayılar)</td><td>Sağ göğüs bandının z 12 yüzü destekli, soldaki serbest: gerçek genişlik farkı (≈ 0,6–1 g)</td></tr>
+<tr><td>Destek kütlesi</td><td>destek hacmi × <b>0,15</b> × 1,27 g/cm³ (<code>omuz_baski</code> ile aynı); süreye hacim × 0,15 / 10 mm³/s</td><td>Tahmin; ağaç destek daha az, ızgara daha çok verir. ±%50 alınmalı. <b>Dilimleyici doğrulaması esas</b>: Parti 0'dan sonra STL ile parça başına</td></tr>
+<tr><td>Yön kuralı</td><td>Tasarım yönü (modül <code>BASKI.yukari</code>; omuzda <code>omuz-baski</code> seçimi); X2D'ye sığmazsa en az destekli sığan aday</td><td>Bütün parçalar tasarım yönünde sığdı; en az destekli aday yalnız öneri olarak yazılıyor</td></tr>
+<tr><td>Doluluk</td><td>Modülün kendi değeri (değiştirilmedi)</td><td>PETG-CF'de 0,8–0,9 aralığı yalnız omuzda (K42 notu senaryosu)</td></tr>
+</tbody>
+</table></div>
+<p class="note">B'nin bağımsız doğrulaması: A'nın kolon yöntemi B'nin FCStd mesh'lerinde 12/12 parçada aynı sayıları verdi; B'nin BRep yöntemi VESA, omuz yuvası ve kol çatalında %0,2 içinde. FCStd'de tam 62 baskı nesnesi, hacim farkı en çok 0,05 mm³.</p>
+
+<h2>Düzeltme turu (O-1)</h2>
+<div class="tbl"><table>
+<thead><tr><th>#</th><th>Bulgu (B)</th><th>Düzeltme</th><th>Sonuç</th></tr></thead>
+<tbody>
+<tr><td class="kod">O-1</td><td>KT-F6b-3e'deki "göğüs bandı cep üst kenarına 45° pah / kemer" önerisi geometriyle tutarsız: cep duvarı tam kesiyor, tavan 2,8 mm, altında 207 mm boşluk, 148–160 mm açık uçlu açıklık. "≈ 2 × 13 g" tasarrufu dayanaksız</td><td>Yalnız günlük: e yeniden yazıldı. (i) destek kalsın (dilimleyicide yalnız bu bölge) ya da (ii) yatık baskı (±X, 1,6 g; yüzey bedeli). Tasarruf tahmini çıkarıldı; a–c toplamı ≈ 64 g</td><td><span class="tag ok">kapandı</span> B yeniden kontrol: GEÇER</td></tr>
+<tr><td class="kod">D-1…D-5, D-8</td><td>Izgara duyarlılığı, karşılaştırma parçası, kilit geri dönüşü, KT-F6b-2'ye dört betik, brief commit listesinde, sayı ifadeleri</td><td>Aynı turda günlükte işlendi</td><td><span class="tag ok">kapandı</span></td></tr>
+<tr><td class="kod">D-6, D-7</td><td><code>F4c-liste.py</code> sabit sayıları; eşik sınırında iki satır</td><td>Bilerek bırakıldı (B'nin önerisi)</td><td><span class="tag info">açık</span></td></tr>
+<tr><td class="kod">D-9</td><td><code>F6b-brief.md:9</code> başlatıcı yolu</td><td>Orkestratör <code>%USERPROFILE%</code> ile kısalttı (16:57)</td><td><span class="tag ok">kapandı</span></td></tr>
+</tbody>
+</table></div>
+<p class="note">Düzeltme turunda betik, JSON ve liste değişmedi: 11 dosyanın sha1'i düzeltmeden önce ve sonra aynı (A §9, B madde 2). C'nin ölçümünde de 10'u aynı; on birincisi D-9 nedeniyle değişen brief.</p>
+
+<h2>Karar kuyruğu: K42 notu ve K46</h2>
+<div class="tbl"><table>
+<thead><tr><th>#</th><th>Karar</th><th>Sayılar</th><th>Seçenekler</th><th>Önerilen varsayılan</th></tr></thead>
+<tbody>
+<tr><td class="kod">K42</td><td>PETG-CF miktarı (F6b notu)</td><td>Destek her parçada sayılınca PETG-CF + kupon <b>1,37–1,55 kg</b>; 1,5 kg'a göre pay <b>+130 / −53 g</b>. Tam doluluk senaryosunda (bütün CF parçalarda 0,8–0,9) CF üst sınırı <b>+66,1 g</b>, üst pay −119 g</td><td>a) +1 makara (2,0 kg); b) 1,5 kg'de kal; c) K34'ten sonra</td><td>a yine yetiyor: pay ≥ <b>446,8 g</b>; CF desteği 91,9 g ±%50 ile de ≥ 400 g. Değişmedi</td></tr>
+<tr><td class="kod">K46</td><td>Destek azaltma geometri önerileri (KT-F6b-3)</td><td>a–c ≈ 64 g destek düşüşü, hepsi PETG-CF (a ≈ 26, b ≈ 2 × 9, c ≈ 2 × 10 g); d: göbek desteği 5,9 → 2,8 g; e için tahmin yok</td><td>a) VESA arka flanşına 45° kaburga; b) omuz yuvası manşon tavanına kemer; c) kol çatalında horn kulağı altına kaburga; d) omuz göbeği −Y yönü (kupon ölçümünden sonra); e) göğüs bandı: destek kalsın ya da yatık baskı</td><td>Şimdilik değişiklik yok; Parti 0 kuponundan sonra karar</td></tr>
+</tbody>
+</table></div>
+<div class="oneri"><b>K46 notu:</b> a–c geometri değişikliğidir ve tarama kaynaklarını değiştirir (<code>kabuk_parcalar.py</code>, <code>omuz_parcalar.py</code> / <code>omuz_lib.py</code>). Uygulanırsa tam çakışma taraması gerekir. d yalnız baskı yönü.</div>
+<p class="note">"Karar değil, iş" bölümüne: kapaktaki iki sonuç F6b'de kapandı; KT-F6b-2 açık iş (seçenek b şimdi: modül JSON'larındaki eski <code>baski</code> alanları zincir dışında, belgelerde "eski" diye işaretli; <code>kabuk-analiz.json</code> kapak değeri hatalı; bir sonraki geometri işinde modül betikleri tek analize yönlendirilecek; alanı okuyan betikler <code>kabuk_rapor.py:128</code>, <code>dirsek_rapor.py:93</code>, <code>adim5/baski_toplam.py:16</code>, <code>F4c-kontrol-sayim.py:37</code>); C'nin malzeme etiketi notu. Karar kuyruğu şimdi <b>açık 41 / 46</b> (önce 40 / 45, C doğruladı). Hepsi Ahmet'in kararı; döngü varsayılanla ilerlemez.</p>
+
+<h2>Açık kalanlar</h2>
+<ol class="list">
+<li><b>K42 ve K46</b> Ahmet'te. K46'da varsayılan "Parti 0 kuponundan sonra".</li>
+<li><b>Dilimleyici doğrulaması:</b> destek g tahmini (hacim × 0,15) ±%50; Parti 0'dan sonra STL ile parça başına bakılmalı. Göğüs bantlarında ızgara duyarlılığı ≈ +%15 (≈ +5,5 g PETG).</li>
+<li><b>KT-F6b-2 (iş):</b> modül JSON'larındaki eski <code>baski</code> alanları ve <code>kabuk-analiz.json</code> <code>baski[13]</code> kapak değeri duruyor; <code>kabuk_rapor.py</code> yeniden koşulursa kapağı yine "destekli" gösterir. Eski yöntem kalacaksa kesit yüzünün normali ve düzlemselliği denetlenmeli (z 0,47 kaydırması rastlantısal düzeltme).</li>
+<li><b>Malzeme etiketi (C):</b> <code>baski-analiz.json</code> <code>malzeme</code> alanı 6 türde Y2b CF kümesiyle uyuşmuyor (yukarıda); aynı geometri işinde tek kaynağa bağlanmalı.</li>
+<li><b>D-6:</b> <code>F4c-liste.py</code> içindeki kapak ve kafa sayıları sabit yazılı; JSON değişirse sessizce eskir. Sonraki F4c işinde JSON'dan üretilsin.</li>
+<li><b>Doluluk:</b> PETG-CF'de 0,8–0,9 aralığı yalnız omuzda (K42 senaryosu +66,1 g).</li>
+<li><b>Omuz bandı:</b> %0,14 tek-sayı kolon (mesh); destek 0 olduğu için etkisiz, kaynağı incelenmedi.</li>
+<li><b>K23:</b> 13 kabuk PNG'si ve <code>montaj/yerlesim-kontrol.json</code> commit dışında; karar Ahmet'te.</li>
+</ol>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th><th>Dosya</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>0f8e1ad</code></td><td>Tek baskı analizi: <code>baski_analiz_ortak.py</code>, <code>baski-analiz.json</code>; <code>Y2b-baski.py/.json</code>; <code>F4c-partiler.py/.json/.md</code>, <code>F4c-liste.py</code>, <code>F4c-dogrula.py</code>; <code>baski-listesi.md</code>; <code>F6b-brief.md</code>, <code>F6b-gunluk.md</code>, <code>F6b-kontrol.md</code></td><td class="n">13</td></tr>
+<tr><td class="kod"><code>45af546</code></td><td><code>karar-kuyrugu.md</code> (K46, K42 notu, sayaç 41 / 46, "iş" bölümü); <code>dongu-158.md</code> (orkestratörün dosyası, değiştirilmeden)</td><td class="n">2</td></tr>
+</tbody>
+</table></div>
+<p class="note">Push: <code>3946ad5..45af546 lale-duzeltme → lale-duzeltme</code>. Her commit açık <code>git add</code> listesiyle; her commit'ten önce <code>git diff --cached --stat</code> ile F7b alanından dosya olmadığı (0) ve staged içerikte takma ad 0, yerel kullanıcı yolu 0 olduğu denetlendi. Commit'ten sonra <code>F4c-dogrula.py</code> 0 ve <code>carpisma_kos.py kontrol</code> 0. Dışarıda: <code>FREECAD-KILIT.txt</code> (paylaşılan kilit, "boş"), F7b alanı (<code>rehber/</code>, <code>tasarim/freecad/rehber/</code>, <code>F7b-brief.md</code>), K23, <code>kvkk/</code>, <code>rapor/</code>, <code>raporlar/</code>, <code>tubitak-2209b/</code>, <code>tasarim/solidworks/</code>, <code>kafa-yerlesim/kaynak/</code>, <code>lale_dongu.*</code>, <code>F5-pano-govde.txt</code>, <code>F5b-pano-govde.txt</code>. Bu rapor ayrı commit'te.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F6b · 09.11.2026 · Commit'ler <code>0f8e1ad</code>, <code>45af546</code> (<code>lale-duzeltme</code>) · Çakışma <code>kontrol</code> 0 · Regresyon <code>--yazma</code>: GEÇER, 10/10 aynı · <code>F4c-dogrula</code> 0 · Kaynaklar: <code>F6b-brief.md</code>, <code>F6b-gunluk.md</code>, <code>F6b-kontrol.md</code>, <code>baski-analiz.json</code>, <code>karar-kuyrugu.md</code> K42, K46.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
