@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F10b Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+h3{font-size:1rem;margin:20px 0 8px}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F10b: ön şarj kartı × elektronik katı (P10.2)</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 11.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>F10b-brief.md</code>, <code>F10b-gunluk.md</code>, <code>F10b-olcum.py</code>, <code>F10b-olcum.json</code> (A'nın koşusu 2026-11-11 00:15, 73,4 s), <code>karar-kuyrugu.md</code></p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">B6 girişim</div><div class="v"><span class="tag crit">3,135 mm³</span></div><div class="d">en çok; dy 0,5…12,5 mm (25 konum); iki ön burç × 1,567 mm³</div></div>
+  <div class="card"><div class="k">Gerçek taşma</div><div class="v">0,425 mm</div><div class="d">burç köşesi z 24,675 ↔ kat kenarı z 24,25</div></div>
+  <div class="card"><div class="k">B5 / B3</div><div class="v"><span class="tag ok">girişim 0</span></div><div class="d">en küçük boşluk 1,30 mm (güç paneli), 2,5 mm (BTS7960)</div></div>
+  <div class="card"><div class="k">Model</div><div class="v"><span class="tag ok">değişmedi</span></div><div class="d"><code>git diff HEAD -- tasarim/freecad</code>: bu paketten 0</div></div>
+  <div class="card"><div class="k">Paket durumu</div><div class="v"><span class="tag wait">karar bekliyor</span></div><div class="d">K53; açık 48 / toplam 53</div></div>
+</div>
+
+<p class="note">Orkestratör kararı: geometri bu pakette değişmez; konu karar kuyruğuna K53 olarak yazılır. C FreeCAD çalıştırmadı; aşağıdaki sayıları A'nın günlüğünden değil, <code>F10b-olcum.json</code>'dan kendisi okudu.</p>
+
+<h2>Ölçüm (<code>F10b-olcum.json</code>)</h2>
+<p>Yöntem (<code>yontem</code>): taban + iskelet katıları ve kabuk etek braketleri, global koordinat; hareketli grup takılı konumundan +Y yönünde 0…60 mm, 0,5 mm adım (121 konum). Ortak hacim <code>common().Volume</code> (&gt; 1e-4 mm³), boşluk <code>distToShape</code>; sınır kutusu aralığı 3 mm'den büyük çiftte kesin ölçüm yok. dy = 0'daki tasarım oturması (kat ve panel → M5x40 burç, kart → alt plaka) ayrı sayıldı.</p>
+<div class="tbl"><table>
+<thead><tr><th>İniş</th><th>JSON anahtarı</th><th>En büyük ortak hacim</th><th>Girişimli konum</th><th>En küçük boşluk</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td class="kod">B6 elektronik katı</td><td><code>B6_elektronik_kati.ozet</code></td><td class="n">3,1348 mm³ (dy 5,0…8,0)</td><td class="n">dy 0,5…12,5 (25)</td><td>0 mm; &lt; 0,5 mm dy 0…18,0 (37 konum). dy 13…17,5: üst M3 vida başı kat kenarı düzleminde; dy 18,0 → 0,40; 18,5 → 0,90; 20,0 → 2,40</td><td><span class="tag crit">girişim</span></td></tr>
+<tr><td class="kod">B6, öbür sınıflar</td><td><code>konumlar[].sinif</code></td><td class="n">0</td><td class="n">—</td><td>güç panelinin öbür parçaları ≥ 0,50 mm (panel aralığı); iskelet ≥ 4,25 mm</td><td><span class="tag ok">temiz</span></td></tr>
+<tr><td class="kod">B5 güç paneli</td><td><code>B5_guc_paneli</code></td><td class="n">0</td><td class="n">—</td><td>1,30 mm (dy 0, panel ↔ akü kayışı z −140); gövde direği 2,0 mm. (Özetteki 0,5 mm burçtan kalkış: dy 0,5'te boşluk = dy)</td><td><span class="tag ok">temiz</span></td></tr>
+<tr><td class="kod">B3 BTS7960 sol / sağ</td><td><code>B3_alt_kartlar</code></td><td class="n">0</td><td class="n">—</td><td>2,5 mm (dy 0, şase uzun rayı); özetteki 0,5 mm alt plakadan kalkış</td><td><span class="tag ok">temiz</span></td></tr>
+<tr><td class="kod">B3 XL4016 A / B / çevre</td><td><code>B3_alt_kartlar</code></td><td class="n">0</td><td class="n">—</td><td>dy 0'da 3 mm içinde aday çift yok</td><td><span class="tag ok">temiz</span></td></tr>
+</tbody>
+</table></div>
+
+<h3>Geometri (<code>geometri</code>)</h3>
+<ul class="list">
+<li>Kat ön kenarı z 24,25 (<code>kat_on_z0</code>), güç paneli kenarı z 23,75; aralık 0,5 mm (<code>kat_ayrim_z</code> 24,0 ± 0,25).</li>
+<li>Ön şarj kartı x −132,5…−62,5, z −26,0…24,0 (70 × 50 "zarf tahmini"). Ön burçlar 1 ve 3 (x −130 / −65, z +21,5) z 18,325…<b>24,675</b>: taşma 24,675 − 24,25 = <b>0,425 mm</b> (altıgen köşesi +z'de, en kötü yön). Üst M3 vida başı z ≤ 24,25 (0 mm). PCB kenarı kat kenarına 0,25 mm.</li>
+</ul>
+
+<h3>A ile fark</h3>
+<p>Ana sayılar JSON'la aynı: 3,135 mm³; dy 0,5…12,5 (25); &lt; 0,5 mm dy 0…18,0 (37); taşma 0,425; B5 1,30 mm; B3 2,5 mm; oturma %39 / %26; kaydırma ve çentik sonuçları. Günlük tablosunun yan sütunlarında üç küçük fark (sonucu değiştirmiyor):</p>
+<ol class="list">
+<li>Güç panelinin öbür parçaları, dy 5…8: günlük "0,50 … 0,90", JSON 0,50…1,58 (dy 6,5'te 1,5811).</li>
+<li>Aynı sütun, dy 13…17,5: günlük "0,75 … 1,6", JSON 0,75…3,00 (dy 17,5'te 2,9954).</li>
+<li>dy 25…60 satırı: günlük ön şarj grubu "≥ 4,25" ve güç paneli "≥ 3,58"; JSON dy 26,5'te ön şarj grubu 3,41, dy 39,5'te güç paneli 3,09. İkisi de 0,5 mm'nin çok üstünde.</li>
+</ol>
+<p class="note"><code>F10b-olcum.py</code> okundu: taban, iskelet ve kabuk modüllerini yalnız okur, katıları bellekte kopyalayıp kaydırır; dosyaya yalnız kendi klasöründeki <code>F10b-olcum.json</code>'u yazar. Model dosyasına yazmıyor.</p>
+
+<h2>Sonuç</h2>
+<p>Girişim var: elektronik katı B6'da inerken kat önü, ön şarj kartının iki ön burcunu dy 0,5…12,5 mm boyunca en çok 3,135 mm³ kesiyor; dy 18 mm'ye kadar boşluk 0,5 mm'nin altında. Güç paneli (B5) ve alt plaka kartlarının (B3) iniş yolunda girişim yok. Model değiştirilmedi; paket "karar bekliyor".</p>
+
+<h2>Seçenekler (bellekte denendi, <code>secenekler</code>)</h2>
+<div class="tbl"><table>
+<thead><tr><th>#</th><th>Ne</th><th>Kat inişi: ortak hacim / boşluk</th><th>Bozduğu</th></tr></thead>
+<tbody>
+<tr><td class="kod">mevcut</td><td>—</td><td class="n">1,5674 mm³ (tek burç) / 0</td><td>—</td></tr>
+<tr><td class="kod">a</td><td>Katta 1,5 mm çentik, x −136…−60,75 (A'nın uygulama önerisi); kat kenarı 24,25 → 25,75. Ölçülen x −134,25…−60,75</td><td class="n">0 / 1,075 mm</td><td>Yok; kat ön −550,38 mm³ (≈ 550). Kaynak <code>arayuz.py</code> + <code>taban_parcalar.py</code></td></tr>
+<tr><td class="kod">b</td><td>Kartı −z yönünde 1,0 / 1,5 / 2,0 mm kaydır</td><td class="n">0 / 0,575 · 1,075 · 1,575 mm</td><td>Burç 2 (x −65, z −23,5) panele oturması 7,484 mm² (%39) → 1,984 (%10,4) / 0,125 (%0,7) / 0; alt vida başı %26 → %5,0 / %0,4 / 0. <span class="tag crit">önerilmez</span></td></tr>
+<tr><td class="kod">c</td><td><code>kat_ayrim_z</code> 24,0 → 25,5</td><td class="n">0 / ≈ 1,075 (analitik)</td><td>BOM plaka ölçü yazıları ("270 x 226" / "270 x 274") eskir, iki plakanın kütlesi değişir</td></tr>
+<tr><td class="kod">d</td><td>Modele dokunma, rehber B6'ya not</td><td class="n">girişim kalır</td><td>Altıgen köşesi en kötü yönde modellenmiş; kart ölçüsü "zarf tahmini"</td></tr>
+</tbody>
+</table></div>
+<p class="note">Alt karar (a / b / c'de): <code>arayuz.py</code> ve <code>taban_parcalar.py</code> çakışma taramasının kaynağı; biri değişince 9 bölümün hepsi eskir. i) hedefli <code>taban statik</code> koşusu + <code>kontrol</code> 1 kabul; ii) hedefli koşu + öbür bölümlerin kaynak özetini yenileme; iii) bir sonraki tam taramalı pakete bırakma.</p>
+<div class="oneri"><b>K53, önerilen varsayılan: a + iii.</b> Çentik bir sonraki tam taramalı pakette; o zamana dek rehber B6 adımına not (F10c). Parçalar henüz kesilmedi; değişiklik lazer kesim dosyası çıkmadan uygulanmalı. Yalnız öneri; karar Ahmet'te.</div>
+<p class="note">İlgili, F10b'den bağımsız: burç 2 bugün de güç panelindeki akü kablo yarığının üstünde; panele oturma %39 (7,484 / 19,129 mm²), alt vida başı %26 (6,28 / 23,758 mm²; <code>on_sarj_oturma</code>). Karşılaştırma: XL4016 C burçları %89,5. Ayrı iş.</p>
+
+<h2>Karar kuyruğu</h2>
+<ul class="list">
+<li><b>K53</b> "Ön şarj kartı burcu × elektronik katı (B6'da kat inerken girişim)": özet tablosunda K52'nin altına satır, ayrıntı bölümü K52'den sonra; köken satırı "P10.2 (F10b, 11.11.2026, orkestratör kararı)".</li>
+<li>Sayaç: <b>Açık 47 → 48</b>, kapandı 5, <b>toplam 52 → 53</b>. Kuyruk dosyasında aciliyet dağılımı yok; o sayılar <code>sonuc-rapor.html</code>'de (F9c üretimi).</li>
+<li>Emsal (<code>a209e30</code>) kuyrukla birlikte yalnız demoyu güncelledi; burada da yalnız <code>py -3 tasarim/cad/demo_uret.py</code> koşuldu (çıkış 0; 127 anahtar, 14 karar, 153 kalem). Demoda değişen tek şey kuyruğun parmak izi: <code>27e97f88e0ac</code> → <code>f8a137c5fdfa</code>; 127 anahtarın değeri aynı. <code>sonuc-rapor.html</code> ve <code>README.md</code>'ye emsal gibi dokunulmadı.</li>
+</ul>
+
+<h2>Regresyon ve denetimler</h2>
+<div class="tbl"><table>
+<thead><tr><th>Komut</th><th>Çıkış</th><th>Sonuç</th></tr></thead>
+<tbody>
+<tr><td><code>py -3 tasarim/freecad/carpisma_kos.py kontrol</code></td><td class="n">0</td><td>"izlenen 17 dosyanin ozetleri kayitla ayni"</td></tr>
+<tr><td><code>py -3 planlama/d158/regresyon.py --yazma</code></td><td class="n">0</td><td>GEÇER, 10 / 10 aynı (aşağıda)</td></tr>
+<tr><td><code>git diff --stat HEAD -- tasarim/freecad</code></td><td class="n">—</td><td>yalnız oturum öncesinden kalan 13 <code>kabuk/gorsel/*.png</code> ve <code>montaj/yerlesim-kontrol.json</code> (K23); bu paketten 0</td></tr>
+<tr><td><code>py -3 -X utf8 planlama/d158/F9b-dogrula.py</code></td><td class="n">0</td><td>GECER (hata 0); K53 öncesi de 0</td></tr>
+<tr><td><code>py -3 -X utf8 planlama/d158/F9c-dogrula.py</code></td><td class="n">1</td><td>GEÇMEZ, hata 15. K53 öncesi de 1 (hata 4: paket ✅ 33 ↔ 34, 🔄 1 ↔ 0, commit 66 ↔ 70, P9.3 durum hücresi). K53'le gelen 11: <code>sonuc-rapor.html</code> açık 47 ↔ 48 (7 yer), toplam 52 ↔ 53 (2 yer), "K53 tabloda 0 kez", <code>faz_karar_F0</code> 7 ↔ 8 (betiğin <code>F(\d)</code> kalıbı "F10b"yi tanımıyor). Sayfa F9c'nin donmuş çıktısı; düzeltmeye girişilmedi</td></tr>
+</tbody>
+</table></div>
+
+<h3>Korunan değerler (<code>regresyon.py --yazma</code>, 00:19:21)</h3>
+<div class="tbl"><table>
+<thead><tr><th>Değer</th><th>Taban</th><th>Şimdi</th><th>Eşik</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td><code>boy_mm</code></td><td class="n">1580</td><td class="n">1580</td><td class="n">1580 ± 0,05</td><td>aynı</td></tr>
+<tr><td><code>cakisma_kafa_ici</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>cakisma_kabuk_ici</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>cakisma_kabuk_x_iskelet</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>cakisma_ev_pozu</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+<tr><td><code>rampa_yuksuz</code></td><td class="n">1,519</td><td class="n">1,519</td><td class="n">≥ 1,5</td><td>aynı</td></tr>
+<tr><td><code>tilt_payi</code></td><td class="n">3,64</td><td class="n">3,64</td><td class="n">≥ 3</td><td>aynı</td></tr>
+<tr><td><code>pan_payi</code></td><td class="n">2,21</td><td class="n">2,21</td><td class="n">≥ 2</td><td>aynı</td></tr>
+<tr><td><code>mik_hoparlor_mm</code></td><td class="n">574,3</td><td class="n">574,3</td><td class="n">≥ 400</td><td>aynı</td></tr>
+<tr><td><code>sy8205_x_usb_mm3</code></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td>aynı</td></tr>
+</tbody>
+</table></div>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th><th>Dosya</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>5e43c62</code></td><td><code>F10b-brief.md</code>, <code>F10b-olcum.py</code>, <code>F10b-olcum.json</code>, <code>F10b-gunluk.md</code>, <code>karar-kuyrugu.md</code> (K53), demo (yalnız <code>demo_uret.py</code> ile)</td><td class="n">6</td></tr>
+<tr><td class="kod">bu rapor</td><td><code>F10b-rapor.html</code></td><td class="n">1</td></tr>
+</tbody>
+</table></div>
+<p class="note">Her commit açık <code>git add</code> listesiyle (<code>-A</code>, <code>.</code> ya da klasör yok). Dışarıda kalanlar: F10a'nın alanı (<code>rehber/</code>, <code>planlama/rehber/</code>, <code>F10a-*</code>), <code>dongu-158.md</code>, <code>FREECAD-KILIT.txt</code>, K23 (13 kabuk PNG, <code>montaj/yerlesim-kontrol.json</code>) ve oturum öncesinden kalan izlenmeyenler.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F10b · 11.11.2026 · <code>lale-duzeltme</code> · B6 girişim 3,135 mm³, taşma 0,425 mm · B5 / B3 girişim 0 · model değişmedi · K53 (açık 48 / 53) · Çakışma <code>kontrol</code> 0 · Regresyon <code>--yazma</code>: GEÇER, 10/10 aynı · F9b 0, F9c 1 (sonuç sayfası eski) · Kaynaklar: <code>F10b-brief.md</code>, <code>F10b-gunluk.md</code>, <code>F10b-olcum.json</code>.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
