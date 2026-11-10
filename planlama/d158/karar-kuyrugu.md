@@ -65,8 +65,9 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K50 | Şarj girişi konnektörü: sigortadan sonra gerilimli erkek pimler | **açık** (F7d) | b: XT60E-F (dişi) panel; olmazsa a | İlk şarj, rehber F5 notu, `maliyet.json:111` |
 | K51 | Pi hattındaki ikinci P6KE6V8A: maliyette 2, model BOM'unda 1 | **açık** (F7c) | a: modele ve BOM'a 1 adet ekle (0 TL) | Model / BOM güncellemesi, rehber E3a TVS notu, çakışma taraması |
 | K52 | Göğüs ekranı regülatörü (LM2577 + LM2596), mini 2 A ve hat sigortası yuvasının yeri: modelde ve BOM'da yok | **açık** (F7c) | a: K11 kararıyla birlikte güç paneline (B5a) ekle | K11, model / BOM güncellemesi, rehber B5a, `maliyet.json:122-123` notları |
+| K53 | Ön şarj kartı burcu × elektronik katı (B6'da kat inerken girişim) | **açık** (F10b) | a + iii: katta 1,5 mm çentik, bir sonraki tam taramalı pakette; o zamana dek rehber B6 notu | Lazer kesim dosyası (elektronik katı), rehber B6 adımı (F10c), çakışma taraması kaynağı |
 
-**Açık: 47** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 52 madde.
+**Açık: 48** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 53 madde.
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
@@ -79,6 +80,8 @@ P9.4 (F9d, 09.11.2026) karar taslakları KT-F9d-1…3 → K47–K49 (`planlama/d
 P7.4 (F7d, 09.11.2026) karar taslağı KT-F7d-1 → K50, B'nin son metniyle (`planlama/d158/F7d-kontrol.md` "KT-F7d-1 (son hâl)").
 P9.3 (F9c, 09.11.2026, orkestratör kararı) F7c karar taslakları KT-F7c-2 → K51, KT-F7c-3 → K52 (`planlama/d158/F7c-gunluk.md:215, :224`;
 B doğrulaması `F7c-kontrol.md` "KT-F7c-2.", "KT-F7c-3.").
+P10.2 (F10b, 11.11.2026, orkestratör kararı: geometri bu pakette değişmez) A'nın ölçümü ve seçenekleri → K53 (`planlama/d158/F10b-gunluk.md` §3–§4;
+sayılar C'nin `F10b-olcum.json`'dan okumasıyla).
 
 ---
 
@@ -895,6 +898,43 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **Önerilen varsayılan:** a (F7c önerisi, `F7c-gunluk.md:229-231`); `maliyet.json:122-123` notlarının göğüs dalını anması `maliyet.json`
   sahibinde. Yalnız öneri; karar Ahmet'te.
 - **Bloke:** K11 sonrası model / BOM güncellemesi; rehber B5a'daki "göğüs regülatörü + mini 2 A yuvası" satırı; göğüs dalının montajı.
+- **Durum:** açık.
+
+---
+
+## K53 · Ön şarj kartı burcu × elektronik katı (B6'da kat inerken girişim)
+- **Soru:** Rehber B6'da elektronik katı M5x40 burçlara inerken, B5a'da güç paneline takılmış ön şarj kartının iki ön burcuna (M3x8 naylon,
+  burç 1 ve 3, x −130 / −65, z +21,5) takılıyor. Model mi değişsin, yoksa yalnız rehbere not mu düşülsün?
+- **Ölçüm** (`planlama/d158/F10b-olcum.json`; FreeCAD katıları, kat +Y yönünde 0…60 mm, 0,5 mm adım, 121 konum; betik `F10b-olcum.py`
+  yalnız bu JSON'u yazar):
+  - Geometri (`geometri`): kat ön kenarı z 24,25 (`kat_on_z0`), güç paneli kenarı z 23,75; ön burçların köşesi z 24,675 (altıgen, köşe +z'de),
+    yani **taşma 0,425 mm**; kart (PCB) z ≤ 24,0, üst M3 vida başı z ≤ 24,25.
+  - B6 (`B6_elektronik_kati.ozet`): en büyük ortak hacim **3,1348 mm³** (iki burç × 1,567 mm³; dy 5,0…8,0); ortak hacimli konum dy **0,5…12,5**
+    (25 konum), hepsi "Elektronik kati (on)" ↔ ön şarj burcu 1 ve 3. En küçük boşluk < 0,5 mm: dy **0…18,0** (37 konum; dy 13…17,5'te üst vida
+    başı kat kenarı düzleminde, 0 mm). Güç panelinin öbür parçalarıyla ve iskeletle ortak hacim hiçbir konumda yok.
+  - B5 güç paneli (`B5_guc_paneli`) ve B3 alt plaka kartları (`B3_alt_kartlar`): ortak hacim 0. En küçük boşluk (burçtan kalkış hariç)
+    B5'te **1,30 mm** (dy 0, panel ↔ akü kayışı z −140), B3 BTS7960 sol / sağ **2,5 mm** (dy 0, şase uzun rayı); XL4016 A / B / çevre için 3 mm
+    içinde aday çift yok.
+- **Seçenekler** (A bellekte denedi, modele dokunulmadı; `secenekler`):
+  a) Katta 1,5 mm çentik: x −136…−60,75 (A'nın uygulama önerisi; köşede 0,75 mm'lik şerit kalmasın diye yana açık), kat kenarı orada
+     24,25 → 25,75. Ölçülen hâli (`centik_1.5`, x −134,25…−60,75): iniş boyunca ortak hacim 0, en küçük boşluk 1,075 mm; kat ön −550,38 mm³
+     (≈ 550 mm³; x0 −136 ile ölçülmedi). Yalnız malzeme çıkar, yeni çakışma doğuramaz. Değişen kaynak `arayuz.py` + `taban_parcalar.py`.
+  b) Kartı −z yönünde 1,0 / 1,5 / 2,0 mm kaydır (`kaydir_-z_*`): kat inişi ortak hacim 0, boşluk 0,575 / 1,075 / 1,575 mm; ama burç 2'nin
+     (x −65, z −23,5; sağ arka burç) panele oturması 7,484 mm² (%39) → 1,984 (%10,4) / 0,125 (%0,7) / 0 mm², alt vida başınınki %26 →
+     %5,0 / %0,4 / 0 (kart akü kablo yarığının üstüne kayıyor). **Önerilmez.**
+  c) Kat ayrım çizgisi `kat_ayrim_z` 24,0 → 25,5 (iki plaka 1,5 mm kayar): boşluk ≈ 1,075 mm (analitik, ölçülmedi); BOM'daki plaka ölçü
+     yazıları ("270 x 226" / "270 x 274") eskir, iki plakanın kütlesi değişir. Ön burçların panel aralığına taşmasını da çözer.
+  d) Modele dokunma; rehber B6'ya not (katı 1–2 mm önde indir, geri it; ya da ön burçları düz yüzü +z'ye bakacak vidala). Modelde girişim kalır.
+     Not: altıgen burcun köşesi en kötü yönde (+z) modellenmiş; kart ölçüsü "zarf tahmini" (70 × 50 pertinaks, `planlama/adim3/elektrik.md` E9).
+- **Alt karar (a, b ya da c seçilirse):** `arayuz.py` / `taban_parcalar.py` çakışma taramasının kaynağı (`carpisma_kos.KAYNAK_SABIT`, md5); biri
+  değişince 9 bölümün hepsi eskir, `carpisma_kos.py kontrol` 0 yalnız tam taramayla (tam tarama yalnız P6'da) döner.
+  i) Hedefli `carpisma_kos.py taban statik` koşusu (~3 dk) + `kontrol` 1 kabul; ii) hedefli koşu + öbür bölümlerin `kaynak` özetini yenileme
+  (yeni yöntem; çentik yalnız tabandan malzeme çıkarır); iii) değişikliği bir sonraki tam taramalı pakete bırakma.
+- **Önerilen varsayılan:** a + iii: çentik, bir sonraki tam taramalı pakette; o zamana dek rehber B6 adımına not (F10c). Parçalar henüz
+  kesilmedi; değişiklik lazer kesim dosyası çıkmadan uygulanmalı. Yalnız öneri; karar Ahmet'te.
+- **İlgili not (F10b'den bağımsız, ayrı iş):** burç 2 bugün de güç panelindeki akü kablo yarığının (x −80…−40, z −37…−23) üstünde: panele
+  oturma %39 (7,484 / 19,129 mm²), alt vida başı %26 (6,28 / 23,758 mm²), delik yarığa açık (`on_sarj_oturma`). Seçenek a bunu çözmez.
+- **Bloke:** elektronik katının lazer kesim dosyası; rehber B6 adımı (F10c); çakışma taraması kaynağı (a / b / c'de).
 - **Durum:** açık.
 
 ---
