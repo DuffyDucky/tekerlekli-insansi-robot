@@ -11,7 +11,9 @@
 #      yeni görünen parça kimlikleri rehber-veri.json'dan beklenen listeyle karşılaştırılır; tüm adımlar koşulunca her parçanın tam
 #      bir adımda yeni göründüğü de denetlenir)
 # F7b (P7.2) ekleri:
-#   4) her adımın yalnız 3B görüntüsü (?sahne=1, açık tema) -> rehber/goruntu/adim-NN.png (yazdırılabilir sürüm bunları kullanır)
+#   4) her adımın yalnız 3B görüntüsü (?sahne=1, açık tema) -> rehber/goruntu/adim-NN.png (yazdırılabilir sürüm bunları kullanır);
+#      F10a düzeltme 1: karede model çizili mi pikselden denetlenir, boşsa yeniden çekilir, hâlâ boşsa kontrol.json
+#      "yazdir_goruntu.bos" ve çıkış 2
 #   5) telefon: 360 px görüntü alanında birkaç adım (DevTools protokolü, Emulation.setDeviceMetricsOverride; Python websockets
 #      paketi gerekir; --window-size Chrome'da ~500 px'in altına inmiyor); yatay taşma = belge genişliği - görüntü alanı (0 olmalı) ->
 #      <çıktı>/goruntu/telefon-360-adim-NN.png
@@ -162,18 +164,66 @@ def kontrol(adimlar, boyut=(1400, 900)):
     return V, tb, sonuc, ozet, metin, tek
 
 
+CIZIM_ESIK = 0.01            # F10a düzeltme 1 (B-1): zeminden farklı piksel oranı bunun altındaysa kare boş (model çizilmemiş)
+CIZIM_TEKRAR = 3             # boş karede en çok bu kadar yeniden çekim; hâlâ boşsa üretim hata verir
+
+
+def cizim_orani(png):
+    """Karede sahne zemininden (stil.css açık tema --sahne) farklı piksel oranı (4 px adımla örnek). WebGL dışı öğeler sayılmaz: alttaki
+    lejant şeridi (yüksekliğin %7'si) ve sağ alttaki küçük görünüm köşesi (genişliğin 1/6'sı x yüksekliğin %36'sı; CSS halka). Boş
+    (temizlenmiş) tuvalde oran 0; model çizili karede (zemin ızgarası dahil) 0,02 üstü. PIL yoksa None (denetim geçmez)."""
+    try:
+        from PIL import Image
+    except ImportError:
+        return None
+    m = re.search(r"--sahne:\s*#([0-9a-fA-F]{6})", open(os.path.join(REHBER, "stil.css"), encoding="utf-8").read())
+    z = tuple(int(m.group(1)[i:i + 2], 16) for i in (0, 2, 4)) if m else (0xec, 0xea, 0xe4)
+    with Image.open(png) as im:
+        im = im.convert("RGB")
+        w, h = im.size
+        px = im.load()
+        n = f = 0
+        x_mini, y_mini, y_lejant = w - w // 6, h - int(h * 0.36), h - int(h * 0.07)
+        for y in range(0, y_lejant, 4):
+            for x in range(0, w, 4):
+                if x >= x_mini and y >= y_mini:
+                    continue
+                p = px[x, y]
+                n += 1
+                if abs(p[0] - z[0]) + abs(p[1] - z[1]) + abs(p[2] - z[2]) > 40:
+                    f += 1
+    return f / max(1, n)
+
+
 def sahne_goruntu(tb, adimlar):
-    """Yazdırılabilir sürüm için yalnız 3B görünüm (açık tema): rehber/goruntu/adim-NN.png."""
+    """Yazdırılabilir sürüm için yalnız 3B görünüm (açık tema): rehber/goruntu/adim-NN.png. F10a düzeltme 1: her karede modelin
+    çizildiği pikselden denetlenir (cizim_orani); boşsa en çok CIZIM_TEKRAR kez yeniden çekilir, hâlâ boşsa "bos" listesine girer."""
     os.makedirs(YAZDIR_GORUNTU, exist_ok=True)
     ortak = ortak_arg(tb, (1200, 720))
-    hata = []
+    hata, bos, oran, tekrar = [], [], {}, {}
     for a in adimlar:
         png = os.path.join(YAZDIR_GORUNTU, "adim-%02d.png" % a)
-        subprocess.run(ortak + ["--screenshot=" + png, url(a, "&sahne=1&tema=light")], capture_output=True)
+        for k in range(CIZIM_TEKRAR + 1):
+            t0 = time.time() - 1
+            subprocess.run(ortak + ["--screenshot=" + png, url(a, "&sahne=1&tema=light")], capture_output=True)
+            if not os.path.exists(png) or os.path.getmtime(png) < t0:
+                break                                               # dosya yok ya da eski: eksik (aşağıda)
+            r = cizim_orani(png)
+            oran[a] = None if r is None else round(r, 4)
+            if r is None or r >= CIZIM_ESIK:
+                break
+            tekrar[a] = k + 1
         if not os.path.exists(png) or os.path.getmtime(png) < time.time() - 120:
             hata.append(a)
-    print("yazdir goruntusu: %d adim, eksik %s" % (len(adimlar), hata or "-"))
-    return dict(adim=len(adimlar), klasor=os.path.relpath(YAZDIR_GORUNTU, ROBOT).replace("\\", "/"), eksik=hata)
+        elif oran.get(a) is None or oran[a] < CIZIM_ESIK:
+            bos.append(a)
+    gecerli = [v for v in oran.values() if v is not None]
+    print("yazdir goruntusu: %d adim, eksik %s, bos %s, yeniden cekim %s, en dusuk cizim orani %s" % (
+        len(adimlar), hata or "-", bos or "-", tekrar or "-", min(gecerli) if gecerli else "-"))
+    return dict(adim=len(adimlar), klasor=os.path.relpath(YAZDIR_GORUNTU, ROBOT).replace("\\", "/"), eksik=hata,
+                bos=bos, cizim_esik=CIZIM_ESIK, yeniden_cekim={str(k): v for k, v in sorted(tekrar.items())},
+                en_dusuk_cizim_orani=min(gecerli) if gecerli else None, cizim_orani={str(k): v for k, v in sorted(oran.items())},
+                piksel_denetimi=bool(gecerli) and len(gecerli) == len(oran))
 
 
 class Cdp:
@@ -384,7 +434,7 @@ if __name__ == "__main__":
                   open(os.path.join(CIKTI, "kontrol.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         kotu = [s for s in sonuc if not s["gecti"]]
         ek_kotu = [k for k in ("telefon", "yazdir", "denetim") if k in ek and not ek[k]["gecti"]]
-        if ek.get("yazdir_goruntu", {}).get("eksik"):
+        if ek.get("yazdir_goruntu", {}).get("eksik") or ek.get("yazdir_goruntu", {}).get("bos"):
             ek_kotu.append("yazdir_goruntu")
         print("tarayici kontrolu: %d adim, %d gecti, %d sorunlu, konsol hatasi %d; her parca tek adimda: %s; ek kontrol sorunlu: %s" % (
             len(sonuc), ozet["gecen"], len(kotu), ozet["konsol_hatasi"], tek["gecti"] if tek else "-", ek_kotu or "-"))

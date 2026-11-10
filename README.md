@@ -25,7 +25,7 @@ planlama, tasarım (CAD) ve ileride yazılım kodu burada tutulur.
 | `tasarim/cad/demo_uret.py` | Demoyu şablon + kaynak JSON'lar + maliyetten yeniden üretir; FreeCAD / CadQuery gerekmez; denetimi `planlama/d158/F9b-dogrula.py` |
 | `CLAUDE.md` | Bu klasörde açılan yapay zekâ oturumları için bağlam |
 
-HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünüm için internet gerekir.
+HTML dosyaları çift tıklayınca tarayıcıda açılır. Demodaki 3B görünüm için internet gerekir; montaj rehberi (`rehber/index.html`) internetsiz açılır (three.js `rehber/vendor/` içinde).
 
 ## Güncel tasarım: 1,58 m (01.11.2026 kararı, 03.11.2026 CAD; sayılar 09.11.2026)
 
@@ -135,7 +135,7 @@ python tasarim/freecad/rehber/rehber_uret.py
 ```
 
 Bu komut CAD modüllerinden adım verisini ve mesh'i üretir (FreeCAD, `rehber/veri/`), her adımı başsız Chrome/Edge ile kontrol eder ve görüntüleri `planlama/rehber/goruntu/` altına yazar (özet `planlama/rehber/kontrol.json`). Tüm adımlar yaklaşık 5 dakika sürer.
-Yalnız tarayıcı kontrolü için `--veri-yok`, yalnız veri için `--gorsel-yok`, seçili adımlar için `--adimlar 1,4,9`. Rehberi açmak için `rehber/index.html` (3B için internet gerekir).
+Yalnız tarayıcı kontrolü için `--veri-yok`, yalnız veri için `--gorsel-yok`, seçili adımlar için `--adimlar 1,4,9`. Rehberi açmak için `rehber/index.html` çift tık; internet gerekmez (three.js 0.160.0 `rehber/vendor/` içinde). Tuşlar: ←/→ adım, P patlat / topla, Boşluk sıradaki satırı tak, Shift+Boşluk geri al, O öncekiler opak / saydam / gizli, M küçük görünüm, Esc seçimi temizle.
 Adım yazıları `tasarim/freecad/rehber/rehber_metin.py`, adım seçicileri (1,58 m) `tasarim/freecad/rehber/rehber_secici.py` içinde. Üretmeden önce `planlama/rehber/R-gunluk.md` "Yapılacaklar"daki açık maddelere bak.
 
 ## CAD'i yeniden üretme

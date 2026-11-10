@@ -95,7 +95,7 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
 | `... rehber_uret.py --veri-yok --adimlar 1,4,9` | yalnız tarayıcı kontrolü + seçili görüntüler |
 | `... --gorsel-yok` | yalnız veri + mesh |
 | Doğrudan: `FC_SCRIPT=<rehber_veri.py> freecadcmd run_fc.py` | yalnız veri + mesh |
-| Açmak | `rehber/index.html` çift tık (file:// çalışır; three.js 0.160.0 jsdelivr'den, internet gerekir). `?adim=N`, `?cekim=1` (animasyonsuz), `?tema=dark` |
+| Açmak | `rehber/index.html` çift tık (file:// çalışır, internet gerekmez; three.js 0.160.0 `rehber/vendor/` içinde, F10a). Tuşlar: P patlat / topla, Boşluk sıradaki satırı tak, Shift+Boşluk geri al, O öncekiler opak / saydam / gizli, M küçük görünüm, Esc seçimi temizle. `?adim=N`, `?cekim=1` (animasyonsuz), `?tema=dark` |
 
 ## Sıradaki işler (madde madde)
 1. Kök `README.md` yazıldı (04.11). `tasarim/freecad/README.md` "Rehber" bölümü hâlâ yok: tek komut, ne zaman koşulur (modüller yeniden üretildikten ve
@@ -114,7 +114,7 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
 - Süre değerleri tahmini (5 + 1 dk/cıvata + 0,3/somun-pul + 0,8/parça), hazırlık 60 dk elle.
 - Mesh kaba (148 k üçgen); gerekirse `ucgenle()` içindeki `diag * 0.004` ve 5000 bütçesi artırılır (GLB 2 MB, pay çok).
 - Eylemsizlik örneklemesi simetrik parçalarda eksen etrafındaki dönüşü keyfi seçer (somun altıgeni, cıvata soketi); görsel olarak önemsiz.
-- three.js CDN'den: çevrimdışı açılmaz (GitHub Pages'te sorun değil).
+- three.js artık yerel (`rehber/vendor/`, F10a): rehber çevrimdışı da açılır. Demo görüntüleyici (`tasarim/cad/viewer-template.html`) hâlâ CDN'den (r128): internetsiz 3B açılmaz.
 
 
 ## Kayıt

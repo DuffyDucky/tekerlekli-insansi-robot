@@ -22,11 +22,25 @@ var ce=console.error;console.error=function(){k(Array.prototype.join.call(argume
   <section class="sahne" id="sahne">
     <canvas id="tuval"></canvas>
     <div class="yukleniyor" id="yukleniyor">3B model yükleniyor…</div>
-    <div class="etiket" id="etiket" hidden></div>
-    <div class="sahne-arac">
-      <button class="btn ince" id="tekrar" title="Uçuşu tekrar oynat (R)">↻ uçuş</button>
-      <button class="btn ince" id="sifirla" title="Görünümü sıfırla (V)">⌖ görünüm</button>
-      <label class="btn ince"><input type="checkbox" id="onceki-gizle"> öncekileri gizle</label>
+    <div class="sahne-ust">
+      <div class="sahne-arac">
+        <button class="btn ince" id="tekrar" title="Uçuşu tekrar oynat: adımın parçaları birlikte (R)">↻ <span class="yazi">uçuş</span></button>
+        <button class="btn ince" id="sifirla" title="Görünümü sıfırla (V)">⌖ <span class="yazi">görünüm</span></button>
+        <span class="btn ince grup" role="radiogroup" aria-label="Önceki adımların parçaları" title="Önceki adımların parçaları (O)">
+          <span class="yazi">öncekiler:</span>
+          <label><input type="radio" name="onceki" value="opak" checked> opak</label>
+          <label><input type="radio" name="onceki" value="saydam"> saydam</label>
+          <label><input type="radio" name="onceki" value="gizli"> gizli</label>
+        </span>
+        <button class="btn ince" id="patlat" title="Parçaları patlat ve beklet / topla (P)">⇱ <span class="yazi">patlat</span></button>
+        <button class="btn ince" id="tak" title="Sıradaki panel satırını tak (Boşluk; geri al: Shift+Boşluk)">▶ <span class="yazi">tak</span></button>
+        <button class="btn ince" id="mini-dugme" title="Robotun neresi: küçük görünüm (M)">▣ <span class="yazi">konum</span></button>
+      </div>
+      <div class="etiket" id="etiket" hidden></div>
+    </div>
+    <div class="mini" id="mini" hidden aria-label="Robotun neresi: bütün robot soluk, bu adımın parçaları turuncu">
+      <div class="mini-bas"><span>Robotun neresi</span><button class="mini-x" id="mini-kapat" title="Küçük görünümü kapat (M)" aria-label="Kapat">×</button></div>
+      <div class="mini-hal" id="mini-hal" hidden></div>
     </div>
     <div class="lejant" id="lejant"></div>
   </section>
@@ -53,17 +67,9 @@ var ce=console.error;console.error=function(){k(Array.prototype.join.call(argume
 <script type="application/json" id="kontrol-veri"></script>
 <script src="veri/rehber-veri.js"></script>
 <script src="veri/robot-glb.js"></script>
+<!-- three.js 0.160.0 + GLTFLoader, OrbitControls, toCreasedNormals tek klasik betikte (F10a): internetsiz ve file:// ile açılır -->
+<script src="vendor/three-0.160.0-paket.min.js"></script>
 <script src="app.js"></script>
-<script type="importmap">
-{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-"three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
-</script>
-<script type="module">
-import * as THREE from "three";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { toCreasedNormals } from "three/addons/utils/BufferGeometryUtils.js";
-window.RehberBaslat({ THREE, GLTFLoader, OrbitControls, toCreasedNormals });
-</script>
+<script>window.RehberBaslat(window.LALE_UC);</script>
 </body>
 </html>
