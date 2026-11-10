@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F10a Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+h3{font-size:1rem;margin:20px 0 8px}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+.kare{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.kare figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px}
+.kare img{width:100%;height:auto;display:block;border-radius:6px}
+.kare figcaption{font-size:.82rem;color:var(--muted);margin-top:4px}
+kbd{font:0.85em ui-monospace,Consolas,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;background:var(--panel)}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F10a: rehber arayüzü küçükleri (P10.1)</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 11.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>F10a-brief.md</code>, <code>F10a-gunluk.md</code> (A, düzeltme turu 1 dahil), <code>F10a-kontrol.md</code> (B), <code>planlama/rehber/kontrol.json</code> ve <code>F10a-dogrula.json</code> (ikisi de 2026-11-11 02:02), C'nin kendi ölçümü</p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">Yazdırma kareleri</div><div class="v"><span class="tag ok">50 / 50 çizili</span></div><div class="d">kontrolde 19 / 50 boştu; C'nin ek tam turu da 50 / 50, boş 0</div></div>
+  <div class="card"><div class="k">PDF</div><div class="v">54 sayfa</div><div class="d">50 adım görüntüsü, boş 0; en küçük yazı 8,1 pt (HEAD de 54 / 8,1)</div></div>
+  <div class="card"><div class="k">Seçim sınaması</div><div class="v"><span class="tag ok">6 / 6</span></div><div class="d">kimlik kümesi birebir; fazla 0, eksik 0</div></div>
+  <div class="card"><div class="k">Ağsız açılış</div><div class="v"><span class="tag ok">dış istek 0</span></div><div class="d">konsol 0; model 1192 mesh; <code>rehber/</code> içinde CDN 0</div></div>
+  <div class="card"><div class="k">Kadraj ortancası</div><div class="v">0,173 → 0,401</div><div class="d">taşan yeni parça 0; 0,05 altı yalnız 25 E2a</div></div>
+  <div class="card"><div class="k">Paket durumu</div><div class="v"><span class="tag ok">geçti</span></div><div class="d">1 düzeltme turu; F10d'ye devredilen 2 madde</div></div>
+</div>
+
+<h2>Ne istendi</h2>
+<p>Ahmet rehberi 10.11'de gezdi: seçilen parça farklı renkte görünsün, kabuk adımlarında içeride takılan parçalar görünsün, rehber atölyede işe yarasın. Brief (<code>F10a-brief.md</code>) dört iş verdi; yalnız sayfa kodu değişecek, rehber verisi (<code>rehber/veri/</code>) ve model değişmeyecekti:</p>
+<ol class="list">
+<li>Seçim vurgusu: tıklanan parça ve aynı kalemin kopyaları; panel satırından seçme; kablo tüpleri; Esc ve boş tık temizler.</li>
+<li>Öncekiler yarı saydam (üçüncü durum) ve adımın parçalarını patlatıp panel sırasıyla satır satır takma.</li>
+<li>"Robotun neresi" küçük görünümü ve yeni parçalara sıkı kadraj.</li>
+<li>İnternetsiz açılma: three.js 0.160.0 ve eklentiler <code>rehber/vendor/</code> altından.</li>
+</ol>
+
+<h2>Ne yapıldı</h2>
+<ul class="list">
+<li><b>Seçim:</b> tıklanan parça açık yeşil <code>#7cfc00</code>, aynı satırın kopyaları soluk yeşil <code>#cdf7a6</code>, önündeki parçanın arkasından görünen yarı saydam "röntgen" silueti. Panel satırı, kablo ve şema satırları da tıklanır. Vurgu asıl malzemeyi değiştirmez, temizlenince eski renk geri gelir.</li>
+<li><b>Öncekiler:</b> opak / saydam / gizli. <b>Patlat</b> adımın parçalarını uçuş başlangıcında bekletir, <b>tak</b> panel sırasıyla bir satırı 0,9 s'de yerine götürür. Eski "↻ uçuş" korundu (hızlı genel bakış). Son satır takılınca kamera açılıştaki sıkı kadraja döner (düzeltme turu, B-4).</li>
+<li><b>Küçük görünüm:</b> sağ altta bütün robot soluk, bu adımın parçaları kehribar <code>#ffb000</code>; tezgâh adımlarında parçanın robottaki yeri. Kadraj artık yeni parçaların köşelerini araç çubuğu, lejant ve küçük görünüm dışındaki alana sığdırır.</li>
+<li><b>İnternetsiz:</b> <code>rehber/vendor/three-0.160.0-paket.min.js</code> (npm <code>three@0.160.0</code> + <code>GLTFLoader</code>, <code>OrbitControls</code>, <code>toCreasedNormals</code>, tek klasik betik) ve <code>LICENSE-three.txt</code> (MIT). <code>file://</code> ile çift tıklayınca açılır.</li>
+<li><b>Doğrulama betiği</b> <code>F10a-dogrula.py</code>: seçim (kimlik kümesiyle), ağsız açılış, kadraj önce / sonra, küçük görünüm, yazdırma kareleri ve PDF görüntüleri.</li>
+<li><b>Üretici koruması</b> (<code>rehber_uret.py</code>, düzeltme turu): her yazdırma karesinde model çizili mi pikselden denetlenir; boşsa 3 kez yeniden çekilir, hâlâ boşsa <code>kontrol.json</code> <code>yazdir_goruntu.bos</code> ve çıkış 2.</li>
+</ul>
+
+<h2>Kabul tablosu (C'nin ölçtüğü)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Ölçüt</th><th>C'nin ölçtüğü</th><th>Kaynak</th><th>A'nın sayısı</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td><code>kontrol.json</code> adım, konsol, parça</td><td>50 / 50, konsol 0, 1192 ↔ 1192, her parça tek adımda</td><td><code>kontrol.json</code> <code>ozet</code></td><td>aynı</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Denetim</td><td>yasak 0, ASCII 0, gruplama 0, çelişki 0, zorunlu eksik 0</td><td><code>kontrol.json</code> <code>denetim</code></td><td>aynı</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>360 px taşma</td><td>üretici 7 adım × 0 px; küçük görünüm 50 adımda en çok 0 px, panelle kesişim 0</td><td><code>kontrol.json</code> <code>telefon</code>, <code>F10a-dogrula.json</code> <code>mini.telefon_360</code></td><td>aynı</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Yazdırma kareleri <code>rehber/goruntu/</code></td><td>50 / 50 çizili. C'nin piksel ölçüsü (zeminden sapan piksel oranı, mini köşe ve lejant hariç): en düşük 0,051 (adım 2); boş örneklerde 0,000. Gözle 12 kare: 00, 01, 02, 17, 21, 25, 31, 32, 38, 43, 45, 46</td><td>C'nin betiği</td><td>50 / 50</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Kararlılık (üreticinin çekim komutuyla ek tam tur, scratchpad'e)</td><td>50 kare, boş 0; en düşük oran 0,051; <code>cizim_orani</code> en düşük 0,0595</td><td>C'nin koşusu</td><td>3 × 50, boş 0</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Üretici koruması sınaması</td><td>kontrolün 5 boş örneği: 5 / 5 boş (0,0); C'nin zemin + gerçek lejant + dolu mini köşe karesi: 0,0 (boş); HEAD'in 50 dolu karesi: boş sayılan 0, en düşük 0,0205 (adım 37); depodaki 50 kare: boş sayılan 0, en düşük 0,0595</td><td><code>rehber_uret.cizim_orani()</code></td><td>19 / 19 eski boş; HEAD en düşük 0,0205</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>PDF</td><td>54 sayfa; 50 adım görüntüsü (1200 × 720), boş 0; en küçük yazı 8,1 pt</td><td>PyMuPDF, C'nin betiği</td><td>aynı</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Seçim sınaması</td><td>6 / 6 (12 B5a ve 44 H0c tezgâh, 17 K1 kablolama, 31 E4, 33 F1, 34 F2 kabuk): parça ve panel kümesi birebir; boş tık 0; adım değişince 0</td><td><code>F10a-dogrula.json</code> <code>secim</code></td><td>6 / 6</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Ağsız açılış (<code>F10a-dogrula</code>)</td><td>3 sayfa, istek 18 (hepsi <code>file://</code>), dış 0, konsol 0, model 1192</td><td><code>F10a-dogrula.json</code> <code>agsiz</code></td><td>aynı</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Kadraj</td><td>taşan yeni parça 0 (önce de 0); ortanca 0,1733 → 0,4013; 50 adımın 50'sinde büyüdü; 0,05 altı yalnız 25 E2a (0,0307; önce 5 adım: 16, 25, 26, 27, 28)</td><td><code>F10a-dogrula.json</code> <code>kadraj</code> (ortancayı C yeniden hesapladı)</td><td>aynı</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Küçük görünüm</td><td>1400 px 50 / 50, 360 px 50 / 50</td><td><code>F10a-dogrula.json</code> <code>mini</code></td><td>aynı</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>C'nin canlı sınaması (33 F1, <code>file://</code>, ağ kapalı, 1400 × 900)</td><td>dış istek 0 (6 istek, hepsi yerel), konsol 0; parça tıklama: yeşil piksel 0 → 106.685, etiket "Etek ön sağ … Aynı kalemden 1 kopya daha"; Esc: 0, açılış karesiyle fark 0,0; patlat: fark 19,4; tak 11 basışta 11 / 11; son karede piksellerin %99,45'i açılışla aynı (ortalama fark 0,19)</td><td>C'nin betiği (sınama kancası kullanılmadı)</td><td>—</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td><code>rehber/veri/</code></td><td><code>git diff --quiet HEAD -- rehber/veri</code> çıkış 0</td><td>git</td><td>0</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Çakışma, regresyon</td><td><code>carpisma_kos kontrol</code> 0 (17 dosya kayıtla aynı); regresyon 10 / 10 aynı, GEÇER</td><td>C'nin koşusu</td><td>aynı</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td><code>F9b-dogrula</code></td><td>0 (belge değişikliğinden önce ve sonra); demo yeniden üretilmedi</td><td>C'nin koşusu</td><td>0</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td><code>F9c-dogrula</code></td><td>çıkış 1, hata 15 (bilinen: sonuç sayfası F9c'den beri yenilenmedi, faz kalıbı F10'u tanımıyor; P10.9)</td><td>C'nin koşusu</td><td>—</td><td><span class="tag wait">bilinen</span></td></tr>
+</tbody>
+</table></div>
+<p class="note">Günlükle fark yok: <code>kontrol.json</code> ve <code>F10a-dogrula.json</code>'daki sayılar günlüğün düzeltme turu tablosuyla aynı. Günlüğün ilk bölümündeki "son koşu 00:49" eskidir; iki JSON'un tarihi 02:02.</p>
+
+<h2>Kontrolün bulduğu hata ve kök nedeni</h2>
+<p><b>B-1 (engelleyen):</b> ilk teslimde yazdırılabilir sürümün 3B karelerinin 19 / 50'si (00, 01, 02, 03, 04, 06, 17, 18, 21, 26, 29, 31, 32, 38, 41, 42, 43, 45, 46) ve PDF'in 19 sayfası boştu: yalnız zemin, lejant ve küçük görünümün çerçevesi. Üretici yalnız dosyanın varlığına bakıyordu, doğrulama betiği bu kareleri hiç ölçmüyordu.</p>
+<p><b>Kök neden</b> (A, olay günlüğü ve ikiye bölme ile): başsız Chrome <code>--screenshot</code> görüntüyü almadan hemen önce pencereyi yeniden boyutlandırıyor. <code>ResizeObserver</code> → <code>boyut()</code> → <code>renderer.setSize()</code> tuvalin tamponunu temizliyor, yeniden çizim ise bir sonraki kareye bırakılıyordu. Boş karelerde son olay <code>setSize</code>, ardından çizim yok. Kusur HEAD'de de vardı; küçük görünümün aynı tuvaldeki ikinci çizim geçişi çizimi pahalılaştırınca yarış açığa çıktı (küçük görünüm kapalıyken 100 karede 0 boş).</p>
+<p><b>Düzeltme:</b> <code>boyut()</code> <code>setSize</code>'dan sonra aynı karede çiziyor (<code>rehber/app.js</code>). Üretici her karede piksel denetimi yapıyor. <code>rehber_uret.py</code> diff'ini C okudu: yalnız <code>cizim_orani()</code>, <code>sahne_goruntu()</code> içindeki yeniden çekim döngüsü, <code>kontrol.json</code>'a yeni alanlar, çıkış koşuluna <code>bos</code> ve başlık yorumunda bir satır var. Öbür davranış aynı. Tek ek sertlik: PIL yoksa denetim geçmiyor.</p>
+<p><b>Öbür bulgular:</b> B-3 (betik vurguyu sayıyla karşılaştırıyordu) düzeltildi, artık kimlik kümesi. B-4 (tak bitince kadraj patlak kutuda kalıyordu) düzeltildi. B-2 ve B-5 F10d'ye devredildi (aşağıda).</p>
+
+<h2>Önce / sonra</h2>
+<p class="note">Etkileşimli sayfa, 1400 × 900, <code>?cekim=1</code>. "Önce" HEAD'deki sayfa, aynı veri ve aynı yerel three.js paketiyle.</p>
+<div class="kare">
+<figure><a href="F10a-goruntu-12-acik-once.png"><img src="F10a-goruntu-12-acik-once.png" alt="12 B5a tezgâh · açık · önce (HEAD)" loading="lazy"></a><figcaption>12 B5a tezgâh · açık · önce (HEAD)</figcaption></figure>
+<figure><a href="F10a-goruntu-12-acik-sonra.png"><img src="F10a-goruntu-12-acik-sonra.png" alt="12 B5a tezgâh · açık · sonra" loading="lazy"></a><figcaption>12 B5a tezgâh · açık · sonra</figcaption></figure>
+<figure><a href="F10a-goruntu-12-koyu-once.png"><img src="F10a-goruntu-12-koyu-once.png" alt="12 · koyu · önce" loading="lazy"></a><figcaption>12 · koyu · önce</figcaption></figure>
+<figure><a href="F10a-goruntu-12-koyu-sonra.png"><img src="F10a-goruntu-12-koyu-sonra.png" alt="12 · koyu · sonra" loading="lazy"></a><figcaption>12 · koyu · sonra</figcaption></figure>
+<figure><a href="F10a-goruntu-17-acik-once.png"><img src="F10a-goruntu-17-acik-once.png" alt="17 K1 kablolama · açık · önce (HEAD)" loading="lazy"></a><figcaption>17 K1 kablolama · açık · önce (HEAD)</figcaption></figure>
+<figure><a href="F10a-goruntu-17-acik-sonra.png"><img src="F10a-goruntu-17-acik-sonra.png" alt="17 K1 kablolama · açık · sonra" loading="lazy"></a><figcaption>17 K1 kablolama · açık · sonra</figcaption></figure>
+<figure><a href="F10a-goruntu-17-koyu-once.png"><img src="F10a-goruntu-17-koyu-once.png" alt="17 · koyu · önce" loading="lazy"></a><figcaption>17 · koyu · önce</figcaption></figure>
+<figure><a href="F10a-goruntu-17-koyu-sonra.png"><img src="F10a-goruntu-17-koyu-sonra.png" alt="17 · koyu · sonra" loading="lazy"></a><figcaption>17 · koyu · sonra</figcaption></figure>
+<figure><a href="F10a-goruntu-31-acik-once.png"><img src="F10a-goruntu-31-acik-once.png" alt="31 E4 kafa kabukları · açık · önce (HEAD)" loading="lazy"></a><figcaption>31 E4 kafa kabukları · açık · önce (HEAD)</figcaption></figure>
+<figure><a href="F10a-goruntu-31-acik-sonra.png"><img src="F10a-goruntu-31-acik-sonra.png" alt="31 E4 kafa kabukları · açık · sonra" loading="lazy"></a><figcaption>31 E4 kafa kabukları · açık · sonra</figcaption></figure>
+<figure><a href="F10a-goruntu-31-koyu-once.png"><img src="F10a-goruntu-31-koyu-once.png" alt="31 · koyu · önce" loading="lazy"></a><figcaption>31 · koyu · önce</figcaption></figure>
+<figure><a href="F10a-goruntu-31-koyu-sonra.png"><img src="F10a-goruntu-31-koyu-sonra.png" alt="31 · koyu · sonra" loading="lazy"></a><figcaption>31 · koyu · sonra</figcaption></figure>
+<figure><a href="F10a-goruntu-33-acik-once.png"><img src="F10a-goruntu-33-acik-once.png" alt="33 F1 taban eteği · açık · önce (HEAD)" loading="lazy"></a><figcaption>33 F1 taban eteği · açık · önce (HEAD)</figcaption></figure>
+<figure><a href="F10a-goruntu-33-acik-sonra.png"><img src="F10a-goruntu-33-acik-sonra.png" alt="33 F1 taban eteği · açık · sonra" loading="lazy"></a><figcaption>33 F1 taban eteği · açık · sonra</figcaption></figure>
+<figure><a href="F10a-goruntu-33-koyu-once.png"><img src="F10a-goruntu-33-koyu-once.png" alt="33 · koyu · önce" loading="lazy"></a><figcaption>33 · koyu · önce</figcaption></figure>
+<figure><a href="F10a-goruntu-33-koyu-sonra.png"><img src="F10a-goruntu-33-koyu-sonra.png" alt="33 · koyu · sonra" loading="lazy"></a><figcaption>33 · koyu · sonra</figcaption></figure>
+<figure><a href="F10a-goruntu-44-acik-once.png"><img src="F10a-goruntu-44-acik-once.png" alt="44 H0c tezgâh · açık · önce (HEAD)" loading="lazy"></a><figcaption>44 H0c tezgâh · açık · önce (HEAD)</figcaption></figure>
+<figure><a href="F10a-goruntu-44-acik-sonra.png"><img src="F10a-goruntu-44-acik-sonra.png" alt="44 H0c tezgâh · açık · sonra" loading="lazy"></a><figcaption>44 H0c tezgâh · açık · sonra</figcaption></figure>
+<figure><a href="F10a-goruntu-44-koyu-once.png"><img src="F10a-goruntu-44-koyu-once.png" alt="44 · koyu · önce" loading="lazy"></a><figcaption>44 · koyu · önce</figcaption></figure>
+<figure><a href="F10a-goruntu-44-koyu-sonra.png"><img src="F10a-goruntu-44-koyu-sonra.png" alt="44 · koyu · sonra" loading="lazy"></a><figcaption>44 · koyu · sonra</figcaption></figure>
+</div>
+<h3>Seçim, saydam + tak</h3>
+<div class="kare">
+<figure><a href="F10a-goruntu-31-koyu-secim.png"><img src="F10a-goruntu-31-koyu-secim.png" alt="31 · koyu · seçim vurgusu (yeşil ana, açık yeşil kopyalar)" loading="lazy"></a><figcaption>31 · koyu · seçim vurgusu (yeşil ana, açık yeşil kopyalar)</figcaption></figure>
+<figure><a href="F10a-goruntu-44-acik-secim.png"><img src="F10a-goruntu-44-acik-secim.png" alt="44 · açık · seçim vurgusu" loading="lazy"></a><figcaption>44 · açık · seçim vurgusu</figcaption></figure>
+<figure><a href="F10a-goruntu-31-koyu-saydam-patlat.png"><img src="F10a-goruntu-31-koyu-saydam-patlat.png" alt="31 · saydam + patlat / tak: QLED kabuk içinde görünür" loading="lazy"></a><figcaption>31 · saydam + patlat / tak: QLED kabuk içinde görünür</figcaption></figure>
+<figure><a href="F10a-goruntu-33-koyu-saydam-patlat.png"><img src="F10a-goruntu-33-koyu-saydam-patlat.png" alt="33 · saydam + patlat" loading="lazy"></a><figcaption>33 · saydam + patlat</figcaption></figure>
+<figure><a href="F10a-goruntu-33-koyu-saydam-tak-son.png"><img src="F10a-goruntu-33-koyu-saydam-tak-son.png" alt="33 · 11 / 11 satır takılı, kadraj açılıştakine döndü (B-4)" loading="lazy"></a><figcaption>33 · 11 / 11 satır takılı, kadraj açılıştakine döndü (B-4)</figcaption></figure>
+</div>
+
+<h2>Kullanım</h2>
+<div class="tbl"><table>
+<thead><tr><th>Tuş</th><th>Ne yapar</th></tr></thead>
+<tbody>
+<tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>önceki / sonraki adım</td></tr>
+<tr><td><kbd>P</kbd></td><td>patlat: adımın parçaları yerinden uzakta bekler; ikinci basış topla</td></tr>
+<tr><td><kbd>Boşluk</kbd></td><td>sıradaki panel satırını yerine tak (patlak değilse önce patlatır)</td></tr>
+<tr><td><kbd>Shift</kbd> + <kbd>Boşluk</kbd></td><td>son takılan satırı geri çıkar</td></tr>
+<tr><td><kbd>O</kbd></td><td>öncekiler: opak → saydam → gizli</td></tr>
+<tr><td><kbd>M</kbd></td><td>"robotun neresi" küçük görünümünü aç / kapat</td></tr>
+<tr><td><kbd>Esc</kbd></td><td>seçimi temizle (boş alana tıklamak da temizler)</td></tr>
+<tr><td><kbd>R</kbd> · <kbd>V</kbd> · <kbd>T</kbd></td><td>uçuşu yeniden oynat · görünümü sıfırla · tema</td></tr>
+</tbody>
+</table></div>
+<div class="oneri"><b>İçeriyi görmek için:</b> kabuk adımlarında (31 E4, 33 F1) yeni parçanın kendisi kabuk olduğu için "saydam" tek başına içeriyi açmaz. <b>O</b> ile saydamı seç, <b>P</b> ile patlat, sonra <b>Boşluk</b> ile satır satır tak: takılan satırlar saydamlaşır, içeride sıradaki parça görünür.</div>
+<p class="note">Rehber çift tıklayınca internetsiz açılır (<code>README.md</code> ve <code>R-gunluk.md</code> bu pakette güncellendi). Demo görüntüleyici (<code>tasarim/cad/viewer-template.html</code>) bu paketin dışında ve hâlâ çevrim içi.</p>
+
+<h2>Açık kalanlar</h2>
+<ul class="list">
+<li><b>F10d'ye devredildi, B-2:</b> iki kollu tezgâh adımlarında (21 D1c, 43 H0b, 45 H0d, 46 H0e) sıkı kadraj iki küçük parçayı karenin iki kenarına itiyor; parçalar önceki adımın gri bloklarının arkasında kalıyor. C de yazdırma karelerinde gördü (21'de horn'lar görünmüyor). Oran ölçüsü birleşik kutudan alındığı için bunu iyileşme sayıyor.</li>
+<li><b>F10d'ye devredildi, B-5:</b> saydam kip tek başına 31 ve 33'te içeriyi göstermiyor; içerisi saydam + patlat / tak ile görünüyor.</li>
+<li><b>Adım 25 E2a:</b> pan hornu sıkı kadrajda da görünmüyor (yuvanın içinde, oran 0,0307); kamera yönü / alt adım verisi işi.</li>
+<li><b>Demo görüntüleyici</b> (<code>tasarim/cad/viewer-template.html</code>) three.js r128'i CDN'den alıyor; internetsiz 3B açılmaz. Yerel paket r128 → 0.160 API farkıyla denenmeli.</li>
+<li>Küçük görünüm ölçümü (<code>RehberTest.miniOlc()</code>) ölçmeden önce kendisi çiziyor; yazdırma karelerinde küçük görünüme yalnız gözle bakıldı (C: 12 karede çizili).</li>
+<li><code>F9c-dogrula</code> 15 hata: sonuç sayfası eski, P10.9'da ele alınacak.</li>
+</ul>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th><th>Dosya</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>749627b</code></td><td>Paket: <code>rehber/</code> sayfa kodu ve <code>vendor/</code>, yazdırma kareleri, üretici çıktıları, <code>rehber_uret.py</code>, <code>README.md</code>, <code>R-gunluk.md</code>, <code>F10a-*</code> (brief, betik, JSON, günlük, kontrol, 25 görüntü)</td><td class="n">147</td></tr>
+<tr><td class="kod">bu rapor</td><td><code>F10a-rapor.html</code></td><td class="n">1</td></tr>
+</tbody>
+</table></div>
+<p class="note">Her commit açık <code>git add</code> listesiyle. Dışarıda kalanlar: oturum öncesinden kalan 13 <code>tasarim/freecad/kabuk/gorsel/*.png</code>, <code>montaj/yerlesim-kontrol.json</code> ve izlenmeyen klasörler.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F10a · 11.11.2026 · <code>lale-duzeltme</code> · yazdırma kareleri 50 / 50 (ek tur 50 / 50) · PDF 54 sayfa, boş 0, 8,1 pt · seçim 6 / 6 · dış istek 0, konsol 0 · kadraj 0,173 → 0,401, taşan 0 · küçük görünüm 50 / 50 + 50 / 50 · regresyon 10 / 10 · F9b 0, F9c 15 (bilinen) · Kaynaklar: <code>F10a-brief.md</code>, <code>F10a-gunluk.md</code>, <code>F10a-kontrol.md</code>, <code>kontrol.json</code>, <code>F10a-dogrula.json</code>.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
