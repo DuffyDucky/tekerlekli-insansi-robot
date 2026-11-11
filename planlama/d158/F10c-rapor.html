@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F10c Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+h3{font-size:1rem;margin:20px 0 8px}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+.kare{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.kare figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px}
+.kare img{width:100%;height:auto;display:block;border-radius:6px}
+.kare figcaption{font-size:.82rem;color:var(--muted);margin-top:4px}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F10c: rehber sıra düzeltmeleri + kalıcı sıra denetimi (P10.3)</h1>
+<p class="sub">Ajan C (ölçüm ve kayıt) · 11.11.2026 · dal <code>lale-duzeltme</code> · kaynaklar: <code>F10c-brief.md</code>, <code>F10c-gunluk.md</code> (A, düzeltme turu 1 dahil), <code>F10c-kontrol.md</code> (B), <code>planlama/rehber/kontrol.json</code> (05:30), <code>F10a-dogrula.json</code>, C'nin kendi ölçümü</p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<div class="cards">
+  <div class="card"><div class="k">E3 kafa girişi</div><div class="v"><span class="tag ok">+y serbest</span></div><div class="d">yeni sırayla; eski sıra +y 0 mm (C'nin hacimsel süpürmesi)</div></div>
+  <div class="card"><div class="k">Sıra denetimi</div><div class="v">ulaşılamaz 0</div><div class="d">565 bağlantı; gerçek düzeltme 4 tabla cıvatası (kırılım 4 + 11 + 3)</div></div>
+  <div class="card"><div class="k">Taşınan parça</div><div class="v">5</div><div class="d">1192 ↔ 1192, başka alan farkı 0; <code>robot.glb</code> bayt aynı</div></div>
+  <div class="card"><div class="k">PDF</div><div class="v">55 sayfa</div><div class="d">önce 54; en küçük yazı 8,1 pt; 50 adım görüntüsü</div></div>
+  <div class="card"><div class="k">Açık karar</div><div class="v"><span class="tag wait">K54</span></div><div class="d">E3 sıfır boşluk; kuyruk açık 49 / toplam 54</div></div>
+  <div class="card"><div class="k">Paket durumu</div><div class="v"><span class="tag ok">geçti</span></div><div class="d">1 düzeltme turu (E3 "kilitli" yanlıştı)</div></div>
+</div>
+
+<h2>Ne istendi</h2>
+<p>10.11'deki montaj sırası kontrolü (565 alet isteyen bağlantı, mesh üzerinde ışın + voksel) bir ölçülmüş, üç muhtemel sorun ve tutmayan üç erişim iddiası buldu. Brief (<code>F10c-brief.md</code>) bunları rehberde düzeltmeyi ve kontrolü her üretimde koşan kalıcı denetime çevirmeyi istedi. Adım sayısı 50 kalacak, model geometrisi değişmeyecekti.</p>
+<ol class="list">
+<li>E4 (adım 31): dört tabla cıvatası (M3×10) bugünkü sırada alete kapalı; aday sıraları ölç, dördünün de erişildiği sırayı seç.</li>
+<li>E3 (adım 30): kafa düz yoldan yerine girmiyor görünüyor; CAD'de doğrula, 625ZZ + pimi E3'e taşı ya da ölçümün gösterdiği sırayı uygula; kafa en az bir yönden serbest girmeli.</li>
+<li>K1 (17): alt kat klemens uçları B3'e (9); F4 (36): kol servo uçlarını omuz yarığından dışarı alma satırı.</li>
+<li>Tutmayan üç erişim iddiası (K1, E4, H0a) ölçüme uysun; B6 (15) adımına K53 "bilinen açık konu" notu.</li>
+<li>Kalıcı denetim: alet + el erişimi ve perdelenme <code>kontrol.json</code>'a; sınır "ulaşılamaz" 0; bilinen kapalı örneği yakaladığı sınamayla gösterilsin.</li>
+</ol>
+
+<h2>Ne yapıldı</h2>
+<ul class="list">
+<li><b>Yeni modüller</b> (FreeCAD'siz, numpy): <code>tasarim/freecad/rehber/rehber_sira.py</code> (alet ışını DUZ / L / L_DAR / ACILI / YOK, somunda LOKMA / ACIK_AGIZ / CEP; el: 3 mm voksel, dışarıya bağlı ve engelden ≥ 20 mm bölge; perdelenme 26 yön) ve <code>rehber_giris.py</code> (alt montajın / masa grubunun robota giriş yolu: üç eksende ışın aralıkları, ortak boy &gt; 0,2 mm çarpışma, temas sayılmaz). <code>rehber_uret.py</code> 8. adım; <code>kontrol.json</code> <code>sira</code> (içinde <code>giris</code>) ve <code>perdelenme</code>.</li>
+<li><b>E3:</b> kafa tasarımın kendi montaj tarifine (<code>tasarim/freecad/kafa/kafa_rapor.py</code> SIRA) göre: horn E2'de servoya (merkez vidası yok), 625ZZ E3a'da sol yanağa tek parça, E3'te kafa yukarıdan iner, sonra horn vidası, 4 yanak-horn cıvatası, pul + pim. E3'e "sıfır boşluk" notu.</li>
+<li><b>E4:</b> sağ arka kabuk + ReSpeaker (masada) → sol arka kabuk + ses kartı + PAM8403 (masada) → tabla cıvataları (önden, L alyan) → yüz kabuğu + kamera + QLED + tırnaklar (masada) → kablolar → dikişler. Sıralı takma (<code>tak</code>) bu sırayı izliyor.</li>
+<li><b>Metin:</b> B3, B6, K1, E2, E3a, E3, E4, F4, H0a (<code>rehber_metin.py</code>); F3 adım içi sıra ve G4 pozu veriye eklendi.</li>
+<li><b><code>F10a-dogrula.py</code>:</b> "önce" sayfası <code>749627b~1</code>'den (HEAD'den değil; F10a commit'inden beri kırıktı), <code>veri_degismedi</code> kabul ölçütü değil bilgi.</li>
+</ul>
+
+<h2>Kabul tablosu (C'nin ölçtüğü)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Ölçüt</th><th>C'nin ölçtüğü</th><th>Kaynak</th><th>Günlükteki sayı</th><th>Durum</th></tr></thead>
+<tbody>
+<tr><td>Adım, konsol, parça</td><td>50 / 50, konsol 0, 1192 ↔ 1192, her parça tek adımda</td><td><code>kontrol.json</code> <code>ozet</code></td><td>aynı</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Taşınan parçalar</td><td>tam 5 (aşağıda); başka parçada alan farkı 0; kimlik kümesi aynı; satırda birden çok kez geçen 0</td><td>C'nin betiği, HEAD ↔ çalışma ağacı <code>rehber-veri.json</code></td><td>5</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Model</td><td><code>git diff --quiet HEAD -- rehber/veri/robot.glb</code> ve <code>robot-glb.js</code>: 0 / 0. <code>tasarim/freecad/</code> altında bu paketin değişikliği yalnız <code>rehber/</code></td><td>git</td><td>aynı</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Denetim</td><td>yasak 0, ASCII 0, gruplama 0, çelişki 0, zorunlu eksik 0</td><td><code>kontrol.json</code> <code>denetim</code></td><td>aynı</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Sıra denetimi</td><td>ulaşılamaz 0; DUZ 469, L 39, ACIK_AGIZ 21, ACIK_AGIZ_DAR 9, CEP 14, LOKMA 11, POZA_BAGLI 2 (toplam 565); sınama 5 / 5 (el 20 mm); duyarlılık el 15 / 12 mm'de ayırmıyor (bilgi)</td><td><code>kontrol.json</code> <code>sira</code></td><td>aynı</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Giriş yolu (kalıcı)</td><td>girilemez 0; E3 kafa +y, +z, −z; sağ arka kabuk −z; sol arka kabuk −x, −z; yüz grubu +z; sınama 3 / 3 (eski E3 sırası kapalı, yeni açık, sol önce takılıyken sağ kabuk kapalı)</td><td><code>kontrol.json</code> <code>sira.giris</code></td><td>aynı</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>E3 bağımsız (C)</td><td>yeni sıra +y, +z, −z serbest; −y 12 mm, ±x 0 mm; dinlenmede ortak hacim 0. Eski sıra (HEAD verisi) +y, +z, −z 0 mm (horn ve horn vidası ↔ servo mili)</td><td>aşağıda</td><td>+y serbest; −y 12,25 mm</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>E4 bağımsız (C)</td><td>sağ arka kabuk önce: −z serbest; sol arka kabuk, sağ takılıyken: −z serbest. Tabla cıvataları: düz alet yolu 63,4 mm, L uzun kol 90 mm serbest yön 9 / 5 / 10 / 4</td><td>aşağıda</td><td>63,5 mm; sağ −z, sol −x / −z</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Perdelenme</td><td>50 satır, toplam tamamen gizli 291 (eşik yok)</td><td><code>kontrol.json</code> <code>perdelenme</code></td><td>291</td><td><span class="tag info">ölçüm</span></td></tr>
+<tr><td>PDF</td><td>55 sayfa (HTML 55), en küçük yazı 8,1 pt (PyMuPDF ile C), 50 adım görüntüsü; görüntüsüz 5 sayfa = 5 devam sayfası (19, 34, 36, 40, 55); taşan 0</td><td>PyMuPDF, <code>kontrol.json</code> <code>yazdir</code></td><td>55, 8,1 pt</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Yazdırma kareleri</td><td>50 / 50 çizili, eksik 0, boş 0, en düşük oran 0,0595</td><td><code>kontrol.json</code> <code>yazdir_goruntu</code>, <code>F10a-dogrula</code></td><td>aynı</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td><code>F10a-dogrula</code> (depodaki hâliyle)</td><td>çıkış 0, 399 s: seçim 6 / 6, ek sınamalar 6 / 6, ağsız dış istek 0, konsol 0, kadraj ortancası 0,1733 → 0,4013, taşan 0, küçük görünüm 50 / 50 + 50 / 50 (360 px), CDN 0; veri değişti (bilgi)</td><td>C'nin koşusu</td><td>0</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Canlı sınama (başsız Chrome, <code>file://</code>)</td><td>30: tak 1 alt montaj → 2 horn vidası → 3 M3×8 ×4 → 4 pul → 5 pim. 31: 1 sağ arka kabuk → 2 ReSpeaker → 3 dizi vidası → 4 sol arka kabuk … 7 PAM8403 → 8 M3×10 ×4 → 10 yüz kabuğu … 22 kablo şemaları</td><td>C'nin koşusu</td><td>aynı sıra</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td>Çakışma, regresyon</td><td><code>carpisma_kos kontrol</code> 0 (17 dosya kayıtla aynı); regresyon 10 / 10 GEÇER, kötüleşen yok</td><td>C'nin koşusu</td><td>0 / 10 / 10</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td><code>F9b-dogrula</code></td><td>0 (demo yeniden üretilmeden önce ve sonra)</td><td>C'nin koşusu</td><td>0</td><td><span class="tag ok">geçti</span></td></tr>
+<tr><td><code>F9c-dogrula</code></td><td>çıkış 1 (bilinen: sonuç sayfası F9c'den beri yenilenmedi; P10.9)</td><td>C'nin koşusu</td><td>—</td><td><span class="tag wait">bilinen</span></td></tr>
+</tbody>
+</table></div>
+<p class="note">Günlükle küçük farklar: E3 sağ yanak horn merkez vidasının el bölgesine uzaklığı <code>kontrol.json</code>'da 20,5 mm (günlük D1: 23,5); −y yolu C'de 12 mm (1 mm adım), A'da 12,25 mm (0,25 mm adım); tabla cıvatası düz alet yolu C'de 63,4, A'da 63,5 mm. Sonucu değiştiren fark yok.</p>
+
+<h2>Kontrolün bulduğu yanlış ve düzeltme</h2>
+<p><b>B-1 (engelleyen):</b> A'nın ilk teslimi E3 için "kafa yalnız eğme çatalına karşı bile 26 yönün hiçbirinden girmiyor, geometrik olarak kilitli; karar gerekiyor" dedi. B'nin hacimsel süpürmesi (yüzeyden 0,15 mm içeri kaydırılmış noktalar; temas eden yüzler çarpışma sayılmaz) kafanın yalnız çatala karşı +y'de serbest girdiğini gösterdi. Kök neden: A'nın süpürmesi (0,05 mm tolerans, ışın) x = −24,2'deki ortak yüzü, yani <b>temasın kendisini çarpışma saydı</b>. Kilit yalnız eksenel geçmelerde: horn ↔ servo mili kanalı, pim, 625ZZ iç bileziği.</p>
+<p><b>Düzeltme turu 1:</b> A yeni bir yöntem yazdı (<code>rehber_giris.py</code>, eşik 0,2 mm) ve aynı sonucu buldu; eşik 0'da (temas çarpışma) +y 4,25 mm'de "duruyor", çarpan ışın 1, derinlik 0,00 mm: ilk turdaki hatanın aynısı. Parçalar tasarımın tarifine göre taşındı.</p>
+<h3>C'nin bağımsız E3 ölçümü</h3>
+<p>B'nin süpürme modülü (<code>supur.py</code>, iç kaydırma 0,15 mm; yani ortak hacim derinliği yaklaşık 0,15 mm'yi geçmeyen temaslar çarpışma sayılmaz), kümeler <b>veriden</b> türetildi (hareketli: tezgâh anahtarı "kafa" olan parçalar; engel: <code>b</code> &lt; 30 ve kafanın yakınındaki parçalar), adım 1 mm, A'nın <code>rehber_giris.py</code>'si kullanılmadı.</p>
+<div class="tbl"><table>
+<thead><tr><th>Sıra</th><th>Hareketli / engel</th><th>+y (iniş)</th><th>Öbür yönler</th><th>Çarpan</th></tr></thead>
+<tbody>
+<tr><td>Yeni (çalışma ağacı verisi)</td><td>22 parça (625ZZ iç + dış bilezik dahil; horn ve horn vidası hariç) / 26 parça (horn servoda; pim, pul, iç bilezik yok)</td><td><span class="tag ok">serbest</span></td><td>+z, −z serbest; −y 12 mm; +x, −x 0 mm</td><td>−y kafa iskeleti ↔ çatal; +x iç bilezik ↔ çatal; −x iskelet ↔ horn</td></tr>
+<tr><td>Yeni, iç kaydırma 0,05 mm (duyarlılık)</td><td>aynı</td><td><span class="tag ok">serbest</span></td><td>—</td><td>—</td></tr>
+<tr><td>Eski (HEAD verisi, aynı tanım)</td><td>23 parça (horn + horn vidası kafada) / 28 parça (iç bilezik, pim, pul E2'de)</td><td><span class="tag crit">0 mm</span></td><td>+z, −z 0 mm</td><td>horn ve horn vidası ↔ servo çıkış mili</td></tr>
+</tbody>
+</table></div>
+<p class="note">Dinlenme konumunda ortak hacim üç koşuda da 0. Süre 729 / 35 / 81 s. Ölçülmedi: "horn servoda ama 625ZZ iç bileziği ve pim E2'de" ara sırası (rehber E3 metni bu durumda da "yukarıdan girmez" diyor; ölçülmüş olan yalnız horn kafadayken).</p>
+
+<h2>Taşınan 5 parça</h2>
+<div class="tbl"><table>
+<thead><tr><th>Parça</th><th>Önce</th><th>Sonra</th><th>Değişen alanlar</th><th>Neden</th></tr></thead>
+<tbody>
+<tr><td><code>p0830</code> Tilt horn 25T alüminyum disk</td><td class="n">29 E3a</td><td class="n">28 E2</td><td>a, b, t, u, ub</td><td>servoya, merkez vidası olmadan</td></tr>
+<tr><td><code>p0831</code> Tilt horn merkez vidası M3</td><td class="n">29 E3a</td><td class="n">30 E3</td><td>a, t, ub</td><td>kafa indikten sonra sağ yanak deliğinden, PH1</td></tr>
+<tr><td><code>p0733</code> 625ZZ rulman (iç bilezik)</td><td class="n">28 E2</td><td class="n">29 E3a</td><td>a, b, t, u, ub</td><td>dış bilezikle tek parça, sol yanağa pres</td></tr>
+<tr><td><code>p0734</code> Pim pulu M5</td><td class="n">28 E2</td><td class="n">30 E3</td><td>a, b</td><td>sol yanak deliğinden, kafa indikten sonra</td></tr>
+<tr><td><code>p0735</code> Pim cıvatası M5x12</td><td class="n">28 E2</td><td class="n">30 E3</td><td>a, b</td><td>aynı, alyan 4</td></tr>
+</tbody>
+</table></div>
+<p class="note">C'nin karşılaştırması: <code>git show HEAD:rehber/veri/rehber-veri.json</code> ↔ çalışma ağacı; parça satırındaki adım da her biri için aynı yöne taşınmış.</p>
+
+<h2>E4'ün yeni sırası</h2>
+<ol class="list">
+<li>Masada sağ arka kabuk + ReSpeaker (3 dizi vidası), robota arkadan (−z).</li>
+<li>Masada sol arka kabuk + USB ses kartı + PAM8403, robota arkadan ya da soldan.</li>
+<li>Tabla → arka kabuk rafı 4 × M3×10: yüz tarafı açıkken önden, L alyanla.</li>
+<li>Masada yüz kabuğu + kamera + QLED + 4 tırnak; kablolar kafanın açık ön tarafından; yüz kabuğu önden (+z).</li>
+<li>Kablolar, dikişler (dikiş cıvataları K2'den sonra).</li>
+</ol>
+<p><b>Neden orkestratör önerisi (arka kabuklar → tabla → yüz) aynen alınmadı:</b> o sırada (A'nın C1 adayı) tabla cıvataları açılıyor ama ReSpeaker'ın tavan vidaları kabuk kafadayken kapanıyor (dizi vidası 2 YOK); ReSpeaker'ı masada kabuğa vidalamak bunu çözdü (C5). Düzeltme turunda giriş yolu ölçümü ayrıca arka kabukların <b>ayrı iki birim</b> olduğunu ve sıranın önemli olduğunu gösterdi: dikey dikişte sağ kabuğun bindirmesi solun altında kaldığı için sol önce takılırsa sağ hiçbir düz yönden girmiyor (A'nın ölçümü ve kalıcı sınama). Bu yüzden "önce sağ, sonra sol".</p>
+<p><b>C'nin bağımsız E4 ölçümü:</b> B'nin süpürme modülüyle (iç kaydırma 0,15 mm, adım 1 mm, engel: hareketli birimin kutusundan 40 mm içindeki parçalar) sağ arka kabuk + ReSpeaker + dizi vidaları, adım 31 başındaki robota karşı −z <b>serbest</b> (engel 84 parça, 1824 s); sol arka kabuk grubu, sağ grup takılıyken −z <b>serbest</b>. B'nin ışın betiği (<code>e4_b.py</code>) yeni veriyle: dört tabla cıvatasının düz alet yolu 63,4 mm; L alyanın uzun kolu (90 mm) yüz kabuğu yokken 9 / 5 / 10 / 4 yönde serbest (ön cıvatalarda kol ucu kafanın dışında), yüz kabuğu takılıyken 3 / 5 / 4 / 4 (ön cıvatalarda yalnız içe dönük yönler). <b>Ölçülmedi</b> (sistem belleği azalınca ortam koşuyu durdurdu, yeniden başlatılmadı): sol arka kabuğun −x yönü, "sol önce takılıyken sağ girmiyor" iddiası ve yüz grubunun önden girişi; bu üçü yalnız A'nın ölçümüne ve <code>kontrol.json</code> sınamasına dayanıyor.</p>
+
+<h2>"Ulaşılamaz 18 → 0" kırılımı</h2>
+<div class="tbl"><table>
+<thead><tr><th>Grup</th><th>Adet</th><th>Ne</th></tr></thead>
+<tbody>
+<tr><td>Gerçek sıra düzeltmesi</td><td class="n">4</td><td>E4 tabla cıvataları (yeni E4 sırası). Brief'teki "önce 4" bu sayı.</td></tr>
+<tr><td>Eski verinin yapaylığı</td><td class="n">11</td><td>E4 tırnak 4, kamera 4, dizi vidası 3: adım içi sıra (<code>sira_grup</code>) yokken E4'ün bütün parçaları engel sayılıyordu; eski metin de bunları kabuk kapanmadan yaptırıyordu.</td></tr>
+<tr><td>Metinde yazılı bilginin veriye girmesi</td><td class="n">3</td><td>F3 taşıyıcı M6 1 (adım içi sıra), G4 kaset cıvatası 2 (poz S1 −45 / S2 90).</td></tr>
+</tbody>
+</table></div>
+
+<h2>Denetimin sınırları</h2>
+<ul class="list">
+<li><b>El modeli tek tip, 20 mm el payı varsayımı.</b> Bilinen kapalı örnekler yalnız 20 mm'de ayrılıyor; 15 ve 12 mm'de eski E4 sırası da açık görünüyor. C5'in eski sıraya üstünlüğü bu varsayıma dayanıyor (bağımsız ışın ölçümü ön iki cıvatada farkı el modelinden bağımsız da gösteriyor).</li>
+<li><b>Giriş yolu yalnız 6 eksen yönünde</b> (A'nın scratchpad ölçümünde E4 için 12); eğik ya da dönerek giriş, sürtünme ölçülmüyor.</li>
+<li><b>Kablolar modelde yok:</b> kablo takma ("kabloları açık ön taraftan tak", "yüz kabuğunu önde tut") ve kablo boyları ölçülmedi; klemens ve fiş bağlantıları alet isteyen bağlantı sayılmıyor.</li>
+<li><b>Baskı toleransı ölçülmedi:</b> E3'te iki yanda sıfır boşluk (K54).</li>
+<li>Poz bağımlı bağlantılarda (G4) el katmanı yok, yalnız ışın; somun karşı anahtarı ile cıvata aynı anda ölçülmüyor; "tezgâh" işaretli gruplar kendi içinde ölçülüyor, robota girişleri ayrıca giriş yolu ölçümüyle.</li>
+<li>numpy yoksa iki alan "atlandı" ve <code>gecti: true</code>: çıkış kodu görmez, yalnız konsol ve <code>kontrol.json</code> söyler.</li>
+</ul>
+
+<h2>Önce / sonra</h2>
+<div class="kare">
+<figure><a href="F10c-goruntu-d1-30-tak1.png"><img src="F10c-goruntu-d1-30-tak1.png" alt="30 E3, tak 1: kafa alt montajı yukarıdan" loading="lazy"></a><figcaption>30 E3 · tak 1: kafa alt montajı (horn servoda)</figcaption></figure>
+<figure><a href="F10c-goruntu-d1-30-tak2.png"><img src="F10c-goruntu-d1-30-tak2.png" alt="30 E3, tak 2: horn merkez vidası" loading="lazy"></a><figcaption>30 E3 · tak 2: horn merkez vidası</figcaption></figure>
+<figure><a href="F10c-goruntu-d1-30-tak4.png"><img src="F10c-goruntu-d1-30-tak4.png" alt="30 E3, tak 4: pul" loading="lazy"></a><figcaption>30 E3 · tak 4: pul (sonra pim)</figcaption></figure>
+<figure><a href="F10c-goruntu-once-31.png"><img src="F10c-goruntu-once-31.png" alt="31 E4 önce" loading="lazy"></a><figcaption>31 E4 · önce (HEAD metni)</figcaption></figure>
+<figure><a href="F10c-goruntu-d1-31-tak2.png"><img src="F10c-goruntu-d1-31-tak2.png" alt="31 E4, tak 2: ReSpeaker" loading="lazy"></a><figcaption>31 E4 · tak 2: sağ arka kabuk takılı, ReSpeaker</figcaption></figure>
+<figure><a href="F10c-goruntu-sonra-15.png"><img src="F10c-goruntu-sonra-15.png" alt="15 B6 K53 notu" loading="lazy"></a><figcaption>15 B6 · K53 notu</figcaption></figure>
+</div>
+<p class="note">C ayrıca PDF sayfa 30–33'e (adım 28–31) ve <code>planlama/rehber/goruntu/adim-30.png</code>'ye baktı: metinler, notlar ve görüntüler dolu. Brief dışı fark edilen: adım 28 <code>alet</code> hâlâ "alyan 3 / 4" (alyan 4 pim içindi, pim E3'e geçti), adım 29 <code>alet</code> hâlâ "PH1" (horn vidası E3'e geçti); B3 kablo metninde "çevre'nin" yazımı. Rehber bu pakette yeniden üretilmedi, bunlar sonraki rehber turuna.</p>
+
+<h2>Açık kararlar</h2>
+<ul class="list">
+<li><b>K53</b> (F10b): ön şarj kartı burcu × elektronik katı. Rehber B6'da "bilinen açık konu" notu var; çözüm seçilmiş gibi yazılmadı.</li>
+<li><b>K54</b> (yeni): E3 kafa inişinde sıfır boşluk (yanaklar arası 54,4 mm ↔ yığın 54,4 mm). Seçenekler: a) pay yok; b) yanak iç yüzlerine 0,2–0,3 mm pay (geometri değişikliği, tarama gerekir); c) ilk baskı kuponunda dene. Öneri c, zorlarsa b. Karar Ahmet'te. Kuyruk: açık 49, toplam 54.</li>
+</ul>
+
+<h2>F10d'ye devredilenler</h2>
+<ul class="list">
+<li>Panel "Parçalar" ve "Bağlantı elemanları" tabloları sırayı göstermiyor (listede yüz kabuğu tabla cıvatasından önce): satırları <code>sira_grup</code>'a göre grup başlıklarıyla bas.</li>
+<li>Perdelenme 291 tamamen gizli yeni parça (en çok E4 46, F5 36, F2 30): kabuk adımları alt adımlara bölününce eşik konacak.</li>
+<li>İki kollu tezgâh adımlarında kadraj (21, 43, 45, 46); saydam kip tek başına 31 / 33'te içeriyi göstermiyor; adım 25 pan hornu görünmüyor.</li>
+<li>Hornun E2 patlatma yönü radyal (servo ekseni değil): görsel.</li>
+</ul>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Commit</th><th>Konu</th></tr></thead>
+<tbody>
+<tr><td class="kod"><code>98d5a3d</code></td><td>55 dosya: <code>tasarim/freecad/rehber/</code> (yeni <code>rehber_sira.py</code>, <code>rehber_giris.py</code>), <code>rehber/veri/</code>, <code>rehber/goruntu/</code>, <code>rehber/app.js</code>, <code>planlama/rehber/</code> üretici çıktıları + <code>R-gunluk.md</code>, <code>README.md</code>, <code>F10c-*</code> (brief, günlük, kontrol, görüntüler), <code>F10a-dogrula.py</code> / <code>.json</code>, <code>karar-kuyrugu.md</code> (K54), demo</td></tr>
+<tr><td class="kod">bu rapor</td><td><code>F10c-rapor.html</code></td></tr>
+<tr><td class="kod">planlama</td><td><code>planlama/dongu-158.md</code> (olduğu gibi)</td></tr>
+</tbody>
+</table></div>
+<p class="note">Her commit açık <code>git add</code> listesiyle. Dışarıda kalanlar: oturum öncesinden kalan <code>tasarim/freecad/kabuk/gorsel/*.png</code>, <code>montaj/yerlesim-kontrol.json</code> ve izlenmeyen klasörler. <code>F10a-dogrula.py</code>'nin yeniden yazdığı F10a kanıt kareleri kayıttaki hâline döndürüldü. Demo parmak izinde kuyrukla birlikte <code>rehber-veri.json</code> anahtarı da değişti (veri bu pakette yeniden üretildi); sayfanın öbür satırları aynı.</p>
+
+<footer>Ajan C (ölçüm ve kayıt) · F10c · 11.11.2026 · <code>lale-duzeltme</code> · 50 / 50, konsol 0 · 1192 ↔ 1192, taşınan 5 · ulaşılamaz 0, girilemez 0 · E3 +y serbest (C bağımsız) · perdelenme 291 · PDF 55 sayfa, 8,1 pt · F10a-dogrula 0 · F9b 0 · kontrol 0 · regresyon 10 / 10 · K54 · Kaynaklar: <code>F10c-brief.md</code>, <code>F10c-gunluk.md</code>, <code>F10c-kontrol.md</code>, <code>kontrol.json</code>, <code>F10a-dogrula.json</code>.</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
