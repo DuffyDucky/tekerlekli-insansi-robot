@@ -66,8 +66,9 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K51 | Pi hattındaki ikinci P6KE6V8A: maliyette 2, model BOM'unda 1 | **açık** (F7c) | a: modele ve BOM'a 1 adet ekle (0 TL) | Model / BOM güncellemesi, rehber E3a TVS notu, çakışma taraması |
 | K52 | Göğüs ekranı regülatörü (LM2577 + LM2596), mini 2 A ve hat sigortası yuvasının yeri: modelde ve BOM'da yok | **açık** (F7c) | a: K11 kararıyla birlikte güç paneline (B5a) ekle | K11, model / BOM güncellemesi, rehber B5a, `maliyet.json:122-123` notları |
 | K53 | Ön şarj kartı burcu × elektronik katı (B6'da kat inerken girişim) | **açık** (F10b) | a + iii: katta 1,5 mm çentik, bir sonraki tam taramalı pakette; o zamana dek rehber B6 notu | Lazer kesim dosyası (elektronik katı), rehber B6 adımı (F10c), çakışma taraması kaynağı |
+| K54 | E3 kafa inişinde sıfır boşluk (yanaklar arası 54,4 mm ↔ yığın 54,4 mm) | **açık** (F10c) | c: ilk baskı kuponunda dene; zorlarsa b (yanak iç yüzlerine 0,2–0,3 mm pay) | Kafa iskeleti baskısı (Parti kuponu), rehber E3 notu, çakışma taraması kaynağı (b seçilirse) |
 
-**Açık: 48** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 53 madde.
+**Açık: 49** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 54 madde.
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
@@ -82,6 +83,8 @@ P9.3 (F9c, 09.11.2026, orkestratör kararı) F7c karar taslakları KT-F7c-2 → 
 B doğrulaması `F7c-kontrol.md` "KT-F7c-2.", "KT-F7c-3.").
 P10.2 (F10b, 11.11.2026, orkestratör kararı: geometri bu pakette değişmez) A'nın ölçümü ve seçenekleri → K53 (`planlama/d158/F10b-gunluk.md` §3–§4;
 sayılar C'nin `F10b-olcum.json`'dan okumasıyla).
+P10.3 (F10c, 11.11.2026) düzeltme turu 1'in karar kuyruğu önerisi → K54 (`planlama/d158/F10c-gunluk.md` D1 "Karar kuyruğu önerisi";
+B'nin önerisi `F10c-kontrol.md` "E3 için karar kuyruğuna önerilen metin"; giriş yolu C'nin bağımsız ölçümüyle yeniden doğrulandı).
 
 ---
 
@@ -935,6 +938,31 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **İlgili not (F10b'den bağımsız, ayrı iş):** burç 2 bugün de güç panelindeki akü kablo yarığının (x −80…−40, z −37…−23) üstünde: panele
   oturma %39 (7,484 / 19,129 mm²), alt vida başı %26 (6,28 / 23,758 mm²), delik yarığa açık (`on_sarj_oturma`). Seçenek a bunu çözmez.
 - **Bloke:** elektronik katının lazer kesim dosyası; rehber B6 adımı (F10c); çakışma taraması kaynağı (a / b / c'de).
+- **Durum:** açık.
+
+---
+
+## K54 · E3 kafa inişinde sıfır boşluk (yanaklar arası 54,4 mm ↔ yığın 54,4 mm)
+- **Soru:** Kafa iskeletinin iki yanağı arası 54,4 mm; aradaki yığın da 54,4 mm (sol: çatal dayaması ve 625ZZ iç bileziği x −24,2,
+  yanak iç yüzü −24,2; sağ: tilt hornu dış yüzü 30,2, yanak iç yüzü 30,2). Modelde kafa yukarıdan ortak hacimsiz iniyor, yüzler temas
+  ediyor. Baskı toleransında yanaklar zorlamadan inmeyebilir. Yanak iç yüzlerine pay verilsin mi?
+- **Ölçüm** (mesh, `rehber/veri/robot.glb`; model F10c'de değişmedi):
+  - Ölçüler (`planlama/d158/F10c-gunluk.md` D1, mesh köşe koordinatları; B'nin `F10c-kontrol.md` tablosuyla aynı): tilt ekseni
+    çevresinde yanak kalınlığı sol 11 mm (−35,2…−24,2; 625ZZ yuvası), sağ 5 mm (30,2…35,2); çatal kolu dış yüzü −23,2 (yanağa 1,0 mm,
+    dayama dışında).
+  - Giriş yolu, yeni sıra (horn servoda vidasız, 625ZZ kafada, pim + pul + horn vidası sonra): A'nın `rehber_giris.py`'si (ortak boy
+    eşiği 0,2 mm) +y'de 31,5 mm'de serbest, temas da çarpışma sayılırsa (eşik 0) 4,25 mm'de duruyor (`planlama/rehber/kontrol.json`
+    `sira.giris`; tek engel temas yüzleri). C'nin bağımsız hacimsel süpürmesi (B'nin yöntemi, yüzeyden 0,15 mm ve 0,05 mm içeri;
+    temas sayılmaz): +y, +z, −z serbest, dinlenmede ortak hacim 0. Düzeltmeden önceki sıra +y / ±z 0 mm (horn ↔ servo mili).
+- **Seçenekler:**
+  a) Pay yok (bugünkü model). Baskı ölçüsü tutarsa iner; tutmazsa yanaklar elle açılarak (PETG esnemesi) indirilir: ölçülmedi.
+  b) Yanak iç yüzlerine 0,2–0,3 mm pay (her yanda). Geometri değişikliği: kafa çakışma taraması gerekir. Sağda 4 × M3×8 sıkılınca yanak
+     horna çekilir; solda pim sıkılınca 625ZZ iç bileziği dayamaya çekilir, rulmana eksenel yük ya da araya şim gerekebilir: ölçülmedi.
+  c) İlk baskı kuponunda dene: yanak + çatal dayaması + horn kalınlığında kısa kupon basılır, iniş elle denenir; sonuca göre a ya da b.
+- **Önerilen varsayılan:** c (ucuz, kararı ölçüme bağlar); kupon zorlarsa b, b'nin sol yanak eksenel yük etkisi o zaman ölçülür.
+  Yalnız öneri; karar Ahmet'te.
+- **Bloke:** kafa iskeletinin baskısı (kupon sonucu); rehber E3 adımındaki "bilinen açık konu" notu; b seçilirse kafa geometrisi ve
+  çakışma taraması kaynağı.
 - **Durum:** açık.
 
 ---

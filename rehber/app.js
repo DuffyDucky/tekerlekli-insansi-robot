@@ -318,8 +318,10 @@
         const kod = ADIM.filter((a) => a.baglanir === su).map((a) => a.i + ". " + a.kod).join(", ");
         satir.push({ ad: "Alt montaj" + (kod ? " (" + kod + ")" : ""), ids: alt, sema: [] });
       }
-      st.parcalar.forEach((x, i) => satir.push({ ad: x.ad, ids: x.ids.filter((id) => var_.has(id)), sema: [], tur: "p", i: i, adet: x.adet }));
-      st.baglantilar.forEach((x, i) => satir.push({ ad: x.kod, ids: x.ids.filter((id) => var_.has(id)), sema: [], tur: "b", i: i, adet: x.adet }));
+      const pb = {};                                  // F10c: adım verisinde "sira" (p:i / b:i) varsa satırlar o sırayla
+      st.parcalar.forEach((x, i) => { pb["p:" + i] = { ad: x.ad, ids: x.ids.filter((id) => var_.has(id)), sema: [], tur: "p", i: i, adet: x.adet }; });
+      st.baglantilar.forEach((x, i) => { pb["b:" + i] = { ad: x.kod, ids: x.ids.filter((id) => var_.has(id)), sema: [], tur: "b", i: i, adet: x.adet }; });
+      (st.sira || Object.keys(pb)).forEach((k) => { if (pb[k]) satir.push(pb[k]); });
       const sm = [];
       SEMA_OBJ.forEach((o, i) => { if (o && o.userData.d === "simdi") sm.push(i); });
       if (sm.length) satir.push({ ad: "Kablo şemaları", ids: [], sema: sm });

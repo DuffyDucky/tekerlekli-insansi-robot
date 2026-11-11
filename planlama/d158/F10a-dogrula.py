@@ -4,7 +4,8 @@
 # Yöntem: Chrome DevTools protokolü (rehber_uret.py'deki gibi; websockets paketi). Sayfa file:// ile açılır.
 #   1) kadraj: 50 adımın her birinde (?cekim=1, 1400 x 900, açık tema) yeni parçaların bütün köşe noktaları (vertex) kamerayla
 #      izdüşürülür; ekran kutusu (kareye kırpılmış) / kare alanı = oran; bir noktası karenin dışında ya da kameranın arkasında kalan
-#      yeni parça = taşan. "Önce" HEAD'deki rehber/app.js + index.html + stil.css (geçici klasöre kopya; three.js aynı 0.160 yerel
+#      yeni parça = taşan. "Önce" F10a öncesi (ONCE, varsayılan 749627b~1; F10c düzeltme 1: eskiden HEAD, F10a commit'inden beri
+#      HEAD'de importmap yok) rehber/app.js + index.html + stil.css (geçici klasöre kopya; three.js aynı 0.160 yerel
 #      paketten, tek ek satır kamerayı okumak için), "sonra" çalışma ağacındaki rehber/.
 #   2) küçük görünüm: 50 adımda 1400 x 900 ve 360 px'te (mobil öykünme) çizildi mi (küçük görünüm alanında arka plandan farklı ve
 #      vurgu renginde piksel), 360 px'te yatay taşma ve panelle kesişme.
@@ -28,6 +29,7 @@ TARAYICI = [r"C:\Program Files\Google\Chrome\Application\chrome.exe",
 V = json.load(open(os.path.join(REHBER, "veri", "rehber-veri.json"), encoding="utf-8"))
 NA = len(V["adimlar"])
 PARV = {p["id"]: p for p in V["parcalar"]}
+ONCE = os.environ.get("F10A_ONCE", "749627b~1")                  # "önce" sayfasının git sürümü (F10a öncesi)
 
 
 class Cdp:
@@ -145,12 +147,12 @@ def url(kok, q):
 
 
 def head_kopya():
-    """HEAD'deki rehber sayfası (önce): geçici klasöre; veri ve three.js paketi çalışma ağacından (veri değişmedi; three aynı 0.160)."""
+    """F10a öncesi (ONCE) rehber sayfası (önce): geçici klasöre; veri ve three.js paketi çalışma ağacından (veri değişmedi; three aynı 0.160)."""
     tmp = tempfile.mkdtemp(prefix="lale-f10a-head-")
     kok = os.path.join(tmp, "rehber")
     os.makedirs(os.path.join(kok, "veri")); os.makedirs(os.path.join(kok, "vendor"))
     for f in ("index.html", "app.js", "stil.css"):
-        b = subprocess.run(["git", "show", "HEAD:rehber/" + f], cwd=ROBOT, capture_output=True).stdout
+        b = subprocess.run(["git", "show", ONCE + ":rehber/" + f], cwd=ROBOT, capture_output=True).stdout
         open(os.path.join(kok, f), "wb").write(b)
     for f in ("rehber-veri.js", "robot-glb.js"):
         shutil.copy2(os.path.join(REHBER, "veri", f), os.path.join(kok, "veri", f))
@@ -160,7 +162,7 @@ def head_kopya():
                 '<script src="vendor/three-0.160.0-paket.min.js"></script><script>window.RehberBaslat(window.LALE_UC);</script>', h, flags=re.S)
     a = open(os.path.join(kok, "app.js"), encoding="utf-8").read()
     a2 = a.replace("sonKutu = k;", "sonKutu = k; window.RehberTest = { THREE, kamera, tuval, PAR, SEMA_OBJ };", 1)
-    assert h2 != h and a2 != a, "HEAD kopyası yamanamadı"
+    assert h2 != h and a2 != a, "%s kopyası yamanamadı" % ONCE
     open(os.path.join(kok, "index.html"), "w", encoding="utf-8").write(h2)
     open(os.path.join(kok, "app.js"), "w", encoding="utf-8").write(a2)
     return tmp, kok
@@ -380,6 +382,10 @@ def ek_sinama(c, kok):
     s2 = c.js("RehberTest.sira()")
     st = V["adimlar"][31]
     sat = [x["ids"] for x in st["parcalar"]] + [x["ids"] for x in st["baglantilar"]]
+    if st.get("sira"):                       # F10c düzeltme 1: sıralı takma veri satır sırasını değil st.sira'yı izler (app.js siraKur)
+        sk = {"p:%d" % i: x["ids"] for i, x in enumerate(st["parcalar"])}
+        sk.update({"b:%d" % i: x["ids"] for i, x in enumerate(st["baglantilar"])})
+        sat = [sk[k] for k in st["sira"]]
     u3 = c.js("(function(ids){const T=RehberTest; return ids.filter(id=>T.PAR[id]&&T.PAR[id].obj&&T.PAR[id].obj.userData.d==='simdi').sort();})(%s)"
               % json.dumps(sat[2]))
     o1 = c.js("RehberTest.onceki()"); c.tus("o", "KeyO", 79); o2 = c.js("RehberTest.onceki()"); c.tus("o", "KeyO", 79); o3 = c.js("RehberTest.onceki()")
@@ -549,11 +555,11 @@ def main():
     t0 = time.time()
     tmp, head = head_kopya()
     sonuc = dict(tarih=time.strftime("%Y-%m-%d %H:%M"), tarayici=os.path.basename(tb), adim=NA,
-                 yontem="CDP (Chrome DevTools protokolü), file://; önce = HEAD rehber sayfası geçici kopyada (three.js aynı 0.160 yerel paket)")
+                 yontem="CDP (Chrome DevTools protokolü), file://; önce = %s rehber sayfası geçici kopyada (three.js aynı 0.160 yerel paket)" % ONCE)
     c = Cdp(tb, "a")
     try:
         c.boyut(1400, 900)
-        print("kadraj: once (HEAD)"); once = kadraj_olc(c, head)
+        print("kadraj: once (%s)" % ONCE); once = kadraj_olc(c, head)
         print("kadraj: sonra"); sonra = kadraj_olc(c, REHBER)
         oo = [x.get("oran", 0) for x in once]; so = [x.get("oran", 0) for x in sonra]
         dusuk = [dict(adim=x["adim"], kod=x["kod"], oran=x["oran"], baslik=V["adimlar"][x["adim"]]["baslik"]) for x in sonra if x.get("oran", 0) < 0.05]
@@ -608,9 +614,10 @@ def main():
                                           panel_kesisim=sum(1 for x in m3 if x.get("panel_kesisim_px2")), adim=m3))
     sonuc["mini"]["gecti"] = sonuc["mini"]["masaustu"]["gecen"] == NA and sonuc["mini"]["telefon_360"]["gecen"] == NA
     sonuc["goruntu"] = gor
+    # bilgi alanı (F10c düzeltme 1): veriyi yeniden üreten her pakette tanım gereği false; kabul ölçütü değil
     sonuc["veri_degismedi"] = subprocess.run(["git", "diff", "--quiet", "HEAD", "--", "rehber/veri"], cwd=ROBOT).returncode == 0
     sonuc["sure_s"] = round(time.time() - t0)
-    sonuc["gecti"] = all(sonuc[k]["gecti"] for k in ("kadraj", "secim", "agsiz", "cdn", "mini", "yazdir_kareleri")) and sonuc["veri_degismedi"]
+    sonuc["gecti"] = all(sonuc[k]["gecti"] for k in ("kadraj", "secim", "agsiz", "cdn", "mini", "yazdir_kareleri"))
     json.dump(sonuc, open(CIKTI, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     yk = sonuc["yazdir_kareleri"]
     print("yazdirma kareleri: cizili %d/%d (en dusuk oran %.4f), pdf goruntu %s, bos sayfa %s; tak kadraj %s" % (
@@ -620,7 +627,7 @@ def main():
         sonuc["secim"]["gecen"], sonuc["secim"]["toplam"], ag["dis_istek"], ag["konsol_hatasi"], sonuc["kadraj"]["once_ortanca"],
         sonuc["kadraj"]["sonra_ortanca"], sonuc["kadraj"]["sonra_tasan_adim"], sonuc["mini"]["masaustu"]["gecen"], NA,
         sonuc["mini"]["telefon_360"]["gecen"], NA, sonuc["mini"]["telefon_360"]["tasma_max"], len(sonuc["cdn"]["bulgu"]),
-        "degismedi" if sonuc["veri_degismedi"] else "DEGISTI", "GECTI" if sonuc["gecti"] else "KALDI"))
+        "degismedi" if sonuc["veri_degismedi"] else "degisti (bilgi)", "GECTI" if sonuc["gecti"] else "KALDI"))
     sys.exit(0 if sonuc["gecti"] else 2)
 
 

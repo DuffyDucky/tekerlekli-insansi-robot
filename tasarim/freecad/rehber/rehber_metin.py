@@ -21,6 +21,8 @@
 #   not_    : ek uyarılar, doğrulanmamış bilgiler (app.js "Notlar" kutusunda gösterir; F7a)
 #   kamera  : "arka" ise görünüm arkadan (yeni parçalar robotun arkasındaysa; F7a)
 #   is_, baglanti_md, alet, erisim : M6 tablosundaki aynı sütunu ezer
+#   sira    : adım içi sıra grupları (F10c; sira_grup_bul): panel satırları, sıralı takma ve rehber_sira.py denetimi bu sırayı izler
+#   poz     : bağlantı ancak bu kol pozunda erişilir, ör. dict(S1=-45, S2=90) (F10c; rehber_sira.py POZA_BAGLI ölçer)
 
 FAZ = [  # (kod öneki, faz adı); ilk eşleşen kazanır
     ("0", "Hazırlık"), ("A", "İskelet"), ("B", "Taban"), ("C0", "Taban"), ("K1", "Kablolama kapısı"), ("C1", "Kabuk braketleri"),
@@ -116,10 +118,16 @@ ADIM = {
         kontrol=["BTS7960 ve XL4016'lar burçlara üstten; kartın altı plakaya değmiyor (8 mm burç)",
                  "Akü kutupları güç paneline bakar; kayışları sık, akü kaymasın",
                  "Aküyü şimdi BAĞLAMA: XT60 uçları ayrık, kutuplar bantlı",
+                 "BTS7960B ve XL4016 klemens uçları bağlandı, vidaları sıkı; boştaki uçlar etiketli ve bantlı (K1'de bağlanır)",
                  "Kartlar takılmadan tezgâhta (bu adımdan önce): XL4016 A / B 6 V, çevre 5 V'a ayarlandı; akım sınırlı tezgâh kaynağıyla "
                  "12 V giriş, yüksüz, çıkış ölçülerek (K1 kontrolü). PC817 ölçümü de arayüz kartı takılmadan tezgâhta (B6a). Takıldıktan sonra "
                  "ayar vidasına erişim ölçülmedi; bu sıra kaynakta yok, doğrulanmadı"],
-        kablo=["XL4016 giriş/çıkış klemensleri erişilebilir kalsın (17. adım K1)",
+        kablo=["Alt kat klemensleri bu adımda bağlanır, üstü açıkken: iki BTS7960B'nin güç girişi ve motor çıkışı (motor uçları B2b'de "
+               "plaka üstüne alındı), XL4016 A / B / çevre'nin giriş ve çıkışı. Güç paneli ve elektronik katı gelince (B5, B6) bu klemenslere el "
+               "dar kalır: kart üstünden kata 69 mm, yanda 40–150 mm (K1 erişim notu). Akü ayrık",
+               "Öbür ucu henüz yerinde olmayan hat (bara, sigorta kutusu, hat sigortası; K1'de bağlanır): iki ucundan etiketle (kart, "
+               "klemens, hat adı), K1'deki yerine yetecek boyda bırak, ucu bantla; hatları kablo bağıyla demetleyip plaka üstünde topla, "
+               "kat burçlarının (B4) ve kart üstlerinin yolunu kapatmasın. Bu sıra ve toplama yeri kaynakta yok, doğrulanmadı",
                "Akü kayışlarının tokası yanda, kablo yolunun üstünde değil"],
         ucus=(0, 1, 0),
     ),
@@ -163,6 +171,9 @@ ADIM = {
     "B6": dict(
         baslik="Elektronik katı → burçlar",
         kontrol=["Kat ön burçlara (z > 0)"],
+        not_=["Bilinen açık konu (K53, karar bekliyor): modelde elektronik katı inerken ön şarj kartının iki ön naylon burcuna "
+              "takılıyor; burç katın ön kenarından 0,425 mm taşıyor (`planlama/d158/F10b-olcum.json`). Çözüm seçilmedi (K53 karar bekliyor; "
+              "seçenekleri F10b'de ölçüldü, `planlama/d158/F10b-gunluk.md`)"],
         ucus_bag=(0, 1, 0),
     ),
     "B7": dict(
@@ -185,7 +196,10 @@ ADIM = {
             "`planlama/adim3/elektrik.md`'de yok; sigorta yuvası 16AWG kuyruklu (`planlama/maliyet.json` hat sigortası yuvası), doğrulanmadı.\n"
             "2. F1 20 A → röle K1 → anahtarlı bara. Baradan: iki BTS7960B; hat sigortasıyla XL4016 A ve B (7,5 A), C (5 A).\n"
             "3. F3 kafa hattı (uç direk dibinde bırakılır), F4 XL4016 çevre 5 V, F5 acil stop hattı.\n"
-            "4. Motor + enkoder ve sonarları bağla. Acil stop ucunu bırak: mantar F1'de takılır.\n"
+            "Alt kat kartlarının (iki BTS7960B, XL4016 A / B / çevre) klemens uçları B3'te, kat ve güç paneli gelmeden bağlandı: burada "
+            "yalnız B3'te etiketli bırakılan öbür uçları bara, sigorta kutusu ve hat sigortalarına bağla. Alt kat klemensine burada uzanma: "
+            "kart üstünden elektronik katına 69 mm, yanda 40–150 mm (sıra kontrolü).\n"
+            "4. Enkoder ve sonarları bağla (motor uçları B3'te BTS7960B'ye bağlandı). Acil stop ucunu bırak: mantar F1'de takılır.\n"
             "5. Direğe çıkacak hatların taban kısmını da burada bağla (servo A / B / kafa, kafa 12 V, ESP32 USB). Yukarısı K2'de.\n"
             "6. K1'de enerji verilmez: ana anahtar ve acil stop mantarı F1'de takılır. Mantar ve ana anahtar uçları hiçbir zaman "
             "köprülenmez; akü XT60 ayrık kalır, boştaki ana hat uçları gerilimsiz ve bantlı. XL4016 ayarı ve PC817 ölçümü kartlar takılmadan "
@@ -194,9 +208,12 @@ ADIM = {
             "Bu sıra kaynakta yok, doğrulanmadı.",
         baglanti_md="Klemens, kablo pabucu, kablo bağı (adet: kablo listesi henüz yazılmadı)",
         alet="Multimetre, kablo soyucu, pabuç pensesi, tornavida",
-        erisim="Kabuk yok; her yana düz erişim",
+        erisim="Kabuk yok. Kat üstü açık (dağıtım kartları, ESP32, arayüz kartı, XL4016 C, sigorta kutusu: el bölgesine uzaklık 6–9 mm, el yakına ulaşıyor). Alt kat "
+               "kartlarının klemenslerine el dar: kart üstünden elektronik katına 69 mm, yanda raylara ve komşu karta 40–150 mm "
+               "(sıra kontrolü 10.11, 11.11'de yeniden ölçüldü; ışınla, klemens yerleri modelde yok); o uçlar B3'te bağlanır",
         kontrol=[
             "Akü ayrıkken multimetre: artı ile eksi arasında kısa devre yok",
+            "B3'te bağlanan alt kat uçlarının etiketleri okunuyor; her biri K1'de öbür ucuna bağlandı, boşta uç kalmadı",
             "Tezgâhta (kart takılmadan, B3 / B5a öncesi; B3 ve B5a kontrolünde de var): XL4016 A / B / C 6 V, çevre 5 V'a ayarlandı; akım sınırlı tezgâh kaynağıyla "
             "12 V giriş, yüksüz, çıkış ölçülerek",
             "Mantar ve ana anahtar uçları köprülenmedi; boştaki ana hat uçları bantlı, akü XT60 ayrık",
@@ -292,10 +309,17 @@ ADIM = {
     ),
     "E2": dict(
         baslik="Tilt servosu",
-        is_="Tilt servosunu çatala cıvatala. Karşı yanağa 625ZZ ve M5 pimi tak.",
-        baglanti_md="4 × M4×16 + 4 kontra somun; 1 × M5×12 + pul",
+        # F10c düzeltme 1: tasarımın montaj sırası (tasarim/freecad/kafa/kafa_rapor.py SIRA 5-6): horn burada servoya, vidasız; 625ZZ
+        # E3a'da kafa yanağına, pim + pul ve horn merkez vidası E3'te (kafa ancak böyle iner; planlama/d158/F10c-gunluk.md).
+        is_="1. Tilt servosunu +X'ten çatalın U kulak plakasına cıvatala (4 × M4×16 + kontra somun).\n"
+            "2. Tilt hornunu (25T alüminyum disk) servo orta konumdayken servo miline geçir. Merkez vidasını şimdi takma: kafa E3'te "
+            "horna indikten sonra sağ yanağın orta deliğinden takılır (vida burada takılırsa inen kafa iskeleti vida başına "
+            "takılıyor, ölçüldü). Orta komutun nasıl verileceği kaynakta yok (doğrulanmadı); kalan ofset yazılımda düzeltilir (Y2).\n"
+            "625ZZ ve M5 pim bu adımda yok: 625ZZ E3a'da kafanın sol yanağına, pim + pul E3'te (`tasarim/freecad/kafa/kafa_rapor.py` "
+            "montaj sırası).",
+        baglanti_md="4 × M4×16 + 4 kontra somun; horn milde, merkez vidası E3'te",
         erisim="Düz. Kontra somunların 2'si cepte, 2'si açık ağızla (Y3 C3)",
-        kontrol=["Tilt elle engelsiz, pim sıkıyken 625ZZ dönüyor"],
+        kontrol=["Tilt elle engelsiz", "Horn servo milinde, servo orta konumda; merkez vidası takılmadı (E3'te)"],
     ),
     "E3a": dict(
         baslik="Tezgâh: kafa içi (Pi 5, 5 V çeviriciler)",
@@ -306,11 +330,11 @@ ADIM = {
             "2. Tablaya 1 mm köpük bant + kablo bağıyla: Pololu D24V50F5 (Pi'nin 5 V'u) ve SY8205 (kafa ekranının ayrı 5 V hattı). "
             "Her iki 5 V çıkışına bir P6KE6V8A TVS: SY8205 → QLED hattındaki modelde var, D24V50F5 → Pi hattındaki modelde ve BOM'da yok "
             "(ikinci TVS'i ayrıca al). TVS tek yönlü: katot (çizgili uç) +5 V'a, anot GND'ye.\n"
-            "3. Sol yanağa 625ZZ dış bileziği; tilt hornu (25T alüminyum disk) ve merkez vidası bu adımın listesinde (M6 tablosu). "
-            "Hornun önce servoya mı yanağa mı takılacağı kaynakta yok, doğrulanmadı.\n"
+            "3. 625ZZ rulmanını sol yanağın yuvasına pres et (tek parça; modelde iç ve dış bilezik ayrı çizili). Tilt hornu bu adımda "
+            "yok: E2'de servoya takıldı, kafa E3'te ona iner (`tasarim/freecad/kafa/kafa_rapor.py` montaj sırası).\n"
             "Kafa ekranı (10,1\" QLED), tırnaklar, kamera, ReSpeaker, USB ses kartı ve PAM8403 bu adımda takılmaz: kabuklarla birlikte E4'te.",
         baglanti_md="Pi: 4 × M2,5×8 pirinç burç + 4 × M2,5×5 (üst) + 4 × M2,5×8 DIN 912 (alt); D24V50F5, SY8205, TVS: 1 mm çift taraflı "
-                    "köpük bant + kablo bağı; horn 1 × M3×5. M6'daki LCD 4 × M3×6 ve kamera 4 × M2×8 PT bu adımda yok (QLED tırnaklı, kamera E4'te)",
+                    "köpük bant + kablo bağı; 625ZZ pres geçme. M6'daki LCD 4 × M3×6 ve kamera 4 × M2×8 PT bu adımda yok (QLED tırnaklı, kamera E4'te)",
         alet="alyan 2, PH1, yan keski",
         kontrol=["v4 listesi burcu 6 mm plastik diyor, tasarım 8 mm pirinç: Pi yüksekliğini kontrol et",
                  "D24V50F5 → Pi USB-C yaklaşık 10 cm; çeviriciler köpük banda tam oturdu, kablo bağı sıkı",
@@ -327,34 +351,60 @@ ADIM = {
     ),
     "E3": dict(
         baslik="Kafa → tilt hornu",
-        is_="Kafa alt montajını tilt hornuna, yanağından cıvatala. Kabuklardan önce: sonra cıvatalar kafa içinde kalır.",
-        baglanti_md="4 × M3×8 yanak–horn",
-        kontrol=["Kafa tilt ekseninde serbest; Pi kablolarına yük binmiyor"],
+        is_="Kabuklardan önce: sonra cıvatalar kafa içinde kalır. Sıra `tasarim/freecad/kafa/kafa_rapor.py` montaj tarifinden.\n"
+            "1. Kafa alt montajını yukarıdan indir: yanaklar eğme çatalının iki yanından geçer; sol yanaktaki 625ZZ'nin iç bileziği "
+            "çatal dayamasına, sağ yanak hornun dış yüzüne oturur. Kafa düz yukarıdan (ya da önden / arkadan kaydırarak) girer; "
+            "horn kafadaysa ya da 625ZZ / pim E2'de takılıysa yukarıdan girmez (giriş yolu ölçümü, sıra denetimi).\n"
+            "2. Horn merkez vidası M3×5: sağ yanağın orta deliğinden, PH1.\n"
+            "3. Sağ yanağı horna 4 × M3×8 ile cıvatala.\n"
+            "4. Pulu M5×12 pime geçir; pimi sol yanağın deliğinden 625ZZ'nin iç bileziğinden geçirip çataldaki M5 ısıl gömmeye sık, "
+            "alyan 4. 2 ile 3'ün sırası kaynakta yok (montaj mantığından).",
+        baglanti_md="4 × M3×8 yanak–horn; 1 × M3×5 horn merkez vidası (servo ile); 1 × M5×12 + DIN 125 pul (pim)",
+        alet="alyan 2,5 ve 4, PH1",
+        erisim="Kafa düz yukarıdan iner (giriş yolu ölçümü). Pim sol yanak dışından düz alyan 4 ile (alet yolu 130 mm boş), horn "
+               "vidası sağ yanak deliğinden PH1 ile (80 mm boş), yanak-horn cıvataları düz (sıra denetimi, 20 mm el)",
+        kontrol=["Kafa tilt ekseninde serbest; Pi kablolarına yük binmiyor", "Pim sıkıyken 625ZZ dönüyor, tilt elle engelsiz",
+                 "Horn merkez vidası sıkı"],
+        not_=["Bilinen açık konu: yanakların arası 54,4 mm, aradaki yığın (çatal dayaması + servo + horn) da 54,4 mm: kafa iki yanda "
+              "sıfır boşlukla iner (modelde ortak hacim 0, yüzler temas ediyor). Baskı toleransında zorlamasız iniş ölçülmedi"],
+        # F10c düzeltme 1: sıralı takma metindeki 2-3-4 sırasını izlesin (kafa adımın başında, bağlanan alt montaj olarak iner)
+        sira=[dict(ad="Horn merkez vidası", desen=("Tilt horn merkez vidası",)),
+              dict(ad="Yanak → horn cıvataları", desen=("Yanak-horn",)),
+              dict(ad="Pul + pim (sol yanak)", desen=("Pim pulu", "Pim cıvatası"))],
         ucus_bag=(0, 1, 0),
     ),
     "E4": dict(
         baslik="Kafa kabukları + yüz ekranı, kamera, ses",
         # kafa10_lib.py: QLED vida deliksiz, 4 tırnak (x ±85, üst / alt) M3×6 ISO 7380 + ısıl gömme, 1 mm köpük bant; kamera yüz kabuğu
         # boss'larına 4 × M2×8 PT; ReSpeaker sağ arka kabuk tavan boss'larına 3 × M2×8 PT; ses kartı + PAM8403 sol arka kabuk yan duvarı.
-        is_="Kafa robotta, tilt hornunda (E3). Sıra kaynakta yok, montaj mantığından çıkarıldı: doğrulanmadı.\n"
-            "1. Yüz kabuğu sağ + sol: kamerayı (Camera Module 3) ön duvarın içindeki boss'lara 4 × M2×8 PT ile vidala; lens ekranın üstündeki "
-            "Ø9 delikte. CSI şeridini Pi'ye tak.\n"
-            "2. 10,1\" QLED (vida deliği yok): camı yüz kabuğu ön duvarının iç yüzüne yasla, cep duvarı yerini gösterir. 4 tırnağı (üst ve alt, "
-            "x ±85) cam şeridine 1 mm köpük bant üstünden arkadan bastır; her tırnak 1 × M3×6 ISO 7380 ile boss'taki ısıl gömmeye.\n"
-            "3. QLED kabloları: HDMI (30 cm şerit, Pi micro HDMI 0), Power (SY8205 çıkışı, A ucu kesik micro USB kablo), Touch (Pi USB 4). "
-            "Touch'ı takmadan önce Notlar'daki ölçümü yap.\n"
-            "4. Arka kabuk sağ + sol: ReSpeaker Mic Array v2.0 tavanın altına, sağ arka kabuktaki boss'lara 3 × M2×8 PT. USB ses kartı ve "
-            "PAM8403 sol arka kabuğun yan duvarına köpük bant + kablo bağıyla. Bağla: ReSpeaker → Pi USB 1, ses kartı → Pi USB 2 (uzatma + "
-            "L dirsek), ses kartı L 3,5 mm → PAM girişi, PAM 5 V → D24V50F5 (varsayım, K10).\n"
-            "5. Kabukları yerine koy, tabla → arka kabuk rafı 4 × M3×10. Boyundan gelen uçlar (kafa 12 V, göğüs HDMI, hub uzatması, "
-            "hoparlör) K2'de bağlanır: arka kabuğun dikiş cıvatalarını K2'den sonra sık.",
+        is_="Kafa robotta, tilt hornunda (E3). Sıra: sağ arka kabuk → sol arka kabuk → tabla cıvataları → yüz kabuğu → kablolar → "
+            "dikişler. Yüz kabuğu önce takılırsa tabla cıvatalarına alet sığar ama el kafanın dışından ulaşamaz (sıra denetimi, "
+            "`rehber_sira.py`). Kaynakta sıra yok, montaj mantığından ve ölçümden: doğrulanmadı.\n"
+            "1. Masada, sağ arka kabuk: ReSpeaker Mic Array v2.0'ı kabuğun tavanındaki boss'lara 3 × M2×8 PT ile vidala (kabuk "
+            "kafadayken tavan vidalarına el ulaşmaz). Masada, sol arka kabuk: USB ses kartı ve PAM8403 yan duvara köpük bant + kablo "
+            "bağıyla. Kabukları kafanın arkasında tut, kabloları kafanın açık ön tarafından tak: ReSpeaker → Pi USB 1, ses kartı → "
+            "Pi USB 2 (uzatma + L dirsek), ses kartı L 3,5 mm → PAM girişi, PAM 5 V → D24V50F5 (varsayım, K10). Önce sağ kabuğu "
+            "arkadan (−z) yerine koy, sonra solu (arkadan ya da soldan): dikey dikişte sağ kabuğun bindirmesi solun altında kalır; sol "
+            "önce takılırsa sağ hiçbir düz yönden girmiyor (giriş yolu ölçümü).\n"
+            "2. Tabla → arka kabuk rafı 4 × M3×10: yüz tarafı açıkken önden, L alyanla.\n"
+            "3. Masada, yüz kabuğu sağ + sol: kamerayı (Camera Module 3) ön duvarın içindeki boss'lara 4 × M2×8 PT ile vidala; lens ekranın "
+            "üstündeki Ø9 delikte. 10,1\" QLED (vida deliği yok): camı yüz kabuğu ön duvarının iç yüzüne yasla, cep duvarı yerini gösterir. "
+            "4 tırnağı (üst ve alt, x ±85) cam şeridine 1 mm köpük bant üstünden arkadan bastır; her tırnak 1 × M3×6 ISO 7380 ile boss'taki "
+            "ısıl gömmeye.\n"
+            "4. Yüz kabuğunu kafanın önünde tut, kabloları tak: CSI şeridi → Pi; QLED HDMI (30 cm şerit, Pi micro HDMI 0), Power (SY8205 "
+            "çıkışı, A ucu kesik micro USB kablo), Touch (Pi USB 4). Touch'ı takmadan önce Notlar'daki ölçümü yap. Sonra yüz kabuğunu önden (+z) yerine koy (giriş yolu: önden serbest).\n"
+            "5. Dikişler: boyundan gelen uçlar (kafa 12 V, göğüs HDMI, hub uzatması, hoparlör) K2'de bağlanır: arka kabuğun dikiş "
+            "cıvatalarını K2'den sonra sık.",
         baglanti_md="1,58 m: tırnak 4 × M3×6 ISO 7380 → ısıl gömme + 4 köpük bant (1 mm); kamera 4 × M2×8 PT; ReSpeaker 3 × M2×8 PT (vida "
                     "tipi varsayım); ses kartı ve PAM8403 köpük bant + kablo bağı; tabla → arka kabuk rafı 4 × M3×10 DIN 912 → ısıl gömme; "
                     "kabuk dikişi 9 cıvata → ısıl gömme: 7 × M3×6 ISO 7380 + 2 × M3×5 ISO 7380 (havşalı tepe dikişi). M6'daki M3×8 + vizör "
                     "eski, BOM'da vizör yok",
         alet="alyan 2 / 2,5, PH0 / PH1 (M2 PT vidalar), yan keski",
-        erisim="Düz. Kamera, tırnaklar ve QLED kabloları arka kabuk takılmadan kafanın içinden. Servis arka kabuktan (125 cm notu; "
-               "1,58 m'de doğrulanmadı)",
+        erisim="Tabla cıvataları: L alyanla önden, yüz tarafı açıkken (alet yolu 63,5 mm boş; 4/4 ulaşılır, el payı 12, 15 ve 20 mm'de). "
+               "Eski sırada (yüz kabuğu önce) 20 mm el payında 4/4 kapalı; 15 mm ve altında eski sıra da açık görünüyor, fark 20 mm "
+               "el varsayımına dayanıyor. ReSpeaker, kamera ve tırnak vidaları masada, kabuk açıkken düz; "
+               "dikiş cıvataları dışarıdan düz (sıra denetimi). Giriş yolu: sağ arka kabuk arkadan, sol arka kabuk arkadan ya da "
+               "soldan, yüz grubu önden serbest (temas eden yüzler çarpışma sayılmadı). Servis arka kabuktan (125 cm notu; 1,58 m'de doğrulanmadı)",
         kontrol=["QLED camı ön duvarın iç yüzüne her kenarda dayalı; tırnak cama bastırıyor (cıvata tırnağı boss'a tutar), camı zorlamıyor",
                  "Kamera lensi Ø9 deliğin ortasında; CSI şeridi kırılmadan Pi'ye ulaşıyor",
                  "Touch takılmadan ölçüldü: QLED Power ile Touch VBUS arasında bağ var mı (Notlar)",
@@ -372,6 +422,15 @@ ADIM = {
               "PAM8403'ün 5 V besleme noktası karar bekliyor (K10; varsayılan D24V50F5). Ses kartı ve PAM8403 ölçüsü tahmini; ReSpeaker vida "
               "tipi ve kütlesi varsayım",
               "Kafa ekranının kütlesi (600 g) ve akımı (0,9 A) varsayım, ölçülmedi"],
+        # F10c (P10.3): sıra denetimiyle seçildi (planlama/d158/F10c-gunluk.md E4 tablosu). Masa grupları kafaya takılmadan hazırlanır.
+        # F10c düzeltme 1: arka kabuklar iki ayrı birim (dikiş cıvataları K2'den sonra): önce sağ, sonra sol (giriş yolu ölçümü).
+        sira=[dict(ad="Masada: sağ arka kabuk + ReSpeaker", tezgah=True, desen=("Arka kafa kabuğu sağ", "ReSpeaker", "Dizi vidası")),
+              dict(ad="Masada: sol arka kabuk + USB ses kartı, PAM8403", tezgah=True,
+                   desen=("Arka kafa kabuğu sol", "USB ses kartı", "PAM8403")),
+              dict(ad="Tabla → arka kabuk rafı cıvataları", desen=("Tabla cıvatası", "(tabla rafı")),
+              dict(ad="Masada: yüz kabuğu + kamera + QLED ve tırnaklar", tezgah=True,
+                   desen=("Yüz kabuğu", "Kamera", "Yüz ekranı", "Ekran tırnağı", "Köpük bant (tırnak", "Tırnak cıvatası", "(tırnak boss")),
+              dict(ad="Kabuk dikişi", desen=("Kabuk cıvatası", "(kafa "))],
     ),
     "K2": dict(
         baslik="Kablolama kapısı 2: gövde içi",
@@ -521,15 +580,27 @@ ADIM = {
               "12 V dalı (mini 2 A → LM2577 + LM2596): giriş noktası ve acil stop davranışı karar bekliyor (`planlama/adim3/elektrik.md` K11)",
               "Regülatör kartı ve mini 2 A sigorta modelde yok; yerleri doğrulanmadı"],
         ucus="radyal",
+        # F10c (P10.3): iş metnindeki sıra (bant → taşıyıcı → ekran → çerçeve); taşıyıcı M6'sı ekran takılınca kapanır (sıra denetimi)
+        sira=[dict(ad="Göğüs bantları", desen=("Göğüs bandı", "(gövde ", "(Gövde braketi")),
+              dict(ad="VESA taşıyıcı → direk ön kanalı", desen=("VESA taşıyıcı", "Taşıyıcı ", "Çekiç somun M6 (direk ön kanalı)")),
+              dict(ad="Göğüs ekranı → taşıyıcı (VESA)", desen=("Göğüs ekranı 11", "VESA pulu", "VESA cıvatası")),
+              dict(ad="Göğüs ekranı çerçevesi", desen=("Göğüs ekranı çerçevesi", "Çerçeve cıvatası", "(göğüs çerçevesi)"))],
     ),
     "F4": dict(
         baslik="Omuz bantları",
-        is_="Omuz bantlarını Ø84 rulman kapağının üstünden geçir; üst kapak boynu sarar. M3×6 ISO 7380 ile bağla.\n"
-            "Bundan sonra bant ancak göbek sökülünce çıkar.",
+        is_="1. Omuz bantlarını Ø84 rulman kapağının üstünden geçir; üst kapak boynu sarar. M3×6 ISO 7380 ile bağla.\n"
+            "Bundan sonra bant ancak göbek sökülünce çıkar.\n"
+            "2. Kol servo uçlarını omuz yarığından dışarı al: K2'de travers arkasında bırakılan uzatma uçlarını, her omuzda ψ 214 "
+            "yarığından (12 × 6) dışarı çıkar. Üst arka servis kapağı F5'e kadar açık: elle kapak açıklığından travers arkasına uzan, ucu "
+            "yarıktan dışarı it. Dışarıda bekleyen uçlar G2'de (S2 eki göbekte) ve H1'de (dirsek, bilek) eklenir; G4'te demet aynı yarıktan "
+            "içeri giden koşuyla kasete oturur. El yolu kaba ölçüm (10.11 sıra kontrolü, el bölgesine uzaklık: travers arkasına 0 mm, "
+            "yani el kapak açıklığından doğrudan ulaşıyor; yarığın iç tarafına 6 mm), doğrulanmadı.",
         baglanti_md="M3×6 ISO 7380",
         kontrol=["Yarık ψ 214 (12 × 6) kablo için açık; Ø84'e açılan anahtar deliği (Y3 K3) temiz",
-                 "Bant kapağa sürtmüyor, boyun dönüyor"],
-        kablo=["S1 uçlarına erişim kalmalı: G4'te yarıktan girecekler"],
+                 "Bant kapağa sürtmüyor, boyun dönüyor",
+                 "Kol servo uzatma uçları iki omuzda da yarıktan dışarıda, etiketli; yarıkta ezilmiyor"],
+        kablo=["Geçit: ψ 214 yarığı. Travers arkasındaki kol servo uzatma uçları bu adımda yarıktan dışarı alınır (madde 2); G2, G4 "
+               "ve H1 onları dışarıda kullanır"],
         ucus="radyal",
     ),
     "G0": dict(
@@ -581,15 +652,20 @@ ADIM = {
         erisim="Önden radyal; dikmeler yalnız S1 −45 / S2 90'da",
         kontrol=["Yarık 12 × 6: JR erkek geçer", "Kol tam taramada kablo gerilmiyor, kapağa sürtmüyor",
                  "S1 ≥ 120 iken S2 ≤ 117: bu sınırı aşma"],
+        poz=dict(S1=-45, S2=90),                                    # F10c: dikme cıvataları ev pozunda kapalı, bu pozda açık
         kablo=["Geçit: ψ 214 yarığı → travers arkasındaki S1 ucu (K2'de bırakıldı)"],
     ),
     "H0a": dict(
         baslik="Tezgâh: ön kol + servolar",
-        is_="1. Dirsek ve bilek servolarını ön kola cıvatala. Bilek somunu cepte; dirsek alt iki kulak cıvatası Ø8 erişim deliğinden, somunu cepte (Y3 C2).\n"
+        is_="1. Dirsek ve bilek servolarını ön kola cıvatala. Dirsek somunları cepte; dirsek alt iki kulak cıvatası Ø8 erişim deliğinden "
+            "(Y3 C2). Bilek somunları cepte değil: 7 mm açık ağızla tek yönden tut (lokma yerel olarak sığıyor ama tutacağına el "
+            "ulaşmıyor; sıra denetimi: açık ağız el bölgesine 25,5–36 mm'de ulaşıyor).\n"
             "2. Bilek kablosu: mil ucundan içe, geri, ara duvar çentiği (6 × 5), dirsek servosu arkası, tırnak.\n"
             "3. Dirsek kablosu üstten tırnağa. Tırnakta iki kablo; kablo bağı kanat + demet.",
         baglanti_md="Kol başına 8 × M4×16 + 8 kontra somun",
-        erisim="Düz; somunlar cepte, dirsek alt kulaklar Ø8 delikten (Y3 C2)",
+        erisim="Cıvatalar düz alyanla. Dirsek somunları cepte (8 somun), dirsek alt kulaklar Ø8 delikten (Y3 C2). Bilek somunları "
+               "(8 somun) cepte değil: 7 mm açık ağız, tek yönden, dar (anahtar el bölgesine 25,5–36 mm'de ulaşıyor); lokmanın tutacağına el ulaşmıyor "
+               "(sıra denetimi, 20 mm el)",
         kontrol=["Çentikte kablo ezilmedi", "Kablo bağı kanadı tırnağı tutuyor"],
         kablo=["Geçit: ara duvar çentiği 6 × 5 ve tırnak"],
     ),
@@ -698,6 +774,16 @@ KABLO_K2_Y_ESIK = 300.0
 
 def kablo_kapisi(y_maks):
     return "K2" if y_maks > KABLO_K2_Y_ESIK else "K1"
+
+
+# F10c (P10.3): adım içi sıra. ADIM[kod]["sira"] = [dict(ad, desen, tezgah?)]: parça görünen adında (tr sonrası) desenlerden biri geçen
+# ilk grup kazanır. Gruplar bu sırayla takılır; "tezgah" işaretli grup masada hazırlanır ve sıradaki yerinde robota bağlanır.
+# rehber_veri.py satırları bu sırayla dizer ("sira", "sira_grup"); app.js sıralı takma ve rehber_sira.py denetimi bunu kullanır.
+def sira_grup_bul(sira, ad):
+    for i, g in enumerate(sira):
+        if any(d in ad for d in g["desen"]):
+            return i
+    return None
 
 
 # Tarihsel: M6 analizinin CAD değişikliği istediği bağlantılar (Y3'te işlendi; yalnız M6_BAYRAK_ACIK True iken görünür). YOK sınıfı M6 JSON'dan

@@ -25,7 +25,10 @@
 #   --cikti <klasör>: tüm çıktılar o klasöre (bağımsız kontrol depoyu değiştirmeden koşabilsin; F7a-kontrol D-5, F7b-kontrol D-4):
 #      kontrol.json, goruntu/ (kontrol + telefon), Lale-montaj-rehberi.pdf ve <klasör>/rehber/ (yazdir.html + veri/rehber-veri.js
 #      kopyası + goruntu/adim-NN.png). Depodaki rehber/ yalnız okunur; veri üretimi rehber/veri'ye yazdığı için --veri-yok gerekir.
-#   --ek-yok: 4–7'yi atla.
+#   8) F10c: rehber_sira.py: her bağlantı elemanına alet (ışın) + el (voksel, 20 mm) erişimi, adım içi sıra (sira_grup) ve poz ile
+#      -> kontrol.json "sira" (ulaşılamaz sınırı 0; aşılırsa ya da bilinen kapalı sınama kaçarsa çıkış 2) ve "perdelenme" (adım başına
+#      hiçbir yönden görünmeyen yeni parçalar, sayı + liste; eşik yok). numpy yoksa ikisi "atlandı", üretim kırılmaz. ~2 dk
+#   --ek-yok: 4–8'i atla.
 import os, sys, json, subprocess, re, time, urllib.parse, argparse, tempfile, html
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -429,11 +432,18 @@ if __name__ == "__main__":
             ek["yazdir"], m3 = yazdir(tb, n)
             ek["denetim"] = RD.denetle(V, metin + m2 + m3)
             RD.ozet_yaz(ek["denetim"])
+            import rehber_sira as RS                                    # F10c: 8) sıra (alet + el) ve perdelenme
+            try:
+                ek["sira"], ek["perdelenme"] = RS.denetle(V)
+            except Exception as e:                                      # denetim çökerse üretim sürer, sıra denetimi kalır
+                ek["sira"] = dict(durum="hata", neden="%s: %s" % (type(e).__name__, e), gecti=False)
+                ek["perdelenme"] = dict(durum="hata", neden=ek["sira"]["neden"], gecti=True)
+            RS.ozet_yaz(ek["sira"], ek["perdelenme"])
         os.makedirs(CIKTI, exist_ok=True)
         json.dump(dict(tarih=time.strftime("%Y-%m-%d %H:%M"), tarayici=os.path.basename(tb), ozet=ozet, sonuc=sonuc, **ek),
                   open(os.path.join(CIKTI, "kontrol.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         kotu = [s for s in sonuc if not s["gecti"]]
-        ek_kotu = [k for k in ("telefon", "yazdir", "denetim") if k in ek and not ek[k]["gecti"]]
+        ek_kotu = [k for k in ("telefon", "yazdir", "denetim", "sira") if k in ek and not ek[k]["gecti"]]
         if ek.get("yazdir_goruntu", {}).get("eksik") or ek.get("yazdir_goruntu", {}).get("bos"):
             ek_kotu.append("yazdir_goruntu")
         print("tarayici kontrolu: %d adim, %d gecti, %d sorunlu, konsol hatasi %d; her parca tek adimda: %s; ek kontrol sorunlu: %s" % (

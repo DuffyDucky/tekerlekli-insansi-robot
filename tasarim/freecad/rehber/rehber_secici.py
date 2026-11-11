@@ -135,11 +135,18 @@ ADIMLAR = [
     ("E1a", "boyun", _ve(_KF, _g("Boyun"), _degil(_ad("Boyun civata", "Cekic somun")))),
     ("E1", None, _ve(_KF, _g("Boyun"))),
     ("E2a", None, _ve(_KF, _ad("Pan horn"))),
-    # İç bilezik eşleşmesi yalnız 6808'ler: Pan grubundaki 625ZZ (tilt pimi, çatal yanağı) E2'de takılır (F7a-kontrol O-1).
+    # İç bilezik eşleşmesi yalnız 6808'ler. Pan grubundaki 625ZZ (tilt pimi, çatal yanağı) F7a-kontrol O-1'de E2'ye alınmıştı; F10c
+    # düzeltme 1'de E3a'ya (kafa yanağı) taşındı, aşağıdaki E2 / E3 / E3a satırları.
     ("E2b", None, _ve(_KF, _g("Pan"), _veya(_ad("Boyun mili", "Mil-horn"), _ve(_ad("6808"), _ad("ic bilezik"))))),
     # 1,58 m: boyun yükseltme adaptörü + 4 M3 saplama (DIN 976) + pul + DIN 985 çatalla birlikte (kafa10_lib.py başlık notu)
     ("E2c", None, _ve(_KF, _g("Pan"), _ad("Egme catali", "Catal-mil", "Isil gomme somun M3", "Boyun yukseltme", "Saplama M3",
                                           "(saplama"))),
+    # F10c düzeltme 1: tasarımın montaj tarifi (kafa/kafa_rapor.py SIRA 5-6): tilt hornu E2'de servoya (merkez vidası yok); 625ZZ tek
+    # parça E3a'da sol yanağa pres (modeldeki iç / dış bilezik ayrımı yalnız çizim); kafa E3'te yukarıdan iner, sonra horn merkez vidası
+    # (sağ yanak deliğinden) ve sol pim + pul (sol yanak deliğinden). Ölçüm: planlama/d158/F10c-gunluk.md "Düzeltme turu 1".
+    ("E2", None, _ve(_KF, _ad("Tilt horn 25T"))),
+    ("E3", None, _ve(_KF, _ad("Tilt horn merkez vidasi", "Pim pulu M5", "Pim civatasi M5x12"))),
+    ("E3a", "kafa", _ve(_KF, _ad("625ZZ rulman (ic bilezik)"))),
     ("E2", None, _ve(_KF, _g("Pan"))),
     ("E3", None, _ve(_KF, _ad("Yanak-horn"))),
     ("E4", None, _ve(_KF, _g("Kafa_tilt"), _ad(*_KAFA_KABUK))),

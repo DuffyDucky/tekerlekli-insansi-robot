@@ -88,7 +88,7 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
 | Komut | Üretir |
 |---|---|
 | `python tasarim/freecad/rehber/rehber_uret.py` | 1) freecadcmd + `rehber_veri.py` (~22 s) → `rehber/veri/rehber-veri.json`, `rehber-veri.js`, `robot.glb`, `robot-glb.js`; 2) her adım için headless Chrome `--dump-dom` (hata/hazır + `kontrol-veri`: yeni görünen parçalar) + `--screenshot` → `planlama/rehber/goruntu/adim-NN.png`, `planlama/rehber/kontrol.json` (tüm 50 adım ≈ 3 dk; çıkış 0 = hepsi geçti) |
-| (F7b ekleri, aynı komut) | `rehber/goruntu/adim-NN.png` (yalnız 3B, `?sahne=1`), `planlama/rehber/goruntu/telefon-360-adim-NN.png` (DevTools ile 360 px; Python `websockets` gerekir), `planlama/rehber/Lale-montaj-rehberi.pdf` (`rehber/yazdir.html`), `kontrol.json` `telefon` / `yazdir` / `denetim` alanları. Tüm adımlar ≈ 5 dk |
+| (F7b ekleri, aynı komut) | `rehber/goruntu/adim-NN.png` (yalnız 3B, `?sahne=1`), `planlama/rehber/goruntu/telefon-360-adim-NN.png` (DevTools ile 360 px; Python `websockets` gerekir), `planlama/rehber/Lale-montaj-rehberi.pdf` (`rehber/yazdir.html`), `kontrol.json` `telefon` / `yazdir` / `denetim` alanları; F10c'den beri `sira` / `perdelenme` (sıra denetimi ≈ 3,5 dk). Tüm adımlar ≈ 10,5 dk |
 | `... --veri-yok --cikti <klasör>` / `--ek-yok` | tüm çıktılar o klasöre (kontrol.json, goruntu/, PDF, `<klasör>/rehber/` yazdir.html + veri kopyası + 3B görüntüler; depodaki `rehber/` yalnız okunur, F7b-kontrol D-4) / telefon, PDF ve denetimi atla |
 | FreeCAD başlatıcısı | `LALE_FC_LAUNCH` ortam değişkeni, yoksa `~/.robot-cad/run_fc.py` (ASCII yol; F7b-kontrol D-5) |
 | `python tasarim/freecad/rehber/rehber_denetim.py` | yalnız veri üzerinde ASCII kalıntı, gruplama (parça + bağlantı satırları), kafa / hoparlör / hub tutarlılığı, zorunlu güvenlik uyarıları (çıkış 0 = temiz) |
@@ -140,6 +140,10 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
   `rehber-veri.json` / `.js`'e `rehber_veri.py`'nin alan kuralı ve yazma biçimiyle yazıldı (değişiksiz yeniden yazım FreeCAD çıktısıyla bayt
   bayt aynı; fark yalnız K1 `is_`, F3 `is_`, F5 `not_`). Kontrol 21:13: 50/50, konsol 0, 1192 ↔ 1192, PDF 54 sayfa, en küçük 8,1 pt,
   denetim 0 (zorunlu 0 / 40, yasak 0, istisna 5); F9b, `kontrol`, regresyon 0.
+- 2026-11-11 (F10c, P10.3; `planlama/d158/F10c-gunluk.md`): sıra denetimi (`rehber_sira.py`, `rehber_giris.py`; alet + el erişimi,
+  giriş yolu, perdelenme) artık her üretimde koşuyor (`rehber_uret.py` 8. adım, `--ek-yok` ile atlanır; numpy yoksa "atlandı").
+  `kontrol.json` `sira` / `perdelenme`; sınır ulaşılamaz 0, girilemez 0. Süre 214 s (giriş yolu 102,5 s); üretim ≈ 10,5 dk.
+  Kontrol 05:30: 50/50, konsol 0, 1192 ↔ 1192 (5 parça adım değiştirdi), PDF 55 sayfa, en küçük 8,1 pt, denetim 0.
 
 ## Kararlar (tasarım)
 - 09.11 (F7b): Göğüs ekranı / kafa kablo yolları (`lale158/kablo_yolu_ekran.py`) `semalar` olarak girer, `parcalar`a değil: gösterim

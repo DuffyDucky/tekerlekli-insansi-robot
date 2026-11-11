@@ -542,24 +542,41 @@ for i, kod in enumerate(KODLAR):
     parca = collections.OrderedDict()
     bag = collections.OrderedDict()
     uye = collections.defaultdict(list)
+    # F10c (P10.3): adım içi sıra. rehber_metin "sira" grupları varsa satır anahtarının başına grup sırası girer (aynı kodlu bağlantı
+    # iki gruptaysa iki satır olur), satırlar grup sırasıyla dizilir; adım verisine "sira" (app.js sıralı takma) ve "sira_grup"
+    # (rehber_sira.py denetimi) yazılır. Grup eşleşmesi görünen adla (tr); hiçbir gruba uymayan parça son gruba ve UYARI.
+    sira = mt.get("sira")
+
+    def grup_i(p):
+        if not sira:
+            return 0
+        g = RM.sira_grup_bul(sira, tr(RM.kopya_eki_sil(p["ad"], p["kod"])))
+        if g is None:
+            log("UYARI sira grubu yok:", kod, p["ad"])
+            return len(sira) - 1
+        return g
     for p in ps:
         if p["tur"] == "Referans":
             continue
+        gi = grup_i(p)
         if p["tur"] == "Baglanti":
-            k = p["kod"]
-            e = bag.setdefault(k, dict(kod=tr(k), adet=0, m6=0, ids=[],
-                                       onceden=("isil gomme" in k.lower())))   # D-1: ısıl gömme baskıdan sonra takılı (hazırlık)
+            k = (gi, p["kod"])
+            e = bag.setdefault(k, dict(kod=tr(p["kod"]), adet=0, m6=0, ids=[],
+                                       onceden=("isil gomme" in p["kod"].lower())))   # D-1: ısıl gömme baskıdan sonra takılı (hazırlık)
             e["adet"] += 1
             e["m6"] += 1 if p.get("m6") else 0
             e["ids"].append(p["id"])
         else:
             # F7b (P7.2 madde 5, F7a-kontrol D-3): anahtar kod + ad. Eskiden (kod, tür, renk) idi: aynı koddaki farklı parçalar
             # ilk parçanın adıyla tek satırda toplanıyordu (F2 "Gövde alt bandı sağ ×11"). Sağ / sol aynı satırda kalır.
-            k = (p["kod"], p["tur"], renk_sinifi(p), yan_sil(temiz_ad(p["ad"])))
-            parca.setdefault(k, dict(kod=tr(p["kod"]), tur=p["tur"], malzeme=tr(p["malzeme"]), r=k[2], adet=0, ids=[]))
+            k = (gi, p["kod"], p["tur"], renk_sinifi(p), yan_sil(temiz_ad(p["ad"])))
+            parca.setdefault(k, dict(kod=tr(p["kod"]), tur=p["tur"], malzeme=tr(p["malzeme"]), r=k[3], adet=0, ids=[]))
             parca[k]["adet"] += 1
             parca[k]["ids"].append(p["id"])
             uye[k].append(p)
+    if sira:                                                       # satırlar grup sırasıyla (grup içinde model sırası)
+        parca = collections.OrderedDict(sorted(parca.items(), key=lambda kv: kv[0][0]))
+        bag = collections.OrderedDict(sorted(bag.items(), key=lambda kv: kv[0][0]))
     for k, e in parca.items():
         ps_ = uye[k]
         tam = {p["ad"] for p in ps_}
@@ -567,13 +584,22 @@ for i, kod in enumerate(KODLAR):
             ad = next(iter(tam))
             yn = yanlar(ps_) if ps_[0]["modul"].endswith(("_sag", "_sol")) else set()
         else:
-            ad = k[3] if len({temiz_ad(p["ad"]) for p in ps_}) > 1 else temiz_ad(ps_[0]["ad"])
+            ad = k[4] if len({temiz_ad(p["ad"]) for p in ps_}) > 1 else temiz_ad(ps_[0]["ad"])
             yn = yanlar(ps_)
         e["ad"] = tr(ad) + (" (sağ + sol)" if len(yn) == 2 else (" " + next(iter(yn)) if yn and next(iter(yn)) not in tr(ad) else ""))
     nciv = sum(1 for p in ps if civata_mi(p))
     nsom = sum(1 for p in ps if p["tur"] == "Baglanti" and not civata_mi(p))
     sure = mt.get("sure_dk") or int(round(5 + 1.0 * nciv + 0.3 * nsom + 0.8 * sum(e["adet"] for e in parca.values())))
     m6not = sorted(set(p["m6"] for p in ps if p.get("m6")))
+    ek = {}
+    if sira:
+        pk, bk = list(parca), list(bag)
+        sg = [dict(ad=g["ad"], tezgah=bool(g.get("tezgah")),
+                   satir=["p:%d" % j for j, kk in enumerate(pk) if kk[0] == n] + ["b:%d" % j for j, kk in enumerate(bk) if kk[0] == n])
+              for n, g in enumerate(sira)]
+        ek = dict(sira=[x for g in sg for x in g["satir"]], sira_grup=sg)
+    if mt.get("poz"):
+        ek["poz"] = mt["poz"]
     ADIMLAR.append(dict(
         i=i, kod=kod, no=r["no"], faz=faz(kod), baslik=mt.get("baslik") or r["is_"].split(":")[0][:60],
         is_=mt.get("is_") or r["is_"], baglanti_md=mt.get("baglanti_md") or r["baglanti"], alet=mt.get("alet") or r["alet"],
@@ -583,7 +609,7 @@ for i, kod in enumerate(KODLAR):
         kontrol=mt.get("kontrol", []), kablo=mt.get("kablo", []), not_=mt.get("not_", []), kamera=mt.get("kamera"),
         m6=[dict(kod=k, not_=RM.M6_CAD_NOT[k], adet=sum(1 for p in ps if p.get("m6") == k)) for k in m6not],
         sure_dk=sure, sure_tahmini=not mt.get("sure_dk"),
-        kablolama=kod in ("K1", "K2")))
+        kablolama=kod in ("K1", "K2"), **ek))
 
 
 # ------------------------------------------------------------------ gösterim şemaları (F7b, P7.2 madde 4): lale158/kablo_yolu_ekran.py

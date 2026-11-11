@@ -95,6 +95,10 @@ saat bileklik bobinleri kolu program bilinmiyor pini kapatabilir klemensine siya
 anahtardan etekteki sigortadan kesiti kademesinde serbestken bip gerilimli olurdu multimetreyi kademesine otomatik soketine
 soketinde atar klemensinin ucuna klemensin okundu barada teli
 hattan rehberdeki buna hangi kuyruklu ucundaki metal pimleri gerilimlidir kesmez pimlere cinsi verilene
+klemenslere dar kata olmayan yetecek demetleyip topla yolunu toplama bilinen konu inerken burcuna gelmeden uzanma klemenslerine
+karta etiketleri okunuyor biri kabuklar denetimi kafadayken tavan getir uzan bekleyen eki kaba yerel olarak
+hornunu konumdayken miline indikten inen milde milinde pres ona tarifinden indir kafadaysa pime aradaki ortak hacim
+temas ediyor soldan dikey bindirmesi solun girmiyor grubu eden yani
 """.split())
 
 # 3) Kafa / hoparlör / hub: (bileşen anahtarı parça adında, metinde aranacak kelimeler)

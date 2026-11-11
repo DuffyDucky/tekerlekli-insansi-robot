@@ -1,14 +1,14 @@
 {
- "tarih": "2026-11-11 02:02",
+ "tarih": "2026-11-11 06:52",
  "tarayici": "chrome.exe",
  "adim": 50,
- "yontem": "CDP (Chrome DevTools protokolü), file://; önce = HEAD rehber sayfası geçici kopyada (three.js aynı 0.160 yerel paket)",
+ "yontem": "CDP (Chrome DevTools protokolü), file://; önce = 749627b~1 rehber sayfası geçici kopyada (three.js aynı 0.160 yerel paket)",
  "kadraj": {
   "kare": "1400 x 900 pencere, sahne alanı (panel hariç)",
   "once_ortanca": 0.1733,
   "sonra_ortanca": 0.4013,
   "once_ortalama": 0.164,
-  "sonra_ortalama": 0.376,
+  "sonra_ortalama": 0.3752,
   "once_tasan_adim": 0,
   "sonra_tasan_adim": 0,
   "sonra_tasan_parca": 0,
@@ -364,12 +364,12 @@
    {
     "adim": 28,
     "kod": "E2",
-    "once": 0.0498,
-    "sonra": 0.265,
+    "once": 0.0496,
+    "sonra": 0.2217,
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 14,
+    "yeni_parca": 12,
     "hazir": true,
     "hata": null
    },
@@ -381,7 +381,7 @@
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 23,
+    "yeni_parca": 22,
     "hazir": true,
     "hata": null
    },
@@ -393,7 +393,7 @@
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 27,
+    "yeni_parca": 29,
     "hazir": true,
     "hata": null
    },
@@ -735,15 +735,15 @@
     "parca": {
      "id": "p0766",
      "ad": "M3x6 ISO 7380",
-     "satir": "b:3",
-     "satir_ids": 11,
-     "beklenen": 11,
+     "satir": "b:8",
+     "satir_ids": 7,
+     "beklenen": 7,
      "gizli_kopya": 0,
-     "vurgulu": 11,
+     "vurgulu": 7,
      "ana": [
       "p0766"
      ],
-     "kopya_sayi": 10,
+     "kopya_sayi": 6,
      "once_vurgulu": 0,
      "ana_tiklanan": true,
      "kopya_kume_esit": true,
@@ -753,11 +753,11 @@
      "gecti": true
     },
     "panel": {
-     "secici": "#panel [data-satir='b:1']",
+     "secici": "#panel [data-satir='b:6']",
      "ad": "M3 ısıl gömme somun",
-     "satir_ids": 17,
-     "beklenen": 17,
-     "vurgulu": 17,
+     "satir_ids": 9,
+     "beklenen": 9,
+     "vurgulu": 9,
      "satir_isaretli": true,
      "fazla": [],
      "eksik": [],
@@ -769,7 +769,7 @@
      "gecti": true
     },
     "adim_degisti": {
-     "once": 11,
+     "once": 7,
      "sonra": 0,
      "yeni_adim": 32,
      "gecti": true
@@ -956,17 +956,17 @@
    "patlat_tak": {
     "patlat": {
      "n": 0,
-     "toplam": 16
+     "toplam": 22
     },
     "uc_tak": {
      "n": 3,
-     "toplam": 16
+     "toplam": 22
     },
-    "ucuncu_satir_vurgu": 1,
-    "ucuncu_satir_ids": 1,
+    "ucuncu_satir_vurgu": 3,
+    "ucuncu_satir_ids": 3,
     "geri": {
      "n": 2,
-     "toplam": 16
+     "toplam": 22
     },
     "topla": null,
     "gecti": true
@@ -1000,14 +1000,14 @@
      },
      {
       "adim": 31,
-      "satir": 16,
+      "satir": 22,
       "D_acilis": 607,
       "D_patlak": 1391,
       "D_hepsi_takili": 607,
       "D_geri_al": 1391,
       "sira_son": {
-       "n": 16,
-       "toplam": 16
+       "n": 22,
+       "toplam": 22
       },
       "gecti": true
      },
@@ -1267,15 +1267,15 @@
    {
     "adim": 28,
     "var": true,
-    "oran": 0.3364,
-    "boyut_kb": 61.9,
+    "oran": 0.3305,
+    "boyut_kb": 65.6,
     "cizili": true
    },
    {
     "adim": 29,
     "var": true,
-    "oran": 0.2859,
-    "boyut_kb": 63.6,
+    "oran": 0.286,
+    "boyut_kb": 63.8,
     "cizili": true
    },
    {
@@ -1424,7 +1424,7 @@
   "en_dusuk": 0.0595,
   "pdf": {
    "olculdu": true,
-   "sayfa": 54,
+   "sayfa": 55,
    "goruntu": 50,
    "bos_sayfa": [],
    "en_dusuk": 0.0595
@@ -2059,7 +2059,7 @@
      "w": 170,
      "h": 227,
      "dolu": 4969,
-     "vurgu": 70,
+     "vurgu": 41,
      "tasma": 0,
      "genislik": 1400,
      "sahne_icinde": true,
@@ -2081,7 +2081,7 @@
      "w": 170,
      "h": 227,
      "dolu": 4969,
-     "vurgu": 168,
+     "vurgu": 156,
      "tasma": 0,
      "genislik": 1400,
      "sahne_icinde": true,
@@ -2103,7 +2103,7 @@
      "w": 170,
      "h": 227,
      "dolu": 4969,
-     "vurgu": 168,
+     "vurgu": 169,
      "tasma": 0,
      "genislik": 1400,
      "sahne_icinde": true,
@@ -3188,8 +3188,8 @@
      "acik": true,
      "w": 84,
      "h": 112,
-     "dolu": 1204,
-     "vurgu": 73,
+     "dolu": 1201,
+     "vurgu": 47,
      "tasma": 0,
      "genislik": 360,
      "sahne_icinde": true,
@@ -3210,8 +3210,8 @@
      "acik": true,
      "w": 84,
      "h": 112,
-     "dolu": 1204,
-     "vurgu": 73,
+     "dolu": 1201,
+     "vurgu": 47,
      "tasma": 0,
      "genislik": 360,
      "sahne_icinde": true,
@@ -3675,7 +3675,7 @@
   "F10a-goruntu-31-koyu-secim.png",
   "F10a-goruntu-44-acik-secim.png"
  ],
- "veri_degismedi": true,
- "sure_s": 479,
+ "veri_degismedi": false,
+ "sure_s": 399,
  "gecti": true
 }
