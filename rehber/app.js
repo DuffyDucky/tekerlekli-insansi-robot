@@ -2,12 +2,44 @@
    İkisi de tasarim/freecad/rehber/rehber_veri.py ile üretilir; elle düzenleme. Klasik betik (file:// altında da çalışsın diye);
    three.js 0.160 index.html'de vendor/three-0.160.0-paket.min.js'ten (klasik betik, internetsiz) RehberBaslat'a verilir.
    F10a (P10.1): seçim vurgusu (tıklanan parça + aynı kalemin kopyaları, panel satırından da), öncekiler opak / saydam / gizli,
-   patlat + panel sırasıyla satır satır tak, "robotun neresi" küçük görünümü, yeni parçalara sıkı kadraj. */
+   patlat + panel sırasıyla satır satır tak, "robotun neresi" küçük görünümü, yeni parçalara sıkı kadraj.
+   F10d (P10.4): alt adımlar. Kaynak adım verisindeki sira_grup (F10c adım içi sırası): "alt" sayısı olan adımda her grup bir alt
+   adımdır (31.1 … 31.n; 31 = 31.0 genel bakış, bütün yeni parçalar). Adres ?adim=31.3 ya da #31.3; ←/→ alt adımlar arasında da
+   yürür. Masa grubu (tezgah anahtarı): yalnız o birimin parçaları; "bag" grubu birimi ub yönünden robota bağlar. Panel ve sıralı
+   takma aynı sırayı (st.sira) izler; ısıl gömme ev sahibiyle (p.h) uçar. */
 (function () {
   "use strict";
   const VERI = window.REHBER_VERI;
   const ADIM = VERI ? VERI.adimlar : [];
   const N = ADIM.length;
+  // ---------------------------------------------------------------- F10d: alt adım yardımcıları (veri: sira_grup, alt)
+  const KONUM = [];                                   // gezinme sırası: [adım, alt adım]
+  ADIM.forEach((a) => { KONUM.push([a.i, 0]); for (let j = 1; j <= (a.alt || 0); j++) KONUM.push([a.i, j]); });
+  function konumNo(s, j) { for (let i = 0; i < KONUM.length; i++) if (KONUM[i][0] === s && KONUM[i][1] === j) return i; return 0; }
+  const _gh = {};
+  function grupHarita(s) {                            // parça / şema -> grup sırası (0'dan), bağlayan grup: anahtar -> sıra
+    if (_gh[s]) return _gh[s];
+    const st = ADIM[s], h = { p: {}, sema: {}, bag: {}, satir: {} };
+    (st.sira_grup || []).forEach((g, n) => {
+      g.satir.forEach((k) => {
+        h.satir[k] = n;
+        const [t, i] = k.split(":"); const r = (t === "p" ? st.parcalar : st.baglantilar)[+i];
+        if (r) r.ids.forEach((id) => { h.p[id] = n; });
+      });
+      (g.sema || []).forEach((i) => { h.sema[i] = n; });
+      (g.ref || []).forEach((id) => { h.p[id] = n; });   // gösterim parçası (satırı yok)
+      if (g.bag) h.bag[g.bag] = n;
+    });
+    _gh[s] = h;
+    return h;
+  }
+  function adresOku(x) {                              // "31.3" -> [31, 3]; "31" -> [31, 0]
+    const m = /^\s*(\d+)(?:\.(\d+))?\s*$/.exec(String(x == null ? "" : x));
+    if (!m) return null;
+    const s = Math.max(0, Math.min(N - 1, +m[1]));
+    return [s, Math.max(0, Math.min((ADIM[s] && ADIM[s].alt) || 0, m[2] ? +m[2] : 0))];
+  }
+  function adres(s, j) { return j ? s + "." + j : String(s); }
   const $ = (id) => document.getElementById(id);
   const P = new URLSearchParams(location.search);
   const CEKIM = P.get("cekim") === "1";               // ekran görüntüsü kipi: animasyon yok, sabit kamera
@@ -140,7 +172,7 @@
       yuklu = true;
       sahneRengi();
       miniGoster(miniAcik, true);
-      git(baslangic(), false);
+      const b0 = baslangic(); git(b0[0], false, b0[1]);
       if (P.get("patlat") === "1") { patlat(); const t = parseInt(P.get("tak"), 10); for (let i = 0; i < (t || 0); i++) tak(); }
     }, (h) => { $("yukleniyor").textContent = "GLB okunamadı: " + h; console.error(h); });
 
@@ -163,27 +195,37 @@
         const m = new THREE.Mesh(g, MINI.soluk); MINI.sahne.add(m); SEMA_MINI[i] = m;
       });
     }
-    function semaDurum(s, adim) {                    // "gizli" | "simdi" | "onceki" | "hedef"
+    function semaDurum(i, adim, j) {                 // "gizli" | "simdi" | "onceki" | "hedef"
+      const s = SEMA[i];
       if (adim === 0) return "hedef";
+      if (j === undefined) j = adim === su ? ss : 0;
+      // F10d düzeltme 1 (kontrol B-3): masa alt adımında robot yok; başka adımların kablo yolları havada çizilmesin
+      if (j && ADIM[adim].alt && ADIM[adim].sira_grup[j - 1].tezgah && s.a !== adim) return "gizli";
+      if (j && ADIM[adim].alt && s.a === adim) {     // F10d: şema kendi alt adımında yeni, sonra önceki
+        const G = ADIM[adim].sira_grup, n = grupHarita(adim).sema[i];
+        if (n == null) return "gizli";
+        if (G[j - 1].tezgah) return n === j - 1 ? "simdi" : "gizli";
+        return n < j - 1 ? "onceki" : (n === j - 1 ? "simdi" : "gizli");
+      }
       if (ADIM[adim].tezgah) return s.a === adim ? "simdi" : "gizli";
       if (s.a > adim) return "gizli";
       return s.a === adim ? "simdi" : "onceki";
     }
 
     // ---------------------------------------------------------------- adım durumu
-    let su = 0, anim = null;
+    let su = 0, ss = 0, anim = null;                 // ss: alt adım (0 = adımın genel bakışı)
     const ONCEKI = ["opak", "saydam", "gizli"];
     let onceki = ONCEKI.indexOf(P.get("onceki")) >= 0 ? P.get("onceki") : (ONCEKI.indexOf(oku().onceki) >= 0 ? oku().onceki : "opak");
-    function baslangic() {
-      const q = parseInt(P.get("adim"), 10);
-      if (!isNaN(q)) return Math.max(0, Math.min(N - 1, q));
-      const h = parseInt((location.hash || "").slice(1), 10);
-      if (!isNaN(h)) return Math.max(0, Math.min(N - 1, h));
-      const k = oku().adim;
-      return typeof k === "number" && k >= 0 && k < N ? k : 0;
+    function baslangic() {                           // [adım, alt adım]
+      const q = adresOku(P.get("adim"));
+      if (q) return q;
+      const h = adresOku((location.hash || "").slice(1));
+      if (h) return h;
+      const k = oku().adim, j = oku().alt;
+      return typeof k === "number" && k >= 0 && k < N ? [k, Math.max(0, Math.min(ADIM[k].alt || 0, typeof j === "number" ? j : 0))] : [0, 0];
     }
 
-    function durum(p, s) {                           // "gizli" | "simdi" | "alt" (alt montaj bağlanıyor) | "onceki"
+    function durum0(p, s) {                          // adım düzeyi: "gizli" | "simdi" | "alt" (alt montaj bağlanıyor) | "onceki"
       const st = ADIM[s];
       if (s === 0) return "hedef";
       if (st.tezgah) {
@@ -194,6 +236,27 @@
       if (p.b === s) return p.a === s ? "simdi" : "alt";
       return "onceki";
     }
+    function durum(p, s, j) {                        // F10d: alt adımda grup sırasına göre
+      if (j === undefined) j = s === su ? ss : 0;
+      const st = ADIM[s];
+      const d0 = durum0(p, s);
+      if (!j || !st.alt || s === 0) return d0;
+      const G = st.sira_grup, g = G[j - 1], gh = grupHarita(s);
+      const pg = p.a === s ? gh.p[p.id] : undefined;
+      if (g.tezgah) {                                // masa: yalnız bu birimin buraya kadarki parçaları
+        if (pg == null || G[pg].tezgah !== g.tezgah || pg > j - 1) return "gizli";
+        return pg === j - 1 ? "simdi" : "onceki";
+      }
+      if (p.a !== s) return d0 === "alt" ? (j === 1 ? "alt" : "onceki") : d0;
+      if (pg == null) return d0;
+      const key = G[pg].tezgah;
+      if (key && gh.bag[key] != null) {              // masa birimi: bağlandığı alt adımda "alt", sonra önceki
+        const bi = gh.bag[key];
+        return j - 1 < bi ? "gizli" : (j - 1 === bi ? "alt" : "onceki");
+      }
+      return pg < j - 1 ? "onceki" : (pg === j - 1 ? "simdi" : "gizli");
+    }
+    function altGrup(s, j) { if (j === undefined) j = s === su ? ss : 0; return j && ADIM[s].alt ? ADIM[s].sira_grup[j - 1] : null; }
 
     function sinif(p) { return SINIF[p.r] ? p.r : "satin"; }
 
@@ -246,7 +309,7 @@
       const semaYeni = [];
       SEMA_OBJ.forEach((o, i) => {
         if (!o) return;
-        const d = semaDurum(SEMA[i], s);
+        const d = semaDurum(i, s);
         o.userData.d = d;
         o.visible = d !== "gizli";
         if (!o.visible) return;
@@ -261,20 +324,39 @@
         for (let i = 0; i < 8; i++) gNokta.push(new THREE.Vector3(i & 1 ? gorunur.max.x : gorunur.min.x, i & 2 ? gorunur.max.y : gorunur.min.y,
           i & 4 ? gorunur.max.z : gorunur.min.z));
       }
-      // uçuş vektörleri
+      // uçuş vektörleri (F10d: "bag" alt adımında birim grubun ub yönünden gelir; ısıl gömme ev sahibiyle birlikte uçar)
       const altBoy = altVar ? Math.max(120, altKutu.getSize(new THREE.Vector3()).length() * 0.8) : 0;
+      const ag = altGrup(s);
+      const ubG = ag && ag.bag && ag.ub ? ag.ub : null;
       uc.forEach((x) => {
         const p = x.k.v;
-        if (x.d === "alt" && p.ub) x.ofs = new THREE.Vector3(p.ub[0], p.ub[1], p.ub[2]).multiplyScalar(altBoy);
+        const ub = ubG || p.ub;
+        if (x.d === "alt" && ub) x.ofs = new THREE.Vector3(ub[0], ub[1], ub[2]).multiplyScalar(altBoy);
         else if (x.d === "simdi" && p.d > 0 && !p.renk) x.ofs = new THREE.Vector3(p.u[0], p.u[1], p.u[2]).multiplyScalar(p.d);
         else x.ofs = null;
         x.gec = (p.r === "baglanti") ? 0.45 : 0;
       });
+      const um = new Map(); uc.forEach((x) => um.set(x.k.v.id, x));
+      uc.forEach((x) => {
+        const h = x.k.v.h && um.get(x.k.v.h);
+        if (h && h.d === x.d) { x.ofs = h.ofs ? h.ofs.clone() : null; x.gec = h.gec; }
+      });
+      const sdl = ag ? ag.saydam : ADIM[s].saydam;    // F10d: alt adımın (yoksa adımın) saydam çizdiği önceki parçalar
+      if (sdl && sdl.length) {                       // içerisi görünsün diye
+        const sd = new Set(sdl);
+        for (const id in PAR) {
+          const o = PAR[id].obj;
+          // F10d düzeltme 1: bu alt adımda gelen parça saydam listedeyse (içindeki ısıl gömme / parça görünsün diye) 0,4 opaklık;
+          // önceki parçalar 0,25. İkisi de < 0,5: görünürlük ölçümünde arkasını örtmez (RehberTest.gorunurluk)
+          const yeniMi = o && (o.userData.d === "simdi" || o.userData.d === "alt");
+          if (o && o.visible && sd.has(id)) { o.material = o.userData.mat0 = o.userData.mat1 = saydamOf(o.material, yeniMi ? 0.4 : 0.25); }
+        }
+      }
       sonUc = uc; sonSay = sinifSay;
-      if (sira && sira.adim === s) siraKonum();
+      if (sira && sira.adim === s && sira.alt === ss) siraKonum();
       vurguUygula(true);
       lejant(sinifSay, s);
-      if (miniAdim !== s) miniGuncelle(s);
+      if (miniAdim !== adres(s, ss)) miniGuncelle(s);
       if (ucus && !CEKIM) baslatUcus(uc); else ciz();
       return { kutu: kutu.isEmpty() ? gorunur : kutu, gorunur: gorunur, yeni: yeni, eksik: eksik, sema: semaYeni,
         nokta: nokta.length ? nokta : gNokta };
@@ -313,15 +395,19 @@
       const st = ADIM[su];
       const var_ = new Set(sonUc.map((x) => x.k.v.id));
       const satir = [];
+      const ag = altGrup(su);
       const alt = sonUc.filter((x) => x.d === "alt").map((x) => x.k.v.id);
       if (alt.length) {
         const kod = ADIM.filter((a) => a.baglanir === su).map((a) => a.i + ". " + a.kod).join(", ");
-        satir.push({ ad: "Alt montaj" + (kod ? " (" + kod + ")" : ""), ids: alt, sema: [] });
+        satir.push({ ad: ag && ag.bag ? ag.ad : "Alt montaj" + (kod ? " (" + kod + ")" : ""), ids: alt, sema: [] });
       }
       const pb = {};                                  // F10c: adım verisinde "sira" (p:i / b:i) varsa satırlar o sırayla
+      // F10d: ısıl gömme satırı (onceden) ev sahibiyle yerine gelir: sıralı takmada satır kalır (panel sırası = takma sırası), parçaları
+      // ev sahibinin satırıyla birlikte konumlanır (siraKonum)
       st.parcalar.forEach((x, i) => { pb["p:" + i] = { ad: x.ad, ids: x.ids.filter((id) => var_.has(id)), sema: [], tur: "p", i: i, adet: x.adet }; });
-      st.baglantilar.forEach((x, i) => { pb["b:" + i] = { ad: x.kod, ids: x.ids.filter((id) => var_.has(id)), sema: [], tur: "b", i: i, adet: x.adet }; });
-      (st.sira || Object.keys(pb)).forEach((k) => { if (pb[k]) satir.push(pb[k]); });
+      st.baglantilar.forEach((x, i) => { pb["b:" + i] = { ad: x.kod, ids: x.ids.filter((id) => var_.has(id)), sema: [], tur: "b", i: i, adet: x.adet,
+        onceden: !!x.onceden }; });
+      (ag ? ag.satir : (st.sira || Object.keys(pb))).forEach((k) => { if (pb[k]) satir.push(pb[k]); });
       const sm = [];
       SEMA_OBJ.forEach((o, i) => { if (o && o.userData.d === "simdi") sm.push(i); });
       if (sm.length) satir.push({ ad: "Kablo şemaları", ids: [], sema: sm });
@@ -330,7 +416,7 @@
     function ucHarita() { const m = new Map(); sonUc.forEach((x) => m.set(x.k.v.id, x)); return m; }
     // takılmamış satırlar patlak konumda / gizli, takılanlar yerinde. Saydam kipte bu adımda daha önce takılan satırlar da
     // (ör. kabuk) saydamlaşır; o an takılan satır ve bekleyenler opak kalır: içeri giren parça kabuğun arkasında kaybolmaz.
-    function saydamOf(m) { return malzeme("#" + m.color.getHexString(), 0.25); }
+    function saydamOf(m, a) { return malzeme("#" + m.color.getHexString(), a || 0.25); }
     function siraKonum() {
       const m = ucHarita();
       const sd = onceki === "saydam";
@@ -338,17 +424,20 @@
         const b = o.userData.mat1 || o.material;
         o.material = o.userData.mat0 = sd && j < sira.n - 1 ? saydamOf(b) : b;
       };
+      const satirNo = {};
+      sira.satir.forEach((r, j) => r.ids.forEach((id) => { satirNo[id] = j; }));
       sira.satir.forEach((r, j) => {
-        const takili = j < sira.n;
         r.ids.forEach((id) => {
           const x = m.get(id); if (!x) return;
+          const h = x.k.v.h, jj = h != null && satirNo[h] != null ? satirNo[h] : j;   // F10d: ısıl gömme ev sahibinin satırıyla
+          const takili = jj < sira.n;
           const o = x.k.obj;
           o.position.copy(x.k.taban);
           if (!takili) { if (x.ofs) o.position.add(x.ofs); else o.visible = false; }
           else o.visible = true;
-          taban(o, j);
+          taban(o, jj);
         });
-        r.sema.forEach((i) => { SEMA_OBJ[i].visible = takili; taban(SEMA_OBJ[i], j); });
+        r.sema.forEach((i) => { SEMA_OBJ[i].visible = j < sira.n; taban(SEMA_OBJ[i], j); });
       });
     }
     function patlat() {
@@ -360,7 +449,7 @@
       const nk = k.nokta.slice();
       sonUc.forEach((x) => { if (x.ofs) koseler(x.k.obj, x.ofs, nk); });
       // siki: yerindeki köşeler (bütün satırlar takılınca bu kadraja dönülür, F10a düzeltme 1 / B-4); patlak: iki konum birlikte
-      sira = { adim: su, satir: siraKur(), n: 0, siki: k.nokta, patlak: nk, gorunur: k.gorunur };
+      sira = { adim: su, alt: ss, satir: siraKur(), n: 0, siki: k.nokta, patlak: nk, gorunur: k.gorunur };
       siraKonum();
       kameraYerlestir({ nokta: nk, gorunur: k.gorunur });
       secimTemizle();
@@ -375,8 +464,11 @@
       const r = sira.satir[sira.n]; sira.n++;
       siraKonum();                                    // önceki satırlar yerinde (saydam kipte saydam), bu satır görünür
       const m = ucHarita(); const h = [];
-      r.ids.forEach((id) => {
+      const bu = new Set(r.ids);
+      sonUc.forEach((x) => { if (x.k.v.h && bu.has(x.k.v.h)) bu.add(x.k.v.id); });   // ev sahibiyle gelen ısıl gömmeler
+      bu.forEach((id) => {
         const x = m.get(id); if (!x) return;
+        if (x.k.v.h && !bu.has(x.k.v.h) && r.ids.indexOf(id) >= 0 && r.onceden) return;   // ev sahibi daha önce takıldı: yerinde
         if (x.ofs) h.push({ o: x.k.obj, a: x.k.taban.clone().add(x.ofs), b: x.k.taban, gec: 0 });
       });
       secimYap({ ids: r.ids, sema: r.sema, hepsi: true, satir: r.tur ? { adim: su, tur: r.tur, i: r.i } : null });
@@ -481,6 +573,10 @@
       const alttan = st && (st.kod === "B1" || st.kod === "B1a");
       if (alttan) yon.set(0.9, -0.55, 1.2);
       if (st && st.kamera === "arka") yon.set(0.85, 0.62, -1.25);   // rehber_metin "kamera": yeni parçalar arkada (F5 kapaklar)
+      if (st && Array.isArray(st.kamera)) yon.set(st.kamera[0], st.kamera[1], st.kamera[2]);   // F10d: adım kamerası (vektör)
+      const ag = st && altGrup(su);                  // F10d: alt adımın kendi kamerası
+      if (ag && ag.kamera === "arka") yon.set(0.85, 0.62, -1.25);
+      else if (ag && Array.isArray(ag.kamera)) yon.set(ag.kamera[0], ag.kamera[1], ag.kamera[2]);
       return yon.normalize();
     }
     function kameraYerlestir(k) {
@@ -502,25 +598,35 @@
       ciz();
     }
 
-    function git(s, ucus) {
+    let gitSay = 0;
+    function git(s, ucus, j) {
       s = Math.max(0, Math.min(N - 1, s));
-      su = s;
+      j = Math.max(0, Math.min(ADIM[s].alt || 0, j || 0));
+      su = s; ss = j;
       sira = null; secim = null;
-      yaz("adim", s);
-      try { history.replaceState(null, "", "#" + s); } catch (e) { /* file:// */ }
+      yaz("adim", s); yaz("alt", j);
+      // F10d düzeltme 1 (kontrol B-10): adres gezinmeyi izlesin. Sayfa ?adim= ile açıldıysa gezindikçe sorgudaki adim de güncellenir
+      // (yenilemede sorgu hash'ten önce okunur; eskiden bayat kalıyordu). İlk açılışta sorgu olduğu gibi kalır.
+      try {
+        const q = new URLSearchParams(location.search);
+        if (gitSay++ > 0 && q.has("adim")) q.set("adim", adres(s, j));
+        const qs = q.toString().replace(/%2C/g, ",");
+        history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + "#" + adres(s, j));
+      } catch (e) { /* file:// */ }
       panel(s);
       const k = uygula(s, ucus !== false);
       kameraYerlestir(k);
-      $("geri").disabled = s === 0; $("ileri").disabled = s === N - 1;
-      $("secim").value = String(s);
-      $("cubuk").style.width = (100 * s / (N - 1)) + "%";
-      $("sayac").textContent = "Adım " + s + " / " + (N - 1);
+      const no = konumNo(s, j);
+      $("geri").disabled = no === 0; $("ileri").disabled = no === KONUM.length - 1;
+      $("secim").value = adres(s, j);
+      $("cubuk").style.width = (100 * no / Math.max(1, KONUM.length - 1)) + "%";
+      $("sayac").textContent = "Adım " + s + " / " + (N - 1) + (ADIM[s].alt ? " · alt adım " + (j ? j + " / " + ADIM[s].alt : "genel bakış") : "");
       $("etiket").hidden = true;
       siraDugme();
       if (CEKIM) {
         // rehber_uret.py kontrolü --dump-dom ile okur: adım başına yeni görünen parça kimlikleri ve mesh'i bulunmayan parçalar
         const kv = $("kontrol-veri");
-        if (kv) kv.textContent = JSON.stringify({ adim: s, kod: ADIM[s].kod, simdi: k.yeni.simdi.sort(), alt: k.yeni.alt.sort(),
+        if (kv) kv.textContent = JSON.stringify({ adim: s, alt_adim: j, kod: ADIM[s].kod, simdi: k.yeni.simdi.sort(), alt: k.yeni.alt.sort(),
           hedef: k.yeni.hedef.length, eksik: k.eksik, sema: k.sema, kadraj: k.kadraj });
         requestAnimationFrame(() => {
           ciz();
@@ -577,13 +683,15 @@
     let miniAdim = -1;
     function miniGuncelle(s) {
       if (!MINI.hazir) return;
-      miniAdim = s;
+      miniAdim = adres(s, ss);
       const st = ADIM[s];
+      const ag = altGrup(s);
       MINI.hk.makeEmpty(); MINI.hlist = [];
       for (const id in PAR) {
         const k = PAR[id]; if (!k.mini) continue;
         const p = k.v; let m = MINI.soluk;
         if (s === 0) m = MINI.vurgu;
+        else if (ag) { const d = durum(p, s); if (d === "simdi" || d === "alt") m = MINI.vurgu; else if (ag.tezgah && d === "onceki") m = MINI.yakin; }
         else if (st.tezgah) { if (p.t === st.tezgah) m = p.a === s ? MINI.vurgu : (p.a < s ? MINI.yakin : MINI.soluk); }
         else { const d = durum(p, s); if (d === "simdi" || d === "alt") m = MINI.vurgu; }
         k.mini.material = m; k.mini.renderOrder = m === MINI.vurgu ? 10 : 0;
@@ -591,7 +699,7 @@
       }
       SEMA_MINI.forEach((m, i) => {
         if (!m) return;
-        const v = s === 0 || semaDurum(SEMA[i], s) === "simdi";
+        const v = s === 0 || semaDurum(i, s) === "simdi";
         m.material = v ? MINI.vurgu : MINI.soluk; m.renderOrder = v ? 10 : 0;
         if (v && m.userData.mkutu) MINI.hk.union(m.userData.mkutu);
       });
@@ -613,7 +721,7 @@
       // halka: vurgulu parçaların küçük görünümdeki yeri (küçük parçalar da bulunabilsin)
       const hal = $("mini-hal");
       if (!hal) return;
-      if (MINI.hk.isEmpty() || su === 0 || r.width < 5) { hal.hidden = true; MINI.noktalar.forEach((m) => { m.visible = false; }); return; }
+      if (MINI.hk.isEmpty() || su === 0 || r.width < 5) { hal.hidden = true; MINI.noktalar.forEach((m) => { m.visible = false; }); return; }   // alt adım: aynı kural
       let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
       for (let i = 0; i < 8; i++) {
         const b = MINI.hk; _v.set(i & 1 ? b.max.x : b.min.x, i & 2 ? b.max.y : b.min.y, i & 4 ? b.max.z : b.min.z).project(MINI.kamera);
@@ -743,23 +851,48 @@
     function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]); }
     function md(s) { return esc(s).replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>").replace(/`([^`]+)`/g, "<code>$1</code>"); }
 
+    // F10d: panel tablosu = sıralı takma sırası. Adımda "sira" varsa parçalar ve bağlantı elemanları tek tabloda, grup başlıklarıyla,
+    // st.sira sırasıyla (data-satir korunur); alt adımda yalnız o grubun satırları. sira yoksa parçalar sonra bağlantılar (siraKur ile aynı).
+    function satirHtml(st, k) {
+      const [t, i] = k.split(":"); const x = (t === "p" ? st.parcalar : st.baglantilar)[+i]; if (!x) return "";
+      if (t === "p") return "<tr data-satir='" + k + "'><td><i class='sw' style='background:" + (SINIF[x.r] || SINIF.satin)[0] + "'></i>" + esc(x.ad) +
+        "<div class='t'>" + esc(TUR_AD[x.tur] || x.tur) + (x.malzeme && x.malzeme !== "-" ? " · " + esc(x.malzeme) : "") + "</div></td><td class='n'>×" + x.adet + "</td></tr>";
+      return "<tr data-satir='" + k + "'><td><i class='sw' style='background:" + SINIF.baglanti[0] + "'></i>" + esc(x.kod) + "<div class='t'>" +
+        (x.onceden ? "Bağlantı elemanı · baskıdan sonra takılı (hazırlık), parçasıyla gelir; burada yalnız sayılır" : "Bağlantı elemanı") +
+        "</div></td><td class='n'>×" + x.adet + "</td></tr>";
+    }
+    function altListe(s) {                           // alt adım bağlantıları (genel bakış dahil)
+      const st = ADIM[s]; if (!st.alt) return "";
+      const li = ["<li class='" + (ss === 0 ? "su" : "") + "'><a href='#" + s + "' data-git='" + s + "'>" + s + " · genel bakış</a></li>"];
+      st.sira_grup.forEach((g, n) => {
+        li.push("<li class='" + (ss === n + 1 ? "su" : "") + "'><a href='#" + s + "." + (n + 1) + "' data-git='" + s + "." + (n + 1) + "'>" + s + "." + (n + 1) +
+          " · " + esc(g.ad) + "</a></li>");
+      });
+      return "<div class='altlar'><b>Alt adımlar</b> <span class='not'>(← / → ile sırayla)</span><ol>" + li.join("") + "</ol></div>";
+    }
     function panel(s) {
       const st = ADIM[s];
-      const roz = ["<span class='rozet kod'>" + esc(st.kod) + "</span>", "<span class='rozet'>" + esc(st.faz) + "</span>"];
-      if (st.tezgah) roz.push("<span class='rozet tezgah'>Tezgâh: masada yap</span>");
+      const ag = altGrup(s);
+      const roz = ["<span class='rozet kod'>" + esc(st.kod) + (ag ? "." + ss : "") + "</span>", "<span class='rozet'>" + esc(st.faz) + "</span>"];
+      if (st.tezgah || (ag && ag.tezgah)) roz.push("<span class='rozet tezgah'>Tezgâh: masada yap</span>");
       if (st.kablolama) roz.push("<span class='rozet kapi'>Kablolama kapısı: kabuktan önce dur</span>");
       if (st.no && st.no !== "0") roz.push("<span class='rozet'>M6 no " + esc(st.no) + "</span>");
+      if (st.alt) roz.push("<span class='rozet'>" + (ag ? "alt adım " + ss + " / " + st.alt : st.alt + " alt adım") + "</span>");
       $("rozetler").innerHTML = roz.join("");
-      $("adim-baslik").textContent = s + ". " + st.baslik;
-      $("adim-is").innerHTML = md(st.is_);
+      $("adim-baslik").textContent = ag ? s + "." + ss + " · " + ag.ad : s + ". " + st.baslik;
+      $("adim-is").innerHTML = ag ? "<span class='not'>Adım " + s + ": " + esc(st.baslik) + "</span><br>" + md(ag.is_ || "") : md(st.is_);
+      $("altlar").innerHTML = altListe(s);
       // notlar (rehber_metin.py not_: doğrulanmamış bilgiler, uyarılar)
       const nt = st.not_ || [];
       $("notlar").innerHTML = nt.length ? "<div class='notlar'><b>Notlar</b><ul>" + nt.map((t) => "<li>" + md(t) + "</li>").join("") +
         "</ul></div>" : "";
       // KPI
-      const nb = st.baglantilar.reduce((a, b) => a + b.adet, 0), np = st.parcalar.reduce((a, b) => a + b.adet, 0);
+      const satirlar = ag ? ag.satir : (st.sira || null);
+      const say = (t) => (satirlar ? satirlar.filter((k) => k[0] === t).map((k) => (t === "p" ? st.parcalar : st.baglantilar)[+k.slice(2)])
+        : (t === "p" ? st.parcalar : st.baglantilar)).reduce((a, b) => a + (b ? b.adet : 0), 0);
+      const nb = say("b"), np = say("p");
       $("kpi").innerHTML = [
-        ["~" + st.sure_dk + " dk", "süre" + (st.sure_tahmini ? " (tahmini)" : "")],
+        ["~" + st.sure_dk + " dk", "süre" + (st.sure_tahmini ? " (tahmini)" : "") + (ag ? ", bütün adım" : "")],
         [st.alet ? md(st.alet) : "—", "alet"],
         [np, "parça"], [nb, "bağlantı elemanı"]
       ].map((x) => "<div class='kpi'><b>" + x[0] + "</b><span>" + x[1] + "</span></div>").join("");
@@ -769,15 +902,26 @@
       const altlar = [];
       if (!st.tezgah && s > 0) ADIM.forEach((a) => { if (a.baglanir === s) altlar.push(a); });
       const altNot = altlar.length ? "<p class='not'>Robota gelen alt montaj: " + altlar.map((a) => a.i + ". " + esc(a.kod)).join(", ") + "</p>" : "";
-      $("parcalar").innerHTML = (st.parcalar.length ? "<table class='secilir'>" + st.parcalar.map((x, i) =>
-        "<tr data-satir='p:" + i + "'><td><i class='sw' style='background:" + (SINIF[x.r] || SINIF.satin)[0] +
-        "'></i>" + esc(x.ad) + "<div class='t'>" + esc(TUR_AD[x.tur] || x.tur) + (x.malzeme && x.malzeme !== "-" ? " · " + esc(x.malzeme) : "") + "</div></td><td class='n'>×" + x.adet + "</td></tr>").join("") +
-        "</table>" : "<p class='bos'>" + (s === 0 ? "Hedef: bitmiş robot (" + VERI.parcalar.length + " parça)." : "Bu adımda yeni parça yok.") + "</p>") + bag + altNot;
-      // bağlantılar
-      $("baglantilar").innerHTML = (st.baglantilar.length ? "<table class='secilir'>" + st.baglantilar.map((x, i) =>
-        "<tr data-satir='b:" + i + "'><td>" + esc(x.kod) + (x.onceden ? "<div class='t'>Baskıdan sonra takılı (hazırlık); burada yalnız sayılır</div>" : "") +
-        "</td><td class='n'>×" + x.adet + "</td></tr>").join("") + "</table>" : "<p class='bos'>Yok.</p>") +
-        (st.baglanti_md ? "<p class='not'>Bağlantı: " + md(st.baglanti_md) + "</p>" : "");
+      const bagNot = ag && ag.bag ? "<p class='not'>Bu alt adımda masada hazırlanan birim robota bağlanır (" +
+        esc(st.sira_grup.filter((g) => g.tezgah === ag.bag).map((g) => g.ad).join(", ")) + ").</p>" : "";
+      if (satirlar) {                                 // F10d: tek tablo, takma sırasıyla
+        const gr = [];
+        if (ag) gr.push(ag.satir.map((k) => satirHtml(st, k)).join(""));
+        else st.sira_grup.forEach((g, n) => {
+          if (!g.satir.length) return;
+          gr.push("<tr class='grup'><td colspan='2'>" + (st.alt ? s + "." + (n + 1) + " · " : (n + 1) + ". ") + esc(g.ad) + "</td></tr>" +
+            g.satir.map((k) => satirHtml(st, k)).join(""));
+        });
+        $("parcalar").innerHTML = (gr.join("") ? "<table class='secilir'>" + gr.join("") + "</table>" :
+          "<p class='bos'>Bu alt adımda yeni parça yok.</p>") + bagNot + bag + altNot;
+        $("baglantilar").innerHTML = "<p class='not'>Bağlantı elemanları takma sırasıyla yukarıdaki tabloda.</p>" +
+          (st.baglanti_md ? "<p class='not'>Bağlantı: " + md(st.baglanti_md) + "</p>" : "");
+      } else {
+        $("parcalar").innerHTML = (st.parcalar.length ? "<table class='secilir'>" + st.parcalar.map((x, i) => satirHtml(st, "p:" + i)).join("") +
+          "</table>" : "<p class='bos'>" + (s === 0 ? "Hedef: bitmiş robot (" + VERI.parcalar.length + " parça)." : "Bu adımda yeni parça yok.") + "</p>") + bag + altNot;
+        $("baglantilar").innerHTML = (st.baglantilar.length ? "<table class='secilir'>" + st.baglantilar.map((x, i) => satirHtml(st, "b:" + i)).join("") +
+          "</table>" : "<p class='bos'>Yok.</p>") + (st.baglanti_md ? "<p class='not'>Bağlantı: " + md(st.baglanti_md) + "</p>" : "");
+      }
       // kontrol listesi
       const kk = (oku().kontrol || {})[st.kod] || [];
       $("kontrol").innerHTML = st.kontrol.length ? st.kontrol.map((t, i) =>
@@ -803,6 +947,8 @@
     });
     $("panel").addEventListener("click", (e) => {
       if (!yuklu) return;
+      const ga = e.target.closest("[data-git]");
+      if (ga) { e.preventDefault(); const q = adresOku(ga.dataset.git); if (q) git(q[0], true, q[1]); return; }
       const tr = e.target.closest("[data-satir]");
       if (tr) {
         const [tur, i] = tr.dataset.satir.split(":"); const st = ADIM[su];
@@ -843,11 +989,20 @@
     }));
 
     // ---------------------------------------------------------------- gezinme ve kısayollar
-    $("secim").innerHTML = ADIM.map((a) => "<option value='" + a.i + "'>" + a.i + " · " + esc(a.kod) + " · " + esc(a.baslik) + "</option>").join("");
-    $("secim").addEventListener("change", (e) => git(+e.target.value));
+    $("secim").innerHTML = KONUM.map(([s, j]) => {
+      const a = ADIM[s];
+      return j ? "<option value='" + s + "." + j + "'>  " + s + "." + j + " · " + esc(a.sira_grup[j - 1].ad) + "</option>"
+        : "<option value='" + s + "'>" + s + " · " + esc(a.kod) + " · " + esc(a.baslik) + "</option>";
+    }).join("");
+    $("secim").addEventListener("change", (e) => { const q = adresOku(e.target.value); if (q) git(q[0], true, q[1]); });
+    function yuru(dx) {                               // F10d: ←/→ alt adımlar dahil sıradaki / önceki konum
+      const i = konumNo(su, ss) + dx;
+      if (i < 0 || i >= KONUM.length) return;
+      git(KONUM[i][0], true, KONUM[i][1]);
+    }
     const dugme = (id, f) => { const b = $(id); if (b) b.addEventListener("click", () => { f(); b.blur(); }); };
-    dugme("geri", () => git(su - 1));
-    dugme("ileri", () => git(su + 1));
+    dugme("geri", () => yuru(-1));
+    dugme("ileri", () => yuru(1));
     dugme("tekrar", () => { sira = null; secimTemizle(); uygula(su, true); siraDugme(); });
     dugme("sifirla", () => kameraYerlestir(uygula(su, false)));
     dugme("patlat", patlat);
@@ -857,8 +1012,8 @@
     document.addEventListener("keydown", (e) => {
       if (e.target.tagName === "SELECT" || e.target.tagName === "INPUT" || e.ctrlKey || e.metaKey || e.altKey) return;
       const k = e.key;
-      if (k === "ArrowRight" || k === "PageDown") { git(su + 1); e.preventDefault(); }
-      else if (k === "ArrowLeft" || k === "PageUp") { git(su - 1); e.preventDefault(); }
+      if (k === "ArrowRight" || k === "PageDown") { yuru(1); e.preventDefault(); }
+      else if (k === "ArrowLeft" || k === "PageUp") { yuru(-1); e.preventDefault(); }
       else if (k === "r" || k === "R") { sira = null; secimTemizle(); uygula(su, true); siraDugme(); }
       else if (k === "v" || k === "V") kameraYerlestir(uygula(su, false));
       else if (k === "t" || k === "T") temaDegis();
@@ -872,7 +1027,7 @@
     document.addEventListener("touchstart", (e) => { if (e.target === tuval || e.touches.length !== 1) { dok = null; return; } dok = [e.touches[0].clientX, e.touches[0].clientY]; }, { passive: true });
     document.addEventListener("touchend", (e) => {
       if (!dok) return; const t = e.changedTouches[0]; const dx = t.clientX - dok[0], dy = t.clientY - dok[1]; dok = null;
-      if (Math.abs(dx) > 70 && Math.abs(dy) < 45) git(su + (dx < 0 ? 1 : -1));
+      if (Math.abs(dx) > 70 && Math.abs(dy) < 45) yuru(dx < 0 ? 1 : -1);
     }, { passive: true });
 
     function temaDegis() {
@@ -946,7 +1101,66 @@
         const m = miniEl.getBoundingClientRect();
         return { acik: true, w: w, h: h, dolu: dolu, vurgu: vurgu, kutu: { sol: m.left, ust: m.top, sag: m.right, alt: m.bottom } };
       },
-      patlat: patlat, tak: tak, geriAl: geriAl, oncekiAyarla: (d) => oncekiAyarla(d, false), miniGoster: (a) => miniGoster(a, true)
+      patlat: patlat, tak: tak, geriAl: geriAl, oncekiAyarla: (d) => oncekiAyarla(d, false), miniGoster: (a) => miniGoster(a, true),
+      // F10d: alt adım gezinmesi ve ölçümler (planlama/d158/F10d-dogrula.py, F10a-dogrula.py)
+      konum: () => [su, ss], konumlar: () => KONUM.slice(), git: (s, j) => git(s, false, j || 0),
+      panelSira: () => Array.prototype.map.call(document.querySelectorAll("#parcalar [data-satir], #baglantilar [data-satir]"), (e) => e.dataset.satir),
+      takmaSira: () => { const r = siraKur(); return r.filter((x) => x.tur).map((x) => x.tur + ":" + x.i); },
+      // yeni parçaların (simdi + alt) ve yeni şemaların kamera görüntüsündeki piksel sayısı (kimlik tamponu, güvenli alan).
+      // F10d düzeltme 1 (kontrol B-1, B-7, B-8): iki geçiş. (1) opak geçiş: saydam çizilen her şey (opaklık < 0,5; eski ya da bu alt
+      // adımın saydam listesindeki yeni parça) arkasını örtmez, yok sayılır; opak yeni parçalar burada sayılır. (2) saydam çizilen her yeni
+      // parça tek başına opak parçalarla birlikte çizilir, opak örtücülerin önündeki pikselleriyle sayılır. yalnız: parça tek başına çizilince (engelsiz izdüşüm) piksel.
+      // Isıl gömme dahil her yeni parça ölçülür. sema: görünen şemalar ve durumları (masa karesinde yabancı kablo denetimi).
+      gorunurluk(op) {
+        op = op || {};
+        const W = renderer.domElement.width, H = renderer.domElement.height, pr = renderer.getPixelRatio();
+        const rt = new THREE.WebGLRenderTarget(W, H);
+        const kayit = [];
+        sahne.traverse((o) => { if (o.isMesh) kayit.push([o, o.material, o.visible]); });
+        const bg = sahne.background; sahne.background = new THREE.Color(0, 0, 0); const zg = zemin.visible; zemin.visible = false;
+        const anahtar = (o) => o.userData.id || (o.userData.sema != null ? "sema" + o.userData.sema : null);
+        const yeni = {}, sdy = new Set(), semaGor = [];
+        const kod = {}, kodOf = new Map();
+        let n = 1;
+        kayit.forEach(([o, m, v]) => {
+          const k = anahtar(o);
+          if (!v || !k) return;
+          const c = n++; kod[c] = k; kodOf.set(o, c);
+          if (o.userData.d === "simdi" || o.userData.d === "alt") { yeni[k] = 0; if (m && m.transparent && m.opacity < 0.5) sdy.add(k); }
+          if (o.userData.sema != null) semaGor.push({ i: o.userData.sema, d: o.userData.d });
+          o.material = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide,
+            color: new THREE.Color().setRGB((c & 255) / 255, ((c >> 8) & 255) / 255, ((c >> 16) & 255) / 255, THREE.LinearSRGBColorSpace) });
+        });
+        const al = guvenliAlanlar()[0] || { x0: -1, x1: 1, y0: -1, y1: 1 };
+        const x0 = Math.floor((al.x0 + 1) / 2 * W), x1 = Math.ceil((al.x1 + 1) / 2 * W), y0 = Math.floor((al.y0 + 1) / 2 * H), y1 = Math.ceil((al.y1 + 1) / 2 * H);
+        const buf = new Uint8Array(W * H * 4);
+        const opak = (o, m) => !(m && m.transparent && m.opacity < 0.5);
+        function gec(gor) {                           // gor(o, asıl malzeme) -> çizilsin mi; döner: anahtar -> piksel
+          kayit.forEach(([o, m, v]) => { o.visible = !!(v && kodOf.has(o) && gor(o, m)); });
+          renderer.setRenderTarget(rt); renderer.setViewport(0, 0, W, H); renderer.render(sahne, kamera); renderer.setRenderTarget(null);
+          renderer.readRenderTargetPixels(rt, 0, 0, W, H, buf);
+          const say = {};
+          for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) {
+            const i = (y * W + x) * 4, c = buf[i] | (buf[i + 1] << 8) | (buf[i + 2] << 16);
+            const k = kod[c]; if (k) say[k] = (say[k] || 0) + 1;
+          }
+          return say;
+        }
+        const A = gec(opak);
+        // saydam yeni parça tek tek: opak parçalarla birlikte yalnız o çizilir (başka saydam parça da arkasını örtmez)
+        for (const k in yeni) yeni[k] = (sdy.has(k) ? gec((o, m) => opak(o, m) || anahtar(o) === k)[k] : A[k]) || 0;
+        const yalniz = {};
+        if (op.yalniz !== false) for (const k in yeni) { const r = gec((o) => anahtar(o) === k); yalniz[k] = r[k] || 0; }
+        kayit.forEach(([o, m, v]) => { if (o.material !== m) o.material.dispose(); o.material = m; o.visible = v; });
+        sahne.background = bg; zemin.visible = zg; rt.dispose();
+        const karede = {};                            // kutu köşeleri kamerada güvenli alanın içinde mi
+        for (const k in yeni) {
+          const o = k.startsWith("sema") ? SEMA_OBJ[+k.slice(4)] : PAR[k].obj, pts = []; koseler(o, null, pts);
+          karede[k] = pts.every((v) => { v.project(kamera); return v.x >= al.x0 - 0.02 && v.x <= al.x1 + 0.02 && v.y >= al.y0 - 0.02 && v.y <= al.y1 + 0.02 && v.z < 1; });
+        }
+        ciz();
+        return { piksel: yeni, yalniz: yalniz, saydam: Array.from(sdy), sema: semaGor, karede: karede, oran: pr, W: W, H: H };
+      }
     };
   };
 

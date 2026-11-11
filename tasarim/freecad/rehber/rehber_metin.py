@@ -24,6 +24,28 @@
 #   sira    : adım içi sıra grupları (F10c; sira_grup_bul): panel satırları, sıralı takma ve rehber_sira.py denetimi bu sırayı izler
 #   poz     : bağlantı ancak bu kol pozunda erişilir, ör. dict(S1=-45, S2=90) (F10c; rehber_sira.py POZA_BAGLI ölçer)
 
+# F10d düzeltme 1 (kontrol B-5): "yön yuvarlama" uçuş istisnaları (12) kaldırıldı. Ölçüm aracı (rehber_sira.py ucus_yolu) artık
+# uygulamanın uçurduğu yuvarlanmamış eksende süpürüyor; bu satırlar gerçek eksende serbest.
+
+# F10d: perdelenme istisnası. 3 mm voksel ince / küçük parçayı (köpük bant, M3×6 başı) komşu bandın hücresine katıyor; kimlik tamponu
+# ölçümü (planlama/d158/F10d-gizli-piksel.json, F10d-dogrula.py --gizli) parçanın gerçekte göründüğünü gösteriyor
+# F10d düzeltme 1 (kontrol B-7): eski metin piksel sayısını ve başka kamerayı yazıyordu (eşik > 0, alt adım dışı kamera kabul
+# ediliyordu). Artık bütün yeni parçalar kendi alt adım karesinde görünürlük ölçütünü geçiyor (≥ 30 piksel ve ≥ %20; F10d-dogrula
+# görünürlük); güncel sayılar planlama/d158/F10d-gizli-piksel.json'da. Argümanlar eski çağrılarla uyum için, metne girmez.
+def voksel_ok(px=None, kamera=None):
+    return ("perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür "
+            "(≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil")
+
+
+# F10d düzeltme 1 (kontrol B-1): kabuk alt adımlarında her yeni parça kendi karesinde görünmeli (F10d-dogrula.py görünürlük ölçütü:
+# ≥ 30 piksel ve tek başına çizilişinin ≥ %20'si). Isıl gömme bandın boss'unun, dikiş cıvatası bindirmenin, arka dikiş öndeki
+# bantların arkasında kalır: o alt adımda bantlar saydam çizilir (saydam = desen; önceki parçalar 0,25, yeni parça 0,4 opaklık).
+# Kamera ve saydam seçimi kamera × saydam taramasından (planlama/d158/F10d-gunluk.md bölüm 11).
+GOVDE_BANT = ("Gövde alt bandı", "Gövde uzatma bandı", "Gövde orta bandı", "Göğüs bandı", "Omuz bandı")
+ETEK_BANT = ("Etek arka", "Etek orta", "Etek ön", "Etek dolgu")
+KAFA_KABUK = ("Arka kafa kabuğu", "Yüz kabuğu")
+
+
 FAZ = [  # (kod öneki, faz adı); ilk eşleşen kazanır
     ("0", "Hazırlık"), ("A", "İskelet"), ("B", "Taban"), ("C0", "Taban"), ("K1", "Kablolama kapısı"), ("C1", "Kabuk braketleri"),
     ("D", "Omuzlar"), ("E", "Kafa"), ("K2", "Kablolama kapısı"), ("F5", "Son"), ("F", "Kabuk ve etek"), ("G", "Kollar"),
@@ -123,7 +145,7 @@ ADIM = {
                  "12 V giriş, yüksüz, çıkış ölçülerek (K1 kontrolü). PC817 ölçümü de arayüz kartı takılmadan tezgâhta (B6a). Takıldıktan sonra "
                  "ayar vidasına erişim ölçülmedi; bu sıra kaynakta yok, doğrulanmadı"],
         kablo=["Alt kat klemensleri bu adımda bağlanır, üstü açıkken: iki BTS7960B'nin güç girişi ve motor çıkışı (motor uçları B2b'de "
-               "plaka üstüne alındı), XL4016 A / B / çevre'nin giriş ve çıkışı. Güç paneli ve elektronik katı gelince (B5, B6) bu klemenslere el "
+               "plaka üstüne alındı), üç XL4016 kartının (A, B, çevre) giriş ve çıkışı. Güç paneli ve elektronik katı gelince (B5, B6) bu klemenslere el "
                "dar kalır: kart üstünden kata 69 mm, yanda 40–150 mm (K1 erişim notu). Akü ayrık",
                "Öbür ucu henüz yerinde olmayan hat (bara, sigorta kutusu, hat sigortası; K1'de bağlanır): iki ucundan etiketle (kart, "
                "klemens, hat adı), K1'deki yerine yetecek boyda bırak, ucu bantla; hatları kablo bağıyla demetleyip plaka üstünde topla, "
@@ -260,10 +282,22 @@ ADIM = {
         is_="S1 servosunu ortaya al, hornu tak, merkez vidasını sık. Orta komutun nasıl verileceği kaynakta yok (doğrulanmadı); kalan ofset yazılımda düzeltilir (Y2).",
         baglanti_md="Omuz başına 1 × M3×5 horn vidası",
         kontrol=["Horn merkez vidası sıkı, servo orta konumda"],
+        # F10d: horn S1 ekseninde (x) ince disk, rulman kapağının (adım 20) arkasında: servo ekseni boyunca 6808'in deliğinden girer
+        # (F10c'ye kadar +y'den uçuyordu). İki yan aynı kareden görünmüyor (iki omuz x ekseninde birbirini örter): sağ / sol alt adım,
+        # kapak ve rulman saydam.
+        ucus=(1, 0, 0),
+        alt=True,
+        sira=[dict(ad="Sağ omuz: horn + merkez vidası", yan="sag", desen=("S1 horn",), kamera=(1.0, 0.35, 0.45),
+                   saydam=("Rulman kapağı", "6808-2RS rulman"),
+                   is_="Sağ omuz: hornu S1 milinin dişlisine rulman kapağının deliğinden geçir, merkez vidası M3×5 (PH1)."),
+              dict(ad="Sol omuz: horn + merkez vidası", yan="sol", desen=("S1 horn",), kamera=(-1.0, 0.35, 0.45),
+                   saydam=("Rulman kapağı", "6808-2RS rulman"),
+                   is_="Sol omuz: aynı iş, aynalı.")],
     ),
     "D1": dict(
         baslik="Omuz gövdesi → travers",
-        is_="Çekiç somunları kanala al, omuz gövdesini travers ucundan kaydırarak sok, cıvataları sık. İki omuz da aynı.",
+        # F10d düzeltme 1 (kontrol B-12): "travers ucundan kaydırarak sok" ölçülmemişti; ölçülene indirildi
+        is_="Çekiç somunları kanala al, omuz gövdesini travers ucuna oturt (giriş yolu ölçülmedi), cıvataları sık. İki omuz da aynı.",
         baglanti_md="Omuz başına 4 × M6×16 + 4 çekiç somun",
         erisim="Omuz başına düz 3, L 1 (alttaki 141 mm). Servis: üst cıvata kabuk üst kapağındaki Ø14 delikten, L 85 mm",
         kontrol=["İki omuz travers ortasına eşit uzaklıkta", "Alttaki cıvata için uzun L anahtar hazır"],
@@ -289,6 +323,10 @@ ADIM = {
         baslik="Pan servosu ortaya, horn",
         is_="Pan servosunu ortaya al, hornu tak, merkez vidasını sık. Boyun milinden önce: sonra vidaya ulaşılmaz.",
         kontrol=["Horn merkez vidası sıkı"],
+        # F10d: horn rulman yuvasının (adım 23) içinde, 6808 deliğinin altında: yukarıdan bakış, yuva ve rulman saydam (kamera tam +y
+        # değil: kamera.up +y ile çakışmasın)
+        kamera=(0.35, 1.0, 0.45),
+        saydam=("Rulman yuvası", "6808-2RS alt rulman", "Servo yuvası"),
     ),
     "E2b": dict(
         baslik="Boyun mili",
@@ -318,8 +356,12 @@ ADIM = {
             "625ZZ ve M5 pim bu adımda yok: 625ZZ E3a'da kafanın sol yanağına, pim + pul E3'te (`tasarim/freecad/kafa/kafa_rapor.py` "
             "montaj sırası).",
         baglanti_md="4 × M4×16 + 4 kontra somun; horn milde, merkez vidası E3'te",
+        alet="alyan 3, 7 mm anahtar (kontra somun)",   # F10d: M6'daki "alyan 3 / 4"ün 4'ü pim içindi, pim E3'te (adım 30)
         erisim="Düz. Kontra somunların 2'si cepte, 2'si açık ağızla (Y3 C3)",
         kontrol=["Tilt elle engelsiz", "Horn servo milinde, servo orta konumda; merkez vidası takılmadı (E3'te)"],
+        # F10d: servo, mil ve horn servo ekseni (x) boyunca gelir (giriş yolu ölçümü: horn yalnız +x'ten serbest; F10c'ye kadar
+        # horn ve mil (0,75, 0, 0,66) yönünden uçuyordu, milin içinden geçiyordu)
+        ucus=(1, 0, 0),
     ),
     "E3a": dict(
         baslik="Tezgâh: kafa içi (Pi 5, 5 V çeviriciler)",
@@ -335,7 +377,7 @@ ADIM = {
             "Kafa ekranı (10,1\" QLED), tırnaklar, kamera, ReSpeaker, USB ses kartı ve PAM8403 bu adımda takılmaz: kabuklarla birlikte E4'te.",
         baglanti_md="Pi: 4 × M2,5×8 pirinç burç + 4 × M2,5×5 (üst) + 4 × M2,5×8 DIN 912 (alt); D24V50F5, SY8205, TVS: 1 mm çift taraflı "
                     "köpük bant + kablo bağı; 625ZZ pres geçme. M6'daki LCD 4 × M3×6 ve kamera 4 × M2×8 PT bu adımda yok (QLED tırnaklı, kamera E4'te)",
-        alet="alyan 2, PH1, yan keski",
+        alet="alyan 2, yan keski",          # F10d: PH1 horn merkez vidası içindi, vida E3'te (adım 30)
         kontrol=["v4 listesi burcu 6 mm plastik diyor, tasarım 8 mm pirinç: Pi yüksekliğini kontrol et",
                  "D24V50F5 → Pi USB-C yaklaşık 10 cm; çeviriciler köpük banda tam oturdu, kablo bağı sıkı",
                  "SY8205 çıkışı yük bağlanmadan, akım sınırlı tezgâh kaynağıyla (12 V, sınır 1 A) ölçüldü: 5 V (kafa ekranı hattı). "
@@ -353,8 +395,10 @@ ADIM = {
         baslik="Kafa → tilt hornu",
         is_="Kabuklardan önce: sonra cıvatalar kafa içinde kalır. Sıra `tasarim/freecad/kafa/kafa_rapor.py` montaj tarifinden.\n"
             "1. Kafa alt montajını yukarıdan indir: yanaklar eğme çatalının iki yanından geçer; sol yanaktaki 625ZZ'nin iç bileziği "
-            "çatal dayamasına, sağ yanak hornun dış yüzüne oturur. Kafa düz yukarıdan (ya da önden / arkadan kaydırarak) girer; "
-            "horn kafadaysa ya da 625ZZ / pim E2'de takılıysa yukarıdan girmez (giriş yolu ölçümü, sıra denetimi).\n"
+            "çatal dayamasına, sağ yanak hornun dış yüzüne oturur. Kafa düz yukarıdan girer (giriş yolu ölçümü: +y serbest; düz "
+            "önden +z ve düz arkadan −z de serbest, çapraz ya da kaydırmalı yol ölçülmedi); "
+            "horn kafadaysa yukarıdan girmez (giriş yolu ölçümü, sıra denetimi; ölçülen durum: horn kafada, 625ZZ iç bileziği, pim ve "
+            "pul E2'de).\n"
             "2. Horn merkez vidası M3×5: sağ yanağın orta deliğinden, PH1.\n"
             "3. Sağ yanağı horna 4 × M3×8 ile cıvatala.\n"
             "4. Pulu M5×12 pime geçir; pimi sol yanağın deliğinden 625ZZ'nin iç bileziğinden geçirip çataldaki M5 ısıl gömmeye sık, "
@@ -424,13 +468,56 @@ ADIM = {
               "Kafa ekranının kütlesi (600 g) ve akımı (0,9 A) varsayım, ölçülmedi"],
         # F10c (P10.3): sıra denetimiyle seçildi (planlama/d158/F10c-gunluk.md E4 tablosu). Masa grupları kafaya takılmadan hazırlanır.
         # F10c düzeltme 1: arka kabuklar iki ayrı birim (dikiş cıvataları K2'den sonra): önce sağ, sonra sol (giriş yolu ölçümü).
-        sira=[dict(ad="Masada: sağ arka kabuk + ReSpeaker", tezgah=True, desen=("Arka kafa kabuğu sağ", "ReSpeaker", "Dizi vidası")),
-              dict(ad="Masada: sol arka kabuk + USB ses kartı, PAM8403", tezgah=True,
-                   desen=("Arka kafa kabuğu sol", "USB ses kartı", "PAM8403")),
-              dict(ad="Tabla → arka kabuk rafı cıvataları", desen=("Tabla cıvatası", "(tabla rafı")),
-              dict(ad="Masada: yüz kabuğu + kamera + QLED ve tırnaklar", tezgah=True,
-                   desen=("Yüz kabuğu", "Kamera", "Yüz ekranı", "Ekran tırnağı", "Köpük bant (tırnak", "Tırnak cıvatası", "(tırnak boss")),
-              dict(ad="Kabuk dikişi", desen=("Kabuk cıvatası", "(kafa "))],
+        # F10d: alt adımlar (sira grubu = alt adım); sıra F10c'deki gibi: sağ arka → sol arka → tabla cıvataları → yüz grubu → kablolar
+        # → dikişler. Masa birimleri (masa=...) bağlandıkları alt adımda (bag=...) ub yönünden gelir.
+        alt=True,
+        sira=[dict(ad="Masada: sağ arka kabuk + ReSpeaker", masa="arka_sag", desen=("Arka kafa kabuğu sağ", "ReSpeaker", "Dizi vidası"),
+                   ucus={"ReSpeaker": (0, -1, 1), "*": (0, 0, -1)}, kamera=(0.55, -0.75, 1.0), saydam=("Arka kafa kabuğu sağ",),
+                   is_="Masada, sağ arka kabuk: ReSpeaker Mic Array v2.0'ı kabuğun tavanındaki boss'lara alttan 3 × M2×8 PT ile vidala "
+                       "(kabuk kafadayken tavan vidalarına el ulaşmaz)."),
+              dict(ad="Sağ arka kabuk → kafa", bag="arka_sag", desen=(), ucus_bag=(0, 0, -1), sema=("ReSpeaker USB",), kamera="arka",
+                   is_="Kabuğu kafanın arkasında tut, ReSpeaker kablosunu kafanın açık ön tarafından Pi USB 1'e tak. Sonra sağ kabuğu "
+                       "arkadan (−z) yerine koy: dikey dikişte sağ kabuğun bindirmesi solun altında kalır; sol önce takılırsa sağ hiçbir "
+                       "düz yönden girmiyor (giriş yolu ölçümü)."),
+              dict(ad="Masada: sol arka kabuk + USB ses kartı, PAM8403", masa="arka_sol",
+                   desen=("Arka kafa kabuğu sol", "USB ses kartı", "PAM8403"), ucus={"Arka kafa kabuğu": (0, 0, -1), "*": (1, 0, 0)},
+                   kamera=(-0.85, 0.62, 1.25), saydam=("Arka kafa kabuğu sol", "USB ses kartı", "PAM8403"),
+                   gizli_ok={"Köpük bant (USB ses": voksel_ok(74), "Köpük bant (PAM": voksel_ok(41)},
+                   is_="Masada, sol arka kabuk: USB ses kartı ve PAM8403'ü yan duvarın iç yüzüne köpük bant + kablo bağıyla tut."),
+              dict(ad="Sol arka kabuk → kafa", bag="arka_sol", desen=(), ucus_bag=(0, 0, -1),
+                   sema=("Ses kartı uzatması", "Ses: ses kartı", "PAM8403 5 V"), kamera=(-0.85, 0.62, -1.25),
+                   is_="Kabloları kafanın açık ön tarafından tak: ses kartı → Pi USB 2 (uzatma + L dirsek), ses kartı L 3,5 mm → PAM "
+                       "girişi, PAM 5 V → D24V50F5 (varsayım, K10). Sonra sol kabuğu arkadan yerine koy (giriş yolu ölçümü)."),
+              dict(ad="Tabla → arka kabuk rafı cıvataları", desen=("Tabla cıvatası",), kamera=(0.3, 1.0, 0.35), saydam=("Arka kafa kabuğu",),
+                   gizli_ok={"Tabla cıvatası M3x10 (sağ z-75)": voksel_ok()},
+                   is_="Tabla → arka kabuk rafı 4 × M3×10: yüz tarafı açıkken önden, L alyanla (sıra denetimi: yüz kabuğu önce "
+                       "takılırsa alete yer kalır ama el kafanın dışından ulaşmaz)."),
+              dict(ad="Masada: yüz kabuğu + kamera", masa="yuz", desen=("Yüz kabuğu", "Kamera"),
+                   ucus={"Kamera": (0, 0, -1), "*": (0, 0, 1)}, kamera=(0.6, 0.45, -1.25), saydam=("Yüz kabuğu",),
+                   gizli_ok={"Kamera vidası": voksel_ok("95–97")},
+                   # F10d düzeltme 1 (kontrol B-4): eski gerekçedeki "3,91 mm ortak hacim" eksen ışınının kirişiydi (K3 geri çekildi)
+                   ucus_ok={"Kamera": "uçuş yolu ölçümü: −z'de 3 mm sonra ışın ölçümü kafa ön üst dikişinin ısıl gömmesinde 2,91 mm "
+                                      "ortak hacim veriyor; gerçek derinlik (nokta–üçgen, yüzey örnekleri) 3–8 mm arasında yüz kabuğu "
+                                      "sağ ile en çok 1,0 mm, ısıl gömmeyle 0,24 mm, 10 mm'den sonra 0. Dinlenmede kamera ile yüz kabuğu "
+                                      "yalnız temas (derinlik 0). Kart boss'lara otururken kenarı kabuğa 1 mm'ye kadar sürtebilir, "
+                                      "elde denenmedi"},
+                   is_="Masada, yüz kabuğu sağ + sol: kamerayı (Camera Module 3) ön duvarın içindeki boss'lara 4 × M2×8 PT ile vidala; "
+                       "lens ekranın üstündeki Ø9 delikte."),
+              dict(ad="Masada: QLED → yüz kabuğu", masa="yuz", desen=("Yüz ekranı",), ucus={"*": (0, 0, -1)}, kamera=(0.6, 0.45, -1.25),
+                   is_="10,1\" QLED (vida deliği yok): camı yüz kabuğu ön duvarının iç yüzüne arkadan yasla, cep duvarı yerini gösterir."),
+              dict(ad="Masada: ekran tırnakları", masa="yuz", desen=("Köpük bant (tırnak", "Ekran tırnağı", "Tırnak cıvatası"),
+                   ucus={"*": (0, 0, -1)}, kamera=(0.6, 0.45, -1.25), saydam=("Ekran tırnağı",),
+                   gizli_ok={"Köpük bant (tırnak alt": voksel_ok() + "; 1 mm bant tırnağın altında, tırnak saydam çizili"},
+                   is_="4 tırnağı (üst ve alt, x ±85) cam şeridine 1 mm köpük bant üstünden arkadan bastır; her tırnak 1 × M3×6 ISO 7380 "
+                       "ile boss'taki ısıl gömmeye."),
+              dict(ad="Kablolar + yüz grubu → kafa", bag="yuz", desen=(), ucus_bag=(0, 0, 1),
+                   sema=("Kafa ekranı HDMI", "Kafa ekranı Touch", "Kafa ekranı Power"),
+                   is_="Yüz kabuğunu kafanın önünde tut, kabloları tak: CSI şeridi → Pi; QLED HDMI (30 cm şerit, Pi micro HDMI 0), Power "
+                       "(SY8205 çıkışı, A ucu kesik micro USB kablo), Touch (Pi USB 4). Touch'ı takmadan önce Notlar'daki ölçümü yap. "
+                       "Sonra yüz kabuğunu önden (+z) yerine koy (giriş yolu: önden serbest)."),
+              dict(ad="Kabuk dikişi", desen=("Kabuk cıvatası",), kamera=(0.85, 0.62, -1.25), saydam=KAFA_KABUK + ("Kafa iskeleti",),
+                   is_="Dikiş cıvatalarını tak (9 cıvata, ısıl gömmeye). Boyundan gelen uçlar (kafa 12 V, göğüs HDMI, hub uzatması, "
+                       "hoparlör) K2'de bağlanır: arka kabuğun dikiş cıvatalarını K2'den sonra sık.")],
     ),
     "K2": dict(
         baslik="Kablolama kapısı 2: gövde içi",
@@ -513,6 +600,69 @@ ADIM = {
                  "multimetre aralığı ve \"yerden kesik\" düzeni bu adım için kaynakta yok, doğrulanmadı"],
         kablo=["Etek bandını takarken K1 hatları sıkışmasın"],
         ucus="radyal",
+        # F10d: alt adımlar (sira grubu = alt adım). Yönler giriş yolu ölçümünden (planlama/d158/F10d-gunluk.md, F1 tablosu): orta bant
+        # yalnız yandan (±x), arka birimler yandan, arka dolgu yukarıdan girer. Ön bantlar ve ön dolgu hiçbir düz yönden girmiyor
+        # (sonar ve braket perçin somunu bandın deliklerine farklı eksenlerden giriyor): gerekçeli istisna, karar maddesi.
+        alt=True,
+        # F10d düzeltme 1 (B-1): orta bantlar sağ / sol ayrı alt adım (tek karede karşı yanın ısıl gömmeleri ve braket cıvatası
+        # görünmüyordu: 0 piksel). Isıl gömmeler bandın boss'unda: bant saydam.
+        sira=[dict(ad="Orta bant sağ + orta braket", desen=("Etek orta sağ", "(Etek braketi sağ z+0)"),
+                   ucus={"*": (1, 0, 0)}, saydam=("Etek orta sağ",),
+                   is_="Orta bandın sağını +x'ten braketin üstüne getir (giriş yolu ölçümü: orta bant yalnız yandan girer). Orta "
+                       "brakete (z 0) dışarıdan M3×14; L brakette M3 perçin somun (delik Ø5,1). Bandın z ±88 bindirme boss'larındaki "
+                       "ısıl gömmeler hazırlıkta takılı (adım 0; bant saydam çizili). Bağlarken akü ayrık (XT60 açık)."),
+              dict(ad="Orta bant sol + orta braket", desen=("Etek orta sol", "(Etek braketi sol z+0)"),
+                   ucus={"*": (1, 0, 0)}, kamera=(-0.85, 0.62, 1.25), saydam=("Etek orta sol",),
+                   is_="Orta bandın solunu −x'ten getir, orta brakete (z 0) dışarıdan M3×14 (perçin somun). Isıl gömmeler sağdaki "
+                       "gibi hazırlıkta takılı (bant saydam çizili)."),
+              dict(ad="Ön sağ bant", desen=("Etek ön sağ", "(etek z+88 sağ)", "(Etek braketi sağ z+105)"), ucus={"*": (1, 0, 1)},
+                   saydam=("Etek ön sağ",),
+                   is_="Ön sağ bandı orta bandın önüne getir; z +88 bindirmesini 3 × M3×6 ile bağla, z +105 braketine dışarıdan M3×14. "
+                       "Bant düz bir yoldan girmiyor (ölçüm, Notlar).",
+                   ucus_ok={"Etek ön sağ": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. Çizilen (1, 0, 1) yönünde sonar 1–12 mm; "
+                                           "+z'de yalnız braket perçin somunu 1–7 mm, sonra serbest; +x'te sonar 1–73 mm; +y'de sonar 1–81 mm. "
+                                           "Karar önerisi F10d-K1"}),
+              dict(ad="Ön dolgu şeridi", desen=("Etek dolgu şeridi ön", "(etek x+38 ön)"), ucus={"*": (0, 1, 0)},
+                   saydam=("Etek dolgu şeridi ön",),
+                   is_="Ön dolgu şeridini yukarıdan indir, son 10 mm'de önden içeri (−z) it (ölçüm: yerinden önce +z 10 mm, sonra "
+                       "+y 170 mm serbest; düz yukarı yolda orta sonar 1–82 mm). x +38 ön bindirmesine 2 × M3×6.",
+                   ucus_ok={"Etek dolgu şeridi ön": "iki parçalı yol ölçüldü (düzeltme turu 1; ışın aralıkları h 0,5 mm, eşik 0,2 mm): "
+                                                    "yerinden +z 10 mm, sonra +y 170 mm serbest; düz +y yolunda orta sonar 1–82 mm. "
+                                                    "Rehber düz uçuş çiziyor"}),
+              dict(ad="Ön sol bant", desen=("Etek ön sol", "(etek z+88 sol)", "(Etek braketi sol z+105)", "(etek x-38 ön)"),
+                   ucus={"*": (1, 0, 1)}, kamera=(-0.85, 0.62, 1.25),
+                   is_="Ön sol bandı getir; z +88 sol bindirmesi 3 × M3×6, x −38 ön bindirmesi 2 × M3×6, z +105 braketine M3×14. "
+                       "Bant düz bir yoldan girmiyor (ölçüm, Notlar).",
+                   ucus_ok={"Etek ön sol": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. Çizilen (−1, 0, 1) yönünde sonar 1–11 mm; "
+                                           "+z'de yalnız braket perçin somunu 1–7 mm, sonra serbest; −x'te sonar 1–61 mm; +y'de sonar 1–81 mm. "
+                                           "Karar önerisi F10d-K1"}),
+              dict(ad="Masada: arka sağ bant + acil stop", masa="arka_sag", desen=("Etek arka sağ", "Acil stop"),
+                   ucus={"Acil stop mantarı": (0, 0, -1), "Acil stop kontak": (0, -1, 0), "*": (1, 0, 0)}, kamera=(0.85, 0.62, 1.25),
+                   saydam=("Etek arka sağ",),
+                   is_="Masada: acil stop mantarını bandın deliğine dışarıdan (arkadan) geçir, panel somunuyla sık; kontak gövdesini "
+                       "içeriden alttan tak (giriş yolu ölçümü: kontak yalnız alttan girer). Bağlamadan önce mantarı multimetrenin "
+                       "süreklilik kademesinde dene: NC uçları arasında mantar serbestken bip var, basılıyken yok (kaynakta yok, "
+                       "doğrulanmadı). Bu bandın boss'larında F5'teki etek servis kapaklarının ısıl gömmeleri var (H1 2, H2 4) ve x +38 "
+                       "arka dikişininkiler (3): hazırlıkta takılı (adım 0), bant saydam çizili; kapaklar F5'te yalnız cıvatalanır."),
+              dict(ad="Arka sağ birimi → robot", bag="arka_sag", desen=("(etek z-88 sağ)", "(Etek braketi sağ z-105)"),
+                   ucus_bag=(1, 0, 0), kamera="arka",
+                   is_="Arka sağ bandı (mantar takılı) +x'ten getir (giriş yolu ölçümü: yalnız +x serbest). z −88 sağ bindirmesi "
+                       "3 × M3×6, z −105 braketine M3×14. K1'de bırakılan acil stop ucunu kontağa bağla."),
+              dict(ad="Arka dolgu şeridi", desen=("Etek dolgu şeridi arka", "(etek x+38 arka)"), ucus={"*": (0, 1, 0)}, kamera="arka",
+                   is_="Arka dolgu şeridini yukarıdan indir (ölçüm: arka sağ bant takılıyken yalnız yukarıdan girer). x +38 arka "
+                       "bindirmesine 3 × M3×6."),
+              dict(ad="Masada: arka sol bant + ana anahtar", masa="arka_sol", desen=("Etek arka sol", "Ana anahtar"),
+                   ucus={"Ana anahtar": (0, -1, 0), "*": (1, 0, 0)}, kamera=(-0.85, 0.62, 1.25), saydam=("Etek arka sol",),
+                   is_="Masada: ana anahtar ASW-A01 gövdesini etek üst plakasının altına alttan tak (model yeri öneri, ölçü tahmini "
+                       "zarf; bağlantı elemanı modelde yok, doğrulanmadı). Düğme: delik Ø30 tahmini, anahtarı ölç. Bu bandın "
+                       "boss'larında H1 kapağının 2 ısıl gömmesi var: hazırlıkta takılı (adım 0), bant saydam çizili."),
+              dict(ad="Arka sol birimi → robot", bag="arka_sol", desen=("(etek z-88 sol)", "(Etek braketi sol z-105)", "(etek x-38 arka)"),
+                   ucus_bag=(-1, 0, 0), kamera=(-0.85, 0.62, -1.25),
+                   is_="Arka sol bandı (ana anahtar takılı) −x'ten getir (giriş yolu ölçümü). z −88 sol bindirmesi 3 × M3×6, x −38 arka "
+                       "bindirmesi 3 × M3×6, z −105 braketine M3×14. K1'de bırakılan iki ana hat ucunu anahtara bağla. XT60 şarj "
+                       "girişi (panel konnektör): önerilen yer etek üst plakasının arkası, delik modelde yok (doğrulanmadı); delik "
+                       "açıldıysa konnektörü tak, şarj ucunu akü ayrıkken bağla, açılmadıysa uç bantlı kalır. Şarj 10 A sigortası "
+                       "takılmaz (aşama 1 listesi).")],
     ),
     "F2": dict(
         baslik="Gövde alt ve orta bantları",
@@ -536,6 +686,63 @@ ADIM = {
               "Hoparlör kabı, kulakları, ızgarası ve kelepçesi varsayım: ürün elde görülmeden kesinleşmez (`kabuk_parcalar.py`), doğrulanmadı",
               "Hoparlör kablosunun ucunun yeri ve bağlantı biçimi (lehim tırnağı) varsayım: ürün elde yok, doğrulanmadı"],
         ucus="radyal",
+        # F10d: alt adımlar (sira grubu = alt adım). Bantlar yandan (±x; giriş yolu ölçümü, planlama/d158/F10d-gunluk.md F2 tablosu);
+        # x 0 dikişinin aynı adlı cıvataları bant yüksekliğine göre ayrılır (konum).
+        alt=True,
+        # F10d düzeltme 1 (B-1): alt / uzatma bantları sağ / sol ayrı alt adım (tek karede karşı yanın braket cıvatası ve arka dikiş
+        # 0 piksel). Sol alt adımda x 0 dikişi (ön + arka): bantlar saydam, ısıl gömmeler ev sahibi bantla gelir.
+        sira=[dict(ad="Alt bant sağ + y 400 braketi", desen=("Gövde alt bandı sağ", "sağ y400)"), ucus={"*": (1, 0, 0)},
+                   saydam=GOVDE_BANT,
+                   is_="Gövde alt bandının sağını +x'ten getir, y 400 braketine dışarıdan M5×18 (pulsuz, M5 perçin somuna). Bandın "
+                       "bindirme boss'larındaki ısıl gömmeler hazırlıkta takılı (adım 0; bant saydam çizili)."),
+              dict(ad="Alt bant sol + y 400 braketi, x 0 dikişi", desen=("Gövde alt bandı sol", "sol y400)", "(gövde x0"),
+                   konum={"(gövde x0": {"y": (0, 476.5)}}, ucus={"*": (1, 0, 0)}, kamera=(-0.85, 0.62, 1.25), saydam=GOVDE_BANT,
+                   gizli_ok={"(gövde x0 arka)": voksel_ok(161, "arka sağ (0,85, 0,62, −1,25)")},
+                   is_="Solunu −x'ten getir. x 0 dikişinin (ön ve arka) bindirmelerini M3×6 ile bağla, y 400 braketine dışarıdan M5×18."),
+              dict(ad="Uzatma bandı 1 sağ + y 530 braketi", desen=("Gövde uzatma bandı 1 sağ", "sağ y530)", "(gövde y476"),
+                   konum={"(gövde y476": {"x": (0, 1000)}}, ucus={"*": (1, 0, 0)}, kamera=(1.0, 0.35, 0.5),
+                   saydam=GOVDE_BANT,
+                   is_="Uzatma bandı 1 sağı alt bandın üstüne getir (dikiş y 476,5), y 476,5 bindirmelerini M3×6 ile bağla, y 530 "
+                       "braketine M5×18."),
+              dict(ad="Uzatma bandı 1 sol + y 530 braketi, x 0 dikişi", desen=("Gövde uzatma bandı 1 sol", "sol y530)", "(gövde y476", "(gövde x0"),
+                   konum={"(gövde x0": {"y": (476.5, 634)}}, ucus={"*": (1, 0, 0)}, kamera=(-1.0, 0.35, -0.5), saydam=GOVDE_BANT,
+                   gizli_ok={"(gövde x0 ön)": voksel_ok("165–206"), "(gövde x0 arka)": voksel_ok("170–215", "arka sağ (0,85, 0,62, −1,25)")},
+                   is_="Uzatma bandı 1 solu getir; y 476,5 ve x 0 bindirmelerini bağla, y 530 braketine M5×18."),
+              dict(ad="Uzatma bandı 2 sağ + y 688 braketi", desen=("Gövde uzatma bandı 2 sağ", "sağ y688)", "(gövde y634"),
+                   konum={"(gövde y634": {"x": (0, 1000)}}, ucus={"*": (1, 0, 0)}, kamera=(1.0, 0.35, 0.5),
+                   saydam=GOVDE_BANT, gizli_ok={"(gövde y634 arka)": voksel_ok()},
+                   is_="Uzatma bandı 2 sağı getir (dikiş y 634), y 634 bindirmelerini bağla, y 688 braketine M5×18."),
+              dict(ad="Uzatma bandı 2 sol + y 688 braketi, x 0 dikişi", desen=("Gövde uzatma bandı 2 sol", "sol y688)", "(gövde y634", "(gövde x0"),
+                   konum={"(gövde x0": {"y": (634, 791.5)}}, ucus={"*": (1, 0, 0)}, kamera=(-1.0, 0.35, -0.5), saydam=GOVDE_BANT,
+                   gizli_ok={"(gövde x0 ön)": voksel_ok("167–207"), "(gövde x0 arka)": voksel_ok("171–215", "arka sağ (0,85, 0,62, −1,25)"),
+                             "(gövde y634 arka)": voksel_ok("150–192", "arka sağ (0,85, 0,62, −1,25)"),
+                             "(gövde y634 yan)": voksel_ok(447, "sol (−1, 0, 0)")},
+                   is_="Uzatma bandı 2 solu getir; y 634 ve x 0 bindirmelerini bağla, y 688 braketine M5×18."),
+              dict(ad="Masada: orta bant sağ + hoparlör", masa="orta_sag",
+                   desen=("Gövde orta bandı sağ", "Hoparlör kabı ön", "Hoparlör 40", "Hoparlör kabı arka", "Köpük ped", "Hoparlör"),
+                   ucus={"Gövde orta bandı": (1, 0, 0), "*": (0, 2, -3)}, kamera=(-1.0, 0.45, 0.6),
+                   # F10d düzeltme 1 (B-1): hoparlör grubu iç içe (halka → hoparlör → arka kap → ped → kelepçe) ve ızgara duvarının
+                   # arkasında: bant ve grubun parçaları saydam, cıvatalar opak
+                   saydam=("Gövde orta bandı sağ", "Hoparlör kabı", "Hoparlör kelepçesi", "Hoparlör 40", "Köpük ped (hoparlör"),
+                   gizli_ok={"Köpük ped (hoparlör": voksel_ok()},
+                   is_="Masada, orta bant sağın ön duvarında, ızgara deliklerinin arkasında: kabın ön halkasını duvara, hoparlörü "
+                       "(40 × 20, 4 Ω, 3 W) içine, flanşlı arka kabı arkasına koy; kelepçeyi köpük pedle 2 × M3×20 ile boss'lardaki ısıl "
+                       "gömmeye sık. Bu sıra kaynakta yok, doğrulanmadı. Bandın boss'larındaki ısıl gömmeler (hoparlör 2, y 1005 dikişi, "
+                       "F5'teki arka servis kapağının 4'ü) hazırlıkta takılı (adım 0); karede bant ve hoparlör grubu saydam."),
+              dict(ad="Orta bant sağ → gövde", bag="orta_sag", desen=("(gövde y792",), konum={"(gövde y792": {"x": (0, 1000)}},
+                   ucus_bag=(1, 0, 0), saydam=GOVDE_BANT + ETEK_BANT + ("Hoparlör kabı",),
+                   # F10d düzeltme 1 (kontrol B-4): "5,53 mm" eksen ışınının kirişiydi, derinlik değil (K3 geri çekildi)
+                   giris_ok={"*": "giriş yolu ölçümü: +x'te 138 mm boyunca çarpışma yok, sonra kutular ayrılıyor. Serbest sayılmamasının "
+                                  "tek nedeni dinlenmede orta bant sağ ile uzatma bandı 2 sağın ortak yüzü: ışın ölçümü 5,53 mm kiriş "
+                                  "veriyor, gerçek derinlik (nokta–üçgen) en çok 0,28 mm, medyan 0; temas, çarpışma değil"},
+                   is_="Bandı takmadan önce K2'de göğüs altında bırakılan hoparlör kablosunu (PAM8403'ten boyundan iner) hoparlöre "
+                       "bağla. Sonra orta bant sağı +x'ten getir (dikiş y 791,5), bindirmeleri bağla."),
+              dict(ad="Orta bant sol", desen=("Gövde orta bandı sol", "(gövde y792", "(gövde x0"),
+                   konum={"(gövde x0": {"y": (791.5, 2000)}}, ucus={"*": (1, 0, 0)}, kamera=(-0.85, 0.62, 1.25),
+                   saydam=GOVDE_BANT + ETEK_BANT + ("Hoparlör kabı",),
+                   gizli_ok={"(gövde y792 arka)": voksel_ok(76, "arka sağ (0,85, 0,62, −1,25)")},
+                   is_="Orta bant solu −x'ten getir; y 791,5 ve x 0 dikişlerini bağla. Bandın boss'larındaki ısıl gömmeler (y 1005 "
+                       "dikişi ve F5'teki arka servis kapağının 3'ü) hazırlıkta takılı (adım 0; bantlar saydam çizili).")],
     ),
     "F3": dict(
         baslik="Göğüs bantları + göğüs ekranı",
@@ -581,10 +788,49 @@ ADIM = {
               "Regülatör kartı ve mini 2 A sigorta modelde yok; yerleri doğrulanmadı"],
         ucus="radyal",
         # F10c (P10.3): iş metnindeki sıra (bant → taşıyıcı → ekran → çerçeve); taşıyıcı M6'sı ekran takılınca kapanır (sıra denetimi)
-        sira=[dict(ad="Göğüs bantları", desen=("Göğüs bandı", "(gövde ", "(Gövde braketi")),
-              dict(ad="VESA taşıyıcı → direk ön kanalı", desen=("VESA taşıyıcı", "Taşıyıcı ", "Çekiç somun M6 (direk ön kanalı)")),
-              dict(ad="Göğüs ekranı → taşıyıcı (VESA)", desen=("Göğüs ekranı 11", "VESA pulu", "VESA cıvatası")),
-              dict(ad="Göğüs ekranı çerçevesi", desen=("Göğüs ekranı çerçevesi", "Çerçeve cıvatası", "(göğüs çerçevesi)"))],
+        # F10d: alt adımlar; bantlar yandan (±x, giriş yolu ölçümü), sağ / sol ayrı (y 1005 dikişinin aynı adlı cıvataları x'e göre)
+        alt=True,
+        sira=[dict(ad="Göğüs bandı sağ + y 1095 braketi", desen=("Göğüs bandı sağ", "(Gövde braketi sağ", "(gövde y1005"),
+                   konum={"(gövde y1005": {"x": (0, 1000)}}, ucus={"*": (1, 0, 0)}, saydam=GOVDE_BANT,
+                   is_="Göğüs bandı sağı +x'ten getir (dikiş y 1005), bindirmeleri bağla, y 1095 braketine dışarıdan M5×18. "
+                       "Bant düz bir yoldan girmiyor (ölçüm, Notlar). Bandın boss'larındaki ısıl gömmeler (y 1198 dikişi ve F5'teki "
+                       "üst arka servis kapağının 4'ü) hazırlıkta takılı (adım 0; bantlar saydam çizili).",
+                   ucus_ok={"Göğüs bandı sağ": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +x'te orta bant sağ ile 1–159 mm "
+                                               "ortak hacim (bindirme dili), 173 mm'de ayrılıyor; +y'de orta bant 1–13 mm; ±z'de orta bant 1–213 mm. "
+                                               "Karar önerisi F10d-K1"}),
+              dict(ad="Göğüs bandı sol + y 1095 braketi", desen=("Göğüs bandı sol", "(Gövde braketi sol", "(gövde y1005", "(gövde x0"),
+                   konum={"(gövde y1005": {"x": (-1000, 0)}}, ucus={"*": (1, 0, 0)}, kamera=(-0.85, 0.62, 1.25), saydam=GOVDE_BANT,
+                   is_="Göğüs bandı solu −x'ten getir; bindirmeleri bağla (x = 0'da cep altı y 1022,7 ve cep üstü y 1222 dahil), y 1095 "
+                       "braketine M5×18. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Isıl gömmeler (y 1198 dikişi, üst arka servis kapağının "
+                       "3'ü) hazırlıkta takılı.",
+                   ucus_ok={"Göğüs bandı sol": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. −x'te orta bant sol ile 1–135 mm "
+                                               "ortak hacim (bindirme dili), 161 mm'de ayrılıyor; +y'de orta bant 1–13 mm ve göğüs bandı sağ 1–19 mm; "
+                                               "±z'de orta bant 1–213 mm. Karar önerisi F10d-K1"}),
+              dict(ad="VESA taşıyıcı → direk ön kanalı", desen=("VESA taşıyıcı", "Taşıyıcı ", "Çekiç somun M6 (direk ön kanalı)"),
+                   kamera=(0.3, 1.0, 0.35), saydam=GOVDE_BANT + ("Göğüs ekranı VESA taşıyıcı", "Göğüs ekranı çerçevesi"),
+                   ucus_ok={"Çekiç somun M6": "uçuş yolu ölçümü: düz −z yolu yok (direk kanalının dudağı 2–25 mm); kanal boyunca −y "
+                                              "400 mm'de tek engel kendi cıvatası (2–6 mm), +y'de 166 mm'den sonra travers. Döndürerek "
+                                              "oturtma ölçülmedi. Rehber düz uçuş çiziyor"},
+                   gizli_ok={"Çekiç somun M6": "çekiç somun direğin kanalının içinde, taşıyıcının arkasında (perdelenme tamamen gizli "
+                                               "sayıyor); alt adım karesinde taşıyıcı ve bantlar saydam çizili, somun görünür (kimlik tamponu)"},
+                   is_="VESA taşıyıcı (PETG-CF): ekran cebinden direğin ön (+z) kanalına, 2 × M6×18 + pul + çekiç somun. Yükseklik kanalda "
+                       "ayarlanır; cıvatalara ekran takılmadan, plakanın ortasından ulaşılır."),
+              dict(ad="Göğüs ekranı → taşıyıcı (VESA)", desen=("Göğüs ekranı 11", "VESA pulu", "VESA cıvatası"), sema=("Göğüs dokunmatiği",),
+                   kamera=(0.85, 0.62, 1.25), ucus={"Göğüs ekranı 11": (0, 1, 4), "*": (0, 0, -1)},
+                   # F10d düzeltme 1 (B-1): VESA cıvataları ve pulları ekranla taşıyıcının arasında (arkadan bakışta taşıyıcı ve
+                   # bantlar, önden bakışta ekran örtüyor): önden bakış, ekran (yeni parça, 0,4), taşıyıcı ve bantlar saydam
+                   saydam=GOVDE_BANT + ("Göğüs ekranı VESA taşıyıcı", "Göğüs ekranı çerçevesi", "Göğüs ekranı 11"),
+                   is_="11,6\" ekranı (kasalı) cebe önden, yaklaşık 14° yukarıdan koy (giriş yolu ölçümü: bantlar ve taşıyıcı takılıyken "
+                       "yalnız bu yön serbest; düz önden 19,5 mm sonra bant). 12 V ölçümü ve fişler için adımın iş metnindeki 3. maddeyi izle (K11 a / b). "
+                       "Sonra ekranı taşıyıcıya arkadan 4 × M4×12 + pul ile bağla (VESA 75 × 75): üst arka servis kapağı açık, direğin "
+                       "yanından. Dokunmatik USB ucu F5'e kadar boşta, etiketli."),
+              dict(ad="Göğüs ekranı çerçevesi", desen=("Göğüs ekranı çerçevesi", "Çerçeve cıvatası"), ucus={"*": (0, 0, 1)},
+                   saydam=GOVDE_BANT + ("Göğüs ekranı çerçevesi",),
+                   is_="Çerçeve sağ + sol: göğüs bandına dışarıdan, yarı başına 4 × M3×6 ISO 7380, çerçeve flanşındaki ısıl gömmeye. "
+                       "Ekran camı çerçevenin 2 mm gerisinde, köşe takozlarına dayalı.",
+                   ucus_ok={"Göğüs ekranı çerçevesi": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +z'de göğüs bandı 1–9 mm "
+                                                      "(flanş bandın iç yüzünde) ve ekran 3–7 mm; yana (dışa) göğüs bandı 1–151 mm; +y ve −z de kapalı. "
+                                                      "Karar önerisi F10d-K1"})],
     ),
     "F4": dict(
         baslik="Omuz bantları",
@@ -602,6 +848,32 @@ ADIM = {
         kablo=["Geçit: ψ 214 yarığı. Travers arkasındaki kol servo uzatma uçları bu adımda yarıktan dışarı alınır (madde 2); G2, G4 "
                "ve H1 onları dışarıda kullanır"],
         ucus="radyal",
+        # F10d: alt adımlar sağ / sol (aynı adlı dikiş cıvataları x'e göre). Yön ölçümü: F10d-gunluk.md F4 tablosu
+        alt=True,
+        # F10d düzeltme 1 (B-1): bantlar saydam; sol bandın ön ve arka dikişi tek karede görünmüyor (arka dikiş 0 piksel): arka
+        # dikiş ayrı alt adım, arkadan kamera
+        sira=[dict(ad="Omuz bandı sağ", desen=("Omuz bandı sağ", "(gövde y1198"), konum={"(gövde y1198": {"x": (0, 1000)}},
+                   ucus={"*": (1, 0, 0)}, gizli_ok={"(gövde y1198 ön)": voksel_ok(276)}, kamera=(0.3, 1.0, 0.35),
+                   # üstten bakışta x 0 arka ısıl gömmeyi kafa örtüyor: kafa kabukları ve iskeleti de saydam
+                   saydam=GOVDE_BANT + KAFA_KABUK + ("Kafa iskeleti", "Servo yuvası", "Rulman yuvası", "Boyun", "Eğme çatalı"),
+                   is_="Omuz bandı sağı Ø84 rulman kapağının üstünden geçir; üst kapak boynu sarar. y 1198 bindirmelerine M3×6 ISO 7380. "
+                       "Bandın boss'larındaki ısıl gömmeler (x 0 dikişi, S1 kaseti) hazırlıkta takılı (adım 0; bantlar saydam çizili).",
+                   ucus_ok={"Omuz bandı sağ": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +x'te göğüs bandı sağ 1–161 mm "
+                                              "(bindirme dili), rulman kapağı 3–99 mm, yuva bağlantı cıvatası 3–29 mm; +y'de 7 mm sonra rulman kapağı "
+                                              "7–101 mm; ±z'de göğüs bandı. Karar önerisi F10d-K1"}),
+              dict(ad="Omuz bandı sol, ön dikiş", desen=("Omuz bandı sol", "(gövde y1198 ön)", "(gövde x0 ön)"),
+                   konum={"(gövde y1198 ön)": {"x": (-1000, 0)}}, ucus={"*": (1, 0, 0)}, kamera=(-0.85, 0.62, 1.25), saydam=GOVDE_BANT,
+                   gizli_ok={"(gövde y1198 ön)": voksel_ok(308), "(gövde x0 ön)": voksel_ok(257)},
+                   ucus_ok={"Omuz bandı sol": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. −x'te göğüs bandı sol 1–137 mm "
+                                             "(bindirme dili), rulman kapağı 3–99 mm, yuva bağlantı cıvatası 3–29 mm; +y'de 7 mm sonra rulman kapağı "
+                                             "7–101 mm; ±z'de göğüs bandı ve omuz bandı sağ. Karar önerisi F10d-K1"},
+                   is_="Omuz bandı solu aynı biçimde geçir; önde y 1198 ve x 0 dikişlerini M3×6 ile bağla. S1 kaseti ısıl gömmeleri "
+                       "hazırlıkta takılı (bantlar saydam çizili)."),
+              dict(ad="Omuz arka dikişi", desen=("(gövde y1198 arka)", "(gövde x0 arka)"), kamera=(-0.85, 0.62, -1.25),
+                   ucus={"*": (1, 0, 0)}, saydam=GOVDE_BANT,
+                   gizli_ok={"(gövde x0 arka)": voksel_ok(435, "arka sağ (0,85, 0,62, −1,25)")},
+                   is_="Arkada sol y 1198 ve x 0 dikişlerini M3×6 ile bağla. Bundan sonra bant ancak göbek sökülünce çıkar. Sonra kol "
+                       "servo uçlarını omuz yarığından dışarı al (adımın iş metni, madde 2).")],
     ),
     "G0": dict(
         baslik="Tezgâh: göbek + S1 tamburu",
@@ -674,6 +946,14 @@ ADIM = {
         is_="Dirsek hornu + merkez vidası. Çataldan önce.",
         baglanti_md="Kol başına 1 × M3×5",
         kontrol=["Vida sıkı, horn oturdu"],
+        # F10d: horn dirsek servo ekseninde (x) ince disk: servo ekseni boyunca gelir (F10c'ye kadar +y). İki kol x ekseninde
+        # birbirini örter: sağ / sol alt adım, kendi yanından bakış.
+        ucus=(1, 0, 0),
+        alt=True,
+        sira=[dict(ad="Sağ kol: dirsek hornu + merkez vidası", yan="sag", desen=("Dirsek horn",), kamera=(1.0, 0.4, 0.5),
+                   is_="Sağ kol: dirsek hornunu servo miline geçir, merkez vidası M3×5 (PH1)."),
+              dict(ad="Sol kol: dirsek hornu + merkez vidası", yan="sol", desen=("Dirsek horn",), kamera=(-1.0, 0.4, 0.5),
+                   is_="Sol kol: aynı iş, aynalı.")],
     ),
     "H0c": dict(
         baslik="Tezgâh: dirsek çatalı",
@@ -688,12 +968,31 @@ ADIM = {
         is_="Bilek hornu + merkez vidası. Flanştan önce: sonra yalnız 0,3 mm kalır.",
         baglanti_md="Kol başına 1 × M3×5",
         kontrol=["Vida sıkı, horn oturdu"],
+        # F10d: bilek hornu servonun altında (y ekseni): alttan gelir (F10c'ye kadar +y'den, servonun içinden), alttan bakış
+        ucus=(0, -1, 0),
+        kamera=(0.85, -0.62, 1.25),
+        # F10d: tek alttan kamerada sağ kolun hornu karede değildi (F10d-dogrula 45: 2 görünmeyen). Sağ / sol alt adım,
+        # kendi yanından alttan bakış (H0b gibi).
+        alt=True,
+        sira=[dict(ad="Sağ kol: bilek hornu + merkez vidası", yan="sag", desen=("Bilek horn",), kamera=(1.0, -0.6, 0.5),
+                   is_="Sağ kol: bilek hornunu servo miline alttan geçir, merkez vidası M3×5 (PH1)."),
+              dict(ad="Sol kol: bilek hornu + merkez vidası", yan="sol", desen=("Bilek horn",), kamera=(-1.0, -0.6, 0.5),
+                   is_="Sol kol: aynı iş, aynalı.")],
     ),
     "H0e": dict(
         baslik="Tezgâh: bilek flanşı",
         is_="Flanşı horna cıvatala. Elden önce: sonra yalnız 1,0 mm kalır.",
         baglanti_md="Kol başına 4 × M3×8",
         kontrol=["Flanş eksende, yalpa yok"],
+        kamera=(0.85, -0.62, 1.25),                                  # F10d: flanş alttan takılır, alttan bakış
+        # F10d: tek kamerada sağ kolun flanşı ve 4 cıvatası karede değildi (F10d-dogrula 46). Sağ / sol alt adım.
+        alt=True,
+        sira=[dict(ad="Sağ kol: bilek flanşı + 4 cıvata", yan="sag", desen=("Bilek flanşı", "Flanş-horn"), kamera=(1.0, -0.6, 0.5),
+                   saydam=("Bilek flanşı",),
+                   is_="Sağ kol: flanşı horna alttan oturt, 4 × M3×8 çapraz sık."),
+              dict(ad="Sol kol: bilek flanşı + 4 cıvata", yan="sol", desen=("Bilek flanşı", "Flanş-horn"), kamera=(-1.0, -0.6, 0.5),
+                   saydam=("Bilek flanşı",),
+                   is_="Sol kol: aynı iş, aynalı.")],
     ),
     "H0f": dict(
         baslik="Tezgâh: el",
@@ -738,7 +1037,9 @@ ADIM = {
             "3. Testten sonra kapat: arka servis kapağı, üst arka servis kapağı (hub'la birlikte), etek H1 ve H2.\n"
             "H1 sigorta kutusuna açılır: uç yuvalar yedek, sık değişen F1, F3, F4, F5 ortada (29.10).",
         baglanti_md="1,58 m: arka kapak 7 × M3×6 ISO 7380; üst arka kapak 7 × M3×6 ISO 7380; H1 4 × M3×6 (x ±50); H2 4 × M3×6; hepsi "
-                    "ısıl gömmeye. Hub: 1 mm köpük bant (kapak takozunda). Üst kapak, H2 ve hub M6'da yok",
+                    "ısıl gömmeye. Isıl gömmeler kapaklarda değil, bantların boss'larında: arka kapağınkiler orta bantta (F2), üst arka "
+                    "kapağınkiler göğüs bandında (F3), H1 / H2'ninkiler etek arka bantlarında (F1); o adımlarda takılı geldi. Hub: 1 mm "
+                    "köpük bant (kapak takozunda). Üst kapak, H2 ve hub M6'da yok",
         alet="alyan 2",
         erisim="Düz. Hub kapağın iç yüzünde: kapak açıkken bağlanır",
         kontrol=["Hub köpük banda oturdu, yan dayamalar arasında; anahtarı açık",
@@ -762,6 +1063,35 @@ ADIM = {
               "Altıncı USB cihazı karar bekliyor (K1): şimdilik hub'da 2 port boş"],
         ucus=(0, 0, -1),
         kamera="arka",
+        # F10d: alt adımlar: hub üst kapağa masada, test (kapaklar açık), arka kapak, üst kapak hub'la, etek H1 / H2 yukarıdan
+        alt=True,
+        sira=[dict(ad="Masada: üst arka kapak + hub", masa="ust_kapak", desen=("Üst arka servis kapağı", "Köpük bant (USB Hub", "USB Hub"),
+                   ucus={"Üst arka servis kapağı": (0, 0, -1), "*": (0, 0, 1)}, kamera=(0.6, 0.45, 1.25),
+                   saydam=("Üst arka servis kapağı", "USB Hub"),
+                   gizli_ok={"Köpük bant (USB Hub": voksel_ok(76)},
+                   is_="Masada: 4'lü USB hub'ı üst arka servis kapağının iç yüzündeki takoza, iki yan dayamanın arasına 1 mm köpük bantla "
+                       "yapıştır. Bağla: hub kablosu ← Pi USB 3'ten boyundan gelen uzatma (K2), Hub 1 → göğüs ekranı dokunmatiği (F3'te "
+                       "boşta bırakılan USB), Hub 2 → ESP32 USB (K2'de direk arka yüzünden çıkarılan uç; 1N5819 yönü K2 madde 4). Hub 3 "
+                       "ve 4 boş. Hub'ın anahtarı açık kalmalı."),
+              dict(ad="İlk enerji, aşama 2 (kapaklar açık)", desen=(),
+                   is_="Kapaklar açık, hub bağlı: devreye alma testi adımın iş metnindeki 2. maddeye göre (ön şarj dizisi, mantar, motor "
+                       "yön testi). Bitince ana anahtarı kapat, aküyü XT60'tan ayır."),
+              dict(ad="Arka servis kapağı", desen=("Arka servis kapağı", "(arka kapak)"), ucus={"*": (0, 0, -1)},
+                   gizli_ok={"Bindirme cıvatası M3x6 (arka kapak)": voksel_ok("195–418")},
+                   is_="Arka servis kapağını arkadan yerine koy, 7 × M3×6 ISO 7380 → ısıl gömme."),
+              dict(ad="Üst arka kapak (hub'la) → gövde", bag="ust_kapak", desen=("(üst arka kapak)",), ucus_bag=(0, 0, -1),
+                   # F10d düzeltme 1: eski 0,5 mm çarpışma kapakla uçan yanlış ev sahipli ısıl gömmelerdendi (kontrol B-2; somunlar
+                   # artık göğüs bandında, F3); "1,5 mm" ışın kirişiydi (B-4, K3 geri çekildi). Uçuş istisnası gerekmiyor.
+                   giris_ok={"*": "giriş yolu ölçümü: −z'de 29,5 mm boyunca çarpışma yok, sonra kutular ayrılıyor. Serbest sayılmamasının "
+                                  "tek nedeni dinlenmede kapak ile göğüs bandı sağın ortak yüzü: ışın ölçümü 1,5 mm kiriş veriyor, gerçek "
+                                  "derinlik (nokta–üçgen) en çok 0,057 mm, medyan 0; temas, çarpışma değil"},
+                   is_="Üst arka servis kapağını hub'la birlikte arkadan yerine koy (hub kabloları gerilmesin, yaklaşık 150 mm söküm payı), "
+                       "7 × M3×6 ISO 7380."),
+              dict(ad="Etek servis kapakları H1 + H2", desen=("Etek servis kapağı",), ucus={"*": (0, 1, 0)}, kamera=(0.3, 1.0, 0.35),
+                   saydam=("Etek servis kapağı",),
+                   gizli_ok={"Kapak cıvatası M3x6 (Etek servis kapağı H1": voksel_ok()},
+                   is_="Etek H1 (sigorta kutusu) ve H2 (ana sigorta) kapaklarını yukarıdan yerine koy, her biri 4 × M3×6. H1 sigorta "
+                       "kutusuna açılır: uç yuvalar yedek, sık değişen F1, F3, F4, F5 ortada (29.10).")],
     ),
 }
 
@@ -779,9 +1109,19 @@ def kablo_kapisi(y_maks):
 # F10c (P10.3): adım içi sıra. ADIM[kod]["sira"] = [dict(ad, desen, tezgah?)]: parça görünen adında (tr sonrası) desenlerden biri geçen
 # ilk grup kazanır. Gruplar bu sırayla takılır; "tezgah" işaretli grup masada hazırlanır ve sıradaki yerinde robota bağlanır.
 # rehber_veri.py satırları bu sırayla dizer ("sira", "sira_grup"); app.js sıralı takma ve rehber_sira.py denetimi bunu kullanır.
-def sira_grup_bul(sira, ad):
+# F10d: isteğe bağlı konum / yan koşulu (aynı adlı bağlantı elemanları bantlara göre ayrılsın). "konum" = {desen: {"x" | "y" | "z":
+# (alt, üst) mm}}: o desene uyan parçanın sınır kutusu merkezi [alt, üst) içinde olmalı. "yan" = "sag" / "sol": parçanın modülü bu ekle
+# bitmeli (iki kollu adımlar).
+def sira_grup_bul(sira, ad, merkez=None, modul=""):
     for i, g in enumerate(sira):
-        if any(d in ad for d in g["desen"]):
+        if g.get("yan") and not modul.endswith("_" + g["yan"]):
+            continue
+        for d in g["desen"]:
+            if d not in ad:
+                continue
+            k = (g.get("konum") or {}).get(d)
+            if k and (merkez is None or any(not (k[e][0] <= merkez["xyz".index(e)] < k[e][1]) for e in k)):
+                continue
             return i
     return None
 

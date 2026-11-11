@@ -1,6 +1,6 @@
 {
 "surum": 1,
-"uretim": "2026-11-11 05:20",
+"uretim": "2026-11-11 15:34",
 "betik": "tasarim/freecad/rehber/rehber_veri.py",
 "kaynak": {
 "m6": "planlama/adim4/M6-montaj-sirasi.md (adım sırası ve tablo metni)",
@@ -807,6 +807,830 @@
 ]
 }
 ],
+"isil_gomme": {
+"yontem": "ev sahibi: somunun 0,8 mm dışındaki 24 halka noktasından en çoğunu malzemesinin içinde tutan ana parça (Part isInside, bütün ana parçalar aday; somunun sınır kutusu merkezine 8 mm'den yakın kutulu olanlar). Somun ev sahibinin adımına ve alt montajına taşınır.",
+"toplam": 164,
+"ev_sahipli": 164,
+"skor_alt": 24,
+"evsiz": [],
+"tasinan": [
+{
+"id": "p0081",
+"ad": "Isıl gömme somun M3 (yuvada)",
+"modul": "omuz_sag",
+"eski_kod": "D1b",
+"eski_adim": 20,
+"kod": "D1a",
+"adim": 19,
+"ev": "p0059",
+"ev_ad": "Omuz yuvası"
+},
+{
+"id": "p0083",
+"ad": "Isıl gömme somun M3 (yuvada)",
+"modul": "omuz_sag",
+"eski_kod": "D1b",
+"eski_adim": 20,
+"kod": "D1a",
+"adim": 19,
+"ev": "p0059",
+"ev_ad": "Omuz yuvası"
+},
+{
+"id": "p0085",
+"ad": "Isıl gömme somun M3 (yuvada)",
+"modul": "omuz_sag",
+"eski_kod": "D1b",
+"eski_adim": 20,
+"kod": "D1a",
+"adim": 19,
+"ev": "p0059",
+"ev_ad": "Omuz yuvası"
+},
+{
+"id": "p0087",
+"ad": "Isıl gömme somun M3 (yuvada)",
+"modul": "omuz_sag",
+"eski_kod": "D1b",
+"eski_adim": 20,
+"kod": "D1a",
+"adim": 19,
+"ev": "p0059",
+"ev_ad": "Omuz yuvası"
+},
+{
+"id": "p0115",
+"ad": "Isıl gömme somun M5 (göbekte)",
+"modul": "omuz_sag",
+"eski_kod": "G2",
+"eski_adim": 39,
+"kod": "G0",
+"adim": 37,
+"ev": "p0091",
+"ev_ad": "Omuz göbeği"
+},
+{
+"id": "p0154",
+"ad": "Isıl gömme somun M3 (yuvada)",
+"modul": "omuz_sol",
+"eski_kod": "D1b",
+"eski_adim": 20,
+"kod": "D1a",
+"adim": 19,
+"ev": "p0132",
+"ev_ad": "Omuz yuvası"
+},
+{
+"id": "p0156",
+"ad": "Isıl gömme somun M3 (yuvada)",
+"modul": "omuz_sol",
+"eski_kod": "D1b",
+"eski_adim": 20,
+"kod": "D1a",
+"adim": 19,
+"ev": "p0132",
+"ev_ad": "Omuz yuvası"
+},
+{
+"id": "p0158",
+"ad": "Isıl gömme somun M3 (yuvada)",
+"modul": "omuz_sol",
+"eski_kod": "D1b",
+"eski_adim": 20,
+"kod": "D1a",
+"adim": 19,
+"ev": "p0132",
+"ev_ad": "Omuz yuvası"
+},
+{
+"id": "p0160",
+"ad": "Isıl gömme somun M3 (yuvada)",
+"modul": "omuz_sol",
+"eski_kod": "D1b",
+"eski_adim": 20,
+"kod": "D1a",
+"adim": 19,
+"ev": "p0132",
+"ev_ad": "Omuz yuvası"
+},
+{
+"id": "p0188",
+"ad": "Isıl gömme somun M5 (göbekte)",
+"modul": "omuz_sol",
+"eski_kod": "G2",
+"eski_adim": 39,
+"kod": "G0",
+"adim": 37,
+"ev": "p0164",
+"ev_ad": "Omuz göbeği"
+},
+{
+"id": "p0275",
+"ad": "Isıl gömme somun M3 (gövde y1005 ön)",
+"modul": "kabuk",
+"eski_kod": "F3",
+"eski_adim": 35,
+"kod": "F2",
+"adim": 34,
+"ev": "p0211",
+"ev_ad": "Gövde orta bandı sağ"
+},
+{
+"id": "p0277",
+"ad": "Isıl gömme somun M3 (gövde y1005 ön)",
+"modul": "kabuk",
+"eski_kod": "F3",
+"eski_adim": 35,
+"kod": "F2",
+"adim": 34,
+"ev": "p0212",
+"ev_ad": "Gövde orta bandı sol"
+},
+{
+"id": "p0279",
+"ad": "Isıl gömme somun M3 (gövde y1005 arka)",
+"modul": "kabuk",
+"eski_kod": "F3",
+"eski_adim": 35,
+"kod": "F2",
+"adim": 34,
+"ev": "p0211",
+"ev_ad": "Gövde orta bandı sağ"
+},
+{
+"id": "p0281",
+"ad": "Isıl gömme somun M3 (gövde y1005 arka)",
+"modul": "kabuk",
+"eski_kod": "F3",
+"eski_adim": 35,
+"kod": "F2",
+"adim": 34,
+"ev": "p0212",
+"ev_ad": "Gövde orta bandı sol"
+},
+{
+"id": "p0283",
+"ad": "Isıl gömme somun M3 (gövde y1005 yan)",
+"modul": "kabuk",
+"eski_kod": "F3",
+"eski_adim": 35,
+"kod": "F2",
+"adim": 34,
+"ev": "p0211",
+"ev_ad": "Gövde orta bandı sağ"
+},
+{
+"id": "p0285",
+"ad": "Isıl gömme somun M3 (gövde y1005 yan)",
+"modul": "kabuk",
+"eski_kod": "F3",
+"eski_adim": 35,
+"kod": "F2",
+"adim": 34,
+"ev": "p0212",
+"ev_ad": "Gövde orta bandı sol"
+},
+{
+"id": "p0287",
+"ad": "Isıl gömme somun M3 (gövde y1198 arka)",
+"modul": "kabuk",
+"eski_kod": "F4",
+"eski_adim": 36,
+"kod": "F3",
+"adim": 35,
+"ev": "p0213",
+"ev_ad": "Göğüs bandı sağ"
+},
+{
+"id": "p0289",
+"ad": "Isıl gömme somun M3 (gövde y1198 arka)",
+"modul": "kabuk",
+"eski_kod": "F4",
+"eski_adim": 36,
+"kod": "F3",
+"adim": 35,
+"ev": "p0213",
+"ev_ad": "Göğüs bandı sağ"
+},
+{
+"id": "p0291",
+"ad": "Isıl gömme somun M3 (gövde y1198 arka)",
+"modul": "kabuk",
+"eski_kod": "F4",
+"eski_adim": 36,
+"kod": "F3",
+"adim": 35,
+"ev": "p0214",
+"ev_ad": "Göğüs bandı sol"
+},
+{
+"id": "p0293",
+"ad": "Isıl gömme somun M3 (gövde y1198 arka)",
+"modul": "kabuk",
+"eski_kod": "F4",
+"eski_adim": 36,
+"kod": "F3",
+"adim": 35,
+"ev": "p0214",
+"ev_ad": "Göğüs bandı sol"
+},
+{
+"id": "p0295",
+"ad": "Isıl gömme somun M3 (gövde y1198 ön)",
+"modul": "kabuk",
+"eski_kod": "F4",
+"eski_adim": 36,
+"kod": "F3",
+"adim": 35,
+"ev": "p0213",
+"ev_ad": "Göğüs bandı sağ"
+},
+{
+"id": "p0297",
+"ad": "Isıl gömme somun M3 (gövde y1198 ön)",
+"modul": "kabuk",
+"eski_kod": "F4",
+"eski_adim": 36,
+"kod": "F3",
+"adim": 35,
+"ev": "p0214",
+"ev_ad": "Göğüs bandı sol"
+},
+{
+"id": "p0335",
+"ad": "Isıl gömme somun M3 (arka kapak)",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F2",
+"adim": 34,
+"ev": "p0212",
+"ev_ad": "Gövde orta bandı sol"
+},
+{
+"id": "p0337",
+"ad": "Isıl gömme somun M3 (arka kapak)",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F2",
+"adim": 34,
+"ev": "p0211",
+"ev_ad": "Gövde orta bandı sağ"
+},
+{
+"id": "p0339",
+"ad": "Isıl gömme somun M3 (arka kapak)",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F2",
+"adim": 34,
+"ev": "p0211",
+"ev_ad": "Gövde orta bandı sağ"
+},
+{
+"id": "p0341",
+"ad": "Isıl gömme somun M3 (arka kapak)",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F2",
+"adim": 34,
+"ev": "p0211",
+"ev_ad": "Gövde orta bandı sağ"
+},
+{
+"id": "p0343",
+"ad": "Isıl gömme somun M3 (arka kapak)",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F2",
+"adim": 34,
+"ev": "p0211",
+"ev_ad": "Gövde orta bandı sağ"
+},
+{
+"id": "p0345",
+"ad": "Isıl gömme somun M3 (arka kapak)",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F2",
+"adim": 34,
+"ev": "p0212",
+"ev_ad": "Gövde orta bandı sol"
+},
+{
+"id": "p0347",
+"ad": "Isıl gömme somun M3 (arka kapak)",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F2",
+"adim": 34,
+"ev": "p0212",
+"ev_ad": "Gövde orta bandı sol"
+},
+{
+"id": "p0349",
+"ad": "Isıl gömme somun M3 (üst arka kapak)",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F3",
+"adim": 35,
+"ev": "p0214",
+"ev_ad": "Göğüs bandı sol"
+},
+{
+"id": "p0351",
+"ad": "Isıl gömme somun M3 (üst arka kapak)",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F3",
+"adim": 35,
+"ev": "p0213",
+"ev_ad": "Göğüs bandı sağ"
+},
+{
+"id": "p0353",
+"ad": "Isıl gömme somun M3 (üst arka kapak)",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F3",
+"adim": 35,
+"ev": "p0213",
+"ev_ad": "Göğüs bandı sağ"
+},
+{
+"id": "p0355",
+"ad": "Isıl gömme somun M3 (üst arka kapak)",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F3",
+"adim": 35,
+"ev": "p0213",
+"ev_ad": "Göğüs bandı sağ"
+},
+{
+"id": "p0357",
+"ad": "Isıl gömme somun M3 (üst arka kapak)",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F3",
+"adim": 35,
+"ev": "p0213",
+"ev_ad": "Göğüs bandı sağ"
+},
+{
+"id": "p0359",
+"ad": "Isıl gömme somun M3 (üst arka kapak)",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F3",
+"adim": 35,
+"ev": "p0214",
+"ev_ad": "Göğüs bandı sol"
+},
+{
+"id": "p0361",
+"ad": "Isıl gömme somun M3 (üst arka kapak)",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F3",
+"adim": 35,
+"ev": "p0214",
+"ev_ad": "Göğüs bandı sol"
+},
+{
+"id": "p0446",
+"ad": "Isıl gömme somun M3 (Etek servis kapağı H1 (sigorta kutusu))",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F1",
+"adim": 33,
+"ev": "p0220",
+"ev_ad": "Etek arka sol"
+},
+{
+"id": "p0448",
+"ad": "Isıl gömme somun M3 (Etek servis kapağı H1 (sigorta kutusu))",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F1",
+"adim": 33,
+"ev": "p0220",
+"ev_ad": "Etek arka sol"
+},
+{
+"id": "p0450",
+"ad": "Isıl gömme somun M3 (Etek servis kapağı H1 (sigorta kutusu))",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F1",
+"adim": 33,
+"ev": "p0219",
+"ev_ad": "Etek arka sağ"
+},
+{
+"id": "p0452",
+"ad": "Isıl gömme somun M3 (Etek servis kapağı H1 (sigorta kutusu))",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F1",
+"adim": 33,
+"ev": "p0219",
+"ev_ad": "Etek arka sağ"
+},
+{
+"id": "p0454",
+"ad": "Isıl gömme somun M3 (Etek servis kapağı H2 (ana sigorta))",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F1",
+"adim": 33,
+"ev": "p0219",
+"ev_ad": "Etek arka sağ"
+},
+{
+"id": "p0456",
+"ad": "Isıl gömme somun M3 (Etek servis kapağı H2 (ana sigorta))",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F1",
+"adim": 33,
+"ev": "p0219",
+"ev_ad": "Etek arka sağ"
+},
+{
+"id": "p0458",
+"ad": "Isıl gömme somun M3 (Etek servis kapağı H2 (ana sigorta))",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F1",
+"adim": 33,
+"ev": "p0219",
+"ev_ad": "Etek arka sağ"
+},
+{
+"id": "p0460",
+"ad": "Isıl gömme somun M3 (Etek servis kapağı H2 (ana sigorta))",
+"modul": "kabuk",
+"eski_kod": "F5",
+"eski_adim": 49,
+"kod": "F1",
+"adim": 33,
+"ev": "p0219",
+"ev_ad": "Etek arka sağ"
+},
+{
+"id": "p0462",
+"ad": "Isıl gömme somun M3 (S1 kaseti sağ ψ 200)",
+"modul": "kabuk",
+"eski_kod": "G4",
+"eski_adim": 41,
+"kod": "F4",
+"adim": 36,
+"ev": "p0215",
+"ev_ad": "Omuz bandı sağ"
+},
+{
+"id": "p0464",
+"ad": "Isıl gömme somun M3 (S1 kaseti sağ ψ 226)",
+"modul": "kabuk",
+"eski_kod": "G4",
+"eski_adim": 41,
+"kod": "F4",
+"adim": 36,
+"ev": "p0215",
+"ev_ad": "Omuz bandı sağ"
+},
+{
+"id": "p0466",
+"ad": "Isıl gömme somun M3 (S1 kaseti sol ψ 200)",
+"modul": "kabuk",
+"eski_kod": "G4",
+"eski_adim": 41,
+"kod": "F4",
+"adim": 36,
+"ev": "p0216",
+"ev_ad": "Omuz bandı sol"
+},
+{
+"id": "p0468",
+"ad": "Isıl gömme somun M3 (S1 kaseti sol ψ 226)",
+"modul": "kabuk",
+"eski_kod": "G4",
+"eski_adim": 41,
+"kod": "F4",
+"adim": 36,
+"ev": "p0216",
+"ev_ad": "Omuz bandı sol"
+},
+{
+"id": "p0586",
+"ad": "Isıl gömme somun M5 (ön kolda)",
+"modul": "dirsek_sag",
+"eski_kod": "H0c",
+"eski_adim": 44,
+"kod": "H0a",
+"adim": 42,
+"ev": "p0582",
+"ev_ad": "Ön kol gövdesi"
+},
+{
+"id": "p0615",
+"ad": "Isıl gömme somun M3 (flanşta)",
+"modul": "dirsek_sag",
+"eski_kod": "H0f",
+"eski_adim": 47,
+"kod": "H0e",
+"adim": 46,
+"ev": "p0609",
+"ev_ad": "Bilek flanşı"
+},
+{
+"id": "p0617",
+"ad": "Isıl gömme somun M3 (flanşta)",
+"modul": "dirsek_sag",
+"eski_kod": "H0f",
+"eski_adim": 47,
+"kod": "H0e",
+"adim": 46,
+"ev": "p0609",
+"ev_ad": "Bilek flanşı"
+},
+{
+"id": "p0643",
+"ad": "Isıl gömme somun M5 (ön kolda)",
+"modul": "dirsek_sol",
+"eski_kod": "H0c",
+"eski_adim": 44,
+"kod": "H0a",
+"adim": 42,
+"ev": "p0639",
+"ev_ad": "Ön kol gövdesi"
+},
+{
+"id": "p0672",
+"ad": "Isıl gömme somun M3 (flanşta)",
+"modul": "dirsek_sol",
+"eski_kod": "H0f",
+"eski_adim": 47,
+"kod": "H0e",
+"adim": 46,
+"ev": "p0666",
+"ev_ad": "Bilek flanşı"
+},
+{
+"id": "p0674",
+"ad": "Isıl gömme somun M3 (flanşta)",
+"modul": "dirsek_sol",
+"eski_kod": "H0f",
+"eski_adim": 47,
+"kod": "H0e",
+"adim": 46,
+"ev": "p0666",
+"ev_ad": "Bilek flanşı"
+},
+{
+"id": "p0719",
+"ad": "Isıl gömme somun M3 (mil flanşı)",
+"modul": "kafa",
+"eski_kod": "E2c",
+"eski_adim": 27,
+"kod": "E2b",
+"adim": 26,
+"ev": "p0711",
+"ev_ad": "Boyun mili"
+},
+{
+"id": "p0720",
+"ad": "Isıl gömme somun M3 (mil flanşı)",
+"modul": "kafa",
+"eski_kod": "E2c",
+"eski_adim": 27,
+"kod": "E2b",
+"adim": 26,
+"ev": "p0711",
+"ev_ad": "Boyun mili"
+},
+{
+"id": "p0721",
+"ad": "Isıl gömme somun M3 (mil flanşı)",
+"modul": "kafa",
+"eski_kod": "E2c",
+"eski_adim": 27,
+"kod": "E2b",
+"adim": 26,
+"ev": "p0711",
+"ev_ad": "Boyun mili"
+},
+{
+"id": "p0722",
+"ad": "Isıl gömme somun M3 (mil flanşı)",
+"modul": "kafa",
+"eski_kod": "E2c",
+"eski_adim": 27,
+"kod": "E2b",
+"adim": 26,
+"ev": "p0711",
+"ev_ad": "Boyun mili"
+},
+{
+"id": "p0736",
+"ad": "Isıl gömme somun M5 (çatal)",
+"modul": "kafa",
+"eski_kod": "E2",
+"eski_adim": 28,
+"kod": "E2c",
+"adim": 27,
+"ev": "p0718",
+"ev_ad": "Eğme çatalı"
+}
+],
+"skor": {
+"p0081": 24,
+"p0083": 24,
+"p0085": 24,
+"p0087": 24,
+"p0098": 24,
+"p0100": 24,
+"p0102": 24,
+"p0115": 24,
+"p0128": 24,
+"p0130": 24,
+"p0154": 24,
+"p0156": 24,
+"p0158": 24,
+"p0160": 24,
+"p0171": 24,
+"p0173": 24,
+"p0175": 24,
+"p0188": 24,
+"p0201": 24,
+"p0203": 24,
+"p0239": 24,
+"p0241": 24,
+"p0243": 24,
+"p0245": 24,
+"p0247": 24,
+"p0249": 24,
+"p0251": 24,
+"p0253": 24,
+"p0255": 24,
+"p0257": 24,
+"p0259": 24,
+"p0261": 24,
+"p0263": 24,
+"p0265": 24,
+"p0267": 24,
+"p0269": 24,
+"p0271": 24,
+"p0273": 24,
+"p0275": 24,
+"p0277": 24,
+"p0279": 24,
+"p0281": 24,
+"p0283": 24,
+"p0285": 24,
+"p0287": 24,
+"p0289": 24,
+"p0291": 24,
+"p0293": 24,
+"p0295": 24,
+"p0297": 24,
+"p0299": 24,
+"p0301": 24,
+"p0303": 24,
+"p0305": 24,
+"p0307": 24,
+"p0309": 24,
+"p0311": 24,
+"p0313": 24,
+"p0315": 24,
+"p0317": 24,
+"p0319": 24,
+"p0321": 24,
+"p0323": 24,
+"p0325": 24,
+"p0327": 24,
+"p0329": 24,
+"p0331": 24,
+"p0333": 24,
+"p0335": 24,
+"p0337": 24,
+"p0339": 24,
+"p0341": 24,
+"p0343": 24,
+"p0345": 24,
+"p0347": 24,
+"p0349": 24,
+"p0351": 24,
+"p0353": 24,
+"p0355": 24,
+"p0357": 24,
+"p0359": 24,
+"p0361": 24,
+"p0363": 24,
+"p0365": 24,
+"p0367": 24,
+"p0369": 24,
+"p0371": 24,
+"p0373": 24,
+"p0375": 24,
+"p0377": 24,
+"p0379": 24,
+"p0381": 24,
+"p0383": 24,
+"p0385": 24,
+"p0387": 24,
+"p0389": 24,
+"p0391": 24,
+"p0393": 24,
+"p0395": 24,
+"p0397": 24,
+"p0399": 24,
+"p0401": 24,
+"p0403": 24,
+"p0405": 24,
+"p0408": 24,
+"p0410": 24,
+"p0412": 24,
+"p0414": 24,
+"p0416": 24,
+"p0418": 24,
+"p0420": 24,
+"p0422": 24,
+"p0439": 24,
+"p0441": 24,
+"p0446": 24,
+"p0448": 24,
+"p0450": 24,
+"p0452": 24,
+"p0454": 24,
+"p0456": 24,
+"p0458": 24,
+"p0460": 24,
+"p0462": 24,
+"p0464": 24,
+"p0466": 24,
+"p0468": 24,
+"p0586": 24,
+"p0615": 24,
+"p0617": 24,
+"p0643": 24,
+"p0672": 24,
+"p0674": 24,
+"p0685": 24,
+"p0688": 24,
+"p0691": 24,
+"p0694": 24,
+"p0702": 24,
+"p0704": 24,
+"p0706": 24,
+"p0708": 24,
+"p0719": 24,
+"p0720": 24,
+"p0721": 24,
+"p0722": 24,
+"p0736": 24,
+"p0756": 24,
+"p0758": 24,
+"p0760": 24,
+"p0762": 24,
+"p0763": 24,
+"p0765": 24,
+"p0767": 24,
+"p0769": 24,
+"p0771": 24,
+"p0773": 24,
+"p0775": 24,
+"p0777": 24,
+"p0779": 24,
+"p0785": 24,
+"p0789": 24,
+"p0793": 24,
+"p0797": 24,
+"p0976": 24,
+"p0978": 24
+}
+},
 "adimlar": [
 {
 "i": 0,
@@ -1700,7 +2524,7 @@
 "Kartlar takılmadan tezgâhta (bu adımdan önce): XL4016 A / B 6 V, çevre 5 V'a ayarlandı; akım sınırlı tezgâh kaynağıyla 12 V giriş, yüksüz, çıkış ölçülerek (K1 kontrolü). PC817 ölçümü de arayüz kartı takılmadan tezgâhta (B6a). Takıldıktan sonra ayar vidasına erişim ölçülmedi; bu sıra kaynakta yok, doğrulanmadı"
 ],
 "kablo": [
-"Alt kat klemensleri bu adımda bağlanır, üstü açıkken: iki BTS7960B'nin güç girişi ve motor çıkışı (motor uçları B2b'de plaka üstüne alındı), XL4016 A / B / çevre'nin giriş ve çıkışı. Güç paneli ve elektronik katı gelince (B5, B6) bu klemenslere el dar kalır: kart üstünden kata 69 mm, yanda 40–150 mm (K1 erişim notu). Akü ayrık",
+"Alt kat klemensleri bu adımda bağlanır, üstü açıkken: iki BTS7960B'nin güç girişi ve motor çıkışı (motor uçları B2b'de plaka üstüne alındı), üç XL4016 kartının (A, B, çevre) giriş ve çıkışı. Güç paneli ve elektronik katı gelince (B5, B6) bu klemenslere el dar kalır: kart üstünden kata 69 mm, yanda 40–150 mm (K1 erişim notu). Akü ayrık",
 "Öbür ucu henüz yerinde olmayan hat (bara, sigorta kutusu, hat sigortası; K1'de bağlanır): iki ucundan etiketle (kart, klemens, hat adı), K1'deki yerine yetecek boyda bırak, ucu bantla; hatları kablo bağıyla demetleyip plaka üstünde topla, kat burçlarının (B4) ve kart üstlerinin yolunu kapatmasın. Bu sıra ve toplama yeri kaynakta yok, doğrulanmadı",
 "Akü kayışlarının tokası yanda, kablo yolunun üstünde değil"
 ],
@@ -2787,6 +3611,22 @@
 "p0142"
 ],
 "onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 8,
+"m6": 0,
+"ids": [
+"p0081",
+"p0083",
+"p0085",
+"p0087",
+"p0154",
+"p0156",
+"p0158",
+"p0160"
+],
+"onceden": true
 }
 ],
 "kontrol": [
@@ -2797,7 +3637,7 @@
 "not_": [],
 "kamera": null,
 "m6": [],
-"sure_dk": 20,
+"sure_dk": 23,
 "sure_tahmini": true,
 "kablolama": false
 },
@@ -2855,22 +3695,6 @@
 "p0159"
 ],
 "onceden": false
-},
-{
-"kod": "M3 ısıl gömme somun",
-"adet": 8,
-"m6": 0,
-"ids": [
-"p0081",
-"p0083",
-"p0085",
-"p0087",
-"p0154",
-"p0156",
-"p0158",
-"p0160"
-],
-"onceden": true
 }
 ],
 "kontrol": [
@@ -2881,7 +3705,7 @@
 "not_": [],
 "kamera": null,
 "m6": [],
-"sure_dk": 19,
+"sure_dk": 16,
 "sure_tahmini": true,
 "kablolama": false
 },
@@ -2903,21 +3727,39 @@
 "tur": "Satin",
 "malzeme": "Alüminyum",
 "r": "satin",
-"adet": 2,
+"adet": 1,
 "ids": [
-"p0088",
+"p0088"
+],
+"ad": "S1 horn 25T alüminyum disk sağ"
+},
+{
+"kod": "25T alüminyum disk horn",
+"tur": "Satin",
+"malzeme": "Alüminyum",
+"r": "satin",
+"adet": 1,
+"ids": [
 "p0161"
 ],
-"ad": "S1 horn 25T alüminyum disk (sağ + sol)"
+"ad": "S1 horn 25T alüminyum disk sol"
 }
 ],
 "baglantilar": [
 {
 "kod": "M3x5 horn vidası (servo ile)",
-"adet": 2,
+"adet": 1,
 "m6": 0,
 "ids": [
-"p0089",
+"p0089"
+],
+"onceden": false
+},
+{
+"kod": "M3x5 horn vidası (servo ile)",
+"adet": 1,
+"m6": 0,
+"ids": [
 "p0162"
 ],
 "onceden": false
@@ -2932,7 +3774,58 @@
 "m6": [],
 "sure_dk": 9,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"sira": [
+"p:0",
+"b:0",
+"p:1",
+"b:1"
+],
+"sira_grup": [
+{
+"ad": "Sağ omuz: horn + merkez vidası",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:0",
+"b:0"
+],
+"is_": "Sağ omuz: hornu S1 milinin dişlisine rulman kapağının deliğinden geçir, merkez vidası M3×5 (PH1).",
+"kamera": [
+1.0,
+0.35,
+0.45
+],
+"saydam": [
+"p0078",
+"p0079",
+"p0151",
+"p0152"
+]
+},
+{
+"ad": "Sol omuz: horn + merkez vidası",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:1",
+"b:1"
+],
+"is_": "Sol omuz: aynı iş, aynalı.",
+"kamera": [
+-1.0,
+0.35,
+0.45
+],
+"saydam": [
+"p0078",
+"p0079",
+"p0151",
+"p0152"
+]
+}
+],
+"alt": 2
 },
 {
 "i": 22,
@@ -2940,7 +3833,7 @@
 "no": "22",
 "faz": "Omuzlar",
 "baslik": "Omuz gövdesi → travers",
-"is_": "Çekiç somunları kanala al, omuz gövdesini travers ucundan kaydırarak sok, cıvataları sık. İki omuz da aynı.",
+"is_": "Çekiç somunları kanala al, omuz gövdesini travers ucuna oturt (giriş yolu ölçülmedi), cıvataları sık. İki omuz da aynı.",
 "baglanti_md": "Omuz başına 4 × M6×16 + 4 çekiç somun",
 "alet": "alyan 5",
 "erisim": "Omuz başına düz 3, L 1 (alttaki 141 mm). Servis: üst cıvata kabuk üst kapağındaki Ø14 delikten, L 85 mm",
@@ -3252,11 +4145,24 @@
 ],
 "kablo": [],
 "not_": [],
-"kamera": null,
+"kamera": [
+0.35,
+1.0,
+0.45
+],
 "m6": [],
 "sure_dk": 7,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"saydam": [
+"p0677",
+"p0678",
+"p0679",
+"p0701",
+"p0703",
+"p0705",
+"p0707"
+]
 },
 {
 "i": 26,
@@ -3317,6 +4223,18 @@
 "p0715"
 ],
 "onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 4,
+"m6": 0,
+"ids": [
+"p0719",
+"p0720",
+"p0721",
+"p0722"
+],
+"onceden": true
 }
 ],
 "kontrol": [
@@ -3328,7 +4246,7 @@
 "not_": [],
 "kamera": null,
 "m6": [],
-"sure_dk": 11,
+"sure_dk": 13,
 "sure_tahmini": true,
 "kablolama": false
 },
@@ -3370,14 +4288,11 @@
 ],
 "baglantilar": [
 {
-"kod": "M3 ısıl gömme somun",
-"adet": 4,
+"kod": "M5 ısıl gömme somun",
+"adet": 1,
 "m6": 0,
 "ids": [
-"p0719",
-"p0720",
-"p0721",
-"p0722"
+"p0736"
 ],
 "onceden": true
 },
@@ -3428,7 +4343,7 @@
 "not_": [],
 "kamera": null,
 "m6": [],
-"sure_dk": 11,
+"sure_dk": 10,
 "sure_tahmini": true,
 "kablolama": false
 },
@@ -3440,7 +4355,7 @@
 "baslik": "Tilt servosu",
 "is_": "1. Tilt servosunu +X'ten çatalın U kulak plakasına cıvatala (4 × M4×16 + kontra somun).\n2. Tilt hornunu (25T alüminyum disk) servo orta konumdayken servo miline geçir. Merkez vidasını şimdi takma: kafa E3'te horna indikten sonra sağ yanağın orta deliğinden takılır (vida burada takılırsa inen kafa iskeleti vida başına takılıyor, ölçüldü). Orta komutun nasıl verileceği kaynakta yok (doğrulanmadı); kalan ofset yazılımda düzeltilir (Y2).\n625ZZ ve M5 pim bu adımda yok: 625ZZ E3a'da kafanın sol yanağına, pim + pul E3'te (`tasarim/freecad/kafa/kafa_rapor.py` montaj sırası).",
 "baglanti_md": "4 × M4×16 + 4 kontra somun; horn milde, merkez vidası E3'te",
-"alet": "alyan 3 / 4 + 7 mm",
+"alet": "alyan 3, 7 mm anahtar (kontra somun)",
 "erisim": "Düz. Kontra somunların 2'si cepte, 2'si açık ağızla (Y3 C3)",
 "tezgah": null,
 "baglanir": null,
@@ -3503,15 +4418,6 @@
 "p0732"
 ],
 "onceden": false
-},
-{
-"kod": "M5 ısıl gömme somun",
-"adet": 1,
-"m6": 0,
-"ids": [
-"p0736"
-],
-"onceden": true
 }
 ],
 "kontrol": [
@@ -3534,7 +4440,7 @@
 "baslik": "Tezgâh: kafa içi (Pi 5, 5 V çeviriciler)",
 "is_": "Kafa iskeletinin (tabla + yanaklar) üstüne, tezgâhta:\n1. Pi 5'i 4 pirinç burca tak: burç alttan M2,5×8, Pi üstten M2,5×5. Kablo kenarı öne: micro HDMI 0 kafa ekranına, micro HDMI 1 göğüs ekranına, CSI kameraya gidecek.\n2. Tablaya 1 mm köpük bant + kablo bağıyla: Pololu D24V50F5 (Pi'nin 5 V'u) ve SY8205 (kafa ekranının ayrı 5 V hattı). Her iki 5 V çıkışına bir P6KE6V8A TVS: SY8205 → QLED hattındaki modelde var, D24V50F5 → Pi hattındaki modelde ve BOM'da yok (ikinci TVS'i ayrıca al). TVS tek yönlü: katot (çizgili uç) +5 V'a, anot GND'ye.\n3. 625ZZ rulmanını sol yanağın yuvasına pres et (tek parça; modelde iç ve dış bilezik ayrı çizili). Tilt hornu bu adımda yok: E2'de servoya takıldı, kafa E3'te ona iner (`tasarim/freecad/kafa/kafa_rapor.py` montaj sırası).\nKafa ekranı (10,1\" QLED), tırnaklar, kamera, ReSpeaker, USB ses kartı ve PAM8403 bu adımda takılmaz: kabuklarla birlikte E4'te.",
 "baglanti_md": "Pi: 4 × M2,5×8 pirinç burç + 4 × M2,5×5 (üst) + 4 × M2,5×8 DIN 912 (alt); D24V50F5, SY8205, TVS: 1 mm çift taraflı köpük bant + kablo bağı; 625ZZ pres geçme. M6'daki LCD 4 × M3×6 ve kamera 4 × M2×8 PT bu adımda yok (QLED tırnaklı, kamera E4'te)",
-"alet": "alyan 2, PH1, yan keski",
+"alet": "alyan 2, yan keski",
 "erisim": "düz",
 "tezgah": "kafa",
 "baglanir": 30,
@@ -3697,7 +4603,7 @@
 "no": "30",
 "faz": "Kafa",
 "baslik": "Kafa → tilt hornu",
-"is_": "Kabuklardan önce: sonra cıvatalar kafa içinde kalır. Sıra `tasarim/freecad/kafa/kafa_rapor.py` montaj tarifinden.\n1. Kafa alt montajını yukarıdan indir: yanaklar eğme çatalının iki yanından geçer; sol yanaktaki 625ZZ'nin iç bileziği çatal dayamasına, sağ yanak hornun dış yüzüne oturur. Kafa düz yukarıdan (ya da önden / arkadan kaydırarak) girer; horn kafadaysa ya da 625ZZ / pim E2'de takılıysa yukarıdan girmez (giriş yolu ölçümü, sıra denetimi).\n2. Horn merkez vidası M3×5: sağ yanağın orta deliğinden, PH1.\n3. Sağ yanağı horna 4 × M3×8 ile cıvatala.\n4. Pulu M5×12 pime geçir; pimi sol yanağın deliğinden 625ZZ'nin iç bileziğinden geçirip çataldaki M5 ısıl gömmeye sık, alyan 4. 2 ile 3'ün sırası kaynakta yok (montaj mantığından).",
+"is_": "Kabuklardan önce: sonra cıvatalar kafa içinde kalır. Sıra `tasarim/freecad/kafa/kafa_rapor.py` montaj tarifinden.\n1. Kafa alt montajını yukarıdan indir: yanaklar eğme çatalının iki yanından geçer; sol yanaktaki 625ZZ'nin iç bileziği çatal dayamasına, sağ yanak hornun dış yüzüne oturur. Kafa düz yukarıdan girer (giriş yolu ölçümü: +y serbest; düz önden +z ve düz arkadan −z de serbest, çapraz ya da kaydırmalı yol ölçülmedi); horn kafadaysa yukarıdan girmez (giriş yolu ölçümü, sıra denetimi; ölçülen durum: horn kafada, 625ZZ iç bileziği, pim ve pul E2'de).\n2. Horn merkez vidası M3×5: sağ yanağın orta deliğinden, PH1.\n3. Sağ yanağı horna 4 × M3×8 ile cıvatala.\n4. Pulu M5×12 pime geçir; pimi sol yanağın deliğinden 625ZZ'nin iç bileziğinden geçirip çataldaki M5 ısıl gömmeye sık, alyan 4. 2 ile 3'ün sırası kaynakta yok (montaj mantığından).",
 "baglanti_md": "4 × M3×8 yanak–horn; 1 × M3×5 horn merkez vidası (servo ile); 1 × M5×12 + DIN 125 pul (pim)",
 "alet": "alyan 2,5 ve 4, PH1",
 "erisim": "Kafa düz yukarıdan iner (giriş yolu ölçümü). Pim sol yanak dışından düz alyan 4 ile (alet yolu 130 mm boş), horn vidası sağ yanak deliğinden PH1 ile (80 mm boş), yanak-horn cıvataları düz (sıra denetimi, 20 mm el)",
@@ -3768,21 +4674,24 @@
 "sira_grup": [
 {
 "ad": "Horn merkez vidası",
-"tezgah": false,
+"tezgah": "",
+"bag": "",
 "satir": [
 "b:0"
 ]
 },
 {
 "ad": "Yanak → horn cıvataları",
-"tezgah": false,
+"tezgah": "",
+"bag": "",
 "satir": [
 "b:1"
 ]
 },
 {
 "ad": "Pul + pim (sol yanak)",
-"tezgah": false,
+"tezgah": "",
+"bag": "",
 "satir": [
 "b:2",
 "b:3"
@@ -3883,6 +4792,17 @@
 "ad": "Yüz kabuğu (ön) (sağ + sol)"
 },
 {
+"kod": "Raspberry Pi Camera Module 3",
+"tur": "Satin",
+"malzeme": "-",
+"r": "satin",
+"adet": 1,
+"ids": [
+"p0798"
+],
+"ad": "Kamera Raspberry Pi Camera Module 3"
+},
+{
 "kod": "WaveShare 10.1HP-CAPQLED 10,1\" QLED 1280x720 HDMI kapasitif (kod 20789)",
 "tur": "Satin",
 "malzeme": "-",
@@ -3892,18 +4812,6 @@
 "p0781"
 ],
 "ad": "Yüz ekranı WaveShare 10,1\" QLED HDMI"
-},
-{
-"kod": "Ekran tırnağı (PETG baskı)",
-"tur": "Baski",
-"malzeme": "PETG",
-"r": "baski",
-"adet": 2,
-"ids": [
-"p0782",
-"p0786"
-],
-"ad": "Ekran tırnağı üst (sağ + sol)"
 },
 {
 "kod": "Çift taraflı köpük bant 1 mm (VHB)",
@@ -3926,24 +4834,40 @@
 "r": "baski",
 "adet": 2,
 "ids": [
+"p0782",
+"p0786"
+],
+"ad": "Ekran tırnağı üst (sağ + sol)"
+},
+{
+"kod": "Ekran tırnağı (PETG baskı)",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
+"adet": 2,
+"ids": [
 "p0790",
 "p0794"
 ],
 "ad": "Ekran tırnağı alt (sağ + sol)"
-},
-{
-"kod": "Raspberry Pi Camera Module 3",
-"tur": "Satin",
-"malzeme": "-",
-"r": "satin",
-"adet": 1,
-"ids": [
-"p0798"
-],
-"ad": "Kamera Raspberry Pi Camera Module 3"
 }
 ],
 "baglantilar": [
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 7,
+"m6": 0,
+"ids": [
+"p0756",
+"p0758",
+"p0767",
+"p0769",
+"p0771",
+"p0773",
+"p0775"
+],
+"onceden": true
+},
 {
 "kod": "M2x8 PT vida (plastik için)",
 "adet": 3,
@@ -3954,6 +4878,18 @@
 "p0829"
 ],
 "onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 4,
+"m6": 0,
+"ids": [
+"p0760",
+"p0762",
+"p0777",
+"p0779"
+],
+"onceden": true
 },
 {
 "kod": "M3x10 DIN 912",
@@ -3969,33 +4905,11 @@
 },
 {
 "kod": "M3 ısıl gömme somun",
-"adet": 4,
+"adet": 6,
 "m6": 0,
 "ids": [
-"p0756",
-"p0758",
-"p0760",
-"p0762"
-],
-"onceden": true
-},
-{
-"kod": "M3x6 ISO 7380",
-"adet": 4,
-"m6": 0,
-"ids": [
-"p0784",
-"p0788",
-"p0792",
-"p0796"
-],
-"onceden": false
-},
-{
-"kod": "M3 ısıl gömme somun",
-"adet": 4,
-"m6": 0,
-"ids": [
+"p0763",
+"p0765",
 "p0785",
 "p0789",
 "p0793",
@@ -4016,21 +4930,16 @@
 "onceden": false
 },
 {
-"kod": "M3 ısıl gömme somun",
-"adet": 9,
+"kod": "M3x6 ISO 7380",
+"adet": 4,
 "m6": 0,
 "ids": [
-"p0763",
-"p0765",
-"p0767",
-"p0769",
-"p0771",
-"p0773",
-"p0775",
-"p0777",
-"p0779"
+"p0784",
+"p0788",
+"p0792",
+"p0796"
 ],
-"onceden": true
+"onceden": false
 },
 {
 "kod": "M3x5 ISO 7380",
@@ -4086,21 +4995,21 @@
 "p:0",
 "p:1",
 "b:0",
+"b:1",
 "p:2",
 "p:3",
 "p:4",
 "p:5",
-"b:1",
 "b:2",
+"b:3",
 "p:6",
 "p:7",
+"b:4",
+"b:5",
 "p:8",
 "p:9",
 "p:10",
 "p:11",
-"b:3",
-"b:4",
-"b:5",
 "b:6",
 "b:7",
 "b:8"
@@ -4108,56 +5017,220 @@
 "sira_grup": [
 {
 "ad": "Masada: sağ arka kabuk + ReSpeaker",
-"tezgah": true,
+"tezgah": "arka_sag",
+"bag": "",
 "satir": [
 "p:0",
 "p:1",
-"b:0"
+"b:0",
+"b:1"
+],
+"is_": "Masada, sağ arka kabuk: ReSpeaker Mic Array v2.0'ı kabuğun tavanındaki boss'lara alttan 3 × M2×8 PT ile vidala (kabuk kafadayken tavan vidalarına el ulaşmaz).",
+"kamera": [
+0.55,
+-0.75,
+1.0
+],
+"saydam": [
+"p0752"
+]
+},
+{
+"ad": "Sağ arka kabuk → kafa",
+"tezgah": "",
+"bag": "arka_sag",
+"satir": [],
+"is_": "Kabuğu kafanın arkasında tut, ReSpeaker kablosunu kafanın açık ön tarafından Pi USB 1'e tak. Sonra sağ kabuğu arkadan (−z) yerine koy: dikey dikişte sağ kabuğun bindirmesi solun altında kalır; sol önce takılırsa sağ hiçbir düz yönden girmiyor (giriş yolu ölçümü).",
+"kamera": "arka",
+"ub": [
+0.0,
+0.0,
+-1.0
+],
+"sema": [
+6
 ]
 },
 {
 "ad": "Masada: sol arka kabuk + USB ses kartı, PAM8403",
-"tezgah": true,
+"tezgah": "arka_sol",
+"bag": "",
 "satir": [
 "p:2",
 "p:3",
 "p:4",
-"p:5"
+"p:5",
+"b:2"
+],
+"is_": "Masada, sol arka kabuk: USB ses kartı ve PAM8403'ü yan duvarın iç yüzüne köpük bant + kablo bağıyla tut.",
+"kamera": [
+-0.85,
+0.62,
+1.25
+],
+"saydam": [
+"p0753",
+"p0822",
+"p0823",
+"p0824",
+"p0825"
+],
+"gizli_ok": {
+"Köpük bant (USB ses": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil",
+"Köpük bant (PAM": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
+}
+},
+{
+"ad": "Sol arka kabuk → kafa",
+"tezgah": "",
+"bag": "arka_sol",
+"satir": [],
+"is_": "Kabloları kafanın açık ön tarafından tak: ses kartı → Pi USB 2 (uzatma + L dirsek), ses kartı L 3,5 mm → PAM girişi, PAM 5 V → D24V50F5 (varsayım, K10). Sonra sol kabuğu arkadan yerine koy (giriş yolu ölçümü).",
+"kamera": [
+-0.85,
+0.62,
+-1.25
+],
+"ub": [
+0.0,
+0.0,
+-1.0
+],
+"sema": [
+7,
+8,
+9
 ]
 },
 {
 "ad": "Tabla → arka kabuk rafı cıvataları",
-"tezgah": false,
+"tezgah": "",
+"bag": "",
 "satir": [
-"b:1",
-"b:2"
-]
+"b:3"
+],
+"is_": "Tabla → arka kabuk rafı 4 × M3×10: yüz tarafı açıkken önden, L alyanla (sıra denetimi: yüz kabuğu önce takılırsa alete yer kalır ama el kafanın dışından ulaşmaz).",
+"kamera": [
+0.3,
+1.0,
+0.35
+],
+"saydam": [
+"p0752",
+"p0753"
+],
+"gizli_ok": {
+"Tabla cıvatası M3x10 (sağ z-75)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
+}
 },
 {
-"ad": "Masada: yüz kabuğu + kamera + QLED ve tırnaklar",
-"tezgah": true,
+"ad": "Masada: yüz kabuğu + kamera",
+"tezgah": "yuz",
+"bag": "",
 "satir": [
 "p:6",
 "p:7",
-"p:8",
+"b:4",
+"b:5"
+],
+"is_": "Masada, yüz kabuğu sağ + sol: kamerayı (Camera Module 3) ön duvarın içindeki boss'lara 4 × M2×8 PT ile vidala; lens ekranın üstündeki Ø9 delikte.",
+"kamera": [
+0.6,
+0.45,
+-1.25
+],
+"saydam": [
+"p0750",
+"p0751"
+],
+"gizli_ok": {
+"Kamera vidası": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
+},
+"ucus_ok": {
+"Kamera": "uçuş yolu ölçümü: −z'de 3 mm sonra ışın ölçümü kafa ön üst dikişinin ısıl gömmesinde 2,91 mm ortak hacim veriyor; gerçek derinlik (nokta–üçgen, yüzey örnekleri) 3–8 mm arasında yüz kabuğu sağ ile en çok 1,0 mm, ısıl gömmeyle 0,24 mm, 10 mm'den sonra 0. Dinlenmede kamera ile yüz kabuğu yalnız temas (derinlik 0). Kart boss'lara otururken kenarı kabuğa 1 mm'ye kadar sürtebilir, elde denenmedi"
+}
+},
+{
+"ad": "Masada: QLED → yüz kabuğu",
+"tezgah": "yuz",
+"bag": "",
+"satir": [
+"p:8"
+],
+"is_": "10,1\" QLED (vida deliği yok): camı yüz kabuğu ön duvarının iç yüzüne arkadan yasla, cep duvarı yerini gösterir.",
+"kamera": [
+0.6,
+0.45,
+-1.25
+]
+},
+{
+"ad": "Masada: ekran tırnakları",
+"tezgah": "yuz",
+"bag": "",
+"satir": [
 "p:9",
 "p:10",
 "p:11",
-"b:3",
-"b:4",
-"b:5"
+"b:6"
+],
+"is_": "4 tırnağı (üst ve alt, x ±85) cam şeridine 1 mm köpük bant üstünden arkadan bastır; her tırnak 1 × M3×6 ISO 7380 ile boss'taki ısıl gömmeye.",
+"kamera": [
+0.6,
+0.45,
+-1.25
+],
+"saydam": [
+"p0782",
+"p0786",
+"p0790",
+"p0794"
+],
+"gizli_ok": {
+"Köpük bant (tırnak alt": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil; 1 mm bant tırnağın altında, tırnak saydam çizili"
+}
+},
+{
+"ad": "Kablolar + yüz grubu → kafa",
+"tezgah": "",
+"bag": "yuz",
+"satir": [],
+"is_": "Yüz kabuğunu kafanın önünde tut, kabloları tak: CSI şeridi → Pi; QLED HDMI (30 cm şerit, Pi micro HDMI 0), Power (SY8205 çıkışı, A ucu kesik micro USB kablo), Touch (Pi USB 4). Touch'ı takmadan önce Notlar'daki ölçümü yap. Sonra yüz kabuğunu önden (+z) yerine koy (giriş yolu: önden serbest).",
+"ub": [
+0.0,
+0.0,
+1.0
+],
+"sema": [
+10,
+11,
+12
 ]
 },
 {
 "ad": "Kabuk dikişi",
-"tezgah": false,
+"tezgah": "",
+"bag": "",
 "satir": [
-"b:6",
 "b:7",
 "b:8"
+],
+"is_": "Dikiş cıvatalarını tak (9 cıvata, ısıl gömmeye). Boyundan gelen uçlar (kafa 12 V, göğüs HDMI, hub uzatması, hoparlör) K2'de bağlanır: arka kabuğun dikiş cıvatalarını K2'den sonra sık.",
+"kamera": [
+0.85,
+0.62,
+-1.25
+],
+"saydam": [
+"p0750",
+"p0751",
+"p0752",
+"p0753",
+"p0754"
 ]
 }
-]
+],
+"alt": 10
 },
 {
 "i": 32,
@@ -4220,36 +5293,11 @@
 "tur": "Baski",
 "malzeme": "PETG",
 "r": "baski",
-"adet": 2,
+"adet": 1,
 "ids": [
-"p0219",
-"p0220"
+"p0221"
 ],
-"ad": "Etek arka (sağ + sol)"
-},
-{
-"kod": "PETG baskı, 3,0 mm duvar",
-"tur": "Baski",
-"malzeme": "PETG",
-"r": "baski",
-"adet": 2,
-"ids": [
-"p0221",
-"p0222"
-],
-"ad": "Etek orta (sağ + sol)"
-},
-{
-"kod": "PETG baskı, 3,0 mm duvar",
-"tur": "Baski",
-"malzeme": "PETG",
-"r": "baski",
-"adet": 2,
-"ids": [
-"p0223",
-"p0224"
-],
-"ad": "Etek ön (sağ + sol)"
+"ad": "Etek orta sağ"
 },
 {
 "kod": "PETG baskı, 3,0 mm duvar",
@@ -4258,9 +5306,20 @@
 "r": "baski",
 "adet": 1,
 "ids": [
-"p0225"
+"p0222"
 ],
-"ad": "Etek dolgu şeridi arka"
+"ad": "Etek orta sol"
+},
+{
+"kod": "PETG baskı, 3,0 mm duvar",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
+"adet": 1,
+"ids": [
+"p0223"
+],
+"ad": "Etek ön sağ"
 },
 {
 "kod": "PETG baskı, 3,0 mm duvar",
@@ -4274,15 +5333,26 @@
 "ad": "Etek dolgu şeridi ön"
 },
 {
-"kod": "ASW-A01 100 A akü ayırıcı",
-"tur": "Satin",
-"malzeme": "Plastik",
-"r": "satin",
+"kod": "PETG baskı, 3,0 mm duvar",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
 "adet": 1,
 "ids": [
-"p1083"
+"p0224"
 ],
-"ad": "Ana anahtar ASW-A01 gövdesi (tahmini zarf)"
+"ad": "Etek ön sol"
+},
+{
+"kod": "PETG baskı, 3,0 mm duvar",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
+"adet": 1,
+"ids": [
+"p0219"
+],
+"ad": "Etek arka sağ"
 },
 {
 "kod": "Emas B200E60 acil stop",
@@ -4305,30 +5375,70 @@
 "p1179"
 ],
 "ad": "Acil stop kontak gövdesi (1NC)"
+},
+{
+"kod": "PETG baskı, 3,0 mm duvar",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
+"adet": 1,
+"ids": [
+"p0225"
+],
+"ad": "Etek dolgu şeridi arka"
+},
+{
+"kod": "PETG baskı, 3,0 mm duvar",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
+"adet": 1,
+"ids": [
+"p0220"
+],
+"ad": "Etek arka sol"
+},
+{
+"kod": "ASW-A01 100 A akü ayırıcı",
+"tur": "Satin",
+"malzeme": "Plastik",
+"r": "satin",
+"adet": 1,
+"ids": [
+"p1083"
+],
+"ad": "Ana anahtar ASW-A01 gövdesi (tahmini zarf)"
 }
 ],
 "baglantilar": [
 {
 "kod": "M3 ısıl gömme somun",
-"adet": 22,
+"adet": 6,
 "m6": 0,
 "ids": [
-"p0363",
-"p0365",
-"p0367",
-"p0369",
-"p0371",
-"p0373",
-"p0375",
-"p0377",
-"p0379",
-"p0381",
 "p0383",
 "p0385",
 "p0387",
 "p0389",
 "p0391",
-"p0393",
+"p0393"
+],
+"onceden": true
+},
+{
+"kod": "M3x14 ISO 7380",
+"adet": 1,
+"m6": 0,
+"ids": [
+"p0542"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 6,
+"m6": 0,
+"ids": [
 "p0395",
 "p0397",
 "p0399",
@@ -4339,29 +5449,163 @@
 "onceden": true
 },
 {
+"kod": "M3x14 ISO 7380",
+"adet": 1,
+"m6": 0,
+"ids": [
+"p0548"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 2,
+"m6": 0,
+"ids": [
+"p0367",
+"p0369"
+],
+"onceden": true
+},
+{
 "kod": "M3x6 ISO 7380",
-"adet": 22,
+"adet": 3,
+"m6": 0,
+"ids": [
+"p0384",
+"p0386",
+"p0388"
+],
+"onceden": false
+},
+{
+"kod": "M3x14 ISO 7380",
+"adet": 1,
+"m6": 0,
+"ids": [
+"p0554"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 2,
+"m6": 0,
+"ids": [
+"p0363",
+"p0365"
+],
+"onceden": true
+},
+{
+"kod": "M3x6 ISO 7380",
+"adet": 2,
+"m6": 0,
+"ids": [
+"p0368",
+"p0370"
+],
+"onceden": false
+},
+{
+"kod": "M3x6 ISO 7380",
+"adet": 5,
 "m6": 0,
 "ids": [
 "p0364",
 "p0366",
-"p0368",
-"p0370",
+"p0396",
+"p0398",
+"p0400"
+],
+"onceden": false
+},
+{
+"kod": "M3x14 ISO 7380",
+"adet": 1,
+"m6": 0,
+"ids": [
+"p0560"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 9,
+"m6": 0,
+"ids": [
+"p0377",
+"p0379",
+"p0381",
+"p0450",
+"p0452",
+"p0454",
+"p0456",
+"p0458",
+"p0460"
+],
+"onceden": true
+},
+{
+"kod": "M3x6 ISO 7380",
+"adet": 3,
+"m6": 0,
+"ids": [
+"p0390",
+"p0392",
+"p0394"
+],
+"onceden": false
+},
+{
+"kod": "M3x14 ISO 7380",
+"adet": 1,
+"m6": 0,
+"ids": [
+"p0530"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 3,
+"m6": 0,
+"ids": [
+"p0371",
+"p0373",
+"p0375"
+],
+"onceden": true
+},
+{
+"kod": "M3x6 ISO 7380",
+"adet": 3,
+"m6": 0,
+"ids": [
+"p0378",
+"p0380",
+"p0382"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 2,
+"m6": 0,
+"ids": [
+"p0446",
+"p0448"
+],
+"onceden": true
+},
+{
+"kod": "M3x6 ISO 7380",
+"adet": 6,
+"m6": 0,
+"ids": [
 "p0372",
 "p0374",
 "p0376",
-"p0378",
-"p0380",
-"p0382",
-"p0384",
-"p0386",
-"p0388",
-"p0390",
-"p0392",
-"p0394",
-"p0396",
-"p0398",
-"p0400",
 "p0402",
 "p0404",
 "p0406"
@@ -4370,15 +5614,10 @@
 },
 {
 "kod": "M3x14 ISO 7380",
-"adet": 6,
+"adet": 1,
 "m6": 0,
 "ids": [
-"p0530",
-"p0536",
-"p0542",
-"p0548",
-"p0554",
-"p0560"
+"p0536"
 ],
 "onceden": false
 }
@@ -4393,9 +5632,221 @@
 "not_": [],
 "kamera": null,
 "m6": [],
-"sure_dk": 48,
+"sure_dk": 51,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"sira": [
+"p:0",
+"b:0",
+"b:1",
+"p:1",
+"b:2",
+"b:3",
+"p:2",
+"b:4",
+"b:5",
+"b:6",
+"p:3",
+"b:7",
+"b:8",
+"p:4",
+"b:9",
+"b:10",
+"p:5",
+"p:6",
+"p:7",
+"b:11",
+"b:12",
+"b:13",
+"p:8",
+"b:14",
+"b:15",
+"p:9",
+"p:10",
+"b:16",
+"b:17",
+"b:18"
+],
+"sira_grup": [
+{
+"ad": "Orta bant sağ + orta braket",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:0",
+"b:0",
+"b:1"
+],
+"is_": "Orta bandın sağını +x'ten braketin üstüne getir (giriş yolu ölçümü: orta bant yalnız yandan girer). Orta brakete (z 0) dışarıdan M3×14; L brakette M3 perçin somun (delik Ø5,1). Bandın z ±88 bindirme boss'larındaki ısıl gömmeler hazırlıkta takılı (adım 0; bant saydam çizili). Bağlarken akü ayrık (XT60 açık).",
+"saydam": [
+"p0221"
+]
+},
+{
+"ad": "Orta bant sol + orta braket",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:1",
+"b:2",
+"b:3"
+],
+"is_": "Orta bandın solunu −x'ten getir, orta brakete (z 0) dışarıdan M3×14 (perçin somun). Isıl gömmeler sağdaki gibi hazırlıkta takılı (bant saydam çizili).",
+"kamera": [
+-0.85,
+0.62,
+1.25
+],
+"saydam": [
+"p0222"
+]
+},
+{
+"ad": "Ön sağ bant",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:2",
+"b:4",
+"b:5",
+"b:6"
+],
+"is_": "Ön sağ bandı orta bandın önüne getir; z +88 bindirmesini 3 × M3×6 ile bağla, z +105 braketine dışarıdan M3×14. Bant düz bir yoldan girmiyor (ölçüm, Notlar).",
+"saydam": [
+"p0223"
+],
+"ucus_ok": {
+"Etek ön sağ": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. Çizilen (1, 0, 1) yönünde sonar 1–12 mm; +z'de yalnız braket perçin somunu 1–7 mm, sonra serbest; +x'te sonar 1–73 mm; +y'de sonar 1–81 mm. Karar önerisi F10d-K1"
+}
+},
+{
+"ad": "Ön dolgu şeridi",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:3",
+"b:7",
+"b:8"
+],
+"is_": "Ön dolgu şeridini yukarıdan indir, son 10 mm'de önden içeri (−z) it (ölçüm: yerinden önce +z 10 mm, sonra +y 170 mm serbest; düz yukarı yolda orta sonar 1–82 mm). x +38 ön bindirmesine 2 × M3×6.",
+"saydam": [
+"p0226"
+],
+"ucus_ok": {
+"Etek dolgu şeridi ön": "iki parçalı yol ölçüldü (düzeltme turu 1; ışın aralıkları h 0,5 mm, eşik 0,2 mm): yerinden +z 10 mm, sonra +y 170 mm serbest; düz +y yolunda orta sonar 1–82 mm. Rehber düz uçuş çiziyor"
+}
+},
+{
+"ad": "Ön sol bant",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:4",
+"b:9",
+"b:10"
+],
+"is_": "Ön sol bandı getir; z +88 sol bindirmesi 3 × M3×6, x −38 ön bindirmesi 2 × M3×6, z +105 braketine M3×14. Bant düz bir yoldan girmiyor (ölçüm, Notlar).",
+"kamera": [
+-0.85,
+0.62,
+1.25
+],
+"ucus_ok": {
+"Etek ön sol": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. Çizilen (−1, 0, 1) yönünde sonar 1–11 mm; +z'de yalnız braket perçin somunu 1–7 mm, sonra serbest; −x'te sonar 1–61 mm; +y'de sonar 1–81 mm. Karar önerisi F10d-K1"
+}
+},
+{
+"ad": "Masada: arka sağ bant + acil stop",
+"tezgah": "arka_sag",
+"bag": "",
+"satir": [
+"p:5",
+"p:6",
+"p:7",
+"b:11"
+],
+"is_": "Masada: acil stop mantarını bandın deliğine dışarıdan (arkadan) geçir, panel somunuyla sık; kontak gövdesini içeriden alttan tak (giriş yolu ölçümü: kontak yalnız alttan girer). Bağlamadan önce mantarı multimetrenin süreklilik kademesinde dene: NC uçları arasında mantar serbestken bip var, basılıyken yok (kaynakta yok, doğrulanmadı). Bu bandın boss'larında F5'teki etek servis kapaklarının ısıl gömmeleri var (H1 2, H2 4) ve x +38 arka dikişininkiler (3): hazırlıkta takılı (adım 0), bant saydam çizili; kapaklar F5'te yalnız cıvatalanır.",
+"kamera": [
+0.85,
+0.62,
+1.25
+],
+"saydam": [
+"p0219"
+]
+},
+{
+"ad": "Arka sağ birimi → robot",
+"tezgah": "",
+"bag": "arka_sag",
+"satir": [
+"b:12",
+"b:13"
+],
+"is_": "Arka sağ bandı (mantar takılı) +x'ten getir (giriş yolu ölçümü: yalnız +x serbest). z −88 sağ bindirmesi 3 × M3×6, z −105 braketine M3×14. K1'de bırakılan acil stop ucunu kontağa bağla.",
+"kamera": "arka",
+"ub": [
+1.0,
+0.0,
+0.0
+]
+},
+{
+"ad": "Arka dolgu şeridi",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:8",
+"b:14",
+"b:15"
+],
+"is_": "Arka dolgu şeridini yukarıdan indir (ölçüm: arka sağ bant takılıyken yalnız yukarıdan girer). x +38 arka bindirmesine 3 × M3×6.",
+"kamera": "arka"
+},
+{
+"ad": "Masada: arka sol bant + ana anahtar",
+"tezgah": "arka_sol",
+"bag": "",
+"satir": [
+"p:9",
+"p:10",
+"b:16"
+],
+"is_": "Masada: ana anahtar ASW-A01 gövdesini etek üst plakasının altına alttan tak (model yeri öneri, ölçü tahmini zarf; bağlantı elemanı modelde yok, doğrulanmadı). Düğme: delik Ø30 tahmini, anahtarı ölç. Bu bandın boss'larında H1 kapağının 2 ısıl gömmesi var: hazırlıkta takılı (adım 0), bant saydam çizili.",
+"kamera": [
+-0.85,
+0.62,
+1.25
+],
+"saydam": [
+"p0220"
+],
+"ref": [
+"p1084"
+]
+},
+{
+"ad": "Arka sol birimi → robot",
+"tezgah": "",
+"bag": "arka_sol",
+"satir": [
+"b:17",
+"b:18"
+],
+"is_": "Arka sol bandı (ana anahtar takılı) −x'ten getir (giriş yolu ölçümü). z −88 sol bindirmesi 3 × M3×6, x −38 arka bindirmesi 3 × M3×6, z −105 braketine M3×14. K1'de bırakılan iki ana hat ucunu anahtara bağla. XT60 şarj girişi (panel konnektör): önerilen yer etek üst plakasının arkası, delik modelde yok (doğrulanmadı); delik açıldıysa konnektörü tak, şarj ucunu akü ayrıkken bağla, açılmadıysa uç bantlı kalır. Şarj 10 A sigortası takılmaz (aşama 1 listesi).",
+"kamera": [
+-0.85,
+0.62,
+-1.25
+],
+"ub": [
+-1.0,
+0.0,
+0.0
+]
+}
+],
+"alt": 10
 },
 {
 "i": 34,
@@ -4415,48 +5866,77 @@
 "tur": "Baski",
 "malzeme": "PETG",
 "r": "baski",
-"adet": 2,
+"adet": 1,
 "ids": [
-"p0205",
+"p0205"
+],
+"ad": "Gövde alt bandı sağ"
+},
+{
+"kod": "PETG baskı, 3,0 mm duvar",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
+"adet": 1,
+"ids": [
 "p0206"
 ],
-"ad": "Gövde alt bandı (sağ + sol)"
+"ad": "Gövde alt bandı sol"
 },
 {
 "kod": "PETG baskı, 3,0 mm duvar",
 "tur": "Baski",
 "malzeme": "PETG",
 "r": "baski",
-"adet": 2,
+"adet": 1,
 "ids": [
-"p0207",
+"p0207"
+],
+"ad": "Gövde uzatma bandı 1 sağ"
+},
+{
+"kod": "PETG baskı, 3,0 mm duvar",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
+"adet": 1,
+"ids": [
 "p0208"
 ],
-"ad": "Gövde uzatma bandı 1 (sağ + sol)"
+"ad": "Gövde uzatma bandı 1 sol"
 },
 {
 "kod": "PETG baskı, 3,0 mm duvar",
 "tur": "Baski",
 "malzeme": "PETG",
 "r": "baski",
-"adet": 2,
+"adet": 1,
 "ids": [
-"p0209",
+"p0209"
+],
+"ad": "Gövde uzatma bandı 2 sağ"
+},
+{
+"kod": "PETG baskı, 3,0 mm duvar",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
+"adet": 1,
+"ids": [
 "p0210"
 ],
-"ad": "Gövde uzatma bandı 2 (sağ + sol)"
+"ad": "Gövde uzatma bandı 2 sol"
 },
 {
 "kod": "PETG baskı, 3,0 mm duvar",
 "tur": "Baski",
 "malzeme": "PETG",
 "r": "baski",
-"adet": 2,
+"adet": 1,
 "ids": [
-"p0211",
-"p0212"
+"p0211"
 ],
-"ad": "Gövde orta bandı (sağ + sol)"
+"ad": "Gövde orta bandı sağ"
 },
 {
 "kod": "PETG baskı, 3,0 mm duvar",
@@ -4470,6 +5950,17 @@
 "ad": "Hoparlör kabı ön halka"
 },
 {
+"kod": "Hoparlör 4 ohm 3 W 40 x 20 (v4 satır 30)",
+"tur": "Satin",
+"malzeme": "-",
+"r": "satin",
+"adet": 1,
+"ids": [
+"p0438"
+],
+"ad": "Hoparlör 40 x 20"
+},
+{
 "kod": "PETG baskı, 3,0 mm duvar",
 "tur": "Baski",
 "malzeme": "PETG",
@@ -4479,6 +5970,17 @@
 "p0237"
 ],
 "ad": "Hoparlör kabı arka (flanşlı)"
+},
+{
+"kod": "Çift taraflı köpük bant 1 mm (VHB), 20 x 10",
+"tur": "Satin",
+"malzeme": "Köpük",
+"r": "satin",
+"adet": 1,
+"ids": [
+"p0443"
+],
+"ad": "Köpük ped (hoparlör kelepçesi)"
 },
 {
 "kod": "PETG baskı, 3,0 mm duvar",
@@ -4492,110 +5994,232 @@
 "ad": "Hoparlör kelepçesi"
 },
 {
-"kod": "Hoparlör 4 ohm 3 W 40 x 20 (v4 satır 30)",
-"tur": "Satin",
-"malzeme": "-",
-"r": "satin",
+"kod": "PETG baskı, 3,0 mm duvar",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
 "adet": 1,
 "ids": [
-"p0438"
+"p0212"
 ],
-"ad": "Hoparlör 40 x 20"
-},
-{
-"kod": "Çift taraflı köpük bant 1 mm (VHB), 20 x 10",
-"tur": "Satin",
-"malzeme": "Köpük",
-"r": "satin",
-"adet": 1,
-"ids": [
-"p0443"
-],
-"ad": "Köpük ped (hoparlör kelepçesi)"
+"ad": "Gövde orta bandı sol"
 }
 ],
 "baglantilar": [
 {
 "kod": "M3 ısıl gömme somun",
-"adet": 34,
+"adet": 7,
 "m6": 0,
 "ids": [
 "p0239",
-"p0241",
 "p0243",
-"p0245",
 "p0247",
-"p0249",
-"p0251",
-"p0253",
-"p0255",
-"p0257",
-"p0259",
-"p0261",
-"p0263",
-"p0265",
-"p0267",
-"p0269",
-"p0271",
-"p0273",
 "p0299",
 "p0301",
-"p0303",
-"p0305",
-"p0307",
-"p0309",
-"p0311",
-"p0313",
 "p0321",
-"p0323",
-"p0325",
-"p0327",
-"p0329",
-"p0331",
-"p0439",
-"p0441"
+"p0323"
+],
+"onceden": true
+},
+{
+"kod": "M5x18 ISO 7380",
+"adet": 1,
+"m6": 0,
+"ids": [
+"p0475"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 3,
+"m6": 0,
+"ids": [
+"p0241",
+"p0245",
+"p0249"
 ],
 "onceden": true
 },
 {
 "kod": "M3x6 ISO 7380",
-"adet": 32,
+"adet": 4,
+"m6": 0,
+"ids": [
+"p0300",
+"p0302",
+"p0322",
+"p0324"
+],
+"onceden": false
+},
+{
+"kod": "M5x18 ISO 7380",
+"adet": 1,
+"m6": 0,
+"ids": [
+"p0482"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 7,
+"m6": 0,
+"ids": [
+"p0251",
+"p0255",
+"p0259",
+"p0303",
+"p0305",
+"p0325",
+"p0327"
+],
+"onceden": true
+},
+{
+"kod": "M3x6 ISO 7380",
+"adet": 3,
 "m6": 0,
 "ids": [
 "p0240",
-"p0242",
 "p0244",
+"p0248"
+],
+"onceden": false
+},
+{
+"kod": "M5x18 ISO 7380",
+"adet": 1,
+"m6": 0,
+"ids": [
+"p0489"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 3,
+"m6": 0,
+"ids": [
+"p0253",
+"p0257",
+"p0261"
+],
+"onceden": true
+},
+{
+"kod": "M3x6 ISO 7380",
+"adet": 7,
+"m6": 0,
+"ids": [
+"p0242",
 "p0246",
-"p0248",
 "p0250",
-"p0252",
-"p0254",
-"p0256",
-"p0258",
-"p0260",
-"p0262",
-"p0264",
-"p0266",
-"p0268",
-"p0270",
-"p0272",
-"p0274",
-"p0300",
-"p0302",
 "p0304",
 "p0306",
+"p0326",
+"p0328"
+],
+"onceden": false
+},
+{
+"kod": "M5x18 ISO 7380",
+"adet": 1,
+"m6": 0,
+"ids": [
+"p0496"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 7,
+"m6": 0,
+"ids": [
+"p0263",
+"p0267",
+"p0271",
+"p0307",
+"p0309",
+"p0329",
+"p0331"
+],
+"onceden": true
+},
+{
+"kod": "M3x6 ISO 7380",
+"adet": 3,
+"m6": 0,
+"ids": [
+"p0252",
+"p0256",
+"p0260"
+],
+"onceden": false
+},
+{
+"kod": "M5x18 ISO 7380",
+"adet": 1,
+"m6": 0,
+"ids": [
+"p0503"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 3,
+"m6": 0,
+"ids": [
+"p0265",
+"p0269",
+"p0273"
+],
+"onceden": true
+},
+{
+"kod": "M3x6 ISO 7380",
+"adet": 7,
+"m6": 0,
+"ids": [
+"p0254",
+"p0258",
+"p0262",
 "p0308",
 "p0310",
-"p0312",
-"p0314",
-"p0322",
-"p0324",
-"p0326",
-"p0328",
 "p0330",
 "p0332"
 ],
 "onceden": false
+},
+{
+"kod": "M5x18 ISO 7380",
+"adet": 1,
+"m6": 0,
+"ids": [
+"p0510"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 11,
+"m6": 0,
+"ids": [
+"p0275",
+"p0279",
+"p0283",
+"p0311",
+"p0313",
+"p0337",
+"p0339",
+"p0341",
+"p0343",
+"p0439",
+"p0441"
+],
+"onceden": true
 },
 {
 "kod": "M3x20 DIN 912",
@@ -4608,16 +6232,40 @@
 "onceden": false
 },
 {
-"kod": "M5x18 ISO 7380",
+"kod": "M3x6 ISO 7380",
+"adet": 3,
+"m6": 0,
+"ids": [
+"p0264",
+"p0268",
+"p0272"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
 "adet": 6,
 "m6": 0,
 "ids": [
-"p0475",
-"p0482",
-"p0489",
-"p0496",
-"p0503",
-"p0510"
+"p0277",
+"p0281",
+"p0285",
+"p0335",
+"p0345",
+"p0347"
+],
+"onceden": true
+},
+{
+"kod": "M3x6 ISO 7380",
+"adet": 5,
+"m6": 0,
+"ids": [
+"p0266",
+"p0270",
+"p0274",
+"p0312",
+"p0314"
 ],
 "onceden": false
 }
@@ -4638,9 +6286,329 @@
 ],
 "kamera": null,
 "m6": [],
-"sure_dk": 66,
+"sure_dk": 70,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"sira": [
+"p:0",
+"b:0",
+"b:1",
+"p:1",
+"b:2",
+"b:3",
+"b:4",
+"p:2",
+"b:5",
+"b:6",
+"b:7",
+"p:3",
+"b:8",
+"b:9",
+"b:10",
+"p:4",
+"b:11",
+"b:12",
+"b:13",
+"p:5",
+"b:14",
+"b:15",
+"b:16",
+"p:6",
+"p:7",
+"p:8",
+"p:9",
+"p:10",
+"p:11",
+"b:17",
+"b:18",
+"b:19",
+"p:12",
+"b:20",
+"b:21"
+],
+"sira_grup": [
+{
+"ad": "Alt bant sağ + y 400 braketi",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:0",
+"b:0",
+"b:1"
+],
+"is_": "Gövde alt bandının sağını +x'ten getir, y 400 braketine dışarıdan M5×18 (pulsuz, M5 perçin somuna). Bandın bindirme boss'larındaki ısıl gömmeler hazırlıkta takılı (adım 0; bant saydam çizili).",
+"saydam": [
+"p0205",
+"p0206",
+"p0207",
+"p0208",
+"p0209",
+"p0210",
+"p0211",
+"p0212"
+]
+},
+{
+"ad": "Alt bant sol + y 400 braketi, x 0 dikişi",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:1",
+"b:2",
+"b:3",
+"b:4"
+],
+"is_": "Solunu −x'ten getir. x 0 dikişinin (ön ve arka) bindirmelerini M3×6 ile bağla, y 400 braketine dışarıdan M5×18.",
+"kamera": [
+-0.85,
+0.62,
+1.25
+],
+"saydam": [
+"p0205",
+"p0206",
+"p0207",
+"p0208",
+"p0209",
+"p0210",
+"p0211",
+"p0212"
+],
+"gizli_ok": {
+"(gövde x0 arka)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
+}
+},
+{
+"ad": "Uzatma bandı 1 sağ + y 530 braketi",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:2",
+"b:5",
+"b:6",
+"b:7"
+],
+"is_": "Uzatma bandı 1 sağı alt bandın üstüne getir (dikiş y 476,5), y 476,5 bindirmelerini M3×6 ile bağla, y 530 braketine M5×18.",
+"kamera": [
+1.0,
+0.35,
+0.5
+],
+"saydam": [
+"p0205",
+"p0206",
+"p0207",
+"p0208",
+"p0209",
+"p0210",
+"p0211",
+"p0212"
+]
+},
+{
+"ad": "Uzatma bandı 1 sol + y 530 braketi, x 0 dikişi",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:3",
+"b:8",
+"b:9",
+"b:10"
+],
+"is_": "Uzatma bandı 1 solu getir; y 476,5 ve x 0 bindirmelerini bağla, y 530 braketine M5×18.",
+"kamera": [
+-1.0,
+0.35,
+-0.5
+],
+"saydam": [
+"p0205",
+"p0206",
+"p0207",
+"p0208",
+"p0209",
+"p0210",
+"p0211",
+"p0212"
+],
+"gizli_ok": {
+"(gövde x0 ön)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil",
+"(gövde x0 arka)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
+}
+},
+{
+"ad": "Uzatma bandı 2 sağ + y 688 braketi",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:4",
+"b:11",
+"b:12",
+"b:13"
+],
+"is_": "Uzatma bandı 2 sağı getir (dikiş y 634), y 634 bindirmelerini bağla, y 688 braketine M5×18.",
+"kamera": [
+1.0,
+0.35,
+0.5
+],
+"saydam": [
+"p0205",
+"p0206",
+"p0207",
+"p0208",
+"p0209",
+"p0210",
+"p0211",
+"p0212"
+],
+"gizli_ok": {
+"(gövde y634 arka)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
+}
+},
+{
+"ad": "Uzatma bandı 2 sol + y 688 braketi, x 0 dikişi",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:5",
+"b:14",
+"b:15",
+"b:16"
+],
+"is_": "Uzatma bandı 2 solu getir; y 634 ve x 0 bindirmelerini bağla, y 688 braketine M5×18.",
+"kamera": [
+-1.0,
+0.35,
+-0.5
+],
+"saydam": [
+"p0205",
+"p0206",
+"p0207",
+"p0208",
+"p0209",
+"p0210",
+"p0211",
+"p0212"
+],
+"gizli_ok": {
+"(gövde x0 ön)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil",
+"(gövde x0 arka)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil",
+"(gövde y634 arka)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil",
+"(gövde y634 yan)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
+}
+},
+{
+"ad": "Masada: orta bant sağ + hoparlör",
+"tezgah": "orta_sag",
+"bag": "",
+"satir": [
+"p:6",
+"p:7",
+"p:8",
+"p:9",
+"p:10",
+"p:11",
+"b:17",
+"b:18"
+],
+"is_": "Masada, orta bant sağın ön duvarında, ızgara deliklerinin arkasında: kabın ön halkasını duvara, hoparlörü (40 × 20, 4 Ω, 3 W) içine, flanşlı arka kabı arkasına koy; kelepçeyi köpük pedle 2 × M3×20 ile boss'lardaki ısıl gömmeye sık. Bu sıra kaynakta yok, doğrulanmadı. Bandın boss'larındaki ısıl gömmeler (hoparlör 2, y 1005 dikişi, F5'teki arka servis kapağının 4'ü) hazırlıkta takılı (adım 0); karede bant ve hoparlör grubu saydam.",
+"kamera": [
+-1.0,
+0.45,
+0.6
+],
+"saydam": [
+"p0211",
+"p0236",
+"p0237",
+"p0238",
+"p0438",
+"p0443"
+],
+"gizli_ok": {
+"Köpük ped (hoparlör": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
+}
+},
+{
+"ad": "Orta bant sağ → gövde",
+"tezgah": "",
+"bag": "orta_sag",
+"satir": [
+"b:19"
+],
+"is_": "Bandı takmadan önce K2'de göğüs altında bırakılan hoparlör kablosunu (PAM8403'ten boyundan iner) hoparlöre bağla. Sonra orta bant sağı +x'ten getir (dikiş y 791,5), bindirmeleri bağla.",
+"ub": [
+1.0,
+0.0,
+0.0
+],
+"saydam": [
+"p0205",
+"p0206",
+"p0207",
+"p0208",
+"p0209",
+"p0210",
+"p0211",
+"p0212",
+"p0219",
+"p0220",
+"p0221",
+"p0222",
+"p0223",
+"p0224",
+"p0225",
+"p0226",
+"p0236",
+"p0237"
+],
+"giris_ok": {
+"*": "giriş yolu ölçümü: +x'te 138 mm boyunca çarpışma yok, sonra kutular ayrılıyor. Serbest sayılmamasının tek nedeni dinlenmede orta bant sağ ile uzatma bandı 2 sağın ortak yüzü: ışın ölçümü 5,53 mm kiriş veriyor, gerçek derinlik (nokta–üçgen) en çok 0,28 mm, medyan 0; temas, çarpışma değil"
+}
+},
+{
+"ad": "Orta bant sol",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:12",
+"b:20",
+"b:21"
+],
+"is_": "Orta bant solu −x'ten getir; y 791,5 ve x 0 dikişlerini bağla. Bandın boss'larındaki ısıl gömmeler (y 1005 dikişi ve F5'teki arka servis kapağının 3'ü) hazırlıkta takılı (adım 0; bantlar saydam çizili).",
+"kamera": [
+-0.85,
+0.62,
+1.25
+],
+"saydam": [
+"p0205",
+"p0206",
+"p0207",
+"p0208",
+"p0209",
+"p0210",
+"p0211",
+"p0212",
+"p0219",
+"p0220",
+"p0221",
+"p0222",
+"p0223",
+"p0224",
+"p0225",
+"p0226",
+"p0236",
+"p0237"
+],
+"gizli_ok": {
+"(gövde y792 arka)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
+}
+}
+],
+"alt": 9
 },
 {
 "i": 35,
@@ -4660,12 +6628,22 @@
 "tur": "Baski",
 "malzeme": "PETG",
 "r": "baski",
-"adet": 2,
+"adet": 1,
 "ids": [
-"p0213",
+"p0213"
+],
+"ad": "Göğüs bandı sağ"
+},
+{
+"kod": "PETG baskı, 3,0 mm duvar",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
+"adet": 1,
+"ids": [
 "p0214"
 ],
-"ad": "Göğüs bandı (sağ + sol)"
+"ad": "Göğüs bandı sol"
 },
 {
 "kod": "PETG-CF baskı",
@@ -4705,30 +6683,62 @@
 "baglantilar": [
 {
 "kod": "M3 ısıl gömme somun",
-"adet": 8,
+"adet": 9,
 "m6": 0,
 "ids": [
-"p0275",
-"p0277",
-"p0279",
-"p0281",
-"p0283",
-"p0285",
+"p0287",
+"p0289",
+"p0295",
 "p0315",
-"p0317"
+"p0317",
+"p0351",
+"p0353",
+"p0355",
+"p0357"
 ],
 "onceden": true
 },
 {
 "kod": "M3x6 ISO 7380",
-"adet": 8,
+"adet": 3,
 "m6": 0,
 "ids": [
 "p0276",
-"p0278",
 "p0280",
+"p0284"
+],
+"onceden": false
+},
+{
+"kod": "M5x18 ISO 7380",
+"adet": 1,
+"m6": 0,
+"ids": [
+"p0517"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 6,
+"m6": 0,
+"ids": [
+"p0291",
+"p0293",
+"p0297",
+"p0349",
+"p0359",
+"p0361"
+],
+"onceden": true
+},
+{
+"kod": "M3x6 ISO 7380",
+"adet": 5,
+"m6": 0,
+"ids": [
+"p0278",
 "p0282",
-"p0284",
 "p0286",
 "p0316",
 "p0318"
@@ -4737,10 +6747,9 @@
 },
 {
 "kod": "M5x18 ISO 7380",
-"adet": 2,
+"adet": 1,
 "m6": 0,
 "ids": [
-"p0517",
 "p0524"
 ],
 "onceden": false
@@ -4853,7 +6862,7 @@
 ],
 "kamera": null,
 "m6": [],
-"sure_dk": 41,
+"sure_dk": 43,
 "sure_tahmini": true,
 "kablolama": false,
 "sira": [
@@ -4868,50 +6877,177 @@
 "p:2",
 "b:6",
 "b:7",
-"p:3",
 "b:8",
-"b:9"
+"p:3",
+"b:9",
+"b:10",
+"p:4",
+"b:11",
+"b:12"
 ],
 "sira_grup": [
 {
-"ad": "Göğüs bantları",
-"tezgah": false,
+"ad": "Göğüs bandı sağ + y 1095 braketi",
+"tezgah": "",
+"bag": "",
 "satir": [
 "p:0",
 "b:0",
 "b:1",
 "b:2"
-]
+],
+"is_": "Göğüs bandı sağı +x'ten getir (dikiş y 1005), bindirmeleri bağla, y 1095 braketine dışarıdan M5×18. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Bandın boss'larındaki ısıl gömmeler (y 1198 dikişi ve F5'teki üst arka servis kapağının 4'ü) hazırlıkta takılı (adım 0; bantlar saydam çizili).",
+"saydam": [
+"p0205",
+"p0206",
+"p0207",
+"p0208",
+"p0209",
+"p0210",
+"p0211",
+"p0212",
+"p0213",
+"p0214"
+],
+"ucus_ok": {
+"Göğüs bandı sağ": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +x'te orta bant sağ ile 1–159 mm ortak hacim (bindirme dili), 173 mm'de ayrılıyor; +y'de orta bant 1–13 mm; ±z'de orta bant 1–213 mm. Karar önerisi F10d-K1"
+}
 },
 {
-"ad": "VESA taşıyıcı → direk ön kanalı",
-"tezgah": false,
+"ad": "Göğüs bandı sol + y 1095 braketi",
+"tezgah": "",
+"bag": "",
 "satir": [
 "p:1",
 "b:3",
 "b:4",
 "b:5"
-]
+],
+"is_": "Göğüs bandı solu −x'ten getir; bindirmeleri bağla (x = 0'da cep altı y 1022,7 ve cep üstü y 1222 dahil), y 1095 braketine M5×18. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Isıl gömmeler (y 1198 dikişi, üst arka servis kapağının 3'ü) hazırlıkta takılı.",
+"kamera": [
+-0.85,
+0.62,
+1.25
+],
+"saydam": [
+"p0205",
+"p0206",
+"p0207",
+"p0208",
+"p0209",
+"p0210",
+"p0211",
+"p0212",
+"p0213",
+"p0214"
+],
+"ucus_ok": {
+"Göğüs bandı sol": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. −x'te orta bant sol ile 1–135 mm ortak hacim (bindirme dili), 161 mm'de ayrılıyor; +y'de orta bant 1–13 mm ve göğüs bandı sağ 1–19 mm; ±z'de orta bant 1–213 mm. Karar önerisi F10d-K1"
+}
 },
 {
-"ad": "Göğüs ekranı → taşıyıcı (VESA)",
-"tezgah": false,
+"ad": "VESA taşıyıcı → direk ön kanalı",
+"tezgah": "",
+"bag": "",
 "satir": [
 "p:2",
 "b:6",
-"b:7"
+"b:7",
+"b:8"
+],
+"is_": "VESA taşıyıcı (PETG-CF): ekran cebinden direğin ön (+z) kanalına, 2 × M6×18 + pul + çekiç somun. Yükseklik kanalda ayarlanır; cıvatalara ekran takılmadan, plakanın ortasından ulaşılır.",
+"kamera": [
+0.3,
+1.0,
+0.35
+],
+"saydam": [
+"p0205",
+"p0206",
+"p0207",
+"p0208",
+"p0209",
+"p0210",
+"p0211",
+"p0212",
+"p0213",
+"p0214",
+"p0229",
+"p0230",
+"p0231"
+],
+"gizli_ok": {
+"Çekiç somun M6": "çekiç somun direğin kanalının içinde, taşıyıcının arkasında (perdelenme tamamen gizli sayıyor); alt adım karesinde taşıyıcı ve bantlar saydam çizili, somun görünür (kimlik tamponu)"
+},
+"ucus_ok": {
+"Çekiç somun M6": "uçuş yolu ölçümü: düz −z yolu yok (direk kanalının dudağı 2–25 mm); kanal boyunca −y 400 mm'de tek engel kendi cıvatası (2–6 mm), +y'de 166 mm'den sonra travers. Döndürerek oturtma ölçülmedi. Rehber düz uçuş çiziyor"
+}
+},
+{
+"ad": "Göğüs ekranı → taşıyıcı (VESA)",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:3",
+"b:9",
+"b:10"
+],
+"is_": "11,6\" ekranı (kasalı) cebe önden, yaklaşık 14° yukarıdan koy (giriş yolu ölçümü: bantlar ve taşıyıcı takılıyken yalnız bu yön serbest; düz önden 19,5 mm sonra bant). 12 V ölçümü ve fişler için adımın iş metnindeki 3. maddeyi izle (K11 a / b). Sonra ekranı taşıyıcıya arkadan 4 × M4×12 + pul ile bağla (VESA 75 × 75): üst arka servis kapağı açık, direğin yanından. Dokunmatik USB ucu F5'e kadar boşta, etiketli.",
+"kamera": [
+0.85,
+0.62,
+1.25
+],
+"saydam": [
+"p0205",
+"p0206",
+"p0207",
+"p0208",
+"p0209",
+"p0210",
+"p0211",
+"p0212",
+"p0213",
+"p0214",
+"p0229",
+"p0230",
+"p0231",
+"p0407"
+],
+"sema": [
+5
 ]
 },
 {
 "ad": "Göğüs ekranı çerçevesi",
-"tezgah": false,
+"tezgah": "",
+"bag": "",
 "satir": [
-"p:3",
-"b:8",
-"b:9"
-]
+"p:4",
+"b:11",
+"b:12"
+],
+"is_": "Çerçeve sağ + sol: göğüs bandına dışarıdan, yarı başına 4 × M3×6 ISO 7380, çerçeve flanşındaki ısıl gömmeye. Ekran camı çerçevenin 2 mm gerisinde, köşe takozlarına dayalı.",
+"saydam": [
+"p0205",
+"p0206",
+"p0207",
+"p0208",
+"p0209",
+"p0210",
+"p0211",
+"p0212",
+"p0213",
+"p0214",
+"p0229",
+"p0230"
+],
+"ucus_ok": {
+"Göğüs ekranı çerçevesi": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +z'de göğüs bandı 1–9 mm (flanş bandın iç yüzünde) ve ekran 3–7 mm; yana (dışa) göğüs bandı 1–151 mm; +y ve −z de kapalı. Karar önerisi F10d-K1"
 }
-]
+}
+],
+"alt": 5
 },
 {
 "i": 36,
@@ -4931,43 +7067,75 @@
 "tur": "Baski",
 "malzeme": "PETG",
 "r": "baski",
-"adet": 2,
+"adet": 1,
 "ids": [
-"p0215",
+"p0215"
+],
+"ad": "Omuz bandı sağ"
+},
+{
+"kod": "PETG baskı, 3,0 mm duvar",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
+"adet": 1,
+"ids": [
 "p0216"
 ],
-"ad": "Omuz bandı (sağ + sol)"
+"ad": "Omuz bandı sol"
 }
 ],
 "baglantilar": [
 {
 "kod": "M3 ısıl gömme somun",
-"adet": 8,
+"adet": 4,
 "m6": 0,
 "ids": [
-"p0287",
-"p0289",
-"p0291",
-"p0293",
-"p0295",
-"p0297",
 "p0319",
-"p0333"
+"p0333",
+"p0462",
+"p0464"
 ],
 "onceden": true
 },
 {
 "kod": "M3x6 ISO 7380",
-"adet": 8,
+"adet": 3,
 "m6": 0,
 "ids": [
 "p0288",
 "p0290",
+"p0296"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 2,
+"m6": 0,
+"ids": [
+"p0466",
+"p0468"
+],
+"onceden": true
+},
+{
+"kod": "M3x6 ISO 7380",
+"adet": 2,
+"m6": 0,
+"ids": [
+"p0298",
+"p0320"
+],
+"onceden": false
+},
+{
+"kod": "M3x6 ISO 7380",
+"adet": 3,
+"m6": 0,
+"ids": [
 "p0292",
 "p0294",
-"p0296",
-"p0298",
-"p0320",
 "p0334"
 ],
 "onceden": false
@@ -4984,9 +7152,144 @@
 "not_": [],
 "kamera": null,
 "m6": [],
-"sure_dk": 17,
+"sure_dk": 16,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"sira": [
+"p:0",
+"b:0",
+"b:1",
+"p:1",
+"b:2",
+"b:3",
+"b:4"
+],
+"sira_grup": [
+{
+"ad": "Omuz bandı sağ",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:0",
+"b:0",
+"b:1"
+],
+"is_": "Omuz bandı sağı Ø84 rulman kapağının üstünden geçir; üst kapak boynu sarar. y 1198 bindirmelerine M3×6 ISO 7380. Bandın boss'larındaki ısıl gömmeler (x 0 dikişi, S1 kaseti) hazırlıkta takılı (adım 0; bantlar saydam çizili).",
+"kamera": [
+0.3,
+1.0,
+0.35
+],
+"saydam": [
+"p0205",
+"p0206",
+"p0207",
+"p0208",
+"p0209",
+"p0210",
+"p0211",
+"p0212",
+"p0213",
+"p0214",
+"p0215",
+"p0216",
+"p0676",
+"p0677",
+"p0678",
+"p0695",
+"p0696",
+"p0698",
+"p0699",
+"p0701",
+"p0703",
+"p0705",
+"p0707",
+"p0711",
+"p0718",
+"p0737",
+"p0750",
+"p0751",
+"p0752",
+"p0753",
+"p0754"
+],
+"gizli_ok": {
+"(gövde y1198 ön)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
+},
+"ucus_ok": {
+"Omuz bandı sağ": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +x'te göğüs bandı sağ 1–161 mm (bindirme dili), rulman kapağı 3–99 mm, yuva bağlantı cıvatası 3–29 mm; +y'de 7 mm sonra rulman kapağı 7–101 mm; ±z'de göğüs bandı. Karar önerisi F10d-K1"
+}
+},
+{
+"ad": "Omuz bandı sol, ön dikiş",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:1",
+"b:2",
+"b:3"
+],
+"is_": "Omuz bandı solu aynı biçimde geçir; önde y 1198 ve x 0 dikişlerini M3×6 ile bağla. S1 kaseti ısıl gömmeleri hazırlıkta takılı (bantlar saydam çizili).",
+"kamera": [
+-0.85,
+0.62,
+1.25
+],
+"saydam": [
+"p0205",
+"p0206",
+"p0207",
+"p0208",
+"p0209",
+"p0210",
+"p0211",
+"p0212",
+"p0213",
+"p0214",
+"p0215",
+"p0216"
+],
+"gizli_ok": {
+"(gövde y1198 ön)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil",
+"(gövde x0 ön)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
+},
+"ucus_ok": {
+"Omuz bandı sol": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. −x'te göğüs bandı sol 1–137 mm (bindirme dili), rulman kapağı 3–99 mm, yuva bağlantı cıvatası 3–29 mm; +y'de 7 mm sonra rulman kapağı 7–101 mm; ±z'de göğüs bandı ve omuz bandı sağ. Karar önerisi F10d-K1"
+}
+},
+{
+"ad": "Omuz arka dikişi",
+"tezgah": "",
+"bag": "",
+"satir": [
+"b:4"
+],
+"is_": "Arkada sol y 1198 ve x 0 dikişlerini M3×6 ile bağla. Bundan sonra bant ancak göbek sökülünce çıkar. Sonra kol servo uçlarını omuz yarığından dışarı al (adımın iş metni, madde 2).",
+"kamera": [
+-0.85,
+0.62,
+-1.25
+],
+"saydam": [
+"p0205",
+"p0206",
+"p0207",
+"p0208",
+"p0209",
+"p0210",
+"p0211",
+"p0212",
+"p0213",
+"p0214",
+"p0215",
+"p0216"
+],
+"gizli_ok": {
+"(gövde x0 arka)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
+}
+}
+],
+"alt": 3
 },
 {
 "i": 37,
@@ -5054,6 +7357,16 @@
 "p0175"
 ],
 "onceden": true
+},
+{
+"kod": "M5 ısıl gömme somun",
+"adet": 2,
+"m6": 0,
+"ids": [
+"p0115",
+"p0188"
+],
+"onceden": true
 }
 ],
 "kontrol": [
@@ -5066,7 +7379,7 @@
 "not_": [],
 "kamera": null,
 "m6": [],
-"sure_dk": 16,
+"sure_dk": 17,
 "sure_tahmini": true,
 "kablolama": false
 },
@@ -5219,16 +7532,6 @@
 "p0187"
 ],
 "onceden": false
-},
-{
-"kod": "M5 ısıl gömme somun",
-"adet": 2,
-"m6": 0,
-"ids": [
-"p0115",
-"p0188"
-],
-"onceden": true
 },
 {
 "kod": "M5 DIN 125 pul",
@@ -5424,18 +7727,6 @@
 ],
 "baglantilar": [
 {
-"kod": "M3 ısıl gömme somun",
-"adet": 4,
-"m6": 0,
-"ids": [
-"p0462",
-"p0464",
-"p0466",
-"p0468"
-],
-"onceden": true
-},
-{
 "kod": "M3x8 DIN 912",
 "adet": 4,
 "m6": 0,
@@ -5459,7 +7750,7 @@
 "not_": [],
 "kamera": null,
 "m6": [],
-"sure_dk": 13,
+"sure_dk": 12,
 "sure_tahmini": true,
 "kablolama": false,
 "poz": {
@@ -5543,6 +7834,16 @@
 ],
 "baglantilar": [
 {
+"kod": "M5 ısıl gömme somun",
+"adet": 2,
+"m6": 0,
+"ids": [
+"p0586",
+"p0643"
+],
+"onceden": true
+},
+{
 "kod": "M4x16 DIN 912",
 "adet": 16,
 "m6": 0,
@@ -5623,21 +7924,39 @@
 "tur": "Satin",
 "malzeme": "Alüminyum",
 "r": "satin",
-"adet": 2,
+"adet": 1,
 "ids": [
-"p0572",
+"p0572"
+],
+"ad": "Dirsek horn 25T alüminyum disk sağ"
+},
+{
+"kod": "25T alüminyum disk horn",
+"tur": "Satin",
+"malzeme": "Alüminyum",
+"r": "satin",
+"adet": 1,
+"ids": [
 "p0629"
 ],
-"ad": "Dirsek horn 25T alüminyum disk (sağ + sol)"
+"ad": "Dirsek horn 25T alüminyum disk sol"
 }
 ],
 "baglantilar": [
 {
 "kod": "M3x5 horn vidası (servo ile)",
-"adet": 2,
+"adet": 1,
 "m6": 0,
 "ids": [
-"p0573",
+"p0573"
+],
+"onceden": false
+},
+{
+"kod": "M3x5 horn vidası (servo ile)",
+"adet": 1,
+"m6": 0,
+"ids": [
 "p0630"
 ],
 "onceden": false
@@ -5652,7 +7971,46 @@
 "m6": [],
 "sure_dk": 9,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"sira": [
+"p:0",
+"b:0",
+"p:1",
+"b:1"
+],
+"sira_grup": [
+{
+"ad": "Sağ kol: dirsek hornu + merkez vidası",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:0",
+"b:0"
+],
+"is_": "Sağ kol: dirsek hornunu servo miline geçir, merkez vidası M3×5 (PH1).",
+"kamera": [
+1.0,
+0.4,
+0.5
+]
+},
+{
+"ad": "Sol kol: dirsek hornu + merkez vidası",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:1",
+"b:1"
+],
+"is_": "Sol kol: aynı iş, aynalı.",
+"kamera": [
+-1.0,
+0.4,
+0.5
+]
+}
+],
+"alt": 2
 },
 {
 "i": 44,
@@ -5756,16 +8114,6 @@
 "p0642"
 ],
 "onceden": false
-},
-{
-"kod": "M5 ısıl gömme somun",
-"adet": 2,
-"m6": 0,
-"ids": [
-"p0586",
-"p0643"
-],
-"onceden": true
 }
 ],
 "kontrol": [
@@ -5799,21 +8147,39 @@
 "tur": "Satin",
 "malzeme": "Alüminyum",
 "r": "satin",
-"adet": 2,
+"adet": 1,
 "ids": [
-"p0607",
+"p0607"
+],
+"ad": "Bilek horn 25T alüminyum disk sağ"
+},
+{
+"kod": "25T alüminyum disk horn",
+"tur": "Satin",
+"malzeme": "Alüminyum",
+"r": "satin",
+"adet": 1,
+"ids": [
 "p0664"
 ],
-"ad": "Bilek horn 25T alüminyum disk (sağ + sol)"
+"ad": "Bilek horn 25T alüminyum disk sol"
 }
 ],
 "baglantilar": [
 {
 "kod": "M3x5 horn vidası (servo ile)",
-"adet": 2,
+"adet": 1,
 "m6": 0,
 "ids": [
-"p0608",
+"p0608"
+],
+"onceden": false
+},
+{
+"kod": "M3x5 horn vidası (servo ile)",
+"adet": 1,
+"m6": 0,
+"ids": [
 "p0665"
 ],
 "onceden": false
@@ -5824,11 +8190,54 @@
 ],
 "kablo": [],
 "not_": [],
-"kamera": null,
+"kamera": [
+0.85,
+-0.62,
+1.25
+],
 "m6": [],
 "sure_dk": 9,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"sira": [
+"p:0",
+"b:0",
+"p:1",
+"b:1"
+],
+"sira_grup": [
+{
+"ad": "Sağ kol: bilek hornu + merkez vidası",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:0",
+"b:0"
+],
+"is_": "Sağ kol: bilek hornunu servo miline alttan geçir, merkez vidası M3×5 (PH1).",
+"kamera": [
+1.0,
+-0.6,
+0.5
+]
+},
+{
+"ad": "Sol kol: bilek hornu + merkez vidası",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:1",
+"b:1"
+],
+"is_": "Sol kol: aynı iş, aynalı.",
+"kamera": [
+-1.0,
+-0.6,
+0.5
+]
+}
+],
+"alt": 2
 },
 {
 "i": 46,
@@ -5848,24 +8257,62 @@
 "tur": "Baski",
 "malzeme": "PETG",
 "r": "baski",
-"adet": 2,
+"adet": 1,
 "ids": [
-"p0609",
+"p0609"
+],
+"ad": "Bilek flanşı sağ"
+},
+{
+"kod": "Bilek flanşı",
+"tur": "Baski",
+"malzeme": "PETG",
+"r": "baski",
+"adet": 1,
+"ids": [
 "p0666"
 ],
-"ad": "Bilek flanşı (sağ + sol)"
+"ad": "Bilek flanşı sol"
 }
 ],
 "baglantilar": [
 {
+"kod": "M3 ısıl gömme somun",
+"adet": 2,
+"m6": 0,
+"ids": [
+"p0615",
+"p0617"
+],
+"onceden": true
+},
+{
 "kod": "M3x8 DIN 912",
-"adet": 8,
+"adet": 4,
 "m6": 0,
 "ids": [
 "p0610",
 "p0611",
 "p0612",
-"p0613",
+"p0613"
+],
+"onceden": false
+},
+{
+"kod": "M3 ısıl gömme somun",
+"adet": 2,
+"m6": 0,
+"ids": [
+"p0672",
+"p0674"
+],
+"onceden": true
+},
+{
+"kod": "M3x8 DIN 912",
+"adet": 4,
+"m6": 0,
+"ids": [
 "p0667",
 "p0668",
 "p0669",
@@ -5879,11 +8326,66 @@
 ],
 "kablo": [],
 "not_": [],
-"kamera": null,
+"kamera": [
+0.85,
+-0.62,
+1.25
+],
 "m6": [],
-"sure_dk": 15,
+"sure_dk": 16,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"sira": [
+"p:0",
+"b:0",
+"b:1",
+"p:1",
+"b:2",
+"b:3"
+],
+"sira_grup": [
+{
+"ad": "Sağ kol: bilek flanşı + 4 cıvata",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:0",
+"b:0",
+"b:1"
+],
+"is_": "Sağ kol: flanşı horna alttan oturt, 4 × M3×8 çapraz sık.",
+"kamera": [
+1.0,
+-0.6,
+0.5
+],
+"saydam": [
+"p0609",
+"p0666"
+]
+},
+{
+"ad": "Sol kol: bilek flanşı + 4 cıvata",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:1",
+"b:2",
+"b:3"
+],
+"is_": "Sol kol: aynı iş, aynalı.",
+"kamera": [
+-1.0,
+-0.6,
+0.5
+],
+"saydam": [
+"p0609",
+"p0666"
+]
+}
+],
+"alt": 2
 },
 {
 "i": 47,
@@ -5913,18 +8415,6 @@
 ],
 "baglantilar": [
 {
-"kod": "M3 ısıl gömme somun",
-"adet": 4,
-"m6": 0,
-"ids": [
-"p0615",
-"p0617",
-"p0672",
-"p0674"
-],
-"onceden": true
-},
-{
 "kod": "M3x6 ISO 7380",
 "adet": 4,
 "m6": 0,
@@ -5944,7 +8434,7 @@
 "not_": [],
 "kamera": null,
 "m6": [],
-"sure_dk": 12,
+"sure_dk": 11,
 "sure_tahmini": true,
 "kablolama": false
 },
@@ -6024,7 +8514,7 @@
 "faz": "Son",
 "baslik": "Servis kapakları (test sonrası)",
 "is_": "1. 4'lü USB hub üst arka servis kapağının içinde: hub'ı kapağın takozuna, iki yan dayamanın arasına 1 mm köpük bantla yapıştır. Bağla: hub kablosu ← Pi USB 3'ten boyundan gelen uzatma (K2), Hub 1 → göğüs ekranı dokunmatiği (F3'te boşta bırakılan USB), Hub 2 → ESP32 USB (K2'de direk arka yüzünden çıkarılan uç; 1N5819 yönü K2 madde 4). Hub 3 ve 4 boş. Hub'ın anahtarı açık kalmalı.\n2. İlk enerji, aşama 2 (devreye alma testi): kapaklar açık, hub bağlı (ESP32 ile Pi hub üzerinden konuşur). Saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken F1 (20 A), F3 (5 A, kafa) ve XL4016 hat sigortalarını (A 7,5 A, B 7,5 A, C 5 A) tak (`planlama/adim3/elektrik.md` sigorta listesi). Şarj girişi mini 10 A bu aşamada da takılı değil. K11 b ise (göğüs dalı anahtarlı barada; F3 madde 3): akü ayrıkken multimetreyi F3'teki gibi göğüs regülatörü çıkışına bağla (DC V; 12 V fişi takılı değil), teli kolların ve tekerlerin erişim alanının dışına çıkar. Tekerlekler yerden kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Kollar aşağıda başlar: mantara basınca servo gücü de kesilir ve kollar düşer (E3 DTR / RTS notu). Kolların erişim alanında ve düşme hattında, kafanın ve tekerlerin erişim alanında kimse yok, bir kişi yalnız mantarda (kural 1 ve 7). Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 / F4 / F5 girişleri, Pololu dahil; K11 a ise göğüs ekranı dalı da). Pi açılır; ESP32, Pi seri portu açılınca resetlenmemeli (boot mesajı yok; E3 DTR / RTS). Pi'den devreye al, ESP32 ön şarj dizisi (E9): ön koşul (mantar serbest, servo hedefleri son konumda, BTS EN = 0 ve PWM = 0) → röle K2 → 300 ms → PC817 #2 LOW (bara var) → röle K1 → 100 ms sonra K2 bırakılır → PC817 #2 LOW teyidi. K11 b ise regülatör çıkışını erişim alanının dışından oku: 12 V. Mantara basınca K1 düşer (K2 devreye almadan 100 ms sonra zaten bırakıldı), anahtarlı bara kesilir (PC817 #2 HIGH), kollar düşer. Mantarı bırak: röle kendiliğinden çekmez, yeniden devreye alma yalnız Pi komutuyla. Motor yön testi: her yan ileri komutta ileri döner; dönen tekere el uzatılmaz. Bitince ana anahtarı kapat, aküyü XT60'tan ayır (`planlama/adim3/elektrik.md` E3, E9). K11 b ise sonra ölçü uçlarını sök ve göğüs 12 V fişini enerjisizken tak (üst arka servis kapağı açıkken; fişe bu sırada erişim ölçülmedi). Bu adımdaki sıra kaynakta yok, doğrulanmadı.\n3. Testten sonra kapat: arka servis kapağı, üst arka servis kapağı (hub'la birlikte), etek H1 ve H2.\nH1 sigorta kutusuna açılır: uç yuvalar yedek, sık değişen F1, F3, F4, F5 ortada (29.10).",
-"baglanti_md": "1,58 m: arka kapak 7 × M3×6 ISO 7380; üst arka kapak 7 × M3×6 ISO 7380; H1 4 × M3×6 (x ±50); H2 4 × M3×6; hepsi ısıl gömmeye. Hub: 1 mm köpük bant (kapak takozunda). Üst kapak, H2 ve hub M6'da yok",
+"baglanti_md": "1,58 m: arka kapak 7 × M3×6 ISO 7380; üst arka kapak 7 × M3×6 ISO 7380; H1 4 × M3×6 (x ±50); H2 4 × M3×6; hepsi ısıl gömmeye. Isıl gömmeler kapaklarda değil, bantların boss'larında: arka kapağınkiler orta bantta (F2), üst arka kapağınkiler göğüs bandında (F3), H1 / H2'ninkiler etek arka bantlarında (F1); o adımlarda takılı geldi. Hub: 1 mm köpük bant (kapak takozunda). Üst kapak, H2 ve hub M6'da yok",
 "alet": "alyan 2",
 "erisim": "Düz. Hub kapağın iç yüzünde: kapak açıkken bağlanır",
 "tezgah": null,
@@ -6037,9 +8527,31 @@
 "r": "baski",
 "adet": 1,
 "ids": [
-"p0217"
+"p0218"
 ],
-"ad": "Arka servis kapağı"
+"ad": "Üst arka servis kapağı"
+},
+{
+"kod": "Çift taraflı köpük bant 1 mm (VHB)",
+"tur": "Satin",
+"malzeme": "Köpük",
+"r": "satin",
+"adet": 1,
+"ids": [
+"p0445"
+],
+"ad": "Köpük bant (USB Hub kapak içi)"
+},
+{
+"kod": "USB Hub 4'lü 72 x 25 x 19",
+"tur": "Satin",
+"malzeme": "-",
+"r": "satin",
+"adet": 1,
+"ids": [
+"p0444"
+],
+"ad": "USB Hub 4'lü (kapak içi)"
 },
 {
 "kod": "PETG baskı, 3,0 mm duvar",
@@ -6048,9 +8560,9 @@
 "r": "baski",
 "adet": 1,
 "ids": [
-"p0218"
+"p0217"
 ],
-"ad": "Üst arka servis kapağı"
+"ad": "Arka servis kapağı"
 },
 {
 "kod": "PETG baskı, 3,0 mm duvar",
@@ -6073,64 +8585,12 @@
 "p0228"
 ],
 "ad": "Etek servis kapağı H2 (ana sigorta)"
-},
-{
-"kod": "USB Hub 4'lü 72 x 25 x 19",
-"tur": "Satin",
-"malzeme": "-",
-"r": "satin",
-"adet": 1,
-"ids": [
-"p0444"
-],
-"ad": "USB Hub 4'lü (kapak içi)"
-},
-{
-"kod": "Çift taraflı köpük bant 1 mm (VHB)",
-"tur": "Satin",
-"malzeme": "Köpük",
-"r": "satin",
-"adet": 1,
-"ids": [
-"p0445"
-],
-"ad": "Köpük bant (USB Hub kapak içi)"
 }
 ],
 "baglantilar": [
 {
-"kod": "M3 ısıl gömme somun",
-"adet": 22,
-"m6": 0,
-"ids": [
-"p0335",
-"p0337",
-"p0339",
-"p0341",
-"p0343",
-"p0345",
-"p0347",
-"p0349",
-"p0351",
-"p0353",
-"p0355",
-"p0357",
-"p0359",
-"p0361",
-"p0446",
-"p0448",
-"p0450",
-"p0452",
-"p0454",
-"p0456",
-"p0458",
-"p0460"
-],
-"onceden": true
-},
-{
 "kod": "M3x6 ISO 7380",
-"adet": 22,
+"adet": 7,
 "m6": 0,
 "ids": [
 "p0336",
@@ -6139,14 +8599,30 @@
 "p0342",
 "p0344",
 "p0346",
-"p0348",
+"p0348"
+],
+"onceden": false
+},
+{
+"kod": "M3x6 ISO 7380",
+"adet": 7,
+"m6": 0,
+"ids": [
 "p0350",
 "p0352",
 "p0354",
 "p0356",
 "p0358",
 "p0360",
-"p0362",
+"p0362"
+],
+"onceden": false
+},
+{
+"kod": "M3x6 ISO 7380",
+"adet": 8,
+"m6": 0,
+"ids": [
 "p0447",
 "p0449",
 "p0451",
@@ -6180,9 +8656,123 @@
 ],
 "kamera": "arka",
 "m6": [],
-"sure_dk": 38,
+"sure_dk": 32,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"sira": [
+"p:0",
+"p:1",
+"p:2",
+"p:3",
+"b:0",
+"b:1",
+"p:4",
+"p:5",
+"b:2"
+],
+"sira_grup": [
+{
+"ad": "Masada: üst arka kapak + hub",
+"tezgah": "ust_kapak",
+"bag": "",
+"satir": [
+"p:0",
+"p:1",
+"p:2"
+],
+"is_": "Masada: 4'lü USB hub'ı üst arka servis kapağının iç yüzündeki takoza, iki yan dayamanın arasına 1 mm köpük bantla yapıştır. Bağla: hub kablosu ← Pi USB 3'ten boyundan gelen uzatma (K2), Hub 1 → göğüs ekranı dokunmatiği (F3'te boşta bırakılan USB), Hub 2 → ESP32 USB (K2'de direk arka yüzünden çıkarılan uç; 1N5819 yönü K2 madde 4). Hub 3 ve 4 boş. Hub'ın anahtarı açık kalmalı.",
+"kamera": [
+0.6,
+0.45,
+1.25
+],
+"saydam": [
+"p0218",
+"p0444",
+"p0445"
+],
+"gizli_ok": {
+"Köpük bant (USB Hub": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
+}
+},
+{
+"ad": "İlk enerji, aşama 2 (kapaklar açık)",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Kapaklar açık, hub bağlı: devreye alma testi adımın iş metnindeki 2. maddeye göre (ön şarj dizisi, mantar, motor yön testi). Bitince ana anahtarı kapat, aküyü XT60'tan ayır."
+},
+{
+"ad": "Arka servis kapağı",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:3",
+"b:0"
+],
+"is_": "Arka servis kapağını arkadan yerine koy, 7 × M3×6 ISO 7380 → ısıl gömme.",
+"gizli_ok": {
+"Bindirme cıvatası M3x6 (arka kapak)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
+}
+},
+{
+"ad": "Üst arka kapak (hub'la) → gövde",
+"tezgah": "",
+"bag": "ust_kapak",
+"satir": [
+"b:1"
+],
+"is_": "Üst arka servis kapağını hub'la birlikte arkadan yerine koy (hub kabloları gerilmesin, yaklaşık 150 mm söküm payı), 7 × M3×6 ISO 7380.",
+"ub": [
+0.0,
+0.0,
+-1.0
+],
+"giris_ok": {
+"*": "giriş yolu ölçümü: −z'de 29,5 mm boyunca çarpışma yok, sonra kutular ayrılıyor. Serbest sayılmamasının tek nedeni dinlenmede kapak ile göğüs bandı sağın ortak yüzü: ışın ölçümü 1,5 mm kiriş veriyor, gerçek derinlik (nokta–üçgen) en çok 0,057 mm, medyan 0; temas, çarpışma değil"
+}
+},
+{
+"ad": "Etek servis kapakları H1 + H2",
+"tezgah": "",
+"bag": "",
+"satir": [
+"p:4",
+"p:5",
+"b:2"
+],
+"is_": "Etek H1 (sigorta kutusu) ve H2 (ana sigorta) kapaklarını yukarıdan yerine koy, her biri 4 × M3×6. H1 sigorta kutusuna açılır: uç yuvalar yedek, sık değişen F1, F3, F4, F5 ortada (29.10).",
+"kamera": [
+0.3,
+1.0,
+0.35
+],
+"saydam": [
+"p0227",
+"p0228",
+"p0446",
+"p0447",
+"p0448",
+"p0449",
+"p0450",
+"p0451",
+"p0452",
+"p0453",
+"p0454",
+"p0455",
+"p0456",
+"p0457",
+"p0458",
+"p0459",
+"p0460",
+"p0461"
+],
+"gizli_ok": {
+"Kapak cıvatası M3x6 (Etek servis kapağı H1": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
+}
+}
+],
+"alt": 5
 }
 ],
 "parcalar": [
@@ -6203,7 +8793,7 @@
 0.0,
 0.0
 ],
-"d": 553.5
+"d": 251.6
 },
 {
 "id": "p0001",
@@ -6222,7 +8812,7 @@
 0.0,
 0.0
 ],
-"d": 553.5
+"d": 251.6
 },
 {
 "id": "p0002",
@@ -6241,7 +8831,7 @@
 0.0,
 -1.0
 ],
-"d": 218.1
+"d": 99.1
 },
 {
 "id": "p0003",
@@ -6260,7 +8850,7 @@
 1.0,
 0.0
 ],
-"d": 218.1
+"d": 99.1
 },
 {
 "id": "p0004",
@@ -6279,7 +8869,7 @@
 0.0,
 1.0
 ],
-"d": 218.1
+"d": 99.1
 },
 {
 "id": "p0005",
@@ -6298,7 +8888,7 @@
 1.0,
 0.0
 ],
-"d": 1228.6
+"d": 558.5
 },
 {
 "id": "p0006",
@@ -6317,7 +8907,7 @@
 1.0,
 0.0
 ],
-"d": 228.6
+"d": 103.9
 },
 {
 "id": "p0007",
@@ -6336,7 +8926,7 @@
 1.0,
 0.0
 ],
-"d": 73.5
+"d": 40.0
 },
 {
 "id": "p0008",
@@ -6469,7 +9059,7 @@
 1.0,
 0.0
 ],
-"d": 73.5
+"d": 40.0
 },
 {
 "id": "p0015",
@@ -6602,7 +9192,7 @@
 1.0,
 0.0
 ],
-"d": 73.5
+"d": 40.0
 },
 {
 "id": "p0022",
@@ -6735,7 +9325,7 @@
 1.0,
 0.0
 ],
-"d": 73.5
+"d": 40.0
 },
 {
 "id": "p0029",
@@ -6868,7 +9458,7 @@
 0.0,
 -0.92
 ],
-"d": 55.1
+"d": 40.0
 },
 {
 "id": "p0036",
@@ -6925,7 +9515,7 @@
 0.0,
 -0.92
 ],
-"d": 55.1
+"d": 40.0
 },
 {
 "id": "p0039",
@@ -6982,7 +9572,7 @@
 0.0,
 0.324
 ],
-"d": 55.1
+"d": 40.0
 },
 {
 "id": "p0042",
@@ -7039,7 +9629,7 @@
 0.0,
 -0.324
 ],
-"d": 55.1
+"d": 40.0
 },
 {
 "id": "p0045",
@@ -7096,7 +9686,7 @@
 0.0,
 0.324
 ],
-"d": 55.1
+"d": 40.0
 },
 {
 "id": "p0048",
@@ -7153,7 +9743,7 @@
 0.0,
 -0.324
 ],
-"d": 55.1
+"d": 40.0
 },
 {
 "id": "p0051",
@@ -7210,7 +9800,7 @@
 0.0,
 0.92
 ],
-"d": 55.1
+"d": 40.0
 },
 {
 "id": "p0054",
@@ -7267,7 +9857,7 @@
 0.0,
 0.92
 ],
-"d": 55.1
+"d": 40.0
 },
 {
 "id": "p0057",
@@ -7348,7 +9938,7 @@
 0.0,
 0.0
 ],
-"d": 77.8,
+"d": 40.0,
 "ub": [
 1.0,
 0.0,
@@ -7740,7 +10330,7 @@
 0.0,
 0.0
 ],
-"d": 107.6,
+"d": 48.9,
 "ub": [
 1.0,
 0.0,
@@ -7764,7 +10354,7 @@
 1.0,
 0.0
 ],
-"d": 81.3,
+"d": 40.0,
 "ub": [
 1.0,
 0.0,
@@ -7804,20 +10394,21 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 20,
+"a": 19,
 "b": 22,
 "t": "omuz",
 "u": [
--1.0,
+0.0,
 0.0,
 0.0
 ],
-"d": 25.0,
+"d": 0.0,
 "ub": [
 1.0,
 0.0,
 0.0
-]
+],
+"h": "p0059"
 },
 {
 "id": "p0082",
@@ -7852,20 +10443,21 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 20,
+"a": 19,
 "b": 22,
 "t": "omuz",
 "u": [
--1.0,
+0.0,
 0.0,
 0.0
 ],
-"d": 25.0,
+"d": 0.0,
 "ub": [
 1.0,
 0.0,
 0.0
-]
+],
+"h": "p0059"
 },
 {
 "id": "p0084",
@@ -7900,20 +10492,21 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 20,
+"a": 19,
 "b": 22,
 "t": "omuz",
 "u": [
--1.0,
+0.0,
 0.0,
 0.0
 ],
-"d": 25.0,
+"d": 0.0,
 "ub": [
 1.0,
 0.0,
 0.0
-]
+],
+"h": "p0059"
 },
 {
 "id": "p0086",
@@ -7948,20 +10541,21 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 20,
+"a": 19,
 "b": 22,
 "t": "omuz",
 "u": [
--1.0,
+0.0,
 0.0,
 0.0
 ],
-"d": 25.0,
+"d": 0.0,
 "ub": [
 1.0,
 0.0,
 0.0
-]
+],
+"h": "p0059"
 },
 {
 "id": "p0088",
@@ -7976,8 +10570,8 @@
 "b": 22,
 "t": "omuz",
 "u": [
-0.0,
 1.0,
+0.0,
 0.0
 ],
 "d": 40.0,
@@ -8028,7 +10622,7 @@
 0.0,
 0.0
 ],
-"d": 69.8
+"d": 40.0
 },
 {
 "id": "p0091",
@@ -8047,7 +10641,7 @@
 0.0,
 0.0
 ],
-"d": 115.0,
+"d": 52.3,
 "ub": [
 1.0,
 0.0,
@@ -8191,16 +10785,17 @@
 "b": 38,
 "t": "gobek",
 "u": [
-1.0,
+-1.0,
 0.0,
 0.0
 ],
-"d": 25.0,
+"d": 52.3,
 "ub": [
 1.0,
 0.0,
 0.0
-]
+],
+"h": "p0091"
 },
 {
 "id": "p0099",
@@ -8239,16 +10834,17 @@
 "b": 38,
 "t": "gobek",
 "u": [
-1.0,
+-1.0,
 0.0,
 0.0
 ],
-"d": 25.0,
+"d": 52.3,
 "ub": [
 1.0,
 0.0,
 0.0
-]
+],
+"h": "p0091"
 },
 {
 "id": "p0101",
@@ -8287,16 +10883,17 @@
 "b": 38,
 "t": "gobek",
 "u": [
-1.0,
+-1.0,
 0.0,
 0.0
 ],
-"d": 25.0,
+"d": 52.3,
 "ub": [
 1.0,
 0.0,
 0.0
-]
+],
+"h": "p0091"
 },
 {
 "id": "p0103",
@@ -8353,7 +10950,7 @@
 0.0,
 1.0
 ],
-"d": 77.8
+"d": 40.0
 },
 {
 "id": "p0106",
@@ -8535,15 +11132,21 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 39,
-"b": 39,
-"t": null,
+"a": 37,
+"b": 38,
+"t": "gobek",
 "u": [
+-1.0,
 0.0,
-0.0,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 52.3,
+"ub": [
+1.0,
+0.0,
+0.0
+],
+"h": "p0091"
 },
 {
 "id": "p0116",
@@ -8657,7 +11260,7 @@
 0.0,
 1.0
 ],
-"d": 125.2
+"d": 56.9
 },
 {
 "id": "p0122",
@@ -8771,7 +11374,7 @@
 0.0,
 -0.007
 ],
-"d": 167.4
+"d": 76.1
 },
 {
 "id": "p0128",
@@ -8788,9 +11391,10 @@
 "u": [
 0.0,
 0.0,
--1.0
+1.0
 ],
-"d": 25.0
+"d": 56.9,
+"h": "p0121"
 },
 {
 "id": "p0129",
@@ -8828,7 +11432,8 @@
 0.0,
 1.0
 ],
-"d": 25.0
+"d": 56.9,
+"h": "p0121"
 },
 {
 "id": "p0131",
@@ -8866,7 +11471,7 @@
 0.0,
 0.0
 ],
-"d": 139.3,
+"d": 63.3,
 "ub": [
 -1.0,
 0.0,
@@ -8890,7 +11495,7 @@
 0.0,
 0.0
 ],
-"d": 77.8,
+"d": 40.0,
 "ub": [
 -1.0,
 0.0,
@@ -9282,7 +11887,7 @@
 0.0,
 0.0
 ],
-"d": 107.6,
+"d": 48.9,
 "ub": [
 -1.0,
 0.0,
@@ -9306,7 +11911,7 @@
 1.0,
 0.0
 ],
-"d": 81.3,
+"d": 40.0,
 "ub": [
 -1.0,
 0.0,
@@ -9346,20 +11951,21 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 20,
+"a": 19,
 "b": 22,
 "t": "omuz",
 "u": [
-1.0,
+-1.0,
 0.0,
 0.0
 ],
-"d": 25.0,
+"d": 63.3,
 "ub": [
 -1.0,
 0.0,
 0.0
-]
+],
+"h": "p0132"
 },
 {
 "id": "p0155",
@@ -9394,20 +12000,21 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 20,
+"a": 19,
 "b": 22,
 "t": "omuz",
 "u": [
-1.0,
+-1.0,
 0.0,
 0.0
 ],
-"d": 25.0,
+"d": 63.3,
 "ub": [
 -1.0,
 0.0,
 0.0
-]
+],
+"h": "p0132"
 },
 {
 "id": "p0157",
@@ -9442,20 +12049,21 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 20,
+"a": 19,
 "b": 22,
 "t": "omuz",
 "u": [
-1.0,
+-1.0,
 0.0,
 0.0
 ],
-"d": 25.0,
+"d": 63.3,
 "ub": [
 -1.0,
 0.0,
 0.0
-]
+],
+"h": "p0132"
 },
 {
 "id": "p0159",
@@ -9490,20 +12098,21 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 20,
+"a": 19,
 "b": 22,
 "t": "omuz",
 "u": [
-1.0,
+-1.0,
 0.0,
 0.0
 ],
-"d": 25.0,
+"d": 63.3,
 "ub": [
 -1.0,
 0.0,
 0.0
-]
+],
+"h": "p0132"
 },
 {
 "id": "p0161",
@@ -9518,8 +12127,8 @@
 "b": 22,
 "t": "omuz",
 "u": [
+-1.0,
 0.0,
-1.0,
 0.0
 ],
 "d": 40.0,
@@ -9570,7 +12179,7 @@
 0.0,
 0.0
 ],
-"d": 69.8
+"d": 40.0
 },
 {
 "id": "p0164",
@@ -9589,7 +12198,7 @@
 0.0,
 0.0
 ],
-"d": 115.0,
+"d": 52.3,
 "ub": [
 -1.0,
 0.0,
@@ -9689,7 +12298,7 @@
 0.0,
 0.0
 ],
-"d": 124.1,
+"d": 56.4,
 "ub": [
 -1.0,
 0.0,
@@ -9733,16 +12342,17 @@
 "b": 38,
 "t": "gobek",
 "u": [
--1.0,
--0.0,
--0.0
+1.0,
+0.0,
+0.0
 ],
-"d": 25.0,
+"d": 52.3,
 "ub": [
 -1.0,
 0.0,
 0.0
-]
+],
+"h": "p0164"
 },
 {
 "id": "p0172",
@@ -9781,16 +12391,17 @@
 "b": 38,
 "t": "gobek",
 "u": [
--1.0,
--0.0,
--0.0
+1.0,
+0.0,
+0.0
 ],
-"d": 25.0,
+"d": 52.3,
 "ub": [
 -1.0,
 0.0,
 0.0
-]
+],
+"h": "p0164"
 },
 {
 "id": "p0174",
@@ -9829,16 +12440,17 @@
 "b": 38,
 "t": "gobek",
 "u": [
--1.0,
--0.0,
--0.0
+1.0,
+0.0,
+0.0
 ],
-"d": 25.0,
+"d": 52.3,
 "ub": [
 -1.0,
 0.0,
 0.0
-]
+],
+"h": "p0164"
 },
 {
 "id": "p0176",
@@ -9895,7 +12507,7 @@
 0.0,
 1.0
 ],
-"d": 77.8
+"d": 40.0
 },
 {
 "id": "p0179",
@@ -10077,15 +12689,21 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 39,
-"b": 39,
-"t": null,
+"a": 37,
+"b": 38,
+"t": "gobek",
 "u": [
+1.0,
 0.0,
-0.0,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 52.3,
+"ub": [
+-1.0,
+0.0,
+0.0
+],
+"h": "p0164"
 },
 {
 "id": "p0189",
@@ -10199,7 +12817,7 @@
 0.0,
 1.0
 ],
-"d": 125.2
+"d": 56.9
 },
 {
 "id": "p0195",
@@ -10313,7 +12931,7 @@
 0.0,
 -0.007
 ],
-"d": 167.4
+"d": 76.1
 },
 {
 "id": "p0201",
@@ -10328,11 +12946,12 @@
 "b": 40,
 "t": null,
 "u": [
--0.0,
--0.0,
--1.0
+0.0,
+0.0,
+1.0
 ],
-"d": 25.0
+"d": 56.9,
+"h": "p0194"
 },
 {
 "id": "p0202",
@@ -10370,7 +12989,8 @@
 0.0,
 1.0
 ],
-"d": 25.0
+"d": 56.9,
+"h": "p0194"
 },
 {
 "id": "p0204",
@@ -10406,9 +13026,9 @@
 "u": [
 1.0,
 0.0,
--0.0
+0.0
 ],
-"d": 388.4
+"d": 156.9
 },
 {
 "id": "p0206",
@@ -10427,7 +13047,7 @@
 0.0,
 0.0
 ],
-"d": 388.4
+"d": 154.4
 },
 {
 "id": "p0207",
@@ -10446,7 +13066,7 @@
 0.0,
 0.0
 ],
-"d": 304.0
+"d": 138.2
 },
 {
 "id": "p0208",
@@ -10465,7 +13085,7 @@
 0.0,
 0.0
 ],
-"d": 297.7
+"d": 135.3
 },
 {
 "id": "p0209",
@@ -10482,9 +13102,9 @@
 "u": [
 1.0,
 0.0,
-0.018
+0.0
 ],
-"d": 482.7
+"d": 138.2
 },
 {
 "id": "p0210",
@@ -10501,9 +13121,9 @@
 "u": [
 -1.0,
 0.0,
-0.018
+0.0
 ],
-"d": 482.7
+"d": 135.3
 },
 {
 "id": "p0211",
@@ -10518,11 +13138,11 @@
 "b": 34,
 "t": null,
 "u": [
-0.057,
+1.0,
 0.0,
-0.998
+0.0
 ],
-"d": 475.8
+"d": 175.7
 },
 {
 "id": "p0212",
@@ -10537,11 +13157,11 @@
 "b": 34,
 "t": null,
 "u": [
--0.057,
+-1.0,
 0.0,
-0.998
+0.0
 ],
-"d": 475.8
+"d": 173.1
 },
 {
 "id": "p0213",
@@ -10556,11 +13176,11 @@
 "b": 35,
 "t": null,
 "u": [
-0.097,
+1.0,
 0.0,
-0.995
+0.0
 ],
-"d": 520.9
+"d": 179.8
 },
 {
 "id": "p0214",
@@ -10575,11 +13195,11 @@
 "b": 35,
 "t": null,
 "u": [
--0.097,
+-1.0,
 0.0,
-0.995
+0.0
 ],
-"d": 520.9
+"d": 177.1
 },
 {
 "id": "p0215",
@@ -10594,11 +13214,11 @@
 "b": 36,
 "t": null,
 "u": [
-0.107,
+1.0,
 0.0,
-0.994
+0.0
 ],
-"d": 509.5
+"d": 124.2
 },
 {
 "id": "p0216",
@@ -10613,11 +13233,11 @@
 "b": 36,
 "t": null,
 "u": [
--0.107,
+-1.0,
 0.0,
-0.994
+0.0
 ],
-"d": 509.5
+"d": 120.3
 },
 {
 "id": "p0217",
@@ -10636,7 +13256,7 @@
 0.0,
 -1.0
 ],
-"d": 382.5
+"d": 124.2
 },
 {
 "id": "p0218",
@@ -10655,7 +13275,7 @@
 0.0,
 -1.0
 ],
-"d": 248.3
+"d": 112.9
 },
 {
 "id": "p0219",
@@ -10670,11 +13290,11 @@
 "b": 33,
 "t": null,
 "u": [
-0.707,
+1.0,
 0.0,
--0.707
+0.0
 ],
-"d": 828.0
+"d": 185.0
 },
 {
 "id": "p0220",
@@ -10689,11 +13309,11 @@
 "b": 33,
 "t": null,
 "u": [
--0.707,
+-1.0,
 0.0,
--0.707
+0.0
 ],
-"d": 828.0
+"d": 181.3
 },
 {
 "id": "p0221",
@@ -10712,7 +13332,7 @@
 0.0,
 0.0
 ],
-"d": 646.9
+"d": 187.4
 },
 {
 "id": "p0222",
@@ -10731,7 +13351,7 @@
 0.0,
 0.0
 ],
-"d": 646.9
+"d": 187.4
 },
 {
 "id": "p0223",
@@ -10750,7 +13370,7 @@
 0.0,
 0.707
 ],
-"d": 828.0
+"d": 185.0
 },
 {
 "id": "p0224",
@@ -10769,7 +13389,7 @@
 0.0,
 0.707
 ],
-"d": 828.0
+"d": 181.3
 },
 {
 "id": "p0225",
@@ -10785,10 +13405,10 @@
 "t": null,
 "u": [
 0.0,
-0.0,
--1.0
+1.0,
+0.0
 ],
-"d": 630.6
+"d": 155.2
 },
 {
 "id": "p0226",
@@ -10804,10 +13424,10 @@
 "t": null,
 "u": [
 0.0,
-0.0,
-1.0
+1.0,
+0.0
 ],
-"d": 630.6
+"d": 155.2
 },
 {
 "id": "p0227",
@@ -10823,10 +13443,10 @@
 "t": null,
 "u": [
 0.0,
-0.0,
--1.0
+1.0,
+0.0
 ],
-"d": 140.9
+"d": 64.0
 },
 {
 "id": "p0228",
@@ -10842,10 +13462,10 @@
 "t": null,
 "u": [
 0.0,
-0.0,
--1.0
+1.0,
+0.0
 ],
-"d": 98.7
+"d": 44.8
 },
 {
 "id": "p0229",
@@ -10864,7 +13484,7 @@
 0.0,
 1.0
 ],
-"d": 407.3
+"d": 128.6
 },
 {
 "id": "p0230",
@@ -10879,11 +13499,11 @@
 "b": 35,
 "t": null,
 "u": [
-0.0,
+-0.0,
 0.0,
 1.0
 ],
-"d": 407.3
+"d": 128.6
 },
 {
 "id": "p0231",
@@ -10902,7 +13522,7 @@
 0.0,
 1.0
 ],
-"d": 170.6
+"d": 77.6
 },
 {
 "id": "p0232",
@@ -10921,7 +13541,7 @@
 0.0,
 0.0
 ],
-"d": 166.6
+"d": 75.7
 },
 {
 "id": "p0233",
@@ -10940,7 +13560,7 @@
 0.0,
 0.0
 ],
-"d": 166.5
+"d": 75.7
 },
 {
 "id": "p0234",
@@ -10959,7 +13579,7 @@
 0.0,
 0.0
 ],
-"d": 166.6
+"d": 75.7
 },
 {
 "id": "p0235",
@@ -10978,7 +13598,7 @@
 0.0,
 0.0
 ],
-"d": 166.5
+"d": 75.7
 },
 {
 "id": "p0236",
@@ -10993,11 +13613,11 @@
 "b": 34,
 "t": null,
 "u": [
-0.418,
 0.0,
-0.908
+0.555,
+-0.832
 ],
-"d": 76.9
+"d": 40.0
 },
 {
 "id": "p0237",
@@ -11012,11 +13632,11 @@
 "b": 34,
 "t": null,
 "u": [
-0.45,
 0.0,
-0.893
+0.555,
+-0.832
 ],
-"d": 100.5
+"d": 45.7
 },
 {
 "id": "p0238",
@@ -11031,11 +13651,11 @@
 "b": 34,
 "t": null,
 "u": [
-0.461,
 0.0,
-0.887
+0.555,
+-0.832
 ],
-"d": 81.4
+"d": 40.0
 },
 {
 "id": "p0239",
@@ -11050,11 +13670,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 156.9,
+"h": "p0205"
 },
 {
 "id": "p0240",
@@ -11088,11 +13709,12 @@
 "b": 34,
 "t": null,
 "u": [
+-1.0,
 0.0,
-0.0,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 154.4,
+"h": "p0206"
 },
 {
 "id": "p0242",
@@ -11126,11 +13748,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 156.9,
+"h": "p0205"
 },
 {
 "id": "p0244",
@@ -11164,11 +13787,12 @@
 "b": 34,
 "t": null,
 "u": [
+-1.0,
 0.0,
-0.0,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 154.4,
+"h": "p0206"
 },
 {
 "id": "p0246",
@@ -11202,11 +13826,12 @@
 "b": 34,
 "t": null,
 "u": [
--1.0,
+1.0,
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 156.9,
+"h": "p0205"
 },
 {
 "id": "p0248",
@@ -11225,7 +13850,7 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 163.2
 },
 {
 "id": "p0249",
@@ -11240,11 +13865,12 @@
 "b": 34,
 "t": null,
 "u": [
-1.0,
+-1.0,
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 154.4,
+"h": "p0206"
 },
 {
 "id": "p0250",
@@ -11263,7 +13889,7 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 160.3
 },
 {
 "id": "p0251",
@@ -11278,11 +13904,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 138.2,
+"h": "p0207"
 },
 {
 "id": "p0252",
@@ -11316,11 +13943,12 @@
 "b": 34,
 "t": null,
 "u": [
+-1.0,
 0.0,
-0.0,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 135.3,
+"h": "p0208"
 },
 {
 "id": "p0254",
@@ -11354,11 +13982,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 138.2,
+"h": "p0207"
 },
 {
 "id": "p0256",
@@ -11392,11 +14021,12 @@
 "b": 34,
 "t": null,
 "u": [
+-1.0,
 0.0,
-0.0,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 135.3,
+"h": "p0208"
 },
 {
 "id": "p0258",
@@ -11430,11 +14060,12 @@
 "b": 34,
 "t": null,
 "u": [
--1.0,
+1.0,
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 138.2,
+"h": "p0207"
 },
 {
 "id": "p0260",
@@ -11453,7 +14084,7 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 163.2
 },
 {
 "id": "p0261",
@@ -11468,11 +14099,12 @@
 "b": 34,
 "t": null,
 "u": [
-1.0,
+-1.0,
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 135.3,
+"h": "p0208"
 },
 {
 "id": "p0262",
@@ -11491,7 +14123,7 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 160.3
 },
 {
 "id": "p0263",
@@ -11506,11 +14138,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.018,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 138.2,
+"h": "p0209"
 },
 {
 "id": "p0264",
@@ -11544,11 +14177,12 @@
 "b": 34,
 "t": null,
 "u": [
+-1.0,
 0.0,
-0.018,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 135.3,
+"h": "p0210"
 },
 {
 "id": "p0266",
@@ -11582,11 +14216,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.014,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 138.2,
+"h": "p0209"
 },
 {
 "id": "p0268",
@@ -11620,11 +14255,12 @@
 "b": 34,
 "t": null,
 "u": [
+-1.0,
 0.0,
-0.014,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 135.3,
+"h": "p0210"
 },
 {
 "id": "p0270",
@@ -11658,11 +14294,12 @@
 "b": 34,
 "t": null,
 "u": [
--0.997,
-0.077,
+1.0,
+0.0,
 0.0
 ],
-"d": 25.0
+"d": 138.2,
+"h": "p0209"
 },
 {
 "id": "p0272",
@@ -11696,11 +14333,12 @@
 "b": 34,
 "t": null,
 "u": [
-0.997,
-0.077,
+-1.0,
+0.0,
 0.0
 ],
-"d": 25.0
+"d": 135.3,
+"h": "p0210"
 },
 {
 "id": "p0274",
@@ -11719,7 +14357,7 @@
 -0.077,
 -0.0
 ],
-"d": 25.0
+"d": 198.1
 },
 {
 "id": "p0275",
@@ -11730,15 +14368,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 35,
-"b": 35,
+"a": 34,
+"b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.574,
--0.819
+0.0
 ],
-"d": 25.0
+"d": 175.7,
+"h": "p0211"
 },
 {
 "id": "p0276",
@@ -11768,15 +14407,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 35,
-"b": 35,
+"a": 34,
+"b": 34,
 "t": null,
 "u": [
+-1.0,
 0.0,
-0.574,
--0.819
+0.0
 ],
-"d": 25.0
+"d": 173.1,
+"h": "p0212"
 },
 {
 "id": "p0278",
@@ -11806,15 +14446,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 35,
-"b": 35,
+"a": 34,
+"b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 175.7,
+"h": "p0211"
 },
 {
 "id": "p0280",
@@ -11844,15 +14485,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 35,
-"b": 35,
+"a": 34,
+"b": 34,
 "t": null,
 "u": [
+-1.0,
 0.0,
-0.0,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 173.1,
+"h": "p0212"
 },
 {
 "id": "p0282",
@@ -11882,15 +14524,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 35,
-"b": 35,
+"a": 34,
+"b": 34,
 "t": null,
 "u": [
--0.973,
-0.231,
+1.0,
+0.0,
 0.0
 ],
-"d": 25.0
+"d": 175.7,
+"h": "p0211"
 },
 {
 "id": "p0284",
@@ -11909,7 +14552,7 @@
 -0.231,
 -0.0
 ],
-"d": 25.0
+"d": 204.8
 },
 {
 "id": "p0285",
@@ -11920,15 +14563,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 35,
-"b": 35,
+"a": 34,
+"b": 34,
 "t": null,
 "u": [
-0.973,
-0.231,
+-1.0,
+0.0,
 0.0
 ],
-"d": 25.0
+"d": 173.1,
+"h": "p0212"
 },
 {
 "id": "p0286",
@@ -11947,7 +14591,7 @@
 -0.231,
 -0.0
 ],
-"d": 25.0
+"d": 202.1
 },
 {
 "id": "p0287",
@@ -11958,15 +14602,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 36,
-"b": 36,
+"a": 35,
+"b": 35,
 "t": null,
 "u": [
+1.0,
 0.0,
--0.04,
-0.999
+0.0
 ],
-"d": 25.0
+"d": 179.8,
+"h": "p0213"
 },
 {
 "id": "p0288",
@@ -11996,15 +14641,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 36,
-"b": 36,
+"a": 35,
+"b": 35,
 "t": null,
 "u": [
+1.0,
 0.0,
--0.04,
-0.999
+0.0
 ],
-"d": 25.0
+"d": 179.8,
+"h": "p0213"
 },
 {
 "id": "p0290",
@@ -12034,15 +14680,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 36,
-"b": 36,
+"a": 35,
+"b": 35,
 "t": null,
 "u": [
+-1.0,
 0.0,
--0.04,
-0.999
+0.0
 ],
-"d": 25.0
+"d": 177.1,
+"h": "p0214"
 },
 {
 "id": "p0292",
@@ -12072,15 +14719,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 36,
-"b": 36,
+"a": 35,
+"b": 35,
 "t": null,
 "u": [
+-1.0,
 0.0,
--0.04,
-0.999
+0.0
 ],
-"d": 25.0
+"d": 177.1,
+"h": "p0214"
 },
 {
 "id": "p0294",
@@ -12110,15 +14758,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 36,
-"b": 36,
+"a": 35,
+"b": 35,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 179.8,
+"h": "p0213"
 },
 {
 "id": "p0296",
@@ -12148,15 +14797,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 36,
-"b": 36,
+"a": 35,
+"b": 35,
 "t": null,
 "u": [
+-1.0,
 0.0,
-0.0,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 177.1,
+"h": "p0214"
 },
 {
 "id": "p0298",
@@ -12190,11 +14840,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.014,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 156.9,
+"h": "p0205"
 },
 {
 "id": "p0300",
@@ -12228,11 +14879,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.014,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 156.9,
+"h": "p0205"
 },
 {
 "id": "p0302",
@@ -12266,11 +14918,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 138.2,
+"h": "p0207"
 },
 {
 "id": "p0304",
@@ -12304,11 +14957,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 138.2,
+"h": "p0207"
 },
 {
 "id": "p0306",
@@ -12342,11 +14996,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 138.2,
+"h": "p0209"
 },
 {
 "id": "p0308",
@@ -12380,11 +15035,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 138.2,
+"h": "p0209"
 },
 {
 "id": "p0310",
@@ -12418,11 +15074,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.018,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 175.7,
+"h": "p0211"
 },
 {
 "id": "p0312",
@@ -12456,11 +15113,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.018,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 175.7,
+"h": "p0211"
 },
 {
 "id": "p0314",
@@ -12494,11 +15152,12 @@
 "b": 35,
 "t": null,
 "u": [
--0.0,
--0.259,
--0.966
+1.0,
+0.0,
+0.0
 ],
-"d": 25.0
+"d": 179.8,
+"h": "p0213"
 },
 {
 "id": "p0316",
@@ -12532,11 +15191,12 @@
 "b": 35,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 179.8,
+"h": "p0213"
 },
 {
 "id": "p0318",
@@ -12570,11 +15230,12 @@
 "b": 36,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
--1.0
+0.0
 ],
-"d": 25.0
+"d": 124.2,
+"h": "p0215"
 },
 {
 "id": "p0320",
@@ -12608,11 +15269,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.014,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 156.9,
+"h": "p0205"
 },
 {
 "id": "p0322",
@@ -12646,11 +15308,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.014,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 156.9,
+"h": "p0205"
 },
 {
 "id": "p0324",
@@ -12684,11 +15347,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 138.2,
+"h": "p0207"
 },
 {
 "id": "p0326",
@@ -12722,11 +15386,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 138.2,
+"h": "p0207"
 },
 {
 "id": "p0328",
@@ -12760,11 +15425,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 138.2,
+"h": "p0209"
 },
 {
 "id": "p0330",
@@ -12798,11 +15464,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 138.2,
+"h": "p0209"
 },
 {
 "id": "p0332",
@@ -12836,11 +15503,12 @@
 "b": 36,
 "t": null,
 "u": [
+1.0,
 0.0,
--0.025,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 124.2,
+"h": "p0215"
 },
 {
 "id": "p0334",
@@ -12870,15 +15538,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 34,
+"b": 34,
 "t": null,
 "u": [
+-1.0,
 0.0,
-0.014,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 173.1,
+"h": "p0212"
 },
 {
 "id": "p0336",
@@ -12897,7 +15566,7 @@
 -0.014,
 -1.0
 ],
-"d": 25.0
+"d": 149.2
 },
 {
 "id": "p0337",
@@ -12908,15 +15577,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 34,
+"b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.014,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 175.7,
+"h": "p0211"
 },
 {
 "id": "p0338",
@@ -12935,7 +15605,7 @@
 -0.014,
 -1.0
 ],
-"d": 25.0
+"d": 149.2
 },
 {
 "id": "p0339",
@@ -12946,15 +15616,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 34,
+"b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.014,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 175.7,
+"h": "p0211"
 },
 {
 "id": "p0340",
@@ -12973,7 +15644,7 @@
 -0.014,
 -1.0
 ],
-"d": 25.0
+"d": 149.2
 },
 {
 "id": "p0341",
@@ -12984,15 +15655,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 34,
+"b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.014,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 175.7,
+"h": "p0211"
 },
 {
 "id": "p0342",
@@ -13011,7 +15683,7 @@
 -0.014,
 -1.0
 ],
-"d": 25.0
+"d": 149.2
 },
 {
 "id": "p0343",
@@ -13022,15 +15694,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 34,
+"b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.014,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 175.7,
+"h": "p0211"
 },
 {
 "id": "p0344",
@@ -13049,7 +15722,7 @@
 -0.014,
 -1.0
 ],
-"d": 25.0
+"d": 149.2
 },
 {
 "id": "p0345",
@@ -13060,15 +15733,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 34,
+"b": 34,
 "t": null,
 "u": [
+-1.0,
 0.0,
-0.014,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 173.1,
+"h": "p0212"
 },
 {
 "id": "p0346",
@@ -13087,7 +15761,7 @@
 -0.014,
 -1.0
 ],
-"d": 25.0
+"d": 149.2
 },
 {
 "id": "p0347",
@@ -13098,15 +15772,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 34,
+"b": 34,
 "t": null,
 "u": [
+-1.0,
 0.0,
-0.014,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 173.1,
+"h": "p0212"
 },
 {
 "id": "p0348",
@@ -13125,7 +15800,7 @@
 -0.014,
 -1.0
 ],
-"d": 25.0
+"d": 149.2
 },
 {
 "id": "p0349",
@@ -13136,15 +15811,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 35,
+"b": 35,
 "t": null,
 "u": [
+-1.0,
 0.0,
--0.04,
-0.999
+0.0
 ],
-"d": 25.0
+"d": 177.1,
+"h": "p0214"
 },
 {
 "id": "p0350",
@@ -13174,15 +15850,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 35,
+"b": 35,
 "t": null,
 "u": [
+1.0,
 0.0,
--0.04,
-0.999
+0.0
 ],
-"d": 25.0
+"d": 179.8,
+"h": "p0213"
 },
 {
 "id": "p0352",
@@ -13212,15 +15889,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 35,
+"b": 35,
 "t": null,
 "u": [
+1.0,
 0.0,
--0.04,
-0.999
+0.0
 ],
-"d": 25.0
+"d": 179.8,
+"h": "p0213"
 },
 {
 "id": "p0354",
@@ -13250,15 +15928,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 35,
+"b": 35,
 "t": null,
 "u": [
+1.0,
 0.0,
--0.04,
-0.999
+0.0
 ],
-"d": 25.0
+"d": 179.8,
+"h": "p0213"
 },
 {
 "id": "p0356",
@@ -13288,15 +15967,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 35,
+"b": 35,
 "t": null,
 "u": [
+1.0,
 0.0,
--0.04,
-0.999
+0.0
 ],
-"d": 25.0
+"d": 179.8,
+"h": "p0213"
 },
 {
 "id": "p0358",
@@ -13326,15 +16006,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 35,
+"b": 35,
 "t": null,
 "u": [
+-1.0,
 0.0,
--0.04,
-0.999
+0.0
 ],
-"d": 25.0
+"d": 177.1,
+"h": "p0214"
 },
 {
 "id": "p0360",
@@ -13364,15 +16045,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 35,
+"b": 35,
 "t": null,
 "u": [
+-1.0,
 0.0,
--0.04,
-0.999
+0.0
 ],
-"d": 25.0
+"d": 177.1,
+"h": "p0214"
 },
 {
 "id": "p0362",
@@ -13407,10 +16089,11 @@
 "t": null,
 "u": [
 0.0,
-0.0,
--1.0
+1.0,
+0.0
 ],
-"d": 25.0
+"d": 155.2,
+"h": "p0226"
 },
 {
 "id": "p0364",
@@ -13429,7 +16112,7 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 206.3
 },
 {
 "id": "p0365",
@@ -13444,11 +16127,12 @@
 "b": 33,
 "t": null,
 "u": [
--0.0,
--0.142,
--0.99
+0.0,
+1.0,
+0.0
 ],
-"d": 25.0
+"d": 155.2,
+"h": "p0226"
 },
 {
 "id": "p0366",
@@ -13467,7 +16151,7 @@
 0.142,
 0.99
 ],
-"d": 25.0
+"d": 206.3
 },
 {
 "id": "p0367",
@@ -13482,11 +16166,12 @@
 "b": 33,
 "t": null,
 "u": [
+0.707,
 0.0,
-0.0,
--1.0
+0.707
 ],
-"d": 25.0
+"d": 185.0,
+"h": "p0223"
 },
 {
 "id": "p0368",
@@ -13520,11 +16205,12 @@
 "b": 33,
 "t": null,
 "u": [
--0.0,
--0.142,
--0.99
+0.707,
+0.0,
+0.707
 ],
-"d": 25.0
+"d": 185.0,
+"h": "p0223"
 },
 {
 "id": "p0370",
@@ -13559,10 +16245,11 @@
 "t": null,
 "u": [
 0.0,
-0.0,
-1.0
+1.0,
+0.0
 ],
-"d": 25.0
+"d": 155.2,
+"h": "p0225"
 },
 {
 "id": "p0372",
@@ -13597,10 +16284,11 @@
 "t": null,
 "u": [
 0.0,
-0.0,
-1.0
+1.0,
+0.0
 ],
-"d": 25.0
+"d": 155.2,
+"h": "p0225"
 },
 {
 "id": "p0374",
@@ -13635,10 +16323,11 @@
 "t": null,
 "u": [
 0.0,
--0.142,
-0.99
+1.0,
+0.0
 ],
-"d": 25.0
+"d": 155.2,
+"h": "p0225"
 },
 {
 "id": "p0376",
@@ -13672,11 +16361,12 @@
 "b": 33,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 185.0,
+"h": "p0219"
 },
 {
 "id": "p0378",
@@ -13710,11 +16400,12 @@
 "b": 33,
 "t": null,
 "u": [
+1.0,
 0.0,
-0.0,
-1.0
+0.0
 ],
-"d": 25.0
+"d": 185.0,
+"h": "p0219"
 },
 {
 "id": "p0380",
@@ -13748,11 +16439,12 @@
 "b": 33,
 "t": null,
 "u": [
+1.0,
 0.0,
--0.142,
-0.99
+0.0
 ],
-"d": 25.0
+"d": 185.0,
+"h": "p0219"
 },
 {
 "id": "p0382",
@@ -13786,11 +16478,12 @@
 "b": 33,
 "t": null,
 "u": [
--1.0,
+1.0,
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 187.4,
+"h": "p0221"
 },
 {
 "id": "p0384",
@@ -13809,7 +16502,7 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 210.0
 },
 {
 "id": "p0385",
@@ -13824,11 +16517,12 @@
 "b": 33,
 "t": null,
 "u": [
--1.0,
+1.0,
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 187.4,
+"h": "p0221"
 },
 {
 "id": "p0386",
@@ -13847,7 +16541,7 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 210.0
 },
 {
 "id": "p0387",
@@ -13862,11 +16556,12 @@
 "b": 33,
 "t": null,
 "u": [
--0.861,
--0.508,
--0.0
+1.0,
+0.0,
+0.0
 ],
-"d": 25.0
+"d": 187.4,
+"h": "p0221"
 },
 {
 "id": "p0388",
@@ -13885,7 +16580,7 @@
 0.508,
 0.0
 ],
-"d": 25.0
+"d": 210.0
 },
 {
 "id": "p0389",
@@ -13900,11 +16595,12 @@
 "b": 33,
 "t": null,
 "u": [
--1.0,
+1.0,
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 187.4,
+"h": "p0221"
 },
 {
 "id": "p0390",
@@ -13938,11 +16634,12 @@
 "b": 33,
 "t": null,
 "u": [
--1.0,
+1.0,
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 187.4,
+"h": "p0221"
 },
 {
 "id": "p0392",
@@ -13976,11 +16673,12 @@
 "b": 33,
 "t": null,
 "u": [
--0.861,
--0.508,
--0.0
+1.0,
+0.0,
+0.0
 ],
-"d": 25.0
+"d": 187.4,
+"h": "p0221"
 },
 {
 "id": "p0394",
@@ -14014,11 +16712,12 @@
 "b": 33,
 "t": null,
 "u": [
-1.0,
+-1.0,
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 187.4,
+"h": "p0222"
 },
 {
 "id": "p0396",
@@ -14037,7 +16736,7 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 206.3
 },
 {
 "id": "p0397",
@@ -14052,11 +16751,12 @@
 "b": 33,
 "t": null,
 "u": [
-1.0,
+-1.0,
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 187.4,
+"h": "p0222"
 },
 {
 "id": "p0398",
@@ -14075,7 +16775,7 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 206.3
 },
 {
 "id": "p0399",
@@ -14090,11 +16790,12 @@
 "b": 33,
 "t": null,
 "u": [
-0.861,
--0.508,
+-1.0,
+0.0,
 0.0
 ],
-"d": 25.0
+"d": 187.4,
+"h": "p0222"
 },
 {
 "id": "p0400",
@@ -14113,7 +16814,7 @@
 0.508,
 -0.0
 ],
-"d": 25.0
+"d": 206.3
 },
 {
 "id": "p0401",
@@ -14128,11 +16829,12 @@
 "b": 33,
 "t": null,
 "u": [
-1.0,
+-1.0,
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 187.4,
+"h": "p0222"
 },
 {
 "id": "p0402",
@@ -14166,11 +16868,12 @@
 "b": 33,
 "t": null,
 "u": [
-1.0,
+-1.0,
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 187.4,
+"h": "p0222"
 },
 {
 "id": "p0404",
@@ -14204,11 +16907,12 @@
 "b": 33,
 "t": null,
 "u": [
-0.861,
--0.508,
+-1.0,
+0.0,
 0.0
 ],
-"d": 25.0
+"d": 187.4,
+"h": "p0222"
 },
 {
 "id": "p0406",
@@ -14243,10 +16947,10 @@
 "t": null,
 "u": [
 0.0,
-0.0,
-1.0
+0.243,
+0.97
 ],
-"d": 381.8
+"d": 173.6
 },
 {
 "id": "p0408",
@@ -14261,11 +16965,12 @@
 "b": 35,
 "t": null,
 "u": [
--0.0,
--0.259,
--0.966
+0.0,
+0.0,
+1.0
 ],
-"d": 25.0
+"d": 128.6,
+"h": "p0229"
 },
 {
 "id": "p0409",
@@ -14284,7 +16989,7 @@
 0.259,
 0.966
 ],
-"d": 25.0
+"d": 153.6
 },
 {
 "id": "p0410",
@@ -14299,11 +17004,12 @@
 "b": 35,
 "t": null,
 "u": [
--0.0,
--0.259,
--0.966
+0.0,
+0.0,
+1.0
 ],
-"d": 25.0
+"d": 128.6,
+"h": "p0229"
 },
 {
 "id": "p0411",
@@ -14337,11 +17043,12 @@
 "b": 35,
 "t": null,
 "u": [
--0.0,
--0.259,
--0.966
+0.0,
+0.0,
+1.0
 ],
-"d": 25.0
+"d": 128.6,
+"h": "p0229"
 },
 {
 "id": "p0413",
@@ -14360,7 +17067,7 @@
 0.259,
 0.966
 ],
-"d": 25.0
+"d": 153.6
 },
 {
 "id": "p0414",
@@ -14375,11 +17082,12 @@
 "b": 35,
 "t": null,
 "u": [
--0.0,
--0.259,
--0.966
+0.0,
+0.0,
+1.0
 ],
-"d": 25.0
+"d": 128.6,
+"h": "p0229"
 },
 {
 "id": "p0415",
@@ -14414,10 +17122,11 @@
 "t": null,
 "u": [
 -0.0,
--0.259,
--0.966
+0.0,
+1.0
 ],
-"d": 25.0
+"d": 128.6,
+"h": "p0230"
 },
 {
 "id": "p0417",
@@ -14436,7 +17145,7 @@
 0.259,
 0.966
 ],
-"d": 25.0
+"d": 153.6
 },
 {
 "id": "p0418",
@@ -14452,10 +17161,11 @@
 "t": null,
 "u": [
 -0.0,
--0.259,
--0.966
+0.0,
+1.0
 ],
-"d": 25.0
+"d": 128.6,
+"h": "p0230"
 },
 {
 "id": "p0419",
@@ -14490,10 +17200,11 @@
 "t": null,
 "u": [
 -0.0,
--0.259,
--0.966
+0.0,
+1.0
 ],
-"d": 25.0
+"d": 128.6,
+"h": "p0230"
 },
 {
 "id": "p0421",
@@ -14512,7 +17223,7 @@
 0.259,
 0.966
 ],
-"d": 25.0
+"d": 153.6
 },
 {
 "id": "p0422",
@@ -14528,10 +17239,11 @@
 "t": null,
 "u": [
 -0.0,
--0.259,
--0.966
+0.0,
+1.0
 ],
-"d": 25.0
+"d": 128.6,
+"h": "p0230"
 },
 {
 "id": "p0423",
@@ -14740,7 +17452,7 @@
 0.0,
 1.0
 ],
-"d": 60.0
+"d": 102.6
 },
 {
 "id": "p0434",
@@ -14797,7 +17509,7 @@
 0.0,
 1.0
 ],
-"d": 60.0
+"d": 102.6
 },
 {
 "id": "p0437",
@@ -14831,11 +17543,11 @@
 "b": 34,
 "t": null,
 "u": [
-0.439,
 0.0,
-0.899
+0.555,
+-0.832
 ],
-"d": 78.6
+"d": 40.0
 },
 {
 "id": "p0439",
@@ -14850,11 +17562,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
--0.574,
-0.819
+0.0
 ],
-"d": 25.0
+"d": 175.7,
+"h": "p0211"
 },
 {
 "id": "p0440",
@@ -14873,7 +17586,7 @@
 0.574,
 -0.819
 ],
-"d": 57.5
+"d": 70.7
 },
 {
 "id": "p0441",
@@ -14888,11 +17601,12 @@
 "b": 34,
 "t": null,
 "u": [
+1.0,
 0.0,
--0.574,
-0.819
+0.0
 ],
-"d": 25.0
+"d": 175.7,
+"h": "p0211"
 },
 {
 "id": "p0442",
@@ -14911,7 +17625,7 @@
 0.574,
 -0.819
 ],
-"d": 57.5
+"d": 70.7
 },
 {
 "id": "p0443",
@@ -14926,9 +17640,9 @@
 "b": 34,
 "t": null,
 "u": [
-0.474,
 0.0,
-0.88
+0.555,
+-0.832
 ],
 "d": 40.0
 },
@@ -14947,9 +17661,9 @@
 "u": [
 0.0,
 0.0,
--1.0
+1.0
 ],
-"d": 86.4
+"d": 40.0
 },
 {
 "id": "p0445",
@@ -14966,9 +17680,9 @@
 "u": [
 0.0,
 0.0,
--1.0
+1.0
 ],
-"d": 76.6
+"d": 40.0
 },
 {
 "id": "p0446",
@@ -14979,15 +17693,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 33,
+"b": 33,
 "t": null,
 "u": [
-0.0,
 -1.0,
+0.0,
 0.0
 ],
-"d": 25.0
+"d": 181.3,
+"h": "p0220"
 },
 {
 "id": "p0447",
@@ -15006,7 +17721,7 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 89.0
 },
 {
 "id": "p0448",
@@ -15017,15 +17732,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 33,
+"b": 33,
 "t": null,
 "u": [
-0.0,
 -1.0,
+0.0,
 0.0
 ],
-"d": 25.0
+"d": 181.3,
+"h": "p0220"
 },
 {
 "id": "p0449",
@@ -15044,7 +17760,7 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 89.0
 },
 {
 "id": "p0450",
@@ -15055,15 +17771,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 33,
+"b": 33,
 "t": null,
 "u": [
+1.0,
 0.0,
--1.0,
 0.0
 ],
-"d": 25.0
+"d": 185.0,
+"h": "p0219"
 },
 {
 "id": "p0451",
@@ -15082,7 +17799,7 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 89.0
 },
 {
 "id": "p0452",
@@ -15093,15 +17810,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 33,
+"b": 33,
 "t": null,
 "u": [
+1.0,
 0.0,
--1.0,
 0.0
 ],
-"d": 25.0
+"d": 185.0,
+"h": "p0219"
 },
 {
 "id": "p0453",
@@ -15120,7 +17838,7 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 89.0
 },
 {
 "id": "p0454",
@@ -15131,15 +17849,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 33,
+"b": 33,
 "t": null,
 "u": [
+1.0,
 0.0,
--1.0,
 0.0
 ],
-"d": 25.0
+"d": 185.0,
+"h": "p0219"
 },
 {
 "id": "p0455",
@@ -15158,7 +17877,7 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 69.8
 },
 {
 "id": "p0456",
@@ -15169,15 +17888,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 33,
+"b": 33,
 "t": null,
 "u": [
+1.0,
 0.0,
--1.0,
 0.0
 ],
-"d": 25.0
+"d": 185.0,
+"h": "p0219"
 },
 {
 "id": "p0457",
@@ -15196,7 +17916,7 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 69.8
 },
 {
 "id": "p0458",
@@ -15207,15 +17927,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 33,
+"b": 33,
 "t": null,
 "u": [
+1.0,
 0.0,
--1.0,
 0.0
 ],
-"d": 25.0
+"d": 185.0,
+"h": "p0219"
 },
 {
 "id": "p0459",
@@ -15234,7 +17955,7 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 69.8
 },
 {
 "id": "p0460",
@@ -15245,15 +17966,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 49,
-"b": 49,
+"a": 33,
+"b": 33,
 "t": null,
 "u": [
+1.0,
 0.0,
--1.0,
 0.0
 ],
-"d": 25.0
+"d": 185.0,
+"h": "p0219"
 },
 {
 "id": "p0461",
@@ -15272,7 +17994,7 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 69.8
 },
 {
 "id": "p0462",
@@ -15283,15 +18005,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 41,
-"b": 41,
+"a": 36,
+"b": 36,
 "t": null,
 "u": [
--1.0,
+1.0,
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 124.2,
+"h": "p0215"
 },
 {
 "id": "p0463",
@@ -15321,15 +18044,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 41,
-"b": 41,
+"a": 36,
+"b": 36,
 "t": null,
 "u": [
--1.0,
+1.0,
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 124.2,
+"h": "p0215"
 },
 {
 "id": "p0465",
@@ -15359,15 +18083,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 41,
-"b": 41,
+"a": 36,
+"b": 36,
 "t": null,
 "u": [
-1.0,
+-1.0,
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 120.3,
+"h": "p0216"
 },
 {
 "id": "p0467",
@@ -15397,15 +18122,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 41,
-"b": 41,
+"a": 36,
+"b": 36,
 "t": null,
 "u": [
-1.0,
+-1.0,
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 120.3,
+"h": "p0216"
 },
 {
 "id": "p0469",
@@ -15443,7 +18169,7 @@
 0.0,
 0.0
 ],
-"d": 119.7
+"d": 54.4
 },
 {
 "id": "p0471",
@@ -15538,7 +18264,7 @@
 -0.0,
 -0.0
 ],
-"d": 51.9
+"d": 181.9
 },
 {
 "id": "p0476",
@@ -15576,7 +18302,7 @@
 0.0,
 0.0
 ],
-"d": 119.7
+"d": 54.4
 },
 {
 "id": "p0478",
@@ -15671,7 +18397,7 @@
 -0.0,
 -0.0
 ],
-"d": 51.9
+"d": 179.4
 },
 {
 "id": "p0483",
@@ -15709,7 +18435,7 @@
 0.0,
 0.0
 ],
-"d": 122.6
+"d": 55.7
 },
 {
 "id": "p0485",
@@ -15842,7 +18568,7 @@
 0.0,
 0.0
 ],
-"d": 122.6
+"d": 55.7
 },
 {
 "id": "p0492",
@@ -15975,7 +18701,7 @@
 0.0,
 0.0
 ],
-"d": 122.6
+"d": 55.7
 },
 {
 "id": "p0499",
@@ -16070,7 +18796,7 @@
 -0.0,
 -0.0
 ],
-"d": 51.9
+"d": 163.2
 },
 {
 "id": "p0504",
@@ -16108,7 +18834,7 @@
 0.0,
 0.0
 ],
-"d": 122.6
+"d": 55.7
 },
 {
 "id": "p0506",
@@ -16203,7 +18929,7 @@
 -0.0,
 -0.0
 ],
-"d": 51.9
+"d": 160.3
 },
 {
 "id": "p0511",
@@ -16241,7 +18967,7 @@
 0.0,
 0.0
 ],
-"d": 148.7
+"d": 67.6
 },
 {
 "id": "p0513",
@@ -16374,7 +19100,7 @@
 0.0,
 0.0
 ],
-"d": 148.7
+"d": 67.6
 },
 {
 "id": "p0520",
@@ -16507,7 +19233,7 @@
 1.0,
 0.0
 ],
-"d": 168.3
+"d": 76.5
 },
 {
 "id": "p0527",
@@ -16621,7 +19347,7 @@
 1.0,
 0.0
 ],
-"d": 168.3
+"d": 76.5
 },
 {
 "id": "p0533",
@@ -16735,7 +19461,7 @@
 1.0,
 0.0
 ],
-"d": 168.3
+"d": 76.5
 },
 {
 "id": "p0539",
@@ -16811,7 +19537,7 @@
 -0.0,
 -0.0
 ],
-"d": 39.1
+"d": 212.4
 },
 {
 "id": "p0543",
@@ -16849,7 +19575,7 @@
 1.0,
 0.0
 ],
-"d": 168.3
+"d": 76.5
 },
 {
 "id": "p0545",
@@ -16925,7 +19651,7 @@
 -0.0,
 -0.0
 ],
-"d": 39.1
+"d": 212.4
 },
 {
 "id": "p0549",
@@ -16963,7 +19689,7 @@
 1.0,
 0.0
 ],
-"d": 168.3
+"d": 76.5
 },
 {
 "id": "p0551",
@@ -17039,7 +19765,7 @@
 -0.0,
 -0.0
 ],
-"d": 39.1
+"d": 210.0
 },
 {
 "id": "p0555",
@@ -17077,7 +19803,7 @@
 1.0,
 0.0
 ],
-"d": 168.3
+"d": 76.5
 },
 {
 "id": "p0557",
@@ -17153,7 +19879,7 @@
 -0.0,
 -0.0
 ],
-"d": 39.1
+"d": 206.3
 },
 {
 "id": "p0561",
@@ -17191,7 +19917,7 @@
 0.0,
 0.0
 ],
-"d": 139.7,
+"d": 63.5,
 "ub": [
 0.0,
 -1.0,
@@ -17387,8 +20113,8 @@
 "b": 48,
 "t": "dirsek",
 "u": [
-0.0,
 1.0,
+0.0,
 0.0
 ],
 "d": 40.0,
@@ -17719,20 +20445,21 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 44,
+"a": 42,
 "b": 48,
 "t": "dirsek",
 "u": [
-1.0,
+0.0,
 0.0,
 0.0
 ],
-"d": 25.0,
+"d": 0.0,
 "ub": [
 0.0,
 -1.0,
 0.0
-]
+],
+"h": "p0582"
 },
 {
 "id": "p0587",
@@ -17751,7 +20478,7 @@
 0.0,
 0.0
 ],
-"d": 74.6,
+"d": 40.0,
 "ub": [
 0.0,
 -1.0,
@@ -17991,7 +20718,7 @@
 -1.0,
 0.0
 ],
-"d": 74.6,
+"d": 40.0,
 "ub": [
 0.0,
 -1.0,
@@ -18228,7 +20955,7 @@
 "t": "dirsek",
 "u": [
 0.0,
-1.0,
+-1.0,
 0.0
 ],
 "d": 40.0,
@@ -18279,7 +21006,7 @@
 -1.0,
 0.0
 ],
-"d": 44.4,
+"d": 40.0,
 "ub": [
 0.0,
 -1.0,
@@ -18303,7 +21030,7 @@
 -1.0,
 -0.0
 ],
-"d": 27.5,
+"d": 65.0,
 "ub": [
 0.0,
 -1.0,
@@ -18327,7 +21054,7 @@
 -1.0,
 -0.0
 ],
-"d": 27.5,
+"d": 65.0,
 "ub": [
 0.0,
 -1.0,
@@ -18351,7 +21078,7 @@
 -1.0,
 -0.0
 ],
-"d": 27.5,
+"d": 65.0,
 "ub": [
 0.0,
 -1.0,
@@ -18375,7 +21102,7 @@
 -1.0,
 -0.0
 ],
-"d": 27.5,
+"d": 65.0,
 "ub": [
 0.0,
 -1.0,
@@ -18399,7 +21126,7 @@
 1.0,
 0.0
 ],
-"d": 121.1,
+"d": 55.0,
 "ub": [
 0.0,
 -1.0,
@@ -18415,20 +21142,21 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 47,
+"a": 46,
 "b": 48,
 "t": "dirsek",
 "u": [
--1.0,
 0.0,
+-1.0,
 0.0
 ],
-"d": 25.0,
+"d": 40.0,
 "ub": [
 0.0,
 -1.0,
 0.0
-]
+],
+"h": "p0609"
 },
 {
 "id": "p0616",
@@ -18463,20 +21191,21 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 47,
+"a": 46,
 "b": 48,
 "t": "dirsek",
 "u": [
--1.0,
 0.0,
+-1.0,
 0.0
 ],
-"d": 25.0,
+"d": 40.0,
 "ub": [
 0.0,
 -1.0,
 0.0
-]
+],
+"h": "p0609"
 },
 {
 "id": "p0618",
@@ -18519,7 +21248,7 @@
 0.0,
 0.0
 ],
-"d": 139.7,
+"d": 63.5,
 "ub": [
 -0.0,
 -1.0,
@@ -18715,8 +21444,8 @@
 "b": 48,
 "t": "dirsek",
 "u": [
+-1.0,
 0.0,
-1.0,
 0.0
 ],
 "d": 40.0,
@@ -18959,7 +21688,7 @@
 -0.707,
 0.0
 ],
-"d": 166.6,
+"d": 75.7,
 "ub": [
 -0.0,
 -1.0,
@@ -19047,20 +21776,21 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 44,
+"a": 42,
 "b": 48,
 "t": "dirsek",
 "u": [
--1.0,
--0.0,
--0.0
+-0.707,
+-0.707,
+0.0
 ],
-"d": 25.0,
+"d": 75.7,
 "ub": [
 -0.0,
 -1.0,
 0.0
-]
+],
+"h": "p0639"
 },
 {
 "id": "p0644",
@@ -19079,7 +21809,7 @@
 0.0,
 0.0
 ],
-"d": 74.6,
+"d": 40.0,
 "ub": [
 -0.0,
 -1.0,
@@ -19319,7 +22049,7 @@
 -1.0,
 0.0
 ],
-"d": 74.6,
+"d": 40.0,
 "ub": [
 -0.0,
 -1.0,
@@ -19555,8 +22285,8 @@
 "b": 48,
 "t": "dirsek",
 "u": [
-0.0,
-1.0,
+-0.0,
+-1.0,
 0.0
 ],
 "d": 40.0,
@@ -19607,7 +22337,7 @@
 -1.0,
 0.0
 ],
-"d": 44.4,
+"d": 40.0,
 "ub": [
 -0.0,
 -1.0,
@@ -19631,7 +22361,7 @@
 -1.0,
 -0.0
 ],
-"d": 27.5,
+"d": 65.0,
 "ub": [
 -0.0,
 -1.0,
@@ -19655,7 +22385,7 @@
 -1.0,
 -0.0
 ],
-"d": 27.5,
+"d": 65.0,
 "ub": [
 -0.0,
 -1.0,
@@ -19679,7 +22409,7 @@
 -1.0,
 -0.0
 ],
-"d": 27.5,
+"d": 65.0,
 "ub": [
 -0.0,
 -1.0,
@@ -19703,7 +22433,7 @@
 -1.0,
 -0.0
 ],
-"d": 27.5,
+"d": 65.0,
 "ub": [
 -0.0,
 -1.0,
@@ -19727,7 +22457,7 @@
 1.0,
 0.0
 ],
-"d": 121.1,
+"d": 55.0,
 "ub": [
 -0.0,
 -1.0,
@@ -19743,20 +22473,21 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 47,
+"a": 46,
 "b": 48,
 "t": "dirsek",
 "u": [
-1.0,
 0.0,
+-1.0,
 0.0
 ],
-"d": 25.0,
+"d": 40.0,
 "ub": [
 -0.0,
 -1.0,
 0.0
-]
+],
+"h": "p0666"
 },
 {
 "id": "p0673",
@@ -19791,20 +22522,21 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 47,
+"a": 46,
 "b": 48,
 "t": "dirsek",
 "u": [
-1.0,
 0.0,
+-1.0,
 0.0
 ],
-"d": 25.0,
+"d": 40.0,
 "ub": [
 -0.0,
 -1.0,
 0.0
-]
+],
+"h": "p0666"
 },
 {
 "id": "p0675",
@@ -19847,7 +22579,7 @@
 1.0,
 0.0
 ],
-"d": 130.7,
+"d": 59.4,
 "ub": [
 0.0,
 1.0,
@@ -19895,7 +22627,7 @@
 1.0,
 0.0
 ],
-"d": 106.9,
+"d": 48.6,
 "ub": [
 0.0,
 1.0,
@@ -19919,7 +22651,7 @@
 1.0,
 0.0
 ],
-"d": 81.3,
+"d": 40.0,
 "ub": [
 0.0,
 1.0,
@@ -19943,7 +22675,7 @@
 1.0,
 0.0
 ],
-"d": 81.3,
+"d": 40.0,
 "ub": [
 0.0,
 1.0,
@@ -19967,7 +22699,7 @@
 1.0,
 0.0
 ],
-"d": 74.6,
+"d": 40.0,
 "ub": [
 0.0,
 1.0,
@@ -20060,15 +22792,16 @@
 "t": "boyun",
 "u": [
 0.0,
--1.0,
+0.0,
 0.0
 ],
-"d": 25.0,
+"d": 0.0,
 "ub": [
 0.0,
 1.0,
 0.0
-]
+],
+"h": "p0677"
 },
 {
 "id": "p0686",
@@ -20132,15 +22865,16 @@
 "t": "boyun",
 "u": [
 0.0,
--1.0,
+0.0,
 0.0
 ],
-"d": 25.0,
+"d": 0.0,
 "ub": [
 0.0,
 1.0,
 0.0
-]
+],
+"h": "p0677"
 },
 {
 "id": "p0689",
@@ -20204,15 +22938,16 @@
 "t": "boyun",
 "u": [
 0.0,
--1.0,
+0.0,
 0.0
 ],
-"d": 25.0,
+"d": 0.0,
 "ub": [
 0.0,
 1.0,
 0.0
-]
+],
+"h": "p0677"
 },
 {
 "id": "p0692",
@@ -20276,15 +23011,16 @@
 "t": "boyun",
 "u": [
 0.0,
--1.0,
+0.0,
 0.0
 ],
-"d": 25.0,
+"d": 0.0,
 "ub": [
 0.0,
 1.0,
 0.0
-]
+],
+"h": "p0677"
 },
 {
 "id": "p0695",
@@ -20438,15 +23174,16 @@
 "t": "boyun",
 "u": [
 0.0,
--1.0,
+0.0,
 0.0
 ],
-"d": 25.0,
+"d": 0.0,
 "ub": [
 0.0,
 1.0,
 0.0
-]
+],
+"h": "p0677"
 },
 {
 "id": "p0703",
@@ -20486,15 +23223,16 @@
 "t": "boyun",
 "u": [
 0.0,
--1.0,
+0.0,
 0.0
 ],
-"d": 25.0,
+"d": 0.0,
 "ub": [
 0.0,
 1.0,
 0.0
-]
+],
+"h": "p0677"
 },
 {
 "id": "p0705",
@@ -20534,15 +23272,16 @@
 "t": "boyun",
 "u": [
 0.0,
--1.0,
+0.0,
 0.0
 ],
-"d": 25.0,
+"d": 0.0,
 "ub": [
 0.0,
 1.0,
 0.0
-]
+],
+"h": "p0677"
 },
 {
 "id": "p0707",
@@ -20582,15 +23321,16 @@
 "t": "boyun",
 "u": [
 0.0,
--1.0,
+0.0,
 0.0
 ],
-"d": 25.0,
+"d": 0.0,
 "ub": [
 0.0,
 1.0,
 0.0
-]
+],
+"h": "p0677"
 },
 {
 "id": "p0709",
@@ -20647,7 +23387,7 @@
 1.0,
 0.0
 ],
-"d": 107.3
+"d": 48.8
 },
 {
 "id": "p0712",
@@ -20742,7 +23482,7 @@
 1.0,
 0.0
 ],
-"d": 69.8
+"d": 40.0
 },
 {
 "id": "p0717",
@@ -20761,7 +23501,7 @@
 1.0,
 0.0
 ],
-"d": 69.8
+"d": 40.0
 },
 {
 "id": "p0718",
@@ -20780,7 +23520,7 @@
 0.0,
 1.0
 ],
-"d": 118.2
+"d": 53.7
 },
 {
 "id": "p0719",
@@ -20791,15 +23531,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 27,
-"b": 27,
+"a": 26,
+"b": 26,
 "t": null,
 "u": [
-1.0,
 0.0,
+1.0,
 0.0
 ],
-"d": 25.0
+"d": 48.8,
+"h": "p0711"
 },
 {
 "id": "p0720",
@@ -20810,15 +23551,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 27,
-"b": 27,
+"a": 26,
+"b": 26,
 "t": null,
 "u": [
 0.0,
-0.0,
-1.0
+1.0,
+0.0
 ],
-"d": 25.0
+"d": 48.8,
+"h": "p0711"
 },
 {
 "id": "p0721",
@@ -20829,15 +23571,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 27,
-"b": 27,
+"a": 26,
+"b": 26,
 "t": null,
 "u": [
--1.0,
 0.0,
+1.0,
 0.0
 ],
-"d": 25.0
+"d": 48.8,
+"h": "p0711"
 },
 {
 "id": "p0722",
@@ -20848,15 +23591,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 27,
-"b": 27,
+"a": 26,
+"b": 26,
 "t": null,
 "u": [
 0.0,
-0.0,
--1.0
+1.0,
+0.0
 ],
-"d": 25.0
+"d": 48.8,
+"h": "p0711"
 },
 {
 "id": "p0723",
@@ -20875,7 +23619,7 @@
 0.0,
 0.0
 ],
-"d": 74.6
+"d": 40.0
 },
 {
 "id": "p0724",
@@ -20890,9 +23634,9 @@
 "b": 28,
 "t": null,
 "u": [
-0.734,
+1.0,
 0.0,
-0.679
+0.0
 ],
 "d": 40.0
 },
@@ -21119,15 +23863,16 @@
 "tur": "Baglanti",
 "malzeme": "Pirinç",
 "r": "baglanti",
-"a": 28,
-"b": 28,
+"a": 27,
+"b": 27,
 "t": null,
 "u": [
-1.0,
 0.0,
-0.0
+0.0,
+1.0
 ],
-"d": 25.0
+"d": 53.7,
+"h": "p0718"
 },
 {
 "id": "p0737",
@@ -21146,7 +23891,7 @@
 1.0,
 0.0
 ],
-"d": 113.6
+"d": 51.6
 },
 {
 "id": "p0738",
@@ -21389,11 +24134,11 @@
 "b": 31,
 "t": null,
 "u": [
-0.365,
-0.183,
--0.913
+0.0,
+0.0,
+1.0
 ],
-"d": 295.8
+"d": 132.7
 },
 {
 "id": "p0751",
@@ -21408,11 +24153,11 @@
 "b": 31,
 "t": null,
 "u": [
--0.535,
-0.267,
--0.802
+-0.0,
+0.0,
+1.0
 ],
-"d": 286.2
+"d": 128.3
 },
 {
 "id": "p0752",
@@ -21427,11 +24172,11 @@
 "b": 31,
 "t": null,
 "u": [
-0.707,
 0.0,
--0.707
+0.0,
+-1.0
 ],
-"d": 315.7
+"d": 141.8
 },
 {
 "id": "p0753",
@@ -21446,11 +24191,11 @@
 "b": 31,
 "t": null,
 "u": [
--0.485,
-0.728,
--0.485
+-0.0,
+0.0,
+-1.0
 ],
-"d": 306.7
+"d": 137.7
 },
 {
 "id": "p0754",
@@ -21509,10 +24254,11 @@
 "t": null,
 "u": [
 0.0,
--1.0,
-0.0
+0.0,
+-1.0
 ],
-"d": 25.0
+"d": 141.8,
+"h": "p0752"
 },
 {
 "id": "p0757",
@@ -21547,10 +24293,11 @@
 "t": null,
 "u": [
 0.0,
--1.0,
-0.0
+0.0,
+-1.0
 ],
-"d": 25.0
+"d": 141.8,
+"h": "p0752"
 },
 {
 "id": "p0759",
@@ -21584,11 +24331,12 @@
 "b": 31,
 "t": null,
 "u": [
+-0.0,
 0.0,
--1.0,
-0.0
+-1.0
 ],
-"d": 25.0
+"d": 137.7,
+"h": "p0753"
 },
 {
 "id": "p0761",
@@ -21622,11 +24370,12 @@
 "b": 31,
 "t": null,
 "u": [
+-0.0,
 0.0,
--1.0,
-0.0
+-1.0
 ],
-"d": 25.0
+"d": 137.7,
+"h": "p0753"
 },
 {
 "id": "p0763",
@@ -21641,11 +24390,12 @@
 "b": 31,
 "t": null,
 "u": [
--0.0,
--1.0,
--0.0
+0.0,
+0.0,
+1.0
 ],
-"d": 25.0
+"d": 132.7,
+"h": "p0750"
 },
 {
 "id": "p0764",
@@ -21679,11 +24429,12 @@
 "b": 31,
 "t": null,
 "u": [
--0.0,
--0.0,
--1.0
+0.0,
+0.0,
+1.0
 ],
-"d": 25.0
+"d": 132.7,
+"h": "p0750"
 },
 {
 "id": "p0766",
@@ -21717,11 +24468,12 @@
 "b": 31,
 "t": null,
 "u": [
--0.0,
--1.0,
--0.0
+0.0,
+0.0,
+-1.0
 ],
-"d": 25.0
+"d": 141.8,
+"h": "p0752"
 },
 {
 "id": "p0768",
@@ -21757,9 +24509,10 @@
 "u": [
 0.0,
 0.0,
-1.0
+-1.0
 ],
-"d": 25.0
+"d": 141.8,
+"h": "p0752"
 },
 {
 "id": "p0770",
@@ -21795,9 +24548,10 @@
 "u": [
 0.0,
 0.0,
-1.0
+-1.0
 ],
-"d": 25.0
+"d": 141.8,
+"h": "p0752"
 },
 {
 "id": "p0772",
@@ -21831,11 +24585,12 @@
 "b": 31,
 "t": null,
 "u": [
--1.0,
--0.0,
--0.0
+0.0,
+0.0,
+-1.0
 ],
-"d": 25.0
+"d": 141.8,
+"h": "p0752"
 },
 {
 "id": "p0774",
@@ -21869,11 +24624,12 @@
 "b": 31,
 "t": null,
 "u": [
--1.0,
--0.0,
--0.0
+0.0,
+0.0,
+-1.0
 ],
-"d": 25.0
+"d": 141.8,
+"h": "p0752"
 },
 {
 "id": "p0776",
@@ -21907,11 +24663,12 @@
 "b": 31,
 "t": null,
 "u": [
-1.0,
+-0.0,
 0.0,
-0.0
+-1.0
 ],
-"d": 25.0
+"d": 137.7,
+"h": "p0753"
 },
 {
 "id": "p0778",
@@ -21945,11 +24702,12 @@
 "b": 31,
 "t": null,
 "u": [
-1.0,
+-0.0,
 0.0,
-0.0
+-1.0
 ],
-"d": 25.0
+"d": 137.7,
+"h": "p0753"
 },
 {
 "id": "p0780",
@@ -21985,9 +24743,9 @@
 "u": [
 0.0,
 0.0,
-1.0
+-1.0
 ],
-"d": 319.2
+"d": 145.1
 },
 {
 "id": "p0782",
@@ -22021,9 +24779,9 @@
 "b": 31,
 "t": null,
 "u": [
-0.78,
 0.0,
-0.625
+0.0,
+-1.0
 ],
 "d": 40.0
 },
@@ -22044,7 +24802,7 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 65.0
 },
 {
 "id": "p0785",
@@ -22063,7 +24821,8 @@
 0.0,
 1.0
 ],
-"d": 25.0
+"d": 132.7,
+"h": "p0750"
 },
 {
 "id": "p0786",
@@ -22078,7 +24837,7 @@
 "b": 31,
 "t": null,
 "u": [
-0.0,
+-0.0,
 0.0,
 -1.0
 ],
@@ -22097,9 +24856,9 @@
 "b": 31,
 "t": null,
 "u": [
--0.78,
+-0.0,
 0.0,
-0.625
+-1.0
 ],
 "d": 40.0
 },
@@ -22120,7 +24879,7 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 65.0
 },
 {
 "id": "p0789",
@@ -22135,11 +24894,12 @@
 "b": 31,
 "t": null,
 "u": [
-0.0,
+-0.0,
 0.0,
 1.0
 ],
-"d": 25.0
+"d": 128.3,
+"h": "p0751"
 },
 {
 "id": "p0790",
@@ -22173,9 +24933,9 @@
 "b": 31,
 "t": null,
 "u": [
-0.78,
 0.0,
-0.625
+0.0,
+-1.0
 ],
 "d": 40.0
 },
@@ -22196,7 +24956,7 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 65.0
 },
 {
 "id": "p0793",
@@ -22215,7 +24975,8 @@
 0.0,
 1.0
 ],
-"d": 25.0
+"d": 132.7,
+"h": "p0750"
 },
 {
 "id": "p0794",
@@ -22230,7 +24991,7 @@
 "b": 31,
 "t": null,
 "u": [
-0.0,
+-0.0,
 0.0,
 -1.0
 ],
@@ -22249,9 +25010,9 @@
 "b": 31,
 "t": null,
 "u": [
--0.78,
+-0.0,
 0.0,
-0.625
+-1.0
 ],
 "d": 40.0
 },
@@ -22272,7 +25033,7 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 65.0
 },
 {
 "id": "p0797",
@@ -22287,11 +25048,12 @@
 "b": 31,
 "t": null,
 "u": [
-0.0,
+-0.0,
 0.0,
 1.0
 ],
-"d": 25.0
+"d": 128.3,
+"h": "p0751"
 },
 {
 "id": "p0798",
@@ -22310,7 +25072,7 @@
 0.0,
 -1.0
 ],
-"d": 40.1
+"d": 40.0
 },
 {
 "id": "p0799",
@@ -22329,7 +25091,7 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 65.0
 },
 {
 "id": "p0800",
@@ -22348,7 +25110,7 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 65.0
 },
 {
 "id": "p0801",
@@ -22367,7 +25129,7 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 65.0
 },
 {
 "id": "p0802",
@@ -22386,7 +25148,7 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 65.0
 },
 {
 "id": "p0803",
@@ -22405,7 +25167,7 @@
 1.0,
 0.0
 ],
-"d": 120.0,
+"d": 54.5,
 "ub": [
 0.0,
 1.0,
@@ -22765,7 +25527,7 @@
 1.0,
 0.0
 ],
-"d": 52.8,
+"d": 40.0,
 "ub": [
 0.0,
 1.0,
@@ -22789,7 +25551,7 @@
 1.0,
 0.0
 ],
-"d": 53.0,
+"d": 40.0,
 "ub": [
 0.0,
 1.0,
@@ -22857,11 +25619,11 @@
 "b": 31,
 "t": null,
 "u": [
--0.998,
+1.0,
 0.0,
--0.068
+0.0
 ],
-"d": 59.0
+"d": 40.0
 },
 {
 "id": "p0823",
@@ -22876,11 +25638,11 @@
 "b": 31,
 "t": null,
 "u": [
--0.997,
+1.0,
 0.0,
--0.071
+0.0
 ],
-"d": 60.3
+"d": 40.0
 },
 {
 "id": "p0824",
@@ -22895,9 +25657,9 @@
 "b": 31,
 "t": null,
 "u": [
--0.999,
+1.0,
 0.0,
-0.042
+0.0
 ],
 "d": 40.0
 },
@@ -22914,9 +25676,9 @@
 "b": 31,
 "t": null,
 "u": [
--0.999,
+1.0,
 0.0,
-0.043
+0.0
 ],
 "d": 40.0
 },
@@ -22934,10 +25696,10 @@
 "t": null,
 "u": [
 0.0,
--1.0,
-0.0
+-0.707,
+0.707
 ],
-"d": 111.9
+"d": 50.1
 },
 {
 "id": "p0827",
@@ -22956,7 +25718,7 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 75.1
 },
 {
 "id": "p0828",
@@ -22975,7 +25737,7 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 75.1
 },
 {
 "id": "p0829",
@@ -22994,7 +25756,7 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 75.1
 },
 {
 "id": "p0830",
@@ -23009,9 +25771,9 @@
 "b": 28,
 "t": null,
 "u": [
-0.752,
+1.0,
 0.0,
-0.659
+0.0
 ],
 "d": 40.0
 },
@@ -23745,7 +26507,7 @@
 1.0,
 0.0
 ],
-"d": 46.0
+"d": 40.0
 },
 {
 "id": "p0869",
@@ -23802,7 +26564,7 @@
 1.0,
 0.0
 ],
-"d": 46.0
+"d": 40.0
 },
 {
 "id": "p0872",
@@ -23859,7 +26621,7 @@
 1.0,
 0.0
 ],
-"d": 46.0
+"d": 40.0
 },
 {
 "id": "p0875",
@@ -23916,7 +26678,7 @@
 1.0,
 0.0
 ],
-"d": 46.0
+"d": 40.0
 },
 {
 "id": "p0878",
@@ -23973,7 +26735,7 @@
 1.0,
 0.0
 ],
-"d": 46.0
+"d": 40.0
 },
 {
 "id": "p0881",
@@ -24030,7 +26792,7 @@
 1.0,
 0.0
 ],
-"d": 46.0
+"d": 40.0
 },
 {
 "id": "p0884",
@@ -24087,7 +26849,7 @@
 1.0,
 0.0
 ],
-"d": 46.0
+"d": 40.0
 },
 {
 "id": "p0887",
@@ -24144,7 +26906,7 @@
 1.0,
 0.0
 ],
-"d": 46.0
+"d": 40.0
 },
 {
 "id": "p0890",
@@ -24515,7 +27277,7 @@
 0.0,
 0.0
 ],
-"d": 105.8
+"d": 48.1
 },
 {
 "id": "p0909",
@@ -24534,7 +27296,7 @@
 -1.0,
 0.0
 ],
-"d": 80.7
+"d": 40.0
 },
 {
 "id": "p0910",
@@ -24572,7 +27334,7 @@
 0.0,
 0.0
 ],
-"d": 219.9
+"d": 93.0
 },
 {
 "id": "p0912",
@@ -24819,7 +27581,7 @@
 0.0,
 0.0
 ],
-"d": 105.8
+"d": 48.1
 },
 {
 "id": "p0925",
@@ -24838,7 +27600,7 @@
 -1.0,
 0.0
 ],
-"d": 80.7
+"d": 40.0
 },
 {
 "id": "p0926",
@@ -24876,7 +27638,7 @@
 0.0,
 0.0
 ],
-"d": 219.9
+"d": 93.0
 },
 {
 "id": "p0928",
@@ -25123,7 +27885,7 @@
 0.0,
 0.0
 ],
-"d": 105.8
+"d": 48.1
 },
 {
 "id": "p0941",
@@ -25142,7 +27904,7 @@
 -1.0,
 0.0
 ],
-"d": 80.7
+"d": 40.0
 },
 {
 "id": "p0942",
@@ -25180,7 +27942,7 @@
 0.0,
 0.0
 ],
-"d": 219.9
+"d": 93.0
 },
 {
 "id": "p0944",
@@ -25427,7 +28189,7 @@
 0.0,
 0.0
 ],
-"d": 105.8
+"d": 48.1
 },
 {
 "id": "p0957",
@@ -25446,7 +28208,7 @@
 -1.0,
 0.0
 ],
-"d": 80.7
+"d": 40.0
 },
 {
 "id": "p0958",
@@ -25484,7 +28246,7 @@
 0.0,
 0.0
 ],
-"d": 219.9
+"d": 93.0
 },
 {
 "id": "p0960",
@@ -25731,7 +28493,7 @@
 1.0,
 0.0
 ],
-"d": 290.3
+"d": 132.0
 },
 {
 "id": "p0973",
@@ -25750,7 +28512,7 @@
 1.0,
 0.0
 ],
-"d": 224.8
+"d": 102.2
 },
 {
 "id": "p0974",
@@ -25769,7 +28531,7 @@
 1.0,
 0.0
 ],
-"d": 224.8
+"d": 102.2
 },
 {
 "id": "p0975",
@@ -25788,7 +28550,7 @@
 1.0,
 0.0
 ],
-"d": 179.1,
+"d": 81.4,
 "ub": [
 0.0,
 -1.0,
@@ -25812,12 +28574,13 @@
 1.0,
 0.0
 ],
-"d": 25.0,
+"d": 81.4,
 "ub": [
 0.0,
 -1.0,
 0.0
-]
+],
+"h": "p0975"
 },
 {
 "id": "p0977",
@@ -25860,12 +28623,13 @@
 1.0,
 0.0
 ],
-"d": 25.0,
+"d": 81.4,
 "ub": [
 0.0,
 -1.0,
 0.0
-]
+],
+"h": "p0975"
 },
 {
 "id": "p0979",
@@ -25908,7 +28672,7 @@
 1.0,
 0.0
 ],
-"d": 91.0
+"d": 41.4
 },
 {
 "id": "p0981",
@@ -26195,7 +28959,7 @@
 1.0,
 0.0
 ],
-"d": 91.0
+"d": 41.4
 },
 {
 "id": "p0994",
@@ -26482,7 +29246,7 @@
 1.0,
 0.0
 ],
-"d": 91.9
+"d": 41.8
 },
 {
 "id": "p1007",
@@ -26769,7 +29533,7 @@
 1.0,
 0.0
 ],
-"d": 91.9
+"d": 41.8
 },
 {
 "id": "p1020",
@@ -27056,7 +29820,7 @@
 1.0,
 0.0
 ],
-"d": 91.9
+"d": 41.8
 },
 {
 "id": "p1033",
@@ -27343,7 +30107,7 @@
 1.0,
 0.0
 ],
-"d": 91.9,
+"d": 41.8,
 "ub": [
 0.0,
 1.0,
@@ -27655,7 +30419,7 @@
 1.0,
 0.0
 ],
-"d": 95.3,
+"d": 43.3,
 "ub": [
 0.0,
 1.0,
@@ -27967,7 +30731,7 @@
 1.0,
 0.0
 ],
-"d": 138.5,
+"d": 62.9,
 "ub": [
 0.0,
 1.0,
@@ -28135,7 +30899,7 @@
 1.0,
 0.0
 ],
-"d": 74.0,
+"d": 40.0,
 "ub": [
 0.0,
 1.0,
@@ -28231,7 +30995,7 @@
 1.0,
 0.0
 ],
-"d": 77.0,
+"d": 40.0,
 "ub": [
 0.0,
 1.0,
@@ -28251,11 +31015,11 @@
 "b": 33,
 "t": null,
 "u": [
--0.506,
 0.0,
--0.862
+-1.0,
+0.0
 ],
-"d": 89.4
+"d": 40.6
 },
 {
 "id": "p1084",
@@ -28274,7 +31038,7 @@
 0.0,
 -0.862
 ],
-"d": 66.8
+"d": 40.0
 },
 {
 "id": "p1085",
@@ -28293,7 +31057,7 @@
 1.0,
 0.0
 ],
-"d": 96.4,
+"d": 43.8,
 "ub": [
 0.0,
 1.0,
@@ -28605,7 +31369,7 @@
 1.0,
 0.0
 ],
-"d": 95.5,
+"d": 43.4,
 "ub": [
 0.0,
 1.0,
@@ -28917,7 +31681,7 @@
 1.0,
 0.0
 ],
-"d": 95.5,
+"d": 43.4,
 "ub": [
 0.0,
 1.0,
@@ -29229,7 +31993,7 @@
 1.0,
 0.0
 ],
-"d": 75.2,
+"d": 40.0,
 "ub": [
 0.0,
 1.0,
@@ -29853,7 +32617,7 @@
 1.0,
 0.0
 ],
-"d": 95.3,
+"d": 43.3,
 "ub": [
 0.0,
 1.0,
@@ -30165,7 +32929,7 @@
 1.0,
 0.0
 ],
-"d": 67.0,
+"d": 40.0,
 "ub": [
 0.0,
 1.0,
@@ -30189,7 +32953,7 @@
 0.0,
 1.0
 ],
-"d": 59.9
+"d": 40.0
 },
 {
 "id": "p1165",
@@ -30208,7 +32972,7 @@
 0.0,
 1.0
 ],
-"d": 75.8
+"d": 40.0
 },
 {
 "id": "p1166",
@@ -30265,7 +33029,7 @@
 0.0,
 1.0
 ],
-"d": 59.9
+"d": 40.0
 },
 {
 "id": "p1169",
@@ -30284,7 +33048,7 @@
 0.0,
 1.0
 ],
-"d": 85.8
+"d": 40.0
 },
 {
 "id": "p1170",
@@ -30379,7 +33143,7 @@
 0.0,
 1.0
 ],
-"d": 59.9
+"d": 40.0
 },
 {
 "id": "p1175",
@@ -30398,7 +33162,7 @@
 0.0,
 1.0
 ],
-"d": 75.8
+"d": 40.0
 },
 {
 "id": "p1176",
@@ -30451,11 +33215,11 @@
 "b": 33,
 "t": null,
 "u": [
-0.506,
 0.0,
--0.862
+0.0,
+-1.0
 ],
-"d": 98.3
+"d": 44.7
 },
 {
 "id": "p1179",
@@ -30470,11 +33234,11 @@
 "b": 33,
 "t": null,
 "u": [
-0.506,
 0.0,
--0.862
+-1.0,
+0.0
 ],
-"d": 77.5
+"d": 40.0
 },
 {
 "id": "p1180",
@@ -30493,7 +33257,7 @@
 0.0,
 -1.0
 ],
-"d": 347.7,
+"d": 158.0,
 "renk": "#d63031"
 },
 {
@@ -30513,7 +33277,7 @@
 0.0,
 -0.934
 ],
-"d": 140.8,
+"d": 64.0,
 "renk": "#222222"
 },
 {
@@ -30533,7 +33297,7 @@
 0.0,
 -0.017
 ],
-"d": 489.8,
+"d": 222.6,
 "renk": "#e67e22"
 },
 {
@@ -30553,7 +33317,7 @@
 0.0,
 0.168
 ],
-"d": 484.0,
+"d": 220.0,
 "renk": "#e67e22"
 },
 {
@@ -30573,7 +33337,7 @@
 0.0,
 0.987
 ],
-"d": 1335.4,
+"d": 607.0,
 "renk": "#e2b714"
 },
 {
@@ -30593,7 +33357,7 @@
 0.0,
 -1.0
 ],
-"d": 129.6,
+"d": 58.9,
 "renk": "#e2b714"
 },
 {
@@ -30613,7 +33377,7 @@
 0.0,
 0.54
 ],
-"d": 1324.9,
+"d": 602.2,
 "renk": "#e2b714"
 },
 {
@@ -30633,7 +33397,7 @@
 0.0,
 -0.941
 ],
-"d": 1291.8,
+"d": 587.2,
 "renk": "#2f86d4"
 },
 {
@@ -30653,7 +33417,7 @@
 0.0,
 -0.473
 ],
-"d": 428.5,
+"d": 194.8,
 "renk": "#2f86d4"
 },
 {
@@ -30673,7 +33437,7 @@
 0.0,
 -0.999
 ],
-"d": 410.3,
+"d": 186.5,
 "renk": "#2e9e4f"
 },
 {
@@ -30693,7 +33457,7 @@
 0.0,
 0.998
 ],
-"d": 301.0,
+"d": 136.8,
 "renk": "#8e44ad"
 },
 {
@@ -30713,7 +33477,7 @@
 0.0,
 0.998
 ],
-"d": 1329.3,
+"d": 604.2,
 "renk": "#8e44ad"
 }
 ]

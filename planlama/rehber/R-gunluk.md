@@ -95,7 +95,7 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
 | `... rehber_uret.py --veri-yok --adimlar 1,4,9` | yalnız tarayıcı kontrolü + seçili görüntüler |
 | `... --gorsel-yok` | yalnız veri + mesh |
 | Doğrudan: `FC_SCRIPT=<rehber_veri.py> freecadcmd run_fc.py` | yalnız veri + mesh |
-| Açmak | `rehber/index.html` çift tık (file:// çalışır, internet gerekmez; three.js 0.160.0 `rehber/vendor/` içinde, F10a). Tuşlar: P patlat / topla, Boşluk sıradaki satırı tak, Shift+Boşluk geri al, O öncekiler opak / saydam / gizli, M küçük görünüm, Esc seçimi temizle. `?adim=N`, `?cekim=1` (animasyonsuz), `?tema=dark` |
+| Açmak | `rehber/index.html` çift tık (file:// çalışır, internet gerekmez; three.js 0.160.0 `rehber/vendor/` içinde, F10a). Tuşlar: P patlat / topla, Boşluk sıradaki satırı tak, Shift+Boşluk geri al, O öncekiler opak / saydam / gizli, M küçük görünüm, Esc seçimi temizle. `?adim=N` ya da alt adım `?adim=N.J` (F10d), `?cekim=1` (animasyonsuz), `?tema=dark` |
 
 ## Sıradaki işler (madde madde)
 1. Kök `README.md` yazıldı (04.11). `tasarim/freecad/README.md` "Rehber" bölümü hâlâ yok: tek komut, ne zaman koşulur (modüller yeniden üretildikten ve
@@ -144,6 +144,14 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
   giriş yolu, perdelenme) artık her üretimde koşuyor (`rehber_uret.py` 8. adım, `--ek-yok` ile atlanır; numpy yoksa "atlandı").
   `kontrol.json` `sira` / `perdelenme`; sınır ulaşılamaz 0, girilemez 0. Süre 214 s (giriş yolu 102,5 s); üretim ≈ 10,5 dk.
   Kontrol 05:30: 50/50, konsol 0, 1192 ↔ 1192 (5 parça adım değiştirdi), PDF 55 sayfa, en küçük 8,1 pt, denetim 0.
+- 2026-11-11 (F10d, P10.4; `planlama/d158/F10d-gunluk.md`, kontrol `F10d-kontrol.md`): alt adımlar (F10c `sira` grubu = alt adım; tek
+  kaynak). E4 10, F1 10, F2 9, F3 5, F4 3, F5 5 alt adım; iki kollu tezgâh adımları 21, 43, 45, 46 2'şer: 50 ana adım + 50 alt adım
+  = 100 konum; `?adim=31.3` / `#31.3`, ←/→ alt adımlarda da yürür, adres çubuğu izler. Masada hazırlanan birimler (`masa` / `bag`), takma
+  yönleri giriş yolu ölçümüyle, patlatma mesafesi parça boyuyla orantılı, panel sırası = takma sırası. 164 ısıl gömmenin ev sahibi
+  malzemeden (59'u ev sahibinin adımına taşındı; kalıcı `sira.isil_gomme` denetimi). Veri 15:34 (FreeCAD), kontrol 16:52 (`--veri-yok`,
+  aynı veri): 50/50 + alt 50/50, konsol 0, 1192 ↔ 1192, ulaşılamaz 0, girilemez 0, uçuş istisnası 12, perdelenme 291 → 262, PDF 69
+  sayfa (100 görüntü), en küçük 8,1 pt, denetim 0. Bayraksız tam üretim son kodla bir kez koştu, veriyi yazdıktan sonra bellek yüzünden
+  kesildi; yeniden koşulmadı.
 
 ## Kararlar (tasarım)
 - 09.11 (F7b): Göğüs ekranı / kafa kablo yolları (`lale158/kablo_yolu_ekran.py`) `semalar` olarak girer, `parcalar`a değil: gösterim

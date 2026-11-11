@@ -79,6 +79,7 @@ takoz takozu tam tambur tamburu tarafa taramada te teker tekerden tekerler teki 
 testinden teyit tilt toprak tornavida travers traversi traversin tut tutkal tutmazsa tuttur tutucu tutuyor ucu ucundan ucunu uzatma
 uzatmalar uzatmaya uzun var ve verir victron vida vidalar vidaya waveshare with ya yaka yalpa yan yana yanak yanaktaki yanda yatay
 yaz ye yedek yer yerde yere yeri yerinde yi yok yol yolla yollar yollu yolu yoluna yolunun yu yuva yuvada yuvalar yuvaya zarf
+braketin brakete saydam yerinden yolda karede arkada kapaklarda bantta
 zeminden zorlarsa
 ama bantla banda beslenir besleme besler bekliyor birlikte boylar burca cam cama dahil dahili damar daldan dayamalar delik delikler
 delikleri deliklerine deliklerini deliklerinin delikli delikte delikten demet demeti demetin demetine dev direkten dizi dolu duvara
@@ -99,6 +100,8 @@ klemenslere dar kata olmayan yetecek demetleyip topla yolunu toplama bilinen kon
 karta etiketleri okunuyor biri kabuklar denetimi kafadayken tavan getir uzan bekleyen eki kaba yerel olarak
 hornunu konumdayken miline indikten inen milde milinde pres ona tarifinden indir kafadaysa pime aradaki ortak hacim
 temas ediyor soldan dikey bindirmesi solun girmiyor grubu eden yani
+milinin durum alete bantlar braketler solunu braketlerin yandan braketlere bindirmesini yoldan oturtarak bindirmesine birimi
+bindirmelerini esneterek metnindeki maddeyi izle bindirmelerine metni takoza maddeye gerilmesin tabloda birim
 """.split())
 
 # 3) Kafa / hoparlör / hub: (bileşen anahtarı parça adında, metinde aranacak kelimeler)
@@ -229,6 +232,7 @@ def yasak_tara(V):
     for a in V["adimlar"]:
         alan = [(k, a.get(k) or "") for k in ("baslik", "is_", "baglanti_md", "alet", "erisim")]
         alan += [(k, t) for k in ("kontrol", "kablo", "not_") for t in (a.get(k) or [])]
+        alan += [("alt adım %d %s" % (n + 1, k), g.get(k) or "") for n, g in enumerate(a.get("sira_grup") or []) for k in ("ad", "is_")]   # F10d
         for k, metin in alan:
             for cumle in re.split(r"(?<=[.;!?])\s+|\n", metin):
                 for ad, desen, olumsuz in YASAK:
@@ -270,6 +274,8 @@ def gorunen_metinler(V):
             out += [(y + " parça", r["ad"]), (y + " parça malzeme", r.get("malzeme") or ""),
                     (y + " parça tür", (V.get("tur_ad") or {}).get(r["tur"], r["tur"]))]
         out += [(y + " bağlantı", r["kod"]) for r in a["baglantilar"]]
+        for n, g in enumerate(a.get("sira_grup") or []):                # F10d: alt adım / sıra grubu başlığı ve metni
+            out += [(y + " alt adım %d ad" % (n + 1), g.get("ad") or ""), (y + " alt adım %d is_" % (n + 1), g.get("is_") or "")]
     for p in V["parcalar"]:                                          # tıklayınca görünen etiket
         out += [("parça %s ad" % p["id"], p["ad"]), ("parça %s kod" % p["id"], p["kod"]),
                 ("parça %s modül" % p["id"], (V.get("modul_ad") or {}).get(p["modul"], p["modul"]))]
@@ -356,7 +362,7 @@ def tutarlilik(V, metinler):
     adim_metin = collections.defaultdict(str)
     for a in V["adimlar"]:
         adim_metin[a["i"]] = "\n".join([a.get("is_") or "", a.get("baglanti_md") or ""] + (a.get("kontrol") or []) + (a.get("kablo") or [])
-                                       + (a.get("not_") or []))
+                                       + (a.get("not_") or []) + [g.get("is_") or "" for g in (a.get("sira_grup") or [])])
     anma = []
     for anahtar, kelimeler in BILESEN:
         for i in sorted({p["a"] for p in V["parcalar"] if p["ad"].startswith(anahtar) or anahtar in p["ad"]}):

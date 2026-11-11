@@ -1,0 +1,973 @@
+{
+ "yontem": "Perdelenme ölçümünde (voksel 3 mm, 26 yön) alt adımında tamamen gizli çıkan yeni parçaların o alt adımın karesindeki kimlik\ntamponu piksel sayısı (bağımsız ikinci ölçüm: piksel düzeyinde, tek kamera). yol: rehber_sira --json çıktısı ya da kontrol.json.",
+ "diger_kamera": [
+  [
+   0.85,
+   0.62,
+   -1.25
+  ],
+  [
+   -0.85,
+   0.62,
+   -1.25
+  ],
+  [
+   0.85,
+   0.62,
+   1.25
+  ],
+  [
+   -0.85,
+   0.62,
+   1.25
+  ],
+  [
+   0,
+   1,
+   0
+  ],
+  [
+   0.9,
+   -0.55,
+   1.2
+  ],
+  [
+   0.9,
+   -0.55,
+   -1.2
+  ],
+  [
+   1,
+   0,
+   0
+  ],
+  [
+   -1,
+   0,
+   0
+  ]
+ ],
+ "olcum": [
+  {
+   "adres": "31.1",
+   "kod": "E4",
+   "id": "p0769",
+   "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar üst)",
+   "hazir": true,
+   "piksel": 83,
+   "diger_kamera": null
+  },
+  {
+   "adres": "31.1",
+   "kod": "E4",
+   "id": "p0771",
+   "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar alt)",
+   "hazir": true,
+   "piksel": 98,
+   "diger_kamera": null
+  },
+  {
+   "adres": "31.1",
+   "kod": "E4",
+   "id": "p0773",
+   "ad": "Isıl gömme somun M3 (kafa ön/arka sağ y-60)",
+   "hazir": true,
+   "piksel": 164,
+   "diger_kamera": null
+  },
+  {
+   "adres": "31.1",
+   "kod": "E4",
+   "id": "p0775",
+   "ad": "Isıl gömme somun M3 (kafa ön/arka sağ y+70)",
+   "hazir": true,
+   "piksel": 127,
+   "diger_kamera": null
+  },
+  {
+   "adres": "31.3",
+   "kod": "E4",
+   "id": "p0777",
+   "ad": "Isıl gömme somun M3 (kafa ön/arka sol y-60)",
+   "hazir": true,
+   "piksel": 179,
+   "diger_kamera": null
+  },
+  {
+   "adres": "31.3",
+   "kod": "E4",
+   "id": "p0779",
+   "ad": "Isıl gömme somun M3 (kafa ön/arka sol y+70)",
+   "hazir": true,
+   "piksel": 220,
+   "diger_kamera": null
+  },
+  {
+   "adres": "31.3",
+   "kod": "E4",
+   "id": "p0822",
+   "ad": "Köpük bant (USB ses kartı)",
+   "hazir": true,
+   "piksel": 3507,
+   "diger_kamera": null
+  },
+  {
+   "adres": "31.3",
+   "kod": "E4",
+   "id": "p0824",
+   "ad": "Köpük bant (PAM8403 amfi)",
+   "hazir": true,
+   "piksel": 1560,
+   "diger_kamera": null
+  },
+  {
+   "adres": "31.5",
+   "kod": "E4",
+   "id": "p0757",
+   "ad": "Tabla cıvatası M3x10 (sağ z-75)",
+   "hazir": true,
+   "piksel": 475,
+   "diger_kamera": null
+  },
+  {
+   "adres": "31.6",
+   "kod": "E4",
+   "id": "p0797",
+   "ad": "Isıl gömme somun M3 (tırnak boss alt sol)",
+   "hazir": true,
+   "piksel": 120,
+   "diger_kamera": null
+  },
+  {
+   "adres": "31.6",
+   "kod": "E4",
+   "id": "p0800",
+   "ad": "Kamera vidası M2x8 PT (1)",
+   "hazir": true,
+   "piksel": 95,
+   "diger_kamera": null
+  },
+  {
+   "adres": "31.6",
+   "kod": "E4",
+   "id": "p0801",
+   "ad": "Kamera vidası M2x8 PT (2)",
+   "hazir": true,
+   "piksel": 114,
+   "diger_kamera": null
+  },
+  {
+   "adres": "31.6",
+   "kod": "E4",
+   "id": "p0802",
+   "ad": "Kamera vidası M2x8 PT (3)",
+   "hazir": true,
+   "piksel": 115,
+   "diger_kamera": null
+  },
+  {
+   "adres": "31.8",
+   "kod": "E4",
+   "id": "p0791",
+   "ad": "Köpük bant (tırnak alt sağ)",
+   "hazir": true,
+   "piksel": 503,
+   "diger_kamera": null
+  },
+  {
+   "adres": "31.8",
+   "kod": "E4",
+   "id": "p0795",
+   "ad": "Köpük bant (tırnak alt sol)",
+   "hazir": true,
+   "piksel": 299,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.1",
+   "kod": "F1",
+   "id": "p0385",
+   "ad": "Isıl gömme somun M3 (etek z+88 sağ)",
+   "hazir": true,
+   "piksel": 105,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.1",
+   "kod": "F1",
+   "id": "p0387",
+   "ad": "Isıl gömme somun M3 (etek z+88 sağ)",
+   "hazir": true,
+   "piksel": 112,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.1",
+   "kod": "F1",
+   "id": "p0389",
+   "ad": "Isıl gömme somun M3 (etek z-88 sağ)",
+   "hazir": true,
+   "piksel": 69,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.1",
+   "kod": "F1",
+   "id": "p0391",
+   "ad": "Isıl gömme somun M3 (etek z-88 sağ)",
+   "hazir": true,
+   "piksel": 71,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.1",
+   "kod": "F1",
+   "id": "p0393",
+   "ad": "Isıl gömme somun M3 (etek z-88 sağ)",
+   "hazir": true,
+   "piksel": 74,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.2",
+   "kod": "F1",
+   "id": "p0395",
+   "ad": "Isıl gömme somun M3 (etek z+88 sol)",
+   "hazir": true,
+   "piksel": 106,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.2",
+   "kod": "F1",
+   "id": "p0397",
+   "ad": "Isıl gömme somun M3 (etek z+88 sol)",
+   "hazir": true,
+   "piksel": 108,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.2",
+   "kod": "F1",
+   "id": "p0399",
+   "ad": "Isıl gömme somun M3 (etek z+88 sol)",
+   "hazir": true,
+   "piksel": 114,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.2",
+   "kod": "F1",
+   "id": "p0401",
+   "ad": "Isıl gömme somun M3 (etek z-88 sol)",
+   "hazir": true,
+   "piksel": 71,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.2",
+   "kod": "F1",
+   "id": "p0403",
+   "ad": "Isıl gömme somun M3 (etek z-88 sol)",
+   "hazir": true,
+   "piksel": 71,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.2",
+   "kod": "F1",
+   "id": "p0405",
+   "ad": "Isıl gömme somun M3 (etek z-88 sol)",
+   "hazir": true,
+   "piksel": 77,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.3",
+   "kod": "F1",
+   "id": "p0367",
+   "ad": "Isıl gömme somun M3 (etek x+38 ön)",
+   "hazir": true,
+   "piksel": 48,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.3",
+   "kod": "F1",
+   "id": "p0369",
+   "ad": "Isıl gömme somun M3 (etek x+38 ön)",
+   "hazir": true,
+   "piksel": 52,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.6",
+   "kod": "F1",
+   "id": "p0450",
+   "ad": "Isıl gömme somun M3 (Etek servis kapağı H1 (sigorta kutusu))",
+   "hazir": true,
+   "piksel": 59,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.6",
+   "kod": "F1",
+   "id": "p0452",
+   "ad": "Isıl gömme somun M3 (Etek servis kapağı H1 (sigorta kutusu))",
+   "hazir": true,
+   "piksel": 63,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.6",
+   "kod": "F1",
+   "id": "p0454",
+   "ad": "Isıl gömme somun M3 (Etek servis kapağı H2 (ana sigorta))",
+   "hazir": true,
+   "piksel": 69,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.6",
+   "kod": "F1",
+   "id": "p0456",
+   "ad": "Isıl gömme somun M3 (Etek servis kapağı H2 (ana sigorta))",
+   "hazir": true,
+   "piksel": 75,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.6",
+   "kod": "F1",
+   "id": "p0458",
+   "ad": "Isıl gömme somun M3 (Etek servis kapağı H2 (ana sigorta))",
+   "hazir": true,
+   "piksel": 73,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.6",
+   "kod": "F1",
+   "id": "p0460",
+   "ad": "Isıl gömme somun M3 (Etek servis kapağı H2 (ana sigorta))",
+   "hazir": true,
+   "piksel": 79,
+   "diger_kamera": null
+  },
+  {
+   "adres": "33.9",
+   "kod": "F1",
+   "id": "p0448",
+   "ad": "Isıl gömme somun M3 (Etek servis kapağı H1 (sigorta kutusu))",
+   "hazir": true,
+   "piksel": 59,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.1",
+   "kod": "F2",
+   "id": "p0299",
+   "ad": "Isıl gömme somun M3 (gövde x0 ön)",
+   "hazir": true,
+   "piksel": 145,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.1",
+   "kod": "F2",
+   "id": "p0321",
+   "ad": "Isıl gömme somun M3 (gövde x0 arka)",
+   "hazir": true,
+   "piksel": 88,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.1",
+   "kod": "F2",
+   "id": "p0323",
+   "ad": "Isıl gömme somun M3 (gövde x0 arka)",
+   "hazir": true,
+   "piksel": 96,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.3",
+   "kod": "F2",
+   "id": "p0259",
+   "ad": "Isıl gömme somun M3 (gövde y634 yan)",
+   "hazir": true,
+   "piksel": 278,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.3",
+   "kod": "F2",
+   "id": "p0325",
+   "ad": "Isıl gömme somun M3 (gövde x0 arka)",
+   "hazir": true,
+   "piksel": 131,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.3",
+   "kod": "F2",
+   "id": "p0327",
+   "ad": "Isıl gömme somun M3 (gövde x0 arka)",
+   "hazir": true,
+   "piksel": 170,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.4",
+   "kod": "F2",
+   "id": "p0257",
+   "ad": "Isıl gömme somun M3 (gövde y634 arka)",
+   "hazir": true,
+   "piksel": 321,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.4",
+   "kod": "F2",
+   "id": "p0261",
+   "ad": "Isıl gömme somun M3 (gövde y634 yan)",
+   "hazir": true,
+   "piksel": 309,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.4",
+   "kod": "F2",
+   "id": "p0326",
+   "ad": "Bindirme cıvatası M3x6 (gövde x0 arka)",
+   "hazir": true,
+   "piksel": 150,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.5",
+   "kod": "F2",
+   "id": "p0256",
+   "ad": "Bindirme cıvatası M3x6 (gövde y634 arka)",
+   "hazir": true,
+   "piksel": 122,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.5",
+   "kod": "F2",
+   "id": "p0263",
+   "ad": "Isıl gömme somun M3 (gövde y792 ön)",
+   "hazir": true,
+   "piksel": 291,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.5",
+   "kod": "F2",
+   "id": "p0267",
+   "ad": "Isıl gömme somun M3 (gövde y792 arka)",
+   "hazir": true,
+   "piksel": 208,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.5",
+   "kod": "F2",
+   "id": "p0271",
+   "ad": "Isıl gömme somun M3 (gövde y792 yan)",
+   "hazir": true,
+   "piksel": 287,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.5",
+   "kod": "F2",
+   "id": "p0329",
+   "ad": "Isıl gömme somun M3 (gövde x0 arka)",
+   "hazir": true,
+   "piksel": 132,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.5",
+   "kod": "F2",
+   "id": "p0331",
+   "ad": "Isıl gömme somun M3 (gövde x0 arka)",
+   "hazir": true,
+   "piksel": 166,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.6",
+   "kod": "F2",
+   "id": "p0258",
+   "ad": "Bindirme cıvatası M3x6 (gövde y634 arka)",
+   "hazir": true,
+   "piksel": 166,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.6",
+   "kod": "F2",
+   "id": "p0262",
+   "ad": "Bindirme cıvatası M3x6 (gövde y634 yan)",
+   "hazir": true,
+   "piksel": 299,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.6",
+   "kod": "F2",
+   "id": "p0265",
+   "ad": "Isıl gömme somun M3 (gövde y792 ön)",
+   "hazir": true,
+   "piksel": 230,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.6",
+   "kod": "F2",
+   "id": "p0269",
+   "ad": "Isıl gömme somun M3 (gövde y792 arka)",
+   "hazir": true,
+   "piksel": 327,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.6",
+   "kod": "F2",
+   "id": "p0273",
+   "ad": "Isıl gömme somun M3 (gövde y792 yan)",
+   "hazir": true,
+   "piksel": 314,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.6",
+   "kod": "F2",
+   "id": "p0330",
+   "ad": "Bindirme cıvatası M3x6 (gövde x0 arka)",
+   "hazir": true,
+   "piksel": 149,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.7",
+   "kod": "F2",
+   "id": "p0275",
+   "ad": "Isıl gömme somun M3 (gövde y1005 ön)",
+   "hazir": true,
+   "piksel": 108,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.7",
+   "kod": "F2",
+   "id": "p0279",
+   "ad": "Isıl gömme somun M3 (gövde y1005 arka)",
+   "hazir": true,
+   "piksel": 77,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.7",
+   "kod": "F2",
+   "id": "p0283",
+   "ad": "Isıl gömme somun M3 (gövde y1005 yan)",
+   "hazir": true,
+   "piksel": 71,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.7",
+   "kod": "F2",
+   "id": "p0311",
+   "ad": "Isıl gömme somun M3 (gövde x0 ön)",
+   "hazir": true,
+   "piksel": 108,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.7",
+   "kod": "F2",
+   "id": "p0313",
+   "ad": "Isıl gömme somun M3 (gövde x0 ön)",
+   "hazir": true,
+   "piksel": 116,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.7",
+   "kod": "F2",
+   "id": "p0337",
+   "ad": "Isıl gömme somun M3 (arka kapak)",
+   "hazir": true,
+   "piksel": 82,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.7",
+   "kod": "F2",
+   "id": "p0439",
+   "ad": "Isıl gömme somun M3 (hoparlör boss)",
+   "hazir": true,
+   "piksel": 98,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.7",
+   "kod": "F2",
+   "id": "p0441",
+   "ad": "Isıl gömme somun M3 (hoparlör boss)",
+   "hazir": true,
+   "piksel": 115,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.7",
+   "kod": "F2",
+   "id": "p0443",
+   "ad": "Köpük ped (hoparlör kelepçesi)",
+   "hazir": true,
+   "piksel": 315,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.9",
+   "kod": "F2",
+   "id": "p0270",
+   "ad": "Bindirme cıvatası M3x6 (gövde y792 arka)",
+   "hazir": true,
+   "piksel": 50,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.9",
+   "kod": "F2",
+   "id": "p0335",
+   "ad": "Isıl gömme somun M3 (arka kapak)",
+   "hazir": true,
+   "piksel": 56,
+   "diger_kamera": null
+  },
+  {
+   "adres": "34.9",
+   "kod": "F2",
+   "id": "p0345",
+   "ad": "Isıl gömme somun M3 (arka kapak)",
+   "hazir": true,
+   "piksel": 60,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.1",
+   "kod": "F3",
+   "id": "p0289",
+   "ad": "Isıl gömme somun M3 (gövde y1198 arka)",
+   "hazir": true,
+   "piksel": 101,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.1",
+   "kod": "F3",
+   "id": "p0295",
+   "ad": "Isıl gömme somun M3 (gövde y1198 ön)",
+   "hazir": true,
+   "piksel": 162,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.1",
+   "kod": "F3",
+   "id": "p0351",
+   "ad": "Isıl gömme somun M3 (üst arka kapak)",
+   "hazir": true,
+   "piksel": 74,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.1",
+   "kod": "F3",
+   "id": "p0353",
+   "ad": "Isıl gömme somun M3 (üst arka kapak)",
+   "hazir": true,
+   "piksel": 79,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.1",
+   "kod": "F3",
+   "id": "p0355",
+   "ad": "Isıl gömme somun M3 (üst arka kapak)",
+   "hazir": true,
+   "piksel": 85,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.1",
+   "kod": "F3",
+   "id": "p0357",
+   "ad": "Isıl gömme somun M3 (üst arka kapak)",
+   "hazir": true,
+   "piksel": 92,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.2",
+   "kod": "F3",
+   "id": "p0291",
+   "ad": "Isıl gömme somun M3 (gövde y1198 arka)",
+   "hazir": true,
+   "piksel": 96,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.2",
+   "kod": "F3",
+   "id": "p0293",
+   "ad": "Isıl gömme somun M3 (gövde y1198 arka)",
+   "hazir": true,
+   "piksel": 93,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.2",
+   "kod": "F3",
+   "id": "p0297",
+   "ad": "Isıl gömme somun M3 (gövde y1198 ön)",
+   "hazir": true,
+   "piksel": 152,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.2",
+   "kod": "F3",
+   "id": "p0359",
+   "ad": "Isıl gömme somun M3 (üst arka kapak)",
+   "hazir": true,
+   "piksel": 83,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.2",
+   "kod": "F3",
+   "id": "p0361",
+   "ad": "Isıl gömme somun M3 (üst arka kapak)",
+   "hazir": true,
+   "piksel": 85,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.3",
+   "kod": "F3",
+   "id": "p0434",
+   "ad": "Çekiç somun M6 (direk ön kanalı)",
+   "hazir": true,
+   "piksel": 508,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.3",
+   "kod": "F3",
+   "id": "p0437",
+   "ad": "Çekiç somun M6 (direk ön kanalı)",
+   "hazir": true,
+   "piksel": 731,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.5",
+   "kod": "F3",
+   "id": "p0410",
+   "ad": "Isıl gömme somun M3 (göğüs çerçevesi)",
+   "hazir": true,
+   "piksel": 110,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.5",
+   "kod": "F3",
+   "id": "p0414",
+   "ad": "Isıl gömme somun M3 (göğüs çerçevesi)",
+   "hazir": true,
+   "piksel": 117,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.5",
+   "kod": "F3",
+   "id": "p0416",
+   "ad": "Isıl gömme somun M3 (göğüs çerçevesi)",
+   "hazir": true,
+   "piksel": 116,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.5",
+   "kod": "F3",
+   "id": "p0418",
+   "ad": "Isıl gömme somun M3 (göğüs çerçevesi)",
+   "hazir": true,
+   "piksel": 104,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.5",
+   "kod": "F3",
+   "id": "p0420",
+   "ad": "Isıl gömme somun M3 (göğüs çerçevesi)",
+   "hazir": true,
+   "piksel": 113,
+   "diger_kamera": null
+  },
+  {
+   "adres": "35.5",
+   "kod": "F3",
+   "id": "p0422",
+   "ad": "Isıl gömme somun M3 (göğüs çerçevesi)",
+   "hazir": true,
+   "piksel": 101,
+   "diger_kamera": null
+  },
+  {
+   "adres": "36.1",
+   "kod": "F4",
+   "id": "p0296",
+   "ad": "Bindirme cıvatası M3x6 (gövde y1198 ön)",
+   "hazir": true,
+   "piksel": 103,
+   "diger_kamera": null
+  },
+  {
+   "adres": "36.1",
+   "kod": "F4",
+   "id": "p0333",
+   "ad": "Isıl gömme somun M3 (gövde x0 arka)",
+   "hazir": true,
+   "piksel": 132,
+   "diger_kamera": null
+  },
+  {
+   "adres": "36.1",
+   "kod": "F4",
+   "id": "p0462",
+   "ad": "Isıl gömme somun M3 (S1 kaseti sağ ψ 200)",
+   "hazir": true,
+   "piksel": 31,
+   "diger_kamera": null
+  },
+  {
+   "adres": "36.1",
+   "kod": "F4",
+   "id": "p0464",
+   "ad": "Isıl gömme somun M3 (S1 kaseti sağ ψ 226)",
+   "hazir": true,
+   "piksel": 159,
+   "diger_kamera": null
+  },
+  {
+   "adres": "36.2",
+   "kod": "F4",
+   "id": "p0298",
+   "ad": "Bindirme cıvatası M3x6 (gövde y1198 ön)",
+   "hazir": true,
+   "piksel": 310,
+   "diger_kamera": null
+  },
+  {
+   "adres": "36.2",
+   "kod": "F4",
+   "id": "p0320",
+   "ad": "Bindirme cıvatası M3x6 (gövde x0 ön)",
+   "hazir": true,
+   "piksel": 263,
+   "diger_kamera": null
+  },
+  {
+   "adres": "36.2",
+   "kod": "F4",
+   "id": "p0466",
+   "ad": "Isıl gömme somun M3 (S1 kaseti sol ψ 200)",
+   "hazir": true,
+   "piksel": 306,
+   "diger_kamera": null
+  },
+  {
+   "adres": "36.2",
+   "kod": "F4",
+   "id": "p0468",
+   "ad": "Isıl gömme somun M3 (S1 kaseti sol ψ 226)",
+   "hazir": true,
+   "piksel": 338,
+   "diger_kamera": null
+  },
+  {
+   "adres": "46.2",
+   "kod": "H0e",
+   "id": "p0672",
+   "ad": "Isıl gömme somun M3 (flanşta)",
+   "hazir": true,
+   "piksel": 2244,
+   "diger_kamera": null
+  },
+  {
+   "adres": "46.2",
+   "kod": "H0e",
+   "id": "p0674",
+   "ad": "Isıl gömme somun M3 (flanşta)",
+   "hazir": true,
+   "piksel": 1313,
+   "diger_kamera": null
+  },
+  {
+   "adres": "49.3",
+   "kod": "F5",
+   "id": "p0336",
+   "ad": "Bindirme cıvatası M3x6 (arka kapak)",
+   "hazir": true,
+   "piksel": 196,
+   "diger_kamera": null
+  },
+  {
+   "adres": "49.3",
+   "kod": "F5",
+   "id": "p0338",
+   "ad": "Bindirme cıvatası M3x6 (arka kapak)",
+   "hazir": true,
+   "piksel": 227,
+   "diger_kamera": null
+  },
+  {
+   "adres": "49.3",
+   "kod": "F5",
+   "id": "p0340",
+   "ad": "Bindirme cıvatası M3x6 (arka kapak)",
+   "hazir": true,
+   "piksel": 258,
+   "diger_kamera": null
+  },
+  {
+   "adres": "49.3",
+   "kod": "F5",
+   "id": "p0344",
+   "ad": "Bindirme cıvatası M3x6 (arka kapak)",
+   "hazir": true,
+   "piksel": 418,
+   "diger_kamera": null
+  },
+  {
+   "adres": "49.5",
+   "kod": "F5",
+   "id": "p0449",
+   "ad": "Kapak cıvatası M3x6 (Etek servis kapağı H1 (sigorta kutusu))",
+   "hazir": true,
+   "piksel": 267,
+   "diger_kamera": null
+  }
+ ],
+ "pikselli": 102,
+ "baska_kamerada": 0,
+ "toplam": 102
+}

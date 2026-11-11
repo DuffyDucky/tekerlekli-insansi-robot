@@ -55,6 +55,12 @@ ul li:first-child{border-top:0}
 .bos{color:var(--mut)}
 code{background:#efede7;padding:0 1mm;border-radius:.6mm;font-size:max(8.1pt,.9em);overflow-wrap:anywhere}
 .ic,td,li{overflow-wrap:anywhere}
+/* F10d: alt adım kartı (görüntü solda, metin ve satırlar sağda) */
+.altkart{display:grid;grid-template-columns:76mm 1fr;gap:3mm;border-top:.3mm solid var(--line);padding:1.6mm 0;break-inside:avoid}
+.agorsel{width:76mm;height:45.6mm;object-fit:contain;background:var(--zemin);border-radius:1.2mm;display:block}
+.agorsel-yok{width:76mm;height:45.6mm;display:grid;place-items:center;background:var(--zemin);color:var(--mut);border-radius:1.2mm}
+h3{font-size:1.05em;margin:0 0 .8mm}
+tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
 .alt{position:absolute;left:11mm;right:11mm;bottom:5mm;display:flex;justify-content:space-between;font-size:8.1pt;color:var(--mut);
   border-top:.3mm solid var(--line);padding-top:1mm}
 </style>
@@ -77,15 +83,26 @@ code{background:#efede7;padding:0 1mm;border-radius:.6mm;font-size:max(8.1pt,.9e
 
   // F7c (D-3): adım bloklara bölünür; sığmazsa bloklar sondan "devam" sayfasına taşınır. Yazı 8,5 pt'nin, küçük öğeler 8,1 pt'nin altına inmez.
   var FS_MAX = 9.6, FS_MIN = 8.5, GH_MAX = 84, GH_MIN = 46;
+  // F10d: takma sırası tablosu (app.js ile aynı: st.sira varsa parçalar ve bağlantı elemanları tek tabloda, grup başlıklarıyla)
+  function satir(st, k) {
+    var t = k.split(":")[0], x = (t === "p" ? st.parcalar : st.baglantilar)[+k.split(":")[1]];
+    if (!x) return "";
+    if (t === "p") return "<tr><td><i class='sw' style='background:" + (SINIF[x.r] || SINIF.satin) + "'></i>" + esc(x.ad) + "<div class='t'>" +
+      esc(TUR[x.tur] || x.tur) + (x.malzeme && x.malzeme !== "-" ? " · " + esc(x.malzeme) : "") + "</div></td><td class='n'>×" + x.adet + "</td></tr>";
+    return "<tr><td><i class='sw' style='background:" + SINIF.baglanti + "'></i>" + esc(x.kod) + "<div class='t'>" +
+      (x.onceden ? "Bağlantı elemanı · baskıdan sonra takılı (hazırlık), parçasıyla gelir" : "Bağlantı elemanı") + "</div></td><td class='n'>×" + x.adet + "</td></tr>";
+  }
   function bloklar(st, s) {
     var b = [];
     if ((st.not_ || []).length) b.push({ tur: "ust", h: "<div class='notlar'><b>Notlar ve uyarılar</b><ul>" + st.not_.map(function (t) { return "<li>" + md(t) + "</li>"; }).join("") + "</ul></div>" });
-    var sol = ["<h2>Parçalar</h2>"];
-    if (st.parcalar.length) {
-      sol.push("<table>" + st.parcalar.map(function (x) {
-        return "<tr><td><i class='sw' style='background:" + (SINIF[x.r] || SINIF.satin) + "'></i>" + esc(x.ad) + "<div class='t'>" +
-          esc(TUR[x.tur] || x.tur) + (x.malzeme && x.malzeme !== "-" ? " · " + esc(x.malzeme) : "") + "</div></td><td class='n'>×" + x.adet + "</td></tr>";
+    var sol = [st.sira ? "<h2>Parçalar ve bağlantı elemanları (takma sırasıyla)</h2>" : "<h2>Parçalar</h2>"];
+    if (st.sira) {
+      sol.push("<table>" + st.sira_grup.map(function (g, n) {
+        return g.satir.length ? "<tr class='grup'><td colspan='2'>" + (st.alt ? s + "." + (n + 1) + " · " : (n + 1) + ". ") + esc(g.ad) + "</td></tr>" +
+          g.satir.map(function (k) { return satir(st, k); }).join("") : "";
       }).join("") + "</table>");
+    } else if (st.parcalar.length) {
+      sol.push("<table>" + st.parcalar.map(function (x, i) { return satir(st, "p:" + i); }).join("") + "</table>");
     } else sol.push("<p class='bos'>" + (s === 0 ? "Hedef: bitmiş robot (" + V.parcalar.length + " parça)." : "Bu adımda yeni parça yok.") + "</p>");
     if (st.baglanir != null) sol.push("<p class='not'>Bu alt montaj " + st.baglanir + ". adımda (" + esc(A[st.baglanir].kod) + ") robota bağlanır.</p>");
     var altlar = [];
@@ -93,10 +110,8 @@ code{background:#efede7;padding:0 1mm;border-radius:.6mm;font-size:max(8.1pt,.9e
     if (altlar.length) sol.push("<p class='not'>Robota gelen alt montaj: " + altlar.join(", ") + "</p>");
     b.push({ tur: "iki", h: sol.join("") });
     var bag = ["<h2>Bağlantı elemanları</h2>"];
-    bag.push(st.baglantilar.length ? "<table>" + st.baglantilar.map(function (x) {
-      return "<tr><td>" + esc(x.kod) + (x.onceden ? "<div class='t'>Baskıdan sonra takılı (hazırlık); burada yalnız sayılır</div>" : "") +
-        "</td><td class='n'>×" + x.adet + "</td></tr>";
-    }).join("") + "</table>" : "<p class='bos'>Yok.</p>");
+    if (st.sira) bag.push("<p class='not'>Takma sırasıyla yukarıdaki tabloda.</p>");
+    else bag.push(st.baglantilar.length ? "<table>" + st.baglantilar.map(function (x, i) { return satir(st, "b:" + i); }).join("") + "</table>" : "<p class='bos'>Yok.</p>");
     if (st.baglanti_md) bag.push("<p class='not'>Bağlantı: " + md(st.baglanti_md) + "</p>");
     b.push({ tur: "iki", h: bag.join("") });
     b.push({ tur: "iki", h: "<h2>Kontrol listesi</h2>" + (st.kontrol.length ? "<ul class='kontrol'>" + st.kontrol.map(function (t) { return "<li><span>" + md(t) + "</span></li>"; }).join("") + "</ul>"
@@ -106,6 +121,14 @@ code{background:#efede7;padding:0 1mm;border-radius:.6mm;font-size:max(8.1pt,.9e
     SEMA.forEach(function (x) { if (x.a === s) kab.push("<li><i class='sw' style='background:" + x.renk + "'></i>" + esc(x.ad) + " <span class='t'>(şema)</span></li>"); });
     b.push({ tur: "iki", h: "<h2>Kablo kancası</h2>" + (kab.length ? "<ul class='kablo'>" + kab.join("") + "</ul>" : "<p class='bos'>Bu adımda özel kablo işi yok.</p>") });
     b.push({ tur: "iki", h: "<h2>Erişim notu</h2><p class='not'>" + (st.erisim ? md(st.erisim) : "—") + "</p>" });
+    // F10d: alt adım kartları (görüntü goruntu/adim-NN-JJ.png, rehber_uret.py ?adim=N.J&sahne=1)
+    (st.alt ? st.sira_grup : []).forEach(function (g, n) {
+      var j = n + 1, ad = s + "." + j;
+      b.push({ tur: "alt", h: "<div class='altkart'><img class='agorsel' alt='Alt adım " + ad + " 3B görünüm' src='goruntu/adim-" + iki(s) + "-" + iki(j) +
+        ".png' onerror=\"this.outerHTML='<div class=agorsel-yok>Görüntü yok</div>'\"><div><h3>" + ad + " · " + esc(g.ad) + "</h3>" +
+        (g.is_ ? "<div class='is'>" + md(g.is_) + "</div>" : "") +
+        (g.satir.length ? "<table>" + g.satir.map(function (k) { return satir(st, k); }).join("") + "</table>" : "") + "</div></div>" });
+    });
     return b;
   }
   function sayfa(st, s, ilk, bl) {
@@ -129,6 +152,8 @@ code{background:#efede7;padding:0 1mm;border-radius:.6mm;font-size:max(8.1pt,.9e
     bl.forEach(function (x) { if (x.tur === "ust") h.push(x.h); });
     var ik = bl.filter(function (x) { return x.tur === "iki"; });
     if (ik.length) h.push("<div class='iki'>" + ik.map(function (x) { return x.h; }).join("") + "</div>");
+    var al = bl.filter(function (x) { return x.tur === "alt"; });
+    if (al.length) h.push("<h2>Alt adımlar</h2>" + al.map(function (x) { return x.h; }).join(""));
     var d = document.createElement("section");
     d.className = "sayfa" + (ilk ? "" : " devam");
     d.dataset.adim = String(s);

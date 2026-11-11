@@ -379,9 +379,11 @@ class Denetim:
         for i, r in enumerate(st["baglantilar"]):
             satir["b:%d" % i] = r.get("ids", [])
         if st.get("sira_grup"):
-            gr = [(g["ad"], bool(g.get("tezgah")), [i for k in g["satir"] for i in satir[k]]) for g in st["sira_grup"]]
+            # F10d: tezgah = masa birimi anahtarı (eski veride True; "" robotta)
+            gr = [(g["ad"], (g.get("tezgah") if isinstance(g.get("tezgah"), str) else ("g%d" % n if g.get("tezgah") else "")),
+                   [i for k in g["satir"] for i in satir[k]]) for n, g in enumerate(st["sira_grup"])]
         else:
-            gr = [("adım", False, [i for k in satir for i in satir[k]])]
+            gr = [("adım", "", [i for k in satir for i in satir[k]])]
         out = []
         for ad, tz, ids in gr:
             out.append((ad, tz, np.array(sorted(self.ID[i] for i in ids), np.int64)))
@@ -403,19 +405,60 @@ class Denetim:
             m = (self.b_ < s) | ((self.b_ == s) & (self.a_ != s))
         return m & ~self.ref
 
+    def bag_anahtar(self, s):
+        """F10d: grup sırası -> robota bağladığı masa birimi anahtarı (sira_grup "bag"); bağlayan grubu olmayan birim kendi yerinde."""
+        st = self.A[s]
+        return {n: g["bag"] for n, g in enumerate(st.get("sira_grup") or []) if g.get("bag")}
+
     def durumlar(self, s):
-        """Grup başına (ad, tezgah, grubun parçaları, o grubun bağlantıları ölçülürken yerinde olanlar)."""
+        """Grup başına (ad, tezgah, grubun parçaları, o grubun bağlantıları ölçülürken yerinde olanlar).
+        F10d: aynı anahtarlı masa grupları birikir (izin = birimin o ana kadarki parçaları); birim robota "bag" grubunda girer
+        (izin = robot + birim). Bağlayan grubu olmayan masa grubu F10c'deki gibi sıradaki yerinde bağlanır."""
         b0 = self.taban(s)
         acc = b0.copy()
         out = []
-        for ad, tz, ids in self.gruplar(s):
+        bag = self.bag_anahtar(s)
+        bagli = set(bag.values())
+        birim = collections.defaultdict(lambda: np.zeros(self.N, bool))
+        for n, (ad, tz, ids) in enumerate(self.gruplar(s)):
             g = np.zeros(self.N, bool); g[ids] = True
             if tz:
-                izin = g.copy()
+                birim[tz] = birim[tz] | g
+                izin = birim[tz].copy()
+                if tz not in bagli:
+                    acc = acc | g                                         # tezgâh grubu sıradaki yerinde robota bağlanır
+            elif n in bag:
+                acc = acc | birim[bag[n]]
+                izin = acc | g
+                acc = acc | g
             else:
                 izin = acc | g
+                acc = acc | g
             out.append((ad, tz, ids, izin))
-            acc = acc | g                                                 # tezgâh grubu sıradaki yerinde robota bağlanır
+        return out
+
+    def birimler(self, s):
+        """F10d: robota giren masa birimleri: [(grup sırası, ad, anahtar, birim parçaları, giriş anındaki engel)]."""
+        st = self.A[s]
+        if not st.get("sira_grup"):
+            return []
+        dur = self.durumlar(s)
+        bag = self.bag_anahtar(s)
+        bagli = set(bag.values())
+        out = []
+        birim = collections.defaultdict(set)
+        acc = set(int(k) for k in np.nonzero(self.taban(s))[0])
+        for n, (ad, tz, ids, _iz) in enumerate(dur):
+            if tz:
+                birim[tz] |= set(int(k) for k in ids)
+                if tz not in bagli:
+                    out.append((n, ad, tz, sorted(birim[tz]), sorted(acc)))
+                    acc |= set(int(k) for k in ids)
+            elif n in bag:
+                out.append((n, ad, bag[n], sorted(birim[bag[n]]), sorted(acc)))
+                acc |= birim[bag[n]] | set(int(k) for k in ids)
+            else:
+                acc |= set(int(k) for k in ids)
         return out
 
     # ------------------------------------------------ alet (ışın)
@@ -768,7 +811,7 @@ class Denetim:
         kod = {a["kod"]: a["i"] for a in self.A}
         e3, e4 = kod["E3"], kod["E4"]
         G3 = RG.Giris(self.P, h=0.25)
-        G4 = RG.Giris(self.P, h=0.5)
+        G4 = self.G4 = RG.Giris(self.P, h=0.5)
         birim = []
 
         def ozet(ad, adim, G, H, E, yonler=RG.YONLER6, bek=None):
@@ -785,18 +828,31 @@ class Denetim:
         alt3 = [k for k in range(self.N) if self.b_[k] < e3 and not self.ref[k]]
         birim.append(ozet("E3 kafa alt montajı (E3a) → tilt hornu", e3, G3, kafa, alt3))
         for s in range(len(self.A)):
-            if not self.A[s].get("sira_grup"):
-                continue
-            dur = self.durumlar(s)
-            for gi, (ad, tz, ids, _iz) in enumerate(dur):
-                if not tz:
-                    continue
-                H = [int(k) for k in ids if not self.ref[k]]
+            # engel = adım başında yerinde olanlar + adım içi o ana kadar robota takılan gruplar (F10d: masa birimi "bag" grubunda girer;
+            # yön listesi: 6 eksen + grubun ub'si tam sayıya yuvarlanmışsa o)
+            for gi, ad, tz, H, E in self.birimler(s):
+                H = [k for k in H if not self.ref[k]]
                 hs = set(H)
-                # engel = adım başında yerinde olanlar + adım içi önceki bütün gruplar (tezgâh grubunun izin'i yalnız kendisi)
-                E = {int(k) for k in np.nonzero(self.taban(s))[0]} | {int(k) for _a, _t, i2, _i in dur[:gi] for k in i2}
                 E = sorted(k for k in E if k not in hs and not self.ref[k])
-                birim.append(ozet("%s: %s" % (self.A[s]["kod"], ad), s, G4, H, E))
+                yon = list(RG.YONLER6)
+                ub = (self.A[s]["sira_grup"][gi].get("ub") or None)
+                if ub:
+                    t = tuple(int(round(x)) for x in ub)
+                    if any(t) and abs(np.linalg.norm(ub) - 1) < 1e-3 and np.allclose(np.array(t) / np.linalg.norm(t), ub, atol=2e-3) \
+                            and t not in yon:
+                        yon.append(t)
+                rec = ozet("%s: %s" % (self.A[s]["kod"], ad), s, G4, H, E, yon)
+                if ub:
+                    rec["ub"] = ub
+                    t = [x for x in rec["yon"] if np.allclose(np.array(x["yon"], float) / np.linalg.norm(x["yon"]), ub, atol=2e-3)]
+                    rec["ub_serbest"] = bool(t and t[0]["serbest"] and not t[0]["dinlenme"])
+                    if t:
+                        rec["ub_yol"] = dict(serbest=t[0]["serbest"], yol_mm=t[0]["yol_mm"], carpan=t[0]["carpan"][:3],
+                                             dinlenme=t[0]["dinlenme"][:3])
+                ok = self.A[s]["sira_grup"][gi].get("giris_ok") or {}         # F10d: gerekçeli istisna {desen: gerekçe}
+                if ok and (not rec["serbest"] or (ub and not rec.get("ub_serbest"))):
+                    rec["istisna"] = next((v for k, v in ok.items() if k in ad or k == "*"), None)
+                birim.append(rec)
         # sınama
         sn = []
         adx = lambda *ss: [k for k in range(self.N) if self.P[k]["modul"] == "kafa" and any(self.P[k]["ad"].startswith(x) for x in ss)]
@@ -815,14 +871,213 @@ class Denetim:
         if sag and sol:
             alt4 = [int(k) for k in np.nonzero(self.taban(e4))[0]]
             sn.append(ozet("E4 sağ arka kabuk, sol arka kabuk takılıyken (yanlış sıra): kapalı", e4, G4, sag, alt4 + sol, RG.YONLER6, "kapalı"))
-        girilemez = [b for b in birim if not b["serbest"]]
-        return dict(durum="koştu", yontem="rehber_giris.py: üç eksende ışın aralıkları (kapalı mesh, parite), hareketli küme eksen yönlerinde "
+        girilemez = [b for b in birim if not b["serbest"] and not b.get("istisna")]
+        ub_kapali = [b["ad"] for b in birim if b.get("ub") and not b.get("ub_serbest") and not b.get("istisna")]   # F10d: rehberin gösterdiği yön kapalı
+        return dict(ub_kapali=ub_kapali,durum="koştu", yontem="rehber_giris.py: üç eksende ışın aralıkları (kapalı mesh, parite), hareketli küme eksen yönlerinde "
                                          "h adımla çekilir; ortak hacim boyu > eşik mm olan ışın çarpışma, temas eden / aynı düzlemdeki "
                                          "yüzler çarpışma değil. Serbest = sınır kutuları ayrılana kadar çarpışma yok ve dinlenmede ortak "
                                          "hacim yok",
                     birim=birim, girilemez=len(girilemez), sinir_girilemez=0, sinama=sn,
-                    gecti=bool(not girilemez and all(x["gecti"] for x in sn) and len(sn) == 3),
+                    istisna=[dict(ad=b["ad"], gerekce=b["istisna"], serbest_yon=b["serbest_yon"], ub_yol=b.get("ub_yol"))
+                             for b in birim if b.get("istisna")],
+                    gecti=bool(not girilemez and not ub_kapali and all(x["gecti"] for x in sn) and len(sn) == 3),
                     e3_kafa_serbest=bool(birim and birim[0]["serbest"]), sure_s=round(time.time() - t0, 1))
+
+    # ------------------------------------------------ uçuş yolu (F10d): alt adımlı adımlarda her satırın patlatma yolu
+    @staticmethod
+    def tam_yon(u, azami=4):
+        """Birim vektöre en yakın küçük tam sayı yön (rehber_giris tam sayı adımla çeker) ve aradaki açı (derece)."""
+        u = np.asarray(u, float)
+        u = u / (np.linalg.norm(u) or 1.0)
+        en = None
+        r = range(-azami, azami + 1)
+        for a in r:
+            for b in r:
+                for c in r:
+                    if not (a or b or c):
+                        continue
+                    if math.gcd(math.gcd(abs(a), abs(b)), abs(c)) != 1:
+                        continue
+                    v = np.array([a, b, c], float)
+                    cs = float(v @ u) / np.linalg.norm(v)
+                    if en is None or cs > en[0] + 1e-12 or (abs(cs - en[0]) <= 1e-12 and abs(a) + abs(b) + abs(c) < sum(map(abs, en[1]))):
+                        en = (cs, (a, b, c))
+        return en[1], round(math.degrees(math.acos(max(-1.0, min(1.0, en[0])))), 2)
+
+    def ucus_yolu(self, adimlar=None):
+        """Patlatılmış konumdan (taban + u·d) yerine giden düz yol, o satır takılmadan önce yerinde olanlarla çarpışıyor mu
+        (rehber_giris.Giris, h 0,5 mm; ortak hacim > ESIK mm çarpışma, temas ve dinlenmede zaten ortak olan çift sayılmaz). Satır =
+        rehber paneli / sıralı takma satırı; aynı satırdaki parçalar birlikte uçar (birbirine engel değil). Isıl gömme ev sahibiyle uçar.
+        Masa birimi "bag" grubunda ub yönünden, app.js mesafesiyle (max(120, 0,8 × birim köşegeni)). Yön: eksen ya da birim köşegense
+        tam sayı ızgarada, değilse uygulamanın yuvarlanmamış yönünde (yon_gercek; düzeltme turu 1, kontrol B-5). Cıvatanın eş dişi
+        (es_dis) engel sayılmaz."""
+        t0 = time.time()
+        G = getattr(self, "G4", None)
+        if G is None:
+            import rehber_giris as RG
+            G = self.G4 = RG.Giris(self.P, h=0.5)
+        ev = collections.defaultdict(list)                              # ev sahibi -> ısıl gömmeler
+        for k, p in enumerate(self.P):
+            if p.get("h") and p["h"] in self.ID:
+                ev[self.ID[p["h"]]].append(k)
+        hosted = {k for v in ev.values() for k in v}
+        out = []
+        for s in range(len(self.A)):
+            st = self.A[s]
+            if not st.get("alt") or (adimlar and s not in adimlar):
+                continue
+            satir = {}
+            for i, r in enumerate(st["parcalar"]):
+                satir["p:%d" % i] = r["ids"]
+            for i, r in enumerate(st["baglantilar"]):
+                satir["b:%d" % i] = r.get("ids", [])
+            dur = self.durumlar(s)
+            bir = {n: (H, E) for n, _ad, _tz, H, E in self.birimler(s)}
+            for n, (gad, tz, ids, izin) in enumerate(dur):
+                g = st["sira_grup"][n]
+                yer = izin.copy()
+                yer[ids] = False
+                if g.get("bag") and n in bir:
+                    H, E = bir[n]
+                    H = [k for k in H if not self.ref[k]]
+                    lo = np.min([self.P[k]["bmin"] for k in H], 0); hi = np.max([self.P[k]["bmax"] for k in H], 0)
+                    d = max(120.0, 0.8 * float(np.linalg.norm(hi - lo)))
+                    out.append(self._yol(G, s, n + 1, gad, "birim", H, [e for e in E if e not in set(H) and not self.ref[e]],
+                                         g.get("ub") or [0, 1, 0], d))
+                for key in g["satir"]:
+                    mv = [self.ID[i] for i in satir[key] if not self.ref[self.ID[i]]]
+                    for k in mv:
+                        if k in hosted or self.P[k]["d"] <= 0:
+                            continue
+                        H = [k] + ev.get(k, [])
+                        hs = set(H) | set(mv)
+                        E = [int(e) for e in np.nonzero(yer)[0] if int(e) not in hs and not self.ref[e]]
+                        es = self.es_dis(k, E)
+                        if es:
+                            E = [e for e in E if e not in set(es)]
+                        rec = self._yol(G, s, n + 1, gad, key, H, E, self.P[k]["u"], self.P[k]["d"])
+                        if es:
+                            rec["es_dis"] = [self.P[e]["ad"] for e in es]
+                        out.append(rec)
+                    for k in mv:
+                        yer[k] = True
+                        for j in ev.get(k, []):
+                            yer[j] = True
+        for r in out:                                                   # gerekçeli istisna: sira grubunda "ucus_ok" {desen: gerekçe}
+            if not r["temiz"]:
+                ok = self.A[r["adim"]]["sira_grup"][r["alt_adim"] - 1].get("ucus_ok") or {}
+                r["istisna"] = next((v for k, v in ok.items() if k in r["ad"]), None)
+        carp = [r for r in out if not r["temiz"] and not r.get("istisna")]
+        doc = " ".join(x.strip() for x in self.ucus_yolu.__doc__.split("\n"))
+        return dict(yontem=doc, h_mm=G.h, esik_mm=G.esik, satir=len(out), carpisan=len(carp), carpisan_liste=carp,
+                    istisna=[r for r in out if r.get("istisna")], sinir_carpisan=0, gecti=not carp, olcum=out,
+                    sure_s=round(time.time() - t0, 1))
+
+    def es_dis(self, k, E, pay=0.5):
+        """Cıvatanın eş dişi: yerindeyken sınır kutusu cıvatanınkiyle kesişen somun / ısıl gömme / perçin somun. Cıvata dişi ona
+        sıfır boşlukla oturur; yön tam sayıya yuvarlanınca (açı 0,7–5,9°) gövde deliğin duvarını sıyırır (0,2–1,5 mm), bu yolun
+        üstündeki bir engel değil, dişin kendisi. Uçuş yolunda engel sayılmaz, kayıtta "es_dis" listelenir."""
+        p = self.P[k]
+        if p["tur"] != "Baglanti" or any(x in p["ad"].lower() for x in ("somun", "gömme", "gomme")):
+            return []
+        out = []
+        for e in E:
+            q = self.P[e]
+            if q["tur"] != "Baglanti" or not any(x in q["ad"].lower() for x in ("somun", "gömme", "gomme")):
+                continue
+            if np.all(q["bmin"] - pay <= p["bmax"]) and np.all(p["bmin"] - pay <= q["bmax"]):
+                out.append(e)
+        return out
+
+    def _yol(self, G, s, alt, gad, key, H, E, u, d):
+        # F10d düzeltme 1 (kontrol B-5): uygulama parçayı verideki yuvarlanmamış u boyunca uçurur (app.js). u bir eksen ya da birim
+        # köşegen yönüyse (tam sayı, bileşenler -1..1; ızgara adımı ≤ h·√3) tam sayı ızgarada çekilir, aynı yol; değilse parça her
+        # h adımda u·t kaydırılıp yeniden ışınlanır (yon_gercek): eskiden en yakın küçük tam sayı yöne yuvarlanıyordu (0,7–5,9°),
+        # cıvata deliğinin duvarını sıyırıyor görünüyordu (12 "yön yuvarlama" istisnası ölçüm aracından doğuyordu)
+        t, aci = self.tam_yon(u)
+        if aci <= 0.05 and max(abs(x) for x in t) <= 1:
+            r = G.yon(H, E, t, azami_mm=float(d))
+            yontem = "tam sayı yön"
+        else:
+            r = G.yon_gercek(H, E, u, azami_mm=float(d))
+            yontem = "gerçek yön (h %g mm)" % G.h
+        temiz = bool(r["serbest"] or not r["carpan"])
+        rec = dict(adim=s, kod=self.A[s]["kod"], alt_adim=alt, grup=gad, satir=key, id=self.P[H[0]]["id"], ad=self.P[H[0]]["ad"],
+                   hareketli=len(H), u=[round(float(x), 3) for x in u], yon=list(t), yon_aci=aci, yontem=yontem,
+                   d_mm=round(float(d), 1), temiz=temiz)
+        if not temiz:
+            rec.update(yol_mm=r["yol_mm"], carpan=r["carpan"][:3])
+        return rec
+
+    # ------------------------------------------------ F10d düzeltme 1 (kontrol B-2): ısıl gömme ev sahibi denetimi
+    def isil_gomme(self):
+        """Her ısıl gömme somun için (bağımsız, mesh üstünde): somunun 0,8 mm dışındaki 24 halka noktasından en çoğunu kapalı
+        mesh'inin içinde tutan ana parça (ışın paritesi, eğik yön). Hata: verideki ev sahibi (h) yok, geometrik ev sahibinden farklı,
+        ya da somun ev sahibinin adımında / alt montajında değil. Sınır 0."""
+        D = np.array([0.5773, 0.5779, 0.5767]); D /= np.linalg.norm(D)
+
+        def icinde(pts, k):
+            p = self.P[k]
+            T = p["v"][p["f"]]
+            v0, e1, e2 = T[:, 0], T[:, 1] - T[:, 0], T[:, 2] - T[:, 0]
+            h = np.cross(D, e2); a = np.einsum("ij,ij->i", e1, h)
+            ok = np.abs(a) > 1e-12
+            v0, e1, e2, h, a = v0[ok], e1[ok], e2[ok], h[ok], a[ok]
+            f = 1.0 / a
+            out = []
+            for q in pts:
+                s_ = q - v0
+                uu = f * np.einsum("ij,ij->i", s_, h)
+                qq = np.cross(s_, e1)
+                vv = f * (qq @ D)
+                tt = f * np.einsum("ij,ij->i", e2, qq)
+                n = int(((uu >= 0) & (vv >= 0) & (uu + vv <= 1) & (tt > 1e-9)).sum())
+                out.append(n % 2 == 1)
+            return out
+        ana = [k for k in range(self.N) if not self.bag[k] and not self.ref[k] and not self.P[k].get("renk")]
+        out, hata = [], []
+        for k, p in enumerate(self.P):
+            if not (p["tur"] == "Baglanti" and "ısıl gömme" in p["kod"].lower()):
+                continue
+            v = p["v"]; c = 0.5 * (p["bmin"] + p["bmax"]); ext = p["bmax"] - p["bmin"]
+            ax = int(np.argmax(np.abs(ext - ext.mean())))
+            o1, o2 = [i for i in range(3) if i != ax]
+            r = v - c
+            R = float(np.sqrt(r[:, o1] ** 2 + r[:, o2] ** 2).max())
+            pts = []
+            for t in (-0.3 * ext[ax], 0.0, 0.3 * ext[ax]):
+                for j in range(8):
+                    q = c.copy(); q[ax] += t
+                    q[o1] += (R + 0.8) * math.cos(2 * math.pi * j / 8); q[o2] += (R + 0.8) * math.sin(2 * math.pi * j / 8)
+                    pts.append(q)
+            pts = np.array(pts)
+            skor = {}
+            for e in ana:
+                q = self.P[e]
+                if np.all(q["bmin"] - 8 <= c) and np.all(c <= q["bmax"] + 8):
+                    n = sum(icinde(pts, e))
+                    if n:
+                        skor[e] = n
+            ev = max(skor, key=skor.get) if skor else None
+            h = p.get("h")
+            rec = dict(id=p["id"], ad=p["ad"], adim=int(p["a"]), ev_veri=h, ev_geo=self.P[ev]["id"] if ev is not None else None,
+                       ev_geo_ad=self.P[ev]["ad"] if ev is not None else None, skor=skor.get(ev, 0))
+            neden = []
+            if ev is None:
+                neden.append("geometrik ev sahibi yok")
+            if not h:
+                neden.append("veride ev sahibi yok")
+            elif ev is not None and h != self.P[ev]["id"]:
+                neden.append("veri ev sahibi geometrikten farklı (%s)" % self.P[self.ID[h]]["ad"])
+            if ev is not None and (p["a"] != self.P[ev]["a"] or (p["t"] or "") != (self.P[ev]["t"] or "")):
+                neden.append("somun ev sahibinin adımında değil (somun %d, ev sahibi %d)" % (p["a"], self.P[ev]["a"]))
+            if neden:
+                rec["hata"] = "; ".join(neden)
+                hata.append(rec)
+            out.append(rec)
+        doc = " ".join(x.strip() for x in self.isil_gomme.__doc__.split("\n"))
+        return dict(yontem=doc, toplam=len(out), hata=len(hata), hata_liste=hata, sinir_hata=0,
+                    skor_en_dusuk=min((r["skor"] for r in out), default=None), gecti=not hata, olcum=out)
 
     # ------------------------------------------------ perdelenme
     YONLER = None
@@ -895,17 +1150,47 @@ class Denetim:
                        gizli_liste=[dict(id=self.P[k]["id"], ad=self.P[k]["ad"], tur=self.P[k]["tur"]) for k in gizli])
             if st.get("sira_grup"):
                 gl = []
-                for gad, tz, ids, izin in dur:
+                for n, (gad, tz, ids, izin) in enumerate(dur):
                     yn = [int(k) for k in ids if self.a_[k] == s]
                     g2 = self.gorunen(izin, yn)
                     gz = [k for k in yn if k not in g2]
-                    gl.append(dict(grup=gad, tezgah=tz, yeni=len(yn), gizli=len(gz),
-                                   gizli_liste=[dict(id=self.P[k]["id"], ad=self.P[k]["ad"], tur=self.P[k]["tur"]) for k in gz]))
+                    x = dict(grup=gad, tezgah=tz, yeni=len(yn), gizli=len(gz),
+                             gizli_liste=[dict(id=self.P[k]["id"], ad=self.P[k]["ad"], tur=self.P[k]["tur"]) for k in gz])
+                    if st.get("alt"):                                       # F10d: alt adım sınırı (gerekçeli istisna dışında 0)
+                        ist = [(k, self.istisna(s, n, k)) for k in gz]
+                        x["alt_adim"] = n + 1
+                        x["istisna"] = [dict(id=self.P[k]["id"], ad=self.P[k]["ad"], gerekce=g) for k, g in ist if g]
+                        x["gizli_istisnasiz"] = [dict(id=self.P[k]["id"], ad=self.P[k]["ad"]) for k, g in ist if not g]
+                    gl.append(x)
                 rec["grup"] = gl
+                if st.get("alt"):
+                    rec["alt_gizli_istisnasiz"] = sum(len(x["gizli_istisnasiz"]) for x in gl)
+                    rec["alt_istisna"] = sum(len(x["istisna"]) for x in gl)
             out.append(rec)
+        alt = [r for r in out if "alt_gizli_istisnasiz" in r]
         return dict(yontem="voksel %g mm, 26 yönden dik izdüşüm; adımın sonunda (sira_grup varsa her grubun sonunda da) adımın yeni "
-                           "parçalarından hiçbir yönden görünmeyenler (bağlantı elemanları dahil, ayrı sayılı). Eşik yok (F10d)" % H,
-                    adim=out, toplam_gizli=sum(r["gizli"] for r in out), sure_s=round(time.time() - t0, 1))
+                           "parçalarından hiçbir yönden görünmeyenler (bağlantı elemanları dahil, ayrı sayılı). F10d: alt adımlı adımlarda "
+                           "her alt adımda gerekçesiz tamamen gizli yeni parça sınırı 0 (gerekçeler istisna listesinde); öbür adımlarda "
+                           "eşik yok" % H,
+                    adim=out, toplam_gizli=sum(r["gizli"] for r in out), sure_s=round(time.time() - t0, 1),
+                    alt_adim_gizli_istisnasiz=sum(r["alt_gizli_istisnasiz"] for r in alt),
+                    alt_adim_istisna=sum(r["alt_istisna"] for r in alt), alt_sinir=0,
+                    gecti=all(r["alt_gizli_istisnasiz"] == 0 for r in alt))
+
+    ISTISNA_GOMME = ("ısıl gömme somun: baskı parçasının boss'unun içinde, baskıdan sonra takılı (hazırlık); ev sahibi parçayla gelir, "
+                     "kendi başına görünmesi beklenmez")
+
+    def istisna(self, s, n, k):
+        """F10d: tamamen gizli yeni parçanın gerekçesi (yoksa None). Isıl gömme (hazırlıkta takılı) kategorik; öbürleri rehber_metin
+        sira grubundaki "gizli_ok" ({desen: gerekçe}; veride sira_grup[n].gizli_ok)."""
+        p = self.P[k]
+        if p["tur"] == "Baglanti" and "ısıl gömme" in p["kod"].lower():
+            return self.ISTISNA_GOMME
+        g = (self.A[s].get("sira_grup") or [{}])[n]
+        for d, gerekce in (g.get("gizli_ok") or {}).items():
+            if d in p["ad"]:
+                return gerekce
+        return None
 
 
 def denetle(V=None, glb=None, el_mm=EL, adimlar=None):
@@ -927,11 +1212,20 @@ def denetle(V=None, glb=None, el_mm=EL, adimlar=None):
     except Exception as e:                                              # giriş ölçümü çökerse sıra denetimi geçmez
         gr = dict(durum="hata", neden="%s: %s" % (type(e).__name__, e), gecti=False)
     t4 = time.time()
-    sr = dict(durum="koştu", el_mm=el_mm, voksel_mm=H, sinir_ulasilamaz=0, sinama=sn, aciklama=ACIKLAMA, giris=gr,
-              gecti=bool(sr["ulasilamaz"] == 0 and sn["gecti"] and gr.get("gecti")), **sr)
+    try:                                                                # F10d: alt adımlı adımlarda uçuş yolu
+        ur = dict(durum="koştu", **D.ucus_yolu(adimlar))
+    except Exception as e:
+        ur = dict(durum="hata", neden="%s: %s" % (type(e).__name__, e), gecti=False)
+    t5 = time.time()
+    try:                                                                # F10d düzeltme 1 (B-2): ısıl gömme ev sahibi
+        ig = dict(durum="koştu", **D.isil_gomme())
+    except Exception as e:
+        ig = dict(durum="hata", neden="%s: %s" % (type(e).__name__, e), gecti=False)
+    sr = dict(durum="koştu", el_mm=el_mm, voksel_mm=H, sinir_ulasilamaz=0, sinama=sn, aciklama=ACIKLAMA, giris=gr, ucus=ur, isil_gomme=ig,
+              gecti=bool(sr["ulasilamaz"] == 0 and sn["gecti"] and gr.get("gecti") and ur.get("gecti") and ig.get("gecti")), **sr)
     sr["sure"] = dict(yukleme_s=round(t1 - t0, 1), sira_s=round(t2 - t1, 1), perdelenme_s=round(t3 - t2, 1), giris_s=round(t4 - t3, 1),
-                      toplam_s=round(t4 - t0, 1), voksel_alani=D.G.say, voksel_s=round(D.G.sure, 1))
-    pr = dict(durum="koştu", gecti=True, **pr)
+                      ucus_s=round(t5 - t4, 1), toplam_s=round(t5 - t0, 1), voksel_alani=D.G.say, voksel_s=round(D.G.sure, 1))
+    pr = dict(durum="koştu", **pr)                                     # F10d: gecti = alt adım sınırı (perdelenme())
     return sr, pr
 
 
@@ -954,13 +1248,40 @@ def ozet_yaz(sr, pr):
             print("  %s %s: serbest yon %s%s" % ("SINAMA " + ("gecti" if b["gecti"] else "KALDI") if "gecti" in b else "giris",
                                                b["ad"], b["serbest_yon"] or "YOK", "" if b["serbest"] else " | " + "; ".join(
                 "%s %s mm %s" % (y["yon"], y["yol_mm"], (y["carpan"] or y["dinlenme"] or [{}])[0].get("engel", "")) for y in b["yon"])))
+        for b in gr.get("istisna", []):
+            print("  ISTISNA giris %s: %s" % (b["ad"], b["gerekce"]))
     else:
         print("giris yolu: %s (%s)" % (gr.get("durum"), gr.get("neden")))
+    ur = sr.get("ucus", {})
+    if ur.get("durum") == "koştu":
+        print("ucus yolu: %d satir, carpisan %d (istisnasiz; sinir 0), gerekceli istisna %d, esik %g mm, %s s" % (
+            ur["satir"], ur["carpisan"], len(ur["istisna"]), ur["esik_mm"], ur["sure_s"]))
+        print("  es dis (civatanin kendi somunu / isil gommesi engel sayilmadi): %d satir" % sum(1 for r in ur["olcum"] if r.get("es_dis")))
+        for r in ur["carpisan_liste"] + ur["istisna"]:
+            print("  %s %d.%d %s %s %s yon %s (aci %s) yol %s mm: %s%s" % (
+                "ISTISNA" if r.get("istisna") else "CARPAR", r["adim"], r["alt_adim"], r["kod"], r["id"], r["ad"][:40], r["yon"],
+                r["yon_aci"], r.get("yol_mm"), "; ".join("%s %s" % (c.get("engel", "")[:40], c.get("derinlik_mm")) for c in r.get("carpan", [])),
+                (" | " + r["istisna"][:60]) if r.get("istisna") else ""))
+    else:
+        print("ucus yolu: %s (%s)" % (ur.get("durum"), ur.get("neden")))
+    ig = sr.get("isil_gomme", {})
+    if ig.get("durum") == "koştu":
+        print("isil gomme ev sahibi: %d somun, hata %d (sinir 0), en dusuk skor %s / 24" % (ig["toplam"], ig["hata"], ig["skor_en_dusuk"]))
+        for r in ig["hata_liste"]:
+            print("  ISIL GOMME HATA %s %s adim %s: %s" % (r["id"], r["ad"], r["adim"], r["hata"]))
+    else:
+        print("isil gomme ev sahibi: %s (%s)" % (ig.get("durum"), ig.get("neden")))
     for r in sr["ulasilamaz_liste"]:
         print("  ULASILAMAZ %d %s %s %s: %s" % (r["adim"], r["adim_kod"], r["id"], r["ad"], r.get("neden")))
     for r in sr["dar"]:
         print("  dar/poz %d %s %s %s %s" % (r["adim"], r["adim_kod"], r["id"], r["ad"], r["sinif"]))
-    print("perdelenme: %d adim, tamamen gizli yeni parca toplam %d (esik yok)" % (len(pr["adim"]), pr["toplam_gizli"]))
+    print("perdelenme: %d adim, tamamen gizli yeni parca toplam %d (adim sonunda, esik yok); alt adimlarda gerekcesiz gizli %s "
+          "(sinir 0), gerekceli istisna %s" % (len(pr["adim"]), pr["toplam_gizli"], pr.get("alt_adim_gizli_istisnasiz"),
+                                               pr.get("alt_adim_istisna")))
+    for r in pr["adim"]:
+        for x in r.get("grup", []):
+            for q in x.get("gizli_istisnasiz", []):
+                print("  GIZLI %d.%d %s %s %s" % (r["adim"], x["alt_adim"], r["kod"], q["id"], q["ad"]))
 
 
 if __name__ == "__main__":

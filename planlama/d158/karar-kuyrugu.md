@@ -67,8 +67,9 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K52 | Göğüs ekranı regülatörü (LM2577 + LM2596), mini 2 A ve hat sigortası yuvasının yeri: modelde ve BOM'da yok | **açık** (F7c) | a: K11 kararıyla birlikte güç paneline (B5a) ekle | K11, model / BOM güncellemesi, rehber B5a, `maliyet.json:122-123` notları |
 | K53 | Ön şarj kartı burcu × elektronik katı (B6'da kat inerken girişim) | **açık** (F10b) | a + iii: katta 1,5 mm çentik, bir sonraki tam taramalı pakette; o zamana dek rehber B6 notu | Lazer kesim dosyası (elektronik katı), rehber B6 adımı (F10c), çakışma taraması kaynağı |
 | K54 | E3 kafa inişinde sıfır boşluk (yanaklar arası 54,4 mm ↔ yığın 54,4 mm) | **açık** (F10c) | c: ilk baskı kuponunda dene; zorlarsa b (yanak iç yüzlerine 0,2–0,3 mm pay) | Kafa iskeleti baskısı (Parti kuponu), rehber E3 notu, çakışma taraması kaynağı (b seçilirse) |
+| K55 | Kabuk bindirme dilleri: etek ön, göğüs ve omuz bantları, göğüs ekranı çerçevesi düz yoldan yerine girmiyor | **açık** (F10d) | Etek ön için c (iki bacaklı yol ölçülsün); göğüs, omuz, çerçeve için a geçici (kuponda denensin), b bir sonraki geometri paketinde | Rehber F1 / F3 / F4 takma metni, kabuk baskısı (Parti kuponu), kabuk çakışma taraması (b seçilirse) |
 
-**Açık: 49** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 54 madde.
+**Açık: 50** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 55 madde.
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
@@ -85,6 +86,9 @@ P10.2 (F10b, 11.11.2026, orkestratör kararı: geometri bu pakette değişmez) A
 sayılar C'nin `F10b-olcum.json`'dan okumasıyla).
 P10.3 (F10c, 11.11.2026) düzeltme turu 1'in karar kuyruğu önerisi → K54 (`planlama/d158/F10c-gunluk.md` D1 "Karar kuyruğu önerisi";
 B'nin önerisi `F10c-kontrol.md` "E3 için karar kuyruğuna önerilen metin"; giriş yolu C'nin bağımsız ölçümüyle yeniden doğrulandı).
+P10.4 (F10d, 11.11.2026) düzeltme turu 1'in karar kuyruğu önerisi F10d-K1 → K55 (`planlama/d158/F10d-gunluk.md` §11.5; B'nin önerisi
+`F10d-kontrol.md` "Karar kuyruğuna önerilen metinler"). Uygulama ajanının F10d-K2'si (ısıl gömme adımı; veri düzeltmesiyle çözüldü) ve F10d-K3'ü
+(model girişimi; yapay çıktı, geri çekildi) kuyruğa alınmadı.
 
 ---
 
@@ -963,6 +967,32 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   Yalnız öneri; karar Ahmet'te.
 - **Bloke:** kafa iskeletinin baskısı (kupon sonucu); rehber E3 adımındaki "bilinen açık konu" notu; b seçilirse kafa geometrisi ve
   çakışma taraması kaynağı.
+- **Durum:** açık.
+
+---
+
+## K55 · Kabuk bindirme dilleri: etek ön, göğüs ve omuz bantları, göğüs ekranı çerçevesi düz yoldan yerine girmiyor
+- **Soru:** Etek ön sağ / sol, göğüs bandı sağ / sol, omuz bandı sağ / sol ve göğüs ekranı çerçevesi sağ / sol, bir alttaki bandın
+  bindirme diline (`tasarim/freecad/kabuk/kabuk_rapor.py` ≈ 211: "iç yarı komşunun dış yarısının arkasına 12 mm dil") hiçbir düz yoldan
+  girmiyor. Okura nasıl tarif edilsin, geometri mi değişsin?
+- **Ölçüm** (`planlama/d158/F10d-gunluk.md` §11.5; `rehber_giris` ışın aralıkları, h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; dinlenmedeki
+  temas sayılmaz; ısıl gömmeler ev sahibi bantlarına taşındıktan sonraki veriyle; mesh `rehber/veri/robot.glb`, model F10d'de değişmedi):
+  - Göğüs bandı: yana yolda orta bantla ortak hacim sağ 1–159 mm (+x), sol 1–135 mm (−x); 161–173 mm'de ayrılıyor.
+  - Omuz bandı: yana yolda göğüs bandıyla sağ 1–161 mm, sol 1–137 mm; ayrıca rulman kapağı 3–99 mm.
+  - Etek ön: +z'de yalnız braket perçin somunu 1–7 mm, sonra serbest (183 mm'de ayrılıyor); öbür yönlerde sonar 1–81 mm'ye kadar.
+  - Çerçeve: +z'de göğüs bandı 1–9 mm ve ekran 3–7 mm; yana göğüs bandıyla 1–151 mm.
+  - Kabuk belgeleri (`kabuk_parcalar.py`, `kabuk_rapor.py`) dili tarif ediyor, bantların takma biçimini tarif etmiyor.
+  - B'nin bağımsız ölçümü (`F10d-kontrol.md` K1 hükmü, hacimsel süpürme, göğüs bandı sağ): +x'te 2–130 mm orta bantla artan ortak
+    hacim, 180 mm'de serbest. Etek ön, çerçeve ve omuz bandı için ikinci (bağımsız) ölçüm yok.
+- **Seçenekler:**
+  a) Metin: "bandı hafifçe esneterek dili alttaki bandın arkasına sok" (geometri değişmez; baskı kuponunda denenmeli).
+  b) Geometri: dilde pah ya da ön / arka yarıda ters bindirme; kabuk çakışma taraması gerekir.
+  c) Rehberde iki parçalı yol. Etek ön için aday: +z 7 mm'den sonra serbest, ama iki bacaklı yol ölçülmedi. Bantlar için düz iki bacak
+     bulunmadı; çerçevede +x 20 sonra +z 150 çarpıyor.
+- **Önerilen varsayılan:** etek ön için c (iki bacaklı yol ölçülsün); göğüs, omuz ve çerçeve için a geçici, kuponda denensin; b bir sonraki
+  geometri paketinde. Yalnız öneri; karar Ahmet'te.
+- **Bloke:** rehber F1 / F3 / F4 takma metni (bugün "bant düz bir yoldan girmiyor (ölçüm, Notlar)"; 8 uçuş istisnası bu maddeye bağlı);
+  kabuk baskısı (kupon sonucu); b seçilirse kabuk geometrisi ve çakışma taraması kaynağı.
 - **Durum:** açık.
 
 ---

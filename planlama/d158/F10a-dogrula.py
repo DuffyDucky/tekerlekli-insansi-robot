@@ -1,6 +1,7 @@
 # F10a (P10.1) doğrulama: rehber arayüzü (seçim vurgusu, ağsız açılış, kadraj, küçük görünüm) başsız tarayıcıda ölçülür.
 #   py -3 -X utf8 planlama/d158/F10a-dogrula.py              # tümü -> planlama/d158/F10a-dogrula.json (+ F10a-goruntu-*.png)
-#   py -3 -X utf8 planlama/d158/F10a-dogrula.py --goruntu-yok
+#   py -3 -X utf8 planlama/d158/F10a-dogrula.py --goruntu-yok   # (= --kanit-yok) kanıt kareleri yazılmaz; --json <yol> sonuç başka yere
+# F10d: alt adımlar. → tuşu sınaması gezinme sırasındaki bir sonraki konumu (RehberTest.konum) bekler; ölçülenler değişmedi.
 # Yöntem: Chrome DevTools protokolü (rehber_uret.py'deki gibi; websockets paketi). Sayfa file:// ile açılır.
 #   1) kadraj: 50 adımın her birinde (?cekim=1, 1400 x 900, açık tema) yeni parçaların bütün köşe noktaları (vertex) kamerayla
 #      izdüşürülür; ekran kutusu (kareye kırpılmış) / kare alanı = oran; bir noktası karenin dışında ya da kameranın arkasında kalan
@@ -325,7 +326,12 @@ def secim_sina(c, kok, a):
     c.tus("ArrowRight", "ArrowRight", 39)
     c.bekle("!RehberTest.anim()", 10)
     g = vurgu(c)
-    d["adim_degisti"] = dict(once=once, sonra=g["sayi"], yeni_adim=c.js("RehberTest.su()"), gecti=once > 0 and g["sayi"] == 0 and c.js("RehberTest.su()") == a + 1)
+    # F10d: → gezinme sırasında bir sonraki konuma gider: alt adımlı adımda (a, 0) -> (a, 1), öbürlerinde (a + 1, 0). Ölçülen aynı:
+    # → sonrası konum değişti ve vurgu temizlendi
+    bek = [a, 1] if V["adimlar"][a].get("alt") else [a + 1, 0]
+    kon = c.js("RehberTest.konum ? RehberTest.konum() : [RehberTest.su(), 0]")
+    d["adim_degisti"] = dict(once=once, sonra=g["sayi"], yeni_adim=c.js("RehberTest.su()"), yeni_konum=kon, beklenen_konum=bek,
+                             gecti=once > 0 and g["sayi"] == 0 and kon == bek)
     d["hata"] = c.js("document.documentElement.dataset.hata || null")
     d["gecti"] = all(d[k]["gecti"] for k in ("parca", "panel", "bos", "adim_degisti")) and not d["hata"]
     return d
@@ -549,8 +555,13 @@ def goruntuler(c, head, yeni):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--goruntu-yok", action="store_true")
+    ap.add_argument("--goruntu-yok", "--kanit-yok", dest="goruntu_yok", action="store_true",
+                    help="kanıt karelerini (F10a-goruntu-*.png) yazma; ölçümler aynı (F10d)")
+    ap.add_argument("--json", default="", help="sonuç JSON'u bu yola (varsayılan planlama/d158/F10a-dogrula.json; F10d)")
     g = ap.parse_args()
+    global CIKTI
+    if g.json:
+        CIKTI = os.path.abspath(g.json)
     tb = tarayici()
     t0 = time.time()
     tmp, head = head_kopya()

@@ -237,8 +237,19 @@ def ayna_x(v, p):
     return V(-v.x, v.y, v.z) if p["modul"].endswith("_sol") else v
 
 
-def radyal(p):
-    c = p["shape"].BoundBox.Center
+def siki_kutu(p):
+    """F10d: eğri yüzlü parçada BoundBox gevşek (etek panelinde köşegen ~750 mm, gerçek ~375 mm); patlatma mesafesi ve radyal yön
+    sıkı kutudan (optimalBoundingBox, üçgenlemeyle). Olmazsa BoundBox."""
+    if "_sk" not in p:
+        try:
+            p["_sk"] = p["shape"].optimalBoundingBox(True, False)
+        except Exception:
+            p["_sk"] = p["shape"].BoundBox
+    return p["_sk"]
+
+
+def radyal(p):                                                     # F10d: sıkı kutu merkezi
+    c = siki_kutu(p).Center
     r = V(c.x, 0, c.z)
     return r.normalize() if r.Length > 5 else V(0, 1, 0)
 
@@ -257,11 +268,16 @@ for p in P:
         bv = p["shape"].BoundBox.DiagonalLength
         if k not in taban_adim or (p["a"], -bv) < (taban_adim[k]["a"], -taban_adim[k]["shape"].BoundBox.DiagonalLength):
             taban_adim[k] = p
+
+
+# F10d: patlatma mesafesi parça boyuyla orantılı: ana parça max(40, UCUS_ORAN × sıkı köşegen). F10c'ye kadar 1,1 × gevşek köşegendi
+# (etek panelleri 630–830 mm uzağa gidiyordu). Cıvata 2,5 × boy (eksen boyunca, alet yolu rehber_sira.py'de bu eksenden).
+UCUS_ORAN = 0.5
 for p in P:
     bbx = p["shape"].BoundBox
-    diag = bbx.DiagonalLength
+    diag = siki_kutu(p).DiagonalLength
     kod = p["kodr"]
-    u, dist = None, max(40.0, 1.1 * diag)
+    u, dist = None, max(40.0, UCUS_ORAN * diag)
     if p.get("u") is not None:                                     # cıvata
         u, dist = p["u"], max(25.0, 2.5 * p["boy"])
     elif p["tur"] == "Baglanti":
@@ -294,6 +310,151 @@ for p in P:
         mt = metin(KODLAR[p["b"]]).get("ucus_bag", (0, 1, 0))
         ub = ayna_x(birim(mt), p)
         p["ucus_bag"] = [round(ub.x, 3), round(ub.y, 3), round(ub.z, 3)]
+
+
+# ------------------------------------------------------------------ F10d: alt adım grubunun uçuş yönü + ısıl gömmenin ev sahibi
+# rehber_metin "sira" grubunda ucus = {desen: (x, y, z) ya da "radyal"}: grubun ana parçalarının (cıvata değil; cıvatanın u'su alet
+# ekseni, rehber_sira.py) geliş yönü. Vektör sağ taraf içindir; görünen adında "sol" kelimesi geçen parçada X aynalanır. Yönler giriş
+# yolu ölçümüyle seçildi (planlama/d158/F10d-gunluk.md).
+def gorunen(p):
+    return RM.tr(RM.kopya_eki_sil(p["ad"], p["kod"]))
+
+
+def merkez_(p):                                                    # sira grubunun konum koşulu için (rehber_metin.sira_grup_bul)
+    c = p["shape"].BoundBox.Center
+    return (c.x, c.y, c.z)
+
+
+def yan_sol(p):
+    return bool(re.search(r"\bsol\b", gorunen(p))) or p["modul"].endswith("_sol")
+
+
+for p in P:
+    if p["tur"] in ("Baglanti", "Referans") or p.get("kablo"):
+        continue
+    sira_ = metin(p["kodr"]).get("sira") or []
+    g = RM.sira_grup_bul(sira_, gorunen(p), merkez_(p), p["modul"])
+    uc = (sira_[g].get("ucus") or {}) if g is not None else {}
+    v = next((uc[k] for k in uc if k in gorunen(p)), uc.get("*"))
+    if v is None:
+        continue
+    u = radyal(p) if v == "radyal" else birim(v)
+    if v != "radyal" and yan_sol(p):
+        u = V(-u.x, u.y, u.z)
+    p["ucus"] = [round(u.x, 3), round(u.y, 3), round(u.z, 3)]
+    if p["t"] and taban_adim.get(p["t"]) is p:                    # tezgâh tabanı yerinde durur
+        p["ucus"], p["ucus_mm"] = [0.0, 0.0, 0.0], 0.0
+
+
+# Isıl gömme somun baskıdan sonra takılıdır (hazırlık): kendi başına uçmaz, ev sahibi parçayla gelir (aynı u, d) ve adım içi sırada
+# onun grubundadır. F10d düzeltme turu 1 (kontrol B-2): ev sahibi geometriyle, BÜTÜN ana parçalar arasından bulunur: somunun dış
+# yüzünün 0,8 mm dışındaki halka noktalarının (eksen boyunca 3 yükseklik × 8 açı = 24 nokta) en çoğu hangi parçanın malzemesinin
+# içindeyse (Part isInside) ev sahibi odur. Eskiden yalnız somunun seçicideki adımının parçaları aranıyordu (sınır kutusu): somun içteki
+# (önceki adımın) bandın boss'undaysa doğru parça aday listesinde yoktu (34 somun yanlış parçada ya da ev sahipsizdi). Somun ev
+# sahibinin takıldığı adıma (ve alt montajına) taşınır: rehberin öbür ısıl gömmeleri gibi o adımın hazırlık satırında sayılır.
+def gomme_mi(p):
+    return p["tur"] == "Baglanti" and "isil gomme" in p["kod"].lower()
+
+
+def gomme_halka(p):
+    """Isıl gömmenin dışındaki 24 örnek nokta (eksen: en küçük yarıçaplı silindir yüzü; yoksa sınır kutusunun tek boyutu)."""
+    s = p["shape"]
+    e = eksen(s)
+    c = s.BoundBox.Center
+    if e:
+        u = V(e[1]).normalize()
+    else:
+        b = s.BoundBox
+        L = [b.XLength, b.YLength, b.ZLength]
+        m = sum(L) / 3.0
+        k = max(range(3), key=lambda i: abs(L[i] - m))
+        u = V(*[1.0 if i == k else 0.0 for i in range(3)])
+    ts = [(v.Point - c).dot(u) for v in s.Vertexes]
+    R = max(((v.Point - c) - u * (v.Point - c).dot(u)).Length for v in s.Vertexes)
+    a1 = u.cross(V(1, 0, 0)) if abs(u.x) < 0.9 else u.cross(V(0, 1, 0))
+    a1.normalize()
+    a2 = u.cross(a1)
+    out = []
+    for t in (min(ts) * 0.6, 0.0, max(ts) * 0.6):
+        for k in range(8):
+            f = 2 * math.pi * k / 8
+            out.append(c + u * t + a1 * ((R + 0.8) * math.cos(f)) + a2 * ((R + 0.8) * math.sin(f)))
+    return out
+
+
+ANA = [q for q in P if q["tur"] not in ("Baglanti", "Referans") and not q.get("kablo")]
+ISIL = dict(yontem="ev sahibi: somunun 0,8 mm dışındaki 24 halka noktasından en çoğunu malzemesinin içinde tutan ana parça (Part "
+                   "isInside, bütün ana parçalar aday; somunun sınır kutusu merkezine 8 mm'den yakın kutulu olanlar). Somun ev "
+                   "sahibinin adımına ve alt montajına taşınır.", toplam=0, ev_sahipli=0, evsiz=[], tasinan=[], skor_alt=None)
+_tg = time.time()
+for p in P:
+    if not gomme_mi(p):
+        continue
+    ISIL["toplam"] += 1
+    c = p["shape"].BoundBox.Center
+    nok = gomme_halka(p)
+    aday = []
+    for q in ANA:
+        b = q["shape"].BoundBox
+        if b.XMin - 8 <= c.x <= b.XMax + 8 and b.YMin - 8 <= c.y <= b.YMax + 8 and b.ZMin - 8 <= c.z <= b.ZMax + 8:
+            n = sum(1 for x in nok if q["shape"].isInside(x, 0.01, True))
+            if n:
+                aday.append((n, q))
+    if not aday:
+        ISIL["evsiz"].append(p)
+        log("UYARI isil gomme ev sahipsiz:", p["ad"], p["kodr"])
+        continue
+    aday.sort(key=lambda x: -x[0])
+    n, h = aday[0]
+    p["_h"], p["_h_skor"] = h, n
+    ISIL["ev_sahipli"] += 1
+    ISIL["skor_alt"] = n if ISIL["skor_alt"] is None else min(ISIL["skor_alt"], n)
+    if (h["a"], h["t"]) != (p["a"], p["t"]):
+        ISIL["tasinan"].append((p, p["kodr"], p["a"]))
+        p["kodr"], p["a"], p["t"], p["b"] = h["kodr"], h["a"], h["t"], h["b"]
+    p["ucus"], p["ucus_mm"] = list(h["ucus"]), h["ucus_mm"]
+    if h.get("ucus_bag"):
+        p["ucus_bag"] = list(h["ucus_bag"])
+    else:
+        p.pop("ucus_bag", None)
+log("isil gomme ev sahibi: %d / %d, ev sahipsiz %d, adim degistiren %d, en dusuk skor %s / 24 (%.0f s)" % (
+    ISIL["ev_sahipli"], ISIL["toplam"], len(ISIL["evsiz"]), len(ISIL["tasinan"]), ISIL["skor_alt"], time.time() - _tg))
+for p, k0, a0 in ISIL["tasinan"]:
+    log("  isil gomme tasindi: %s [%s] %s (%d) -> %s (%d), ev sahibi %s" % (p["ad"], p["modul"], k0, a0, p["kodr"], p["a"], p["_h"]["ad"]))
+
+# F10d düzeltme 1 (kontrol B-11): alt adımlı adımda cıvatanın başı aynı alt adımda gelen (d > 0) bir ana parçanın kutusundaysa (2 mm
+# pay) ve aynı yöne uçuyorsa cıvata patlatmada o parçadan az uzağa gitmesin: d = max(kendi d, parçanın d + 25). Eskiden max(25, 2,5 × boy): 49.5'te kapak
+# 45–64 mm, cıvatası 25 mm, patlatılmış cıvata kapağın içinden geçiyor görünüyordu.
+CIV_UZAT = []
+for q in CIV:
+    sira_ = metin(q["kodr"]).get("sira") or []
+    if not metin(q["kodr"]).get("alt") or not sira_:
+        continue
+    gq = RM.sira_grup_bul(sira_, gorunen(q), merkez_(q), q["modul"])
+    if gq is None:
+        continue
+    en = None
+    for m in ANA:
+        if m["a"] != q["a"] or m["t"] != q["t"] or m["ucus_mm"] <= 0:
+            continue
+        b = m["shape"].BoundBox
+        x = q["bas"]
+        if not (b.XMin - 2 <= x.x <= b.XMax + 2 and b.YMin - 2 <= x.y <= b.YMax + 2 and b.ZMin - 2 <= x.z <= b.ZMax + 2):
+            continue
+        if RM.sira_grup_bul(sira_, gorunen(m), merkez_(m), m["modul"]) != gq:
+            continue
+        # yalnız parçayla aynı yöne uçan cıvata (açı < 60°): ters yöne uçan cıvata (ör. 35.4 VESA, ekran önden, cıvata arkadan)
+        # parçanın içinden geçmez; uzatılırsa patlatmada arkadaki banda girer
+        if sum(a * b for a, b in zip(q["ucus"], m["ucus"])) < 0.5:
+            continue
+        if en is None or m["ucus_mm"] > en["ucus_mm"]:
+            en = m
+    if en is not None and en["ucus_mm"] + 25 > q["ucus_mm"]:
+        CIV_UZAT.append((q, q["ucus_mm"], en))
+        q["ucus_mm"] = round(en["ucus_mm"] + 25.0, 1)
+log("civata patlatma mesafesi ev parcasina gore uzatildi: %d" % len(CIV_UZAT))
+for q, d0, m in CIV_UZAT:
+    log("  civata d %s: %.0f -> %.0f mm (ev %s, d %.0f)" % (q["ad"], d0, q["ucus_mm"], m["ad"], m["ucus_mm"]))
 
 
 # ------------------------------------------------------------------ mesh: kanonik çerçeve + örnekleme
@@ -516,6 +677,8 @@ for p in P:
         d["ub"] = p["ucus_bag"]
     if p.get("m6"):
         d["m6"] = p["m6"]
+    if p.get("_h"):                                                 # F10d: ısıl gömmenin ev sahibi (birlikte uçar)
+        d["h"] = p["_h"]["id"]
     if p.get("kablo"):
         d["renk"] = kablo_rengi(p["ad"])
     PARCA.append(d)
@@ -550,7 +713,9 @@ for i, kod in enumerate(KODLAR):
     def grup_i(p):
         if not sira:
             return 0
-        g = RM.sira_grup_bul(sira, tr(RM.kopya_eki_sil(p["ad"], p["kod"])))
+        if p.get("_h") is not None and p["_h"]["a"] == p["a"]:      # F10d: ısıl gömme ev sahibinin grubunda
+            return grup_i(p["_h"])
+        g = RM.sira_grup_bul(sira, tr(RM.kopya_eki_sil(p["ad"], p["kod"])), merkez_(p), p["modul"])
         if g is None:
             log("UYARI sira grubu yok:", kod, p["ad"])
             return len(sira) - 1
@@ -574,7 +739,14 @@ for i, kod in enumerate(KODLAR):
             parca[k]["adet"] += 1
             parca[k]["ids"].append(p["id"])
             uye[k].append(p)
-    if sira:                                                       # satırlar grup sırasıyla (grup içinde model sırası)
+    if sira and mt.get("alt"):                                     # F10d: alt adımlı adımda grup içinde desen sırası (panel = takma)
+        def desen_i(kv):
+            ds = sira[kv[0][0]].get("desen") or ()
+            ad_ = gorunen(uye[kv[0]][0])
+            return (kv[0][0], next((j for j, d in enumerate(ds) if d in ad_), len(ds)))
+        parca = collections.OrderedDict(sorted(parca.items(), key=desen_i))
+        bag = collections.OrderedDict(sorted(bag.items(), key=lambda kv: (kv[0][0], not kv[1]["onceden"])))   # ısıl gömme (hazırlık) önce
+    elif sira:                                                     # satırlar grup sırasıyla (grup içinde model sırası)
         parca = collections.OrderedDict(sorted(parca.items(), key=lambda kv: kv[0][0]))
         bag = collections.OrderedDict(sorted(bag.items(), key=lambda kv: kv[0][0]))
     for k, e in parca.items():
@@ -594,12 +766,44 @@ for i, kod in enumerate(KODLAR):
     ek = {}
     if sira:
         pk, bk = list(parca), list(bag)
-        sg = [dict(ad=g["ad"], tezgah=bool(g.get("tezgah")),
-                   satir=["p:%d" % j for j, kk in enumerate(pk) if kk[0] == n] + ["b:%d" % j for j, kk in enumerate(bk) if kk[0] == n])
-              for n, g in enumerate(sira)]
+        # F10d: alt adım alanları (tek kaynak: sira grubu = alt adım). tezgah: masa birimi anahtarı ("" robotta); F10c'nin
+        # tezgah=True grubu kendi anahtarıyla ("g<n>") sıradaki yerinde bağlanır. bag: o anahtarlı birimi robota bağlayan grup
+        # (kendi satırı yok), ub: bağlanırken geliş yönü. is_ / kamera / saydam / sema: alt adımın metni, kamera yönü, saydam çizilen
+        # parçalar (desen; bu adımda ve öncekilerde), gösterilen şemalar (desen, aşağıda SEMALAR'dan).
+        sg = []
+        for n, g in enumerate(sira):
+            e = dict(ad=g["ad"], tezgah=g.get("masa") or ("g%d" % n if g.get("tezgah") else ""), bag=g.get("bag") or "",
+                     satir=["p:%d" % j for j, kk in enumerate(pk) if kk[0] == n] + ["b:%d" % j for j, kk in enumerate(bk) if kk[0] == n])
+            if g.get("is_"):
+                e["is_"] = g["is_"]
+            if g.get("kamera"):
+                e["kamera"] = list(g["kamera"]) if not isinstance(g["kamera"], str) else g["kamera"]
+            if g.get("ucus_bag"):
+                ub = birim(g["ucus_bag"])
+                e["ub"] = [round(ub.x, 3), round(ub.y, 3), round(ub.z, 3)]
+            if g.get("saydam"):
+                e["saydam"] = [q["id"] for q in P if q["a"] <= i and q["tur"] != "Referans" and any(d in gorunen(q) for d in g["saydam"])]
+            if g.get("sema"):
+                e["_sema"] = tuple(g["sema"])
+            if g.get("gizli_ok"):
+                e["gizli_ok"] = dict(g["gizli_ok"])
+            if g.get("ucus_ok"):
+                e["ucus_ok"] = dict(g["ucus_ok"])
+            if g.get("giris_ok"):
+                e["giris_ok"] = dict(g["giris_ok"])
+            if g.get("piksel_ok"):                                  # F10d düzeltme 1: görünürlük ölçütü istisnası {desen: gerekçe}
+                e["piksel_ok"] = dict(g["piksel_ok"])
+            sg.append(e)
         ek = dict(sira=[x for g in sg for x in g["satir"]], sira_grup=sg)
+        if mt.get("alt"):
+            ek["alt"] = len(sg)
+            for p in ps:                                            # gösterim parçası (satırı yok) desenine uyan alt adımda görünür
+                if p["tur"] == "Referans":
+                    sg[grup_i(p)].setdefault("ref", []).append(p["id"])
     if mt.get("poz"):
         ek["poz"] = mt["poz"]
+    if mt.get("saydam"):                                            # F10d: adım düzeyinde saydam çizilen önceki parçalar (desen)
+        ek["saydam"] = [q["id"] for q in P if q["a"] < i and q["tur"] != "Referans" and any(d in gorunen(q) for d in mt["saydam"])]
     ADIMLAR.append(dict(
         i=i, kod=kod, no=r["no"], faz=faz(kod), baslik=mt.get("baslik") or r["is_"].split(":")[0][:60],
         is_=mt.get("is_") or r["is_"], baglanti_md=mt.get("baglanti_md") or r["baglanti"], alet=mt.get("alet") or r["alet"],
@@ -635,6 +839,21 @@ for kaynak, ad_k, kod, ad, renk in RM.SEMA:
     SEMALAR.append(dict(ad=ad, kaynak="%s:%s" % (kaynak, ad_k), a=KOD_IDX[kod], renk=renk, boy_mm=round(boy),
                         pts=[[round(c, 1) for c in q] for q in pts]))
 log("gosterim semasi: %d (kablo_yolu_ekran.py)" % len(SEMALAR))
+# F10d: alt adımlı adımda her şema bir alt adımda (grup "sema" deseni şemanın görünen adında); hiçbir gruba düşmeyen son gruba + UYARI
+for a in ADIMLAR:
+    if not a.get("sira_grup"):
+        continue
+    kalan = {k for k, s in enumerate(SEMALAR) if s["a"] == a["i"]}
+    for g in a["sira_grup"]:
+        d = g.pop("_sema", ())
+        g["sema"] = [k for k in sorted(kalan) if any(x in SEMALAR[k]["ad"] for x in d)]
+        kalan -= set(g["sema"])
+    if kalan and a.get("alt"):
+        log("UYARI sema alt adimi yok:", a["kod"], sorted(kalan))
+        a["sira_grup"][-1]["sema"] = sorted(set(a["sira_grup"][-1]["sema"]) | kalan)
+    for g in a["sira_grup"]:
+        if not g["sema"]:
+            g.pop("sema")
 
 VERI = dict(
     surum=1, uretim=time.strftime("%Y-%m-%d %H:%M"), betik="tasarim/freecad/rehber/rehber_veri.py",
@@ -647,6 +866,12 @@ VERI = dict(
     m6_bayrak=dict(M6SAY), mesh=dict(benzersiz=len(MESH), parca=len(P), ucgen=sum(len(m[1]) for m in MESH),
                                      glb_mb=round(len(glb) / 1e6, 2)),
     atanmamis=ATANMAMIS, kablo_ad_uyari=KABLO_UYARI, tur_ad=RM.TUR_AD, modul_ad=RM.MODUL_AD, semalar=SEMALAR,
+    # F10d düzeltme 1 (B-2): ısıl gömme ev sahibi (geometri) ve adım değiştiren somunlar; rehber_sira.py bağımsız denetler
+    isil_gomme=dict(yontem=ISIL["yontem"], toplam=ISIL["toplam"], ev_sahipli=ISIL["ev_sahipli"], skor_alt=ISIL["skor_alt"],
+                    evsiz=[dict(id=p["id"], ad=p["ad"], adim=p["kodr"]) for p in ISIL["evsiz"]],
+                    tasinan=[dict(id=p["id"], ad=gorunen_ad(p), modul=p["modul"], eski_kod=k0, eski_adim=a0, kod=p["kodr"], adim=p["a"],
+                                  ev=p["_h"]["id"], ev_ad=gorunen_ad(p["_h"])) for p, k0, a0 in ISIL["tasinan"]],
+                    skor={p["id"]: p["_h_skor"] for p in P if p.get("_h_skor")}),
     adimlar=ADIMLAR, parcalar=PARCA)
 js = json.dumps(VERI, ensure_ascii=False, separators=(",", ":"))
 open(os.path.join(CIKTI, "rehber-veri.json"), "w", encoding="utf-8").write(json.dumps(VERI, ensure_ascii=False, indent=0))

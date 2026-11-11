@@ -30,13 +30,16 @@ class Isinlar:
         self.cache = {}
         self.tek = 0                                                    # tek sayıda kesişimli (düşürülen) ışın
 
-    def ara(self, k, eks):
+    def ara(self, k, eks, ofs=None):
+        """ofs (mm, 3): parça bu kadar kaydırılmış olarak ışınlanır (önbelleğe girmez; F10d düzeltme 1, gerçek yönde süpürme)."""
         key = (k, eks)
-        if key in self.cache:
+        if ofs is None and key in self.cache:
             return self.cache[key]
         a1, a2 = [a for a in range(3) if a != eks]
         p = self.P[k]
         T = p["v"][p["f"]]
+        if ofs is not None:
+            T = T + np.asarray(ofs, float)
         h, lo = self.h, self.lo
         X = (T[:, :, a1] - lo[a1]) / h - KAYDIR                        # ışın (i, j): lo + (i + KAYDIR) h
         Y = (T[:, :, a2] - lo[a2]) / h - KAYDIR
@@ -87,7 +90,8 @@ class Isinlar:
             self.tek += int((say % 2 == 1).sum())
             rid, I, J, Tt = rid[cift], I[cift], J[cift], Tt[cift]
         r = (I[0::2], J[0::2], Tt[0::2], Tt[1::2])
-        self.cache[key] = r
+        if ofs is None:
+            self.cache[key] = r
         return r
 
 
@@ -172,6 +176,78 @@ class Giris:
                             engel_say=len(E))
         return dict(serbest=False, yol_mm=round(n_max * adim_mm, 2), carpan=[], dinlenme=self._liste(dinlenme), engel_say=len(E),
                     neden="azami yol")
+
+    # ------------------------------------------------ F10d düzeltme 1 (kontrol B-5): gerçek yönde süpürme
+    def _engel(self, E, eks):
+        a2 = [a for a in range(3) if a != eks][1]
+        n2 = self.I.n[a2]
+        OE = [self.I.ara(e, eks) for e in E]
+        ek = np.concatenate([np.full(len(x[0]), e) for e, x in zip(E, OE)])
+        ei = np.concatenate([x[0] for x in OE]); ej = np.concatenate([x[1] for x in OE])
+        e0 = np.concatenate([x[2] for x in OE]); e1 = np.concatenate([x[3] for x in OE])
+        key = ei * n2 + ej
+        o = np.argsort(key, kind="stable")
+        return key[o], ek[o], e0[o], e1[o], n2
+
+    def carpisma_ofs(self, H, EE, ofs):
+        """H, ofs (mm) kadar kaydırılmış (ızgaraya yuvarlanmadan: parça kaydırılıp yeniden ışınlanır) iken engellerle ortak hacim.
+        EE: eksen -> _engel(). Döner {(h, e): (en uzun mm, ışın)} (carpisma ile aynı)."""
+        out = {}
+        for eks, (key, ek, e0, e1, n2) in EE.items():
+            for hk in H:
+                hi_, hj, h0, h1 = self.I.ara(hk, eks, ofs)
+                n1 = self.I.n[[a for a in range(3) if a != eks][0]]
+                ok = (hi_ >= 0) & (hi_ < n1) & (hj >= 0) & (hj < n2)      # ızgara dışı ışın başka satırla karışmasın
+                hi_, hj, h0, h1 = hi_[ok], hj[ok], h0[ok], h1[ok]
+                if not len(hi_):
+                    continue
+                q = hi_ * n2 + hj
+                L = np.searchsorted(key, q, "left"); R = np.searchsorted(key, q, "right")
+                c = R - L
+                if not c.any():
+                    continue
+                src = np.repeat(np.arange(len(q)), c)
+                off = np.arange(int(c.sum())) - np.repeat(np.cumsum(c) - c, c)
+                tgt = np.repeat(L, c) + off
+                ov = np.minimum(h1[src], e1[tgt]) - np.maximum(h0[src], e0[tgt])
+                m = ov > self.esik
+                if m.any():
+                    for e in np.unique(ek[tgt[m]]):
+                        mm = m & (ek[tgt] == e)
+                        x = out.get((int(hk), int(e)), (0.0, 0))
+                        out[(int(hk), int(e))] = (max(x[0], float(ov[mm].max())), x[1] + int(mm.sum()))
+        return out
+
+    def yon_gercek(self, H, E, u, azami_mm=600.0, adim_mm=None):
+        """u (birim vektör, yuvarlanmamış) boyunca h mm adımla çekme: hareketli küme her adımda u·t kaydırılıp yeniden ışınlanır
+        (tam sayı ızgara adımına yuvarlama yok; uygulamanın uçurduğu eksen). Döner yon() ile aynı."""
+        u = np.asarray(u, float)
+        u = u / (np.linalg.norm(u) or 1.0)
+        adim_mm = float(adim_mm or self.h)
+        hlo, hhi = _kutu(self.P, H)
+        n_max = int(azami_mm / adim_mm) + 1
+        D = u * adim_mm
+        clo = np.minimum(hlo, hlo + D * n_max); chi = np.maximum(hhi, hhi + D * n_max)
+        E = [e for e in E if _kesisir(self.P[e]["bmin"], self.P[e]["bmax"], clo, chi, 1.0)]
+        if not E:
+            return dict(serbest=True, yol_mm=0.0, carpan=[], dinlenme=[], engel_say=0, adim_mm=adim_mm)
+        EE = {eks: self._engel(E, eks) for eks in (0, 1, 2)}
+        dinlenme = self.carpisma_ofs(H, EE, np.zeros(3))
+        elo, ehi = _kutu(self.P, E)
+        for n in range(1, n_max + 1):
+            ofs = D * n
+            if not _kesisir(hlo + ofs, hhi + ofs, elo, ehi, 0.5):
+                return dict(serbest=True, yol_mm=round(n * adim_mm, 2), carpan=[], dinlenme=self._liste(dinlenme), engel_say=len(E),
+                            adim_mm=adim_mm)
+            # yalnız kutusu engel kutusuna değen hareketli parçalar
+            H2 = [k for k in H if _kesisir(self.P[k]["bmin"] + ofs, self.P[k]["bmax"] + ofs, elo, ehi, 0.5)]
+            c = self.carpisma_ofs(H2, EE, ofs)
+            c = {k: v for k, v in c.items() if k not in dinlenme}
+            if c:
+                return dict(serbest=False, yol_mm=round((n - 1) * adim_mm, 2), carpan=self._liste(c), dinlenme=self._liste(dinlenme),
+                            engel_say=len(E), adim_mm=adim_mm)
+        return dict(serbest=False, yol_mm=round(n_max * adim_mm, 2), carpan=[], dinlenme=self._liste(dinlenme), engel_say=len(E),
+                    neden="azami yol", adim_mm=adim_mm)
 
     def _liste(self, c):
         return [dict(hareketli="%s [%s]" % (self.P[a]["ad"], self.P[a]["id"]), engel="%s [%s]" % (self.P[b]["ad"], self.P[b]["id"]),

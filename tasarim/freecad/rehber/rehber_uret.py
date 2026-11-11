@@ -29,6 +29,10 @@
 #      -> kontrol.json "sira" (ulaşılamaz sınırı 0; aşılırsa ya da bilinen kapalı sınama kaçarsa çıkış 2) ve "perdelenme" (adım başına
 #      hiçbir yönden görünmeyen yeni parçalar, sayı + liste; eşik yok). numpy yoksa ikisi "atlandı", üretim kırılmaz. ~2 dk
 #   --ek-yok: 4–8'i atla.
+# F10d: 9) alt adımlar (CDP, tek tarayıcı): ?adim=N.J -> yeni görünenler beklenenle (app.js durum(p, s, j)), konsol, panel metni
+#      (denetim), kontrol görüntüsü <çıktı>/goruntu/adim-NN-JJ.png, yazdırma görüntüsü rehber/goruntu/adim-NN-JJ.png (piksel denetimi);
+#      her parça kendi adımının tam bir alt adımında yeni -> kontrol.json "alt_adim". Sıra denetimine uçuş yolu (sira.ucus) eklendi;
+#      perdelenme alt adım sınırı (gerekçesiz tamamen gizli 0) çıkış koduna girer.
 import os, sys, json, subprocess, re, time, urllib.parse, argparse, tempfile, html
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -71,7 +75,7 @@ def tarayici():
 
 def url(adim, ek="", sayfa="index.html", kok=None):
     yol = os.path.join(kok or REHBER, sayfa).replace("\\", "/")
-    q = ("?adim=%d&cekim=1" % adim if adim is not None else "") + ek
+    q = ("?adim=%s&cekim=1" % adim if adim is not None else "") + ek
     return "file:///" + urllib.parse.quote(yol, safe="/:") + q
 
 
@@ -399,7 +403,127 @@ def yazdir(tb, n_adim):
     return d, [("yazdır", gorunen_metin(dom, r'<div id="sayfalar">.*</body>'))]
 
 
+def beklenen_alt(V, s, j):
+    """F10d: app.js durum(p, s, j) kuralı. Alt adım j'de yeni görünenler (simdi: grubun satırları + gösterim parçaları), bağlanan
+    masa birimi ya da tezgâh alt montajı (alt) ve yeni şemalar."""
+    st = V["adimlar"][s]
+    G = st["sira_grup"]
+    g = G[j - 1]
+    satir = {"p:%d" % i: r["ids"] for i, r in enumerate(st["parcalar"])}
+    satir.update({"b:%d" % i: r.get("ids", []) for i, r in enumerate(st["baglantilar"])})
+    pg = {}
+    for n, x in enumerate(G):
+        for k in x["satir"]:
+            for i in satir[k]:
+                pg[i] = n
+        for i in x.get("ref", []):
+            pg[i] = n
+    simdi = {i for i, n in pg.items() if n == j - 1}
+    alt = {i for i, n in pg.items() if g.get("bag") and G[n]["tezgah"] == g["bag"]}
+    if j == 1 and not st["tezgah"]:
+        alt |= {p["id"] for p in V["parcalar"] if p["b"] == s and p["a"] != s}
+    return simdi, alt, set(g.get("sema", []))
+
+
+def alt_kontrol(tb, V, adimlar):
+    """F10d: alt adımlar (CDP, tek tarayıcı): ?adim=N.J&cekim=1 (1400 × 900) -> yeni görünenler beklenenle, konsol hatası, panel metni
+    (denetim), kontrol görüntüsü <çıktı>/goruntu/adim-NN-JJ.png; ?adim=N.J&sahne=1 (1200 × 720, açık tema) -> yazdırma görüntüsü
+    rehber/goruntu/adim-NN-JJ.png, piksel denetimi (cizim_orani, boşsa CIZIM_TEKRAR kez yeniden). Her parça kendi adımının tam bir alt
+    adımında yeni görünmeli."""
+    import base64
+    AD = {p["id"]: "%s [%s]" % (p["ad"], p["modul"]) for p in V["parcalar"]}
+    hedef = [(s, j) for s in adimlar for j in range(1, (V["adimlar"][s].get("alt") or 0) + 1)]
+    if not hedef:
+        return dict(alt_adim=0, sonuc=[], gecti=True), [], dict(bos=[], eksik=[])
+    os.makedirs(GORUNTU, exist_ok=True)
+    os.makedirs(YAZDIR_GORUNTU, exist_ok=True)
+    sonuc, metin, say = [], [], {}
+    bos, oran, tekrar = [], {}, {}
+    c = Cdp(tb)
+
+    def ac(u, w, h):
+        c.cmd("Emulation.setDeviceMetricsOverride", width=w, height=h, deviceScaleFactor=1, mobile=False)
+        c.js("document.body && (document.body.dataset.hazir = '0')")   # önceki sayfanın hazır işareti sayılmasın
+        c.cmd("Page.navigate", url=u)
+        q = u.split("?", 1)[1] if "?" in u else ""
+        t = time.time()
+        while time.time() - t < 60 and c.js("(location.search.slice(1) === %s && document.body && document.body.dataset.hazir) || ''"
+                                            % json.dumps(q)) != "1":
+            time.sleep(0.25)
+        time.sleep(0.3)
+
+    def cek(png):
+        ek = c.cmd("Page.captureScreenshot", format="png", captureBeyondViewport=False)
+        open(png, "wb").write(base64.b64decode(ek["data"]))
+    try:
+        for s, j in hedef:
+            ad = "%d.%d" % (s, j)
+            ac(url(None, "?adim=%s&cekim=1" % ad), 1400, 900)
+            o = c.js("(function(){var k=document.getElementById('kontrol-veri'),p=document.querySelector('.panel');var t=[];"
+                     "if(p){var w=document.createTreeWalker(p,NodeFilter.SHOW_TEXT),x;while((x=w.nextNode())){if(!x.parentElement.closest('code,script,style'))"
+                     "t.push(x.nodeValue);}}return {kv:k?k.textContent:'',h:document.documentElement.dataset.hata||null,"
+                     "hz:document.body.dataset.hazir||null,m:t.join(' ')};})()") or {}
+            png = os.path.join(GORUNTU, "adim-%02d-%02d.png" % (s, j))
+            cek(png)
+            try:
+                g = json.loads(o.get("kv") or "null")
+            except ValueError:
+                g = None
+            b_simdi, b_alt, b_sema = beklenen_alt(V, s, j)
+            d = dict(adim=s, alt_adim=j, kod=V["adimlar"][s]["kod"], hazir=o.get("hz") == "1", hata=o.get("h"),
+                     goruntu=os.path.relpath(png, ROBOT).replace("\\", "/"), veri_okundu=g is not None)
+            if g is not None:
+                gs, ga = set(g["simdi"]), set(g["alt"])
+                for i in gs:
+                    say.setdefault(i, []).append(ad)
+                fark = sorted(gs ^ b_simdi) + sorted(ga ^ b_alt)
+                d.update(beklenen_simdi=len(b_simdi), gorunen_simdi=len(gs), beklenen_alt=len(b_alt), gorunen_alt=len(ga),
+                         fark=[AD.get(i, i) for i in fark], sema_fark=sorted(set(g.get("sema") or []) ^ b_sema), kadraj=g.get("kadraj"),
+                         eksik_mesh=g.get("eksik") or [], konum_dogru=(g.get("adim") == s and g.get("alt_adim") == j))
+                d["gecti"] = bool(d["hazir"] and not d["hata"] and not fark and not d["sema_fark"] and not d["eksik_mesh"] and d["konum_dogru"])
+            else:
+                d["gecti"] = False
+            sonuc.append(d)
+            metin.append(("tarayıcı alt adım %s" % ad, o.get("m") or ""))
+            print("  alt adim %-6s %-4s hazir=%s hata=%s yeni %s/%s alt %s/%s kadraj %s %s" % (
+                ad, d["kod"], d["hazir"], d["hata"] or "-", d.get("gorunen_simdi"), d.get("beklenen_simdi"), d.get("gorunen_alt"),
+                d.get("beklenen_alt"), d.get("kadraj"), "GECTI" if d["gecti"] else "KALDI"))
+            # yazdırma görüntüsü (yalnız 3B, açık tema)
+            ypng = os.path.join(YAZDIR_GORUNTU, "adim-%02d-%02d.png" % (s, j))
+            for k in range(CIZIM_TEKRAR + 1):
+                ac(url(None, "?adim=%s&cekim=1&sahne=1&tema=light" % ad), 1200, 720)
+                cek(ypng)
+                r = cizim_orani(ypng)
+                oran[ad] = None if r is None else round(r, 4)
+                if r is None or r >= CIZIM_ESIK:
+                    break
+                tekrar[ad] = k + 1
+            if oran.get(ad) is None or oran[ad] < CIZIM_ESIK:
+                bos.append(ad)
+    finally:
+        c.kapat()
+    # her parça (alt adımlı adımlarda) tam bir alt adımda yeni
+    tum = sorted(adimlar) == list(range(len(V["adimlar"])))
+    tek = None
+    if tum:
+        bek = [p["id"] for p in V["parcalar"] if V["adimlar"][p["a"]].get("alt")]
+        coklu = {AD[i]: v for i, v in say.items() if len(v) != 1}
+        hic = [AD[i] for i in bek if i not in say]
+        tek = dict(gecti=not coklu and not hic, parca=len(bek), birden_cok_alt_adimda=coklu, hic_gorunmeyen=hic)
+    gecerli = [v for v in oran.values() if v is not None]
+    yg = dict(alt_adim=len(hedef), eksik=[], bos=bos, cizim_esik=CIZIM_ESIK, yeniden_cekim=tekrar, en_dusuk_cizim_orani=min(gecerli) if gecerli else None,
+              cizim_orani=oran, piksel_denetimi=bool(gecerli) and len(gecerli) == len(oran))
+    print("alt adim: %d, gecti %d, her parca tek alt adimda: %s; yazdir goruntusu bos %s, en dusuk cizim orani %s" % (
+        len(sonuc), sum(1 for d in sonuc if d["gecti"]), tek["gecti"] if tek else "-", bos or "-", yg["en_dusuk_cizim_orani"]))
+    return dict(alt_adim=len(hedef), gecen=sum(1 for d in sonuc if d["gecti"]), konsol_hatasi=sum(1 for d in sonuc if d["hata"]),
+                her_parca_tek_alt_adimda=tek, sonuc=sonuc, gecti=all(d["gecti"] for d in sonuc) and (tek is None or tek["gecti"])), metin, yg
+
+
 if __name__ == "__main__":
+    try:                                                                # F10d: alt adım adlarında "→" var; cp1254 konsolda özet çökmesin
+        sys.stdout.reconfigure(errors="replace")
+    except Exception:
+        pass
     ap = argparse.ArgumentParser()
     ap.add_argument("--veri-yok", action="store_true")
     ap.add_argument("--gorsel-yok", action="store_true")
@@ -425,9 +549,27 @@ if __name__ == "__main__":
         ad = [int(x) for x in g.adimlar.split(",") if x.strip()] or list(range(n))
         V, tb, sonuc, ozet, metin, tek = kontrol(ad)
         ek = {}
+        try:                                                            # F10d: alt adımlar (kontrol + yazdırma görüntüsü)
+            ek["alt_adim"], m_alt, yg_alt = alt_kontrol(tb, V, ad)
+        except Exception as e:
+            ek["alt_adim"], m_alt, yg_alt = dict(durum="hata", neden="%s: %s" % (type(e).__name__, e), gecti=False), [], dict(bos=[], eksik=[])
+            print("alt adim kontrolu: HATA", ek["alt_adim"]["neden"])
+        metin = metin + m_alt
+        ek["alt_adim"]["yazdir_goruntu"] = yg_alt
         if not g.ek_yok:
             import rehber_denetim as RD
-            ek["yazdir_goruntu"] = sahne_goruntu(tb, ad)
+            ek["yazdir_goruntu"] = yg = sahne_goruntu(tb, ad)
+            # F10d düzeltme 1 (kontrol B-9): yazdırma karelerinin piksel denetimi alt adım karelerini de kapsasın (ana 50 + alt 45)
+            yg["ana_adim"], yg["alt_adim"] = yg["adim"], yg_alt.get("alt_adim", 0)
+            yg["kare"] = yg["ana_adim"] + yg["alt_adim"]
+            yg["bos"] = list(yg["bos"]) + list(yg_alt.get("bos") or [])
+            yg["cizim_orani"] = dict(yg["cizim_orani"], **{str(k): v for k, v in (yg_alt.get("cizim_orani") or {}).items()})
+            yg["denetlenen"] = sum(1 for v in yg["cizim_orani"].values() if v is not None)
+            yg["piksel_denetimi"] = yg["denetlenen"] == yg["kare"]
+            _g = [v for v in yg["cizim_orani"].values() if v is not None]
+            yg["en_dusuk_cizim_orani"] = min(_g) if _g else None
+            print("yazdir goruntusu (ana + alt adim): %d kare, piksel denetimi %d / %d, bos %s, en dusuk cizim orani %s" % (
+                yg["kare"], yg["denetlenen"], yg["kare"], yg["bos"] or "-", yg["en_dusuk_cizim_orani"]))
             ek["telefon"], m2 = telefon(tb)
             ek["yazdir"], m3 = yazdir(tb, n)
             ek["denetim"] = RD.denetle(V, metin + m2 + m3)
@@ -443,9 +585,12 @@ if __name__ == "__main__":
         json.dump(dict(tarih=time.strftime("%Y-%m-%d %H:%M"), tarayici=os.path.basename(tb), ozet=ozet, sonuc=sonuc, **ek),
                   open(os.path.join(CIKTI, "kontrol.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         kotu = [s for s in sonuc if not s["gecti"]]
-        ek_kotu = [k for k in ("telefon", "yazdir", "denetim", "sira") if k in ek and not ek[k]["gecti"]]
-        if ek.get("yazdir_goruntu", {}).get("eksik") or ek.get("yazdir_goruntu", {}).get("bos"):
+        ek_kotu = [k for k in ("telefon", "yazdir", "denetim", "sira", "perdelenme", "alt_adim") if k in ek and not ek[k]["gecti"]]
+        if ek.get("yazdir_goruntu", {}).get("eksik") or ek.get("yazdir_goruntu", {}).get("bos") or \
+                ek.get("yazdir_goruntu", {}).get("piksel_denetimi") is False:
             ek_kotu.append("yazdir_goruntu")
+        if yg_alt.get("bos"):
+            ek_kotu.append("alt_adim_yazdir_goruntu")
         print("tarayici kontrolu: %d adim, %d gecti, %d sorunlu, konsol hatasi %d; her parca tek adimda: %s; ek kontrol sorunlu: %s" % (
             len(sonuc), ozet["gecen"], len(kotu), ozet["konsol_hatasi"], tek["gecti"] if tek else "-", ek_kotu or "-"))
         sys.exit(0 if not kotu and (tek is None or tek["gecti"]) and not ek_kotu else 2)
