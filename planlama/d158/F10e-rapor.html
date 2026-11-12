@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lale F10e Raporu</title>
+<style>
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#1f2328; --muted:#5f6670; --line:#dcd9d2;
+  --ok:#1f7a45; --ok-bg:#e6f4ea; --wait:#8a5a00; --wait-bg:#fdf1d8; --info:#2457a6; --info-bg:#e7eefb;
+  --crit:#a3202f; --crit-bg:#fbe9eb; --accent:#b0304a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+    --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+    --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --panel:#1e2125; --ink:#e7e9ec; --muted:#a2a9b2; --line:#33383e;
+  --ok:#6fd39a; --ok-bg:#183326; --wait:#f0c062; --wait-bg:#3a2f15; --info:#8fb4f2; --info-bg:#1b2a44;
+  --crit:#f2899a; --crit-bg:#3a1a20; --accent:#ef7d93;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+h3{font-size:1rem;margin:20px 0 8px}
+p{margin:8px 0}
+p.sub{color:var(--muted);margin:0 0 20px}
+p.note{color:var(--muted);font-size:.88rem}
+code{font:0.88em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+button.tema{font:inherit;font-size:.85rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .v{font-size:1.6rem;font-weight:650;margin:2px 0}
+.card .d{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap}
+.ok{color:var(--ok);background:var(--ok-bg)}
+.wait{color:var(--wait);background:var(--wait-bg)}
+.info{color:var(--info);background:var(--info-bg)}
+.crit{color:var(--crit);background:var(--crit-bg)}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+td.kod{font-weight:650;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.list,ul.list{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px 12px 34px;margin:0}
+ol.list li,ul.list li{margin:4px 0}
+.oneri{background:var(--wait-bg);border:1px solid var(--line);border-left:4px solid var(--wait);border-radius:10px;padding:12px 16px;margin:10px 0}
+.oneri b{color:var(--wait)}
+footer{margin-top:32px;color:var(--muted);font-size:.85rem}
+@media print{button.tema{display:none}}
+.kare{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.kare figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px}
+.kare img{width:100%;height:auto;display:block;border-radius:6px}
+.kare figcaption{font-size:.82rem;color:var(--muted);margin-top:4px}
+.genis{grid-template-columns:1fr}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<h1>Lale F10e: gerçek parça rengi, bağlandığı yer vurgusu, cıvata yeri işaretleri, zor kalan kareler (P10.4b)</h1>
+<p class="sub">Kayıt ajanı · 12.11.2026 · dal <code>lale-duzeltme</code> (HEAD <code>90c270a</code>, paket çalışma ağacında) · kaynaklar: <code>F10e-brief.md</code>, <code>F10e-gunluk.md</code> (uygulama ajanı A; §12 düzeltme turu 1, ajan D1), <code>F10e-kontrol.md</code> (ilk bağımsız kontrol B: DÜZELTME GEREKLİ), <code>F10e-duzeltme-1-brief.md</code>, <code>F10e-kontrol-2.md</code> (ikinci bağımsız kontrol B3: GEÇER), <code>F10e-dogrula.json</code>, <code>planlama/rehber/kontrol.json</code>. Bu rapor yeniden ölçüm yapmadı; sayıların hepsi yanında adı geçen kaynaktan.</p>
+</div>
+<button class="tema" type="button" id="tema">Tema: sistem</button>
+</header>
+
+<p class="note">Kaynak etiketleri: <b>[A]</b> uygulama ajanının iddiası (günlük §0–§11) · <b>[B]</b> ilk bağımsız kontrol (<code>F10e-kontrol.md</code>; B1'in ham ölçümlerini devralan B) · <b>[D1]</b> düzeltme ajanının iddiası (günlük §12) · <b>[B3]</b> ikinci bağımsız kontrol (<code>F10e-kontrol-2.md</code>). "Doğrulandı" yalnız bir bağımsız kontrolün (B ya da B3) ölçtüğü ya da gözle baktığı şey için kullanıldı.</p>
+
+<div class="cards">
+  <div class="card"><div class="k">Hüküm</div><div class="v"><span class="tag ok">GEÇER</span></div><div class="d">ikinci kontrol [B3], küçük notlarla (5 bulgu, hiçbiri engelleyici değil); ilk kontrol [B] DÜZELTME GEREKLİ</div></div>
+  <div class="card"><div class="k">Anlaşılırlık (42 kabuk alt adımı)</div><div class="v">40 · 2 · 0</div><div class="d">açık · zor (31.9, 34.7) · anlaşılmıyor [B]; A 41 · 1 · 0 diyordu; F10d'de 34 · 8 · 0</div></div>
+  <div class="card"><div class="k">Okurun pikseli, iki tema</div><div class="v">0 / 0</div><div class="d">eşik altı yeni parça açık / koyu, 42 alt adım, 335 parça [D1]; 25 parçada ekran görüntüsüyle birebir [B3]</div></div>
+  <div class="card"><div class="k">Renk veri ↔ CAD</div><div class="v">1192 / 1192</div><div class="d">[B] bağımsız okumayla; istisna: kablo yolu 12 parçası rehber paletinde (P10.7)</div></div>
+  <div class="card"><div class="k">Cıvata işaretleri</div><div class="v">1188</div><div class="d">konum başına işaret toplamı; benzersiz bağlantı elemanı 893 [B]; kabuk 277</div></div>
+  <div class="card"><div class="k">PDF</div><div class="v">69 sayfa</div><div class="d">önce 69 [B]; en küçük yazı 8,1 → 8,1 pt [D1, B ölçmedi]</div></div>
+  <div class="card"><div class="k">Karar kuyruğu</div><div class="v"><span class="tag info">yeni K yok</span></div><div class="d">K55'e ölçüm notu; açık 50 / toplam 55 değişmedi</div></div>
+</div>
+
+<h2>Ne istendi</h2>
+<p>Ahmet (10.11): <i>"mevcut adımda kullanılan parçaların gerçek görünümleri falan gözükse daha iyi olur (adım atladıktan sonra girleşebilir)"</i>; kabuk adımları için <i>"neyi nereye monte ediliyor pek anlaşılmıyor"</i>. F10d kabuk adımlarını alt adımlara bölmüş, "anlaşılmıyor" kalmamıştı ama 8 alt adım "zor"du (31.5, 31.9, 31.10, 34.4, 34.6, 34.7, 35.3, 36.3). Brief (<code>F10e-brief.md</code>): o alt adımın parçaları CAD renginde, öncekiler gri; yeni parçanın bağlandığı önceki parça ayrı tonla vurgulu; bağlantı elemanlarının yeri ekranda sabit boyutlu işaretle; zor 8 alt adım ve F10d'den kalan iki soluk parça (31.3 <code>p0762</code>, 34.7 <code>p0440</code>) okunur; benzer kare çiftleri (34.3 / 34.5, 34.4 / 34.6, 49.3 / 49.4) kareden ayırt edilebilir; üç devredilmiş ölçüm (etek ön bandının iki parçalı yolu, arka servis kapağı ↔ orta bant derinliği, adım 41 uyarısı). Kablolama içeriği, model geometrisi ve CAD renkleri değişmeyecekti.</p>
+
+<h2>Ne yapıldı</h2>
+<ul class="list">
+<li><b>Gerçek renk [A]:</b> parça rengi CAD kaynağından FreeCAD'siz okunuyor (modül FCStd'sindeki <code>Renk</code> × <code>&lt;modül&gt;_gorsel.py</code> <code>RENK</code> tablosu) ve yeni <code>tasarim/freecad/rehber/rehber_gorunum.py</code> ile veriye (<code>parcalar[].gr</code>) yazılıyor. Varsayılan kip gerçek renk; sınıf rengi düğme, <code>C</code> tuşu ve <code>?renk=sinif|gercek</code> ile. Önceki parçalar eskisi gibi gri. Zeminle karşıtlığı WCAG 3,0'ın altındaki yeni parça kenar çizgisi alıyor (ek iki kural: saydam yeni parça, önceki grisine yakın parça).</li>
+<li><b>Bağlandığı yer [A]:</b> pembe <code>#ff3fa4</code>; ev parçası veriden (bağlantı elemanının çevresindeki noktaları içeren önceki parça, yoksa yüzey teması, masada taban). 99 konumun 95'inde; boş 4'ü (1, 17, 32, 49.2) yeni parçasız ya da öncesiz konum.</li>
+<li><b>Cıvata yeri işaretleri [A]:</b> SVG halka (yarıçap 9 px), 22 px'ten yakınlar "×n" kümesi; panel satırı ya da parça seçilince ilgili halkalar yeşil; <code>I</code> tuşu, <code>?isaret=0|1</code>; yazdırma karelerinde de var.</li>
+<li><b>Zor kareler [A]:</b> günlük §4 tablosuna göre 10 alt adımda kamera değişti (31.9, 34.2, 34.4, 34.6, 34.7, 34.8, 34.9, 35.1, 35.4, 49.4); bağlantı elemanı ağırlıklı konumlarda kadraj bağlandığı parçayı da kapsıyor. Kare başlığı yalnız yazdırma / PDF karesinde (etkileşimli sayfada sahneyi ≈ %10 küçültüp F10d görünürlüğünü düşürdüğü için kaldırıldı).</li>
+<li><b>Düzeltme turu 1 [D1]:</b> ölçüm fonksiyonu sayfanın kendi tuvalinden okuyor; okurun pikseli iki temada ölçülüyor ve geçme şartında; saydam katmanı olan konumlarda yeni bağlantı elemanı saydam katmanlardan sonra, opak, derinlik yazarak çiziliyor (<code>ustteKoy</code>; gerçek renk aynı); benzer çiftler için küçük görünümün altına taraf + yükseklik etiketi (<code>miniYer</code>); adım 41 metni ölçülene indirildi; günlükte kayıt düzeltmeleri (§12.6).</li>
+<li><b>Değişen kod (git diff --stat, çalışma ağacı):</b> <code>rehber/app.js</code> 308 satır, <code>stil.css</code> +16, <code>index.html</code> +5, <code>yazdir.html</code> 10; <code>rehber_metin.py</code> 31, <code>rehber_uret.py</code> +3, <code>rehber_denetim.py</code> +1; yeni (izlenmeyen) <code>rehber_gorunum.py</code>, <code>F10e-dogrula.py</code>.</li>
+</ul>
+
+<h2>Önce / sonra kareleri</h2>
+<div class="kare">
+<figure><img src="F10e-goruntu-d1-31-3-koyu.png" alt="31.3 koyu tema, düzeltme turundan önce ve sonra"><figcaption>31.3 koyu: solda düzeltmeden önce halkanın içi boş, sağda pirinç ısıl gömme <code>p0762</code> görünür (ekran farkı 155 px [B3]).</figcaption></figure>
+<figure><img src="F10e-goruntu-d1-34-3-acik.png" alt="34.3 açık tema, önce ve sonra"><figcaption>34.3 açık: bindirme cıvataları saydam bandın önünde tam renkte; etiket "sağ · y 470–660" [D1 gözlemi; etiket metni B3'ün bağımsız hesabıyla aynı].</figcaption></figure>
+<figure><img src="F10e-goruntu-d1-34-7-koyu.png" alt="34.7 koyu tema, önce ve sonra"><figcaption>34.7 koyu: kelepçe cıvataları ve ısıl gömmeler renkli; hoparlör grubu hâlâ küçük, katmanlar ayrılmıyor: zor [B, B3, D1].</figcaption></figure>
+<figure><img src="F10e-goruntu-d1-49-3-acik.png" alt="49.3 açık tema, önce ve sonra"><figcaption>49.3 açık: sahne aynı, yalnız küçük görünüm etiketi "orta-arka · y 810–1010" eklendi [D1 gözlemi, B3 etiketi ölçtü].</figcaption></figure>
+</div>
+<div class="kare genis" style="margin-top:10px">
+<figure><img src="F10e-goruntu-35-3-once-sonra-acik.png" alt="35.3 açık tema, HEAD rehberi ile F10e"><figcaption>35.3 açık, HEAD ↔ F10e (<code>F10e-dogrula.py</code> karesi): önce mavi saydam taşıyıcı ve sarı cıvatalar, sonra kara taşıyıcı kenarlı, direk pembe, 6 halka [A gözlemi, önceki koşunun karesine]. Depodaki dosya düzeltme turunun zincirinde (08:04–08:08) yeniden yazıldı [D1 §12.7].</figcaption></figure>
+</div>
+<p class="note">Kareler: 19 HEAD ↔ F10e karesi (<code>F10e-goruntu-&lt;alt adım&gt;-once-sonra-*.png</code>, <code>-cift-*.png</code>) ve 24 düzeltme turu karesi (<code>F10e-goruntu-d1-*.png</code>, solu B1'in turdan önceki karesi). D1 24 d1 karesinin 4'üne depodaki hâliyle baktığını yazdı [D1 §12.8]; B3 açık temada 30, koyu temada 8 konuma ayrıca baktı [B3 §2c].</p>
+
+<h2>Kabul ölçütleri: iddia → ilk kontrol → düzeltme → ikinci kontrol</h2>
+<div class="tbl"><table>
+<thead><tr><th>Ölçüt (brief)</th><th>İddia [A]</th><th>İlk kontrol [B]</th><th>Düzeltme [D1]</th><th>İkinci kontrol [B3]</th><th>Son durum</th></tr></thead>
+<tbody>
+<tr><td>Renk veri ↔ CAD</td><td>1192 / 1192; GuiDocument 1031 / 1031</td><td>Bağımsız okuma (FCStd × <code>RENK</code>, ast): 1191 / 1191 + <code>p0781</code> elle = 1192 / 1192; GuiDocument 1031 / 1031</td><td>07:00 koşusunda aynı</td><td>yeniden ölçülmedi</td><td><span class="tag ok">doğrulandı</span> [B]</td></tr>
+<tr><td>Tek kaynak CAD (ayrı renk tablosu yok)</td><td>yok</td><td>12 kablo yolu parçası (<code>p1180</code>–<code>p1191</code>) rehberin kablo paletiyle; <code>p1187</code> CAD <code>#f20d0d</code> ↔ rehber <code>#2f86d4</code></td><td>istisna yazıldı; orkestratör kararı: değişmez, P10.7</td><td>kapandı (karar)</td><td><span class="tag info">istisna, P10.7</span></td></tr>
+<tr><td>Rehber = demo (≥ 30 parça)</td><td>40 örnekte eşit 0, <code>renk_demo</code> KALDI</td><td>Demo kendi sabit paletini kullanıyor (<code>TUR</code> / <code>MOD</code>, <code>gr</code>'yi okumuyor); 9 sınıf renginin 3'ü rehberinkiyle aynı, 6'sı farklı</td><td>değişmedi</td><td><code>renk_demo</code> geçme koşulunda değil (kod okundu)</td><td><span class="tag wait">karşılanmadı, kapsam dışı</span> (orkestratör: ölçüt brief hatası)</td></tr>
+<tr><td>Karşıtlık, iki tema</td><td>eşik altı açık 677 / koyu 164, kenarsız 0</td><td>kenar çizgisi karede gerçekten çiziliyor (açık / kapalı çiftleri); 132 karede kenar gereken 984 parça, kenarsız 0</td><td>—</td><td>—</td><td><span class="tag ok">doğrulandı</span> [B]</td></tr>
+<tr><td>Kabuk: anlaşılmıyor 0, zor ≤ 2</td><td>açık 41, zor 1 (31.9)</td><td>açık 40, zor 2 (31.9, 34.7), anlaşılmıyor 0 (84 kare); "sınırda" 4: 31.10, 34.4, 34.6, 36.3</td><td>34.7 iki denemeyle düzelmedi, zor bırakıldı; sayım B'ninki</td><td>22 kabuk alt adımına bakıldı, sınıflamayı değiştiren yok; 42'nin hepsi yeniden sayılmadı</td><td><span class="tag ok">eşik tutuyor</span> 40 / 2 / 0 [B]</td></tr>
+<tr><td>Bağlandığı yer, kabuğun hepsinde</td><td>41 / 41 yeni parçalı alt adım; doğruluk 186 / 186</td><td>41 / 41; sahnedeki pembe = veri <code>ev</code> 132 / 132 karede; 74 çiftin ölçülen 67'si doğru (7 masa tabanı ölçülmedi)</td><td>07:00 koşusunda 41 / 41, 186 / 186</td><td>—</td><td><span class="tag ok">doğrulandı</span> [B]</td></tr>
+<tr><td>İşaret sayısı = bağlantı elemanı</td><td>"işaret 1188 = bağlantı elemanı 1188"; kabuk 277 / 277</td><td>Sayı doğru, ifade yanlış: veride 893 benzersiz eleman, 1188 konum başına toplam (alt adımlı 10 adımın 295 elemanı iki kez). 66 / 100 konumda işaret = eleman = 1292, kare dışı 0</td><td>kayıt düzeltildi (§12.6)</td><td>kapandı</td><td><span class="tag ok">doğrulandı</span> (sayı), kayıt düzeltildi</td></tr>
+<tr><td>Okurun pikseli (≥ 30 px ve ≥ 0,20 × yalnız)</td><td>yalnız açık temada; eşik altı 2 (35.3 <code>p0432</code>, 36.1 <code>p0288</code>) + ısıl gömme 4</td><td><b>Çürütüldü:</b> koyu temada 212 "simdi" parçanın 20'si eşik altı, 6 bindirme cıvatası 0–3 px; açıkta 1 / 212 (35.3 <code>p0434</code>)</td><td>fonksiyon tuvalden okuyor; iki tema: önce açık 1 / koyu 18 (+ ısıl gömme 2 / 3), sonra 0 / 0, 335 parça</td><td>25 parçada ekran görüntüsü = fonksiyon, 25 / 25 geçiyor; 6 cıvata koyu temada 78–144 px; tam koşu tekrarlanmadı</td><td><span class="tag ok">kapandı</span> (25 parça bağımsız; 42 alt adımlık tam koşu [D1] + <code>F10e-dogrula.json</code>)</td></tr>
+<tr><td>Soluk iki parça (F10d'den)</td><td>31.3 <code>p0762</code> 40 / 142, 34.7 <code>p0440</code> 137 / 314, geçti</td><td><code>p0762</code> ekranda 0 px: <b>çürütüldü</b>; <code>p0440</code> 141 / 350 (0,403): doğrulandı</td><td><code>p0762</code> açık 156 / koyu 155 (yalnız 142); <code>p0440</code> açık 239 / koyu 233 (yalnız 314)</td><td><code>p0762</code> açık 156, koyu 155: aynı; <code>p0440</code> bu kontrolde ölçülmedi</td><td><span class="tag ok">kapandı</span></td></tr>
+<tr><td>Benzer çiftler kareden ayırt</td><td>"ayırt ediliyor"</td><td>Kısmen: yalnız panel / kare başlığı yazısından; 3B kare 34.3 / 34.5 ve 34.4 / 34.6'da neredeyse aynı</td><td>küçük görünüm etiketi (taraf + y aralığı); sahne boyutu değişmedi</td><td>Etiket 8 konumda bağımsız hesapla aynı; ana tuval HEAD ile aynı boyutta; 3B sahne hâlâ aynı</td><td><span class="tag wait">kısmen kapandı</span> (brief'in izin verdiği etiket yolu)</td></tr>
+<tr><td>50 / 50, konsol 0, 1192 ↔ 1192</td><td>geçti</td><td>100 konum açıldı, konsol 0, ağ 0; veri 1192</td><td>07:00 üretimi çıkış 0</td><td>100 / 100 konum (açık + koyu), <code>window.__hata</code> 0</td><td><span class="tag ok">doğrulandı</span></td></tr>
+<tr><td>Ulaşılamaz 0, girilemez 0, yazdırma boş 0</td><td>565 bağlantıda ulaşılamaz 0; yazdırma 100 / 100, boş 0</td><td>koşulmadı (depoya yazan betik)</td><td>07:00 üretimi: yazdırma 100 / 100, boş 0, en düşük çizim oranı 0,0606</td><td>çıkış kodları <code>.durum</code> dosyalarıyla aynı</td><td><span class="tag info">üretim denetimi</span> (sayılar bağımsız yeniden sayılmadı)</td></tr>
+<tr><td>Arayüz: seçim, patlat / tak, küçük görünüm, gezinme, ağsız, 360 px</td><td>geçti</td><td>seçim yeşil, patlatmada halkalar parçayla, ←/→, 360 px 7 konumda taşma 0</td><td>F10a GEÇTİ (seçim 6 / 6, 360 px taşma 0)</td><td>360 px'te 49.3 / 49.4 etiketi iki satıra kırılıyor (biçim)</td><td><span class="tag ok">doğrulandı</span> [B]; küçük not [B3]</td></tr>
+<tr><td>PDF sayfa / en küçük yazı</td><td>69 → 69; 8,1 → 8,1 pt</td><td>69 / 69 doğrulandı; yazı ölçülmedi</td><td>PyMuPDF önce / sonra 69 / 69, 8,1 / 8,1 pt</td><td>yeniden ölçülmedi</td><td>sayfa <span class="tag ok">doğrulandı</span>; yazı [D1] iddiası</td></tr>
+<tr><td>F9b 0, çarpışma kontrol 0, regresyon 10 / 10</td><td>0 / 0 / 10 / 10 (00:12)</td><td>koşulmadı</td><td>07:00 zinciri: F10d 0, F10a 0, F9b 0, kontrol 0, regresyon 0 (10 / 10), F10e 0</td><td><code>.durum</code> dosyaları günlük §12.7 ile aynı</td><td><span class="tag ok">kayıtla doğrulandı</span> [B3]</td></tr>
+<tr><td>Model geometrisi değişmedi</td><td>değişmedi</td><td><code>robot.glb</code> git blob özeti HEAD ile aynı</td><td>—</td><td><code>robot.glb</code> / <code>robot-glb.js</code> <code>git diff --quiet</code> 0</td><td><span class="tag ok">doğrulandı</span></td></tr>
+<tr><td>9a Etek ön bandı, iki parçalı yol</td><td>"iki bacaklı yol yok; bandı perçin somunu tutuyor"</td><td><b>Ölçülmedi</b> (B1'in süpürmesi çıktı yazmadan bitti); dil ölçülenden kesin</td><td>metin: "denenen 42 iki bacaklı öteleme yolunda bulunmadı; dönme ve ara açılar denenmedi"</td><td>42 sayısı §7.1 ile tutuyor (bant başına; iki bant); süpürme koşulmadı</td><td><span class="tag info">yalnız A'nın ölçümü</span></td></tr>
+<tr><td>9b Arka servis kapağı ↔ orta bant</td><td>en çok 0,23 mm, temas</td><td>sağ 26 / 533 köşe, en derin 0,2306 mm; sol 14, 0,0587 mm (ayrı kod)</td><td>—</td><td>—</td><td><span class="tag ok">doğrulandı</span> [B]</td></tr>
+<tr><td>9c Adım 41 uyarısı</td><td>"tutuyor, metin değişmedi"</td><td>abartılı: +x engeli (üst kol tüpü) kol parçası; yalnız CAD duruşunda ölçülmüş</td><td>metin ölçülene indirildi (veride değişen tek metin alanı)</td><td>kapandı; "CAD duruşunda" ifadesi okura yabancı (küçük)</td><td><span class="tag info">metin ölçülenle sınırlı</span>; kol duruşunda ölçülmedi</td></tr>
+</tbody>
+</table></div>
+
+<h2>İlk kontrolün çürüttüğü dört iddia ve nasıl kapandı</h2>
+<h3>1. Koyu tema görünürlüğü</h3>
+<ul class="list">
+<li><b>İddia [A]:</b> okurun pikseliyle kabukta eşik altı 2 parça. Ölçüm yalnız açık temada koşuyordu (<code>F10e-dogrula.py</code>, <code>tema=light</code>).</li>
+<li><b>Bulgu [B]:</b> koyu temada 212 yeni parçanın 20'si eşik altı; 6 bindirme cıvatası 0–3 px (34.3 <code>p0244</code>, 34.4 <code>p0242</code>, 34.5 <code>p0256</code>, 34.6 <code>p0254</code>, 35.1 <code>p0280</code>, 35.2 <code>p0282</code>). Halkalar yeri gösteriyordu, parçanın kendisi görünmüyordu.</li>
+<li><b>Kök neden [D1]:</b> kenar kuralı değil (çelik <code>#80858f</code> koyu zeminle karşıtlık 4,3); saydamlık sırası. Cıvatanın önünde bandın (0,4) ve braketin (0,25) çift yüzlü, derinlik yazmayan saydam yüzleri var; koyu temada geçen ton zemine karışıyor.</li>
+<li><b>Çözüm [D1]:</b> saydam listesi olan konumda saydam olmayan yeni bağlantı elemanı, aynı renkte, opak, derinlik yazarak saydam katmanlardan sonra çiziliyor (<code>renderOrder</code> 10). Opak parçanın arkasında gizli kalıyor (derinlik testi açık).</li>
+<li><b>Kapanış [B3]:</b> 6 cıvata koyu temada 78–144 px; ölçülen 25 parçanın hepsi eşiği geçiyor. Bedeli: saydam katmanın önündeki ton cıvatada görünmüyor (küçük bulgu 2).</li>
+</ul>
+<h3>2. 31.3 <code>p0762</code> ve ölçüm fonksiyonunun kök nedeni</h3>
+<ul class="list">
+<li><b>İddia [A]:</b> 40 / 142 px, geçti. <b>Bulgu [B]:</b> gerçek ekran görüntüsünde parçayı gizlemek eşiği (Σ|ΔRGB| &gt; 24) aşan 0 piksel değiştiriyor; neden farklı olduğu B'de ölçülmedi.</li>
+<li><b>Kök neden [D1]:</b> <code>RehberTest.gorunurlukFark</code> sahneyi ayrı bir <code>WebGLRenderTarget</code>'a çiziyordu; three r160 XR olmayan render target'a çıktıyı doğrusal yazıyor, ekran tuvali sRGB. D1'in ölçümü (31.3 <code>p0762</code>, açık): render target 4 örnek 40 px, örneksiz 35 px; tuval yumuşatmalı / yumuşatmasız 0 px. Fonksiyon artık sayfanın tuvaline çizip <code>gl.readPixels</code> ile okuyor.</li>
+<li><b>Kapanış [B3]:</b> düzeltilmiş fonksiyon 25 / 25 parçada ekran görüntüsü farkıyla birebir aynı sayıyı veriyor; <code>p0762</code> açık 156, koyu 155 px (yalnız 142). D1'in "doğrusal çıktı" açıklaması B3'te ayrıca sınanmadı.</li>
+<li><b>Sonucun kaydı:</b> A'nın görünürlük satırları render target ölçümüydü. Düzeltilmiş ölçümle 35.3 <code>p0432</code> önce 167 / 750, sonra 273 / 750; 36.1 <code>p0288</code> önce 35 / 154, sonra 81 / 154 [D1]. Aynı iki parçayı B1 167 / 798 (0,209) ve 35 / 173 (0,202) ölçmüştü [B]: piksel aynı, "yalnız" paydası farklı (B kendi siluetini, D1 F10d'nin kimlik tamponunu kullandı).</li>
+</ul>
+<h3>3. 34.7 hoparlör grubu</h3>
+<ul class="list">
+<li><b>İddia [A]:</b> zor → açık; "hoparlör kara". <b>Bulgu [B]:</b> grup karede ≈ 80 × 80 px (gözle), ön halka / ped / kap / kelepçe 0,4 opaklıkla üst üste, sıra ayrılmıyor; kara hoparlör beyaz saydam kabın içinde gri görünüyor; 13 halkanın 11'i hazırlıkta takılı ısıl gömmelerde.</li>
+<li><b>Denenen [D1]:</b> (1) yalnız hoparlör grubuna kadraj: grup okunuyordu ama bant kareden taştı, 13 halkanın 8'i kare dışına çıktı (F10d ve işaret denetimlerini gevşetmek gerekirdi) → geri alındı; (2) saydamlık varyantları: sıra yine ayrılmıyor → uygulanmadı; (3) kamera taranmadı. D1 grubun ekran kutusunu köşe izdüşümüyle ≈ 110 × 135 px ölçtü (B'nin gözle ≈ 80 px tahminiyle iki ayrı ölçü).</li>
+<li><b>Kapanış:</b> "zor" kaldı; "hoparlör kara" → "koyu gri" düzeltildi. B3: "sınıflama dürüst; kayıtta kapandı, karede açık (zor)".</li>
+</ul>
+<h3>4. Benzer kare çiftleri</h3>
+<ul class="list">
+<li><b>İddia [A]:</b> ayırt ediliyor. <b>Bulgu [B]:</b> 34.3 / 34.5 ve 34.4 / 34.6 3B kareleri piksel düzeyinde neredeyse aynı (yalnız kehribar ≈ 9 px kayıyor); 49.3 / 49.4 kamera farklı ama kompozisyon aynı.</li>
+<li><b>Çözüm [D1]:</b> küçük görünüm kutusunun alt şeridinde yeni parçaların yeri: taraf ve y aralığı (ör. 34.3 "sağ · y 470–660", 34.5 "sağ · y 620–810"). Etiket güvenli alanın dışında; sahne boyutu değişmedi (önceki denemede kare başlığı sahneyi ≈ %10 küçültmüştü).</li>
+<li><b>Kapanış [B3]:</b> 8 konumda etiket bağımsız hesapla aynı; taraf tanımı (+X sağ, +Z ileri) adım adlarıyla tutuyor; ana tuval 1400 × 900'de 1000 × 796, 360 px'te 360 × 384, HEAD ile aynı. <b>Kısmen kapandı:</b> ayrım yazı etiketinden, yazısız 3B ayrım yok.</li>
+</ul>
+<h3>Kayıt düzeltmeleri</h3>
+<ul class="list">
+<li><b>893 / 1188:</b> "bağlantı elemanı 1188" → veride 893 benzersiz bağlantı elemanı; 1188 konum başına işaret toplamı (adım genel bakışı + alt adım) [B, D1 §12.6]. B3: kapandı.</li>
+<li><b>Tek kaynak CAD:</b> kablo yolu 12 parçası istisna, P10.7'ye devredildi [D1 §12.6, orkestratör kararı]. B3: kapandı (karar).</li>
+<li><b>9a dili:</b> "iki bacaklı yol yok" → "denenen 42 iki bacaklı öteleme yolunda bulunmadı; dönme ve ara açılar denenmedi" (bacak 1: 6 yön × 6 uzunluk = 36; ters sıra 2 × 3 = 6). B3: 42 bant başına; ölçüm iki bant (33.3, 33.5) için.</li>
+<li><b>Adım 41:</b> veride <code>is_</code> ilk satırı: "Sırayı bozma. CAD duruşunda yandan kaydırılamaz (+x'te üst kol tüpüne, −x'te omuz bandına değer); önden radyal tak." B3: veride HEAD'e göre ilk kontrolün listesi dışında değişen tek alan bu.</li>
+<li>Günlükte eski iddialar silinmedi; değişen satırlarda "düzeltildi, bkz. §12.x" notu var. B3 taradığı satırlarda notsuz çürütülmüş iddia bulmadı.</li>
+</ul>
+
+<h2>Kaynaklar arasında farklı sayılar</h2>
+<div class="tbl"><table>
+<thead><tr><th>Konu</th><th>Bir kaynak</th><th>Öbür kaynak</th><th>Not</th></tr></thead>
+<tbody>
+<tr><td>Kabuk yeni parça sayısı</td><td>335 / tema [A, D1; F10d sayımı: alt adımın satırları + bağlanan birim]</td><td>212 "simdi" [B; ısıl gömme hariç alt adımın yeni parçası]</td><td>iki ayrı sayım tanımı</td></tr>
+<tr><td>Koyu temada eşik altı (düzeltmeden önce)</td><td>20 [B]</td><td>18 (+ ısıl gömme 3) [D1]</td><td>36.1 <code>p0288</code> / <code>p0290</code> B'de eşik altı (31 / 154, 35 / 157 piksel aynı, "yalnız" paydası B'nin kendi silueti); D1'de geçiyor</td></tr>
+<tr><td>35.3 <code>p0434</code> açık, önce</td><td>111 / 2143 (0,052) [B]</td><td>111 / 2082 [D1]</td><td>sonra 504 / 2082 [B3]</td></tr>
+<tr><td>34.7 <code>p0440</code></td><td>30 / 310 [F10d C]; 137 / 314 [A]</td><td>141 / 350 [B]; açık 239 / koyu 233 (/ 314) [D1]</td><td>A'nınki render target ölçümü; B3 bu parçayı ölçmedi</td></tr>
+<tr><td>34.7 hoparlör grubunun boyu</td><td>≈ 80 × 80 px [B, gözle]</td><td>≈ 110 × 135 px [D1, köşe izdüşümü]</td><td>iki ayrı ölçü yöntemi</td></tr>
+<tr><td>PDF boyutu</td><td>12 576 kB [A, 11.11 üretimi]</td><td>12 632 kB [D1, 07:00 üretimi]</td><td>iki ayrı üretim; sayfa ve yazı aynı</td></tr>
+<tr><td>Kamerası değişen alt adım</td><td>10 [A, §4 tablosu]</td><td>"kamera değişen 12 alt adım" [A, §5]</td><td>aynı günlükte iki sayı; hangisinin doğru olduğu ölçülmedi</td></tr>
+<tr><td>Kabuk dışı adım 21</td><td>"zor" [A]</td><td>21.1 / 21.2 "bence açık" [B]</td><td>kabul ölçütü kabuk alt adımları; bu pakette karar verilmedi</td></tr>
+<tr><td>Verinin <code>uretim</code> alanı</td><td>"2026-11-11 15:34" [veri]</td><td>dosya 12.11 07:01'de yazıldı [B3]</td><td><code>--veri-yok</code> geometriyi eski tam üretimden alıyor</td></tr>
+</tbody>
+</table></div>
+
+<h2>İkinci kontrolün 5 küçük bulgusu ve devri</h2>
+<ol class="list">
+<li><b>Çizim sırası değişikliği kabuk dışına da uzanıyor:</b> saydam listesi olan her konumda geçerli; kabuk dışında karesi değişen 46.1 ve 46.2 (bilek flanşı; ≈ 9 600–9 900 px). Gözle bozulma yok, ama günlük yalnız kabuğu anlatıyor ve okurun pikseli orada ölçülmedi.</li>
+<li><b>Saydam katmanın önündeki derinlik ipucu kayboluyor:</b> cıvata, önündeki saydam katmanın üstüne boyanıyor (31.3 <code>p0762</code> kartın yüzünde gibi, 35.3 çekiç somunlar taşıyıcının önünde gibi, 46.x flanşın önünde gibi). Okuru yanlış parçaya yönlendiren kare görülmedi.</li>
+<li><b>Etiketin açıklama metni "yerden yükseklik" diyor, değer y koordinatı:</b> robotun en alt noktası y = −89 mm; fareyle çıkan metin ≈ 90 mm sapıyor, görünen etiket "y …" dediği için yanıltmıyor.</li>
+<li><b>360 px'te uzun etiket iki satıra kırılıyor:</b> 49.3 / 49.4 "orta-arka · y 810–" / "1010".</li>
+<li><b>Adım 41'de "CAD duruşunda" ifadesi:</b> doğru ama okur için belirsiz.</li>
+</ol>
+<p class="note">Devir: 1–5 karar kuyruğunun "Karar değil, iş" bölümüne yazıldı ve P10.5 (F10f) ile birlikte ele alınacak. İlk kontrolün düzeltme turuna alınmayan küçük bulguları (9: hazırlıkta takılı ısıl gömmeler de bu adımın halkasını alıyor; 10: piksele yansımayan iki kenar; 11: adım 0'ın basılı karesinde başlık yok) <code>F10e-kontrol.md</code>'de duruyor; bu pakette kapatılmadı.</p>
+
+<h2>Bilinen sınırlar ve ölçülmeyenler</h2>
+<ul class="list">
+<li><b>FreeCAD'li tam üretim koşmadı:</b> FreeCAD bu pakette hiç çalışmadı (kilit baştan sona "boş"); renk CAD kaynağından FreeCAD'siz okundu, bütün üretimler <code>--veri-yok</code>. Geometri F10d'nin 11.11 15:34 tam üretiminden.</li>
+<li><b>9a süpürmesi:</b> yalnız uygulama ajanı ölçtü; B1'in bağımsız süpürmesi çıktı yazmadan bitti, B ve B3 yeniden koşmadı. Dönme ve ara açılar denenmedi.</li>
+<li><b>Adım 41, kol duruşunda:</b> ölçülmedi (A, B, D1, B3). Metin CAD duruşuyla sınırlandı.</li>
+<li><b>34.7 zor kaldı;</b> 31.9 da zor (kablo bağlantıları küçük, CSI şeridi karede ayrı çizgi değil; kablolama içeriği bu pakette yasaktı).</li>
+<li><b>Kabuk dışında okurun pikseli ölçülmedi</b> (46.1 / 46.2 dahil; yalnız gözle) [B, B3].</li>
+<li><b>Bütün kabuk alt adımlarının iki temalı tam görünürlük koşusu</b> bağımsız olarak tekrarlanmadı; B3 25 parçada ekran görüntüsüyle ölçtü, D1'in tam koşusunun sayıları o 25'te aynı.</li>
+<li><b>Anlaşılırlık sayımı</b> düzeltme turundan sonra 42 alt adımın hepsinde yeniden yapılmadı (D1 34.7'ye, B3 22 kabuk alt adımına baktı).</li>
+<li><b>İlk kontrolün "ölçemediklerim"i:</b> PDF en küçük yazı (sonra D1 ölçtü, B3 ölçmedi); <code>robot.glb</code> düğüm sayısı; işaret konumu ve rengi kalan 34 konumda; bağlandığı yerin kabuk dışı çiftleri ve 7 masa tabanı; seçim yeşili / kehribar ΔE değerleri (yalnız gözle); zincir komutları (koşulmadı).</li>
+<li><b>İkinci kontrolün "ölçemediklerim"i:</b> eski fonksiyonun neden farklı verdiği (D1'in açıklaması sınanmadı); <code>rehber_gorunum.py</code>'nin bu turdaki değişikliği (izlenmeyen dosya, önceki hâli yok); PDF'teki etiket karesi ayrıca açılmadı.</li>
+<li><b>Soyad / takma ad taraması:</b> iki kontrol de yalnız yerel yol taradı (kişi listesi yok); günlükte kişi olarak yalnız "Ahmet" geçiyor [B].</li>
+</ul>
+
+<h2>Açık kararlar ve devredilen işler</h2>
+<div class="oneri"><b>K55 · Kabuk bindirme dilleri (not eklendi, yeni madde yok).</b> Etek ön bandı için seçenek c ölçüldü [A, §7.1 / §12.6]: düz +z'de bandı braket z+105'teki perçin somunu tutuyor (0,8 mm ortak hacim); somun çıkarılınca düz +z serbest. Denenen 42 iki bacaklı öteleme yolunun (bant başına) hiçbiri serbest değil; dönme denenmedi. Bağımsız tekrar yok. Aday: perçin somununu bant yerindeyken takmak (sıra değişikliği) ya da a / b. Karar Ahmet'te; rehberde uygulanmadı.</div>
+<ul class="list">
+<li><b>Kablo yolu 12 parçası</b> (<code>p1180</code>–<code>p1191</code>) rehberin kablo paletiyle (<code>p1187</code> CAD kırmızı ↔ rehber mavi): P10.7.</li>
+<li><b>34.7 hoparlör grubu karesi</b> zor (kamera taranmadı).</li>
+<li><b>İkinci kontrolün küçük bulguları 1–5:</b> P10.5 (F10f) ile birlikte.</li>
+<li><b>Demo sınıf paletinde kalıyor</b> (orkestratör kararı); demoya gerçek renk ayrı istek olursa ayrı paket.</li>
+<li><b>Adım 41 uyarısı</b> kolun metindeki duruşunda (S1 −45 / −20 / 0) ölçülmedi.</li>
+</ul>
+<p class="note">Kuyruk: açık 50, kapandı 5, toplam 55 (değişmedi).</p>
+
+<h2>Süreç notu</h2>
+<ul class="list">
+<li><b>Duraklama:</b> uygulama 11.11 21:44'te Ahmet'in isteğiyle (makine başka iş için lazım) duraklatıldı; koşan üretim kesilmedi, 21:43'te bitti. 23:07'de devam edildi, iş 12.11 00:27'de bitti [A].</li>
+<li><b>Kontrol bir kez pencere kapanınca kesildi:</b> ilk kontrol ajanı (B1) ≈ 01:10'da oturum penceresi yanlışlıkla kapanınca rapor yazamadan durdu. 01:15'te yeni B aynı brief ve devam notuyla başladı, B1'in ham ölçümlerini betiğini okuyarak devraldı. B1'in yetim kalan 9a süpürmesi çıktı yazmadan kayboldu; yeniden başlatılmadı.</li>
+<li><b>Üretim bir kez bellek kritik düşünce kesildi:</b> düzeltme turunun <code>rehber_uret.py --veri-yok</code> koşusu (01:54'te başlamıştı) 02:04'te sistem belleği kritik düşünce araç tarafından kesildi; alt adım kareleri yazılmış, PDF / <code>kontrol.json</code> yazılmamıştı. Kendiliğinden yeniden başlatılmadı. Ahmet'in "yeniden başlatmadan yine koş" kararıyla 07:00'da her komut ayrı süreç, ön planda yoklama ve bellek bekçili sarmalayıcıyla baştan koşuldu: üretim 1862 s, çıkış 0; zincirin hepsi 0; bekçi tetiklenmedi, en düşük boş fiziksel bellek 1,59 GB [D1 §12.7]. 02:04 koşusunun yarım çıktılarının hepsinin üzerine 07:00 koşusu yazdı; dosya saatleri bunu gösteriyor [B3 §2b].</li>
+<li>İlk tam zincirde F10d bir kez çıkış 2 verdi (A'nın kare başlığı sahneyi küçültmüştü); başlık yalnız yazdırma karesine alındı, üretim ve zincir baştan koşuldu [A §8].</li>
+</ul>
+
+<h2>Kayıt</h2>
+<div class="tbl"><table>
+<thead><tr><th>Grup</th><th>Dosyalar</th></tr></thead>
+<tbody>
+<tr><td class="kod">paket</td><td><code>rehber/</code> (app.js, index.html, stil.css, yazdir.html, veri, goruntu), <code>tasarim/freecad/rehber/</code> (<code>rehber_gorunum.py</code> yeni, <code>rehber_metin.py</code>, <code>rehber_uret.py</code>, <code>rehber_denetim.py</code>), <code>planlama/rehber/</code> üretici çıktıları (PDF, goruntu, <code>kontrol.json</code>), <code>F10e-*</code> (brief, düzeltme brief'i, günlük, iki kontrol, doğrulama betiği ve JSON'u, 43 kare), <code>F10d-dogrula.json</code>, <code>F10a-dogrula.json</code> (yeniden koşu sonucu)</td></tr>
+<tr><td class="kod">kayıt</td><td>bu rapor, <code>planlama/rehber/R-gunluk.md</code> (F10e satırı, "Açmak" satırı), <code>README.md</code> (rehber satırı ve tuşlar), <code>planlama/d158/karar-kuyrugu.md</code> (K55 notu, açık işler)</td></tr>
+<tr><td class="kod">planlama</td><td><code>planlama/dongu-158.md</code> (orkestratörün)</td></tr>
+</tbody>
+</table></div>
+<p class="note">Commit orkestratörde. Kayıt ajanı commit, push ya da yeniden ölçüm yapmadı; sayıları yalnız dosya okuyarak ve <code>git diff --stat</code> ile karşılaştırdı. <code>F10e-dogrula.json</code>: <code>gecti</code> doğru, <code>tarih</code> 2026-11-12 07:50, <code>gecti_ozet</code>'te yalnız <code>renk_demo</code> yanlış.</p>
+
+<footer>Kayıt · F10e (P10.4b) · 12.11.2026 · <code>lale-duzeltme</code> · ikinci kontrol GEÇER · renk 1192 / 1192 · vurgu 41 / 41, doğruluk 186 / 186 · işaret 1188 (benzersiz 893), kabuk 277 · okurun pikseli iki temada eşik altı 0 · anlaşılırlık 40 / 2 / 0 · 50/50 + alt 50/50, konsol 0 · PDF 69 sayfa, 8,1 pt · F10d / F10a / F10e-dogrula geçti · F9b 0 · kontrol 0 · regresyon 10 / 10 · K55 notu</footer>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('tema'), r=document.documentElement, s=['sistem','açık','koyu'], i=0;
+  try{var k=localStorage.getItem('lale-tema'); if(k){i=s.indexOf(k); if(i<0)i=0;}}catch(e){}
+  function uygula(){
+    if(s[i]==='açık') r.setAttribute('data-theme','light');
+    else if(s[i]==='koyu') r.setAttribute('data-theme','dark');
+    else r.removeAttribute('data-theme');
+    b.textContent='Tema: '+s[i];
+  }
+  uygula();
+  b.addEventListener('click',function(){i=(i+1)%3; uygula(); try{localStorage.setItem('lale-tema',s[i]);}catch(e){}});
+})();
+</script>
+</body>
+</html>
