@@ -21,6 +21,7 @@ var ce=console.error;console.error=function(){k(Array.prototype.join.call(argume
 <main class="duzen">
   <section class="sahne" id="sahne">
     <canvas id="tuval"></canvas>
+    <svg class="isaret" id="isaret" aria-hidden="true"></svg>
     <div class="yukleniyor" id="yukleniyor">3B model yükleniyor…</div>
     <div class="sahne-ust">
       <div class="sahne-arac">
@@ -35,12 +36,16 @@ var ce=console.error;console.error=function(){k(Array.prototype.join.call(argume
         <button class="btn ince" id="patlat" title="Parçaları patlat ve beklet / topla (P)">⇱ <span class="yazi">patlat</span></button>
         <button class="btn ince" id="tak" title="Sıradaki panel satırını tak (Boşluk; geri al: Shift+Boşluk)">▶ <span class="yazi">tak</span></button>
         <button class="btn ince" id="mini-dugme" title="Robotun neresi: küçük görünüm (M)">▣ <span class="yazi">konum</span></button>
+        <button class="btn ince" id="renk-dugme" title="Renk: gerçek parça rengi / sınıf rengi (C)">◑ <span class="yazi">gerçek renk</span></button>
+        <button class="btn ince" id="isaret-dugme" title="Bağlantı elemanı yerlerini işaretle (I)">◎ <span class="yazi">işaret</span></button>
       </div>
+      <div class="kare-baslik" id="kare-baslik" hidden></div>
       <div class="etiket" id="etiket" hidden></div>
     </div>
     <div class="mini" id="mini" hidden aria-label="Robotun neresi: bütün robot soluk, bu adımın parçaları turuncu">
       <div class="mini-bas"><span>Robotun neresi</span><button class="mini-x" id="mini-kapat" title="Küçük görünümü kapat (M)" aria-label="Kapat">×</button></div>
       <div class="mini-hal" id="mini-hal" hidden></div>
+      <div class="mini-yer" id="mini-yer" hidden></div>
     </div>
     <div class="lejant" id="lejant"></div>
   </section>

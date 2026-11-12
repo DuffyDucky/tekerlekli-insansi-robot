@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-11 18:35",
+ "tarih": "2026-11-12 07:43",
  "tarayici": "chrome.exe",
  "adim": 50,
  "yontem": "CDP (Chrome DevTools protokolü), file://; önce = 749627b~1 rehber sayfası geçici kopyada (three.js aynı 0.160 yerel paket)",
@@ -1112,363 +1112,363 @@
    {
     "adim": 0,
     "var": true,
-    "oran": 0.1239,
-    "boyut_kb": 77.9,
+    "oran": 0.1155,
+    "boyut_kb": 88.0,
     "cizili": true
    },
    {
     "adim": 1,
     "var": true,
-    "oran": 0.3524,
-    "boyut_kb": 117.2,
+    "oran": 0.365,
+    "boyut_kb": 150.3,
     "cizili": true
    },
    {
     "adim": 2,
     "var": true,
-    "oran": 0.0595,
-    "boyut_kb": 72.1,
+    "oran": 0.0606,
+    "boyut_kb": 78.1,
     "cizili": true
    },
    {
     "adim": 3,
     "var": true,
-    "oran": 0.497,
-    "boyut_kb": 78.8,
+    "oran": 0.4291,
+    "boyut_kb": 97.8,
     "cizili": true
    },
    {
     "adim": 4,
     "var": true,
-    "oran": 0.3246,
-    "boyut_kb": 59.5,
+    "oran": 0.3186,
+    "boyut_kb": 84.3,
     "cizili": true
    },
    {
     "adim": 5,
     "var": true,
-    "oran": 0.4069,
-    "boyut_kb": 84.8,
+    "oran": 0.4036,
+    "boyut_kb": 119.6,
     "cizili": true
    },
    {
     "adim": 6,
     "var": true,
-    "oran": 0.3493,
-    "boyut_kb": 89.5,
+    "oran": 0.4605,
+    "boyut_kb": 124.5,
     "cizili": true
    },
    {
     "adim": 7,
     "var": true,
-    "oran": 0.4042,
-    "boyut_kb": 93.7,
+    "oran": 0.4689,
+    "boyut_kb": 127.3,
     "cizili": true
    },
    {
     "adim": 8,
     "var": true,
-    "oran": 0.3848,
-    "boyut_kb": 166.5,
+    "oran": 0.4022,
+    "boyut_kb": 154.4,
     "cizili": true
    },
    {
     "adim": 9,
     "var": true,
-    "oran": 0.8333,
-    "boyut_kb": 119.4,
+    "oran": 0.7783,
+    "boyut_kb": 155.7,
     "cizili": true
    },
    {
     "adim": 10,
     "var": true,
-    "oran": 0.6884,
-    "boyut_kb": 143.1,
+    "oran": 0.6853,
+    "boyut_kb": 169.8,
     "cizili": true
    },
    {
     "adim": 11,
     "var": true,
-    "oran": 0.7816,
-    "boyut_kb": 157.2,
+    "oran": 0.7751,
+    "boyut_kb": 197.5,
     "cizili": true
    },
    {
     "adim": 12,
     "var": true,
-    "oran": 0.3191,
-    "boyut_kb": 74.7,
+    "oran": 0.3868,
+    "boyut_kb": 105.4,
     "cizili": true
    },
    {
     "adim": 13,
     "var": true,
-    "oran": 0.8069,
-    "boyut_kb": 130.5,
+    "oran": 0.6939,
+    "boyut_kb": 136.9,
     "cizili": true
    },
    {
     "adim": 14,
     "var": true,
-    "oran": 0.3722,
-    "boyut_kb": 89.5,
+    "oran": 0.3707,
+    "boyut_kb": 143.8,
     "cizili": true
    },
    {
     "adim": 15,
     "var": true,
-    "oran": 0.8648,
-    "boyut_kb": 158.2,
+    "oran": 0.7962,
+    "boyut_kb": 174.0,
     "cizili": true
    },
    {
     "adim": 16,
     "var": true,
-    "oran": 0.5043,
-    "boyut_kb": 100.9,
+    "oran": 0.6749,
+    "boyut_kb": 149.1,
     "cizili": true
    },
    {
     "adim": 17,
     "var": true,
-    "oran": 0.6118,
-    "boyut_kb": 195.5,
+    "oran": 0.5369,
+    "boyut_kb": 195.2,
     "cizili": true
    },
    {
     "adim": 18,
     "var": true,
-    "oran": 0.0689,
-    "boyut_kb": 68.7,
+    "oran": 0.0737,
+    "boyut_kb": 99.4,
     "cizili": true
    },
    {
     "adim": 19,
     "var": true,
-    "oran": 0.2342,
-    "boyut_kb": 47.3,
+    "oran": 0.2436,
+    "boyut_kb": 82.2,
     "cizili": true
    },
    {
     "adim": 20,
     "var": true,
-    "oran": 0.2441,
-    "boyut_kb": 57.0,
+    "oran": 0.2538,
+    "boyut_kb": 75.8,
     "cizili": true
    },
    {
     "adim": 21,
     "var": true,
-    "oran": 0.3715,
-    "boyut_kb": 40.3,
+    "oran": 0.3652,
+    "boyut_kb": 46.8,
     "cizili": true
    },
    {
     "adim": 22,
     "var": true,
-    "oran": 0.4269,
-    "boyut_kb": 91.1,
+    "oran": 0.4301,
+    "boyut_kb": 124.7,
     "cizili": true
    },
    {
     "adim": 23,
     "var": true,
-    "oran": 0.2951,
-    "boyut_kb": 54.4,
+    "oran": 0.2549,
+    "boyut_kb": 83.7,
     "cizili": true
    },
    {
     "adim": 24,
     "var": true,
-    "oran": 0.496,
-    "boyut_kb": 84.1,
+    "oran": 0.445,
+    "boyut_kb": 104.8,
     "cizili": true
    },
    {
     "adim": 25,
     "var": true,
-    "oran": 0.6377,
-    "boyut_kb": 170.1,
+    "oran": 0.6303,
+    "boyut_kb": 179.7,
     "cizili": true
    },
    {
     "adim": 26,
     "var": true,
-    "oran": 0.4856,
-    "boyut_kb": 71.1,
+    "oran": 0.4699,
+    "boyut_kb": 84.2,
     "cizili": true
    },
    {
     "adim": 27,
     "var": true,
-    "oran": 0.184,
-    "boyut_kb": 56.0,
+    "oran": 0.1732,
+    "boyut_kb": 77.7,
     "cizili": true
    },
    {
     "adim": 28,
     "var": true,
-    "oran": 0.3211,
-    "boyut_kb": 64.7,
+    "oran": 0.3195,
+    "boyut_kb": 81.4,
     "cizili": true
    },
    {
     "adim": 29,
     "var": true,
-    "oran": 0.286,
-    "boyut_kb": 63.8,
+    "oran": 0.2832,
+    "boyut_kb": 84.3,
     "cizili": true
    },
    {
     "adim": 30,
     "var": true,
-    "oran": 0.3863,
-    "boyut_kb": 85.6,
+    "oran": 0.3676,
+    "boyut_kb": 94.6,
     "cizili": true
    },
    {
     "adim": 31,
     "var": true,
-    "oran": 0.433,
-    "boyut_kb": 87.1,
+    "oran": 0.3456,
+    "boyut_kb": 120.5,
     "cizili": true
    },
    {
     "adim": 32,
     "var": true,
-    "oran": 0.093,
+    "oran": 0.0919,
     "boyut_kb": 107.4,
     "cizili": true
    },
    {
     "adim": 33,
     "var": true,
-    "oran": 0.3437,
-    "boyut_kb": 115.0,
+    "oran": 0.2689,
+    "boyut_kb": 164.4,
     "cizili": true
    },
    {
     "adim": 34,
     "var": true,
-    "oran": 0.2077,
-    "boyut_kb": 77.6,
+    "oran": 0.1965,
+    "boyut_kb": 146.3,
     "cizili": true
    },
    {
     "adim": 35,
     "var": true,
-    "oran": 0.5171,
-    "boyut_kb": 94.0,
+    "oran": 0.4849,
+    "boyut_kb": 153.7,
     "cizili": true
    },
    {
     "adim": 36,
     "var": true,
-    "oran": 0.6999,
-    "boyut_kb": 86.8,
+    "oran": 0.5713,
+    "boyut_kb": 114.0,
     "cizili": true
    },
    {
     "adim": 37,
     "var": true,
-    "oran": 0.1188,
-    "boyut_kb": 58.0,
+    "oran": 0.1279,
+    "boyut_kb": 79.9,
     "cizili": true
    },
    {
     "adim": 38,
     "var": true,
-    "oran": 0.6511,
-    "boyut_kb": 98.5,
+    "oran": 0.6485,
+    "boyut_kb": 121.4,
     "cizili": true
    },
    {
     "adim": 39,
     "var": true,
-    "oran": 0.9208,
-    "boyut_kb": 97.1,
+    "oran": 0.7291,
+    "boyut_kb": 122.3,
     "cizili": true
    },
    {
     "adim": 40,
     "var": true,
-    "oran": 0.757,
-    "boyut_kb": 93.3,
+    "oran": 0.6659,
+    "boyut_kb": 108.7,
     "cizili": true
    },
    {
     "adim": 41,
     "var": true,
-    "oran": 0.7948,
-    "boyut_kb": 107.3,
+    "oran": 0.7061,
+    "boyut_kb": 122.9,
     "cizili": true
    },
    {
     "adim": 42,
     "var": true,
-    "oran": 0.1805,
-    "boyut_kb": 38.3,
+    "oran": 0.1557,
+    "boyut_kb": 70.6,
     "cizili": true
    },
    {
     "adim": 43,
     "var": true,
-    "oran": 0.1751,
-    "boyut_kb": 34.4,
+    "oran": 0.1727,
+    "boyut_kb": 40.3,
     "cizili": true
    },
    {
     "adim": 44,
     "var": true,
-    "oran": 0.1965,
-    "boyut_kb": 63.6,
+    "oran": 0.1983,
+    "boyut_kb": 88.8,
     "cizili": true
    },
    {
     "adim": 45,
     "var": true,
-    "oran": 0.1564,
-    "boyut_kb": 42.1,
+    "oran": 0.176,
+    "boyut_kb": 49.3,
     "cizili": true
    },
    {
     "adim": 46,
     "var": true,
-    "oran": 0.1576,
-    "boyut_kb": 46.7,
+    "oran": 0.1768,
+    "boyut_kb": 59.0,
     "cizili": true
    },
    {
     "adim": 47,
     "var": true,
-    "oran": 0.1974,
-    "boyut_kb": 46.3,
+    "oran": 0.2132,
+    "boyut_kb": 54.9,
     "cizili": true
    },
    {
     "adim": 48,
     "var": true,
-    "oran": 0.5762,
-    "boyut_kb": 80.1,
+    "oran": 0.5364,
+    "boyut_kb": 93.6,
     "cizili": true
    },
    {
     "adim": 49,
     "var": true,
-    "oran": 0.225,
-    "boyut_kb": 88.2,
+    "oran": 0.2213,
+    "boyut_kb": 119.3,
     "cizili": true
    }
   ],
   "cizili": 50,
   "bos": [],
-  "en_dusuk": 0.0595,
+  "en_dusuk": 0.0606,
   "pdf": {
    "olculdu": true,
    "sayfa": 69,
    "goruntu": 100,
    "bos_sayfa": [],
-   "en_dusuk": 0.0595
+   "en_dusuk": 0.0606
   },
   "gecti": true
  },
@@ -3691,6 +3691,6 @@
  },
  "goruntu": [],
  "veri_degismedi": false,
- "sure_s": 567,
+ "sure_s": 402,
  "gecti": true
 }

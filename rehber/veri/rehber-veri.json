@@ -1782,7 +1782,8 @@
 "m6": [],
 "sure_dk": 31,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": []
 },
 {
 "i": 2,
@@ -1871,7 +1872,10 @@
 "m6": [],
 "sure_dk": 14,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0003"
+]
 },
 {
 "i": 3,
@@ -1961,7 +1965,10 @@
 "m6": [],
 "sure_dk": 14,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0005"
+]
 },
 {
 "i": 4,
@@ -2091,7 +2098,10 @@
 "m6": [],
 "sure_dk": 45,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0837"
+]
 },
 {
 "i": 5,
@@ -2164,7 +2174,14 @@
 "m6": [],
 "sure_dk": 23,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0001",
+"p0000",
+"p0002",
+"p0003",
+"p0004"
+]
 },
 {
 "i": 6,
@@ -2254,7 +2271,10 @@
 "m6": [],
 "sure_dk": 21,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0837"
+]
 },
 {
 "i": 7,
@@ -2322,7 +2342,13 @@
 "m6": [],
 "sure_dk": 24,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0909",
+"p0925",
+"p0941",
+"p0957"
+]
 },
 {
 "i": 8,
@@ -2402,7 +2428,13 @@
 "m6": [],
 "sure_dk": 17,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0908",
+"p0924",
+"p0940",
+"p0956"
+]
 },
 {
 "i": 9,
@@ -2533,7 +2565,29 @@
 "m6": [],
 "sure_dk": 31,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0981",
+"p0984",
+"p0987",
+"p0990",
+"p0994",
+"p0997",
+"p1000",
+"p1003",
+"p1007",
+"p1010",
+"p1013",
+"p1016",
+"p1020",
+"p1023",
+"p1026",
+"p1029",
+"p1033",
+"p1036",
+"p1039",
+"p1042"
+]
 },
 {
 "i": 10,
@@ -2610,7 +2664,11 @@
 "m6": [],
 "sure_dk": 22,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0001",
+"p0000"
+]
 },
 {
 "i": 11,
@@ -2730,7 +2788,11 @@
 "m6": [],
 "sure_dk": 21,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0000",
+"p0001"
+]
 },
 {
 "i": 12,
@@ -2912,7 +2974,10 @@
 "m6": [],
 "sure_dk": 37,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0891"
+]
 },
 {
 "i": 13,
@@ -2962,7 +3027,13 @@
 "m6": [],
 "sure_dk": 10,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0868",
+"p0871",
+"p0880",
+"p0883"
+]
 },
 {
 "i": 14,
@@ -3205,7 +3276,10 @@
 "m6": [],
 "sure_dk": 79,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0890"
+]
 },
 {
 "i": 15,
@@ -3257,7 +3331,13 @@
 "m6": [],
 "sure_dk": 10,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0874",
+"p0877",
+"p0886",
+"p0889"
+]
 },
 {
 "i": 16,
@@ -3346,7 +3426,10 @@
 "m6": [],
 "sure_dk": 15,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0004"
+]
 },
 {
 "i": 17,
@@ -3385,7 +3468,8 @@
 "m6": [],
 "sure_dk": 5,
 "sure_tahmini": true,
-"kablolama": true
+"kablolama": true,
+"ev": []
 },
 {
 "i": 18,
@@ -3527,7 +3611,10 @@
 "m6": [],
 "sure_dk": 35,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0005"
+]
 },
 {
 "i": 19,
@@ -3639,7 +3726,10 @@
 "m6": [],
 "sure_dk": 23,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0059"
+]
 },
 {
 "i": 20,
@@ -3707,7 +3797,11 @@
 "m6": [],
 "sure_dk": 16,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0059",
+"p0132"
+]
 },
 {
 "i": 21,
@@ -3801,6 +3895,9 @@
 "p0079",
 "p0151",
 "p0152"
+],
+"ev": [
+"p0061"
 ]
 },
 {
@@ -3822,10 +3919,17 @@
 "p0079",
 "p0151",
 "p0152"
+],
+"ev": [
+"p0134"
 ]
 }
 ],
-"alt": 2
+"alt": 2,
+"ev": [
+"p0061",
+"p0134"
+]
 },
 {
 "i": 22,
@@ -3886,7 +3990,10 @@
 "m6": [],
 "sure_dk": 15,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0006"
+]
 },
 {
 "i": 23,
@@ -4044,7 +4151,10 @@
 "m6": [],
 "sure_dk": 22,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0677"
+]
 },
 {
 "i": 24,
@@ -4102,7 +4212,10 @@
 "m6": [],
 "sure_dk": 8,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0006"
+]
 },
 {
 "i": 25,
@@ -4162,6 +4275,9 @@
 "p0703",
 "p0705",
 "p0707"
+],
+"ev": [
+"p0682"
 ]
 },
 {
@@ -4248,7 +4364,10 @@
 "m6": [],
 "sure_dk": 13,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0709"
+]
 },
 {
 "i": 27,
@@ -4345,7 +4464,10 @@
 "m6": [],
 "sure_dk": 10,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0711"
+]
 },
 {
 "i": 28,
@@ -4430,7 +4552,10 @@
 "m6": [],
 "sure_dk": 13,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0718"
+]
 },
 {
 "i": 29,
@@ -4595,7 +4720,10 @@
 "m6": [],
 "sure_dk": 24,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0754"
+]
 },
 {
 "i": 30,
@@ -4697,6 +4825,11 @@
 "b:3"
 ]
 }
+],
+"ev": [
+"p0830",
+"p0724",
+"p0718"
 ]
 },
 {
@@ -5033,6 +5166,9 @@
 ],
 "saydam": [
 "p0752"
+],
+"ev": [
+"p0752"
 ]
 },
 {
@@ -5049,6 +5185,9 @@
 ],
 "sema": [
 6
+],
+"ev": [
+"p0754"
 ]
 },
 {
@@ -5078,7 +5217,10 @@
 "gizli_ok": {
 "Köpük bant (USB ses": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil",
 "Köpük bant (PAM": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
-}
+},
+"ev": [
+"p0753"
+]
 },
 {
 "ad": "Sol arka kabuk → kafa",
@@ -5100,6 +5242,10 @@
 7,
 8,
 9
+],
+"ev": [
+"p0752",
+"p0754"
 ]
 },
 {
@@ -5121,7 +5267,12 @@
 ],
 "gizli_ok": {
 "Tabla cıvatası M3x10 (sağ z-75)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
-}
+},
+"ev": [
+"p0754",
+"p0752",
+"p0753"
+]
 },
 {
 "ad": "Masada: yüz kabuğu + kamera",
@@ -5148,7 +5299,10 @@
 },
 "ucus_ok": {
 "Kamera": "uçuş yolu ölçümü: −z'de 3 mm sonra ışın ölçümü kafa ön üst dikişinin ısıl gömmesinde 2,91 mm ortak hacim veriyor; gerçek derinlik (nokta–üçgen, yüzey örnekleri) 3–8 mm arasında yüz kabuğu sağ ile en çok 1,0 mm, ısıl gömmeyle 0,24 mm, 10 mm'den sonra 0. Dinlenmede kamera ile yüz kabuğu yalnız temas (derinlik 0). Kart boss'lara otururken kenarı kabuğa 1 mm'ye kadar sürtebilir, elde denenmedi"
-}
+},
+"ev": [
+"p0750"
+]
 },
 {
 "ad": "Masada: QLED → yüz kabuğu",
@@ -5162,6 +5316,10 @@
 0.6,
 0.45,
 -1.25
+],
+"ev": [
+"p0750",
+"p0751"
 ]
 },
 {
@@ -5188,7 +5346,11 @@
 ],
 "gizli_ok": {
 "Köpük bant (tırnak alt": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil; 1 mm bant tırnağın altında, tırnak saydam çizili"
-}
+},
+"ev": [
+"p0750",
+"p0751"
+]
 },
 {
 "ad": "Kablolar + yüz grubu → kafa",
@@ -5205,6 +5367,22 @@
 10,
 11,
 12
+],
+"ev": [
+"p0752",
+"p0753"
+],
+"kamera": [
+1.0,
+0.55,
+0.6
+],
+"saydam": [
+"p0750",
+"p0751",
+"p0752",
+"p0753",
+"p0781"
 ]
 },
 {
@@ -5227,10 +5405,19 @@
 "p0752",
 "p0753",
 "p0754"
+],
+"ev": [
+"p0752",
+"p0750",
+"p0753",
+"p0751"
 ]
 }
 ],
-"alt": 10
+"alt": 10,
+"ev": [
+"p0754"
+]
 },
 {
 "i": 32,
@@ -5273,7 +5460,8 @@
 "m6": [],
 "sure_dk": 5,
 "sure_tahmini": true,
-"kablolama": true
+"kablolama": true,
+"ev": []
 },
 {
 "i": 33,
@@ -5680,6 +5868,9 @@
 "is_": "Orta bandın sağını +x'ten braketin üstüne getir (giriş yolu ölçümü: orta bant yalnız yandan girer). Orta brakete (z 0) dışarıdan M3×14; L brakette M3 perçin somun (delik Ø5,1). Bandın z ±88 bindirme boss'larındaki ısıl gömmeler hazırlıkta takılı (adım 0; bant saydam çizili). Bağlarken akü ayrık (XT60 açık).",
 "saydam": [
 "p0221"
+],
+"ev": [
+"p0538"
 ]
 },
 {
@@ -5699,6 +5890,9 @@
 ],
 "saydam": [
 "p0222"
+],
+"ev": [
+"p0544"
 ]
 },
 {
@@ -5717,7 +5911,11 @@
 ],
 "ucus_ok": {
 "Etek ön sağ": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. Çizilen (1, 0, 1) yönünde sonar 1–12 mm; +z'de yalnız braket perçin somunu 1–7 mm, sonra serbest; +x'te sonar 1–73 mm; +y'de sonar 1–81 mm. Karar önerisi F10d-K1"
-}
+},
+"ev": [
+"p0221",
+"p0550"
+]
 },
 {
 "ad": "Ön dolgu şeridi",
@@ -5734,7 +5932,10 @@
 ],
 "ucus_ok": {
 "Etek dolgu şeridi ön": "iki parçalı yol ölçüldü (düzeltme turu 1; ışın aralıkları h 0,5 mm, eşik 0,2 mm): yerinden +z 10 mm, sonra +y 170 mm serbest; düz +y yolunda orta sonar 1–82 mm. Rehber düz uçuş çiziyor"
-}
+},
+"ev": [
+"p0223"
+]
 },
 {
 "ad": "Ön sol bant",
@@ -5753,7 +5954,12 @@
 ],
 "ucus_ok": {
 "Etek ön sol": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. Çizilen (−1, 0, 1) yönünde sonar 1–11 mm; +z'de yalnız braket perçin somunu 1–7 mm, sonra serbest; −x'te sonar 1–61 mm; +y'de sonar 1–81 mm. Karar önerisi F10d-K1"
-}
+},
+"ev": [
+"p0222",
+"p0226",
+"p0556"
+]
 },
 {
 "ad": "Masada: arka sağ bant + acil stop",
@@ -5773,6 +5979,9 @@
 ],
 "saydam": [
 "p0219"
+],
+"ev": [
+"p0219"
 ]
 },
 {
@@ -5789,6 +5998,10 @@
 1.0,
 0.0,
 0.0
+],
+"ev": [
+"p0221",
+"p0526"
 ]
 },
 {
@@ -5801,7 +6014,10 @@
 "b:15"
 ],
 "is_": "Arka dolgu şeridini yukarıdan indir (ölçüm: arka sağ bant takılıyken yalnız yukarıdan girer). x +38 arka bindirmesine 3 × M3×6.",
-"kamera": "arka"
+"kamera": "arka",
+"ev": [
+"p0219"
+]
 },
 {
 "ad": "Masada: arka sol bant + ana anahtar",
@@ -5823,6 +6039,9 @@
 ],
 "ref": [
 "p1084"
+],
+"ev": [
+"p0220"
 ]
 },
 {
@@ -5843,10 +6062,23 @@
 -1.0,
 0.0,
 0.0
+],
+"ev": [
+"p0222",
+"p0225",
+"p0532"
 ]
 }
 ],
-"alt": 10
+"alt": 10,
+"ev": [
+"p0526",
+"p0532",
+"p0538",
+"p0544",
+"p0550",
+"p0556"
+]
 },
 {
 "i": 34,
@@ -6346,6 +6578,9 @@
 "p0210",
 "p0211",
 "p0212"
+],
+"ev": [
+"p0470"
 ]
 },
 {
@@ -6360,9 +6595,9 @@
 ],
 "is_": "Solunu −x'ten getir. x 0 dikişinin (ön ve arka) bindirmelerini M3×6 ile bağla, y 400 braketine dışarıdan M5×18.",
 "kamera": [
--0.85,
-0.62,
-1.25
+-1.0,
+0.2,
+0.0
 ],
 "saydam": [
 "p0205",
@@ -6376,7 +6611,11 @@
 ],
 "gizli_ok": {
 "(gövde x0 arka)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
-}
+},
+"ev": [
+"p0205",
+"p0477"
+]
 },
 {
 "ad": "Uzatma bandı 1 sağ + y 530 braketi",
@@ -6403,6 +6642,10 @@
 "p0210",
 "p0211",
 "p0212"
+],
+"ev": [
+"p0205",
+"p0484"
 ]
 },
 {
@@ -6418,8 +6661,8 @@
 "is_": "Uzatma bandı 1 solu getir; y 476,5 ve x 0 bindirmelerini bağla, y 530 braketine M5×18.",
 "kamera": [
 -1.0,
-0.35,
--0.5
+0.3,
+-0.3
 ],
 "saydam": [
 "p0205",
@@ -6434,7 +6677,12 @@
 "gizli_ok": {
 "(gövde x0 ön)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil",
 "(gövde x0 arka)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
-}
+},
+"ev": [
+"p0207",
+"p0206",
+"p0491"
+]
 },
 {
 "ad": "Uzatma bandı 2 sağ + y 688 braketi",
@@ -6464,7 +6712,11 @@
 ],
 "gizli_ok": {
 "(gövde y634 arka)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
-}
+},
+"ev": [
+"p0207",
+"p0498"
+]
 },
 {
 "ad": "Uzatma bandı 2 sol + y 688 braketi, x 0 dikişi",
@@ -6479,8 +6731,8 @@
 "is_": "Uzatma bandı 2 solu getir; y 634 ve x 0 bindirmelerini bağla, y 688 braketine M5×18.",
 "kamera": [
 -1.0,
-0.35,
--0.5
+0.3,
+-0.3
 ],
 "saydam": [
 "p0205",
@@ -6497,7 +6749,12 @@
 "(gövde x0 arka)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil",
 "(gövde y634 arka)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil",
 "(gövde y634 yan)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
-}
+},
+"ev": [
+"p0209",
+"p0208",
+"p0505"
+]
 },
 {
 "ad": "Masada: orta bant sağ + hoparlör",
@@ -6517,7 +6774,7 @@
 "kamera": [
 -1.0,
 0.45,
-0.6
+0.2
 ],
 "saydam": [
 "p0211",
@@ -6529,7 +6786,10 @@
 ],
 "gizli_ok": {
 "Köpük ped (hoparlör": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
-}
+},
+"ev": [
+"p0211"
+]
 },
 {
 "ad": "Orta bant sağ → gövde",
@@ -6566,7 +6826,15 @@
 ],
 "giris_ok": {
 "*": "giriş yolu ölçümü: +x'te 138 mm boyunca çarpışma yok, sonra kutular ayrılıyor. Serbest sayılmamasının tek nedeni dinlenmede orta bant sağ ile uzatma bandı 2 sağın ortak yüzü: ışın ölçümü 5,53 mm kiriş veriyor, gerçek derinlik (nokta–üçgen) en çok 0,28 mm, medyan 0; temas, çarpışma değil"
-}
+},
+"ev": [
+"p0209"
+],
+"kamera": [
+-1.0,
+0.35,
+-0.5
+]
 },
 {
 "ad": "Orta bant sol",
@@ -6579,9 +6847,9 @@
 ],
 "is_": "Orta bant solu −x'ten getir; y 791,5 ve x 0 dikişlerini bağla. Bandın boss'larındaki ısıl gömmeler (y 1005 dikişi ve F5'teki arka servis kapağının 3'ü) hazırlıkta takılı (adım 0; bantlar saydam çizili).",
 "kamera": [
--0.85,
-0.62,
-1.25
+1.0,
+0.35,
+-0.5
 ],
 "saydam": [
 "p0205",
@@ -6605,10 +6873,22 @@
 ],
 "gizli_ok": {
 "(gövde y792 arka)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
-}
+},
+"ev": [
+"p0210",
+"p0211"
+]
 }
 ],
-"alt": 9
+"alt": 9,
+"ev": [
+"p0470",
+"p0477",
+"p0484",
+"p0491",
+"p0498",
+"p0505"
+]
 },
 {
 "i": 35,
@@ -6911,7 +7191,16 @@
 ],
 "ucus_ok": {
 "Göğüs bandı sağ": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +x'te orta bant sağ ile 1–159 mm ortak hacim (bindirme dili), 173 mm'de ayrılıyor; +y'de orta bant 1–13 mm; ±z'de orta bant 1–213 mm. Karar önerisi F10d-K1"
-}
+},
+"ev": [
+"p0211",
+"p0512"
+],
+"kamera": [
+0.6,
+0.45,
+1.25
+]
 },
 {
 "ad": "Göğüs bandı sol + y 1095 braketi",
@@ -6943,7 +7232,12 @@
 ],
 "ucus_ok": {
 "Göğüs bandı sol": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. −x'te orta bant sol ile 1–135 mm ortak hacim (bindirme dili), 161 mm'de ayrılıyor; +y'de orta bant 1–13 mm ve göğüs bandı sağ 1–19 mm; ±z'de orta bant 1–213 mm. Karar önerisi F10d-K1"
-}
+},
+"ev": [
+"p0212",
+"p0213",
+"p0519"
+]
 },
 {
 "ad": "VESA taşıyıcı → direk ön kanalı",
@@ -6981,7 +7275,10 @@
 },
 "ucus_ok": {
 "Çekiç somun M6": "uçuş yolu ölçümü: düz −z yolu yok (direk kanalının dudağı 2–25 mm); kanal boyunca −y 400 mm'de tek engel kendi cıvatası (2–6 mm), +y'de 166 mm'den sonra travers. Döndürerek oturtma ölçülmedi. Rehber düz uçuş çiziyor"
-}
+},
+"ev": [
+"p0005"
+]
 },
 {
 "ad": "Göğüs ekranı → taşıyıcı (VESA)",
@@ -6994,9 +7291,9 @@
 ],
 "is_": "11,6\" ekranı (kasalı) cebe önden, yaklaşık 14° yukarıdan koy (giriş yolu ölçümü: bantlar ve taşıyıcı takılıyken yalnız bu yön serbest; düz önden 19,5 mm sonra bant). 12 V ölçümü ve fişler için adımın iş metnindeki 3. maddeyi izle (K11 a / b). Sonra ekranı taşıyıcıya arkadan 4 × M4×12 + pul ile bağla (VESA 75 × 75): üst arka servis kapağı açık, direğin yanından. Dokunmatik USB ucu F5'e kadar boşta, etiketli.",
 "kamera": [
-0.85,
-0.62,
-1.25
+0.0,
+0.4,
+1.0
 ],
 "saydam": [
 "p0205",
@@ -7016,6 +7313,9 @@
 ],
 "sema": [
 5
+],
+"ev": [
+"p0231"
 ]
 },
 {
@@ -7044,10 +7344,21 @@
 ],
 "ucus_ok": {
 "Göğüs ekranı çerçevesi": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +z'de göğüs bandı 1–9 mm (flanş bandın iç yüzünde) ve ekran 3–7 mm; yana (dışa) göğüs bandı 1–151 mm; +y ve −z de kapalı. Karar önerisi F10d-K1"
-}
+},
+"ev": [
+"p0213",
+"p0214"
+]
 }
 ],
-"alt": 5
+"alt": 5,
+"ev": [
+"p0211",
+"p0212",
+"p0005",
+"p0512",
+"p0519"
+]
 },
 {
 "i": 36,
@@ -7218,7 +7529,10 @@
 },
 "ucus_ok": {
 "Omuz bandı sağ": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +x'te göğüs bandı sağ 1–161 mm (bindirme dili), rulman kapağı 3–99 mm, yuva bağlantı cıvatası 3–29 mm; +y'de 7 mm sonra rulman kapağı 7–101 mm; ±z'de göğüs bandı. Karar önerisi F10d-K1"
-}
+},
+"ev": [
+"p0213"
+]
 },
 {
 "ad": "Omuz bandı sol, ön dikiş",
@@ -7255,7 +7569,11 @@
 },
 "ucus_ok": {
 "Omuz bandı sol": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. −x'te göğüs bandı sol 1–137 mm (bindirme dili), rulman kapağı 3–99 mm, yuva bağlantı cıvatası 3–29 mm; +y'de 7 mm sonra rulman kapağı 7–101 mm; ±z'de göğüs bandı ve omuz bandı sağ. Karar önerisi F10d-K1"
-}
+},
+"ev": [
+"p0214",
+"p0215"
+]
 },
 {
 "ad": "Omuz arka dikişi",
@@ -7286,10 +7604,19 @@
 ],
 "gizli_ok": {
 "(gövde x0 arka)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
-}
+},
+"ev": [
+"p0216",
+"p0214",
+"p0215"
+]
 }
 ],
-"alt": 3
+"alt": 3,
+"ev": [
+"p0213",
+"p0214"
+]
 },
 {
 "i": 37,
@@ -7381,7 +7708,10 @@
 "m6": [],
 "sure_dk": 17,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0096"
+]
 },
 {
 "i": 38,
@@ -7448,7 +7778,11 @@
 "m6": [],
 "sure_dk": 16,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0088",
+"p0161"
+]
 },
 {
 "i": 39,
@@ -7564,7 +7898,11 @@
 "m6": [],
 "sure_dk": 23,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0091",
+"p0164"
+]
 },
 {
 "i": 40,
@@ -7685,7 +8023,11 @@
 "m6": [],
 "sure_dk": 27,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0106",
+"p0179"
+]
 },
 {
 "i": 41,
@@ -7693,7 +8035,7 @@
 "no": "41",
 "faz": "Kollar",
 "baslik": "S1 kablo kaseti",
-"is_": "Sırayı bozma; +x'ten kaydırarak takılmaz.\n(a) Gövde önden radyal, x ofsetsiz, arka plaka omuz pedine yaslı. Kol: S1 −45 / −20 / 0 × S2 90 ya da S1 −45 × S2 5.\n(b) U'yu elle kanala koy; dış koşu duvar boyunca, ψ 214'te yarıktan içeri (ψ: arka 90, aşağı 180, ön 270). Lop L 171,4 mm (−5…0), kablo üstünde işaretli.\n(c) Duvar bağı: 2 ip, ψ 226,5 / 230, düğüm dışarıda; sıkarken demeti −x'e tut.\n(d) Kapak önden radyal; flanş gövdeden x +3,3…5 havada (S1 −45'te en çok +3,3).\n(e) Kapağı −x'e it: 2 Ø3 pim (ψ 331 ve kulak ψ 300) girer.\n(f) 2 dikme cıvatasını S1 −45 / S2 90'da sık (en az 8 mm erişim).",
+"is_": "Sırayı bozma. CAD duruşunda yandan kaydırılamaz (+x'te üst kol tüpüne, −x'te omuz bandına değer); önden radyal tak.\n(a) Gövde önden radyal, x ofsetsiz, arka plaka omuz pedine yaslı. Kol: S1 −45 / −20 / 0 × S2 90 ya da S1 −45 × S2 5.\n(b) U'yu elle kanala koy; dış koşu duvar boyunca, ψ 214'te yarıktan içeri (ψ: arka 90, aşağı 180, ön 270). Lop L 171,4 mm (−5…0), kablo üstünde işaretli.\n(c) Duvar bağı: 2 ip, ψ 226,5 / 230, düğüm dışarıda; sıkarken demeti −x'e tut.\n(d) Kapak önden radyal; flanş gövdeden x +3,3…5 havada (S1 −45'te en çok +3,3).\n(e) Kapağı −x'e it: 2 Ø3 pim (ψ 331 ve kulak ψ 300) girer.\n(f) 2 dikme cıvatasını S1 −45 / S2 90'da sık (en az 8 mm erişim).",
 "baglanti_md": "Kol başına 2 × M3×8 dikme; 2 Ø3 pim; 2 Ø0,4 mumlu ip",
 "alet": "alyan 2,5, makas",
 "erisim": "Önden radyal; dikmeler yalnız S1 −45 / S2 90'da",
@@ -7756,7 +8098,11 @@
 "poz": {
 "S1": -45,
 "S2": 90
-}
+},
+"ev": [
+"p0215",
+"p0216"
+]
 },
 {
 "i": 42,
@@ -7904,7 +8250,10 @@
 "m6": [],
 "sure_dk": 34,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0582"
+]
 },
 {
 "i": 43,
@@ -7992,6 +8341,9 @@
 1.0,
 0.4,
 0.5
+],
+"ev": [
+"p0588"
 ]
 },
 {
@@ -8007,10 +8359,17 @@
 -1.0,
 0.4,
 0.5
+],
+"ev": [
+"p0645"
 ]
 }
 ],
-"alt": 2
+"alt": 2,
+"ev": [
+"p0588",
+"p0645"
+]
 },
 {
 "i": 44,
@@ -8127,7 +8486,13 @@
 "m6": [],
 "sure_dk": 23,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0572",
+"p0629",
+"p0582",
+"p0639"
+]
 },
 {
 "i": 45,
@@ -8219,6 +8584,9 @@
 1.0,
 -0.6,
 0.5
+],
+"ev": [
+"p0598"
 ]
 },
 {
@@ -8234,10 +8602,17 @@
 -1.0,
 -0.6,
 0.5
+],
+"ev": [
+"p0655"
 ]
 }
 ],
-"alt": 2
+"alt": 2,
+"ev": [
+"p0598",
+"p0655"
+]
 },
 {
 "i": 46,
@@ -8362,6 +8737,9 @@
 "saydam": [
 "p0609",
 "p0666"
+],
+"ev": [
+"p0607"
 ]
 },
 {
@@ -8382,10 +8760,17 @@
 "saydam": [
 "p0609",
 "p0666"
+],
+"ev": [
+"p0664"
 ]
 }
 ],
-"alt": 2
+"alt": 2,
+"ev": [
+"p0607",
+"p0664"
+]
 },
 {
 "i": 47,
@@ -8436,7 +8821,11 @@
 "m6": [],
 "sure_dk": 11,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0609",
+"p0666"
+]
 },
 {
 "i": 48,
@@ -8505,7 +8894,11 @@
 "m6": [],
 "sure_dk": 13,
 "sure_tahmini": true,
-"kablolama": false
+"kablolama": false,
+"ev": [
+"p0127",
+"p0200"
+]
 },
 {
 "i": 49,
@@ -8693,14 +9086,18 @@
 ],
 "gizli_ok": {
 "Köpük bant (USB Hub": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
-}
+},
+"ev": [
+"p0218"
+]
 },
 {
 "ad": "İlk enerji, aşama 2 (kapaklar açık)",
 "tezgah": "",
 "bag": "",
 "satir": [],
-"is_": "Kapaklar açık, hub bağlı: devreye alma testi adımın iş metnindeki 2. maddeye göre (ön şarj dizisi, mantar, motor yön testi). Bitince ana anahtarı kapat, aküyü XT60'tan ayır."
+"is_": "Kapaklar açık, hub bağlı: devreye alma testi adımın iş metnindeki 2. maddeye göre (ön şarj dizisi, mantar, motor yön testi). Bitince ana anahtarı kapat, aküyü XT60'tan ayır.",
+"ev": []
 },
 {
 "ad": "Arka servis kapağı",
@@ -8713,7 +9110,11 @@
 "is_": "Arka servis kapağını arkadan yerine koy, 7 × M3×6 ISO 7380 → ısıl gömme.",
 "gizli_ok": {
 "Bindirme cıvatası M3x6 (arka kapak)": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
-}
+},
+"ev": [
+"p0211",
+"p0212"
+]
 },
 {
 "ad": "Üst arka kapak (hub'la) → gövde",
@@ -8730,7 +9131,16 @@
 ],
 "giris_ok": {
 "*": "giriş yolu ölçümü: −z'de 29,5 mm boyunca çarpışma yok, sonra kutular ayrılıyor. Serbest sayılmamasının tek nedeni dinlenmede kapak ile göğüs bandı sağın ortak yüzü: ışın ölçümü 1,5 mm kiriş veriyor, gerçek derinlik (nokta–üçgen) en çok 0,057 mm, medyan 0; temas, çarpışma değil"
-}
+},
+"ev": [
+"p0213",
+"p0214"
+],
+"kamera": [
+-0.85,
+0.62,
+-1.25
+]
 },
 {
 "ad": "Etek servis kapakları H1 + H2",
@@ -8769,10 +9179,22 @@
 ],
 "gizli_ok": {
 "Kapak cıvatası M3x6 (Etek servis kapağı H1": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
-}
+},
+"ev": [
+"p0219",
+"p0220"
+]
 }
 ],
-"alt": 5
+"alt": 5,
+"ev": [
+"p0219",
+"p0211",
+"p0213",
+"p0212",
+"p0214",
+"p0220"
+]
 }
 ],
 "parcalar": [
@@ -8793,7 +9215,8 @@
 0.0,
 0.0
 ],
-"d": 251.6
+"d": 251.6,
+"gr": "#c7ccd4"
 },
 {
 "id": "p0001",
@@ -8812,7 +9235,8 @@
 0.0,
 0.0
 ],
-"d": 251.6
+"d": 251.6,
+"gr": "#c7ccd4"
 },
 {
 "id": "p0002",
@@ -8831,7 +9255,8 @@
 0.0,
 -1.0
 ],
-"d": 99.1
+"d": 99.1,
+"gr": "#c7ccd4"
 },
 {
 "id": "p0003",
@@ -8850,7 +9275,8 @@
 1.0,
 0.0
 ],
-"d": 99.1
+"d": 99.1,
+"gr": "#c7ccd4"
 },
 {
 "id": "p0004",
@@ -8869,7 +9295,8 @@
 0.0,
 1.0
 ],
-"d": 99.1
+"d": 99.1,
+"gr": "#c7ccd4"
 },
 {
 "id": "p0005",
@@ -8888,7 +9315,8 @@
 1.0,
 0.0
 ],
-"d": 558.5
+"d": 558.5,
+"gr": "#c7ccd4"
 },
 {
 "id": "p0006",
@@ -8907,7 +9335,8 @@
 1.0,
 0.0
 ],
-"d": 103.9
+"d": 103.9,
+"gr": "#c7ccd4"
 },
 {
 "id": "p0007",
@@ -8926,7 +9355,8 @@
 1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#8c99ad"
 },
 {
 "id": "p0008",
@@ -8945,7 +9375,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+42.0,
+139.8,
+0.0
+]
 },
 {
 "id": "p0009",
@@ -8964,7 +9400,13 @@
 1.0,
 0.0
 ],
-"d": 55.0
+"d": 55.0,
+"gr": "#80858f",
+"ip": [
+42.0,
+146.6,
+0.0
+]
 },
 {
 "id": "p0010",
@@ -8983,7 +9425,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+42.0,
+127.7,
+0.0
+]
 },
 {
 "id": "p0011",
@@ -9002,7 +9450,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+25.3,
+156.5,
+0.0
+]
 },
 {
 "id": "p0012",
@@ -9021,7 +9475,13 @@
 0.0,
 0.0
 ],
-"d": 55.0
+"d": 55.0,
+"gr": "#80858f",
+"ip": [
+32.1,
+156.5,
+0.0
+]
 },
 {
 "id": "p0013",
@@ -9040,7 +9500,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+13.2,
+156.5,
+0.0
+]
 },
 {
 "id": "p0014",
@@ -9059,7 +9525,8 @@
 1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#8c99ad"
 },
 {
 "id": "p0015",
@@ -9078,7 +9545,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-42.0,
+139.8,
+0.0
+]
 },
 {
 "id": "p0016",
@@ -9097,7 +9570,13 @@
 1.0,
 -0.0
 ],
-"d": 55.0
+"d": 55.0,
+"gr": "#80858f",
+"ip": [
+-42.0,
+146.6,
+-0.0
+]
 },
 {
 "id": "p0017",
@@ -9116,7 +9595,13 @@
 -1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-42.0,
+127.7,
+0.0
+]
 },
 {
 "id": "p0018",
@@ -9135,7 +9620,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-25.3,
+156.5,
+0.0
+]
 },
 {
 "id": "p0019",
@@ -9154,7 +9645,13 @@
 -0.0,
 -0.0
 ],
-"d": 55.0
+"d": 55.0,
+"gr": "#80858f",
+"ip": [
+-32.1,
+156.5,
+0.0
+]
 },
 {
 "id": "p0020",
@@ -9173,7 +9670,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-13.2,
+156.5,
+0.0
+]
 },
 {
 "id": "p0021",
@@ -9192,7 +9695,8 @@
 1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#8c99ad"
 },
 {
 "id": "p0022",
@@ -9211,7 +9715,13 @@
 -1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+42.0,
+1244.7,
+0.0
+]
 },
 {
 "id": "p0023",
@@ -9230,7 +9740,13 @@
 -1.0,
 0.0
 ],
-"d": 55.0
+"d": 55.0,
+"gr": "#80858f",
+"ip": [
+42.0,
+1237.9,
+0.0
+]
 },
 {
 "id": "p0024",
@@ -9249,7 +9765,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+42.0,
+1256.8,
+0.0
+]
 },
 {
 "id": "p0025",
@@ -9268,7 +9790,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+25.3,
+1228.0,
+0.0
+]
 },
 {
 "id": "p0026",
@@ -9287,7 +9815,13 @@
 -0.0,
 -0.0
 ],
-"d": 55.0
+"d": 55.0,
+"gr": "#80858f",
+"ip": [
+32.1,
+1228.0,
+0.0
+]
 },
 {
 "id": "p0027",
@@ -9306,7 +9840,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+13.2,
+1228.0,
+0.0
+]
 },
 {
 "id": "p0028",
@@ -9325,7 +9865,8 @@
 1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#8c99ad"
 },
 {
 "id": "p0029",
@@ -9344,7 +9885,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-42.0,
+1244.7,
+0.0
+]
 },
 {
 "id": "p0030",
@@ -9363,7 +9910,13 @@
 -1.0,
 -0.0
 ],
-"d": 55.0
+"d": 55.0,
+"gr": "#80858f",
+"ip": [
+-42.0,
+1237.9,
+0.0
+]
 },
 {
 "id": "p0031",
@@ -9382,7 +9935,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-42.0,
+1256.8,
+0.0
+]
 },
 {
 "id": "p0032",
@@ -9401,7 +9960,13 @@
 0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-25.3,
+1228.0,
+0.0
+]
 },
 {
 "id": "p0033",
@@ -9420,7 +9985,13 @@
 0.0,
 -0.0
 ],
-"d": 55.0
+"d": 55.0,
+"gr": "#80858f",
+"ip": [
+-32.1,
+1228.0,
+0.0
+]
 },
 {
 "id": "p0034",
@@ -9439,7 +10010,13 @@
 -0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-13.2,
+1228.0,
+0.0
+]
 },
 {
 "id": "p0035",
@@ -9458,7 +10035,8 @@
 0.0,
 -0.92
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0036",
@@ -9477,7 +10055,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#212124",
+"ip": [
+80.0,
+114.5,
+-211.8
+]
 },
 {
 "id": "p0037",
@@ -9496,7 +10080,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#212124",
+"ip": [
+96.8,
+114.5,
+-195.0
+]
 },
 {
 "id": "p0038",
@@ -9515,7 +10105,8 @@
 0.0,
 -0.92
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0039",
@@ -9534,7 +10125,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#212124",
+"ip": [
+-80.0,
+114.5,
+-211.8
+]
 },
 {
 "id": "p0040",
@@ -9553,7 +10150,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#212124",
+"ip": [
+-96.8,
+114.5,
+-195.0
+]
 },
 {
 "id": "p0041",
@@ -9572,7 +10175,8 @@
 0.0,
 0.324
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0042",
@@ -9591,7 +10195,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#212124",
+"ip": [
+80.0,
+114.5,
+18.2
+]
 },
 {
 "id": "p0043",
@@ -9610,7 +10220,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#212124",
+"ip": [
+96.8,
+114.5,
+35.0
+]
 },
 {
 "id": "p0044",
@@ -9629,7 +10245,8 @@
 0.0,
 -0.324
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0045",
@@ -9648,7 +10265,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#212124",
+"ip": [
+80.0,
+114.5,
+-18.2
+]
 },
 {
 "id": "p0046",
@@ -9667,7 +10290,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#212124",
+"ip": [
+96.8,
+114.5,
+-35.0
+]
 },
 {
 "id": "p0047",
@@ -9686,7 +10315,8 @@
 0.0,
 0.324
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0048",
@@ -9705,7 +10335,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#212124",
+"ip": [
+-80.0,
+114.5,
+18.2
+]
 },
 {
 "id": "p0049",
@@ -9724,7 +10360,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#212124",
+"ip": [
+-96.8,
+114.5,
+35.0
+]
 },
 {
 "id": "p0050",
@@ -9743,7 +10385,8 @@
 0.0,
 -0.324
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0051",
@@ -9762,7 +10405,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#212124",
+"ip": [
+-80.0,
+114.5,
+-18.2
+]
 },
 {
 "id": "p0052",
@@ -9781,7 +10430,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#212124",
+"ip": [
+-96.8,
+114.5,
+-35.0
+]
 },
 {
 "id": "p0053",
@@ -9800,7 +10455,8 @@
 0.0,
 0.92
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0054",
@@ -9819,7 +10475,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#212124",
+"ip": [
+80.0,
+114.5,
+211.8
+]
 },
 {
 "id": "p0055",
@@ -9838,7 +10500,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#212124",
+"ip": [
+96.8,
+114.5,
+195.0
+]
 },
 {
 "id": "p0056",
@@ -9857,7 +10525,8 @@
 0.0,
 0.92
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0057",
@@ -9876,7 +10545,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#212124",
+"ip": [
+-80.0,
+114.5,
+211.8
+]
 },
 {
 "id": "p0058",
@@ -9895,7 +10570,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#212124",
+"ip": [
+-96.8,
+114.5,
+195.0
+]
 },
 {
 "id": "p0059",
@@ -9919,7 +10600,8 @@
 1.0,
 0.0,
 0.0
-]
+],
+"gr": "#f58c21"
 },
 {
 "id": "p0060",
@@ -9943,7 +10625,8 @@
 1.0,
 0.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0061",
@@ -9967,7 +10650,8 @@
 1.0,
 0.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0062",
@@ -9991,6 +10675,12 @@
 1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+138.5,
+1284.8,
+-5.0
 ]
 },
 {
@@ -10015,6 +10705,12 @@
 1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+124.5,
+1284.8,
+-5.0
 ]
 },
 {
@@ -10039,6 +10735,12 @@
 1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+138.5,
+1284.8,
+5.0
 ]
 },
 {
@@ -10063,6 +10765,12 @@
 1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+124.5,
+1284.8,
+5.0
 ]
 },
 {
@@ -10087,6 +10795,12 @@
 1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+138.5,
+1235.3,
+-5.0
 ]
 },
 {
@@ -10111,6 +10825,12 @@
 1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+124.5,
+1235.2,
+-5.0
 ]
 },
 {
@@ -10135,6 +10855,12 @@
 1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+138.5,
+1235.3,
+5.0
 ]
 },
 {
@@ -10159,6 +10885,12 @@
 1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+124.5,
+1235.2,
+5.0
 ]
 },
 {
@@ -10178,7 +10910,13 @@
 1.0,
 -0.0
 ],
-"d": 55.0
+"d": 55.0,
+"gr": "#80858f",
+"ip": [
+86.0,
+1301.0,
+0.0
+]
 },
 {
 "id": "p0071",
@@ -10197,7 +10935,13 @@
 -1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+86.0,
+1283.2,
+0.0
+]
 },
 {
 "id": "p0072",
@@ -10216,7 +10960,13 @@
 -1.0,
 -0.0
 ],
-"d": 55.0
+"d": 55.0,
+"gr": "#80858f",
+"ip": [
+86.0,
+1239.0,
+0.0
+]
 },
 {
 "id": "p0073",
@@ -10235,7 +10985,13 @@
 -1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+86.0,
+1256.8,
+0.0
+]
 },
 {
 "id": "p0074",
@@ -10254,7 +11010,13 @@
 -0.0,
 1.0
 ],
-"d": 55.0
+"d": 55.0,
+"gr": "#80858f",
+"ip": [
+86.0,
+1270.0,
+31.0
+]
 },
 {
 "id": "p0075",
@@ -10273,7 +11035,13 @@
 0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+86.0,
+1270.0,
+13.2
+]
 },
 {
 "id": "p0076",
@@ -10292,7 +11060,13 @@
 -0.0,
 -1.0
 ],
-"d": 55.0
+"d": 55.0,
+"gr": "#80858f",
+"ip": [
+86.0,
+1270.0,
+-31.0
+]
 },
 {
 "id": "p0077",
@@ -10311,7 +11085,13 @@
 0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+86.0,
+1270.0,
+-13.2
+]
 },
 {
 "id": "p0078",
@@ -10335,7 +11115,8 @@
 1.0,
 0.0,
 0.0
-]
+],
+"gr": "#f58c21"
 },
 {
 "id": "p0079",
@@ -10359,7 +11140,8 @@
 1.0,
 0.0,
 0.0
-]
+],
+"gr": "#80858f"
 },
 {
 "id": "p0080",
@@ -10383,6 +11165,12 @@
 1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+155.0,
+1264.0,
+-33.0
 ]
 },
 {
@@ -10408,7 +11196,13 @@
 0.0,
 0.0
 ],
-"h": "p0059"
+"h": "p0059",
+"gr": "#dba838",
+"ip": [
+143.2,
+1264.0,
+-33.0
+]
 },
 {
 "id": "p0082",
@@ -10432,6 +11226,12 @@
 1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+155.0,
+1264.0,
+33.0
 ]
 },
 {
@@ -10457,7 +11257,13 @@
 0.0,
 0.0
 ],
-"h": "p0059"
+"h": "p0059",
+"gr": "#dba838",
+"ip": [
+143.2,
+1264.0,
+33.0
+]
 },
 {
 "id": "p0084",
@@ -10481,6 +11287,12 @@
 1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+155.0,
+1276.0,
+-33.0
 ]
 },
 {
@@ -10506,7 +11318,13 @@
 0.0,
 0.0
 ],
-"h": "p0059"
+"h": "p0059",
+"gr": "#dba838",
+"ip": [
+143.2,
+1276.0,
+-33.0
+]
 },
 {
 "id": "p0086",
@@ -10530,6 +11348,12 @@
 1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+155.0,
+1276.0,
+33.0
 ]
 },
 {
@@ -10555,7 +11379,13 @@
 0.0,
 0.0
 ],
-"h": "p0059"
+"h": "p0059",
+"gr": "#dba838",
+"ip": [
+143.2,
+1276.0,
+33.0
+]
 },
 {
 "id": "p0088",
@@ -10579,7 +11409,8 @@
 1.0,
 0.0,
 0.0
-]
+],
+"gr": "#c7ccd4"
 },
 {
 "id": "p0089",
@@ -10603,6 +11434,12 @@
 1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+153.0,
+1270.0,
+0.0
 ]
 },
 {
@@ -10622,7 +11459,8 @@
 0.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#80858f"
 },
 {
 "id": "p0091",
@@ -10646,7 +11484,8 @@
 1.0,
 0.0,
 0.0
-]
+],
+"gr": "#2e85db"
 },
 {
 "id": "p0092",
@@ -10665,7 +11504,13 @@
 -0.0,
 -0.0
 ],
-"d": 37.5
+"d": 37.5,
+"gr": "#80858f",
+"ip": [
+162.0,
+1276.0,
+-6.0
+]
 },
 {
 "id": "p0093",
@@ -10684,7 +11529,13 @@
 -0.0,
 -0.0
 ],
-"d": 37.5
+"d": 37.5,
+"gr": "#80858f",
+"ip": [
+162.0,
+1276.0,
+6.0
+]
 },
 {
 "id": "p0094",
@@ -10703,7 +11554,13 @@
 -0.0,
 -0.0
 ],
-"d": 37.5
+"d": 37.5,
+"gr": "#80858f",
+"ip": [
+162.0,
+1264.0,
+6.0
+]
 },
 {
 "id": "p0095",
@@ -10722,7 +11579,13 @@
 -0.0,
 -0.0
 ],
-"d": 37.5
+"d": 37.5,
+"gr": "#80858f",
+"ip": [
+162.0,
+1264.0,
+-6.0
+]
 },
 {
 "id": "p0096",
@@ -10746,7 +11609,8 @@
 1.0,
 0.0,
 0.0
-]
+],
+"gr": "#f58c21"
 },
 {
 "id": "p0097",
@@ -10770,6 +11634,12 @@
 1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+157.5,
+1299.2,
+16.9
 ]
 },
 {
@@ -10795,7 +11665,13 @@
 0.0,
 0.0
 ],
-"h": "p0091"
+"h": "p0091",
+"gr": "#dba838",
+"ip": [
+165.9,
+1299.2,
+16.9
+]
 },
 {
 "id": "p0099",
@@ -10818,6 +11694,12 @@
 "ub": [
 1.0,
 0.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+157.5,
+1303.8,
 0.0
 ]
 },
@@ -10844,7 +11726,13 @@
 0.0,
 0.0
 ],
-"h": "p0091"
+"h": "p0091",
+"gr": "#dba838",
+"ip": [
+165.9,
+1303.8,
+0.0
+]
 },
 {
 "id": "p0101",
@@ -10868,6 +11756,12 @@
 1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+157.5,
+1299.2,
+-16.9
 ]
 },
 {
@@ -10893,7 +11787,13 @@
 0.0,
 0.0
 ],
-"h": "p0091"
+"h": "p0091",
+"gr": "#dba838",
+"ip": [
+165.9,
+1299.2,
+-16.9
+]
 },
 {
 "id": "p0103",
@@ -10912,7 +11812,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#999999",
+"ip": [
+155.9,
+1310.3,
+0.0
+]
 },
 {
 "id": "p0104",
@@ -10931,7 +11837,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#999999",
+"ip": [
+155.9,
+1310.3,
+0.0
+]
 },
 {
 "id": "p0105",
@@ -10950,7 +11862,8 @@
 0.0,
 1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124"
 },
 {
 "id": "p0106",
@@ -10969,7 +11882,8 @@
 0.0,
 0.123
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124"
 },
 {
 "id": "p0107",
@@ -10988,7 +11902,13 @@
 -0.0,
 1.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+180.0,
+1255.2,
+14.0
+]
 },
 {
 "id": "p0108",
@@ -11007,7 +11927,13 @@
 0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+180.0,
+1255.2,
+0.0
+]
 },
 {
 "id": "p0109",
@@ -11026,7 +11952,13 @@
 -0.0,
 1.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+190.0,
+1255.2,
+14.0
+]
 },
 {
 "id": "p0110",
@@ -11045,7 +11977,13 @@
 0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+190.0,
+1255.2,
+0.0
+]
 },
 {
 "id": "p0111",
@@ -11064,7 +12002,13 @@
 -0.0,
 1.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+180.0,
+1304.7,
+14.0
+]
 },
 {
 "id": "p0112",
@@ -11083,7 +12027,13 @@
 0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+180.0,
+1304.8,
+0.0
+]
 },
 {
 "id": "p0113",
@@ -11102,7 +12052,13 @@
 -0.0,
 1.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+190.0,
+1304.7,
+14.0
+]
 },
 {
 "id": "p0114",
@@ -11121,7 +12077,13 @@
 0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+190.0,
+1304.8,
+0.0
+]
 },
 {
 "id": "p0115",
@@ -11146,7 +12108,13 @@
 0.0,
 0.0
 ],
-"h": "p0091"
+"h": "p0091",
+"gr": "#dba838",
+"ip": [
+185.0,
+1270.0,
+-24.5
+]
 },
 {
 "id": "p0116",
@@ -11165,7 +12133,8 @@
 0.0,
 -0.163
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#80858f"
 },
 {
 "id": "p0117",
@@ -11184,7 +12153,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+185.0,
+1270.0,
+-33.5
+]
 },
 {
 "id": "p0118",
@@ -11203,7 +12178,13 @@
 -0.0,
 -1.0
 ],
-"d": 42.5
+"d": 42.5,
+"gr": "#80858f",
+"ip": [
+185.0,
+1270.0,
+-39.0
+]
 },
 {
 "id": "p0119",
@@ -11222,7 +12203,8 @@
 0.0,
 0.128
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#c7ccd4"
 },
 {
 "id": "p0120",
@@ -11241,7 +12223,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+185.0,
+1270.0,
+28.5
+]
 },
 {
 "id": "p0121",
@@ -11260,7 +12248,8 @@
 0.0,
 1.0
 ],
-"d": 56.9
+"d": 56.9,
+"gr": "#f58c21"
 },
 {
 "id": "p0122",
@@ -11279,7 +12268,8 @@
 0.0,
 -0.163
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#80858f"
 },
 {
 "id": "p0123",
@@ -11298,7 +12288,13 @@
 -0.0,
 1.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+179.0,
+1264.0,
+33.5
+]
 },
 {
 "id": "p0124",
@@ -11317,7 +12313,13 @@
 -0.0,
 1.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+191.0,
+1264.0,
+33.5
+]
 },
 {
 "id": "p0125",
@@ -11336,7 +12338,13 @@
 -0.0,
 1.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+191.0,
+1276.0,
+33.5
+]
 },
 {
 "id": "p0126",
@@ -11355,7 +12363,13 @@
 -0.0,
 1.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+179.0,
+1276.0,
+33.5
+]
 },
 {
 "id": "p0127",
@@ -11374,7 +12388,8 @@
 0.0,
 -0.007
 ],
-"d": 76.1
+"d": 76.1,
+"gr": "#2e85db"
 },
 {
 "id": "p0128",
@@ -11394,7 +12409,13 @@
 1.0
 ],
 "d": 56.9,
-"h": "p0121"
+"h": "p0121",
+"gr": "#dba838",
+"ip": [
+185.0,
+1220.0,
+21.3
+]
 },
 {
 "id": "p0129",
@@ -11413,7 +12434,13 @@
 -0.0,
 1.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+185.0,
+1220.0,
+29.9
+]
 },
 {
 "id": "p0130",
@@ -11433,7 +12460,13 @@
 1.0
 ],
 "d": 56.9,
-"h": "p0121"
+"h": "p0121",
+"gr": "#dba838",
+"ip": [
+185.0,
+1220.0,
+-23.8
+]
 },
 {
 "id": "p0131",
@@ -11452,7 +12485,13 @@
 -0.0,
 -1.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+185.0,
+1220.0,
+-32.4
+]
 },
 {
 "id": "p0132",
@@ -11476,7 +12515,8 @@
 -1.0,
 0.0,
 0.0
-]
+],
+"gr": "#f58c21"
 },
 {
 "id": "p0133",
@@ -11500,7 +12540,8 @@
 -1.0,
 0.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0134",
@@ -11524,7 +12565,8 @@
 -1.0,
 0.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0135",
@@ -11548,6 +12590,12 @@
 -1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-138.5,
+1284.8,
+-5.0
 ]
 },
 {
@@ -11572,6 +12620,12 @@
 -1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-124.5,
+1284.8,
+-5.0
 ]
 },
 {
@@ -11596,6 +12650,12 @@
 -1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-138.5,
+1284.8,
+5.0
 ]
 },
 {
@@ -11620,6 +12680,12 @@
 -1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-124.5,
+1284.8,
+5.0
 ]
 },
 {
@@ -11644,6 +12710,12 @@
 -1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-138.5,
+1235.3,
+-5.0
 ]
 },
 {
@@ -11668,6 +12740,12 @@
 -1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-124.5,
+1235.2,
+-5.0
 ]
 },
 {
@@ -11692,6 +12770,12 @@
 -1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-138.5,
+1235.3,
+5.0
 ]
 },
 {
@@ -11716,6 +12800,12 @@
 -1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-124.5,
+1235.2,
+5.0
 ]
 },
 {
@@ -11735,7 +12825,13 @@
 1.0,
 0.0
 ],
-"d": 55.0
+"d": 55.0,
+"gr": "#80858f",
+"ip": [
+-86.0,
+1301.0,
+0.0
+]
 },
 {
 "id": "p0144",
@@ -11754,7 +12850,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-86.0,
+1283.2,
+0.0
+]
 },
 {
 "id": "p0145",
@@ -11773,7 +12875,13 @@
 -1.0,
 -0.0
 ],
-"d": 55.0
+"d": 55.0,
+"gr": "#80858f",
+"ip": [
+-86.0,
+1239.0,
+0.0
+]
 },
 {
 "id": "p0146",
@@ -11792,7 +12900,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-86.0,
+1256.8,
+0.0
+]
 },
 {
 "id": "p0147",
@@ -11811,7 +12925,13 @@
 0.0,
 1.0
 ],
-"d": 55.0
+"d": 55.0,
+"gr": "#80858f",
+"ip": [
+-86.0,
+1270.0,
+31.0
+]
 },
 {
 "id": "p0148",
@@ -11830,7 +12950,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-86.0,
+1270.0,
+13.2
+]
 },
 {
 "id": "p0149",
@@ -11849,7 +12975,13 @@
 -0.0,
 -1.0
 ],
-"d": 55.0
+"d": 55.0,
+"gr": "#80858f",
+"ip": [
+-86.0,
+1270.0,
+-31.0
+]
 },
 {
 "id": "p0150",
@@ -11868,7 +13000,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-86.0,
+1270.0,
+-13.2
+]
 },
 {
 "id": "p0151",
@@ -11892,7 +13030,8 @@
 -1.0,
 0.0,
 0.0
-]
+],
+"gr": "#f58c21"
 },
 {
 "id": "p0152",
@@ -11916,7 +13055,8 @@
 -1.0,
 0.0,
 0.0
-]
+],
+"gr": "#80858f"
 },
 {
 "id": "p0153",
@@ -11940,6 +13080,12 @@
 -1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-155.0,
+1264.0,
+-33.0
 ]
 },
 {
@@ -11965,7 +13111,13 @@
 0.0,
 0.0
 ],
-"h": "p0132"
+"h": "p0132",
+"gr": "#dba838",
+"ip": [
+-143.2,
+1264.0,
+-33.0
+]
 },
 {
 "id": "p0155",
@@ -11989,6 +13141,12 @@
 -1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-155.0,
+1264.0,
+33.0
 ]
 },
 {
@@ -12014,7 +13172,13 @@
 0.0,
 0.0
 ],
-"h": "p0132"
+"h": "p0132",
+"gr": "#dba838",
+"ip": [
+-143.2,
+1264.0,
+33.0
+]
 },
 {
 "id": "p0157",
@@ -12038,6 +13202,12 @@
 -1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-155.0,
+1276.0,
+-33.0
 ]
 },
 {
@@ -12063,7 +13233,13 @@
 0.0,
 0.0
 ],
-"h": "p0132"
+"h": "p0132",
+"gr": "#dba838",
+"ip": [
+-143.2,
+1276.0,
+-33.0
+]
 },
 {
 "id": "p0159",
@@ -12087,6 +13263,12 @@
 -1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-155.0,
+1276.0,
+33.0
 ]
 },
 {
@@ -12112,7 +13294,13 @@
 0.0,
 0.0
 ],
-"h": "p0132"
+"h": "p0132",
+"gr": "#dba838",
+"ip": [
+-143.2,
+1276.0,
+33.0
+]
 },
 {
 "id": "p0161",
@@ -12136,7 +13324,8 @@
 -1.0,
 0.0,
 0.0
-]
+],
+"gr": "#c7ccd4"
 },
 {
 "id": "p0162",
@@ -12160,6 +13349,12 @@
 -1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-153.0,
+1270.0,
+0.0
 ]
 },
 {
@@ -12179,7 +13374,8 @@
 0.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#80858f"
 },
 {
 "id": "p0164",
@@ -12203,7 +13399,8 @@
 -1.0,
 0.0,
 0.0
-]
+],
+"gr": "#2e85db"
 },
 {
 "id": "p0165",
@@ -12222,7 +13419,13 @@
 -0.0,
 -0.0
 ],
-"d": 37.5
+"d": 37.5,
+"gr": "#80858f",
+"ip": [
+-162.0,
+1276.0,
+-6.0
+]
 },
 {
 "id": "p0166",
@@ -12241,7 +13444,13 @@
 -0.0,
 -0.0
 ],
-"d": 37.5
+"d": 37.5,
+"gr": "#80858f",
+"ip": [
+-162.0,
+1276.0,
+6.0
+]
 },
 {
 "id": "p0167",
@@ -12260,7 +13469,13 @@
 -0.0,
 -0.0
 ],
-"d": 37.5
+"d": 37.5,
+"gr": "#80858f",
+"ip": [
+-162.0,
+1264.0,
+6.0
+]
 },
 {
 "id": "p0168",
@@ -12279,7 +13494,13 @@
 -0.0,
 -0.0
 ],
-"d": 37.5
+"d": 37.5,
+"gr": "#80858f",
+"ip": [
+-162.0,
+1264.0,
+-6.0
+]
 },
 {
 "id": "p0169",
@@ -12303,7 +13524,8 @@
 -1.0,
 0.0,
 0.0
-]
+],
+"gr": "#f58c21"
 },
 {
 "id": "p0170",
@@ -12327,6 +13549,12 @@
 -1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-157.5,
+1299.2,
+16.9
 ]
 },
 {
@@ -12352,7 +13580,13 @@
 0.0,
 0.0
 ],
-"h": "p0164"
+"h": "p0164",
+"gr": "#dba838",
+"ip": [
+-165.9,
+1299.2,
+16.9
+]
 },
 {
 "id": "p0172",
@@ -12375,6 +13609,12 @@
 "ub": [
 -1.0,
 0.0,
+0.0
+],
+"gr": "#80858f",
+"ip": [
+-157.5,
+1303.8,
 0.0
 ]
 },
@@ -12401,7 +13641,13 @@
 0.0,
 0.0
 ],
-"h": "p0164"
+"h": "p0164",
+"gr": "#dba838",
+"ip": [
+-165.9,
+1303.8,
+0.0
+]
 },
 {
 "id": "p0174",
@@ -12425,6 +13671,12 @@
 -1.0,
 0.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-157.5,
+1299.2,
+-16.9
 ]
 },
 {
@@ -12450,7 +13702,13 @@
 0.0,
 0.0
 ],
-"h": "p0164"
+"h": "p0164",
+"gr": "#dba838",
+"ip": [
+-165.9,
+1299.2,
+-16.9
+]
 },
 {
 "id": "p0176",
@@ -12469,7 +13727,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#999999",
+"ip": [
+-155.9,
+1310.3,
+0.0
+]
 },
 {
 "id": "p0177",
@@ -12488,7 +13752,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#999999",
+"ip": [
+-155.9,
+1310.3,
+0.0
+]
 },
 {
 "id": "p0178",
@@ -12507,7 +13777,8 @@
 0.0,
 1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124"
 },
 {
 "id": "p0179",
@@ -12526,7 +13797,8 @@
 0.0,
 0.123
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124"
 },
 {
 "id": "p0180",
@@ -12545,7 +13817,13 @@
 0.0,
 1.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-180.0,
+1255.2,
+14.0
+]
 },
 {
 "id": "p0181",
@@ -12564,7 +13842,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-180.0,
+1255.2,
+0.0
+]
 },
 {
 "id": "p0182",
@@ -12583,7 +13867,13 @@
 0.0,
 1.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-190.0,
+1255.2,
+14.0
+]
 },
 {
 "id": "p0183",
@@ -12602,7 +13892,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-190.0,
+1255.2,
+0.0
+]
 },
 {
 "id": "p0184",
@@ -12621,7 +13917,13 @@
 0.0,
 1.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-180.0,
+1304.7,
+14.0
+]
 },
 {
 "id": "p0185",
@@ -12640,7 +13942,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-180.0,
+1304.8,
+0.0
+]
 },
 {
 "id": "p0186",
@@ -12659,7 +13967,13 @@
 0.0,
 1.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-190.0,
+1304.7,
+14.0
+]
 },
 {
 "id": "p0187",
@@ -12678,7 +13992,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-190.0,
+1304.8,
+0.0
+]
 },
 {
 "id": "p0188",
@@ -12703,7 +14023,13 @@
 0.0,
 0.0
 ],
-"h": "p0164"
+"h": "p0164",
+"gr": "#dba838",
+"ip": [
+-185.0,
+1270.0,
+-24.5
+]
 },
 {
 "id": "p0189",
@@ -12722,7 +14048,8 @@
 0.0,
 -0.163
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#80858f"
 },
 {
 "id": "p0190",
@@ -12741,7 +14068,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-185.0,
+1270.0,
+-33.5
+]
 },
 {
 "id": "p0191",
@@ -12760,7 +14093,13 @@
 -0.0,
 -1.0
 ],
-"d": 42.5
+"d": 42.5,
+"gr": "#80858f",
+"ip": [
+-185.0,
+1270.0,
+-39.0
+]
 },
 {
 "id": "p0192",
@@ -12779,7 +14118,8 @@
 0.0,
 0.128
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#c7ccd4"
 },
 {
 "id": "p0193",
@@ -12798,7 +14138,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-185.0,
+1270.0,
+28.5
+]
 },
 {
 "id": "p0194",
@@ -12817,7 +14163,8 @@
 0.0,
 1.0
 ],
-"d": 56.9
+"d": 56.9,
+"gr": "#f58c21"
 },
 {
 "id": "p0195",
@@ -12836,7 +14183,8 @@
 0.0,
 -0.163
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#80858f"
 },
 {
 "id": "p0196",
@@ -12855,7 +14203,13 @@
 0.0,
 1.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+-179.0,
+1264.0,
+33.5
+]
 },
 {
 "id": "p0197",
@@ -12874,7 +14228,13 @@
 0.0,
 1.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+-191.0,
+1264.0,
+33.5
+]
 },
 {
 "id": "p0198",
@@ -12893,7 +14253,13 @@
 0.0,
 1.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+-191.0,
+1276.0,
+33.5
+]
 },
 {
 "id": "p0199",
@@ -12912,7 +14278,13 @@
 0.0,
 1.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+-179.0,
+1276.0,
+33.5
+]
 },
 {
 "id": "p0200",
@@ -12931,7 +14303,8 @@
 0.0,
 -0.007
 ],
-"d": 76.1
+"d": 76.1,
+"gr": "#2e85db"
 },
 {
 "id": "p0201",
@@ -12951,7 +14324,13 @@
 1.0
 ],
 "d": 56.9,
-"h": "p0194"
+"h": "p0194",
+"gr": "#dba838",
+"ip": [
+-185.0,
+1220.0,
+21.3
+]
 },
 {
 "id": "p0202",
@@ -12970,7 +14349,13 @@
 0.0,
 1.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+-185.0,
+1220.0,
+29.9
+]
 },
 {
 "id": "p0203",
@@ -12990,7 +14375,13 @@
 1.0
 ],
 "d": 56.9,
-"h": "p0194"
+"h": "p0194",
+"gr": "#dba838",
+"ip": [
+-185.0,
+1220.0,
+-23.8
+]
 },
 {
 "id": "p0204",
@@ -13009,7 +14400,13 @@
 -0.0,
 -1.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+-185.0,
+1220.0,
+-32.4
+]
 },
 {
 "id": "p0205",
@@ -13028,7 +14425,8 @@
 0.0,
 0.0
 ],
-"d": 156.9
+"d": 156.9,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0206",
@@ -13047,7 +14445,8 @@
 0.0,
 0.0
 ],
-"d": 154.4
+"d": 154.4,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0207",
@@ -13066,7 +14465,8 @@
 0.0,
 0.0
 ],
-"d": 138.2
+"d": 138.2,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0208",
@@ -13085,7 +14485,8 @@
 0.0,
 0.0
 ],
-"d": 135.3
+"d": 135.3,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0209",
@@ -13104,7 +14505,8 @@
 0.0,
 0.0
 ],
-"d": 138.2
+"d": 138.2,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0210",
@@ -13123,7 +14525,8 @@
 0.0,
 0.0
 ],
-"d": 135.3
+"d": 135.3,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0211",
@@ -13142,7 +14545,8 @@
 0.0,
 0.0
 ],
-"d": 175.7
+"d": 175.7,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0212",
@@ -13161,7 +14565,8 @@
 0.0,
 0.0
 ],
-"d": 173.1
+"d": 173.1,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0213",
@@ -13180,7 +14585,8 @@
 0.0,
 0.0
 ],
-"d": 179.8
+"d": 179.8,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0214",
@@ -13199,7 +14605,8 @@
 0.0,
 0.0
 ],
-"d": 177.1
+"d": 177.1,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0215",
@@ -13218,7 +14625,8 @@
 0.0,
 0.0
 ],
-"d": 124.2
+"d": 124.2,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0216",
@@ -13237,7 +14645,8 @@
 0.0,
 0.0
 ],
-"d": 120.3
+"d": 120.3,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0217",
@@ -13256,7 +14665,8 @@
 0.0,
 -1.0
 ],
-"d": 124.2
+"d": 124.2,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0218",
@@ -13275,7 +14685,8 @@
 0.0,
 -1.0
 ],
-"d": 112.9
+"d": 112.9,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0219",
@@ -13294,7 +14705,8 @@
 0.0,
 0.0
 ],
-"d": 185.0
+"d": 185.0,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0220",
@@ -13313,7 +14725,8 @@
 0.0,
 0.0
 ],
-"d": 181.3
+"d": 181.3,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0221",
@@ -13332,7 +14745,8 @@
 0.0,
 0.0
 ],
-"d": 187.4
+"d": 187.4,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0222",
@@ -13351,7 +14765,8 @@
 0.0,
 0.0
 ],
-"d": 187.4
+"d": 187.4,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0223",
@@ -13370,7 +14785,8 @@
 0.0,
 0.707
 ],
-"d": 185.0
+"d": 185.0,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0224",
@@ -13389,7 +14805,8 @@
 0.0,
 0.707
 ],
-"d": 181.3
+"d": 181.3,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0225",
@@ -13408,7 +14825,8 @@
 1.0,
 0.0
 ],
-"d": 155.2
+"d": 155.2,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0226",
@@ -13427,7 +14845,8 @@
 1.0,
 0.0
 ],
-"d": 155.2
+"d": 155.2,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0227",
@@ -13446,7 +14865,8 @@
 1.0,
 0.0
 ],
-"d": 64.0
+"d": 64.0,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0228",
@@ -13465,7 +14885,8 @@
 1.0,
 0.0
 ],
-"d": 44.8
+"d": 44.8,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0229",
@@ -13484,7 +14905,8 @@
 0.0,
 1.0
 ],
-"d": 128.6
+"d": 128.6,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0230",
@@ -13503,7 +14925,8 @@
 0.0,
 1.0
 ],
-"d": 128.6
+"d": 128.6,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0231",
@@ -13522,7 +14945,8 @@
 0.0,
 1.0
 ],
-"d": 77.6
+"d": 77.6,
+"gr": "#212124"
 },
 {
 "id": "p0232",
@@ -13541,7 +14965,8 @@
 0.0,
 0.0
 ],
-"d": 75.7
+"d": 75.7,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0233",
@@ -13560,7 +14985,8 @@
 0.0,
 0.0
 ],
-"d": 75.7
+"d": 75.7,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0234",
@@ -13579,7 +15005,8 @@
 0.0,
 0.0
 ],
-"d": 75.7
+"d": 75.7,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0235",
@@ -13598,7 +15025,8 @@
 0.0,
 0.0
 ],
-"d": 75.7
+"d": 75.7,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0236",
@@ -13617,7 +15045,8 @@
 0.555,
 -0.832
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0237",
@@ -13636,7 +15065,8 @@
 0.555,
 -0.832
 ],
-"d": 45.7
+"d": 45.7,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0238",
@@ -13655,7 +15085,8 @@
 0.555,
 -0.832
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0239",
@@ -13675,7 +15106,13 @@
 0.0
 ],
 "d": 156.9,
-"h": "p0205"
+"h": "p0205",
+"gr": "#dba838",
+"ip": [
+47.8,
+482.5,
+80.7
+]
 },
 {
 "id": "p0240",
@@ -13694,7 +15131,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+47.9,
+482.5,
+86.7
+]
 },
 {
 "id": "p0241",
@@ -13714,7 +15157,13 @@
 0.0
 ],
 "d": 154.4,
-"h": "p0206"
+"h": "p0206",
+"gr": "#dba838",
+"ip": [
+-47.8,
+482.5,
+80.7
+]
 },
 {
 "id": "p0242",
@@ -13733,7 +15182,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-47.8,
+482.5,
+86.7
+]
 },
 {
 "id": "p0243",
@@ -13753,7 +15208,13 @@
 0.0
 ],
 "d": 156.9,
-"h": "p0205"
+"h": "p0205",
+"gr": "#dba838",
+"ip": [
+47.9,
+482.5,
+-80.6
+]
 },
 {
 "id": "p0244",
@@ -13772,7 +15233,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+47.9,
+482.5,
+-86.7
+]
 },
 {
 "id": "p0245",
@@ -13792,7 +15259,13 @@
 0.0
 ],
 "d": 154.4,
-"h": "p0206"
+"h": "p0206",
+"gr": "#dba838",
+"ip": [
+-47.9,
+482.5,
+-80.6
+]
 },
 {
 "id": "p0246",
@@ -13811,7 +15284,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-47.9,
+482.5,
+-86.7
+]
 },
 {
 "id": "p0247",
@@ -13831,7 +15310,13 @@
 0.0
 ],
 "d": 156.9,
-"h": "p0205"
+"h": "p0205",
+"gr": "#dba838",
+"ip": [
+120.7,
+482.5,
+-0.0
+]
 },
 {
 "id": "p0248",
@@ -13850,7 +15335,13 @@
 -0.0,
 -0.0
 ],
-"d": 163.2
+"d": 163.2,
+"gr": "#80858f",
+"ip": [
+126.7,
+482.5,
+0.0
+]
 },
 {
 "id": "p0249",
@@ -13870,7 +15361,13 @@
 0.0
 ],
 "d": 154.4,
-"h": "p0206"
+"h": "p0206",
+"gr": "#dba838",
+"ip": [
+-120.6,
+482.5,
+-0.0
+]
 },
 {
 "id": "p0250",
@@ -13889,7 +15386,13 @@
 -0.0,
 -0.0
 ],
-"d": 160.3
+"d": 160.3,
+"gr": "#80858f",
+"ip": [
+-126.7,
+482.5,
+0.0
+]
 },
 {
 "id": "p0251",
@@ -13909,7 +15412,13 @@
 0.0
 ],
 "d": 138.2,
-"h": "p0207"
+"h": "p0207",
+"gr": "#dba838",
+"ip": [
+47.8,
+640.0,
+80.7
+]
 },
 {
 "id": "p0252",
@@ -13928,7 +15437,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+47.9,
+640.0,
+86.7
+]
 },
 {
 "id": "p0253",
@@ -13948,7 +15463,13 @@
 0.0
 ],
 "d": 135.3,
-"h": "p0208"
+"h": "p0208",
+"gr": "#dba838",
+"ip": [
+-47.8,
+640.0,
+80.7
+]
 },
 {
 "id": "p0254",
@@ -13967,7 +15488,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-47.8,
+640.0,
+86.7
+]
 },
 {
 "id": "p0255",
@@ -13987,7 +15514,13 @@
 0.0
 ],
 "d": 138.2,
-"h": "p0207"
+"h": "p0207",
+"gr": "#dba838",
+"ip": [
+47.9,
+640.0,
+-80.6
+]
 },
 {
 "id": "p0256",
@@ -14006,7 +15539,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+47.9,
+640.0,
+-86.7
+]
 },
 {
 "id": "p0257",
@@ -14026,7 +15565,13 @@
 0.0
 ],
 "d": 135.3,
-"h": "p0208"
+"h": "p0208",
+"gr": "#dba838",
+"ip": [
+-47.9,
+640.0,
+-80.6
+]
 },
 {
 "id": "p0258",
@@ -14045,7 +15590,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-47.9,
+640.0,
+-86.7
+]
 },
 {
 "id": "p0259",
@@ -14065,7 +15616,13 @@
 0.0
 ],
 "d": 138.2,
-"h": "p0207"
+"h": "p0207",
+"gr": "#dba838",
+"ip": [
+120.7,
+640.0,
+-0.0
+]
 },
 {
 "id": "p0260",
@@ -14084,7 +15641,13 @@
 -0.0,
 -0.0
 ],
-"d": 163.2
+"d": 163.2,
+"gr": "#80858f",
+"ip": [
+126.7,
+640.0,
+0.0
+]
 },
 {
 "id": "p0261",
@@ -14104,7 +15667,13 @@
 0.0
 ],
 "d": 135.3,
-"h": "p0208"
+"h": "p0208",
+"gr": "#dba838",
+"ip": [
+-120.6,
+640.0,
+-0.0
+]
 },
 {
 "id": "p0262",
@@ -14123,7 +15692,13 @@
 -0.0,
 -0.0
 ],
-"d": 160.3
+"d": 160.3,
+"gr": "#80858f",
+"ip": [
+-126.7,
+640.0,
+0.0
+]
 },
 {
 "id": "p0263",
@@ -14143,7 +15718,13 @@
 0.0
 ],
 "d": 138.2,
-"h": "p0209"
+"h": "p0209",
+"gr": "#dba838",
+"ip": [
+48.1,
+797.6,
+80.8
+]
 },
 {
 "id": "p0264",
@@ -14162,7 +15743,13 @@
 -0.018,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+48.1,
+797.4,
+86.8
+]
 },
 {
 "id": "p0265",
@@ -14182,7 +15769,13 @@
 0.0
 ],
 "d": 135.3,
-"h": "p0210"
+"h": "p0210",
+"gr": "#dba838",
+"ip": [
+-48.1,
+797.6,
+80.8
+]
 },
 {
 "id": "p0266",
@@ -14201,7 +15794,13 @@
 -0.018,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-48.1,
+797.4,
+86.8
+]
 },
 {
 "id": "p0267",
@@ -14221,7 +15820,13 @@
 0.0
 ],
 "d": 138.2,
-"h": "p0209"
+"h": "p0209",
+"gr": "#dba838",
+"ip": [
+48.1,
+797.5,
+-80.7
+]
 },
 {
 "id": "p0268",
@@ -14240,7 +15845,13 @@
 -0.014,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+48.1,
+797.5,
+-86.8
+]
 },
 {
 "id": "p0269",
@@ -14260,7 +15871,13 @@
 0.0
 ],
 "d": 135.3,
-"h": "p0210"
+"h": "p0210",
+"gr": "#dba838",
+"ip": [
+-48.1,
+797.5,
+-80.7
+]
 },
 {
 "id": "p0270",
@@ -14279,7 +15896,13 @@
 -0.014,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-48.1,
+797.5,
+-86.8
+]
 },
 {
 "id": "p0271",
@@ -14299,7 +15922,13 @@
 0.0
 ],
 "d": 138.2,
-"h": "p0209"
+"h": "p0209",
+"gr": "#dba838",
+"ip": [
+121.1,
+797.7,
+0.0
+]
 },
 {
 "id": "p0272",
@@ -14318,7 +15947,13 @@
 -0.077,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+127.1,
+797.3,
+0.0
+]
 },
 {
 "id": "p0273",
@@ -14338,7 +15973,13 @@
 0.0
 ],
 "d": 135.3,
-"h": "p0210"
+"h": "p0210",
+"gr": "#dba838",
+"ip": [
+-121.1,
+797.7,
+0.0
+]
 },
 {
 "id": "p0274",
@@ -14357,7 +15998,13 @@
 -0.077,
 -0.0
 ],
-"d": 198.1
+"d": 198.1,
+"gr": "#80858f",
+"ip": [
+-127.1,
+797.3,
+0.0
+]
 },
 {
 "id": "p0275",
@@ -14377,7 +16024,13 @@
 0.0
 ],
 "d": 175.7,
-"h": "p0211"
+"h": "p0211",
+"gr": "#dba838",
+"ip": [
+78.0,
+1012.6,
+119.9
+]
 },
 {
 "id": "p0276",
@@ -14396,7 +16049,13 @@
 -0.574,
 0.819
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+78.0,
+1009.3,
+124.6
+]
 },
 {
 "id": "p0277",
@@ -14416,7 +16075,13 @@
 0.0
 ],
 "d": 173.1,
-"h": "p0212"
+"h": "p0212",
+"gr": "#dba838",
+"ip": [
+-78.0,
+1012.6,
+119.9
+]
 },
 {
 "id": "p0278",
@@ -14435,7 +16100,13 @@
 -0.574,
 0.819
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-78.0,
+1009.3,
+124.6
+]
 },
 {
 "id": "p0279",
@@ -14455,7 +16126,13 @@
 0.0
 ],
 "d": 175.7,
-"h": "p0211"
+"h": "p0211",
+"gr": "#dba838",
+"ip": [
+98.0,
+1011.0,
+-83.6
+]
 },
 {
 "id": "p0280",
@@ -14474,7 +16151,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+98.0,
+1011.0,
+-89.7
+]
 },
 {
 "id": "p0281",
@@ -14494,7 +16177,13 @@
 0.0
 ],
 "d": 173.1,
-"h": "p0212"
+"h": "p0212",
+"gr": "#dba838",
+"ip": [
+-98.0,
+1011.0,
+-83.6
+]
 },
 {
 "id": "p0282",
@@ -14513,7 +16202,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-98.0,
+1011.0,
+-89.7
+]
 },
 {
 "id": "p0283",
@@ -14533,7 +16228,13 @@
 0.0
 ],
 "d": 175.7,
-"h": "p0211"
+"h": "p0211",
+"gr": "#dba838",
+"ip": [
+145.9,
+1011.7,
+17.9
+]
 },
 {
 "id": "p0284",
@@ -14552,7 +16253,13 @@
 -0.231,
 -0.0
 ],
-"d": 204.8
+"d": 204.8,
+"gr": "#80858f",
+"ip": [
+151.7,
+1010.3,
+17.9
+]
 },
 {
 "id": "p0285",
@@ -14572,7 +16279,13 @@
 0.0
 ],
 "d": 173.1,
-"h": "p0212"
+"h": "p0212",
+"gr": "#dba838",
+"ip": [
+-145.9,
+1011.7,
+17.9
+]
 },
 {
 "id": "p0286",
@@ -14591,7 +16304,13 @@
 -0.231,
 -0.0
 ],
-"d": 202.1
+"d": 202.1,
+"gr": "#80858f",
+"ip": [
+-151.7,
+1010.3,
+17.9
+]
 },
 {
 "id": "p0287",
@@ -14611,7 +16330,13 @@
 0.0
 ],
 "d": 179.8,
-"h": "p0213"
+"h": "p0213",
+"gr": "#dba838",
+"ip": [
+93.0,
+1203.9,
+-76.3
+]
 },
 {
 "id": "p0288",
@@ -14630,7 +16355,13 @@
 0.04,
 -0.999
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+93.0,
+1204.1,
+-82.3
+]
 },
 {
 "id": "p0289",
@@ -14650,7 +16381,13 @@
 0.0
 ],
 "d": 179.8,
-"h": "p0213"
+"h": "p0213",
+"gr": "#dba838",
+"ip": [
+120.0,
+1203.9,
+-76.3
+]
 },
 {
 "id": "p0290",
@@ -14669,7 +16406,13 @@
 0.04,
 -0.999
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+120.0,
+1204.1,
+-82.3
+]
 },
 {
 "id": "p0291",
@@ -14689,7 +16432,13 @@
 0.0
 ],
 "d": 177.1,
-"h": "p0214"
+"h": "p0214",
+"gr": "#dba838",
+"ip": [
+-93.0,
+1203.9,
+-76.3
+]
 },
 {
 "id": "p0292",
@@ -14708,7 +16457,13 @@
 0.04,
 -0.999
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-93.0,
+1204.1,
+-82.3
+]
 },
 {
 "id": "p0293",
@@ -14728,7 +16483,13 @@
 0.0
 ],
 "d": 177.1,
-"h": "p0214"
+"h": "p0214",
+"gr": "#dba838",
+"ip": [
+-120.0,
+1203.9,
+-76.3
+]
 },
 {
 "id": "p0294",
@@ -14747,7 +16508,13 @@
 0.04,
 -0.999
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-120.0,
+1204.1,
+-82.3
+]
 },
 {
 "id": "p0295",
@@ -14767,7 +16534,13 @@
 0.0
 ],
 "d": 179.8,
-"h": "p0213"
+"h": "p0213",
+"gr": "#dba838",
+"ip": [
+80.2,
+1234.0,
+71.0
+]
 },
 {
 "id": "p0296",
@@ -14786,7 +16559,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+80.2,
+1234.0,
+77.0
+]
 },
 {
 "id": "p0297",
@@ -14806,7 +16585,13 @@
 0.0
 ],
 "d": 177.1,
-"h": "p0214"
+"h": "p0214",
+"gr": "#dba838",
+"ip": [
+-80.2,
+1234.0,
+71.0
+]
 },
 {
 "id": "p0298",
@@ -14825,7 +16610,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-80.2,
+1234.0,
+77.0
+]
 },
 {
 "id": "p0299",
@@ -14845,7 +16636,13 @@
 0.0
 ],
 "d": 156.9,
-"h": "p0205"
+"h": "p0205",
+"gr": "#dba838",
+"ip": [
+-6.0,
+330.0,
+78.6
+]
 },
 {
 "id": "p0300",
@@ -14864,7 +16661,13 @@
 -0.014,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+330.0,
+84.6
+]
 },
 {
 "id": "p0301",
@@ -14884,7 +16687,13 @@
 0.0
 ],
 "d": 156.9,
-"h": "p0205"
+"h": "p0205",
+"gr": "#dba838",
+"ip": [
+-6.0,
+420.0,
+79.9
+]
 },
 {
 "id": "p0302",
@@ -14903,7 +16712,13 @@
 -0.014,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+420.0,
+85.9
+]
 },
 {
 "id": "p0303",
@@ -14923,7 +16738,13 @@
 0.0
 ],
 "d": 138.2,
-"h": "p0207"
+"h": "p0207",
+"gr": "#dba838",
+"ip": [
+-6.0,
+506.2,
+80.7
+]
 },
 {
 "id": "p0304",
@@ -14942,7 +16763,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+506.2,
+86.7
+]
 },
 {
 "id": "p0305",
@@ -14962,7 +16789,13 @@
 0.0
 ],
 "d": 138.2,
-"h": "p0207"
+"h": "p0207",
+"gr": "#dba838",
+"ip": [
+-6.0,
+616.2,
+80.7
+]
 },
 {
 "id": "p0306",
@@ -14981,7 +16814,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+616.2,
+86.7
+]
 },
 {
 "id": "p0307",
@@ -15001,7 +16840,13 @@
 0.0
 ],
 "d": 138.2,
-"h": "p0209"
+"h": "p0209",
+"gr": "#dba838",
+"ip": [
+-6.0,
+663.8,
+80.7
+]
 },
 {
 "id": "p0308",
@@ -15020,7 +16865,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+663.8,
+86.7
+]
 },
 {
 "id": "p0309",
@@ -15040,7 +16891,13 @@
 0.0
 ],
 "d": 138.2,
-"h": "p0209"
+"h": "p0209",
+"gr": "#dba838",
+"ip": [
+-6.0,
+773.8,
+80.7
+]
 },
 {
 "id": "p0310",
@@ -15059,7 +16916,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+773.8,
+86.7
+]
 },
 {
 "id": "p0311",
@@ -15079,7 +16942,13 @@
 0.0
 ],
 "d": 175.7,
-"h": "p0211"
+"h": "p0211",
+"gr": "#dba838",
+"ip": [
+-6.0,
+865.1,
+82.0
+]
 },
 {
 "id": "p0312",
@@ -15098,7 +16967,13 @@
 -0.018,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+864.9,
+88.0
+]
 },
 {
 "id": "p0313",
@@ -15118,7 +16993,13 @@
 0.0
 ],
 "d": 175.7,
-"h": "p0211"
+"h": "p0211",
+"gr": "#dba838",
+"ip": [
+-6.0,
+955.1,
+83.6
+]
 },
 {
 "id": "p0314",
@@ -15137,7 +17018,13 @@
 -0.018,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+954.9,
+89.6
+]
 },
 {
 "id": "p0315",
@@ -15157,7 +17044,13 @@
 0.0
 ],
 "d": 179.8,
-"h": "p0213"
+"h": "p0213",
+"gr": "#dba838",
+"ip": [
+-6.0,
+1022.0,
+123.9
+]
 },
 {
 "id": "p0316",
@@ -15176,7 +17069,13 @@
 0.259,
 0.966
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+1023.5,
+129.7
+]
 },
 {
 "id": "p0317",
@@ -15196,7 +17095,13 @@
 0.0
 ],
 "d": 179.8,
-"h": "p0213"
+"h": "p0213",
+"gr": "#dba838",
+"ip": [
+-6.0,
+1223.0,
+71.0
+]
 },
 {
 "id": "p0318",
@@ -15215,7 +17120,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+1223.0,
+77.0
+]
 },
 {
 "id": "p0319",
@@ -15235,7 +17146,13 @@
 0.0
 ],
 "d": 124.2,
-"h": "p0215"
+"h": "p0215",
+"gr": "#dba838",
+"ip": [
+-6.0,
+1255.0,
+71.0
+]
 },
 {
 "id": "p0320",
@@ -15254,7 +17171,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+1255.0,
+77.0
+]
 },
 {
 "id": "p0321",
@@ -15274,7 +17197,13 @@
 0.0
 ],
 "d": 156.9,
-"h": "p0205"
+"h": "p0205",
+"gr": "#dba838",
+"ip": [
+-6.0,
+330.0,
+-78.6
+]
 },
 {
 "id": "p0322",
@@ -15293,7 +17222,13 @@
 -0.014,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+330.0,
+-84.6
+]
 },
 {
 "id": "p0323",
@@ -15313,7 +17248,13 @@
 0.0
 ],
 "d": 156.9,
-"h": "p0205"
+"h": "p0205",
+"gr": "#dba838",
+"ip": [
+-6.0,
+420.0,
+-79.9
+]
 },
 {
 "id": "p0324",
@@ -15332,7 +17273,13 @@
 -0.014,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+420.0,
+-85.9
+]
 },
 {
 "id": "p0325",
@@ -15352,7 +17299,13 @@
 0.0
 ],
 "d": 138.2,
-"h": "p0207"
+"h": "p0207",
+"gr": "#dba838",
+"ip": [
+-6.0,
+506.2,
+-80.6
+]
 },
 {
 "id": "p0326",
@@ -15371,7 +17324,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+506.2,
+-86.7
+]
 },
 {
 "id": "p0327",
@@ -15391,7 +17350,13 @@
 0.0
 ],
 "d": 138.2,
-"h": "p0207"
+"h": "p0207",
+"gr": "#dba838",
+"ip": [
+-6.0,
+616.2,
+-80.6
+]
 },
 {
 "id": "p0328",
@@ -15410,7 +17375,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+616.2,
+-86.7
+]
 },
 {
 "id": "p0329",
@@ -15430,7 +17401,13 @@
 0.0
 ],
 "d": 138.2,
-"h": "p0209"
+"h": "p0209",
+"gr": "#dba838",
+"ip": [
+-6.0,
+663.8,
+-80.6
+]
 },
 {
 "id": "p0330",
@@ -15449,7 +17426,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+663.8,
+-86.7
+]
 },
 {
 "id": "p0331",
@@ -15469,7 +17452,13 @@
 0.0
 ],
 "d": 138.2,
-"h": "p0209"
+"h": "p0209",
+"gr": "#dba838",
+"ip": [
+-6.0,
+773.8,
+-80.6
+]
 },
 {
 "id": "p0332",
@@ -15488,7 +17477,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+773.8,
+-86.7
+]
 },
 {
 "id": "p0333",
@@ -15508,7 +17503,13 @@
 0.0
 ],
 "d": 124.2,
-"h": "p0215"
+"h": "p0215",
+"gr": "#dba838",
+"ip": [
+-6.0,
+1254.9,
+-74.8
+]
 },
 {
 "id": "p0334",
@@ -15527,7 +17528,13 @@
 0.025,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-6.0,
+1255.1,
+-80.8
+]
 },
 {
 "id": "p0335",
@@ -15547,7 +17554,13 @@
 0.0
 ],
 "d": 173.1,
-"h": "p0212"
+"h": "p0212",
+"gr": "#dba838",
+"ip": [
+-45.0,
+821.0,
+-81.1
+]
 },
 {
 "id": "p0336",
@@ -15566,7 +17579,13 @@
 -0.014,
 -1.0
 ],
-"d": 149.2
+"d": 149.2,
+"gr": "#80858f",
+"ip": [
+-45.0,
+821.0,
+-87.1
+]
 },
 {
 "id": "p0337",
@@ -15586,7 +17605,13 @@
 0.0
 ],
 "d": 175.7,
-"h": "p0211"
+"h": "p0211",
+"gr": "#dba838",
+"ip": [
+0.0,
+821.0,
+-81.1
+]
 },
 {
 "id": "p0338",
@@ -15605,7 +17630,13 @@
 -0.014,
 -1.0
 ],
-"d": 149.2
+"d": 149.2,
+"gr": "#80858f",
+"ip": [
+0.0,
+821.0,
+-87.1
+]
 },
 {
 "id": "p0339",
@@ -15625,7 +17656,13 @@
 0.0
 ],
 "d": 175.7,
-"h": "p0211"
+"h": "p0211",
+"gr": "#dba838",
+"ip": [
+45.0,
+821.0,
+-81.1
+]
 },
 {
 "id": "p0340",
@@ -15644,7 +17681,13 @@
 -0.014,
 -1.0
 ],
-"d": 149.2
+"d": 149.2,
+"gr": "#80858f",
+"ip": [
+45.0,
+821.0,
+-87.1
+]
 },
 {
 "id": "p0341",
@@ -15664,7 +17707,13 @@
 0.0
 ],
 "d": 175.7,
-"h": "p0211"
+"h": "p0211",
+"gr": "#dba838",
+"ip": [
+74.0,
+885.0,
+-82.0
+]
 },
 {
 "id": "p0342",
@@ -15683,7 +17732,13 @@
 -0.014,
 -1.0
 ],
-"d": 149.2
+"d": 149.2,
+"gr": "#80858f",
+"ip": [
+74.0,
+885.0,
+-88.0
+]
 },
 {
 "id": "p0343",
@@ -15703,7 +17758,13 @@
 0.0
 ],
 "d": 175.7,
-"h": "p0211"
+"h": "p0211",
+"gr": "#dba838",
+"ip": [
+74.0,
+965.0,
+-83.1
+]
 },
 {
 "id": "p0344",
@@ -15722,7 +17783,13 @@
 -0.014,
 -1.0
 ],
-"d": 149.2
+"d": 149.2,
+"gr": "#80858f",
+"ip": [
+74.0,
+965.0,
+-89.1
+]
 },
 {
 "id": "p0345",
@@ -15742,7 +17809,13 @@
 0.0
 ],
 "d": 173.1,
-"h": "p0212"
+"h": "p0212",
+"gr": "#dba838",
+"ip": [
+-74.0,
+886.0,
+-82.0
+]
 },
 {
 "id": "p0346",
@@ -15761,7 +17834,13 @@
 -0.014,
 -1.0
 ],
-"d": 149.2
+"d": 149.2,
+"gr": "#80858f",
+"ip": [
+-74.0,
+886.0,
+-88.0
+]
 },
 {
 "id": "p0347",
@@ -15781,7 +17860,13 @@
 0.0
 ],
 "d": 173.1,
-"h": "p0212"
+"h": "p0212",
+"gr": "#dba838",
+"ip": [
+-74.0,
+965.0,
+-83.1
+]
 },
 {
 "id": "p0348",
@@ -15800,7 +17885,13 @@
 -0.014,
 -1.0
 ],
-"d": 149.2
+"d": 149.2,
+"gr": "#80858f",
+"ip": [
+-74.0,
+965.0,
+-89.1
+]
 },
 {
 "id": "p0349",
@@ -15820,7 +17911,13 @@
 0.0
 ],
 "d": 177.1,
-"h": "p0214"
+"h": "p0214",
+"gr": "#dba838",
+"ip": [
+-45.0,
+1035.9,
+-83.0
+]
 },
 {
 "id": "p0350",
@@ -15839,7 +17936,13 @@
 0.04,
 -0.999
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-45.0,
+1036.1,
+-89.0
+]
 },
 {
 "id": "p0351",
@@ -15859,7 +17962,13 @@
 0.0
 ],
 "d": 179.8,
-"h": "p0213"
+"h": "p0213",
+"gr": "#dba838",
+"ip": [
+0.0,
+1035.9,
+-83.0
+]
 },
 {
 "id": "p0352",
@@ -15878,7 +17987,13 @@
 0.04,
 -0.999
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-0.0,
+1036.1,
+-89.0
+]
 },
 {
 "id": "p0353",
@@ -15898,7 +18013,13 @@
 0.0
 ],
 "d": 179.8,
-"h": "p0213"
+"h": "p0213",
+"gr": "#dba838",
+"ip": [
+45.0,
+1035.9,
+-83.0
+]
 },
 {
 "id": "p0354",
@@ -15917,7 +18038,13 @@
 0.04,
 -0.999
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+45.0,
+1036.1,
+-89.0
+]
 },
 {
 "id": "p0355",
@@ -15937,7 +18064,13 @@
 0.0
 ],
 "d": 179.8,
-"h": "p0213"
+"h": "p0213",
+"gr": "#dba838",
+"ip": [
+69.0,
+1089.9,
+-80.8
+]
 },
 {
 "id": "p0356",
@@ -15956,7 +18089,13 @@
 0.04,
 -0.999
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+69.0,
+1090.1,
+-86.9
+]
 },
 {
 "id": "p0357",
@@ -15976,7 +18115,13 @@
 0.0
 ],
 "d": 179.8,
-"h": "p0213"
+"h": "p0213",
+"gr": "#dba838",
+"ip": [
+69.0,
+1154.9,
+-78.2
+]
 },
 {
 "id": "p0358",
@@ -15995,7 +18140,13 @@
 0.04,
 -0.999
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+69.0,
+1155.1,
+-84.3
+]
 },
 {
 "id": "p0359",
@@ -16015,7 +18166,13 @@
 0.0
 ],
 "d": 177.1,
-"h": "p0214"
+"h": "p0214",
+"gr": "#dba838",
+"ip": [
+-69.0,
+1089.9,
+-80.8
+]
 },
 {
 "id": "p0360",
@@ -16034,7 +18191,13 @@
 0.04,
 -0.999
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-69.0,
+1090.1,
+-86.9
+]
 },
 {
 "id": "p0361",
@@ -16054,7 +18217,13 @@
 0.0
 ],
 "d": 177.1,
-"h": "p0214"
+"h": "p0214",
+"gr": "#dba838",
+"ip": [
+-69.0,
+1154.9,
+-78.2
+]
 },
 {
 "id": "p0362",
@@ -16073,7 +18242,13 @@
 0.04,
 -0.999
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-69.0,
+1155.1,
+-84.3
+]
 },
 {
 "id": "p0363",
@@ -16093,7 +18268,13 @@
 0.0
 ],
 "d": 155.2,
-"h": "p0226"
+"h": "p0226",
+"gr": "#dba838",
+"ip": [
+-44.0,
+60.0,
+258.2
+]
 },
 {
 "id": "p0364",
@@ -16112,7 +18293,13 @@
 -0.0,
 1.0
 ],
-"d": 206.3
+"d": 206.3,
+"gr": "#80858f",
+"ip": [
+-44.0,
+60.0,
+264.2
+]
 },
 {
 "id": "p0365",
@@ -16132,7 +18319,13 @@
 0.0
 ],
 "d": 155.2,
-"h": "p0226"
+"h": "p0226",
+"gr": "#dba838",
+"ip": [
+-44.0,
+199.6,
+249.6
+]
 },
 {
 "id": "p0366",
@@ -16151,7 +18344,13 @@
 0.142,
 0.99
 ],
-"d": 206.3
+"d": 206.3,
+"gr": "#80858f",
+"ip": [
+-44.0,
+200.5,
+255.5
+]
 },
 {
 "id": "p0367",
@@ -16171,7 +18370,13 @@
 0.707
 ],
 "d": 185.0,
-"h": "p0223"
+"h": "p0223",
+"gr": "#dba838",
+"ip": [
+32.0,
+60.0,
+258.2
+]
 },
 {
 "id": "p0368",
@@ -16190,7 +18395,13 @@
 -0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+32.0,
+60.0,
+264.2
+]
 },
 {
 "id": "p0369",
@@ -16210,7 +18421,13 @@
 0.707
 ],
 "d": 185.0,
-"h": "p0223"
+"h": "p0223",
+"gr": "#dba838",
+"ip": [
+32.0,
+199.6,
+249.6
+]
 },
 {
 "id": "p0370",
@@ -16229,7 +18446,13 @@
 0.142,
 0.99
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+32.0,
+200.5,
+255.5
+]
 },
 {
 "id": "p0371",
@@ -16249,7 +18472,13 @@
 0.0
 ],
 "d": 155.2,
-"h": "p0225"
+"h": "p0225",
+"gr": "#dba838",
+"ip": [
+-44.0,
+60.0,
+-258.1
+]
 },
 {
 "id": "p0372",
@@ -16268,7 +18497,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-44.0,
+60.0,
+-264.2
+]
 },
 {
 "id": "p0373",
@@ -16288,7 +18523,13 @@
 0.0
 ],
 "d": 155.2,
-"h": "p0225"
+"h": "p0225",
+"gr": "#dba838",
+"ip": [
+-44.0,
+115.0,
+-258.1
+]
 },
 {
 "id": "p0374",
@@ -16307,7 +18548,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-44.0,
+115.0,
+-264.2
+]
 },
 {
 "id": "p0375",
@@ -16327,7 +18574,13 @@
 0.0
 ],
 "d": 155.2,
-"h": "p0225"
+"h": "p0225",
+"gr": "#dba838",
+"ip": [
+-44.0,
+199.6,
+-249.6
+]
 },
 {
 "id": "p0376",
@@ -16346,7 +18599,13 @@
 0.142,
 -0.99
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-44.0,
+200.5,
+-255.5
+]
 },
 {
 "id": "p0377",
@@ -16366,7 +18625,13 @@
 0.0
 ],
 "d": 185.0,
-"h": "p0219"
+"h": "p0219",
+"gr": "#dba838",
+"ip": [
+32.0,
+60.0,
+-258.1
+]
 },
 {
 "id": "p0378",
@@ -16385,7 +18650,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+32.0,
+60.0,
+-264.2
+]
 },
 {
 "id": "p0379",
@@ -16405,7 +18676,13 @@
 0.0
 ],
 "d": 185.0,
-"h": "p0219"
+"h": "p0219",
+"gr": "#dba838",
+"ip": [
+32.0,
+115.0,
+-258.1
+]
 },
 {
 "id": "p0380",
@@ -16424,7 +18701,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+32.0,
+115.0,
+-264.2
+]
 },
 {
 "id": "p0381",
@@ -16444,7 +18727,13 @@
 0.0
 ],
 "d": 185.0,
-"h": "p0219"
+"h": "p0219",
+"gr": "#dba838",
+"ip": [
+32.0,
+199.6,
+-249.6
+]
 },
 {
 "id": "p0382",
@@ -16463,7 +18752,13 @@
 0.142,
 -0.99
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+32.0,
+200.5,
+-255.5
+]
 },
 {
 "id": "p0383",
@@ -16483,7 +18778,13 @@
 0.0
 ],
 "d": 187.4,
-"h": "p0221"
+"h": "p0221",
+"gr": "#dba838",
+"ip": [
+255.7,
+60.0,
+93.5
+]
 },
 {
 "id": "p0384",
@@ -16502,7 +18803,13 @@
 -0.0,
 -0.0
 ],
-"d": 210.0
+"d": 210.0,
+"gr": "#80858f",
+"ip": [
+261.7,
+60.0,
+93.5
+]
 },
 {
 "id": "p0385",
@@ -16522,7 +18829,13 @@
 0.0
 ],
 "d": 187.4,
-"h": "p0221"
+"h": "p0221",
+"gr": "#dba838",
+"ip": [
+255.7,
+85.0,
+93.5
+]
 },
 {
 "id": "p0386",
@@ -16541,7 +18854,13 @@
 -0.0,
 -0.0
 ],
-"d": 210.0
+"d": 210.0,
+"gr": "#80858f",
+"ip": [
+261.7,
+85.0,
+93.5
+]
 },
 {
 "id": "p0387",
@@ -16561,7 +18880,13 @@
 0.0
 ],
 "d": 187.4,
-"h": "p0221"
+"h": "p0221",
+"gr": "#dba838",
+"ip": [
+220.6,
+198.6,
+93.5
+]
 },
 {
 "id": "p0388",
@@ -16580,7 +18905,13 @@
 0.508,
 0.0
 ],
-"d": 210.0
+"d": 210.0,
+"gr": "#80858f",
+"ip": [
+225.7,
+201.5,
+93.5
+]
 },
 {
 "id": "p0389",
@@ -16600,7 +18931,13 @@
 0.0
 ],
 "d": 187.4,
-"h": "p0221"
+"h": "p0221",
+"gr": "#dba838",
+"ip": [
+255.7,
+60.0,
+-93.5
+]
 },
 {
 "id": "p0390",
@@ -16619,7 +18956,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+261.7,
+60.0,
+-93.5
+]
 },
 {
 "id": "p0391",
@@ -16639,7 +18982,13 @@
 0.0
 ],
 "d": 187.4,
-"h": "p0221"
+"h": "p0221",
+"gr": "#dba838",
+"ip": [
+255.7,
+85.0,
+-93.5
+]
 },
 {
 "id": "p0392",
@@ -16658,7 +19007,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+261.7,
+85.0,
+-93.5
+]
 },
 {
 "id": "p0393",
@@ -16678,7 +19033,13 @@
 0.0
 ],
 "d": 187.4,
-"h": "p0221"
+"h": "p0221",
+"gr": "#dba838",
+"ip": [
+220.6,
+198.6,
+-93.5
+]
 },
 {
 "id": "p0394",
@@ -16697,7 +19058,13 @@
 0.508,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+225.7,
+201.5,
+-93.5
+]
 },
 {
 "id": "p0395",
@@ -16717,7 +19084,13 @@
 0.0
 ],
 "d": 187.4,
-"h": "p0222"
+"h": "p0222",
+"gr": "#dba838",
+"ip": [
+-255.6,
+60.0,
+93.5
+]
 },
 {
 "id": "p0396",
@@ -16736,7 +19109,13 @@
 -0.0,
 -0.0
 ],
-"d": 206.3
+"d": 206.3,
+"gr": "#80858f",
+"ip": [
+-261.7,
+60.0,
+93.5
+]
 },
 {
 "id": "p0397",
@@ -16756,7 +19135,13 @@
 0.0
 ],
 "d": 187.4,
-"h": "p0222"
+"h": "p0222",
+"gr": "#dba838",
+"ip": [
+-255.6,
+85.0,
+93.5
+]
 },
 {
 "id": "p0398",
@@ -16775,7 +19160,13 @@
 -0.0,
 -0.0
 ],
-"d": 206.3
+"d": 206.3,
+"gr": "#80858f",
+"ip": [
+-261.7,
+85.0,
+93.5
+]
 },
 {
 "id": "p0399",
@@ -16795,7 +19186,13 @@
 0.0
 ],
 "d": 187.4,
-"h": "p0222"
+"h": "p0222",
+"gr": "#dba838",
+"ip": [
+-220.6,
+198.6,
+93.5
+]
 },
 {
 "id": "p0400",
@@ -16814,7 +19211,13 @@
 0.508,
 -0.0
 ],
-"d": 206.3
+"d": 206.3,
+"gr": "#80858f",
+"ip": [
+-225.7,
+201.5,
+93.5
+]
 },
 {
 "id": "p0401",
@@ -16834,7 +19237,13 @@
 0.0
 ],
 "d": 187.4,
-"h": "p0222"
+"h": "p0222",
+"gr": "#dba838",
+"ip": [
+-255.6,
+60.0,
+-93.5
+]
 },
 {
 "id": "p0402",
@@ -16853,7 +19262,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-261.7,
+60.0,
+-93.5
+]
 },
 {
 "id": "p0403",
@@ -16873,7 +19288,13 @@
 0.0
 ],
 "d": 187.4,
-"h": "p0222"
+"h": "p0222",
+"gr": "#dba838",
+"ip": [
+-255.6,
+85.0,
+-93.5
+]
 },
 {
 "id": "p0404",
@@ -16892,7 +19313,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-261.7,
+85.0,
+-93.5
+]
 },
 {
 "id": "p0405",
@@ -16912,7 +19339,13 @@
 0.0
 ],
 "d": 187.4,
-"h": "p0222"
+"h": "p0222",
+"gr": "#dba838",
+"ip": [
+-220.6,
+198.6,
+-93.5
+]
 },
 {
 "id": "p0406",
@@ -16931,7 +19364,13 @@
 0.508,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-225.7,
+201.5,
+-93.5
+]
 },
 {
 "id": "p0407",
@@ -16950,7 +19389,8 @@
 0.243,
 0.97
 ],
-"d": 173.6
+"d": 173.6,
+"gr": "#212124"
 },
 {
 "id": "p0408",
@@ -16970,7 +19410,13 @@
 1.0
 ],
 "d": 128.6,
-"h": "p0229"
+"h": "p0229",
+"gr": "#dba838",
+"ip": [
+50.0,
+1214.6,
+70.8
+]
 },
 {
 "id": "p0409",
@@ -16989,7 +19435,13 @@
 0.259,
 0.966
 ],
-"d": 153.6
+"d": 153.6,
+"gr": "#80858f",
+"ip": [
+50.0,
+1216.6,
+78.0
+]
 },
 {
 "id": "p0410",
@@ -17009,7 +19461,13 @@
 1.0
 ],
 "d": 128.6,
-"h": "p0229"
+"h": "p0229",
+"gr": "#dba838",
+"ip": [
+50.0,
+1021.2,
+122.6
+]
 },
 {
 "id": "p0411",
@@ -17028,7 +19486,13 @@
 0.259,
 0.966
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+50.0,
+1023.1,
+129.8
+]
 },
 {
 "id": "p0412",
@@ -17048,7 +19512,13 @@
 1.0
 ],
 "d": 128.6,
-"h": "p0229"
+"h": "p0229",
+"gr": "#dba838",
+"ip": [
+120.0,
+1214.6,
+70.8
+]
 },
 {
 "id": "p0413",
@@ -17067,7 +19537,13 @@
 0.259,
 0.966
 ],
-"d": 153.6
+"d": 153.6,
+"gr": "#80858f",
+"ip": [
+120.0,
+1216.6,
+78.0
+]
 },
 {
 "id": "p0414",
@@ -17087,7 +19563,13 @@
 1.0
 ],
 "d": 128.6,
-"h": "p0229"
+"h": "p0229",
+"gr": "#dba838",
+"ip": [
+120.0,
+1021.2,
+122.6
+]
 },
 {
 "id": "p0415",
@@ -17106,7 +19588,13 @@
 0.259,
 0.966
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+120.0,
+1023.1,
+129.8
+]
 },
 {
 "id": "p0416",
@@ -17126,7 +19614,13 @@
 1.0
 ],
 "d": 128.6,
-"h": "p0230"
+"h": "p0230",
+"gr": "#dba838",
+"ip": [
+-50.0,
+1214.6,
+70.8
+]
 },
 {
 "id": "p0417",
@@ -17145,7 +19639,13 @@
 0.259,
 0.966
 ],
-"d": 153.6
+"d": 153.6,
+"gr": "#80858f",
+"ip": [
+-50.0,
+1216.6,
+78.0
+]
 },
 {
 "id": "p0418",
@@ -17165,7 +19665,13 @@
 1.0
 ],
 "d": 128.6,
-"h": "p0230"
+"h": "p0230",
+"gr": "#dba838",
+"ip": [
+-50.0,
+1021.2,
+122.6
+]
 },
 {
 "id": "p0419",
@@ -17184,7 +19690,13 @@
 0.259,
 0.966
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-50.0,
+1023.1,
+129.8
+]
 },
 {
 "id": "p0420",
@@ -17204,7 +19716,13 @@
 1.0
 ],
 "d": 128.6,
-"h": "p0230"
+"h": "p0230",
+"gr": "#dba838",
+"ip": [
+-120.0,
+1214.6,
+70.8
+]
 },
 {
 "id": "p0421",
@@ -17223,7 +19741,13 @@
 0.259,
 0.966
 ],
-"d": 153.6
+"d": 153.6,
+"gr": "#80858f",
+"ip": [
+-120.0,
+1216.6,
+78.0
+]
 },
 {
 "id": "p0422",
@@ -17243,7 +19767,13 @@
 1.0
 ],
 "d": 128.6,
-"h": "p0230"
+"h": "p0230",
+"gr": "#dba838",
+"ip": [
+-120.0,
+1021.2,
+122.6
+]
 },
 {
 "id": "p0423",
@@ -17262,7 +19792,13 @@
 0.259,
 0.966
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-120.0,
+1023.1,
+129.8
+]
 },
 {
 "id": "p0424",
@@ -17281,7 +19817,13 @@
 -0.259,
 -0.966
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+37.5,
+1145.8,
+56.0
+]
 },
 {
 "id": "p0425",
@@ -17300,7 +19842,13 @@
 -0.259,
 -0.966
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#80858f",
+"ip": [
+37.5,
+1144.7,
+51.7
+]
 },
 {
 "id": "p0426",
@@ -17319,7 +19867,13 @@
 -0.259,
 -0.966
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+37.5,
+1073.4,
+75.4
+]
 },
 {
 "id": "p0427",
@@ -17338,7 +19892,13 @@
 -0.259,
 -0.966
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#80858f",
+"ip": [
+37.5,
+1072.3,
+71.1
+]
 },
 {
 "id": "p0428",
@@ -17357,7 +19917,13 @@
 -0.259,
 -0.966
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-37.5,
+1145.8,
+56.0
+]
 },
 {
 "id": "p0429",
@@ -17376,7 +19942,13 @@
 -0.259,
 -0.966
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#80858f",
+"ip": [
+-37.5,
+1144.7,
+51.7
+]
 },
 {
 "id": "p0430",
@@ -17395,7 +19967,13 @@
 -0.259,
 -0.966
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-37.5,
+1073.4,
+75.4
+]
 },
 {
 "id": "p0431",
@@ -17414,7 +19992,13 @@
 -0.259,
 -0.966
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#80858f",
+"ip": [
+-37.5,
+1072.3,
+71.1
+]
 },
 {
 "id": "p0432",
@@ -17433,7 +20017,13 @@
 0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+0.0,
+1079.7,
+26.8
+]
 },
 {
 "id": "p0433",
@@ -17452,7 +20042,13 @@
 0.0,
 1.0
 ],
-"d": 102.6
+"d": 102.6,
+"gr": "#80858f",
+"ip": [
+0.0,
+1079.7,
+33.6
+]
 },
 {
 "id": "p0434",
@@ -17471,7 +20067,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+0.0,
+1079.7,
+13.2
+]
 },
 {
 "id": "p0435",
@@ -17490,7 +20092,13 @@
 0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+0.0,
+1139.7,
+26.8
+]
 },
 {
 "id": "p0436",
@@ -17509,7 +20117,13 @@
 0.0,
 1.0
 ],
-"d": 102.6
+"d": 102.6,
+"gr": "#80858f",
+"ip": [
+0.0,
+1139.7,
+33.6
+]
 },
 {
 "id": "p0437",
@@ -17528,7 +20142,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+0.0,
+1139.7,
+13.2
+]
 },
 {
 "id": "p0438",
@@ -17547,7 +20167,8 @@
 0.555,
 -0.832
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124"
 },
 {
 "id": "p0439",
@@ -17567,7 +20188,13 @@
 0.0
 ],
 "d": 175.7,
-"h": "p0211"
+"h": "p0211",
+"gr": "#dba838",
+"ip": [
+76.0,
+985.0,
+97.2
+]
 },
 {
 "id": "p0440",
@@ -17586,7 +20213,13 @@
 0.574,
 -0.819
 ],
-"d": 70.7
+"d": 70.7,
+"gr": "#80858f",
+"ip": [
+76.0,
+997.0,
+80.1
+]
 },
 {
 "id": "p0441",
@@ -17606,7 +20239,13 @@
 0.0
 ],
 "d": 175.7,
-"h": "p0211"
+"h": "p0211",
+"gr": "#dba838",
+"ip": [
+14.0,
+985.0,
+97.2
+]
 },
 {
 "id": "p0442",
@@ -17625,7 +20264,13 @@
 0.574,
 -0.819
 ],
-"d": 70.7
+"d": 70.7,
+"gr": "#80858f",
+"ip": [
+14.0,
+997.0,
+80.1
+]
 },
 {
 "id": "p0443",
@@ -17644,7 +20289,8 @@
 0.555,
 -0.832
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124"
 },
 {
 "id": "p0444",
@@ -17663,7 +20309,8 @@
 0.0,
 1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#999999"
 },
 {
 "id": "p0445",
@@ -17682,7 +20329,8 @@
 0.0,
 1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124"
 },
 {
 "id": "p0446",
@@ -17702,7 +20350,13 @@
 0.0
 ],
 "d": 181.3,
-"h": "p0220"
+"h": "p0220",
+"gr": "#dba838",
+"ip": [
+-50.0,
+259.2,
+-218.0
+]
 },
 {
 "id": "p0447",
@@ -17721,7 +20375,13 @@
 1.0,
 -0.0
 ],
-"d": 89.0
+"d": 89.0,
+"gr": "#80858f",
+"ip": [
+-50.0,
+266.7,
+-218.0
+]
 },
 {
 "id": "p0448",
@@ -17741,7 +20401,13 @@
 0.0
 ],
 "d": 181.3,
-"h": "p0220"
+"h": "p0220",
+"gr": "#dba838",
+"ip": [
+-50.0,
+259.2,
+-188.0
+]
 },
 {
 "id": "p0449",
@@ -17760,7 +20426,13 @@
 1.0,
 -0.0
 ],
-"d": 89.0
+"d": 89.0,
+"gr": "#80858f",
+"ip": [
+-50.0,
+266.7,
+-188.0
+]
 },
 {
 "id": "p0450",
@@ -17780,7 +20452,13 @@
 0.0
 ],
 "d": 185.0,
-"h": "p0219"
+"h": "p0219",
+"gr": "#dba838",
+"ip": [
+50.0,
+259.2,
+-218.0
+]
 },
 {
 "id": "p0451",
@@ -17799,7 +20477,13 @@
 1.0,
 -0.0
 ],
-"d": 89.0
+"d": 89.0,
+"gr": "#80858f",
+"ip": [
+50.0,
+266.7,
+-218.0
+]
 },
 {
 "id": "p0452",
@@ -17819,7 +20503,13 @@
 0.0
 ],
 "d": 185.0,
-"h": "p0219"
+"h": "p0219",
+"gr": "#dba838",
+"ip": [
+50.0,
+259.2,
+-188.0
+]
 },
 {
 "id": "p0453",
@@ -17838,7 +20528,13 @@
 1.0,
 -0.0
 ],
-"d": 89.0
+"d": 89.0,
+"gr": "#80858f",
+"ip": [
+50.0,
+266.7,
+-188.0
+]
 },
 {
 "id": "p0454",
@@ -17858,7 +20554,13 @@
 0.0
 ],
 "d": 185.0,
-"h": "p0219"
+"h": "p0219",
+"gr": "#dba838",
+"ip": [
+89.0,
+259.2,
+-145.0
+]
 },
 {
 "id": "p0455",
@@ -17877,7 +20579,13 @@
 1.0,
 -0.0
 ],
-"d": 69.8
+"d": 69.8,
+"gr": "#80858f",
+"ip": [
+89.0,
+266.6,
+-145.0
+]
 },
 {
 "id": "p0456",
@@ -17897,7 +20605,13 @@
 0.0
 ],
 "d": 185.0,
-"h": "p0219"
+"h": "p0219",
+"gr": "#dba838",
+"ip": [
+89.0,
+259.2,
+-115.0
+]
 },
 {
 "id": "p0457",
@@ -17916,7 +20630,13 @@
 1.0,
 -0.0
 ],
-"d": 69.8
+"d": 69.8,
+"gr": "#80858f",
+"ip": [
+89.0,
+266.7,
+-115.0
+]
 },
 {
 "id": "p0458",
@@ -17936,7 +20656,13 @@
 0.0
 ],
 "d": 185.0,
-"h": "p0219"
+"h": "p0219",
+"gr": "#dba838",
+"ip": [
+135.0,
+259.2,
+-145.0
+]
 },
 {
 "id": "p0459",
@@ -17955,7 +20681,13 @@
 1.0,
 -0.0
 ],
-"d": 69.8
+"d": 69.8,
+"gr": "#80858f",
+"ip": [
+135.0,
+266.7,
+-145.0
+]
 },
 {
 "id": "p0460",
@@ -17975,7 +20707,13 @@
 0.0
 ],
 "d": 185.0,
-"h": "p0219"
+"h": "p0219",
+"gr": "#dba838",
+"ip": [
+135.0,
+259.2,
+-115.0
+]
 },
 {
 "id": "p0461",
@@ -17994,7 +20732,13 @@
 1.0,
 -0.0
 ],
-"d": 69.8
+"d": 69.8,
+"gr": "#80858f",
+"ip": [
+135.0,
+266.7,
+-115.0
+]
 },
 {
 "id": "p0462",
@@ -18014,7 +20758,13 @@
 0.0
 ],
 "d": 124.2,
-"h": "p0215"
+"h": "p0215",
+"gr": "#dba838",
+"ip": [
+149.2,
+1220.2,
+18.1
+]
 },
 {
 "id": "p0463",
@@ -18033,7 +20783,13 @@
 -0.0,
 -0.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+159.5,
+1220.2,
+18.1
+]
 },
 {
 "id": "p0464",
@@ -18053,7 +20809,13 @@
 0.0
 ],
 "d": 124.2,
-"h": "p0215"
+"h": "p0215",
+"gr": "#dba838",
+"ip": [
+149.2,
+1232.5,
+38.8
+]
 },
 {
 "id": "p0465",
@@ -18072,7 +20834,13 @@
 -0.0,
 -0.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+159.5,
+1232.5,
+38.8
+]
 },
 {
 "id": "p0466",
@@ -18092,7 +20860,13 @@
 0.0
 ],
 "d": 120.3,
-"h": "p0216"
+"h": "p0216",
+"gr": "#dba838",
+"ip": [
+-149.1,
+1220.2,
+18.1
+]
 },
 {
 "id": "p0467",
@@ -18111,7 +20885,13 @@
 -0.0,
 -0.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+-159.5,
+1220.2,
+18.1
+]
 },
 {
 "id": "p0468",
@@ -18131,7 +20911,13 @@
 0.0
 ],
 "d": 120.3,
-"h": "p0216"
+"h": "p0216",
+"gr": "#dba838",
+"ip": [
+-149.1,
+1232.5,
+38.8
+]
 },
 {
 "id": "p0469",
@@ -18150,7 +20936,13 @@
 -0.0,
 -0.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+-159.5,
+1232.5,
+38.8
+]
 },
 {
 "id": "p0470",
@@ -18169,7 +20961,8 @@
 0.0,
 0.0
 ],
-"d": 54.4
+"d": 54.4,
+"gr": "#8c99ad"
 },
 {
 "id": "p0471",
@@ -18188,7 +20981,13 @@
 0.0,
 0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+29.0,
+415.0,
+0.0
+]
 },
 {
 "id": "p0472",
@@ -18207,7 +21006,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+13.2,
+415.0,
+0.0
+]
 },
 {
 "id": "p0473",
@@ -18226,7 +21031,13 @@
 0.0,
 0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+29.0,
+440.0,
+0.0
+]
 },
 {
 "id": "p0474",
@@ -18245,7 +21056,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+13.2,
+440.0,
+0.0
+]
 },
 {
 "id": "p0475",
@@ -18264,7 +21081,13 @@
 -0.0,
 -0.0
 ],
-"d": 181.9
+"d": 181.9,
+"gr": "#80858f",
+"ip": [
+124.3,
+425.0,
+0.0
+]
 },
 {
 "id": "p0476",
@@ -18283,7 +21106,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+107.9,
+425.0,
+0.0
+]
 },
 {
 "id": "p0477",
@@ -18302,7 +21131,8 @@
 0.0,
 0.0
 ],
-"d": 54.4
+"d": 54.4,
+"gr": "#8c99ad"
 },
 {
 "id": "p0478",
@@ -18321,7 +21151,13 @@
 -0.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-29.0,
+415.0,
+0.0
+]
 },
 {
 "id": "p0479",
@@ -18340,7 +21176,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-13.2,
+415.0,
+0.0
+]
 },
 {
 "id": "p0480",
@@ -18359,7 +21201,13 @@
 -0.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-29.0,
+440.0,
+0.0
+]
 },
 {
 "id": "p0481",
@@ -18378,7 +21226,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-13.2,
+440.0,
+0.0
+]
 },
 {
 "id": "p0482",
@@ -18397,7 +21251,13 @@
 -0.0,
 -0.0
 ],
-"d": 179.4
+"d": 179.4,
+"gr": "#80858f",
+"ip": [
+-124.3,
+425.0,
+0.0
+]
 },
 {
 "id": "p0483",
@@ -18416,7 +21276,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-107.9,
+425.0,
+0.0
+]
 },
 {
 "id": "p0484",
@@ -18435,7 +21301,8 @@
 0.0,
 0.0
 ],
-"d": 55.7
+"d": 55.7,
+"gr": "#8c99ad"
 },
 {
 "id": "p0485",
@@ -18454,7 +21321,13 @@
 0.0,
 0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+29.0,
+545.2,
+0.0
+]
 },
 {
 "id": "p0486",
@@ -18473,7 +21346,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+13.2,
+545.3,
+0.0
+]
 },
 {
 "id": "p0487",
@@ -18492,7 +21371,13 @@
 0.0,
 0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+29.0,
+570.2,
+0.0
+]
 },
 {
 "id": "p0488",
@@ -18511,7 +21396,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+13.2,
+570.3,
+0.0
+]
 },
 {
 "id": "p0489",
@@ -18530,7 +21421,13 @@
 -0.0,
 -0.0
 ],
-"d": 51.9
+"d": 51.9,
+"gr": "#80858f",
+"ip": [
+127.4,
+555.2,
+0.0
+]
 },
 {
 "id": "p0490",
@@ -18549,7 +21446,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+111.0,
+555.2,
+0.0
+]
 },
 {
 "id": "p0491",
@@ -18568,7 +21471,8 @@
 0.0,
 0.0
 ],
-"d": 55.7
+"d": 55.7,
+"gr": "#8c99ad"
 },
 {
 "id": "p0492",
@@ -18587,7 +21491,13 @@
 -0.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-29.0,
+545.2,
+0.0
+]
 },
 {
 "id": "p0493",
@@ -18606,7 +21516,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-13.2,
+545.3,
+0.0
+]
 },
 {
 "id": "p0494",
@@ -18625,7 +21541,13 @@
 -0.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-29.0,
+570.2,
+0.0
+]
 },
 {
 "id": "p0495",
@@ -18644,7 +21566,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-13.2,
+570.3,
+0.0
+]
 },
 {
 "id": "p0496",
@@ -18663,7 +21591,13 @@
 -0.0,
 -0.0
 ],
-"d": 51.9
+"d": 51.9,
+"gr": "#80858f",
+"ip": [
+-127.4,
+555.2,
+0.0
+]
 },
 {
 "id": "p0497",
@@ -18682,7 +21616,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-111.0,
+555.2,
+0.0
+]
 },
 {
 "id": "p0498",
@@ -18701,7 +21641,8 @@
 0.0,
 0.0
 ],
-"d": 55.7
+"d": 55.7,
+"gr": "#8c99ad"
 },
 {
 "id": "p0499",
@@ -18720,7 +21661,13 @@
 0.0,
 0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+29.0,
+702.8,
+0.0
+]
 },
 {
 "id": "p0500",
@@ -18739,7 +21686,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+13.2,
+702.8,
+0.0
+]
 },
 {
 "id": "p0501",
@@ -18758,7 +21711,13 @@
 0.0,
 0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+29.0,
+727.8,
+0.0
+]
 },
 {
 "id": "p0502",
@@ -18777,7 +21736,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+13.2,
+727.8,
+0.0
+]
 },
 {
 "id": "p0503",
@@ -18796,7 +21761,13 @@
 -0.0,
 -0.0
 ],
-"d": 163.2
+"d": 163.2,
+"gr": "#80858f",
+"ip": [
+127.4,
+712.8,
+0.0
+]
 },
 {
 "id": "p0504",
@@ -18815,7 +21786,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+111.0,
+712.8,
+0.0
+]
 },
 {
 "id": "p0505",
@@ -18834,7 +21811,8 @@
 0.0,
 0.0
 ],
-"d": 55.7
+"d": 55.7,
+"gr": "#8c99ad"
 },
 {
 "id": "p0506",
@@ -18853,7 +21831,13 @@
 -0.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-29.0,
+702.8,
+0.0
+]
 },
 {
 "id": "p0507",
@@ -18872,7 +21856,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-13.2,
+702.8,
+0.0
+]
 },
 {
 "id": "p0508",
@@ -18891,7 +21881,13 @@
 -0.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-29.0,
+727.8,
+0.0
+]
 },
 {
 "id": "p0509",
@@ -18910,7 +21906,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-13.2,
+727.8,
+0.0
+]
 },
 {
 "id": "p0510",
@@ -18929,7 +21931,13 @@
 -0.0,
 -0.0
 ],
-"d": 160.3
+"d": 160.3,
+"gr": "#80858f",
+"ip": [
+-127.4,
+712.8,
+0.0
+]
 },
 {
 "id": "p0511",
@@ -18948,7 +21956,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-111.0,
+712.8,
+0.0
+]
 },
 {
 "id": "p0512",
@@ -18967,7 +21981,8 @@
 0.0,
 0.0
 ],
-"d": 67.6
+"d": 67.6,
+"gr": "#8c99ad"
 },
 {
 "id": "p0513",
@@ -18986,7 +22001,13 @@
 0.0,
 0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+29.0,
+1110.0,
+0.0
+]
 },
 {
 "id": "p0514",
@@ -19005,7 +22026,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+13.2,
+1110.0,
+0.0
+]
 },
 {
 "id": "p0515",
@@ -19024,7 +22051,13 @@
 0.0,
 0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+29.0,
+1135.0,
+0.0
+]
 },
 {
 "id": "p0516",
@@ -19043,7 +22076,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+13.2,
+1135.0,
+0.0
+]
 },
 {
 "id": "p0517",
@@ -19062,7 +22101,13 @@
 -0.0,
 -0.0
 ],
-"d": 51.9
+"d": 51.9,
+"gr": "#80858f",
+"ip": [
+154.5,
+1120.0,
+0.0
+]
 },
 {
 "id": "p0518",
@@ -19081,7 +22126,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+138.0,
+1120.0,
+0.0
+]
 },
 {
 "id": "p0519",
@@ -19100,7 +22151,8 @@
 0.0,
 0.0
 ],
-"d": 67.6
+"d": 67.6,
+"gr": "#8c99ad"
 },
 {
 "id": "p0520",
@@ -19119,7 +22171,13 @@
 -0.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-29.0,
+1110.0,
+0.0
+]
 },
 {
 "id": "p0521",
@@ -19138,7 +22196,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-13.2,
+1110.0,
+0.0
+]
 },
 {
 "id": "p0522",
@@ -19157,7 +22221,13 @@
 -0.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-29.0,
+1135.0,
+0.0
+]
 },
 {
 "id": "p0523",
@@ -19176,7 +22246,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-13.2,
+1135.0,
+0.0
+]
 },
 {
 "id": "p0524",
@@ -19195,7 +22271,13 @@
 -0.0,
 -0.0
 ],
-"d": 51.9
+"d": 51.9,
+"gr": "#80858f",
+"ip": [
+-154.5,
+1120.0,
+0.0
+]
 },
 {
 "id": "p0525",
@@ -19214,7 +22296,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-138.0,
+1120.0,
+0.0
+]
 },
 {
 "id": "p0526",
@@ -19233,7 +22321,8 @@
 1.0,
 0.0
 ],
-"d": 76.5
+"d": 76.5,
+"gr": "#8c99ad"
 },
 {
 "id": "p0527",
@@ -19252,7 +22341,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+137.3,
+-105.0
+]
 },
 {
 "id": "p0528",
@@ -19271,7 +22366,13 @@
 1.0,
 0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+144.1,
+-105.0
+]
 },
 {
 "id": "p0529",
@@ -19290,7 +22391,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+127.7,
+-105.0
+]
 },
 {
 "id": "p0530",
@@ -19309,7 +22416,13 @@
 -0.0,
 -0.0
 ],
-"d": 39.1
+"d": 39.1,
+"gr": "#80858f",
+"ip": [
+261.4,
+121.0,
+-105.0
+]
 },
 {
 "id": "p0531",
@@ -19328,7 +22441,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+248.9,
+121.0,
+-105.0
+]
 },
 {
 "id": "p0532",
@@ -19347,7 +22466,8 @@
 1.0,
 0.0
 ],
-"d": 76.5
+"d": 76.5,
+"gr": "#8c99ad"
 },
 {
 "id": "p0533",
@@ -19366,7 +22486,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+137.3,
+-105.0
+]
 },
 {
 "id": "p0534",
@@ -19385,7 +22511,13 @@
 1.0,
 0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+144.1,
+-105.0
+]
 },
 {
 "id": "p0535",
@@ -19404,7 +22536,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+127.7,
+-105.0
+]
 },
 {
 "id": "p0536",
@@ -19423,7 +22561,13 @@
 -0.0,
 -0.0
 ],
-"d": 39.1
+"d": 39.1,
+"gr": "#80858f",
+"ip": [
+-261.4,
+121.0,
+-105.0
+]
 },
 {
 "id": "p0537",
@@ -19442,7 +22586,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-248.9,
+121.0,
+-105.0
+]
 },
 {
 "id": "p0538",
@@ -19461,7 +22611,8 @@
 1.0,
 0.0
 ],
-"d": 76.5
+"d": 76.5,
+"gr": "#8c99ad"
 },
 {
 "id": "p0539",
@@ -19480,7 +22631,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+137.3,
+0.0
+]
 },
 {
 "id": "p0540",
@@ -19499,7 +22656,13 @@
 1.0,
 0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+144.1,
+0.0
+]
 },
 {
 "id": "p0541",
@@ -19518,7 +22681,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+127.7,
+0.0
+]
 },
 {
 "id": "p0542",
@@ -19537,7 +22706,13 @@
 -0.0,
 -0.0
 ],
-"d": 212.4
+"d": 212.4,
+"gr": "#80858f",
+"ip": [
+261.4,
+121.0,
+0.0
+]
 },
 {
 "id": "p0543",
@@ -19556,7 +22731,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+248.9,
+121.0,
+0.0
+]
 },
 {
 "id": "p0544",
@@ -19575,7 +22756,8 @@
 1.0,
 0.0
 ],
-"d": 76.5
+"d": 76.5,
+"gr": "#8c99ad"
 },
 {
 "id": "p0545",
@@ -19594,7 +22776,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+137.3,
+0.0
+]
 },
 {
 "id": "p0546",
@@ -19613,7 +22801,13 @@
 1.0,
 0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+144.1,
+0.0
+]
 },
 {
 "id": "p0547",
@@ -19632,7 +22826,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+127.7,
+0.0
+]
 },
 {
 "id": "p0548",
@@ -19651,7 +22851,13 @@
 -0.0,
 -0.0
 ],
-"d": 212.4
+"d": 212.4,
+"gr": "#80858f",
+"ip": [
+-261.4,
+121.0,
+0.0
+]
 },
 {
 "id": "p0549",
@@ -19670,7 +22876,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-248.9,
+121.0,
+0.0
+]
 },
 {
 "id": "p0550",
@@ -19689,7 +22901,8 @@
 1.0,
 0.0
 ],
-"d": 76.5
+"d": 76.5,
+"gr": "#8c99ad"
 },
 {
 "id": "p0551",
@@ -19708,7 +22921,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+137.3,
+105.0
+]
 },
 {
 "id": "p0552",
@@ -19727,7 +22946,13 @@
 1.0,
 0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+144.1,
+105.0
+]
 },
 {
 "id": "p0553",
@@ -19746,7 +22971,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+127.7,
+105.0
+]
 },
 {
 "id": "p0554",
@@ -19765,7 +22996,13 @@
 -0.0,
 -0.0
 ],
-"d": 210.0
+"d": 210.0,
+"gr": "#80858f",
+"ip": [
+261.4,
+121.0,
+105.0
+]
 },
 {
 "id": "p0555",
@@ -19784,7 +23021,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+248.9,
+121.0,
+105.0
+]
 },
 {
 "id": "p0556",
@@ -19803,7 +23046,8 @@
 1.0,
 0.0
 ],
-"d": 76.5
+"d": 76.5,
+"gr": "#8c99ad"
 },
 {
 "id": "p0557",
@@ -19822,7 +23066,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+137.3,
+105.0
+]
 },
 {
 "id": "p0558",
@@ -19841,7 +23091,13 @@
 1.0,
 0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+144.1,
+105.0
+]
 },
 {
 "id": "p0559",
@@ -19860,7 +23116,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+127.7,
+105.0
+]
 },
 {
 "id": "p0560",
@@ -19879,7 +23141,13 @@
 -0.0,
 -0.0
 ],
-"d": 206.3
+"d": 206.3,
+"gr": "#80858f",
+"ip": [
+-261.4,
+121.0,
+105.0
+]
 },
 {
 "id": "p0561",
@@ -19898,7 +23166,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-248.9,
+121.0,
+105.0
+]
 },
 {
 "id": "p0562",
@@ -19922,7 +23196,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f58c21"
 },
 {
 "id": "p0563",
@@ -19941,7 +23216,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+192.2,
+1119.0,
+-37.2
+]
 },
 {
 "id": "p0564",
@@ -19960,7 +23241,13 @@
 -0.0,
 -0.0
 ],
-"d": 57.5
+"d": 57.5,
+"gr": "#80858f",
+"ip": [
+195.5,
+1119.0,
+-37.2
+]
 },
 {
 "id": "p0565",
@@ -19979,7 +23266,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+177.8,
+1119.0,
+-37.2
+]
 },
 {
 "id": "p0566",
@@ -19998,7 +23291,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+175.5,
+1119.0,
+-37.2
+]
 },
 {
 "id": "p0567",
@@ -20017,7 +23316,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+192.2,
+1108.0,
+-37.2
+]
 },
 {
 "id": "p0568",
@@ -20036,7 +23341,13 @@
 -0.0,
 -0.0
 ],
-"d": 57.5
+"d": 57.5,
+"gr": "#80858f",
+"ip": [
+195.5,
+1108.0,
+-37.2
+]
 },
 {
 "id": "p0569",
@@ -20055,7 +23366,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+177.8,
+1108.0,
+-37.2
+]
 },
 {
 "id": "p0570",
@@ -20074,7 +23391,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+175.5,
+1108.0,
+-37.2
+]
 },
 {
 "id": "p0571",
@@ -20098,7 +23421,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#80858f"
 },
 {
 "id": "p0572",
@@ -20122,7 +23446,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#c7ccd4"
 },
 {
 "id": "p0573",
@@ -20146,6 +23471,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+222.9,
+1067.0,
+-1.2
 ]
 },
 {
@@ -20170,6 +23501,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+231.9,
+1073.0,
+-7.3
 ]
 },
 {
@@ -20194,6 +23531,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+228.4,
+1073.0,
+-7.3
 ]
 },
 {
@@ -20218,6 +23561,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+231.9,
+1073.0,
+4.8
 ]
 },
 {
@@ -20242,6 +23591,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+228.4,
+1073.0,
+4.8
 ]
 },
 {
@@ -20266,6 +23621,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+231.9,
+1061.0,
+4.8
 ]
 },
 {
@@ -20290,6 +23651,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+228.4,
+1061.0,
+4.8
 ]
 },
 {
@@ -20314,6 +23681,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+231.9,
+1061.0,
+-7.3
 ]
 },
 {
@@ -20338,6 +23711,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+228.4,
+1061.0,
+-7.3
 ]
 },
 {
@@ -20362,7 +23741,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#2e85db"
 },
 {
 "id": "p0583",
@@ -20386,7 +23766,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#80858f"
 },
 {
 "id": "p0584",
@@ -20410,6 +23791,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+161.5,
+1067.0,
+-1.2
 ]
 },
 {
@@ -20434,6 +23821,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+156.0,
+1067.0,
+-1.2
 ]
 },
 {
@@ -20459,7 +23852,13 @@
 -1.0,
 0.0
 ],
-"h": "p0582"
+"h": "p0582",
+"gr": "#dba838",
+"ip": [
+171.5,
+1067.0,
+-1.2
+]
 },
 {
 "id": "p0587",
@@ -20483,7 +23882,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0588",
@@ -20507,7 +23907,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0589",
@@ -20531,6 +23932,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+210.1,
+1032.1,
+3.8
 ]
 },
 {
@@ -20555,6 +23962,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+196.1,
+1032.1,
+3.7
 ]
 },
 {
@@ -20579,6 +23992,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+210.1,
+1032.1,
+-6.2
 ]
 },
 {
@@ -20603,6 +24022,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+196.1,
+1032.1,
+-6.3
 ]
 },
 {
@@ -20627,6 +24052,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+210.1,
+1081.6,
+3.8
 ]
 },
 {
@@ -20651,6 +24082,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+196.1,
+1081.6,
+3.7
 ]
 },
 {
@@ -20675,6 +24112,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+210.1,
+1081.6,
+-6.2
 ]
 },
 {
@@ -20699,6 +24142,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+196.1,
+1081.6,
+-6.3
 ]
 },
 {
@@ -20723,7 +24172,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0598",
@@ -20747,7 +24197,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0599",
@@ -20771,6 +24222,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+219.9,
+958.0,
+-6.2
 ]
 },
 {
@@ -20795,6 +24252,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+219.9,
+972.0,
+-6.3
 ]
 },
 {
@@ -20819,6 +24282,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+219.9,
+958.0,
+3.8
 ]
 },
 {
@@ -20843,6 +24312,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+219.9,
+972.0,
+3.7
 ]
 },
 {
@@ -20867,6 +24342,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+170.4,
+958.0,
+-6.2
 ]
 },
 {
@@ -20891,6 +24372,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+170.4,
+972.0,
+-6.3
 ]
 },
 {
@@ -20915,6 +24402,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+170.4,
+958.0,
+3.8
 ]
 },
 {
@@ -20939,6 +24432,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+170.4,
+972.0,
+3.7
 ]
 },
 {
@@ -20963,7 +24462,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#c7ccd4"
 },
 {
 "id": "p0608",
@@ -20987,6 +24487,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+185.0,
+945.2,
+-1.2
 ]
 },
 {
@@ -21011,7 +24517,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f58c21"
 },
 {
 "id": "p0610",
@@ -21035,6 +24542,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+179.0,
+941.2,
+4.8
 ]
 },
 {
@@ -21059,6 +24572,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+179.0,
+941.2,
+-7.3
 ]
 },
 {
@@ -21083,6 +24602,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+191.0,
+941.2,
+-7.3
 ]
 },
 {
@@ -21107,6 +24632,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+191.0,
+941.2,
+4.8
 ]
 },
 {
@@ -21131,7 +24662,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#2e85db"
 },
 {
 "id": "p0615",
@@ -21156,7 +24688,13 @@
 -1.0,
 0.0
 ],
-"h": "p0609"
+"h": "p0609",
+"gr": "#dba838",
+"ip": [
+196.2,
+944.2,
+-1.2
+]
 },
 {
 "id": "p0616",
@@ -21180,6 +24718,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+203.6,
+944.2,
+-1.2
 ]
 },
 {
@@ -21205,7 +24749,13 @@
 -1.0,
 0.0
 ],
-"h": "p0609"
+"h": "p0609",
+"gr": "#dba838",
+"ip": [
+173.8,
+944.2,
+-1.2
+]
 },
 {
 "id": "p0618",
@@ -21229,6 +24779,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+166.4,
+944.2,
+-1.3
 ]
 },
 {
@@ -21253,7 +24809,8 @@
 -0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f58c21"
 },
 {
 "id": "p0620",
@@ -21272,7 +24829,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-192.2,
+1119.0,
+-37.2
+]
 },
 {
 "id": "p0621",
@@ -21291,7 +24854,13 @@
 -0.0,
 -0.0
 ],
-"d": 57.5
+"d": 57.5,
+"gr": "#80858f",
+"ip": [
+-195.5,
+1119.0,
+-37.2
+]
 },
 {
 "id": "p0622",
@@ -21310,7 +24879,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-177.8,
+1119.0,
+-37.2
+]
 },
 {
 "id": "p0623",
@@ -21329,7 +24904,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-175.5,
+1119.0,
+-37.2
+]
 },
 {
 "id": "p0624",
@@ -21348,7 +24929,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-192.2,
+1108.0,
+-37.2
+]
 },
 {
 "id": "p0625",
@@ -21367,7 +24954,13 @@
 -0.0,
 -0.0
 ],
-"d": 57.5
+"d": 57.5,
+"gr": "#80858f",
+"ip": [
+-195.5,
+1108.0,
+-37.2
+]
 },
 {
 "id": "p0626",
@@ -21386,7 +24979,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-177.8,
+1108.0,
+-37.2
+]
 },
 {
 "id": "p0627",
@@ -21405,7 +25004,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-175.5,
+1108.0,
+-37.2
+]
 },
 {
 "id": "p0628",
@@ -21429,7 +25034,8 @@
 -0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#80858f"
 },
 {
 "id": "p0629",
@@ -21453,7 +25059,8 @@
 -0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#c7ccd4"
 },
 {
 "id": "p0630",
@@ -21477,6 +25084,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-222.9,
+1067.0,
+-1.2
 ]
 },
 {
@@ -21501,6 +25114,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-231.9,
+1073.0,
+-7.3
 ]
 },
 {
@@ -21525,6 +25144,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-228.4,
+1073.0,
+-7.3
 ]
 },
 {
@@ -21549,6 +25174,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-231.9,
+1073.0,
+4.8
 ]
 },
 {
@@ -21573,6 +25204,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-228.4,
+1073.0,
+4.8
 ]
 },
 {
@@ -21597,6 +25234,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-231.9,
+1061.0,
+4.8
 ]
 },
 {
@@ -21621,6 +25264,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-228.4,
+1061.0,
+4.8
 ]
 },
 {
@@ -21645,6 +25294,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-231.9,
+1061.0,
+-7.3
 ]
 },
 {
@@ -21669,6 +25324,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-228.4,
+1061.0,
+-7.3
 ]
 },
 {
@@ -21693,7 +25354,8 @@
 -0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#2e85db"
 },
 {
 "id": "p0640",
@@ -21717,7 +25379,8 @@
 -0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#80858f"
 },
 {
 "id": "p0641",
@@ -21741,6 +25404,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-161.5,
+1067.0,
+-1.2
 ]
 },
 {
@@ -21765,6 +25434,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-156.0,
+1067.0,
+-1.2
 ]
 },
 {
@@ -21790,7 +25465,13 @@
 -1.0,
 0.0
 ],
-"h": "p0639"
+"h": "p0639",
+"gr": "#dba838",
+"ip": [
+-171.5,
+1067.0,
+-1.2
+]
 },
 {
 "id": "p0644",
@@ -21814,7 +25495,8 @@
 -0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0645",
@@ -21838,7 +25520,8 @@
 -0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0646",
@@ -21862,6 +25545,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-210.1,
+1032.1,
+3.8
 ]
 },
 {
@@ -21886,6 +25575,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-196.1,
+1032.1,
+3.7
 ]
 },
 {
@@ -21910,6 +25605,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-210.1,
+1032.1,
+-6.2
 ]
 },
 {
@@ -21934,6 +25635,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-196.1,
+1032.1,
+-6.3
 ]
 },
 {
@@ -21958,6 +25665,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-210.1,
+1081.6,
+3.8
 ]
 },
 {
@@ -21982,6 +25695,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-196.1,
+1081.6,
+3.7
 ]
 },
 {
@@ -22006,6 +25725,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-210.1,
+1081.6,
+-6.2
 ]
 },
 {
@@ -22030,6 +25755,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-196.1,
+1081.6,
+-6.3
 ]
 },
 {
@@ -22054,7 +25785,8 @@
 -0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0655",
@@ -22078,7 +25810,8 @@
 -0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0656",
@@ -22102,6 +25835,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-219.9,
+958.0,
+-6.2
 ]
 },
 {
@@ -22126,6 +25865,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-219.9,
+972.0,
+-6.3
 ]
 },
 {
@@ -22150,6 +25895,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-219.9,
+958.0,
+3.8
 ]
 },
 {
@@ -22174,6 +25925,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-219.9,
+972.0,
+3.7
 ]
 },
 {
@@ -22198,6 +25955,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-170.4,
+958.0,
+-6.2
 ]
 },
 {
@@ -22222,6 +25985,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-170.4,
+972.0,
+-6.3
 ]
 },
 {
@@ -22246,6 +26015,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-170.4,
+958.0,
+3.8
 ]
 },
 {
@@ -22270,6 +26045,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-170.4,
+972.0,
+3.7
 ]
 },
 {
@@ -22294,7 +26075,8 @@
 -0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#c7ccd4"
 },
 {
 "id": "p0665",
@@ -22318,6 +26100,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-185.0,
+945.2,
+-1.2
 ]
 },
 {
@@ -22342,7 +26130,8 @@
 -0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f58c21"
 },
 {
 "id": "p0667",
@@ -22366,6 +26155,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-179.0,
+941.2,
+4.8
 ]
 },
 {
@@ -22390,6 +26185,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-179.0,
+941.2,
+-7.3
 ]
 },
 {
@@ -22414,6 +26215,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-191.0,
+941.2,
+-7.3
 ]
 },
 {
@@ -22438,6 +26245,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-191.0,
+941.2,
+4.8
 ]
 },
 {
@@ -22462,7 +26275,8 @@
 -0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#2e85db"
 },
 {
 "id": "p0672",
@@ -22487,7 +26301,13 @@
 -1.0,
 0.0
 ],
-"h": "p0666"
+"h": "p0666",
+"gr": "#dba838",
+"ip": [
+-196.2,
+944.2,
+-1.2
+]
 },
 {
 "id": "p0673",
@@ -22511,6 +26331,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-203.6,
+944.2,
+-1.2
 ]
 },
 {
@@ -22536,7 +26362,13 @@
 -1.0,
 0.0
 ],
-"h": "p0666"
+"h": "p0666",
+"gr": "#dba838",
+"ip": [
+-173.8,
+944.2,
+-1.2
+]
 },
 {
 "id": "p0675",
@@ -22560,6 +26392,12 @@
 -0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-166.4,
+944.2,
+-1.3
 ]
 },
 {
@@ -22584,7 +26422,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#c7ccd4"
 },
 {
 "id": "p0677",
@@ -22608,7 +26447,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f58c21"
 },
 {
 "id": "p0678",
@@ -22632,7 +26472,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f58c21"
 },
 {
 "id": "p0679",
@@ -22656,7 +26497,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#80858f"
 },
 {
 "id": "p0680",
@@ -22680,7 +26522,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#80858f"
 },
 {
 "id": "p0681",
@@ -22704,7 +26547,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0682",
@@ -22728,7 +26572,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0683",
@@ -22752,6 +26597,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-5.0,
+1324.3,
+34.9
 ]
 },
 {
@@ -22776,6 +26627,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-5.0,
+1327.6,
+34.9
 ]
 },
 {
@@ -22801,7 +26658,13 @@
 1.0,
 0.0
 ],
-"h": "p0677"
+"h": "p0677",
+"gr": "#dba838",
+"ip": [
+-5.0,
+1318.8,
+34.9
+]
 },
 {
 "id": "p0686",
@@ -22825,6 +26688,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+5.0,
+1324.3,
+34.9
 ]
 },
 {
@@ -22849,6 +26718,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+5.0,
+1327.6,
+34.9
 ]
 },
 {
@@ -22874,7 +26749,13 @@
 1.0,
 0.0
 ],
-"h": "p0677"
+"h": "p0677",
+"gr": "#dba838",
+"ip": [
+5.0,
+1318.8,
+34.9
+]
 },
 {
 "id": "p0689",
@@ -22898,6 +26779,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-5.0,
+1324.3,
+-14.6
 ]
 },
 {
@@ -22922,6 +26809,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-5.0,
+1327.6,
+-14.6
 ]
 },
 {
@@ -22947,7 +26840,13 @@
 1.0,
 0.0
 ],
-"h": "p0677"
+"h": "p0677",
+"gr": "#dba838",
+"ip": [
+-5.0,
+1318.8,
+-14.6
+]
 },
 {
 "id": "p0692",
@@ -22971,6 +26870,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+5.0,
+1324.3,
+-14.6
 ]
 },
 {
@@ -22995,6 +26900,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+5.0,
+1327.6,
+-14.6
 ]
 },
 {
@@ -23020,7 +26931,13 @@
 1.0,
 0.0
 ],
-"h": "p0677"
+"h": "p0677",
+"gr": "#dba838",
+"ip": [
+5.0,
+1318.8,
+-14.6
+]
 },
 {
 "id": "p0695",
@@ -23039,7 +26956,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+40.0,
+1298.8,
+0.0
+]
 },
 {
 "id": "p0696",
@@ -23058,7 +26981,13 @@
 1.0,
 -0.0
 ],
-"d": 65.0
+"d": 65.0,
+"gr": "#80858f",
+"ip": [
+40.0,
+1305.6,
+0.0
+]
 },
 {
 "id": "p0697",
@@ -23077,7 +27006,13 @@
 -1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+40.0,
+1283.2,
+0.0
+]
 },
 {
 "id": "p0698",
@@ -23096,7 +27031,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-40.0,
+1298.8,
+0.0
+]
 },
 {
 "id": "p0699",
@@ -23115,7 +27056,13 @@
 1.0,
 -0.0
 ],
-"d": 65.0
+"d": 65.0,
+"gr": "#80858f",
+"ip": [
+-40.0,
+1305.6,
+-0.0
+]
 },
 {
 "id": "p0700",
@@ -23134,7 +27081,13 @@
 -1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-40.0,
+1283.2,
+0.0
+]
 },
 {
 "id": "p0701",
@@ -23158,6 +27111,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+24.0,
+1345.0,
+32.0
 ]
 },
 {
@@ -23183,7 +27142,13 @@
 1.0,
 0.0
 ],
-"h": "p0677"
+"h": "p0677",
+"gr": "#dba838",
+"ip": [
+24.0,
+1333.2,
+32.0
+]
 },
 {
 "id": "p0703",
@@ -23207,6 +27172,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-24.0,
+1345.0,
+32.0
 ]
 },
 {
@@ -23232,7 +27203,13 @@
 1.0,
 0.0
 ],
-"h": "p0677"
+"h": "p0677",
+"gr": "#dba838",
+"ip": [
+-24.0,
+1333.2,
+32.0
+]
 },
 {
 "id": "p0705",
@@ -23256,6 +27233,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+24.0,
+1345.0,
+-24.0
 ]
 },
 {
@@ -23281,7 +27264,13 @@
 1.0,
 0.0
 ],
-"h": "p0677"
+"h": "p0677",
+"gr": "#dba838",
+"ip": [
+24.0,
+1333.2,
+-24.0
+]
 },
 {
 "id": "p0707",
@@ -23305,6 +27294,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-24.0,
+1345.0,
+-24.0
 ]
 },
 {
@@ -23330,7 +27325,13 @@
 1.0,
 0.0
 ],
-"h": "p0677"
+"h": "p0677",
+"gr": "#dba838",
+"ip": [
+-24.0,
+1333.2,
+-24.0
+]
 },
 {
 "id": "p0709",
@@ -23349,7 +27350,8 @@
 1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#c7ccd4"
 },
 {
 "id": "p0710",
@@ -23368,7 +27370,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+0.0,
+1340.9,
+0.0
+]
 },
 {
 "id": "p0711",
@@ -23387,7 +27395,8 @@
 1.0,
 0.0
 ],
-"d": 48.8
+"d": 48.8,
+"gr": "#2e85db"
 },
 {
 "id": "p0712",
@@ -23406,7 +27415,13 @@
 1.0,
 -0.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+6.0,
+1345.9,
+-6.0
+]
 },
 {
 "id": "p0713",
@@ -23425,7 +27440,13 @@
 1.0,
 -0.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+-6.0,
+1345.9,
+-6.0
+]
 },
 {
 "id": "p0714",
@@ -23444,7 +27465,13 @@
 1.0,
 -0.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+-6.0,
+1345.9,
+6.0
+]
 },
 {
 "id": "p0715",
@@ -23463,7 +27490,13 @@
 1.0,
 -0.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+6.0,
+1345.9,
+6.0
+]
 },
 {
 "id": "p0716",
@@ -23482,7 +27515,8 @@
 1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#80858f"
 },
 {
 "id": "p0717",
@@ -23501,7 +27535,8 @@
 1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#80858f"
 },
 {
 "id": "p0718",
@@ -23520,7 +27555,8 @@
 0.0,
 1.0
 ],
-"d": 53.7
+"d": 53.7,
+"gr": "#f58c21"
 },
 {
 "id": "p0719",
@@ -23540,7 +27576,13 @@
 0.0
 ],
 "d": 48.8,
-"h": "p0711"
+"h": "p0711",
+"gr": "#dba838",
+"ip": [
+25.0,
+1383.2,
+0.0
+]
 },
 {
 "id": "p0720",
@@ -23560,7 +27602,13 @@
 0.0
 ],
 "d": 48.8,
-"h": "p0711"
+"h": "p0711",
+"gr": "#dba838",
+"ip": [
+0.0,
+1383.2,
+25.0
+]
 },
 {
 "id": "p0721",
@@ -23580,7 +27628,13 @@
 0.0
 ],
 "d": 48.8,
-"h": "p0711"
+"h": "p0711",
+"gr": "#dba838",
+"ip": [
+-25.0,
+1383.2,
+0.0
+]
 },
 {
 "id": "p0722",
@@ -23600,7 +27654,13 @@
 0.0
 ],
 "d": 48.8,
-"h": "p0711"
+"h": "p0711",
+"gr": "#dba838",
+"ip": [
+0.0,
+1383.2,
+-25.0
+]
 },
 {
 "id": "p0723",
@@ -23619,7 +27679,8 @@
 0.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124"
 },
 {
 "id": "p0724",
@@ -23638,7 +27699,8 @@
 0.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124"
 },
 {
 "id": "p0725",
@@ -23657,7 +27719,13 @@
 -0.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+20.4,
+1473.9,
+-9.9
+]
 },
 {
 "id": "p0726",
@@ -23676,7 +27744,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+6.4,
+1473.9,
+-9.9
+]
 },
 {
 "id": "p0727",
@@ -23695,7 +27769,13 @@
 -0.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+20.4,
+1483.9,
+-9.9
+]
 },
 {
 "id": "p0728",
@@ -23714,7 +27794,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+6.4,
+1483.9,
+-9.9
+]
 },
 {
 "id": "p0729",
@@ -23733,7 +27819,13 @@
 -0.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+20.4,
+1473.9,
+39.6
+]
 },
 {
 "id": "p0730",
@@ -23752,7 +27844,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+6.4,
+1473.9,
+39.6
+]
 },
 {
 "id": "p0731",
@@ -23771,7 +27869,13 @@
 -0.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+20.4,
+1483.9,
+39.6
+]
 },
 {
 "id": "p0732",
@@ -23790,7 +27894,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+6.4,
+1483.9,
+39.6
+]
 },
 {
 "id": "p0733",
@@ -23814,7 +27924,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#80858f"
 },
 {
 "id": "p0734",
@@ -23833,7 +27944,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-29.7,
+1478.9,
+25.0
+]
 },
 {
 "id": "p0735",
@@ -23852,7 +27969,13 @@
 -0.0,
 -0.0
 ],
-"d": 42.5
+"d": 42.5,
+"gr": "#80858f",
+"ip": [
+-35.2,
+1478.9,
+25.0
+]
 },
 {
 "id": "p0736",
@@ -23872,7 +27995,13 @@
 1.0
 ],
 "d": 53.7,
-"h": "p0718"
+"h": "p0718",
+"gr": "#dba838",
+"ip": [
+-19.7,
+1478.9,
+25.0
+]
 },
 {
 "id": "p0737",
@@ -23891,7 +28020,8 @@
 1.0,
 0.0
 ],
-"d": 51.6
+"d": 51.6,
+"gr": "#2e85db"
 },
 {
 "id": "p0738",
@@ -23910,7 +28040,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+26.5,
+1416.9,
+0.0
+]
 },
 {
 "id": "p0739",
@@ -23929,7 +28065,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+25.0,
+1448.1,
+0.0
+]
 },
 {
 "id": "p0740",
@@ -23948,7 +28090,13 @@
 0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+25.0,
+1450.4,
+0.0
+]
 },
 {
 "id": "p0741",
@@ -23967,7 +28115,13 @@
 0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+0.0,
+1416.9,
+26.5
+]
 },
 {
 "id": "p0742",
@@ -23986,7 +28140,13 @@
 0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+0.0,
+1448.1,
+25.0
+]
 },
 {
 "id": "p0743",
@@ -24005,7 +28165,13 @@
 0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+0.0,
+1450.4,
+25.0
+]
 },
 {
 "id": "p0744",
@@ -24024,7 +28190,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-26.5,
+1416.9,
+0.0
+]
 },
 {
 "id": "p0745",
@@ -24043,7 +28215,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-25.0,
+1448.1,
+0.0
+]
 },
 {
 "id": "p0746",
@@ -24062,7 +28240,13 @@
 0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-25.0,
+1450.4,
+0.0
+]
 },
 {
 "id": "p0747",
@@ -24081,7 +28265,13 @@
 0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+0.0,
+1416.9,
+-26.5
+]
 },
 {
 "id": "p0748",
@@ -24100,7 +28290,13 @@
 0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+0.0,
+1448.1,
+-25.0
+]
 },
 {
 "id": "p0749",
@@ -24119,7 +28315,13 @@
 0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+0.0,
+1450.4,
+-25.0
+]
 },
 {
 "id": "p0750",
@@ -24138,7 +28340,8 @@
 0.0,
 1.0
 ],
-"d": 132.7
+"d": 132.7,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0751",
@@ -24157,7 +28360,8 @@
 0.0,
 1.0
 ],
-"d": 128.3
+"d": 128.3,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0752",
@@ -24176,7 +28380,8 @@
 0.0,
 -1.0
 ],
-"d": 141.8
+"d": 141.8,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0753",
@@ -24195,7 +28400,8 @@
 0.0,
 -1.0
 ],
-"d": 137.7
+"d": 137.7,
+"gr": "#e6e8ed"
 },
 {
 "id": "p0754",
@@ -24219,7 +28425,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#2e85db"
 },
 {
 "id": "p0755",
@@ -24238,7 +28445,13 @@
 1.0,
 -0.0
 ],
-"d": 32.5
+"d": 32.5,
+"gr": "#80858f",
+"ip": [
+106.0,
+1513.9,
+10.0
+]
 },
 {
 "id": "p0756",
@@ -24258,7 +28471,13 @@
 -1.0
 ],
 "d": 141.8,
-"h": "p0752"
+"h": "p0752",
+"gr": "#dba838",
+"ip": [
+106.0,
+1503.0,
+10.0
+]
 },
 {
 "id": "p0757",
@@ -24277,7 +28496,13 @@
 1.0,
 -0.0
 ],
-"d": 32.5
+"d": 32.5,
+"gr": "#80858f",
+"ip": [
+106.0,
+1513.9,
+-49.9
+]
 },
 {
 "id": "p0758",
@@ -24297,7 +28522,13 @@
 -1.0
 ],
 "d": 141.8,
-"h": "p0752"
+"h": "p0752",
+"gr": "#dba838",
+"ip": [
+106.0,
+1503.0,
+-49.9
+]
 },
 {
 "id": "p0759",
@@ -24316,7 +28547,13 @@
 1.0,
 -0.0
 ],
-"d": 32.5
+"d": 32.5,
+"gr": "#80858f",
+"ip": [
+-106.0,
+1513.9,
+10.0
+]
 },
 {
 "id": "p0760",
@@ -24336,7 +28573,13 @@
 -1.0
 ],
 "d": 137.7,
-"h": "p0753"
+"h": "p0753",
+"gr": "#dba838",
+"ip": [
+-106.0,
+1503.0,
+10.0
+]
 },
 {
 "id": "p0761",
@@ -24355,7 +28598,13 @@
 1.0,
 -0.0
 ],
-"d": 32.5
+"d": 32.5,
+"gr": "#80858f",
+"ip": [
+-106.0,
+1513.9,
+-49.9
+]
 },
 {
 "id": "p0762",
@@ -24375,7 +28624,13 @@
 -1.0
 ],
 "d": 137.7,
-"h": "p0753"
+"h": "p0753",
+"gr": "#dba838",
+"ip": [
+-106.0,
+1503.0,
+-49.9
+]
 },
 {
 "id": "p0763",
@@ -24395,7 +28650,13 @@
 1.0
 ],
 "d": 132.7,
-"h": "p0750"
+"h": "p0750",
+"gr": "#dba838",
+"ip": [
+-8.0,
+1575.4,
+56.5
+]
 },
 {
 "id": "p0764",
@@ -24414,7 +28675,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-8.0,
+1580.0,
+56.5
+]
 },
 {
 "id": "p0765",
@@ -24434,7 +28701,13 @@
 1.0
 ],
 "d": 132.7,
-"h": "p0750"
+"h": "p0750",
+"gr": "#dba838",
+"ip": [
+-8.0,
+1375.0,
+67.9
+]
 },
 {
 "id": "p0766",
@@ -24453,7 +28726,13 @@
 0.0,
 1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-8.0,
+1375.0,
+73.7
+]
 },
 {
 "id": "p0767",
@@ -24473,7 +28752,13 @@
 -1.0
 ],
 "d": 141.8,
-"h": "p0752"
+"h": "p0752",
+"gr": "#dba838",
+"ip": [
+-8.0,
+1575.4,
+-14.9
+]
 },
 {
 "id": "p0768",
@@ -24492,7 +28777,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-8.0,
+1580.0,
+-14.9
+]
 },
 {
 "id": "p0769",
@@ -24512,7 +28803,13 @@
 -1.0
 ],
 "d": 141.8,
-"h": "p0752"
+"h": "p0752",
+"gr": "#dba838",
+"ip": [
+-8.0,
+1538.9,
+-60.8
+]
 },
 {
 "id": "p0770",
@@ -24531,7 +28828,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-8.0,
+1538.9,
+-66.6
+]
 },
 {
 "id": "p0771",
@@ -24551,7 +28854,13 @@
 -1.0
 ],
 "d": 141.8,
-"h": "p0752"
+"h": "p0752",
+"gr": "#dba838",
+"ip": [
+-8.0,
+1428.9,
+-60.8
+]
 },
 {
 "id": "p0772",
@@ -24570,7 +28879,13 @@
 -0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-8.0,
+1428.9,
+-66.6
+]
 },
 {
 "id": "p0773",
@@ -24590,7 +28905,13 @@
 -1.0
 ],
 "d": 141.8,
-"h": "p0752"
+"h": "p0752",
+"gr": "#dba838",
+"ip": [
+129.7,
+1418.9,
+38.0
+]
 },
 {
 "id": "p0774",
@@ -24609,7 +28930,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+136.7,
+1418.9,
+38.0
+]
 },
 {
 "id": "p0775",
@@ -24629,7 +28956,13 @@
 -1.0
 ],
 "d": 141.8,
-"h": "p0752"
+"h": "p0752",
+"gr": "#dba838",
+"ip": [
+129.7,
+1548.9,
+38.0
+]
 },
 {
 "id": "p0776",
@@ -24648,7 +28981,13 @@
 0.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+136.7,
+1548.9,
+38.0
+]
 },
 {
 "id": "p0777",
@@ -24668,7 +29007,13 @@
 -1.0
 ],
 "d": 137.7,
-"h": "p0753"
+"h": "p0753",
+"gr": "#dba838",
+"ip": [
+-129.7,
+1418.9,
+38.0
+]
 },
 {
 "id": "p0778",
@@ -24687,7 +29032,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-136.7,
+1418.9,
+38.0
+]
 },
 {
 "id": "p0779",
@@ -24707,7 +29058,13 @@
 -1.0
 ],
 "d": 137.7,
-"h": "p0753"
+"h": "p0753",
+"gr": "#dba838",
+"ip": [
+-129.7,
+1548.9,
+38.0
+]
 },
 {
 "id": "p0780",
@@ -24726,7 +29083,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-136.7,
+1548.9,
+38.0
+]
 },
 {
 "id": "p0781",
@@ -24745,7 +29108,8 @@
 0.0,
 -1.0
 ],
-"d": 145.1
+"d": 145.1,
+"gr": "#212124"
 },
 {
 "id": "p0782",
@@ -24764,7 +29128,8 @@
 0.0,
 -1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#2e85db"
 },
 {
 "id": "p0783",
@@ -24783,7 +29148,8 @@
 0.0,
 -1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124"
 },
 {
 "id": "p0784",
@@ -24802,7 +29168,13 @@
 -0.0,
 -1.0
 ],
-"d": 65.0
+"d": 65.0,
+"gr": "#80858f",
+"ip": [
+85.0,
+1546.0,
+58.2
+]
 },
 {
 "id": "p0785",
@@ -24822,7 +29194,13 @@
 1.0
 ],
 "d": 132.7,
-"h": "p0750"
+"h": "p0750",
+"gr": "#dba838",
+"ip": [
+85.0,
+1546.0,
+65.7
+]
 },
 {
 "id": "p0786",
@@ -24841,7 +29219,8 @@
 0.0,
 -1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#2e85db"
 },
 {
 "id": "p0787",
@@ -24860,7 +29239,8 @@
 0.0,
 -1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124"
 },
 {
 "id": "p0788",
@@ -24879,7 +29259,13 @@
 -0.0,
 -1.0
 ],
-"d": 65.0
+"d": 65.0,
+"gr": "#80858f",
+"ip": [
+-85.0,
+1546.0,
+58.2
+]
 },
 {
 "id": "p0789",
@@ -24899,7 +29285,13 @@
 1.0
 ],
 "d": 128.3,
-"h": "p0751"
+"h": "p0751",
+"gr": "#dba838",
+"ip": [
+-85.0,
+1546.0,
+65.7
+]
 },
 {
 "id": "p0790",
@@ -24918,7 +29310,8 @@
 0.0,
 -1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#2e85db"
 },
 {
 "id": "p0791",
@@ -24937,7 +29330,8 @@
 0.0,
 -1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124"
 },
 {
 "id": "p0792",
@@ -24956,7 +29350,13 @@
 -0.0,
 -1.0
 ],
-"d": 65.0
+"d": 65.0,
+"gr": "#80858f",
+"ip": [
+85.0,
+1384.0,
+58.2
+]
 },
 {
 "id": "p0793",
@@ -24976,7 +29376,13 @@
 1.0
 ],
 "d": 132.7,
-"h": "p0750"
+"h": "p0750",
+"gr": "#dba838",
+"ip": [
+85.0,
+1384.0,
+65.7
+]
 },
 {
 "id": "p0794",
@@ -24995,7 +29401,8 @@
 0.0,
 -1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#2e85db"
 },
 {
 "id": "p0795",
@@ -25014,7 +29421,8 @@
 0.0,
 -1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124"
 },
 {
 "id": "p0796",
@@ -25033,7 +29441,13 @@
 -0.0,
 -1.0
 ],
-"d": 65.0
+"d": 65.0,
+"gr": "#80858f",
+"ip": [
+-85.0,
+1384.0,
+58.2
+]
 },
 {
 "id": "p0797",
@@ -25053,7 +29467,13 @@
 1.0
 ],
 "d": 128.3,
-"h": "p0751"
+"h": "p0751",
+"gr": "#dba838",
+"ip": [
+-85.0,
+1384.0,
+65.7
+]
 },
 {
 "id": "p0798",
@@ -25072,7 +29492,8 @@
 0.0,
 -1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#1a7333"
 },
 {
 "id": "p0799",
@@ -25091,7 +29512,13 @@
 -0.0,
 -1.0
 ],
-"d": 65.0
+"d": 65.0,
+"gr": "#80858f",
+"ip": [
+-10.5,
+1553.6,
+60.3
+]
 },
 {
 "id": "p0800",
@@ -25110,7 +29537,13 @@
 -0.0,
 -1.0
 ],
-"d": 65.0
+"d": 65.0,
+"gr": "#80858f",
+"ip": [
+-10.5,
+1566.1,
+60.3
+]
 },
 {
 "id": "p0801",
@@ -25129,7 +29562,13 @@
 -0.0,
 -1.0
 ],
-"d": 65.0
+"d": 65.0,
+"gr": "#80858f",
+"ip": [
+10.5,
+1553.6,
+60.3
+]
 },
 {
 "id": "p0802",
@@ -25148,7 +29587,13 @@
 -0.0,
 -1.0
 ],
-"d": 65.0
+"d": 65.0,
+"gr": "#80858f",
+"ip": [
+10.5,
+1566.1,
+60.3
+]
 },
 {
 "id": "p0803",
@@ -25172,7 +29617,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#1a7333"
 },
 {
 "id": "p0804",
@@ -25196,7 +29642,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#dba838"
 },
 {
 "id": "p0805",
@@ -25220,6 +29667,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-39.0,
+1523.0,
+-6.4
 ]
 },
 {
@@ -25244,6 +29697,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-39.0,
+1503.4,
+-6.4
 ]
 },
 {
@@ -25268,7 +29727,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#dba838"
 },
 {
 "id": "p0808",
@@ -25292,6 +29752,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+19.0,
+1523.0,
+-6.4
 ]
 },
 {
@@ -25316,6 +29782,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+19.0,
+1503.4,
+-6.4
 ]
 },
 {
@@ -25340,7 +29812,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#dba838"
 },
 {
 "id": "p0811",
@@ -25364,6 +29837,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-39.0,
+1523.0,
+-55.4
 ]
 },
 {
@@ -25388,6 +29867,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-39.0,
+1503.4,
+-55.4
 ]
 },
 {
@@ -25412,7 +29897,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#dba838"
 },
 {
 "id": "p0814",
@@ -25436,6 +29922,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+19.0,
+1523.0,
+-55.4
 ]
 },
 {
@@ -25460,6 +29952,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+19.0,
+1503.4,
+-55.4
 ]
 },
 {
@@ -25484,7 +29982,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0817",
@@ -25508,7 +30007,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#1a7333"
 },
 {
 "id": "p0818",
@@ -25532,7 +30032,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0819",
@@ -25556,7 +30057,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#1a7333"
 },
 {
 "id": "p0820",
@@ -25580,7 +30082,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#212124"
 },
 {
 "id": "p0821",
@@ -25604,7 +30107,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#1a7333"
 },
 {
 "id": "p0822",
@@ -25623,7 +30127,8 @@
 0.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124"
 },
 {
 "id": "p0823",
@@ -25642,7 +30147,8 @@
 0.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#1a7333"
 },
 {
 "id": "p0824",
@@ -25661,7 +30167,8 @@
 0.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124"
 },
 {
 "id": "p0825",
@@ -25680,7 +30187,8 @@
 0.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#1a7333"
 },
 {
 "id": "p0826",
@@ -25699,7 +30207,8 @@
 -0.707,
 0.707
 ],
-"d": 50.1
+"d": 50.1,
+"gr": "#1a7333"
 },
 {
 "id": "p0827",
@@ -25718,7 +30227,13 @@
 -1.0,
 -0.0
 ],
-"d": 75.1
+"d": 75.1,
+"gr": "#80858f",
+"ip": [
+51.5,
+1568.7,
+14.9
+]
 },
 {
 "id": "p0828",
@@ -25737,7 +30252,13 @@
 -1.0,
 -0.0
 ],
-"d": 75.1
+"d": 75.1,
+"gr": "#80858f",
+"ip": [
+13.0,
+1568.7,
+2.7
+]
 },
 {
 "id": "p0829",
@@ -25756,7 +30277,13 @@
 -1.0,
 -0.0
 ],
-"d": 75.1
+"d": 75.1,
+"gr": "#80858f",
+"ip": [
+51.5,
+1568.7,
+-24.9
+]
 },
 {
 "id": "p0830",
@@ -25775,7 +30302,8 @@
 0.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#c7ccd4"
 },
 {
 "id": "p0831",
@@ -25794,7 +30322,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+33.2,
+1478.9,
+25.0
+]
 },
 {
 "id": "p0832",
@@ -25818,7 +30352,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#80858f"
 },
 {
 "id": "p0833",
@@ -25837,7 +30372,13 @@
 -0.0,
 -0.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+38.2,
+1484.9,
+31.0
+]
 },
 {
 "id": "p0834",
@@ -25856,7 +30397,13 @@
 -0.0,
 -0.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+38.2,
+1472.9,
+31.0
+]
 },
 {
 "id": "p0835",
@@ -25875,7 +30422,13 @@
 -0.0,
 -0.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+38.2,
+1472.9,
+19.0
+]
 },
 {
 "id": "p0836",
@@ -25894,7 +30447,13 @@
 -0.0,
 -0.0
 ],
-"d": 27.5
+"d": 27.5,
+"gr": "#80858f",
+"ip": [
+38.2,
+1484.9,
+19.0
+]
 },
 {
 "id": "p0837",
@@ -25918,7 +30477,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#9ea6b3"
 },
 {
 "id": "p0838",
@@ -25937,7 +30497,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+85.5,
+-235.0
+]
 },
 {
 "id": "p0839",
@@ -25956,7 +30522,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+101.3,
+-235.0
+]
 },
 {
 "id": "p0840",
@@ -25975,7 +30547,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+85.5,
+-90.0
+]
 },
 {
 "id": "p0841",
@@ -25994,7 +30572,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+101.3,
+-90.0
+]
 },
 {
 "id": "p0842",
@@ -26013,7 +30597,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+85.5,
+90.0
+]
 },
 {
 "id": "p0843",
@@ -26032,7 +30622,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+101.3,
+90.0
+]
 },
 {
 "id": "p0844",
@@ -26051,7 +30647,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+85.5,
+235.0
+]
 },
 {
 "id": "p0845",
@@ -26070,7 +30672,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+101.3,
+235.0
+]
 },
 {
 "id": "p0846",
@@ -26089,7 +30697,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+85.5,
+-235.0
+]
 },
 {
 "id": "p0847",
@@ -26108,7 +30722,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+101.3,
+-235.0
+]
 },
 {
 "id": "p0848",
@@ -26127,7 +30747,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+85.5,
+-90.0
+]
 },
 {
 "id": "p0849",
@@ -26146,7 +30772,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+101.3,
+-90.0
+]
 },
 {
 "id": "p0850",
@@ -26165,7 +30797,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+85.5,
+90.0
+]
 },
 {
 "id": "p0851",
@@ -26184,7 +30822,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+101.3,
+90.0
+]
 },
 {
 "id": "p0852",
@@ -26203,7 +30847,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+85.5,
+235.0
+]
 },
 {
 "id": "p0853",
@@ -26222,7 +30872,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+101.3,
+235.0
+]
 },
 {
 "id": "p0854",
@@ -26241,7 +30897,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-50.0,
+85.5,
+-230.0
+]
 },
 {
 "id": "p0855",
@@ -26260,7 +30922,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-50.0,
+101.3,
+-230.0
+]
 },
 {
 "id": "p0856",
@@ -26279,7 +30947,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-50.0,
+85.5,
+0.0
+]
 },
 {
 "id": "p0857",
@@ -26298,7 +30972,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-50.0,
+101.3,
+0.0
+]
 },
 {
 "id": "p0858",
@@ -26317,7 +30997,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-50.0,
+85.5,
+230.0
+]
 },
 {
 "id": "p0859",
@@ -26336,7 +31022,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-50.0,
+101.3,
+230.0
+]
 },
 {
 "id": "p0860",
@@ -26355,7 +31047,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+50.0,
+85.5,
+-230.0
+]
 },
 {
 "id": "p0861",
@@ -26374,7 +31072,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+50.0,
+101.3,
+-230.0
+]
 },
 {
 "id": "p0862",
@@ -26393,7 +31097,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+50.0,
+85.5,
+0.0
+]
 },
 {
 "id": "p0863",
@@ -26412,7 +31122,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+50.0,
+101.3,
+0.0
+]
 },
 {
 "id": "p0864",
@@ -26431,7 +31147,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+50.0,
+85.5,
+230.0
+]
 },
 {
 "id": "p0865",
@@ -26450,7 +31172,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+50.0,
+101.3,
+230.0
+]
 },
 {
 "id": "p0866",
@@ -26469,7 +31197,13 @@
 -1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+127.7,
+-230.0
+]
 },
 {
 "id": "p0867",
@@ -26488,7 +31222,13 @@
 1.0,
 -0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124",
+"ip": [
+-115.0,
+141.2,
+-230.0
+]
 },
 {
 "id": "p0868",
@@ -26507,7 +31247,8 @@
 1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0869",
@@ -26526,7 +31267,13 @@
 -1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+127.7,
+-40.0
+]
 },
 {
 "id": "p0870",
@@ -26545,7 +31292,13 @@
 1.0,
 -0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124",
+"ip": [
+-115.0,
+141.2,
+-40.0
+]
 },
 {
 "id": "p0871",
@@ -26564,7 +31317,8 @@
 1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0872",
@@ -26583,7 +31337,13 @@
 -1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+127.7,
+40.0
+]
 },
 {
 "id": "p0873",
@@ -26602,7 +31362,13 @@
 1.0,
 -0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124",
+"ip": [
+-115.0,
+141.2,
+40.0
+]
 },
 {
 "id": "p0874",
@@ -26621,7 +31387,8 @@
 1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0875",
@@ -26640,7 +31407,13 @@
 -1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+127.7,
+230.0
+]
 },
 {
 "id": "p0876",
@@ -26659,7 +31432,13 @@
 1.0,
 -0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124",
+"ip": [
+-115.0,
+141.2,
+230.0
+]
 },
 {
 "id": "p0877",
@@ -26678,7 +31457,8 @@
 1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0878",
@@ -26697,7 +31477,13 @@
 -1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+127.7,
+-230.0
+]
 },
 {
 "id": "p0879",
@@ -26716,7 +31502,13 @@
 1.0,
 -0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124",
+"ip": [
+115.0,
+141.2,
+-230.0
+]
 },
 {
 "id": "p0880",
@@ -26735,7 +31527,8 @@
 1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0881",
@@ -26754,7 +31547,13 @@
 -1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+127.7,
+-40.0
+]
 },
 {
 "id": "p0882",
@@ -26773,7 +31572,13 @@
 1.0,
 -0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124",
+"ip": [
+115.0,
+141.2,
+-40.0
+]
 },
 {
 "id": "p0883",
@@ -26792,7 +31597,8 @@
 1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0884",
@@ -26811,7 +31617,13 @@
 -1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+127.7,
+40.0
+]
 },
 {
 "id": "p0885",
@@ -26830,7 +31642,13 @@
 1.0,
 -0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124",
+"ip": [
+115.0,
+141.2,
+40.0
+]
 },
 {
 "id": "p0886",
@@ -26849,7 +31667,8 @@
 1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0887",
@@ -26868,7 +31687,13 @@
 -1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+127.7,
+230.0
+]
 },
 {
 "id": "p0888",
@@ -26887,7 +31712,13 @@
 1.0,
 -0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#212124",
+"ip": [
+115.0,
+141.2,
+230.0
+]
 },
 {
 "id": "p0889",
@@ -26906,7 +31737,8 @@
 1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0890",
@@ -26930,7 +31762,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#d9b37a"
 },
 {
 "id": "p0891",
@@ -26954,7 +31787,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#d9b37a"
 },
 {
 "id": "p0892",
@@ -26973,7 +31807,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+180.0,
+-230.0
+]
 },
 {
 "id": "p0893",
@@ -26992,7 +31832,13 @@
 1.0,
 -0.0
 ],
-"d": 42.5
+"d": 42.5,
+"gr": "#80858f",
+"ip": [
+-115.0,
+185.5,
+-230.0
+]
 },
 {
 "id": "p0894",
@@ -27011,7 +31857,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+180.0,
+-40.0
+]
 },
 {
 "id": "p0895",
@@ -27030,7 +31882,13 @@
 1.0,
 -0.0
 ],
-"d": 42.5
+"d": 42.5,
+"gr": "#80858f",
+"ip": [
+-115.0,
+185.5,
+-40.0
+]
 },
 {
 "id": "p0896",
@@ -27049,7 +31907,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+180.0,
+40.0
+]
 },
 {
 "id": "p0897",
@@ -27068,7 +31932,13 @@
 1.0,
 -0.0
 ],
-"d": 42.5
+"d": 42.5,
+"gr": "#80858f",
+"ip": [
+-115.0,
+185.5,
+40.0
+]
 },
 {
 "id": "p0898",
@@ -27087,7 +31957,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-115.0,
+180.0,
+230.0
+]
 },
 {
 "id": "p0899",
@@ -27106,7 +31982,13 @@
 1.0,
 -0.0
 ],
-"d": 42.5
+"d": 42.5,
+"gr": "#80858f",
+"ip": [
+-115.0,
+185.5,
+230.0
+]
 },
 {
 "id": "p0900",
@@ -27125,7 +32007,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+180.0,
+-230.0
+]
 },
 {
 "id": "p0901",
@@ -27144,7 +32032,13 @@
 1.0,
 -0.0
 ],
-"d": 42.5
+"d": 42.5,
+"gr": "#80858f",
+"ip": [
+115.0,
+185.5,
+-230.0
+]
 },
 {
 "id": "p0902",
@@ -27163,7 +32057,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+180.0,
+-40.0
+]
 },
 {
 "id": "p0903",
@@ -27182,7 +32082,13 @@
 1.0,
 -0.0
 ],
-"d": 42.5
+"d": 42.5,
+"gr": "#80858f",
+"ip": [
+115.0,
+185.5,
+-40.0
+]
 },
 {
 "id": "p0904",
@@ -27201,7 +32107,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+180.0,
+40.0
+]
 },
 {
 "id": "p0905",
@@ -27220,7 +32132,13 @@
 1.0,
 -0.0
 ],
-"d": 42.5
+"d": 42.5,
+"gr": "#80858f",
+"ip": [
+115.0,
+185.5,
+40.0
+]
 },
 {
 "id": "p0906",
@@ -27239,7 +32157,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+115.0,
+180.0,
+230.0
+]
 },
 {
 "id": "p0907",
@@ -27258,7 +32182,13 @@
 1.0,
 -0.0
 ],
-"d": 42.5
+"d": 42.5,
+"gr": "#80858f",
+"ip": [
+115.0,
+185.5,
+230.0
+]
 },
 {
 "id": "p0908",
@@ -27277,7 +32207,8 @@
 0.0,
 0.0
 ],
-"d": 48.1
+"d": 48.1,
+"gr": "#595e66"
 },
 {
 "id": "p0909",
@@ -27296,7 +32227,8 @@
 -1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#80858f"
 },
 {
 "id": "p0910",
@@ -27315,7 +32247,8 @@
 0.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0911",
@@ -27334,7 +32267,8 @@
 0.0,
 0.0
 ],
-"d": 93.0
+"d": 93.0,
+"gr": "#1a1a1c"
 },
 {
 "id": "p0912",
@@ -27353,7 +32287,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-153.0,
+89.6,
+-201.0
+]
 },
 {
 "id": "p0913",
@@ -27372,7 +32312,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-153.0,
+85.2,
+-201.0
+]
 },
 {
 "id": "p0914",
@@ -27391,7 +32337,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-153.0,
+97.0,
+-201.0
+]
 },
 {
 "id": "p0915",
@@ -27410,7 +32362,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-153.0,
+89.6,
+-169.0
+]
 },
 {
 "id": "p0916",
@@ -27429,7 +32387,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-153.0,
+85.2,
+-169.0
+]
 },
 {
 "id": "p0917",
@@ -27448,7 +32412,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-153.0,
+97.0,
+-169.0
+]
 },
 {
 "id": "p0918",
@@ -27467,7 +32437,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-175.5,
+77.2,
+-198.4
+]
 },
 {
 "id": "p0919",
@@ -27486,7 +32462,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-175.5,
+77.2,
+-171.6
+]
 },
 {
 "id": "p0920",
@@ -27505,7 +32487,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-175.5,
+61.8,
+-171.6
+]
 },
 {
 "id": "p0921",
@@ -27524,7 +32512,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-175.5,
+61.8,
+-198.4
+]
 },
 {
 "id": "p0922",
@@ -27543,7 +32537,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-210.9,
+62.5,
+-185.0
+]
 },
 {
 "id": "p0923",
@@ -27562,7 +32562,13 @@
 -0.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-215.3,
+62.5,
+-185.0
+]
 },
 {
 "id": "p0924",
@@ -27581,7 +32587,8 @@
 0.0,
 0.0
 ],
-"d": 48.1
+"d": 48.1,
+"gr": "#595e66"
 },
 {
 "id": "p0925",
@@ -27600,7 +32607,8 @@
 -1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#80858f"
 },
 {
 "id": "p0926",
@@ -27619,7 +32627,8 @@
 0.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0927",
@@ -27638,7 +32647,8 @@
 0.0,
 0.0
 ],
-"d": 93.0
+"d": 93.0,
+"gr": "#1a1a1c"
 },
 {
 "id": "p0928",
@@ -27657,7 +32667,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-153.0,
+89.6,
+169.0
+]
 },
 {
 "id": "p0929",
@@ -27676,7 +32692,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-153.0,
+85.2,
+169.0
+]
 },
 {
 "id": "p0930",
@@ -27695,7 +32717,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-153.0,
+97.0,
+169.0
+]
 },
 {
 "id": "p0931",
@@ -27714,7 +32742,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-153.0,
+89.6,
+201.0
+]
 },
 {
 "id": "p0932",
@@ -27733,7 +32767,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-153.0,
+85.2,
+201.0
+]
 },
 {
 "id": "p0933",
@@ -27752,7 +32792,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-153.0,
+97.0,
+201.0
+]
 },
 {
 "id": "p0934",
@@ -27771,7 +32817,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-175.5,
+77.2,
+198.4
+]
 },
 {
 "id": "p0935",
@@ -27790,7 +32842,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-175.5,
+77.2,
+171.6
+]
 },
 {
 "id": "p0936",
@@ -27809,7 +32867,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-175.5,
+61.8,
+171.6
+]
 },
 {
 "id": "p0937",
@@ -27828,7 +32892,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-175.5,
+61.8,
+198.4
+]
 },
 {
 "id": "p0938",
@@ -27847,7 +32917,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-210.9,
+62.5,
+185.0
+]
 },
 {
 "id": "p0939",
@@ -27866,7 +32942,13 @@
 -0.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+-215.3,
+62.5,
+185.0
+]
 },
 {
 "id": "p0940",
@@ -27885,7 +32967,8 @@
 0.0,
 0.0
 ],
-"d": 48.1
+"d": 48.1,
+"gr": "#595e66"
 },
 {
 "id": "p0941",
@@ -27904,7 +32987,8 @@
 -1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#80858f"
 },
 {
 "id": "p0942",
@@ -27923,7 +33007,8 @@
 0.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0943",
@@ -27942,7 +33027,8 @@
 0.0,
 0.0
 ],
-"d": 93.0
+"d": 93.0,
+"gr": "#1a1a1c"
 },
 {
 "id": "p0944",
@@ -27961,7 +33047,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+153.0,
+89.6,
+-201.0
+]
 },
 {
 "id": "p0945",
@@ -27980,7 +33072,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+153.0,
+85.2,
+-201.0
+]
 },
 {
 "id": "p0946",
@@ -27999,7 +33097,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+153.0,
+97.0,
+-201.0
+]
 },
 {
 "id": "p0947",
@@ -28018,7 +33122,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+153.0,
+89.6,
+-169.0
+]
 },
 {
 "id": "p0948",
@@ -28037,7 +33147,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+153.0,
+85.2,
+-169.0
+]
 },
 {
 "id": "p0949",
@@ -28056,7 +33172,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+153.0,
+97.0,
+-169.0
+]
 },
 {
 "id": "p0950",
@@ -28075,7 +33197,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+175.5,
+77.2,
+-198.4
+]
 },
 {
 "id": "p0951",
@@ -28094,7 +33222,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+175.5,
+77.2,
+-171.6
+]
 },
 {
 "id": "p0952",
@@ -28113,7 +33247,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+175.5,
+61.8,
+-171.6
+]
 },
 {
 "id": "p0953",
@@ -28132,7 +33272,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+175.5,
+61.8,
+-198.4
+]
 },
 {
 "id": "p0954",
@@ -28151,7 +33297,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+210.9,
+62.5,
+-185.0
+]
 },
 {
 "id": "p0955",
@@ -28170,7 +33322,13 @@
 -0.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+215.3,
+62.5,
+-185.0
+]
 },
 {
 "id": "p0956",
@@ -28189,7 +33347,8 @@
 0.0,
 0.0
 ],
-"d": 48.1
+"d": 48.1,
+"gr": "#595e66"
 },
 {
 "id": "p0957",
@@ -28208,7 +33367,8 @@
 -1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#80858f"
 },
 {
 "id": "p0958",
@@ -28227,7 +33387,8 @@
 0.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#dba838"
 },
 {
 "id": "p0959",
@@ -28246,7 +33407,8 @@
 0.0,
 0.0
 ],
-"d": 93.0
+"d": 93.0,
+"gr": "#1a1a1c"
 },
 {
 "id": "p0960",
@@ -28265,7 +33427,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+153.0,
+89.6,
+169.0
+]
 },
 {
 "id": "p0961",
@@ -28284,7 +33452,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+153.0,
+85.2,
+169.0
+]
 },
 {
 "id": "p0962",
@@ -28303,7 +33477,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+153.0,
+97.0,
+169.0
+]
 },
 {
 "id": "p0963",
@@ -28322,7 +33502,13 @@
 -1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+153.0,
+89.6,
+201.0
+]
 },
 {
 "id": "p0964",
@@ -28341,7 +33527,13 @@
 -1.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+153.0,
+85.2,
+201.0
+]
 },
 {
 "id": "p0965",
@@ -28360,7 +33552,13 @@
 1.0,
 0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+153.0,
+97.0,
+201.0
+]
 },
 {
 "id": "p0966",
@@ -28379,7 +33577,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+175.5,
+77.2,
+198.4
+]
 },
 {
 "id": "p0967",
@@ -28398,7 +33602,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+175.5,
+77.2,
+171.6
+]
 },
 {
 "id": "p0968",
@@ -28417,7 +33627,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+175.5,
+61.8,
+171.6
+]
 },
 {
 "id": "p0969",
@@ -28436,7 +33652,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+175.5,
+61.8,
+198.4
+]
 },
 {
 "id": "p0970",
@@ -28455,7 +33677,13 @@
 -0.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+210.9,
+62.5,
+185.0
+]
 },
 {
 "id": "p0971",
@@ -28474,7 +33702,13 @@
 -0.0,
 -0.0
 ],
-"d": 50.0
+"d": 50.0,
+"gr": "#80858f",
+"ip": [
+215.3,
+62.5,
+185.0
+]
 },
 {
 "id": "p0972",
@@ -28493,7 +33727,8 @@
 1.0,
 0.0
 ],
-"d": 132.0
+"d": 132.0,
+"gr": "#336bbf"
 },
 {
 "id": "p0973",
@@ -28512,7 +33747,8 @@
 1.0,
 0.0
 ],
-"d": 102.2
+"d": 102.2,
+"gr": "#212124"
 },
 {
 "id": "p0974",
@@ -28531,7 +33767,8 @@
 1.0,
 0.0
 ],
-"d": 102.2
+"d": 102.2,
+"gr": "#212124"
 },
 {
 "id": "p0975",
@@ -28555,7 +33792,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f58c21"
 },
 {
 "id": "p0976",
@@ -28580,7 +33818,13 @@
 -1.0,
 0.0
 ],
-"h": "p0975"
+"h": "p0975",
+"gr": "#dba838",
+"ip": [
+-60.0,
+97.3,
+-29.0
+]
 },
 {
 "id": "p0977",
@@ -28604,6 +33848,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-60.0,
+88.5,
+-29.0
 ]
 },
 {
@@ -28629,7 +33879,13 @@
 -1.0,
 0.0
 ],
-"h": "p0975"
+"h": "p0975",
+"gr": "#dba838",
+"ip": [
+60.0,
+97.3,
+-29.0
+]
 },
 {
 "id": "p0979",
@@ -28653,6 +33909,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+60.0,
+88.5,
+-29.0
 ]
 },
 {
@@ -28672,7 +33934,8 @@
 1.0,
 0.0
 ],
-"d": 41.4
+"d": 41.4,
+"gr": "#b31f1f"
 },
 {
 "id": "p0981",
@@ -28696,7 +33959,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p0982",
@@ -28715,7 +33979,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-88.5,
+107.1,
+144.0
+]
 },
 {
 "id": "p0983",
@@ -28739,6 +34009,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-88.5,
+88.5,
+144.0
 ]
 },
 {
@@ -28763,7 +34039,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p0985",
@@ -28782,7 +34059,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-88.5,
+107.1,
+186.0
+]
 },
 {
 "id": "p0986",
@@ -28806,6 +34089,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-88.5,
+88.5,
+186.0
 ]
 },
 {
@@ -28830,7 +34119,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p0988",
@@ -28849,7 +34139,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-46.5,
+107.1,
+144.0
+]
 },
 {
 "id": "p0989",
@@ -28873,6 +34169,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-46.5,
+88.5,
+144.0
 ]
 },
 {
@@ -28897,7 +34199,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p0991",
@@ -28916,7 +34219,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-46.5,
+107.1,
+186.0
+]
 },
 {
 "id": "p0992",
@@ -28940,6 +34249,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-46.5,
+88.5,
+186.0
 ]
 },
 {
@@ -28959,7 +34274,8 @@
 1.0,
 0.0
 ],
-"d": 41.4
+"d": 41.4,
+"gr": "#b31f1f"
 },
 {
 "id": "p0994",
@@ -28983,7 +34299,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p0995",
@@ -29002,7 +34319,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+46.5,
+107.1,
+144.0
+]
 },
 {
 "id": "p0996",
@@ -29026,6 +34349,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+46.5,
+88.5,
+144.0
 ]
 },
 {
@@ -29050,7 +34379,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p0998",
@@ -29069,7 +34399,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+46.5,
+107.1,
+186.0
+]
 },
 {
 "id": "p0999",
@@ -29093,6 +34429,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+46.5,
+88.5,
+186.0
 ]
 },
 {
@@ -29117,7 +34459,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1001",
@@ -29136,7 +34479,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+88.5,
+107.1,
+144.0
+]
 },
 {
 "id": "p1002",
@@ -29160,6 +34509,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+88.5,
+88.5,
+144.0
 ]
 },
 {
@@ -29184,7 +34539,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1004",
@@ -29203,7 +34559,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+88.5,
+107.1,
+186.0
+]
 },
 {
 "id": "p1005",
@@ -29227,6 +34589,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+88.5,
+88.5,
+186.0
 ]
 },
 {
@@ -29246,7 +34614,8 @@
 1.0,
 0.0
 ],
-"d": 41.8
+"d": 41.8,
+"gr": "#1a4da6"
 },
 {
 "id": "p1007",
@@ -29270,7 +34639,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1008",
@@ -29289,7 +34659,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-78.2,
+107.1,
+62.0
+]
 },
 {
 "id": "p1009",
@@ -29313,6 +34689,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-78.2,
+88.5,
+62.0
 ]
 },
 {
@@ -29337,7 +34719,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1011",
@@ -29356,7 +34739,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-78.2,
+107.1,
+88.0
+]
 },
 {
 "id": "p1012",
@@ -29380,6 +34769,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-78.2,
+88.5,
+88.0
 ]
 },
 {
@@ -29404,7 +34799,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1014",
@@ -29423,7 +34819,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-20.2,
+107.1,
+62.0
+]
 },
 {
 "id": "p1015",
@@ -29447,6 +34849,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-20.2,
+88.5,
+62.0
 ]
 },
 {
@@ -29471,7 +34879,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1017",
@@ -29490,7 +34899,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-20.2,
+107.1,
+88.0
+]
 },
 {
 "id": "p1018",
@@ -29514,6 +34929,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-20.2,
+88.5,
+88.0
 ]
 },
 {
@@ -29533,7 +34954,8 @@
 1.0,
 0.0
 ],
-"d": 41.8
+"d": 41.8,
+"gr": "#1a4da6"
 },
 {
 "id": "p1020",
@@ -29557,7 +34979,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1021",
@@ -29576,7 +34999,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+20.2,
+107.1,
+62.0
+]
 },
 {
 "id": "p1022",
@@ -29600,6 +35029,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+20.2,
+88.5,
+62.0
 ]
 },
 {
@@ -29624,7 +35059,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1024",
@@ -29643,7 +35079,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+20.2,
+107.1,
+88.0
+]
 },
 {
 "id": "p1025",
@@ -29667,6 +35109,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+20.2,
+88.5,
+88.0
 ]
 },
 {
@@ -29691,7 +35139,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1027",
@@ -29710,7 +35159,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+78.2,
+107.1,
+62.0
+]
 },
 {
 "id": "p1028",
@@ -29734,6 +35189,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+78.2,
+88.5,
+62.0
 ]
 },
 {
@@ -29758,7 +35219,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1030",
@@ -29777,7 +35239,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+78.2,
+107.1,
+88.0
+]
 },
 {
 "id": "p1031",
@@ -29801,6 +35269,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+78.2,
+88.5,
+88.0
 ]
 },
 {
@@ -29820,7 +35294,8 @@
 1.0,
 0.0
 ],
-"d": 41.8
+"d": 41.8,
+"gr": "#1a4da6"
 },
 {
 "id": "p1033",
@@ -29844,7 +35319,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1034",
@@ -29863,7 +35339,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-29.0,
+107.1,
+157.0
+]
 },
 {
 "id": "p1035",
@@ -29887,6 +35369,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-29.0,
+88.5,
+157.0
 ]
 },
 {
@@ -29911,7 +35399,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1037",
@@ -29930,7 +35419,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-29.0,
+107.1,
+183.0
+]
 },
 {
 "id": "p1038",
@@ -29954,6 +35449,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-29.0,
+88.5,
+183.0
 ]
 },
 {
@@ -29978,7 +35479,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1040",
@@ -29997,7 +35499,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+29.0,
+107.1,
+157.0
+]
 },
 {
 "id": "p1041",
@@ -30021,6 +35529,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+29.0,
+88.5,
+157.0
 ]
 },
 {
@@ -30045,7 +35559,8 @@
 0.0,
 -1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1043",
@@ -30064,7 +35579,13 @@
 1.0,
 -0.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+29.0,
+107.1,
+183.0
+]
 },
 {
 "id": "p1044",
@@ -30088,6 +35609,12 @@
 0.0,
 -1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+29.0,
+88.5,
+183.0
 ]
 },
 {
@@ -30112,7 +35639,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#1a4da6"
 },
 {
 "id": "p1046",
@@ -30136,7 +35664,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1047",
@@ -30160,6 +35689,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+68.5,
+192.1,
+-13.0
 ]
 },
 {
@@ -30184,6 +35719,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+68.5,
+171.5,
+-13.0
 ]
 },
 {
@@ -30208,7 +35749,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1050",
@@ -30232,6 +35774,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+68.5,
+192.1,
+13.0
 ]
 },
 {
@@ -30256,6 +35804,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+68.5,
+171.5,
+13.0
 ]
 },
 {
@@ -30280,7 +35834,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1053",
@@ -30304,6 +35859,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+126.5,
+192.1,
+-13.0
 ]
 },
 {
@@ -30328,6 +35889,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+126.5,
+171.5,
+-13.0
 ]
 },
 {
@@ -30352,7 +35919,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1056",
@@ -30376,6 +35944,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+126.5,
+192.1,
+13.0
 ]
 },
 {
@@ -30400,6 +35974,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+126.5,
+171.5,
+13.0
 ]
 },
 {
@@ -30424,7 +36004,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#1a7333"
 },
 {
 "id": "p1059",
@@ -30448,7 +36029,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1060",
@@ -30472,6 +36054,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-130.0,
+192.1,
+-23.5
 ]
 },
 {
@@ -30496,6 +36084,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-130.0,
+171.5,
+-23.5
 ]
 },
 {
@@ -30520,7 +36114,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1063",
@@ -30544,6 +36139,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-130.0,
+192.1,
+21.5
 ]
 },
 {
@@ -30568,6 +36169,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-130.0,
+171.5,
+21.5
 ]
 },
 {
@@ -30592,7 +36199,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1066",
@@ -30616,6 +36224,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-65.0,
+192.1,
+-23.5
 ]
 },
 {
@@ -30640,6 +36254,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-65.0,
+171.5,
+-23.5
 ]
 },
 {
@@ -30664,7 +36284,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1069",
@@ -30688,6 +36309,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-65.0,
+192.1,
+21.5
 ]
 },
 {
@@ -30712,6 +36339,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-65.0,
+171.5,
+21.5
 ]
 },
 {
@@ -30736,7 +36369,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#38383d"
 },
 {
 "id": "p1072",
@@ -30760,6 +36394,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-47.0,
+182.9,
+-213.0
 ]
 },
 {
@@ -30784,6 +36424,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-47.0,
+187.3,
+-213.0
 ]
 },
 {
@@ -30808,6 +36454,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-47.0,
+172.0,
+-213.0
 ]
 },
 {
@@ -30832,6 +36484,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+47.0,
+182.9,
+-213.0
 ]
 },
 {
@@ -30856,6 +36514,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+47.0,
+187.3,
+-213.0
 ]
 },
 {
@@ -30880,6 +36544,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+47.0,
+172.0,
+-213.0
 ]
 },
 {
@@ -30904,7 +36574,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#38383d"
 },
 {
 "id": "p1079",
@@ -30928,6 +36599,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-112.0,
+182.9,
+-150.0
 ]
 },
 {
@@ -30952,6 +36629,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-112.0,
+187.3,
+-150.0
 ]
 },
 {
@@ -30976,6 +36659,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-112.0,
+172.0,
+-150.0
 ]
 },
 {
@@ -31000,7 +36689,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#d91a1a"
 },
 {
 "id": "p1083",
@@ -31019,7 +36709,8 @@
 -1.0,
 0.0
 ],
-"d": 40.6
+"d": 40.6,
+"gr": "#d91a1a"
 },
 {
 "id": "p1084",
@@ -31038,7 +36729,8 @@
 0.0,
 -0.862
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#d91a1a"
 },
 {
 "id": "p1085",
@@ -31062,7 +36754,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#1a7333"
 },
 {
 "id": "p1086",
@@ -31086,7 +36779,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1087",
@@ -31110,6 +36804,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-123.0,
+192.1,
+57.5
 ]
 },
 {
@@ -31134,6 +36834,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-123.0,
+171.5,
+57.5
 ]
 },
 {
@@ -31158,7 +36864,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1090",
@@ -31182,6 +36889,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-123.0,
+192.1,
+102.5
 ]
 },
 {
@@ -31206,6 +36919,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-123.0,
+171.5,
+102.5
 ]
 },
 {
@@ -31230,7 +36949,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1093",
@@ -31254,6 +36974,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-58.0,
+192.1,
+57.5
 ]
 },
 {
@@ -31278,6 +37004,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-58.0,
+171.5,
+57.5
 ]
 },
 {
@@ -31302,7 +37034,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1096",
@@ -31326,6 +37059,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-58.0,
+192.1,
+102.5
 ]
 },
 {
@@ -31350,6 +37089,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-58.0,
+171.5,
+102.5
 ]
 },
 {
@@ -31374,7 +37119,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#1a4da6"
 },
 {
 "id": "p1099",
@@ -31398,7 +37144,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1100",
@@ -31422,6 +37169,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+39.5,
+192.1,
+182.5
 ]
 },
 {
@@ -31446,6 +37199,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+39.5,
+171.5,
+182.5
 ]
 },
 {
@@ -31470,7 +37229,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1103",
@@ -31494,6 +37254,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+39.5,
+192.1,
+227.5
 ]
 },
 {
@@ -31518,6 +37284,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+39.5,
+171.5,
+227.5
 ]
 },
 {
@@ -31542,7 +37314,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1106",
@@ -31566,6 +37339,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+104.5,
+192.1,
+182.5
 ]
 },
 {
@@ -31590,6 +37369,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+104.5,
+171.5,
+182.5
 ]
 },
 {
@@ -31614,7 +37399,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1109",
@@ -31638,6 +37424,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+104.5,
+192.1,
+227.5
 ]
 },
 {
@@ -31662,6 +37454,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+104.5,
+171.5,
+227.5
 ]
 },
 {
@@ -31686,7 +37484,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#1a4da6"
 },
 {
 "id": "p1112",
@@ -31710,7 +37509,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1113",
@@ -31734,6 +37534,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-104.5,
+192.1,
+182.5
 ]
 },
 {
@@ -31758,6 +37564,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-104.5,
+171.5,
+182.5
 ]
 },
 {
@@ -31782,7 +37594,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1116",
@@ -31806,6 +37619,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-104.5,
+192.1,
+227.5
 ]
 },
 {
@@ -31830,6 +37649,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-104.5,
+171.5,
+227.5
 ]
 },
 {
@@ -31854,7 +37679,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1119",
@@ -31878,6 +37704,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-39.5,
+192.1,
+182.5
 ]
 },
 {
@@ -31902,6 +37734,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-39.5,
+171.5,
+182.5
 ]
 },
 {
@@ -31926,7 +37764,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1122",
@@ -31950,6 +37789,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-39.5,
+192.1,
+227.5
 ]
 },
 {
@@ -31974,6 +37819,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-39.5,
+171.5,
+227.5
 ]
 },
 {
@@ -31998,7 +37849,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#1a4da6"
 },
 {
 "id": "p1125",
@@ -32022,7 +37874,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#dba838"
 },
 {
 "id": "p1126",
@@ -32046,6 +37899,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+55.1,
+191.6,
+115.5
 ]
 },
 {
@@ -32070,6 +37929,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+55.1,
+172.0,
+115.5
 ]
 },
 {
@@ -32094,7 +37959,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#dba838"
 },
 {
 "id": "p1129",
@@ -32118,6 +37984,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+55.1,
+191.6,
+134.5
 ]
 },
 {
@@ -32142,6 +38014,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+55.1,
+172.0,
+134.5
 ]
 },
 {
@@ -32166,7 +38044,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#dba838"
 },
 {
 "id": "p1132",
@@ -32190,6 +38069,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+111.0,
+191.6,
+115.5
 ]
 },
 {
@@ -32214,6 +38099,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+111.0,
+172.0,
+115.5
 ]
 },
 {
@@ -32238,7 +38129,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#dba838"
 },
 {
 "id": "p1135",
@@ -32262,6 +38154,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+111.0,
+191.6,
+134.5
 ]
 },
 {
@@ -32286,6 +38184,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+111.0,
+172.0,
+134.5
 ]
 },
 {
@@ -32310,7 +38214,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#1a4da6"
 },
 {
 "id": "p1138",
@@ -32334,7 +38239,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#dba838"
 },
 {
 "id": "p1139",
@@ -32358,6 +38264,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-10.0,
+191.6,
+54.0
 ]
 },
 {
@@ -32382,6 +38294,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-10.0,
+172.0,
+54.0
 ]
 },
 {
@@ -32406,7 +38324,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#dba838"
 },
 {
 "id": "p1142",
@@ -32430,6 +38349,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-10.0,
+191.6,
+66.0
 ]
 },
 {
@@ -32454,6 +38379,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+-10.0,
+172.0,
+66.0
 ]
 },
 {
@@ -32478,7 +38409,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#dba838"
 },
 {
 "id": "p1145",
@@ -32502,6 +38434,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+10.0,
+191.6,
+54.0
 ]
 },
 {
@@ -32526,6 +38464,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+10.0,
+172.0,
+54.0
 ]
 },
 {
@@ -32550,7 +38494,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#dba838"
 },
 {
 "id": "p1148",
@@ -32574,6 +38519,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+10.0,
+191.6,
+66.0
 ]
 },
 {
@@ -32598,6 +38549,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+10.0,
+172.0,
+66.0
 ]
 },
 {
@@ -32622,7 +38579,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#1a7333"
 },
 {
 "id": "p1151",
@@ -32646,7 +38604,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1152",
@@ -32670,6 +38629,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+47.5,
+192.1,
+52.5
 ]
 },
 {
@@ -32694,6 +38659,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+47.5,
+171.5,
+52.5
 ]
 },
 {
@@ -32718,7 +38689,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1155",
@@ -32742,6 +38714,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+47.5,
+192.1,
+97.5
 ]
 },
 {
@@ -32766,6 +38744,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+47.5,
+171.5,
+97.5
 ]
 },
 {
@@ -32790,7 +38774,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1158",
@@ -32814,6 +38799,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+112.5,
+192.1,
+52.5
 ]
 },
 {
@@ -32838,6 +38829,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+112.5,
+171.5,
+52.5
 ]
 },
 {
@@ -32862,7 +38859,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#f2f2e6"
 },
 {
 "id": "p1161",
@@ -32886,6 +38884,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+112.5,
+192.1,
+97.5
 ]
 },
 {
@@ -32910,6 +38914,12 @@
 0.0,
 1.0,
 0.0
+],
+"gr": "#80858f",
+"ip": [
+112.5,
+171.5,
+97.5
 ]
 },
 {
@@ -32934,7 +38944,8 @@
 0.0,
 1.0,
 0.0
-]
+],
+"gr": "#b31f1f"
 },
 {
 "id": "p1164",
@@ -32953,7 +38964,8 @@
 0.0,
 1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#1a4da6"
 },
 {
 "id": "p1165",
@@ -32972,7 +38984,8 @@
 0.0,
 1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#f58c21"
 },
 {
 "id": "p1166",
@@ -32991,7 +39004,13 @@
 -0.0,
 1.0
 ],
-"d": 43.3
+"d": 43.3,
+"gr": "#80858f",
+"ip": [
+-48.4,
+114.5,
+256.3
+]
 },
 {
 "id": "p1167",
@@ -33010,7 +39029,13 @@
 0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-48.4,
+114.5,
+243.2
+]
 },
 {
 "id": "p1168",
@@ -33029,7 +39054,8 @@
 0.0,
 1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#1a4da6"
 },
 {
 "id": "p1169",
@@ -33048,7 +39074,8 @@
 0.0,
 1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#f58c21"
 },
 {
 "id": "p1170",
@@ -33067,7 +39094,13 @@
 -0.0,
 1.0
 ],
-"d": 43.3
+"d": 43.3,
+"gr": "#80858f",
+"ip": [
+-31.0,
+114.5,
+256.3
+]
 },
 {
 "id": "p1171",
@@ -33086,7 +39119,13 @@
 0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+-31.0,
+114.5,
+243.2
+]
 },
 {
 "id": "p1172",
@@ -33105,7 +39144,13 @@
 -0.0,
 1.0
 ],
-"d": 43.3
+"d": 43.3,
+"gr": "#80858f",
+"ip": [
+31.0,
+114.5,
+256.3
+]
 },
 {
 "id": "p1173",
@@ -33124,7 +39169,13 @@
 0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+31.0,
+114.5,
+243.2
+]
 },
 {
 "id": "p1174",
@@ -33143,7 +39194,8 @@
 0.0,
 1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#1a4da6"
 },
 {
 "id": "p1175",
@@ -33162,7 +39214,8 @@
 0.0,
 1.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#f58c21"
 },
 {
 "id": "p1176",
@@ -33181,7 +39234,13 @@
 -0.0,
 1.0
 ],
-"d": 43.3
+"d": 43.3,
+"gr": "#80858f",
+"ip": [
+48.4,
+114.5,
+256.3
+]
 },
 {
 "id": "p1177",
@@ -33200,7 +39259,13 @@
 0.0,
 -1.0
 ],
-"d": 25.0
+"d": 25.0,
+"gr": "#80858f",
+"ip": [
+48.4,
+114.5,
+243.2
+]
 },
 {
 "id": "p1178",
@@ -33219,7 +39284,8 @@
 0.0,
 -1.0
 ],
-"d": 44.7
+"d": 44.7,
+"gr": "#d91a1a"
 },
 {
 "id": "p1179",
@@ -33238,7 +39304,8 @@
 -1.0,
 0.0
 ],
-"d": 40.0
+"d": 40.0,
+"gr": "#38383d"
 },
 {
 "id": "p1180",
@@ -33258,7 +39325,8 @@
 -1.0
 ],
 "d": 158.0,
-"renk": "#d63031"
+"renk": "#d63031",
+"gr": "#f20d0d"
 },
 {
 "id": "p1181",
@@ -33278,7 +39346,8 @@
 -0.934
 ],
 "d": 64.0,
-"renk": "#222222"
+"renk": "#222222",
+"gr": "#0d0d0d"
 },
 {
 "id": "p1182",
@@ -33298,7 +39367,8 @@
 -0.017
 ],
 "d": 222.6,
-"renk": "#e67e22"
+"renk": "#e67e22",
+"gr": "#ff8000"
 },
 {
 "id": "p1183",
@@ -33318,7 +39388,8 @@
 0.168
 ],
 "d": 220.0,
-"renk": "#e67e22"
+"renk": "#e67e22",
+"gr": "#ff8000"
 },
 {
 "id": "p1184",
@@ -33338,7 +39409,8 @@
 0.987
 ],
 "d": 607.0,
-"renk": "#e2b714"
+"renk": "#e2b714",
+"gr": "#f2d90d"
 },
 {
 "id": "p1185",
@@ -33358,7 +39430,8 @@
 -1.0
 ],
 "d": 58.9,
-"renk": "#e2b714"
+"renk": "#e2b714",
+"gr": "#f2d90d"
 },
 {
 "id": "p1186",
@@ -33378,7 +39451,8 @@
 0.54
 ],
 "d": 602.2,
-"renk": "#e2b714"
+"renk": "#e2b714",
+"gr": "#f2d90d"
 },
 {
 "id": "p1187",
@@ -33398,7 +39472,8 @@
 -0.941
 ],
 "d": 587.2,
-"renk": "#2f86d4"
+"renk": "#2f86d4",
+"gr": "#f20d0d"
 },
 {
 "id": "p1188",
@@ -33418,7 +39493,8 @@
 -0.473
 ],
 "d": 194.8,
-"renk": "#2f86d4"
+"renk": "#2f86d4",
+"gr": "#1a73ff"
 },
 {
 "id": "p1189",
@@ -33438,7 +39514,8 @@
 -0.999
 ],
 "d": 186.5,
-"renk": "#2e9e4f"
+"renk": "#2e9e4f",
+"gr": "#0dbf33"
 },
 {
 "id": "p1190",
@@ -33458,7 +39535,8 @@
 0.998
 ],
 "d": 136.8,
-"renk": "#8e44ad"
+"renk": "#8e44ad",
+"gr": "#9933cc"
 },
 {
 "id": "p1191",
@@ -33478,7 +39556,403 @@
 0.998
 ],
 "d": 604.2,
-"renk": "#8e44ad"
+"renk": "#8e44ad",
+"gr": "#9933cc"
+}
+],
+"renk_kaynak": {
+"yontem": "parça rengi = modül gorsel betiğinin RENK tablosundan RENK.get(FCStd Renk özelliği, RENK['gri']) (FreeCAD'siz: Document.xml + ast); denetim: FCStd GuiDocument.xml ShapeAppearance yayınık rengi",
+"betik": "tasarim/freecad/rehber/rehber_gorunum.py",
+"tablo": {
+"iskelet": "tasarim/freecad/iskelet/iskelet_gorsel.py",
+"omuz": "tasarim/freecad/omuz/omuz_gorsel.py",
+"kabuk": "tasarim/freecad/kabuk/kabuk_gorsel.py",
+"dirsek": "tasarim/freecad/dirsek/dirsek_gorsel.py",
+"kafa": "tasarim/freecad/kafa/kafa_gorsel.py",
+"taban": "tasarim/freecad/taban/taban_gorsel.py"
+},
+"parca": 1192,
+"veri_cad_eslesen": 1192,
+"denetim": {
+"gui_kayitli": 1031,
+"ayni": 1031,
+"farkli": [],
+"gui_yok": 161,
+"gui_yok_modul": [
+"kafa"
+]
+},
+"tabloda_olmayan_ad": [
+"kabuk:pcb"
+],
+"ozet": [
+{
+"modul": "dirsek",
+"ad": "alu",
+"renk": "#c7ccd4",
+"adet": 4
+},
+{
+"modul": "dirsek",
+"ad": "celik",
+"renk": "#80858f",
+"adet": 88
+},
+{
+"modul": "dirsek",
+"ad": "petg",
+"renk": "#f58c21",
+"adet": 4
+},
+{
+"modul": "dirsek",
+"ad": "petg2",
+"renk": "#2e85db",
+"adet": 4
+},
+{
+"modul": "dirsek",
+"ad": "pirinc",
+"renk": "#dba838",
+"adet": 6
+},
+{
+"modul": "dirsek",
+"ad": "siyah",
+"renk": "#212124",
+"adet": 8
+},
+{
+"modul": "iskelet",
+"ad": "alu",
+"renk": "#c7ccd4",
+"adet": 7
+},
+{
+"modul": "iskelet",
+"ad": "alu2",
+"renk": "#8c99ad",
+"adet": 4
+},
+{
+"modul": "iskelet",
+"ad": "celik",
+"renk": "#80858f",
+"adet": 24
+},
+{
+"modul": "iskelet",
+"ad": "celik2",
+"renk": "#dba838",
+"adet": 8
+},
+{
+"modul": "iskelet",
+"ad": "siyah",
+"renk": "#212124",
+"adet": 16
+},
+{
+"modul": "kabuk",
+"ad": "alu2",
+"renk": "#8c99ad",
+"adet": 14
+},
+{
+"modul": "kabuk",
+"ad": "celik",
+"renk": "#80858f",
+"adet": 198
+},
+{
+"modul": "kabuk",
+"ad": "kabuk",
+"renk": "#e6e8ed",
+"adet": 33
+},
+{
+"modul": "kabuk",
+"ad": "pcb",
+"renk": "#999999",
+"adet": 1
+},
+{
+"modul": "kabuk",
+"ad": "pirinc",
+"renk": "#dba838",
+"adet": 106
+},
+{
+"modul": "kabuk",
+"ad": "siyah",
+"renk": "#212124",
+"adet": 5
+},
+{
+"modul": "kafa",
+"ad": "alu",
+"renk": "#c7ccd4",
+"adet": 3
+},
+{
+"modul": "kafa",
+"ad": "celik",
+"renk": "#80858f",
+"adet": 88
+},
+{
+"modul": "kafa",
+"ad": "kabuk",
+"renk": "#e6e8ed",
+"adet": 4
+},
+{
+"modul": "kafa",
+"ad": "pcb",
+"renk": "#1a7333",
+"adet": 8
+},
+{
+"modul": "kafa",
+"ad": "petg",
+"renk": "#f58c21",
+"adet": 3
+},
+{
+"modul": "kafa",
+"ad": "petg2",
+"renk": "#2e85db",
+"adet": 7
+},
+{
+"modul": "kafa",
+"ad": "pirinc",
+"renk": "#dba838",
+"adet": 34
+},
+{
+"modul": "kafa",
+"ad": "siyah",
+"renk": "#212124",
+"adet": 14
+},
+{
+"modul": "omuz",
+"ad": "alu",
+"renk": "#c7ccd4",
+"adet": 4
+},
+{
+"modul": "omuz",
+"ad": "celik",
+"renk": "#80858f",
+"adet": 98
+},
+{
+"modul": "omuz",
+"ad": "gri",
+"renk": "#999999",
+"adet": 4
+},
+{
+"modul": "omuz",
+"ad": "petg",
+"renk": "#f58c21",
+"adet": 8
+},
+{
+"modul": "omuz",
+"ad": "petg2",
+"renk": "#2e85db",
+"adet": 4
+},
+{
+"modul": "omuz",
+"ad": "pirinc",
+"renk": "#dba838",
+"adet": 20
+},
+{
+"modul": "omuz",
+"ad": "siyah",
+"renk": "#212124",
+"adet": 8
+},
+{
+"modul": "taban",
+"ad": "ahsap",
+"renk": "#d9b37a",
+"adet": 2
+},
+{
+"modul": "taban",
+"ad": "aku",
+"renk": "#336bbf",
+"adet": 1
+},
+{
+"modul": "taban",
+"ad": "alu2",
+"renk": "#9ea6b3",
+"adet": 1
+},
+{
+"modul": "taban",
+"ad": "celik",
+"renk": "#80858f",
+"adet": 227
+},
+{
+"modul": "taban",
+"ad": "k_kirmizi",
+"renk": "#f20d0d",
+"adet": 2
+},
+{
+"modul": "taban",
+"ad": "k_mavi",
+"renk": "#1a73ff",
+"adet": 1
+},
+{
+"modul": "taban",
+"ad": "k_mor",
+"renk": "#9933cc",
+"adet": 2
+},
+{
+"modul": "taban",
+"ad": "k_sari",
+"renk": "#f2d90d",
+"adet": 3
+},
+{
+"modul": "taban",
+"ad": "k_siyah",
+"renk": "#0d0d0d",
+"adet": 1
+},
+{
+"modul": "taban",
+"ad": "k_turuncu",
+"renk": "#ff8000",
+"adet": 2
+},
+{
+"modul": "taban",
+"ad": "k_yesil",
+"renk": "#0dbf33",
+"adet": 1
+},
+{
+"modul": "taban",
+"ad": "kirmizi",
+"renk": "#d91a1a",
+"adet": 4
+},
+{
+"modul": "taban",
+"ad": "koyu",
+"renk": "#38383d",
+"adet": 3
+},
+{
+"modul": "taban",
+"ad": "lastik",
+"renk": "#1a1a1c",
+"adet": 4
+},
+{
+"modul": "taban",
+"ad": "motor",
+"renk": "#595e66",
+"adet": 4
+},
+{
+"modul": "taban",
+"ad": "naylon",
+"renk": "#f2f2e6",
+"adet": 44
+},
+{
+"modul": "taban",
+"ad": "pcb_k",
+"renk": "#b31f1f",
+"adet": 3
+},
+{
+"modul": "taban",
+"ad": "pcb_m",
+"renk": "#1a4da6",
+"adet": 11
+},
+{
+"modul": "taban",
+"ad": "pcb_y",
+"renk": "#1a7333",
+"adet": 3
+},
+{
+"modul": "taban",
+"ad": "petg",
+"renk": "#f58c21",
+"adet": 4
+},
+{
+"modul": "taban",
+"ad": "pirinc",
+"renk": "#dba838",
+"adet": 22
+},
+{
+"modul": "taban",
+"ad": "siyah",
+"renk": "#212124",
+"adet": 10
 }
 ]
+},
+"ev_kaynak": {
+"yontem": "ev = konumda yerinde duran (önceki) parçalardan, yeni bağlantı elemanlarının halka noktalarının en az 3'ünü içeren (cıvata: eksen çevresinde r + 0,8 / r + 2,5 mm, 6 yükseklik × 8 açı; somun: dış yüzün 0,8 mm dışı, 3 × 8); bulunmazsa yeni ana parçaların yüzeyinden 0,6 mm (yoksa 1,5, sonra 3 mm) dışarıdaki noktaların en az 6'ünü içeren önceki parça (temas); masada ilk alt adımda önceki parça yoksa birimin yerinde duran tabanı (d = 0, yeni). Mesh: robot.glb, içerde testi eğik ışın paritesi",
+"baglanti_turu": {
+"pul": 66,
+"civata": 514,
+"somun": 137,
+"gomme": 164,
+"diger": 12
+},
+"konum": 99,
+"ev_bulunan": 95,
+"kaynak": {
+"önceki parça yok": 1,
+"baglanti": 73,
+"masa tabanı (yeni)": 15,
+"temas 0.6 mm": 7,
+"yeni parça yok": 3
+},
+"bos": [
+{
+"adres": "1",
+"kod": "A1",
+"neden": "önceki parça yok"
+},
+{
+"adres": "17",
+"kod": "K1",
+"neden": "yeni parça yok"
+},
+{
+"adres": "32",
+"kod": "K2",
+"neden": "yeni parça yok"
+},
+{
+"adres": "49.2",
+"kod": "F5",
+"neden": "yeni parça yok"
+}
+],
+"sure_s": 31.8,
+"sure_baglanti_s": 16.2
+}
 }

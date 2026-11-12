@@ -544,6 +544,9 @@ if __name__ == "__main__":
         shutil.copy2(os.path.join(REHBER, "veri", "rehber-veri.js"), os.path.join(YAZDIR_KOK, "veri"))
     if not g.veri_yok:
         veri()
+    if not g.cikti:                                                     # F10e: görünüm verisi (gerçek renk, bağlandığı yer, işaret
+        import rehber_gorunum                                           # noktası, rehber_metin alanları); FreeCAD'siz, iki yolda da
+        rehber_gorunum.isle()
     if not g.gorsel_yok:
         n = len(json.load(open(os.path.join(REHBER, "veri", "rehber-veri.json"), encoding="utf-8"))["adimlar"])
         ad = [int(x) for x in g.adimlar.split(",") if x.strip()] or list(range(n))

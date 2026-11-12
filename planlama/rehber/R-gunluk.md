@@ -95,7 +95,7 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
 | `... rehber_uret.py --veri-yok --adimlar 1,4,9` | yalnız tarayıcı kontrolü + seçili görüntüler |
 | `... --gorsel-yok` | yalnız veri + mesh |
 | Doğrudan: `FC_SCRIPT=<rehber_veri.py> freecadcmd run_fc.py` | yalnız veri + mesh |
-| Açmak | `rehber/index.html` çift tık (file:// çalışır, internet gerekmez; three.js 0.160.0 `rehber/vendor/` içinde, F10a). Tuşlar: P patlat / topla, Boşluk sıradaki satırı tak, Shift+Boşluk geri al, O öncekiler opak / saydam / gizli, M küçük görünüm, Esc seçimi temizle. `?adim=N` ya da alt adım `?adim=N.J` (F10d), `?cekim=1` (animasyonsuz), `?tema=dark` |
+| Açmak | `rehber/index.html` çift tık (file:// çalışır, internet gerekmez; three.js 0.160.0 `rehber/vendor/` içinde, F10a). Tuşlar: P patlat / topla, Boşluk sıradaki satırı tak, Shift+Boşluk geri al, O öncekiler opak / saydam / gizli, M küçük görünüm, C gerçek / sınıf rengi, I cıvata yeri işaretleri (F10e), Esc seçimi temizle. `?adim=N` ya da alt adım `?adim=N.J` (F10d), `?cekim=1` (animasyonsuz), `?tema=dark`, `?renk=sinif|gercek`, `?isaret=0|1` (F10e) |
 
 ## Sıradaki işler (madde madde)
 1. Kök `README.md` yazıldı (04.11). `tasarim/freecad/README.md` "Rehber" bölümü hâlâ yok: tek komut, ne zaman koşulur (modüller yeniden üretildikten ve
@@ -152,6 +152,17 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
   aynı veri): 50/50 + alt 50/50, konsol 0, 1192 ↔ 1192, ulaşılamaz 0, girilemez 0, uçuş istisnası 12, perdelenme 291 → 262, PDF 69
   sayfa (100 görüntü), en küçük 8,1 pt, denetim 0. Bayraksız tam üretim son kodla bir kez koştu, veriyi yazdıktan sonra bellek yüzünden
   kesildi; yeniden koşulmadı.
+- 2026-11-12 (F10e, P10.4b; `planlama/d158/F10e-gunluk.md`, kontroller `F10e-kontrol.md` (düzeltme gerekli) ve `F10e-kontrol-2.md`
+  (geçer), rapor `F10e-rapor.html`): o adımın parçaları CAD renginde (veri `parcalar[].gr`, yeni `rehber_gorunum.py`; renk FCStd `Renk` ×
+  `<modül>_gorsel.py` `RENK`, FreeCAD'siz), öncekiler gri; sınıf rengi `C` / `?renk=sinif`. Bağlandığı parça pembe (`ev`), bağlantı
+  elemanı yerleri ekranda sabit halka, yakınlar "×n" kümesi (`I` / `?isaret=0`); küçük görünümün altında taraf + y aralığı etiketi.
+  Saydam katmanı olan konumlarda yeni bağlantı elemanı katmanlardan sonra opak çiziliyor. Kontrolle doğrulanan: renk veri ↔ CAD
+  1192 / 1192; vurgu kabukta 41 / 41; işaret 1188 (konum başına; benzersiz bağlantı elemanı 893), kabuk 277; okurun pikseli 25 parçada
+  ekran görüntüsüyle aynı ve eşik üstü (iki temalı tam koşu düzeltme ajanının: 335 parça, eşik altı 0 / 0); anlaşılırlık 42 kabuk alt
+  adımında açık 40 / zor 2 (31.9, 34.7) / anlaşılmıyor 0. Kablo yolu 12 parçası rehber paletinde kaldı (P10.7). Kontrol 07:31 (`--veri-yok`; FreeCAD bu
+  pakette koşmadı, geometri 11.11 15:34 verisinden): 50/50 + alt 50/50, konsol 0, 1192 ↔ 1192, yazdırma 100 / 100, PDF 69 sayfa, en
+  küçük 8,1 pt, denetim 0; F10d / F10a / F10e-dogrula 0, F9b 0, kontrol 0, regresyon 10/10. Üretim bir kez (02:04) bellek kritik
+  düşünce kesildi, 07:00'da baştan koşuldu.
 
 ## Kararlar (tasarım)
 - 09.11 (F7b): Göğüs ekranı / kafa kablo yolları (`lale158/kablo_yolu_ekran.py`) `semalar` olarak girer, `parcalar`a değil: gösterim

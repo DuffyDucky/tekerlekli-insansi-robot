@@ -89,6 +89,8 @@ B'nin önerisi `F10c-kontrol.md` "E3 için karar kuyruğuna önerilen metin"; gi
 P10.4 (F10d, 11.11.2026) düzeltme turu 1'in karar kuyruğu önerisi F10d-K1 → K55 (`planlama/d158/F10d-gunluk.md` §11.5; B'nin önerisi
 `F10d-kontrol.md` "Karar kuyruğuna önerilen metinler"). Uygulama ajanının F10d-K2'si (ısıl gömme adımı; veri düzeltmesiyle çözüldü) ve F10d-K3'ü
 (model girişimi; yapay çıktı, geri çekildi) kuyruğa alınmadı.
+P10.4b (F10e, 12.11.2026) yeni madde açmadı: etek ön bandı ölçümü K55'e not; açık işler sondaki bölümde (`planlama/d158/F10e-gunluk.md` §7.1,
+§12.6; `F10e-kontrol-2.md` §3).
 
 ---
 
@@ -993,6 +995,13 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   geometri paketinde. Yalnız öneri; karar Ahmet'te.
 - **Bloke:** rehber F1 / F3 / F4 takma metni (bugün "bant düz bir yoldan girmiyor (ölçüm, Notlar)"; 8 uçuş istisnası bu maddeye bağlı);
   kabuk baskısı (kupon sonucu); b seçilirse kabuk geometrisi ve çakışma taraması kaynağı.
+- **Not (F10e P10.4b, 12.11.2026), etek ön bandı için c ölçüldü** (`planlama/d158/F10e-gunluk.md` §7.1 ve §12.6; `rehber_giris` ışın
+  aralıkları + nokta–üçgen, `robot.glb`, FreeCAD'siz; yalnız uygulama ajanının ölçümü, bağımsız tekrar yok: kontrolün süpürmesi çıktı
+  yazmadan bitti): etek ön sağ (33.3) ve sol (33.5) bandını braket z+105'teki **perçin somunu tutuyor** (düz +z'de 0,5 mm'de 0,8 mm ortak
+  hacim; somun engelden çıkarılınca düz +z serbest, 181,5 mm'de ayrılıyor). Denenen öteleme yollarında iki parçalı yol bulunmadı: bacak 1
+  için 6 yön (dışa / içe x, ±y, −z, dışa-yukarı) × 6 uzunluk (1, 2, 3, 5, 8, 12 mm), ardından +z; ters sıra (önce +z 0,5 / 1 mm, sonra
+  dışa / ±y) 6; bant başına 42 yol. **Dönme ve ara açılar denenmedi.** Uygulama ajanının adayı: perçin somununu bant yerindeyken bandın
+  deliğinden takmak (sıra değişikliği) ya da a / b. Rehberde uygulanmadı; karar Ahmet'te.
 - **Durum:** açık.
 
 ---
@@ -1025,3 +1034,17 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     bilek flanşı; 8 adet, 458,4 g) "PETG" diyor; etiket modül `*_parcalar.py` `malzeme` alanından geliyor. Zincir PETG-CF ayrımını
     `planlama/y2/Y2b-baski.py` `CF` kümesinden (12 tür / 18 adet) alıyor; liste ve toplamlar doğru. JSON'u tek başına okuyan CF'yi
     735,6–793,4 g sanar. Aynı geometri işinde etiket tek kaynağa bağlanmalı.
+- F10e'den (P10.4b, 12.11.2026) açık iş (`planlama/d158/F10e-gunluk.md` §12, `F10e-kontrol-2.md` §3, `F10e-rapor.html`):
+  - Kablo yolu 12 parçası (`p1180`–`p1191`) sahnede rehberin kablo paletiyle çiziliyor, CAD rengiyle değil (ör. `p1187` CAD kırmızı
+    `#f20d0d` ↔ rehber mavi `#2f86d4`; paketten önce de böyleydi, orkestratör kararıyla bu pakette değişmedi): P10.7 (kablo içeriği).
+  - 34.7 (orta bant sağ + hoparlör) karesi "zor": hoparlör grubu (ön halka, ped, kap, kelepçe) karede küçük, 0,4 opaklıklı katmanların
+    sırası ayırt edilmiyor; kadraj ve saydamlık denendi, geri alındı; kamera taranmadı.
+  - İkinci kontrolün küçük bulguları 1–5, P10.5 (F10f) ile birlikte: (1) çizim sırası değişikliği (yeni bağlantı elemanı saydam
+    katmanlardan sonra) kabuk dışını da etkiliyor (46.1 / 46.2) ve orada okurun pikseli ölçülmedi; (2) saydam katmanın önünde derinlik
+    ipucu kayboluyor (cıvata katmanın önündeymiş gibi duruyor); (3) küçük görünüm etiketinin açıklama metni "yerden yükseklik" diyor ama
+    değer y koordinatı (robotun en alt noktası y = −89 mm); (4) 360 px'te uzun etiket iki satıra kırılıyor (49.3 / 49.4); (5) adım 41
+    metninde "CAD duruşunda" ifadesi okur için belirsiz.
+  - Demo (`tasarim/Robot-Tasarim-Demosu.html`) sınıf paletinde kalıyor (orkestratör kararı; F10e kabulündeki "rehber = demo" ölçütü
+    brief hatası sayıldı). Demoya gerçek renk ayrı istek olursa ayrı paket.
+  - Adım 41 (G4) uyarısı ("CAD duruşunda yandan kaydırılamaz") yalnız CAD duruşunda ölçüldü; kolun metindeki duruşunda (S1 −45 / −20 / 0)
+    ölçülmedi.

@@ -81,6 +81,7 @@ uzatmalar uzatmaya uzun var ve verir victron vida vidalar vidaya waveshare with 
 yaz ye yedek yer yerde yere yeri yerinde yi yok yol yolla yollar yollu yolu yoluna yolunun yu yuva yuvada yuvalar yuvaya zarf
 braketin brakete saydam yerinden yolda karede arkada kapaklarda bantta
 zeminden zorlarsa
+renk
 ama bantla banda beslenir besleme besler bekliyor birlikte boylar burca cam cama dahil dahili damar daldan dayamalar delik delikler
 delikleri deliklerine deliklerini deliklerinin delikli delikte delikten demet demeti demetin demetine dev direkten dizi dolu duvara
 duyulabilirlik elde emas gelen gerilim gider giden gidenlere hepsi hornun hornunda inenler inmesi iskeletinin jeti kablosunun

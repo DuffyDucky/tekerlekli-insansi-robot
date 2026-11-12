@@ -63,6 +63,19 @@
     secili: ["#7cfc00", "Seçili"]                      // F10a: seçim vurgusu (sınıf ve kablo renklerinde olmayan açık yeşil)
   };
   const VURGU_ANA = "#7cfc00", VURGU_KOPYA = "#cdf7a6", KONUM_RENK = "#ffb000";
+  // F10e (P10.4b): renk kipi. "gercek" (varsayılan): o adımın (alt adımın) yeni parçaları CAD rengiyle (veri: parcalar[].gr, kaynak
+  // tasarim/freecad/rehber/rehber_gorunum.py: modül FCStd "Renk" özelliği + modülün gorsel betiğindeki RENK tablosu); "sinif": bugünkü
+  // sınıf renkleri (lejant). Önceki adımlar iki kipte de gri. Bağlandığı yer (veri: sira_grup[].ev / adimlar[].ev) EV_RENK: gerçek
+  // renklerden, sınıf renklerinden, seçim yeşilinden ve kehribardan en uzak ton (CIELAB ΔE ≥ 47, F10e günlüğü). Zeminle karşıtlığı
+  // KENAR_ESIK'in altında kalan yeni parçaya kenar çizgisi (iki temada; zemin --sahne).
+  const EV_RENK = "#ff3fa4", KENAR_ESIK = 3.0, ONCEKI_ESIK = 1.5;
+  const KENAR = { light: "#26282c", dark: "#e8e8e8" };
+  function _lin(c) { c /= 255; return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }
+  function parlaklik(hex) {
+    const h = String(hex).replace("#", ""); const r = parseInt(h.slice(0, 2), 16), g = parseInt(h.slice(2, 4), 16), b = parseInt(h.slice(4, 6), 16);
+    return 0.2126 * _lin(r) + 0.7152 * _lin(g) + 0.0722 * _lin(b);
+  }
+  function karsitlik(a, b) { const x = parlaklik(a), y = parlaklik(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); }
   function tema() {
     const t = document.documentElement.dataset.theme;
     if (t) return t;
@@ -108,9 +121,11 @@
       xray: new THREE.MeshBasicMaterial({ color: VURGU_ANA, transparent: true, opacity: 0.3, depthTest: false, depthWrite: false,
         side: THREE.DoubleSide })
     };
+    let zeminHex = "#eceae4";
     function sahneRengi() {
       const cs = getComputedStyle(document.documentElement);
       const c = cs.getPropertyValue("--sahne").trim() || "#eceae4";
+      zeminHex = c;
       sahne.background = new THREE.Color(c);
       SINIF.onceki[0] = tema() === "dark" ? "#5d6168" : "#b5b5b0";
       zemin.material.color = new THREE.Color(tema() === "dark" ? 0x555555 : 0xaaaaaa);
@@ -259,6 +274,55 @@
     function altGrup(s, j) { if (j === undefined) j = s === su ? ss : 0; return j && ADIM[s].alt ? ADIM[s].sira_grup[j - 1] : null; }
 
     function sinif(p) { return SINIF[p.r] ? p.r : "satin"; }
+    // F10e: renk kipi (C tuşu / düğme; ?renk=sinif|gercek; yerel kayıt). Kablo yolu parçaları (p.renk) iki kipte de kablo rengiyle.
+    let renkKip = P.get("renk") === "sinif" || P.get("renk") === "gercek" ? P.get("renk") : (oku().renk === "sinif" ? "sinif" : "gercek");
+    function parcaRengi(p) { return p.renk || (renkKip === "gercek" && p.gr ? p.gr : SINIF[sinif(p)][0]); }
+    function satirRengi(x, bag) {                      // panel satırı: gerçek kipte satırın ilk parçasının rengi
+      const id = x.ids && x.ids[0], p = id && PAR[id] && PAR[id].v;
+      if (renkKip === "gercek" && p && p.gr) return p.renk || p.gr;
+      return bag ? SINIF.baglanti[0] : (SINIF[x.r] || SINIF.satin)[0];
+    }
+    function evListe(s, j) {                         // F10e: bağlandığı yer (veri; alt adımda grubun, genel bakışta adımın)
+      const ag = altGrup(s, j);
+      return new Set((ag ? ag.ev : ADIM[s].ev) || []);
+    }
+    // kenar çizgisi: geometri başına bir EdgesGeometry (30°), nesneye çocuk olarak (uçuşta parçayla gider)
+    const kenarGeo = new Map(), kenarMat = {};
+    function kenarKoy(o, renk) {
+      let e = o.userData.kenar;
+      if (!renk) { if (e) e.visible = false; return; }
+      if (!e) {
+        let g = kenarGeo.get(o.geometry.uuid);
+        if (!g) { g = new THREE.EdgesGeometry(o.geometry, 30); kenarGeo.set(o.geometry.uuid, g); }
+        e = new THREE.LineSegments(g, null); e.raycast = function () {}; e.userData.kenarMi = true;
+        o.add(e); o.userData.kenar = e;
+      }
+      if (!kenarMat[renk]) kenarMat[renk] = new THREE.LineBasicMaterial({ color: renk });
+      e.material = kenarMat[renk]; e.visible = true;
+    }
+    // F10e düzeltme 1 (kontrol bulgu 1, 2): saydam katmanların arkasındaki yeni bağlantı elemanı. Saydam çizilen parçalar (alt adımın
+    // saydam listesi) çift yüzlü ve derinlik yazmaz; arkalarındaki opak cıvata / ısıl gömme her yüzde soluklaşır (ölçüm: katmanların
+    // geçirdiği ≈ %10). Açık temada çelik açık zeminden yine ayrılıyordu, koyu temada zemine karışıp 0–3 px kalıyordu (34.3–34.6,
+    // 35.1, 35.2 bindirme cıvataları; 31.3 p0762 iki temada). Çözüm rengi değiştirmez: parça aynı renkte, opaklık 1, derinlik yazarak
+    // saydam geçişte saydam katmanlardan sonra çizilir (renderOrder 10; küçük görünümdeki vurgunun yöntemi). Opak parçaların arkasında
+    // kalan yeri yine gizli (derinlik testi açık); saydam katmanın arkasında kalan yeri tam renkte görünür. Kenarı da ondan sonra.
+    const ustMat = {};
+    function ustteOf(m) {
+      const k = m.color.getHexString();
+      if (!ustMat[k]) ustMat[k] = new THREE.MeshStandardMaterial({ color: m.color.clone(), metalness: 0.05, roughness: 0.75, side: THREE.DoubleSide,
+        transparent: true, opacity: 1, depthWrite: true });
+      return ustMat[k];
+    }
+    function ustteKoy(o) {
+      o.material = o.userData.mat0 = o.userData.mat1 = ustteOf(o.material);
+      o.renderOrder = 10; o.userData.ustte = true;
+      const e = o.userData.kenar;
+      if (e && e.visible) {
+        const k = "#" + e.material.color.getHexString() + "|u";
+        if (!kenarMat[k]) kenarMat[k] = new THREE.LineBasicMaterial({ color: e.material.color.clone(), transparent: true, opacity: 1 });
+        e.material = kenarMat[k]; e.renderOrder = 11;
+      }
+    }
 
     // bir nesnenin yerel sınır kutusunun 8 köşesi, dünya koordinatında (kadraj; kutunun kendisi parçayı kapsar)
     function koseler(o, ek, hedef) {
@@ -271,7 +335,86 @@
       }
     }
 
-    let sonUc = [], sonSay = {};
+    let sonUc = [], sonSay = {}, sonEv = [];
+
+    // ---------------------------------------------------------------- F10e: bağlantı elemanı işaretleri (ekranda sabit boyutlu halka)
+    // Konumun yeni bağlantı elemanları (durum "simdi"): işaret noktası veride (parcalar[].ip: cıvata başı üst merkezi, öbürleri kutu
+    // merkezi; parça uçarken / patlakken onunla gider). Ekranda ISARET.R px'ten yakın işaretler tek halkada kümelenir, halkada adet
+    // (×n) yazar; kümelerin adetleri toplamı = yeni bağlantı elemanı sayısı. Panel satırı (ya da parça) seçilince o satırın işaretleri
+    // seçim renginde. SVG katmanı tuvalin üstünde (yazdırma karesinde de görünür), tıklamayı engellemez.
+    const ISARET = { acik: P.get("isaret") === "0" ? false : (P.get("isaret") === "1" ? true : oku().isaret !== false), liste: [], R: 22, kume: [] };
+    const isaretEl = $("isaret");
+    const _ip = new THREE.Vector3();
+    function isaretKur(uc) {
+      ISARET.liste = [];
+      uc.forEach((x) => {
+        const p = x.k.v;
+        if (x.d !== "simdi" || p.r !== "baglanti" || !p.ip) return;
+        ISARET.liste.push({ id: p.id, k: x.k, ip: new THREE.Vector3(p.ip[0], p.ip[1], p.ip[2]) });
+      });
+    }
+    function isaretCiz() {
+      if (!isaretEl) return;
+      if (!ISARET.acik || !ISARET.liste.length) { if (isaretEl.innerHTML) isaretEl.innerHTML = ""; ISARET.kume = []; return; }
+      const c = tuval.getBoundingClientRect(), W = c.width, H = c.height;
+      const sec = secim ? new Set(secim.ids) : null;
+      const kume = [];
+      ISARET.liste.forEach((m) => {
+        const o = m.k.obj; if (!o || !o.visible) return;
+        _ip.copy(m.ip).add(o.position).sub(m.k.taban);
+        _v.copy(_ip).applyMatrix4(kamera.matrixWorldInverse);
+        if (_v.z > -kamera.near) return;
+        _ip.project(kamera);
+        const x = (_ip.x + 1) / 2 * W, y = (1 - _ip.y) / 2 * H;
+        if (x < 0 || y < 0 || x > W || y > H) return;
+        let k = null;
+        for (const q of kume) if (Math.hypot(q.x - x, q.y - y) < ISARET.R) { k = q; break; }
+        if (!k) { k = { x: x, y: y, ids: [] }; kume.push(k); }
+        k.ids.push(m.id);
+      });
+      ISARET.kume = kume;
+      isaretEl.setAttribute("viewBox", "0 0 " + Math.round(W) + " " + Math.round(H));
+      isaretEl.innerHTML = kume.map((k) => {
+        const s = sec && k.ids.some((i) => sec.has(i));
+        const x = k.x.toFixed(1), y = k.y.toFixed(1);
+        return "<g class='isr" + (s ? " secili" : "") + "'><circle class='d' cx='" + x + "' cy='" + y + "' r='9'/><circle class='i' cx='" + x +
+          "' cy='" + y + "' r='9'/>" + (k.ids.length > 1 ? "<text x='" + (k.x + 11).toFixed(1) + "' y='" + (k.y - 8).toFixed(1) + "'>×" +
+          k.ids.length + "</text>" : "") + "</g>";
+      }).join("");
+    }
+    function isaretGoster(a) {
+      ISARET.acik = a;
+      if (!SAHNE) yaz("isaret", a);
+      const d = $("isaret-dugme"); if (d) d.classList.toggle("acik", a);
+      lejant(sonSay, su); ciz();
+    }
+
+    // ---------------------------------------------------------------- F10e: kare başlığı (karenin hangi adım / alt adım ve bakış yönü
+    // olduğu karenin kendisinden okunsun: benzer kare çiftleri 34.3 / 34.5, 34.4 / 34.6, 49.3 / 49.4). Bakış yönü kamera vektöründen
+    // (robot: +x sağ, +y yukarı, +z ön).
+    // Yalnız yazdırma / PDF karesinde (?sahne=1): etkileşimli sayfada aynı ad ve numara sahnenin yanındaki panel başlığında; araç
+    // çubuğunun altında ayrıca başlık bandı güvenli alanı daraltıyor, yeni parçalar küçülüyordu (F10d görünürlüğü: 33.5, 33.7, 36.1'de
+    // cıvata / ısıl gömme 30 px eşiğinin altına indi)
+    function kareBaslik(s) {
+      const e = $("kare-baslik"); if (!e) return;
+      if (s === 0 || !SAHNE) { e.hidden = true; return; }
+      const ag = altGrup(s), st = ADIM[s];
+      const y = kameraYonu();
+      const ad = ag ? ag.ad : st.baslik;
+      e.innerHTML = "<b>" + esc(adres(s, ss)) + "</b> " + esc(ad) + " <span class='bakis'>· bakış: " + esc(bakisMetin(y)) + "</span>";
+      e.hidden = false;
+    }
+    function bakisMetin(y) {                          // "sağ-ön-üstten", "sol-arkadan"
+      const t = [];
+      if (y.x > 0.3) t.push("sağ"); else if (y.x < -0.3) t.push("sol");
+      if (y.z > 0.3) t.push("ön"); else if (y.z < -0.3) t.push("arka");
+      if (y.y > 0.45) t.push("üst"); else if (y.y < -0.3) t.push("alt");
+      if (!t.length) return "yandan";
+      const son = t[t.length - 1];
+      t[t.length - 1] = son + ({ "sağ": "dan", "sol": "dan", "ön": "den", "arka": "dan", "üst": "ten", "alt": "tan" })[son];
+      return t.join("-");
+    }
+
     function uygula(s, ucus) {
       const gizle = onceki === "gizli", saydam = onceki === "saydam";
       const kutu = new THREE.Box3(), gorunur = new THREE.Box3(), altKutu = new THREE.Box3();
@@ -280,27 +423,42 @@
       const yeni = { simdi: [], alt: [], hedef: [] }, eksik = [];   // kontrol: bu adımda yeni görünenler (duruma göre), mesh'i olmayanlar
       const nokta = [], gNokta = [];                  // kadraj: yeni parçaların / görünenlerin kutu köşeleri (son konumda)
       let altVar = false;
+      const ev = evListe(s);                          // F10e: bağlandığı yer
+      const tm = tema(), kenarRenk = KENAR[tm === "dark" ? "dark" : "light"];
+      sonEv = [];
       for (const id in PAR) {
         const k = PAR[id]; const p = k.v; const o = k.obj;
         if (!o) { eksik.push(p.id); continue; }
         const d = durum(p, s);
         o.position.copy(k.taban);
         o.userData.d = d;
-        if (d === "gizli" || (d === "onceki" && gizle && !p.renk)) { o.visible = false; continue; }
+        o.userData.ev = false;
+        o.renderOrder = 0; o.userData.ustte = false; if (o.userData.kenar) o.userData.kenar.renderOrder = 0;
+        const evMi = ev.has(p.id);
+        if (d === "gizli" || (d === "onceki" && gizle && !p.renk && !evMi)) { o.visible = false; kenarKoy(o, null); continue; }
         o.visible = true;
         if (yeni[d]) yeni[d].push(p.id);
         o.updateMatrixWorld(true);
         const b = new THREE.Box3().setFromObject(o);
         gorunur.union(b);
         if (d === "onceki") {
-          o.material = p.renk ? malzeme(p.renk, saydam ? 0.2 : true) : malzeme(SINIF.onceki[0], saydam ? 0.18 : 1);
+          // F10e: bağlandığı önceki parça ayrı tonda (öncekiler saydam kipteyse o da saydam)
+          o.material = p.renk ? malzeme(p.renk, saydam ? 0.2 : true) : malzeme(evMi ? EV_RENK : SINIF.onceki[0], saydam ? 0.18 : 1);
           o.userData.mat0 = o.material;
+          o.userData.ev = evMi && !p.renk;
+          if (o.userData.ev) sonEv.push(p.id);
+          kenarKoy(o, null);
           continue;
         }
-        const c = p.renk || SINIF[sinif(p)][0];
+        const c = parcaRengi(p);
         o.material = malzeme(c);
         o.userData.mat0 = o.userData.mat1 = o.material;
-        sinifSay[p.renk ? "kablo" : sinif(p)] = 1;
+        // kenar: bağlandığı yer bu adımda yeniyse (masa tabanı) ev tonunda; değilse zeminle karşıtlığı eşiğin altındaysa tema renginde
+        if (evMi && !p.renk) { kenarKoy(o, EV_RENK); o.userData.ev = true; sonEv.push(p.id); }
+        // F10e: önceki adımların grisine çok yakın gerçek renk (ör. alüminyum horn, çelik cıvata) de kenar alır: tezgâh karelerinde
+        // yeni parça öncekilerden ayrılsın (önceki grisiyle karşıtlık < ONCEKI_ESIK)
+        else kenarKoy(o, karsitlik(c, zeminHex) < KENAR_ESIK || karsitlik(c, SINIF.onceki[0]) < ONCEKI_ESIK ? kenarRenk : null);
+        sinifSay[p.renk ? "kablo" : (renkKip === "gercek" ? "gercek" : sinif(p))] = 1;
         kutu.union(b);
         koseler(o, null, nokta);
         if (d === "alt") { altVar = true; altKutu.union(b); }
@@ -320,6 +478,11 @@
         if (d === "simdi" || d === "hedef") { kutu.union(b); koseler(o, null, nokta); }
         if (d === "simdi") { semaYeni.push(i); sinifSay.kablo = 1; }
       });
+      // F10e: konumun yeni parçalarının hepsi bağlantı elemanıysa (ör. 31.5, 31.10, 36.3) kadraj bağlandığı parçaları da kapsar: yalnız
+      // cıvatalara sıkı kadraj yerini göstermiyordu (F10d "kadraj yakın"); cıvataların yeri işaret halkalarıyla seçilir
+      if (uc.length && sonEv.length && uc.every((x) => x.k.v.r === "baglanti")) {
+        sonEv.forEach((id) => { const o = PAR[id] && PAR[id].obj; if (o && o.visible) koseler(o, null, nokta); });
+      }
       if (!nokta.length && !gorunur.isEmpty()) {
         for (let i = 0; i < 8; i++) gNokta.push(new THREE.Vector3(i & 1 ? gorunur.max.x : gorunur.min.x, i & 2 ? gorunur.max.y : gorunur.min.y,
           i & 4 ? gorunur.max.z : gorunur.min.z));
@@ -349,10 +512,26 @@
           // F10d düzeltme 1: bu alt adımda gelen parça saydam listedeyse (içindeki ısıl gömme / parça görünsün diye) 0,4 opaklık;
           // önceki parçalar 0,25. İkisi de < 0,5: görünürlük ölçümünde arkasını örtmez (RehberTest.gorunurluk)
           const yeniMi = o && (o.userData.d === "simdi" || o.userData.d === "alt");
-          if (o && o.visible && sd.has(id)) { o.material = o.userData.mat0 = o.userData.mat1 = saydamOf(o.material, yeniMi ? 0.4 : 0.25); }
+          if (o && o.visible && sd.has(id)) {
+            o.material = o.userData.mat0 = o.userData.mat1 = saydamOf(o.material, yeniMi ? 0.4 : 0.25);
+            // F10e: saydam çizilen yeni parçanın görünen rengi zeminle karışır (ör. 35.3 kara taşıyıcı açık temada bulanık kalıyordu):
+            // kenar her zaman, iki tema renginden parçanın kendi rengiyle karşıtlığı yüksek olanı (ev kenarı korunur)
+            if (yeniMi && !o.userData.ev) {
+              const c = "#" + o.material.color.getHexString();
+              kenarKoy(o, karsitlik(c, KENAR.light) >= karsitlik(c, KENAR.dark) ? KENAR.light : KENAR.dark);
+            }
+          }
         }
+        // F10e düzeltme 1: saydam katmanların arkasındaki yeni bağlantı elemanları saydam geçişte üstte (ustteKoy). ?ustte=0: kapalı
+        // (yalnız önce / sonra ölçümü için)
+        if (P.get("ustte") !== "0") uc.forEach((x) => {
+          const o = x.k.obj, m = o.material;
+          if (x.k.v.r === "baglanti" && !sd.has(x.k.v.id) && !(m.transparent && m.opacity < 1)) ustteKoy(o);
+        });
       }
       sonUc = uc; sonSay = sinifSay;
+      isaretKur(uc);
+      kareBaslik(s);
       if (sira && sira.adim === s && sira.alt === ss) siraKonum();
       vurguUygula(true);
       lejant(sinifSay, s);
@@ -510,6 +689,8 @@
       let ust = 0, alt = 0, sag = 0, altMini = 0;
       const ar = document.querySelector(".sahne-arac"), lj = $("lejant");   // gizli öğenin offsetParent'ı yok (?sahne=1 araç çubuğu)
       if (ar && ar.offsetParent) ust = Math.max(0, ar.getBoundingClientRect().bottom - c.top + 4);
+      const kb = $("kare-baslik");                    // F10e: kare başlığı araç çubuğunun altında (yazdırma karesinde en üstte)
+      if (kb && !kb.hidden && kb.offsetParent) ust = Math.max(ust, kb.getBoundingClientRect().bottom - c.top + 4);
       if (lj && !lj.hidden && lj.offsetParent) alt = Math.max(0, c.bottom - lj.getBoundingClientRect().top + 4);
       if (miniAcik && !miniEl.hidden) {
         const m = miniEl.getBoundingClientRect();
@@ -650,6 +831,7 @@
       renderer.setScissorTest(false);
       renderer.setViewport(0, 0, _boy.x, _boy.y);
       renderer.render(sahne, kamera);
+      isaretCiz();
       if (miniAcik && MINI.hazir && !miniEl.hidden) {
         const r = miniDikdortgen();
         if (r.w > 4 && r.h > 4) {
@@ -704,7 +886,22 @@
         if (v && m.userData.mkutu) MINI.hk.union(m.userData.mkutu);
       });
       MINI.yon.copy(kameraYonu());
+      miniYer(s);
       miniKamera();
+    }
+    // F10e düzeltme 1 (kontrol bulgu 4): küçük görünümün altında yeni parçaların yeri: taraf (vurgulu kutunun ortası; robotun sağı
+    // +x, önü +z) ve vurgulu kutunun yükseklik aralığı (y, mm, 10'a yuvarlı). Benzer kare çiftleri (34.3 / 34.5, 34.4 / 34.6, 49.3 / 49.4) aynı bakıştan
+    // çizildiği için 3B karede ayrılmıyordu; etiket küçük görünüm kutusunun içinde, sahneyi küçültmez (güvenli alan değişmez).
+    function miniYer(s) {
+      const e = $("mini-yer"); if (!e) return;
+      if (s === 0 || MINI.hk.isEmpty()) { e.hidden = true; return; }
+      const c = MINI.hk.getCenter(new THREE.Vector3()), t = [];
+      if (c.x > 40) t.push("sağ"); else if (c.x < -40) t.push("sol"); else t.push("orta");
+      if (c.z > 60) t.push("ön"); else if (c.z < -60) t.push("arka");
+      const y0 = Math.round(MINI.hk.min.y / 10) * 10, y1 = Math.round(MINI.hk.max.y / 10) * 10;
+      e.textContent = t.join("-") + " · y " + y0 + "–" + y1;
+      e.title = "Bu adımın parçaları: robotun " + t.join("-") + " tarafı, yerden yükseklik " + y0 + "–" + y1 + " mm";
+      e.hidden = false;
     }
     function miniKamera() {
       if (!MINI.hazir || MINI.kutu.isEmpty()) return;
@@ -855,9 +1052,9 @@
     // st.sira sırasıyla (data-satir korunur); alt adımda yalnız o grubun satırları. sira yoksa parçalar sonra bağlantılar (siraKur ile aynı).
     function satirHtml(st, k) {
       const [t, i] = k.split(":"); const x = (t === "p" ? st.parcalar : st.baglantilar)[+i]; if (!x) return "";
-      if (t === "p") return "<tr data-satir='" + k + "'><td><i class='sw' style='background:" + (SINIF[x.r] || SINIF.satin)[0] + "'></i>" + esc(x.ad) +
+      if (t === "p") return "<tr data-satir='" + k + "'><td><i class='sw' style='background:" + satirRengi(x, false) + "'></i>" + esc(x.ad) +
         "<div class='t'>" + esc(TUR_AD[x.tur] || x.tur) + (x.malzeme && x.malzeme !== "-" ? " · " + esc(x.malzeme) : "") + "</div></td><td class='n'>×" + x.adet + "</td></tr>";
-      return "<tr data-satir='" + k + "'><td><i class='sw' style='background:" + SINIF.baglanti[0] + "'></i>" + esc(x.kod) + "<div class='t'>" +
+      return "<tr data-satir='" + k + "'><td><i class='sw' style='background:" + satirRengi(x, true) + "'></i>" + esc(x.kod) + "<div class='t'>" +
         (x.onceden ? "Bağlantı elemanı · baskıdan sonra takılı (hazırlık), parçasıyla gelir; burada yalnız sayılır" : "Bağlantı elemanı") +
         "</div></td><td class='n'>×" + x.adet + "</td></tr>";
     }
@@ -969,10 +1166,29 @@
 
     function lejant(say, s) {
       const k = Object.keys(say);
-      if (s > 0) k.push("onceki");
-      if (secim && secNesne.length) k.push("secili");
-      $("lejant").innerHTML = k.map((c) => "<span><i style='background:" + SINIF[c][0] + "'></i>" + SINIF[c][1] + "</span>").join("");
-      $("lejant").hidden = !k.length;
+      const h = [];
+      k.forEach((c) => {
+        if (c === "gercek") {                         // F10e: gerçek renk kipi: bu konumun yeni parçalarının renklerinden en çok 4'ü
+          const rr = [];
+          sonUc.forEach((x) => { const p = x.k.v; if (!p.renk) { const r = parcaRengi(p); if (rr.indexOf(r) < 0) rr.push(r); } });
+          const g = rr.slice(0, 4);
+          h.push("<span><i style='background:" + (g.length > 1 ? "linear-gradient(90deg," + g.join(",") + ")" : (g[0] || "#999")) +
+            "'></i>Bu adımın parçaları (gerçek renk)</span>");
+        } else h.push("<span><i style='background:" + SINIF[c][0] + "'></i>" + SINIF[c][1] + "</span>");
+      });
+      if (sonEv.length) h.push("<span><i style='background:" + EV_RENK + "'></i>Bağlandığı yer</span>");
+      if (s > 0) h.push("<span><i style='background:" + SINIF.onceki[0] + "'></i>" + SINIF.onceki[1] + "</span>");
+      if (ISARET.acik && ISARET.liste.length) h.push("<span><i class='hl'></i>Bağlantı elemanı yeri (×n: küme)</span>");
+      if (secim && secNesne.length) h.push("<span><i style='background:" + SINIF.secili[0] + "'></i>" + SINIF.secili[1] + "</span>");
+      $("lejant").innerHTML = h.join("");
+      $("lejant").hidden = !h.length;
+    }
+    function renkKipAyarla(k, kaydet) {
+      renkKip = k;
+      if (kaydet && !SAHNE) yaz("renk", k);
+      const d = $("renk-dugme");
+      if (d) { d.classList.toggle("acik", k === "gercek"); d.innerHTML = "◑ <span class='yazi'>" + (k === "gercek" ? "gerçek renk" : "sınıf rengi") + "</span>"; }
+      if (yuklu) { panel(su); uygula(su, false); }
     }
 
     // ---------------------------------------------------------------- öncekiler: opak / saydam / gizli
@@ -1009,6 +1225,10 @@
     dugme("tak", tak);
     dugme("mini-dugme", () => miniGoster(!miniAcik));
     dugme("mini-kapat", () => miniGoster(false));
+    dugme("renk-dugme", () => renkKipAyarla(renkKip === "gercek" ? "sinif" : "gercek", true));      // F10e
+    dugme("isaret-dugme", () => isaretGoster(!ISARET.acik));
+    renkKipAyarla(renkKip, false);
+    { const d = $("isaret-dugme"); if (d) d.classList.toggle("acik", ISARET.acik); }
     document.addEventListener("keydown", (e) => {
       if (e.target.tagName === "SELECT" || e.target.tagName === "INPUT" || e.ctrlKey || e.metaKey || e.altKey) return;
       const k = e.key;
@@ -1021,6 +1241,8 @@
       else if (k === "p" || k === "P") patlat();
       else if (k === " " || k === "Spacebar") { if (e.shiftKey) geriAl(); else tak(); e.preventDefault(); }
       else if (k === "m" || k === "M") miniGoster(!miniAcik);
+      else if (k === "c" || k === "C") renkKipAyarla(renkKip === "gercek" ? "sinif" : "gercek", true);   // F10e: renk kipi
+      else if (k === "i" || k === "I" || k === "ı" || k === "İ") isaretGoster(!ISARET.acik);            // F10e: işaretler
       else if (k === "Escape") secimTemizle();
     });
     let dok = null;                                   // panel / üst şeritte yatay kaydırma = adım değiştir
@@ -1115,8 +1337,10 @@
         op = op || {};
         const W = renderer.domElement.width, H = renderer.domElement.height, pr = renderer.getPixelRatio();
         const rt = new THREE.WebGLRenderTarget(W, H);
-        const kayit = [];
+        const kayit = [], cizgi = [];
         sahne.traverse((o) => { if (o.isMesh) kayit.push([o, o.material, o.visible]); });
+        // F10e: kenar çizgileri kimlik tamponuna girmesin (renkleri kimlik kodu gibi okunurdu); ölçülen şey F10d'deki gibi mesh pikseli
+        sahne.traverse((o) => { if (o.userData && o.userData.kenarMi) { cizgi.push([o, o.visible]); o.visible = false; } });
         const bg = sahne.background; sahne.background = new THREE.Color(0, 0, 0); const zg = zemin.visible; zemin.visible = false;
         const anahtar = (o) => o.userData.id || (o.userData.sema != null ? "sema" + o.userData.sema : null);
         const yeni = {}, sdy = new Set(), semaGor = [];
@@ -1152,6 +1376,7 @@
         const yalniz = {};
         if (op.yalniz !== false) for (const k in yeni) { const r = gec((o) => anahtar(o) === k); yalniz[k] = r[k] || 0; }
         kayit.forEach(([o, m, v]) => { if (o.material !== m) o.material.dispose(); o.material = m; o.visible = v; });
+        cizgi.forEach(([o, v]) => { o.visible = v; });
         sahne.background = bg; zemin.visible = zg; rt.dispose();
         const karede = {};                            // kutu köşeleri kamerada güvenli alanın içinde mi
         for (const k in yeni) {
@@ -1160,7 +1385,62 @@
         }
         ciz();
         return { piksel: yeni, yalniz: yalniz, saydam: Array.from(sdy), sema: semaGor, karede: karede, oran: pr, W: W, H: H };
-      }
+      },
+      // F10e: okurun gördüğü piksel. Kare gerçek malzeme, saydamlık, kenar çizgisi ve zeminle, sayfanın kendi tuvaline (ekrandaki çizimle
+      // aynı yol: sRGB çıktı, tuvalin kenar yumuşatması) çizilip okunur; her yeni parça (simdi + alt) tek tek gizlenip yeniden çizilir,
+      // güvenli alanda rengi değişen piksel (|ΔR| + |ΔG| + |ΔB| > esik) sayılır. Saydam katmanın arkasındaki parça, katmanın geçirdiği
+      // kadar fark verir (örtücü sayılmaz ama soluklaştırır).
+      // F10e düzeltme 1 (kontrol bulgu 2): önceki sürüm sahne dışı bir render target'a çiziyordu. three r160 XR olmayan render target'a
+      // çıktıyı doğrusal (LinearSRGB) yazar, hedefin colorSpace seçeneği çıktıyı değiştirmez; farklar ekrandakinden büyük çıkıyordu
+      // (31.3 p0762: render target 40 px, ekran 0 px). Artık ölçüm ekrana giden çizimin kendisi.
+      gorunurlukFark(op) {
+        op = op || {};
+        const esik = op.esik || 24;
+        const W = renderer.domElement.width, H = renderer.domElement.height;
+        const al = guvenliAlanlar()[0] || { x0: -1, x1: 1, y0: -1, y1: 1 };
+        const x0 = Math.floor((al.x0 + 1) / 2 * W), x1 = Math.ceil((al.x1 + 1) / 2 * W), y0 = Math.floor((al.y0 + 1) / 2 * H), y1 = Math.ceil((al.y1 + 1) / 2 * H);
+        const gl = renderer.getContext();
+        const ciz1 = (buf) => { renderer.setRenderTarget(null); renderer.setScissorTest(false); renderer.setViewport(0, 0, _boy.x, _boy.y);
+          renderer.render(sahne, kamera); gl.readPixels(0, 0, W, H, gl.RGBA, gl.UNSIGNED_BYTE, buf); };
+        renderer.getSize(_boy);
+        const a = new Uint8Array(W * H * 4), b = new Uint8Array(W * H * 4);
+        ciz1(a);
+        const hedef = op.ids || Object.keys(PAR).filter((id) => PAR[id].obj && PAR[id].obj.visible && (PAR[id].obj.userData.d === "simdi" || PAR[id].obj.userData.d === "alt"));
+        const out = {};
+        hedef.forEach((id) => {
+          const o = PAR[id] && PAR[id].obj; if (!o || !o.visible) { out[id] = 0; return; }
+          o.visible = false; ciz1(b); o.visible = true;
+          let n = 0;
+          for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) {
+            const i = (y * W + x) * 4;
+            if (Math.abs(a[i] - b[i]) + Math.abs(a[i + 1] - b[i + 1]) + Math.abs(a[i + 2] - b[i + 2]) > esik) n++;
+          }
+          out[id] = n;
+        });
+        render();
+        return { piksel: out, esik: esik, W: W, H: H, yol: "tuval" };
+      },
+      // F10e: görünen parçaların malzeme rengi (sRGB hex), durumu, opaklığı, kenar çizgisi ve ev işareti; zemin rengi; renk kipi
+      renkler() {
+        const out = {};
+        for (const id in PAR) {
+          const o = PAR[id].obj; if (!o || !o.visible) continue;
+          const m = o.userData.mat0 || o.material, e = o.userData.kenar;
+          out[id] = { d: o.userData.d, renk: "#" + m.color.getHexString(), opak: m.transparent ? m.opacity : 1, ev: !!o.userData.ev,
+            kenar: e && e.visible ? "#" + e.material.color.getHexString() : null };
+        }
+        return { kip: renkKip, tema: tema(), zemin: zeminHex, ev_renk: EV_RENK, kenar_esik: KENAR_ESIK, parca: out, ev: sonEv.slice() };
+      },
+      renkKip: (k) => { if (k) renkKipAyarla(k, false); return renkKip; },
+      isaretler() {                                   // F10e: işaret kümeleri (ekran px, tuvale göre) ve kapsadıkları bağlantı elemanları
+        render();
+        const c = tuval.getBoundingClientRect();
+        return { acik: ISARET.acik, liste: ISARET.liste.map((m) => m.id), kume: ISARET.kume.map((k) => ({ x: k.x, y: k.y, n: k.ids.length, ids: k.ids.slice(),
+          secili: !!(secim && k.ids.some((i) => secim.ids.indexOf(i) >= 0)) })), tuval: { w: c.width, h: c.height }, alan: guvenliAlanlar()[0] || null,
+          dom: isaretEl ? isaretEl.querySelectorAll("g.isr").length : 0, dom_secili: isaretEl ? isaretEl.querySelectorAll("g.isr.secili").length : 0 };
+      },
+      isaretGoster: (a) => isaretGoster(a),
+      kareBaslik: () => { const e = $("kare-baslik"); return e && !e.hidden ? e.textContent : null; }
     };
   };
 

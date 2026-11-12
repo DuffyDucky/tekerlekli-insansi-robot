@@ -510,7 +510,10 @@ ADIM = {
                    gizli_ok={"Köpük bant (tırnak alt": voksel_ok() + "; 1 mm bant tırnağın altında, tırnak saydam çizili"},
                    is_="4 tırnağı (üst ve alt, x ±85) cam şeridine 1 mm köpük bant üstünden arkadan bastır; her tırnak 1 × M3×6 ISO 7380 "
                        "ile boss'taki ısıl gömmeye."),
+              # F10e: kabuklar ve ekran saydam, yandan bakış: üç kablo şeması (HDMI, Touch, Power) Pi ile QLED arasında görünsün
+              # (F10d: şemalar opak yüz kabuğunun arkasında kalıyordu). CSI şeridinin şeması yok (kablolama içeriği değişmedi).
               dict(ad="Kablolar + yüz grubu → kafa", bag="yuz", desen=(), ucus_bag=(0, 0, 1),
+                   kamera=(1.0, 0.55, 0.6), saydam=KAFA_KABUK + ("Yüz ekranı",),
                    sema=("Kafa ekranı HDMI", "Kafa ekranı Touch", "Kafa ekranı Power"),
                    is_="Yüz kabuğunu kafanın önünde tut, kabloları tak: CSI şeridi → Pi; QLED HDMI (30 cm şerit, Pi micro HDMI 0), Power "
                        "(SY8205 çıkışı, A ucu kesik micro USB kablo), Touch (Pi USB 4). Touch'ı takmadan önce Notlar'daki ölçümü yap. "
@@ -696,7 +699,9 @@ ADIM = {
                    is_="Gövde alt bandının sağını +x'ten getir, y 400 braketine dışarıdan M5×18 (pulsuz, M5 perçin somuna). Bandın "
                        "bindirme boss'larındaki ısıl gömmeler hazırlıkta takılı (adım 0; bant saydam çizili)."),
               dict(ad="Alt bant sol + y 400 braketi, x 0 dikişi", desen=("Gövde alt bandı sol", "sol y400)", "(gövde x0"),
-                   konum={"(gövde x0": {"y": (0, 476.5)}}, ucus={"*": (1, 0, 0)}, kamera=(-0.85, 0.62, 1.25), saydam=GOVDE_BANT,
+                   # F10e: kamera (-0,85, 0,62, 1,25) iken bindirme cıvatası p0322 iki saydam bant katmanının arkasında (gizle-fark
+                   # 2 px); (-1, 0,2, 0) ile alt adımın bütün yeni parçaları ≥ 30 px ve ≥ 0,2 × yalnız
+                   konum={"(gövde x0": {"y": (0, 476.5)}}, ucus={"*": (1, 0, 0)}, kamera=(-1.0, 0.2, 0.0), saydam=GOVDE_BANT,
                    gizli_ok={"(gövde x0 arka)": voksel_ok(161, "arka sağ (0,85, 0,62, −1,25)")},
                    is_="Solunu −x'ten getir. x 0 dikişinin (ön ve arka) bindirmelerini M3×6 ile bağla, y 400 braketine dışarıdan M5×18."),
               dict(ad="Uzatma bandı 1 sağ + y 530 braketi", desen=("Gövde uzatma bandı 1 sağ", "sağ y530)", "(gövde y476"),
@@ -705,7 +710,8 @@ ADIM = {
                    is_="Uzatma bandı 1 sağı alt bandın üstüne getir (dikiş y 476,5), y 476,5 bindirmelerini M3×6 ile bağla, y 530 "
                        "braketine M5×18."),
               dict(ad="Uzatma bandı 1 sol + y 530 braketi, x 0 dikişi", desen=("Gövde uzatma bandı 1 sol", "sol y530)", "(gövde y476", "(gövde x0"),
-                   konum={"(gövde x0": {"y": (476.5, 634)}}, ucus={"*": (1, 0, 0)}, kamera=(-1.0, 0.35, -0.5), saydam=GOVDE_BANT,
+                   # F10e: (-1, 0,35, -0,5) iken bindirme cıvatası p0306 41 / 225 px (gizle-fark, oran 0,18); biraz alçak ve yandan hepsi geçer
+                   konum={"(gövde x0": {"y": (476.5, 634)}}, ucus={"*": (1, 0, 0)}, kamera=(-1.0, 0.3, -0.3), saydam=GOVDE_BANT,
                    gizli_ok={"(gövde x0 ön)": voksel_ok("165–206"), "(gövde x0 arka)": voksel_ok("170–215", "arka sağ (0,85, 0,62, −1,25)")},
                    is_="Uzatma bandı 1 solu getir; y 476,5 ve x 0 bindirmelerini bağla, y 530 braketine M5×18."),
               dict(ad="Uzatma bandı 2 sağ + y 688 braketi", desen=("Gövde uzatma bandı 2 sağ", "sağ y688)", "(gövde y634"),
@@ -713,14 +719,17 @@ ADIM = {
                    saydam=GOVDE_BANT, gizli_ok={"(gövde y634 arka)": voksel_ok()},
                    is_="Uzatma bandı 2 sağı getir (dikiş y 634), y 634 bindirmelerini bağla, y 688 braketine M5×18."),
               dict(ad="Uzatma bandı 2 sol + y 688 braketi, x 0 dikişi", desen=("Gövde uzatma bandı 2 sol", "sol y688)", "(gövde y634", "(gövde x0"),
-                   konum={"(gövde x0": {"y": (634, 791.5)}}, ucus={"*": (1, 0, 0)}, kamera=(-1.0, 0.35, -0.5), saydam=GOVDE_BANT,
+                   # F10e: (-1, 0,35, -0,5) iken bindirme cıvataları p0308 / p0310 34 / 31 px (oran < 0,2); 34.4 ile aynı düzeltme
+                   konum={"(gövde x0": {"y": (634, 791.5)}}, ucus={"*": (1, 0, 0)}, kamera=(-1.0, 0.3, -0.3), saydam=GOVDE_BANT,
                    gizli_ok={"(gövde x0 ön)": voksel_ok("167–207"), "(gövde x0 arka)": voksel_ok("171–215", "arka sağ (0,85, 0,62, −1,25)"),
                              "(gövde y634 arka)": voksel_ok("150–192", "arka sağ (0,85, 0,62, −1,25)"),
                              "(gövde y634 yan)": voksel_ok(447, "sol (−1, 0, 0)")},
                    is_="Uzatma bandı 2 solu getir; y 634 ve x 0 bindirmelerini bağla, y 688 braketine M5×18."),
               dict(ad="Masada: orta bant sağ + hoparlör", masa="orta_sag",
                    desen=("Gövde orta bandı sağ", "Hoparlör kabı ön", "Hoparlör 40", "Hoparlör kabı arka", "Köpük ped", "Hoparlör"),
-                   ucus={"Gövde orta bandı": (1, 0, 0), "*": (0, 2, -3)}, kamera=(-1.0, 0.45, 0.6),
+                   # F10e: kamera (-1, 0,45, 0,6) iken kelepçe cıvatası p0440 hoparlörün arkasında kalıyordu (gerçek malzemeyle gizle-fark
+                   # 0 px, eşik Σ|Δ| > 24); (-1, 0,45, 0,2) ile 127 px
+                   ucus={"Gövde orta bandı": (1, 0, 0), "*": (0, 2, -3)}, kamera=(-1.0, 0.45, 0.2),
                    # F10d düzeltme 1 (B-1): hoparlör grubu iç içe (halka → hoparlör → arka kap → ped → kelepçe) ve ızgara duvarının
                    # arkasında: bant ve grubun parçaları saydam, cıvatalar opak
                    saydam=("Gövde orta bandı sağ", "Hoparlör kabı", "Hoparlör kelepçesi", "Hoparlör 40", "Köpük ped (hoparlör"),
@@ -731,6 +740,7 @@ ADIM = {
                        "F5'teki arka servis kapağının 4'ü) hazırlıkta takılı (adım 0); karede bant ve hoparlör grubu saydam."),
               dict(ad="Orta bant sağ → gövde", bag="orta_sag", desen=("(gövde y792",), konum={"(gövde y792": {"x": (0, 1000)}},
                    ucus_bag=(1, 0, 0), saydam=GOVDE_BANT + ETEK_BANT + ("Hoparlör kabı",),
+                   kamera=(-1.0, 0.35, -0.5),   # F10e: varsayılan bakışta bindirme cıvatası p0268 17 px (gizle-fark); bununla hepsi geçer
                    # F10d düzeltme 1 (kontrol B-4): "5,53 mm" eksen ışınının kirişiydi, derinlik değil (K3 geri çekildi)
                    giris_ok={"*": "giriş yolu ölçümü: +x'te 138 mm boyunca çarpışma yok, sonra kutular ayrılıyor. Serbest sayılmamasının "
                                   "tek nedeni dinlenmede orta bant sağ ile uzatma bandı 2 sağın ortak yüzü: ışın ölçümü 5,53 mm kiriş "
@@ -738,7 +748,8 @@ ADIM = {
                    is_="Bandı takmadan önce K2'de göğüs altında bırakılan hoparlör kablosunu (PAM8403'ten boyundan iner) hoparlöre "
                        "bağla. Sonra orta bant sağı +x'ten getir (dikiş y 791,5), bindirmeleri bağla."),
               dict(ad="Orta bant sol", desen=("Gövde orta bandı sol", "(gövde y792", "(gövde x0"),
-                   konum={"(gövde x0": {"y": (791.5, 2000)}}, ucus={"*": (1, 0, 0)}, kamera=(-0.85, 0.62, 1.25),
+                   # F10e: kamera (-0,85, 0,62, 1,25) iken bindirme cıvatası p0270 22 px (gizle-fark); (1, 0,35, -0,5) ile hepsi geçer
+                   konum={"(gövde x0": {"y": (791.5, 2000)}}, ucus={"*": (1, 0, 0)}, kamera=(1.0, 0.35, -0.5),
                    saydam=GOVDE_BANT + ETEK_BANT + ("Hoparlör kabı",),
                    gizli_ok={"(gövde y792 arka)": voksel_ok(76, "arka sağ (0,85, 0,62, −1,25)")},
                    is_="Orta bant solu −x'ten getir; y 791,5 ve x 0 dikişlerini bağla. Bandın boss'larındaki ısıl gömmeler (y 1005 "
@@ -792,6 +803,7 @@ ADIM = {
         alt=True,
         sira=[dict(ad="Göğüs bandı sağ + y 1095 braketi", desen=("Göğüs bandı sağ", "(Gövde braketi sağ", "(gövde y1005"),
                    konum={"(gövde y1005": {"x": (0, 1000)}}, ucus={"*": (1, 0, 0)}, saydam=GOVDE_BANT,
+                   kamera=(0.6, 0.45, 1.25),   # F10e: varsayılan bakışta bindirme cıvatası p0280 29 px (gizle-fark); bununla hepsi geçer
                    is_="Göğüs bandı sağı +x'ten getir (dikiş y 1005), bindirmeleri bağla, y 1095 braketine dışarıdan M5×18. "
                        "Bant düz bir yoldan girmiyor (ölçüm, Notlar). Bandın boss'larındaki ısıl gömmeler (y 1198 dikişi ve F5'teki "
                        "üst arka servis kapağının 4'ü) hazırlıkta takılı (adım 0; bantlar saydam çizili).",
@@ -816,7 +828,8 @@ ADIM = {
                    is_="VESA taşıyıcı (PETG-CF): ekran cebinden direğin ön (+z) kanalına, 2 × M6×18 + pul + çekiç somun. Yükseklik kanalda "
                        "ayarlanır; cıvatalara ekran takılmadan, plakanın ortasından ulaşılır."),
               dict(ad="Göğüs ekranı → taşıyıcı (VESA)", desen=("Göğüs ekranı 11", "VESA pulu", "VESA cıvatası"), sema=("Göğüs dokunmatiği",),
-                   kamera=(0.85, 0.62, 1.25), ucus={"Göğüs ekranı 11": (0, 1, 4), "*": (0, 0, -1)},
+                   # F10e: (0,85, 0,62, 1,25) iken VESA pulları p0424 / p0426 48 / 27 px (gizle-fark, oran < 0,2); tam önden hepsi geçer
+                   kamera=(0.0, 0.4, 1.0), ucus={"Göğüs ekranı 11": (0, 1, 4), "*": (0, 0, -1)},
                    # F10d düzeltme 1 (B-1): VESA cıvataları ve pulları ekranla taşıyıcının arasında (arkadan bakışta taşıyıcı ve
                    # bantlar, önden bakışta ekran örtüyor): önden bakış, ekran (yeni parça, 0,4), taşıyıcı ve bantlar saydam
                    saydam=GOVDE_BANT + ("Göğüs ekranı VESA taşıyıcı", "Göğüs ekranı çerçevesi", "Göğüs ekranı 11"),
@@ -912,7 +925,9 @@ ADIM = {
     ),
     "G4": dict(
         baslik="S1 kablo kaseti",
-        is_="Sırayı bozma; +x'ten kaydırarak takılmaz.\n"
+        # F10e düzeltme 1 (kontrol bulgu 7): "+x'ten kaydırarak takılmaz" yalnız CAD duruşunda ölçüldü (+x üst kol tüpü 5,34 mm, −x omuz
+        # bandı); kol duruşunda ölçülmedi. Metin ölçülene indirildi
+        is_="Sırayı bozma. CAD duruşunda yandan kaydırılamaz (+x'te üst kol tüpüne, −x'te omuz bandına değer); önden radyal tak.\n"
             "(a) Gövde önden radyal, x ofsetsiz, arka plaka omuz pedine yaslı. Kol: S1 −45 / −20 / 0 × S2 90 ya da S1 −45 × S2 5.\n"
             "(b) U'yu elle kanala koy; dış koşu duvar boyunca, ψ 214'te yarıktan içeri (ψ: arka 90, aşağı 180, ön 270). Lop L 171,4 mm (−5…0), kablo üstünde işaretli.\n"
             "(c) Duvar bağı: 2 ip, ψ 226,5 / 230, düğüm dışarıda; sıkarken demeti −x'e tut.\n"
@@ -1079,7 +1094,9 @@ ADIM = {
               dict(ad="Arka servis kapağı", desen=("Arka servis kapağı", "(arka kapak)"), ucus={"*": (0, 0, -1)},
                    gizli_ok={"Bindirme cıvatası M3x6 (arka kapak)": voksel_ok("195–418")},
                    is_="Arka servis kapağını arkadan yerine koy, 7 × M3×6 ISO 7380 → ısıl gömme."),
+              # F10e: 49.3 ile aynı bakıştan kare 49.3'ün neredeyse aynısıydı (iki benzer kapak, iki benzer bant); sol-arka-üstten
               dict(ad="Üst arka kapak (hub'la) → gövde", bag="ust_kapak", desen=("(üst arka kapak)",), ucus_bag=(0, 0, -1),
+                   kamera=(-0.85, 0.62, -1.25),
                    # F10d düzeltme 1: eski 0,5 mm çarpışma kapakla uçan yanlış ev sahipli ısıl gömmelerdendi (kontrol B-2; somunlar
                    # artık göğüs bandında, F3); "1,5 mm" ışın kirişiydi (B-4, K3 geri çekildi). Uçuş istisnası gerekmiyor.
                    giris_ok={"*": "giriş yolu ölçümü: −z'de 29,5 mm boyunca çarpışma yok, sonra kutular ayrılıyor. Serbest sayılmamasının "
