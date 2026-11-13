@@ -2,7 +2,7 @@
 
 Tarih: 15 Ekim 2026. Tek yer: bu dosya. CAD karşılığı `tasarim/freecad/taban/` ve `kafa/`, sayılar `taban-analiz.json`
 (`donus`, `aku`) ve `kafa-analiz.json` (`tork`, `isi`, `pi`). "Tahmini" yazan değer ölçülmedi ya da kaynaktan türetildi.
-Pin planı E5'in başlangıcıdır, kesin değildir. Akü süreleri E8'in (5. adım) işi, burada yalnız anlık akımlar var.
+Pin planı 14.11.2026'da kesinleşti (karar: Ahmet'in 13.11.2026 yetkilendirmesiyle); tek yazılı kaynağı `planlama/adim3/pin-haritasi.md`. Akü süreleri E8'in (5. adım) işi, burada yalnız anlık akımlar var.
 T2 takip düzeltmesi (15 Ekim 2026, bağımsız kontrol `K3-kontrol.md`): JGB37 tork uyarısı, ESP32 beslemesi ifadesi, DTR/RTS, ön şarj, PC817 3,3 V, Pololu akımı, kafa ısısı (`T2-takip.md`).
 
 ## 158 cm güncellemesi (04.11.2026; 09.11.2026 F4a: 05.11 B + R1 yerleşimine göre)
@@ -90,7 +90,7 @@ Hub (göğüs üst arka kapağı içi) ── USB-A → micro B (v4 2 m) ── 
 
 **Sigorta dalları (geçerli):** ana 30 A → F1 20 A (röle K1 → anahtarlı bara: BTS7960 × 2, hat 7,5 A → XL4016 A, hat 7,5 A → XL4016 B, hat 5 A → XL4016 C), F2 15 A yedek, F3 5 A kafa, F4 5 A XL4016 çevre, F5 2 A acil stop; ayrıca göğüs ekranı hat sigortası mini 2 A, şarj girişi mini 10 A. Ayrıntı "Sigorta listesi".
 
-**v4 muadilleri (elektriği etkiler, bölümler yeniden yazılmadı):** röle K1 MAH-112-C-4 30/40 A (dahili diyot yazmıyor, 1N4007 kullan); ön şarj rölesi K2 JQC-3FF 10 A (E9'daki JQC-3F(T73) 7 A yerine; ayak düzeni pertinakta kontrol edilir); motor sürücü BTS7960B (pin adları EN1/EN2, IN1/IN2: pin planındaki adlardan farklı; 3,3 V lojik sayfada yok, kart gelince kontrol); acil stop NP2 BE102 (CAD 60 mm B200E60; etek deliği kontrol); hızlı klemens 2273-203 en çok 2,5 mm², 12 AWG ana kabloda kullanılmaz; şarj cihazı IMAX B6 (4S'te ≈ 3,4 A; 14,6 V kesme cihazda ölçülecek).
+**v4 muadilleri (elektriği etkiler, bölümler yeniden yazılmadı):** röle K1 MAH-112-C-4 30/40 A (dahili diyot yazmıyor, 1N4007 kullan); ön şarj rölesi K2 JQC-3FF 10 A (E9'daki JQC-3F(T73) 7 A yerine; ayak düzeni pertinakta kontrol edilir); motor sürücü BTS7960B (pin adları EN1/EN2, IN1/IN2; pin planında EN = INH, IN = PWM varsayımıyla eşlendi, `pin-haritasi.md` §6.1; 3,3 V lojik sayfada yok, kart gelince kontrol); acil stop NP2 BE102 (CAD 60 mm B200E60; etek deliği kontrol); hızlı klemens 2273-203 en çok 2,5 mm², 12 AWG ana kabloda kullanılmaz; şarj cihazı IMAX B6 (4S'te ≈ 3,4 A; 14,6 V kesme cihazda ölçülecek).
 
 ## 1,65 m güncellemesi (Y2b, 29 Ekim 2026) [tarihçe]
 
@@ -103,7 +103,7 @@ geçerli kalanlar aşağıda. Kaynak: `tasarim/freecad/taban/taban-analiz.json` 
 | Konu | 125 cm (bu dosyanın gövdesi) | 1,65 m (29.10; 1,58 m'de değişmeyenler geçerli) |
 |---|---|---|
 | Akü | Victron SuperPack 12,8/20, taban arka bölmesi | **Aynı yerde** (75 mm öne geometrik olarak olmadı). Karar 29.10: rampada / eğimde kollar ev pozunda ve taban ivmesi ≤ 0,1 m/s²; düzde ≤ 0,5 m/s² (devrilme sınırı ≈ 2,0 m/s², `Y2b-ivme.json`). Karar 29.10 (Y2b): yazılım / acil stop freni düz zeminde **≤ 1,8 m/s²** (düzde 0,5 kg el yüküyle bile devrilme payı 1,54). Karar 29.10 (Ahmet): **rampada / eğimde yavaşlama ve fren de ≤ 0,1 m/s²** (rampada 1,8 frende ev pozu payı 1,31 < 1,5) |
-| Acil stop, devreye alma (E3, E9) | K1 40 A (GPIO12, IRLZ44N #1), K2 7 A + 5,6 Ω ön şarj (GPIO2, IRLZ44N #2), PC817 #1 mantar sonrası (GPIO23), #2 anahtarlı bara (GPIO5), F5 2 A | **Değişmedi.** Devreye alma komutu Pi'den (telefon kumandası; Nextion yok). CAD'de güç panelinde K1 + soket ve ana sigorta var; **Y3 (29.10): K2 (JQC-3F 7 A) + 5,6 Ω 11 W + 1N4007 güç panelinde "Ön şarj kartı" (70 × 50 pertinaks, merkez x −97,5 / z −1, akünün önünde) olarak CAD'e girdi** (zarf tahmini). Pin tablosundaki "GPIO2 boş" çelişkisi Y2b'de düzeltildi |
+| Acil stop, devreye alma (E3, E9) | K1 40 A (GPIO12, IRLZ44N #1), K2 7 A + 5,6 Ω ön şarj (GPIO2, IRLZ44N #2), PC817 #1 mantar sonrası (GPIO23), #2 anahtarlı bara (GPIO5), F5 2 A | **Değişmedi** (yalnız pinler, 14.11: K1 GPIO4, K2 GPIO19; `pin-haritasi.md`). Devreye alma komutu Pi'den (telefon kumandası; Nextion yok). CAD'de güç panelinde K1 + soket ve ana sigorta var; **Y3 (29.10): K2 (JQC-3F 7 A) + 5,6 Ω 11 W + 1N4007 güç panelinde "Ön şarj kartı" (70 × 50 pertinaks, merkez x −97,5 / z −1, akünün önünde) olarak CAD'e girdi** (zarf tahmini). Pin tablosundaki "GPIO2 boş" çelişkisi Y2b'de düzeltildi |
 | Ana bilgisayar | Raspberry Pi 5 8 GB (liste) | **Raspberry Pi 5, 4 GB RAM** (eldeki kart; Ahmet 29.10: "pi 4 gb"). Güç bütçesi aynı bırakıldı (4 / 7 / 12 W; 8 GB ölçümlerine dayanıyordu, 4 GB'ta en çok biraz daha az) |
 | Omuz servoları (E1) | DS3218MG; hat yoğun 4,4 / 4,7 A | **DS3235** (durma 2,1 A @6 V datasheet; tasarımda 3,0 A ihtiyatlı). Kol ×1,25 ile kol + kafa servosu bir hatta yoğun ≈ **5,45 A** (A, pan ile 5,47; B, tilt 0,9 ile ≈ 5,8), tepe 7,8 A (taslak kol analizi) → XL4016'nın sürekli 5 A önerisinin üstünde. **Karar 29.10: kafa servoları kol hatlarından ayrıldı, üç servo hattı** (aşağıdaki "Servo hatları" tablosu): kol hatları yoğun ≈ 4,87 A. Hat akımı yine ölçülmeli |
 | Servo uzatmaları | ~1,3 m | [1,58 m: üstteki tablo] dirsek / bilek 1,93 m, S2 ≈ 1,77 m (1.769,8 mm: Y2b hesabı, göbek eki yolu = G2 öncesi 20 + geçiş 23,9 + S1 lopu 171,4 + gövde içi 238 + dikey 1.286,5 + konnektör 30; `planlama/y2/Y2b-kontrol.md` bulgu 4. `dirsek-analiz.json` `kablo.s1_boy` S2 satırı Y3'te (29.10) `dirsek_montaj.py` ile yeniden üretildi: DS3235 **1.770 mm**, eski yarık yolu 1.490 kalktı); durma akımında 2 × 1,93 × 0,052 × 2,5 A ≈ 0,50 V düşüm (servo ≈ 5,5 V görür; tahmini) |
@@ -111,7 +111,7 @@ geçerli kalanlar aşağıda. Kaynak: `tasarim/freecad/taban/taban-analiz.json` 
 | Kafa 12 V (18 AWG çift) | boyundan | +0,385 m; 1,8 A'de ek düşüm < 0,03 V (ihmal) |
 | Taban, dönüş (E0) | 21,73 kg, iz 356 (x ±178) | 24,80 kg, AM (−0,2; 521,3; −13,2), iz 432 (x ±216). Yerinde dönüş μ 0,5: en yüklü motor 15,7 kg·cm = sürekli ×2,49, 2,12 A; ön omniyle ×0,47. Karar aynı: önce ölç, μ ≥ 0,4 → ön omni |
 | Akü süreleri (E8) | Victron boşta / normal / yoğun 10,9 / 5,7 / 2,0 sa | **12,1 / 5,9 / 1,83 sa** [1,65 m yükleriyle: 7", göğüs ekranı yok; 158 cm kaba tahmini üstteki tabloda] (akü tarafı 17,1 / 35,1 / 113,5 W, XL4016 × 4 boşta dahil; yoğun omniyle 2,07; ders 5,8, fuar 5,1 sa → 8 saatlik fuar için öğle şarjı ya da ikinci akü, değişmedi). **Gereksinim 2 saat kullanım; yoğun kullanımda hesaplanan 1,83 sa Ahmet tarafından kabul edildi (29.10).** Normal / tipik 5,9 sa ✔ (gereksinimin ≈ 3 katı); yoğun 1,83 < 2 (kabul). Tasarım değişikliği yok (`Y2b-aku.json` `gereksinim_2sa`) |
-| Yedek GPIO | GPIO2 (E9 ile K2'ye gitti) | GPIO16 / 17 |
+| Yedek GPIO | GPIO2 (E9 ile K2'ye gitti) | GPIO16 / 17 (14.11: enkodere gitti, röleler GPIO4 / 19'a; boş kalan GPIO12, `pin-haritasi.md`) |
 
 **Servo hatları (karar 29 Ekim 2026, Ahmet: "iki ayrı regülatör, sol kol / sağ kol"):** her kol kendi XL4016'sında, kafa servoları
 (pan + tilt) üçüncü bir XL4016'da (yeni; XL4016 3 → 4, `maliyet.json`). Akımlar `taslak-170/kol-analiz/kol-analiz.json` (oran 1,25, DS3235)
@@ -140,7 +140,7 @@ servo başına değerlerinden; tepe = 2 servo kalkışta (DS3235 3,0 A, MG996R 2
 | Akü ölçümü (E2) | Yok | 100 kΩ / 18 kΩ bölücü + 100 nF, GPIO36 |
 | Acil stop durumu (E2) | Okunmuyor | PC817 #1 mantar sonrası 12 V'u okur; PC817 #2 anahtarlı 12 V barayı okur |
 | PCA9685 / BNO055 mantık (E2) | 5 V | 3V3 (ESP32 regülatörü) |
-| Acil stop yeniden başlatma (E3) | Mantar bırakılınca röle kendiliğinden çeker | Bobin: F5 → mantar NC → bobin → MOSFET (ESP32 "devreye al", GPIO12). Bırakmak gücü vermez |
+| Acil stop yeniden başlatma (E3) | Mantar bırakılınca röle kendiliğinden çeker | Bobin: F5 → mantar NC → bobin → MOSFET (ESP32 "devreye al", GPIO4; 14.11'e dek GPIO12). Bırakmak gücü vermez |
 | ESP32 beslemesi (E4) | Pi USB'si + çevre 5 V birlikte | Diyotlu VEYA (iki kaynak): asıl çevre 5 V (VIN); USB kablosunun VBUS teline seri 1N5819 (anot Pi tarafında). Pi'ye geri besleme yok, CP2102 VBUS algısı sürer |
 | Amfi | Tabanda (I2S 1 m boyundan) | Kafada (04.11: PAM8403 + USB ses kartı, I2S kalktı; 05.11 B + R1: kafa sol duvarı, `KY/uygulama-notu.md:56`) |
 | Etek ısısı (E7) | Pi + 3 XL4016 + 2 BTS kapalı etekte | Pi ve onun XL'i çıktı (≈ −8…11 W). Fan yeri ayrıldı (ölçüme bağlı), ölçüm planı aşağıda |
@@ -167,7 +167,7 @@ Varsayımlar (hepsi açık):
 > | 0,6 | 17,7 kg·cm | **%197** | %285 | 2,9 kg·cm | ×1,08 | ×1,08 |
 >
 > Sonuç: tork gerçekten ~9 kg·cm ise standart tekerle robot **yerinde dönemez** (μ 0,4'te bile motorlar durur); ön omniyle dönüş durmanın %29–33'ü, yani sürekli sınır (%30) civarında (×0,95–1,08; sınırda, ısıl yük izlenmeli).
-> Omni + Ø127/Ø125 çap farkı düz gidişte de sürekli değere yaklaşır: Ø125'e yakın omni ya da hız düzeltmesi gerekir. Yazılımdaki "> 2,0 A'de kes" eşiği bu senaryoda geçersiz (durma akımı 1,2 A): eşik ölçümden sonra yazılır.
+> Omni + Ø127/Ø125 çap farkı düz gidişte de sürekli değere yaklaşır: Ø125'e yakın omni ya da hız düzeltmesi gerekir. Yazılımdaki "> 2,0 A'de kes" eşiği bu senaryoda geçersiz (durma akımı 1,2 A): eşik ölçümden sonra yazılır. (14.11: durma algılama enkoderle, satır 203.)
 > Düz sürüşte de pay daralır: `taban-analiz.json` `motor` düz 0,5 m/s² ivmede 2,75 kg·cm (2,7'nin ×1,02), 5° rampa + 0,5 m/s² 5,7 kg·cm (×2,1; durmanın %63'ü).
 > **Motor (durma torku + akımı) ve zemin μ ölçümü omni siparişinden ÖNCE yapılmalı** (ölçüm aşağıda). Tork ≤ 10 kg·cm çıkarsa omni tek başına yetmeyebilir: daha düşük devirli (daha yüksek oranlı) JGB37 ya da daha güçlü motor da değerlendirilmeli.
 - Sürtünme: Coulomb, her tekerde kuvvet ≤ μN, yönü kayma hızının tersi. Lastik esnemesi için kayma ölçeği 0,05 (kaymanın hıza oranı 0,05'te kuvvet ≈ 0,7 μN; tahmini). Yuvarlanma direnci Crr 0,03. Omni makarası yanal direnci 0,05 (tahmini).
@@ -200,7 +200,7 @@ Ana montaj yükleyicisi (`montaj/moduller.py`) teker gruplarını "Teker 125 x 5
 **Yazılım kısıtı (her durumda, K1 (c)):**
 - Standart tekerle: yerinde dönüş komutu en çok 90° ve ω ≤ 0,6 rad/s (≈ 2,6 s), ardından en az 3 kat dinlenme (ısıl yük). Yaw ivmesi ≤ 1 rad/s².
   Sürüş sırasında yön değişimi yay ile (R ≥ 1 m, k ≥ 0,5). Bu, yükü yalnız %10–15 azaltır; asıl çözüm omni.
-- Akım izleme: BTS7960 IS çıkışları (GPIO32/33) motor başına > 2,0 A ölçülürse 2 s sonra dönüşü kes (μ 0,5'te yerinde dönüş akımı 2,0 A).
+- Akım izleme: ~~BTS7960 IS çıkışları (GPIO32/33) motor başına > 2,0 A ölçülürse 2 s sonra dönüşü kes~~ (μ 0,5'te yerinde dönüş akımı 2,0 A). **14.11: kural enkodere taşındı** (PWM > 0 iken sayım yoksa dönüşü kes; eşik ve süre ölçümden sonra): IS bölücüsüyle kart başına ≈ 4 A altı okunmaz, IS yalnız arıza bayrağı (`pin-haritasi.md` Y7, D7).
 - Omni ile: dönme merkezi arka aks ortası. Odometri modeli arka aksta diferansiyel sürüş; ön enkoderler kayma tespiti içindir.
 
 **Ölçüm (ekip, ~1 saat):** (1) Bir JGB37'yi laboratuvar kaynağında 12 V'ta mil kilitli tut, durma akımını oku; tork için 100 mm kol + el kantarı
@@ -246,26 +246,26 @@ LED'e ters paralel 1N4148 (ters gerilim koruması), çıkış kolektörü → GP
 ## E3: acil stop ve yeniden başlatma
 
 ```
-F5 2 A ─── mantar NC ───┬─── röle K1 bobini (+) ── bobin (−) ── IRLZ44N drain       (bobine ters paralel 1N4007)
-                        │                                       IRLZ44N source ── GND
-                        └── PC817 #1 giriş (12 V algı)          IRLZ44N gate ── 220 Ω ── GPIO12 ;  gate ── 10 kΩ ── GND
+F5 2 A ─── mantar NC ───┬─── röle K1 bobini (+) ── bobin (−) ── MOSFET  drain       (bobine ters paralel 1N4007)
+                        │                                       MOSFET  source ── GND
+                        └── PC817 #1 giriş (12 V algı)          MOSFET  gate ── 220 Ω ── GPIO4 ;  gate ── 4,7 kΩ ── GND
 K1 kontağı (40 A): F1 20 A ──> anahtarlı 12 V bara ──> BTS7960 sol/sağ, XL4016 A, XL4016 B  (PC817 #2 bu barayı okur)
 ```
 
-- Röle yalnız **mantar serbest ve ESP32 "devreye al" (GPIO12 = 1)** iken çeker. Mantar bırakılınca hiçbir şey olmaz; güç ancak operatör komutuyla gelir (Pi komutu: telefon kumandası; Nextion "Devreye al" düğmesi Y2b ile kalktı).
-- Yazılım kuralı (ESP32): PC817 #1 HIGH görünce GPIO12'yi hemen 0 yap ve kilitle. Yeniden devreye almadan önce:
-  (1) mantar serbest, (2) PCA9685 çıkışları servoların **son bilinen konumuna** yazılmış, (3) BTS EN = 0 ve PWM = 0, (4) açık komut. Sonra GPIO12 = 1.
+- Röle yalnız **mantar serbest ve ESP32 "devreye al" (GPIO4 = 1)** iken çeker. Mantar bırakılınca hiçbir şey olmaz; güç ancak operatör komutuyla gelir (Pi komutu: telefon kumandası; Nextion "Devreye al" düğmesi Y2b ile kalktı).
+- Yazılım kuralı (ESP32): PC817 #1 HIGH görünce GPIO4'ü hemen 0 yap ve kilitle. Yeniden devreye almadan önce:
+  (1) mantar serbest, (2) PCA9685 çıkışları servoların **son bilinen konumuna** yazılmış, (3) BTS EN = 0 ve PWM = 0, (4) açık komut. Sonra GPIO4 = 1.
   PC817 #2 500 ms içinde LOW olmazsa hata ver.
-- Açılışta güvenli: GPIO12 boot'ta LOW olmalı (strapping pini). Gate'teki 10 kΩ pull-down hem bunu sağlar hem röleyi kapalı tutar. ESP32 kilitlenirse görev izleyicisi (watchdog) resetler; reset anında pin LOW'a düşer → röle bırakır.
+- Açılışta güvenli: GPIO4 strapping değil; reset sırasında ve sonrasında çıkışı kapalı, dahili zayıf pull-down'ı açık (Espressif IO_MUX); Arduino-ESP32 2.0.17'de hiçbir açılış işi ya da varsayılan çevre birimi onu sürmez; 3.x'te `Serial2` RX varsayılanıdır (sürmez, pull-up açar: Serial1 / Serial2 varsayılan pinlerle açılmaz, `pin-haritasi.md` §2, §3.1, Y1). Röleyi kapalı tutan asıl şey gate'teki 4,7 kΩ pull-down'dır (14.11'e dek 10 kΩ). ESP32 kilitlenirse görev izleyicisi (watchdog) resetler; reset anında çıkış kapanır, pull-down LOW'a çeker → röle bırakır. (14.11'e dek K1 GPIO12'deydi; GPIO16 ara kararı Arduino'nun PSRAM yoklaması yüzünden geri alındı: `pin-haritasi.md` §3.1.)
 - Kalan risk: yazılım hatası pini 1'de bırakıp mantar bırakılırsa röle yeniden çeker. Donanımla kapatılacaksa: röle kontağına paralel ikinci (kendini tutma) kontak + ayrı başlat butonu (iki kontaklı röle gerekir). Şimdilik yazılım kuralı + watchdog.
 - **Pi seri portu DTR/RTS (K3 E-2, yazılım planına satır):** DevKit'teki otomatik reset devresi (CP2102 DTR/RTS → EN/GPIO0) ESP32'yi Pi seri portu açıp kapatırken resetleyebilir.
-  Reset → GPIO12 LOW → röle bırakır → servo ve motor gücü kesilir, **kollar düşer**. Pi tarafı portu DTR/RTS değiştirmeden açmalı: pyserial'de port açılmadan önce
+  Reset → GPIO4 LOW (pull-down) → röle bırakır → servo ve motor gücü kesilir, **kollar düşer**. Pi tarafı portu DTR/RTS değiştirmeden açmalı: pyserial'de port açılmadan önce
   `ser.dtr = False; ser.rts = False` ayarlanıp sonra `ser.open()`, Linux'ta ayrıca `stty -F /dev/ttyUSB0 -hupcl` (kapanışta DTR düşmesin). İlk bağlantı testinde
   ESP32'nin boot mesajı basmadığı (resetlenmediği) görülmeli. Yazılım yine de "ESP32 resetlendi" durumunu ele almalı: reset sonrası röle kapalı açılır, yeniden devreye alma E3 kuralıyla.
 - **Ön şarj (E9) önemi arttı (K3):** E3 ile röle her "devreye al"da yeniden çeker. Her seferinde anahtarlı bara üstündeki kondansatörler (XL4016 / BTS giriş kondansatörleri; XL çıkışındaki
   4 × 2200 µF servo kondansatörü de XL üzerinden) boş halden dolar. Victron BMS yüksek kapasitif yükte kesebilir, ~10 s sonra yeniden dener (`06-aku-secimi.md` satır 61, 164).
   Önceden yalnız açılışta olan darbe artık her acil stop sonrasında olur. E9 (5. adım): röle kontağına paralel 10 Ω / 5 W ön şarj direnci + gecikmeli çekme ya da ≥ 30 A NTC; değer için bara kapasitesi ölçülecek.
-- MOSFET: IRLZ44N (mantık seviyeli, TO-220; Direnc.net ~26 TL, fiyat doğrulanmadı). Bobin akımı ~0,15 A. Alternatif BC337 + 1 kΩ.
+- MOSFET (14.11 şartı, `pin-haritasi.md` §6 D9): gerçek mantık seviyeli, VGS(th) en çok ≈ 2 V ve RDS(on) 2,5 V gate'te tanımlı (ör. AO3400A, IRLML6344; SOT-23, adaptörle). Listedeki VBsemi IRLZ44NPBF-VB'nin belgesi yok: değiştirilecek. Bobin akımı ~0,15 A (K1), ~0,03 A (K2). Alternatif BC337 + 1 kΩ (eski seçenek, delikli; 220 Ω / 4,7 kΩ ağı ona göre yeniden hesaplanır, doğrulanmadı).
 - F5 2 A: bobin 0,15 A + PC817 ~5 mA. Önceki 5 A bu devre için büyüktü, 5 A artık F3/F4'te.
 
 ## E4: Pi 5 beslemesi (K4: Pi kafada)
@@ -303,7 +303,7 @@ Tarih notu 04.11.2026: düşürücü, bütçe, ekran beslemesi ve boyun demeti 1
   Test şartı (değişmedi): kafa kapalı, stres (stress-ng + animasyon), SoC ≤ 75 °C, tilt servosu gövdesi ≤ 50 °C. Yazılım SoC > 75 °C'de animasyon FPS düşürür. Aşılırsa üst bant arkasına 25–30 mm egzoz fanı.
 - **Servis (125 cm kafası; yeni kabukta doğrulanmadı):** microSD −X'e bakar (x −49…−34, z −17…−37). Arka kabuk 2 vidayla (x ±105, z −30) sökülünce SD, USB-A ve Ethernet erişilir. Ön kabuk ve LCD yerinde kalır.
 - **Kablo listesi (boyun; `lale158/kablo_yolu_ekran.py`, 05.11 B + R1):** 12 V çift 18 AWG + tilt servo + göğüs HDMI (Ø6) + hub uzatması (Ø4) + hoparlör (Ø4) ≈ 69,9 mm² (kablo çapları tahmini; `kablo_yolu_ekran.py:31, 197`). Dar kesitler: mil arka penceresi 20 × 10 (175 mm², %39,9), servo yuvası arka kanalı 20 × 7,8 (156 mm², %44,8), alt çıkış 20 × 12 (204 mm², %34,3) (`lale158-kontrol.json` `kablo_ozet.boyun_demet_alan_mm2`, `gecis`). Düzen **karar bekliyor (K14)**. Hoparlör yeri kapandı: gövde orta bandı sağ duvarı (`KY/uygulama-notu.md:59`).
-- **Tabanda boşalan Pi yeri** (−90,5; 80): E2/E3 arayüz kartı (70 × 50 pertinaks: bölücüler, PC817, IRLZ44N + 1N4007, klemens).
+- **Tabanda boşalan Pi yeri** (−90,5; 80): E2/E3 arayüz kartı (70 × 50 pertinaks: bölücüler, PC817, röle MOSFET'i (D9, SOT-23 adaptörlü) + 1N4007, klemens).
 
 ## E7: etek içi ısı
 
@@ -336,7 +336,7 @@ Akü Victron SuperPack 12,8 V 20 Ah (BMS 30 A sürekli) ── XT60 ── Ana s
                                                                                       │                                                                └─ SY8205 5 V ── P6KE6V8A ── micro USB Power: 10,1" QLED (Touch'tan 5 V köprülenmez)
                                                                                       ├─ mini 2 A ── LM2577 + LM2596 12 V ── 11,6" göğüs ekranı 12 V [giriş noktası karar bekliyor, K11]
                                                                                       ├─ F4 5 A ── XL4016 çevre 5 V ── ESP32 VIN, sonar ×3, enkoder (3V3 ESP32'den), PCA9685/BNO055 mantık (3V3)
-                                                                                      └─ F5 2 A ── mantar NC ── röle K1 bobini ── IRLZ44N ── GND   (PC817 #1 mantar sonrası)
+                                                                                      └─ F5 2 A ── mantar NC ── röle K1 bobini ── MOSFET  ── GND   (PC817 #1 mantar sonrası)
 Veri: Pi (kafa) ── USB ≈ 1,57 m (VBUS'ta 1N5819) ── ESP32 (taban) ── I2C: PCA9685 (10 servo + 3 sonar trig), BNO055 ; PWM/EN/IS: BTS ×2 ; enkoder ×2 (A/B)
 Toprak: akü − ── WAGO yıldız noktası (güç paneli) ── tüm dönüştürücüler; kafa GND 12 V dönüşüyle
 ```
@@ -440,10 +440,10 @@ kesebilir, ~10 sn sonra yeniden dener (`06-aku-secimi.md`). Önceden yalnız aç
 ```
 F1 20 A ──┬── K1 kontağı (40 A) ─────────────────────┬── anahtarlı 12 V bara (BTS ×2, 7,5 A ── XL4016 A/B)
           └── K2 kontağı (7 A) ── R_ön 5,6 Ω 11 W ───┘
-F5 2 A ── mantar NC ──┬── K1 bobini ── IRLZ44N #1 (GPIO12)      (her bobine ters paralel 1N4007)
-                      └── K2 bobini ── IRLZ44N #2 (GPIO2; 220 Ω seri, 10 kΩ pull-down)
+F5 2 A ── mantar NC ──┬── K1 bobini ── MOSFET  #1 (GPIO4)       (her bobine ters paralel 1N4007)
+                      └── K2 bobini ── MOSFET  #2 (GPIO19; 220 Ω seri, 4,7 kΩ pull-down)
 ```
-- **R_ön = 5,6 Ω, 11 W taş (çimento) direnç** (Direnc.net 13,95 TL); **K2 = 12 V 7 A sinyal rölesi** JQC-3F(T73) (18,23 TL), ikinci IRLZ44N + 1N4007.
+- **R_ön = 5,6 Ω, 11 W taş (çimento) direnç** (Direnc.net 13,95 TL); **K2 = 12 V 7 A sinyal rölesi** JQC-3F(T73) (18,23 TL), ikinci röle MOSFET'i (E3 şartı) + 1N4007.
 - **Tepe ön şarj akımı:** 14,6 V / 5,6 Ω = **2,6 A** (BMS 30 A sürekli sınırının onda biri). τ = 5,6 Ω × 2 mF = 11 ms; %99 dolum 56 ms.
   Ön şarj penceresi **300 ms**: XL çıkışındaki 8,8 mF servo kondansatörü de buck üzerinden dolsun.
 - **Enerji:** bara ½ · 2 mF · 14,6² ≈ 0,21 J + servo kondansatörleri ½ · 8,8 mF · 6² ≈ 0,16 J; dirençte < 0,5 J, 11 W için ihmal.
@@ -453,41 +453,47 @@ F5 2 A ── mantar NC ──┬── K1 bobini ── IRLZ44N #1 (GPIO12)    
   **≤ 1 s** içinde bırakır. Taş direncin kısa süreli aşırı yük dayanımı (tipik 5–10 × P_n, 5 s) seçilen ürün sayfasında yok: doğrulanmadı.
 - **Yer:** güç paneli, K1 yanında; direnç panel yüzeyinden ≥ 5 mm yukarıda (ısı), PETG'ye ve kablo demetine değmez. Montaj rehberi B5a adımı.
 - **Yazılım (ESP32, E3 dizisine ek):** (1) E3 ön koşulları: mantar serbest, servo hedefleri son konumda, BTS EN = 0, açık komut;
-  (2) GPIO2 = 1 (K2); (3) 300 ms bekle, PC817 #2 LOW olmalı (bara var), değilse GPIO2 = 0 ve hata; (4) GPIO12 = 1 (K1);
-  (5) 100 ms sonra GPIO2 = 0; (6) PC817 #2 LOW teyidi. Reset ya da acil stopta iki pin de LOW (pull-down), iki röle de bırakır.
-- **GPIO2:** E5 pin planındaki son yedek pin (DevKit LED'i; strapping, boot'ta LOW/boş olmalı, 10 kΩ pull-down uygun). O gün yedek GPIO kalmamıştı; 1,65 m'de Nextion kalkınca **GPIO16 / 17 boş** (Y2b, pin planı).
+  (2) GPIO19 = 1 (K2); (3) 300 ms bekle, PC817 #2 LOW olmalı (bara var), değilse GPIO19 = 0 ve hata; (4) GPIO4 = 1 (K1);
+  (5) 100 ms sonra GPIO19 = 0; (6) PC817 #2 LOW teyidi. Reset ya da acil stopta iki pin de LOW (pull-down), iki röle de bırakır.
+- **K2 pini (14.11: GPIO19):** E9'da K2 son yedek pin olan GPIO2'ye (DevKit LED'i, strapping) konmuştu; LED yakıp söndüren herhangi bir program K2'yi açıp kapatıyordu.
+  14.11 kararıyla K1 GPIO4'e, K2 GPIO19'a taşındı (Nextion kalkınca boşalan 16 / 17 enkodere gitti; 16 / 17'yi Arduino çekirdeği açılışta sürer); GPIO2 yalnız kart LED'i, GPIO12 boş (`pin-haritasi.md` §3.1).
   PCA9685 kanal 13 alternatifi önerilmez: ESP32 resetlenince PCA çıkışını korur, K2 kapalı kalabilir.
 - **Ana anahtar açılışı:** K1 açık olduğundan yalnız F3/F4/F5 girişleri bağlanır (Pololu + XL çevre girişi, tahmini ≤ 0,6 mF). BMS'in bunu kesip
   kesmediği ilk açılışta gözlenir; keserse aynı yöntem ana anahtara uygulanır (malzeme eklenmedi, ölçüme bağlı).
 - **Ölçüm (montajda):** bara kapasitesi multimetrenin kapasite kademesiyle (K1 açık, akü ayrık). 2 mF'tan çok büyükse ön şarj penceresi
   5τ + XL dolum payına göre uzatılır; R değişmez.
 
-## Pin planı taslağı (ESP32 DevKit 30 pin; E5 başlangıcı)
+## Pin planı (ESP32 DevKit 30 pin; kesin, 14.11.2026)
+
+Karar: Ahmet'in 13.11.2026 yetkilendirmesiyle. Tek yazılı kaynak ve gerekçeler, reset davranışı, firmware ve donanım şartları,
+"kablajda teyit edilecek" listesi: `planlama/adim3/pin-haritasi.md`. Bu tablo onunla aynıdır; fark çıkarsa o esastır.
+**Röle kuralı:** röleler yalnız hiçbir açılış kodunun ve varsayılan çevre biriminin sürmediği, reset boyunca LOW kalan pinlerde (4, 19). Çekirdek sabit: espressif32@6.9.0 (Arduino-ESP32 2.0.17); 3.x'e geçiş `pin-haritasi.md` gözden geçirilmeden yapılmaz. **Şart:** modül PSRAM'siz WROOM (aksi hâlde 16 / 17'deki iki enkoder kanalı çalışmaz; `pin-haritasi.md` §1, T1).
 
 | GPIO | İşlev | Not |
 |---|---|---|
 | 36 (VP) | Akü gerilimi | ADC1; 100k/18k |
-| 39 (VN) | Sonar sağ echo | yalnız giriş; bölücü |
+| 39 (VN) | Sonar sağ echo | yalnız giriş; bölücü. ADC1 açılırken ~80 ns LOW darbesi (Espressif errata GPIO-3.11) |
 | 34 | Sonar orta echo | yalnız giriş; bölücü |
 | 35 | Sonar sol echo | yalnız giriş; bölücü |
-| 32 | BTS sol IS (R_IS + L_IS) | ADC1; IS direnci modül şemasından (tahmini 1 kΩ) |
-| 33 | BTS sağ IS | ADC1 |
-| 25 / 26 | BTS sol RPWM / LPWM | |
-| 27 / 14 | BTS sağ RPWM / LPWM | 14 boot'ta kısa PWM verir: EN düşük olduğu için zararsız |
-| 13 | BTS EN (dört R_EN/L_EN ortak) | 10 kΩ pull-down |
-| 12 | Röle "devreye al" (IRLZ44N gate) | strapping: boot'ta LOW olmalı → gate'teki 10 kΩ pull-down sağlar |
-| 23 | Acil stop durumu (PC817 #1) | dahili pull-up |
-| 5 | Anahtarlı 12 V durumu (PC817 #2) | strapping (SDIO zamanlaması, normal açılışı etkilemez) |
-| 21 / 22 | I2C SDA / SCL (PCA9685, BNO055) | 3V3 |
-| 17 / 16 | **Boş** (Y2b: Nextion kaldırıldı; önce UART2) | yedek |
-| 18 / 19 | Enkoder sol arka A / B | PCNT |
-| 4 / 15 | Enkoder sağ arka A / B | 15 strapping: boot'ta yüksek olabilir, sorun değil |
-| 1 / 3 | UART0 (USB → Pi) | |
-| 2 | **Ön şarj rölesi K2** (IRLZ44N #2 gate; E9) | strapping: boot'ta LOW/boş olmalı → 220 Ω seri + 10 kΩ pull-down (E9). Kart LED'i de bu pinde (yanması zararsız) |
+| 32 | BTS sol IS (IS1 + IS2) | ADC1. **Koruma zorunlu (diyotsuz bölücü):** IS → 6,8 kΩ → pin, pin → 5,1 kΩ → GND (kart IS direnci birleşik 500 Ω ise; 14 mA hata akımında pin ≈ 2,9 V). Kart direnci önce ölçülür (`pin-haritasi.md` D7, T6) |
+| 33 | BTS sağ IS (IS1 + IS2) | ADC1; bölücü 32 ile aynı (zorunlu) |
+| 25 / 26 | BTS sol IN1 / IN2 (ileri / geri PWM; IBT-2 adıyla RPWM / LPWM) | 3.x'te 25 = `Serial2` TX, 26 = `Serial1` RX varsayılanı (Y1) |
+| 27 / 14 | BTS sağ IN1 / IN2 (ileri / geri PWM) | 3.x'te 27 = `Serial1` TX varsayılanı (Y1). 14 reset sonrası zayıf pull-up ile HIGH (Espressif IO_MUX): EN LOW olduğu için zararsız |
+| 13 | BTS EN (iki kartın EN1 + EN2'si ortak) | 10 kΩ pull-down (zorunlu: reset sırasında pin yüzer) |
+| 4 | Röle K1 "devreye al" (MOSFET #1 gate; E3) | 220 Ω seri + 4,7 kΩ gate → GND (zorunlu). Reset boyunca dahili pull-down; 2.0.17'de açılış kodu sürmez (3.x: `Serial2` RX varsayılanı, yalnız pull-up). 14.11'e dek GPIO12 |
+| 19 | Ön şarj rölesi K2 (MOSFET #2 gate; E9) | 220 Ω seri + 4,7 kΩ gate → GND (zorunlu: reset sonrası dahili çekme yok). VSPI MISO yalnız giriş. 14.11'e dek GPIO2 |
+| 23 | Acil stop durumu (PC817 #1; LOW = mantar serbest) | pull-up yalnız 3V3'e (dahili; dış 10 kΩ önerilir) |
+| 5 | Anahtarlı 12 V durumu (PC817 #2; LOW = bara var) | pull-up yalnız 3V3'e. Strapping: yalnız SDIO slave zamanlaması, normal açılışı etkilemez |
+| 21 / 22 | I2C SDA / SCL (PCA9685 0x40, BNO055) | 3V3 |
+| 18 / 17 | Enkoder sol arka A / B | PCNT. 17'de 1 kΩ seri zorunlu (açılışta PSRAM saati; UART2 TX varsayılanı) |
+| 16 / 15 | Enkoder sağ arka A / B | PCNT. 16'da 1 kΩ seri zorunlu (açılışta PSRAM CS HIGH). 15 strapping: LOW ise yalnız ROM açılış yazısı susar |
+| 1 / 3 | UART0 (CP2102 → USB → hub → Pi) | |
+| 2 | Kart üstü durum LED'i (yalnız) | strapping; dışarıya hiçbir şey bağlanmaz |
+| 12 | **Boş** | strapping (açılışta HIGH = flash beslemesi 1,8 V); hiçbir şeye bağlanmaz |
 
-- **PCA9685 kanalları:** 0–4 hat A servoları, 5–9 hat B servoları, 10–12 **sonar trig** (3,3 V, I2C ile ≥ 10 µs darbe), 13–15 yedek. Böylece üç GPIO kazanıldı.
-- Ön motorların enkoderleri bağlanmadı (pin yok). Yandaki iki motor aynı sürücüde olduğu için yan başına bir dörtlü enkoder yeter. Ön enkoder istenirse I2C GPIO genişletici (PCF8574 yavaş; PCNT gerekir) ya da ESP32-S3: E5'te karar.
-- Kalan yedek (Y2b): GPIO2 E9 ile K2'ye gitti; Nextion kalkınca **GPIO16 / 17** boşaldı (16, 17 ADC değil). XL4016 NTC (E7 ölçümü) için ADC1 pini kalmadı: ölçüm geçici olarak multimetreyle ya da BNO055 sıcaklığıyla.
+- **PCA9685 kanalları:** 0–4 hat A servoları (sağ kol S1, S2, dirsek, bilek, kafa pan), 5–9 hat B servoları (sol kol S1, S2, dirsek, bilek, kafa tilt; pan ve tilt beslemesi 29.10'dan beri hat C), 10 / 11 / 12 **sonar trig** sağ / orta / sol (3,3 V, I2C ile ≥ 10 µs darbe), 13–15 yedek. Böylece üç GPIO kazanıldı. Kanal ↔ eklem `main` `kod/jestler/kanallar.yaml` ile aynı.
+- Ön motorların enkoderleri bağlanmadı (pin yok). Yandaki iki motor aynı sürücüde olduğu için yan başına bir dörtlü enkoder yeter. Ön enkoder istenirse I2C GPIO genişletici (PCF8574 yavaş; PCNT gerekir) ya da ESP32-S3: bu pin kararının dışında.
+- Yedek: GPIO2 E9 ile K2'ye gitmişti; Nextion kalkınca (Y2b) boşalan **GPIO16 / 17** 14.11'de enkodere gitti, enkoderden boşalan 4 / 19 K1 / K2'ye, K2'den boşalan GPIO2 yalnız LED, K1'den boşalan **GPIO12 boş** (strapping; yalnız açılışta LOW kalan bir iş için). XL4016 NTC (E7 ölçümü) için ADC1 pini kalmadı: ölçüm geçici olarak multimetreyle ya da BNO055 sıcaklığıyla.
 
 ## Malzeme
 
@@ -498,7 +504,7 @@ F5 2 A ── mantar NC ──┬── K1 bobini ── IRLZ44N #1 (GPIO12)    
 1. **Ölçüm (K1):** JGB37 durma torku ve akımı, zemin μ → `arayuz.TABAN['donus']`.
 2. **Kabuk:** omni seçilirse etek ön bantta teker boşluğu 10,55 → 12 mm (1,5 mm). Etek arka bandına havalandırma yarıkları (E7). Hoparlör yeri kapandı (09.11 notu: gövde orta bandı sağ duvarı, `KY/uygulama-notu.md:59`).
 3. **Montaj:** `montaj/moduller.py` omni teker adı; ana montaj ve tam tarama (6. adım). `carpisma-sonuc.json` taban ve kafa bölümleri eskidi.
-4. **E5:** pin planı kesinleşmesi (ön enkoderler).
+4. **E5:** pin planı kesinleşti (14.11.2026, `pin-haritasi.md`). Açık kalan: kart gelince teyitler (`pin-haritasi.md` §7: modül türü, röle gate'leri osiloskopla ve röle MOSFET'i, EN kilidi, BTS kartı, PC817, IS direnci ve bölücü, enkoder). Ön enkoderler bağlanmadı.
 5. **E8/E9 (5. adım):** akü süreleri (Victron 256 Wh, röle 1,8 W), sigorta seti.
 6. ESP32 kartında VBUS→VIN diyodu kontrolü; JGB37 enkoderinin 3,3 V'ta çalıştığı; BTS7960 modülünde IS direnci.
 7. Tilt servosu radyal yük (4,55 N): ikinci rulman açık işi sürüyor.
@@ -513,4 +519,4 @@ F5 2 A ── mantar NC ──┬── K1 bobini ── IRLZ44N #1 (GPIO12)    
 16. **Göğüs ekranı dalı:** giriş noktası ve acil stop davranışı karar bekliyor (K11); jak ölçüsü; port yeri ve girintisi (fotoğraftan tahmini; P1.4 🟡); üç 90° fiş.
 17. **USB:** 6. cihaz bekliyor (K1, pano #5). Hub (gövde, göğüs üst arka kapağı), SY8205, PAM8403 ve USB ses kartı (kafa sol duvarı) yerleri 05.11'de modele girdi (K5 kapandı). Hub girişi gerilimi ölçülecek. PAM 5 V besleme noktası karar bekliyor (K10).
 18. **Akü süresi:** normal ~3,8–4,4 sa kaba tahmin; yoğun senaryo yeniden hesaplanacak, ölçüm yapılacak (gereksinim 2 saat; 1,83 sa kabulü 1,65 m yükleri içindi).
-19. **v4 muadilleri:** BTS7960B pin adları ve 3,3 V lojik (pin planı adları güncellenecek), K2 JQC-3FF ayak düzeni.
+19. **v4 muadilleri:** BTS7960B pin adları pin planında eşlendi (EN1/EN2 = INH, IN1/IN2 = PWM varsayımı; `pin-haritasi.md` §6.1); bu eşleme ve 3,3 V lojik kart gelince ölçülecek (T4). K2 JQC-3FF ayak düzeni.

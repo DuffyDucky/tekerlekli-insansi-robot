@@ -159,8 +159,9 @@ görünümde olsun; seçilen parça farklı renkte görünsün; montaj sırası 
 | P10.4 | Kabuk adımları, yapı (F10d): alt adım altyapısı, E4 / F1 / F2 / F3 / F4 / F5 bölünür, takılma yönleri, panel sırası = takma sırası, devredilen görünürlük sorunları (21, 25, 43, 45, 46; saydam kip) | Her alt adımda tamamen gizli yeni parça 0, animasyon katı içinden geçmez | P10.3 sonrası | ✅ a90011b (rapor 65d6f17; 1 düzeltme turu: 34 somun yanlış yerde, 2 alt adım anlaşılmıyordu; açık 34 / zor 8 / anlaşılmıyor 0; K55 bindirme dilleri) |
 | P10.4b | Kabuk adımları, görünüm (F10e): CAD rengi rehber verisine (o adımın parçaları gerçek renkte, öncekiler gri), bağlandığı braket / boss vurgusu, cıvata yeri işaretleri | Kabuk alt adımlarında bağlantı noktaları işaretli; renk CAD ile aynı; zor kalan 8 alt adım | P10.4 sonrası | ✅ 759bb28 (rapor 035517d; ilk kontrol DÜZELTME GEREKLİ → 1 düzeltme turu: koyu temada görünürlük, 31.3 `p0762`, benzer çiftlere etiket, kayıt düzeltmeleri → ikinci kontrol GEÇER; açık 40 / zor 2; K55'e not) |
 | P10.5 | Kol içi kablo yolu rehbere (F10f; tasarımı hazır: `KOL_KABLO`, `dirsek/kablo_yolu.py`) | Kol adımlarında yol görünür, uçları doğru parçada | P10.4b sonrası | ✅ 13.11 (commit "Lale P10.5"; ilk kontrol ve ikinci bakış DÜZELTME GEREKLİ → 2 düzeltme turu → üçüncü bakış GEÇER; 28 şema, alt adım 71, uçuş çarpışan 0 / istisna 20 / ölçüm kaydı 1, kablo kareleri zor 4 / 14, PDF 75 sayfa; K56, K57) |
-| P10.6 | Pin haritası sorusu panoya (Efe): `kod/esp32/include/pinler.h` (main) × `elektrik.md` pin planı | Soru panoda; karar Ahmet + Efe | Hemen (dosya alanı yok) | ✅ soru gönderildi (pano #8, 11.11; bekleyen: Efe) |
-| P10.7 | Elektrik içeriği + kablo tablosu (62 kablo; tek kaynak), K1 / K2 demet alt adımları, taban yollarının yeniden tasarımı | Pin kararı + K10 / K11 / K14 | P10.6 cevabı sonrası | ⛔ (pin kararı) |
+| P10.5b | K56 + K57 montaj sırası kararları rehberde (F10g; Ahmet 13.11 ≈ 23:28 "önerdiğin gibi olsun"): 625ZZ tezgâhta kol çatalına preslenir, iç bilezik + mafsal pulu + M5×12 39 → 40 (çataldan sonra); dirsek horn merkez vidası 43 → 44 (çataldan sonra); G2 / G3 / H0b / H0c metni, dirsek montaj sırası | 40.1 ve 44.1 dar istisnaları kalkar, uçuş çarpışan 0 / `istisna_bos` 0, istisna < 20; 39 ↔ 40.1 metni tek sıra (F10f Y1); parça / BOM aynı; zincir çıkış 0 | P10.5 sonrası | 🔄 A bitti 14.11 01:13, kontrol bekliyor (`planlama/d158/F10g-gunluk.md`; uçuş 340 satır, çarpışan 0 / istisna 16 / `istisna_bos` 0; alt adım 71; PDF 75 sayfa; zincir çıkış 0) |
+| P10.6 | Pin haritası sorusu panoya (Efe): `kod/esp32/include/pinler.h` (main) × `elektrik.md` pin planı | Soru panoda; karar Ahmet + Efe | Hemen (dosya alanı yok) | ✅ 14.11 karar verildi (K58; orkestratör, Ahmet'in 13.11 yetkilendirmesiyle): `planlama/adim3/pin-haritasi.md` sürüm 3, `elektrik.md` pin planı; üç bağımsız kontrol, üçüncüsü GEÇER (`planlama/d158/pin-karari-kontrol-3.md`); günlük `planlama/d158/pin-karari-gunluk.md`. Pano #8 bilgi mesajı hazır, Ahmet gönderecek |
+| P10.7 | Elektrik içeriği + kablo tablosu (62 kablo; tek kaynak), K1 / K2 demet alt adımları, taban yollarının yeniden tasarımı | Pin kararı + K10 / K11 / K14 | P10.6 cevabı sonrası | ⛔ (K10 / K11 / K14; pin kararı ✅ K58. Pin kararından gelen işler: röle MOSFET'i AO3400A + SOT-23 adaptörü (`maliyet.json`), 4,7 kΩ / 1 kΩ / IS bölücüsü dirençleri, rehber `rehber_metin.py:637` uyarısı; T1–T8 kart gelince) |
 | P10.8 | Ayrıntılı satın alınan parça modelleri, fotoğraf kartı | Parçalar gelince | — | ⏳ |
 | P10.9 | Faz sonu: `sonuc-rapor.html` F10 ile yenilenir (`F9c-dogrula` faz kalıbı F10'u tanımıyor; açık karar 47 ↔ 48, toplam 52 ↔ 53 uyuşmazlığı K53'ten), Ahmet'e tek tablo özet | `F9c-dogrula` 0 | En son | ⏳ |
 
@@ -179,6 +180,26 @@ görünümde olsun; seçilen parça farklı renkte görünsün; montaj sırası 
 | K9 | El yükü 0,5 kg için servo değişimi mi, 100 g sınırı mı | 100 g sınırı |
 
 ## 5. Günlük
+
+- 2026-11-14 01:34 (saat ölçüldü) **Pin kararı ✅ (P10.6, K58), C: kayıt + commit.** Üçüncü bağımsız kontrol (`planlama/d158/pin-karari-kontrol-3.md`):
+  **GEÇER**; metin notları Ö1–Ö8 kapatıldı (`pin-karari-gunluk.md` §10): T2 0,5 V ölçütü osiloskopla (yedek yol yazıldı), T6'da 14 mA
+  enjeksiyonu, durma algılama enkoderle / IS yalnız arıza bayrağı (orkestratör kararı; `elektrik.md:203` kural taşındı), Y1 genişledi,
+  `elektrik.md` IRLZ44N kalıntıları ve BC337 seçeneği, 3,15 V. Karar orkestratörün, Ahmet'in 13.11.2026 yetkilendirmesiyle: K1 GPIO4,
+  K2 GPIO19, 16 / 17 enkoder, GPIO2 LED, GPIO12 boş. Kuyruk: K58 açıldı ve kapandı (açık 52 / 58); K1'e pano #5 #23 ("cevap geldi,
+  kapanış kaydı bekliyor"), K14'e pano #6 #21 notu; pano #7 #22 önerileri "yeni soru" satırı. `baski-listesi.md:286` ve
+  `F4c-partiler.py:127` `elektrik.md:499` → 505 (betik koşulmadı). Pano #8 mesajı depo dışında hazır, gönderilmedi (Ahmet). Commit
+  yalnız pin dosyalarıyla; bu dosyadaki ve kuyruktaki K56 / K57 / P10.5b satırları ara durumu gösterir, o paketin commit'i ayrı.
+
+- 2026-11-14 01:13 (saat ölçüldü) **F10g A bitti (P10.5b), kontrol bekliyor.** Taşınan: 625ZZ iç bilezik, mafsal pulu, M5×12 (sağ / sol)
+  39 → 40; dirsek horn merkez vidası (sağ / sol) 43 → 44. 40.1 / 44.1 dar istisnaları silindi; uçuş 336 → 340 satır, çarpışan 0,
+  istisna 20 → 16, `istisna_bos` 0; perdelenme istisnası 115 → 117 (40.1 iç bilezik yuvada, gerekçe yazıldı); alt adım 71; PDF 75
+  sayfa. Zincir (23:42 → 01:08) her komut çıkış 0; regresyon GEÇER, 17 dosya aynı. Dirsek SIRA metni güncellendi, omuz SIRA zaten
+  uyumluydu. Ölçülmedi: gerçek alet erişimi, elle presleme. Zincir sırasında çalışma ağacında başka bir işin pin kararı dosyaları
+  belirdi (dokunulmadı). Ayrıntı `planlama/d158/F10g-gunluk.md`.
+
+- 2026-11-13 23:29 (saat ölçüldü) **F10g A başladı (P10.5b, K56 + K57).** Ahmet 13.11 ≈ 23:28: "K56 ve K57 önerdiğin gibi olsun, devam"
+  (K56 C, K57 a). Uygulama ajanı A; günlük `planlama/d158/F10g-gunluk.md`. HEAD `9145164`; çalışma ağacında bu işten eski 14 değişik dosya
+  (`tasarim/freecad/kabuk/gorsel/*.png` 13, `montaj/yerlesim-kontrol.json`), dokunulmayacak. Commit / push yok (C adımı).
 
 - 2026-11-13 08:10 (saat ölçüldü) **F10f ✅ (P10.5), C: kayıt + commit.** Üçüncü bağımsız bakış (`F10f-kontrol-3.md`, 08:02): **GEÇER**.
   Üçüncü bakış ölçtü: 625ZZ (44.1) çatalla birlikte uçuyor, tek engel horn merkez vidası (nokta–üçgen 3,0 mm, ışın 5,46 mm); kör nokta

@@ -124,7 +124,7 @@ PARTI = {
             bagimlilik="10,1\" QLED (K32: hocadan mı satın alma mı), K2 (AI HAT / boss, P6.1'de kafa modeline)",
             montaj="29–31 (kafa içi, kafa → tilt hornu, kafa kabukları)", takvim="≈ S+2,3 → S+2,8"),
     4: dict(ad="Etek tasarım kararından sonra (M6 CAD)", ne_zaman="E7 havalandırma CAD'e girince; akü takozu akü gelince",
-            bagimlilik="E7 etek havalandırma yarıkları (elektrik.md:499); akü (K30) → akü takozu",
+            bagimlilik="E7 etek havalandırma yarıkları (elektrik.md:505); akü (K30) → akü takozu",
             montaj="33 (etek, H1/H2), 4 (akü takozu, öne alınır)", takvim="≈ S+2,8 → S+4–4,5"),
 }
 ONE_AL = {"Aku on takozu": "Parti 1 arasında basılır (M6 adım 4 taban aşamasında lazım; proje-plani.md kritik yol 4–5)"}

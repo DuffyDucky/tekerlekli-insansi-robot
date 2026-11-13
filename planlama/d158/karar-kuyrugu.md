@@ -13,7 +13,7 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 
 | # | Karar | Durum | Önerilen varsayılan | Bloke ettiği |
 |---|---|---|---|---|
-| K1 | Altıncı USB cihazı | **açık** (Efe'de, pano #5) | 5 cihaz + 2 boş hub portu | P4.1, P8.1 |
+| K1 | Altıncı USB cihazı | **açık** (cevap geldi, kapanış kaydı bekliyor: pano #5 mesaj #23) | 5 cihaz + 2 boş hub portu | P4.1, P8.1 |
 | K2 | AI HAT+ × arka üst boss: boss taşı / HAT yönü | **açık** | Boss taşı | P1.3 seçimi, P6.1 |
 | K3 | Düz zeminde elde yük sınırı | **açık** (P3.1 tablosu eklendi, F3a) | b: her elde ≤ 100 g, yalnız düz zeminde; rampada yüksüz | P3.1 sonucu, P3.2, P9.3 |
 | K4 | Listede olmayan 6 kablo kalemi | **açık** | Koşullu kalem, fiyatsız | P4.2, P8.1 |
@@ -26,7 +26,7 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K11 | Göğüs ekranı 12 V dalının girişi (acil stopta ekran) | **açık** | Ana anahtar sonrası, röle öncesi | P4.1, P4.2, P7.2 |
 | K12 | Kafa havalandırması: yarık / 30 mm fan | **açık** | Yarıklar kalsın, fan yeri ayrılı | P8.1, P8.3 |
 | K13 | ReSpeaker LED'leri görünmese olur mu | **açık** | Görünmesin | P4.3 (yalnız "görünsün" seçilirse) |
-| K14 | Boyun demeti (Efe teyidi) | **açık** (dış teyit) | CAD'deki gibi | P5.2, P5.3, P4.1 |
+| K14 | Boyun demeti (Efe teyidi) | **açık** (dış teyit; pano #6 mesaj #21'de not) | CAD'deki gibi | P5.2, P5.3, P4.1 |
 | K15 | Omuz bölümü taraması koşulsun mu | kapandı (08.11 onayı) | — | — |
 | K16 | MAX98357A mı PAM8403 + USB ses kartı mı | kapandı (04.11) | — | — |
 | K17 | Yerleşim A/B/C, dizi R1/R2, ReSpeaker kafada mı | kapandı (05.11, B + R1) | — | — |
@@ -68,10 +68,11 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K53 | Ön şarj kartı burcu × elektronik katı (B6'da kat inerken girişim) | **açık** (F10b) | a + iii: katta 1,5 mm çentik, bir sonraki tam taramalı pakette; o zamana dek rehber B6 notu | Lazer kesim dosyası (elektronik katı), rehber B6 adımı (F10c), çakışma taraması kaynağı |
 | K54 | E3 kafa inişinde sıfır boşluk (yanaklar arası 54,4 mm ↔ yığın 54,4 mm) | **açık** (F10c) | c: ilk baskı kuponunda dene; zorlarsa b (yanak iç yüzlerine 0,2–0,3 mm pay) | Kafa iskeleti baskısı (Parti kuponu), rehber E3 notu, çakışma taraması kaynağı (b seçilirse) |
 | K55 | Kabuk bindirme dilleri: etek ön, göğüs ve omuz bantları, göğüs ekranı çerçevesi düz yoldan yerine girmiyor | **açık** (F10d) | Etek ön için c (iki bacaklı yol ölçülsün); göğüs, omuz, çerçeve için a geçici (kuponda denensin), b bir sonraki geometri paketinde | Rehber F1 / F3 / F4 takma metni, kabuk baskısı (Parti kuponu), kabuk çakışma taraması (b seçilirse) |
-| K56 | Kol çatalı + 625ZZ rulmanının takılma sırası (G2 / G3, adım 39 ↔ 40.1) | **açık** (F10f) | C: rulman çatala tezgâhta preslenir, iki bilezik çatalla gelir; pul + mafsal cıvatası 40.1'de çataldan sonra | Rehber G2 / G3 metni ve parça ataması (39 → 40), omuz montaj sırası belgesi, 40.1 dar istisnası |
-| K57 | Dirsek çatalı ↔ S2 horn merkez vidası (H0b / H0c, adım 43 ↔ 44.1) | **açık** (F10f) | Vida 44.1'e, çataldan sonra | Rehber H0b metni ve parça ataması (43 → 44), dirsek montaj sırası, 44.1 dar istisnası |
+| K56 | Kol çatalı + 625ZZ rulmanının takılma sırası (G2 / G3, adım 39 ↔ 40.1) | **açık** (F10f; Ahmet 13.11 C kararını verdi, uygulama F10g, kontrol bekliyor) | C: rulman çatala tezgâhta preslenir, iki bilezik çatalla gelir; pul + mafsal cıvatası 40.1'de çataldan sonra | Rehber G2 / G3 metni ve parça ataması (39 → 40), omuz montaj sırası belgesi, 40.1 dar istisnası |
+| K57 | Dirsek çatalı ↔ S2 horn merkez vidası (H0b / H0c, adım 43 ↔ 44.1) | **açık** (F10f; Ahmet 13.11 a kararını verdi, uygulama F10g, kontrol bekliyor) | Vida 44.1'e, çataldan sonra | Rehber H0b metni ve parça ataması (43 → 44), dirsek montaj sırası, 44.1 dar istisnası |
+| K58 | ESP32 pin haritası (pano #8) | kapandı (14.11; orkestratör kararı, Ahmet'in 13.11 yetkilendirmesiyle) | — | — |
 
-**Açık: 52** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 57 madde.
+**Açık: 52** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 6** (K5, K8, K15, K16, K17, K58). Toplam 58 madde.
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
@@ -96,6 +97,9 @@ P10.4b (F10e, 12.11.2026) yeni madde açmadı: etek ön bandı ölçümü K55'e 
 P10.5 (F10f, 13.11.2026) kontrol raporlarının iç adı F10f-K1-a → K56, F10f-K1-b → K57 (`planlama/d158/F10f-gunluk.md` § Düzeltme turu 1
 "Karar notları", § Düzeltme turu 2 "Madde 1a ve K1 notları"; `F10f-kontrol.md` §3.2, `F10f-kontrol-2.md` §2 madde 2, `F10f-kontrol-3.md`
 §3.1 ve Y1). Rehberde sıra değişmedi; iki kalem dar istisnada ("karar bekliyor"). Açık işler sondaki bölümde.
+P10.6 (pin kararı, 14.11.2026) → K58, açılıp aynı gün kapandı (`planlama/d158/pin-karari-gunluk.md` §7, §10; üç bağımsız kontrol).
+Pano cevapları (#5 mesaj #23, #6 mesaj #21, #7 mesaj #22) K1 ve K14'e not oldu; öneriler sondaki bölümde "yeni soru" satırı, yeni madde
+açılmadı.
 
 ---
 
@@ -111,7 +115,11 @@ P10.5 (F10f, 13.11.2026) kontrol raporlarının iç adı F10f-K1-a → K56, F10f
 - **Bloke:** P4.1 ("6. cihaz Efe cevabına göre", `dongu-158.md:88, §3 P4.1`), P8.1 sipariş paketi.
 - **Not (F8a P8.1, 09.11.2026):** maliyet etkisi a 0 TL; c 0 – 76,24 TL (Robotistan micro USB 1,5 m, stok 90; cihaz bilinmediği için kablo
   tipi doğrulanmadı); b doğrulanmadı (`planlama/d158/F8a-siparis.md` §6, §9 madde 8). Sipariş paketi varsayılan a ile K1'siz verilebiliyor.
-- **Durum:** açık. Efe'ye soruldu, pano #5 (`dongu-158.md:136,150, §4 K1 ve §5 günlük`); `KY/secenekler.md:336`, `KY/uygulama-notu.md:151`.
+- **Not (pano #5 mesaj #23, 13.11.2026):** Efe'nin tarafı yazdı: altıncı USB cihazı yok, sayı 5'e düzeltilsin; yazılımda da altıncı
+  cihaz planı yok, kafa düzeni (B) değişmez. Aynı mesajda: ses ReSpeaker çıkışından verilirse (pano #7, sondaki "yeni soru") sayı 4'e iner.
+  Bu, varsayılan a ile aynı.
+- **Durum:** açık; **cevap geldi, kapanış kaydı bekliyor** (kuyrukta kapanış Ahmet'in kararıyla yazılır). Efe'ye soruldu, pano #5
+  (`dongu-158.md:136,150, §4 K1 ve §5 günlük`); `KY/secenekler.md:336`, `KY/uygulama-notu.md:151`.
 
 ## K2 · AI HAT+ zarfı × arka üst cıvata boss'u
 - **Soru:** AI HAT+ 26T gelince zarfı boss'a giriyorsa boss mu taşınır, HAT yönü mü değişir?
@@ -315,7 +323,10 @@ P10.5 (F10f, 13.11.2026) kontrol raporlarının iç adı F10f-K1-a → K56, F10f
   b'nin etkisi **hesaplanmadı**.
 - **Varsayılan:** a.
 - **Bloke:** P5.2, P5.3 (pano mesajı), P4.1.
-- **Durum:** açık, dış teyit (`KY/uygulama-notu.md:154`; `elektrik.md` tablosu "CAD'de böyle, Efe teyidi bekliyor").
+- **Not (pano #6 mesaj #21, 13.11.2026):** Efe'nin tarafı yazdı: boyun düzeni yazılım açısından kabul; tek çekince mekanik (≈ 950 mm
+  HDMI'nin pan / tilt ekleminden geçmesi, ince / esnek kablo ve büküm payı bizde). Masada ≈ 1 m HDMI denemesi (soru f) cevapsız.
+- **Durum:** açık, dış teyit (`KY/uygulama-notu.md:154`; `elektrik.md` tablosu "CAD'de böyle, Efe teyidi bekliyor"). Pano #6 #21
+  yazılım tarafının kabulü; mekanik çekince ve f sorusu açık.
 
 ## K15 · Omuz bölümü taraması ve omuz regresyonu — KAPANDI
 - **Seçenekler o zaman:** a) koş (~4,8 sa, `KY/uygulama-notu.md:148`); b) koşma, sonuç dosyası karışık kalsın (`carpisma-sonuc.json tek_kosu` false).
@@ -1039,7 +1050,8 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   öneri; karar Ahmet'te.
 - **Ölçülmedi:** alet erişimi (cıvatanın çatal takılıyken sıkılması), rulmanın çatala presle takılmasının elle denenmesi.
 - **Bloke:** rehber G2 / G3 metni ve parça ataması; omuz montaj sırası belgesi; 40.1'deki dar istisnanın kalkması.
-- **Durum:** açık.
+- **Durum:** karar verildi, uygulama kontrol bekliyor. Ahmet, 13.11.2026 ≈ 23:28: "K56 ve K57 önerdiğin gibi olsun, devam" →
+  **seçenek C**. Uygulama P10.5b (F10g, `planlama/d158/F10g-gunluk.md`); bağımsız kontrolden sonra C adımı "kapandı" yazacak.
 
 ---
 
@@ -1060,7 +1072,31 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **Önerilen varsayılan:** a (uygulama ajanının önerisi). Yalnız öneri; karar Ahmet'te.
 - **Ölçülmedi:** çatal takılıyken vidanın horna alet erişimi (yalnız düz yol ölçüldü); kablonun elle döşenmesi.
 - **Bloke:** rehber H0b / H0c metni ve parça ataması; dirsek montaj sırası; 44.1'deki dar istisnanın kalkması.
-- **Durum:** açık.
+- **Durum:** karar verildi, uygulama kontrol bekliyor. Ahmet, 13.11.2026 ≈ 23:28: "K56 ve K57 önerdiğin gibi olsun, devam" →
+  **seçenek a**. Uygulama P10.5b (F10g, `planlama/d158/F10g-gunluk.md`); bağımsız kontrolden sonra C adımı "kapandı" yazacak.
+
+---
+
+## K58 · ESP32 pin haritası (pano #8)
+- **Soru:** `kod/esp32/include/pinler.h` (`main` `2be1c63`) ile `elektrik.md` pin planı aynı pinlere farklı iş veriyor (pano #8, mesaj
+  #19). Efe'nin tarafı (#20): plan esas, K1 → GPIO16, K2 → GPIO17. Hangi tablo kesin?
+- **Karar (14.11.2026):** orkestratör verdi, Ahmet'in 13.11.2026 yetkilendirmesiyle ("kararını sen oluşturabilirsin, projede ona
+  uyarız"). Kesin tablo `planlama/adim3/pin-haritasi.md` §2 (sürüm 3) ve §9 `pinler.json` önerisi; `elektrik.md` pin planı aynı tabloya
+  getirildi. Özü: **K1 GPIO4, K2 GPIO19**, sağ enkoder A GPIO16, sol enkoder B GPIO17, GPIO2 yalnız kart LED'i, GPIO12 boş; sonar trig
+  PCA9685 10 / 11 / 12 = sağ / orta / sol.
+- **Efe'nin önerisinden sapma ve gerekçe:** 17, Arduino-ESP32 2.0.17'de `Serial2` TX varsayılanı; çekirdek açılışta PSRAM'i yoklarken
+  16'yı CS, 17'yi saat olarak sürüyor (kaynak koddan; rapor §3.1, kontrol D1 / D2). Kural: röle yalnız açılış kodunun ve varsayılan
+  çevre biriminin sürmediği, reset boyunca LOW kalan pinde. Efe'nin itiraz hakkı açık (pano #8 taslağında).
+- **Şartlar (rapor §5–§6):** firmware `Serial1` / `Serial2`'yi hiçbir çekirdek sürümünde varsayılan pinlerle açmaz; çekirdek
+  espressif32@6.9.0'da sabit; `main` firmware'i bu kablaja yüklenmez. Donanım: gate pull-down 4,7 kΩ, mantık seviyeli röle MOSFET'i
+  (D9; listedeki VBsemi klonu değişecek), 16 / 17'ye 1 kΩ seri, 32 / 33'e diyotsuz IS bölücüsü. Durma algılama enkoderle; IS yalnız
+  arıza bayrağı (Y7).
+- **Kontroller:** üç bağımsız kontrol: `planlama/d158/pin-karari-kontrol.md` (DÜZELTME GEREKLİ, iki durdurucu: röleler 16 / 17'den
+  alındı), `pin-karari-kontrol-2.md` (DÜZELTME GEREKLİ: gate direnci, MOSFET, IS bölücüsü), `pin-karari-kontrol-3.md` (**GEÇER**; metin
+  notları C adımında kapatıldı, `pin-karari-gunluk.md` §10).
+- **Açık kalan (karar değil):** kart gelmeden doğrulanamayanlar T1–T8 (`pin-haritasi.md` §7); BTS7960 IIS(lim) belgesi; MOSFET
+  satıcı / stok; PCA9685 kanal düzeni sorusu ve Efe'nin itirazı (pano #8 mesajı, Ahmet gönderecek). İşler sondaki bölümde.
+- **Durum:** kapandı (14.11.2026). Bloke ettiği P10.7'de pin kararı engeli kalktı; P10.7 K10 / K11 / K14 ve parça işlerini bekliyor.
 
 ---
 
@@ -1123,3 +1159,22 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     koyu temada patlatma konsolu; K56 / K57'de alet erişimi ve kablonun elle döşenmesi; kökteki boş dosyanın kimce silindiği (cevap
     `dongu-158.md` §5, 13.11); okunurluk sınıflamasında bağımsız ikinci göz; ilk kontrol bulgu 6 (demet kalınlığı) ve 36.5 iç ucu;
     FreeCAD tarafı ve üretici yeniden koşusu.
+- K58'den (pin kararı, 14.11.2026) açık iş (`planlama/d158/pin-karari-gunluk.md` §5, §7 "C adımında düzeltilecek", §10.3):
+  - `planlama/maliyet.json:106` "Röle sürücü MOSFET" VBsemi IRLZ44NPBF-VB ×2 → AO3400A ×2 (+ yedek; ikinci seçenek IRLML6344) ve 2 adet
+    SOT-23 → DIP adaptör kartı. Satıcı, fiyat ve stok doğrulanmadı. `maliyet.json:106, 109` notlarındaki "GPIO2" → GPIO19 (demo
+    `tasarim/Robot-Tasarim-Demosu.html:399` yeniden üretilir).
+  - Dirençler mevcut setten (`maliyet.json:115`): gate pull-down 4,7 kΩ ×2, IS bölücüsü 6,8 kΩ ×2 + 5,1 kΩ ×2 (kart IS direnci ölçülünce;
+    gerekirse 2,2 kΩ ya da 470 Ω), enkoder seri 1 kΩ ×2. Setin içeriği satıcı sayfasından okundu, elde sayılmadı.
+  - Ölçümler T1–T8 (`planlama/adim3/pin-haritasi.md` §7): kart gelince; T2 osiloskopla (yedek yol raporda).
+  - Tutarsız kalan belgeler (`pin-karari-gunluk.md` §5): `planlama/yazilim-plani.md:33, 34, 53, 58-59` (GPIO12 / GPIO2, Nextion UART2);
+    `planlama/d158/testler/T13-rampada-acil-stop.md:64, 81` ve `T4-pam8403-ses-karti.md:72` (GPIO12 → GPIO4; `testler.html` üretimi);
+    `maliyet.json:106, 109` notları; `planlama/adim5/B-malzeme-plan.md:44` (tarihçe notu); rehber `tasarim/freecad/rehber/rehber_metin.py:637`
+    ("K2 = GPIO2 LED" uyarısı geçersiz) → P10.7. `pinler.h` (`main`) Efe'nin işi.
+- Pano cevaplarından yeni sorular (14.11.2026; Efe'nin tarafı yazdı, karar açılmadı, kuyruğa alınmadı):
+  - Ses ReSpeaker'ın kendi 3,5 mm çıkışından PAM8403'e gitsin, ayrı USB ses kartı kalksın (yankı giderme referans alır, bir USB portu
+    boşalır; pano #7 mesaj #22 madde 1). Elektrik planında gürültü / toprak döngüsü / seviye itirazı var mı? Etkisi: K10, K16, K1 (cihaz 4).
+  - Elde taşınan uzaktan acil stop: K1 bobin hattına seri, arıza-güvenli kumandalı röle (pano #7 mesaj #22 madde 4; para harcatır, karar
+    Efe + Ahmet). O gelene kadar demoda mantarın yanında bir kişi.
+  - Pi → ESP32 reset hattı: Pi GPIO'su → transistör → ESP32 EN; pin numarasını biz seçelim, `pinler.json`'a girsin (pano #7 mesaj #22
+    madde 5). Pin kararına girmedi; boyundan yeni tel gerekebilir (K14 demeti).
+  - Hub harici beslemeli olsun (iki dokunmatik + ESP32 + ses; pano #6 mesaj #21 madde e).

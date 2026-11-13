@@ -283,7 +283,7 @@ Montaj adımları `F4c-partiler.md`'de. **Eski analiz:** yok; tek analiz 2026-11
 
 ## Parti 4 — Etek tasarım kararından sonra (M6 CAD)
 
-11 adet · 2,21 kg filament (PETG 2,21, PETG-CF 0,00) · ≈ 46,0 saat. Bağımlılık: E7 etek havalandırma yarıkları (elektrik.md:499); akü (K30) → akü takozu.
+11 adet · 2,21 kg filament (PETG 2,21, PETG-CF 0,00) · ≈ 46,0 saat. Bağımlılık: E7 etek havalandırma yarıkları (elektrik.md:505); akü (K30) → akü takozu.
 
 | ☐ | Modül | Parça | Adet | Ölçü (mm) | Filament (g/adet) | Süre (sa/adet) | Malzeme | Tabla yönü | Destek | X2D | Kaynak (JSON) | Bağlı olduğu kalem |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
