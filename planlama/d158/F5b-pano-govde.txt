@@ -1,0 +1,13 @@
+Efe merhaba, test kâğıtları (planlama/d158/testler) için altı soru. Bilgi ve soru; karar yok, koda dokunmadık. Kodu main'den, plan belgelerini lale-duzeltme dalından okuduk.
+
+1) Yankı: mikrofon ReSpeaker Mic Array v2.0; planda ses ayrı USB ses kartından çıkacak (elektrik.md:20-21, 58), main'de ses HDMI'da (ayarlar.yaml:36). Dizinin yankı gidermesi bu düzende referans alır mı? Kodda yarım dupleks görüyoruz: robot konuşurken mikrofon kapalı, açılınca ilk 300 ms atlanıyor (mikrofon.py:5, 20, 144; telefondan söyletmede 0,5 s susma, kopru.py:28). Doğru anlıyor muyuz: robot kendi sesini bu yüzden duymaz, referans yalnız robotun sözü kesilebilsin istenirse gerekir?
+
+2) Devreden çıkar: main'de acil stop ESP32'ye bağlı değil (pinler.h:49), komutlar sur, dur, jest, servo, ping, odo_sifirla (seri_protokol.cpp:150-155). Planda "arm" var, bırakma mesajı yok (yazilim-plani.md:48). Doğru anlıyor muyuz: röle K1'i bırakan komut henüz yok? Olacaksa adı ne, gecikmesi ölçülecek mi? (T13 D1-D2)
+
+3) Kopma: telefon sayfası susarsa köprü 0,4 s sonra "dur" gönderiyor (kopru.py:25, 175), Pi susarsa ESP32 500 ms sonra motorları durduruyor (watchdog.cpp:11). Doğru anlıyor muyuz: komut tarafında en kötü ~0,5 s? Gerçek robotta ölçüldü mü? Planlanan Bluetooth gamepad (yazilim-plani.md:36, 78) main'de yok; onda kopunca ne olacak? (T13 D3)
+
+4) Elde taşınan uzaktan acil stop yok; mantar etek plakasında (arayuz.py, ACIL_STOP). Telefondaki DUR düğmesi yazılım duruşu, gücü kesmiyor (sayfa.html:307-315). Demoda ve rampada güvenlik için önerin ya da görüşün var mı?
+
+5) ESP32 reset: kodda reset komutu yok; DevKit, port açılınca DTR/RTS ile resetleniyor (esp32/OKU_BENI.md:159), plan bunu kapatıyor (elektrik.md:228). Pi'den bilerek resetlemek için bir yol (ör. RTS → EN) kullanılabilir mi? (T13 D4)
+
+6) Fren: sur yolunda 0,5 m/s² rampa var (motorlar.cpp:19), ama dur ve bekçi rampasız duruyor (motorlar.h:20); telefonda düğmeyi bırakmak da dur gönderiyor (sayfa.html:304). Doğru anlıyor muyuz? Kararlar rampada yavaşlama ve freni ≤ 0,1, düzde freni ≤ 1,8 m/s² istiyor (kararlar-2026-10-29.md:77-78); plan Y1'de rampa var (yazilim-plani.md:75). Rampada 0,1 ve dur/bekçi duruşu yazılımda nasıl düşünülüyor?

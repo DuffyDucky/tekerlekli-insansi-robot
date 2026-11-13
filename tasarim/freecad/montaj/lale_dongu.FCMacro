@@ -1,0 +1,412 @@
+# -*- coding: utf-8 -*-
+# Lale (1,65 m) ana montaj: 10 s'lik, kesintisiz tekrar eden hareket dongusu (FreeCAD 1.1 GUI makrosu).
+#
+# Calistirma : FreeCAD'de Makro > Makrolar... > lale_dongu.FCMacro > Calistir  (ya da lale_dongu_ac.bat'a cift tik).
+#              Acik belgelerde robot montaji varsa ona uygulanir; yoksa bu dosyanin yanindaki robot-montaj.FCStd'yi acar.
+# Durdurma   : makroyu IKINCI KEZ calistir (ya da Python konsolunda: App._lale_dongu.durdur()). Durunca her hareketli
+#              grup makro basladigindaki yerlesimine doner. Belge kapatilinca dongu kendiliginden durur.
+# Gorunum    : baslarken gizli gelen montaj/gruplar/parcalar gorunur yapilir (yalniz eklem isaretleri gizlenir), parcalar
+#              renkli STEP'teki proje renkleriyle boyanir (bir kez; ../../solidworks/step_renkli.py), belge yuklendikten sonra
+#              izometrik + ViewFit uygulanir; durunca kamera, gorunurluk ve renkler oldugu gibi kalir.
+#
+# Nasil oynatir: 1.120 parcanin her birine yerlesim yazmaz. Ana montajda her eklemin cocugu bir App::Part grubudur
+# (omuz Gobek/Kol, dirsek UstKol/OnKol/El, kafa Boyun/Bas, 4 teker); makro yalniz bu 16 grubun Placement'ini yazar.
+# Kinematik montajdaki eklem nesnelerinden okunur (Reference1 = ust grup, Reference2 = alt grup, Placement1 = eklem
+# cercevesi, Z = donme ekseni; Fixed eklem zinciri: dirsek catali omuzun Kol grubuna bagli). Assembly cozucusu
+# calistirilmaz, recompute yapilmaz; zaman duvar saatinden alinir (kare dusse de dongu 10 s surer).
+#
+# Ev pozu: S1 0, S2 5 (yazilim alt siniri; dosyadaki kayitli durum S2 0), dirsek 0, bilek 0, pan 0, tilt 0, teker 0.
+# Ilk 1 s'de kayitli durumdan ev pozuna (S2 0 -> 5) yumusak gecis, sonra 0 s = 10 s = ev pozu olan dongu.
+#
+# KAYDETME: makro belgeyi kaydetmez. Dongu calisirken ya da durdurmadan once Kaydet'e basarsan o anki poz dosyaya
+# yazilir; once makroyu durdur. Belge basta degistirilmemisse "degisti" bayragi dongu boyunca ve durunca temizlenir;
+# yine de kapatirken kaydetme sorusu gelirse "Kaydetme" de.
+import os
+import math
+import time
+
+import FreeCAD as App
+
+T = 10.0            # dongu suresi (s)
+FPS = 30            # hedef kare hizi; GUI yetismezse kareler duser, sure degismez
+GIRIS = 1.0         # kayitli durumdan ev pozuna gecis (s)
+S2_EV = 5.0         # omuz yana acma yazilim alt siniri (kod/ortak/eklem_sinirlari.json)
+GECIKME_SOL = 0.4   # sol kol sag koldan bu kadar geride (s)
+TEKER_TUR = 2       # 10 s'de teker turu (tam sayi: dongu dikissiz)
+DOSYA = "robot-montaj.FCStd"
+
+
+# ---------------------------------------------------------------------- koreografi (derece)
+def _yum(x):
+    """0..1 -> 0..1, uclarda turev 0 (sin^2 rampa)."""
+    x = min(1.0, max(0.0, x))
+    return math.sin(0.5 * math.pi * x) ** 2
+
+
+def plato(t, a, b, r):
+    """[a, b] araliginda r s'lik yumusak cikis/inis, arada 1; disarida 0."""
+    if t <= a or t >= b:
+        return 0.0
+    return min(_yum((t - a) / r), _yum((b - t) / r))
+
+
+def salinim(t, a, b, n, faz=0.0):
+    """[a, b] icinde n tam salinim."""
+    return math.sin(2.0 * math.pi * n * (t - a) / (b - a) + faz)
+
+
+# her kol: A = iki kol one kalkar (0-5,2 s), B = el sallama (4,6-9,6 s); sol kol GECIKME_SOL geride ve salinimi ters fazda
+KOL = dict(
+    A=(0.0, 5.2, 1.5),          # pencere basi, sonu, rampa
+    B=(4.6, 9.6, 1.2),
+    s1_A=105.0, s2_A=12.0, dirsek_A=30.0, bilek_A=-70.0,
+    s1_B=75.0, dirsek_B=82.0,
+    s2_B_orta=40.0, s2_B_genlik=25.0, bilek_B=45.0, salinim_n=3,
+)
+KAFA = dict(pan=70.0, tilt=10.0, tilt_n=2)
+
+
+def kol_poz(t, gecikme, faz):
+    k = KOL
+    a0, a1, ar = k["A"]
+    b0, b1, br = k["B"]
+    pa = plato(t, a0 + gecikme, a1 + gecikme, ar)
+    pb = plato(t, b0 + gecikme, b1 + gecikme, br)
+    sb = salinim(t, b0 + gecikme, b1 + gecikme, k["salinim_n"], faz)
+    return dict(
+        one_arka=k["s1_A"] * pa + k["s1_B"] * pb,
+        yana=S2_EV + k["s2_A"] * pa + pb * (k["s2_B_orta"] + k["s2_B_genlik"] * sb),
+        dirsek=k["dirsek_A"] * pa + k["dirsek_B"] * pb,
+        bilek=k["bilek_A"] * pa + k["bilek_B"] * pb * sb,
+    )
+
+
+def poz(t):
+    """t (s, dongu ici 0..T) -> {eklem nesnesi adi: aci (derece)}. poz(0) == poz(T) == ev pozu."""
+    t = t % T
+    out = {}
+    for on, gec, faz in (("Sag", 0.0, 0.0), ("Sol", GECIKME_SOL, math.pi)):
+        k = kol_poz(t, gec, faz)
+        out["Omuz%s_OneArka" % on] = k["one_arka"]
+        out["Omuz%s_Yana" % on] = k["yana"]
+        out["Dirsek%s_Dirsek" % on] = k["dirsek"]
+        out["Dirsek%s_Bilek" % on] = k["bilek"]
+    w = 2.0 * math.pi * t / T
+    out["Kafa_Pan"] = KAFA["pan"] * math.sin(w)
+    out["Kafa_Tilt"] = KAFA["tilt"] * math.sin(KAFA["tilt_n"] * w)
+    for k in ("OnSag", "OnSol", "ArkaSag", "ArkaSol"):
+        out["Taban_Teker" + k] = (360.0 * TEKER_TUR * t / T) % 360.0
+    return out
+
+
+def ev_poz():
+    p = {k: 0.0 for k in poz(0.0)}
+    p["OmuzSag_Yana"] = p["OmuzSol_Yana"] = S2_EV
+    return p
+
+
+# ---------------------------------------------------------------------- kinematik (montajin eklem nesnelerinden)
+def montaj_mi(doc):
+    return doc is not None and doc.getObject("Assembly") is not None and doc.getObject("OmuzSag_Kol") is not None
+
+
+class Kinematik:
+    """Ust -> alt grup agaci; her alt grup icin global eklem cercevesi G (ev durumunda). Poz: P_alt = P_ust * P_ust0^-1 * G * Rz(aci) * G^-1 * P_alt0."""
+
+    def __init__(self, doc):
+        self.doc = doc
+        eklem = [o for o in doc.Objects if getattr(o, "JointType", None) in ("Revolute", "Fixed")]
+        self.ust = {}       # alt grup adi -> (ust grup adi, G, eklem adi | None)
+        for j in eklem:
+            ust, alt = j.Reference1[0], j.Reference2[0]
+            if ust.TypeId != "App::Part" or alt.TypeId != "App::Part":
+                continue
+            G = ust.Placement.multiply(App.Placement(j.Placement1))
+            self.ust[alt.Name] = (ust.Name, G, j.Name if j.JointType == "Revolute" else None)
+        self.grup = {n: doc.getObject(n) for n in set(self.ust) | {u for u, _, _ in self.ust.values()}}
+        self.ev = {n: App.Placement(g.Placement) for n, g in self.grup.items()}      # baslangic (kayitli) yerlesimler
+        # yalniz bir doner eklemin altindaki gruplar hareket eder (sabit zincirde hareketsiz kalanlar yazilmaz)
+        self.hareketli = sorted(n for n in self.ust if self._doner_ata(n))
+        eksik = sorted(set(poz(0.0)) - {e for _, _, e in self.ust.values() if e})
+        if eksik:
+            raise RuntimeError("montajda eklem bulunamadi: %s" % ", ".join(eksik))
+
+    def _doner_ata(self, n):
+        while n in self.ust:
+            u, _, e = self.ust[n]
+            if e:
+                return True
+            n = u
+        return False
+
+    def yerlesimler(self, aci):
+        """aci: {eklem adi: derece} -> {grup adi: App.Placement} (yalniz hareketli gruplar)."""
+        cache = {}
+
+        def P(n):
+            if n in cache:
+                return cache[n]
+            if n not in self.ust:
+                p = self.ev[n]
+            else:
+                u, G, e = self.ust[n]
+                rel = G.multiply(App.Placement(App.Vector(), App.Rotation(App.Vector(0, 0, 1), aci.get(e, 0.0) if e else 0.0)))
+                rel = rel.multiply(G.inverse())
+                p = P(u).multiply(self.ev[u].inverse()).multiply(rel).multiply(self.ev[n])
+            cache[n] = p
+            return p
+
+        return {n: P(n) for n in self.hareketli}
+
+
+# ---------------------------------------------------------------------- GUI dongusu
+LOG = os.path.join(os.environ.get("TEMP", os.path.expanduser("~")), "lale_dongu.log")     # konsol mesajlarinin kopyasi
+
+
+def _mesaj(s, hata=False):
+    s = "[Lale dongu] %s\n" % s
+    (App.Console.PrintError if hata else App.Console.PrintMessage)(s)
+    try:
+        with open(LOG, "a", encoding="utf-8") as fh:
+            fh.write(time.strftime("%H:%M:%S ") + s)
+    except OSError:
+        pass
+
+
+def _makro_dizini():
+    try:
+        f = __file__     # noqa: F821  (FreeCAD runFile tanimlar)
+        if os.path.basename(f).lower().startswith("lale_dongu"):
+            return os.path.dirname(os.path.abspath(f))
+    except NameError:
+        pass
+    return os.environ.get("LALE_MONTAJ_DIZIN", "")
+
+
+def belge_bul():
+    if montaj_mi(App.ActiveDocument):
+        return App.ActiveDocument
+    for d in App.listDocuments().values():
+        if montaj_mi(d):
+            return d
+    yol = os.path.join(_makro_dizini(), DOSYA)
+    if not os.path.isfile(yol):
+        raise RuntimeError("acik montaj yok ve %s bulunamadi (makroyu montaj klasorunden calistir)" % yol)
+    _mesaj("acik montaj yok, aciliyor: %s" % yol)
+    return App.openDocument(yol)      # gorunurluk ve kamera Dongu icinde (belge yuklendikten sonra) ayarlanir
+
+
+# FCStd betikle (GUI'siz) kaydedildigi icin icinde GuiDocument.xml yok; GUI'de acilinca Assembly, 22 App::Part ve
+# 1.120 parca gizli geliyor (agacta gri, 3B gorunum bos). Makro robotu gorunur yapar; yalniz eklem isaretleri gizli kalir.
+GORUNUR_TIP = ("Assembly::AssemblyObject", "App::Part", "Part::Feature")
+
+
+def robotu_goster(doc):
+    """Assembly + tum parca gruplari + parcalar gorunur; origin duzlemleri/eksenleri ve eklemler olduklari gibi kalir."""
+    n = 0
+    for o in doc.Objects:
+        if o.TypeId in GORUNUR_TIP and not o.Visibility:
+            o.Visibility = True
+            n += 1
+    return n
+
+
+# Renk: GUI'siz kaydedilen FCStd'de gorunum rengi yok (parcalar gri). Her Part::Feature'in "Renk" ozelligindeki anahtar
+# (ana_montaj.py yazar) renkli/duz STEP'teki eslemeyle ayni RGB'ye cevrilir: tablo ve kural tek yerde,
+# tasarim/solidworks/step_renkli.py (RENK -> RENK_TABAN -> "gri"; aciklama renkler.md). Modul import edilir, kopyalanmaz;
+# ust duzeyinde yalniz tanim var (FreeCAD isi __main__ korumasinda), GUI'de yan etkisi yok.
+STEP_RENKLI = os.path.join("..", "..", "solidworks", "step_renkli.py")      # makro klasorune gore
+
+
+def _renk_modulu():
+    import importlib.util
+    yol = os.path.normpath(os.path.join(_makro_dizini(), STEP_RENKLI))
+    s = importlib.util.spec_from_file_location("lale_step_renkli", yol)
+    m = importlib.util.module_from_spec(s)
+    s.loader.exec_module(m)
+    return m
+
+
+def robotu_boya(doc, gd):
+    """Her parcaya opak tek renk (ShapeAppearance, saydamlik 0). -> (renk alan, [(etiket, anahtar), ...] eslesmeyen)."""
+    sr = _renk_modulu()
+    boyanan, eslesmeyen = 0, []
+    for o in doc.Objects:
+        if o.TypeId != "Part::Feature":
+            continue
+        vo = gd.getObject(o.Name)
+        if vo is None:
+            continue
+        anahtar = getattr(o, "Renk", "") or ""
+        rgb, kaynak = sr.renk_coz(anahtar or sr.VARSAYILAN_ANAHTAR)
+        if kaynak == "varsayilan":                  # STEP'te de gri: ayni gri verilir ama eslesmeyen sayilir
+            eslesmeyen.append((o.Label, anahtar or "-"))
+        vo.ShapeAppearance = (App.Material(DiffuseColor=tuple(rgb) + (1.0,), Transparency=0.0),)
+        vo.Transparency = 0
+        boyanan += 1
+    return boyanan, eslesmeyen
+
+
+# Montajda Y yukari, robotun onu +Z (montaj_gorsel.py ile ayni). FreeCAD'in viewIsometric'i Z'yi yukari aldigi icin robot
+# yatik gorunur; bu yuzden izometrik bakis montaj_gorsel.py'nin "montaj-izometrik" yonuyle (sag-on-ust, Y yukari) kurulur.
+KAMERA_YON = (0.85, 0.55, 1.0)
+
+
+def _kamera_yonu(v, goz):
+    from pivy import coin
+    z = App.Vector(*goz).normalize()
+    x = App.Vector(0, 1, 0).cross(z).normalize()
+    y = z.cross(x)
+    q = App.Rotation(x, y, z, "ZYX").Q
+    v.getCameraNode().orientation.setValue(coin.SbRotation(q[0], q[1], q[2], q[3]))   # setCameraOrientation animasyonlu
+
+
+def gorunumu_sigdir(ad):
+    """Belgenin 3B gorunumunu etkin yap, izometrik (Y yukari) + ViewFit. Belge kapandiysa sessizce gecer."""
+    import FreeCADGui as Gui
+    if ad not in App.listDocuments():
+        return
+    try:
+        App.setActiveDocument(ad)
+        gd = Gui.getDocument(ad)
+        Gui.ActiveDocument = gd
+        v = gd.activeView()
+        if not hasattr(v, "fitAll"):          # etkin pencere 3B gorunum degilse belgenin ilk 3B gorunumunu bul
+            v = next(iter(gd.mdiViewsOfType("Gui::View3DInventor")), None)
+            if v is None:
+                return
+        try:
+            _kamera_yonu(v, KAMERA_YON)
+        except Exception:
+            v.viewIsometric()
+        v.fitAll()
+    except Exception as e:
+        _mesaj("gorunum sigdirilamadi: %s" % e, hata=True)
+
+
+class Dongu:
+    def __init__(self, doc):
+        from PySide import QtCore
+        import FreeCADGui as Gui
+        self.doc = doc
+        self.ad = doc.Name
+        self.K = Kinematik(doc)
+        self.gd = Gui.getDocument(self.ad)
+        self.temiz = not self._degisti()
+        acilan = robotu_goster(doc)       # durunca geri gizlenmez: robot gorunur kalir
+        if acilan:
+            _mesaj("gizli gelen %d nesne (montaj, gruplar, parcalar) gorunur yapildi" % acilan)
+        # renkler bir kez (her karede degil) atanir; durunca da kalir. Basarisiz olursa dongu gri robotla devam eder.
+        try:
+            boyanan, eslesmeyen = robotu_boya(doc, self.gd)
+            _mesaj("renk: %d parca boyandi (step_renkli eslemesi), %d eslesmeyen (gri)%s" % (
+                boyanan, len(eslesmeyen), (": " + ", ".join("%s [%s]" % e for e in eslesmeyen[:20])) if eslesmeyen else ""))
+        except Exception as e:
+            _mesaj("renk atanamadi, robot gri kaliyor: %s" % e, hata=True)
+        # eklem isaretleri eklem nesnesinin cozumunde konumlanir; dongu cozucuyu calistirmadigi icin gizlenir (yalniz bunlar)
+        self.gizli = []
+        for o in doc.Objects:
+            if getattr(o, "JointType", None) is not None and o.Visibility:
+                self.gizli.append(o.Name)
+                o.Visibility = False
+        self._temizle()
+        # kamera: belge ve 3B gorunum tam yuklendikten sonra izometrik + ViewFit (hemen cagrilinca bos sahneye sigdiriyordu)
+        QtCore.QTimer.singleShot(300, lambda: gorunumu_sigdir(self.ad))
+        QtCore.QTimer.singleShot(1500, lambda: gorunumu_sigdir(self.ad))
+        self.ev = ev_poz()
+        self.grup = [(n, self.K.grup[n]) for n in self.K.hareketli]
+        self.kare_say = 0
+        self.olcum = None
+        self.saat = QtCore.QElapsedTimer()
+        self.saat.start()
+        self.timer = QtCore.QTimer()
+        self.timer.setTimerType(QtCore.Qt.PreciseTimer)
+        self.timer.timeout.connect(self.kare)
+        self.timer.start(int(round(1000.0 / FPS)))
+        _mesaj("basladi: %s, %d hareketli grup, %g s dongu, hedef %d fps. Durdurmak icin makroyu yeniden calistir."
+               % (doc.Label, len(self.grup), T, FPS))
+
+    def _degisti(self):
+        try:
+            return bool(self.gd.Modified)
+        except Exception:
+            return False
+
+    def _temizle(self):
+        if self.temiz:
+            try:
+                self.gd.Modified = False
+            except Exception:
+                pass
+
+    def aci(self, e):
+        """Gecen sure e (s) -> eklem acilari. Ilk GIRIS s: kayitli durum (S2 0) -> ev pozu, sonra dongu."""
+        if e < GIRIS:
+            s = _yum(e / GIRIS)
+            p = dict(self.ev)
+            p["OmuzSag_Yana"] = p["OmuzSol_Yana"] = S2_EV * s
+            return p
+        return poz((e - GIRIS) % T)
+
+    def uygula(self, aci):
+        yer = self.K.yerlesimler(aci)
+        for n, g in self.grup:
+            g.Placement = yer[n]
+
+    def kare(self):
+        if self.ad not in App.listDocuments():
+            self.timer.stop()
+            App._lale_dongu = None
+            return
+        try:
+            e = self.saat.elapsed() / 1000.0
+            t0 = time.perf_counter()
+            self.uygula(self.aci(e))
+            self.kare_say += 1
+            self._temizle()           # basta temizse "degisti" bayragi her karede sifirlanir (kapatirken kaydet sorusu gelmez)
+            if self.olcum is None and e >= GIRIS + T:
+                self.olcum = (self.kare_say, e, time.perf_counter() - t0)
+                _mesaj("ilk dongu bitti: ortalama %.1f fps (kare yazma %.1f ms)" % (self.kare_say / e, 1000 * self.olcum[2]))
+        except Exception:
+            import traceback
+            _mesaj("hata, durduruluyor:\n%s" % traceback.format_exc(), hata=True)
+            self.durdur()
+
+    def fps(self):
+        e = self.saat.elapsed() / 1000.0
+        return self.kare_say / e if e > 0 else 0.0
+
+    def durdur(self):
+        self.timer.stop()
+        if self.ad in App.listDocuments():
+            for n, g in self.grup:
+                g.Placement = self.K.ev[n]
+                try:
+                    g.purgeTouched()
+                except Exception:
+                    pass
+            for n in self.gizli:
+                o = self.doc.getObject(n)
+                if o is not None:
+                    o.Visibility = True
+            self._temizle()
+        _mesaj("durdu (%d kare, %.1f fps); gruplar baslangic yerlesimine dondu." % (self.kare_say, self.fps()))
+        App._lale_dongu = None
+
+
+def baslat_veya_durdur():
+    d = getattr(App, "_lale_dongu", None)
+    if d is not None:
+        d.durdur()
+        return None
+    try:
+        App._lale_dongu = Dongu(belge_bul())      # referans tutulmazsa zamanlayici silinir
+    except Exception:
+        import traceback
+        _mesaj("baslatilamadi:\n%s" % traceback.format_exc(), hata=True)
+        App._lale_dongu = None
+    return App._lale_dongu
+
+
+if App.GuiUp and __name__ != "lale_dongu_kutuphane":
+    baslat_veya_durdur()
