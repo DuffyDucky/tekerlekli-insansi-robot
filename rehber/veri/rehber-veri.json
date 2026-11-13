@@ -1,6 +1,6 @@
 {
 "surum": 1,
-"uretim": "2026-11-13 02:56",
+"uretim": "2026-11-13 23:45",
 "betik": "tasarim/freecad/rehber/rehber_veri.py",
 "kaynak": {
 "m6": "planlama/adim4/M6-montaj-sirasi.md (adım sırası ve tablo metni)",
@@ -12972,9 +12972,9 @@
 "no": "39",
 "faz": "Kollar",
 "baslik": "S2 servosu → göbek",
-"is_": "1. S2 kablosunu kısalt ve uzatmaya ekle: G2'den yaklaşık 20 mm önce, göbek arka iç şeridinde (lehim + makaron Ø ≤ 4,5, yaklaşık 25 mm, ya da JR çifti; kablo bağı). Yer tahmini, yerinde ölç. S2 uzatması 1700 mm (ekten dağıtım kartına, konnektör payı 30 mm tahmini dahil).\n2. Servoyu göbeğe cıvatala.\n3. Karşı tarafa 625ZZ ve M5 pim.",
-"baglanti_md": "Kol başına 4 × M4×16 + 4 kontra somun; 1 × M5×12 + pul",
-"alet": "alyan 3 / 4 + 7 mm",
+"is_": "1. S2 kablosunu kısalt ve uzatmaya ekle: G2'den yaklaşık 20 mm önce, göbek arka iç şeridinde (lehim + makaron Ø ≤ 4,5, yaklaşık 25 mm, ya da JR çifti; kablo bağı). Yer tahmini, yerinde ölç. S2 uzatması 1700 mm (ekten dağıtım kartına, konnektör payı 30 mm tahmini dahil).\n2. Servoyu göbeğe cıvatala. Göbeğin karşı tarafındaki mafsal (625ZZ, pul, M5×12) G3'te, kol çatalıyla gelir.",
+"baglanti_md": "Kol başına 4 × M4×16 + 4 kontra somun",
+"alet": "alyan 3 + 7 mm",
 "erisim": "Düz. Somunların 2'si cepte, 2'si açık ağızla (Y3 C3)",
 "tezgah": null,
 "baglanir": null,
@@ -13002,18 +13002,6 @@
 "p0179"
 ],
 "ad": "S2 servo çıkış mili (sağ + sol)"
-},
-{
-"kod": "625ZZ rulman 5x16x5",
-"tur": "Satin",
-"malzeme": "Çelik",
-"r": "satin",
-"adet": 2,
-"ids": [
-"p0116",
-"p0189"
-],
-"ad": "625ZZ rulman (iç bilezik) (sağ + sol)"
 }
 ],
 "baglantilar": [
@@ -13048,26 +13036,6 @@
 "p0187"
 ],
 "onceden": false
-},
-{
-"kod": "M5 DIN 125 pul",
-"adet": 2,
-"m6": 0,
-"ids": [
-"p0117",
-"p0190"
-],
-"onceden": false
-},
-{
-"kod": "M5x12 DIN 912",
-"adet": 2,
-"m6": 0,
-"ids": [
-"p0118",
-"p0191"
-],
-"onceden": false
 }
 ],
 "kontrol": [
@@ -13078,7 +13046,7 @@
 "not_": [],
 "kamera": null,
 "m6": [],
-"sure_dk": 23,
+"sure_dk": 19,
 "sure_tahmini": true,
 "kablolama": false,
 "ev": [
@@ -13092,9 +13060,9 @@
 "no": "40",
 "faz": "Kollar",
 "baslik": "S2 hornu, kol çatalı, üst kol tüpü",
-"is_": "1. S2 hornu, merkez vidası.\n2. Kol çatalı → horn.\n3. Üst kol tüpü → çatal.\n4. Kablolar (F4'te yarıktan dışarı alınan uzatma uçlarıyla, gövdeden kola doğru): yarıktan tambur bağına (ψ 145): 3 şerit kanala teğet, 2 ip demetin üstünde düğüm; yarıkla tambur bağı arası gevşek kalır (G4'te U-lopu). Tambur bağından göbek arka iç şeridine (G2).\n5. Dirsek ve bilek uzatmaları G2'den S2 lopu L 80 mm (2 şerit) → K noktası (çatal arka plakasının arkası, yapışkan taban) → tüp penceresi. Kol ucu pencerede bekler: H1'de servo kablosuna eklenir.",
-"baglanti_md": "Kol başına 1 × M3×5 horn; 4 × M3×8 çatal–horn; 2 × M3×8 tüp → ısıl gömme",
-"alet": "PH1, alyan 2,5",
+"is_": "1. S2 hornu, merkez vidası.\n2. Kol çatalı → horn (4 × M3×8). 625ZZ çatalın arka kolunun Ø16 yuvasında: tezgâhta önceden preslenir, iki bileziğiyle çatalla gelir. Çatal yerindeyken mafsal pulu + M5×12: arka koldan rulmanın iç bileziğinden göbekteki M5 ısıl gömmeye (iç bileziği göbeğe sıkar, çatal döner).\n3. Üst kol tüpü → çatal.\n4. Kablolar (F4'te yarıktan dışarı alınan uzatma uçlarıyla, gövdeden kola doğru): yarıktan tambur bağına (ψ 145): 3 şerit kanala teğet, 2 ip demetin üstünde düğüm; yarıkla tambur bağı arası gevşek kalır (G4'te U-lopu). Tambur bağından göbek arka iç şeridine (G2).\n5. Dirsek ve bilek uzatmaları G2'den S2 lopu L 80 mm (2 şerit) → K noktası (çatal arka plakasının arkası, yapışkan taban) → tüp penceresi. Kol ucu pencerede bekler: H1'de servo kablosuna eklenir.",
+"baglanti_md": "Kol başına 1 × M3×5 horn; 4 × M3×8 çatal–horn; 1 × M5×12 + pul mafsal (çataldan sonra); 2 × M3×8 tüp → ısıl gömme",
+"alet": "PH1, alyan 2,5 / 4",
 "erisim": "düz",
 "tezgah": null,
 "baglanir": null,
@@ -13122,6 +13090,18 @@
 "p0194"
 ],
 "ad": "Kol çatalı (sağ + sol)"
+},
+{
+"kod": "625ZZ rulman 5x16x5",
+"tur": "Satin",
+"malzeme": "Çelik",
+"r": "satin",
+"adet": 2,
+"ids": [
+"p0116",
+"p0189"
+],
+"ad": "625ZZ rulman (iç bilezik) (sağ + sol)"
 },
 {
 "kod": "(625ZZ ile)",
@@ -13162,6 +13142,26 @@
 "onceden": true
 },
 {
+"kod": "M5 DIN 125 pul",
+"adet": 2,
+"m6": 0,
+"ids": [
+"p0117",
+"p0190"
+],
+"onceden": false
+},
+{
+"kod": "M5x12 DIN 912",
+"adet": 2,
+"m6": 0,
+"ids": [
+"p0118",
+"p0191"
+],
+"onceden": false
+},
+{
 "kod": "M3x5 horn vidası (servo ile)",
 "adet": 2,
 "m6": 0,
@@ -13193,6 +13193,7 @@
 }
 ],
 "kontrol": [
+"Mafsal cıvatası sıkıyken çatal S2 ekseninde elle dönüyor, 625ZZ yuvasından çıkmadı",
 "Tüp penceresi arka duvarda: 10 geniş, 14 düz + iki uç 45° (≈ 24 boy). M1 yalnız dişi JR'yi (7,9 × 2,75) denetledi; erkek JR (10,3 × 4) boyuna çevrilerek geçmeli, doğrulanmadı",
 "Bağ açısı 0 ± 2°, düğüm cerrah + kare, uç 3 mm",
 "K noktası tabanı CAD'de 10 × 10 (tahmini), v4 taban 28 × 28: sığması doğrulanmadı"
@@ -13203,7 +13204,7 @@
 "not_": [],
 "kamera": null,
 "m6": [],
-"sure_dk": 27,
+"sure_dk": 31,
 "sure_tahmini": true,
 "kablolama": false,
 "sira": [
@@ -13211,9 +13212,12 @@
 "p:1",
 "p:2",
 "p:3",
+"p:4",
 "b:0",
 "b:1",
-"b:2"
+"b:2",
+"b:3",
+"b:4"
 ],
 "sira_grup": [
 {
@@ -13225,32 +13229,23 @@
 "p:1",
 "p:2",
 "p:3",
+"p:4",
 "b:0",
 "b:1",
-"b:2"
+"b:2",
+"b:3",
+"b:4"
 ],
-"is_": "S2 hornu + merkez vidası, kol çatalı → horn (4 × M3×8), 625ZZ'nin dış bileziği çatalın yuvasında (tezgâhta önceden bastırılır, çatalla birlikte gelir), üst kol tüpü → çatal (2 × M3×8 → ısıl gömme). Kablolar sonraki iki alt adımda.",
-"ucus_ok": {
-"p0121": {
-"sinif": "karar",
-"gerekce": "karar bekliyor (karar kuyruğu): 40.1 kol çatalı + 625ZZ dış bilezik: 625ZZ iç bileziği, mafsal pulu ve mafsal cıvatası G2'de (adım 39) takılı; çatal (dış bilezik yuvasında, birlikte; F10f düzeltme 2) hiçbir düz yoldan gelemiyor, iç bileziğe ve mafsal cıvatasına çarpıyor. Sıra ve atama değişmedi; seçenekler F10f-gunluk.md Düzeltme turu 1, karar notu K1-a",
-"engel": {
-"p0116": 6.92,
-"p0118": 5.5
-}
-},
-"p0194": {
-"sinif": "karar",
-"gerekce": "karar bekliyor (karar kuyruğu): 40.1 kol çatalı + 625ZZ dış bilezik: 625ZZ iç bileziği, mafsal pulu ve mafsal cıvatası G2'de (adım 39) takılı; çatal (dış bilezik yuvasında, birlikte; F10f düzeltme 2) hiçbir düz yoldan gelemiyor, iç bileziğe ve mafsal cıvatasına çarpıyor. Sıra ve atama değişmedi; seçenekler F10f-gunluk.md Düzeltme turu 1, karar notu K1-a",
-"engel": {
-"p0189": 6.92,
-"p0191": 5.5
-}
-}
+"is_": "S2 hornu + merkez vidası; kol çatalı → horn (4 × M3×8): 625ZZ tezgâhta çatalın arka kolunun Ø16 yuvasına önceden preslenir, iki bileziğiyle çatalla birlikte gelir. Çatal yerindeyken mafsal pulu + M5×12: arka koldan rulmanın iç bileziğinden göbekteki M5 ısıl gömmeye. Üst kol tüpü → çatal (2 × M3×8 → ısıl gömme). Kablolar sonraki iki alt adımda.",
+"gizli_ok": {
+"p0116": "perdelenme (26 yön, dik izdüşüm): parça yerindeyken hiçbir yönden görünmez; 625ZZ rulman iç bileziği kol çatalının arka kolundaki Ø16 yuvada, mafsal pulu ve cıvata başının altında. Okur onu sıralı takmada (Boşluk) yerine giderken görür; alt adım karesindeki piksel ölçümü F10f-gunluk.md Düzeltme turu 1",
+"p0189": "perdelenme (26 yön, dik izdüşüm): parça yerindeyken hiçbir yönden görünmez; 625ZZ rulman iç bileziği kol çatalının arka kolundaki Ø16 yuvada, mafsal pulu ve cıvata başının altında. Okur onu sıralı takmada (Boşluk) yerine giderken görür; alt adım karesindeki piksel ölçümü F10f-gunluk.md Düzeltme turu 1"
 },
 "ev": [
 "p0106",
-"p0179"
+"p0179",
+"p0091",
+"p0164"
 ]
 },
 {
@@ -13325,7 +13320,9 @@
 "alt": 3,
 "ev": [
 "p0106",
-"p0179"
+"p0179",
+"p0091",
+"p0164"
 ]
 },
 {
@@ -13542,11 +13539,11 @@
 ],
 "sema_yalniz": true,
 "ev": [],
-"iz": [
-32
-],
 "sema": [
 31
+],
+"iz": [
+32
 ]
 },
 {
@@ -13596,11 +13593,11 @@
 ],
 "sema_yalniz": true,
 "ev": [],
-"iz": [
-31
-],
 "sema": [
 32
+],
+"iz": [
+31
 ]
 },
 {
@@ -13904,10 +13901,10 @@
 "no": "43",
 "faz": "Kollar",
 "baslik": "Tezgâh: dirsek hornu",
-"is_": "Dirsek hornu + merkez vidası. Çataldan önce.",
-"baglanti_md": "Kol başına 1 × M3×5",
-"alet": "PH1",
-"erisim": "düz; **çataldan önce**",
+"is_": "Dirsek hornunu servo miline geçir (merkez vidası bu adımda takılmaz: H0c'de, dirsek çatalından sonra).",
+"baglanti_md": "Kol başına yok (horn merkez vidası M3×5 H0c'de)",
+"alet": "el",
+"erisim": "Düz",
 "tezgah": "dirsek",
 "baglanir": 48,
 "parcalar": [
@@ -13934,52 +13931,30 @@
 "ad": "Dirsek horn 25T alüminyum disk sol"
 }
 ],
-"baglantilar": [
-{
-"kod": "M3x5 horn vidası (servo ile)",
-"adet": 1,
-"m6": 0,
-"ids": [
-"p0573"
-],
-"onceden": false
-},
-{
-"kod": "M3x5 horn vidası (servo ile)",
-"adet": 1,
-"m6": 0,
-"ids": [
-"p0630"
-],
-"onceden": false
-}
-],
+"baglantilar": [],
 "kontrol": [
-"Vida sıkı, horn oturdu"
+"Horn servo milinin dişlisine oturdu"
 ],
 "kablo": [],
 "not_": [],
 "kamera": null,
 "m6": [],
-"sure_dk": 9,
+"sure_dk": 7,
 "sure_tahmini": true,
 "kablolama": false,
 "sira": [
 "p:0",
-"b:0",
-"p:1",
-"b:1"
+"p:1"
 ],
 "sira_grup": [
 {
-"ad": "Sağ kol: dirsek hornu + merkez vidası",
+"ad": "Sağ kol: dirsek hornu",
 "tezgah": "",
 "bag": "",
 "satir": [
-"p:0",
-"b:0"
+"p:0"
 ],
-"is_": "Sağ kol: dirsek hornunu servo miline geçir, merkez vidası M3×5 (PH1).",
+"is_": "Sağ kol: dirsek hornunu servo miline geçir; merkez vidası H0c'de, çataldan sonra.",
 "kamera": [
 1.0,
 0.4,
@@ -13990,12 +13965,11 @@
 ]
 },
 {
-"ad": "Sol kol: dirsek hornu + merkez vidası",
+"ad": "Sol kol: dirsek hornu",
 "tezgah": "",
 "bag": "",
 "satir": [
-"p:1",
-"b:1"
+"p:1"
 ],
 "is_": "Sol kol: aynı iş, aynalı.",
 "kamera": [
@@ -14020,9 +13994,9 @@
 "no": "44",
 "faz": "Kollar",
 "baslik": "Tezgâh: dirsek çatalı",
-"is_": "1. 625ZZ'yi çatalın Ø16 yuvasına bastır; çatalı horna cıvatala; M5 pimi yanaktaki ısıl gömmeye tak (robotta erişilemez: göğüs bandı 8,9 mm).\n2. Kablo: tırnak → lop L 120 mm → çatal oluğu (6 geniş, 4,5 derin; 2 şerit, sıcak tutkal) → Ø10 delik.",
-"baglanti_md": "1,58 m: kol başına 4 × M3×12 DIN 912 + 2 × DIN 125-A pul çatal–horn (M6'daki M3×8 eski); 1 × M5×12 + pul",
-"alet": "alyan 2,5 / 4",
+"is_": "1. 625ZZ'yi tezgâhta çatalın Ø16 yuvasına bastır (rulman çatalla gelir); çatalı horna cıvatala; çatal yerindeyken dirsek horn merkez vidası M3×5 (PH1), çatalın dış kolundaki erişim deliğinden; M5 pimi yanaktaki ısıl gömmeye tak (robotta erişilemez: göğüs bandı 8,9 mm).\n2. Kablo: tırnak → lop L 120 mm → çatal oluğu (6 geniş, 4,5 derin; 2 şerit, sıcak tutkal) → Ø10 delik.",
+"baglanti_md": "1,58 m: kol başına 4 × M3×12 DIN 912 + 2 × DIN 125-A pul çatal–horn (M6'daki M3×8 eski); 1 × M3×5 horn merkez vidası (çataldan sonra); 1 × M5×12 + pul",
+"alet": "PH1, alyan 2,5 / 4",
 "erisim": "düz; pim robotta erişilemez (göğüs bandı 8,9 mm)",
 "tezgah": "dirsek",
 "baglanir": 48,
@@ -14065,6 +14039,16 @@
 }
 ],
 "baglantilar": [
+{
+"kod": "M3x5 horn vidası (servo ile)",
+"adet": 2,
+"m6": 0,
+"ids": [
+"p0573",
+"p0630"
+],
+"onceden": false
+},
 {
 "kod": "M3x12 DIN 912",
 "adet": 8,
@@ -14119,6 +14103,7 @@
 }
 ],
 "kontrol": [
+"Horn merkez vidası sıkı, horn servo milinde oturdu",
 "Dirseği 0…105° arasında elle dene: lop gerilmiyor, oluğa sürtmüyor"
 ],
 "kablo": [
@@ -14127,7 +14112,7 @@
 "not_": [],
 "kamera": null,
 "m6": [],
-"sure_dk": 23,
+"sure_dk": 25,
 "sure_tahmini": true,
 "kablolama": false,
 "sira": [
@@ -14137,11 +14122,12 @@
 "b:0",
 "b:1",
 "b:2",
-"b:3"
+"b:3",
+"b:4"
 ],
 "sira_grup": [
 {
-"ad": "Dirsek çatalı + pim (sağ + sol)",
+"ad": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
 "tezgah": "",
 "bag": "",
 "satir": [
@@ -14151,9 +14137,10 @@
 "b:0",
 "b:1",
 "b:2",
-"b:3"
+"b:3",
+"b:4"
 ],
-"is_": "625ZZ'yi önce çatal iç kolunun Ø16 yuvasına, dudağa dayanana kadar bastır (tezgâhta; rulman çatalla birlikte gelir). Çatalı horna cıvatala (4 × M3×12 + 2 pul); M5 pimi pulla yanaktaki ısıl gömmeye tak (madde 1).",
+"is_": "625ZZ'yi önce çatal iç kolunun Ø16 yuvasına, dudağa dayanana kadar bastır (tezgâhta; rulman çatalla birlikte gelir). Çatalı horna cıvatala (4 × M3×12 + 2 pul); çatal yerindeyken dirsek horn merkez vidası M3×5 (PH1, çatalın dış kolundaki erişim deliğinden); M5 pimi pulla yanaktaki ısıl gömmeye tak (madde 1).",
 "gizli_ok": {
 "p0583": "perdelenme (26 yön, dik izdüşüm): parça yerindeyken hiçbir yönden görünmez; 625ZZ rulman bileziği çatal yanağının yuvasında, pim pulu ve cıvata başının altında. Okur onu sıralı takmada (Boşluk) yerine giderken görür; alt adım karesindeki piksel ölçümü F10f-gunluk.md Düzeltme turu 1",
 "p0628": "perdelenme (26 yön, dik izdüşüm): parça yerindeyken hiçbir yönden görünmez; 625ZZ rulman bileziği çatal yanağının yuvasında, pim pulu ve cıvata başının altında. Okur onu sıralı takmada (Boşluk) yerine giderken görür; alt adım karesindeki piksel ölçümü F10f-gunluk.md Düzeltme turu 1",
@@ -14161,25 +14148,11 @@
 "p0584": "perdelenme (26 yön, dik izdüşüm): parça yerindeyken hiçbir yönden görünmez; M5 pim pulu pim cıvatasının başının altında, yanakla baş arasında. Okur onu sıralı takmada (Boşluk) yerine giderken görür; alt adım karesindeki piksel ölçümü F10f-gunluk.md Düzeltme turu 1",
 "p0641": "perdelenme (26 yön, dik izdüşüm): parça yerindeyken hiçbir yönden görünmez; M5 pim pulu pim cıvatasının başının altında, yanakla baş arasında. Okur onu sıralı takmada (Boşluk) yerine giderken görür; alt adım karesindeki piksel ölçümü F10f-gunluk.md Düzeltme turu 1"
 },
-"ucus_ok": {
-"p0562": {
-"sinif": "karar",
-"gerekce": "karar bekliyor (karar kuyruğu): 44.1 dirsek çatalı: dirsek horn merkez vidası H0b'de (adım 43) takılı, çatal +y yolunda vidanın başına çarpıyor. Sıra ve atama değişmedi; seçenekler F10f-gunluk.md Düzeltme turu 1, karar notu K1-b",
-"engel": {
-"p0573": 5.96
-}
-},
-"p0619": {
-"sinif": "karar",
-"gerekce": "karar bekliyor (karar kuyruğu): 44.1 dirsek çatalı: dirsek horn merkez vidası H0b'de (adım 43) takılı, çatal +y yolunda vidanın başına çarpıyor. Sıra ve atama değişmedi; seçenekler F10f-gunluk.md Düzeltme turu 1, karar notu K1-b",
-"engel": {
-"p0630": 5.96
-}
-}
-},
 "ev": [
 "p0572",
 "p0629",
+"p0588",
+"p0645",
 "p0582",
 "p0639"
 ]
@@ -14233,6 +14206,8 @@
 "ev": [
 "p0572",
 "p0629",
+"p0588",
+"p0645",
 "p0582",
 "p0639"
 ]
@@ -17969,15 +17944,16 @@
 "tur": "Satin",
 "malzeme": "Çelik",
 "r": "satin",
-"a": 39,
-"b": 39,
+"a": 40,
+"b": 40,
 "t": null,
 "u": [
-0.987,
+1.0,
 0.0,
--0.163
+0.0
 ],
-"d": 40.0,
+"d": 56.9,
+"h": "p0121",
 "gr": "#80858f"
 },
 {
@@ -17989,8 +17965,8 @@
 "tur": "Baglanti",
 "malzeme": "Çelik",
 "r": "baglanti",
-"a": 39,
-"b": 39,
+"a": 40,
+"b": 40,
 "t": null,
 "u": [
 -0.0,
@@ -18014,8 +17990,8 @@
 "tur": "Baglanti",
 "malzeme": "Çelik 8.8",
 "r": "baglanti",
-"a": 39,
-"b": 39,
+"a": 40,
+"b": 40,
 "t": null,
 "u": [
 -0.0,
@@ -19885,15 +19861,16 @@
 "tur": "Satin",
 "malzeme": "Çelik",
 "r": "satin",
-"a": 39,
-"b": 39,
+"a": 40,
+"b": 40,
 "t": null,
 "u": [
--0.987,
+-1.0,
 0.0,
--0.163
+0.0
 ],
-"d": 40.0,
+"d": 56.9,
+"h": "p0194",
 "gr": "#80858f"
 },
 {
@@ -19905,8 +19882,8 @@
 "tur": "Baglanti",
 "malzeme": "Çelik",
 "r": "baglanti",
-"a": 39,
-"b": 39,
+"a": 40,
+"b": 40,
 "t": null,
 "u": [
 -0.0,
@@ -19930,8 +19907,8 @@
 "tur": "Baglanti",
 "malzeme": "Çelik 8.8",
 "r": "baglanti",
-"a": 39,
-"b": 39,
+"a": 40,
+"b": 40,
 "t": null,
 "u": [
 -0.0,
@@ -29305,7 +29282,7 @@
 "tur": "Baglanti",
 "malzeme": "Çelik",
 "r": "baglanti",
-"a": 43,
+"a": 44,
 "b": 48,
 "t": "dirsek",
 "u": [
@@ -30925,7 +30902,7 @@
 "tur": "Baglanti",
 "malzeme": "Çelik",
 "r": "baglanti",
-"a": 43,
+"a": 44,
 "b": 48,
 "t": "dirsek",
 "u": [
@@ -45785,9 +45762,9 @@
 "ev_bulunan": 102,
 "kaynak": {
 "önceki parça yok": 1,
-"baglanti": 77,
+"baglanti": 74,
 "masa tabanı (yeni)": 16,
-"temas 0.6 mm": 9,
+"temas 0.6 mm": 12,
 "yeni parça yok": 17
 },
 "bos": [
@@ -45882,8 +45859,8 @@
 "neden": "yeni parça yok"
 }
 ],
-"sure_s": 40.8,
-"sure_baglanti_s": 14.5
+"sure_s": 43.9,
+"sure_baglanti_s": 16.3
 },
 "kol_kablo": {
 "betik": "tasarim/freecad/rehber/rehber_kol_kablo.py",

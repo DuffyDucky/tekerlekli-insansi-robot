@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-13 06:17",
+ "tarih": "2026-11-14 00:33",
  "konum": 121,
  "renk_cad": {
   "yontem": "CAD rengi rehber_gorunum.cad_parcalar() ile FCStd'den yeniden okunur (Document.xml Renk özelliği × gorsel betiğinin RENK tablosu); ayrıca GuiDocument.xml yayınık rengi",
@@ -124,12 +124,12 @@
  },
  "ev_dogruluk": {
   "yontem": "her (konum, ev) çifti: konumun yeni bağlantı elemanlarının ve yeni ana parçalarının köşe noktalarından (parça başına en çok 600) ev parçasının üçgenlerine en kısa nokta–üçgen uzaklığı ≤ 1.0 mm (doğrudan); değilse köşelerinin en az 3'ü ev parçasının içinde (delik modellenmemiş); değilse araya giren bir bağlantı elemanı (ısıl gömme, somun) üzerinden iki uzaklık da ≤ 1.0 mm. robot.glb dünya koordinatı",
-  "cift": 220,
-  "olculen": 202,
-  "dogru": 202,
+  "cift": 228,
+  "olculen": 210,
+  "dogru": 210,
   "masa_tabani": 18,
   "yol": {
-   "doğrudan": 202
+   "doğrudan": 210
   },
   "yanlis": [],
   "olcum": [
@@ -1619,6 +1619,24 @@
     "dogru": true
    },
    {
+    "adres": "40",
+    "ev": "p0091",
+    "ad": "Omuz göbeği",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "40",
+    "ev": "p0164",
+    "ad": "Omuz göbeği",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
     "adres": "40.1",
     "ev": "p0106",
     "ad": "S2 servo çıkış mili",
@@ -1631,6 +1649,24 @@
     "adres": "40.1",
     "ev": "p0179",
     "ad": "S2 servo çıkış mili",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "40.1",
+    "ev": "p0091",
+    "ad": "Omuz göbeği",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "40.1",
+    "ev": "p0164",
+    "ad": "Omuz göbeği",
     "tur": "bağlantı elemanı + yeni ana parça",
     "uzaklik": 0.0,
     "yol": "doğrudan",
@@ -1749,7 +1785,7 @@
     "ev": "p0588",
     "ad": "Dirsek servosu çıkış mili",
     "tur": "bağlantı elemanı + yeni ana parça",
-    "uzaklik": 0.0,
+    "uzaklik": 0.1,
     "yol": "doğrudan",
     "dogru": true
    },
@@ -1758,7 +1794,7 @@
     "ev": "p0645",
     "ad": "Dirsek servosu çıkış mili",
     "tur": "bağlantı elemanı + yeni ana parça",
-    "uzaklik": 0.0,
+    "uzaklik": 0.1,
     "yol": "doğrudan",
     "dogru": true
    },
@@ -1767,7 +1803,7 @@
     "ev": "p0588",
     "ad": "Dirsek servosu çıkış mili",
     "tur": "bağlantı elemanı + yeni ana parça",
-    "uzaklik": 0.0,
+    "uzaklik": 0.1,
     "yol": "doğrudan",
     "dogru": true
    },
@@ -1776,7 +1812,7 @@
     "ev": "p0645",
     "ad": "Dirsek servosu çıkış mili",
     "tur": "bağlantı elemanı + yeni ana parça",
-    "uzaklik": 0.0,
+    "uzaklik": 0.1,
     "yol": "doğrudan",
     "dogru": true
    },
@@ -1793,6 +1829,24 @@
     "adres": "44",
     "ev": "p0629",
     "ad": "Dirsek horn 25T alüminyum disk",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "44",
+    "ev": "p0588",
+    "ad": "Dirsek servosu çıkış mili",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "44",
+    "ev": "p0645",
+    "ad": "Dirsek servosu çıkış mili",
     "tur": "bağlantı elemanı + yeni ana parça",
     "uzaklik": 0.0,
     "yol": "doğrudan",
@@ -1829,6 +1883,24 @@
     "adres": "44.1",
     "ev": "p0629",
     "ad": "Dirsek horn 25T alüminyum disk",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "44.1",
+    "ev": "p0588",
+    "ad": "Dirsek servosu çıkış mili",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "44.1",
+    "ev": "p0645",
+    "ad": "Dirsek servosu çıkış mili",
     "tur": "bağlantı elemanı + yeni ana parça",
     "uzaklik": 0.0,
     "yol": "doğrudan",
@@ -2132,7 +2204,7 @@
   "tema": {
    "light": {
     "zemin": "#eceae4",
-    "yeni_parca_konum": 2233,
+    "yeni_parca_konum": 2239,
     "esik_alti": 707,
     "esik_alti_kenarsiz": 0,
     "kenarsiz": [],
@@ -2162,7 +2234,7 @@
    },
    "dark": {
     "zemin": "#1b1c20",
-    "yeni_parca_konum": 2233,
+    "yeni_parca_konum": 2239,
     "esik_alti": 180,
     "esik_alti_kenarsiz": 0,
     "kenarsiz": [],
@@ -2254,9 +2326,9 @@
   ],
   "kaynak": {
    "önceki parça yok": 1,
-   "baglanti": 77,
+   "baglanti": 74,
    "masa tabanı (yeni)": 16,
-   "temas 0.6 mm": 9,
+   "temas 0.6 mm": 12,
    "yeni parça yok": 17
   },
   "gecti": true
@@ -2264,8 +2336,8 @@
  "isaret": {
   "yontem": "işaret listesi = konumda yeni (durum simdi) bağlantı elemanı sayısı (Python durum kuralı); küme adetleri toplamı = liste (her işaret tuvalde); SVG halka sayısı = küme sayısı",
   "konum": 121,
-  "toplam_beklenen": 1280,
-  "toplam_isaret": 1280,
+  "toplam_beklenen": 1284,
+  "toplam_isaret": 1284,
   "kabuk_beklenen": 277,
   "kabuk_isaret": 277,
   "kabuk_kume": 265,
@@ -2993,29 +3065,29 @@
    },
    {
     "adres": "39",
-    "beklenen": 20,
-    "liste": 20,
-    "kumede": 20,
-    "kume": 12,
-    "dom": 12,
+    "beklenen": 16,
+    "liste": 16,
+    "kumede": 16,
+    "kume": 10,
+    "dom": 10,
     "gecti": true
    },
    {
     "adres": "40",
-    "beklenen": 18,
-    "liste": 18,
-    "kumede": 18,
-    "kume": 8,
-    "dom": 8,
+    "beklenen": 22,
+    "liste": 22,
+    "kumede": 22,
+    "kume": 10,
+    "dom": 10,
     "gecti": true
    },
    {
     "adres": "40.1",
-    "beklenen": 18,
-    "liste": 18,
-    "kumede": 18,
-    "kume": 8,
-    "dom": 8,
+    "beklenen": 22,
+    "liste": 22,
+    "kumede": 22,
+    "kume": 10,
+    "dom": 10,
     "gecti": true
    },
    {
@@ -3137,45 +3209,45 @@
    },
    {
     "adres": "43",
-    "beklenen": 2,
-    "liste": 2,
-    "kumede": 2,
-    "kume": 2,
-    "dom": 2,
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
     "gecti": true
    },
    {
     "adres": "43.1",
-    "beklenen": 1,
-    "liste": 1,
-    "kumede": 1,
-    "kume": 1,
-    "dom": 1,
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
     "gecti": true
    },
    {
     "adres": "43.2",
-    "beklenen": 1,
-    "liste": 1,
-    "kumede": 1,
-    "kume": 1,
-    "dom": 1,
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
     "gecti": true
    },
    {
     "adres": "44",
-    "beklenen": 20,
-    "liste": 20,
-    "kumede": 20,
+    "beklenen": 22,
+    "liste": 22,
+    "kumede": 22,
     "kume": 7,
     "dom": 7,
     "gecti": true
    },
    {
     "adres": "44.1",
-    "beklenen": 20,
-    "liste": 20,
-    "kumede": 20,
+    "beklenen": 22,
+    "liste": 22,
+    "kumede": 22,
     "kume": 7,
     "dom": 7,
     "gecti": true
@@ -11945,7 +12017,7 @@
   "gecti": true
  },
  "goruntu": [],
- "sure_s": 886,
+ "sure_s": 897,
  "gecti_ozet": {
   "renk_cad": true,
   "renk_sahne": true,

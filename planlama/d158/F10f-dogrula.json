@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-13 06:08",
+ "tarih": "2026-11-14 00:23",
  "betik": "planlama/d158/F10f-dogrula.py",
  "veri": {
   "sinir": {
@@ -4538,7 +4538,7 @@
   "hata": [],
   "gecti": true,
   "bolum": 38,
-  "sure_s": 38.4
+  "sure_s": 40.6
  },
  "sinama": {
   "kati": {
@@ -8510,7 +8510,7 @@
    "light sutun": {
     "konum": 29,
     "yeni": 206,
-    "gorunmeyen": 142,
+    "gorunmeyen": 144,
     "gomme": 12,
     "birim_gorunmeyen": 0,
     "gecen_konum": 20
@@ -8518,7 +8518,7 @@
    "light hepsi": {
     "konum": 29,
     "yeni": 206,
-    "gorunmeyen": 123,
+    "gorunmeyen": 125,
     "gomme": 11,
     "birim_gorunmeyen": 0,
     "gecen_konum": 20
@@ -8526,7 +8526,7 @@
    "dark sutun": {
     "konum": 29,
     "yeni": 206,
-    "gorunmeyen": 141,
+    "gorunmeyen": 143,
     "gomme": 12,
     "birim_gorunmeyen": 0,
     "gecen_konum": 20
@@ -8534,7 +8534,7 @@
    "dark hepsi": {
     "konum": 29,
     "yeni": 206,
-    "gorunmeyen": 122,
+    "gorunmeyen": 124,
     "gomme": 11,
     "birim_gorunmeyen": 0,
     "gecen_konum": 20
@@ -8677,7 +8677,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 3.0
+    "sure_s": 3.6
    },
    {
     "hazir": true,
@@ -8879,14 +8879,14 @@
      },
      "gecti": false
     },
-    "sure_s": 11.3
+    "sure_s": 11.8
    },
    {
     "hazir": true,
     "adres": "39",
     "tema": "light",
     "sutun": {
-     "yeni": 26,
+     "yeni": 20,
      "gorunmeyen": [
       [
        "p0105",
@@ -8949,52 +8949,34 @@
        0
       ],
       [
-       "p0116",
-       "625ZZ rulman (iç bilezik)",
-       0,
-       0
-      ],
-      [
-       "p0117",
-       "Mafsal pulu M5",
-       0,
-       0
-      ],
-      [
-       "p0118",
-       "Mafsal cıvatası M5x12",
-       0,
-       0
-      ],
-      [
        "p0178",
        "S2 servo DS3235 (yana açma)",
        837,
-       11203
+       11211
       ],
       [
        "p0179",
        "S2 servo çıkış mili",
        0,
-       569
+       567
       ],
       [
        "p0180",
        "S2 kulak cıvatası M4x16",
        0,
-       503
+       500
       ],
       [
        "p0181",
        "S2 kontra somun M4",
        0,
-       305
+       304
       ],
       [
        "p0182",
        "S2 kulak cıvatası M4x16",
        0,
-       500
+       498
       ],
       [
        "p0183",
@@ -9005,38 +8987,20 @@
       [
        "p0184",
        "S2 kulak cıvatası M4x16",
-       63,
-       541
+       65,
+       544
       ],
       [
        "p0185",
        "S2 kontra somun M4",
        0,
-       324
+       326
       ],
       [
        "p0187",
        "S2 kontra somun M4",
        0,
        320
-      ],
-      [
-       "p0189",
-       "625ZZ rulman (iç bilezik)",
-       0,
-       322
-      ],
-      [
-       "p0190",
-       "Mafsal pulu M5",
-       0,
-       230
-      ],
-      [
-       "p0191",
-       "Mafsal cıvatası M5x12",
-       0,
-       537
       ]
      ],
      "gomme": [],
@@ -9044,85 +9008,67 @@
      "gecti": false
     },
     "hepsi": {
-     "yeni": 26,
+     "yeni": 20,
      "gorunmeyen": [
       [
        "p0106",
        "S2 servo çıkış mili",
-       213,
-       1743
+       217,
+       1740
       ],
       [
        "p0108",
        "S2 kontra somun M4",
        0,
-       609
+       612
       ],
       [
        "p0110",
        "S2 kontra somun M4",
-       2,
-       625
+       4,
+       623
       ],
       [
        "p0112",
        "S2 kontra somun M4",
        0,
-       653
+       655
       ],
       [
        "p0114",
        "S2 kontra somun M4",
        0,
-       667
-      ],
-      [
-       "p0116",
-       "625ZZ rulman (iç bilezik)",
-       0,
-       614
-      ],
-      [
-       "p0117",
-       "Mafsal pulu M5",
-       0,
-       625
-      ],
-      [
-       "p0118",
-       "Mafsal cıvatası M5x12",
-       0,
-       903
+       661
       ],
       [
        "p0178",
        "S2 servo DS3235 (yana açma)",
        837,
-       11203
+       11211
       ],
       [
        "p0179",
        "S2 servo çıkış mili",
        0,
-       569
+       567
       ],
       [
        "p0180",
        "S2 kulak cıvatası M4x16",
        0,
-       503
+       500
       ],
       [
        "p0181",
        "S2 kontra somun M4",
        0,
-       305
+       304
       ],
       [
        "p0182",
        "S2 kulak cıvatası M4x16",
        0,
-       500
+       498
       ],
       [
        "p0183",
@@ -9133,53 +9079,53 @@
       [
        "p0184",
        "S2 kulak cıvatası M4x16",
-       63,
-       541
+       65,
+       544
       ],
       [
        "p0185",
        "S2 kontra somun M4",
        0,
-       324
+       326
       ],
       [
        "p0187",
        "S2 kontra somun M4",
        0,
        320
-      ],
-      [
-       "p0189",
-       "625ZZ rulman (iç bilezik)",
-       0,
-       322
-      ],
-      [
-       "p0190",
-       "Mafsal pulu M5",
-       0,
-       230
-      ],
-      [
-       "p0191",
-       "Mafsal cıvatası M5x12",
-       0,
-       537
       ]
      ],
      "gomme": [],
      "birim": null,
      "gecti": false
     },
-    "sure_s": 10.4
+    "sure_s": 9.4
    },
    {
     "hazir": true,
     "adres": "40.1",
     "tema": "light",
     "sutun": {
-     "yeni": 26,
+     "yeni": 32,
      "gorunmeyen": [
+      [
+       "p0116",
+       "625ZZ rulman (iç bilezik)",
+       0,
+       333
+      ],
+      [
+       "p0117",
+       "Mafsal pulu M5",
+       0,
+       313
+      ],
+      [
+       "p0118",
+       "Mafsal cıvatası M5x12",
+       0,
+       490
+      ],
       [
        "p0119",
        "S2 horn 25T alüminyum disk",
@@ -9190,13 +9136,31 @@
        "p0122",
        "625ZZ rulman (dış bilezik)",
        1,
-       725
+       724
       ],
       [
        "p0131",
        "Tüp cıvatası M3x8",
        0,
        192
+      ],
+      [
+       "p0189",
+       "625ZZ rulman (iç bilezik)",
+       0,
+       202
+      ],
+      [
+       "p0190",
+       "Mafsal pulu M5",
+       0,
+       148
+      ],
+      [
+       "p0191",
+       "Mafsal cıvatası M5x12",
+       0,
+       339
       ],
       [
        "p0192",
@@ -9214,13 +9178,13 @@
        "p0194",
        "Kol çatalı",
        0,
-       13027
+       13028
       ],
       [
        "p0195",
        "625ZZ rulman (dış bilezik)",
        0,
-       490
+       489
       ],
       [
        "p0196",
@@ -9295,8 +9259,26 @@
      "gecti": false
     },
     "hepsi": {
-     "yeni": 26,
+     "yeni": 32,
      "gorunmeyen": [
+      [
+       "p0116",
+       "625ZZ rulman (iç bilezik)",
+       0,
+       333
+      ],
+      [
+       "p0117",
+       "Mafsal pulu M5",
+       0,
+       313
+      ],
+      [
+       "p0118",
+       "Mafsal cıvatası M5x12",
+       0,
+       490
+      ],
       [
        "p0119",
        "S2 horn 25T alüminyum disk",
@@ -9307,13 +9289,31 @@
        "p0122",
        "625ZZ rulman (dış bilezik)",
        1,
-       725
+       724
       ],
       [
        "p0131",
        "Tüp cıvatası M3x8",
        0,
        192
+      ],
+      [
+       "p0189",
+       "625ZZ rulman (iç bilezik)",
+       0,
+       202
+      ],
+      [
+       "p0190",
+       "Mafsal pulu M5",
+       0,
+       148
+      ],
+      [
+       "p0191",
+       "Mafsal cıvatası M5x12",
+       0,
+       339
       ],
       [
        "p0192",
@@ -9331,13 +9331,13 @@
        "p0194",
        "Kol çatalı",
        0,
-       13027
+       13028
       ],
       [
        "p0195",
        "625ZZ rulman (dış bilezik)",
        0,
-       490
+       489
       ],
       [
        "p0196",
@@ -9411,7 +9411,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 10.0
+    "sure_s": 12.2
    },
    {
     "hazir": true,
@@ -9431,7 +9431,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 3.9
+    "sure_s": 4.0
    },
    {
     "hazir": true,
@@ -9451,7 +9451,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 3.8
+    "sure_s": 3.9
    },
    {
     "hazir": true,
@@ -9471,7 +9471,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.4
+    "sure_s": 4.7
    },
    {
     "hazir": true,
@@ -9491,7 +9491,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.4
+    "sure_s": 4.6
    },
    {
     "hazir": true,
@@ -9511,7 +9511,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.5
+    "sure_s": 4.9
    },
    {
     "hazir": true,
@@ -9531,7 +9531,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.1
+    "sure_s": 4.5
    },
    {
     "hazir": true,
@@ -9551,7 +9551,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.1
+    "sure_s": 4.3
    },
    {
     "hazir": true,
@@ -9621,7 +9621,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 6.2
+    "sure_s": 6.4
    },
    {
     "hazir": true,
@@ -10133,7 +10133,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 2.7
+    "sure_s": 2.8
    },
    {
     "hazir": true,
@@ -10153,41 +10153,41 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 2.6
+    "sure_s": 2.8
    },
    {
     "hazir": true,
     "adres": "43.1",
     "tema": "light",
     "sutun": {
-     "yeni": 2,
+     "yeni": 1,
      "gorunmeyen": [],
      "gomme": [],
      "birim": null,
      "gecti": true
     },
     "hepsi": {
-     "yeni": 2,
+     "yeni": 1,
      "gorunmeyen": [],
      "gomme": [],
      "birim": null,
      "gecti": true
     },
-    "sure_s": 2.7
+    "sure_s": 2.8
    },
    {
     "hazir": true,
     "adres": "43.2",
     "tema": "light",
     "sutun": {
-     "yeni": 2,
+     "yeni": 1,
      "gorunmeyen": [],
      "gomme": [],
      "birim": null,
      "gecti": true
     },
     "hepsi": {
-     "yeni": 2,
+     "yeni": 1,
      "gorunmeyen": [],
      "gomme": [],
      "birim": null,
@@ -10200,13 +10200,19 @@
     "adres": "44.1",
     "tema": "light",
     "sutun": {
-     "yeni": 26,
+     "yeni": 28,
      "gorunmeyen": [
       [
        "p0571",
        "625ZZ rulman (dış bilezik)",
        0,
        947
+      ],
+      [
+       "p0573",
+       "Dirsek horn merkez vidası M3",
+       0,
+       0
       ],
       [
        "p0574",
@@ -10281,6 +10287,12 @@
        561
       ],
       [
+       "p0630",
+       "Dirsek horn merkez vidası M3",
+       0,
+       123
+      ],
+      [
        "p0631",
        "Çatal-horn cıvatası M3x12",
        0,
@@ -10346,13 +10358,19 @@
      "gecti": false
     },
     "hepsi": {
-     "yeni": 26,
+     "yeni": 28,
      "gorunmeyen": [
       [
        "p0571",
        "625ZZ rulman (dış bilezik)",
        0,
        947
+      ],
+      [
+       "p0573",
+       "Dirsek horn merkez vidası M3",
+       0,
+       268
       ],
       [
        "p0583",
@@ -10379,6 +10397,12 @@
        561
       ],
       [
+       "p0630",
+       "Dirsek horn merkez vidası M3",
+       0,
+       123
+      ],
+      [
        "p0631",
        "Çatal-horn cıvatası M3x12",
        0,
@@ -10443,7 +10467,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 4.4
+    "sure_s": 4.6
    },
    {
     "hazir": true,
@@ -10463,7 +10487,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 2.8
+    "sure_s": 2.9
    },
    {
     "hazir": true,
@@ -10483,7 +10507,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 2.9
+    "sure_s": 3.0
    },
    {
     "hazir": true,
@@ -10503,7 +10527,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 2.8
+    "sure_s": 3.0
    },
    {
     "hazir": true,
@@ -10523,7 +10547,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 2.8
+    "sure_s": 3.0
    },
    {
     "hazir": true,
@@ -10543,7 +10567,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 3.3
+    "sure_s": 3.5
    },
    {
     "hazir": true,
@@ -10563,7 +10587,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 3.4
+    "sure_s": 3.6
    },
    {
     "hazir": true,
@@ -10609,7 +10633,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 2.9
+    "sure_s": 3.0
    },
    {
     "hazir": true,
@@ -10641,7 +10665,7 @@
      },
      "gecti": true
     },
-    "sure_s": 25.7
+    "sure_s": 27.1
    },
    {
     "hazir": true,
@@ -10661,7 +10685,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.0
+    "sure_s": 4.4
    },
    {
     "hazir": true,
@@ -10681,7 +10705,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.2
+    "sure_s": 4.4
    },
    {
     "hazir": true,
@@ -10895,7 +10919,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 8.1
+    "sure_s": 8.5
    },
    {
     "hazir": true,
@@ -11033,7 +11057,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 3.5
+    "sure_s": 3.7
    },
    {
     "hazir": true,
@@ -11235,14 +11259,14 @@
      },
      "gecti": false
     },
-    "sure_s": 11.3
+    "sure_s": 12.1
    },
    {
     "hazir": true,
     "adres": "39",
     "tema": "dark",
     "sutun": {
-     "yeni": 26,
+     "yeni": 20,
      "gorunmeyen": [
       [
        "p0105",
@@ -11305,52 +11329,34 @@
        0
       ],
       [
-       "p0116",
-       "625ZZ rulman (iç bilezik)",
-       0,
-       0
-      ],
-      [
-       "p0117",
-       "Mafsal pulu M5",
-       0,
-       0
-      ],
-      [
-       "p0118",
-       "Mafsal cıvatası M5x12",
-       0,
-       0
-      ],
-      [
        "p0178",
        "S2 servo DS3235 (yana açma)",
-       469,
-       11203
+       473,
+       11211
       ],
       [
        "p0179",
        "S2 servo çıkış mili",
        0,
-       569
+       567
       ],
       [
        "p0180",
        "S2 kulak cıvatası M4x16",
        0,
-       503
+       500
       ],
       [
        "p0181",
        "S2 kontra somun M4",
        0,
-       305
+       304
       ],
       [
        "p0182",
        "S2 kulak cıvatası M4x16",
        0,
-       500
+       498
       ],
       [
        "p0183",
@@ -11361,38 +11367,20 @@
       [
        "p0184",
        "S2 kulak cıvatası M4x16",
-       63,
-       541
+       65,
+       544
       ],
       [
        "p0185",
        "S2 kontra somun M4",
        0,
-       324
+       326
       ],
       [
        "p0187",
        "S2 kontra somun M4",
        0,
        320
-      ],
-      [
-       "p0189",
-       "625ZZ rulman (iç bilezik)",
-       0,
-       322
-      ],
-      [
-       "p0190",
-       "Mafsal pulu M5",
-       0,
-       230
-      ],
-      [
-       "p0191",
-       "Mafsal cıvatası M5x12",
-       0,
-       537
       ]
      ],
      "gomme": [],
@@ -11400,79 +11388,61 @@
      "gecti": false
     },
     "hepsi": {
-     "yeni": 26,
+     "yeni": 20,
      "gorunmeyen": [
       [
        "p0108",
        "S2 kontra somun M4",
        0,
-       609
+       612
       ],
       [
        "p0110",
        "S2 kontra somun M4",
-       2,
-       625
+       4,
+       623
       ],
       [
        "p0112",
        "S2 kontra somun M4",
        0,
-       653
+       655
       ],
       [
        "p0114",
        "S2 kontra somun M4",
        0,
-       667
-      ],
-      [
-       "p0116",
-       "625ZZ rulman (iç bilezik)",
-       0,
-       614
-      ],
-      [
-       "p0117",
-       "Mafsal pulu M5",
-       0,
-       625
-      ],
-      [
-       "p0118",
-       "Mafsal cıvatası M5x12",
-       0,
-       903
+       661
       ],
       [
        "p0178",
        "S2 servo DS3235 (yana açma)",
-       469,
-       11203
+       473,
+       11211
       ],
       [
        "p0179",
        "S2 servo çıkış mili",
        0,
-       569
+       567
       ],
       [
        "p0180",
        "S2 kulak cıvatası M4x16",
        0,
-       503
+       500
       ],
       [
        "p0181",
        "S2 kontra somun M4",
        0,
-       305
+       304
       ],
       [
        "p0182",
        "S2 kulak cıvatası M4x16",
        0,
-       500
+       498
       ],
       [
        "p0183",
@@ -11483,53 +11453,53 @@
       [
        "p0184",
        "S2 kulak cıvatası M4x16",
-       63,
-       541
+       65,
+       544
       ],
       [
        "p0185",
        "S2 kontra somun M4",
        0,
-       324
+       326
       ],
       [
        "p0187",
        "S2 kontra somun M4",
        0,
        320
-      ],
-      [
-       "p0189",
-       "625ZZ rulman (iç bilezik)",
-       0,
-       322
-      ],
-      [
-       "p0190",
-       "Mafsal pulu M5",
-       0,
-       230
-      ],
-      [
-       "p0191",
-       "Mafsal cıvatası M5x12",
-       0,
-       537
       ]
      ],
      "gomme": [],
      "birim": null,
      "gecti": false
     },
-    "sure_s": 10.6
+    "sure_s": 9.8
    },
    {
     "hazir": true,
     "adres": "40.1",
     "tema": "dark",
     "sutun": {
-     "yeni": 26,
+     "yeni": 32,
      "gorunmeyen": [
+      [
+       "p0116",
+       "625ZZ rulman (iç bilezik)",
+       0,
+       333
+      ],
+      [
+       "p0117",
+       "Mafsal pulu M5",
+       0,
+       313
+      ],
+      [
+       "p0118",
+       "Mafsal cıvatası M5x12",
+       0,
+       490
+      ],
       [
        "p0119",
        "S2 horn 25T alüminyum disk",
@@ -11540,13 +11510,31 @@
        "p0122",
        "625ZZ rulman (dış bilezik)",
        0,
-       725
+       724
       ],
       [
        "p0131",
        "Tüp cıvatası M3x8",
        0,
        192
+      ],
+      [
+       "p0189",
+       "625ZZ rulman (iç bilezik)",
+       0,
+       202
+      ],
+      [
+       "p0190",
+       "Mafsal pulu M5",
+       0,
+       148
+      ],
+      [
+       "p0191",
+       "Mafsal cıvatası M5x12",
+       0,
+       339
       ],
       [
        "p0192",
@@ -11564,13 +11552,13 @@
        "p0194",
        "Kol çatalı",
        0,
-       13027
+       13028
       ],
       [
        "p0195",
        "625ZZ rulman (dış bilezik)",
        0,
-       490
+       489
       ],
       [
        "p0196",
@@ -11645,8 +11633,26 @@
      "gecti": false
     },
     "hepsi": {
-     "yeni": 26,
+     "yeni": 32,
      "gorunmeyen": [
+      [
+       "p0116",
+       "625ZZ rulman (iç bilezik)",
+       0,
+       333
+      ],
+      [
+       "p0117",
+       "Mafsal pulu M5",
+       0,
+       313
+      ],
+      [
+       "p0118",
+       "Mafsal cıvatası M5x12",
+       0,
+       490
+      ],
       [
        "p0119",
        "S2 horn 25T alüminyum disk",
@@ -11657,13 +11663,31 @@
        "p0122",
        "625ZZ rulman (dış bilezik)",
        0,
-       725
+       724
       ],
       [
        "p0131",
        "Tüp cıvatası M3x8",
        0,
        192
+      ],
+      [
+       "p0189",
+       "625ZZ rulman (iç bilezik)",
+       0,
+       202
+      ],
+      [
+       "p0190",
+       "Mafsal pulu M5",
+       0,
+       148
+      ],
+      [
+       "p0191",
+       "Mafsal cıvatası M5x12",
+       0,
+       339
       ],
       [
        "p0192",
@@ -11681,13 +11705,13 @@
        "p0194",
        "Kol çatalı",
        0,
-       13027
+       13028
       ],
       [
        "p0195",
        "625ZZ rulman (dış bilezik)",
        0,
-       490
+       489
       ],
       [
        "p0196",
@@ -11761,7 +11785,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 10.1
+    "sure_s": 12.3
    },
    {
     "hazir": true,
@@ -11781,7 +11805,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 3.8
+    "sure_s": 4.0
    },
    {
     "hazir": true,
@@ -11801,7 +11825,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 3.8
+    "sure_s": 3.9
    },
    {
     "hazir": true,
@@ -11821,7 +11845,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.4
+    "sure_s": 4.6
    },
    {
     "hazir": true,
@@ -11841,7 +11865,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.4
+    "sure_s": 4.7
    },
    {
     "hazir": true,
@@ -11861,7 +11885,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.5
+    "sure_s": 4.7
    },
    {
     "hazir": true,
@@ -11881,7 +11905,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.0
+    "sure_s": 4.4
    },
    {
     "hazir": true,
@@ -11901,7 +11925,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.0
+    "sure_s": 4.4
    },
    {
     "hazir": true,
@@ -11959,7 +11983,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 6.1
+    "sure_s": 6.5
    },
    {
     "hazir": true,
@@ -12457,7 +12481,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 4.8
+    "sure_s": 5.0
    },
    {
     "hazir": true,
@@ -12477,7 +12501,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 2.7
+    "sure_s": 2.8
    },
    {
     "hazir": true,
@@ -12497,41 +12521,41 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 2.6
+    "sure_s": 2.8
    },
    {
     "hazir": true,
     "adres": "43.1",
     "tema": "dark",
     "sutun": {
-     "yeni": 2,
+     "yeni": 1,
      "gorunmeyen": [],
      "gomme": [],
      "birim": null,
      "gecti": true
     },
     "hepsi": {
-     "yeni": 2,
+     "yeni": 1,
      "gorunmeyen": [],
      "gomme": [],
      "birim": null,
      "gecti": true
     },
-    "sure_s": 2.7
+    "sure_s": 2.8
    },
    {
     "hazir": true,
     "adres": "43.2",
     "tema": "dark",
     "sutun": {
-     "yeni": 2,
+     "yeni": 1,
      "gorunmeyen": [],
      "gomme": [],
      "birim": null,
      "gecti": true
     },
     "hepsi": {
-     "yeni": 2,
+     "yeni": 1,
      "gorunmeyen": [],
      "gomme": [],
      "birim": null,
@@ -12544,13 +12568,19 @@
     "adres": "44.1",
     "tema": "dark",
     "sutun": {
-     "yeni": 26,
+     "yeni": 28,
      "gorunmeyen": [
       [
        "p0571",
        "625ZZ rulman (dış bilezik)",
        0,
        947
+      ],
+      [
+       "p0573",
+       "Dirsek horn merkez vidası M3",
+       0,
+       0
       ],
       [
        "p0574",
@@ -12625,6 +12655,12 @@
        561
       ],
       [
+       "p0630",
+       "Dirsek horn merkez vidası M3",
+       0,
+       123
+      ],
+      [
        "p0631",
        "Çatal-horn cıvatası M3x12",
        0,
@@ -12690,13 +12726,19 @@
      "gecti": false
     },
     "hepsi": {
-     "yeni": 26,
+     "yeni": 28,
      "gorunmeyen": [
       [
        "p0571",
        "625ZZ rulman (dış bilezik)",
        0,
        947
+      ],
+      [
+       "p0573",
+       "Dirsek horn merkez vidası M3",
+       0,
+       268
       ],
       [
        "p0583",
@@ -12723,6 +12765,12 @@
        561
       ],
       [
+       "p0630",
+       "Dirsek horn merkez vidası M3",
+       0,
+       123
+      ],
+      [
        "p0631",
        "Çatal-horn cıvatası M3x12",
        0,
@@ -12787,7 +12835,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 4.3
+    "sure_s": 4.4
    },
    {
     "hazir": true,
@@ -12807,7 +12855,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 2.8
+    "sure_s": 2.9
    },
    {
     "hazir": true,
@@ -12847,7 +12895,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 2.8
+    "sure_s": 2.9
    },
    {
     "hazir": true,
@@ -12887,7 +12935,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 3.3
+    "sure_s": 3.4
    },
    {
     "hazir": true,
@@ -12953,7 +13001,7 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 2.8
+    "sure_s": 3.0
    },
    {
     "hazir": true,
@@ -12985,7 +13033,7 @@
      },
      "gecti": true
     },
-    "sure_s": 24.9
+    "sure_s": 28.4
    },
    {
     "hazir": true,
@@ -13005,7 +13053,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.0
+    "sure_s": 4.7
    },
    {
     "hazir": true,
@@ -13025,7 +13073,7 @@
      "birim": null,
      "gecti": true
     },
-    "sure_s": 4.0
+    "sure_s": 4.4
    },
    {
     "hazir": true,
@@ -13239,10 +13287,10 @@
      "birim": null,
      "gecti": false
     },
-    "sure_s": 8.1
+    "sure_s": 8.2
    }
   ],
-  "sure_s": 305.4,
+  "sure_s": 324.2,
   "gecti": null,
   "gecen_hepsi": false
  },
@@ -13250,6 +13298,50 @@
   "yontem": "kendi alt adım karesi (?cekim=1), gorunurlukFark + gorunurluk, ölçüt ≥ 30 px ve ≥ 0.20 × yalnız",
   "olcum": [
    {
+    "adres": "40.1",
+    "tema": "light",
+    "alan": "sutun",
+    "id": "p0116",
+    "ad": "625ZZ rulman (iç bilezik)",
+    "hazir": true,
+    "fark": 0,
+    "yalniz": 333,
+    "gorunur": false
+   },
+   {
+    "adres": "40.1",
+    "tema": "light",
+    "alan": "sutun",
+    "id": "p0189",
+    "ad": "625ZZ rulman (iç bilezik)",
+    "hazir": true,
+    "fark": 0,
+    "yalniz": 202,
+    "gorunur": false
+   },
+   {
+    "adres": "40.1",
+    "tema": "light",
+    "alan": "hepsi",
+    "id": "p0116",
+    "ad": "625ZZ rulman (iç bilezik)",
+    "hazir": true,
+    "fark": 0,
+    "yalniz": 333,
+    "gorunur": false
+   },
+   {
+    "adres": "40.1",
+    "tema": "light",
+    "alan": "hepsi",
+    "id": "p0189",
+    "ad": "625ZZ rulman (iç bilezik)",
+    "hazir": true,
+    "fark": 0,
+    "yalniz": 202,
+    "gorunur": false
+   },
+   {
     "adres": "42.1",
     "tema": "light",
     "alan": "sutun",
@@ -13445,6 +13537,50 @@
     "hazir": true,
     "fark": 0,
     "yalniz": 96,
+    "gorunur": false
+   },
+   {
+    "adres": "40.1",
+    "tema": "dark",
+    "alan": "sutun",
+    "id": "p0116",
+    "ad": "625ZZ rulman (iç bilezik)",
+    "hazir": true,
+    "fark": 0,
+    "yalniz": 333,
+    "gorunur": false
+   },
+   {
+    "adres": "40.1",
+    "tema": "dark",
+    "alan": "sutun",
+    "id": "p0189",
+    "ad": "625ZZ rulman (iç bilezik)",
+    "hazir": true,
+    "fark": 0,
+    "yalniz": 202,
+    "gorunur": false
+   },
+   {
+    "adres": "40.1",
+    "tema": "dark",
+    "alan": "hepsi",
+    "id": "p0116",
+    "ad": "625ZZ rulman (iç bilezik)",
+    "hazir": true,
+    "fark": 0,
+    "yalniz": 333,
+    "gorunur": false
+   },
+   {
+    "adres": "40.1",
+    "tema": "dark",
+    "alan": "hepsi",
+    "id": "p0189",
+    "ad": "625ZZ rulman (iç bilezik)",
+    "hazir": true,
+    "fark": 0,
+    "yalniz": 202,
     "gorunur": false
    },
    {
@@ -13646,8 +13782,18 @@
     "gorunur": false
    }
   ],
-  "parca": 9,
+  "parca": 11,
   "gorunmeyen": [
+   [
+    "40.1",
+    "p0116",
+    "625ZZ rulman (iç bilezik)"
+   ],
+   [
+    "40.1",
+    "p0189",
+    "625ZZ rulman (iç bilezik)"
+   ],
    [
     "42.1",
     "p0590",
@@ -13869,10 +14015,10 @@
   "gecti": true
  },
  "sure": {
-  "veri_s": 51.6,
-  "kablo_kare_s": 139.1,
-  "parca_kare_s": 305.4,
-  "toplam_s": 553.9
+  "veri_s": 57.3,
+  "kablo_kare_s": 155.6,
+  "parca_kare_s": 324.3,
+  "toplam_s": 623.1
  },
  "gecti": true
 }

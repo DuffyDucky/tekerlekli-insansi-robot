@@ -111,7 +111,9 @@ hornunu konumdayken miline indikten inen milde milinde pres ona tarifinden indir
 temas ediyor soldan dikey bindirmesi solun girmiyor grubu eden yani
 milinin durum alete bantlar braketler solunu braketlerin yandan braketlere bindirmesini yoldan oturtarak bindirmesine birimi
 bindirmelerini esneterek metnindeki maddeyi izle bindirmelerine metni takoza maddeye gerilmesin tabloda birim
+preslenir yerindeyken koldan kolundaki
 """.split())
+# F10g (P10.5b, K56 / K57): son satır G3 / H0c metinlerinin 4 yeni kelimesi (gözden geçirildi, hepsi Türkçe harfi olmayan doğru yazım)
 
 # 3) Kafa / hoparlör / hub: (bileşen anahtarı parça adında, metinde aranacak kelimeler)
 BILESEN = [

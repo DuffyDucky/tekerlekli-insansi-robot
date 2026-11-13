@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-13 06:32",
+ "tarih": "2026-11-14 00:48",
  "adim": 50,
  "alt_adimli": [
   21,
@@ -1158,8 +1158,8 @@
    {
     "adres": "39",
     "kod": "G2",
-    "panel": 7,
-    "takma": 7,
+    "panel": 4,
+    "takma": 4,
     "panelde_takmada_yok": [],
     "takmada_panelde_yok": [],
     "esit": true
@@ -1167,8 +1167,8 @@
    {
     "adres": "40",
     "kod": "G3",
-    "panel": 7,
-    "takma": 7,
+    "panel": 10,
+    "takma": 10,
     "panelde_takmada_yok": [],
     "takmada_panelde_yok": [],
     "esit": true
@@ -1176,8 +1176,8 @@
    {
     "adres": "40.1",
     "kod": "G3",
-    "panel": 7,
-    "takma": 7,
+    "panel": 10,
+    "takma": 10,
     "panelde_takmada_yok": [],
     "takmada_panelde_yok": [],
     "esit": true
@@ -1302,8 +1302,8 @@
    {
     "adres": "43",
     "kod": "H0b",
-    "panel": 4,
-    "takma": 4,
+    "panel": 2,
+    "takma": 2,
     "panelde_takmada_yok": [],
     "takmada_panelde_yok": [],
     "esit": true
@@ -1311,8 +1311,8 @@
    {
     "adres": "43.1",
     "kod": "H0b",
-    "panel": 2,
-    "takma": 2,
+    "panel": 1,
+    "takma": 1,
     "panelde_takmada_yok": [],
     "takmada_panelde_yok": [],
     "esit": true
@@ -1320,8 +1320,8 @@
    {
     "adres": "43.2",
     "kod": "H0b",
-    "panel": 2,
-    "takma": 2,
+    "panel": 1,
+    "takma": 1,
     "panelde_takmada_yok": [],
     "takmada_panelde_yok": [],
     "esit": true
@@ -1329,8 +1329,8 @@
    {
     "adres": "44",
     "kod": "H0c",
-    "panel": 7,
-    "takma": 7,
+    "panel": 8,
+    "takma": 8,
     "panelde_takmada_yok": [],
     "takmada_panelde_yok": [],
     "esit": true
@@ -1338,8 +1338,8 @@
    {
     "adres": "44.1",
     "kod": "H0c",
-    "panel": 7,
-    "takma": 7,
+    "panel": 8,
+    "takma": 8,
     "panelde_takmada_yok": [],
     "takmada_panelde_yok": [],
     "esit": true
@@ -1743,7 +1743,7 @@
     "kod": "H0b",
     "hazir": true,
     "sinir": false,
-    "yeni": 4,
+    "yeni": 2,
     "gorunmeyen": [
      {
       "id": "p0572",
@@ -1752,26 +1752,6 @@
       "yalniz": 0,
       "oran": 0.0,
       "karede": false,
-      "gorunur": false,
-      "saydam": false
-     },
-     {
-      "id": "p0573",
-      "ad": "Dirsek horn merkez vidası M3",
-      "px": 0,
-      "yalniz": 0,
-      "oran": 0.0,
-      "karede": false,
-      "gorunur": false,
-      "saydam": false
-     },
-     {
-      "id": "p0630",
-      "ad": "Dirsek horn merkez vidası M3",
-      "px": 0,
-      "yalniz": 157,
-      "oran": 0.0,
-      "karede": true,
       "gorunur": false,
       "saydam": false
      }
@@ -1792,33 +1772,13 @@
       "saydam": false
      },
      {
-      "id": "p0573",
-      "ad": "Dirsek horn merkez vidası M3",
-      "px": 0,
-      "yalniz": 0,
-      "oran": 0.0,
-      "karede": false,
-      "gorunur": false,
-      "saydam": false
-     },
-     {
       "id": "p0629",
       "ad": "Dirsek horn 25T alüminyum disk",
-      "px": 467,
+      "px": 462,
       "yalniz": 1959,
-      "oran": 0.238,
+      "oran": 0.236,
       "karede": true,
       "gorunur": true,
-      "saydam": false
-     },
-     {
-      "id": "p0630",
-      "ad": "Dirsek horn merkez vidası M3",
-      "px": 0,
-      "yalniz": 157,
-      "oran": 0.0,
-      "karede": true,
-      "gorunur": false,
       "saydam": false
      }
     ],
@@ -1830,7 +1790,7 @@
     "kod": "H0b",
     "hazir": true,
     "sinir": true,
-    "yeni": 2,
+    "yeni": 1,
     "gorunmeyen": [],
     "istisna": [],
     "birim": null,
@@ -1840,19 +1800,9 @@
      {
       "id": "p0572",
       "ad": "Dirsek horn 25T alüminyum disk",
-      "px": 33334,
-      "yalniz": 34639,
-      "oran": 0.962,
-      "karede": true,
-      "gorunur": true,
-      "saydam": false
-     },
-     {
-      "id": "p0573",
-      "ad": "Dirsek horn merkez vidası M3",
-      "px": 2311,
-      "yalniz": 2566,
-      "oran": 0.901,
+      "px": 34225,
+      "yalniz": 34930,
+      "oran": 0.98,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -1866,7 +1816,7 @@
     "kod": "H0b",
     "hazir": true,
     "sinir": true,
-    "yeni": 2,
+    "yeni": 1,
     "gorunmeyen": [],
     "istisna": [],
     "birim": null,
@@ -1876,19 +1826,9 @@
      {
       "id": "p0629",
       "ad": "Dirsek horn 25T alüminyum disk",
-      "px": 31841,
-      "yalniz": 33431,
-      "oran": 0.952,
-      "karede": true,
-      "gorunur": true,
-      "saydam": false
-     },
-     {
-      "id": "p0630",
-      "ad": "Dirsek horn merkez vidası M3",
-      "px": 2325,
-      "yalniz": 2718,
-      "oran": 0.855,
+      "px": 32839,
+      "yalniz": 33691,
+      "oran": 0.975,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -12450,8 +12390,38 @@
     "kod": "G3",
     "hazir": true,
     "sinir": false,
-    "yeni": 26,
+    "yeni": 32,
     "gorunmeyen": [
+     {
+      "id": "p0116",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 327,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0117",
+      "ad": "Mafsal pulu M5",
+      "px": 0,
+      "yalniz": 311,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0118",
+      "ad": "Mafsal cıvatası M5x12",
+      "px": 0,
+      "yalniz": 490,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
      {
       "id": "p0119",
       "ad": "S2 horn 25T alüminyum disk",
@@ -12497,6 +12467,36 @@
       "ad": "Tüp cıvatası M3x8",
       "px": 0,
       "yalniz": 193,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0189",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 204,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0190",
+      "ad": "Mafsal pulu M5",
+      "px": 0,
+      "yalniz": 148,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0191",
+      "ad": "Mafsal cıvatası M5x12",
+      "px": 0,
+      "yalniz": 335,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -12680,6 +12680,36 @@
     "yabanci_sema": [],
     "parca": [
      {
+      "id": "p0116",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 327,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0117",
+      "ad": "Mafsal pulu M5",
+      "px": 0,
+      "yalniz": 311,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0118",
+      "ad": "Mafsal cıvatası M5x12",
+      "px": 0,
+      "yalniz": 490,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
       "id": "p0119",
       "ad": "S2 horn 25T alüminyum disk",
       "px": 45,
@@ -12804,6 +12834,36 @@
       "ad": "Tüp cıvatası M3x8",
       "px": 0,
       "yalniz": 193,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0189",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 204,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0190",
+      "ad": "Mafsal pulu M5",
+      "px": 0,
+      "yalniz": 148,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0191",
+      "ad": "Mafsal cıvatası M5x12",
+      "px": 0,
+      "yalniz": 335,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -12948,8 +13008,38 @@
     "kod": "G3",
     "hazir": true,
     "sinir": false,
-    "yeni": 26,
+    "yeni": 32,
     "gorunmeyen": [
+     {
+      "id": "p0116",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 333,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0117",
+      "ad": "Mafsal pulu M5",
+      "px": 0,
+      "yalniz": 313,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0118",
+      "ad": "Mafsal cıvatası M5x12",
+      "px": 0,
+      "yalniz": 490,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
      {
       "id": "p0119",
       "ad": "S2 horn 25T alüminyum disk",
@@ -12964,7 +13054,7 @@
       "id": "p0122",
       "ad": "625ZZ rulman (dış bilezik)",
       "px": 0,
-      "yalniz": 725,
+      "yalniz": 724,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -13001,6 +13091,36 @@
       "saydam": false
      },
      {
+      "id": "p0189",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 202,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0190",
+      "ad": "Mafsal pulu M5",
+      "px": 0,
+      "yalniz": 148,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0191",
+      "ad": "Mafsal cıvatası M5x12",
+      "px": 0,
+      "yalniz": 339,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
       "id": "p0192",
       "ad": "S2 horn 25T alüminyum disk",
       "px": 0,
@@ -13024,7 +13144,7 @@
       "id": "p0194",
       "ad": "Kol çatalı",
       "px": 0,
-      "yalniz": 13027,
+      "yalniz": 13028,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -13034,7 +13154,7 @@
       "id": "p0195",
       "ad": "625ZZ rulman (dış bilezik)",
       "px": 0,
-      "yalniz": 490,
+      "yalniz": 489,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -13137,6 +13257,36 @@
     "yabanci_sema": [],
     "parca": [
      {
+      "id": "p0116",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 333,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0117",
+      "ad": "Mafsal pulu M5",
+      "px": 0,
+      "yalniz": 313,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0118",
+      "ad": "Mafsal cıvatası M5x12",
+      "px": 0,
+      "yalniz": 490,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
       "id": "p0119",
       "ad": "S2 horn 25T alüminyum disk",
       "px": 47,
@@ -13170,7 +13320,7 @@
       "id": "p0122",
       "ad": "625ZZ rulman (dış bilezik)",
       "px": 0,
-      "yalniz": 725,
+      "yalniz": 724,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -13267,6 +13417,36 @@
       "saydam": false
      },
      {
+      "id": "p0189",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 202,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0190",
+      "ad": "Mafsal pulu M5",
+      "px": 0,
+      "yalniz": 148,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0191",
+      "ad": "Mafsal cıvatası M5x12",
+      "px": 0,
+      "yalniz": 339,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
       "id": "p0192",
       "ad": "S2 horn 25T alüminyum disk",
       "px": 0,
@@ -13290,7 +13470,7 @@
       "id": "p0194",
       "ad": "Kol çatalı",
       "px": 0,
-      "yalniz": 13027,
+      "yalniz": 13028,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -13300,7 +13480,7 @@
       "id": "p0195",
       "ad": "625ZZ rulman (dış bilezik)",
       "px": 0,
-      "yalniz": 490,
+      "yalniz": 489,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -15691,7 +15871,7 @@
     "kod": "H0c",
     "hazir": true,
     "sinir": false,
-    "yeni": 26,
+    "yeni": 28,
     "gorunmeyen": [
      {
       "id": "p0571",
@@ -15700,6 +15880,16 @@
       "yalniz": 953,
       "oran": 0.0,
       "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0573",
+      "ad": "Dirsek horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
       "gorunur": false,
       "saydam": false
      },
@@ -15819,6 +16009,16 @@
       "px": 14,
       "yalniz": 554,
       "oran": 0.025,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0630",
+      "ad": "Dirsek horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 124,
+      "oran": 0.0,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -15959,6 +16159,16 @@
       "saydam": false
      },
      {
+      "id": "p0573",
+      "ad": "Dirsek horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
       "id": "p0574",
       "ad": "Çatal-horn cıvatası M3x12",
       "px": 0,
@@ -16089,6 +16299,16 @@
       "saydam": false
      },
      {
+      "id": "p0630",
+      "ad": "Dirsek horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 124,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
       "id": "p0631",
       "ad": "Çatal-horn cıvatası M3x12",
       "px": 0,
@@ -16207,7 +16427,7 @@
     "kod": "H0c",
     "hazir": true,
     "sinir": false,
-    "yeni": 26,
+    "yeni": 28,
     "gorunmeyen": [
      {
       "id": "p0571",
@@ -16216,6 +16436,16 @@
       "yalniz": 947,
       "oran": 0.0,
       "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0573",
+      "ad": "Dirsek horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
       "gorunur": false,
       "saydam": false
      },
@@ -16335,6 +16565,16 @@
       "px": 12,
       "yalniz": 561,
       "oran": 0.021,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0630",
+      "ad": "Dirsek horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 123,
+      "oran": 0.0,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -16466,6 +16706,16 @@
       "saydam": false
      },
      {
+      "id": "p0573",
+      "ad": "Dirsek horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
       "id": "p0574",
       "ad": "Çatal-horn cıvatası M3x12",
       "px": 0,
@@ -16591,6 +16841,16 @@
       "px": 12,
       "yalniz": 561,
       "oran": 0.021,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0630",
+      "ad": "Dirsek horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 123,
+      "oran": 0.0,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -20767,6 +21027,6 @@
  },
  "kontrol_hatasi": null,
  "goruntu": [],
- "sure_s": 725,
+ "sure_s": 719,
  "gecti": true
 }

@@ -60,11 +60,9 @@ def dar(sinif, gerekce, **engel):
     return dict(sinif=sinif, gerekce="%s: %s" % (SINIF_ONEK[sinif], gerekce), engel={k: round(v + PAY_MM, 2) for k, v in engel.items()})
 
 
-K1_KOL = ("40.1 kol çatalı + 625ZZ dış bilezik: 625ZZ iç bileziği, mafsal pulu ve mafsal cıvatası G2'de (adım 39) takılı; çatal "
-          "(dış bilezik yuvasında, birlikte; F10f düzeltme 2) hiçbir düz yoldan gelemiyor, iç bileziğe ve mafsal cıvatasına çarpıyor. "
-          "Sıra ve atama değişmedi; seçenekler F10f-gunluk.md Düzeltme turu 1, karar notu K1-a")
-K1_DIRSEK = ("44.1 dirsek çatalı: dirsek horn merkez vidası H0b'de (adım 43) takılı, çatal +y yolunda vidanın başına çarpıyor. Sıra "
-             "ve atama değişmedi; seçenekler F10f-gunluk.md Düzeltme turu 1, karar notu K1-b")
+# K56 / K57 (Ahmet, 13.11.2026; planlama/d158/karar-kuyrugu.md, F10g-gunluk.md): F10f'in iki "karar" sınıfı dar istisnası (40.1 kol
+# çatalı, 44.1 dirsek çatalı) kalktı. K56 C: 625ZZ tezgâhta kol çatalına preslenir (iki bilezik çatalla gelir), mafsal pulu + mafsal
+# cıvatası G3'te çataldan sonra. K57 a: dirsek horn merkez vidası H0c'de, dirsek çatalından sonra. Atama rehber_secici.py'de.
 POZ_KAPAK = ("rehber kapağı modeldeki duruşta (S1 0°, S2 0°) düz tek yolla (önden, +z) son yerine getirir; flanşı gövdenin içinden "
              "geçer. Tasarım kapağı önden, flanşı gövdeden x +3,3 mm havada getirir, sonra −x iter (S1-kaset.md K5 adım 7; S2 ≥ 30°). Bu "
              "iki parçalı yol rehberin uçuş yolu ölçümüyle S2 30°'de (S1 0° ve −45°) temiz; S2 0°'de itmede kol çatalına değiyor")
@@ -968,40 +966,51 @@ ADIM = {
     "G2": dict(
         baslik="S2 servosu → göbek",
         is_="1. S2 kablosunu kısalt ve uzatmaya ekle: G2'den yaklaşık 20 mm önce, göbek arka iç şeridinde (lehim + makaron Ø ≤ 4,5, yaklaşık 25 mm, ya da JR çifti; kablo bağı). Yer tahmini, yerinde ölç. S2 uzatması 1700 mm (ekten dağıtım kartına, konnektör payı 30 mm tahmini dahil).\n"
-            "2. Servoyu göbeğe cıvatala.\n3. Karşı tarafa 625ZZ ve M5 pim.",
-        baglanti_md="Kol başına 4 × M4×16 + 4 kontra somun; 1 × M5×12 + pul",
-        alet="alyan 3 / 4 + 7 mm",
+            "2. Servoyu göbeğe cıvatala. Göbeğin karşı tarafındaki mafsal (625ZZ, pul, M5×12) G3'te, kol çatalıyla gelir.",
+        # K56 (Ahmet, 13.11.2026, seçenek C): 625ZZ tezgâhta kol çatalına preslenir ve çatalla G3'te gelir; mafsal pulu + M5×12 G3'te
+        # çataldan sonra (omuz_rapor.py SIRA 2 ve 9). Eskiden "Karşı tarafa 625ZZ ve M5 pim" (iç bilezik, pul, cıvata burada).
+        baglanti_md="Kol başına 4 × M4×16 + 4 kontra somun",
+        alet="alyan 3 + 7 mm",
         erisim="Düz. Somunların 2'si cepte, 2'si açık ağızla (Y3 C3)",
         kontrol=["Ek makaronla kaplı, çekince kopmuyor", "S2 ekseni elle dönüyor"],
     ),
     "G3": dict(
         baslik="S2 hornu, kol çatalı, üst kol tüpü",
-        is_="1. S2 hornu, merkez vidası.\n2. Kol çatalı → horn.\n3. Üst kol tüpü → çatal.\n"
+        is_="1. S2 hornu, merkez vidası.\n"
+            "2. Kol çatalı → horn (4 × M3×8). 625ZZ çatalın arka kolunun Ø16 yuvasında: tezgâhta önceden preslenir, iki bileziğiyle "
+            "çatalla gelir. Çatal yerindeyken mafsal pulu + M5×12: arka koldan rulmanın iç bileziğinden göbekteki M5 ısıl gömmeye "
+            "(iç bileziği göbeğe sıkar, çatal döner).\n"
+            "3. Üst kol tüpü → çatal.\n"
             "4. Kablolar (F4'te yarıktan dışarı alınan uzatma uçlarıyla, gövdeden kola doğru): yarıktan tambur bağına (ψ 145): 3 şerit kanala "
             "teğet, 2 ip demetin üstünde düğüm; yarıkla tambur bağı arası gevşek kalır (G4'te U-lopu). Tambur bağından göbek arka iç şeridine (G2).\n"
             "5. Dirsek ve bilek uzatmaları G2'den S2 lopu L 80 mm (2 şerit) → K noktası (çatal arka plakasının arkası, yapışkan taban) → tüp "
             "penceresi. Kol ucu pencerede bekler: H1'de servo kablosuna eklenir.",
-        baglanti_md="Kol başına 1 × M3×5 horn; 4 × M3×8 çatal–horn; 2 × M3×8 tüp → ısıl gömme",
-        kontrol=["Tüp penceresi arka duvarda: 10 geniş, 14 düz + iki uç 45° (≈ 24 boy). M1 yalnız dişi JR'yi (7,9 × 2,75) denetledi; erkek JR (10,3 × 4) boyuna çevrilerek geçmeli, doğrulanmadı",
+        baglanti_md="Kol başına 1 × M3×5 horn; 4 × M3×8 çatal–horn; 1 × M5×12 + pul mafsal (çataldan sonra); 2 × M3×8 tüp → ısıl gömme",
+        alet="PH1, alyan 2,5 / 4",                                  # K56: M5×12 mafsal cıvatası G2'den geldi (alyan 4)
+        kontrol=["Mafsal cıvatası sıkıyken çatal S2 ekseninde elle dönüyor, 625ZZ yuvasından çıkmadı",
+                 "Tüp penceresi arka duvarda: 10 geniş, 14 düz + iki uç 45° (≈ 24 boy). M1 yalnız dişi JR'yi (7,9 × 2,75) denetledi; erkek JR (10,3 × 4) boyuna çevrilerek geçmeli, doğrulanmadı",
                  "Bağ açısı 0 ± 2°, düğüm cerrah + kare, uç 3 mm",
                  "K noktası tabanı CAD'de 10 × 10 (tahmini), v4 taban 28 × 28: sığması doğrulanmadı"],
         kablo=["Bu adımda geçen: tüp penceresi, S2 lobu (L 80), tambur bağı (ψ 145)"],
         # F10f (P10.5): kol kablo yolu alt adımları. Parça grubu önce, sonra kablolar sağ / sol (desen boş; çizim rehber_kol_kablo.py)
         alt=True,
         sira=[dict(ad="S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-                   desen=("S2 horn", "Kol çatalı", "625ZZ", "Üst kol tüpü", "Tüp cıvatası", "Çatal-horn", "Isıl gömme"),
+                   desen=("S2 horn", "Kol çatalı", "625ZZ", "Mafsal", "Üst kol tüpü", "Tüp cıvatası", "Çatal-horn", "Isıl gömme"),
                    # F10f düzeltme 1: horn servo milinin ucuna eksen boyunca (+z), tüp çatalın altından (−y); kol çatalı +x (sol aynalı)
                    ucus={"S2 horn": (0, 0, 1), "Kol çatalı": (1, 0, 0), "Üst kol tüpü": (0, -1, 0)},
-                   # F10f düzeltme 2 (madde 1b): duruşta örtüşen çift yol boyunca denetlenince 625ZZ dış bileziğin kendi eğik yolu kol
-                   # çatalının Ø16 yuvasının omzundan 9,27 / 9,19 mm geçiyordu (44.1'deki 625ZZ ile aynı tür). Dış bilezik tezgâhta
-                   # çatalın yuvasına bastırılır (omuz_rapor SIRA 2: "625ZZ'yi çatalın arka koluna bastır") ve çatalla birlikte uçar;
-                   # aynı alt adım, parça ↔ adım ataması değişmedi. Çatalın satırı K1-a dar istisnasında kalır (engeller değişmedi).
-                   birlikte={"625ZZ rulman (dış bilezik)": "Kol çatalı"},
-                   ucus_ok={"p0121": dar("karar", K1_KOL, p0116=6.42, p0118=5.0),
-                            "p0194": dar("karar", K1_KOL, p0189=6.42, p0191=5.0)},
-                   is_="S2 hornu + merkez vidası, kol çatalı → horn (4 × M3×8), 625ZZ'nin dış bileziği çatalın yuvasında (tezgâhta "
-                       "önceden bastırılır, çatalla birlikte gelir), üst kol tüpü → çatal (2 × M3×8 → ısıl gömme). Kablolar sonraki iki "
-                       "alt adımda."),
+                   # F10f düzeltme 2 (madde 1b): 625ZZ dış bilezik çatalla birlikte uçar (omuz_rapor SIRA 2: "625ZZ'yi çatalın arka
+                   # koluna bastır"). K56 (Ahmet, 13.11.2026, seçenek C): iç bilezik de G2'den buraya geldi ve çatalla birlikte uçar
+                   # (rulman tezgâhta preslenmiş, iki bilezik çatalda); mafsal pulu + M5×12 G2'den geldi, bağlantı satırı olarak çatal
+                   # satırından sonra kendi ekseni boyunca takılır (omuz_rapor SIRA 9). F10f'in K1-a dar istisnası (p0121 / p0194) kalktı.
+                   birlikte={"625ZZ rulman (dış bilezik)": "Kol çatalı", "625ZZ rulman (iç bilezik)": "Kol çatalı"},
+                   # K56: iç bilezik 40.1 sonunda perdelenmede tamamen gizli (G2'de alt adımsız adımdaydı, sınır uygulanmıyordu); 44.1'deki
+                   # dirsek 625ZZ ile aynı yapı (F10g-gunluk.md, okur pikseli F10f-dogrula gizli_piksel)
+                   gizli_ok={i: gizli("625ZZ rulman iç bileziği kol çatalının arka kolundaki Ø16 yuvada, mafsal pulu ve cıvata başının altında")
+                             for i in ("p0116", "p0189")},
+                   is_="S2 hornu + merkez vidası; kol çatalı → horn (4 × M3×8): 625ZZ tezgâhta çatalın arka kolunun Ø16 yuvasına "
+                       "önceden preslenir, iki bileziğiyle çatalla birlikte gelir. Çatal yerindeyken mafsal pulu + M5×12: arka koldan "
+                       "rulmanın iç bileziğinden göbekteki M5 ısıl gömmeye. Üst kol tüpü → çatal (2 × M3×8 → ısıl gömme). Kablolar "
+                       "sonraki iki alt adımda."),
               dict(ad="Sağ kol: uzatmalar tüp penceresi → K → S2 lopu → tambur bağı", desen=(), kolk=("sag:uzatma_kol", "sag:lop_s2", "sag:gecis_s1", "sag:bag_k", "sag:bag_tambur"),
                    kamera=(0.9, 0.35, -1.0), saydam=("Kol çatalı", "Omuz göbeği", "S2 horn", "Omuz bandı", "Göğüs bandı"),
                    is_="Sağ kol, gövdeden kola: F4'ten beri ψ 214 yarığının dışında bekleyen 3 uzatmayı (dirsek, bilek, S2) tambur "
@@ -1111,41 +1120,52 @@ ADIM = {
     ),
     "H0b": dict(
         baslik="Tezgâh: dirsek hornu",
-        is_="Dirsek hornu + merkez vidası. Çataldan önce.",
-        baglanti_md="Kol başına 1 × M3×5",
-        kontrol=["Vida sıkı, horn oturdu"],
+        # K57 (Ahmet, 13.11.2026, seçenek a): horn merkez vidası H0c'ye, dirsek çatalından sonraya (eskiden burada, "Çataldan önce";
+        # M6 tablosunun erişim sütunu "çataldan önce" diyordu, ezildi). Çatalın dış kolunda vida için Ø9 erişim deliği var (dirsek_parcalar.py).
+        is_="Dirsek hornunu servo miline geçir (merkez vidası bu adımda takılmaz: H0c'de, dirsek çatalından sonra).",
+        baglanti_md="Kol başına yok (horn merkez vidası M3×5 H0c'de)",
+        alet="el",
+        erisim="Düz",
+        kontrol=["Horn servo milinin dişlisine oturdu"],
         # F10d: horn dirsek servo ekseninde (x) ince disk: servo ekseni boyunca gelir (F10c'ye kadar +y). İki kol x ekseninde
         # birbirini örter: sağ / sol alt adım, kendi yanından bakış.
         ucus=(1, 0, 0),
         alt=True,
-        sira=[dict(ad="Sağ kol: dirsek hornu + merkez vidası", yan="sag", desen=("Dirsek horn",), kamera=(1.0, 0.4, 0.5),
-                   is_="Sağ kol: dirsek hornunu servo miline geçir, merkez vidası M3×5 (PH1)."),
-              dict(ad="Sol kol: dirsek hornu + merkez vidası", yan="sol", desen=("Dirsek horn",), kamera=(-1.0, 0.4, 0.5),
+        sira=[dict(ad="Sağ kol: dirsek hornu", yan="sag", desen=("Dirsek horn",), kamera=(1.0, 0.4, 0.5),
+                   is_="Sağ kol: dirsek hornunu servo miline geçir; merkez vidası H0c'de, çataldan sonra."),
+              dict(ad="Sol kol: dirsek hornu", yan="sol", desen=("Dirsek horn",), kamera=(-1.0, 0.4, 0.5),
                    is_="Sol kol: aynı iş, aynalı.")],
     ),
     "H0c": dict(
         baslik="Tezgâh: dirsek çatalı",
-        is_="1. 625ZZ'yi çatalın Ø16 yuvasına bastır; çatalı horna cıvatala; M5 pimi yanaktaki ısıl gömmeye tak (robotta erişilemez: "
-            "göğüs bandı 8,9 mm).\n"
+        is_="1. 625ZZ'yi tezgâhta çatalın Ø16 yuvasına bastır (rulman çatalla gelir); çatalı horna cıvatala; çatal yerindeyken "
+            "dirsek horn merkez vidası M3×5 (PH1), çatalın dış kolundaki erişim deliğinden; M5 pimi yanaktaki ısıl gömmeye tak (robotta "
+            "erişilemez: göğüs bandı 8,9 mm).\n"
             "2. Kablo: tırnak → lop L 120 mm → çatal oluğu (6 geniş, 4,5 derin; 2 şerit, sıcak tutkal) → Ø10 delik.",
-        baglanti_md="1,58 m: kol başına 4 × M3×12 DIN 912 + 2 × DIN 125-A pul çatal–horn (M6'daki M3×8 eski); 1 × M5×12 + pul",
-        kontrol=["Dirseği 0…105° arasında elle dene: lop gerilmiyor, oluğa sürtmüyor"],
+        baglanti_md="1,58 m: kol başına 4 × M3×12 DIN 912 + 2 × DIN 125-A pul çatal–horn (M6'daki M3×8 eski); 1 × M3×5 horn merkez "
+                    "vidası (çataldan sonra); 1 × M5×12 + pul",
+        alet="PH1, alyan 2,5 / 4",                                  # K57: horn merkez vidası H0b'den geldi (PH1)
+        kontrol=["Horn merkez vidası sıkı, horn servo milinde oturdu",
+                 "Dirseği 0…105° arasında elle dene: lop gerilmiyor, oluğa sürtmüyor"],
         kablo=["Geçit: çatal oluğu ve Ø10 delik"],
         # F10f (P10.5): çatal, sonra dirsek lopu sağ / sol (çizim KOL_KABLO dirsek_lop, kablo_yolu.lop_coz, dirsek 0)
         alt=True,
-        sira=[dict(ad="Dirsek çatalı + pim (sağ + sol)", desen=("Dirsek çatalı", "625ZZ", "Pim", "Çatal-horn"),
+        sira=[dict(ad="Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+                   desen=("Dirsek çatalı", "625ZZ", "Dirsek horn merkez", "Pim", "Çatal-horn"),
                    # F10f düzeltme 1: çatal +y (ön kolun üstünden); çatal-horn pulu cıvatasıyla birlikte. F10f düzeltme 2 (kontrol B2
                    # 3.1): 625ZZ (iki bilezik) çatalla birlikte uçar: rulman tezgâhta çatalın Ø16 yuvasına önceden bastırılır (dirsek
-                   # montaj sırası 2, dirsek_rapor SIRA); ayrı −x uçuşta dış bilezik yuvanın omzundan 1,55 mm geçiyordu
+                   # montaj sırası 2, dirsek_rapor SIRA); ayrı −x uçuşta dış bilezik yuvanın omzundan 1,55 mm geçiyordu.
+                   # K57 (Ahmet, 13.11.2026, seçenek a): horn merkez vidası H0b'den buraya, bağlantı satırı olarak çatal satırından sonra
+                   # kendi ekseni boyunca (+x sağ / −x sol); F10f'in K1-b dar istisnası (p0562 / p0619) kalktı.
                    ucus={"Dirsek çatalı": (0, 1, 0)},
                    birlikte={"625ZZ rulman (dış bilezik)": "Dirsek çatalı", "625ZZ rulman (iç bilezik)": "Dirsek çatalı",
                              "Çatal-horn pulu": "Çatal-horn cıvatası"},
-                   ucus_ok={"p0562": dar("karar", K1_DIRSEK, p0573=5.46), "p0619": dar("karar", K1_DIRSEK, p0630=5.46)},
                    gizli_ok=dict([(i, gizli("625ZZ rulman bileziği çatal yanağının yuvasında, pim pulu ve cıvata başının altında"))
                                   for i in ("p0583", "p0628", "p0640")] +
                                  [(i, gizli("M5 pim pulu pim cıvatasının başının altında, yanakla baş arasında")) for i in ("p0584", "p0641")]),
                    is_="625ZZ'yi önce çatal iç kolunun Ø16 yuvasına, dudağa dayanana kadar bastır (tezgâhta; rulman çatalla birlikte "
-                       "gelir). Çatalı horna cıvatala (4 × M3×12 + 2 pul); M5 pimi pulla yanaktaki ısıl gömmeye tak (madde 1)."),
+                       "gelir). Çatalı horna cıvatala (4 × M3×12 + 2 pul); çatal yerindeyken dirsek horn merkez vidası M3×5 (PH1, çatalın "
+                       "dış kolundaki erişim deliğinden); M5 pimi pulla yanaktaki ısıl gömmeye tak (madde 1)."),
               dict(ad="Sağ kol: dirsek lopu → çatal oluğu → Ø10 delik", desen=(), kolk=("sag:lop_dirsek",), kamera=(1.0, 0.3, -0.75),
                    saydam=("Dirsek çatalı", "Ön kol"),
                    is_="Sağ kol: tırnaktan çıkan 2 kabloyla L 120 mm lop bırak, çatal oluğuna (6 geniş, 4,5 derin) yatır, sıcak tutkalla "

@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-13 06:44",
+ "tarih": "2026-11-14 01:00",
  "tarayici": "chrome.exe",
  "adim": 50,
  "yontem": "CDP (Chrome DevTools protokolü), file://; önce = 749627b~1 rehber sayfası geçici kopyada (three.js aynı 0.160 yerel paket)",
@@ -489,12 +489,12 @@
    {
     "adim": 39,
     "kod": "G2",
-    "once": 0.0994,
-    "sonra": 0.4145,
+    "once": 0.0977,
+    "sonra": 0.4146,
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 26,
+    "yeni_parca": 20,
     "hazir": true,
     "hata": null
    },
@@ -506,7 +506,7 @@
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 36,
+    "yeni_parca": 42,
     "hazir": true,
     "hata": null
    },
@@ -537,12 +537,12 @@
    {
     "adim": 43,
     "kod": "H0b",
-    "once": 0.1386,
-    "sonra": 0.3069,
+    "once": 0.1425,
+    "sonra": 0.3068,
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 4,
+    "yeni_parca": 2,
     "hazir": true,
     "hata": null
    },
@@ -554,7 +554,7 @@
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 28,
+    "yeni_parca": 30,
     "hazir": true,
     "hata": null
    },
@@ -858,7 +858,7 @@
     "parca": {
      "id": "p0574",
      "ad": "M3x12 DIN 912",
-     "satir": "b:0",
+     "satir": "b:1",
      "satir_ids": 8,
      "beklenen": 8,
      "gizli_kopya": 0,
@@ -876,7 +876,7 @@
      "gecti": true
     },
     "panel": {
-     "secici": "#panel [data-satir='b:0']",
+     "secici": "#panel [data-satir='b:1']",
      "ad": "M3x12 DIN 912",
      "satir_ids": 8,
      "beklenen": 8,
@@ -1385,15 +1385,15 @@
    {
     "adim": 39,
     "var": true,
-    "oran": 0.7291,
-    "boyut_kb": 123.2,
+    "oran": 0.7293,
+    "boyut_kb": 119.9,
     "cizili": true
    },
    {
     "adim": 40,
     "var": true,
-    "oran": 0.6383,
-    "boyut_kb": 108.5,
+    "oran": 0.6381,
+    "boyut_kb": 112.9,
     "cizili": true
    },
    {
@@ -1413,8 +1413,8 @@
    {
     "adim": 43,
     "var": true,
-    "oran": 0.1735,
-    "boyut_kb": 42.1,
+    "oran": 0.1728,
+    "boyut_kb": 40.5,
     "cizili": true
    },
    {
@@ -2363,8 +2363,8 @@
      "acik": true,
      "w": 170,
      "h": 227,
-     "dolu": 4991,
-     "vurgu": 238,
+     "dolu": 4993,
+     "vurgu": 251,
      "tasma": 0,
      "genislik": 1400,
      "sahne_icinde": true,
@@ -2451,7 +2451,7 @@
      "acik": true,
      "w": 170,
      "h": 227,
-     "dolu": 4995,
+     "dolu": 4991,
      "vurgu": 168,
      "tasma": 0,
      "genislik": 1400,
@@ -3471,7 +3471,7 @@
      "acik": true,
      "w": 84,
      "h": 112,
-     "dolu": 1229,
+     "dolu": 1233,
      "vurgu": 104,
      "tasma": 0,
      "genislik": 360,

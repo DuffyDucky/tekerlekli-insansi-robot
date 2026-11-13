@@ -236,9 +236,11 @@ SIRA = [
     "Bilek servosunu ön kola arkadan sok (mil aşağı), 4× M4×16 + kontra somunla bağla. Dirsek servosunu da aynı şekilde tak.",
     "Bilek servosunu orta konuma getir. Horn'u el avucu içe (−X) bakacak şekilde tak, merkez vidasını sık. Bilek flanşını 4× M3×8 ile horn'a, "
     "eli yakasından 2× M3×6 ile flanşa bağla.",
-    "Dirsek servosunu orta konuma (90) getir. Horn'u ön kol dirsek %s°'deyken tak, merkez vidasını sık." % sayi((ar[0] + ar[1]) / 2, 1),
+    # K57 (Ahmet, 13.11.2026, seçenek a; planlama/d158/karar-kuyrugu.md): horn merkez vidası çataldan sonra (eskiden 5. maddede)
+    "Dirsek servosunu orta konuma (90) getir. Horn'u ön kol dirsek %s°'deyken tak (merkez vidası 6. maddede, çataldan sonra)."
+    % sayi((ar[0] + ar[1]) / 2, 1),
     "Ön kolun başını çatalın kolları arasına aşağıdan sok. Dış kolu horn'a 4× M3×8 ile, iç kolu M5×12 + pulla bağla (pul ve iç bilezik ön "
-    "koldaki dayamaya sıkılır, ön kol serbest döner).",
+    "koldaki dayamaya sıkılır, ön kol serbest döner). Horn merkez vidasını çatalın dış kolundaki erişim deliğinden sık.",
     "Çatalı tüpe tak (pim içeride, bilezik dışarıda). Tüp ucu oluğa dayanınca 2× M3×20 + pul + kontra somunla bileziği sık.",
 ]
 KABUK_MIN = "–"

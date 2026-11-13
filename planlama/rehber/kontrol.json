@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-13 06:08",
+ "tarih": "2026-11-14 00:23",
  "tarayici": "chrome.exe",
  "ozet": {
   "adim": 50,
@@ -14,7 +14,7 @@
    "hic_gorunmeyen": []
   },
   "sema": 51,
-  "veri_uretim": "2026-11-13 02:56",
+  "veri_uretim": "2026-11-13 23:45",
   "kaynak_cad": {
    "iskelet": "2026-11-09 14:27",
    "omuz_sag": "2026-11-09 14:27",
@@ -968,8 +968,8 @@
    "hata": null,
    "goruntu": "planlama/rehber/goruntu/adim-39.png",
    "veri_okundu": true,
-   "beklenen_simdi": 26,
-   "gorunen_simdi": 26,
+   "beklenen_simdi": 20,
+   "gorunen_simdi": 20,
    "beklenen_alt": 0,
    "gorunen_alt": 0,
    "beklenen_hedef": 0,
@@ -979,9 +979,9 @@
    "sema": 0,
    "sema_fark": [],
    "kadraj": {
-    "D": 419,
+    "D": 411,
     "alan": "alt-serit",
-    "nokta": 208
+    "nokta": 160
    },
    "gecti": true
   },
@@ -992,8 +992,8 @@
    "hata": null,
    "goruntu": "planlama/rehber/goruntu/adim-40.png",
    "veri_okundu": true,
-   "beklenen_simdi": 26,
-   "gorunen_simdi": 26,
+   "beklenen_simdi": 32,
+   "gorunen_simdi": 32,
    "beklenen_alt": 0,
    "gorunen_alt": 0,
    "beklenen_hedef": 0,
@@ -1005,7 +1005,7 @@
    "kadraj": {
     "D": 581,
     "alan": "sag-sutun",
-    "nokta": 288
+    "nokta": 336
    },
    "gecti": true
   },
@@ -1064,8 +1064,8 @@
    "hata": null,
    "goruntu": "planlama/rehber/goruntu/adim-43.png",
    "veri_okundu": true,
-   "beklenen_simdi": 4,
-   "gorunen_simdi": 4,
+   "beklenen_simdi": 2,
+   "gorunen_simdi": 2,
    "beklenen_alt": 0,
    "gorunen_alt": 0,
    "beklenen_hedef": 0,
@@ -1077,7 +1077,7 @@
    "kadraj": {
     "D": 446,
     "alan": "alt-serit",
-    "nokta": 32
+    "nokta": 16
    },
    "gecti": true
   },
@@ -1088,8 +1088,8 @@
    "hata": null,
    "goruntu": "planlama/rehber/goruntu/adim-44.png",
    "veri_okundu": true,
-   "beklenen_simdi": 26,
-   "gorunen_simdi": 26,
+   "beklenen_simdi": 28,
+   "gorunen_simdi": 28,
    "beklenen_alt": 0,
    "gorunen_alt": 0,
    "beklenen_hedef": 0,
@@ -1101,7 +1101,7 @@
    "kadraj": {
     "D": 522,
     "alan": "alt-serit",
-    "nokta": 224
+    "nokta": 240
    },
    "gecti": true
   },
@@ -1232,7 +1232,7 @@
   "konsol_hatasi": 0,
   "her_parca_tek_alt_adimda": {
    "gecti": true,
-   "parca": 481,
+   "parca": 487,
    "birden_cok_alt_adimda": {},
    "hic_gorunmeyen": []
   },
@@ -2188,8 +2188,8 @@
     "hata": null,
     "goruntu": "planlama/rehber/goruntu/adim-40-01.png",
     "veri_okundu": true,
-    "beklenen_simdi": 26,
-    "gorunen_simdi": 26,
+    "beklenen_simdi": 32,
+    "gorunen_simdi": 32,
     "beklenen_alt": 0,
     "gorunen_alt": 0,
     "fark": [],
@@ -2197,7 +2197,7 @@
     "kadraj": {
      "D": 642,
      "alan": "sag-sutun",
-     "nokta": 208
+     "nokta": 256
     },
     "eksik_mesh": [],
     "konum_dogru": true,
@@ -2464,8 +2464,8 @@
     "hata": null,
     "goruntu": "planlama/rehber/goruntu/adim-43-01.png",
     "veri_okundu": true,
-    "beklenen_simdi": 2,
-    "gorunen_simdi": 2,
+    "beklenen_simdi": 1,
+    "gorunen_simdi": 1,
     "beklenen_alt": 0,
     "gorunen_alt": 0,
     "fark": [],
@@ -2473,7 +2473,7 @@
     "kadraj": {
      "D": 143,
      "alan": "sag-sutun",
-     "nokta": 16
+     "nokta": 8
     },
     "eksik_mesh": [],
     "konum_dogru": true,
@@ -2487,8 +2487,8 @@
     "hata": null,
     "goruntu": "planlama/rehber/goruntu/adim-43-02.png",
     "veri_okundu": true,
-    "beklenen_simdi": 2,
-    "gorunen_simdi": 2,
+    "beklenen_simdi": 1,
+    "gorunen_simdi": 1,
     "beklenen_alt": 0,
     "gorunen_alt": 0,
     "fark": [],
@@ -2496,7 +2496,7 @@
     "kadraj": {
      "D": 143,
      "alan": "sag-sutun",
-     "nokta": 16
+     "nokta": 8
     },
     "eksik_mesh": [],
     "konum_dogru": true,
@@ -2510,8 +2510,8 @@
     "hata": null,
     "goruntu": "planlama/rehber/goruntu/adim-44-01.png",
     "veri_okundu": true,
-    "beklenen_simdi": 26,
-    "gorunen_simdi": 26,
+    "beklenen_simdi": 28,
+    "gorunen_simdi": 28,
     "beklenen_alt": 0,
     "gorunen_alt": 0,
     "fark": [],
@@ -2519,7 +2519,7 @@
     "kadraj": {
      "D": 571,
      "alan": "alt-serit",
-     "nokta": 208
+     "nokta": 224
     },
     "eksik_mesh": [],
     "konum_dogru": true,
@@ -2933,9 +2933,9 @@
     "42.1": 0.1617,
     "42.2": 0.3427,
     "42.3": 0.3201,
-    "43.1": 0.2246,
-    "43.2": 0.2488,
-    "44.1": 0.1926,
+    "43.1": 0.2226,
+    "43.2": 0.2469,
+    "44.1": 0.1962,
     "44.2": 0.5152,
     "44.3": 0.5679,
     "45.1": 0.2399,
@@ -3003,11 +3003,11 @@
    "36": 0.5713,
    "37": 0.1279,
    "38": 0.6485,
-   "39": 0.7291,
-   "40": 0.6383,
+   "39": 0.7293,
+   "40": 0.6381,
    "41": 0.7076,
    "42": 0.1564,
-   "43": 0.1735,
+   "43": 0.1728,
    "44": 0.2009,
    "45": 0.1793,
    "46": 0.18,
@@ -3067,9 +3067,9 @@
    "42.1": 0.1617,
    "42.2": 0.3427,
    "42.3": 0.3201,
-   "43.1": 0.2246,
-   "43.2": 0.2488,
-   "44.1": 0.1926,
+   "43.1": 0.2226,
+   "43.2": 0.2469,
+   "44.1": 0.1962,
    "44.2": 0.5152,
    "44.3": 0.5679,
    "45.1": 0.2399,
@@ -3180,7 +3180,7 @@
   "adim": 50,
   "tasan": [],
   "kucuk_yazi": [],
-  "boyut_kb": 16193,
+  "boyut_kb": 16198,
   "sayfa_esleme": {
    "0": [
     1
@@ -3764,7 +3764,7 @@
   },
   "zorunlu_eksik": 0,
   "metin_sayisi": {
-   "veri": 4931,
+   "veri": 4932,
    "tarayici": 129
   },
   "parca": 1192,
@@ -3906,7 +3906,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 59.4,
+     "sure_s": 51.6,
      "yon": [
       {
        "yon": [
@@ -4014,7 +4014,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 15.5,
+     "sure_s": 13.3,
      "yon": [
       {
        "yon": [
@@ -4165,7 +4165,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 28.6,
+     "sure_s": 25.1,
      "yon": [
       {
        "yon": [
@@ -4316,7 +4316,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 3.7,
+     "sure_s": 3.2,
      "yon": [
       {
        "yon": [
@@ -4492,7 +4492,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 78.6,
+     "sure_s": 68.0,
      "yon": [
       {
        "yon": [
@@ -4656,7 +4656,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 81.8,
+     "sure_s": 70.6,
      "yon": [
       {
        "yon": [
@@ -4820,7 +4820,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 30.8,
+     "sure_s": 26.4,
      "yon": [
       {
        "yon": [
@@ -5010,7 +5010,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 7.5,
+     "sure_s": 6.5,
      "yon": [
       {
        "yon": [
@@ -5275,7 +5275,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 4.7,
+     "sure_s": 4.4,
      "yon": [
       {
        "yon": [
@@ -5303,7 +5303,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 5.7,
+     "sure_s": 4.8,
      "yon": [
       {
        "yon": [
@@ -5464,14 +5464,14 @@
    ],
    "gecti": true,
    "e3_kafa_serbest": true,
-   "sure_s": 316.4
+   "sure_s": 274.1
   },
   "ucus": {
    "durum": "koştu",
    "yontem": "Patlatılmış konumdan (taban + u·d) yerine giden düz yol, o satır takılmadan önce yerinde olanlarla çarpışıyor mu (rehber_giris.Giris, h 0,5 mm; ortak hacim > ESIK mm çarpışma, temas ve dinlenmede zaten ortak olan çift sayılmaz). Satır = rehber paneli / sıralı takma satırı; aynı satırdaki parçalar birlikte uçar (birbirine engel değil). Isıl gömme ev sahibiyle uçar. Masa birimi \"bag\" grubunda ub yönünden, app.js mesafesiyle (max(120, 0,8 × birim köşegeni)). Yön: eksen ya da birim köşegense tam sayı ızgarada, değilse uygulamanın yuvarlanmamış yönünde (yon_gercek; düzeltme turu 1, kontrol B-5). Cıvatanın eş dişi (es_dis) engel sayılmaz.",
    "h_mm": 0.5,
    "esik_mm": 0.2,
-   "satir": 336,
+   "satir": 340,
    "carpisan": 0,
    "carpisan_liste": [],
    "istisna": [
@@ -6119,112 +6119,6 @@
      "istisna_sinif": "yol"
     },
     {
-     "adim": 40,
-     "kod": "G3",
-     "alt_adim": 1,
-     "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "p:1",
-     "id": "p0121",
-     "ad": "Kol çatalı",
-     "hareketli": 4,
-     "u": [
-      1.0,
-      0.0,
-      0.0
-     ],
-     "yon": [
-      1,
-      0,
-      0
-     ],
-     "yon_aci": 0.0,
-     "yontem": "tam sayı yön",
-     "d_mm": 56.9,
-     "temiz": false,
-     "yol_mm": 2.0,
-     "carpan": [
-      {
-       "hareketli": "625ZZ rulman (dış bilezik) [p0122]",
-       "engel": "625ZZ rulman (iç bilezik) [p0116]",
-       "derinlik_mm": 5.0,
-       "isin": 33
-      }
-     ],
-     "carpan_hepsi": [
-      {
-       "engel": "625ZZ rulman (iç bilezik) [p0116]",
-       "derinlik_mm": 6.42
-      },
-      {
-       "engel": "625ZZ rulman (iç bilezik) [p0116]",
-       "derinlik_mm": 6.42
-      },
-      {
-       "engel": "Mafsal cıvatası M5x12 [p0118]",
-       "derinlik_mm": 5.0
-      },
-      {
-       "engel": "Mafsal cıvatası M5x12 [p0118]",
-       "derinlik_mm": 5.0
-      }
-     ],
-     "istisna": "karar bekliyor (karar kuyruğu): 40.1 kol çatalı + 625ZZ dış bilezik: 625ZZ iç bileziği, mafsal pulu ve mafsal cıvatası G2'de (adım 39) takılı; çatal (dış bilezik yuvasında, birlikte; F10f düzeltme 2) hiçbir düz yoldan gelemiyor, iç bileziğe ve mafsal cıvatasına çarpıyor. Sıra ve atama değişmedi; seçenekler F10f-gunluk.md Düzeltme turu 1, karar notu K1-a",
-     "istisna_sinif": "karar"
-    },
-    {
-     "adim": 40,
-     "kod": "G3",
-     "alt_adim": 1,
-     "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "p:1",
-     "id": "p0194",
-     "ad": "Kol çatalı",
-     "hareketli": 4,
-     "u": [
-      -1.0,
-      0.0,
-      0.0
-     ],
-     "yon": [
-      -1,
-      0,
-      0
-     ],
-     "yon_aci": 0.0,
-     "yontem": "tam sayı yön",
-     "d_mm": 56.9,
-     "temiz": false,
-     "yol_mm": 2.0,
-     "carpan": [
-      {
-       "hareketli": "625ZZ rulman (dış bilezik) [p0195]",
-       "engel": "625ZZ rulman (iç bilezik) [p0189]",
-       "derinlik_mm": 5.0,
-       "isin": 34
-      }
-     ],
-     "carpan_hepsi": [
-      {
-       "engel": "625ZZ rulman (iç bilezik) [p0189]",
-       "derinlik_mm": 6.42
-      },
-      {
-       "engel": "625ZZ rulman (iç bilezik) [p0189]",
-       "derinlik_mm": 6.42
-      },
-      {
-       "engel": "Mafsal cıvatası M5x12 [p0191]",
-       "derinlik_mm": 5.0
-      },
-      {
-       "engel": "Mafsal cıvatası M5x12 [p0191]",
-       "derinlik_mm": 5.0
-      }
-     ],
-     "istisna": "karar bekliyor (karar kuyruğu): 40.1 kol çatalı + 625ZZ dış bilezik: 625ZZ iç bileziği, mafsal pulu ve mafsal cıvatası G2'de (adım 39) takılı; çatal (dış bilezik yuvasında, birlikte; F10f düzeltme 2) hiçbir düz yoldan gelemiyor, iç bileziğe ve mafsal cıvatasına çarpıyor. Sıra ve atama değişmedi; seçenekler F10f-gunluk.md Düzeltme turu 1, karar notu K1-a",
-     "istisna_sinif": "karar"
-    },
-    {
      "adim": 41,
      "kod": "G4",
      "alt_adim": 6,
@@ -6417,88 +6311,6 @@
      ],
      "istisna": "gerekçeli duruş: rehber ψ 200 dikme cıvatasını modeldeki duruşta (S1 0°, S2 0°) çizer; orada yolunda kol çatalı ve üst kol tüpü var. Tasarım bu cıvatayı S1 −45° / S2 90°'de sıkar (S1-kaset.md K5 adım 8, anahtar erişimi ≥ 8 mm); rehberin uçuş yolu ölçümüyle S1 −45° / −20° / 0° × S2 90°'de yol temiz",
      "istisna_sinif": "duruş"
-    },
-    {
-     "adim": 44,
-     "kod": "H0c",
-     "alt_adim": 1,
-     "grup": "Dirsek çatalı + pim (sağ + sol)",
-     "satir": "p:0",
-     "id": "p0562",
-     "ad": "Dirsek çatalı",
-     "hareketli": 3,
-     "u": [
-      0.0,
-      1.0,
-      0.0
-     ],
-     "yon": [
-      0,
-      1,
-      0
-     ],
-     "yon_aci": 0.0,
-     "yontem": "tam sayı yön",
-     "d_mm": 63.5,
-     "temiz": false,
-     "yol_mm": 1.5,
-     "carpan": [
-      {
-       "hareketli": "Dirsek çatalı [p0562]",
-       "engel": "Dirsek horn merkez vidası M3 [p0573]",
-       "derinlik_mm": 3.0,
-       "isin": 38
-      }
-     ],
-     "carpan_hepsi": [
-      {
-       "engel": "Dirsek horn merkez vidası M3 [p0573]",
-       "derinlik_mm": 5.46
-      }
-     ],
-     "istisna": "karar bekliyor (karar kuyruğu): 44.1 dirsek çatalı: dirsek horn merkez vidası H0b'de (adım 43) takılı, çatal +y yolunda vidanın başına çarpıyor. Sıra ve atama değişmedi; seçenekler F10f-gunluk.md Düzeltme turu 1, karar notu K1-b",
-     "istisna_sinif": "karar"
-    },
-    {
-     "adim": 44,
-     "kod": "H0c",
-     "alt_adim": 1,
-     "grup": "Dirsek çatalı + pim (sağ + sol)",
-     "satir": "p:0",
-     "id": "p0619",
-     "ad": "Dirsek çatalı",
-     "hareketli": 3,
-     "u": [
-      -0.0,
-      1.0,
-      0.0
-     ],
-     "yon": [
-      0,
-      1,
-      0
-     ],
-     "yon_aci": 0.0,
-     "yontem": "tam sayı yön",
-     "d_mm": 63.5,
-     "temiz": false,
-     "yol_mm": 1.5,
-     "carpan": [
-      {
-       "hareketli": "Dirsek çatalı [p0619]",
-       "engel": "Dirsek horn merkez vidası M3 [p0630]",
-       "derinlik_mm": 3.0,
-       "isin": 38
-      }
-     ],
-     "carpan_hepsi": [
-      {
-       "engel": "Dirsek horn merkez vidası M3 [p0630]",
-       "derinlik_mm": 5.46
-      }
-     ],
-     "istisna": "karar bekliyor (karar kuyruğu): 44.1 dirsek çatalı: dirsek horn merkez vidası H0b'de (adım 43) takılı, çatal +y yolunda vidanın başına çarpıyor. Sıra ve atama değişmedi; seçenekler F10f-gunluk.md Düzeltme turu 1, karar notu K1-b",
-     "istisna_sinif": "karar"
     }
    ],
    "istisna_bos": [],
@@ -11898,7 +11710,7 @@
      "satir": "p:1",
      "id": "p0121",
      "ad": "Kol çatalı",
-     "hareketli": 4,
+     "hareketli": 5,
      "u": [
       1.0,
       0.0,
@@ -11912,36 +11724,7 @@
      "yon_aci": 0.0,
      "yontem": "tam sayı yön",
      "d_mm": 56.9,
-     "temiz": false,
-     "yol_mm": 2.0,
-     "carpan": [
-      {
-       "hareketli": "625ZZ rulman (dış bilezik) [p0122]",
-       "engel": "625ZZ rulman (iç bilezik) [p0116]",
-       "derinlik_mm": 5.0,
-       "isin": 33
-      }
-     ],
-     "carpan_hepsi": [
-      {
-       "engel": "625ZZ rulman (iç bilezik) [p0116]",
-       "derinlik_mm": 6.42
-      },
-      {
-       "engel": "625ZZ rulman (iç bilezik) [p0116]",
-       "derinlik_mm": 6.42
-      },
-      {
-       "engel": "Mafsal cıvatası M5x12 [p0118]",
-       "derinlik_mm": 5.0
-      },
-      {
-       "engel": "Mafsal cıvatası M5x12 [p0118]",
-       "derinlik_mm": 5.0
-      }
-     ],
-     "istisna": "karar bekliyor (karar kuyruğu): 40.1 kol çatalı + 625ZZ dış bilezik: 625ZZ iç bileziği, mafsal pulu ve mafsal cıvatası G2'de (adım 39) takılı; çatal (dış bilezik yuvasında, birlikte; F10f düzeltme 2) hiçbir düz yoldan gelemiyor, iç bileziğe ve mafsal cıvatasına çarpıyor. Sıra ve atama değişmedi; seçenekler F10f-gunluk.md Düzeltme turu 1, karar notu K1-a",
-     "istisna_sinif": "karar"
+     "temiz": true
     },
     {
      "adim": 40,
@@ -11951,7 +11734,7 @@
      "satir": "p:1",
      "id": "p0194",
      "ad": "Kol çatalı",
-     "hareketli": 4,
+     "hareketli": 5,
      "u": [
       -1.0,
       0.0,
@@ -11965,43 +11748,14 @@
      "yon_aci": 0.0,
      "yontem": "tam sayı yön",
      "d_mm": 56.9,
-     "temiz": false,
-     "yol_mm": 2.0,
-     "carpan": [
-      {
-       "hareketli": "625ZZ rulman (dış bilezik) [p0195]",
-       "engel": "625ZZ rulman (iç bilezik) [p0189]",
-       "derinlik_mm": 5.0,
-       "isin": 34
-      }
-     ],
-     "carpan_hepsi": [
-      {
-       "engel": "625ZZ rulman (iç bilezik) [p0189]",
-       "derinlik_mm": 6.42
-      },
-      {
-       "engel": "625ZZ rulman (iç bilezik) [p0189]",
-       "derinlik_mm": 6.42
-      },
-      {
-       "engel": "Mafsal cıvatası M5x12 [p0191]",
-       "derinlik_mm": 5.0
-      },
-      {
-       "engel": "Mafsal cıvatası M5x12 [p0191]",
-       "derinlik_mm": 5.0
-      }
-     ],
-     "istisna": "karar bekliyor (karar kuyruğu): 40.1 kol çatalı + 625ZZ dış bilezik: 625ZZ iç bileziği, mafsal pulu ve mafsal cıvatası G2'de (adım 39) takılı; çatal (dış bilezik yuvasında, birlikte; F10f düzeltme 2) hiçbir düz yoldan gelemiyor, iç bileziğe ve mafsal cıvatasına çarpıyor. Sıra ve atama değişmedi; seçenekler F10f-gunluk.md Düzeltme turu 1, karar notu K1-a",
-     "istisna_sinif": "karar"
+     "temiz": true
     },
     {
      "adim": 40,
      "kod": "G3",
      "alt_adim": 1,
      "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "p:3",
+     "satir": "p:4",
      "id": "p0127",
      "ad": "Üst kol tüpü",
      "hareketli": 1,
@@ -12025,7 +11779,7 @@
      "kod": "G3",
      "alt_adim": 1,
      "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "p:3",
+     "satir": "p:4",
      "id": "p0200",
      "ad": "Üst kol tüpü",
      "hareketli": 1,
@@ -12050,6 +11804,108 @@
      "alt_adim": 1,
      "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
      "satir": "b:1",
+     "id": "p0117",
+     "ad": "Mafsal pulu M5",
+     "hareketli": 1,
+     "u": [
+      -0.0,
+      -0.0,
+      -1.0
+     ],
+     "yon": [
+      0,
+      0,
+      -1
+     ],
+     "yon_aci": 0.0,
+     "yontem": "tam sayı yön",
+     "d_mm": 25.0,
+     "temiz": true
+    },
+    {
+     "adim": 40,
+     "kod": "G3",
+     "alt_adim": 1,
+     "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
+     "satir": "b:1",
+     "id": "p0190",
+     "ad": "Mafsal pulu M5",
+     "hareketli": 1,
+     "u": [
+      -0.0,
+      -0.0,
+      -1.0
+     ],
+     "yon": [
+      0,
+      0,
+      -1
+     ],
+     "yon_aci": 0.0,
+     "yontem": "tam sayı yön",
+     "d_mm": 25.0,
+     "temiz": true
+    },
+    {
+     "adim": 40,
+     "kod": "G3",
+     "alt_adim": 1,
+     "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
+     "satir": "b:2",
+     "id": "p0118",
+     "ad": "Mafsal cıvatası M5x12",
+     "hareketli": 1,
+     "u": [
+      -0.0,
+      -0.0,
+      -1.0
+     ],
+     "yon": [
+      0,
+      0,
+      -1
+     ],
+     "yon_aci": 0.0,
+     "yontem": "tam sayı yön",
+     "d_mm": 42.5,
+     "temiz": true,
+     "es_dis": [
+      "Isıl gömme somun M5 (göbekte)"
+     ]
+    },
+    {
+     "adim": 40,
+     "kod": "G3",
+     "alt_adim": 1,
+     "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
+     "satir": "b:2",
+     "id": "p0191",
+     "ad": "Mafsal cıvatası M5x12",
+     "hareketli": 1,
+     "u": [
+      -0.0,
+      -0.0,
+      -1.0
+     ],
+     "yon": [
+      0,
+      0,
+      -1
+     ],
+     "yon_aci": 0.0,
+     "yontem": "tam sayı yön",
+     "d_mm": 42.5,
+     "temiz": true,
+     "es_dis": [
+      "Isıl gömme somun M5 (göbekte)"
+     ]
+    },
+    {
+     "adim": 40,
+     "kod": "G3",
+     "alt_adim": 1,
+     "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
+     "satir": "b:3",
      "id": "p0120",
      "ad": "S2 horn merkez vidası M3",
      "hareketli": 1,
@@ -12073,7 +11929,7 @@
      "kod": "G3",
      "alt_adim": 1,
      "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "b:1",
+     "satir": "b:3",
      "id": "p0193",
      "ad": "S2 horn merkez vidası M3",
      "hareketli": 1,
@@ -12097,7 +11953,7 @@
      "kod": "G3",
      "alt_adim": 1,
      "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "b:2",
+     "satir": "b:4",
      "id": "p0123",
      "ad": "Çatal-horn cıvatası M3x8",
      "hareketli": 1,
@@ -12121,7 +11977,7 @@
      "kod": "G3",
      "alt_adim": 1,
      "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "b:2",
+     "satir": "b:4",
      "id": "p0124",
      "ad": "Çatal-horn cıvatası M3x8",
      "hareketli": 1,
@@ -12145,7 +12001,7 @@
      "kod": "G3",
      "alt_adim": 1,
      "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "b:2",
+     "satir": "b:4",
      "id": "p0125",
      "ad": "Çatal-horn cıvatası M3x8",
      "hareketli": 1,
@@ -12169,7 +12025,7 @@
      "kod": "G3",
      "alt_adim": 1,
      "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "b:2",
+     "satir": "b:4",
      "id": "p0126",
      "ad": "Çatal-horn cıvatası M3x8",
      "hareketli": 1,
@@ -12193,7 +12049,7 @@
      "kod": "G3",
      "alt_adim": 1,
      "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "b:2",
+     "satir": "b:4",
      "id": "p0129",
      "ad": "Tüp cıvatası M3x8",
      "hareketli": 1,
@@ -12220,7 +12076,7 @@
      "kod": "G3",
      "alt_adim": 1,
      "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "b:2",
+     "satir": "b:4",
      "id": "p0131",
      "ad": "Tüp cıvatası M3x8",
      "hareketli": 1,
@@ -12247,7 +12103,7 @@
      "kod": "G3",
      "alt_adim": 1,
      "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "b:2",
+     "satir": "b:4",
      "id": "p0196",
      "ad": "Çatal-horn cıvatası M3x8",
      "hareketli": 1,
@@ -12271,7 +12127,7 @@
      "kod": "G3",
      "alt_adim": 1,
      "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "b:2",
+     "satir": "b:4",
      "id": "p0197",
      "ad": "Çatal-horn cıvatası M3x8",
      "hareketli": 1,
@@ -12295,7 +12151,7 @@
      "kod": "G3",
      "alt_adim": 1,
      "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "b:2",
+     "satir": "b:4",
      "id": "p0198",
      "ad": "Çatal-horn cıvatası M3x8",
      "hareketli": 1,
@@ -12319,7 +12175,7 @@
      "kod": "G3",
      "alt_adim": 1,
      "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "b:2",
+     "satir": "b:4",
      "id": "p0199",
      "ad": "Çatal-horn cıvatası M3x8",
      "hareketli": 1,
@@ -12343,7 +12199,7 @@
      "kod": "G3",
      "alt_adim": 1,
      "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "b:2",
+     "satir": "b:4",
      "id": "p0202",
      "ad": "Tüp cıvatası M3x8",
      "hareketli": 1,
@@ -12370,7 +12226,7 @@
      "kod": "G3",
      "alt_adim": 1,
      "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
-     "satir": "b:2",
+     "satir": "b:4",
      "id": "p0204",
      "ad": "Tüp cıvatası M3x8",
      "hareketli": 1,
@@ -13604,7 +13460,7 @@
      "adim": 43,
      "kod": "H0b",
      "alt_adim": 1,
-     "grup": "Sağ kol: dirsek hornu + merkez vidası",
+     "grup": "Sağ kol: dirsek hornu",
      "satir": "p:0",
      "id": "p0572",
      "ad": "Dirsek horn 25T alüminyum disk",
@@ -13627,32 +13483,8 @@
     {
      "adim": 43,
      "kod": "H0b",
-     "alt_adim": 1,
-     "grup": "Sağ kol: dirsek hornu + merkez vidası",
-     "satir": "b:0",
-     "id": "p0573",
-     "ad": "Dirsek horn merkez vidası M3",
-     "hareketli": 1,
-     "u": [
-      1.0,
-      -0.0,
-      -0.0
-     ],
-     "yon": [
-      1,
-      0,
-      0
-     ],
-     "yon_aci": 0.0,
-     "yontem": "tam sayı yön",
-     "d_mm": 25.0,
-     "temiz": true
-    },
-    {
-     "adim": 43,
-     "kod": "H0b",
      "alt_adim": 2,
-     "grup": "Sol kol: dirsek hornu + merkez vidası",
+     "grup": "Sol kol: dirsek hornu",
      "satir": "p:1",
      "id": "p0629",
      "ad": "Dirsek horn 25T alüminyum disk",
@@ -13673,11 +13505,83 @@
      "temiz": true
     },
     {
-     "adim": 43,
-     "kod": "H0b",
-     "alt_adim": 2,
-     "grup": "Sol kol: dirsek hornu + merkez vidası",
-     "satir": "b:1",
+     "adim": 44,
+     "kod": "H0c",
+     "alt_adim": 1,
+     "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+     "satir": "p:0",
+     "id": "p0562",
+     "ad": "Dirsek çatalı",
+     "hareketli": 3,
+     "u": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "yon": [
+      0,
+      1,
+      0
+     ],
+     "yon_aci": 0.0,
+     "yontem": "tam sayı yön",
+     "d_mm": 63.5,
+     "temiz": true
+    },
+    {
+     "adim": 44,
+     "kod": "H0c",
+     "alt_adim": 1,
+     "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+     "satir": "p:0",
+     "id": "p0619",
+     "ad": "Dirsek çatalı",
+     "hareketli": 3,
+     "u": [
+      -0.0,
+      1.0,
+      0.0
+     ],
+     "yon": [
+      0,
+      1,
+      0
+     ],
+     "yon_aci": 0.0,
+     "yontem": "tam sayı yön",
+     "d_mm": 63.5,
+     "temiz": true
+    },
+    {
+     "adim": 44,
+     "kod": "H0c",
+     "alt_adim": 1,
+     "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+     "satir": "b:0",
+     "id": "p0573",
+     "ad": "Dirsek horn merkez vidası M3",
+     "hareketli": 1,
+     "u": [
+      1.0,
+      -0.0,
+      -0.0
+     ],
+     "yon": [
+      1,
+      0,
+      0
+     ],
+     "yon_aci": 0.0,
+     "yontem": "tam sayı yön",
+     "d_mm": 25.0,
+     "temiz": true
+    },
+    {
+     "adim": 44,
+     "kod": "H0c",
+     "alt_adim": 1,
+     "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+     "satir": "b:0",
      "id": "p0630",
      "ad": "Dirsek horn merkez vidası M3",
      "hareketli": 1,
@@ -13700,90 +13604,8 @@
      "adim": 44,
      "kod": "H0c",
      "alt_adim": 1,
-     "grup": "Dirsek çatalı + pim (sağ + sol)",
-     "satir": "p:0",
-     "id": "p0562",
-     "ad": "Dirsek çatalı",
-     "hareketli": 3,
-     "u": [
-      0.0,
-      1.0,
-      0.0
-     ],
-     "yon": [
-      0,
-      1,
-      0
-     ],
-     "yon_aci": 0.0,
-     "yontem": "tam sayı yön",
-     "d_mm": 63.5,
-     "temiz": false,
-     "yol_mm": 1.5,
-     "carpan": [
-      {
-       "hareketli": "Dirsek çatalı [p0562]",
-       "engel": "Dirsek horn merkez vidası M3 [p0573]",
-       "derinlik_mm": 3.0,
-       "isin": 38
-      }
-     ],
-     "carpan_hepsi": [
-      {
-       "engel": "Dirsek horn merkez vidası M3 [p0573]",
-       "derinlik_mm": 5.46
-      }
-     ],
-     "istisna": "karar bekliyor (karar kuyruğu): 44.1 dirsek çatalı: dirsek horn merkez vidası H0b'de (adım 43) takılı, çatal +y yolunda vidanın başına çarpıyor. Sıra ve atama değişmedi; seçenekler F10f-gunluk.md Düzeltme turu 1, karar notu K1-b",
-     "istisna_sinif": "karar"
-    },
-    {
-     "adim": 44,
-     "kod": "H0c",
-     "alt_adim": 1,
-     "grup": "Dirsek çatalı + pim (sağ + sol)",
-     "satir": "p:0",
-     "id": "p0619",
-     "ad": "Dirsek çatalı",
-     "hareketli": 3,
-     "u": [
-      -0.0,
-      1.0,
-      0.0
-     ],
-     "yon": [
-      0,
-      1,
-      0
-     ],
-     "yon_aci": 0.0,
-     "yontem": "tam sayı yön",
-     "d_mm": 63.5,
-     "temiz": false,
-     "yol_mm": 1.5,
-     "carpan": [
-      {
-       "hareketli": "Dirsek çatalı [p0619]",
-       "engel": "Dirsek horn merkez vidası M3 [p0630]",
-       "derinlik_mm": 3.0,
-       "isin": 38
-      }
-     ],
-     "carpan_hepsi": [
-      {
-       "engel": "Dirsek horn merkez vidası M3 [p0630]",
-       "derinlik_mm": 5.46
-      }
-     ],
-     "istisna": "karar bekliyor (karar kuyruğu): 44.1 dirsek çatalı: dirsek horn merkez vidası H0b'de (adım 43) takılı, çatal +y yolunda vidanın başına çarpıyor. Sıra ve atama değişmedi; seçenekler F10f-gunluk.md Düzeltme turu 1, karar notu K1-b",
-     "istisna_sinif": "karar"
-    },
-    {
-     "adim": 44,
-     "kod": "H0c",
-     "alt_adim": 1,
-     "grup": "Dirsek çatalı + pim (sağ + sol)",
-     "satir": "b:0",
+     "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+     "satir": "b:1",
      "id": "p0574",
      "ad": "Çatal-horn cıvatası M3x12",
      "hareketli": 2,
@@ -13806,8 +13628,8 @@
      "adim": 44,
      "kod": "H0c",
      "alt_adim": 1,
-     "grup": "Dirsek çatalı + pim (sağ + sol)",
-     "satir": "b:0",
+     "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+     "satir": "b:1",
      "id": "p0576",
      "ad": "Çatal-horn cıvatası M3x12",
      "hareketli": 2,
@@ -13830,8 +13652,8 @@
      "adim": 44,
      "kod": "H0c",
      "alt_adim": 1,
-     "grup": "Dirsek çatalı + pim (sağ + sol)",
-     "satir": "b:0",
+     "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+     "satir": "b:1",
      "id": "p0578",
      "ad": "Çatal-horn cıvatası M3x12",
      "hareketli": 2,
@@ -13854,8 +13676,8 @@
      "adim": 44,
      "kod": "H0c",
      "alt_adim": 1,
-     "grup": "Dirsek çatalı + pim (sağ + sol)",
-     "satir": "b:0",
+     "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+     "satir": "b:1",
      "id": "p0580",
      "ad": "Çatal-horn cıvatası M3x12",
      "hareketli": 2,
@@ -13878,8 +13700,8 @@
      "adim": 44,
      "kod": "H0c",
      "alt_adim": 1,
-     "grup": "Dirsek çatalı + pim (sağ + sol)",
-     "satir": "b:0",
+     "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+     "satir": "b:1",
      "id": "p0631",
      "ad": "Çatal-horn cıvatası M3x12",
      "hareketli": 2,
@@ -13902,8 +13724,8 @@
      "adim": 44,
      "kod": "H0c",
      "alt_adim": 1,
-     "grup": "Dirsek çatalı + pim (sağ + sol)",
-     "satir": "b:0",
+     "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+     "satir": "b:1",
      "id": "p0633",
      "ad": "Çatal-horn cıvatası M3x12",
      "hareketli": 2,
@@ -13926,8 +13748,8 @@
      "adim": 44,
      "kod": "H0c",
      "alt_adim": 1,
-     "grup": "Dirsek çatalı + pim (sağ + sol)",
-     "satir": "b:0",
+     "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+     "satir": "b:1",
      "id": "p0635",
      "ad": "Çatal-horn cıvatası M3x12",
      "hareketli": 2,
@@ -13950,8 +13772,8 @@
      "adim": 44,
      "kod": "H0c",
      "alt_adim": 1,
-     "grup": "Dirsek çatalı + pim (sağ + sol)",
-     "satir": "b:0",
+     "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+     "satir": "b:1",
      "id": "p0637",
      "ad": "Çatal-horn cıvatası M3x12",
      "hareketli": 2,
@@ -13974,8 +13796,8 @@
      "adim": 44,
      "kod": "H0c",
      "alt_adim": 1,
-     "grup": "Dirsek çatalı + pim (sağ + sol)",
-     "satir": "b:2",
+     "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+     "satir": "b:3",
      "id": "p0584",
      "ad": "Pim pulu M5",
      "hareketli": 1,
@@ -13998,8 +13820,8 @@
      "adim": 44,
      "kod": "H0c",
      "alt_adim": 1,
-     "grup": "Dirsek çatalı + pim (sağ + sol)",
-     "satir": "b:2",
+     "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+     "satir": "b:3",
      "id": "p0641",
      "ad": "Pim pulu M5",
      "hareketli": 1,
@@ -14022,8 +13844,8 @@
      "adim": 44,
      "kod": "H0c",
      "alt_adim": 1,
-     "grup": "Dirsek çatalı + pim (sağ + sol)",
-     "satir": "b:3",
+     "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+     "satir": "b:4",
      "id": "p0585",
      "ad": "Pim cıvatası M5x12",
      "hareketli": 1,
@@ -14049,8 +13871,8 @@
      "adim": 44,
      "kod": "H0c",
      "alt_adim": 1,
-     "grup": "Dirsek çatalı + pim (sağ + sol)",
-     "satir": "b:3",
+     "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+     "satir": "b:4",
      "id": "p0642",
      "ad": "Pim cıvatası M5x12",
      "hareketli": 1,
@@ -15567,7 +15389,7 @@
      ]
     }
    ],
-   "sure_s": 985.3
+   "sure_s": 948.2
   },
   "isil_gomme": {
    "durum": "koştu",
@@ -17532,16 +17354,16 @@
    {
     "adim": 39,
     "kod": "G2",
-    "adet": 18,
+    "adet": 16,
     "ACIK_AGIZ": 4,
     "CEP": 4,
-    "DUZ": 10
+    "DUZ": 8
    },
    {
     "adim": 40,
     "kod": "G3",
-    "adet": 14,
-    "DUZ": 14
+    "adet": 16,
+    "DUZ": 16
    },
    {
     "adim": 41,
@@ -17559,16 +17381,10 @@
     "DUZ": 16
    },
    {
-    "adim": 43,
-    "kod": "H0b",
-    "adet": 2,
-    "DUZ": 2
-   },
-   {
     "adim": 44,
     "kod": "H0c",
-    "adet": 10,
-    "DUZ": 10
+    "adet": 12,
+    "DUZ": 12
    },
    {
     "adim": 45,
@@ -25368,23 +25184,6 @@
     "cep_oran": 0.54
    },
    {
-    "id": "p0118",
-    "ad": "Mafsal cıvatası M5x12",
-    "kod": "M5x12 DIN 912",
-    "adim": 39,
-    "adim_kod": "G2",
-    "grup": "adım",
-    "grup_tezgah": "",
-    "sinif": "DUZ",
-    "alet": "alyan 4.0",
-    "alet_sinif": "DUZ",
-    "serbest_mm": 130.0,
-    "engel": null,
-    "el": {
-     "duz_el_mm": 19.0
-    }
-   },
-   {
     "id": "p0180",
     "ad": "S2 kulak cıvatası M4x16",
     "kod": "M4x16 DIN 912",
@@ -25533,12 +25332,12 @@
     "cep_oran": 0.88
    },
    {
-    "id": "p0191",
+    "id": "p0118",
     "ad": "Mafsal cıvatası M5x12",
     "kod": "M5x12 DIN 912",
-    "adim": 39,
-    "adim_kod": "G2",
-    "grup": "adım",
+    "adim": 40,
+    "adim_kod": "G3",
+    "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
     "grup_tezgah": "",
     "sinif": "DUZ",
     "alet": "alyan 4.0",
@@ -25663,6 +25462,23 @@
     "alet": "alyan 2.5",
     "alet_sinif": "DUZ",
     "serbest_mm": 110.0,
+    "engel": null,
+    "el": {
+     "duz_el_mm": 19.0
+    }
+   },
+   {
+    "id": "p0191",
+    "ad": "Mafsal cıvatası M5x12",
+    "kod": "M5x12 DIN 912",
+    "adim": 40,
+    "adim_kod": "G3",
+    "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
+    "grup_tezgah": "",
+    "sinif": "DUZ",
+    "alet": "alyan 4.0",
+    "alet_sinif": "DUZ",
+    "serbest_mm": 130.0,
     "engel": null,
     "el": {
      "duz_el_mm": 19.0
@@ -26469,9 +26285,9 @@
     "id": "p0573",
     "ad": "Dirsek horn merkez vidası M3",
     "kod": "M3x5 horn vidası (servo ile)",
-    "adim": 43,
-    "adim_kod": "H0b",
-    "grup": "Sağ kol: dirsek hornu + merkez vidası",
+    "adim": 44,
+    "adim_kod": "H0c",
+    "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
     "grup_tezgah": "",
     "sinif": "DUZ",
     "alet": "yıldız PH1",
@@ -26479,24 +26295,7 @@
     "serbest_mm": 80.0,
     "engel": null,
     "el": {
-     "duz_el_mm": 20.5
-    }
-   },
-   {
-    "id": "p0630",
-    "ad": "Dirsek horn merkez vidası M3",
-    "kod": "M3x5 horn vidası (servo ile)",
-    "adim": 43,
-    "adim_kod": "H0b",
-    "grup": "Sol kol: dirsek hornu + merkez vidası",
-    "grup_tezgah": "",
-    "sinif": "DUZ",
-    "alet": "yıldız PH1",
-    "alet_sinif": "DUZ",
-    "serbest_mm": 80.0,
-    "engel": null,
-    "el": {
-     "duz_el_mm": 22.0
+     "duz_el_mm": 29.5
     }
    },
    {
@@ -26505,7 +26304,7 @@
     "kod": "M3x12 DIN 912",
     "adim": 44,
     "adim_kod": "H0c",
-    "grup": "Dirsek çatalı + pim (sağ + sol)",
+    "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
     "grup_tezgah": "",
     "sinif": "DUZ",
     "alet": "alyan 2.5",
@@ -26522,7 +26321,7 @@
     "kod": "M3x12 DIN 912",
     "adim": 44,
     "adim_kod": "H0c",
-    "grup": "Dirsek çatalı + pim (sağ + sol)",
+    "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
     "grup_tezgah": "",
     "sinif": "DUZ",
     "alet": "alyan 2.5",
@@ -26539,7 +26338,7 @@
     "kod": "M3x12 DIN 912",
     "adim": 44,
     "adim_kod": "H0c",
-    "grup": "Dirsek çatalı + pim (sağ + sol)",
+    "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
     "grup_tezgah": "",
     "sinif": "DUZ",
     "alet": "alyan 2.5",
@@ -26556,7 +26355,7 @@
     "kod": "M3x12 DIN 912",
     "adim": 44,
     "adim_kod": "H0c",
-    "grup": "Dirsek çatalı + pim (sağ + sol)",
+    "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
     "grup_tezgah": "",
     "sinif": "DUZ",
     "alet": "alyan 2.5",
@@ -26573,7 +26372,7 @@
     "kod": "M5x12 DIN 912",
     "adim": 44,
     "adim_kod": "H0c",
-    "grup": "Dirsek çatalı + pim (sağ + sol)",
+    "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
     "grup_tezgah": "",
     "sinif": "DUZ",
     "alet": "alyan 4.0",
@@ -26585,12 +26384,29 @@
     }
    },
    {
+    "id": "p0630",
+    "ad": "Dirsek horn merkez vidası M3",
+    "kod": "M3x5 horn vidası (servo ile)",
+    "adim": 44,
+    "adim_kod": "H0c",
+    "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
+    "grup_tezgah": "",
+    "sinif": "DUZ",
+    "alet": "yıldız PH1",
+    "alet_sinif": "DUZ",
+    "serbest_mm": 80.0,
+    "engel": null,
+    "el": {
+     "duz_el_mm": 31.0
+    }
+   },
+   {
     "id": "p0631",
     "ad": "Çatal-horn cıvatası M3x12",
     "kod": "M3x12 DIN 912",
     "adim": 44,
     "adim_kod": "H0c",
-    "grup": "Dirsek çatalı + pim (sağ + sol)",
+    "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
     "grup_tezgah": "",
     "sinif": "DUZ",
     "alet": "alyan 2.5",
@@ -26607,7 +26423,7 @@
     "kod": "M3x12 DIN 912",
     "adim": 44,
     "adim_kod": "H0c",
-    "grup": "Dirsek çatalı + pim (sağ + sol)",
+    "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
     "grup_tezgah": "",
     "sinif": "DUZ",
     "alet": "alyan 2.5",
@@ -26624,7 +26440,7 @@
     "kod": "M3x12 DIN 912",
     "adim": 44,
     "adim_kod": "H0c",
-    "grup": "Dirsek çatalı + pim (sağ + sol)",
+    "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
     "grup_tezgah": "",
     "sinif": "DUZ",
     "alet": "alyan 2.5",
@@ -26641,7 +26457,7 @@
     "kod": "M3x12 DIN 912",
     "adim": 44,
     "adim_kod": "H0c",
-    "grup": "Dirsek çatalı + pim (sağ + sol)",
+    "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
     "grup_tezgah": "",
     "sinif": "DUZ",
     "alet": "alyan 2.5",
@@ -26658,7 +26474,7 @@
     "kod": "M5x12 DIN 912",
     "adim": 44,
     "adim_kod": "H0c",
-    "grup": "Dirsek çatalı + pim (sağ + sol)",
+    "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
     "grup_tezgah": "",
     "sinif": "DUZ",
     "alet": "alyan 4.0",
@@ -27430,16 +27246,16 @@
     }
    }
   ],
-  "sure_s": 80.1,
+  "sure_s": 69.8,
   "sure": {
-   "yukleme_s": 11.9,
-   "sira_s": 89.8,
-   "perdelenme_s": 130.5,
-   "giris_s": 316.4,
-   "ucus_s": 985.3,
-   "toplam_s": 1534.0,
-   "voksel_alani": 89,
-   "voksel_s": 85.9
+   "yukleme_s": 14.8,
+   "sira_s": 78.3,
+   "perdelenme_s": 115.0,
+   "giris_s": 274.1,
+   "ucus_s": 948.2,
+   "toplam_s": 1430.4,
+   "voksel_alani": 87,
+   "voksel_s": 74.7
   }
  },
  "perdelenme": {
@@ -30427,7 +30243,7 @@
    {
     "adim": 39,
     "kod": "G2",
-    "yeni": 26,
+    "yeni": 20,
     "gizli": 2,
     "gizli_parca": 0,
     "gizli_baglanti": 2,
@@ -30447,11 +30263,16 @@
    {
     "adim": 40,
     "kod": "G3",
-    "yeni": 26,
-    "gizli": 4,
-    "gizli_parca": 0,
+    "yeni": 32,
+    "gizli": 6,
+    "gizli_parca": 2,
     "gizli_baglanti": 4,
     "gizli_liste": [
+     {
+      "id": "p0116",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "tur": "Satin"
+     },
      {
       "id": "p0128",
       "ad": "Isıl gömme somun M3 (çatalda)",
@@ -30461,6 +30282,11 @@
       "id": "p0130",
       "ad": "Isıl gömme somun M3 (çatalda)",
       "tur": "Baglanti"
+     },
+     {
+      "id": "p0189",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "tur": "Satin"
      },
      {
       "id": "p0201",
@@ -30477,9 +30303,14 @@
      {
       "grup": "S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
       "tezgah": "",
-      "yeni": 26,
-      "gizli": 4,
+      "yeni": 32,
+      "gizli": 6,
       "gizli_liste": [
+       {
+        "id": "p0116",
+        "ad": "625ZZ rulman (iç bilezik)",
+        "tur": "Satin"
+       },
        {
         "id": "p0128",
         "ad": "Isıl gömme somun M3 (çatalda)",
@@ -30489,6 +30320,11 @@
         "id": "p0130",
         "ad": "Isıl gömme somun M3 (çatalda)",
         "tur": "Baglanti"
+       },
+       {
+        "id": "p0189",
+        "ad": "625ZZ rulman (iç bilezik)",
+        "tur": "Satin"
        },
        {
         "id": "p0201",
@@ -30504,6 +30340,11 @@
       "alt_adim": 1,
       "istisna": [
        {
+        "id": "p0116",
+        "ad": "625ZZ rulman (iç bilezik)",
+        "gerekce": "perdelenme (26 yön, dik izdüşüm): parça yerindeyken hiçbir yönden görünmez; 625ZZ rulman iç bileziği kol çatalının arka kolundaki Ø16 yuvada, mafsal pulu ve cıvata başının altında. Okur onu sıralı takmada (Boşluk) yerine giderken görür; alt adım karesindeki piksel ölçümü F10f-gunluk.md Düzeltme turu 1"
+       },
+       {
         "id": "p0128",
         "ad": "Isıl gömme somun M3 (çatalda)",
         "gerekce": "ısıl gömme somun: baskı parçasının boss'unun içinde, baskıdan sonra takılı (hazırlık); ev sahibi parçayla gelir, kendi başına görünmesi beklenmez"
@@ -30512,6 +30353,11 @@
         "id": "p0130",
         "ad": "Isıl gömme somun M3 (çatalda)",
         "gerekce": "ısıl gömme somun: baskı parçasının boss'unun içinde, baskıdan sonra takılı (hazırlık); ev sahibi parçayla gelir, kendi başına görünmesi beklenmez"
+       },
+       {
+        "id": "p0189",
+        "ad": "625ZZ rulman (iç bilezik)",
+        "gerekce": "perdelenme (26 yön, dik izdüşüm): parça yerindeyken hiçbir yönden görünmez; 625ZZ rulman iç bileziği kol çatalının arka kolundaki Ø16 yuvada, mafsal pulu ve cıvata başının altında. Okur onu sıralı takmada (Boşluk) yerine giderken görür; alt adım karesindeki piksel ölçümü F10f-gunluk.md Düzeltme turu 1"
        },
        {
         "id": "p0201",
@@ -30548,7 +30394,7 @@
      }
     ],
     "alt_gizli_istisnasiz": 0,
-    "alt_istisna": 4
+    "alt_istisna": 6
    },
    {
     "adim": 41,
@@ -30717,16 +30563,16 @@
    {
     "adim": 43,
     "kod": "H0b",
-    "yeni": 4,
+    "yeni": 2,
     "gizli": 0,
     "gizli_parca": 0,
     "gizli_baglanti": 0,
     "gizli_liste": [],
     "grup": [
      {
-      "grup": "Sağ kol: dirsek hornu + merkez vidası",
+      "grup": "Sağ kol: dirsek hornu",
       "tezgah": "",
-      "yeni": 2,
+      "yeni": 1,
       "gizli": 0,
       "gizli_liste": [],
       "alt_adim": 1,
@@ -30734,9 +30580,9 @@
       "gizli_istisnasiz": []
      },
      {
-      "grup": "Sol kol: dirsek hornu + merkez vidası",
+      "grup": "Sol kol: dirsek hornu",
       "tezgah": "",
-      "yeni": 2,
+      "yeni": 1,
       "gizli": 0,
       "gizli_liste": [],
       "alt_adim": 2,
@@ -30750,7 +30596,7 @@
    {
     "adim": 44,
     "kod": "H0c",
-    "yeni": 26,
+    "yeni": 28,
     "gizli": 5,
     "gizli_parca": 3,
     "gizli_baglanti": 2,
@@ -30783,9 +30629,9 @@
     ],
     "grup": [
      {
-      "grup": "Dirsek çatalı + pim (sağ + sol)",
+      "grup": "Dirsek çatalı + horn merkez vidası + pim (sağ + sol)",
       "tezgah": "",
-      "yeni": 26,
+      "yeni": 28,
       "gizli": 5,
       "gizli_liste": [
        {
@@ -31247,10 +31093,10 @@
     "alt_istisna": 5
    }
   ],
-  "toplam_gizli": 262,
-  "sure_s": 130.5,
+  "toplam_gizli": 264,
+  "sure_s": 115.0,
   "alt_adim_gizli_istisnasiz": 0,
-  "alt_adim_istisna": 115,
+  "alt_adim_istisna": 117,
   "alt_sinir": 0,
   "gecti": true
  },
@@ -35791,6 +35637,6 @@
   "hata": [],
   "gecti": true,
   "bolum": 38,
-  "sure_s": 38.4
+  "sure_s": 38.2
  }
 }

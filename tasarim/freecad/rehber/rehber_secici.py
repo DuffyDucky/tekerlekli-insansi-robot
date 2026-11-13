@@ -163,11 +163,15 @@ ADIMLAR = [
     # ------------------------------------------------ kollar
     ("G0", "gobek", _ve(_O, _ad("Omuz gobegi", "S1 kablo tamburu", "Tambur civatasi", "Isil gomme somun M3 (gobekte)"))),
     ("G1", None, _ve(_O, _g("Omuz_gobegi"), _degil(_ad("S2", "625ZZ", "Mafsal", "M5 (gobekte)")))),
+    # K56 (Ahmet, 13.11.2026, seçenek C; planlama/d158/karar-kuyrugu.md): 625ZZ tezgâhta kol çatalına preslenir, iç bilezik dış
+    # bilezikle (çatalla) G3'te gelir; mafsal pulu + mafsal cıvatası G3'te çataldan sonra (omuz_rapor.py SIRA 2 ve 9). Eskiden G2'de.
+    ("G3", None, _ve(_O, _g("Omuz_gobegi"), _ad("625ZZ", "Mafsal"))),
     ("G2", None, _ve(_O, _g("Omuz_gobegi"))),
     ("G3", None, _ve(_O, _g("Ust_kol"))),
     ("G4", None, _ve(_K, _ad("aset", "Kaset"))),
     ("H0a", "dirsek", _ve(_D, _ad("On kol govdesi", "Dirsek servosu", "Bilek servosu"), _degil(_ad("horn")))),
-    ("H0b", "dirsek", _ve(_D, _ad("Dirsek horn"))),
+    # K57 (Ahmet, 13.11.2026, seçenek a): dirsek horn merkez vidası H0c'de, dirsek çatalından sonra (eskiden H0b'de)
+    ("H0b", "dirsek", _ve(_D, _ad("Dirsek horn"), _degil(_ad("merkez vidasi")))),
     ("H0c", "dirsek", _ve(_D, _veya(_g("Dirsek_ust"), _g("On_kol")), _degil(_ad("Bilezik")))),
     ("H0d", "dirsek", _ve(_D, _ad("Bilek horn"))),
     ("H0e", "dirsek", _ve(_D, _ad("Bilek flansi", "Flans-horn"))),

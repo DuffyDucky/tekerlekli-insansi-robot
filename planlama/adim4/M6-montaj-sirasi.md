@@ -89,6 +89,8 @@ Sütunlar:
 - **Tezgâh:** alt montaj masada yapılır; engel yalnız o alt montajın parçalarıdır.
 - **Çekiç somun ve ısıl gömme:** alet istemez. Isıl gömme somunlar baskıdan hemen sonra havyayla takılır (M7 kuponuna göre).
 
+**Not (14.11.2026):** Aşağıdaki tablo 125 cm erişim analizinin dondurulmuş kaydıdır. Güncel montaj sırası K56 / K57 kararlarıyla (Ahmet, 13.11.2026) değişti: 39 (G2) satırındaki mafsal (625ZZ, pul, M5×12) artık 40 (G3) adımında kol çatalıyla, 43 (H0b) satırındaki dirsek horn merkez vidası 44 (H0c) adımında dirsek çatalından sonra takılır. Geçerli sıra için montaj rehberine ve `planlama/d158/karar-kuyrugu.md` K56 / K57'ye bakın.
+
 | No | Kod | Parça / iş | Bağlantı elemanı | Alet | Erişim, not |
 |---|---|---|---|---|---|
 | 1 | A1 | Şase çerçevesi: 2 uzun + 3 ara ray, 8 iç köşe bağlantı | 16 × M6×10 DIN 913 set vida | alyan 3 | düz |

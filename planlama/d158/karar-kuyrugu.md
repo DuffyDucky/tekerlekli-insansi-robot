@@ -68,11 +68,11 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K53 | Ön şarj kartı burcu × elektronik katı (B6'da kat inerken girişim) | **açık** (F10b) | a + iii: katta 1,5 mm çentik, bir sonraki tam taramalı pakette; o zamana dek rehber B6 notu | Lazer kesim dosyası (elektronik katı), rehber B6 adımı (F10c), çakışma taraması kaynağı |
 | K54 | E3 kafa inişinde sıfır boşluk (yanaklar arası 54,4 mm ↔ yığın 54,4 mm) | **açık** (F10c) | c: ilk baskı kuponunda dene; zorlarsa b (yanak iç yüzlerine 0,2–0,3 mm pay) | Kafa iskeleti baskısı (Parti kuponu), rehber E3 notu, çakışma taraması kaynağı (b seçilirse) |
 | K55 | Kabuk bindirme dilleri: etek ön, göğüs ve omuz bantları, göğüs ekranı çerçevesi düz yoldan yerine girmiyor | **açık** (F10d) | Etek ön için c (iki bacaklı yol ölçülsün); göğüs, omuz, çerçeve için a geçici (kuponda denensin), b bir sonraki geometri paketinde | Rehber F1 / F3 / F4 takma metni, kabuk baskısı (Parti kuponu), kabuk çakışma taraması (b seçilirse) |
-| K56 | Kol çatalı + 625ZZ rulmanının takılma sırası (G2 / G3, adım 39 ↔ 40.1) | **açık** (F10f; Ahmet 13.11 C kararını verdi, uygulama F10g, kontrol bekliyor) | C: rulman çatala tezgâhta preslenir, iki bilezik çatalla gelir; pul + mafsal cıvatası 40.1'de çataldan sonra | Rehber G2 / G3 metni ve parça ataması (39 → 40), omuz montaj sırası belgesi, 40.1 dar istisnası |
-| K57 | Dirsek çatalı ↔ S2 horn merkez vidası (H0b / H0c, adım 43 ↔ 44.1) | **açık** (F10f; Ahmet 13.11 a kararını verdi, uygulama F10g, kontrol bekliyor) | Vida 44.1'e, çataldan sonra | Rehber H0b metni ve parça ataması (43 → 44), dirsek montaj sırası, 44.1 dar istisnası |
+| K56 | Kol çatalı + 625ZZ rulmanının takılma sırası (G2 / G3, adım 39 ↔ 40.1) | kapandı (13.11, Ahmet: seçenek C; uygulama F10g, kontrol GEÇER 14.11) | — | — |
+| K57 | Dirsek çatalı ↔ dirsek horn merkez vidası (H0b / H0c, adım 43 ↔ 44.1) | kapandı (13.11, Ahmet: seçenek a; uygulama F10g, kontrol GEÇER 14.11) | — | — |
 | K58 | ESP32 pin haritası (pano #8) | kapandı (14.11; orkestratör kararı, Ahmet'in 13.11 yetkilendirmesiyle) | — | — |
 
-**Açık: 52** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 6** (K5, K8, K15, K16, K17, K58). Toplam 58 madde.
+**Açık: 50** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 8** (K5, K8, K15, K16, K17, K56, K57, K58). Toplam 58 madde.
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
@@ -97,6 +97,8 @@ P10.4b (F10e, 12.11.2026) yeni madde açmadı: etek ön bandı ölçümü K55'e 
 P10.5 (F10f, 13.11.2026) kontrol raporlarının iç adı F10f-K1-a → K56, F10f-K1-b → K57 (`planlama/d158/F10f-gunluk.md` § Düzeltme turu 1
 "Karar notları", § Düzeltme turu 2 "Madde 1a ve K1 notları"; `F10f-kontrol.md` §3.2, `F10f-kontrol-2.md` §2 madde 2, `F10f-kontrol-3.md`
 §3.1 ve Y1). Rehberde sıra değişmedi; iki kalem dar istisnada ("karar bekliyor"). Açık işler sondaki bölümde.
+P10.5b (F10g, 14.11.2026) K56 (C) ve K57 (a) uygulandı, ikisi kapandı (`planlama/d158/F10g-gunluk.md`; bağımsız kontrol `F10g-kontrol.md`
+GEÇER). Yeni madde açılmadı; açık işler sondaki bölümde.
 P10.6 (pin kararı, 14.11.2026) → K58, açılıp aynı gün kapandı (`planlama/d158/pin-karari-gunluk.md` §7, §10; üç bağımsız kontrol).
 Pano cevapları (#5 mesaj #23, #6 mesaj #21, #7 mesaj #22) K1 ve K14'e not oldu; öneriler sondaki bölümde "yeni soru" satırı, yeni madde
 açılmadı.
@@ -118,8 +120,10 @@ açılmadı.
 - **Not (pano #5 mesaj #23, 13.11.2026):** Efe'nin tarafı yazdı: altıncı USB cihazı yok, sayı 5'e düzeltilsin; yazılımda da altıncı
   cihaz planı yok, kafa düzeni (B) değişmez. Aynı mesajda: ses ReSpeaker çıkışından verilirse (pano #7, sondaki "yeni soru") sayı 4'e iner.
   Bu, varsayılan a ile aynı.
-- **Durum:** açık; **cevap geldi, kapanış kaydı bekliyor** (kuyrukta kapanış Ahmet'in kararıyla yazılır). Efe'ye soruldu, pano #5
-  (`dongu-158.md:136,150, §4 K1 ve §5 günlük`); `KY/secenekler.md:336`, `KY/uygulama-notu.md:151`.
+- **Durum:** **karar verildi, kontrol bekliyor** (14.11.2026; Ahmet'in 13.11.2026 yetkilendirmesiyle orkestratör): **seçenek a**, altıncı
+  cihaz yok; ses kararıyla (aşağıda "yeni sorular" madde 1) cihaz sayısı **4**, Pi port 2 ve hub'da 2 port boş. Gerekçe
+  `planlama/adim3/kablolama-on-kararlar.md` §1. Önceki kayıt: Efe'ye soruldu, pano #5 (`dongu-158.md:136,150, §4 K1 ve §5 günlük`);
+  `KY/secenekler.md:336`, `KY/uygulama-notu.md:151`.
 
 ## K2 · AI HAT+ zarfı × arka üst cıvata boss'u
 - **Soru:** AI HAT+ 26T gelince zarfı boss'a giriyorsa boss mu taşınır, HAT yönü mü değişir?
@@ -280,7 +284,10 @@ açılmadı.
 - **Not (F4a B çekincesi, 09.11.2026):** PAM tepe 0,71 A (`uygulama-notu.md:98`); Pi tam yük tepesiyle birlikte ölçülmeden 'sınırda değil' denmez (P8.3 testi).
 - **Not (F8a P8.1, 09.11.2026):** maliyet etkisi a ve b 0 TL; c +61,20 TL (Motorobit 5 V 3 A düşürücü, stok 459; ikinci Robotistan
   163,45, stok 361); yer ve ölçü doğrulanmadı (`planlama/d158/F8a-siparis.md` §6, §9 madde 8).
-- **Durum:** açık (`KY/secenekler.md:338`, `KY/uygulama-notu.md:152`).
+- **Durum:** **karar verildi, kontrol bekliyor** (14.11.2026; Ahmet'in 13.11.2026 yetkilendirmesiyle orkestratör): **seçenek a**, PAM8403
+  D24V50F5'ten (Pi hattı). Gerekçe: D24V50F5 korumalı (SY8205 sayfası koruma yazmıyor), ses kaynağı ReSpeaker ile aynı çıkış toprağı, tepe
+  payı %32, model zaten a. Acil stopta enerjili (F3). Kablajda teyit: T4 (Pi düşük gerilim uyarısı çıkarsa c). 0 TL.
+  `planlama/adim3/kablolama-on-kararlar.md` §2. Önceki kayıt: `KY/secenekler.md:338`, `KY/uygulama-notu.md:152`.
 
 ## K11 · Göğüs ekranı 12 V dalının girişi
 - **Soru:** Dal ana anahtardan sonra mı, röle K1'in anahtarlı barasından mı alınsın? Bu, ekranın acil stopta açık kalıp kalmayacağını
@@ -292,7 +299,10 @@ açılmadı.
 - **Bloke:** P4.1, P4.2 (kablo boyu), P7.2 (göğüs ekranı montaj adımı, `R-gunluk.md:33-35`).
 - **Not (F8a P8.1, 09.11.2026):** maliyet etkisi ≈ 0 TL: iki seçenekte parçalar aynı (12 V regülatör, mini yuva, 2 A sigorta v4'te);
   kablo boyu farkı ölçülmedi (`planlama/d158/F8a-siparis.md` §6, §9 madde 8).
-- **Durum:** açık (`elektrik.md:55`).
+- **Durum:** **karar verildi, kontrol bekliyor** (14.11.2026; Ahmet'in 13.11.2026 yetkilendirmesiyle orkestratör): **seçenek a**, hat
+  sigortası yuvasının girişi sigorta kutusunun besleme ucunda (ana anahtar sonrası, röle öncesi); **acil stopta ekran açık** (hareket üretmez,
+  durumu gösterir; b'nin güvenlik kazancı yok). Giriş ≈ 0,59 A @ 12,8 V (regülatör verimi %80 varsayım). 0 TL (mini 2 A göğse ayrılmamışsa
+  +7,34). Modele / BOM'a ekleme K52'nin işi. `planlama/adim3/kablolama-on-kararlar.md` §3.
 
 ## K12 · Kafa havalandırması: mevcut yarıklar mı, 30 mm fan mı
 - **Seçenekler:** a) mevcut arka yarıklar, fan yeri ayrılı ama parça yok; b) 30 mm egzoz fanı şimdi.
@@ -325,8 +335,10 @@ açılmadı.
 - **Bloke:** P5.2, P5.3 (pano mesajı), P4.1.
 - **Not (pano #6 mesaj #21, 13.11.2026):** Efe'nin tarafı yazdı: boyun düzeni yazılım açısından kabul; tek çekince mekanik (≈ 950 mm
   HDMI'nin pan / tilt ekleminden geçmesi, ince / esnek kablo ve büküm payı bizde). Masada ≈ 1 m HDMI denemesi (soru f) cevapsız.
-- **Durum:** açık, dış teyit (`KY/uygulama-notu.md:154`; `elektrik.md` tablosu "CAD'de böyle, Efe teyidi bekliyor"). Pano #6 #21
-  yazılım tarafının kabulü; mekanik çekince ve f sorusu açık.
+- **Durum:** **karar verildi, kontrol bekliyor** (14.11.2026; Ahmet'in 13.11.2026 yetkilendirmesiyle orkestratör): **seçenek a**, CAD'deki
+  5 kablo (69,9 mm², servo kanalı %44,8); bu paketin kararları demete tel eklemedi. Şartlar: göğüs HDMI'si ince / esnek, Ø ≤ 6; pan halkası
+  ±90. Kablajda teyit: masa denemesi (pano #6 soru f, cevapsız), boyun içi dört geçiş elle, büküm. Görüntü gelmezse ayrı karar.
+  `planlama/adim3/kablolama-on-kararlar.md` §4. Önceki kayıt: `KY/uygulama-notu.md:154`.
 
 ## K15 · Omuz bölümü taraması ve omuz regresyonu — KAPANDI
 - **Seçenekler o zaman:** a) koş (~4,8 sa, `KY/uygulama-notu.md:148`); b) koşma, sonuç dosyası karışık kalsın (`carpisma-sonuc.json tek_kosu` false).
@@ -1022,7 +1034,7 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 
 ---
 
-## K56 · Kol çatalı + 625ZZ rulmanının takılma sırası (G2 / G3)
+## K56 · Kol çatalı + 625ZZ rulmanının takılma sırası (G2 / G3) — KAPANDI
 - **Soru:** Bugünkü sırada 625ZZ'nin iç bileziği, mafsal pulu ve mafsal cıvatası G2'de (adım 39) omuz göbeğine takılıyor; kol çatalı
   G3'te (40.1) gelince horn ile bu parçalar arasında kalıyor ve düz bir yoldan yerine girmiyor. Rulman ve cıvata hangi sırayla
   takılsın?
@@ -1041,21 +1053,27 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   C) Rulman çatala tezgâhta preslenir, iki bilezik çatalla birlikte uçar; pul + mafsal cıvatası 40.1'de çataldan sonra: temiz (çatal
      +x ya da −y). Değiştirdikleri: rehberde parça ataması 39 → 40 (iç bilezik, pul, cıvata) ve G2 / G3 metni; tasarım belgelerinde
      montaj sırası (G2 "karşı tarafa 625ZZ ve M5 pim"). Kaynak `omuz_rapor.py` SIRA 2: "625ZZ'yi çatalın arka koluna bastır".
-- **Bugünkü rehber (düzeltme turu 2):** C'nin yalnız rulman kısmı uygulandı: dış bilezik (p0122 / p0195) çatalla birlikte uçuyor, 40.1
+- **F10g öncesi rehber (P10.5 düzeltme turu 2):** C'nin yalnız rulman kısmı uygulandı: dış bilezik (p0122 / p0195) çatalla birlikte uçuyor, 40.1
   metni "tezgâhta önceden bastırılır, çatalla birlikte gelir" diyor; iç bilezik / pul / cıvatanın adımı değişmedi (39). Çatal satırı dar
   istisnada ("karar bekliyor").
 - **Not (üçüncü bakış Y1):** 39. adım metni hâlâ "Karşı tarafa 625ZZ ve M5 pim" diyor, 40.1 ise dış bileziğin çatala önceden
   bastırıldığını söylüyor; karar verilince iki metin tek sıraya çekilecek.
 - **Önerilen varsayılan:** C (uygulama ajanının önerisi; ikinci ve üçüncü bakış C'nin temiz olduğunu kendi ölçümüyle buldu). Yalnız
   öneri; karar Ahmet'te.
-- **Ölçülmedi:** alet erişimi (cıvatanın çatal takılıyken sıkılması), rulmanın çatala presle takılmasının elle denenmesi.
+- **Ölçülmedi:** alet erişimi (cıvatanın çatal takılıyken sıkılması), rulmanın çatala presle takılmasının elle denenmesi. F10g'de de
+  ölçülmedi, **açık kalır** (rehberin kaba alet modeli M5×12'yi "DUZ" buluyor; bu gerçek aletle deneme değil, `F10g-gunluk.md` § 2.2).
 - **Bloke:** rehber G2 / G3 metni ve parça ataması; omuz montaj sırası belgesi; 40.1'deki dar istisnanın kalkması.
-- **Durum:** karar verildi, uygulama kontrol bekliyor. Ahmet, 13.11.2026 ≈ 23:28: "K56 ve K57 önerdiğin gibi olsun, devam" →
-  **seçenek C**. Uygulama P10.5b (F10g, `planlama/d158/F10g-gunluk.md`); bağımsız kontrolden sonra C adımı "kapandı" yazacak.
+- **Durum:** **kapandı** (14.11.2026). Karar: Ahmet, 13.11.2026 ≈ 23:28: "K56 ve K57 önerdiğin gibi olsun, devam" → **seçenek C**.
+  Uygulama P10.5b (F10g, `planlama/d158/F10g-gunluk.md`): 625ZZ iç bilezik, mafsal pulu ve M5×12 (sağ / sol) 39 → 40, çataldan sonra;
+  rulman tezgâhta çatala preslenmiş, iki bileziğiyle çatalla gelir; 40.1'in dar istisnası kalktı; omuz SIRA'sı zaten uyumluydu.
+  Bağımsız kontrol `planlama/d158/F10g-kontrol.md`: **GEÇER** (14.11). Açık işler sondaki bölümde (F10g).
 
 ---
 
-## K57 · Dirsek çatalı ↔ S2 horn merkez vidası (H0b / H0c)
+## K57 · Dirsek çatalı ↔ dirsek horn merkez vidası (H0b / H0c) — KAPANDI
+- **Ad düzeltmesi (14.11.2026, `F10g-kontrol.md` B2):** başlık ve özet satırı önce "S2 horn merkez vidası" diyordu; bu maddenin parçası
+  dirsek hornunun merkez vidası (p0573 / p0630, "Dirsek horn merkez vidası M3"). S2 horn merkez vidası (p0120 / p0193) başka parça, adımı
+  değişmedi (40).
 - **Soru:** Horn merkez vidası H0b'de (adım 43) takılıyor; dirsek çatalı H0c'de (44.1) gelirken tek engel bu vida. Vida çataldan sonra
   mı takılsın?
 - **Ölçüm** (çatal + iki 625ZZ bileziği birlikte, +y, d 63,5; düzeltme turu 2'den sonra):
@@ -1070,10 +1088,13 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
      ataması 43 → 44, dirsek montaj sırası.
   Bugünkü sıra (vida 43'te) rehberde dar istisnayla duruyor; raporlarda başka seçenek yok.
 - **Önerilen varsayılan:** a (uygulama ajanının önerisi). Yalnız öneri; karar Ahmet'te.
-- **Ölçülmedi:** çatal takılıyken vidanın horna alet erişimi (yalnız düz yol ölçüldü); kablonun elle döşenmesi.
+- **Ölçülmedi:** çatal takılıyken vidanın horna alet erişimi (yalnız düz yol ölçüldü); kablonun elle döşenmesi. F10g'de de ölçülmedi,
+  **açık kalır** (rehberin kaba alet modeli vidayı "DUZ" buluyor; bu gerçek aletle deneme değil, `F10g-gunluk.md` § 2.2).
 - **Bloke:** rehber H0b / H0c metni ve parça ataması; dirsek montaj sırası; 44.1'deki dar istisnanın kalkması.
-- **Durum:** karar verildi, uygulama kontrol bekliyor. Ahmet, 13.11.2026 ≈ 23:28: "K56 ve K57 önerdiğin gibi olsun, devam" →
-  **seçenek a**. Uygulama P10.5b (F10g, `planlama/d158/F10g-gunluk.md`); bağımsız kontrolden sonra C adımı "kapandı" yazacak.
+- **Durum:** **kapandı** (14.11.2026). Karar: Ahmet, 13.11.2026 ≈ 23:28: "K56 ve K57 önerdiğin gibi olsun, devam" → **seçenek a**.
+  Uygulama P10.5b (F10g, `planlama/d158/F10g-gunluk.md`): dirsek horn merkez vidası (sağ / sol) 43 → 44, dirsek çatalından sonra, çatalın
+  dış kolundaki Ø9 erişim deliğinden; 44.1'in dar istisnası kalktı; `dirsek_rapor.py` SIRA 5–6 ve `dirsek/rapor.html` sıra bölümü aynı
+  sıraya çekildi. Bağımsız kontrol `planlama/d158/F10g-kontrol.md`: **GEÇER** (14.11). Açık işler sondaki bölümde (F10g).
 
 ---
 
@@ -1159,6 +1180,27 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     koyu temada patlatma konsolu; K56 / K57'de alet erişimi ve kablonun elle döşenmesi; kökteki boş dosyanın kimce silindiği (cevap
     `dongu-158.md` §5, 13.11); okunurluk sınıflamasında bağımsız ikinci göz; ilk kontrol bulgu 6 (demet kalınlığı) ve 36.5 iç ucu;
     FreeCAD tarafı ve üretici yeniden koşusu.
+- F10g'den (P10.5b, K56 + K57 uygulaması, 14.11.2026) açık iş, paketi durdurmuyor (`planlama/d158/F10g-kontrol.md` §2, §4;
+  `F10g-gunluk.md` § 7):
+  - B1: 40.1 ve 44.1 panelinde "Parçalar ve bağlantı elemanları (takma sırasıyla)" listesi metinle farklı sırada (alt adımda önce parçalar,
+    sonra bağlantı elemanları dizilir, `rehber_veri.py`). 40.1: üst kol tüpü mafsal pulu + M5×12'den, S2 horn merkez vidası çataldan sonra
+    görünüyor (metin ve `omuz_rapor.py` SIRA: horn + merkez vidası → çatal → pul + M5×12 → tüp); 44.1: dirsek horn merkez vidası M3×12
+    çatal–horn cıvatalarından önce (metin: sonra). Kontrol iki sıranın da geometride temiz olduğunu ölçtü. Çözüm: bağlantı satırlarını
+    parçaların arasına alan sıra ya da panel başlığına "önce parçalar, sonra bağlantılar" notu.
+  - B3: 40.1'deki iki yeni perdelenme gerekçesi (`gizli_ok` p0116 / p0189) kaynak olarak F10f günlüğünü gösteriyor (`gizli()` yardımcısı
+    sabit "F10f-gunluk.md Düzeltme turu 1" ekliyor); doğrusu `F10g-gunluk.md` § 2.3. Kaynak dosyada (`rehber_metin.py`) düzeltilecek,
+    bir sonraki üretimde veriye ve `kontrol.json`'a yansır.
+  - B5: `tasarim/freecad/dirsek/dirsek_rapor.py` HEAD'de de çöküyor (satır 248, boş listede `min()`); `dirsek/rapor.html`'in yalnız
+    "Montaj sırası" bölümü elle, betiğin üreteceği metinle aynı düzeltildi. Dosyanın geri kalanı 8 Ekim 2026 verisi ve görselleri
+    (parça sayısı, dirsek ekseni, grup kütleleri). Ayrı pakette boş liste koruması + raporun yeniden üretimi.
+  - B6: 43.x panelinde bağlantı elemanı yokken "Bağlantı elemanları takma sırasıyla yukarıdaki tabloda." cümlesi boş tabloyu
+    işaret ediyor (genel cümle; anlamı bozmuyor).
+  - B4 (bu C adımında yapıldı): `planlama/adim4/M6-montaj-sirasi.md` tablosunun üstüne tarihli not (tablo 125 cm analizinin dondurulmuş
+    kaydı; 39 / 43 satırlarındaki sıra K56 / K57 ile değişti). Tablo hücrelerine dokunulmadı (`m6_tablo()` ayrıştırması).
+  - Kontrolün ölçemedikleri: gerçek alet erişimi ve 625ZZ'nin elle preslenmesi (K56 / K57 "Ölçülmedi"); 565 bağlantılı tam alet
+    taraması yeniden koşulmadı (`rehber_uret.py` içinde); bağımsız uçuş ölçümü yalnız 40.1 / 44.1'in değişen ve komşu satırları (340
+    satırın tamamı değil); kareler 12 adreste iki temada statik, "tak" animasyonu izlenmedi; paket dışı çalışma ağacı dosyalarına
+    bakılmadı.
 - K58'den (pin kararı, 14.11.2026) açık iş (`planlama/d158/pin-karari-gunluk.md` §5, §7 "C adımında düzeltilecek", §10.3):
   - `planlama/maliyet.json:106` "Röle sürücü MOSFET" VBsemi IRLZ44NPBF-VB ×2 → AO3400A ×2 (+ yedek; ikinci seçenek IRLML6344) ve 2 adet
     SOT-23 → DIP adaptör kartı. Satıcı, fiyat ve stok doğrulanmadı. `maliyet.json:106, 109` notlarındaki "GPIO2" → GPIO19 (demo
@@ -1178,3 +1220,8 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   - Pi → ESP32 reset hattı: Pi GPIO'su → transistör → ESP32 EN; pin numarasını biz seçelim, `pinler.json`'a girsin (pano #7 mesaj #22
     madde 5). Pin kararına girmedi; boyundan yeni tel gerekebilir (K14 demeti).
   - Hub harici beslemeli olsun (iki dokunmatik + ESP32 + ses; pano #6 mesaj #21 madde e).
+  - **Kayıt (14.11.2026; Ahmet'in 13.11.2026 yetkilendirmesiyle orkestratör, kontrol bekliyor; `planlama/adim3/kablolama-on-kararlar.md`
+    §5–§8):** (1) ses ReSpeaker 3,5 mm → PAM8403: **kabul**; USB ses kartı kablajdan çıkar, yedek olarak siparişte; ses kartı uzatması
+    (−77,46 TL koşullu) ve L dirsek çıkar. (2) Hub harici besleme: **hayır** (hub yükü ≈ 0,1 A; geri besleme ve yeni 5 V dalı riski).
+    (3) Pi → ESP32 reset: **yeni tel yok**, bilinçli reset mevcut CP2102 DTR / RTS devresinden (Efe'ye soru taslağı). (4) Elde taşınan
+    acil stop: **karar verilmedi** (Ahmet + Efe); seçenekler ve "köprülü klemensle yer ayrılsın mı" raporun §8'inde.
