@@ -142,7 +142,8 @@ def renk_isle(V):
 
 
 # ------------------------------------------------------------------ 2) görünüm alanları (rehber_metin.py)
-GRUP_ALAN = ("ad", "is_", "kamera", "gizli_ok", "ucus_ok", "giris_ok", "piksel_ok")
+# F10f: sema_yalniz = alt adımda yalnız o grubun şemaları çizilir (kol kablo yolu uç duruş yakın kareleri; öbür yollar üst üste binmesin)
+GRUP_ALAN = ("ad", "is_", "kamera", "gizli_ok", "ucus_ok", "giris_ok", "piksel_ok", "sema_yalniz")
 ADIM_ALAN = ("baslik", "is_", "baglanti_md", "alet", "erisim", "kontrol", "kablo", "not_", "kamera")
 
 
@@ -195,6 +196,13 @@ def alan_isle(V):
             elif "saydam" in e:
                 degisen.append("%s.%d saydam (silindi)" % (kod, n + 1))
                 e.pop("saydam")
+            if g.get("kenar"):                                      # F10f düzeltme 1: kenar çizgisi alan parçalar (rehber_veri ile aynı)
+                ids = [q["id"] for q in P if q["a"] <= i and q["tur"] != "Referans" and any(d in q["ad"] for d in g["kenar"])]
+                if e.get("kenar") != ids:
+                    degisen.append("%s.%d kenar" % (kod, n + 1))
+                e["kenar"] = ids
+            elif "kenar" in e:
+                e.pop("kenar")
     return degisen
 
 

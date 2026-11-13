@@ -146,7 +146,10 @@ def kontrol(adimlar, boyut=(1400, 900)):
                 if a > 0:
                     simdi_say.setdefault(i, []).append(a)
             fark = sorted(g_simdi ^ b_simdi) + sorted(g_alt ^ b_alt)
-            b_sema = sorted(i for i, x in enumerate(V.get("semalar", [])) if x["a"] == a) if a > 0 else []
+            # F10f: sema_yalniz grubunun şeması (G4 uç duruş yakın kareleri) yalnız kendi alt adımında çizilir (app.js SEMA_YALNIZ);
+            # ana adım bakışında beklenmez, alt adım denetimi (beklenen_alt) onu kendi alt adımında arar
+            yalniz = {i for g_ in (V["adimlar"][a].get("sira_grup") or []) if g_.get("sema_yalniz") for i in (g_.get("sema") or [])}
+            b_sema = sorted(i for i, x in enumerate(V.get("semalar", [])) if x["a"] == a and i not in yalniz) if a > 0 else []
             s.update(beklenen_simdi=len(b_simdi), gorunen_simdi=len(g_simdi), beklenen_alt=len(b_alt), gorunen_alt=len(g_alt),
                      beklenen_hedef=b_hedef, gorunen_hedef=g["hedef"], eksik_mesh=[AD.get(i, i) for i in g["eksik"]],
                      fark=[AD.get(i, i) for i in fark], sema=len(g.get("sema") or []), sema_fark=sorted(set(g.get("sema") or []) ^ set(b_sema)),
@@ -547,6 +550,8 @@ if __name__ == "__main__":
     if not g.cikti:                                                     # F10e: görünüm verisi (gerçek renk, bağlandığı yer, işaret
         import rehber_gorunum                                           # noktası, rehber_metin alanları); FreeCAD'siz, iki yolda da
         rehber_gorunum.isle()
+        import rehber_kol_kablo                                         # F10f: kol içi kablo yolu şemaları (KOL_KABLO + kablo_yolu.py)
+        rehber_kol_kablo.isle(yazma=True)
     if not g.gorsel_yok:
         n = len(json.load(open(os.path.join(REHBER, "veri", "rehber-veri.json"), encoding="utf-8"))["adimlar"])
         ad = [int(x) for x in g.adimlar.split(",") if x.strip()] or list(range(n))
@@ -584,11 +589,17 @@ if __name__ == "__main__":
                 ek["sira"] = dict(durum="hata", neden="%s: %s" % (type(e).__name__, e), gecti=False)
                 ek["perdelenme"] = dict(durum="hata", neden=ek["sira"]["neden"], gecti=True)
             RS.ozet_yaz(ek["sira"], ek["perdelenme"])
+            import rehber_kol_kablo as RK                               # F10f: kol kablo yolu ↔ kaynak / adım / katı / el / metin
+            try:
+                ek["kol_kablo"] = RK.denetle(V)
+            except Exception as e:
+                ek["kol_kablo"] = dict(durum="hata", neden="%s: %s" % (type(e).__name__, e), gecti=False)
+                print("kol kablo denetimi: HATA", ek["kol_kablo"]["neden"])
         os.makedirs(CIKTI, exist_ok=True)
         json.dump(dict(tarih=time.strftime("%Y-%m-%d %H:%M"), tarayici=os.path.basename(tb), ozet=ozet, sonuc=sonuc, **ek),
                   open(os.path.join(CIKTI, "kontrol.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         kotu = [s for s in sonuc if not s["gecti"]]
-        ek_kotu = [k for k in ("telefon", "yazdir", "denetim", "sira", "perdelenme", "alt_adim") if k in ek and not ek[k]["gecti"]]
+        ek_kotu = [k for k in ("telefon", "yazdir", "denetim", "sira", "perdelenme", "alt_adim", "kol_kablo") if k in ek and not ek[k]["gecti"]]
         if ek.get("yazdir_goruntu", {}).get("eksik") or ek.get("yazdir_goruntu", {}).get("bos") or \
                 ek.get("yazdir_goruntu", {}).get("piksel_denetimi") is False:
             ek_kotu.append("yazdir_goruntu")

@@ -38,7 +38,9 @@
 # Kör noktalar (10.11 notundan): düz çizgi süpürme sıfır boşluklu geçmeleri çözemez (giriş yolu temas eden yüzleri çarpışma saymaz,
 # ama baskı toleransını bilmez: sıfır boşluklu iniş "girer" görünür); kablo demetleri, fiş boyları, klemens vida yönleri
 # modelde yok; mesh sapması büyük parçada 1–2 mm; G4 pozu kaba döndürme (eksenler horn merkezlerinden).
-import os, sys, json, math, time, struct, argparse, collections
+import os, re, sys, json, math, time, struct, argparse, collections
+DINLENME_PAY = 0.5   # mm, F10f düzeltme 2: duruşta örtüşen çiftin yol boyunca eşiği = duruş derinliği + bu pay (ışın aralığı h 0,5)
+KOL_ADIM = {36} | set(range(39, 49))   # F10f düzeltme 2: kol kablo / kol parça adımları (dize istisna anahtarı burada kabul edilmez)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROBOT = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
@@ -963,14 +965,51 @@ class Denetim:
                         yer[k] = True
                         for j in ev.get(k, []):
                             yer[j] = True
-        for r in out:                                                   # gerekçeli istisna: sira grubunda "ucus_ok" {desen: gerekçe}
-            if not r["temiz"]:
-                ok = self.A[r["adim"]]["sira_grup"][r["alt_adim"] - 1].get("ucus_ok") or {}
-                r["istisna"] = next((v for k, v in ok.items() if k in r["ad"]), None)
+        # gerekçeli istisna, sira grubunda "ucus_ok". F10f düzeltme 1 (kontrol F10f-K1): dar anahtar {parça id: dict(engel={engel id:
+        # en büyük derinlik mm}, gerekce, sinif)}: yalnız o alt adımdaki o parça, yolun tamamı süpürülünce çarptığı her engel listede
+        # ve derinliği izinli değeri aşmıyorsa istisnadır. Eski biçim {desen: gerekçe} (F10d, ad parçası) F10d'nin kendi satırları
+        # için kalır. Kullanılmayan dar anahtar (parça temiz ya da o alt adımda yok) "istisna_bos" listesine girer, denetim geçmez.
+        kullanilan = set()
+        for r in out:
+            if r["temiz"]:
+                continue
+            ok = self.A[r["adim"]]["sira_grup"][r["alt_adim"] - 1].get("ucus_ok") or {}
+            e = ok.get(r["id"])
+            if isinstance(e, dict):
+                izin = e.get("engel") or {}
+                asan = []
+                for c in r.get("carpan_hepsi") or []:
+                    eid = c["engel"].split("[")[-1].rstrip("]")
+                    if eid not in izin or c["derinlik_mm"] > izin[eid] + 1e-9:
+                        asan.append(c)
+                kullanilan.add((r["adim"], r["alt_adim"], r["id"]))
+                if asan:
+                    r["istisna_asan"] = asan
+                else:
+                    r["istisna"], r["istisna_sinif"] = e["gerekce"], e.get("sinif", "")
+                continue
+            # F10f düzeltme 2 (kontrol B2 M8): eski tür dize anahtar da kullanıldı diye işaretlenir; kullanılmayan ya da kol adımında
+            # duran dize anahtar istisna_bos'a girer (sessizce geçmez)
+            k_s = next((k for k, v in ok.items() if isinstance(v, str) and k in r["ad"]), None)
+            r["istisna"] = ok[k_s] if k_s is not None else None
+            if k_s is not None:
+                kullanilan.add((r["adim"], r["alt_adim"], k_s))
+        bos = []
+        for s_ in sorted({r["adim"] for r in out}):
+            for n_, g_ in enumerate(self.A[s_]["sira_grup"]):
+                for k_, v_ in (g_.get("ucus_ok") or {}).items():
+                    if (s_, n_ + 1, k_) not in kullanilan:
+                        bos.append(dict(adim=s_, alt_adim=n_ + 1, id=k_, neden="kullanılmayan " + ("dar" if isinstance(v_, dict) else "dize") + " anahtar"))
+                    elif isinstance(v_, str) and s_ in KOL_ADIM:
+                        bos.append(dict(adim=s_, alt_adim=n_ + 1, id=k_, neden="kol adımında dize anahtar (dar anahtar gerekir)"))
         carp = [r for r in out if not r["temiz"] and not r.get("istisna")]
         doc = " ".join(x.strip() for x in self.ucus_yolu.__doc__.split("\n"))
         return dict(yontem=doc, h_mm=G.h, esik_mm=G.esik, satir=len(out), carpisan=len(carp), carpisan_liste=carp,
-                    istisna=[r for r in out if r.get("istisna")], sinir_carpisan=0, gecti=not carp, olcum=out,
+                    istisna=[r for r in out if r.get("istisna")], istisna_bos=bos, sinir_carpisan=0,
+                    # F10f düzeltme 2: kol dışı adımlarda kör nokta kapanınca ilk kez ölçülen satırlar (düzeltilmedi, ayrı iş)
+                    olcum_kaydi=[dict(adres="%d.%d" % (r["adim"], r["alt_adim"]), id=r["id"], ad=r["ad"], engel=r.get("carpan_hepsi"))
+                                 for r in out if str(r.get("istisna_sinif", "")).startswith("ölçüm kaydı")],
+                    gecti=not carp and not bos, olcum=out,
                     sure_s=round(time.time() - t0, 1))
 
     def es_dis(self, k, E, pay=0.5):
@@ -990,16 +1029,17 @@ class Denetim:
         return out
 
     def _yol(self, G, s, alt, gad, key, H, E, u, d):
+        # F10f düzeltme 2 (kontrol B2 3.1): duruşta örtüşen çift yol boyunca da denetlenir; eşik duruş derinliği + DINLENME_PAY
         # F10d düzeltme 1 (kontrol B-5): uygulama parçayı verideki yuvarlanmamış u boyunca uçurur (app.js). u bir eksen ya da birim
         # köşegen yönüyse (tam sayı, bileşenler -1..1; ızgara adımı ≤ h·√3) tam sayı ızgarada çekilir, aynı yol; değilse parça her
         # h adımda u·t kaydırılıp yeniden ışınlanır (yon_gercek): eskiden en yakın küçük tam sayı yöne yuvarlanıyordu (0,7–5,9°),
         # cıvata deliğinin duvarını sıyırıyor görünüyordu (12 "yön yuvarlama" istisnası ölçüm aracından doğuyordu)
         t, aci = self.tam_yon(u)
         if aci <= 0.05 and max(abs(x) for x in t) <= 1:
-            r = G.yon(H, E, t, azami_mm=float(d))
+            r = G.yon(H, E, t, azami_mm=float(d), dinlenme_pay=DINLENME_PAY)
             yontem = "tam sayı yön"
         else:
-            r = G.yon_gercek(H, E, u, azami_mm=float(d))
+            r = G.yon_gercek(H, E, u, azami_mm=float(d), dinlenme_pay=DINLENME_PAY)
             yontem = "gerçek yön (h %g mm)" % G.h
         temiz = bool(r["serbest"] or not r["carpan"])
         rec = dict(adim=s, kod=self.A[s]["kod"], alt_adim=alt, grup=gad, satir=key, id=self.P[H[0]]["id"], ad=self.P[H[0]]["ad"],
@@ -1007,6 +1047,12 @@ class Denetim:
                    d_mm=round(float(d), 1), temiz=temiz)
         if not temiz:
             rec.update(yol_mm=r["yol_mm"], carpan=r["carpan"][:3])
+            # F10f düzeltme 1: dar istisna için yolun tamamı süpürülür (her engel, yol boyunca en büyük derinlik)
+            if aci <= 0.05 and max(abs(x) for x in t) <= 1:
+                rt = G.yon(H, E, t, azami_mm=float(d), tum=True, dinlenme_pay=DINLENME_PAY)
+            else:
+                rt = G.yon_gercek(H, E, u, azami_mm=float(d), tum=True, dinlenme_pay=DINLENME_PAY)
+            rec["carpan_hepsi"] = [dict(engel=c["engel"], derinlik_mm=c["derinlik_mm"]) for c in rt["carpan"]]
         return rec
 
     # ------------------------------------------------ F10d düzeltme 1 (kontrol B-2): ısıl gömme ev sahibi denetimi
@@ -1188,7 +1234,8 @@ class Denetim:
             return self.ISTISNA_GOMME
         g = (self.A[s].get("sira_grup") or [{}])[n]
         for d, gerekce in (g.get("gizli_ok") or {}).items():
-            if d in p["ad"]:
+            # F10f düzeltme 1: dar anahtar parça id (o alt adımda o parça); eski biçim ad parçası (F10d)
+            if d == p["id"] or (not re.match(r"^p\d{4}$", d) and d in p["ad"]):
                 return gerekce
         return None
 
@@ -1257,6 +1304,14 @@ def ozet_yaz(sr, pr):
         print("ucus yolu: %d satir, carpisan %d (istisnasiz; sinir 0), gerekceli istisna %d, esik %g mm, %s s" % (
             ur["satir"], ur["carpisan"], len(ur["istisna"]), ur["esik_mm"], ur["sure_s"]))
         print("  es dis (civatanin kendi somunu / isil gommesi engel sayilmadi): %d satir" % sum(1 for r in ur["olcum"] if r.get("es_dis")))
+        # F10f düzeltme 2: dinlenme payı, istisna_bos (sınır 0) ve ölçüm kaydı (kol dışı, düzeltilmedi) satırları
+        print("  dinlenme payi %s mm; istisna_bos %d (sinir 0); olcum kaydi %d" % (DINLENME_PAY, len(ur.get("istisna_bos") or []),
+                                                                                len(ur.get("olcum_kaydi") or [])))
+        for b in ur.get("istisna_bos") or []:
+            print("  ISTISNA BOS %s.%s %s: %s" % (b["adim"], b["alt_adim"], b["id"], b["neden"]))
+        for r in ur.get("olcum_kaydi") or []:
+            print("  OLCUM KAYDI %s %s %s: %s" % (r["adres"], r["id"], r["ad"][:40], "; ".join("%s %s" % (c["engel"][:40], c["derinlik_mm"])
+                                                                                          for c in r.get("engel") or [])))
         for r in ur["carpisan_liste"] + ur["istisna"]:
             print("  %s %d.%d %s %s %s yon %s (aci %s) yol %s mm: %s%s" % (
                 "ISTISNA" if r.get("istisna") else "CARPAR", r["adim"], r["alt_adim"], r["kod"], r["id"], r["ad"][:40], r["yon"],

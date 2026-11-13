@@ -163,6 +163,16 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
   pakette koşmadı, geometri 11.11 15:34 verisinden): 50/50 + alt 50/50, konsol 0, 1192 ↔ 1192, yazdırma 100 / 100, PDF 69 sayfa, en
   küçük 8,1 pt, denetim 0; F10d / F10a / F10e-dogrula 0, F9b 0, kontrol 0, regresyon 10/10. Üretim bir kez (02:04) bellek kritik
   düşünce kesildi, 07:00'da baştan koşuldu.
+- 2026-11-13 (F10f, P10.5; `planlama/d158/F10f-gunluk.md`, kontroller `F10f-kontrol.md` ve `F10f-kontrol-2.md` (düzeltme gerekli),
+  `F10f-kontrol-3.md` (geçer)): kol içi kablo yolu rehberde. Yeni `rehber_kol_kablo.py` yolu `arayuz.KOL_KABLO` + `dirsek/kablo_yolu.py`'den
+  FreeCAD'siz türetiyor (28 şema: 13 sağ + 13 sol + S1 iki uç duruşu; sol kol ayna); şema parça sayılmaz. Alt adım 50 → 71 (36, 40, 41,
+  42, 44, 48; ana adım 50, kimlikler aynı); S1 kaseti için 41.4 / 41.5 yakın kareler (aynı kamera, öbür duruş soluk iz). Kalıcı denetim
+  `kontrol.json` `kol_kablo` (kaynak ↔ veri, ayna, adım bağı, uç parça, katı içinden geçme, el erişimi, metin sayıları + birim + etiket,
+  pin deseni 0). Uçuş denetiminde duruşta örtüşen çift artık dışarıda bırakılmıyor (eşik duruş derinliği + 0,5 mm); 40.1 ve 44.1'de
+  625ZZ çatalla birlikte uçuyor. Patlatmada d ≤ 0 parça yerinde, takılana dek saydam (0,35). Üçüncü bakışın ölçümüyle: uçuş 336 satır,
+  çarpışan 0, istisna 20, `istisna_bos` 0, ölçüm kaydı 1 (31.6); 121 konum × 2 tema konsol 0; kablo kareleri zor 4 / 14, anlaşılmıyor 0;
+  PDF 75 sayfa, en küçük 8,1 pt. Son zincir 13.11 05:28–06:51 (`--veri-yok`, FreeCAD verisi 02:56): F10f / F10e / F10d / F10a-dogrula 0,
+  F9b 0, kontrol 0, regresyon aynı. Karar bekleyen: K56 (kol çatalı + 625ZZ sırası), K57 (dirsek çatalı ↔ horn merkez vidası).
 
 ## Kararlar (tasarım)
 - 09.11 (F7b): Göğüs ekranı / kafa kablo yolları (`lale158/kablo_yolu_ekran.py`) `semalar` olarak girer, `parcalar`a değil: gösterim

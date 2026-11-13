@@ -58,6 +58,7 @@ code{background:#efede7;padding:0 1mm;border-radius:.6mm;font-size:max(8.1pt,.9e
 /* F10d: alt adım kartı (görüntü solda, metin ve satırlar sağda) */
 .altkart{display:grid;grid-template-columns:76mm 1fr;gap:3mm;border-top:.3mm solid var(--line);padding:1.6mm 0;break-inside:avoid}
 .agorsel{width:76mm;height:45.6mm;object-fit:contain;background:var(--zemin);border-radius:1.2mm;display:block}
+.lej{font-size:8.1pt;color:var(--mut);line-height:1.3;margin-top:.8mm;width:76mm}.lej.ana{width:auto}
 .agorsel-yok{width:76mm;height:45.6mm;display:grid;place-items:center;background:var(--zemin);color:var(--mut);border-radius:1.2mm}
 h3{font-size:1.05em;margin:0 0 .8mm}
 tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
@@ -84,6 +85,21 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
   var GR = {};
   V.parcalar.forEach(function (p) { GR[p.id] = p.renk || p.gr; });
   function ornek(x, yedek) { var c = x.ids && GR[x.ids[0]]; return c || yedek; }
+  // F10f düzeltme 2 (kontrol F10f-kontrol-2 §4): kol kablo şemalarının kare içi lejantı basılı ölçekte ≈ 2,5 pt kalıyordu (1000 px tuvalde
+  // CSS 12 px, kare 76 mm). Karenin altında metin olarak (≥ 8,1 pt): şemanın rengi ve app.js lejantındaki adı; soluk iz ayrıca.
+  function lejantMetin(sema, iz) {
+    var L = [];
+    function ekle(i, soluk) {
+      var x = SEMA[i]; if (!x || !x.lejant) return;
+      var ad = x.lejant + (soluk ? " (soluk: öbür uç duruş)" : "");
+      if (!L.some(function (y) { return y[1] === ad; })) L.push([x.renk, ad, soluk]);
+    }
+    (sema || []).forEach(function (i) { ekle(i, false); });
+    (iz || []).forEach(function (i) { ekle(i, true); });
+    return L.length ? "<div class='lej'>Karede: " + L.map(function (y) {
+      return "<span><i class='sw' style='background:" + y[0] + (y[2] ? ";opacity:.35" : "") + "'></i>" + esc(y[1]) + "</span>";
+    }).join(" · ") + "</div>" : "";
+  }
 
   // F7c (D-3): adım bloklara bölünür; sığmazsa bloklar sondan "devam" sayfasına taşınır. Yazı 8,5 pt'nin, küçük öğeler 8,1 pt'nin altına inmez.
   var FS_MAX = 9.6, FS_MIN = 8.5, GH_MAX = 84, GH_MIN = 46;
@@ -128,8 +144,8 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
     // F10d: alt adım kartları (görüntü goruntu/adim-NN-JJ.png, rehber_uret.py ?adim=N.J&sahne=1)
     (st.alt ? st.sira_grup : []).forEach(function (g, n) {
       var j = n + 1, ad = s + "." + j;
-      b.push({ tur: "alt", h: "<div class='altkart'><img class='agorsel' alt='Alt adım " + ad + " 3B görünüm' src='goruntu/adim-" + iki(s) + "-" + iki(j) +
-        ".png' onerror=\"this.outerHTML='<div class=agorsel-yok>Görüntü yok</div>'\"><div><h3>" + ad + " · " + esc(g.ad) + "</h3>" +
+      b.push({ tur: "alt", h: "<div class='altkart'><div><img class='agorsel' alt='Alt adım " + ad + " 3B görünüm' src='goruntu/adim-" + iki(s) + "-" + iki(j) +
+        ".png' onerror=\"this.outerHTML='<div class=agorsel-yok>Görüntü yok</div>'\">" + lejantMetin(g.sema, g.iz) + "</div><div><h3>" + ad + " · " + esc(g.ad) + "</h3>" +
         (g.is_ ? "<div class='is'>" + md(g.is_) + "</div>" : "") +
         (g.satir.length ? "<table>" + g.satir.map(function (k) { return satir(st, k); }).join("") + "</table>" : "") + "</div></div>" });
     });
@@ -145,6 +161,10 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
       if (st.no && st.no !== "0") roz.push("<span class='rozet'>M6 no " + esc(st.no) + "</span>");
       h.push("<h1>" + s + ". " + esc(st.baslik) + "</h1><div class='rozetler'>" + roz.join("") + "</div>");
       h.push("<img class='gorsel' alt='Adım " + s + " 3B görünüm' src='goruntu/adim-" + iki(s) + ".png' onerror=\"this.outerHTML='<div class=gorsel-yok>Görüntü yok: <code>rehber_uret.py</code> ile üret</div>'\">");
+      // F10f düzeltme 2: ana adım karesinin kol kablo şemaları (yalnız kendi alt adımında çizilenler hariç) karenin altında metin olarak
+      var yalniz = {};
+      (st.sira_grup || []).forEach(function (g) { if (g.sema_yalniz) (g.sema || []).forEach(function (i) { yalniz[i] = 1; }); });
+      h.push(lejantMetin(SEMA.map(function (x, i) { return i; }).filter(function (i) { return SEMA[i].a === s && !yalniz[i]; }), []).replace("class='lej'", "class='lej ana'"));
       var np = st.parcalar.reduce(function (a, b) { return a + b.adet; }, 0), nb = st.baglantilar.reduce(function (a, b) { return a + b.adet; }, 0);
       h.push("<div class='kpi'><div><b>~" + st.sure_dk + " dk</b><span>süre" + (st.sure_tahmini ? " (tahmini)" : "") + "</span></div>" +
         "<div><b>" + np + "</b><span>parça</span></div><div><b>" + (st.alet ? md(st.alet) : "—") + "</b><span>alet</span></div>" +

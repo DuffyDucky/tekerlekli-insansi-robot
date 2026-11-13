@@ -103,6 +103,14 @@ def _kesisir(alo, ahi, blo, bhi, pay=0.0):
     return bool(np.all(ahi >= blo - pay) and np.all(alo <= bhi + pay))
 
 
+def _dinlenme_suz(c, dinlenme, pay):
+    """Duruşta zaten ortak olan çiftleri ayıkla. pay None: eski kural (çift yol boyunca hiç sayılmaz). pay sayı (F10f düzeltme 2):
+    çift başına eşik = duruş derinliği + pay; aşan derinlik çarpışmadır."""
+    if pay is None:
+        return {k: v for k, v in c.items() if k not in dinlenme}
+    return {k: v for k, v in c.items() if k not in dinlenme or v[0] > dinlenme[k][0] + pay}
+
+
 class Giris:
     def __init__(self, P, h=0.25, esik=ESIK):
         self.P, self.h, self.esik = P, float(h), float(esik)
@@ -148,8 +156,18 @@ class Giris:
                         out[(int(hk), int(e))] = (max(x[0], float(ov[mm].max())), x[1] + int(mm.sum()))
         return out
 
-    def yon(self, H, E, d, azami_mm=600.0):
-        """d (tam sayı yön, ör. (0, 1, 0)) boyunca çekme. Döner: dict(serbest, yol_mm, carpan, dinlenme)."""
+    @staticmethod
+    def _birles(acc, c):
+        for k, v in c.items():
+            x = acc.get(k, (0.0, 0))
+            acc[k] = (max(x[0], v[0]), x[1] + v[1])
+
+    def yon(self, H, E, d, azami_mm=600.0, tum=False, dinlenme_pay=None):
+        """d (tam sayı yön, ör. (0, 1, 0)) boyunca çekme. Döner: dict(serbest, yol_mm, carpan, dinlenme). F10f düzeltme 1: tum=True
+        ise ilk çarpışmada durmaz, yolun tamamı süpürülür; carpan her (hareketli, engel) çiftinin yol boyunca en büyük derinliği,
+        yol_mm ilk çarpışmaya kadar (dar istisna anahtarı: engel parça + en büyük derinlik). F10f düzeltme 2 (kontrol B2 3.1):
+        dinlenme_pay verilirse duruşta örtüşen çift yol boyunca tümden dışarıda bırakılmaz; derinliği duruş derinliği + pay'ı aşan
+        adım çarpışmadır (sıkı geçme yuvadan uçan rulman yuvanın omzundan geçiyordu, görünmüyordu)."""
         d = np.asarray(d, np.int64)
         adim_mm = self.h * float(np.linalg.norm(d))
         hlo, hhi = _kutu(self.P, H)
@@ -165,15 +183,23 @@ class Giris:
         # hareketli parçalardan engel kutusuna hiç girmeyecek olanlar (yön boyunca) ölçülmez
         H2 = [k for k in H if _kesisir(np.minimum(self.P[k]["bmin"], self.P[k]["bmin"] + D * n_max),
                                        np.maximum(self.P[k]["bmax"], self.P[k]["bmax"] + D * n_max), elo, ehi, 1.0)]
+        acc, ilk = {}, None
         for n in range(1, n_max + 1):
             kay = d * n
             if not _kesisir(hlo + kay * self.h, hhi + kay * self.h, elo, ehi, 0.5):
+                if acc:
+                    return dict(serbest=False, yol_mm=ilk, carpan=self._liste(acc), dinlenme=self._liste(dinlenme), engel_say=len(E))
                 return dict(serbest=True, yol_mm=round(n * adim_mm, 2), carpan=[], dinlenme=self._liste(dinlenme), engel_say=len(E))
             c = self.carpisma(H2, E, kay)
-            c = {k: v for k, v in c.items() if k not in dinlenme}           # dinlenmede zaten ortak olanlar ayrı raporlanır
+            c = _dinlenme_suz(c, dinlenme, dinlenme_pay)                   # dinlenmede zaten ortak olanlar ayrı raporlanır
             if c:
-                return dict(serbest=False, yol_mm=round((n - 1) * adim_mm, 2), carpan=self._liste(c), dinlenme=self._liste(dinlenme),
-                            engel_say=len(E))
+                if not tum:
+                    return dict(serbest=False, yol_mm=round((n - 1) * adim_mm, 2), carpan=self._liste(c), dinlenme=self._liste(dinlenme),
+                                engel_say=len(E))
+                ilk = round((n - 1) * adim_mm, 2) if ilk is None else ilk
+                self._birles(acc, c)
+        if acc:
+            return dict(serbest=False, yol_mm=ilk, carpan=self._liste(acc), dinlenme=self._liste(dinlenme), engel_say=len(E))
         return dict(serbest=False, yol_mm=round(n_max * adim_mm, 2), carpan=[], dinlenme=self._liste(dinlenme), engel_say=len(E),
                     neden="azami yol")
 
@@ -218,9 +244,9 @@ class Giris:
                         out[(int(hk), int(e))] = (max(x[0], float(ov[mm].max())), x[1] + int(mm.sum()))
         return out
 
-    def yon_gercek(self, H, E, u, azami_mm=600.0, adim_mm=None):
+    def yon_gercek(self, H, E, u, azami_mm=600.0, adim_mm=None, tum=False, dinlenme_pay=None):
         """u (birim vektör, yuvarlanmamış) boyunca h mm adımla çekme: hareketli küme her adımda u·t kaydırılıp yeniden ışınlanır
-        (tam sayı ızgara adımına yuvarlama yok; uygulamanın uçurduğu eksen). Döner yon() ile aynı."""
+        (tam sayı ızgara adımına yuvarlama yok; uygulamanın uçurduğu eksen). Döner yon() ile aynı (tum da)."""
         u = np.asarray(u, float)
         u = u / (np.linalg.norm(u) or 1.0)
         adim_mm = float(adim_mm or self.h)
@@ -234,18 +260,28 @@ class Giris:
         EE = {eks: self._engel(E, eks) for eks in (0, 1, 2)}
         dinlenme = self.carpisma_ofs(H, EE, np.zeros(3))
         elo, ehi = _kutu(self.P, E)
+        acc, ilk = {}, None
         for n in range(1, n_max + 1):
             ofs = D * n
             if not _kesisir(hlo + ofs, hhi + ofs, elo, ehi, 0.5):
+                if acc:
+                    return dict(serbest=False, yol_mm=ilk, carpan=self._liste(acc), dinlenme=self._liste(dinlenme), engel_say=len(E),
+                                adim_mm=adim_mm)
                 return dict(serbest=True, yol_mm=round(n * adim_mm, 2), carpan=[], dinlenme=self._liste(dinlenme), engel_say=len(E),
                             adim_mm=adim_mm)
             # yalnız kutusu engel kutusuna değen hareketli parçalar
             H2 = [k for k in H if _kesisir(self.P[k]["bmin"] + ofs, self.P[k]["bmax"] + ofs, elo, ehi, 0.5)]
             c = self.carpisma_ofs(H2, EE, ofs)
-            c = {k: v for k, v in c.items() if k not in dinlenme}
+            c = _dinlenme_suz(c, dinlenme, dinlenme_pay)
             if c:
-                return dict(serbest=False, yol_mm=round((n - 1) * adim_mm, 2), carpan=self._liste(c), dinlenme=self._liste(dinlenme),
-                            engel_say=len(E), adim_mm=adim_mm)
+                if not tum:
+                    return dict(serbest=False, yol_mm=round((n - 1) * adim_mm, 2), carpan=self._liste(c), dinlenme=self._liste(dinlenme),
+                                engel_say=len(E), adim_mm=adim_mm)
+                ilk = round((n - 1) * adim_mm, 2) if ilk is None else ilk
+                self._birles(acc, c)
+        if acc:
+            return dict(serbest=False, yol_mm=ilk, carpan=self._liste(acc), dinlenme=self._liste(dinlenme), engel_say=len(E),
+                        adim_mm=adim_mm)
         return dict(serbest=False, yol_mm=round(n_max * adim_mm, 2), carpan=[], dinlenme=self._liste(dinlenme), engel_say=len(E),
                     neden="azami yol", adim_mm=adim_mm)
 

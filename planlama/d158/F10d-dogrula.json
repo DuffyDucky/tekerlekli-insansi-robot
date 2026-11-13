@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-12 07:34",
+ "tarih": "2026-11-13 06:32",
  "adim": 50,
  "alt_adimli": [
   21,
@@ -8,15 +8,20 @@
   34,
   35,
   36,
+  40,
+  41,
+  42,
   43,
+  44,
   45,
   46,
+  48,
   49
  ],
  "gezinme": {
-  "konum_sayisi": 100,
+  "konum_sayisi": 121,
   "ana_adim": 50,
-  "alt_adim": 50,
+  "alt_adim": 71,
   "sayfa_konumlari_esit": true,
   "ileri_esit": true,
   "geri_esit": true,
@@ -31,7 +36,7 @@
     ],
     "sayac": "Adım 21 / 49 · alt adım 1 / 2",
     "secim": "21.1",
-    "cubuk": "22.2222%",
+    "cubuk": "18.3333%",
     "alt_baglanti": 3,
     "gecti": true
    },
@@ -44,7 +49,7 @@
     ],
     "sayac": "Adım 21 / 49 · alt adım 2 / 2",
     "secim": "21.2",
-    "cubuk": "23.2323%",
+    "cubuk": "19.1667%",
     "alt_baglanti": 3,
     "gecti": true
    },
@@ -57,7 +62,7 @@
     ],
     "sayac": "Adım 31 / 49 · alt adım 1 / 10",
     "secim": "31.1",
-    "cubuk": "34.3434%",
+    "cubuk": "28.3333%",
     "alt_baglanti": 11,
     "gecti": true
    },
@@ -70,7 +75,7 @@
     ],
     "sayac": "Adım 31 / 49 · alt adım 10 / 10",
     "secim": "31.10",
-    "cubuk": "43.4343%",
+    "cubuk": "35.8333%",
     "alt_baglanti": 11,
     "gecti": true
    },
@@ -83,7 +88,7 @@
     ],
     "sayac": "Adım 33 / 49 · alt adım 1 / 10",
     "secim": "33.1",
-    "cubuk": "46.4646%",
+    "cubuk": "38.3333%",
     "alt_baglanti": 11,
     "gecti": true
    },
@@ -96,7 +101,7 @@
     ],
     "sayac": "Adım 33 / 49 · alt adım 10 / 10",
     "secim": "33.10",
-    "cubuk": "55.5556%",
+    "cubuk": "45.8333%",
     "alt_baglanti": 11,
     "gecti": true
    },
@@ -109,7 +114,7 @@
     ],
     "sayac": "Adım 34 / 49 · alt adım 1 / 9",
     "secim": "34.1",
-    "cubuk": "57.5758%",
+    "cubuk": "47.5%",
     "alt_baglanti": 10,
     "gecti": true
    },
@@ -122,7 +127,7 @@
     ],
     "sayac": "Adım 34 / 49 · alt adım 9 / 9",
     "secim": "34.9",
-    "cubuk": "65.6566%",
+    "cubuk": "54.1667%",
     "alt_baglanti": 10,
     "gecti": true
    },
@@ -135,7 +140,7 @@
     ],
     "sayac": "Adım 35 / 49 · alt adım 1 / 5",
     "secim": "35.1",
-    "cubuk": "67.6768%",
+    "cubuk": "55.8333%",
     "alt_baglanti": 6,
     "gecti": true
    },
@@ -148,7 +153,7 @@
     ],
     "sayac": "Adım 35 / 49 · alt adım 5 / 5",
     "secim": "35.5",
-    "cubuk": "71.7172%",
+    "cubuk": "59.1667%",
     "alt_baglanti": 6,
     "gecti": true
    },
@@ -159,22 +164,100 @@
      36,
      1
     ],
-    "sayac": "Adım 36 / 49 · alt adım 1 / 3",
+    "sayac": "Adım 36 / 49 · alt adım 1 / 5",
     "secim": "36.1",
-    "cubuk": "73.7374%",
+    "cubuk": "60.8333%",
+    "alt_baglanti": 6,
+    "gecti": true
+   },
+   {
+    "adres": "36.5",
+    "hazir": true,
+    "konum": [
+     36,
+     5
+    ],
+    "sayac": "Adım 36 / 49 · alt adım 5 / 5",
+    "secim": "36.5",
+    "cubuk": "64.1667%",
+    "alt_baglanti": 6,
+    "gecti": true
+   },
+   {
+    "adres": "40.1",
+    "hazir": true,
+    "konum": [
+     40,
+     1
+    ],
+    "sayac": "Adım 40 / 49 · alt adım 1 / 3",
+    "secim": "40.1",
+    "cubuk": "68.3333%",
     "alt_baglanti": 4,
     "gecti": true
    },
    {
-    "adres": "36.3",
+    "adres": "40.3",
     "hazir": true,
     "konum": [
-     36,
+     40,
      3
     ],
-    "sayac": "Adım 36 / 49 · alt adım 3 / 3",
-    "secim": "36.3",
-    "cubuk": "75.7576%",
+    "sayac": "Adım 40 / 49 · alt adım 3 / 3",
+    "secim": "40.3",
+    "cubuk": "70%",
+    "alt_baglanti": 4,
+    "gecti": true
+   },
+   {
+    "adres": "41.1",
+    "hazir": true,
+    "konum": [
+     41,
+     1
+    ],
+    "sayac": "Adım 41 / 49 · alt adım 1 / 6",
+    "secim": "41.1",
+    "cubuk": "71.6667%",
+    "alt_baglanti": 7,
+    "gecti": true
+   },
+   {
+    "adres": "41.6",
+    "hazir": true,
+    "konum": [
+     41,
+     6
+    ],
+    "sayac": "Adım 41 / 49 · alt adım 6 / 6",
+    "secim": "41.6",
+    "cubuk": "75.8333%",
+    "alt_baglanti": 7,
+    "gecti": true
+   },
+   {
+    "adres": "42.1",
+    "hazir": true,
+    "konum": [
+     42,
+     1
+    ],
+    "sayac": "Adım 42 / 49 · alt adım 1 / 3",
+    "secim": "42.1",
+    "cubuk": "77.5%",
+    "alt_baglanti": 4,
+    "gecti": true
+   },
+   {
+    "adres": "42.3",
+    "hazir": true,
+    "konum": [
+     42,
+     3
+    ],
+    "sayac": "Adım 42 / 49 · alt adım 3 / 3",
+    "secim": "42.3",
+    "cubuk": "79.1667%",
     "alt_baglanti": 4,
     "gecti": true
    },
@@ -187,7 +270,7 @@
     ],
     "sayac": "Adım 43 / 49 · alt adım 1 / 2",
     "secim": "43.1",
-    "cubuk": "83.8384%",
+    "cubuk": "80.8333%",
     "alt_baglanti": 3,
     "gecti": true
    },
@@ -200,8 +283,34 @@
     ],
     "sayac": "Adım 43 / 49 · alt adım 2 / 2",
     "secim": "43.2",
-    "cubuk": "84.8485%",
+    "cubuk": "81.6667%",
     "alt_baglanti": 3,
+    "gecti": true
+   },
+   {
+    "adres": "44.1",
+    "hazir": true,
+    "konum": [
+     44,
+     1
+    ],
+    "sayac": "Adım 44 / 49 · alt adım 1 / 3",
+    "secim": "44.1",
+    "cubuk": "83.3333%",
+    "alt_baglanti": 4,
+    "gecti": true
+   },
+   {
+    "adres": "44.3",
+    "hazir": true,
+    "konum": [
+     44,
+     3
+    ],
+    "sayac": "Adım 44 / 49 · alt adım 3 / 3",
+    "secim": "44.3",
+    "cubuk": "85%",
+    "alt_baglanti": 4,
     "gecti": true
    },
    {
@@ -213,7 +322,7 @@
     ],
     "sayac": "Adım 45 / 49 · alt adım 1 / 2",
     "secim": "45.1",
-    "cubuk": "87.8788%",
+    "cubuk": "86.6667%",
     "alt_baglanti": 3,
     "gecti": true
    },
@@ -226,7 +335,7 @@
     ],
     "sayac": "Adım 45 / 49 · alt adım 2 / 2",
     "secim": "45.2",
-    "cubuk": "88.8889%",
+    "cubuk": "87.5%",
     "alt_baglanti": 3,
     "gecti": true
    },
@@ -239,7 +348,7 @@
     ],
     "sayac": "Adım 46 / 49 · alt adım 1 / 2",
     "secim": "46.1",
-    "cubuk": "90.9091%",
+    "cubuk": "89.1667%",
     "alt_baglanti": 3,
     "gecti": true
    },
@@ -252,8 +361,34 @@
     ],
     "sayac": "Adım 46 / 49 · alt adım 2 / 2",
     "secim": "46.2",
-    "cubuk": "91.9192%",
+    "cubuk": "90%",
     "alt_baglanti": 3,
+    "gecti": true
+   },
+   {
+    "adres": "48.1",
+    "hazir": true,
+    "konum": [
+     48,
+     1
+    ],
+    "sayac": "Adım 48 / 49 · alt adım 1 / 4",
+    "secim": "48.1",
+    "cubuk": "92.5%",
+    "alt_baglanti": 5,
+    "gecti": true
+   },
+   {
+    "adres": "48.4",
+    "hazir": true,
+    "konum": [
+     48,
+     4
+    ],
+    "sayac": "Adım 48 / 49 · alt adım 4 / 4",
+    "secim": "48.4",
+    "cubuk": "95%",
+    "alt_baglanti": 5,
     "gecti": true
    },
    {
@@ -265,7 +400,7 @@
     ],
     "sayac": "Adım 49 / 49 · alt adım 1 / 5",
     "secim": "49.1",
-    "cubuk": "95.9596%",
+    "cubuk": "96.6667%",
     "alt_baglanti": 6,
     "gecti": true
    },
@@ -295,8 +430,8 @@
   "gecti": true
  },
  "panel_takma": {
-  "konum": 100,
-  "esit": 100,
+  "konum": 121,
+  "esit": 121,
   "kotu": [],
   "gecti": true,
   "olcum": [
@@ -985,6 +1120,24 @@
     "esit": true
    },
    {
+    "adres": "36.4",
+    "kod": "F4",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "36.5",
+    "kod": "F4",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
     "adres": "37",
     "kod": "G0",
     "panel": 5,
@@ -1021,6 +1174,33 @@
     "esit": true
    },
    {
+    "adres": "40.1",
+    "kod": "G3",
+    "panel": 7,
+    "takma": 7,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "40.2",
+    "kod": "G3",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "40.3",
+    "kod": "G3",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
     "adres": "41",
     "kod": "G4",
     "panel": 3,
@@ -1030,10 +1210,91 @@
     "esit": true
    },
    {
+    "adres": "41.1",
+    "kod": "G4",
+    "panel": 1,
+    "takma": 1,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "41.2",
+    "kod": "G4",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "41.3",
+    "kod": "G4",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "41.4",
+    "kod": "G4",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "41.5",
+    "kod": "G4",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "41.6",
+    "kod": "G4",
+    "panel": 2,
+    "takma": 2,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
     "adres": "42",
     "kod": "H0a",
     "panel": 8,
     "takma": 8,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "42.1",
+    "kod": "H0a",
+    "panel": 8,
+    "takma": 8,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "42.2",
+    "kod": "H0a",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "42.3",
+    "kod": "H0a",
+    "panel": 0,
+    "takma": 0,
     "panelde_takmada_yok": [],
     "takmada_panelde_yok": [],
     "esit": true
@@ -1070,6 +1331,33 @@
     "kod": "H0c",
     "panel": 7,
     "takma": 7,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "44.1",
+    "kod": "H0c",
+    "panel": 7,
+    "takma": 7,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "44.2",
+    "kod": "H0c",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "44.3",
+    "kod": "H0c",
+    "panel": 0,
+    "takma": 0,
     "panelde_takmada_yok": [],
     "takmada_panelde_yok": [],
     "esit": true
@@ -1139,6 +1427,42 @@
    },
    {
     "adres": "48",
+    "kod": "H1",
+    "panel": 3,
+    "takma": 3,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "48.1",
+    "kod": "H1",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "48.2",
+    "kod": "H1",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "48.3",
+    "kod": "H1",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "48.4",
     "kod": "H1",
     "panel": 3,
     "takma": 3,
@@ -11653,9 +11977,9 @@
      {
       "id": "p0462",
       "ad": "Isıl gömme somun M3 (S1 kaseti sağ ψ 200)",
-      "px": 33,
+      "px": 18,
       "yalniz": 187,
-      "oran": 0.176,
+      "oran": 0.096,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -11693,15 +12017,24 @@
     ],
     "istisna": [],
     "birim": null,
-    "sema": {},
+    "sema": {
+     "sema30": [
+      203,
+      3803
+     ],
+     "sema50": [
+      0,
+      3251
+     ]
+    },
     "yabanci_sema": [],
     "parca": [
      {
       "id": "p0215",
       "ad": "Omuz bandı sağ",
-      "px": 109141,
+      "px": 108953,
       "yalniz": 117661,
-      "oran": 0.928,
+      "oran": 0.926,
       "karede": false,
       "gorunur": true,
       "saydam": false
@@ -11819,9 +12152,9 @@
      {
       "id": "p0462",
       "ad": "Isıl gömme somun M3 (S1 kaseti sağ ψ 200)",
-      "px": 33,
+      "px": 18,
       "yalniz": 187,
-      "oran": 0.176,
+      "oran": 0.096,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -12071,6 +12404,6984 @@
     ],
     "saydam": [],
     "gecti": true
+   },
+   {
+    "adres": "36.4",
+    "kod": "F4",
+    "hazir": true,
+    "sinir": true,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema30": [
+      17422,
+      18543
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "36.5",
+    "kod": "F4",
+    "hazir": true,
+    "sinir": true,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema50": [
+      19231,
+      20509
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "40",
+    "kod": "G3",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 26,
+    "gorunmeyen": [
+     {
+      "id": "p0119",
+      "ad": "S2 horn 25T alüminyum disk",
+      "px": 45,
+      "yalniz": 2860,
+      "oran": 0.016,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0122",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 0,
+      "yalniz": 726,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0128",
+      "ad": "Isıl gömme somun M3 (çatalda)",
+      "px": 0,
+      "yalniz": 137,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0130",
+      "ad": "Isıl gömme somun M3 (çatalda)",
+      "px": 0,
+      "yalniz": 119,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0131",
+      "ad": "Tüp cıvatası M3x8",
+      "px": 0,
+      "yalniz": 193,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0192",
+      "ad": "S2 horn 25T alüminyum disk",
+      "px": 0,
+      "yalniz": 1253,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0193",
+      "ad": "S2 horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 132,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0194",
+      "ad": "Kol çatalı",
+      "px": 0,
+      "yalniz": 13007,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0195",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 0,
+      "yalniz": 483,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0196",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 161,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0197",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 158,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0198",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 159,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0199",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 163,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0200",
+      "ad": "Üst kol tüpü",
+      "px": 0,
+      "yalniz": 22651,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0201",
+      "ad": "Isıl gömme somun M3 (çatalda)",
+      "px": 0,
+      "yalniz": 84,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0202",
+      "ad": "Tüp cıvatası M3x8",
+      "px": 0,
+      "yalniz": 147,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0203",
+      "ad": "Isıl gömme somun M3 (çatalda)",
+      "px": 0,
+      "yalniz": 76,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0204",
+      "ad": "Tüp cıvatası M3x8",
+      "px": 0,
+      "yalniz": 130,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema23": [
+      0,
+      1319
+     ],
+     "sema24": [
+      0,
+      1874
+     ],
+     "sema25": [
+      0,
+      221
+     ],
+     "sema26": [
+      0,
+      228
+     ],
+     "sema27": [
+      0,
+      597
+     ],
+     "sema43": [
+      0,
+      736
+     ],
+     "sema44": [
+      0,
+      930
+     ],
+     "sema45": [
+      0,
+      111
+     ],
+     "sema46": [
+      0,
+      143
+     ],
+     "sema47": [
+      0,
+      333
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p0119",
+      "ad": "S2 horn 25T alüminyum disk",
+      "px": 45,
+      "yalniz": 2860,
+      "oran": 0.016,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0120",
+      "ad": "S2 horn merkez vidası M3",
+      "px": 155,
+      "yalniz": 214,
+      "oran": 0.724,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0121",
+      "ad": "Kol çatalı",
+      "px": 13384,
+      "yalniz": 23819,
+      "oran": 0.562,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0122",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 0,
+      "yalniz": 726,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0123",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 187,
+      "yalniz": 243,
+      "oran": 0.77,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0124",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 191,
+      "yalniz": 247,
+      "oran": 0.773,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0125",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 194,
+      "yalniz": 248,
+      "oran": 0.782,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0126",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 188,
+      "yalniz": 245,
+      "oran": 0.767,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0127",
+      "ad": "Üst kol tüpü",
+      "px": 34545,
+      "yalniz": 39353,
+      "oran": 0.878,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0128",
+      "ad": "Isıl gömme somun M3 (çatalda)",
+      "px": 0,
+      "yalniz": 137,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0129",
+      "ad": "Tüp cıvatası M3x8",
+      "px": 173,
+      "yalniz": 228,
+      "oran": 0.759,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0130",
+      "ad": "Isıl gömme somun M3 (çatalda)",
+      "px": 0,
+      "yalniz": 119,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0131",
+      "ad": "Tüp cıvatası M3x8",
+      "px": 0,
+      "yalniz": 193,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0192",
+      "ad": "S2 horn 25T alüminyum disk",
+      "px": 0,
+      "yalniz": 1253,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0193",
+      "ad": "S2 horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 132,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0194",
+      "ad": "Kol çatalı",
+      "px": 0,
+      "yalniz": 13007,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0195",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 0,
+      "yalniz": 483,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0196",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 161,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0197",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 158,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0198",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 159,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0199",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 163,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0200",
+      "ad": "Üst kol tüpü",
+      "px": 0,
+      "yalniz": 22651,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0201",
+      "ad": "Isıl gömme somun M3 (çatalda)",
+      "px": 0,
+      "yalniz": 84,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0202",
+      "ad": "Tüp cıvatası M3x8",
+      "px": 0,
+      "yalniz": 147,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0203",
+      "ad": "Isıl gömme somun M3 (çatalda)",
+      "px": 0,
+      "yalniz": 76,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0204",
+      "ad": "Tüp cıvatası M3x8",
+      "px": 0,
+      "yalniz": 130,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
+   },
+   {
+    "adres": "40.1",
+    "kod": "G3",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 26,
+    "gorunmeyen": [
+     {
+      "id": "p0119",
+      "ad": "S2 horn 25T alüminyum disk",
+      "px": 47,
+      "yalniz": 2857,
+      "oran": 0.016,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0122",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 0,
+      "yalniz": 725,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0128",
+      "ad": "Isıl gömme somun M3 (çatalda)",
+      "px": 0,
+      "yalniz": 138,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0130",
+      "ad": "Isıl gömme somun M3 (çatalda)",
+      "px": 0,
+      "yalniz": 118,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0131",
+      "ad": "Tüp cıvatası M3x8",
+      "px": 0,
+      "yalniz": 192,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0192",
+      "ad": "S2 horn 25T alüminyum disk",
+      "px": 0,
+      "yalniz": 1249,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0193",
+      "ad": "S2 horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 130,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0194",
+      "ad": "Kol çatalı",
+      "px": 0,
+      "yalniz": 13027,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0195",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 0,
+      "yalniz": 490,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0196",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 160,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0197",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 161,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0198",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 161,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0199",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 161,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0200",
+      "ad": "Üst kol tüpü",
+      "px": 0,
+      "yalniz": 22643,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0201",
+      "ad": "Isıl gömme somun M3 (çatalda)",
+      "px": 0,
+      "yalniz": 84,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0202",
+      "ad": "Tüp cıvatası M3x8",
+      "px": 0,
+      "yalniz": 147,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0203",
+      "ad": "Isıl gömme somun M3 (çatalda)",
+      "px": 0,
+      "yalniz": 78,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0204",
+      "ad": "Tüp cıvatası M3x8",
+      "px": 0,
+      "yalniz": 130,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p0119",
+      "ad": "S2 horn 25T alüminyum disk",
+      "px": 47,
+      "yalniz": 2857,
+      "oran": 0.016,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0120",
+      "ad": "S2 horn merkez vidası M3",
+      "px": 151,
+      "yalniz": 210,
+      "oran": 0.719,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0121",
+      "ad": "Kol çatalı",
+      "px": 13367,
+      "yalniz": 23814,
+      "oran": 0.561,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0122",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 0,
+      "yalniz": 725,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0123",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 187,
+      "yalniz": 242,
+      "oran": 0.773,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0124",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 190,
+      "yalniz": 246,
+      "oran": 0.772,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0125",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 196,
+      "yalniz": 252,
+      "oran": 0.778,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0126",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 188,
+      "yalniz": 246,
+      "oran": 0.764,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0127",
+      "ad": "Üst kol tüpü",
+      "px": 34375,
+      "yalniz": 39345,
+      "oran": 0.874,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0128",
+      "ad": "Isıl gömme somun M3 (çatalda)",
+      "px": 0,
+      "yalniz": 138,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0129",
+      "ad": "Tüp cıvatası M3x8",
+      "px": 172,
+      "yalniz": 233,
+      "oran": 0.738,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0130",
+      "ad": "Isıl gömme somun M3 (çatalda)",
+      "px": 0,
+      "yalniz": 118,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0131",
+      "ad": "Tüp cıvatası M3x8",
+      "px": 0,
+      "yalniz": 192,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0192",
+      "ad": "S2 horn 25T alüminyum disk",
+      "px": 0,
+      "yalniz": 1249,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0193",
+      "ad": "S2 horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 130,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0194",
+      "ad": "Kol çatalı",
+      "px": 0,
+      "yalniz": 13027,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0195",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 0,
+      "yalniz": 490,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0196",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 160,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0197",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 161,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0198",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 161,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0199",
+      "ad": "Çatal-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 161,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0200",
+      "ad": "Üst kol tüpü",
+      "px": 0,
+      "yalniz": 22643,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0201",
+      "ad": "Isıl gömme somun M3 (çatalda)",
+      "px": 0,
+      "yalniz": 84,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0202",
+      "ad": "Tüp cıvatası M3x8",
+      "px": 0,
+      "yalniz": 147,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0203",
+      "ad": "Isıl gömme somun M3 (çatalda)",
+      "px": 0,
+      "yalniz": 78,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0204",
+      "ad": "Tüp cıvatası M3x8",
+      "px": 0,
+      "yalniz": 130,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
+   },
+   {
+    "adres": "40.2",
+    "kod": "G3",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema23": [
+      16713,
+      17347
+     ],
+     "sema24": [
+      22836,
+      24465
+     ],
+     "sema25": [
+      2887,
+      3307
+     ],
+     "sema26": [
+      1125,
+      2163
+     ],
+     "sema27": [
+      3421,
+      5454
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "40.3",
+    "kod": "G3",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema43": [
+      16274,
+      16893
+     ],
+     "sema44": [
+      21487,
+      23024
+     ],
+     "sema45": [
+      2797,
+      3218
+     ],
+     "sema46": [
+      1209,
+      2350
+     ],
+     "sema47": [
+      3246,
+      5335
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "41",
+    "kod": "G4",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 8,
+    "gorunmeyen": [
+     {
+      "id": "p0235",
+      "ad": "S1 kaset kapağı sol",
+      "px": 362,
+      "yalniz": 17666,
+      "oran": 0.02,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0463",
+      "ad": "Kaset cıvatası M3x8 (sağ ψ 200)",
+      "px": 59,
+      "yalniz": 317,
+      "oran": 0.186,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0465",
+      "ad": "Kaset cıvatası M3x8 (sağ ψ 226)",
+      "px": 68,
+      "yalniz": 347,
+      "oran": 0.196,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0467",
+      "ad": "Kaset cıvatası M3x8 (sol ψ 200)",
+      "px": 0,
+      "yalniz": 172,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0469",
+      "ad": "Kaset cıvatası M3x8 (sol ψ 226)",
+      "px": 0,
+      "yalniz": 183,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema28": [
+      20,
+      4082
+     ],
+     "sema29": [
+      0,
+      1021
+     ],
+     "sema48": [
+      0,
+      3184
+     ],
+     "sema49": [
+      0,
+      706
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p0232",
+      "ad": "S1 kaset gövdesi sağ",
+      "px": 5769,
+      "yalniz": 18266,
+      "oran": 0.316,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0233",
+      "ad": "S1 kaset kapağı sağ",
+      "px": 15917,
+      "yalniz": 16165,
+      "oran": 0.985,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0234",
+      "ad": "S1 kaset gövdesi sol",
+      "px": 7404,
+      "yalniz": 19316,
+      "oran": 0.383,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0235",
+      "ad": "S1 kaset kapağı sol",
+      "px": 362,
+      "yalniz": 17666,
+      "oran": 0.02,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0463",
+      "ad": "Kaset cıvatası M3x8 (sağ ψ 200)",
+      "px": 59,
+      "yalniz": 317,
+      "oran": 0.186,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0465",
+      "ad": "Kaset cıvatası M3x8 (sağ ψ 226)",
+      "px": 68,
+      "yalniz": 347,
+      "oran": 0.196,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0467",
+      "ad": "Kaset cıvatası M3x8 (sol ψ 200)",
+      "px": 0,
+      "yalniz": 172,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0469",
+      "ad": "Kaset cıvatası M3x8 (sol ψ 226)",
+      "px": 0,
+      "yalniz": 183,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
+   },
+   {
+    "adres": "41.1",
+    "kod": "G4",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 2,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p0232",
+      "ad": "S1 kaset gövdesi sağ",
+      "px": 19345,
+      "yalniz": 19362,
+      "oran": 0.999,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0234",
+      "ad": "S1 kaset gövdesi sol",
+      "px": 8008,
+      "yalniz": 20856,
+      "oran": 0.384,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "41.2",
+    "kod": "G4",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema28": [
+      29158,
+      50373
+     ],
+     "sema29": [
+      10561,
+      10883
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "41.3",
+    "kod": "G4",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema48": [
+      31695,
+      53318
+     ],
+     "sema49": [
+      10957,
+      11404
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "41.4",
+    "kod": "G4",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema31": [
+      33613,
+      33784
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "41.5",
+    "kod": "G4",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema32": [
+      36397,
+      36397
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "41.6",
+    "kod": "G4",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 6,
+    "gorunmeyen": [
+     {
+      "id": "p0235",
+      "ad": "S1 kaset kapağı sol",
+      "px": 394,
+      "yalniz": 18773,
+      "oran": 0.021,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0463",
+      "ad": "Kaset cıvatası M3x8 (sağ ψ 200)",
+      "px": 59,
+      "yalniz": 344,
+      "oran": 0.172,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0465",
+      "ad": "Kaset cıvatası M3x8 (sağ ψ 226)",
+      "px": 71,
+      "yalniz": 380,
+      "oran": 0.187,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0467",
+      "ad": "Kaset cıvatası M3x8 (sol ψ 200)",
+      "px": 0,
+      "yalniz": 184,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0469",
+      "ad": "Kaset cıvatası M3x8 (sol ψ 226)",
+      "px": 0,
+      "yalniz": 194,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p0233",
+      "ad": "S1 kaset kapağı sağ",
+      "px": 16461,
+      "yalniz": 16712,
+      "oran": 0.985,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0235",
+      "ad": "S1 kaset kapağı sol",
+      "px": 394,
+      "yalniz": 18773,
+      "oran": 0.021,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0463",
+      "ad": "Kaset cıvatası M3x8 (sağ ψ 200)",
+      "px": 59,
+      "yalniz": 344,
+      "oran": 0.172,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0465",
+      "ad": "Kaset cıvatası M3x8 (sağ ψ 226)",
+      "px": 71,
+      "yalniz": 380,
+      "oran": 0.187,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0467",
+      "ad": "Kaset cıvatası M3x8 (sol ψ 200)",
+      "px": 0,
+      "yalniz": 184,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0469",
+      "ad": "Kaset cıvatası M3x8 (sol ψ 226)",
+      "px": 0,
+      "yalniz": 194,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
+   },
+   {
+    "adres": "42",
+    "kod": "H0a",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 44,
+    "gorunmeyen": [
+     {
+      "id": "p0586",
+      "ad": "Isıl gömme somun M5 (ön kolda)",
+      "px": 0,
+      "yalniz": 377,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0587",
+      "ad": "Dirsek servosu MG996R",
+      "px": 0,
+      "yalniz": 3088,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0588",
+      "ad": "Dirsek servosu çıkış mili",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0589",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0590",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0591",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0592",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0593",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0594",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0595",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0596",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0597",
+      "ad": "Bilek servosu MG996R",
+      "px": 0,
+      "yalniz": 5196,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0598",
+      "ad": "Bilek servosu çıkış mili",
+      "px": 6,
+      "yalniz": 570,
+      "oran": 0.011,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0599",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0600",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0601",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0602",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0603",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 579,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0604",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 324,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0605",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 593,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0606",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 337,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0644",
+      "ad": "Dirsek servosu MG996R",
+      "px": 440,
+      "yalniz": 6678,
+      "oran": 0.066,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0645",
+      "ad": "Dirsek servosu çıkış mili",
+      "px": 0,
+      "yalniz": 438,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0646",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 301,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0647",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 205,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0648",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 298,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0649",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 201,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0650",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 18,
+      "yalniz": 319,
+      "oran": 0.056,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0651",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 23,
+      "yalniz": 226,
+      "oran": 0.102,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0652",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 7,
+      "yalniz": 312,
+      "oran": 0.022,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0653",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 35,
+      "yalniz": 219,
+      "oran": 0.16,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0654",
+      "ad": "Bilek servosu MG996R",
+      "px": 0,
+      "yalniz": 5656,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0655",
+      "ad": "Bilek servosu çıkış mili",
+      "px": 2,
+      "yalniz": 270,
+      "oran": 0.007,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0656",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 308,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0657",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 154,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0658",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 318,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0659",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 155,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0660",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 331,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0661",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 162,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0662",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 339,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0663",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 171,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema13": [
+      0,
+      2574
+     ],
+     "sema14": [
+      97,
+      231
+     ],
+     "sema33": [
+      0,
+      1853
+     ],
+     "sema34": [
+      0,
+      390
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p0582",
+      "ad": "Ön kol gövdesi",
+      "px": 22495,
+      "yalniz": 22592,
+      "oran": 0.996,
+      "karede": false,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0586",
+      "ad": "Isıl gömme somun M5 (ön kolda)",
+      "px": 0,
+      "yalniz": 377,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0587",
+      "ad": "Dirsek servosu MG996R",
+      "px": 0,
+      "yalniz": 3088,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0588",
+      "ad": "Dirsek servosu çıkış mili",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0589",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0590",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0591",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0592",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0593",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0594",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0595",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0596",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0597",
+      "ad": "Bilek servosu MG996R",
+      "px": 0,
+      "yalniz": 5196,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0598",
+      "ad": "Bilek servosu çıkış mili",
+      "px": 6,
+      "yalniz": 570,
+      "oran": 0.011,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0599",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0600",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0601",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0602",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0603",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 579,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0604",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 324,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0605",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 593,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0606",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 337,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0639",
+      "ad": "Ön kol gövdesi",
+      "px": 25792,
+      "yalniz": 25936,
+      "oran": 0.994,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0643",
+      "ad": "Isıl gömme somun M5 (ön kolda)",
+      "px": 53,
+      "yalniz": 210,
+      "oran": 0.252,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0644",
+      "ad": "Dirsek servosu MG996R",
+      "px": 440,
+      "yalniz": 6678,
+      "oran": 0.066,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0645",
+      "ad": "Dirsek servosu çıkış mili",
+      "px": 0,
+      "yalniz": 438,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0646",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 301,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0647",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 205,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0648",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 298,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0649",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 201,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0650",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 18,
+      "yalniz": 319,
+      "oran": 0.056,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0651",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 23,
+      "yalniz": 226,
+      "oran": 0.102,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0652",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 7,
+      "yalniz": 312,
+      "oran": 0.022,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0653",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 35,
+      "yalniz": 219,
+      "oran": 0.16,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0654",
+      "ad": "Bilek servosu MG996R",
+      "px": 0,
+      "yalniz": 5656,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0655",
+      "ad": "Bilek servosu çıkış mili",
+      "px": 2,
+      "yalniz": 270,
+      "oran": 0.007,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0656",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 308,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0657",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 154,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0658",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 318,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0659",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 155,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0660",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 331,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0661",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 162,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0662",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 339,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0663",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 171,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
+   },
+   {
+    "adres": "42.1",
+    "kod": "H0a",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 44,
+    "gorunmeyen": [
+     {
+      "id": "p0586",
+      "ad": "Isıl gömme somun M5 (ön kolda)",
+      "px": 0,
+      "yalniz": 377,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0587",
+      "ad": "Dirsek servosu MG996R",
+      "px": 0,
+      "yalniz": 3088,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0588",
+      "ad": "Dirsek servosu çıkış mili",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0589",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0590",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0591",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0592",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0593",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0594",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0595",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0596",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0597",
+      "ad": "Bilek servosu MG996R",
+      "px": 0,
+      "yalniz": 5196,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0598",
+      "ad": "Bilek servosu çıkış mili",
+      "px": 6,
+      "yalniz": 570,
+      "oran": 0.011,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0599",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0600",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0601",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0602",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0603",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 579,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0604",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 324,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0605",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 593,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0606",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 337,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0644",
+      "ad": "Dirsek servosu MG996R",
+      "px": 440,
+      "yalniz": 6678,
+      "oran": 0.066,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0645",
+      "ad": "Dirsek servosu çıkış mili",
+      "px": 0,
+      "yalniz": 438,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0646",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 301,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0647",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 205,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0648",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 298,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0649",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 201,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0650",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 18,
+      "yalniz": 319,
+      "oran": 0.056,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0651",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 23,
+      "yalniz": 226,
+      "oran": 0.102,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0652",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 7,
+      "yalniz": 312,
+      "oran": 0.022,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0653",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 35,
+      "yalniz": 219,
+      "oran": 0.16,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0654",
+      "ad": "Bilek servosu MG996R",
+      "px": 0,
+      "yalniz": 5656,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0655",
+      "ad": "Bilek servosu çıkış mili",
+      "px": 2,
+      "yalniz": 270,
+      "oran": 0.007,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0656",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 308,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0657",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 154,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0658",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 318,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0659",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 155,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0660",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 331,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0661",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 162,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0662",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 339,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0663",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 171,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p0582",
+      "ad": "Ön kol gövdesi",
+      "px": 22592,
+      "yalniz": 22592,
+      "oran": 1.0,
+      "karede": false,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0586",
+      "ad": "Isıl gömme somun M5 (ön kolda)",
+      "px": 0,
+      "yalniz": 377,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0587",
+      "ad": "Dirsek servosu MG996R",
+      "px": 0,
+      "yalniz": 3088,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0588",
+      "ad": "Dirsek servosu çıkış mili",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0589",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0590",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0591",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0592",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0593",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0594",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0595",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0596",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0597",
+      "ad": "Bilek servosu MG996R",
+      "px": 0,
+      "yalniz": 5196,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0598",
+      "ad": "Bilek servosu çıkış mili",
+      "px": 6,
+      "yalniz": 570,
+      "oran": 0.011,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0599",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0600",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0601",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0602",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0603",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 579,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0604",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 324,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0605",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 593,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0606",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 337,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0639",
+      "ad": "Ön kol gövdesi",
+      "px": 25792,
+      "yalniz": 25936,
+      "oran": 0.994,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0643",
+      "ad": "Isıl gömme somun M5 (ön kolda)",
+      "px": 53,
+      "yalniz": 210,
+      "oran": 0.252,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0644",
+      "ad": "Dirsek servosu MG996R",
+      "px": 440,
+      "yalniz": 6678,
+      "oran": 0.066,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0645",
+      "ad": "Dirsek servosu çıkış mili",
+      "px": 0,
+      "yalniz": 438,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0646",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 301,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0647",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 205,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0648",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 298,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0649",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 201,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0650",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 18,
+      "yalniz": 319,
+      "oran": 0.056,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0651",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 23,
+      "yalniz": 226,
+      "oran": 0.102,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0652",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 7,
+      "yalniz": 312,
+      "oran": 0.022,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0653",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 35,
+      "yalniz": 219,
+      "oran": 0.16,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0654",
+      "ad": "Bilek servosu MG996R",
+      "px": 0,
+      "yalniz": 5656,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0655",
+      "ad": "Bilek servosu çıkış mili",
+      "px": 2,
+      "yalniz": 270,
+      "oran": 0.007,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0656",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 308,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0657",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 154,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0658",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 318,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0659",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 155,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0660",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 331,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0661",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 162,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0662",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 339,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0663",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 171,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
+   },
+   {
+    "adres": "42.2",
+    "kod": "H0a",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema13": [
+      21017,
+      21936
+     ],
+     "sema14": [
+      4426,
+      5003
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "42.3",
+    "kod": "H0a",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema33": [
+      20187,
+      21421
+     ],
+     "sema34": [
+      4257,
+      5190
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "44",
+    "kod": "H0c",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 26,
+    "gorunmeyen": [
+     {
+      "id": "p0571",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 0,
+      "yalniz": 953,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0574",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0575",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0576",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0577",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0578",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0579",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0580",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0581",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0583",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 372,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0584",
+      "ad": "Pim pulu M5",
+      "px": 0,
+      "yalniz": 223,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0585",
+      "ad": "Pim cıvatası M5x12",
+      "px": 0,
+      "yalniz": 739,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0628",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 14,
+      "yalniz": 554,
+      "oran": 0.025,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0631",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 164,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0632",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 102,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0633",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 172,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0634",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 105,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0635",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 168,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0636",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 103,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0637",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 161,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0638",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 101,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0640",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 244,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0641",
+      "ad": "Pim pulu M5",
+      "px": 6,
+      "yalniz": 192,
+      "oran": 0.031,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema15": [
+      0,
+      1
+     ],
+     "sema35": [
+      1051,
+      1887
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p0562",
+      "ad": "Dirsek çatalı",
+      "px": 11291,
+      "yalniz": 13085,
+      "oran": 0.863,
+      "karede": false,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0571",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 0,
+      "yalniz": 953,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0574",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0575",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0576",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0577",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0578",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0579",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0580",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0581",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0583",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 372,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0584",
+      "ad": "Pim pulu M5",
+      "px": 0,
+      "yalniz": 223,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0585",
+      "ad": "Pim cıvatası M5x12",
+      "px": 0,
+      "yalniz": 739,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0619",
+      "ad": "Dirsek çatalı",
+      "px": 15874,
+      "yalniz": 17777,
+      "oran": 0.893,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0628",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 14,
+      "yalniz": 554,
+      "oran": 0.025,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0631",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 164,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0632",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 102,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0633",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 172,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0634",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 105,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0635",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 168,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0636",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 103,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0637",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 161,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0638",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 101,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0640",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 244,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0641",
+      "ad": "Pim pulu M5",
+      "px": 6,
+      "yalniz": 192,
+      "oran": 0.031,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0642",
+      "ad": "Pim cıvatası M5x12",
+      "px": 217,
+      "yalniz": 388,
+      "oran": 0.559,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
+   },
+   {
+    "adres": "44.1",
+    "kod": "H0c",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 26,
+    "gorunmeyen": [
+     {
+      "id": "p0571",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 0,
+      "yalniz": 947,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0574",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0575",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0576",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0577",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0578",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0579",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0580",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0581",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0583",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 373,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0584",
+      "ad": "Pim pulu M5",
+      "px": 0,
+      "yalniz": 218,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0585",
+      "ad": "Pim cıvatası M5x12",
+      "px": 0,
+      "yalniz": 735,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0628",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 12,
+      "yalniz": 561,
+      "oran": 0.021,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0631",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 166,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0632",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 100,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0633",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 170,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0634",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 103,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0635",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 170,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0636",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 99,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0637",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 168,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0638",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 103,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0640",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 246,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0641",
+      "ad": "Pim pulu M5",
+      "px": 6,
+      "yalniz": 189,
+      "oran": 0.032,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p0562",
+      "ad": "Dirsek çatalı",
+      "px": 11274,
+      "yalniz": 13067,
+      "oran": 0.863,
+      "karede": false,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0571",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 0,
+      "yalniz": 947,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0574",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0575",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0576",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0577",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0578",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0579",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0580",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0581",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0583",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 373,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0584",
+      "ad": "Pim pulu M5",
+      "px": 0,
+      "yalniz": 218,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0585",
+      "ad": "Pim cıvatası M5x12",
+      "px": 0,
+      "yalniz": 735,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0619",
+      "ad": "Dirsek çatalı",
+      "px": 15886,
+      "yalniz": 17787,
+      "oran": 0.893,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0628",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 12,
+      "yalniz": 561,
+      "oran": 0.021,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0631",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 166,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0632",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 100,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0633",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 170,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0634",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 103,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0635",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 170,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0636",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 99,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0637",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 168,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0638",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 103,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0640",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 246,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0641",
+      "ad": "Pim pulu M5",
+      "px": 6,
+      "yalniz": 189,
+      "oran": 0.032,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0642",
+      "ad": "Pim cıvatası M5x12",
+      "px": 217,
+      "yalniz": 387,
+      "oran": 0.561,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
+   },
+   {
+    "adres": "44.2",
+    "kod": "H0c",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema15": [
+      53051,
+      53051
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "44.3",
+    "kod": "H0c",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema35": [
+      57064,
+      57064
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "48",
+    "kod": "H1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 114,
+    "gorunmeyen": [
+     {
+      "id": "p0563",
+      "ad": "Bilezik pulu M3 (baş)",
+      "px": 0,
+      "yalniz": 62,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0564",
+      "ad": "Bilezik cıvatası M3x20",
+      "px": 0,
+      "yalniz": 266,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0565",
+      "ad": "Bilezik pulu M3 (somun)",
+      "px": 0,
+      "yalniz": 60,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0566",
+      "ad": "Bilezik kontra somunu M3",
+      "px": 0,
+      "yalniz": 113,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0567",
+      "ad": "Bilezik pulu M3 (baş)",
+      "px": 0,
+      "yalniz": 62,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0568",
+      "ad": "Bilezik cıvatası M3x20",
+      "px": 0,
+      "yalniz": 263,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0569",
+      "ad": "Bilezik pulu M3 (somun)",
+      "px": 0,
+      "yalniz": 59,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0570",
+      "ad": "Bilezik kontra somunu M3",
+      "px": 0,
+      "yalniz": 110,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0571",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 0,
+      "yalniz": 516,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0572",
+      "ad": "Dirsek horn 25T alüminyum disk",
+      "px": 65,
+      "yalniz": 992,
+      "oran": 0.066,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0573",
+      "ad": "Dirsek horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 136,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0583",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 202,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0584",
+      "ad": "Pim pulu M5",
+      "px": 0,
+      "yalniz": 132,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0585",
+      "ad": "Pim cıvatası M5x12",
+      "px": 0,
+      "yalniz": 375,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0586",
+      "ad": "Isıl gömme somun M5 (ön kolda)",
+      "px": 0,
+      "yalniz": 182,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0588",
+      "ad": "Dirsek servosu çıkış mili",
+      "px": 6,
+      "yalniz": 330,
+      "oran": 0.018,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0589",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 44,
+      "yalniz": 331,
+      "oran": 0.133,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0590",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 172,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0591",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 47,
+      "yalniz": 327,
+      "oran": 0.144,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0592",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 172,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0594",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 185,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0596",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 185,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0597",
+      "ad": "Bilek servosu MG996R",
+      "px": 0,
+      "yalniz": 6078,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0598",
+      "ad": "Bilek servosu çıkış mili",
+      "px": 0,
+      "yalniz": 296,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0599",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 313,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0600",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 179,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0601",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 324,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0602",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 186,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0603",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 288,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0604",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 168,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0605",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 295,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0606",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 170,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0608",
+      "ad": "Bilek horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 116,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0609",
+      "ad": "Bilek flanşı",
+      "px": 120,
+      "yalniz": 1515,
+      "oran": 0.079,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0610",
+      "ad": "Flanş-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 136,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0611",
+      "ad": "Flanş-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 132,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0612",
+      "ad": "Flanş-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 136,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0613",
+      "ad": "Flanş-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 140,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0615",
+      "ad": "Isıl gömme somun M3 (flanşta)",
+      "px": 0,
+      "yalniz": 80,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0617",
+      "ad": "Isıl gömme somun M3 (flanşta)",
+      "px": 0,
+      "yalniz": 79,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0618",
+      "ad": "Yaka cıvatası M3x6 ISO 7381",
+      "px": 10,
+      "yalniz": 99,
+      "oran": 0.101,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0619",
+      "ad": "Dirsek çatalı",
+      "px": 0,
+      "yalniz": 10712,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0620",
+      "ad": "Bilezik pulu M3 (baş)",
+      "px": 0,
+      "yalniz": 53,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0621",
+      "ad": "Bilezik cıvatası M3x20",
+      "px": 0,
+      "yalniz": 145,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0622",
+      "ad": "Bilezik pulu M3 (somun)",
+      "px": 0,
+      "yalniz": 53,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0623",
+      "ad": "Bilezik kontra somunu M3",
+      "px": 0,
+      "yalniz": 79,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0624",
+      "ad": "Bilezik pulu M3 (baş)",
+      "px": 0,
+      "yalniz": 51,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0625",
+      "ad": "Bilezik cıvatası M3x20",
+      "px": 0,
+      "yalniz": 141,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0626",
+      "ad": "Bilezik pulu M3 (somun)",
+      "px": 0,
+      "yalniz": 53,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0627",
+      "ad": "Bilezik kontra somunu M3",
+      "px": 0,
+      "yalniz": 74,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0628",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 0,
+      "yalniz": 337,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0629",
+      "ad": "Dirsek horn 25T alüminyum disk",
+      "px": 0,
+      "yalniz": 871,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0630",
+      "ad": "Dirsek horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 74,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0631",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 102,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0632",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 60,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0633",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 105,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0634",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 63,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0635",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 102,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0636",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 62,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0637",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 101,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0638",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 58,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0639",
+      "ad": "Ön kol gövdesi",
+      "px": 0,
+      "yalniz": 15006,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0640",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 148,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0641",
+      "ad": "Pim pulu M5",
+      "px": 0,
+      "yalniz": 116,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0642",
+      "ad": "Pim cıvatası M5x12",
+      "px": 0,
+      "yalniz": 229,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0643",
+      "ad": "Isıl gömme somun M5 (ön kolda)",
+      "px": 0,
+      "yalniz": 122,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0644",
+      "ad": "Dirsek servosu MG996R",
+      "px": 0,
+      "yalniz": 3862,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0645",
+      "ad": "Dirsek servosu çıkış mili",
+      "px": 0,
+      "yalniz": 247,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0646",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 175,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0647",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 114,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0648",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 173,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0649",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 115,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0650",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 188,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0651",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 125,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0652",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 183,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0653",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 123,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0654",
+      "ad": "Bilek servosu MG996R",
+      "px": 0,
+      "yalniz": 3407,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0655",
+      "ad": "Bilek servosu çıkış mili",
+      "px": 0,
+      "yalniz": 172,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0656",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 186,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0657",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 97,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0658",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 189,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0659",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 99,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0660",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 197,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0661",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 102,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0662",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 199,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0663",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 104,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0664",
+      "ad": "Bilek horn 25T alüminyum disk",
+      "px": 0,
+      "yalniz": 510,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0665",
+      "ad": "Bilek horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 71,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0666",
+      "ad": "Bilek flanşı",
+      "px": 0,
+      "yalniz": 858,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0667",
+      "ad": "Flanş-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 89,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0668",
+      "ad": "Flanş-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 88,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0669",
+      "ad": "Flanş-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 87,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0670",
+      "ad": "Flanş-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 88,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0671",
+      "ad": "El",
+      "px": 172,
+      "yalniz": 7820,
+      "oran": 0.022,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0672",
+      "ad": "Isıl gömme somun M3 (flanşta)",
+      "px": 0,
+      "yalniz": 51,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0673",
+      "ad": "Yaka cıvatası M3x6 ISO 7380",
+      "px": 0,
+      "yalniz": 67,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0674",
+      "ad": "Isıl gömme somun M3 (flanşta)",
+      "px": 0,
+      "yalniz": 50,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0675",
+      "ad": "Yaka cıvatası M3x6 ISO 7381",
+      "px": 0,
+      "yalniz": 66,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema16": [
+      0,
+      412
+     ],
+     "sema17": [
+      0,
+      186
+     ],
+     "sema18": [
+      0,
+      1053
+     ],
+     "sema19": [
+      0,
+      968
+     ],
+     "sema20": [
+      0,
+      213
+     ],
+     "sema21": [
+      0,
+      207
+     ],
+     "sema22": [
+      0,
+      640
+     ],
+     "sema36": [
+      0,
+      245
+     ],
+     "sema37": [
+      0,
+      106
+     ],
+     "sema38": [
+      0,
+      613
+     ],
+     "sema39": [
+      0,
+      573
+     ],
+     "sema40": [
+      0,
+      119
+     ],
+     "sema41": [
+      0,
+      113
+     ],
+     "sema42": [
+      0,
+      469
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p0562",
+      "ad": "Dirsek çatalı",
+      "px": 12142,
+      "yalniz": 16668,
+      "oran": 0.728,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0563",
+      "ad": "Bilezik pulu M3 (baş)",
+      "px": 0,
+      "yalniz": 62,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0564",
+      "ad": "Bilezik cıvatası M3x20",
+      "px": 0,
+      "yalniz": 266,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0565",
+      "ad": "Bilezik pulu M3 (somun)",
+      "px": 0,
+      "yalniz": 60,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0566",
+      "ad": "Bilezik kontra somunu M3",
+      "px": 0,
+      "yalniz": 113,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0567",
+      "ad": "Bilezik pulu M3 (baş)",
+      "px": 0,
+      "yalniz": 62,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0568",
+      "ad": "Bilezik cıvatası M3x20",
+      "px": 0,
+      "yalniz": 263,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0569",
+      "ad": "Bilezik pulu M3 (somun)",
+      "px": 0,
+      "yalniz": 59,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0570",
+      "ad": "Bilezik kontra somunu M3",
+      "px": 0,
+      "yalniz": 110,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0571",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 0,
+      "yalniz": 516,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0572",
+      "ad": "Dirsek horn 25T alüminyum disk",
+      "px": 65,
+      "yalniz": 992,
+      "oran": 0.066,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0573",
+      "ad": "Dirsek horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 136,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0574",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 89,
+      "yalniz": 205,
+      "oran": 0.434,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0575",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 36,
+      "yalniz": 79,
+      "oran": 0.456,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0576",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 92,
+      "yalniz": 210,
+      "oran": 0.438,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0577",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 38,
+      "yalniz": 83,
+      "oran": 0.458,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0578",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 91,
+      "yalniz": 210,
+      "oran": 0.433,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0579",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 38,
+      "yalniz": 76,
+      "oran": 0.5,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0580",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 90,
+      "yalniz": 202,
+      "oran": 0.446,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0581",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 31,
+      "yalniz": 74,
+      "oran": 0.419,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0582",
+      "ad": "Ön kol gövdesi",
+      "px": 22793,
+      "yalniz": 23978,
+      "oran": 0.951,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0583",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 202,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0584",
+      "ad": "Pim pulu M5",
+      "px": 0,
+      "yalniz": 132,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0585",
+      "ad": "Pim cıvatası M5x12",
+      "px": 0,
+      "yalniz": 375,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0586",
+      "ad": "Isıl gömme somun M5 (ön kolda)",
+      "px": 0,
+      "yalniz": 182,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0587",
+      "ad": "Dirsek servosu MG996R",
+      "px": 2075,
+      "yalniz": 6652,
+      "oran": 0.312,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0588",
+      "ad": "Dirsek servosu çıkış mili",
+      "px": 6,
+      "yalniz": 330,
+      "oran": 0.018,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0589",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 44,
+      "yalniz": 331,
+      "oran": 0.133,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0590",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 172,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0591",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 47,
+      "yalniz": 327,
+      "oran": 0.144,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0592",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 172,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0593",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 159,
+      "yalniz": 353,
+      "oran": 0.45,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0594",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 185,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0595",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 75,
+      "yalniz": 349,
+      "oran": 0.215,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0596",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 185,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0597",
+      "ad": "Bilek servosu MG996R",
+      "px": 0,
+      "yalniz": 6078,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0598",
+      "ad": "Bilek servosu çıkış mili",
+      "px": 0,
+      "yalniz": 296,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0599",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 313,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0600",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 179,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0601",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 324,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0602",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 186,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0603",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 288,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0604",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 168,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0605",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 295,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0606",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 170,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0607",
+      "ad": "Bilek horn 25T alüminyum disk",
+      "px": 220,
+      "yalniz": 949,
+      "oran": 0.232,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0608",
+      "ad": "Bilek horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 116,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0609",
+      "ad": "Bilek flanşı",
+      "px": 120,
+      "yalniz": 1515,
+      "oran": 0.079,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0610",
+      "ad": "Flanş-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 136,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0611",
+      "ad": "Flanş-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 132,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0612",
+      "ad": "Flanş-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 136,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0613",
+      "ad": "Flanş-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 140,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0614",
+      "ad": "El",
+      "px": 8437,
+      "yalniz": 9653,
+      "oran": 0.874,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0615",
+      "ad": "Isıl gömme somun M3 (flanşta)",
+      "px": 0,
+      "yalniz": 80,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0616",
+      "ad": "Yaka cıvatası M3x6 ISO 7380",
+      "px": 43,
+      "yalniz": 105,
+      "oran": 0.41,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p0617",
+      "ad": "Isıl gömme somun M3 (flanşta)",
+      "px": 0,
+      "yalniz": 79,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0618",
+      "ad": "Yaka cıvatası M3x6 ISO 7381",
+      "px": 10,
+      "yalniz": 99,
+      "oran": 0.101,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0619",
+      "ad": "Dirsek çatalı",
+      "px": 0,
+      "yalniz": 10712,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0620",
+      "ad": "Bilezik pulu M3 (baş)",
+      "px": 0,
+      "yalniz": 53,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0621",
+      "ad": "Bilezik cıvatası M3x20",
+      "px": 0,
+      "yalniz": 145,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0622",
+      "ad": "Bilezik pulu M3 (somun)",
+      "px": 0,
+      "yalniz": 53,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0623",
+      "ad": "Bilezik kontra somunu M3",
+      "px": 0,
+      "yalniz": 79,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0624",
+      "ad": "Bilezik pulu M3 (baş)",
+      "px": 0,
+      "yalniz": 51,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0625",
+      "ad": "Bilezik cıvatası M3x20",
+      "px": 0,
+      "yalniz": 141,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0626",
+      "ad": "Bilezik pulu M3 (somun)",
+      "px": 0,
+      "yalniz": 53,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0627",
+      "ad": "Bilezik kontra somunu M3",
+      "px": 0,
+      "yalniz": 74,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0628",
+      "ad": "625ZZ rulman (dış bilezik)",
+      "px": 0,
+      "yalniz": 337,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0629",
+      "ad": "Dirsek horn 25T alüminyum disk",
+      "px": 0,
+      "yalniz": 871,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0630",
+      "ad": "Dirsek horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 74,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0631",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 102,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0632",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 60,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0633",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 105,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0634",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 63,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0635",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 102,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0636",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 62,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0637",
+      "ad": "Çatal-horn cıvatası M3x12",
+      "px": 0,
+      "yalniz": 101,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0638",
+      "ad": "Çatal-horn pulu M3 (2x DIN 125-A)",
+      "px": 0,
+      "yalniz": 58,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0639",
+      "ad": "Ön kol gövdesi",
+      "px": 0,
+      "yalniz": 15006,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0640",
+      "ad": "625ZZ rulman (iç bilezik)",
+      "px": 0,
+      "yalniz": 148,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0641",
+      "ad": "Pim pulu M5",
+      "px": 0,
+      "yalniz": 116,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0642",
+      "ad": "Pim cıvatası M5x12",
+      "px": 0,
+      "yalniz": 229,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0643",
+      "ad": "Isıl gömme somun M5 (ön kolda)",
+      "px": 0,
+      "yalniz": 122,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0644",
+      "ad": "Dirsek servosu MG996R",
+      "px": 0,
+      "yalniz": 3862,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0645",
+      "ad": "Dirsek servosu çıkış mili",
+      "px": 0,
+      "yalniz": 247,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0646",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 175,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0647",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 114,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0648",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 173,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0649",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 115,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0650",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 188,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0651",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 125,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0652",
+      "ad": "Dirsek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 183,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0653",
+      "ad": "Dirsek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 123,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0654",
+      "ad": "Bilek servosu MG996R",
+      "px": 0,
+      "yalniz": 3407,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0655",
+      "ad": "Bilek servosu çıkış mili",
+      "px": 0,
+      "yalniz": 172,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0656",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 186,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0657",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 97,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0658",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 189,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0659",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 99,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0660",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 197,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0661",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 102,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0662",
+      "ad": "Bilek servosu kulak cıvatası M4x16",
+      "px": 0,
+      "yalniz": 199,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0663",
+      "ad": "Bilek servosu kontra somunu M4",
+      "px": 0,
+      "yalniz": 104,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0664",
+      "ad": "Bilek horn 25T alüminyum disk",
+      "px": 0,
+      "yalniz": 510,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0665",
+      "ad": "Bilek horn merkez vidası M3",
+      "px": 0,
+      "yalniz": 71,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0666",
+      "ad": "Bilek flanşı",
+      "px": 0,
+      "yalniz": 858,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0667",
+      "ad": "Flanş-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 89,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0668",
+      "ad": "Flanş-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 88,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0669",
+      "ad": "Flanş-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 87,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0670",
+      "ad": "Flanş-horn cıvatası M3x8",
+      "px": 0,
+      "yalniz": 88,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0671",
+      "ad": "El",
+      "px": 172,
+      "yalniz": 7820,
+      "oran": 0.022,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0672",
+      "ad": "Isıl gömme somun M3 (flanşta)",
+      "px": 0,
+      "yalniz": 51,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0673",
+      "ad": "Yaka cıvatası M3x6 ISO 7380",
+      "px": 0,
+      "yalniz": 67,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0674",
+      "ad": "Isıl gömme somun M3 (flanşta)",
+      "px": 0,
+      "yalniz": 50,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0675",
+      "ad": "Yaka cıvatası M3x6 ISO 7381",
+      "px": 0,
+      "yalniz": 66,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
+   },
+   {
+    "adres": "48.1",
+    "kod": "H1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "48.2",
+    "kod": "H1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema16": [
+      4360,
+      4739
+     ],
+     "sema17": [
+      1883,
+      2043
+     ],
+     "sema18": [
+      9935,
+      11868
+     ],
+     "sema19": [
+      9530,
+      11016
+     ],
+     "sema20": [
+      1509,
+      2349
+     ],
+     "sema21": [
+      1589,
+      1761
+     ],
+     "sema22": [
+      8830,
+      10152
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "48.3",
+    "kod": "H1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema36": [
+      4500,
+      4878
+     ],
+     "sema37": [
+      1948,
+      2112
+     ],
+     "sema38": [
+      10381,
+      12287
+     ],
+     "sema39": [
+      9865,
+      11398
+     ],
+     "sema40": [
+      1557,
+      2411
+     ],
+     "sema41": [
+      1648,
+      1822
+     ],
+     "sema42": [
+      8574,
+      9900
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "48.4",
+    "kod": "H1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 16,
+    "gorunmeyen": [
+     {
+      "id": "p0563",
+      "ad": "Bilezik pulu M3 (baş)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0564",
+      "ad": "Bilezik cıvatası M3x20",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0565",
+      "ad": "Bilezik pulu M3 (somun)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0566",
+      "ad": "Bilezik kontra somunu M3",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0567",
+      "ad": "Bilezik pulu M3 (baş)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0568",
+      "ad": "Bilezik cıvatası M3x20",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0569",
+      "ad": "Bilezik pulu M3 (somun)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0570",
+      "ad": "Bilezik kontra somunu M3",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0620",
+      "ad": "Bilezik pulu M3 (baş)",
+      "px": 0,
+      "yalniz": 87,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0621",
+      "ad": "Bilezik cıvatası M3x20",
+      "px": 0,
+      "yalniz": 234,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0622",
+      "ad": "Bilezik pulu M3 (somun)",
+      "px": 0,
+      "yalniz": 92,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0623",
+      "ad": "Bilezik kontra somunu M3",
+      "px": 0,
+      "yalniz": 132,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0624",
+      "ad": "Bilezik pulu M3 (baş)",
+      "px": 0,
+      "yalniz": 89,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0625",
+      "ad": "Bilezik cıvatası M3x20",
+      "px": 0,
+      "yalniz": 232,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0626",
+      "ad": "Bilezik pulu M3 (somun)",
+      "px": 0,
+      "yalniz": 91,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0627",
+      "ad": "Bilezik kontra somunu M3",
+      "px": 0,
+      "yalniz": 130,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p0563",
+      "ad": "Bilezik pulu M3 (baş)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0564",
+      "ad": "Bilezik cıvatası M3x20",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0565",
+      "ad": "Bilezik pulu M3 (somun)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0566",
+      "ad": "Bilezik kontra somunu M3",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0567",
+      "ad": "Bilezik pulu M3 (baş)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0568",
+      "ad": "Bilezik cıvatası M3x20",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0569",
+      "ad": "Bilezik pulu M3 (somun)",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0570",
+      "ad": "Bilezik kontra somunu M3",
+      "px": 0,
+      "yalniz": 0,
+      "oran": 0.0,
+      "karede": false,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0620",
+      "ad": "Bilezik pulu M3 (baş)",
+      "px": 0,
+      "yalniz": 87,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0621",
+      "ad": "Bilezik cıvatası M3x20",
+      "px": 0,
+      "yalniz": 234,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0622",
+      "ad": "Bilezik pulu M3 (somun)",
+      "px": 0,
+      "yalniz": 92,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0623",
+      "ad": "Bilezik kontra somunu M3",
+      "px": 0,
+      "yalniz": 132,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0624",
+      "ad": "Bilezik pulu M3 (baş)",
+      "px": 0,
+      "yalniz": 89,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0625",
+      "ad": "Bilezik cıvatası M3x20",
+      "px": 0,
+      "yalniz": 232,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0626",
+      "ad": "Bilezik pulu M3 (somun)",
+      "px": 0,
+      "yalniz": 91,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p0627",
+      "ad": "Bilezik kontra somunu M3",
+      "px": 0,
+      "yalniz": 130,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
    },
    {
     "adres": "49",
@@ -13010,7 +20321,7 @@
     "gecti": true
    }
   ],
-  "kabuk_alt_adim": 42,
+  "kabuk_alt_adim": 44,
   "kabuk_yeni": 335,
   "kabuk_gorunmeyen": 0,
   "kabuk_istisna": 0,
@@ -13259,6 +20570,90 @@
     "hata": null
    },
    {
+    "adres": "36.4",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "36.5",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "40.1",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "40.2",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "40.3",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "41.1",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "41.2",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "41.3",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "41.4",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "41.5",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "41.6",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "42.1",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "42.2",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "42.3",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
     "adres": "43.1",
     "hazir": true,
     "tasma_px": 0,
@@ -13266,6 +20661,24 @@
    },
    {
     "adres": "43.2",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "44.1",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "44.2",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "44.3",
     "hazir": true,
     "tasma_px": 0,
     "hata": null
@@ -13290,6 +20703,30 @@
    },
    {
     "adres": "46.2",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "48.1",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "48.2",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "48.3",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "48.4",
     "hazir": true,
     "tasma_px": 0,
     "hata": null
@@ -13330,6 +20767,6 @@
  },
  "kontrol_hatasi": null,
  "goruntu": [],
- "sure_s": 521,
+ "sure_s": 725,
  "gecti": true
 }

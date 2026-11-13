@@ -48,8 +48,16 @@ KISALTMA = {
     "BMS", "KAPAK", "IPS", "JGB", "LOW", "HIGH", "WROOM", "RESPEAKER", "MIC", "DTR", "RTS",
 }
 # Türkçe harfi olmayan doğru kelimeler ve teknik terimler (küçük harf). Yeni bir ASCII kelime ekrana girerse denetim "bilinmeyen"
-# der: ya TR_EK'e karşılığı eklenir ya da gözden geçirilip buraya yazılır.
+# der: ya TR_EK'e karşılığı eklenir ya da gözden geçirilip buraya yazılır. F10f: ilk iki satır kol kablo yolu metinlerinin kelimeleri
+# (32 kelime, gözden geçirildi: Türkçe harfi olmayan doğru yazımlar; "voksel" teknik terim). Üçüncü-dördüncü satır F10f düzeltme 1
+# metinlerinin 19 yeni kelimesi (gözden geçirildi, hepsi Türkçe harfi olmayan doğru yazım). Beşinci satır F10f düzeltme 2 metin ve şema
+# adlarının 8 yeni kelimesi (gözden geçirildi, hepsi doğru yazım).
 ASCII_TAMAM = set("""
+hepsine elin ekli kolunun dayanana pulla lehimden lehimi
+artanla denenmedi ekler ekseninin ekten girdi gerilmeden hepsinden kabloyla kablonun kendisi kuruldu lopu modeldeki orada oturtma
+penceresinden pimler servosunun sokmadan somunla sonraki tabana tambura tamburda tamburdan tarama tutkalla voksel yatar yolun dereceye
+beri bekler demette eklendi indirme itme kablosuna kasetin kesintisiz lopuyla pencerede penceresinde penceresine servonun soluk
+tamburdaki uzatmalara yay yaylar
 acil active adafruit adapter adaptor adet akim al alet alma alt alttaki alttan alyan alyanla amfi ana anahtar anahtara ancak anot ara
 arazi arka arkadan arkaya array artan ay ayak ayar az bak bakar bakma bant bara baradan bas basinca bilek bilezik bileziklerine
 bindirme bindirmeleri binmiyor bir birbirine blok bobini bobinine boss boy boyda boynu boyun boyuna boyunca boyunda boyundan bozma

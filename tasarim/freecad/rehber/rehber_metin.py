@@ -37,6 +37,47 @@ def voksel_ok(px=None, kamera=None):
             "(≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil")
 
 
+# F10f düzeltme turu 1 (kontrol F10f-K1): F10f'teki geniş istisna (ad parçası, alt adımın bütün eşleşen parçaları, bütün engeller)
+# daraltıldı. Anahtar parça kimliği (o alt adımda o parça); "engel" yolun tamamında çarptığı her parça ve en büyük ortak hacim derinliği
+# (ölçülen + 0,5 mm pay = ışın aralığı h). Başka engel ya da daha derin çarpışma istisna sayılmaz (rehber_sira.ucus_yolu). İki sınıf:
+#   duruş: rehber kolu modeldeki duruşta (S1 0°, S2 0°) ve düz tek yol çizer; tasarım parçayı başka duruşta / iki parçalı yolla takar,
+#          o yol rehberin kendi ölçümüyle temiz (planlama/d158/F10f-gunluk.md, Düzeltme turu 1, F10f-K1)
+#   karar: tasarım / montaj sırası kalemi, sıra ve parça ↔ adım ataması bu pakette değişmez (karar kuyruğu; günlükte seçenekli not)
+# Pay: PAY_MM. Değerler F10f düzeltme turu 1 ölçümü (veri kopyasında rehber_sira.ucus_yolu, tum süpürme).
+PAY_MM = 0.5
+
+
+# F10f düzeltme 2 (kontrol F10f-kontrol-2 3.1, M8): iki sınıf daha.
+#   yol:         F10d'nin giriş yolu ölçümüyle "düz yol yok" gerekçeli istisnası, kol adımında (36) eski tür dize anahtardan dar anahtara
+#   ölçüm kaydı: duruşta örtüşen çift artık yol boyunca denetleniyor (rehber_sira.DINLENME_PAY); kol dışı adımlarda bununla ilk kez
+#                çıkan satırlar düzeltilmedi (kapsam dışı), dar anahtarla kayıtta (kontrol.json sira.ucus.olcum_kaydi)
+SINIF_ONEK = {"duruş": "gerekçeli duruş", "karar": "karar bekliyor (karar kuyruğu)", "yol": "gerekçeli: düz yol yok (F10d giriş yolu ölçümü)",
+              "ölçüm kaydı": "ölçüm kaydı: F10f düzeltme 2'de ilk kez ölçüldü, ayrı iş"}
+
+
+def dar(sinif, gerekce, **engel):
+    """Dar uçuş istisnası: engel = {engel parça id: ölçülen en büyük derinlik mm}; pay eklenir."""
+    return dict(sinif=sinif, gerekce="%s: %s" % (SINIF_ONEK[sinif], gerekce), engel={k: round(v + PAY_MM, 2) for k, v in engel.items()})
+
+
+K1_KOL = ("40.1 kol çatalı + 625ZZ dış bilezik: 625ZZ iç bileziği, mafsal pulu ve mafsal cıvatası G2'de (adım 39) takılı; çatal "
+          "(dış bilezik yuvasında, birlikte; F10f düzeltme 2) hiçbir düz yoldan gelemiyor, iç bileziğe ve mafsal cıvatasına çarpıyor. "
+          "Sıra ve atama değişmedi; seçenekler F10f-gunluk.md Düzeltme turu 1, karar notu K1-a")
+K1_DIRSEK = ("44.1 dirsek çatalı: dirsek horn merkez vidası H0b'de (adım 43) takılı, çatal +y yolunda vidanın başına çarpıyor. Sıra "
+             "ve atama değişmedi; seçenekler F10f-gunluk.md Düzeltme turu 1, karar notu K1-b")
+POZ_KAPAK = ("rehber kapağı modeldeki duruşta (S1 0°, S2 0°) düz tek yolla (önden, +z) son yerine getirir; flanşı gövdenin içinden "
+             "geçer. Tasarım kapağı önden, flanşı gövdeden x +3,3 mm havada getirir, sonra −x iter (S1-kaset.md K5 adım 7; S2 ≥ 30°). Bu "
+             "iki parçalı yol rehberin uçuş yolu ölçümüyle S2 30°'de (S1 0° ve −45°) temiz; S2 0°'de itmede kol çatalına değiyor")
+POZ_CIV = ("rehber ψ 200 dikme cıvatasını modeldeki duruşta (S1 0°, S2 0°) çizer; orada yolunda kol çatalı ve üst kol tüpü var. "
+           "Tasarım bu cıvatayı S1 −45° / S2 90°'de sıkar (S1-kaset.md K5 adım 8, anahtar erişimi ≥ 8 mm); rehberin uçuş yolu ölçümüyle "
+           "S1 −45° / −20° / 0° × S2 90°'de yol temiz")
+
+
+def gizli(neden):
+    return ("perdelenme (26 yön, dik izdüşüm): parça yerindeyken hiçbir yönden görünmez; " + neden + ". Okur onu sıralı takmada "
+            "(Boşluk) yerine giderken görür; alt adım karesindeki piksel ölçümü F10f-gunluk.md Düzeltme turu 1")
+
+
 # F10d düzeltme 1 (kontrol B-1): kabuk alt adımlarında her yeni parça kendi karesinde görünmeli (F10d-dogrula.py görünürlük ölçütü:
 # ≥ 30 piksel ve tek başına çizilişinin ≥ %20'si). Isıl gömme bandın boss'unun, dikiş cıvatası bindirmenin, arka dikiş öndeki
 # bantların arkasında kalır: o alt adımda bantlar saydam çizilir (saydam = desen; önceki parçalar 0,25, yeni parça 0,4 opaklık).
@@ -496,11 +537,16 @@ ADIM = {
                    ucus={"Kamera": (0, 0, -1), "*": (0, 0, 1)}, kamera=(0.6, 0.45, -1.25), saydam=("Yüz kabuğu",),
                    gizli_ok={"Kamera vidası": voksel_ok("95–97")},
                    # F10d düzeltme 1 (kontrol B-4): eski gerekçedeki "3,91 mm ortak hacim" eksen ışınının kirişiydi (K3 geri çekildi)
-                   ucus_ok={"Kamera": "uçuş yolu ölçümü: −z'de 3 mm sonra ışın ölçümü kafa ön üst dikişinin ısıl gömmesinde 2,91 mm "
-                                      "ortak hacim veriyor; gerçek derinlik (nokta–üçgen, yüzey örnekleri) 3–8 mm arasında yüz kabuğu "
-                                      "sağ ile en çok 1,0 mm, ısıl gömmeyle 0,24 mm, 10 mm'den sonra 0. Dinlenmede kamera ile yüz kabuğu "
-                                      "yalnız temas (derinlik 0). Kart boss'lara otururken kenarı kabuğa 1 mm'ye kadar sürtebilir, "
-                                      "elde denenmedi"},
+                   # F10f düzeltme 2 (madde 1b): duruşta örtüşen çift yol boyunca denetlenince bu satıra yüz kabuğu (ön) sağ eklendi (ışın
+                   # ölçümü 7,95 mm). Kol dışı adım: düzeltilmedi; eski dize anahtar ("Kamera") aynı gerekçeyle dar anahtara, sınıf ölçüm kaydı
+                   ucus_ok={"p0798": dar("ölçüm kaydı",
+                                         "duruşta örtüşen çift yol boyunca denetlenince yüz kabuğu (ön) sağ [p0750] ile ışın ölçümü 7,95 mm "
+                                         "(h 0,5 mm; aşağıdaki F10d nokta–üçgen ölçümü en çok 1,0 mm diyor, çelişki ölçülmedi). F10d gerekçesi: "
+                                         "uçuş yolu ölçümü: −z'de 3 mm sonra ışın ölçümü kafa ön üst dikişinin ısıl gömmesinde 2,91 mm "
+                                         "ortak hacim veriyor; gerçek derinlik (nokta–üçgen, yüzey örnekleri) 3–8 mm arasında yüz kabuğu "
+                                         "sağ ile en çok 1,0 mm, ısıl gömmeyle 0,24 mm, 10 mm'den sonra 0. Dinlenmede kamera ile yüz kabuğu "
+                                         "yalnız temas (derinlik 0). Kart boss'lara otururken kenarı kabuğa 1 mm'ye kadar sürtebilir, "
+                                         "elde denenmedi", p0763=2.91, p0750=7.95)},
                    is_="Masada, yüz kabuğu sağ + sol: kamerayı (Camera Module 3) ön duvarın içindeki boss'lara 4 × M2×8 PT ile vidala; "
                        "lens ekranın üstündeki Ø9 delikte."),
               dict(ad="Masada: QLED → yüz kabuğu", masa="yuz", desen=("Yüz ekranı",), ucus={"*": (0, 0, -1)}, kamera=(0.6, 0.45, -1.25),
@@ -850,12 +896,12 @@ ADIM = {
         is_="1. Omuz bantlarını Ø84 rulman kapağının üstünden geçir; üst kapak boynu sarar. M3×6 ISO 7380 ile bağla.\n"
             "Bundan sonra bant ancak göbek sökülünce çıkar.\n"
             "2. Kol servo uçlarını omuz yarığından dışarı al: K2'de travers arkasında bırakılan uzatma uçlarını, her omuzda ψ 214 "
-            "yarığından (12 × 6) dışarı çıkar. Üst arka servis kapağı F5'e kadar açık: elle kapak açıklığından travers arkasına uzan, ucu "
-            "yarıktan dışarı it. Dışarıda bekleyen uçlar G2'de (S2 eki göbekte) ve H1'de (dirsek, bilek) eklenir; G4'te demet aynı yarıktan "
-            "içeri giden koşuyla kasete oturur. El yolu kaba ölçüm (10.11 sıra kontrolü, el bölgesine uzaklık: travers arkasına 0 mm, "
-            "yani el kapak açıklığından doğrudan ulaşıyor; yarığın iç tarafına 6 mm), doğrulanmadı.",
+            "yarığından (12 × 6 mm) dışarı çıkar. Üst arka servis kapağı F5'e kadar açık: elle kapak açıklığından travers arkasına uzan, ucu "
+            "yarıktan dışarı it. Dışarıda bekleyen uçlar G2'de (S2 eki göbekte) ve H1'de (dirsek, bilek) eklenir; G3'te tambur bağına, oradan "
+            "kola döşenir, G4'te yarıkla tambur bağı arası kasete U-lopu olarak oturur. Elle ulaşılabilirlik ölçüldü (bantlar takılıyken): yolun 5 köşesinin "
+            "hepsine elin 0,5–23 mm yakınına kadar engelsiz düz yol var; kablonun kendisi elle denenmedi.",
         baglanti_md="M3×6 ISO 7380",
-        kontrol=["Yarık ψ 214 (12 × 6) kablo için açık; Ø84'e açılan anahtar deliği (Y3 K3) temiz",
+        kontrol=["Yarık ψ 214 (12 × 6 mm) kablo için açık; Ø84'e açılan anahtar deliği (Y3 K3) temiz",
                  "Bant kapağa sürtmüyor, boyun dönüyor",
                  "Kol servo uzatma uçları iki omuzda da yarıktan dışarıda, etiketli; yarıkta ezilmiyor"],
         kablo=["Geçit: ψ 214 yarığı. Travers arkasındaki kol servo uzatma uçları bu adımda yarıktan dışarı alınır (madde 2); G2, G4 "
@@ -871,22 +917,38 @@ ADIM = {
                    saydam=GOVDE_BANT + KAFA_KABUK + ("Kafa iskeleti", "Servo yuvası", "Rulman yuvası", "Boyun", "Eğme çatalı"),
                    is_="Omuz bandı sağı Ø84 rulman kapağının üstünden geçir; üst kapak boynu sarar. y 1198 bindirmelerine M3×6 ISO 7380. "
                        "Bandın boss'larındaki ısıl gömmeler (x 0 dikişi, S1 kaseti) hazırlıkta takılı (adım 0; bantlar saydam çizili).",
-                   ucus_ok={"Omuz bandı sağ": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +x'te göğüs bandı sağ 1–161 mm "
+                   # F10f düzeltme 2 (kontrol F10f-kontrol-2 M8): kol adımında (36) dize anahtar kabul edilmez; aynı gerekçe dar anahtarla
+                   # (engeller ve derinlikler düzeltilmiş denetimle ölçüldü, satır F10d'den beri değişmedi)
+                   ucus_ok={"p0215": dar("yol", "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +x'te göğüs bandı sağ 1–161 mm "
                                               "(bindirme dili), rulman kapağı 3–99 mm, yuva bağlantı cıvatası 3–29 mm; +y'de 7 mm sonra rulman kapağı "
-                                              "7–101 mm; ±z'de göğüs bandı. Karar önerisi F10d-K1"}),
+                                              "7–101 mm; ±z'de göğüs bandı. Karar önerisi F10d-K1",
+                                         p0213=75.0, p0078=25.25, p0070=10.0, p0287=2.57, p0289=2.57)}),
               dict(ad="Omuz bandı sol, ön dikiş", desen=("Omuz bandı sol", "(gövde y1198 ön)", "(gövde x0 ön)"),
                    konum={"(gövde y1198 ön)": {"x": (-1000, 0)}}, ucus={"*": (1, 0, 0)}, kamera=(-0.85, 0.62, 1.25), saydam=GOVDE_BANT,
                    gizli_ok={"(gövde y1198 ön)": voksel_ok(308), "(gövde x0 ön)": voksel_ok(257)},
-                   ucus_ok={"Omuz bandı sol": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. −x'te göğüs bandı sol 1–137 mm "
+                   ucus_ok={"p0216": dar("yol", "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. −x'te göğüs bandı sol 1–137 mm "
                                              "(bindirme dili), rulman kapağı 3–99 mm, yuva bağlantı cıvatası 3–29 mm; +y'de 7 mm sonra rulman kapağı "
-                                             "7–101 mm; ±z'de göğüs bandı ve omuz bandı sağ. Karar önerisi F10d-K1"},
+                                             "7–101 mm; ±z'de göğüs bandı ve omuz bandı sağ. Karar önerisi F10d-K1",
+                                        p0214=63.0, p0151=25.25, p0143=10.0, p0291=2.57, p0293=2.57)},
                    is_="Omuz bandı solu aynı biçimde geçir; önde y 1198 ve x 0 dikişlerini M3×6 ile bağla. S1 kaseti ısıl gömmeleri "
                        "hazırlıkta takılı (bantlar saydam çizili)."),
               dict(ad="Omuz arka dikişi", desen=("(gövde y1198 arka)", "(gövde x0 arka)"), kamera=(-0.85, 0.62, -1.25),
                    ucus={"*": (1, 0, 0)}, saydam=GOVDE_BANT,
                    gizli_ok={"(gövde x0 arka)": voksel_ok(435, "arka sağ (0,85, 0,62, −1,25)")},
                    is_="Arkada sol y 1198 ve x 0 dikişlerini M3×6 ile bağla. Bundan sonra bant ancak göbek sökülünce çıkar. Sonra kol "
-                       "servo uçlarını omuz yarığından dışarı al (adımın iş metni, madde 2).")],
+                       "servo uçlarını omuz yarığından dışarı al (sonraki iki alt adım)."),
+              # F10f (P10.5): kol kablo yolu, gövde girişi. Parça yok (desen boş); çizim rehber_kol_kablo.py (KOL_KABLO s1 cikis + govde_ici)
+              # "Kablo yolu": yolun iç ucu travers arkasında K2 servo uzatma demetinin (adım 32 kablo parçası) içinde; demet saydam.
+              # "Direk-travers": köşe bağlantısı iç ucun önünde (F10f-dogrula ucOrtu: 66,8 mm önde); "Gövde direği": sonra direk (31,1 mm önde)
+              dict(ad="Sağ omuz: kol servo uçları yarıktan dışarı", desen=(), kolk=("sag:govde",), kamera=(0.55, 0.75, 0.9),
+                   saydam=GOVDE_BANT + ("Rulman kapağı", "Omuz yuvası", "Kablo yolu", "Direk-travers", "Gövde direği"),
+                   is_="Sağ omuz: travers arkasında bekleyen 3 uzatma ucunu (dirsek, bilek, S2; K2'de bırakıldı) gövdenin içinden dışa doğru "
+                       "götür: travers arkası → omuz eksenine paralel dışa → ψ 214 yarığı (12 × 6 mm) → dışarı. Üst arka servis kapağı "
+                       "açıklığından travers arkasına uzan, ucu yarıktan it. Uçlar: gövde tarafı travers arkasındaki demette (K2), kol ucu "
+                       "yarığın dışında serbest (G2'de S2 ucu göbeğe, G3'te dirsek ve bilek uçları kola gider; G4'te kaset bu yarığın önüne oturur)."),
+              dict(ad="Sol omuz: kol servo uçları yarıktan dışarı", desen=(), kolk=("sol:govde",), kamera=(-0.55, 0.75, 0.9),
+                   saydam=GOVDE_BANT + ("Rulman kapağı", "Omuz yuvası", "Kablo yolu", "Direk-travers", "Gövde direği"),
+                   is_="Sol omuz: aynı iş, aynalı (yarık sol omuzda ψ 214).")],
     ),
     "G0": dict(
         baslik="Tezgâh: göbek + S1 tamburu",
@@ -905,7 +967,7 @@ ADIM = {
     ),
     "G2": dict(
         baslik="S2 servosu → göbek",
-        is_="1. S2 kablosunu kısalt ve uzatmaya ekle: G2'den yaklaşık 20 mm önce, göbek arka iç şeridinde (lehim + makaron Ø ≤ 4,5, yaklaşık 25 mm, ya da JR çifti; kablo bağı). Yer tahmini, yerinde ölç.\n"
+        is_="1. S2 kablosunu kısalt ve uzatmaya ekle: G2'den yaklaşık 20 mm önce, göbek arka iç şeridinde (lehim + makaron Ø ≤ 4,5, yaklaşık 25 mm, ya da JR çifti; kablo bağı). Yer tahmini, yerinde ölç. S2 uzatması 1700 mm (ekten dağıtım kartına, konnektör payı 30 mm tahmini dahil).\n"
             "2. Servoyu göbeğe cıvatala.\n3. Karşı tarafa 625ZZ ve M5 pim.",
         baglanti_md="Kol başına 4 × M4×16 + 4 kontra somun; 1 × M5×12 + pul",
         alet="alyan 3 / 4 + 7 mm",
@@ -915,46 +977,137 @@ ADIM = {
     "G3": dict(
         baslik="S2 hornu, kol çatalı, üst kol tüpü",
         is_="1. S2 hornu, merkez vidası.\n2. Kol çatalı → horn.\n3. Üst kol tüpü → çatal.\n"
-            "4. Kablolar: K noktası (çatal arka plakasının arkası, yapışkan taban) → S2 lobu L 80 (2 şerit) → tüp penceresi.\n"
-            "5. G2 → tambur bağı (ψ 145): 3 şerit kanala teğet, 2 ip demetin üstünde düğüm.",
+            "4. Kablolar (F4'te yarıktan dışarı alınan uzatma uçlarıyla, gövdeden kola doğru): yarıktan tambur bağına (ψ 145): 3 şerit kanala "
+            "teğet, 2 ip demetin üstünde düğüm; yarıkla tambur bağı arası gevşek kalır (G4'te U-lopu). Tambur bağından göbek arka iç şeridine (G2).\n"
+            "5. Dirsek ve bilek uzatmaları G2'den S2 lopu L 80 mm (2 şerit) → K noktası (çatal arka plakasının arkası, yapışkan taban) → tüp "
+            "penceresi. Kol ucu pencerede bekler: H1'de servo kablosuna eklenir.",
         baglanti_md="Kol başına 1 × M3×5 horn; 4 × M3×8 çatal–horn; 2 × M3×8 tüp → ısıl gömme",
         kontrol=["Tüp penceresi arka duvarda: 10 geniş, 14 düz + iki uç 45° (≈ 24 boy). M1 yalnız dişi JR'yi (7,9 × 2,75) denetledi; erkek JR (10,3 × 4) boyuna çevrilerek geçmeli, doğrulanmadı",
                  "Bağ açısı 0 ± 2°, düğüm cerrah + kare, uç 3 mm",
                  "K noktası tabanı CAD'de 10 × 10 (tahmini), v4 taban 28 × 28: sığması doğrulanmadı"],
         kablo=["Bu adımda geçen: tüp penceresi, S2 lobu (L 80), tambur bağı (ψ 145)"],
+        # F10f (P10.5): kol kablo yolu alt adımları. Parça grubu önce, sonra kablolar sağ / sol (desen boş; çizim rehber_kol_kablo.py)
+        alt=True,
+        sira=[dict(ad="S2 hornu, kol çatalı, üst kol tüpü (sağ + sol)",
+                   desen=("S2 horn", "Kol çatalı", "625ZZ", "Üst kol tüpü", "Tüp cıvatası", "Çatal-horn", "Isıl gömme"),
+                   # F10f düzeltme 1: horn servo milinin ucuna eksen boyunca (+z), tüp çatalın altından (−y); kol çatalı +x (sol aynalı)
+                   ucus={"S2 horn": (0, 0, 1), "Kol çatalı": (1, 0, 0), "Üst kol tüpü": (0, -1, 0)},
+                   # F10f düzeltme 2 (madde 1b): duruşta örtüşen çift yol boyunca denetlenince 625ZZ dış bileziğin kendi eğik yolu kol
+                   # çatalının Ø16 yuvasının omzundan 9,27 / 9,19 mm geçiyordu (44.1'deki 625ZZ ile aynı tür). Dış bilezik tezgâhta
+                   # çatalın yuvasına bastırılır (omuz_rapor SIRA 2: "625ZZ'yi çatalın arka koluna bastır") ve çatalla birlikte uçar;
+                   # aynı alt adım, parça ↔ adım ataması değişmedi. Çatalın satırı K1-a dar istisnasında kalır (engeller değişmedi).
+                   birlikte={"625ZZ rulman (dış bilezik)": "Kol çatalı"},
+                   ucus_ok={"p0121": dar("karar", K1_KOL, p0116=6.42, p0118=5.0),
+                            "p0194": dar("karar", K1_KOL, p0189=6.42, p0191=5.0)},
+                   is_="S2 hornu + merkez vidası, kol çatalı → horn (4 × M3×8), 625ZZ'nin dış bileziği çatalın yuvasında (tezgâhta "
+                       "önceden bastırılır, çatalla birlikte gelir), üst kol tüpü → çatal (2 × M3×8 → ısıl gömme). Kablolar sonraki iki "
+                       "alt adımda."),
+              dict(ad="Sağ kol: uzatmalar tüp penceresi → K → S2 lopu → tambur bağı", desen=(), kolk=("sag:uzatma_kol", "sag:lop_s2", "sag:gecis_s1", "sag:bag_k", "sag:bag_tambur"),
+                   kamera=(0.9, 0.35, -1.0), saydam=("Kol çatalı", "Omuz göbeği", "S2 horn", "Omuz bandı", "Göğüs bandı"),
+                   is_="Sağ kol, gövdeden kola: F4'ten beri ψ 214 yarığının dışında bekleyen 3 uzatmayı (dirsek, bilek, S2) tambur "
+                       "bağına (ψ 145) getir: kanala teğet, 2 ip demetin üstünde düğüm. Yarıkla tambur bağı arası gevşek kalır (G4'te kasetin "
+                       "U-lopu). Tambur bağından göbek arka iç şeridine (G2; S2 uzatması burada servo kablosuna G2'de eklendi). Dirsek ve "
+                       "bilek uzatmaları G2'den L 80 mm S2 lopuyla K noktasına (çatal arka plakasının arkası): kablo bağıyla tabana bağla, "
+                       "tüp cıvatasının yanından tüp penceresine. Uçlar: gövde tarafı travers arkasındaki demette (K2); kol tarafında "
+                       "dirsek ve bilek uzatmalarının ucu tüp penceresinde bekler (H1'de eklenir), S2 uzatması G2'de göbekte eklendi. Elle dene: S2 5…120° arasında lop gerilmiyor, çatala sürtmüyor. Çizim "
+                       "modeldeki duruşta (S2 0°): bu duruş S2 aralığının dışında, lop burada aralıktakinden sıkı çizilir; S2'yi 5°'nin "
+                       "altına indirme."),
+              dict(ad="Sol kol: uzatmalar tüp penceresi → K → S2 lopu → tambur bağı", desen=(), kolk=("sol:uzatma_kol", "sol:lop_s2", "sol:gecis_s1", "sol:bag_k", "sol:bag_tambur"),
+                   kamera=(-0.9, 0.35, -1.0), saydam=("Kol çatalı", "Omuz göbeği", "S2 horn", "Omuz bandı", "Göğüs bandı"),
+                   is_="Sol kol: aynı iş, aynalı (S2 0° notu dahil).")],
     ),
     "G4": dict(
         baslik="S1 kablo kaseti",
         # F10e düzeltme 1 (kontrol bulgu 7): "+x'ten kaydırarak takılmaz" yalnız CAD duruşunda ölçüldü (+x üst kol tüpü 5,34 mm, −x omuz
-        # bandı); kol duruşunda ölçülmedi. Metin ölçülene indirildi
-        is_="Sırayı bozma. CAD duruşunda yandan kaydırılamaz (+x'te üst kol tüpüne, −x'te omuz bandına değer); önden radyal tak.\n"
+        # bandı); kol duruşunda ölçülmedi. Metin ölçülene indirildi. F10f (F10e devri e): "CAD duruşu" okurun diliyle (kollar düz aşağı,
+        # modeldeki duruş); iddia aynı ölçümle sınırlı
+        is_="Sırayı bozma. Kaseti yandan kaydırarak takma: kollar düz aşağıdayken (modeldeki duruş) yandan sürülen kaset +x'te üst kol "
+            "tüpüne, −x'te omuz bandına değiyor; başka kol duruşunda bu denenmedi. Önden radyal tak.\n"
             "(a) Gövde önden radyal, x ofsetsiz, arka plaka omuz pedine yaslı. Kol: S1 −45 / −20 / 0 × S2 90 ya da S1 −45 × S2 5.\n"
-            "(b) U'yu elle kanala koy; dış koşu duvar boyunca, ψ 214'te yarıktan içeri (ψ: arka 90, aşağı 180, ön 270). Lop L 171,4 mm (−5…0), kablo üstünde işaretli.\n"
+            "(b) U'yu elle kanala koy; dış koşu duvar boyunca, ψ 214'te yarıktan içeri (ψ: arka 90, aşağı 180, ön 270). Lop L 171,4 mm (−5…0 mm), kablo üstünde işaretli.\n"
             "(c) Duvar bağı: 2 ip, ψ 226,5 / 230, düğüm dışarıda; sıkarken demeti −x'e tut.\n"
-            "(d) Kapak önden radyal; flanş gövdeden x +3,3…5 havada (S1 −45'te en çok +3,3).\n"
+            "(d) Kapak önden radyal (kol S1 0…135°, S2 ≥ 30°); flanş gövdeden x +3,3…5 mm havada (S1 −45°'de en çok +3,3 mm).\n"
             "(e) Kapağı −x'e it: 2 Ø3 pim (ψ 331 ve kulak ψ 300) girer.\n"
             "(f) 2 dikme cıvatasını S1 −45 / S2 90'da sık (en az 8 mm erişim).",
         baglanti_md="Kol başına 2 × M3×8 dikme; 2 Ø3 pim; 2 Ø0,4 mumlu ip",
         alet="alyan 2,5, makas",
         erisim="Önden radyal; dikmeler yalnız S1 −45 / S2 90'da",
-        kontrol=["Yarık 12 × 6: JR erkek geçer", "Kol tam taramada kablo gerilmiyor, kapağa sürtmüyor",
-                 "S1 ≥ 120 iken S2 ≤ 117: bu sınırı aşma"],
+        kontrol=["Yarık 12 × 6 mm: JR erkek geçer", "Kol tam taramada kablo gerilmiyor, kapağa sürtmüyor",
+                 "S1 ≥ 120° iken S2 ≤ 117°: bu sınırı aşma"],
         poz=dict(S1=-45, S2=90),                                    # F10c: dikme cıvataları ev pozunda kapalı, bu pozda açık
         kablo=["Geçit: ψ 214 yarığı → travers arkasındaki S1 ucu (K2'de bırakıldı)"],
+        # F10f (P10.5): alt adımlar. Kaset gövdesi → U-lop sağ / sol → uç duruş yakın kareleri (yalnız sağ kol; sol aynalı) → kapak
+        alt=True,
+        sira=[dict(ad="Kaset gövdeleri (sağ + sol)", desen=("S1 kaset gövdesi",),
+                   ucus={"S1 kaset gövdesi": (0, 0, 1)},                 # F10f düzeltme 1: önden radyal (metinle aynı)
+                   is_="(a) Kaset gövdesini önden radyal tak, x ofsetsiz, arka plaka omuz pedine yaslı (iki omuz). Kol: S1 −45 / −20 / 0° "
+                       "× S2 90° ya da S1 −45° × S2 5° (tasarımın duruşu; çizim modeldeki duruşta, S1 0°, S2 0°)."),
+              dict(ad="Sağ kol: S1 U-lopu + duvar bağı + yarık", desen=(), kolk=("sag:s1_lop", "sag:s1_cikis"), kenar=("S1 kablo tamburu", "S1 kaset gövdesi"), kamera=(1.0, 0.25, 0.35),
+                   saydam=("S1 kaset gövdesi", "Kol çatalı", "Üst kol tüpü", "Omuz göbeği", "S2 horn", "Omuz bandı", "Göğüs bandı"),
+                   is_="Sağ kol: (b) 3 kablolu demeti tambur bağından (ψ 145) kanala koy: iç koşu tamburda, U, dış koşu kaset duvarı "
+                       "boyunca. Lop L 171,4 mm (−5…0 mm), kablo üstündeki işarete göre. (c) Duvar bağı ψ 226,5 / 230 (2 ip, düğüm dışarıda). "
+                       "Duvar boyunca ψ 214'e, orada radyal içe ve arka plaka yarığından içeri. Bu, G3'te gevşek bırakılan, yarıkla "
+                       "tambur bağı arasındaki parça: uzatma kesintisiz, ek yok. Uçlar: gövde tarafı yarıktan içeride (F4, K2 demeti); kol "
+                       "tarafında dirsek ve bilek uzatmaları G3'ten beri tüp penceresinde, S2 uzatması G2'de göbekte S2 servo kablosuna ekli."),
+              dict(ad="Sol kol: S1 U-lopu + duvar bağı + yarık", desen=(), kolk=("sol:s1_lop", "sol:s1_cikis"), kenar=("S1 kablo tamburu", "S1 kaset gövdesi"), kamera=(-1.0, 0.25, 0.35),
+                   saydam=("S1 kaset gövdesi", "Kol çatalı", "Üst kol tüpü", "Omuz göbeği", "S2 horn", "Omuz bandı", "Göğüs bandı"),
+                   is_="Sol kol: aynı iş, aynalı."),
+              # F10f düzeltme 1: ortak kamerada −45° yolunun tambur bağı ucu 625ZZ dış bileziğin arkasında kalıyordu (uç pikseli 0); rulman saydam
+              # F10f düzeltme 2 (kontrol B2 3.3): tambur ve duvar kenar çizgili (41.2 gibi); ucun 32,6 mm önündeki mafsal cıvatası (p0118) saydam
+              dict(ad="Sağ kol, yakın: S1 −45° uç duruşunda U-lopu", desen=(), kolk=("sag:s1_-45",), iz=("sag:s1_+135",), kenar=("S1 kablo tamburu", "S1 kaset gövdesi"), sema_yalniz=True, kamera=(1.0, 0.12, 0.08),
+                   saydam=("S1 kaset gövdesi", "S1 kablo tamburu", "Kol çatalı", "Üst kol tüpü", "Omuz göbeği", "S2 horn", "Omuz bandı",
+                           "Göğüs bandı", "625ZZ rulman", "Mafsal cıvatası"),
+                   is_="Sağ kol, elle tarama (S1 −45…135°): S1 −45°'de tambur bağı ψ 100'e döner, demet tambura sarılır: iç koşu "
+                       "(tamburdaki yay, tambur bağından U'ya) 125,3°, dış koşu (duvar boyunca yay, U'dan duvar bağına) 10,2°, U ψ ≈ 225 "
+                       "(yaylar 0,1°'ye, ψ tam dereceye yuvarlı). Kol bu uçta kablo gerilmeden durmalı. Çizim kablonun bu duruştaki yeri; "
+                       "parçalar modeldeki duruşta (tambur dönmüş çizilmedi). Soluk iz: S1 +135°'deki U-lopu (sonraki alt adım), "
+                       "kamera ve renk iki karede aynı."),
+              dict(ad="Sağ kol, yakın: S1 +135° uç duruşunda U-lopu", desen=(), kolk=("sag:s1_+135",), iz=("sag:s1_-45",), kenar=("S1 kablo tamburu", "S1 kaset gövdesi"), sema_yalniz=True, kamera=(1.0, 0.12, 0.08),
+                   saydam=("S1 kaset gövdesi", "S1 kablo tamburu", "Kol çatalı", "Üst kol tüpü", "Omuz göbeği", "S2 horn", "Omuz bandı",
+                           "Göğüs bandı", "625ZZ rulman", "Mafsal cıvatası"),
+                   is_="Sağ kol: S1 +135°'de tambur bağı ψ 280'e döner, demet tamburdan açılıp duvara yatar: iç koşu (tamburdaki yay) "
+                       "10,1°, dış koşu (duvar boyunca yay) 74,9°, U ψ ≈ 290 (yaylar 0,1°'ye, ψ tam dereceye yuvarlı). S1 ≥ 120° iken "
+                       "S2 ≤ 117°: S2'yi bu sınırın üstüne çıkarma. Soluk iz: S1 −45°'deki U-lopu (önceki alt adım), kamera ve renk iki karede "
+                       "aynı. Sol kolda aynı, aynalı."),
+              dict(ad="Kapaklar + pimler + dikme cıvataları (sağ + sol)", desen=("S1 kaset kapağı", "Kaset cıvatası"),
+                   ucus={"S1 kaset kapağı": (0, 0, 1)},                  # F10f düzeltme 1: önden radyal; −x itme çizilmez (dar istisna)
+                   ucus_ok={"p0233": dar("duruş", POZ_KAPAK, p0232=4.2), "p0235": dar("duruş", POZ_KAPAK, p0234=4.2),
+                            "p0463": dar("duruş", POZ_CIV, p0121=11.0, p0127=5.46, p0129=2.98, p0128=2.6),
+                            "p0467": dar("duruş", POZ_CIV, p0194=11.0, p0200=5.46, p0202=2.98, p0201=2.6)},
+                   is_="(d) Kol S1 0…135°, S2 ≥ 30°'deyken kapağı önden radyal getir, flanş gövdeden x +3,3 mm havada; (e) kapağı −x'e it, "
+                       "2 Ø3 pim girer; (f) 2 dikme cıvatasını S1 −45° / S2 90°'de sık. Çizim kolu modeldeki duruşta (S1 0°, S2 0°) ve "
+                       "kapağı tek düz yolla gösterir: o duruşta ψ 200 cıvatasının yolunu kol çatalı kapatır, −x itme ise kol çatalına değer.")],
     ),
     "H0a": dict(
         baslik="Tezgâh: ön kol + servolar",
         is_="1. Dirsek ve bilek servolarını ön kola cıvatala. Dirsek somunları cepte; dirsek alt iki kulak cıvatası Ø8 erişim deliğinden "
             "(Y3 C2). Bilek somunları cepte değil: 7 mm açık ağızla tek yönden tut (lokma yerel olarak sığıyor ama tutacağına el "
             "ulaşmıyor; sıra denetimi: açık ağız el bölgesine 25,5–36 mm'de ulaşıyor).\n"
-            "2. Bilek kablosu: mil ucundan içe, geri, ara duvar çentiği (6 × 5), dirsek servosu arkası, tırnak.\n"
+            "2. Bilek kablosu: mil ucundan içe, geri, ara duvar çentiği (6 × 5 mm), dirsek servosu arkası, tırnak.\n"
             "3. Dirsek kablosu üstten tırnağa. Tırnakta iki kablo; kablo bağı kanat + demet.",
         baglanti_md="Kol başına 8 × M4×16 + 8 kontra somun",
         erisim="Cıvatalar düz alyanla. Dirsek somunları cepte (8 somun), dirsek alt kulaklar Ø8 delikten (Y3 C2). Bilek somunları "
                "(8 somun) cepte değil: 7 mm açık ağız, tek yönden, dar (anahtar el bölgesine 25,5–36 mm'de ulaşıyor); lokmanın tutacağına el ulaşmıyor "
                "(sıra denetimi, 20 mm el)",
         kontrol=["Çentikte kablo ezilmedi", "Kablo bağı kanadı tırnağı tutuyor"],
-        kablo=["Geçit: ara duvar çentiği 6 × 5 ve tırnak"],
+        kablo=["Geçit: ara duvar çentiği 6 × 5 mm ve tırnak"],
+        # F10f (P10.5): servolar, sonra kablolar sağ / sol (desen boş; çizim rehber_kol_kablo.py, KOL_KABLO yol_bilek_servo / yol_dirsek_servo)
+        alt=True,
+        sira=[dict(ad="Servolar → ön kol (sağ + sol)", desen=("Ön kol", "Dirsek servosu", "Bilek servosu", "Isıl gömme"),
+                   # F10f düzeltme 1: iki ön kol tezgâhta yerinde (sağ tezgâh tabanı, sol da; sağ / sol kulak cıvatası aynı mesafe),
+                   # dirsek servosu yuvasına arkadan (−z), bilek mili servosuyla birlikte, kontra somun 15 mm (25 mm'de ön kola giriyordu)
+                   ucus={"Ön kol": "yerinde", "Dirsek servosu MG996R": (0, 0, -1)},
+                   ucus_d={"Dirsek servosu kontra somunu": 15}, birlikte={"Bilek servosu çıkış mili": "Bilek servosu MG996R"},
+                   gizli_ok={i: gizli("dirsek servosu kontra somunu ön kolun cebinde, kulak cıvatasının ucunda") for i in ("p0590", "p0647", "p0649")},
+                   is_="Dirsek ve bilek servolarını ön kola cıvatala (madde 1)."),
+              dict(ad="Sağ kol: bilek ve dirsek servo kabloları → tırnak", desen=(), kolk=("sag:servo_bilek", "sag:servo_dirsek"),
+                   kamera=(1.0, 0.3, -0.75), saydam=("Ön kol",),
+                   is_="Sağ kol: bilek servosu kablosu mil ucundan içe, geri, ara duvar çentiğinden (6 × 5 mm, tam mm'ye yuvarlı) geçer, dirsek servosunun "
+                       "arkasından tırnağa; dirsek servosu kablosu üstten tırnağa. Tırnakta 2 kablo, kablo bağı kanat + demet. Ucu serbest: "
+                       "dirsek lopu H0c'de."),
+              dict(ad="Sol kol: bilek ve dirsek servo kabloları → tırnak", desen=(), kolk=("sol:servo_bilek", "sol:servo_dirsek"),
+                   kamera=(-1.0, 0.3, -0.75), saydam=("Ön kol",),
+                   is_="Sol kol: aynı iş, aynalı.")],
     ),
     "H0b": dict(
         baslik="Tezgâh: dirsek hornu",
@@ -972,11 +1125,34 @@ ADIM = {
     ),
     "H0c": dict(
         baslik="Tezgâh: dirsek çatalı",
-        is_="1. Çatalı horna cıvatala; 625ZZ ve M5 pimi yanaktaki ısıl gömmeye tak (robotta erişilemez: göğüs bandı 8,9 mm).\n"
-            "2. Kablo: tırnak → lop L 120 → çatal oluğu (6 geniş, 4,5 derin; 2 şerit, sıcak tutkal) → Ø10 delik.",
+        is_="1. 625ZZ'yi çatalın Ø16 yuvasına bastır; çatalı horna cıvatala; M5 pimi yanaktaki ısıl gömmeye tak (robotta erişilemez: "
+            "göğüs bandı 8,9 mm).\n"
+            "2. Kablo: tırnak → lop L 120 mm → çatal oluğu (6 geniş, 4,5 derin; 2 şerit, sıcak tutkal) → Ø10 delik.",
         baglanti_md="1,58 m: kol başına 4 × M3×12 DIN 912 + 2 × DIN 125-A pul çatal–horn (M6'daki M3×8 eski); 1 × M5×12 + pul",
-        kontrol=["Dirseği 0…105 arasında elle dene: lop gerilmiyor, oluğa sürtmüyor"],
+        kontrol=["Dirseği 0…105° arasında elle dene: lop gerilmiyor, oluğa sürtmüyor"],
         kablo=["Geçit: çatal oluğu ve Ø10 delik"],
+        # F10f (P10.5): çatal, sonra dirsek lopu sağ / sol (çizim KOL_KABLO dirsek_lop, kablo_yolu.lop_coz, dirsek 0)
+        alt=True,
+        sira=[dict(ad="Dirsek çatalı + pim (sağ + sol)", desen=("Dirsek çatalı", "625ZZ", "Pim", "Çatal-horn"),
+                   # F10f düzeltme 1: çatal +y (ön kolun üstünden); çatal-horn pulu cıvatasıyla birlikte. F10f düzeltme 2 (kontrol B2
+                   # 3.1): 625ZZ (iki bilezik) çatalla birlikte uçar: rulman tezgâhta çatalın Ø16 yuvasına önceden bastırılır (dirsek
+                   # montaj sırası 2, dirsek_rapor SIRA); ayrı −x uçuşta dış bilezik yuvanın omzundan 1,55 mm geçiyordu
+                   ucus={"Dirsek çatalı": (0, 1, 0)},
+                   birlikte={"625ZZ rulman (dış bilezik)": "Dirsek çatalı", "625ZZ rulman (iç bilezik)": "Dirsek çatalı",
+                             "Çatal-horn pulu": "Çatal-horn cıvatası"},
+                   ucus_ok={"p0562": dar("karar", K1_DIRSEK, p0573=5.46), "p0619": dar("karar", K1_DIRSEK, p0630=5.46)},
+                   gizli_ok=dict([(i, gizli("625ZZ rulman bileziği çatal yanağının yuvasında, pim pulu ve cıvata başının altında"))
+                                  for i in ("p0583", "p0628", "p0640")] +
+                                 [(i, gizli("M5 pim pulu pim cıvatasının başının altında, yanakla baş arasında")) for i in ("p0584", "p0641")]),
+                   is_="625ZZ'yi önce çatal iç kolunun Ø16 yuvasına, dudağa dayanana kadar bastır (tezgâhta; rulman çatalla birlikte "
+                       "gelir). Çatalı horna cıvatala (4 × M3×12 + 2 pul); M5 pimi pulla yanaktaki ısıl gömmeye tak (madde 1)."),
+              dict(ad="Sağ kol: dirsek lopu → çatal oluğu → Ø10 delik", desen=(), kolk=("sag:lop_dirsek",), kamera=(1.0, 0.3, -0.75),
+                   saydam=("Dirsek çatalı", "Ön kol"),
+                   is_="Sağ kol: tırnaktan çıkan 2 kabloyla L 120 mm lop bırak, çatal oluğuna (6 geniş, 4,5 derin) yatır, sıcak tutkalla "
+                       "tut, Ø10 delikten yukarı it. Elle dene: dirsek 0…105° arasında lop gerilmiyor, oluğa sürtmüyor (çizim dirsek 0°)."),
+              dict(ad="Sol kol: dirsek lopu → çatal oluğu → Ø10 delik", desen=(), kolk=("sol:lop_dirsek",), kamera=(-1.0, 0.3, -0.75),
+                   saydam=("Dirsek çatalı", "Ön kol"),
+                   is_="Sol kol: aynı iş, aynalı.")],
     ),
     "H0d": dict(
         baslik="Tezgâh: bilek hornu",
@@ -1017,12 +1193,37 @@ ADIM = {
     ),
     "H1": dict(
         baslik="Dirsek modülü → üst kol tüpü",
-        is_="1. Kabloları tüp içinden G2'ye yolla: dirsek JR birleşimi tüp içinde (y −122…−62, hedef y −105); bilek lehim + makaron (Ø ≤ 4,5, yaklaşık 25 mm) tüp içinde, makaron tüp girişinin üstünde.\n"
+        is_="1. Servo kablolarını uzatmalara ekle (uzatmaların kol ucu G3'ten beri tüp penceresinde): dirsek JR birleşimi tüp içinde (y −122…−62 mm, hedef y −105 mm); bilek lehim + makaron (Ø ≤ 4,5, yaklaşık 25 mm) tüp içinde, makaron tüp girişinin üstünde.\n"
             "2. Pim + bileziği tüpe geçir, sık.",
         baglanti_md="Kol başına 2 × M3×20 + 4 pul + 2 kontra somun",
         kontrol=["Kulaklar birbirine değmeden sık (M7 kupon D)", "Bilek kablosunda yaklaşık 0,5 mm artan var: çekme"],
-        kablo=["Tüp içi: dirsek ve bilek kabloları G3'teki pencereden çıkar"],
+        kablo=["Tüp içi: servo kabloları Ø10 delikten tüpe girer; uzatmalar G3'te döşendi, kol uçları tüp penceresinde"],
         ucus_bag=(0, -1, 0),
+        # F10f (P10.5): kablolar tüpün içinden (dirsek modülü 1. alt adımda gelir), sonra bilezik. Çizim KOL_KABLO yol_ustkol + birlesim +
+        # yol_uzatma_kol[0:pencere]; ek işaretleri JR boyu / makaron boyu
+        # İlk alt adım modülün gelişi (kadrajı iki kolun modülü belirler); kablo alt adımlarında kadraj yalnız kablo yolu, tüp içi okunur
+        alt=True,
+        sira=[dict(ad="Dirsek modülleri tüpün altına (sağ + sol)", desen=(),
+                   is_="Dirsek modülünü (H0a–H0f'de masada kuruldu) üst kol tüpünün altına getir; Ø10 delikten çıkan 2 servo kablosu "
+                       "yukarıda. Kabloları tüpe sokmadan modülü oturtma: sonraki iki alt adım."),
+              dict(ad="Sağ kol: kablolar tüpün içinden, ekler", desen=(), kolk=("sag:tup_ici", "sag:ek_bilek", "sag:nokta_lehim", "sag:tup_ara", "sag:ek_jr", "sag:nokta_jr", "sag:uzatma_tup"), kenar=("Üst kol tüpü",),
+                   kamera=(1.0, 0.15, -0.25), saydam=("Üst kol tüpü", "Dirsek çatalı"),
+                   is_="Sağ kol: dirsek modülünü tüpe yaklaştırırken 2 servo kablosunu Ø10 delikten tüpe it. Uzatmalar (dirsek, bilek; "
+                       "her biri 1856 mm, birleşimden dağıtım kartına, konnektör payı 30 mm tahmini dahil) G3'te döşendi, kol uçları tüp "
+                       "penceresinde bekliyor; tüp içinde pencereden birleşime iner. Dirsek kablosu: servonun dişi JR'si Ø10 delikten ve tüp "
+                       "penceresinden geçer (tasarımın geçit denetimi); JR çifti (26 mm, boy tahmini) tüp içinde, S1 ekseninin 105 mm altında "
+                       "(y −105 mm; serbest aralık y −122…−62 mm); servo kablosunda 102,4 mm artan kalır. Bilek kablosu: lehim + makaron "
+                       "(Ø ≤ 4,5, yaklaşık 25 mm), makaron tüp girişinin üstünde; servo kablosu tüp girişine yaklaşık 0,5 mm artanla ulaşır: "
+                       "çekme. Bu alt adımdan sonra iki kablonun iki ucu da bağlı: servo ↔ uzatma ↔ dağıtım kartı."),
+              dict(ad="Sol kol: kablolar tüpün içinden, ekler", desen=(), kolk=("sol:tup_ici", "sol:ek_bilek", "sol:nokta_lehim", "sol:tup_ara", "sol:ek_jr", "sol:nokta_jr", "sol:uzatma_tup"), kenar=("Üst kol tüpü",),
+                   kamera=(-1.0, 0.15, -0.25), saydam=("Üst kol tüpü", "Dirsek çatalı"),
+                   is_="Sol kol: aynı iş, aynalı."),
+              dict(ad="Pim + bilezik (sağ + sol)", desen=("Bilezik",),
+                   # F10f düzeltme 1: somun tarafındaki pul somunla aynı yönden (cıvatanın tersi), kontra somun 20 mm (25 mm'de göğüs
+                   # bandına giriyordu)
+                   ucus_ters=("Bilezik pulu M3 (somun)",), ucus_d={"Bilezik kontra somunu": 20},
+                   gizli_ok={"p0569": gizli("somun tarafındaki pul bileziğin kulağıyla kontra somun arasında")},
+                   is_="Pim + bileziği tüpe geçir, 2 × M3×20 + 4 pul + 2 kontra somunla sık (madde 2).")],
     ),
     "F5": dict(
         baslik="Servis kapakları (test sonrası)",

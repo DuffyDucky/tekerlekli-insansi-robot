@@ -338,6 +338,9 @@ for p in P:
     v = next((uc[k] for k in uc if k in gorunen(p)), uc.get("*"))
     if v is None:
         continue
+    if v == "yerinde":                                             # F10f düzeltme 1: tezgâhta yerinde duran ikinci taban (sol ön kol)
+        p["ucus"], p["ucus_mm"] = [0.0, 0.0, 0.0], 0.0
+        continue
     u = radyal(p) if v == "radyal" else birim(v)
     if v != "radyal" and yan_sol(p):
         u = V(-u.x, u.y, u.z)
@@ -455,6 +458,44 @@ for q in CIV:
 log("civata patlatma mesafesi ev parcasina gore uzatildi: %d" % len(CIV_UZAT))
 for q, d0, m in CIV_UZAT:
     log("  civata d %s: %.0f -> %.0f mm (ev %s, d %.0f)" % (q["ad"], d0, q["ucus_mm"], m["ad"], m["ucus_mm"]))
+
+# F10f düzeltme 1 (kontrol F10f-K1): alt adım grubunda bağlantı elemanı ve parça için üç alan (rehber_metin "sira" grubu), yollar
+# rehberin uçuş yolu ölçümüyle seçildi (planlama/d158/F10f-gunluk.md, Düzeltme turu 1):
+#   ucus_d = {desen: mm}: patlatma mesafesi (somun 25 mm'de göğüs bandına / ön kola giriyordu; kısa yol temiz)
+#   ucus_ters = (desen, ...): yön ters (somun tarafındaki pul en yakın cıvatanın yönünü alıyordu, cıvatanın başı tarafına uçuyordu)
+#   birlikte = {desen: ev deseni}: parça aynı adımdaki en yakın ev parçasıyla birlikte uçar (veride h; servo mili servoyla, rulmanın
+#              iç bileziği dış bileziğiyle, çatal-horn pulu cıvatasıyla); sıralı takmada ev sahibinin satırıyla yerine gelir
+BIRLIKTE = []
+for p in P:
+    if p["tur"] == "Referans" or p.get("kablo"):
+        continue
+    sira_ = metin(p["kodr"]).get("sira") or []
+    g = RM.sira_grup_bul(sira_, gorunen(p), merkez_(p), p["modul"])
+    if g is None:
+        continue
+    gr = sira_[g]
+    dd = next((v for k, v in (gr.get("ucus_d") or {}).items() if k in gorunen(p)), None)
+    if dd is not None:
+        p["ucus_mm"] = float(dd)
+    if any(k in gorunen(p) for k in gr.get("ucus_ters") or ()):
+        p["ucus"] = [-x for x in p["ucus"]]
+    ev_ = next((v for k, v in (gr.get("birlikte") or {}).items() if k in gorunen(p)), None)
+    if ev_:
+        c = p["shape"].BoundBox.Center
+        ad_ = [q for q in P if q["a"] == p["a"] and q is not p and ev_ in gorunen(q)]
+        if not ad_:
+            log("UYARI birlikte ev sahibi yok:", p["ad"], ev_)
+            continue
+        h = min(ad_, key=lambda q: (q["shape"].BoundBox.Center - c).Length)
+        p["_h"] = h
+        BIRLIKTE.append((p, h))
+for p, h in BIRLIKTE:                                              # ev sahibinin son yönü / mesafesi (ucus_d / ters sonrası)
+    p["ucus"], p["ucus_mm"] = list(h["ucus"]), h["ucus_mm"]
+    if h.get("ucus_bag"):
+        p["ucus_bag"] = list(h["ucus_bag"])
+log("birlikte ucan: %d" % len(BIRLIKTE))
+for p, h in BIRLIKTE:
+    log("  %s [%s] -> %s" % (p["ad"], p["modul"], h["ad"]))
 
 
 # ------------------------------------------------------------------ mesh: kanonik çerçeve + örnekleme
@@ -783,6 +824,8 @@ for i, kod in enumerate(KODLAR):
                 e["ub"] = [round(ub.x, 3), round(ub.y, 3), round(ub.z, 3)]
             if g.get("saydam"):
                 e["saydam"] = [q["id"] for q in P if q["a"] <= i and q["tur"] != "Referans" and any(d in gorunen(q) for d in g["saydam"])]
+            if g.get("kenar"):                                      # F10f düzeltme 1: kenar çizgisi alan parçalar (desen)
+                e["kenar"] = [q["id"] for q in P if q["a"] <= i and q["tur"] != "Referans" and any(d in gorunen(q) for d in g["kenar"])]
             if g.get("sema"):
                 e["_sema"] = tuple(g["sema"])
             if g.get("gizli_ok"):

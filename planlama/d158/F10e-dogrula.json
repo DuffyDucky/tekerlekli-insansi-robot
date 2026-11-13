@@ -1,6 +1,6 @@
 {
- "tarih": "2026-11-12 07:50",
- "konum": 100,
+ "tarih": "2026-11-13 06:17",
+ "konum": 121,
  "renk_cad": {
   "yontem": "CAD rengi rehber_gorunum.cad_parcalar() ile FCStd'den yeniden okunur (Document.xml Renk özelliği × gorsel betiğinin RENK tablosu); ayrıca GuiDocument.xml yayınık rengi",
   "cad": 1192,
@@ -124,12 +124,12 @@
  },
  "ev_dogruluk": {
   "yontem": "her (konum, ev) çifti: konumun yeni bağlantı elemanlarının ve yeni ana parçalarının köşe noktalarından (parça başına en çok 600) ev parçasının üçgenlerine en kısa nokta–üçgen uzaklığı ≤ 1.0 mm (doğrudan); değilse köşelerinin en az 3'ü ev parçasının içinde (delik modellenmemiş); değilse araya giren bir bağlantı elemanı (ısıl gömme, somun) üzerinden iki uzaklık da ≤ 1.0 mm. robot.glb dünya koordinatı",
-  "cift": 201,
-  "olculen": 186,
-  "dogru": 186,
-  "masa_tabani": 15,
+  "cift": 220,
+  "olculen": 202,
+  "dogru": 202,
+  "masa_tabani": 18,
   "yol": {
-   "doğrudan": 186
+   "doğrudan": 202
   },
   "yanlis": [],
   "olcum": [
@@ -1619,6 +1619,24 @@
     "dogru": true
    },
    {
+    "adres": "40.1",
+    "ev": "p0106",
+    "ad": "S2 servo çıkış mili",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "40.1",
+    "ev": "p0179",
+    "ad": "S2 servo çıkış mili",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
     "adres": "41",
     "ev": "p0215",
     "ad": "Omuz bandı sağ",
@@ -1637,8 +1655,89 @@
     "dogru": true
    },
    {
+    "adres": "41.1",
+    "ev": "p0216",
+    "ad": "Omuz bandı sol",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "41.1",
+    "ev": "p0215",
+    "ad": "Omuz bandı sağ",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "41.6",
+    "ev": "p0215",
+    "ad": "Omuz bandı sağ",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.493,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "41.6",
+    "ev": "p0216",
+    "ad": "Omuz bandı sol",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.493,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "41.6",
+    "ev": "p0232",
+    "ad": "S1 kaset gövdesi sağ",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "41.6",
+    "ev": "p0234",
+    "ad": "S1 kaset gövdesi sol",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
     "adres": "42",
     "ev": "p0582",
+    "ad": "Ön kol gövdesi",
+    "tur": "masa tabanı (yeni)",
+    "uzaklik": null,
+    "yol": null,
+    "dogru": null
+   },
+   {
+    "adres": "42",
+    "ev": "p0639",
+    "ad": "Ön kol gövdesi",
+    "tur": "masa tabanı (yeni)",
+    "uzaklik": null,
+    "yol": null,
+    "dogru": null
+   },
+   {
+    "adres": "42.1",
+    "ev": "p0582",
+    "ad": "Ön kol gövdesi",
+    "tur": "masa tabanı (yeni)",
+    "uzaklik": null,
+    "yol": null,
+    "dogru": null
+   },
+   {
+    "adres": "42.1",
+    "ev": "p0639",
     "ad": "Ön kol gövdesi",
     "tur": "masa tabanı (yeni)",
     "uzaklik": null,
@@ -1710,6 +1809,42 @@
    },
    {
     "adres": "44",
+    "ev": "p0639",
+    "ad": "Ön kol gövdesi",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.1,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "44.1",
+    "ev": "p0572",
+    "ad": "Dirsek horn 25T alüminyum disk",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "44.1",
+    "ev": "p0629",
+    "ad": "Dirsek horn 25T alüminyum disk",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "44.1",
+    "ev": "p0582",
+    "ad": "Ön kol gövdesi",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.1,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "44.1",
     "ev": "p0639",
     "ad": "Ön kol gövdesi",
     "tur": "bağlantı elemanı + yeni ana parça",
@@ -1820,6 +1955,42 @@
     "adres": "48",
     "ev": "p0200",
     "ad": "Üst kol tüpü",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "48.1",
+    "ev": "p0127",
+    "ad": "Üst kol tüpü",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "48.1",
+    "ev": "p0200",
+    "ad": "Üst kol tüpü",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "48.4",
+    "ev": "p0562",
+    "ad": "Dirsek çatalı",
+    "tur": "bağlantı elemanı + yeni ana parça",
+    "uzaklik": 0.0,
+    "yol": "doğrudan",
+    "dogru": true
+   },
+   {
+    "adres": "48.4",
+    "ev": "p0619",
+    "ad": "Dirsek çatalı",
     "tur": "bağlantı elemanı + yeni ana parça",
     "uzaklik": 0.0,
     "yol": "doğrudan",
@@ -1961,15 +2132,15 @@
   "tema": {
    "light": {
     "zemin": "#eceae4",
-    "yeni_parca_konum": 2015,
-    "esik_alti": 677,
+    "yeni_parca_konum": 2233,
+    "esik_alti": 707,
     "esik_alti_kenarsiz": 0,
     "kenarsiz": [],
     "saydam_kenarsiz": 0,
     "saydam_kenarsiz_ornek": [],
     "onceki_gri": "#b5b5b0",
     "onceki_esik": 1.5,
-    "onceki_yakin": 507,
+    "onceki_yakin": 533,
     "onceki_yakin_kenarsiz": 0,
     "renk_sayisi": 27,
     "esik_alti_renk": [
@@ -1991,8 +2162,8 @@
    },
    "dark": {
     "zemin": "#1b1c20",
-    "yeni_parca_konum": 2015,
-    "esik_alti": 164,
+    "yeni_parca_konum": 2233,
+    "esik_alti": 180,
     "esik_alti_kenarsiz": 0,
     "kenarsiz": [],
     "saydam_kenarsiz": 0,
@@ -2049,36 +2220,52 @@
   "gecti": true
  },
  "ev": {
-  "konum": 99,
-  "veride_ev": 95,
-  "sahnede_ev": 95,
+  "konum": 120,
+  "veride_ev": 102,
+  "sahnede_ev": 102,
   "eksik": [],
   "bos": [
    "1",
    "17",
    "32",
+   "36.4",
+   "36.5",
+   "40.2",
+   "40.3",
+   "41.2",
+   "41.3",
+   "41.4",
+   "41.5",
+   "42.2",
+   "42.3",
+   "44.2",
+   "44.3",
+   "48.2",
+   "48.3",
    "49.2"
   ],
-  "kabuk_alt_adim": 42,
+  "kabuk_alt_adim": 44,
   "kabuk_yeni_parcali": 41,
   "kabuk_ev": 41,
   "kabuk_yeni_parcasiz": [
+   "36.4",
+   "36.5",
    "49.2"
   ],
   "kaynak": {
    "önceki parça yok": 1,
-   "baglanti": 73,
-   "masa tabanı (yeni)": 15,
-   "temas 0.6 mm": 7,
-   "yeni parça yok": 3
+   "baglanti": 77,
+   "masa tabanı (yeni)": 16,
+   "temas 0.6 mm": 9,
+   "yeni parça yok": 17
   },
   "gecti": true
  },
  "isaret": {
   "yontem": "işaret listesi = konumda yeni (durum simdi) bağlantı elemanı sayısı (Python durum kuralı); küme adetleri toplamı = liste (her işaret tuvalde); SVG halka sayısı = küme sayısı",
-  "konum": 100,
-  "toplam_beklenen": 1188,
-  "toplam_isaret": 1188,
+  "konum": 121,
+  "toplam_beklenen": 1280,
+  "toplam_isaret": 1280,
   "kabuk_beklenen": 277,
   "kabuk_isaret": 277,
   "kabuk_kume": 265,
@@ -2769,6 +2956,24 @@
     "gecti": true
    },
    {
+    "adres": "36.4",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "36.5",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
     "adres": "37",
     "beklenen": 14,
     "liste": 14,
@@ -2805,7 +3010,88 @@
     "gecti": true
    },
    {
+    "adres": "40.1",
+    "beklenen": 18,
+    "liste": 18,
+    "kumede": 18,
+    "kume": 8,
+    "dom": 8,
+    "gecti": true
+   },
+   {
+    "adres": "40.2",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "40.3",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
     "adres": "41",
+    "beklenen": 4,
+    "liste": 4,
+    "kumede": 4,
+    "kume": 4,
+    "dom": 4,
+    "gecti": true
+   },
+   {
+    "adres": "41.1",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "41.2",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "41.3",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "41.4",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "41.5",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "41.6",
     "beklenen": 4,
     "liste": 4,
     "kumede": 4,
@@ -2820,6 +3106,33 @@
     "kumede": 34,
     "kume": 18,
     "dom": 18,
+    "gecti": true
+   },
+   {
+    "adres": "42.1",
+    "beklenen": 34,
+    "liste": 34,
+    "kumede": 34,
+    "kume": 18,
+    "dom": 18,
+    "gecti": true
+   },
+   {
+    "adres": "42.2",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "42.3",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
     "gecti": true
    },
    {
@@ -2856,6 +3169,33 @@
     "kumede": 20,
     "kume": 7,
     "dom": 7,
+    "gecti": true
+   },
+   {
+    "adres": "44.1",
+    "beklenen": 20,
+    "liste": 20,
+    "kumede": 20,
+    "kume": 7,
+    "dom": 7,
+    "gecti": true
+   },
+   {
+    "adres": "44.2",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "44.3",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
     "gecti": true
    },
    {
@@ -2923,6 +3263,42 @@
    },
    {
     "adres": "48",
+    "beklenen": 16,
+    "liste": 16,
+    "kumede": 16,
+    "kume": 4,
+    "dom": 4,
+    "gecti": true
+   },
+   {
+    "adres": "48.1",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "48.2",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "48.3",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "48.4",
     "beklenen": 16,
     "liste": 16,
     "kumede": 16,
@@ -3395,7 +3771,7 @@
   },
   "tema": {
    "light": {
-    "alt_adim": 42,
+    "alt_adim": 44,
     "yeni": 335,
     "gorunmeyen": 0,
     "gomme_gorunmeyen": 0,
@@ -3406,7 +3782,7 @@
     "gecti": true
    },
    "dark": {
-    "alt_adim": 42,
+    "alt_adim": 44,
     "yeni": 335,
     "gorunmeyen": 0,
     "gomme_gorunmeyen": 0,
@@ -7115,6 +7491,30 @@
       "gorunur": true
      }
     ],
+    "gecti": true
+   },
+   {
+    "adres": "36.4",
+    "tema": "light",
+    "hazir": true,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "gomme": [],
+    "istisna": [],
+    "birim": null,
+    "parca": [],
+    "gecti": true
+   },
+   {
+    "adres": "36.5",
+    "tema": "light",
+    "hazir": true,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "gomme": [],
+    "istisna": [],
+    "birim": null,
+    "parca": [],
     "gecti": true
    },
    {
@@ -11121,6 +11521,30 @@
     "gecti": true
    },
    {
+    "adres": "36.4",
+    "tema": "dark",
+    "hazir": true,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "gomme": [],
+    "istisna": [],
+    "birim": null,
+    "parca": [],
+    "gecti": true
+   },
+   {
+    "adres": "36.5",
+    "tema": "dark",
+    "hazir": true,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "gomme": [],
+    "istisna": [],
+    "birim": null,
+    "parca": [],
+    "gecti": true
+   },
+   {
     "adres": "49.1",
     "tema": "dark",
     "hazir": true,
@@ -11520,28 +11944,8 @@
   },
   "gecti": true
  },
- "goruntu": [
-  "F10e-goruntu-31-5-once-sonra-acik.png",
-  "F10e-goruntu-31-5-once-sonra-koyu.png",
-  "F10e-goruntu-31-9-once-sonra-acik.png",
-  "F10e-goruntu-31-9-once-sonra-koyu.png",
-  "F10e-goruntu-31-10-once-sonra-acik.png",
-  "F10e-goruntu-31-10-once-sonra-koyu.png",
-  "F10e-goruntu-34-4-once-sonra-acik.png",
-  "F10e-goruntu-34-4-once-sonra-koyu.png",
-  "F10e-goruntu-34-6-once-sonra-acik.png",
-  "F10e-goruntu-34-6-once-sonra-koyu.png",
-  "F10e-goruntu-34-7-once-sonra-acik.png",
-  "F10e-goruntu-34-7-once-sonra-koyu.png",
-  "F10e-goruntu-35-3-once-sonra-acik.png",
-  "F10e-goruntu-35-3-once-sonra-koyu.png",
-  "F10e-goruntu-36-3-once-sonra-acik.png",
-  "F10e-goruntu-36-3-once-sonra-koyu.png",
-  "F10e-goruntu-cift-34-3-34-5.png",
-  "F10e-goruntu-cift-34-4-34-6.png",
-  "F10e-goruntu-cift-49-3-49-4.png"
- ],
- "sure_s": 879,
+ "goruntu": [],
+ "sure_s": 886,
  "gecti_ozet": {
   "renk_cad": true,
   "renk_sahne": true,

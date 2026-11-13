@@ -68,8 +68,10 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K53 | Ön şarj kartı burcu × elektronik katı (B6'da kat inerken girişim) | **açık** (F10b) | a + iii: katta 1,5 mm çentik, bir sonraki tam taramalı pakette; o zamana dek rehber B6 notu | Lazer kesim dosyası (elektronik katı), rehber B6 adımı (F10c), çakışma taraması kaynağı |
 | K54 | E3 kafa inişinde sıfır boşluk (yanaklar arası 54,4 mm ↔ yığın 54,4 mm) | **açık** (F10c) | c: ilk baskı kuponunda dene; zorlarsa b (yanak iç yüzlerine 0,2–0,3 mm pay) | Kafa iskeleti baskısı (Parti kuponu), rehber E3 notu, çakışma taraması kaynağı (b seçilirse) |
 | K55 | Kabuk bindirme dilleri: etek ön, göğüs ve omuz bantları, göğüs ekranı çerçevesi düz yoldan yerine girmiyor | **açık** (F10d) | Etek ön için c (iki bacaklı yol ölçülsün); göğüs, omuz, çerçeve için a geçici (kuponda denensin), b bir sonraki geometri paketinde | Rehber F1 / F3 / F4 takma metni, kabuk baskısı (Parti kuponu), kabuk çakışma taraması (b seçilirse) |
+| K56 | Kol çatalı + 625ZZ rulmanının takılma sırası (G2 / G3, adım 39 ↔ 40.1) | **açık** (F10f) | C: rulman çatala tezgâhta preslenir, iki bilezik çatalla gelir; pul + mafsal cıvatası 40.1'de çataldan sonra | Rehber G2 / G3 metni ve parça ataması (39 → 40), omuz montaj sırası belgesi, 40.1 dar istisnası |
+| K57 | Dirsek çatalı ↔ S2 horn merkez vidası (H0b / H0c, adım 43 ↔ 44.1) | **açık** (F10f) | Vida 44.1'e, çataldan sonra | Rehber H0b metni ve parça ataması (43 → 44), dirsek montaj sırası, 44.1 dar istisnası |
 
-**Açık: 50** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 55 madde.
+**Açık: 52** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 5** (K5, K8, K15, K16, K17). Toplam 57 madde.
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
@@ -91,6 +93,9 @@ P10.4 (F10d, 11.11.2026) düzeltme turu 1'in karar kuyruğu önerisi F10d-K1 →
 (model girişimi; yapay çıktı, geri çekildi) kuyruğa alınmadı.
 P10.4b (F10e, 12.11.2026) yeni madde açmadı: etek ön bandı ölçümü K55'e not; açık işler sondaki bölümde (`planlama/d158/F10e-gunluk.md` §7.1,
 §12.6; `F10e-kontrol-2.md` §3).
+P10.5 (F10f, 13.11.2026) kontrol raporlarının iç adı F10f-K1-a → K56, F10f-K1-b → K57 (`planlama/d158/F10f-gunluk.md` § Düzeltme turu 1
+"Karar notları", § Düzeltme turu 2 "Madde 1a ve K1 notları"; `F10f-kontrol.md` §3.2, `F10f-kontrol-2.md` §2 madde 2, `F10f-kontrol-3.md`
+§3.1 ve Y1). Rehberde sıra değişmedi; iki kalem dar istisnada ("karar bekliyor"). Açık işler sondaki bölümde.
 
 ---
 
@@ -1006,6 +1011,59 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 
 ---
 
+## K56 · Kol çatalı + 625ZZ rulmanının takılma sırası (G2 / G3)
+- **Soru:** Bugünkü sırada 625ZZ'nin iç bileziği, mafsal pulu ve mafsal cıvatası G2'de (adım 39) omuz göbeğine takılıyor; kol çatalı
+  G3'te (40.1) gelince horn ile bu parçalar arasında kalıyor ve düz bir yoldan yerine girmiyor. Rulman ve cıvata hangi sırayla
+  takılsın?
+- **Ölçüm:**
+  - İlk kontrol (`F10f-kontrol.md` §3.2, 26 yön, h 0,5, eşik 0,2): kol çatalı için 26 yönün hiçbiri temiz değil; p0116 iç bilezik +
+    p0117 pul + p0118 mafsal cıvatası kaldırılınca +x / −y açılıyor.
+  - Uygulama ajanı (`F10f-gunluk.md` § Düzeltme turu 1 "Karar notları", rehberin kendi denetimiyle, veri kopyasında): +x'te engel
+    yalnız iç bilezik 6,42 ve mafsal cıvatası 5,0 (ışın derinliği, mm).
+  - İkinci bakış (`F10f-kontrol-2.md` §2, nokta–üçgen): p0116 1,67 ve p0118 2,48 mm engel; C seçeneği (+x ve −y) temiz.
+  - Üçüncü bakış (`F10f-kontrol-3.md` §3.1, 40.1): çatal + dış bilezik + pim / ısıl gömme +x, d 56,9: eşik üstü yalnız p0116 1,67 ve
+    p0118 2,48 mm (nokta–üçgen); ışın ölçümünde p0122 → p0116 / p0118 6,42 / 5,0, K1-a dar izni (6,92 / 5,5) içinde.
+- **Seçenekler** (uygulama ajanının ölçümü, veri kopyasında; `F10f-gunluk.md` "Karar notları"):
+  A) İç bilezik + pul + cıvata aynı alt adımda çataldan sonra (ilk kontrolün önerisi): iç bilezik bu kez dış bileziğe 6,38, çatala
+     6,33 çarpıyor.
+  A') A + rulman tek parça (iç bilezik dış bilezikle birlikte): dış bilezik çatala 6,3–6,4 çarpıyor (eğik, +x ve −x yolların hepsinde).
+  C) Rulman çatala tezgâhta preslenir, iki bilezik çatalla birlikte uçar; pul + mafsal cıvatası 40.1'de çataldan sonra: temiz (çatal
+     +x ya da −y). Değiştirdikleri: rehberde parça ataması 39 → 40 (iç bilezik, pul, cıvata) ve G2 / G3 metni; tasarım belgelerinde
+     montaj sırası (G2 "karşı tarafa 625ZZ ve M5 pim"). Kaynak `omuz_rapor.py` SIRA 2: "625ZZ'yi çatalın arka koluna bastır".
+- **Bugünkü rehber (düzeltme turu 2):** C'nin yalnız rulman kısmı uygulandı: dış bilezik (p0122 / p0195) çatalla birlikte uçuyor, 40.1
+  metni "tezgâhta önceden bastırılır, çatalla birlikte gelir" diyor; iç bilezik / pul / cıvatanın adımı değişmedi (39). Çatal satırı dar
+  istisnada ("karar bekliyor").
+- **Not (üçüncü bakış Y1):** 39. adım metni hâlâ "Karşı tarafa 625ZZ ve M5 pim" diyor, 40.1 ise dış bileziğin çatala önceden
+  bastırıldığını söylüyor; karar verilince iki metin tek sıraya çekilecek.
+- **Önerilen varsayılan:** C (uygulama ajanının önerisi; ikinci ve üçüncü bakış C'nin temiz olduğunu kendi ölçümüyle buldu). Yalnız
+  öneri; karar Ahmet'te.
+- **Ölçülmedi:** alet erişimi (cıvatanın çatal takılıyken sıkılması), rulmanın çatala presle takılmasının elle denenmesi.
+- **Bloke:** rehber G2 / G3 metni ve parça ataması; omuz montaj sırası belgesi; 40.1'deki dar istisnanın kalkması.
+- **Durum:** açık.
+
+---
+
+## K57 · Dirsek çatalı ↔ S2 horn merkez vidası (H0b / H0c)
+- **Soru:** Horn merkez vidası H0b'de (adım 43) takılıyor; dirsek çatalı H0c'de (44.1) gelirken tek engel bu vida. Vida çataldan sonra
+  mı takılsın?
+- **Ölçüm** (çatal + iki 625ZZ bileziği birlikte, +y, d 63,5; düzeltme turu 2'den sonra):
+  - Üçüncü bakış ölçtü (`F10f-kontrol-3.md` §3.1a): nokta–üçgen ile eşik üstü tek engel p0573 horn merkez vidası **3,0 mm** (sol
+    ayna p0630 3,0 mm); rehberin ışın ölçümüyle p0562 → p0573 **5,46 mm** (K1-b dar izni 5,96 içinde). Grup yuva omzundan geçmiyor.
+  - Uygulama ajanı ölçtü (`F10f-gunluk.md` § Düzeltme turu 2 "Madde 1a ve K1 notları"): yalnız p0573'e değiyor, ortak hacim
+    derinliği **5,46 mm** (ilk temas 3,0 mm'de); rulman çatala eklenince yeni engel çıkmadı.
+  - İlk kontrol (`F10f-kontrol.md` §3.2): eşik 0,3'te bile temiz yön yok (vida 3,05–3,13 mm); vida kaldırılınca ±z / +y açılıyor.
+  - Bu iki derinlik ayrı ölçüler: 3,0 mm yüzeye dik batma, 5,46 mm ışın boyunca ortak boy (`F10f-kontrol-3.md` §3.1b).
+- **Seçenekler** (`F10f-gunluk.md` "Karar notları"; ikinci bakış `F10f-kontrol-2.md` §2 madde 2 "vida sonra takılırsa temiz"):
+  a) Vida 44.1'e, çataldan sonraya: çatal temiz, vidanın +x yolu da temiz. Değiştirdikleri: H0b metni ("Çataldan önce"), parça
+     ataması 43 → 44, dirsek montaj sırası.
+  Bugünkü sıra (vida 43'te) rehberde dar istisnayla duruyor; raporlarda başka seçenek yok.
+- **Önerilen varsayılan:** a (uygulama ajanının önerisi). Yalnız öneri; karar Ahmet'te.
+- **Ölçülmedi:** çatal takılıyken vidanın horna alet erişimi (yalnız düz yol ölçüldü); kablonun elle döşenmesi.
+- **Bloke:** rehber H0b / H0c metni ve parça ataması; dirsek montaj sırası; 44.1'deki dar istisnanın kalkması.
+- **Durum:** açık.
+
+---
+
 ## Karar değil, iş (kuyruğa alınmadı)
 - Kapak baskı analizinde iki sonuç (19.667,7 mm² ↔ 5,01 mm², `KY/uygulama-notu.md:68`): P6.2. F6b'de kapandı (aşağıda).
 - `elektrik.md` boyun/hub satırları ve baskı listesi yeni düzene (`KY/uygulama-notu.md:153`): P4.1, P4.3.
@@ -1048,3 +1106,20 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     brief hatası sayıldı). Demoya gerçek renk ayrı istek olursa ayrı paket.
   - Adım 41 (G4) uyarısı ("CAD duruşunda yandan kaydırılamaz") yalnız CAD duruşunda ölçüldü; kolun metindeki duruşunda (S1 −45 / −20 / 0)
     ölçülmedi.
+- F10f'den (P10.5, 13.11.2026) açık iş, paketi durdurmuyor (`F10f-kontrol-3.md` §3–§6, `F10f-gunluk.md` § Düzeltme turu 2):
+  - Y2: 48.2 / 48.3 kablo kareleri iki temada da zor (üçüncü bakışın gözü; ajan "anlaşılır" demişti): iki ek ayrı işaretli ama tek
+    çizgide seri okunuyor, dirsek servo kablosunun JR'den sonra nereye gittiği karede yok. Kablo karelerinde zor 4 / 14, hedef ≤ 4 (sınırda).
+  - Y3: uçuş denetiminin duruş eşiği iki ayrı ölçüyü karıştırıyor (duruşta eksen boyunca örtüşme boyu ↔ uçuşta ışın kirişi). Raporlanan
+    7,95 mm (31.6) ve 8,67 mm (44.1 eski yön) kiriş boyu; gerçek batma (nokta–üçgen, üçüncü bakış / ikinci bakış) 0,56 ve 1,55 mm. Duruşta
+    uzun örtüşen çiftte kör alan büyüyor (ör. 40.1 kol çatalı ↔ omuz göbeği 29,0 mm). Bu turda bu yüzden kaçan çift bulunmadı.
+  - Y4: metin / uçuş denetiminin hâlâ yakalamadıkları: kol dışındaki 9 dize anahtar kullanıldığı sürece her engeli susturuyor;
+    toleransın birimsiz yazımı "(−5…0)" ve 41.4 ↔ 41.5 arası ψ ≈ 225 / 290 takası yakalanmıyor.
+  - 31.6 ölçüm kaydı: kamera (p0798) ↔ yüz kabuğu (ön) sağ (p0750); `kontrol.json` 7,95 mm (ışın kirişi), üçüncü bakışın nokta–üçgen
+    ölçümüyle −z yolunda en çok 0,56 mm sıyırma (ısıl gömme p0763'e de 0,56 mm). Düzeltilmedi; kayıtta ölçünün kiriş olduğu bir cümleyle
+    yazılmalı.
+  - Devir a (`F10f-kontrol-2.md` §4, orkestratör kararı): kol konumlarında okur pikseli eşik altında kalan parçalar (açık 123 / koyu 122,
+    bütün güvenli alan); HEAD'e göre kötüleşme yok, nedenler yapısal. Ayrı iş.
+  - Üçüncü bakışın ölçemedikleri: patlatma kuralının kalan 111 konumdaki sıfır farkı (yalnız ajanın ölçümü); 7 masa birimi uçuş satırı;
+    koyu temada patlatma konsolu; K56 / K57'de alet erişimi ve kablonun elle döşenmesi; kökteki boş dosyanın kimce silindiği (cevap
+    `dongu-158.md` §5, 13.11); okunurluk sınıflamasında bağımsız ikinci göz; ilk kontrol bulgu 6 (demet kalınlığı) ve 36.5 iç ucu;
+    FreeCAD tarafı ve üretici yeniden koşusu.
