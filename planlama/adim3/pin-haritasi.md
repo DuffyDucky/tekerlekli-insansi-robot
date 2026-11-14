@@ -1,8 +1,11 @@
 # Lale: ESP32 pin haritası (kesin)
 
-Sürüm 3, 14.11.2026. Sürüm 1 ve 2 aynı gün yazıldı. Bağımsız kontroller düzeltme istedi: `planlama/d158/pin-karari-kontrol.md` (§3.1) ve
+Sürüm 4, 14.11.2026. Sürüm 1–3 aynı gün yazıldı. Bağımsız kontroller düzeltme istedi: `planlama/d158/pin-karari-kontrol.md` (§3.1) ve
 `planlama/d158/pin-karari-kontrol-2.md`; üçüncü kontrol `pin-karari-kontrol-3.md` GEÇER dedi (metin notları C adımında işlendi). Sürüm 3'te pinler değişmedi; değişenler gate direnci, IS koruması, röle MOSFET şartı ve çekirdek
-sürümü kuralı. Sınanan çekirdek sürümleri: Arduino-ESP32 **2.0.17** (projenin çekirdeği) ve **3.0.7 / 3.3.0** (UART varsayılanları).
+sürümü kuralı. **Sürüm 4'te pinler ve firmware kuralları değişmedi; röle sürücüsü MOSFET'ten BC337-40 transistöre döndü** (orkestratör,
+kablolama ön kararları düzeltme turu 1; öneri `planlama/d158/kablolama-onkarar-kontrol.md`). Değişenler: D1, D9, §3.1 hesabı, T2, §9 donanım notu
+ve bunlara bağlı "gate" → "taban" sözcükleri. **14.11 düzeltme (kablolama düzeltme turu 2; `planlama/d158/kablolama-onkarar-kontrol-2.md` D1):
+taban → GND 4,7 kΩ → 2,2 kΩ**; kapalı hâl ölçütü rölenin bırakma gerilimi (bobin < 1,2 V); pinler ve firmware kuralları yine değişmedi. Sınanan çekirdek sürümleri: Arduino-ESP32 **2.0.17** (projenin çekirdeği) ve **3.0.7 / 3.3.0** (UART varsayılanları).
 **Karar: Ahmet'in 13.11.2026 yetkilendirmesiyle** ("kararını sen oluşturabilirsin, projede ona uyarız"; pano #8 sorusunun cevabı).
 Bu dosya pin haritasının tek yazılı kaynağıdır, ta ki `kod/ortak/pinler.json` açılıp `pinler.h` ve `elektrik.md` tablosu ondan üretilene
 kadar (§9). `elektrik.md` "Pin planı" bölümü bu tabloyla aynıdır.
@@ -10,15 +13,16 @@ kadar (§9). `elektrik.md` "Pin planı" bölümü bu tabloyla aynıdır.
 Okuyucu: firmware'i yazacak olan (Efe ve Efe'nin Claude'u). Bu dosya tek başına okunup firmware yazılabilsin diye yazıldı; donanım
 şartları ve "kablajda teyit edilecek" maddeleri montaj içindir.
 
-**Röle kuralı (bu sürümün temeli):** röle gate'leri yalnız hiçbir açılış kodunun ve hiçbir varsayılan çevre biriminin sürmediği, reset
+**Röle kuralı (bu sürümün temeli):** röle sürücü girişleri yalnız hiçbir açılış kodunun ve hiçbir varsayılan çevre biriminin sürmediği, reset
 boyunca kendiliğinden LOW kalan pinlere bağlanır. Bu, projenin çekirdeği (2.0.17) için kaynakla sınandı. 3.x'te GPIO4 `Serial2`'nin RX
 varsayılanıdır (sürmez; 3.0.7 pull-up açar, 3.3.0 açmaz); bu yüzden UART'lar hiçbir sürümde varsayılan pinlerle açılmaz (Y1) ve çekirdek sürümü sabittir (Y13).
-Gate pull-down'ı 4,7 kΩ: dahili pull-up açılsa da gate 0,5 V'un altında kalır (§6 D1).
+Sürücü transistörün tabanı 2,2 kΩ ile GND'de: dahili pull-up açılsa da taban ≤ 0,25 V (hesap), bobin gerilimi bırakma sınırının binde birkaçı (§6 D1, D9).
 
 Kaynak kısaltmaları:
 
 | Kısa | Kaynak |
 |---|---|
+| RÖ | Röle bobin verisi, **üretici tablolarından** (Meishuo MAH3 Schedule 1 "COIL DATA (23 °C)"; Hongfa tabanlı JQC-3FF "COIL DATA"; üçüncü bakış `planlama/d158/kablolama-onkarar-kontrol-3.md` A7 doğruladı; K1'in kendi satıcı adı MAH-112-C-4, MAH3 kardeş tablo): K1 MAH-112-C-4 için kardeş MAH3 tablosu 12 V: 85 Ω ±%10, 1,7 W, çekme ≤ 8,4 V, **bırakma ≥ 1,2 V**; K2 JQC-3FF-12VDC: 400 Ω ±%10, çekme ≤ 9,0 V, **bırakma ≥ 1,2 V** (23 °C) |
 | DS | Espressif, *ESP32 Series Datasheet* v5.3 (2026.07). §2.3.1, §2.6 Tablo 2-5/2-6, §3 Tablo 3-1…3-5 (Tablo 3-2 "Joint Download Boot": SDIO + UART), Tablo 5-1, Tablo 5-3 (VOH ≥ 0,8 VDD = 2,64 V; RPU / RPD 45 kΩ tipik, en az değer yok; IIH / IIL ≤ 50 nA), Ek A not 8 (wpu / wpd ~75 µA), 9, 10, Ek A.4 IO_MUX |
 | ER | Espressif, *ESP32 Series SoC Errata* v3.1: [GPIO-3.11] (madde 3.12), [GPIO-3.14] (madde 3.11), [RES-3.4] (madde 3.13) |
 | W32E | Espressif, *ESP32-WROOM-32E & WROOM-32UE Datasheet* v2.1: Tablo 1 (sürümler; çip D0WD-V3 / D0WDR2-V3, PSRAM'li sürümler yalnız R2), pin tablosu notu 3 |
@@ -30,16 +34,17 @@ Kaynak kısaltmaları:
 | AR3 | Arduino-ESP32 **3.0.7** `cores/esp32/HardwareSerial.h:151-152, 169-170, 191-192, 199-200` ve **3.3.0** aynı dosya `:194-195, 216-217, 242-243, 250-251`: ESP32'de **RX1 = 26, TX1 = 27, RX2 = 4, TX2 = 25**. ESP-IDF v5.1.4 `components/driver/uart/uart.c:615-623` (`uart_set_pin`: TX pini HIGH başlatılır, RX pinine pull-up açılır; 3.0.7 bunu kullanır). 3.3.0 kendi pin işlevini kullanır, RX'e pull-up koymaz (üçüncü kontrol Ö4: `esp32-hal-uart.c:353-418`; ben okumadım) |
 | IDF44 | ESP-IDF v4.4.7 `components/esp_hw_support/port/esp32/spiram_psram.c`: `:111-112` (D0WD CS 16 / CLK 17), `:761` (CS → `SPICS1_OUT`), `:779-780` (CS pinleri GPIO işlevine), `:860-863` (D0WDQ6 / D0WD paketinde bu pinler seçilir), `:914` (CLK 17 → `SPICLK_OUT`), `:944-953` (kimlik iki kez okunur, geçersizse `ESP_FAIL`) |
 | BTS | Infineon, *BTS 7960 Data Sheet* Rev. 1.1 (2004-12-07) §4.4.5–4.4.7: INH = 0 → iki anahtar kapalı; IIS(lim) en az 4, tipik 4,5, en çok 7 mA; kILIS 8500 (nominal). **IIS(lim) ikinci elden** (ilk kontrolün aktarımı); tam veri sayfasını açamadım: hesapta en kötü değer 7 mA, iki IS birlikte 14 mA |
-| MOS | Alpha & Omega *AO3400A* veri sayfası: VDS 30 V, VGS(th) 0,65 / 1,05 / 1,45 V (ID 250 µA), RDS(on) < 48 mΩ (VGS 2,5 V). Infineon *IRLML6344TRPbF*: VDS 30 V, VGS(th) 0,5 / 0,8 / 1,1 V, RDS(on) en çok 37 mΩ (VGS 2,5 V). Infineon *IRLZ44NPbF*: VGS(th) 1,0–2,0 V, RDS(on) yalnız 4–10 V gate'te tanımlı |
+| BJT | Vishay, *BC337 / BC338* veri sayfası, Doc. 85112 Rev. 1.2 (02-Nov-04): BC337-40 hFE en az / tipik / en çok 250 / 400 / 630 (VCE 1 V, IC 100 mA); BC338-40 IC 300 mA'de en az 170, tipik 320 (BC337-40 için 300 mA değeri yok; vekil olarak); VCE(sat) en çok 0,7 V (IC 500 mA, IB 50 mA); VBE en çok 1,2 V (VCE 1 V, IC 300 mA); VBE(sat) yalnız eğri, sayı yok; ICES en çok 100 nA (45 V), 125 °C'de 10 µA; VCEO 45 V, VEBO 5 V, IC 800 mA, IB en çok 100 mA, Ptot 625 mW, RθJA 200 °C/W, Tj 150 °C. **Öbür üreticiler (kontrol-3 A1):** hFE @ 100 mA hepsinde 250 / 400 / 630; 300 mA'de en az değer üreticiye göre: onsemi *BC337/D* Rev. 8 bütün gruplar **60**, Lumimax 60, DC Components 40, Diotec -40 grubu 170. Satın alınacak "BC337-40TA" adı onsemi / Fairchild adlandırması (çıkarım): belgeyle 300 mA'de **60** alınır |
+| MOS | (Sürüm 3; sürüm 4'te kullanılmıyor) Alpha & Omega *AO3400A* veri sayfası: VDS 30 V, VGS(th) 0,65 / 1,05 / 1,45 V (ID 250 µA), RDS(on) < 48 mΩ (VGS 2,5 V). Infineon *IRLML6344TRPbF*: VDS 30 V, VGS(th) 0,5 / 0,8 / 1,1 V, RDS(on) en çok 37 mΩ (VGS 2,5 V). Infineon *IRLZ44NPbF*: VGS(th) 1,0–2,0 V, RDS(on) yalnız 4–10 V gate'te tanımlı |
 | EL | `planlama/adim3/elektrik.md` (E2, E3, E9, blok şema, pin planı) |
 | PH | `kod/esp32/include/pinler.h`, `main` dalı `2be1c63` |
 | MC | `kod/esp32/src/motorlar.cpp`, `main.cpp`, `main` `2be1c63` |
 | KY | `kod/jestler/kanallar.yaml`, `main` `2be1c63` |
-| MJ | `planlama/maliyet.json` (ESP32, BTS7960B, röle MOSFET'i :106, K1 :107, K2 :109, direnç seti :115) |
+| MJ | `planlama/maliyet.json` (ESP32, BTS7960B, röle sürücüsü :106 (bugün IRLZ44N, BC337-40 ile değişecek), K1 :107, K2 :109, direnç seti :115) |
 | P8 | Pano #8, mesaj #19 (soru, 10.11) ve #20 (Efe'nin tarafının cevabı, 13.11) |
 
 Espressif belgeleri ve Arduino-ESP32 / ESP-IDF kaynakları 14.11.2026'da Espressif'in resmî belge sitesinden ve GitHub depolarından
-(etiket `2.0.17`, `3.0.7`, `3.3.0`, `v4.4.7`, `v5.1.4`) indirildi ve okundu. MOSFET veri sayfaları üreticilerin sitesinden indirildi.
+(etiket `2.0.17`, `3.0.7`, `3.3.0`, `v4.4.7`, `v5.1.4`) indirildi ve okundu. MOSFET (sürüm 3) ve BC337 (sürüm 4) veri sayfaları üreticilerin sitesinden indirildi.
 
 ## 1. Kart ve modül
 
@@ -86,8 +91,8 @@ kapalı, dahili çekme yok. "Açılışta / varsayılan olarak süren" sütunu: 
 | 27 | çıkış, PWM | Sağ motor **ileri** | sağ BTS7960B **IN1** (RPWM) | yüzer → yüzer | 2.0.17: yok. **3.x: `Serial1` TX varsayılanı** (sürer, HIGH) | yok (EN LOW iken zararsız). **3.x'te EN HIGH iken varsayılan `Serial1` açılırsa sağ motor tam yol ileri döner; bunu yalnız Y1 ve Y13 önler, donanım önlemez** | Y1 |
 | 14 | çıkış, PWM | Sağ motor **geri** | sağ BTS7960B **IN2** (LPWM) | yüzer → **wpu**, MTMS | HSPI SCK (yalnız `SPIClass(HSPI)` açılırsa) | yok (EN LOW iken zararsız) | Topluluk gözlemi: açılışta kısa darbe (kaynaksız; T3) |
 | 13 | çıkış | **BTS EN**, dört uç ortak | sol EN1 + EN2, sağ EN1 + EN2 (IBT-2'de R_EN, L_EN) | **yüzer** → wpd, MTCK | HSPI MOSI (yalnız HSPI açılırsa) | **10 kΩ → GND zorunlu** | Motorun tek kilidi (§4) |
-| **4** | çıkış | **Röle K1 "devreye al"** | röle MOSFET'i #1 gate (EL E3; MOSFET şartı D9) | **wpd → wpd** | 2.0.17: **yok** (strapping değil; UART / SPI / I2C / PSRAM varsayılanı değil; yalnız dokunmatik T0 ve ADC2_CH0 adı). **3.x: `Serial2` RX varsayılanı** (sürmez; 3.0.7 pull-up açar, 3.3.0 açmaz) | **220 Ω seri + 4,7 kΩ gate → GND zorunlu** | İndirme kipinde SDIO DATA1 olabilir: T2 |
-| **19** | çıkış | **Ön şarj rölesi K2** | röle MOSFET'i #2 gate (EL E9; D9) | yüzer → yüzer (ie=1) | **yok** (2.0.17 ve 3.x: VSPI MISO, `SPI.begin()` onu **giriş** yapar, AR `esp32-hal-spi.c:232`) | **220 Ω seri + 4,7 kΩ gate → GND zorunlu** | Dahili çekme yok: LOW'u gate direnci tutar |
+| **4** | çıkış | **Röle K1 "devreye al"** | röle sürücüsü #1, BC337-40 tabanı (EL E3; sürücü şartı D9) | **wpd → wpd** | 2.0.17: **yok** (strapping değil; UART / SPI / I2C / PSRAM varsayılanı değil; yalnız dokunmatik T0 ve ADC2_CH0 adı). **3.x: `Serial2` RX varsayılanı** (sürmez; 3.0.7 pull-up açar, 3.3.0 açmaz) | **270 Ω seri + 2,2 kΩ taban → GND zorunlu** | İndirme kipinde SDIO DATA1 olabilir: T2 |
+| **19** | çıkış | **Ön şarj rölesi K2** | röle sürücüsü #2, BC337-40 tabanı (EL E9; D9) | yüzer → yüzer (ie=1) | **yok** (2.0.17 ve 3.x: VSPI MISO, `SPI.begin()` onu **giriş** yapar, AR `esp32-hal-spi.c:232`) | **270 Ω seri + 2,2 kΩ taban → GND zorunlu** | Dahili çekme yok: LOW'u taban direnci tutar |
 | 23 | giriş | Acil stop durumu (PC817 #1): **LOW = mantar serbest**, HIGH = basılı ya da F5 attı | PC817 #1 çıkışı | yüzer → yüzer (ie=1) | VSPI MOSI (yalnız `SPI.begin()` çağrılırsa; Y11) | pull-up **yalnız 3V3'e** | Strapping değil |
 | 5 | giriş | Anahtarlı bara (PC817 #2): **LOW = bara gerilimli** | PC817 #2 çıkışı | wpu → wpu | VSPI SS (yalnız SPI donanım SS'i açılırsa) | pull-up **yalnız 3V3'e** | Strapping, yalnız SDIO slave zamanlaması (DS Tablo 3-5) |
 | 21 | I2C SDA | PCA9685 (0x40), BNO055 (0x28/0x29) | ortak hat | yüzer → yüzer | I2C (açık savak) | pull-up'lar 3V3'e (modül üstü) | PH ile aynı |
@@ -174,13 +179,13 @@ takasla açılır. Ölçüt: reset boyunca LOW, strapping değil, açılış kod
 
 | Aday | Reset → sonrası | Strapping | Açılışta / varsayılan sürücü | Sonuç |
 |---|---|---|---|---|
-| **4** | wpd → wpd | hayır | 2.0.17: yok. 3.x: `Serial2` RX (sürmez; 3.0.7 pull-up açar → 4,7 kΩ ile gate ≤ 0,49 V, D1). Dokunmatik T0 yalnız `touchRead` ile; SDIO DATA1 yalnız indirme kipinde, belgesi yok → T2 | **K1** (kalan adayların en iyisi) |
+| **4** | wpd → wpd | hayır | 2.0.17: yok. 3.x: `Serial2` RX (sürmez; 3.0.7 pull-up açar → 2,2 kΩ ile taban ≤ 0,25 V, D1). Dokunmatik T0 yalnız `touchRead` ile; SDIO DATA1 yalnız indirme kipinde, belgesi yok → T2 | **K1** (kalan adayların en iyisi) |
 | **19** | yüzer → yüzer | hayır | iki kuşakta yok (VSPI MISO: kütüphane giriş yapar; U0CTS yalnız akış denetimi açılırsa) | **K2** |
 | 16 / 17 | yüzer | hayır | **PSRAM yoklaması; 2.0.17'de Serial2** | röleye olmaz → enkoder |
 | 18 / 23 | yüzer | hayır | VSPI SCK / MOSI (`SPI.begin()` sürer) | olmaz |
 | 21 / 22 | yüzer | hayır | I2C | olmaz |
 | 5 / 15 / 14 | wpu | 5, 15 evet | açılışta zayıf HIGH; 5 VSPI SS | olmaz |
-| 12 | wpd | **evet** (MTDI) | HSPI MISO (giriş) | boş kalır: gate hattını HIGH'a çeken bir arıza hem kartı açılmaz yapar hem K1'i çektirir |
+| 12 | wpd | **evet** (MTDI) | HSPI MISO (giriş) | boş kalır: sürücü hattını HIGH'a çeken bir arıza hem kartı açılmaz yapar hem K1'i çektirir |
 | 2 | wpd | **evet** | LED, "blink" programları | olmaz (eski K2 sorunu) |
 | 25 / 26 / 27 | oe=0 ie=0 | hayır | 2.0.17: yok. **3.x: TX2 = 25, TX1 = 27 sürer** | olmaz (3.x'te `Serial1` / `Serial2` açan program röleyi çektirir) |
 
@@ -190,10 +195,11 @@ kullanan üç işlik seçenek (K1 → 12) rölenin strapping pinine dönmesi dem
 
 **Bugünkü `main` firmware'i yeni kablaja yanlışlıkla yüklenirse:** kod 16, 17, 18, 19'u `INPUT_PULLUP` yapar (MC `motorlar.cpp:205-208`), 4'e
 dokunmaz; 13 ve 27'yi HIGH yapar (`:216-217`; 27 artık sağ IN1), 32 / 33'ü (artık IS uçları) PWM çıkışı sürer (`:105-113, 140-146`).
-- **K1 yolu:** 4'te dahili pull-down + 4,7 kΩ → gate 0 V; K1 çekmez.
-- **K2 yolu:** 19'un dahili pull-up'ı 4,7 kΩ gate direnciyle bölücü kurar: 3,3 × 4,7 / 49,7 ≈ **0,31 V** (tipik 45 kΩ), ~75 µA çekme gücüyle
-  ≈ 0,35 V, varsayımsal en kötü (30 kΩ, 3,6 V) ≈ 0,49 V (hesap; DS en az değer vermiyor). D9'daki MOSFET'in en düşük eşiği 0,65 V
-  (AO3400A, MOS): K2 iletmez. K2 bir an iletseydi bara 5,6 Ω ön şarj direncinden beslenir, 13 ve 27 HIGH olduğu için sağ motorlar bu direnç
+- **K1 yolu:** 4'te dahili pull-down + 2,2 kΩ → taban 0 V; K1 çekmez.
+- **K2 yolu (sürüm 4, BJT, 14.11 düzeltme 2,2 kΩ):** 19'un dahili pull-up'ı 2,2 kΩ taban direnciyle bölücü kurar: 3,3 × 2,2 / 47,2 ≈ **0,15 V**
+  (tipik 45 kΩ), ~75 µA çekme gücüyle ≈ 0,17 V, varsayımsal en kötü (30 kΩ, 3,6 V) ≈ **0,25 V** (hesap; DS en az değer vermiyor).
+  70 °C'de kollektör ≤ 0,72 µA (D9, iki modelin kötüsü) → K2 bobininde (440 Ω'a kadar) ≤ 0,3 mV; ICES sınırıyla (125 °C'de ≤ 10 µA) bile ≤ 4,4 mV.
+  Rölenin bırakma / çekmeme garantisi bobin < 1,2 V (RÖ): pay ≥ 270 kat. **K2 çekmez.** K2 bir an çekseydi bara 5,6 Ω ön şarj direncinden beslenir, 13 ve 27 HIGH olduğu için sağ motorlar bu direnç
   üstünden ileri sürülebilir ve direnç aşırı yüklenirdi (EL E9).
 - **IS uçları:** 32 / 33'ün PWM sürüşü D7 bölücüsünün 6,8 kΩ'u üstünden IS ucuna gider, ≤ 0,5 mA (hesap); zararsız.
 - **Sonuç: bu kablaja yalnız bu tabloya göre yazılmış firmware yüklenir (Y1).** Yukarıdaki paylar şans, kural değil.
@@ -203,7 +209,7 @@ dokunmaz; 13 ve 27'yi HIGH yapar (`:216-217`; 27 artık sağ IN1), 32 / 33'ü (a
 - **GPIO15 (sağ enkoder B):** katılıyorum. 15'in açılış değeri yalnız UART0'ın ROM açılış yazısını (LOW = susar, DS Tablo 3-4) ve SDIO slave
   zamanlamasını (Tablo 3-5) seçer. Enkoder açılışta 15'i LOW tutarsa yalnız açılış yazısı gelmez; Pi tarafı bunu beklememeli (Y10).
 - **GPIO5 (PC817 #2):** uyarı gereğinden sıkı. GPIO5'in açılış değeri **yalnız SDIO slave zamanlamasını** seçer (DS §3.4 Tablo 3-5);
-  projede SDIO slave yok, yani LOW okunması açılışı bozmaz. Normal devrede zaten HIGH olur: reset anında K1 bırakır (4 wpd, gate pull-down),
+  projede SDIO slave yok, yani LOW okunması açılışı bozmaz. Normal devrede zaten HIGH olur: reset anında K1 bırakır (4 wpd, taban pull-down),
   bara enerjisiz, PC817 #2 LED'i söner, çıkış transistörü kapalı, pin pull-up ile HIGH. Sıcak resette bara kondansatörleri birkaç ms dolu
   kalıp pini LOW tutabilir; bunun da tek sonucu SDIO zamanlaması. PC817 modülünün 3,3 V tarafı montajda ölçülecek (EL E2, T5).
 
@@ -219,8 +225,8 @@ Reset sırasında bütün pinlerin çıkışı kapalıdır (DS Tablo 6-1 not 9).
 
 | Pin | Reset / açılış anında | Bağlı donanım o an | Sonuç |
 |---|---|---|---|
-| 4 (K1) | wpd, hiçbir kod sürmez | gate 4,7 kΩ ile GND'de | K1 bırakık; bara enerjisiz |
-| 19 (K2) | yüzer, hiçbir kod sürmez | gate 4,7 kΩ ile GND'de | K2 bırakık |
+| 4 (K1) | wpd, hiçbir kod sürmez | taban 2,2 kΩ ile GND'de | K1 bırakık; bara enerjisiz |
+| 19 (K2) | yüzer, hiçbir kod sürmez | taban 2,2 kΩ ile GND'de | K2 bırakık |
 | 13 (EN) | reset sırasında yüzer, sonra wpd | 10 kΩ ile GND'de | BTS çıkışları kapalı |
 | 25 / 26 / 27 | yüzer | BTS IN | EN LOW olduğu için anlamsız |
 | 14 | wpu (zayıf HIGH) | BTS IN2 (sağ) | EN LOW olduğu için anlamsız |
@@ -233,7 +239,7 @@ kötü ihtimalle frenlenir, sürülmez. Bu yüzden 13'ün pull-down'ı ve "13 d�
 
 **Röle kilidi:** K1 ve K2'nin bobini mantar NC'den sonra (EL E3, E9); mantar basılıyken firmware ne yaparsa yapsın röle çekmez. Mantar
 serbestken röleyi yalnız 4 / 19'un firmware tarafından HIGH sürülmesi çektirir; reset, çökme, watchdog, firmware yükleme ve USB sökme
-anlarında ikisinin de çıkışı kapanır, gate pull-down'ı LOW tutar: iki röle bırakır, bara kesilir, **kollar düşer** (EL E3, bilinen ve kabul
+anlarında ikisinin de çıkışı kapanır, taban direnci (2,2 kΩ) LOW tutar: iki röle bırakır, bara kesilir, **kollar düşer** (EL E3, bilinen ve kabul
 edilmiş davranış). İndirme kipinde (BOOT basılı reset) 4'ün durumu belgede yok: T2 ölçer.
 
 ## 5. Firmware'in uyması gereken şartlar
@@ -250,7 +256,7 @@ edilmiş davranış). İndirme kipinde (BOOT basılı reset) 4'ün durumu belged
   `digitalWrite(p, LOW); pinMode(p, OUTPUT);` sırası çalışır. 3.x'te yapılandırılmamış pine `digitalWrite` reddedilir; orada
   `pinMode(p, OUTPUT); digitalWrite(p, LOW);` art arda ya da ESP-IDF'in `gpio_set_level(p, 0)` çağrısı `gpio_set_direction`'dan önce
   kullanılır. (Çıkış kaydı resetten sonra 0 olduğu için iki sürümde de pin LOW başlar.) Ardından 25, 26, 27, 14 PWM'e (LEDC) **görev oranı 0**
-  ile bağlanır. Bu sırada 13 LOW kalır. Bu sıra açılış öncesini korumaz; onu donanım (gate / EN pull-down'ları) ve pin seçimi korur.
+  ile bağlanır. Bu sırada 13 LOW kalır. Bu sıra açılış öncesini korumaz; onu donanım (taban / EN pull-down'ları) ve pin seçimi korur.
 - **Y3. Girişler:** 23 ve 5 `INPUT_PULLUP` (dış pull-up varsa da açık kalabilir). 18, 17, 16, 15 enkoder girişleri (bugünkü kod `INPUT_PULLUP`;
   enkoder çıkış türü kablajda teyit, T7). 34, 35, 39, 36, 32, 33 için pull komutu verilmez (34–39'da yok; IDF, DS Tablo 6-1 not 2).
 - **Y4. Devreye alma (`arm`, EL E3 + E9 dizisi):** ön koşullar: 23 LOW (mantar serbest), PCA9685 çıkışları servoların son bilinen konumunda,
@@ -285,7 +291,7 @@ edilmiş davranış). İndirme kipinde (BOOT basılı reset) 4'ün durumu belged
 
 | # | Şart | Pin | Değer | Neden |
 |---|---|---|---|---|
-| D1 | Gate pull-down + seri direnç (EL E3 / E9; **14.11 sürüm 3: 10 kΩ → 4,7 kΩ**) | 4, 19 | **4,7 kΩ gate → GND**, 220 Ω seri. Direnç setinde var (MJ:115, satıcı sayfası 4,7 kΩ × 10) | Aşağıdaki hesap |
+| D1 | Taban pull-down + seri taban direnci (EL E3 / E9; sürüm 3: 10 kΩ → 4,7 kΩ; sürüm 4: 220 Ω → 270 Ω, BJT; **14.11 düzeltme: taban → GND 4,7 kΩ → 2,2 kΩ**) | 4, 19 | **270 Ω seri** (pin → taban), **2,2 kΩ taban → GND**. İkisi de direnç setinde (MJ:115 satıcı sayfası; 270 Ω ve 2,2 kΩ ikinci kontrolde de okundu). Yedek (T2): seri 220 Ω (sette var) | Aşağıdaki hesap |
 | D2 | EN pull-down (değişmedi, EL pin planı) | 13 | 10 kΩ → GND, dört EN ucuna ortak | Reset sırasında 13 yüzer; motor kilidi (§4) |
 | D3 | PC817 çıkışlarında pull-up yalnız 3V3'e | 23, 5 | dahili 45 kΩ; önerilen dış 10 kΩ → 3V3 | Pin ≤ 3,6 V (DS Tablo 5-3: VIH en çok VDD + 0,3 V). Modülün çıkış besleme ucu 5 V'a bağlanmaz |
 | D4 | Hiçbir şey bağlanmaz | 12, 2 | – | Strapping (DS Tablo 3-1, 3-3, §3.2) |
@@ -293,27 +299,50 @@ edilmiş davranış). İndirme kipinde (BOOT basılı reset) 4'ün durumu belged
 | D6 | **Enkoder hattına seri direnç** | 16, 17 | **1 kΩ**, ESP32 pinine yakın; enkoder 3V3'ten beslenir | Açılışta PSRAM yoklaması ve yanlış programda `Serial2` (2.0.17) bu pinleri sürer. İtme-çekme çıkışlı enkoderde iki çıkış çekişir; açık kollektörde transistör LOW çekerken pin HIGH sürer. İkisinde de akım 3,3 V / 1 kΩ ≤ 3,3 mA'ye iner (hesap). Açık kollektörde pull-up pin tarafında (dahili 45 kΩ): LOW seviyesi ≈ 3,3 × 1 / 46 ≈ 0,07 V (hesap). 1 kΩ, PCNT hızında kenarı geciktirmez |
 | D7 | **BTS IS bölücüsü** (her durumda; diyotsuz) | 32, 33 | IS1 + IS2 ucu → **R1** → pin; pin → **R2** → GND. Kart IS direnci birleşik 500 Ω için **R1 = 6,8 kΩ, R2 = 5,1 kΩ** (setten). Kartta IS direnci yoksa arayüz kartına IS → GND 470 Ω eklenir, aynı R1 / R2 | Aşağıdaki hesap |
 | D8 | BTS7960B kartlarının VCC'si 5 V (satıcı sayfası "VCC: +5 VDC") | – | – | 3,3 V lojiği kabul ettiği teyit edilecek (T4) |
-| D9 | **Röle sürücü MOSFET'i gerçek mantık seviyeli** (14.11 sürüm 3) | 4, 19 | VGS(th) **en çok ≈ 2 V**, RDS(on) **2,5 V ya da daha düşük gate geriliminde tanımlı**, VDS ≥ 30 V, VGS ±8 V ya da üstü, ID ≥ 1 A. Öneri: **AO3400A** (birinci), IRLML6344 (ikinci; aşağıdaki not); SOT-23, pertinakta SOT-23 → DIP adaptörüyle | Aşağıdaki hesap. Listedeki VBsemi IRLZ44NPBF-VB'nin (MJ:106) veri sayfası bulunamadı, eşiği belgesiz: **değiştirilecek parça**. Orijinal IRLZ44N de şartı karşılamaz (RDS(on) yalnız ≥ 4 V gate'te tanımlı, MOS). Delikli yol istenirse BJT (BC337 + 1 kΩ, EL E3'teki eski seçenek): 220 Ω / 4,7 kΩ ağı ona göre yeniden hesaplanır, doğrulanmadı |
+| D9 | **Röle sürücüsü BC337-40 NPN (TO-92), bobine ters paralel 1N4007** (sürüm 4; sürüm 3'ün mantık seviyeli MOSFET şartının yerine) | 4, 19 | Her röleye bir BC337-40: kollektör → bobin (−), emitör → GND, taban → 270 Ω → pin, taban → 2,2 kΩ → GND (D1). **Kazanç sınıfı -40 zorunlu** (gövde yazısı "337-40"; sınıfsız "BC337" kabul edilmez: -40 sınıfı 100 mA'de hFE ≥ 250 garanti eder ve tipik doyumu sağlar; 300 mA değeri sınıfa değil üreticiye bağlı, 40–170, kontrol-3 A1). Ayak sırası teslimde diyot testiyle doğrulanır (T2a). **GPIO 4 ve 19'un sürüş gücü düşürülmez:** pin ≈ 6–11 mA verir; ESP-IDF varsayılanı `GPIO_DRIVE_CAP_DEFAULT = 2` ("medium", v4.4.7 `hal/include/hal/gpio_types.h`), Arduino `pinMode` bunu değiştirmez; `gpio_set_drive_capability` ile 0 / 1'e inilmez. Delikli, adaptör gerekmez | Aşağıdaki hesap. Listedeki VBsemi IRLZ44NPBF-VB (MJ:106; veri sayfası bulunamadı) çıkar; malzeme satırı BC337-40 × 3 (2 + 1 yedek), `maliyet.json` C adımında (`planlama/adim3/kablolama-on-kararlar.md` §9) |
 
-**D1 hesabı (4,7 kΩ; DS Tablo 5-3, Ek A not 8):**
-- Pin HIGH sürerken gate = VOH × 4,7 / 4,92: tipik VOH 3,3 V → **3,15 V**; en kötü VOH 2,64 V (DS) → **2,52 V**. Pin akımı 0,54–0,67 mA
-  (10 kΩ ile 0,26–0,32 mA); gate dolarken tepe 3,3 / 220 = 15 mA, kısa süreli (DS'teki ~40 mA kaynak akımının altında).
+**D1 hesabı (sürüm 4, 14.11 düzeltme: 270 Ω / 2,2 kΩ, BJT; DS Tablo 5-3, Ek A not 8):**
+- Pin HIGH: taban akımı I_B = (VOH − VBE) / 270 − VBE / 2200. En kötü VOH 2,64 V (DS) ve en kötü VBE 1,2 V (BJT: VBE en çok, 300 mA'de)
+  → **4,79 mA**; VBE 1,0 V ile 5,62 mA; VBE 0,85 V ile 6,24 mA; tipik VOH 3,3 V, VBE 0,8 V → 8,90 mA. 2,2 kΩ'un çaldığı akım ≤ 0,55 mA.
+- Pin akımının en çoğu: VOH 3,3 V, VBE 0,65 V (sıcak, düşük) → **9,8 mA**; varsayımsal VDD 3,6 V'ta **10,9 mA**. DS Tablo 5-3'teki IOH tipik 40 mA'in
+  (en yüksek kademe) altında; bu akımda VOH biraz düşer, taban akımı zaten en kötü VOH ile hesaplandı.
 - Boşta, dahili pull-up açıksa (3.x `Serial2` RX'i 4'te, eski firmware'in `INPUT_PULLUP`'ı 19'da, indirme kipinde olası SDIO pull-up'ı 4'te):
-  tipik 45 kΩ → 3,3 × 4,7 / 49,7 = **0,31 V**; ~75 µA akım modeliyle **0,35 V**. DS en az pull-up direnci vermiyor; varsayımsal en kötü
-  (30 kΩ ve VDD 3,6 V) → **0,49 V**. Üçü de T2 ölçütü 0,5 V'un altında; en kötü varsayımda pay ince (10 mV), tipik değerlerde 0,15–0,19 V.
-  10 kΩ ile aynı durumlar 0,60 / 0,75 / 0,90 V'tu (0,5 V ölçütünü bozuyordu).
-- Kaçak: IIH / IIL ≤ 50 nA (DS) ve MOSFET gate kaçağı ≤ 100 nA (MOS) → 4,7 kΩ'ta ≤ 0,7 mV.
+  tipik 45 kΩ → 3,3 × 2,2 / 47,2 = **0,15 V**; ~75 µA akım modeliyle **0,17 V**. DS en az pull-up direnci vermiyor; varsayımsal en kötü
+  (30 kΩ ve VDD 3,6 V) → **0,25 V** (270 Ω'daki düşüm µA akımda yok sayılır). 4,7 kΩ ile bunlar 0,31 / 0,35 / 0,49 V'tu. Bu gerilimlerde
+  transistörün ne kadar ilettiği D9 hesabında.
+- **Yedek seri 220 Ω (T2'de VCE > 0,3 V çıkarsa):** I_B en kötü 6,00 mA; GPIO en çok (3,3 / 3,6 V, VBE 0,65 V) **12,0 / 13,4 mA**, 220 Ω'da
+  ≤ 40 mW. DS Tablo 5-3'te IOH 40 mA **tipik** sütunda (en yüksek kademe; aynı güç alanından çok pin akım verince ≈ 29 mA'e iner, not 2): içinde;
+  IO_MUX not 8 kademeleri ≈ 5 / 10 / 20 / 40 mA, varsayılan 2 (≈ 20 mA): onun da altında (kontrol-3 A7).
+- Kaçak: IIH / IIL ≤ 50 nA (DS) → 2,2 kΩ'ta ≤ 0,1 mV; ICES ≤ 100 nA (25 °C), 125 °C'de ≤ 10 µA (BJT): bobin akımının binde birinden az.
 
-**D9 hesabı (bobin akımı EL E3 / MJ:107: K1 ~0,15 A, ölçülecek; K2 JQC-3FF ~0,03 A):**
-- En yüksek bara 14,6 V'ta K1 bobini ≈ 0,15 × 14,6 / 12,8 ≈ **0,17 A** (hesap, bobin direnci sabit varsayımı).
-- Açık hâl: en kötü gate 2,52 V (D1). AO3400A'da eşiğin en yükseği 1,45 V → **≥ 1,07 V** üstünde; RDS(on) < 48 mΩ (2,5 V'ta tanımlı) →
-  VDS ≈ 0,17 × 0,048 ≈ 8 mV, kayıp ≈ 1,4 mW. Bobin neredeyse tam bara gerilimini görür. IRLML6344: eşik en çok 1,1 V → ≥ 1,42 V pay, RDS(on) ≤ 37 mΩ.
-- Kapalı hâl: boştaki en kötü gate 0,49 V (D1). AO3400A eşiğinin en düşüğü 0,65 V (250 µA'de tanımlı) → 0,16 V pay; IRLML6344'ün en düşüğü
-  0,5 V (10 µA'de) → pay yok denecek kadar az. Bu yüzden **AO3400A birinci seçim**; IRLML6344 yalnız T2'de boştaki gate'in tipik
-  (≤ 0,35 V) çıktığı görülürse.
-- VDS: bobin ters diyotla (1N4007) kenetli, en çok ≈ 14,6 + 1 ≈ 15,6 V < 30 V.
-- Satıcı: AO3400A Türkiye'de bir distribütörün (Özdisan) listesinde var, arama anında stok 0 görünüyordu; satıcı, fiyat ve stok **doğrulanmadı**
-  (kayda girecek). `maliyet.json`'a dokunulmadı.
+**D9 hesabı (sürüm 4, 14.11 düzeltme; BC337-40; bobinler RÖ):**
+- **Bobin akımı (üretici tablosu, RÖ):** K1 85 Ω ±%10 → 14,6 V'ta 76,5 Ω ile **0,191 A**, soğuk bobinde (0 °C, bakır ≈ −%9) **≈ 0,21 A**;
+  K2 400 Ω ±%10 → 0,041 A, soğukta ≈ 0,045 A (hesap).
+- **Zorunlu β (IC / IB):** en kötü I_B 4,79 mA (D1) ile K1 **39,9 / 43,9** (0,191 / 0,21 A), K2 8,6 / 9,4; VBE 1,0 V ile K1 34,0 / 37,4;
+  VBE 0,85 V ile 30,6 / 33,6; tipik (8,90 mA) K1 21,5 / 23,6. BC337-40'ın hFE'si en az 250 (100 mA, bütün üreticiler); 300 mA'de
+  belgeyle garanti olan en az değer üreticiye göre değişir (BJT: onsemi 60, Diotec -40 grubu 170). **Belgeyle garanti pay:** 60 × 4,79 mA ≈
+  287 mA > 0,21 A, ≈ **1,37 kat** (VCE 1 V'ta, doğrusal bölge kazancı; doyum kazancı değil). Diotec değeriyle ≈ 3,9 kat; tipik eğrilerle
+  doyumda. Doyumu belge değil **T2 (g)'nin VCE ölçümü** kabul eder.
+- **VCE(sat):** veri sayfası yalnız IC 500 mA, IB 50 mA (β = 10) noktasında en çok 0,7 V garanti eder; bizim nokta (≤ 0,21 A, β ≤ 44) bu
+  koşulun dışında ve sayısı yok; hFE değerleri VCE = 1 V'ta verilir. **VCE ≤ 0,3 V'u hiçbir üretici garanti etmez; belgeyle savunulabilir
+  sınır 1,0 V.** Bununla K1 bobini besleme 14,6 V'ta ≥ 13,6 V, 11 V'ta ≥ 10,0 V, 10 V'ta (akü alt sınırı) ≥ 9,0 V görür; çekme garantisi
+  ≤ 8,4 V (RÖ, 23 °C): röle en kötü köşede de çeker. K2'de β ≤ 9,4, veri sayfasının β = 10 doyum koşuluna yakın: ≤ 0,7 V ile 10 V'ta
+  ≥ 9,3 V (garanti ≤ 9,0 V; pay dar). Beklenen 0,1–0,3 V; T2 (g)'de ölçülür, > 0,3 V ise seri 220 Ω (D1 yedek hesabı; o da doyumu belgeyle
+  garanti etmez, β ≤ 10–20 için 10–20 mA taban akımı gerekirdi).
+- **Kayıp (K1, 0,21 A):** VCE 0,2 / 0,3 / 1,0 V → 42 / 63 / **210 mW**; taban kaybı ≈ 6 mW; 270 Ω'da ≤ 32 mW (10,9 mA). Belgeyle en kötü
+  ≈ 216 mW × 200 °C/W ≈ **43 K** ısınma: 60 °C ortamda **Tj ≈ 103 °C** < 150 °C. İzin verilen (150 − 60) / 200 = **0,45 W** (BJT): ≈ 2,1 kat pay.
+  K2'de ≤ 45 mW.
+- **Kapalı hâl: ölçüt bobin gerilimi.** Rölenin veri sayfası yalnız iki sınır verir: en geç çekme (K1 8,4 V, K2 9,0 V) ve en erken bırakma
+  (**1,2 V**, RÖ). "Çekmez" ve "çekiliyse kesin bırakır" garantisi yalnız **bobin < 1,2 V** iken vardır; çekme akımının katıyla karşılaştırma
+  (sürüm 4'ün ilk hâli) geçerli değildi. Boştaki taban 0,15–0,25 V (D1). Kollektör akımı IC ≈ 1 mA · exp((VBE − V₁) / VT), V₁ = 1 mA'deki VBE,
+  sıcakta ≈ −2 mV / K (genel değer; veri sayfasında 1 mA'deki VBE sayıyla yok, Fig. 10 yalnız eğri); iki model, 25 °C'de V₁ = 0,60 V ve 0,55 V.
+  **70 °C'de en kötü taban 0,25 V: IC 0,13–0,72 µA** → bobin gerilimi K1 (≤ 93,5 Ω) ≤ 0,07 mV, K2 (≤ 440 Ω) ≤ 0,32 mV; ICES sınırıyla
+  (≤ 10 µA, 125 °C) K2 ≤ 4,4 mV. Bırakma sınırına oranı ≤ %0,4. (4,7 kΩ ile aynı köşe K2'de ≈ 1,0–1,2 V'tu: sınırdaydı.)
+- VCE: bobin ters diyotla (1N4007) kenetli, en çok ≈ 14,6 + 1 ≈ 15,6 V < VCEO 45 V (BJT).
+- **Neden MOSFET değil (sürüm 3 → 4):** AO3400A SOT-23 ve adaptör istiyordu, Türkiye'de satıcısı ve stoğu doğrulanamadı; BC337-40 delikli,
+  yaygın, satıcısı ve fiyatı belli. Bedeli: kapalı hâlde MOSFET'in 0,16 V eşik payı yerine yukarıdaki sınırlı sızıntı akımı; açık hâlde
+  VCE MOSFET'inkinden yüksek, bobine etkisi yukarıda.
+- Satıcı: BC337-40TA Direnc.net 3,02 TL (`planlama/d158/kablolama-onkarar-kontrol.md`, 14.11). `maliyet.json`'a dokunulmadı.
 
 **D7 hesabı (BTS; IIS(lim) en çok 7 mA kanal başına, ikinci elden; IS1 + IS2 birlikte 14 mA; kILIS 8500 nominal):**
 - Kart IS direnci **R** ise (IS1 ve IS2'nin her birinde; birleşik Rb = R / 2; kartta yoksa Rb = eklenen direnç), yük Rload = Rb ∥ (R1 + R2),
@@ -350,7 +379,8 @@ Kararı bunlara bağlamadım; her biri montajda ölçülür, sonuç günlüğe y
 | # | Ne | Nasıl | Geçme ölçütü | Kalmazsa |
 |---|---|---|---|---|
 | T1 | Modül, çip ve kart (işlev şartı) | Kablajdan önce yalnız USB ile: `esptool.py chip_id` (ve `flash_id`) çıktısındaki çip adı, paket, revizyon ve özellikler; modül kapağı yazısı, modül boyu (WROOM 18,0 × 25,5, WROVER 18,0 × 31,4 mm); serigrafi | Çip D0WDQ6 / D0WD(-V3), "Embedded PSRAM" ya da D0WDR2 yok; modül WROVER değil; revizyon v0.0 değil (ER [RES-3.4]); 25 GPIO dışarıda; LED GPIO2'de | Kart PSRAM'siz bir kartla değiştirilir (§1). Röle tarafı etkilenmez |
-| T2 | Röle gate'leri hiçbir anda HIGH değil; röle 3,3 V gate ile kesin çekiyor ve kesin bırakıyor | **0,5 V ölçütü osiloskopla ölçülür** (mantık analizörü yalnız tam HIGH'ı görür, bu ölçüt için araç değildir). ESP32 + arayüz kartı bağlı. Kanallar: 4, 19, 13 (ve bilgi için 16, 17). EN'in yükselen kenarında tek tetik, ≥ 2 s pencere, ≤ 1 µs çözünürlük. (a)–(e) **F5 takılı değilken**: (a) gerçek firmware ile normal açılış; (b) USB tak / sök, Pi portu açılırken; (c) **indirme kipi**: BOOT basılıyken EN, ardından `esptool` ile yükleme; (d) yükleme bitip yeniden açılış; (e) firmware boşta. (f)–(g) **F5 takılı, bara yüksüz (BTS ve XL girişleri ayrık), akım sınırlı kaynak**: (f) `arm` ve `birak`; (g) bara 11 V ve 14,6 V'ta 20'şer kez çek / bırak: gate, MOSFET drain ve kontak (bara) gerilimi. **Osiloskop yoksa yedek yol:** (1) (a)–(e)'nin her birinde multimetreyle kararlı gate gerilimi; (2) F5 takılı, bara yüksüz kurulumda (a)–(e) boyunca röle kontağının çıkışı (bara ya da PC817 #2 çıkışı) mantık analizörüyle ya da ikinci bir mikrodenetleyicinin kesme girişiyle izlenir. Bu yol 0,5 V ölçütünden zayıftır, rölenin çekmesini doğrudan sınar | (a)–(e)'de 4 ve 19 hiçbir anda > 0,5 V değil (yedek yolda: kararlı gate < 0,5 V ve kontak çıkışında hiç geçiş yok); (f)'de `arm` Y4'teki sıra ve sürelerle, `birak`'ta ikisi aynı döngüde LOW; (g)'de her çekişte drain < 0,1 V ve kontak kapanıyor, her bırakışta drain bara gerilimine çıkıyor ve kontak açılıyor (40 / 40) | Gate devresi / MOSFET (D9) yeniden incelenir; F5 normal kullanımda takılmaz |
+| T2a | BC337-40 teslim kontrolü (sürüm 4) | Lehimlemeden önce: gövde yazısı "337-40". Multimetre diyot kademesi: kırmızı uç tabanda, siyah öbür iki ayakta ≈ 0,6–0,7 V (iki jonksiyon), uçlar ters ve C–E arası açık; ayak sırası: **düz yüz önde, ayaklar aşağıda, soldan sağa C-B-E** (Vishay, onsemi, Diotec, DC Components aynı; kontrol-3 A3). İstenirse C / E ayrımı: diyot kademesinde B–E düşümü B–C'den birkaç mV büyük; ya da hFE soketinde doğru yönde yüzler, ters yönde onlar (soket µA–mA düzeyinde ölçer, veri sayfasının 100 mA'deki 250–630 değeri orada geçerli değil) | Gövde yazısı "337-40"; taban doğru ayakta; C / E belirlendi (sınıfı gövde yazısı belirler, soket değeri değil) | Ters takılırsa (C ↔ E): kapalı hâlde E–B jonksiyonu bobin besleme gerilimini (≤ 14,6 V) ters yönde görür, VEBO 5 V aşılır, jonksiyon delinir; taban düğümü ≈ 0,6–0,7 V'ta kenetlenir, pine giden akım ≈ 0,7 / 270 ≈ **2–3 mA** (hesap). Asıl risk bobin akımı: K1'de ≈ 70 mA (delinme gerilimi tipik ≈ 8 V varsayımı, doğrulanmadı): röle yarı çekebilir ya da sürüldüğünde çekmeyebilir, transistör bozulur. Bu yüzden takmadan önce |
+| T2 | Röle sürücüleri hiçbir anda iletime geçmiyor; röle 3,3 V sürüşle kesin çekiyor ve kesin bırakıyor (sürüm 4, 14.11 düzeltme: ölçüt bobin gerilimi) | ESP32 + arayüz kartı bağlı, T2a geçmiş. **Kapalı hâl bobin geriliminden okunur** (bobin uçları arası; önce bobin dirençleri ohmmetreyle, beklenen K1 85 Ω ±%10, K2 400 Ω ±%10). Bobin beslemesi gerektiği için bütün durumlar **F5 takılı, bara yüksüz (BTS ve XL girişleri ayrık), akım sınırlı kaynakla**: (a) gerçek firmware ile normal açılış; (b) USB tak / sök, Pi portu açılırken; (c) **indirme kipi**: BOOT basılıyken EN, ardından `esptool` ile yükleme; (d) yükleme bitip yeniden açılış; (e) firmware boşta; (f) `arm` ve `birak`; (g) bobin beslemesi 11 V ve 14,6 V'ta 20'şer kez çek / bırak. **Osiloskop yolu:** kanallar 4 ve 19 (pin), iki kollektör, **bobin (+) ucu** (F5 → mantar NC sonrası; bobin gerilimi = bobin (+) ucu − kollektör; anahtarlı bara değil, K1 açıkken o 0 V'tur); EN'in yükselen kenarında tek tetik, ≥ 2 s pencere, ≤ 1 µs çözünürlük. **Multimetre yolu:** (a)–(e)'nin her birinde kararlı bobin gerilimi (mV kademesi) ve pin gerilimi; aynı anda kontak çıkışı (anahtarlı bara ya da PC817 #2) mantık analizörüyle ya da ikinci bir mikrodenetleyicinin kesme girişiyle izlenir. **Not:** T2 oda sıcaklığında yapılır, 70 °C köşesini görmez; sıcak köşenin payı yalnız hesapla verilir (D9: ≤ %0,4). **Sıcak bobin (kontrol-3 A6):** çekme garantisi 8,4 V 23 °C'de; bakır bobin ısındıkça ≈ %0,39 / K artar (genel değer): 60 °C bobinde ≈ 9,6 V, 80 °C'de ≈ 10,3 V (hesap). Uzun çalışmadan hemen sonra düşük akü gerilimiyle (10–11 V) devreye almada K1 çekmeyebilir. Arıza güvenli yöndedir (bara gelmez) ve Y4 hata yolu ("5 LOW değil") yakalar; (g) soğuk bobinle yapılır | (a)–(e)'de **kontak hiçbir anda kapanmıyor** ve **bobin gerilimi ≤ 0,12 V** (bırakma sınırı 1,2 V'un ≤ %10'u; hesapla oda sıcaklığında < 0,1 mV beklenir); pin gerilimi bilgi için yazılır (hesap tavanı 0,25 V). (f)'de `arm` Y4'teki sıra ve sürelerle, `birak`'ta ikisi aynı döngüde LOW; (g)'de her çekişte **VCE ≤ 0,3 V** ve kontak kapanıyor, her bırakışta kollektör bobin besleme gerilimine çıkıyor ve kontak açılıyor (40 / 40) | **Çekiliyken VCE > 0,3 V:** seri direnç 270 Ω → **220 Ω** (D1 yedek hesabı: GPIO ≤ 13,4 mA), T2 yinelenir. **Kontak kapanırsa ya da bobin > 0,12 V:** sürücü devresi (D1, D9) ve ayak sırası (T2a) yeniden incelenir. Sorun giderilene dek robot devreye alınmaz (eski "F5 normal kullanımda takılmaz" cümlesinin anlamı buydu; T2'de F5 yalnız tezgâh denemesi için takılı) |
 | T3 | EN kilidi ve 14'ün açılışı | BTS kartları bağlı, ESP32 resette: 13 → GND gerilimi; dört EN ucuna süreklilik; T2 kurulumunda 14'e de bakılır (topluluk gözlemi "açılışta kısa darbe", kaynaksız) | 13 < 0,3 V; dört uç 13'e bağlı. 14'te darbe olsa da 13 LOW iken zararsız | 13'ü yüksek çeken kart içi direnç aranır |
 | T4 | BTS7960B kartı | EN1 / EN2 ve IN1 / IN2'nin hangi BTS7960 bacağına gittiği; 3,3 V PWM ile motorun döndüğü (tezgâh, akım sınırlı kaynak) | EN → INH, IN → IN; 3,3 V PWM'de motor iki yönde döner, IN ucunda HIGH ≥ 2,6 V. Kart girişinin eşiği kart gelince (BTS VIH en çok 2,15 V, kart üstü tampon bilinmiyor) | Adlar terse §6.1. 3,3 V yetmezse seviye çevirici (malzeme eklenir) |
 | T5 | PC817 modülünün 3,3 V tarafı (EL E2) | Girişe 12 V ver / kes, 23 ve 5'te ölç | LOW < 0,4 V, HIGH > 2,5 V, hiçbir durumda > 3,6 V | EL E2'deki doğrudan PC817 + 2,2 kΩ yedeği |
@@ -374,7 +404,7 @@ Dosyayı Efe açar; aşağıdaki içerik bu tablonun aynısıdır. `eklem_sinirl
 
 ```json
 {
-  "surum": 3,
+  "surum": 4,
   "tarih": "2026-11-14",
   "kaynak": "planlama/adim3/pin-haritasi.md (lale-duzeltme); karar: Ahmet 13.11.2026 yetkilendirmesi",
   "cekirdek": "espressif32@6.9.0 (Arduino-ESP32 2.0.17); 3.x'e gecis raporu gozden gecirmeden yapilmaz",
@@ -396,8 +426,8 @@ Dosyayı Efe açar; aşağıdaki içerik bu tablonun aynısıdır. `eklem_sinirl
     "SAG_ILERI_PWM":  {"gpio": 27, "yon": "pwm", "uc": "sag BTS IN1 (RPWM)", "not": "3.x: Serial1 TX varsayilani"},
     "SAG_GERI_PWM":   {"gpio": 14, "yon": "pwm", "uc": "sag BTS IN2 (LPWM)", "not": "reset sonrasi zayif pull-up"},
     "BTS_EN":         {"gpio": 13, "yon": "cikis", "acilis": 0, "uc": "sol EN1+EN2, sag EN1+EN2", "donanim": "10k -> GND"},
-    "ROLE_K1":        {"gpio": 4,  "yon": "cikis", "acilis": 0, "uc": "role MOSFET #1 gate (mantik seviyeli, or. AO3400A)", "donanim": "220R seri, 4.7k gate -> GND", "not": "3.x: Serial2 RX varsayilani"},
-    "ROLE_K2_ONSARJ": {"gpio": 19, "yon": "cikis", "acilis": 0, "en_cok_ms": 1000, "uc": "role MOSFET #2 gate (mantik seviyeli, or. AO3400A)", "donanim": "220R seri, 4.7k gate -> GND"},
+    "ROLE_K1":        {"gpio": 4,  "yon": "cikis", "acilis": 0, "uc": "role surucusu #1, BC337-40 tabani", "donanim": "270R seri, 2.2k taban -> GND, bobine ters 1N4007; BC337-40; surus gucu varsayilan (2) ya da ustu", "not": "3.x: Serial2 RX varsayilani"},
+    "ROLE_K2_ONSARJ": {"gpio": 19, "yon": "cikis", "acilis": 0, "en_cok_ms": 1000, "uc": "role surucusu #2, BC337-40 tabani", "donanim": "270R seri, 2.2k taban -> GND, bobine ters 1N4007; BC337-40; surus gucu varsayilan (2) ya da ustu"},
     "ACIL_STOP_DURUM":{"gpio": 23, "yon": "giris_pullup", "aktif": "HIGH = mantar basili / F5 atti", "uc": "PC817 #1"},
     "BARA_DURUM":     {"gpio": 5,  "yon": "giris_pullup", "aktif": "LOW = bara gerilimli", "uc": "PC817 #2", "not": "strapping, yalniz SDIO zamanlamasi"},
     "I2C_SDA":        {"gpio": 21, "yon": "i2c"},
@@ -425,11 +455,11 @@ Dosyayı Efe açar; aşağıdaki içerik bu tablonun aynısıdır. `eklem_sinirl
 
 ## 10. Kaynak ve tarih
 
-- Sürüm 1, 2 ve 3: 14.11.2026 (Ahmet'in 13.11.2026 gecesi yetkilendirmesiyle); depo dalı `lale-duzeltme`, kod `main` `2be1c63` okundu (değiştirilmedi).
-- Bu rapordaki ESP32 olguları yalnız Espressif belgelerinden ve Arduino-ESP32 / ESP-IDF kaynak kodundan; MOSFET değerleri üretici veri
+- Sürüm 1–4: 14.11.2026 (Ahmet'in 13.11.2026 gecesi yetkilendirmesiyle; sürüm 4 kablolama ön kararları düzeltme turu 1, röle sürücüsü BJT); depo dalı `lale-duzeltme`, kod `main` `2be1c63` okundu (değiştirilmedi).
+- Bu rapordaki ESP32 olguları yalnız Espressif belgelerinden ve Arduino-ESP32 / ESP-IDF kaynak kodundan; MOSFET (sürüm 3) ve BJT (sürüm 4) değerleri üretici veri
   sayfalarından; satıcı bilgisi satıcı sayfasından (14.11); hesaplar "hesap" diye işaretli.
 - İkinci elden: BTS7960 IIS(lim) (Infineon tam veri sayfası açılamadı; en kötü 7 mA alındı).
 - Ölçülmeyenler: kartın kendisi (gelmedi), modül türü, PSRAM yoklama darbesinin süresi ve sonrası, indirme kipinde GPIO4, BTS kartının iç
-  bağlantısı, IS direnci ve lojik eşiği, PC817 modülünün çıkışı, enkoder çıkış türü, röle bobin akımları, ESP32 dahili pull-up'ının gerçek
+  bağlantısı, IS direnci ve lojik eşiği, PC817 modülünün çıkışı, enkoder çıkış türü, röle bobin akımları, BC337'nin boştaki kollektör akımı ve VCE(sat), ESP32 dahili pull-up'ının gerçek
   değeri, reset anındaki gerçek pin gerilimleri. Hepsi §7'de.
 - Günlük: `planlama/d158/pin-karari-gunluk.md`; bağımsız kontroller: `planlama/d158/pin-karari-kontrol.md`, `pin-karari-kontrol-2.md`.

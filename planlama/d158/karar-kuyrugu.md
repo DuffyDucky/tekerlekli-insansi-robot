@@ -13,7 +13,7 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 
 | # | Karar | Durum | Önerilen varsayılan | Bloke ettiği |
 |---|---|---|---|---|
-| K1 | Altıncı USB cihazı | **açık** (cevap geldi, kapanış kaydı bekliyor: pano #5 mesaj #23) | 5 cihaz + 2 boş hub portu | P4.1, P8.1 |
+| K1 | Altıncı USB cihazı | kapandı (14.11; orkestratör kararı, Ahmet'in 13.11 yetkilendirmesiyle; kontrol GEÇER 14.11; a, 4 cihaz) | — | — |
 | K2 | AI HAT+ × arka üst boss: boss taşı / HAT yönü | **açık** | Boss taşı | P1.3 seçimi, P6.1 |
 | K3 | Düz zeminde elde yük sınırı | **açık** (P3.1 tablosu eklendi, F3a) | b: her elde ≤ 100 g, yalnız düz zeminde; rampada yüksüz | P3.1 sonucu, P3.2, P9.3 |
 | K4 | Listede olmayan 6 kablo kalemi | **açık** | Koşullu kalem, fiyatsız | P4.2, P8.1 |
@@ -22,11 +22,11 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K7 | Dizi kabuğun altında: "kafanın üstü" ifadesi kabul mü | **açık** (yalnız ifade; yer kapandı) | Kabul | P9.3 |
 | K8 | H1 sigorta erişimi | kapandı (29.10, seçenek a) | — | — |
 | K9 | El yükü 0,5 kg: servo değişimi mi 100 g sınırı mı | **açık** (1,58 m'de yeniden hesaplandı, F3a) | a: her elde ≤ 100 g | P3.2, P5.1, P8.1 |
-| K10 | PAM8403 5 V besleme noktası | **açık** | D24V50F5 (Pi hattı) | P1.2, P4.1, P8.3 |
-| K11 | Göğüs ekranı 12 V dalının girişi (acil stopta ekran) | **açık** | Ana anahtar sonrası, röle öncesi | P4.1, P4.2, P7.2 |
+| K10 | PAM8403 5 V besleme noktası | kapandı (14.11; orkestratör kararı, Ahmet'in 13.11 yetkilendirmesiyle; kontrol GEÇER 14.11; a, masa testine bağlı kabul, geçmezse b) | — | — |
+| K11 | Göğüs ekranı 12 V dalının girişi (acil stopta ekran) | kapandı (14.11; orkestratör kararı, Ahmet'in 13.11 yetkilendirmesiyle; kontrol GEÇER 14.11; a, kutunun F6 3 A standart yuvası) | — | — |
 | K12 | Kafa havalandırması: yarık / 30 mm fan | **açık** | Yarıklar kalsın, fan yeri ayrılı | P8.1, P8.3 |
 | K13 | ReSpeaker LED'leri görünmese olur mu | **açık** | Görünmesin | P4.3 (yalnız "görünsün" seçilirse) |
-| K14 | Boyun demeti (Efe teyidi) | **açık** (dış teyit; pano #6 mesaj #21'de not) | CAD'deki gibi | P5.2, P5.3, P4.1 |
+| K14 | Boyun demeti (Efe teyidi) | kapandı (14.11; orkestratör kararı, Ahmet'in 13.11 yetkilendirmesiyle; kontrol GEÇER 14.11; a, 5 kablo, kablo şartı + demetten önce fiş denemesi) | — | — |
 | K15 | Omuz bölümü taraması koşulsun mu | kapandı (08.11 onayı) | — | — |
 | K16 | MAX98357A mı PAM8403 + USB ses kartı mı | kapandı (04.11) | — | — |
 | K17 | Yerleşim A/B/C, dizi R1/R2, ReSpeaker kafada mı | kapandı (05.11, B + R1) | — | — |
@@ -72,7 +72,7 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K57 | Dirsek çatalı ↔ dirsek horn merkez vidası (H0b / H0c, adım 43 ↔ 44.1) | kapandı (13.11, Ahmet: seçenek a; uygulama F10g, kontrol GEÇER 14.11) | — | — |
 | K58 | ESP32 pin haritası (pano #8) | kapandı (14.11; orkestratör kararı, Ahmet'in 13.11 yetkilendirmesiyle) | — | — |
 
-**Açık: 50** (biri, K14, Ahmet'in değil Efe'nin teyidi). **Kapandı: 8** (K5, K8, K15, K16, K17, K56, K57, K58). Toplam 58 madde.
+**Açık: 46.** **Kapandı: 12** (K1, K5, K8, K10, K11, K14, K15, K16, K17, K56, K57, K58; K10 masa testine bağlı kabul). Toplam 58 madde.
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
@@ -105,7 +105,7 @@ açılmadı.
 
 ---
 
-## K1 · Altıncı USB cihazı
+## K1 · Altıncı USB cihazı — KAPANDI
 - **Soru:** `elektrik.md` 6 USB cihaz diyor, adı belli olan 5 (`elektrik.md:58`). Altıncısı ne ve nerede?
 - **Seçenekler:**
   a) Cevap gelene kadar 5 cihaz; hub'da 2 port boş (bugünkü model: `KY/uygulama-notu.md:131-132`).
@@ -120,7 +120,8 @@ açılmadı.
 - **Not (pano #5 mesaj #23, 13.11.2026):** Efe'nin tarafı yazdı: altıncı USB cihazı yok, sayı 5'e düzeltilsin; yazılımda da altıncı
   cihaz planı yok, kafa düzeni (B) değişmez. Aynı mesajda: ses ReSpeaker çıkışından verilirse (pano #7, sondaki "yeni soru") sayı 4'e iner.
   Bu, varsayılan a ile aynı.
-- **Durum:** **karar verildi, kontrol bekliyor** (14.11.2026; Ahmet'in 13.11.2026 yetkilendirmesiyle orkestratör): **seçenek a**, altıncı
+- **Durum:** **kapandı** (14.11.2026; karar: orkestratör, Ahmet'in 13.11.2026 yetkilendirmesiyle; üç bağımsız kontrol, sonuncusu
+  `planlama/d158/kablolama-onkarar-kontrol-3.md` **GEÇER** 14.11): **seçenek a**, altıncı
   cihaz yok; ses kararıyla (aşağıda "yeni sorular" madde 1) cihaz sayısı **4**, Pi port 2 ve hub'da 2 port boş. Gerekçe
   `planlama/adim3/kablolama-on-kararlar.md` §1. Önceki kayıt: Efe'ye soruldu, pano #5 (`dongu-158.md:136,150, §4 K1 ve §5 günlük`);
   `KY/secenekler.md:336`, `KY/uygulama-notu.md:151`.
@@ -274,7 +275,7 @@ açılmadı.
 - **Bloke:** P3.2, P5.1 (servo modeli sütunu), P8.1.
 - **Durum:** açık (`kararlar-2026-10-29.md:23` "AÇIK (karar değil)").
 
-## K10 · PAM8403 5 V besleme noktası
+## K10 · PAM8403 5 V besleme noktası — KAPANDI
 - **Seçenekler:** a) D24V50F5 (Pi hattı); b) SY8205 (kafa ekranı hattı); c) ayrı küçük düşürücü.
 - **Sayısal etki:** a) Pi hattı normalde 2,67 A, 5 A'nın %53'ü (`elektrik.md:24`); PAM tepesi 0,71 A ile tepe 3,28–3,38 A, %66–68
   (`KY/uygulama-notu.md:98`). b) ekran hattı 0,9 A **varsayım**, 3,7 A'nın %24'ü (`elektrik.md:25`); PAM eklenince ~1,6 A, ekran
@@ -284,12 +285,16 @@ açılmadı.
 - **Not (F4a B çekincesi, 09.11.2026):** PAM tepe 0,71 A (`uygulama-notu.md:98`); Pi tam yük tepesiyle birlikte ölçülmeden 'sınırda değil' denmez (P8.3 testi).
 - **Not (F8a P8.1, 09.11.2026):** maliyet etkisi a ve b 0 TL; c +61,20 TL (Motorobit 5 V 3 A düşürücü, stok 459; ikinci Robotistan
   163,45, stok 361); yer ve ölçü doğrulanmadı (`planlama/d158/F8a-siparis.md` §6, §9 madde 8).
-- **Durum:** **karar verildi, kontrol bekliyor** (14.11.2026; Ahmet'in 13.11.2026 yetkilendirmesiyle orkestratör): **seçenek a**, PAM8403
-  D24V50F5'ten (Pi hattı). Gerekçe: D24V50F5 korumalı (SY8205 sayfası koruma yazmıyor), ses kaynağı ReSpeaker ile aynı çıkış toprağı, tepe
-  payı %32, model zaten a. Acil stopta enerjili (F3). Kablajda teyit: T4 (Pi düşük gerilim uyarısı çıkarsa c). 0 TL.
-  `planlama/adim3/kablolama-on-kararlar.md` §2. Önceki kayıt: `KY/secenekler.md:338`, `KY/uygulama-notu.md:152`.
+- **Durum:** **kapandı**, masa testine bağlı kabul (14.11.2026; karar: orkestratör, Ahmet'in 13.11.2026 yetkilendirmesiyle; üç bağımsız
+  kontrol, sonuncusu `planlama/d158/kablolama-onkarar-kontrol-3.md` **GEÇER** 14.11): **seçenek a**, PAM8403 D24V50F5'ten (Pi hattı). Pi hattı 5 V bütçesi (hesap): Pi + soğutucu tam yük 2,40 + ReSpeaker
+  0,18 + hub 0,13 + QLED Touch ~0,05 + kamera 0,14 + PAM tepesi 0,71 ≈ **3,61 A (%72)**; AI HAT+ (güç değeri resmî değil) ile ≈ 4,11–4,51 A
+  (%82–90). **Şart (KT1):** Pi stres + en yüksek ses (+ takılıysa AI HAT+) altında düşük gerilim uyarısı yok (`vcgencmd get_throttled` = 0x0) ve hat ≲ 4 A (DC pens ya da şönt; Pi girişi `pmic_read_adc`
+  EXT5V_V); geçmezse **b**
+  (PAM SY8205'ten: SY8205 ≈ 1,61 A, %44; kablo yine tek, uç SY8205 çıkışı, PAM hattına küçük sigorta). **AI HAT+ siparişi / takılması bu
+  denemeye bağlı.** Gerekçe: D24V50F5 korumalı (SY8205 sayfası koruma yazmıyor), ses kaynağı ReSpeaker ile aynı çıkış toprağı, model zaten a.
+  Acil stopta enerjili (F3). 0 TL. `planlama/adim3/kablolama-on-kararlar.md` §2. Önceki kayıt: `KY/secenekler.md:338`, `KY/uygulama-notu.md:152`.
 
-## K11 · Göğüs ekranı 12 V dalının girişi
+## K11 · Göğüs ekranı 12 V dalının girişi — KAPANDI
 - **Soru:** Dal ana anahtardan sonra mı, röle K1'in anahtarlı barasından mı alınsın? Bu, ekranın acil stopta açık kalıp kalmayacağını
   belirler (`elektrik.md:55` "karar yok").
 - **Seçenekler:** a) ana anahtar sonrası, röle öncesi (sigorta kutusundan ayrı 2 A dal): acil stopta ekran açık; b) anahtarlı bara: acil stopta ekran kapanır.
@@ -299,10 +304,14 @@ açılmadı.
 - **Bloke:** P4.1, P4.2 (kablo boyu), P7.2 (göğüs ekranı montaj adımı, `R-gunluk.md:33-35`).
 - **Not (F8a P8.1, 09.11.2026):** maliyet etkisi ≈ 0 TL: iki seçenekte parçalar aynı (12 V regülatör, mini yuva, 2 A sigorta v4'te);
   kablo boyu farkı ölçülmedi (`planlama/d158/F8a-siparis.md` §6, §9 madde 8).
-- **Durum:** **karar verildi, kontrol bekliyor** (14.11.2026; Ahmet'in 13.11.2026 yetkilendirmesiyle orkestratör): **seçenek a**, hat
-  sigortası yuvasının girişi sigorta kutusunun besleme ucunda (ana anahtar sonrası, röle öncesi); **acil stopta ekran açık** (hareket üretmez,
-  durumu gösterir; b'nin güvenlik kazancı yok). Giriş ≈ 0,59 A @ 12,8 V (regülatör verimi %80 varsayım). 0 TL (mini 2 A göğse ayrılmamışsa
-  +7,34). Modele / BOM'a ekleme K52'nin işi. `planlama/adim3/kablolama-on-kararlar.md` §3.
+- **Durum:** **kapandı** (14.11.2026; karar: orkestratör, Ahmet'in 13.11.2026 yetkilendirmesiyle; üç bağımsız kontrol, sonuncusu
+  `planlama/d158/kablolama-onkarar-kontrol-3.md` **GEÇER** 14.11):
+  **seçenek a**, dal sigorta kutusunun 6. yuvasından, **F6 3 A standart (ATO) bıçak** (bulunamazsa 5 A standart; ana anahtar sonrası, röle öncesi;
+  ayrı hat yuvası kalkar; kutunun yuvaları ortak baralıysa korumasız ara kablo yok, ayrı girişliyse giriş köprüleri 12 AWG, kısa, tek giriş
+  klemensinden, teslimde bakılır, KT3); **acil stopta ekran açık** (hareket üretmez, durumu gösterir; b'nin güvenlik kazancı yok). Giriş (regülatör verimi
+  %80 varsayım): ekran tipik ile ≈ 0,59 A @ 12,8 V; ekran en çok 1 A (12 V / 1 A adaptör) ile 10 V'ta ≈ 1,5 A = 3 A'in %50'si. Maliyet:
+  hat sigortası yuvası 5 → 4 (−36,72 TL), standart 3 A sigortanın fiyatı bekliyor; listedeki mini sigortalar kutuya girmez (F5 2 A ve F4 5 A da standart). Kutu 1 × 6 dizilişliyse F6 kapak altındaki uç yuvalardan
+  biri olur (K8 notu, rapor §3). Modele / BOM'a ekleme K52'nin işi. `planlama/adim3/kablolama-on-kararlar.md` §3.
 
 ## K12 · Kafa havalandırması: mevcut yarıklar mı, 30 mm fan mı
 - **Seçenekler:** a) mevcut arka yarıklar, fan yeri ayrılı ama parça yok; b) 30 mm egzoz fanı şimdi.
@@ -324,7 +333,7 @@ açılmadı.
 - **Bloke:** yalnız b seçilirse P4.3 ve P6.1.
 - **Durum:** açık (`KY/secenekler.md:340`).
 
-## K14 · Boyun demeti (Efe teyidi)
+## K14 · Boyun demeti (Efe teyidi) — KAPANDI
 - **Soru:** Göğüs ekranı HDMI'si ve hub uzatması boyundan iniyor; Efe'nin eski kuralı "HDMI ve CSI boyundan geçmez"di
   (`planlama/yazilim-plani.md:64`, HEAD). Efe bu düzeni kabul ediyor mu?
 - **Seçenekler:** a) CAD'deki gibi: boyunda 12 V + tilt + HDMI + hub uzatması + hoparlör (`KY/uygulama-notu.md:99`);
@@ -335,9 +344,14 @@ açılmadı.
 - **Bloke:** P5.2, P5.3 (pano mesajı), P4.1.
 - **Not (pano #6 mesaj #21, 13.11.2026):** Efe'nin tarafı yazdı: boyun düzeni yazılım açısından kabul; tek çekince mekanik (≈ 950 mm
   HDMI'nin pan / tilt ekleminden geçmesi, ince / esnek kablo ve büküm payı bizde). Masada ≈ 1 m HDMI denemesi (soru f) cevapsız.
-- **Durum:** **karar verildi, kontrol bekliyor** (14.11.2026; Ahmet'in 13.11.2026 yetkilendirmesiyle orkestratör): **seçenek a**, CAD'deki
-  5 kablo (69,9 mm², servo kanalı %44,8); bu paketin kararları demete tel eklemedi. Şartlar: göğüs HDMI'si ince / esnek, Ø ≤ 6; pan halkası
-  ±90. Kablajda teyit: masa denemesi (pano #6 soru f, cevapsız), boyun içi dört geçiş elle, büküm. Görüntü gelmezse ayrı karar.
+- **Durum:** **kapandı** (14.11.2026; karar: orkestratör, Ahmet'in 13.11.2026 yetkilendirmesiyle; üç bağımsız kontrol, sonuncusu
+  `planlama/d158/kablolama-onkarar-kontrol-3.md` **GEÇER** 14.11): **seçenek a**,
+  CAD'deki 5 kablo (69,9 mm², servo kanalı %44,8), CAD değişikliği yok. **Alınacak kablo şartı:** göğüs HDMI'si ince / esnek, Ø ≤ 6 mm,
+  micro HDMI fişi ≤ 7 mm kalın (MJ:191'in ölçüleri bilinmiyor); hub uzatması **USB 2.0**, erkek fiş gövdesi ≤ 13 × 7 mm (MJ:137 USB 3.0,
+  büyük ihtimalle geçmez), HDMI'den önce geçirilir. Kablolar bu şartlarla 16.11'de sipariş edilir. Servo kanalı 20 × 7,8 mm kapalı tünel, iki dik dönüş: **demet kurulmadan
+  önce, teslimde, tünelin basılmış kısa deneme parçasında elle fiş geçirme denemesi zorunlu** (parça P10.7 baskı listesine); geçmezse fişsiz geçirip yeniden sonlandırma (USB lehimli fiş), HDMI için şerit (FPC) +
+  takılır uç adaptörleri. Demet yazıldığı gibi kurulamayabilir; deneme belirler (Ahmet'e risk notu, rapor §4). Pan halkası ±90. Demet bağlanmadan
+  (bağ / kılıf) önce Efe'nin reset cevabı beklenir (rapor §7; tel gerekirse bükümlü çift, servo kanalı ≈ %46). Kablajda teyit: masa denemesi (pano #6 soru f, cevapsız), boyun içi dört geçiş elle, büküm. Görüntü gelmezse ayrı karar.
   `planlama/adim3/kablolama-on-kararlar.md` §4. Önceki kayıt: `KY/uygulama-notu.md:154`.
 
 ## K15 · Omuz bölümü taraması ve omuz regresyonu — KAPANDI
@@ -349,6 +363,9 @@ açılmadı.
 - **Durum:** kapandı. Ahmet 04.11: PAM8403 + USB ses kartı (`KY/secenekler.md:8`). Modelde MAX98357A 0 parça
   (`KY/uygulama-notu.md:57`; `kafa10_lib.py:402` "MAX98357A cikti"; `kafa-bom.csv` ve `robot-bom.csv`'de yok). Yalnız eski 7" kod
   (`kafa7_parcalar.py:489`) ve yorum/rapor metinlerinde geçiyor: P1.2'nin model kısmı zaten yapılmış, metin kısmı kalıyor.
+- **Not (14.11.2026):** ses yolu değişti, bkz. `planlama/adim3/kablolama-on-kararlar.md` §5: PAM8403 girişi ReSpeaker'ın 3,5 mm
+  çıkışından, USB ses kartı yedek. **Bu, Ahmet'in 04.11 seçimini (b: PAM8403 + USB ses kartı) değiştirir**; masa denemesine bağlı (KT2),
+  geçmezse 04.11 düzeni (USB ses kartı Pi port 2'ye).
 
 ## K17 · Yerleşim A/B/C, dizi R1/R2, ReSpeaker kafada mı — KAPANDI
 - **Seçenekler o zaman:** A hub kafada, B hub gövdede, C hoparlör kafada; R1 / R2 (`KY/secenekler.md:14-20`, `:334-335`); ReSpeaker kafada mı
@@ -935,6 +952,8 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **Önerilen varsayılan:** a (F7c önerisi, `F7c-gunluk.md:229-231`); `maliyet.json:122-123` notlarının göğüs dalını anması `maliyet.json`
   sahibinde. Yalnız öneri; karar Ahmet'te.
 - **Bloke:** K11 sonrası model / BOM güncellemesi; rehber B5a'daki "göğüs regülatörü + mini 2 A yuvası" satırı; göğüs dalının montajı.
+- **Not (14.11.2026, K11 düzeltmesi):** göğüs dalı artık sigorta kutusunun F6 3 A standart yuvasından; mini 2 A ve ayrı hat sigortası yuvası
+  yok. Modele / BOM'a yalnız regülatör kartı girer (`planlama/adim3/kablolama-on-kararlar.md` §3).
 - **Durum:** açık.
 
 ---
@@ -1109,14 +1128,16 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   16'yı CS, 17'yi saat olarak sürüyor (kaynak koddan; rapor §3.1, kontrol D1 / D2). Kural: röle yalnız açılış kodunun ve varsayılan
   çevre biriminin sürmediği, reset boyunca LOW kalan pinde. Efe'nin itiraz hakkı açık (pano #8 taslağında).
 - **Şartlar (rapor §5–§6):** firmware `Serial1` / `Serial2`'yi hiçbir çekirdek sürümünde varsayılan pinlerle açmaz; çekirdek
-  espressif32@6.9.0'da sabit; `main` firmware'i bu kablaja yüklenmez. Donanım: gate pull-down 4,7 kΩ, mantık seviyeli röle MOSFET'i
-  (D9; listedeki VBsemi klonu değişecek), 16 / 17'ye 1 kΩ seri, 32 / 33'e diyotsuz IS bölücüsü. Durma algılama enkoderle; IS yalnız
+  espressif32@6.9.0'da sabit; `main` firmware'i bu kablaja yüklenmez. Donanım (14.11 sürüm 4 ve düzeltmesi): röle sürücüsü BC337-40, 270 Ω seri + 2,2 kΩ
+  taban → GND (D1, D9; listedeki VBsemi klonu çıkar), 16 / 17'ye 1 kΩ seri, 32 / 33'e diyotsuz IS bölücüsü. Durma algılama enkoderle; IS yalnız
   arıza bayrağı (Y7).
 - **Kontroller:** üç bağımsız kontrol: `planlama/d158/pin-karari-kontrol.md` (DÜZELTME GEREKLİ, iki durdurucu: röleler 16 / 17'den
   alındı), `pin-karari-kontrol-2.md` (DÜZELTME GEREKLİ: gate direnci, MOSFET, IS bölücüsü), `pin-karari-kontrol-3.md` (**GEÇER**; metin
   notları C adımında kapatıldı, `pin-karari-gunluk.md` §10).
-- **Açık kalan (karar değil):** kart gelmeden doğrulanamayanlar T1–T8 (`pin-haritasi.md` §7); BTS7960 IIS(lim) belgesi; MOSFET
-  satıcı / stok; PCA9685 kanal düzeni sorusu ve Efe'nin itirazı (pano #8 mesajı, Ahmet gönderecek). İşler sondaki bölümde.
+- **Açık kalan (karar değil):** kart gelmeden doğrulanamayanlar T1–T8 (`pin-haritasi.md` §7); BTS7960 IIS(lim) belgesi; BC337-40
+  teslim kontrolü (T2a); PCA9685 kanal düzeni sorusu ve Efe'nin itirazı (pano #8 mesajı, Ahmet gönderecek). İşler sondaki bölümde.
+- **Not (14.11.2026):** sürüm 4: röle sürücüsü BC337, bkz. kablolama ön kararları (`planlama/adim3/kablolama-on-kararlar.md` §9).
+  Düzeltme: taban → GND 2,2 kΩ (kapalı hâl ölçütü röle bırakma gerilimi; `planlama/d158/kablolama-onkarar-kontrol-2.md` D1).
 - **Durum:** kapandı (14.11.2026). Bloke ettiği P10.7'de pin kararı engeli kalktı; P10.7 K10 / K11 / K14 ve parça işlerini bekliyor.
 
 ---
@@ -1202,10 +1223,10 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     satırın tamamı değil); kareler 12 adreste iki temada statik, "tak" animasyonu izlenmedi; paket dışı çalışma ağacı dosyalarına
     bakılmadı.
 - K58'den (pin kararı, 14.11.2026) açık iş (`planlama/d158/pin-karari-gunluk.md` §5, §7 "C adımında düzeltilecek", §10.3):
-  - `planlama/maliyet.json:106` "Röle sürücü MOSFET" VBsemi IRLZ44NPBF-VB ×2 → AO3400A ×2 (+ yedek; ikinci seçenek IRLML6344) ve 2 adet
-    SOT-23 → DIP adaptör kartı. Satıcı, fiyat ve stok doğrulanmadı. `maliyet.json:106, 109` notlarındaki "GPIO2" → GPIO19 (demo
+  - `planlama/maliyet.json:106` "Röle sürücü MOSFET" VBsemi IRLZ44NPBF-VB ×2 → **BC337-40 ×3** (2 + 1 yedek; yalnız -40 sınıfı;
+    Direnc.net BC337-40TA 3,02 TL), adaptör yok (14.11 sürüm 4; önceki AO3400A / SOT-23 maddesi kalktı). `maliyet.json:106, 109` notlarındaki "GPIO2" → GPIO19 (demo
     `tasarim/Robot-Tasarim-Demosu.html:399` yeniden üretilir).
-  - Dirençler mevcut setten (`maliyet.json:115`): gate pull-down 4,7 kΩ ×2, IS bölücüsü 6,8 kΩ ×2 + 5,1 kΩ ×2 (kart IS direnci ölçülünce;
+  - Dirençler mevcut setten (`maliyet.json:115`): taban seri 270 Ω ×2 + taban → GND 2,2 kΩ ×2, IS bölücüsü 6,8 kΩ ×2 + 5,1 kΩ ×2 (kart IS direnci ölçülünce;
     gerekirse 2,2 kΩ ya da 470 Ω), enkoder seri 1 kΩ ×2. Setin içeriği satıcı sayfasından okundu, elde sayılmadı.
   - Ölçümler T1–T8 (`planlama/adim3/pin-haritasi.md` §7): kart gelince; T2 osiloskopla (yedek yol raporda).
   - Tutarsız kalan belgeler (`pin-karari-gunluk.md` §5): `planlama/yazilim-plani.md:33, 34, 53, 58-59` (GPIO12 / GPIO2, Nextion UART2);
@@ -1220,8 +1241,26 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   - Pi → ESP32 reset hattı: Pi GPIO'su → transistör → ESP32 EN; pin numarasını biz seçelim, `pinler.json`'a girsin (pano #7 mesaj #22
     madde 5). Pin kararına girmedi; boyundan yeni tel gerekebilir (K14 demeti).
   - Hub harici beslemeli olsun (iki dokunmatik + ESP32 + ses; pano #6 mesaj #21 madde e).
-  - **Kayıt (14.11.2026; Ahmet'in 13.11.2026 yetkilendirmesiyle orkestratör, kontrol bekliyor; `planlama/adim3/kablolama-on-kararlar.md`
-    §5–§8):** (1) ses ReSpeaker 3,5 mm → PAM8403: **kabul**; USB ses kartı kablajdan çıkar, yedek olarak siparişte; ses kartı uzatması
-    (−77,46 TL koşullu) ve L dirsek çıkar. (2) Hub harici besleme: **hayır** (hub yükü ≈ 0,1 A; geri besleme ve yeni 5 V dalı riski).
-    (3) Pi → ESP32 reset: **yeni tel yok**, bilinçli reset mevcut CP2102 DTR / RTS devresinden (Efe'ye soru taslağı). (4) Elde taşınan
+  - **Kayıt (14.11.2026; Ahmet'in 13.11.2026 yetkilendirmesiyle orkestratör; üçüncü bakış `kablolama-onkarar-kontrol-3.md` GEÇER; `planlama/adim3/kablolama-on-kararlar.md`
+    §5–§8):** (1) ses ReSpeaker 3,5 mm → PAM8403: **masa denemesine bağlı kabul** (KT2: uğultu / seviye, bağlamadan önce jak kılıfı ↔ USB GND
+    sürekliliği, ses tavanı bölücüsü 10 kΩ / 2,2 kΩ başlangıç; geçmezse USB ses kartı Pi port 2'ye; K16 notu); USB ses kartı kablajdan çıkar, yedek olarak siparişte; ses kartı uzatması
+    (−77,46 TL koşullu) ve L dirsek çıkar. (2) Hub harici besleme: **hayır** (hub yükü ≈ 0,13 A, F4 atarsa ≈ 0,37 A; geri besleme ve yeni 5 V dalı riski).
+    (3) Pi → ESP32 reset: **yeni tel yok**, bilinçli reset mevcut CP2102 DTR / RTS devresinden (Efe'ye soru taslağı); boyun demeti
+    bağlanmadan önce Efe'nin cevabı beklenir, "tel gerekir" derse bükümlü çift eklenir. (4) Elde taşınan
     acil stop: **karar verilmedi** (Ahmet + Efe); seçenekler ve "köprülü klemensle yer ayrılsın mı" raporun §8'inde.
+- Kablolama ön kararlarından (K1, K10, K11, K14 ve dört öneri; 14.11.2026) açık iş (`planlama/adim3/kablolama-on-kararlar.md` §13, §16,
+  §17; `planlama/d158/kablolama-onkarar-gunluk.md` §7.5; `kablolama-onkarar-kontrol-3.md` A1–A7, bakamadıkları):
+  - Ölçümler KT1–KT7 (rapor §13): KT1 Pi hattı masa denemesi (K10; `get_throttled` = 0x0, ≲ 4 A, AI HAT+ siparişi buna bağlı), KT2 ses
+    (kılıf ↔ USB GND sürekliliği, seviye, bölücü), KT3 göğüs 12 V (kutunun ortak giriş barası, F6 ilk açılış), KT4 boyun (fiş geçişi, masa
+    HDMI 1080p), KT5 hub (yükte giriş gerilimi; F4 çıkarılmışken ESP32 hub'dan), KT6 reset (bilinçli reset; port açılışı, Pi yeniden
+    başlatma ESP32'yi resetlemiyor), KT7 = `pin-haritasi.md` T1–T8 + T2a.
+  - Boyun tünelinin kısa **deneme parçası** (kanal kesiti 20 × 7,8 mm, ≈ 34 mm, iki dik dönüş, mil penceresi 20 × 10): P10.7 / baskı listesine;
+    fiş denemesi kablolar gelince, demet kurulmadan önce. CAD'e dokunulmadı.
+  - Sipariş değişiklikleri `planlama/maliyet.json`'a (P10.7, sahibi): rapor §17 tablosu (BC337-40 ×3; standart 2 A, 3 A, 5 A sigorta, mini 2 A
+    çıkar; hat yuvası 5 → 4; hub uzatması USB 2.0 küçük fişli; HDMI Ø ≤ 6; ses kartı uzatması ve L dirsek çıkar, ses kartı yedek; dirençler setten).
+  - Tutarsız kalan belgeler (rapor §16 "P10.7'ye kalan"): `planlama/d158/testler/T4-pam8403-ses-karti.md`, `KY/uygulama-notu.md:98, :102-134`,
+    `tasarim/freecad/arayuz.py` `SES_USB`, `kablo_yolu_ekran.py` `KABLO`, rehber şemaları 7 ve 8, `planlama/yazilim-plani.md`; `elektrik.md:29,
+    :278, :511` "tepe hesaplanmadı" ifadeleri.
+  - 62 kablonun dökümü depoda yok: P10.7'de yeniden kurulur (rapor §11; bu kararlarla 61).
+  - Efe'nin iki cevabı (bilinçli reset DTR / RTS ile; ReSpeaker 16 kHz / firmware): boyun demeti kapanmadan önce.
+  - Kontrol-3'ün bakamadıkları: Direnc.net BC337-40TA'nın üreticisi (adından onsemi çıkarımı); MAH-112-C-4'ün kendi veri sayfası.

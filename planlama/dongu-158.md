@@ -161,7 +161,7 @@ görünümde olsun; seçilen parça farklı renkte görünsün; montaj sırası 
 | P10.5 | Kol içi kablo yolu rehbere (F10f; tasarımı hazır: `KOL_KABLO`, `dirsek/kablo_yolu.py`) | Kol adımlarında yol görünür, uçları doğru parçada | P10.4b sonrası | ✅ 13.11 (commit "Lale P10.5"; ilk kontrol ve ikinci bakış DÜZELTME GEREKLİ → 2 düzeltme turu → üçüncü bakış GEÇER; 28 şema, alt adım 71, uçuş çarpışan 0 / istisna 20 / ölçüm kaydı 1, kablo kareleri zor 4 / 14, PDF 75 sayfa; K56, K57) |
 | P10.5b | K56 + K57 montaj sırası kararları rehberde (F10g; Ahmet 13.11 ≈ 23:28 "önerdiğin gibi olsun"): 625ZZ tezgâhta kol çatalına preslenir, iç bilezik + mafsal pulu + M5×12 39 → 40 (çataldan sonra); dirsek horn merkez vidası 43 → 44 (çataldan sonra); G2 / G3 / H0b / H0c metni, dirsek montaj sırası | 40.1 ve 44.1 dar istisnaları kalkar, uçuş çarpışan 0 / `istisna_bos` 0, istisna < 20; 39 ↔ 40.1 metni tek sıra (F10f Y1); parça / BOM aynı; zincir çıkış 0 | P10.5 sonrası | ✅ 14.11 (commit "Lale P10.5b"; bağımsız kontrol `F10g-kontrol.md` GEÇER; 8 parça taşındı, uçuş istisnası 20 → 16, çarpışan 0, alt adım 71, PDF 75 sayfa, perdelenme istisnası 115 → 117; K56, K57 kapandı) |
 | P10.6 | Pin haritası sorusu panoya (Efe): `kod/esp32/include/pinler.h` (main) × `elektrik.md` pin planı | Soru panoda; karar Ahmet + Efe | Hemen (dosya alanı yok) | ✅ 14.11 karar verildi (K58; orkestratör, Ahmet'in 13.11 yetkilendirmesiyle): `planlama/adim3/pin-haritasi.md` sürüm 3, `elektrik.md` pin planı; üç bağımsız kontrol, üçüncüsü GEÇER (`planlama/d158/pin-karari-kontrol-3.md`); günlük `planlama/d158/pin-karari-gunluk.md`. Pano #8 bilgi mesajı hazır, Ahmet gönderecek |
-| P10.7 | Elektrik içeriği + kablo tablosu (62 kablo; tek kaynak), K1 / K2 demet alt adımları, taban yollarının yeniden tasarımı | Pin kararı + K10 / K11 / K14 | P10.6 cevabı sonrası | ⛔ (K10 / K11 / K14; pin kararı ✅ K58. Pin kararından gelen işler: röle MOSFET'i AO3400A + SOT-23 adaptörü (`maliyet.json`), 4,7 kΩ / 1 kΩ / IS bölücüsü dirençleri, rehber `rehber_metin.py:637` uyarısı; T1–T8 kart gelince) |
+| P10.7 | Elektrik içeriği + kablo tablosu (62 kablo; tek kaynak), K1 / K2 demet alt adımları, taban yollarının yeniden tasarımı | Pin kararı + K10 / K11 / K14 | P10.6 cevabı sonrası | ⏳ engel kalktı: K1 / K10 / K11 / K14 ✅ 14.11 (kablolama ön kararları, `planlama/adim3/kablolama-on-kararlar.md`; kontrol-3 GEÇER; K10 masa testine bağlı kabul), pin kararı ✅ K58. Kalan: kablo tablosu işi (62 → 61 kablonun dökümü yeniden kurulur; boyun tüneli deneme parçası baskı listesine; `maliyet.json` sipariş değişiklikleri rapor §17; tutarsız belgeler, rapor §16) ve Efe'nin iki cevabı (reset DTR / RTS, ReSpeaker 16 kHz) boyun demeti kapanmadan. Pin kararından gelen işler: röle sürücüsü BC337-40 ×3 + 270 Ω / 2,2 kΩ (MOSFET ve SOT-23 adaptörü kalktı), 1 kΩ / IS bölücüsü dirençleri, rehber `rehber_metin.py:637` uyarısı; T1–T8 + T2a kart gelince |
 | P10.8 | Ayrıntılı satın alınan parça modelleri, fotoğraf kartı | Parçalar gelince | — | ⏳ |
 | P10.9 | Faz sonu: `sonuc-rapor.html` F10 ile yenilenir (`F9c-dogrula` faz kalıbı F10'u tanımıyor; açık karar 47 ↔ 48, toplam 52 ↔ 53 uyuşmazlığı K53'ten), Ahmet'e tek tablo özet | `F9c-dogrula` 0 | En son | ⏳ |
 
@@ -180,6 +180,16 @@ görünümde olsun; seçilen parça farklı renkte görünsün; montaj sırası 
 | K9 | El yükü 0,5 kg için servo değişimi mi, 100 g sınırı mı | 100 g sınırı |
 
 ## 5. Günlük
+
+- 2026-11-14 03:17 (saat ölçüldü) **Kablolama ön kararları ✅ (P10.7 ön koşulu: K1, K10, K11, K14 + dört öneri), C: kayıt + commit.** Karar:
+  orkestratör, Ahmet'in 13.11.2026 yetkilendirmesiyle (`planlama/adim3/kablolama-on-kararlar.md`). Üç bağımsız kontrol: `kablolama-onkarar-kontrol.md`
+  ve `-kontrol-2.md` DÜZELTME GEREKLİ → iki düzeltme turu (K10 masa testi, K11 kutunun F6 3 A standart yuvası, röle sürücüsü BC337-40 +
+  270 Ω + taban-GND 2,2 kΩ, kapalı hâl ölçütü bobin < 1,2 V) → `-kontrol-3.md` **GEÇER**; A1–A7 metin düzeltmeleri C'de (belgeyle garanti
+  pay ≈ 1,37×, VCE sınırı 1,0 V; K14 fiş denemesi demet kurulmadan önce, tünel deneme parçasıyla; T2a / T2 metni; sıcak bobin notu).
+  **Karar kuyruğu:** K1, K10 (masa testine bağlı kabul), K11, K14 kapandı; açık 46 / 58, kapandı 12. Dört öneri: ses ReSpeaker çıkışından
+  (masa testine bağlı kabul), hub harici besleme hayır, reset teli hayır (Efe'ye iki soru), elde acil stop Ahmet + Efe'de. Rapora §17
+  "16.11 siparişinden önce değişen kalemler" (`maliyet.json` P10.7'de). P10.7 engeli kalktı; kalan kablo tablosu işi + Efe'nin iki cevabı.
+  Pano #7 taslağı depo dışında, gönderilmedi (orkestratör gönderir). `elektrik.md` 522 satır, değişmedi; pin tablosu 25 pin GEÇER.
 
 - 2026-11-14 02:09 (saat ölçüldü) **F10g ✅ (P10.5b, K56 + K57), C: kayıt + commit.** Bağımsız kontrol (`planlama/d158/F10g-kontrol.md`):
   **GEÇER**. Kontrol ölçtü: adımı değişen parça yalnız 8 (p0116–p0118 / p0189–p0191 39 → 40, p0573 / p0630 43 → 44), parça 1192, ad /

@@ -294,3 +294,34 @@ Tablo dört yerde (rapor §2, §9 JSON, `elektrik.md` pin planı, pano gövdesin
 - Delikli BJT seçeneğinin (BC337) 220 Ω / 4,7 kΩ ağıyla hesabı yapılmadı.
 - T4 / T8 sayısal ölçütleri kart gelince yazılacak.
 - §5'teki tutarsız belgeler (yazılım planı, test kâğıtları, maliyet notları, rehber metni) düzeltilmedi; kuyruğun "Karar değil, iş" bölümünde.
+
+## 11. Sürüm 4 (14.11.2026, 02:13–02:26; kablolama ön kararları düzeltme turu 1)
+
+- **Neden:** kablolama ön kararlarının bağımsız kontrolü (`planlama/d158/kablolama-onkarar-kontrol.md` D3) "BC337 + 1 kΩ" yedeğinin K1'i
+  doyurmadığını buldu; orkestratör röle sürücüsünü BC337-40'a döndürdü (AO3400A ve SOT-23 adaptörü onaylı satıcılarda bulunamadı).
+- **Değişen (`pin-haritasi.md`):** başlık (sürüm 4), BJT kaynak satırı (Vishay BC337 / BC338, Doc. 85112 Rev. 1.2), D1 (270 Ω seri + 4,7 kΩ
+  taban → GND), D9 (BC337-40 + 1N4007), D1 / D9 hesapları, §3.1 "eski firmware yeni kablajda" K2 yolu (BJT: üstel sızıntı, iki model,
+  25 / 60 / 70 °C), T2 (ölçüt: kontak hiç kapanmıyor, bobin akımı ≤ 1 mA, çekişte VCE ≤ 0,3 V; osiloskop ve multimetre yolu), §9 JSON
+  `surum` 4 ve ROLE_K1 / ROLE_K2 `uc` / `donanim`, bağlı "gate" → "taban" sözcükleri (§0 röle kuralı, §2 satır 4 / 19, §3.1 tablo, §3.2, §4, Y2).
+- **Değişmeyen:** pin numaraları ve işleri, firmware kuralları Y1–Y13 (HIGH = röle çeker). Sınama: depo dışı betik PH §2, §9 JSON ve
+  `elektrik.md` pin planını `HEAD` ile ve birbiriyle karşılaştırdı: 25 pin, hepsi aynı (GEÇER).
+- **Sayılar:** en kötü I_B 5,08 mA; zorunlu β K1 33,5 / K2 5,9 (hFE en az 250); GPIO en çok 10,9 mA; K1 kaybı ≤ 119 mW; boşta en kötü köşe
+  (0,49 V, 70 °C) kollektör 0,5–2,8 mA, çekme akımının ≈ 1/40 (K1) ve ≈ 1/8'i (K2). §10'daki "BC337 hesabı yapılmadı" maddesi kapandı.
+- Ayrıntı: `planlama/adim3/kablolama-on-kararlar.md` §9, `planlama/d158/kablolama-onkarar-gunluk.md` §6.
+
+## 12. Sürüm 4 düzeltmesi (14.11.2026; kablolama ön kararları düzeltme turu 2)
+
+- **Neden:** ikinci kontrol (`planlama/d158/kablolama-onkarar-kontrol-2.md` D1): kapalı hâl ölçütü çekme akımının katı değil, rölenin
+  bırakma garantisi (bobin < 1,2 V; K1 85 Ω, K2 400 Ω, üretici verisi ikinci elden). §11'deki en kötü köşede K2 bobini ≈ 1,0–1,2 V görüyordu
+  (sınırda). Sürüm numarası 4 kaldı; PH başlığına "14.11 düzeltme: taban-GND 2,2 kΩ" notu girdi.
+- **Değişen (`pin-haritasi.md`):** taban → GND 4,7 kΩ → **2,2 kΩ** (iki röle; seri 270 Ω aynı), röle kuralı, §2 satır 4 / 19, §3.1, §4,
+  D1 / D9 satırları ve hesapları, T2 (ölçüt bobin gerilimi ≤ 0,12 V; oda sıcaklığında, sıcak köşe yalnız hesapla; çekişte VCE > 0,3 V ise seri
+  220 Ω ve T2 yinelenir), yeni T2a (BC337-40 ayak sırası teslimde diyot testiyle), D9 (-40 sınıfı zorunlu; GPIO 4 / 19 sürüş gücü varsayılan
+  2 ya da üstü), §9 JSON `donanim`.
+- **Değişmeyen:** pin numaraları ve işleri, Y1–Y13. Betik yeniden koştu: 25 pin, GEÇER.
+- **Sayılar:** boşta taban 0,15 / 0,17 / 0,25 V; 70 °C'de sızıntı ≤ 0,72 µA → bobin K1 ≤ 0,07 mV, K2 ≤ 0,32 mV (ICES sınırıyla K2 ≤ 4,4 mV),
+  1,2 V'un ≤ %0,4'ü. Sürülürken en kötü I_B 4,79 mA; zorunlu β K1 39,9 / 43,9 (0,19 / 0,21 A), K2 ≈ 9; GPIO 9,8–10,9 mA; K1 kaybı ≤ 147 mW.
+  220 Ω yedeğinde I_B 6,00 mA, GPIO ≤ 13,4 mA. §11'deki "≈ 1/40 / 1/8" karşılaştırması geçersiz.
+- **C adımı (14.11.2026; üçüncü bakış `kablolama-onkarar-kontrol-3.md` GEÇER):** yalnız metin, değer ve pin aynı. PH D9: belgeyle garanti
+  pay ≈ 1,37× (onsemi 300 mA'de hFE ≥ 60), VCE sınırı 1,0 V, kayıp ≤ 0,22 W (Tj ≈ 103 °C); T2a ölçütü ve ters takma sayısı (pine ≈ 2–3 mA);
+  T2'de "bara" → bobin (+) ucu, sıcak bobin notu; RÖ üretici tablolarından; IOH 40 mA "tipik". Ayrıntı `kablolama-onkarar-gunluk.md` §8.
