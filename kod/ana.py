@@ -6,6 +6,8 @@
 # çalışır; her turda robotun bölgesi okunur, yer tarifi ve işaret yönü bölgeye göre seçilir.
 # Bakım modu (robot/bakim.py): --bakim, ayarlar.yaml bakim.etkin ya da kod/bakim.txt varken robot bir kez
 # "bakımdayım" der, mikrofonu kapatır, ESP32'ye dur gönderir ve dosya silinene kadar konuşmaz.
+# Güç (ESP32 0.5.0): röleler açılışta bırakık; robot burada ASLA kendiliğinden devreye alınmaz, operatör
+# telefondan "Devreye al" der (robot/uzaktan). Kapanışta yalnız dur gider, birak gitmez (robot/seri.py kapat).
 #
 # Örnek:  python3 ana.py --icerik universite                     (Pi, kod/ klasöründen, mikrofonla)
 #         py -3 kod/ana.py --gelistirici --icerik universite      (Windows, mikrofonsuz deneme)
@@ -381,6 +383,8 @@ def main(argv=None):
     if robot.konum is not None:
         robot.konum.baslat()          # kaynaklar arka planda okunur; biri bozuksa yalnız o pasif olur
         print(f"[konum] {robot.konum.ozet()}")
+    else:
+        robot.seri.okuyucu_baslat()   # ESP32 satırlarını (güç olayları) konum yerine tek okuyucu okusun
     # --- uzaktan kumanda: başlat ---
     if robot.uzaktan is not None:
         try:

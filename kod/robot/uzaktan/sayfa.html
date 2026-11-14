@@ -1,7 +1,9 @@
 <!doctype html>
 <!-- Ne yapıyor: robotu telefondan kumanda sayfası (robot/uzaktan/sunucu.py sunar). Tek dosya, dış kaynak yok.
      Sürüş: yön düğmesi basılıyken 10 Hz POST /sur, bırakınca POST /dur; sayfa gizlenince ya da bağlantı
-     kopunca dur. Sunucu da son sur'dan 400 ms sonra kendisi durdurur (ölü adam). -->
+     kopunca dur. Sunucu da son sur'dan 400 ms sonra kendisi durdurur (ölü adam).
+     Güç (ESP32 0.5.0): "Devreye al" (POST /arm) röleleri açar, "Bırak" (POST /birak) her zaman çalışır;
+     röleler devrede değilken yön düğmeleri sürmez, nedenini gösterir (/durum'daki surus_engeli). -->
 <html lang="tr">
 <head>
 <meta charset="utf-8">
@@ -111,6 +113,21 @@
     color: var(--uyari); background: rgba(252, 211, 77, .08); font-weight: 600;
   }
 
+  .guc-satir { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 0; }
+  .guc-satir strong { font-size: 18px; }
+  .guc-devrede .nokta { background: var(--iyi); }
+  .guc-onsarj .nokta { background: var(--uyari); }
+  .guc-ariza .nokta { background: var(--kotu); }
+  .guc-ariza strong { color: var(--kotu); }
+  .guc-uyari {
+    margin: 10px 0 0; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--kotu);
+    color: var(--kotu); background: rgba(252, 165, 165, .08); font-weight: 600;
+  }
+  #arm { font-weight: 700; }
+  #birak { border-color: var(--uyari); color: var(--uyari); font-weight: 700; }
+  .dpad.kapali button[data-yon] { opacity: .45; }
+  .surus-engel { margin: 0 0 10px; color: var(--uyari); font-weight: 600; text-align: center; }
+
   .konusma { font-size: 15px; color: var(--soluk); margin: 0; }
   .konusma b { color: var(--yazi); font-weight: 600; }
   .hata-yazi { color: var(--kotu); min-height: 1.4em; margin: 8px 0 0; }
@@ -140,6 +157,7 @@
   <span id="baglanti" class="kopuk" role="status"><span class="nokta" aria-hidden="true"></span><span id="baglanti-yazi">Bağlanıyor</span></span>
   <span><span class="etiket">Durum:</span> <strong id="durum-yazi">—</strong></span>
   <span><span class="etiket">Bölge:</span> <strong id="bolge-yazi">—</strong></span>
+  <span><span class="etiket">Güç:</span> <strong id="guc-serit">—</strong></span>
   <span id="bakim-rozet" class="rozet" hidden>Bakım</span>
   <span id="rampa-rozet" class="rozet" hidden>Rampa</span>
   <span id="sahte-rozet" class="rozet" hidden title="ESP32 bağlı değil; komutlar yalnız terminale yazılıyor">Sahte seri</span>
@@ -157,8 +175,23 @@
   </section>
 
   <div id="kumanda" hidden>
+    <section class="kart" aria-labelledby="guc-baslik">
+      <h2 id="guc-baslik">Güç (röleler)</h2>
+      <p id="guc-kutu" class="guc-satir" role="status">
+        <span class="nokta" aria-hidden="true"></span><strong id="guc-yazi">Bilinmiyor</strong>
+        <span id="guc-ek" class="etiket"></span>
+      </p>
+      <p id="guc-uyari" class="guc-uyari" hidden></p>
+      <div class="ikili">
+        <button type="button" id="arm">Devreye al</button>
+        <button type="button" id="birak">Bırak</button>
+      </div>
+      <p class="ipucu">Bırak: motor ve kol gücü kesilir, kollar düşer. Her zaman çalışır.</p>
+    </section>
+
     <section class="kart" aria-labelledby="surus-baslik">
       <h2 id="surus-baslik">Sürüş</h2>
+      <p id="surus-engel" class="surus-engel" role="status" hidden></p>
       <div class="dpad" id="dpad">
         <span class="bos"></span>
         <button type="button" data-yon="ileri" aria-label="İleri git (basılı tut)">↑</button>
@@ -247,7 +280,9 @@
 const HIZLAR = { yavas: { v: 0.15, w: 0.6 }, normal: { v: 0.3, w: 0.9 } };   // m/s, rad/s
 const YON = { ileri: [1, 0], geri: [-1, 0], sol: [0, 1], sag: [0, -1] };       // [v işareti, w işareti]
 const DURUM_ADI = { "BEKLE": "Bekliyor", "DİNLE": "Dinliyor", "DÜŞÜN": "Düşünüyor", "KONUŞ": "Konuşuyor", "JEST": "Jest" };
-const S = { hiz: "yavas", sinir: { v: 0.5, w: 1.0 }, surus: null, zamanlayici: null, sonBasari: 0, bakim: false, rampa: false, oturum: false };
+const GUC_ADI = { birakik: "Bırakık", onsarj: "Devreye alınıyor", devrede: "Devrede", ariza: "Arıza" };
+const S = { hiz: "yavas", sinir: { v: 0.5, w: 1.0 }, surus: null, zamanlayici: null, sonBasari: 0, bakim: false, rampa: false, oturum: false,
+            guc: null, surusEngeli: null };
 const $ = (id) => document.getElementById(id);
 
 // ---------- ağ ----------
@@ -298,11 +333,18 @@ function sonucBildir(s, iyiMetin) {
 function surGonder() {
   if (!S.surus) return;
   const h = HIZLAR[S.hiz], [iv, iw] = YON[S.surus];
-  istek("/sur", { v: Math.min(h.v, S.sinir.v) * iv, w: Math.min(h.w, S.sinir.w) * iw }, 800);
+  istek("/sur", { v: Math.min(h.v, S.sinir.v) * iv, w: Math.min(h.w, S.sinir.w) * iw }, 800).then((s) => {
+    if (s.kod === 409 && S.surus) { bildir(s.veri.hata || "Sürülemiyor.", true); surDurdur(); }   // ör. röleler bırakık
+  });
 }
 
 function surBaslat(yon) {
   if (S.surus === yon) return;
+  if (S.surusEngeli) {                           // röleler devrede değil: neden göster, sürme
+    document.querySelectorAll("#dpad .basili").forEach((b) => b.classList.remove("basili"));
+    bildir(S.surusEngeli, true);
+    return;
+  }
   S.surus = yon;
   clearInterval(S.zamanlayici);
   surGonder();
@@ -379,6 +421,42 @@ function hizSec(hiz) {
 $("hiz-yavas").addEventListener("click", () => hizSec("yavas"));
 $("hiz-normal").addEventListener("click", () => hizSec("normal"));
 
+// ---------- güç (röleler) ----------
+// Devreye alma bilinçli operatör işidir: yalnız bu düğme /arm gönderir. Sonuç ~0,6 s sonra /durum'da görünür.
+$("arm").addEventListener("click", async () => {
+  const s = await istek("/arm", {});
+  sonucBildir(s, "Devreye alınıyor…");
+  setTimeout(durumYenile, 800);
+});
+// Bırak her zaman gönderilir (bakımda, rampada, arızada); önce dur, sonra röleler.
+$("birak").addEventListener("click", async () => {
+  surDurdur();
+  const s = await istek("/birak", {});
+  sonucBildir(s, "Röleler bırakıldı.");
+  setTimeout(durumYenile, 300);
+});
+
+function gucGoster(d) {
+  S.guc = d.guc || null;
+  S.surusEngeli = d.surus_engeli || null;
+  const ad = GUC_ADI[S.guc] || "Bilinmiyor";
+  $("guc-yazi").textContent = ad;
+  $("guc-serit").textContent = ad;
+  $("guc-kutu").className = "guc-satir" + (S.guc ? " guc-" + S.guc : "");
+  const ek = [];
+  if (d.acil === true) ek.push("acil stop basılı");
+  if (d.bara === false) ek.push("bara gerilimsiz");
+  if (typeof d.aku === "number") ek.push("akü " + d.aku.toFixed(1).replace(".", ",") + " V");
+  $("guc-ek").textContent = ek.join(" · ");
+  $("guc-uyari").textContent = d.guc_uyari || "";
+  $("guc-uyari").hidden = !d.guc_uyari;
+  $("arm").disabled = S.guc === "devrede" || S.guc === "onsarj";
+  $("surus-engel").textContent = S.surusEngeli || "";
+  $("surus-engel").hidden = !S.surusEngeli;
+  $("dpad").classList.toggle("kapali", !!S.surusEngeli);
+  if (S.surusEngeli && S.surus) surDurdur();
+}
+
 // ---------- jest, söz, bölge, bakım ----------
 document.querySelectorAll("[data-jest]").forEach((b) => b.addEventListener("click", async () => {
   const govde = { ad: b.dataset.jest };
@@ -451,6 +529,7 @@ async function durumYenile() {
   $("sahte-rozet").hidden = d.seri_turu !== "SahteSeri";
   bakimGoster(d.bakim);
   rampaGoster(d.rampa);
+  gucGoster(d);
 }
 
 function girisGoster() {

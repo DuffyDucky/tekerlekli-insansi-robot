@@ -8,6 +8,12 @@
 #   bolge_sec(ad)    -> kod/konum/bolge.txt (elle konum kaynağı okur); boş ad dosyayı siler
 #   bakim(ac)        -> kod/bakim.txt oluşturur/siler (bakım modunu ana.py uygular)
 #   rampa(ac)        -> ESP32 rampa kipi (ivme/fren 0,1 m/s^2, kollar ev pozunda); açıkken jest reddedilir
+#   arm()            -> röleleri devreye al (ESP32 0.5.0; sonuç olayla gelir, durum()'da görünür). Yalnız
+#                       operatör basınca: köprü, sunucu ve ana.py hiçbir yerde kendiliğinden arm göndermez
+#   birak()          -> dur + röleleri bırak (kollar düşer); HER ZAMAN çalışır (bakımda, rampada, arızada)
+# GÜÇ: durum()'da guc/guc_neden/ariza/acil/bara/aku/guc_uyari/surus_engeli. Röleler devrede değilken
+# sur 409 ile reddedilir (nedeni telefonda görünür); sürerken röle bırakılırsa köprü sürmeyi bırakır.
+# Devredeyken köprü döngüsü 1 s'de bir ping atar: ESP32 5 s geçerli komut görmezse röleleri bırakır.
 # ÖLÜ ADAM: son "sur" isteğinden 400 ms geçerse köprü kendisi dur() der (telefon düşerse robot durur).
 # ESP32 watchdog'u 500 ms'dir; Pi sürerken "sur"u 150 ms'de bir yineler, böylece robot takılmadan gider.
 
@@ -25,8 +31,45 @@ JESTLER = ("selam", "evet", "isaret")
 YONLER = ("sol", "sag", "ileri", "arka")
 OLU_ADAM_SANIYE = 0.4          # son sur isteğinden bu kadar sonra robot durdurulur
 YINELEME_SANIYE = 0.15         # sürülürken ESP32'ye sur bu aralıkla yinelenir (watchdog 500 ms)
+CANLI_TUT_SANIYE = 1.0         # devredeyken ping aralığı (ESP32 5 s sessizlikte röleleri bırakır)
 EN_UZUN_METIN = 300            # söyletilecek metnin en fazla karakter sayısı
 KONUSMA_SONRASI_SUSMA = 0.5    # söyletilen cümle bitince bu kadar süre tetik yok sayılır (yankı)
+
+# ESP32 0.5.0 güç olayındaki "neden" ve arm reddindeki "hata" kodlarının telefonda görünen kısa Türkçesi
+NEDENLER = {
+    "acil_stop": "acil stop basılı",
+    "bara_yok": "güç barasında gerilim yok",
+    "bara_gitti": "güç barası kesildi",
+    "is_sol": "sol motor sürücüsü arıza bildirdi",
+    "is_sag": "sağ motor sürücüsü arıza bildirdi",
+    "i2c": "servo kartıyla (I2C) iletişim koptu",
+    "sessizlik": "Pi'den 5 s komut gelmedi",
+}
+ARM_HATALARI = {
+    "acil_stop": "acil stop basılı",
+    "pca9685_yok": "servo kartı (PCA9685) bulunamadı",
+    "zaten_devrede": "zaten devrede",
+    "mesgul": "devreye alma sürüyor",
+}
+
+
+def neden_yazisi(kod, tablo=NEDENLER):
+    return tablo.get(kod, kod) if kod else None
+
+
+def surus_engeli(g):
+    """Güç durumu sürmeye izin vermiyorsa telefonda gösterilecek neden; izin veriyorsa ya da durum
+    bilinmiyorsa (eski firmware, satır okunmuyor) None: o zaman kararı ESP32 verir."""
+    guc = g.get("guc")
+    if guc in (None, "devrede"):
+        return None
+    if guc == "onsarj":
+        return "Devreye alınıyor; bir saniye bekleyin."
+    if guc == "ariza":
+        neden = neden_yazisi(g.get("ariza") or g.get("neden"))
+        return f"Güç arızası{': ' + neden if neden else ''}. Nedeni giderip Devreye al'a basın."
+    neden = neden_yazisi(g.get("neden"))
+    return f"Röleler bırakık{' (' + neden + ')' if neden else ''}: sürmek için önce Devreye al."
 
 
 class KopruHatasi(Exception):
@@ -72,6 +115,7 @@ class RobotKoprusu:
         self.hedef = (0.0, 0.0)
         self.son_istek = 0.0
         self.son_gonderim = 0.0
+        self.son_ping = None                 # devredeyken son canlı tutma ping'i
         self.konusma_kilidi = threading.Lock()
         self.konusma_bitti = threading.Event()
         self.konusma_bitti.set()
@@ -109,6 +153,11 @@ class RobotKoprusu:
             return turlar[-1]
         return (None, None)
 
+    def guc(self):
+        """Seri bağlantının son bilinen güç durumu; seri bunu bilmiyorsa boş sözlük."""
+        oku = getattr(self.robot.seri, "guc_durumu", None)
+        return oku() if oku is not None else {}
+
     def konusma_suruyor(self):
         if not self.konusma_bitti.is_set():
             return True
@@ -125,6 +174,12 @@ class RobotKoprusu:
             except Exception as hata:
                 print(f"[uzaktan] Konum okunamadı ({hata}).")
         soru, cevap = self.son_tur()
+        g = self.guc()
+        engel = surus_engeli(g)
+        ret = g.get("son_ret") or {}
+        uyari = engel
+        if ret.get("k") == "arm" and g.get("guc") != "devrede":
+            uyari = f"Devreye alınamadı: {neden_yazisi(ret.get('hata'), ARM_HATALARI)}."
         return {
             "durum": self.robot.durum.durum.value,
             "bolge": konum.get("bolge"),
@@ -138,6 +193,14 @@ class RobotKoprusu:
             "konusuyor": not self.konusma_bitti.is_set(),
             "sinirlar": {"v": EN_FAZLA_V, "w": EN_FAZLA_W},
             "rampa": self.rampa_acik(),
+            "guc": g.get("guc"),                 # birakik | onsarj | devrede | ariza | None (bilinmiyor)
+            "guc_neden": g.get("neden"),
+            "ariza": g.get("ariza"),
+            "acil": g.get("acil"),
+            "bara": g.get("bara"),
+            "aku": g.get("aku"),
+            "guc_uyari": uyari,                  # telefonda güç kartında görünen tek cümle
+            "surus_engeli": engel,               # doluysa yön düğmeleri bu nedenle çalışmaz
         }
 
     def rampa_acik(self):
@@ -158,6 +221,9 @@ class RobotKoprusu:
         if not (math.isfinite(v) and math.isfinite(w)):
             raise KopruHatasi("v ve w sonlu sayı olmalı.")
         v, w = round(sinirla(v, EN_FAZLA_V), 3), round(sinirla(w, EN_FAZLA_W), 3)
+        engel = surus_engeli(self.guc())
+        if engel:                               # ESP32 de reddeder (devrede_degil); neden burada söylenir
+            raise KopruHatasi(engel, 409)
         with self.kilit:
             simdi = self.saat()
             self.hedef = (v, w)
@@ -178,6 +244,12 @@ class RobotKoprusu:
             if not self.suruluyor:
                 return None
             simdi = self.saat() if simdi is None else simdi
+            engel = surus_engeli(self.guc())
+            if engel:                           # sürerken röle bırakıldı (acil stop, arıza, sessizlik)
+                self.suruluyor = False
+                self.robot.seri.dur()
+                print(f"[uzaktan] Sürüş kesildi: {engel}")
+                return "guc"
             if simdi - self.son_istek > self.olu_adam:
                 self.suruluyor = False
                 self.robot.seri.dur()
@@ -188,6 +260,43 @@ class RobotKoprusu:
                 self.son_gonderim = simdi
                 return "sur"
         return None
+
+    def canli_tut(self, simdi=None):
+        """Devredeyken (ya da arm sonucu beklenirken) 1 s'de bir ping: ESP32'nin 5 s sessizlik bekçisi
+        röleleri bırakmasın. Cevabı güç durumunu da tazeler. Ping attıysa True (test için)."""
+        gerekli = getattr(self.robot.seri, "canli_tut_gerekli", None)
+        if gerekli is None or not gerekli():
+            return False
+        with self.kilit:
+            simdi = self.saat() if simdi is None else simdi
+            if self.son_ping is not None and simdi - self.son_ping < CANLI_TUT_SANIYE:
+                return False
+            self.robot.seri.ping()
+            self.son_ping = simdi
+        return True
+
+    # ---------- güç (röle) ----------
+
+    def arm(self):
+        """Operatörün "Devreye al"ı. Sonuç (onsarj -> devrede ya da ret nedeni) olayla gelir; telefon
+        durum()'dan izler. Kararı ESP32 verir (acil stop, PCA9685); burada ön koşul aranmaz."""
+        if not hasattr(self.robot.seri, "arm"):
+            raise KopruHatasi("Bu seri bağlantı devreye almayı bilmiyor.", 409)
+        with self.kilit:
+            self.robot.seri.arm()
+            self.son_ping = None                # cevap okunmasa da hemen canlı tutmaya başla
+        return {"guc": self.guc().get("guc")}
+
+    def birak(self):
+        """Önce dur, sonra röleleri bırak. Her durumda çalışır (bakım, rampa, arıza): kollar düşer."""
+        with self.kilit:
+            self.suruluyor = False
+            self.robot.seri.dur()
+            if hasattr(self.robot.seri, "birak"):
+                self.robot.seri.birak()
+            else:
+                self.robot.seri.gonder({"k": "birak"})
+        return {"guc": self.guc().get("guc")}
 
     # ---------- jest, söz, bölge, bakım ----------
 
@@ -293,6 +402,7 @@ class RobotKoprusu:
         while not self._durdur.wait(0.05):
             try:
                 self.adim()
+                self.canli_tut()
             except Exception as hata:          # seri hatası döngüyü düşürmesin
                 print(f"[uzaktan] Sürüş döngüsü hatası: {hata}")
 

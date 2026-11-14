@@ -378,6 +378,31 @@ def test_is_parcaciklari_ve_seri_odometri():
     assert seri.gonderilenler == [{"k": "odo_sifirla"}] and o.x == 0.0
 
 
+def test_odometri_kapaliyken_de_seri_okunur_guc_olayi_kancadan_gecer():
+    """Konum yöneticisi ESP32 satırlarının tek okuyucusu: odometri kapalı olsa da okur, okuyucu olarak
+    kaydolur; güç olayı SeriBaglanti.satir_oku içindeki satir_isle kancasından geçer (robot/seri.py)."""
+    from robot.seri import SeriBaglanti
+
+    class Port:
+        satirlar = [b'{"k":"guc","guc":"devrede","neden":null,"ms":1}\n']
+
+        def readline(self):
+            return self.satirlar.pop(0) if self.satirlar else b""
+
+        def write(self, veri):
+            pass
+
+    seri = SeriBaglanti("COM_YOK", baglanti=Port())
+    y = KonumYoneticisi([Sabit("wifi", tahmin=None)], seri=seri)
+    y.baslat()
+    bitis = time.time() + 2
+    while time.time() < bitis and seri.guc != "devrede":
+        time.sleep(0.02)
+    okuyucu = seri.okuyucu_var
+    y.kapat()
+    assert seri.guc == "devrede" and okuyucu is True
+
+
 def test_ayarlardan_kurulum_ve_elle_bolge(tmp_path):
     ayar = {"wifi": {"etkin": False}, "gps": {"etkin": False}, "ble": {"etkin": False},
             "elle": {"dosya": str(tmp_path / "bolge.txt")}, "tazelik_saniye": 10}

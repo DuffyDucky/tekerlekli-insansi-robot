@@ -1,9 +1,11 @@
 # Ne yapıyor: telefondan kumanda (robot/uzaktan) testleri. Sunucu 127.0.0.1'de boş bir portta açılır,
 # uçlar http.client ile denenir; robot sahte (sahte seri, kayıt tutan TTS), donanım gerekmez.
 
+import glob
 import http.client
 import json
 import os
+import re
 import threading
 import time
 from types import SimpleNamespace
@@ -84,8 +86,13 @@ def giris_yap(sunucu):
     return yanit.getheader("Set-Cookie").split(";")[0]
 
 
+def komutlar(robot):
+    """Gönderilen komutlar; devredeyken köprünün 1 s'de bir attığı canlı tutma ping'leri hariç."""
+    return [k for k in (json.loads(x) for x in robot.seri.gonderilenler) if k != {"k": "ping"}]
+
+
 def son_komut(robot):
-    return json.loads(robot.seri.gonderilenler[-1])
+    return komutlar(robot)[-1]
 
 
 # ---------- sayfa ve manifest ----------
@@ -143,6 +150,7 @@ def test_yalniz_json_post_ve_ayni_kaynak(ortam):
 
 def test_sur_hiz_sinirina_kirpilir(ortam):
     cerez = giris_yap(ortam.sunucu)
+    assert json_istek(ortam.sunucu, "POST", "/arm", {}, cerez)[0] == 200
     kod, veri = json_istek(ortam.sunucu, "POST", "/sur", {"v": 5, "w": -9}, cerez)
     assert kod == 200 and (veri["v"], veri["w"]) == (0.5, -1.0)
     assert son_komut(ortam.robot) == {"k": "sur", "v": 0.5, "w": -1.0}
@@ -156,6 +164,7 @@ def test_olu_adam_ve_yineleme_sahte_saat():
     zaman = [0.0]
     robot = sahte_robot()
     kopru = RobotKoprusu(robot, saat=lambda: zaman[0])
+    kopru.arm()
     kopru.sur(0.15, 0)
     assert kopru.adim(0.10) is None                  # yeni gönderildi, yineleme zamanı gelmedi
     assert kopru.adim(0.16) == "sur"                 # 150 ms: ESP32 watchdog'u beslenir
@@ -167,17 +176,19 @@ def test_olu_adam_ve_yineleme_sahte_saat():
 
 def test_olu_adam_gercek_sunucuda(ortam):
     cerez = giris_yap(ortam.sunucu)
+    json_istek(ortam.sunucu, "POST", "/arm", {}, cerez)
     json_istek(ortam.sunucu, "POST", "/sur", {"v": 0.15, "w": 0}, cerez)
     time.sleep(0.8)                                  # telefon "düştü": artık sur gelmiyor
-    komutlar = [json.loads(s)["k"] for s in ortam.robot.seri.gonderilenler]
-    assert komutlar.count("sur") >= 2                # Pi kendisi yineledi
-    assert komutlar[-1] == "dur" and ortam.kopru.suruluyor is False
+    adlar = [k["k"] for k in komutlar(ortam.robot)]
+    assert adlar.count("sur") >= 2                   # Pi kendisi yineledi
+    assert adlar[-1] == "dur" and ortam.kopru.suruluyor is False
 
 
 def test_kapatinca_suruluyorsa_dur(tmp_path):
     robot = sahte_robot()
     sunucu = UzaktanSunucu(RobotKoprusu(robot, bakim_dosyasi=str(tmp_path / "b.txt")), port=0,
                            adres="127.0.0.1").baslat()
+    sunucu.kopru.arm()
     sunucu.kopru.sur(0.1, 0)
     sunucu.kapat()
     assert son_komut(robot) == {"k": "dur"}
@@ -246,6 +257,7 @@ def test_rampa_kipi(ortam):
     assert kod == 409 and "ev pozunda" in veri["hata"]
     assert son_komut(ortam.robot) == {"k": "rampa", "ac": True}
     # sürüş rampada da çalışır (ivme sınırını ESP32 uygular)
+    assert json_istek(ortam.sunucu, "POST", "/arm", {}, cerez)[0] == 200
     assert json_istek(ortam.sunucu, "POST", "/sur", {"v": 0.1, "w": 0}, cerez)[0] == 200
     assert json_istek(ortam.sunucu, "POST", "/dur", {}, cerez)[0] == 200
     kod, veri = json_istek(ortam.sunucu, "POST", "/rampa", {"ac": False}, cerez)
@@ -261,6 +273,113 @@ def test_sayfada_rampa_anahtari(ortam):
     sayfa = icerik.decode("utf-8")
     assert 'id="rampa"' in sayfa and 'role="switch"' in sayfa
     assert "kollar ev pozunda, yavaş" in sayfa and '"/rampa"' in sayfa
+
+
+# ---------- güç / röle (ESP32 0.5.0) ----------
+
+def test_guc_arm_birak_uclari(ortam):
+    cerez = giris_yap(ortam.sunucu)
+    durum = json_istek(ortam.sunucu, "GET", "/durum", cerez=cerez)[1]
+    assert durum["guc"] == "birakik" and "Devreye al" in durum["surus_engeli"]
+    for alan in ("guc_neden", "ariza", "acil", "bara", "aku", "guc_uyari"):
+        assert alan in durum
+    # bırakıkken sürüş reddedilir, nedeni telefona yazılır, ESP32'ye sur gitmez
+    kod, veri = json_istek(ortam.sunucu, "POST", "/sur", {"v": 0.1, "w": 0}, cerez)
+    assert kod == 409 and "bırakık" in veri["hata"] and komutlar(ortam.robot) == []
+    kod, veri = json_istek(ortam.sunucu, "POST", "/arm", {}, cerez)
+    assert kod == 200 and veri["guc"] == "devrede" and son_komut(ortam.robot) == {"k": "arm"}
+    durum = json_istek(ortam.sunucu, "GET", "/durum", cerez=cerez)[1]
+    assert durum["guc"] == "devrede" and durum["surus_engeli"] is None and durum["guc_uyari"] is None
+    assert json_istek(ortam.sunucu, "POST", "/sur", {"v": 0.1, "w": 0}, cerez)[0] == 200
+    kod, veri = json_istek(ortam.sunucu, "POST", "/birak", {}, cerez)
+    assert kod == 200 and veri["guc"] == "birakik"
+    assert komutlar(ortam.robot)[-2:] == [{"k": "dur"}, {"k": "birak"}] and ortam.kopru.suruluyor is False
+    # güvenlik kalıbı aynı: PIN, Origin, yalnız JSON
+    assert json_istek(ortam.sunucu, "POST", "/arm", {})[0] == 401
+    yanit, _ = istek(ortam.sunucu, "POST", "/arm", {}, cerez, basliklar={"Origin": "http://kotu.example"})
+    assert yanit.status == 403
+    yanit, _ = istek(ortam.sunucu, "POST", "/birak", "x", cerez, tur="text/plain")
+    assert yanit.status == 415
+
+
+def test_birak_bakimda_ve_rampada_da_calisir(ortam):
+    cerez = giris_yap(ortam.sunucu)
+    json_istek(ortam.sunucu, "POST", "/arm", {}, cerez)
+    json_istek(ortam.sunucu, "POST", "/bakim", {"ac": True}, cerez)
+    json_istek(ortam.sunucu, "POST", "/rampa", {"ac": True}, cerez)
+    kod, veri = json_istek(ortam.sunucu, "POST", "/birak", {}, cerez)
+    assert kod == 200 and veri["guc"] == "birakik" and son_komut(ortam.robot) == {"k": "birak"}
+    ortam.robot.seri.satir_isle({"k": "guc", "guc": "ariza", "neden": "i2c", "ms": 1})
+    assert json_istek(ortam.sunucu, "POST", "/birak", {}, cerez)[0] == 200
+
+
+def test_ariza_ve_arm_reddi_telefonda_gorunur(ortam):
+    cerez = giris_yap(ortam.sunucu)
+    ortam.robot.seri.satir_isle({"ok": False, "k": "arm", "hata": "acil_stop"})
+    durum = json_istek(ortam.sunucu, "GET", "/durum", cerez=cerez)[1]
+    assert durum["guc_uyari"] == "Devreye alınamadı: acil stop basılı."
+    ortam.robot.seri.satir_isle({"k": "guc", "guc": "ariza", "neden": "bara_gitti", "ms": 1})
+    ortam.robot.seri.son_ret = None
+    durum = json_istek(ortam.sunucu, "GET", "/durum", cerez=cerez)[1]
+    assert durum["guc"] == "ariza" and durum["ariza"] == "bara_gitti"
+    assert "güç barası kesildi" in durum["surus_engeli"] and durum["guc_uyari"] == durum["surus_engeli"]
+    ortam.robot.seri.satir_isle({"k": "guc", "guc": "birakik", "neden": "sessizlik", "ms": 2})
+    kod, veri = json_istek(ortam.sunucu, "POST", "/sur", {"v": 0.1, "w": 0}, cerez)
+    assert kod == 409 and "5 s komut gelmedi" in veri["hata"]
+
+
+def test_canli_tut_devredeyken_saniyede_bir_ping():
+    zaman = [0.0]
+    robot = sahte_robot()
+    kopru = RobotKoprusu(robot, saat=lambda: zaman[0])
+    assert kopru.canli_tut(0.0) is False                 # bırakık: ping yok (ESP32 sessizlik bekçisi işlemez)
+    kopru.arm()
+    assert kopru.canli_tut(0.0) is True
+    assert kopru.canli_tut(0.5) is False
+    assert kopru.canli_tut(1.0) is True
+    assert robot.seri.gonderilenler.count('{"k":"ping"}') == 2
+    kopru.birak()
+    assert kopru.canli_tut(5.0) is False
+
+
+def test_surerken_role_birakilirsa_surus_kesilir():
+    zaman = [0.0]
+    robot = sahte_robot()
+    kopru = RobotKoprusu(robot, saat=lambda: zaman[0])
+    kopru.arm()
+    kopru.sur(0.2, 0)
+    robot.seri.satir_isle({"k": "guc", "guc": "ariza", "neden": "acil_stop", "ms": 1})
+    assert kopru.adim(0.16) == "guc"
+    assert kopru.suruluyor is False and son_komut(robot) == {"k": "dur"}
+    assert kopru.adim(0.3) is None
+
+
+def test_guc_bilinmiyorsa_surus_esp32ye_kalir():
+    """Eski firmware (ping'de guc yok) ya da satır okunmuyorsa köprü sürmeyi engellemez."""
+    robot = sahte_robot()
+    robot.seri.guc = None
+    kopru = RobotKoprusu(robot)
+    assert kopru.sur(0.1, 0) == (0.1, 0.0) and kopru.durum()["surus_engeli"] is None
+
+
+def test_hicbir_yerde_otomatik_arm(ortam):
+    kod_klasoru = os.path.dirname(ana.__file__)
+    dosyalar = [os.path.join(kod_klasoru, "ana.py")] + glob.glob(os.path.join(kod_klasoru, "robot", "**", "*.py"),
+                                                              recursive=True)
+    cagiranlar = {os.path.relpath(d, kod_klasoru).replace(os.sep, "/")
+                  for d in dosyalar if re.search(r"\.arm\(\)", open(d, encoding="utf-8").read())}
+    # yalnız operatörün POST /arm'ı: sunucu ucu -> köprü -> seri
+    assert cagiranlar == {"robot/uzaktan/sunucu.py", "robot/uzaktan/kopru.py"}
+    time.sleep(0.2)                                        # sunucu ve köprü döngüsü açık, istek yok
+    assert all(k["k"] != "arm" for k in komutlar(ortam.robot))
+    assert ortam.robot.seri.guc == "birakik"
+
+
+def test_sayfada_guc_dugmeleri(ortam):
+    _, icerik = istek(ortam.sunucu, "GET", "/")
+    sayfa = icerik.decode("utf-8")
+    assert 'id="arm"' in sayfa and 'id="birak"' in sayfa and '"/arm"' in sayfa and '"/birak"' in sayfa
+    assert "Devreye al" in sayfa and "kollar düşer" in sayfa and "surus_engeli" in sayfa
 
 
 # ---------- ana döngüyle etkileşim ----------

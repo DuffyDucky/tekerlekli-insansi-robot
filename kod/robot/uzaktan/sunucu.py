@@ -4,6 +4,7 @@
 #   POST /giris {pin}      doğru PIN -> oturum çerezi; yanlış PIN 1 s bekletilir
 #   GET  /durum            robotun durumu (çerez gerekir)    GET /bolgeler   bölge listesi
 #   POST /sur {v,w}  /dur  /jest {ad,yon}  /soyle {metin}  /bolge {ad}  /bakim {ac}  /rampa {ac}
+#   POST /arm {}  /birak {}   röleleri devreye al / bırak (ESP32 0.5.0; durum /durum'daki guc alanlarında)
 # Güvenlik: yalnız yerel ağ için; POST yalnız JSON (application/json), gövde en çok 4 KB, başka siteden
 # gelen istek (Origin farklı) reddedilir. İnternete açmayın (port yönlendirme yok).
 
@@ -278,6 +279,10 @@ def istek_isleyici_kur(sunucu):
                     return self.json_gonder(200, {"ok": True, **kopru.bakim(veri["ac"])})
                 if yol == "/rampa":
                     return self.json_gonder(200, {"ok": True, **kopru.rampa(veri.get("ac"))})
+                if yol == "/arm":                     # yalnız operatör düğmesi; sunucu kendiliğinden çağırmaz
+                    return self.json_gonder(200, {"ok": True, **kopru.arm()})
+                if yol == "/birak":                   # her zaman çalışır (bakım, rampa, arıza)
+                    return self.json_gonder(200, {"ok": True, **kopru.birak()})
                 raise KopruHatasi("Bulunamadı.", 404)
             except KopruHatasi as h:
                 self.hata(h.kod, str(h))

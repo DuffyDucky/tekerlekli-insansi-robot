@@ -91,10 +91,11 @@ Pi OS Trixie ilk kurulumu **cloud-init** ile yapar: bootfs (FAT32, Windows'ta g�
    Zayıf Wi-Fi'de tam klon (100+ MB geçmiş) çok yavaş; `--depth 1` şart. Uzun kurulumu `nohup ... &` ile
    başlatıp ayrı ssh'tan bekle.
 
-## Robota takılınca güç ayarı (29 Ekim 2026; Pi'de DENENMEDİ)
+## Robota takılınca güç ayarı (29 Ekim 2026, ŞART: 14 Kasım 2026; Pi'de DENENMEDİ)
 
-Masada resmî USB-C PD adaptörle (5 V 5 A) çalışırken **gerek yok**: Pi adaptörle PD konuşup 5 A
-alabileceğini kendisi anlar. Robotta Pi kafada, Pololu **D36V50F5** 5 V çeviriciden beslenir; bu çevirici
+Robotta bu ayar **şart**: USB hub (ESP32 dahil) Pi'nin USB'sinden beslenecek; 600 mA sınırında hub ve
+ESP32 düşebilir, ESP32 yeniden başlarsa röleler bırakır ve kollar düşer. Masada resmî USB-C PD adaptörle
+(5 V 5 A) çalışırken **gerek yok**: Pi adaptörle PD konuşup 5 A alabileceğini kendisi anlar. Robotta Pi kafada, Pololu **D36V50F5** 5 V çeviriciden beslenir; bu çevirici
 PD konuşmaz. Pi o zaman "güç kaynağı 3 A" sanır: USB çıkışlarını 600 mA'de sınırlar ve açılışta
 "power supply not capable of 5A" uyarısı verir (kafada XVF3800 mikrofon dizisi + USB'ler bu sınıra takılır).
 Köprü belgesi F10 (`planlama/kopru-mekanik-yazilim.md`), elektrik kararı E4 (`lale-duzeltme` dalı).
@@ -107,7 +108,7 @@ Köprü belgesi F10 (`planlama/kopru-mekanik-yazilim.md`), elektrik kararı E4 (
    ```
    PSU_MAX_CURRENT=5000
    ```
-2. USB akım sınırını kaldır: `sudo nano /boot/firmware/config.txt`, `[all]` altına:
+2. USB akım sınırını kaldır (robotta şart; hub USB'den beslenir): `sudo nano /boot/firmware/config.txt`, `[all]` altına:
    ```
    usb_max_current_enable=1
    ```
@@ -139,7 +140,9 @@ masada PD adaptör kullan. Kafa 5 V tepe ≈ 4,1 A (tahmini; XVF3800 akımı öl
 - Ekran + HDMI hoparlör bağlanınca tam ekran yüz ve Piper sesi denemesi; sonra `robot.service`.
 - Mikrofon (XVF3800 dizi, bkz. `raporlar/mikrofon-secimi.md`) gelince eşik ölçümü ve varsayılan sesli mod.
 - `kod/icerik/*.yaml` içindeki "..." yer tutucuları (21 adet, `python3 icerik_kontrol.py` listeler).
-- ESP32 gelince `seri.port` (`/dev/ttyUSB0` ya da `/dev/ttyACM0`); port açılışında ESP32 resetlenmesin
-  diye bir kez `stty -F /dev/ttyUSB0 -hupcl` (`seri.py` zaten DTR/RTS kapalı açar; `kod/esp32/OKU_BENI.md` 4. bölüm).
-- Robota takılınca güç ayarı (yukarıda): `PSU_MAX_CURRENT=5000`, `usb_max_current_enable=1`.
+- ESP32 gelince `seri.port` (`/dev/ttyUSB0` ya da `/dev/ttyACM0`). Port açılışında ESP32 resetlenmesin diye
+  `seri.py` DTR etkin + RTS bırakık açar, sonra DTR'yi bırakır (14 Kasım 2026); `stty -F /dev/ttyUSB0 -hupcl`
+  artık şart değil, zararı yok (`kod/esp32/OKU_BENI.md` 4. bölüm). İlk denemede robot açıkken servisi yeniden
+  başlatın: kollar düşmemeli, terminalde `ESP32 hazır (ping, ...)` görünmeli (`hazir` görünürse reset oldu).
+- Robota takılınca güç ayarı (yukarıda, **şart**: hub USB'den beslenir): `PSU_MAX_CURRENT=5000`, `usb_max_current_enable=1`.
 - Nextion ekranı: config.txt'deki UART satırı Ahmet'in; ekranın planı ekipte netleşecek.
