@@ -310,7 +310,13 @@ def test_birak_bakimda_ve_rampada_da_calisir(ortam):
     kod, veri = json_istek(ortam.sunucu, "POST", "/birak", {}, cerez)
     assert kod == 200 and veri["guc"] == "birakik" and son_komut(ortam.robot) == {"k": "birak"}
     ortam.robot.seri.satir_isle({"k": "guc", "guc": "ariza", "neden": "i2c", "ms": 1})
-    assert json_istek(ortam.sunucu, "POST", "/birak", {}, cerez)[0] == 200
+    kod, veri = json_istek(ortam.sunucu, "POST", "/birak", {}, cerez)
+    assert kod == 200 and son_komut(ortam.robot) == {"k": "birak"}
+    # arıza kilitli: birak durumu değiştirmez, telefon "ariza" görür; yalnız yeni arm temizler
+    assert veri["guc"] == "ariza"
+    assert json_istek(ortam.sunucu, "GET", "/durum", cerez=cerez)[1]["ariza"] == "i2c"
+    assert json_istek(ortam.sunucu, "POST", "/arm", {}, cerez)[1]["guc"] == "devrede"
+    assert ortam.kopru.durum()["ariza"] is None
 
 
 def test_ariza_ve_arm_reddi_telefonda_gorunur(ortam):
@@ -323,9 +329,37 @@ def test_ariza_ve_arm_reddi_telefonda_gorunur(ortam):
     durum = json_istek(ortam.sunucu, "GET", "/durum", cerez=cerez)[1]
     assert durum["guc"] == "ariza" and durum["ariza"] == "bara_gitti"
     assert "güç barası kesildi" in durum["surus_engeli"] and durum["guc_uyari"] == durum["surus_engeli"]
-    ortam.robot.seri.satir_isle({"k": "guc", "guc": "birakik", "neden": "sessizlik", "ms": 2})
+    ortam.robot.seri.satir_isle({"k": "guc", "guc": "ariza", "neden": "sessizlik", "ms": 2})
     kod, veri = json_istek(ortam.sunucu, "POST", "/sur", {"v": 0.1, "w": 0}, cerez)
-    assert kod == 409 and "5 s komut gelmedi" in veri["hata"]
+    assert kod == 409 and "5 s komut gelmedi" in veri["hata"] and "Devreye al" in veri["hata"]
+    ortam.robot.seri.satir_isle({"k": "guc", "guc": "ariza", "neden": "onsarj_sure", "ms": 3})
+    assert "ön şarj 1 s'de bitmedi" in ortam.kopru.durum()["surus_engeli"]
+    ortam.robot.seri.satir_isle({"ok": False, "k": "arm", "hata": "zamanlayici_yok"})
+    assert "süre zamanlayıcısı kurulamadı" in ortam.kopru.durum()["guc_uyari"]
+
+
+def test_birakikken_acil_basili_uyarisi_ve_durum_sorma():
+    """Bırakıkken mantar basılırsa güç olayı gelmez, yalnız ping'de acil:true görünür. Telefon /durum
+    sordukça köprü en çok 2 s'de bir ping atar; acil basılıyken uyarı "Devreye al"ın neden olmayacağını söyler."""
+    zaman = [0.0]
+    robot = sahte_robot()
+    kopru = RobotKoprusu(robot, saat=lambda: zaman[0])
+    assert kopru.durum()["guc_uyari"].startswith("Röleler bırakık")
+    assert robot.seri.gonderilenler == ['{"k":"ping"}']       # durum sorusu ping attı
+    robot.seri.acil = True                                     # mantar basıldı (sahte ESP32 ping'de bildirir)
+    assert kopru.durum()["guc_uyari"] == "Acil stop basılı: mantarı açmadan devreye alınamaz."
+    assert len(robot.seri.gonderilenler) == 1                  # 2 s dolmadan yeni ping yok
+    zaman[0] = 2.0
+    durum = kopru.durum()
+    assert durum["acil"] is True and durum["guc"] == "birakik" and len(robot.seri.gonderilenler) == 2
+    kopru.arm()                                                # sahte ESP32 de acil basılıyken reddeder
+    assert robot.seri.guc == "birakik" and "Devreye alınamadı" not in kopru.durum()["guc_uyari"]
+    robot.seri.acil = False
+    kopru.arm()                                                # devredeyken durum sorusu ping atmaz
+    sayi = len(robot.seri.gonderilenler)
+    zaman[0] = 10.0
+    kopru.durum()
+    assert len(robot.seri.gonderilenler) == sayi
 
 
 def test_canli_tut_devredeyken_saniyede_bir_ping():

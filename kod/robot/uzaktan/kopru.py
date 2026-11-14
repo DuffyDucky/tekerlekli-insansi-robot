@@ -32,6 +32,7 @@ YONLER = ("sol", "sag", "ileri", "arka")
 OLU_ADAM_SANIYE = 0.4          # son sur isteğinden bu kadar sonra robot durdurulur
 YINELEME_SANIYE = 0.15         # sürülürken ESP32'ye sur bu aralıkla yinelenir (watchdog 500 ms)
 CANLI_TUT_SANIYE = 1.0         # devredeyken ping aralığı (ESP32 5 s sessizlikte röleleri bırakır)
+DURUM_SORMA_SANIYE = 2.0       # devrede değilken telefon bakarken acil/bara/akü için ping aralığı
 EN_UZUN_METIN = 300            # söyletilecek metnin en fazla karakter sayısı
 KONUSMA_SONRASI_SUSMA = 0.5    # söyletilen cümle bitince bu kadar süre tetik yok sayılır (yankı)
 
@@ -44,12 +45,14 @@ NEDENLER = {
     "is_sag": "sağ motor sürücüsü arıza bildirdi",
     "i2c": "servo kartıyla (I2C) iletişim koptu",
     "sessizlik": "Pi'den 5 s komut gelmedi",
+    "onsarj_sure": "ön şarj 1 s'de bitmedi",
 }
 ARM_HATALARI = {
     "acil_stop": "acil stop basılı",
     "pca9685_yok": "servo kartı (PCA9685) bulunamadı",
     "zaten_devrede": "zaten devrede",
     "mesgul": "devreye alma sürüyor",
+    "zamanlayici_yok": "ESP32 süre zamanlayıcısı kurulamadı (K2 çekilmedi)",
 }
 
 
@@ -116,6 +119,7 @@ class RobotKoprusu:
         self.son_istek = 0.0
         self.son_gonderim = 0.0
         self.son_ping = None                 # devredeyken son canlı tutma ping'i
+        self.son_sorgu = None                # devrede değilken /durum'la atılan son ping
         self.konusma_kilidi = threading.Lock()
         self.konusma_bitti = threading.Event()
         self.konusma_bitti.set()
@@ -174,12 +178,16 @@ class RobotKoprusu:
             except Exception as hata:
                 print(f"[uzaktan] Konum okunamadı ({hata}).")
         soru, cevap = self.son_tur()
+        self.durum_sor()
         g = self.guc()
         engel = surus_engeli(g)
         ret = g.get("son_ret") or {}
         uyari = engel
         if ret.get("k") == "arm" and g.get("guc") != "devrede":
             uyari = f"Devreye alınamadı: {neden_yazisi(ret.get('hata'), ARM_HATALARI)}."
+        if g.get("acil") is True and g.get("guc") != "devrede":
+            # bırakıkken mantar basılırsa durum değişmez, yalnız ping'de acil:true görünür
+            uyari = "Acil stop basılı: mantarı açmadan devreye alınamaz."
         return {
             "durum": self.robot.durum.durum.value,
             "bolge": konum.get("bolge"),
@@ -275,6 +283,21 @@ class RobotKoprusu:
             self.son_ping = simdi
         return True
 
+    def durum_sor(self, simdi=None):
+        """Devrede değilken canlı tutma ping'i yok; acil/bara/akü ancak ping cevabıyla tazelenir (bırakıkken
+        mantara basmak güç olayı üretmez). Telefon /durum'u sordukça en çok DURUM_SORMA_SANIYE'de bir ping.
+        Telefon bakmıyorsa ping de gitmez. Ping attıysa True."""
+        gerekli = getattr(self.robot.seri, "canli_tut_gerekli", None)
+        if gerekli is None or gerekli():          # devredeyken canli_tut zaten 1 s'de bir atıyor
+            return False
+        with self.kilit:
+            simdi = self.saat() if simdi is None else simdi
+            if self.son_sorgu is not None and simdi - self.son_sorgu < DURUM_SORMA_SANIYE:
+                return False
+            self.robot.seri.ping()
+            self.son_sorgu = simdi
+        return True
+
     # ---------- güç (röle) ----------
 
     def arm(self):
@@ -288,7 +311,9 @@ class RobotKoprusu:
         return {"guc": self.guc().get("guc")}
 
     def birak(self):
-        """Önce dur, sonra röleleri bırak. Her durumda çalışır (bakım, rampa, arıza): kollar düşer."""
+        """Önce dur, sonra röleleri bırak. Her durumda çalışır (bakım, rampa, arıza): kollar düşer.
+        Arızada röleler zaten bırakıktır; ESP32 durumu "ariza"da tutar (kilitli, yalnız yeni arm temizler),
+        cevapta guc "ariza" kalır ve telefon bunu yazar."""
         with self.kilit:
             self.suruluyor = False
             self.robot.seri.dur()

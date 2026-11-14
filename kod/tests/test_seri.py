@@ -317,3 +317,13 @@ def test_sahte_seri_gucu_taklit_eder():
     s.reset()
     assert s.guc == "birakik"
     assert [json.loads(x)["k"] for x in s.gonderilenler] == ["sur", "arm", "ping", "birak", "arm", "reset"]
+
+
+def test_ariza_kilitli_birak_degistirmez_arm_temizler():
+    s = SahteSeri()
+    s.arm()
+    s.satir_isle({"k": "guc", "guc": "ariza", "neden": "sessizlik", "ms": 5000})
+    s.birak()
+    assert (s.guc, s.ariza) == ("ariza", "sessizlik") and not s.canli_tut_gerekli()
+    s.arm()
+    assert (s.guc, s.ariza, s.neden) == ("devrede", None, None)

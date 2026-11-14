@@ -19,6 +19,9 @@
 # bırakır (servoların gücü de kesilir: kollar düşer). Devreye alma yalnız operatör işidir: Pi hiçbir
 # yerde kendiliğinden arm() göndermez. Devredeyken ESP32 5 s hiç geçerli komut almazsa kendisi bırakır
 # ("sessizlik"); bu yüzden devredeyken ~1 s'de bir ping atılır (robot/uzaktan/kopru.py canli_tut).
+# Bütün koruma bırakmaları (sessizlik, bara_gitti, acil_stop, onsarj_sure ...) "ariza"ya geçer ve kilitli
+# kalır: birak durumu değiştirmez, yalnız yeni arm temizler. guc olayı komut cevabından SONRA gelir.
+# Bırakıkken mantara basmak durum değiştirmez; acil yalnız ping cevabında görünür.
 # Son bilinen güç durumu (guc, neden, ariza, acil, bara, aku) gelen satırlardan güncellenir: satir_oku()
 # her satırı satir_isle()'den geçirir, satırı kim okursa okusun (konum yöneticisinin iş parçacığı,
 # hazir_bekle, konum aracı). İkinci bir okuyucu açılmaz; konum kapalıysa ana.py okuyucu_baslat() der.
@@ -220,14 +223,14 @@ class SahteSeri(SeriProtokol):
     def _taklit_et(self, komut):
         k, ms = komut.get("k"), int(time.monotonic() * 1000)
         if k == "arm":
-            if self.guc == "devrede":
-                self.satir_isle({"ok": False, "k": "arm", "hata": "zaten_devrede"})
+            if self.guc == "devrede" or self.acil:
+                self.satir_isle({"ok": False, "k": "arm", "hata": "acil_stop" if self.acil else "zaten_devrede"})
                 return
             self.satir_isle({"ok": True, "k": "arm", "guc": "onsarj"})
             self.satir_isle({"k": "guc", "guc": "devrede", "neden": None, "ms": ms})
         elif k == "birak":
             self.satir_isle({"ok": True, "k": "birak", "ms": ms})
-            if self.guc != "birakik":
+            if self.guc not in ("birakik", "ariza"):      # arıza kilitli: birak durumu değiştirmez
                 self.satir_isle({"k": "guc", "guc": "birakik", "neden": None, "ms": ms})
         elif k == "reset":
             self.satir_isle({"ok": True, "k": "reset"})

@@ -432,7 +432,8 @@ $("arm").addEventListener("click", async () => {
 $("birak").addEventListener("click", async () => {
   surDurdur();
   const s = await istek("/birak", {});
-  sonucBildir(s, "Röleler bırakıldı.");
+  // arızada röleler zaten bırakık; ESP32 arızayı kilitli tutar, yalnız yeni "Devreye al" temizler
+  sonucBildir(s, s.veri.guc === "ariza" ? "Röleler zaten bırakık; arıza sürüyor (Devreye al temizler)." : "Röleler bırakıldı.");
   setTimeout(durumYenile, 300);
 });
 
