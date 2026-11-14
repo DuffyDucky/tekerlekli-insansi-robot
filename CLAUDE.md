@@ -51,11 +51,11 @@ Robot SESLİ çalışır (Efe kararı, 26 Ekim 2026: ziyaretçi yazmaz, yapay ze
 | `kod/olcum/test_seti.py` · `test_seti_universite.txt` | STT ölçümü: tam/normalize eşleşme, KHO (Levenshtein), konu eşleşmesi, dinleme ms; `--stt --etiket --adet`; sonuç `kod/olcum/sonuclar/` (depoya girer) |
 | `kod/olcum/bilinmeyen_rapor.py` · `konum_turu.py` · `gurultu_prova.py` | Günlüklerden cevapsız/zayıf (puan < `--esik` 4) soruların kök gruplu Markdown raporu (`--gun 7`); bölge bölge gezip her kaynağın ve birleşiğin doğruluğunu CSV + Markdown'a yazan konum turu (`--etiket --adet --kaynaklar`); konuşma wav + gürültü wav'ı `--snr` dB'lerde karıştırıp Vosk ile tanıyan gürültü provası (numpy + wave; `olcum/ses/` depoya girmez) |
 | `kod/robot.service` | systemd kullanıcı servisi: `graphical-session.target`, `DISPLAY=:0`, `ana.py --icerik universite --tam-ekran`, `Restart=on-failure` |
-| `kod/tests/` | pytest (212); `conftest.py` `kod/`'u yola ekler ve örnek paketi verir; pygame testleri SDL `dummy` sürücüsüyle olay sentezler; `test_konum*.py` sentetik parmak izi/geofence/odometri/birleştirme, cv2 yoksa kamera testleri atlanır |
+| `kod/tests/` | pytest (tam takım `kod/tests kod/jestler kod/ortak`; 14 Kasım 2026'da 301 geçti, 7 atlandı); `conftest.py` `kod/`'u yola ekler ve örnek paketi verir; pygame testleri SDL `dummy` sürücüsüyle olay sentezler; `test_konum*.py` sentetik parmak izi/geofence/odometri/birleştirme, cv2 yoksa kamera testleri atlanır |
 | `kod/kur_pi.sh` · `requirements.txt` | Pi kurulumu (apt + `~/robot-venv --system-site-packages`), paket listesi |
 | `kod/PI5-KURULUM.md` | Gerçek Pi 5 (`lale`, **4 GB RAM**: bellek bütçesi buna göre) kurulum kaydı ve sıfırdan kurma rehberi (cloud-init dosyaları, Imager CLI, modeller, tuzaklar; "Robota takılınca güç ayarı": Pololu D36V50F5 PD konuşmaz → EEPROM `PSU_MAX_CURRENT=5000` + `config.txt` `usb_max_current_enable=1`, masada PD adaptörle gerekmez, Pi'de denenmedi); Pi'deki yol `~/tekerlekli-insansi-robot`, venv `~/robot-venv` |
 
-- Test: `py -3 -m pytest kod/tests -q` (depo kökünden; numpy gerekir, pygame/vosk/sounddevice/bulut olmadan da geçer).
+- Test: `py -3 -m pytest kod/tests kod/jestler kod/ortak -q` (depo kökünden; numpy gerekir, pygame/vosk/sounddevice/bulut olmadan da geçer).
 - Çalıştırma (mikrofonsuz): `py -3 kod/ana.py --gelistirici --icerik universite` (dokun + yaz), `--yuzsuz` ile
   terminal; yüz denemesi `--yuz --deneme-saniye 3`. Pi'de `kod/` içinde `source ~/robot-venv/bin/activate &&
   python3 ana.py --icerik universite` (mikrofon + Vosk modeli gerekir). Denetim `py -3 kod/icerik_kontrol.py`,
@@ -107,7 +107,7 @@ Driver 3.0.2; sürümler sabit; çekirdek 3.x'e geçmez, pin haritası Y13). Ayr
   (brownout), topraklar ortak; Emas mantarı röle bobinlerini keser (bara düşer, motorlar boşa, kollar düşer), yazılım
   bekçileri onun yerine geçmez; açılışta ve resetten sonra güç `birakik`, Pi `arm` göndermeli ve devredeyken saniyede bir
   `ping` atmalı (5 s sessizlik → bırakır); Pi sürerken `sur`'u ~200 ms'de bir yinelemeli (500 ms bekçi, artık rampasız);
-  `dur` rampalı (düzde ~0,2 s, rampa kipinde ~4 s); Pi portu DTR/RTS kapalı açar ama reset yine olabilir (röleler bırakır),
+  `dur` rampalı (düzde ~0,2 s, rampa kipinde ~4 s); Pi portu DTR etkin / RTS bırakık açıp sonra DTR'yi bırakır (EN hiç LOW olmaz; Pi'de denenmedi, reset olursa röleler bırakır),
   `seri.py` `hazir` ya da ping bekler; pinler kesin (sürüm 4) ama yönler/`TIK_PER_TUR`/`TEKER_AZAMI_HIZ`/ofsetler/sol
   `ters`/IS eşiği/akü ölçeği tahmini; kart PSRAM'siz olmalı (WROVER/...R2'de 16/17 enkoder çalışmaz); Serial1/Serial2/SPI
   açan kod ekleme (varsayılan pinleri röle/motor pinlerine düşer, Y1); GPIO12'ye dokunma; elle `servo` komutu `bagimli`
