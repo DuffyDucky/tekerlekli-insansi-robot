@@ -24,7 +24,7 @@ varken robot bakımdadır (10. bölüm); ölçüm araçları 11., yüz ifadeleri
 | `robot/tts.py` | Seslendirme: `YaziTTS` (varsayılan), `Pyttsx3TTS`, `PiperTTS` |
 | `robot/yuz.py` | pygame yüzü (ilkel şekiller), altta son söylenen metin; dokunma tetiğinde "Konuşmak için dokun" alanı; ifadeler ve bakış `Ifade` (12. bölüm) |
 | `robot/gunluk.py` | Etkileşim günlüğü: her tur bir CSV satırı (tanınan, konu, puan, cevap, jest, süreler) |
-| `robot/seri.py` | ESP32'ye satır tabanlı JSON (`jest(ad, yon)`, `sur`, `dur`, `rampa(ac)`); portu DTR/RTS kapalı açar, açılışta `hazir` ya da ping cevabı bekler; port yoksa `SahteSeri` |
+| `robot/seri.py` | ESP32'ye satır tabanlı JSON (`jest(ad, yon)`, `sur`, `dur`, `rampa(ac)`, güç: `arm`, `birak`, `reset`); portu ESP32'yi resetlemeyecek sırayla açar (DTR etkin + RTS bırakık, sonra DTR bırakık), açılışta `hazir` ya da ping cevabı bekler; gelen satırlardan güç durumunu tutar; port yoksa `SahteSeri` (gücü de taklit eder) |
 | `robot/konum/` | Konum: Wi-Fi, GPS, BLE, ArUco, görsel, odometri, elle kaynakları + `KonumYoneticisi`; `python3 -m robot.konum` aracı (9. bölüm) |
 | `robot/uzaktan/` | Telefondan kumanda: web sunucusu (`sunucu.py`), robota güvenli erişim (`kopru.py`), telefon sayfası (`sayfa.html`, `manifest.json`); `python3 -m robot.uzaktan` robotsuz deneme (10. bölüm) |
 | `konum/bolgeler.yaml`, `konum/parmak_izi.yaml` | Bölge haritası (GPS çemberi, ArUco, beacon) ve Wi-Fi parmak izi kaydı |
@@ -233,7 +233,11 @@ tetik `ses`, `dokunma` ya da `gpio` olmalı, `klavye` tetikle hemen kapanır.
   listesi) ve 500 ms komut gelmezse motorları durduracak (watchdog). `seri.port: /dev/ttyUSB0`
   (ya da `/dev/ttyACM0`; `ls /dev/tty*` ile bak). Kullanıcı `dialout` grubunda olmalı:
   `sudo usermod -aG dialout $USER` ve yeniden oturum aç. Port açılınca ESP32 resetlenmesin diye `seri.py`
-  DTR/RTS kapalı açar; Pi'de bir kez `stty -F /dev/ttyUSB0 -hupcl` (29 Ekim 2026, denenmedi).
+  portu DTR etkin + RTS bırakık açar, açınca DTR'yi bırakır (14 Kasım 2026; DevKit'te RTS etkin + DTR bırakık
+  = reset, eski "ikisi kapalı" sırası arada bu duruma düşüyordu; denenmedi). `stty -F /dev/ttyUSB0 -hupcl`
+  artık şart değil, zararı yok.
+  ESP32 0.5.0 röleleri **bırakık** açar: motor ve servo gücü yoktur, kollar düşüktür. Robotu telefondan
+  "Devreye al" ile siz devreye alırsınız (Pi kendiliğinden almaz); "Bırak" kolları düşürür.
   Robota takılınca Pi güç ayarı: `kod/PI5-KURULUM.md` "Robota takılınca güç ayarı".
 - **Bulut:** anahtar alınca `dil.saglayici: gemini` ya da `anthropic` (sohbet hafızası bulutta işe yarar).
 - **Durum doğrulaması:** hiçbir şey donanımda denenmedi; yukarıdaki listeyi bu akşam işaretleyin.
@@ -412,12 +416,20 @@ Telefon robotla **aynı Wi-Fi'da** olmalı; tarayıcıda açın:
 - **Ana ekrana ekleme:** Android Chrome'da ⋮ → "Ana ekrana ekle"; iPhone Safari'de Paylaş → "Ana Ekrana Ekle".
   Adres HTTPS olmadığı için tam "uygulama yükleme" değil kısayol olur; iş görür.
 
-Sayfada: üstte durum şeridi (bağlantı, durum, bölge), yön düğmeleri (basılı tut = sür, bırak = dur; yavaş
+Sayfada: üstte durum şeridi (bağlantı, durum, bölge, güç), **Güç** kartı (aşağıda), yön düğmeleri (basılı tut = sür, bırak = dur; yavaş
 0,15 m/s, normal 0,3 m/s), jestler (selam, evet, işaret ← ↑ → ↓), "Söyle" kutusu ve hazır cümleler, bölge seçimi
 (`konum/bolge.txt`'ye yazar), bakım modu anahtarı (`kod/bakim.txt`), **Rampa** anahtarı, altta her zaman
 görünen kırmızı **DUR**. "Söyle" yalnız robot BEKLE'deyken çalışır; konuşma sırasında reddedilir ve sebebi yazılır.
 **Rampa** (29 Ekim 2026): rampaya/eğime girmeden aç. ESP32 (0.4.0) teker ivmesini ve frenini 0,1 m/s²'ye indirir,
 kolları ev pozuna alır; açıkken uyarı görünür ("kollar ev pozunda, yavaş"), jest düğmeleri kapanır (`POST /rampa {ac}`).
+**Güç** (14 Kasım 2026, ESP32 0.5.0): ESP32 açılışta ve resetten sonra röleleri bırakık tutar. "Devreye al"
+(`POST /arm`) röleleri açar (~0,6 sn "Devreye alınıyor", sonra "Devrede"); robotu yalnız operatör devreye alır,
+Pi hiçbir zaman kendiliğinden almaz. "Bırak" (`POST /birak`) önce `dur`, sonra röleleri bırakır: **kollar düşer**;
+bakımda, rampada ve arızada da çalışır. Bırakıkken yön düğmeleri soluk görünür ve nedenini yazar ("Röleler
+bırakık: sürmek için önce Devreye al"). Arıza nedeni (acil stop, bara, motor sürücü, I2C, "Pi'den 5 s komut
+gelmedi") kartta görünür. Devredeyken Pi 1 sn'de bir `ping` atar; ESP32 5 sn komut görmezse röleleri kendisi
+bırakır. Robot programı kapanırken `birak` gönderilmez (yalnız `dur`); bilinçli kapatmada önce kolları
+destekleyip "Bırak"a basın, basmazsanız ESP32 5 sn sonra kendisi bırakır.
 
 **Güvenlik:** telefon düşer, uygulama kapanır ya da Wi-Fi koparsa Pi son `sur`dan 0,4 sn sonra kendisi
 `dur` gönderir; Pi çökerse ESP32 watchdog'u 0,5 sn'de durdurur. Donanım acil stop yine şart. Hız seri.py

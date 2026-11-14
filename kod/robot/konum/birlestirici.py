@@ -152,8 +152,8 @@ class KonumYoneticisi:
                 self.tahmin_ekle(kaynak, kaynak.oku())   # elle bölge ilk sorudan önce hazır olsun
             if kaynak.etkin and kaynak is not self.odometri:
                 self._is_baslat(self._kaynak_dongusu, kaynak)
-        if self.odometri is not None and self.seri is not None and hasattr(self.seri, "satir_oku"):
-            self._is_baslat(self._seri_dongusu)
+        if self.seri is not None and hasattr(self.seri, "satir_oku"):
+            self._is_baslat(self._seri_dongusu)    # odometri kapalı olsa da: güç olayları bu satırlarda
 
     def _is_baslat(self, hedef, *argumanlar):
         t = threading.Thread(target=hedef, args=argumanlar, daemon=True)
@@ -166,19 +166,29 @@ class KonumYoneticisi:
             self.durdur.wait(kaynak.aralik)
 
     def _seri_dongusu(self):
-        """ESP32 satırlarını okur; 'odo' satırları odometriye gider, diğerleri (ok, durum) yoksayılır.
-        Seriye YAZMA ana.py'de (jest, dur); pyserial'de okuma ve yazma ayrı iş parçacıklarında güvenli."""
-        while not self.durdur.is_set():
-            try:
-                mesaj = self.seri.satir_oku()
-            except Exception as hata:
-                print(f"[konum] seri okuma hatası ({hata}); 1 s sonra yeniden.")
-                self.durdur.wait(1.0)
-                continue
-            if mesaj is None:
-                self.durdur.wait(0.1)             # SahteSeri ya da sessiz hat: boşuna dönmesin
-                continue
-            self.odometri.isle(mesaj)
+        """ESP32 satırlarının TEK sürekli okuyucusu: 'odo' satırları odometriye gider. Güç olayları ve
+        hazir/ping cevapları seri.satir_oku() içinde satir_isle() kancasından geçer (robot/seri.py);
+        burada ayrıca bir şey yapılmaz. Seriye YAZMA ana.py'de ve köprüde (jest, dur, ping);
+        pyserial'de okuma ve yazma ayrı iş parçacıklarında güvenli."""
+        kaydet = getattr(self.seri, "okuyucu_kaydet", None)
+        if kaydet is not None:
+            kaydet(True)                          # hazir_bekle artık satır okumaz, kancayı bekler
+        try:
+            while not self.durdur.is_set():
+                try:
+                    mesaj = self.seri.satir_oku()
+                except Exception as hata:
+                    print(f"[konum] seri okuma hatası ({hata}); 1 s sonra yeniden.")
+                    self.durdur.wait(1.0)
+                    continue
+                if mesaj is None:
+                    self.durdur.wait(0.1)         # SahteSeri ya da sessiz hat: boşuna dönmesin
+                    continue
+                if self.odometri is not None:
+                    self.odometri.isle(mesaj)
+        finally:
+            if kaydet is not None:
+                kaydet(False)
 
     def bir_kez(self):
         """Her etkin kaynağı sırayla bir kez okur (komut satırı aracı ve testler için; iş parçacığı yok)."""
