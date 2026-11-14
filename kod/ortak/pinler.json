@@ -1,0 +1,52 @@
+{
+  "surum": 4,
+  "tarih": "2026-11-14",
+  "kaynak": "planlama/adim3/pin-haritasi.md (lale-duzeltme); karar: Ahmet 13.11.2026 yetkilendirmesi",
+  "cekirdek": "espressif32@6.9.0 (Arduino-ESP32 2.0.17); 3.x'e gecis raporu gozden gecirmeden yapilmaz",
+  "kart": {
+    "ad": "ESP32 DevKit 30 pin, CP2102",
+    "modul_sarti": "PSRAM'siz modul (WROVER ya da D0WDR2 / ...R2 ise GPIO16/17 enkoder kanallari calismaz; roleler etkilenmez)",
+    "flash_gpio_kullanilmaz": [6, 7, 8, 9, 10, 11],
+    "kullanilmaz": ["Serial1 / Serial2 varsayilan pinleri (2.0.17: 16/17; 3.x: 26/27, 4/25)", "SPI ve HSPI varsayilan pinleri"]
+  },
+  "pinler": {
+    "AKU_ADC":        {"gpio": 36, "yon": "analog", "adc": "ADC1_CH0", "not": "100k/18k + 100nF"},
+    "SONAR_SAG_ECHO": {"gpio": 39, "yon": "giris", "not": "yalniz giris; 4.7k/10k bolucu; errata GPIO-3.11 ~80 ns LOW"},
+    "SONAR_ORTA_ECHO":{"gpio": 34, "yon": "giris", "not": "yalniz giris; 4.7k/10k bolucu"},
+    "SONAR_SOL_ECHO": {"gpio": 35, "yon": "giris", "not": "yalniz giris; 4.7k/10k bolucu"},
+    "SOL_IS":         {"gpio": 32, "yon": "analog", "adc": "ADC1_CH4", "zayiflatma": "0 dB", "uc": "sol BTS IS1+IS2", "donanim": "IS -> 6.8k -> pin, pin -> 5.1k -> GND (kart IS direnci birlesik 500R ise; once olculur)"},
+    "SAG_IS":         {"gpio": 33, "yon": "analog", "adc": "ADC1_CH5", "zayiflatma": "0 dB", "uc": "sag BTS IS1+IS2", "donanim": "IS -> 6.8k -> pin, pin -> 5.1k -> GND (kart IS direnci birlesik 500R ise; once olculur)"},
+    "SOL_ILERI_PWM":  {"gpio": 25, "yon": "pwm", "uc": "sol BTS IN1 (RPWM)", "not": "3.x: Serial2 TX varsayilani"},
+    "SOL_GERI_PWM":   {"gpio": 26, "yon": "pwm", "uc": "sol BTS IN2 (LPWM)", "not": "3.x: Serial1 RX varsayilani"},
+    "SAG_ILERI_PWM":  {"gpio": 27, "yon": "pwm", "uc": "sag BTS IN1 (RPWM)", "not": "3.x: Serial1 TX varsayilani"},
+    "SAG_GERI_PWM":   {"gpio": 14, "yon": "pwm", "uc": "sag BTS IN2 (LPWM)", "not": "reset sonrasi zayif pull-up"},
+    "BTS_EN":         {"gpio": 13, "yon": "cikis", "acilis": 0, "uc": "sol EN1+EN2, sag EN1+EN2", "donanim": "10k -> GND"},
+    "ROLE_K1":        {"gpio": 4,  "yon": "cikis", "acilis": 0, "uc": "role surucusu #1, BC337-40 tabani", "donanim": "270R seri, 2.2k taban -> GND, bobine ters 1N4007; BC337-40; surus gucu varsayilan (2) ya da ustu", "not": "3.x: Serial2 RX varsayilani"},
+    "ROLE_K2_ONSARJ": {"gpio": 19, "yon": "cikis", "acilis": 0, "en_cok_ms": 1000, "uc": "role surucusu #2, BC337-40 tabani", "donanim": "270R seri, 2.2k taban -> GND, bobine ters 1N4007; BC337-40; surus gucu varsayilan (2) ya da ustu"},
+    "ACIL_STOP_DURUM":{"gpio": 23, "yon": "giris_pullup", "aktif": "HIGH = mantar basili / F5 atti", "uc": "PC817 #1"},
+    "BARA_DURUM":     {"gpio": 5,  "yon": "giris_pullup", "aktif": "LOW = bara gerilimli", "uc": "PC817 #2", "not": "strapping, yalniz SDIO zamanlamasi"},
+    "I2C_SDA":        {"gpio": 21, "yon": "i2c"},
+    "I2C_SCL":        {"gpio": 22, "yon": "i2c"},
+    "SOL_ENK_A":      {"gpio": 18, "yon": "giris", "sayac": "PCNT"},
+    "SOL_ENK_B":      {"gpio": 17, "yon": "giris", "sayac": "PCNT", "donanim": "1k seri", "not": "acilista PSRAM yoklamasi surer"},
+    "SAG_ENK_A":      {"gpio": 16, "yon": "giris", "sayac": "PCNT", "donanim": "1k seri", "not": "acilista PSRAM yoklamasi surer"},
+    "SAG_ENK_B":      {"gpio": 15, "yon": "giris", "sayac": "PCNT", "not": "strapping: LOW ise yalniz ROM acilis yazisi susar"},
+    "UART0_TX":       {"gpio": 1,  "yon": "uart", "uc": "CP2102 -> Pi"},
+    "UART0_RX":       {"gpio": 3,  "yon": "uart", "uc": "CP2102 -> Pi"},
+    "DURUM_LED":      {"gpio": 2,  "yon": "cikis", "uc": "kart ustu LED", "not": "strapping; disariya baglanmaz"}
+  },
+  "bos": {"12": "strapping (MTDI); hicbir seye baglanmaz"},
+  "i2c": {"PCA9685": "0x40", "BNO055": "0x28 / 0x29"},
+  "pca9685_kanallar": {
+    "0": "sag_omuz", "1": "sag_omuz_yan", "2": "sag_dirsek", "3": "sag_bilek", "4": "kafa_pan",
+    "5": "sol_omuz", "6": "sol_omuz_yan", "7": "sol_dirsek", "8": "sol_bilek", "9": "kafa_tilt",
+    "10": "sonar_sag_trig", "11": "sonar_orta_trig", "12": "sonar_sol_trig",
+    "13": "yedek", "14": "yedek", "15": "yedek"
+  },
+  "arm": {
+    "not": "Devreye alma (Y4) zamanlamasi. On sarj 300 -> 500 ms: 14.11.2026 kanal mesaji #26/#28.",
+    "onsarj_bekleme_ms": 500,
+    "k1_sonrasi_ms": 100,
+    "k2_en_cok_ms": 1000
+  }
+}

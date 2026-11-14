@@ -1,31 +1,42 @@
-// main.cpp -- Tekerlekli insansı robot, ESP32 alt denetleyici (MCBÜ Mekatronik).
+// main.cpp -- Tekerlekli insansı robot, ESP32 alt denetleyici (MCBÜ Mekatronik). Sürüm 0.5.0.
 //
 // ESP32'nin işi: Pi'den gelen kısa komutları (seri JSON) uygulamak.
+//   - güç: K1 / K2 röleleri, acil stop ve bara izleme, arıza durum makinesi (guc.*)
 //   - kollar ve kafa: PCA9685 + servolar, kayıtlı jestler (servolar.*, jestler.*)
-//   - tekerlekler: 2 x BTS7960 + JGB37 enkoderli motor (motorlar.*)
+//   - tekerlekler: 2 x BTS7960 + JGB37 enkoderli motor, PCNT sayaç (motorlar.*)
 //   - güvenlik: 500 ms komut bekçisi + döngü bekçisi (watchdog.*); ivme/fren sınırı ve rampa kipi
 //     (motorlar.*, seri_protokol.*; IMU eğimi geçerliyse rampa kipi burada otomatik açılır)
 //   - konum: 10 Hz odometri yayını {"k":"odo",...} (enkoder tikleri + IMU yaw; IMU şimdilik yok, imu.*)
-//   - haberleşme: seri_protokol.*  |  pinler: include/pinler.h
+//   - haberleşme: seri_protokol.*  |  pinler: include/pinler.h (ÜRETİLİR: kod/ortak/pinler.json)
+//
+// BU FIRMWARE YALNIZ PİN HARİTASI SÜRÜM 4 KABLAJINA YÜKLENİR (14.11.2026; planlama/adim3/pin-haritasi.md,
+// dal lale-duzeltme). 0.4.0 ve öncesi bu kablaja, 0.5.0 eski kablaja yüklenmez.
 //
 // ======================= GÜÇ NOTU (kablajdan ÖNCE oku) =======================
-// 1) SERVO GÜCÜ AYRI: servolar PCA9685'in V+ klemensinden, kendi DC-DC'lerinden beslenir (5-7,4 V;
-//    DS3235/MG996R için 6 V iyi). 10 servo, üç hat (elektrik notu, 29 Ekim 2026): sağ kol = A,
-//    sol kol = B, kafa pan + tilt = C (üç XL4016). Tepe akım kol hattı ~7,2 A, kafa ~5 A (tahmini).
-//    V+ ile GND arasına büyük kondansatör (ör. 1000 uF) konur.
-// 2) MANTIK AYRI: ESP32 ve Pi kendi temiz 5 V hatlarından beslenir. Pi'nin USB'sinden SERVO
-//    BESLENMEZ: servo çektiği ani akımla voltaj düşer, Pi ve ESP32 resetlenir (brownout).
-// 3) ORTAK TOPRAK: akü eksi, servo DC-DC eksi, BTS7960 GND, ESP32 GND, Pi GND birleşir.
-//    Toprak ortak olmazsa PWM/I2C sinyalleri "havada" kalır, servolar titrer.
-// 4) ACİL STOP: Emas butonu motor ve servo güç hatlarını DOĞRUDAN keser. Yazılımdan bağımsızdır;
-//    bu kod çökse de, kilitlense de robotu durdurur. Yazılım bekçileri bunun yerine geçmez.
+// 1) ANAHTARLI BARA: motor sürücüleri (BTS7960) ve servo DC-DC'leri (üç XL4016: sağ kol A, sol kol B,
+//    kafa C) akünün anahtarlı barasından beslenir. Barayı K1 rölesi (GPIO4) bağlar; önce K2 (GPIO19)
+//    barayı 5,6 ohm ön şarj direnciyle doldurur. Sıra guc.cpp'de ("arm"); açılışta bara HEP kapalıdır.
+// 2) ACİL STOP: Emas mantarı iki rölenin BOBİN beslemesini keser (mantar NC kontağı bobinden önce).
+//    Basılıyken firmware ne yaparsa yapsın röle çekmez, bara düşer: motorlar boşa düşer, KOLLAR DÜŞER
+//    (bilinen, kabul edilmiş davranış). ESP32 mantarın durumunu GPIO23'ten yalnız OKUR.
+// 3) MANTIK AYRI: ESP32 ve Pi kendi temiz 5 V hatlarından beslenir (bara kapalıyken de çalışır).
+//    PCA9685'in mantığı ESP32'nin 3,3 V'undan: bara kapalıyken de I2C'de cevap verir.
+//    Servo asla Pi'nin USB'sinden beslenmez (ani akım -> brownout -> reset).
+// 4) ORTAK TOPRAK: akü eksi, DC-DC eksileri, BTS7960 GND, ESP32 GND, Pi GND birleşir.
+// 5) Reset / çökme / yükleme / USB sökme anında 4, 19, 13 çıkışı kapanır; taban (2,2 kOhm) ve EN (10 kOhm)
+//    pull-down dirençleri onları LOW tutar: röleler bırakır, motorlar kilitli kalır (rapor §4).
 // =============================================================================
 //
-// DURUM: Donanımda DOĞRULANMADI (26 Ekim 2026). Pinler, yönler, sınırlar, enkoder sayısı tahmini.
-// Döngü yapısı: delay() yok. loop() hep döner, her iş kendi zamanı gelince yapılır.
+// KURULUM SIRASI (rapor Y2): 1) 4, 19, 13 LOW çıkış  2) motor PWM'leri görev oranı 0 ile, PCNT
+// 3) LED, acil stop / bara girişleri, ADC, K2 zamanlayıcısı  4) I2C + PCA9685  5) IMU  6) seri ("hazir")
+// 7) döngü bekçisi. Serial1 / Serial2 / SPI hiç açılmaz; GPIO12 hiç ayarlanmaz.
+//
+// DURUM: Donanımda DOĞRULANMADI (14.11.2026, 0.5.0 yalnız derlendi). Pinler kesin karar; yönler,
+// sınırlar, enkoder sayısı, IS eşiği ve akü ölçeği tahmini. Döngü: delay() yok, her iş kendi zamanında.
 #include <Arduino.h>
 #include <math.h>
 
+#include "guc.h"
 #include "imu.h"
 #include "jestler.h"
 #include "motorlar.h"
@@ -33,6 +44,9 @@
 #include "seri_protokol.h"
 #include "servolar.h"
 #include "watchdog.h"
+
+static_assert(PIN_HARITASI_SURUM == 4,
+              "Bu firmware (0.5.0) pin haritasi surum 4 icin yazildi; kod/ortak/pinler.json surumunu denetle");
 
 // 1 s'de bir {"k":"durum",...} gönderilsin mi? platformio.ini'de -DDURUM_YAYINI=1 ile açılır.
 #ifndef DURUM_YAYINI
@@ -70,20 +84,32 @@ void egim_denetle() {
   rampa_imu_bildir(egimde);
 }
 
-// LED: normalde 1 Hz yanıp söner (program çalışıyor). PCA9685 bulunamadıysa hızlı (5 Hz) söner.
+// LED (yalnız kart üstü, GPIO2; dışarıya hiçbir şey bağlanmaz):
+//   ARIZA (güç "ariza"):  çift yanıp sönme (iki kısa parlama, uzun ara; 1,2 s'de bir) -- en öncelikli
+//   PCA9685 bulunamadı:   hızlı, 5 Hz
+//   normal:               1 Hz (program çalışıyor)
 void led_guncelle(uint32_t simdi_ms) {
-  uint32_t yarim_periyot = servolar_hazir() ? 500 : 100;
-  digitalWrite(PIN_DURUM_LED, ((simdi_ms / yarim_periyot) % 2) ? HIGH : LOW);
+  bool yanik;
+  if (guc_ariza_mi()) {
+    const uint32_t t = simdi_ms % 1200;
+    yanik = (t < 100) || (t >= 250 && t < 350);
+  } else {
+    const uint32_t yarim_periyot = servolar_hazir() ? 500 : 100;
+    yanik = (simdi_ms / yarim_periyot) % 2;
+  }
+  digitalWrite(PIN_DURUM_LED, yanik ? HIGH : LOW);
 }
 
 }  // namespace
 
 void setup() {
+  guc_pinleri_guvenle();      // İLK İŞ: röleler (4, 19) ve EN (13) LOW çıkış -- her şeyden önce
+  motorlar_baslat();          // PWM'ler görev oranı 0 ile; PCNT enkoder sayaçları
   pinMode(PIN_DURUM_LED, OUTPUT);
-  motorlar_baslat();          // önce motorlar: sürücüler PWM=0 iken etkinleşsin
-  servolar_baslat();          // I2C + PCA9685; bulunamazsa servo komutları hata döner
+  guc_baslat();               // acil stop / bara girişleri, IS ve akü ADC'si, K2 zamanlayıcısı
+  servolar_baslat();          // I2C + PCA9685; bulunamazsa servo komutları hata döner, arm reddedilir
   imu_baslat();               // aynı I2C hattı (Wire servolar_baslat'ta açıldı); IMU yoksa yaw null
-  seri_baslat();              // {"k":"hazir",...} gönderir
+  seri_baslat();              // {"k":"hazir",...,"guc":"birakik"} gönderir
   watchdog_baslat();
   uint32_t simdi = millis();
   son_servo_ms = son_motor_ms = son_durum_ms = son_odo_ms = son_egim_ms = simdi;
@@ -92,8 +118,9 @@ void setup() {
 void loop() {
   const uint32_t simdi = millis();
 
+  guc_guncelle(simdi);        // önce güç: acil stop / bara / arıza bu turda görülsün, arm sırası yürüsün
   seri_isle(simdi);           // gelen komutlar (beklemez)
-  watchdog_kontrol(simdi);    // 500 ms "sur" gelmediyse motorları durdur
+  watchdog_kontrol(simdi);    // 500 ms "sur" gelmediyse motorları ANINDA durdur (K1'e dokunmaz)
 
   if (simdi - son_egim_ms >= EGIM_ARALIK_MS) {
     son_egim_ms = simdi;
@@ -125,7 +152,7 @@ void loop() {
 
 #if ODO_YAYINI
   // Odometri: sabit aralıkla gönder (Pi ölü hesap için zaman damgası "ms"yi kullanır).
-  // Yalnız gönderir; komut bekçisini beslemez, motorları etkilemez.
+  // Yalnız gönderir; komut bekçisini ve sessizlik sayacını beslemez, motorları etkilemez.
   if (simdi - son_odo_ms >= (uint32_t)ODO_ARALIK_MS) {
     son_odo_ms += ODO_ARALIK_MS;
     if (simdi - son_odo_ms >= (uint32_t)ODO_ARALIK_MS) son_odo_ms = simdi;   // geride kaldıysa yakala

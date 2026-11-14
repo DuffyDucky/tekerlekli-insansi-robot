@@ -13,6 +13,9 @@ bool servolar_baslat();
 // PCA9685 açılışta bulundu mu? (bulunamadıysa servo komutları hata döner)
 bool servolar_hazir();
 
+// PCA9685 ŞU AN I2C'de cevap veriyor mu? (guc.cpp: arm ön koşulu ve devredeyken 100 ms yoklama)
+bool servolar_yokla();
+
 // Kanal sayısı ve sıra numarasıyla bilgi (sıra = jest_verisi.h'deki SERVO_TABLOSU sırası).
 uint8_t servo_sayisi();
 const char* servo_adi(uint8_t sira);
