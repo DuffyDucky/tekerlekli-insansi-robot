@@ -31,7 +31,7 @@
   "tarihce": "eski değerler (sınanmaz); sınanan metin alanlarında (ad, kesit_not, not, sonlandırma, damar ara / not) alanlarla tutmayan sayı olmaz"
  },
  "renk_kurali": {
-  "ilke": "İletken rengi kutbu gösterir: + kırmızı, − / GND siyah (listedeki 12 / 16 / 18 AWG silikon kablolar yalnız kırmızı ve siyah: maliyet.json 12, 16, 18 AWG satırları). Devre türü iki uçta ~2 cm renkli makaronla gösterilir (listedeki 328 parça renkli makaron seti; setteki renkler doğrulanmadı, eksik renk olursa uç etiketi) ve rehber çiziminde aynı renk kullanılır. Çizim renkleri rehberin bugünkü kablo paletinden (tasarim/freecad/rehber/rehber_veri.py kablo_rengi), anahtar kelime yerine devre türüne bağlanır. Belgelerde yazılı bir kablo rengi bulunmadı; korunacak renk yok.",
+  "ilke": "İletken rengi kutbu gösterir: + kırmızı, − / GND siyah (listedeki 12 / 16 / 18 AWG silikon kablolar yalnız kırmızı ve siyah: maliyet.json 12, 16, 18 AWG satırları). Devre türü iki uçta ~2 cm renkli makaronla gösterilir (listedeki 328 parça renkli makaron seti; setteki renkler doğrulanmadı, eksik renk olursa uç etiketi) ve rehber çiziminde aynı renk kullanılır. Çizim renkleri rehberin eski kablo paletinden (anahtar kelimeyle renk veren kablo_rengi, P10.7b1'de kaldırıldı) alındı; rehber çizimi bu sınıflara kablo kimliği üzerinden bağlanır (tasarim/freecad/rehber/rehber_kablo.py). Belgelerde yazılı bir kablo rengi bulunmadı; korunacak renk yok.",
   "siniflar": {
    "kirmizi": {
     "devre": "12 V doğrudan (akü, ana hat, kutu dalları F3 / F4 / F6, şarj)",
@@ -1742,7 +1742,8 @@
    ],
    "eksik": [],
    "teyit": [
-    "motor gelince kablo kesiti okunur ve tabloya yazılır; 18 AWG'den inceyse orkestratöre; uzatma gerekirse 12 AWG (O-16)"
+    "motor gelince kablo kesiti okunur ve tabloya yazılır; 18 AWG'den inceyse orkestratöre; uzatma gerekirse 12 AWG (O-16)",
+    "klemens: BTS7960 sol motor çıkış klemensinin (M+ / M−) kesit aralığı ve aldığı iletken türü satıcı sayfasında yok (uç türü bts-guc); motorun kendi kablosunun ucu teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -1841,7 +1842,8 @@
    ],
    "eksik": [],
    "teyit": [
-    "motor gelince kablo kesiti okunur ve tabloya yazılır; 18 AWG'den inceyse orkestratöre; uzatma gerekirse 12 AWG (O-16)"
+    "motor gelince kablo kesiti okunur ve tabloya yazılır; 18 AWG'den inceyse orkestratöre; uzatma gerekirse 12 AWG (O-16)",
+    "klemens: BTS7960 sol motor çıkış klemensinin (M+ / M−) kesit aralığı ve aldığı iletken türü satıcı sayfasında yok (uç türü bts-guc); motorun kendi kablosunun ucu teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -1940,7 +1942,8 @@
    ],
    "eksik": [],
    "teyit": [
-    "motor gelince kablo kesiti okunur ve tabloya yazılır; 18 AWG'den inceyse orkestratöre; uzatma gerekirse 12 AWG (O-16)"
+    "motor gelince kablo kesiti okunur ve tabloya yazılır; 18 AWG'den inceyse orkestratöre; uzatma gerekirse 12 AWG (O-16)",
+    "klemens: BTS7960 sağ motor çıkış klemensinin (M+ / M−) kesit aralığı ve aldığı iletken türü satıcı sayfasında yok (uç türü bts-guc); motorun kendi kablosunun ucu teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -2039,7 +2042,8 @@
    ],
    "eksik": [],
    "teyit": [
-    "motor gelince kablo kesiti okunur ve tabloya yazılır; 18 AWG'den inceyse orkestratöre; uzatma gerekirse 12 AWG (O-16)"
+    "motor gelince kablo kesiti okunur ve tabloya yazılır; 18 AWG'den inceyse orkestratöre; uzatma gerekirse 12 AWG (O-16)",
+    "klemens: BTS7960 sağ motor çıkış klemensinin (M+ / M−) kesit aralığı ve aldığı iletken türü satıcı sayfasında yok (uç türü bts-guc); motorun kendi kablosunun ucu teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -2143,7 +2147,8 @@
    ],
    "eksik": [],
    "teyit": [
-    "güç barası ürünü seçilmedi (fiyat bekliyor): saplama ölçüsü ve pabuç deliği teslimde"
+    "güç barası ürünü seçilmedi (fiyat bekliyor): saplama ölçüsü ve pabuç deliği teslimde",
+    "klemens: XL4016 A giriş klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 16 AWG ince telli uç teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -2249,7 +2254,8 @@
    ],
    "eksik": [],
    "teyit": [
-    "güç barası ürünü seçilmedi (fiyat bekliyor): saplama ölçüsü ve pabuç deliği teslimde"
+    "güç barası ürünü seçilmedi (fiyat bekliyor): saplama ölçüsü ve pabuç deliği teslimde",
+    "klemens: XL4016 B giriş klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 16 AWG ince telli uç teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -2350,7 +2356,8 @@
    ],
    "eksik": [],
    "teyit": [
-    "güç barası ürünü seçilmedi (fiyat bekliyor): saplama ölçüsü ve pabuç deliği teslimde"
+    "güç barası ürünü seçilmedi (fiyat bekliyor): saplama ölçüsü ve pabuç deliği teslimde",
+    "klemens: XL4016 C giriş klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 16 AWG ince telli uç teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -2451,8 +2458,10 @@
     }
    ],
    "eksik": [],
-   "teyit": [],
-   "durum": "kesin",
+   "teyit": [
+    "klemens: XL4016 A çıkış klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 16 AWG ince telli uç teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)"
+   ],
+   "durum": "kablajda teyit edilecek",
    "kaynak": [
     "planlama/adim3/elektrik.md:224-225",
     "planlama/adim3/elektrik.md:328"
@@ -2550,8 +2559,10 @@
     }
    ],
    "eksik": [],
-   "teyit": [],
-   "durum": "kesin",
+   "teyit": [
+    "klemens: XL4016 B çıkış klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 16 AWG ince telli uç teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)"
+   ],
+   "durum": "kablajda teyit edilecek",
    "kaynak": [
     "planlama/adim3/elektrik.md:224-225",
     "planlama/adim3/elektrik.md:329"
@@ -2649,8 +2660,10 @@
     }
    ],
    "eksik": [],
-   "teyit": [],
-   "durum": "kesin",
+   "teyit": [
+    "klemens: XL4016 C çıkış klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 16 AWG ince telli uç teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)"
+   ],
+   "durum": "kablajda teyit edilecek",
    "kaynak": [
     "planlama/adim3/elektrik.md:330",
     "planlama/adim3/elektrik.md:129"
@@ -2725,7 +2738,7 @@
     "makaron": "kırmızı",
     "cizim": "#d63031"
    },
-   "sonlandirma": "boyundan fişsiz geçer, uç kontakları / pabuçları geçirdikten sonra takılır (KOK §4 sıra 5); kafa ucu: kafa giriş kartı (küçük pertinaks parçası, P6KE18A üstünde): üç adet 2 pin 5,08 mm vidalı klemens, + uçları ve − uçları kart üstünde lehimle köprülü; ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz)",
+   "sonlandirma": "boyundan fişsiz geçer, uç kontakları / pabuçları geçirdikten sonra takılır (KOK §4 sıra 5); kafa ucu: kafa giriş kartı (küçük pertinaks parçası, P6KE18A üstünde): üç adet 2 pin 5,08 mm vidalı klemens, + uçları ve − uçları kart üstünde ≥ 18 AWG tel köprüyle (lehim; delikli plaket pedi F3 5 A akım yolu değil, dördüncü bakış §2-7); ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz)",
    "koruma": "F3",
    "acil_stopta_enerjili": true,
    "boy": null,
@@ -2749,7 +2762,8 @@
    ],
    "eksik": [],
    "teyit": [
-    "KT4: boyun içi geçiş ve pan ±90 / tilt ±13'te büküm"
+    "KT4: boyun içi geçiş ve pan ±90 / tilt ±13'te büküm",
+    "klemens: sigorta kutusunun F3 çıkış ucunun tipi ve kesit aralığı ürün sayfasında yok (uç türü sigorta-kutusu); 18 AWG ince telli uç teslimde denenir (KT3) (P10.7b, dördüncü bakış §2-5)"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -2850,8 +2864,10 @@
     }
    ],
    "eksik": [],
-   "teyit": [],
-   "durum": "kesin",
+   "teyit": [
+    "klemens: sigorta kutusunun F4 çıkış ucu (uç türü sigorta-kutusu) ve XL4016 çevre giriş klemensinin (uç türü modul-vidali) kesit aralığı ve aldığı iletken türü belgede yok; 18 AWG ince telli uçlar teslimde denenir (KT3) (P10.7b, dördüncü bakış §2-5)"
+   ],
+   "durum": "kablajda teyit edilecek",
    "kaynak": [
     "planlama/adim3/elektrik.md:338",
     "planlama/adim3/elektrik.md:368"
@@ -2946,8 +2962,10 @@
     }
    ],
    "eksik": [],
-   "teyit": [],
-   "durum": "kesin",
+   "teyit": [
+    "klemens: XL4016 çevre çıkış klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 16 AWG ince telli uç teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)"
+   ],
+   "durum": "kablajda teyit edilecek",
    "kaynak": [
     "planlama/adim3/elektrik.md:338",
     "planlama/adim3/elektrik.md:283",
@@ -3045,7 +3063,9 @@
    "eksik": [
     "regülatörün panel yeri açık (K52, planlama/d158/karar-kuyrugu.md): uç yeri ve boy bu karara bağlı"
    ],
-   "teyit": [],
+   "teyit": [
+    "klemens: sigorta kutusunun F6 çıkış ucu (uç türü sigorta-kutusu) ve göğüs regülatörü giriş klemensinin (uç türü modul-vidali) kesit aralığı belgede yok; 18 AWG ince telli uçlar teslimde denenir (P10.7b, dördüncü bakış §2-5)"
+   ],
    "durum": "karara bağlı",
    "kaynak": [
     "planlama/adim3/elektrik.md:62",
@@ -3151,7 +3171,8 @@
    ],
    "eksik": [],
    "teyit": [
-    "KT3: regülatör 12 V'a ayarlı, ilk açılışta F6 atmıyor; jak ölçüsü"
+    "KT3: regülatör 12 V'a ayarlı, ilk açılışta F6 atmıyor; jak ölçüsü",
+    "klemens: göğüs regülatörü çıkış klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 18 AWG ince telli uç teslimde denenir (P10.7b, dördüncü bakış §2-5)"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -3242,8 +3263,10 @@
     }
    ],
    "eksik": [],
-   "teyit": [],
-   "durum": "kesin",
+   "teyit": [
+    "klemens: PC817 modülü giriş klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 22 AWG ince telli uç (0,33 mm²) teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)"
+   ],
+   "durum": "kablajda teyit edilecek",
    "kaynak": [
     "planlama/adim3/elektrik.md:236",
     "planlama/adim3/elektrik.md:331",
@@ -3333,8 +3356,10 @@
     }
    ],
    "eksik": [],
-   "teyit": [],
-   "durum": "kesin",
+   "teyit": [
+    "klemens: sigorta kutusunun F5 çıkış ucu (uç türü sigorta-kutusu) ve acil stop mantarı kontak vidasının (uç türü modul-vidali) kesit aralığı belgede yok; 18 AWG ince telli uçlar teslimde denenir (KT3) (P10.7b, dördüncü bakış §2-5)"
+   ],
+   "durum": "kablajda teyit edilecek",
    "kaynak": [
     "planlama/adim3/elektrik.md:339",
     "planlama/adim3/elektrik.md:249",
@@ -3414,7 +3439,7 @@
     "makaron": "yeşil",
     "cizim": "#2e9e4f"
    },
-   "sonlandirma": "mantar vidası → Ö4 için iki uçlu yer (2 pin 5,08 klemens, köprülü) → acil stop düğüm kartı (güç panelinde küçük pertinaks parçası): iki adet 2 pin 5,08 mm vidalı klemens, dört ucu kart üstünde lehimle köprülü; ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz) → röle soketi kuyruğu (O-6 a / c)",
+   "sonlandirma": "mantar vidası → Ö4 için iki uçlu yer (2 pin 5,08 klemens, köprülü) → acil stop düğüm kartı (güç panelinde küçük pertinaks parçası): iki adet 2 pin 5,08 mm vidalı klemens, dört ucu kart üstünde ≥ 18 AWG tel köprüyle (lehim; kafa giriş kartıyla aynı yöntem); ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz) → röle soketi kuyruğu (O-6 a / c)",
    "koruma": "F5",
    "acil_stopta_enerjili": false,
    "boy": null,
@@ -3432,8 +3457,10 @@
     }
    ],
    "eksik": [],
-   "teyit": [],
-   "durum": "kesin",
+   "teyit": [
+    "klemens: acil stop mantarı kontak vidasının kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 18 AWG ince telli uç teslimde denenir (P10.7b, dördüncü bakış §2-5)"
+   ],
+   "durum": "kablajda teyit edilecek",
    "kaynak": [
     "planlama/adim3/elektrik.md:249",
     "planlama/adim3/elektrik.md:443",
@@ -3592,7 +3619,7 @@
     "makaron": "yeşil",
     "cizim": "#2e9e4f"
    },
-   "sonlandirma": "düğüm ucu: acil stop düğüm kartı (güç panelinde küçük pertinaks parçası): iki adet 2 pin 5,08 mm vidalı klemens, dört ucu kart üstünde lehimle köprülü; ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz); ön şarj kartı ucu K2 bobin klemensi (2 pin 5,08 mm)",
+   "sonlandirma": "düğüm ucu: acil stop düğüm kartı (güç panelinde küçük pertinaks parçası): iki adet 2 pin 5,08 mm vidalı klemens, dört ucu kart üstünde ≥ 18 AWG tel köprüyle (lehim; kafa giriş kartıyla aynı yöntem); ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz); ön şarj kartı ucu K2 bobin klemensi (2 pin 5,08 mm)",
    "koruma": "F5",
    "acil_stopta_enerjili": false,
    "boy": null,
@@ -3605,8 +3632,10 @@
     }
    ],
    "eksik": [],
-   "teyit": [],
-   "durum": "kesin",
+   "teyit": [
+    "klemens: 2 pin 5,08 mm vidalı klemensin (acil stop düğüm kartı ve ön şarj kartının K2 bobin klemensi) kesit aralığı satıcı sayfasında yok (klemens_turleri.klemens-508); 18 AWG ince telli uç teslimde takılıp çekilerek denenir (öbür klemens-508 uçlularla aynı ölçüt; F10h-kontrol §2-14)"
+   ],
+   "durum": "kablajda teyit edilecek",
    "kaynak": [
     "planlama/adim3/elektrik.md:443-444",
     "planlama/adim3/elektrik.md:369"
@@ -3785,7 +3814,8 @@
    ],
    "eksik": [],
    "teyit": [
-    "klemens: 5,08 mm klemensin kesit aralığı belgesiz (satıcı sayfasında yok); 22 AWG uç kartta lehim + makaron; teslimde aralık okunursa yeniden bakılır"
+    "klemens: 5,08 mm klemensin kesit aralığı belgesiz (satıcı sayfasında yok); 22 AWG uç kartta lehim + makaron; teslimde aralık okunursa yeniden bakılır",
+    "klemens: PC817 modülü giriş klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 22 AWG ince telli uç teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -6671,7 +6701,7 @@
     "makaron": "kırmızı",
     "cizim": "#d63031"
    },
-   "sonlandirma": "kafa giriş ucu: kafa giriş kartı (küçük pertinaks parçası, P6KE18A üstünde): üç adet 2 pin 5,08 mm vidalı klemens, + uçları ve − uçları kart üstünde lehimle köprülü; ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz); D24V50F5 ucu lehim",
+   "sonlandirma": "kafa giriş ucu: kafa giriş kartı (küçük pertinaks parçası, P6KE18A üstünde): üç adet 2 pin 5,08 mm vidalı klemens, + uçları ve − uçları kart üstünde ≥ 18 AWG tel köprüyle (lehim; delikli plaket pedi F3 5 A akım yolu değil, dördüncü bakış §2-7); ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz); D24V50F5 ucu lehim",
    "koruma": "F3",
    "acil_stopta_enerjili": true,
    "boy": null,
@@ -6684,8 +6714,10 @@
     }
    ],
    "eksik": [],
-   "teyit": [],
-   "durum": "kesin",
+   "teyit": [
+    "klemens: kafa giriş kartının 2 pin 5,08 mm vidalı klemensinin kesit aralığı satıcı sayfasında yok (klemens_turleri.klemens-508); 18 AWG ince telli uç teslimde takılıp çekilerek denenir (öbür klemens-508 uçlularla aynı ölçüt; D24V50F5 ucunun lehim olması bunu değiştirmez; F10h-kontrol §2-14)"
+   ],
+   "durum": "kablajda teyit edilecek",
    "kaynak": [
     "planlama/adim3/elektrik.md:46-47",
     "planlama/adim3/elektrik.md:333"
@@ -6760,7 +6792,7 @@
     "makaron": "kırmızı",
     "cizim": "#d63031"
    },
-   "sonlandirma": "kafa giriş ucu: kafa giriş kartı (küçük pertinaks parçası, P6KE18A üstünde): üç adet 2 pin 5,08 mm vidalı klemens, + uçları ve − uçları kart üstünde lehimle köprülü; ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz); SY8205 ucu modülün vidalı klemensi",
+   "sonlandirma": "kafa giriş ucu: kafa giriş kartı (küçük pertinaks parçası, P6KE18A üstünde): üç adet 2 pin 5,08 mm vidalı klemens, + uçları ve − uçları kart üstünde ≥ 18 AWG tel köprüyle (lehim; delikli plaket pedi F3 5 A akım yolu değil, dördüncü bakış §2-7); ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz); SY8205 ucu modülün vidalı klemensi",
    "koruma": "F3",
    "acil_stopta_enerjili": true,
    "boy": null,
@@ -6773,8 +6805,10 @@
     }
    ],
    "eksik": [],
-   "teyit": [],
-   "durum": "kesin",
+   "teyit": [
+    "klemens: SY8205 giriş klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 18 AWG ince telli uç teslimde denenir (P10.7b, dördüncü bakış §2-5)"
+   ],
+   "durum": "kablajda teyit edilecek",
    "kaynak": [
     "planlama/adim3/elektrik.md:46",
     "planlama/adim3/elektrik.md:49",
@@ -6969,7 +7003,8 @@
    "eksik": [],
    "teyit": [
     "Touch VBUS ile Power arası köprü ölçülecek (EL:56)",
-    "kesit: teslimde hazır micro USB kablonun üstündeki kesit yazısı okunur; 24 AWG'den inceyse ya da yazı yoksa 18 AWG + micro B fişle yeniden yapılır (O-21, kafa-5v-donusturucu-arkasi şartı)"
+    "kesit: teslimde hazır micro USB kablonun üstündeki kesit yazısı okunur; 24 AWG'den inceyse ya da yazı yoksa 18 AWG + micro B fişle yeniden yapılır (O-21, kafa-5v-donusturucu-arkasi şartı)",
+    "klemens: SY8205 çıkış klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); hazır micro USB kablosunun kesik ucu teslimde denenir (P10.7b, dördüncü bakış §2-5)"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -10385,7 +10420,7 @@
    {
     "parca": "Kafa giriş klemensi",
     "adet": 3,
-    "not": "kafa giriş kartı: G17, K01, K02 (+ / − çiftleri), köprülü"
+    "not": "kafa giriş kartı: G17, K01, K02 (+ / − çiftleri), ≥ 18 AWG tel köprülü"
    },
    {
     "parca": "Acil stop düğümü (mantar NC çıkışı)",

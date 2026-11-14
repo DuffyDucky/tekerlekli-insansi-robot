@@ -39,7 +39,7 @@ tilt payı ≥ 3,0 (3,64); pan payı ≥ 2,0 (2,21); mikrofon-hoparlör ≥ 400 
 
 | Paket | Ajan | Yazdığı alan |
 |---|---|---|
-| — | — | (koşan paket yok; P10.5 13.11 C ile kapandı) |
+| — | — | (koşan paket yok; P10.7b1 14.11 C ile kapandı) |
 
 - **Tasarım sırası:** her adım öncekini bozmamalı; tam çakışma taraması yalnız P6'da, bir kez.
 - **Karar gereken yerde durma:** Ahmet'in kararını isteyen madde `planlama/d158/karar-kuyrugu.md`'ye yazılır
@@ -161,7 +161,7 @@ görünümde olsun; seçilen parça farklı renkte görünsün; montaj sırası 
 | P10.5 | Kol içi kablo yolu rehbere (F10f; tasarımı hazır: `KOL_KABLO`, `dirsek/kablo_yolu.py`) | Kol adımlarında yol görünür, uçları doğru parçada | P10.4b sonrası | ✅ 13.11 (commit "Lale P10.5"; ilk kontrol ve ikinci bakış DÜZELTME GEREKLİ → 2 düzeltme turu → üçüncü bakış GEÇER; 28 şema, alt adım 71, uçuş çarpışan 0 / istisna 20 / ölçüm kaydı 1, kablo kareleri zor 4 / 14, PDF 75 sayfa; K56, K57) |
 | P10.5b | K56 + K57 montaj sırası kararları rehberde (F10g; Ahmet 13.11 ≈ 23:28 "önerdiğin gibi olsun"): 625ZZ tezgâhta kol çatalına preslenir, iç bilezik + mafsal pulu + M5×12 39 → 40 (çataldan sonra); dirsek horn merkez vidası 43 → 44 (çataldan sonra); G2 / G3 / H0b / H0c metni, dirsek montaj sırası | 40.1 ve 44.1 dar istisnaları kalkar, uçuş çarpışan 0 / `istisna_bos` 0, istisna < 20; 39 ↔ 40.1 metni tek sıra (F10f Y1); parça / BOM aynı; zincir çıkış 0 | P10.5 sonrası | ✅ 14.11 (commit "Lale P10.5b"; bağımsız kontrol `F10g-kontrol.md` GEÇER; 8 parça taşındı, uçuş istisnası 20 → 16, çarpışan 0, alt adım 71, PDF 75 sayfa, perdelenme istisnası 115 → 117; K56, K57 kapandı) |
 | P10.6 | Pin haritası sorusu panoya (Efe): `kod/esp32/include/pinler.h` (main) × `elektrik.md` pin planı | Soru panoda; karar Ahmet + Efe | Hemen (dosya alanı yok) | ✅ 14.11 karar verildi (K58; orkestratör, Ahmet'in 13.11 yetkilendirmesiyle): `planlama/adim3/pin-haritasi.md` sürüm 3, `elektrik.md` pin planı; üç bağımsız kontrol, üçüncüsü GEÇER (`planlama/d158/pin-karari-kontrol-3.md`); günlük `planlama/d158/pin-karari-gunluk.md`. Pano #8 bilgi mesajı hazır, Ahmet gönderecek |
-| P10.7 | Elektrik içeriği + kablo tablosu (62 kablo; tek kaynak), K1 / K2 demet alt adımları, taban yollarının yeniden tasarımı | Pin kararı + K10 / K11 / K14 | P10.6 cevabı sonrası | 🔄 **P10.7a ✅ 14.11** (commit "Lale P10.7a"; dört bağımsız bakış: `planlama/d158/P107a-kontrol.md`, `-2.md`, `-3.md` DÜZELTME GEREKLİ → düzeltme turu 1, 2 ve ek tur (K59) → `-4.md` **GEÇER**): kablo tablosu tek kaynak `planlama/adim3/kablolar.json` (74 kablo, 62 ile eşlendi; kesin 31, teyit 42, karara bağlı 1; kayıtlı kesit istisnası 5 ad / 25 kablo; kafa girişi ve acil stop düğümü vidalı klemensli kart), görünüm `kablolar.md`, denetim `kablolar_denetim.py` (19 sınama; 121 / 121 bozma yakalandı), 16.11 sipariş listesi `maliyet.json` (genel 120.852,43 TL, koşullularla 126.423,90; fiyatsız 4); orkestratör kararları O-1 … O-22; günlük `planlama/d158/kablo-tablosu-gunluk.md`. Engel kalktı: K1 / K10 / K11 / K14 ✅ 14.11, pin kararı ✅ K58. **Kalan P10.7b:** rehberde 3B kablo yolları, K1 / K2 demet alt adımları, boyların ölçümü, düğüm tutucusu (bara) ve boyun tüneli deneme parçası, rehber kaynağındaki eski pin / "şarj 10 A" / "göğüs mini 2 A" metinleri; dördüncü bakışın kayıtlı açık işleri (kuyruğun "Karar değil, iş" bölümü); K52, K60, K61; Efe'nin iki cevabı (reset DTR / RTS, ReSpeaker 16 kHz) boyun demeti kapanmadan; T1–T8 + T2a kart gelince |
+| P10.7 | Elektrik içeriği + kablo tablosu (74 kablo; 62 eski dökümün sayısıydı; tek kaynak), K1 / K2 demet alt adımları, taban yollarının yeniden tasarımı | Pin kararı + K10 / K11 / K14 | P10.6 cevabı sonrası | 🔄 **P10.7a ✅ 14.11** (commit "Lale P10.7a"; dört bağımsız bakış: `planlama/d158/P107a-kontrol.md`, `-2.md`, `-3.md` DÜZELTME GEREKLİ → düzeltme turu 1, 2 ve ek tur (K59) → `-4.md` **GEÇER**): kablo tablosu tek kaynak `planlama/adim3/kablolar.json` (74 kablo, 62 ile eşlendi; kesin 31, teyit 42, karara bağlı 1; kayıtlı kesit istisnası 5 ad / 25 kablo; kafa girişi ve acil stop düğümü vidalı klemensli kart), görünüm `kablolar.md`, denetim `kablolar_denetim.py` (19 sınama; 121 / 121 bozma yakalandı), 16.11 sipariş listesi `maliyet.json` (genel 120.852,43 TL, koşullularla 126.423,90; fiyatsız 4); orkestratör kararları O-1 … O-22; günlük `planlama/d158/kablo-tablosu-gunluk.md`. Engel kalktı: K1 / K10 / K11 / K14 ✅ 14.11, pin kararı ✅ K58. **Kalan P10.7b:** rehberde 3B kablo yolları, K1 / K2 demet alt adımları, boyların ölçümü, düğüm tutucusu (bara) ve boyun tüneli deneme parçası, rehber kaynağındaki eski pin / "şarj 10 A" / "göğüs mini 2 A" metinleri; dördüncü bakışın kayıtlı açık işleri (kuyruğun "Karar değil, iş" bölümü); K52, K60, K61; Efe'nin iki cevabı (reset DTR / RTS, ReSpeaker 16 kHz) boyun demeti kapanmadan; T1–T8 + T2a kart gelince. **P10.7b1 ✅ 14.11, kapandı** (bu commit, "Lale P10.7b1"; kapanış `planlama/d158/F10h-gunluk.md` § 16; A adımı başta bellek kısıtı: FreeCAD, üretim ve zincir koşmadı; günlük `planlama/d158/F10h-gunluk.md`): dördüncü bakışın dört açık işi kapandı; rehber metni ve çizilen kablolar `kablolar.json`'a bağlı. Bağımsız kontrol `planlama/d158/F10h-kontrol.md` **DÜZELTME GEREKLİ** (Ü1–Ü3 + 15 açık iş; eski veride 54 elektrik iddiası) → **düzeltme turu 1 ✅ kaynak düzeyinde 14.11** (F10h § 11): kritik değerler tablodan yer tutucuyla, CAD ad / kod çeviri tablosu, Ö4 köprüsü, geometrik eşleme sınaması; durum kesin **20** / teyit **53** / karara bağlı **1** (ek kararla K01 de teyite), çizilen **51 / 74**, bozma: kablo tablosu 139, elektrik 42 / 42, eşleme 17 / 17, kontrolün kaçan 20'si 28 / 28 biçimde. İkinci bağımsız kontrol `planlama/d158/F10h-kontrol-2.md` **KAYNAK GEÇER** (20 açık iş) → **açık işler turu ✅ kaynak düzeyinde 14.11** (F10h § 12): onaylı kritik metin kaydı `tasarim/freecad/rehber/rehber_kritik_onay.json` (528 girdi; yenileme yalnız `--kritik-onay-yenile`), anahtar ↔ bağlam (184 yer tutucu, alarm 0), grup yer tutucu, dar yük kuralı, geometride dal / bölge / nominal konum, ΔE00 ≥ 15 (8 ton değişti, en düşük karşıtlık 3,19); bozma: kablo tablosu **145**, rehber denetimi **65 / 65**, eşleme **27 / 27**, ikinci kontrolün B bozmaları 47 / 47 (onaysız 44 / 47), G 18 / 18 (17 geometri + 1 onay), K 8 / 8. Üçüncü bakış `planlama/d158/F10h-kontrol-3.md` **DÜZELTME GEREKLİ** (anahtarlı baranın 3 köprüsü rehberde yoktu) → **düzeltme turu 2 ✅ kaynak düzeyinde 14.11** (F10h § 13): K1 madde 2 iki bara ayrı, madde 8 köprü listesi iki barayla, kontrol maddesi (köprüler + süreklilik); kayıt → rehber tamlık sınaması (65 öğe, eksik 0, muaf 21; düzeltmeden önce 2 eksik yakaladı); onay kaydı metnin bütün cümleleri (1130 girdi: metin 907, liste 133, kablo 90; tam metinli fark), bozuk kayıt / B22 düzgün ileti, `rehber_uret.py` ön sınaması (koşulmadı); bozma: rehber denetimi **76 / 76**, kablo tablosu 145, eşleme 27 / 27, üçüncü bakışın N bozmaları 9 / 9. Dördüncü bakış `planlama/d158/F10h-kontrol-4.md` **KAYNAK GEÇER** (G07 ve SV3 / dağıtım kartı C talimat boşluğu → K63) → **üretim + zincir** (F10h § 14: üretim çıkış 2, S1–S3 araç uyumsuzluğu) → **üretim uyum düzeltmesi** (F10h § 15; kontrol `F10h-kontrol-5.md` önce DÜZELTME GEREKLİ, yeniden bakışta **UYUM DÜZELTMESİ GEÇER**) → yeniden üretim çıkış 0, zincir 2–10 çıkış 0: parça **1192**, şema **49**, alt adım **71**, PDF **77** sayfa, çizilen **51** / çizilmeyen **23**, perdelenme istisnası **117**, bozma: kablo denetimi 145, kaynak denetimi 76 / 76, `rehber_kablo` kaynak 27 / 27, veri **35 / 35**. Tur sayısı kaydı K62 (Ahmet'in bilgisine / onayına); açık işler kuyruğun "Karar değil, iş" bölümünde (P10.7b1). **Sıradaki: P10.7b2**, ilk işi K63 (G07 akü ölçüm teli + 100 kΩ; SV3 + dağıtım kartı C; montajdan önce); sonra 3B kablo yolları (çizilmeyen 23), K1 / K2 demet alt adımları, taban yollarının yeniden tasarımı, boylar, düğüm tutucusu, boyun tüneli deneme parçası, G19 / G20 / G24 / G26 (yalnız onayla); K52, K60, K61; Efe'nin iki cevabı |
 | P10.8 | Ayrıntılı satın alınan parça modelleri, fotoğraf kartı | Parçalar gelince | — | ⏳ |
 | P10.9 | Faz sonu: `sonuc-rapor.html` F10 ile yenilenir (`F9c-dogrula` faz kalıbı F10'u tanımıyor; açık karar 47 ↔ 48, toplam 52 ↔ 53 uyuşmazlığı K53'ten), Ahmet'e tek tablo özet | `F9c-dogrula` 0 | En son | ⏳ |
 
@@ -181,6 +181,73 @@ görünümde olsun; seçilen parça farklı renkte görünsün; montaj sırası 
 
 ## 5. Günlük
 
+- 2026-11-14 15:55 (saat okundu) **P10.7b1 ✅ (rehberin elektrik tarafı tek kablo kaynağına bağlandı), C: kayıt + commit.** Bağımsız
+  bakışlar: `F10h-kontrol.md` DÜZELTME GEREKLİ → `-2` KAYNAK GEÇER → `-3` DÜZELTME GEREKLİ → `-4` KAYNAK GEÇER → `-5` (üretim uyum
+  düzeltmesi) önce DÜZELTME GEREKLİ, yeniden bakışta UYUM DÜZELTMESİ GEÇER. Son sayılar (F10h § 14–§ 16): parça 1192, şema 49, alt adım
+  71, PDF 77 sayfa, çizilen 51 / çizilmeyen 23, perdelenme istisnası 117; bozma: kablo denetimi 145, kaynak denetimi 76 / 76,
+  `rehber_kablo` kaynak 27 / 27, veri 35 / 35. Zamanlama notu (kontrol-5 § 8): zincirin `--veri` adımı S3-1 düzeltmesinden önceki kodla
+  koştu; yeni kod yeni veride ayrı koşularda sınandı. Commit öncesi FreeCAD'siz doğrulama (15:47; `kablolar_uret.py --kontrol`,
+  `rehber_denetim.py --kaynak`, `rehber_denetim.py`, `rehber_kablo.py --veri`) hepsi çıkış 0. Gizlilik taraması: günlükteki dört geçici
+  klasör anılışı sadeleşti, gerisi yanlış alarm. **Karar kuyruğu:** K62 (tur sayısı kaydı, Ahmet'in bilgisine / onayına), K63 (G07 ve
+  SV3 / dağıtım kartı C talimat boşluğu, montajdan önce, P10.7b2'nin ilk işi); öbür açık işler "Karar değil, iş" bölümünde (P10.7b1);
+  açık **50 / 63**. README rehber satırı 75 → 77 sayfa. Paket dışı 14 dosya commit'e girmedi. Sıradaki: P10.7b2. Ayrıntı
+  `planlama/d158/F10h-gunluk.md` § 16.
+- 2026-11-14 15:40 (saat okundu) **P10.7b1 üretim uyum düzeltmesi + yeniden üretim (ajan U): ÜRETİM VE ZİNCİR GEÇTİ.** S1 (panel
+  tablo metinleri ASCII sınamasına; izinli listeye 13 kelime + VOUT, SDA), S2 (31.3 `gizli_ok` anahtarı ad çevirisine uyduruldu; bilgi
+  satırı), S3 (F10e `renk_sahne` kablo parçasında tema tonu). Tam `rehber_uret.py` 13:46–14:25 çıkış 0 (ASCII 13 → 0, gerekçesiz
+  1 → 0, istisna 117, PDF 77, parça 1192, şema 49); zincir 2–10 14:54–15:39 hepsi 0 (F10e `renk_sahne` 11 → 0). Kontrol-5 S3-1:
+  `rehber_kablo.veri_denetle` parçalarda `rt`'yi tablodan denetliyor, veri bozması 32 → 35 / 35; onay farkı 0. En düşük bellek
+  1,68 GB. Kilit boş, `__pycache__` silindi. Ayrıntı `d158/F10h-gunluk.md` § 15. Commit yok.
+- 2026-11-14 13:35 (saat ölçüldü) **P10.7b1 üretim + zincir (ajan U): KALDI (adım 1 ve 5), çıktılar üretildi.** Ön sınama 1–5
+  geçti; `rehber_uret.py` 12:03–12:41, on_sinama geçti, parça 1192, şema 49, alt adım 71, kablo eşleme 51 / 23 GEÇTİ, elektrik 0,
+  uçuş 340 / 0 / 16, PDF 77 sayfa (E3a ve F1 metni uzadı); çıkış 2: ASCII kalıntı 13 (tablo kaynaklı panel kelimeleri,
+  `ASCII_TAMAM` eksik) ve perdelenme gerekçesiz 1 (31.3 köpük bandın `gizli_ok` anahtarı `AD_CEVIRI` sonrası tutmuyor). Zincir
+  12:42–13:24: `rehber_kablo --veri` 0 hata / 32 / 32, veri denetimi 0, F10f / F10d / F10a / F9b / çarpışma / regresyon geçti;
+  F10e `renk_sahne` 11 yanlış (sahne tema tonunu kullanıyor, ölçüt veri `renk`i bekliyor). Kaynak ve kural değişmedi, kod düzeltmesi
+  yok; üç bulgu orkestratöre. Kare bakışı iki temada 35 kare: 9 zor / yanıltıcı (basılı K1'de lejant satırı yok; 16 AWG kademesi
+  çizilmediği için 18 ↔ 16 bakılamadı). En düşük boş bellek 2,24 GB; kilit "boş". Ayrıntı `planlama/d158/F10h-gunluk.md` § 14.
+
+- 2026-11-14 11:57 (saat ölçüldü) **P10.7b1 düzeltme turu 2 (A, son tur), kaynak düzeyinde.** Üçüncü bakış `planlama/d158/F10h-kontrol-3.md`
+  DÜZELTME GEREKLİ: kayıttaki anahtarlı bara köprüleri (3 × 12 AWG kırmızı) rehberde yoktu, madde 8 "köprü yalnız şu yerlerde" diyordu.
+  Yapılan: yeni yer tutucular (`{kopru.bara}`, köprü adedi / rengi / boyu, toplam 7 köprü / 14 sarı pabuç); K1 madde 2'de iki bara
+  ayrı (anahtarlı baranın saplama yerleşimi kayıtta yok: "yerleşim serbest", dayanak `kopruler.ilke`; açık iş), madde 8 "Bu adımda
+  takılan köprüler: …" iki barayla, kontrol maddesi (köprüler + ilk / son saplama sürekliliği), bağlantı alanında 7 köprü / 14 pabuç,
+  E4 köpük bant cümlesi. Kayıt → rehber tamlık sınaması `--kaynak`'ta (65 öğe: koruyucu 12, köprü 2, saplama 13, GPIO 24, anahtar 5,
+  acil stop zinciri 9; düzeltmeden önce 2 eksik: anahtarlı bara köprüsü, yıldız köprü adedi; muaf 21 gerekçeli; kablo kimliği 68 / 74,
+  geçmeyen I01, I02, P01–P03, C01 bilgi). Onay kaydı bütün cümlelerle (1130 girdi), tam metinli fark; bozuk / boş kayıt ve B22 düzgün
+  ileti + çıkış 1; `rehber_uret.py` üretimden önce kendisi sınar (yalnız `py_compile`). Bozma: rehber denetimi 76 / 76, kablo tablosu
+  145, eşleme 27 / 27; üçüncü bakışın N01–N11 bozmaları kopyada hepsi yakalandı (onayla), B 47 / 47 (onaysız 44 / 47). FreeCAD,
+  `rehber_uret.py`, tarayıcı koşmadı. Ayrıntı `F10h-gunluk.md` § 13. Kalan: dar üçüncü bakış, üretim + zincir + kare bakışı.
+- 2026-11-14 11:25 (saat ölçüldü) **P10.7b1 açık işler turu (A), kaynak düzeyinde.** İkinci bağımsız kontrol `planlama/d158/F10h-kontrol-2.md`
+  KAYNAK GEÇER dedi, 20 açık iş (çoğu denetim deliği; kontrolün 43 bozmasından 24'ü, 18 eşleme bozmasından 6'sı, 8 kablo tablosu
+  bozmasından 5'i kaçmıştı). Yapılan (orkestratörün D2 kararları): onaylı kritik metin kaydı `tasarim/freecad/rehber/rehber_kritik_onay.json`
+  (528 girdi: metin 319, kural listesi 119, eşleme / ton tablosu 90; `--kaynak` farkı HATA sayar, yenileme yalnız `--kritik-onay-yenile`;
+  kayıt doğruluğu kanıtlamaz, sessiz değişikliği önler), bozuk yer tutucu ve anahtar ↔ bağlam kuralı (184 yer tutucu, 14 alarm metinle
+  düzeltildi → 0), grup yer tutucu, Türkçe küçük harf, birimler, dar yük kuralı (rehber ve kablo tablosu), MOSFET / WAGO / ses kartı
+  tam cümle listesi, ZORUNLU tam sözcük; geometride dal gövdesi, taban dışı bölgeler, modelsiz parçaların nominal konumu, ayırt
+  edilemeyen çift (A03 ↔ G22); E4 / K1 madde 8 / F5 / Ö4 metinleri; ΔE00 ≥ 15 (8 ton değişti, en düşük karşıtlık 3,19); K60'a köprü
+  teli notu. Bozma: kablo tablosu 145, rehber denetimi 65 / 65, eşleme 27 / 27; kontrolün B bozmaları kopyada 47 / 47 (onay kaydı
+  olmadan 44 / 47: B09, B24, B25 yalnız kayıtla), G 18 / 18, K 8 / 8. FreeCAD, `rehber_uret.py`, tarayıcı koşmadı (bellek 1,6–1,7 GB);
+  çıktılar eski. Ayrıntı `F10h-gunluk.md` § 12, üretim listesi § 9. Kalan: bu turun bağımsız kontrolü, üretim + zincir + kare bakışı.
+- 2026-11-14 10:15 (saat ölçüldü) **P10.7b1 düzeltme turu 1 (A), kaynak düzeyinde.** Bağımsız kontrol `planlama/d158/F10h-kontrol.md`
+  DÜZELTME GEREKLİ dedi (Ü1 CAD parça adları / kodları eski, Ü2 Ö4 köprüsü yazmıyor, Ü3 eşleme yanlışları; 15 açık iş; eski veride 54
+  elektrik iddiası, 09:02 girdisindeki "49" eski kaynağın sayısıdır). Yapılan: CAD ad / kod çeviri tablosu (`AD_CEVIRI`, 5 kalıp; eski
+  veride benzetimle parça bulgusu 11 → 0), K1'de Ö4 tel köprüsü + kontrol maddesi + zorunlu uyarı, eşleme düzeldi ve geometrik sınama
+  (`taban-analiz.json` ↔ uç parçaları; çizilen **51**, çizilmeyen **23**), rehber metnindeki kritik değerler 181 yer tutucuyla
+  tablodan, çıplak sayı ve cümle düzeyi yön sınaması, K04 "0,9 A" geri ve kural yük bağlamında daraltıldı, A04 teyite (durum 21 / 52 /
+  1; ek kararla K01 de: 20 / 53 / 1), tema başına kablo tonları (en düşük karşıtlık 3,47) ve kesit kademeleri. Bozma: kablo tablosu 138 (ek kararla 139), elektrik 42 / 42, eşleme 17 /
+  17, kontrolün kaçan 20'si 28 / 28 biçimde. FreeCAD, `rehber_uret.py`, tarayıcı koşmadı (bellek kısıtı; ölçülen 1,8–1,9 GB); çıktılar
+  eski. Ayrıntı `F10h-gunluk.md` § 11, üretim listesi § 9. Kalan: ikinci bağımsız bakış, üretim + zincir + kare bakışı.
+- 2026-11-14 09:02 (saat ölçüldü) **P10.7b1 A: rehberin elektrik tarafı tek kablo kaynağına bağlandı, yalnız kaynak düzeyinde.**
+  Kullanılabilir bellek 2,2 GB (2 GB kuralının sınırında): FreeCAD, `rehber_uret.py` ve doğrulama zinciri koşmadı, karelere bakılmadı;
+  rehber çıktıları (`rehber/veri`, `rehber/goruntu`, `planlama/rehber`) bilerek eski (kaynakla tutarsız, elle dokunulmadı). Dört açık
+  iş (§2-2, §2-3, §2-5, §2-7) `kablolar_denetim.py`'de, 15 yeni bozma (136 / 136); durum kesin **22** / teyit **51** / karara bağlı
+  **1** (9 kablo belgesiz uç yüzünden kesinden teyite). `rehber_metin.py`: eski kaynakta sınamanın bulduğu 49 elektrik iddiası
+  düzeltildi (şarj 10 A → 7,5 A mini, göğüs mini 2 A → F6 3 A standart, GPIO2 → GPIO19, WAGO / MOSFET / USB ses kartı çıktı, K11 b
+  dalı, E9 en az 300 ms); K52 / K60 / K61 "karar bekliyor". Yeni `rehber_kablo.py`: çizilen kablo ↔ tablo kimliği, renk = devre
+  sınıfı, şema tüp yarıçapı kesitten (CAD parçalarının çapı değişmedi), lejant, tıklayınca tablo bilgisi; çizilen 55 / 74, çizilmeyen
+  19; bozma 9 / 9. `rehber_denetim.py` elektrik sınaması bozma 16 / 16. Ayrıntı ve üretim adımının komut listesi
+  `planlama/d158/F10h-gunluk.md` § 9; C adımı: üretim + zincir + kare bakışı + bağımsız bakış.
 - 2026-11-14 08:15 (saat ölçüldü) **P10.7a ✅ (kablo tablosu + 16.11 sipariş listesi), C: kayıt + commit.** Tek kaynak
   `planlama/adim3/kablolar.json`: **74 kablo** (62 ile eşlendi), durum kesin **31** / teyit **42** / karara bağlı **1** (G20, K52), kayıtlı
   kesit istisnası **5 ad / 25 kablo** (`servo-uzatmasi`, `ana-hat-12awg`, `motor-fabrika-kablosu`, `kafa-5v-donusturucu-arkasi`,

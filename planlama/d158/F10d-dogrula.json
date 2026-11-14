@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-14 00:48",
+ "tarih": "2026-11-14 15:19",
  "adim": 50,
  "alt_adimli": [
   21,
@@ -2449,9 +2449,9 @@
      {
       "id": "p0753",
       "ad": "Arka kafa kabuğu sol",
-      "px": 8414,
-      "yalniz": 143048,
-      "oran": 0.059,
+      "px": 7787,
+      "yalniz": 134407,
+      "oran": 0.058,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -2460,7 +2460,7 @@
       "id": "p0755",
       "ad": "Tabla cıvatası M3x10 (sağ z-15)",
       "px": 0,
-      "yalniz": 290,
+      "yalniz": 273,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2470,7 +2470,7 @@
       "id": "p0756",
       "ad": "Isıl gömme somun M3 (tabla rafı sağ z-15)",
       "px": 0,
-      "yalniz": 154,
+      "yalniz": 134,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2480,7 +2480,7 @@
       "id": "p0757",
       "ad": "Tabla cıvatası M3x10 (sağ z-75)",
       "px": 0,
-      "yalniz": 255,
+      "yalniz": 243,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2490,7 +2490,7 @@
       "id": "p0758",
       "ad": "Isıl gömme somun M3 (tabla rafı sağ z-75)",
       "px": 0,
-      "yalniz": 123,
+      "yalniz": 122,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2500,7 +2500,7 @@
       "id": "p0759",
       "ad": "Tabla cıvatası M3x10 (sol z-15)",
       "px": 0,
-      "yalniz": 209,
+      "yalniz": 194,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2510,7 +2510,7 @@
       "id": "p0760",
       "ad": "Isıl gömme somun M3 (tabla rafı sol z-15)",
       "px": 0,
-      "yalniz": 107,
+      "yalniz": 99,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2520,7 +2520,7 @@
       "id": "p0761",
       "ad": "Tabla cıvatası M3x10 (sol z-75)",
       "px": 0,
-      "yalniz": 180,
+      "yalniz": 169,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2540,7 +2540,7 @@
       "id": "p0763",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol ön üst)",
       "px": 0,
-      "yalniz": 156,
+      "yalniz": 141,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2549,9 +2549,9 @@
      {
       "id": "p0764",
       "ad": "Kabuk cıvatası M3x5 ISO 7380 havşada (kafa sağ/sol ön üst)",
-      "px": 26,
-      "yalniz": 175,
-      "oran": 0.149,
+      "px": 31,
+      "yalniz": 163,
+      "oran": 0.19,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -2560,7 +2560,7 @@
       "id": "p0765",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol ön alt (çerçeve))",
       "px": 0,
-      "yalniz": 123,
+      "yalniz": 116,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2570,7 +2570,7 @@
       "id": "p0767",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka üst)",
       "px": 0,
-      "yalniz": 125,
+      "yalniz": 110,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2580,8 +2580,8 @@
       "id": "p0768",
       "ad": "Kabuk cıvatası M3x5 ISO 7380 havşada (kafa sağ/sol arka üst)",
       "px": 23,
-      "yalniz": 141,
-      "oran": 0.163,
+      "yalniz": 126,
+      "oran": 0.183,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -2590,7 +2590,7 @@
       "id": "p0769",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar üst)",
       "px": 0,
-      "yalniz": 103,
+      "yalniz": 99,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2600,7 +2600,7 @@
       "id": "p0770",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol arka duvar üst)",
       "px": 0,
-      "yalniz": 142,
+      "yalniz": 131,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2610,7 +2610,7 @@
       "id": "p0771",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar alt)",
       "px": 0,
-      "yalniz": 88,
+      "yalniz": 81,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2620,7 +2620,7 @@
       "id": "p0772",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol arka duvar alt)",
       "px": 0,
-      "yalniz": 124,
+      "yalniz": 115,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2630,7 +2630,7 @@
       "id": "p0773",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sağ y-60)",
       "px": 0,
-      "yalniz": 156,
+      "yalniz": 144,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2640,7 +2640,7 @@
       "id": "p0775",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sağ y+70)",
       "px": 0,
-      "yalniz": 191,
+      "yalniz": 175,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2650,7 +2650,7 @@
       "id": "p0777",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sol y-60)",
       "px": 0,
-      "yalniz": 94,
+      "yalniz": 90,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2660,7 +2660,7 @@
       "id": "p0778",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sol y-60)",
       "px": 0,
-      "yalniz": 131,
+      "yalniz": 122,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2670,7 +2670,7 @@
       "id": "p0779",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sol y+70)",
       "px": 0,
-      "yalniz": 115,
+      "yalniz": 107,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2680,7 +2680,7 @@
       "id": "p0780",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sol y+70)",
       "px": 0,
-      "yalniz": 156,
+      "yalniz": 143,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2690,7 +2690,7 @@
       "id": "p0782",
       "ad": "Ekran tırnağı üst sağ",
       "px": 0,
-      "yalniz": 2505,
+      "yalniz": 2300,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2700,7 +2700,7 @@
       "id": "p0783",
       "ad": "Köpük bant (tırnak üst sağ)",
       "px": 0,
-      "yalniz": 592,
+      "yalniz": 543,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2710,7 +2710,7 @@
       "id": "p0784",
       "ad": "Tırnak cıvatası M3x6 ISO 7380 (üst sağ)",
       "px": 0,
-      "yalniz": 237,
+      "yalniz": 218,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2720,7 +2720,7 @@
       "id": "p0785",
       "ad": "Isıl gömme somun M3 (tırnak boss üst sağ)",
       "px": 0,
-      "yalniz": 174,
+      "yalniz": 160,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2730,7 +2730,7 @@
       "id": "p0786",
       "ad": "Ekran tırnağı üst sol",
       "px": 0,
-      "yalniz": 1597,
+      "yalniz": 1492,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2740,7 +2740,7 @@
       "id": "p0787",
       "ad": "Köpük bant (tırnak üst sol)",
       "px": 0,
-      "yalniz": 359,
+      "yalniz": 333,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2750,7 +2750,7 @@
       "id": "p0788",
       "ad": "Tırnak cıvatası M3x6 ISO 7380 (üst sol)",
       "px": 0,
-      "yalniz": 181,
+      "yalniz": 167,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2760,7 +2760,7 @@
       "id": "p0789",
       "ad": "Isıl gömme somun M3 (tırnak boss üst sol)",
       "px": 0,
-      "yalniz": 138,
+      "yalniz": 126,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2770,7 +2770,7 @@
       "id": "p0790",
       "ad": "Ekran tırnağı alt sağ",
       "px": 0,
-      "yalniz": 1732,
+      "yalniz": 1599,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2780,7 +2780,7 @@
       "id": "p0791",
       "ad": "Köpük bant (tırnak alt sağ)",
       "px": 0,
-      "yalniz": 466,
+      "yalniz": 427,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2790,7 +2790,7 @@
       "id": "p0792",
       "ad": "Tırnak cıvatası M3x6 ISO 7380 (alt sağ)",
       "px": 0,
-      "yalniz": 188,
+      "yalniz": 178,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2800,7 +2800,7 @@
       "id": "p0793",
       "ad": "Isıl gömme somun M3 (tırnak boss alt sağ)",
       "px": 0,
-      "yalniz": 142,
+      "yalniz": 134,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2810,7 +2810,7 @@
       "id": "p0794",
       "ad": "Ekran tırnağı alt sol",
       "px": 0,
-      "yalniz": 1166,
+      "yalniz": 1098,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2820,7 +2820,7 @@
       "id": "p0795",
       "ad": "Köpük bant (tırnak alt sol)",
       "px": 0,
-      "yalniz": 295,
+      "yalniz": 276,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2830,7 +2830,7 @@
       "id": "p0796",
       "ad": "Tırnak cıvatası M3x6 ISO 7380 (alt sol)",
       "px": 0,
-      "yalniz": 147,
+      "yalniz": 136,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2840,7 +2840,7 @@
       "id": "p0797",
       "ad": "Isıl gömme somun M3 (tırnak boss alt sol)",
       "px": 0,
-      "yalniz": 110,
+      "yalniz": 106,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2849,8 +2849,8 @@
      {
       "id": "p0798",
       "ad": "Kamera Raspberry Pi Camera Module 3",
-      "px": 264,
-      "yalniz": 2756,
+      "px": 246,
+      "yalniz": 2558,
       "oran": 0.096,
       "karede": true,
       "gorunur": false,
@@ -2860,7 +2860,7 @@
       "id": "p0799",
       "ad": "Kamera vidası M2x8 PT (0)",
       "px": 0,
-      "yalniz": 136,
+      "yalniz": 127,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2870,7 +2870,7 @@
       "id": "p0800",
       "ad": "Kamera vidası M2x8 PT (1)",
       "px": 0,
-      "yalniz": 142,
+      "yalniz": 129,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2880,7 +2880,7 @@
       "id": "p0801",
       "ad": "Kamera vidası M2x8 PT (2)",
       "px": 0,
-      "yalniz": 142,
+      "yalniz": 129,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2890,7 +2890,7 @@
       "id": "p0802",
       "ad": "Kamera vidası M2x8 PT (3)",
       "px": 0,
-      "yalniz": 140,
+      "yalniz": 130,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2898,9 +2898,9 @@
      },
      {
       "id": "p0822",
-      "ad": "Köpük bant (USB ses kartı)",
+      "ad": "Köpük bant (yedek USB ses kartı için; kart takılmaz, bant yapıştırılmaz)",
       "px": 0,
-      "yalniz": 3420,
+      "yalniz": 3206,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2908,9 +2908,9 @@
      },
      {
       "id": "p0823",
-      "ad": "USB ses kartı",
+      "ad": "USB ses kartı (yedek, takılmaz)",
       "px": 0,
-      "yalniz": 4480,
+      "yalniz": 4195,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2920,7 +2920,7 @@
       "id": "p0824",
       "ad": "Köpük bant (PAM8403 amfi)",
       "px": 0,
-      "yalniz": 1439,
+      "yalniz": 1340,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2930,7 +2930,7 @@
       "id": "p0825",
       "ad": "PAM8403 amfi",
       "px": 0,
-      "yalniz": 1717,
+      "yalniz": 1604,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2940,7 +2940,7 @@
       "id": "p0826",
       "ad": "ReSpeaker Mic Array v2.0",
       "px": 0,
-      "yalniz": 4784,
+      "yalniz": 4405,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2950,7 +2950,7 @@
       "id": "p0827",
       "ad": "Dizi vidası M2x8 PT (0)",
       "px": 0,
-      "yalniz": 146,
+      "yalniz": 136,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2960,7 +2960,7 @@
       "id": "p0828",
       "ad": "Dizi vidası M2x8 PT (1)",
       "px": 0,
-      "yalniz": 124,
+      "yalniz": 122,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2970,7 +2970,7 @@
       "id": "p0829",
       "ad": "Dizi vidası M2x8 PT (2)",
       "px": 0,
-      "yalniz": 134,
+      "yalniz": 106,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -2982,31 +2982,23 @@
     "sema": {
      "sema6": [
       0,
-      1935
+      1795
      ],
      "sema7": [
       0,
-      3019
+      966
      ],
      "sema8": [
       0,
-      779
+      5377
      ],
      "sema9": [
       0,
-      822
+      4270
      ],
      "sema10": [
       0,
-      5811
-     ],
-     "sema11": [
-      0,
-      4607
-     ],
-     "sema12": [
-      0,
-      2890
+      2673
      ]
     },
     "yabanci_sema": [],
@@ -3014,9 +3006,9 @@
      {
       "id": "p0750",
       "ad": "Yüz kabuğu (ön) sağ",
-      "px": 98795,
-      "yalniz": 103709,
-      "oran": 0.953,
+      "px": 91420,
+      "yalniz": 96006,
+      "oran": 0.952,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -3024,9 +3016,9 @@
      {
       "id": "p0751",
       "ad": "Yüz kabuğu (ön) sol",
-      "px": 45675,
-      "yalniz": 55034,
-      "oran": 0.83,
+      "px": 42818,
+      "yalniz": 51449,
+      "oran": 0.832,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -3034,9 +3026,9 @@
      {
       "id": "p0752",
       "ad": "Arka kafa kabuğu sağ",
-      "px": 61616,
-      "yalniz": 134839,
-      "oran": 0.457,
+      "px": 57883,
+      "yalniz": 125398,
+      "oran": 0.462,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -3044,9 +3036,9 @@
      {
       "id": "p0753",
       "ad": "Arka kafa kabuğu sol",
-      "px": 8414,
-      "yalniz": 143048,
-      "oran": 0.059,
+      "px": 7787,
+      "yalniz": 134407,
+      "oran": 0.058,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -3055,7 +3047,7 @@
       "id": "p0755",
       "ad": "Tabla cıvatası M3x10 (sağ z-15)",
       "px": 0,
-      "yalniz": 290,
+      "yalniz": 273,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3065,7 +3057,7 @@
       "id": "p0756",
       "ad": "Isıl gömme somun M3 (tabla rafı sağ z-15)",
       "px": 0,
-      "yalniz": 154,
+      "yalniz": 134,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3075,7 +3067,7 @@
       "id": "p0757",
       "ad": "Tabla cıvatası M3x10 (sağ z-75)",
       "px": 0,
-      "yalniz": 255,
+      "yalniz": 243,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3085,7 +3077,7 @@
       "id": "p0758",
       "ad": "Isıl gömme somun M3 (tabla rafı sağ z-75)",
       "px": 0,
-      "yalniz": 123,
+      "yalniz": 122,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3095,7 +3087,7 @@
       "id": "p0759",
       "ad": "Tabla cıvatası M3x10 (sol z-15)",
       "px": 0,
-      "yalniz": 209,
+      "yalniz": 194,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3105,7 +3097,7 @@
       "id": "p0760",
       "ad": "Isıl gömme somun M3 (tabla rafı sol z-15)",
       "px": 0,
-      "yalniz": 107,
+      "yalniz": 99,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3115,7 +3107,7 @@
       "id": "p0761",
       "ad": "Tabla cıvatası M3x10 (sol z-75)",
       "px": 0,
-      "yalniz": 180,
+      "yalniz": 169,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3135,7 +3127,7 @@
       "id": "p0763",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol ön üst)",
       "px": 0,
-      "yalniz": 156,
+      "yalniz": 141,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3144,9 +3136,9 @@
      {
       "id": "p0764",
       "ad": "Kabuk cıvatası M3x5 ISO 7380 havşada (kafa sağ/sol ön üst)",
-      "px": 26,
-      "yalniz": 175,
-      "oran": 0.149,
+      "px": 31,
+      "yalniz": 163,
+      "oran": 0.19,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -3155,7 +3147,7 @@
       "id": "p0765",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol ön alt (çerçeve))",
       "px": 0,
-      "yalniz": 123,
+      "yalniz": 116,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3164,9 +3156,9 @@
      {
       "id": "p0766",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol ön alt (çerçeve))",
-      "px": 111,
-      "yalniz": 168,
-      "oran": 0.661,
+      "px": 103,
+      "yalniz": 153,
+      "oran": 0.673,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -3175,7 +3167,7 @@
       "id": "p0767",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka üst)",
       "px": 0,
-      "yalniz": 125,
+      "yalniz": 110,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3185,8 +3177,8 @@
       "id": "p0768",
       "ad": "Kabuk cıvatası M3x5 ISO 7380 havşada (kafa sağ/sol arka üst)",
       "px": 23,
-      "yalniz": 141,
-      "oran": 0.163,
+      "yalniz": 126,
+      "oran": 0.183,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -3195,7 +3187,7 @@
       "id": "p0769",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar üst)",
       "px": 0,
-      "yalniz": 103,
+      "yalniz": 99,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3205,7 +3197,7 @@
       "id": "p0770",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol arka duvar üst)",
       "px": 0,
-      "yalniz": 142,
+      "yalniz": 131,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3215,7 +3207,7 @@
       "id": "p0771",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar alt)",
       "px": 0,
-      "yalniz": 88,
+      "yalniz": 81,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3225,7 +3217,7 @@
       "id": "p0772",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol arka duvar alt)",
       "px": 0,
-      "yalniz": 124,
+      "yalniz": 115,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3235,7 +3227,7 @@
       "id": "p0773",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sağ y-60)",
       "px": 0,
-      "yalniz": 156,
+      "yalniz": 144,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3244,9 +3236,9 @@
      {
       "id": "p0774",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sağ y-60)",
-      "px": 119,
-      "yalniz": 204,
-      "oran": 0.583,
+      "px": 110,
+      "yalniz": 187,
+      "oran": 0.588,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -3255,7 +3247,7 @@
       "id": "p0775",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sağ y+70)",
       "px": 0,
-      "yalniz": 191,
+      "yalniz": 175,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3264,9 +3256,9 @@
      {
       "id": "p0776",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sağ y+70)",
-      "px": 154,
-      "yalniz": 252,
-      "oran": 0.611,
+      "px": 139,
+      "yalniz": 229,
+      "oran": 0.607,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -3275,7 +3267,7 @@
       "id": "p0777",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sol y-60)",
       "px": 0,
-      "yalniz": 94,
+      "yalniz": 90,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3285,7 +3277,7 @@
       "id": "p0778",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sol y-60)",
       "px": 0,
-      "yalniz": 131,
+      "yalniz": 122,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3295,7 +3287,7 @@
       "id": "p0779",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sol y+70)",
       "px": 0,
-      "yalniz": 115,
+      "yalniz": 107,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3305,7 +3297,7 @@
       "id": "p0780",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sol y+70)",
       "px": 0,
-      "yalniz": 156,
+      "yalniz": 143,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3314,8 +3306,8 @@
      {
       "id": "p0781",
       "ad": "Yüz ekranı WaveShare 10,1\" QLED HDMI",
-      "px": 106344,
-      "yalniz": 139709,
+      "px": 99241,
+      "yalniz": 130359,
       "oran": 0.761,
       "karede": true,
       "gorunur": true,
@@ -3325,7 +3317,7 @@
       "id": "p0782",
       "ad": "Ekran tırnağı üst sağ",
       "px": 0,
-      "yalniz": 2505,
+      "yalniz": 2300,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3335,7 +3327,7 @@
       "id": "p0783",
       "ad": "Köpük bant (tırnak üst sağ)",
       "px": 0,
-      "yalniz": 592,
+      "yalniz": 543,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3345,7 +3337,7 @@
       "id": "p0784",
       "ad": "Tırnak cıvatası M3x6 ISO 7380 (üst sağ)",
       "px": 0,
-      "yalniz": 237,
+      "yalniz": 218,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3355,7 +3347,7 @@
       "id": "p0785",
       "ad": "Isıl gömme somun M3 (tırnak boss üst sağ)",
       "px": 0,
-      "yalniz": 174,
+      "yalniz": 160,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3365,7 +3357,7 @@
       "id": "p0786",
       "ad": "Ekran tırnağı üst sol",
       "px": 0,
-      "yalniz": 1597,
+      "yalniz": 1492,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3375,7 +3367,7 @@
       "id": "p0787",
       "ad": "Köpük bant (tırnak üst sol)",
       "px": 0,
-      "yalniz": 359,
+      "yalniz": 333,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3385,7 +3377,7 @@
       "id": "p0788",
       "ad": "Tırnak cıvatası M3x6 ISO 7380 (üst sol)",
       "px": 0,
-      "yalniz": 181,
+      "yalniz": 167,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3395,7 +3387,7 @@
       "id": "p0789",
       "ad": "Isıl gömme somun M3 (tırnak boss üst sol)",
       "px": 0,
-      "yalniz": 138,
+      "yalniz": 126,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3405,7 +3397,7 @@
       "id": "p0790",
       "ad": "Ekran tırnağı alt sağ",
       "px": 0,
-      "yalniz": 1732,
+      "yalniz": 1599,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3415,7 +3407,7 @@
       "id": "p0791",
       "ad": "Köpük bant (tırnak alt sağ)",
       "px": 0,
-      "yalniz": 466,
+      "yalniz": 427,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3425,7 +3417,7 @@
       "id": "p0792",
       "ad": "Tırnak cıvatası M3x6 ISO 7380 (alt sağ)",
       "px": 0,
-      "yalniz": 188,
+      "yalniz": 178,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3435,7 +3427,7 @@
       "id": "p0793",
       "ad": "Isıl gömme somun M3 (tırnak boss alt sağ)",
       "px": 0,
-      "yalniz": 142,
+      "yalniz": 134,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3445,7 +3437,7 @@
       "id": "p0794",
       "ad": "Ekran tırnağı alt sol",
       "px": 0,
-      "yalniz": 1166,
+      "yalniz": 1098,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3455,7 +3447,7 @@
       "id": "p0795",
       "ad": "Köpük bant (tırnak alt sol)",
       "px": 0,
-      "yalniz": 295,
+      "yalniz": 276,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3465,7 +3457,7 @@
       "id": "p0796",
       "ad": "Tırnak cıvatası M3x6 ISO 7380 (alt sol)",
       "px": 0,
-      "yalniz": 147,
+      "yalniz": 136,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3475,7 +3467,7 @@
       "id": "p0797",
       "ad": "Isıl gömme somun M3 (tırnak boss alt sol)",
       "px": 0,
-      "yalniz": 110,
+      "yalniz": 106,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3484,8 +3476,8 @@
      {
       "id": "p0798",
       "ad": "Kamera Raspberry Pi Camera Module 3",
-      "px": 264,
-      "yalniz": 2756,
+      "px": 246,
+      "yalniz": 2558,
       "oran": 0.096,
       "karede": true,
       "gorunur": false,
@@ -3495,7 +3487,7 @@
       "id": "p0799",
       "ad": "Kamera vidası M2x8 PT (0)",
       "px": 0,
-      "yalniz": 136,
+      "yalniz": 127,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3505,7 +3497,7 @@
       "id": "p0800",
       "ad": "Kamera vidası M2x8 PT (1)",
       "px": 0,
-      "yalniz": 142,
+      "yalniz": 129,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3515,7 +3507,7 @@
       "id": "p0801",
       "ad": "Kamera vidası M2x8 PT (2)",
       "px": 0,
-      "yalniz": 142,
+      "yalniz": 129,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3525,7 +3517,7 @@
       "id": "p0802",
       "ad": "Kamera vidası M2x8 PT (3)",
       "px": 0,
-      "yalniz": 140,
+      "yalniz": 130,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3533,9 +3525,9 @@
      },
      {
       "id": "p0822",
-      "ad": "Köpük bant (USB ses kartı)",
+      "ad": "Köpük bant (yedek USB ses kartı için; kart takılmaz, bant yapıştırılmaz)",
       "px": 0,
-      "yalniz": 3420,
+      "yalniz": 3206,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3543,9 +3535,9 @@
      },
      {
       "id": "p0823",
-      "ad": "USB ses kartı",
+      "ad": "USB ses kartı (yedek, takılmaz)",
       "px": 0,
-      "yalniz": 4480,
+      "yalniz": 4195,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3555,7 +3547,7 @@
       "id": "p0824",
       "ad": "Köpük bant (PAM8403 amfi)",
       "px": 0,
-      "yalniz": 1439,
+      "yalniz": 1340,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3565,7 +3557,7 @@
       "id": "p0825",
       "ad": "PAM8403 amfi",
       "px": 0,
-      "yalniz": 1717,
+      "yalniz": 1604,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3575,7 +3567,7 @@
       "id": "p0826",
       "ad": "ReSpeaker Mic Array v2.0",
       "px": 0,
-      "yalniz": 4784,
+      "yalniz": 4405,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3585,7 +3577,7 @@
       "id": "p0827",
       "ad": "Dizi vidası M2x8 PT (0)",
       "px": 0,
-      "yalniz": 146,
+      "yalniz": 136,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3595,7 +3587,7 @@
       "id": "p0828",
       "ad": "Dizi vidası M2x8 PT (1)",
       "px": 0,
-      "yalniz": 124,
+      "yalniz": 122,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3605,7 +3597,7 @@
       "id": "p0829",
       "ad": "Dizi vidası M2x8 PT (2)",
       "px": 0,
-      "yalniz": 134,
+      "yalniz": 106,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3926,7 +3918,7 @@
      },
      {
       "id": "p0822",
-      "ad": "Köpük bant (USB ses kartı)",
+      "ad": "Köpük bant (yedek USB ses kartı için; kart takılmaz, bant yapıştırılmaz)",
       "px": 3507,
       "yalniz": 3507,
       "oran": 1.0,
@@ -3936,7 +3928,7 @@
      },
      {
       "id": "p0823",
-      "ad": "USB ses kartı",
+      "ad": "USB ses kartı (yedek, takılmaz)",
       "px": 5927,
       "yalniz": 5927,
       "oran": 1.0,
@@ -3984,8 +3976,8 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Arka kafa kabuğu sol",
-     "px": 244971,
-     "yalniz": 244971,
+     "px": 244989,
+     "yalniz": 244989,
      "gorunur": true,
      "parca": 9,
      "ic_gorunmeyen": [
@@ -4027,7 +4019,7 @@
       },
       {
        "id": "p0822",
-       "ad": "Köpük bant (USB ses kartı)",
+       "ad": "Köpük bant (yedek USB ses kartı için; kart takılmaz, bant yapıştırılmaz)",
        "px": 0,
        "masada": "31.3",
        "masada_px": 3507,
@@ -4036,7 +4028,7 @@
       },
       {
        "id": "p0823",
-       "ad": "USB ses kartı",
+       "ad": "USB ses kartı (yedek, takılmaz)",
        "px": 0,
        "masada": "31.3",
        "masada_px": 5927,
@@ -4065,16 +4057,8 @@
     },
     "sema": {
      "sema7": [
-      218,
-      4474
-     ],
-     "sema8": [
       0,
-      1089
-     ],
-     "sema9": [
-      0,
-      978
+      1242
      ]
     },
     "yabanci_sema": [],
@@ -4464,8 +4448,8 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Yüz kabuğu (ön) sağ",
-     "px": 85794,
-     "yalniz": 86114,
+     "px": 78901,
+     "yalniz": 79159,
      "gorunur": true,
      "parca": 26,
      "ic_gorunmeyen": [
@@ -4517,17 +4501,17 @@
      ]
     },
     "sema": {
+     "sema8": [
+      2869,
+      4332
+     ],
+     "sema9": [
+      4061,
+      4229
+     ],
      "sema10": [
-      3062,
-      4721
-     ],
-     "sema11": [
-      4439,
-      4624
-     ],
-     "sema12": [
-      1073,
-      2473
+      992,
+      2270
      ]
     },
     "yabanci_sema": [],
@@ -11958,11 +11942,11 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema30": [
+     "sema28": [
       203,
       3803
      ],
-     "sema50": [
+     "sema48": [
       0,
       3251
      ]
@@ -12355,7 +12339,7 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema30": [
+     "sema28": [
       17422,
       18543
      ]
@@ -12375,7 +12359,7 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema50": [
+     "sema48": [
       19231,
       20509
      ]
@@ -12636,43 +12620,43 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema23": [
+     "sema21": [
       0,
       1319
      ],
-     "sema24": [
+     "sema22": [
       0,
       1874
      ],
-     "sema25": [
+     "sema23": [
       0,
       221
      ],
-     "sema26": [
+     "sema24": [
       0,
       228
      ],
-     "sema27": [
+     "sema25": [
       0,
       597
      ],
-     "sema43": [
+     "sema41": [
       0,
       736
      ],
-     "sema44": [
+     "sema42": [
       0,
       930
      ],
-     "sema45": [
+     "sema43": [
       0,
       111
      ],
-     "sema46": [
+     "sema44": [
       0,
       143
      ],
-     "sema47": [
+     "sema45": [
       0,
       333
      ]
@@ -13590,23 +13574,23 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema23": [
+     "sema21": [
       16713,
       17347
      ],
-     "sema24": [
+     "sema22": [
       22836,
       24465
      ],
-     "sema25": [
+     "sema23": [
       2887,
       3307
      ],
-     "sema26": [
+     "sema24": [
       1125,
       2163
      ],
-     "sema27": [
+     "sema25": [
       3421,
       5454
      ]
@@ -13626,23 +13610,23 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema43": [
+     "sema41": [
       16274,
       16893
      ],
-     "sema44": [
+     "sema42": [
       21487,
       23024
      ],
-     "sema45": [
+     "sema43": [
       2797,
       3218
      ],
-     "sema46": [
+     "sema44": [
       1209,
       2350
      ],
-     "sema47": [
+     "sema45": [
       3246,
       5335
      ]
@@ -13713,19 +13697,19 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema28": [
+     "sema26": [
       20,
       4082
      ],
-     "sema29": [
+     "sema27": [
       0,
       1021
      ],
-     "sema48": [
+     "sema46": [
       0,
       3184
      ],
-     "sema49": [
+     "sema47": [
       0,
       706
      ]
@@ -13862,11 +13846,11 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema28": [
+     "sema26": [
       29158,
       50373
      ],
-     "sema29": [
+     "sema27": [
       10561,
       10883
      ]
@@ -13886,11 +13870,11 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema48": [
+     "sema46": [
       31695,
       53318
      ],
-     "sema49": [
+     "sema47": [
       10957,
       11404
      ]
@@ -13910,7 +13894,7 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema31": [
+     "sema29": [
       33613,
       33784
      ]
@@ -13930,7 +13914,7 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema32": [
+     "sema30": [
       36397,
       36397
      ]
@@ -14488,19 +14472,19 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema13": [
+     "sema11": [
       0,
       2574
      ],
-     "sema14": [
+     "sema12": [
       97,
       231
      ],
-     "sema33": [
+     "sema31": [
       0,
       1853
      ],
-     "sema34": [
+     "sema32": [
       0,
       390
      ]
@@ -15828,11 +15812,11 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema13": [
+     "sema11": [
       21017,
       21936
      ],
-     "sema14": [
+     "sema12": [
       4426,
       5003
      ]
@@ -15852,11 +15836,11 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema33": [
+     "sema31": [
       20187,
       21421
      ],
-     "sema34": [
+     "sema32": [
       4257,
       5190
      ]
@@ -16127,11 +16111,11 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema15": [
+     "sema13": [
       0,
       1
      ],
-     "sema35": [
+     "sema33": [
       1051,
       1887
      ]
@@ -16979,7 +16963,7 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema15": [
+     "sema13": [
       53051,
       53051
      ]
@@ -16999,7 +16983,7 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema35": [
+     "sema33": [
       57064,
       57064
      ]
@@ -18000,59 +17984,59 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema16": [
+     "sema14": [
       0,
       412
      ],
-     "sema17": [
+     "sema15": [
       0,
       186
      ],
-     "sema18": [
+     "sema16": [
       0,
       1053
      ],
-     "sema19": [
+     "sema17": [
       0,
       968
      ],
-     "sema20": [
+     "sema18": [
       0,
       213
      ],
-     "sema21": [
+     "sema19": [
       0,
       207
      ],
-     "sema22": [
+     "sema20": [
       0,
       640
      ],
-     "sema36": [
+     "sema34": [
       0,
       245
      ],
-     "sema37": [
+     "sema35": [
       0,
       106
      ],
-     "sema38": [
+     "sema36": [
       0,
       613
      ],
-     "sema39": [
+     "sema37": [
       0,
       573
      ],
-     "sema40": [
+     "sema38": [
       0,
       119
      ],
-     "sema41": [
+     "sema39": [
       0,
       113
      ],
-     "sema42": [
+     "sema40": [
       0,
       469
      ]
@@ -19228,31 +19212,31 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema16": [
+     "sema14": [
       4360,
       4739
      ],
-     "sema17": [
+     "sema15": [
       1883,
       2043
      ],
-     "sema18": [
+     "sema16": [
       9935,
       11868
      ],
-     "sema19": [
+     "sema17": [
       9530,
       11016
      ],
-     "sema20": [
+     "sema18": [
       1509,
       2349
      ],
-     "sema21": [
+     "sema19": [
       1589,
       1761
      ],
-     "sema22": [
+     "sema20": [
       8830,
       10152
      ]
@@ -19272,31 +19256,31 @@
     "istisna": [],
     "birim": null,
     "sema": {
-     "sema36": [
+     "sema34": [
       4500,
       4878
      ],
-     "sema37": [
+     "sema35": [
       1948,
       2112
      ],
-     "sema38": [
+     "sema36": [
       10381,
       12287
      ],
-     "sema39": [
+     "sema37": [
       9865,
       11398
      ],
-     "sema40": [
+     "sema38": [
       1557,
       2411
      ],
-     "sema41": [
+     "sema39": [
       1648,
       1822
      ],
-     "sema42": [
+     "sema40": [
       8574,
       9900
      ]
@@ -21027,6 +21011,6 @@
  },
  "kontrol_hatasi": null,
  "goruntu": [],
- "sure_s": 719,
+ "sure_s": 728,
  "gecti": true
 }

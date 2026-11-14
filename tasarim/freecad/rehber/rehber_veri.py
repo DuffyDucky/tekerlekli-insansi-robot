@@ -32,7 +32,10 @@ os.makedirs(CIKTI, exist_ok=True)
 sys.path.insert(0, HERE)
 sys.path.insert(0, FC)
 import rehber_metin as RM
+import rehber_kablo as RK                                    # P10.7b1: kablo rengi / yarıçapı / bilgisi planlama/adim3/kablolar.json'dan
 import arayuz as A
+
+TB = RK.Tablo()
 
 
 def log(*a):
@@ -661,13 +664,17 @@ def renk_sinifi(p):
     return {"Lazer": "lazer", "Imalat": "imalat"}.get(p["tur"], "satin")
 
 
-def kablo_rengi(ad):
-    a = ad.lower()
-    for k, r in (("toprak", "#222222"), ("acil", "#2e9e4f"), ("motor", "#e67e22"), ("servo", "#e2b714"), ("5 v", "#2f86d4"),
-                 ("sinyal", "#8e44ad"), ("12 v", "#d63031")):
-        if k in a:
-            return r
-    return "#c0392b"
+def kablo_cizim(ad):
+    """P10.7b1: taban CAD kablo parçası → tablo kaydı (kimlikler, renk = ana kablonun devre sınıfı rengi, bilgi satırları).
+    Anahtar kelimeyle renk verme (eski kablo_rengi) kaldırıldı. Eşlemesi olmayan kablo parçası: renk yok, UYARI (kontrol hata sayar)."""
+    n = RK.cad_no(ad)
+    if n not in RK.CAD_ESLEME:
+        KABLO_UYARI.append("kablo eşlemesi yok: %s (rehber_kablo.CAD_ESLEME)" % ad)
+        log("UYARI kablo eslemesi yok:", ad)
+        return dict(renk="#7f7f7f", kablo=[])
+    c = TB.cizim(RK.CAD_ESLEME[n])
+    c.pop("r", None)                                                # CAD parçasının tüp çapı geometri: değişmez
+    return c
 
 
 tr = RM.tr                                                          # F7b: görünen metin katmanı rehber_metin.py'de (TR + TR_EK + TR_IFADE)
@@ -721,8 +728,18 @@ for p in P:
     if p.get("_h"):                                                 # F10d: ısıl gömmenin ev sahibi (birlikte uçar)
         d["h"] = p["_h"]["id"]
     if p.get("kablo"):
-        d["renk"] = kablo_rengi(p["ad"])
+        d.update(kablo_cizim(p["ad"]))                              # renk, kablo (kimlikler), ks (sınıf), kb (bilgi), karisik?
     PARCA.append(d)
+
+# P10.7b1 düzeltme turu 1 (kontrol Ü1): görünen parça adı / kodunda eski elektrik bilgisi (MOSFET, USB ses kartı yolu, WAGO …) kalırsa
+# üretim durur: çeviri rehber_metin.AD_CEVIRI'ye eklenir (kaynağı kayıt), CAD kaynağı değişmez. Sessiz geçiş yok.
+import rehber_denetim as RDN                                        # noqa: E402
+_eski_ad = RDN.elektrik_denetle([("parça %s %s" % (d["id"], k), d[k]) for d in PARCA for k in ("ad", "kod")])
+if _eski_ad:
+    for x in _eski_ad[:20]:
+        log("HATA eski elektrik bilgisi parça adında:", x["yer"], x["ifade"], "|", x["neden"])
+    raise SystemExit("rehber_veri: %d parça adı / kodu eski elektrik bilgisi taşıyor; rehber_metin.AD_CEVIRI'ye kayıtlı karşılığı ekle"
+                     % len(_eski_ad))
 
 
 def faz(kod):
@@ -874,13 +891,17 @@ def _bas(q):                                                       # kafa_ici_ql
 
 
 SEMALAR = []
-for kaynak, ad_k, kod, ad, renk in RM.SEMA:
+_kh = RK.kaynak_denetle(TB, RM)                                    # P10.7b1: eşleme hatası varsa üretme
+if _kh:
+    raise SystemExit("kablo eslemesi hatali (rehber_kablo.py): " + "; ".join(_kh[:5]))
+for kaynak, ad_k, kod, ad, kimlik in RM.SEMA:
     pts = _yol.get(ad_k) if kaynak == "yollar" else ([_bas(q) for q in _qi[ad_k][0]] if ad_k in _qi else None)
     if not pts:
         raise SystemExit("SEMA yolu bulunamadi: %s / %s (lale158/kablo_yolu_ekran.py)" % (kaynak, ad_k))
     boy = sum(math.dist(a, b) for a, b in zip(pts[:-1], pts[1:]))
-    SEMALAR.append(dict(ad=ad, kaynak="%s:%s" % (kaynak, ad_k), a=KOD_IDX[kod], renk=renk, boy_mm=round(boy),
-                        pts=[[round(c, 1) for c in q] for q in pts]))
+    s = dict(ad=ad, kaynak="%s:%s" % (kaynak, ad_k), a=KOD_IDX[kod], boy_mm=round(boy), pts=[[round(c, 1) for c in q] for q in pts])
+    s.update(TB.cizim(kimlik))                                      # renk, r (kesitten), kablo, ks, kb, karisik?
+    SEMALAR.append(s)
 log("gosterim semasi: %d (kablo_yolu_ekran.py)" % len(SEMALAR))
 # F10d: alt adımlı adımda her şema bir alt adımda (grup "sema" deseni şemanın görünen adında); hiçbir gruba düşmeyen son gruba + UYARI
 for a in ADIMLAR:
@@ -909,6 +930,7 @@ VERI = dict(
     m6_bayrak=dict(M6SAY), mesh=dict(benzersiz=len(MESH), parca=len(P), ucgen=sum(len(m[1]) for m in MESH),
                                      glb_mb=round(len(glb) / 1e6, 2)),
     atanmamis=ATANMAMIS, kablo_ad_uyari=KABLO_UYARI, tur_ad=RM.TUR_AD, modul_ad=RM.MODUL_AD, semalar=SEMALAR,
+    kablo_sinif=TB.lejant(), kablo_kaynak="planlama/adim3/kablolar.json (rehber_kablo.py: renk = devre sınıfı, şema yarıçapı = kesit)",
     # F10d düzeltme 1 (B-2): ısıl gömme ev sahibi (geometri) ve adım değiştiren somunlar; rehber_sira.py bağımsız denetler
     isil_gomme=dict(yontem=ISIL["yontem"], toplam=ISIL["toplam"], ev_sahipli=ISIL["ev_sahipli"], skor_alt=ISIL["skor_alt"],
                     evsiz=[dict(id=p["id"], ad=p["ad"], adim=p["kodr"]) for p in ISIL["evsiz"]],

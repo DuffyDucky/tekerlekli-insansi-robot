@@ -336,7 +336,7 @@ Akü Victron SuperPack 12,8 V 20 Ah (BMS 30 A sürekli) ── XT60 ── Ana s
                                                                                       │                                                                └─ SY8205 5 V ── P6KE6V8A ── micro USB Power: 10,1" QLED (Touch'tan 5 V köprülenmez)
                                                                                       ├─ F6 3 A ── LM2577 + LM2596 12 V ── 11,6" göğüs ekranı 12 V [K11 a: kutunun 6. yuvası, röle öncesi, acil stopta açık]
                                                                                       ├─ F4 5 A ── XL4016 çevre 5 V ── 2 A mini (O-19 a) ── ESP32 VIN, sonar ×3, enkoder (3V3 ESP32'den), PCA9685/BNO055 mantık (3V3)
-                                                                                      └─ F5 2 A ── mantar NC ── röle K1 bobini ∥ K2 bobini ── BC337-40 ── GND   (PC817 #1 mantar sonrası)
+                                                                                      └─ F5 2 A ── mantar NC ── röle K1 bobini ∥ K2 bobini (her bobin kendi BC337-40'ıyla, E9) ── BC337-40 ── GND   (PC817 #1 mantar sonrası)
 Veri: Pi (kafa) ── USB ≈ 1,57 m (VBUS'ta 1N5819) ── ESP32 (taban) ── I2C: PCA9685 (10 servo + 3 sonar trig), BNO055 ; PWM/EN/IS: BTS ×2 ; enkoder ×2 (A/B)
 Toprak: akü − ── yıldız noktası (güç paneli; M5 saplamalar + pabuç, saplama başına ≤ 4, O-3 r / düzeltme turu 1) ── tüm dönüştürücüler; kafa GND 12 V dönüşüyle
 ```
@@ -529,10 +529,10 @@ Bu blok `planlama/adim3/kablolar.json`'dan `py -3 planlama/adim3/kablolar_uret.p
 
 | Kablo | Dal | Kesit | Koruyan | Bölge | Düzeltilmiş sınır | Durum |
 |---|---|---|---|---|---|---|
-| A01 | F5-mantar-oncesi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kesin |
-| A02 | mantar-sonrasi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kesin |
+| A01 | F5-mantar-oncesi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
+| A02 | mantar-sonrasi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
 | A03 | mantar-sonrasi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
-| A04 | mantar-sonrasi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kesin |
+| A04 | mantar-sonrasi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
 | A05 | mantar-sonrasi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
 | A06 | mantar-sonrasi | 22 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kablajda teyit edilecek |
 | B01 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kablajda teyit edilecek |
@@ -553,15 +553,15 @@ Bu blok `planlama/adim3/kablolar.json`'dan `py -3 planlama/adim3/kablolar_uret.p
 | G15 | anahtarli-bara | 16 AWG | Hat sigortası B 7,5 A mini (XL4016 B girişi) (`hat-B`, 7,5 A) | etek 45 °C × 0,82 | 8,2 A | kablajda teyit edilecek |
 | G16 | anahtarli-bara | 16 AWG | Hat sigortası C 5 A mini (XL4016 C girişi) (`hat-C`, 5 A) | etek 45 °C × 0,82 | 8,2 A | kablajda teyit edilecek |
 | G17 | F3 | 18 AWG | F3 5 A (sigorta kutusu) (`F3`, 5 A) | kafa 49 °C × 0,75 | 5,25 A | kablajda teyit edilecek |
-| G18 | F4 | 18 AWG | F4 5 A (sigorta kutusu) (`F4`, 5 A) | etek 45 °C × 0,82 | 5,74 A | kesin |
-| G19 | F4 | 16 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 8,2 A | kesin |
+| G18 | F4 | 18 AWG | F4 5 A (sigorta kutusu) (`F4`, 5 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
+| G19 | F4 | 16 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 8,2 A | kablajda teyit edilecek |
 | G20 | F6 | 18 AWG | F6 3 A standart (sigorta kutusu) (`F6`, 3 A) | etek 45 °C × 0,82 | 5,74 A | karara bağlı |
 | G21 | F6 | 18 AWG | F6 3 A standart (sigorta kutusu) (`F6`, 3 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
-| G22 | anahtarli-bara | 22 AWG | Hat sigortası G22 2 A mini (bara ucunda) (`hat-G22`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kesin |
+| G22 | anahtarli-bara | 22 AWG | Hat sigortası G22 2 A mini (bara ucunda) (`hat-G22`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kablajda teyit edilecek |
 | I01 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kesin |
 | I02 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kesin |
-| K01 | F3 | 18 AWG | F3 5 A (sigorta kutusu) (`F3`, 5 A) | kafa 49 °C × 0,75 | 5,25 A | kesin |
-| K02 | F3 | 18 AWG | F3 5 A (sigorta kutusu) (`F3`, 5 A) | kafa 49 °C × 0,75 | 5,25 A | kesin |
+| K01 | F3 | 18 AWG | F3 5 A (sigorta kutusu) (`F3`, 5 A) | kafa 49 °C × 0,75 | 5,25 A | kablajda teyit edilecek |
+| K02 | F3 | 18 AWG | F3 5 A (sigorta kutusu) (`F3`, 5 A) | kafa 49 °C × 0,75 | 5,25 A | kablajda teyit edilecek |
 | K03 | F3 | 18 AWG | Pololu D24V50F5 aşırı akım koruması (`D24V50F5`, akım sınırı belgelenmemiş) | kafa 49 °C × 0,75 | 5,25 A (istisna: kafa-5v-donusturucu-arkasi) | kablajda teyit edilecek |
 | K04 | F3 | — (kesit bilinmiyor) | SY8205 düşürücü (kafa ekranı) (`SY8205`, akım sınırı belgelenmemiş) | kafa 49 °C × 0,75 | — (istisna: kafa-5v-donusturucu-arkasi) | kablajda teyit edilecek |
 | K05 | F3 | 18 AWG | Pololu D24V50F5 aşırı akım koruması (`D24V50F5`, akım sınırı belgelenmemiş) | kafa 49 °C × 0,75 | 5,25 A (istisna: kafa-5v-donusturucu-arkasi) | kablajda teyit edilecek |
@@ -584,9 +584,9 @@ Bu blok `planlama/adim3/kablolar.json`'dan `py -3 planlama/adim3/kablolar_uret.p
 | S08 | anahtarli-bara | 22 AWG | XL4016 B akım sınırı (`XL4016-B`, 10 A) | etek 45 °C × 0,82 | 2,46 A (istisna: servo-uzatmasi) | kesin |
 | S09 | anahtarli-bara | 22 AWG | XL4016 C akım sınırı (`XL4016-C`, 10 A) | kafa 49 °C × 0,75 | 2,25 A (istisna: servo-uzatmasi) | kesin |
 | S10 | anahtarli-bara | 22 AWG | XL4016 C akım sınırı (`XL4016-C`, 10 A) | kafa 49 °C × 0,75 | 2,25 A (istisna: servo-uzatmasi) | kablajda teyit edilecek |
-| SV1 | anahtarli-bara | 16 AWG | XL4016 A akım sınırı (`XL4016-A`, 10 A) | etek 45 °C × 0,82 | 8,2 A (istisna: servo-ana-hat-16awg) | kesin |
-| SV2 | anahtarli-bara | 16 AWG | XL4016 B akım sınırı (`XL4016-B`, 10 A) | etek 45 °C × 0,82 | 8,2 A (istisna: servo-ana-hat-16awg) | kesin |
-| SV3 | anahtarli-bara | 16 AWG | XL4016 C akım sınırı (`XL4016-C`, 10 A) | kafa 49 °C × 0,75 | 7,5 A (istisna: servo-ana-hat-16awg) | kesin |
+| SV1 | anahtarli-bara | 16 AWG | XL4016 A akım sınırı (`XL4016-A`, 10 A) | etek 45 °C × 0,82 | 8,2 A (istisna: servo-ana-hat-16awg) | kablajda teyit edilecek |
+| SV2 | anahtarli-bara | 16 AWG | XL4016 B akım sınırı (`XL4016-B`, 10 A) | etek 45 °C × 0,82 | 8,2 A (istisna: servo-ana-hat-16awg) | kablajda teyit edilecek |
+| SV3 | anahtarli-bara | 16 AWG | XL4016 C akım sınırı (`XL4016-C`, 10 A) | kafa 49 °C × 0,75 | 7,5 A (istisna: servo-ana-hat-16awg) | kablajda teyit edilecek |
 | X01 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kablajda teyit edilecek |
 
 <!-- kablolar_uret.py: blok sonu -->

@@ -87,6 +87,8 @@ ul.kontrol input{margin-top:4px;width:17px;height:17px;flex:none}
 ul.kontrol li.tamam span{color:var(--mut);text-decoration:line-through}
 ul.kablo li{padding:4px 0 4px 18px;border-top:1px solid var(--line);position:relative}
 ul.kablo li:before{content:"⌁";position:absolute;left:2px;color:var(--uyar)}
+/* P10.7b1: çizilen kablonun tablo bilgisi (kimlik, uçlar, kesit, sigorta, acil stop; planlama/adim3/kablolar.json) */
+.kb{color:var(--mut);font-size:12px;overflow-wrap:anywhere}
 .bos{color:var(--mut);font-size:13px;margin:4px 0}
 .notlar{border:1px solid var(--line);border-left:4px solid var(--uyar);border-radius:8px;padding:8px 12px;margin:10px 0;background:var(--card)}
 .notlar b{color:var(--uyar)}

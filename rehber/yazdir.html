@@ -83,16 +83,21 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
   function iki(n) { return (n < 10 ? "0" : "") + n; }
   // F10e: satır örneği gerçek renkte (satırın ilk parçasının CAD rengi, veri parcalar[].gr; kablo: renk), görüntülerle aynı
   var GR = {};
-  V.parcalar.forEach(function (p) { GR[p.id] = p.renk || p.gr; });
+  // P10.7b1 düzeltme turu 1: kablo rengi kâğıtta (beyaz zemin) açık tema tonuyla (veri rt.light; rehber_kablo.TEMA_TON)
+  function ton(x) { return (x.rt && x.rt.light) || x.renk; }
+  V.parcalar.forEach(function (p) { GR[p.id] = p.renk ? ton(p) : p.gr; });
   function ornek(x, yedek) { var c = x.ids && GR[x.ids[0]]; return c || yedek; }
   // F10f düzeltme 2 (kontrol F10f-kontrol-2 §4): kol kablo şemalarının kare içi lejantı basılı ölçekte ≈ 2,5 pt kalıyordu (1000 px tuvalde
   // CSS 12 px, kare 76 mm). Karenin altında metin olarak (≥ 8,1 pt): şemanın rengi ve app.js lejantındaki adı; soluk iz ayrıca.
   function lejantMetin(sema, iz) {
     var L = [];
     function ekle(i, soluk) {
-      var x = SEMA[i]; if (!x || !x.lejant) return;
-      var ad = x.lejant + (soluk ? " (soluk: öbür uç duruş)" : "");
-      if (!L.some(function (y) { return y[1] === ad; })) L.push([x.renk, ad, soluk]);
+      var x = SEMA[i]; if (!x) return;
+      // P10.7b1: kendi lejantı olmayan kol kablosu bölümü devre sınıfının adıyla (V.kablo_sinif, planlama/adim3/kablolar.json)
+      var ks = !x.lejant && x.ks && V.kablo_sinif && V.kablo_sinif[x.kt || x.ks];
+      if (!x.lejant && !ks) return;
+      var ad = (x.lejant || "Kablo: " + ks[1]) + (soluk ? " (soluk: öbür uç duruş)" : "");
+      if (!L.some(function (y) { return y[1] === ad; })) L.push([ton(x), ad, soluk]);
     }
     (sema || []).forEach(function (i) { ekle(i, false); });
     (iz || []).forEach(function (i) { ekle(i, true); });
@@ -137,8 +142,8 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
     b.push({ tur: "iki", h: "<h2>Kontrol listesi</h2>" + (st.kontrol.length ? "<ul class='kontrol'>" + st.kontrol.map(function (t) { return "<li><span>" + md(t) + "</span></li>"; }).join("") + "</ul>"
       : "<p class='bos'>Bu adım için kontrol listesi yazılmadı (erişim notuna bak).</p>") });
     var kab = st.kablo.map(function (t) { return "<li>" + md(t) + "</li>"; });
-    V.parcalar.forEach(function (p) { if (p.renk && p.a === s) kab.push("<li><i class='sw' style='background:" + p.renk + "'></i>" + esc(p.ad) + "</li>"); });
-    SEMA.forEach(function (x) { if (x.a === s) kab.push("<li><i class='sw' style='background:" + x.renk + "'></i>" + esc(x.ad) + " <span class='t'>(şema)</span></li>"); });
+    V.parcalar.forEach(function (p) { if (p.renk && p.a === s) kab.push("<li><i class='sw' style='background:" + ton(p) + "'></i>" + esc(p.ad) + "</li>"); });
+    SEMA.forEach(function (x) { if (x.a === s) kab.push("<li><i class='sw' style='background:" + ton(x) + "'></i>" + esc(x.ad) + " <span class='t'>(şema)</span></li>"); });
     b.push({ tur: "iki", h: "<h2>Kablo kancası</h2>" + (kab.length ? "<ul class='kablo'>" + kab.join("") + "</ul>" : "<p class='bos'>Bu adımda özel kablo işi yok.</p>") });
     b.push({ tur: "iki", h: "<h2>Erişim notu</h2><p class='not'>" + (st.erisim ? md(st.erisim) : "—") + "</p>" });
     // F10d: alt adım kartları (görüntü goruntu/adim-NN-JJ.png, rehber_uret.py ?adim=N.J&sahne=1)

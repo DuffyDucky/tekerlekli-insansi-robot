@@ -38,6 +38,9 @@ ALT_N = 4                          # elastika: 120 parçalık çözümün her 4.
 # karışıyordu); yeni uzatma rengi menekşe, rehberdeki bütün kablo ve şema renklerine ve iki zemine ΔE76 ≥ 51 (F10f-gunluk.md Düzeltme
 # turu 1). Bilek eki dirsek ekinden ayrı renkte (48.2 / 48.3: iki ek tek kabloda sırayla iki ek gibi okunuyordu). Kablo bağı (K noktası,
 # tambur bağı) ayrı işaret. Uç duruş U-lopları iki karede aynı renk (öbür duruş soluk iz, app.js "iz").
+# P10.7b1: kablo bölümlerinin (servo, uzatma, uzatma_b, poz_a, poz_b) veriye yazılan rengi ve yarıçapı artık planlama/adim3/kablolar.json
+# devre sınıfından (rehber_kablo.py; isle()); aşağıdaki servo / uzatma / poz renkleri yalnız türetme ara değeri. İşaretler (ek, ek_b, bag,
+# ek_nokta) kendi renginde kalır.
 RENK = dict(servo="#c47a00",       # servo kabloları (servonun kendi kablosu, ek yerine kadar)
             uzatma="#dd00ff",      # uzatmalar (ek yerinden gövdeye)
             uzatma_b="#8a2be2",    # aynı alt adımda ardışık ikinci uzatma bölümü (40.2: S2 lopu), bölüm sınırı görünsün
@@ -354,6 +357,8 @@ def isle(V=None, yazma=False, sessiz=False):
     if kendi:
         V = json.load(open(os.path.join(VERI_DIR, "rehber-veri.json"), encoding="utf-8"))
     B, bilgi, KY = turet()
+    import rehber_kablo as RKB                                      # P10.7b1: tek kablo kaynağı (renk, yarıçap, bilgi)
+    TBL = RKB.Tablo()
     kod_i = {a["kod"]: a["i"] for a in V["adimlar"]}
     S = [s for s in V["semalar"] if not str(s.get("kaynak", "")).startswith(KAYNAK + ":")]
     n0 = len(S)
@@ -391,9 +396,21 @@ def isle(V=None, yazma=False, sessiz=False):
             a, n = bag[anahtar]
             i = len(S)
             ad = ("Sağ" if not sol else "Sol") + " kol · " + b["ad"]
-            S.append(dict(ad=ad, kaynak="%s:%s" % (KAYNAK, anahtar), a=a, renk=b["renk"], boy_mm=round(sum(math.dist(p, q) for p, q in zip(b["pts"][:-1], b["pts"][1:]))),
-                          pts=[[round(c, 1) for c in glob(p, sol)] for p in b["pts"]], r=b["r"], t=V["adimlar"][a]["tezgah"] or "", kol=yan,
-                          tur=b["tur"], lejant=b["lejant"]))
+            s = dict(ad=ad, kaynak="%s:%s" % (KAYNAK, anahtar), a=a, renk=b["renk"], boy_mm=round(sum(math.dist(p, q) for p, q in zip(b["pts"][:-1], b["pts"][1:]))),
+                     pts=[[round(c, 1) for c in glob(p, sol)] for p in b["pts"]], r=b["r"], t=V["adimlar"][a]["tezgah"] or "", kol=yan,
+                     tur=b["tur"], lejant=b["lejant"])
+            # P10.7b1: kablo bölümünün rengi ve tüp yarıçapı planlama/adim3/kablolar.json'dan (devre sınıfı, kesit; rehber_kablo.py).
+            # İşaret bölümleri (ek, ek noktası, kablo bağı) kendi işaret rengini ve yarıçapını korur. Lejant: kendi notu olan bölüm
+            # (S2 lopu, uç duruş U-lopu) ve işaretler adıyla; öbür kablo bölümleri lejantta devre sınıfıyla (app.js kablo_sinif).
+            ids = RKB.kol_kimlik(anahtar)
+            if ids is None:
+                hata.append("kablo eşlemesi yok: %s (rehber_kablo.KOL_ESLEME)" % anahtar)
+            else:
+                isaret = b["tur"] in RKB.KOL_ISARET_TUR
+                s.update(TBL.cizim(ids, isaret=isaret))
+                if not isaret and b["lejant"] == LEJANT.get(b["tur"]) and b["tur"] not in ("poz_a", "poz_b"):
+                    s.pop("lejant")
+            S.append(s)
             g = V["adimlar"][a]["sira_grup"][n]
             g["sema"] = sorted(set(g.get("sema") or []) | {i})
             tablo.append(dict(sema=i, anahtar=anahtar, ad=ad, adim=V["adimlar"][a]["kod"], adres="%d.%d" % (a, n + 1), grup=g["ad"],

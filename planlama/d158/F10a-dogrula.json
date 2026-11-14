@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-14 01:00",
+ "tarih": "2026-11-14 15:31",
  "tarayici": "chrome.exe",
  "adim": 50,
  "yontem": "CDP (Chrome DevTools protokolü), file://; önce = 749627b~1 rehber sayfası geçici kopyada (three.js aynı 0.160 yerel paket)",
@@ -8,7 +8,7 @@
   "once_ortanca": 0.1732,
   "sonra_ortanca": 0.4013,
   "once_ortalama": 0.1648,
-  "sonra_ortalama": 0.379,
+  "sonra_ortalama": 0.3777,
   "once_tasan_adim": 0,
   "sonra_tasan_adim": 0,
   "sonra_tasan_parca": 0,
@@ -22,11 +22,11 @@
     "adim": 0,
     "kod": "0",
     "once": 0.1651,
-    "sonra": 0.2131,
+    "sonra": 0.1976,
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 1243,
+    "yeni_parca": 1241,
     "hazir": true,
     "hata": null
    },
@@ -226,7 +226,7 @@
     "adim": 17,
     "kod": "K1",
     "once": 0.1556,
-    "sonra": 0.3981,
+    "sonra": 0.3926,
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
@@ -394,11 +394,11 @@
     "adim": 31,
     "kod": "E4",
     "once": 0.209,
-    "sonra": 0.5138,
+    "sonra": 0.4764,
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 67,
+    "yeni_parca": 65,
     "hazir": true,
     "hata": null
    },
@@ -406,7 +406,7 @@
     "adim": 32,
     "kod": "K2",
     "once": 0.0996,
-    "sonra": 0.1148,
+    "sonra": 0.1059,
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
@@ -686,7 +686,7 @@
     "tur": "kablolama",
     "parca": {
      "id": "p1180",
-     "ad": "Kablo yolu 1: 12 V ana hat: akü + → XT60 → ana sigorta 30 A → ana anahtar → sigorta kutusu",
+     "ad": "Kablo yolu 1: 12 V ana hat (G01–G04, 12 AWG): akü + → XT60 → ana sigorta 30 A → ana anahtar → sigorta kutusu",
      "satir": null,
      "satir_ids": 1,
      "beklenen": 1,
@@ -706,7 +706,7 @@
     },
     "panel": {
      "secici": "#kablo [data-kid='p1180']",
-     "ad": "Kablo yolu 1: 12 V ana hat: akü + → XT60 → ana sigorta 30 A → ana anahtar → sigorta kutusu",
+     "ad": "Kablo yolu 1: 12 V ana hat (G01–G04, 12 AWG): akü + → XT60 → ana sigorta 30 A → ana anahtar → sigorta kutusu",
      "satir_ids": 1,
      "beklenen": 1,
      "vurgulu": 1,
@@ -989,7 +989,7 @@
    },
    "sema": {
     "sema": 0,
-    "ad": "Göğüs ekranı HDMI: Pi micro HDMI 1 → boyun → travers arkası → direk solu → ekran (F3'te takılır)",
+    "ad": "Göğüs ekranı HDMI (H02): Pi micro HDMI 1 → boyun → travers arkası → direk solu → ekran (F3'te takılır)",
     "vurgulu": 1,
     "etikette": true,
     "gecti": true
@@ -1042,9 +1042,9 @@
      {
       "adim": 31,
       "satir": 22,
-      "D_acilis": 607,
+      "D_acilis": 627,
       "D_patlak": 858,
-      "D_hepsi_takili": 607,
+      "D_hepsi_takili": 627,
       "D_geri_al": 858,
       "sira_son": {
        "n": 22,
@@ -1112,8 +1112,8 @@
    {
     "adim": 0,
     "var": true,
-    "oran": 0.1155,
-    "boyut_kb": 88.2,
+    "oran": 0.1276,
+    "boyut_kb": 86.3,
     "cizili": true
    },
    {
@@ -1197,14 +1197,14 @@
     "adim": 12,
     "var": true,
     "oran": 0.3868,
-    "boyut_kb": 105.5,
+    "boyut_kb": 105.3,
     "cizili": true
    },
    {
     "adim": 13,
     "var": true,
     "oran": 0.6939,
-    "boyut_kb": 136.9,
+    "boyut_kb": 137.0,
     "cizili": true
    },
    {
@@ -1218,7 +1218,7 @@
     "adim": 15,
     "var": true,
     "oran": 0.7962,
-    "boyut_kb": 174.1,
+    "boyut_kb": 174.0,
     "cizili": true
    },
    {
@@ -1232,7 +1232,7 @@
     "adim": 17,
     "var": true,
     "oran": 0.5369,
-    "boyut_kb": 195.2,
+    "boyut_kb": 194.6,
     "cizili": true
    },
    {
@@ -1288,7 +1288,7 @@
     "adim": 25,
     "var": true,
     "oran": 0.6303,
-    "boyut_kb": 179.7,
+    "boyut_kb": 179.8,
     "cizili": true
    },
    {
@@ -1329,43 +1329,43 @@
    {
     "adim": 31,
     "var": true,
-    "oran": 0.3456,
-    "boyut_kb": 120.5,
+    "oran": 0.3422,
+    "boyut_kb": 117.6,
     "cizili": true
    },
    {
     "adim": 32,
     "var": true,
-    "oran": 0.0919,
-    "boyut_kb": 107.5,
+    "oran": 0.1078,
+    "boyut_kb": 103.2,
     "cizili": true
    },
    {
     "adim": 33,
     "var": true,
     "oran": 0.2689,
-    "boyut_kb": 164.5,
+    "boyut_kb": 164.1,
     "cizili": true
    },
    {
     "adim": 34,
     "var": true,
-    "oran": 0.1965,
-    "boyut_kb": 146.3,
+    "oran": 0.1966,
+    "boyut_kb": 146.4,
     "cizili": true
    },
    {
     "adim": 35,
     "var": true,
     "oran": 0.4849,
-    "boyut_kb": 153.7,
+    "boyut_kb": 153.4,
     "cizili": true
    },
    {
     "adim": 36,
     "var": true,
     "oran": 0.5713,
-    "boyut_kb": 114.2,
+    "boyut_kb": 114.5,
     "cizili": true
    },
    {
@@ -1379,35 +1379,35 @@
     "adim": 38,
     "var": true,
     "oran": 0.6485,
-    "boyut_kb": 122.1,
+    "boyut_kb": 122.0,
     "cizili": true
    },
    {
     "adim": 39,
     "var": true,
     "oran": 0.7293,
-    "boyut_kb": 119.9,
+    "boyut_kb": 119.7,
     "cizili": true
    },
    {
     "adim": 40,
     "var": true,
     "oran": 0.6381,
-    "boyut_kb": 112.9,
+    "boyut_kb": 113.2,
     "cizili": true
    },
    {
     "adim": 41,
     "var": true,
     "oran": 0.7076,
-    "boyut_kb": 123.6,
+    "boyut_kb": 123.5,
     "cizili": true
    },
    {
     "adim": 42,
     "var": true,
     "oran": 0.1564,
-    "boyut_kb": 74.3,
+    "boyut_kb": 74.8,
     "cizili": true
    },
    {
@@ -1421,21 +1421,21 @@
     "adim": 44,
     "var": true,
     "oran": 0.2009,
-    "boyut_kb": 93.6,
+    "boyut_kb": 94.1,
     "cizili": true
    },
    {
     "adim": 45,
     "var": true,
     "oran": 0.1793,
-    "boyut_kb": 54.9,
+    "boyut_kb": 54.7,
     "cizili": true
    },
    {
     "adim": 46,
     "var": true,
     "oran": 0.18,
-    "boyut_kb": 64.6,
+    "boyut_kb": 64.4,
     "cizili": true
    },
    {
@@ -1449,14 +1449,14 @@
     "adim": 48,
     "var": true,
     "oran": 0.4536,
-    "boyut_kb": 94.6,
+    "boyut_kb": 94.5,
     "cizili": true
    },
    {
     "adim": 49,
     "var": true,
     "oran": 0.2213,
-    "boyut_kb": 122.1,
+    "boyut_kb": 122.0,
     "cizili": true
    }
   ],
@@ -1465,7 +1465,7 @@
   "en_dusuk": 0.0606,
   "pdf": {
    "olculdu": true,
-   "sayfa": 75,
+   "sayfa": 77,
    "goruntu": 121,
    "bos_sayfa": [],
    "en_dusuk": 0.0606
@@ -2188,7 +2188,7 @@
      "w": 170,
      "h": 227,
      "dolu": 4970,
-     "vurgu": 400,
+     "vurgu": 407,
      "tasma": 0,
      "genislik": 1400,
      "sahne_icinde": true,
@@ -3691,6 +3691,6 @@
  },
  "goruntu": [],
  "veri_degismedi": false,
- "sure_s": 434,
+ "sure_s": 437,
  "gecti": true
 }

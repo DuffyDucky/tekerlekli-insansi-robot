@@ -7,6 +7,7 @@
 #      özelliği × modülün gorsel betiğindeki RENK tablosu); ayrıca FCStd GuiDocument.xml'de kayıtlı yayınık renkle parça parça.
 #   2) renk_sahne: her konumda (50 adım + alt adımlar) sahnede yeni çizilen her parçanın malzeme rengi (RehberTest.renkler, sRGB) =
 #      verideki rengi (kablo: renk, öbürleri: gr). Bütün parçalar en az bir konumda yeni: 1192 parçanın her biri sayılır.
+#      P10.7b1 üretim uyumu (S3): kablo parçasında beklenen, etkin temanın tonu (veri rt[tema], rehber_kablo.TEMA_TON); ton yoksa renk.
 #   3) renk_demo: tasarım demosunun (tasarim/Robot-Tasarim-Demosu.html) bir parçaya verdiği renk = sayfadaki TUR tablosu × verideki r
 #      (sayfanın renkOf kuralı; sayfa render edilmez, three r128'i ağdan yükler) ↔ rehberin aynı parçaya verdiği renk (gerçek kip ve
 #      sınıf kipi, sahneden okunur). Örneklem: parça listesinde her 30. parça (≥ 30 parça).
@@ -235,6 +236,14 @@ def sahne_tara(c):
     return sonuc
 
 
+def beklenen_renk(p, tema):
+    """P10.7b1 üretim uyumu (S3): kablo parçası sahnede etkin temanın tonuyla çizilir (veri rt[tema]; tek kaynak rehber_kablo.TEMA_TON,
+    rehber_kablo.py --veri tablodan denetler); ton yoksa sınıf rengi (renk). Öbür parçalar gerçek renk (gr)."""
+    if p.get("renk"):
+        return ((p.get("rt") or {}).get(tema) or p["renk"]).lower()
+    return p["gr"].lower()
+
+
 def renk_sahne(T):
     gor, esit, yanlis = set(), set(), []
     for (tema, s, j), r in T.items():
@@ -243,13 +252,14 @@ def renk_sahne(T):
         for i, x in r["parca"].items():
             if x["d"] not in ("simdi", "alt"):
                 continue
-            bek = (PID[i].get("renk") or PID[i]["gr"]).lower()
+            bek = beklenen_renk(PID[i], tema)
             gor.add(i)
             if x["renk"].lower() == bek:
                 esit.add(i)
             else:
                 yanlis.append(dict(adres=adr(s, j), id=i, sahne=x["renk"], veri=bek))
-    return dict(yontem="her konumda (açık tema, ?renk=gercek) sahnede yeni çizilen parçanın malzeme rengi (sRGB) = veri (kablo: renk, öbürleri: gr)",
+    return dict(yontem="her konumda (açık tema, ?renk=gercek) sahnede yeni çizilen parçanın malzeme rengi (sRGB) = veri (kablo: temanın tonu "
+                       "rt[tema], yoksa renk; öbürleri: gr)",
                 parca=len(P), yeni_gorulen=len(gor), esit=len(esit - {y["id"] for y in yanlis}), yanlis=yanlis[:20], yanlis_sayi=len(yanlis),
                 gecti=len(gor) == len(P) and not yanlis)
 

@@ -7,28 +7,28 @@ Tablo sürümü 3, tarih 2026-11-14. Robottaki kabloların tek kaynağı. Okunur
 ## Özet
 
 - **74 kablo** (çok damarlı demet ve çiftler tek kayıt; damar sayısı 175).
-- Durum: kesin 31, kablajda teyit edilecek 42, karara bağlı 1.
+- Durum: kesin 20, kablajda teyit edilecek 53, karara bağlı 1.
 - Boyu CAD'de tasarlanmış yoldan ya da listeden belli: 17; belli değil: 57 (bunlarda yalnız etiketli kaba üst sınır var, `boy_tahmin`: tahmin, P10.7b'de ölçülecek).
 - Kesit kuralının kayıtlı istisnası: 25 kablo; kesit ↔ koruma uyuşmazlığı karara bağlı: 0 (-).
 - Acil stopta enerjili kalan: 44; enerjisiz: 30.
 
 | Demet | Kablo | Karara bağlı | Teyit | Kesin |
 |---|---|---|---|---|
-| taban alt kat | 12 | 0 | 8 | 4 |
-| taban (K1) | 17 | 1 | 13 | 3 |
+| taban alt kat | 12 | 0 | 12 | 0 |
+| taban (K1) | 17 | 1 | 16 | 0 |
 | taban elektronik katı | 10 | 0 | 5 | 5 |
 | taban sonar | 3 | 0 | 0 | 3 |
-| etek (F1) | 4 | 0 | 2 | 2 |
+| etek (F1) | 4 | 0 | 4 | 0 |
 | gövde (K2) | 3 | 0 | 2 | 1 |
 | boyun | 5 | 0 | 5 | 0 |
-| kafa içi | 11 | 0 | 6 | 5 |
+| kafa içi | 11 | 0 | 8 | 3 |
 | göğüs | 1 | 0 | 1 | 0 |
 | kol sağ | 4 | 0 | 0 | 4 |
 | kol sol | 4 | 0 | 0 | 4 |
 
 ## Renk kuralı
 
-İletken rengi kutbu gösterir: + kırmızı, − / GND siyah (listedeki 12 / 16 / 18 AWG silikon kablolar yalnız kırmızı ve siyah: maliyet.json 12, 16, 18 AWG satırları). Devre türü iki uçta ~2 cm renkli makaronla gösterilir (listedeki 328 parça renkli makaron seti; setteki renkler doğrulanmadı, eksik renk olursa uç etiketi) ve rehber çiziminde aynı renk kullanılır. Çizim renkleri rehberin bugünkü kablo paletinden (tasarim/freecad/rehber/rehber_veri.py kablo_rengi), anahtar kelime yerine devre türüne bağlanır. Belgelerde yazılı bir kablo rengi bulunmadı; korunacak renk yok.
+İletken rengi kutbu gösterir: + kırmızı, − / GND siyah (listedeki 12 / 16 / 18 AWG silikon kablolar yalnız kırmızı ve siyah: maliyet.json 12, 16, 18 AWG satırları). Devre türü iki uçta ~2 cm renkli makaronla gösterilir (listedeki 328 parça renkli makaron seti; setteki renkler doğrulanmadı, eksik renk olursa uç etiketi) ve rehber çiziminde aynı renk kullanılır. Çizim renkleri rehberin eski kablo paletinden (anahtar kelimeyle renk veren kablo_rengi, P10.7b1'de kaldırıldı) alındı; rehber çizimi bu sınıflara kablo kimliği üzerinden bağlanır (tasarim/freecad/rehber/rehber_kablo.py). Belgelerde yazılı bir kablo rengi bulunmadı; korunacak renk yok.
 
 | Sınıf | Devre | Uç makaronu | Rehber çizimi |
 |---|---|---|---|
@@ -97,10 +97,10 @@ Koruması olan güç dalları (aynı tablo `elektrik.md` sonunda üretilmiş blo
 
 | Kablo | Dal | Kesit | Koruyan | Bölge | Düzeltilmiş sınır | Durum |
 |---|---|---|---|---|---|---|
-| A01 | F5-mantar-oncesi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kesin |
-| A02 | mantar-sonrasi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kesin |
+| A01 | F5-mantar-oncesi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
+| A02 | mantar-sonrasi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
 | A03 | mantar-sonrasi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
-| A04 | mantar-sonrasi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kesin |
+| A04 | mantar-sonrasi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
 | A05 | mantar-sonrasi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
 | A06 | mantar-sonrasi | 22 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kablajda teyit edilecek |
 | B01 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kablajda teyit edilecek |
@@ -121,15 +121,15 @@ Koruması olan güç dalları (aynı tablo `elektrik.md` sonunda üretilmiş blo
 | G15 | anahtarli-bara | 16 AWG | Hat sigortası B 7,5 A mini (XL4016 B girişi) (`hat-B`, 7,5 A) | etek 45 °C × 0,82 | 8,2 A | kablajda teyit edilecek |
 | G16 | anahtarli-bara | 16 AWG | Hat sigortası C 5 A mini (XL4016 C girişi) (`hat-C`, 5 A) | etek 45 °C × 0,82 | 8,2 A | kablajda teyit edilecek |
 | G17 | F3 | 18 AWG | F3 5 A (sigorta kutusu) (`F3`, 5 A) | kafa 49 °C × 0,75 | 5,25 A | kablajda teyit edilecek |
-| G18 | F4 | 18 AWG | F4 5 A (sigorta kutusu) (`F4`, 5 A) | etek 45 °C × 0,82 | 5,74 A | kesin |
-| G19 | F4 | 16 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 8,2 A | kesin |
+| G18 | F4 | 18 AWG | F4 5 A (sigorta kutusu) (`F4`, 5 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
+| G19 | F4 | 16 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 8,2 A | kablajda teyit edilecek |
 | G20 | F6 | 18 AWG | F6 3 A standart (sigorta kutusu) (`F6`, 3 A) | etek 45 °C × 0,82 | 5,74 A | karara bağlı |
 | G21 | F6 | 18 AWG | F6 3 A standart (sigorta kutusu) (`F6`, 3 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
-| G22 | anahtarli-bara | 22 AWG | Hat sigortası G22 2 A mini (bara ucunda) (`hat-G22`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kesin |
+| G22 | anahtarli-bara | 22 AWG | Hat sigortası G22 2 A mini (bara ucunda) (`hat-G22`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kablajda teyit edilecek |
 | I01 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kesin |
 | I02 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kesin |
-| K01 | F3 | 18 AWG | F3 5 A (sigorta kutusu) (`F3`, 5 A) | kafa 49 °C × 0,75 | 5,25 A | kesin |
-| K02 | F3 | 18 AWG | F3 5 A (sigorta kutusu) (`F3`, 5 A) | kafa 49 °C × 0,75 | 5,25 A | kesin |
+| K01 | F3 | 18 AWG | F3 5 A (sigorta kutusu) (`F3`, 5 A) | kafa 49 °C × 0,75 | 5,25 A | kablajda teyit edilecek |
+| K02 | F3 | 18 AWG | F3 5 A (sigorta kutusu) (`F3`, 5 A) | kafa 49 °C × 0,75 | 5,25 A | kablajda teyit edilecek |
 | K03 | F3 | 18 AWG | Pololu D24V50F5 aşırı akım koruması (`D24V50F5`, akım sınırı belgelenmemiş) | kafa 49 °C × 0,75 | 5,25 A (istisna: kafa-5v-donusturucu-arkasi) | kablajda teyit edilecek |
 | K04 | F3 | — (kesit bilinmiyor) | SY8205 düşürücü (kafa ekranı) (`SY8205`, akım sınırı belgelenmemiş) | kafa 49 °C × 0,75 | — (istisna: kafa-5v-donusturucu-arkasi) | kablajda teyit edilecek |
 | K05 | F3 | 18 AWG | Pololu D24V50F5 aşırı akım koruması (`D24V50F5`, akım sınırı belgelenmemiş) | kafa 49 °C × 0,75 | 5,25 A (istisna: kafa-5v-donusturucu-arkasi) | kablajda teyit edilecek |
@@ -152,9 +152,9 @@ Koruması olan güç dalları (aynı tablo `elektrik.md` sonunda üretilmiş blo
 | S08 | anahtarli-bara | 22 AWG | XL4016 B akım sınırı (`XL4016-B`, 10 A) | etek 45 °C × 0,82 | 2,46 A (istisna: servo-uzatmasi) | kesin |
 | S09 | anahtarli-bara | 22 AWG | XL4016 C akım sınırı (`XL4016-C`, 10 A) | kafa 49 °C × 0,75 | 2,25 A (istisna: servo-uzatmasi) | kesin |
 | S10 | anahtarli-bara | 22 AWG | XL4016 C akım sınırı (`XL4016-C`, 10 A) | kafa 49 °C × 0,75 | 2,25 A (istisna: servo-uzatmasi) | kablajda teyit edilecek |
-| SV1 | anahtarli-bara | 16 AWG | XL4016 A akım sınırı (`XL4016-A`, 10 A) | etek 45 °C × 0,82 | 8,2 A (istisna: servo-ana-hat-16awg) | kesin |
-| SV2 | anahtarli-bara | 16 AWG | XL4016 B akım sınırı (`XL4016-B`, 10 A) | etek 45 °C × 0,82 | 8,2 A (istisna: servo-ana-hat-16awg) | kesin |
-| SV3 | anahtarli-bara | 16 AWG | XL4016 C akım sınırı (`XL4016-C`, 10 A) | kafa 49 °C × 0,75 | 7,5 A (istisna: servo-ana-hat-16awg) | kesin |
+| SV1 | anahtarli-bara | 16 AWG | XL4016 A akım sınırı (`XL4016-A`, 10 A) | etek 45 °C × 0,82 | 8,2 A (istisna: servo-ana-hat-16awg) | kablajda teyit edilecek |
+| SV2 | anahtarli-bara | 16 AWG | XL4016 B akım sınırı (`XL4016-B`, 10 A) | etek 45 °C × 0,82 | 8,2 A (istisna: servo-ana-hat-16awg) | kablajda teyit edilecek |
+| SV3 | anahtarli-bara | 16 AWG | XL4016 C akım sınırı (`XL4016-C`, 10 A) | kafa 49 °C × 0,75 | 7,5 A (istisna: servo-ana-hat-16awg) | kablajda teyit edilecek |
 | X01 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kablajda teyit edilecek |
 
 ### Uç türleri: klemens, bara, lehim, fiş (O-3; düzeltme turu 2: her damar ucunun türü uc_turu alanında)
@@ -315,6 +315,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | M− | BTS7960 sol · M− | JGB37 ön sol · motor − |  |
 
 - Teyit: motor gelince kablo kesiti okunur ve tabloya yazılır; 18 AWG'den inceyse orkestratöre; uzatma gerekirse 12 AWG (O-16)
+- Teyit: klemens: BTS7960 sol motor çıkış klemensinin (M+ / M−) kesit aralığı ve aldığı iletken türü satıcı sayfasında yok (uç türü bts-guc); motorun kendi kablosunun ucu teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)
 - Not: Koruma: ince motor kablosunu F1 korumaz. Sürekli akımı motor sargısı sınırlar (durma akımı 2,8 A, tahmini, EL:157); kablo içi kısa devrede koruma BTS7960'ın anahtarlamalı akım sınırlaması + mandallı ısıl kapatması (veri sayfası) ve yazılımın IS akım ölçümü arıza bayrağında EN'i kesmesi (firmware şartı, Efe'ye bildirilecek).
 - Kaynak: `planlama/adim3/elektrik.md:326-327`, `planlama/adim3/elektrik.md:352` · 10.11 dökümü: #12
 
@@ -335,6 +336,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | M− | BTS7960 sol · M− | JGB37 arka sol · motor − |  |
 
 - Teyit: motor gelince kablo kesiti okunur ve tabloya yazılır; 18 AWG'den inceyse orkestratöre; uzatma gerekirse 12 AWG (O-16)
+- Teyit: klemens: BTS7960 sol motor çıkış klemensinin (M+ / M−) kesit aralığı ve aldığı iletken türü satıcı sayfasında yok (uç türü bts-guc); motorun kendi kablosunun ucu teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)
 - Not: Koruma: ince motor kablosunu F1 korumaz. Sürekli akımı motor sargısı sınırlar (durma akımı 2,8 A, tahmini, EL:157); kablo içi kısa devrede koruma BTS7960'ın anahtarlamalı akım sınırlaması + mandallı ısıl kapatması (veri sayfası) ve yazılımın IS akım ölçümü arıza bayrağında EN'i kesmesi (firmware şartı, Efe'ye bildirilecek).
 - Kaynak: `planlama/adim3/elektrik.md:326-327`, `planlama/adim3/elektrik.md:352` · 10.11 dökümü: #13
 
@@ -355,6 +357,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | M− | BTS7960 sağ · M− | JGB37 ön sağ · motor − |  |
 
 - Teyit: motor gelince kablo kesiti okunur ve tabloya yazılır; 18 AWG'den inceyse orkestratöre; uzatma gerekirse 12 AWG (O-16)
+- Teyit: klemens: BTS7960 sağ motor çıkış klemensinin (M+ / M−) kesit aralığı ve aldığı iletken türü satıcı sayfasında yok (uç türü bts-guc); motorun kendi kablosunun ucu teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)
 - Not: Koruma: ince motor kablosunu F1 korumaz. Sürekli akımı motor sargısı sınırlar (durma akımı 2,8 A, tahmini, EL:157); kablo içi kısa devrede koruma BTS7960'ın anahtarlamalı akım sınırlaması + mandallı ısıl kapatması (veri sayfası) ve yazılımın IS akım ölçümü arıza bayrağında EN'i kesmesi (firmware şartı, Efe'ye bildirilecek).
 - Kaynak: `planlama/adim3/elektrik.md:326-327`, `planlama/adim3/elektrik.md:352` · 10.11 dökümü: #14
 
@@ -375,6 +378,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | M− | BTS7960 sağ · M− | JGB37 arka sağ · motor − |  |
 
 - Teyit: motor gelince kablo kesiti okunur ve tabloya yazılır; 18 AWG'den inceyse orkestratöre; uzatma gerekirse 12 AWG (O-16)
+- Teyit: klemens: BTS7960 sağ motor çıkış klemensinin (M+ / M−) kesit aralığı ve aldığı iletken türü satıcı sayfasında yok (uç türü bts-guc); motorun kendi kablosunun ucu teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)
 - Not: Koruma: ince motor kablosunu F1 korumaz. Sürekli akımı motor sargısı sınırlar (durma akımı 2,8 A, tahmini, EL:157); kablo içi kısa devrede koruma BTS7960'ın anahtarlamalı akım sınırlaması + mandallı ısıl kapatması (veri sayfası) ve yazılımın IS akım ölçümü arıza bayrağında EN'i kesmesi (firmware şartı, Efe'ye bildirilecek).
 - Kaynak: `planlama/adim3/elektrik.md:326-327`, `planlama/adim3/elektrik.md:352` · 10.11 dökümü: #15
 
@@ -437,6 +441,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | − | XL4016 A · IN− | Yıldız barası · GND |  |
 
 - Teyit: güç barası ürünü seçilmedi (fiyat bekliyor): saplama ölçüsü ve pabuç deliği teslimde
+- Teyit: klemens: XL4016 A giriş klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 16 AWG ince telli uç teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)
 - Kaynak: `planlama/adim3/elektrik.md:328`, `planlama/adim3/elektrik.md:223`, `planlama/adim3/elektrik.md:370`, `planlama/maliyet.json:122` · 10.11 dökümü: #16
 
 #### G15 · Anahtarlı bara → 7,5 A hat sigortası → XL4016 B girişi
@@ -456,11 +461,12 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | − | XL4016 B · IN− | Yıldız barası · GND |  |
 
 - Teyit: güç barası ürünü seçilmedi (fiyat bekliyor): saplama ölçüsü ve pabuç deliği teslimde
+- Teyit: klemens: XL4016 B giriş klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 16 AWG ince telli uç teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)
 - Kaynak: `planlama/adim3/elektrik.md:329`, `planlama/adim3/elektrik.md:223`, `planlama/adim3/elektrik.md:370`, `planlama/maliyet.json:122` · 10.11 dökümü: #17
 
 #### G18 · F4 5 A → XL4016 çevre girişi
 
-- **Devre:** güç 12 V (çevre dalı) · **dal:** F4 · **durum:** kesin
+- **Devre:** güç 12 V (çevre dalı) · **dal:** F4 · **durum:** kablajda teyit edilecek
 - **Uçlar:** Sigorta kutusu (F4 5 A çıkışı / Yıldız barası) → XL4016 çevre (IN+ / IN−)
 - **Kesit:** 18 AWG (0,82 mm²) · **renk:** + kırmızı, − / GND siyah; makaron kırmızı
 - **Koruma:** F4 5 A (sigorta kutusu) (`F4`, 5 A) · **acil stopta:** enerjili
@@ -474,11 +480,12 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | + | Sigorta kutusu · F4 çıkışı | XL4016 çevre · IN+ |  |
 | − | XL4016 çevre · IN− | Yıldız barası · GND |  |
 
+- Teyit: klemens: sigorta kutusunun F4 çıkış ucu (uç türü sigorta-kutusu) ve XL4016 çevre giriş klemensinin (uç türü modul-vidali) kesit aralığı ve aldığı iletken türü belgede yok; 18 AWG ince telli uçlar teslimde denenir (KT3) (P10.7b, dördüncü bakış §2-5)
 - Kaynak: `planlama/adim3/elektrik.md:338`, `planlama/adim3/elektrik.md:368` · 10.11 dökümü: #39 (bölündü)
 
 #### G19 · XL4016 çevre 5 V → arayüz kartı 5 V klemensi
 
-- **Devre:** 5 V çevre · **dal:** F4 · **durum:** kesin
+- **Devre:** 5 V çevre · **dal:** F4 · **durum:** kablajda teyit edilecek
 - **Uçlar:** XL4016 çevre (OUT+ / OUT−) → Arayüz kartı (çevre 5 V / GND)
 - **Kesit:** 16 AWG (1,31 mm²); 16 AWG (O-1 / O-2 dönüştürücü kuralıyla seçildi); 14.11'den beri koruyan çıkıştaki 2 A çevre hat sigortası (O-19 a): 16 AWG'nin etekteki 8,2 A'inin çok altında · **renk:** + kırmızı, − / GND siyah; makaron mavi
 - **Koruma:** Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) · **acil stopta:** enerjili
@@ -492,11 +499,12 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | +5 V | XL4016 çevre · OUT+ | Arayüz kartı · çevre 5 V | ara: 2 A mini hat sigortası yuvası (16 AWG kuyruklu), XL4016 çevre OUT+ ucunun dibinde (O-19 a, orkestratör kararı 14.11) |
 | GND | XL4016 çevre · OUT− | Arayüz kartı · GND |  |
 
+- Teyit: klemens: XL4016 çevre çıkış klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 16 AWG ince telli uç teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)
 - Kaynak: `planlama/adim3/elektrik.md:338`, `planlama/adim3/elektrik.md:283`, `planlama/adim3/elektrik.md:353` · 10.11 dökümü: #39 (bölündü)
 
 #### SV1 · XL4016 A 6 V → dağıtım kartı A
 
-- **Devre:** servo gücü · **dal:** anahtarli-bara · **durum:** kesin
+- **Devre:** servo gücü · **dal:** anahtarli-bara · **durum:** kablajda teyit edilecek
 - **Uçlar:** XL4016 A (OUT+ / OUT−) → Dağıtım kartı A (V+ / GND)
 - **Kesit:** 16 AWG (1,31 mm²) · **renk:** servo uzatmasının üretici renkleri (GND koyu, V+ kırmızı, sinyal açık; teslimde bakılır); makaron sarı
 - **Koruma:** XL4016 A akım sınırı (`XL4016-A`, 10 A) · **acil stopta:** enerjisiz
@@ -510,11 +518,12 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | V+ | XL4016 A · OUT+ | Dağıtım kartı A · V+ |  |
 | GND | XL4016 A · OUT− | Dağıtım kartı A · GND |  |
 
+- Teyit: klemens: XL4016 A çıkış klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 16 AWG ince telli uç teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)
 - Kaynak: `planlama/adim3/elektrik.md:224-225`, `planlama/adim3/elektrik.md:328` · 10.11 dökümü: #19
 
 #### SV2 · XL4016 B 6 V → dağıtım kartı B
 
-- **Devre:** servo gücü · **dal:** anahtarli-bara · **durum:** kesin
+- **Devre:** servo gücü · **dal:** anahtarli-bara · **durum:** kablajda teyit edilecek
 - **Uçlar:** XL4016 B (OUT+ / OUT−) → Dağıtım kartı B (V+ / GND)
 - **Kesit:** 16 AWG (1,31 mm²) · **renk:** servo uzatmasının üretici renkleri (GND koyu, V+ kırmızı, sinyal açık; teslimde bakılır); makaron sarı
 - **Koruma:** XL4016 B akım sınırı (`XL4016-B`, 10 A) · **acil stopta:** enerjisiz
@@ -528,6 +537,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | V+ | XL4016 B · OUT+ | Dağıtım kartı B · V+ |  |
 | GND | XL4016 B · OUT− | Dağıtım kartı B · GND |  |
 
+- Teyit: klemens: XL4016 B çıkış klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 16 AWG ince telli uç teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)
 - Kaynak: `planlama/adim3/elektrik.md:224-225`, `planlama/adim3/elektrik.md:329` · 10.11 dökümü: #20
 
 ### taban (K1) (17)
@@ -630,7 +640,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 
 #### SV3 · XL4016 C 6 V → kafa servoları klemensi
 
-- **Devre:** servo gücü · **dal:** anahtarli-bara · **durum:** kesin
+- **Devre:** servo gücü · **dal:** anahtarli-bara · **durum:** kablajda teyit edilecek
 - **Uçlar:** XL4016 C (OUT+ / OUT−) → Dağıtım kartı C (kafa) (V+ / GND)
 - **Kesit:** 16 AWG (1,31 mm²) · **renk:** servo uzatmasının üretici renkleri (GND koyu, V+ kırmızı, sinyal açık; teslimde bakılır); makaron sarı
 - **Koruma:** XL4016 C akım sınırı (`XL4016-C`, 10 A) · **acil stopta:** enerjisiz
@@ -644,6 +654,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | V+ | XL4016 C · OUT+ | Dağıtım kartı C (kafa) · V+ |  |
 | GND | XL4016 C · OUT− | Dağıtım kartı C (kafa) · GND |  |
 
+- Teyit: klemens: XL4016 C çıkış klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 16 AWG ince telli uç teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)
 - Not: Dağıtım kartı C (kafa): XL4016 C'nin yanında küçük pertinaks; 16 AWG giriş → V+ / GND barası → 2200 µF → iki 3 pinli çıkış (pan, tilt); sinyal PCA'dan köprü (P03). Kol kartlarının yöntemi (EL:225), O-8.
 - Kaynak: `planlama/adim3/elektrik.md:330`, `planlama/adim3/elektrik.md:129` · 10.11 dökümü: #21
 
@@ -668,19 +679,20 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 
 #### A04 · Acil stop düğümü → röle K2 bobini (+) (ön şarj kartı)
 
-- **Devre:** acil stop · **dal:** mantar-sonrasi · **durum:** kesin
+- **Devre:** acil stop · **dal:** mantar-sonrasi · **durum:** kablajda teyit edilecek
 - **Uçlar:** Acil stop düğümü (+) → Ön şarj kartı (K2 bobini +)
 - **Kesit:** 18 AWG (0,82 mm²) · **renk:** + kırmızı, − / GND siyah; makaron yeşil
 - **Koruma:** F5 2 A (sigorta kutusu) (`F5`, 2 A) · **acil stopta:** enerjisiz
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F5 → mantar · **ortak dönüş:** A05
 - **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 600 mm; Manhattan 459 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: düğüm → mantar vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
-- **Rehber adımı:** 17 K1 · **sonlandırma:** düğüm ucu: acil stop düğüm kartı (güç panelinde küçük pertinaks parçası): iki adet 2 pin 5,08 mm vidalı klemens, dört ucu kart üstünde lehimle köprülü; ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz); ön şarj kartı ucu K2 bobin klemensi (2 pin 5,08 mm)
+- **Rehber adımı:** 17 K1 · **sonlandırma:** düğüm ucu: acil stop düğüm kartı (güç panelinde küçük pertinaks parçası): iki adet 2 pin 5,08 mm vidalı klemens, dört ucu kart üstünde ≥ 18 AWG tel köprüyle (lehim; kafa giriş kartıyla aynı yöntem); ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz); ön şarj kartı ucu K2 bobin klemensi (2 pin 5,08 mm)
 - **Uç türü (uc_turu):** a: klemens-508 · b: klemens-508
 
 | Damar | Uç A | Uç B | Pin / kanal / not |
 |---|---|---|---|
 | + | Acil stop düğümü (mantar NC çıkışı) · + | Ön şarj kartı · K2 bobini + |  |
 
+- Teyit: klemens: 2 pin 5,08 mm vidalı klemensin (acil stop düğüm kartı ve ön şarj kartının K2 bobin klemensi) kesit aralığı satıcı sayfasında yok (klemens_turleri.klemens-508); 18 AWG ince telli uç teslimde takılıp çekilerek denenir (öbür klemens-508 uçlularla aynı ölçüt; F10h-kontrol §2-14)
 - Kaynak: `planlama/adim3/elektrik.md:443-444`, `planlama/adim3/elektrik.md:369` · 10.11 dökümü: #42 (bölündü)
 
 #### A05 · Röle K2 bobini (−) → BC337-40 #2 kollektörü (arayüz kartı)
@@ -718,6 +730,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | − | PC817 modülü · IN1 − | Arayüz kartı · GND |  |
 
 - Teyit: klemens: 5,08 mm klemensin kesit aralığı belgesiz (satıcı sayfasında yok); 22 AWG uç kartta lehim + makaron; teslimde aralık okunursa yeniden bakılır
+- Teyit: klemens: PC817 modülü giriş klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 22 AWG ince telli uç teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)
 - Kaynak: `planlama/adim3/elektrik.md:235`, `planlama/adim3/elektrik.md:251`, `planlama/adim3/elektrik.md:339` · 10.11 dökümü: #41 (bölündü: PC817 #1)
 
 #### G02 · XT60 → ana sigorta 30 A
@@ -814,6 +827,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | − | XL4016 C · IN− | Yıldız barası · GND |  |
 
 - Teyit: güç barası ürünü seçilmedi (fiyat bekliyor): saplama ölçüsü ve pabuç deliği teslimde
+- Teyit: klemens: XL4016 C giriş klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 16 AWG ince telli uç teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)
 - Kaynak: `planlama/adim3/elektrik.md:330`, `planlama/adim3/elektrik.md:129`, `planlama/maliyet.json:122` · 10.11 dökümü: #18
 
 #### G20 · F6 3 A → göğüs ekranı regülatörü (LM2577 + LM2596) girişi
@@ -833,12 +847,13 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | − | Göğüs regülatörü · IN− | Yıldız barası · GND |  |
 
 - Eksik: regülatörün panel yeri açık (K52, planlama/d158/karar-kuyrugu.md): uç yeri ve boy bu karara bağlı
+- Teyit: klemens: sigorta kutusunun F6 çıkış ucu (uç türü sigorta-kutusu) ve göğüs regülatörü giriş klemensinin (uç türü modul-vidali) kesit aralığı belgede yok; 18 AWG ince telli uçlar teslimde denenir (P10.7b, dördüncü bakış §2-5)
 - Not: 14.11 K11 a ile kaynak kutunun 6. yuvası (F6 3 A standart)
 - Kaynak: `planlama/adim3/elektrik.md:62`, `planlama/adim3/elektrik.md:68`, `planlama/adim3/elektrik.md:371`, `planlama/adim3/kablolama-on-kararlar.md:88-94`, `planlama/adim3/kablolama-on-kararlar.md:342` · 10.11 dökümü: #43 (bölündü: F6 dalı)
 
 #### G22 · Anahtarlı bara → PC817 #2 girişi (bara durumu)
 
-- **Devre:** anahtarlı bara (algı) · **dal:** anahtarli-bara · **durum:** kesin
+- **Devre:** anahtarlı bara (algı) · **dal:** anahtarli-bara · **durum:** kablajda teyit edilecek
 - **Uçlar:** Anahtarlı bara (+) → PC817 modülü (arayüz kartı) (IN2 + / IN2 −)
 - **Kesit:** 22 AWG (0,33 mm²) · **renk:** 22 AWG çok telli sinyal teli (4 renk: + kırmızı, GND siyah, sinyal sarı / mavi); makaron turuncu
 - **Koruma:** Hat sigortası G22 2 A mini (bara ucunda) (`hat-G22`, 2 A) · **acil stopta:** enerjisiz
@@ -852,6 +867,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | + | Anahtarlı bara · + | PC817 modülü · IN2 + | ara: mini hat sigortası yuvası + 2 A mini bıçak, bara ucunun dibinde (O-18 b) |
 | − | PC817 modülü · IN2 − | Yıldız barası · GND |  |
 
+- Teyit: klemens: PC817 modülü giriş klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 22 AWG ince telli uç (0,33 mm²) teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)
 - Not: O-18 b (orkestratör kararı, 14.11.2026): telin kaynak (bara) ucunda hat sigortası 2 A; 22 AWG (3 A) korunur. Listedeki hat yuvası mini / micro bıçak alır; 'standart' değil mini 2 A (maliyet.json '2A Mini' satırı).
 - Kaynak: `planlama/adim3/elektrik.md:236`, `planlama/adim3/elektrik.md:331`, `planlama/adim3/pin-haritasi.md:97` · 10.11 dökümü: #32 (bölündü: giriş)
 
@@ -1144,7 +1160,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 
 #### A01 · F5 2 A → acil stop mantarı (NC) girişi
 
-- **Devre:** acil stop · **dal:** F5-mantar-oncesi · **durum:** kesin
+- **Devre:** acil stop · **dal:** F5-mantar-oncesi · **durum:** kablajda teyit edilecek
 - **Uçlar:** Sigorta kutusu (F5 2 A çıkışı) → Acil stop mantarı NP2 BE102 (NC giriş)
 - **Kesit:** 18 AWG (0,82 mm²) · **renk:** + kırmızı, − / GND siyah; makaron yeşil
 - **Koruma:** F5 2 A (sigorta kutusu) (`F5`, 2 A) · **acil stopta:** enerjili
@@ -1157,17 +1173,18 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 |---|---|---|---|
 | + | Sigorta kutusu · F5 çıkışı | Acil stop mantarı · NC giriş |  |
 
+- Teyit: klemens: sigorta kutusunun F5 çıkış ucu (uç türü sigorta-kutusu) ve acil stop mantarı kontak vidasının (uç türü modul-vidali) kesit aralığı belgede yok; 18 AWG ince telli uçlar teslimde denenir (KT3) (P10.7b, dördüncü bakış §2-5)
 - Kaynak: `planlama/adim3/elektrik.md:339`, `planlama/adim3/elektrik.md:249`, `planlama/adim3/elektrik.md:369`, `planlama/adim3/kablolama-on-kararlar.md:358` · 10.11 dökümü: #41 (bölündü)
 
 #### A02 · Mantar NC çıkışı → röle K1 bobini (+, 86)
 
-- **Devre:** acil stop · **dal:** mantar-sonrasi · **durum:** kesin
+- **Devre:** acil stop · **dal:** mantar-sonrasi · **durum:** kablajda teyit edilecek
 - **Uçlar:** Acil stop mantarı (NC çıkış) → Röle K1 (86 (bobin +))
 - **Kesit:** 18 AWG (0,82 mm²) · **renk:** + kırmızı, − / GND siyah; makaron yeşil
 - **Koruma:** F5 2 A (sigorta kutusu) (`F5`, 2 A) · **acil stopta:** enerjisiz
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F5 → mantar · **ortak dönüş:** A03
 - **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 450 mm; Manhattan 332 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: düğüm güç panelinde: mantar → röle. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
-- **Rehber adımı:** 17 K1, 33 F1 · **sonlandırma:** mantar vidası → Ö4 için iki uçlu yer (2 pin 5,08 klemens, köprülü) → acil stop düğüm kartı (güç panelinde küçük pertinaks parçası): iki adet 2 pin 5,08 mm vidalı klemens, dört ucu kart üstünde lehimle köprülü; ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz) → röle soketi kuyruğu (O-6 a / c)
+- **Rehber adımı:** 17 K1, 33 F1 · **sonlandırma:** mantar vidası → Ö4 için iki uçlu yer (2 pin 5,08 klemens, köprülü) → acil stop düğüm kartı (güç panelinde küçük pertinaks parçası): iki adet 2 pin 5,08 mm vidalı klemens, dört ucu kart üstünde ≥ 18 AWG tel köprüyle (lehim; kafa giriş kartıyla aynı yöntem); ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz) → röle soketi kuyruğu (O-6 a / c)
 - **Uç türü (uc_turu):** a: klemens-508, modul-vidali · b: klemens-508, lehim
 
 | Damar | Uç A | Uç B | Pin / kanal / not |
@@ -1175,6 +1192,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | + | Acil stop mantarı · NC çıkış | Acil stop düğümü (mantar NC çıkışı) · + |  |
 | + | Acil stop düğümü (mantar NC çıkışı) · + | Röle K1 · 86 |  |
 
+- Teyit: klemens: acil stop mantarı kontak vidasının kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 18 AWG ince telli uç teslimde denenir (P10.7b, dördüncü bakış §2-5)
 - Not: Ö4 (elde taşınan acil stop) açık: Ahmet + Efe; köprü Ö4 gelirse kumandalı rölenin kontağıyla değişir.
 - Kaynak: `planlama/adim3/elektrik.md:249`, `planlama/adim3/elektrik.md:443`, `planlama/adim3/kablolama-on-kararlar.md:265-266` · 10.11 dökümü: #41 (bölündü)
 
@@ -1286,7 +1304,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Koruma:** F3 5 A (sigorta kutusu) (`F3`, 5 A) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3
 - **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 2.050 mm; Manhattan 1.633 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: kafa giriş klemensi CAD'de yok: D24V50F5 / SY8205'ten uzak olanı. toplam boy kaynakta yok (kablo-kurali-notu:26); P10.7b'de ölçülecek
-- **Rehber adımı:** 17 K1, 32 K2, 29 E3a · **sonlandırma:** boyundan fişsiz geçer, uç kontakları / pabuçları geçirdikten sonra takılır (KOK §4 sıra 5); kafa ucu: kafa giriş kartı (küçük pertinaks parçası, P6KE18A üstünde): üç adet 2 pin 5,08 mm vidalı klemens, + uçları ve − uçları kart üstünde lehimle köprülü; ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz)
+- **Rehber adımı:** 17 K1, 32 K2, 29 E3a · **sonlandırma:** boyundan fişsiz geçer, uç kontakları / pabuçları geçirdikten sonra takılır (KOK §4 sıra 5); kafa ucu: kafa giriş kartı (küçük pertinaks parçası, P6KE18A üstünde): üç adet 2 pin 5,08 mm vidalı klemens, + uçları ve − uçları kart üstünde ≥ 18 AWG tel köprüyle (lehim; delikli plaket pedi F3 5 A akım yolu değil, dördüncü bakış §2-7); ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz)
 - **Uç türü (uc_turu):** a: bara-pabuc, sigorta-kutusu · b: klemens-508
 
 | Damar | Uç A | Uç B | Pin / kanal / not |
@@ -1295,6 +1313,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | − | Yıldız barası · GND | Kafa giriş klemensi · GND |  |
 
 - Teyit: KT4: boyun içi geçiş ve pan ±90 / tilt ±13'te büküm
+- Teyit: klemens: sigorta kutusunun F3 çıkış ucunun tipi ve kesit aralığı ürün sayfasında yok (uç türü sigorta-kutusu); 18 AWG ince telli uç teslimde denenir (KT3) (P10.7b, dördüncü bakış §2-5)
 - Kaynak: `planlama/adim3/elektrik.md:333`, `planlama/adim3/elektrik.md:46`, `planlama/adim3/elektrik.md:367`, `planlama/d158/kablo-kurali-notu.md:26` · 10.11 dökümü: #33
 
 #### S10 · Servo uzatması: kafa tilt (PCA K9, hat C)
@@ -1384,13 +1403,13 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 
 #### K01 · Kafa girişi (P6KE18A) → D24V50F5 girişi
 
-- **Devre:** güç 12 V (kafa dalı) · **dal:** F3 · **durum:** kesin
+- **Devre:** güç 12 V (kafa dalı) · **dal:** F3 · **durum:** kablajda teyit edilecek
 - **Uçlar:** Kafa giriş klemensi (+12 V / GND) → Pololu D24V50F5 (VIN / GND)
 - **Kesit:** 18 AWG (0,82 mm²) · **renk:** + kırmızı, − / GND siyah; makaron kırmızı
 - **Koruma:** F3 5 A (sigorta kutusu) (`F3`, 5 A) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3
 - **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 200 mm; Manhattan 126 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: kafa giriş klemensi CAD'de yok: SY8205 yanı vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
-- **Rehber adımı:** 29 E3a · **sonlandırma:** kafa giriş ucu: kafa giriş kartı (küçük pertinaks parçası, P6KE18A üstünde): üç adet 2 pin 5,08 mm vidalı klemens, + uçları ve − uçları kart üstünde lehimle köprülü; ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz); D24V50F5 ucu lehim
+- **Rehber adımı:** 29 E3a · **sonlandırma:** kafa giriş ucu: kafa giriş kartı (küçük pertinaks parçası, P6KE18A üstünde): üç adet 2 pin 5,08 mm vidalı klemens, + uçları ve − uçları kart üstünde ≥ 18 AWG tel köprüyle (lehim; delikli plaket pedi F3 5 A akım yolu değil, dördüncü bakış §2-7); ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz); D24V50F5 ucu lehim
 - **Uç türü (uc_turu):** a: klemens-508 · b: lehim
 
 | Damar | Uç A | Uç B | Pin / kanal / not |
@@ -1398,17 +1417,18 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | + | Kafa giriş klemensi · +12 V | D24V50F5 · VIN |  |
 | − | Kafa giriş klemensi · GND | D24V50F5 · GND |  |
 
+- Teyit: klemens: kafa giriş kartının 2 pin 5,08 mm vidalı klemensinin kesit aralığı satıcı sayfasında yok (klemens_turleri.klemens-508); 18 AWG ince telli uç teslimde takılıp çekilerek denenir (öbür klemens-508 uçlularla aynı ölçüt; D24V50F5 ucunun lehim olması bunu değiştirmez; F10h-kontrol §2-14)
 - Kaynak: `planlama/adim3/elektrik.md:46-47`, `planlama/adim3/elektrik.md:333` · 10.11 dökümü: #34
 
 #### K02 · Kafa girişi (P6KE18A) → SY8205 girişi
 
-- **Devre:** güç 12 V (kafa dalı) · **dal:** F3 · **durum:** kesin
+- **Devre:** güç 12 V (kafa dalı) · **dal:** F3 · **durum:** kablajda teyit edilecek
 - **Uçlar:** Kafa giriş klemensi (+12 V / GND) → SY8205 (IN+ / IN−)
 - **Kesit:** 18 AWG (0,82 mm²) · **renk:** + kırmızı, − / GND siyah; makaron kırmızı
 - **Koruma:** F3 5 A (sigorta kutusu) (`F3`, 5 A) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3
 - **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 200 mm; Manhattan 126 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: kafa giriş klemensi CAD'de yok: D24V50F5 yanı vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
-- **Rehber adımı:** 29 E3a · **sonlandırma:** kafa giriş ucu: kafa giriş kartı (küçük pertinaks parçası, P6KE18A üstünde): üç adet 2 pin 5,08 mm vidalı klemens, + uçları ve − uçları kart üstünde lehimle köprülü; ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz); SY8205 ucu modülün vidalı klemensi
+- **Rehber adımı:** 29 E3a · **sonlandırma:** kafa giriş ucu: kafa giriş kartı (küçük pertinaks parçası, P6KE18A üstünde): üç adet 2 pin 5,08 mm vidalı klemens, + uçları ve − uçları kart üstünde ≥ 18 AWG tel köprüyle (lehim; delikli plaket pedi F3 5 A akım yolu değil, dördüncü bakış §2-7); ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz); SY8205 ucu modülün vidalı klemensi
 - **Uç türü (uc_turu):** a: klemens-508 · b: modul-vidali
 
 | Damar | Uç A | Uç B | Pin / kanal / not |
@@ -1416,6 +1436,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | + | Kafa giriş klemensi · +12 V | SY8205 · IN+ |  |
 | − | Kafa giriş klemensi · GND | SY8205 · IN− |  |
 
+- Teyit: klemens: SY8205 giriş klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 18 AWG ince telli uç teslimde denenir (P10.7b, dördüncü bakış §2-5)
 - Kaynak: `planlama/adim3/elektrik.md:46`, `planlama/adim3/elektrik.md:49`, `planlama/adim3/elektrik.md:336` · 10.11 dökümü: #35
 
 #### K03 · D24V50F5 5 V → Raspberry Pi 5 USB-C
@@ -1534,6 +1555,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 
 - Teyit: Touch VBUS ile Power arası köprü ölçülecek (EL:56)
 - Teyit: kesit: teslimde hazır micro USB kablonun üstündeki kesit yazısı okunur; 24 AWG'den inceyse ya da yazı yoksa 18 AWG + micro B fişle yeniden yapılır (O-21, kafa-5v-donusturucu-arkasi şartı)
+- Teyit: klemens: SY8205 çıkış klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); hazır micro USB kablosunun kesik ucu teslimde denenir (P10.7b, dördüncü bakış §2-5)
 - Not: Kafa ekranı (Waveshare 10,1" QLED) akımı: üretici sayfasında güç / akım değeri yok (docs.waveshare.com/10.1HP-CAPQLED-B: yalnız 'Micro USB, 5 V'; kutudan çıkan 5 V adaptörün etiket akımı bir tüketim değeri değil); tasarımda 0,9 A varsayım (planlama/adim3/elektrik.md:25), ölçülmedi. Teslimde ölçülür.
 - Kaynak: `planlama/adim3/elektrik.md:49`, `planlama/adim3/elektrik.md:57`, `tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kafa_ici_qled` · 10.11 dökümü: #37
 
@@ -1613,6 +1635,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | − | Göğüs regülatörü · OUT− | Göğüs ekranı · 12 V jak − |  |
 
 - Teyit: KT3: regülatör 12 V'a ayarlı, ilk açılışta F6 atmıyor; jak ölçüsü
+- Teyit: klemens: göğüs regülatörü çıkış klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 18 AWG ince telli uç teslimde denenir (P10.7b, dördüncü bakış §2-5)
 - Kaynak: `planlama/adim3/elektrik.md:62`, `planlama/adim3/elektrik.md:69`, `planlama/adim3/kablolama-on-kararlar.md:105`, `planlama/adim3/kablolama-on-kararlar.md:342`, `tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.12 V` · 10.11 dökümü: #43
 
 ### kol sağ (4)

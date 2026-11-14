@@ -522,6 +522,31 @@ def alt_kontrol(tb, V, adimlar):
                 her_parca_tek_alt_adimda=tek, sonuc=sonuc, gecti=all(d["gecti"] for d in sonuc) and (tek is None or tek["gecti"])), metin, yg
 
 
+def on_sinama():
+    """P10.7b1 düzeltme turu 2 (F10h-kontrol-3 §3.2): üretime başlamadan önce kaynak denetimi (rehber_denetim.kaynak_denetle: ASCII,
+    elektrik, zorunlu, yasak, çıplak sayı, yer tutucu, bağlam, kayıt → rehber tamlığı) ve onaylı kritik metin kaydı (rehber_kritik).
+    Biri tutmazsa ya da kayıt okunamazsa üretim durur (çıkış 1); FreeCAD ve tarayıcı hiç açılmaz. Standart kütüphane."""
+    if HERE not in sys.path:
+        sys.path.insert(0, HERE)
+    try:
+        import rehber_denetim as RD
+        d = RD.kaynak_denetle()
+    except Exception as e:                                              # noqa: BLE001  (rehber_kritik.KayitHatasi dahil)
+        print("URETIM DURDU: on sinama kosamadi (%s: %s)" % (type(e).__name__, e))
+        sys.exit(1)
+    if not d["gecti"]:
+        n = dict(ascii=len(d["ascii_kalinti"]), elektrik=len(d["elektrik"]), zorunlu=len(d["zorunlu_eksik"]), yasak=len(d["yasak"]),
+                 ciplak=len(d["ciplak"]), yer_tutucu=len(d["cozum_hata"]) + len(d["bozuk"]), baglam=len(d["baglam"]),
+                 onay_farki=len(d["kritik"]), tamlik=len(d["tamlik"]["hata"]), cad_metin="yok" if d["cad_metin"] is None else "var")
+        print("URETIM DURDU: kaynak denetimi / onay kaydi tutmuyor: %s" % ", ".join("%s %s" % kv for kv in n.items()))
+        for x in d["kritik"][:10]:
+            print("  KRITIK %s %s %s\n      eski: %s\n      yeni: %s" % (x["tur"], x["bolum"], x["yer"], x["eski"] or "-", x["yeni"] or "-"))
+        print("Once `rehber_denetim.py --kaynak` temiz olmali; metin bilerek degistiyse bagimsiz kontrolden sonra "
+              "`rehber_denetim.py --kritik-onay-yenile`.")
+        sys.exit(1)
+    print("on sinama: kaynak denetimi gecti, onay kaydi tutuyor (%s)" % ", ".join("%s %d" % kv for kv in sorted(d["kritik_sayi"].items())))
+
+
 if __name__ == "__main__":
     try:                                                                # F10d: alt adım adlarında "→" var; cp1254 konsolda özet çökmesin
         sys.stdout.reconfigure(errors="replace")
@@ -534,6 +559,7 @@ if __name__ == "__main__":
     ap.add_argument("--adimlar", default="")
     ap.add_argument("--cikti", default="", help="kontrol.json, kontrol görüntüleri ve PDF için klasör (varsayılan planlama/rehber)")
     g = ap.parse_args()
+    on_sinama()                                                         # düzeltme turu 2: fark varsa üretim burada durur
     if g.cikti:
         if not g.veri_yok:
             sys.exit("--cikti ile --veri-yok kullan: veri üretimi depodaki rehber/veri/'ye yazar")
@@ -595,11 +621,24 @@ if __name__ == "__main__":
             except Exception as e:
                 ek["kol_kablo"] = dict(durum="hata", neden="%s: %s" % (type(e).__name__, e), gecti=False)
                 print("kol kablo denetimi: HATA", ek["kol_kablo"]["neden"])
+            import rehber_kablo as RKB                                  # P10.7b1: çizilen kablo ↔ planlama/adim3/kablolar.json
+            try:
+                _tb = RKB.Tablo()
+                _h = RKB.kaynak_denetle(_tb)
+                _hv, _es = RKB.veri_denetle(V, _tb)
+                _hg, _bg = RKB.geometri_denetle(_tb)                    # düzeltme turu 1 (Ü3): CAD yolu ↔ kablo uçları
+                _h = _h + _hg
+                _ct = RKB.cizim_tablosu(_tb)
+                ek["kablo_esleme"] = dict(hata=_h + _hv, eslesmeyen=_es, tablo=_ct["toplam"], cizilen=_ct["cizilen"],
+                                          cizilmeyen=_ct["cizilmeyen"], gecti=not (_h or _hv or _es))
+            except Exception as e:
+                ek["kablo_esleme"] = dict(durum="hata", neden="%s: %s" % (type(e).__name__, e), gecti=False)
+            print("kablo esleme: %s" % ("GECTI" if ek["kablo_esleme"]["gecti"] else ek["kablo_esleme"]))
         os.makedirs(CIKTI, exist_ok=True)
         json.dump(dict(tarih=time.strftime("%Y-%m-%d %H:%M"), tarayici=os.path.basename(tb), ozet=ozet, sonuc=sonuc, **ek),
                   open(os.path.join(CIKTI, "kontrol.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         kotu = [s for s in sonuc if not s["gecti"]]
-        ek_kotu = [k for k in ("telefon", "yazdir", "denetim", "sira", "perdelenme", "alt_adim", "kol_kablo") if k in ek and not ek[k]["gecti"]]
+        ek_kotu = [k for k in ("telefon", "yazdir", "denetim", "sira", "perdelenme", "alt_adim", "kol_kablo", "kablo_esleme") if k in ek and not ek[k]["gecti"]]
         if ek.get("yazdir_goruntu", {}).get("eksik") or ek.get("yazdir_goruntu", {}).get("bos") or \
                 ek.get("yazdir_goruntu", {}).get("piksel_denetimi") is False:
             ek_kotu.append("yazdir_goruntu")

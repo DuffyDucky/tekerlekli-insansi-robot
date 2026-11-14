@@ -1,6 +1,6 @@
 {
 "surum": 1,
-"uretim": "2026-11-13 23:45",
+"uretim": "2026-11-14 13:49",
 "betik": "tasarim/freecad/rehber/rehber_veri.py",
 "kaynak": {
 "m6": "planlama/adim4/M6-montaj-sirasi.md (adım sırası ve tablo metni)",
@@ -45,10 +45,9 @@
 },
 "semalar": [
 {
-"ad": "Göğüs ekranı HDMI: Pi micro HDMI 1 → boyun → travers arkası → direk solu → ekran (F3'te takılır)",
+"ad": "Göğüs ekranı HDMI (H02): Pi micro HDMI 1 → boyun → travers arkası → direk solu → ekran (F3'te takılır)",
 "kaynak": "yollar:HDMI",
 "a": 32,
-"renk": "#6c5ce7",
 "boy_mm": 757,
 "pts": [
 [
@@ -171,13 +170,26 @@
 1119.2,
 82.2
 ]
-]
+],
+"kablo": [
+"H02"
+],
+"ks": "hazir",
+"kb": [
+"H02: Raspberry Pi 5 · micro HDMI 1 → Göğüs ekranı · HDMI · hazır kablo · sigorta yok (hazır kablo / sinyal, besleyen hattın koruması) · acil stopta enerjili"
+],
+"renk": "#7f8c8d",
+"r": 3.0,
+"rt": {
+"light": "#1d3854",
+"dark": "#5ba7b8"
+},
+"kt": "hazir-hdmi"
 },
 {
-"ad": "Hub uzatması (USB): Pi USB 3 → boyun → travers arkası → üst arka kapak içi hub (F5)",
+"ad": "Hub uzatması (U03, USB 2.0): Pi USB 3 → boyun → travers arkası → üst arka kapak içi hub (F5)",
 "kaynak": "yollar:Hub uzatmasi",
 "a": 32,
-"renk": "#00a3a3",
 "boy_mm": 617,
 "pts": [
 [
@@ -280,13 +292,26 @@
 1161.0,
 -70.8
 ]
-]
+],
+"kablo": [
+"U03"
+],
+"ks": "hazir",
+"kb": [
+"U03: Raspberry Pi 5 · USB 3 → USB hub · giriş (130 mm kablo + uzatma) · hazır kablo · sigorta yok (hazır kablo / sinyal, besleyen hattın koruması) · acil stopta enerjili"
+],
+"renk": "#7f8c8d",
+"r": 2.5,
+"rt": {
+"light": "#828282",
+"dark": "#818181"
+},
+"kt": "hazir-usb"
 },
 {
-"ad": "ESP32 USB: hub (Hub 2) → direk arka yüzü → ESP32 (taban); VBUS'ta seri 1N5819: anot hub (Pi) tarafında, katot ESP32 tarafında; kartın kendi diyodu varsa gerekmez, multimetreyle bak (doğrulanmadı)",
+"ad": "ESP32 USB (U06): hub (Hub 2) → direk arka yüzü → ESP32 (taban); VBUS'ta seri 1N5819: anot hub (Pi) tarafında, katot ESP32 tarafında; kartın kendi diyodu varsa gerekmez, multimetreyle bak (doğrulanmadı)",
 "kaynak": "yollar:ESP32 USB",
 "a": 32,
-"renk": "#00a3a3",
 "boy_mm": 971,
 "pts": [
 [
@@ -319,13 +344,26 @@
 190.0,
 -120.0
 ]
-]
+],
+"kablo": [
+"U06"
+],
+"ks": "hazir",
+"kb": [
+"U06: USB hub · port 2 → ESP32 · micro USB · hazır kablo · sigorta yok (hazır kablo / sinyal, besleyen hattın koruması) · acil stopta enerjili"
+],
+"renk": "#7f8c8d",
+"r": 2.5,
+"rt": {
+"light": "#828282",
+"dark": "#818181"
+},
+"kt": "hazir-usb"
 },
 {
-"ad": "Hoparlör: PAM8403 → boyun → travers arkası → sağ ön → hoparlör (F2'de bağlanır)",
+"ad": "Hoparlör (AU3): PAM8403 → boyun → travers arkası → sağ ön → hoparlör (F2'de bağlanır)",
 "kaynak": "yollar:Hoparlor",
 "a": 32,
-"renk": "#e84393",
 "boy_mm": 824,
 "pts": [
 [
@@ -448,13 +486,25 @@
 984.2,
 73.9
 ]
-]
+],
+"kablo": [
+"AU3"
+],
+"ks": "beyaz",
+"kb": [
+"AU3: PAM8403 · L+ → Hoparlör · + · 2 × 0,50 mm² kordon (liste ürünü) · sigorta yok (hazır kablo / sinyal, besleyen hattın koruması) · acil stopta enerjili"
+],
+"renk": "#b2bec3",
+"r": 2.5,
+"rt": {
+"light": "#4c7078",
+"dark": "#f2f6f7"
+}
 },
 {
-"ad": "Göğüs ekranı 12 V: güç paneli (mini 2 A → LM2577 + LM2596) → direk arka yüzü → direk solu → ekran; boyundan geçmez",
+"ad": "Göğüs ekranı 12 V (G20, G21; 18 AWG): güç paneli (F6 3 A → LM2577 + LM2596; regülatör yeri karar bekliyor, K52) → direk arka yüzü → direk solu → ekran; boyundan geçmez",
 "kaynak": "yollar:12 V",
 "a": 32,
-"renk": "#d63031",
 "boy_mm": 1376,
 "pts": [
 [
@@ -507,13 +557,27 @@
 1088.3,
 90.4
 ]
-]
+],
+"kablo": [
+"G21",
+"G20"
+],
+"ks": "kirmizi",
+"kb": [
+"G21: Göğüs regülatörü · OUT+ → Göğüs ekranı · 12 V jak + · 18 AWG (0,82 mm²) · sigorta: F6 3 A standart (sigorta kutusu) · acil stopta enerjili",
+"G20: Sigorta kutusu · F6 çıkışı → Göğüs regülatörü · IN+ · 18 AWG (0,82 mm²) · sigorta: F6 3 A standart (sigorta kutusu) · acil stopta enerjili"
+],
+"renk": "#d63031",
+"r": 3.1,
+"rt": {
+"light": "#c0392b",
+"dark": "#ef5a4c"
+}
 },
 {
-"ad": "Göğüs dokunmatiği (USB): ekran TOUCH → hub (Hub 1); F5'te hub'a takılır",
+"ad": "Göğüs dokunmatiği (U05, USB): ekran TOUCH → hub (Hub 1); F5'te hub'a takılır",
 "kaynak": "yollar:USB dokunmatik",
 "a": 35,
-"renk": "#00a3a3",
 "boy_mm": 395,
 "pts": [
 [
@@ -556,13 +620,26 @@
 1099.9,
 87.3
 ]
-]
+],
+"kablo": [
+"U05"
+],
+"ks": "hazir",
+"kb": [
+"U05: USB hub · port 1 → Göğüs ekranı · Touch micro USB · hazır kablo · sigorta yok (hazır kablo / sinyal, besleyen hattın koruması) · acil stopta enerjili"
+],
+"renk": "#7f8c8d",
+"r": 2.5,
+"rt": {
+"light": "#828282",
+"dark": "#818181"
+},
+"kt": "hazir-usb"
 },
 {
-"ad": "ReSpeaker USB: Pi USB 1 → ReSpeaker (kısa micro USB)",
+"ad": "ReSpeaker USB (U01): Pi USB 1 → ReSpeaker (kısa micro USB)",
 "kaynak": "yollar:Dizi USB",
 "a": 31,
-"renk": "#00a3a3",
 "boy_mm": 85,
 "pts": [
 [
@@ -590,76 +667,26 @@
 1529.9,
 -11.9
 ]
-]
+],
+"kablo": [
+"U01"
+],
+"ks": "hazir",
+"kb": [
+"U01: Raspberry Pi 5 · USB 1 → ReSpeaker · micro USB · hazır kablo · sigorta yok (hazır kablo / sinyal, besleyen hattın koruması) · acil stopta enerjili"
+],
+"renk": "#7f8c8d",
+"r": 2.5,
+"rt": {
+"light": "#828282",
+"dark": "#818181"
+},
+"kt": "hazir-usb"
 },
 {
-"ad": "Ses kartı uzatması: Pi USB 2 → L dirsek → USB ses kartı",
-"kaynak": "yollar:Ses karti uzatmasi",
-"a": 31,
-"renk": "#00a3a3",
-"boy_mm": 217,
-"pts": [
-[
-46.0,
-1522.9,
--11.9
-],
-[
-60.0,
-1530.9,
-0.0
-],
-[
-40.0,
-1536.9,
-11.0
-],
-[
--60.0,
-1536.9,
-11.0
-],
-[
--80.0,
-1536.9,
--35.0
-],
-[
--89.5,
-1525.9,
--53.0
-]
-]
-},
-{
-"ad": "Ses: ses kartı L 3,5 mm → PAM8403 girişi",
-"kaynak": "yollar:3,5 mm -> PAM",
-"a": 31,
-"renk": "#e84393",
-"boy_mm": 36,
-"pts": [
-[
--120.5,
-1520.9,
-23.0
-],
-[
--124.5,
-1528.9,
-29.0
-],
-[
--125.5,
-1550.9,
-17.0
-]
-]
-},
-{
-"ad": "PAM8403 5 V: D24V50F5 → PAM (besleme noktası varsayım, K10)",
+"ad": "PAM8403 5 V (K05, 18 AWG): D24V50F5 → PAM (K10 a)",
 "kaynak": "yollar:PAM 5 V",
 "a": 31,
-"renk": "#2f86d4",
 "boy_mm": 64,
 "pts": [
 [
@@ -677,13 +704,25 @@
 1522.9,
 31.0
 ]
-]
+],
+"kablo": [
+"K05"
+],
+"ks": "mavi",
+"kb": [
+"K05: D24V50F5 · VOUT (P6KE6V8A) → PAM8403 · 5 V · 18 AWG (0,82 mm²) · koruma: Pololu D24V50F5 aşırı akım koruması · acil stopta enerjili"
+],
+"renk": "#2f86d4",
+"r": 3.1,
+"rt": {
+"light": "#1f6fb8",
+"dark": "#4a9fe8"
+}
 },
 {
-"ad": "Kafa ekranı HDMI (30 cm şerit): Pi micro HDMI 0 → QLED",
+"ad": "Kafa ekranı HDMI (H01, 30 cm şerit): Pi micro HDMI 0 → QLED",
 "kaynak": "kafa_ici_qled:HDMI (serit, 2 lehimsiz fis)",
 "a": 31,
-"renk": "#6c5ce7",
 "boy_mm": 254,
 "pts": [
 [
@@ -726,13 +765,26 @@
 1521.9,
 24.6
 ]
-]
+],
+"kablo": [
+"H01"
+],
+"ks": "hazir",
+"kb": [
+"H01: Raspberry Pi 5 · micro HDMI 0 → QLED · HDMI · hazır kablo · sigorta yok (hazır kablo / sinyal, besleyen hattın koruması) · acil stopta enerjili"
+],
+"renk": "#7f8c8d",
+"r": 2.5,
+"rt": {
+"light": "#1d3854",
+"dark": "#5ba7b8"
+},
+"kt": "hazir-hdmi"
 },
 {
-"ad": "Kafa ekranı Touch: Pi USB 4 → QLED (VBUS uyarısı: Notlar)",
+"ad": "Kafa ekranı Touch (U04): Pi USB 4 → QLED (VBUS uyarısı: Notlar)",
 "kaynak": "kafa_ici_qled:Touch USB (kutu kablosu)",
 "a": 31,
-"renk": "#00a3a3",
 "boy_mm": 217,
 "pts": [
 [
@@ -770,13 +822,26 @@
 1522.9,
 -29.9
 ]
-]
+],
+"kablo": [
+"U04"
+],
+"ks": "hazir",
+"kb": [
+"U04: Raspberry Pi 5 · USB 4 → QLED · Touch micro USB · hazır kablo · sigorta yok (hazır kablo / sinyal, besleyen hattın koruması) · acil stopta enerjili"
+],
+"renk": "#7f8c8d",
+"r": 2.5,
+"rt": {
+"light": "#828282",
+"dark": "#818181"
+},
+"kt": "hazir-usb"
 },
 {
-"ad": "Kafa ekranı Power: SY8205 → QLED (ayrı 5 V hattı)",
+"ad": "Kafa ekranı Power (K04): SY8205 → QLED (ayrı 5 V hattı)",
 "kaynak": "kafa_ici_qled:Power USB (30 cm, A ucu kesik)",
 "a": 31,
-"renk": "#2f86d4",
 "boy_mm": 114,
 "pts": [
 [
@@ -804,13 +869,26 @@
 1518.9,
 39.0
 ]
-]
+],
+"kablo": [
+"K04"
+],
+"ks": "mavi",
+"kb": [
+"K04: SY8205 · OUT+ (P6KE6V8A) → QLED · Power micro USB VBUS · hazır 30 cm USB-A → micro B kablonun A ucu kesilir (EL:57); damar kesiti ürün sayfasında yok · koruma: SY8205 düşürücü (kafa ekranı) · acil stopta enerjili"
+],
+"renk": "#2f86d4",
+"r": 2.5,
+"rt": {
+"light": "#1f6fb8",
+"dark": "#4a9fe8"
+}
 },
 {
 "ad": "Sağ kol · Bilek servosu kablosu: mil ucu → ara duvar çentiği → dirsek servosu arkası → tırnak",
 "kaynak": "kol_kablo:sag:servo_bilek",
 "a": 42,
-"renk": "#c47a00",
+"renk": "#e2b714",
 "boy_mm": 125,
 "pts": [
 [
@@ -848,13 +926,23 @@
 "t": "dirsek",
 "kol": "sag",
 "tur": "servo",
-"lejant": "Servo kablosu"
+"kablo": [
+"S04"
+],
+"ks": "sari",
+"kb": [
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sağ kol · Dirsek servosu kablosu: servo üstü → tırnak",
 "kaynak": "kol_kablo:sag:servo_dirsek",
 "a": 42,
-"renk": "#c47a00",
+"renk": "#e2b714",
 "boy_mm": 23,
 "pts": [
 [
@@ -877,13 +965,23 @@
 "t": "dirsek",
 "kol": "sag",
 "tur": "servo",
-"lejant": "Servo kablosu"
+"kablo": [
+"S03"
+],
+"ks": "sari",
+"kb": [
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sağ kol · Dirsek lopu (L 120, 2 kablo): tırnak → çatal oluğu → Ø10 delik",
 "kaynak": "kol_kablo:sag:lop_dirsek",
 "a": 44,
-"renk": "#c47a00",
+"renk": "#e2b714",
 "boy_mm": 151,
 "pts": [
 [
@@ -1051,13 +1149,25 @@
 "t": "dirsek",
 "kol": "sag",
 "tur": "servo",
-"lejant": "Servo kablosu"
+"kablo": [
+"S03",
+"S04"
+],
+"ks": "sari",
+"kb": [
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sağ kol · Tüp içi: Ø10 delik → tüp girişi (y -152)",
 "kaynak": "kol_kablo:sag:tup_ici",
 "a": 48,
-"renk": "#c47a00",
+"renk": "#e2b714",
 "boy_mm": 23,
 "pts": [
 [
@@ -1075,13 +1185,25 @@
 "t": "",
 "kol": "sag",
 "tur": "servo",
-"lejant": "Servo kablosu"
+"kablo": [
+"S03",
+"S04"
+],
+"ks": "sari",
+"kb": [
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sağ kol · Tüp içi, iki ek arası (y -127 → -118): bilek uzatması (lehimden sonra) yanında dirsek servo kablosu (JR'ye kadar)",
 "kaynak": "kol_kablo:sag:tup_ara",
 "a": 48,
-"renk": "#dd00ff",
+"renk": "#e2b714",
 "boy_mm": 9,
 "pts": [
 [
@@ -1099,7 +1221,19 @@
 "t": "",
 "kol": "sag",
 "tur": "uzatma",
-"lejant": "Uzatma (gövdeye)"
+"kablo": [
+"S04",
+"S03"
+],
+"ks": "sari",
+"kb": [
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sağ kol · Ek yeri: dirsek kablosu JR çifti (26 mm), tüp içinde birleşimde",
@@ -1123,7 +1257,14 @@
 "t": "",
 "kol": "sag",
 "tur": "ek",
-"lejant": "Ek: dirsek JR çifti"
+"lejant": "Ek: dirsek JR çifti",
+"kablo": [
+"S03"
+],
+"ks": "sari",
+"kb": [
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+]
 },
 {
 "ad": "Sağ kol · Ek yeri: bilek kablosu lehim + makaron (25 mm), tüp girişinin üstünde (yer yaklaşık)",
@@ -1147,7 +1288,14 @@
 "t": "",
 "kol": "sag",
 "tur": "ek",
-"lejant": "Ek: bilek lehim + makaron"
+"lejant": "Ek: bilek lehim + makaron",
+"kablo": [
+"S04"
+],
+"ks": "sari",
+"kb": [
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+]
 },
 {
 "ad": "Sağ kol · Ek noktası: bilek kablosu lehimi (makaron ortası, y -139.5)",
@@ -1171,7 +1319,14 @@
 "t": "",
 "kol": "sag",
 "tur": "ek_nokta",
-"lejant": "Ek noktası (lehim / JR birleşimi)"
+"lejant": "Ek noktası (lehim / JR birleşimi)",
+"kablo": [
+"S04"
+],
+"ks": "sari",
+"kb": [
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+]
 },
 {
 "ad": "Sağ kol · Ek noktası: dirsek kablosu JR birleşimi (y -105)",
@@ -1195,13 +1350,20 @@
 "t": "",
 "kol": "sag",
 "tur": "ek_nokta",
-"lejant": "Ek noktası (lehim / JR birleşimi)"
+"lejant": "Ek noktası (lehim / JR birleşimi)",
+"kablo": [
+"S03"
+],
+"ks": "sari",
+"kb": [
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+]
 },
 {
 "ad": "Sağ kol · Uzatmalar tüp içinde: birleşim → tüp penceresi",
 "kaynak": "kol_kablo:sag:uzatma_tup",
 "a": 48,
-"renk": "#dd00ff",
+"renk": "#e2b714",
 "boy_mm": 41,
 "pts": [
 [
@@ -1224,13 +1386,25 @@
 "t": "",
 "kol": "sag",
 "tur": "uzatma",
-"lejant": "Uzatma (gövdeye)"
+"kablo": [
+"S03",
+"S04"
+],
+"ks": "sari",
+"kb": [
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sağ kol · Uzatmalar: tüp penceresi → tüp cıvatası yanı → K noktası (çatal arka plakası arkası)",
 "kaynak": "kol_kablo:sag:uzatma_kol",
 "a": 40,
-"renk": "#dd00ff",
+"renk": "#e2b714",
 "boy_mm": 55,
 "pts": [
 [
@@ -1273,13 +1447,25 @@
 "t": "",
 "kol": "sag",
 "tur": "uzatma",
-"lejant": "Uzatma (gövdeye)"
+"kablo": [
+"S03",
+"S04"
+],
+"ks": "sari",
+"kb": [
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sağ kol · S2 lopu (L 80, 2 kablo): K noktası → göbek arka iç şeridi (G2); çizim S2 0°, aralık dışı",
 "kaynak": "kol_kablo:sag:lop_s2",
 "a": 40,
-"renk": "#8a2be2",
+"renk": "#e2b714",
 "boy_mm": 81,
 "pts": [
 [
@@ -1442,7 +1628,20 @@
 "t": "",
 "kol": "sag",
 "tur": "uzatma",
-"lejant": "S2 lopu: çizim S2 0°, aralık dışı (tasarım S2 5…120°)"
+"lejant": "S2 lopu: çizim S2 0°, aralık dışı (tasarım S2 5…120°)",
+"kablo": [
+"S03",
+"S04"
+],
+"ks": "sari",
+"kb": [
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sağ kol · Kablo bağı: K noktası (çatal arka plakasının arkası, yapışkan taban)",
@@ -1466,7 +1665,16 @@
 "t": "",
 "kol": "sag",
 "tur": "bag",
-"lejant": "Kablo bağı"
+"lejant": "Kablo bağı",
+"kablo": [
+"S03",
+"S04"
+],
+"ks": "sari",
+"kb": [
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+]
 },
 {
 "ad": "Sağ kol · Kablo bağı: tambur bağı (ψ 145, 2 ip)",
@@ -1490,13 +1698,24 @@
 "t": "",
 "kol": "sag",
 "tur": "bag",
-"lejant": "Kablo bağı"
+"lejant": "Kablo bağı",
+"kablo": [
+"S02",
+"S03",
+"S04"
+],
+"ks": "sari",
+"kb": [
+"S02: Dağıtım kartı A · çıkış 2 V+ → sağ S2 (omuz yana) servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+]
 },
 {
 "ad": "Sağ kol · G2 → tambur bağı (ψ 145, 3 kablo: dirsek, bilek, S2 uzatmaları)",
 "kaynak": "kol_kablo:sag:gecis_s1",
 "a": 40,
-"renk": "#dd00ff",
+"renk": "#e2b714",
 "boy_mm": 24,
 "pts": [
 [
@@ -1629,13 +1848,27 @@
 "t": "",
 "kol": "sag",
 "tur": "uzatma",
-"lejant": "Uzatma (gövdeye)"
+"kablo": [
+"S02",
+"S03",
+"S04"
+],
+"ks": "sari",
+"kb": [
+"S02: Dağıtım kartı A · çıkış 2 V+ → sağ S2 (omuz yana) servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sağ kol · S1 U-lopu (L 171.4): tambur bağı → iç koşu (tamburda) → U → dış koşu (duvarda) → duvar bağı",
 "kaynak": "kol_kablo:sag:s1_lop",
 "a": 41,
-"renk": "#dd00ff",
+"renk": "#e2b714",
 "boy_mm": 171,
 "pts": [
 [
@@ -2463,13 +2696,27 @@
 "t": "",
 "kol": "sag",
 "tur": "uzatma",
-"lejant": "Uzatma (gövdeye)"
+"kablo": [
+"S02",
+"S03",
+"S04"
+],
+"ks": "sari",
+"kb": [
+"S02: Dağıtım kartı A · çıkış 2 V+ → sağ S2 (omuz yana) servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sağ kol · Duvar bağı → duvar boyunca ψ 214 → radyal içe (r 52) → kaset arka plakası yarığı",
 "kaynak": "kol_kablo:sag:s1_cikis",
 "a": 41,
-"renk": "#dd00ff",
+"renk": "#e2b714",
 "boy_mm": 39,
 "pts": [
 [
@@ -2492,13 +2739,27 @@
 "t": "",
 "kol": "sag",
 "tur": "uzatma",
-"lejant": "Uzatma (gövdeye)"
+"kablo": [
+"S02",
+"S03",
+"S04"
+],
+"ks": "sari",
+"kb": [
+"S02: Dağıtım kartı A · çıkış 2 V+ → sağ S2 (omuz yana) servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sağ kol · Yarık (ψ 214, 12 × 6) → gövde içi → travers arkası",
 "kaynak": "kol_kablo:sag:govde",
 "a": 36,
-"renk": "#dd00ff",
+"renk": "#e2b714",
 "boy_mm": 199,
 "pts": [
 [
@@ -2531,13 +2792,27 @@
 "t": "",
 "kol": "sag",
 "tur": "uzatma",
-"lejant": "Uzatma (gövdeye)"
+"kablo": [
+"S02",
+"S03",
+"S04"
+],
+"ks": "sari",
+"kb": [
+"S02: Dağıtım kartı A · çıkış 2 V+ → sağ S2 (omuz yana) servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sağ kol · S1 -45°'de U-lopu (uç duruş): tambur bağı ψ 100 → U → duvar bağı",
 "kaynak": "kol_kablo:sag:s1_-45",
 "a": 41,
-"renk": "#dd00ff",
+"renk": "#e2b714",
 "boy_mm": 171,
 "pts": [
 [
@@ -3395,13 +3670,28 @@
 "t": "",
 "kol": "sag",
 "tur": "poz_a",
-"lejant": "U-lopu, bu uç duruş"
+"lejant": "U-lopu, bu uç duruş",
+"kablo": [
+"S02",
+"S03",
+"S04"
+],
+"ks": "sari",
+"kb": [
+"S02: Dağıtım kartı A · çıkış 2 V+ → sağ S2 (omuz yana) servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sağ kol · S1 +135°'de U-lopu (uç duruş): tambur bağı ψ 280 → U → duvar bağı",
 "kaynak": "kol_kablo:sag:s1_+135",
 "a": 41,
-"renk": "#dd00ff",
+"renk": "#e2b714",
 "boy_mm": 171,
 "pts": [
 [
@@ -4134,13 +4424,28 @@
 "t": "",
 "kol": "sag",
 "tur": "poz_b",
-"lejant": "U-lopu, bu uç duruş"
+"lejant": "U-lopu, bu uç duruş",
+"kablo": [
+"S02",
+"S03",
+"S04"
+],
+"ks": "sari",
+"kb": [
+"S02: Dağıtım kartı A · çıkış 2 V+ → sağ S2 (omuz yana) servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sol kol · Bilek servosu kablosu: mil ucu → ara duvar çentiği → dirsek servosu arkası → tırnak",
 "kaynak": "kol_kablo:sol:servo_bilek",
 "a": 42,
-"renk": "#c47a00",
+"renk": "#e2b714",
 "boy_mm": 125,
 "pts": [
 [
@@ -4178,13 +4483,23 @@
 "t": "dirsek",
 "kol": "sol",
 "tur": "servo",
-"lejant": "Servo kablosu"
+"kablo": [
+"S08"
+],
+"ks": "sari",
+"kb": [
+"S08: Dağıtım kartı B · çıkış 4 V+ → sol bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sol kol · Dirsek servosu kablosu: servo üstü → tırnak",
 "kaynak": "kol_kablo:sol:servo_dirsek",
 "a": 42,
-"renk": "#c47a00",
+"renk": "#e2b714",
 "boy_mm": 23,
 "pts": [
 [
@@ -4207,13 +4522,23 @@
 "t": "dirsek",
 "kol": "sol",
 "tur": "servo",
-"lejant": "Servo kablosu"
+"kablo": [
+"S07"
+],
+"ks": "sari",
+"kb": [
+"S07: Dağıtım kartı B · çıkış 3 V+ → sol dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sol kol · Dirsek lopu (L 120, 2 kablo): tırnak → çatal oluğu → Ø10 delik",
 "kaynak": "kol_kablo:sol:lop_dirsek",
 "a": 44,
-"renk": "#c47a00",
+"renk": "#e2b714",
 "boy_mm": 151,
 "pts": [
 [
@@ -4381,13 +4706,25 @@
 "t": "dirsek",
 "kol": "sol",
 "tur": "servo",
-"lejant": "Servo kablosu"
+"kablo": [
+"S07",
+"S08"
+],
+"ks": "sari",
+"kb": [
+"S07: Dağıtım kartı B · çıkış 3 V+ → sol dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S08: Dağıtım kartı B · çıkış 4 V+ → sol bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sol kol · Tüp içi: Ø10 delik → tüp girişi (y -152)",
 "kaynak": "kol_kablo:sol:tup_ici",
 "a": 48,
-"renk": "#c47a00",
+"renk": "#e2b714",
 "boy_mm": 23,
 "pts": [
 [
@@ -4405,13 +4742,25 @@
 "t": "",
 "kol": "sol",
 "tur": "servo",
-"lejant": "Servo kablosu"
+"kablo": [
+"S07",
+"S08"
+],
+"ks": "sari",
+"kb": [
+"S07: Dağıtım kartı B · çıkış 3 V+ → sol dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S08: Dağıtım kartı B · çıkış 4 V+ → sol bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sol kol · Tüp içi, iki ek arası (y -127 → -118): bilek uzatması (lehimden sonra) yanında dirsek servo kablosu (JR'ye kadar)",
 "kaynak": "kol_kablo:sol:tup_ara",
 "a": 48,
-"renk": "#dd00ff",
+"renk": "#e2b714",
 "boy_mm": 9,
 "pts": [
 [
@@ -4429,7 +4778,19 @@
 "t": "",
 "kol": "sol",
 "tur": "uzatma",
-"lejant": "Uzatma (gövdeye)"
+"kablo": [
+"S08",
+"S07"
+],
+"ks": "sari",
+"kb": [
+"S08: Dağıtım kartı B · çıkış 4 V+ → sol bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S07: Dağıtım kartı B · çıkış 3 V+ → sol dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sol kol · Ek yeri: dirsek kablosu JR çifti (26 mm), tüp içinde birleşimde",
@@ -4453,7 +4814,14 @@
 "t": "",
 "kol": "sol",
 "tur": "ek",
-"lejant": "Ek: dirsek JR çifti"
+"lejant": "Ek: dirsek JR çifti",
+"kablo": [
+"S07"
+],
+"ks": "sari",
+"kb": [
+"S07: Dağıtım kartı B · çıkış 3 V+ → sol dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+]
 },
 {
 "ad": "Sol kol · Ek yeri: bilek kablosu lehim + makaron (25 mm), tüp girişinin üstünde (yer yaklaşık)",
@@ -4477,7 +4845,14 @@
 "t": "",
 "kol": "sol",
 "tur": "ek",
-"lejant": "Ek: bilek lehim + makaron"
+"lejant": "Ek: bilek lehim + makaron",
+"kablo": [
+"S08"
+],
+"ks": "sari",
+"kb": [
+"S08: Dağıtım kartı B · çıkış 4 V+ → sol bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+]
 },
 {
 "ad": "Sol kol · Ek noktası: bilek kablosu lehimi (makaron ortası, y -139.5)",
@@ -4501,7 +4876,14 @@
 "t": "",
 "kol": "sol",
 "tur": "ek_nokta",
-"lejant": "Ek noktası (lehim / JR birleşimi)"
+"lejant": "Ek noktası (lehim / JR birleşimi)",
+"kablo": [
+"S08"
+],
+"ks": "sari",
+"kb": [
+"S08: Dağıtım kartı B · çıkış 4 V+ → sol bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+]
 },
 {
 "ad": "Sol kol · Ek noktası: dirsek kablosu JR birleşimi (y -105)",
@@ -4525,13 +4907,20 @@
 "t": "",
 "kol": "sol",
 "tur": "ek_nokta",
-"lejant": "Ek noktası (lehim / JR birleşimi)"
+"lejant": "Ek noktası (lehim / JR birleşimi)",
+"kablo": [
+"S07"
+],
+"ks": "sari",
+"kb": [
+"S07: Dağıtım kartı B · çıkış 3 V+ → sol dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+]
 },
 {
 "ad": "Sol kol · Uzatmalar tüp içinde: birleşim → tüp penceresi",
 "kaynak": "kol_kablo:sol:uzatma_tup",
 "a": 48,
-"renk": "#dd00ff",
+"renk": "#e2b714",
 "boy_mm": 41,
 "pts": [
 [
@@ -4554,13 +4943,25 @@
 "t": "",
 "kol": "sol",
 "tur": "uzatma",
-"lejant": "Uzatma (gövdeye)"
+"kablo": [
+"S07",
+"S08"
+],
+"ks": "sari",
+"kb": [
+"S07: Dağıtım kartı B · çıkış 3 V+ → sol dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S08: Dağıtım kartı B · çıkış 4 V+ → sol bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sol kol · Uzatmalar: tüp penceresi → tüp cıvatası yanı → K noktası (çatal arka plakası arkası)",
 "kaynak": "kol_kablo:sol:uzatma_kol",
 "a": 40,
-"renk": "#dd00ff",
+"renk": "#e2b714",
 "boy_mm": 55,
 "pts": [
 [
@@ -4603,13 +5004,25 @@
 "t": "",
 "kol": "sol",
 "tur": "uzatma",
-"lejant": "Uzatma (gövdeye)"
+"kablo": [
+"S07",
+"S08"
+],
+"ks": "sari",
+"kb": [
+"S07: Dağıtım kartı B · çıkış 3 V+ → sol dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S08: Dağıtım kartı B · çıkış 4 V+ → sol bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sol kol · S2 lopu (L 80, 2 kablo): K noktası → göbek arka iç şeridi (G2); çizim S2 0°, aralık dışı",
 "kaynak": "kol_kablo:sol:lop_s2",
 "a": 40,
-"renk": "#8a2be2",
+"renk": "#e2b714",
 "boy_mm": 81,
 "pts": [
 [
@@ -4772,7 +5185,20 @@
 "t": "",
 "kol": "sol",
 "tur": "uzatma",
-"lejant": "S2 lopu: çizim S2 0°, aralık dışı (tasarım S2 5…120°)"
+"lejant": "S2 lopu: çizim S2 0°, aralık dışı (tasarım S2 5…120°)",
+"kablo": [
+"S07",
+"S08"
+],
+"ks": "sari",
+"kb": [
+"S07: Dağıtım kartı B · çıkış 3 V+ → sol dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S08: Dağıtım kartı B · çıkış 4 V+ → sol bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sol kol · Kablo bağı: K noktası (çatal arka plakasının arkası, yapışkan taban)",
@@ -4796,7 +5222,16 @@
 "t": "",
 "kol": "sol",
 "tur": "bag",
-"lejant": "Kablo bağı"
+"lejant": "Kablo bağı",
+"kablo": [
+"S07",
+"S08"
+],
+"ks": "sari",
+"kb": [
+"S07: Dağıtım kartı B · çıkış 3 V+ → sol dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S08: Dağıtım kartı B · çıkış 4 V+ → sol bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+]
 },
 {
 "ad": "Sol kol · Kablo bağı: tambur bağı (ψ 145, 2 ip)",
@@ -4820,13 +5255,24 @@
 "t": "",
 "kol": "sol",
 "tur": "bag",
-"lejant": "Kablo bağı"
+"lejant": "Kablo bağı",
+"kablo": [
+"S06",
+"S07",
+"S08"
+],
+"ks": "sari",
+"kb": [
+"S06: Dağıtım kartı B · çıkış 2 V+ → sol S2 (omuz yana) servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S07: Dağıtım kartı B · çıkış 3 V+ → sol dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S08: Dağıtım kartı B · çıkış 4 V+ → sol bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+]
 },
 {
 "ad": "Sol kol · G2 → tambur bağı (ψ 145, 3 kablo: dirsek, bilek, S2 uzatmaları)",
 "kaynak": "kol_kablo:sol:gecis_s1",
 "a": 40,
-"renk": "#dd00ff",
+"renk": "#e2b714",
 "boy_mm": 24,
 "pts": [
 [
@@ -4959,13 +5405,27 @@
 "t": "",
 "kol": "sol",
 "tur": "uzatma",
-"lejant": "Uzatma (gövdeye)"
+"kablo": [
+"S06",
+"S07",
+"S08"
+],
+"ks": "sari",
+"kb": [
+"S06: Dağıtım kartı B · çıkış 2 V+ → sol S2 (omuz yana) servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S07: Dağıtım kartı B · çıkış 3 V+ → sol dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S08: Dağıtım kartı B · çıkış 4 V+ → sol bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sol kol · S1 U-lopu (L 171.4): tambur bağı → iç koşu (tamburda) → U → dış koşu (duvarda) → duvar bağı",
 "kaynak": "kol_kablo:sol:s1_lop",
 "a": 41,
-"renk": "#dd00ff",
+"renk": "#e2b714",
 "boy_mm": 171,
 "pts": [
 [
@@ -5793,13 +6253,27 @@
 "t": "",
 "kol": "sol",
 "tur": "uzatma",
-"lejant": "Uzatma (gövdeye)"
+"kablo": [
+"S06",
+"S07",
+"S08"
+],
+"ks": "sari",
+"kb": [
+"S06: Dağıtım kartı B · çıkış 2 V+ → sol S2 (omuz yana) servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S07: Dağıtım kartı B · çıkış 3 V+ → sol dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S08: Dağıtım kartı B · çıkış 4 V+ → sol bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sol kol · Duvar bağı → duvar boyunca ψ 214 → radyal içe (r 52) → kaset arka plakası yarığı",
 "kaynak": "kol_kablo:sol:s1_cikis",
 "a": 41,
-"renk": "#dd00ff",
+"renk": "#e2b714",
 "boy_mm": 39,
 "pts": [
 [
@@ -5822,13 +6296,27 @@
 "t": "",
 "kol": "sol",
 "tur": "uzatma",
-"lejant": "Uzatma (gövdeye)"
+"kablo": [
+"S06",
+"S07",
+"S08"
+],
+"ks": "sari",
+"kb": [
+"S06: Dağıtım kartı B · çıkış 2 V+ → sol S2 (omuz yana) servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S07: Dağıtım kartı B · çıkış 3 V+ → sol dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S08: Dağıtım kartı B · çıkış 4 V+ → sol bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 },
 {
 "ad": "Sol kol · Yarık (ψ 214, 12 × 6) → gövde içi → travers arkası",
 "kaynak": "kol_kablo:sol:govde",
 "a": 36,
-"renk": "#dd00ff",
+"renk": "#e2b714",
 "boy_mm": 199,
 "pts": [
 [
@@ -5861,9 +6349,123 @@
 "t": "",
 "kol": "sol",
 "tur": "uzatma",
-"lejant": "Uzatma (gövdeye)"
+"kablo": [
+"S06",
+"S07",
+"S08"
+],
+"ks": "sari",
+"kb": [
+"S06: Dağıtım kartı B · çıkış 2 V+ → sol S2 (omuz yana) servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S07: Dağıtım kartı B · çıkış 3 V+ → sol dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S08: Dağıtım kartı B · çıkış 4 V+ → sol bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+],
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
 }
 ],
+"kablo_sinif": {
+"kirmizi": [
+"#d63031",
+"12 V doğrudan (kırmızı)",
+{
+"light": "#c0392b",
+"dark": "#ef5a4c"
+}
+],
+"turuncu": [
+"#e67e22",
+"Anahtarlı bara, motor (turuncu)",
+{
+"light": "#b35a00",
+"dark": "#f0903a"
+}
+],
+"sari": [
+"#e2b714",
+"Servo gücü 6 V (sarı)",
+{
+"light": "#8a6d00",
+"dark": "#e8c020"
+}
+],
+"mavi": [
+"#2f86d4",
+"5 V (mavi)",
+{
+"light": "#1f6fb8",
+"dark": "#4a9fe8"
+}
+],
+"yesil": [
+"#2e9e4f",
+"Acil stop (yeşil)",
+{
+"light": "#1e7a3c",
+"dark": "#3dbb64"
+}
+],
+"mor": [
+"#8e44ad",
+"Sinyal (mor)",
+{
+"light": "#7d3c98",
+"dark": "#b07fd0"
+}
+],
+"siyah": [
+"#222222",
+"Toprak (siyah)",
+{
+"light": "#222222",
+"dark": "#b3b3b3",
+"cekirdek_dark": "#222222"
+}
+],
+"beyaz": [
+"#b2bec3",
+"Analog ses (beyaz)",
+{
+"light": "#4c7078",
+"dark": "#f2f6f7"
+}
+],
+"hazir": [
+"#7f8c8d",
+"Hazır kablo: USB, HDMI, CSI (gri)",
+{
+"light": "#7f8c8d",
+"dark": "#7f8c8d"
+}
+],
+"hazir-usb": [
+"#7f8c8d",
+"Hazır kablo: USB",
+{
+"light": "#828282",
+"dark": "#818181"
+}
+],
+"hazir-hdmi": [
+"#7f8c8d",
+"Hazır kablo: HDMI",
+{
+"light": "#1d3854",
+"dark": "#5ba7b8"
+}
+],
+"hazir-csi": [
+"#7f8c8d",
+"Hazır kablo: kamera (CSI)",
+{
+"light": "#6f3312",
+"dark": "#b2916b"
+}
+]
+},
+"kablo_kaynak": "planlama/adim3/kablolar.json (rehber_kablo.py: renk = devre sınıfı, şema yarıçapı = kesit)",
 "isil_gomme": {
 "yontem": "ev sahibi: somunun 0,8 mm dışındaki 24 halka noktasından en çoğunu malzemesinin içinde tutan ana parça (Part isInside, bütün ana parçalar aday; somunun sınır kutusu merkezine 8 mm'den yakın kutulu olanlar). Somun ev sahibinin adımına ve alt montajına taşınır.",
 "toplam": 164,
@@ -8024,7 +8626,7 @@
 "Kartlar takılmadan tezgâhta (bu adımdan önce): XL4016 C 6 V'a ayarlandı; akım sınırlı tezgâh kaynağıyla 12 V giriş, yüksüz, çıkış ölçülerek (K1 kontrolü). PC817 ölçümü de arayüz kartı takılmadan tezgâhta (B6a). Bu sıra kaynakta yok, doğrulanmadı"
 ],
 "kablo": [
-"Panelde WAGO yıldız noktası ve sigorta kutusu girişleri erişilebilir kalsın"
+"Panelde yıldız barası (toprak, 5 M5 saplama), anahtarlı bara (4 M5 saplama) ve sigorta kutusu girişleri erişilebilir kalsın: düğümler saplama üstünde halka pabuçla, saplama başına en çok 4 pabuç (`planlama/adim3/kablolar.md` O-3 r, O-22). WAGO yok"
 ],
 "not_": [],
 "kamera": null,
@@ -8117,7 +8719,7 @@
 "ad": "Elektronik katı (ön)"
 },
 {
-"kod": "Delikli pertinaks 70 x 50: PC817 x2, MOSFET + 1N4007, bölücü dirençler, klemens (tahmini zarf)",
+"kod": "Delikli pertinaks 70 x 50: PC817 x2, BC337-40 ×2 (röle sürücüleri; 1N4007'ler rölelerin bobin uçlarında), bölücü dirençler, klemens (tahmini zarf)",
 "tur": "Satin",
 "malzeme": "PCB",
 "r": "satin",
@@ -8494,8 +9096,8 @@
 "no": "17",
 "faz": "Kablolama kapısı",
 "baslik": "Kablolama kapısı 1: taban",
-"is_": "Kabuk takılmadan önce burada dur. Bağlarken akü ayrık (XT60 açık); sırayla:\n1. Ana hat (12 AWG): XT60 → 30 A ana sigorta → ana anahtar → sigorta kutusu. Ana anahtar henüz yerinde değil (F1'de etek plakasının altına takılır): ana anahtara gidecek iki uç bırakılır, F1'de bağlanır. Şarj girişi: akü + hattından, ana anahtardan önce, kapaklı mini sigorta yuvası (şarj 10 A) → XT60 şarj girişi ucu (`planlama/adim3/elektrik.md` sigorta listesi). Kolu akü XT60'ının robot tarafından, ana hattan al: akü XT60'tan ayrılınca kol da enerjisiz kalır (rehberdeki \"akü ayrık = enerjisiz\" düzeni buna dayanır). Kaynak yalnız \"akü +, ana anahtar öncesi\" diyor; XT60'ın hangi tarafı olduğu doğrulanmadı. Şarj girişinin − ucunun bağlanacağı nokta ve kutup işareti kaynakta yok, doğrulanmadı (genel toprak: akü − → WAGO yıldız noktası, `planlama/adim3/elektrik.md` blok şema). Uç bantlı bırakılır, F1'de etekteki şarj girişine bağlanır; sigortası takılmaz (F1 aşama 1). Ana sigortadan önce mi sonra mı bağlanacağı kaynakta yok, doğrulanmadı. Kablo kesiti `planlama/adim3/elektrik.md`'de yok; sigorta yuvası 16AWG kuyruklu (`planlama/maliyet.json` hat sigortası yuvası), doğrulanmadı.\n2. F1 20 A → röle K1 → anahtarlı bara. Baradan: iki BTS7960B; hat sigortasıyla XL4016 A ve B (7,5 A), C (5 A).\n3. F3 kafa hattı (uç direk dibinde bırakılır), F4 XL4016 çevre 5 V, F5 acil stop hattı.\nAlt kat kartlarının (iki BTS7960B, XL4016 A / B / çevre) klemens uçları B3'te, kat ve güç paneli gelmeden bağlandı: burada yalnız B3'te etiketli bırakılan öbür uçları bara, sigorta kutusu ve hat sigortalarına bağla. Alt kat klemensine burada uzanma: kart üstünden elektronik katına 69 mm, yanda 40–150 mm (sıra kontrolü).\n4. Enkoder ve sonarları bağla (motor uçları B3'te BTS7960B'ye bağlandı). Acil stop ucunu bırak: mantar F1'de takılır.\n5. Direğe çıkacak hatların taban kısmını da burada bağla (servo A / B / kafa, kafa 12 V, ESP32 USB). Yukarısı K2'de.\n6. K1'de enerji verilmez: ana anahtar ve acil stop mantarı F1'de takılır. Mantar ve ana anahtar uçları hiçbir zaman köprülenmez; akü XT60 ayrık kalır, boştaki ana hat uçları gerilimsiz ve bantlı. XL4016 ayarı ve PC817 ölçümü kartlar takılmadan önce tezgâhta, akım sınırlı tezgâh kaynağıyla yapılır (kontrol; B3, B5a, B6a). İlk enerji iki aşamalı: F1 sonunda kafasız (aşama 1: ana anahtar, BMS, mantar; F1 takılı değil, anahtarlı bara enerjisiz), devreye alma ve motor yön testi F5'te (aşama 2). Bu sıra kaynakta yok, doğrulanmadı.",
-"baglanti_md": "Klemens, kablo pabucu, kablo bağı (adet: kablo listesi henüz yazılmadı)",
+"is_": "Kabuk takılmadan önce burada dur. Bağlarken akü ayrık (XT60 açık). Kablo kimlikleri, uçlar, kesit ve sigortalar tek kaynakta: `planlama/adim3/kablolar.md` (kimlikler aşağıda parantez içinde); sırayla:\n1. Ana hat (12 AWG; G01–G04): akü + → XT60 → ana sigorta 30 A (standart bıçak, kablolu yuva) → ana anahtar → sigorta kutusu. Ana anahtar henüz yerinde değil (F1'de etek plakasının altına takılır): ana anahtara gidecek iki uç bırakılır, F1'de bağlanır. Şarj kolu (G06, 16 AWG): + ucu ana sigortanın yük tarafından, ana anahtarın giriş saplamasına (G03 ile aynı saplama, mavi M5 halka pabuç); 7,5 A mini hat sigortasının kapaklı yuvası bu ucun dibinde, kuyruğuna lehim + makaron; öbür uç etekteki XT60E-M şarj girişine (F1); − ucu yıldız barasına (mavi pabuç). Kolu akü XT60'ının robot tarafından, ana hattan al: akü XT60'tan ayrılınca kol da enerjisiz kalır (rehberdeki \"akü ayrık = enerjisiz\" düzeni buna dayanır; ana anahtar kapalıyken şarj edilir, karar O-17). Uç bantlı bırakılır, F1'de etekteki şarj girişine bağlanır; 7,5 A sigortası takılmaz (F1 aşama 1).\n2. Toprak (G05, 12 AWG): akü − → yıldız barasının ortadaki (3.) saplaması. İki bara da M5 saplama üstünde halka pabuç yığını: saplama başına en çok 4 pabuç, büyük akımlı pabuçlar yığının altında, üstte düz pul + yaylı pul; WAGO yok. Yıldız barası (toprak) 5 M5 saplama: saplamalar 4 adet siyah 12 AWG köprüyle (≈ 50 mm, iki ucu sarı halka pabuç) birbirine zincir bağlanır. Yerleşim: saplama 1 G12 / G14 / G15, 2 G13 / G16, 3 G05 (akü) / G06, 4 G17 / G18, 5 G20 / G22 dönüşleri. Anahtarlı bara (+) 4 M5 saplama: saplamalar 3 adet kırmızı 12 AWG köprüyle (≈ 50 mm, iki ucu sarı halka pabuç) birbirine zincir bağlanır; bütün saplamalar köprüyle birbirine bağlı. Anahtarlı barada hangi ucun hangi saplamaya gideceği kayıtta yazılı değil: yerleşim serbest, yalnız saplama başına en çok 4 pabuç (besleme saplaması yazılı olmadığından baranın köprüleri koruyucunun tam akımıyla sınanır: `planlama/adim3/kablolar.json`, saplama uç türünün köprü ilkesi).\n3. F1 20 A → röle K1 kontağı (30 → 87) → anahtarlı bara (G08, G09; 12 AWG); F1 → ön şarj kartı (K2 kontağı + 5,6 Ω) → anahtarlı bara (G10, G11; 12 AWG). Baradan: iki BTS7960B (G12, G13; 12 AWG); mini hat sigortalarıyla XL4016 A ve B (7,5 A; G14, G15), C (5 A; G16), 16 AWG; PC817 #2 algı teli (G22, 22 AWG): bara ucunda 2 A mini hat sigortası, yıldız ucu 5 cm 18 AWG siyah ara parçaya lehimli, ara parça kırmızı pabuçla.\n4. Sigorta kutusundan (standart bıçak): F3 5 A kafa hattı (G17, 18 AWG; uç direk dibinde bırakılır), F4 5 A XL4016 çevre (G18, 18 AWG; çevre çıkışı G19, 16 AWG, OUT+ ucunun dibinde 2 A mini hat sigortası), F5 2 A acil stop (A01, 18 AWG; mantar F1'de takılır, uç bantlı), F6 3 A göğüs ekranı dalı (G20, 18 AWG; uç bantlı, K2'de direğe çıkar). Göğüs regülatörünün panel yeri karar bekliyor (K52): G20'nin uç yeri ve boyu bu karara bağlı.\n5. Acil stop ve röle sürücüleri (yeşil, A01–A05 18 AWG; E3, E9): mantar NC çıkışı → acil stop düğüm kartı (güç panelinde küçük pertinaks parçası: iki adet 2 pin 5,08 mm vidalı klemens, dört ucu kart üstünde ≥ 18 AWG tel köprüyle lehimli) → röle K1 bobini (86; A02) ve ön şarj kartındaki K2 bobini (+; A04). Bobinlerin − uçları arayüz kartına: K1 85 → BC337-40 #1 kollektörü (A03; GPIO4 sürer), K2 − → BC337-40 #2 kollektörü (A05; GPIO19 sürer). Her sürücüde 270 Ω seri taban direnci ve 2,2 kΩ taban → GND. Geri tepme diyotları 1N4007: K1'de soketin 86 / 85 kuyruklarının üstünde lehim + makaron, katot (bantlı uç) 86'ya, anot 85'e; K2'de ön şarj kartında bobin klemensinin üstünde, katot bobin + ucuna. PC817 #1 girişi düğümden (A06, 22 AWG; GPIO23 okur). Mantar ile düğüm arasında elde taşınan acil stop için ayrılan iki uçlu yer (Ö4; 2 pin 5,08 mm klemens) karar verilene kadar zincirin kendi teliyle (A01, A02) aynı kesitte (18 AWG) kısa bir tel köprüyle kapalı durur; köprü yoksa röle çekmez. Ö4 karar bekliyor (K60).\nAlt kat kartlarının (iki BTS7960B, XL4016 A / B / çevre) klemens uçları B3'te, kat ve güç paneli gelmeden bağlandı: burada yalnız B3'te etiketli bırakılan öbür uçları bara, sigorta kutusu ve hat sigortalarına bağla. Alt kat klemensine burada uzanma: kart üstünden elektronik katına 69 mm, yanda 40–150 mm (sıra kontrolü).\n6. Enkoder ve sonarları bağla (motor uçları B3'te BTS7960B'ye bağlandı; sonarlar Q01–Q03). Acil stop ucunu bırak: mantar F1'de takılır.\n7. Direğe çıkacak hatların taban kısmını da burada bağla (servo A / B / kafa, kafa 12 V, göğüs 12 V, ESP32 USB). Yukarısı K2'de.\n8. K1'de enerji verilmez: ana anahtar ve acil stop mantarı F1'de takılır. Bu adımda takılan köprüler: Ö4 yerindeki kısa tel köprü (madde 5), acil stop düğüm kartındaki (A02, A04) ≥ 18 AWG tel köprü (madde 5), yıldız barasının saplamaları arasındaki 4 adet 12 AWG köprü (madde 2), anahtarlı baranın saplamaları arasındaki 3 adet 12 AWG köprü (madde 2) ve KT3 bakışında kutu ayrı girişli çıkarsa yuva girişlerine giden ara kablolar (kontrol listesi). Bunların dışında mantarın kendi uçları ve ana anahtarın uçları hiçbir zaman köprülenmez; akü XT60 ayrık kalır, boştaki ana hat uçları gerilimsiz ve bantlı. XL4016 ayarı ve PC817 ölçümü kartlar takılmadan önce tezgâhta, akım sınırlı tezgâh kaynağıyla yapılır (kontrol; B3, B5a, B6a). İlk enerji iki aşamalı: F1 sonunda kafasız (aşama 1: ana anahtar, BMS, mantar; F1 takılı değil, anahtarlı bara enerjisiz), devreye alma ve motor yön testi F5'te (aşama 2). Bu sıra kaynakta yok, doğrulanmadı.",
+"baglanti_md": "M5 halka pabuç (saplama düğümleri), 2 pin 5,08 mm vidalı klemens (acil stop düğüm kartı), lehim + makaron, kablo bağı. Yıldız barası ve anahtarlı bara köprüleri: 7 adet 12 AWG köprü (yıldız 4 siyah, anahtarlı bara 3 kırmızı, her biri ≈ 50 mm) ve uçlarına 14 sarı halka pabuç. Kablo listesi ve uç türleri: `planlama/adim3/kablolar.md` (adet ve boy orada)",
 "alet": "Multimetre, kablo soyucu, pabuç pensesi, tornavida",
 "erisim": "Kabuk yok. Kat üstü açık (dağıtım kartları, ESP32, arayüz kartı, XL4016 C, sigorta kutusu: el bölgesine uzaklık 6–9 mm, el yakına ulaşıyor). Alt kat kartlarının klemenslerine el dar: kart üstünden elektronik katına 69 mm, yanda raylara ve komşu karta 40–150 mm (sıra kontrolü 10.11, 11.11'de yeniden ölçüldü; ışınla, klemens yerleri modelde yok); o uçlar B3'te bağlanır",
 "tezgah": null,
@@ -8507,8 +9109,13 @@
 "B3'te bağlanan alt kat uçlarının etiketleri okunuyor; her biri K1'de öbür ucuna bağlandı, boşta uç kalmadı",
 "Tezgâhta (kart takılmadan, B3 / B5a öncesi; B3 ve B5a kontrolünde de var): XL4016 A / B / C 6 V, çevre 5 V'a ayarlandı; akım sınırlı tezgâh kaynağıyla 12 V giriş, yüksüz, çıkış ölçülerek",
 "Mantar ve ana anahtar uçları köprülenmedi; boştaki ana hat uçları bantlı, akü XT60 ayrık",
-"Röle bobinine ters paralel 1N4007 takılı (MAH-112-C-4 dahili diyot yazmıyor)",
-"Hızlı klemens en çok 2,5 mm²: 12 AWG ana hatta kullanma",
+"İki baranın köprüleri takılı: yıldız barasında 4 adet siyah 12 AWG, anahtarlı barada 3 adet kırmızı 12 AWG köprü, her ucu sarı halka pabuçla. Akü ayrıkken multimetrenin süreklilik kademesiyle her baranın ilk ve son saplaması arası öter (direnç sıfıra yakın); ötmezse köprü eksik ya da gevşek",
+"Ö4 yerindeki 2 pin klemenste kısa tel köprü takılı (A01 / A02 ile aynı kesit, 18 AWG; köprü yoksa röle çekmez); ilk enerjide (F1 aşama 1) mantar bırakılmışken PC817 #1 (GPIO23) LOW okur (HIGH = mantar basılı ya da F5 attı; pin haritası)",
+"İki röle bobinine de ters paralel 1N4007 takılı (MAH-112-C-4 dahili diyot yazmıyor): K1'de katot 86'ya, K2'de katot bobin + ucuna; bantlı uç doğru yerde",
+"Röle sürücüleri arayüz kartında: BC337-40 #1 (K1, GPIO4) ve #2 (K2, GPIO19), her birinde 270 Ω seri ve 2,2 kΩ taban → GND",
+"Ana hat ve toprak düğümleri (G01–G05, 12 AWG) yalnız M5 saplama + halka pabuçta (saplama başına en çok 4 pabuç); düğüm için vidalı klemens yalnız iki küçük kartta (kafa giriş kartı, acil stop düğüm kartı; 5,08 mm). İnce telli uç vidalı klemense kalaylanmadan, bükülerek girer (yüksük varsa yüksük)",
+"Teslimde bakılacaklar (`planlama/d158/kablo-tablosu-gunluk.md` §16.7, §17.7): alçak profil mini sigortalar (çevre 2 A, şarj 7,5 A) \"Mini/Micro\" yuvaya oturuyor; K1 soketinin kuyruk kesiti okundu, G08 / G09'un 12 AWG teline eklendi; 5,08 mm klemensin kesit aralığı okundu (A06 / G07 lehimli uçlarına yeniden bakılır); G22'nin yıldız ucu 5 cm 18 AWG ara parça + kırmızı pabuç; akü dönüşü (G05) yıldızın 3. saplamasında; T8 E ve E2 tezgâh kısa devre denemeleri yapıldı (`planlama/d158/testler/T8-servo-hatlari.md` E: bir servo uzatmasının ucunda ve SV1–SV3'te, servolar sökülü, en çok 2 s, yanmaz zemin): XL4016 akımı kesiyor ya da düşürüyor, kablo 80 °C'nin altında (kalırsa istisna düşer, tasarıma); K04'ün (kafa ekranı Power USB) üstündeki kesit yazısı okundu: 24 AWG'den inceyse ya da yazı yoksa 18 AWG + micro B fişle yeniden yapılır. Seçenek: kollu WAGO 221-413 (ince telli alır) alınabilir, karar Ahmet'in; tablo vidalı klemensle gider",
+"Teslimde (KT3): sigorta kutusunun yuvaları ortak giriş barasında mı: akü ayrıkken multimetrenin süreklilik kademesiyle kutunun giriş ucu ile her yuvanın giriş tarafı arasına bak (altısı da öterse ortak bara). Biri ötmezse kutu ayrı girişli: her yuvaya kutunun üstünde olabildiğince kısa, kutunun giriş kablosuyla (G04) aynı kesitte 12 AWG ara kablo, hepsi tek giriş klemensinden yıldız (`planlama/adim3/kablolama-on-kararlar.md` §3, KT3)",
 "BTS7960B kartının pin adları şemadakinden farklı olabilir: kart üstü yazıya göre bağla",
 "İsim karıştırma: burada K1 / K2 röle adıdır; Kablolama kapısı K1 / K2 ayrı şey",
 "Tezgâhta (arayüz kartı takılmadan, B6a öncesi; akım sınırlı tezgâh kaynağıyla): PC817 modülü 3,3 V'ta ölçüldü: LOW < 0,4 V, HIGH > 2,5 V; tutmazsa `elektrik.md` E3'teki yedek devre",
@@ -8516,9 +9123,9 @@
 "İlk açılış ve BMS gözlemi burada değil: F1 \"İlk enerji, aşama 1\"; devreye alma ve motor yön testi F5 \"İlk enerji, aşama 2\""
 ],
 "kablo": [
-"Burada: 12 V ana hat, toprak, iki motor hattı, çevre 5 V, acil stop, sonar sinyal. Şemada renkli",
+"Burada: 12 V ana hat, şarj kolu, toprak, iki motor hattı, çevre 5 V, acil stop, sonar sinyal. Şemada devre sınıfının renginde (lejant; `planlama/adim3/kablolar.md` renk kuralı); tıklayınca kablo kimliği, iki uç, kesit, sigorta ve acil stopta enerjili olup olmadığı",
 "Direk boyunca gidenler K2 listesinde; o hatların taban kısmı da bu adımda bağlanır (şema bölünmedi)",
-"Kablo listesi (boy + kesit) henüz yazılmadı: kesitler `planlama/adim3/elektrik.md` blok şemasından"
+"Kablo listesi (uçlar, kesit, sigorta, sonlandırma): `planlama/adim3/kablolar.md` (tek kaynak `kablolar.json`); boy için tablodaki tahmin kuralı"
 ],
 "not_": [],
 "kamera": null,
@@ -9620,7 +10227,7 @@
 "no": "29",
 "faz": "Kafa",
 "baslik": "Tezgâh: kafa içi (Pi 5, 5 V çeviriciler)",
-"is_": "Kafa iskeletinin (tabla + yanaklar) üstüne, tezgâhta:\n1. Pi 5'i 4 pirinç burca tak: burç alttan M2,5×8, Pi üstten M2,5×5. Kablo kenarı öne: micro HDMI 0 kafa ekranına, micro HDMI 1 göğüs ekranına, CSI kameraya gidecek.\n2. Tablaya 1 mm köpük bant + kablo bağıyla: Pololu D24V50F5 (Pi'nin 5 V'u) ve SY8205 (kafa ekranının ayrı 5 V hattı). Her iki 5 V çıkışına bir P6KE6V8A TVS: SY8205 → QLED hattındaki modelde var, D24V50F5 → Pi hattındaki modelde ve BOM'da yok (ikinci TVS'i ayrıca al). TVS tek yönlü: katot (çizgili uç) +5 V'a, anot GND'ye.\n3. 625ZZ rulmanını sol yanağın yuvasına pres et (tek parça; modelde iç ve dış bilezik ayrı çizili). Tilt hornu bu adımda yok: E2'de servoya takıldı, kafa E3'te ona iner (`tasarim/freecad/kafa/kafa_rapor.py` montaj sırası).\nKafa ekranı (10,1\" QLED), tırnaklar, kamera, ReSpeaker, USB ses kartı ve PAM8403 bu adımda takılmaz: kabuklarla birlikte E4'te.",
+"is_": "Kafa iskeletinin (tabla + yanaklar) üstüne, tezgâhta:\n1. Pi 5'i 4 pirinç burca tak: burç alttan M2,5×8, Pi üstten M2,5×5. Kablo kenarı öne: micro HDMI 0 kafa ekranına, micro HDMI 1 göğüs ekranına, CSI kameraya gidecek.\n2. Tablaya 1 mm köpük bant + kablo bağıyla: Pololu D24V50F5 (Pi'nin 5 V'u) ve SY8205 (kafa ekranının ayrı 5 V hattı). Her iki 5 V çıkışına bir P6KE6V8A TVS: SY8205 → QLED hattındaki modelde var, D24V50F5 → Pi hattındaki modelde ve BOM'da yok (ikinci TVS'i ayrıca al). TVS tek yönlü: katot (çizgili uç) +5 V'a, anot GND'ye.\nKafa giriş kartı (P6KE18A üstünde küçük pertinaks parçası): üç adet 2 pin 5,08 mm vidalı klemens; + uçları ve − uçları kart üstünde ≥ 18 AWG tel köprüyle (K01 sonlandırması) lehimli (delikli plaket pedi F3 5 A akım yolu değil). Girişe K2'de kafa 12 V çifti (G17) gelir, çıkışlar D24V50F5 (K01) ve SY8205'e (K02), 18 AWG. D24V50F5 → Pi USB-C (K03, 18 AWG). PAM8403'ün 5 V'u da D24V50F5'ten (K05, E4; karar K10 a, masa denemesi KT1, geçmezse SY8205). İnce telli uç klemense kalaylanmadan, bükülerek girer (yüksük varsa yüksük).\n3. 625ZZ rulmanını sol yanağın yuvasına pres et (tek parça; modelde iç ve dış bilezik ayrı çizili). Tilt hornu bu adımda yok: E2'de servoya takıldı, kafa E3'te ona iner (`tasarim/freecad/kafa/kafa_rapor.py` montaj sırası).\nKafa ekranı (10,1\" QLED), tırnaklar, kamera, ReSpeaker ve PAM8403 bu adımda takılmaz: kabuklarla birlikte E4'te (USB ses kartı kablajdan çıktı: yedek, takılmaz; E4).",
 "baglanti_md": "Pi: 4 × M2,5×8 pirinç burç + 4 × M2,5×5 (üst) + 4 × M2,5×8 DIN 912 (alt); D24V50F5, SY8205, TVS: 1 mm çift taraflı köpük bant + kablo bağı; 625ZZ pres geçme. M6'daki LCD 4 × M3×6 ve kamera 4 × M2×8 PT bu adımda yok (QLED tırnaklı, kamera E4'te)",
 "alet": "alyan 2, yan keski",
 "erisim": "düz",
@@ -9771,7 +10378,8 @@
 "not_": [
 "İki 5 V hattı birbirine köprülenmez: D24V50F5 Pi'yi, SY8205 kafa ekranını besler. Touch USB uyarısı E4'te (`planlama/adim3/elektrik.md`)",
 "SY8205 ve QLED hattı P6KE6V8A'sının tabladaki yeri modelde var; Pi hattı P6KE6V8A'sı modelde yok, yeri doğrulanmadı. TVS kutup yönü (katot +5 V'a) tek yönlü TVS'in genel bağlanışı; depo kaynağında yazmıyor, veri sayfasıyla doğrulanmadı",
-"QLED akımı 0,9 A varsayım, ölçülmedi"
+"QLED akımı 0,9 A varsayım, ölçülmedi: ilk açılışta ölçülür (teslimde bakılacaklar, `planlama/d158/kablo-tablosu-gunluk.md` §16.7)",
+"Kafa giriş kartının klemenslerine ve D24V50F5 / SY8205 klemenslerine giren uçlar teslimde takılıp çekilerek denenir (kesit aralığı belgede yok; `planlama/adim3/kablolar.md` K02, G17 teyit)"
 ],
 "kamera": null,
 "m6": [],
@@ -9895,8 +10503,8 @@
 "no": "31",
 "faz": "Kafa",
 "baslik": "Kafa kabukları + yüz ekranı, kamera, ses",
-"is_": "Kafa robotta, tilt hornunda (E3). Sıra: sağ arka kabuk → sol arka kabuk → tabla cıvataları → yüz kabuğu → kablolar → dikişler. Yüz kabuğu önce takılırsa tabla cıvatalarına alet sığar ama el kafanın dışından ulaşamaz (sıra denetimi, `rehber_sira.py`). Kaynakta sıra yok, montaj mantığından ve ölçümden: doğrulanmadı.\n1. Masada, sağ arka kabuk: ReSpeaker Mic Array v2.0'ı kabuğun tavanındaki boss'lara 3 × M2×8 PT ile vidala (kabuk kafadayken tavan vidalarına el ulaşmaz). Masada, sol arka kabuk: USB ses kartı ve PAM8403 yan duvara köpük bant + kablo bağıyla. Kabukları kafanın arkasında tut, kabloları kafanın açık ön tarafından tak: ReSpeaker → Pi USB 1, ses kartı → Pi USB 2 (uzatma + L dirsek), ses kartı L 3,5 mm → PAM girişi, PAM 5 V → D24V50F5 (varsayım, K10). Önce sağ kabuğu arkadan (−z) yerine koy, sonra solu (arkadan ya da soldan): dikey dikişte sağ kabuğun bindirmesi solun altında kalır; sol önce takılırsa sağ hiçbir düz yönden girmiyor (giriş yolu ölçümü).\n2. Tabla → arka kabuk rafı 4 × M3×10: yüz tarafı açıkken önden, L alyanla.\n3. Masada, yüz kabuğu sağ + sol: kamerayı (Camera Module 3) ön duvarın içindeki boss'lara 4 × M2×8 PT ile vidala; lens ekranın üstündeki Ø9 delikte. 10,1\" QLED (vida deliği yok): camı yüz kabuğu ön duvarının iç yüzüne yasla, cep duvarı yerini gösterir. 4 tırnağı (üst ve alt, x ±85) cam şeridine 1 mm köpük bant üstünden arkadan bastır; her tırnak 1 × M3×6 ISO 7380 ile boss'taki ısıl gömmeye.\n4. Yüz kabuğunu kafanın önünde tut, kabloları tak: CSI şeridi → Pi; QLED HDMI (30 cm şerit, Pi micro HDMI 0), Power (SY8205 çıkışı, A ucu kesik micro USB kablo), Touch (Pi USB 4). Touch'ı takmadan önce Notlar'daki ölçümü yap. Sonra yüz kabuğunu önden (+z) yerine koy (giriş yolu: önden serbest).\n5. Dikişler: boyundan gelen uçlar (kafa 12 V, göğüs HDMI, hub uzatması, hoparlör) K2'de bağlanır: arka kabuğun dikiş cıvatalarını K2'den sonra sık.",
-"baglanti_md": "1,58 m: tırnak 4 × M3×6 ISO 7380 → ısıl gömme + 4 köpük bant (1 mm); kamera 4 × M2×8 PT; ReSpeaker 3 × M2×8 PT (vida tipi varsayım); ses kartı ve PAM8403 köpük bant + kablo bağı; tabla → arka kabuk rafı 4 × M3×10 DIN 912 → ısıl gömme; kabuk dikişi 9 cıvata → ısıl gömme: 7 × M3×6 ISO 7380 + 2 × M3×5 ISO 7380 (havşalı tepe dikişi). M6'daki M3×8 + vizör eski, BOM'da vizör yok",
+"is_": "Kafa robotta, tilt hornunda (E3). Sıra: sağ arka kabuk → sol arka kabuk → tabla cıvataları → yüz kabuğu → kablolar → dikişler. Yüz kabuğu önce takılırsa tabla cıvatalarına alet sığar ama el kafanın dışından ulaşamaz (sıra denetimi, `rehber_sira.py`). Kaynakta sıra yok, montaj mantığından ve ölçümden: doğrulanmadı.\n1. Masada, sağ arka kabuk: ReSpeaker Mic Array v2.0'ı kabuğun tavanındaki boss'lara 3 × M2×8 PT ile vidala (kabuk kafadayken tavan vidalarına el ulaşmaz). Masada, sol arka kabuk: PAM8403 yan duvara köpük bant + kablo bağıyla. USB ses kartı takılmaz: çizimde ve animasyonda kart, köpük bandıyla birlikte, PAM8403'ün yanındaki yerine gidiyor görünür; bu eski tasarımdan kalan görüntüdür, uygulanmaz. Kartın köpük bandı da yapıştırılmaz; kart yedek parçalarla birlikte saklanır (KT2 geçmezse Pi USB 2'ye; `planlama/adim3/kablolama-on-kararlar.md` § 5 Ö1). Kabukları kafanın arkasında tut, kabloları kafanın açık ön tarafından tak: ReSpeaker → Pi USB 1 (U01); ses yolu ReSpeaker 3,5 mm jakı → 10 kΩ / 2,2 kΩ bölücü → PAM8403 sol girişi (AU1, AU2; bölücü PAM giriş pedlerinin dibinde, kablo üstünde, makaronla); PAM 5 V → D24V50F5 (K05; K10 a). Ses kablosunu bağlamadan önce 3,5 mm fişin kılıfı ile ReSpeaker USB GND arasında süreklilik ölç (≤ 1 Ω; KT2). Pi USB 2 boş kalır. Önce sağ kabuğu arkadan (−z) yerine koy, sonra solu (arkadan ya da soldan): dikey dikişte sağ kabuğun bindirmesi solun altında kalır; sol önce takılırsa sağ hiçbir düz yönden girmiyor (giriş yolu ölçümü).\n2. Tabla → arka kabuk rafı 4 × M3×10: yüz tarafı açıkken önden, L alyanla.\n3. Masada, yüz kabuğu sağ + sol: kamerayı (Camera Module 3) ön duvarın içindeki boss'lara 4 × M2×8 PT ile vidala; lens ekranın üstündeki Ø9 delikte. 10,1\" QLED (vida deliği yok): camı yüz kabuğu ön duvarının iç yüzüne yasla, cep duvarı yerini gösterir. 4 tırnağı (üst ve alt, x ±85) cam şeridine 1 mm köpük bant üstünden arkadan bastır; her tırnak 1 × M3×6 ISO 7380 ile boss'taki ısıl gömmeye.\n4. Yüz kabuğunu kafanın önünde tut, kabloları tak: CSI şeridi → Pi; QLED HDMI (30 cm şerit, Pi micro HDMI 0), Power (SY8205 çıkışı, A ucu kesik micro USB kablo), Touch (Pi USB 4). Touch'ı takmadan önce Notlar'daki ölçümü yap. Sonra yüz kabuğunu önden (+z) yerine koy (giriş yolu: önden serbest).\n5. Dikişler: boyundan gelen uçlar (kafa 12 V, göğüs HDMI, hub uzatması, hoparlör) K2'de bağlanır: arka kabuğun dikiş cıvatalarını K2'den sonra sık.",
+"baglanti_md": "1,58 m: tırnak 4 × M3×6 ISO 7380 → ısıl gömme + 4 köpük bant (1 mm); kamera 4 × M2×8 PT; ReSpeaker 3 × M2×8 PT (vida tipi varsayım); PAM8403 köpük bant + kablo bağı; tabla → arka kabuk rafı 4 × M3×10 DIN 912 → ısıl gömme; kabuk dikişi 9 cıvata → ısıl gömme: 7 × M3×6 ISO 7380 + 2 × M3×5 ISO 7380 (havşalı tepe dikişi). M6'daki M3×8 + vizör eski, BOM'da vizör yok",
 "alet": "alyan 2 / 2,5, PH0 / PH1 (M2 PT vidalar), yan keski",
 "erisim": "Tabla cıvataları: L alyanla önden, yüz tarafı açıkken (alet yolu 63,5 mm boş; 4/4 ulaşılır, el payı 12, 15 ve 20 mm'de). Eski sırada (yüz kabuğu önce) 20 mm el payında 4/4 kapalı; 15 mm ve altında eski sıra da açık görünüyor, fark 20 mm el varsayımına dayanıyor. ReSpeaker, kamera ve tırnak vidaları masada, kabuk açıkken düz; dikiş cıvataları dışarıdan düz (sıra denetimi). Giriş yolu: sağ arka kabuk arkadan, sol arka kabuk arkadan ya da soldan, yüz grubu önden serbest (temas eden yüzler çarpışma sayılmadı). Servis arka kabuktan (125 cm notu; 1,58 m'de doğrulanmadı)",
 "tezgah": null,
@@ -9948,7 +10556,7 @@
 "ad": "Köpük bant"
 },
 {
-"kod": "USB ses kartı (PAM8403 girişi; ölçü varsayım, fotoğraftan)",
+"kod": "USB ses kartı: yedek, takılmaz (KT2 geçmezse Pi port 2'ye; ölçü varsayım, fotoğraftan)",
 "tur": "Satin",
 "malzeme": "-",
 "r": "satin",
@@ -9956,7 +10564,7 @@
 "ids": [
 "p0823"
 ],
-"ad": "USB ses kartı"
+"ad": "USB ses kartı (yedek, takılmaz)"
 },
 {
 "kod": "PAM8403 2 x 3 W amfi kartı (ölçü tahmin)",
@@ -10161,19 +10769,22 @@
 "QLED camı ön duvarın iç yüzüne her kenarda dayalı; tırnak cama bastırıyor (cıvata tırnağı boss'a tutar), camı zorlamıyor",
 "Kamera lensi Ø9 deliğin ortasında; CSI şeridi kırılmadan Pi'ye ulaşıyor",
 "Touch takılmadan ölçüldü: QLED Power ile Touch VBUS arasında bağ var mı (Notlar)",
-"ReSpeaker, ses kartı ve PAM8403 yerinde; kablo bağları fişleri zorlamıyor",
+"ReSpeaker ve PAM8403 yerinde; kablo bağları fişleri zorlamıyor; USB ses kartı takılmadı (yedek), Pi USB 2 boş",
+"Ses kablosu bağlanmadan: 3,5 mm fiş kılıfı ↔ ReSpeaker USB GND sürekliliği ≤ 1 Ω (KT2); bölücü 10 kΩ / 2,2 kΩ PAM giriş pedlerinin dibinde, makaronlu",
 "Kafa pan ve tilt'te kabuğa sürtmüyor",
 "Dikişler aralıksız, kablo sıkışmadı (dikiş cıvataları K2'den sonra)"
 ],
 "kablo": [
 "Kafa içi: HDMI şerit Pi micro HDMI 0 → QLED, Touch Pi USB 4 → QLED, Power SY8205 → QLED, CSI Pi → kamera",
-"Ses: ReSpeaker → Pi USB 1, ses kartı → Pi USB 2, ses kartı L 3,5 mm → PAM8403, PAM 5 V → D24V50F5 (varsayım, K10). PAM çıkışından hoparlöre giden kablo K2'de boyundan iner",
+"Ses: ReSpeaker → Pi USB 1 (U01), ReSpeaker 3,5 mm → 10 kΩ / 2,2 kΩ bölücü → PAM8403 sol girişi (AU1, AU2), PAM 5 V → D24V50F5 (K05). PAM çıkışından hoparlöre giden kablo (AU3) K2'de boyundan iner",
 "Boyun uçları (kafa 12 V, göğüs HDMI → Pi micro HDMI 1, hub uzatması → Pi USB 3, hoparlör) K2'de bağlanır"
 ],
 "not_": [
 "İki 5 V hattı birbirine köprülenmez. QLED'in Touch micro USB'si Pi'ye veri için gider; Touch VBUS ekranın içinde Power girişine bağlıysa Pi'nin 5 V'u ile SY8205 çıkışı Touch kablosu üzerinden birleşir. Bu iç bağ doğrulanmadı: Touch'ı Pi'ye takmadan multimetreyle Power ile Touch VBUS arasına bak; bağlıysa takma, çözüm o ölçümle seçilir (`planlama/adim3/elektrik.md`)",
 "Montaj sırası kaynakta yok (montaj mantığından), doğrulanmadı. Boyun uçları K2'de geldiği için arka kabuk dikişleri K2'den sonra sıkılır",
-"PAM8403'ün 5 V besleme noktası karar bekliyor (K10; varsayılan D24V50F5). Ses kartı ve PAM8403 ölçüsü tahmini; ReSpeaker vida tipi ve kütlesi varsayım",
+"Ses yolu (14.11, `planlama/adim3/kablolama-on-kararlar.md` §5): ReSpeaker'ın kendi 3,5 mm çıkışı → bölücü → PAM8403; USB ses kartı kablajdan çıktı, siparişte kalır, takılmaz (yedek): masa denemesi KT2 geçmezse Pi USB 2'ye takılır ve 04.11 düzeni geri gelir. Modelde kart hâlâ çizili. Alt direnç KT2 ölçümüyle seçilir (başlangıç 2,2 kΩ)",
+"PAM8403'ün 5 V'u D24V50F5'ten (K10 a; KT1 masa denemesi, geçmezse SY8205). PAM8403 ölçüsü tahmini; ReSpeaker vida tipi ve kütlesi varsayım",
+"Efe'ye soru (demet kapanmadan): ReSpeaker çalma akışı en çok 16 kHz; konuşma sesi için kabul mü, hangi firmware",
 "Kafa ekranının kütlesi (600 g) ve akımı (0,9 A) varsayım, ölçülmedi"
 ],
 "kamera": null,
@@ -10248,7 +10859,7 @@
 ]
 },
 {
-"ad": "Masada: sol arka kabuk + USB ses kartı, PAM8403",
+"ad": "Masada: sol arka kabuk + PAM8403 (USB ses kartı yedek, takılmaz)",
 "tezgah": "arka_sol",
 "bag": "",
 "satir": [
@@ -10258,7 +10869,7 @@
 "p:5",
 "b:2"
 ],
-"is_": "Masada, sol arka kabuk: USB ses kartı ve PAM8403'ü yan duvarın iç yüzüne köpük bant + kablo bağıyla tut.",
+"is_": "Masada, sol arka kabuk: PAM8403'ü yan duvarın iç yüzüne köpük bant + kablo bağıyla tut. USB ses kartı takılmaz: çizimde ve animasyonda kart, köpük bandıyla birlikte, PAM8403'ün yanındaki yerine gidiyor görünür; bu eski tasarımdan kalan görüntüdür, uygulanmaz. Kartın köpük bandı da yapıştırılmaz; kart yedek parçalarla birlikte saklanır (KT2 geçmezse Pi USB 2'ye; `planlama/adim3/kablolama-on-kararlar.md` § 5 Ö1).",
 "kamera": [
 -0.85,
 0.62,
@@ -10272,7 +10883,7 @@
 "p0825"
 ],
 "gizli_ok": {
-"Köpük bant (USB ses": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil",
+"Köpük bant (yedek USB ses": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil",
 "Köpük bant (PAM": "perdelenme (3 mm voksel, 26 yön) tamamen gizli sayıyor; kimlik tamponu ölçümünde alt adım karesinde görünür (≥ 30 piksel ve tek başına çizilişinin ≥ %20'si; F10d-gizli-piksel.json): voksel çözünürlüğü, gerçek örtülme değil"
 },
 "ev": [
@@ -10284,7 +10895,7 @@
 "tezgah": "",
 "bag": "arka_sol",
 "satir": [],
-"is_": "Kabloları kafanın açık ön tarafından tak: ses kartı → Pi USB 2 (uzatma + L dirsek), ses kartı L 3,5 mm → PAM girişi, PAM 5 V → D24V50F5 (varsayım, K10). Sonra sol kabuğu arkadan yerine koy (giriş yolu ölçümü).",
+"is_": "Kabloları kafanın açık ön tarafından tak: ReSpeaker 3,5 mm jakı → 10 kΩ / 2,2 kΩ bölücü → PAM8403 sol girişi (AU1, AU2; önce kılıf ↔ ReSpeaker USB GND sürekliliği, KT2), PAM 5 V → D24V50F5 (K05; K10 a). Ses kablosunun şeması yok (ReSpeaker sağ kabukta; eski şema ses kartından çiziliyordu, kaldırıldı). Sonra sol kabuğu arkadan yerine koy (giriş yolu ölçümü).",
 "kamera": [
 -0.85,
 0.62,
@@ -10296,9 +10907,7 @@
 -1.0
 ],
 "sema": [
-7,
-8,
-9
+7
 ],
 "ev": [
 "p0752",
@@ -10440,9 +11049,9 @@
 "p0781"
 ],
 "sema": [
-10,
-11,
-12
+8,
+9,
+10
 ],
 "ev": [
 "p0752",
@@ -10489,8 +11098,8 @@
 "no": "32",
 "faz": "Kablolama kapısı",
 "baslik": "Kablolama kapısı 2: gövde içi",
-"is_": "Kabuktan önce dur. Enerjisiz çalış: akü XT60 ayrık, F3 (kafa) takılı değil; kafa uçları enerjisiz bağlanır. Taban uçları K1'de bağlandı; burada direk ve boyun boyunca çıkar:\n1. Kol servo uzatmaları: dağıtım A / B → etek → direk arka yüzü (z −26) → travers altı (y ≈ 1215) arkası → omuz.\n2. Kafa servoları: hat C → direk üstü R62 halkası; tilt kablosu boyundan kafaya.\n3. Kafa 12 V (18 AWG çift): direk ön yüzü (z +26) → R62 → boyun → kafa girişi (D24V50F5 ve SY8205).\n4. ESP32 USB boyuna girmez (05.11 kararı): ESP32'den (taban) direk arka yüzü (z −26) boyunca yukarı; ucu üst arka kapak hizasında (y ≈ 1.085–1.157) hub için bırakılır, F5'te hub'a takılır. VBUS teline seri 1N5819: anot hub (Pi) tarafında, katot ESP32 tarafında; çevre 5 V hub'a / Pi'ye geri beslemez. ESP32 kartının kendi VBUS→VIN diyodu varsa gerekmez: multimetreyle bak (doğrulanmadı).\n5. Boyun demeti, 5 kablo: kafa 12 V, tilt servo, göğüs HDMI (Pi micro HDMI 1), hub uzatması (Pi USB 3 → hub), hoparlör (PAM8403 → hoparlör). Yol: alt çıkış → servo yuvası arka kanalı → kablo odası → mil penceresi → Ø32 adaptör → sol yanak dışı → tabla geçişi (x −50…−37). Kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı), sonra dikişleri sık.\n6. Boyundan inenler travers arkasından gövdeye: HDMI direğin solundan ekran arkasına (F3); hub uzatmasının ucu üst arka kapak hizasında (F5); hoparlör kablosu sağ önden göğüs altına (y ≈ 1.000; F2'de hoparlöre).\n7. Göğüs ekranı 12 V boyundan geçmez: tabandan ayrı daldan (mini 2 A → LM2577 + LM2596, 12 V) direk arka yüzünden çıkar, travers altında direğin soluna geçer, ekran arkasında bırakılır (F3). Regülatör ekrana bağlanmadan 12 V'a ayarlanır (kontrol).\n8. Kablo bağıyla direğe tuttur. S1 uçları travers arkasında kalır: G4'te yarıktan girer.",
-"baglanti_md": "Kablo bağı (adet: kablo listesi henüz yazılmadı)",
+"is_": "Kabuktan önce dur. Enerjisiz çalış: akü XT60 ayrık, F3 (kafa) takılı değil; kafa uçları enerjisiz bağlanır. Taban uçları K1'de bağlandı; burada direk ve boyun boyunca çıkar:\n1. Kol servo uzatmaları: dağıtım A / B → etek → direk arka yüzü (z −26) → travers altı (y ≈ 1215) arkası → omuz.\n2. Kafa servoları: hat C → direk üstü R62 halkası; tilt kablosu boyundan kafaya.\n3. Kafa 12 V (G17, 18 AWG çift, F3 5 A): direk ön yüzü (z +26) → R62 → boyun → kafa giriş kartı (E3a; oradan D24V50F5 ve SY8205).\n4. ESP32 USB (U06) boyuna girmez (05.11 kararı): ESP32'den (taban) direk arka yüzü (z −26) boyunca yukarı; ucu üst arka kapak hizasında (y ≈ 1.085–1.157) hub için bırakılır, F5'te hub'a takılır. VBUS teline seri 1N5819: anot hub (Pi) tarafında, katot ESP32 tarafında; çevre 5 V hub'a / Pi'ye geri beslemez. ESP32 kartının kendi VBUS→VIN diyodu varsa gerekmez: multimetreyle bak (doğrulanmadı). 1N5819'un sınırı 1 A: çevre yükleri USB'den geri beslenirse aşılabilir (teslimde bakılacaklar; Efe'ye soru).\n5. Boyun demeti, 5 kablo (K14 a): hub uzatması (U03; Pi USB 3 → hub), göğüs HDMI (H02; Pi micro HDMI 1), tilt servo (S10), hoparlör (AU3; PAM8403 → hoparlör), kafa 12 V (G17). Yol: alt çıkış → servo yuvası arka kanalı (20 × 7,8 mm kapalı tünel, ≈ 34 mm, iki dik dönüş) → kablo odası → mil penceresi → Ø32 adaptör → sol yanak dışı → tabla geçişi (x −50…−37). Geçiş sırası: (1) hub uzatması (USB 2.0, erkek fiş gövdesi ≤ 13 × 7 mm; erkek uç aşağıdan yukarı, tünel boşken), (2) HDMI (Ø ≤ 6 mm; micro HDMI ucu aşağıdan yukarı, HDMI A ucu gövdede), (3) tilt servo kablosu, (4) hoparlör ve (5) 12 V çifti fişsiz (uç kontakları / pabuçlar geçirdikten sonra takılır). Demeti kurmadan önce basılmış tünel deneme parçasında (20 × 7,8 mm, ≈ 34 mm, iki dik dönüş, mil penceresi 20 × 10) fişleri elle geçir (KT4; kumpas ölçüsü yetmez). Fiş geçmezse sırasıyla: kablo fişsiz geçirilip yeniden sonlandırılır (USB 2.0'da lehimli USB-A fiş), HDMI için şerit HDMI + uç adaptörleri. Demeti kelepçe / kılıfla kapatmadan önce Efe'nin iki cevabı beklenir (ESP32 bilinçli reseti DTR / RTS ile; ReSpeaker 16 kHz). Kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı), sonra dikişleri sık.\n6. Boyundan inenler travers arkasından gövdeye: HDMI direğin solundan ekran arkasına (F3); hub uzatmasının ucu üst arka kapak hizasında (F5); hoparlör kablosu sağ önden göğüs altına (y ≈ 1.000; F2'de hoparlöre).\n7. Göğüs ekranı 12 V boyundan geçmez: sigorta kutusunun F6 3 A (standart) yuvasından ayrı dal (K11 a: ana anahtar sonrası, röle öncesi; acil stopta açık kalır) → LM2577 + LM2596 regülatörü (G20) → ekran 12 V jakı (G21), 18 AWG; direk arka yüzünden çıkar, travers altında direğin soluna geçer, ekran arkasında bırakılır (F3). Regülatörün panel yeri karar bekliyor (K52): G20'nin uç yeri ve boyu buna bağlı. Regülatör ekrana bağlanmadan 12 V'a ayarlanır (kontrol).\n8. Kablo bağıyla direğe tuttur. S1 uçları travers arkasında kalır: G4'te yarıktan girer.",
+"baglanti_md": "Kablo bağı. Kablo listesi (uçlar, kesit, sigorta): `planlama/adim3/kablolar.md`",
 "alet": "Kumpas, yan keski, multimetre",
 "erisim": "Kabuk yok; arkadan ve önden düz erişim. Kafa uçları arka kabuk dikişleri açıkken",
 "tezgah": null,
@@ -10498,27 +11107,30 @@
 "parcalar": [],
 "baglantilar": [],
 "kontrol": [
-"Uzatma: ince duvarlı PVC düz 22 AWG, damar ≤ 1,5 mm; kumpasla ölç (silikon 22 AWG sığmaz)",
+"Uzatmalar (S01–S10): ince duvarlı PVC düz 22 AWG, damar ≤ 1,5 mm; kumpasla ölç (aynı kesitte silikon tel sığmaz)",
 "v4 uzatmalar 1 m: dirsek ve bilek 1,86 m, S2 1,70 m gerekir, ek yapılacak. Ek yeri kaynakta yok (doğrulanmadı); ek U kasetine girmesin (3 aynı şerit)",
 "Pan ve tilt elle tam açıda: boyunda 5 kablo gerilmiyor (boyun yuva kanalı %44,8 dolu, hesap)",
 "Hub'a gidecek uçlarda (hub uzatması, ESP32 USB) yaklaşık 150 mm kapak söküm payı var",
+"Demet kurulmadan: tünel deneme parçasında fiş denemesi yapıldı (hub uzatması önce, sonra HDMI; KT4), sonuç yazıldı",
+"Demet kapatılmadan: Efe'nin iki cevabı geldi (DTR / RTS reset, ReSpeaker 16 kHz); \"tel gerekir\" derse bükümlü çift eklenir",
 "Kafa uçları bağlandı, arka kabuk dikişleri sıkıldı",
 "Her hat iki ucundan etiketli, süreklilik ölçüldü",
 "Göğüs ekranı regülatörü (LM2577 + LM2596) ekrana bağlanmadan, çıkışı multimetreyle 12 V'a ayarlandı: tezgâhta akım sınırlı kaynakla (sınır 2 A) ve yük direnciyle (`planlama/adim3/elektrik.md`; `planlama/d158/testler/T7-gogus-ekrani-12v.md`)"
 ],
 "kablo": [
-"Burada: servo A, servo B, servo kafa, kafa 12 V, enkoder / BTS sinyalleri (tabanda), boyun demeti, ESP32 USB ve göğüs ekranı kabloları. Şemada renkli",
+"Burada: servo A, servo B, servo kafa, kafa 12 V, enkoder / BTS sinyalleri (tabanda), boyun demeti, ESP32 USB ve göğüs ekranı kabloları. Şemada devre sınıfının renginde (lejant); tıklayınca tablodaki kimlik, uçlar, kesit, sigorta",
 "Göğüs ekranı, hub ve ses yolları gösterim şemasıdır (`lale158/kablo_yolu_ekran.py`): parça sayısına girmez; kablo çapı, büküm yarıçapı ve port yeri doğrulanmadı",
 "Taban şeması 12'nin direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); geçerli yol \"ESP32 USB\" şemasında",
 "Şemada taban kısımları da görünür: onlar K1'de bağlandı",
-"Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.360, hoparlör 1.030, göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`). Kablo listesi (boy + kesit) henüz yazılmadı"
+"Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.360, hoparlör 1.030, göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`). Kablo listesi: `planlama/adim3/kablolar.md`"
 ],
 "not_": [
-"Göğüs HDMI'si ve hub uzatmasının boyundan inmesi CAD'e göre; ekip teyidi bekliyor (K14), doğrulanmadı",
-"Göğüs ekranı 12 V dalının giriş noktası ve acil stop davranışı karar bekliyor (K11, `planlama/adim3/elektrik.md`)",
-"LM2577 + LM2596 kartı ve mini 2 A sigorta modelde yok; takılacakları yer (şemada güç paneli) doğrulanmadı",
-"Hoparlör kablosu (~1,1 m) ve hub uzatması (~1 m USB-A) robot için listede yok",
-"Hub kapanırsa ESP32 bağlantısı ve göğüs dokunmatiği birlikte düşer; hub girişindeki gerilim ölçülmedi"
+"Boyun demeti K14 a ile kapandı (CAD'deki gibi 5 kablo, şartlarla; `planlama/adim3/kablolama-on-kararlar.md` §4): demet yazıldığı gibi kurulamayabilir, tünel deneme parçasındaki fiş denemesi belirler",
+"Göğüs ekranı 12 V dalı K11 a ile kapandı: F6 3 A standart, ana anahtar sonrası, röle öncesi; acil stopta açık kalır",
+"LM2577 + LM2596 kartı modelde yok; panel yeri karar bekliyor (K52)",
+"Hoparlör kablosu (~1,1 m) ve hub uzatması (USB 2.0, ~1 m) listede koşullu kalem; sipariş yine verilir (K4, O-10 b). Hub harici beslemesiz (Ö2: hayır)",
+"Hub kapanırsa ESP32 bağlantısı ve göğüs dokunmatiği birlikte düşer; hub girişindeki gerilim ölçülmedi (KT5)",
+"Konuşmak için basılan düğme (O-12) karar bekliyor (K61): tabloya kablo eklenmedi"
 ],
 "kamera": null,
 "m6": [],
@@ -10533,7 +11145,7 @@
 "no": "33",
 "faz": "Kabuk ve etek",
 "baslik": "Taban eteği",
-"is_": "Bağlarken akü ayrık (XT60 açık).\n1. 6 bant + 2 dolgu şeridi: orta → ön → arka (dolgu şeritleri modelde var, M6'da yok; sırası doğrulanmadı). Bindirmeleri bağla.\n2. Etek braketlerine dışarıdan M3×14 (L brakette M3 perçin somun, delik Ø5,1).\n3. Acil stop mantarını panel somunuyla tak. Bağlamadan önce mantarı multimetrenin süreklilik kademesinde dene: NC uçları arasında mantar serbestken bip var, basılıyken yok (akü ayrık; kaynakta yok, doğrulanmadı). Sonra K1'de bırakılan ucu bağla.\n4. Ana anahtar ASW-A01 gövdesini etek üst plakasının altına, acil stobun karşısına tak (model yeri öneri, ölçü tahmini zarf; bağlantı elemanı modelde yok, doğrulanmadı). K1'de bırakılan iki ana hat ucunu bağla. Düğme: delik Ø30 tahmini, anahtarı ölç.\n5. XT60 şarj girişi (panel konnektör): önerilen yer etek üst plakasının arkası, delik modelde yok (`tasarim/freecad/taban/rapor.html` şarj notu; doğrulanmadı). Delik açıldıysa konnektörü tak, K1'de bırakılan şarj ucunu akü ayrıkken bağla; açılmadıysa uç bantlı kalır. Şarj 10 A sigortası takılmaz (aşama 1 listesi).",
+"is_": "Bağlarken akü ayrık (XT60 açık).\n1. 6 bant + 2 dolgu şeridi: orta → ön → arka (dolgu şeritleri modelde var, M6'da yok; sırası doğrulanmadı). Bindirmeleri bağla.\n2. Etek braketlerine dışarıdan M3×14 (L brakette M3 perçin somun, delik Ø5,1).\n3. Acil stop mantarını panel somunuyla tak. Bağlamadan önce mantarı multimetrenin süreklilik kademesinde dene: NC uçları arasında mantar serbestken bip var, basılıyken yok (akü ayrık; kaynakta yok, doğrulanmadı). Sonra K1'de bırakılan ucu bağla.\n4. Ana anahtar ASW-A01 gövdesini etek üst plakasının altına, acil stobun karşısına tak (model yeri öneri, ölçü tahmini zarf; bağlantı elemanı modelde yok, doğrulanmadı). K1'de bırakılan iki ana hat ucunu bağla. Düğme: delik Ø30 tahmini, anahtarı ölç.\n5. XT60 şarj girişi (panel konnektör): önerilen yer etek üst plakasının arkası, delik modelde yok (`tasarim/freecad/taban/rapor.html` şarj notu; doğrulanmadı). Delik açıldıysa konnektörü (XT60E-M, erkek panel girişi) tak, K1'de bırakılan şarj ucunu (G06) akü ayrıkken bağla; açılmadıysa uç bantlı kalır. Şarj kolunun 7,5 A mini sigortası takılmaz (aşama 1 listesi). XT60E-M pinleri sigorta takılınca her zaman akü geriliminde (ana anahtar da mantar da kesmez): kapağı takılı kalır.",
 "baglanti_md": "1,58 m: bindirme M3×6 ISO 7380; braket 6 × M3×14 ISO 7380 dışarıdan + M3 perçin somun (Y3 K2). M6'daki içeriden M3×8 eski",
 "alet": "alyan 2 (acil stop için ayrıca anahtar)",
 "erisim": "Düz, dışarıdan",
@@ -10876,10 +11488,11 @@
 ],
 "kontrol": [
 "Acil stop NP2 BE102: CAD 60 mm; delik gerçek parçayla tutuyor mu bak",
-"İlk enerji, aşama 1 (F1 sonu, kafasız): ana anahtar ve mantar bağlı. Saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken ana sigortayı (30 A), F4 (5 A, XL4016 çevre 5 V: ESP32) ve F5 (2 A, acil stop: mantar, röle bobinleri) tak. F1 (20 A: röle K1 ve ön şarj kolu K2), F3 (5 A, kafa), XL4016 hat sigortaları (A 7,5 A, B 7,5 A, C 5 A), göğüs ekranı mini 2 A ve şarj girişi mini 10 A takılı değil (`planlama/adim3/elektrik.md` sigorta listesi): anahtarlı bara, kafa ve göğüs ekranı dalı enerjisiz, Pi enerjisiz. Şarj girişi ana anahtardan önce akü + hattında: sigortası takılı olsaydı ana anahtar kapalıyken de gerilimli olurdu. Devreye alma komutu Pi'den gelir (E3). ESP32'deki program bilinmiyor: K2'yi süren GPIO2 kartın LED pini (E9), LED yakıp söndüren hazır bir program K2'yi açıp kapatabilir. F1 takılı olmadığı için röle K1 ve K2'nin kontakları enerjisiz, anahtarlı bara enerjisiz kalır. Tekerlekler yerden kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Mantar ölçümü: akü ayrıkken multimetreyi DC V kademesine al (20 V aralığı ya da otomatik; akü en çok 14,6 V), kırmızı ucu V soketine tak: 10 A soketinde kalırsa multimetre bu noktayı GND'ye bağlar ve F5 2 A atar (`planlama/d158/testler/00-genel.md` multimetre kuralı). Kırmızı ucu arayüz kartındaki PC817 #1 giriş klemensinin + ucuna (mantar sonrası düğüm, E3), siyah ucunu güç panelindeki WAGO GND yıldız noktasına bağla. Ölçü kıskacını mantar uçlarına takma. Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 takılı olmadığı için yalnız F4 / F5 girişleri, tam açılış aşama 2'de). Mantara basınca PC817 #1 girişi 0 V, bırakınca akü gerilimi (12,8–14,4 V). Bitince ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök. Devreye alma, ön şarj ve motor yön testi F5'te (İlk enerji, aşama 2). Bu aşamalar, sigorta sırası, ölçü noktası, klemensin + ucu, multimetre aralığı ve \"yerden kesik\" düzeni bu adım için kaynakta yok, doğrulanmadı"
+"İlk enerji, aşama 1 (F1 sonu, kafasız): ana anahtar ve mantar bağlı. Saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken ana sigortayı (30 A, standart), F4 (5 A, XL4016 çevre 5 V: ESP32; çevre çıkışındaki 2 A mini hat sigortası da) ve F5 (2 A, acil stop: mantar, röle bobinleri) tak. F1 (20 A: röle K1 ve ön şarj kolu K2), F3 (5 A, kafa), F6 (3 A, göğüs ekranı), XL4016 hat sigortaları (mini; A 7,5 A, B 7,5 A, C 5 A), PC817 #2 algı telinin (G22) 2 A mini sigortası ve şarj kolunun 7,5 A mini sigortası takılı değil (`planlama/adim3/elektrik.md` sigorta listesi; kutudakiler standart bıçak, hat yuvalarındakiler mini): anahtarlı bara, kafa ve göğüs ekranı dalı enerjisiz, Pi enerjisiz. Şarj kolu ana sigortanın yük tarafında, ana anahtardan önce: sigortası takılı olsaydı ana anahtar kapalıyken de gerilimli olurdu. Devreye alma komutu Pi'den gelir (E3). ESP32'deki program bilinmiyor: röleleri süren pinler GPIO4 (K1) ve GPIO19 (K2), açılışta LOW ve taban 2,2 kΩ ile GND'ye çekili (E9); bilinmeyen bir program bu pinleri sürebilir. F1 takılı olmadığı için röle K1 ve K2'nin kontakları enerjisiz, anahtarlı bara enerjisiz kalır. Tekerlekler yerden kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Mantar ölçümü: akü ayrıkken multimetreyi DC V kademesine al (20 V aralığı ya da otomatik; akü en çok 14,6 V), kırmızı ucu V soketine tak: 10 A soketinde kalırsa multimetre bu noktayı GND'ye bağlar ve F5 2 A atar (`planlama/d158/testler/00-genel.md` multimetre kuralı). Kırmızı ucu arayüz kartındaki PC817 #1 giriş klemensinin + ucuna (mantar sonrası düğüm, E3), siyah ucunu güç panelindeki yıldız barasının (GND, M5 saplama) akü dönüşü saplamasına (3.) bağla. Ölçü kıskacını mantar uçlarına takma. Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 takılı olmadığı için yalnız F4 / F5 girişleri, tam açılış aşama 2'de). Mantara basınca PC817 #1 girişi 0 V, bırakınca akü gerilimi (12,8–14,4 V). Bitince ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök. Devreye alma, ön şarj ve motor yön testi F5'te (İlk enerji, aşama 2). Bu aşamalar, sigorta sırası, ölçü noktası, klemensin + ucu, multimetre aralığı ve \"yerden kesik\" düzeni bu adım için kaynakta yok, doğrulanmadı"
 ],
 "kablo": [
-"Etek bandını takarken K1 hatları sıkışmasın"
+"Etek bandını takarken K1 hatları sıkışmasın",
+"Burada bağlananlar: ana anahtar (G03, G04; 12 AWG, halka pabuç), şarj girişi (G06, 16 AWG), acil stop mantarı (A01 F5 2 A girişi, A02 NC çıkışı; 18 AWG). Mantar kontak vidasına giren uçlar teslimde takılıp çekilerek denenir (kesit aralığı belgede yok); ana anahtarın saplama ölçüsü ve pabucu teslimde"
 ],
 "not_": [],
 "kamera": null,
@@ -11116,7 +11729,7 @@
 "b:17",
 "b:18"
 ],
-"is_": "Arka sol bandı (ana anahtar takılı) −x'ten getir (giriş yolu ölçümü). z −88 sol bindirmesi 3 × M3×6, x −38 arka bindirmesi 3 × M3×6, z −105 braketine M3×14. K1'de bırakılan iki ana hat ucunu anahtara bağla. XT60 şarj girişi (panel konnektör): önerilen yer etek üst plakasının arkası, delik modelde yok (doğrulanmadı); delik açıldıysa konnektörü tak, şarj ucunu akü ayrıkken bağla, açılmadıysa uç bantlı kalır. Şarj 10 A sigortası takılmaz (aşama 1 listesi).",
+"is_": "Arka sol bandı (ana anahtar takılı) −x'ten getir (giriş yolu ölçümü). z −88 sol bindirmesi 3 × M3×6, x −38 arka bindirmesi 3 × M3×6, z −105 braketine M3×14. K1'de bırakılan iki ana hat ucunu anahtara bağla. XT60 şarj girişi (panel konnektör): önerilen yer etek üst plakasının arkası, delik modelde yok (doğrulanmadı); delik açıldıysa konnektörü (XT60E-M) tak, şarj ucunu (G06) akü ayrıkken bağla, açılmadıysa uç bantlı kalır. Şarj kolunun 7,5 A mini sigortası takılmaz (aşama 1 listesi); sonra XT60E-M pinleri her zaman gerilimli olacağı için kapağı kapalı kalır.",
 "kamera": [
 -0.85,
 0.62,
@@ -11573,7 +12186,7 @@
 "Hoparlör kabı ızgara deliklerine ortalı, kelepçe hoparlörü sallanmadan tutuyor"
 ],
 "kablo": [
-"Hoparlör kablosu: PAM8403 → boyun → travers arkası → sağ ön → göğüs altı (K2'de bırakıldı); burada hoparlöre bağlanır"
+"Hoparlör kablosu (AU3, 2 × 0,50 mm² kordon, iki uç lehim): PAM8403 → boyun → travers arkası → sağ ön → göğüs altı (K2'de bırakıldı); burada hoparlöre bağlanır"
 ],
 "not_": [
 "Hoparlör ekseni duvara paralel (yatayın 35° altı); kama kararı açık (K6), duyulabilirlik ölçülmedi",
@@ -11960,7 +12573,7 @@
 "no": "35",
 "faz": "Kabuk ve etek",
 "baslik": "Göğüs bantları + göğüs ekranı",
-"is_": "1. Göğüs bantları sağ + sol, dikiş y 1005. Bindirmeleri bağla (x = 0'da cep altı y 1022,7 ve cep üstü y 1222 dahil), y 1095 braketine dışarıdan M5×18 tak.\n2. VESA taşıyıcı (PETG-CF): ekran cebinden direğin ön (+Z) kanalına, 2 × M6×18 + pul + çekiç somun. Yükseklik kanalda ayarlanır; cıvatalara ekran takılmadan, plakanın ortasından ulaşılır.\n3. 11,6\" ekranı (kasalı) cebe koy. Akü XT60 ayrık, ana anahtar kapalıyken göğüs ekranı mini 2 A sigortasını tak (F1 aşama 1'de takılı değildi). Dalın girişi K11'e bağlı (`planlama/adim3/elektrik.md` göğüs ekranı dalı). K11 a (varsayılan; ana anahtar sonrası, röle öncesi): 12 V fişini takmadan önce regülatör çıkışını yeniden ölç. Ölçümden önce saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). K2'den gelen 12 V kablosunun ekran ucundaki fiş ölçüm boyunca regülatör çıkışının 12 V'unu taşır: fişin metal ucunu bantla yalıt, ekran kasasına ve metal parçalara değmesin (genel güvenlik, kaynakta yok). Akü ayrıkken multimetreyi DC V kademesine al (20 V aralığı ya da otomatik), kırmızı ucu V soketine tak; kırmızı ucu regülatör çıkışının + klemensine, siyah ucunu çıkışın − klemensine bağla (kart üstü yazıya göre). Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç, çıkışı oku: 12 V (K2'de ayarlandı). Bitince ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök. Sonra K2'de bırakılan HDMI ve 12 V uçlarını enerjisizken tak (90° fişler). K11 b (anahtarlı bara): dal F5 aşama 2'de devreye alınana kadar enerjisiz, burada ölçülemez. 12 V fişini bu adımda takma, ucu bantlı kalsın; yalnız HDMI'yi enerjisizken tak. Ölçüm ve 12 V fişi F5 aşama 2'de. Ölçüm sırası ve ölçü noktası kaynakta yok, doğrulanmadı.\n4. Ekranı taşıyıcıya arkadan 4 × M4×12 + pul ile bağla (VESA 75 × 75): üst arka servis kapağı açık, direğin yanından.\n5. Çerçeve sağ + sol: göğüs bandına dışarıdan, yarı başına 4 × M3×6 ISO 7380, çerçeve flanşındaki ısıl gömmeye. Ekran camı çerçevenin 2 mm gerisinde, köşe takozlarına dayalı.\nNextion kalktı. Bu sıra kaynaktaki erişim notlarından çıkarıldı, doğrulanmadı.",
+"is_": "1. Göğüs bantları sağ + sol, dikiş y 1005. Bindirmeleri bağla (x = 0'da cep altı y 1022,7 ve cep üstü y 1222 dahil), y 1095 braketine dışarıdan M5×18 tak.\n2. VESA taşıyıcı (PETG-CF): ekran cebinden direğin ön (+Z) kanalına, 2 × M6×18 + pul + çekiç somun. Yükseklik kanalda ayarlanır; cıvatalara ekran takılmadan, plakanın ortasından ulaşılır.\n3. 11,6\" ekranı (kasalı) cebe koy. Akü XT60 ayrık, ana anahtar kapalıyken göğüs ekranının F6 3 A sigortasını (standart bıçak, sigorta kutusunun 6. yuvası) tak (F1 aşama 1'de takılı değildi). Dal K11 a ile ana anahtar sonrası, röle öncesi (`planlama/adim3/elektrik.md` göğüs ekranı dalı): acil stopta açık kalır. 12 V fişini takmadan önce regülatör çıkışını yeniden ölç. Ölçümden önce saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). K2'den gelen 12 V kablosunun ekran ucundaki fiş ölçüm boyunca regülatör çıkışının 12 V'unu taşır: fişin metal ucunu bantla yalıt, ekran kasasına ve metal parçalara değmesin (genel güvenlik, kaynakta yok). Akü ayrıkken multimetreyi DC V kademesine al (20 V aralığı ya da otomatik), kırmızı ucu V soketine tak; kırmızı ucu regülatör çıkışının + klemensine, siyah ucunu çıkışın − klemensine bağla (kart üstü yazıya göre). Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç, çıkışı oku: 12 V (K2'de ayarlandı). Bitince ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök. Sonra K2'de bırakılan HDMI ve 12 V uçlarını enerjisizken tak (90° fişler; ekranlı ilk açılışta F6 atmamalı, KT3: F5 aşama 2). Ölçüm sırası ve ölçü noktası kaynakta yok, doğrulanmadı.\n4. Ekranı taşıyıcıya arkadan 4 × M4×12 + pul ile bağla (VESA 75 × 75): üst arka servis kapağı açık, direğin yanından.\n5. Çerçeve sağ + sol: göğüs bandına dışarıdan, yarı başına 4 × M3×6 ISO 7380, çerçeve flanşındaki ısıl gömmeye. Ekran camı çerçevenin 2 mm gerisinde, köşe takozlarına dayalı.\nNextion kalktı. Bu sıra kaynaktaki erişim notlarından çıkarıldı, doğrulanmadı.",
 "baglanti_md": "1,58 m: bindirme M3×6 ISO 7380; y 1095 M5×18 ISO 7380 + M5 perçin somun. Ekran: taşıyıcı 2 × M6×18 DIN 912 + pul + çekiç somun; kasa 4 × M4×12 DIN 912 + DIN 125 pul; çerçeve 8 × M3×6 ISO 7380 → ısıl gömme. M6'daki Nextion DIN 912'leri eski",
 "alet": "alyan 2 / 3 / 5",
 "erisim": "Bant, çerçeve: düz, dışarıdan. Taşıyıcı M6: cepten, ekran takılmadan. VESA M4: arkadan, üst arka kapak açıkken direk yanından (`lale158/lale158_rapor.py` bağlantı tablosu; 1,58 m'de alet erişimi ölçülmedi)",
@@ -12189,11 +12802,11 @@
 "Cep üst kenarı köprü: destek temiz alındı, kenar kırık değil",
 "Ekran kasası direğe değmiyor (modelde ≥ 20 mm), göğüs bandına sürtmüyor",
 "HDMI ve 12 V fişleri kasaya ezilmiyor; dokunmatik USB ucu F5'e kadar boşta, etiketli",
-"K11 a: regülatör çıkışı 12 V okundu, 12 V fişi akü XT60'tan ayrıldıktan sonra takıldı. K11 b: 12 V fişi takılmadı, ucu bantlı (F5 aşama 2)",
+"F6 3 A (standart) takıldı; regülatör çıkışı 12 V okundu, 12 V fişi akü XT60'tan ayrıldıktan sonra takıldı",
 "Ekran camı çerçeveyle aynı açıda, köşelerde boşluk eşit"
 ],
 "kablo": [
-"K2'de bırakılan göğüs ekranı HDMI ve 12 V uçları burada ekrana takılır; dokunmatik USB F5'te hub'a"
+"K2'de bırakılan göğüs ekranı HDMI (H02) ve 12 V (G21, 90° DC jak fişi) uçları burada ekrana takılır; dokunmatik USB (U05) F5'te hub'a"
 ],
 "not_": [
 "Göğüs ekranının montaj sırası kaynakta yok: bant → taşıyıcı → ekran → çerçeve sırası `lale158_rapor.py` erişim notlarından çıkarıldı, doğrulanmadı",
@@ -12201,8 +12814,8 @@
 "Taşıyıcı direğin ön kanalında; K2'deki kafa 12 V hattı da direk ön yüzünden geçiyor: çakışma doğrulanmadı",
 "Ekran port yeri fotoğraftan tahmini (x ≈ −110, kısa kenar); ekran gelince ölçülecek",
 "HDMI'nin boyundan, dokunmatik USB'nin hub'dan gelmesi CAD'e göre; teyit yok, doğrulanmadı",
-"12 V dalı (mini 2 A → LM2577 + LM2596): giriş noktası ve acil stop davranışı karar bekliyor (`planlama/adim3/elektrik.md` K11)",
-"Regülatör kartı ve mini 2 A sigorta modelde yok; yerleri doğrulanmadı"
+"12 V dalı (F6 3 A standart → LM2577 + LM2596 → ekran; G20, G21, 18 AWG): K11 a ile ana anahtar sonrası, röle öncesi; acil stopta açık kalır (`planlama/adim3/elektrik.md` göğüs ekranı dalı)",
+"Regülatör kartı modelde yok; panel yeri karar bekliyor (K52)"
 ],
 "kamera": null,
 "m6": [],
@@ -12353,7 +12966,7 @@
 "b:9",
 "b:10"
 ],
-"is_": "11,6\" ekranı (kasalı) cebe önden, yaklaşık 14° yukarıdan koy (giriş yolu ölçümü: bantlar ve taşıyıcı takılıyken yalnız bu yön serbest; düz önden 19,5 mm sonra bant). 12 V ölçümü ve fişler için adımın iş metnindeki 3. maddeyi izle (K11 a / b). Sonra ekranı taşıyıcıya arkadan 4 × M4×12 + pul ile bağla (VESA 75 × 75): üst arka servis kapağı açık, direğin yanından. Dokunmatik USB ucu F5'e kadar boşta, etiketli.",
+"is_": "11,6\" ekranı (kasalı) cebe önden, yaklaşık 14° yukarıdan koy (giriş yolu ölçümü: bantlar ve taşıyıcı takılıyken yalnız bu yön serbest; düz önden 19,5 mm sonra bant). 12 V ölçümü ve fişler için adımın iş metnindeki 3. maddeyi izle (F6 3 A, K11 a). Sonra ekranı taşıyıcıya arkadan 4 × M4×12 + pul ile bağla (VESA 75 × 75): üst arka servis kapağı açık, direğin yanından. Dokunmatik USB ucu F5'e kadar boşta, etiketli.",
 "kamera": [
 0.0,
 0.4,
@@ -12741,7 +13354,7 @@
 ],
 "ev": [],
 "sema": [
-30
+28
 ]
 },
 {
@@ -12790,7 +13403,7 @@
 ],
 "ev": [],
 "sema": [
-50
+48
 ]
 }
 ],
@@ -13275,11 +13888,11 @@
 ],
 "ev": [],
 "sema": [
+21,
+22,
 23,
 24,
-25,
-26,
-27
+25
 ]
 },
 {
@@ -13309,11 +13922,11 @@
 ],
 "ev": [],
 "sema": [
+41,
+42,
 43,
 44,
-45,
-46,
-47
+45
 ]
 }
 ],
@@ -13447,8 +14060,8 @@
 ],
 "ev": [],
 "sema": [
-28,
-29
+26,
+27
 ]
 },
 {
@@ -13488,8 +14101,8 @@
 ],
 "ev": [],
 "sema": [
-48,
-49
+46,
+47
 ]
 },
 {
@@ -13540,10 +14153,10 @@
 "sema_yalniz": true,
 "ev": [],
 "sema": [
-31
+29
 ],
 "iz": [
-32
+30
 ]
 },
 {
@@ -13594,10 +14207,10 @@
 "sema_yalniz": true,
 "ev": [],
 "sema": [
-32
+30
 ],
 "iz": [
-31
+29
 ]
 },
 {
@@ -13863,8 +14476,8 @@
 ],
 "ev": [],
 "sema": [
-13,
-14
+11,
+12
 ]
 },
 {
@@ -13884,8 +14497,8 @@
 ],
 "ev": [],
 "sema": [
-33,
-34
+31,
+32
 ]
 }
 ],
@@ -14176,7 +14789,7 @@
 ],
 "ev": [],
 "sema": [
-15
+13
 ]
 },
 {
@@ -14198,7 +14811,7 @@
 ],
 "ev": [],
 "sema": [
-35
+33
 ]
 }
 ],
@@ -14653,13 +15266,13 @@
 ],
 "ev": [],
 "sema": [
+14,
+15,
 16,
 17,
 18,
 19,
-20,
-21,
-22
+20
 ]
 },
 {
@@ -14685,13 +15298,13 @@
 ],
 "ev": [],
 "sema": [
+34,
+35,
 36,
 37,
 38,
 39,
-40,
-41,
-42
+40
 ]
 },
 {
@@ -14725,7 +15338,7 @@
 "no": "—",
 "faz": "Son",
 "baslik": "Servis kapakları (test sonrası)",
-"is_": "1. 4'lü USB hub üst arka servis kapağının içinde: hub'ı kapağın takozuna, iki yan dayamanın arasına 1 mm köpük bantla yapıştır. Bağla: hub kablosu ← Pi USB 3'ten boyundan gelen uzatma (K2), Hub 1 → göğüs ekranı dokunmatiği (F3'te boşta bırakılan USB), Hub 2 → ESP32 USB (K2'de direk arka yüzünden çıkarılan uç; 1N5819 yönü K2 madde 4). Hub 3 ve 4 boş. Hub'ın anahtarı açık kalmalı.\n2. İlk enerji, aşama 2 (devreye alma testi): kapaklar açık, hub bağlı (ESP32 ile Pi hub üzerinden konuşur). Saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken F1 (20 A), F3 (5 A, kafa) ve XL4016 hat sigortalarını (A 7,5 A, B 7,5 A, C 5 A) tak (`planlama/adim3/elektrik.md` sigorta listesi). Şarj girişi mini 10 A bu aşamada da takılı değil. K11 b ise (göğüs dalı anahtarlı barada; F3 madde 3): akü ayrıkken multimetreyi F3'teki gibi göğüs regülatörü çıkışına bağla (DC V; 12 V fişi takılı değil), teli kolların ve tekerlerin erişim alanının dışına çıkar. Tekerlekler yerden kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Kollar aşağıda başlar: mantara basınca servo gücü de kesilir ve kollar düşer (E3 DTR / RTS notu). Kolların erişim alanında ve düşme hattında, kafanın ve tekerlerin erişim alanında kimse yok, bir kişi yalnız mantarda (kural 1 ve 7). Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 / F4 / F5 girişleri, Pololu dahil; K11 a ise göğüs ekranı dalı da). Pi açılır; ESP32, Pi seri portu açılınca resetlenmemeli (boot mesajı yok; E3 DTR / RTS). Pi'den devreye al, ESP32 ön şarj dizisi (E9): ön koşul (mantar serbest, servo hedefleri son konumda, BTS EN = 0 ve PWM = 0) → röle K2 → 300 ms → PC817 #2 LOW (bara var) → röle K1 → 100 ms sonra K2 bırakılır → PC817 #2 LOW teyidi. K11 b ise regülatör çıkışını erişim alanının dışından oku: 12 V. Mantara basınca K1 düşer (K2 devreye almadan 100 ms sonra zaten bırakıldı), anahtarlı bara kesilir (PC817 #2 HIGH), kollar düşer. Mantarı bırak: röle kendiliğinden çekmez, yeniden devreye alma yalnız Pi komutuyla. Motor yön testi: her yan ileri komutta ileri döner; dönen tekere el uzatılmaz. Bitince ana anahtarı kapat, aküyü XT60'tan ayır (`planlama/adim3/elektrik.md` E3, E9). K11 b ise sonra ölçü uçlarını sök ve göğüs 12 V fişini enerjisizken tak (üst arka servis kapağı açıkken; fişe bu sırada erişim ölçülmedi). Bu adımdaki sıra kaynakta yok, doğrulanmadı.\n3. Testten sonra kapat: arka servis kapağı, üst arka servis kapağı (hub'la birlikte), etek H1 ve H2.\nH1 sigorta kutusuna açılır: uç yuvalar yedek, sık değişen F1, F3, F4, F5 ortada (29.10).",
+"is_": "1. 4'lü USB hub (harici beslemesiz, USB 2.0) üst arka servis kapağının içinde: hub'ı kapağın takozuna, iki yan dayamanın arasına 1 mm köpük bantla yapıştır. Bağla: hub kablosu ← Pi USB 3'ten boyundan gelen USB 2.0 uzatma (U03, K2), Hub 1 → göğüs ekranı dokunmatiği (U05; F3'te boşta bırakılan USB), Hub 2 → ESP32 USB (U06; K2'de direk arka yüzünden çıkarılan uç; 1N5819 yönü K2 madde 4). Hub 3 ve 4 boş. Hub'ın anahtarı açık kalmalı.\n2. İlk enerji, aşama 2 (devreye alma testi): kapaklar açık, hub bağlı (ESP32 ile Pi hub üzerinden konuşur). Saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken F1 (20 A), F3 (5 A, kafa), XL4016 hat sigortalarını (mini; A 7,5 A, B 7,5 A, C 5 A) ve PC817 #2 algı telinin (G22) 2 A mini sigortasını tak (`planlama/adim3/elektrik.md` sigorta listesi; F6 3 A F3'te takıldı). Şarj kolunun 7,5 A mini sigortası bu aşamada da takılı değil. Tekerlekler yerden kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Kollar aşağıda başlar: mantara basınca servo gücü de kesilir ve kollar düşer (E3 DTR / RTS notu). Kolların erişim alanında ve düşme hattında, kafanın ve tekerlerin erişim alanında kimse yok, bir kişi yalnız mantarda (kural 1 ve 7). Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 / F4 / F5 / F6 girişleri, Pololu ve göğüs ekranı dalı dahil; ekranlı ilk açılışta F6 atmamalı, KT3). Pi açılır; ESP32, Pi seri portu açılınca resetlenmemeli (boot mesajı yok; E3 DTR / RTS). Pi'den devreye al, ESP32 ön şarj dizisi (E9): ön koşul (mantar serbest, servo hedefleri son konumda, BTS EN = 0 ve PWM = 0) → GPIO19 = 1 (röle K2) → en az 300 ms bekle (boş aküde 500 ms önerilir) → GPIO5 (PC817 #2) LOW teyidi (bara var; LOW değilse ön şarj kolu çalışmıyor: GPIO19 = 0, hata) → GPIO4 = 1 (röle K1) → 100 ms sonra GPIO19 = 0 (K2 bırakılır) → GPIO5 LOW teyidi. K2 toplam en çok 1 s çeker. Mantara basınca K1 düşer (K2, devreye alma sırasında K1 çektikten 100 ms sonra zaten bırakılmıştı; E9 adım 5), anahtarlı bara kesilir (GPIO5 HIGH), kollar düşer; göğüs ekranı dalı (F6) acil stopta açık kalır. Mantarı bırak: röle kendiliğinden çekmez, yeniden devreye alma yalnız Pi komutuyla. Motor yön testi: her yan ileri komutta ileri döner; dönen tekere el uzatılmaz. Bitince ana anahtarı kapat, aküyü XT60'tan ayır (`planlama/adim3/elektrik.md` E3, E9). Bu adımdaki sıra kaynakta yok, doğrulanmadı.\n3. Testten sonra kapat: arka servis kapağı, üst arka servis kapağı (hub'la birlikte), etek H1 ve H2.\nH1 sigorta kutusuna açılır: sık değişen F1, F3, F4, F5 ortadaki dört yuvada (29.10). Kutu 1 × 6 dizilişliyse kapak altında kalan iki uç yuva nadiren değişenlere ayrıldı: yedek sigorta F2 (15 A standart; hiçbir dalı beslemez) ve F6 (3 A, göğüs ekranı, 14.11; kutunun 6. yuvası). 2 × 3 dizilişte altısı da açıkta (`planlama/adim3/elektrik.md` sigorta listesi, H1 erişimi).",
 "baglanti_md": "1,58 m: arka kapak 7 × M3×6 ISO 7380; üst arka kapak 7 × M3×6 ISO 7380; H1 4 × M3×6 (x ±50); H2 4 × M3×6; hepsi ısıl gömmeye. Isıl gömmeler kapaklarda değil, bantların boss'larında: arka kapağınkiler orta bantta (F2), üst arka kapağınkiler göğüs bandında (F3), H1 / H2'ninkiler etek arka bantlarında (F1); o adımlarda takılı geldi. Hub: 1 mm köpük bant (kapak takozunda). Üst kapak, H2 ve hub M6'da yok",
 "alet": "alyan 2",
 "erisim": "Düz. Hub kapağın iç yüzünde: kapak açıkken bağlanır",
@@ -14849,22 +15462,22 @@
 ],
 "kontrol": [
 "Hub köpük banda oturdu, yan dayamalar arasında; anahtarı açık",
-"İlk enerji, aşama 2 (madde 2): BMS kesmedi; ön şarj dizisi PC817 #2 teyidiyle bitti; mantara basınca K1 düştü, bara kesildi; her yan ileri komutta ileri döndü; sonunda akü XT60'tan ayrıldı",
-"K11 b ise: göğüs regülatörü çıkışı 12 V okundu, 12 V fişi akü XT60'tan ayrıldıktan sonra takıldı",
+"İlk enerji, aşama 2 (madde 2): BMS kesmedi; ön şarj dizisi en az 300 ms beklemeyle ve iki GPIO5 (PC817 #2) LOW teyidiyle bitti, K2 en çok 1 s çekti; mantara basınca K1 düştü, bara kesildi; her yan ileri komutta ileri döndü; sonunda akü XT60'tan ayrıldı",
+"Göğüs ekranı ilk açılışta F6 3 A'i attırmadı (KT3)",
 "Testte ESP32 ve göğüs dokunmatiği hub üzerinden görünüyor",
 "Kapak açılınca hub'a bağlı üç kablo gerilmiyor (yaklaşık 150 mm söküm payı)",
 "E7 ve kafa ısı ölçümü kabuk kapalı yapıldı (kafada hesap ≈ 49 °C, ölçülmedi)",
 "Kapak altında kablo sıkışmadı"
 ],
 "kablo": [
-"Hub: Pi USB 3 → boyun → hub (uzatma), Hub 1 → göğüs dokunmatiği, Hub 2 → ESP32. Hub kapanırsa ESP32 ve göğüs dokunmatiği birlikte düşer"
+"Hub: Pi USB 3 → boyun → hub (U03, USB 2.0 uzatma), Hub 1 → göğüs dokunmatiği (U05), Hub 2 → ESP32 (U06). Hub kapanırsa ESP32 ve göğüs dokunmatiği birlikte düşer"
 ],
 "not_": [
-"Ön şarj dizisi ESP32 yazılımında (`planlama/adim3/elektrik.md` E9, adım 1–6): yazılım hazır değilse aşama 2 yapılmaz, röleler elle kapatılmaz (kaynakta yok, doğrulanmadı)",
-"Şarj girişi mini 10 A iki aşamada da takılı değil: şarj girişi ana anahtardan önce akü + hattında (`planlama/adim3/elektrik.md` sigorta listesi). Sigorta ilk şarjdan önce, akü XT60 ayrıkken takılır; bu sıra kaynakta yok, doğrulanmadı. Uyarı: sigorta takıldıktan sonra etekteki şarj girişinin (XT60E-M panel erkek, `planlama/maliyet.json`) pimleri, akü XT60'tan ayrılmadıkça gerilimlidir: ana anahtar da mantar da bu kolu kesmez. Pimlere metal değdirme. Konnektörün cinsi ve kapağı karar taslağında (KT-F7d-1, `planlama/d158/F7d-kontrol.md`; kuyruğa girmedi); bu uyarı karar verilene kadar geçerli",
+"Ön şarj dizisi ESP32 yazılımında (`planlama/adim3/elektrik.md` E9, adım 1–6): yazılım hazır değilse aşama 2 yapılmaz, röleler elle kapatılmaz (kaynakta yok, doğrulanmadı). Bekleme en az 300 ms; boş aküde dolma hesapla 0,2–0,5 s, bu yüzden 500 ms önerilir (Efe'ye bildirildi; karar yazılım tarafıyla). PC817 #2'nin (GPIO5) LOW olması kondansatörlerin dolduğunu göstermez",
+"Şarj kolunun 7,5 A mini sigortası iki aşamada da takılı değil: kol ana sigortanın yük tarafında, ana anahtardan önce (`planlama/adim3/elektrik.md` sigorta listesi, karar O-17). Sigorta ilk şarjdan önce, akü XT60 ayrıkken takılır; bu sıra kaynakta yok, doğrulanmadı. Uyarı: sigorta takıldıktan sonra etekteki şarj girişinin (XT60E-M panel erkek, `planlama/maliyet.json`) pimleri, akü XT60'tan ayrılmadıkça gerilimlidir: ana anahtar da mantar da bu kolu kesmez. Pimlere metal değdirme; kapak takılı kalır (K50, teslimde bakılacaklar)",
 "Hub'ın kapakla birlikte açılması ve 150 mm söküm payı tahmin; testten önce hub bağlantısının yapılması montaj mantığından, kaynakta sıra yok: doğrulanmadı",
-"Hub girişindeki gerilim ölçülmedi (hub USB'den beslenir)",
-"Altıncı USB cihazı karar bekliyor (K1): şimdilik hub'da 2 port boş"
+"Hub harici beslemesiz (Ö2: hayır), USB'den beslenir; girişindeki gerilim ölçülmedi (KT5)",
+"USB cihazları 4 (K1 kapandı: altıncı cihaz yok): Pi USB 2 ve hub'da 2 port boş"
 ],
 "kamera": "arka",
 "m6": [],
@@ -14970,7 +15583,7 @@
 "p:5",
 "b:2"
 ],
-"is_": "Etek H1 (sigorta kutusu) ve H2 (ana sigorta) kapaklarını yukarıdan yerine koy, her biri 4 × M3×6. H1 sigorta kutusuna açılır: uç yuvalar yedek, sık değişen F1, F3, F4, F5 ortada (29.10).",
+"is_": "Etek H1 (sigorta kutusu) ve H2 (ana sigorta) kapaklarını yukarıdan yerine koy, her biri 4 × M3×6. H1 sigorta kutusuna açılır: sık değişen F1, F3, F4, F5 ortada; uç yuvalarda yedek sigorta F2 ve F6 (göğüs ekranı; madde 3).",
 "kamera": [
 0.3,
 1.0,
@@ -35949,7 +36562,7 @@
 },
 {
 "id": "p0822",
-"ad": "Köpük bant (USB ses kartı)",
+"ad": "Köpük bant (yedek USB ses kartı için; kart takılmaz, bant yapıştırılmaz)",
 "modul": "kafa",
 "grup": "Kafa_tilt_ekseninde_doner",
 "kod": "Çift taraflı köpük bant 1 mm (VHB)",
@@ -35969,10 +36582,10 @@
 },
 {
 "id": "p0823",
-"ad": "USB ses kartı",
+"ad": "USB ses kartı (yedek, takılmaz)",
 "modul": "kafa",
 "grup": "Kafa_tilt_ekseninde_doner",
-"kod": "USB ses kartı (PAM8403 girişi; ölçü varsayım, fotoğraftan)",
+"kod": "USB ses kartı: yedek, takılmaz (KT2 geçmezse Pi port 2'ye; ölçü varsayım, fotoğraftan)",
 "tur": "Satin",
 "malzeme": "-",
 "r": "satin",
@@ -42574,7 +43187,7 @@
 "ad": "Arayüz kartı (E2/E3)",
 "modul": "taban",
 "grup": "Elektronik_kati_kartlar",
-"kod": "Delikli pertinaks 70 x 50: PC817 x2, MOSFET + 1N4007, bölücü dirençler, klemens (tahmini zarf)",
+"kod": "Delikli pertinaks 70 x 50: PC817 x2, BC337-40 ×2 (röle sürücüleri; 1N4007'ler rölelerin bobin uçlarında), bölücü dirençler, klemens (tahmini zarf)",
 "tur": "Satin",
 "malzeme": "PCB",
 "r": "satin",
@@ -45146,7 +45759,7 @@
 },
 {
 "id": "p1180",
-"ad": "Kablo yolu 1: 12 V ana hat: akü + → XT60 → ana sigorta 30 A → ana anahtar → sigorta kutusu",
+"ad": "Kablo yolu 1: 12 V ana hat (G01–G04, 12 AWG): akü + → XT60 → ana sigorta 30 A → ana anahtar → sigorta kutusu",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
 "kod": "(gösterim)",
@@ -45162,12 +45775,29 @@
 -1.0
 ],
 "d": 158.0,
+"kablo": [
+"G02",
+"G01",
+"G03",
+"G04"
+],
+"ks": "kirmizi",
+"kb": [
+"G02: XT60 (robot tarafı) · + → Ana sigorta yuvası · giriş · 12 AWG (3,31 mm²) · koruma: Akü BMS (Victron SuperPack, 30 A sürekli) · acil stopta enerjili",
+"G01: Akü · + kutup (M5) → XT60 (akü tarafı) · + · 12 AWG (3,31 mm²) · koruma: Akü BMS (Victron SuperPack, 30 A sürekli) · acil stopta enerjili",
+"G03: Ana sigorta yuvası · çıkış → Ana anahtar · giriş · 12 AWG (3,31 mm²) · sigorta: Ana sigorta 30 A (standart bıçak, kablolu yuva) · acil stopta enerjili",
+"G04: Ana anahtar · çıkış → Sigorta kutusu · giriş · 12 AWG (3,31 mm²) · sigorta: Ana sigorta 30 A (standart bıçak, kablolu yuva) · acil stopta enerjili"
+],
 "renk": "#d63031",
+"rt": {
+"light": "#c0392b",
+"dark": "#ef5a4c"
+},
 "gr": "#f20d0d"
 },
 {
 "id": "p1181",
-"ad": "Kablo yolu 2: Toprak: akü − → WAGO yıldız noktası (güç paneli) → tüm dönüştürücüler",
+"ad": "Kablo yolu 2: Toprak (G05, 12 AWG): akü − → yıldız barası (güç paneli, M5 saplama) → tüm dönüştürücüler",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
 "kod": "(gösterim)",
@@ -45183,12 +45813,24 @@
 -0.934
 ],
 "d": 64.0,
+"kablo": [
+"G05"
+],
+"ks": "siyah",
+"kb": [
+"G05: XT60 (robot tarafı) · − → Yıldız barası · GND · 12 AWG (3,31 mm²) · koruma: Akü BMS (Victron SuperPack, 30 A sürekli) · acil stopta enerjili"
+],
 "renk": "#222222",
+"rt": {
+"light": "#222222",
+"dark": "#b3b3b3",
+"cekirdek_dark": "#222222"
+},
 "gr": "#0d0d0d"
 },
 {
 "id": "p1182",
-"ad": "Kablo yolu 3: Motor 12 V: F1 20 A → röle → WAGO → BTS7960 sol / sağ → motor kablo delikleri → 4 motor",
+"ad": "Kablo yolu 3: Motor 12 V (G08–G12, 12 AWG; M01 motorun kendi kablosu): F1 20 A → röle K1 ∥ ön şarj kolu → anahtarlı bara (M5 saplama) → BTS7960 sol → ön sol motor",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
 "kod": "(gösterim)",
@@ -45204,12 +45846,37 @@
 -0.017
 ],
 "d": 222.6,
+"kablo": [
+"G12",
+"G09",
+"G11",
+"G08",
+"G10",
+"M01"
+],
+"ks": "turuncu",
+"kb": [
+"G12: Anahtarlı bara · + → BTS7960 sol · B+ · 12 AWG (3,31 mm²) · sigorta: F1 20 A (sigorta kutusu) · acil stopta enerjisiz",
+"G09: Röle K1 · 87 → Anahtarlı bara · + · 12 AWG (3,31 mm²) · sigorta: F1 20 A (sigorta kutusu) · acil stopta enerjisiz",
+"G11: Ön şarj kartı · çıkış → Anahtarlı bara · + · 12 AWG (3,31 mm²) · sigorta: F1 20 A (sigorta kutusu) · acil stopta enerjisiz",
+"G08: Sigorta kutusu · F1 çıkışı → Röle K1 · 30 · 12 AWG (3,31 mm²) · sigorta: F1 20 A (sigorta kutusu) · acil stopta enerjili",
+"G10: Sigorta kutusu · F1 çıkışı → Ön şarj kartı · giriş · 12 AWG (3,31 mm²) · sigorta: F1 20 A (sigorta kutusu) · acil stopta enerjili",
+"M01: BTS7960 sol · M+ → JGB37 ön sol · motor + · motorun kendi kablosu (6 damarlı, enkoderle ortak); kesit motor gelince okunur ve buraya yazılır (O-16) · koruma: BTS7960 sol (aşırı akım sınırlama + ısıl kapatma) · acil stopta enerjisiz"
+],
 "renk": "#e67e22",
+"rt": {
+"light": "#b35a00",
+"dark": "#f0903a"
+},
+"karisik": [
+"kirmizi",
+"turuncu"
+],
 "gr": "#ff8000"
 },
 {
 "id": "p1183",
-"ad": "Kablo yolu 4: Motor 12 V sağ kol + arka motorlar (plaka altından, z 36 deliğinden)",
+"ad": "Kablo yolu 4: Motor 12 V sağ (G13, 12 AWG: anahtarlı bara → BTS7960 sağ; M03, M04 motorun kendi kablosu: ön sağ ve arka sağ motor; plaka altından, z 36 deliğinden). Arka sol motor (M02) bu yolda değil, şeması yok",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
 "kod": "(gösterim)",
@@ -45225,12 +45892,27 @@
 0.168
 ],
 "d": 220.0,
+"kablo": [
+"M03",
+"M04",
+"G13"
+],
+"ks": "turuncu",
+"kb": [
+"M03: BTS7960 sağ · M+ → JGB37 ön sağ · motor + · motorun kendi kablosu (6 damarlı, enkoderle ortak); kesit motor gelince okunur ve buraya yazılır (O-16) · koruma: BTS7960 sağ (aşırı akım sınırlama + ısıl kapatma) · acil stopta enerjisiz",
+"M04: BTS7960 sağ · M+ → JGB37 arka sağ · motor + · motorun kendi kablosu (6 damarlı, enkoderle ortak); kesit motor gelince okunur ve buraya yazılır (O-16) · koruma: BTS7960 sağ (aşırı akım sınırlama + ısıl kapatma) · acil stopta enerjisiz",
+"G13: Anahtarlı bara · + → BTS7960 sağ · B+ · 12 AWG (3,31 mm²) · sigorta: F1 20 A (sigorta kutusu) · acil stopta enerjisiz"
+],
 "renk": "#e67e22",
+"rt": {
+"light": "#b35a00",
+"dark": "#f0903a"
+},
 "gr": "#ff8000"
 },
 {
 "id": "p1184",
-"ad": "Kablo yolu 5: Servo 6 V A (E1): röle → WAGO → 7,5 A hat sigortası → XL4016 A (0; 170) → 16 AWG → dağıtım A (72; 205) → uzatmalar: sağ kol",
+"ad": "Kablo yolu 5: Servo 6 V A (G14 16 AWG → SV1 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 A (0; 170) → dağıtım A (72; 205) → uzatmalar S01–S04: sağ kol",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
 "kod": "(gösterim)",
@@ -45246,12 +45928,37 @@
 0.987
 ],
 "d": 607.0,
+"kablo": [
+"SV1",
+"G14",
+"S01",
+"S02",
+"S03",
+"S04"
+],
+"ks": "sari",
+"kb": [
+"SV1: XL4016 A · OUT+ → Dağıtım kartı A · V+ · 16 AWG (1,31 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"G14: Anahtarlı bara · + → XL4016 A · IN+ · 16 AWG (1,31 mm²) · sigorta: Hat sigortası A 7,5 A mini (XL4016 A girişi) · acil stopta enerjisiz",
+"S01: Dağıtım kartı A · çıkış 1 V+ → sağ S1 (omuz öne-arka) servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S02: Dağıtım kartı A · çıkış 2 V+ → sağ S2 (omuz yana) servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S03: Dağıtım kartı A · çıkış 3 V+ → sağ dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz",
+"S04: Dağıtım kartı A · çıkış 4 V+ → sağ bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 A akım sınırı · acil stopta enerjisiz"
+],
 "renk": "#e2b714",
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+},
+"karisik": [
+"sari",
+"turuncu"
+],
 "gr": "#f2d90d"
 },
 {
 "id": "p1185",
-"ad": "Kablo yolu 6: Servo uzatmaları kafaya: pan + tilt (hat C, XL4016 C güç panelinde; direk üstü, R62 halkasından)",
+"ad": "Kablo yolu 6: Servo uzatmaları kafaya (S09, S10; 22 AWG): pan + tilt (hat C, XL4016 C güç panelinde; direk üstü, R62 halkasından)",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
 "kod": "(gösterim)",
@@ -45267,12 +45974,25 @@
 -1.0
 ],
 "d": 58.9,
+"kablo": [
+"S09",
+"S10"
+],
+"ks": "sari",
+"kb": [
+"S09: Dağıtım kartı C (kafa) · pan V+ → kafa pan servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 C akım sınırı · acil stopta enerjisiz",
+"S10: Dağıtım kartı C (kafa) · tilt V+ → kafa tilt servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 C akım sınırı · acil stopta enerjisiz"
+],
 "renk": "#e2b714",
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+},
 "gr": "#f2d90d"
 },
 {
 "id": "p1186",
-"ad": "Kablo yolu 7: Servo 6 V B (E1): röle → WAGO → 7,5 A hat sigortası → XL4016 B (−49; 75) → 16 AWG → dağıtım B (−72; 205) → sol kol",
+"ad": "Kablo yolu 7: Servo 6 V B (G15 16 AWG → SV2 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 B (−49; 75) → dağıtım B (−72; 205) → uzatmalar S05–S08: sol kol",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
 "kod": "(gösterim)",
@@ -45288,12 +46008,37 @@
 0.54
 ],
 "d": 602.2,
+"kablo": [
+"SV2",
+"G15",
+"S05",
+"S06",
+"S07",
+"S08"
+],
+"ks": "sari",
+"kb": [
+"SV2: XL4016 B · OUT+ → Dağıtım kartı B · V+ · 16 AWG (1,31 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"G15: Anahtarlı bara · + → XL4016 B · IN+ · 16 AWG (1,31 mm²) · sigorta: Hat sigortası B 7,5 A mini (XL4016 B girişi) · acil stopta enerjisiz",
+"S05: Dağıtım kartı B · çıkış 1 V+ → sol S1 (omuz öne-arka) servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S06: Dağıtım kartı B · çıkış 2 V+ → sol S2 (omuz yana) servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S07: Dağıtım kartı B · çıkış 3 V+ → sol dirsek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz",
+"S08: Dağıtım kartı B · çıkış 4 V+ → sol bilek servosu · V+ · 22 AWG (0,33 mm²) · koruma: XL4016 B akım sınırı · acil stopta enerjisiz"
+],
 "renk": "#e2b714",
+"rt": {
+"light": "#8a6d00",
+"dark": "#e8c020"
+},
+"karisik": [
+"sari",
+"turuncu"
+],
 "gr": "#f2d90d"
 },
 {
 "id": "p1187",
-"ad": "Kablo yolu 8: Kafa 12 V (K4 / E4): F3 5 A → 18 AWG çift → direk ön yüzü → R62 → boyun → kafa girişi → Pololu D24V50F5 (Pi 5; PAM8403 varsayım, K10) + SY8205 (10,1\" QLED)",
+"ad": "Kablo yolu 8: Kafa 12 V (G17, 18 AWG çift): F3 5 A → direk ön yüzü → R62 → boyun → kafa giriş kartı (P6KE18A) → Pololu D24V50F5 (Pi 5, PAM8403) + SY8205 (10,1\" QLED)",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
 "kod": "(gösterim)",
@@ -45309,12 +46054,23 @@
 -0.941
 ],
 "d": 587.2,
-"renk": "#2f86d4",
+"kablo": [
+"G17"
+],
+"ks": "kirmizi",
+"kb": [
+"G17: Sigorta kutusu · F3 çıkışı → Kafa giriş klemensi · +12 V · 18 AWG (0,82 mm²) · sigorta: F3 5 A (sigorta kutusu) · acil stopta enerjili"
+],
+"renk": "#d63031",
+"rt": {
+"light": "#c0392b",
+"dark": "#ef5a4c"
+},
 "gr": "#f20d0d"
 },
 {
 "id": "p1188",
-"ad": "Kablo yolu 9: Çevre 5 V: F4 5 A → XL4016 çevre → ESP32 / sensörler / PCA ve BNO 3V3 (ESP32 regülatöründen)",
+"ad": "Kablo yolu 9: Çevre 5 V (G18, 18 AWG): F4 5 A → XL4016 çevre. Şemanın XL4016 sonrası kısmı eski (doğrudan ESP32'ye); tabloda G19 (16 AWG) 2 A mini hat sigortasıyla arayüz kartına gider, bu şemada çizili değil",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
 "kod": "(gösterim)",
@@ -45330,12 +46086,23 @@
 -0.473
 ],
 "d": 194.8,
-"renk": "#2f86d4",
+"kablo": [
+"G18"
+],
+"ks": "kirmizi",
+"kb": [
+"G18: Sigorta kutusu · F4 çıkışı → XL4016 çevre · IN+ · 18 AWG (0,82 mm²) · sigorta: F4 5 A (sigorta kutusu) · acil stopta enerjili"
+],
+"renk": "#d63031",
+"rt": {
+"light": "#c0392b",
+"dark": "#ef5a4c"
+},
 "gr": "#1a73ff"
 },
 {
 "id": "p1189",
-"ad": "Kablo yolu 10: Acil stop (E3): F5 → mantar (NC) → röle bobini → MOSFET (arayüz kartı, ESP32 \"devreye al\"); PC817 mantar sonrası gerilimi okur",
+"ad": "Kablo yolu 10: Acil stop (A01–A06, 18 AWG; PC817 teli 22 AWG): F5 2 A → mantar (NC) → acil stop düğüm kartı → röle K1 ve K2 bobinleri → BC337-40 #1 / #2 (arayüz kartı, GPIO4 / GPIO19); PC817 #1 mantar sonrası gerilimi okur (GPIO23)",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
 "kod": "(gösterim)",
@@ -45351,12 +46118,33 @@
 -0.999
 ],
 "d": 186.5,
+"kablo": [
+"A02",
+"A01",
+"A03",
+"A04",
+"A05",
+"A06"
+],
+"ks": "yesil",
+"kb": [
+"A02: Acil stop mantarı · NC çıkış → Acil stop düğümü (mantar NC çıkışı) · + · 18 AWG (0,82 mm²) · sigorta: F5 2 A (sigorta kutusu) · acil stopta enerjisiz",
+"A01: Sigorta kutusu · F5 çıkışı → Acil stop mantarı · NC giriş · 18 AWG (0,82 mm²) · sigorta: F5 2 A (sigorta kutusu) · acil stopta enerjili",
+"A03: Röle K1 · 85 → Arayüz kartı · BC337-40 #1 C · 18 AWG (0,82 mm²) · sigorta: F5 2 A (sigorta kutusu) · acil stopta enerjisiz",
+"A04: Acil stop düğümü (mantar NC çıkışı) · + → Ön şarj kartı · K2 bobini + · 18 AWG (0,82 mm²) · sigorta: F5 2 A (sigorta kutusu) · acil stopta enerjisiz",
+"A05: Ön şarj kartı · K2 bobini − → Arayüz kartı · BC337-40 #2 C · 18 AWG (0,82 mm²) · sigorta: F5 2 A (sigorta kutusu) · acil stopta enerjisiz",
+"A06: Acil stop düğümü (mantar NC çıkışı) · + → PC817 modülü · IN1 + · 22 AWG (0,33 mm²) · sigorta: F5 2 A (sigorta kutusu) · acil stopta enerjisiz"
+],
 "renk": "#2e9e4f",
+"rt": {
+"light": "#1e7a3c",
+"dark": "#3dbb64"
+},
 "gr": "#0dbf33"
 },
 {
 "id": "p1190",
-"ad": "Kablo yolu 11: Sinyal: sonar ×3 → arayüz kartı bölücü (4,7k / 10k) → ESP32 (ön ara ray üstünden)",
+"ad": "Kablo yolu 11: Sinyal: sol sonar (Q03, 22 AWG) → arayüz kartı bölücü (4,7 kΩ / 10 kΩ) → ESP32 (X01; ön ara ray üstünden). Orta ve sağ sonar (Q01, Q02) bu şemada değil",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
 "kod": "(gösterim)",
@@ -45372,12 +46160,25 @@
 0.998
 ],
 "d": 136.8,
+"kablo": [
+"Q03",
+"X01"
+],
+"ks": "mor",
+"kb": [
+"Q03: HC-SR04 sol · VCC → Arayüz kartı · çevre 5 V · 22 AWG (0,33 mm²) · sigorta: Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) · acil stopta enerjili",
+"X01: Arayüz kartı · akü bölücü çıkışı (100k/18k + 100 nF) → ESP32 · GPIO36 · 22 AWG (0,33 mm²) · sigorta: Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) · acil stopta enerjili"
+],
 "renk": "#8e44ad",
+"rt": {
+"light": "#7d3c98",
+"dark": "#b07fd0"
+},
 "gr": "#9933cc"
 },
 {
 "id": "p1191",
-"ad": "Kablo yolu 12: Sinyal: enkoder + BTS PWM / EN / IS → ESP32. Şemanın direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
+"ad": "Kablo yolu 12: Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil. Şemanın direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
 "kod": "(gösterim)",
@@ -45393,7 +46194,18 @@
 0.998
 ],
 "d": 604.2,
+"kablo": [
+"B01"
+],
+"ks": "mor",
+"kb": [
+"B01: BTS7960 sol · IN1 → ESP32 · GPIO25 · 22 AWG (0,33 mm²) · sigorta: Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) · acil stopta enerjili"
+],
 "renk": "#8e44ad",
+"rt": {
+"light": "#7d3c98",
+"dark": "#b07fd0"
+},
 "gr": "#9933cc"
 }
 ],
@@ -45859,8 +46671,8 @@
 "neden": "yeni parça yok"
 }
 ],
-"sure_s": 43.9,
-"sure_baglanti_s": 16.3
+"sure_s": 33.9,
+"sure_baglanti_s": 11.6
 },
 "kol_kablo": {
 "betik": "tasarim/freecad/rehber/rehber_kol_kablo.py",
@@ -45868,7 +46680,7 @@
 "koordinat": "global mm (omuz yereli + arayuz.MODULLER omuz_sag konum; sol = X aynası); CAD duruşu (S1 0, S2 0, dirsek 0)",
 "bolum": [
 {
-"sema": 13,
+"sema": 11,
 "anahtar": "sag:servo_bilek",
 "ad": "Sağ kol · Bilek servosu kablosu: mil ucu → ara duvar çentiği → dirsek servosu arkası → tırnak",
 "adim": "H0a",
@@ -45896,7 +46708,7 @@
 "nokta": 6
 },
 {
-"sema": 14,
+"sema": 12,
 "anahtar": "sag:servo_dirsek",
 "ad": "Sağ kol · Dirsek servosu kablosu: servo üstü → tırnak",
 "adim": "H0a",
@@ -45924,7 +46736,7 @@
 "nokta": 3
 },
 {
-"sema": 15,
+"sema": 13,
 "anahtar": "sag:lop_dirsek",
 "ad": "Sağ kol · Dirsek lopu (L 120, 2 kablo): tırnak → çatal oluğu → Ø10 delik",
 "adim": "H0c",
@@ -45952,7 +46764,7 @@
 "nokta": 32
 },
 {
-"sema": 16,
+"sema": 14,
 "anahtar": "sag:tup_ici",
 "ad": "Sağ kol · Tüp içi: Ø10 delik → tüp girişi (y -152)",
 "adim": "H1",
@@ -45980,7 +46792,7 @@
 "nokta": 2
 },
 {
-"sema": 17,
+"sema": 15,
 "anahtar": "sag:tup_ara",
 "ad": "Sağ kol · Tüp içi, iki ek arası (y -127 → -118): bilek uzatması (lehimden sonra) yanında dirsek servo kablosu (JR'ye kadar)",
 "adim": "H1",
@@ -46008,7 +46820,7 @@
 "nokta": 2
 },
 {
-"sema": 18,
+"sema": 16,
 "anahtar": "sag:ek_jr",
 "ad": "Sağ kol · Ek yeri: dirsek kablosu JR çifti (26 mm), tüp içinde birleşimde",
 "adim": "H1",
@@ -46036,7 +46848,7 @@
 "nokta": 2
 },
 {
-"sema": 19,
+"sema": 17,
 "anahtar": "sag:ek_bilek",
 "ad": "Sağ kol · Ek yeri: bilek kablosu lehim + makaron (25 mm), tüp girişinin üstünde (yer yaklaşık)",
 "adim": "H1",
@@ -46064,7 +46876,7 @@
 "nokta": 2
 },
 {
-"sema": 20,
+"sema": 18,
 "anahtar": "sag:nokta_lehim",
 "ad": "Sağ kol · Ek noktası: bilek kablosu lehimi (makaron ortası, y -139.5)",
 "adim": "H1",
@@ -46092,7 +46904,7 @@
 "nokta": 2
 },
 {
-"sema": 21,
+"sema": 19,
 "anahtar": "sag:nokta_jr",
 "ad": "Sağ kol · Ek noktası: dirsek kablosu JR birleşimi (y -105)",
 "adim": "H1",
@@ -46120,7 +46932,7 @@
 "nokta": 2
 },
 {
-"sema": 22,
+"sema": 20,
 "anahtar": "sag:uzatma_tup",
 "ad": "Sağ kol · Uzatmalar tüp içinde: birleşim → tüp penceresi",
 "adim": "H1",
@@ -46148,7 +46960,7 @@
 "nokta": 3
 },
 {
-"sema": 23,
+"sema": 21,
 "anahtar": "sag:uzatma_kol",
 "ad": "Sağ kol · Uzatmalar: tüp penceresi → tüp cıvatası yanı → K noktası (çatal arka plakası arkası)",
 "adim": "G3",
@@ -46176,7 +46988,7 @@
 "nokta": 7
 },
 {
-"sema": 24,
+"sema": 22,
 "anahtar": "sag:lop_s2",
 "ad": "Sağ kol · S2 lopu (L 80, 2 kablo): K noktası → göbek arka iç şeridi (G2); çizim S2 0°, aralık dışı",
 "adim": "G3",
@@ -46204,7 +47016,7 @@
 "nokta": 31
 },
 {
-"sema": 25,
+"sema": 23,
 "anahtar": "sag:bag_k",
 "ad": "Sağ kol · Kablo bağı: K noktası (çatal arka plakasının arkası, yapışkan taban)",
 "adim": "G3",
@@ -46232,7 +47044,7 @@
 "nokta": 2
 },
 {
-"sema": 26,
+"sema": 24,
 "anahtar": "sag:bag_tambur",
 "ad": "Sağ kol · Kablo bağı: tambur bağı (ψ 145, 2 ip)",
 "adim": "G3",
@@ -46260,7 +47072,7 @@
 "nokta": 2
 },
 {
-"sema": 27,
+"sema": 25,
 "anahtar": "sag:gecis_s1",
 "ad": "Sağ kol · G2 → tambur bağı (ψ 145, 3 kablo: dirsek, bilek, S2 uzatmaları)",
 "adim": "G3",
@@ -46288,7 +47100,7 @@
 "nokta": 25
 },
 {
-"sema": 28,
+"sema": 26,
 "anahtar": "sag:s1_lop",
 "ad": "Sağ kol · S1 U-lopu (L 171.4): tambur bağı → iç koşu (tamburda) → U → dış koşu (duvarda) → duvar bağı",
 "adim": "G4",
@@ -46316,7 +47128,7 @@
 "nokta": 164
 },
 {
-"sema": 29,
+"sema": 27,
 "anahtar": "sag:s1_cikis",
 "ad": "Sağ kol · Duvar bağı → duvar boyunca ψ 214 → radyal içe (r 52) → kaset arka plakası yarığı",
 "adim": "G4",
@@ -46344,7 +47156,7 @@
 "nokta": 3
 },
 {
-"sema": 30,
+"sema": 28,
 "anahtar": "sag:govde",
 "ad": "Sağ kol · Yarık (ψ 214, 12 × 6) → gövde içi → travers arkası",
 "adim": "F4",
@@ -46372,7 +47184,7 @@
 "nokta": 5
 },
 {
-"sema": 31,
+"sema": 29,
 "anahtar": "sag:s1_-45",
 "ad": "Sağ kol · S1 -45°'de U-lopu (uç duruş): tambur bağı ψ 100 → U → duvar bağı",
 "adim": "G4",
@@ -46400,7 +47212,7 @@
 "nokta": 170
 },
 {
-"sema": 32,
+"sema": 30,
 "anahtar": "sag:s1_+135",
 "ad": "Sağ kol · S1 +135°'de U-lopu (uç duruş): tambur bağı ψ 280 → U → duvar bağı",
 "adim": "G4",
@@ -46428,7 +47240,7 @@
 "nokta": 145
 },
 {
-"sema": 33,
+"sema": 31,
 "anahtar": "sol:servo_bilek",
 "ad": "Sol kol · Bilek servosu kablosu: mil ucu → ara duvar çentiği → dirsek servosu arkası → tırnak",
 "adim": "H0a",
@@ -46456,7 +47268,7 @@
 "nokta": 6
 },
 {
-"sema": 34,
+"sema": 32,
 "anahtar": "sol:servo_dirsek",
 "ad": "Sol kol · Dirsek servosu kablosu: servo üstü → tırnak",
 "adim": "H0a",
@@ -46484,7 +47296,7 @@
 "nokta": 3
 },
 {
-"sema": 35,
+"sema": 33,
 "anahtar": "sol:lop_dirsek",
 "ad": "Sol kol · Dirsek lopu (L 120, 2 kablo): tırnak → çatal oluğu → Ø10 delik",
 "adim": "H0c",
@@ -46512,7 +47324,7 @@
 "nokta": 32
 },
 {
-"sema": 36,
+"sema": 34,
 "anahtar": "sol:tup_ici",
 "ad": "Sol kol · Tüp içi: Ø10 delik → tüp girişi (y -152)",
 "adim": "H1",
@@ -46540,7 +47352,7 @@
 "nokta": 2
 },
 {
-"sema": 37,
+"sema": 35,
 "anahtar": "sol:tup_ara",
 "ad": "Sol kol · Tüp içi, iki ek arası (y -127 → -118): bilek uzatması (lehimden sonra) yanında dirsek servo kablosu (JR'ye kadar)",
 "adim": "H1",
@@ -46568,7 +47380,7 @@
 "nokta": 2
 },
 {
-"sema": 38,
+"sema": 36,
 "anahtar": "sol:ek_jr",
 "ad": "Sol kol · Ek yeri: dirsek kablosu JR çifti (26 mm), tüp içinde birleşimde",
 "adim": "H1",
@@ -46596,7 +47408,7 @@
 "nokta": 2
 },
 {
-"sema": 39,
+"sema": 37,
 "anahtar": "sol:ek_bilek",
 "ad": "Sol kol · Ek yeri: bilek kablosu lehim + makaron (25 mm), tüp girişinin üstünde (yer yaklaşık)",
 "adim": "H1",
@@ -46624,7 +47436,7 @@
 "nokta": 2
 },
 {
-"sema": 40,
+"sema": 38,
 "anahtar": "sol:nokta_lehim",
 "ad": "Sol kol · Ek noktası: bilek kablosu lehimi (makaron ortası, y -139.5)",
 "adim": "H1",
@@ -46652,7 +47464,7 @@
 "nokta": 2
 },
 {
-"sema": 41,
+"sema": 39,
 "anahtar": "sol:nokta_jr",
 "ad": "Sol kol · Ek noktası: dirsek kablosu JR birleşimi (y -105)",
 "adim": "H1",
@@ -46680,7 +47492,7 @@
 "nokta": 2
 },
 {
-"sema": 42,
+"sema": 40,
 "anahtar": "sol:uzatma_tup",
 "ad": "Sol kol · Uzatmalar tüp içinde: birleşim → tüp penceresi",
 "adim": "H1",
@@ -46708,7 +47520,7 @@
 "nokta": 3
 },
 {
-"sema": 43,
+"sema": 41,
 "anahtar": "sol:uzatma_kol",
 "ad": "Sol kol · Uzatmalar: tüp penceresi → tüp cıvatası yanı → K noktası (çatal arka plakası arkası)",
 "adim": "G3",
@@ -46736,7 +47548,7 @@
 "nokta": 7
 },
 {
-"sema": 44,
+"sema": 42,
 "anahtar": "sol:lop_s2",
 "ad": "Sol kol · S2 lopu (L 80, 2 kablo): K noktası → göbek arka iç şeridi (G2); çizim S2 0°, aralık dışı",
 "adim": "G3",
@@ -46764,7 +47576,7 @@
 "nokta": 31
 },
 {
-"sema": 45,
+"sema": 43,
 "anahtar": "sol:bag_k",
 "ad": "Sol kol · Kablo bağı: K noktası (çatal arka plakasının arkası, yapışkan taban)",
 "adim": "G3",
@@ -46792,7 +47604,7 @@
 "nokta": 2
 },
 {
-"sema": 46,
+"sema": 44,
 "anahtar": "sol:bag_tambur",
 "ad": "Sol kol · Kablo bağı: tambur bağı (ψ 145, 2 ip)",
 "adim": "G3",
@@ -46820,7 +47632,7 @@
 "nokta": 2
 },
 {
-"sema": 47,
+"sema": 45,
 "anahtar": "sol:gecis_s1",
 "ad": "Sol kol · G2 → tambur bağı (ψ 145, 3 kablo: dirsek, bilek, S2 uzatmaları)",
 "adim": "G3",
@@ -46848,7 +47660,7 @@
 "nokta": 25
 },
 {
-"sema": 48,
+"sema": 46,
 "anahtar": "sol:s1_lop",
 "ad": "Sol kol · S1 U-lopu (L 171.4): tambur bağı → iç koşu (tamburda) → U → dış koşu (duvarda) → duvar bağı",
 "adim": "G4",
@@ -46876,7 +47688,7 @@
 "nokta": 164
 },
 {
-"sema": 49,
+"sema": 47,
 "anahtar": "sol:s1_cikis",
 "ad": "Sol kol · Duvar bağı → duvar boyunca ψ 214 → radyal içe (r 52) → kaset arka plakası yarığı",
 "adim": "G4",
@@ -46904,7 +47716,7 @@
 "nokta": 3
 },
 {
-"sema": 50,
+"sema": 48,
 "anahtar": "sol:govde",
 "ad": "Sol kol · Yarık (ψ 214, 12 × 6) → gövde içi → travers arkası",
 "adim": "F4",
@@ -47018,7 +47830,7 @@
 }
 },
 "hata": [],
-"sema_ilk": 13,
-"sema_son": 50
+"sema_ilk": 11,
+"sema_son": 48
 }
 }

@@ -207,7 +207,7 @@
         }
         // F10f: şema kendi tüp yarıçapını taşıyabilir (kol kablo yolunda ek yeri işareti 5 mm); yoksa 2,5 mm
         const g = new THREE.TubeGeometry(yol, Math.max(24, Math.min(2400, s.pts.length * 12)), s.r || 2.5, 6, false);
-        const o = new THREE.Mesh(g, malzeme(s.renk));
+        const o = new THREE.Mesh(g, malzeme(kabloTon(s)));
         o.userData.sema = i;
         o.visible = false;
         sahne.add(o);
@@ -289,10 +289,12 @@
     function sinif(p) { return SINIF[p.r] ? p.r : "satin"; }
     // F10e: renk kipi (C tuşu / düğme; ?renk=sinif|gercek; yerel kayıt). Kablo yolu parçaları (p.renk) iki kipte de kablo rengiyle.
     let renkKip = P.get("renk") === "sinif" || P.get("renk") === "gercek" ? P.get("renk") : (oku().renk === "sinif" ? "sinif" : "gercek");
-    function parcaRengi(p) { return p.renk || (renkKip === "gercek" && p.gr ? p.gr : SINIF[sinif(p)][0]); }
+    // P10.7b1 düzeltme turu 1: kablonun tema tonu (veri rt; rehber_kablo.TEMA_TON), eski veride sınıf rengi
+    function kabloTon(x) { return (x.rt && x.rt[tema()]) || x.renk; }
+    function parcaRengi(p) { return p.renk ? kabloTon(p) : (renkKip === "gercek" && p.gr ? p.gr : SINIF[sinif(p)][0]); }
     function satirRengi(x, bag) {                      // panel satırı: gerçek kipte satırın ilk parçasının rengi
       const id = x.ids && x.ids[0], p = id && PAR[id] && PAR[id].v;
-      if (renkKip === "gercek" && p && p.gr) return p.renk || p.gr;
+      if (renkKip === "gercek" && p && p.gr) return p.renk ? kabloTon(p) : p.gr;
       return bag ? SINIF.baglanti[0] : (SINIF[x.r] || SINIF.satin)[0];
     }
     function evListe(s, j) {                         // F10e: bağlandığı yer (veri; alt adımda grubun, genel bakışta adımın)
@@ -456,7 +458,7 @@
         gorunur.union(b);
         if (d === "onceki") {
           // F10e: bağlandığı önceki parça ayrı tonda (öncekiler saydam kipteyse o da saydam)
-          o.material = p.renk ? malzeme(p.renk, saydam ? 0.2 : true) : malzeme(evMi ? EV_RENK : SINIF.onceki[0], saydam ? 0.18 : 1);
+          o.material = p.renk ? malzeme(kabloTon(p), saydam ? 0.2 : true) : malzeme(evMi ? EV_RENK : SINIF.onceki[0], saydam ? 0.18 : 1);
           o.userData.mat0 = o.material;
           o.userData.ev = evMi && !p.renk;
           if (o.userData.ev) sonEv.push(p.id);
@@ -471,7 +473,7 @@
         // F10e: önceki adımların grisine çok yakın gerçek renk (ör. alüminyum horn, çelik cıvata) de kenar alır: tezgâh karelerinde
         // yeni parça öncekilerden ayrılsın (önceki grisiyle karşıtlık < ONCEKI_ESIK)
         else kenarKoy(o, karsitlik(c, zeminHex) < KENAR_ESIK || karsitlik(c, SINIF.onceki[0]) < ONCEKI_ESIK ? kenarRenk : null);
-        sinifSay[p.renk ? "kablo" : (renkKip === "gercek" ? "gercek" : sinif(p))] = 1;
+        sinifSay[p.renk ? "k:" + (p.kt || p.ks || "") : (renkKip === "gercek" ? "gercek" : sinif(p))] = 1;   // P10.7b1: kablo → devre sınıfı
         kutu.union(b);
         koseler(o, null, nokta);
         if (d === "alt") { altVar = true; altKutu.union(b); }
@@ -484,12 +486,13 @@
         o.userData.d = d;
         o.visible = d !== "gizli";
         if (!o.visible) return;
-        o.material = malzeme(SEMA[i].renk, d === "onceki" ? (saydam ? 0.2 : true) : 1);
+        o.material = malzeme(kabloTon(SEMA[i]), d === "onceki" ? (saydam ? 0.2 : true) : 1);
         o.userData.mat0 = o.userData.mat1 = o.material;
         const b = new THREE.Box3().setFromObject(o);
         gorunur.union(b);
         if (d === "simdi" || d === "hedef") { kutu.union(b); koseler(o, null, nokta); }
-        if (d === "simdi") { semaYeni.push(i); if (!SEMA[i].lejant) sinifSay.kablo = 1; }   // F10f d1: kol kablosu lejantta kendi rengiyle
+        // F10f d1: kol kablosunun işaretleri lejantta kendi rengiyle; P10.7b1: öbür şemalar devre sınıfıyla (ks)
+        if (d === "simdi") { semaYeni.push(i); if (!SEMA[i].lejant) sinifSay["k:" + (SEMA[i].kt || SEMA[i].ks || "")] = 1; }
       });
       // F10f düzeltme 1 (kontrol madde 3): alt adımın "iz" şemaları (G4 uç duruş yakın karelerinde öbür uç duruşun U-lopu) soluk çizilir
       // ve kadraja girer: iki karede kamera, yerleşim ve renk aynı, U'nun kayması karşılaştırılır
@@ -497,7 +500,7 @@
       if (agIz && agIz.iz) agIz.iz.forEach((i) => {
         const o = SEMA_OBJ[i]; if (!o) return;
         o.userData.d = "iz"; o.visible = true;
-        o.material = o.userData.mat0 = o.userData.mat1 = malzeme(SEMA[i].renk, 0.3);
+        o.material = o.userData.mat0 = o.userData.mat1 = malzeme(kabloTon(SEMA[i]), 0.3);
         const b = new THREE.Box3().setFromObject(o);
         gorunur.union(b); kutu.union(b); koseler(o, null, nokta);
       });
@@ -1099,12 +1102,19 @@
       const kopya = secim.ids.length - 1;
       etiketYaz("<b>" + esc(p.ad) + "</b><br><span class='not'>" + esc(p.kod) + " · " + esc(MODUL_AD[p.modul] || p.modul) + " · adım " +
         p.a + " (" + esc(ADIM[p.a].kod) + ")" + (kopya > 0 ? "<br>Aynı kalemden " + kopya + " kopya daha açık tonla vurgulu" : "") +
-        "</span>");
+        "</span>" + kabloBilgi(p, 4));
     }
     function semaSec(i) {
       secimYap({ ids: [], sema: [i], hepsi: true, satir: null });
       etiketYaz("<b>" + esc(SEMA[i].ad) + "</b><br><span class='not'>Kablo şeması · adım " + SEMA[i].a + " (" + esc(ADIM[SEMA[i].a].kod) + ")" +
-        (SEMA[i].boy_mm ? " · ~" + Math.round(SEMA[i].boy_mm) + " mm" : "") + "</span>");
+        (SEMA[i].boy_mm ? " · ~" + Math.round(SEMA[i].boy_mm) + " mm" : "") + "</span>" + kabloBilgi(SEMA[i], 4));
+    }
+    // P10.7b1: çizilen kablonun tablo bilgisi (planlama/adim3/kablolar.json; veri: kb = "kimlik: uç → uç · kesit · sigorta · acil stopta …")
+    function kabloBilgi(x, en) {
+      if (!x || !x.kb || !x.kb.length) return "";
+      const k = x.kb.slice(0, en || x.kb.length).map((t) => "<span class='kb'>" + esc(t) + "</span>");
+      if (en && x.kb.length > en) k.push("<span class='kb'>… ve " + (x.kb.length - en) + " kablo daha (Kablo listesi)</span>");
+      return "<br>" + k.join("<br>") + (x.karisik ? "<br><span class='not'>Birden çok devre sınıfı taşıyor; renk ilk kablonun sınıfı</span>" : "");
     }
     tuval.addEventListener("pointerdown", (e) => { basla = [e.clientX, e.clientY]; });
     tuval.addEventListener("pointerup", (e) => {
@@ -1197,10 +1207,10 @@
       // kablo kancası (kablo parçası ve şema satırına tıklayınca modelde vurgu)
       const kab = st.kablo.map((t) => "<li>" + md(t) + "</li>");
       VERI.parcalar.forEach((p) => {
-        if (p.renk && p.a === s) kab.push("<li class='secilir' data-kid='" + esc(p.id) + "'><i class='sw' style='background:" + p.renk + "'></i>" + esc(p.ad) + "</li>");
+        if (p.renk && p.a === s) kab.push("<li class='secilir' data-kid='" + esc(p.id) + "'><i class='sw' style='background:" + kabloTon(p) + "'></i>" + esc(p.ad) + kabloBilgi(p) + "</li>");
       });
       SEMA.forEach((x, i) => {
-        if (x.a === s) kab.push("<li class='secilir' data-sema='" + i + "'><i class='sw' style='background:" + x.renk + "'></i>" + esc(x.ad) + " <span class='t'>(şema)</span></li>");
+        if (x.a === s) kab.push("<li class='secilir' data-sema='" + i + "'><i class='sw' style='background:" + kabloTon(x) + "'></i>" + esc(x.ad) + " <span class='t'>(şema)</span>" + kabloBilgi(x) + "</li>");
       });
       $("kablo").innerHTML = kab.length ? kab.join("") : "<li class='bos'>Bu adımda özel kablo işi yok.</li>";
       $("erisim").innerHTML = st.erisim ? md(st.erisim) : "—";
@@ -1244,6 +1254,13 @@
           const g = rr.slice(0, 4);
           h.push("<span><i style='background:" + (g.length > 1 ? "linear-gradient(90deg," + g.join(",") + ")" : (g[0] || "#999")) +
             "'></i>Bu adımın parçaları (gerçek renk)</span>");
+        } else if (c.indexOf("k:") === 0) {          // P10.7b1: kablo rengi = devre sınıfı (VERI.kablo_sinif, planlama/adim3/kablolar.json)
+          const ks = (VERI.kablo_sinif || {})[c.slice(2)];
+          const r = ks ? ks : SINIF.kablo;
+          // P10.7b1 düzeltme turu 1: tema tonu (r[2]; rehber_kablo.TEMA_TON); koyu temada toprak açık gri halka + koyu çekirdek
+          const t = r[2] || {}, tm = tema(), ton = t[tm] || r[0], cek = t["cekirdek_" + tm];
+          h.push("<span><i style='background:" + (cek || ton) + ";box-shadow:inset 0 0 0 " + (cek ? "3px " + ton : "1px #808080") +
+            "'></i>Kablo: " + esc(r[1]) + "</span>");
         } else h.push("<span><i style='background:" + SINIF[c][0] + "'></i>" + SINIF[c][1] + "</span>");
       });
       // F10f düzeltme 1 (madde 6): kol kablo yolu şemaları lejantta kendi renk ve adıyla (kırmızı "Kablo yolu" yerine)
@@ -1251,7 +1268,7 @@
       SEMA_OBJ.forEach((o, i) => {
         if (!o || !o.visible || !SEMA[i].lejant || (o.userData.d !== "simdi" && o.userData.d !== "iz")) return;
         const ad = SEMA[i].lejant + (o.userData.d === "iz" ? " (soluk: öbür uç duruş)" : "");
-        if (!kl.some((x) => x[1] === ad)) kl.push([SEMA[i].renk, ad, o.userData.d === "iz"]);
+        if (!kl.some((x) => x[1] === ad)) kl.push([kabloTon(SEMA[i]), ad, o.userData.d === "iz"]);
       });
       // ince gri çerçeve: beyaz (kablo bağı) ve sarı (bilek eki) kutu açık zeminde de görünsün
       kl.forEach((x) => h.push("<span><i style='background:" + x[0] + ";box-shadow:inset 0 0 0 1px #808080" + (x[2] ? ";opacity:.35" : "") + "'></i>" + esc(x[1]) + "</span>"));

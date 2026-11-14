@@ -45,17 +45,25 @@ Sınamalar:
     klemens      her damar ucunun türü (uc_turu, sabit sözlük) var; klemense / baraya giren iletkenin kesiti türün sınırını
                  aşmıyor (sınırlar UC_TURU_SINIRI sabit tablosundan; tablodaki klemens_turleri bununla aynı olmalı); sınırı
                  bilinmeyen uca 12 AWG yalnız 'klemens:' teyit maddesiyle; 12 AWG kabloda sonlandırma metni 5,08 / WAGO / BTS
-                 klemensi diyorsa o tür bir uçta yazılı; saplamalı düğümde saplama başına pabuç sınırı ve köprü adedi
+                 klemensi diyorsa o tür bir uçta yazılı; saplamalı düğümde saplama başına pabuç sınırı ve köprü adedi.
+                 P10.7b: malzeme iletken sözlüğü sabitle (MALZEME_ILETKEN) aynı; kesit sınırı ve iletken türü belgesiz uçlu
+                 (BELGESIZ_UC: bts-guc, modul-vidali, sigorta-kutusu) kablonun teyit listesinde o parçayı anan 'klemens:' maddesi
+                 var (kesin olamaz); vidalı klemens kartındaki köprü "≥ N AWG tel köprü" ve N karta giren en kalın güç kablosundan
+                 ince değil
     malzeme      malzeme türü başına ihtiyaç × (1 + pay) ≤ liste ≤ ⌈ihtiyaç × (1 + pay) ÷ birim⌉ + 1 birim (iki yönlü)
     donanim      tablodan sayılan adetler maliyet.json'la: hat sigortası yuvası (mini sigorta sayısı), her sigorta satırı, saplama
                  takımı, halka pabuç paketleri (uç türünden), röle başına bir 1N4007 + yedek (yapısal alan)
     acil_stop    besleme zinciri ağlardan yeniden kurulur; kayıttaki zincir, dal ve acil stop bayrağı bununla aynı; her dalın
                  §12 ifadesi kablolama-on-kararlar.md §12'nin doğru listesinde tam öğe olarak (alt dize değil), öbür listede
-                 değil; dal ↔ sigorta ve sigorta ↔ ilk eleman elektrik.md blok şemasındaki sigorta bloklarıyla aynı
+                 değil; dal ↔ sigorta ve sigorta ↔ ilk eleman elektrik.md blok şemasındaki sigorta bloklarıyla aynı. P10.7b:
+                 paralel bobinler tek şema öğesindeyse öğe sürücü sayısını tabloyla (kart içi bağlardaki BC337-40 #n) aynı söyler
     kaynak       her kablonun kaynağı var; belge:satır satırı var ve o satırlarda kablonun ayırt edici terimlerinden biri geçiyor
                  (genel sözcükler ve çıplak sayılar ayırt edici değil); json#anahtar yolu çözülüyor; koruyucu / anahtar / bölge
     sayi_metin   kablo adı ve kesit notundaki "N A" / "N AWG" sayıları kaydın koruyucusu / kesitiyle tutarlı; her metin
-                 alanındaki "F<n> N A" ve "ana sigorta N A" koruyucular tablosuyla aynı
+                 alanındaki "F<n> N A" ve "ana sigorta N A" koruyucular tablosuyla aynı. P10.7b: ad / sonlandırma / damar
+                 'ara'da adsız akım yalnız kablonun koruması + ara koruyucusu; not / kesit_not'ta kesit sınırı yalnız 'AWG' ya da
+                 'sınır' sözcüğünün yanında; F<n> (ad / sonlandırma / ara'da her biri, notlarda sayısız olanı) kablonun kendi
+                 zincirinde ya da uç düğümünde
     denetim_62   10.11 dökümünün 62 satırının her biri bir kayda ya da 'çıkan / birleşen' notuna bağlı
     gorunum      kablolar.md ve elektrik.md'nin sonundaki dal başına kesit bloğu tablodan üretilenle aynı (kablolar_uret.py)
 
@@ -130,6 +138,9 @@ UC_TURU_ILETKEN = {"bara-pabuc": ("tek telli / ince telli", 0.5), "pabuc": ("tek
                    "modul-vidali": (None, None), "sigorta-kutusu": (None, None), "lehim": (None, None), "konnektor": (None, None)}
 # alt sınırı belgesiz olup ince teli (< 0,5 mm², 22 AWG ve incesi) almayan kart klemensi (ek tur kararı: lehim + makaron)
 ALT_SINIRI_BELGESIZ = {"klemens-508"}
+# kesit sınırı da iletken türü de belgesiz uç (UC_TURU_SINIRI None ve UC_TURU_ILETKEN (None, None)): kayıt bu uçla 'kesin' olamaz,
+# 'klemens:' teyit maddesi ister (P10.7b, dördüncü bakış §2-5)
+BELGESIZ_UC = {t for t, s in UC_TURU_SINIRI.items() if s is None and UC_TURU_ILETKEN.get(t) == (None, None)}
 KUCUK_KESIT_MM2 = 0.5
 # malzeme → iletken (maliyet.json satırları: silikon kablo çok ince telli, sinyal teli çok telli); None: hazır / kendi ucu
 MALZEME_ILETKEN = {"silikon-12": "ince telli", "silikon-16": "ince telli", "silikon-18": "ince telli", "sinyal-22": "ince telli",
@@ -677,6 +688,21 @@ def blok_karsilastir(v, el):
     for i, (t, _) in enumerate(og):
         if re.match(SAYI_A + r"(?: mini)?\b", t) and i not in ters:
             h.append(f"blok şemasındaki sigorta öğesi '{t[:40]}' tablodaki hiçbir koruyucuya eşlenmedi")
+    # P10.7b (dördüncü bakış §2-3): paralel bobinler tek şema öğesindeyse öğe sürücü sayısını söylemeli. Tablodaki sürücüler kart içi
+    # bağlardan ('BC337-40 #n'); bobin başına bir sürücü varsa öğe "her bobin kendi BC337-40'ıyla" der, yoksa demez
+    bobin = sorted(k for k, e in E.items() if e.get("tur") == "bobin")
+    surucu = sorted({mm.group(0) for ib in v.get("ic_baglar", []) for mm in [re.search(r"BC337-40 #\d+", ib.get("ne", ""))] if mm})
+    for i, kids in ters.items():
+        ortak = [k for k in kids if k in bobin]
+        if len(ortak) < 2:
+            continue
+        der = bool(re.search(r"her bobin kendi BC337-40", og[i][0]))
+        if len(surucu) >= len(bobin) and not der:
+            h.append(f"blok şeması '{og[i][0][:50]}': {len(ortak)} bobin tek öğede, ardında tek sürücü gibi okunuyor; tabloda her bobinin "
+                     f"kendi sürücüsü var ({', '.join(surucu)}): öğeye \"(her bobin kendi BC337-40'ıyla, E9)\" yazılmalı. {YON}")
+        elif len(surucu) < len(bobin) and der:
+            h.append(f"blok şeması '{og[i][0][:50]}' her bobinin kendi BC337-40'ı var diyor, tabloda {len(bobin)} bobine "
+                     f"{len(surucu)} sürücü ({', '.join(surucu) or '-'}). {YON}")
     return h
 
 
@@ -1446,6 +1472,50 @@ def s_klemens(v, b):
         e = kaynak_coz(t.get("kaynak") or "")
         if e:
             h.append(f"klemens türü {ad}: {e}")
+    # P10.7b (dördüncü bakış §2-7): malzeme iletken sözlüğü sabitle (MALZEME_ILETKEN) aynı; denetim sabiti kullanır, tablo kaymasın
+    mt = v.get("malzeme_turleri", {})
+    if set(mt) != set(MALZEME_ILETKEN):
+        h.append(f"malzeme_turleri {sorted(mt)}; sabit malzeme iletken sözlüğü (MALZEME_ILETKEN) {sorted(MALZEME_ILETKEN)}")
+    for ad, t in mt.items():
+        if ad in MALZEME_ILETKEN and t.get("iletken") != MALZEME_ILETKEN[ad]:
+            h.append(f"malzeme türü {ad}: iletken '{t.get('iletken')}', sabit tabloda (MALZEME_ILETKEN) '{MALZEME_ILETKEN[ad]}'")
+    # §2-5: kesit sınırı ve iletken türü belgesiz uç (BELGESIZ_UC) kayıtta 'kesin' olamaz: kablonun teyit listesinde o parçayı anan
+    # 'klemens:' maddesi olmalı (teslimde aralık okunur / denenir)
+    for r in v["kablolar"]:
+        parcalar = sorted({v["dugumler"].get(d[yan], {}).get("parca") or d[yan].split(" · ")[0]
+                           for d in r["damarlar"] for yan in ("a", "b") if (d.get("uc_turu") or {}).get(yan) in BELGESIZ_UC})
+        if not parcalar:
+            continue
+        kt = " ".join(x for x in r["teyit"] if x.startswith("klemens:")).casefold()
+        eksik_ = [p_ for p_ in parcalar if p_.split()[0].casefold() not in kt]
+        if eksik_:
+            h.append(f"{r['kimlik']}: uç türü belgesiz ({', '.join(sorted({(d.get('uc_turu') or {}).get(y) for d in r['damarlar'] for y in ('a', 'b')} & BELGESIZ_UC))}) "
+                     f"parça {eksik_}; teyit listesinde o parçayı anan 'klemens:' maddesi yok (durum '{r['durum']}', kesin olamaz)")
+    # F10h-kontrol §2-14 (orkestratör kararı 14.11): ucu klemens-508 olan ve klemensin aldığı kesit belgeyle doğrulanmamış her kablo
+    # "kablajda teyit"tir; öbür ucun lehim olması bunu değiştirmez.
+    if (tur.get("klemens-508") or {}).get("en_cok_mm2") is None:
+        for r in v["kablolar"]:
+            if r["durum"] == "kesin" and any((d.get("uc_turu") or {}).get(yan) == "klemens-508" for d in r["damarlar"] for yan in ("a", "b")):
+                h.append(f"{r['kimlik']}: ucu klemens-508 (kesit aralığı belgesiz, klemens_turleri.klemens-508) ama durum 'kesin'; "
+                         f"kural: belgesiz klemens-508 uçlu her kablo 'kablajda teyit edilecek'")
+    # §2-7: vidalı klemens kartı üstündeki köprü (+ uçlar, − uçlar) delikli plaket pedinden değil telden: sonlandırma metni köprüden
+    # söz ediyorsa "≥ N AWG tel köprü" yazar ve N, karta giren güç kablolarının en kalınından ince değildir
+    for yer in v.get("klemens_yerleri", {}).get("yerler", []):
+        p_ = yer.get("parca")
+        if not p_:
+            continue
+        kab = [r for r in v["kablolar"] if any(v["dugumler"].get(d[yan], {}).get("parca") == p_ and (d.get("uc_turu") or {}).get(yan) == "klemens-508"
+                                               for d in r["damarlar"] for yan in ("a", "b"))]
+        en_kalin = min(((x.get("kesit") or r.get("kesit") or {}).get("awg", 99) for r in kab for x in r["damarlar"]
+                        if x["ad"] in ("+", "−")), default=None)
+        for r in kab:
+            for mm in re.finditer(r"kart üstünde[^;→]*?köprü\w*", r["sonlandirma"]):
+                t = re.search(r"≥ (\d+) AWG tel köprü", mm.group(0))
+                if not t:
+                    h.append(f"{r['kimlik']}: sonlandırma '{mm.group(0)[:70]}' kart üstü köprüyü telle yazmıyor ('≥ N AWG tel köprü'; "
+                             f"delikli plaket pedi akım yolu değil)")
+                elif en_kalin is not None and int(t.group(1)) > en_kalin:
+                    h.append(f"{r['kimlik']}: kart üstü köprü {t.group(1)} AWG, karta giren en kalın güç kablosu {en_kalin} AWG")
     for r in v["kablolar"]:
         on_iki = False
         turler = set()
@@ -1931,6 +2001,30 @@ def s_gorunum(v, b):
     return h
 
 
+# Açık işler turu (F10h-kontrol-2 §3.1-10): yük muafiyetinin dar kuralı (rehber_denetim CIPLAK_YUK / CIPLAK_YUK_DEGIL ile aynı)
+YUK_SOZ = r"yük\w*|\bçek(?:er|iyor|tiği)\b|tüketim\w*|varsayı\w*"
+YUK_DEGIL = r"sigorta|\bf[1-6]\b|koruma|bıçak|\bmini\b|standart"
+_YAN_BOL = r"[;:]|,(?!\d)|\.(?:\s|$)|\s(?:ve|ama|fakat|ancak|sonra|ardından|veya|ya da|çünkü)\s"
+
+
+def _tr_kucuk(s):
+    """Türkçe duyarlı küçük harf (İ → i, I → ı); büyük harf Latin kısaltma (GPIO) İngilizce kuralla (rehber_kritik.tr_kucuk ile aynı)."""
+    s = re.sub(r"\b[A-Z0-9]*I[A-Z0-9]*\b", lambda m: m.group(0).lower(), s or "")
+    return s.replace("İ", "i").replace("I", "ı").lower()
+
+
+def _yan_cumle(x, i):
+    """x metninde i konumunu içeren yan cümle (Türkçe duyarlı küçük harf)."""
+    bas, son = 0, len(x)
+    for t in re.finditer(_YAN_BOL, x):
+        if t.end() <= i:
+            bas = t.end()
+        elif t.start() >= i:
+            son = t.start()
+            break
+    return _tr_kucuk(x[bas:son])
+
+
 def s_sayi_metin(v, b):
     """Kablo metinlerindeki sayılar (D3 kalıcı çaresi; ek tur D-B). Sınanan alanlar: ad, kesit_not, not, sonlandırma, damar ara / not.
     'N A' yalnız kablonun kendi koruyucularının (besleme zinciri + koruma + ara koruyucu) akımı olabilir; kesit_not / not'ta ayrıca
@@ -1954,10 +2048,19 @@ def s_sayi_metin(v, b):
         return x
 
     for r in v["kablolar"]:
-        izin = set()
+        izin, oz = set(), set()
         for x in list(duz(r["besleme_zinciri"])) + [r["koruma"]] + [d.get("ara_koruyucu") for d in r["damarlar"]]:
             if x in KR and KR[x]["akim_a"] is not None:
                 izin.add(KR[x]["akim_a"])
+        # P10.7b (dördüncü bakış §2-2 a): ad, sonlandırma ve damar 'ara' kablonun kendi sigortasını anlatır: adsız sayı yalnız
+        # koruma + ara koruyucu; zincirdeki öbür koruyucular ancak adıyla
+        for x in [r["koruma"]] + [d.get("ara_koruyucu") for d in r["damarlar"]]:
+            if x in KR and KR[x]["akim_a"] is not None:
+                oz.add(KR[x]["akim_a"])
+        kendi_f = {x for x in list(duz(r["besleme_zinciri"])) + [r["koruma"]] + [d.get("ara_koruyucu") for d in r["damarlar"]]
+                   if isinstance(x, str) and re.fullmatch(r"F[1-6]", x)}
+        uc_f = set(re.findall(r"\bF[1-6]\b", " ".join([r["uc_a"].get("nokta", ""), r["uc_b"].get("nokta", "")]
+                                                    + [d[y] for d in r["damarlar"] for y in ("a", "b")])))
         awgs = {(d.get("kesit") or r.get("kesit") or {}).get("awg") for d in r["damarlar"]} - {None}
         kuyruk = {x.get("awg") for d in r["damarlar"] for x in (d.get("uc_kuyrugu") or {}).values()}
         if any(d.get("ara_koruyucu") and KR.get(d["ara_koruyucu"], {}).get("tur") == "sigorta" for d in r["damarlar"]):
@@ -1970,11 +2073,12 @@ def s_sayi_metin(v, b):
             sinir |= {t["en_cok_koruma_a"] for t in v["kesit_kurali"]["tablo"] if t["awg"] == aw}
         if r.get("kesit_istisna") in istisna:
             sinir |= {x.get("ust_sinir_a") for x in (istisna[r["kesit_istisna"]].get("koruyucular") or {}).values()}
-        alanlar = [("ad", r.get("ad"), izin), ("kesit_not", r.get("kesit_not"), izin | sinir), ("not", r.get("not"), izin | sinir),
-                   ("sonlandirma", r.get("sonlandirma"), izin)]
+        # (alan, metin, izinli adsız akımlar, kesit sınırı yalnız 'AWG' / 'sınır' yanında, her F<n> kendi / uç düğümü olmalı)
+        alanlar = [("ad", r.get("ad"), oz, set(), True), ("kesit_not", r.get("kesit_not"), izin, sinir, False),
+                   ("not", r.get("not"), izin, sinir, False), ("sonlandirma", r.get("sonlandirma"), oz, set(), True)]
         for d in r["damarlar"]:
-            alanlar += [(f"{d['ad']} ara", d.get("ara"), izin), (f"{d['ad']} not", d.get("not"), izin | sinir)]
-        for alan, x, iz in alanlar:
+            alanlar += [(f"{d['ad']} ara", d.get("ara"), oz, set(), True), (f"{d['ad']} not", d.get("not"), izin, sinir, False)]
+        for alan, x, iz, sn, f_hepsi in alanlar:
             x = x or ""
             if not isinstance(x, str):
                 continue
@@ -1987,14 +2091,38 @@ def s_sayi_metin(v, b):
                 elif KR[kid]["akim_a"] != tr_sayi(mm.group("n")):
                     h.append(f"{r['kimlik']}: {alan} '{x[:60]}' {mm.group('ad')} {mm.group('n')} A diyor, koruyucular.{kid} "
                              f"{KR[kid]['akim_a']} A")
+            # §2-2 c: F numarası (sayılı ya da sayısız) kablonun kendi zincirinde ya da uç düğümünde olmalı; not / kesit_not'ta
+            # sayılı komşu anma (değeri yukarıda sınandı) serbest, sayısız F<n> aynı kuralla
+            for mm in re.finditer(r"\bF([1-6])\b(?!\s+\d+(?:,\d+)? A\b)" if not f_hepsi else r"\bF([1-6])\b", x):
+                f = "F" + mm.group(1)
+                if f not in kendi_f and f not in uc_f:
+                    h.append(f"{r['kimlik']}: {alan} '{x[:60]}' {f} diyor; kablonun zincirinde {sorted(kendi_f) or '-'}, uç düğümlerinde "
+                             f"{sorted(uc_f) or '-'}")
             for mm in re.finditer(r"(?<![\w,.])" + SAYI + r" A(?:'[a-zçğıöşü]+)?\b", x):
                 if any(a_ <= mm.start(1) < b_ for a_, b_ in adli):
                     continue
                 n = tr_sayi(mm.group(1))
-                if not any(abs(n - y) < 1e-9 for y in iz if y is not None):
-                    h.append(f"{r['kimlik']}: {alan} '{x[:60]}' {mm.group(1)} A diyor; kablonun kendi koruyucuları"
-                             f"{' / sınırları' if iz is not izin else ''} {sorted(y for y in iz if y is not None)} (komşu koruyucu "
-                             f"yalnız adıyla anılır; tarihçe 'tarihce' alanına)")
+                if any(abs(n - y) < 1e-9 for y in iz if y is not None):
+                    continue
+                # §2-2 b: kesit sınırı yalnız 'AWG' ya da 'sınır' sözcüğünün yanında (± 30 karakter) izinli
+                yakin = x[max(0, mm.start() - 30):mm.end() + 30]
+                if any(abs(n - y) < 1e-9 for y in sn if y is not None) and re.search(r"AWG|sınır", yakin):
+                    continue
+                # P10.7b1 düzeltme turu 1 (F10h-kontrol §2-10): yük / tüketim akımı olarak adlandırılmış sayı sigorta değeri sayılmaz.
+                # Açık işler turu (F10h-kontrol-2 §3.1-10, rehber_denetim'le aynı dar kural): muafiyet yalnız sayının kendi yan cümlesinde
+                # (; . , : ve bağlaçla bölünür; Türkçe duyarlı küçük harf) yük / çeker / tüketim / varsayım geçiyor VE sigorta / F<n> /
+                # koruma / bıçak / mini / standart geçmiyorsa. Muaf yük akımı da kablonun zincirindeki en küçük koruyucuyu aşamaz (yük
+                # akımı zincirin her sigortasından geçer, aşan yük onu attırır; "şarj kolu 10 A (yük varsayımı)" böyle yakalanır).
+                yc = _yan_cumle(x, mm.start())
+                if re.search(YUK_SOZ, yc) and not re.search(YUK_DEGIL, yc):
+                    ust = [y for y in iz if y is not None]
+                    if ust and n > min(ust) + 1e-9:
+                        h.append(f"{r['kimlik']}: {alan} '{x[:60]}' yük akımı {mm.group(1)} A kablonun zincirindeki en küçük koruyucuyu "
+                                 f"({min(ust):g} A) aşıyor")
+                    continue
+                h.append(f"{r['kimlik']}: {alan} '{x[:60]}' {mm.group(1)} A diyor; kablonun kendi koruyucuları {sorted(y for y in iz if y is not None)}"
+                         + (f", kesit sınırları {sorted(y for y in sn if y is not None)} yalnız 'AWG' / 'sınır' yanında" if sn else "")
+                         + " (komşu koruyucu yalnız adıyla anılır; tarihçe 'tarihce' alanına)")
             for n in re.findall(r"(\d+) AWG", x):
                 if int(n) not in awgs | kuyruk:
                     h.append(f"{r['kimlik']}: {alan} '{x[:60]}' {n} AWG diyor; kaydın kesiti {sorted(awgs)}, uç kuyruğu {sorted(kuyruk)}")
@@ -2378,7 +2506,7 @@ def b_yer_tutucu_2(v, b):
 
 
 def b_yer_tutucu_3(v, b):
-    bul(v, "G18")["sonlandirma"] = "sonra bakılacak"                       # N5c
+    bul(v, "I01")["sonlandirma"] = "sonra bakılacak"                       # N5c (P10.7b: G18 artık teyitte, hedef kesin kayıt I01)
 
 
 def b_klemens_7(v, b):
@@ -2555,6 +2683,68 @@ def b_donanim_12(v, b):
     b["maliyet"]["kalemler"][kalem(b, lambda x: "Delikli Plaket" in x["model"])]["adet"] = 5
 
 
+# P10.7b (dördüncü bakış P107a-kontrol-4.md §2-2, §2-3, §2-5, §2-7): kaçan bozmaları ve her yeni sınama için bozma
+def b_sayi_metin_7(v, b):
+    damar(bul(v, "G14"), "+")["ara"] = "20 A mini hat sigortası yuvası (16 AWG kuyruklu)"         # B06: zincirdeki F1'in değeri
+def b_sayi_metin_8(v, b):
+    bul(v, "G17")["ad"] = "30 A → kafa 12 V çifti (taban → direk → boyun → kafa girişi)"          # B15: ana sigortanın değeri, adsız
+def b_sayi_metin_9(v, b):
+    damar(bul(v, "G19"), "+5 V")["ara"] = "5 A mini hat sigortası yuvası (16 AWG kuyruklu)"          # B16: zincirdeki F4'ün değeri
+def b_sayi_metin_10(v, b):
+    bul(v, "G06")["not"] = "Sigorta 10 A, şarj kolu."                                              # B05: 16 AWG tablo değeri, bağlamsız
+def b_sayi_metin_11(v, b):
+    bul(v, "G06")["kesit_not"] = "10 A hat sigortası"                                              # B17
+def b_sayi_metin_12(v, b):
+    bul(v, "G22")["not"] = "hat sigortası 3 A"                                                     # B18: 22 AWG tablo değeri
+def b_sayi_metin_13(v, b):
+    bul(v, "G18")["ad"] = "F3 5 A → XL4016 çevre girişi"                                           # B08: yanlış F, aynı değer
+def b_sayi_metin_14(v, b):
+    bul(v, "G18")["sonlandirma"] = "F3 yuvasına, XL4016 çevre girişi vidalı klemens"               # B09: yanlış F, sayısız
+# P10.7b1 düzeltme turu 1 (F10h-kontrol §2-10): yük adıyla anılan akım muaf, aynı alana bağlamsız yazılan akım yine hata
+def b_sayi_metin_15(v, b):
+    bul(v, "K04")["not"] = bul(v, "K04")["not"] + " Kablo 0,9 A."                                     # bağlamsız: sigorta değeri sayılır
+def b_sayi_metin_16(v, b):
+    bul(v, "G22")["not"] = "yük varsayımı yok; hat sigortası 3 A"                                   # yük sözcüğü başka yan cümlede
+# açık işler turu (F10h-kontrol-2 §3.1-10, K1–K8): dar yük kuralı; sigorta sözcüğü aynı yan cümlede, yük zincirin sigortasını aşıyor
+def b_sayi_metin_17(v, b):
+    bul(v, "G22")["not"] = "Hat sigortası 3 A (yük çok az)."                                        # K1
+def b_sayi_metin_18(v, b):
+    bul(v, "G17")["not"] = "Kafa yükü için 10 A sigorta."                                            # K2
+def b_sayi_metin_19(v, b):
+    bul(v, "G06")["not"] = "Şarj kolu 10 A (yük varsayımı)."                                         # K3: yük, zincirin 7,5 A'ini aşıyor
+def b_sayi_metin_20(v, b):
+    bul(v, "G17")["not"] = "Sigorta 10 A, çeker."                                                    # K6
+def b_sayi_metin_21(v, b):
+    bul(v, "G17")["not"] = "Yük: sigorta 10 A."                                                      # K7: büyük harf Yük
+def b_sayi_metin_22(v, b):
+    bul(v, "G17")["kesit_not"] = "Sigorta 7,5 A, tüketim 2 A."                                       # K8
+
+
+def b_blok_6(v, b):
+    b["elektrik"] = b["elektrik"].replace(" (her bobin kendi BC337-40'ıyla, E9)", "")              # §2-3: tek sürücü gibi okunan satır
+def b_blok_7(v, b):
+    v["ic_baglar"] = [x for x in v["ic_baglar"] if "BC337-40 #2" not in x["ne"]]                  # §2-3: şema 'her bobin kendi' der, tabloda tek sürücü
+def b_klemens_14(v, b):
+    r = bul(v, "G22")                                                                              # §2-5: belgesiz PC817 klemensine kesin
+    r["teyit"] = [t for t in r["teyit"] if not t.startswith("klemens:")]
+    r["durum"] = "kesin" if not r["teyit"] else r["durum"]
+def b_klemens_15(v, b):
+    r = bul(v, "SV1")                                                                              # §2-5: teyit başka parçayı anıyor
+    r["teyit"] = [t.replace("XL4016 A", "dağıtım kartı A") for t in r["teyit"]]
+def b_klemens_16(v, b):
+    v["malzeme_turleri"]["silikon-18"]["iletken"] = "tek telli"                                    # §2-7 (A05): sözlük sabitten farklı
+def b_klemens_17(v, b):
+    r = bul(v, "G17")                                                                              # §2-7: kart üstü köprü yine pedden
+    r["sonlandirma"] = r["sonlandirma"].replace("≥ 18 AWG tel köprüyle", "lehimle köprülü")
+def b_klemens_18(v, b):
+    r = bul(v, "K01")                                                                              # §2-7: köprü teli karta giren kablodan ince
+    r["sonlandirma"] = r["sonlandirma"].replace("≥ 18 AWG tel köprüyle", "≥ 22 AWG tel köprüyle")
+def b_klemens_19(v, b):
+    r = bul(v, "K01")                                                                              # §2-14: belgesiz klemens-508 uçluya elle kesin
+    r["teyit"] = []
+    r["durum"] = "kesin"
+
+
 # kontrolün (P107a-kontrol.md §1 D1) yakalanmayan on bozması, aynı biçimde
 def k_B3(v, b):
     d = damar(bul(v, "X01"), "röle K1 sürüşü")
@@ -2640,7 +2830,17 @@ BOZMALAR = [("iki_uc", b_iki_uc), ("ayni_nokta", b_ayni_nokta), ("esp32_pin", b_
             ("klemens", b_klemens_12), ("klemens", b_klemens_13), ("kesit", b_kesit_23), ("kesit", b_kesit_24),
             ("alanlar", b_alanlar_4), ("koruyucu", b_koruyucu_7), ("donanim", b_donanim_6), ("donanim", b_donanim_7),
             ("donanim", b_donanim_8), ("donanim", b_donanim_9), ("donanim", b_donanim_10), ("donanim", b_donanim_11),
-            ("donanim", b_donanim_12)]
+            ("donanim", b_donanim_12),
+            # P10.7b (dördüncü bakış §2-2, §2-3, §2-5, §2-7)
+            ("sayi_metin", b_sayi_metin_7), ("sayi_metin", b_sayi_metin_8), ("sayi_metin", b_sayi_metin_9),
+            ("sayi_metin", b_sayi_metin_10), ("sayi_metin", b_sayi_metin_11), ("sayi_metin", b_sayi_metin_12),
+            ("sayi_metin", b_sayi_metin_13), ("sayi_metin", b_sayi_metin_14), ("acil_stop", b_blok_6), ("acil_stop", b_blok_7),
+            ("klemens", b_klemens_14), ("klemens", b_klemens_15), ("klemens", b_klemens_16), ("klemens", b_klemens_17),
+            ("klemens", b_klemens_18), ("klemens", b_klemens_19),
+            # P10.7b1 düzeltme turu 1 (F10h-kontrol §2-10)
+            ("sayi_metin", b_sayi_metin_15), ("sayi_metin", b_sayi_metin_16), ("sayi_metin", b_sayi_metin_17),
+            ("sayi_metin", b_sayi_metin_18), ("sayi_metin", b_sayi_metin_19), ("sayi_metin", b_sayi_metin_20),
+            ("sayi_metin", b_sayi_metin_21), ("sayi_metin", b_sayi_metin_22)]
 
 
 def main():

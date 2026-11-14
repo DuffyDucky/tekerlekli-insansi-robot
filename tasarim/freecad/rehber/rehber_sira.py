@@ -1214,7 +1214,10 @@ class Denetim:
                     rec["alt_istisna"] = sum(len(x["istisna"]) for x in gl)
             out.append(rec)
         alt = [r for r in out if "alt_gizli_istisnasiz" in r]
-        return dict(yontem="voksel %g mm, 26 yönden dik izdüşüm; adımın sonunda (sira_grup varsa her grubun sonunda da) adımın yeni "
+        # P10.7b1 üretim uyumu (S2): hiçbir parça adına uymayan ad desenli gizli_ok anahtarı (ad çevirisinden sonra kopan gerekçe); bilgi
+        esles = ["%d.%d %s" % (s, n + 1, d) for s, st in enumerate(self.A) for n, g in enumerate(st.get("sira_grup") or [])
+                 for d in (g.get("gizli_ok") or {}) if d != "*" and not re.match(r"^p\d{4}$", d) and not any(d in p["ad"] for p in self.P)]
+        return dict(eslesmeyen_anahtar=esles, yontem="voksel %g mm, 26 yönden dik izdüşüm; adımın sonunda (sira_grup varsa her grubun sonunda da) adımın yeni "
                            "parçalarından hiçbir yönden görünmeyenler (bağlantı elemanları dahil, ayrı sayılı). F10d: alt adımlı adımlarda "
                            "her alt adımda gerekçesiz tamamen gizli yeni parça sınırı 0 (gerekçeler istisna listesinde); öbür adımlarda "
                            "eşik yok" % H,
@@ -1333,6 +1336,8 @@ def ozet_yaz(sr, pr):
     print("perdelenme: %d adim, tamamen gizli yeni parca toplam %d (adim sonunda, esik yok); alt adimlarda gerekcesiz gizli %s "
           "(sinir 0), gerekceli istisna %s" % (len(pr["adim"]), pr["toplam_gizli"], pr.get("alt_adim_gizli_istisnasiz"),
                                                pr.get("alt_adim_istisna")))
+    print("perdelenme gerekce anahtari: parca adina uymayan %d%s (bilgi)" % (
+        len(pr.get("eslesmeyen_anahtar") or []), (": " + "; ".join(pr["eslesmeyen_anahtar"])) if pr.get("eslesmeyen_anahtar") else ""))
     for r in pr["adim"]:
         for x in r.get("grup", []):
             for q in x.get("gizli_istisnasiz", []):

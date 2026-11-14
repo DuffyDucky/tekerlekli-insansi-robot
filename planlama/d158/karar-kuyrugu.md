@@ -74,8 +74,10 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K59 | P10.7a kablo tablosunun bağımsız bakışları (üçüncü bakış geçmedi; ek tur) | kapandı (14.11; orkestratör kararı, Ahmet'in 13.11 yetkilendirmesiyle; dördüncü bakış GEÇER 14.11) | — | — |
 | K60 | Elde taşınan acil stop (Ö4) | **açık** (P10.7a) | Kayıtta yok (A / B / C; Ahmet + Efe) | B seçilirse alıcının yeri ve beslemesi (P10.7b kablajı) |
 | K61 | Bas-konuş düğmesi kullanılacak mı (O-12) | **açık** (P10.7a) | Kayıtta yok; Efe'ye sorulacak | Düğmenin kablosu ve yeri (P10.7b) |
+| K62 | P10.7b1'de tur sayısı: iki düzeltme turu + açık işler turu + üretimin uyum düzeltmesi (kural "en çok 2 tur") | **açık** (P10.7b1; kayıt, Ahmet'in bilgisine / onayına) | Kayıt olarak kabul (orkestratörün sınıflaması) | Döngü kuralının yorumu (sonraki paketlerin tur sayımı) |
+| K63 | Montajdan önce kapanacak iki talimat boşluğu: G07 akü ölçüm hattı + 100 kΩ; SV3 + dağıtım kartı C | **açık** (P10.7b1, kontrol-4) | Rehbere talimat cümlesi (devre değişmez); P10.7b2'nin ilk işi | Fiziksel montaj (K1 / B5a / F1 adımları), onay kaydı yenilemesi |
 
-**Açık: 48.** **Kapandı: 13** (K1, K5, K8, K10, K11, K14, K15, K16, K17, K56, K57, K58, K59; K10 masa testine bağlı kabul). Toplam 61 madde.
+**Açık: 50.** **Kapandı: 13** (K1, K5, K8, K10, K11, K14, K15, K16, K17, K56, K57, K58, K59; K10 masa testine bağlı kabul). Toplam 63 madde.
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
@@ -109,6 +111,9 @@ P10.7a (kablo tablosu, 14.11.2026) → K59 kapalı kayıt (üçüncü bakış ge
 GEÇER), K60 (Ö4, `planlama/adim3/kablolama-on-kararlar.md` §8; önce sondaki bölümde "yeni soru"), K61 (O-12,
 `planlama/d158/kablo-tablosu-gunluk.md` §13); satın alma kalemleri K35 ve K4'e not. Orkestratörün bu paketteki kararları (O-1 … O-22)
 K numarası almadı (sondaki bölüm).
+P10.7b1 (rehberin elektrik tarafı tek kablo kaynağına bağlandı, 14.11.2026) → K62 (tur sayısı kaydı; `planlama/d158/F10h-gunluk.md`
+§ 16.1), K63 (kontrol-4'ün iki talimat boşluğu; `planlama/d158/F10h-kontrol-4.md` § 3.1). Öbür açık işler toplu olarak sondaki bölümde
+(P10.7b1).
 
 ---
 
@@ -1178,6 +1183,9 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   klemens sayımında "Ö4 1"); köprü takılıyken devre bugünküyle aynı.
 - **Önerilen varsayılan:** kayıtta yok (orkestratör karar vermedi: O-6, O-14). Karar Ahmet + Efe.
 - **Bloke:** B seçilirse alıcının yeri ve beslemesi (P10.7b kablajı); A ve C'de kablaj değişmez.
+- **Not (14.11.2026, P10.7b1 açık işler turu, `F10h-kontrol-2.md` madde 15):** köprü telinin kesiti kayıtta yazmıyordu; rehber zincirin
+  teliyle aynı kesiti söylüyor (K1 madde 5 ve kontrol listesi: A01 / A02 ile aynı, yer tutucu `{awg.A01|A02}`). `kablolar.json` devre
+  değerleri değişmedi.
 - **Durum:** açık (14.11.2026, P10.7a C adımında kuyruğa alındı).
 
 ## K61 · Bas-konuş düğmesi kullanılacak mı (O-12)
@@ -1191,6 +1199,33 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **Önerilen varsayılan:** kayıtta yok; Efe'ye panodan sorulacak (orkestratör). Karar Ahmet + Efe.
 - **Bloke:** düğmenin kablosu ve yeri (P10.7b).
 - **Durum:** açık (14.11.2026, P10.7a C adımında kuyruğa alındı).
+
+## K62 · P10.7b1'de tur sayısı ve döngü kuralı (kayıt)
+- **Ne:** döngü kuralı (`planlama/dongu-158.md` § 1, adım 4) en çok 2 düzeltme turu der, 3. turda hâlâ geçmeyen paket kuyruğa gider.
+  P10.7b1'de kaynak düzeyinde iki düzeltme turu (`F10h-kontrol.md` ve `-3.md` DÜZELTME GEREKLİ) ve bir açık işler turu (`-2.md` KAYNAK
+  GEÇER sonrası) yapıldı; dördüncü bakış (`-4.md`) KAYNAK GEÇER dedi. Ardından üretimde üç araç uyumsuzluğu (S1 ASCII kalıntı, S2
+  perdelenme gerekçe anahtarı, S3 F10e ölçütü) çıktı; orkestratör bunu "üretim adımının uyum düzeltmesi" sayıp ayrı bir bağımsız
+  kontrolle (`F10h-kontrol-5.md`: önce DÜZELTME GEREKLİ, yeniden bakışta UYUM DÜZELTMESİ GEÇER) kapattı.
+- **Neden açık:** kuralın harfiyle uyum düzeltmesi üçüncü bir düzeltme turu sayılabilir. Rehber metni, kurallar ve kablo tablosu o turda
+  değişmedi (yalnız denetim araçları ve bir gerekçe anahtarı; `F10h-gunluk.md` § 15), ama sınıflama orkestratörün.
+- **Seçenekler:** a) kayıt olarak kabul: uyum düzeltmesi tur sayılmaz, bağımsız kontrolle kapanır; b) bundan sonra üretimdeki her
+  düzeltme tur sayılır, sınırı aşan paket kuyruğa gider.
+- **Önerilen varsayılan:** a (orkestratörün sınıflaması; Ahmet onaylamadı). **Karar:** Ahmet.
+- **Bloke:** hiçbir paketi durdurmuyor; sonraki paketlerin tur sayımı. Ahmet'in cevabıyla kapanır (P10.7b2 başlamadan önce sorulabilir).
+- **Durum:** açık (14.11.2026, P10.7b1 C adımında kuyruğa alındı).
+
+## K63 · Montajdan önce kapanacak iki talimat boşluğu (G07 akü ölçümü; SV3 + dağıtım kartı C)
+- **Ne (`planlama/d158/F10h-kontrol-4.md` § 3.1-1, -2):** (1) G07 akü ölçüm hattının ve kaynak ucundaki 100 kΩ'un (`kablolar.json`
+  `koruyucular.R-aku-olcum`) rehberde bağlama talimatı yok; kimlik yalnız teslim notunda geçiyor. (2) SV3 (XL4016 C → dağıtım kartı C)
+  ve dağıtım kartı C'nin kendisi (2200 µF dahil) rehberde yok; XL4016 C çıkışı hiçbir adımda bağlanmıyor.
+- **Neden açık:** ikisi de güvenlik zincirini kesmiyor ve yanlış bağlatmıyor (kontrol-4 § 2), bu yüzden P10.7b1'i durdurmadı. Ama montajcı
+  rehberden bu iki hattı kuramaz: akü girişi yüzer, kafa servoları beslemesiz kalır. Tamlık sınaması ikisini "anılıyor" diye geçiriyor.
+- **Önerilen:** kontrol-4'ün cümleleri: K1 madde 4'e G07 (ana anahtar çıkış saplamasından, 100 kΩ kaynak ucunda lehim + makaron →
+  arayüz kartı akü bölücüsü), F1'de "iki ana hat ucu"nun yanına G07; B5a ya da K1 madde 3'e "XL4016 C çıkışı → dağıtım kartı C (SV3;
+  kartta 2200 µF, kutbuna dikkat; S09 / S10 buradan)". Devre değeri değişmez; onay kaydı yenilenir, fark bağımsız kontrole gider,
+  rehber yeniden üretilir.
+- **Karar:** metin orkestratörün (devre değişmez); Ahmet'e bilgi. **Kapanır:** P10.7b2, ilk iş; fiziksel montajdan önce.
+- **Durum:** açık (14.11.2026, P10.7b1 C adımında kuyruğa alındı).
 
 ---
 
@@ -1328,17 +1363,57 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   - **P10.7b'nin başında yapılacak (düzeltilmedi):**
     - (§2-2) `sayi_metin` kalan alt sınıfları: `planlama/adim3/kablolar_denetim.py:1957-1960` (izinli küme bütün besleme zinciri) ve
       `:1973-1976` (alanlar). Öneri: `ad` ve damar `ara`'da izinli küme yalnız `koruma` + `ara_koruyucu`; `not` / `kesit_not`'ta kesit
-      sınırı yalnız "AWG" ya da "sınır" yanında; sayısız "F<n>" uç düğümüyle karşılaştırılsın.
+      sınırı yalnız "AWG" ya da "sınır" yanında; sayısız "F<n>" uç düğümüyle karşılaştırılsın. → 14.11 P10.7b1 A: öneri uygulandı,
+      8 bozma (`F10h-gunluk.md` § 1).
     - (§2-3) `planlama/adim3/elektrik.md:339` blok şemasındaki "röle K1 bobini ∥ K2 bobini ── BC337-40" satırı tek sürücü gibi okunuyor
       (devre `:443-444` ve `pin-haritasi.md:95`'te her bobinin kendi BC337-40'ı var): satıra "(her bobin kendi BC337-40'ıyla, E9)"
-      eklensin, ayrıştırıcı sınansın.
+      eklensin, ayrıştırıcı sınansın. → 14.11 P10.7b1 A: satır eklendi, denetim sürücü sayısını kart içi bağlarla karşılaştırıyor,
+      2 bozma.
     - (§2-5) Belgesiz uç türüne "kesin" yazılmış uçlar: sigorta kutusu G18 a, A01 a; modül vidalı klemensi SV1–SV3 a, G19 a, G18 b, A01 b,
       A02 a, K02 b, G22 b (`kablolar.json` uç alanları). Öneri: `klemens:` teyit maddesi ya da `modul-vidali` de
-      `kablolar_denetim.py:132` `ALT_SINIRI_BELGESIZ`'e.
+      `kablolar_denetim.py:132` `ALT_SINIRI_BELGESIZ`'e. → 14.11 P10.7b1 A: `klemens:` teyit maddesi yolu seçildi (`BELGESIZ_UC`);
+      SV1–SV3, G18, G19, G22, A01, A02, K02 kesinden teyite (durum 22 / 51 / 1), 2 bozma.
     - (§2-7) `malzeme_turleri.*.iletken` denetimde `kablolar_denetim.py:135` `MALZEME_ILETKEN` sabitiyle karşılaştırılmıyor. Kafa giriş
       kartında F3 5 A taşıyan + / − köprüsü "lehimle" yazılı (`kablolar.json:2728, :6674, :6763`): rehberde ≥ 18 AWG tel olarak yazılsın.
+      → 14.11 P10.7b1 A: sözlük sabitle karşılaştırılıyor; köprü tabloda ve rehberde "≥ 18 AWG tel köprü" (acil stop düğüm kartına da
+      uygulandı: orkestratör onayı bekliyor, `F10h-gunluk.md` § 6), 3 bozma. → 14.11 düzeltme turu 1: acil stop kartındaki tel köprü
+      orkestratörce onaylandı.
   - **Proje sahibinin kararını bekleyen:** K60 (elde acil stop), K61 (bas-konuş), K35 ve K4 notları (onaylı satıcı dışı ve stokta
     görünmeyen kalemler, sıkma pensesi + uç kiti).
   - **P10.7b (kalan iş):** rehberde 3B kablo yolları, demet alt adımları, boyların ölçümü, düğüm tutucusu ve boyun tüneli deneme parçası;
     rehber kaynağındaki eski metinler: `tasarim/freecad/rehber/rehber_metin.py` :626, :711, :1291 ("şarj 10 A"), :634, :587, :611, :808,
     :842, :843, :1524 ("göğüs mini 2 A"), :637 ("K2 = GPIO2 LED"), :251, `rehber_denetim.py:151, :157`. Ayrıntı günlük §18.6.
+    → 14.11 P10.7b1 A (kaynak düzeyinde): bu satırlar ve sınamanın bulduğu öbürleri (toplam 49) düzeltildi, `rehber_denetim.py`
+    beklentileri yeni değerlerde; çizilen kablolar tabloya bağlı. Rehber çıktıları üretilmedi; 3B yollar, demet alt adımları, boylar,
+    düğüm tutucusu, tünel deneme parçası P10.7b2 (`F10h-gunluk.md` § 8, § 9). Sayılar ayrı: **49** eski kaynakta (HEAD `rehber_metin.py`),
+    **54** bugünkü eski rehber verisinde (A adımının kurallarıyla; bağımsız kontrolün ölçümüyle aynı; ilk günlükteki "30" ekran çıktısının
+    kesiğiydi). → 14.11 düzeltme turu 1 (bağımsız kontrol `F10h-kontrol.md` DÜZELTME GEREKLİ): Ü1–Ü3 ve kontrolün 15 açık işi
+    (`F10h-gunluk.md` § 11); kritik değerler yer tutucudan, çizilen 51 / 74, durum 21 / 52 / 1 (ek kararla K01 de teyite: 20 / 53 / 1,
+    `F10h-gunluk.md` § 11.11). → 14.11 açık işler turu, düzeltme turu 2, üretim + zincir ve uyum düzeltmesi (`F10h-gunluk.md` § 12–§ 15):
+    rehber yeniden üretildi (parça 1192, şema 49, alt adım 71, PDF 77 sayfa, çizilen 51 / çizilmeyen 23), zincir 2–10 çıkış 0; P10.7b1
+    ✅ 14.11 (kapanış `F10h-gunluk.md` § 16). Eski metinlerin düzeltilmesi yapıldı; 3B yollar, demet alt adımları, boylar, düğüm
+    tutucusu ve tünel deneme parçası P10.7b2'de kalıyor.
+  - **P10.7b2'ye (14.11 düzeltme turu 1 ek kararları):**
+    - Geometrik eşleme istisnaları yol 9 ve 12 (`rehber_kablo.py` `GEO_ISTISNA`; CAD yolları eski tasarımı çiziyor): taban yolları
+      yeniden tasarlanıp geometri düzelince istisna kalkar.
+    - CAD'de E4 adımında duran USB ses kartı parçası: adımdan / modelden çıkarılması P10.7b2'de (CAD kaynağı değişikliği). O zamana dek
+      rehberde "USB ses kartı (yedek, takılmaz)" adı ve E4 metnindeki "bu adımda takılmaz, yeri boş kalır" cümlesi.
+- P10.7b1'den (rehberin elektrik tarafı tek kablo kaynağına bağlandı, 14.11.2026) açık iş, paketi durdurmuyor; hepsi P10.7b2, karar
+  orkestratörün (devre değeri değişen olursa Ahmet). Kaynak: `planlama/d158/F10h-gunluk.md` § 13.7, § 14.4, § 15, § 16;
+  `F10h-kontrol-2.md` § 3, `-3.md` § 3, `-4.md` § 3, `-5.md` § 6. Montajdan önce kapanacak iki boşluk K63'te.
+  - **Kontrol-4'ün öbür açık işleri** (`F10h-kontrol-4.md` § 3.1-3, -4, § 3.2, § 3.3): tamlık sınaması "anılıyor mu"ya bakıyor, talimata
+    değil (koruyucu ölçütü yalnız sigorta; güç kablosunun kimliği bilgi; teslim / not anılışı sayılıyor; acil stop kablosu aralıkla
+    aranıyor); P6KE18A'nın kutbu yazılı değil; K2 kontağının COM–NO olduğu kayıtta ve rehberde yok; hat sigortası A / B / C'nin kablo
+    üstündeki yeri kayıtta yok; F1'de mantarın ikinci ucu (A01 / A02) ve G06'nın anahtar ucu; A06'nın − ucu; yasak kalıbının daralması
+    üç gerçek talimatı kaçırıyor (bugün onay kaydı yakalıyor); "kimliğiyle geçmeyen" liste (I01, I02, P01–P03, C01; C01 aslında E4'te iki
+    ucuyla bağlanıyor, G07 / SV3 listede yok); talimatsız 7 kablo (G07, SV3 → K63; I01, I02, P01–P03) ve yalnız şema yazısı / genel
+    "bağla" ile geçen 8 kablo (X01, B01, B02, N01, N02, Q01–Q03) ile kart içleri (`F10h-kontrol-4.md` § 5.2, § 3.1-4).
+  - **Önceki turlardan kalanlar:** anahtarlı baranın saplama yerleşimi kayıtta yok (rehber "yerleşim serbest", dayanak `ilke`);
+    geometrinin kaçırdığı eşleme bozmaları G19 / G20 / G24 / G26 (yalnız onay kaydı tutuyor); `TABAN_DISI_BOLGE` gövde bölgesi geniş;
+    acil stop düğümünün CAD modeli yok (nominal konum, elle bakıldı); gerilimler ve ölçüler yer tutucuda değil; 21 GPIO / anahtar muafı.
+  - **Üretimde görülenler (`F10h-gunluk.md` § 14.4 kare bakışı):** basılı sayfa lejantı (K1'de "Karede:" satırı yok, K2'de taban
+    kabloları eksik); seçim yeşili ↔ acil stop yeşili (açık tema) ve ↔ sarı servo (koyu tema); açık temada HDMI lacivert ↔ siyah; E4
+    genel bakış lejantı görünmeyen kabloları sayıyor; G3 (40.2) S2 lopu ↔ uzatma aynı renk; 18 ↔ 16 AWG ve 12 AWG kademeleri gözle
+    doğrulanamadı (o kademede çizilen şema yok); E4.3'te takılmayacak USB ses kartı karede takılı görünüyor (metinle okunuyor).
+  - **Kontrol-5'in açık işi (`F10h-kontrol-5.md` § 6 madde 2, § 8):** kol şemalarının `lejant` alanı ve `app.js` / `yazdir.html` sabit
+    metinleri ASCII sınamasına girmiyor ("Birden" bu yüzden izinli listede; `F10h-gunluk.md` § 15.1).
