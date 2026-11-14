@@ -7,17 +7,22 @@
 //
 // İVME SINIRLARI (29 Ekim 2026; tek kaynak kod/ortak/eklem_sinirlari.json -> src/sinirlar_verisi.h):
 //   hızlanma (|hız| büyüyor)                     düz zemin IVME_DUZ_SURUS 0,5 m/s^2
-//   yavaşlama / fren (|hız| küçülüyor, dur, bekçi) düz zemin IVME_DUZ_FREN 1,8 m/s^2
+//   yavaşlama / fren (|hız| küçülüyor, "dur")     düz zemin IVME_DUZ_FREN 1,8 m/s^2
+//   (0.5.0: 500 ms bekçi ve güç bırakma RAMPASIZ durdurur: motorlar_ani_dur)
 //   RAMPA KİPİNDE ikisi de IVME_RAMPA_SURUS / IVME_RAMPA_FREN (0,1 m/s^2): uzun robot eğimde devrilmesin.
 // Yön değişiminde (ileri -> geri) önce fren sınırıyla 0'a inilir, sonra hızlanma sınırıyla çıkılır.
 // Sınır her tekerin kendi hızına uygulanır. Acil stop gücü keser: motorlar boşa düşer, bu sınır işlemez.
 //
 // Robot 4 JGB37 ile kurulursa: her taraftaki iki motor aynı BTS7960'a paralel bağlanır,
 // her taraftan bir enkoder okunur. Yazılım değişmez.
+//
+// PİNLER (pin haritası sürüm 4, 0.5.0): sol IN1/IN2 = 25/26, sağ IN1/IN2 = 27/14 (PWM);
+// EN artık TEK pin (13, dört uç ortak) ve guc.cpp'de: yalnız güç "devrede" iken HIGH.
+// Enkoderler PCNT donanım sayacıyla (kesme yok): sol A/B = 18/17, sağ A/B = 16/15.
 #pragma once
 #include <stdint.h>
 
-// Pinleri, PWM'i ve enkoder kesmelerini kurar; motorlar duruk ve sürücüler etkin başlar.
+// PWM'leri görev oranı 0 ile bağlar ve PCNT enkoder sayaçlarını kurar. EN'e dokunmaz (guc.cpp).
 void motorlar_baslat();
 
 // Hedef hız. v: ileri hız (m/s, + ileri), w: dönüş hızı (rad/s, + sola/saat yönü tersi).
@@ -25,9 +30,12 @@ void motorlar_baslat();
 void motorlar_hedef(float v, float w);
 
 // Hedefi sıfırlar; tekerler FREN sınırıyla durur (düzde 1,8 m/s^2 -> 0,39 m/s'den ~0,22 s;
-// rampa kipinde 0,1 m/s^2 -> ~3,9 s). "dur" komutu ve watchdog bunu çağırır. (0.4.0'dan önce anında
-// PWM 0 idi; 29 Ekim kararı: fren de sınırlı.)
+// rampa kipinde 0,1 m/s^2 -> ~3,9 s). Yalnız "dur" komutu çağırır.
 void motorlar_dur();
+
+// ANINDA durdurur: dört PWM hemen 0, rampa durumu sıfır (rampasız). 500 ms komut bekçisi (0.5.0'dan
+// beri) ve güç bırakma (guc.cpp) bunu çağırır. EN'e dokunmaz.
+void motorlar_ani_dur();
 
 // Rampa kipi: true iken hızlanma ve fren rampa sınırlarıyla (IVME_RAMPA_*). Yalnız ivme sınırını
 // seçer; kolları ev pozuna almak seri_protokol'ün işi (rampa_kipi_*). Açılışta kapalı.
@@ -46,5 +54,6 @@ float motorlar_hedef_w();
 int32_t motor_sol_tik();
 int32_t motor_sag_tik();
 
-// İki tik sayacını kesme güvenli şekilde sıfırlar ({"k":"odo_sifirla"} komutu).
+// İki tik toplamını sıfırlar ({"k":"odo_sifirla"} komutu). PCNT donanım sayacı sıfırlanmaz; yalnız
+// 32 bit toplam (bkz. motorlar.cpp PCNT notu).
 void motor_tik_sifirla();

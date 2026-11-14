@@ -1,12 +1,15 @@
 // motorlar.cpp -- bkz. motorlar.h
 //
-// GÜÇ: BTS7960'ın B+/B- girişi doğrudan akü hattından (12 V, sigortalı, acil stop SONRASI).
-// Mantık tarafı (VCC) ESP32'nin 3,3 V'u ya da 5 V; BTS7960 3,3 V girişi kabul eder. Toprak ortak.
-// Acil stop (Emas) motor güç hattını keser; bu kod çökse de motor durur.
+// GÜÇ: BTS7960'ın B+/B- girişi ANAHTARLI BARADAN (K1 rölesinin arkası; pin haritası sürüm 4). Röle
+// bırakıkken motor sürücüsünde güç yoktur. Mantık tarafı (VCC) 5 V; IN uçları ESP32'nin 3,3 V PWM'ini
+// alır (kart gelince doğrulanacak, rapor T4). Toprak ortak.
+// EN (GPIO13, dört uç ortak) bu dosyada DEĞİL, guc.cpp'de: yalnız "devrede" iken HIGH olur.
 #include "motorlar.h"
 
 #include <Arduino.h>
+#include <driver/pcnt.h>
 
+#include "guc.h"
 #include "pinler.h"
 #include "sinirlar_verisi.h"   // IVME_DUZ_SURUS, IVME_DUZ_FREN, IVME_RAMPA_SURUS, IVME_RAMPA_FREN (üretilir)
 
@@ -22,8 +25,9 @@ constexpr float TEKER_AZAMI_HIZ = 0.39f;      // %100 PWM'de teker hızı (60 de
 constexpr float GIRIS_SINIRI = 1.0f;          // v ve w bu değere kırpılır (protokol: -1..1)
 
 // Enkoder: tekerleğin BİR turunda kaç tik sayılır? JGB37-520 Hall enkoderi motor milinde 11 darbe
-// verir; A kanalının iki kenarını saydığımız için 22 x dişli oranı. Oran motora göre değişir
+// verir; A kanalının İKİ kenarını saydığımız için 22 x dişli oranı. Oran motora göre değişir
 // (60 dev/dk modelde ~1:90 tahmini). ÖLÇ: tekerleği elle 10 tur çevir, tik farkını 10'a böl.
+// 0.5.0'da sayım PCNT'ye geçti ama çözünürlük AYNI (A'nın iki kenarı, B yön): değer değişmedi.
 constexpr float TIK_PER_TUR = 22.0f * 90.0f;
 constexpr bool ENKODER_VAR = true;            // enkoder bağlı değilse false: saf açık çevrim
 
@@ -47,23 +51,36 @@ constexpr uint8_t PWM_BIT = 10;
 constexpr uint32_t PWM_TAM = (1u << PWM_BIT) - 1;
 // LEDC kanalları (Arduino-ESP32 2.x): her PWM pini kendi kanalında.
 constexpr uint8_t LEDC_SOL_R = 0, LEDC_SOL_L = 1, LEDC_SAG_R = 2, LEDC_SAG_L = 3;
+
+// PCNT (donanım darbe sayacı; rapor Y8: GPIO kenar kesmesi errata [GPIO-3.14] yüzünden güvenilmez).
+// Sayaç 16 bittir ve -PCNT_SINIR..+PCNT_SINIR arasında döner: sınıra varınca kendiliğinden 0'a
+// döner. Biz sayacı her okumada önceki okumayla karşılaştırıp farkı 32 bit toplama ekleriz
+// ("mod PCNT_SINIR" fark). İki okuma arasında PCNT_SINIR/2'den (15000 tik ~ 7 teker turu) az sayım
+// olduğu sürece doğrudur; okuma en geç 20 ms'de bir yapılır (motorlar_guncelle), o sürede ~40 tik.
+constexpr int16_t PCNT_SINIR = 30000;
+// Süzgeç: APB saatinin (80 MHz) bu kadar çevriminden kısa darbeler sayılmaz. 1000 -> 12,5 us.
+// Enkoder en hızlı ~1 kHz (darbe ~500 us); TAHMİNİ, gürültü görülürse artır (en çok 1023).
+constexpr uint16_t PCNT_SUZGEC = 1000;
 // ---------------------------------------------------------------------------------------------
 
-// Enkoder sayaçları kesmede artar. 32 bit hizalı okuma ESP32'de bölünmez (atomik), bu yüzden
-// OKUMAK için kilit gerekmez. "volatile": derleyici değeri önbelleğe almasın.
-// YAZMAK (odo_sifirla ile sıfırlamak) ise kilit ister: kesme "oku, 1 ekle, yaz" yaparken araya
-// sıfırlama girerse sıfır kaybolur. enkoder_kilit = ESP32'nin iki çekirdekte de çalışan kilidi
-// (portMUX); kilitliyken o çekirdekte kesmeler de bekler. Kilit çok kısa tutulur (tek atama).
-// Taşma: ~5000 tik/m ile int32 ~400 km sonra taşar; pratikte sorun değil.
-volatile int32_t sol_tik = 0;
-volatile int32_t sag_tik = 0;
-portMUX_TYPE enkoder_kilit = portMUX_INITIALIZER_UNLOCKED;
+// Bir enkoder: hangi PCNT birimi, son ham okuma, 32 bit toplam. Hepsi yalnız loop() görevinden
+// okunur/yazılır (kesme yok), bu yüzden kilit gerekmez.
+struct Enkoder {
+  pcnt_unit_t birim;
+  uint8_t pin_a, pin_b;
+  bool hazir;            // PCNT kurulumu başarılı mı (değilse toplam hep 0, PID kapalı kalır)
+  int16_t son_ham;
+  int32_t toplam;        // açılıştan (ya da odo_sifirla'dan) beri; ~400 km'de taşar, sorun değil
+};
+
+Enkoder sol_enk = {PCNT_UNIT_0, PIN_SOL_ENK_A, PIN_SOL_ENK_B, false, 0, 0};
+Enkoder sag_enk = {PCNT_UNIT_1, PIN_SAG_ENK_A, PIN_SAG_ENK_B, false, 0, 0};
 
 struct Teker {
-  uint8_t pin_r, pin_l, pin_en;
-  uint8_t ledc_r, ledc_l;
+  uint8_t pin_ileri, pin_geri;   // BTS IN1 (RPWM), IN2 (LPWM)
+  uint8_t ledc_ileri, ledc_geri;
   bool motor_ters, enkoder_ters;
-  volatile int32_t* sayac;  // bu tekerin enkoder sayacı
+  Enkoder* enk;
   float hedef_hiz;        // m/s, "sur"dan gelen
   float rampa_hiz;        // m/s, ivme sınırıyla hedefe yaklaşan değer (motora giden)
   float integral;
@@ -71,28 +88,58 @@ struct Teker {
   int32_t onceki_tik;
 };
 
-Teker sol = {PIN_SOL_RPWM, PIN_SOL_LPWM, PIN_SOL_EN, LEDC_SOL_R, LEDC_SOL_L,
-             SOL_MOTOR_TERS, SOL_ENKODER_TERS, &sol_tik, 0, 0, 0, 0, 0};
-Teker sag = {PIN_SAG_RPWM, PIN_SAG_LPWM, PIN_SAG_EN, LEDC_SAG_R, LEDC_SAG_L,
-             SAG_MOTOR_TERS, SAG_ENKODER_TERS, &sag_tik, 0, 0, 0, 0, 0};
+Teker sol = {PIN_SOL_ILERI_PWM, PIN_SOL_GERI_PWM, LEDC_SOL_R, LEDC_SOL_L,
+             SOL_MOTOR_TERS, SOL_ENKODER_TERS, &sol_enk, 0, 0, 0, 0, 0};
+Teker sag = {PIN_SAG_ILERI_PWM, PIN_SAG_GERI_PWM, LEDC_SAG_R, LEDC_SAG_L,
+             SAG_MOTOR_TERS, SAG_ENKODER_TERS, &sag_enk, 0, 0, 0, 0, 0};
 
 float son_v = 0.0f, son_w = 0.0f;
 bool rampa_kipi = false;      // true: IVME_RAMPA_* sınırları (eğimde)
 
-// Kesme: A kanalı her değiştiğinde çalışır. A ile B aynıysa bir yön, farklıysa öbür yön.
-// Kesme kısa olmalı: yalnız say, hesap yapma. IRAM_ATTR: kod hızlı RAM'de dursun.
-// Pinler kilit DIŞINDA okunur; kilit yalnız sayacı değiştirirken alınır.
-void IRAM_ATTR sol_enkoder_kesme() {
-  int32_t adim = (digitalRead(PIN_SOL_ENK_A) == digitalRead(PIN_SOL_ENK_B)) ? 1 : -1;
-  portENTER_CRITICAL_ISR(&enkoder_kilit);
-  sol_tik += adim;
-  portEXIT_CRITICAL_ISR(&enkoder_kilit);
+// PCNT birimini kurar: darbe = A, kontrol = B. A'nın yükselen kenarında +1, düşen kenarında -1;
+// B LOW iken yön ters çevrilir. Sonuç eski kesme koduyla aynı: A == B ise +1, farklıysa -1.
+//   A yükseldi, B=1 -> +1 | A yükseldi, B=0 -> -1 | A düştü, B=1 -> -1 | A düştü, B=0 -> +1
+// Her ESP-IDF çağrısının sonucu denetlenir; biri başarısızsa enkoder "yok" sayılır.
+bool enkoder_kur(Enkoder& e) {
+  // Dahili pull-up (enkoder çıkışı açık kollektör olabilir; rapor Y3, T7). PCNT'den ÖNCE ayarlanır.
+  pinMode(e.pin_a, INPUT_PULLUP);
+  pinMode(e.pin_b, INPUT_PULLUP);
+  pcnt_config_t ayar = {};
+  ayar.pulse_gpio_num = e.pin_a;
+  ayar.ctrl_gpio_num = e.pin_b;
+  ayar.lctrl_mode = PCNT_MODE_REVERSE;
+  ayar.hctrl_mode = PCNT_MODE_KEEP;
+  ayar.pos_mode = PCNT_COUNT_INC;
+  ayar.neg_mode = PCNT_COUNT_DEC;
+  ayar.counter_h_lim = PCNT_SINIR;
+  ayar.counter_l_lim = -PCNT_SINIR;
+  ayar.unit = e.birim;
+  ayar.channel = PCNT_CHANNEL_0;
+  if (pcnt_unit_config(&ayar) != ESP_OK) return false;
+  if (pcnt_set_filter_value(e.birim, PCNT_SUZGEC) != ESP_OK) return false;
+  if (pcnt_filter_enable(e.birim) != ESP_OK) return false;
+  // Sınır olaylarını aç: sayaç sınıra varınca 0'a dönsün (pcnt_unit_config bunları kapatır).
+  // Kesme (ISR) KURULMAZ; toplam yoklamayla tutulur.
+  if (pcnt_event_enable(e.birim, PCNT_EVT_H_LIM) != ESP_OK) return false;
+  if (pcnt_event_enable(e.birim, PCNT_EVT_L_LIM) != ESP_OK) return false;
+  if (pcnt_counter_pause(e.birim) != ESP_OK) return false;
+  if (pcnt_counter_clear(e.birim) != ESP_OK) return false;
+  if (pcnt_counter_resume(e.birim) != ESP_OK) return false;
+  e.son_ham = 0;
+  e.toplam = 0;
+  return true;
 }
-void IRAM_ATTR sag_enkoder_kesme() {
-  int32_t adim = (digitalRead(PIN_SAG_ENK_A) == digitalRead(PIN_SAG_ENK_B)) ? 1 : -1;
-  portENTER_CRITICAL_ISR(&enkoder_kilit);
-  sag_tik += adim;
-  portEXIT_CRITICAL_ISR(&enkoder_kilit);
+
+// Ham sayacı okur, son okumadan beri farkı (mod PCNT_SINIR) 32 bit toplama ekler.
+void enkoder_topla(Enkoder& e) {
+  if (!e.hazir) return;
+  int16_t ham = 0;
+  if (pcnt_get_counter_value(e.birim, &ham) != ESP_OK) return;
+  int32_t fark = ((int32_t)ham - (int32_t)e.son_ham) % PCNT_SINIR;   // (-SINIR, SINIR)
+  if (fark > PCNT_SINIR / 2) fark -= PCNT_SINIR;                       // sınırdan dönüş: ileri
+  else if (fark < -PCNT_SINIR / 2) fark += PCNT_SINIR;                 // sınırdan dönüş: geri
+  e.son_ham = ham;
+  e.toplam += fark;
 }
 
 float kirp(float x, float sinir) {
@@ -101,13 +148,16 @@ float kirp(float x, float sinir) {
   return x;
 }
 
-// Arduino-ESP32 2.x ve 3.x'te LEDC işlevleri farklı; ikisini de destekle.
+// Arduino-ESP32 2.x ve 3.x'te LEDC işlevleri farklı; ikisini de destekle (ama çekirdek 2.0.17'de SABİT).
+// Görev oranı (duty) pin bağlanmadan ÖNCE 0 yazılır: pin PWM'e bağlandığı an çıkış 0'dır (rapor Y2).
 void pwm_kur(uint8_t pin, uint8_t ledc) {
 #if ESP_ARDUINO_VERSION_MAJOR >= 3
   (void)ledc;
   ledcAttach(pin, PWM_FREKANS, PWM_BIT);
+  ledcWrite(pin, 0);
 #else
   ledcSetup(ledc, PWM_FREKANS, PWM_BIT);
+  ledcWrite(ledc, 0);
   ledcAttachPin(pin, ledc);
 #endif
 }
@@ -122,36 +172,35 @@ void pwm_yaz(uint8_t pin, uint8_t ledc, uint32_t deger) {
 #endif
 }
 
-// cikis -1..1: + ileri (RPWM), - geri (LPWM). 0 iken iki PWM de 0 = BTS7960'ta fren (iki alt
-// transistör iletimde). EN pini HIGH kalır.
+// cikis -1..1: + ileri (IN1), - geri (IN2). 0 iken iki PWM de 0 = BTS7960'ta fren (iki alt
+// transistör iletimde; EN HIGH iken). EN LOW iken (bırakık) motor boştadır.
 void teker_yaz(const Teker& t, float cikis) {
   if (t.motor_ters) cikis = -cikis;
   cikis = kirp(cikis, 1.0f);
   uint32_t deger = (uint32_t)(fabsf(cikis) * PWM_TAM + 0.5f);
   if (cikis >= 0.0f) {
-    pwm_yaz(t.pin_l, t.ledc_l, 0);              // önce karşı yönü kapat
-    pwm_yaz(t.pin_r, t.ledc_r, deger);
+    pwm_yaz(t.pin_geri, t.ledc_geri, 0);        // önce karşı yönü kapat (rapor Y6)
+    pwm_yaz(t.pin_ileri, t.ledc_ileri, deger);
   } else {
-    pwm_yaz(t.pin_r, t.ledc_r, 0);
-    pwm_yaz(t.pin_l, t.ledc_l, deger);
+    pwm_yaz(t.pin_ileri, t.ledc_ileri, 0);
+    pwm_yaz(t.pin_geri, t.ledc_geri, deger);
   }
 }
 
 void teker_kur(Teker& t) {
-  pinMode(t.pin_en, OUTPUT);
-  digitalWrite(t.pin_en, LOW);                  // kurulum bitene kadar sürücü kapalı
-  pwm_kur(t.pin_r, t.ledc_r);
-  pwm_kur(t.pin_l, t.ledc_l);
+  pwm_kur(t.pin_ileri, t.ledc_ileri);
+  pwm_kur(t.pin_geri, t.ledc_geri);
   teker_yaz(t, 0.0f);
 }
 
-int32_t tik_oku(const Teker& t) {
-  int32_t ham = *t.sayac;
+int32_t tik_oku(Teker& t) {
+  enkoder_topla(*t.enk);                         // her okumada güncel (yoklama)
+  int32_t ham = t.enk->toplam;
   return t.enkoder_ters ? -ham : ham;
 }
 
 // Rampa: hızı hedefe doğru bir adım (DT) yürütür.
-//   |hız| küçülüyorsa (yavaşlama, dur, bekçi, yön değişiminin ilk yarısı) FREN sınırı,
+//   |hız| küçülüyorsa (yavaşlama, dur, yön değişiminin ilk yarısı) FREN sınırı,
 //   |hız| büyüyorsa HIZLANMA sınırı. Yön değişiminde 0'ın öbür yanına fren adımıyla geçilmez:
 //   o adım 0'da biter, sonraki adımlar hızlanma sınırıyla devam eder.
 float rampa_adimi(float simdiki, float hedef) {
@@ -182,7 +231,7 @@ void teker_adim(Teker& t) {
   float cikis = t.rampa_hiz / TEKER_AZAMI_HIZ;
 
   // 4) PID düzeltmesi (katsayılar sıfırken etkisiz).
-  if (ENKODER_VAR && t.rampa_hiz != 0.0f) {
+  if (ENKODER_VAR && t.enk->hazir && t.rampa_hiz != 0.0f) {
     float hata = t.rampa_hiz - olculen;
     t.integral = kirp(t.integral + hata * DT, (KI > 0.0f) ? INTEGRAL_SINIRI / KI : 0.0f);
     float turev = (hata - t.onceki_hata) / DT;
@@ -195,26 +244,25 @@ void teker_adim(Teker& t) {
   teker_yaz(t, cikis);
 }
 
+void teker_ani_dur(Teker& t) {
+  t.hedef_hiz = t.rampa_hiz = 0.0f;
+  t.integral = t.onceki_hata = 0.0f;
+  teker_yaz(t, 0.0f);                            // PWM HEMEN 0 (sonraki 20 ms'yi beklemez)
+}
+
 }  // namespace
 
 void motorlar_baslat() {
+  // PWM'ler görev oranı 0 ile bağlanır. EN (GPIO13) guc_pinleri_guvenle() ile zaten LOW; burada
+  // ona dokunulmaz, yalnız guc.cpp "devrede" iken HIGH yapar.
   teker_kur(sol);
   teker_kur(sag);
-
-  // Enkoderler: dahili pull-up açık (JGB37 enkoder çıkışı açık kollektör olabilir).
-  pinMode(PIN_SOL_ENK_A, INPUT_PULLUP);
-  pinMode(PIN_SOL_ENK_B, INPUT_PULLUP);
-  pinMode(PIN_SAG_ENK_A, INPUT_PULLUP);
-  pinMode(PIN_SAG_ENK_B, INPUT_PULLUP);
   if (ENKODER_VAR) {
-    attachInterrupt(digitalPinToInterrupt(PIN_SOL_ENK_A), sol_enkoder_kesme, CHANGE);
-    attachInterrupt(digitalPinToInterrupt(PIN_SAG_ENK_A), sag_enkoder_kesme, CHANGE);
+    sol_enk.hazir = enkoder_kur(sol_enk);
+    sag_enk.hazir = enkoder_kur(sag_enk);
   }
   sol.onceki_tik = tik_oku(sol);
   sag.onceki_tik = tik_oku(sag);
-
-  digitalWrite(sol.pin_en, HIGH);               // PWM sıfırken sürücüleri etkinleştir
-  digitalWrite(sag.pin_en, HIGH);
 }
 
 void motorlar_hedef(float v, float w) {
@@ -243,11 +291,23 @@ void motorlar_dur() {
   sag.hedef_hiz = 0.0f;
 }
 
+void motorlar_ani_dur() {
+  son_v = son_w = 0.0f;
+  teker_ani_dur(sol);
+  teker_ani_dur(sag);
+}
+
 void motorlar_rampa_modu(bool acik) { rampa_kipi = acik; }
 bool motorlar_rampa_modu_mu() { return rampa_kipi; }
 
 void motorlar_guncelle(uint32_t simdi_ms) {
   (void)simdi_ms;
+  // Savunma: güç devrede değilken motor hedefi hiç olmamalı ("sur" reddedilir, bırakma ani durdurur).
+  // Yine de bir yol kaçarsa burada sıfırlanır; EN zaten LOW olduğu için motor dönmez.
+  if (!guc_devrede() && (sol.rampa_hiz != 0.0f || sag.rampa_hiz != 0.0f ||
+                         sol.hedef_hiz != 0.0f || sag.hedef_hiz != 0.0f)) {
+    motorlar_ani_dur();
+  }
   teker_adim(sol);
   teker_adim(sag);
 }
@@ -258,12 +318,13 @@ int32_t motor_sol_tik() { return tik_oku(sol); }
 int32_t motor_sag_tik() { return tik_oku(sag); }
 
 void motor_tik_sifirla() {
-  portENTER_CRITICAL(&enkoder_kilit);   // iki sayaç birlikte, araya kesme girmeden sıfırlanır
-  sol_tik = 0;
-  sag_tik = 0;
-  portEXIT_CRITICAL(&enkoder_kilit);
+  // Önce donanım sayacını son kez topla (son_ham güncel olsun), sonra toplamları sıfırla.
+  // Hepsi loop() görevinde: kesme yok, kilit gerekmez.
+  enkoder_topla(sol_enk);
+  enkoder_topla(sag_enk);
+  sol_enk.toplam = 0;
+  sag_enk.toplam = 0;
   // PID'in "önceki tik"i de sıfırlanmalı; yoksa bir sonraki adımda dev bir hız sıçraması ölçülür.
-  // (motorlar_guncelle aynı döngüde çağrıldığı için burada kilit gerekmez.)
   sol.onceki_tik = 0;
   sag.onceki_tik = 0;
 }

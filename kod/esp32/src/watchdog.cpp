@@ -42,7 +42,7 @@ void watchdog_besle(uint32_t simdi_ms) {
 void watchdog_kontrol(uint32_t simdi_ms) {
   // İşaretsiz çıkarma: millis() 49 günde bir sıfıra döner, bu yazım o anda da doğru çalışır.
   if (!tetikli && (simdi_ms - son_sur_ms) >= KOMUT_ZAMAN_ASIMI_MS) {
-    motorlar_dur();
+    motorlar_ani_dur();       // rampasız (0.5.0); K1'e dokunmaz
     tetikli = true;
   }
   if (dongu_bekcisi_var) esp_task_wdt_reset();

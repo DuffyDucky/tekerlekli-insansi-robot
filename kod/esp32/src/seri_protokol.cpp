@@ -7,15 +7,18 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "guc.h"
 #include "imu.h"
 #include "jestler.h"
 #include "motorlar.h"
 #include "servolar.h"
 #include "watchdog.h"
 
-#define FIRMWARE_SURUM "0.4.0"   // 0.2.0: odo yayını, odo_sifirla, jest "yon"
+#define FIRMWARE_SURUM "0.5.0"   // 0.2.0: odo yayını, odo_sifirla, jest "yon"
                                  // 0.3.0: jest "yon" uygulanır, cevapta "yon_uygulandi"
                                  // 0.4.0: 10 servo, ivme/fren sınırı ayrı, rampa kipi ("rampa" komutu)
+                                 // 0.5.0: pin haritası sürüm 4; röle/acil stop/bara ("arm", "birak",
+                                 //        "reset", "guc" olayı), PCNT enkoder, bekçi rampasız
 
 namespace {
 
@@ -70,8 +73,27 @@ bool sayi_al(JsonVariantConst deger, float& sonuc) {
   return isfinite(sonuc);
 }
 
+// ping ve durum cevabına güç alanlarını ekler. aku_metni çağıranın tamponu: gonder() bitene kadar yaşar.
+void guc_alanlari_ekle(JsonDocument& c, char* aku_metni, size_t boy) {
+  c["guc"] = guc_durum_adi();
+  c["acil"] = guc_acil_basili();
+  c["bara"] = guc_bara_gerilimli();
+  const float aku = guc_aku_volt();
+  if (isfinite(aku)) {
+    snprintf(aku_metni, boy, "%.2f", aku);         // 12.34 gibi; float yazımı uzamasın
+    c["aku"] = serialized(aku_metni);
+  } else {
+    c["aku"] = nullptr;
+  }
+  const char* neden = guc_ariza_nedeni();
+  if (neden != nullptr) c["ariza"] = neden;
+  else c["ariza"] = nullptr;
+}
+
 // --------------------------- komutlar ---------------------------
 
+// Jest ve servo güç devrede değilken de kabul edilir (masa denemesi): PCA9685 darbe üretir ama
+// servoların gücü K1 rölesinin arkasında; röle bırakıkken kollar kıpırdamaz.
 void komut_jest(JsonDocument& d, uint32_t simdi_ms) {
   const char* ad = d["ad"];
   if (ad == nullptr) return cevap_hata("jest", "ad_yok");
@@ -99,6 +121,8 @@ void komut_jest(JsonDocument& d, uint32_t simdi_ms) {
 }
 
 void komut_sur(JsonDocument& d, uint32_t simdi_ms) {
+  // Güç devrede değilken teker sürülmez; bekçi beslenmez, "rampa" alanı da uygulanmaz.
+  if (!guc_devrede()) return cevap_hata("sur", "devrede_degil");
   float v, w;
   if (!sayi_al(d["v"], v) || !sayi_al(d["w"], w)) return cevap_hata("sur", "v_w_sayi_olmali");
   JsonVariantConst rampa = d["rampa"];             // isteğe bağlı: elle rampa kipini de ayarlar
@@ -172,6 +196,7 @@ void komut_servo(JsonDocument& d) {
 
 void komut_ping(uint32_t simdi_ms) {
   JsonDocument c;
+  char aku_metni[16];
   c["ok"] = true;
   c["k"] = "ping";
   c["surum"] = FIRMWARE_SURUM;
@@ -179,9 +204,53 @@ void komut_ping(uint32_t simdi_ms) {
   c["pca9685"] = servolar_hazir();
   c["odo"] = (ODO_YAYINI != 0);                    // true: bu firmware {"k":"odo",...} yayını yapıyor
   c["rampa"] = rampa_kipi_acik();
+  guc_alanlari_ekle(c, aku_metni, sizeof(aku_metni));
   JsonArray jestler = c["jestler"].to<JsonArray>();
   for (uint8_t i = 0; i < jest_sayisi(); i++) jestler.add(jest_adi(i));
   gonder(c);
+}
+
+// Gücü devreye alma isteği. Kabul edilirse sıra (ön şarj -> K1) guc.cpp'de, döngüyü bekletmeden yürür;
+// sonuç "guc" olayıyla bildirilir.
+void komut_arm(uint32_t simdi_ms) {
+  const char* hata = guc_arm(simdi_ms);
+  if (hata != nullptr) return cevap_hata("arm", hata);
+  JsonDocument c;
+  c["ok"] = true;
+  c["k"] = "arm";
+  c["guc"] = guc_durum_adi();                      // "onsarj"
+  gonder(c);
+}
+
+// Gücü bırak: çıkışlar guc_birak() içinde, cevap yazılmadan ÖNCE kapanır.
+void komut_birak(uint32_t simdi_ms) {
+  guc_birak(simdi_ms);
+  JsonDocument c;
+  c["ok"] = true;
+  c["k"] = "birak";
+  c["ms"] = simdi_ms;
+  gonder(c);
+}
+
+// Önce bırak, cevabı (ve varsa güç olayını) gönder, giden tamponun boşalmasını bekle, yeniden başla.
+// Serial.flush() yalnız giden baytlar bitene kadar bekler (115200'de ~100 bayt ~9 ms).
+void komut_reset(uint32_t simdi_ms) {
+  guc_birak(simdi_ms);
+  cevap_ok("reset");
+  guc_olay_gonder();
+  Serial.flush();
+  ESP.restart();                                   // açılışta güç "birakik"; kendiliğinden arm olmaz
+}
+
+// Bilinen komut adları (sessizlik sayacı yalnız bunlarla beslenir; bozuk satır ve bilinmeyen komut saymaz).
+const char* const KOMUTLAR[] = {"sur", "dur", "jest", "servo", "ping", "odo_sifirla", "rampa",
+                                "arm", "birak", "reset"};
+
+bool bilinen_komut(const char* k) {
+  for (const char* ad : KOMUTLAR) {
+    if (strcmp(k, ad) == 0) return true;
+  }
+  return false;
 }
 
 void satiri_isle(uint32_t simdi_ms) {
@@ -191,6 +260,8 @@ void satiri_isle(uint32_t simdi_ms) {
   if (hata) return cevap_hata(nullptr, "json_bozuk");
   const char* k = d["k"];
   if (k == nullptr) return cevap_hata(nullptr, "k_yok");
+  if (!bilinen_komut(k)) return cevap_hata(k, "bilinmeyen_komut");
+  guc_komut_geldi(simdi_ms);                       // geçerli komut satırı: 5 s sessizlik sayacı sıfırlanır
 
   if (strcmp(k, "sur") == 0)        komut_sur(d, simdi_ms);
   else if (strcmp(k, "dur") == 0)   komut_dur();
@@ -199,17 +270,23 @@ void satiri_isle(uint32_t simdi_ms) {
   else if (strcmp(k, "ping") == 0)  komut_ping(simdi_ms);
   else if (strcmp(k, "odo_sifirla") == 0) komut_odo_sifirla();
   else if (strcmp(k, "rampa") == 0) komut_rampa(d);
-  else                              cevap_hata(k, "bilinmeyen_komut");
+  else if (strcmp(k, "arm") == 0)   komut_arm(simdi_ms);
+  else if (strcmp(k, "birak") == 0) komut_birak(simdi_ms);
+  else if (strcmp(k, "reset") == 0) komut_reset(simdi_ms);
+  guc_olay_gonder();                               // komut gücü değiştirdiyse olay cevaptan SONRA gider
 }
 
 }  // namespace
 
 void seri_baslat() {
+  // Yalnız UART0 (Serial, GPIO1/3). Serial1 / Serial2 BİLEREK açılmaz: varsayılan pinleri röle ve
+  // motor pinleriyle çakışır (pin haritası Y1).
   Serial.begin(SERI_HIZ);
   JsonDocument c;
   c["k"] = "hazir";
   c["surum"] = FIRMWARE_SURUM;
   c["pca9685"] = servolar_hazir();
+  c["guc"] = guc_durum_adi();                      // açılışta hep "birakik"
   gonder(c);
 }
 
@@ -247,6 +324,18 @@ void seri_durum_gonder() {
   sur.add(motorlar_hedef_w());
   c["wd"] = watchdog_tetikli();
   c["rampa"] = rampa_kipi_acik();
+  char aku_metni[16];
+  guc_alanlari_ekle(c, aku_metni, sizeof(aku_metni));
+  gonder(c);
+}
+
+void seri_guc_olayi_gonder(const char* guc, const char* neden, uint32_t ms) {
+  JsonDocument c;
+  c["k"] = "guc";
+  c["guc"] = guc;
+  if (neden != nullptr) c["neden"] = neden;
+  else c["neden"] = nullptr;
+  c["ms"] = ms;
   gonder(c);
 }
 

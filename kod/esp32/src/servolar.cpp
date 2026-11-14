@@ -5,6 +5,10 @@
 // C = kafa pan + tilt; kol hattı yoğun ≈ 4,9 A, tepe ≈ 7,2 A (tahmini, ölçülecek). 10 servo tek hatta
 // bağlanmaz. PCA9685'in VCC pini (mantık) ESP32'nin 3,3 V'undan beslenir, V+ klemensi boş kalır. Servoların gücü ASLA ESP32'den ya da Pi'nin USB'sinden
 // alınmaz: ani akım voltajı düşürür, Pi/ESP32 kendini resetler (brownout). Topraklar ortak.
+// Pin haritası sürüm 4 (0.5.0): servo DC-DC'leri ANAHTARLI BARADAN beslenir, yani K1 rölesinin arkasında.
+// Röle bırakıkken (guc "birakik"/"ariza") PCA9685 mantığı çalışır ama servoların gücü yoktur: jest ve
+// servo komutları kabul edilir (masa denemesi), kollar kıpırdamaz. "arm" ile güç gelince servolar
+// PCA9685'in o anki darbesine (son hedef) TEK SEFERDE gider; kolların önü boş olmalı. Röle bırakınca kollar düşer.
 #include "servolar.h"
 
 #include <Arduino.h>
@@ -66,6 +70,12 @@ bool servolar_baslat() {
 }
 
 bool servolar_hazir() { return pca_var; }
+
+bool servolar_yokla() {
+  // Boş bir I2C yazımı: cihaz adresine ACK veriyorsa 0 döner. Cevap yoksa Wire en çok 20 ms bekler.
+  Wire.beginTransmission(PCA9685_ADRES);
+  return Wire.endTransmission() == 0;
+}
 
 uint8_t servo_sayisi() { return SERVO_SAYISI; }
 
