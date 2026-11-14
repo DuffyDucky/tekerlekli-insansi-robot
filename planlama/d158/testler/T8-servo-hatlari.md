@@ -144,6 +144,21 @@ Hat akımları hesap: kol hatları yoğun kullanımda 4,87 A, yani XL4016 için 
 | B | D3 yoğun | | | | |
 | C | pan + tilt | | | | |
 
+**E. Uzatma ve ana hat kısa devresi (tezgâh, kablo tablosu düzeltme turu 1: `servo-uzatmasi` ve `servo-ana-hat-16awg` istisnalarının şartı)**
+
+Tek bir 1 m servo uzatması XL4016 A çıkışına (dağıtım kartı A çıkış 1) takılır, servo takılmaz; uzatmanın servo ucunda V+ ile GND pens ampermetreli kalın bir köprüyle **en çok 2 s** kısa devre edilir (yanmaz zemin, yangın söndürücü yanında, ölçüm bir kez). Uzatmanın ortasına temas termometresi.
+
+E2 (ana hatlar, O-20 c): aynı deneme SV1, SV2 ve SV3'te (16 AWG, XL4016 A / B / C → dağıtım kartı A / B / C) yapılır: dağıtım kartı klemensinde V+ ile GND **en çok 2 s** kısa devre, servolar ve uzatmalar sökülü, termometre ana hattın ortasında.
+
+| Ölçüm | Okunan | Beklenen |
+|---|---|---|
+| XL4016 çıkış akımı, ilk 0,5 s (pens) | | ≤ 10 A |
+| XL4016 davranışı (kesiyor / akımı düşürüyor / sürdürüyor) | | kesiyor ya da düşürüyor |
+| Uzatma sıcaklığı, 2 s sonra | | < 80 °C, yalıtım bozulmamış |
+| E2 SV1: XL4016 A akımı / davranışı / kablo sıcaklığı | | ≤ 10 A, kesiyor ya da düşürüyor, < 80 °C |
+| E2 SV2: XL4016 B akımı / davranışı / kablo sıcaklığı | | ≤ 10 A, kesiyor ya da düşürüyor, < 80 °C |
+| E2 SV3: XL4016 C akımı / davranışı / kablo sıcaklığı | | ≤ 10 A, kesiyor ya da düşürüyor, < 80 °C |
+
 ## Geçer / kalır sınırı
 
 | Ölçüt | GEÇER | Kaynak |
@@ -154,6 +169,7 @@ Hat akımları hesap: kol hatları yoğun kullanımda 4,87 A, yani XL4016 için 
 | D3 yoğun profilde hat ortalama akımı | **≤ 5,0 A** | `elektrik.md:187` |
 | D: bilek servosu ucundaki en düşük gerilim | **≥ 5,5 V** | `elektrik.md:76` (servo ucunda varsayılan gerilim) |
 | D'de servo reset/titreme | **0** | Gözlem |
+| E / E2: uzatma ve SV1–SV3 kısa devresinde XL4016 akımı ve kablo sıcaklığı | XL4016 **≤ 10 A'de kesiyor ya da düşürüyor**; kablo **< 80 °C** | `planlama/adim3/kablolar.json` `kesit_kurali.istisnalar` (servo-uzatmasi ve servo-ana-hat-16awg şartları); XL4016 çip sınırı 10 A tipik (XLSEMI veri sayfası Rev 1.2, `koruyucular`) |
 
 Ölçülen yoğun akım hesaptan (A/B 4,87 A, C 1,5 A) farklıysa değer `elektrik.md:89-91` tablosuna işlenir; sınırın altındaysa kalır sayılmaz.
 
@@ -165,6 +181,7 @@ Hat akımları hesap: kol hatları yoğun kullanımda 4,87 A, yani XL4016 için 
 - **C'de çıkış < 5,85 V:** XL4016 yükte gerilim tutamıyor; D yine yapılır, karar D'nin servo ucu sonucuyla verilir. Tasarım ajanına.
 - **D'de servo ucu < 5,5 V ya da servo reset:** uzatma kablosu kesiti (22 AWG, `elektrik.md:194`) ve dağıtım kartı kondansatörü (2200 µF, `elektrik.md:192`)
   tasarım ajanına.
+- **E / E2 kalırsa (XL4016 kesmiyor ya da kablo ısınıyor):** ilgili istisna (`servo-uzatmasi` / `servo-ana-hat-16awg`) düşer; çıkışta hat sigortası ya da kalın kablo, orkestratöre (O-20'de çıkış sigortası kolu düşürme riski yüzünden seçilmemişti).
 - **Hatlar ayrı değil (V+ arası bağlı):** kablolama hatası; enerji verme, kabloyu `elektrik.md` blok şemasına (`elektrik.md:295-297`) göre düzelt.
 
 ## Sonuç

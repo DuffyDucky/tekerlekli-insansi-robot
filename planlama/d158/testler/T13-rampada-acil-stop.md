@@ -61,7 +61,7 @@ Tersine, dişli kutusu aniden kilitlenirse inişte ani duruş robotu öne devire
 - **Bu kâğıtta durdurucu yalnız taban ipidir.** Acil stop motorları keser, robotu durdurmaz; ölçülen şey de budur.
 - **Acil stop bu kâğıtta kumanda komutuyla verilir.** Mantar robotun etek plakasındadır (`arayuz.py:436`, `arayuz.py:466`); robot
   rampadayken ona düşme hattının dışından ulaşılamaz ve elde taşınan uzaktan acil stop yoktur ([00-genel.md](00-genel.md) ortak kural 1).
-  Kumandadaki "devreden çıkar" komutu ESP32'de GPIO12'yi 0 yapar, röle K1 bırakır, anahtarlı bara kesilir: mantara basmakla aynı sonuç
+  Kumandadaki "devreden çıkar" komutu ESP32'de GPIO4'ü 0 yapar (14.11 pin kararı sürüm 4; önceden GPIO12), röle K1 bırakır, anahtarlı bara kesilir: mantara basmakla aynı sonuç
   (`elektrik.md:216-222`). Bu yol, Yöntem'deki **ön şartlar D1–D3** düz zeminde sağlanmadan ve D4 yazılmadan rampada kullanılmaz. Robotun üstündeki mantara
   basmak için kimse düşme hattına girmez (istisna: aşağıdaki "komut çalışmazsa" adım 4).
 - **En az 3 kişi, ayrı görevlerle:** (1) taban ipi, (2) devrilme ipi, (3) kumanda (sürüş ve "devreden çıkar"). **Kumandayı tutan ip tutmaz;
@@ -78,7 +78,7 @@ Tersine, dişli kutusu aniden kilitlenirse inişte ani duruş robotu öne devire
 - **Komut 1 s içinde barayı düşürmezse** (robot 1 s sonra hâlâ aynı hızla gidiyor ya da kayıt barayı açık gösteriyor):
   1. Kumandayı tutan "ip!" diye bağırır, sürüş komutunu sıfırlar ve ölü adam tuşunu bırakır (`yazilim-plani.md:78`). İpleri tutanlar
      ipleri gergin tutar; inişte taban ipi robotu tutar.
-  2. D4'te denenmiş yedek yol varsa uygulanır (ESP32'yi uzaktan resetlemek: reset anında GPIO12 LOW, röle bırakır; `elektrik.md:226`,
+  2. D4'te denenmiş yedek yol varsa uygulanır (ESP32'yi uzaktan resetlemek: reset anında GPIO4 LOW, röle bırakır; `elektrik.md:226`,
      `elektrik.md:229`). D4 aynı telsiz bağlantısına bağlıdır, bağlantı koptuysa o da çalışmayabilir. D4'te denenmemiş bir yol rampada denenmez.
   3. **Kimse düşme hattına ve robotun gidiş doğrultusuna girmez,** robotun önüne geçilmez.
   4. Robot ipte hareketsiz durunca (ipler gergin) ya da düz zemine çıkıp durunca mantara basılır. Bu anda bara açıktır: **kollar da

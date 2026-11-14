@@ -94,8 +94,8 @@ Güç
 - 4 × XL4016 düşürücü: servo hattı A (sağ kol, 6 V), B (sol kol, 6 V), C (kafa pan + tilt, 6 V), çevre 5 V
   (BOM; elektrik.md "Servo hatları").
 - Pololu D24V50F5 (kafada 5 V, Pi için) + SY8205 (kafa ekranı). Göğüs ekranı: LM2577 + LM2596 12 V,
-  mini 2 A sigortalı ayrı dal; dalın giriş noktası karar bekliyor (K11).
-- Acil stop mantar butonu (NC) + 12 V 40 A röle K1 + ön şarj rölesi K2 + IRLZ44N MOSFET'ler.
+  sigorta kutusunun F6 yuvasından (3 A standart bıçak) ayrı dal (K11 a, 14.11).
+- Acil stop mantar butonu (NC) + 12 V 40 A röle K1 + ön şarj rölesi K2 + BC337-40 röle sürücü transistörleri (14.11; IRLZ44N çıktı).
 - PC817 optokuplörler (acil stop ve anahtarlı bara durumunu ESP32'ye okutmak için).
 - Tahmini çalışma süresi (TA aku, yükler tahmini): düşük ≈ 12,2 sa, orta ≈ 5,6 sa, yüksek ≈ 2,4 sa.
   elektrik.md'nin 04.11 kaba tahmini normal kullanımda ~3,8–4,4 sa; ikisi de ölçülmedi.
@@ -172,10 +172,10 @@ ve 9 fiyatsız kablo / fiş adayı işlendi. 1,58 m sipariş listesi P8.1'de. Si
              5 A → XL4016 C (6 V: kafa pan + tilt; karar 29.10)
    F2 15 A → yedek
    F3 5 A  → boyundan kafaya 12 V → Pololu D24V50F5 5 V → Pi 5 (+ kamera, mikrofon, USB cihazları;
-             PAM8403 5 V burada mı karar bekliyor, K10) ; SY8205 5 V → 10,1" QLED
+             PAM8403 5 V da burada: K10 a, masa denemesine bağlı) ; SY8205 5 V → 10,1" QLED
    F4 5 A  → XL4016 çevre 5 V → ESP32, sonarlar, mantık beslemeleri (3,3 V ESP32'den)
-   F5 2 A  → acil stop mantarı (NC) → K1 bobini → MOSFET → GND
-   mini 2 A → LM2577 + LM2596 12 V → 11,6" göğüs ekranı (giriş noktası karar bekliyor, K11)
+   F5 2 A  → acil stop mantarı (NC) → K1 bobini → BC337-40 → GND
+   F6 3 A  → LM2577 + LM2596 12 V → 11,6" göğüs ekranı (kutunun 6. yuvası, K11 a)
   Servolar PCA9685'in V+ ucundan DEĞİL, üç ayrı XL4016 hattından beslenir (Pi'nin servo
   akımı yüzünden resetlenmemesi için ayrı hatlar + ortak yıldız toprak). Ayrıntı: planlama/adim3/elektrik.md.
 

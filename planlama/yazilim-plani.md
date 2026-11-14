@@ -30,8 +30,8 @@ Teslim tarihi 1–2 hafta oynayabilir (Ahmet, 11 Ekim 2026).
  ├─ tahrik     2 × BTS7960 (her biri bir yanın iki JGB37'sini paralel sürer), yan başına bir enkoder (PCNT, arka), yan başına hız PID
  ├─ servo      PCA9685 (I2C, mantık 3V3) → 10 servo: 2 × (omuz S1, S2, dirsek, bilek) + kafa pan, tilt; kanal 10–12 sonar trig
  ├─ sensör     3 × HC-SR04 (echo bölücüyle), BNO055 (I2C), akü gerilimi (GPIO36, 100k/18k), PC817 #1 acil stop / #2 anahtarlı 12 V
- ├─ güç        röle K1 "devreye al" (GPIO12) + ön şarj rölesi K2 (GPIO2): E3 + E9 dizisi
- ├─ gogus      Nextion NX1060P101 10,1" (K2), UART2 (GPIO17/16): menü ve durum çubuğu; Pi komutu ESP32 üzerinden
+ ├─ güç        röle K1 "devreye al" (GPIO4) + ön şarj rölesi K2 (GPIO19): E3 + E9 dizisi (pin-haritasi.md sürüm 4, 14.11; GPIO12 boş)
+ ├─ gogus      11,6" 1080p HDMI + USB dokunmatik, Pi 5'ten sürülür (Nextion 25.10'da kalktı; ESP32'de ekran UART'ı yok, GPIO16/17 enkoder)
  ├─ güvenlik   500 ms Pi'den mesaj gelmezse teker DUR, kol yerinde kalır · eklem sınırı · kafa-kol yasak bölgesi
  └─ teleop     Bluetooth gamepad (Bluepad32): Pi çökse de robot kumandayla sürülür
 ```
@@ -50,13 +50,13 @@ Teslim tarihi 1–2 hafta oynayabilir (Ahmet, 11 Ekim 2026).
 ### Donanımdan gelen kurallar (düzeltme planı 3. ve 5. adım, `planlama/adim3/elektrik.md`)
 
 - **Seri port DTR/RTS kapalı açılır (E3).** DevKit'in otomatik reset devresi, Pi portu açıp kapatırken ESP32'yi resetleyebilir. Reset →
-  GPIO12 LOW → röle bırakır → servo ve motor gücü kesilir, **kollar düşer**. pyserial'de `ser.dtr = False; ser.rts = False` ayarlanıp
+  GPIO4 LOW → röle bırakır → servo ve motor gücü kesilir, **kollar düşer**. pyserial'de `ser.dtr = False; ser.rts = False` ayarlanıp
   sonra `ser.open()`; Linux'ta ayrıca `stty -F /dev/ttyUSB0 -hupcl`. İlk bağlantı testinde ESP32'nin boot mesajı basmadığı görülmeli.
 - **ESP32 reseti = güç kapalı.** Reset sonrası röle kapalı açılır; ESP32 `ev reset` gönderir, Pi ACİL durumuna geçer ve yeniden devreye
   alma ancak operatör komutuyla olur.
 - **"Devreye al" dizisi (E3 + E9).** Önkoşul: mantar serbest (PC817 #1 LOW), PCA9685 çıkışları servoların **son bilinen konumunda**,
-  BTS EN = 0 ve PWM = 0, açık komut (Nextion düğmesi ya da Pi `arm`). Sonra: K2 (GPIO2) = 1 → 300 ms → PC817 #2 LOW teyidi → K1 (GPIO12) = 1
-  → 100 ms → K2 = 0. PC817 #1 HIGH görülünce GPIO12 hemen 0 ve kilit. K2 en çok 1 s açık kalır.
+  BTS EN = 0 ve PWM = 0, açık komut (Pi `arm`; Nextion yok). Sonra: K2 (GPIO19) = 1 → 300 ms → PC817 #2 LOW teyidi → K1 (GPIO4) = 1
+  → 100 ms → K2 = 0. PC817 #1 HIGH görülünce GPIO4 hemen 0 ve kilit. K2 en çok 1 s açık kalır (pin-haritasi.md Y4, Y5).
 - **Yay çizerek dönüş (K1).** Kare teker düzeninde yerinde dönüş motorları zorlar (E0). Sürüş yazılımı her durumda yay çizerek döner
   (`w` sınırı hıza bağlı); yerinde dönüş yalnız JGB37 ölçümü ve omni kararından sonra, sınırlı açısal hızla açılır. İvme düz zeminde ≤ 0,5 m/s²,
   rampada / eğimde ≤ 0,1 m/s² ve kollar ev pozunda (Y1; karar 29 Ekim 2026, akü yerinde: `planlama/kararlar-2026-10-29.md`).

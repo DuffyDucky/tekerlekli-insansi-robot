@@ -7,8 +7,8 @@ rakamların çoğu tahmin, teklif ve bölüm onayıyla kesinleşecek. Tasarımı
 `tasarim/freecad/lale158/kafa-yerlesim/uygulama-ivme.json`, `ev.kutle_g`), akü 3,0 kg (`tasarim/freecad/montaj/robot-bom.csv`, Victron satırı),
 yüksüz rampa devrilme payı 1,519 (eşik 1,5; aynı dosya, `izgara_yuk_0g.a_sinir_pay15.rampa5_geri`), 10 servo (kol başına 4: omuz S1 ve S2 DS3235, dirsek ve
 bilek MG996R; kafada pan + tilt MG996R; `planlama/d158/servo-10-oneri.md`), kafada 10,1" QLED (1280×720), göğüste 11,6" 1080p gömülü ekran (09.11 sayıları).
-Malzeme listesi `planlama/maliyet.json` (tarih 2026-11-09; 29.10 listesi P8.1 sipariş paketiyle 1,58 m'ye kısmen güncellendi, `planlama/d158/F8a-siparis.md`):
-≈ 118.700 TL, %15 pay ve yedek dahil (koşullularla ≈ 124.600; `planlama/adim5/maliyet_toplam.py`); sipariş verilmedi. Önceki ana tasarımlar tarihçedir: 125 cm V3 (Ekim başı) ve 1,65 m (29.10 – 03.11; 1.120 parça, 24,6 kg,
+Malzeme listesi `planlama/maliyet.json` (tarih 2026-11-14; 29.10 listesi P8.1 sipariş paketiyle 1,58 m'ye kısmen güncellendi, `planlama/d158/F8a-siparis.md`; 14.11 kablolama ön kararlarıyla ve kablo tablosunun ikinci turuyla, P10.7a):
+≈ 120.900 TL, %15 pay ve yedek dahil (koşullularla ≈ 126.400; `planlama/adim5/maliyet_toplam.py`); sipariş verilmedi. Önceki ana tasarımlar tarihçedir: 125 cm V3 (Ekim başı) ve 1,65 m (29.10 – 03.11; 1.120 parça, 24,6 kg,
 kol başına 4 servo, iş planı `planlama/dongu.md` Y1–Y6).
 
 **Tek takvim (15 Ekim 2026, D6):** hafta numarası **dönem haftasıdır**, H1 = 28 Eylül – 4 Ekim 2026 (pazartesi başlar).
@@ -89,7 +89,7 @@ Her satır bir kapıya bağlı: önceki kapı geçmeden satırın kritik işi ba
 
 | Göreli hafta | Kritik iş | Bağlı olduğu kapı | Paralel işler | Çıktı / kapı |
 |---|---|---|---|---|
-| S'den önce (H7) | Sipariş listesi (P8.1), DXF ve lazer teklifi, stok teyidi | Hoca onayı | Kupon parçalarının erken alımı (karar) → Parti 0 kuponları → CAD/STL → **Parti 1 başlar ≈ S−0,5** (16.11 için 12.11); ses hattı masada (Y5); ESP32 Y1, Y3, Y4 masada; jestler FreeCAD'de (Y8) | Verilebilir sipariş |
+| S'den önce (H7) | Sipariş listesi (`planlama/maliyet.json`'un bugünkü hâli; P8.1 paketi `planlama/d158/F8a-siparis.md` P10.7a'dan önceki listedir, 14.11 notu), DXF ve lazer teklifi, stok teyidi | Hoca onayı | Kupon parçalarının erken alımı (karar) → Parti 0 kuponları → CAD/STL → **Parti 1 başlar ≈ S−0,5** (16.11 için 12.11); ses hattı masada (Y5); ESP32 Y1, Y3, Y4 masada; jestler FreeCAD'de (Y8) | Verilebilir sipariş |
 | S → S+1 | Teslim (stoklu kalemler) + lazer kesim | S | Yazıcı: Parti 1 sürer (+ akü takozu); elektrik kartları masada | Parçalar elde |
 | S+1 → S+2 | Taban + iskelet (adım 1–16) | Teslim + lazer kesim + akü | Yazıcı: Parti 1 biter ≈ S+1,5 → Parti 2 (servo S+1'de gelip ölçüldü); kartlar | Taban mekanik olarak tamam |
 | S+2 → S+3 | K1 kablolama + devreye alma | Taban + akü | Yazıcı: Parti 2 biter ≈ S+2,3 → Parti 3 (QLED) ≈ S+2,8 → Parti 4 başlar | **Kapı 1: ilk sürüş** (kolsuz, kabuksuz) |

@@ -40,7 +40,7 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K25 | Depodaki `CLAUDE.md` içindeki takma ad | **açık** | b: ad değişimi (3 satır) | P4.5 kabul ölçütü |
 | K26 | GitHub hesap adı (depo adresi ve Pages bağlantıları) | **açık** | a: şimdilik bırak | P4.5 kabul ölçütü (`index.html:49,92`) |
 | K27 | Hocadaki liste: 17.10 Excel mi, 03.11 v4 mü | **açık** (F8a) | b: v4, §2.2 farkı | Fark iletimi, K28, P8.1 onayı |
-| K28 | Bütçe farkı (≈ +29.545 TL) hocaya bildirilsin mi | **açık** (F8a) | a: siparişten önce | P8.1 onayı (S = 16.11) |
+| K28 | Bütçe farkı (≈ +29.545 TL) hocaya bildirilsin mi | **açık** (F8a) | a: siparişten önce | sipariş onayı (S = 16.11; liste `planlama/maliyet.json`, P8.1 paketi 14.11 notuyla bayat) |
 | K29 | Erken alım: bu hafta mı, okul mu kişisel mi | **açık** (F8a) | Bu hafta, insert 168; okul/kişisel için yok | P9.1 kupon, kritik yol 1 |
 | K30 | Akü zamanlaması: Atakale bu hafta / S'de / Limacell | **açık** (F8a) | a: Atakale bu hafta; biterse Limacell S'de | Dal 2b, taban adım 9 |
 | K31 | Isıl gömme insert A/B/C (M3 ve M5) | **açık** (F8a) | M3: A (OD4 L4); M5: yok | K29, kupon C, P4.3 |
@@ -64,15 +64,18 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K49 | Kalıcı izlenmeyenler ve `.gitignore` | **açık** (F9d) | 5 girdi `.gitignore`, 5 dosya commit, kalanı bağlı kararını bekler | P0.1 (git status temiz); K18–K24 ile birlikte |
 | K50 | Şarj girişi konnektörü: sigortadan sonra gerilimli erkek pimler | **açık** (F7d) | b: XT60E-F (dişi) panel; olmazsa a | İlk şarj, rehber F5 notu, `maliyet.json:111` |
 | K51 | Pi hattındaki ikinci P6KE6V8A: maliyette 2, model BOM'unda 1 | **açık** (F7c) | a: modele ve BOM'a 1 adet ekle (0 TL) | Model / BOM güncellemesi, rehber E3a TVS notu, çakışma taraması |
-| K52 | Göğüs ekranı regülatörü (LM2577 + LM2596), mini 2 A ve hat sigortası yuvasının yeri: modelde ve BOM'da yok | **açık** (F7c) | a: K11 kararıyla birlikte güç paneline (B5a) ekle | K11, model / BOM güncellemesi, rehber B5a, `maliyet.json:122-123` notları |
+| K52 | Göğüs ekranı regülatörü (LM2577 + LM2596) panel yeri (sigortası kutunun F6 3 A yuvası, K11 a; önce mini 2 A + hat yuvası): modelde ve BOM'da yok | **açık** (F7c) | a: K11 kararıyla birlikte güç paneline (B5a) ekle | K11, model / BOM güncellemesi, rehber B5a, `maliyet.json:122-123` notları |
 | K53 | Ön şarj kartı burcu × elektronik katı (B6'da kat inerken girişim) | **açık** (F10b) | a + iii: katta 1,5 mm çentik, bir sonraki tam taramalı pakette; o zamana dek rehber B6 notu | Lazer kesim dosyası (elektronik katı), rehber B6 adımı (F10c), çakışma taraması kaynağı |
 | K54 | E3 kafa inişinde sıfır boşluk (yanaklar arası 54,4 mm ↔ yığın 54,4 mm) | **açık** (F10c) | c: ilk baskı kuponunda dene; zorlarsa b (yanak iç yüzlerine 0,2–0,3 mm pay) | Kafa iskeleti baskısı (Parti kuponu), rehber E3 notu, çakışma taraması kaynağı (b seçilirse) |
 | K55 | Kabuk bindirme dilleri: etek ön, göğüs ve omuz bantları, göğüs ekranı çerçevesi düz yoldan yerine girmiyor | **açık** (F10d) | Etek ön için c (iki bacaklı yol ölçülsün); göğüs, omuz, çerçeve için a geçici (kuponda denensin), b bir sonraki geometri paketinde | Rehber F1 / F3 / F4 takma metni, kabuk baskısı (Parti kuponu), kabuk çakışma taraması (b seçilirse) |
 | K56 | Kol çatalı + 625ZZ rulmanının takılma sırası (G2 / G3, adım 39 ↔ 40.1) | kapandı (13.11, Ahmet: seçenek C; uygulama F10g, kontrol GEÇER 14.11) | — | — |
 | K57 | Dirsek çatalı ↔ dirsek horn merkez vidası (H0b / H0c, adım 43 ↔ 44.1) | kapandı (13.11, Ahmet: seçenek a; uygulama F10g, kontrol GEÇER 14.11) | — | — |
 | K58 | ESP32 pin haritası (pano #8) | kapandı (14.11; orkestratör kararı, Ahmet'in 13.11 yetkilendirmesiyle) | — | — |
+| K59 | P10.7a kablo tablosunun bağımsız bakışları (üçüncü bakış geçmedi; ek tur) | kapandı (14.11; orkestratör kararı, Ahmet'in 13.11 yetkilendirmesiyle; dördüncü bakış GEÇER 14.11) | — | — |
+| K60 | Elde taşınan acil stop (Ö4) | **açık** (P10.7a) | Kayıtta yok (A / B / C; Ahmet + Efe) | B seçilirse alıcının yeri ve beslemesi (P10.7b kablajı) |
+| K61 | Bas-konuş düğmesi kullanılacak mı (O-12) | **açık** (P10.7a) | Kayıtta yok; Efe'ye sorulacak | Düğmenin kablosu ve yeri (P10.7b) |
 
-**Açık: 46.** **Kapandı: 12** (K1, K5, K8, K10, K11, K14, K15, K16, K17, K56, K57, K58; K10 masa testine bağlı kabul). Toplam 58 madde.
+**Açık: 48.** **Kapandı: 13** (K1, K5, K8, K10, K11, K14, K15, K16, K17, K56, K57, K58, K59; K10 masa testine bağlı kabul). Toplam 61 madde.
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
@@ -102,6 +105,10 @@ GEÇER). Yeni madde açılmadı; açık işler sondaki bölümde.
 P10.6 (pin kararı, 14.11.2026) → K58, açılıp aynı gün kapandı (`planlama/d158/pin-karari-gunluk.md` §7, §10; üç bağımsız kontrol).
 Pano cevapları (#5 mesaj #23, #6 mesaj #21, #7 mesaj #22) K1 ve K14'e not oldu; öneriler sondaki bölümde "yeni soru" satırı, yeni madde
 açılmadı.
+P10.7a (kablo tablosu, 14.11.2026) → K59 kapalı kayıt (üçüncü bakış geçmedi, ek tur, dördüncü bakış `planlama/d158/P107a-kontrol-4.md`
+GEÇER), K60 (Ö4, `planlama/adim3/kablolama-on-kararlar.md` §8; önce sondaki bölümde "yeni soru"), K61 (O-12,
+`planlama/d158/kablo-tablosu-gunluk.md` §13); satın alma kalemleri K35 ve K4'e not. Orkestratörün bu paketteki kararları (O-1 … O-22)
+K numarası almadı (sondaki bölüm).
 
 ---
 
@@ -221,6 +228,8 @@ açılmadı.
   L USB-A dirsek ve L 3,5 mm kısa kablo onaylı sitelerde bulunamadı. `maliyet.json` (09.11, P8.1 kaydı): dört satır fiyatlı ve
   `secenek: kosullu` (koşullu toplama giriyor), iki satır `fiyat_bekliyor` kaldı. F8a önerisi: bu iki kablo P4.2'de kablo yarıçapıyla
   yeniden değerlendirilsin (`planlama/d158/F8a-siparis.md` §5.3, §6, §9 madde 6).
+- **Not (P10.7a, 14.11.2026):** Pi → hub uzatması USB 2.0 küçük fişli oldu (fiyat bekliyor, koşullu K4'te kaldı); o ve L 3,5 mm kısa kablo
+  onaylı satıcılarda yok; başka satıcı kararı K35 notunda.
 - **Durum:** açık (`KY/uygulama-notu.md:150`, `KY/secenekler.md:341`).
 
 ## K5 · Hub ve ses kartı arka kabuk yan duvarında, servis için kabul mü — KAPANDI
@@ -496,7 +505,7 @@ açılmadı.
   fiyatsız) +491,34 TL; 1 satıcı değişimi (tırtıllı somun M5: Robotistan tükendi → CNC Marketi, 297,20 → 31,68); 1 model değişimi (625ZZ
   "BGR (Karbon)", 29,67 → 30,04); 24 satırda fiyat değişimi (site satırları 68.219,82 → 67.995,98).
 - **Önerilen varsayılan:** b, v4 hocada sayılır ve §2.2 farkı iletilir (`F8a-siparis.md` §9 madde 1). Yalnız öneri.
-- **Bloke:** hocaya fark iletimi, K28, P8.1 siparişinin onayı (S = 16.11).
+- **Bloke:** hocaya fark iletimi, K28, siparişin onayı (S = 16.11; liste `planlama/maliyet.json`'un bugünkü hâli, P8.1 paketi P10.7a'dan önceki listedir).
 - **Durum:** açık.
 
 ## K28 · Bütçe farkı hocaya bildirilsin mi
@@ -509,7 +518,7 @@ açılmadı.
   ekranı QLED +8.300,64 (K32), baskı hizmeti − filament +5.412,95 (K34), K4 + F1b koşullu kalemler +617,83, insert/vida/köşe/kamera/köpük
   bant +179,10, kargo satırı −711,85 (hepsi × 1,15). c'de K32 ve K34 farkı ≈ 13.700 TL oynatabiliyor.
 - **Önerilen varsayılan:** a (`F8a-siparis.md` §9 madde 2). Yalnız öneri.
-- **Bloke:** P8.1 siparişinin onayı (S = 16.11).
+- **Bloke:** siparişin onayı (S = 16.11; liste `planlama/maliyet.json`'un bugünkü hâli, P8.1 paketi P10.7a'dan önceki listedir).
 - **Durum:** açık.
 
 ## K29 · Erken alım: bu hafta mı, okul siparişi mi kişisel mi
@@ -601,6 +610,11 @@ açılmadı.
   Tırtıllı somun M5 Robotistan'da (onaylı) tükendi; F8a önerisi CNC Marketi (M6 somun ve sigmayla aynı sipariş).
 - **Önerilen varsayılan:** kayıtta yok (`F8a-siparis.md` §9 madde 12).
 - **Bloke:** P8.1 sipariş listesinin hocaya giden biçimi; K29 (erken alım satıcıları da onaylı değil).
+- **Not (P10.7a, 14.11.2026; `planlama/d158/kablo-tablosu-gunluk.md` §11, §13, §14):** onaylı satıcılarda bulunamayan, fiyatı bekleyen
+  dört kalem (`maliyet.json` V3 fiyatsız 4): USB 2.0 uzatma (küçük fişli, Pi → hub; K4), L 3,5 mm fişli kısa kablo (K4), 22 AWG sinyal
+  teli (3 rulo), bara saplaması M5 (10 takım). Stokta görünmeyen: servo uzatma kablosu (23 adet, sayfada "Tükendi"), göğüs ekranı HDMI
+  kablosu (14.11 tükendi). İstek (isteğe bağlı): sıkma pensesi (onaylı satıcılarda yok; fiyatsız) + Dupont uç kiti (Motorobit 444,96 TL,
+  listeden çıktı). Onaylı satıcı dışından alım Ahmet'in kararı (O-11).
 - **Durum:** açık.
 
 ## K36 · 8 Ω hoparlör (PAKET A): stok yetmiyor
@@ -929,7 +943,7 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 
 ---
 
-## K52 · Göğüs ekranı regülatörü, mini 2 A ve hat sigortası yuvasının yeri: modelde ve BOM'da yok (KT-F7c-3)
+## K52 · Göğüs ekranı regülatörünün panel yeri (sigortası kutunun F6 3 A yuvası, K11 a; önce mini 2 A + hat yuvası): modelde ve BOM'da yok (KT-F7c-3)
 - **Soru:** Göğüs ekranı dalı `planlama/adim3/elektrik.md:60-62`: "Taban güç paneli ── mini bıçak 2 A (hat sigortası yuvası) ── LM2577 + LM2596
   kartı (giriş 4–35 V, 12 V'a ayarlı) ── 18 AWG ── 11,6" ekran 12 V jakı"; giriş noktası K11'e bağlı. Bu üç parça (regülatör kartı, mini 2 A sigorta,
   hat sigortası yuvası) modelde ve model BOM'unda yok. Nereye ve ne zaman eklensin?
@@ -1138,7 +1152,45 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   teslim kontrolü (T2a); PCA9685 kanal düzeni sorusu ve Efe'nin itirazı (pano #8 mesajı, Ahmet gönderecek). İşler sondaki bölümde.
 - **Not (14.11.2026):** sürüm 4: röle sürücüsü BC337, bkz. kablolama ön kararları (`planlama/adim3/kablolama-on-kararlar.md` §9).
   Düzeltme: taban → GND 2,2 kΩ (kapalı hâl ölçütü röle bırakma gerilimi; `planlama/d158/kablolama-onkarar-kontrol-2.md` D1).
-- **Durum:** kapandı (14.11.2026). Bloke ettiği P10.7'de pin kararı engeli kalktı; P10.7 K10 / K11 / K14 ve parça işlerini bekliyor.
+- **Durum:** kapandı (14.11.2026). Bloke ettiği P10.7'de pin kararı engeli kalktı; P10.7a (kablo tablosu + sipariş listesi) 14.11'de
+  tamamlandı (K59); kalan iş P10.7b.
+
+---
+
+## K59 · P10.7a kablo tablosunun bağımsız bakışları — KAPANDI
+- **Durum (14.11.2026):** P10.7a üçüncü bağımsız bakıştan (`planlama/d158/P107a-kontrol-3.md`) geçmedi: D-A WAGO 2273 ince telli iletken
+  almıyor (kafa 12 V girişi, acil stop düğümü); D-B, D-C denetim açıkları (komşu sigortanın değeri ve sınanmayan metin alanları; blok
+  şemayla karşılaştırılmayan röle arkası).
+- **Karar (14.11.2026, orkestratör):** döngü kuralı paketi kuyruğa gönderiyordu; orkestratör 14.11'de, Ahmet'in 13.11.2026
+  yetkilendirmesine dayanarak tek bir ek tur + dar kapsamlı dördüncü bakış kararı verdi. Gerekçe: D-A 16.11 siparişini etkiliyordu,
+  bulgular sınırlıydı, tablo değerleri üç kez doğrulanmıştı, sıradaki bağımsız paket yoktu. Ek tur `planlama/d158/kablo-tablosu-gunluk.md` §17.
+- **Sonuç:** dördüncü bakış (`planlama/d158/P107a-kontrol-4.md`) **GEÇER**; K59 kapandı. Kural sapması proje sahibine bildirildi.
+- **Açık kalan (karar değil):** dördüncü bakışın kayıtlı açık işleri sondaki bölümde (P10.7a).
+
+## K60 · Elde taşınan acil stop (Ö4)
+- **Soru:** Mantar acil stopa ek olarak elde taşınan, kumandalı bir acil stop olsun mu? (pano #7 mesaj #22 madde 4; Efe'nin tarafının
+  önerisi.)
+- **Seçenekler (`planlama/adim3/kablolama-on-kararlar.md` §8):** A) yok, demoda mantarın yanında bir kişi; B) kumandalı, arıza-güvenli
+  röle, kontağı K1 / K2 bobin hattında mantar NC ile seri (+2 tel taban içi, alıcının ≤ 2 A sigortalı beslemesi, alıcı ve anten için yer;
+  yazılım değişmez); C) yalnız yazılım (telefon DUR düğmesi; gücü kesmez, acil stop sayılmaz).
+- **Sayısal etki:** B için ürün seçilmedi, fiyat yok; arıza-güvenli olduğu üreticiden doğrulanmalı. Kablajda yer bugün ayrılı: mantar ile
+  acil stop düğüm kartı arasında köprülü 2 pin 5,08 mm klemens (`planlama/adim3/kablolar.json` A02 sonlandırması; `maliyet.json` 5,08
+  klemens sayımında "Ö4 1"); köprü takılıyken devre bugünküyle aynı.
+- **Önerilen varsayılan:** kayıtta yok (orkestratör karar vermedi: O-6, O-14). Karar Ahmet + Efe.
+- **Bloke:** B seçilirse alıcının yeri ve beslemesi (P10.7b kablajı); A ve C'de kablaj değişmez.
+- **Durum:** açık (14.11.2026, P10.7a C adımında kuyruğa alındı).
+
+## K61 · Bas-konuş düğmesi kullanılacak mı (O-12)
+- **Soru:** `maliyet.json`'daki "Bas-konuş düğmesi" (43 mm arcade, Robotistan 76,24 TL) robotta kullanılacak mı; kullanılacaksa yeri
+  ve kablosu?
+- **Bilinen (`planlama/d158/kablo-tablosu-gunluk.md` §13):** CAD'de ve belgelerde düğmenin yeri yok. `main` kodunda tetik varsayılanı
+  düğmesiz (`ayarlar.yaml` `tetik.saglayici: ses`); düğmeli tetik Pi GPIO17 ile GND arasına bağlanır, ESP32 pini gerekmez. Efe düğmesiz
+  tetiği seçmişti.
+- **Seçenekler:** a) kullanılmaz, kalem siparişten çıkar; b) kullanılır, kablosu tabloya ve yeri CAD'e girer.
+- **Sayısal etki:** kalem 76,24 TL (pay hariç). Tabloya kablo eklenmedi, sipariş kalemi değişmedi (O-12, `planlama/adim3/kablolar.md`).
+- **Önerilen varsayılan:** kayıtta yok; Efe'ye panodan sorulacak (orkestratör). Karar Ahmet + Efe.
+- **Bloke:** düğmenin kablosu ve yeri (P10.7b).
+- **Durum:** açık (14.11.2026, P10.7a C adımında kuyruğa alındı).
 
 ---
 
@@ -1232,12 +1284,12 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   - Tutarsız kalan belgeler (`pin-karari-gunluk.md` §5): `planlama/yazilim-plani.md:33, 34, 53, 58-59` (GPIO12 / GPIO2, Nextion UART2);
     `planlama/d158/testler/T13-rampada-acil-stop.md:64, 81` ve `T4-pam8403-ses-karti.md:72` (GPIO12 → GPIO4; `testler.html` üretimi);
     `maliyet.json:106, 109` notları; `planlama/adim5/B-malzeme-plan.md:44` (tarihçe notu); rehber `tasarim/freecad/rehber/rehber_metin.py:637`
-    ("K2 = GPIO2 LED" uyarısı geçersiz) → P10.7. `pinler.h` (`main`) Efe'nin işi.
+    ("K2 = GPIO2 LED" uyarısı geçersiz) → P10.7. `pinler.h` (`main`) Efe'nin işi. → 14.11 P10.7a A adımı: yazılım planı, T13, T4, maliyet notları, B-malzeme-plan düzeltildi; `rehber_metin.py:637` P10.7b'ye kaldı. Yapıldı (P10.7a ✅ 14.11, K59).
 - Pano cevaplarından yeni sorular (14.11.2026; Efe'nin tarafı yazdı, karar açılmadı, kuyruğa alınmadı):
   - Ses ReSpeaker'ın kendi 3,5 mm çıkışından PAM8403'e gitsin, ayrı USB ses kartı kalksın (yankı giderme referans alır, bir USB portu
     boşalır; pano #7 mesaj #22 madde 1). Elektrik planında gürültü / toprak döngüsü / seviye itirazı var mı? Etkisi: K10, K16, K1 (cihaz 4).
   - Elde taşınan uzaktan acil stop: K1 bobin hattına seri, arıza-güvenli kumandalı röle (pano #7 mesaj #22 madde 4; para harcatır, karar
-    Efe + Ahmet). O gelene kadar demoda mantarın yanında bir kişi.
+    Efe + Ahmet). O gelene kadar demoda mantarın yanında bir kişi. → 14.11 kuyrukta K60.
   - Pi → ESP32 reset hattı: Pi GPIO'su → transistör → ESP32 EN; pin numarasını biz seçelim, `pinler.json`'a girsin (pano #7 mesaj #22
     madde 5). Pin kararına girmedi; boyundan yeni tel gerekebilir (K14 demeti).
   - Hub harici beslemeli olsun (iki dokunmatik + ESP32 + ses; pano #6 mesaj #21 madde e).
@@ -1257,10 +1309,36 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   - Boyun tünelinin kısa **deneme parçası** (kanal kesiti 20 × 7,8 mm, ≈ 34 mm, iki dik dönüş, mil penceresi 20 × 10): P10.7 / baskı listesine;
     fiş denemesi kablolar gelince, demet kurulmadan önce. CAD'e dokunulmadı.
   - Sipariş değişiklikleri `planlama/maliyet.json`'a (P10.7, sahibi): rapor §17 tablosu (BC337-40 ×3; standart 2 A, 3 A, 5 A sigorta, mini 2 A
-    çıkar; hat yuvası 5 → 4; hub uzatması USB 2.0 küçük fişli; HDMI Ø ≤ 6; ses kartı uzatması ve L dirsek çıkar, ses kartı yedek; dirençler setten).
+    çıkar; hat yuvası 5 → 4 (sonra O-18 b ile 5, O-19 a ile 6); hub uzatması USB 2.0 küçük fişli; HDMI Ø ≤ 6; ses kartı uzatması ve L dirsek çıkar, ses kartı yedek; dirençler setten). → 14.11 P10.7a A adımında `maliyet.json`'a işlendi (`planlama/d158/kablo-tablosu-gunluk.md`). Yapıldı (P10.7a ✅ 14.11; dört bağımsız bakış, sonuncusu GEÇER; K59).
   - Tutarsız kalan belgeler (rapor §16 "P10.7'ye kalan"): `planlama/d158/testler/T4-pam8403-ses-karti.md`, `KY/uygulama-notu.md:98, :102-134`,
     `tasarim/freecad/arayuz.py` `SES_USB`, `kablo_yolu_ekran.py` `KABLO`, rehber şemaları 7 ve 8, `planlama/yazilim-plani.md`; `elektrik.md:29,
     :278, :511` "tepe hesaplanmadı" ifadeleri.
-  - 62 kablonun dökümü depoda yok: P10.7'de yeniden kurulur (rapor §11; bu kararlarla 61).
+  - 62 kablonun dökümü depoda yok: P10.7'de yeniden kurulur (rapor §11; bu kararlarla 61). → 14.11 P10.7a A adımı: `planlama/adim3/kablolar.json` 74 kayıt, 62 ile eşleme `kablolar.md`; karar gerekenler günlükte (O-1…O-14); ikinci ve üçüncü turda orkestratör kararları işlendi, karara bağlı 1 kablo (G20, K52). Yapıldı (P10.7a ✅ 14.11): üçüncü bağımsız bakış geçmedi, orkestratör tek ek tur + dar kapsamlı dördüncü bakış kararı verdi, dördüncü bakış GEÇER (K59, kapandı).
   - Efe'nin iki cevabı (bilinçli reset DTR / RTS ile; ReSpeaker 16 kHz / firmware): boyun demeti kapanmadan önce.
   - Kontrol-3'ün bakamadıkları: Direnc.net BC337-40TA'nın üreticisi (adından onsemi çıkarımı); MAH-112-C-4'ün kendi veri sayfası.
+- P10.7a'dan (kablo tablosu + sipariş listesi, 14.11.2026) kayıt ve açık iş (`planlama/d158/kablo-tablosu-gunluk.md`;
+  `planlama/d158/P107a-kontrol-4.md` §2):
+  - **Kayıt (K numarası almadı):** orkestratörün bu paketteki kararları O-1 … O-22 (ve düzeltme turu kararları D1-1 … D1-10, ek tur);
+    metinleri `kablo-tablosu-gunluk.md` §12–§16 (ek tur §17), tabloda `planlama/adim3/kablolar.json` `kararlar`.
+  - **C adımında düzeltildi (dördüncü bakışın açık işlerinden):** ön şarj yazılım notu `planlama/adim3/elektrik.md:448` ve E9 dizisi
+    `:456` (en az 300 ms, boş akü için 500 ms önerilir, sonra GPIO5 LOW teyidi; K2 toplam en çok 1 s) ve günlük §17.7 Efe maddesi 4;
+    `planlama/maliyet.json:206` kırmızı pabuç notu ("tel ucu katlanır" kalktı); P10.7b listesine rehber satırları; K59.
+  - **Efe'ye ve yazılım tarafına:** `planlama/adim3/pin-haritasi.md`'deki 300 ms için değişiklik önerisi 500 ms (panodan gidecek; dosya
+    değişmedi).
+  - **P10.7b'nin başında yapılacak (düzeltilmedi):**
+    - (§2-2) `sayi_metin` kalan alt sınıfları: `planlama/adim3/kablolar_denetim.py:1957-1960` (izinli küme bütün besleme zinciri) ve
+      `:1973-1976` (alanlar). Öneri: `ad` ve damar `ara`'da izinli küme yalnız `koruma` + `ara_koruyucu`; `not` / `kesit_not`'ta kesit
+      sınırı yalnız "AWG" ya da "sınır" yanında; sayısız "F<n>" uç düğümüyle karşılaştırılsın.
+    - (§2-3) `planlama/adim3/elektrik.md:339` blok şemasındaki "röle K1 bobini ∥ K2 bobini ── BC337-40" satırı tek sürücü gibi okunuyor
+      (devre `:443-444` ve `pin-haritasi.md:95`'te her bobinin kendi BC337-40'ı var): satıra "(her bobin kendi BC337-40'ıyla, E9)"
+      eklensin, ayrıştırıcı sınansın.
+    - (§2-5) Belgesiz uç türüne "kesin" yazılmış uçlar: sigorta kutusu G18 a, A01 a; modül vidalı klemensi SV1–SV3 a, G19 a, G18 b, A01 b,
+      A02 a, K02 b, G22 b (`kablolar.json` uç alanları). Öneri: `klemens:` teyit maddesi ya da `modul-vidali` de
+      `kablolar_denetim.py:132` `ALT_SINIRI_BELGESIZ`'e.
+    - (§2-7) `malzeme_turleri.*.iletken` denetimde `kablolar_denetim.py:135` `MALZEME_ILETKEN` sabitiyle karşılaştırılmıyor. Kafa giriş
+      kartında F3 5 A taşıyan + / − köprüsü "lehimle" yazılı (`kablolar.json:2728, :6674, :6763`): rehberde ≥ 18 AWG tel olarak yazılsın.
+  - **Proje sahibinin kararını bekleyen:** K60 (elde acil stop), K61 (bas-konuş), K35 ve K4 notları (onaylı satıcı dışı ve stokta
+    görünmeyen kalemler, sıkma pensesi + uç kiti).
+  - **P10.7b (kalan iş):** rehberde 3B kablo yolları, demet alt adımları, boyların ölçümü, düğüm tutucusu ve boyun tüneli deneme parçası;
+    rehber kaynağındaki eski metinler: `tasarim/freecad/rehber/rehber_metin.py` :626, :711, :1291 ("şarj 10 A"), :634, :587, :611, :808,
+    :842, :843, :1524 ("göğüs mini 2 A"), :637 ("K2 = GPIO2 LED"), :251, `rehber_denetim.py:151, :157`. Ayrıntı günlük §18.6.

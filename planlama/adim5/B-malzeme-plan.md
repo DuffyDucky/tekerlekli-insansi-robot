@@ -40,9 +40,9 @@ Boşta 19,0 W → 10,9 sa · normal 36,3 W → 5,7 sa · **yoğun 104,4 W → 2,
 Planın "≈ 2,5 sa"i 307 Wh içindi (24 Ah ile 2,4 sa). 8 saat fuar 400 Wh (31 Ah) ister: öğle şarjı ya da 2. akü.
 
 ### E9
-İkinci 5 A (F4) + 2 A (F5) standart bıçak, şarj girişi 10 A mini + 3. kapaklı yuva. Ön şarj: **K2 rölesi (12 V 7 A) + 5,6 Ω 11 W taş direnç,
+İkinci 5 A (F4) + 2 A (F5) standart bıçak, şarj girişi 7,5 A mini (14.11 düzeltme turu 1; önce 10 A) + kapaklı yuva (bugün toplam 6 hat yuvası). Ön şarj: **K2 rölesi (12 V 7 A) + 5,6 Ω 11 W taş direnç,
 K1'e paralel kol, F1 sonrası**; bobin mantar NC sonrasından, ikinci IRLZ44N, GPIO2; 300 ms ön şarj, tepe 2,6 A, τ 11 ms (bara ≈ 2 mF tahmini,
-ölçülecek), hata durumunda ≤ 1 s. Kalıcı paralel direnç (acil stopu deler) ve NTC (ısı, hızlı yeniden devreye almada etkisiz) reddedildi.
+ölçülecek), hata durumunda ≤ 1 s. Kalıcı paralel direnç (acil stopu deler) ve NTC (ısı, hızlı yeniden devreye almada etkisiz) reddedildi. *(Tarihçe notu, 14.11.2026: sürücü ve pin değişti, "ikinci IRLZ44N, GPIO2" yerine BC337-40 #2, GPIO19; `planlama/adim3/pin-haritasi.md` sürüm 4. Göğüs ekranı dalı F6 3 A, sigortalar standart bıçak; `planlama/adim3/kablolama-on-kararlar.md` §3, §17.)*
 
 ### B3: ucuz eşdeğerler (yalnız öneri)
 
@@ -61,7 +61,7 @@ K1'e paralel kol, F1 sonrası**; bobin mantar NC sonrasından, ikinci IRLZ44N, G
 1. `taban-bom.csv` akü "LiFePO4 12,8 V 24 Ah" → Victron 12,8/20 (K3); `arayuz` akü kütlesi 2,8 → 3,0 kg.
 2. `taban-analiz.json` `aku`: 307 Wh, × 0,80, röle 0,3 W (E8 tablosuyla değiştirilmeli; OZET süreleri de).
 3. `taban-bom.csv` acil stop Emas **B200E60 (60 mm)** + kontak bloğu; maliyette B200E-E 40 mm (satır korunup not düşüldü).
-4. Ön şarj K2 + 5,6 Ω direnç ve ikinci IRLZ44N taban CAD'inde/BOM'da yok (güç paneli, 6. adımda eklenmeli).
+4. Ön şarj K2 + 5,6 Ω direnç ve ikinci röle sürücüsü (14.11'den beri BC337-40; IRLZ44N çıktı) taban CAD'inde/BOM'da yok (güç paneli, 6. adımda eklenmeli).
 5. `taban-bom.csv` "(BOM'da yok)" notları (röle + soket, pertinaks) artık maliyette: metin eskidi.
 6. FCStd `Malzeme`: omuz 4 parça (M4 açık 2) ve dirsek çatalı (M7 kupon README "şu an PETG") PETG yazıyor, PETG-CF olmalı.
 7. `omuz_parcalar.RHO` %60 doluluk (M4 açık 1): omuz kütlesi kol başına 43–58 g eksik.

@@ -25,7 +25,7 @@ değişmedi, 522), **KK** = `planlama/d158/karar-kuyrugu.md`, **PH** = `planlama
 | PH | Röle sürücüsü | **BC337-40 + 270 Ω + 2,2 kΩ taban → GND + 1N4007** (PH sürüm 4 + 14.11 düzeltme; pinler değişmedi) | Sürüm 3'ün MOSFET şartı kalktı | – |
 
 Kablo sayısı: **62 → 61** (ses kartı uzatması çıkar; göğüs 12 V'ta ara kablo yok), boyun demeti **değişmez** (5 kablo, 69,9 mm², en dar
-kesit %44,8). Ayrıntı §11. Maliyet: genel toplamda **−83,80 TL + üç standart sigortanın fiyatı** (fiyat bekliyor), koşullu toplamda
+kesit %44,8). Ayrıntı §11. Maliyet: genel toplamda **−83,80 TL + üç standart sigortanın fiyatı** (P10.7a: 3 × 4,33 TL, Motorobit; `planlama/maliyet.json`'da), koşullu toplamda
 **−77,46 TL + USB 2.0 uzatma farkı**. Ayrıntı §10. 16.11 siparişinden önce değişen kalemler tek tabloda: §17.
 
 ## 1. K1 · Altıncı USB cihazı
@@ -107,11 +107,11 @@ kesit %44,8). Ayrıntı §11. Maliyet: genel toplamda **−83,80 TL + üç stand
   - **3 A standart bulunamazsa 5 A standart kabul:** en kötü 1,5 A = %30; 18 AWG 5 A ile de korunur (otomotiv kablajında 18 AWG'ye 7,5–10 A
     sigorta yaygın; genel bilgi). Bedeli: ekran dalındaki bir arıza daha geç keser; kablo yine korunur.
 - **Sigorta türü (düzeltme turu 2):** kutu **standart (ATO)** bıçak alır (satıcı sayfasındaki set standart; EL:374). Listedeki ek sigortaların
-  hepsi "Mini Alçak Profil" (MJ:123–126): mini olanlar hat yuvaları için doğru (7,5 × 2, 5 kafa servoları, 10 şarj; MJ:124–126), **kutu için
+  hepsi "Mini Alçak Profil" (MJ:123–126): mini olanlar hat yuvaları için doğru (7,5 × 2, 5 kafa servoları, 10 şarj; MJ:124–126; şarj P10.7a düzeltme turu 1'de 7,5 A), **kutu için
   yanlış tür**. Kutuya gereken ve sette olmayanlar: **F5 2 A standart** (MJ:123'ün "2 A mini"si yerine), **ikinci 5 A standart** (F4),
   **F6 3 A standart**. Montajda F5 yuvasına yanlışlıkla setteki 5 / 10 A'in takılma riski bu yüzden gerçek; malzeme listesi C'de düzelir.
 - **Maliyet:** hat sigortası yuvası 5 → 4 (−36,72 TL, MJ:122; beşincisi göğüs içindi, EL:41). Standart 3 A (ya da 5 A), 2 A ve ikinci 5 A
-  standart bıçak: onaylı satıcılarda fiyat okunamadı (Direnc.net "ürün bulunamadı"; Motorobit arama sayfası okunamadı) → **fiyat bekliyor**.
+  standart bıçak: bu yazımda fiyat okunamamıştı; P10.7a'da (14.11) Motorobit standart 2 / 3 / 5 A 4,33 TL bulundu, `planlama/maliyet.json`'a işlendi.
   MJ:123 (2 A mini, 7,34 TL) çıkar.
 - **K8 notu (Ahmet'e bilgi):** 29.10 H1 kararı (EL:378-380): kutu 1 × 6 dizilişliyse uçtaki iki yuva kapak altında kalır ve yedek için ayrılır
   (F2 ve boş yuva). F6 bu boş yuvayı alır: göğüs ekranı sigortası kapak altında kalabilir. Seyrek atacak bir sigorta için kabul edilebilir
@@ -316,18 +316,18 @@ K2'de en kötü köşe ≈ 1,0–1,2 V'tu (sınırda). Taban → GND **2,2 kΩ**
 |---|---|---|---|
 | K10 a (b'ye geçilirse küçük sigorta / PTC, fiyat o gün) | 0 | – | – |
 | K11: hat sigortası yuvası 5 → 4 | **−36,72** | genel | MJ:122 |
-| K11: standart 3 A bıçak sigorta +1 (F6; bulunamazsa 5 A standart) | fiyat bekliyor | – | satıcı bulunamadı |
-| Sigorta türü (paketten eski): MJ:123 2 A mini → 2 A standart, +5 A standart | −7,34 + iki standart sigortanın fiyatı | genel | MJ:123 |
-| K14 a: MJ:137 USB 3.0 uzatma → USB 2.0, fiş ≤ 13 × 7 mm; MJ:191 HDMI şartı | değişecek kalem, fiyat bekliyor | koşullu / genel | MJ:137, MJ:191 |
+| K11: standart 3 A bıçak sigorta +1 (F6; bulunamazsa 5 A standart) | +4,33 (P10.7a: Motorobit 3 A standart) | genel | MJ '3 Amper Oto Sigorta' |
+| Sigorta türü (paketten eski): MJ:123 2 A mini → 2 A standart, +5 A standart | −7,34 + iki standart sigortanın fiyatı (P10.7a: 2 × 4,33) | genel | MJ:123 |
+| K14 a: MJ:137 USB 3.0 uzatma → USB 2.0, fiş ≤ 13 × 7 mm; MJ:191 HDMI şartı | değişecek kalem; USB 2.0 uzatma P10.7a'da da fiyat bekliyor (şarta uyan bulunamadı); HDMI satırı şartıyla kaldı, teslimde ölçülür (O-11 b) | koşullu / genel | MJ:137, MJ:191 |
 | Ses: USB-A uzatma 30 cm (Pi → ses kartı) çıkar | **−77,46** | koşullu (K4) | MJ:136 |
 | Ses: L USB-A dirsek çıkar | 0 (fiyatsızdı) | – | MJ:138 |
 | Ses: USB ses kartı | 0 (yedek olarak kalır) | genel | MJ:78 |
-| Ses: 3,5 mm kablo (yeni boy) ve bölücü dirençleri | fiyat bekliyor / setten | – | MJ:141, MJ:115 |
+| Ses: 3,5 mm kablo (yeni boy) ve bölücü dirençleri | 3,5 mm kablo fiyat bekliyor (P10.7a: kısa erkek-erkek bulunamadı); dirençler setten | – | MJ:141, MJ:115 |
 | Hub: harici besleme yok | 0 | – | – |
 | Reset hattı: yeni tel yok (Efe "gerekir" derse bükümlü çift + transistör, o gün) | 0 | – | – |
 | Acil stop: köprülü klemens (yalnız ayrılırsa) | ≤ 5,50 | koşullu | MJ:117 |
 | Röle sürücüsü: IRLZ44N ×2 yerine BC337-40 ×3 | **−39,74** | genel | §9 |
-| **Toplam** | **genel −83,80 + üç standart sigorta fiyatı (+ MJ:191 değişirse); koşullu −77,46 + USB 2.0 uzatma farkı** | | |
+| **Toplam** | **genel −83,80 + üç standart sigorta fiyatı (P10.7a: 12,99) (+ MJ:191 değişirse); koşullu −77,46 + USB 2.0 uzatma farkı** | | |
 
 ## 11. Kablo tablosunun girdi özeti (P10.7 için)
 
@@ -339,7 +339,7 @@ bulamadı. Liste P10.7'de yeniden kurulacak. Aşağıdaki fark listeden bağıms
 | Ses kartı uzatması (Pi USB 2 → L dirsek → USB ses kartı; 217 / 270 mm) | var | **çıktı** | **−1** |
 | Ses 3,5 mm | USB ses kartı L 3,5 mm → PAM girişi, 36 / 40 mm | **ReSpeaker 3,5 mm jakı → 10 kΩ / 2,2 kΩ bölücü → PAM girişi**, yol ölçülmedi (CAD'den) | 0 (uç değişti) |
 | PAM 5 V | D24V50F5 → PAM, "varsayım" | D24V50F5 → PAM, **K10 a (denemeye bağlı)**, 64 / 80 mm; b'de kaynak ucu SY8205 çıkışı | 0 |
-| Göğüs ekranı 12 V | "taban güç paneli" → mini 2 A (hat yuvası) → regülatör → ekran | **sigorta kutusu F6 3 A çıkışı** → LM2577 + LM2596 → ekran; GND WAGO yıldızına; 1.376 / 1.720 mm (regülatör → ekran); kutu → regülatör boyu CAD'den | 0 (ara kablo ve hat yuvası yok) |
+| Göğüs ekranı 12 V | "taban güç paneli" → mini 2 A (hat yuvası) → regülatör → ekran | **sigorta kutusu F6 3 A çıkışı** → LM2577 + LM2596 → ekran; GND yıldız noktasına (M5 saplama, O-3 r); 1.376 / 1.720 mm (regülatör → ekran); kutu → regülatör boyu CAD'den | 0 (ara kablo ve hat yuvası yok) |
 | Boyun demeti | 5 kablo, 69,9 mm² | **aynı**; Efe "tel gerekir" derse + bükümlü çift | 0 (+1 koşullu) |
 | Pi → ESP32 reset teli | öneri | **eklenmedi** (Efe'nin cevabına bağlı) | 0 |
 | Hub harici besleme | öneri | **eklenmedi** | 0 |
@@ -350,16 +350,16 @@ bulamadı. Liste P10.7'de yeniden kurulacak. Aşağıdaki fark listeden bağıms
 
 ## 12. Acil stopa basıldığında enerjili kalanlar (bu kararlardan sonraki son liste)
 
-Ana anahtar açık, mantar basılı (ya da F5 attı, ya da ESP32 resetlendi):
+Ana anahtar devrede (ON), mantar basılı (ya da F5 attı, ya da ESP32 resetlendi):
 
 - **Enerjili:** akü → ana 30 A → ana anahtar → sigorta kutusu baraları; **F3 kafa dalı:** Pi 5, D24V50F5, SY8205, kafa ekranı (QLED),
   kamera, ReSpeaker, **PAM8403 ve hoparlör** (K10), kafa dokunmatiği, USB hub (gövde), göğüs dokunmatiği, ESP32'nin USB VBUS'u;
   **F6 göğüs ekranı dalı** (LM2577 + LM2596, 11,6" ekran; K11 a); **F4 çevre 5 V:** ESP32 (VIN), sonar ×3, enkoderler, PCA9685 ve BNO055
-  mantığı, PC817 modülü; F5'ten mantar NC'ye kadarki hat; akü ölçüm bölücüsü; şarj girişi (ana anahtar öncesi). F2 15 A yedek (yük yok).
+  mantığı, PC817 modülü; F1 çıkışından K1 / K2 kontak girişine kadarki hat; F5'ten mantar NC'ye kadarki hat; akü ölçüm bölücüsü; şarj girişi (ana anahtar öncesi). F2 15 A yedek (yük yok).
 - **Enerjisiz:** röle K1 / K2 kontağından sonraki anahtarlı bara: BTS7960 ×2 ve dört JGB37, XL4016 A / B / C ve on servo (kollar düşer,
-  kafa pan / tilt gevşer); K1 ve K2 bobinleri.
-- **Bilinen, bu paketten eski:** XL4016 çıkışlarındaki servo kondansatörleri (8,8 mF) acil stop anında ≈ ½ · 8,8 mF · 6² ≈ **0,16 J** tutar
-  (EL E9 enerji satırı): kısa bir son servo hareketi olabilir. Bu paket değiştirmedi; açık iş olarak EL açık iş 12'ye yazıldı.
+  kafa pan / tilt gevşer); mantar NC çıkışından sonraki hat: K1 ve K2 bobinleri, PC817 #1 girişi.
+- **Bilinen, bu paketten eski:** XL4016 çıkışlarındaki servo kondansatörleri (5 × 2200 µF = 11 mF, 14.11'den beri dağıtım kartı C ile) acil stop anında ≈ ½ · 11 mF · 6² ≈ **0,20 J**
+  tutar (EL E9 enerji satırı, düzeltme turu 1'de beş kondansatörle yeniden): kısa bir son servo hareketi olabilir; açık iş EL açık iş 12.
 - Bu paketin kararları listeye yalnız **göğüs ekranını** (K11 a) açıkça ekledi; PAM8403 zaten F3'teydi. Hareket üreten hiçbir yük enerjili değil.
 
 ## 13. Kablajda teyit edilecek (kararlar bunlara bağlı)
@@ -373,6 +373,7 @@ Ana anahtar açık, mantar basılı (ya da F5 attı, ya da ESP32 resetlendi):
 | KT5 | Hub (Ö2): girişte yükteki gerilim; dokunmatik ve ESP32 kopmuyor; F4 çıkarılmışken ESP32 hub'dan çalışıyor, Pi USB uyarısı yok | Harici besleme yeniden ele alınır |
 | KT6 | Reset (Ö3): bilinçli reset dizisi ESP32'yi resetliyor; normal port açılışı, **Pi servis yeniden başlatma ve Pi'nin yeniden açılışı ESP32'yi resetlemiyor** | Ayrı hat / donanım iz kesme yeniden ele alınır |
 | KT7 | PH §7 T1–T8 + T2a (kart gelince; T2a BC337-40 ayak sırası diyot testiyle; T2: kontak hiç kapanmıyor, **bobin gerilimi ≤ 0,12 V** (bırakma sınırı 1,2 V'un %10'u; oda sıcaklığında, sıcak köşe yalnız hesapla), çekişte VCE ≤ 0,3 V) | VCE > 0,3 V: seri 220 Ω, T2 yinelenir; PH |
+| KT8 | Şarj cihazı (O-13): **ilk şarjda** kesme gerilimi multimetreyle akü uçlarında ölçülür (şarj hedefi 14,4 V = 4 × 3,6 V; 14,6 V yalnız en kötü durum hesap değeri, `elektrik.md:93`) | **14,4 V'u aşarsa** cihaz bu aküde kullanılmaz; LiFePO4 4S profili 14,4 V'a ayarlanabilen cihaz Ahmet'e |
 
 ## 14. Ahmet'e kalanlar
 
@@ -383,7 +384,7 @@ Ana anahtar açık, mantar basılı (ya da F5 attı, ya da ESP32 resetlendi):
 - **Risk (K14):** boyun demeti yazıldığı gibi kurulamayabilir; demet kurulmadan önce tünel deneme parçasıyla elle fiş denemesi belirleyecek (§4,
   "Ahmet'in bilmesi gereken risk").
 - **Bilgi (sigorta türü):** kutu standart (ATO) bıçak alır; listedeki mini sigortalar girmez. 16.11 siparişinde 2 A (F5), ek 5 A ve 3 A (F6; yoksa
-  5 A) standart, fiyatlar bekliyor (§3, §10, §17).
+  5 A) standart; P10.7a'da Motorobit 4,33 TL'den bulundu, `planlama/maliyet.json`'a işlendi (§3, §10, §17).
 
 ## 15. Efe'ye sorulacaklar (taslak depo dışında, gönderilmedi)
 
@@ -410,21 +411,50 @@ Ana anahtar açık, mantar basılı (ya da F5 attı, ya da ESP32 resetlendi):
 ## 17. 16.11 siparişinden önce değişen kalemler
 
 Bu bölüm tek başına okunur. Kararlar §2–§9'da; `planlama/maliyet.json` (MJ) bu pakette değişmedi, liste P10.7'de oraya işlenir. Fiyatlar
-14.11'de okunan değerler; "bekliyor" olanların satıcısı ya da fiyatı doğrulanmadı.
+14.11'de okunan değerler; "bekliyor" olanların satıcısı ya da fiyatı doğrulanmadı. **P10.7a (14.11) notu:** liste MJ'ye işlendi; "Satıcı / fiyat" sütunu MJ'deki duruma eşitlendi, kablo tablosundan gelen ikinci tur kalemleri tablonun sonunda.
 
 | Kalem | Eski → yeni | Adet | Satıcı / fiyat | Neden |
 |---|---|---|---|---|
 | Röle sürücüsü (MJ:106) | VBsemi IRLZ44NPBF-VB → **BC337-40** (TO-92; yalnız -40 sınıfı, gövde yazısı "337-40") | 2 → **3** (1 yedek) | Direnc.net BC337-40TA 3,02 TL (eski Robotistan 24,40 TL); fark −39,74 TL | Listedeki klonun veri sayfası yok, 3,3 V sürüşü doğrulanamadı; mantık seviyeli AO3400A onaylı satıcılarda bulunamadı; BC337-40 delikli, satıcısı belli (§9, PH D9) |
-| Kutu sigortası F5 (MJ:123) | 2 A **mini** → 2 A **standart (ATO)** | 1 | bekliyor (eski Motorobit 7,34 TL çıkar) | Sigorta kutusu standart bıçak alır; mini girmez (§3) |
-| Kutu sigortası F4 | + 5 A **standart (ATO)** (setteki tek 5 A'e ek) | 1 | bekliyor | F3 ve F4 iki 5 A ister (§3) |
-| Kutu sigortası F6 (yeni) | + 3 A **standart (ATO)**; bulunamazsa 5 A standart | 1 | bekliyor | Göğüs ekranı 12 V dalı kutunun 6. yuvasından (K11, §3) |
+| Kutu sigortası F5 (MJ:123) | 2 A **mini** → 2 A **standart (ATO)** | 1 | Motorobit 4,33 TL (P10.7a; eski 7,34 TL mini çıktı) | Sigorta kutusu standart bıçak alır; mini girmez (§3) |
+| Kutu sigortası F4 | + 5 A **standart (ATO)** (setteki tek 5 A'e ek) | 1 | Motorobit 4,33 TL (P10.7a) | F3 ve F4 iki 5 A ister (§3) |
+| Kutu sigortası F6 (yeni) | + 3 A **standart (ATO)**; bulunamazsa 5 A standart | 1 | Motorobit 4,33 TL (P10.7a; 3 A bulundu) | Göğüs ekranı 12 V dalı kutunun 6. yuvasından (K11, §3) |
 | Hat sigortası yuvası (MJ:122) | 5 → **4** | 4 | Motorobit; fark −36,72 TL | Göğüs ekranı dalı kutuya geçti (§3) |
-| Hub uzatması (MJ:137) | USB 3.0 uzatma 1 m → **USB 2.0** A erkek-dişi ~1 m, **erkek fiş gövdesi ≤ 13 × 7 mm** | 1 | bekliyor (eski Motorobit 214,20 TL) | Boyun tüneli 20 × 7,8 mm, iki dik dönüş; USB 3.0 fişi büyük ihtimalle geçmez (K14, §4) |
-| Göğüs HDMI kablosu (MJ:191) | Şart eklenir: dış çap **Ø ≤ 6 mm**, ince / esnek; micro HDMI fişi ≤ 7 mm kalın, ≤ 18 mm geniş | 1 | Robotistan 117,10 TL (çapı bilinmiyor; şartı karşılamazsa değişir) | Boyun kanalı doluluğu ve fiş geçişi (K14, §4) |
+| Hub uzatması (MJ:137) | USB 3.0 uzatma 1 m → **USB 2.0** A erkek-dişi ~1 m, **erkek fiş gövdesi ≤ 13 × 7 mm** | 1 | fiyat bekliyor (P10.7a: onaylı satıcılarda şarta uyan bulunamadı; eski Motorobit 214,20 TL çıktı) | Boyun tüneli 20 × 7,8 mm, iki dik dönüş; USB 3.0 fişi büyük ihtimalle geçmez (K14, §4) |
+| Göğüs HDMI kablosu (MJ:191) | Şart eklenir: dış çap **Ø ≤ 6 mm**, ince / esnek; micro HDMI fişi ≤ 7 mm kalın, ≤ 18 mm geniş | 1 | Robotistan 117,59 TL (14.11; sayfa "Tükendi"; çapı bilinmiyor, teslimde ölçülür, O-11 b) | Boyun kanalı doluluğu ve fiş geçişi (K14, §4) |
 | USB ses kartı uzatması (MJ:136) ve L USB-A dirsek (MJ:138) | **Çıkar** | 0 | −77,46 TL (koşullu) / fiyatsızdı | Ses ReSpeaker'ın 3,5 mm çıkışından (§5) |
 | USB ses kartı (MJ:78) | Kalır, **yedek** olarak | 1 | değişmez | Masa denemesi geçmezse Pi port 2'ye takılır (§5) |
-| 3,5 mm kablo (MJ:141) | Ses kartı → PAM yerine **ReSpeaker → PAM** (boy CAD'den) | 1 | bekliyor | Ses yolu (§5) |
+| 3,5 mm kablo (MJ:141) | Ses kartı → PAM yerine **ReSpeaker → PAM** (boy CAD'den) | 1 | fiyat bekliyor (P10.7a: kısa erkek-erkek bulunamadı) | Ses yolu (§5) |
 | Dirençler (MJ:115) | Yeni kalem yok: 270 Ω ×2, 2,2 kΩ ×2, ses bölücüsü 10 kΩ + 2,2 kΩ, yedek 220 Ω **setten** | – | mevcut set 90,50 TL | Setin sayfasında var; elde sayılmadı (§9) |
+| **P10.7a ikinci ve üçüncü tur (14.11, orkestratör kararları O-1 / O-3 / O-4 / O-8 / O-18):** kablo metreleri | 12 AWG kırmızı 2 → **5** m, siyah 2 → **3** m; 16 AWG kırmızı / siyah 1 → **5** m; 18 AWG kırmızı 7 → **11** m, siyah 7 → **9** m; 20 AWG kırmızı / siyah **+1** m (yeni) | – | Robocombo 118,00 / 60,50 (09.11 fiyatı, 14.11 okunamadı); Motorobit 43,26 / 24,72 | Kesitler kablo tablosundan (O-1 c), metre = CAD / liste boyu ya da kaba üst sınır tahmini (× 1,25; üçüncü turda 150 mm pay kaldırıldı) × 1,3 (`planlama/adim3/kablolar.md` §Malzeme özeti; boylar P10.7b'de ölçülecek) |
+| Servo uzatma (MJ:19) | 19 → **23** | 23 | Robotistan 44,71 TL (sayfa "Tükendi", 14.11) | 10 uzatma 17,5 m × 1,3 |
+| 2200 µF (MJ) | 4 → **5** | 5 | Motorobit 4,33 TL | Kafa dağıtım kartı C (O-8; EL:130 "önerilir, maliyette yok" idi) |
+| Delikli pertinaks / 5,08 mm 2 pin klemens (MJ) | 5 → **6** / 4 → **12** | – | Direnc.net 24,20 / Robocombo 5,50 (09.11) | Dağıtım kartı C; dağıtım kartı ve arayüz kartı girişleri, Ö4 köprü yeri (O-6) |
+| Halka pabuç (M5) | **+** sarı RV 5.5-5 (4–6 mm², 12 AWG) 10'lu × 4 (O-22 a köprüleri 14 uç); **+** mavi RV 2-5 (1,5–2,5 mm², 16 AWG) × 2; **+** kırmızı RV 1.25-5 (0,5–1,5 mm², 18–22 AWG) × 1 | 4 + 2 + 1 | Motorobit 49,44 / 24,10 / 19,78 TL | O-3 revize: düğümler M5 saplama üstünde pabuç yığını; 12 AWG sarı pabucun aralığının altında, teslimde denenir |
+| Bara saplaması M5 | Hazır güç barası **alınmaz**; M5 × 25 cıvata + somun + yaylı pul takımı (saplama başına ≤ 4 pabuç, ABYC E-11; O-22 a, orkestratör kararı 14.11: yıldız 5, anahtarlı bara 4 saplama + 1 yedek; zincir köprü 4 + 3 adet 12 AWG; P10.7b'de şerit / pano tipi nötr barası bulunursa sadeleşir) | 10 takım (önce 6) | fiyat bekliyor | O-3 revize (üçüncü tur) + düzeltme turu 1; yalıtkan tutucu basılır, CAD'i P10.7b |
+| Hat sigortası yuvası / 2 A mini | 4 → **5** / 2 A mini V3'e geri (+1); O-19 a ile 5 → **6** / 1 → **2** | 6 / 2 | Motorobit 37,08 / 7,42 TL | O-18 b: G22'nin bara ucunda 2 A (yuva mini bıçak alır); O-19 a: XL4016 çevre çıkışında 2 A (orkestratör kararı 14.11) |
+| Sinyal teli ve uçlar | **+** 22 AWG çok telli 15 m rulo × 3 (fiyat bekliyor: onaylı satıcılarda stokta yok); Dupont kiti **çıktı** (pense yok); jumper dişi-dişi × 3 (uç olarak fabrika sıkılı dişi uçlar: tablodaki 89 dişi uç × 1,3 → 2 set + 1 masa), erkek-dişi × 1 | 3 / – / 3 / 1 | Motorobit 43,26 / 49,44 TL | O-4 revize: jumper ortadan kesilir, sinyal teline lehim + makaron |
 
 Siparişle birlikte iş (malzeme değil): boyun tünelinin kısa **deneme parçası** basılır (P10.7 baskı listesi); fiş denemesi kablolar gelince,
 demet kurulmadan önce (§4, KT4).
+
+## 18. Orkestratör kararları (14.11)
+
+P10.7a ikinci turda orkestratör O-1 … O-14'ü kararlaştırdı; karar metinleri, tabloda nasıl uygulandıkları ve açık kalanlar tek kaynakta:
+`planlama/adim3/kablolar.json` (`kararlar`, `orkestratore`; okunur görünüm `planlama/adim3/kablolar.md`). Ayrıntılı kayıt
+`planlama/d158/kablo-tablosu-gunluk.md` "Orkestratör kararları (14.11)". Bu belgeyi etkileyenler:
+
+- **O-6 a / c:** acil stop düğümü güç panelinde çok çıkışlı klemens (2273-203 × 2, köprülü; P10.7a ek turunda, orkestratör kararı 14.11: WAGO 2273 yalnız tek telli alır, düğüm küçük pertinaks parçasında iki 2 pin 5,08 mm vidalı klemens, kart üstünde köprülü; kafa girişi de aynı biçimde, üç klemens); mantar ile düğüm arasında Ö4 için köprülü
+  iki uçlu yer. Ö4'ün kendisi (§8) **açık**, Ahmet + Efe.
+- **O-10 b / O-11 b:** K4 kalemleri koşullu kalır, sipariş yine verilir; şartlı hazır kablolar (§4, §17) mevcut satırlarıyla alınır,
+  teslimde ölçülür; onaylı satıcı dışına çıkmak Ahmet'in kararı.
+- **O-12:** bas-konuş düğmesi açık (Efe'ye sorulacak); tabloya kablo eklenmedi, kalem değişmedi.
+- **O-13:** şarj hedefi 14,4 V (4 × 3,6 V); 14,6 V yalnız en kötü durum hesap değeri. Şarj cihazı kalır; ölçüt §13 KT8.
+- **O-14 a:** bugünkü yazılım kuralı + watchdog kalır, kablaj değişmez; kendini tutma kontağı / Ö4 açık.
+- **O-2 / O-3 / O-4:** kesit tablosu web kaynaklı (33 CFR 183.425 ve NFPA 79 Table 12.5.1, temkinli değer); 12 AWG baraya halka pabuçla;
+  sinyal teli 22 AWG, uç olarak jumper'ın fabrika sıkılı dişi ucu (O-4 r; Dupont kiti çıktı), pense yok: lehim + makaron. Sipariş değişiklikleri §17'nin sonunda.
+- **Üçüncü tur (orkestratör kararı, 14.11):** O-15 kayıtlı istisna `ana-hat-12awg` (12 AWG / 30 A değişmez; şart: ayrı döşeme, P10.7b'de
+  gerilim düşümü; beklenen sürekli akım 25 A'in altında). O-16 kayıtlı istisna `motor-fabrika-kablosu` (uzatma gerekirse 12 AWG). O-17
+  şarj kolu: + ana sigortanın yük tarafı / ana anahtarın akü tarafı, − yıldız; sigorta akü tarafındaki ucun dibinde (karar 10 A; düzeltme turu 1'de **7,5 A mini**). O-18 b: G22'nin
+  bara ucunda 2 A hat sigortası. O-3 revize: hazır bara yok, M5 saplama üstünde pabuç yığını. O-4 revize: Dupont kiti yok, jumper uçları.
+- **Açık kalan (orkestratöre):** K52 (göğüs regülatörünün yeri, G20); Ö4; O-12. Ayrıntı `planlama/adim3/kablolar.md` §Orkestratöre.

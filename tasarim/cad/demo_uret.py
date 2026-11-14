@@ -144,7 +144,6 @@ KARARLAR = [
     ("K2", "AI HAT+ ile kafa arka üst bağlantı yuvası (boss)", "tilt payı bu kararla yeniden ölçülür"),
     ("K3", "Düz zeminde elde yük sınırı", "rampa payı yüksüz değerdir"),
     ("K9", "El yükü: servo değişimi mi, yük sınırı mı", "kol servo modelleri"),
-    ("K11", "Göğüs ekranı besleme dalının girişi", "göğüs ekranı"),
     ("K28", "Bütçe farkının hocaya bildirilmesi (sipariş onayı)", "maliyet ve takvim"),
     ("K29", "Erken alım (kupon parçaları)", "takvim"),
     ("K32", "Kafa ekranı: hocadan mı, satın alma mı", "kafa ekranı ve maliyet"),

@@ -1,5 +1,54 @@
 # F8a: 158 sipariş paketi (P8.1)
 
+> **14.11: bu paket P10.7a'dan önceki listedir; sipariş maliyet.json'un bugünkü hâlinden verilir; değişen kalemler aşağıda.**
+>
+> Karşılaştırma: P8.1'in `maliyet.json`'a işlendiği hâl (commit `76fd4b2`, 09.11) ile bugünkü `planlama/maliyet.json` (P10.5 – P10.7a düzeltme turları, ek tur ve O-19 … O-22 sonrası). Sipariş listesi **`planlama/maliyet.json`**'dur; aşağıdaki §1 – §9 09.11 kaydı olarak duruyor (fiyat, stok, satıcı karşılaştırması). `maliyet.json` V3 toplamı: 09.11 hâli 118.666,22 TL (koşullular dahil 124.573,11), bugün **120.852,43 TL** (koşullular dahil **126.423,90**), %15 pay dahil (`planlama/adim5/maliyet_toplam.py`). Bu not eklendiği için aşağıdaki satırlar 49 satır aşağı kaydı; `F8a-kontrol.md` ve `F4c-kontrol.md`'deki `F8a-siparis.md:NN` atıfları 09.11 hâline göredir. Makine okunur: `F8a-siparis.json` `guncelleme_14_11`.
+
+### 14.11: paketten bu yana değişen kalemler (36 satır)
+
+"ALMA" ve "V3 dışı (alma)" satırları sipariş edilmez. "Fiyat yok" satırlarının ürünü seçilmedi (`maliyet.json` `durum: dogrulanmadi`). Paket no: bu paketteki satır kimliği (§5).
+
+| Paket no | Kalem (maliyet.json sıra) | Ne oldu | Satıcı | Adet (paket → bugün) | Birim TL (paket → bugün) | Bağlantı |
+|---|---|---|---|---|---|---|
+| S87 | Röle sürücü MOSFET: VBsemi Elec IRLZ44NPBF-VB (TO-220) (69) | **ALMA**: yerine BC337-40, aşağıda | Robotistan | 2 → **0** | 24,40 | [Robotistan](https://www.robotistan.com/vbsemi-elec-irlz44npbf-vb) |
+| S88 | Servo uzatma kablosu: 22AWG Servo Uzatma Kablosu, 100 cm (19) | değişti: adet, fiyat | Robotistan | 19 → 23 | 44,52 → 44,71 | [Robotistan](https://www.robotistan.com/60-cekirdek-22awg-servo-kablosu) |
+| S89 | Ses amfisi (1,58 m): PAM8403 2 × 3 W mini amfi kartı (analog giriş; ReSpeaker Mic Array v2.0'ın 3,5 mm çıkışından, 10 kΩ / 2,2 kΩ bölücüyle) (41) | yalnız tanım değişti | Robotistan | 1 | 21,96 | [Robotistan](https://www.robotistan.com/23w-mini-amfi-devresi-pam8403) |
+| S62 | Silikon kablo 12 AWG: 12AWG Kırmızı Silikon Kablo 1m (57) | değişti: adet | Robocombo | 2 → 5 | 118,00 | [Robocombo](https://robocombo.com/12awg-kirmizi-silikon-kablo-1m) |
+| S63 | Silikon kablo 12 AWG: 12AWG Siyah Silikon Kablo 1m (58) | değişti: adet | Robocombo | 2 → 3 | 118,00 | [Robocombo](https://robocombo.com/12awg-siyah-silikon-kablo-1m) |
+| S42 | Silikon kablo 18 AWG: 18 AWG Silicone Cable Red - 1 Meter (59) | değişti: adet, fiyat | Motorobit | 7 → 11 | 42,84 → 43,26 | [Motorobit](https://www.motorobit.com/18-awg-silicone-cable-red-1-meter) |
+| S43 | Silikon kablo 18 AWG: 18 AWG Silicone Cable Black - 1 Meter (60) | değişti: adet, fiyat | Motorobit | 7 → 10 | 42,84 → 43,26 | [Motorobit](https://www.motorobit.com/18-awg-silicone-cable-black-1-meter) |
+| S33 | Kondansatör: 2200uF 16V Electrolytic Capacitor 10x20mm (61) | değişti: adet, fiyat | Motorobit | 4 → 5 | 4,28 → 4,33 | [Motorobit](https://www.motorobit.com/2200uf-16v-electrolytic-capacitor-10x20mm) |
+| S29 | Hızlı klemens: 2273-203 3 Pin Buat Klemensi (Wago) (62) | V3 dışı (alma) | Motorobit | 10 → **0** | 12,24 | [Motorobit](https://www.motorobit.com/2273-203-3-pin-buat-klemensi) |
+| S87 yerine | Röle sürücü transistörü: BC337-40TA NPN transistör, TO-92 (yalnız -40 sınıfı, gövde yazısı '337-40') (69) | eklendi (IRLZ44N'in yerine) | Direnc.net | — → 3 | 3,02 | [Direnc.net](https://www.direnc.net/bc337-40ta-transistor-npn-tht-to92) |
+| S24 | Diyot: 1N4007 - 1000V 1A Diyot (76) | değişti: adet | Motorobit | 2 → 3 | 0,61 | [Motorobit](https://www.motorobit.com/1n4007-1000v-1a-diyot) |
+| S8 | Delikli pertinaks: 6x13 Delikli Plaket (79) | değişti: adet | Direnc.net | 5 → 7 | 24,20 | [Direnc.net](https://www.direnc.net/6x13-delikli-plaket) |
+| S59 | Klemens ve pin header: 2 Pin 1 No 5.08mm Klemens (80) | değişti: adet | Robocombo | 4 → 16 | 5,50 | [Robocombo](https://robocombo.com/2-pin-1-no-508mm-klemens-2511201001) |
+| S64 | Silikon kablo 16 AWG: 16AWG Kırmızı Silikon Kablo 1m (83) | değişti: adet | Robocombo | 1 → 5 | 60,50 | [Robocombo](https://robocombo.com/16awg-kirmizi-silikon-kablo-1m) |
+| S65 | Silikon kablo 16 AWG: 16AWG Siyah Silikon Kablo 1m (84) | değişti: adet | Robocombo | 1 → 5 | 60,50 | [Robocombo](https://robocombo.com/16awg-siyah-silikon-kablo-1m) |
+| S27 | Hat sigortası yuvası: Su Geçirmez Mini/Micro Bıçak Sigorta Yuvası - 16AWG (85) | değişti: adet, fiyat | Motorobit | 5 → 6 | 36,72 → 37,08 | [Motorobit](https://www.motorobit.com/su-gecirmez-minimicro-bicak-sigorta-yuvasi-16awg) |
+| S35 | Bıçak sigorta (ek): 2A Mini Alçak Profil Oto Sigorta - Bıçak Sigorta (86) | değişti: adet, fiyat | Motorobit | 1 → 2 | 7,34 → 7,42 | [Motorobit](https://www.motorobit.com/2a-mikro-oto-sigorta-bicak-sigorta) |
+| S37 | Bıçak sigorta (ek): 7.5A Mini Alçak Profil Oto Sigorta (88) | değişti: adet, fiyat | Motorobit | 2 → 3 | 7,34 → 7,42 | [Motorobit](https://www.motorobit.com/75a-mikro-oto-sigorta-bicak-sigorta) |
+| S38 | Bıçak sigorta (ek): 10A Mini Alçak Profil Oto Sigorta (89) | V3 dışı (alma) | Motorobit | 1 → **0** | 7,34 | [Motorobit](https://www.motorobit.com/10a-mikro-oto-sigorta-bicak-sigorta) |
+| S44 | Bıçak sigorta (ek): 2 Amper Oto Sigorta - Bıçak Sigorta (90) | değişti: fiyat | Motorobit | 1 | 4,28 → 4,33 | [Motorobit](https://www.motorobit.com/2a-maksi-oto-sigorta-bicak-sigorta) |
+| S45 | Bıçak sigorta (ek): 5 Amper Oto Sigorta - Bıçak Sigorta (91) | değişti: fiyat | Motorobit | 1 | 4,28 → 4,33 | [Motorobit](https://www.motorobit.com/5-amper-oto-sigorta-bicak-sigorta) |
+| K4a | USB-A uzatma ~30 cm (Pi → ses kartı): USB-A erkek → dişi, ~30 cm; Pi port 2 → L dirsek → USB ses kartı (96) | V3 dışı (alma) | Robotistan | 1 → **0** | 77,46 | [Robotistan](https://www.robotistan.com/usb-erkek-disi-donusturucu-30cm) |
+| K4b | USB-A uzatma ~1 m (Pi → hub): USB 2.0 A erkek → A dişi uzatma, ~1 m; erkek fiş gövdesi ≤ 13 × 7 mm; hub'ın sabit 130 mm kablosuna eklenir, boyundan iner (HDMI'den önce geçirilir) (97) | değişti: fiyat, satıcı, bağlantı, tanım, durum | — | 1 | 214,20 → fiyat yok | seçilmedi |
+| — | L USB-A dirsek: USB-A erkek → dişi, 90°; Pi port 2 ağzında (ses kartı uzatması) (98) | V3 dışı (alma) | — | 1 → **0** | fiyat yok | seçilmedi |
+| — | L 3,5 mm fişli kısa kablo: 3,5 mm stereo, bir ucu L fiş, kısa; ReSpeaker Mic Array v2.0 3,5 mm çıkışı → 10 kΩ / 2,2 kΩ bölücü → PAM8403 girişi (öbür ucu kesilir) (101) | yalnız tanım değişti | — | 1 | fiyat yok | seçilmedi |
+| S77 | Göğüs ekranı HDMI kablosu: HDMI Erkek Mikro HDMI Erkek Altın Uçlu Kablo, 1,5 m (şart: dış çap Ø ≤ 6 mm) (147) | değişti: fiyat, tanım | Robotistan | 1 | 117,10 → 117,59 | [Robotistan](https://www.robotistan.com/hdmi-erkek-mikro-hdmi-erkek-altin-uclu-kablo-1) |
+| — | Bıçak sigorta (ek): 3 Amper Oto Sigorta - Bıçak Sigorta (153) | eklendi | Motorobit | — → 1 | 4,33 | [Motorobit](https://www.motorobit.com/3-amp-auto-fuse-blade-fuse) |
+| — | Halka pabuç 12 AWG: RV 5.5-5 4.0-6.0 mm Sarı Yuvarlak Yalıtımlı Kablo Ucu, 10'lu (ISISO) (154) | eklendi | Motorobit | — → 4 | 49,44 | [Motorobit](https://www.motorobit.com/rv-55-5-40-60-mm-yellow-round-type-insulated-cable-end-10-pieces) |
+| — | Halka pabuç 16 AWG (mavi, M5): RV 2-5 1,50-2,50 mm Mavi Yuvarlak Yalıtımlı Kablo Ucu, 10'lu (ISISO) (155) | eklendi | Motorobit | — → 2 | 24,10 | [Motorobit](https://www.motorobit.com/rv-2-5-150-250-mm-blue-round-type-insulated-cable-end-10-pieces) |
+| — | Bara saplaması M5: M5 × 25 cıvata + M5 somun + M5 yaylı pul (DIN 127), A2; saplama başına bir takım (156) | eklendi | — | — → 10 | fiyat yok | seçilmedi |
+| — | Sinyal teli 22 AWG: 22 AWG çok telli montaj kablosu, 15 m rulo; 4 renk (kırmızı, siyah, sarı, mavi) (157) | eklendi | — | — → 3 | fiyat yok | seçilmedi |
+| — | Jumper kablo dişi-dişi: 40pin 20cm Dişi-Dişi Jumper Kablo (26 AWG) (158) | eklendi | Motorobit | — → 3 | 43,26 | [Motorobit](https://www.motorobit.com/40pin-20cm-female-female-jumper-cable) |
+| — | Jumper kablo erkek-dişi: 40pin 20cm Erkek-Dişi Jumper Kablo (159) | eklendi | Motorobit | — → 1 | 49,44 | [Motorobit](https://www.motorobit.com/40pin-20cm-male-female-jumper-cable) |
+| — | Silikon kablo 20 AWG: 20 AWG Silicone Cable Red - 1 Meter (160) | eklendi, sonra V3 dışı (alma) | Motorobit | — → **0** | 24,72 | [Motorobit](https://www.motorobit.com/20-awg-silicone-cable-red-1-meter) |
+| — | Silikon kablo 20 AWG: 20 AWG Silicone Cable Black - 1 Meter (161) | eklendi, sonra V3 dışı (alma) | Motorobit | — → **0** | 24,72 | [Motorobit](https://www.motorobit.com/20-awg-silicone-cable-black-1-meter) |
+| — | Halka pabuç 18–22 AWG (kırmızı, M5): RV 1.25-5 0,50-1,50 mm Kırmızı Yuvarlak Yalıtımlı Kablo Ucu, 10'lu (ISISO) (162) | eklendi | Motorobit | — → 1 | 19,78 | [Motorobit](https://www.motorobit.com/rv-125-5-050-150-mm-red-round-type-insulated-cable-end-10-pieces) |
+
+---
+
 Kontrol tarihi: **09.11.2026**. Fiyatlar satıcı sayfasında görülen KDV dahil fiyattır, kargo hariç. **Sipariş verilmedi**, sepete ürün eklenmedi, satıcıya yazılmadı.
 Brief: `planlama/d158/F8a-brief.md`. Yöntem, bakılan sayfalar ve öneriler: `planlama/d158/F8a-gunluk.md`. Makine okunur veri: `planlama/d158/F8a-siparis.json`.
 
@@ -324,7 +373,7 @@ Durum: **doğrulandı** = fiyat ve stok bugün sayfada görüldü; **kısmen** =
 | S84 | Motor montaj braketi (4 adet = 2 paket): Aluminyum L tipi 37D Motor Tutucu (İkili) - PL-1084 | 2 | [Robotistan](https://www.robotistan.com/aluminyum-l-tipi-37d-motor-tutucu) · 764,79 · stok 5 | 1.529,58 | [Motorobit](https://www.motorobit.com/37-mm-motor-tutucu) · 107,10 · tükendi · Tükendi (Robotzade 37 mm de stok 0) | doğrulandı |
 | S85 | Motor sürücü (2 + 1 yedek): BTS7960B 40 Amper Motor Sürücü Kartı | 3 | [Robotistan](https://www.robotistan.com/bts7960b-20-amper-motor-surucu-karti) · 265,30 · stok 140 | 795,90 | [Robocombo](https://robocombo.com/bts7960b-dc-43a-cift-motor-surucu-2867) · 271,50 · stok 1 · Stok 1 | doğrulandı |
 | S86 | Optokuplör modülü: PC817 2 Kanal Optokuplör İzolasyon Modülü | 1 | [Robotistan](https://www.robotistan.com/pc817-2-kanal-optokuplor-izolasyon-modulu) · 74,10 · stok 33 | 74,10 | [Motorobit](https://www.motorobit.com/pc817-2-kanal-optokuplor-izolasyon-modulu) · 76,50 · tükendi · Tükendi (Direnc de tükendi) | doğrulandı |
-| S87 | Röle sürücü MOSFET: VBsemi Elec IRLZ44NPBF-VB (TO-220) | 2 | [Robotistan](https://www.robotistan.com/vbsemi-elec-irlz44npbf-vb) · 24,40 · stok 752 | 48,80 | [Direnc.net](https://www.direnc.net/irlz44n-d2pak-smd-n-kanal-mosfet) · 30,25 · tükendi · SMD D2PAK (TO-220 değil) | doğrulandı |
+| S87 | **ALMA (14.11, yerine BC337-40TA, üstteki not)** Röle sürücü MOSFET: VBsemi Elec IRLZ44NPBF-VB (TO-220) | 2 | [Robotistan](https://www.robotistan.com/vbsemi-elec-irlz44npbf-vb) · 24,40 · stok 752 | 48,80 | [Direnc.net](https://www.direnc.net/irlz44n-d2pak-smd-n-kanal-mosfet) · 30,25 · tükendi · SMD D2PAK (TO-220 değil) | doğrulandı |
 | S88 | Servo uzatma kablosu (1 m): 22AWG Servo Uzatma Kablosu, 100 cm | 19 | [Robotistan](https://www.robotistan.com/60-cekirdek-22awg-servo-kablosu) · 44,52 · stok 71 | 845,88 | [Motorobit](https://www.motorobit.com/servo-uzatma-kablosu-60-cm-disi-erkek) · 61,20 · stok 1832 · 60 cm (boy farklı) | doğrulandı |
 | S89 | Ses amfisi: 2*3 W Mini Amfi Devresi - PAM8403 | 1 | [Robotistan](https://www.robotistan.com/23w-mini-amfi-devresi-pam8403) · 21,96 · stok 78 | 21,96 | [Motorobit](https://www.motorobit.com/pam8403-ses-kontrollu-ses-amplifikatoru) · 91,80 · stok 129 · Potlu farklı kart; ölçü kontrol | doğrulandı |
 | S90 | Soğutucu: Raspberry Pi Active Cooler | 1 | [Robotistan](https://www.robotistan.com/raspberry-pi-active-cooler-en) · 322,02 · stokta (adet yok) | 322,02 | [Motorobit](https://www.motorobit.com/raspberry-pi-5-aktif-sogutucu-gumus) · 306,00 · stok 19 | doğrulandı |

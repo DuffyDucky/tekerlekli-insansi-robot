@@ -2,7 +2,7 @@
 
 Tarih: 15 Ekim 2026. Tek yer: bu dosya. CAD karşılığı `tasarim/freecad/taban/` ve `kafa/`, sayılar `taban-analiz.json`
 (`donus`, `aku`) ve `kafa-analiz.json` (`tork`, `isi`, `pi`). "Tahmini" yazan değer ölçülmedi ya da kaynaktan türetildi.
-Pin planı 14.11.2026'da kesinleşti (karar: Ahmet'in 13.11.2026 yetkilendirmesiyle); tek yazılı kaynağı `planlama/adim3/pin-haritasi.md`. Akü süreleri E8'in (5. adım) işi, burada yalnız anlık akımlar var.
+Pin planı 14.11.2026'da kesinleşti (karar: Ahmet'in 13.11.2026 yetkilendirmesiyle); tek yazılı kaynağı `planlama/adim3/pin-haritasi.md`. Akü süreleri E8'in (5. adım) işi, burada yalnız anlık akımlar var. Kablo listesi 14.11.2026'dan beri tek kaynakta: `planlama/adim3/kablolar.json` (her kablonun iki ucu, pini, kesiti, sigortası, demeti; okunur görünüm `kablolar.md`, denetim `kablolar_denetim.py`, P10.7a). Bu dosya devre kararlarının ve gerekçelerinin yeridir, ayrı kablo listesi tutmaz; aşağıdaki kesit ve kablo satırları tablonun kaynağıdır; bir kesit ya da sigorta değişirse önce buradaki karar, sonra tablo güncellenir.
 T2 takip düzeltmesi (15 Ekim 2026, bağımsız kontrol `K3-kontrol.md`): JGB37 tork uyarısı, ESP32 beslemesi ifadesi, DTR/RTS, ön şarj, PC817 3,3 V, Pololu akımı, kafa ısısı (`T2-takip.md`).
 
 ## 158 cm güncellemesi (04.11.2026; 09.11.2026 F4a: 05.11 B + R1 yerleşimine göre)
@@ -38,7 +38,7 @@ sağ duvarında (`KY/uygulama-notu.md:45, 47, 56, 58, 59`). I2S amfi modelde 0 p
 | Servo uzatması | 1,65 m: dirsek, bilek 1,93 m; S2 ≈ 1,77 m | Dirsek, bilek 1,86 m; S2 1,70 m (v4, model) | Hesap |
 | ESP32 USB | 1,65 m: Pi → ESP32 ≈ 1,64 m. 04.11: ≈ 1,57 m, 2 m kablo | **Hub → ESP32 (taban):** yol 971 mm, önerilen 1.360 mm (yol × 1,25 + 150 kapak sökme payı); v4'teki 2 m kablo yeter. Pi → hub: hub'ın 130 mm kablosu + uzatma, yol 617, önerilen 920 mm (`lale158-kontrol.json` `kablo_ozet.kablo`; `arayuz.py:1003`) | Hesap (yol şema, pay tahmini) |
 | Akü kütlesi | Model 2.800 g (09.11 öncesi) | **3,0 kg** (Victron datasheet; `planlama/maliyet.json` Victron satırı, `raporlar/kaynaklar/06-aku-secimi.md:119`); modelde `arayuz.py:623` 3.000 g. Robot ev pozu 26.115,6 g (400 g kablo payı dahil), yüksüz rampa devrilme payı 1,519 (`KY/uygulama-ivme.json` `ev.kutle_g`, `izgara_yuk_0g.a_sinir_pay15.rampa5_geri`) | F1b (`planlama/d158/F1b-gunluk.md` P1.1) |
-| Hat sigortası yuvası | ×2, sonra ×4, v4'te ×5 (beşincisi göğüs) | **×4** (A, B, C, şarj); göğüs ekranı kutunun F6 yuvasında (K11) | 14.11 düzeltme turu 1 |
+| Hat sigortası yuvası | ×2, sonra ×4, v4'te ×5 (beşincisi göğüs) | **×4** (A, B, C, şarj); göğüs ekranı kutunun F6 yuvasında (K11); **×5** ile G22 algı teli 2 A (O-18 b, orkestratör kararı 14.11); **×6** ile 5 V çevre hattı 2 A (O-19 a, orkestratör kararı 14.11) | 14.11 düzeltme turu 1; P10.7a üçüncü tur; O-19 a |
 
 **Kafa güç mimarisi (geçerli):**
 
@@ -64,8 +64,8 @@ Pi 5 micro HDMI 1 ── HDMI (v4 1,5 m) ── boyun ── ekran HDMI (ekran u
 Hub (göğüs üst arka kapağı içi) ── USB-A → micro B (v4 2 m) ── ekran TOUCH (90° fiş)                                              boyundan geçmez; hub'a Pi port 3'ten boyundan gelen uzatmayla bağlı
 ```
 
-- Regülatörü ekrana bağlamadan multimetreyle 12 V'a ayarla (akü 12,8–14,4 V, v4). Ekran fişi: kutudaki adaptör kablosu kesilebilir (v4).
-- **K11 a (14.11; düzeltme turu 2, üçüncü bakış bekliyor):** dal sigorta kutusunun **6. yuvasından (F6, 3 A standart bıçak; bulunamazsa 5 A standart)** çıkar; ayrı hat yuvası kalktı; kutu yuvaları ortak baralıysa korumasız ara kablo yok, ayrı girişliyse 12 AWG kısa giriş köprüleri (KT3, teslimde bakılır). GND WAGO yıldızına. Ana anahtar kapalıyken kesilir, **acil stopta ekran açık** (hareket üretmez; durumu gösterir). Giriş (regülatör verimi %80 varsayım): ekran tipik ~0,5 A ile ≈ 0,59 A @ 12,8 V, ≈ 0,75 A @ 10 V; ekran en çok 1 A (12 V / 1 A adaptör) ile ≈ 1,17 A @ 12,8 V, **≈ 1,5 A @ 10 V = 3 A'in %50'si** (2 A'de %75: sıcak etekte pay dar). 18 AWG 3 A ile korunur. Gerekçe `kablolama-on-kararlar.md` §3. Port yeri fotoğraftan tahmini (`arayuz.GOGUS_EKRAN` port; `arayuz.py:343-346`).
+- Regülatörü ekrana bağlamadan multimetreyle 12 V'a ayarla (akü 12,8–14,4 V; şarj hedefi 14,4 V = 4 × 3,6 V, v4). Ekran fişi: kutudaki adaptör kablosu kesilebilir (v4).
+- **K11 a (14.11; düzeltme turu 2, üçüncü bakış bekliyor):** dal sigorta kutusunun **6. yuvasından (F6, 3 A standart bıçak; bulunamazsa 5 A standart)** çıkar; ayrı hat yuvası kalktı; kutu yuvaları ortak baralıysa korumasız ara kablo yok, ayrı girişliyse 12 AWG kısa giriş köprüleri (KT3, teslimde bakılır). GND yıldız noktasına (M5 saplama, O-3 r). Ana anahtar kapalıyken kesilir, **acil stopta ekran açık** (hareket üretmez; durumu gösterir). Giriş (regülatör verimi %80 varsayım): ekran tipik ~0,5 A ile ≈ 0,59 A @ 12,8 V, ≈ 0,75 A @ 10 V; ekran en çok 1 A (12 V / 1 A adaptör) ile ≈ 1,17 A @ 12,8 V, **≈ 1,5 A @ 10 V = 3 A'in %50'si** (2 A'de %75: sıcak etekte pay dar). 18 AWG 3 A ile korunur. Gerekçe `kablolama-on-kararlar.md` §3. Port yeri fotoğraftan tahmini (`arayuz.GOGUS_EKRAN` port; `arayuz.py:343-346`).
 - **90° fiş üç kabloda:** HDMI, USB dokunmatik (micro B) ve 12 V jakı. Kablo ekranın −X kısa kenarındaki port girintisine 18 mm yatay girer; düz fiş bu dönüşü yapamaz (`planlama/d158/F1b-kontrol.md` madde 12 ve "90° fiş" maddesi). Fiş gövdeleri modelde yok; port girintisi modelde yok, ekran gelince ölçülecek (P1.4 🟡).
 - Yol / önerilen boy (yol × 1,25, hub'a bağlı kablolarda + 150 mm kapak sökme payı; ikisi de tahmin; `lale158-kontrol.json` `kablo_ozet.kablo`, `arayuz.py:1003`):
   HDMI 757 / 950 mm, USB dokunmatik 395 / 640 mm, 12 V 1.376 / 1.720 mm. 04.11'deki USB dokunmatik 1.060 mm Pi'den boyundan inen eski yola aitti (tarihçe).
@@ -88,9 +88,9 @@ Hub (göğüs üst arka kapağı içi) ── USB-A → micro B (v4 2 m) ── 
 - Hub kapanırsa ESP32 bağlantısı ve göğüs dokunmatiği birlikte düşer (`kablo-kurali-notu.md:54-55`). Hub yükü ≈ 0,1 A (göğüs dokunmatiği; ESP32 VIN'den beslenir, VBUS diyotlu ikinci kaynak): harici besleme yok (14.11). **F4 atarsa** ESP32 tamamen hub'dan beslenir (0,24 A, E4): hub ≈ 0,37 A, Pi USB toplamı ≈ 0,6 A (ReSpeaker 0,18 + hub 0,37 + QLED Touch ~0,05): ayar yoksa 600 mA sınırında, ayarla 1,6 A içinde (hesap). Hub girişindeki gerilim ölçülmedi (`KY/uygulama-notu.md:100`); kablajda teyit.
 - Listede olmayan 6 kablo kalemi (K4) ve göğüs ekranının 3 adet 90° fişi `planlama/maliyet.json`'a fiyatsız, koşullu aday olarak girdi (P4.2, 09.11).
 
-**Sigorta dalları (geçerli):** ana 30 A → F1 20 A (röle K1 → anahtarlı bara: BTS7960 × 2, hat 7,5 A → XL4016 A, hat 7,5 A → XL4016 B, hat 5 A → XL4016 C), F2 15 A yedek, F3 5 A kafa, F4 5 A XL4016 çevre, F5 2 A acil stop, F6 3 A göğüs ekranı (K11, 14.11); ayrıca şarj girişi mini 10 A. Ayrıntı "Sigorta listesi".
+**Sigorta dalları (geçerli):** ana 30 A → F1 20 A (röle K1 → anahtarlı bara: BTS7960 × 2, hat 7,5 A → XL4016 A, hat 7,5 A → XL4016 B, hat 5 A → XL4016 C), F2 15 A yedek, F3 5 A kafa, F4 5 A XL4016 çevre, F5 2 A acil stop, F6 3 A göğüs ekranı (K11, 14.11); ayrıca şarj girişi mini 7,5 A (düzeltme turu 1) ve XL4016 çevre çıkışında 2 A mini (O-19 a). Ayrıntı "Sigorta listesi".
 
-**v4 muadilleri (elektriği etkiler, bölümler yeniden yazılmadı):** röle K1 MAH-112-C-4 30/40 A (dahili diyot yazmıyor, 1N4007 kullan); ön şarj rölesi K2 JQC-3FF 10 A (E9'daki JQC-3F(T73) 7 A yerine; ayak düzeni pertinakta kontrol edilir); motor sürücü BTS7960B (pin adları EN1/EN2, IN1/IN2; pin planında EN = INH, IN = PWM varsayımıyla eşlendi, `pin-haritasi.md` §6.1; 3,3 V lojik sayfada yok, kart gelince kontrol); acil stop NP2 BE102 (CAD 60 mm B200E60; etek deliği kontrol); hızlı klemens 2273-203 en çok 2,5 mm², 12 AWG ana kabloda kullanılmaz; şarj cihazı IMAX B6 (4S'te ≈ 3,4 A; 14,6 V kesme cihazda ölçülecek).
+**v4 muadilleri (elektriği etkiler, bölümler yeniden yazılmadı):** röle K1 MAH-112-C-4 30/40 A (dahili diyot yazmıyor, 1N4007 kullan); ön şarj rölesi K2 JQC-3FF 10 A (E9'daki JQC-3F(T73) 7 A yerine; ayak düzeni pertinakta kontrol edilir); motor sürücü BTS7960B (pin adları EN1/EN2, IN1/IN2; pin planında EN = INH, IN = PWM varsayımıyla eşlendi, `pin-haritasi.md` §6.1; 3,3 V lojik sayfada yok, kart gelince kontrol); acil stop NP2 BE102 (CAD 60 mm B200E60; etek deliği kontrol); hızlı klemens 2273-203 en çok 2,5 mm², 12 AWG ana kabloda kullanılmaz (12 AWG düğümleri: M5 saplama üstünde halka pabuç yığını, O-3 revize, `kablolar.json` `klemens_turleri`); şarj cihazı IMAX B6 (4S'te ≈ 3,4 A). Şarj hedefi 14,4 V (4 × 3,6 V); 14,6 V yalnız en kötü durum hesap değeri (TVS / dayanım hesabı). İlk şarjda kesme gerilimi multimetreyle ölçülür; 14,4 V'u aşarsa cihaz kullanılmaz (O-13, orkestratör 14.11; test kâğıdı T7).
 
 ## 1,65 m güncellemesi (Y2b, 29 Ekim 2026) [tarihçe]
 
@@ -126,8 +126,8 @@ servo başına değerlerinden; tepe = 2 servo kalkışta (DS3235 3,0 A, MG996R 2
 - Neden kafa ayrı hatta: kafa servosu hangi kol hattına girse o hat > 5 A (pan ile 5,47, tilt ile ≈ 5,8; ikisi bir kolda ≈ 6,4). Kafayı çevre 5 V
   XL4016'sına (ESP32 / sensör beslemesi; servo gürültüsü, 5 V'ta düşük tork) ya da kafadaki Pololu'ya (kafa 5 V tepe 4,1 A + 5 A > 5,5 A) bağlamak reddedildi.
 - Kol hatları yoğunda 5 A önerisinin %97'si: sınırda kalıyor, hat akımı ölçümü (E7 yük testi) yine gerekli; aşarsa o hat için 20 A düşürücü.
-- XL4016 C güç panelinde, diğer üçünün arkasında (Y3 yerleşimi; yük A / B'den taşındı; E7 ısısına ek yalnız boşta kaybı ≈ 0,13 W); çıkış 2 servo uzatmasına küçük klemensle, dağıtım kartı gerekmez
-  (2200 µF kondansatör önerilir; maliyette yok). **Y3 (29.10): dördüncü XL4016 (C) CAD'de güç panelinin üstünde (merkez x 97,5 / z 0, 8 mm naylon burç), akünün önünde** (alt vidalar akünün üstüne gelmez); CAD'deki XL4016 adları A sağ kol / B sol kol / C kafa. Hat sigortaları kablo üstünde (CAD'de çizilmez). PCA9685 kanalları (sinyal) değişmez; yalnız
+- XL4016 C güç panelinde, diğer üçünün arkasında (Y3 yerleşimi; yük A / B'den taşındı; E7 ısısına ek yalnız boşta kaybı ≈ 0,13 W); çıkış 16 AWG ile kafadaki **küçük dağıtım kartı C**'ye (2 pin 5,08 klemens + 2200 µF; O-8, orkestratör onayı 14.11), oradan 2 servo uzatması [eski: "küçük klemensle, dağıtım kartı gerekmez"]
+  (2200 µF kondansatör önerilir; 14.11'den beri maliyette: kafa dağıtım kartı C'nin kondansatörü, toplam 5 adet, O-8). **Y3 (29.10): dördüncü XL4016 (C) CAD'de güç panelinin üstünde (merkez x 97,5 / z 0, 8 mm naylon burç), akünün önünde** (alt vidalar akünün üstüne gelmez); CAD'deki XL4016 adları A sağ kol / B sol kol / C kafa. Hat sigortaları kablo üstünde (CAD'de çizilmez). PCA9685 kanalları (sinyal) değişmez; yalnız
   pan / tilt kanallarının beslemesi C hattından gelir.
 
 ## Özet: ne değişti
@@ -219,10 +219,10 @@ kalkış anı 2,5 A (MG996R durma 2,5 A @6 V, DS3218MG 2,6 A @6,8 V; `06-aku-sec
 
 - **Seçim: iki XL4016 (8 A modül, sürekli ≤ 5 A önerilir).** Biri yeni değil: K4 ile boşalan Pi XL4016'sı servo B oldu, XL sayısı 3 kalır. Hat başına yoğun yük 4,4 / 4,7 A, sınırın altında.
   Kafa servolarını iki hatta bölmek (pan A, tilt B) yükü dengeliyor. "Sağ kol + kafa / sol kol" bölüşümünde A 5,3 A olurdu.
-- Teorik durma (12,7 A) XL4016'nın kendi akım sınırına çarpar: gerilim düşer, servo resetlenebilir, tehlikeli değil. Ölçümde hat sürekli > 5 A ise yedek: o hat için 20 A / 300 W düşürücü modül (fiyat doğrulanmadı).
+- Teorik durma (12,7 A) XL4016'nın kendi akım sınırına (çipin anahtar akımı sınırı **10 A tipik**, XLSEMI veri sayfası Rev 1.2 s. 5; `kablolar.json` `koruyucular.XL4016-*`) çarpar: gerilim düşer, servo resetlenebilir, tehlikeli değil. Ölçümde hat sürekli > 5 A ise yedek: o hat için 20 A / 300 W düşürücü modül (fiyat doğrulanmadı).
 - XL4016 girişleri: anahtarlı 12 V baradan (röle sonrası), her biri **7,5 A hat sigortası** ile (giriş tepe 7,7 A × 6 V / 0,88 / 12,8 V ≈ 4,1 A).
 - XL → dağıtım kartı: **16 AWG** silikon çift (≈ 0,3 m; 0,6 m gidiş-dönüş 8 mΩ → 7,7 A'de 0,06 V).
-- **Dağıtım kartı A / B** (ön kat ön bandı, (±72; 205); 70 × 50 pertinaks): 16 AWG klemens → V+ ve GND barası (kalın tel) → 2200 µF (mevcut 4 kondansatörden 2'şer) → 6 adet 3 pinli çıkış (servo uzatmaları).
+- **Dağıtım kartı A / B** (ön kat ön bandı, (±72; 205); 70 × 50 pertinaks): 16 AWG klemens → V+ ve GND barası (kalın tel) → 2200 µF (mevcut 4 kondansatörden 2'şer) → 6 adet 3 pinli çıkış (servo uzatmaları). Kafa için aynı yöntemle **dağıtım kartı C** XL4016 C'nin yanında: 16 AWG klemens → V+ / GND barası → 1 × 2200 µF → pan ve tilt için iki 3 pinli çıkış, sinyal PCA'dan köprü (O-8, orkestratör 14.11).
   Sinyal: PCA9685 kanalından kısa 3 pinli köprüyle kartın sinyal girişine. Bu köprünün V+ ucu kartta bağlı değil. **PCA9685 V+ klemensi boş kalır.**
 - Uzatma: servo başına 22 AWG, ~1,3 m. Durma akımında 2,6 m × 0,052 Ω/m × 2,5 A ≈ 0,34 V düşüm (servo 5,66 V görür); kabul. Daha az düşüm istenirse dağıtım traverse seviyesine taşınabilir (iskelet/kabuk işi, açık).
 
@@ -263,7 +263,7 @@ K1 kontağı (40 A): F1 20 A ──> anahtarlı 12 V bara ──> BTS7960 sol/sa
   `ser.dtr = False; ser.rts = False` ayarlanıp sonra `ser.open()`, Linux'ta ayrıca `stty -F /dev/ttyUSB0 -hupcl` (kapanışta DTR düşmesin). İlk bağlantı testinde
   ESP32'nin boot mesajı basmadığı (resetlenmediği) görülmeli. Yazılım yine de "ESP32 resetlendi" durumunu ele almalı: reset sonrası röle kapalı açılır, yeniden devreye alma E3 kuralıyla. **Bilinçli reset (14.11, pano #7 öneri 5):** yeni Pi GPIO → EN teli yok; Pi aynı DTR / RTS devresiyle bilerek bir reset dizisi uygular (devre kartta zaten var; boyun demeti büyümez). Efe'ye soruldu (taslak); `kablolama-on-kararlar.md` §7. **Boyun demeti bağlanmadan önce** Efe'nin iki cevabı beklenir: bilinçli reset DTR / RTS ile yapılabiliyor mu, otomatik reset donanımda kapatılacak mı; "tel gerekir" derse bükümlü çift eklenir (≈ +2 mm², servo kanalı %44,8 → ≈ %46). Port açılırken Linux DTR ve RTS'yi etkin yapar; pyserial önce DTR'yi sonra RTS'yi bırakır, arada DTR bırakık / RTS etkin bir an EN'i LOW çeker: kapalı açma ayarına rağmen reset olabilir (KT6).
 - **Ön şarj (E9) önemi arttı (K3):** E3 ile röle her "devreye al"da yeniden çeker. Her seferinde anahtarlı bara üstündeki kondansatörler (XL4016 / BTS giriş kondansatörleri; XL çıkışındaki
-  4 × 2200 µF servo kondansatörü de XL üzerinden) boş halden dolar. Victron BMS yüksek kapasitif yükte kesebilir, ~10 s sonra yeniden dener (`06-aku-secimi.md` satır 61, 164).
+  4 × 2200 µF servo kondansatörü de XL üzerinden; 14.11'den beri dağıtım kartı C ile 5 × 2200 µF, hesap yeniden yapılmadı) boş halden dolar. Victron BMS yüksek kapasitif yükte kesebilir, ~10 s sonra yeniden dener (`06-aku-secimi.md` satır 61, 164).
   Önceden yalnız açılışta olan darbe artık her acil stop sonrasında olur. E9 (5. adım): röle kontağına paralel 10 Ω / 5 W ön şarj direnci + gecikmeli çekme ya da ≥ 30 A NTC; değer için bara kapasitesi ölçülecek.
 - Röle sürücüsü (14.11, `pin-haritasi.md` sürüm 4 + 14.11 düzeltme, §6 D1 / D9): **BC337-40** (TO-92, delikli; -40 sınıfı zorunlu, ayak sırası teslimde diyot testiyle, T2a), taban 270 Ω seri + **2,2 kΩ** taban → GND, bobine ters 1N4007; GPIO 4 / 19 sürüş gücü varsayılanda (2) kalır. Bobin (üretici tabloları MAH3 / JQC-3FF): K1 85 Ω ±%10 → en kötü 0,19–0,21 A; K2 400 Ω ±%10 → ≈ 0,04 A. En kötü taban akımı 4,79 mA → zorunlu β K1 40–44, K2 ≈ 9. hFE en az 250 @ 100 mA; 300 mA'de üreticiye göre 60 (onsemi; satın alınacak BC337-40TA adı) – 170 (Diotec): belgeyle garanti pay ≈ 1,37× (VCE 1 V'ta). VCE ≤ 0,3 V'u hiçbir üretici garanti etmez, belgeyle sınır 1,0 V: K1 bobini besleme 11 V'ta ≥ 10,0 V, 10 V'ta ≥ 9,0 V görür (çekme garantisi ≤ 8,4 V, 23 °C); doyum T2 (g)'de VCE ölçülerek kabul edilir. Kayıp en kötü ≈ 0,22 W, 60 °C ortamda Tj ≈ 103 °C (izin 0,45 W). Sıcak bobinde çekme gerilimi artar (≈ 9,6 V @ 60 °C, ≈ 10,3 V @ 80 °C, hesap): uzun çalışmadan hemen sonra düşük aküyle devreye almada K1 çekmeyebilir; arıza güvenli yönde, Y4 hata yolu yakalar (`pin-haritasi.md` T2). Kapalı hâl: boşta taban ≤ 0,25 V, 70 °C'de bobin ≤ 0,3 mV, bırakma sınırı 1,2 V. Listedeki VBsemi IRLZ44NPBF-VB çıkar (sürüm 3'ün mantık seviyeli MOSFET şartı kalktı).
 - F5 2 A: bobin 0,15 A + PC817 ~5 mA. Önceki 5 A bu devre için büyüktü, 5 A artık F3/F4'te.
@@ -276,10 +276,10 @@ Tarih notu 04.11.2026: düşürücü, bütçe, ekran beslemesi ve boyun demeti 1
 - **Kafada Pi düşürücüsü:** Pololu **D24V50F5** (Robotistan): giriş en çok 38 V, çıkış 5 V ±%4, 5 A sürekli, 17,8 × 20,3 × 8,8 mm; ters gerilim, aşırı akım, kısa devre, aşırı sıcaklık koruması, yumuşak başlatma, düşük gerilim kilitleme (`raporlar/kaynaklar/07-gogus-ekrani-ve-5v.md`). 12 V girişteki sürekli akım üretici eğrisinden teyit edilecek (açık iş 8).
 - **Kafada ekran düşürücüsü:** SY8205 (Motorobit): giriş 7–30 V, sürekli 3,7 A, sayfada koruma yazmıyor; çıkışında P6KE6V8A var. Pi hattından ayrı (üstteki mimari).
 - **Kafa 5 V bütçesi:** normal karşılama toplam **3,57 A**, ekran ayrı düşürücüde **Pi hattı 2,67 A**, QLED **0,9 A varsayım**. Hesap, ölçülmedi; tepe değer yeni düzende hesaplanmadı.
-- **Bağlantı:** D24V50F5 VOUT → kısa USB-C erkek ucu (20 AWG, ~10 cm; v4: USB Type-C 24 pin test kartı, kablo lehimlenir) → Pi USB-C. PD yok, bu yüzden:
+- **Bağlantı:** D24V50F5 VOUT → kısa USB-C erkek ucu (18 AWG, düzeltme turu 1 madde 4 b; ~10 cm; v4: USB Type-C 24 pin test kartı, kablo lehimlenir) → Pi USB-C. PD yok, bu yüzden:
   - EEPROM'a `PSU_MAX_CURRENT=5000` (`sudo rpi-eeprom-config --edit`): firmware PD pazarlığını atlar, 5 A kaynak varsayar ([raspberrypi.com](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html), bootloader yapılandırması).
   - `config.txt`: `usb_max_current_enable=1` (aynı belge; USB-A çıkış sınırını kaldırır). Önceden LCD beslemesi içindi; kafa ekranı artık Pi'den beslenmiyor, hub ve USB cihazları için tutuldu. Gereği montajda ölçümle görülür.
-- **TVS:** her iki 5 V çıkışına P6KE6V8A (6,45–7,14 V kırılma), kafa girişinde 12 V'a P6KE18A (15,3 V tutma; LiFePO4 şarjda 14,6 V). Delikli gövde, klemense lehimlenir.
+- **TVS:** her iki 5 V çıkışına P6KE6V8A (6,45–7,14 V kırılma), kafa girişinde 12 V'a P6KE18A (15,3 V tutma; en kötü durum hesap değeri 14,6 V, şarj hedefi 14,4 V, O-13). Delikli gövde, klemense lehimlenir.
 - **ESP32 çift besleme (diyotlu VEYA, iki kaynak):** asıl kaynak çevre 5 V → VIN. Pi'ye giden USB kablosunun VBUS teline seri **1N5819** (anot Pi tarafında). VBUS kesilmez:
   CP2102'nin VBUS pini bağlantı algısıdır, kesilirse kart USB'de görünmeyebilir. Diyot sayesinde çevre 5 V Pi'ye geri beslemez; çevre 5 V düşerse ESP32 Pi'den ~4,4–4,7 V alır (zararsız, ESP32 çalışır).
   Kartın kendi VBUS→VIN diyodu doğrulanırsa (DOIT DevKit V1 şemasında var) bu diyot gerekmez. Montajda multimetreyle bakılacak.
@@ -302,7 +302,7 @@ Tarih notu 04.11.2026: düşürücü, bütçe, ekran beslemesi ve boyun demeti 1
 - **Isı (el hesabı, 30 °C ortam, R 0,992 K/W; `kafa-analiz.json` `isi`):** 7" kafada boşta / tipik / en kötü 7,2 / 11,4 / 14,5 W → kapalı 37,1 / 41,3 / 44,4 °C. 10,1" QLED ile normal karşılamada **~49 °C** (servo sınırı 55 °C), ölçülecek. Önceki 125 cm değerleri (39 / 45 / 49 °C, "yarıklı 34–42 °C") 04.11'de kaldırıldı.
   Test şartı (değişmedi): kafa kapalı, stres (stress-ng + animasyon), SoC ≤ 75 °C, tilt servosu gövdesi ≤ 50 °C. Yazılım SoC > 75 °C'de animasyon FPS düşürür. Aşılırsa üst bant arkasına 25–30 mm egzoz fanı.
 - **Servis (125 cm kafası; yeni kabukta doğrulanmadı):** microSD −X'e bakar (x −49…−34, z −17…−37). Arka kabuk 2 vidayla (x ±105, z −30) sökülünce SD, USB-A ve Ethernet erişilir. Ön kabuk ve LCD yerinde kalır.
-- **Kablo listesi (boyun; `lale158/kablo_yolu_ekran.py`, 05.11 B + R1):** 12 V çift 18 AWG + tilt servo + göğüs HDMI (Ø6) + hub uzatması (Ø4) + hoparlör (Ø4) ≈ 69,9 mm² (kablo çapları tahmini; `kablo_yolu_ekran.py:31, 197`). Dar kesitler: mil arka penceresi 20 × 10 (175 mm², %39,9), servo yuvası arka kanalı 20 × 7,8 (156 mm², %44,8), alt çıkış 20 × 12 (204 mm², %34,3) (`lale158-kontrol.json` `kablo_ozet.boyun_demet_alan_mm2`, `gecis`). Düzen **K14 a (14.11)**. Hoparlör yeri kapandı: gövde orta bandı sağ duvarı (`KY/uygulama-notu.md:59`).
+- **Kablo listesi (boyun; `lale158/kablo_yolu_ekran.py`, 05.11 B + R1):** 12 V çift 18 AWG + tilt servo + göğüs HDMI (Ø6) + hub uzatması (Ø4) + hoparlör (Ø4) ≈ 69,9 mm² (kablo çapları tahmini; `kablo_yolu_ekran.py:31, 197`). Dar kesitler: mil arka penceresi 20 × 10 (175 mm², %39,9), servo yuvası arka kanalı 20 × 7,8 (156 mm², %44,8), alt çıkış 20 × 12 (204 mm², %34,3) (`lale158-kontrol.json` `kablo_ozet.boyun_demet_alan_mm2`, `gecis`). Düzen **K14 a (14.11)**. Hoparlör yeri kapandı: gövde orta bandı sağ duvarı (`KY/uygulama-notu.md:59`). Kablo kablo uçlar ve şartlar (HDMI Ø ≤ 6 mm, hub uzatması USB 2.0 küçük fiş): `planlama/adim3/kablolar.json`.
 - **Tabanda boşalan Pi yeri** (−90,5; 80): E2/E3 arayüz kartı (70 × 50 pertinaks: bölücüler, PC817, röle sürücüsü BC337-40 × 2 (D9) + 1N4007, klemens).
 
 ## E7: etek içi ısı
@@ -321,24 +321,24 @@ Tarih notu 04.11.2026: düşürücü, bütçe, ekran beslemesi ve boyun demeti 1
 
 ```
 Akü Victron SuperPack 12,8 V 20 Ah (BMS 30 A sürekli) ── XT60 ── Ana sigorta 30 A ── ASW-A01 ana anahtar ── sigorta kutusu (6 yol)
-  │                                                                                   │
-  └─ (anahtar sonrası) akü ADC bölücü 100k/18k ── ESP32 GPIO36                         ├─ F1 20 A ── röle K1 kontağı ── anahtarlı 12 V bara (WAGO)
+  │                              └─ (ana sigorta sonrası) 7,5 A mini ── XT60E-M şarj  │
+  └─ (anahtar sonrası) akü ADC bölücü 100k/18k ── ESP32 GPIO36                         ├─ F1 20 A ── röle K1 kontağı ∥ K2 ön şarj kolu ── anahtarlı 12 V bara (M5 saplama + pabuç, O-3 r)
                                                                                       │        ├─ BTS7960 sol ── ön sol + arka sol JGB37 (paralel)
                                                                                       │        ├─ BTS7960 sağ ── ön sağ + arka sağ JGB37 (paralel)
                                                                                       │        ├─ 7,5 A ── XL4016 A 6 V ── 16 AWG ── dağıtım A ── sağ kol (4)   [29.10: pan C'ye]
                                                                                       │        ├─ 7,5 A ── XL4016 B 6 V ── 16 AWG ── dağıtım B ── sol kol (4)   [29.10: tilt C'ye]
-                                                                                      │        ├─ 5 A ──── XL4016 C 6 V ── 16 AWG ── klemens ── kafa pan + tilt   [29.10, yeni]
-                                                                                      │        └─ PC817 #2 (bara durumu) ── ESP32 GPIO5
+                                                                                      │        ├─ 5 A ──── XL4016 C 6 V ── 16 AWG ── dağıtım kartı C ── kafa pan + tilt   [29.10; kart O-8, 14.11]
+                                                                                      │        └─ 2 A mini (O-18 b) ── PC817 #2 (bara durumu) ── ESP32 GPIO5
                                                                                       ├─ F2 15 A ── yedek
                                                                                       ├─ F3 5 A ── 18 AWG çift, direk ön yüzü, boyun ── KAFA: P6KE18A ─┬─ D24V50F5 5 V ── P6KE6V8A
                                                                                       │                                                                │  ├─ USB-C ── Raspberry Pi 5 ── USB: 1 ReSpeaker v2.0 (3,5 mm ── PAM8403 (5 V: D24V50F5, K10 a, masa denemesine bağlı) ── hoparlör (gövde)), 2 boş, 3 hub (gövde: göğüs Touch, ESP32, 2 boş), 4 kafa ekranı Touch
                                                                                       │                                                                │  └─ micro HDMI 0: kafa ekranı ; micro HDMI 1: göğüs ekranı (K14 a) ; CSI: Camera Module 3 (FPC 300 mm)
                                                                                       │                                                                └─ SY8205 5 V ── P6KE6V8A ── micro USB Power: 10,1" QLED (Touch'tan 5 V köprülenmez)
                                                                                       ├─ F6 3 A ── LM2577 + LM2596 12 V ── 11,6" göğüs ekranı 12 V [K11 a: kutunun 6. yuvası, röle öncesi, acil stopta açık]
-                                                                                      ├─ F4 5 A ── XL4016 çevre 5 V ── ESP32 VIN, sonar ×3, enkoder (3V3 ESP32'den), PCA9685/BNO055 mantık (3V3)
-                                                                                      └─ F5 2 A ── mantar NC ── röle K1 bobini ── BC337-40 ── GND   (PC817 #1 mantar sonrası)
+                                                                                      ├─ F4 5 A ── XL4016 çevre 5 V ── 2 A mini (O-19 a) ── ESP32 VIN, sonar ×3, enkoder (3V3 ESP32'den), PCA9685/BNO055 mantık (3V3)
+                                                                                      └─ F5 2 A ── mantar NC ── röle K1 bobini ∥ K2 bobini ── BC337-40 ── GND   (PC817 #1 mantar sonrası)
 Veri: Pi (kafa) ── USB ≈ 1,57 m (VBUS'ta 1N5819) ── ESP32 (taban) ── I2C: PCA9685 (10 servo + 3 sonar trig), BNO055 ; PWM/EN/IS: BTS ×2 ; enkoder ×2 (A/B)
-Toprak: akü − ── WAGO yıldız noktası (güç paneli) ── tüm dönüştürücüler; kafa GND 12 V dönüşüyle
+Toprak: akü − ── yıldız noktası (güç paneli; M5 saplamalar + pabuç, saplama başına ≤ 4, O-3 r / düzeltme turu 1) ── tüm dönüştürücüler; kafa GND 12 V dönüşüyle
 ```
 
 ## Akım bütçesi (anlık, akü tarafı 12,8 V; dönüştürücü verimi XL 0,88, Pololu 0,90, BTS 0,95)
@@ -361,20 +361,20 @@ Toprak: akü − ── WAGO yıldız noktası (güç paneli) ── tüm dönü
 
 | Yer | Değer | Besler | Not |
 |---|---|---|---|
-| Ana | 30 A | akü + → her şey | XT60 sonrası kablolu yuva (mevcut) |
-| F1 | 20 A | röle K1 (ve paralel ön şarj kolu K2 + 5,6 Ω, E9) → anahtarlı 12 V bara | motorlar + iki servo hattı. Ön şarj kolu da F1'den sonra, ayrı sigorta yok |
-| F2 | 15 A | yedek | |
-| F3 | **5 A** (önce 10 A Pi) | kafa 12 V (18 AWG): D24V50F5 + SY8205 | normal ≈ 1,55 A (04.11, hesap); tepe hesaplanmadı |
-| F4 | 5 A | XL4016 çevre 5 V | **ikinci 5 A** (E9): sette tek 5 A var, F3 onu alır |
-| F5 | **2 A** (önce 5 A) | acil stop / röle K1 + K2 bobinleri | sette yok: yeni. K1 0,15 A + K2 ~0,03 A + PC817 |
-| Hat | 7,5 A × 2 + 5 A | XL4016 A ve B girişi; C (kafa servoları, 29.10) | kapaklı mini bıçak sigorta yuvası × 3 (yeni) |
+| Ana | 30 A standart | akü + → her şey | XT60 sonrası kablolu yuva (mevcut) |
+| F1 | 20 A standart | röle K1 (ve paralel ön şarj kolu K2 + 5,6 Ω, E9) → anahtarlı 12 V bara | motorlar + iki servo hattı. Ön şarj kolu da F1'den sonra, ayrı sigorta yok |
+| F2 | 15 A standart | yedek | |
+| F3 | **5 A** standart (önce 10 A Pi) | kafa 12 V (18 AWG): D24V50F5 + SY8205 | normal ≈ 1,55 A (04.11, hesap); tepe hesaplanmadı |
+| F4 | 5 A standart | XL4016 çevre 5 V | **ikinci 5 A** (E9): sette tek 5 A var, F3 onu alır. Çıkışta (5 V) **çevre hat sigortası 2 A mini**, G19'un XL4016 çevre OUT+ ucunun dibinde (O-19 a, orkestratör kararı 14.11; 5 V çevre tepe ≈ 0,61 A, `kablolar.json` `koruyucular.hat-cevre`) |
+| F5 | **2 A** standart (önce 5 A) | acil stop / röle K1 + K2 bobinleri | sette yok: yeni. K1 0,15 A + K2 ~0,03 A + PC817 |
+| Hat | mini: A 7,5 A · B 7,5 A · C 5 A · G22 2 A · çevre 2 A | XL4016 A / B / C girişi (C kafa servoları, 29.10); G22 algı teli (bara ucu, O-18 b); G19 çevre 5 V (XL4016 çevre çıkışı, O-19 a) | **toplam 6 kapaklı mini yuva** (şarj satırınınki dahil). Tarihçe: kapaklı mini bıçak sigorta yuvası × 3 (yeni); şarj satırındaki dördüncü yuvayla toplam × 4 (satır 41, `planlama/adim3/kablolar.json`: G06, G14, G15, G16); O-18 b ile beşincisi PC817 #2 algı telinde (G22, bara ucunda 2 A mini); O-19 a ile altıncısı 5 V çevre hattında (G19, XL4016 çevre OUT+ ucunda, 2 A mini) |
 | F6 | **3 A** standart bıçak (14.11; önce hat yuvasında mini 2 A) | LM2577 + LM2596 → 11,6" göğüs ekranı | kutunun 6. yuvası, ana anahtar sonrası, röle öncesi (K11 a). Ekran en çok 1 A @12 V → girişte 10 V'ta ≈ 1,5 A (%50) |
-| Şarj | 10 A (mini) | XT60 şarj girişi → akü + (ana anahtar öncesi) | E9 / akü raporu önerisi; dördüncü kapaklı yuva (yeni). Şarj cihazı 6 A |
+| Şarj | 7,5 A mini (düzeltme turu 1, 14.11; önce 10 A) | XT60 şarj girişi → akü + (ana anahtar öncesi): + ana sigortanın yük tarafına / ana anahtarın akü tarafına, − yıldız noktasına; sigorta akü tarafındaki ucun dibinde (O-17, orkestratör kararı 14.11; ana anahtar kapalıyken şarj, şarj akımı ana sigortadan geçer) | E9 / akü raporu önerisi; dördüncü kapaklı yuva (yeni). **Düzeltme turu 1 (14.11): 10 → 7,5 A mini**: şarj cihazı listedeki IMAX B6 (Robocombo: 0,1–5,0 A, en çok 50 W → 14,4 V'ta ≈ 3,4 A; "6 A" UserPil cihazınındı), 5 A × 1,25 = 6,25 A ≤ 7,5 A; 16 AWG'nin 45 °C düzeltmeli sınırı 8,2 A |
 
 **Sigorta seti (E9, 5. adım):** kutudaki set 5, 10, 2 × 15, 2 × 20 (standart/ATO bıçak). F3 ve F4 iki 5 A ister, bir tane var:
 **ikinci 5 A** ve F5 için **2 A** standart bıçak eklenir. Hat yuvaları mini bıçak: 7,5 A × 2 (XL4016 A / B) + 5 A (XL4016 C, kafa
-servoları; karar 29.10) + şarj girişi 10 A. Maliyette tek satır "Bıçak sigorta (ek)" (6 adet; standart/mini ayrımı modelde), yuvalar
-"Hat sigortası yuvası" × 4 (v4'te × 5; 14.11'de göğüs ekranı kutunun F6 yuvasına geçti), ayrıca standart 3 A (F6). Setteki 10 A ve bir 15 A yedek kalır.
+servoları; karar 29.10) + şarj girişi 7,5 A (düzeltme turu 1) + G22 algı teli 2 A (O-18 b) + çevre 5 V 2 A (O-19 a). Maliyette "Bıçak sigorta (ek)" satırları (mini 2 A × 2, 5 A × 1, 7,5 A × 3; standart 2 A, 3 A, 5 A birer; 10 A mini V3 dışı), yuvalar
+"Hat sigortası yuvası" × 6 (v4'te × 5; 14.11'de göğüs ekranı kutunun F6 yuvasına geçti, × 4; O-18 b ile × 5, O-19 a ile × 6), ayrıca standart 3 A (F6). Setteki 10 A ve bir 15 A yedek kalır.
 **H1 erişimi (karar 29.10, Ahmet):** etek servis kapağı H1 açıklığı değişmez (x ±32, 64 × 50; `arayuz.M6 etek_kapak_h1`). 6 yollu sigorta
 kutusu alınınca ölçülür; kutu 1 × 6 dizilişliyse uçtaki iki yuva kapak altında kalır, bu iki yuva **yedek sigorta** için ayrılır
 (F2 15 A yedek ve boş / yedek yuva; 14.11: boş yuva F6 3 A göğüs ekranı oldu, nadiren değişir; `kablolama-on-kararlar.md` §3). **Kutu girişi (14.11, KT3):** yuvalar ortak baralı mı teslimde bakılır; ayrı girişliyse giriş köprüleri **12 AWG**, kutunun üstünde olabildiğince kısa, tek giriş klemensinden yıldız (F1–F6 hepsi). Sık değişebilecek F1, F3, F4, F5 ortadaki dört yuvaya; 2 × 3 dizilişte altısı da açıkta.
@@ -415,7 +415,7 @@ XL4016 boşta 0,4 W, PC817 girişleri ~0,13 W, servo bekleme akımı E1 tablosun
 - **Yoğun senaryo düzeltme planındaki şartı karşılıyor (≥ 100 W).** Planın "≈ 2,5 sa" değeri 307 Wh (24 Ah) içindi; bu hesapta 24 Ah ile 2,4 sa.
   Seçilen Victron ile **≈ 2,0 sa**.
 - **3 saatlik ders:** 134 Wh nominal gerekir (10,5 Ah). Victron 5,7 sa ile rahat.
-- **8 saatlik fuar:** 400 Wh nominal gerekir (31 Ah). Victron 5,1 sa ile yetmez: öğle şarjı (6 A ile ≈ 3,5 sa) ya da ikinci akü. Akü raporunun
+- **8 saatlik fuar:** 400 Wh nominal gerekir (31 Ah). Victron 5,1 sa ile yetmez: öğle şarjı (IMAX B6 en çok 50 W → 14,4 V'ta ≈ 3,4 A ile boştan ≈ 6 sa, hesap) ya da ikinci akü. Akü raporunun
   sonucuyla aynı.
 - Akü raporuyla fark: boşta 14,6 → 19,0 W (servo bekleme 1,5 → 4,2 W, röle 1,5 → 1,9 W, Pololu kaybı), normal 31 → 36 W, yoğun 73 → 104 W
   (yoğun tanımı sürekli jest + yerinde dönüş payı ile ağırlaştırıldı). OZET / `taban-analiz.json` `aku` hâlâ 307 Wh × 0,80 ve röle 0,3 W ile
@@ -426,7 +426,7 @@ XL4016 boşta 0,4 W, PC817 girişleri ~0,13 W, servo bekleme akımı E1 tablosun
 ## E9: ön şarj (5. adım kararı)
 
 **Sorun:** E3 ile röle K1 her "devreye al"da çeker. Anahtarlı bara üstündeki boş kondansatörler aküye doğrudan bağlanır: XL4016 A/B ve
-BTS7960 ×2 modül giriş elektrolitleri (tahmini 4 × ~470 µF ≈ **2 mF**, ölçülecek) ve XL çıkışındaki 4 × 2200 µF servo kondansatörü (XL üzerinden).
+BTS7960 ×2 modül giriş elektrolitleri (tahmini 4 × ~470 µF ≈ **2 mF**, ölçülecek) ve XL çıkışlarındaki 5 × 2200 µF servo kondansatörü (XL üzerinden; beşincisi 14.11'den beri dağıtım kartı C'de; ani akım hesabı düzeltme turu 2'de beş kondansatörle yeniden, aşağıda).
 Kablo + kontak ≈ 30 mΩ ile tepe ≈ 13,3 V / 0,03 Ω ≈ 440 A, ~60 µs (tahmini). Victron datasheet dipnotu: yüksek giriş kapasitesinde akü
 kesebilir, ~10 sn sonra yeniden dener (`06-aku-secimi.md`). Önceden yalnız açılışta olan bu darbe artık her acil stop sonrasında olur.
 
@@ -440,20 +440,20 @@ kesebilir, ~10 sn sonra yeniden dener (`06-aku-secimi.md`). Önceden yalnız aç
 ```
 F1 20 A ──┬── K1 kontağı (40 A) ─────────────────────┬── anahtarlı 12 V bara (BTS ×2, 7,5 A ── XL4016 A/B)
           └── K2 kontağı (7 A) ── R_ön 5,6 Ω 11 W ───┘
-F5 2 A ── mantar NC ──┬── K1 bobini ── BC337-40 #1 (GPIO4)      (her bobine ters paralel 1N4007)
+F5 2 A ── mantar NC ──┬── K1 bobini ── BC337-40 #1 (GPIO4)      (her bobine ters paralel 1N4007: bobin uçlarının dibinde, K1'de soket kuyruğu 86 / 85, K2'de bobin klemensi üstünde; katot bobinin + ucuna)
                       └── K2 bobini ── BC337-40 #2 (GPIO19; 270 Ω seri, 2,2 kΩ taban → GND)
 ```
 - **R_ön = 5,6 Ω, 11 W taş (çimento) direnç** (Direnc.net 13,95 TL); **K2 = 12 V 10 A sinyal rölesi** JQC-3FF-12VDC (Qianji, Direnc.net 19,36 TL, MJ:109; 15 Ekim'de JQC-3F(T73) 7 A yazıyordu), ikinci röle sürücüsü BC337-40 (E3 şartı) + 1N4007.
 - **Tepe ön şarj akımı:** 14,6 V / 5,6 Ω = **2,6 A** (BMS 30 A sürekli sınırının onda biri). τ = 5,6 Ω × 2 mF = 11 ms; %99 dolum 56 ms.
-  Ön şarj penceresi **300 ms**: XL çıkışındaki 8,8 mF servo kondansatörü de buck üzerinden dolsun.
-- **Enerji:** bara ½ · 2 mF · 14,6² ≈ 0,21 J + servo kondansatörleri ½ · 8,8 mF · 6² ≈ 0,16 J; dirençte < 0,5 J, 11 W için ihmal.
+  Ön şarj penceresi **300 ms**: XL çıkışındaki 11 mF servo kondansatörü (5 × 2200 µF, dağıtım kartı C ile) de buck üzerinden dolsun. Servoların bekleme akımı (≈ 0,4 A) aynı direnci paylaşır: kondansatörlere kalan güç ≈ 4,5 W, ≈ 0,20 J ≈ 50 ms'de dolar; bara τ ile toplam **≈ 100 ms** < 300 ms (düzeltme turu 2, temkinli hesap; bağımsız kontrolün hesabıyla aynı; önceki "≲ 80 ms" bekleme akımını saymıyordu). **Boş akü (12,8 V; P10.7a ek tur, temkinli hesap):** bekleme yükü (≈ 5,7 W giriş) dirençte büyük pay alır; yalnız bu yükle bara ≈ 9,4 V'ta dengelenir, XL4016 girişi 8 V'un (veri sayfasındaki giriş aralığının alt ucu) üstünde kalmalı: bara 8–9,4 V arasında kondansatörlere ≈ 0,4–1,0 W kalır, 0,20 J ≈ **0,2–0,5 s**'de dolar. 300 ms penceresine pay yok (alt uçta bile ≈ 100 ms içinde değil); pencere sabit kalırsa K1 küçük bir kalan adımla kapanır (tehlikeli değil). Yazılıma not (P10.7a C adımında düzeltildi): ön şarj beklemesi en az 300 ms; boş aküde (12,8 V) dolma hesapla 0,2–0,5 s olduğu için **500 ms önerilir**; bekleme bitince GPIO5 (PC817 #2, bara algısı) LOW teyidi (LOW değilse ön şarj kolu çalışmıyor: hata); K2 toplam en çok 1 s. GPIO5'in LOW olması dolduğunu göstermez: PC817 #2 baranın dolduğunu değil gerilim olduğunu okur, bara ≈ 4 ms'de LOW verir. Pin raporundaki 300 ms için değişiklik önerisi: 500 ms; karar yazılım tarafıyla. Hesap; ölçülmedi.
+- **Direnç enerjisi (temkinli, düzeltme turu 2):** bara dolumu ½ · 2 mF · 14,6² ≈ 0,21 J + servo kondansatörlerine aktarılan pay ≤ 0,23 J (½ · 11 mF · 6² ≈ 0,20 J ÷ buck verimi 0,88; bara gerilimi kaynağın yarısının üstündeyken dirençteki kayıp aktarılanı aşmaz) + bekleme akımı kaybı 0,4² × 5,6 Ω ≈ 0,9 W × 0,3 s ≈ 0,27 J = **≈ 0,7 J** / 300 ms (ortalama ≈ 2,4 W; ilk anda en çok 14,6² / 5,6 ≈ 38 W, τ 11 ms ile söner). 11 W taş direnç için küçük; önceki "0,5 J sınırı"nın kaynağı yoktu, kaldırıldı. Tepe akım değişmez (2,6 A).
 - **Ön şarjda yük:** XL4016 A/B servoları bekleme akımıyla besler (≈ 5 W, ≈ 0,4 A): R'de ≈ 2,2 V düşüm, bara ≈ 11 V'a çıkar. K1 kapanınca
   kalan adım ≈ 2 V (darbe enerjisi doğrudan bağlamanın ≈ %2'si). BTS EN = 0 olmalı (E3 kuralı); motorlar ön şarjda çekmez.
 - **Hata durumu:** K1 kapanmazsa ya da bara kısa devreyse R'de 13,3² / 5,6 ≈ 32 W (14,6 V'ta 38 W). F1 bu akımı görmez; yazılım K2'yi
   **≤ 1 s** içinde bırakır. Taş direncin kısa süreli aşırı yük dayanımı (tipik 5–10 × P_n, 5 s) seçilen ürün sayfasında yok: doğrulanmadı.
 - **Yer:** güç paneli, K1 yanında; direnç panel yüzeyinden ≥ 5 mm yukarıda (ısı), PETG'ye ve kablo demetine değmez. Montaj rehberi B5a adımı.
 - **Yazılım (ESP32, E3 dizisine ek):** (1) E3 ön koşulları: mantar serbest, servo hedefleri son konumda, BTS EN = 0, açık komut;
-  (2) GPIO19 = 1 (K2); (3) 300 ms bekle, PC817 #2 LOW olmalı (bara var), değilse GPIO19 = 0 ve hata; (4) GPIO4 = 1 (K1);
+  (2) GPIO19 = 1 (K2); (3) en az 300 ms bekle (boş akü için 500 ms önerilir, yukarıdaki not), sonra PC817 #2 LOW teyidi (bara var), değilse GPIO19 = 0 ve hata; (4) GPIO4 = 1 (K1);
   (5) 100 ms sonra GPIO19 = 0; (6) PC817 #2 LOW teyidi. Reset ya da acil stopta iki pin de LOW (pull-down), iki röle de bırakır.
 - **K2 pini (14.11: GPIO19):** E9'da K2 son yedek pin olan GPIO2'ye (DevKit LED'i, strapping) konmuştu; LED yakıp söndüren herhangi bir program K2'yi açıp kapatıyordu.
   14.11 kararıyla K1 GPIO4'e, K2 GPIO19'a taşındı (Nextion kalkınca boşalan 16 / 17 enkodere gitti; 16 / 17'yi Arduino çekirdeği açılışta sürer); GPIO2 yalnız kart LED'i, GPIO12 boş (`pin-haritasi.md` §3.1).
@@ -512,7 +512,7 @@ Karar: Ahmet'in 13.11.2026 yetkilendirmesiyle. Tek yazılı kaynak ve gerekçele
 9. **JGB37 tork riski (T2):** 21 kg·cm satıcı etiketi; 9 kg·cm (Aslong 1:90) senaryosunda standart tekerle yerinde dönüş imkânsız, omni sınırda. Motor ve zemin ölçümü omni siparişinden önce.
 10. PC817 modülünün 3,3 V çıkış tarafı montajda ölçülecek; olmazsa arayüz kartına doğrudan PC817 + 2,2 kΩ (E2 notu).
 11. Yazılım planına: Pi seri portu DTR/RTS değiştirmeden açılır (E3); ESP32 reset = röle bırakır = kollar düşer.
-12. E9 ön şarj: röle her "devreye al"da yeniden çektiği için öncelik arttı (E3). Bilinen, bu paketten eski: acil stopta XL4016 çıkışlarındaki 8,8 mF ≈ 0,16 J tutar (E9 enerji), kısa bir son servo hareketi olabilir.
+12. E9 ön şarj: röle her "devreye al"da yeniden çektiği için öncelik arttı (E3). Bilinen, bu paketten eski: acil stopta XL4016 çıkışlarındaki 11 mF (5 × 2200 µF) ≈ 0,20 J tutar (E9 enerji), kısa bir son servo hareketi olabilir.
 13. Kafa ısı testi: normal karşılamada kapalı kafa ~49 °C hesap, ölçülecek; aşılırsa 25–30 mm egzoz fanı.
 14. **10,1" QLED (04.11):** kütle (600 g varsayım), akım (0,9 A varsayım), Touch VBUS ile Power arasındaki bağ ölçülecek.
 15. **Boyun demeti K14 a (14.11):** 12 V + tilt + göğüs HDMI + hub uzatması + hoparlör; yazılım kabul (pano #6 #21). Açık: alınacak HDMI kablosu Ø ≤ 6 mm (MJ:191'in çapı bilinmiyor), hub uzatması USB 2.0 ve fiş ≤ 13 × 7 mm (MJ:137 USB 3.0, büyük ihtimalle geçmez); demet kurulmadan önce tünel deneme parçasında elle fiş denemesi (parça P10.7 baskı listesinde); ince HDMI ile masa denemesi (pano #6 soru f), boyun içi dört geçiş elle, pan ±90 / tilt ±13'te büküm; demet bağlanmadan Efe'nin reset cevabı.
@@ -520,3 +520,73 @@ Karar: Ahmet'in 13.11.2026 yetkilendirmesiyle. Tek yazılı kaynak ve gerekçele
 17. **USB (14.11):** 4 cihaz (K1 a; ses kartı çıktı, ReSpeaker 3,5 mm → PAM8403; PAM 5 V D24V50F5, K10 a). Açık: K10 a ve ses yolu masa denemesine bağlı (KT1, KT2); hub girişi gerilimi (harici besleme yok; F4 atarsa hub ≈ 0,37 A); Pi USB akım ayarı (`PSU_MAX_CURRENT` / `usb_max_current_enable`); modelde Pi 2'deki ses kartı ve uzatması (P10.7).
 18. **Akü süresi:** normal ~3,8–4,4 sa kaba tahmin; yoğun senaryo yeniden hesaplanacak, ölçüm yapılacak (gereksinim 2 saat; 1,83 sa kabulü 1,65 m yükleri içindi).
 19. **v4 muadilleri:** BTS7960B pin adları pin planında eşlendi (EN1/EN2 = INH, IN1/IN2 = PWM varsayımı; `pin-haritasi.md` §6.1); bu eşleme ve 3,3 V lojik kart gelince ölçülecek (T4). K2 JQC-3FF ayak düzeni.
+
+<!-- kablolar_uret.py: dal başına kesit (üretilmiş, elle düzenlenmez) -->
+
+## Ek: dal başına kesit (üretilmiş)
+
+Bu blok `planlama/adim3/kablolar.json`'dan `py -3 planlama/adim3/kablolar_uret.py` ile yazılır; tek kaynak tablodur, burada elle değiştirilmez. Kural, kaynaklar ve istisnalar: `planlama/adim3/kablolar.md` §Kesit ve sigorta kuralı (O-1 c / O-2 a + b, orkestratör 14.11). Gerilim düşümü boylar ölçülünce (P10.7b) sınanır: en yüksek akımda düşüm > %3 ise bir kalın kesit.
+
+| Kablo | Dal | Kesit | Koruyan | Bölge | Düzeltilmiş sınır | Durum |
+|---|---|---|---|---|---|---|
+| A01 | F5-mantar-oncesi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kesin |
+| A02 | mantar-sonrasi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kesin |
+| A03 | mantar-sonrasi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
+| A04 | mantar-sonrasi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kesin |
+| A05 | mantar-sonrasi | 18 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
+| A06 | mantar-sonrasi | 22 AWG | F5 2 A (sigorta kutusu) (`F5`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kablajda teyit edilecek |
+| B01 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kablajda teyit edilecek |
+| B02 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kablajda teyit edilecek |
+| G01 | aku-ana | 12 AWG | Akü BMS (Victron SuperPack, 30 A sürekli) (`aku-bms`, 30 A) | etek 45 °C × 0,82 | 20,5 A (istisna: ana-hat-12awg) | kablajda teyit edilecek |
+| G02 | aku-ana | 12 AWG | Akü BMS (Victron SuperPack, 30 A sürekli) (`aku-bms`, 30 A) | etek 45 °C × 0,82 | 20,5 A (istisna: ana-hat-12awg) | kablajda teyit edilecek |
+| G03 | aku-ana | 12 AWG | Ana sigorta 30 A (standart bıçak, kablolu yuva) (`ana-sigorta`, 30 A) | etek 45 °C × 0,82 | 20,5 A (istisna: ana-hat-12awg) | kablajda teyit edilecek |
+| G04 | aku-ana | 12 AWG | Ana sigorta 30 A (standart bıçak, kablolu yuva) (`ana-sigorta`, 30 A) | etek 45 °C × 0,82 | 20,5 A (istisna: ana-hat-12awg) | kablajda teyit edilecek |
+| G05 | aku-ana | 12 AWG | Akü BMS (Victron SuperPack, 30 A sürekli) (`aku-bms`, 30 A) | etek 45 °C × 0,82 | 20,5 A (istisna: ana-hat-12awg) | kablajda teyit edilecek |
+| G06 | sarj | 16 AWG | Şarj hat sigortası 7,5 A mini (akü tarafındaki ucun dibinde) (`hat-sarj`, 7,5 A) | etek 45 °C × 0,82 | 8,2 A | kablajda teyit edilecek |
+| G08 | F1-kontak-oncesi | 12 AWG | F1 20 A (sigorta kutusu) (`F1`, 20 A) | etek 45 °C × 0,82 | 20,5 A | kablajda teyit edilecek |
+| G09 | anahtarli-bara | 12 AWG | F1 20 A (sigorta kutusu) (`F1`, 20 A) | etek 45 °C × 0,82 | 20,5 A | kablajda teyit edilecek |
+| G10 | F1-kontak-oncesi | 12 AWG | F1 20 A (sigorta kutusu) (`F1`, 20 A) | etek 45 °C × 0,82 | 20,5 A | kablajda teyit edilecek |
+| G11 | anahtarli-bara | 12 AWG | F1 20 A (sigorta kutusu) (`F1`, 20 A) | etek 45 °C × 0,82 | 20,5 A | kablajda teyit edilecek |
+| G12 | anahtarli-bara | 12 AWG | F1 20 A (sigorta kutusu) (`F1`, 20 A) | etek 45 °C × 0,82 | 20,5 A | kablajda teyit edilecek |
+| G13 | anahtarli-bara | 12 AWG | F1 20 A (sigorta kutusu) (`F1`, 20 A) | etek 45 °C × 0,82 | 20,5 A | kablajda teyit edilecek |
+| G14 | anahtarli-bara | 16 AWG | Hat sigortası A 7,5 A mini (XL4016 A girişi) (`hat-A`, 7,5 A) | etek 45 °C × 0,82 | 8,2 A | kablajda teyit edilecek |
+| G15 | anahtarli-bara | 16 AWG | Hat sigortası B 7,5 A mini (XL4016 B girişi) (`hat-B`, 7,5 A) | etek 45 °C × 0,82 | 8,2 A | kablajda teyit edilecek |
+| G16 | anahtarli-bara | 16 AWG | Hat sigortası C 5 A mini (XL4016 C girişi) (`hat-C`, 5 A) | etek 45 °C × 0,82 | 8,2 A | kablajda teyit edilecek |
+| G17 | F3 | 18 AWG | F3 5 A (sigorta kutusu) (`F3`, 5 A) | kafa 49 °C × 0,75 | 5,25 A | kablajda teyit edilecek |
+| G18 | F4 | 18 AWG | F4 5 A (sigorta kutusu) (`F4`, 5 A) | etek 45 °C × 0,82 | 5,74 A | kesin |
+| G19 | F4 | 16 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 8,2 A | kesin |
+| G20 | F6 | 18 AWG | F6 3 A standart (sigorta kutusu) (`F6`, 3 A) | etek 45 °C × 0,82 | 5,74 A | karara bağlı |
+| G21 | F6 | 18 AWG | F6 3 A standart (sigorta kutusu) (`F6`, 3 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
+| G22 | anahtarli-bara | 22 AWG | Hat sigortası G22 2 A mini (bara ucunda) (`hat-G22`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kesin |
+| I01 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kesin |
+| I02 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kesin |
+| K01 | F3 | 18 AWG | F3 5 A (sigorta kutusu) (`F3`, 5 A) | kafa 49 °C × 0,75 | 5,25 A | kesin |
+| K02 | F3 | 18 AWG | F3 5 A (sigorta kutusu) (`F3`, 5 A) | kafa 49 °C × 0,75 | 5,25 A | kesin |
+| K03 | F3 | 18 AWG | Pololu D24V50F5 aşırı akım koruması (`D24V50F5`, akım sınırı belgelenmemiş) | kafa 49 °C × 0,75 | 5,25 A (istisna: kafa-5v-donusturucu-arkasi) | kablajda teyit edilecek |
+| K04 | F3 | — (kesit bilinmiyor) | SY8205 düşürücü (kafa ekranı) (`SY8205`, akım sınırı belgelenmemiş) | kafa 49 °C × 0,75 | — (istisna: kafa-5v-donusturucu-arkasi) | kablajda teyit edilecek |
+| K05 | F3 | 18 AWG | Pololu D24V50F5 aşırı akım koruması (`D24V50F5`, akım sınırı belgelenmemiş) | kafa 49 °C × 0,75 | 5,25 A (istisna: kafa-5v-donusturucu-arkasi) | kablajda teyit edilecek |
+| M01 | anahtarli-bara | — (kesit bilinmiyor) | BTS7960 sol (aşırı akım sınırlama + ısıl kapatma) (`BTS7960-sol`, akım sınırı belgelenmemiş) | etek 45 °C × 0,82 | — (istisna: motor-fabrika-kablosu) | kablajda teyit edilecek |
+| M02 | anahtarli-bara | — (kesit bilinmiyor) | BTS7960 sol (aşırı akım sınırlama + ısıl kapatma) (`BTS7960-sol`, akım sınırı belgelenmemiş) | etek 45 °C × 0,82 | — (istisna: motor-fabrika-kablosu) | kablajda teyit edilecek |
+| M03 | anahtarli-bara | — (kesit bilinmiyor) | BTS7960 sağ (aşırı akım sınırlama + ısıl kapatma) (`BTS7960-sag`, akım sınırı belgelenmemiş) | etek 45 °C × 0,82 | — (istisna: motor-fabrika-kablosu) | kablajda teyit edilecek |
+| M04 | anahtarli-bara | — (kesit bilinmiyor) | BTS7960 sağ (aşırı akım sınırlama + ısıl kapatma) (`BTS7960-sag`, akım sınırı belgelenmemiş) | etek 45 °C × 0,82 | — (istisna: motor-fabrika-kablosu) | kablajda teyit edilecek |
+| N01 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kablajda teyit edilecek |
+| N02 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kablajda teyit edilecek |
+| Q01 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kesin |
+| Q02 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kesin |
+| Q03 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kesin |
+| S01 | anahtarli-bara | 22 AWG | XL4016 A akım sınırı (`XL4016-A`, 10 A) | etek 45 °C × 0,82 | 2,46 A (istisna: servo-uzatmasi) | kesin |
+| S02 | anahtarli-bara | 22 AWG | XL4016 A akım sınırı (`XL4016-A`, 10 A) | etek 45 °C × 0,82 | 2,46 A (istisna: servo-uzatmasi) | kesin |
+| S03 | anahtarli-bara | 22 AWG | XL4016 A akım sınırı (`XL4016-A`, 10 A) | etek 45 °C × 0,82 | 2,46 A (istisna: servo-uzatmasi) | kesin |
+| S04 | anahtarli-bara | 22 AWG | XL4016 A akım sınırı (`XL4016-A`, 10 A) | etek 45 °C × 0,82 | 2,46 A (istisna: servo-uzatmasi) | kesin |
+| S05 | anahtarli-bara | 22 AWG | XL4016 B akım sınırı (`XL4016-B`, 10 A) | etek 45 °C × 0,82 | 2,46 A (istisna: servo-uzatmasi) | kesin |
+| S06 | anahtarli-bara | 22 AWG | XL4016 B akım sınırı (`XL4016-B`, 10 A) | etek 45 °C × 0,82 | 2,46 A (istisna: servo-uzatmasi) | kesin |
+| S07 | anahtarli-bara | 22 AWG | XL4016 B akım sınırı (`XL4016-B`, 10 A) | etek 45 °C × 0,82 | 2,46 A (istisna: servo-uzatmasi) | kesin |
+| S08 | anahtarli-bara | 22 AWG | XL4016 B akım sınırı (`XL4016-B`, 10 A) | etek 45 °C × 0,82 | 2,46 A (istisna: servo-uzatmasi) | kesin |
+| S09 | anahtarli-bara | 22 AWG | XL4016 C akım sınırı (`XL4016-C`, 10 A) | kafa 49 °C × 0,75 | 2,25 A (istisna: servo-uzatmasi) | kesin |
+| S10 | anahtarli-bara | 22 AWG | XL4016 C akım sınırı (`XL4016-C`, 10 A) | kafa 49 °C × 0,75 | 2,25 A (istisna: servo-uzatmasi) | kablajda teyit edilecek |
+| SV1 | anahtarli-bara | 16 AWG | XL4016 A akım sınırı (`XL4016-A`, 10 A) | etek 45 °C × 0,82 | 8,2 A (istisna: servo-ana-hat-16awg) | kesin |
+| SV2 | anahtarli-bara | 16 AWG | XL4016 B akım sınırı (`XL4016-B`, 10 A) | etek 45 °C × 0,82 | 8,2 A (istisna: servo-ana-hat-16awg) | kesin |
+| SV3 | anahtarli-bara | 16 AWG | XL4016 C akım sınırı (`XL4016-C`, 10 A) | kafa 49 °C × 0,75 | 7,5 A (istisna: servo-ana-hat-16awg) | kesin |
+| X01 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kablajda teyit edilecek |
+
+<!-- kablolar_uret.py: blok sonu -->

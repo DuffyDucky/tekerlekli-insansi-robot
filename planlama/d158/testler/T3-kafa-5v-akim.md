@@ -114,7 +114,7 @@ yanlıştır; `elektrik.md:22-25` ve akım bütçesi (`elektrik.md:315`) güncel
 - Pi hattı 5 A'e dayanıyor ya da gerilim 4,80 V'un altına iniyorsa: `elektrik.md` E4 (`elektrik.md:243-245`) ve açık iş 8
   (`elektrik.md:472`). Kaynakta geçen daha büyük seçenek D24V150F5 (`07-gogus.md:48`); seçim **Ahmet Yorulmaz**'ın.
 - Ekran hattı aşarsa ya da QLED titriyorsa: `elektrik.md:18` ve açık iş 14 (`elektrik.md:478`), karar Ahmet Yorulmaz.
-- `get_throttled` 0x0 değilse: ölçümü tekrarla, kablo boyunu ve kesitini (D24V50F5 → USB-C ucu 20 AWG ~10 cm, `elektrik.md:246`) kontrol
+- `get_throttled` 0x0 değilse: ölçümü tekrarla, kablo boyunu ve kesitini (D24V50F5 → USB-C ucu 18 AWG ~10 cm, kablo K03, `elektrik.md:279`; 14.11'de 20 → 18 AWG) kontrol
   et, sonucu tasarım ajanına ver. PAM8403'ün besleme noktası da etkiler: bkz. [T4](T4-pam8403-ses-karti.md) ve `karar-kuyrugu.md` K10.
 
 ## Sonuç

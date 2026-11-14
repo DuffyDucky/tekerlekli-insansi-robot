@@ -40,7 +40,7 @@ Kaynak kısaltmaları:
 | PH | `kod/esp32/include/pinler.h`, `main` dalı `2be1c63` |
 | MC | `kod/esp32/src/motorlar.cpp`, `main.cpp`, `main` `2be1c63` |
 | KY | `kod/jestler/kanallar.yaml`, `main` `2be1c63` |
-| MJ | `planlama/maliyet.json` (ESP32, BTS7960B, röle sürücüsü :106 (bugün IRLZ44N, BC337-40 ile değişecek), K1 :107, K2 :109, direnç seti :115) |
+| MJ | `planlama/maliyet.json` (ESP32, BTS7960B, röle sürücüsü :106 (BC337-40; önce IRLZ44N), K1 :107, K2 :109, direnç seti :115) |
 | P8 | Pano #8, mesaj #19 (soru, 10.11) ve #20 (Efe'nin tarafının cevabı, 13.11) |
 
 Espressif belgeleri ve Arduino-ESP32 / ESP-IDF kaynakları 14.11.2026'da Espressif'in resmî belge sitesinden ve GitHub depolarından

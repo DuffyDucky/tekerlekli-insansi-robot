@@ -1,6 +1,6 @@
 # T4 · PAM8403 + USB ses kartı: besleme noktası ve akım
 
-Kâğıt T4 / 13 · Lale 1,58 m · sürüm 08.11.2026
+Kâğıt T4 / 13 · Lale 1,58 m · sürüm 08.11.2026 · **14.11.2026 notu:** ses yolu değişti (`planlama/adim3/kablolama-on-kararlar.md` §2, §5): K10 a ile kapandı, PAM 5 V'u D24V50F5'ten; ses kaynağı ReSpeaker Mic Array v2.0'ın 3,5 mm çıkışı (10 kΩ / 2,2 kΩ bölücüyle), USB ses kartı yalnız KT2 masa denemesi geçmezse Pi port 2'ye takılır. Bu kâğıttaki ses kartı satırları (P3, Tablo 2, ses kartı akımı) yalnız o durumda doldurulur; ReSpeaker yolunda P3 ReSpeaker'ın USB akımıdır. Kâğıdın bu yola göre yeniden yazılması açık (P10.7a günlüğü).
 
 | Tarih | Ölçen | Yazan | Kontrol eden | Alet markası/modeli |
 |---|---|---|---|---|
@@ -8,7 +8,7 @@ Kâğıt T4 / 13 · Lale 1,58 m · sürüm 08.11.2026
 
 ## Amaç
 
-Robotun sesi şu yoldan çıkıyor: Pi → USB ses kartı → 3,5 mm kablo → PAM8403 yükselteç → göğüsteki hoparlör (Ø40, 4 Ω, 3 W).
+Robotun sesi şu yoldan çıkıyor (14.11'den beri): Pi → ReSpeaker 3,5 mm çıkışı → bölücü → PAM8403 yükselteç (KT2 geçmezse 08.11 yolu: Pi → USB ses kartı → 3,5 mm kablo → PAM8403) → göğüsteki hoparlör (Ø40, 4 Ω, 3 W).
 Bu kâğıt PAM8403'ün 5 V'u **nereden** aldığını kaydeder, en yüksek seste PAM'in ve ses kartının çektiği akımı ve beslendiği hattın
 gerilimini ölçer.
 
@@ -69,7 +69,7 @@ PAM'in besleme noktası karara bağlanmadı (`karar-kuyrugu.md` K10, satır 165)
    açılamaz (`elektrik.md:216`, `elektrik.md:222`, `elektrik.md:227`). Mantar basılı kalmıyorsa (takılan mantarın kilitlenip kilitlenmediği **doğrulanmadı**, [T12](T12-percin-somun.md) C) hoparlöre yaklaşmayan ikinci
    kişi basılı tutar. Sonra, mantar hâlâ basılıyken, bir telefonu (ses kaydı ya da ses seviyesi uygulaması) hoparlörün 10 cm önüne sabitle
    (bantla ya da sehpaya koy) ve kayda başlat; herkes kolların erişim alanının dışına çıkar. Mantarı serbest bırakmadan önce yazılım kaydından
-   **GPIO12 = 0** ("devreye al" yok) olduğunu doğrula; değilse bırakma. Mantarı ancak herkes alan dışındayken, robotun **arkasından**
+   **GPIO4 = 0** ("devreye al" yok; 14.11'e dek GPIO12) olduğunu doğrula; değilse bırakma. Mantarı ancak herkes alan dışındayken, robotun **arkasından**
    uzanarak bırak ve eli hemen çek (normalde tek başına güç vermez, `elektrik.md:222`; yazılım hatasında röle yeniden çekebilir, `elektrik.md:227`). Ancak o zaman **anahtarlı barayı aç** (kol ve kafa servoları ile
    motor sürücüsü de güç alır; `elektrik.md:60`), hareket komutu verme. Uğultuyu yalnız alan dışından dinle ya da telefonun kaydından izle;
    **servo gücü açıkken kimse kolların erişim alanına girmez**, hoparlöre yaklaşmaz. Bitince anahtarlı barayı kapat, telefonu sonra al.

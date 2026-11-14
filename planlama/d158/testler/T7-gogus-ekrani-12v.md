@@ -8,13 +8,13 @@ Kâğıt T7 / 13 · Lale 1,58 m · sürüm 08.11.2026
 
 ## Amaç
 
-Göğüs ekranı (Waveshare 11,6" 1080p, kasalı) aküden ayrı bir dalla beslenir: mini 2 A sigorta → LM2577 + LM2596 kartı (12 V'a ayarlı)
+Göğüs ekranı (Waveshare 11,6" 1080p, kasalı) aküden ayrı bir dalla beslenir: sigorta kutusunun F6 yuvası (3 A standart bıçak, K11 a) → LM2577 + LM2596 kartı (12 V'a ayarlı)
 → ekranın 12 V jakı (`elektrik.md:49`). Bu kâğıt regülatörü **ekrana bağlamadan** 12 V'a ayarlatır, akünün bütün gerilim aralığında
 çıkışın sabit kaldığını ve ekranın akımını ölçer, ekran jakının ölçüsünü ve kutup yönünü kaydeder.
 
 ## Neden önemli
 
-Akü 12,8–14,4 V arasında gezer, şarjda 14,6 V'a çıkar (`elektrik.md:54`, `elektrik.md:249`); ekran 12 V ister. Regülatör kartı ayarsız gelir:
+Akü 12,8–14,4 V arasında gezer; şarj hedefi 14,4 V (4 × 3,6 V), 14,6 V yalnız en kötü durum hesap değeri (`elektrik.md:54`, `elektrik.md:249`, `elektrik.md:93`; O-13, 14.11); ekran 12 V ister. Regülatör kartı ayarsız gelir:
 ayarlanmadan ekrana bağlanırsa ekran yanabilir (`elektrik.md:54`). Ekran jakının ölçüsü **doğrulanmadı** (`elektrik.md:19`).
 
 ### Doğruladığı varsayım
@@ -22,10 +22,10 @@ ayarlanmadan ekrana bağlanırsa ekran yanabilir (`elektrik.md:54`). Ekran jakı
 | Değer | Kaynak | Durum |
 |---|---|---|
 | Kart LM2577 + LM2596, giriş 4–35 V, çıkış 12 V'a ayarlı | `elektrik.md:49`, `elektrik.md:54` | Tasarım; kart ayarsız gelir |
-| Akü 12,8–14,4 V; şarj kesme 14,6 V | `elektrik.md:54`, `elektrik.md:249` | v4 / akü belgesi |
+| Akü 12,8–14,4 V; şarj hedefi 14,4 V; 14,6 V en kötü durum hesap değeri (bu kâğıt 14,6 V'u da dener) | `elektrik.md:54`, `elektrik.md:249`, `elektrik.md:93` | v4 / akü belgesi; şarj cihazının kesmesi ilk şarjda ölçülür (`kablolama-on-kararlar.md` KT8) |
 | Akü ölçüm aralığının alt ucu 10,0 V | `elektrik.md:201` | Tasarım (ADC bölücü hesabı) |
 | Ekran ~12 V / 0,5 A; kutuda 12 V / 1 A adaptör; dokunmatik USB 5 V ~80 mA | `elektrik.md:19`, `07-gogus.md:19`, `07-gogus.md:39` | Üretici wiki'si |
-| Dal sigortası mini 2 A | `elektrik.md:338`, `elektrik.md:60` | Tasarım |
+| Dal sigortası F6 3 A standart (kutunun 6. yuvası; önce mini 2 A) | `elektrik.md:371`, `elektrik.md:68` | Tasarım (K11 a, 14.11) |
 | Ekran fişi: kutudaki adaptör kablosu kesilip kullanılabilir | `elektrik.md:54` | v4 |
 | Ekran jakı ölçüsü | `elektrik.md:19`, `elektrik.md:480` | **Doğrulanmadı**; bu kâğıt ölçer |
 | Çıkış toleransı | yok | **Kaynakta yok**; bu kâğıt ±%5 varsayar |
@@ -116,7 +116,7 @@ ayarlanmadan ekrana bağlanırsa ekran yanabilir (`elektrik.md:54`). Ekran jakı
 |---|---|---|
 | Çıkış gerilimi, B ve C'de bütün girişlerde | **11,4–12,6 V** | **Varsayım** (12 V ±%5); üretici toleransı kaynakta yok |
 | Ekran akımı (12 V tarafı) | **≤ 1,0 A** | Kutudaki adaptör 12 V / 1 A (`07-gogus.md:19`) |
-| Giriş akımı, 10,0 V'ta dahil | **< 2,0 A** | Dal sigortası mini 2 A (`elektrik.md:338`) |
+| Giriş akımı, 10,0 V'ta dahil | **< 2,0 A** | F6 3 A'in %67'si; hesap 10 V'ta ≈ 1,5 A (`elektrik.md:68`, `elektrik.md:371`) |
 | Kutup | Kartın çıkış kablosu ölçülen kutupla aynı | A adımı |
 | Jak | Fiş jakta oynamadan oturuyor, ölçüler yazılı | `elektrik.md:19` (doğrulanmadı) |
 
@@ -124,7 +124,7 @@ Ekran akımı 0,5 A'den farklı çıkarsa kalır sayılmaz; değer `elektrik.md:
 
 ## Sınır aşılırsa
 
-- Çıkış tutmuyorsa (özellikle 10,0 V'ta düşüyor ya da 14,6 V'ta yükseliyorsa): kart bu iş için yetersiz; tasarım ajanına ve **Ahmet Yorulmaz**'a.
+- Çıkış tutmuyorsa (özellikle 10,0 V'ta düşüyor ya da 14,6 V'ta yükseliyorsa): kart bu iş için yetersiz; tasarım ajanına ve **Ahmet**'a.
   Ekran bağlanmaz.
 - Jak ölçüsü ve kutup `elektrik.md:19` ve açık iş 16'ya (`elektrik.md:480`) yazılır; fiş ya da kablo seçimi tasarım ajanında.
 - Not: dalın girişi ana anahtardan sonra mı, anahtarlı baradan mı alınacak kararı bu testin konusu değil (`karar-kuyrugu.md` **K11**).
