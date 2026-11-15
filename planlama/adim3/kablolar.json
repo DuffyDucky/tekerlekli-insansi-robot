@@ -1,7 +1,7 @@
 {
- "surum": 3,
- "tarih": "2026-11-14",
- "kaynak": "P10.7a; kararlar: planlama/adim3/elektrik.md, pin-haritasi.md (sürüm 4), kablolama-on-kararlar.md (K1, K10, K11, K14)",
+ "surum": 4,
+ "tarih": "2026-11-15",
+ "kaynak": "P10.7a; kararlar: planlama/adim3/elektrik.md, pin-haritasi.md (sürüm 4), kablolama-on-kararlar.md (K1, K10, K11, K14); P10.7b2a (şema 4: koruyucu yeri, kontak uçları, TVS ve kondansatör yönü, anahtarlı bara yerleşimi; planlama/d158/F10i-gunluk.md)",
  "aciklama": "Robottaki kabloların tek kaynağı. Okunur görünüm planlama/adim3/kablolar.md bu dosyadan planlama/adim3/kablolar_uret.py ile üretilir; denetim planlama/adim3/kablolar_denetim.py. Bir kaydı değiştirince ikisini de koş. Sürüm 2 (14.11, P10.7a ikinci tur): orkestratör kararları O-1 … O-14 işlendi (kararlar), kesit kuralı web kaynaklı tabloya bağlandı, boyu bilinmeyenlere etiketli kaba tahmin (boy_tahmin), klemens türleri ve malzeme özeti eklendi. Üçüncü tur (14.11): O-15 … O-18 ve O-3 / O-4 revizeleri; boy tahmininden 150 mm pay kaldırıldı. Sürüm 3 (14.11, düzeltme turu 1): düğümler / ağlar / koruyucular / anahtarlar / dallar ve her kablonun besleme zinciri; koruma kablodaki sayıdan değil koruyucular tablosundan; kesit kuralına ortam sıcaklığı düzeltmesi; denetim acil stop, dönüş, 5 V ayrımı ve kesiti devrenin yapısından türetir.",
  "alanlar": {
   "kimlik": "kısa kimlik; ilk harf grup (G güç, A acil stop, M motor, SV servo gücü, X arayüz, B BTS sinyal, N enkoder, I I2C, P PCA sinyal, Q sonar, S servo uzatması, K kafa içi güç, U USB, H HDMI, C CSI, AU ses)",
@@ -9,7 +9,7 @@
   "demet": "montajda birlikte döşenen grup",
   "dal": "acil stop dalı (dallar tablosundan, izinli değer); besleme zincirinden türetilir",
   "uc_a / uc_b": "kablonun iki ucu (parça + nokta); damar düzeyindeki uçlar damarlar[] içinde",
-  "damarlar": "her iletken: ad, a, b; ESP32 ucunda gpio + pin (pin-haritasi.md §9 adı), PCA9685 ucunda pca_kanal + pca_ad; uçlar düğümler listesinden; ara_koruyucu + ara_uc: telin ucundaki hat sigortası / direnç (telin ağı o elemanın çıkışı); uc_turu {a, b}: uç türü (klemens_turleri); uc_kuyrugu {yan: {awg, …}}: o uçta klemense / pabuca giren ara parça (iletkenin kendisi değil)",
+  "damarlar": "her iletken: ad, a, b; ESP32 ucunda gpio + pin (pin-haritasi.md §9 adı), PCA9685 ucunda pca_kanal + pca_ad; uçlar düğümler listesinden; ara_koruyucu + ara_uc: telin ucundaki hat sigortası / direnç (telin ağı o elemanın çıkışı); uc_turu {a, b}: uç türü (klemens_turleri); uc_kuyrugu {yan: {awg, …}}: o uçta klemense / pabuca giren ara parça (iletkenin kendisi değil); uc_kuyrugu {yan: {pabuc, ne}}: direnç bacağının lehimlendiği halka pabuç (sıkma değil; pabucun rengi malzeme sayımına girer, şema 4)",
   "kesit": "AWG ve mm²; belgede yoksa null ve kesit_not",
   "koruma": "kabloyu koruyan elemanın kimliği (koruyucular tablosu); denetim besleme zincirinden türetip karşılaştırır: kablodaki en büyük akımlı güç damarının ağından yukarı ilk akım sınırlayan eleman",
   "acil_stopta_enerjili": "mantar basılıyken (ana anahtar devrede, ON) bu kabloda gerilim var mı; besleme zincirinden türetilir: zincirde kontak (K1 / K2) ya da mantar NC varsa enerjisiz",
@@ -28,7 +28,12 @@
   "besleme_zinciri": "aküden kabloya elemanlar (koruyucular / anahtarlar kimlikleri; paralel kollar liste içinde liste). Güç damarlı kabloda damarların ağlarının zincirlerinin ortak başı; güç damarı olmayan kabloda ucundaki parçanın besleme ağının zinciri (parca_beslemesi)",
   "ortak_donus": "aynı kabloda − damarı olmayan + kablonun dönüşünü taşıyan kablolar (kesiti ince olamaz)",
   "bolge": "ortam sıcaklığı bölgesi demetinkinden farklıysa (kablo kafaya kadar gidiyorsa 'kafa')",
-  "tarihce": "eski değerler (sınanmaz); sınanan metin alanlarında (ad, kesit_not, not, sonlandırma, damar ara / not) alanlarla tutmayan sayı olmaz"
+  "tarihce": "eski değerler (sınanmaz); sınanan metin alanlarında (ad, kesit_not, not, sonlandırma, damar ara / not) alanlarla tutmayan sayı olmaz",
+  "koruyucu yeri": "koruyucular[<k>].yer: hat sigortası / direncin kablo üstündeki yeri (şema 4); damarın ara_uc ucundaki parçanın adı bu metinde geçer (koruyucu kaynak ucunda)",
+  "kontak uçları": "anahtarlar[<k>].uclar {giris, cikis, bos, teyit, kaynak}: röle kontağının hangi uçlarından geçtiği (şema 4)",
+  "tvs": "tek yönlü TVS'ler: parca, yer, arti_dugumu / eksi_dugumu (düğümler listesinden), yon (katot artı hatta, anot GND'de), isaret, kaynak (veri sayfası), teyit, siparis (maliyet kalemi) (şema 4)",
+  "kondansatör yönü": "kondansatorler.yon / isaret / kaynak / teyit: elektrolitik kondansatörün kutbu (şema 4)",
+  "bara yerleşimi": "klemens_turleri.bara-pabuc.kopruler[<bara>].yerlesim: saplama numarası → iletkenler (alttan üste; kalın pabuç altta), besleme_saplamasi: baraya gelen hattın saplaması (şema 4'te anahtarlı bara için de)"
  },
  "renk_kurali": {
   "ilke": "İletken rengi kutbu gösterir: + kırmızı, − / GND siyah (listedeki 12 / 16 / 18 AWG silikon kablolar yalnız kırmızı ve siyah: maliyet.json 12, 16, 18 AWG satırları). Devre türü iki uçta ~2 cm renkli makaronla gösterilir (listedeki 328 parça renkli makaron seti; setteki renkler doğrulanmadı, eksik renk olursa uç etiketi) ve rehber çiziminde aynı renk kullanılır. Çizim renkleri rehberin eski kablo paletinden (anahtar kelimeyle renk veren kablo_rengi, P10.7b1'de kaldırıldı) alındı; rehber çizimi bu sınıflara kablo kimliği üzerinden bağlanır (tasarim/freecad/rehber/rehber_kablo.py). Belgelerde yazılı bir kablo rengi bulunmadı; korunacak renk yok.",
@@ -709,7 +714,8 @@
    "eksik": [],
    "teyit": [
     "anahtar saplama ölçüsü ve pabuç; K1'de anahtar ucu bantlı bırakılır, F1'de bağlanır",
-    "ana hat ayrı döşenir (sıkı demet yok); kablo üstündeki sıcaklık sınıfı ≥ 80 °C (istisna ana-hat-12awg, O-15)"
+    "ana hat ayrı döşenir (sıkı demet yok); kablo üstündeki sıcaklık sınıfı ≥ 80 °C (istisna ana-hat-12awg, O-15)",
+    "ana anahtar ASW-A01'in saplama ölçüsü belgede yok: M5 varsayım (kablajda teyit edilecek); teslimde anahtarın saplaması okunur, M5 değilse anahtar ucundaki halka pabuçlar (G03, G04, G06, G07) o ölçüde alınır"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -798,7 +804,8 @@
    "teyit": [
     "KT3: kutu yuvaları ortak giriş baralı mı (teslimde süreklilik)",
     "ana hat ayrı döşenir (sıkı demet yok); kablo üstündeki sıcaklık sınıfı ≥ 80 °C (istisna ana-hat-12awg, O-15)",
-    "klemens: sigorta kutusunun giriş ucunun tipi ve 12 AWG alıp almadığı listede / belgede yazılı değil; teslimde bakılır (KT3)"
+    "klemens: sigorta kutusunun giriş ucunun tipi ve 12 AWG alıp almadığı listede / belgede yazılı değil; teslimde bakılır (KT3)",
+    "ana anahtar ASW-A01'in saplama ölçüsü belgede yok: M5 varsayım (kablajda teyit edilecek); teslimde anahtarın saplaması okunur, M5 değilse anahtar ucundaki halka pabuçlar (G03, G04, G06, G07) o ölçüde alınır"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -961,7 +968,7 @@
     "makaron": "kırmızı",
     "cizim": "#d63031"
    },
-   "sonlandirma": "ana anahtar girişinde mavi M5 halka pabuç (G03 ile aynı saplama); 7,5 A mini sigorta yuvası bu ucun dibinde, kuyruğuna lehim + makaron; panel ucu XT60E-M lehim; − yıldız barasına mavi pabuç",
+   "sonlandirma": "ana anahtar girişinde mavi M5 halka pabuç (M5 varsayım: ana anahtarın saplama ölçüsü kablajda teyit) (G03 ile aynı saplama); 7,5 A mini sigorta yuvası bu ucun dibinde, kuyruğuna lehim + makaron; panel ucu XT60E-M lehim; − yıldız barasına mavi pabuç",
    "koruma": "hat-sarj",
    "acil_stopta_enerjili": true,
    "boy": null,
@@ -980,7 +987,8 @@
    ],
    "eksik": [],
    "teyit": [
-    "akü ayrı şarj ucuyla gelirse o kullanılır (O-17)"
+    "akü ayrı şarj ucuyla gelirse o kullanılır (O-17)",
+    "ana anahtar ASW-A01'in saplama ölçüsü belgede yok: M5 varsayım (kablajda teyit edilecek); teslimde anahtarın saplaması okunur, M5 değilse anahtar ucundaki halka pabuçlar (G03, G04, G06, G07) o ölçüde alınır"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -1042,8 +1050,14 @@
      "ara_uc": "a",
      "ara": "100 kΩ telin başına lehim + makaron (O-5 a; EL:234)",
      "uc_turu": {
-      "a": "lehim",
+      "a": "pabuc",
       "b": "lehim"
+     },
+     "uc_kuyrugu": {
+      "a": {
+       "pabuc": "kırmızı",
+       "ne": "100 kΩ direncin öbür bacağı kırmızı M5 halka pabucun (M5 varsayım: ana anahtarın saplama ölçüsü kablajda teyit) kovanına: pabucun PVC kılıfı çıkarılır (lehim ısısı kılıfı eritir), bacak kovana sıkılır, sonra lehimlenir; makaron soğuyunca kovanın üstüne çekilip ısıtılır (düzeltme turu 2, F10i-kontrol-2); pabuç ana anahtarın çıkış saplamasına, G04'ün üstüne (karar: orkestratör, 15.11 (P10.7b2a))"
+      }
      }
     }
    ],
@@ -1057,7 +1071,7 @@
     "makaron": "mor",
     "cizim": "#8e44ad"
    },
-   "sonlandirma": "kaynak ucunda 100 kΩ telin başına lehim + makaron (O-5 a; değer EL:234); arayüz kartı ucu bölücü orta noktasının pedine lehim + makaron (22 AWG: 5,08 mm klemensin alt sınırı belgesiz)",
+   "sonlandirma": "kaynak ucunda 100 kΩ telin başına lehim + makaron (O-5 a; değer EL:234), direncin öbür bacağı kırmızı M5 halka pabucun kovanına (PVC kılıfı çıkarılmış; bacak kovana sıkılır, sonra lehim) + makaron (soğuyunca kovanın üstüne), pabuç ana anahtarın çıkış saplamasına (G04 ile aynı saplama, G04 altta; direnç ile saplama arasında tel yok, karar: orkestratör, 15.11 (P10.7b2a)); arayüz kartı ucu bölücü orta noktasının pedine lehim + makaron (22 AWG: 5,08 mm klemensin alt sınırı belgesiz)",
    "koruma": "R-aku-olcum",
    "acil_stopta_enerjili": true,
    "boy": null,
@@ -1066,13 +1080,19 @@
     {
      "no": 17,
      "kod": "K1",
-     "tur": "öneri"
+     "tur": "bugün"
+    },
+    {
+     "no": 33,
+     "kod": "F1",
+     "tur": "bugün"
     }
    ],
    "eksik": [],
    "teyit": [
-    "rehber: 100 kΩ arayüz kartında değil, ana anahtar çıkışındaki uçta; uzun yüksek empedanslı hat, ADC kalibrasyonunda bakılır",
-    "klemens: 5,08 mm klemensin kesit aralığı belgesiz (satıcı sayfasında yok); 22 AWG uç kartta lehim + makaron; teslimde aralık okunursa yeniden bakılır"
+    "klemens: 5,08 mm klemensin kesit aralığı belgesiz (satıcı sayfasında yok); 22 AWG uç kartta lehim + makaron; teslimde aralık okunursa yeniden bakılır",
+    "rehber: 100 kΩ ana anahtar çıkışındaki uçta (pabucun kovanında); uzun yüksek empedanslı hat, ADC kalibrasyonunda bakılır; direnç bacağının pabuç kovanında lehimle tuttuğu ve ana anahtarın çıkış saplamasının ölçüsü (G04 ile aynı) teslimde denenir",
+    "ana anahtar ASW-A01'in saplama ölçüsü belgede yok: M5 varsayım (kablajda teyit edilecek); teslimde anahtarın saplaması okunur, M5 değilse anahtar ucundaki halka pabuçlar (G03, G04, G06, G07) o ölçüde alınır"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -1327,7 +1347,7 @@
     "makaron": "kırmızı",
     "cizim": "#d63031"
    },
-   "sonlandirma": "F1 ucu sigorta kutusu çıkış klemensi; ön şarj kartı ucu: 12 AWG kart üstünde K2'nin kontak pimine doğrudan lehim (JQC-3FF PCB pimli; pertinaks klemensi yok)",
+   "sonlandirma": "F1 ucu sigorta kutusu çıkış klemensi; ön şarj kartı ucu: 12 AWG kart üstünde K2'nin COM kontak pimine doğrudan lehim (NO → ön şarj direnci, NC boş; pim yeri kablajda teyit) (JQC-3FF PCB pimli; pertinaks klemensi yok)",
    "koruma": "F1",
    "acil_stopta_enerjili": true,
    "boy": null,
@@ -2651,7 +2671,7 @@
     {
      "no": 12,
      "kod": "B5a",
-     "tur": "öneri"
+     "tur": "bugün"
     },
     {
      "no": 32,
@@ -2750,13 +2770,13 @@
      "tur": "bugün"
     },
     {
-     "no": 32,
-     "kod": "K2",
+     "no": 29,
+     "kod": "E3a",
      "tur": "bugün"
     },
     {
-     "no": 29,
-     "kod": "E3a",
+     "no": 32,
+     "kod": "K2",
      "tur": "bugün"
     }
    ],
@@ -3260,11 +3280,17 @@
      "no": 17,
      "kod": "K1",
      "tur": "bugün"
+    },
+    {
+     "no": 49,
+     "kod": "F5",
+     "tur": "bugün"
     }
    ],
    "eksik": [],
    "teyit": [
-    "klemens: PC817 modülü giriş klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 22 AWG ince telli uç (0,33 mm²) teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)"
+    "klemens: PC817 modülü giriş klemensinin kesit aralığı ve aldığı iletken türü belgede yok (uç türü modul-vidali); 22 AWG ince telli uç (0,33 mm²) teslimde takılıp çekilerek denenir (P10.7b, dördüncü bakış §2-5)",
+    "kutup: + damarı (bara, hat sigortası) PC817 modülünün IN2 + klemensine, IN2 − klemensinden − damarı yıldız barasına; ters bağlanırsa giriş LED'i yanmaz, bara gerilimliyken GPIO5 HIGH kalır (PC817 #2 LOW olmaz, elektrik.md:258 hata); modülün girişinde ters gerilim koruması olup olmadığı belgede yok: kablajda teyit edilecek (ters bağlı enerji verilmez)"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -4033,7 +4059,7 @@
     {
      "no": 14,
      "kod": "B6a",
-     "tur": "öneri"
+     "tur": "bugün"
     }
    ],
    "eksik": [],
@@ -4167,6 +4193,11 @@
    "boy": null,
    "boy_not": "P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)",
    "rehber": [
+    {
+     "no": 17,
+     "kod": "K1",
+     "tur": "bugün"
+    },
     {
      "no": 32,
      "kod": "K2",
@@ -4307,6 +4338,11 @@
    "boy_not": "P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)",
    "rehber": [
     {
+     "no": 17,
+     "kod": "K1",
+     "tur": "bugün"
+    },
+    {
      "no": 32,
      "kod": "K2",
      "tur": "bugün"
@@ -4433,6 +4469,11 @@
      "tur": "bugün"
     },
     {
+     "no": 17,
+     "kod": "K1",
+     "tur": "bugün"
+    },
+    {
      "no": 32,
      "kod": "K2",
      "tur": "bugün"
@@ -4556,6 +4597,11 @@
      "tur": "bugün"
     },
     {
+     "no": 17,
+     "kod": "K1",
+     "tur": "bugün"
+    },
+    {
      "no": 32,
      "kod": "K2",
      "tur": "bugün"
@@ -4675,7 +4721,7 @@
     {
      "no": 14,
      "kod": "B6a",
-     "tur": "öneri"
+     "tur": "bugün"
     }
    ],
    "eksik": [],
@@ -4785,7 +4831,7 @@
     {
      "no": 14,
      "kod": "B6a",
-     "tur": "öneri"
+     "tur": "bugün"
     }
    ],
    "eksik": [],
@@ -4901,7 +4947,7 @@
     {
      "no": 14,
      "kod": "B6a",
-     "tur": "öneri"
+     "tur": "bugün"
     }
    ],
    "eksik": [],
@@ -4936,7 +4982,8 @@
     "XL4016-cevre",
     "hat-cevre",
     "esp32-3v3"
-   ]
+   ],
+   "not": "yalnız sinyal damarları bağlanır (damarlar tablosu): PCA9685'in V+ klemensine ve kanal başlıklarının V+ pinine tel takılmaz, dağıtım kartının sinyal girişindeki V+ pini kartta bağlı değildir (planlama/adim3/elektrik.md:226); 3 telli hazır servo kablosu kullanılırsa V+ damarı iki ucundan kesilip makaronla yalıtılır. Neden: PCA9685 kartında kanal başlıklarının V+ sırası V+ klemensine ortaktır; V+ teli takılırsa üç dağıtım kartının V+'ı, yani XL4016 A / B / C çıkışları birbirine bağlanır (kart içi ortak V+ sırası kart şemasıyla kablajda teyit edilir). Kontrol: akü ayrıkken PCA9685'in kullanılan kanal başlığının V+ pini ile dağıtım kartlarının V+ barası arasında süreklilik yok (düzeltme turu 1, F10i-kontrol Ü3; ölçü noktası klemens değil kanal başlığının V+ pini: kartta klemens ile V+ rayı arasında ters kutup koruması olabilir, düzeltme turu 2)"
   },
   {
    "kimlik": "P02",
@@ -5017,7 +5064,7 @@
     {
      "no": 14,
      "kod": "B6a",
-     "tur": "öneri"
+     "tur": "bugün"
     }
    ],
    "eksik": [],
@@ -5052,7 +5099,8 @@
     "XL4016-cevre",
     "hat-cevre",
     "esp32-3v3"
-   ]
+   ],
+   "not": "yalnız sinyal damarları bağlanır (damarlar tablosu): PCA9685'in V+ klemensine ve kanal başlıklarının V+ pinine tel takılmaz, dağıtım kartının sinyal girişindeki V+ pini kartta bağlı değildir (planlama/adim3/elektrik.md:226); 3 telli hazır servo kablosu kullanılırsa V+ damarı iki ucundan kesilip makaronla yalıtılır. Neden: PCA9685 kartında kanal başlıklarının V+ sırası V+ klemensine ortaktır; V+ teli takılırsa üç dağıtım kartının V+'ı, yani XL4016 A / B / C çıkışları birbirine bağlanır (kart içi ortak V+ sırası kart şemasıyla kablajda teyit edilir). Kontrol: akü ayrıkken PCA9685'in kullanılan kanal başlığının V+ pini ile dağıtım kartlarının V+ barası arasında süreklilik yok (düzeltme turu 1, F10i-kontrol Ü3; ölçü noktası klemens değil kanal başlığının V+ pini: kartta klemens ile V+ rayı arasında ters kutup koruması olabilir, düzeltme turu 2)"
   },
   {
    "kimlik": "P03",
@@ -5102,16 +5150,16 @@
     "makaron": "mor",
     "cizim": "#8e44ad"
    },
-   "sonlandirma": "3 pinli köprü, dağıtım kartı C'nin sinyal girişlerine (kol kartlarıyla aynı yöntem, O-8)",
+   "sonlandirma": "yalnız sinyal teli: PCA9685 kanal 4 / 9'un sinyal pininden dağıtım kartı C'nin pan / tilt sinyal girişine tek telli dişi uç (V+ teli takılmaz, not; kol kartlarıyla aynı yöntem, O-8)",
    "koruma": null,
    "acil_stopta_enerjili": true,
    "boy": null,
    "boy_not": "P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)",
    "rehber": [
     {
-     "no": 32,
-     "kod": "K2",
-     "tur": "öneri"
+     "no": 17,
+     "kod": "K1",
+     "tur": "bugün"
     }
    ],
    "eksik": [],
@@ -5148,7 +5196,8 @@
     "XL4016-cevre",
     "hat-cevre",
     "esp32-3v3"
-   ]
+   ],
+   "not": "yalnız sinyal damarları bağlanır (damarlar tablosu): PCA9685'in V+ klemensine ve kanal başlıklarının V+ pinine tel takılmaz, dağıtım kartının sinyal girişindeki V+ pini kartta bağlı değildir (planlama/adim3/elektrik.md:226); 3 telli hazır servo kablosu kullanılırsa V+ damarı iki ucundan kesilip makaronla yalıtılır. Neden: PCA9685 kartında kanal başlıklarının V+ sırası V+ klemensine ortaktır; V+ teli takılırsa üç dağıtım kartının V+'ı, yani XL4016 A / B / C çıkışları birbirine bağlanır (kart içi ortak V+ sırası kart şemasıyla kablajda teyit edilir). Kontrol: akü ayrıkken PCA9685'in kullanılan kanal başlığının V+ pini ile dağıtım kartlarının V+ barası arasında süreklilik yok (düzeltme turu 1, F10i-kontrol Ü3; ölçü noktası klemens değil kanal başlığının V+ pini: kartta klemens ile V+ rayı arasında ters kutup koruması olabilir, düzeltme turu 2)"
   },
   {
    "kimlik": "Q01",
@@ -6490,14 +6539,14 @@
    "boy_not": "P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)",
    "rehber": [
     {
-     "no": 32,
-     "kod": "K2",
-     "tur": "bugün"
-    },
-    {
      "no": 25,
      "kod": "E2a",
      "tur": "öneri"
+    },
+    {
+     "no": 32,
+     "kod": "K2",
+     "tur": "bugün"
     }
    ],
    "eksik": [],
@@ -6603,14 +6652,14 @@
    "boy_not": "toplam boy kaynakta yok (kablo-kurali-notu:27); P10.7b'de ölçülecek",
    "rehber": [
     {
-     "no": 32,
-     "kod": "K2",
-     "tur": "bugün"
-    },
-    {
      "no": 28,
      "kod": "E2",
      "tur": "öneri"
+    },
+    {
+     "no": 32,
+     "kod": "K2",
+     "tur": "bugün"
     }
    ],
    "eksik": [],
@@ -7475,6 +7524,11 @@
    },
    "rehber": [
     {
+     "no": 17,
+     "kod": "K1",
+     "tur": "bugün"
+    },
+    {
      "no": 32,
      "kod": "K2",
      "tur": "bugün"
@@ -8072,12 +8126,31 @@
      "awg": 12,
      "renk": "kırmızı",
      "boy_mm": 50,
-     "besleme_saplamasi": null
+     "besleme_saplamasi": 3,
+     "yerlesim": {
+      "1": [
+       "G12/+",
+       "G14/+",
+       "G15/+"
+      ],
+      "2": [
+       "G13/+",
+       "G16/+"
+      ],
+      "3": [
+       "G09/+",
+       "G11/+"
+      ],
+      "4": [
+       "G22/+"
+      ]
+     },
+     "gerekce": "karar: orkestratör, 15.11 (P10.7b2a, karar 3): baraya gelen iki hat (G09 röle K1 87, G11 ön şarj kartı) 3. saplamada; iki BTS7960B (G12, G13) ayrı saplamalarda, 12 AWG pabuçlar altta. Saplama başına pabuç (köprü uçları dahil) 4 / 4 / 4 / 2. Bütün + bara iletkenleri F1'den beslenir: 27.000 geçerli yerleşimin hepsinde en kötü köprü akımı F1'in 20 A'i (12 AWG etek sınırı 20,5 A, pay 0,5 A); daha iyisi yok, öneri korundu (sayım: planlama/d158/F10i-gunluk.md)"
     },
     "pabuc": "her köprü ucu bir sarı RV 5.5-5 halka pabuç (14); boy tahmini (saplama aralığı ≈ 25 mm + pabuç boyunları)",
     "acik_is": "P10.7b'de tutucu tasarlanırken sadeleştirme: saplamalar tek pirinç / bakır şerit üstünde (yıldız 3, bara 3 saplama) ya da pano tipi pirinç nötr barası; malzeme bulunursa (O-22 a notu)",
     "ilke": "Köprüler kesit sınamasına girer (12 AWG, etek). Ek tur (üçüncü bakış §2-1): her köprüden geçebilecek en kötü akım, köprünün besleme saplamasından uzak yanındaki saplamalara bağlı dönüşlerin koruyucu akımları toplamı; aynı kök sigortadan (F1, F3, F4, F6) beslenenler o sigortanın akımıyla sınırlı, toplam ana sigortayla. Besleme saplamasındaki dönüşler köprüden geçmez. Yerleşim saplama numarasıyla kayıtlı (yerlesim). Besleme saplaması yazılı değilse köprü koruyanın tam akımıyla sınanır.",
-    "sart": "Yıldız: F1'den beslenen dönüşler (G12–G16) 1. ve 2. saplamada (yan en çok 20 A), akü dönüşü G05 ve şarj dönüşü G06 ortadaki 3. saplamada, F3 / F4 / F6 / G22 dönüşleri 4. ve 5. saplamada (yan en çok 15 A)"
+    "sart": "Yıldız: F1'den beslenen dönüşler (G12–G16) 1. ve 2. saplamada (yan en çok 20 A), akü dönüşü G05 ve şarj dönüşü G06 ortadaki 3. saplamada, F3 / F4 / F6 / G22 dönüşleri 4. ve 5. saplamada (yan en çok 15 A); anahtarlı bara: baraya gelen hatlar (G09, G11) 3. saplamada, iki BTS7960B girişi 1. ve 2. saplamada; en kötü köprü akımı F1 (20 A)"
    },
    "sinir_kaynagi": "ABYC E-11 11.16.4.1.11: 'No more than four conductors shall be secured to any one terminal stud'; fazlası için saplamalar köprü / bakır şeritle birleştirilir (https://forums.sailboatowners.com/attachments/e-11-standardabyc-pdf.127063/, 2003 baskısı, 14.11 okundu)",
    "iletken": "tek telli / ince telli",
@@ -8447,6 +8520,48 @@
    "metin": "Ajanın kendi seçimleri onaylandı: ortam bölgesinin demetten atanması, O-18'de 2 A mini, F8a karşılaştırma tabanı 76fd4b2.",
    "uygulama": "orkestratör onayı 14.11; günlük §15.",
    "veren": "orkestratör kararı, 14.11.2026"
+  },
+  {
+   "kod": "P7b2a-1",
+   "karar": "K2: COM–NO",
+   "metin": "Ön şarj rölesi K2: G10 → COM, NO → 5,6 Ω ön şarj direnci, NC boş (enerjisizken ön şarj yolu açık). K1: 30 → 87. Fiziksel uç numaralandırması kablajda teyit.",
+   "uygulama": "anahtarlar.K1-kontak / K2-kontak.uclar; G10 sonlandırması",
+   "veren": "orkestratör kararı, 15.11.2026"
+  },
+  {
+   "kod": "P7b2a-2",
+   "karar": "hat sigortaları bara ucunda",
+   "metin": "Hat sigortaları A / B / C bara (kaynak) ucunda; kayıtta açık yer alanı.",
+   "uygulama": "koruyucular.hat-A / hat-B / hat-C / hat-G22 / hat-sarj / R-aku-olcum.yer",
+   "veren": "orkestratör kararı, 15.11.2026"
+  },
+  {
+   "kod": "P7b2a-3",
+   "karar": "anahtarlı bara yerleşimi",
+   "metin": "Besleme 3. saplamada; 1: G12, G14, G15 / 2: G13, G16 / 3: G09, G11 / 4: G22. Seçenekler sayıldı; en kötü köprü akımı hepsinde 20 A, öneri korundu.",
+   "uygulama": "klemens_turleri.bara-pabuc.kopruler['Anahtarlı bara · +'].yerlesim, besleme_saplamasi",
+   "veren": "orkestratör kararı, 15.11.2026"
+  },
+  {
+   "kod": "P7b2a-4",
+   "karar": "TVS ve kondansatör kutbu",
+   "metin": "Tek yönlü TVS'te katot (bantlı uç) artı hatta, anot GND'de (Vishay P6KE veri sayfası); elektrolitikte eksi şeritli bacak GND'de (veri sayfası yok: kablajda teyit).",
+   "uygulama": "tvs; kondansatorler.yon / teyit",
+   "veren": "orkestratör kararı, 15.11.2026"
+  },
+  {
+   "kod": "P7b2a-5",
+   "karar": "G07 direnci pabuçta",
+   "metin": "100 kΩ'un öbür bacağı ana anahtarın çıkış saplamasına takılan halka pabucun kovanına lehimlenir; direnç ile saplama arasında tel yok.",
+   "uygulama": "G07 damarı uc_turu a pabuc, uc_kuyrugu a (kırmızı pabuç; malzeme sayımına girer)",
+   "veren": "orkestratör kararı, 15.11.2026"
+  },
+  {
+   "kod": "P7b2a-6",
+   "karar": "dağıtım kartı C güç panelinde",
+   "metin": "Dağıtım kartı C güç panelinde, XL4016 C'nin yanında: SV3 B5a'da tezgâhta, P03 K1'de bağlanır.",
+   "uygulama": "rehber B5a / K1 metni; SV3, P03 rehber alanı",
+   "veren": "orkestratör kararı, 15.11.2026"
   }
  ],
  "boy_tahmin_kurali": {
@@ -9997,7 +10112,8 @@
    ],
    "kaynak": "planlama/adim3/elektrik.md:370",
    "bicak": "mini",
-   "siparis": 88
+   "siparis": 88,
+   "yer": "anahtarlı bara ucunda (kaynak ucu): G14'ün + damarında, yuvanın bir 16 AWG kuyruğu mavi M5 halka pabuçla anahtarlı bara saplamasına, öbür kuyruğu G14'ün teline lehim + makaron; XL4016 A ucunda sigorta yok (karar: orkestratör, 15.11 (P10.7b2a))"
   },
   "hat-B": {
    "ad": "Hat sigortası B 7,5 A mini (XL4016 B girişi)",
@@ -10009,7 +10125,8 @@
    ],
    "kaynak": "planlama/adim3/elektrik.md:370",
    "bicak": "mini",
-   "siparis": 88
+   "siparis": 88,
+   "yer": "anahtarlı bara ucunda (kaynak ucu): G15'in + damarında, yuvanın bir 16 AWG kuyruğu mavi M5 halka pabuçla anahtarlı bara saplamasına, öbür kuyruğu G15'in teline lehim + makaron; XL4016 B ucunda sigorta yok (karar: orkestratör, 15.11 (P10.7b2a))"
   },
   "hat-C": {
    "ad": "Hat sigortası C 5 A mini (XL4016 C girişi)",
@@ -10021,7 +10138,8 @@
    ],
    "kaynak": "planlama/adim3/elektrik.md:370",
    "bicak": "mini",
-   "siparis": 87
+   "siparis": 87,
+   "yer": "anahtarlı bara ucunda (kaynak ucu): G16'nın + damarında, yuvanın bir 16 AWG kuyruğu mavi M5 halka pabuçla anahtarlı bara saplamasına, öbür kuyruğu G16'nın teline lehim + makaron; XL4016 C ucunda sigorta yok (karar: orkestratör, 15.11 (P10.7b2a))"
   },
   "hat-G22": {
    "ad": "Hat sigortası G22 2 A mini (bara ucunda)",
@@ -10033,7 +10151,8 @@
    ],
    "kaynak": "planlama/adim3/elektrik.md:370",
    "bicak": "mini",
-   "siparis": 86
+   "siparis": 86,
+   "yer": "anahtarlı bara ucunda (kaynak ucu): G22'nin + damarında, yuvanın 16 AWG kuyruğu mavi M5 halka pabuçla anahtarlı bara saplamasına, 22 AWG tel öbür kuyruğa lehim + makaron (O-18 b)"
   },
   "hat-sarj": {
    "ad": "Şarj hat sigortası 7,5 A mini (akü tarafındaki ucun dibinde)",
@@ -10047,7 +10166,8 @@
    "not": "ortam düzeltmeli 16 AWG sınırı 8,2 A; IMAX B6 en çok 5 A × 1,25 = 6,25 A ≤ 7,5 A",
    "bicak": "mini",
    "siparis": 88,
-   "tarihce": "düzeltme turu 1: 10 A'den 7,5 A'e indi (O-17 kararında 10 A)"
+   "tarihce": "düzeltme turu 1: 10 A'den 7,5 A'e indi (O-17 kararında 10 A)",
+   "yer": "ana anahtar girişindeki ucun dibinde (kaynak ucu): G06'nın + damarında, yuvanın kuyruğu mavi M5 halka pabuçla ana anahtarın giriş saplamasına (G03 ile aynı saplama), öbür kuyruğu G06'nın teline lehim + makaron (O-17); M5 varsayım, ana anahtarın saplama ölçüsü kablajda teyit"
   },
   "XL4016-A": {
    "ad": "XL4016 A akım sınırı",
@@ -10231,7 +10351,8 @@
    "cikis": [
     "aku-olcum"
    ],
-   "kaynak": "planlama/adim3/elektrik.md:234"
+   "kaynak": "planlama/adim3/elektrik.md:234",
+   "yer": "ana anahtar çıkış ucunda (kaynak ucu): direncin bir bacağı G07'nin teline lehim + makaron, öbür bacağı kırmızı halka pabucun kovanına (PVC kılıfı çıkarılmış) sıkma + lehim; pabuç ana anahtarın çıkış saplamasına (G04 ile aynı saplama, G04 altta); direnç ile saplama arasında tel yok (karar: orkestratör, 15.11 (P10.7b2a)); M5 varsayım, ana anahtarın saplama ölçüsü kablajda teyit"
   }
  },
  "anahtarlar": {
@@ -10242,7 +10363,13 @@
    "cikis": [
     "ana-anahtar-cikis"
    ],
-   "kaynak": "planlama/adim3/elektrik.md:323"
+   "kaynak": "planlama/adim3/elektrik.md:323",
+   "saplama": {
+    "olcu": "M5",
+    "durum": "varsayım",
+    "teyit": "ana anahtar ASW-A01'in saplama ölçüsü belgede yok: M5 varsayım (kablajda teyit edilecek); teslimde anahtarın saplaması okunur, M5 değilse anahtar ucundaki halka pabuçlar (G03, G04, G06, G07) o ölçüde alınır",
+    "kaynak": "ASW-A01 için veri sayfası / ölçü kaydı yok; M5 bara saplamalarıyla aynı pabuç ölçüsü varsayıldı (G06, G07 sonlandırması; düzeltme turu 1, F10i-kontrol A14)"
+   }
   },
   "K1-kontak": {
    "ad": "Röle K1 kontağı (30 → 87)",
@@ -10251,7 +10378,14 @@
    "cikis": [
     "anahtarli-bara"
    ],
-   "kaynak": "planlama/adim3/elektrik.md:441"
+   "kaynak": "planlama/adim3/elektrik.md:441",
+   "uclar": {
+    "giris": "30",
+    "cikis": "87",
+    "bos": "87a",
+    "teyit": "MAH-112-C-4 soketinin kuyruk / pim numaraları teslimde soket üstü yazıyla okunur (kablajda teyit edilecek)",
+    "kaynak": "G08 damarı (Sigorta kutusu · F1 çıkışı → Röle K1 · 30), G09 damarı (Röle K1 · 87 → Anahtarlı bara · +); kontak: planlama/adim3/elektrik.md:441"
+   }
   },
   "K2-kontak": {
    "ad": "Ön şarj kolu: K2 kontağı + 5,6 Ω (ön şarj kartı)",
@@ -10260,7 +10394,14 @@
    "cikis": [
     "anahtarli-bara"
    ],
-   "kaynak": "planlama/adim3/elektrik.md:442"
+   "kaynak": "planlama/adim3/elektrik.md:442",
+   "uclar": {
+    "giris": "COM",
+    "cikis": "NO",
+    "bos": "NC",
+    "teyit": "JQC-3FF'nin COM / NO / NC pimlerinin karttaki yeri elde parça olmadan doğrulanamaz: teslimde röle gövdesindeki şemadan ve multimetreyle (enerjisiz, bobin boşta: COM–NC kısa, COM–NO açık) okunur (kablajda teyit edilecek)",
+    "kaynak": "karar: orkestratör, 15.11 (P10.7b2a): G10 → COM, NO → 5,6 Ω ön şarj direnci, NC boş (enerjisizken ön şarj yolu açık kalır)"
+   }
   },
   "mantar": {
    "ad": "Acil stop mantarı NC kontağı",
@@ -10498,6 +10639,48 @@
    }
   ],
   "kaynak": "planlama/adim3/elektrik.md:130",
-  "not": "kol kartlarında ikişer (EL:130 'önerilir'), kafa kartında bir (O-8)"
+  "kutup_kaynak": "kalem 61'in satıcı sayfası üretici ve veri sayfası vermiyor (15.11 bakıldı); kutup işareti üretici belgesinden doğrulanamadı",
+  "not": "kol kartlarında ikişer (EL:130 'önerilir'), kafa kartında bir (O-8)",
+  "yon": "− bacağı (gövdedeki eksi şeridinin olduğu yan) GND barasına, öbür bacak V+ barasına",
+  "isaret": "elektrolitik kondansatörün gövdesindeki eksi (−) şeridi",
+  "teyit": "kutup işareti teslimde gövdeden okunur; şerit okunamıyorsa kondansatör takılmaz (kablajda teyit edilecek); ters takılan elektrolitik ısınır, patlayabilir"
+ },
+ "tvs": {
+  "P6KE18A": {
+   "parca": "P6KE18A",
+   "ad": "Kafa girişi TVS (12 V)",
+   "yer": "kafa giriş kartında, + ve − klemens uçları arasında",
+   "arti_dugumu": "Kafa giriş klemensi · +12 V",
+   "eksi_dugumu": "Kafa giriş klemensi · GND",
+   "yon": "katot (bantlı uç) +12 V ucuna, anot GND'ye",
+   "isaret": "gövde baskısı: sonu yalnız A (ör. P6KE18A, P6KE6V8A; önünde C yok) tek yönlü, renkli bant katot ucunu gösterir; sonu CA (ör. P6KE18CA, P6KE6V8CA) çift yönlü tiptir, bandı yoktur",
+   "kaynak": "Vishay General Semiconductor, P6KE6.8A thru P6KE540A veri sayfası, belge 88369, revizyon 27.09.2021 (https://www.vishay.com/docs/88369/p6ke.pdf, 15.11 okundu): 'Polarity: for unidirectional types the color band denotes cathode end, no marking on bidirectional types'; 'For bidirectional types, use CA suffix (e.g. P6KE440CA)' (düzeltme turu 1, 15.11 yeniden okundu); P6KE18A ve P6KE6.8A bu serinin tek yönlü (A) tipleri",
+   "teyit": "satın alınan parçanın üreticisi bilinmiyor (satıcı sayfası üretici vermiyor): teslimde gövde baskısı okunur; sonu yalnız A (önünde C yok) ve tek renkli bant varsa takılır (bant katot); sonu CA (çift yönlü) ya da bantsız parça takılmaz (kablajda teyit edilecek)",
+   "siparis": 67
+  },
+  "P6KE6V8A-pi": {
+   "parca": "P6KE6V8A",
+   "ad": "Pi hattı TVS (D24V50F5 çıkışı)",
+   "yer": "D24V50F5 çıkış uçlarında (VOUT ile GND arası)",
+   "arti_dugumu": "D24V50F5 · VOUT (P6KE6V8A)",
+   "eksi_dugumu": "D24V50F5 · GND",
+   "yon": "katot (bantlı uç) +5 V'a, anot GND'ye",
+   "isaret": "gövde baskısı: sonu yalnız A (ör. P6KE18A, P6KE6V8A; önünde C yok) tek yönlü, renkli bant katot ucunu gösterir; sonu CA (ör. P6KE18CA, P6KE6V8CA) çift yönlü tiptir, bandı yoktur",
+   "kaynak": "Vishay General Semiconductor, P6KE6.8A thru P6KE540A veri sayfası, belge 88369, revizyon 27.09.2021 (https://www.vishay.com/docs/88369/p6ke.pdf, 15.11 okundu): 'Polarity: for unidirectional types the color band denotes cathode end, no marking on bidirectional types'; 'For bidirectional types, use CA suffix (e.g. P6KE440CA)' (düzeltme turu 1, 15.11 yeniden okundu); P6KE18A ve P6KE6.8A bu serinin tek yönlü (A) tipleri",
+   "teyit": "satın alınan parçanın üreticisi bilinmiyor (satıcı sayfası üretici vermiyor): teslimde gövde baskısı okunur; sonu yalnız A (önünde C yok) ve tek renkli bant varsa takılır (bant katot); sonu CA (çift yönlü) ya da bantsız parça takılmaz (kablajda teyit edilecek)",
+   "siparis": 66
+  },
+  "P6KE6V8A-ekran": {
+   "parca": "P6KE6V8A",
+   "ad": "Kafa ekranı hattı TVS (SY8205 çıkışı)",
+   "yer": "SY8205 çıkış uçlarında (OUT+ ile OUT− arası)",
+   "arti_dugumu": "SY8205 · OUT+ (P6KE6V8A)",
+   "eksi_dugumu": "SY8205 · OUT−",
+   "yon": "katot (bantlı uç) +5 V'a, anot GND'ye",
+   "isaret": "gövde baskısı: sonu yalnız A (ör. P6KE18A, P6KE6V8A; önünde C yok) tek yönlü, renkli bant katot ucunu gösterir; sonu CA (ör. P6KE18CA, P6KE6V8CA) çift yönlü tiptir, bandı yoktur",
+   "kaynak": "Vishay General Semiconductor, P6KE6.8A thru P6KE540A veri sayfası, belge 88369, revizyon 27.09.2021 (https://www.vishay.com/docs/88369/p6ke.pdf, 15.11 okundu): 'Polarity: for unidirectional types the color band denotes cathode end, no marking on bidirectional types'; 'For bidirectional types, use CA suffix (e.g. P6KE440CA)' (düzeltme turu 1, 15.11 yeniden okundu); P6KE18A ve P6KE6.8A bu serinin tek yönlü (A) tipleri",
+   "teyit": "satın alınan parçanın üreticisi bilinmiyor (satıcı sayfası üretici vermiyor): teslimde gövde baskısı okunur; sonu yalnız A (önünde C yok) ve tek renkli bant varsa takılır (bant katot); sonu CA (çift yönlü) ya da bantsız parça takılmaz (kablajda teyit edilecek)",
+   "siparis": 66
+  }
  }
 }

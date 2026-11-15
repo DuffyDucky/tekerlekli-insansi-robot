@@ -484,9 +484,9 @@
    },
    {
     "yer": "TEMA_TON",
-    "ozet": "bf7a414b2c02144e",
+    "ozet": "33882de0b564a737",
     "neden": "tema tonu",
-    "metin": "hazir-hdmi = [('dark', '#5ba7b8'), ('light', '#1d3854')]"
+    "metin": "hazir-hdmi = [('dark', '#5ba7b8'), ('light', '#193cff')]"
    },
    {
     "yer": "TEMA_TON",
@@ -541,6 +541,30 @@
     "ozet": "dcfa2a735e6a661c",
     "neden": "eşikler",
     "metin": "GEO_ESIK 10.0 GEO_TABAN_DISI 400.0 KARSITLIK_ESIK 3.0 RENK_FARK_ESIK 15.0"
+   },
+   {
+    "yer": "VURGU_TON",
+    "ozet": "9acbb91833fd0fbc",
+    "neden": "seçim vurgusu tonu",
+    "metin": "[('dark', '#00ffee'), ('dark_kopya', '#9ffff6'), ('light', '#e014ff'), ('light_kopya', '#f3b8ff')] [('EV_RENK', '#ff3fa4'), ('KONUM_RENK', '#ffb000')]"
+   },
+   {
+    "yer": "SINIF",
+    "ozet": "9cbcd575802aaa46",
+    "neden": "parça sınıfı renkleri",
+    "metin": "light = [('baglanti', '#d4ac0d'), ('baski', '#f0932b'), ('cf', '#3d5a80'), ('imalat', '#d35400'), ('kablo', '#c0392b'), ('lazer', '#8e44ad'), ('onceki', '#b5b5b0'), ('profil', '#16a085'), ('ref', '#95a5a6'), ('satin', '#2f86d4')]"
+   },
+   {
+    "yer": "SINIF",
+    "ozet": "2ee5fd6a6b318f6d",
+    "neden": "parça sınıfı renkleri",
+    "metin": "dark = [('baglanti', '#d4ac0d'), ('baski', '#f0932b'), ('cf', '#3d5a80'), ('imalat', '#d35400'), ('kablo', '#c0392b'), ('lazer', '#8e44ad'), ('onceki', '#5d6168'), ('profil', '#16a085'), ('ref', '#95a5a6'), ('satin', '#2f86d4')]"
+   },
+   {
+    "yer": "ESIK",
+    "ozet": "72a3f66561f97f27",
+    "neden": "eşikler",
+    "metin": "SIYAH_L_FARK 15.0"
    }
   ],
   "liste": [
@@ -558,9 +582,123 @@
    },
    {
     "yer": "LISTE ZORUNLU",
-    "ozet": "6f59af6f1cb8de56",
+    "ozet": "76ff01d143f58596",
     "neden": "kural listesi",
-    "metin": "('E3a', 'katot \\\\(çizgili uç\\\\) \\\\+5 V', 'TVS kutbu')"
+    "metin": "('E3a', 'katot \\\\(bantlı uç\\\\) \\\\+5 V', 'TVS kutbu')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "b4f71e597e51bf0d",
+    "neden": "kural listesi",
+    "metin": "('E3a', \"P6KE18A'yı kartın \\\\+ ve − uçları arasına lehimle, katot \\\\(bantlı uç\\\\) \\\\+12 V\", 'P6KE18A kutbu (kafa giriş kartı)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "245424dd55ceb27b",
+    "neden": "kural listesi",
+    "metin": "('B5a', 'kondansatörünü V\\\\+ / GND barasına lehimle, yönü {yon.kondansator}', 'dağıtım kartı C kondansatör yönü')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "fb22b3b7263d6b57",
+    "neden": "kural listesi",
+    "metin": "('B5a', \"SV3'ü .{0,200}bağla: {kutup.SV3}\", 'SV3 kutbu (XL4016 C → dağıtım kartı C)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "691add109e9907a5",
+    "neden": "kural listesi",
+    "metin": "('B6a', 'her kartın iki 2200 .F kondansatörünü V\\\\+ / GND barasına lehimle, yönü {yon.kondansator}', 'dağıtım kartı A / B kondansatör yönü')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "86d630e7cca39c2a",
+    "neden": "kural listesi",
+    "metin": "('K1', \"SV2'yi dağıtım kartı B'nin V\\\\+ / GND giriş klemensine \\\\({kutup.SV1|SV2}\\\\)\", 'SV1 / SV2 kutbu (XL4016 A / B → dağıtım kartı)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "e07ce287bc388bd9",
+    "neden": "kural listesi",
+    "metin": "('K1', \"halka pabucun PVC kılıfını çıkar.{0,260}?makaronu G07'nin teline geçir.{0,300}?Direncin öbür bacağını pabucun kovanına sık \\\\(pabuç pensesiyle\\\\), sonra kovana lehimle.{0,120}?Soğuyunca makaronu direncin ve kovanın üstüne çek\", 'G07 direnci pabuç kovanında: kılıf çıkar, makaron, sık, lehimle, makaron (K63)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "adb1dad83155b40e",
+    "neden": "kural listesi",
+    "metin": "('B6a', \"PC817 modülünün çıkış besleme ucunu \\\\(çıkış VCC\\\\) ESP32'nin {uc.X01:PC817_çıkış_beslemesi:b} pinine bağla \\\\(X01\\\\): 5 V'a bağlama\", \"X01: PC817 çıkış beslemesi ESP32 3V3'te, 5 V'a bağlanmaz\")"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "50a63a9b38bb6382",
+    "neden": "kural listesi",
+    "metin": "('B6a', \"PCA9685'in V\\\\+ klemensine ve kanal başlıklarının V\\\\+ pinine tel takma\", 'P01 / P02: PCA9685 V+ teli takılmaz')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "d0b4f51114a07591",
+    "neden": "kural listesi",
+    "metin": "('B6a', '3 telli hazır servo kablosu kullanırsan V\\\\+ damarını iki ucundan kes, makaronla yalıt', 'P01 / P02: 3 telli kabloda V+ kesilir')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "df625b8413be28c6",
+    "neden": "kural listesi",
+    "metin": "('B6a', \"V\\\\+ teli takılırsa üç dağıtım kartının V\\\\+'ı, yani XL4016 A, B ve C'nin çıkışları birbirine paralel girer\", 'P01 / P02: V+ telinin nedeni (dönüştürücüler paralel)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "d57122435121a64f",
+    "neden": "kural listesi",
+    "metin": "('K1', \"PCA9685'in V\\\\+ pinine tel takma; 3 telli hazır kablo kullanırsan V\\\\+ damarını iki ucundan kes, makaronla yalıt\", 'P03: PCA9685 V+ teli takılmaz, 3 telli kabloda V+ kesilir')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "1077ee428c211fbf",
+    "neden": "kural listesi",
+    "metin": "('K1', \"Bağlamadan önce modülün üstündeki IN2 \\\\+ / IN2 − yazısını oku: ters bağlanan G22'de .{0,260}ters bağlıyken enerji verme\", 'G22: kutup yazısı okunur, ters bağlıyken enerji verilmez')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "e8fac597b0fefde5",
+    "neden": "kural listesi",
+    "metin": "('K1', \"lehimden önce makaronu G07'nin teline geçir\", 'G07: makaron lehimden önce geçirilir')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "b26542d384f1e339",
+    "neden": "kural listesi",
+    "metin": "('K1', \"Gerginlik giderme: G07'yi direncin tel tarafında, ana anahtara giden G04'e kablo bağıyla tuttur\", 'G07: gerginlik giderme')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "174950615d8f64d2",
+    "neden": "kural listesi",
+    "metin": "('K1', \"lehimden önce K2'nin pimlerini bul\", 'K2 pim yeri 12 AWG lehiminden önce bulunur')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "5472ebff905fb71d",
+    "neden": "kural listesi",
+    "metin": "('E3a', 'sonu yalnız A \\\\(ör\\\\. P6KE18A\\\\) tek yönlüdür, renkli bandı katottur; sonu CA \\\\(ör\\\\. P6KE18CA\\\\) çift yönlüdür, bandı yoktur', 'TVS: gövde baskısı (sonu yalnız A tek yönlü, sonu CA çift yönlü)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "72f856fee38e7ed9",
+    "neden": "kural listesi",
+    "metin": "('E3a', \"CA baskılı ya da bantsız TVS'i takma \\\\(kablajda teyit\\\\)\", 'TVS: CA baskılı ya da bantsız takılmaz')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "596c7d752f1d8705",
+    "neden": "kural listesi",
+    "metin": "('F1', \"çıkış saplamasına G04'ü \\\\(sigorta kutusuna\\\\) ve akü ölçüm telinin pabucunu \\\\(G07\", 'G07 ana anahtarın çıkışında (K63)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "4bf52b5fde426330",
+    "neden": "kural listesi",
+    "metin": "('F1', \"iki acil stop ucunu mantarın NC kontağına bağla: A01'i NC girişine, A02'yi NC çıkışına\", 'F1 alt adım: mantarın iki ucu ayrı (A01 NC girişi, A02 NC çıkışı)')"
    },
    {
     "yer": "LISTE ZORUNLU",
@@ -971,6 +1109,54 @@
     "metin": "('F5', 'kontrol', \"Göğüs ekranı ilk açılışta F6 {a.F6}'i attırmadı\", \"F5 kontrol: göğüs ekranı F6'yı attırmadı\")"
    },
    {
+    "yer": "LISTE ZORUNLU_ALAN",
+    "ozet": "0f1534b8ff9679ed",
+    "neden": "kural listesi",
+    "metin": "('B6a', 'kontrol', 'çıkış VCC ile ESP32 {uc.X01:PC817_çıkış_beslemesi:b} pini arası öter, çıkış VCC ile çevre 5 V arası ötmez', \"B6a kontrol: X01 çıkış VCC 3V3'te, 5 V'ta değil\")"
+   },
+   {
+    "yer": "LISTE ZORUNLU_ALAN",
+    "ozet": "d94b3fccfbfc7873",
+    "neden": "kural listesi",
+    "metin": "('B6a', 'kontrol', \"PCA9685'in kanal başlığının V\\\\+ pini ile dağıtım kartı A'nın ve B'nin V\\\\+ barası arasında süreklilik yok\", 'B6a kontrol: PCA9685 kanal başlığı V+ ile dağıtım kartı A / B V+ arası ötmez')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_ALAN",
+    "ozet": "f37285196721c464",
+    "neden": "kural listesi",
+    "metin": "('K1', 'kontrol', '{uc.G22:−:a} ile yıldız barası arası öter, {uc.G22:+:b} ile yıldız barası arası ötmez', 'K1 kontrol: G22 kutbu')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_ALAN",
+    "ozet": "dca8454fa47c4cac",
+    "neden": "kural listesi",
+    "metin": "('K1', 'kontrol', \"PCA9685'in kanal başlığının V\\\\+ pini ile dağıtım kartı C'nin V\\\\+ barası arasında süreklilik yok\", 'K1 kontrol: PCA9685 kanal başlığı V+ ile dağıtım kartı C V+ arası ötmez (P03)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_ALAN",
+    "ozet": "0afda175e78d67b4",
+    "neden": "kural listesi",
+    "metin": "('K1', 'kontrol', 'direnç, iki bacağı ve pabuç kovanı makaronla tümüyle örtülü \\\\(açıkta bacak yok\\\\)', 'K1 kontrol: G07 direnci örtülü')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_ALAN",
+    "ozet": "e5c80c100b11a54e",
+    "neden": "kural listesi",
+    "metin": "('F1', 'kontrol', 'bölücü oranı \\\\({oran.aku_olcum}\\\\) katıdır: akü {v.aku_aralik} iken bölücünün orta noktasında {v.aku_olcum} okunur', 'F1 kontrol: G07 ölçüm aralığı (bölücü oranı, kayıttan)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_ALAN",
+    "ozet": "81751f1dfac0c1a9",
+    "neden": "kural listesi",
+    "metin": "('F1', 'is_', \"A01'i \\\\(F5 {a.F5} çıkışından gelen\\\\) NC girişine, A02'yi \\\\(acil stop düğümüne giden\\\\) NC çıkışına\", 'F1 iş: mantarın iki ucu ayrı (A01 NC girişi, A02 NC çıkışı)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_ALAN",
+    "ozet": "45ebb116a7576d15",
+    "neden": "kural listesi",
+    "metin": "('F1', 'kontrol', \"Okuma {v.aku_olcum} aralığının altında ya da üstündeyse: ana anahtarı kapat, aküyü XT60'tan ayır\", 'F1 kontrol: G07 okuması aralık dışındaysa akü ayrılır')"
+   },
+   {
     "yer": "LISTE ZORUNLU_CUMLE",
     "ozet": "6af548d9593ac1ec",
     "neden": "kural listesi",
@@ -1035,6 +1221,30 @@
     "ozet": "6d6e2feeb1b3362a",
     "neden": "kural listesi",
     "metin": "('SEMA 12 V', 'LM2577 \\\\+ LM2596', 'regülatör yeri karar bekliyor, K52\\\\)', 'SEMA 12 V: göğüs regülatörü yeri karar bekliyor (K52)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_CUMLE",
+    "ozet": "a292a83e7bc5b993",
+    "neden": "kural listesi",
+    "metin": "('K1', \"A06'nın \\\\+ ucunu\", 'IN1 \\\\+ klemensine bağla; − ucunu modülün IN1 − klemensinden arayüz kartının GND pedine lehimle', \"K1 is_: A06'nın iki ucu (+ IN1 +, − IN1 − → GND)\")"
+   },
+   {
+    "yer": "LISTE ZORUNLU_CUMLE",
+    "ozet": "34ac08eb9547406a",
+    "neden": "kural listesi",
+    "metin": "('K1', \"G22'nin kutbu\", '\\\\+ damarını \\\\(hat sigortasından gelen\\\\) arayüz kartındaki PC817 modülünün {uc.G22:+:b} klemensine, − damarını modülün {uc.G22:−:a} klemensinden yıldız barasına bağla', \"K1 is_: G22'nin iki ucu ve kutbu\")"
+   },
+   {
+    "yer": "LISTE ZORUNLU_CUMLE",
+    "ozet": "b782e045cc908eb7",
+    "neden": "kural listesi",
+    "metin": "('K1', \"A06'nın \\\\+ ucunu\", \"A06'nın \\\\+ ucunu {parca.A06:+:a} noktasına, yani acil stop düğüm kartında bir klemensin kuyruğuna \\\\(kart altı\\\\) lehimle\", \"K1 is_: A06'nın + ucu kayıttaki düğümde (acil stop algısı)\")"
+   },
+   {
+    "yer": "LISTE ZORUNLU_CUMLE",
+    "ozet": "474c23d0a478d04a",
+    "neden": "kural listesi",
+    "metin": "('K1', \"lehimden önce K2'nin pimlerini bul\", '\\\\(bobin boşta\\\\) {kontak.K2:giris} ile {kontak.K2:bos} arası öter, {kontak.K2:giris} ile {kontak.K2:cikis} arası ötmez', 'K1 is_: K2 pim okuması kayıttaki kontak uçlarıyla (COM ↔ NC öter, COM ↔ NO ötmez)')"
    },
    {
     "yer": "LISTE TERIM_ISTISNA",
@@ -1146,15 +1356,15 @@
    },
    {
     "yer": "LISTE CIPLAK_KURAL",
-    "ozet": "3de0b5b617f02946",
+    "ozet": "1df1b5ddcd181c2b",
     "neden": "kural listesi",
-    "metin": "('direnç', '(?<![\\\\w{.,])\\\\d+(?:[.,]\\\\d+)? ?[mk]?(?:ω|ohm\\\\b)', 'bc337|sürücü|taban|\\\\bseri\\\\b|ön şarj')"
+    "metin": "('direnç', '(?<![\\\\w{.,])\\\\d+(?:[.,]\\\\d+)? ?[mk]?(?:ω|ohm\\\\b)', 'bc337|sürücü|taban|\\\\bseri\\\\b|ön şarj|akü')"
    },
    {
     "yer": "LISTE CIPLAK_KURAL",
-    "ozet": "3ce9101b2a8205e9",
+    "ozet": "42ca7a51ad3642a0",
     "neden": "kural listesi",
-    "metin": "('direnç (sözle)', '\\\\b(?:sıfır|bir|iki|üç|dört|beş|altı|yedi|sekiz|dokuz|on|yirmi|otuz|kırk|elli|altmış|yetmiş|seksen|doksan|yüz|bin|buçuk|yarım)(?: (?:sıfır|bir|iki|üç|dört|beş|altı|yedi|sekiz|dokuz|on|yirmi|otuz|kırk|elli|altmış|yetmiş|seksen|doksan|yüz|bin|buçuk|yarım))* (?:kilo|mili|mega)?(?:ohm\\\\w*|ω)', 'bc337|sürücü|taban|\\\\bseri\\\\b|ön şarj')"
+    "metin": "('direnç (sözle)', '\\\\b(?:sıfır|bir|iki|üç|dört|beş|altı|yedi|sekiz|dokuz|on|yirmi|otuz|kırk|elli|altmış|yetmiş|seksen|doksan|yüz|bin|buçuk|yarım)(?: (?:sıfır|bir|iki|üç|dört|beş|altı|yedi|sekiz|dokuz|on|yirmi|otuz|kırk|elli|altmış|yetmiş|seksen|doksan|yüz|bin|buçuk|yarım))* (?:kilo|mili|mega)?(?:ohm\\\\w*|ω)', 'bc337|sürücü|taban|\\\\bseri\\\\b|ön şarj|akü')"
    },
    {
     "yer": "LISTE CIPLAK_KURAL",
@@ -1181,10 +1391,22 @@
     "metin": "('bıçak tipi', '\\\\{a\\\\.[^}]+\\\\}\\\\s*\\\\(?(?:mini|standart)\\\\b', None)"
    },
    {
+    "yer": "LISTE CIPLAK_KURAL",
+    "ozet": "3c7515c23cea5f22",
+    "neden": "kural listesi",
+    "metin": "('gerilim (akü ölçümü)', '(?<![\\\\w{.,])\\\\d+(?:[.,]\\\\d+)?(?: ?[–-] ?\\\\d+(?:[.,]\\\\d+)?)? ?m?v\\\\b', 'akü ölçüm|bölücü oran|bölücünün orta|bölücüsünün orta')"
+   },
+   {
     "yer": "LISTE YASAK",
     "ozet": "d7ac2b1e81623376",
     "neden": "kural listesi",
     "metin": "('köprüleme talimatı', '\\\\bköprüle(?!r(?:i|in|e|de|den|le)?\\\\b)\\\\w*', 'köprüle(?:n)?me(?:z|di|meli|yin|yiniz|den)?|köprülenemez')"
+   },
+   {
+    "yer": "LISTE YASAK",
+    "ozet": "481ea1ef76ad1eca",
+    "neden": "kural listesi",
+    "metin": "('köprüleme talimatı (nesneyle)', '\\\\b(?:mantar\\\\w*|acil\\\\s+stop\\\\w*|NC|ana\\\\s+anahtar\\\\w*|sigorta\\\\w*|röle\\\\w*|kontak\\\\w*|(?:artı|eksi)(?:sı|si|sını|sini|yı|yi|ya|ye|nın|nin|ları|leri|lar|ler)?)(?![\\\\w])[^.;!?\\\\n,:→()]{0,60}?\\\\bköprü\\\\w*(?!\\\\w)(?!\\\\s+(?:yoksa|yok|değil)\\\\b)|\\\\bköprü\\\\w*(?!\\\\w)(?!\\\\s+(?:yoksa|yok|değil)\\\\b)[^.;!?\\\\n,:→()]{0,60}?\\\\b(?:mantar\\\\w*|acil\\\\s+stop\\\\w*|NC|ana\\\\s+anahtar\\\\w*|sigorta\\\\w*|röle\\\\w*|kontak\\\\w*|(?:artı|eksi)(?:sı|si|sını|sini|yı|yi|ya|ye|nın|nin|ları|leri|lar|ler)?)(?![\\\\w])', 'köprüle(?:n)?me(?:z|di|meli|yin|yiniz|den)?|köprülenemez')"
    },
    {
     "yer": "LISTE YASAK",
@@ -1239,6 +1461,42 @@
     "ozet": "ddfbc26de0ce70f2",
     "neden": "kural listesi",
     "metin": "('sigorta / mantar yerine tel', '\\\\byerine\\\\s+(?:bir\\\\s+)?(?:tel|kablo|köprü|jumper)\\\\w*(?:\\\\s+\\\\w+)?', '\\\\w+(?:ma|me)(?:z|dan|den|yın|yin|yınız|yiniz|malı|meli)?|\\\\w+(?:maz|mez)')"
+   },
+   {
+    "yer": "LISTE YASAK",
+    "ozet": "b304ee11e492c5ea",
+    "neden": "kural listesi",
+    "metin": "('PCA9685 V+ bağlama', '\\\\bPCA9685\\\\S*\\\\s+V\\\\+\\\\s*(?:klemens|pin|uc|ray)\\\\w*[^.;!?\\\\n]{0,60}?\\\\b(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|bağlantı\\\\s+yap)\\\\w*', '(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|yap)(?:ma|me)(?:z|dan|den|yın|yin|yınız|yiniz|malı|meli)?|(?:bağla|tak|sök|çıkar|kes|değiştir|yap)(?:ıl|il|ul|ül)?(?:maz|mez)')"
+   },
+   {
+    "yer": "LISTE YASAK",
+    "ozet": "bc251eac2e6f948c",
+    "neden": "kural listesi",
+    "metin": "('PC817 çıkış beslemesi 5 V', \"\\\\b(?:PC817|çıkış\\\\s+(?:VCC|besleme))\\\\S*[^.;!?\\\\n]{0,120}?\\\\b5\\\\s*V['’](?:a|ya|e|ye)\\\\s+(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|bağlantı\\\\s+yap)\\\\w*\", '(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|yap)(?:ma|me)(?:z|dan|den|yın|yin|yınız|yiniz|malı|meli)?|(?:bağla|tak|sök|çıkar|kes|değiştir|yap)(?:ıl|il|ul|ül)?(?:maz|mez)')"
+   },
+   {
+    "yer": "LISTE YASAK",
+    "ozet": "e1d619f085c58e7d",
+    "neden": "kural listesi",
+    "metin": "('K1 87a ucuna bağlama', \"\\\\b87a(?:['’]\\\\w+)?\\\\b(?!\\\\s*\\\\)?\\\\s*boş)[^.;!?\\\\n]{0,60}?\\\\b(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|bağlantı\\\\s+yap)\\\\w*\", '(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|yap)(?:ma|me)(?:z|dan|den|yın|yin|yınız|yiniz|malı|meli)?|(?:bağla|tak|sök|çıkar|kes|değiştir|yap)(?:ıl|il|ul|ül)?(?:maz|mez)')"
+   },
+   {
+    "yer": "LISTE YASAK",
+    "ozet": "263c29ca70de065f",
+    "neden": "kural listesi",
+    "metin": "('ana hat NC ucuna', \"\\\\bG(?:08|09|10|11)\\\\b(?:['’]\\\\w+)?[^.;!?\\\\n]{0,80}?\\\\bNC\\\\b(?:['’]\\\\w+)?(?!\\\\s*\\\\)?\\\\s*boş)[^.;!?\\\\n]{0,30}?\\\\b(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|bağlantı\\\\s+yap)\\\\w*\", '(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|yap)(?:ma|me)(?:z|dan|den|yın|yin|yınız|yiniz|malı|meli)?|(?:bağla|tak|sök|çıkar|kes|değiştir|yap)(?:ıl|il|ul|ül)?(?:maz|mez)')"
+   },
+   {
+    "yer": "LISTE YASAK",
+    "ozet": "1cccf08c9d293493",
+    "neden": "kural listesi",
+    "metin": "('mantar / ana anahtar uçları aynı vidada', '\\\\b(?:mantar\\\\w*|ana\\\\s+anahtar\\\\w*)(?:\\\\s+\\\\w+){0,3}?\\\\s+(?:uç(?:lar|ları)\\\\w*|iki\\\\s+uc\\\\w*|giriş\\\\w*\\\\s+ve\\\\s+çıkış\\\\w*)[^.;!?\\\\n]{0,40}?\\\\b(?:aynı|tek|ortak)\\\\s+(?:vida|klemens|saplama|pabu[çc])\\\\w*[^.;!?\\\\n]{0,30}?\\\\b(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|bağlantı\\\\s+yap)\\\\w*|\\\\b(?:aynı|tek|ortak)\\\\s+(?:vida|klemens|saplama|pabu[çc])\\\\w*[^.;!?\\\\n]{0,30}?\\\\b(?:mantar\\\\w*|ana\\\\s+anahtar\\\\w*)(?:\\\\s+\\\\w+){0,3}?\\\\s+(?:uç(?:lar|ları)\\\\w*|iki\\\\s+uc\\\\w*|giriş\\\\w*\\\\s+ve\\\\s+çıkış\\\\w*)[^.;!?\\\\n]{0,30}?\\\\b(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|bağlantı\\\\s+yap)\\\\w*', '(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|yap)(?:ma|me)(?:z|dan|den|yın|yin|yınız|yiniz|malı|meli)?|(?:bağla|tak|sök|çıkar|kes|değiştir|yap)(?:ıl|il|ul|ül)?(?:maz|mez)')"
+   },
+   {
+    "yer": "LISTE YASAK",
+    "ozet": "20f68588120209d8",
+    "neden": "kural listesi",
+    "metin": "('acil stop telleri tek uçta', '\\\\bA0[12]\\\\b[^.;!?\\\\n]{0,40}?\\\\bA0[12]\\\\b[^.;!?\\\\n]{0,30}?\\\\b(?:aynı|tek|ortak|bir)\\\\s+(?:vida|klemens|saplama|pabu[çc]|uç|uca|kontak)\\\\w*[^.;!?\\\\n]{0,30}?\\\\b(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|bağlantı\\\\s+yap)\\\\w*', '(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|yap)(?:ma|me)(?:z|dan|den|yın|yin|yınız|yiniz|malı|meli)?|(?:bağla|tak|sök|çıkar|kes|değiştir|yap)(?:ıl|il|ul|ül)?(?:maz|mez)')"
    },
    {
     "yer": "LISTE TAMLIK_MUAF",
@@ -1341,6 +1599,54 @@
     "ozet": "6b86b273ff34fce1",
     "neden": "kural",
     "metin": "1"
+   },
+   {
+    "yer": "LISTE TALIMAT_FIIL",
+    "ozet": "07502a77d6cfce2d",
+    "neden": "kural",
+    "metin": "'(?<!\\\\w)(?:bağla|tak|lehimle|vidala|geçir|sık|bağlayın|takın|lehimleyin|vidalayın|geçirin|sıkın)(?!\\\\w)'"
+   },
+   {
+    "yer": "LISTE TALIMAT_ERTELE",
+    "ozet": "c1f79cf7fc5fea17",
+    "neden": "kural",
+    "metin": "'(?<!\\\\w)(?!(?:bağla|tak|lehimle|vidala|geçir|sık|bağlayın|takın|lehimleyin|vidalayın|geçirin|sıkın)(?!\\\\w))(?!bağlantı)(?:bağla|tak|lehimle|vidala|geçir)\\\\w+|(?<!\\\\w)(?:gider|gelir|iner|girer|çıkar|gidecek|gelecek)(?!\\\\w)'"
+   },
+   {
+    "yer": "LISTE TAMLIK_DIRENC",
+    "ozet": "3f01cbe98799b6fc",
+    "neden": "kural",
+    "metin": "[('R-aku-olcum', 'aku_olcum')]"
+   },
+   {
+    "yer": "LISTE KOD_DIZGE_ONU",
+    "ozet": "43895fdd14dba717",
+    "neden": "kural",
+    "metin": "'(?:className\\\\s*\\\\+?=|classList\\\\.\\\\w+\\\\(|querySelector(?:All)?\\\\(|getElementById\\\\(|closest\\\\(|matches\\\\(|(?:set|get|has|remove)Attribute\\\\(|addEventListener\\\\(|createElement\\\\(|(?<![\\\\w.])(?:q|qa|\\\\$)\\\\()\\\\s*$'"
+   },
+   {
+    "yer": "LISTE TALIMAT_LISTE",
+    "ozet": "c83ef2cdd37d8959",
+    "neden": "kural",
+    "metin": "'(?<!\\\\w)\\\\d+\\\\s+(?:kablo|tel|hat|uç)\\\\w*(?!\\\\w)'"
+   },
+   {
+    "yer": "LISTE TALIMAT_OK",
+    "ozet": "c03379287a5124fd",
+    "neden": "kural",
+    "metin": "\"[\\\\w)'’+−]\\\\s*→\\\\s*[\\\\w(+−]\""
+   },
+   {
+    "yer": "LISTE CIPLAK_PENCERE",
+    "ozet": "b6100a5b2630b2b4",
+    "neden": "kural",
+    "metin": "[('direnç', 120), ('direnç (sözle)', 120), ('gerilim (akü ölçümü)', 120)]"
+   },
+   {
+    "yer": "LISTE CIPLAK_PENCERE_VARSAYILAN",
+    "ozet": "d59eced1ded07f84",
+    "neden": "kural",
+    "metin": "40"
    }
   ],
   "metin": [
@@ -1543,6 +1849,48 @@
     "metin": "Alt kat kartları ve akü"
    },
    {
+    "yer": "kaynak B3 is_",
+    "ozet": "1ddf32fff4f7a74b",
+    "neden": "anahtar sözcük",
+    "metin": "Tezgâhta ayarlanan alt kat kartlarını (iki BTS7960B, XL4016 A / B / çevre) burçlara tak, klemenslerini kat gelmeden, üstü açıkken bağla; akü ayrık:"
+   },
+   {
+    "yer": "kaynak B3 is_",
+    "ozet": "e270904ccb52e449",
+    "neden": "anahtar sözcük",
+    "metin": "1. Motor uçları (B2b'de plaka üstüne alındı): sol BTS7960B'nin M+ / M− klemensine ön sol motoru (M01) ve arka sol motoru (M02), sağ BTS7960B'ninkine ön sağ (M03) ve arka sağ motoru (M04) bağla."
+   },
+   {
+    "yer": "kaynak B3 is_",
+    "ozet": "a4cb99ddb2332e2a",
+    "neden": "metin",
+    "metin": "Aynı yandaki iki motor aynı klemense paralel girer: iki motorun + ucu M+'ya, − ucu M−'ye."
+   },
+   {
+    "yer": "kaynak B3 is_",
+    "ozet": "97cc2e8c55b5a2d7",
+    "neden": "yer tutucu, anahtar sözcük",
+    "metin": "2. BTS7960B güç girişleri ({awg.G12|G13}): sol kartın B+ / B− klemensine G12'yi, sağ kartınkine G13'ü bağla; + ve − karışmasın (kart üstü yazı)."
+   },
+   {
+    "yer": "kaynak B3 is_",
+    "ozet": "804e6ada2369bcdd",
+    "neden": "anahtar sözcük",
+    "metin": "3. XL4016 A ve B: girişlerin IN+ / IN− klemensine G14 (A) ve G15'i (B), çıkışların OUT+ / OUT− klemensine SV1 (A) ve SV2'yi (B) bağla."
+   },
+   {
+    "yer": "kaynak B3 is_",
+    "ozet": "d9372ccb2e146212",
+    "neden": "yer tutucu, anahtar sözcük",
+    "metin": "4. XL4016 çevre: girişin IN+ / IN− klemensine G18'i, çıkışın OUT+ / OUT− klemensine G19'u bağla; G19'un hat sigortası yuvası {yer.hat-cevre}, sigortası takılmaz (F1 aşama 1'de takılır)."
+   },
+   {
+    "yer": "kaynak B3 is_",
+    "ozet": "997649ddb34999da",
+    "neden": "anahtar sözcük",
+    "metin": "Bu kabloların öbür uçları (bara, yıldız barası, sigorta kutusu, arayüz kartı, dağıtım kartları) K1'de bağlanır: aşağıdaki kablo notundaki gibi etiketle ve bantla."
+   },
+   {
     "yer": "kaynak B3 kontrol",
     "ozet": "dbe4bc91f21c8cef",
     "neden": "anahtar sözcük",
@@ -1664,9 +2012,9 @@
    },
    {
     "yer": "kaynak B5a is_",
-    "ozet": "6cde7222a442b7b5",
+    "ozet": "9b290c346a3e2cb2",
     "neden": "anahtar sözcük",
-    "metin": "XL4016 C ve ön şarj kartı da burada."
+    "metin": "XL4016 C, ön şarj kartı ve dağıtım kartı C (kafa servolarının hattı C; XL4016 C'nin yanında) da burada."
    },
    {
     "yer": "kaynak B5a is_",
@@ -1675,10 +2023,52 @@
     "metin": "Ana anahtar bu panele girmez: etek üst plakasının altına F1'de takılır."
    },
    {
+    "yer": "kaynak B5a is_",
+    "ozet": "f75a2f1a18c53b27",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Dağıtım kartı C, tezgâhta: kartın 2200 µF kondansatörünü V+ / GND barasına lehimle, yönü {yon.kondansator}."
+   },
+   {
+    "yer": "kaynak B5a is_",
+    "ozet": "f08d8fcb4c594b01",
+    "neden": "metin",
+    "metin": "Gövdedeki eksi şeridi okunmuyorsa kondansatörü takma (kablajda teyit)."
+   },
+   {
+    "yer": "kaynak B5a is_",
+    "ozet": "933ec3cef436c79c",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Sonra SV3'ü ({awg.SV3}) XL4016 C'nin OUT+ / OUT− klemensinden dağıtım kartı C'nin 2 pin 5,08 mm giriş klemensine bağla: {kutup.SV3}."
+   },
+   {
+    "yer": "kaynak B5a is_",
+    "ozet": "fc0946837ee21215",
+    "neden": "anahtar sözcük",
+    "metin": "Bağlamadan önce telin iki ucunu etiketle, XL4016 C'nin ve kartın + / − yazısını karşılaştır: ters bağlanan kondansatör ısınır, kafa servoları zarar görür."
+   },
+   {
+    "yer": "kaynak B5a is_",
+    "ozet": "24720cc2b72a5a10",
+    "neden": "anahtar sözcük",
+    "metin": "Kafa servolarının sinyal köprüsü (P03) K1'de, uzatmaları (S09, S10) K2'de takılır."
+   },
+   {
     "yer": "kaynak B5a kontrol",
     "ozet": "208d8347e338b2d2",
     "neden": "anahtar sözcük",
     "metin": "Sigorta kutusu, röle ve ana sigorta yuvası panele (M4 + naylon somun)"
+   },
+   {
+    "yer": "kaynak B5a kontrol",
+    "ozet": "cee43d501f31789c",
+    "neden": "anahtar sözcük",
+    "metin": "Dağıtım kartı C: kondansatörün eksi şeritli bacağı GND barasında; SV3 bağlandı (XL4016 C OUT+ → kartın V+, OUT− → GND)."
+   },
+   {
+    "yer": "kaynak B5a kontrol",
+    "ozet": "4d7c38e679ec82f6",
+    "neden": "anahtar sözcük",
+    "metin": "Akü ayrıkken multimetrenin direnç kademesinde kartın V+ ile GND arası sıfırda kalmıyor (kısa devre yok; kondansatör dolarken değer yükselir)"
    },
    {
     "yer": "kaynak B5a kontrol",
@@ -1747,10 +2137,112 @@
     "metin": "Tezgâh: elektronik katı"
    },
    {
+    "yer": "kaynak B6a is_",
+    "ozet": "4adda8d9ba085327",
+    "neden": "metin",
+    "metin": "Tezgâhta, kat burçlara inmeden: kartları kata tak (arayüz kartı, dağıtım kartı A ve B, PCA9685, BNO055, ESP32 taşıyıcı), sonra kat üstündeki kartlar arası kabloları bağla."
+   },
+   {
+    "yer": "kaynak B6a is_",
+    "ozet": "14796e871c26a905",
+    "neden": "metin",
+    "metin": "Hepsi dişi uçlu sinyal teli (O-4 r); uçlar ve pinler `planlama/adim3/kablolar.md` tablolarında, kart üstü yazıya göre bağla:"
+   },
+   {
+    "yer": "kaynak B6a is_",
+    "ozet": "d9d2e2a974fe8df9",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "1. Dağıtım kartı A ve B: her kartın iki 2200 µF kondansatörünü V+ / GND barasına lehimle, yönü {yon.kondansator}; eksi şeridi okunmuyorsa takma (kablajda teyit)."
+   },
+   {
+    "yer": "kaynak B6a is_",
+    "ozet": "3d481bb20ecf6ecf",
+    "neden": "anahtar sözcük",
+    "metin": "2. Arayüz kartı → ESP32 (X01): bölücü çıkışları, iki röle sürücüsünün taban girişi, PC817 çıkışları, BTS EN düğümü, çevre 5 V → ESP32 VIN, GND → GND."
+   },
+   {
+    "yer": "kaynak B6a is_",
+    "ozet": "853591c9e84b134b",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "PC817 modülünün çıkış besleme ucunu (çıkış VCC) ESP32'nin {uc.X01:PC817_çıkış_beslemesi:b} pinine bağla (X01): 5 V'a bağlama."
+   },
+   {
+    "yer": "kaynak B6a is_",
+    "ozet": "3da0cfa8c0267c76",
+    "neden": "yer tutucu, anahtar sözcük",
+    "metin": "Modülün çıkışları PC817 #1 (acil stop, {gpio.ACIL_STOP_DURUM}) ve PC817 #2 (bara, {gpio.BARA_DURUM}) pinlerine gider; besleme 5 V olursa bu pinler 5 V görür, ESP32 girişleri en çok 3,6 V'a dayanır (pin haritası D3)."
+   },
+   {
+    "yer": "kaynak B6a is_",
+    "ozet": "88232a78c07403ba",
+    "neden": "metin",
+    "metin": "3. I2C: ESP32 → PCA9685 giriş başlığı (I01: SDA, SCL, 3V3 → VCC, GND); PCA9685 çıkış başlığı → BNO055 (I02: SDA, SCL, VCC → VIN, GND)."
+   },
+   {
+    "yer": "kaynak B6a is_",
+    "ozet": "1fb778f405739bc9",
+    "neden": "metin",
+    "metin": "PCA9685'in OE ucunu kart üstünde GND'ye bağla."
+   },
+   {
+    "yer": "kaynak B6a is_",
+    "ozet": "30e8267930570576",
+    "neden": "metin",
+    "metin": "4. Servo sinyalleri, yalnız sinyal teli: PCA9685'in sağ kol kanallarının sinyal pinlerini dağıtım kartı A'nın sinyal girişlerine (P01), sol kol kanallarınınkini dağıtım kartı B'ninkilere (P02) tek telli dişi uçlarla bağla."
+   },
+   {
+    "yer": "kaynak B6a is_",
+    "ozet": "0d8537e5843c8abc",
+    "neden": "zorunlu",
+    "metin": "PCA9685'in V+ klemensine ve kanal başlıklarının V+ pinine tel takma; dağıtım kartının sinyal girişindeki V+ pini kartta bağlı değildir."
+   },
+   {
+    "yer": "kaynak B6a is_",
+    "ozet": "3ad5a825393e51a6",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "3 telli hazır servo kablosu kullanırsan V+ damarını iki ucundan kes, makaronla yalıt."
+   },
+   {
+    "yer": "kaynak B6a is_",
+    "ozet": "a0a8eb470264fdf7",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "Neden: PCA9685'te kanal başlıklarının V+ pinleri V+ klemensine ortaktır; V+ teli takılırsa üç dağıtım kartının V+'ı, yani XL4016 A, B ve C'nin çıkışları birbirine paralel girer, dönüştürücüler zarar görebilir (kart içi ortak V+ sırası kablajda teyit)."
+   },
+   {
+    "yer": "kaynak B6a is_",
+    "ozet": "24cc9b0699192444",
+    "neden": "metin",
+    "metin": "Hangi kanalın hangi girişe gittiği kablolar.md'de (P01, P02)."
+   },
+   {
     "yer": "kaynak B6a kontrol",
     "ozet": "c6f3cb71361e6fdd",
     "neden": "metin",
     "metin": "Burçlar alttan, kartlar üstten (arayüz kartı, 2 dağıtım kartı, PCA9685, BNO055, ESP32 taşıyıcı)"
+   },
+   {
+    "yer": "kaynak B6a kontrol",
+    "ozet": "69ae77225719001c",
+    "neden": "anahtar sözcük",
+    "metin": "X01, I01, I02, P01 ve P02 bağlandı: her dişi uç kart üstü yazıyla kablolar.md'deki uca eşleşti; dağıtım kartı A ve B'de kondansatörlerin eksi şeritli bacağı GND barasında"
+   },
+   {
+    "yer": "kaynak B6a kontrol",
+    "ozet": "ff2b9bfd47ab5e30",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "PC817 modülünün çıkış VCC ucu ESP32'nin {uc.X01:PC817_çıkış_beslemesi:b} pininde (X01), 5 V'ta değil: multimetrenin süreklilik kademesiyle çıkış VCC ile ESP32 {uc.X01:PC817_çıkış_beslemesi:b} pini arası öter, çıkış VCC ile çevre 5 V arası ötmez"
+   },
+   {
+    "yer": "kaynak B6a kontrol",
+    "ozet": "7a5df10cc7ddf3d7",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "PCA9685 V+ boş: multimetrenin süreklilik kademesiyle PCA9685'in kanal başlığının V+ pini ile dağıtım kartı A'nın ve B'nin V+ barası arasında süreklilik yok (ötmemeli; ölçü ucu V+ klemensine değil kanal başlığının V+ pinine: kartta klemens ile V+ rayı arasında ters kutup koruması olabilir)."
+   },
+   {
+    "yer": "kaynak B6a kontrol",
+    "ozet": "7d8e5ff99d6804fe",
+    "neden": "anahtar sözcük",
+    "metin": "Öterse bir V+ teli takılı ya da kartın sinyal girişindeki V+ pini bağlı: o teli ya da bağı sök, ölçüm ötmeyene kadar devam etme"
    },
    {
     "yer": "kaynak B6a kontrol",
@@ -1844,21 +2336,21 @@
    },
    {
     "yer": "kaynak K1 is_",
-    "ozet": "d293ea1b88d309a1",
+    "ozet": "1507a9043503c6f8",
     "neden": "yer tutucu, anahtar sözcük",
-    "metin": "1. Ana hat ({awg.G01|G02|G03|G04}; G01–G04): akü + → XT60 → ana sigorta {a.ana-sigorta} ({bicak.ana-sigorta} bıçak, kablolu yuva) → ana anahtar → sigorta kutusu."
+    "metin": "1. Ana hat ({awg.G01|G02|G03|G04}): akü + → XT60 (G01, akü tarafı) → ana sigorta {a.ana-sigorta} ({bicak.ana-sigorta} bıçak, kablolu yuva; XT60'ın robot tarafından yuvanın girişine G02) → ana anahtar (yuvanın çıkışından G03) → sigorta kutusu (anahtarın çıkışından kutunun girişine G04)."
    },
    {
     "yer": "kaynak K1 is_",
-    "ozet": "e1fc960b5167bf58",
+    "ozet": "9d1b7e234d50236d",
     "neden": "anahtar sözcük",
-    "metin": "Ana anahtar henüz yerinde değil (F1'de etek plakasının altına takılır): ana anahtara gidecek iki uç bırakılır, F1'de bağlanır."
+    "metin": "Ana anahtar henüz yerinde değil (F1'de etek plakasının altına takılır): G03 ve G04'ün anahtar uçlarını halka pabuçlu ve bantlı bırak; şarj kolunun + ucu (G06) ve akü ölçüm teli (G07) de anahtara gider; dördü F1'de bağlanır."
    },
    {
     "yer": "kaynak K1 is_",
-    "ozet": "04ffedc5a918929a",
+    "ozet": "8fc9ce3db6afd51d",
     "neden": "yer tutucu, anahtar sözcük",
-    "metin": "Şarj kolu (G06, {awg.G06}): + ucu ana sigortanın yük tarafından, ana anahtarın giriş saplamasına (G03 ile aynı saplama, mavi M5 halka pabuç); {a.hat-sarj} {bicak.hat-sarj} hat sigortasının kapaklı yuvası bu ucun dibinde, kuyruğuna lehim + makaron; öbür uç etekteki XT60E-M şarj girişine (F1); − ucu yıldız barasına (mavi pabuç)."
+    "metin": "Şarj kolu (G06, {awg.G06}): + ucu ana sigortanın yük tarafından, ana anahtarın giriş saplamasına gidecek (G03 ile aynı saplama, mavi {vida.ana-anahtar} halka pabuç, ana anahtarın saplama ölçüsü kablajda teyit; F1'de takılır); {a.hat-sarj} {bicak.hat-sarj} hat sigortasının kapaklı yuvası {yer.hat-sarj}, kuyruğuna lehim + makaron; öbür uç etekteki XT60E-M şarj girişine (F1); − ucu yıldız barasına (mavi pabuç)."
    },
    {
     "yer": "kaynak K1 is_",
@@ -1871,6 +2363,60 @@
     "ozet": "bb9e9f0652b1e6e1",
     "neden": "yer tutucu, anahtar sözcük",
     "metin": "Uç bantlı bırakılır, F1'de etekteki şarj girişine bağlanır; {a.hat-sarj} sigortası takılmaz (F1 aşama 1)."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "cd19fc6affb9a949",
+    "neden": "yer tutucu, anahtar sözcük",
+    "metin": "Akü ölçüm teli (G07, {awg.G07}; akü ölçüm bölücüsünün {ohm.aku_olcum} üst direnci kaynak ucunda): arayüz kartı ucunu bölücünün orta noktası pedine lehimle, makaronla ört."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "72b64dc1205d9b6e",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Öbür uçta (G07'nin ana anahtar ucu), lehimden önce: kırmızı {vida.ana-anahtar} halka pabucun PVC kılıfını çıkar (ana anahtarın saplama ölçüsü kablajda teyit); yalıtımlı pabucun kovanına lehim kılıfı eritir."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "10f433b65c5e6659",
+    "neden": "zorunlu",
+    "metin": "Sonra lehimden önce makaronu G07'nin teline geçir: boyu direnci, iki bacağını ve pabucun kovanını birlikte örtecek kadar (lehimden sonra geçmez)."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "40544c9cc982701e",
+    "neden": "zorunlu",
+    "metin": "Direnci telin ucuna lehimle."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "3a14d420387a3b91",
+    "neden": "zorunlu",
+    "metin": "Direncin öbür bacağını pabucun kovanına sık (pabuç pensesiyle), sonra kovana lehimle: direnç ile pabuç arasında tel kalmaz."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "d1e26daacfb12d98",
+    "neden": "yer tutucu, zorunlu",
+    "metin": "Soğuyunca makaronu direncin ve kovanın üstüne çek ve ısıtarak büz: direnç, iki bacağı ve kovan tümüyle örtülü, açıkta bacak kalmaz (G07'nin direnci {yer.R-aku-olcum})."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "b185da492505db4d",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "Gerginlik giderme: G07'yi direncin tel tarafında, ana anahtara giden G04'e kablo bağıyla tuttur; teli çekince yükü kablo bağı taşır, direncin gövdesi ve bacakları değil (bağın yeri kaynakta yok, kablajda teyit)."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "21469c3ae0f2b891",
+    "neden": "anahtar sözcük",
+    "metin": "Pabucu bantlı bırak: F1'de ana anahtarın çıkış saplamasına, G04'ün üstüne takılır."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "a1f52663c86583ba",
+    "neden": "yer tutucu, anahtar sözcük",
+    "metin": "Pabuç saplamaya girmeden, akü ayrıkken multimetrenin direnç kademesiyle pabuç ile akü ölçüm bölücüsünün orta noktası arasını ölç: {ohm.aku_olcum}'a yakın okunur (kontrol)."
    },
    {
     "yer": "kaynak K1 is_",
@@ -1904,21 +2450,69 @@
    },
    {
     "yer": "kaynak K1 is_",
-    "ozet": "448e8b0d42b0c1ae",
+    "ozet": "6de841779cd994b0",
     "neden": "yer tutucu, anahtar sözcük",
-    "metin": "Anahtarlı barada hangi ucun hangi saplamaya gideceği kayıtta yazılı değil: yerleşim serbest, yalnız saplama başına en çok {saplama.pabuc} pabuç (besleme saplaması yazılı olmadığından baranın köprüleri koruyucunun tam akımıyla sınanır: `planlama/adim3/kablolar.json`, saplama uç türünün köprü ilkesi)."
+    "metin": "Anahtarlı bara yerleşimi (kalın pabuç altta): saplama {bsaplama.G12|G14|G15} G12 / G14 / G15, {bsaplama.G13|G16} G13 / G16, {bsaplama.G09|G11} G09 / G11 (baraya gelen iki hat: röle K1 ve ön şarj kartı), {bsaplama.G22} G22; saplama başına en çok {saplama.pabuc} pabuç, köprü uçları dahil (`planlama/adim3/kablolar.json` yerleşim kaydı)."
    },
    {
     "yer": "kaynak K1 is_",
-    "ozet": "e9d5659a8bea11d4",
+    "ozet": "fc0d6907901fedca",
     "neden": "yer tutucu, anahtar sözcük",
-    "metin": "3. F1 {a.F1} → röle K1 kontağı (30 → 87) → anahtarlı bara (G08, G09; {awg.G09}); F1 → ön şarj kartı (K2 kontağı + {ohm.onsarj}) → anahtarlı bara (G10, G11; {awg.G11})."
+    "metin": "3. F1 {a.F1} → röle K1 kontağı ({kontak.K1}; soketin kuyruk numaraları kablajda teyit: G08 sigorta kutusundan girişe, G09 çıkıştan anahtarlı baraya; {awg.G09}); F1 → ön şarj kartı → anahtarlı bara (G10, G11; {awg.G11})."
    },
    {
     "yer": "kaynak K1 is_",
-    "ozet": "9d066c5a6f2be1c9",
+    "ozet": "a02b1667781beb8d",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Ön şarj kartında, lehimden önce K2'nin pimlerini bul: akü ayrıkken röle gövdesindeki şemaya bak, multimetrenin süreklilik kademesinde (bobin boşta) {kontak.K2:giris} ile {kontak.K2:bos} arası öter, {kontak.K2:giris} ile {kontak.K2:cikis} arası ötmez (pim yeri kablajda teyit)."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "29852f06587cc82e",
     "neden": "yer tutucu, anahtar sözcük",
-    "metin": "Baradan: iki BTS7960B (G12, G13; {awg.G13}); mini hat sigortalarıyla XL4016 A ve B ({a.hat-A|hat-B}; G14, G15), C ({a.hat-C}; G16), {awg.G14|G15|G16}; PC817 #2 algı teli (G22, {awg.G22}): bara ucunda {a.hat-G22} {bicak.hat-G22} hat sigortası, yıldız ucu 5 cm {ara.G22} siyah ara parçaya lehimli, ara parça kırmızı pabuçla."
+    "metin": "Sonra G10'u K2 kontağının girişine lehimle, ön şarj direnci ({ohm.onsarj}) çıkış ucunda, G11 direncin öbür bacağından baraya; K2'nin uçları {kontak.K2} (röle pimlerinin yeri kablajda teyit: röle gövdesindeki şema)."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "2da460ceb7686065",
+    "neden": "yer tutucu, anahtar sözcük",
+    "metin": "Baradan: iki BTS7960B (G12, G13; {awg.G13}); mini hat sigortalarıyla XL4016 A ve B ({a.hat-A|hat-B}; G14, G15), {awg.G14|G15}."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "56548b85a10181aa",
+    "neden": "yer tutucu, anahtar sözcük",
+    "metin": "XL4016 C'yi de mini hat sigortasıyla ({a.hat-C}) baradan güç panelindeki IN+ / IN− klemensine bağla (G16, {awg.G16})."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "94b51491ae8b5a19",
+    "neden": "yer tutucu, anahtar sözcük",
+    "metin": "G14, G15 ve G16'nın hat sigortası yuvası {yer.hat-A|hat-B|hat-C}: yuvanın bir kuyruğu mavi M5 halka pabuçla bara saplamasına, öbür kuyruğu kablonun teline lehim + makaron; XL4016 ucunda sigorta yok."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "0ba9f11f88c064e5",
+    "neden": "yer tutucu, anahtar sözcük",
+    "metin": "PC817 #2 algı teli (G22, {awg.G22}): {yer.hat-G22} {a.hat-G22} {bicak.hat-G22} hat sigortası."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "bdfbc3fa359c9c48",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "G22'nin kutbu {kutup.G22}: + damarını (hat sigortasından gelen) arayüz kartındaki PC817 modülünün {uc.G22:+:b} klemensine, − damarını modülün {uc.G22:−:a} klemensinden yıldız barasına bağla; − damarının yıldız ucu 5 cm {ara.G22} siyah ara parçaya lehimli, ara parça kırmızı pabuçla yıldız barasının {saplama.G22}."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "25c9bdc2cef1adf4",
+    "neden": "metin",
+    "metin": "saplamasına."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "ddbe6b7d0c456ce4",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Bağlamadan önce modülün üstündeki IN2 + / IN2 − yazısını oku: ters bağlanan G22'de giriş LED'i yanmaz, bara gerilimliyken PC817 #2 ({gpio.BARA_DURUM}) LOW'a düşmez ve ESP32 devreye almada hata verir; modülün girişinde ters gerilim koruması olup olmadığı belgede yok (kablajda teyit), ters bağlıyken enerji verme."
    },
    {
     "yer": "kaynak K1 is_",
@@ -1958,9 +2552,9 @@
    },
    {
     "yer": "kaynak K1 is_",
-    "ozet": "d30d588773a8a7ef",
+    "ozet": "d5fc7ba953b58f5b",
     "neden": "yer tutucu, zorunlu, anahtar sözcük",
-    "metin": "PC817 #1 girişi düğümden (A06, {awg.A06}; {gpio.ACIL_STOP_DURUM} okur)."
+    "metin": "PC817 #1 girişi düğümden (A06, {awg.A06}; {gpio.ACIL_STOP_DURUM} okur): A06'nın + ucunu {parca.A06:+:a} noktasına, yani acil stop düğüm kartında bir klemensin kuyruğuna (kart altı) lehimle, modülün IN1 + klemensine bağla; − ucunu modülün IN1 − klemensinden arayüz kartının GND pedine lehimle (makaron)."
    },
    {
     "yer": "kaynak K1 is_",
@@ -1976,9 +2570,15 @@
    },
    {
     "yer": "kaynak K1 is_",
-    "ozet": "b57160fd1e699245",
+    "ozet": "5236d973824b6d77",
     "neden": "anahtar sözcük",
-    "metin": "Alt kat kartlarının (iki BTS7960B, XL4016 A / B / çevre) klemens uçları B3'te, kat ve güç paneli gelmeden bağlandı: burada yalnız B3'te etiketli bırakılan öbür uçları bara, sigorta kutusu ve hat sigortalarına bağla."
+    "metin": "Alt kat kartlarının (iki BTS7960B, XL4016 A / B / çevre) klemens uçları B3'te, kat ve güç paneli gelmeden bağlandı."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "f3b5b23804d63ea1",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Burada B3'te etiketli bırakılan öbür uçları yerlerine bağla: G12 ve G13'ün + uçlarını anahtarlı baraya, − uçlarını yıldız barasına; G14 ve G15'in + uçlarını hat sigortası yuvasıyla anahtarlı baraya (madde 3), − uçlarını yıldız barasına; G18'in + ucunu sigorta kutusunun F4 çıkışına (madde 4), − ucunu yıldız barasına; G19'u arayüz kartının çevre 5 V / GND klemensine; SV1'i dağıtım kartı A'nın, SV2'yi dağıtım kartı B'nin V+ / GND giriş klemensine ({kutup.SV1|SV2})."
    },
    {
     "yer": "kaynak K1 is_",
@@ -1988,9 +2588,27 @@
    },
    {
     "yer": "kaynak K1 is_",
-    "ozet": "acc2f81ab6566303",
+    "ozet": "ae0e2e3a65c52258",
     "neden": "anahtar sözcük",
-    "metin": "6. Enkoder ve sonarları bağla (motor uçları B3'te BTS7960B'ye bağlandı; sonarlar Q01–Q03)."
+    "metin": "6. Enkoder, BTS sinyal ve sonar kabloları (dişi uçlu sinyal teli, O-4 r; pinler `planlama/adim3/kablolar.md`'de, kart üstü yazıya göre bağla): arka sol motorun enkoderi (N01) ve arka sağ motorun enkoderi (N02) → ESP32 taşıyıcı başlığı (VCC → 3V3, GND, A, B)."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "56c8aae497367e83",
+    "neden": "anahtar sözcük",
+    "metin": "Sol BTS7960B'nin sinyal başlığı (B01) ve sağınki (B02) → ESP32 (IN1, IN2) ve arayüz kartı (EN1 + EN2 → BTS EN düğümü, IS1 + IS2 → IS bölücüsü, VCC → çevre 5 V, GND)."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "cdc45c1b807da241",
+    "neden": "anahtar sözcük",
+    "metin": "Sonarlar: sağ (Q01), orta (Q02) ve sol (Q03) sonarın VCC'sini arayüz kartının çevre 5 V'una, Trig'ini PCA9685'e, Echo'sunu arayüz kartındaki sonar bölücüsüne, GND'sini arayüz kartının GND'sine bağla."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "80f7984f1e94deef",
+    "neden": "anahtar sözcük",
+    "metin": "Motor uçları B3'te BTS7960B'ye bağlandı."
    },
    {
     "yer": "kaynak K1 is_",
@@ -2000,9 +2618,33 @@
    },
    {
     "yer": "kaynak K1 is_",
-    "ozet": "c2620d0b02e79bac",
+    "ozet": "88a2cf3f4b641b31",
+    "neden": "metin",
+    "metin": "7. Direğe çıkacak hatların taban kısmını da burada bağla."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "225db3a3803c7779",
     "neden": "anahtar sözcük",
-    "metin": "7. Direğe çıkacak hatların taban kısmını da burada bağla (servo A / B / kafa, kafa 12 V, göğüs 12 V, ESP32 USB)."
+    "metin": "Kafa servolarının sinyal köprüsünü (P03), yalnız sinyal teliyle, PCA9685'in kafa pan ve tilt kanallarının sinyal pinlerinden dağıtım kartı C'nin pan / tilt sinyal girişlerine bağla."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "48e8436e0e73cfb4",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "PCA9685'in V+ pinine tel takma; 3 telli hazır kablo kullanırsan V+ damarını iki ucundan kes, makaronla yalıt (B6a madde 4: V+ teli XL4016 C'nin çıkışını A ve B'ninkilere paralel bağlar)."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "20d0d69a810b9623",
+    "neden": "anahtar sözcük",
+    "metin": "Kafa 12 V (G17), göğüs 12 V (G20) ve ESP32 USB'nin (U06) taban uçlarını bağla."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "76889f2bae330943",
+    "neden": "metin",
+    "metin": "Servo uzatmaları (A / B / kafa) K2'de dağıtım kartlarının çıkışına takılır."
    },
    {
     "yer": "kaynak K1 is_",
@@ -2144,15 +2786,63 @@
    },
    {
     "yer": "kaynak K1 kontrol",
-    "ozet": "96b7792b4ba0bb24",
+    "ozet": "4815169510c51a53",
     "neden": "yer tutucu, anahtar sözcük",
-    "metin": "Ana hat ve toprak düğümleri (G01–G05, {awg.G01|G02|G03|G04|G05}) yalnız M5 saplama + halka pabuçta (saplama başına en çok {saplama.pabuc} pabuç); düğüm için vidalı klemens yalnız iki küçük kartta (kafa giriş kartı, acil stop düğüm kartı; 5,08 mm)."
+    "metin": "Ana hat ve toprak düğümleri (G01–G05, {awg.G01|G02|G03|G04|G05}) yalnız M5 saplama + halka pabuçta (saplama başına en çok {saplama.pabuc} pabuç)."
+   },
+   {
+    "yer": "kaynak K1 kontrol",
+    "ozet": "f286127492e231fd",
+    "neden": "anahtar sözcük",
+    "metin": "Vidalı klemensli (5,08 mm) düğümler: kafa giriş kartı, acil stop düğüm kartı ve arayüz kartının çevre 5 V düğümü (`planlama/adim3/kablolar.json` klemens yerleri)."
    },
    {
     "yer": "kaynak K1 kontrol",
     "ozet": "6515d0f44df16030",
     "neden": "metin",
     "metin": "İnce telli uç vidalı klemense kalaylanmadan, bükülerek girer (yüksük varsa yüksük)"
+   },
+   {
+    "yer": "kaynak K1 kontrol",
+    "ozet": "c59b45711b4584da",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Akü ölçüm teli (G07): pabuç henüz saplamada değilken, akü ayrık, multimetrenin direnç kademesinde pabuç ile arayüz kartındaki akü ölçüm bölücüsünün orta noktası arası {ohm.aku_olcum}'a yakın; direnç, iki bacağı ve pabuç kovanı makaronla tümüyle örtülü (açıkta bacak yok), tel direncin yanında G04'e kablo bağıyla tutturulu (çekince direnç gerilmiyor), pabuç bantlı (F1'de ana anahtarın çıkış saplamasına)"
+   },
+   {
+    "yer": "kaynak K1 kontrol",
+    "ozet": "9e99162d24409abb",
+    "neden": "yer tutucu, anahtar sözcük",
+    "metin": "Ön şarj kartında K2'nin uçları {kontak.K2}: G10 girişte, ön şarj direnci çıkışta."
+   },
+   {
+    "yer": "kaynak K1 kontrol",
+    "ozet": "b2772850d78d6bbe",
+    "neden": "anahtar sözcük",
+    "metin": "Pim yeri G10 lehimlenmeden önce (madde 3) röle gövdesindeki şemayla ve akü ayrıkken multimetrenin süreklilik kademesiyle bakıldı (bobin boşta: G10'un pimi ile boş pim arası öter, G10'un pimi ile direncin pimi arası ötmez)"
+   },
+   {
+    "yer": "kaynak K1 kontrol",
+    "ozet": "103acd9c90d89474",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "G22'nin kutbu: + damarı (hat sigortası tarafı) PC817 modülünün {uc.G22:+:b} klemensinde, − damarı {uc.G22:−:a} klemensinden yıldız barasında; akü ayrıkken multimetrenin süreklilik kademesiyle {uc.G22:−:a} ile yıldız barası arası öter, {uc.G22:+:b} ile yıldız barası arası ötmez"
+   },
+   {
+    "yer": "kaynak K1 kontrol",
+    "ozet": "c6859421c37742a9",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "PCA9685 V+ boş (P03): akü ayrıkken multimetrenin süreklilik kademesiyle PCA9685'in kanal başlığının V+ pini ile dağıtım kartı C'nin V+ barası arasında süreklilik yok (ötmemeli; ölçü ucu klemense değil kanal başlığının V+ pinine; B6a'da A ve B için de bakıldı)"
+   },
+   {
+    "yer": "kaynak K1 kontrol",
+    "ozet": "0103beaa6050b5e0",
+    "neden": "yer tutucu, anahtar sözcük",
+    "metin": "Anahtarlı bara: G14, G15, G16 ve G22'nin hat sigortası yuvaları bara ucunda, sigortaları takılı değil; saplamalardaki yerleşim madde 2'deki gibi (G09 ve G11 aynı saplamada), her saplamada en çok {saplama.pabuc} pabuç"
+   },
+   {
+    "yer": "kaynak K1 kontrol",
+    "ozet": "b3b55c2b699359c4",
+    "neden": "metin",
+    "metin": "A06'nın − ucu arayüz kartının GND pedinde; X01, B01, B02, N01, N02, Q01, Q02, Q03 ve P03'ün uçları kart üstü yazıyla kablolar.md'deki uca eşleşti"
    },
    {
     "yer": "kaynak K1 kontrol",
@@ -2780,21 +3470,63 @@
    },
    {
     "yer": "kaynak E3a is_",
-    "ozet": "50cce2f9caeaf4bd",
+    "ozet": "53b5654bacf60d53",
+    "neden": "anahtar sözcük",
+    "metin": "TVS'ler tek yönlü; gövdedeki renkli bant katot ucudur (Vishay P6KE veri sayfası; `planlama/adim3/kablolar.json` tvs)."
+   },
+   {
+    "yer": "kaynak E3a is_",
+    "ozet": "b563da8b6383e7f6",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Her P6KE6V8A'yı çeviricinin çıkış uçlarına lehimle: D24V50F5'te {yon.P6KE6V8A-pi}, SY8205'te {yon.P6KE6V8A-ekran}."
+   },
+   {
+    "yer": "kaynak E3a is_",
+    "ozet": "b58176988b42eb16",
     "neden": "zorunlu, anahtar sözcük",
-    "metin": "TVS tek yönlü: katot (çizgili uç) +5 V'a, anot GND'ye."
+    "metin": "Takmadan önce gövde baskısını oku: sonu yalnız A (ör."
    },
    {
     "yer": "kaynak E3a is_",
-    "ozet": "1644c38a71036069",
-    "neden": "yer tutucu, anahtar sözcük",
-    "metin": "Kafa giriş kartı (P6KE18A üstünde küçük pertinaks parçası): üç adet 2 pin 5,08 mm vidalı klemens; + uçları ve − uçları kart üstünde {kopru.K01} tel köprüyle (K01 sonlandırması) lehimli (delikli plaket pedi F3 {a.F3} akım yolu değil)."
+    "ozet": "6fdfb98c852b0238",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "P6KE18A) tek yönlüdür, renkli bandı katottur; sonu CA (ör."
    },
    {
     "yer": "kaynak E3a is_",
-    "ozet": "439983a7f24ed151",
+    "ozet": "60a767d57669ca31",
+    "neden": "zorunlu",
+    "metin": "P6KE18CA) çift yönlüdür, bandı yoktur (Vishay P6KE veri sayfası)."
+   },
+   {
+    "yer": "kaynak E3a is_",
+    "ozet": "dc840d8af2688171",
+    "neden": "zorunlu",
+    "metin": "CA baskılı ya da bantsız TVS'i takma (kablajda teyit)."
+   },
+   {
+    "yer": "kaynak E3a is_",
+    "ozet": "0d989b0fb57c2063",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Kafa giriş kartı (P6KE18A üstünde küçük pertinaks parçası): P6KE18A'yı kartın + ve − uçları arasına lehimle, {yon.P6KE18A}; baskısını ve bandını madde 2'deki gibi oku (kablajda teyit)."
+   },
+   {
+    "yer": "kaynak E3a is_",
+    "ozet": "e350cd18fed2460a",
     "neden": "yer tutucu, anahtar sözcük",
-    "metin": "Girişe K2'de kafa 12 V çifti (G17) gelir, çıkışlar D24V50F5 (K01) ve SY8205'e (K02), {awg.K02}."
+    "metin": "Üç adet 2 pin 5,08 mm vidalı klemens; + uçları ve − uçları kart üstünde {kopru.K01} tel köprüyle (K01 sonlandırması) lehimli (delikli plaket pedi F3 {a.F3} akım yolu değil)."
+   },
+   {
+    "yer": "kaynak E3a is_",
+    "ozet": "bf3ababecf57f8a0",
+    "neden": "anahtar sözcük",
+    "metin": "Girişe K2'de kafa 12 V çifti (G17) gelir."
+   },
+   {
+    "yer": "kaynak E3a is_",
+    "ozet": "732015e1cb1c1fcb",
+    "neden": "yer tutucu, anahtar sözcük",
+    "metin": "Kartın çıkış klemenslerinden D24V50F5'in girişine (K01) ve SY8205'in girişine (K02) birer çift bağla, {awg.K02}."
    },
    {
     "yer": "kaynak E3a is_",
@@ -2881,6 +3613,12 @@
     "metin": "Tabla geçişi (x −50…−37) boş: boyun kabloları K2'de buradan girer"
    },
    {
+    "yer": "kaynak E3a kontrol",
+    "ozet": "0ce829e0a18051bc",
+    "neden": "anahtar sözcük",
+    "metin": "Üç TVS'in bantlı ucu (katot) artı hatta: P6KE18A kafa giriş kartının +12 V'unda, iki P6KE6V8A çeviricilerin +5 V çıkışında; anotlar GND'de"
+   },
+   {
     "yer": "kaynak E3a kablo",
     "ozet": "4a0dfac72e545f10",
     "neden": "metin",
@@ -2912,9 +3650,15 @@
    },
    {
     "yer": "kaynak E3a not_",
-    "ozet": "5c247a98ee9d16f0",
+    "ozet": "37ff6a9abf06aee5",
     "neden": "anahtar sözcük",
-    "metin": "TVS kutup yönü (katot +5 V'a) tek yönlü TVS'in genel bağlanışı; depo kaynağında yazmıyor, veri sayfasıyla doğrulanmadı"
+    "metin": "TVS yönü kayıttan (`planlama/adim3/kablolar.json` tvs): Vishay P6KE serisi veri sayfası (belge 88369) tek yönlü tipte renkli bandın katot olduğunu, çift yönlü tipte (CA soneki) işaret olmadığını yazıyor."
+   },
+   {
+    "yer": "kaynak E3a not_",
+    "ozet": "56d81d61981cd1a1",
+    "neden": "metin",
+    "metin": "Satın alınan parçaların üreticisi bilinmiyor: teslimde gövde baskısı (sonu yalnız A ya da CA) ve bant okunur (kablajda teyit)"
    },
    {
     "yer": "kaynak E3a not_",
@@ -3152,9 +3896,9 @@
    },
    {
     "yer": "kaynak E4 is_",
-    "ozet": "39c39ef6a5581acc",
+    "ozet": "ee2839dfcdee9a64",
     "neden": "anahtar sözcük",
-    "metin": "4. Yüz kabuğunu kafanın önünde tut, kabloları tak: CSI şeridi → Pi; QLED HDMI (30 cm şerit, Pi micro HDMI 0), Power (SY8205 çıkışı, A ucu kesik micro USB kablo), Touch (Pi USB 4)."
+    "metin": "4. Yüz kabuğunu kafanın önünde tut, kabloları tak: CSI şeridi (C01) → Pi; QLED HDMI (H01; 30 cm şerit, Pi micro HDMI 0), Power (K04; SY8205 çıkışı, A ucu kesik micro USB kablo), Touch (U04; Pi USB 4)."
    },
    {
     "yer": "kaynak E4 is_",
@@ -3494,9 +4238,9 @@
    },
    {
     "yer": "kaynak E4 alt adım 9 is_",
-    "ozet": "0fd2e7f98a73090a",
+    "ozet": "8dca28d7bfd210f2",
     "neden": "anahtar sözcük",
-    "metin": "Yüz kabuğunu kafanın önünde tut, kabloları tak: CSI şeridi → Pi; QLED HDMI (30 cm şerit, Pi micro HDMI 0), Power (SY8205 çıkışı, A ucu kesik micro USB kablo), Touch (Pi USB 4)."
+    "metin": "Yüz kabuğunu kafanın önünde tut, kabloları tak: CSI şeridi (C01) → Pi; QLED HDMI (H01; 30 cm şerit, Pi micro HDMI 0), Power (K04; SY8205 çıkışı, A ucu kesik micro USB kablo), Touch (U04; Pi USB 4)."
    },
    {
     "yer": "kaynak E4 alt adım 9 is_",
@@ -3554,15 +4298,21 @@
    },
    {
     "yer": "kaynak K2 is_",
-    "ozet": "924c1179e12c4aa5",
+    "ozet": "58f2a58f9f0051a2",
     "neden": "metin",
-    "metin": "1. Kol servo uzatmaları: dağıtım A / B → etek → direk arka yüzü (z −26) → travers altı (y ≈ 1215) arkası → omuz."
+    "metin": "1. Kol servo uzatmaları: kart ucunu dağıtım kartının 3 pinli çıkışına tak: sağ kol dağıtım kartı A'ya (S01 omuz öne-arka, S02 omuz yana, S03 dirsek, S04 bilek), sol kol dağıtım kartı B'ye (S05 omuz öne-arka, S06 omuz yana, S07 dirsek, S08 bilek); çıkış numaraları `planlama/adim3/kablolar.md`'de."
    },
    {
     "yer": "kaynak K2 is_",
-    "ozet": "a133e92882fdb442",
+    "ozet": "9b0574e0d4302a60",
     "neden": "metin",
-    "metin": "2. Kafa servoları: hat C → direk üstü R62 halkası; tilt kablosu boyundan kafaya."
+    "metin": "Yol: dağıtım A / B → etek → direk arka yüzü (z −26) → travers altı (y ≈ 1215) arkası → omuz."
+   },
+   {
+    "yer": "kaynak K2 is_",
+    "ozet": "6282849ed6807819",
+    "neden": "anahtar sözcük",
+    "metin": "2. Kafa servoları, hat C (XL4016 C → SV3 → dağıtım kartı C, güç panelinde; B5a): kafa pan uzatmasını (S09) dağıtım kartı C'nin pan çıkışına, kafa tilt uzatmasını (S10) tilt çıkışına tak → direk üstü R62 halkası; tilt kablosu boyundan kafaya."
    },
    {
     "yer": "kaynak K2 is_",
@@ -3638,15 +4388,27 @@
    },
    {
     "yer": "kaynak K2 is_",
+    "ozet": "781a60d07d7213af",
+    "neden": "yer tutucu",
+    "metin": "Hoparlör kablosunun (AU3) kafa ucunu PAM8403'ün sol kanal çıkışına lehimle: + damarını {uc.AU3:+:a} ucuna, − damarını {uc.AU3:−:a} ucuna; gövde ucunu fişsiz bırak (madde 6), F2'de hoparlöre lehimlenir."
+   },
+   {
+    "yer": "kaynak K2 is_",
     "ozet": "7242104e282ec5ae",
     "neden": "metin",
     "metin": "6. Boyundan inenler travers arkasından gövdeye: HDMI direğin solundan ekran arkasına (F3); hub uzatmasının ucu üst arka kapak hizasında (F5); hoparlör kablosu sağ önden göğüs altına (y ≈ 1.000; F2'de hoparlöre)."
    },
    {
     "yer": "kaynak K2 is_",
-    "ozet": "8bdcf74d4f327675",
+    "ozet": "f9c6482af14c8c44",
     "neden": "yer tutucu, zorunlu, anahtar sözcük",
-    "metin": "7. Göğüs ekranı 12 V boyundan geçmez: sigorta kutusunun F6 {a.F6} ({bicak.F6}) yuvasından ayrı dal (K11 a: ana anahtar sonrası, röle öncesi; acil stopta açık kalır) → LM2577 + LM2596 regülatörü (G20) → ekran 12 V jakı (G21), {awg.G21}; direk arka yüzünden çıkar, travers altında direğin soluna geçer, ekran arkasında bırakılır (F3)."
+    "metin": "7. Göğüs ekranı 12 V boyundan geçmez: sigorta kutusunun F6 {a.F6} ({bicak.F6}) yuvasından ayrı dal (K11 a: ana anahtar sonrası, röle öncesi; acil stopta açık kalır) → LM2577 + LM2596 regülatörü (G20) → ekran 12 V jakı (G21), {awg.G21}."
+   },
+   {
+    "yer": "kaynak K2 is_",
+    "ozet": "ae80bb7ec61d3325",
+    "neden": "anahtar sözcük",
+    "metin": "Regülatörün çıkışına ekran 12 V jak kablosunu bağla (G21); kabloyu direğin arka yüzünden, travers altından direğin soluna geçir ve jak ucunu ekran arkasında boşta bırak (ekrana F3'te takılır)."
    },
    {
     "yer": "kaynak K2 is_",
@@ -3890,9 +4652,9 @@
    },
    {
     "yer": "kaynak F1 is_",
-    "ozet": "8a88b877afeb8829",
-    "neden": "metin",
-    "metin": "Sonra K1'de bırakılan ucu bağla."
+    "ozet": "841844dc0a16b52d",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Sonra K1'de bırakılan iki ucu mantarın NC kontağına bağla: A01'i (F5 {a.F5} çıkışından gelen) NC girişine, A02'yi (acil stop düğümüne giden) NC çıkışına."
    },
    {
     "yer": "kaynak F1 is_",
@@ -3902,15 +4664,27 @@
    },
    {
     "yer": "kaynak F1 is_",
-    "ozet": "59d9f585e44f2a9a",
-    "neden": "metin",
-    "metin": "K1'de bırakılan iki ana hat ucunu bağla."
-   },
-   {
-    "yer": "kaynak F1 is_",
     "ozet": "7887bb54f42cc01c",
     "neden": "anahtar sözcük",
     "metin": "Düğme: delik Ø30 tahmini, anahtarı ölç."
+   },
+   {
+    "yer": "kaynak F1 is_",
+    "ozet": "c6295236f90f5cf9",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "K1'de bırakılan dört ucu anahtarın saplamalarına bağla: giriş saplamasına G03'ü (ana sigortadan) ve şarj kolunun + pabucunu (G06), çıkış saplamasına G04'ü (sigorta kutusuna) ve akü ölçüm telinin pabucunu (G07; {ohm.aku_olcum} akü ölçüm direnci pabucun kovanında)."
+   },
+   {
+    "yer": "kaynak F1 is_",
+    "ozet": "b035bbb873b6e05e",
+    "neden": "yer tutucu, anahtar sözcük",
+    "metin": "Kalın pabuç ({awg.G03|G04}; G03, G04) altta, üstte düz pul + yaylı pul; giriş ile çıkışı anahtarın üstündeki işaretten oku (anahtarın saplama ölçüsü {vida.ana-anahtar} varsayım, kablajda teyit: başka çıkarsa pabuçları o ölçüde al)."
+   },
+   {
+    "yer": "kaynak F1 is_",
+    "ozet": "0a046a8f42b5f687",
+    "neden": "anahtar sözcük",
+    "metin": "G07 çıkışta olmalı: girişte olursa bölücü ana anahtar kapalıyken de akım çeker."
    },
    {
     "yer": "kaynak F1 is_",
@@ -4063,6 +4837,42 @@
     "metin": "Bu aşamalar, sigorta sırası, ölçü noktası, klemensin + ucu, multimetre aralığı ve \"yerden kesik\" düzeni bu adım için kaynakta yok, doğrulanmadı"
    },
    {
+    "yer": "kaynak F1 kontrol",
+    "ozet": "4dca854aeffa0b5e",
+    "neden": "anahtar sözcük",
+    "metin": "Akü ölçüm teli (G07), aşama 1'de mantar ölçümünden sonra: ana anahtar kapalı, akü XT60'tan ayrıkken multimetreyi DC V kademesinde bırak; kırmızı ucu arayüz kartındaki akü ölçüm bölücüsünün orta noktasına (G07'nin kart ucu), siyah ucu yıldız barasının akü dönüşü (G05) saplamasına bağla."
+   },
+   {
+    "yer": "kaynak F1 kontrol",
+    "ozet": "f39bb0adb14b19ca",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: okunan gerilim akü geriliminin bölücü oranı ({oran.aku_olcum}) katıdır: akü {v.aku_aralik} iken bölücünün orta noktasında {v.aku_olcum} okunur (`planlama/adim3/elektrik.md` E2)."
+   },
+   {
+    "yer": "kaynak F1 kontrol",
+    "ozet": "becc994bd3d080aa",
+    "neden": "anahtar sözcük",
+    "metin": "Hiç gerilim okunmuyorsa G07'nin pabucu, direnci ya da kart ucu kopmuş; aralığın üstündeyse bölücünün alt direnci eksik ya da yanlış."
+   },
+   {
+    "yer": "kaynak F1 kontrol",
+    "ozet": "7ba7c6ca85ceabc5",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Okuma {v.aku_olcum} aralığının altında ya da üstündeyse: ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök; akü ayrıkken bölücüyü kontrol et: G07'nin direnci (pabuç ile bölücünün orta noktası arası, K1 kontrolündeki direnç ölçümü), direncin ve G07'nin iki ucundaki lehim, bölücünün alt direnci (akü {v.aku_aralik} dışındaysa okuma da bölücü oranı kadar kayar)."
+   },
+   {
+    "yer": "kaynak F1 kontrol",
+    "ozet": "2344ab8ab4f939f8",
+    "neden": "anahtar sözcük",
+    "metin": "Bölücünün orta noktası ESP32'nin akü ölçüm pinine bağlı (B6a, X01): bölücü düzelip okuma aralığa girene kadar ana anahtarı yeniden açma, ESP32'ye bu bölücüyle enerji verme, aşama 2'ye (F5) geçme."
+   },
+   {
+    "yer": "kaynak F1 kontrol",
+    "ozet": "bf9d8849ca2fa020",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "Bitince ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök"
+   },
+   {
     "yer": "kaynak F1 kablo",
     "ozet": "15c3916c1c3072de",
     "neden": "metin",
@@ -4070,9 +4880,9 @@
    },
    {
     "yer": "kaynak F1 kablo",
-    "ozet": "1d53a14c06ace1b2",
+    "ozet": "9279bc261a3fa9e7",
     "neden": "yer tutucu, anahtar sözcük",
-    "metin": "Burada bağlananlar: ana anahtar (G03, G04; {awg.G04}, halka pabuç), şarj girişi (G06, {awg.G06}), acil stop mantarı (A01 F5 {a.F5} girişi, A02 NC çıkışı; {awg.A02})."
+    "metin": "Burada bağlananlar: ana anahtar (G03, G04; {awg.G04}, halka pabuç; G06'nın + pabucu girişte, G07'nin pabucu çıkışta), şarj girişi (G06, {awg.G06}), acil stop mantarı (A01 F5 {a.F5} girişi, A02 NC çıkışı; {awg.A02})."
    },
    {
     "yer": "kaynak F1 kablo",
@@ -4208,9 +5018,9 @@
    },
    {
     "yer": "kaynak F1 alt adım 7 is_",
-    "ozet": "40886fb0ccff117c",
-    "neden": "anahtar sözcük",
-    "metin": "z −88 sağ bindirmesi 3 × M3×6, z −105 braketine M3×14. K1'de bırakılan acil stop ucunu kontağa bağla."
+    "ozet": "053bb83930252297",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "z −88 sağ bindirmesi 3 × M3×6, z −105 braketine M3×14. K1'de bırakılan iki acil stop ucunu mantarın NC kontağına bağla: A01'i NC girişine, A02'yi NC çıkışına."
    },
    {
     "yer": "kaynak F1 alt adım 8 ad",
@@ -4268,9 +5078,9 @@
    },
    {
     "yer": "kaynak F1 alt adım 10 is_",
-    "ozet": "d9bbf26464a2d475",
-    "neden": "metin",
-    "metin": "z −88 sol bindirmesi 3 × M3×6, x −38 arka bindirmesi 3 × M3×6, z −105 braketine M3×14. K1'de bırakılan iki ana hat ucunu anahtara bağla."
+    "ozet": "5404294535c31f8b",
+    "neden": "anahtar sözcük",
+    "metin": "z −88 sol bindirmesi 3 × M3×6, x −38 arka bindirmesi 3 × M3×6, z −105 braketine M3×14. K1'de bırakılan dört ucu anahtarın saplamalarına bağla: giriş saplamasına G03'ü ve şarj kolunun + pabucunu (G06), çıkış saplamasına G04'ü ve akü ölçüm telinin pabucunu (G07); kalın pabuç (G03, G04) altta."
    },
    {
     "yer": "kaynak F1 alt adım 10 is_",
@@ -4316,9 +5126,9 @@
    },
    {
     "yer": "kaynak F2 is_",
-    "ozet": "94e05aa78e8efb23",
-    "neden": "anahtar sözcük",
-    "metin": "Orta bandı takmadan önce K2'de göğüs altında bırakılan hoparlör kablosunu (PAM8403'ten boyundan iner) hoparlöre bağla."
+    "ozet": "2bb8affe95fc83dc",
+    "neden": "yer tutucu, anahtar sözcük",
+    "metin": "Orta bandı takmadan önce K2'de göğüs altında bırakılan hoparlör kablosunu (AU3; kafa ucu K2'den beri PAM8403'te) hoparlöre lehimle, kutbu {kutup.AU3}: + damarını hoparlörün {uc.AU3:+:b} ucuna, − damarını {uc.AU3:−:b} ucuna (hoparlörün + işareti kablajda teyit)."
    },
    {
     "yer": "kaynak F2 is_",
@@ -4526,9 +5336,9 @@
    },
    {
     "yer": "kaynak F2 alt adım 8 is_",
-    "ozet": "8445c6467b451ae0",
-    "neden": "anahtar sözcük",
-    "metin": "Bandı takmadan önce K2'de göğüs altında bırakılan hoparlör kablosunu (PAM8403'ten boyundan iner) hoparlöre bağla."
+    "ozet": "f3814e165953436c",
+    "neden": "yer tutucu, anahtar sözcük",
+    "metin": "Bandı takmadan önce K2'de göğüs altında bırakılan hoparlör kablosunu (AU3) hoparlöre lehimle, kutbu {kutup.AU3} (madde 3)."
    },
    {
     "yer": "kaynak F2 alt adım 8 is_",
@@ -4640,9 +5450,9 @@
    },
    {
     "yer": "kaynak F3 is_",
-    "ozet": "307880b319463517",
+    "ozet": "c8a216e1f75c0969",
     "neden": "anahtar sözcük",
-    "metin": "Sonra K2'de bırakılan HDMI ve 12 V uçlarını enerjisizken tak (90° fişler; ekranlı ilk açılışta F6 atmamalı, KT3: F5 aşama 2)."
+    "metin": "Sonra K2'de bırakılan HDMI (H02) ve 12 V (G21) uçlarını enerjisizken ekrana tak (90° fişler; ekranlı ilk açılışta F6 atmamalı, KT3: F5 aşama 2)."
    },
    {
     "yer": "kaynak F3 is_",

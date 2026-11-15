@@ -228,16 +228,34 @@ def mini_olc(c, kok, mobil):
 
 
 # F10a düzeltme 1 (B-3): vurgu sayfanın VURGU nesnelerinden değil, sahnedeki görünür mesh'lerin gerçek malzeme renginden okunur
-# (ana #7cfc00, kopya #cdf7a6) ve kimlik kümesi olarak karşılaştırılır.
-VURGU_JS = r"""(function(){const T=RehberTest; const ana=[], kopya=[];
+# (ana #7cfc00, kopya #cdf7a6) ve kimlik kümesi olarak karşılaştırılır. P10.7b2a: vurgu tema başına (rehber/app.js VURGU_TON):
+# Düzeltme turu 1 (F10i-kontrol Ü7 taraması): tonlar elle yazılmaz, app.js VURGU_TON nesnesinden okunur (bulunamazsa hata).
+def vurgu_tonlari():
+    t = open(os.path.join(REHBER, "app.js"), encoding="utf-8").read()
+    m = re.search(r"\bVURGU_TON\s*=\s*\{(.*?)\n\s*\};", t, re.S)
+    if not m:
+        raise RuntimeError("app.js'te VURGU_TON nesnesi bulunamadı")
+    ana, kopya = [], []
+    for tema in ("light", "dark"):
+        b = re.search(r"\b%s\s*:\s*\{([^}]*)\}" % tema, m.group(1))
+        h = {ad: re.search(r"\b%s\s*:\s*\"#([0-9a-fA-F]{6})\"" % ad, b.group(1)) if b else None for ad in ("ana", "kopya")}
+        if not b or not all(h.values()):
+            raise RuntimeError("app.js VURGU_TON.%s ana / kopya bulunamadı" % tema)
+        ana.append(h["ana"].group(1).lower())
+        kopya.append(h["kopya"].group(1).lower())
+    return ana, kopya
+
+
+VURGU_JS = r"""(function(){const T=RehberTest; const ana=[], kopya=[]; const A=%s, K=%s;
  const bak=(o,ad)=>{ if(!o||!o.visible||!o.material||!o.material.color) return; const h=o.material.color.getHexString();
-   if(h==='7cfc00') ana.push(ad); else if(h==='cdf7a6') kopya.push(ad); };
+   if(A.indexOf(h)>=0) ana.push(ad); else if(K.indexOf(h)>=0) kopya.push(ad); };
  for (const id in T.PAR) bak(T.PAR[id].obj, id); T.SEMA_OBJ.forEach((o,i)=>bak(o, 'sema'+i));
  return {ana:ana.sort(), kopya:kopya.sort(), ids:ana.concat(kopya).sort(), sayi:ana.length+kopya.length};})()"""
 
 
 def vurgu(c):
-    return c.js(VURGU_JS)
+    a, k = vurgu_tonlari()
+    return c.js(VURGU_JS % (json.dumps(a), json.dumps(k)))
 
 
 def gorunen(c, ids):

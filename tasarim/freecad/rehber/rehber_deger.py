@@ -26,6 +26,26 @@
 #   {a.F2} / {bicak.F2}   koruyucular'da olmayan kutu sigortası (F2 yedek): elektrik.md sigorta listesi "| F2 | 15 A standart |" → "15 A"
 #   {awg.G14|G15|G16}     grup: birden çok kabloyu temsil eden yer tutucu; üyelerin değeri eşit değilse hata (açık iş 16)
 #   {yeniden.K04}         kesiti bilinmeyen hazır kablonun yeniden yapılma kesiti: kablolar[K04].teyit "yazı yoksa N AWG" → "18 AWG"
+# P10.7b2a (kablolar.json şema 4):
+#   {ohm.aku_olcum}       akü ölçüm bölücüsünün üst direnci: koruyucular.R-aku-olcum.ad "… 100 kΩ …"  → "100 kΩ"
+#   {bsaplama.<kablo>}    anahtarlı bara saplaması: bara-pabuc.kopruler["Anahtarlı bara · +"].yerlesim → "3"
+#   {bsaplama.besleme}    anahtarlı baranın besleme saplaması (besleme_saplamasi)            → "3"
+#   {saplama.besleme}     yıldız barasının besleme (akü dönüşü) saplaması                    → "3"
+#   {kontak.K1|K2}        röle kontağının uçları: anahtarlar.K<n>-kontak.uclar               → "30 → 87" / "COM → NO (NC boş)"
+#   {yer.<koruyucu>}      hat sigortası / direncin kablo üstündeki yeri: koruyucular[<k>].yer (ilk ':' öncesi) → "anahtarlı bara ucunda (kaynak ucu)"
+#   {yon.<tvs>}           TVS yönü: tvs[<k>].yon                                              → "katot (bantlı uç) +12 V ucuna, anot GND'ye"
+#   {yon.kondansator}     elektrolitik kondansatörün yönü: kondansatorler.yon
+# Düzeltme turu 1 (F10i-kontrol):
+#   {uc.<kablo>:<damar>:<a|b>}  damarın bir ucunun noktası (damar adında boşluk yerine _): kablolar[<k>].damarlar → "3V3", "IN2 +"
+#   {kutup.<kablo>}       iki damarlı güç kablosunun kutbu, damarlardan                       → "OUT+ → V+, OUT− → GND"
+#   {oran.aku_olcum}      akü ölçüm bölücüsünün oranı alt / (üst + alt): elektrik.md E2 "100 kΩ / 18 kΩ" → "0,1525"
+#   {v.aku_aralik}        ölçümde beklenen akü aralığı: elektrik.md "akü 12,8–14,4 V"         → "12,8–14,4 V"
+#   {v.aku_olcum}         bölücü orta noktasında beklenen gerilim (aralık × oran, 2 basamak)  → "1,95–2,20 V"
+#   {vida.<anahtar>}      saplama ölçüsü: anahtarlar[<k>].saplama.olcu (varsayım; teyit kaydı) → "M5"
+# Düzeltme turu 2 (F10i-kontrol-2):
+#   {kontak.K2:giris|cikis|bos}  röle kontağının tek ucu: anahtarlar.K<n>-kontak.uclar     → "COM" / "NO" / "NC"
+#   {parca.<kablo>:<damar>:<a|b>}  damar ucunun parçası (" · " öncesi): kablolar[<k>].damarlar → "acil stop düğümü (mantar NC çıkışı)"
+#   {oran.…} / {v.…}: bölücü çıkışı akü üst sınırında ("14,6 V →") ADC doğrusal sınırını ("≤ 2,45 V") aşarsa KeyError
 # Çözülemeyen yer tutucu hata listesine girer (rehber_denetim.kaynak_denetle sayar; rehber_metin içe aktarılırken metin "⟦?…⟧" olur).
 import os, re, json
 
@@ -156,6 +176,100 @@ class Degerler:
                 if not m:
                     raise KeyError("ön şarj direnci anahtarlar.K2-kontak.ad'da yok")
                 return "%s Ω" % m.group(1)
+            if anahtar == "aku_olcum":                                   # P10.7b2a: G07'nin kaynak ucundaki direnç
+                e = self.KOR.get("R-aku-olcum") or {}
+                m = re.search(r"(\d+(?:,\d+)?) ?(k?)Ω", e.get("ad") or "")
+                if not m or e.get("tur") != "direnc":
+                    raise KeyError("koruyucular.R-aku-olcum (direnç) adında 'N kΩ' yok")
+                return "%s %sΩ" % (m.group(1), m.group(2))
+        if tur == "bsaplama" or (tur == "saplama" and anahtar == "besleme"):   # P10.7b2a: anahtarlı bara yerleşimi (şema 4)
+            k = self.BP["kopruler"][KOPRU_BARA["bara" if tur == "bsaplama" else "yildiz"]]
+            if anahtar == "besleme":
+                if not isinstance(k.get("besleme_saplamasi"), int):
+                    raise KeyError("besleme_saplamasi yazılı değil")
+                return str(k["besleme_saplamasi"])
+            for n, lst in (k.get("yerlesim") or {}).items():
+                if any(x.split("/")[0] == anahtar for x in lst):
+                    return n
+            raise KeyError("kablo %s anahtarlı bara yerleşiminde yok" % anahtar)
+        if tur == "kontak":
+            a, _, uc = anahtar.partition(":")                           # düzeltme turu 2 (F10i-kontrol-2 B23): tek uç "K2:giris"
+            u = (self.T["anahtarlar"].get("%s-kontak" % a) or {}).get("uclar")
+            if not isinstance(u, dict) or not u.get("giris") or not u.get("cikis"):
+                raise KeyError("anahtarlar.%s-kontak.uclar yok" % a)
+            if uc:
+                if uc not in ("giris", "cikis", "bos") or not u.get(uc):
+                    raise KeyError("anahtarlar.%s-kontak.uclar.%s yok" % (a, uc))
+                return u[uc]
+            return "%s → %s" % (u["giris"], u["cikis"]) + (" (%s boş)" % u["bos"] if u.get("bos") else "")
+        if tur == "parca":                                              # düzeltme turu 2 (F10i-kontrol-2 B18): damar ucunun parçası
+            p = anahtar.split(":")
+            if len(p) != 3 or p[2] not in ("a", "b"):
+                raise KeyError("{parca.%s}: biçim <kablo>:<damar adı, boşluk yerine _>:<a|b>" % anahtar)
+            d = [x for x in (self.K.get(p[0]) or {}).get("damarlar", []) if x["ad"] == p[1].replace("_", " ")]
+            if len(d) != 1 or " · " not in d[0][p[2]]:
+                raise KeyError("kablo %s damarı '%s' yok ya da ucunda 'parça · nokta' yok" % (p[0], p[1].replace("_", " ")))
+            s = d[0][p[2]].split(" · ", 1)[0]
+            return s[0].lower() + s[1:] if len(s) > 1 and s[1].islower() else s
+        if tur == "yer":
+            y = (self.KOR.get(anahtar) or {}).get("yer")
+            if not y:
+                raise KeyError("koruyucu %s yer alanı yok" % anahtar)
+            return y.split(":")[0].strip()
+        if tur == "yon":
+            e = self.T.get("kondansatorler") if anahtar == "kondansator" else (self.T.get("tvs") or {}).get(anahtar)
+            if not isinstance(e, dict) or not e.get("yon"):
+                raise KeyError("%s yönü kayıtta yok (tvs / kondansatorler.yon)" % anahtar)
+            return e["yon"]
+        if tur == "uc":                                                 # düzeltme turu 1: damarın bir ucu ("X01:PC817_çıkış_beslemesi:b")
+            p = anahtar.split(":")
+            if len(p) != 3 or p[2] not in ("a", "b"):
+                raise KeyError("{uc.%s}: biçim <kablo>:<damar adı, boşluk yerine _>:<a|b>" % anahtar)
+            r = self.K.get(p[0])
+            d = [x for x in (r or {}).get("damarlar", []) if x["ad"] == p[1].replace("_", " ")]
+            if len(d) != 1:
+                raise KeyError("kablo %s damarı '%s' yok" % (p[0], p[1].replace("_", " ")))
+            return d[0][p[2]].split(" · ", 1)[-1]
+        if tur == "kutup":                                              # düzeltme turu 1: iki damarlı güç kablosunun kutbu, damarlardan
+            r = self.K.get(anahtar) or {}
+            d = r.get("damarlar") or []
+            ar = [x for x in d if x["ad"] in ("+", "V+")]
+            ek = [x for x in d if x["ad"] in ("−", "GND")]
+            if len(ar) != 1 or len(ek) != 1:
+                raise KeyError("kablo %s'de tek + / V+ ve tek − / GND damarı yok" % anahtar)
+            n = lambda s: s.split(" · ", 1)[-1]
+            return "%s → %s, %s → %s" % (n(ar[0]["a"]), n(ar[0]["b"]), n(ek[0]["a"]), n(ek[0]["b"]))
+        if tur in ("oran", "v") and anahtar in ("aku_olcum", "aku_aralik"):   # düzeltme turu 1 (A1, A4): akü ölçüm bölücüsü
+            m = re.search(r"\| Akü gerilimi \| (\d+) kΩ / (\d+) kΩ", self.EL)
+            m2 = re.search(r"akü (\d+,\d+)–(\d+,\d+) V", self.EL)
+            if not m or not m2:
+                raise KeyError("elektrik.md E2 'Akü gerilimi | N kΩ / M kΩ' ya da 'akü a–b V' yok")
+            ust, alt = float(m.group(1)), float(m.group(2))
+            r = alt / (ust + alt)
+            a1, a2 = (float(x.replace(",", ".")) for x in m2.groups())
+            if ("%s kΩ" % m.group(1)) != self.deger("ohm", "aku_olcum"):
+                raise KeyError("elektrik.md E2 üst direnci (%s kΩ) koruyucular.R-aku-olcum ile aynı değil" % m.group(1))
+            # düzeltme turu 2 (F10i-kontrol-2 B27): bölücü değişince "beklenen" aralık sessizce ADC sınırını aşmasın. Akü üst
+            # sınırı ve ADC doğrusal sınırı aynı satırdan ("14,6 V → …", "doğrusal bölge ≤ 2,45 V"); kablolar_denetim de sınar.
+            sat = re.search(r"\| Akü gerilimi \|[^\n]*", self.EL).group(0)
+            ust_v = [float(x.replace(",", ".")) for x in re.findall(r"(\d+(?:,\d+)?) V →", sat)]
+            sinir = re.search(r"doğrusal bölge ≤ (\d+(?:,\d+)?) V", sat)
+            if not ust_v or not sinir:
+                raise KeyError("elektrik.md E2 'Akü gerilimi' satırında 'N V →' ya da 'doğrusal bölge ≤ N V' yok")
+            if max(ust_v) * r > float(sinir.group(1).replace(",", ".")):
+                raise KeyError("akü ölçüm bölücüsü: %g V × %.4f = %.2f V, ADC doğrusal sınırı %s V'u aşıyor" % (
+                    max(ust_v), r, max(ust_v) * r, sinir.group(1)))
+            yuv = lambda x: ("%.2f" % (int(x * 100 + 0.5) / 100.0)).replace(".", ",")
+            if tur == "oran":
+                return ("%.4f" % r).replace(".", ",")
+            if anahtar == "aku_aralik":
+                return "%s–%s V" % (m2.group(1), m2.group(2))
+            return "%s–%s V" % (yuv(a1 * r), yuv(a2 * r))
+        if tur == "vida":                                               # düzeltme turu 1 (A14): saplama ölçüsü (varsayım, teyitli)
+            sp = (self.T["anahtarlar"].get(anahtar) or {}).get("saplama") or {}
+            if not sp.get("olcu"):
+                raise KeyError("anahtarlar.%s.saplama.olcu yok" % anahtar)
+            return sp["olcu"]
         if tur == "saplama":
             if anahtar == "sayi":
                 return str(self.BP["dugumler"]["Yıldız barası · GND"])
@@ -195,13 +309,46 @@ class Degerler:
         _OZEL[(_t, "bara")] = ["anahtarlı bara"]
     _OZEL[("kopru_adet", "toplam")] = ["köprü"]
     _OZEL[("kopru_pabuc", "toplam")] = ["pabuç"]
+    # P10.7b2a: yeni yer tutucuların bağlam adları
+    _OZEL[("ohm", "aku_olcum")] = ["akü ölçüm"]
+    _OZEL[("bsaplama", "besleme")] = ["anahtarlı bara"]
+    _OZEL[("saplama", "besleme")] = ["yıldız"]
+    _OZEL[("kontak", "K1")] = ["K1"]
+    _OZEL[("kontak", "K2")] = ["K2"]
+    _OZEL[("yon", "kondansator")] = ["kondansatör"]
+    # düzeltme turu 1
+    _OZEL[("oran", "aku_olcum")] = ["bölücü"]
+    _OZEL[("v", "aku_olcum")] = ["bölücü"]
+    _OZEL[("v", "aku_aralik")] = ["akü"]
+    _OZEL[("vida", "ana-anahtar")] = ["ana anahtar", "anahtar"]
     del _t
+
+    def teyit_kaydi(self, tur, anahtar):
+        """Yer tutucunun gösterdiği kayıt 'kablajda teyit' işaretliyse teyit metni, değilse None (düzeltme turu 1, F10i-kontrol A6)."""
+        e = None
+        if tur == "yon":
+            e = self.T.get("kondansatorler") if anahtar == "kondansator" else (self.T.get("tvs") or {}).get(anahtar)
+        elif tur == "kontak":
+            e = (self.T["anahtarlar"].get("%s-kontak" % anahtar.split(":")[0]) or {}).get("uclar")
+        elif tur == "vida":
+            e = (self.T["anahtarlar"].get(anahtar) or {}).get("saplama")
+        t = str((e or {}).get("teyit") or "")
+        return t if "kablajda teyit" in t else None
 
     def varlik_adlari(self, tur, uye):
         if (tur, uye) in self._OZEL:
             return list(self._OZEL[(tur, uye)])
-        if tur in ("awg", "saplama", "kopru", "ara", "yeniden"):
+        if tur in ("uc", "kutup", "parca"):                             # düzeltme turu 1: kablonun kimliği (turu 2: parca)
+            return [uye.split(":")[0]]
+        if tur == "kontak" and ":" in uye:                              # düzeltme turu 2: tek uç ("K2:giris") rölenin adıyla
+            return self.varlik_adlari(tur, uye.split(":")[0])
+        if tur in ("awg", "saplama", "kopru", "ara", "yeniden", "bsaplama"):
             return [uye]
+        if tur == "yon":                                                # TVS: parçanın adı (P6KE18A / P6KE6V8A)
+            e = (self.T.get("tvs") or {}).get(uye) or {}
+            return [e["parca"]] if e.get("parca") else []
+        if tur == "yer":                                                # koruyucunun adları ({a.…} ile aynı)
+            return self.varlik_adlari("a", uye)
         if tur in ("a", "bicak", "yuva"):
             if re.fullmatch(r"F\d", uye):
                 return [uye]

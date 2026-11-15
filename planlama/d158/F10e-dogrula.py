@@ -99,6 +99,27 @@ def appjs_sabit(ad):
     return m.group(1).lower() if m else None
 
 
+def appjs_vurgu_ton(metin=None):
+    """Düzeltme turu 1 (F10i-kontrol Ü7): seçim vurgusu tema başına app.js VURGU_TON nesnesinden ({tema: {ana, kopya}}). VURGU_ANA
+    artık dizge değil (VURGU_TON.light.ana); tablo ya da bir tonu bulunamazsa sessizce atlanmaz, hata verir."""
+    t = metin if metin is not None else open(os.path.join(REHBER, "app.js"), encoding="utf-8").read()
+    m = re.search(r"\bVURGU_TON\s*=\s*\{(.*?)\n\s*\};", t, re.S)
+    if not m:
+        raise RuntimeError("app.js'te VURGU_TON nesnesi bulunamadı (seçim vurgusu ölçülemez)")
+    out = {}
+    for tema in ("light", "dark"):
+        b = re.search(r"\b%s\s*:\s*\{([^}]*)\}" % tema, m.group(1))
+        if not b:
+            raise RuntimeError("app.js VURGU_TON.%s bulunamadı" % tema)
+        out[tema] = {}
+        for ad in ("ana", "kopya"):
+            h = re.search(r"\b%s\s*:\s*\"(#[0-9a-fA-F]{6})\"" % ad, b.group(1))
+            if not h:
+                raise RuntimeError("app.js VURGU_TON.%s.%s bulunamadı" % (tema, ad))
+            out[tema][ad] = h.group(1).lower()
+    return out
+
+
 # ------------------------------------------------------------------ 1) veri ↔ CAD
 def renk_cad():
     C = G.cad_parcalar()
@@ -306,14 +327,14 @@ def karsitlik_olc(T):
                          en_kucuk_oran=round(min(oran), 2) if oran else None,
                          gecti=not kenarsiz and not saydam_kenarsiz and not gri_kenarsiz)
     ev = appjs_sabit("EV_RENK")
-    sec = appjs_sabit("VURGU_ANA")
+    vt = appjs_vurgu_ton()                                            # düzeltme turu 1 (Ü7): tema başına, bulunamazsa hata
     keh = appjs_sabit("KONUM_RENK")
+    if not ev or not keh:
+        raise RuntimeError("app.js'te EV_RENK / KONUM_RENK dizgesi bulunamadı")
     renkler = sorted({p["gr"].lower() for p in P if not p.get("renk")})
     ton = {}
-    for ad, h in (("ev", ev), ("secim", sec), ("kucuk_gorunum", keh)):
-        if not h:
-            ton[ad] = None
-            continue
+    for ad, h in (("ev", ev), ("secim_light", vt["light"]["ana"]), ("secim_dark", vt["dark"]["ana"]),
+                  ("secim_kopya_light", vt["light"]["kopya"]), ("secim_kopya_dark", vt["dark"]["kopya"]), ("kucuk_gorunum", keh)):
         en = min(renkler, key=lambda x: de76(h, x))
         ton[ad] = dict(renk=h, en_yakin=en, de76=round(de76(h, en), 1),
                        zemin_karsitlik=dict(light=round(karsitlik(h, out["light"]["zemin"]), 2), dark=round(karsitlik(h, out["dark"]["zemin"]), 2)))

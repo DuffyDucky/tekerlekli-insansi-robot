@@ -60,9 +60,17 @@
     satin: ["#2f86d4", "Satın alınan"], lazer: ["#8e44ad", "Lazer kesim"], imalat: ["#d35400", "İmalat"],
     baglanti: ["#d4ac0d", "Bağlantı elemanı"], kablo: ["#c0392b", "Kablo yolu"],
     ref: ["#95a5a6", "Gösterim"], onceki: ["#b5b5b0", "Önceki adımlar"],
-    secili: ["#7cfc00", "Seçili"]                      // F10a: seçim vurgusu (sınıf ve kablo renklerinde olmayan açık yeşil)
+    secili: ["#e014ff", "Seçili"]                      // F10a: seçim vurgusu; P10.7b2a: tema başına VURGU_TON (sahneRengi günceller)
   };
-  const VURGU_ANA = "#7cfc00", VURGU_KOPYA = "#cdf7a6", KONUM_RENK = "#ffb000";
+  // P10.7b2a (F10h-kontrol-4): eski tek vurgu (#7cfc00 açık yeşil) açık temada acil stop yeşiline, koyu temada servo sarısına yakın
+  // okunuyordu. Tema başına ton: açık temada fuşya, koyu temada camgöbeği. tasarim/freecad/rehber/rehber_kablo.py bu tabloyu okur;
+  // "ana" tonu zemine karşıtlık ≥ 3,0 ister, "ana" ve "kopya" tonu her kablo tonuna, EV_RENK'e, KONUM_RENK'e ve yukarıdaki SINIF
+  // renklerine ΔE00 ≥ 15 (düzeltme turu 1, F10i-kontrol A9: eski açık ton #a35ef2 "lazer" sınıfına 13,4'tü).
+  const VURGU_TON = {
+    light: { ana: "#e014ff", isik: "#5c0868", kopya: "#f3b8ff", kopya_isik: "#4a0656" },
+    dark: { ana: "#00ffee", isik: "#007a72", kopya: "#9ffff6", kopya_isik: "#005650" }
+  };
+  const VURGU_ANA = VURGU_TON.light.ana, VURGU_KOPYA = VURGU_TON.light.kopya, KONUM_RENK = "#ffb000";
   // F10e (P10.4b): renk kipi. "gercek" (varsayılan): o adımın (alt adımın) yeni parçaları CAD rengiyle (veri: parcalar[].gr, kaynak
   // tasarim/freecad/rehber/rehber_gorunum.py: modül FCStd "Renk" özelliği + modülün gorsel betiğindeki RENK tablosu); "sinif": bugünkü
   // sınıf renkleri (lejant). Önceki adımlar iki kipte de gri. Bağlandığı yer (veri: sira_grup[].ev / adimlar[].ev) EV_RENK: gerçek
@@ -114,9 +122,9 @@
     // silueti (derinlik testi kapalı yarı saydam kopya). Malzeme yalnız seçim süresince değişir; uygula() asıl malzemeyi
     // userData.mat0'da tutar, temizlenince o geri konur.
     const VURGU = {
-      ana: new THREE.MeshStandardMaterial({ color: VURGU_ANA, emissive: "#3f8f00", emissiveIntensity: 0.6, metalness: 0.05, roughness: 0.5,
+      ana: new THREE.MeshStandardMaterial({ color: VURGU_ANA, emissive: VURGU_TON.light.isik, emissiveIntensity: 0.6, metalness: 0.05, roughness: 0.5,
         side: THREE.DoubleSide }),
-      kopya: new THREE.MeshStandardMaterial({ color: VURGU_KOPYA, emissive: "#2b5a10", emissiveIntensity: 0.35, metalness: 0.05,
+      kopya: new THREE.MeshStandardMaterial({ color: VURGU_KOPYA, emissive: VURGU_TON.light.kopya_isik, emissiveIntensity: 0.35, metalness: 0.05,
         roughness: 0.6, side: THREE.DoubleSide }),
       xray: new THREE.MeshBasicMaterial({ color: VURGU_ANA, transparent: true, opacity: 0.3, depthTest: false, depthWrite: false,
         side: THREE.DoubleSide })
@@ -132,6 +140,11 @@
       MINI.sahne.background = new THREE.Color(cs.getPropertyValue("--card").trim() || "#ffffff");
       MINI.soluk.color = new THREE.Color(tema() === "dark" ? "#9aa0a8" : "#6b7078");
       MINI.yakin.color = MINI.soluk.color;
+      const v = VURGU_TON[tema() === "dark" ? "dark" : "light"];     // P10.7b2a: seçim vurgusu tema tonunda
+      VURGU.ana.color.set(v.ana); VURGU.ana.emissive.set(v.isik);
+      VURGU.kopya.color.set(v.kopya); VURGU.kopya.emissive.set(v.kopya_isik);
+      VURGU.xray.color.set(v.ana);
+      SINIF.secili[0] = v.ana;
     }
 
     // ---------------------------------------------------------------- "robotun neresi" küçük görünümü (aynı tuvalde ikinci görüş alanı)

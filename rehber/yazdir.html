@@ -7,7 +7,9 @@
 <!-- F7b (P7.2, R-gunluk C): adım başına bir A4 sayfa. Veri veri/rehber-veri.js (rehber_veri.py), görüntü goruntu/adim-NN.png
      (rehber_uret.py, ?sahne=1). PDF: rehber_uret.py headless Chrome --print-to-pdf -> planlama/rehber/Lale-montaj-rehberi.pdf.
      Sayfaya sığmayan adımda önce görüntü (84 -> 46 mm), sonra yazı (9,6 -> 8,5 pt) küçülür; yine sığmazsa (F7c, F7b-kontrol D-3)
-     bloklar (notlar, parçalar, bağlantı, kontrol, kablo, erişim) sondan "Adım N (devam)" sayfasına taşınır. En küçük yazı 8 pt
+     bloklar (notlar, parçalar, bağlantı, kontrol, kablo, erişim) sondan "Adım N (devam)" sayfasına taşınır. P10.7b2a-Y: iş metni (is_)
+     de paragraf paragraf bloktur: sığmayan paragraflar devam sayfasına akar, sıradaki paragraf sığmıyorsa sözcük sınırında bölünür
+     (sayfa sonunda "sürüyor", devam sayfasının başında "devamı" satırı); hiçbir karakter düşmez (rehber_uret.py PDF tamlık denetimi). En küçük yazı 8 pt
      (küçük öğeler max(8.1pt, …): PDF ölçümündeki yuvarlama 8 pt altına inmesin). Hiçbir yerleşim sığmazsa <body data-tasma> artar (rehber_uret.py hata sayar).
      <body> öznitelikleri: data-sayfa (sayfa), data-esleme (adım -> sayfa numaraları, JSON), data-en-kucuk-pt (DOM'daki en küçük
      yazı), data-tasma, data-kucuk (8 pt altı). -->
@@ -33,6 +35,7 @@ h1{font-size:1.55em;margin:0 0 1.2mm;line-height:1.2}
 .kpi{display:grid;grid-template-columns:auto auto 1fr auto auto;gap:1.5mm 4mm;margin:2mm 0;font-size:max(8.1pt,.92em);align-items:baseline}
 .kpi span{color:var(--mut);font-size:max(8.1pt,.88em);margin-left:1mm}
 .is{white-space:pre-line;margin:1.5mm 0}
+.isdevam{color:var(--mut);font-size:max(8.1pt,.88em);font-style:italic;margin:1mm 0}   /* P10.7b2a-Y: iş metni sayfa sınırında sürüyor */
 .notlar{border:.3mm solid var(--line);border-left:1.2mm solid var(--uyar);border-radius:1.2mm;padding:1.2mm 2.5mm;margin:1.8mm 0}
 .notlar b{color:var(--uyar)}
 .notlar ul{margin:.6mm 0 0;padding-left:4mm}
@@ -89,18 +92,24 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
   function ornek(x, yedek) { var c = x.ids && GR[x.ids[0]]; return c || yedek; }
   // F10f düzeltme 2 (kontrol F10f-kontrol-2 §4): kol kablo şemalarının kare içi lejantı basılı ölçekte ≈ 2,5 pt kalıyordu (1000 px tuvalde
   // CSS 12 px, kare 76 mm). Karenin altında metin olarak (≥ 8,1 pt): şemanın rengi ve app.js lejantındaki adı; soluk iz ayrıca.
-  function lejantMetin(sema, iz) {
+  // P10.7b2a (F10h-kontrol-4): karedeki CAD kablo parçaları (parcalar[].renk; app.js lejantıyla aynı: devre sınıfı "k:" + kt / ks) da
+  // sayılır. K1 karesinde yalnız CAD kablo yolu var, "Karede:" satırı hiç çıkmıyordu; K2'de taban kabloları eksikti.
+  function lejantMetin(sema, iz, par) {
     var L = [];
+    function koy(x, ad, soluk) { if (!L.some(function (y) { return y[1] === ad; })) L.push([ton(x), ad, soluk]); }
     function ekle(i, soluk) {
       var x = SEMA[i]; if (!x) return;
       // P10.7b1: kendi lejantı olmayan kol kablosu bölümü devre sınıfının adıyla (V.kablo_sinif, planlama/adim3/kablolar.json)
       var ks = !x.lejant && x.ks && V.kablo_sinif && V.kablo_sinif[x.kt || x.ks];
       if (!x.lejant && !ks) return;
-      var ad = (x.lejant || "Kablo: " + ks[1]) + (soluk ? " (soluk: öbür uç duruş)" : "");
-      if (!L.some(function (y) { return y[1] === ad; })) L.push([ton(x), ad, soluk]);
+      koy(x, (x.lejant || "Kablo: " + ks[1]) + (soluk ? " (soluk: öbür uç duruş)" : ""), soluk);
     }
     (sema || []).forEach(function (i) { ekle(i, false); });
     (iz || []).forEach(function (i) { ekle(i, true); });
+    (par || []).forEach(function (p) {
+      var ks = V.kablo_sinif && V.kablo_sinif[p.kt || p.ks];
+      if (p.renk && ks) koy(p, "Kablo: " + ks[1], false);
+    });
     return L.length ? "<div class='lej'>Karede: " + L.map(function (y) {
       return "<span><i class='sw' style='background:" + y[0] + (y[2] ? ";opacity:.35" : "") + "'></i>" + esc(y[1]) + "</span>";
     }).join(" · ") + "</div>" : "";
@@ -117,8 +126,25 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
     return "<tr><td><i class='sw' style='background:" + ornek(x, SINIF.baglanti) + "'></i>" + esc(x.kod) + "<div class='t'>" +
       (x.onceden ? "Bağlantı elemanı · baskıdan sonra takılı (hazırlık), parçasıyla gelir" : "Bağlantı elemanı") + "</div></td><td class='n'>×" + x.adet + "</td></tr>";
   }
+  // P10.7b2a: alt adımda gelen CAD kablo parçaları (sira_grup[].satir "p:<i>" → st.parcalar[i].ids → V.parcalar)
+  var PID = {};
+  V.parcalar.forEach(function (p) { PID[p.id] = p; });
+  function altKablo(st, g) {
+    var out = [];
+    (g.satir || []).forEach(function (k) {
+      if (k.split(":")[0] !== "p") return;
+      var x = st.parcalar[+k.split(":")[1]];
+      (x && x.ids || []).forEach(function (id) { if (PID[id] && PID[id].renk) out.push(PID[id]); });
+    });
+    return out;
+  }
+  // P10.7b2a-Y: iş metni (is_) paragraf paragraf blok: sayfaya sığmayan paragraflar "devam" sayfasına akar (önceden is_ ilk sayfada
+  // tek parçaydı; .ic overflow:hidden kestiği yeri basmıyordu, K1'in son ≈ 3645 karakteri PDF'te yoktu). Hepsi sığınca çıktı eskisiyle aynı.
+  function isBloklari(st) {
+    return st.is_ ? st.is_.split("\n").map(function (t) { return { tur: "is", t: t }; }) : [];
+  }
   function bloklar(st, s) {
-    var b = [];
+    var b = isBloklari(st);
     if ((st.not_ || []).length) b.push({ tur: "ust", h: "<div class='notlar'><b>Notlar ve uyarılar</b><ul>" + st.not_.map(function (t) { return "<li>" + md(t) + "</li>"; }).join("") + "</ul></div>" });
     var sol = [st.sira ? "<h2>Parçalar ve bağlantı elemanları (takma sırasıyla)</h2>" : "<h2>Parçalar</h2>"];
     if (st.sira) {
@@ -150,14 +176,17 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
     (st.alt ? st.sira_grup : []).forEach(function (g, n) {
       var j = n + 1, ad = s + "." + j;
       b.push({ tur: "alt", h: "<div class='altkart'><div><img class='agorsel' alt='Alt adım " + ad + " 3B görünüm' src='goruntu/adim-" + iki(s) + "-" + iki(j) +
-        ".png' onerror=\"this.outerHTML='<div class=agorsel-yok>Görüntü yok</div>'\">" + lejantMetin(g.sema, g.iz) + "</div><div><h3>" + ad + " · " + esc(g.ad) + "</h3>" +
+        ".png' onerror=\"this.outerHTML='<div class=agorsel-yok>Görüntü yok</div>'\">" + lejantMetin(g.sema, g.iz, altKablo(st, g)) + "</div><div><h3>" + ad + " · " + esc(g.ad) + "</h3>" +
         (g.is_ ? "<div class='is'>" + md(g.is_) + "</div>" : "") +
         (g.satir.length ? "<table>" + g.satir.map(function (k) { return satir(st, k); }).join("") + "</table>" : "") + "</div></div>" });
     });
     return b;
   }
-  function sayfa(st, s, ilk, bl) {
-    var h = [];
+  // surer: bu sayfadan sonra iş metni sürüyor mu (1 paragraf sınırında, 2 paragraf ortasında); sayfanın sonunda okura işaret
+  function sayfa(st, s, ilk, bl, surer) {
+    var h = [], isb = bl.filter(function (x) { return x.tur === "is"; });
+    var isMetin = "<div class='is'>" + md(isb.map(function (x) { return x.t; }).join("\n")) + "</div>" + (surer ? "<p class='isdevam'>" +
+      (surer === 2 ? "İş metni yarım kaldı" : "İş metni sürüyor") + ": devamı sonraki sayfa (" + esc(st.kod) + ", adım " + s + ") →</p>" : "");
     h.push("<div class='ust'><span><b>Lale</b> · 3B montaj rehberi, yazdırılabilir sürüm (taslak)</span><span>Adım " + s + " / " + (N - 1) + (ilk ? "" : " (devam)") + "</span></div>");
     if (ilk) {
       var roz = ["<span class='rozet kod'>" + esc(st.kod) + "</span>", "<span class='rozet'>" + esc(st.faz) + "</span>"];
@@ -169,14 +198,17 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
       // F10f düzeltme 2: ana adım karesinin kol kablo şemaları (yalnız kendi alt adımında çizilenler hariç) karenin altında metin olarak
       var yalniz = {};
       (st.sira_grup || []).forEach(function (g) { if (g.sema_yalniz) (g.sema || []).forEach(function (i) { yalniz[i] = 1; }); });
-      h.push(lejantMetin(SEMA.map(function (x, i) { return i; }).filter(function (i) { return SEMA[i].a === s && !yalniz[i]; }), []).replace("class='lej'", "class='lej ana'"));
+      h.push(lejantMetin(SEMA.map(function (x, i) { return i; }).filter(function (i) { return SEMA[i].a === s && !yalniz[i]; }), [],
+        V.parcalar.filter(function (p) { return p.renk && p.a === s; })).replace("class='lej'", "class='lej ana'"));
       var np = st.parcalar.reduce(function (a, b) { return a + b.adet; }, 0), nb = st.baglantilar.reduce(function (a, b) { return a + b.adet; }, 0);
       h.push("<div class='kpi'><div><b>~" + st.sure_dk + " dk</b><span>süre" + (st.sure_tahmini ? " (tahmini)" : "") + "</span></div>" +
         "<div><b>" + np + "</b><span>parça</span></div><div><b>" + (st.alet ? md(st.alet) : "—") + "</b><span>alet</span></div>" +
         "<div><b>" + nb + "</b><span>bağlantı elemanı</span></div><div></div></div>");
-      h.push("<div class='is'>" + md(st.is_) + "</div>");
+      h.push(isMetin);
     } else {
       h.push("<h1>" + s + ". " + esc(st.baslik) + " (devam)</h1>");
+      if (isb.length) h.push("<p class='isdevam'>← " + esc(st.kod) + " iş metni: " + (isb[0].parca ? "önceki sayfa sonunda yarım kalan yer burada sürüyor" :
+        "önceki sayfa ile devam") + "</p>" + isMetin);
     }
     bl.forEach(function (x) { if (x.tur === "ust") h.push(x.h); });
     var ik = bl.filter(function (x) { return x.tur === "iki"; });
@@ -201,6 +233,27 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
     sf.dataset.gh = ilk ? String(gh) : ""; sf.dataset.fs = String(fs);
     return !tasiyor();
   }
+  // P10.7b2a-Y: sıradaki iş metni paragrafı bu sayfaya bütün sığmıyorsa sözcük sınırında bölünür (sığan en uzun baş bu sayfada, kalanı
+  // sonraki sayfada; ** / ` işaretinin içinden bölünmez; iki yanda en az BOL_EN_AZ sözcük). Karakter düşmez: yalnız bölünen boşluk.
+  var BOL_EN_AZ = 6;
+  function bol(st, s, ilk, bas, x) {
+    var t = x.t, yer = [];
+    for (var i = t.indexOf(" "); i >= 0; i = t.indexOf(" ", i + 1)) {
+      var on = t.slice(0, i);
+      if (!((on.match(/\*\*/g) || []).length % 2) && !((on.match(/`/g) || []).length % 2)) yer.push(i);
+    }
+    if (yer.length < 2 * BOL_EN_AZ - 1) return null;
+    var lo = BOL_EN_AZ - 2, hi = yer.length - BOL_EN_AZ, sf = null;   // yer[m]: m+1 sözcük başta
+    function dene(m) {
+      if (sf) kok.removeChild(sf);
+      sf = sayfa(st, s, ilk, bas.concat([{ tur: "is", t: t.slice(0, yer[m]), parca: x.parca }]), 2);
+      return sigdir(sf, ilk);
+    }
+    while (lo < hi) { var m = (lo + hi + 1) >> 1; if (dene(m)) lo = m; else hi = m - 1; }
+    if (lo < BOL_EN_AZ - 1 || !dene(lo)) { if (sf) kok.removeChild(sf); return null; }
+    return { sf: sf, on: { tur: "is", t: t.slice(0, yer[lo]), parca: x.parca }, son: { tur: "is", t: t.slice(yer[lo] + 1), parca: true } };
+  }
+  function surer(kalan, k) { return k < kalan.length && kalan[k].tur === "is" ? 1 : 0; }
   var tasma = [], kucuk = [], esleme = {};
   A.forEach(function (st, s) {
     var kalan = bloklar(st, s), ilk = true, sayfalar = [];
@@ -208,13 +261,23 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
       var k = kalan.length, sf = null, sigdi = false;
       for (; k >= (ilk ? 0 : 1); k--) {                // sondan blok taşı: sığan en çok blok bu sayfada kalır
         if (sf) kok.removeChild(sf);
-        sf = sayfa(st, s, ilk, kalan.slice(0, k));
+        sf = sayfa(st, s, ilk, kalan.slice(0, k), surer(kalan, k));
         if (sigdir(sf, ilk)) { sigdi = true; break; }
+      }
+      var kb = sigdi ? k : 0;                           // P10.7b2a-Y: sıradaki blok iş metni paragrafıysa bölüp sayfayı doldur
+      if ((sigdi || !ilk) && kb < kalan.length && kalan[kb].tur === "is") {
+        if (sf) kok.removeChild(sf);
+        var p = bol(st, s, ilk, kalan.slice(0, kb), kalan[kb]);
+        if (p) {
+          sf = p.sf; kalan = kalan.slice(0, kb).concat([p.on, p.son], kalan.slice(kb + 1)); k = kb + 1; sigdi = true;
+        } else if (sigdi) {                             // bölünemedi: döngünün seçtiği sayfa geri
+          sf = sayfa(st, s, ilk, kalan.slice(0, k), surer(kalan, k)); sigdir(sf, ilk);
+        } else sf = null;
       }
       if (!sigdi) {                                     // tek blok bile sığmıyor: en çok bir blokla bırak, taşan say
         if (sf) kok.removeChild(sf);
         k = ilk ? 0 : 1;
-        sf = sayfa(st, s, ilk, kalan.slice(0, k));
+        sf = sayfa(st, s, ilk, kalan.slice(0, k), surer(kalan, k));
         sigdir(sf, ilk);
         tasma.push(s + (ilk ? "" : "d"));
       }

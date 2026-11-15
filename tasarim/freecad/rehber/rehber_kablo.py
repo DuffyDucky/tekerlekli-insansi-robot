@@ -36,12 +36,66 @@ TEMA_TON = {
     "sari": {"light": "#8a6d00", "dark": "#e8c020"}, "mavi": {"light": "#1f6fb8", "dark": "#4a9fe8"},
     "yesil": {"light": "#1e7a3c", "dark": "#3dbb64"}, "mor": {"light": "#7d3c98", "dark": "#b07fd0"},
     "siyah": {"light": "#222222", "dark": "#b3b3b3", "cekirdek_dark": "#222222"}, "beyaz": {"light": "#4c7078", "dark": "#f2f6f7"},
-    "hazir-usb": {"light": "#828282", "dark": "#818181"}, "hazir-hdmi": {"light": "#1d3854", "dark": "#5ba7b8"},
+    "hazir-usb": {"light": "#828282", "dark": "#818181"}, "hazir-hdmi": {"light": "#193cff", "dark": "#5ba7b8"},
     "hazir-csi": {"light": "#6f3312", "dark": "#b2916b"},
 }
 # P10.7b1 açık işler turu (kontrol-2 madde 17): en yakın çiftler ΔE00 < RENK_FARK_ESIK olduğu için yeniden tonlandı (eski → yeni):
 # açık beyaz #4e6d7d → #4c7078, USB #7c7c7c → #828282, HDMI #2f3f4f → #1d3854, CSI #8a5a3c → #6f3312; koyu siyah #b9bec5 → #b3b3b3,
 # USB #7d7d7d → #818181, HDMI #7f9bb5 → #5ba7b8, CSI #c0916c → #b2916b. Ana sınıfların (kırmızı … mor) tonları değişmedi.
+# P10.7b2a (F10h-kontrol-4): açık HDMI #1d3854 → #193cff: lacivert ince çizgide siyaha yakın okunuyordu (ΔE00 15,3, L* farkı ≈ 10);
+# yeni ton aynı mavi ailesinde, doygun ve açık (L* ≈ 39). Kural: açık temada siyah dışındaki her ton siyahtan ≥ SIYAH_L_FARK açık.
+SIYAH_L_FARK = 15.0
+# Seçim vurgusu (rehber/app.js VURGU_TON, tema başına "ana"): kablo tonlarıyla aynı sınamaya girer (zemine karşıtlık ≥ 3,0; her kablo
+# tonuna ve sahnenin öbür işaret renklerine, EV_RENK ile KONUM_RENK'e, ΔE00 ≥ 15). Tablo app.js'ten okunur (tek kaynak).
+# Düzeltme turu 1 (F10i-kontrol A9): "kopya" tonu da ΔE00 sınamasına girer ve ikisi app.js SINIF tablosunun parça sınıfı renklerine
+# karşı da sınanır (eski açık ton #a35ef2 "lazer" #8e44ad'a 13,4'tü; yeni açık ton #e014ff). Karşıtlık ölçütü yalnız "ana" için.
+APP_JS = os.path.join(ROBOT, "rehber", "app.js")
+VURGU_ELLE = {}                                                      # bozma denemesi: {"light": ton, "dark": ton} app.js yerine
+
+
+def vurgu_tonlari(yol=None):
+    """app.js'in seçim vurgusu ve sahne işaret renkleri: ({tema: ana ton, tema + "_kopya": kopya tonu}, {ad: ton}). Okunamazsa
+    KeyError. Düzeltme turu 1 (F10i-kontrol A9): kopya tonu da okunur (eşik sınamasına girer)."""
+    s = open(yol or APP_JS, encoding="utf-8").read()
+    m = re.search(r"const VURGU_TON = \{(.*?)\n  \};", s, re.S)
+    if not m:
+        raise KeyError("app.js'te VURGU_TON yok")
+    v = {}
+    for tm in ("light", "dark"):
+        t = re.search(tm + r": \{[^}]*?\bana: \"(#[0-9a-fA-F]{6})\"", m.group(1))
+        k = re.search(tm + r": \{[^}]*?\bkopya: \"(#[0-9a-fA-F]{6})\"", m.group(1))
+        if not t or not k:
+            raise KeyError("app.js VURGU_TON.%s.%s yok" % (tm, "ana" if not t else "kopya"))
+        v[tm], v[tm + "_kopya"] = t.group(1).lower(), k.group(1).lower()
+    v.update(VURGU_ELLE)
+    sabit = {}
+    for ad in ("EV_RENK", "KONUM_RENK"):
+        t = re.search(ad + r" = \"(#[0-9a-fA-F]{6})\"", s)
+        if not t:
+            raise KeyError("app.js'te %s yok" % ad)
+        sabit[ad] = t.group(1).lower()
+    return v, sabit
+
+
+SINIF_ELLE = {}                                                      # bozma denemesi: {sınıf: ton} app.js yerine
+
+
+def sinif_renkleri(tm, yol=None):
+    """app.js SINIF tablosunun parça sınıfı renkleri (seçim vurgusunun kendisi olan "secili" hariç); "onceki" tema başına
+    (sahneRengi: koyu temada ayrı ton). Düzeltme turu 1 (F10i-kontrol A9): vurgu bu renklere karşı da ΔE00 eşiğine girer."""
+    s = open(yol or APP_JS, encoding="utf-8").read()
+    m = re.search(r"const SINIF = \{(.*?)\n  \};", s, re.S)
+    if not m:
+        raise KeyError("app.js'te SINIF yok")
+    out = {a: b.lower() for a, b in re.findall(r"(\w+): \[\"(#[0-9a-fA-F]{6})\"", m.group(1))}
+    out.pop("secili", None)
+    if tm == "dark":
+        t = re.search(r"SINIF\.onceki\[0\] = tema\(\) === \"dark\" \? \"(#[0-9a-fA-F]{6})\"", s)
+        if not t:
+            raise KeyError("app.js'te koyu tema SINIF.onceki tonu yok")
+        out["onceki"] = t.group(1).lower()
+    out.update(SINIF_ELLE)
+    return out
 HAZIR_TUR = {"U": ("hazir-usb", "Hazır kablo: USB"), "H": ("hazir-hdmi", "Hazır kablo: HDMI"), "C": ("hazir-csi", "Hazır kablo: kamera (CSI)")}
 KARSITLIK_ESIK = 3.0
 STIL_CSS = os.path.join(ROBOT, "rehber", "stil.css")
@@ -290,6 +344,9 @@ def karsitlik_tablosu(TB=None, zemin=None):
             continue                                                   # hazır kablolar tür satırlarıyla çizilir
         for tm in ("light", "dark"):
             out.append((k, tm, ton[tm], round(karsitlik(ton[tm], zemin[tm]["sahne"]), 2), round(karsitlik(ton[tm], zemin[tm]["lejant"]), 2)))
+    v, _s = vurgu_tonlari()                                            # P10.7b2a: seçim vurgusu da (app.js VURGU_TON)
+    for tm in ("light", "dark"):
+        out.append(("vurgu", tm, v[tm], round(karsitlik(v[tm], zemin[tm]["sahne"]), 2), round(karsitlik(v[tm], zemin[tm]["lejant"]), 2)))
     return out
 
 
@@ -357,16 +414,39 @@ def renk_farki_tablosu(TB=None):
     L = TB.lejant()
     ad = [k for k in L if not (k == "hazir" and any(x in L for x, _ in HAZIR_TUR.values()))]
     out = []
+    v, sabit = vurgu_tonlari()
     for tm in ("light", "dark"):
         for i, a in enumerate(ad):
             for b in ad[i + 1:]:
                 out.append((tm, a, b, L[a][2][tm], L[b][2][tm], round(de2000(L[a][2][tm], L[b][2][tm]), 1)))
+        # P10.7b2a: seçim vurgusu her kablo tonuna ve sahnenin işaret renklerine karşı; düzeltme turu 1 (F10i-kontrol A9): ana ve
+        # kopya tonu, app.js'in bütün parça sınıfı renklerine karşı da (açık temada eski ana ton "lazer" sınıfına 13,4 idi)
+        sn = sinif_renkleri(tm)
+        for va, vt in (("vurgu", v[tm]), ("vurgu kopya", v[tm + "_kopya"])):
+            for b in ad:
+                out.append((tm, va, b, vt, L[b][2][tm], round(de2000(vt, L[b][2][tm]), 1)))
+            for b, t in sorted(sabit.items()):
+                out.append((tm, va, b, vt, t, round(de2000(vt, t), 1)))
+            for b, t in sorted(sn.items()):
+                out.append((tm, va, "sınıf " + b, vt, t, round(de2000(vt, t), 1)))
     return sorted(out, key=lambda x: x[5])
+
+
+def siyah_l_denetle(TB=None):
+    """P10.7b2a: açık temada siyah dışındaki ton siyahtan en az SIYAH_L_FARK (CIELAB L*) açık olmalı (ince çizgide siyaha karışmasın)."""
+    TB = TB or Tablo()
+    L = TB.lejant()
+    if "siyah" not in L:
+        return []
+    ls = _lab(L["siyah"][2]["light"])[0]
+    return ["kablo tonu %s (light, %s): L* %.1f, siyahtan (%.1f) farkı %.1f < %g (ince çizgide siyaha karışır)" % (
+                k, v[2]["light"], _lab(v[2]["light"])[0], ls, _lab(v[2]["light"])[0] - ls, SIYAH_L_FARK)
+            for k, v in L.items() if k not in ("siyah", "hazir") and _lab(v[2]["light"])[0] - ls < SIYAH_L_FARK]
 
 
 def renk_farki_denetle(TB=None):
     return ["kablo tonları %s ↔ %s (%s: %s / %s) ΔE00 %.1f < %g" % (a, b, tm, x, y, d, RENK_FARK_ESIK)
-            for tm, a, b, x, y, d in renk_farki_tablosu(TB) if d < RENK_FARK_ESIK]
+            for tm, a, b, x, y, d in renk_farki_tablosu(TB) if d < RENK_FARK_ESIK] + siyah_l_denetle(TB)
 
 
 def cad_no(ad):
@@ -684,6 +764,11 @@ def kritik_tablolar(esleme=None):
         g.append(_RK.girdi("TEMA_TON", "%s = %r" % (k, sorted(TEMA_TON[k].items())), "tema tonu"))
     g.append(_RK.girdi("ESIK", "GEO_ESIK %r GEO_TABAN_DISI %r KARSITLIK_ESIK %r RENK_FARK_ESIK %r" % (
         GEO_ESIK, GEO_TABAN_DISI, KARSITLIK_ESIK, RENK_FARK_ESIK), "eşikler"))
+    v, sabit = vurgu_tonlari()                                         # P10.7b2a: seçim vurgusu (app.js) ve siyah L* kuralı
+    g.append(_RK.girdi("VURGU_TON", "%r %r" % (sorted(v.items()), sorted(sabit.items())), "seçim vurgusu tonu"))
+    for tm in ("light", "dark"):                                       # düzeltme turu 1 (A9): vurgunun sınandığı sınıf renkleri
+        g.append(_RK.girdi("SINIF", "%s = %r" % (tm, sorted(sinif_renkleri(tm).items())), "parça sınıfı renkleri"))
+    g.append(_RK.girdi("ESIK", "SIYAH_L_FARK %r" % SIYAH_L_FARK, "eşikler"))
     return g
 
 
@@ -802,6 +887,8 @@ def bozma_denemesi(V=None):
             TEMA_TON.clear(); TEMA_TON.update(eski_ton)
             KESIT_YARICAP.clear(); KESIT_YARICAP.update(eski_yc)
             MODELSIZ_KONUM.clear(); MODELSIZ_KONUM.update(eski_mk)
+            VURGU_ELLE.clear()
+            SINIF_ELLE.clear()
         mek = "+".join(x for x, v in (("denetim", h), ("onay", ho)) if v)
         sonuc.append((ad, len(h) + len(ho), (h + ho)[:2], mek))
 
@@ -833,6 +920,17 @@ def bozma_denemesi(V=None):
     def b25(RM, TB, V): TEMA_TON["siyah"]["dark"] = "#b9bec5"                         # eski: siyah ↔ beyaz koyu ΔE00 13,2
     def b26(RM, TB, V): MODELSIZ_KONUM[("Yıldız barası", "*")] = ((20.0, 186.0, -60.0),) + MODELSIZ_KONUM[("Yıldız barası", "*")][1:]
     def b27(RM, TB, V): TEMA_TON["hazir-hdmi"]["dark"] = "#7f9bb5"                    # eski: mavi ↔ HDMI koyu ΔE00 9,8
+    # P10.7b2a (F10h-kontrol-4): seçim vurgusu ve açık HDMI
+    def b28(RM, TB, V): VURGU_ELLE["light"] = "#7cfc00"                               # eski vurgu: açık zemine karşıtlık 1,1
+    def b29(RM, TB, V): VURGU_ELLE["light"] = "#2a8a4a"                               # acil stop yeşiline yakın vurgu
+    def b30(RM, TB, V): VURGU_ELLE["dark"] = "#e8c020"                                # servo sarısıyla aynı vurgu
+    def b31(RM, TB, V): VURGU_ELLE["dark"] = "#ff3fa4"                                # EV_RENK ile aynı vurgu
+    def b32(RM, TB, V): TEMA_TON["hazir-hdmi"]["light"] = "#1d3854"                   # eski açık HDMI: siyaha yakın (L*)
+    # düzeltme turu 1 (F10i-kontrol A9): vurgu ↔ parça sınıfı renkleri, kopya tonu da
+    def b33(RM, TB, V): VURGU_ELLE["light"] = "#a35ef2"                               # eski açık vurgu: "lazer" sınıfına ΔE00 13,4
+    def b34(RM, TB, V): VURGU_ELLE["light_kopya"] = "#9b50b8"                         # kopya tonu "lazer" sınıfına yakın
+    def b35(RM, TB, V): SINIF_ELLE["profil"] = "#00e5d6"                              # sınıf rengi koyu vurguya yakın
+    def b36(RM, TB, V): VURGU_ELLE["dark_kopya"] = "#5d6168"                          # koyu kopya tonu önceki adımların grisi
     deneme = [("CAD eşlemesinde bilinmeyen kimlik", b1), ("şemada bilinmeyen kimlik", b2), ("şemada kimlik yok", b3),
               ("şema son alanı yine renk (anahtar kelime / elle renk)", b4), ("kol bölümünde bilinmeyen kimlik", b5),
               ("KABLO_AD'da eşlemesiz CAD numarası", b6), ("devre sınıfı renk kuralında yok", b7),
@@ -845,7 +943,11 @@ def bozma_denemesi(V=None):
               ("geometri G4: yol 5'e S09 (bölge)", b20), ("geometri G7: yol 1'e G05 (XT60 − kutbu)", b21),
               ("geometri G8: yol 2'ye G01 (akü + kutbu)", b22), ("eşleme G6: yol 10'a G22 (ayırt edilemeyen)", b23),
               ("renk: açık beyaz / USB eski tonlar", b24), ("renk: koyu siyah eski ton", b25),
-              ("nominal: yıldız noktası taşındı", b26), ("renk: koyu HDMI eski ton", b27)]
+              ("nominal: yıldız noktası taşındı", b26), ("renk: koyu HDMI eski ton", b27),
+              ("vurgu: eski açık yeşil (karşıtlık)", b28), ("vurgu: açık temada acil stop yeşiline yakın", b29),
+              ("vurgu: koyu temada servo sarısı", b30), ("vurgu: EV_RENK ile aynı", b31), ("renk: açık HDMI eski ton (siyaha yakın)", b32),
+              ("vurgu: eski açık ton (lazer sınıfına 13,4)", b33), ("vurgu kopya: açık temada lazer sınıfına yakın", b34),
+              ("vurgu: profil sınıfı koyu vurguya yakın", b35), ("vurgu kopya: koyu temada önceki adımlar grisi", b36)]
     if V is not None:
         def v1(RM, TB, V):
             i = next(k for k, s in enumerate(V["semalar"]) if s.get("kablo") and s.get("tur") not in KOL_ISARET_TUR)

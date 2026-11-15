@@ -365,6 +365,84 @@ def pdf_en_kucuk(yol):
     return round(enk, 2) if enk is not None else None
 
 
+# P10.7b2a-Y: basılı sayfa tamlığı. DOM'daki metin tam olsa da sayfa kutusu (.ic, overflow:hidden) kestiği yeri PDF'e basmıyordu
+# (K1'in is_'i 10029 karakter; son 3645'i hiçbir sayfada yoktu, "zorunlu uyarı" denetimi DOM metnine baktığı için görmedi). Her adımın
+# iş metni (is_), alt adım iş metinleri, notları ve kontrol maddeleri o adımın PDF sayfalarında (sayfa_esleme) aranır: boşluk / satır
+# sonu / yumuşak tire / satır sonu tiresi ayıklanır, md() işaretleri (** ve `) düşülür. is_ sırayla, sayfa sayfa en uzun bitişik parça
+# olarak eşlenir (atlama yok: ortada düşen bir parça kalanın eşlenmesini durdurur); madde metinleri adımın sayfalarında bütün aranır.
+TAM_EN_AZ = 20                                                      # sayfa başına en kısa sayılan is_ parçası (normalize karakter)
+
+
+def _tam_norm(s):
+    import unicodedata
+    s = unicodedata.normalize("NFKC", s or "").replace("­", "").replace("​", "")
+    return re.sub(r"\s+", "", s)
+
+
+def _tam_md(s):
+    return re.sub(r"`([^`]+)`", r"\1", re.sub(r"\*\*([^*]+)\*\*", r"\1", s or ""))
+
+
+def _tam_eslesen(T, i, P):
+    """T[i:j] P'de bitişik geçen en büyük j (önek tekdüze: ikili arama)."""
+    lo, hi = i, len(T)
+    while lo < hi:
+        m = (lo + hi + 1) // 2
+        if T[i:m] in P:
+            lo = m
+        else:
+            hi = m - 1
+    return lo
+
+
+def pdf_tamlik(pdf, V, esleme):
+    """Adım başına basılı metin tamlığı. PyMuPDF yoksa olculdu False (kabul geçmez)."""
+    try:
+        import fitz
+    except ImportError:
+        return dict(olculdu=False, neden="PyMuPDF yok", gecti=False)
+    with fitz.open(pdf) as doc:
+        ham = [p.get_text("text") for p in doc]
+    # iki okuma: olduğu gibi ve satır sonu tiresi (tireleme) silinmiş; parça hangisinde uzunsa o
+    oku = [(_tam_norm(t), _tam_norm(re.sub(r"[-‐]\n", "", t))) for t in ham]
+    adim, eksik = [], []
+    for s, st in enumerate(V["adimlar"]):
+        sf = [p for p in esleme.get(s, []) if 1 <= p <= len(oku)]
+        T = _tam_norm(_tam_md(st.get("is_")))
+        i, parca = 0, []
+        for p in sf:
+            j = max(_tam_eslesen(T, i, P) for P in oku[p - 1])
+            if j - i < TAM_EN_AZ and j < len(T):                       # sayfadaki rastlantısal kısa eşleşme ("le", "him") sayılmaz
+                j = i
+            parca.append([p, j - i])
+            i = j
+        r = dict(adim=s, kod=st.get("kod"), sayfa=sf, is_karakter=len(T), is_basilan=i, is_eksik=len(T) - i, sayfa_parca=parca)
+        if i < len(T):
+            g = _tam_md(st.get("is_"))
+            # kesilen yer: işaretsiz metinde, eşlenen normalize karakter sayısına karşılık gelen konum
+            n, k = 0, 0
+            while k < len(g) and n < i:
+                n += len(_tam_norm(g[k]))
+                k += 1
+            eksik.append(dict(adim=s, kod=st.get("kod"), yer="is_", eksik_karakter=len(T) - i, eksik_ham_karakter=len(g) - k,
+                              son_sayfa=parca[-1][0] if parca else None, kesilen_once=g[max(0, k - 50):k], kesilen_sonra=g[k:k + 60]))
+        madde = [("not_", t) for t in st.get("not_") or []] + [("kontrol", t) for t in st.get("kontrol") or []]
+        if st.get("alt"):
+            madde += [("alt %d.%d is_" % (s, n + 1), g.get("is_")) for n, g in enumerate(st.get("sira_grup") or []) if g.get("is_")]
+        tum = ["".join(x[0] for x in (oku[p - 1] for p in sf)), "".join(x[1] for x in (oku[p - 1] for p in sf))]
+        r["madde"], r["madde_eksik"] = len(madde), 0
+        for yer, t in madde:
+            m = _tam_norm(_tam_md(t))
+            if m and not any(m in x for x in tum):
+                r["madde_eksik"] += 1
+                eksik.append(dict(adim=s, kod=st.get("kod"), yer=yer, eksik_karakter=len(m), metin=t[:80]))
+        adim.append(r)
+    return dict(olculdu=True, adim=len(adim), is_karakter=sum(a["is_karakter"] for a in adim),
+                is_eksik_karakter=sum(a["is_eksik"] for a in adim), madde=sum(a["madde"] for a in adim),
+                madde_eksik=sum(a["madde_eksik"] for a in adim), eksik=eksik,
+                sayfa_parca={str(a["adim"]): a["sayfa_parca"] for a in adim if len(a["sayfa"]) > 1}, gecti=not eksik)
+
+
 def yazdir(tb, n_adim):
     """rehber/yazdir.html -> <çıktı>/Lale-montaj-rehberi.pdf (A4; adım başına en az bir sayfa, sığmayan adımda "devam" sayfası)."""
     ortak = ortak_arg(tb, (1200, 1700), sanal=15000)
@@ -397,12 +475,23 @@ def yazdir(tb, n_adim):
     d["esleme_tutarli"] = (sorted(esleme) == list(range(n_adim)) and all(len(v) >= 1 for v in esleme.values())
                            and sirali == list(range(1, len(sirali) + 1)) and len(sirali) == d["html_sayfa"])
     kucuk_ok = all(x is not None and x >= YAZI_ALT_PT - 0.01 for x in (d["en_kucuk_yazi_pt_dom"], d["en_kucuk_yazi_pt_pdf"]))
-    # kabul (F7c): her adım ≥ 1 sayfa (eşleme sıralı ve kesintisiz), PDF sayfası = HTML sayfası ≥ adım, taşan 0, en küçük yazı ≥ 8 pt
+    # P10.7b2a-Y: basılı metin tamlığı (PDF'te her adımın iş metni, alt adım iş metni, not ve kontrol maddeleri tam mı)
+    d["tamlik"] = pdf_tamlik(pdf, json.load(open(os.path.join(REHBER, "veri", "rehber-veri.json"), encoding="utf-8")), esleme) \
+        if yeni else dict(olculdu=False, neden="PDF yok", gecti=False)
+    # kabul (F7c): her adım ≥ 1 sayfa (eşleme sıralı ve kesintisiz), PDF sayfası = HTML sayfası ≥ adım, taşan 0, en küçük yazı ≥ 8 pt;
+    # P10.7b2a-Y: basılı metinde eksik karakter 0
     d["gecti"] = bool(yeni and sayfa == d["html_sayfa"] and sayfa >= n_adim and d["esleme_tutarli"] and not d["tasan"]
-                      and not d["kucuk_yazi"] and kucuk_ok)
+                      and not d["kucuk_yazi"] and kucuk_ok and d["tamlik"]["gecti"])
     print("yazdirilabilir: pdf %d sayfa (adim %d, devam %d), html %s, esleme %s, tasan %s, en kucuk yazi dom %s / pdf %s pt, %d kB" % (
         sayfa, n_adim, d["devam_sayfasi"], d["html_sayfa"], "tutarli" if d["esleme_tutarli"] else "TUTARSIZ", d["tasan"] or "-",
         d["en_kucuk_yazi_pt_dom"], d["en_kucuk_yazi_pt_pdf"], d["boyut_kb"]))
+    tm = d["tamlik"]
+    print("yazdir tamlik: %s" % ("%d adim, is_ %d karakter, eksik %d; madde %d, eksik %d" % (
+        tm["adim"], tm["is_karakter"], tm["is_eksik_karakter"], tm["madde"], tm["madde_eksik"]) if tm["olculdu"] else "OLCULMEDI (%s)" % tm["neden"]))
+    for x in (tm.get("eksik") or [])[:10]:
+        print("  EKSIK adim %s (%s) %s: %d karakter basilmadi%s" % (x["adim"], x["kod"], x["yer"], x["eksik_karakter"],
+              ", sayfa %s sonunda kesik: ...%s | %s..." % (x["son_sayfa"], x["kesilen_once"], x["kesilen_sonra"]) if "kesilen_once" in x
+              else ": %s" % x["metin"]))
     return d, [("yazdır", gorunen_metin(dom, r'<div id="sayfalar">.*</body>'))]
 
 

@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-14 15:04",
+ "tarih": "2026-11-15 06:11",
  "konum": 121,
  "renk_cad": {
   "yontem": "CAD rengi rehber_gorunum.cad_parcalar() ile FCStd'den yeniden okunur (Document.xml Renk özelliği × gorsel betiğinin RENK tablosu); ayrıca GuiDocument.xml yayınık rengi",
@@ -2270,13 +2270,40 @@
      "dark": 5.27
     }
    },
-   "secim": {
-    "renk": "#7cfc00",
-    "en_yakin": "#1a7333",
-    "de76": 78.5,
+   "secim_light": {
+    "renk": "#e014ff",
+    "en_yakin": "#1a4da6",
+    "de76": 78.9,
     "zemin_karsitlik": {
-     "light": 1.11,
-     "dark": 12.79
+     "light": 3.06,
+     "dark": 4.63
+    }
+   },
+   "secim_dark": {
+    "renk": "#00ffee",
+    "en_yakin": "#f2f2e6",
+    "de76": 52.3,
+    "zemin_karsitlik": {
+     "light": 1.06,
+     "dark": 13.41
+    }
+   },
+   "secim_kopya_light": {
+    "renk": "#f3b8ff",
+    "en_yakin": "#c7ccd4",
+    "de76": 40.0,
+    "zemin_karsitlik": {
+     "light": 1.33,
+     "dark": 10.63
+    }
+   },
+   "secim_kopya_dark": {
+    "renk": "#9ffff6",
+    "en_yakin": "#f2f2e6",
+    "de76": 30.2,
+    "zemin_karsitlik": {
+     "light": 1.04,
+     "dark": 14.68
     }
    },
    "kucuk_gorunum": {
@@ -4653,7 +4680,7 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Yüz kabuğu (ön) sağ",
-     "fark": 69486,
+     "fark": 69501,
      "yalniz": 79159,
      "gorunur": true,
      "parca": 26,
@@ -6781,7 +6808,7 @@
      {
       "id": "p0213",
       "ad": "Göğüs bandı sağ",
-      "fark": 125851,
+      "fark": 125868,
       "kimlik": 125625,
       "yalniz": 126209,
       "oran": 0.997,
@@ -6920,7 +6947,7 @@
      {
       "id": "p0214",
       "ad": "Göğüs bandı sol",
-      "fark": 121845,
+      "fark": 121861,
       "kimlik": 120874,
       "yalniz": 121565,
       "oran": 1.002,
@@ -7126,7 +7153,7 @@
      {
       "id": "p0407",
       "ad": "Göğüs ekranı 11,6\" HDMI 1920x1080 kasalı",
-      "fark": 374017,
+      "fark": 374032,
       "kimlik": 374199,
       "yalniz": 374199,
       "oran": 1.0,
@@ -7220,7 +7247,7 @@
      {
       "id": "p0229",
       "ad": "Göğüs ekranı çerçevesi sağ",
-      "fark": 29684,
+      "fark": 29690,
       "kimlik": 28827,
       "yalniz": 31984,
       "oran": 0.928,
@@ -7229,7 +7256,7 @@
      {
       "id": "p0230",
       "ad": "Göğüs ekranı çerçevesi sol",
-      "fark": 14123,
+      "fark": 14129,
       "kimlik": 13845,
       "yalniz": 21299,
       "oran": 0.663,
@@ -7395,7 +7422,7 @@
      {
       "id": "p0215",
       "ad": "Omuz bandı sağ",
-      "fark": 91452,
+      "fark": 91451,
       "kimlik": 124790,
       "yalniz": 134303,
       "oran": 0.681,
@@ -7480,7 +7507,7 @@
      {
       "id": "p0216",
       "ad": "Omuz bandı sol",
-      "fark": 190603,
+      "fark": 190608,
       "kimlik": 194114,
       "yalniz": 215342,
       "oran": 0.885,
@@ -12017,7 +12044,7 @@
   "gecti": true
  },
  "goruntu": [],
- "sure_s": 893,
+ "sure_s": 938,
  "gecti_ozet": {
   "renk_cad": true,
   "renk_sahne": true,

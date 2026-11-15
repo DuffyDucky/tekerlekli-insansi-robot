@@ -75,7 +75,7 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K60 | Elde taşınan acil stop (Ö4) | **açık** (P10.7a) | Kayıtta yok (A / B / C; Ahmet + Efe) | B seçilirse alıcının yeri ve beslemesi (P10.7b kablajı) |
 | K61 | Bas-konuş düğmesi kullanılacak mı (O-12) | **açık** (P10.7a) | Kayıtta yok; Efe'ye sorulacak | Düğmenin kablosu ve yeri (P10.7b) |
 | K62 | P10.7b1'de tur sayısı: iki düzeltme turu + açık işler turu + üretimin uyum düzeltmesi (kural "en çok 2 tur") | **açık** (P10.7b1; kayıt, Ahmet'in bilgisine / onayına) | Kayıt olarak kabul (orkestratörün sınıflaması) | Döngü kuralının yorumu (sonraki paketlerin tur sayımı) |
-| K63 | Montajdan önce kapanacak iki talimat boşluğu: G07 akü ölçüm hattı + 100 kΩ; SV3 + dağıtım kartı C | **açık** (P10.7b1, kontrol-4) | Rehbere talimat cümlesi (devre değişmez); P10.7b2'nin ilk işi | Fiziksel montaj (K1 / B5a / F1 adımları), onay kaydı yenilemesi |
+| K63 | Montajdan önce kapanacak iki talimat boşluğu: G07 akü ölçüm hattı + 100 kΩ; SV3 + dağıtım kartı C | **açık** (P10.7b1, kontrol-4; P10.7b2a'da kaynak düzeyinde uygulandı 15.11, bağımsız kontrol ve üretim bekliyor) | Rehbere talimat cümlesi (devre değişmez); P10.7b2'nin ilk işi | Fiziksel montaj (K1 / B5a / F1 adımları), onay kaydı yenilemesi |
 
 **Açık: 50.** **Kapandı: 13** (K1, K5, K8, K10, K11, K14, K15, K16, K17, K56, K57, K58, K59; K10 masa testine bağlı kabul). Toplam 63 madde.
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
@@ -114,6 +114,9 @@ K numarası almadı (sondaki bölüm).
 P10.7b1 (rehberin elektrik tarafı tek kablo kaynağına bağlandı, 14.11.2026) → K62 (tur sayısı kaydı; `planlama/d158/F10h-gunluk.md`
 § 16.1), K63 (kontrol-4'ün iki talimat boşluğu; `planlama/d158/F10h-kontrol-4.md` § 3.1). Öbür açık işler toplu olarak sondaki bölümde
 (P10.7b1).
+P10.7b2a (K63 + 74 kablonun bağlama talimatı, 15.11.2026) yeni madde açmadı; K63 kaynak düzeyinde uygulandı (bağımsız kontrol bekliyor).
+Orkestratörün altı kararı (karar: orkestratör, 15.11; `kablolar.json` `kararlar` P7b2a-1…6) K numarası almadı, sondaki bölümde
+(P10.7b2a); günlük `planlama/d158/F10i-gunluk.md` § 2.
 
 ---
 
@@ -1225,7 +1228,12 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   kartta 2200 µF, kutbuna dikkat; S09 / S10 buradan)". Devre değeri değişmez; onay kaydı yenilenir, fark bağımsız kontrole gider,
   rehber yeniden üretilir.
 - **Karar:** metin orkestratörün (devre değişmez); Ahmet'e bilgi. **Kapanır:** P10.7b2, ilk iş; fiziksel montajdan önce.
-- **Durum:** açık (14.11.2026, P10.7b1 C adımında kuyruğa alındı).
+- **Durum:** açık (14.11.2026, P10.7b1 C adımında kuyruğa alındı). **15.11.2026, P10.7b2a A: kaynak düzeyinde uygulandı** (bağımsız
+  kontrol ve üretim bekliyor; kapanış onlardan sonra). (1) G07: K1 madde 1'de 100 kΩ (`{ohm.aku_olcum}`) kaynak ucunda telin ucuna,
+  öbür bacağı kırmızı M5 halka pabucun kovanına lehim + makaron; pabuç F1 madde 4'te ana anahtarın çıkış saplamasına (G04'ün üstüne);
+  F1 aşama 1'de DC V ölçümü. (2) B5a: dağıtım kartı C tezgâhta, 2200 µF `{yon.kondansator}` (eksi şeridi okunmuyorsa takılmaz,
+  kablajda teyit), SV3 OUT+ → V+, OUT− → GND; K2 madde 2'de hat C ve S09 / S10. Karar: orkestratör, 15.11 (G07 direnci pabuçta;
+  dağıtım kartı C güç panelinde, SV3 B5a'da). Ayrıntı `planlama/d158/F10i-gunluk.md` § 2, § 5.
 
 ---
 
@@ -1417,3 +1425,31 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     doğrulanamadı (o kademede çizilen şema yok); E4.3'te takılmayacak USB ses kartı karede takılı görünüyor (metinle okunuyor).
   - **Kontrol-5'in açık işi (`F10h-kontrol-5.md` § 6 madde 2, § 8):** kol şemalarının `lejant` alanı ve `app.js` / `yazdir.html` sabit
     metinleri ASCII sınamasına girmiyor ("Birden" bu yüzden izinli listede; `F10h-gunluk.md` § 15.1).
+  - **P10.7b2a'da ele alınanlar (15.11, kaynak düzeyinde; bağımsız kontrol bekliyor; `planlama/d158/F10i-gunluk.md`):** kontrol-4'ün öbür
+    açık işleri (tamlık talimat ölçütüyle, 74 / 74 kablo; cihaz korumaları, kontak, koruyucu yeri, kutup; P6KE18A kutbu; K2 COM–NO; hat
+    sigortası yeri; A01 / A02, G06, A06 −; yasak kalıbına köprüleme kuralı; I01, I02, P01–P03, C01, X01, B01, B02, N01, N02, Q01–Q03
+    talimatta); anahtarlı bara yerleşimi kayıtta; basılı lejant (K1 "Karede:", K2 taban kabloları); seçim vurgusu tema başına (acil stop
+    yeşili / servo sarısıyla ayrıldı); açık HDMI #193cff; kontrol-5'in ASCII kapsamı (`app.js`, `yazdir.html`, kol lejantı). Üretimde gözle
+    bakılacak. **Açık kalan:** E4 genel bakış lejantı (örtülme ölçümü ister), G3 (40.2) renk, AWG kademeleri, E4.3 USB ses kartı, G19 / G20 /
+    G24 / G26 eşleme, `TABAN_DISI_BOLGE`, acil stop düğümü CAD modeli, gerilimler yer tutucuda değil, 21 muaf, yeni talimatların 3B şeması.
+- **P10.7b2a orkestratör kararları (karar: orkestratör, 15.11; `kablolar.json` `kararlar` P7b2a-1…6; K numarası almadı):** K2 G10 → COM,
+  NO → 5,6 Ω, NC boş; K1 30 → 87; hat sigortaları bara (kaynak) ucunda; anahtarlı bara yerleşimi en düşük en kötü köprü akımıyla (hepsi
+  20 A, öneri korundu, pay 0,5 A); tek yönlü TVS katodu (bantlı uç) artı hatta, elektrolitik eksi şeridi GND'de; G07 direnç bacağı halka
+  pabuç kovanında; dağıtım kartı C güç panelinde, SV3 B5a'da, P03 K1'de. Devre değeri değişmedi; Ahmet'e bilgi.
+- **P10.7b2a bağımsız kontrolünden açık iş (15.11.2026; `planlama/d158/F10i-kontrol.md` §3 A8, A12, §6; düzeltme turu 1'de
+  yapılmadı, `F10i-gunluk.md` § Düzeltme turu 1):**
+  - A8: ASCII sınaması tek sözcüklü dizgelere ("Onceki"), `title` özniteliklerine ("Parca secili") ve `rehber/index.html`'e bakmıyor
+    (`rehber_denetim.py` `_gorunen_mu`: boşluksuz dizge görünmez sayılıyor). Sınama genişletilip yanlış alarm ölçülecek.
+  - A12: dağıtım kartı C'nin güç panelindeki montaj yeri ve donanımı (burç / vida) yok; kart modelde de yok. CAD işi, sonraki paket.
+  - Kondansatörde yedek yok: sipariş 5, kullanım 5 (A ve B'de ikişer, C'de bir; `planlama/adim3/kablolar.json` `kondansatorler`).
+    Ters takılan ya da lehimde ısınan bir kondansatörün yerine yenisi yok; sipariş listesine yedek eklemek proje sahibinin kararı.
+- **P10.7b2a ikinci bağımsız kontrolünden açık iş (15.11.2026; `planlama/d158/F10i-kontrol-2.md` §5, §6, §7; düzeltme turu 2'de
+  yapılmadı, `F10i-gunluk.md` § Düzeltme turu 2):**
+  - **PC817 modülünün çıkış jumper'ı (kablajda teyit):** `planlama/adim3/elektrik.md:241` modülün çıkış tarafının "jumper'la
+    yüksek/düşük seçildiğini" yazıyor, hangi konumun kullanılacağını yazmıyor; `pin-haritasi.md` ve `kablolama-on-kararlar.md`'de
+    jumper ayarı yok. Rehber (B6a) bu yüzden jumper konumu vermiyor. Modül gelince satıcı sayfası / kart üstü yazıyla ve
+    `elektrik.md:242`'deki 3,3 V ölçümüyle (LOW < 0,4 V, HIGH > 2,5 V; pin haritası T5) konum seçilip kayda, sonra B6a'ya yazılır.
+  - F10e'nin vurgu tonu ölçüsü `gecti`'nin dışında ve ΔE76 ile (`planlama/d158/F10e-dogrula.py`); rehber_kablo ΔE00 kullanıyor. Üretimde
+    açık ana tonun 3,06 karşıtlık payı bu ölçüyle elle okunur; ölçü `gecti`'ye ve ΔE00'a alınacak.
+  - F10a vurgu tonlarını iki temanın birleşik listesinden kabul ediyor, hangi temada olduğunu denetlemiyor (`F10a-dogrula.py`).
+  - Kopya tonlarına karşıtlık sınaması yok: açık kopya #f3b8ff sahneye 1,33; koyu ana ↔ koyu kopya ΔE00 8,2 (`rehber_kablo.py`).

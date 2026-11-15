@@ -314,6 +314,17 @@ def uret(veri, maliyet=None):
         kay = f"`{t['kaynak']}`" if t.get("kaynak") else "—"
         y(f"| `{ad}` | {hucre(t['ad'])} | {sinir} | {kay} | {hucre(t['not'])} Kullanan: {', '.join(kul) or '-'}. |")
     y("")
+    y("### Saplama yerleşimi (bara-pabuc.kopruler; şema 4: iki bara)")
+    y("")
+    y("Saplama listesi alttan üste (kalın pabuç altta); köprü uçları ayrıca (uç saplamada 1, ortadakilerde 2).")
+    y("")
+    y("| Bara | Besleme saplaması | Saplama → iletkenler | Gerekçe |")
+    y("|---|---|---|---|")
+    for b_, k in (veri["klemens_turleri"].get("bara-pabuc", {}).get("kopruler") or {}).items():
+        if isinstance(k, dict) and isinstance(k.get("yerlesim"), dict):
+            yer = " · ".join(f"{n}: {', '.join(x)}" for n, x in sorted(k["yerlesim"].items()))
+            y(f"| {b_} | {k.get('besleme_saplamasi') or '—'} | {yer} | {hucre(k.get('gerekce') or veri['klemens_turleri']['bara-pabuc']['kopruler'].get('sart', ''))} |")
+    y("")
     y("## Malzeme özeti (sipariş)")
     y("")
     pay = veri["malzeme_payi"]
@@ -334,7 +345,7 @@ def uret(veri, maliyet=None):
         y(f"| {mt['ad']} | {renk} | {sayi(round(mm / 1000, 2))} m | {sayi(round(mm / 1000 * (1 + pay), 1))} m | {liste} | "
           f"{i}: {hucre(kal[i]['ad'])}{fiyat} |")
     y("")
-    y("## Orkestratör kararları (14.11)")
+    y("## Orkestratör kararları (14.11, 15.11)")
     y("")
     y("| Kod | Karar | Metin | Tabloda uygulama | Veren |")
     y("|---|---|---|---|---|")
@@ -359,9 +370,28 @@ def uret(veri, maliyet=None):
     y("|---|---|---|---|---|---|")
     for kid, e in list(veri["koruyucular"].items()) + list(veri["anahtarlar"].items()):
         akim = "—" if "akim_a" not in e else (f"{sayi(e['akim_a'])} A" if e["akim_a"] is not None else "belgelenmemiş")
-        ek = "; ".join(x for x in (e.get("anma") and "anma: " + e["anma"], e.get("sinir_kaynagi"), e.get("not")) if x)
+        u = e.get("uclar") if isinstance(e.get("uclar"), dict) else None
+        uc = u and (f"uçlar: {u['giris']} → {u['cikis']}" + (f", {u['bos']} boş" if u.get("bos") else "") + f" ({u['kaynak']}; {u['teyit']})")
+        ek = "; ".join(x for x in (e.get("anma") and "anma: " + e["anma"], e.get("sinir_kaynagi"), e.get("not"),
+                                   e.get("yer") and "yer: " + e["yer"], uc,
+                                   isinstance(e.get("saplama"), dict) and "saplama: %s (%s; %s)" % (
+                                       e["saplama"].get("olcu"), e["saplama"].get("durum"), e["saplama"].get("teyit"))) if x)
         y(f"| `{kid}` | {hucre(e['ad'])}{(' (' + hucre(ek) + ')') if ek else ''} | {e['tur']} | {akim} | "
           f"{e['giris'] or 'kök'} → {', '.join(e['cikis'])} | `{e['kaynak']}` |")
+    y("")
+    y("### Kutuplu parçalar: TVS ve kondansatör yönü (şema 4)")
+    y("")
+    y("| Kimlik | Parça | Yer | Artı düğümü | Eksi düğümü | Yön | Kaynak | Teyit |")
+    y("|---|---|---|---|---|---|---|---|")
+    for kid, e in (veri.get("tvs") or {}).items():
+        y(f"| `{kid}` | {e['parca']} ({hucre(e['ad'])}) | {hucre(e['yer'])} | {hucre(e['arti_dugumu'])} | {hucre(e['eksi_dugumu'])} | "
+          f"{hucre(e['yon'])}; {hucre(e['isaret'])} | {hucre(e['kaynak'])} | {hucre(e['teyit'])} |")
+    ko = veri.get("kondansatorler") or {}
+    if ko.get("yon"):
+        kart = ", ".join("%s %s" % (x["kart"], x["adet"]) for x in ko.get("yerler", []))
+        y(f"| `kondansatorler` | {ko['deger']} ({kart}) | dağıtım "
+          f"kartlarının V+ / GND barası | V+ | GND | {hucre(ko['yon'])}; {hucre(ko.get('isaret', ''))} | {hucre('; '.join(x for x in (ko.get('kaynak'), ko.get('kutup_kaynak') and 'kutup: ' + ko['kutup_kaynak']) if x))} | "
+          f"{hucre(ko.get('teyit', ''))} |")
     y("")
     for kid, e in veri["koruyucular"].items():
         b = e.get("yuk_butcesi")

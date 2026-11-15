@@ -32,7 +32,7 @@
 #    (F7d düzeltme 1, O-1: "açıkken birkaç saniye sonra … tak" tutar), virgül ve "ve" kesmez (liste içi: "açıkken F1 (20 A), F3 (5 A,
 #    kafa) ve hat sigortalarını tak" tutar). "artı" / "eksi" kelime sınırıyla ("artık", "eksik" tutmaz; D-2).
 # 7) Görünen parça adında FreeCAD kopya eki (sondaki 0NN; F7b-kontrol D-6) 0 olmalı.
-import os, re, sys, json, collections
+import os, re, sys, json, collections, ast
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROBOT = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
@@ -49,6 +49,7 @@ KISALTMA = {
     "FPC", "AI", "HAT", "KAPI", "ZZ", "RS", "NTC", "IP", "MCB", "SSR", "MP", "ABS", "NPT", "ISB", "NEMA", "DSP", "LPC", "MAH", "JQC",
     "BMS", "KAPAK", "IPS", "JGB", "LOW", "HIGH", "WROOM", "RESPEAKER", "MIC", "DTR", "RTS",
     "VOUT", "SDA",                                                 # P10.7b1 üretim uyumu (S1): kablo tablosu satırlarından
+    "SCL", "COM", "GLB",                                           # P10.7b2a: I2C saat hattı (B6a), röle ortak ucu (K1), app.js dosya biçimi
 }
 # Türkçe harfi olmayan doğru kelimeler ve teknik terimler (küçük harf). Yeni bir ASCII kelime ekrana girerse denetim "bilinmeyen"
 # der: ya TR_EK'e karşılığı eklenir ya da gözden geçirilip buraya yazılır. F10f: ilk iki satır kol kablo yolu metinlerinin kelimeleri
@@ -96,6 +97,8 @@ yaz ye yedek yer yerde yere yeri yerinde yi yok yol yolla yollar yollu yolu yolu
 braketin brakete saydam yerinden yolda karede arkada kapaklarda bantta
 zeminden zorlarsa
 renk
+pinine pinlerine pinlerini neden pininde etme makaronu kovan gerginlik giderme pimlerini bul kutbu gerilimliyken almada verme
+pinlerinden tutturulu lehimlenmeden klemensinde katottur yoktur klemenslerinden birer soneki kabloyu
 ama bantla banda beslenir besleme besler bekliyor birlikte boylar burca cam cama dahil dahili damar daldan dayamalar delik delikler
 delikleri deliklerine deliklerini deliklerinin delikli delikte delikten demet demeti demetin demetine dev direkten dizi dolu duvara
 duyulabilirlik elde emas gelen gerilim gider giden gidenlere hepsi hornun hornunda inenler inmesi iskeletinin jeti kablosunun
@@ -126,7 +129,17 @@ oturuyor parantez pedi pedlerinin pinler pinleri plaket renginde reset reseti se
 tablo tablodaki tabloya tel telinin telli tepme teslimde toplam ucun verilir yetmez
 durur yoksa yerindeki klemenste enerjide denemeleri yanmaz zemin istisna inceyse klemensinden nadiren yuvalarda enkoderler
 zincirin teliyle kesitte yerlerde kablosuyla animasyonda gidiyor uygulanmaz
+ayarlanan klemenslerini motoru yandaki notundaki bacak okunmuyorsa kablajda telin zarar dolarken inmeden beslemesi pinli uca direncin
+pabucun kalmaz girmeden altta baraya pimlerinin yerlerine enkoderi trig echo klemensli saplamada saplamalardaki pedinde ucudur vishay
+tvs anotlar serisi belge tipte pabucunu olursa okunan geriliminin
+gerekli kalemden kopya daha tonla vurgulu notuna gizli rengi shift
+eritir pensesiyle kovana lehimlenir okuma kayar girene
 """.split())
+# Düzeltme turu 2 (F10i-kontrol-2): son satır G07 lehim sırası, F1 aralık dışı okuma ve AU3 talimatının 7 yeni kelimesi (gözden
+# geçirildi: hepsi Türkçe harfi olmayan doğru yazım).
+# P10.7b2a: son üç satır K63 talimat metinlerinin (B3, B5a, B6a, K1, E3a, F1) 43 yeni kelimesi; gözden geçirildi: hepsi Türkçe harfi
+# olmayan doğru yazım ("Trig" / "Echo" HC-SR04 pin adı, "Vishay" üretici adı, "tvs" kablolar.json alan adı). Son satır app.js'in görünen dizgelerinin 10 kelimesi (kapsama yeni girdi; doğru yazım, "Shift"
+# klavye tuşu); "GLB" KISALTMA'da (dosya biçimi).
 # F10g (P10.5b, K56 / K57): "preslenir …" satırı G3 / H0c metinlerinin 4 yeni kelimesi (gözden geçirildi, hepsi Türkçe harfi olmayan
 # doğru yazım). P10.7b1: ondan sonraki altı satır elektrik metinlerinin (tek kablo kaynağına bağlanan K1, E3a, E4, K2, F1, F3, F5,
 # KABLO_AD, SEMA) 93 yeni kelimesi (gözden geçirildi: Türkçe harfi olmayan doğru yazımlar; "firmware" teknik terim, "Ahmet" / "Efe"
@@ -150,7 +163,41 @@ BAGLAM_PENCERE = 60
 ZORUNLU = [
     ("E3a", r"köprülenmez", "iki 5 V hattı köprülenmez"),
     ("E3a", r"Her iki 5 V çıkışına bir P6KE6V8A", "iki P6KE6V8A (Pi hattındaki modelde yok)"),
-    ("E3a", r"katot \(çizgili uç\) \+5 V", "TVS kutbu"),
+    # P10.7b2a: yön kayıttan ({yon.<tvs>}: kablolar.json tvs, Vishay veri sayfası "color band denotes cathode end"); "çizgili" → "bantlı"
+    ("E3a", r"katot \(bantlı uç\) \+5 V", "TVS kutbu"),
+    ("E3a", r"P6KE18A'yı kartın \+ ve − uçları arasına lehimle, katot \(bantlı uç\) \+12 V", "P6KE18A kutbu (kafa giriş kartı)"),
+    # düzeltme turu 1 (F10i-kontrol Ü6): kutup ve yön desende yer tutucudan (kayıt değişirse desen de değişir; ters yazım tutmaz)
+    ("B5a", r"kondansatörünü V\+ / GND barasına lehimle, yönü {yon.kondansator}", "dağıtım kartı C kondansatör yönü"),
+    ("B5a", r"SV3'ü .{0,200}bağla: {kutup.SV3}", "SV3 kutbu (XL4016 C → dağıtım kartı C)"),
+    ("B6a", r"her kartın iki 2200 .F kondansatörünü V\+ / GND barasına lehimle, yönü {yon.kondansator}",
+     "dağıtım kartı A / B kondansatör yönü"),
+    ("K1", r"SV2'yi dağıtım kartı B'nin V\+ / GND giriş klemensine \({kutup.SV1|SV2}\)", "SV1 / SV2 kutbu (XL4016 A / B → dağıtım kartı)"),
+    # düzeltme turu 2 (F10i-kontrol-2 §5 G07): kılıf çıkar → makaron → sık → lehim → makaron kovanın üstüne (sıra tek desende)
+    ("K1", r"halka pabucun PVC kılıfını çıkar.{0,260}?makaronu G07'nin teline geçir.{0,300}?Direncin öbür bacağını pabucun kovanına "
+           r"sık \(pabuç pensesiyle\), sonra kovana lehimle.{0,120}?Soğuyunca makaronu direncin ve kovanın üstüne çek",
+     "G07 direnci pabuç kovanında: kılıf çıkar, makaron, sık, lehimle, makaron (K63)"),
+    # düzeltme turu 1 (F10i-kontrol Ü1, Ü2, Ü3, A1, A2, A13)
+    ("B6a", r"PC817 modülünün çıkış besleme ucunu \(çıkış VCC\) ESP32'nin {uc.X01:PC817_çıkış_beslemesi:b} pinine bağla \(X01\): "
+            r"5 V'a bağlama", "X01: PC817 çıkış beslemesi ESP32 3V3'te, 5 V'a bağlanmaz"),
+    ("B6a", r"PCA9685'in V\+ klemensine ve kanal başlıklarının V\+ pinine tel takma", "P01 / P02: PCA9685 V+ teli takılmaz"),
+    ("B6a", r"3 telli hazır servo kablosu kullanırsan V\+ damarını iki ucundan kes, makaronla yalıt", "P01 / P02: 3 telli kabloda V+ kesilir"),
+    ("B6a", r"V\+ teli takılırsa üç dağıtım kartının V\+'ı, yani XL4016 A, B ve C'nin çıkışları birbirine paralel girer",
+     "P01 / P02: V+ telinin nedeni (dönüştürücüler paralel)"),
+    ("K1", r"PCA9685'in V\+ pinine tel takma; 3 telli hazır kablo kullanırsan V\+ damarını iki ucundan kes, makaronla yalıt",
+     "P03: PCA9685 V+ teli takılmaz, 3 telli kabloda V+ kesilir"),
+    ("K1", r"Bağlamadan önce modülün üstündeki IN2 \+ / IN2 − yazısını oku: ters bağlanan G22'de .{0,260}ters bağlıyken enerji verme",
+     "G22: kutup yazısı okunur, ters bağlıyken enerji verilmez"),
+    ("K1", r"lehimden önce makaronu G07'nin teline geçir", "G07: makaron lehimden önce geçirilir"),
+    ("K1", r"Gerginlik giderme: G07'yi direncin tel tarafında, ana anahtara giden G04'e kablo bağıyla tuttur", "G07: gerginlik giderme"),
+    ("K1", r"lehimden önce K2'nin pimlerini bul", "K2 pim yeri 12 AWG lehiminden önce bulunur"),
+    # düzeltme turu 2 (F10i-kontrol-2 §5 TVS): "sonu A" muğlaktı (…CA da A ile biter)
+    ("E3a", r"sonu yalnız A \(ör\. P6KE18A\) tek yönlüdür, renkli bandı katottur; sonu CA \(ör\. P6KE18CA\) çift yönlüdür, bandı yoktur",
+     "TVS: gövde baskısı (sonu yalnız A tek yönlü, sonu CA çift yönlü)"),
+    ("E3a", r"CA baskılı ya da bantsız TVS'i takma \(kablajda teyit\)", "TVS: CA baskılı ya da bantsız takılmaz"),
+    ("F1", r"çıkış saplamasına G04'ü \(sigorta kutusuna\) ve akü ölçüm telinin pabucunu \(G07", "G07 ana anahtarın çıkışında (K63)"),
+    # düzeltme turu 2 (F10i-kontrol-2 B16): alt adım 7'deki mantar talimatı (iş metnindeki ZORUNLU_ALAN F1 is_'te)
+    ("F1", r"iki acil stop ucunu mantarın NC kontağına bağla: A01'i NC girişine, A02'yi NC çıkışına",
+     "F1 alt adım: mantarın iki ucu ayrı (A01 NC girişi, A02 NC çıkışı)"),
     ("E3a", r"akım sınırlı tezgâh kaynağıyla", "SY8205 ölçümü akım sınırlı kaynakla"),
     ("E4", r"Touch VBUS", "Touch VBUS ölçümü"),
     ("E4", r"köprülenmez", "iki 5 V hattı köprülenmez"),
@@ -256,6 +303,25 @@ ZORUNLU_ALAN = [
     ("K1", "kontrol", r"K04'ün \(kafa ekranı Power USB\) üstündeki kesit yazısı okundu", "K1 teslim: K04 kesit yazısı"),
     ("K1", "kontrol", r"Teslimde \(KT3\): sigorta kutusunun yuvaları ortak giriş barasında mı", "K1 teslim: KT3 sigorta kutusu girişi"),
     ("F5", "kontrol", r"Göğüs ekranı ilk açılışta F6 {a.F6}'i attırmadı", "F5 kontrol: göğüs ekranı F6'yı attırmadı"),
+    # düzeltme turu 1 (F10i-kontrol Ü1, Ü2, Ü3, A1): süreklilik kontrolleri ve G07 ölçüm aralığı kontrol listesinde
+    ("B6a", "kontrol", r"çıkış VCC ile ESP32 {uc.X01:PC817_çıkış_beslemesi:b} pini arası öter, çıkış VCC ile çevre 5 V arası ötmez",
+     "B6a kontrol: X01 çıkış VCC 3V3'te, 5 V'ta değil"),
+    # düzeltme turu 2 (F10i-kontrol-2 §5 P01–P03): ölçü noktası kanal başlığının V+ pini (klemens ile ray arasında koruma olabilir)
+    ("B6a", "kontrol", r"PCA9685'in kanal başlığının V\+ pini ile dağıtım kartı A'nın ve B'nin V\+ barası arasında süreklilik yok",
+     "B6a kontrol: PCA9685 kanal başlığı V+ ile dağıtım kartı A / B V+ arası ötmez"),
+    ("K1", "kontrol", r"{uc.G22:−:a} ile yıldız barası arası öter, {uc.G22:+:b} ile yıldız barası arası ötmez", "K1 kontrol: G22 kutbu"),
+    ("K1", "kontrol", r"PCA9685'in kanal başlığının V\+ pini ile dağıtım kartı C'nin V\+ barası arasında süreklilik yok",
+     "K1 kontrol: PCA9685 kanal başlığı V+ ile dağıtım kartı C V+ arası ötmez (P03)"),
+    ("K1", "kontrol", r"direnç, iki bacağı ve pabuç kovanı makaronla tümüyle örtülü \(açıkta bacak yok\)", "K1 kontrol: G07 direnci örtülü"),
+    ("F1", "kontrol", r"bölücü oranı \({oran.aku_olcum}\) katıdır: akü {v.aku_aralik} iken bölücünün orta noktasında {v.aku_olcum} okunur",
+     "F1 kontrol: G07 ölçüm aralığı (bölücü oranı, kayıttan)"),
+    # düzeltme turu 2 (F10i-kontrol-2 B16): mantarın iki ucu ayrı ayrı (A01 NC girişine, A02 NC çıkışına) adımın iş metninde; alt
+    # adımdaki aynı talimat ZORUNLU'da ayrı desenle (biri bozulunca öbürü kurtarmasın). Tek pabuçta iki uç mantarı köprüler.
+    ("F1", "is_", r"A01'i \(F5 {a.F5} çıkışından gelen\) NC girişine, A02'yi \(acil stop düğümüne giden\) NC çıkışına",
+     "F1 iş: mantarın iki ucu ayrı (A01 NC girişi, A02 NC çıkışı)"),
+    # düzeltme turu 2 (F10i-kontrol-2 §5 G07): okuma aralık dışındaysa ne yapılacağı
+    ("F1", "kontrol", r"Okuma {v.aku_olcum} aralığının altında ya da üstündeyse: ana anahtarı kapat, aküyü XT60'tan ayır",
+     "F1 kontrol: G07 okuması aralık dışındaysa akü ayrılır"),
 ]
 # ZORUNLU_CUMLE: yön / sıra ifadesi öğesiyle aynı cümlede (cümle . ! ? ve satır sonuyla bölünür; ; bölmez). "öğe" geçen bir cümlede
 # "yön" de geçmeli; öğe hiç geçmezse de eksik sayılır. Yer "SEMA <ad>" ise o şemanın metninde aranır (yalnız kaynak modunda).
@@ -272,6 +338,20 @@ ZORUNLU_CUMLE = [
     ("F5", r"{gpio.ROLE_K1} = 1 \(röle K1\)", r"{ms.k1_sonra} sonra {gpio.ROLE_K2_ONSARJ} = 0", "F5 E9: K1'den sonra K2 bırakılır"),
     # açık işler turu (F10h-kontrol-2 B28): göğüs regülatörünün yeri şemada da açık karar
     ("SEMA 12 V", r"LM2577 \+ LM2596", r"regülatör yeri karar bekliyor, K52\)", "SEMA 12 V: göğüs regülatörü yeri karar bekliyor (K52)"),
+    # düzeltme turu 1 (F10i-kontrol A7, Ü1): iki uçlu kablonun iki ucu da aynı cümlede
+    ("K1", r"A06'nın \+ ucunu", r"IN1 \+ klemensine bağla; − ucunu modülün IN1 − klemensinden arayüz kartının GND pedine lehimle",
+     "K1 is_: A06'nın iki ucu (+ IN1 +, − IN1 − → GND)"),
+    ("K1", r"G22'nin kutbu", r"\+ damarını \(hat sigortasından gelen\) arayüz kartındaki PC817 modülünün {uc.G22:+:b} klemensine, − damarını "
+                          r"modülün {uc.G22:−:a} klemensinden yıldız barasına bağla", "K1 is_: G22'nin iki ucu ve kutbu"),
+    # düzeltme turu 2 (F10i-kontrol-2 B18): A06'nın + ucu kayıttaki düğümde (kablolar.json A06 + damarının a ucu); başka düğümde
+    # (ör. F5 girişi) PC817 #1 mantarı algılamaz, mantar bırakılınca röle komutsuz yeniden çekebilir
+    ("K1", r"A06'nın \+ ucunu", r"A06'nın \+ ucunu {parca.A06:+:a} noktasına, yani acil stop düğüm kartında bir klemensin kuyruğuna "
+                              r"\(kart altı\) lehimle", "K1 is_: A06'nın + ucu kayıttaki düğümde (acil stop algısı)"),
+    # düzeltme turu 2 (F10i-kontrol-2 B23): K2 pim okuması kayıttaki kontak uçlarından (bobin boşta giriş ↔ boş uç öter, giriş ↔
+    # çıkış ötmez); ters okuma G10'u yanlış pime götürür (ön şarj baypas edilir ya da hiç kapanmaz)
+    ("K1", r"lehimden önce K2'nin pimlerini bul", r"\(bobin boşta\) {kontak.K2:giris} ile {kontak.K2:bos} arası öter, "
+                                                  r"{kontak.K2:giris} ile {kontak.K2:cikis} arası ötmez",
+     "K1 is_: K2 pim okuması kayıttaki kontak uçlarıyla (COM ↔ NC öter, COM ↔ NO ötmez)"),
 ]
 _CUMLE_BOL = r"(?<=[.!?])\s+|\n"
 _CUMLE_GENIS = r"(?<=[!?])\s+|(?<=\D\.)\s+|\n"                      # ; ve sıra sayısından ("6. yuva") sonra bölmez
@@ -356,9 +436,20 @@ _PENCERE = r"(?:(?!" + _SINIR + r")[^.;!?\n]){0,120}?"
 _KOPRU_NESNE = (r"\b(?:mantar\w*|acil\s+stop\w*|NC|ana\s+anahtar\w*|sigorta\w*|röle\w*|kontak\w*|\d+\s*V|"
                 r"(?:artı|eksi)(?:sı|si|sını|sini|yı|yi|ya|ye|nın|nin|ları|leri|lar|ler)?)"
                 r"(?![\w])[^.;!?\n]{0,60}?")
+# P10.7b2a (F10h-kontrol-4 §3.5): çoğul ad muafiyeti üç gerçek talimatı kaçırıyordu ("mantarın iki ucunu kısa bir telle köprüler",
+# "ana anahtarın iki ucunu baradaki köprülere bağla", "ana anahtarın uçlarına köprüler takılır"; daraltmadan önce de kaçan "mantarın iki
+# ucu arasına bir köprü takılır"). Artık köprü sözcüğünün her biçimi (ad, çoğul, fiil) aynı yan cümlede (virgül, iki nokta, cümle sonu
+# kesmeden) bir anahtarlama / koruma nesnesiyle (_KOPRU_NESNE_AD) geçerse bulgu; nesnesiz çoğul ad ("Bu adımda takılan köprüler")
+# affedilir. Fiil biçimi (köprüle-, köprülen-) nesnesiz de bulgu (eski kural).
+_KOPRU_NESNE_AD = (r"\b(?:mantar\w*|acil\s+stop\w*|NC|ana\s+anahtar\w*|sigorta\w*|röle\w*|kontak\w*|"
+                   r"(?:artı|eksi)(?:sı|si|sını|sini|yı|yi|ya|ye|nın|nin|ları|leri|lar|ler)?)(?![\w])")
+_YAN_PENCERE = r"[^.;!?\n,:→()]{0,60}?"                          # yan cümle: virgül, iki nokta, ok ve parantez de keser
+_KOPRU_SOZ = r"\bköprü\w*(?!\w)(?!\s+(?:yoksa|yok|değil)\b)"         # "köprü yoksa röle çekmez" (Ö4 açıklaması) talimat değil
 YASAK = [
     # düzeltme turu 2: çoğul ad "köprüler / köprüleri / köprülerin …" fiil değil (K1 madde 8 "Bu adımda takılan köprüler")
     ("köprüleme talimatı", r"\bköprüle(?!r(?:i|in|e|de|den|le)?\b)\w*",r"köprüle(?:n)?me(?:z|di|meli|yin|yiniz|den)?|köprülenemez"),
+    ("köprüleme talimatı (nesneyle)", _KOPRU_NESNE_AD + _YAN_PENCERE + _KOPRU_SOZ + "|" + _KOPRU_SOZ + _YAN_PENCERE + _KOPRU_NESNE_AD,
+     r"köprüle(?:n)?me(?:z|di|meli|yin|yiniz|den)?|köprülenemez"),
     ("köprü teli / jumper", r"\b(?:köprü|jumper|atlama)\s*(?:kablo|tel)\w*", r"$^"),
     ("köprüleme (birleştir)", _KOPRU_NESNE + r"\bbirleştir\w*", _OLUMSUZ_GENEL),
     ("köprüleme (birbirine bağla)", _KOPRU_NESNE + r"\bbirbirine\s+(?:bağla|değdir|lehimle|tuttur|kıskaçla)\w*", _OLUMSUZ_GENEL),
@@ -378,6 +469,25 @@ YASAK = [
     ("devre dışı bırakma", r"\bdevre\s*dışı\s*bırak\w*", _OLUMSUZ_GENEL),
     ("kısa devre talimatı", r"\bkısa\s*devre\s*(?:et|yap|oluştur|kur)\w*", _OLUMSUZ_GENEL),
     ("sigorta / mantar yerine tel", r"\byerine\s+(?:bir\s+)?(?:tel|kablo|köprü|jumper)\w*(?:\s+\w+)?", _OLUMSUZ_GENEL),
+    # düzeltme turu 1 (F10i-kontrol Ü3): PCA9685 V+ rayına tel (XL4016 A / B / C çıkışları paralel olur; elektrik.md:226)
+    ("PCA9685 V+ bağlama", r"\bPCA9685\S*\s+V\+\s*(?:klemens|pin|uc|ray)\w*[^.;!?\n]{0,60}?\b" + _FIIL, _FIIL_OLUMSUZ),
+    # düzeltme turu 1 (F10i-kontrol Ü2): PC817 çıkış beslemesi 5 V'a (ESP32 girişleri en çok 3,6 V; pin haritası D3)
+    ("PC817 çıkış beslemesi 5 V", r"\b(?:PC817|çıkış\s+(?:VCC|besleme))\S*[^.;!?\n]{0,120}?\b5\s*V['’](?:a|ya|e|ye)\s+" + _FIIL, _FIIL_OLUMSUZ),
+    # düzeltme turu 1 (F10i-kontrol Ü5): ana hat K1'in dinlenmede kapalı ucuna (87a) ya da K2'nin NC'sine (acil stopta bara enerjili kalır)
+    ("K1 87a ucuna bağlama", r"\b87a(?:['’]\w+)?\b(?!\s*\)?\s*boş)[^.;!?\n]{0,60}?\b" + _FIIL, _FIIL_OLUMSUZ),
+    ("ana hat NC ucuna", r"\bG(?:08|09|10|11)\b(?:['’]\w+)?[^.;!?\n]{0,80}?\bNC\b(?:['’]\w+)?(?!\s*\)?\s*boş)[^.;!?\n]{0,30}?\b" + _FIIL,
+     _FIIL_OLUMSUZ),
+    # düzeltme turu 1 (F10i-kontrol A5): mantarın / ana anahtarın iki ucu aynı vidada (kontak kısa devre, köprüleme)
+    # düzeltme turu 2 (F10i-kontrol-2 B16): "aynı pabuca" ("pabuç\w*" ç ile "pabuca"yı tutmuyordu), "tek / ortak pabuç"
+    ("mantar / ana anahtar uçları aynı vidada",
+     r"\b(?:mantar\w*|ana\s+anahtar\w*)(?:\s+\w+){0,3}?\s+(?:uç(?:lar|ları)\w*|iki\s+uc\w*|giriş\w*\s+ve\s+çıkış\w*)[^.;!?\n]{0,40}?"
+     r"\b(?:aynı|tek|ortak)\s+(?:vida|klemens|saplama|pabu[çc])\w*[^.;!?\n]{0,30}?\b" + _FIIL +
+     r"|\b(?:aynı|tek|ortak)\s+(?:vida|klemens|saplama|pabu[çc])\w*[^.;!?\n]{0,30}?\b(?:mantar\w*|ana\s+anahtar\w*)(?:\s+\w+){0,3}?\s+"
+     r"(?:uç(?:lar|ları)\w*|iki\s+uc\w*|giriş\w*\s+ve\s+çıkış\w*)[^.;!?\n]{0,30}?\b" + _FIIL, _FIIL_OLUMSUZ),
+    # düzeltme turu 2 (F10i-kontrol-2 B16): mantarın iki teli (A01, A02) tek pabuçta / vidada / klemenste: mantar köprülenir
+    ("acil stop telleri tek uçta",
+     r"\bA0[12]\b[^.;!?\n]{0,40}?\bA0[12]\b[^.;!?\n]{0,30}?\b(?:aynı|tek|ortak|bir)\s+(?:vida|klemens|saplama|pabu[çc]|uç|uca|kontak)"
+     r"\w*[^.;!?\n]{0,30}?\b" + _FIIL, _FIIL_OLUMSUZ),
 ]
 OLUMSUZLAMA = r"\b(?:asla|hiçbir zaman|hiçbir şekilde|yasak\w*|gerekmez|gerek yok|değil|değildir)(?!\w)"
 OLUMSUZ_PENCERE = 40
@@ -871,6 +981,147 @@ def arayuz_metinleri(dosyalar=ARAYUZ_DOSYALARI):
     return out
 
 
+# P10.7b2a (F10h-kontrol-4 K9 / V4): ASCII sınaması app.js / yazdir.html sabit metinlerini ve kol şemalarının lejant alanını görmüyordu.
+# Kod sözcüklerini (sınıf adı, öznitelik, değişken) ayıklamanın temiz yolu: JS dizgelerini belirteçle ayır (yorum ve düzenli ifade
+# sabiti atlanır, şablon dizgesinde ${…} boşluk), HTML etiketini / özniteliğini, dosya yolunu ve &…; varlığını sil; kalan dizgede boşluk
+# yoksa ya da # . [ ile başlıyorsa (seçici) atla; kullanıcıya görünen metin sayılan dizge: Türkçe harf taşıyan ya da en az iki sözcüğünden
+# biri Türkçe sözlükte (ASCII_TAMAM / TR) olan. HTML'de etiket dışı metin (yorum, script ve style dışında) da girer. Kol lejantı:
+# rehber_kol_kablo.py'nin LEJANT sözlüğü ve lejant= dizgeleri (ast ile; FreeCAD istemez). Bilinen sınır: hiç Türkçe harfi ve hiç
+# bilinen Türkçe sözcüğü olmayan dizge ("parca secili") görünen metin sayılmaz; sınıf adı / seçici / olay adı alan çağrının dizgesi
+# (_KOD_DIZGE_ONU) de taranmaz.
+ARAYUZ_GORUNEN = [os.path.join(ROBOT, "rehber", "app.js"), os.path.join(ROBOT, "rehber", "yazdir.html")]
+KOL_KABLO = os.path.join(HERE, "rehber_kol_kablo.py")
+
+
+def js_dizgeler(s):
+    """JS kaynağındaki dize sabitleri: [(satır, metin, önceki 40 karakter)]. Yorumu ve düzenli ifade sabitini atlar; şablon dizgesinde
+    ${…} boşluk olur."""
+    out, i, n, onceki = [], 0, len(s), ""
+    while i < n:
+        c = s[i]
+        if s.startswith("//", i):
+            j = s.find("\n", i)
+            i = n if j < 0 else j
+            continue
+        if s.startswith("/*", i):
+            j = s.find("*/", i + 2)
+            i = n if j < 0 else j + 2
+            continue
+        if c in "\"'`":
+            j, buf, bas = i + 1, [], i
+            while j < n:
+                d = s[j]
+                if d == "\\" and j + 1 < n:
+                    buf.append(s[j + 1])
+                    j += 2
+                    continue
+                if c == "`" and s.startswith("${", j):
+                    k, derin = j + 2, 1
+                    while k < n and derin:
+                        derin += {"{": 1, "}": -1}.get(s[k], 0)
+                        k += 1
+                    buf.append(" ")
+                    j = k
+                    continue
+                if d == c or (d == "\n" and c != "`"):
+                    break
+                buf.append(d)
+                j += 1
+            out.append((s.count("\n", 0, bas) + 1, "".join(buf), s[max(0, bas - 40):bas]))
+            i, onceki = j + 1, "x"
+            continue
+        if c == "/" and onceki in ("", "(", ",", "=", ":", "[", "!", "&", "|", "?", "{", "}", ";", "+", "-", "return"):
+            j, sinif = i + 1, False                                # düzenli ifade sabiti
+            while j < n and s[j] != "\n":
+                if s[j] == "\\":
+                    j += 2
+                    continue
+                if s[j] == "[":
+                    sinif = True
+                elif s[j] == "]":
+                    sinif = False
+                elif s[j] == "/" and not sinif:
+                    break
+                j += 1
+            i, onceki = j + 1, "x"
+            continue
+        if c.isspace():
+            i += 1
+            continue
+        m = re.match(r"[A-Za-z_$][\w$]*", s[i:i + 40])
+        if m:
+            onceki = "return" if m.group(0) in ("return", "typeof", "case") else "x"
+            i += len(m.group(0))
+            continue
+        onceki = c if c in "(,=:[!&|?{};+-" else "x"
+        i += 1
+    return out
+
+
+# Kod dizgesi: sınıf adı, seçici, kimlik, öznitelik adı ve olay adı alan çağrıların / atamaların dizgesi (görünmez)
+_KOD_DIZGE_ONU = (r"(?:className\s*\+?=|classList\.\w+\(|querySelector(?:All)?\(|getElementById\(|closest\(|matches\(|"
+                  r"(?:set|get|has|remove)Attribute\(|addEventListener\(|createElement\(|(?<![\w.])(?:q|qa|\$)\()\s*$")
+
+
+def _gorunen_dizge(m):
+    """Dizgeden görünmeyen parçaları sil: HTML etiketi / özniteliği (parçalı dizgede de), dosya yolu, &…; varlığı."""
+    m = re.sub(r"<[^<>]*>", " ", m)
+    m = re.sub(r"[\w-]+=\"[^\"]*\"?|[\w-]+='[^']*'?", " ", m)
+    m = re.sub(r"^[\w\s\"'=-]*>|<\w[^>]*$", " ", m)
+    m = re.sub(r"&\w+;|\S*[/\\]\S*|\b[\w-]+\.(?:js|json|png|html|py|glb|css|md)\b", " ", m)
+    return m.strip()
+
+
+def _gorunen_mu(m):
+    if not re.search(r"\s", m) or re.match(r"^[#.\[]", m):
+        return False
+    if re.search(r"[çğıöşüâîûÇĞİÖŞÜÂÎÛ]", m):
+        return True
+    S = _sozluk_ascii()
+    w = [x.lower() for x in re.findall(r"[A-Za-z]{3,}", m)]
+    return len(w) >= 2 and any(x in ASCII_TAMAM or x in S for x in w)
+
+
+def gorunen_dizgeler(ad, s):
+    """Bir app.js / yazdir.html kaynağının kullanıcıya görünen dizgeleri: [(yer, metin)]."""
+    if ad.endswith(".html"):
+        # satır numarası korunsun: script dışı yalnız satır sonlarına iner
+        js = re.sub(r"(?s)^.*?<script[^>]*>|</script>.*?(?:<script[^>]*>|$)", lambda t: "\n" * t.group(0).count("\n"), s)
+        d = js_dizgeler(js)
+        govde = re.sub(r"(?s)<!--.*?-->|<script[^>]*>.*?</script>|<style[^>]*>.*?</style>", lambda t: "\n" * t.group(0).count("\n"), s)
+        d += [(govde.count("\n", 0, t.start()) + 1, t.group(1), "") for t in re.finditer(r">([^<>]+)<", govde)]
+    else:
+        d = js_dizgeler(s)
+    return [("%s satır %d" % (ad, l), g) for l, m, on in d if not re.search(_KOD_DIZGE_ONU, on)
+            for g in [_gorunen_dizge(m)] if _gorunen_mu(g)]
+
+
+def kol_lejantlari(kaynak):
+    """rehber_kol_kablo.py kaynağındaki lejant dizgeleri (LEJANT sözlüğü, lejant= argümanları): [(yer, metin)]."""
+    out = []
+    for n in ast.walk(ast.parse(kaynak)):
+        if isinstance(n, ast.Assign) and any(isinstance(t, ast.Name) and t.id == "LEJANT" for t in n.targets) \
+                and isinstance(n.value, ast.Call):
+            out += [("rehber_kol_kablo LEJANT %s" % k.arg, k.value.value) for k in n.value.keywords
+                    if isinstance(k.value, ast.Constant) and isinstance(k.value.value, str)]
+        elif isinstance(n, ast.keyword) and n.arg == "lejant":
+            v = n.value.left if isinstance(n.value, ast.BinOp) else n.value
+            if isinstance(v, ast.Constant) and isinstance(v.value, str):
+                out.append(("rehber_kol_kablo satır %d lejant" % n.value.lineno, v.value))
+    return out
+
+
+def arayuz_gorunen_metinler(dosyalar=ARAYUZ_GORUNEN, kol=KOL_KABLO):
+    """ASCII sınaması için kullanıcıya görünen arayüz metinleri ve kol lejantları: [(yer, metin)]."""
+    out = []
+    for yol in dosyalar:
+        if os.path.exists(yol):
+            out += gorunen_dizgeler(os.path.basename(yol), open(yol, encoding="utf-8").read())
+    if os.path.exists(kol):
+        out += kol_lejantlari(open(kol, encoding="utf-8").read())
+    return out
+
+
 # Çıplak kritik sayı (P10.7b1 düzeltme turu 1, F10h-kontrol §2-1): rehber_metin'in ham metninde yer tutucudan gelmeyen GPIO numarası,
 # sigorta bağlamında akım, kesit (AWG), röle sürücüsü / ön şarj bağlamında direnç, ön şarj / röle bağlamında süre, sigorta yuvası
 # sırası ve yer tutucunun yanına elle yazılmış bıçak tipi. Bağlam kelimesi sayının 40 karakter önünde ya da 20 karakter ardında,
@@ -883,7 +1134,9 @@ _SAYI_SOZ = (r"(?:sıfır|bir|iki|üç|dört|beş|altı|yedi|sekiz|dokuz|on|yirm
              r"buçuk|yarım)")
 _SOZ_DEGER = r"\b" + _SAYI_SOZ + r"(?: " + _SAYI_SOZ + r")* "
 _SIGORTA_BAGLAM = r"sigorta|\bf[1-6]\b|\bmini\b|standart|bıçak|yuva|koruma"
-_DIRENC_BAGLAM = r"bc337|sürücü|taban|\bseri\b|ön şarj"
+_DIRENC_BAGLAM = r"bc337|sürücü|taban|\bseri\b|ön şarj|akü"          # düzeltme turu 1 (F10i-kontrol A4): akü ölçüm direnci
+# düzeltme turu 1 (F10i-kontrol A4): akü ölçümü bağlamında gerilim (F1 G07 ölçümü; değerler {oran.…} / {v.…} yer tutucusundan)
+_GERILIM_BAGLAM = r"akü ölçüm|bölücü oran|bölücünün orta|bölücüsünün orta"
 CIPLAK_KURAL = [
     ("GPIO", r"gpio ?\d+", None),
     ("sigorta akımı", r"(?<![\w{.,])\d+(?:[.,]\d+)? ?[mk]?a\b(?!['’]?(?:wg))", _SIGORTA_BAGLAM),
@@ -896,9 +1149,16 @@ CIPLAK_KURAL = [
     ("yuva", r"\b\d\. yuva", r"\bf[1-6]\b"),
     ("saplama sırası", r"\(\d\.\) saplama|\b\d\. saplama", None),          # açık işler turu (B13): bara saplamasının sırası
     ("bıçak tipi", r"\{a\.[^}]+\}\s*\(?(?:mini|standart)\b", None),
+    ("gerilim (akü ölçümü)", r"(?<![\w{.,])\d+(?:[.,]\d+)?(?: ?[–-] ?\d+(?:[.,]\d+)?)? ?m?v\b", _GERILIM_BAGLAM),
 ]
 # Yük bağlamı muafiyeti (açık iş 5): yalnız aynı yan cümlede yük / çeker / tüketim / varsayım sözcüğü olan VE aynı yan cümlede sigorta
 # bağlamı sözcüğü (sigorta, F<n>, koruma, bıçak, mini, standart) olmayan sayı. "sürekli", "anma", "ölç", "sınır" muafiyet değil.
+# Düzeltme turu 2 (F10i-kontrol-2 A4 / R5): bağlam sözcüğü sayıdan önceki CIPLAK_PENCERE karakterde aranır (cümle içinde). 40 karakter
+# K1'deki "… akü ölçüm bölücüsünün orta noktası arasını ölç: 100 kΩ'a yakın okunur" cümlesinde "akü"yü görmüyordu (≈ 60 karakter önde).
+# Genişleme direnç ve akü ölçümü gerilimi kurallarında; öbürleri 40'ta kalır (süre kuralı 120'de F5 notundaki dolma hesabını
+# "0,2–0,5 s", ön şarj değeri değil, "Bekleme" sözcüğünden tutuyordu).
+CIPLAK_PENCERE = {"direnç": 120, "direnç (sözle)": 120, "gerilim (akü ölçümü)": 120}
+CIPLAK_PENCERE_VARSAYILAN = 40
 CIPLAK_YUK = r"yük\w*|\bçek(?:er|iyor|tiği)\b|tüketim\w*|varsayı\w*"
 CIPLAK_YUK_DEGIL = r"sigorta|\bf[1-6]\b|koruma|bıçak|\bmini\b|standart"
 CIPLAK_MUAF_SAYI = 1                                                # açık iş 9: muaf listesinin uzunluğu sabit (bozma denemesi sınar)
@@ -925,7 +1185,8 @@ def ciplak_sayilar(metinler):
             k = _RK.tr_kucuk(c)
             for tur, desen, baglam in CIPLAK_KURAL:
                 for t in re.finditer(desen, k):
-                    on, ar = k[max(0, t.start() - 40):t.start()], k[t.end():t.end() + 20]
+                    p = CIPLAK_PENCERE.get(tur, CIPLAK_PENCERE_VARSAYILAN)
+                    on, ar = k[max(0, t.start() - p):t.start()], k[t.end():t.end() + 20]
                     if baglam and not re.search(baglam, on + " " + t.group(0) + " " + ar):
                         continue
                     if tur.startswith("sigorta akımı"):
@@ -1006,14 +1267,87 @@ TAMLIK_MUAF = [
 ]
 
 
+# P10.7b2a (K63, F10h-kontrol-4 §5): "rehberde anılıyor" yetmez. Ölçüt TALİMAT MADDESİ: adımın iş metni (is_) ve alt adımların
+# iş metni; teslim notu, kontrol / kablo / not listesi, şema ve KABLO_AD sayılmaz. Kablo: kimliği açıkça (aralık "G01–G04"
+# sayılmaz) ve aynı cümlede bir bağlama işaretiyle (TALIMAT_FIIL: ok, bağla, tak, lehimle, vidala, gider / gelir …) geçmeli.
+# Koruyucu: sigorta {a.<k>}, direnç {ohm.<TAMLIK_DIRENC[k]>} talimatta; cihazın kendi koruması (BMS, çevirici, sürücü) korunan
+# kablolarının hepsi talimattaysa geçer. Köprü ({kopru.<b>}, {kopru_adet.<b>}), saplama ({saplama.<b>}, yıldız {saplama.<k>},
+# anahtarlı bara {bsaplama.<k>}), TVS ve kondansatör yönü ({yon.<k>}), kontak uçları ({kontak.K1|K2}), koruyucu yeri
+# ({yer.<k>}) de talimatta. Bilinçli dışarıda bırakılan kablo TAMLIK_MUAF'ta (tür "kablo"; onay kaydına dahil).
+# Düzeltme turu 1 (F10i-kontrol Ü4): eski kalıp ("→", tak\w*, bağla\w*, gider, gelir …) ileri tarihli ve olumsuz cümleleri de talimat
+# sayıyordu ("N01, N02 K2'de takılır" geçiyordu). Artık: (1) cümlede EMİR KİPİNDE bir bağlama fiili (TALIMAT_FIIL: tam sözcük "bağla",
+# "tak", "lehimle" …; "takılır", "takma", "bağlanacak" değil) olmalı; (2) kimliğin kendi yan cümlesinde (paranteze girmeden virgül,
+# noktalı virgül, iki nokta ile bölünür) emir dışı bir fiil biçimi (TALIMAT_ERTELE: edilgen / geniş zaman / gelecek / olumsuz:
+# "takılır", "bağlanır", "takma", "bağlama", "gider", "takılacak" …) varsa o kimlik sayılmaz; (3) kablo, kaydının rehber alanında
+# "bugün" yazan adımlardan birinin talimatında geçmeli (kayıtta "bugün" adımı yoksa herhangi bir adım).
+TALIMAT_FIIL = (r"(?<!\w)(?:bağla|tak|lehimle|vidala|geçir|sık|bağlayın|takın|lehimleyin|vidalayın|geçirin|sıkın)(?!\w)")
+TALIMAT_ERTELE = (r"(?<!\w)(?!(?:bağla|tak|lehimle|vidala|geçir|sık|bağlayın|takın|lehimleyin|vidalayın|geçirin|sıkın)(?!\w))"
+                  r"(?!bağlantı)(?:bağla|tak|lehimle|vidala|geçir)\w+|(?<!\w)(?:gider|gelir|iner|girer|çıkar|gidecek|gelecek)(?!\w)")
+# Düzeltme turu 2 (F10i-kontrol-2 §3): ok kuralı yalnız iki ucu adlandıran "A → B" bağlama şemasını sayar (TALIMAT_OK: okun iki
+# yanında ad); liste / sayım cümlesi ("Boyun demeti, 5 kablo (K14 a): …") ok taşısa da talimat değil (TALIMAT_LISTE). AU3 ve H02
+# yalnız böyle bir liste cümlesiyle geçiyordu. Emir kipindeki fiil (TALIMAT_FIIL) liste cümlesinde de talimattır.
+TALIMAT_OK = r"[\w)'’+−]\s*→\s*[\w(+−]"
+TALIMAT_LISTE = r"(?<!\w)\d+\s+(?:kablo|tel|hat|uç)\w*(?!\w)"
+TAMLIK_DIRENC = {"R-aku-olcum": "aku_olcum"}
+_KIMLIK_ACIK = re.compile(r"(?<![\w{.])([A-Z]{1,2}\d{1,2})(?![\w}])")
+
+
+def talimat_metinleri(ham):
+    """ham [(yer, metin)] içinden talimat maddeleri: adımın is_ alanı ve alt adımların is_ alanı."""
+    return [(y, t) for y, t in ham if y.startswith("kaynak ") and y.endswith(" is_")]
+
+
+def _yan_cumleler(c):
+    """Cümleyi parantez dışındaki virgül, noktalı virgül ve iki noktadan böl (parantez içi kimlik listesi bölünmez)."""
+    out, bas, der = [], 0, 0
+    for i, ch in enumerate(c):
+        if ch == "(":
+            der += 1
+        elif ch == ")":
+            der = max(0, der - 1)
+        elif ch in ",;:" and der == 0 and not (ch == "," and i + 1 < len(c) and c[i + 1].isdigit()):
+            out.append(c[bas:i])
+            bas = i + 1
+    out.append(c[bas:])
+    return out
+
+
+def talimat_kablolari(ham, kimlikler, adimlar=None):
+    """Talimat maddesinde açık kimliği ve emir kipinde bağlama fiiliyle geçen kablolar: {kimlik: ilk yer}. adimlar: {kimlik: {adım
+    kodu}} verilirse kablo yalnız o adımların talimatında sayılır."""
+    out = {}
+    for y, t in talimat_metinleri(ham):
+        kod = y.split()[1]
+        for c in re.split(_CUMLE_GENIS, _RDG.YER_TUTUCU.sub(" ", t or "")):
+            # ok ("A → B") bağlama şemasıdır: yalnız cümlede emir dışı hiçbir fiil biçimi yokken talimat sayılır; düzeltme turu 2:
+            # okun iki yanı adlandırılmış olmalı ve cümle liste / sayım cümlesi olmamalı
+            ok = (re.search(TALIMAT_OK, c) and not re.search(TALIMAT_ERTELE, c, re.I) and not re.search(TALIMAT_LISTE, c, re.I))
+            if not (re.search(TALIMAT_FIIL, c, re.I) or ok):
+                continue
+            for yc in _yan_cumleler(c):
+                if re.search(TALIMAT_ERTELE, yc, re.I):
+                    continue
+                for k in _KIMLIK_ACIK.findall(yc):
+                    if k in kimlikler and (adimlar is None or not adimlar.get(k) or kod in adimlar[k]):
+                        out.setdefault(k, y)
+    return out
+
+
+def bugun_adimlari(T):
+    """Kablo → kaydın rehber alanında "bugün" yazan adım kodları."""
+    return {r["kimlik"]: {x["kod"] for x in (r.get("rehber") or []) if x.get("tur") == "bugün"} for r in T["kablolar"]}
+
+
 def tamlik_denetle(ham=None, T=None, PH=None):
     """Kayıt → rehber tamlığı. ham: [(yer, metin)] yer tutucular çözülmeden (varsayılan kaynak_metinler(ham=True)).
-    Doner dict(hata=[str], tarandi={tür: n}, muaf=[str], kablo_toplam, kablo_yok=[kimlik])."""
+    Doner dict(hata=[str], tarandi={tür: n}, muaf=[str], kablo_toplam, kablo_yok=[kimlik], kablo_talimat=n)."""
     ham = ham if ham is not None else kaynak_metinler(ham=True)
     D = _RDG.degerler() if (T is None and PH is None) else _RDG.Degerler(T, PH)
     T, PH = D.T, D.PH
     mh = "\n".join(t or "" for y, t in ham)
-    yt = {(m.group(1), u) for m in _RDG.YER_TUTUCU.finditer(mh) for u in m.group(2).split("|")}
+    yt_her = {(m.group(1), u) for m in _RDG.YER_TUTUCU.finditer(mh) for u in m.group(2).split("|")}
+    th = "\n".join(t or "" for y, t in talimat_metinleri(ham))
+    yt = {(m.group(1), u) for m in _RDG.YER_TUTUCU.finditer(th) for u in m.group(2).split("|")}   # P10.7b2a: yalnız talimat
     coz = _RK.tr_kucuk(D.coz(mh))
     kim = D.cumle_kimlikleri(_RDG.YER_TUTUCU.sub(" ", mh))
     BP = T["klemens_turleri"]["bara-pabuc"]
@@ -1035,9 +1369,29 @@ def tamlik_denetle(ham=None, T=None, PH=None):
         elif not var:
             hata.append("%s %s: %s" % (tur, ad, neden))
 
+    kimlikler = {r["kimlik"] for r in T["kablolar"]}
+    tk = talimat_kablolari(ham, kimlikler, bugun_adimlari(T))
     for k, v in sorted(T["koruyucular"].items()):
         if v.get("tur") == "sigorta":
-            oge("koruyucu", k, ("a", k) in yt, "kayıtta var, rehberde {a.%s} yer tutucusuyla geçmiyor" % k)
+            oge("koruyucu", k, ("a", k) in yt, "kayıtta var, talimat maddesinde {a.%s} yer tutucusuyla geçmiyor" % k)
+        elif v.get("tur") == "direnc":
+            a = TAMLIK_DIRENC.get(k)
+            oge("koruyucu", k, a is not None and ("ohm", a) in yt,
+                "kayıtta direnç var, talimat maddesinde %s yok" % ("{ohm.%s}" % a if a else "eşleme (TAMLIK_DIRENC)"))
+        else:
+            kor = sorted(r["kimlik"] for r in T["kablolar"] if r.get("koruma") == k or k in (r.get("besleme_zinciri") or []))
+            eks = [x for x in kor if x not in tk]
+            oge("koruyucu", k, not eks, "cihaz koruması (%s); koruduğu kablolar talimatta değil: %s" % (v.get("tur"), ", ".join(eks)))
+        if v.get("yer"):
+            oge("koruyucu yeri", k, ("yer", k) in yt, "kayıtta yeri yazılı, talimat maddesinde {yer.%s} yok" % k)
+    for k, v in sorted((T.get("tvs") or {}).items()):
+        oge("kutuplu parça", k, ("yon", k) in yt, "TVS yönü kayıtta, talimat maddesinde {yon.%s} yok" % k)
+    if T.get("kondansatorler"):
+        oge("kutuplu parça", "kondansatör", ("yon", "kondansator") in yt, "kondansatör yönü kayıtta, talimat maddesinde {yon.kondansator} yok")
+    for k, v in sorted(T["anahtarlar"].items()):
+        if isinstance(v.get("uclar"), dict):
+            a = k.split("-")[0]
+            oge("kontak ucu", k, ("kontak", a) in yt, "kontak uçları kayıtta, talimat maddesinde {kontak.%s} yok" % a)
     ters_k = {v: k for k, v in _RDG.KOPRU_BARA.items()}
     for b, v in sorted((BP.get("kopruler") or {}).items()):
         if not isinstance(v, dict):
@@ -1049,11 +1403,18 @@ def tamlik_denetle(ham=None, T=None, PH=None):
         eks = [t for t in ("kopru", "kopru_adet") if (t, a) not in yt]
         oge("köprü", b, not eks, "kayıtta %d × %d AWG %s köprü var, rehberde %s yok" % (
             v.get("adet") or 0, v.get("awg") or 0, v.get("renk") or "", " / ".join("{%s.%s}" % (t, a) for t in eks)))
+        st = "bsaplama" if a == "bara" else "saplama"              # P10.7b2a: anahtarlı bara {bsaplama.<k>}, yıldız {saplama.<k>}
         for n, lst in sorted((v.get("yerlesim") or {}).items()):
             for x in lst:
                 kk = x.split("/")[0]
-                oge("saplama düğümü", "%s saplama %s: %s" % (b, n, kk), ("saplama", kk) in yt,
-                    "yerleşimi kayıtlı, rehberde {saplama.%s} yok" % kk)
+                oge("saplama düğümü", "%s saplama %s: %s" % (b, n, kk), (st, kk) in yt,
+                    "yerleşimi kayıtlı, talimat maddesinde {%s.%s} yok" % (st, kk))
+        if v.get("besleme_saplamasi") is not None:                 # besleme saplaması: yer tutucusu ya da o saplamadaki bir kablonun yeri
+            bs = [x.split("/")[0] for x in (v.get("yerlesim") or {}).get(str(v["besleme_saplamasi"]), [])]
+            oge("saplama düğümü", "%s besleme saplaması" % b,
+                (st, "besleme") in yt or ("saplama", "besleme") in yt or any((st, kk) in yt for kk in bs),
+                "besleme saplaması (%s) kayıtlı, talimat maddesinde {%s.besleme} ya da oradaki kablonun saplaması yok" % (
+                    v["besleme_saplamasi"], st))
     ters_s = {v: k for k, v in _RDG.SAPLAMA_DUGUM.items()}
     for b in sorted(BP.get("dugumler") or {}):
         a = ters_s.get(b)
@@ -1072,11 +1433,14 @@ def tamlik_denetle(ham=None, T=None, PH=None):
     for r in T["kablolar"]:
         if (r.get("devre") or "").startswith("acil stop"):
             oge("acil stop zinciri", r["kimlik"], r["kimlik"] in kim, "acil stop kablosu, rehberde kimliğiyle geçmiyor")
+        oge("kablo", r["kimlik"], r["kimlik"] in tk,                # P10.7b2a: her kablo bir talimat maddesinde, kimliği ve bağlama işaretiyle
+            "talimat maddesinde (is_ / alt adım is_) kimliği ve bağlama işaretiyle aynı cümlede geçmiyor (%s)" % (r.get("ad") or "")[:60])
     for i, (t, d, g) in enumerate(TAMLIK_MUAF):
         if not muaf_tuttu[i]:
             hata.append("TAMLIK_MUAF %s %s: hiçbir öğeyi tutmuyor (listeden çıkar)" % (t, d))
-    yok = [r["kimlik"] for r in T["kablolar"] if r["kimlik"] not in kim]
-    return dict(hata=hata, tarandi=dict(tarandi), muaf=muaf_kullanilan, kablo_toplam=len(T["kablolar"]), kablo_yok=yok)
+    yok = [r["kimlik"] for r in T["kablolar"] if r["kimlik"] not in tk]
+    return dict(hata=hata, tarandi=dict(tarandi), muaf=muaf_kullanilan, kablo_toplam=len(T["kablolar"]), kablo_yok=yok,
+                kablo_talimat=len(tk), kablo_anilan=sum(1 for r in T["kablolar"] if r["kimlik"] in kim))
 
 
 # ------------------------------------------------------------------ onaylı kritik metin kaydı (açık işler turu, F10h-kontrol-2 §3.1)
@@ -1142,7 +1506,12 @@ def kritik_girdiler(metinler_ham=None, R=None):
         for x in lst:
             out["liste"].append(_RK.girdi("LISTE " + ad, repr(x), "kural listesi"))
     for ad, x in (("CIPLAK_YUK", CIPLAK_YUK), ("CIPLAK_YUK_DEGIL", CIPLAK_YUK_DEGIL), ("OLUMSUZLAMA", OLUMSUZLAMA),
-                  ("KRITIK_SOZ", KRITIK_SOZ), ("CIPLAK_MUAF_SAYI", CIPLAK_MUAF_SAYI)):
+                  ("KRITIK_SOZ", KRITIK_SOZ), ("CIPLAK_MUAF_SAYI", CIPLAK_MUAF_SAYI),
+                  # P10.7b2a: talimat maddesi ölçütü ve arayüz dizgesi ayıklaması da onay ister (gevşetilirse sessiz kalmasın)
+                  ("TALIMAT_FIIL", TALIMAT_FIIL), ("TALIMAT_ERTELE", TALIMAT_ERTELE), ("TAMLIK_DIRENC", sorted(TAMLIK_DIRENC.items())), ("KOD_DIZGE_ONU", _KOD_DIZGE_ONU),
+                  # düzeltme turu 2 (F10i-kontrol-2): ok kuralının liste / sayım kalıbı ve çıplak değer bağlam penceresi
+                  ("TALIMAT_LISTE", TALIMAT_LISTE), ("TALIMAT_OK", TALIMAT_OK), ("CIPLAK_PENCERE", sorted(CIPLAK_PENCERE.items())),
+                  ("CIPLAK_PENCERE_VARSAYILAN", CIPLAK_PENCERE_VARSAYILAN)):
         out["liste"].append(_RK.girdi("LISTE " + ad, repr(x), "kural"))
     try:
         import rehber_kablo as _RKB
@@ -1224,6 +1593,17 @@ CIPLAK_BOZMA = [
     ("'sürekli' muaf değil (B34)", "F5 (sürekli 7,5 A, acil stop)", True),
     ("yük ile sigorta aynı yan cümlede", "hat sigortası 3 A (yük çok az)", True),
     ("yük varsayımı ondalıklı (yakalanmamalı)", "QLED akımı 0,9 A varsayım, sigorta değil: ölçülmedi", False),
+    # düzeltme turu 1 (F10i-kontrol A4): akü ölçümü bağlamında direnç ve gerilim
+    ("çıplak akü ölçüm direnci (A4)", "akü ölçüm bölücüsünün 100 kΩ üst direnci kaynak ucunda", True),
+    ("çıplak G07 gerilimi 4,23 V (A4)", "akü {v.aku_aralik} iken bölücünün orta noktasında 4,23 V okunur", True),
+    ("F1 ölçüm koşulu elle (A4)", "bölücü oranı ({oran.aku_olcum}) katıdır: akü 11,0–12,0 V iken bölücünün orta noktasında {v.aku_olcum} okunur", True),
+    ("PC817 3,3 V ölçümü (yakalanmamalı)", "arayüz kartındaki PC817 3,3 V'ta ölçüldü", False),
+    ("ses bölücüsü direnci (yakalanmamalı)", "10 kΩ / 2,2 kΩ bölücü → PAM8403 sol", False),
+    # düzeltme turu 2 (F10i-kontrol-2 R5): bağlam sözcüğü 40 karakterin dışında kalınca kaçıyordu
+    ("R5 K1 G07 direnç ölçümü elle (100 kΩ)", "Pabuç saplamaya girmeden, akü ayrıkken multimetrenin direnç kademesiyle pabuç ile akü ölçüm "
+     "bölücüsünün orta noktası arasını ölç: 100 kΩ'a yakın okunur (kontrol).", True),
+    ("R5 K1 kontrol direnç ölçümü elle (100 kΩ)", "Akü ölçüm teli (G07): pabuç henüz saplamada değilken, akü ayrık, multimetrenin "
+     "direnç kademesinde pabuç ile arayüz kartındaki akü ölçüm bölücüsünün orta noktası arası 100 kΩ'a yakın", True),
 ]
 # açık işler turu: bozuk yer tutucu (B20, B21), anahtar ↔ bağlam (B01, B05, B07, B08), zorunlu tam sözcük (B26, B27)
 ACIK_BOZMA = [
@@ -1242,7 +1622,127 @@ YASAK_BOZMA = [
     ("köprüleyin", "Sigorta yuvasını köprüleyin", True),
     ("köprüler (çoğul ad, yakalanmamalı)", "Bu adımda takılan köprüler: yıldız barası ve anahtarlı bara", False),
     ("köprüleri (çoğul ad, yakalanmamalı)", "İki baranın köprüleri takılı", False),
+    # P10.7b2a (F10h-kontrol-4 §3.5): daraltılmış kuralın kaçırdığı üç talimat ve daraltmadan önce de kaçan biçim
+    ("köprüler (geniş zaman, mantar)", "Mantarın iki ucunu kısa bir telle köprüler", True),
+    ("köprülere bağla (ana anahtar)", "Ana anahtarın iki ucunu baradaki köprülere bağla", True),
+    ("köprüler takılır (ana anahtar)", "Ana anahtarın uçlarına köprüler takılır", True),
+    ("bir köprü takılır (mantar)", "Mantarın iki ucu arasına bir köprü takılır", True),
+    ("köprü → sigorta", "Sigorta yuvasının iki ucuna köprü tak", True),
+    ("köprü yoksa röle çekmez (yakalanmamalı)", "Ö4 köprü yoksa röle çekmez", False),
+    ("köprülenmez (yakalanmamalı)", "Mantarın uçları ve ana anahtarın uçları hiçbir zaman köprülenmez", False),
+    ("tel köprü → röle (parantez, yakalanmamalı)", "acil stop düğüm kartı (dört ucu tel köprüyle lehimli) → röle K1 bobini", False),
+    # düzeltme turu 1 (F10i-kontrol Ü2, Ü3, Ü5, A5)
+    ("PCA9685 V+ klemensine bağla (Ü3)", "PCA9685'in V+ klemensini dağıtım kartının V+ barasına bağla", True),
+    ("PCA9685 V+ pinine tel tak (Ü3)", "PCA9685'in V+ pinine tel tak", True),
+    ("PCA9685 V+ tel takma (yakalanmamalı)", "PCA9685'in V+ klemensine ve kanal başlıklarının V+ pinine tel takma", False),
+    ("PC817 çıkış beslemesi 5 V'a bağla (Ü2)", "PC817 modülünün çıkış besleme ucunu çevre 5 V'a bağla", True),
+    ("çıkış VCC 5 V'a tak (Ü2)", "Modülün çıkış VCC ucunu 5 V'a tak", True),
+    ("PC817 5 V'a bağlama (yakalanmamalı)", "PC817 modülünün çıkış besleme ucunu (çıkış VCC) ESP32'nin 3V3 pinine bağla (X01): 5 V'a bağlama", False),
+    ("K1 87a ucuna bağla (Ü5)", "G09'u röle K1'in 87a ucuna bağla", True),
+    ("K1 87a'ya lehimle (Ü5)", "Röle K1 kontağında G08'i 30'a, G09'u 87a'ya lehimle", True),
+    ("K1 87a boş (yakalanmamalı)", "röle K1 kontağı 30 → 87 (87a boş): G08'i 30'a bağla", False),
+    ("K2 NC ucuna lehimle (Ü5)", "G10'u K2'nin NC ucuna lehimle", True),
+    ("K2 NC boş (yakalanmamalı)", "G10'u K2 kontağının COM ucuna lehimle, NO çıkışta (NC boş)", False),
+    ("mantar NC uçları aynı vidaya (A5)", "Mantarın NC uçlarını aynı vidaya bağla", True),
+    ("ana anahtar giriş ve çıkışı aynı saplamaya (A5)", "Ana anahtarın giriş ve çıkış uçlarını aynı saplamaya tak", True),
+    ("aynı vidaya mantarın iki ucu (A5)", "Aynı vidaya mantarın iki ucunu bağla", True),
+    ("aynı saplamada iki pabuç (yakalanmamalı)", "Ana anahtarın çıkış saplamasına G04'ü ve G07'nin pabucunu tak", False),
+    # düzeltme turu 2 (F10i-kontrol-2 B16): mantarın iki teli tek pabuçta
+    ("B16 A01 ve A02 tek pabuca", "A01'i ve A02'yi tek pabuca sıkıp NC girişine tak", True),
+    ("B16 A01 ile A02 aynı pabuca", "A01 ile A02'yi aynı pabuca sık", True),
+    ("B16 mantarın uçları aynı pabuca", "Mantarın iki ucunu aynı pabuca sıkıp tak", True),
+    ("B16 mantarın uçları tek pabuçta", "Mantarın uçlarını tek pabuçla NC girişine bağla", True),
+    ("A01 / A02 ayrı uçlarda (yakalanmamalı)", "A01'i NC girişine, A02'yi NC çıkışına bağla", False),
+    ("A01 / A02 tek pabuca sıkma (yakalanmamalı)", "A01 ile A02'yi tek pabuca sıkma", False),
 ]
+# Düzeltme turu 1 (F10i-kontrol Ü1, Ü2, Ü3, Ü6, A1, A2, A7, A13): ham metinde bir adımın cümlesi bozulur; ZORUNLU / ZORUNLU_ALAN /
+# ZORUNLU_CUMLE desenlerinden en az biri tutmamalı. (ad, adım, eski, yeni); eski ham metinde yoksa deneme kaçmış sayılır.
+ZORUNLU_BOZMA = [
+    ("K1 SV1 / SV2 ters kutup (Ü6)", "K1", "({kutup.SV1|SV2})", "(OUT− → V+, OUT+ → GND)"),
+    ("K1 SV1 / SV2 kutbu silindi (Ü6)", "K1", " ({kutup.SV1|SV2})", ""),
+    ("B6a kondansatör ters (Ü6)", "B6a", "yönü {yon.kondansator}", "yönü + bacağı GND barasında"),
+    ("B5a kondansatör ters (Ü6)", "B5a", "yönü {yon.kondansator}", "yönü + bacağı GND barasında"),
+    ("B5a SV3 ters kutup (Ü6)", "B5a", "bağla: {kutup.SV3}", "bağla: OUT+ → GND, OUT− → V+"),
+    ("B6a X01 5 V'a (Ü2)", "B6a", "{uc.X01:PC817_çıkış_beslemesi:b} pinine bağla", "çevre 5 V klemensine bağla"),
+    ("B6a X01 '5 V'a bağlama' silindi (Ü2)", "B6a", ": 5 V'a bağlama.", "."),
+    ("B6a X01 süreklilik kontrolü silindi (Ü2)", "B6a", ", çıkış VCC ile çevre 5 V arası ötmez", ""),
+    ("B6a P01 / P02 V+ uyarısı silindi (Ü3)", "B6a", "PCA9685'in V+ klemensine ve kanal başlıklarının V+ pinine tel takma; ", ""),
+    ("B6a 3 telli kabloda V+ kesme silindi (Ü3)", "B6a", "3 telli hazır servo kablosu kullanırsan V+ damarını iki ucundan kes, makaronla yalıt. ", ""),
+    ("B6a PCA9685 V+ süreklilik kontrolü silindi (Ü3)", "B6a", "arasında süreklilik yok (ötmemeli;", "arasında süreklilik var ("),
+    ("K1 P03 V+ uyarısı silindi (Ü3)", "K1", "PCA9685'in V+ pinine tel takma; ", ""),
+    ("K1 P03 süreklilik kontrolü silindi (Ü3)", "K1", "PCA9685'in kanal başlığının V+ pini ile dağıtım kartı C'nin V+ barası arasında süreklilik yok",
+     "PCA9685'in kanal başlığının V+ pini ile dağıtım kartı C'nin V+ barası bağlı"),
+    # düzeltme turu 2 (F10i-kontrol-2 §5 P01–P03): ölçü noktası klemense dönerse
+    ("B6a P01 / P02 ölçü noktası klemens (D2)", "B6a", "PCA9685'in kanal başlığının V+ pini ile dağıtım kartı A'nın",
+     "PCA9685'in V+ klemensi ile dağıtım kartı A'nın"),
+    ("K1 P03 ölçü noktası klemens (D2)", "K1", "PCA9685'in kanal başlığının V+ pini ile dağıtım kartı C'nin",
+     "PCA9685'in V+ klemensi ile dağıtım kartı C'nin"),
+    # düzeltme turu 2 (F10i-kontrol-2 B16, B18, B23; §5 G07)
+    ("F1 B16 mantarın iki ucu tek pabuçta (iş)", "F1", "A01'i (F5 {a.F5} çıkışından gelen) NC girişine, A02'yi (acil stop düğümüne giden) NC çıkışına.",
+     "A01'i ve A02'yi tek pabuca sıkıp NC girişine tak."),
+    ("F1 B16 mantarın iki ucu tek pabuçta (alt adım)", "F1", "A01'i NC girişine, A02'yi NC çıkışına.", "A01'i ve A02'yi aynı pabuca sık, NC girişine tak."),
+    ("K1 B18 A06 + ucu F5 girişinde", "K1", "A06'nın + ucunu {parca.A06:+:a} noktasına, yani acil stop düğüm kartında bir klemensin kuyruğuna (kart altı) lehimle",
+     "A06'nın + ucunu sigorta kutusunun F5 girişine lehimle"),
+    ("K1 B18 A06 + ucunun düğümü elle değişti", "K1", "{parca.A06:+:a} noktasına", "sigorta kutusunun F5 girişi noktasına"),
+    ("K1 B23 K2 pim okuması ters", "K1", "{kontak.K2:giris} ile {kontak.K2:bos} arası öter, {kontak.K2:giris} ile {kontak.K2:cikis} arası ötmez",
+     "COM ile NO arası öter, COM ile NC arası ötmez"),
+    ("K1 B23 K2 pim okuması uçlar yer değişti", "K1", "{kontak.K2:giris} ile {kontak.K2:bos} arası öter, {kontak.K2:giris} ile {kontak.K2:cikis} arası ötmez",
+     "{kontak.K2:giris} ile {kontak.K2:cikis} arası öter, {kontak.K2:giris} ile {kontak.K2:bos} arası ötmez"),
+    ("K1 G07 pabuç kılıfı çıkarma silindi (D2)", "K1", "halka pabucun PVC kılıfını çıkar", "halka pabucunu hazırla"),
+    ("K1 G07 kovana sıkmadan lehim (D2)", "K1", "pabucun kovanına sık (pabuç pensesiyle), sonra kovana lehimle", "pabucun kovanına lehimle"),
+    ("K1 G07 makaron soğumadan / kovana çekilmedi (D2)", "K1", "Soğuyunca makaronu direncin ve kovanın üstüne çek", "Makaronu direncin üstüne çek"),
+    ("F1 G07 aralık dışı talimatı silindi (D2)", "F1", "Okuma {v.aku_olcum} aralığının altında ya da üstündeyse: ana anahtarı kapat, aküyü XT60'tan ayır",
+     "Okuma aralık dışındaysa not al"),
+    ("K1 G22 uçları ters (Ü1)", "K1", "{uc.G22:+:b} klemensine, − damarını modülün {uc.G22:−:a}",
+     "{uc.G22:−:a} klemensine, − damarını modülün {uc.G22:+:b}"),
+    ("K1 G22 ters bağlama uyarısı silindi (Ü1)", "K1", ", ters bağlıyken enerji verme", ""),
+    ("K1 G22 kutup kontrolü ters (Ü1)", "K1", "{uc.G22:−:a} ile yıldız barası arası öter, {uc.G22:+:b} ile yıldız barası arası ötmez",
+     "{uc.G22:+:b} ile yıldız barası arası öter, {uc.G22:−:a} ile yıldız barası arası ötmez"),
+    ("K1 A06 − ucu silindi (A7)", "K1", "; − ucunu modülün IN1 − klemensinden arayüz kartının GND pedine lehimle (makaron)", ""),
+    ("K1 G07 makaron lehimden sonra (A1)", "K1", "lehimden önce makaronu G07'nin teline geçir", "lehimden sonra makaronu G07'nin teline geçir"),
+    ("K1 G07 gerginlik giderme silindi (A1)", "K1", "Gerginlik giderme: G07'yi", "G07'yi"),
+    ("K1 G07 açıkta bacak kontrolü silindi (A1)", "K1", "direnç, iki bacağı ve pabuç kovanı makaronla tümüyle örtülü (açıkta bacak yok), ", ""),
+    ("K1 K2 pim bakışı lehimden sonra (A2)", "K1", "lehimden önce K2'nin pimlerini bul", "lehimden sonra K2'nin pimlerini bul"),
+    ("F1 G07 ölçüm aralığı elle yazıldı (A4)", "F1", "{v.aku_olcum} okunur", "1,53–2,23 V okunur"),
+    ("F1 G07 ölçüm koşulu değişti (A4)", "F1", "akü {v.aku_aralik} iken", "akü 11,0–12,0 V iken"),
+    ("E3a CA cümlesi silindi (A13)", "E3a", " CA baskılı ya da bantsız TVS'i takma (kablajda teyit).", ""),
+    ("E3a eski 'iki uçta işaret' ölçütü (A13)", "E3a", "sonu CA (ör. P6KE18CA) çift yönlüdür, bandı yoktur", "iki uçta da işaret varsa çift yönlüdür"),
+    # düzeltme turu 2 (F10i-kontrol-2 §5 TVS): muğlak eski biçim geri gelirse
+    ("E3a TVS muğlak 'sonu A' (D2)", "E3a", "sonu yalnız A (ör. P6KE18A) tek yönlüdür", "P6KE…A (sonu A) tek yönlüdür"),
+]
+# Düzeltme turu 1 (F10i-kontrol A6): "kablajda teyit" ibaresi silinir; teyit_denetle yakalamalı
+TEYIT_BOZMA = [
+    ("E3a TVS ibaresi silindi (A6)", "E3a", "CA baskılı ya da bantsız TVS'i takma (kablajda teyit).", "CA baskılı ya da bantsız TVS'i takma."),
+    ("E3a P6KE18A ibaresi silindi (A6)", "E3a", "madde 2'deki gibi oku (kablajda teyit)", "madde 2'deki gibi oku"),
+    ("B5a kondansatör ibaresi silindi (A6)", "B5a", "kondansatörü takma (kablajda teyit)", "kondansatörü takma"),
+    ("B6a kondansatör ibaresi silindi (A6)", "B6a", "okunmuyorsa takma (kablajda teyit)", "okunmuyorsa takma"),
+]
+
+
+def _ham_boz(ham, kod, eski, yeni):
+    """ham [(yer, metin)] içinde adım kodunun metinlerinde eski → yeni; değişen metin sayısı ile yeni liste."""
+    out, n = [], 0
+    for y, t in ham:
+        p = y.split()
+        if len(p) > 1 and p[1] == kod and eski in (t or ""):
+            t, n = t.replace(eski, yeni), n + 1
+        out.append((y, t))
+    return out, n
+
+
+def _zorunlu_eksik_say(ham):
+    """Ham metinden (yer tutucular çözülerek) ZORUNLU + ZORUNLU_ALAN + ZORUNLU_CUMLE eksik sayısı."""
+    D = _RDG.degerler()
+    adim, alanlar = collections.defaultdict(str), collections.defaultdict(str)
+    for yer, t in ham:
+        p = yer.split()
+        if p[0] == "kaynak" and len(p) > 2 and p[1] in RM.ADIM:
+            c = D.coz(t or "", [])
+            adim[p[1]] += "\n" + c
+            alanlar[(p[1], p[2])] += "\n" + c
+    n = sum(1 for k, d, ad in zorunlu_listesi() if k in RM.ADIM and not re.search(d, adim[k]))
+    n += sum(1 for k, alan, d, ad in zorunlu_alan_listesi() if k in RM.ADIM and not re.search(d, alanlar[(k, alan)]))
+    return n + len([x for x in cumle_denetle(dict(adim)) if not x["yer"].startswith("SEMA ")])
 
 
 def elektrik_bozma_denemesi():
@@ -1265,6 +1765,21 @@ def elektrik_bozma_denemesi():
             hz = []
             n = int("⟦" in D.coz(metin, hz)) + len(hz)
         out.append(dict(ad="açık iş: " + ad, yakalandi=n > 0, hata=n))
+    # düzeltme turu 2 (F10i-kontrol-2 B27): bölücünün alt direnci 18 → 33 kΩ; "beklenen" aralık ADC sınırını aşar, yer tutucu çözülmemeli
+    EL0 = D.EL
+    for ad, eski, yeni, beklenen in (("B27 bölücü 18 → 33 kΩ", "| Akü gerilimi | 100 kΩ / 18 kΩ", "| Akü gerilimi | 100 kΩ / 33 kΩ", True),
+                                     ("B27 ADC sınırı satırdan silindi", "doğrusal bölge ≤ 2,45 V", "doğrusal bölge", True),
+                                     ("bölücü 18 → 15 kΩ (sınır içinde, yakalanmamalı)", "| Akü gerilimi | 100 kΩ / 18 kΩ",
+                                      "| Akü gerilimi | 100 kΩ / 15 kΩ", False)):
+        n = 0
+        if eski in EL0:
+            D2 = _RDG.Degerler(D.T, D.PH, EL0.replace(eski, yeni))
+            for tt in ("v", "oran"):
+                try:
+                    D2.deger(tt, "aku_olcum")
+                except KeyError:
+                    n += 1
+        out.append(dict(ad="bölücü: " + ad, yakalandi=(n > 0) == beklenen and eski in EL0, hata=n))
     # zorunlu desen tam sözcük (B26, B27): bugünkü cümlede "tak" → "takma"
     for kod, eski, yeni in (("F5", "sigortasını tak", "sigortasını takma"), ("F3", "yuvası) tak", "yuvası) takma")):
         metin = "\n".join(t for y, t in kaynak_metinler() if y.split()[:2] == ["kaynak", kod])
@@ -1306,6 +1821,87 @@ def elektrik_bozma_denemesi():
         boz(T2)
         n = len(tamlik_denetle(ham, T=T2)["hata"]) - t0
         out.append(dict(ad="tamlık: " + ad, yakalandi=n > 0, hata=n))
+    # P10.7b2a: talimat maddesi ölçütü (K63). Metinden kimlik / yer tutucu çıkar, kimliği talimattan kontrol listesine taşı, kayda öğe ekle.
+    def _talimat_boz(f):
+        return [(y, f(t or "") if y.endswith(" is_") else t) for y, t in ham]
+    for ad, f in (("SV3 kimliği talimattan çıktı", lambda t: re.sub(r"\bSV3\b", "servo hattı", t)),
+                  ("G07 kimliği talimattan çıktı (yalnız kontrolde kaldı)", lambda t: t.replace("G07", "akü ölçüm teli")),
+                  ("P03 bağlama işaretsiz ('anılıyor')", lambda t: re.sub(r"[^.\n]*\bP03\b[^.\n]*\.?", " Kafa sinyal köprüsü P03 hakkında not.", t)),
+                  ("{yon.P6KE18A} çıktı", lambda t: t.replace("{yon.P6KE18A}", "yönüne dikkat et")),
+                  ("{yon.kondansator} çıktı", lambda t: t.replace("{yon.kondansator}", "yönüne dikkat et")),
+                  ("{kontak.K2} çıktı", lambda t: t.replace("{kontak.K2}", "kontak")),
+                  ("{yer.hat-A|hat-B|hat-C} çıktı", lambda t: t.replace("{yer.hat-A|hat-B|hat-C}", "kablo üstünde")),
+                  ("{bsaplama.G22} çıktı", lambda t: t.replace("{bsaplama.G22}", "son")),
+                  ("{ohm.aku_olcum} çıktı", lambda t: t.replace("{ohm.aku_olcum}", "bir")),
+                  ("{a.hat-cevre} yalnız kontrolde", lambda t: t.replace("{a.hat-cevre}", "sigorta")),
+                  # düzeltme turu 2 (F10i-kontrol-2 §3): kimlik yalnız K2 madde 5'in liste / sayım cümlesinde kalır (ok kuralı)
+                  ("AU3 / H02 yalnız liste cümlesinde (ok kuralı)",
+                   lambda t: re.sub(r"\bAU3\b(?!; PAM8403 → hoparlör)", "hoparlör teli", re.sub(r"\bH02\b(?!; Pi micro HDMI 1)", "HDMI", t)))):
+        h2 = _talimat_boz(f)
+        n = len(tamlik_denetle(h2)["hata"]) - t0 if h2 != ham else 0
+        out.append(dict(ad="tamlık (talimat): " + ad, yakalandi=n > 0, hata=n))
+    # düzeltme turu 1 (F10i-kontrol Ü4): N01 / N02'nin emri silinir, kimlikler ileri / olumsuz / başka adımdaki cümleye taşınır
+    def _n_sil(t):
+        return t.replace("enkoderi (N01)", "enkoderi").replace("enkoderi (N02)", "enkoderi")
+    for ad, ek, kod in (("N01 / N02 ileri cümle ('K2'de takılır')", " Enkoder kabloları (N01, N02) K2'de takılır.", None),
+                        ("N01 / N02 ileri cümle ('bağlanacak')", " Enkoder kabloları N01 ve N02 sonra bağlanacak.", None),
+                        ("N01 / N02 olumsuz ('takma')", " N01 ve N02'yi bu adımda takma.", None),
+                        ("N01 / N02 olumsuz ('bağlama')", " Enkoder kablolarını (N01, N02) bu adımda bağlama.", None),
+                        ("N01 / N02 emri bugün olmayan adımda", " Enkoder kablolarını (N01, N02) bağla.", "F5")):
+        h2 = [(y, (_n_sil(t or "") + (ek if (kod is None or y.split()[1] == kod) else "")) if y.endswith(" is_") else t)
+              for y, t in ham]
+        n = sum(1 for h in tamlik_denetle(h2)["hata"] if re.match(r"kablo N0[12]\b", h))
+        out.append(dict(ad="tamlık (talimat): " + ad, yakalandi=n == 2, hata=n))
+    n = len(tamlik_denetle([(y, _n_sil(t or "") + (" Enkoder kablolarını (N01, N02) bağla." if y.endswith(" is_") else ""))
+                            for y, t in ham])["hata"]) - t0
+    out.append(dict(ad="tamlık (talimat): N01 / N02 emir kipinde, bugünkü adımda (yakalanmamalı)", yakalandi=n == 0, hata=n))
+    for ad, boz in (("kayda yeni kablo", lambda T: T["kablolar"].append(dict(T["kablolar"][[r["kimlik"] for r in T["kablolar"]].index("X01")],
+                                                                          kimlik="X02"))),
+                    ("kayda yeni TVS", lambda T: T["tvs"].__setitem__("P6KE6V8A-yeni", dict(T["tvs"]["P6KE6V8A-pi"]))),
+                    ("kayda koruyucu yeri", lambda T: T["koruyucular"]["F1"].__setitem__("yer", "sigorta kutusunda: 1. yuva")),
+                    ("kayda kontak uçları", lambda T: T["anahtarlar"]["mantar"].__setitem__("uclar", dict(giris="1", cikis="2"))),
+                    ("kayda yeni direnç", lambda T: T["koruyucular"].__setitem__("R-yeni", dict(T["koruyucular"]["R-aku-olcum"])))):
+        T2 = json.loads(json.dumps(T))
+        boz(T2)
+        n = len(tamlik_denetle(ham, T=T2)["hata"]) - t0
+        out.append(dict(ad="tamlık: " + ad, yakalandi=n > 0, hata=n))
+    # P10.7b2a (K9 / V4): ASCII sınaması app.js / yazdir.html görünen dizgelerinde ve kol lejantında; kod dizgesi sayılmaz
+    a0 = open(ARAYUZ_GORUNEN[0], encoding="utf-8").read()
+    y0 = open(ARAYUZ_GORUNEN[1], encoding="utf-8").read()
+    k0 = open(KOL_KABLO, encoding="utf-8").read()
+    for ad, ad_dosya, kaynak, ek, beklenen in (
+            ("app.js ASCII dizge", "app.js", a0, '\nx.textContent = "Kablo baglantisi kontrol edildi";\n', True),
+            ("app.js şablon dizgesi", "app.js", a0, "\nx.innerHTML = `<b>${n}</b> kablo secili, gorunum degisti`;\n", True),
+            ("yazdir.html etiket dışı metin", "yazdir.html", y0, "\n<p>Kablolar baglanmadan once sigortalari cikar</p>\n", True),
+            ("app.js kod dizgesi (yakalanmamalı)", "app.js", a0, '\nel.className = "kare-baslik secili"; q("#panel .satir");\n', False)):
+        t0a = len(ascii_kalinti(gorunen_dizgeler(ad_dosya, kaynak)))
+        n = len(ascii_kalinti(gorunen_dizgeler(ad_dosya, kaynak + ek))) - t0a
+        out.append(dict(ad="ascii: " + ad, yakalandi=(n > 0) == beklenen, hata=n))
+    n = len(ascii_kalinti(kol_lejantlari(k0.replace('servo="Servo kablosu"', 'servo="Servo kablosu (baglanti)"', 1)))) - \
+        len(ascii_kalinti(kol_lejantlari(k0)))
+    out.append(dict(ad="ascii: kol lejantı", yakalandi=n > 0, hata=n))
+    # düzeltme turu 1: zorunlu desen bozmaları (kutup, uç, süreklilik, sıra) ve "kablajda teyit" ibaresi
+    z0 = _zorunlu_eksik_say(ham)
+    for ad, kod, eski, yeni in ZORUNLU_BOZMA:
+        h2, k = _ham_boz(ham, kod, eski, yeni)
+        n = _zorunlu_eksik_say(h2) - z0 if k else 0
+        out.append(dict(ad="zorunlu: " + ad, yakalandi=n > 0, hata=n))
+    y0 = len(teyit_denetle(ham))
+    for ad, kod, eski, yeni in TEYIT_BOZMA:
+        h2, k = _ham_boz(ham, kod, eski, yeni)
+        n = len(teyit_denetle(h2)) - y0 if k else 0
+        out.append(dict(ad="teyit: " + ad, yakalandi=n > 0, hata=n))
+    # TALIMAT_ERTELE gevşetilirse onay kaydı farkı verir
+    global TALIMAT_ERTELE
+    eski_e = TALIMAT_ERTELE
+    # onay kaydının girdisi değişmeli (kayıt bu kurala göre yenilenmişse fark verir; yenilenmemişse de girdi aynı kalmamalı)
+    g0 = [repr(x) for x in kritik_girdiler(ham)["liste"]]
+    try:
+        TALIMAT_ERTELE = eski_e.replace("|gidecek|gelecek", "")
+        n = len(set(repr(x) for x in kritik_girdiler(ham)["liste"]) ^ set(g0))
+    finally:
+        TALIMAT_ERTELE = eski_e
+    out.append(dict(ad="açık iş: onay kaydı (TALIMAT_ERTELE gevşedi)", yakalandi=n > 0, hata=n))
     return dict(temel_hata=len(temel), deneme=out, yakalanan=sum(1 for x in out if x["yakalandi"]), toplam=len(out))
 
 
@@ -1330,10 +1926,26 @@ def denetle(V, ek_metinler=()):
                 and not tu["zorunlu_eksik"] and not ya and not ke and not el)
 
 
+# Düzeltme turu 1 (F10i-kontrol A6): kaydı "kablajda teyit" işaretli yer tutucu (TVS / kondansatör yönü, K1 / K2 kontak uçları, ana
+# anahtar saplaması) talimat maddesinde geçiyorsa aynı madde satırında "kablajda teyit" ibaresi de geçmeli (silinirse yakalanır).
+def teyit_denetle(ham=None):
+    """Ham talimat metinleri: [dict(yer, yer_tutucu, satir)] (ibaresi olmayan madde satırı)."""
+    ham = ham if ham is not None else kaynak_metinler(ham=True)
+    D = _RDG.degerler()
+    out = []
+    for y, t in talimat_metinleri(ham):
+        for satir in (t or "").split("\n"):
+            for m in _RDG.YER_TUTUCU.finditer(satir):
+                if any(D.teyit_kaydi(m.group(1), u) for u in m.group(2).split("|")) and "kablajda teyit" not in satir:
+                    out.append(dict(yer=y, yer_tutucu=m.group(0), satir=satir[:160]))
+    return out
+
+
 def kaynak_denetle():
     """FreeCAD'siz, veri üretmeden: rehber_metin.py kaynağında ASCII kalıntı, elektrik iddiaları ve zorunlu uyarılar (P10.7b1)."""
     m = kaynak_metinler()
-    asc = ascii_kalinti(m + tablo_metinleri())                     # S1: panelin tablodan gösterdiği metinler de
+    gor = arayuz_gorunen_metinler()                                # P10.7b2a: app.js / yazdir.html görünen dizgeleri, kol lejantı
+    asc = ascii_kalinti(m + tablo_metinleri() + gor)               # S1: panelin tablodan gösterdiği metinler de
     # P10.7b1 düzeltme turu 1: elektrik iddiaları CAD parça adları / kodları ve arayüz sabit metinlerinde de (F10h-kontrol Ü1, §2-3)
     cad = cad_ad_metinleri()
     ara = arayuz_metinleri()
@@ -1364,12 +1976,13 @@ def kaynak_denetle():
     kg = kritik_girdiler(ham)
     kr = kritik_fark(kg)                                             # onaylı kritik metin kaydı
     tm = tamlik_denetle(ham)                                         # düzeltme turu 2: kayıt → rehber tamlığı
+    ty = teyit_denetle(ham)                                          # düzeltme turu 1 (F10i-kontrol A6): "kablajda teyit" ibaresi
     return dict(ascii_kalinti=asc, elektrik=el, zorunlu_eksik=zor, zorunlu_veride=sorted(set(zor_disari)), metin=len(m),
-                cad_metin=None if cad is None else len(cad), arayuz_metin=len(ara), yasak=ya, yasak_affedilen=ya_ist,
-                ciplak=cip, cozum_hata=coz, bozuk=boz, baglam=bag, kritik=kr, tamlik=tm,
+                cad_metin=None if cad is None else len(cad), arayuz_metin=len(ara), arayuz_gorunen=len(gor), yasak=ya, yasak_affedilen=ya_ist,
+                ciplak=cip, cozum_hata=coz, bozuk=boz, baglam=bag, kritik=kr, tamlik=tm, teyit=ty,
                 kritik_sayi={b: len(v) for b, v in kg.items()},
                 gecti=not asc and not el and not zor and not ya and not cip and not coz and cad is not None and not boz and not bag
-                and not kr and not tm["hata"])
+                and not kr and not tm["hata"] and not ty)
 
 
 def ozet_yaz(d):
@@ -1414,21 +2027,29 @@ def _ana():
         sys.exit(0)
     if "--kaynak" in sys.argv:
         d = kaynak_denetle()
-        print("kaynak denetimi: metin %d (+ CAD ad/kod %s, arayuz %d), ascii kalinti %d, elektrik iddiasi %d, zorunlu uyari eksik %d "
+        print("kaynak denetimi: metin %d (+ CAD ad/kod %s, arayuz %d, ASCII'ye giren arayuz gorunen dizge %d), ascii kalinti %d, "
+              "elektrik iddiasi %d, zorunlu uyari eksik %d "
               "(yalniz veride bakilan adim: %s), yasak %d (istisna %d), ciplak kritik sayi %d, cozulemeyen yer tutucu %d, "
               "bozuk yer tutucu %d, anahtar-baglam %d, onayli kritik girdi farki %d (kayitta: %s)" % (
             d["metin"], "YOK (montaj-analiz.json okunamadi)" if d["cad_metin"] is None else d["cad_metin"], d["arayuz_metin"],
+            d["arayuz_gorunen"],
             len(d["ascii_kalinti"]), len(d["elektrik"]), len(d["zorunlu_eksik"]), ", ".join(d["zorunlu_veride"]) or "-",
             len(d["yasak"]), len(d["yasak_affedilen"]), len(d["ciplak"]), len(d["cozum_hata"]), len(d["bozuk"]), len(d["baglam"]),
             len(d["kritik"]), ", ".join("%s %d" % (b, n) for b, n in sorted(d["kritik_sayi"].items()))))
         for x in d["kritik"][:40]:
             print("  KRITIK %s %s %s\n      eski: %s\n      yeni: %s" % (x["tur"], x["bolum"], x["yer"], x["eski"] or "-", x["yeni"] or "-"))
         tm = d["tamlik"]
-        print("tamlik (kayit -> rehber): taranan %d oge (%s), eksik %d, muaf %d; kablo kimligi rehberde %d / %d (gecmeyen, bilgi: %s)" % (
+        print("tamlik (kayit -> rehber): taranan %d oge (%s), eksik %d, muaf %d; kablo talimat maddesinde %d / %d, rehberde anilan %d "
+              "(talimatta olmayan: %s)" % (
             sum(tm["tarandi"].values()), ", ".join("%s %d" % (k, n) for k, n in sorted(tm["tarandi"].items())), len(tm["hata"]),
-            len(tm["muaf"]), tm["kablo_toplam"] - len(tm["kablo_yok"]), tm["kablo_toplam"], ", ".join(tm["kablo_yok"]) or "-"))
+            len(tm["muaf"]), tm["kablo_talimat"], tm["kablo_toplam"], tm["kablo_anilan"], ", ".join(tm["kablo_yok"]) or "-"))
+        for x in tm["muaf"]:
+            print("  TAMLIK MUAF", x)
         for x in tm["hata"]:
             print("  TAMLIK", x)
+        print("kablajda teyit ibaresi eksik madde: %d" % len(d["teyit"]))
+        for x in d["teyit"]:
+            print("  TEYIT", x)
         for x in d["bozuk"][:20]:
             print("  BOZUK YER TUTUCU", x)
         for x in d["baglam"][:40]:

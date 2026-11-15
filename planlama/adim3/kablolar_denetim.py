@@ -24,8 +24,10 @@ Sınamalar:
                  'bilinmiyor', 'sonra bakılacak', 'TBD' ya da boş yok (eksik bilgi eksik / teyit alanına yazılır)
     koruyucu     her koruyucunun akımı ve biçimi (standart / mini) elektrik.md sigorta listesinden, blok şemasından ve varsa
                  kablolama-on-kararlar.md karar satırından ayrıştırılan sayıyla; sipariş satırının (maliyet.json) modelindeki
-                 amperle; koruyucunun adındaki sayıyla aynı. Belgede sayı bulunamazsa hata
-    ag           her uç düğümler listesinde; düğümün ağı tanımlı; adından güç ucu olduğu belli düğümün ağı var; bir telin iki
+                 amperle; koruyucunun adındaki sayıyla aynı. Belgede sayı bulunamazsa hata. Akü ölçüm bölücüsü (düzeltme
+                 turu 2, F10i-kontrol-2 B27): elektrik.md 'Akü gerilimi' satırında akü üst sınırı × oran ≤ ADC doğrusal sınırı
+                 ve satırdaki 'N V → M V' gerilimleri orandan çıkar
+    ag         her uç düğümler listesinde; düğümün ağı tanımlı; adından güç ucu olduğu belli düğümün ağı var; bir telin iki
                  ucu aynı ağda (ya da arada kayıtlı hat sigortası / direnç); 5 V Pi ve 5 V çevre ağları hiçbir telde / elemanda /
                  kart içi bağda birleşmiyor; her güç ağının aküye kadar beslemesi var
     ayni_nokta   aynı klemens / pin iki ayrı işe verilmemiş (ortak_noktalar dışında bir uç yalnız bir kez)
@@ -66,6 +68,12 @@ Sınamalar:
                  zincirinde ya da uç düğümünde
     denetim_62   10.11 dökümünün 62 satırının her biri bir kayda ya da 'çıkan / birleşen' notuna bağlı
     gorunum      kablolar.md ve elektrik.md'nin sonundaki dal başına kesit bloğu tablodan üretilenle aynı (kablolar_uret.py)
+    yon_yer      şema 4 (P10.7b2a): her tek yönlü TVS'in artı / eksi düğümü düğümler listesinde, artısı güç ağında, eksisi GND'de;
+                 yön metninde katot artı (+) ucunda, anot GND'de; veri sayfası kaynağı ve teyit dolu; adetler sipariş kalemiyle.
+                 Kondansatörün yönü (− bacağı GND), işareti, kaynağı ve teyidi dolu. Ara koruyucu olarak kullanılan her hat
+                 sigortasının / direncin yer alanı var ve damarın ara_uc ucundaki parçanın adını taşıyor (koruyucu kaynak ucunda).
+                 K1 / K2 kontağının uçları (giris, cikis, teyit) dolu. Bara yerleşiminde kalın pabuç altta (saplama listesi alttan
+                 üste, kesit küçülmez)
 
 Çıkış kodları: 0 hepsi geçti (ve --bozma-denemesi'nde her bozma yakalandı); 1 en az bir sınama ya da bozma denemesi
 geçmedi; 2 kaynak okunamadı (tablo, pin haritası, main'deki kanallar.yaml).
@@ -104,6 +112,8 @@ YER_TUTUCU = re.compile(r"(^\s*$|\?|…|\.\.\.|öneri|belirlenecek|bilinmiyor|bi
 ALAN_KABLO = set(ZORUNLU) | {"bolge", "boy_not", "boy_tahmin", "gerilim_dusumu_kontrol", "hazir_kablo", "kesit_istisna", "kesit_not",
                              "malzeme", "not", "ortak_donus", "tarihce"}
 ALAN_DAMAR = {"a", "b", "ad", "ara", "ara_koruyucu", "ara_uc", "gpio", "not", "pca_ad", "pca_kanal", "pin", "kesit", "uc_turu", "uc_kuyrugu"}
+PABUC_RENK = ("sarı", "mavi", "kırmızı")
+TVS_ALAN = ("parca", "ad", "yer", "arti_dugumu", "eksi_dugumu", "yon", "isaret", "kaynak", "teyit", "siparis")
 SAYI = r"(\d+(?:,\d+)?)"
 
 
@@ -820,6 +830,23 @@ def s_koruyucu(v, b):
                 i = tr_sayi(vv.group(1)) / (int(mm.group(1)) * 1000)
                 if a is None or abs(a - i) > 0.05 * i:
                     h.append(f"koruyucu {kid}: tabloda {a} A, elektrik.md'den {vv.group(1)} V / {mm.group(1)} kΩ = {i:.6f} A")
+                # düzeltme turu 2 (F10i-kontrol-2 B27): akü üst sınırı × bölücü oranı ≤ ADC doğrusal sınırı; satırdaki "N V → M V"
+                # çiftleri de orandan çıkmalı (bölücü değişip gerilimler eski kalırsa rehberin "beklenen" aralığı sessizce kayardı)
+                bd = re.search(r"(\d+) kΩ / (\d+) kΩ", sat[0])
+                sn = re.search(r"doğrusal bölge ≤ " + SAYI + " V", sat[0])
+                cift = [(tr_sayi(x), tr_sayi(y)) for x, y in re.findall(SAYI + r" V → " + SAYI + " V", sat[0])]
+                if not (bd and sn and cift):
+                    h.append(f"koruyucu {kid}: elektrik.md 'Akü gerilimi' satırında bölücü 'N kΩ / M kΩ', 'doğrusal bölge ≤ N V' "
+                             f"ya da 'N V → M V' yok")
+                else:
+                    oran = int(bd.group(2)) / (int(bd.group(1)) + int(bd.group(2)))
+                    ust = max(x for x, _ in cift)
+                    if ust * oran > tr_sayi(sn.group(1)):
+                        h.append(f"koruyucu {kid}: bölücü {bd.group(1)} kΩ / {bd.group(2)} kΩ (oran {oran:.4f}): akü {ust:g} V'ta "
+                                 f"{ust * oran:.2f} V, ESP32 ADC doğrusal sınırı {sn.group(1)} V'u aşıyor (GÜVENLİK)")
+                    for x, y in cift:
+                        if abs(x * oran - y) > 0.01:
+                            h.append(f"koruyucu {kid}: elektrik.md '{x:g} V → {y:g} V', bölücü oranıyla {x * oran:.2f} V")
         else:
             h.append(f"koruyucu {kid}: bağımsız kaynağı tanımlı değil (SIGORTA_LISTESI / BELGE_SAYISI / BELGESIZ)")
     tablodaki = {SIGORTA_LISTESI[k] for k, e in v["koruyucular"].items() if k in SIGORTA_LISTESI}
@@ -1287,17 +1314,30 @@ def kopru_akimlari(v, h, dugum, k, n, kid):
         uc = (1 if i in (1, n) else 2) if n > 1 else 0
         if len(yer.get(str(i), [])) + uc > m:
             h.append(f"köprü {dugum}: saplama {i}'de {len(yer.get(str(i), []))} iletken + {uc} köprü ucu > {m} pabuç")
-    aku = [x for x in yer.get(str(bs), []) if K.get(x.split("/")[0], {}).get("dal") == "aku-ana"]
-    if not aku:
-        h.append(f"köprü {dugum}: besleme saplaması {bs}'de akü dönüşü yok (yerleşim)")
+    # P10.7b2a: besleme iletkeni düğümün türünden. Toprak barasında akü dönüşü (dal aku-ana); + barada baraya gelen hat (damarın
+    # b ucu bu düğüm: röle K1 87 → bara, ön şarj kartı → bara). Eski hesap + barada da akü dönüşü arıyordu (yanlış hata).
+    toprak = v["dugumler"].get(dugum, {}).get("ag") == "GND"
+
+    def besleme_mi(x):
+        kim, ad = (x.split("/") + [""])[:2]
+        r = K.get(kim)
+        if r is None:
+            return False
+        if toprak:
+            return r.get("dal") == "aku-ana"
+        return any(d["ad"] == ad and d["b"] == dugum for d in r["damarlar"])
+
+    if not any(besleme_mi(x) for x in yer.get(str(bs), [])):
+        h.append(f"köprü {dugum}: besleme saplaması {bs}'de besleme iletkeni yok (yerleşim; "
+                 f"{'akü dönüşü' if toprak else 'baraya gelen hat'})")
     kok_a = akim(v, kid)
 
-    def toplam(saplamalar):
+    def toplam(saplamalar, besleme):
         grup = {}
         for i in saplamalar:
             for x in yer.get(str(i), []):
                 r = K.get(x.split("/")[0])
-                if r is None:
+                if r is None or besleme_mi(x) != besleme:
                     continue
                 f = kok_sigorta(v, r)
                 a_ = akim(v, r["koruma"]) if r["koruma"] else None
@@ -1306,10 +1346,15 @@ def kopru_akimlari(v, h, dugum, k, n, kid):
                 g[1] += a_ if a_ is not None else (fa or 0)
         return min(kok_a, sum(min(fa, t) if fa is not None else t for fa, t in grup.values()))
 
+    # i–(i+1) köprüsü: sol yan 1..i, sağ yan i+1..n. Akım bir yandaki beslemeden öbür yandaki yüklere akar; en kötüsü iki yönün
+    # büyüğü, her yön min(beslemenin taşıyabileceği, yüklerin koruyucu akımları toplamı). Bütün besleme besleme saplamasındaysa
+    # eski hesapla aynı sonucu verir (uzak yandaki yükler).
     out = []
     for i in range(1, n):
-        uzak = range(1, i + 1) if i < bs else range(i + 1, n + 1)
-        out.append((i, f"saplama {', '.join(map(str, uzak))} dönüşleri", toplam(uzak)))
+        sol, sag = range(1, i + 1), range(i + 1, n + 1)
+        a1, a2 = min(toplam(sol, True), toplam(sag, False)), min(toplam(sag, True), toplam(sol, False))
+        uzak = sag if a1 >= a2 else sol
+        out.append((i, f"saplama {', '.join(map(str, uzak))} {'dönüşleri' if toprak else 'yükleri'}", max(a1, a2)))
     return out
 
 
@@ -1546,7 +1591,12 @@ def s_klemens(v, b):
             if il == "tek telli" and iletken == "ince telli":
                 h.append(f"{r['kimlik']}/{d['ad']}: {yan} ucu {t} yalnız tek telli iletken alır, kablo {malz} ince telli")
             mm2_ = AWG_MM2.get(kes["awg"], kes.get("mm2") or 0)
-            if az is not None and mm2_ < az - 1e-9:
+            # P10.7b2a (şema 4, orkestratör kararı 5): direncin bacağı halka pabucun kovanına lehimli (sıkma değil): pabuca giren
+            # iletken telin kendisi değil direnç bacağı; kesitin sıkma alt sınırı bu uca uygulanmaz (uc_kuyrugu.pabuc ve direnç ucu)
+            pabuc_kovan = direnc_ucu and t == "pabuc" and isinstance(ku, dict) and ku.get("pabuc") in PABUC_RENK
+            if pabuc_kovan:
+                pass
+            elif az is not None and mm2_ < az - 1e-9:
                 h.append(f"{r['kimlik']}/{d['ad']}: {kes['awg']} AWG ({mm2_} mm²) {yan} ucu {t} alt sınırının ({az} mm²) altında")
             elif az is None and t in ALT_SINIRI_BELGESIZ and mm2_ < KUCUK_KESIT_MM2 - 1e-9:
                 h.append(f"{r['kimlik']}/{d['ad']}: {kes['awg']} AWG ({mm2_} mm²) {yan} ucu {t}: alt sınırı belgesiz klemens ince "
@@ -1595,6 +1645,10 @@ def pabuc_sayimi(v):
             if t not in ("bara-pabuc", "pabuc") or kes is None:
                 continue
             if v["dugumler"].get(d[yan], {}).get("parca") == "Akü":
+                continue
+            ku = (d.get("uc_kuyrugu") or {}).get(yan)
+            if isinstance(ku, dict) and ku.get("pabuc") in PABUC_RENK:     # şema 4: direnç bacağı pabuç kovanında (G07)
+                c[ku["pabuc"]] += 1
                 continue
             c["sarı" if kes["awg"] <= 12 else "mavi" if kes["awg"] <= 16 else "kırmızı"] += 1
     for dugum, k in (v.get("klemens_turleri", {}).get("bara-pabuc", {}).get("kopruler") or {}).items():
@@ -2136,11 +2190,128 @@ def s_sayi_metin(v, b):
     return h
 
 
+def s_yon_yer(v, b):
+    """Şema 4 (P10.7b2a): TVS ve kondansatör yönü, koruyucunun kablo üstündeki yeri, kontak uçları, bara pabuç sırası."""
+    h = []
+    dg = v["dugumler"]
+    kal = b["maliyet"]["kalemler"]
+    tv = v.get("tvs")
+    if not isinstance(tv, dict) or not tv:
+        h.append("tvs kaydı yok (şema 4: P6KE18A ve iki P6KE6V8A'nın yönü)")
+        tv = {}
+    say = Counter()
+    for k, e in tv.items():
+        eks = [a for a in TVS_ALAN if not str(e.get(a) if e.get(a) is not None else "").strip()]
+        if eks:
+            h.append(f"tvs {k}: alan eksik ({', '.join(eks)})")
+            continue
+        ar, ek = dg.get(e["arti_dugumu"]), dg.get(e["eksi_dugumu"])
+        if ar is None or ek is None:
+            h.append(f"tvs {k}: düğüm düğümler listesinde yok ({e['arti_dugumu'] if ar is None else e['eksi_dugumu']})")
+            continue
+        if kutup(v, ar.get("ag")) != "+" or ar.get("ag") == "GND":
+            h.append(f"tvs {k}: artı düğümü {e['arti_dugumu']} (ağ {ar.get('ag')}) bir + güç ağında değil")
+        if ek.get("ag") != "GND":
+            h.append(f"tvs {k}: eksi düğümü {e['eksi_dugumu']} (ağ {ek.get('ag')}) GND değil")
+        if ar.get("parca") != ek.get("parca"):
+            h.append(f"tvs {k}: artı ve eksi düğümü ayrı parçada ({ar.get('parca')} / {ek.get('parca')}); TVS uçları aynı noktada")
+        yon = e["yon"]
+        kc = next((x for x in yon.split(",") if "katot" in x), "")
+        ac = next((x for x in yon.split(",") if "anot" in x and "katot" not in x), "")
+        if not (re.search(r"\+", kc) and "GND" not in kc and "GND" in ac and "+" not in ac):
+            h.append(f"tvs {k}: yon '{yon}': tek yönlü TVS'te katot (bantlı uç) artı hatta, anot GND'de olmalı")
+        if "veri sayfası" not in e["kaynak"] or "http" not in e["kaynak"]:
+            h.append(f"tvs {k}: kaynak veri sayfasını (adres) göstermiyor")
+        i = e["siparis"]
+        if not isinstance(i, int) or i >= len(kal) or e["parca"].replace("V8", ".8") not in kal[i]["model"].replace("V8", ".8"):
+            h.append(f"tvs {k}: sipariş kalemi {i} modelinde {e['parca']} yok")
+        else:
+            say[i] += 1
+    for i, n in say.items():
+        if not n <= kal[i]["adet"] <= n + 1:
+            h.append(f"maliyet.json kalem {i} ({kal[i]['model'][:30]}): {kal[i]['adet']} adet, tvs kaydında {n} (n ≤ adet ≤ n + 1)")
+    # düzeltme turu 1 (F10i-kontrol A13): çift yönlü tip gövde baskısından (…CA) ayırt edilir; "iki uçta işaret" diye bir şey yok
+    for k, e in tv.items():
+        if not re.search(r"…CA|\bCA\b", str(e.get("teyit") or "")) or "kablajda teyit" not in str(e.get("teyit") or ""):
+            h.append(f"tvs {k}: teyit gövde baskısını (…A tek yönlü, …CA çift yönlü) ve 'kablajda teyit'i söylemiyor")
+    ko = v.get("kondansatorler") or {}
+    for a in ("yon", "isaret", "kaynak", "kutup_kaynak", "teyit"):
+        if not str(ko.get(a) or "").strip():
+            h.append(f"kondansatorler.{a} yok (şema 4: elektrolitiğin kutbu)")
+    if ko.get("yon") and not re.search(r"−[^,;]*GND", ko["yon"]):
+        h.append(f"kondansatorler.yon '{ko['yon']}': − bacağı GND'ye bağlanmalı")
+    if ko.get("kaynak") and not re.fullmatch(r"planlama/adim3/elektrik\.md:\d+(?:-\d+)?", str(ko["kaynak"])):   # düzeltme turu 1 (A11)
+        h.append(f"kondansatorler.kaynak '{str(ko['kaynak'])[:50]}': adet ve yerin kaynağı elektrik.md satırı olmalı (kutup ayrı: kutup_kaynak)")
+    # koruyucunun yeri: ara koruyucu (hat sigortası, direnç) kablo üstünde. Düzeltme turu 1 (F10i-kontrol A3): adın yer metninin herhangi
+    # bir yerinde geçmesi yetmez. Yerin başı (ilk ':' öncesi; rehberin {yer.<k>} yer tutucusu bu kısım) damarın ara_uc ucundaki parçayı
+    # "… ucunda / ucunun dibinde" diye anar ve öbür (yük) ucundaki parçayı anmaz.
+    for r in v["kablolar"]:
+        for d in r["damarlar"]:
+            kid = d.get("ara_koruyucu")
+            if not kid:
+                continue
+            e = v["koruyucular"].get(kid, {})
+            yer = str(e.get("yer") or "")
+            bas = yer.split(":")[0]
+            au = d.get("ara_uc") or "a"
+            p_ = (dg.get(d.get(au), {}) or {}).get("parca") or ""
+            ob = (dg.get(d.get("b" if au == "a" else "a"), {}) or {}).get("parca") or ""
+            ad_ = re.escape(re.sub(r"\s+\S+$", "", p_) if re.search(r"ASW|\d", p_.split()[-1] if p_ else "") else p_)
+            if not yer.strip():
+                h.append(f"{kid}: yer alanı yok ({r['kimlik']}/{d['ad']} ucunda; şema 4)")
+            elif not re.search(ad_ + r"[^,;:]{0,30}?\buc(?:u|un)\w*", bas, re.I):
+                h.append(f"{kid}: yerin başı '{bas[:60]}' {r['kimlik']}/{d['ad']}'in ara_uc ucundaki parçayı ({p_}) '… ucunda' diye anmıyor "
+                         f"(koruyucu kaynak ucunda)")
+            elif ob and re.search(re.escape(ob.split(" (")[0]), bas, re.I):
+                h.append(f"{kid}: yerin başı '{bas[:60]}' yük ucundaki parçayı ({ob}) anıyor (koruyucu kaynak ucunda)")
+    for k in ("K1-kontak", "K2-kontak"):
+        u = v["anahtarlar"].get(k, {}).get("uclar")
+        if not isinstance(u, dict) or not all(str(u.get(a) or "").strip() for a in ("giris", "cikis", "teyit", "kaynak")):
+            h.append(f"{k}: uclar (giris, cikis, teyit, kaynak) yok / eksik (şema 4)")
+        elif "teyit" not in u["teyit"]:
+            h.append(f"{k}: uclar.teyit uç numaralandırmasının teyidini söylemiyor")
+    u2 = v["anahtarlar"].get("K2-kontak", {}).get("uclar") or {}
+    if u2 and (u2.get("giris"), u2.get("cikis"), u2.get("bos")) != ("COM", "NO", "NC"):
+        h.append(f"K2-kontak.uclar {u2.get('giris')} → {u2.get('cikis')} (boş {u2.get('bos')}); karar: G10 → COM, NO → ön şarj direnci, NC boş")
+    # düzeltme turu 1 (F10i-kontrol Ü5): K1 kontağı GÜVENLİK sınaması. Mantar basılıyken (bobin enerjisiz) bara açık kalmalı: kontak
+    # dinlenmede açık uçtan (87, NO) çıkar; 87a (dinlenmede kapalı) boş. Uç numaraları kablo damarlarından (G08 → K1 · giriş, G09 K1 ·
+    # çıkış →) karşılaştırılır; kayıt ile damar ayrı yazılırsa da hata.
+    u1 = v["anahtarlar"].get("K1-kontak", {}).get("uclar") or {}
+    K = {r["kimlik"]: r for r in v["kablolar"]}
+    if u1:
+        if (u1.get("giris"), u1.get("cikis"), u1.get("bos")) != ("30", "87", "87a"):
+            h.append(f"GÜVENLİK K1-kontak.uclar {u1.get('giris')} → {u1.get('cikis')} (boş {u1.get('bos')}): bara 30 → 87 (dinlenmede açık) "
+                     f"üzerinden beslenir, 87a boş; 87a / NC kullanılırsa acil stopta bara enerjili kalır")
+        g8 = [x["b"] for x in K.get("G08", {}).get("damarlar", []) if x["b"].startswith("Röle K1 · ")]
+        g9 = [x["a"] for x in K.get("G09", {}).get("damarlar", []) if x["a"].startswith("Röle K1 · ")]
+        if g8 != ["Röle K1 · %s" % u1.get("giris")] or g9 != ["Röle K1 · %s" % u1.get("cikis")]:
+            h.append(f"GÜVENLİK K1 kontak uçları damarlarla uyuşmuyor: G08 → {g8}, G09 ← {g9}, uclar {u1.get('giris')} → {u1.get('cikis')}")
+    # düzeltme turu 1 (F10i-kontrol A14): ana anahtarın saplama ölçüsü varsayım; teyit kaydı silinemez
+    sp = v["anahtarlar"].get("ana-anahtar", {}).get("saplama") or {}
+    if not sp.get("olcu") or "kablajda teyit" not in str(sp.get("teyit") or ""):
+        h.append("ana-anahtar.saplama: ölçü ve 'kablajda teyit' kaydı yok (M5 varsayım, belgesi yok)")
+    # bara yerleşimi: saplama listesi alttan üste; kalın (küçük AWG) pabuç altta
+    K = {r["kimlik"]: r for r in v["kablolar"]}
+    for dugum, k in (v["klemens_turleri"]["bara-pabuc"].get("kopruler") or {}).items():
+        if not isinstance(k, dict) or not isinstance(k.get("yerlesim"), dict):
+            continue
+        for n, lst in k["yerlesim"].items():
+            aw = []
+            for x in lst:
+                kim, ad = (x.split("/") + [""])[:2]
+                r = K.get(kim)
+                kes = next((kes for d_, yan, _, kes in uc_iletkenleri(v, r) if d_["ad"] == ad and d_[yan] == dugum), None) if r else None
+                aw.append((kes or {}).get("awg", 99))
+            if aw != sorted(aw):
+                h.append(f"{dugum} saplama {n}: sıra {lst} (AWG {aw}); kalın pabuç altta (liste alttan üste)")
+    return h
+
+
 SINAMALAR = [("alanlar", s_alanlar), ("iki_uc", s_iki_uc), ("yer_tutucu", s_yer_tutucu), ("ag", s_ag),
              ("koruyucu", s_koruyucu), ("ayni_nokta", s_ayni_nokta), ("esp32_pin", s_esp32_pin),
              ("pca_kanal", s_pca_kanal), ("kesit", s_kesit), ("donus", s_donus), ("tahmin", s_tahmin), ("klemens", s_klemens),
              ("malzeme", s_malzeme), ("donanim", s_donanim), ("acil_stop", s_acil_stop), ("kaynak", s_kaynak),
-             ("sayi_metin", s_sayi_metin), ("denetim_62", s_denetim_62), ("gorunum", s_gorunum)]
+             ("sayi_metin", s_sayi_metin), ("denetim_62", s_denetim_62), ("gorunum", s_gorunum), ("yon_yer", s_yon_yer)]
 
 
 def kos(v, b):
@@ -2745,6 +2916,61 @@ def b_klemens_19(v, b):
     r["durum"] = "kesin"
 
 
+# P10.7b2a (şema 4): yön / yer / kontak / bara yerleşimi
+def b_yon_yer(v, b):
+    v["tvs"]["P6KE18A"]["yon"] = "katot (bantlı uç) GND'ye, anot +12 V ucuna"                     # TVS ters
+def b_yon_yer_2(v, b):
+    e = v["tvs"]["P6KE6V8A-pi"]                                                                     # yapısal alan ters
+    e["arti_dugumu"], e["eksi_dugumu"] = e["eksi_dugumu"], e["arti_dugumu"]
+def b_yon_yer_3(v, b):
+    del v["kondansatorler"]["yon"]                                                                  # kondansatör kutbu yok
+def b_yon_yer_4(v, b):
+    v["koruyucular"]["hat-A"]["yer"] = "XL4016 A IN+ ucunun dibinde"                               # sigorta yük ucunda
+def b_yon_yer_5(v, b):
+    del v["anahtarlar"]["K2-kontak"]["uclar"]                                                       # kontak uçları yok
+def b_yon_yer_6(v, b):
+    v["anahtarlar"]["K2-kontak"]["uclar"]["cikis"] = "NC"                                           # ön şarj NC'den: enerjisizken kapalı
+def b_yon_yer_7(v, b):
+    v["klemens_turleri"]["bara-pabuc"]["kopruler"]["Anahtarlı bara · +"]["yerlesim"]["1"] = ["G14/+", "G12/+", "G15/+"]   # ince altta
+def b_yon_yer_8(v, b):
+    v["tvs"]["P6KE18A"]["kaynak"] = "tek yönlü TVS'in genel bağlanışı"                             # veri sayfası yok
+def b_yon_yer_9(v, b):
+    del v["koruyucular"]["R-aku-olcum"]["yer"]                                                      # direncin yeri yok
+# düzeltme turu 1 (F10i-kontrol Ü5, A3, A11, A13, A14): kontrolün kaçan kayıt bozmaları
+def b_yon_yer_10(v, b):
+    v["anahtarlar"]["K1-kontak"]["uclar"]["cikis"] = "87a"                                         # K1 bara 87a'dan: acil stopta enerjili
+def b_yon_yer_11(v, b):
+    u = v["anahtarlar"]["K1-kontak"]["uclar"]                                                      # K1 87 ↔ 87a yer değiştirmiş
+    u["cikis"], u["bos"] = "87a", "87"
+    damar(bul(v, "G09"), "+")["a"] = "Röle K1 · 87a"
+def b_yon_yer_12(v, b):
+    damar(bul(v, "G09"), "+")["a"] = "Röle K1 · 87a"                                                # yalnız damar 87a'ya
+def b_yon_yer_13(v, b):
+    e = v["koruyucular"]["hat-B"]                                                                   # sigorta yük ucunda, bara adı yerde kaldı
+    e["yer"] = "XL4016 B IN+ ucunun dibinde (yük ucu): yuvanın kuyruğu G15'in teline; Anahtarlı bara saplamasına G15'in kendi pabucu"
+def b_yon_yer_14(v, b):
+    v["koruyucular"]["R-aku-olcum"]["yer"] = "arayüz kartında, bölücünün orta noktasının yanında: direnç G07'nin kart ucunda"   # direnç öbür uçta
+def b_yon_yer_15(v, b):
+    v["kondansatorler"]["kaynak"] = v["kondansatorler"]["kutup_kaynak"]                            # elektrik.md göndermesi düştü
+def b_yon_yer_16(v, b):
+    for e in v["tvs"].values():                                                                     # eski "iki uçta işaret" teyidi
+        e["teyit"] = "bant yoksa ya da iki uçta da işaret varsa (çift yönlü) takılmaz (kablajda teyit edilecek)"
+def b_yon_yer_17(v, b):
+    v["anahtarlar"]["ana-anahtar"]["saplama"]["teyit"] = "M5"                                       # varsayım kesin gibi
+def b_kesit_25(v, b):
+    y = v["klemens_turleri"]["bara-pabuc"]["kopruler"]["Anahtarlı bara · +"]["yerlesim"]           # besleme saplamasında hat yok
+    y["3"], y["4"] = ["G22/+"], ["G09/+", "G11/+"]
+def b_klemens_20(v, b):
+    del damar(bul(v, "G07"), "+")["uc_kuyrugu"]                                                     # 22 AWG tel pabuca sıkılır gibi
+# düzeltme turu 2 (F10i-kontrol-2 B27): bölücünün alt direnci değişti, satırdaki gerilimler eski kaldı (ADC sınırı aşılır)
+def b_koruyucu_8(v, b):
+    b["elektrik"] = b["elektrik"].replace("| Akü gerilimi | 100 kΩ / 18 kΩ", "| Akü gerilimi | 100 kΩ / 33 kΩ")
+def b_koruyucu_9(v, b):
+    b["elektrik"] = b["elektrik"].replace("10,0 V → 1,53 V", "10,0 V → 1,83 V")                     # gerilim orandan çıkmıyor
+def b_koruyucu_10(v, b):
+    b["elektrik"] = b["elektrik"].replace("doğrusal bölge ≤ 2,45 V", "doğrusal bölge")                # sınır satırdan silindi
+
+
 # kontrolün (P107a-kontrol.md §1 D1) yakalanmayan on bozması, aynı biçimde
 def k_B3(v, b):
     d = damar(bul(v, "X01"), "röle K1 sürüşü")
@@ -2840,7 +3066,16 @@ BOZMALAR = [("iki_uc", b_iki_uc), ("ayni_nokta", b_ayni_nokta), ("esp32_pin", b_
             # P10.7b1 düzeltme turu 1 (F10h-kontrol §2-10)
             ("sayi_metin", b_sayi_metin_15), ("sayi_metin", b_sayi_metin_16), ("sayi_metin", b_sayi_metin_17),
             ("sayi_metin", b_sayi_metin_18), ("sayi_metin", b_sayi_metin_19), ("sayi_metin", b_sayi_metin_20),
-            ("sayi_metin", b_sayi_metin_21), ("sayi_metin", b_sayi_metin_22)]
+            ("sayi_metin", b_sayi_metin_21), ("sayi_metin", b_sayi_metin_22),
+            # P10.7b2a (şema 4)
+            ("yon_yer", b_yon_yer), ("yon_yer", b_yon_yer_2), ("yon_yer", b_yon_yer_3), ("yon_yer", b_yon_yer_4),
+            ("yon_yer", b_yon_yer_5), ("yon_yer", b_yon_yer_6), ("yon_yer", b_yon_yer_7), ("yon_yer", b_yon_yer_8),
+            ("yon_yer", b_yon_yer_9), ("kesit", b_kesit_25), ("klemens", b_klemens_20),
+            # düzeltme turu 1 (F10i-kontrol)
+            ("yon_yer", b_yon_yer_10), ("yon_yer", b_yon_yer_11), ("yon_yer", b_yon_yer_12), ("yon_yer", b_yon_yer_13),
+            ("yon_yer", b_yon_yer_14), ("yon_yer", b_yon_yer_15), ("yon_yer", b_yon_yer_16), ("yon_yer", b_yon_yer_17),
+            # düzeltme turu 2 (F10i-kontrol-2 B27)
+            ("koruyucu", b_koruyucu_8), ("koruyucu", b_koruyucu_9), ("koruyucu", b_koruyucu_10)]
 
 
 def main():
