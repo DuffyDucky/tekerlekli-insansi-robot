@@ -81,6 +81,18 @@
     "metin": "[(4, 3)]"
    },
    {
+    "yer": "KARISIK_BILINEN",
+    "ozet": "0518afcec85219db",
+    "neden": "bilinen karışık sınıflı yollar",
+    "metin": "[(3, ('kirmizi', 'turuncu')), (5, ('sari', 'turuncu')), (7, ('sari', 'turuncu'))]"
+   },
+   {
+    "yer": "GEO_EKSIK_MUAF",
+    "ozet": "1c6f62c83682b256",
+    "neden": "eksik eşleme muafları",
+    "metin": "[(1, [('G10', \"ön şarj kartı sigorta kutusunun yanında: yol sigorta kutusunda biter ve kartın kutusuna 10 mm'den yakın geçer; G10 (F1 → ön şarj kartı) yol 3'te çizili\")]), (8, [('G10', \"ön şarj kartı sigorta kutusunun yanında: yol sigorta kutusunda biter ve kartın kutusuna 10 mm'den yakın geçer; G10 (F1 → ön şarj kartı) yol 3'te çizili\")])]"
+   },
+   {
     "yer": "GEO_ISTISNA 9",
     "ozet": "e6747509ee24f3ec",
     "neden": "geometri istisnası",
@@ -160,9 +172,9 @@
    },
    {
     "yer": "PARCA_CAD",
-    "ozet": "540ee0cb684e5dc5",
+    "ozet": "402558797743aa0d",
     "neden": "uç parçası → CAD",
-    "metin": "Dağıtım kartı C = taban-disi"
+    "metin": "Dağıtım kartı C = modelsiz"
    },
    {
     "yer": "PARCA_CAD",
@@ -268,6 +280,12 @@
    },
    {
     "yer": "PARCA_CAD",
+    "ozet": "2855ed222229a661",
+    "neden": "uç parçası → CAD",
+    "metin": "XL4016 C = ^XL4016 servo 6 V C"
+   },
+   {
+    "yer": "PARCA_CAD",
     "ozet": "1fcd5a1befaa40cb",
     "neden": "uç parçası → CAD",
     "metin": "XL4016 çevre = ^XL4016 cevre"
@@ -283,6 +301,12 @@
     "ozet": "485f6e719db38396",
     "neden": "uç parçası → CAD",
     "metin": "XT60 (robot tarafı) = nominal"
+   },
+   {
+    "yer": "PARCA_CAD",
+    "ozet": "938a63130a556583",
+    "neden": "uç parçası → CAD",
+    "metin": "XT60E-M = modelsiz"
    },
    {
     "yer": "PARCA_CAD",
@@ -310,6 +334,12 @@
    },
    {
     "yer": "MODELSIZ_KONUM",
+    "ozet": "b7668e8bbacb773f",
+    "neden": "modelsiz uç → nominal konum / vekil",
+    "metin": "Dağıtım kartı C * = None None"
+   },
+   {
+    "yer": "MODELSIZ_KONUM",
     "ozet": "74354bded2a940b9",
     "neden": "modelsiz uç → nominal konum / vekil",
     "metin": "XT60 (akü tarafı) + = (-65.5, 133.0, -29.0) '^Aku LiFePO4'"
@@ -331,6 +361,12 @@
     "ozet": "bb77372a4e32f0ea",
     "neden": "modelsiz uç → nominal konum / vekil",
     "metin": "XT60 (robot tarafı) − = (65.5, 133.0, -29.0) '^Aku LiFePO4'"
+   },
+   {
+    "yer": "MODELSIZ_KONUM",
+    "ozet": "cd575c6737818997",
+    "neden": "modelsiz uç → nominal konum / vekil",
+    "metin": "XT60E-M * = None None"
    },
    {
     "yer": "MODELSIZ_KONUM",
@@ -618,9 +654,21 @@
    },
    {
     "yer": "LISTE ZORUNLU",
-    "ozet": "e07ce287bc388bd9",
+    "ozet": "b4deaf5eb6d80a92",
     "neden": "kural listesi",
-    "metin": "('K1', \"halka pabucun PVC kılıfını çıkar.{0,260}?makaronu G07'nin teline geçir.{0,300}?Direncin öbür bacağını pabucun kovanına sık \\\\(pabuç pensesiyle\\\\), sonra kovana lehimle.{0,120}?Soğuyunca makaronu direncin ve kovanın üstüne çek\", 'G07 direnci pabuç kovanında: kılıf çıkar, makaron, sık, lehimle, makaron (K63)')"
+    "metin": "('K1', \"halka pabucun PVC kılıfını çıkar.{0,260}?makaronu G07'nin teline geçir.{0,200}?Makaronu lehim yerinden uzağa, telin geri tarafına it ve iki lehim bitip soğuyana kadar orada tut.{0,120}?Direnci telin ucuna lehimle\\\\. Direncin öbür bacağını pabucun kovanına sık \\\\(pabuç pensesiyle\\\\), sonra kovana lehimle.{0,120}?Soğuyunca makaronu direncin ve kovanın üstüne çek\", 'G07 direnci pabuç kovanında: kılıf çıkar, makaron geçir ve uzakta tut, direnç tele, sık, lehimle, makaron (K63)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "3b1425301a0cf567",
+    "neden": "kural listesi",
+    "metin": "('K2', \"dikişleri sıkmadan önce, enerjisizken \\\\(akü XT60 ayrık\\\\): lehimden önce hoparlör kablosunun \\\\(AU3\\\\) \\\\+ damarını iki ucunda multimetrenin süreklilik kademesiyle bul.{0,80}?Hoparlör kablosunun \\\\(AU3\\\\) kafa ucunu PAM8403'ün sol kanal çıkışına lehimle.{0,260}?Kutup kontrolü, dikişleri sıkmadan önce \\\\(AU3\\\\): işaretli \\\\+ damarı {uc.AU3:+:a} ucunda, öbür damar {uc.AU3:−:a} ucunda.{0,60}?Sonra dikişleri\\\\s+sık\", 'K2 AU3: enerjisiz lehim, kutup kontrolü, sonra dikişler')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "033570ab282449da",
+    "neden": "kural listesi",
+    "metin": "('K2', 'Hoparlör kablosu \\\\(AU3\\\\) dışındaki dört kabloyu \\\\(U03, H02, S10, G17\\\\) kafa ucunda bağla', 'K2: kafa ucunda bağla yalnız öbür dört kablo (AU3 ayrı cümlede)')"
    },
    {
     "yer": "LISTE ZORUNLU",
@@ -1152,9 +1200,57 @@
    },
    {
     "yer": "LISTE ZORUNLU_ALAN",
-    "ozet": "45ebb116a7576d15",
+    "ozet": "da2937238c02e349",
     "neden": "kural listesi",
-    "metin": "('F1', 'kontrol', \"Okuma {v.aku_olcum} aralığının altında ya da üstündeyse: ana anahtarı kapat, aküyü XT60'tan ayır\", 'F1 kontrol: G07 okuması aralık dışındaysa akü ayrılır')"
+    "metin": "('F1', 'kontrol', \"Bölücü okuması {v.aku_olcum} aralığının altında ya da üstündeyse: ana anahtarı kapat, aküyü XT60'tan ayır\", 'F1 kontrol: G07 okuması aralık dışındaysa akü ayrılır')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_ALAN",
+    "ozet": "f9538716b030b4db",
+    "neden": "kural listesi",
+    "metin": "('F1', 'kontrol', \"Önce akünün kendi gerilimini oku: akü XT60'tan ayrıkken kırmızı ucu akünün XT60'ındaki \\\\(akü tarafı\\\\) \\\\+ kontağına, siyah ucu − kontağına değdir \\\\(bir uç iki kontağa birden değmesin, iki uç birbirine değmesin\\\\)\", 'F1 kontrol: G07 ölçümünde akünün kendi gerilimi (akü ayrıkken, kısa devre uyarılarıyla)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_ALAN",
+    "ozet": "1c1002a5ab4cfce0",
+    "neden": "kural listesi",
+    "metin": "('F1', 'kontrol', 'beklenen bölücü okuması = akü gerilimi × bölücü oranı \\\\({oran.aku_olcum}\\\\); bu açıklamadır, karar ölçütü değildir', 'F1 kontrol: beklenen = akü × oran yalnız açıklama (karar ölçütü değil)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_ALAN",
+    "ozet": "3a08d2c395d54d0e",
+    "neden": "kural listesi",
+    "metin": "('F1', 'kontrol', \"Akü gerilimi {v.aku_aralik} dışındaysa burada dur: bölücü ölçümüne geçme, ana anahtarı açma, aşama 2'ye \\\\(F5\\\\) geçme\", 'F1 kontrol: akü aralık dışındaysa bölücü ölçümüne geçilmez (dur)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_ALAN",
+    "ozet": "91f1c8f08c20ed2d",
+    "neden": "kural listesi",
+    "metin": "('F1', 'kontrol', 'Akü gerilimi {v.aku_aralik} içindeyse: kırmızı ucu arayüz kartındaki akü ölçüm bölücüsünün orta noktasına', 'F1 kontrol: bölücü ölçümü yalnız akü aralıktayken')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_ALAN",
+    "ozet": "4f0ccb0f658833b1",
+    "neden": "kural listesi",
+    "metin": "('F1', 'kontrol', 'Karar yalnız banttan: okuma {v.aku_olcum} içindeyse bölücü geçer', 'F1 kontrol: bölücü kararı yalnız bantla')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_ALAN",
+    "ozet": "99638ba83eab2dcb",
+    "neden": "kural listesi",
+    "metin": "('F1', 'kontrol', 'Akü gerilimi {v.aku_aralik} içinde olduğu için bölücü bozuk', 'F1 kontrol: akü aralıkta, okuma bant dışı → bölücü bozuk')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_ALAN",
+    "ozet": "8ec64c6b3d5ff798",
+    "neden": "kural listesi",
+    "metin": "('F1', 'kontrol', 'Listedeki yerlerde kusur bulunmazsa da devam etme: akü gerilimini ve bölücü okumasını kayda yaz', 'F1 kontrol: kusur bulunmazsa da devam edilmez, kayda yazılır')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_ALAN",
+    "ozet": "6644bfc395606ebf",
+    "neden": "kural listesi",
+    "metin": "('F1', 'kontrol', \"bölücü düzelip okuma aralığa girene kadar ana anahtarı yeniden açma, ESP32'ye bu bölücüyle enerji verme, aşama 2'ye \\\\(F5\\\\) geçme\", 'F1 kontrol: aralık dışı okumada ana anahtar, ESP32 ve aşama 2 yasağı')"
    },
    {
     "yer": "LISTE ZORUNLU_CUMLE",
@@ -1245,6 +1341,42 @@
     "ozet": "474c23d0a478d04a",
     "neden": "kural listesi",
     "metin": "('K1', \"lehimden önce K2'nin pimlerini bul\", '\\\\(bobin boşta\\\\) {kontak.K2:giris} ile {kontak.K2:bos} arası öter, {kontak.K2:giris} ile {kontak.K2:cikis} arası ötmez', 'K1 is_: K2 pim okuması kayıttaki kontak uçlarıyla (COM ↔ NC öter, COM ↔ NO ötmez)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_SIRA",
+    "ozet": "812decf642df7b0e",
+    "neden": "kural listesi",
+    "metin": "('K2', 'is_', \"Hoparlör kablosunun \\\\(AU3\\\\) kafa ucunu PAM8403'ün sol kanal çıkışına lehimle\", '[dD]ikiş\\\\w*\\\\s+sık(?!madan|ılmad)\\\\w*', \"K2 AU3: dikişler AU3'ün lehiminden sonra sıkılır\")"
+   },
+   {
+    "yer": "LISTE ZORUNLU_SIRA",
+    "ozet": "c36c77cbf0177716",
+    "neden": "kural listesi",
+    "metin": "('K2', 'is_', 'Kutup kontrolü, dikişleri sıkmadan önce \\\\(AU3\\\\)', '[dD]ikiş\\\\w*\\\\s+sık(?!madan|ılmad)\\\\w*', 'K2 AU3: dikişler kutup kontrolünden sonra sıkılır')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_SIRA",
+    "ozet": "97bc61d7acdc6a10",
+    "neden": "kural listesi",
+    "metin": "('F1', 'kontrol', 'Akü gerilimi {v.aku_aralik} dışındaysa burada dur', \"aküyü XT60'tan tak, sonra ana anahtarı aç: okunan gerilim akü geriliminin\", 'F1 G07: akü aralık dışı kapısı bölücü ölçümünden önce')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_SIRA",
+    "ozet": "87f0d3bfa4d574a8",
+    "neden": "kural listesi",
+    "metin": "('K1', 'is_', 'Makaronu lehim yerinden uzağa, telin geri tarafına it', 'Direnci telin ucuna lehimle|sonra kovana lehimle', 'K1 G07: makaron lehimlerden önce lehim yerinden uzakta')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_SIRA",
+    "ozet": "0fe6e8df9a216432",
+    "neden": "kural listesi",
+    "metin": "('K1', 'is_', \"lehimden önce makaronu G07'nin teline geçir\", 'Direnci telin ucuna lehimle|sonra kovana lehimle', 'K1 G07: makaron lehimlerden önce tele geçirilir')"
+   },
+   {
+    "yer": "LISTE ZORUNLU_SIRA",
+    "ozet": "f1796c23b45d4b1d",
+    "neden": "kural listesi",
+    "metin": "('F1', 'kontrol', 'Önce akünün kendi gerilimini oku', \"aküyü XT60'tan tak, sonra ana anahtarı aç: okunan gerilim akü geriliminin\", 'F1 G07: akünün kendi gerilimi akü takılmadan önce okunur')"
    },
    {
     "yer": "LISTE TERIM_ISTISNA",
@@ -1392,9 +1524,9 @@
    },
    {
     "yer": "LISTE CIPLAK_KURAL",
-    "ozet": "3c7515c23cea5f22",
+    "ozet": "aa17ebbd75e2f0fb",
     "neden": "kural listesi",
-    "metin": "('gerilim (akü ölçümü)', '(?<![\\\\w{.,])\\\\d+(?:[.,]\\\\d+)?(?: ?[–-] ?\\\\d+(?:[.,]\\\\d+)?)? ?m?v\\\\b', 'akü ölçüm|bölücü oran|bölücünün orta|bölücüsünün orta')"
+    "metin": "('gerilim (akü ölçümü)', '(?<![\\\\w{.,])\\\\d+(?:[.,]\\\\d+)?(?: ?[–-] ?\\\\d+(?:[.,]\\\\d+)?)? ?m?v\\\\b', 'akü ölçüm|bölücü oran|bölücünün orta|bölücüsünün orta|\\\\bokuma\\\\b')"
    },
    {
     "yer": "LISTE YASAK",
@@ -1488,9 +1620,9 @@
    },
    {
     "yer": "LISTE YASAK",
-    "ozet": "1cccf08c9d293493",
+    "ozet": "6e98832de56f60a1",
     "neden": "kural listesi",
-    "metin": "('mantar / ana anahtar uçları aynı vidada', '\\\\b(?:mantar\\\\w*|ana\\\\s+anahtar\\\\w*)(?:\\\\s+\\\\w+){0,3}?\\\\s+(?:uç(?:lar|ları)\\\\w*|iki\\\\s+uc\\\\w*|giriş\\\\w*\\\\s+ve\\\\s+çıkış\\\\w*)[^.;!?\\\\n]{0,40}?\\\\b(?:aynı|tek|ortak)\\\\s+(?:vida|klemens|saplama|pabu[çc])\\\\w*[^.;!?\\\\n]{0,30}?\\\\b(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|bağlantı\\\\s+yap)\\\\w*|\\\\b(?:aynı|tek|ortak)\\\\s+(?:vida|klemens|saplama|pabu[çc])\\\\w*[^.;!?\\\\n]{0,30}?\\\\b(?:mantar\\\\w*|ana\\\\s+anahtar\\\\w*)(?:\\\\s+\\\\w+){0,3}?\\\\s+(?:uç(?:lar|ları)\\\\w*|iki\\\\s+uc\\\\w*|giriş\\\\w*\\\\s+ve\\\\s+çıkış\\\\w*)[^.;!?\\\\n]{0,30}?\\\\b(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|bağlantı\\\\s+yap)\\\\w*', '(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|yap)(?:ma|me)(?:z|dan|den|yın|yin|yınız|yiniz|malı|meli)?|(?:bağla|tak|sök|çıkar|kes|değiştir|yap)(?:ıl|il|ul|ül)?(?:maz|mez)')"
+    "metin": "('mantar / ana anahtar uçları aynı vidada', '\\\\b(?:mantar\\\\w*|ana\\\\s+anahtar\\\\w*)(?:\\\\s+\\\\w+){0,3}?\\\\s+(?:uç(?:lar|ları)\\\\w*|iki\\\\s+uc\\\\w*|giriş\\\\w*\\\\s+ve\\\\s+çıkış\\\\w*)[^.;!?\\\\n]{0,40}?\\\\b(?:aynı|tek|ortak)\\\\s+(?:vida|klemens|saplama|pabu[çc]|kontak)\\\\w*[^.;!?\\\\n]{0,30}?\\\\b(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|bağlantı\\\\s+yap)\\\\w*|\\\\b(?:aynı|tek|ortak)\\\\s+(?:vida|klemens|saplama|pabu[çc]|kontak)\\\\w*[^.;!?\\\\n]{0,30}?\\\\b(?:mantar\\\\w*|ana\\\\s+anahtar\\\\w*)(?:\\\\s+\\\\w+){0,3}?\\\\s+(?:uç(?:lar|ları)\\\\w*|iki\\\\s+uc\\\\w*|giriş\\\\w*\\\\s+ve\\\\s+çıkış\\\\w*)[^.;!?\\\\n]{0,30}?\\\\b(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|bağlantı\\\\s+yap)\\\\w*', '(?:bağla|tak|lehimle|sök|çıkar|vidala|sık|kes|değiştir|yap)(?:ma|me)(?:z|dan|den|yın|yin|yınız|yiniz|malı|meli)?|(?:bağla|tak|sök|çıkar|kes|değiştir|yap)(?:ıl|il|ul|ül)?(?:maz|mez)')"
    },
    {
     "yer": "LISTE YASAK",
@@ -1626,9 +1758,9 @@
    },
    {
     "yer": "LISTE TALIMAT_LISTE",
-    "ozet": "c83ef2cdd37d8959",
+    "ozet": "fd84f1a15dae3def",
     "neden": "kural",
-    "metin": "'(?<!\\\\w)\\\\d+\\\\s+(?:kablo|tel|hat|uç)\\\\w*(?!\\\\w)'"
+    "metin": "'(?<!\\\\w)\\\\d+\\\\s+(?:kablo|tel|hat|uç)\\\\w*(?:\\\\s*\\\\([^()]*\\\\))?\\\\s*:'"
    },
    {
     "yer": "LISTE TALIMAT_OK",
@@ -1647,6 +1779,18 @@
     "ozet": "d59eced1ded07f84",
     "neden": "kural",
     "metin": "40"
+   },
+   {
+    "yer": "LISTE CUMLE_GENIS",
+    "ozet": "fbb448f8490521a1",
+    "neden": "kural",
+    "metin": "'(?<=[!?])\\\\s+|(?<=\\\\D\\\\.)(?<!\\\\b[öÖ]r\\\\.)(?<!\\\\b[vV]b\\\\.)(?<!\\\\b[bB]kz\\\\.)\\\\s+|\\\\n'"
+   },
+   {
+    "yer": "LISTE GERILIM_BAGLAM",
+    "ozet": "0113f08e4c7c7b46",
+    "neden": "kural",
+    "metin": "'akü ölçüm|bölücü oran|bölücünün orta|bölücüsünün orta|\\\\bokuma\\\\b'"
    }
   ],
   "metin": [
@@ -2381,6 +2525,12 @@
     "ozet": "10f433b65c5e6659",
     "neden": "zorunlu",
     "metin": "Sonra lehimden önce makaronu G07'nin teline geçir: boyu direnci, iki bacağını ve pabucun kovanını birlikte örtecek kadar (lehimden sonra geçmez)."
+   },
+   {
+    "yer": "kaynak K1 is_",
+    "ozet": "a3c275a8a766110f",
+    "neden": "zorunlu",
+    "metin": "Makaronu lehim yerinden uzağa, telin geri tarafına it ve iki lehim bitip soğuyana kadar orada tut (lehimin ısısı yakındaki makaronu erken büzer, sonra kaymaz)."
    },
    {
     "yer": "kaynak K1 is_",
@@ -3482,21 +3632,9 @@
    },
    {
     "yer": "kaynak E3a is_",
-    "ozet": "b58176988b42eb16",
+    "ozet": "5abe22dc95f6151c",
     "neden": "zorunlu, anahtar sözcük",
-    "metin": "Takmadan önce gövde baskısını oku: sonu yalnız A (ör."
-   },
-   {
-    "yer": "kaynak E3a is_",
-    "ozet": "6fdfb98c852b0238",
-    "neden": "zorunlu, anahtar sözcük",
-    "metin": "P6KE18A) tek yönlüdür, renkli bandı katottur; sonu CA (ör."
-   },
-   {
-    "yer": "kaynak E3a is_",
-    "ozet": "60a767d57669ca31",
-    "neden": "zorunlu",
-    "metin": "P6KE18CA) çift yönlüdür, bandı yoktur (Vishay P6KE veri sayfası)."
+    "metin": "Takmadan önce gövde baskısını oku: sonu yalnız A (ör. P6KE18A) tek yönlüdür, renkli bandı katottur; sonu CA (ör. P6KE18CA) çift yönlüdür, bandı yoktur (Vishay P6KE veri sayfası)."
    },
    {
     "yer": "kaynak E3a is_",
@@ -4382,15 +4520,33 @@
    },
    {
     "yer": "kaynak K2 is_",
-    "ozet": "5cb954d6ace22186",
-    "neden": "metin",
-    "metin": "Kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı), sonra dikişleri sık."
+    "ozet": "06bc8be9584f00c8",
+    "neden": "zorunlu",
+    "metin": "Hoparlör kablosu (AU3) dışındaki dört kabloyu (U03, H02, S10, G17) kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı)."
+   },
+   {
+    "yer": "kaynak K2 is_",
+    "ozet": "b4b8e4dc82d9ed02",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "Hoparlör kablosu (AU3) için, dikişleri sıkmadan önce, enerjisizken (akü XT60 ayrık): lehimden önce hoparlör kablosunun (AU3) + damarını iki ucunda multimetrenin süreklilik kademesiyle bul ve işaretle (iki ucu da boşta)."
    },
    {
     "yer": "kaynak K2 is_",
     "ozet": "781a60d07d7213af",
-    "neden": "yer tutucu",
+    "neden": "yer tutucu, zorunlu",
     "metin": "Hoparlör kablosunun (AU3) kafa ucunu PAM8403'ün sol kanal çıkışına lehimle: + damarını {uc.AU3:+:a} ucuna, − damarını {uc.AU3:−:a} ucuna; gövde ucunu fişsiz bırak (madde 6), F2'de hoparlöre lehimlenir."
+   },
+   {
+    "yer": "kaynak K2 is_",
+    "ozet": "72a198dcb0215ac4",
+    "neden": "yer tutucu, zorunlu",
+    "metin": "Kutup kontrolü, dikişleri sıkmadan önce (AU3): işaretli + damarı {uc.AU3:+:a} ucunda, öbür damar {uc.AU3:−:a} ucunda (ters ise lehimi şimdi düzelt)."
+   },
+   {
+    "yer": "kaynak K2 is_",
+    "ozet": "e866c8ed559492c7",
+    "neden": "zorunlu",
+    "metin": "Sonra dikişleri sık."
    },
    {
     "yer": "kaynak K2 is_",
@@ -4838,9 +4994,27 @@
    },
    {
     "yer": "kaynak F1 kontrol",
-    "ozet": "4dca854aeffa0b5e",
+    "ozet": "194b5b771164453c",
     "neden": "anahtar sözcük",
-    "metin": "Akü ölçüm teli (G07), aşama 1'de mantar ölçümünden sonra: ana anahtar kapalı, akü XT60'tan ayrıkken multimetreyi DC V kademesinde bırak; kırmızı ucu arayüz kartındaki akü ölçüm bölücüsünün orta noktasına (G07'nin kart ucu), siyah ucu yıldız barasının akü dönüşü (G05) saplamasına bağla."
+    "metin": "Akü ölçüm teli (G07), aşama 1'de mantar ölçümünden sonra: ana anahtar kapalı, akü XT60'tan ayrıkken multimetreyi DC V kademesinde bırak (kırmızı uç V soketinde)."
+   },
+   {
+    "yer": "kaynak F1 kontrol",
+    "ozet": "414674394a1f7b62",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "Önce akünün kendi gerilimini oku: akü XT60'tan ayrıkken kırmızı ucu akünün XT60'ındaki (akü tarafı) + kontağına, siyah ucu − kontağına değdir (bir uç iki kontağa birden değmesin, iki uç birbirine değmesin), okunanı not al: bu akü gerilimidir."
+   },
+   {
+    "yer": "kaynak F1 kontrol",
+    "ozet": "1b967e7d37f5cb70",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Akü gerilimi {v.aku_aralik} dışındaysa burada dur: bölücü ölçümüne geçme, ana anahtarı açma, aşama 2'ye (F5) geçme; akü {v.aku_aralik} aralığına gelince bu maddeyi baştan yinele (akünün şarjı bu adım için kaynakta yok, doğrulanmadı)"
+   },
+   {
+    "yer": "kaynak F1 kontrol",
+    "ozet": "0c5ae8bad3c10e24",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Akü gerilimi {v.aku_aralik} içindeyse: kırmızı ucu arayüz kartındaki akü ölçüm bölücüsünün orta noktasına (G07'nin kart ucu), siyah ucu yıldız barasının akü dönüşü (G05) saplamasına bağla."
    },
    {
     "yer": "kaynak F1 kontrol",
@@ -4850,27 +5024,51 @@
    },
    {
     "yer": "kaynak F1 kontrol",
-    "ozet": "becc994bd3d080aa",
-    "neden": "anahtar sözcük",
-    "metin": "Hiç gerilim okunmuyorsa G07'nin pabucu, direnci ya da kart ucu kopmuş; aralığın üstündeyse bölücünün alt direnci eksik ya da yanlış."
+    "ozet": "cc5dba93630b232b",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Bölücü okumasını not al: not aldığın akü gerilimiyle birlikte ESP32'nin bir kez yapılan multimetre kalibrasyonunda kullanılır (E2); beklenen bölücü okuması = akü gerilimi × bölücü oranı ({oran.aku_olcum}); bu açıklamadır, karar ölçütü değildir (dirençlerin toleransı kaynakta yok, kablajda teyit)."
    },
    {
     "yer": "kaynak F1 kontrol",
-    "ozet": "7ba7c6ca85ceabc5",
+    "ozet": "c59c1a553c68e8f9",
     "neden": "yer tutucu, zorunlu, anahtar sözcük",
-    "metin": "Okuma {v.aku_olcum} aralığının altında ya da üstündeyse: ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök; akü ayrıkken bölücüyü kontrol et: G07'nin direnci (pabuç ile bölücünün orta noktası arası, K1 kontrolündeki direnç ölçümü), direncin ve G07'nin iki ucundaki lehim, bölücünün alt direnci (akü {v.aku_aralik} dışındaysa okuma da bölücü oranı kadar kayar)."
+    "metin": "Karar yalnız banttan: okuma {v.aku_olcum} içindeyse bölücü geçer; ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök"
+   },
+   {
+    "yer": "kaynak F1 kontrol",
+    "ozet": "acccad88b9c8fd96",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Bölücü okuması {v.aku_olcum} aralığının altında ya da üstündeyse: ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök."
+   },
+   {
+    "yer": "kaynak F1 kontrol",
+    "ozet": "8277a94231efa729",
+    "neden": "yer tutucu, zorunlu, anahtar sözcük",
+    "metin": "Akü gerilimi {v.aku_aralik} içinde olduğu için bölücü bozuk: hiç gerilim okunmadıysa G07'nin pabucu, direnci ya da kart ucu kopmuş; aralığın üstündeyse bölücünün alt direnci eksik ya da yanlış."
+   },
+   {
+    "yer": "kaynak F1 kontrol",
+    "ozet": "0b87a255d36e7df2",
+    "neden": "anahtar sözcük",
+    "metin": "Akü ayrıkken bölücüyü kontrol et: G07'nin direnci (pabuç ile bölücünün orta noktası arası, K1 kontrolündeki direnç ölçümü), direncin ve G07'nin iki ucundaki lehim, bölücünün alt direnci."
    },
    {
     "yer": "kaynak F1 kontrol",
     "ozet": "2344ab8ab4f939f8",
-    "neden": "anahtar sözcük",
+    "neden": "zorunlu, anahtar sözcük",
     "metin": "Bölücünün orta noktası ESP32'nin akü ölçüm pinine bağlı (B6a, X01): bölücü düzelip okuma aralığa girene kadar ana anahtarı yeniden açma, ESP32'ye bu bölücüyle enerji verme, aşama 2'ye (F5) geçme."
    },
    {
     "yer": "kaynak F1 kontrol",
-    "ozet": "bf9d8849ca2fa020",
+    "ozet": "14911287e41ee588",
+    "neden": "anahtar sözcük",
+    "metin": "Kusuru düzeltince ölçümü akü gerilimi maddesinden baştan yinele."
+   },
+   {
+    "yer": "kaynak F1 kontrol",
+    "ozet": "55e69881d881dda7",
     "neden": "zorunlu, anahtar sözcük",
-    "metin": "Bitince ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök"
+    "metin": "Listedeki yerlerde kusur bulunmazsa da devam etme: akü gerilimini ve bölücü okumasını kayda yaz (tolerans kaynakta yok)"
    },
    {
     "yer": "kaynak F1 kablo",

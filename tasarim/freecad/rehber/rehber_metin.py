@@ -325,6 +325,9 @@ ADIM = {
             "Öbür uçta (G07'nin ana anahtar ucu), lehimden önce: kırmızı {vida.ana-anahtar} halka pabucun PVC kılıfını çıkar (ana "
             "anahtarın saplama ölçüsü kablajda teyit); yalıtımlı pabucun kovanına lehim kılıfı eritir. Sonra lehimden önce makaronu "
             "G07'nin teline geçir: boyu direnci, iki bacağını ve pabucun kovanını birlikte örtecek kadar (lehimden sonra geçmez). "
+            # P10.7b2b (F10i-kontrol-3 A5): makaron lehim yerinden uzakta bekler, ısıdan erken büzülmesin
+            "Makaronu lehim yerinden uzağa, telin geri tarafına it ve iki lehim bitip soğuyana kadar orada tut (lehimin ısısı "
+            "yakındaki makaronu erken büzer, sonra kaymaz). "
             "Direnci telin ucuna lehimle. Direncin öbür bacağını pabucun kovanına sık (pabuç pensesiyle), sonra kovana lehimle: "
             "direnç ile pabuç arasında tel kalmaz. Soğuyunca makaronu direncin ve kovanın üstüne çek ve ısıtarak büz: direnç, iki "
             "bacağı ve kovan tümüyle örtülü, açıkta bacak kalmaz (G07'nin direnci {yer.R-aku-olcum}). Gerginlik giderme: G07'yi direncin tel tarafında, ana anahtara giden G04'e kablo bağıyla tuttur; "
@@ -820,10 +823,16 @@ ADIM = {
             "≈ 34 mm, iki dik dönüş, mil penceresi 20 × 10) fişleri elle geçir (KT4; kumpas ölçüsü yetmez). Fiş geçmezse sırasıyla: "
             "kablo fişsiz geçirilip yeniden sonlandırılır (USB 2.0'da lehimli USB-A fiş), HDMI için şerit HDMI + uç adaptörleri. Demeti "
             "kelepçe / kılıfla kapatmadan önce Efe'nin iki cevabı beklenir (ESP32 bilinçli reseti DTR / RTS ile; ReSpeaker 16 kHz). "
-            "Kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı), sonra dikişleri sık. "
+            # P10.7b2b (F10i-kontrol-3 A4): AU3'ün lehimi ve kutup kontrolü dikişler sıkılmadan önce (sıkıp kafayı yeniden açmak yok)
+            # P10.7b2b düzeltme turu 1 (F10j-kontrol D2): "kafa ucunda bağla" yalnız öbür dört kablo; AU3 ayrı cümlede (geri sarma yok)
+            "Hoparlör kablosu (AU3) dışındaki dört kabloyu (U03, H02, S10, G17) kafa ucunda bağla (E4'te arka kabuk dikişleri "
+            "sıkılmadı). Hoparlör kablosu (AU3) için, dikişleri sıkmadan önce, enerjisizken (akü XT60 ayrık): "
             # düzeltme turu 2 (F10i-kontrol-2 §3 AU3): PAM8403 ucu kayıttan (kablolar.json AU3 damarları: L+ → +, L− → −)
-            "Hoparlör kablosunun (AU3) kafa ucunu PAM8403'ün sol kanal çıkışına lehimle: + damarını {uc.AU3:+:a} ucuna, − damarını "
-            "{uc.AU3:−:a} ucuna; gövde ucunu fişsiz bırak (madde 6), F2'de hoparlöre lehimlenir.\n"
+            "lehimden önce hoparlör kablosunun (AU3) + damarını iki ucunda multimetrenin süreklilik kademesiyle bul ve işaretle (iki "
+            "ucu da boşta). Hoparlör kablosunun (AU3) kafa ucunu PAM8403'ün sol kanal çıkışına lehimle: + damarını {uc.AU3:+:a} ucuna, − damarını "
+            "{uc.AU3:−:a} ucuna; gövde ucunu fişsiz bırak (madde 6), F2'de hoparlöre lehimlenir. Kutup kontrolü, dikişleri sıkmadan "
+            "önce (AU3): işaretli + damarı {uc.AU3:+:a} ucunda, öbür damar {uc.AU3:−:a} ucunda (ters ise lehimi şimdi düzelt). Sonra dikişleri "
+            "sık.\n"
             "6. Boyundan inenler travers arkasından gövdeye: HDMI direğin solundan ekran arkasına (F3); hub uzatmasının ucu üst arka kapak "
             "hizasında (F5); hoparlör kablosu sağ önden göğüs altına (y ≈ 1.000; F2'de hoparlöre).\n"
             "7. Göğüs ekranı 12 V boyundan geçmez: sigorta kutusunun F6 {a.F6} ({bicak.F6}) yuvasından ayrı dal (K11 a: ana anahtar sonrası, "
@@ -907,20 +916,33 @@ ADIM = {
                  "alma, ön şarj ve motor yön testi F5'te (İlk enerji, aşama 2). Bu aşamalar, sigorta sırası, ölçü noktası, klemensin + ucu, "
                  "multimetre aralığı ve \"yerden kesik\" düzeni bu adım için kaynakta yok, doğrulanmadı",
                  # P10.7b2a (K63): G07'nin enerjili kontrolü, aşama 1'in ölçü düzeniyle (değerler elektrik.md E2 tablosundan)
+                 # P10.7b2b düzeltme turu 1 (F10j-kontrol D1): üç maddeye bölündü; karar ağacı: akü aralık dışındaysa bölücüye hiç
+                 # geçilmez; akü aralıktayken karar yalnız {v.aku_olcum} bandıyla (oran açıklama, karar ölçütü değil). Akü tarafındaki
+                 # XT60'ın cinsi kayıtta yok (kablolar.json): "kontağına"
                  "Akü ölçüm teli (G07), aşama 1'de mantar ölçümünden sonra: ana anahtar kapalı, akü XT60'tan ayrıkken multimetreyi DC V "
-                 "kademesinde bırak; kırmızı ucu arayüz kartındaki akü ölçüm bölücüsünün orta noktasına (G07'nin kart ucu), siyah ucu "
-                 "yıldız barasının akü dönüşü (G05) saplamasına bağla. Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: "
+                 "kademesinde bırak (kırmızı uç V soketinde). Önce akünün kendi gerilimini oku: akü XT60'tan ayrıkken kırmızı ucu akünün "
+                 "XT60'ındaki (akü tarafı) + kontağına, siyah ucu − kontağına değdir (bir uç iki kontağa birden değmesin, iki uç birbirine "
+                 "değmesin), okunanı not al: bu akü gerilimidir. Akü gerilimi {v.aku_aralik} dışındaysa burada dur: bölücü ölçümüne "
+                 "geçme, ana anahtarı açma, aşama 2'ye (F5) geçme; akü {v.aku_aralik} aralığına gelince bu maddeyi baştan yinele (akünün "
+                 "şarjı bu adım için kaynakta yok, doğrulanmadı)",
                  # düzeltme turu 1 (F10i-kontrol A1, A4): oran ve beklenen aralık kayıttan (elektrik.md E2 bölücü, akü aralığı)
-                 "okunan gerilim akü geriliminin bölücü oranı ({oran.aku_olcum}) katıdır: akü {v.aku_aralik} iken bölücünün orta "
-                 "noktasında {v.aku_olcum} okunur (`planlama/adim3/elektrik.md` E2). Hiç gerilim okunmuyorsa G07'nin pabucu, direnci ya "
-                 "da kart ucu kopmuş; aralığın üstündeyse bölücünün alt direnci eksik ya da yanlış. "
+                 "Akü gerilimi {v.aku_aralik} içindeyse: kırmızı ucu arayüz kartındaki akü ölçüm bölücüsünün orta noktasına (G07'nin kart "
+                 "ucu), siyah ucu yıldız barasının akü dönüşü (G05) saplamasına bağla. Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana "
+                 "anahtarı aç: okunan gerilim akü geriliminin bölücü oranı ({oran.aku_olcum}) katıdır: akü {v.aku_aralik} iken bölücünün "
+                 "orta noktasında {v.aku_olcum} okunur (`planlama/adim3/elektrik.md` E2). Bölücü okumasını not al: not aldığın akü "
+                 "gerilimiyle birlikte ESP32'nin bir kez yapılan multimetre kalibrasyonunda kullanılır (E2); beklenen bölücü okuması = "
+                 "akü gerilimi × bölücü oranı ({oran.aku_olcum}); bu açıklamadır, karar ölçütü değildir (dirençlerin toleransı kaynakta "
+                 "yok, kablajda teyit). Karar yalnız banttan: okuma {v.aku_olcum} içindeyse bölücü geçer; ana anahtarı kapat, aküyü "
+                 "XT60'tan ayır, sonra ölçü uçlarını sök",
                  # düzeltme turu 2 (F10i-kontrol-2 §5 G07): aralık dışı okumada ne yapılacağı
-                 "Okuma {v.aku_olcum} aralığının altında ya da üstündeyse: ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını "
-                 "sök; akü ayrıkken bölücüyü kontrol et: G07'nin direnci (pabuç ile bölücünün orta noktası arası, K1 kontrolündeki "
-                 "direnç ölçümü), direncin ve G07'nin iki ucundaki lehim, bölücünün alt direnci (akü {v.aku_aralik} dışındaysa okuma da "
-                 "bölücü oranı kadar kayar). Bölücünün orta noktası ESP32'nin akü ölçüm pinine bağlı (B6a, X01): bölücü düzelip okuma "
-                 "aralığa girene kadar ana anahtarı yeniden açma, ESP32'ye bu bölücüyle enerji verme, aşama 2'ye (F5) geçme. Bitince "
-                 "ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök"],
+                 "Bölücü okuması {v.aku_olcum} aralığının altında ya da üstündeyse: ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü "
+                 "uçlarını sök. Akü gerilimi {v.aku_aralik} içinde olduğu için bölücü bozuk: hiç gerilim okunmadıysa G07'nin pabucu, direnci ya da "
+                 "kart ucu kopmuş; aralığın üstündeyse bölücünün alt direnci eksik ya da yanlış. Akü ayrıkken bölücüyü kontrol et: G07'nin "
+                 "direnci (pabuç ile bölücünün orta noktası arası, K1 kontrolündeki direnç ölçümü), direncin ve G07'nin iki ucundaki lehim, "
+                 "bölücünün alt direnci. Bölücünün orta noktası ESP32'nin akü ölçüm pinine bağlı (B6a, X01): bölücü düzelip okuma "
+                 "aralığa girene kadar ana anahtarı yeniden açma, ESP32'ye bu bölücüyle enerji verme, aşama 2'ye (F5) geçme. Kusuru "
+                 "düzeltince ölçümü akü gerilimi maddesinden baştan yinele. Listedeki yerlerde kusur bulunmazsa da devam etme: akü "
+                 "gerilimini ve bölücü okumasını kayda yaz (tolerans kaynakta yok)"],
         kablo=["Etek bandını takarken K1 hatları sıkışmasın",
                "Burada bağlananlar: ana anahtar (G03, G04; {awg.G04}, halka pabuç; G06'nın + pabucu girişte, G07'nin pabucu çıkışta), "
                "şarj girişi (G06, {awg.G06}), acil stop mantarı (A01 F5 {a.F5} "

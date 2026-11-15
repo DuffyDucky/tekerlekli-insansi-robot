@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-15 06:00",
+ "tarih": "2026-11-15 09:21",
  "tarayici": "chrome.exe",
  "ozet": {
   "adim": 50,
@@ -14,7 +14,7 @@
    "hic_gorunmeyen": []
   },
   "sema": 49,
-  "veri_uretim": "2026-11-15 03:28",
+  "veri_uretim": "2026-11-15 08:41",
   "kaynak_cad": {
    "iskelet": "2026-11-09 14:27",
    "omuz_sag": "2026-11-09 14:27",
@@ -3180,7 +3180,7 @@
   "adim": 50,
   "tasan": [],
   "kucuk_yazi": [],
-  "boyut_kb": 16163,
+  "boyut_kb": 16165,
   "sayfa_esleme": {
    "0": [
     1
@@ -3371,11 +3371,14 @@
   "tamlik": {
    "olculdu": true,
    "adim": 50,
-   "is_karakter": 31525,
+   "is_karakter": 32017,
    "is_eksik_karakter": 0,
-   "madde": 260,
+   "madde": 404,
    "madde_eksik": 0,
+   "madde_fazla": 0,
    "eksik": [],
+   "yineleme": [],
+   "yineleme_sayi": 0,
    "sayfa_parca": {
     "14": [
      [
@@ -3390,11 +3393,11 @@
     "17": [
      [
       19,
-      5117
+      5138
      ],
      [
       20,
-      3298
+      3413
      ],
      [
       21,
@@ -3440,7 +3443,7 @@
     "32": [
      [
       42,
-      3045
+      3401
      ],
      [
       43,
@@ -3868,7 +3871,17 @@
     },
     {
      "adim": "K1",
-     "uyari": "G07 direnci pabuç kovanında: kılıf çıkar, makaron, sık, lehimle, makaron (K63)",
+     "uyari": "G07 direnci pabuç kovanında: kılıf çıkar, makaron geçir ve uzakta tut, direnç tele, sık, lehimle, makaron (K63)",
+     "var": true
+    },
+    {
+     "adim": "K2",
+     "uyari": "K2 AU3: enerjisiz lehim, kutup kontrolü, sonra dikişler",
+     "var": true
+    },
+    {
+     "adim": "K2",
+     "uyari": "K2: kafa ucunda bağla yalnız öbür dört kablo (AU3 ayrı cümlede)",
      "var": true
     },
     {
@@ -4315,6 +4328,46 @@
      "adim": "F1",
      "uyari": "F1 kontrol: G07 okuması aralık dışındaysa akü ayrılır (alan kontrol)",
      "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 kontrol: G07 ölçümünde akünün kendi gerilimi (akü ayrıkken, kısa devre uyarılarıyla) (alan kontrol)",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 kontrol: beklenen = akü × oran yalnız açıklama (karar ölçütü değil) (alan kontrol)",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 kontrol: akü aralık dışındaysa bölücü ölçümüne geçilmez (dur) (alan kontrol)",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 kontrol: bölücü ölçümü yalnız akü aralıktayken (alan kontrol)",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 kontrol: bölücü kararı yalnız bantla (alan kontrol)",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 kontrol: akü aralıkta, okuma bant dışı → bölücü bozuk (alan kontrol)",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 kontrol: kusur bulunmazsa da devam edilmez, kayda yazılır (alan kontrol)",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 kontrol: aralık dışı okumada ana anahtar, ESP32 ve aşama 2 yasağı (alan kontrol)",
+     "var": true
     }
    ],
    "zorunlu_eksik": []
@@ -4323,7 +4376,7 @@
   "elektrik": [],
   "elektrik_sayi": 0,
   "metin_sayisi": {
-   "veri": 4955,
+   "veri": 4957,
    "tarayici": 129
   },
   "parca": 1192,
@@ -4465,7 +4518,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 58.3,
+     "sure_s": 58.9,
      "yon": [
       {
        "yon": [
@@ -4573,7 +4626,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 15.4,
+     "sure_s": 15.0,
      "yon": [
       {
        "yon": [
@@ -4724,7 +4777,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 28.4,
+     "sure_s": 28.6,
      "yon": [
       {
        "yon": [
@@ -4875,7 +4928,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 3.7,
+     "sure_s": 3.8,
      "yon": [
       {
        "yon": [
@@ -5051,7 +5104,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 78.4,
+     "sure_s": 78.0,
      "yon": [
       {
        "yon": [
@@ -5215,7 +5268,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 81.6,
+     "sure_s": 82.0,
      "yon": [
       {
        "yon": [
@@ -5379,7 +5432,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 30.8,
+     "sure_s": 30.9,
      "yon": [
       {
        "yon": [
@@ -5569,7 +5622,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 7.4,
+     "sure_s": 7.5,
      "yon": [
       {
        "yon": [
@@ -5834,7 +5887,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 4.8,
+     "sure_s": 4.9,
      "yon": [
       {
        "yon": [
@@ -6023,7 +6076,7 @@
    ],
    "gecti": true,
    "e3_kafa_serbest": true,
-   "sure_s": 314.6
+   "sure_s": 315.5
   },
   "ucus": {
    "durum": "koştu",
@@ -15948,7 +16001,7 @@
      ]
     }
    ],
-   "sure_s": 970.0
+   "sure_s": 971.7
   },
   "isil_gomme": {
    "durum": "koştu",
@@ -27805,16 +27858,16 @@
     }
    }
   ],
-  "sure_s": 77.6,
+  "sure_s": 80.0,
   "sure": {
    "yukleme_s": 11.6,
-   "sira_s": 87.4,
-   "perdelenme_s": 128.2,
-   "giris_s": 314.6,
-   "ucus_s": 970.0,
-   "toplam_s": 1511.7,
+   "sira_s": 90.0,
+   "perdelenme_s": 131.0,
+   "giris_s": 315.5,
+   "ucus_s": 971.7,
+   "toplam_s": 1519.8,
    "voksel_alani": 87,
-   "voksel_s": 83.5
+   "voksel_s": 85.9
   }
  },
  "perdelenme": {
@@ -31654,7 +31707,7 @@
    }
   ],
   "toplam_gizli": 264,
-  "sure_s": 128.2,
+  "sure_s": 131.0,
   "alt_adim_gizli_istisnasiz": 0,
   "alt_adim_istisna": 117,
   "alt_sinir": 0,
@@ -36197,7 +36250,7 @@
   "hata": [],
   "gecti": true,
   "bolum": 38,
-  "sure_s": 38.4
+  "sure_s": 37.8
  },
  "kablo_esleme": {
   "hata": [],

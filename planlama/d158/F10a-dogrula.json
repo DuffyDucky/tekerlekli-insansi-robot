@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-15 06:39",
+ "tarih": "2026-11-15 11:39",
  "tarayici": "chrome.exe",
  "adim": 50,
  "yontem": "CDP (Chrome DevTools protokolü), file://; önce = 749627b~1 rehber sayfası geçici kopyada (three.js aynı 0.160 yerel paket)",
@@ -3691,6 +3691,6 @@
  },
  "goruntu": [],
  "veri_degismedi": false,
- "sure_s": 430,
+ "sure_s": 436,
  "gecti": true
 }

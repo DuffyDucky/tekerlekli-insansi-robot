@@ -2,7 +2,7 @@
 
 Bir sonraki ajan buradan devam eder. Durum kutuları + hangi komut ne üretti.
 
-## Durum (09.11.2026 16:05, F7a / P7.1: 1,58 m modelinden yeniden üretildi; ayrıntı `planlama/d158/F7a-gunluk.md`)
+## Durum (15.11.2026, P10.7b2b sonunda): son üretim P10.7b2a (commit `4a097fb`): 50 adım, 1192 parça, 49 şema, PDF 80 sayfa; turlar aşağıda "Kayıt" bölümünde (F10f … F10j). Aşağıdaki kutular 09.11.2026 16:05 F7a / P7.1 kaydı (1,58 m modelinden yeniden üretildi; ayrıntı `planlama/d158/F7a-gunluk.md`)
 - [x] F7a-1. Seçiciler 1,58 m: `tasarim/freecad/rehber/rehber_secici.py` (rehberin kendi katmanı; M6_erisim.py / M6_ek.py değişmedi, gerekçe
       dosya başında). 1192 parça (1179 + 13 referans), atanmamış 0; model ↔ rehber modül modül fark 0
 - [x] F7a-2. Üretildi: `rehber_uret.py` tek komut (veri 22 s + 50 adım tarayıcı ≈ 3 dk). `kaynak.cad` = F6a modül FCStd saatleri
@@ -173,6 +173,19 @@ Gece yalnız metin yazıldı: FreeCAD ve `rehber_uret.py` çalışmadı, `rehber
   çarpışan 0, istisna 20, `istisna_bos` 0, ölçüm kaydı 1 (31.6); 121 konum × 2 tema konsol 0; kablo kareleri zor 4 / 14, anlaşılmıyor 0;
   PDF 75 sayfa, en küçük 8,1 pt. Son zincir 13.11 05:28–06:51 (`--veri-yok`, FreeCAD verisi 02:56): F10f / F10e / F10d / F10a-dogrula 0,
   F9b 0, kontrol 0, regresyon aynı. Karar bekleyen: K56 (kol çatalı + 625ZZ sırası), K57 (dirsek çatalı ↔ horn merkez vidası).
+- 2026-11-14 (F10g, P10.5b; `planlama/d158/F10g-gunluk.md`, kontrol `F10g-kontrol.md` GEÇER): K56 (C) ve K57 (a) rehberde; 8 parça
+  taşındı, uçuş istisnası 20 → 16, çarpışan 0, alt adım 71, PDF 75 sayfa, perdelenme istisnası 115 → 117.
+- 2026-11-14 (F10h, P10.7b1; `planlama/d158/F10h-gunluk.md`, kontroller `F10h-kontrol.md` … `-5.md`): rehberin elektrik tarafı tek
+  kablo kaynağına (`planlama/adim3/kablolar.json`) bağlandı; kritik değerler yer tutucuyla, çizilen kablolar tablodan renkli (`rehber_kablo.py`),
+  onaylı kritik metin kaydı (`tasarim/freecad/rehber/rehber_kritik_onay.json`). Üretim: parça 1192, şema 49, alt adım 71, PDF 77 sayfa,
+  çizilen 51 / çizilmeyen 23.
+- 2026-11-15 (F10i, P10.7b2a; `planlama/d158/F10i-gunluk.md`, kontroller `F10i-kontrol.md` … `-4.md`; commit `4a097fb`): K63 ve 74
+  kablonun bağlama talimatı. Üretimde PDF 79 sayfa, K1'in son ≈ 3645 karakteri basılı sürümde yoktu; `rehber/yazdir.html` iş metnini
+  devam sayfasına akıtıyor, `rehber_uret.py`'ye PDF tamlık denetimi eklendi; yeniden üretimde **PDF 80 sayfa**, eksik 0.
+- 2026-11-15 (F10j, P10.7b2b; `planlama/d158/F10j-gunluk.md`; kaynak düzeyinde, üretim koşmadı): K2 madde 5 AU3 sırası, G07 makaronu,
+  F1'de akünün kendi gerilimi; PDF tamlık denetimi yinelemeyi (devam sayfası başı, iki kez basılan madde) ve `kablo` / `erisim` /
+  `baglanti_md` alanlarını görüyor; denetim kalıpları ve eşleme dişleri. Bugünkü PDF (80 sayfa) yeni denetimden yanlış alarmsız geçti
+  (doğrudan çağrı). Metin değiştiği için rehber yeniden üretilecek; beklenen sayılar `F10j-gunluk.md` "Üretimde beklenen".
 
 ## Kararlar (tasarım)
 - 09.11 (F7b): Göğüs ekranı / kafa kablo yolları (`lale158/kablo_yolu_ekran.py`) `semalar` olarak girer, `parcalar`a değil: gösterim

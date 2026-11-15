@@ -148,6 +148,8 @@ PARCA_CAD = {                                                           # tablo 
     "JGB37-520 ön sol": r"^Motor JGB37-520 \(on sol\)", "JGB37-520 arka sol": r"^Motor JGB37-520 \(arka sol\)",
     "JGB37-520 ön sağ": r"^Motor JGB37-520 \(on sag\)", "JGB37-520 arka sağ": r"^Motor JGB37-520 \(arka sag\)",
     "XL4016 A": r"^XL4016 servo 6 V A", "XL4016 B": r"^XL4016 servo 6 V B", "XL4016 çevre": r"^XL4016 cevre",
+    "XL4016 C": r"^XL4016 servo 6 V C",                                  # P10.7b2b (R8): G16 / SV3'ün ucu; CAD parçası güç panelinde
+    "XT60E-M": MODELSIZ,                                                 # P10.7b2b (R8): G06'nın ucu; modeli yok (K50, MODELSIZ_KONUM)
     "Dağıtım kartı A": r"^Servo dagitim karti A", "Dağıtım kartı B": r"^Servo dagitim karti B",
     "Arayüz kartı": r"^Arayuz karti", "ESP32 DevKit": r"^ESP32 (DevKit|tasiyici)", "ESP32 / arayüz kartı": r"^(ESP32 |Arayuz karti)",
     "Elektronik katı": r"^(Arayuz karti|PCA9685|ESP32 )", "PC817 modülü (arayüz kartı)": r"^Arayuz karti",
@@ -155,7 +157,8 @@ PARCA_CAD = {                                                           # tablo 
     "Acil stop mantarı": r"^Acil stop kontak govdesi",
     "XT60 (akü tarafı)": NOMINAL, "XT60 (robot tarafı)": NOMINAL, "Anahtarlı bara": NOMINAL,
     "Yıldız barası": NOMINAL, "Acil stop düğümü": MODELSIZ,
-    "Dağıtım kartı C": TABAN_DISI, "Kafa giriş klemensi": TABAN_DISI, "USB hub": TABAN_DISI,
+    # P10.7b2b (R8): dağıtım kartı C taban dışı (kafa) değil, güç panelinde (kablolar.json karar P7b2a-6); kart modelde yok (R23)
+    "Dağıtım kartı C": MODELSIZ, "Kafa giriş klemensi": TABAN_DISI, "USB hub": TABAN_DISI,
 }
 # Modelsiz uç parçası → nominal konum / yerine geçen parça (P10.7b1 açık işler turu, F10h-kontrol-2 madde 11). Anahtar (parça, kutup);
 # kutup ucun "nokta" alanıdır ("+" ya da "−"), "+ / −" gibi iki damarlı uçta kablonun ilk damarı; "*" her kutup. Değer (nokta, vekil,
@@ -175,7 +178,26 @@ MODELSIZ_KONUM = {
                               "modeli yok; CAD yolları bara yerine röleden çıkar ('role -> WAGO'): yerine Röle K1 kutusu. Röle K1 ↔ bara ayırt edilmez"),
     ("Acil stop düğümü", "*"): (None, None,
                                 "güç panelinde küçük pertinaks kart; CAD'de ne modeli ne yol noktası var (yerleşim P10.7b2): sınanmaz, elle bakıldı"),
+    # P10.7b2b (R8)
+    ("Dağıtım kartı C", "*"): (None, None,
+                               "güç panelinde, XL4016 C'nin yanında (kablolar.json P7b2a-6); kart modelde yok (R23) ve yol 6 yalnız boyun → "
+                               "kafa bölümünü çiziyor: kart yanı sınanmaz, elle bakıldı"),
+    ("XT60E-M", "*"): (None, None,
+                       "panel şarj girişi: konnektör K50'de karar bekliyor, etek deliği açık iş; modeli ve yol noktası yok: sınanmaz"),
 }
+# P10.7b2b (F10h-kontrol-3 §3.3-2; R8): onay kaydı olmadan da yakalanacak eşleme bozmaları.
+# (a) Dal (GEO_DAL): dalda eşlenen her kablonun en az bir yanı dalın KENDİ noktalarıyla sağlanmalı; ana yolun ayrılma noktasına kadarki
+#     bölümü yalnız öbür yan için (G19: yol 4'e G08, G20: yol 4'e G10 yalnız ana yol bölümüyle uyuyordu).
+# (b) Sınıf: bir CAD yolu tek devre sınıfı taşır; bugün bilinen karışık yollar KARISIK_BILINEN'de (ayrılmaları R18 açık işi). Başka bir
+#     karışım ya da bilinen yolun sınıf kümesinin değişmesi hata (G24: yol 10'da A03 yerine G22, yeşil ↔ turuncu).
+# (c) Eksik eşleme: yolun sınıflarından birinde olup iki yanı da bu yolun noktalarıyla geometrik olarak sağlanan (elle bakılan yan
+#     sayılmaz) ama eşlenmemiş kablo hata; bilinçli dışarıda bırakılan GEO_EKSIK_MUAF'ta gerekçesiyle (G26: yol 1'den G02 çıkarıldı).
+#     Kısmi eşleme (G18 / yol 9: yol eski tasarım, G19 bu yolda çizili sayılmaz) G19'un yanı yola ulaşmadığı için zaten aday değil.
+#     Yalnız vekil parçayla sağlanan yan (anahtarlı bara → Röle K1 kutusu) kanıt sayılmaz: her taban yolu röleden çıkar.
+KARISIK_BILINEN = {3: ("kirmizi", "turuncu"), 5: ("sari", "turuncu"), 7: ("sari", "turuncu")}
+_G10_YAKIN = ("ön şarj kartı sigorta kutusunun yanında: yol sigorta kutusunda biter ve kartın kutusuna 10 mm'den yakın geçer; "
+              "G10 (F1 → ön şarj kartı) yol 3'te çizili")
+GEO_EKSIK_MUAF = {1: {"G10": _G10_YAKIN}, 8: {"G10": _G10_YAKIN}}
 TABAN_DISI_DESEN = r"servosu( \(|$)"                                    # kol / kafa servoları
 # Taban dışı bölgeler (P10.7b1 açık işler turu, kontrol-2 madde 11): yolun taban dışındaki (y ≥ GEO_TABAN_DISI) uç noktası sırayla ilk
 # tutan bölgeye düşer; kablonun taban dışı ucu ancak kendi bölgesinde biten yolla sağlanır. Aralıklar montaj/montaj-analiz.json parça
@@ -609,6 +631,7 @@ def uc_imzasi(TB, kimlik):
                 out.append(("nominal", m[0]) if m[0] else ("elle", p))
         else:
             out.append(("parça", s))
+    out.append(("sınıf", TB.sinif(kimlik)))                           # P10.7b2b (R8 b): sınıf kuralı devre sınıfını da ayırır
     return frozenset(out)
 
 
@@ -631,6 +654,63 @@ def ayirt_edilemeyen(TB=None, esleme=None):
                 if k != m and imza[k] == imza[m] and n not in nerede.get(k, []):
                     out.append((n, m, k, nerede.get(k, [])))
     return out
+
+
+ELLE = "elle"                                                          # sınanmayan (elle bakılan) yan: doğru sayılır ama geometri değil
+
+
+def _yan_sina(TB, k, y, parcalar, cizgiler, dis_bolge, cad):
+    """Kablonun bir yanı (a / b) ↔ yolun çizgileri. Doner dict(sonuc=[True / False / ELLE], uc, nominal, disi, elle, hata, bilgi);
+    iletiler yol numarasız ("<kimlik>: …")."""
+    r = dict(sonuc=[], uc=set(), nominal=[], disi=set(), elle=False, hata=[], bilgi=[])
+    for p in parcalar:
+        s = parca_sinifi(p)
+        if s is None:
+            r["hata"].append("%s: uç parçası '%s' PARCA_CAD haritasında yok" % (k, p))
+            r["sonuc"].append(False)
+        elif s == TABAN_DISI:
+            b = parca_bolgesi(p)
+            if b is None:
+                r["hata"].append("%s: taban dışı uç '%s' TABAN_DISI_PARCA'da bölgesiz" % (k, p))
+                r["sonuc"].append(False)
+                continue
+            r["disi"].add(b)
+            r["sonuc"].append(b in dis_bolge)
+        elif s in (NOMINAL, MODELSIZ):
+            m = modelsiz_konum(p, uc_kutbu(TB, k, y))
+            if m is None:
+                r["hata"].append("%s: modelsiz uç '%s' MODELSIZ_KONUM'da yok" % (k, p))
+                r["sonuc"].append(False)
+                continue
+            nokta, vekil, _g = m
+            if nokta is None and vekil is None:
+                r["elle"] = True
+                r["bilgi"].append("%s %s: '%s' modelsiz, nominal konumu yok: elle bakıldı" % (k, y, p))
+                r["sonuc"].append(ELLE)
+                continue
+            vp = cad(vekil) if vekil else []
+            r["uc"].update(c["ad"] for c in vp)
+            if nokta is not None:
+                r["nominal"].append(nokta)
+                d = min(_yol_kutu(c_, (nokta[0], nokta[0], nokta[1], nokta[1], nokta[2], nokta[2])) for c_ in cizgiler)
+            elif vp:
+                d = min(_yol_kutu(c_, c["bb"]) for c in vp for c_ in cizgiler)
+                r["vekil"] = True                                     # yalnız vekil parçayla: eksik eşleme kanıtı sayılmaz
+            else:
+                r["hata"].append("%s: '%s' vekili için CAD parçası bulunamadı (%s)" % (k, p, vekil))
+                r["sonuc"].append(False)
+                continue
+            r["sonuc"].append(d <= GEO_ESIK)
+        else:
+            cp = cad(s)
+            if not cp:
+                r["hata"].append("%s: '%s' için CAD parçası bulunamadı (%s)" % (k, p, s))
+                r["sonuc"].append(False)
+                continue
+            d = min(_yol_kutu(c_, c["bb"]) for c in cp for c_ in cizgiler)
+            r["uc"].update(c["ad"] for c in cp)
+            r["sonuc"].append(d <= GEO_ESIK)
+    return r
 
 
 def geometri_denetle(TB=None, analiz=None, esleme=None, istisna=None):
@@ -666,57 +746,39 @@ def geometri_denetle(TB=None, analiz=None, esleme=None, istisna=None):
         for k in ids:
             if k not in TB.K:
                 continue                                              # kaynak_denetle bilinmeyen kimliği zaten yazar
+            kendi = []                                                # P10.7b2b (a): dalın kendi noktalarıyla sağlanan yan
             for y, parcalar in zip("ab", uc_parcalari(TB, k)):
-                sonuc = []
-                for p in parcalar:
-                    s = parca_sinifi(p)
-                    if s is None:
-                        hata.append("yol %d %s: uç parçası '%s' PARCA_CAD haritasında yok" % (n, k, p))
-                        sonuc.append(False)
-                    elif s == TABAN_DISI:
-                        b = parca_bolgesi(p)
-                        if b is None:
-                            hata.append("yol %d %s: taban dışı uç '%s' TABAN_DISI_PARCA'da bölgesiz" % (n, k, p))
-                            sonuc.append(False)
-                            continue
-                        yan_sinif["disi"].add(b)
-                        sonuc.append(b in dis_bolge)
-                    elif s in (NOMINAL, MODELSIZ):
-                        m = modelsiz_konum(p, uc_kutbu(TB, k, y))
-                        if m is None:
-                            hata.append("yol %d %s: modelsiz uç '%s' MODELSIZ_KONUM'da yok" % (n, k, p))
-                            sonuc.append(False)
-                            continue
-                        nokta, vekil, _g = m
-                        if nokta is None and vekil is None:
-                            yan_sinif["elle"] = True
-                            bilgi.append("yol %d %s %s: '%s' modelsiz, nominal konumu yok: elle bakıldı" % (n, k, y, p))
-                            sonuc.append(True)
-                            continue
-                        vp = cad(vekil) if vekil else []
-                        uc_parca.update(c["ad"] for c in vp)
-                        if nokta is not None:
-                            nominal.append(nokta)
-                            d = min(_yol_kutu(c_, (nokta[0], nokta[0], nokta[1], nokta[1], nokta[2], nokta[2])) for c_ in cizgiler)
-                        elif vp:
-                            d = min(_yol_kutu(c_, c["bb"]) for c in vp for c_ in cizgiler)
-                        else:
-                            hata.append("yol %d %s: '%s' vekili için CAD parçası bulunamadı (%s)" % (n, k, p, vekil))
-                            sonuc.append(False)
-                            continue
-                        sonuc.append(d <= GEO_ESIK)
-                    else:
-                        cp = cad(s)
-                        if not cp:
-                            hata.append("yol %d %s: '%s' için CAD parçası bulunamadı (%s)" % (n, k, p, s))
-                            sonuc.append(False)
-                            continue
-                        d = min(_yol_kutu(c_, c["bb"]) for c in cp for c_ in cizgiler)
-                        uc_parca.update(c["ad"] for c in cp)
-                        sonuc.append(d <= GEO_ESIK)
-                if not any(sonuc):
+                r = _yan_sina(TB, k, y, parcalar, cizgiler, dis_bolge, cad)
+                hata += ["yol %d %s" % (n, x) for x in r["hata"]]
+                bilgi += ["yol %d %s" % (n, x) for x in r["bilgi"]]
+                yan_sinif["disi"] |= r["disi"]
+                yan_sinif["elle"] = yan_sinif["elle"] or r["elle"]
+                uc_parca |= r["uc"]
+                nominal += r["nominal"]
+                if not any(r["sonuc"]):
                     hata.append("yol %d: %s %s yanı (%s) yola ulaşmıyor (eşik %g mm / taban dışı bölge %s)" % (
                         n, k, y, ", ".join(parcalar), GEO_ESIK, "/".join(sorted(x for x in dis_bolge if x)) or "yok"))
+                if ana:
+                    kendi.append(any(_yan_sina(TB, k, y, parcalar, [pts], dis_bolge, cad)["sonuc"]))
+            if ana and kendi and not any(kendi):
+                hata.append("yol %d: %s iki yanı da yalnız ana yolun (yol %d) bölümüyle sağlanıyor, dalın kendi noktalarına ulaşmıyor "
+                            "(dal kablosu değil)" % (n, k, ana))
+        # P10.7b2b (b): sınıf karışımı
+        sinif = sorted({TB.sinif(k) for k in ids if k in TB.K})
+        if len(sinif) > 1 and tuple(sinif) != tuple(sorted(KARISIK_BILINEN.get(n, ()))):
+            hata.append("yol %d: devre sınıfları karışık (%s); bilinen karışım %s" % (
+                n, "/".join(sinif), "/".join(sorted(KARISIK_BILINEN[n])) if n in KARISIK_BILINEN else "yok"))
+        elif n in KARISIK_BILINEN and tuple(sinif) != tuple(sorted(KARISIK_BILINEN[n])):
+            hata.append("yol %d: KARISIK_BILINEN %s ama yolun sınıfları %s (tabloyu güncelle)" % (
+                n, "/".join(sorted(KARISIK_BILINEN[n])), "/".join(sinif)))
+        # P10.7b2b (c): eksik eşleme (yolun sınıfında, iki yanı da bu yolla sağlanan, eşlenmemiş kablo)
+        for k in sorted(TB.K):
+            if k in ids or TB.sinif(k) not in sinif or k in GEO_EKSIK_MUAF.get(n, {}):
+                continue
+            yanlar = [_yan_sina(TB, k, y, parcalar, cizgiler, dis_bolge, cad) for y, parcalar in zip("ab", uc_parcalari(TB, k))]
+            if all(not r["hata"] and not r.get("vekil") and any(x is True for x in r["sonuc"]) for r in yanlar):
+                hata.append("yol %d: %s kablosunun iki yanı da bu yola ulaşıyor, sınıfı yolda (%s) ama eşlenmemiş (eksik eşleme; bilinçliyse "
+                            "GEO_EKSIK_MUAF'a gerekçesiyle)" % (n, k, TB.sinif(k)))
         for ad_, uc in ((("baş", pts[0]),) if not (ana and len(cizgiler) > 1) else ()) + (("son", pts[-1]),):
             neden = None
             if uc[1] >= GEO_TABAN_DISI:
@@ -749,6 +811,9 @@ def kritik_tablolar(esleme=None):
     for n in sorted(esleme):
         g.append(_RK.girdi("CAD_ESLEME %d" % n, " ".join(esleme[n]), "CAD yolu ↔ kablo kimlikleri"))
     g.append(_RK.girdi("GEO_DAL", repr(sorted(GEO_DAL.items())), "dallanan yollar"))
+    # P10.7b2b (R8): bilinen karışık yollar ve eksik eşleme muafları
+    g.append(_RK.girdi("KARISIK_BILINEN", repr(sorted(KARISIK_BILINEN.items())), "bilinen karışık sınıflı yollar"))
+    g.append(_RK.girdi("GEO_EKSIK_MUAF", repr(sorted((n, sorted(v.items())) for n, v in GEO_EKSIK_MUAF.items())), "eksik eşleme muafları"))
     for n in sorted(GEO_ISTISNA):
         g.append(_RK.girdi("GEO_ISTISNA %d" % n, GEO_ISTISNA[n], "geometri istisnası"))
     for k in sorted(PARCA_CAD):
@@ -873,6 +938,7 @@ def bozma_denemesi(V=None):
         eski_cad, eski_kol = copy.deepcopy(CAD_ESLEME), copy.deepcopy(KOL_ESLEME)
         eski_ton, eski_yc = copy.deepcopy(TEMA_TON), copy.deepcopy(KESIT_YARICAP)
         eski_mk = copy.deepcopy(MODELSIZ_KONUM)
+        eski_kb, eski_em, eski_pc = copy.deepcopy(KARISIK_BILINEN), copy.deepcopy(GEO_EKSIK_MUAF), copy.deepcopy(PARCA_CAD)
         try:
             V2 = copy.deepcopy(V) if V is not None else None
             f(RM, TB, V2)
@@ -887,6 +953,9 @@ def bozma_denemesi(V=None):
             TEMA_TON.clear(); TEMA_TON.update(eski_ton)
             KESIT_YARICAP.clear(); KESIT_YARICAP.update(eski_yc)
             MODELSIZ_KONUM.clear(); MODELSIZ_KONUM.update(eski_mk)
+            KARISIK_BILINEN.clear(); KARISIK_BILINEN.update(eski_kb)
+            GEO_EKSIK_MUAF.clear(); GEO_EKSIK_MUAF.update(eski_em)
+            PARCA_CAD.clear(); PARCA_CAD.update(eski_pc)
             VURGU_ELLE.clear()
             SINIF_ELLE.clear()
         mek = "+".join(x for x, v in (("denetim", h), ("onay", ho)) if v)
@@ -931,6 +1000,15 @@ def bozma_denemesi(V=None):
     def b34(RM, TB, V): VURGU_ELLE["light_kopya"] = "#9b50b8"                         # kopya tonu "lazer" sınıfına yakın
     def b35(RM, TB, V): SINIF_ELLE["profil"] = "#00e5d6"                              # sınıf rengi koyu vurguya yakın
     def b36(RM, TB, V): VURGU_ELLE["dark_kopya"] = "#5d6168"                          # koyu kopya tonu önceki adımların grisi
+    # P10.7b2b (F10h-kontrol-3 §3.3-2; R8): onay kaydı olmadan geometri / eşleme kuralıyla yakalanmalı (mek "denetim" içermeli)
+    def b37(RM, TB, V): CAD_ESLEME[4] = CAD_ESLEME[4] + ("G08",)                    # G19: dal, yalnız ana yol bölümüyle uyar
+    def b38(RM, TB, V): CAD_ESLEME[4] = CAD_ESLEME[4] + ("G10",)                    # G20
+    def b39(RM, TB, V): CAD_ESLEME[10] = tuple("G22" if x == "A03" else x for x in CAD_ESLEME[10])   # G24: yeşil ↔ turuncu
+    def b40(RM, TB, V): CAD_ESLEME[1] = tuple(x for x in CAD_ESLEME[1] if x != "G02")              # G26: eksik eşleme
+    def b41(RM, TB, V): KARISIK_BILINEN.pop(3)                                       # bilinen karışım silindi
+    def b42(RM, TB, V): CAD_ESLEME[5] = CAD_ESLEME[5] + ("G19",)                    # mavi kablo sarı / turuncu yolda
+    def b43(RM, TB, V): GEO_EKSIK_MUAF.pop(1)                                        # G10 / yol 1 muafı silindi (eksik eşleme)
+    def b44(RM, TB, V): PARCA_CAD["Dağıtım kartı C"] = r"^XL4016 servo 6 V C"        # kart XL4016 C'nin kutusu sayıldı: yol 6'ya ulaşmaz
     deneme = [("CAD eşlemesinde bilinmeyen kimlik", b1), ("şemada bilinmeyen kimlik", b2), ("şemada kimlik yok", b3),
               ("şema son alanı yine renk (anahtar kelime / elle renk)", b4), ("kol bölümünde bilinmeyen kimlik", b5),
               ("KABLO_AD'da eşlemesiz CAD numarası", b6), ("devre sınıfı renk kuralında yok", b7),
@@ -947,7 +1025,11 @@ def bozma_denemesi(V=None):
               ("vurgu: eski açık yeşil (karşıtlık)", b28), ("vurgu: açık temada acil stop yeşiline yakın", b29),
               ("vurgu: koyu temada servo sarısı", b30), ("vurgu: EV_RENK ile aynı", b31), ("renk: açık HDMI eski ton (siyaha yakın)", b32),
               ("vurgu: eski açık ton (lazer sınıfına 13,4)", b33), ("vurgu kopya: açık temada lazer sınıfına yakın", b34),
-              ("vurgu: profil sınıfı koyu vurguya yakın", b35), ("vurgu kopya: koyu temada önceki adımlar grisi", b36)]
+              ("vurgu: profil sınıfı koyu vurguya yakın", b35), ("vurgu kopya: koyu temada önceki adımlar grisi", b36),
+              ("eşleme G19: yol 4'e G08 (dal, ana yol bölümü)", b37), ("eşleme G20: yol 4'e G10 (dal, ana yol bölümü)", b38),
+              ("eşleme G24: yol 10'da A03 yerine G22 (sınıf)", b39), ("eşleme G26: yol 1'den G02 çıktı (eksik)", b40),
+              ("sınıf: yol 3'ün bilinen karışımı silindi", b41), ("sınıf: yol 5'e G19 (mavi)", b42),
+              ("eksik eşleme: G10 / yol 1 muafı silindi", b43), ("dağıtım kartı C: XL4016 C kutusu sayıldı", b44)]
     if V is not None:
         def v1(RM, TB, V):
             i = next(k for k, s in enumerate(V["semalar"]) if s.get("kablo") and s.get("tur") not in KOL_ISARET_TUR)
