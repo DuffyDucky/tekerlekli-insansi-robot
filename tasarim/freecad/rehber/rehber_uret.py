@@ -817,9 +817,15 @@ if __name__ == "__main__":
                 _hv, _es = RKB.veri_denetle(V, _tb)
                 _hg, _bg = RKB.geometri_denetle(_tb)                    # düzeltme turu 1 (Ü3): CAD yolu ↔ kablo uçları
                 _h = _h + _hg
+                # P10.7b2c ikinci yarı (ajan B): şema uçları, bağlantı tablosu, şema boyu tazeliği; sayım üç sınıf (cizilen = yol çizimi)
+                _h = _h + RKB.sema_geometri_denetle(_tb)[0] + RKB.baglanti_tablosu_denetle(_tb) + RKB.sema_boy_denetle(_tb)
+                # P10.7b2c düzeltme turu 1 (F10k-kontrol D1, D3, kaçan 4 / 5): kart boy etiketi, gösterim şeması notu, yer eki
+                _h = _h + RKB.sema_boy_etiketi_denetle() + RKB.sema_not_denetle(_tb) + RKB.uc_yer_eki_denetle(_tb)
                 _ct = RKB.cizim_tablosu(_tb)
                 ek["kablo_esleme"] = dict(hata=_h + _hv, eslesmeyen=_es, tablo=_ct["toplam"], cizilen=_ct["cizilen"],
-                                          cizilmeyen=_ct["cizilmeyen"], gecti=not (_h or _hv or _es))
+                                          cizilmeyen=_ct["cizilmeyen"], yol_cizimi=_ct["yol_cizimi"], yol_kaynak=_ct["yol_kaynak"],
+                                          baglanti_tablosu=_ct["baglanti_tablosu"], hicbiri=_ct["hicbiri"],
+                                          gecti=not (_h or _hv or _es))
             except Exception as e:
                 ek["kablo_esleme"] = dict(durum="hata", neden="%s: %s" % (type(e).__name__, e), gecti=False)
             print("kablo esleme: %s" % ("GECTI" if ek["kablo_esleme"]["gecti"] else ek["kablo_esleme"]))

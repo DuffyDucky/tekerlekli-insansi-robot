@@ -233,6 +233,20 @@ KOL_ISARET_TUR = ("ek", "ek_b", "bag", "ek_nokta")                    # rehber_k
 SAG_SOL = {"S01": "S05", "S02": "S06", "S03": "S07", "S04": "S08"}
 
 
+# P10.7b2c düzeltme turu 1 (F10k-kontrol D3): kayıttaki adı yanlış yer çağrıştıran uç parçası. Kayıttaki ad değişmez (kablolar.json);
+# rehberde bu ad geçen her metinde (adım metinleri, şema adları, CAD yolu adları, tıklama kartı / kablo listesindeki kb satırları) kartın
+# gerçek yeri de yazılı olmalı (uc_yer_eki_denetle; ek kb satırına bilgi_satiri'nde girer). Yer: kablolar.json karar P7b2a-6.
+UC_YER_EK = {"Dağıtım kartı C (kafa)": "kart güç panelinde, XL4016 C'nin yanında; adındaki \"kafa\" beslediği pan / tilt servolarıdır"}
+
+
+def uc_yer_eki(uc):
+    """'Dağıtım kartı C (kafa) · V+' → 'Dağıtım kartı C (kafa) (kart güç panelinde, …) · V+' (UC_YER_EK; yalnız görünen metin)."""
+    for ad, ek in UC_YER_EK.items():
+        if uc == ad or uc.startswith(ad + " "):
+            return ad + " (" + ek + ")" + uc[len(ad):]
+    return uc
+
+
 def tablo_yukle(yol=TABLO_YOL):
     return json.load(open(yol, encoding="utf-8"))
 
@@ -304,7 +318,7 @@ class Tablo:
 
     def bilgi_satiri(self, kimlik):
         b = self.bilgi(kimlik)
-        return "%s: %s → %s · %s · %s · acil stopta %s" % (b["kimlik"], b["a"], b["b"], b["kesit"], b["koruma"],
+        return "%s: %s → %s · %s · %s · acil stopta %s" % (b["kimlik"], uc_yer_eki(b["a"]), uc_yer_eki(b["b"]), b["kesit"], b["koruma"],
                                                          "enerjili" if b["acil"] else "enerjisiz")
 
     # -- çizim kaydı (bir çizim nesnesi için)
@@ -659,17 +673,20 @@ def ayirt_edilemeyen(TB=None, esleme=None):
 ELLE = "elle"                                                          # sınanmayan (elle bakılan) yan: doğru sayılır ama geometri değil
 
 
-def _yan_sina(TB, k, y, parcalar, cizgiler, dis_bolge, cad):
+def _yan_sina(TB, k, y, parcalar, cizgiler, dis_bolge, cad, sinif_f=None, bolge_f=None, konum_f=None):
     """Kablonun bir yanı (a / b) ↔ yolun çizgileri. Doner dict(sonuc=[True / False / ELLE], uc, nominal, disi, elle, hata, bilgi);
-    iletiler yol numarasız ("<kimlik>: …")."""
+    iletiler yol numarasız ("<kimlik>: …"). sinif_f / bolge_f / konum_f: P10.7b2c şema sınaması kendi parça haritasını geçirir
+    (varsayılan CAD yollarınınki: parca_sinifi, parca_bolgesi, modelsiz_konum)."""
+    parca_sinifi_, parca_bolgesi_ = sinif_f or parca_sinifi, bolge_f or parca_bolgesi
+    modelsiz_konum_ = konum_f or modelsiz_konum
     r = dict(sonuc=[], uc=set(), nominal=[], disi=set(), elle=False, hata=[], bilgi=[])
     for p in parcalar:
-        s = parca_sinifi(p)
+        s = parca_sinifi_(p)
         if s is None:
             r["hata"].append("%s: uç parçası '%s' PARCA_CAD haritasında yok" % (k, p))
             r["sonuc"].append(False)
         elif s == TABAN_DISI:
-            b = parca_bolgesi(p)
+            b = parca_bolgesi_(p)
             if b is None:
                 r["hata"].append("%s: taban dışı uç '%s' TABAN_DISI_PARCA'da bölgesiz" % (k, p))
                 r["sonuc"].append(False)
@@ -677,7 +694,7 @@ def _yan_sina(TB, k, y, parcalar, cizgiler, dis_bolge, cad):
             r["disi"].add(b)
             r["sonuc"].append(b in dis_bolge)
         elif s in (NOMINAL, MODELSIZ):
-            m = modelsiz_konum(p, uc_kutbu(TB, k, y))
+            m = modelsiz_konum_(p, uc_kutbu(TB, k, y))
             if m is None:
                 r["hata"].append("%s: modelsiz uç '%s' MODELSIZ_KONUM'da yok" % (k, p))
                 r["sonuc"].append(False)
@@ -801,6 +818,309 @@ def geometri_denetle(TB=None, analiz=None, esleme=None, istisna=None):
     return hata, bilgi
 
 
+# ------------------------------------------------------------------ P10.7b2c: gösterim şemalarının geometrik uç sınaması
+# Şemalar (rehber_metin.SEMA) parça değildir; CAD yolları gibi uçlarının doğru parçaya ulaştığı sınanır (FreeCAD istemez). Kaynak
+# noktaları sema_noktalari() çözer (rehber_veri.py de aynısını kullanır: tek çözücü). Parça kutuları: taban-analiz.json (global) +
+# kafa-analiz.json (kafa yereli + yerlesim.konum; montaj-analiz.json merkezleriyle doğrulandı, P10.7b2c günlüğü). Kural geometri_denetle
+# ile aynı (GEO_ESIK, taban dışı bölge, modelsiz / nominal), şemaya özgü iki fark:
+#   (1) uç noktasının ≤ GEO_ESIK mm yanında modelli parça (taban ya da kafa) varsa eşlenen kabloların uç parçası olmalı; yoksa y ≥
+#       GEO_TABAN_DISI için bölge, değilse nominal / elle bakılan uç (geometri_denetle ile aynı). Kafa parçaları taban dışında da modelli.
+#   (2) Şemanın tek devre sınıfı olur (bilinen karışım yok); taban altındaki şemalar (y < GEO_TABAN_DISI noktası olan) kat ve alt
+#       plakayı yalnız bilinen geçişlerden geçer (kablo_yolu_taban.gecis_denetle: Ø16 delik, ön kat kesiği, akü yarıkları).
+# Eksik eşleme (şemanın yanından geçtiği başka kablo) yalnız bilgi: şema bir kablonun yolunu gösterir, demet değildir.
+# İstisna (SEMA_GEO_ISTISNA) anahtarı (kaynak ad, "baş" / "son" / "<kimlik> <yan>"): uç ya da yan hatasını gerekçesiyle bilgiye çevirir;
+# CAD'deki GEO_ISTISNA'dan farkı yanı da bağışlayabilmesidir (anahtar yanı açıkça adlandırır; onay kaydında).
+# İkinci şema kaynağı (elektronik katı kısa telleri, kafa içi, ses): kaynak işlevini SEMA_KAYNAK'a ve sema_noktalari()'na ekle; yeni
+# uç parçaları PARCA_CAD'de yoksa SEMA_PARCA'ya (desen / TABAN_DISI + SEMA_PARCA_BOLGE / MODELSIZ + SEMA_MODELSIZ) yazılır.
+FC_DIZIN = os.path.join(ROBOT, "tasarim", "freecad")
+KAFA_ANALIZ = os.path.join(FC_DIZIN, "kafa", "kafa-analiz.json")
+SEMA_KAYNAK = ("yollar", "kafa_ici_qled", "taban", "kafa_ici")              # P10.7b2c B: kafa_ici = lale158/kablo_yolu_kafa.py
+SEMA_PARCA = {                                                          # şema uç parçası → kafa / taban CAD deseni ya da sınıf
+    "Raspberry Pi 5": r"^Raspberry Pi 5", "Kafa ekranı 10,1\" QLED": r"QLED", "Pololu D24V50F5": r"Pololu D24V50F5",
+    "SY8205": r"^SY8205 kafa", "PAM8403": r"^PAM8403", "ReSpeaker Mic Array v2.0": r"^ReSpeaker",
+    "Göğüs ekranı 11,6\"": TABAN_DISI, "Hoparlör 4 Ω 3 W": TABAN_DISI,   # kabuk parçaları, kutuları analizde yok: bölge
+    "Göğüs ekranı regülatörü": MODELSIZ,
+    # P10.7b2c ikinci yarı (ajan B): kafa içi ve ses şemalarının uçları
+    "Kamera (Camera Module 3)": r"^Kamera Raspberry Pi Camera", "Kafa giriş klemensi": NOMINAL, "Ses bölücüsü": NOMINAL,
+}
+# Şemada nominal konumu / vekili olan modelsiz uçlar (P10.7b2c B; MODELSIZ_KONUM biçiminde: (parça, kutup) → (nokta, vekil, gerekçe)).
+# Kafa giriş kartının noktası lale158/kablo_yolu_kafa.GIRIS_KARTI'nın globali (şema sınaması ikisinin aynı olduğunu da sınar).
+SEMA_KONUM = {
+    ("Kafa giriş klemensi", "*"): ((-58.0, 1514.0, 30.0), None,
+                                   "kafa giriş kartı (P6KE18A + 3 klemens) modelde yok, E3a yerini yazmaz: yeri yaklaşık, boyun geçişinin "
+                                   "solunda tabla üstü (kablo_yolu_kafa.GIRIS_KARTI)"),
+    ("Ses bölücüsü", "*"): (None, r"^PAM8403",
+                            "bölücü kablo üstünde, PAM giriş pedlerinin dibinde (kablolar.json O-9): yerine PAM8403 kutusu; varlığı ve yeri "
+                            "masa denemesine (KT2) bağlı"),
+    # P10.7b2c düzeltme turu 1 (F10k-kontrol kaçan bozma 1): SV3'ün kart ucu artık serbest değil. CAD yolu 6'nın kart yanı
+    # MODELSIZ_KONUM'da "elle" kalır (o yol kartı çizmiyor); şema sınaması bu noktayı kullanır.
+    ("Dağıtım kartı C", "*"): ((100.0, 192.0, -60.0), None,
+                               "kart modelde yok (R23); kayıtta güç panelinde, XL4016 C'nin yanında (kablolar.json karar P7b2a-6, SV3 "
+                               "boy_tahmin 'XL4016 C klemensinin yanında'): nominal nokta XL4016 C'nin −z yanında, kutusundan 36,5 mm "
+                               "(kablo_yolu_taban.DAGITIM_C); yeri yaklaşık"),
+}
+# Eşlemesiz şema (P10.7b2c B, brief madde 5): her şema kaynağının her yolu SEMA'da olmalı; bilinçli dışarıda bırakılan yol burada
+# gerekçesiyle. SEMA'da olan ya da kaynakta artık olmayan muaf HATA (liste sessizce eskimez).
+SEMA_ESLEMESIZ_MUAF = {
+    ("yollar", "Ses karti uzatmasi"): "14.11 ses yolu kararı: USB ses kartı yedek, takılmaz; tabloda karşılığı yok (rehber_metin SEMA notu)",
+    ("yollar", "3,5 mm -> PAM"): "14.11 ses yolu kararı: ses kartı → PAM yolu kalktı; ReSpeaker → PAM (AU1, AU2) kafa_ici kaynağında",
+}
+# Göğüs ekranı ucu port girintisinde olmalı (kablo_yolu_ekran.uc_bolgesi: göğüs yerel çerçevesinde kutu, lale158_kontrol ile aynı tanım);
+# TABAN_DISI_BOLGE'nin "sol kol" kutusu (x ≤ −60, y ≥ 880) göğsün sol yarısını da kapsadığı için ekran portu ayrı bölgedir.
+GOGUS_PORT = "göğüs ekranı portu"
+SEMA_PARCA_BOLGE = ((r"^Göğüs ekranı 11,6", GOGUS_PORT), (r"^Hoparlör ", "gövde"))
+SEMA_MODELSIZ = {"Göğüs ekranı regülatörü": "regülatör yeri karar bekliyor (K52); modeli ve nominal noktası yok: sınanmaz, elle bakıldı"}
+# Mevcut 11 şemada tutmayan uçlar (P10.7b2c; geometri düzeltilmedi, F10k-gunluk.md "mevcut şemalar"). Anahtar (SEMA kaynak adı, yer).
+_FIS = "fiş gövdesi kart kutusunun dışında kalır; kablo_yolu_ekran fişin arka ucunu çizer (fiş boyu TAHMİN)"
+_ESP = ("şemanın taban ucu (51,6; 190; −120) güç panelinin üstünde; ESP32 taşıyıcısı 9 Ekim'den beri (80; 75)'te (arayuz TABAN esp), "
+        "şema 5 Kasım'da bu uçla çizildi: uç ESP32'ye 115 mm uzak, şema yeniden çizilmeli (açık iş, bu pakette düzeltilmedi)")
+SEMA_GEO_ISTISNA = {
+    ("HDMI", "H02 a"): "baş Pi micro HDMI 1 fişinin arka ucu (pi_hdmi, Pi kutusuna 13 mm): " + _FIS,
+    ("HDMI", "baş"): "Pi micro HDMI 1 fişinin arka ucu (H02 a ile aynı): " + _FIS,
+    ("HDMI (serit, 2 lehimsiz fis)", "H01 a"): "son Pi micro HDMI 0 fişinin arka ucu (hdmi0, Pi kutusuna 26 mm): " + _FIS,
+    ("HDMI (serit, 2 lehimsiz fis)", "son"): "Pi micro HDMI 0 fişinin arka ucu (H01 a ile aynı): " + _FIS,
+    ("Dizi USB", "U01 b"): "baş ReSpeaker micro USB fişinin arka ucu (d_uc, kart kenarı + 35 + fiş boyu 20; kutuya 19 mm): " + _FIS,
+    ("Dizi USB", "baş"): "ReSpeaker micro USB fişinin arka ucu (U01 b ile aynı; kafa bölgesinin x ±60 sınırı dışında): " + _FIS,
+    ("ESP32 USB", "U06 b"): _ESP,
+    ("ESP32 USB", "son"): _ESP,
+    ("12 V", "G20 a"): "baş güç panelinde sigorta kutusunun yanında (F6 çıkışı, kutuya 13 mm); göğüs ekranı regülatörünün yeri karar "
+                       "bekliyor (K52): baş noktası kesinleşmedi",
+}
+
+
+def _gogus_port(nokta, r=3.0):
+    """Nokta göğüs ekranının port girintisinde mi (kablo_yolu_ekran.uc_bolgesi, gp() çerçevesinin tersi)."""
+    import arayuz as A_
+    import kablo_yolu_ekran as KYE
+    a = math.radians(A_.GOGUS_EGIM)
+    c, s = math.cos(a), math.sin(a)
+    yc = A_.GOGUS_EKRAN_Y
+    dy, dz = nokta[1] - yc, nokta[2] - A_.gogus_z(yc)
+    q = (nokta[0], c * dy - s * dz, s * dy + c * dz)
+    b = KYE.uc_bolgesi(r)
+    return all(b[k][0] - 1e-6 <= q[i] <= b[k][1] + 1e-6 for i, k in enumerate("xyz"))
+
+
+def sema_bolge(nokta):
+    """Şema ucunun taban dışı bölgesi: önce göğüs ekranı portu, sonra TABAN_DISI_BOLGE."""
+    return GOGUS_PORT if _gogus_port(nokta) else bolge(nokta)
+
+
+SEMA_NOKTA_ELLE = {}                                                    # bozma denemesi: {(kaynak, ad): noktalar} kaynak yerine
+
+
+def sema_noktalari(kaynak, ad_k):
+    """rehber_metin.SEMA girdisinin global noktaları (ev pozu, mm) ya da None (rehber_veri.py de bunu kullanır: tek çözücü).
+    yollar → lale158/kablo_yolu_ekran.yollar(); kafa_ici_qled → aynı dosyanın tilt ekseni çerçevesi + (S3 + SG / 2 + tilt_nokta);
+    taban → lale158/kablo_yolu_taban.yollar() (P10.7b2c)."""
+    if (kaynak, ad_k) in SEMA_NOKTA_ELLE:
+        return SEMA_NOKTA_ELLE[(kaynak, ad_k)]
+    for p in (FC_DIZIN, os.path.join(FC_DIZIN, "lale158")):
+        if p not in sys.path:
+            sys.path.insert(0, p)
+    if kaynak == "yollar":
+        import kablo_yolu_ekran as KYE
+        return KYE.yollar().get(ad_k)
+    if kaynak == "kafa_ici_qled":
+        import arayuz as A_
+        import kablo_yolu_ekran as KYE
+        qi = KYE.kafa_ici_qled()
+        if ad_k not in qi:
+            return None
+        y0, zt = A_.S3 + A_.SG / 2 + A_.KAFA["tilt_nokta"][1], A_.KAFA["tilt_nokta"][2]
+        return [(q[0], y0 + q[1], zt + q[2]) for q in qi[ad_k][0]]
+    if kaynak == "taban":
+        import kablo_yolu_taban as KYT
+        return KYT.yollar().get(ad_k)
+    if kaynak == "kafa_ici":                                           # P10.7b2c B: kafa içi ve ses (lale158/kablo_yolu_kafa.py)
+        import kablo_yolu_kafa as KYK
+        return KYK.yollar().get(ad_k)
+    return None
+
+
+def kaynak_yollari():
+    """Her şema kaynağının yol adları {kaynak: [ad]} (eşlemesiz şema sınaması; P10.7b2c B)."""
+    for p in (FC_DIZIN, os.path.join(FC_DIZIN, "lale158")):
+        if p not in sys.path:
+            sys.path.insert(0, p)
+    import kablo_yolu_ekran as KYE
+    import kablo_yolu_taban as KYT
+    import kablo_yolu_kafa as KYK
+    return {"yollar": list(KYE.yollar()), "kafa_ici_qled": list(KYE.kafa_ici_qled()), "taban": list(KYT.yollar()),
+            "kafa_ici": list(KYK.yollar())}
+
+
+def sema_sinifi(p):
+    k = _onek(p, SEMA_PARCA)
+    return SEMA_PARCA[k] if k else parca_sinifi(p)
+
+
+def sema_bolgesi(p):
+    for d, ad in SEMA_PARCA_BOLGE:
+        if re.search(d, p):
+            return ad
+    return parca_bolgesi(p)
+
+
+def sema_konum(p, kutup):
+    k = _onek(p, SEMA_MODELSIZ)
+    if k:
+        return (None, None, SEMA_MODELSIZ[k])
+    k = _onek(p, {a for a, _b in SEMA_KONUM})                         # P10.7b2c B: şemaya özgü nominal / vekil
+    if k:
+        return SEMA_KONUM.get((k, kutup)) or SEMA_KONUM.get((k, "*"))
+    return modelsiz_konum(p, kutup)
+
+
+def sema_parcalari(analiz=None, kafa=None):
+    """Şema sınamasının modelli parçaları: taban (global) + kafa (yerel + yerlesim.konum); filtre geometri_denetle ile aynı."""
+    A_ = analiz if analiz is not None else json.load(open(GEO_ANALIZ, encoding="utf-8"))
+    K = kafa if kafa is not None else json.load(open(KAFA_ANALIZ, encoding="utf-8"))
+    ko = K.get("yerlesim", {}).get("konum") or [0.0, 0.0, 0.0]
+
+    def m(p):
+        return p.get("bb") and p.get("tur") not in ("Baski", "Lazer", "Baglanti") and not p["ad"].startswith(("Burc", "Kablo yolu"))
+    out = [dict(ad=p["ad"], bb=list(p["bb"])) for p in A_["parcalar"] if m(p)]
+    out += [dict(ad=p["ad"], bb=[p["bb"][i] + ko[i // 2] for i in range(6)]) for p in K["parcalar"] if m(p)]
+    return out
+
+
+def sema_geometri_denetle(TB=None, RM=None, analiz=None, kafa=None, istisna=None, nokta_f=None, kaynak_yol=None):
+    """Gösterim şemalarının uçları ↔ eşlenen kabloların uç parçaları (kural yukarıda). Doner (hata, bilgi, tablo); tablo şema başına
+    dict(sema, kod, kimlik, yanlar, uclar, gecis, istisna). kaynak_yol: {kaynak: [yol adı]} (varsayılan kaynak_yollari())."""
+    TB = TB or Tablo()
+    if RM is None:
+        import rehber_metin as RM
+    istisna = SEMA_GEO_ISTISNA if istisna is None else istisna
+    nokta_f = nokta_f or sema_noktalari
+    modelli = sema_parcalari(analiz, kafa)
+    for p in (FC_DIZIN, os.path.join(FC_DIZIN, "lale158")):
+        if p not in sys.path:
+            sys.path.insert(0, p)
+    import kablo_yolu_taban as KYT
+    import kablo_yolu_kafa as KYK
+    kaynak_yol = kaynak_yollari() if kaynak_yol is None else kaynak_yol
+    hata, bilgi, tablo = [], [], []
+    # P10.7b2c B: rehber_kablo'daki nominal nokta ile şema kaynağının noktası aynı olmalı (biri taşınırsa öbürü eskimesin)
+    gk = SEMA_KONUM.get(("Kafa giriş klemensi", "*"), (None,))[0]
+    if gk is None or math.dist(gk, KYK.giris_karti_global()) > 0.05:
+        hata.append("SEMA_KONUM Kafa giriş klemensi %s ≠ kablo_yolu_kafa.GIRIS_KARTI %s" % (
+            gk, [round(c, 1) for c in KYK.giris_karti_global()]))
+    dk = SEMA_KONUM.get(("Dağıtım kartı C", "*"), (None,))[0]                  # düzeltme turu 1: SV3'ün kart ucu
+    if dk is None or math.dist(dk, KYT.DAGITIM_C) > 0.05:
+        hata.append("SEMA_KONUM Dağıtım kartı C %s ≠ kablo_yolu_taban.DAGITIM_C %s" % (dk, [round(c, 1) for c in KYT.DAGITIM_C]))
+
+    def cad(desen):
+        return [p for p in modelli if re.search(desen, p["ad"])]
+    gorulen = set()
+    kullanilan_ist = set()
+    for s in RM.SEMA:
+        if len(s) != 5 or not isinstance(s[4], (tuple, list)):
+            continue                                                  # kaynak_denetle yazar
+        kaynak, ad_k, kod, _ad, ids = s
+        yer = "şema %s" % ad_k
+        if kaynak == "kol_kablo":
+            continue                                                  # kol bölümleri rehber_kol_kablo.py'de sınanır
+        if kaynak not in SEMA_KAYNAK:
+            hata.append("%s: bilinmeyen şema kaynağı %s (SEMA_KAYNAK)" % (yer, kaynak))
+            continue
+        gorulen.add((kaynak, ad_k))
+        pts = nokta_f(kaynak, ad_k)
+        if not pts or len(pts) < 2:
+            hata.append("%s: kaynakta yolu yok (%s)" % (yer, kaynak))
+            continue
+        pts = [tuple(float(c) for c in q) for q in pts]
+        satir = dict(sema=ad_k, kaynak=kaynak, kod=kod, kimlik=list(ids), yanlar=[], uclar=[], gecis=[], istisna=[])
+        dis_bolge = {sema_bolge(u) for u in (pts[0], pts[-1]) if u[1] >= GEO_TABAN_DISI}
+        yan_disi, elle, uc_parca, nominal = set(), False, set(), []
+        for k in ids:
+            if k not in TB.K:
+                continue                                              # kaynak_denetle bilinmeyen kimliği yazar
+            for y, parcalar in zip("ab", uc_parcalari(TB, k)):
+                r = _yan_sina(TB, k, y, parcalar, [pts], dis_bolge, cad, sema_sinifi, sema_bolgesi, sema_konum)
+                hata += ["%s %s" % (yer, x) for x in r["hata"]]
+                bilgi += ["%s %s" % (yer, x) for x in r["bilgi"]]
+                yan_disi |= r["disi"]
+                elle = elle or r["elle"]
+                uc_parca |= r["uc"]
+                nominal += r["nominal"]
+                sinif = sema_sinifi(parcalar[0])
+                sinif_ad = ("bölge " + (sema_bolgesi(parcalar[0]) or "?")) if sinif == TABAN_DISI else (
+                    "elle" if ELLE in r["sonuc"] else ("nominal / vekil" if sinif in (NOMINAL, MODELSIZ) else "modelli"))
+                ok = any(r["sonuc"])
+                if not ok:
+                    g = istisna.get((ad_k, "%s %s" % (k, y)))
+                    d = min((_yol_kutu(pts, c["bb"]) for c in cad(sinif)), default=None) if sinif and sinif not in (
+                        TABAN_DISI, NOMINAL, MODELSIZ) else None
+                    msg = "%s %s yanı (%s) şemaya ulaşmıyor (%s; eşik %g mm)" % (k, y, parcalar[0], "en yakın %.1f mm" % d if d is not None
+                                                                              else "bölge / nominal", GEO_ESIK)
+                    if g:
+                        kullanilan_ist.add((ad_k, "%s %s" % (k, y)))
+                        bilgi.append("%s %s (istisna: %s)" % (yer, msg, g[:70]))
+                        satir["istisna"].append("%s %s" % (k, y))
+                    else:
+                        hata.append("%s: %s" % (yer, msg))
+                satir["yanlar"].append((k, y, parcalar[0], sinif_ad, "tamam" if ok else ("istisna" if (ad_k, "%s %s" % (k, y)) in kullanilan_ist
+                                                                                         else "HATA")))
+        sinif = sorted({TB.sinif(k) for k in ids if k in TB.K})
+        if len(sinif) > 1:
+            hata.append("%s: devre sınıfları karışık (%s); şema tek sınıf taşır" % (yer, "/".join(sinif)))
+        for ad_, uc in (("baş", pts[0]), ("son", pts[-1])):
+            neden = None
+            yakin = sorted((_kutu_mesafe(uc, c["bb"]), c["ad"]) for c in modelli)
+            yakin = [a for d, a in yakin if d <= GEO_ESIK]
+            if yakin:
+                if not (set(yakin) & uc_parca):
+                    neden = "uç noktasının yanındaki parça (%s) eşlenen kabloların ucu değil" % yakin[0]
+            elif any(math.dist(uc, q) <= GEO_ESIK for q in nominal):
+                pass                                                  # P10.7b2c B: modelsiz ucun nominal noktası (kafa giriş kartı)
+            elif uc[1] >= GEO_TABAN_DISI:
+                b = sema_bolge(uc)
+                if b not in yan_disi:
+                    neden = "taban dışında %s bölgesinde bitiyor, eşlenen kabloların o bölgede ucu yok" % (b or "tanımsız")
+            elif not (elle or any(math.dist(uc, q) <= GEO_ESIK for q in nominal)):
+                neden = "uç noktasında parça yok; eşlenen kabloların nominal noktası da elle bakılan ucu da yok"
+            if neden:
+                g = istisna.get((ad_k, ad_))
+                if g:
+                    kullanilan_ist.add((ad_k, ad_))
+                    bilgi.append("%s %s ucu: %s (istisna: %s)" % (yer, ad_, neden, g[:70]))
+                    satir["istisna"].append(ad_)
+                else:
+                    hata.append("%s %s ucu %s: %s" % (yer, ad_, [round(x, 1) for x in uc], neden))
+            satir["uclar"].append((ad_, [round(x, 1) for x in uc], yakin[:2], "tamam" if not neden else (
+                "istisna" if (ad_k, ad_) in kullanilan_ist else "HATA")))
+        if any(q[1] < GEO_TABAN_DISI for q in pts):
+            r_ = TB.yaricap(ids[0]) if ids and ids[0] in TB.K else R_VARSAYILAN
+            for lv, n_, s_ in KYT.gecis_denetle(pts, r_):
+                satir["gecis"].append((lv, [round(c, 1) for c in n_], s_ or "tamam"))
+                if s_:
+                    hata.append("%s: %s geçişi %s: %s" % (yer, lv, [round(c, 1) for c in n_], s_))
+        # eksik eşleme yalnız bilgi
+        for k in sorted(TB.K):
+            if k in ids or TB.sinif(k) not in sinif:
+                continue
+            yanlar = [_yan_sina(TB, k, y, p_, [pts], dis_bolge, cad, sema_sinifi, sema_bolgesi, sema_konum)
+                      for y, p_ in zip("ab", uc_parcalari(TB, k))]
+            if all(not r["hata"] and not r.get("vekil") and any(x is True for x in r["sonuc"]) for r in yanlar):
+                bilgi.append("%s: %s kablosunun iki yanı da şemaya ulaşıyor (aynı sınıf), şemada değil (yalnız bilgi)" % (yer, k))
+        tablo.append(satir)
+    # eşlemesiz şema: kaynakta çizili, SEMA'da yok (P10.7b2c B: bütün kaynaklar; bilinçli dışarıda bırakılan SEMA_ESLEMESIZ_MUAF'ta)
+    for kaynak in SEMA_KAYNAK:
+        for k in kaynak_yol.get(kaynak, []):
+            if (kaynak, k) in gorulen:
+                if (kaynak, k) in SEMA_ESLEMESIZ_MUAF:
+                    hata.append("SEMA_ESLEMESIZ_MUAF %s:%s: SEMA'da girdisi var (muaftan çıkar)" % (kaynak, k))
+            elif (kaynak, k) not in SEMA_ESLEMESIZ_MUAF:
+                hata.append("%s şema kaynağının yolu %s: SEMA'da girdisi yok (eşlemesiz şema)" % (kaynak, k))
+    for kaynak, k in sorted(SEMA_ESLEMESIZ_MUAF):
+        if k not in kaynak_yol.get(kaynak, []):
+            hata.append("SEMA_ESLEMESIZ_MUAF %s:%s: kaynakta böyle yol yok (muaftan çıkar)" % (kaynak, k))
+    for k in sorted(set(istisna) - kullanilan_ist):
+        hata.append("SEMA_GEO_ISTISNA %s: kullanılmıyor (şema düzeldiyse istisnayı kaldır)" % (k,))
+    return hata, bilgi, tablo
+
+
 def kritik_tablolar(esleme=None):
     """Onay kaydının 'kablo' bölümü (rehber_kritik): elle yazılmış eşleme ve eşik tabloları. Bunlardan biri değişirse
     rehber_denetim.py --kaynak (ve bu dosyanın ana koşusu) eski / yeni hâliyle HATA verir; geometrinin ayırt edemediği eşleme
@@ -834,6 +1154,33 @@ def kritik_tablolar(esleme=None):
     for tm in ("light", "dark"):                                       # düzeltme turu 1 (A9): vurgunun sınandığı sınıf renkleri
         g.append(_RK.girdi("SINIF", "%s = %r" % (tm, sorted(sinif_renkleri(tm).items())), "parça sınıfı renkleri"))
     g.append(_RK.girdi("ESIK", "SIYAH_L_FARK %r" % SIYAH_L_FARK, "eşikler"))
+    # P10.7b2c: gösterim şemalarının eşlemesi ve şema sınamasının tabloları (geometrinin ayırt edemediği şema eşlemesini de kilitler)
+    import rehber_metin as _RM
+    for s in _RM.SEMA:
+        if len(s) == 5 and isinstance(s[4], (tuple, list)):
+            g.append(_RK.girdi("SEMA_ESLEME", "%s:%s %s = %s" % (s[0], s[1], s[2], " ".join(s[4])), "şema ↔ adım ↔ kablo kimlikleri"))
+    g.append(_RK.girdi("SEMA_KAYNAK", repr(SEMA_KAYNAK), "şema kaynak işlevleri"))
+    for k in sorted(SEMA_PARCA):
+        g.append(_RK.girdi("SEMA_PARCA", "%s = %s" % (k, SEMA_PARCA[k]), "şema uç parçası → CAD"))
+    g.append(_RK.girdi("SEMA_PARCA_BOLGE", repr(SEMA_PARCA_BOLGE), "şema taban dışı bölgeleri"))
+    for k in sorted(SEMA_MODELSIZ):
+        g.append(_RK.girdi("SEMA_MODELSIZ", k, "şema modelsiz ucu (elle)"))
+    for k in sorted(SEMA_GEO_ISTISNA):
+        g.append(_RK.girdi("SEMA_GEO_ISTISNA", "%s / %s = %s" % (k[0], k[1], SEMA_GEO_ISTISNA[k]), "şema geometri istisnası"))
+    # P10.7b2c ikinci yarı (ajan B): şema nominal uçları, eşlemesiz şema muafları, bağlantı tablosu eşlemesi
+    for (k, kt) in sorted(SEMA_KONUM):
+        nokta, vekil, _g = SEMA_KONUM[(k, kt)]
+        g.append(_RK.girdi("SEMA_KONUM", "%s %s = %r %r" % (k, kt, nokta, vekil), "şema modelsiz ucu → nominal konum / vekil"))
+    for k in sorted(SEMA_ESLEMESIZ_MUAF):
+        g.append(_RK.girdi("SEMA_ESLEMESIZ_MUAF", "%s:%s = %s" % (k[0], k[1], SEMA_ESLEMESIZ_MUAF[k]), "SEMA'ya bilerek alınmayan şema yolu"))
+    for k in sorted(BAGLANTI_TABLOSU):
+        g.append(_RK.girdi("BAGLANTI_TABLOSU", "%s = %s" % (k, BAGLANTI_TABLOSU[k]), "bağlantı tablosuyla gösterilen kablo → adım"))
+    g.append(_RK.girdi("SEMA_BOY_ETIKET", SEMA_BOY_ETIKET, "şema boyu etiketi"))
+    # P10.7b2c düzeltme turu 1: tıklama kartının boy etiketi, gösterim şeması notu kuralı, yer eki
+    g.append(_RK.girdi("SEMA_BOY_APP", SEMA_BOY_APP, "tıklama kartında şema boyu etiketi (app.js)"))
+    g.append(_RK.girdi("SEMA_NOT", "%r %r %r" % (sorted(SEMA_NOT_KAYNAK.items()), SEMA_NOT_SOZ, SEMA_YAKLASIK), "gösterim şeması notu kuralı"))
+    for k in sorted(UC_YER_EK):
+        g.append(_RK.girdi("UC_YER_EK", "%s = %s" % (k, UC_YER_EK[k]), "yanlış yer çağrıştıran ada yer eki"))
     return g
 
 
@@ -869,11 +1216,269 @@ def cizilen_kimlikler(RM=None):
 
 
 def cizim_tablosu(TB=None, RM=None):
+    """P10.7b2c B (brief madde 4): üç sınıf. yol çizimi = CAD kablo yolu, gösterim şeması ya da kol bölümü; bağlantı tablosu =
+    BAGLANTI_TABLOSU'ndaki kablo (adımın kablo listesinde {bag.<kimlik>} satırı; 3B çizilen sayılmaz); hiçbiri = ikisi de yok.
+    cizilen / cizilmeyen eski anlamıyla (yol çizimi / değil) kalır."""
     TB = TB or Tablo()
     c = cizilen_kimlikler(RM)
     cizilen = [k for k in TB.K if k in c]
     cizilmeyen = [k for k in TB.K if k not in c]
-    return dict(toplam=len(TB.K), cizilen=len(cizilen), cizilmeyen=cizilmeyen, nerede={k: c[k] for k in cizilen})
+    bag = [k for k in cizilmeyen if k in BAGLANTI_TABLOSU]
+    hic = [k for k in cizilmeyen if k not in BAGLANTI_TABLOSU]
+    kay = {}
+    for k in cizilen:
+        for t in {x.split()[0] for x in c[k]}:
+            kay[t] = kay.get(t, 0) + 1
+    return dict(toplam=len(TB.K), cizilen=len(cizilen), cizilmeyen=cizilmeyen, nerede={k: c[k] for k in cizilen},
+                yol_cizimi=len(cizilen), yol_kaynak=dict(sorted(kay.items())), baglanti_tablosu=bag, hicbiri=hic)
+
+
+# ------------------------------------------------------------------ bağlantı tablosu (P10.7b2c ikinci yarı, ajan B; brief madde 1)
+# Elektronik katı kısa telleri 3B tüp değil, adımın kablo listesinde (ekranda ve basılıda aynı alan: app.js kablo listesi, yazdir.html
+# "Kablo kancası") bağlantı tablosu satırıyla gösterilir. Satır elle yazılmaz: ham metinde tek bir {bag.<kimlik>} yer tutucusu, değeri
+# rehber_deger'in kayıttan (kablolar.json damarları; ESP32 GPIO'su ve PCA9685 kanal adı pin-haritasi.md § 9 JSON'uyla karşılaştırılarak)
+# kurduğu metin. Sınama: (1) kablo kayıtta, adım kablonun rehber adımlarından; (2) adımın ham kablo listesinde {bag.<kimlik>} tam bir
+# kez ve başka adımda yok; (3) rehberdeki çözülmüş satır bugünkü kayıttan yeniden kurulanla aynı (eski kayıttan kalan tablo HATA);
+# (4) tablo kurulamıyorsa (yanlış pin, kanal ↔ kanal adı uyuşmazlığı) HATA; (5) BAGLANTI_TABLOSU dışında {bag.…} HATA.
+BAGLANTI_TABLOSU = {"I01": "B6a", "I02": "B6a", "P01": "B6a", "P02": "B6a", "P03": "K1"}
+_BAG = re.compile(r"\{bag\.([^{}\s]+)\}")
+
+
+def baglanti_tablosu_denetle(TB=None, RM=None, D=None):
+    TB = TB or Tablo()
+    if RM is None:
+        import rehber_metin as RM
+    import rehber_deger as _RDG
+    D = D or _RDG.Degerler(TB.T)
+    hata = []
+    nerede = {}
+    for kod, a in RM.ADIM_HAM.items():
+        for i, t in enumerate(a.get("kablo") or []):
+            for m in _BAG.finditer(t if isinstance(t, str) else ""):
+                nerede.setdefault(m.group(1), []).append((kod, i))
+    for k in sorted(set(nerede) - set(BAGLANTI_TABLOSU)):
+        hata.append("{bag.%s}: BAGLANTI_TABLOSU'nda yok (%s)" % (k, ", ".join(x for x, _i in nerede[k])))
+    for k, kod in sorted(BAGLANTI_TABLOSU.items()):
+        yer = "bağlantı tablosu %s (%s)" % (k, kod)
+        if k not in TB.K:
+            hata.append("%s: kablo kayıtta yok" % yer)
+            continue
+        kodlar = {x["kod"] for x in TB.K[k].get("rehber", [])}
+        if kod not in kodlar:
+            hata.append("%s: adım kablonun rehber adımlarından değil (%s)" % (yer, sorted(kodlar)))
+        n = nerede.get(k, [])
+        if len(n) != 1 or n[0][0] != kod:
+            hata.append("%s: adımın kablo listesinde {bag.%s} satırı %s (tam bir kez olmalı)" % (yer, k, n or "yok"))
+            continue
+        try:
+            beklenen = D.deger("bag", k)
+        except KeyError as e:
+            hata.append("%s: tablo kayıttan kurulamadı (%s)" % (yer, e))
+            continue
+        ham = RM.ADIM_HAM[kod]["kablo"][n[0][1]]
+        coz = (RM.ADIM.get(kod, {}).get("kablo") or [None] * (n[0][1] + 1))[n[0][1]]
+        if coz != D.coz(ham) or beklenen not in (coz or ""):
+            hata.append("%s: rehberdeki satır kayıttan kurulanla aynı değil (eski / elle) · rehber: %s · kayıt: %s" % (
+                yer, (coz or "-")[:90], beklenen[:90]))
+    return hata
+
+
+# ------------------------------------------------------------------ şema yolundan boy (P10.7b2c B, brief madde 6)
+# Her gösterim şemasının (kol bölümleri hariç) yol uzunluğu, şemanın ana kablosunun (SEMA girdisinin ilk kimliği) kablolar.json kaydında
+# ayrı alan "sema_boy" = {mm, sema, kaynak, etiket[, ortak]}. boy / boy_tahmin'in yerine geçmez, üzerine yazılmaz; sipariş hesabı
+# (kablolar_uret.kablo_boy, maliyet.json) okumaz. Yazma yalnız --sema-boy-yaz ile; ana koşu ve bozma denemesi tazeliği sınar.
+SEMA_BOY_ETIKET = "gösterim şeması yolu; ölçüm değil"
+SEMA_BOY_DOSYA = {"yollar": "tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar",
+                  "kafa_ici_qled": "tasarim/freecad/lale158/kablo_yolu_ekran.py#kafa_ici_qled",
+                  "taban": "tasarim/freecad/lale158/kablo_yolu_taban.py#yollar",
+                  "kafa_ici": "tasarim/freecad/lale158/kablo_yolu_kafa.py#yollar"}
+
+
+def sema_boylari(RM=None, nokta_f=None):
+    """{ana kimlik: sema_boy kaydı} ve hata listesi (aynı kablo iki şemanın ana kablosuysa)."""
+    if RM is None:
+        import rehber_metin as RM
+    nokta_f = nokta_f or sema_noktalari
+    out, hata = {}, []
+    for s in RM.SEMA:
+        if len(s) != 5 or s[0] not in SEMA_KAYNAK or not s[4]:
+            continue
+        pts = nokta_f(s[0], s[1])
+        if not pts or len(pts) < 2:
+            continue                                                  # sema_geometri_denetle yazar
+        L = sum(math.dist(a, b) for a, b in zip(pts[:-1], pts[1:]))
+        k = s[4][0]
+        if k in out:
+            hata.append("sema_boy %s: iki şemanın ana kablosu (%s, %s:%s)" % (k, out[k]["sema"], s[0], s[1]))
+            continue
+        e = dict(mm=int(round(L)), sema="%s:%s" % (s[0], s[1]), kaynak=SEMA_BOY_DOSYA[s[0]], etiket=SEMA_BOY_ETIKET)
+        if len(s[4]) > 1:
+            e["ortak"] = list(s[4][1:])
+        out[k] = e
+    return out, hata
+
+
+def sema_boy_denetle(TB=None, RM=None, nokta_f=None):
+    TB = TB or Tablo()
+    bek, hata = sema_boylari(RM, nokta_f)
+    for k in sorted(TB.K):
+        v = TB.K[k].get("sema_boy")
+        if k in bek and v != bek[k]:
+            if (v or {}).get("mm") != bek[k]["mm"]:
+                hata.append("sema_boy %s: kayıtta %s mm, şemadan %s mm (rehber_kablo.py --sema-boy-yaz)" % (
+                    k, (v or {}).get("mm"), bek[k]["mm"]))
+            else:
+                hata.append("sema_boy %s: kayıt alanları şemadan farklı (%s ≠ %s)" % (k, v, bek[k]))
+        elif k not in bek and v is not None:
+            hata.append("sema_boy %s: kayıtta var, şeması yok (ana kablo değil)" % k)
+    return hata
+
+
+# ------------------------------------------------------------------ P10.7b2c düzeltme turu 1 (F10k-kontrol D1, D3, kaçan bozmalar 4 ve 5)
+# (1) Tıklama kartındaki şema boyu (app.js semaSec): gösterim şemasının yol uzunluğu "çizim yolu ~N mm (kesim boyu değil)" etiketiyle
+#     gösterilir; kol içi bölümün (veride "kol" alanı olan) sayısı bölüm uzunluğudur: "bölüm uzunluğu ~N mm (kesim boyu değil)" (orkestratör
+#     ek kararı). Etiket ifadesi app.js'ten okunur ve sınanır; boy_mm başka yerde gösterilirse de HATA (sınanmayan ikinci gösterim olmasın).
+SEMA_BOY_APP = (r'SEMA\[i\]\.boy_mm \? \(SEMA\[i\]\.kol \? " · bölüm uzunluğu ~" \+ Math\.round\(SEMA\[i\]\.boy_mm\) \+ " mm \(kesim boyu değil\)"\s*'
+                r': " · çizim yolu ~" \+ Math\.round\(SEMA\[i\]\.boy_mm\) \+ " mm \(kesim boyu değil\)"\) : ""')
+APP_JS_ELLE = {}                                                       # bozma denemesi: {"metin": app.js metni} dosya yerine
+
+
+def sema_boy_etiketi_denetle(metin=None):
+    s = metin if metin is not None else (APP_JS_ELLE.get("metin") or open(APP_JS, encoding="utf-8").read())
+    m = re.search(r"\n    function semaSec\(i\) \{\n(.*?)\n    \}\n", s, re.S)
+    if not m:
+        return ["app.js: semaSec işlevi yok (şema boyu etiketi sınanamadı)"]
+    g, hata = m.group(1), []
+    if not re.search(r"const boy = " + SEMA_BOY_APP + ";", g) or not re.search(r'\)" \+\s*boy \+ "</span>"', g):
+        hata.append("app.js semaSec: şema boyu \"çizim yolu ~N mm (kesim boyu değil)\" / kol bölümünde \"bölüm uzunluğu ~N mm (kesim boyu değil)\" "
+                    "etiketiyle gösterilmiyor (F10k-kontrol D1)")
+    if "boy_mm" in s[:m.start()] + s[m.end():]:
+        hata.append("app.js: boy_mm semaSec dışında da gösteriliyor (etiketi sınanmıyor)")
+    return hata
+
+
+# (2) Gösterim şeması notu (kaçan bozma 4): çarpışma taramasından geçmeyen şema kaynaklarının (SEMA_NOT_KAYNAK) her şeması için adımın
+#     kablo listesinde not bulunmalı: "gösterim şemasıdır", kaynak dosyası, "çarpışma taramasından geçmedi", "boy ölçümü değildir"; notun
+#     "gösterim şemasıdır"dan önceki kısmı şemanın bütün kablo kimliklerini anmalı (şema notsuz ya da başka kabloların notu olan adıma
+#     taşınırsa HATA: kaçan bozma 5, G19 → B3). Modelsiz / nominal uçlu şemanın görünen adında "yeri yaklaşık" (ya da ses bölücüsünün
+#     "yeri ve varlığı kesin değil") geçmeli. Onay kaydından bağımsız. Eski kaynaklar (yollar, kafa_ici_qled) bu kurala girmez: notları
+#     başka biçimde ya da yok (F10k-gunluk.md düzeltme turu 1; kuyrukta).
+SEMA_NOT_KAYNAK = {"taban": "lale158/kablo_yolu_taban.py", "kafa_ici": "lale158/kablo_yolu_kafa.py"}
+SEMA_NOT_SOZ = ("gösterim şemasıdır", "çarpışma taramasından geçmedi", "boy ölçümü değildir")
+SEMA_YAKLASIK = ("yeri yaklaşık", "yeri ve varlığı kesin değil")
+
+
+def sema_not_denetle(TB=None, RM=None):
+    TB = TB or Tablo()
+    if RM is None:
+        import rehber_metin as RM
+    hata = []
+    for s in RM.SEMA:
+        if len(s) != 5 or s[0] not in SEMA_NOT_KAYNAK or not isinstance(s[4], (tuple, list)):
+            continue
+        kaynak, ad_k, kod, ad, ids = s
+        dosya = "`%s`" % SEMA_NOT_KAYNAK[kaynak]
+        notlar = [t for t in (RM.ADIM.get(kod) or {}).get("kablo") or []
+                  if isinstance(t, str) and dosya in t and all(x in t for x in SEMA_NOT_SOZ)]
+        if not notlar:
+            hata.append("şema %s (%s): adımın kablo listesinde gösterim şeması notu yok (%s, %s)" % (ad_k, kod, dosya, " / ".join(SEMA_NOT_SOZ)))
+        else:
+            on = [t.split(SEMA_NOT_SOZ[0])[0] for t in notlar]
+            eksik = [k for k in ids if not any(re.search(r"(?<!\w)%s(?!\w)" % re.escape(k), o) for o in on)]
+            if eksik:
+                hata.append("şema %s (%s): adımın gösterim şeması notu %s kablosunu anmıyor (şema yanlış adımda ya da not eksik)" % (
+                    ad_k, kod, "/".join(eksik)))
+        modelsiz = [p[0] for k in ids if k in TB.K for p in uc_parcalari(TB, k) if sema_sinifi(p[0]) in (NOMINAL, MODELSIZ)]
+        if modelsiz and not any(x in ad for x in SEMA_YAKLASIK):
+            hata.append("şema %s: modelsiz uç (%s) var, görünen adında \"%s\" yok" % (ad_k, modelsiz[0], SEMA_YAKLASIK[0]))
+    return hata
+
+
+# (3) Yer eki (D3): UC_YER_EK'teki ad geçen her görünen metinde ek de geçmeli (adım metinleri, şema adları, CAD yolu adları, kb satırları).
+def uc_yer_eki_denetle(TB=None, RM=None):
+    TB = TB or Tablo()
+    if RM is None:
+        import rehber_metin as RM
+    metin = []
+
+    def gez(o, yer):
+        if isinstance(o, str):
+            metin.append((yer, o))
+        elif isinstance(o, dict):
+            for k, v in o.items():
+                gez(v, "%s.%s" % (yer, k))
+        elif isinstance(o, (list, tuple)):
+            for i, v in enumerate(o):
+                gez(v, "%s[%d]" % (yer, i))
+    gez(RM.ADIM, "adım")
+    gez([s[3] for s in RM.SEMA if len(s) == 5], "şema adı")
+    gez({n: v[1] for n, v in RM.KABLO_AD.items()}, "KABLO_AD")
+    metin += [("kb %s" % k, TB.bilgi_satiri(k)) for k in sorted(TB.K)]
+    hata = []
+    for ad, ek in UC_YER_EK.items():
+        n = 0
+        for yer, t in metin:
+            if ad in t:
+                n += 1
+                if ek not in t:
+                    hata.append("%s: \"%s\" geçiyor, kartın yeri yazılı değil (\"%s\"; F10k-kontrol D3)" % (yer, ad, ek[:50]))
+        if not n:
+            hata.append("UC_YER_EK %s: hiçbir görünen metinde geçmiyor (kayıttaki ad değiştiyse eki güncelle)" % ad)
+    return hata
+
+
+def kayit_boyu(r):
+    """Kayıttaki boy: CAD / liste boyu (önce önerilen, sonra liste, gereken, yol) ya da tahmin. Doner (mm, ad) ya da (None, '')."""
+    b = r.get("boy") or {}
+    for a, ad in (("onerilen_mm", "önerilen"), ("liste_mm", "liste"), ("gereken_mm", "gereken"), ("yol_mm", "CAD yolu")):
+        if b.get(a):
+            return b[a], ad
+    t = r.get("boy_tahmin") or {}
+    return (t["mm"], "tahmin") if t.get("mm") else (None, "")
+
+
+def sema_boy_tablosu(TB=None, RM=None):
+    """[(kimlik, kesit, kayıttaki mm, kayıt türü, şemadan mm, fark, ortak)] bütün şema ana kabloları; risk = fark > 0."""
+    TB = TB or Tablo()
+    bek, _h = sema_boylari(RM)
+    out = []
+    for k in sorted(bek):
+        if k not in TB.K:
+            continue
+        mm, ad = kayit_boyu(TB.K[k])
+        out.append((k, TB.kesit_metni(k), mm, ad, bek[k]["mm"], (bek[k]["mm"] - mm) if mm else None, bek[k].get("ortak", [])))
+    return out
+
+
+def sema_boy_yaz(yol=TABLO_YOL):
+    """kablolar.json'a sema_boy alanlarını yazar (yalnız bu alan; şema sürümü 5). Biçim dosyanınki: indent 1, ensure_ascii False."""
+    ham = open(yol, encoding="utf-8").read()
+    T = json.loads(ham)
+    if json.dumps(T, indent=1, ensure_ascii=False) + "\n" != ham:
+        raise SystemExit("kablolar.json biçimi beklenenden farklı (indent 1); yazılmadı")
+    bek, h = sema_boylari()
+    if h:
+        raise SystemExit("; ".join(h))
+    yeni = []
+    for r in T["kablolar"]:
+        d = {}
+        son = "boy_tahmin" if "boy_tahmin" in r else "boy"              # alan boy_tahmin'in (yoksa boy'un) hemen ardına
+        for a, v in r.items():
+            if a == "sema_boy":
+                continue
+            d[a] = v
+            if a == son and r["kimlik"] in bek:
+                d["sema_boy"] = bek[r["kimlik"]]
+        yeni.append(d)
+    T["kablolar"] = yeni
+    T["surum"] = 5
+    if "sema_boy" not in T["kaynak"]:
+        T["kaynak"] += "; P10.7b2c (şema 5: sema_boy, gösterim şeması yolunun uzunluğu; planlama/d158/F10k-gunluk.md)"
+    T["alanlar"]["sema_boy"] = ("gösterim şemasının yol uzunluğu (rehber_metin.SEMA; şemanın ana kablosunda, ortak: aynı şemadaki öbür "
+                                "kablolar): mm, sema (kaynak:ad), kaynak, etiket '" + SEMA_BOY_ETIKET + "'. boy / boy_tahmin'in yerine "
+                                "geçmez, sipariş hesabına girmez; yalnız rehber_kablo.py --sema-boy-yaz yazar")
+    open(yol, "w", encoding="utf-8", newline="\n").write(json.dumps(T, indent=1, ensure_ascii=False) + "\n")
+    return len(bek)
 
 
 # ------------------------------------------------------------------ veri (rehber-veri.json) denetimi
@@ -900,6 +1505,8 @@ def veri_denetle(V, TB=None):
         if p.get("rt") != TB.ton(ids[0]):                            # F10h kontrol-5 S3-1: sahnenin çizdiği tema tonu (eksik rt dahil)
             hata.append("parça %s: tema tonu %s, tablodan %s (%s)" % (p["id"], p.get("rt"), TB.ton(ids[0]), ids[0]))
     for i, s in enumerate(V.get("semalar", [])):
+        if s.get("kol") and not str(s.get("kaynak", "")).startswith("kol_kablo:"):   # düzeltme turu 1 (D1): app.js etiketi "kol"a bakar
+            hata.append("şema %d %s: kol bölümü değil ama 'kol' alanı var (kartta çizim yolu yerine bölüm uzunluğu diye gösterilir)" % (i, s["ad"][:40]))
         ids = s.get("kablo")
         if not ids:
             eslesmeyen.append("şema %d %s" % (i, s["ad"][:60]))
@@ -931,6 +1538,7 @@ def bozma_denemesi(V=None):
     import rehber_metin as RM0
     sonuc = []
     ANZ = json.load(open(GEO_ANALIZ, encoding="utf-8"))
+    KAF = json.load(open(KAFA_ANALIZ, encoding="utf-8"))
 
     def dene(ad, f):
         RM = copy.deepcopy(_modul_kopya(RM0))
@@ -939,15 +1547,25 @@ def bozma_denemesi(V=None):
         eski_ton, eski_yc = copy.deepcopy(TEMA_TON), copy.deepcopy(KESIT_YARICAP)
         eski_mk = copy.deepcopy(MODELSIZ_KONUM)
         eski_kb, eski_em, eski_pc = copy.deepcopy(KARISIK_BILINEN), copy.deepcopy(GEO_EKSIK_MUAF), copy.deepcopy(PARCA_CAD)
+        eski_sp, eski_si = copy.deepcopy(SEMA_PARCA), copy.deepcopy(SEMA_GEO_ISTISNA)
+        eski_sk, eski_sm, eski_bt = copy.deepcopy(SEMA_KONUM), copy.deepcopy(SEMA_ESLEMESIZ_MUAF), copy.deepcopy(BAGLANTI_TABLOSU)
         try:
             V2 = copy.deepcopy(V) if V is not None else None
             f(RM, TB, V2)
             h = kaynak_denetle(TB, RM)
             h += geometri_denetle(TB, ANZ, CAD_ESLEME, GEO_ISTISNA)[0]
+            h += sema_geometri_denetle(TB, RM, ANZ, KAF)[0]                  # P10.7b2c
+            h += baglanti_tablosu_denetle(TB, RM)                            # P10.7b2c B
+            h += sema_boy_denetle(TB, RM)
+            h += sema_boy_etiketi_denetle() + sema_not_denetle(TB, RM) + uc_yer_eki_denetle(TB, RM)   # düzeltme turu 1
             if V2 is not None:
                 h += veri_denetle(V2, TB)[0]
             ho = onay_denetle()                                       # açık işler turu: onay kaydı ayrı mekanizma olarak sayılır
         finally:
+            APP_JS_ELLE.clear()
+            SEMA_KONUM.clear(); SEMA_KONUM.update(eski_sk)
+            SEMA_ESLEMESIZ_MUAF.clear(); SEMA_ESLEMESIZ_MUAF.update(eski_sm)
+            BAGLANTI_TABLOSU.clear(); BAGLANTI_TABLOSU.update(eski_bt)
             CAD_ESLEME.clear(); CAD_ESLEME.update(eski_cad)
             KOL_ESLEME.clear(); KOL_ESLEME.update(eski_kol)
             TEMA_TON.clear(); TEMA_TON.update(eski_ton)
@@ -956,6 +1574,9 @@ def bozma_denemesi(V=None):
             KARISIK_BILINEN.clear(); KARISIK_BILINEN.update(eski_kb)
             GEO_EKSIK_MUAF.clear(); GEO_EKSIK_MUAF.update(eski_em)
             PARCA_CAD.clear(); PARCA_CAD.update(eski_pc)
+            SEMA_PARCA.clear(); SEMA_PARCA.update(eski_sp)
+            SEMA_GEO_ISTISNA.clear(); SEMA_GEO_ISTISNA.update(eski_si)
+            SEMA_NOKTA_ELLE.clear()
             VURGU_ELLE.clear()
             SINIF_ELLE.clear()
         mek = "+".join(x for x, v in (("denetim", h), ("onay", ho)) if v)
@@ -1009,6 +1630,150 @@ def bozma_denemesi(V=None):
     def b42(RM, TB, V): CAD_ESLEME[5] = CAD_ESLEME[5] + ("G19",)                    # mavi kablo sarı / turuncu yolda
     def b43(RM, TB, V): GEO_EKSIK_MUAF.pop(1)                                        # G10 / yol 1 muafı silindi (eksik eşleme)
     def b44(RM, TB, V): PARCA_CAD["Dağıtım kartı C"] = r"^XL4016 servo 6 V C"        # kart XL4016 C'nin kutusu sayıldı: yol 6'ya ulaşmaz
+    # P10.7b2c: gösterim şemalarının geometrik sınaması (mek "denetim" içermeli)
+    def _si(RM, ad_k):
+        return next(i for i, s in enumerate(RM.SEMA) if s[1] == ad_k)
+
+    def _kt(ad_k):
+        return [list(q) for q in sema_noktalari("taban", ad_k)]
+
+    def b45(RM, TB, V):                                                               # yanlış uca bağlı yol: N01 şemasına N02
+        i = _si(RM, "N01"); RM.SEMA[i] = RM.SEMA[i][:4] + (("N02",),)
+
+    def b46(RM, TB, V):                                                               # eşik dışı uç: G19 sonu 30 mm kartın dışına
+        p = _kt("G19"); p[-1][0] += 30.0; SEMA_NOKTA_ELLE[("taban", "G19")] = p
+
+    def b47(RM, TB, V): del RM.SEMA[_si(RM, "N01")]                                    # eşlemesiz şema: kaynakta var, SEMA'da yok
+
+    def b48(RM, TB, V):                                                               # yanlış adım: Q01 şeması B5a'da
+        i = _si(RM, "Q01"); RM.SEMA[i] = RM.SEMA[i][:2] + ("B5a",) + RM.SEMA[i][3:]
+
+    def b49(RM, TB, V):                                                               # kat kesiği dışından geçiş (N02, x 90)
+        p = _kt("N02"); p[5][0] = p[6][0] = 90.0; SEMA_NOKTA_ELLE[("taban", "N02")] = p
+
+    def b50(RM, TB, V):                                                               # alt plakayı deliksiz geçiş (M02, z +60)
+        p = _kt("M02"); p[3][2] += 60.0; p[4][2] += 60.0; SEMA_NOKTA_ELLE[("taban", "M02")] = p
+
+    def b51(RM, TB, V): SEMA_GEO_ISTISNA.pop(("ESP32 USB", "son"))                     # mevcut şemanın istisnası silindi
+
+    def b52(RM, TB, V):                                                               # iki sınıflı şema (SV3 + G16)
+        i = _si(RM, "SV3"); RM.SEMA[i] = RM.SEMA[i][:4] + (("SV3", "G16"),)
+
+    def b53(RM, TB, V): SEMA_PARCA.pop("PAM8403")                                      # şema uç parçası haritadan çıktı
+
+    def b54(RM, TB, V):                                                               # mevcut şema yanlış uca: Dizi USB'ye U03
+        i = _si(RM, "Dizi USB"); RM.SEMA[i] = RM.SEMA[i][:4] + (("U03",),)
+    # P10.7b2c ikinci yarı (ajan B): bağlantı tablosu, kafa içi / ses şemaları, bütün kaynaklarda eşlemesiz şema, şema boyu
+
+    def _dm(TB, k, ad):
+        return next(d for d in TB.K[k]["damarlar"] if d["ad"] == ad)
+
+    def _bag_sil(RM, kod, k):
+        i = next(i for i, t in enumerate(RM.ADIM_HAM[kod]["kablo"]) if "{bag.%s}" % k in t)
+        del RM.ADIM_HAM[kod]["kablo"][i]; del RM.ADIM[kod]["kablo"][i]
+
+    def b55(RM, TB, V):                                                               # tablo: yanlış pin (SDA GPIO25)
+        d = _dm(TB, "I01", "SDA"); d["gpio"] = 25; d["a"] = "ESP32 · GPIO25"
+
+    def b56(RM, TB, V): _bag_sil(RM, "B6a", "I02")                                    # tablo: eksik satır
+
+    def b57(RM, TB, V): _dm(TB, "P01", "K0 sag_omuz")["pca_kanal"] = 4                 # tablo: kayıtla uyuşmayan kanal
+
+    def b58(RM, TB, V): _dm(TB, "P02", "K5 sol_omuz")["pca_ad"] = "sol_bilek"          # tablo: kanal adı pin haritasıyla tutmuyor
+
+    def b59(RM, TB, V):                                                               # tablo: kayıt değişti, rehber eski (damar silindi)
+        TB.K["I02"]["damarlar"] = [d for d in TB.K["I02"]["damarlar"] if d["ad"] != "GND"]
+
+    def b60(RM, TB, V):                                                               # tablo: satır elle yazıldı (yer tutucusuz)
+        i = next(i for i, t in enumerate(RM.ADIM_HAM["K1"]["kablo"]) if "{bag.P03}" in t)
+        RM.ADIM_HAM["K1"]["kablo"][i] = RM.ADIM["K1"]["kablo"][i]
+
+    def b61(RM, TB, V): BAGLANTI_TABLOSU["P03"] = "B6a"                               # tablo: yanlış adım
+
+    def b62(RM, TB, V):                                                               # kafa içi: K02 şemasına K03 (yanlış uç)
+        i = _si(RM, "K02"); RM.SEMA[i] = RM.SEMA[i][:4] + (("K03",),)
+
+    def b63(RM, TB, V):                                                               # kafa giriş kartının nominal noktası taşındı
+        n, v_, g_ = SEMA_KONUM[("Kafa giriş klemensi", "*")]; SEMA_KONUM[("Kafa giriş klemensi", "*")] = ((n[0] - 30.0,) + n[1:], v_, g_)
+
+    def b64(RM, TB, V): SEMA_PARCA.pop("Ses bölücüsü")                                 # ses: bölücü uç haritasından çıktı
+
+    def b65(RM, TB, V): del RM.SEMA[_si(RM, "Hoparlor")]                               # eşlemesiz şema (yollar kaynağı)
+
+    def b66(RM, TB, V): SEMA_ESLEMESIZ_MUAF.pop(("yollar", "Ses karti uzatmasi"))      # eşlemesiz şema muafı silindi
+
+    def b67(RM, TB, V):                                                               # şema boyu eskidi (K03 ara noktası taşındı)
+        p = [list(q) for q in sema_noktalari("kafa_ici", "K03")]; p[1][2] += 40.0; SEMA_NOKTA_ELLE[("kafa_ici", "K03")] = p
+
+    def b68(RM, TB, V): TB.K["AU1"].pop("sema_boy", None)                             # şema boyu kaydı silindi
+
+    def b69(RM, TB, V):                                                               # C01 sonu kameradan uzak
+        p = [list(q) for q in sema_noktalari("kafa_ici", "C01")]; p[-1][2] -= 30.0; SEMA_NOKTA_ELLE[("kafa_ici", "C01")] = p
+
+    def b70(RM, TB, V):                                                               # ses şeması ReSpeaker'dan değil Pi'den başlıyor
+        p = [list(q) for q in sema_noktalari("kafa_ici", "AU1")]; p[0] = [0.0, 1290.0 + 236.0, 1.0]
+        SEMA_NOKTA_ELLE[("kafa_ici", "AU1")] = p
+    # P10.7b2c düzeltme turu 1 (F10k-kontrol D1, D3 ve kaçan bozmalar 1, 4, 5)
+    _app = open(APP_JS, encoding="utf-8").read()
+    _eti = re.search(r"const boy = " + SEMA_BOY_APP + ";", _app)
+
+    def b71(RM, TB, V):                                                               # D1: kartta eski "~N mm" (etiketsiz)
+        APP_JS_ELLE["metin"] = _app.replace(_eti.group(0), 'const boy = SEMA[i].boy_mm ? " · ~" + Math.round(SEMA[i].boy_mm) + " mm" : "";')
+
+    def b72(RM, TB, V):                                                               # D1: gösterim şemasında "(kesim boyu değil)" silindi
+        APP_JS_ELLE["metin"] = _app.replace('" · çizim yolu ~" + Math.round(SEMA[i].boy_mm) + " mm (kesim boyu değil)"',
+                                            '" · çizim yolu ~" + Math.round(SEMA[i].boy_mm) + " mm"')
+
+    def b73(RM, TB, V): APP_JS_ELLE["metin"] = _app.replace("(SEMA[i].kol ?", "(!SEMA[i].kol ?")    # D1: iki etiket yer değiştirdi
+
+    def b85(RM, TB, V):                                                               # ek: kol bölümünde eski "~N mm" (etiketsiz)
+        APP_JS_ELLE["metin"] = _app.replace('" · bölüm uzunluğu ~" + Math.round(SEMA[i].boy_mm) + " mm (kesim boyu değil)"',
+                                            '" · ~" + Math.round(SEMA[i].boy_mm) + " mm"')
+
+    def b86(RM, TB, V):                                                               # ek: kol bölümünde "(kesim boyu değil)" silindi
+        APP_JS_ELLE["metin"] = _app.replace('" · bölüm uzunluğu ~" + Math.round(SEMA[i].boy_mm) + " mm (kesim boyu değil)"',
+                                            '" · bölüm uzunluğu ~" + Math.round(SEMA[i].boy_mm) + " mm"')
+
+    def b74(RM, TB, V):                                                               # D1: boy kartın başka yerinde etiketsiz
+        APP_JS_ELLE["metin"] = _app.replace("    function kabloBilgi(x, en) {\n",
+                                            "    function kabloBilgi(x, en) {\n      if (x.boy_mm) return \" · ~\" + x.boy_mm + \" mm\";\n", 1)
+
+    def b75(RM, TB, V):                                                               # kaçan 1: SV3 kart ucu panelin öbür köşesine
+        p = _kt("SV3"); p[-1] = [-100.0, p[-1][1], -60.0]; SEMA_NOKTA_ELLE[("taban", "SV3")] = p
+
+    def b76(RM, TB, V):                                                               # kaçan 1: SV3 kart ucu 30 mm öteye (boşlukta)
+        p = _kt("SV3"); p[-1][2] -= 30.0; SEMA_NOKTA_ELLE[("taban", "SV3")] = p
+
+    def b77(RM, TB, V):                                                               # kaçan 1: nominal nokta kaynaktan ayrıldı
+        n, v_, g_ = SEMA_KONUM[("Dağıtım kartı C", "*")]; SEMA_KONUM[("Dağıtım kartı C", "*")] = ((n[0], n[1], n[2] - 30.0), v_, g_)
+
+    def _not_sil(RM, kod, soz):
+        for A_ in (RM.ADIM, RM.ADIM_HAM):
+            A_[kod]["kablo"] = [t for t in A_[kod]["kablo"] if soz not in t]
+
+    def b78(RM, TB, V): _not_sil(RM, "B5a", "SV3'ün çizimi gösterim şemasıdır")       # kaçan 4: B5a notu silindi
+
+    def b79(RM, TB, V):                                                               # kaçan 4: adından "yeri yaklaşık" silindi
+        i = _si(RM, "SV3"); RM.SEMA[i] = RM.SEMA[i][:3] + (RM.SEMA[i][3].replace("yeri yaklaşık: ", ""),) + RM.SEMA[i][4:]
+
+    def b80(RM, TB, V):                                                               # kaçan 5: G19 B3'e taşındı
+        i = _si(RM, "G19"); RM.SEMA[i] = RM.SEMA[i][:2] + ("B3",) + RM.SEMA[i][3:]
+
+    def b81(RM, TB, V):                                                               # kaçan 4: E3a notunda K02 anılmıyor
+        for A_ in (RM.ADIM, RM.ADIM_HAM):
+            A_["E3a"]["kablo"] = [t.replace("(K01, K02, K03)", "(K01, K03)") for t in A_["E3a"]["kablo"]]
+
+    def b82(RM, TB, V):                                                               # D3: K1 P03 satırından kartın yeri silindi
+        for A_ in (RM.ADIM, RM.ADIM_HAM):
+            A_["K1"]["kablo"] = [t.replace(" Dağıtım kartı C (kafa): " + UC_YER_EK["Dağıtım kartı C (kafa)"] + ".", "")
+                                 for t in A_["K1"]["kablo"]]
+
+    def b83(RM, TB, V):                                                               # D3: kb satırında ek yok (SV3, S09, S10 kartı)
+        o = TB.bilgi_satiri
+        TB.bilgi_satiri = lambda k: o(k).replace(" (" + UC_YER_EK["Dağıtım kartı C (kafa)"] + ")", "")
+
+    def b84(RM, TB, V):                                                               # D3: yeni metinde ad eksiz geçiyor
+        i = _si(RM, "SV3"); RM.SEMA[i] = RM.SEMA[i][:3] + (RM.SEMA[i][3] + " → Dağıtım kartı C (kafa)",) + RM.SEMA[i][4:]
     deneme = [("CAD eşlemesinde bilinmeyen kimlik", b1), ("şemada bilinmeyen kimlik", b2), ("şemada kimlik yok", b3),
               ("şema son alanı yine renk (anahtar kelime / elle renk)", b4), ("kol bölümünde bilinmeyen kimlik", b5),
               ("KABLO_AD'da eşlemesiz CAD numarası", b6), ("devre sınıfı renk kuralında yok", b7),
@@ -1029,7 +1794,26 @@ def bozma_denemesi(V=None):
               ("eşleme G19: yol 4'e G08 (dal, ana yol bölümü)", b37), ("eşleme G20: yol 4'e G10 (dal, ana yol bölümü)", b38),
               ("eşleme G24: yol 10'da A03 yerine G22 (sınıf)", b39), ("eşleme G26: yol 1'den G02 çıktı (eksik)", b40),
               ("sınıf: yol 3'ün bilinen karışımı silindi", b41), ("sınıf: yol 5'e G19 (mavi)", b42),
-              ("eksik eşleme: G10 / yol 1 muafı silindi", b43), ("dağıtım kartı C: XL4016 C kutusu sayıldı", b44)]
+              ("eksik eşleme: G10 / yol 1 muafı silindi", b43), ("dağıtım kartı C: XL4016 C kutusu sayıldı", b44),
+              ("şema: N01 şemasına N02 (yanlış uç)", b45), ("şema: G19 sonu eşik dışında", b46),
+              ("şema: N01 SEMA'dan silindi (eşlemesiz)", b47), ("şema: Q01 yanlış adımda (B5a)", b48),
+              ("şema: N02 kat kesiği dışından", b49), ("şema: M02 alt plakayı deliksiz geçiyor", b50),
+              ("şema: ESP32 USB istisnası silindi", b51), ("şema: SV3 + G16 iki sınıf", b52),
+              ("şema: PAM8403 SEMA_PARCA'dan çıktı", b53), ("şema: Dizi USB'ye U03 (mevcut şema)", b54),
+              ("tablo: I01 SDA yanlış pin (GPIO25)", b55), ("tablo: I02 satırı eksik", b56),
+              ("tablo: P01 kanal kayıtla uyuşmuyor", b57), ("tablo: P02 kanal adı pin haritasıyla tutmuyor", b58),
+              ("tablo: I02 kaydı değişti, rehber eski", b59), ("tablo: P03 satırı elle yazıldı", b60),
+              ("tablo: P03 yanlış adımda", b61), ("kafa içi: K02 şemasına K03", b62),
+              ("kafa içi: giriş kartı nominali taşındı", b63), ("ses: bölücü SEMA_PARCA'dan çıktı", b64),
+              ("eşlemesiz: Hoparlor (yollar) SEMA'dan silindi", b65), ("eşlemesiz: ses kartı muafı silindi", b66),
+              ("şema boyu: K03 yolu değişti, kayıt eski", b67), ("şema boyu: AU1 kaydı silindi", b68),
+              ("kafa içi: C01 sonu kameradan uzak", b69), ("ses: şema Pi'den başlıyor", b70),
+              ("D1: kartta etiketsiz '~N mm'", b71), ("D1: '(kesim boyu değil)' silindi", b72), ("D1: iki etiket yer değiştirdi", b73),
+              ("D1: boy kartın başka yerinde etiketsiz", b74), ("SV3 kart ucu panelin öbür köşesinde", b75),
+              ("SV3 kart ucu 30 mm öteye", b76), ("dağıtım kartı C nominali kaynaktan ayrıldı", b77), ("B5a SV3 gösterim notu silindi", b78),
+              ("SV3 adından 'yeri yaklaşık' silindi", b79), ("G19 şeması B3'e taşındı", b80), ("E3a notunda K02 anılmıyor", b81),
+              ("D3: K1 P03 kartın yeri silindi", b82), ("D3: kb satırında yer eki yok", b83), ("D3: şema adında ad eksiz", b84),
+              ("ek: kol bölümünde etiketsiz '~N mm'", b85), ("ek: kol bölümünde '(kesim boyu değil)' silindi", b86)]
     if V is not None:
         def v1(RM, TB, V):
             i = next(k for k, s in enumerate(V["semalar"]) if s.get("kablo") and s.get("tur") not in KOL_ISARET_TUR)
@@ -1052,10 +1836,12 @@ def bozma_denemesi(V=None):
             p = next(p for p in V["parcalar"] if p.get("renk") and p.get("rt"))
             del p["rt"]                                               # sahne taban renge düşer
         def v8(RM, TB, V): TEMA_TON["yesil"]["light"] = "#2e8b57"     # kaynak ton değişti, veri yeniden üretilmedi
+        def v9(RM, TB, V):                                            # düzeltme turu 1 (D1): gösterim şemasına "kol" (etiketsiz boy)
+            next(s for s in V["semalar"] if not str(s.get("kaynak", "")).startswith("kol_kablo:"))["kol"] = "sag"
         deneme += [("veri: şema rengi elle değişti", v1), ("veri: şema yarıçapı elle değişti", v2), ("veri: CAD kablo rengi eski",
                    v3), ("veri: CAD kablosunda bilinmeyen kimlik", v4), ("veri: lejant tablosu yok", v5),
                    ("veri: CAD kablo tema tonu yanlış", v6), ("veri: CAD kablosunda tema tonu yok", v7),
-                   ("veri: kaynak tonu değişti, veri eski", v8)]
+                   ("veri: kaynak tonu değişti, veri eski", v8), ("veri: gösterim şemasında 'kol' alanı (D1)", v9)]
     for ad, f in deneme:
         dene(ad, f)
     return sonuc
@@ -1067,6 +1853,8 @@ def _modul_kopya(M):
     k = types.SimpleNamespace()
     k.KABLO_AD = copy.deepcopy(M.KABLO_AD)
     k.SEMA = list(copy.deepcopy(M.SEMA))
+    k.ADIM = copy.deepcopy(M.ADIM)                                    # P10.7b2c B: bağlantı tablosu satırları (kablo listesi)
+    k.ADIM_HAM = copy.deepcopy(M.ADIM_HAM)
     return k
 
 
@@ -1075,6 +1863,9 @@ def ozet(TB=None):
     t = cizim_tablosu(TB)
     print("kablo eşleme: tablo %d kablo, çizilen %d, çizilmeyen %d" % (t["toplam"], t["cizilen"], len(t["cizilmeyen"])))
     print("  çizilmeyen:", ", ".join(t["cizilmeyen"]))
+    print("  üç sınıf (P10.7b2c): yol çizimi %d (%s) · bağlantı tablosu %d (%s) · hiçbiri %d (%s)" % (
+        t["yol_cizimi"], ", ".join("%s %d" % kv for kv in t["yol_kaynak"].items()), len(t["baglanti_tablosu"]),
+        ", ".join(t["baglanti_tablosu"]) or "-", len(t["hicbiri"]), ", ".join(t["hicbiri"]) or "-"))
     kar = []
     for n, ids in CAD_ESLEME.items():
         c = TB.cizim(ids)
@@ -1088,7 +1879,11 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--veri", default="")
     ap.add_argument("--bozma-denemesi", action="store_true")
+    ap.add_argument("--sema-boy-yaz", action="store_true", help="kablolar.json sema_boy alanlarını şemalardan yaz (yalnız bu alan)")
     a = ap.parse_args()
+    if a.sema_boy_yaz:
+        print("sema_boy yazıldı: %d kablo (%s)" % (sema_boy_yaz(), os.path.relpath(TABLO_YOL, ROBOT)))
+        sys.exit(0)
     TB = Tablo()
     V = json.load(open(a.veri, encoding="utf-8")) if a.veri else None
     if a.bozma_denemesi:
@@ -1114,6 +1909,37 @@ if __name__ == "__main__":
     for x in gb:
         if "istisna" in x or "elle bakıldı" in x:
             print("  BILGI", x)
+    sh, sb, st = sema_geometri_denetle(TB, RM)                       # P10.7b2c: gösterim şemaları
+    h += sh
+    print("şema geometrisi: %d şema (%s), eşik %g mm; hata %d, bilgi %d, istisnalı %d" % (
+        len(st), ", ".join("%s %d" % (k, sum(1 for s in st if s["kaynak"] == k)) for k in SEMA_KAYNAK), GEO_ESIK, len(sh), len(sb),
+        sum(1 for s in st if s["istisna"])))
+    for s in st:
+        print("  ŞEMA %-34s %-4s %-9s yan %s · uç %s%s%s" % (
+            s["sema"][:34], s["kod"], "/".join(s["kimlik"]), " ".join("%s%s:%s" % (k, y, d) for k, y, _p, _c, d in s["yanlar"]),
+            " ".join("%s:%s" % (a, d) for a, _u, _y, d in s["uclar"]),
+            (" · geçiş " + " ".join("%s:%s" % (lv, "tamam" if d == "tamam" else "HATA") for lv, _n, d in s["gecis"])) if s["gecis"] else "",
+            (" · istisna " + ", ".join(s["istisna"])) if s["istisna"] else ""))
+    for x in sb:
+        if "istisna" in x or "elle bakıldı" in x:
+            print("  BILGI", x)
+    bh = baglanti_tablosu_denetle(TB, RM)                            # P10.7b2c B
+    h += bh
+    print("bağlantı tablosu: %d kablo (%s); hata %d" % (len(BAGLANTI_TABLOSU), ", ".join(
+        "%s %s" % kv for kv in sorted(BAGLANTI_TABLOSU.items())), len(bh)))
+    yh = sema_boy_denetle(TB, RM)
+    h += yh
+    sbt = sema_boy_tablosu(TB, RM)
+    print("şema boyu (%s): %d şema, kayıt tazeliği hata %d; şema > kayıttaki: %d" % (
+        SEMA_BOY_ETIKET, len(sbt), len(yh), sum(1 for x in sbt if x[5] is not None and x[5] > 0)))
+    for k, kes, mm, ad, sm, fark, ortak in sbt:
+        print("  BOY %-4s %-24s kayıt %5s mm (%s) · şema %5d mm · fark %s%s" % (
+            k, kes[:24], mm, ad, sm, ("%+d" % fark) if fark is not None else "-", (" · ortak " + "/".join(ortak)) if ortak else ""))
+    eh, nh, uh = sema_boy_etiketi_denetle(), sema_not_denetle(TB, RM), uc_yer_eki_denetle(TB, RM)   # düzeltme turu 1
+    h += eh + nh + uh
+    print("düzeltme turu 1: kart boy etiketi hata %d; gösterim şeması notu (%s) %d şema, hata %d; yer eki (%s) hata %d" % (
+        len(eh), "/".join(sorted(SEMA_NOT_KAYNAK)), sum(1 for s in RM.SEMA if s[0] in SEMA_NOT_KAYNAK), len(nh),
+        ", ".join(UC_YER_EK), len(uh)))
     ae = ayirt_edilemeyen(TB)
     print("geometrinin ayırt edemediği çiftler (onay kaydı korur): %d" % len(ae))
     for n, m, k, yer in ae:

@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-15 11:39",
+ "tarih": "2026-11-15 15:24",
  "tarayici": "chrome.exe",
  "adim": 50,
  "yontem": "CDP (Chrome DevTools protokolü), file://; önce = 749627b~1 rehber sayfası geçici kopyada (three.js aynı 0.160 yerel paket)",
@@ -7,8 +7,8 @@
   "kare": "1400 x 900 pencere, sahne alanı (panel hariç)",
   "once_ortanca": 0.1732,
   "sonra_ortanca": 0.4013,
-  "once_ortalama": 0.1648,
-  "sonra_ortalama": 0.3777,
+  "once_ortalama": 0.1646,
+  "sonra_ortalama": 0.378,
   "once_tasan_adim": 0,
   "sonra_tasan_adim": 0,
   "sonra_tasan_parca": 0,
@@ -26,7 +26,7 @@
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 1241,
+    "yeni_parca": 1257,
     "hazir": true,
     "hata": null
    },
@@ -129,12 +129,12 @@
    {
     "adim": 9,
     "kod": "B3",
-    "once": 0.2371,
-    "sonra": 0.5302,
+    "once": 0.2249,
+    "sonra": 0.5465,
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 28,
+    "yeni_parca": 29,
     "hazir": true,
     "hata": null
    },
@@ -170,7 +170,7 @@
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 39,
+    "yeni_parca": 40,
     "hazir": true,
     "hata": null
    },
@@ -230,7 +230,7 @@
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 7,
+    "yeni_parca": 16,
     "hazir": true,
     "hata": null
    },
@@ -374,7 +374,7 @@
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 22,
+    "yeni_parca": 25,
     "hazir": true,
     "hata": null
    },
@@ -398,7 +398,7 @@
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 65,
+    "yeni_parca": 67,
     "hazir": true,
     "hata": null
    },
@@ -1044,7 +1044,7 @@
       "satir": 22,
       "D_acilis": 627,
       "D_patlak": 858,
-      "D_hepsi_takili": 627,
+      "D_hepsi_takili": 651,
       "D_geri_al": 858,
       "sira_son": {
        "n": 22,
@@ -1054,14 +1054,14 @@
      },
      {
       "adim": 12,
-      "satir": 12,
+      "satir": 13,
       "D_acilis": 481,
       "D_patlak": 594,
       "D_hepsi_takili": 481,
       "D_geri_al": 594,
       "sira_son": {
-       "n": 12,
-       "toplam": 12
+       "n": 13,
+       "toplam": 13
       },
       "gecti": true
      }
@@ -1141,7 +1141,7 @@
     "adim": 4,
     "var": true,
     "oran": 0.3186,
-    "boyut_kb": 84.3,
+    "boyut_kb": 84.4,
     "cizili": true
    },
    {
@@ -1175,36 +1175,36 @@
    {
     "adim": 9,
     "var": true,
-    "oran": 0.7783,
-    "boyut_kb": 155.7,
+    "oran": 0.7785,
+    "boyut_kb": 157.1,
     "cizili": true
    },
    {
     "adim": 10,
     "var": true,
     "oran": 0.6853,
-    "boyut_kb": 169.9,
+    "boyut_kb": 171.0,
     "cizili": true
    },
    {
     "adim": 11,
     "var": true,
     "oran": 0.7751,
-    "boyut_kb": 197.6,
+    "boyut_kb": 198.7,
     "cizili": true
    },
    {
     "adim": 12,
     "var": true,
     "oran": 0.3868,
-    "boyut_kb": 105.3,
+    "boyut_kb": 110.0,
     "cizili": true
    },
    {
     "adim": 13,
     "var": true,
-    "oran": 0.6939,
-    "boyut_kb": 137.0,
+    "oran": 0.6945,
+    "boyut_kb": 144.9,
     "cizili": true
    },
    {
@@ -1218,28 +1218,28 @@
     "adim": 15,
     "var": true,
     "oran": 0.7962,
-    "boyut_kb": 174.0,
+    "boyut_kb": 174.6,
     "cizili": true
    },
    {
     "adim": 16,
     "var": true,
     "oran": 0.6749,
-    "boyut_kb": 149.1,
+    "boyut_kb": 149.7,
     "cizili": true
    },
    {
     "adim": 17,
     "var": true,
-    "oran": 0.5369,
-    "boyut_kb": 194.6,
+    "oran": 0.523,
+    "boyut_kb": 209.7,
     "cizili": true
    },
    {
     "adim": 18,
     "var": true,
     "oran": 0.0737,
-    "boyut_kb": 99.4,
+    "boyut_kb": 99.9,
     "cizili": true
    },
    {
@@ -1274,7 +1274,7 @@
     "adim": 23,
     "var": true,
     "oran": 0.2549,
-    "boyut_kb": 83.8,
+    "boyut_kb": 83.7,
     "cizili": true
    },
    {
@@ -1288,7 +1288,7 @@
     "adim": 25,
     "var": true,
     "oran": 0.6303,
-    "boyut_kb": 179.8,
+    "boyut_kb": 179.7,
     "cizili": true
    },
    {
@@ -1315,36 +1315,36 @@
    {
     "adim": 29,
     "var": true,
-    "oran": 0.2832,
-    "boyut_kb": 84.3,
+    "oran": 0.2858,
+    "boyut_kb": 91.7,
     "cizili": true
    },
    {
     "adim": 30,
     "var": true,
-    "oran": 0.3676,
-    "boyut_kb": 94.6,
+    "oran": 0.3704,
+    "boyut_kb": 103.2,
     "cizili": true
    },
    {
     "adim": 31,
     "var": true,
     "oran": 0.3422,
-    "boyut_kb": 117.7,
+    "boyut_kb": 119.0,
     "cizili": true
    },
    {
     "adim": 32,
     "var": true,
     "oran": 0.1078,
-    "boyut_kb": 103.3,
+    "boyut_kb": 104.8,
     "cizili": true
    },
    {
     "adim": 33,
     "var": true,
     "oran": 0.2689,
-    "boyut_kb": 164.1,
+    "boyut_kb": 164.5,
     "cizili": true
    },
    {
@@ -1393,7 +1393,7 @@
     "adim": 40,
     "var": true,
     "oran": 0.6381,
-    "boyut_kb": 113.2,
+    "boyut_kb": 113.1,
     "cizili": true
    },
    {
@@ -1616,7 +1616,7 @@
      "w": 170,
      "h": 227,
      "dolu": 4970,
-     "vurgu": 173,
+     "vurgu": 172,
      "tasma": 0,
      "genislik": 1400,
      "sahne_icinde": true,
@@ -1814,7 +1814,7 @@
      "w": 170,
      "h": 227,
      "dolu": 4970,
-     "vurgu": 318,
+     "vurgu": 317,
      "tasma": 0,
      "genislik": 1400,
      "sahne_icinde": true,
@@ -1858,7 +1858,7 @@
      "w": 170,
      "h": 227,
      "dolu": 4970,
-     "vurgu": 136,
+     "vurgu": 217,
      "tasma": 0,
      "genislik": 1400,
      "sahne_icinde": true,
@@ -2966,7 +2966,7 @@
      "w": 84,
      "h": 112,
      "dolu": 1201,
-     "vurgu": 27,
+     "vurgu": 47,
      "tasma": 0,
      "genislik": 360,
      "sahne_icinde": true,
@@ -3691,6 +3691,6 @@
  },
  "goruntu": [],
  "veri_degismedi": false,
- "sure_s": 436,
+ "sure_s": 465,
  "gecti": true
 }

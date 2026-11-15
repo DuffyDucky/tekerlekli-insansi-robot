@@ -1,7 +1,7 @@
 {
- "surum": 4,
+ "surum": 5,
  "tarih": "2026-11-15",
- "kaynak": "P10.7a; kararlar: planlama/adim3/elektrik.md, pin-haritasi.md (sürüm 4), kablolama-on-kararlar.md (K1, K10, K11, K14); P10.7b2a (şema 4: koruyucu yeri, kontak uçları, TVS ve kondansatör yönü, anahtarlı bara yerleşimi; planlama/d158/F10i-gunluk.md)",
+ "kaynak": "P10.7a; kararlar: planlama/adim3/elektrik.md, pin-haritasi.md (sürüm 4), kablolama-on-kararlar.md (K1, K10, K11, K14); P10.7b2a (şema 4: koruyucu yeri, kontak uçları, TVS ve kondansatör yönü, anahtarlı bara yerleşimi; planlama/d158/F10i-gunluk.md); P10.7b2c (şema 5: sema_boy, gösterim şeması yolunun uzunluğu; planlama/d158/F10k-gunluk.md)",
  "aciklama": "Robottaki kabloların tek kaynağı. Okunur görünüm planlama/adim3/kablolar.md bu dosyadan planlama/adim3/kablolar_uret.py ile üretilir; denetim planlama/adim3/kablolar_denetim.py. Bir kaydı değiştirince ikisini de koş. Sürüm 2 (14.11, P10.7a ikinci tur): orkestratör kararları O-1 … O-14 işlendi (kararlar), kesit kuralı web kaynaklı tabloya bağlandı, boyu bilinmeyenlere etiketli kaba tahmin (boy_tahmin), klemens türleri ve malzeme özeti eklendi. Üçüncü tur (14.11): O-15 … O-18 ve O-3 / O-4 revizeleri; boy tahmininden 150 mm pay kaldırıldı. Sürüm 3 (14.11, düzeltme turu 1): düğümler / ağlar / koruyucular / anahtarlar / dallar ve her kablonun besleme zinciri; koruma kablodaki sayıdan değil koruyucular tablosundan; kesit kuralına ortam sıcaklığı düzeltmesi; denetim acil stop, dönüş, 5 V ayrımı ve kesiti devrenin yapısından türetir.",
  "alanlar": {
   "kimlik": "kısa kimlik; ilk harf grup (G güç, A acil stop, M motor, SV servo gücü, X arayüz, B BTS sinyal, N enkoder, I I2C, P PCA sinyal, Q sonar, S servo uzatması, K kafa içi güç, U USB, H HDMI, C CSI, AU ses)",
@@ -33,7 +33,8 @@
   "kontak uçları": "anahtarlar[<k>].uclar {giris, cikis, bos, teyit, kaynak}: röle kontağının hangi uçlarından geçtiği (şema 4)",
   "tvs": "tek yönlü TVS'ler: parca, yer, arti_dugumu / eksi_dugumu (düğümler listesinden), yon (katot artı hatta, anot GND'de), isaret, kaynak (veri sayfası), teyit, siparis (maliyet kalemi) (şema 4)",
   "kondansatör yönü": "kondansatorler.yon / isaret / kaynak / teyit: elektrolitik kondansatörün kutbu (şema 4)",
-  "bara yerleşimi": "klemens_turleri.bara-pabuc.kopruler[<bara>].yerlesim: saplama numarası → iletkenler (alttan üste; kalın pabuç altta), besleme_saplamasi: baraya gelen hattın saplaması (şema 4'te anahtarlı bara için de)"
+  "bara yerleşimi": "klemens_turleri.bara-pabuc.kopruler[<bara>].yerlesim: saplama numarası → iletkenler (alttan üste; kalın pabuç altta), besleme_saplamasi: baraya gelen hattın saplaması (şema 4'te anahtarlı bara için de)",
+  "sema_boy": "gösterim şemasının yol uzunluğu (rehber_metin.SEMA; şemanın ana kablosunda, ortak: aynı şemadaki öbür kablolar): mm, sema (kaynak:ad), kaynak, etiket 'gösterim şeması yolu; ölçüm değil'. boy / boy_tahmin'in yerine geçmez, sipariş hesabına girmez; yalnız rehber_kablo.py --sema-boy-yaz yazar"
  },
  "renk_kurali": {
   "ilke": "İletken rengi kutbu gösterir: + kırmızı, − / GND siyah (listedeki 12 / 16 / 18 AWG silikon kablolar yalnız kırmızı ve siyah: maliyet.json 12, 16, 18 AWG satırları). Devre türü iki uçta ~2 cm renkli makaronla gösterilir (listedeki 328 parça renkli makaron seti; setteki renkler doğrulanmadı, eksik renk olursa uç etiketi) ve rehber çiziminde aynı renk kullanılır. Çizim renkleri rehberin eski kablo paletinden (anahtar kelimeyle renk veren kablo_rengi, P10.7b1'de kaldırıldı) alındı; rehber çizimi bu sınıflara kablo kimliği üzerinden bağlanır (tasarim/freecad/rehber/rehber_kablo.py). Belgelerde yazılı bir kablo rengi bulunmadı; korunacak renk yok.",
@@ -1117,6 +1118,12 @@
     "yontem": "montaj-analiz.json ev pozu parça merkezleri arası Manhattan uzaklığı (dik açılı döşeme) × 1,25, 50 mm'ye yukarı yuvarlanır; çok uçlu kablolarda en uzak çift (kural: boy_tahmin_kurali)",
     "etiket": "tahmin, P10.7b'de ölçülecek"
    },
+   "sema_boy": {
+    "mm": 281,
+    "sema": "taban:G07",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_taban.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
+   },
    "besleme_zinciri": [
     "aku-bms",
     "ana-sigorta",
@@ -1888,6 +1895,12 @@
     "yontem": "montaj-analiz.json ev pozu parça merkezleri arası Manhattan uzaklığı (dik açılı döşeme) × 1,25, 50 mm'ye yukarı yuvarlanır; çok uçlu kablolarda en uzak çift (kural: boy_tahmin_kurali)",
     "etiket": "tahmin, P10.7b'de ölçülecek"
    },
+   "sema_boy": {
+    "mm": 384,
+    "sema": "taban:M02",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_taban.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
+   },
    "kesit_istisna": "motor-fabrika-kablosu",
    "besleme_zinciri": [
     "aku-bms",
@@ -2404,6 +2417,12 @@
     "etiket": "tahmin, P10.7b'de ölçülecek",
     "vekil": "bara → sigorta kutusu vekil"
    },
+   "sema_boy": {
+    "mm": 240,
+    "sema": "taban:G16",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_taban.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
+   },
    "besleme_zinciri": [
     "aku-bms",
     "ana-sigorta",
@@ -2698,6 +2717,12 @@
     "kaynak": "planlama/adim3/kablolar.json#kararlar",
     "yontem": "sabit: dağıtım kartı C, XL4016 C klemensinin yanında (O-8): kısa çift",
     "etiket": "tahmin, P10.7b'de ölçülecek"
+   },
+   "sema_boy": {
+    "mm": 39,
+    "sema": "taban:SV3",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_taban.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
    },
    "besleme_zinciri": [
     "aku-bms",
@@ -3010,6 +3035,12 @@
     "yontem": "montaj-analiz.json ev pozu parça merkezleri arası Manhattan uzaklığı (dik açılı döşeme) × 1,25, 50 mm'ye yukarı yuvarlanır; çok uçlu kablolarda en uzak çift (kural: boy_tahmin_kurali)",
     "etiket": "tahmin, P10.7b'de ölçülecek"
    },
+   "sema_boy": {
+    "mm": 219,
+    "sema": "taban:G19",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_taban.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
+   },
    "besleme_zinciri": [
     "aku-bms",
     "ana-sigorta",
@@ -3177,6 +3208,15 @@
     "kaynak": "tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.12 V",
     "not": "yol 'taban güç panelinden' çizildi; KOK §11 bunu regülatör → ekran boyu sayar, kutu → regülatör ayrı (G20)"
    },
+   "sema_boy": {
+    "mm": 1376,
+    "sema": "yollar:12 V",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil",
+    "ortak": [
+     "G20"
+    ]
+   },
    "rehber": [
     {
      "no": 32,
@@ -3315,6 +3355,12 @@
     "yontem": "montaj-analiz.json ev pozu parça merkezleri arası Manhattan uzaklığı (dik açılı döşeme) × 1,25, 50 mm'ye yukarı yuvarlanır; çok uçlu kablolarda en uzak çift (kural: boy_tahmin_kurali)",
     "etiket": "tahmin, P10.7b'de ölçülecek",
     "vekil": "bara → sigorta kutusu vekil"
+   },
+   "sema_boy": {
+    "mm": 240,
+    "sema": "taban:G22",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_taban.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
    },
    "not": "O-18 b (orkestratör kararı, 14.11.2026): telin kaynak (bara) ucunda hat sigortası 2 A; 22 AWG (3 A) korunur. Listedeki hat yuvası mini / micro bıçak alır; 'standart' değil mini 2 A (maliyet.json '2A Mini' satırı).",
    "besleme_zinciri": [
@@ -4381,6 +4427,12 @@
     "yontem": "montaj-analiz.json ev pozu parça merkezleri arası Manhattan uzaklığı (dik açılı döşeme) × 1,25, 50 mm'ye yukarı yuvarlanır; çok uçlu kablolarda en uzak çift (kural: boy_tahmin_kurali)",
     "etiket": "tahmin, P10.7b'de ölçülecek"
    },
+   "sema_boy": {
+    "mm": 116,
+    "sema": "taban:B02",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_taban.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
+   },
    "besleme_zinciri": [
     "aku-bms",
     "ana-sigorta",
@@ -4507,6 +4559,12 @@
     "kaynak": "tasarim/freecad/montaj/montaj-analiz.json#parcalar",
     "yontem": "montaj-analiz.json ev pozu parça merkezleri arası Manhattan uzaklığı (dik açılı döşeme) × 1,25, 50 mm'ye yukarı yuvarlanır; çok uçlu kablolarda en uzak çift (kural: boy_tahmin_kurali)",
     "etiket": "tahmin, P10.7b'de ölçülecek"
+   },
+   "sema_boy": {
+    "mm": 617,
+    "sema": "taban:N01",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_taban.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
    },
    "besleme_zinciri": [
     "aku-bms",
@@ -4635,6 +4693,12 @@
     "kaynak": "tasarim/freecad/montaj/montaj-analiz.json#parcalar",
     "yontem": "montaj-analiz.json ev pozu parça merkezleri arası Manhattan uzaklığı (dik açılı döşeme) × 1,25, 50 mm'ye yukarı yuvarlanır; çok uçlu kablolarda en uzak çift (kural: boy_tahmin_kurali)",
     "etiket": "tahmin, P10.7b'de ölçülecek"
+   },
+   "sema_boy": {
+    "mm": 553,
+    "sema": "taban:N02",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_taban.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
    },
    "besleme_zinciri": [
     "aku-bms",
@@ -5312,6 +5376,12 @@
     "yontem": "montaj-analiz.json ev pozu parça merkezleri arası Manhattan uzaklığı (dik açılı döşeme) × 1,25, 50 mm'ye yukarı yuvarlanır; çok uçlu kablolarda en uzak çift (kural: boy_tahmin_kurali)",
     "etiket": "tahmin, P10.7b'de ölçülecek"
    },
+   "sema_boy": {
+    "mm": 305,
+    "sema": "taban:Q01",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_taban.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
+   },
    "besleme_zinciri": [
     "aku-bms",
     "ana-sigorta",
@@ -5433,6 +5503,12 @@
     "kaynak": "tasarim/freecad/montaj/montaj-analiz.json#parcalar",
     "yontem": "montaj-analiz.json ev pozu parça merkezleri arası Manhattan uzaklığı (dik açılı döşeme) × 1,25, 50 mm'ye yukarı yuvarlanır; çok uçlu kablolarda en uzak çift (kural: boy_tahmin_kurali)",
     "etiket": "tahmin, P10.7b'de ölçülecek"
+   },
+   "sema_boy": {
+    "mm": 228,
+    "sema": "taban:Q02",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_taban.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
    },
    "besleme_zinciri": [
     "aku-bms",
@@ -6790,6 +6866,12 @@
     "etiket": "tahmin, P10.7b'de ölçülecek",
     "vekil": "kafa giriş klemensi CAD'de yok: SY8205 yanı vekil"
    },
+   "sema_boy": {
+    "mm": 14,
+    "sema": "kafa_ici:K01",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_kafa.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
+   },
    "besleme_zinciri": [
     "aku-bms",
     "ana-sigorta",
@@ -6881,6 +6963,12 @@
     "yontem": "montaj-analiz.json ev pozu parça merkezleri arası Manhattan uzaklığı (dik açılı döşeme) × 1,25, 50 mm'ye yukarı yuvarlanır; çok uçlu kablolarda en uzak çift (kural: boy_tahmin_kurali)",
     "etiket": "tahmin, P10.7b'de ölçülecek",
     "vekil": "kafa giriş klemensi CAD'de yok: D24V50F5 yanı vekil"
+   },
+   "sema_boy": {
+    "mm": 71,
+    "sema": "kafa_ici:K02",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_kafa.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
    },
    "besleme_zinciri": [
     "aku-bms",
@@ -6975,6 +7063,12 @@
     "yontem": "montaj-analiz.json ev pozu parça merkezleri arası Manhattan uzaklığı (dik açılı döşeme) × 1,25, 50 mm'ye yukarı yuvarlanır; çok uçlu kablolarda en uzak çift (kural: boy_tahmin_kurali)",
     "etiket": "tahmin, P10.7b'de ölçülecek"
    },
+   "sema_boy": {
+    "mm": 47,
+    "sema": "kafa_ici:K03",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_kafa.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
+   },
    "besleme_zinciri": [
     "aku-bms",
     "ana-sigorta",
@@ -7037,6 +7131,12 @@
     "yol_mm": 114,
     "liste_mm": 300,
     "kaynak": "tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kafa_ici_qled.Power USB (30 cm, A ucu kesik)"
+   },
+   "sema_boy": {
+    "mm": 114,
+    "sema": "kafa_ici_qled:Power USB (30 cm, A ucu kesik)",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_ekran.py#kafa_ici_qled",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
    },
    "rehber": [
     {
@@ -7127,6 +7227,12 @@
     "onerilen_mm": 80,
     "kaynak": "tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.PAM 5 V"
    },
+   "sema_boy": {
+    "mm": 64,
+    "sema": "yollar:PAM 5 V",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
+   },
    "rehber": [
     {
      "no": 31,
@@ -7199,6 +7305,12 @@
     "yol_mm": 85,
     "onerilen_mm": 110,
     "kaynak": "tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.Dizi USB"
+   },
+   "sema_boy": {
+    "mm": 85,
+    "sema": "yollar:Dizi USB",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
    },
    "rehber": [
     {
@@ -7273,6 +7385,12 @@
     "onerilen_mm": 920,
     "kaynak": "tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.Hub uzatmasi",
     "not": "hub'ın sabit 130 mm kablosu dahil yol; + 150 mm kapak sökme payı"
+   },
+   "sema_boy": {
+    "mm": 617,
+    "sema": "yollar:Hub uzatmasi",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
    },
    "rehber": [
     {
@@ -7369,6 +7487,12 @@
     "liste_mm": 350,
     "kaynak": "tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kafa_ici_qled.Touch USB (kutu kablosu)"
    },
+   "sema_boy": {
+    "mm": 217,
+    "sema": "kafa_ici_qled:Touch USB (kutu kablosu)",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_ekran.py#kafa_ici_qled",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
+   },
    "rehber": [
     {
      "no": 31,
@@ -7441,6 +7565,12 @@
     "yol_mm": 395,
     "onerilen_mm": 640,
     "kaynak": "tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.USB dokunmatik"
+   },
+   "sema_boy": {
+    "mm": 395,
+    "sema": "yollar:USB dokunmatik",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
    },
    "rehber": [
     {
@@ -7521,6 +7651,12 @@
     "yol_mm": 971,
     "onerilen_mm": 1360,
     "kaynak": "tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.ESP32 USB"
+   },
+   "sema_boy": {
+    "mm": 971,
+    "sema": "yollar:ESP32 USB",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
    },
    "rehber": [
     {
@@ -7607,6 +7743,12 @@
     "liste_mm": 300,
     "kaynak": "tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kafa_ici_qled.HDMI (serit, 2 lehimsiz fis)"
    },
+   "sema_boy": {
+    "mm": 254,
+    "sema": "kafa_ici_qled:HDMI (serit, 2 lehimsiz fis)",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_ekran.py#kafa_ici_qled",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
+   },
    "rehber": [
     {
      "no": 31,
@@ -7678,6 +7820,12 @@
     "yol_mm": 757,
     "onerilen_mm": 950,
     "kaynak": "tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.HDMI"
+   },
+   "sema_boy": {
+    "mm": 757,
+    "sema": "yollar:HDMI",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
    },
    "rehber": [
     {
@@ -7793,6 +7941,12 @@
     "yontem": "sabit: hazır FPC 300 mm (liste satırı)",
     "etiket": "tahmin, P10.7b'de ölçülecek"
    },
+   "sema_boy": {
+    "mm": 70,
+    "sema": "kafa_ici:C01",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_kafa.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
+   },
    "besleme_zinciri": [
     "aku-bms",
     "ana-sigorta",
@@ -7890,6 +8044,15 @@
     "yontem": "montaj-analiz.json ev pozu parça merkezleri arası Manhattan uzaklığı (dik açılı döşeme) × 1,25, 50 mm'ye yukarı yuvarlanır; çok uçlu kablolarda en uzak çift (kural: boy_tahmin_kurali)",
     "etiket": "tahmin, P10.7b'de ölçülecek",
     "vekil": "ses bölücüsü PAM giriş pedlerinin dibinde (O-9)"
+   },
+   "sema_boy": {
+    "mm": 219,
+    "sema": "kafa_ici:AU1",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_kafa.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil",
+    "ortak": [
+     "AU2"
+    ]
    },
    "besleme_zinciri": [
     "aku-bms",
@@ -8032,6 +8195,12 @@
     "yol_mm": 824,
     "onerilen_mm": 1030,
     "kaynak": "tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.Hoparlor"
+   },
+   "sema_boy": {
+    "mm": 824,
+    "sema": "yollar:Hoparlor",
+    "kaynak": "tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar",
+    "etiket": "gösterim şeması yolu; ölçüm değil"
    },
    "rehber": [
     {

@@ -133,11 +133,23 @@ ayarlanan klemenslerini motoru yandaki notundaki bacak okunmuyorsa kablajda teli
 pabucun kalmaz girmeden altta baraya pimlerinin yerlerine enkoderi trig echo klemensli saplamada saplamalardaki pedinde ucudur vishay
 tvs anotlar serisi belge tipte pabucunu olursa okunan geriliminin
 gerekli kalemden kopya daha tonla vurgulu notuna gizli rengi shift
-eritir pensesiyle kovana lehimlenir okuma kayar girene
-bitip lehimin erken kaymaz gerilimini gerilimine pimine not gerilimidir gerilimiyle beklenen kez kalibrasyonuyla belirgin bozuk gelene
+eritir pensesiyle kovana lehimlenir okuma
+bitip lehimin erken kaymaz gerilimini not gerilimidir gerilimiyle beklenen kez bozuk
 neresi tema tekrar oynat patlat beklet yerlerini
-yinele kalibrasyonunda banttan kusuru maddesinden kusur bulunmazsa kayda tolerans
+yinele kalibrasyonunda banttan kusuru kusur bulunmazsa kayda tolerans
+maddeden
+modelden dokuz yerlerdir kartlara bakarak durumu sinyali
+tablosudur pininin denemesine kesin
+panelinin
 """.split())
+# P10.7b2c düzeltme turu 1 (F10k-kontrol D2): son satır K2 kablo listesindeki U06 cümlesinin 1 yeni kelimesi (gözden geçirildi: Türkçe
+# harfi olmayan doğru yazım).
+# P10.7b2c ikinci yarı (ajan B): son satır bağlantı tablosu ve kafa içi / ses şeması notlarının 4 yeni kelimesi (gözden geçirildi:
+# Türkçe harfi olmayan doğru yazım)
+# P10.7b2c ön işi (F10j-kontrol-2 A5): kullanılmayan "kayar", "gerilimine", "pimine", "kalibrasyonuyla", "belirgin", "gelene" ile A1 / A2
+# metniyle kullanımdan kalkan "maddesinden", "girene" çıkarıldı; sondan ikinci satır A1'in yeni kelimesi ("maddeden"). P10.7b2c: son
+# satır taban gösterim şemalarının (SEMA) ve K1 / B3 kablo notlarının 7 yeni kelimesi. Gözden geçirildi: hepsi Türkçe harfi olmayan
+# doğru yazım.
 # P10.7b2b düzeltme turu 1 (F10j-kontrol D1): son satır F1 G07 karar ağacının 9 yeni kelimesi (gözden geçirildi: hepsi Türkçe harfi
 # olmayan doğru yazım).
 # P10.7b2b: sondan ikinci satır üç metin kusurunun (K1 G07 makaronu, F1 akü gerilimi) 16 yeni kelimesi; son satır rehber/index.html'in
@@ -358,18 +370,38 @@ ZORUNLU_ALAN = [
      "F1 kontrol: bölücü ölçümü yalnız akü aralıktayken"),
     ("F1", "kontrol", r"Karar yalnız banttan: okuma {v.aku_olcum} içindeyse bölücü geçer", "F1 kontrol: bölücü kararı yalnız bantla"),
     ("F1", "kontrol", r"Akü gerilimi {v.aku_aralik} içinde olduğu için bölücü bozuk", "F1 kontrol: akü aralıkta, okuma bant dışı → bölücü bozuk"),
-    ("F1", "kontrol", r"Listedeki yerlerde kusur bulunmazsa da devam etme: akü gerilimini ve bölücü okumasını kayda yaz",
-     "F1 kontrol: kusur bulunmazsa da devam edilmez, kayda yazılır"),
-    ("F1", "kontrol", r"bölücü düzelip okuma aralığa girene kadar ana anahtarı yeniden açma, ESP32'ye bu bölücüyle enerji verme, "
+    # P10.7b2c ön işi (F10j-kontrol-2 A4): madde sonuna kadar (öğe sonu "\n" ya da metin sonu): arkasına eklenen gevşetme de yakalanır
+    ("F1", "kontrol", r"Listedeki yerlerde kusur bulunmazsa da devam etme: akü gerilimini ve bölücü okumasını kayda yaz "
+                      r"\(tolerans kaynakta yok\)(?=\n|$)", "F1 kontrol: kusur bulunmazsa da devam edilmez, kayda yazılır"),
+    # P10.7b2c ön işi (F10j-kontrol-2 A2): yasak tek anlamlı (yeniden ölçüm ana anahtarı açtırır; "okuma aralığa girene kadar" çelişiyordu)
+    ("F1", "kontrol", r"bölücüdeki kusuru düzeltmeden ana anahtarı yeniden açma, ESP32'ye bu bölücüyle enerji verme, "
                       r"aşama 2'ye \(F5\) geçme", "F1 kontrol: aralık dışı okumada ana anahtar, ESP32 ve aşama 2 yasağı"),
+    # P10.7b2c ön işi (F10j-kontrol-2 A1, A4): kilitsiz kalan üç cümle
+    ("F1", "kontrol", r"Kusuru düzeltince ölçümü baştan, akünün kendi gerilimini okuduğun maddeden yinele\.",
+     "F1 kontrol: kusur düzelince ölçüm akünün kendi geriliminden baştan"),
+    ("F1", "kontrol", r"akü {v.aku_aralik} aralığına gelince bu maddeyi baştan yinele \(akünün şarjı bu adım için kaynakta yok, "
+                      r"doğrulanmadı\)(?=\n|$)", "F1 kontrol: akü aralık dışındaysa aralığa gelince madde baştan"),
+    ("F1", "kontrol", r"okuma {v.aku_olcum} içindeyse bölücü geçer; ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını "
+                      r"sök(?=\n|$)", "F1 kontrol: bölücü geçerse söküm sırası (ana anahtar, akü, uçlar), bant gevşemez"),
+    # P10.7b2c düzeltme turu 1 (F10k-kontrol D2, D3): U06 şemasının yanlış çizilen taban ucu ve dağıtım kartı C'nin yeri
+    ("K2", "kablo", r"\"ESP32 USB\" şemasının \(U06\) taban ucu yanlış yerde, güç panelinin üstünde çizili \(şema yeniden çizilecek\): "
+                    r"kablonun taban ucu elektronik katındaki ESP32 taşıyıcısında ESP32'nin USB girişine takılır(?=\n|$)",
+     "K2 kablo: U06 şemasının taban ucu yanlış çizili, kablo ESP32'nin USB girişine"),
+    ("K1", "kablo", r"Dağıtım kartı C \(kafa\): kart güç panelinde, XL4016 C'nin yanında; adındaki \"kafa\" beslediği pan / tilt "
+                    r"servolarıdır\.", "K1 kablo: P03 tablosunda dağıtım kartı C'nin yeri (güç paneli)"),
 ]
 # P10.7b2b (F10i-kontrol-3 A4, A5, A6): sıra. (adım, alan, önce, sonra, ad): "önce" alanda geçmeli ve "sonra"nın her geçişi "önce"nin
 # ilk geçişinden sonra gelmeli (cümleler kalıp yerinde dururken sırası bozulursa yakalanır; tek desenli ZORUNLU bunu tutmaz:
 # "sonra dikişleri sık" AU3'ten önceye eklenince desen yine tutar).
 # P10.7b2b düzeltme turu 1 (F10j-kontrol D2, açık iş): "sonra" deseni "dikişlerini sık", "dikişleri sıkıp" biçimlerini de görür;
 # olumsuz / koşul biçimleri ("sıkmadan", "sıkılmadı", "sıkılmadan") sıkma talimatı sayılmaz
-_DIKIS_SIK = r"[dD]ikiş\w*\s+sık(?!madan|ılmad)\w*"
+# P10.7b2c ön işi (F10j-kontrol-2 A4): araya bir kelime ("dikiş vidalarını sık", "dikişleri iyice sık") ve büyük harf ("DİKİŞLERİ SIK")
+_DIKIS_SIK = r"[dD][iİ][kK][iİ][şŞ]\w*\s+(?:\w+\s+)?[sS][ıI][kK](?!madan|ılmad|MADAN|ILMAD)\w*"
+# P10.7b2c ön işi (A4): "önce" None ise satır yasaktır: "sonra" deseni alanda hiç geçmemeli (K2: dört kablodan sonra AU3'ü yeniden
+# kafa ucunda bağlatan cümle; dört kablo cümlesinin kendisi "dışındaki dört kabloyu" ile ayrılır)
 ZORUNLU_SIRA = [
+    ("K2", "is_", None, r"\bAU3\b(?!\) dışındaki dört kabloyu)[^.\n]{0,60}?\bkafa ucunda bağla",
+     "K2 AU3: dört kablodan sonra AU3'ü kafa ucunda bağlatan cümle yok"),
     ("K2", "is_", r"Hoparlör kablosunun \(AU3\) kafa ucunu PAM8403'ün sol kanal çıkışına lehimle", _DIKIS_SIK,
      "K2 AU3: dikişler AU3'ün lehiminden sonra sıkılır"),
     ("K2", "is_", r"Kutup kontrolü, dikişleri sıkmadan önce \(AU3\)", _DIKIS_SIK,
@@ -388,7 +420,8 @@ ZORUNLU_SIRA = [
 
 def zorunlu_sira_listesi(hatalar=None):
     h = hatalar if hatalar is not None else []
-    return [(k, alan, _yt_coz(o, h) or r"(?!x)x", _yt_coz(s, h) or r"(?!x)x", ad) for k, alan, o, s, ad in ZORUNLU_SIRA]
+    return [(k, alan, None if o is None else (_yt_coz(o, h) or r"(?!x)x"), _yt_coz(s, h) or r"(?!x)x", ad)
+            for k, alan, o, s, ad in ZORUNLU_SIRA]
 
 
 def sira_denetle(alanlar, hatalar=None):
@@ -398,6 +431,10 @@ def sira_denetle(alanlar, hatalar=None):
         if k not in RM.ADIM:
             continue
         t = alanlar.get((k, alan), "")
+        if o is None:                                               # P10.7b2c: yasak satır
+            if re.search(s, t):
+                out.append(dict(adim=k, uyari=ad + " (alan %s: yasak biçim var)" % alan))
+            continue
         m = re.search(o, t)
         if not m:
             out.append(dict(adim=k, uyari=ad + " (alan %s: önceki öğe yok)" % alan))
@@ -1370,7 +1407,9 @@ TAMLIK_MUAF = [
     ("GPIO rolü", r"SONAR_\w+_ECHO|(SOL|SAG)_(IS|ILERI_PWM|GERI_PWM|ENK_A|ENK_B)|BTS_EN|AKU_ADC",
      "sinyal / ölçüm pini (enkoder, BTS, sonar, akü ölçümü): güç ve acil stop zincirinde değil; pin numarası pin haritasında ve "
      "yazılımda, rehber yazmaz (uçlar kablolar.md'de)"),
-    ("GPIO rolü", r"I2C_SDA|I2C_SCL|UART0_TX|UART0_RX", "veri yolu (I2C, CP2102 üzerinden USB): ESP32 kartının sabit ucu; rehber pin "
+    # P10.7b2c ikinci yarı (ajan B): I2C_SDA / I2C_SCL muaftan çıktı; B6a'daki I01 bağlantı tablosu GPIO numaralarını kayıttan yazar
+    # (eski: "I2C_SDA|I2C_SCL|UART0_TX|UART0_RX", "veri yolu (I2C, CP2102 üzerinden USB): …")
+    ("GPIO rolü", r"UART0_TX|UART0_RX", "veri yolu (CP2102 üzerinden USB): ESP32 kartının sabit ucu; rehber pin "
      "numarası yazmaz (uçlar kablolar.md'de)"),
     ("GPIO rolü", r"DURUM_LED", "kart üstü LED, dışarı bağlanmaz (pin haritası)"),
     ("anahtar", r"esp32-3v3", "ESP32 kartının kendi regülatörü: montajda takılan ya da bağlanan ayrı parça değil"),
@@ -1885,6 +1924,41 @@ ZORUNLU_BOZMA = [
     ("F1 G07 'bölücü bozuk' koşulsuz (D1)", "F1", "Akü gerilimi {v.aku_aralik} içinde olduğu için bölücü bozuk", "Bölücü bozuk"),
     ("F1 G07 kusur bulunmazsa devam (D1)", "F1", "Listedeki yerlerde kusur bulunmazsa da devam etme",
      "Listedeki yerlerde kusur bulunmazsa devam et"),
+    # P10.7b2c ön işi (F10j-kontrol-2 A1, A2, A4): F10j-kontrol-2'de yalnız onay kaydının yakaladığı bozmalar ve eski muğlak biçimler
+    ("F1 A1 eski muğlak 'akü gerilimi maddesinden'", "F1", "ölçümü baştan, akünün kendi gerilimini okuduğun maddeden yinele",
+     "ölçümü akü gerilimi maddesinden baştan yinele"),
+    ("F1 A2 eski çelişkili 'okuma aralığa girene kadar'", "F1", "bölücüdeki kusuru düzeltmeden ana anahtarı",
+     "bölücü düzelip okuma aralığa girene kadar ana anahtarı"),
+    ("F1 A4 'Kusuru düzeltince … yinele' silindi", "F1",
+     " Kusuru düzeltince ölçümü baştan, akünün kendi gerilimini okuduğun maddeden yinele.", ""),
+    ("F1 A4 kapıda yineleme gevşedi", "F1", "aralığına gelince bu maddeyi baştan yinele",
+     "aralığına gelmese de sonraki maddeye geç"),
+    ("F1 A4 madde 2 sonunda uçlar enerjiliyken", "F1", "içindeyse bölücü geçer; ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök",
+     "içindeyse bölücü geçer; ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök; acele varsa uçları ana anahtar açıkken sök"),
+    ("F1 A4 bant gevşedi", "F1", "içindeyse bölücü geçer;", "içindeyse bölücü geçer, bandın biraz dışındaysa da geçer;"),
+    ("F1 A4 kusur yoksa aşama 2'ye geç", "F1", "bölücü okumasını kayda yaz (tolerans kaynakta yok)",
+     "bölücü okumasını kayda yaz ve aşama 2'ye (F5) geç (tolerans kaynakta yok)"),
+    ("F1 A4 kusur cümlesinin arkasına gevşetme", "F1", "kayda yaz (tolerans kaynakta yok)",
+     "kayda yaz (tolerans kaynakta yok); bölücü bozuk olabilir, yine de devam et"),
+    ("K2 A4 dört kablodan sonra AU3 yeniden bağlandı", "K2", "kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı). ",
+     "kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı). Hoparlör kablosunu (AU3) da kafa ucunda bağla. "),
+    ("K2 A4 'dikiş vidalarını sık' lehimden önce", "K2", "kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı). ",
+     "kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı). Arka kabuğun dikiş vidalarını sık. "),
+    ("K2 A4 'dikişleri iyice sık' lehimden önce", "K2", "kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı). ",
+     "kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı). Dikişleri iyice sık. "),
+    ("K2 A4 'DİKİŞLERİ SIK' lehimden önce", "K2", "kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı). ",
+     "kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı). DİKİŞLERİ SIK. "),
+    # P10.7b2c düzeltme turu 1 (F10k-kontrol D2, D3)
+    ("K2 U06 taban ucu notu silindi (D2)", "K2",
+     "\"ESP32 USB\" şemasının (U06) taban ucu yanlış yerde, güç panelinin üstünde çizili (şema yeniden çizilecek): kablonun taban ucu "
+     "elektronik katındaki ESP32 taşıyıcısında ESP32'nin USB girişine takılır", ""),
+    ("K2 U06 ucu şemadaki yere (D2)", "K2", "ESP32 taşıyıcısında ESP32'nin USB girişine takılır", "şemadaki yere, güç panelinin üstüne bırakılır"),
+    ("K2 U06 'yanlış yerde' gevşedi (D2)", "K2", "taban ucu yanlış yerde, güç panelinin üstünde çizili",
+     "taban ucu güç panelinin üstünde çizili"),
+    ("K2 U06 notunun arkasına şemaya uy (D2)", "K2", "ESP32'nin USB girişine takılır", "ESP32'nin USB girişine takılır; şüphede şemaya uy"),
+    ("K1 P03 dağıtım kartı C'nin yeri silindi (D3)", "K1",
+     " Dağıtım kartı C (kafa): kart güç panelinde, XL4016 C'nin yanında; adındaki \"kafa\" beslediği pan / tilt servolarıdır.", ""),
+    ("K1 P03 kart kafada (D3)", "K1", "kart güç panelinde, XL4016 C'nin yanında", "kart kafada, tilt servosunun yanında"),
 ]
 # Düzeltme turu 1 (F10i-kontrol A6): "kablajda teyit" ibaresi silinir; teyit_denetle yakalamalı
 TEYIT_BOZMA = [

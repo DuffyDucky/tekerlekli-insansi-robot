@@ -879,25 +879,16 @@ for i, kod in enumerate(KODLAR):
 # ------------------------------------------------------------------ gösterim şemaları (F7b, P7.2 madde 4): lale158/kablo_yolu_ekran.py
 # Parça DEĞİL: GLB'ye ve "parcalar"a girmez, parça sayısı modeldeki gibi kalır. app.js çizgi tüp olarak çizer (kendi adımında renkli,
 # sonra saydam). Kaynak yalnız okunur (import; dosya değişmez).
-sys.path.insert(0, os.path.join(FC, "lale158"))
-import kablo_yolu_ekran as KYE                                     # noqa: E402
-_yol, _qi = KYE.yollar(), KYE.kafa_ici_qled()
-_K = A.KAFA
-_Y0, _YT, _ZT = A.S3 + A.SG / 2, _K["tilt_nokta"][1], _K["tilt_nokta"][2]
-
-
-def _bas(q):                                                       # kafa_ici_qled: tilt ekseni çerçevesi -> global (yollar() bas() ile aynı)
-    return (q[0], _Y0 + _YT + q[1], _ZT + q[2])
-
-
+# P10.7b2c: noktaları rehber_kablo.sema_noktalari() çözer (tek çözücü: yollar, kafa_ici_qled, taban = lale158/kablo_yolu_taban.py);
+# geometrik sınama (sema_geometri_denetle) aynı noktaları kullanır.
 SEMALAR = []
 _kh = RK.kaynak_denetle(TB, RM)                                    # P10.7b1: eşleme hatası varsa üretme
 if _kh:
     raise SystemExit("kablo eslemesi hatali (rehber_kablo.py): " + "; ".join(_kh[:5]))
 for kaynak, ad_k, kod, ad, kimlik in RM.SEMA:
-    pts = _yol.get(ad_k) if kaynak == "yollar" else ([_bas(q) for q in _qi[ad_k][0]] if ad_k in _qi else None)
+    pts = RK.sema_noktalari(kaynak, ad_k)
     if not pts:
-        raise SystemExit("SEMA yolu bulunamadi: %s / %s (lale158/kablo_yolu_ekran.py)" % (kaynak, ad_k))
+        raise SystemExit("SEMA yolu bulunamadi: %s / %s (lale158/kablo_yolu_ekran.py, kablo_yolu_taban.py)" % (kaynak, ad_k))
     boy = sum(math.dist(a, b) for a, b in zip(pts[:-1], pts[1:]))
     s = dict(ad=ad, kaynak="%s:%s" % (kaynak, ad_k), a=KOD_IDX[kod], boy_mm=round(boy), pts=[[round(c, 1) for c in q] for q in pts])
     s.update(TB.cizim(kimlik))                                      # renk, r (kesitten), kablo, ks, kb, karisik?

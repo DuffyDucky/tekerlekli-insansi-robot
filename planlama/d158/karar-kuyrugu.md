@@ -1519,3 +1519,55 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   - "XT60E-M" eşleme haritasında "modelsiz": G06'yı bir yola eşlemek artık yalnız onay kaydıyla yakalanıyor (`rehber_kablo.py`).
   - `planlama/adim3/kablolar.json`'da S09 / S10 / SV3 / P03 uçlarının parça adı hâlâ "Dağıtım kartı C (kafa)" (karar P7b2a-6: güç
     panelinde); paket dışı.
+- **P10.7b2b ikinci kontrolünden kuyrukta karşılığı olmayan işler (15.11.2026; `planlama/d158/F10j-kontrol-2.md` "Kayıtlı açık işler",
+  P10.7b2c ön işinde kayda alındı):**
+  - AU3 kutbu ve F1 'okunanı not al' kural kilidi yok (yalnız onay kaydı); A3: 'N tel:' biçimli ok talimatı liste sayılıyor;
+    `rehber_kablo.py` elle bakılan yan dal kuralında sağlanmış sayılıyor (`F10j-kontrol.md`).
+  - `F10j-gunluk.md`'deki onay farkı "25" konumsal eşleştirmeyle sayılmış; küme farkıyla 42 girdi (içerik aynı; kayıt).
+  - A1, A2, A4, A5 ve `ZORUNLU_SIRA` K2 kalıbının darlığı ("dikiş vidalarını sık", "iyice sık", "DİKİŞLERİ SIK") P10.7b2c ön işinde
+    yapıldı (`F10k-gunluk.md` § Ön iş); açık değil.
+- **P10.7b2c (ilk yarı) açık işleri (15.11.2026; `F10k-gunluk.md`):**
+  - "ESP32 USB" şemasının (U06) taban ucu (51,6; 190; −120) ESP32'ye 115 mm uzak (ESP32 9 Ekim'den beri (80; 75)'te, şema 5 Kasım'da
+    çizildi): şema yeniden çizilmeli (`kablo_yolu_ekran.py`); bugün `SEMA_GEO_ISTISNA` gerekçesiyle geçiyor.
+  - 11 yeni taban şeması (`lale158/kablo_yolu_taban.py`) çarpışma taramasından geçmedi; `lale158_kontrol` bu kaynağı da tarasın.
+  - Çizilen sayımı (62 / 12) gösterim şemasını taranmış CAD yolundan ayırmıyor (62'nin 11'i taranmamış şema).
+  - Şema sınamasında fiş boyları (Pi micro HDMI, ReSpeaker micro USB) bilinmiyor: üç mevcut şema fiş istisnasıyla geçiyor (TAHMİN; kablo
+    gelince ölçülecek). "Eşlemesiz şema" denetimi yalnız `taban` kaynağının bütün kimliklerini arıyor.
+  - Tezgâh adımında (B5a) SV3 şemasının görünümü ve K1 / B3 / B5a kareleri üretimde bakılacak (K1 basılıda daha önce taşmıştı).
+- **P10.7b2c (ikinci yarı, ajan B) açık işleri ve ilk yarının kapanan maddeleri (15.11.2026; `F10k-gunluk.md` § İkinci yarı):**
+  - Kapandı: "eşlemesiz şema" denetimi artık dört kaynağın (yollar, kafa_ici_qled, taban, kafa_ici) bütün yollarını arıyor (bilinçli
+    dışarıda iki eski ses yolu `SEMA_ESLEMESIZ_MUAF`'ta); sayım üç sınıfa ayrıldı (yol çizimi 68 / bağlantı tablosu 5 / hiçbiri 1) ve
+    yol çizimi kaynağa göre (CAD 39, şema 29, kol 6; bir kablo birden çok kaynakta olabilir) yazılıyor. Taranmış CAD yolu ile taranmamış
+    şemanın ayrımı bu kaynak sayımıyla görünür.
+  - Açık kaldı (karar değil, iş): U06 "ESP32 USB" şemasının taban ucu düzeltilmedi. Taşımak çarpışma taramasının izlediği dosyalardan
+    birini değiştirmez (`kablo_yolu_ekran.py` `carpisma_kos.py` listesinde değil), ama U06'nın `boy` kaynağını
+    (`lale158-kontrol.json#kablo_ozet.kablo.ESP32 USB`, FreeCAD `lale158_kontrol` yazar; 971 / 1360 mm) ve aynı dosyanın tüp
+    çarpışma sonucunu eskitir: düzeltme FreeCAD koşusuyla birlikte yapılmalı. İstisna yerinde.
+  - 5 yeni kafa içi / ses şeması (`lale158/kablo_yolu_kafa.py`) çarpışma taramasından geçmedi; kafa giriş kartının yeri, SY8205 /
+    D24V50F5 / Pi USB-C / CSI / kamera konnektörü / ReSpeaker jakı / PAM giriş pedinin kart üstündeki yeri TAHMİN.
+  - Ses bölücüsü masa denemesine (KT2) bağlı: KT2 sonucu gelince AU1 / AU2 şeması ve kaydı birlikte güncellenmeli (şema bölücüyü PAM'ın
+    dibinde çiziyor).
+  - Bağlantı tablolarında başlık pin sırası, dağıtım kartı C'deki pan / tilt giriş pininin numarası kayıtta yok (rehber "kayıtta yok"
+    diyor). Kayıtta P03 / S09 / S10 / SV3 uç adı "Dağıtım kartı C (kafa)" (kart güç panelinde, P7b2a-6): tablo bu adı aynen gösteriyor.
+  - `sema_boy` gösterim şeması yoludur: kafa içinde gerçek döşemeden kısa (K01 14 mm). Şema > kayıt olan kablo yok; sipariş metresi için
+    şema boyu risk göstermiyor, ama ölçüm de değil (P10.7b ölçümü sürüyor).
+- **P10.7b2c düzeltme turu 1 (15.11.2026; `planlama/d158/F10k-kontrol.md`, `F10k-gunluk.md` § Düzeltme turu 1): yalnız kuyruk, uygulama
+  yok:**
+  - Kesim boyunun rehber kartında gösterilmesi: tıklama kartı bugün yalnız "çizim yolu ~N mm (kesim boyu değil)" yazıyor; kayıttaki boy
+    (`boy` ya da `boy_tahmin`, "tahmin" etiketiyle) karta ayrı iş olarak eklenecek.
+  - Talimat metnindeki boy ifadeleriyle kayıttaki boyların karşılaştırması: E3a kontrol listesinde "D24V50F5 → Pi USB-C yaklaşık 10 cm"
+    (K03), kayıtta `boy_tahmin` 200 mm; hangisi doğru bilinmiyor, ikisi de değiştirilmedi. Bütün adımlarda benzer ifadeler taranmalı.
+  - Kontrolün öbür kaçan bozmaları (F10k-kontrol "Kaçanlar" 2, 3, 7): I01'de SDA / SCL'nin kayıtta tutarlı takası (damar adı pin rolüne
+    bağlanmıyor: "SDA" adlı damarın pini `I2C_SDA` olmalı); bağlantı tablosu başlığındaki "madde N" atfı sınanmıyor; yöntemi "sabit"
+    olan kaydın `boy_tahmin`'inin şema boyuyla ezilmesi yalnız görünüm tazeliğinde düşüyor.
+  - N02 boy payı: şema yolu 553 mm, `boy_tahmin` 600 mm (pay 47 mm); simetriği N01'in tahmini 800 mm. **Ahmet'e: sipariş** (N02'yi N01
+    boyunda almak daha güvenli; karar Ahmet'in, kayıt değişmedi).
+  - Gösterim şeması notu kuralı (`rehber_kablo.sema_not_denetle`) yalnız taramasız yeni kaynakları (taban, kafa_ici) kapsıyor. Eski
+    kaynaklardan `kafa_ici_qled` (H01, U04, K04; E4) ve `yollar`'ın E4 / F3 şemalarının (U01, K05, U05) adımında not yok; K2'deki not
+    ("Göğüs ekranı, hub ve ses yolları gösterim şemasıdır") başka biçimde. Not eklemek talimat metni işi; kural sonra genişletilir.
+  - E4'ün gösterim şeması notunda (C01, AU1, AU2) "parça sayısına girmez" ifadesi yok (E3a'ya eklendi; E4 bu turun kapsamında değildi).
+  - **Uygulandı (düzeltme turu 1 eki, orkestratör kararı):** tıklama kartında kol içi bölümün sayısı ("~N mm") bölüm uzunluğu:
+    kayıttaki boy (S02–S08 `gereken_mm`) değil, kesim boyu da değil. Etiket artık "bölüm uzunluğu ~N mm (kesim boyu değil)"
+    (app.js `semaSec` kol dalı; kilit `sema_boy_etiketi_denetle`, bozmalar b85, b86). Ayrıntı `F10k-gunluk.md` "Düzeltme turu 1".
+  - U06 "ESP32 USB" şemasının yeniden çizimi (FreeCAD koşusuyla; yukarıdaki madde) yapılınca K2 kablo listesindeki "taban ucu yanlış
+    yerde" cümlesi, kural kilidi (`ZORUNLU_ALAN`) ve dört bozması da birlikte kaldırılır.

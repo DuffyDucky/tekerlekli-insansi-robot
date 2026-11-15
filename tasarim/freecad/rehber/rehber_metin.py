@@ -203,7 +203,10 @@ ADIM = {
                "Öbür ucu henüz yerinde olmayan hat (bara, sigorta kutusu, hat sigortası; K1'de bağlanır): iki ucundan etiketle (kart, "
                "klemens, hat adı), K1'deki yerine yetecek boyda bırak, ucu bantla; hatları kablo bağıyla demetleyip plaka üstünde topla, "
                "kat burçlarının (B4) ve kart üstlerinin yolunu kapatmasın. Bu sıra ve toplama yeri kaynakta yok, doğrulanmadı",
-               "Akü kayışlarının tokası yanda, kablo yolunun üstünde değil"],
+               "Akü kayışlarının tokası yanda, kablo yolunun üstünde değil",
+               "Arka sol motor hattının (M02) çizimi gösterim şemasıdır (`lale158/kablo_yolu_taban.py`): çarpışma taramasından geçmedi, "
+               "parça sayısına girmez, boy ölçümü değildir. Arka kablo deliği ve plaka altı modelden; motor kablosunun motordan çıkışı ve "
+               "BTS7960 klemensine gelişi tahmin"],
         ucus=(0, 1, 0),
     ),
     "B4": dict(
@@ -240,7 +243,9 @@ ADIM = {
                  "çıkış ölçülerek (K1 kontrolü). PC817 ölçümü de arayüz kartı takılmadan tezgâhta (B6a). Bu sıra kaynakta yok, doğrulanmadı"],
         kablo=["Panelde yıldız barası (toprak, 5 M5 saplama), anahtarlı bara (4 M5 saplama) ve sigorta kutusu girişleri erişilebilir "
                "kalsın: düğümler saplama üstünde halka pabuçla, saplama başına en çok 4 pabuç (`planlama/adim3/kablolar.md` O-3 r, O-22). "
-               "WAGO yok"],
+               "WAGO yok",
+               "SV3'ün çizimi gösterim şemasıdır (`lale158/kablo_yolu_taban.py`): çarpışma taramasından geçmedi, parça sayısına girmez, boy "
+               "ölçümü değildir. Dağıtım kartı C modelde yok: şemanın o ucunun yeri yaklaşık"],
     ),
     "B5": dict(
         baslik="Güç paneli → burçlar",
@@ -286,7 +291,16 @@ ADIM = {
                  "BNO055 yönü: kartın X oku robotun önüne (+z)",
                  "Kartlar takılmadan tezgâhta (bu adımdan önce): arayüz kartındaki PC817 3,3 V'ta ölçüldü: girişe akım sınırlı tezgâh "
                  "kaynağıyla 12 V ver ve kes, çıkış LOW < 0,4 V, HIGH > 2,5 V (`planlama/adim3/elektrik.md` E3 notu; K1 kontrolü). Sıra kaynakta yok, doğrulanmadı"],
-        kablo=["Kart konnektörleri erişilebilir; servo dağıtım çıkışları direğe bakar"],
+        kablo=["Kart konnektörleri erişilebilir; servo dağıtım çıkışları direğe bakar",
+               # P10.7b2c ikinci yarı (ajan B): kısa teller 3B çizim değil, bağlantı tablosu (rehber_kablo.BAGLANTI_TABLOSU; satırın
+               # metni kayıttan, rehber_deger {bag.<kimlik>}: kablolar.json damarları, GPIO ve kanal adı pin haritasıyla sınanır)
+               "Bağlantı tablosu I01 (ESP32 → PCA9685 giriş başlığı, {awg.I01} dişi uçlu tel): {bag.I01}",
+               "Bağlantı tablosu I02 (PCA9685 çıkış başlığı → BNO055, {awg.I02} dişi uçlu tel): {bag.I02}",
+               "Bağlantı tablosu P01 (yalnız sinyal teli, madde 4, {awg.P01}): {bag.P01}",
+               "Bağlantı tablosu P02 (yalnız sinyal teli, madde 4, {awg.P02}): {bag.P02}",
+               "Bu dört satır (ve K1'deki P03) bağlantı tablosudur, 3B çizim değil: pin ve kanal numaraları kayıttan "
+               "(`planlama/adim3/pin-haritasi.md`, `planlama/adim3/kablolar.json`). Başlıklardaki pin sırası ve kart üstündeki yeri "
+               "kayıtta yok: kart üstü yazıya göre bağla"],
     ),
     "B6": dict(
         baslik="Elektronik katı → burçlar",
@@ -479,6 +493,15 @@ ADIM = {
                "renginde (lejant; `planlama/adim3/kablolar.md` renk kuralı); tıklayınca kablo kimliği, iki uç, kesit, sigorta ve acil "
                "stopta enerjili olup olmadığı",
                "Direk boyunca gidenler K2 listesinde; o hatların taban kısmı da bu adımda bağlanır (şema bölünmedi)",
+               "Dokuz hattın (G07, G16, G22, G19, B02, N01, N02, Q01, Q02) çizimi gösterim şemasıdır (`lale158/kablo_yolu_taban.py`): "
+               "çarpışma taramasından geçmedi, parça sayısına girmez, boy ölçümü değildir. Kat ve alt plaka geçişleri modeldeki "
+               "yerlerdir (ön kat kesiği, arka kablo deliği); kart üstündeki klemens yeri ve kartların arasındaki çizgi tahmin. Anahtarlı "
+               "baranın yeri yaklaşık (modelde yok, röle yanından çizildi). Kabloyu çizgiye değil, kartlara ve klemenslere bakarak döşe",
+               # P10.7b2c ikinci yarı (ajan B): P03 bağlantı tablosu (rehber_kablo.BAGLANTI_TABLOSU)
+               # P10.7b2c düzeltme turu 1 (F10k-kontrol D3): kartın yeri (kablolar.json karar P7b2a-6); kayıttaki ad değişmedi
+               "Bağlantı tablosu P03 (yalnız sinyal teli, madde 7, {awg.P03}): {bag.P03}. Dağıtım kartı C (kafa): kart güç panelinde, "
+               "XL4016 C'nin yanında; adındaki \"kafa\" beslediği pan / tilt servolarıdır. Dağıtım kartı C modelde yok, yeri çizilmez; "
+               "kart üstündeki pan / tilt giriş pininin numarası kayıtta yok: kart üstü yazıya göre bağla",
                "Kablo listesi (uçlar, kesit, sigorta, sonlandırma): `planlama/adim3/kablolar.md` (tek kaynak `kablolar.json`); boy için tablodaki tahmin kuralı"],
     ),
     "C1": dict(
@@ -631,7 +654,11 @@ ADIM = {
                  "Üç TVS'in bantlı ucu (katot) artı hatta: P6KE18A kafa giriş kartının +12 V'unda, iki P6KE6V8A çeviricilerin +5 V "
                  "çıkışında; anotlar GND'de"],
         kablo=["Pi micro HDMI 0 (kafa ekranı) ve micro HDMI 1 (göğüs ekranı) fiş yerleri erişilebilir kalsın",
-               "Kafa 12 V'u K2'de boyundan gelir: girişte P6KE18A (modelde yok), oradan D24V50F5 ve SY8205"],
+               "Kafa 12 V'u K2'de boyundan gelir: girişte P6KE18A (modelde yok), oradan D24V50F5 ve SY8205",
+               # P10.7b2c ikinci yarı (ajan B): lale158/kablo_yolu_kafa.py
+               "Üç hattın (K01, K02, K03) çizimi gösterim şemasıdır (`lale158/kablo_yolu_kafa.py`): çarpışma taramasından geçmedi, "
+               "parça sayısına girmez, boy ölçümü değildir. Kafa giriş kartının yeri yaklaşık (modelde yok, boyun geçişinin solunda çizildi); çeviricilerin ve "
+               "Pi'nin uç yeri tahmin. Kabloyu çizgiye değil, klemens yazısına bakarak döşe"],
         not_=["İki 5 V hattı birbirine köprülenmez: D24V50F5 Pi'yi, SY8205 kafa ekranını besler. Touch USB uyarısı E4'te "
               "(`planlama/adim3/elektrik.md`)",
               "SY8205 ve QLED hattı P6KE6V8A'sının tabladaki yeri modelde var; Pi hattı P6KE6V8A'sı modelde yok, yeri doğrulanmadı. "
@@ -716,7 +743,11 @@ ADIM = {
         kablo=["Kafa içi: HDMI şerit Pi micro HDMI 0 → QLED, Touch Pi USB 4 → QLED, Power SY8205 → QLED, CSI Pi → kamera",
                "Ses: ReSpeaker → Pi USB 1 (U01), ReSpeaker 3,5 mm → 10 kΩ / 2,2 kΩ bölücü → PAM8403 sol girişi (AU1, AU2), PAM 5 V → "
                "D24V50F5 (K05). PAM çıkışından hoparlöre giden kablo (AU3) K2'de boyundan iner",
-               "Boyun uçları (kafa 12 V, göğüs HDMI → Pi micro HDMI 1, hub uzatması → Pi USB 3, hoparlör) K2'de bağlanır"],
+               "Boyun uçları (kafa 12 V, göğüs HDMI → Pi micro HDMI 1, hub uzatması → Pi USB 3, hoparlör) K2'de bağlanır",
+               # P10.7b2c ikinci yarı (ajan B): lale158/kablo_yolu_kafa.py
+               "Kamera şeridi (C01) ve ses kablosu (AU1, AU2) çizimi gösterim şemasıdır (`lale158/kablo_yolu_kafa.py`): çarpışma "
+               "taramasından geçmedi, boy ölçümü değildir. Ses bölücüsü masa denemesine (KT2) bağlı: yeri ve varlığı kesin değil, "
+               "şemada PAM8403'ün dibinde çizildi; ReSpeaker jakının ve kamera konnektörünün yeri tahmin"],
         not_=["İki 5 V hattı birbirine köprülenmez. QLED'in Touch micro USB'si Pi'ye veri için gider; Touch VBUS ekranın içinde Power "
               "girişine bağlıysa Pi'nin 5 V'u ile SY8205 çıkışı Touch kablosu üzerinden birleşir. Bu iç bağ doğrulanmadı: Touch'ı Pi'ye "
               "takmadan multimetreyle Power ile Touch VBUS arasına bak; bağlıysa takma, çözüm o ölçümle seçilir (`planlama/adim3/elektrik.md`)",
@@ -750,11 +781,13 @@ ADIM = {
                        "görüntüdür, uygulanmaz. Kartın köpük bandı da yapıştırılmaz; kart yedek parçalarla birlikte saklanır (KT2 geçmezse "
                        "Pi USB 2'ye; `planlama/adim3/kablolama-on-kararlar.md` § 5 Ö1)."),
               dict(ad="Sol arka kabuk → kafa", bag="arka_sol", desen=(), ucus_bag=(0, 0, -1),
-                   sema=("PAM8403 5 V",), kamera=(-0.85, 0.62, -1.25),
+                   sema=("PAM8403 5 V", "Ses kablosu (AU1"), kamera=(-0.85, 0.62, -1.25),
+                   # P10.7b2c ikinci yarı (ajan B): ses kablosu şeması kablo_yolu_kafa.py'de çizildi; eski not "Ses kablosunun şeması yok
+                   # (ReSpeaker sağ kabukta; eski şema ses kartından çiziliyordu, kaldırıldı)." yerine aşağıdaki (talimat cümleleri aynı)
                    is_="Kabloları kafanın açık ön tarafından tak: ReSpeaker 3,5 mm jakı → 10 kΩ / 2,2 kΩ bölücü → PAM8403 sol girişi "
                        "(AU1, AU2; önce kılıf ↔ ReSpeaker USB GND sürekliliği, KT2), PAM 5 V → D24V50F5 (K05; K10 a). Ses kablosunun "
-                       "şeması yok (ReSpeaker sağ kabukta; eski şema ses kartından çiziliyordu, kaldırıldı). Sonra sol kabuğu arkadan "
-                       "yerine koy (giriş yolu ölçümü)."),
+                       "çizimi gösterim şemasıdır: bölücünün yeri ve varlığı KT2'ye bağlı, ReSpeaker jakının yeri tahmin. Sonra sol "
+                       "kabuğu arkadan yerine koy (giriş yolu ölçümü)."),
               dict(ad="Tabla → arka kabuk rafı cıvataları", desen=("Tabla cıvatası",), kamera=(0.3, 1.0, 0.35), saydam=("Arka kafa kabuğu",),
                    gizli_ok={"Tabla cıvatası M3x10 (sağ z-75)": voksel_ok()},
                    is_="Tabla → arka kabuk rafı 4 × M3×10: yüz tarafı açıkken önden, L alyanla (sıra denetimi: yüz kabuğu önce "
@@ -786,7 +819,7 @@ ADIM = {
               # (F10d: şemalar opak yüz kabuğunun arkasında kalıyordu). CSI şeridinin şeması yok (kablolama içeriği değişmedi).
               dict(ad="Kablolar + yüz grubu → kafa", bag="yuz", desen=(), ucus_bag=(0, 0, 1),
                    kamera=(1.0, 0.55, 0.6), saydam=KAFA_KABUK + ("Yüz ekranı",),
-                   sema=("Kafa ekranı HDMI", "Kafa ekranı Touch", "Kafa ekranı Power"),
+                   sema=("Kafa ekranı HDMI", "Kafa ekranı Touch", "Kafa ekranı Power", "Kamera şeridi"),   # P10.7b2c B: C01
                    is_="Yüz kabuğunu kafanın önünde tut, kabloları tak: CSI şeridi (C01) → Pi; QLED HDMI (H01; 30 cm şerit, Pi micro "
                        "HDMI 0), Power (K04; SY8205 çıkışı, A ucu kesik micro USB kablo), Touch (U04; Pi USB 4). Touch'ı takmadan önce Notlar'daki ölçümü yap. "
                        "Sonra yüz kabuğunu önden (+z) yerine koy (giriş yolu: önden serbest)."),
@@ -861,6 +894,9 @@ ADIM = {
                "Göğüs ekranı, hub ve ses yolları gösterim şemasıdır (`lale158/kablo_yolu_ekran.py`): parça sayısına girmez; kablo çapı, büküm "
                "yarıçapı ve port yeri doğrulanmadı",
                "Taban şeması 12'nin direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); geçerli yol \"ESP32 USB\" şemasında",
+               # P10.7b2c düzeltme turu 1 (F10k-kontrol D2): şema yeniden çizilene kadar (FreeCAD koşusu, karar-kuyrugu.md)
+               "\"ESP32 USB\" şemasının (U06) taban ucu yanlış yerde, güç panelinin üstünde çizili (şema yeniden çizilecek): kablonun "
+               "taban ucu elektronik katındaki ESP32 taşıyıcısında ESP32'nin USB girişine takılır",
                "Şemada taban kısımları da görünür: onlar K1'de bağlandı",
                "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.360, hoparlör 1.030, "
                "göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`). Kablo listesi: `planlama/adim3/kablolar.md`"],
@@ -939,10 +975,11 @@ ADIM = {
                  "uçlarını sök. Akü gerilimi {v.aku_aralik} içinde olduğu için bölücü bozuk: hiç gerilim okunmadıysa G07'nin pabucu, direnci ya da "
                  "kart ucu kopmuş; aralığın üstündeyse bölücünün alt direnci eksik ya da yanlış. Akü ayrıkken bölücüyü kontrol et: G07'nin "
                  "direnci (pabuç ile bölücünün orta noktası arası, K1 kontrolündeki direnç ölçümü), direncin ve G07'nin iki ucundaki lehim, "
-                 "bölücünün alt direnci. Bölücünün orta noktası ESP32'nin akü ölçüm pinine bağlı (B6a, X01): bölücü düzelip okuma "
-                 "aralığa girene kadar ana anahtarı yeniden açma, ESP32'ye bu bölücüyle enerji verme, aşama 2'ye (F5) geçme. Kusuru "
-                 "düzeltince ölçümü akü gerilimi maddesinden baştan yinele. Listedeki yerlerde kusur bulunmazsa da devam etme: akü "
-                 "gerilimini ve bölücü okumasını kayda yaz (tolerans kaynakta yok)"],
+                 # P10.7b2c ön işi (F10j-kontrol-2 A1, A2): iki cümle tek anlamlı; değer, sıra ve güvenlik koşulu aynı
+                 "bölücünün alt direnci. Bölücünün orta noktası ESP32'nin akü ölçüm pinine bağlı (B6a, X01): bölücüdeki kusuru "
+                 "düzeltmeden ana anahtarı yeniden açma, ESP32'ye bu bölücüyle enerji verme, aşama 2'ye (F5) geçme. Kusuru "
+                 "düzeltince ölçümü baştan, akünün kendi gerilimini okuduğun maddeden yinele. Listedeki yerlerde kusur bulunmazsa da "
+                 "devam etme: akü gerilimini ve bölücü okumasını kayda yaz (tolerans kaynakta yok)"],
         kablo=["Etek bandını takarken K1 hatları sıkışmasın",
                "Burada bağlananlar: ana anahtar (G03, G04; {awg.G04}, halka pabuç; G06'nın + pabucu girişte, G07'nin pabucu çıkışta), "
                "şarj girişi (G06, {awg.G06}), acil stop mantarı (A01 F5 {a.F5} "
@@ -1830,7 +1867,7 @@ KABLO_AD = {
     3: ("Motor 12 V: F1", "Motor 12 V (G08–G12, {awg.G12}; M01 motorun kendi kablosu): F1 {a.F1} → röle K1 ∥ ön şarj kolu → anahtarlı "
                           "bara (M5 saplama) → BTS7960 sol → ön sol motor"),
     4: ("Motor 12 V sag", "Motor 12 V sağ (G13, {awg.G13}: anahtarlı bara → BTS7960 sağ; M03, M04 motorun kendi kablosu: ön sağ ve arka "
-                          "sağ motor; plaka altından, z 36 deliğinden). Arka sol motor (M02) bu yolda değil, şeması yok"),
+                          "sağ motor; plaka altından, z 36 deliğinden). Arka sol motor (M02) bu yolda değil: kendi gösterim şeması B3'te"),
     5: ("Servo 6 V A", "Servo 6 V A (G14 {awg.G14} → SV1 {awg.G14}): anahtarlı bara → {a.hat-A} {bicak.hat-A} hat sigortası → XL4016 A (0; 170) → "
                        "dağıtım A (72; 205) → uzatmalar S01–S04: sağ kol"),
     6: ("Servo uzatmalari kafaya", "Servo uzatmaları kafaya (S09, S10; {awg.S10}): pan + tilt (hat C, XL4016 C güç panelinde; direk üstü, "
@@ -1841,14 +1878,15 @@ KABLO_AD = {
     8: ("Kafa 12 V", "Kafa 12 V (G17, {awg.G17} çift): F3 {a.F3} → direk ön yüzü → R62 → boyun → kafa giriş kartı (P6KE18A) → Pololu "
                      "D24V50F5 (Pi 5, PAM8403) + SY8205 (10,1\" QLED)"),
     9: ("Cevre 5 V", "Çevre 5 V (G18, {awg.G18}): F4 {a.F4} → XL4016 çevre. Şemanın XL4016 sonrası kısmı eski (doğrudan ESP32'ye); "
-                     "tabloda G19 ({awg.G19}) {a.hat-cevre} {bicak.hat-cevre} hat sigortasıyla arayüz kartına gider, bu şemada çizili değil"),
+                     "tabloda G19 ({awg.G19}) {a.hat-cevre} {bicak.hat-cevre} hat sigortasıyla arayüz kartına gider, bu şemada çizili değil: "
+                     "kendi gösterim şeması K1'de"),
     10: ("Acil stop", "Acil stop (A01–A06, {awg.A01}; PC817 teli {awg.A06}): F5 {a.F5} → mantar (NC) → acil stop düğüm kartı → röle K1 ve K2 "
                       "bobinleri → BC337-40 #1 / #2 (arayüz kartı, {gpio.ROLE_K1} / {gpio.ROLE_K2_ONSARJ}); PC817 #1 mantar sonrası gerilimi okur ({gpio.ACIL_STOP_DURUM})"),
     11: ("Sinyal: sonar", "Sinyal: sol sonar (Q03, {awg.Q03}) → arayüz kartı bölücü (4,7 kΩ / 10 kΩ) → ESP32 (X01; ön ara ray üstünden). "
-                          "Orta ve sağ sonar (Q01, Q02) bu şemada değil"),
+                          "Orta ve sağ sonar (Q01, Q02) bu şemada değil: kendi gösterim şemaları K1'de"),
     # 05.11 B kararı: ESP32 USB hub'dan, direk arka yüzünden (kablo_yolu_ekran.py "ESP32 USB"); bu şemanın geometrisi CAD'de eski yol
     12: ("Sinyal: enkoder", "Sinyal: BTS7960 sol PWM / EN / IS (B01, {awg.B01}) → ESP32. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada "
-                            "değil. Şemanın direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); ESP32 USB artık hub'dan: \"ESP32 USB\" şeması"),
+                            "değil: kendi gösterim şemaları K1'de. Şemanın direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); ESP32 USB artık hub'dan: \"ESP32 USB\" şeması"),
 }
 
 
@@ -1869,7 +1907,8 @@ def kablo_ad(cad_ad):
 # (kaynak işlev, kaynak ad, adım kodu, görünen ad, kablo kimlikleri)
 # P10.7b1: son alan renk değil, planlama/adim3/kablolar.json kablo kimlikleri (ilki çizimin rengini ve tüp çapını verir; rehber_kablo.py).
 # 14.11 ses yolu kararıyla "Ses karti uzatmasi" (Pi USB 2 → USB ses kartı) ve "3,5 mm -> PAM" (ses kartı → PAM) şemaları kaldırıldı:
-# tabloda karşılıkları yok (ses kartı yedek, takılmaz); ReSpeaker 3,5 mm → PAM yolu (AU1, AU2) kablo_yolu_ekran.py'de çizili değil.
+# tabloda karşılıkları yok (ses kartı yedek, takılmaz); ReSpeaker 3,5 mm → PAM yolu (AU1, AU2) kablo_yolu_ekran.py'de çizili değil
+# (P10.7b2c ikinci yarı: lale158/kablo_yolu_kafa.py "AU1" şemasında; iki eski yol rehber_kablo.SEMA_ESLEMESIZ_MUAF'ta).
 SEMA = [
     ("yollar", "HDMI", "K2", "Göğüs ekranı HDMI (H02): Pi micro HDMI 1 → boyun → travers arkası → direk solu → ekran (F3'te takılır)", ("H02",)),
     ("yollar", "Hub uzatmasi", "K2", "Hub uzatması (U03, USB 2.0): Pi USB 3 → boyun → travers arkası → üst arka kapak içi hub (F5)", ("U03",)),
@@ -1884,6 +1923,39 @@ SEMA = [
     ("kafa_ici_qled", "HDMI (serit, 2 lehimsiz fis)", "E4", "Kafa ekranı HDMI (H01, 30 cm şerit): Pi micro HDMI 0 → QLED", ("H01",)),
     ("kafa_ici_qled", "Touch USB (kutu kablosu)", "E4", "Kafa ekranı Touch (U04): Pi USB 4 → QLED (VBUS uyarısı: Notlar)", ("U04",)),
     ("kafa_ici_qled", "Power USB (30 cm, A ucu kesik)", "E4", "Kafa ekranı Power (K04): SY8205 → QLED (ayrı 5 V hattı)", ("K04",)),
+    # P10.7b2c: yolu hiçbir çizimde olmayan taban kabloları (lale158/kablo_yolu_taban.py; kaynak ad = kablo kimliği). Çarpışma
+    # taramasından geçmedi (adımın kablo notunda yazılı); modelsiz uç "yeri yaklaşık". Uçlar rehber_kablo.sema_geometri_denetle ile sınanır.
+    ("taban", "G07", "K1", "Akü ölçüm bölücüsü (G07, {awg.G07}): ana anahtar çıkışı (bölücünün üst direnci bu uçta) → güç paneli üstü → "
+                         "kat üstü → arayüz kartı, bölücü orta noktası", ("G07",)),
+    ("taban", "G16", "K1", "XL4016 C girişi (G16, {awg.G16}): anahtarlı bara (yeri yaklaşık: modelde yok, röle yanından çizildi) → hat "
+                         "sigortası → XL4016 C IN", ("G16",)),
+    ("taban", "G22", "K1", "Bara durumu (G22, {awg.G22}): anahtarlı bara (yeri yaklaşık: modelde yok, röle yanından çizildi) → hat "
+                         "sigortası → arayüz kartı, PC817 #2 girişi", ("G22",)),
+    ("taban", "SV3", "B5a", "Kafa servo hattı C (SV3, {awg.SV3}): XL4016 C OUT → dağıtım kartı C (yeri yaklaşık: modelde yok, XL4016 C'nin "
+                          "yanında)", ("SV3",)),
+    ("taban", "G19", "K1", "Çevre 5 V (G19, {awg.G19}): XL4016 çevre OUT (alt kat) → ön kat kesiği → arayüz kartı, çevre 5 V klemensi",
+     ("G19",)),
+    ("taban", "M02", "B3", "Arka sol motor (M02, motorun kendi kablosu): BTS7960 sol M+ / M− → arka kablo deliği → plaka altı → arka sol "
+                         "motor", ("M02",)),
+    ("taban", "B02", "K1", "BTS sağ sinyali (B02, {awg.B02}): BTS7960 sağ sinyal başlığı → ön kat kesiği → ESP32 taşıyıcısı", ("B02",)),
+    ("taban", "N01", "K1", "Arka sol enkoder (N01, {awg.N01}): motor → plaka altı → arka kablo deliği → ön kat kesiği → ESP32 taşıyıcısı",
+     ("N01",)),
+    ("taban", "N02", "K1", "Arka sağ enkoder (N02, {awg.N02}): motor → plaka altı → arka kablo deliği → ön kat kesiği → ESP32 taşıyıcısı",
+     ("N02",)),
+    ("taban", "Q01", "K1", "Sağ sonar (Q01, {awg.Q01}): pin bloğu → ön ara ray üstü → ön kat kesiği → arayüz kartı (Trig teli PCA9685'e "
+                         "gider, o ucu çizilmedi)", ("Q01",)),
+    ("taban", "Q02", "K1", "Orta sonar (Q02, {awg.Q02}): pin bloğu → ön ara ray üstü → ön kat kesiği → arayüz kartı (Trig teli PCA9685'e "
+                         "gider, o ucu çizilmedi)", ("Q02",)),
+    # P10.7b2c ikinci yarı (ajan B): kafa içi ve ses kabloları (lale158/kablo_yolu_kafa.py; kaynak ad = ana kablo kimliği). Çarpışma
+    # taramasından geçmedi (adımın kablo notunda yazılı). Modelsiz uçlar: kafa giriş kartı "yeri yaklaşık", ses bölücüsü KT2'ye bağlı.
+    ("kafa_ici", "K01", "E3a", "Kafa girişi → D24V50F5 (K01, {awg.K01}): kafa giriş kartı (yeri yaklaşık: modelde yok, boyun geçişinin "
+                               "solunda çizildi) → D24V50F5 VIN / GND", ("K01",)),
+    ("kafa_ici", "K02", "E3a", "Kafa girişi → SY8205 (K02, {awg.K02}): kafa giriş kartı (yeri yaklaşık) → SY8205 IN+ / IN− (giriş ucu "
+                               "kartın sol ucunda varsayıldı)", ("K02",)),
+    ("kafa_ici", "K03", "E3a", "Pi 5 beslemesi (K03, {awg.K03}): D24V50F5 VOUT / GND → Pi 5 USB-C (lehimli USB-C ucu)", ("K03",)),
+    ("kafa_ici", "C01", "E4", "Kamera şeridi (C01, CSI FPC): Pi CSI → QLED'in üst kenarının üstünden → kamera", ("C01",)),
+    ("kafa_ici", "AU1", "E4", "Ses kablosu (AU1, AU2): ReSpeaker 3,5 mm jakı → ses bölücüsü → PAM8403 sol girişi. Bölücü masa denemesine "
+                              "(KT2) bağlı: yeri ve varlığı kesin değil, şemada PAM'ın dibinde; jak yeri tahmin", ("AU1", "AU2")),
 ]
 
 

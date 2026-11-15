@@ -46,6 +46,10 @@
 #   {kontak.K2:giris|cikis|bos}  röle kontağının tek ucu: anahtarlar.K<n>-kontak.uclar     → "COM" / "NO" / "NC"
 #   {parca.<kablo>:<damar>:<a|b>}  damar ucunun parçası (" · " öncesi): kablolar[<k>].damarlar → "acil stop düğümü (mantar NC çıkışı)"
 #   {oran.…} / {v.…}: bölücü çıkışı akü üst sınırında ("14,6 V →") ADC doğrusal sınırını ("≤ 2,45 V") aşarsa KeyError
+# P10.7b2c ikinci yarı (ajan B):
+#   {bag.<kablo>}         bağlantı tablosu: kablonun bütün damarları "ad: a → b" ("; " ile), kablolar[<k>].damarlar'dan; ESP32 ucu
+#                         "ESP32 GPIO21 (`I2C_SDA`)" (damar gpio + pin, pin haritası § 9 pinler ile aynı olmalı), PCA9685 ucu "PCA9685 kanal 0
+#                         sinyali (`sag_omuz`)" (damar pca_kanal + pca_ad, pin haritası pca9685_kanallar ile aynı olmalı); tutmazsa KeyError
 # Çözülemeyen yer tutucu hata listesine girer (rehber_denetim.kaynak_denetle sayar; rehber_metin içe aktarılırken metin "⟦?…⟧" olur).
 import os, re, json
 
@@ -291,7 +295,49 @@ class Degerler:
             return "%s ms" % v
         if tur == "s" and anahtar == "k2_en_cok":
             return "%s s" % _sayi_metin(self.PH["pinler"]["ROLE_K2_ONSARJ"]["en_cok_ms"] / 1000.0)
+        if tur == "bag":                                                # P10.7b2c B: bağlantı tablosu (kablonun bütün damarları)
+            return self._bag(anahtar)
         raise KeyError("bilinmeyen yer tutucu türü %s" % tur)
+
+    def _bag_uc(self, kimlik, d, yan, bulgu):
+        """Damarın bir ucu, bağlantı tablosundaki hâliyle. ESP32 GPIO ucu pin haritasıyla, PCA9685 kanal ucu kanal adıyla sınanır."""
+        s = d.get(yan) or ""
+        if " · " not in s:
+            raise KeyError("kablo %s damarı '%s' %s ucunda 'parça · nokta' yok" % (kimlik, d.get("ad"), yan))
+        parca, nokta = s.split(" · ", 1)
+        m = re.fullmatch(r"GPIO(\d+)", nokta)
+        if m:
+            p = self.PH["pinler"].get(d.get("pin") or "") or {}
+            if d.get("gpio") != int(m.group(1)) or p.get("gpio") != d.get("gpio"):
+                raise KeyError("kablo %s damarı '%s': uç %s, damar gpio %s, pin haritasında %s = %s" % (
+                    kimlik, d.get("ad"), nokta, d.get("gpio"), d.get("pin"), p.get("gpio")))
+            bulgu.add("gpio")
+            return "%s GPIO%d (`%s`)" % (parca, d["gpio"], d["pin"])
+        m = re.fullmatch(r"K(\d+)", nokta)
+        if parca == "PCA9685" and m:
+            n = int(m.group(1))
+            ad = (self.PH.get("pca9685_kanallar") or {}).get(str(n))
+            if d.get("pca_kanal") != n or not ad or ad != d.get("pca_ad"):
+                raise KeyError("kablo %s damarı '%s': uç kanal %d, damar pca_kanal %s / pca_ad %s, pin haritasında kanal %d = %s" % (
+                    kimlik, d.get("ad"), n, d.get("pca_kanal"), d.get("pca_ad"), n, ad))
+            bulgu.add("pca")
+            return "PCA9685 kanal %d sinyali (`%s`)" % (n, ad)
+        return "%s %s" % (parca, nokta)
+
+    def _bag(self, kimlik):
+        r = self.K.get(kimlik)
+        if not r or not r.get("damarlar"):
+            raise KeyError("kablo %s yok ya da damarı yok" % kimlik)
+        out = []
+        for d in r["damarlar"]:
+            bulgu = set()
+            a, b = self._bag_uc(kimlik, d, "a", bulgu), self._bag_uc(kimlik, d, "b", bulgu)
+            if "gpio" in d and "gpio" not in bulgu:
+                raise KeyError("kablo %s damarı '%s': gpio kayıtlı, uçlarda ESP32 GPIO yok" % (kimlik, d.get("ad")))
+            if "pca_kanal" in d and "pca" not in bulgu:
+                raise KeyError("kablo %s damarı '%s': pca_kanal kayıtlı, uçlarda PCA9685 kanalı yok" % (kimlik, d.get("ad")))
+            out.append(("%s → %s" % (a, b)) if "pca" in bulgu else ("%s: %s → %s" % (d["ad"], a, b)))
+        return "; ".join(out)
 
     # ------------------------------------------------------------ anahtar ↔ bağlam (açık iş 2): yer tutucunun gösterdiği varlığın adı
     # Her yer tutucu üyesi için cümlede geçmesi gereken adlar (biri yeter), tablodan türer: kablo kimliği (aralık "G01–G04" ve grup
@@ -338,7 +384,7 @@ class Degerler:
     def varlik_adlari(self, tur, uye):
         if (tur, uye) in self._OZEL:
             return list(self._OZEL[(tur, uye)])
-        if tur in ("uc", "kutup", "parca"):                             # düzeltme turu 1: kablonun kimliği (turu 2: parca)
+        if tur in ("uc", "kutup", "parca", "bag"):                      # düzeltme turu 1: kablonun kimliği (turu 2: parca; P10.7b2c: bag)
             return [uye.split(":")[0]]
         if tur == "kontak" and ":" in uye:                              # düzeltme turu 2: tek uç ("K2:giris") rölenin adıyla
             return self.varlik_adlari(tur, uye.split(":")[0])

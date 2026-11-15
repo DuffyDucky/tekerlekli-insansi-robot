@@ -37,7 +37,21 @@ def hucre(s):
     return str(s).replace("|", "\\|").replace("\n", " ")
 
 
+def sema_boy_metni(r):
+    """P10.7b2c (şema 5): gösterim şeması yolunun uzunluğu; boy değil, sipariş hesabına girmez (kablo_boy okumaz)."""
+    s = r.get("sema_boy")
+    if not s:
+        return ""
+    ortak = f"; aynı şemada {', '.join(s['ortak'])}" if s.get("ortak") else ""
+    return f"**{s['etiket'][0].upper() + s['etiket'][1:]}:** ≈ {sayi(s['mm'])} mm (şema `{s['sema']}`, `{s['kaynak']}`{ortak})"
+
+
 def boy_metni(r):
+    s = sema_boy_metni(r)
+    return (_boy_metni(r).rstrip() + " · " + s) if s else _boy_metni(r)
+
+
+def _boy_metni(r):
     b = r.get("boy")
     if not b:
         t = r.get("boy_tahmin")
@@ -223,6 +237,10 @@ def uret(veri, maliyet=None):
       f"karara bağlı {dur.get('karara bağlı', 0)}.")
     y(f"- Boyu CAD'de tasarlanmış yoldan ya da listeden belli: {boylu}; belli değil: {len(K) - boylu} (bunlarda yalnız "
       f"etiketli kaba üst sınır var, `boy_tahmin`: tahmin, P10.7b'de ölçülecek).")
+    sb = [r["kimlik"] for r in K if r.get("sema_boy")]
+    if sb:
+        y(f"- Gösterim şeması yolunun uzunluğu yazılı: {len(sb)} kablo (`sema_boy`, gösterim şeması yolu; ölçüm değil: boy ve "
+          f"tahminin yerine geçmez, sipariş hesabına girmez).")
     ist = [r["kimlik"] for r in K if r.get("kesit_istisna")]
     kk = [r["kimlik"] for r in K if any(e.startswith("kesit-koruma:") for e in r["eksik"])]
     y(f"- Kesit kuralının kayıtlı istisnası: {len(ist)} kablo; kesit ↔ koruma uyuşmazlığı karara bağlı: {len(kk)} "

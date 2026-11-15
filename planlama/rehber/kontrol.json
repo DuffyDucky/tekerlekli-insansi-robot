@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-15 09:21",
+ "tarih": "2026-11-15 14:42",
  "tarayici": "chrome.exe",
  "ozet": {
   "adim": 50,
@@ -13,8 +13,8 @@
    "birden_cok_adimda": {},
    "hic_gorunmeyen": []
   },
-  "sema": 49,
-  "veri_uretim": "2026-11-15 08:41",
+  "sema": 65,
+  "veri_uretim": "2026-11-15 13:59",
   "kaynak_cad": {
    "iskelet": "2026-11-09 14:27",
    "omuz_sag": "2026-11-09 14:27",
@@ -45,7 +45,7 @@
    "kadraj": {
     "D": 3467,
     "alan": "sag-sutun",
-    "nokta": 9928
+    "nokta": 10056
    },
    "gecti": true
   },
@@ -256,12 +256,12 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
-   "sema": 0,
+   "sema": 1,
    "sema_fark": [],
    "kadraj": {
-    "D": 555,
+    "D": 564,
     "alan": "alt-serit",
-    "nokta": 224
+    "nokta": 232
    },
    "gecti": true
   },
@@ -328,12 +328,12 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
-   "sema": 0,
+   "sema": 1,
    "sema_fark": [],
    "kadraj": {
     "D": 430,
     "alan": "alt-serit",
-    "nokta": 312
+    "nokta": 320
    },
    "gecti": true
   },
@@ -448,12 +448,12 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
-   "sema": 0,
+   "sema": 9,
    "sema_fark": [],
    "kadraj": {
     "D": 767,
     "alan": "sag-sutun",
-    "nokta": 56
+    "nokta": 128
    },
    "gecti": true
   },
@@ -736,12 +736,12 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
-   "sema": 0,
+   "sema": 3,
    "sema_fark": [],
    "kadraj": {
     "D": 368,
     "alan": "alt-serit",
-    "nokta": 176
+    "nokta": 200
    },
    "gecti": true
   },
@@ -784,12 +784,12 @@
    "gorunen_hedef": 0,
    "eksik_mesh": [],
    "fark": [],
-   "sema": 5,
+   "sema": 7,
    "sema_fark": [],
    "kadraj": {
     "D": 642,
     "alan": "sag-sutun",
-    "nokta": 520
+    "nokta": 536
    },
    "gecti": true
   },
@@ -1367,9 +1367,9 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 489,
+     "D": 497,
      "alan": "sag-sutun",
-     "nokta": 80
+     "nokta": 88
     },
     "eksik_mesh": [],
     "konum_dogru": true,
@@ -1484,7 +1484,7 @@
     "kadraj": {
      "D": 619,
      "alan": "sag-sutun",
-     "nokta": 232
+     "nokta": 240
     },
     "eksik_mesh": [],
     "konum_dogru": true,
@@ -2885,16 +2885,16 @@
     "31.1": 0.1482,
     "31.2": 0.3127,
     "31.3": 0.1508,
-    "31.4": 0.4156,
+    "31.4": 0.4155,
     "31.5": 0.2433,
     "31.6": 0.222,
     "31.7": 0.7576,
     "31.8": 0.732,
-    "31.9": 0.3134,
+    "31.9": 0.3165,
     "31.10": 0.4206,
     "33.1": 0.4312,
     "33.2": 0.4842,
-    "33.3": 0.3036,
+    "33.3": 0.3037,
     "33.4": 0.5196,
     "33.5": 0.3299,
     "33.6": 0.14,
@@ -2973,15 +2973,15 @@
    "6": 0.4605,
    "7": 0.4689,
    "8": 0.4022,
-   "9": 0.7783,
+   "9": 0.7785,
    "10": 0.6853,
    "11": 0.7751,
    "12": 0.3868,
-   "13": 0.6939,
+   "13": 0.6945,
    "14": 0.3707,
    "15": 0.7962,
    "16": 0.6749,
-   "17": 0.5369,
+   "17": 0.523,
    "18": 0.0737,
    "19": 0.2436,
    "20": 0.2538,
@@ -2993,8 +2993,8 @@
    "26": 0.4699,
    "27": 0.1732,
    "28": 0.3195,
-   "29": 0.2832,
-   "30": 0.3676,
+   "29": 0.2858,
+   "30": 0.3704,
    "31": 0.3422,
    "32": 0.1078,
    "33": 0.2689,
@@ -3019,16 +3019,16 @@
    "31.1": 0.1482,
    "31.2": 0.3127,
    "31.3": 0.1508,
-   "31.4": 0.4156,
+   "31.4": 0.4155,
    "31.5": 0.2433,
    "31.6": 0.222,
    "31.7": 0.7576,
    "31.8": 0.732,
-   "31.9": 0.3134,
+   "31.9": 0.3165,
    "31.10": 0.4206,
    "33.1": 0.4312,
    "33.2": 0.4842,
-   "33.3": 0.3036,
+   "33.3": 0.3037,
    "33.4": 0.5196,
    "33.5": 0.3299,
    "33.6": 0.14,
@@ -3180,7 +3180,7 @@
   "adim": 50,
   "tasan": [],
   "kucuk_yazi": [],
-  "boyut_kb": 16165,
+  "boyut_kb": 16326,
   "sayfa_esleme": {
    "0": [
     1
@@ -3373,7 +3373,7 @@
    "adim": 50,
    "is_karakter": 32017,
    "is_eksik_karakter": 0,
-   "madde": 404,
+   "madde": 416,
    "madde_eksik": 0,
    "madde_fazla": 0,
    "eksik": [],
@@ -4368,6 +4368,31 @@
      "adim": "F1",
      "uyari": "F1 kontrol: aralık dışı okumada ana anahtar, ESP32 ve aşama 2 yasağı (alan kontrol)",
      "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 kontrol: kusur düzelince ölçüm akünün kendi geriliminden baştan (alan kontrol)",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 kontrol: akü aralık dışındaysa aralığa gelince madde baştan (alan kontrol)",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 kontrol: bölücü geçerse söküm sırası (ana anahtar, akü, uçlar), bant gevşemez (alan kontrol)",
+     "var": true
+    },
+    {
+     "adim": "K2",
+     "uyari": "K2 kablo: U06 şemasının taban ucu yanlış çizili, kablo ESP32'nin USB girişine (alan kablo)",
+     "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "K1 kablo: P03 tablosunda dağıtım kartı C'nin yeri (güç paneli) (alan kablo)",
+     "var": true
     }
    ],
    "zorunlu_eksik": []
@@ -4376,11 +4401,11 @@
   "elektrik": [],
   "elektrik_sayi": 0,
   "metin_sayisi": {
-   "veri": 4957,
+   "veri": 4985,
    "tarayici": 129
   },
   "parca": 1192,
-  "sema": 49,
+  "sema": 65,
   "gecti": true
  },
  "sira": {
@@ -4518,7 +4543,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 58.9,
+     "sure_s": 55.6,
      "yon": [
       {
        "yon": [
@@ -4626,7 +4651,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 15.0,
+     "sure_s": 14.3,
      "yon": [
       {
        "yon": [
@@ -4777,7 +4802,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 28.6,
+     "sure_s": 27.2,
      "yon": [
       {
        "yon": [
@@ -4928,7 +4953,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 3.8,
+     "sure_s": 3.5,
      "yon": [
       {
        "yon": [
@@ -5104,7 +5129,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 78.0,
+     "sure_s": 72.7,
      "yon": [
       {
        "yon": [
@@ -5268,7 +5293,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 82.0,
+     "sure_s": 76.8,
      "yon": [
       {
        "yon": [
@@ -5432,7 +5457,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 30.9,
+     "sure_s": 28.9,
      "yon": [
       {
        "yon": [
@@ -5622,7 +5647,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 7.5,
+     "sure_s": 6.9,
      "yon": [
       {
        "yon": [
@@ -5887,7 +5912,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 4.9,
+     "sure_s": 4.7,
      "yon": [
       {
        "yon": [
@@ -5915,7 +5940,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 5.7,
+     "sure_s": 5.3,
      "yon": [
       {
        "yon": [
@@ -6076,7 +6101,7 @@
    ],
    "gecti": true,
    "e3_kafa_serbest": true,
-   "sure_s": 315.5
+   "sure_s": 296.1
   },
   "ucus": {
    "durum": "koştu",
@@ -16001,7 +16026,7 @@
      ]
     }
    ],
-   "sure_s": 971.7
+   "sure_s": 945.4
   },
   "isil_gomme": {
    "durum": "koştu",
@@ -27858,16 +27883,16 @@
     }
    }
   ],
-  "sure_s": 80.0,
+  "sure_s": 74.7,
   "sure": {
-   "yukleme_s": 11.6,
-   "sira_s": 90.0,
-   "perdelenme_s": 131.0,
-   "giris_s": 315.5,
-   "ucus_s": 971.7,
-   "toplam_s": 1519.8,
+   "yukleme_s": 12.1,
+   "sira_s": 84.1,
+   "perdelenme_s": 125.8,
+   "giris_s": 296.2,
+   "ucus_s": 945.4,
+   "toplam_s": 1463.6,
    "voksel_alani": 87,
-   "voksel_s": 85.9
+   "voksel_s": 80.0
   }
  },
  "perdelenme": {
@@ -31707,7 +31732,7 @@
    }
   ],
   "toplam_gizli": 264,
-  "sure_s": 131.0,
+  "sure_s": 125.8,
   "alt_adim_gizli_istisnasiz": 0,
   "alt_adim_istisna": 117,
   "alt_sinir": 0,
@@ -31793,229 +31818,229 @@
    "hatali": [],
    "tablo": [
     {
-     "sema": 11,
+     "sema": 27,
      "anahtar": "sag:servo_bilek",
      "adres": "42.2",
      "grup": "Sağ kol: bilek ve dirsek servo kabloları → tırnak"
     },
     {
-     "sema": 12,
+     "sema": 28,
      "anahtar": "sag:servo_dirsek",
      "adres": "42.2",
      "grup": "Sağ kol: bilek ve dirsek servo kabloları → tırnak"
     },
     {
-     "sema": 13,
+     "sema": 29,
      "anahtar": "sag:lop_dirsek",
      "adres": "44.2",
      "grup": "Sağ kol: dirsek lopu → çatal oluğu → Ø10 delik"
     },
     {
-     "sema": 14,
+     "sema": 30,
      "anahtar": "sag:tup_ici",
      "adres": "48.2",
      "grup": "Sağ kol: kablolar tüpün içinden, ekler"
     },
     {
-     "sema": 15,
+     "sema": 31,
      "anahtar": "sag:tup_ara",
      "adres": "48.2",
      "grup": "Sağ kol: kablolar tüpün içinden, ekler"
     },
     {
-     "sema": 16,
+     "sema": 32,
      "anahtar": "sag:ek_jr",
      "adres": "48.2",
      "grup": "Sağ kol: kablolar tüpün içinden, ekler"
     },
     {
-     "sema": 17,
+     "sema": 33,
      "anahtar": "sag:ek_bilek",
      "adres": "48.2",
      "grup": "Sağ kol: kablolar tüpün içinden, ekler"
     },
     {
-     "sema": 18,
+     "sema": 34,
      "anahtar": "sag:nokta_lehim",
      "adres": "48.2",
      "grup": "Sağ kol: kablolar tüpün içinden, ekler"
     },
     {
-     "sema": 19,
+     "sema": 35,
      "anahtar": "sag:nokta_jr",
      "adres": "48.2",
      "grup": "Sağ kol: kablolar tüpün içinden, ekler"
     },
     {
-     "sema": 20,
+     "sema": 36,
      "anahtar": "sag:uzatma_tup",
      "adres": "48.2",
      "grup": "Sağ kol: kablolar tüpün içinden, ekler"
     },
     {
-     "sema": 21,
+     "sema": 37,
      "anahtar": "sag:uzatma_kol",
      "adres": "40.2",
      "grup": "Sağ kol: uzatmalar tüp penceresi → K → S2 lopu → tambur bağı"
     },
     {
-     "sema": 22,
+     "sema": 38,
      "anahtar": "sag:lop_s2",
      "adres": "40.2",
      "grup": "Sağ kol: uzatmalar tüp penceresi → K → S2 lopu → tambur bağı"
     },
     {
-     "sema": 23,
+     "sema": 39,
      "anahtar": "sag:bag_k",
      "adres": "40.2",
      "grup": "Sağ kol: uzatmalar tüp penceresi → K → S2 lopu → tambur bağı"
     },
     {
-     "sema": 24,
+     "sema": 40,
      "anahtar": "sag:bag_tambur",
      "adres": "40.2",
      "grup": "Sağ kol: uzatmalar tüp penceresi → K → S2 lopu → tambur bağı"
     },
     {
-     "sema": 25,
+     "sema": 41,
      "anahtar": "sag:gecis_s1",
      "adres": "40.2",
      "grup": "Sağ kol: uzatmalar tüp penceresi → K → S2 lopu → tambur bağı"
     },
     {
-     "sema": 26,
+     "sema": 42,
      "anahtar": "sag:s1_lop",
      "adres": "41.2",
      "grup": "Sağ kol: S1 U-lopu + duvar bağı + yarık"
     },
     {
-     "sema": 27,
+     "sema": 43,
      "anahtar": "sag:s1_cikis",
      "adres": "41.2",
      "grup": "Sağ kol: S1 U-lopu + duvar bağı + yarık"
     },
     {
-     "sema": 28,
+     "sema": 44,
      "anahtar": "sag:govde",
      "adres": "36.4",
      "grup": "Sağ omuz: kol servo uçları yarıktan dışarı"
     },
     {
-     "sema": 29,
+     "sema": 45,
      "anahtar": "sag:s1_-45",
      "adres": "41.4",
      "grup": "Sağ kol, yakın: S1 −45° uç duruşunda U-lopu"
     },
     {
-     "sema": 30,
+     "sema": 46,
      "anahtar": "sag:s1_+135",
      "adres": "41.5",
      "grup": "Sağ kol, yakın: S1 +135° uç duruşunda U-lopu"
     },
     {
-     "sema": 31,
+     "sema": 47,
      "anahtar": "sol:servo_bilek",
      "adres": "42.3",
      "grup": "Sol kol: bilek ve dirsek servo kabloları → tırnak"
     },
     {
-     "sema": 32,
+     "sema": 48,
      "anahtar": "sol:servo_dirsek",
      "adres": "42.3",
      "grup": "Sol kol: bilek ve dirsek servo kabloları → tırnak"
     },
     {
-     "sema": 33,
+     "sema": 49,
      "anahtar": "sol:lop_dirsek",
      "adres": "44.3",
      "grup": "Sol kol: dirsek lopu → çatal oluğu → Ø10 delik"
     },
     {
-     "sema": 34,
+     "sema": 50,
      "anahtar": "sol:tup_ici",
      "adres": "48.3",
      "grup": "Sol kol: kablolar tüpün içinden, ekler"
     },
     {
-     "sema": 35,
+     "sema": 51,
      "anahtar": "sol:tup_ara",
      "adres": "48.3",
      "grup": "Sol kol: kablolar tüpün içinden, ekler"
     },
     {
-     "sema": 36,
+     "sema": 52,
      "anahtar": "sol:ek_jr",
      "adres": "48.3",
      "grup": "Sol kol: kablolar tüpün içinden, ekler"
     },
     {
-     "sema": 37,
+     "sema": 53,
      "anahtar": "sol:ek_bilek",
      "adres": "48.3",
      "grup": "Sol kol: kablolar tüpün içinden, ekler"
     },
     {
-     "sema": 38,
+     "sema": 54,
      "anahtar": "sol:nokta_lehim",
      "adres": "48.3",
      "grup": "Sol kol: kablolar tüpün içinden, ekler"
     },
     {
-     "sema": 39,
+     "sema": 55,
      "anahtar": "sol:nokta_jr",
      "adres": "48.3",
      "grup": "Sol kol: kablolar tüpün içinden, ekler"
     },
     {
-     "sema": 40,
+     "sema": 56,
      "anahtar": "sol:uzatma_tup",
      "adres": "48.3",
      "grup": "Sol kol: kablolar tüpün içinden, ekler"
     },
     {
-     "sema": 41,
+     "sema": 57,
      "anahtar": "sol:uzatma_kol",
      "adres": "40.3",
      "grup": "Sol kol: uzatmalar tüp penceresi → K → S2 lopu → tambur bağı"
     },
     {
-     "sema": 42,
+     "sema": 58,
      "anahtar": "sol:lop_s2",
      "adres": "40.3",
      "grup": "Sol kol: uzatmalar tüp penceresi → K → S2 lopu → tambur bağı"
     },
     {
-     "sema": 43,
+     "sema": 59,
      "anahtar": "sol:bag_k",
      "adres": "40.3",
      "grup": "Sol kol: uzatmalar tüp penceresi → K → S2 lopu → tambur bağı"
     },
     {
-     "sema": 44,
+     "sema": 60,
      "anahtar": "sol:bag_tambur",
      "adres": "40.3",
      "grup": "Sol kol: uzatmalar tüp penceresi → K → S2 lopu → tambur bağı"
     },
     {
-     "sema": 45,
+     "sema": 61,
      "anahtar": "sol:gecis_s1",
      "adres": "40.3",
      "grup": "Sol kol: uzatmalar tüp penceresi → K → S2 lopu → tambur bağı"
     },
     {
-     "sema": 46,
+     "sema": 62,
      "anahtar": "sol:s1_lop",
      "adres": "41.3",
      "grup": "Sol kol: S1 U-lopu + duvar bağı + yarık"
     },
     {
-     "sema": 47,
+     "sema": 63,
      "anahtar": "sol:s1_cikis",
      "adres": "41.3",
      "grup": "Sol kol: S1 U-lopu + duvar bağı + yarık"
     },
     {
-     "sema": 48,
+     "sema": 64,
      "anahtar": "sol:govde",
      "adres": "36.5",
      "grup": "Sol omuz: kol servo uçları yarıktan dışarı"
@@ -32027,7 +32052,7 @@
    "parcada_degil": [],
    "tablo": [
     {
-     "sema": 11,
+     "sema": 27,
      "bolum": "kol_kablo:sag:servo_bilek",
      "uc": "bas",
      "nokta": [
@@ -32059,7 +32084,7 @@
      ]
     },
     {
-     "sema": 11,
+     "sema": 27,
      "bolum": "kol_kablo:sag:servo_bilek",
      "uc": "son",
      "nokta": [
@@ -32091,7 +32116,7 @@
      ]
     },
     {
-     "sema": 12,
+     "sema": 28,
      "bolum": "kol_kablo:sag:servo_dirsek",
      "uc": "bas",
      "nokta": [
@@ -32123,7 +32148,7 @@
      ]
     },
     {
-     "sema": 12,
+     "sema": 28,
      "bolum": "kol_kablo:sag:servo_dirsek",
      "uc": "son",
      "nokta": [
@@ -32155,7 +32180,7 @@
      ]
     },
     {
-     "sema": 13,
+     "sema": 29,
      "bolum": "kol_kablo:sag:lop_dirsek",
      "uc": "bas",
      "nokta": [
@@ -32187,7 +32212,7 @@
      ]
     },
     {
-     "sema": 13,
+     "sema": 29,
      "bolum": "kol_kablo:sag:lop_dirsek",
      "uc": "son",
      "nokta": [
@@ -32219,7 +32244,7 @@
      ]
     },
     {
-     "sema": 14,
+     "sema": 30,
      "bolum": "kol_kablo:sag:tup_ici",
      "uc": "bas",
      "nokta": [
@@ -32251,7 +32276,7 @@
      ]
     },
     {
-     "sema": 14,
+     "sema": 30,
      "bolum": "kol_kablo:sag:tup_ici",
      "uc": "son",
      "nokta": [
@@ -32278,7 +32303,7 @@
      ]
     },
     {
-     "sema": 15,
+     "sema": 31,
      "bolum": "kol_kablo:sag:tup_ara",
      "uc": "bas",
      "nokta": [
@@ -32300,7 +32325,7 @@
      ]
     },
     {
-     "sema": 15,
+     "sema": 31,
      "bolum": "kol_kablo:sag:tup_ara",
      "uc": "son",
      "nokta": [
@@ -32322,7 +32347,7 @@
      ]
     },
     {
-     "sema": 16,
+     "sema": 32,
      "bolum": "kol_kablo:sag:ek_jr",
      "uc": "bas",
      "nokta": [
@@ -32344,7 +32369,7 @@
      ]
     },
     {
-     "sema": 16,
+     "sema": 32,
      "bolum": "kol_kablo:sag:ek_jr",
      "uc": "son",
      "nokta": [
@@ -32366,7 +32391,7 @@
      ]
     },
     {
-     "sema": 17,
+     "sema": 33,
      "bolum": "kol_kablo:sag:ek_bilek",
      "uc": "bas",
      "nokta": [
@@ -32393,7 +32418,7 @@
      ]
     },
     {
-     "sema": 17,
+     "sema": 33,
      "bolum": "kol_kablo:sag:ek_bilek",
      "uc": "son",
      "nokta": [
@@ -32415,7 +32440,7 @@
      ]
     },
     {
-     "sema": 18,
+     "sema": 34,
      "bolum": "kol_kablo:sag:nokta_lehim",
      "uc": "bas",
      "nokta": [
@@ -32442,7 +32467,7 @@
      ]
     },
     {
-     "sema": 18,
+     "sema": 34,
      "bolum": "kol_kablo:sag:nokta_lehim",
      "uc": "son",
      "nokta": [
@@ -32469,7 +32494,7 @@
      ]
     },
     {
-     "sema": 19,
+     "sema": 35,
      "bolum": "kol_kablo:sag:nokta_jr",
      "uc": "bas",
      "nokta": [
@@ -32491,7 +32516,7 @@
      ]
     },
     {
-     "sema": 19,
+     "sema": 35,
      "bolum": "kol_kablo:sag:nokta_jr",
      "uc": "son",
      "nokta": [
@@ -32513,7 +32538,7 @@
      ]
     },
     {
-     "sema": 20,
+     "sema": 36,
      "bolum": "kol_kablo:sag:uzatma_tup",
      "uc": "bas",
      "nokta": [
@@ -32535,7 +32560,7 @@
      ]
     },
     {
-     "sema": 20,
+     "sema": 36,
      "bolum": "kol_kablo:sag:uzatma_tup",
      "uc": "son",
      "nokta": [
@@ -32557,7 +32582,7 @@
      ]
     },
     {
-     "sema": 21,
+     "sema": 37,
      "bolum": "kol_kablo:sag:uzatma_kol",
      "uc": "bas",
      "nokta": [
@@ -32579,7 +32604,7 @@
      ]
     },
     {
-     "sema": 21,
+     "sema": 37,
      "bolum": "kol_kablo:sag:uzatma_kol",
      "uc": "son",
      "nokta": [
@@ -32611,7 +32636,7 @@
      ]
     },
     {
-     "sema": 22,
+     "sema": 38,
      "bolum": "kol_kablo:sag:lop_s2",
      "uc": "bas",
      "nokta": [
@@ -32643,7 +32668,7 @@
      ]
     },
     {
-     "sema": 22,
+     "sema": 38,
      "bolum": "kol_kablo:sag:lop_s2",
      "uc": "son",
      "nokta": [
@@ -32675,7 +32700,7 @@
      ]
     },
     {
-     "sema": 23,
+     "sema": 39,
      "bolum": "kol_kablo:sag:bag_k",
      "uc": "bas",
      "nokta": [
@@ -32707,7 +32732,7 @@
      ]
     },
     {
-     "sema": 23,
+     "sema": 39,
      "bolum": "kol_kablo:sag:bag_k",
      "uc": "son",
      "nokta": [
@@ -32739,7 +32764,7 @@
      ]
     },
     {
-     "sema": 24,
+     "sema": 40,
      "bolum": "kol_kablo:sag:bag_tambur",
      "uc": "bas",
      "nokta": [
@@ -32771,7 +32796,7 @@
      ]
     },
     {
-     "sema": 24,
+     "sema": 40,
      "bolum": "kol_kablo:sag:bag_tambur",
      "uc": "son",
      "nokta": [
@@ -32803,7 +32828,7 @@
      ]
     },
     {
-     "sema": 25,
+     "sema": 41,
      "bolum": "kol_kablo:sag:gecis_s1",
      "uc": "bas",
      "nokta": [
@@ -32835,7 +32860,7 @@
      ]
     },
     {
-     "sema": 25,
+     "sema": 41,
      "bolum": "kol_kablo:sag:gecis_s1",
      "uc": "son",
      "nokta": [
@@ -32867,7 +32892,7 @@
      ]
     },
     {
-     "sema": 26,
+     "sema": 42,
      "bolum": "kol_kablo:sag:s1_lop",
      "uc": "bas",
      "nokta": [
@@ -32899,7 +32924,7 @@
      ]
     },
     {
-     "sema": 26,
+     "sema": 42,
      "bolum": "kol_kablo:sag:s1_lop",
      "uc": "son",
      "nokta": [
@@ -32931,7 +32956,7 @@
      ]
     },
     {
-     "sema": 27,
+     "sema": 43,
      "bolum": "kol_kablo:sag:s1_cikis",
      "uc": "bas",
      "nokta": [
@@ -32963,7 +32988,7 @@
      ]
     },
     {
-     "sema": 27,
+     "sema": 43,
      "bolum": "kol_kablo:sag:s1_cikis",
      "uc": "son",
      "nokta": [
@@ -32995,7 +33020,7 @@
      ]
     },
     {
-     "sema": 28,
+     "sema": 44,
      "bolum": "kol_kablo:sag:govde",
      "uc": "bas",
      "nokta": [
@@ -33027,7 +33052,7 @@
      ]
     },
     {
-     "sema": 28,
+     "sema": 44,
      "bolum": "kol_kablo:sag:govde",
      "uc": "son",
      "nokta": [
@@ -33059,7 +33084,7 @@
      ]
     },
     {
-     "sema": 29,
+     "sema": 45,
      "bolum": "kol_kablo:sag:s1_-45",
      "uc": "bas",
      "nokta": [
@@ -33091,7 +33116,7 @@
      ]
     },
     {
-     "sema": 29,
+     "sema": 45,
      "bolum": "kol_kablo:sag:s1_-45",
      "uc": "son",
      "nokta": [
@@ -33123,7 +33148,7 @@
      ]
     },
     {
-     "sema": 30,
+     "sema": 46,
      "bolum": "kol_kablo:sag:s1_+135",
      "uc": "bas",
      "nokta": [
@@ -33155,7 +33180,7 @@
      ]
     },
     {
-     "sema": 30,
+     "sema": 46,
      "bolum": "kol_kablo:sag:s1_+135",
      "uc": "son",
      "nokta": [
@@ -33187,7 +33212,7 @@
      ]
     },
     {
-     "sema": 31,
+     "sema": 47,
      "bolum": "kol_kablo:sol:servo_bilek",
      "uc": "bas",
      "nokta": [
@@ -33219,7 +33244,7 @@
      ]
     },
     {
-     "sema": 31,
+     "sema": 47,
      "bolum": "kol_kablo:sol:servo_bilek",
      "uc": "son",
      "nokta": [
@@ -33251,7 +33276,7 @@
      ]
     },
     {
-     "sema": 32,
+     "sema": 48,
      "bolum": "kol_kablo:sol:servo_dirsek",
      "uc": "bas",
      "nokta": [
@@ -33283,7 +33308,7 @@
      ]
     },
     {
-     "sema": 32,
+     "sema": 48,
      "bolum": "kol_kablo:sol:servo_dirsek",
      "uc": "son",
      "nokta": [
@@ -33315,7 +33340,7 @@
      ]
     },
     {
-     "sema": 33,
+     "sema": 49,
      "bolum": "kol_kablo:sol:lop_dirsek",
      "uc": "bas",
      "nokta": [
@@ -33347,7 +33372,7 @@
      ]
     },
     {
-     "sema": 33,
+     "sema": 49,
      "bolum": "kol_kablo:sol:lop_dirsek",
      "uc": "son",
      "nokta": [
@@ -33379,7 +33404,7 @@
      ]
     },
     {
-     "sema": 34,
+     "sema": 50,
      "bolum": "kol_kablo:sol:tup_ici",
      "uc": "bas",
      "nokta": [
@@ -33411,7 +33436,7 @@
      ]
     },
     {
-     "sema": 34,
+     "sema": 50,
      "bolum": "kol_kablo:sol:tup_ici",
      "uc": "son",
      "nokta": [
@@ -33438,7 +33463,7 @@
      ]
     },
     {
-     "sema": 35,
+     "sema": 51,
      "bolum": "kol_kablo:sol:tup_ara",
      "uc": "bas",
      "nokta": [
@@ -33460,7 +33485,7 @@
      ]
     },
     {
-     "sema": 35,
+     "sema": 51,
      "bolum": "kol_kablo:sol:tup_ara",
      "uc": "son",
      "nokta": [
@@ -33482,7 +33507,7 @@
      ]
     },
     {
-     "sema": 36,
+     "sema": 52,
      "bolum": "kol_kablo:sol:ek_jr",
      "uc": "bas",
      "nokta": [
@@ -33504,7 +33529,7 @@
      ]
     },
     {
-     "sema": 36,
+     "sema": 52,
      "bolum": "kol_kablo:sol:ek_jr",
      "uc": "son",
      "nokta": [
@@ -33526,7 +33551,7 @@
      ]
     },
     {
-     "sema": 37,
+     "sema": 53,
      "bolum": "kol_kablo:sol:ek_bilek",
      "uc": "bas",
      "nokta": [
@@ -33553,7 +33578,7 @@
      ]
     },
     {
-     "sema": 37,
+     "sema": 53,
      "bolum": "kol_kablo:sol:ek_bilek",
      "uc": "son",
      "nokta": [
@@ -33575,7 +33600,7 @@
      ]
     },
     {
-     "sema": 38,
+     "sema": 54,
      "bolum": "kol_kablo:sol:nokta_lehim",
      "uc": "bas",
      "nokta": [
@@ -33602,7 +33627,7 @@
      ]
     },
     {
-     "sema": 38,
+     "sema": 54,
      "bolum": "kol_kablo:sol:nokta_lehim",
      "uc": "son",
      "nokta": [
@@ -33629,7 +33654,7 @@
      ]
     },
     {
-     "sema": 39,
+     "sema": 55,
      "bolum": "kol_kablo:sol:nokta_jr",
      "uc": "bas",
      "nokta": [
@@ -33651,7 +33676,7 @@
      ]
     },
     {
-     "sema": 39,
+     "sema": 55,
      "bolum": "kol_kablo:sol:nokta_jr",
      "uc": "son",
      "nokta": [
@@ -33673,7 +33698,7 @@
      ]
     },
     {
-     "sema": 40,
+     "sema": 56,
      "bolum": "kol_kablo:sol:uzatma_tup",
      "uc": "bas",
      "nokta": [
@@ -33695,7 +33720,7 @@
      ]
     },
     {
-     "sema": 40,
+     "sema": 56,
      "bolum": "kol_kablo:sol:uzatma_tup",
      "uc": "son",
      "nokta": [
@@ -33717,7 +33742,7 @@
      ]
     },
     {
-     "sema": 41,
+     "sema": 57,
      "bolum": "kol_kablo:sol:uzatma_kol",
      "uc": "bas",
      "nokta": [
@@ -33739,7 +33764,7 @@
      ]
     },
     {
-     "sema": 41,
+     "sema": 57,
      "bolum": "kol_kablo:sol:uzatma_kol",
      "uc": "son",
      "nokta": [
@@ -33771,7 +33796,7 @@
      ]
     },
     {
-     "sema": 42,
+     "sema": 58,
      "bolum": "kol_kablo:sol:lop_s2",
      "uc": "bas",
      "nokta": [
@@ -33803,7 +33828,7 @@
      ]
     },
     {
-     "sema": 42,
+     "sema": 58,
      "bolum": "kol_kablo:sol:lop_s2",
      "uc": "son",
      "nokta": [
@@ -33835,7 +33860,7 @@
      ]
     },
     {
-     "sema": 43,
+     "sema": 59,
      "bolum": "kol_kablo:sol:bag_k",
      "uc": "bas",
      "nokta": [
@@ -33867,7 +33892,7 @@
      ]
     },
     {
-     "sema": 43,
+     "sema": 59,
      "bolum": "kol_kablo:sol:bag_k",
      "uc": "son",
      "nokta": [
@@ -33899,7 +33924,7 @@
      ]
     },
     {
-     "sema": 44,
+     "sema": 60,
      "bolum": "kol_kablo:sol:bag_tambur",
      "uc": "bas",
      "nokta": [
@@ -33931,7 +33956,7 @@
      ]
     },
     {
-     "sema": 44,
+     "sema": 60,
      "bolum": "kol_kablo:sol:bag_tambur",
      "uc": "son",
      "nokta": [
@@ -33963,7 +33988,7 @@
      ]
     },
     {
-     "sema": 45,
+     "sema": 61,
      "bolum": "kol_kablo:sol:gecis_s1",
      "uc": "bas",
      "nokta": [
@@ -33995,7 +34020,7 @@
      ]
     },
     {
-     "sema": 45,
+     "sema": 61,
      "bolum": "kol_kablo:sol:gecis_s1",
      "uc": "son",
      "nokta": [
@@ -34027,7 +34052,7 @@
      ]
     },
     {
-     "sema": 46,
+     "sema": 62,
      "bolum": "kol_kablo:sol:s1_lop",
      "uc": "bas",
      "nokta": [
@@ -34059,7 +34084,7 @@
      ]
     },
     {
-     "sema": 46,
+     "sema": 62,
      "bolum": "kol_kablo:sol:s1_lop",
      "uc": "son",
      "nokta": [
@@ -34091,7 +34116,7 @@
      ]
     },
     {
-     "sema": 47,
+     "sema": 63,
      "bolum": "kol_kablo:sol:s1_cikis",
      "uc": "bas",
      "nokta": [
@@ -34123,7 +34148,7 @@
      ]
     },
     {
-     "sema": 47,
+     "sema": 63,
      "bolum": "kol_kablo:sol:s1_cikis",
      "uc": "son",
      "nokta": [
@@ -34155,7 +34180,7 @@
      ]
     },
     {
-     "sema": 48,
+     "sema": 64,
      "bolum": "kol_kablo:sol:govde",
      "uc": "bas",
      "nokta": [
@@ -34187,7 +34212,7 @@
      ]
     },
     {
-     "sema": 48,
+     "sema": 64,
      "bolum": "kol_kablo:sol:govde",
      "uc": "son",
      "nokta": [
@@ -34461,7 +34486,7 @@
    "ulasilamaz": [],
    "el_yok": [
     {
-     "sema": 14,
+     "sema": 30,
      "bolum": "kol_kablo:sag:tup_ici",
      "adres": "48.2",
      "nokta": 0,
@@ -34469,7 +34494,7 @@
      "neden": "tüp içi (servo kablosu Ø10 delikten itilir; dişi JR tüp penceresinden geçebilir; el delikte ve pencerede)"
     },
     {
-     "sema": 14,
+     "sema": 30,
      "bolum": "kol_kablo:sag:tup_ici",
      "adres": "48.2",
      "nokta": 1,
@@ -34477,7 +34502,7 @@
      "neden": "tüp içi (servo kablosu Ø10 delikten itilir; dişi JR tüp penceresinden geçebilir; el delikte ve pencerede)"
     },
     {
-     "sema": 15,
+     "sema": 31,
      "bolum": "kol_kablo:sag:tup_ara",
      "adres": "48.2",
      "nokta": 0,
@@ -34485,7 +34510,7 @@
      "neden": "tüp içi, iki ek arası (kablolar delikten itilir, pencereden çekilir)"
     },
     {
-     "sema": 15,
+     "sema": 31,
      "bolum": "kol_kablo:sag:tup_ara",
      "adres": "48.2",
      "nokta": 1,
@@ -34493,7 +34518,7 @@
      "neden": "tüp içi, iki ek arası (kablolar delikten itilir, pencereden çekilir)"
     },
     {
-     "sema": 16,
+     "sema": 32,
      "bolum": "kol_kablo:sag:ek_jr",
      "adres": "48.2",
      "nokta": 0,
@@ -34501,7 +34526,7 @@
      "neden": "tüp içi ek (eşleşik JR çifti tüp içinde; takıldığı yer tasarımda tanımlı değil)"
     },
     {
-     "sema": 16,
+     "sema": 32,
      "bolum": "kol_kablo:sag:ek_jr",
      "adres": "48.2",
      "nokta": 1,
@@ -34509,7 +34534,7 @@
      "neden": "tüp içi ek (eşleşik JR çifti tüp içinde; takıldığı yer tasarımda tanımlı değil)"
     },
     {
-     "sema": 17,
+     "sema": 33,
      "bolum": "kol_kablo:sag:ek_bilek",
      "adres": "48.2",
      "nokta": 0,
@@ -34517,7 +34542,7 @@
      "neden": "tüp içi ek (lehim + makaron tüp girişinin üstünde; lehimin yapıldığı yer tasarımda tanımlı değil)"
     },
     {
-     "sema": 17,
+     "sema": 33,
      "bolum": "kol_kablo:sag:ek_bilek",
      "adres": "48.2",
      "nokta": 1,
@@ -34525,7 +34550,7 @@
      "neden": "tüp içi ek (lehim + makaron tüp girişinin üstünde; lehimin yapıldığı yer tasarımda tanımlı değil)"
     },
     {
-     "sema": 18,
+     "sema": 34,
      "bolum": "kol_kablo:sag:nokta_lehim",
      "adres": "48.2",
      "nokta": 0,
@@ -34533,7 +34558,7 @@
      "neden": "tüp içi ek noktası (lehim)"
     },
     {
-     "sema": 18,
+     "sema": 34,
      "bolum": "kol_kablo:sag:nokta_lehim",
      "adres": "48.2",
      "nokta": 1,
@@ -34541,7 +34566,7 @@
      "neden": "tüp içi ek noktası (lehim)"
     },
     {
-     "sema": 19,
+     "sema": 35,
      "bolum": "kol_kablo:sag:nokta_jr",
      "adres": "48.2",
      "nokta": 0,
@@ -34549,7 +34574,7 @@
      "neden": "tüp içi ek noktası (JR birleşimi)"
     },
     {
-     "sema": 19,
+     "sema": 35,
      "bolum": "kol_kablo:sag:nokta_jr",
      "adres": "48.2",
      "nokta": 1,
@@ -34557,7 +34582,7 @@
      "neden": "tüp içi ek noktası (JR birleşimi)"
     },
     {
-     "sema": 20,
+     "sema": 36,
      "bolum": "kol_kablo:sag:uzatma_tup",
      "adres": "48.2",
      "nokta": 0,
@@ -34565,7 +34590,7 @@
      "neden": "birleşim (tüp içi)"
     },
     {
-     "sema": 20,
+     "sema": 36,
      "bolum": "kol_kablo:sag:uzatma_tup",
      "adres": "48.2",
      "nokta": 1,
@@ -34573,7 +34598,7 @@
      "neden": "tüp içi"
     },
     {
-     "sema": 34,
+     "sema": 50,
      "bolum": "kol_kablo:sol:tup_ici",
      "adres": "48.3",
      "nokta": 0,
@@ -34581,7 +34606,7 @@
      "neden": "tüp içi (servo kablosu Ø10 delikten itilir; dişi JR tüp penceresinden geçebilir; el delikte ve pencerede)"
     },
     {
-     "sema": 34,
+     "sema": 50,
      "bolum": "kol_kablo:sol:tup_ici",
      "adres": "48.3",
      "nokta": 1,
@@ -34589,7 +34614,7 @@
      "neden": "tüp içi (servo kablosu Ø10 delikten itilir; dişi JR tüp penceresinden geçebilir; el delikte ve pencerede)"
     },
     {
-     "sema": 35,
+     "sema": 51,
      "bolum": "kol_kablo:sol:tup_ara",
      "adres": "48.3",
      "nokta": 0,
@@ -34597,7 +34622,7 @@
      "neden": "tüp içi, iki ek arası (kablolar delikten itilir, pencereden çekilir)"
     },
     {
-     "sema": 35,
+     "sema": 51,
      "bolum": "kol_kablo:sol:tup_ara",
      "adres": "48.3",
      "nokta": 1,
@@ -34605,7 +34630,7 @@
      "neden": "tüp içi, iki ek arası (kablolar delikten itilir, pencereden çekilir)"
     },
     {
-     "sema": 36,
+     "sema": 52,
      "bolum": "kol_kablo:sol:ek_jr",
      "adres": "48.3",
      "nokta": 0,
@@ -34613,7 +34638,7 @@
      "neden": "tüp içi ek (eşleşik JR çifti tüp içinde; takıldığı yer tasarımda tanımlı değil)"
     },
     {
-     "sema": 36,
+     "sema": 52,
      "bolum": "kol_kablo:sol:ek_jr",
      "adres": "48.3",
      "nokta": 1,
@@ -34621,7 +34646,7 @@
      "neden": "tüp içi ek (eşleşik JR çifti tüp içinde; takıldığı yer tasarımda tanımlı değil)"
     },
     {
-     "sema": 37,
+     "sema": 53,
      "bolum": "kol_kablo:sol:ek_bilek",
      "adres": "48.3",
      "nokta": 0,
@@ -34629,7 +34654,7 @@
      "neden": "tüp içi ek (lehim + makaron tüp girişinin üstünde; lehimin yapıldığı yer tasarımda tanımlı değil)"
     },
     {
-     "sema": 37,
+     "sema": 53,
      "bolum": "kol_kablo:sol:ek_bilek",
      "adres": "48.3",
      "nokta": 1,
@@ -34637,7 +34662,7 @@
      "neden": "tüp içi ek (lehim + makaron tüp girişinin üstünde; lehimin yapıldığı yer tasarımda tanımlı değil)"
     },
     {
-     "sema": 38,
+     "sema": 54,
      "bolum": "kol_kablo:sol:nokta_lehim",
      "adres": "48.3",
      "nokta": 0,
@@ -34645,7 +34670,7 @@
      "neden": "tüp içi ek noktası (lehim)"
     },
     {
-     "sema": 38,
+     "sema": 54,
      "bolum": "kol_kablo:sol:nokta_lehim",
      "adres": "48.3",
      "nokta": 1,
@@ -34653,7 +34678,7 @@
      "neden": "tüp içi ek noktası (lehim)"
     },
     {
-     "sema": 39,
+     "sema": 55,
      "bolum": "kol_kablo:sol:nokta_jr",
      "adres": "48.3",
      "nokta": 0,
@@ -34661,7 +34686,7 @@
      "neden": "tüp içi ek noktası (JR birleşimi)"
     },
     {
-     "sema": 39,
+     "sema": 55,
      "bolum": "kol_kablo:sol:nokta_jr",
      "adres": "48.3",
      "nokta": 1,
@@ -34669,7 +34694,7 @@
      "neden": "tüp içi ek noktası (JR birleşimi)"
     },
     {
-     "sema": 40,
+     "sema": 56,
      "bolum": "kol_kablo:sol:uzatma_tup",
      "adres": "48.3",
      "nokta": 0,
@@ -34677,7 +34702,7 @@
      "neden": "birleşim (tüp içi)"
     },
     {
-     "sema": 40,
+     "sema": 56,
      "bolum": "kol_kablo:sol:uzatma_tup",
      "adres": "48.3",
      "nokta": 1,
@@ -34687,7 +34712,7 @@
    ],
    "liste": [
     {
-     "sema": 11,
+     "sema": 27,
      "bolum": "kol_kablo:sag:servo_bilek",
      "adres": "42.2",
      "nokta": 0,
@@ -34700,7 +34725,7 @@
      ]
     },
     {
-     "sema": 11,
+     "sema": 27,
      "bolum": "kol_kablo:sag:servo_bilek",
      "adres": "42.2",
      "nokta": 1,
@@ -34713,7 +34738,7 @@
      ]
     },
     {
-     "sema": 11,
+     "sema": 27,
      "bolum": "kol_kablo:sag:servo_bilek",
      "adres": "42.2",
      "nokta": 2,
@@ -34726,7 +34751,7 @@
      ]
     },
     {
-     "sema": 11,
+     "sema": 27,
      "bolum": "kol_kablo:sag:servo_bilek",
      "adres": "42.2",
      "nokta": 3,
@@ -34739,7 +34764,7 @@
      ]
     },
     {
-     "sema": 11,
+     "sema": 27,
      "bolum": "kol_kablo:sag:servo_bilek",
      "adres": "42.2",
      "nokta": 4,
@@ -34752,7 +34777,7 @@
      ]
     },
     {
-     "sema": 11,
+     "sema": 27,
      "bolum": "kol_kablo:sag:servo_bilek",
      "adres": "42.2",
      "nokta": 5,
@@ -34765,7 +34790,7 @@
      ]
     },
     {
-     "sema": 12,
+     "sema": 28,
      "bolum": "kol_kablo:sag:servo_dirsek",
      "adres": "42.2",
      "nokta": 0,
@@ -34778,7 +34803,7 @@
      ]
     },
     {
-     "sema": 12,
+     "sema": 28,
      "bolum": "kol_kablo:sag:servo_dirsek",
      "adres": "42.2",
      "nokta": 1,
@@ -34791,7 +34816,7 @@
      ]
     },
     {
-     "sema": 12,
+     "sema": 28,
      "bolum": "kol_kablo:sag:servo_dirsek",
      "adres": "42.2",
      "nokta": 2,
@@ -34804,7 +34829,7 @@
      ]
     },
     {
-     "sema": 13,
+     "sema": 29,
      "bolum": "kol_kablo:sag:lop_dirsek",
      "adres": "44.2",
      "nokta": 0,
@@ -34817,7 +34842,7 @@
      ]
     },
     {
-     "sema": 13,
+     "sema": 29,
      "bolum": "kol_kablo:sag:lop_dirsek",
      "adres": "44.2",
      "nokta": 16,
@@ -34830,7 +34855,7 @@
      ]
     },
     {
-     "sema": 13,
+     "sema": 29,
      "bolum": "kol_kablo:sag:lop_dirsek",
      "adres": "44.2",
      "nokta": 31,
@@ -34843,7 +34868,7 @@
      ]
     },
     {
-     "sema": 14,
+     "sema": 30,
      "bolum": "kol_kablo:sag:tup_ici",
      "adres": "48.2",
      "nokta": 0,
@@ -34851,7 +34876,7 @@
      "neden": "tüp içi (servo kablosu Ø10 delikten itilir; dişi JR tüp penceresinden geçebilir; el delikte ve pencerede)"
     },
     {
-     "sema": 14,
+     "sema": 30,
      "bolum": "kol_kablo:sag:tup_ici",
      "adres": "48.2",
      "nokta": 1,
@@ -34859,7 +34884,7 @@
      "neden": "tüp içi (servo kablosu Ø10 delikten itilir; dişi JR tüp penceresinden geçebilir; el delikte ve pencerede)"
     },
     {
-     "sema": 15,
+     "sema": 31,
      "bolum": "kol_kablo:sag:tup_ara",
      "adres": "48.2",
      "nokta": 0,
@@ -34867,7 +34892,7 @@
      "neden": "tüp içi, iki ek arası (kablolar delikten itilir, pencereden çekilir)"
     },
     {
-     "sema": 15,
+     "sema": 31,
      "bolum": "kol_kablo:sag:tup_ara",
      "adres": "48.2",
      "nokta": 1,
@@ -34875,7 +34900,7 @@
      "neden": "tüp içi, iki ek arası (kablolar delikten itilir, pencereden çekilir)"
     },
     {
-     "sema": 16,
+     "sema": 32,
      "bolum": "kol_kablo:sag:ek_jr",
      "adres": "48.2",
      "nokta": 0,
@@ -34883,7 +34908,7 @@
      "neden": "tüp içi ek (eşleşik JR çifti tüp içinde; takıldığı yer tasarımda tanımlı değil)"
     },
     {
-     "sema": 16,
+     "sema": 32,
      "bolum": "kol_kablo:sag:ek_jr",
      "adres": "48.2",
      "nokta": 1,
@@ -34891,7 +34916,7 @@
      "neden": "tüp içi ek (eşleşik JR çifti tüp içinde; takıldığı yer tasarımda tanımlı değil)"
     },
     {
-     "sema": 17,
+     "sema": 33,
      "bolum": "kol_kablo:sag:ek_bilek",
      "adres": "48.2",
      "nokta": 0,
@@ -34899,7 +34924,7 @@
      "neden": "tüp içi ek (lehim + makaron tüp girişinin üstünde; lehimin yapıldığı yer tasarımda tanımlı değil)"
     },
     {
-     "sema": 17,
+     "sema": 33,
      "bolum": "kol_kablo:sag:ek_bilek",
      "adres": "48.2",
      "nokta": 1,
@@ -34907,7 +34932,7 @@
      "neden": "tüp içi ek (lehim + makaron tüp girişinin üstünde; lehimin yapıldığı yer tasarımda tanımlı değil)"
     },
     {
-     "sema": 18,
+     "sema": 34,
      "bolum": "kol_kablo:sag:nokta_lehim",
      "adres": "48.2",
      "nokta": 0,
@@ -34915,7 +34940,7 @@
      "neden": "tüp içi ek noktası (lehim)"
     },
     {
-     "sema": 18,
+     "sema": 34,
      "bolum": "kol_kablo:sag:nokta_lehim",
      "adres": "48.2",
      "nokta": 1,
@@ -34923,7 +34948,7 @@
      "neden": "tüp içi ek noktası (lehim)"
     },
     {
-     "sema": 19,
+     "sema": 35,
      "bolum": "kol_kablo:sag:nokta_jr",
      "adres": "48.2",
      "nokta": 0,
@@ -34931,7 +34956,7 @@
      "neden": "tüp içi ek noktası (JR birleşimi)"
     },
     {
-     "sema": 19,
+     "sema": 35,
      "bolum": "kol_kablo:sag:nokta_jr",
      "adres": "48.2",
      "nokta": 1,
@@ -34939,7 +34964,7 @@
      "neden": "tüp içi ek noktası (JR birleşimi)"
     },
     {
-     "sema": 20,
+     "sema": 36,
      "bolum": "kol_kablo:sag:uzatma_tup",
      "adres": "48.2",
      "nokta": 0,
@@ -34947,7 +34972,7 @@
      "neden": "birleşim (tüp içi)"
     },
     {
-     "sema": 20,
+     "sema": 36,
      "bolum": "kol_kablo:sag:uzatma_tup",
      "adres": "48.2",
      "nokta": 1,
@@ -34955,7 +34980,7 @@
      "neden": "tüp içi"
     },
     {
-     "sema": 20,
+     "sema": 36,
      "bolum": "kol_kablo:sag:uzatma_tup",
      "adres": "48.2",
      "nokta": 2,
@@ -34968,7 +34993,7 @@
      ]
     },
     {
-     "sema": 21,
+     "sema": 37,
      "bolum": "kol_kablo:sag:uzatma_kol",
      "adres": "40.2",
      "nokta": 0,
@@ -34981,7 +35006,7 @@
      ]
     },
     {
-     "sema": 21,
+     "sema": 37,
      "bolum": "kol_kablo:sag:uzatma_kol",
      "adres": "40.2",
      "nokta": 1,
@@ -34994,7 +35019,7 @@
      ]
     },
     {
-     "sema": 21,
+     "sema": 37,
      "bolum": "kol_kablo:sag:uzatma_kol",
      "adres": "40.2",
      "nokta": 2,
@@ -35007,7 +35032,7 @@
      ]
     },
     {
-     "sema": 21,
+     "sema": 37,
      "bolum": "kol_kablo:sag:uzatma_kol",
      "adres": "40.2",
      "nokta": 3,
@@ -35020,7 +35045,7 @@
      ]
     },
     {
-     "sema": 21,
+     "sema": 37,
      "bolum": "kol_kablo:sag:uzatma_kol",
      "adres": "40.2",
      "nokta": 4,
@@ -35033,7 +35058,7 @@
      ]
     },
     {
-     "sema": 21,
+     "sema": 37,
      "bolum": "kol_kablo:sag:uzatma_kol",
      "adres": "40.2",
      "nokta": 5,
@@ -35046,7 +35071,7 @@
      ]
     },
     {
-     "sema": 21,
+     "sema": 37,
      "bolum": "kol_kablo:sag:uzatma_kol",
      "adres": "40.2",
      "nokta": 6,
@@ -35059,7 +35084,7 @@
      ]
     },
     {
-     "sema": 22,
+     "sema": 38,
      "bolum": "kol_kablo:sag:lop_s2",
      "adres": "40.2",
      "nokta": 0,
@@ -35072,7 +35097,7 @@
      ]
     },
     {
-     "sema": 22,
+     "sema": 38,
      "bolum": "kol_kablo:sag:lop_s2",
      "adres": "40.2",
      "nokta": 15,
@@ -35085,7 +35110,7 @@
      ]
     },
     {
-     "sema": 22,
+     "sema": 38,
      "bolum": "kol_kablo:sag:lop_s2",
      "adres": "40.2",
      "nokta": 30,
@@ -35098,7 +35123,7 @@
      ]
     },
     {
-     "sema": 23,
+     "sema": 39,
      "bolum": "kol_kablo:sag:bag_k",
      "adres": "40.2",
      "nokta": 0,
@@ -35111,7 +35136,7 @@
      ]
     },
     {
-     "sema": 23,
+     "sema": 39,
      "bolum": "kol_kablo:sag:bag_k",
      "adres": "40.2",
      "nokta": 1,
@@ -35124,7 +35149,7 @@
      ]
     },
     {
-     "sema": 24,
+     "sema": 40,
      "bolum": "kol_kablo:sag:bag_tambur",
      "adres": "40.2",
      "nokta": 0,
@@ -35137,7 +35162,7 @@
      ]
     },
     {
-     "sema": 24,
+     "sema": 40,
      "bolum": "kol_kablo:sag:bag_tambur",
      "adres": "40.2",
      "nokta": 1,
@@ -35150,7 +35175,7 @@
      ]
     },
     {
-     "sema": 25,
+     "sema": 41,
      "bolum": "kol_kablo:sag:gecis_s1",
      "adres": "40.2",
      "nokta": 0,
@@ -35163,7 +35188,7 @@
      ]
     },
     {
-     "sema": 25,
+     "sema": 41,
      "bolum": "kol_kablo:sag:gecis_s1",
      "adres": "40.2",
      "nokta": 12,
@@ -35176,7 +35201,7 @@
      ]
     },
     {
-     "sema": 25,
+     "sema": 41,
      "bolum": "kol_kablo:sag:gecis_s1",
      "adres": "40.2",
      "nokta": 24,
@@ -35189,7 +35214,7 @@
      ]
     },
     {
-     "sema": 26,
+     "sema": 42,
      "bolum": "kol_kablo:sag:s1_lop",
      "adres": "41.2",
      "nokta": 0,
@@ -35202,7 +35227,7 @@
      ]
     },
     {
-     "sema": 26,
+     "sema": 42,
      "bolum": "kol_kablo:sag:s1_lop",
      "adres": "41.2",
      "nokta": 82,
@@ -35215,7 +35240,7 @@
      ]
     },
     {
-     "sema": 26,
+     "sema": 42,
      "bolum": "kol_kablo:sag:s1_lop",
      "adres": "41.2",
      "nokta": 163,
@@ -35228,7 +35253,7 @@
      ]
     },
     {
-     "sema": 27,
+     "sema": 43,
      "bolum": "kol_kablo:sag:s1_cikis",
      "adres": "41.2",
      "nokta": 0,
@@ -35241,7 +35266,7 @@
      ]
     },
     {
-     "sema": 27,
+     "sema": 43,
      "bolum": "kol_kablo:sag:s1_cikis",
      "adres": "41.2",
      "nokta": 1,
@@ -35254,7 +35279,7 @@
      ]
     },
     {
-     "sema": 27,
+     "sema": 43,
      "bolum": "kol_kablo:sag:s1_cikis",
      "adres": "41.2",
      "nokta": 2,
@@ -35267,7 +35292,7 @@
      ]
     },
     {
-     "sema": 28,
+     "sema": 44,
      "bolum": "kol_kablo:sag:govde",
      "adres": "36.4",
      "nokta": 0,
@@ -35280,7 +35305,7 @@
      ]
     },
     {
-     "sema": 28,
+     "sema": 44,
      "bolum": "kol_kablo:sag:govde",
      "adres": "36.4",
      "nokta": 1,
@@ -35293,7 +35318,7 @@
      ]
     },
     {
-     "sema": 28,
+     "sema": 44,
      "bolum": "kol_kablo:sag:govde",
      "adres": "36.4",
      "nokta": 2,
@@ -35306,7 +35331,7 @@
      ]
     },
     {
-     "sema": 28,
+     "sema": 44,
      "bolum": "kol_kablo:sag:govde",
      "adres": "36.4",
      "nokta": 3,
@@ -35319,7 +35344,7 @@
      ]
     },
     {
-     "sema": 28,
+     "sema": 44,
      "bolum": "kol_kablo:sag:govde",
      "adres": "36.4",
      "nokta": 4,
@@ -35332,7 +35357,7 @@
      ]
     },
     {
-     "sema": 29,
+     "sema": 45,
      "bolum": "kol_kablo:sag:s1_-45",
      "adres": "41.4",
      "nokta": 0,
@@ -35345,7 +35370,7 @@
      ]
     },
     {
-     "sema": 29,
+     "sema": 45,
      "bolum": "kol_kablo:sag:s1_-45",
      "adres": "41.4",
      "nokta": 85,
@@ -35358,7 +35383,7 @@
      ]
     },
     {
-     "sema": 29,
+     "sema": 45,
      "bolum": "kol_kablo:sag:s1_-45",
      "adres": "41.4",
      "nokta": 169,
@@ -35371,7 +35396,7 @@
      ]
     },
     {
-     "sema": 30,
+     "sema": 46,
      "bolum": "kol_kablo:sag:s1_+135",
      "adres": "41.5",
      "nokta": 0,
@@ -35384,7 +35409,7 @@
      ]
     },
     {
-     "sema": 30,
+     "sema": 46,
      "bolum": "kol_kablo:sag:s1_+135",
      "adres": "41.5",
      "nokta": 72,
@@ -35397,7 +35422,7 @@
      ]
     },
     {
-     "sema": 30,
+     "sema": 46,
      "bolum": "kol_kablo:sag:s1_+135",
      "adres": "41.5",
      "nokta": 144,
@@ -35410,7 +35435,7 @@
      ]
     },
     {
-     "sema": 31,
+     "sema": 47,
      "bolum": "kol_kablo:sol:servo_bilek",
      "adres": "42.3",
      "nokta": 0,
@@ -35423,7 +35448,7 @@
      ]
     },
     {
-     "sema": 31,
+     "sema": 47,
      "bolum": "kol_kablo:sol:servo_bilek",
      "adres": "42.3",
      "nokta": 1,
@@ -35436,7 +35461,7 @@
      ]
     },
     {
-     "sema": 31,
+     "sema": 47,
      "bolum": "kol_kablo:sol:servo_bilek",
      "adres": "42.3",
      "nokta": 2,
@@ -35449,7 +35474,7 @@
      ]
     },
     {
-     "sema": 31,
+     "sema": 47,
      "bolum": "kol_kablo:sol:servo_bilek",
      "adres": "42.3",
      "nokta": 3,
@@ -35462,7 +35487,7 @@
      ]
     },
     {
-     "sema": 31,
+     "sema": 47,
      "bolum": "kol_kablo:sol:servo_bilek",
      "adres": "42.3",
      "nokta": 4,
@@ -35475,7 +35500,7 @@
      ]
     },
     {
-     "sema": 31,
+     "sema": 47,
      "bolum": "kol_kablo:sol:servo_bilek",
      "adres": "42.3",
      "nokta": 5,
@@ -35488,7 +35513,7 @@
      ]
     },
     {
-     "sema": 32,
+     "sema": 48,
      "bolum": "kol_kablo:sol:servo_dirsek",
      "adres": "42.3",
      "nokta": 0,
@@ -35501,7 +35526,7 @@
      ]
     },
     {
-     "sema": 32,
+     "sema": 48,
      "bolum": "kol_kablo:sol:servo_dirsek",
      "adres": "42.3",
      "nokta": 1,
@@ -35514,7 +35539,7 @@
      ]
     },
     {
-     "sema": 32,
+     "sema": 48,
      "bolum": "kol_kablo:sol:servo_dirsek",
      "adres": "42.3",
      "nokta": 2,
@@ -35527,7 +35552,7 @@
      ]
     },
     {
-     "sema": 33,
+     "sema": 49,
      "bolum": "kol_kablo:sol:lop_dirsek",
      "adres": "44.3",
      "nokta": 0,
@@ -35540,7 +35565,7 @@
      ]
     },
     {
-     "sema": 33,
+     "sema": 49,
      "bolum": "kol_kablo:sol:lop_dirsek",
      "adres": "44.3",
      "nokta": 16,
@@ -35553,7 +35578,7 @@
      ]
     },
     {
-     "sema": 33,
+     "sema": 49,
      "bolum": "kol_kablo:sol:lop_dirsek",
      "adres": "44.3",
      "nokta": 31,
@@ -35566,7 +35591,7 @@
      ]
     },
     {
-     "sema": 34,
+     "sema": 50,
      "bolum": "kol_kablo:sol:tup_ici",
      "adres": "48.3",
      "nokta": 0,
@@ -35574,7 +35599,7 @@
      "neden": "tüp içi (servo kablosu Ø10 delikten itilir; dişi JR tüp penceresinden geçebilir; el delikte ve pencerede)"
     },
     {
-     "sema": 34,
+     "sema": 50,
      "bolum": "kol_kablo:sol:tup_ici",
      "adres": "48.3",
      "nokta": 1,
@@ -35582,7 +35607,7 @@
      "neden": "tüp içi (servo kablosu Ø10 delikten itilir; dişi JR tüp penceresinden geçebilir; el delikte ve pencerede)"
     },
     {
-     "sema": 35,
+     "sema": 51,
      "bolum": "kol_kablo:sol:tup_ara",
      "adres": "48.3",
      "nokta": 0,
@@ -35590,7 +35615,7 @@
      "neden": "tüp içi, iki ek arası (kablolar delikten itilir, pencereden çekilir)"
     },
     {
-     "sema": 35,
+     "sema": 51,
      "bolum": "kol_kablo:sol:tup_ara",
      "adres": "48.3",
      "nokta": 1,
@@ -35598,7 +35623,7 @@
      "neden": "tüp içi, iki ek arası (kablolar delikten itilir, pencereden çekilir)"
     },
     {
-     "sema": 36,
+     "sema": 52,
      "bolum": "kol_kablo:sol:ek_jr",
      "adres": "48.3",
      "nokta": 0,
@@ -35606,7 +35631,7 @@
      "neden": "tüp içi ek (eşleşik JR çifti tüp içinde; takıldığı yer tasarımda tanımlı değil)"
     },
     {
-     "sema": 36,
+     "sema": 52,
      "bolum": "kol_kablo:sol:ek_jr",
      "adres": "48.3",
      "nokta": 1,
@@ -35614,7 +35639,7 @@
      "neden": "tüp içi ek (eşleşik JR çifti tüp içinde; takıldığı yer tasarımda tanımlı değil)"
     },
     {
-     "sema": 37,
+     "sema": 53,
      "bolum": "kol_kablo:sol:ek_bilek",
      "adres": "48.3",
      "nokta": 0,
@@ -35622,7 +35647,7 @@
      "neden": "tüp içi ek (lehim + makaron tüp girişinin üstünde; lehimin yapıldığı yer tasarımda tanımlı değil)"
     },
     {
-     "sema": 37,
+     "sema": 53,
      "bolum": "kol_kablo:sol:ek_bilek",
      "adres": "48.3",
      "nokta": 1,
@@ -35630,7 +35655,7 @@
      "neden": "tüp içi ek (lehim + makaron tüp girişinin üstünde; lehimin yapıldığı yer tasarımda tanımlı değil)"
     },
     {
-     "sema": 38,
+     "sema": 54,
      "bolum": "kol_kablo:sol:nokta_lehim",
      "adres": "48.3",
      "nokta": 0,
@@ -35638,7 +35663,7 @@
      "neden": "tüp içi ek noktası (lehim)"
     },
     {
-     "sema": 38,
+     "sema": 54,
      "bolum": "kol_kablo:sol:nokta_lehim",
      "adres": "48.3",
      "nokta": 1,
@@ -35646,7 +35671,7 @@
      "neden": "tüp içi ek noktası (lehim)"
     },
     {
-     "sema": 39,
+     "sema": 55,
      "bolum": "kol_kablo:sol:nokta_jr",
      "adres": "48.3",
      "nokta": 0,
@@ -35654,7 +35679,7 @@
      "neden": "tüp içi ek noktası (JR birleşimi)"
     },
     {
-     "sema": 39,
+     "sema": 55,
      "bolum": "kol_kablo:sol:nokta_jr",
      "adres": "48.3",
      "nokta": 1,
@@ -35662,7 +35687,7 @@
      "neden": "tüp içi ek noktası (JR birleşimi)"
     },
     {
-     "sema": 40,
+     "sema": 56,
      "bolum": "kol_kablo:sol:uzatma_tup",
      "adres": "48.3",
      "nokta": 0,
@@ -35670,7 +35695,7 @@
      "neden": "birleşim (tüp içi)"
     },
     {
-     "sema": 40,
+     "sema": 56,
      "bolum": "kol_kablo:sol:uzatma_tup",
      "adres": "48.3",
      "nokta": 1,
@@ -35678,7 +35703,7 @@
      "neden": "tüp içi"
     },
     {
-     "sema": 40,
+     "sema": 56,
      "bolum": "kol_kablo:sol:uzatma_tup",
      "adres": "48.3",
      "nokta": 2,
@@ -35691,7 +35716,7 @@
      ]
     },
     {
-     "sema": 41,
+     "sema": 57,
      "bolum": "kol_kablo:sol:uzatma_kol",
      "adres": "40.3",
      "nokta": 0,
@@ -35704,7 +35729,7 @@
      ]
     },
     {
-     "sema": 41,
+     "sema": 57,
      "bolum": "kol_kablo:sol:uzatma_kol",
      "adres": "40.3",
      "nokta": 1,
@@ -35717,7 +35742,7 @@
      ]
     },
     {
-     "sema": 41,
+     "sema": 57,
      "bolum": "kol_kablo:sol:uzatma_kol",
      "adres": "40.3",
      "nokta": 2,
@@ -35730,7 +35755,7 @@
      ]
     },
     {
-     "sema": 41,
+     "sema": 57,
      "bolum": "kol_kablo:sol:uzatma_kol",
      "adres": "40.3",
      "nokta": 3,
@@ -35743,7 +35768,7 @@
      ]
     },
     {
-     "sema": 41,
+     "sema": 57,
      "bolum": "kol_kablo:sol:uzatma_kol",
      "adres": "40.3",
      "nokta": 4,
@@ -35756,7 +35781,7 @@
      ]
     },
     {
-     "sema": 41,
+     "sema": 57,
      "bolum": "kol_kablo:sol:uzatma_kol",
      "adres": "40.3",
      "nokta": 5,
@@ -35769,7 +35794,7 @@
      ]
     },
     {
-     "sema": 41,
+     "sema": 57,
      "bolum": "kol_kablo:sol:uzatma_kol",
      "adres": "40.3",
      "nokta": 6,
@@ -35782,7 +35807,7 @@
      ]
     },
     {
-     "sema": 42,
+     "sema": 58,
      "bolum": "kol_kablo:sol:lop_s2",
      "adres": "40.3",
      "nokta": 0,
@@ -35795,7 +35820,7 @@
      ]
     },
     {
-     "sema": 42,
+     "sema": 58,
      "bolum": "kol_kablo:sol:lop_s2",
      "adres": "40.3",
      "nokta": 15,
@@ -35808,7 +35833,7 @@
      ]
     },
     {
-     "sema": 42,
+     "sema": 58,
      "bolum": "kol_kablo:sol:lop_s2",
      "adres": "40.3",
      "nokta": 30,
@@ -35821,7 +35846,7 @@
      ]
     },
     {
-     "sema": 43,
+     "sema": 59,
      "bolum": "kol_kablo:sol:bag_k",
      "adres": "40.3",
      "nokta": 0,
@@ -35834,7 +35859,7 @@
      ]
     },
     {
-     "sema": 43,
+     "sema": 59,
      "bolum": "kol_kablo:sol:bag_k",
      "adres": "40.3",
      "nokta": 1,
@@ -35847,7 +35872,7 @@
      ]
     },
     {
-     "sema": 44,
+     "sema": 60,
      "bolum": "kol_kablo:sol:bag_tambur",
      "adres": "40.3",
      "nokta": 0,
@@ -35860,7 +35885,7 @@
      ]
     },
     {
-     "sema": 44,
+     "sema": 60,
      "bolum": "kol_kablo:sol:bag_tambur",
      "adres": "40.3",
      "nokta": 1,
@@ -35873,7 +35898,7 @@
      ]
     },
     {
-     "sema": 45,
+     "sema": 61,
      "bolum": "kol_kablo:sol:gecis_s1",
      "adres": "40.3",
      "nokta": 0,
@@ -35886,7 +35911,7 @@
      ]
     },
     {
-     "sema": 45,
+     "sema": 61,
      "bolum": "kol_kablo:sol:gecis_s1",
      "adres": "40.3",
      "nokta": 12,
@@ -35899,7 +35924,7 @@
      ]
     },
     {
-     "sema": 45,
+     "sema": 61,
      "bolum": "kol_kablo:sol:gecis_s1",
      "adres": "40.3",
      "nokta": 24,
@@ -35912,7 +35937,7 @@
      ]
     },
     {
-     "sema": 46,
+     "sema": 62,
      "bolum": "kol_kablo:sol:s1_lop",
      "adres": "41.3",
      "nokta": 0,
@@ -35925,7 +35950,7 @@
      ]
     },
     {
-     "sema": 46,
+     "sema": 62,
      "bolum": "kol_kablo:sol:s1_lop",
      "adres": "41.3",
      "nokta": 82,
@@ -35938,7 +35963,7 @@
      ]
     },
     {
-     "sema": 46,
+     "sema": 62,
      "bolum": "kol_kablo:sol:s1_lop",
      "adres": "41.3",
      "nokta": 163,
@@ -35951,7 +35976,7 @@
      ]
     },
     {
-     "sema": 47,
+     "sema": 63,
      "bolum": "kol_kablo:sol:s1_cikis",
      "adres": "41.3",
      "nokta": 0,
@@ -35964,7 +35989,7 @@
      ]
     },
     {
-     "sema": 47,
+     "sema": 63,
      "bolum": "kol_kablo:sol:s1_cikis",
      "adres": "41.3",
      "nokta": 1,
@@ -35977,7 +36002,7 @@
      ]
     },
     {
-     "sema": 47,
+     "sema": 63,
      "bolum": "kol_kablo:sol:s1_cikis",
      "adres": "41.3",
      "nokta": 2,
@@ -35990,7 +36015,7 @@
      ]
     },
     {
-     "sema": 48,
+     "sema": 64,
      "bolum": "kol_kablo:sol:govde",
      "adres": "36.5",
      "nokta": 0,
@@ -36003,7 +36028,7 @@
      ]
     },
     {
-     "sema": 48,
+     "sema": 64,
      "bolum": "kol_kablo:sol:govde",
      "adres": "36.5",
      "nokta": 1,
@@ -36016,7 +36041,7 @@
      ]
     },
     {
-     "sema": 48,
+     "sema": 64,
      "bolum": "kol_kablo:sol:govde",
      "adres": "36.5",
      "nokta": 2,
@@ -36029,7 +36054,7 @@
      ]
     },
     {
-     "sema": 48,
+     "sema": 64,
      "bolum": "kol_kablo:sol:govde",
      "adres": "36.5",
      "nokta": 3,
@@ -36042,7 +36067,7 @@
      ]
     },
     {
-     "sema": 48,
+     "sema": 64,
      "bolum": "kol_kablo:sol:govde",
      "adres": "36.5",
      "nokta": 4,
@@ -36250,37 +36275,36 @@
   "hata": [],
   "gecti": true,
   "bolum": 38,
-  "sure_s": 37.8
+  "sure_s": 38.0
  },
  "kablo_esleme": {
   "hata": [],
   "eslesmeyen": [],
   "tablo": 74,
-  "cizilen": 51,
+  "cizilen": 68,
   "cizilmeyen": [
    "G06",
-   "G07",
-   "M02",
-   "G16",
-   "SV3",
-   "G19",
-   "G22",
-   "B02",
-   "N01",
-   "N02",
    "I01",
    "I02",
    "P01",
    "P02",
-   "P03",
-   "Q01",
-   "Q02",
-   "K01",
-   "K02",
-   "K03",
-   "C01",
-   "AU1",
-   "AU2"
+   "P03"
+  ],
+  "yol_cizimi": 68,
+  "yol_kaynak": {
+   "CAD": 39,
+   "kol": 6,
+   "şema": 29
+  },
+  "baglanti_tablosu": [
+   "I01",
+   "I02",
+   "P01",
+   "P02",
+   "P03"
+  ],
+  "hicbiri": [
+   "G06"
   ],
   "gecti": true
  }

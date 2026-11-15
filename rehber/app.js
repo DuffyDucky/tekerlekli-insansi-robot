@@ -1117,10 +1117,14 @@
         p.a + " (" + esc(ADIM[p.a].kod) + ")" + (kopya > 0 ? "<br>Aynı kalemden " + kopya + " kopya daha açık tonla vurgulu" : "") +
         "</span>" + kabloBilgi(p, 4));
     }
+    // P10.7b2c düzeltme turu 1 (F10k-kontrol D1): gösterim şemasının yol uzunluğu kesim boyu sanılmasın (etiket kaynakta kilitli:
+    // rehber_kablo.sema_boy_etiketi_denetle). Kol içi bölümün sayısı (kol) bölüm uzunluğudur, o da "(kesim boyu değil)" etiketini taşır.
     function semaSec(i) {
       secimYap({ ids: [], sema: [i], hepsi: true, satir: null });
+      const boy = SEMA[i].boy_mm ? (SEMA[i].kol ? " · bölüm uzunluğu ~" + Math.round(SEMA[i].boy_mm) + " mm (kesim boyu değil)"
+        : " · çizim yolu ~" + Math.round(SEMA[i].boy_mm) + " mm (kesim boyu değil)") : "";
       etiketYaz("<b>" + esc(SEMA[i].ad) + "</b><br><span class='not'>Kablo şeması · adım " + SEMA[i].a + " (" + esc(ADIM[SEMA[i].a].kod) + ")" +
-        (SEMA[i].boy_mm ? " · ~" + Math.round(SEMA[i].boy_mm) + " mm" : "") + "</span>" + kabloBilgi(SEMA[i], 4));
+        boy + "</span>" + kabloBilgi(SEMA[i], 4));
     }
     // P10.7b1: çizilen kablonun tablo bilgisi (planlama/adim3/kablolar.json; veri: kb = "kimlik: uç → uç · kesit · sigorta · acil stopta …")
     function kabloBilgi(x, en) {

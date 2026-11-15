@@ -110,7 +110,7 @@ BES_V = {"5V-pi", "5V-cevre"}
 YER_TUTUCU = re.compile(r"(^\s*$|\?|…|\.\.\.|öneri|belirlenecek|bilinmiyor|bilinmeyen|sonra bakılacak|bakılacak|\bTBD\b|^\s*-+\s*$)",
                         re.I)
 ALAN_KABLO = set(ZORUNLU) | {"bolge", "boy_not", "boy_tahmin", "gerilim_dusumu_kontrol", "hazir_kablo", "kesit_istisna", "kesit_not",
-                             "malzeme", "not", "ortak_donus", "tarihce"}
+                             "malzeme", "not", "ortak_donus", "tarihce", "sema_boy"}     # sema_boy: P10.7b2c (şema 5)
 ALAN_DAMAR = {"a", "b", "ad", "ara", "ara_koruyucu", "ara_uc", "gpio", "not", "pca_ad", "pca_kanal", "pin", "kesit", "uc_turu", "uc_kuyrugu"}
 PABUC_RENK = ("sarı", "mavi", "kırmızı")
 TVS_ALAN = ("parca", "ad", "yer", "arti_dugumu", "eksi_dugumu", "yon", "isaret", "kaynak", "teyit", "siparis")
@@ -1481,6 +1481,47 @@ def s_tahmin(v, b):
     return h
 
 
+# P10.7b2c (şema 5): gösterim şeması yolunun uzunluğu ayrı alan. Değerin tazeliği (şemadan yeniden hesap) rehber_kablo.py'de
+# (sema_boy_denetle; şema kaynakları FreeCAD'siz ama rehber dizininde); burada yapı: etiket, alanlar, kaynak dosyası, ortak kimlikler.
+SEMA_BOY_ETIKET = "gösterim şeması yolu; ölçüm değil"
+SEMA_BOY_ALAN = {"mm", "sema", "kaynak", "etiket", "ortak"}
+SEMA_BOY_KAYNAK = re.compile(r"^(yollar|kafa_ici_qled|taban|kafa_ici):\S")
+
+
+def s_sema_boy(v, b):
+    h = []
+    kim = {r["kimlik"] for r in v["kablolar"]}
+    for r in v["kablolar"]:
+        s = r.get("sema_boy")
+        if s is None:
+            continue
+        k = r["kimlik"]
+        if not isinstance(s, dict):
+            h.append(f"{k}: sema_boy sözlük değil")
+            continue
+        if set(s) - SEMA_BOY_ALAN or not {"mm", "sema", "kaynak", "etiket"} <= set(s):
+            h.append(f"{k}: sema_boy alanları {sorted(s)} (mm, sema, kaynak, etiket[, ortak])")
+        if s.get("etiket") != SEMA_BOY_ETIKET:
+            h.append(f"{k}: sema_boy etiketi '{s.get('etiket')}', '{SEMA_BOY_ETIKET}' olmalı")
+        if not isinstance(s.get("mm"), int) or isinstance(s.get("mm"), bool) or s["mm"] <= 0:
+            h.append(f"{k}: sema_boy.mm geçersiz ({s.get('mm')!r})")
+        if not SEMA_BOY_KAYNAK.match(str(s.get("sema") or "")):
+            h.append(f"{k}: sema_boy.sema '{s.get('sema')}' (kaynak:ad biçiminde değil)")
+        dosya = str(s.get("kaynak") or "").split("#")[0]
+        if not dosya or not (KOK / dosya).is_file():
+            h.append(f"{k}: sema_boy.kaynak dosyası yok ({s.get('kaynak')})")
+        for o in s.get("ortak") or []:
+            if o not in kim or o == k:
+                h.append(f"{k}: sema_boy.ortak '{o}' kayıtta yok ya da kendisi")
+        if r.get("boy") and r["boy"].get("kaynak", "").startswith(dosya or "\0"):
+            h.append(f"{k}: boy şema kaynağından yazılmış ({r['boy']['kaynak']}); şema yolu boy değil")
+    if v.get("surum", 0) < 5 and any(r.get("sema_boy") for r in v["kablolar"]):
+        h.append(f"sema_boy alanı şema 5'te geldi; tablo sürümü {v.get('surum')}")
+    if any(r.get("sema_boy") for r in v["kablolar"]) and "sema_boy" not in v.get("alanlar", {}):
+        h.append("alanlar.sema_boy açıklaması yok")
+    return h
+
+
 def uc_iletkenleri(v, r):
     """[(damar, yan, tür, kesit {awg, mm2} ya da None)]: her damarın iki ucu; ara_uc yanında iletken hat yuvasının kuyruğu."""
     out = []
@@ -2311,7 +2352,8 @@ SINAMALAR = [("alanlar", s_alanlar), ("iki_uc", s_iki_uc), ("yer_tutucu", s_yer_
              ("koruyucu", s_koruyucu), ("ayni_nokta", s_ayni_nokta), ("esp32_pin", s_esp32_pin),
              ("pca_kanal", s_pca_kanal), ("kesit", s_kesit), ("donus", s_donus), ("tahmin", s_tahmin), ("klemens", s_klemens),
              ("malzeme", s_malzeme), ("donanim", s_donanim), ("acil_stop", s_acil_stop), ("kaynak", s_kaynak),
-             ("sayi_metin", s_sayi_metin), ("denetim_62", s_denetim_62), ("gorunum", s_gorunum), ("yon_yer", s_yon_yer)]
+             ("sayi_metin", s_sayi_metin), ("denetim_62", s_denetim_62), ("gorunum", s_gorunum), ("yon_yer", s_yon_yer),
+             ("sema_boy", s_sema_boy)]
 
 
 def kos(v, b):
@@ -2971,6 +3013,19 @@ def b_koruyucu_10(v, b):
     b["elektrik"] = b["elektrik"].replace("doğrusal bölge ≤ 2,45 V", "doğrusal bölge")                # sınır satırdan silindi
 
 
+# P10.7b2c (şema 5): sema_boy yapısı
+def b_sema_boy(v, b):
+    bul(v, "AU1")["sema_boy"]["etiket"] = "ölçüm"                                                  # etiket ölçüm gibi
+def b_sema_boy_2(v, b):
+    bul(v, "K03")["sema_boy"]["mm"] = "47"                                                         # mm sayı değil
+def b_sema_boy_3(v, b):
+    bul(v, "AU1")["sema_boy"]["ortak"] = ["AU9"]                                                   # bilinmeyen ortak kimlik
+def b_sema_boy_4(v, b):
+    bul(v, "U06")["boy"]["kaynak"] = bul(v, "U06")["sema_boy"]["kaynak"]                            # boy şemadan yazılmış
+def b_sema_boy_5(v, b):
+    bul(v, "G07")["sema_boy"]["kaynak"] = "tasarim/freecad/lale158/yok.py#yollar"                    # kaynak dosyası yok
+
+
 # kontrolün (P107a-kontrol.md §1 D1) yakalanmayan on bozması, aynı biçimde
 def k_B3(v, b):
     d = damar(bul(v, "X01"), "röle K1 sürüşü")
@@ -3075,7 +3130,10 @@ BOZMALAR = [("iki_uc", b_iki_uc), ("ayni_nokta", b_ayni_nokta), ("esp32_pin", b_
             ("yon_yer", b_yon_yer_10), ("yon_yer", b_yon_yer_11), ("yon_yer", b_yon_yer_12), ("yon_yer", b_yon_yer_13),
             ("yon_yer", b_yon_yer_14), ("yon_yer", b_yon_yer_15), ("yon_yer", b_yon_yer_16), ("yon_yer", b_yon_yer_17),
             # düzeltme turu 2 (F10i-kontrol-2 B27)
-            ("koruyucu", b_koruyucu_8), ("koruyucu", b_koruyucu_9), ("koruyucu", b_koruyucu_10)]
+            ("koruyucu", b_koruyucu_8), ("koruyucu", b_koruyucu_9), ("koruyucu", b_koruyucu_10),
+            # P10.7b2c (şema 5)
+            ("sema_boy", b_sema_boy), ("sema_boy", b_sema_boy_2), ("sema_boy", b_sema_boy_3), ("sema_boy", b_sema_boy_4),
+            ("sema_boy", b_sema_boy_5)]
 
 
 def main():

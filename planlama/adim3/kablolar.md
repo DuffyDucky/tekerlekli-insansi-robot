@@ -2,13 +2,14 @@
 
 > **Bu dosya üretilmiştir, elle düzenlenmez.** Tek kaynak `planlama/adim3/kablolar.json`; görünüm `py -3 planlama/adim3/kablolar_uret.py` ile, denetim `py -3 planlama/adim3/kablolar_denetim.py` ile.
 
-Tablo sürümü 4, tarih 2026-11-15. Robottaki kabloların tek kaynağı. Okunur görünüm planlama/adim3/kablolar.md bu dosyadan planlama/adim3/kablolar_uret.py ile üretilir; denetim planlama/adim3/kablolar_denetim.py. Bir kaydı değiştirince ikisini de koş. Sürüm 2 (14.11, P10.7a ikinci tur): orkestratör kararları O-1 … O-14 işlendi (kararlar), kesit kuralı web kaynaklı tabloya bağlandı, boyu bilinmeyenlere etiketli kaba tahmin (boy_tahmin), klemens türleri ve malzeme özeti eklendi. Üçüncü tur (14.11): O-15 … O-18 ve O-3 / O-4 revizeleri; boy tahmininden 150 mm pay kaldırıldı. Sürüm 3 (14.11, düzeltme turu 1): düğümler / ağlar / koruyucular / anahtarlar / dallar ve her kablonun besleme zinciri; koruma kablodaki sayıdan değil koruyucular tablosundan; kesit kuralına ortam sıcaklığı düzeltmesi; denetim acil stop, dönüş, 5 V ayrımı ve kesiti devrenin yapısından türetir.
+Tablo sürümü 5, tarih 2026-11-15. Robottaki kabloların tek kaynağı. Okunur görünüm planlama/adim3/kablolar.md bu dosyadan planlama/adim3/kablolar_uret.py ile üretilir; denetim planlama/adim3/kablolar_denetim.py. Bir kaydı değiştirince ikisini de koş. Sürüm 2 (14.11, P10.7a ikinci tur): orkestratör kararları O-1 … O-14 işlendi (kararlar), kesit kuralı web kaynaklı tabloya bağlandı, boyu bilinmeyenlere etiketli kaba tahmin (boy_tahmin), klemens türleri ve malzeme özeti eklendi. Üçüncü tur (14.11): O-15 … O-18 ve O-3 / O-4 revizeleri; boy tahmininden 150 mm pay kaldırıldı. Sürüm 3 (14.11, düzeltme turu 1): düğümler / ağlar / koruyucular / anahtarlar / dallar ve her kablonun besleme zinciri; koruma kablodaki sayıdan değil koruyucular tablosundan; kesit kuralına ortam sıcaklığı düzeltmesi; denetim acil stop, dönüş, 5 V ayrımı ve kesiti devrenin yapısından türetir.
 
 ## Özet
 
 - **74 kablo** (çok damarlı demet ve çiftler tek kayıt; damar sayısı 175).
 - Durum: kesin 20, kablajda teyit edilecek 53, karara bağlı 1.
 - Boyu CAD'de tasarlanmış yoldan ya da listeden belli: 17; belli değil: 57 (bunlarda yalnız etiketli kaba üst sınır var, `boy_tahmin`: tahmin, P10.7b'de ölçülecek).
+- Gösterim şeması yolunun uzunluğu yazılı: 27 kablo (`sema_boy`, gösterim şeması yolu; ölçüm değil: boy ve tahminin yerine geçmez, sipariş hesabına girmez).
 - Kesit kuralının kayıtlı istisnası: 25 kablo; kesit ↔ koruma uyuşmazlığı karara bağlı: 0 (-).
 - Acil stopta enerjili kalan: 44; enerjisiz: 30.
 
@@ -350,7 +351,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** — (motorun kendi kablosu (6 damarlı, enkoderle ortak); kesit motor gelince okunur ve buraya yazılır (O-16)) · **renk:** + kırmızı, − / GND siyah; makaron turuncu
 - **Koruma:** BTS7960 sol (aşırı akım sınırlama + ısıl kapatma) (`BTS7960-sol`, akım sınırı belgelenmemiş) · **acil stopta:** enerjisiz
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F1 → (K1-kontak ∥ K2-kontak) → BTS7960-sol
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 600 mm; Manhattan 477 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 600 mm; Manhattan 477 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 384 mm (şema `taban:M02`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
 - **Rehber adımı:** 7 B2b, 9 B3 · **sonlandırma:** BTS vidalı klemens; aynı yandaki iki motor aynı M+ / M− klemensine paralel
 - **Uç türü (uc_turu):** a: bts-guc · b: konnektor
 
@@ -514,7 +515,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 16 AWG (1,31 mm²); 16 AWG (O-1 / O-2 dönüştürücü kuralıyla seçildi); 14.11'den beri koruyan çıkıştaki 2 A çevre hat sigortası (O-19 a): 16 AWG'nin etekteki 8,2 A'inin çok altında · **renk:** + kırmızı, − / GND siyah; makaron mavi
 - **Koruma:** Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F4 → XL4016-cevre → hat-cevre
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 300 mm; Manhattan 208 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 300 mm; Manhattan 208 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 219 mm (şema `taban:G19`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
 - **Rehber adımı:** 9 B3, 17 K1 · **sonlandırma:** iki uç vidalı klemens; çevre 5 V dağıtımı arayüz kartında (O-7 a)
 - **Uç türü (uc_turu):** a: modul-vidali · b: klemens-508
 
@@ -669,7 +670,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 16 AWG (1,31 mm²) · **renk:** servo uzatmasının üretici renkleri (GND koyu, V+ kırmızı, sinyal açık; teslimde bakılır); makaron sarı
 - **Koruma:** XL4016 C akım sınırı (`XL4016-C`, 10 A) · **acil stopta:** enerjisiz
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F1 → (K1-kontak ∥ K2-kontak) → hat-C → XL4016-C
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 300 mm; sabit: dağıtım kartı C, XL4016 C klemensinin yanında (O-8): kısa çift (`planlama/adim3/kablolar.json#kararlar`). P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 300 mm; sabit: dağıtım kartı C, XL4016 C klemensinin yanında (O-8): kısa çift (`planlama/adim3/kablolar.json#kararlar`). P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 39 mm (şema `taban:SV3`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
 - **Rehber adımı:** 12 B5a, 32 K2 · **sonlandırma:** XL vidalı klemens → dağıtım kartı C'nin 2 pin 5,08 mm giriş klemensi (O-8: kol dağıtım kartlarıyla aynı yöntem)
 - **Uç türü (uc_turu):** a: modul-vidali · b: klemens-508
 
@@ -823,7 +824,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 22 AWG (0,33 mm²) · **renk:** 22 AWG çok telli sinyal teli (4 renk: + kırmızı, GND siyah, sinyal sarı / mavi); makaron mor
 - **Koruma:** Akü ölçüm bölücüsünün üst direnci 100 kΩ (kaynak ucunda) (`R-aku-olcum`, 0,00015 A) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → R-aku-olcum · **ortak dönüş:** G19
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 450 mm; Manhattan 353 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 450 mm; Manhattan 353 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 281 mm (şema `taban:G07`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
 - **Rehber adımı:** 17 K1, 33 F1 · **sonlandırma:** kaynak ucunda 100 kΩ telin başına lehim + makaron (O-5 a; değer EL:234), direncin öbür bacağı kırmızı M5 halka pabucun kovanına (PVC kılıfı çıkarılmış; bacak kovana sıkılır, sonra lehim) + makaron (soğuyunca kovanın üstüne), pabuç ana anahtarın çıkış saplamasına (G04 ile aynı saplama, G04 altta; direnç ile saplama arasında tel yok, karar: orkestratör, 15.11 (P10.7b2a)); arayüz kartı ucu bölücü orta noktasının pedine lehim + makaron (22 AWG: 5,08 mm klemensin alt sınırı belgesiz)
 - **Uç türü (uc_turu):** a: pabuc · b: lehim
 
@@ -843,7 +844,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 16 AWG (1,31 mm²); hat yuvasının kuyruğu 16 AWG (MJ:122); yuva ile bara / XL arası da 16 AWG (O-1) · **renk:** + kırmızı, − / GND siyah; makaron turuncu
 - **Koruma:** Hat sigortası C 5 A mini (XL4016 C girişi) (`hat-C`, 5 A) · **acil stopta:** enerjisiz
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F1 → (K1-kontak ∥ K2-kontak) → hat-C
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 400 mm; Manhattan 295 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: bara → sigorta kutusu vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 400 mm; Manhattan 295 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: bara → sigorta kutusu vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 240 mm (şema `taban:G16`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
 - **Rehber adımı:** 17 K1 · **sonlandırma:** yuva kuyruğuna lehim + makaron; XL vidalı klemens; bara / yıldız ucu halka pabuç (O-3 b)
 - **Uç türü (uc_turu):** a: bara-pabuc, modul-vidali · b: bara-pabuc, modul-vidali
 
@@ -884,7 +885,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 22 AWG (0,33 mm²) · **renk:** 22 AWG çok telli sinyal teli (4 renk: + kırmızı, GND siyah, sinyal sarı / mavi); makaron turuncu
 - **Koruma:** Hat sigortası G22 2 A mini (bara ucunda) (`hat-G22`, 2 A) · **acil stopta:** enerjisiz
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F1 → (K1-kontak ∥ K2-kontak) → hat-G22
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 500 mm; Manhattan 372 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: bara → sigorta kutusu vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 500 mm; Manhattan 372 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: bara → sigorta kutusu vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 240 mm (şema `taban:G22`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
 - **Rehber adımı:** 17 K1, 49 F5 · **sonlandırma:** bara ucunda hat sigortası yuvası (16 AWG kuyruğu mavi M5 pabuçla saplamaya), 22 AWG tel kuyruğa lehim + makaron; modül ucu vidalı klemens; yıldız ucu: 22 AWG tel ≈ 5 cm 18 AWG siyah ara parçaya lehim + makaron, ara parça kırmızı M5 pabuçla (22 AWG kırmızı pabucun 0,5 mm² alt sınırının altında; ek tur)
 - **Uç türü (uc_turu):** a: bara-pabuc, modul-vidali · b: bara-pabuc, modul-vidali
 
@@ -907,7 +908,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 22 AWG (0,33 mm²); motorun kendi kablosu yetmezse sinyal teliyle (sinyal-22) uzatma; tahmin uzatmanın üst sınırı · **renk:** 22 AWG çok telli sinyal teli (4 renk: + kırmızı, GND siyah, sinyal sarı / mavi); makaron mor
 - **Koruma:** Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F4 → XL4016-cevre → hat-cevre → esp32-3v3
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 800 mm; Manhattan 607 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 800 mm; Manhattan 607 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 617 mm (şema `taban:N01`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
 - **Rehber adımı:** 7 B2b, 17 K1, 32 K2 · **sonlandırma:** ESP32 taşıyıcı başlığı; jumper'ın fabrika sıkılı dişi ucu, tel lehim + makaronla uzatılır (O-4 r)
 - **Uç türü (uc_turu):** a: konnektor · b: konnektor
 
@@ -928,7 +929,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 22 AWG (0,33 mm²); motorun kendi kablosu yetmezse sinyal teliyle (sinyal-22) uzatma; tahmin uzatmanın üst sınırı · **renk:** 22 AWG çok telli sinyal teli (4 renk: + kırmızı, GND siyah, sinyal sarı / mavi); makaron mor
 - **Koruma:** Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F4 → XL4016-cevre → hat-cevre → esp32-3v3
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 600 mm; Manhattan 452 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 600 mm; Manhattan 452 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 553 mm (şema `taban:N02`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
 - **Rehber adımı:** 7 B2b, 17 K1, 32 K2 · **sonlandırma:** ESP32 taşıyıcı başlığı; jumper'ın fabrika sıkılı dişi ucu, tel lehim + makaronla uzatılır (O-4 r)
 - **Uç türü (uc_turu):** a: konnektor · b: konnektor
 
@@ -1088,7 +1089,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 22 AWG (0,33 mm²) · **renk:** 22 AWG çok telli sinyal teli (4 renk: + kırmızı, GND siyah, sinyal sarı / mavi); makaron mor
 - **Koruma:** Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F4 → XL4016-cevre → hat-cevre
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 400 mm; Manhattan 312 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 400 mm; Manhattan 312 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 116 mm (şema `taban:B02`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
 - **Rehber adımı:** 17 K1, 32 K2 · **sonlandırma:** kart başlığı (dişi uçlu jumper teli, O-4 r); jumper'ın fabrika sıkılı dişi ucu, tel lehim + makaronla uzatılır (O-4 r)
 - **Uç türü (uc_turu):** a: konnektor · b: konnektor
 
@@ -1133,7 +1134,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 22 AWG (0,33 mm²) · **renk:** 22 AWG çok telli sinyal teli (4 renk: + kırmızı, GND siyah, sinyal sarı / mavi); makaron mor
 - **Koruma:** Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F4 → XL4016-cevre → hat-cevre
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 550 mm; Manhattan 431 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 550 mm; Manhattan 431 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 305 mm (şema `taban:Q01`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
 - **Rehber adımı:** 16 B7, 17 K1 · **sonlandırma:** sonar pin bloğu (içe bakar, B7) + dişi uçlu jumper teli (O-4 r); öbür uçlar üç ayrı noktaya (PCA K10, arayüz kartı)
 - **Uç türü (uc_turu):** a: konnektor · b: konnektor
 
@@ -1153,7 +1154,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 22 AWG (0,33 mm²) · **renk:** 22 AWG çok telli sinyal teli (4 renk: + kırmızı, GND siyah, sinyal sarı / mavi); makaron mor
 - **Koruma:** Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F4 → XL4016-cevre → hat-cevre
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 450 mm; Manhattan 351 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 450 mm; Manhattan 351 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 228 mm (şema `taban:Q02`, `tasarim/freecad/lale158/kablo_yolu_taban.py#yollar`)
 - **Rehber adımı:** 16 B7, 17 K1 · **sonlandırma:** sonar pin bloğu (içe bakar, B7) + dişi uçlu jumper teli (O-4 r); öbür uçlar üç ayrı noktaya (PCA K11, arayüz kartı)
 - **Uç türü (uc_turu):** a: konnektor · b: konnektor
 
@@ -1276,7 +1277,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** — (hazır kablo) · **renk:** üreticinin kablosu; makaron yok (hazır kablo)
 - **Koruma:** — · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3 → D24V50F5
-- **Boy:** yol 971 mm / önerilen 1.360 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.ESP32 USB`)
+- **Boy:** yol 971 mm / önerilen 1.360 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.ESP32 USB`) · **Gösterim şeması yolu; ölçüm değil:** ≈ 971 mm (şema `yollar:ESP32 USB`, `tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar`)
 - **Rehber adımı:** 17 K1, 32 K2, 49 F5 · **sonlandırma:** VBUS teli kesilip 1N5819 seri lehimlenir + makaron (kartın kendi VBUS→VIN diyodu doğrulanırsa gerekmez)
 - **Uç türü (uc_turu):** a: konnektor · b: konnektor
 - **Hazır kablo:** USB-A → micro B, 2 m (maliyet.json 'ESP32 – Pi USB kablosu')
@@ -1314,7 +1315,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** — (hazır kablo) · **renk:** üreticinin kablosu; makaron yok (hazır kablo)
 - **Koruma:** — · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3 → D24V50F5
-- **Boy:** yol 395 mm / önerilen 640 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.USB dokunmatik`)
+- **Boy:** yol 395 mm / önerilen 640 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.USB dokunmatik`) · **Gösterim şeması yolu; ölçüm değil:** ≈ 395 mm (şema `yollar:USB dokunmatik`, `tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar`)
 - **Rehber adımı:** 35 F3, 49 F5 · **sonlandırma:** hazır kablonun kendi fişleri (iki uç fişli, sonlandırma işi yok)
 - **Uç türü (uc_turu):** a: konnektor · b: konnektor
 - **Hazır kablo:** USB-A → micro B (v4 2 m); ekran ucunda 90° micro B adaptör (maliyet.json 'ESP32 – Pi USB kablosu' (2 adet) + 90° micro USB adaptör (koşullu))
@@ -1375,7 +1376,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** — (2 × 0,50 mm² kordon (liste ürünü)) · **renk:** tel türü seçilince (listede sinyal teli yok); makaron beyaz
 - **Koruma:** — · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3 → D24V50F5
-- **Boy:** yol 824 mm / önerilen 1.030 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.Hoparlor`)
+- **Boy:** yol 824 mm / önerilen 1.030 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.Hoparlor`) · **Gösterim şeması yolu; ölçüm değil:** ≈ 824 mm (şema `yollar:Hoparlor`, `tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar`)
 - **Rehber adımı:** 31 E4, 32 K2, 34 F2 · **sonlandırma:** iki uç lehim; boyundan fişsiz geçer (sıra 4)
 - **Uç türü (uc_turu):** a: lehim · b: lehim
 - **Hazır kablo:** 2 × 0,50 kordon (maliyet.json 'Hoparlör kablosu ~1,1 m' (koşullu, K4))
@@ -1396,7 +1397,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** — (hazır kablo) · **renk:** üreticinin kablosu; makaron yok (hazır kablo)
 - **Koruma:** — · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3 → D24V50F5
-- **Boy:** yol 617 mm / önerilen 920 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.Hub uzatmasi`); hub'ın sabit 130 mm kablosu dahil yol; + 150 mm kapak sökme payı
+- **Boy:** yol 617 mm / önerilen 920 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.Hub uzatmasi`); hub'ın sabit 130 mm kablosu dahil yol; + 150 mm kapak sökme payı · **Gösterim şeması yolu; ölçüm değil:** ≈ 617 mm (şema `yollar:Hub uzatmasi`, `tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar`)
 - **Rehber adımı:** 31 E4, 32 K2, 49 F5 · **sonlandırma:** hazır kablonun kendi fişleri (iki uç fişli, sonlandırma işi yok)
 - **Uç türü (uc_turu):** a: konnektor · b: konnektor
 - **Hazır kablo:** USB 2.0 A erkek → A dişi uzatma, ~1 m; şart: usb_surum 2.0, erkek_fis_govdesi_mm_en_cok [13, 7], gecis_sirasi 1 (maliyet.json 'USB-A uzatma ~1 m (Pi → hub)' (koşullu, K4))
@@ -1417,7 +1418,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** — (hazır kablo) · **renk:** üreticinin kablosu; makaron yok (hazır kablo)
 - **Koruma:** — · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3 → D24V50F5
-- **Boy:** yol 757 mm / önerilen 950 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.HDMI`)
+- **Boy:** yol 757 mm / önerilen 950 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.HDMI`) · **Gösterim şeması yolu; ölçüm değil:** ≈ 757 mm (şema `yollar:HDMI`, `tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar`)
 - **Rehber adımı:** 32 K2, 35 F3 · **sonlandırma:** hazır kablonun kendi fişleri (iki uç fişli, sonlandırma işi yok)
 - **Uç türü (uc_turu):** a: konnektor · b: konnektor
 - **Hazır kablo:** micro HDMI → HDMI A, ~1–1,5 m; şart: dis_cap_mm_en_cok 6, micro_hdmi_fis_kalinlik_mm_en_cok 7, micro_hdmi_fis_genislik_mm_en_cok 18, micro_hdmi_fis_boy_mm_yaklasik_en_cok 30, gecis_sirasi 2 (maliyet.json 'Göğüs ekranı HDMI kablosu' + 90° HDMI adaptör (koşullu))
@@ -1440,7 +1441,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 18 AWG (0,82 mm²) · **renk:** + kırmızı, − / GND siyah; makaron kırmızı
 - **Koruma:** F3 5 A (sigorta kutusu) (`F3`, 5 A) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 200 mm; Manhattan 126 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: kafa giriş klemensi CAD'de yok: SY8205 yanı vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 200 mm; Manhattan 126 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: kafa giriş klemensi CAD'de yok: SY8205 yanı vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 14 mm (şema `kafa_ici:K01`, `tasarim/freecad/lale158/kablo_yolu_kafa.py#yollar`)
 - **Rehber adımı:** 29 E3a · **sonlandırma:** kafa giriş ucu: kafa giriş kartı (küçük pertinaks parçası, P6KE18A üstünde): üç adet 2 pin 5,08 mm vidalı klemens, + uçları ve − uçları kart üstünde ≥ 18 AWG tel köprüyle (lehim; delikli plaket pedi F3 5 A akım yolu değil, dördüncü bakış §2-7); ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz); D24V50F5 ucu lehim
 - **Uç türü (uc_turu):** a: klemens-508 · b: lehim
 
@@ -1459,7 +1460,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 18 AWG (0,82 mm²) · **renk:** + kırmızı, − / GND siyah; makaron kırmızı
 - **Koruma:** F3 5 A (sigorta kutusu) (`F3`, 5 A) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 200 mm; Manhattan 126 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: kafa giriş klemensi CAD'de yok: D24V50F5 yanı vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 200 mm; Manhattan 126 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: kafa giriş klemensi CAD'de yok: D24V50F5 yanı vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok) · **Gösterim şeması yolu; ölçüm değil:** ≈ 71 mm (şema `kafa_ici:K02`, `tasarim/freecad/lale158/kablo_yolu_kafa.py#yollar`)
 - **Rehber adımı:** 29 E3a · **sonlandırma:** kafa giriş ucu: kafa giriş kartı (küçük pertinaks parçası, P6KE18A üstünde): üç adet 2 pin 5,08 mm vidalı klemens, + uçları ve − uçları kart üstünde ≥ 18 AWG tel köprüyle (lehim; delikli plaket pedi F3 5 A akım yolu değil, dördüncü bakış §2-7); ince telli uç kalaylanmaz, bükülür (yüksük varsa yüksük; ek tur, orkestratör kararı 14.11, WAGO 2273 ince telli almaz); SY8205 ucu modülün vidalı klemensi
 - **Uç türü (uc_turu):** a: klemens-508 · b: modul-vidali
 
@@ -1478,7 +1479,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 18 AWG (0,82 mm²); 18 AWG (düzeltme turu 1, madde 4 b): D24V50F5'in akım sınırı belgelenmemiş; kayıtlı istisna kafa-5v-donusturucu-arkasi, 18 AWG kafada 5,25 A ≥ modülün 5 A anma çıkışı · **renk:** + kırmızı, − / GND siyah; makaron mavi
 - **Koruma:** Pololu D24V50F5 aşırı akım koruması (`D24V50F5`, akım sınırı belgelenmemiş) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3 → D24V50F5
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 200 mm; Manhattan 159 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. belgede ~10 cm (EL:279); CAD'de tasarlanmış yol yok, P10.7b'de ölçülecek
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 200 mm; Manhattan 159 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`. belgede ~10 cm (EL:279); CAD'de tasarlanmış yol yok, P10.7b'de ölçülecek · **Gösterim şeması yolu; ölçüm değil:** ≈ 47 mm (şema `kafa_ici:K03`, `tasarim/freecad/lale158/kablo_yolu_kafa.py#yollar`)
 - **Rehber adımı:** 29 E3a · **sonlandırma:** USB Type-C 24 pin test kartına lehim (MJ:102)
 - **Uç türü (uc_turu):** a: lehim · b: lehim
 
@@ -1498,7 +1499,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** — (hazır 3,5 mm kablo (kalkanlı, iki damar); kısa L fişli) · **renk:** tel türü seçilince (listede sinyal teli yok); makaron beyaz
 - **Koruma:** — · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3 → D24V50F5
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 300 mm; Manhattan 201 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: ses bölücüsü PAM giriş pedlerinin dibinde (O-9). yol ölçülmedi (KOK:340; CAD'deki 36 / 40 mm eski ses kartı ucunundu); P10.7b'de ölçülecek
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 300 mm; Manhattan 201 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: ses bölücüsü PAM giriş pedlerinin dibinde (O-9). yol ölçülmedi (KOK:340; CAD'deki 36 / 40 mm eski ses kartı ucunundu); P10.7b'de ölçülecek · **Gösterim şeması yolu; ölçüm değil:** ≈ 219 mm (şema `kafa_ici:AU1`, `tasarim/freecad/lale158/kablo_yolu_kafa.py#yollar`; aynı şemada AU2)
 - **Rehber adımı:** 31 E4 · **sonlandırma:** ReSpeaker ucu 3,5 mm (L) fiş; öbür uç kesilip bölücüye lehim
 - **Uç türü (uc_turu):** a: konnektor · b: lehim
 - **Hazır kablo:** 3,5 mm stereo, bir ucu L fiş, kısa (maliyet.json 'L 3,5 mm fişli kısa kablo' (fiyat bekliyor, K4))
@@ -1539,7 +1540,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** — (hazır kablo) · **renk:** üreticinin kablosu; makaron yok (hazır kablo)
 - **Koruma:** — · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3 → D24V50F5
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 300 mm; sabit: hazır FPC 300 mm (liste satırı) (`planlama/maliyet.json#kalemler.31`). liste boyu 300 mm; kafa içi yol CAD'de tasarlanmadı, P10.7b'de ölçülecek
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 300 mm; sabit: hazır FPC 300 mm (liste satırı) (`planlama/maliyet.json#kalemler.31`). liste boyu 300 mm; kafa içi yol CAD'de tasarlanmadı, P10.7b'de ölçülecek · **Gösterim şeması yolu; ölçüm değil:** ≈ 70 mm (şema `kafa_ici:C01`, `tasarim/freecad/lale158/kablo_yolu_kafa.py#yollar`)
 - **Rehber adımı:** 31 E4 · **sonlandırma:** hazır kablonun kendi fişleri (iki uç fişli, sonlandırma işi yok)
 - **Uç türü (uc_turu):** a: konnektor · b: konnektor
 - **Hazır kablo:** Raspberry Pi 5 kamera FPC, 300 mm (maliyet.json 'Kamera kablosu')
@@ -1557,7 +1558,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** — (hazır kablo) · **renk:** üreticinin kablosu; makaron yok (hazır kablo)
 - **Koruma:** — · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3 → D24V50F5
-- **Boy:** yol 254 mm / liste boyu 300 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kafa_ici_qled.HDMI (serit, 2 lehimsiz fis)`)
+- **Boy:** yol 254 mm / liste boyu 300 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kafa_ici_qled.HDMI (serit, 2 lehimsiz fis)`) · **Gösterim şeması yolu; ölçüm değil:** ≈ 254 mm (şema `kafa_ici_qled:HDMI (serit, 2 lehimsiz fis)`, `tasarim/freecad/lale158/kablo_yolu_ekran.py#kafa_ici_qled`)
 - **Rehber adımı:** 31 E4 · **sonlandırma:** hazır kablonun kendi fişleri (iki uç fişli, sonlandırma işi yok)
 - **Uç türü (uc_turu):** a: konnektor · b: konnektor
 - **Hazır kablo:** DIY HDMI 30 cm şerit + micro HDMI fiş + HDMI fiş (lehimsiz) (maliyet.json 'Ekran kablosu' satırları)
@@ -1575,7 +1576,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** — (hazır 30 cm USB-A → micro B kablonun A ucu kesilir (EL:57); damar kesiti ürün sayfasında yok) · **renk:** + kırmızı, − / GND siyah; makaron mavi
 - **Koruma:** SY8205 düşürücü (kafa ekranı) (`SY8205`, akım sınırı belgelenmemiş) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3 → SY8205
-- **Boy:** yol 114 mm / liste boyu 300 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kafa_ici_qled.Power USB (30 cm, A ucu kesik)`)
+- **Boy:** yol 114 mm / liste boyu 300 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kafa_ici_qled.Power USB (30 cm, A ucu kesik)`) · **Gösterim şeması yolu; ölçüm değil:** ≈ 114 mm (şema `kafa_ici_qled:Power USB (30 cm, A ucu kesik)`, `tasarim/freecad/lale158/kablo_yolu_ekran.py#kafa_ici_qled`)
 - **Rehber adımı:** 31 E4 · **sonlandırma:** SY8205 klemensine kesik uç; ekran ucu micro B fiş
 - **Uç türü (uc_turu):** a: modul-vidali · b: konnektor
 - **Hazır kablo:** USB-A → micro B, 30 cm (A ucu kesilir) (maliyet.json 'Kafa ekranı 5 V besleme kablosu')
@@ -1598,7 +1599,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 18 AWG (0,82 mm²) · **renk:** + kırmızı, − / GND siyah; makaron mavi
 - **Koruma:** Pololu D24V50F5 aşırı akım koruması (`D24V50F5`, akım sınırı belgelenmemiş) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3 → D24V50F5
-- **Boy:** yol 64 mm / önerilen 80 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.PAM 5 V`)
+- **Boy:** yol 64 mm / önerilen 80 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.PAM 5 V`) · **Gösterim şeması yolu; ölçüm değil:** ≈ 64 mm (şema `yollar:PAM 5 V`, `tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar`)
 - **Rehber adımı:** 31 E4 · **sonlandırma:** lehim
 - **Uç türü (uc_turu):** a: lehim · b: lehim
 
@@ -1617,7 +1618,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** — (hazır kablo) · **renk:** üreticinin kablosu; makaron yok (hazır kablo)
 - **Koruma:** — · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3 → D24V50F5
-- **Boy:** yol 85 mm / önerilen 110 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.Dizi USB`)
+- **Boy:** yol 85 mm / önerilen 110 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.Dizi USB`) · **Gösterim şeması yolu; ölçüm değil:** ≈ 85 mm (şema `yollar:Dizi USB`, `tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar`)
 - **Rehber adımı:** 31 E4 · **sonlandırma:** hazır kablonun kendi fişleri (iki uç fişli, sonlandırma işi yok)
 - **Uç türü (uc_turu):** a: konnektor · b: konnektor
 - **Hazır kablo:** USB-A → micro B, kısa (~11 cm) (maliyet.json 'Kısa micro USB kablo (ReSpeaker)' (koşullu, K4))
@@ -1636,7 +1637,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** — (hazır kablo) · **renk:** üreticinin kablosu; makaron yok (hazır kablo)
 - **Koruma:** — · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3 → D24V50F5
-- **Boy:** yol 217 mm / liste boyu 350 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kafa_ici_qled.Touch USB (kutu kablosu)`)
+- **Boy:** yol 217 mm / liste boyu 350 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kafa_ici_qled.Touch USB (kutu kablosu)`) · **Gösterim şeması yolu; ölçüm değil:** ≈ 217 mm (şema `kafa_ici_qled:Touch USB (kutu kablosu)`, `tasarim/freecad/lale158/kablo_yolu_ekran.py#kafa_ici_qled`)
 - **Rehber adımı:** 31 E4 · **sonlandırma:** hazır kablonun kendi fişleri (iki uç fişli, sonlandırma işi yok)
 - **Uç türü (uc_turu):** a: konnektor · b: konnektor
 - **Hazır kablo:** ekranın kutusundaki USB kablosu (350 mm)
@@ -1657,7 +1658,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** 18 AWG (0,82 mm²) · **renk:** + kırmızı, − / GND siyah; makaron kırmızı
 - **Koruma:** F6 3 A standart (sigorta kutusu) (`F6`, 3 A) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F6 → gogus-regulatoru
-- **Boy:** yol 1.376 mm / önerilen 1.720 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.12 V`); yol 'taban güç panelinden' çizildi; KOK §11 bunu regülatör → ekran boyu sayar, kutu → regülatör ayrı (G20)
+- **Boy:** yol 1.376 mm / önerilen 1.720 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.12 V`); yol 'taban güç panelinden' çizildi; KOK §11 bunu regülatör → ekran boyu sayar, kutu → regülatör ayrı (G20) · **Gösterim şeması yolu; ölçüm değil:** ≈ 1.376 mm (şema `yollar:12 V`, `tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar`; aynı şemada G20)
 - **Rehber adımı:** 32 K2, 35 F3 · **sonlandırma:** ekran ucu 90° DC jak fişi (ölçü ekran gelince; MJ 90° DC jak)
 - **Uç türü (uc_turu):** a: modul-vidali · b: konnektor
 
