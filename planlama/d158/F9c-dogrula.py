@@ -4,6 +4,8 @@
     py -3 -B planlama/d158/F9c-dogrula.py                 # statik denetimler + headless Chrome (file://, 1400 ve 360 px)
     py -3 -B planlama/d158/F9c-dogrula.py --tarayicisiz   # yalnız statik denetimler
     py -3 -B planlama/d158/F9c-dogrula.py --goruntu       # ek olarak ekran görüntüleri
+    py -3 -B planlama/d158/F9c-dogrula.py --sayfa YOL     # sonuc-rapor.html yerine YOL'daki sayfa (P10.9a, deneme üretimi;
+                                                          # göreli bağlantılar yine planlama/d158/'ye göre çözülür)
 
 İsteğe bağlı ortam değişkenleri (değerleri hiçbir yere basılmaz): TAKMA_AD (takma ad), SOYADLAR (virgülle ayrılmış soyadlar).
 
@@ -13,6 +15,9 @@ Denetimler (çıkış 0 = hepsi geçti):
   3. data-kaynak: metindeki her sayı, listelenen kaynak dosyalarından en az birinde birebir geçer.
   4. Bağsız sayı: <body> metnindeki her sayı data-j / data-h / data-kaynak / data-muaf altında.
   5. Paket envanteri: dongu-158.md §3'teki her paket tabloda tam bir kez; sayı eşit; satırın Durum hücresi plandaki emojiyi taşır.
+     Faz özet satırı her faz için bir kez, Durum = paketlerin en kötüsü. F10 ve sonrasının Sonuç metni: "Açık" öneki plan
+     durumuyla, "Kapalı alt paketler" / "Sürüyor" listesi plandaki alt paket başlıklarıyla, K kodları kuyrukla tutarlı.
+     Plan Durum hücresindeki her hash o paketin commit hücresinde (P10.9a düzeltme turu 1).
   5b. Kaynaktan bağımsız: takvim tablosu proje-plani.md "İki örnek" tablosuyla satır ve hücre hücre; P8.1 doğrulanan satır sayısı
       F8a-siparis.json sayacından ve F8a-rapor.html metninden; düşük satırları sayfa = F9c-dusukler.json (grup grup); kontrol
       dosyalarındaki her KT- kodu açık düşüklerde, karar kuyruğunda ya da günlük §6'da.
@@ -41,6 +46,7 @@ DEMO, ML, SP = "tasarim/Robot-Tasarim-Demosu.html", "planlama/maliyet.json", "pl
 REG_SON, DUSUK = "planlama/d158/regresyon-son-kosu.json", "planlama/d158/F9c-dusukler.json"
 SAYI = re.compile(r"(?<![0-9A-Za-z_\-+#.,])\d+(?:[.,]\d+)*(?![0-9A-Za-z_])")
 HATA = []
+PUSH_SOL = re.compile(r"\b[0-9a-f]{7}\.\.(?=[0-9a-f]{7}\b)")   # "push A..B" aralığının sol ucu (F9c-uret.py ile aynı)
 
 
 def hata(m):
@@ -150,7 +156,7 @@ def plan():
             faz = l.split()[2].rstrip(":")
         if l.startswith("## 4."):
             faz = None
-        m = re.match(r"\| (P\d\.\d) \|", l)
+        m = re.match(r"\| (P\d+\.\d+[a-z]?) \|", l)   # P10.4b gibi harfli plan satırı da paket (P10.9a)
         if m and faz:
             son = l.strip().strip("|").split(" | ")[-1]
             paket.append((m.group(1), next((c for c in son if c in "✅🟡⛔🔄⏳"), "?")))
@@ -164,7 +170,7 @@ def kuyruk():
         h = l.strip().strip("|").split(" | ") if l.startswith("| K") else []
         if len(h) == 5 and re.match(r"K\d+$", h[0].strip()):
             rows.append((h[0].strip(), h[1], h[2], h[4], "**açık**" in h[2]))
-    m = re.search(r"\*\*Açık: (\d+)\*\*.*?\*\*Kapandı: (\d+)\*\*", t)
+    m = re.search(r"\*\*Açık: (\d+)\.?\*\*.*?\*\*Kapandı: (\d+)\.?\*\*", t)   # "**Açık: 49.**" biçimi de (P10.9a)
     kapandi_baslik = re.findall(r"^## (K\d+) .*KAPANDI", t, re.M)
     return rows, (int(m.group(1)), int(m.group(2))) if m else None, kapandi_baslik
 
@@ -178,13 +184,21 @@ def tablo(sayfa, kimlik):
             for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", sayfa[i:j], re.S)]
 
 
+def fazlar():
+    """dongu-158.md §3'teki faz başlıkları sırayla (F0 … F10)."""
+    return re.findall(r"^### Faz (F\d+):", oku(DONGU), re.M)
+
+
 def karar_faz(durum, bloke):
-    m = re.search(r"\bF(\d)[a-d]?\b", durum) or re.search(r"\bP(\d)\.\d", bloke)
+    m = re.search(r"\bF(\d+)[a-z]?\b", durum) or re.search(r"\bP(\d+)\.\d", bloke) or re.search(r"\bP(\d+)\.\d", durum)
     return "F" + m.group(1) if m else "F0"
 
 
 def main():
+    global SAYFA
     arg = sys.argv[1:]
+    if "--sayfa" in arg:
+        SAYFA = os.path.abspath(arg[arg.index("--sayfa") + 1])
     with open(SAYFA, encoding="utf-8") as f:
         sayfa = f.read()
     a = Agac()
@@ -222,9 +236,23 @@ def main():
                 "komit_sayisi": bas + 1, "dusuk_sayisi": len(dus), "dusuk_elektrik": sum(1 for d in dus if d["grup"] == "elektrik"),
                 "dusuk_diger": sum(1 for d in dus if d["grup"] != "elektrik"),
                 "p81_dogrulanan": (lambda y: y["dogrulandi_onayli"] + y["dogrulandi_onaysiz"])(json.loads(oku(SP))["toplamlar"]["sayac"])}
+    # Commit eşleme notu (P10.9a; F9 sonunda eşleşmeyen 0 olduğu için not sayfada yoktu): eşleşmeyen = döngü commit'lerinden
+    # sayfanın hiçbir commit hücresinde geçmeyenler; eksik = plan §3 Durum hücrelerinde ve §5 tek başlıklı ✅ satırlarında
+    # git log'da olmayan, rakam içeren 7 haneli hash'ler (üreticinin kuralı, bu betiğin kendi ayrıştırmasıyla).
+    hucre_h = set()
+    for o in a.ogeler:
+        if o["a"].get("data-muaf") == "komit":
+            hucre_h |= set(re.findall(r"\b[0-9a-f]{7}\b", "".join(o["metin"])))
+    plan_h = []
+    for l in oku(DONGU).splitlines():
+        b_ = re.findall(r"\b(F\d+[a-z]?|P\d+\.\d+[a-z]?) ✅", l)
+        if (len(b_) == 1 and "**%s ✅" % b_[0] in l) or (re.match(r"\| P\d+\.\d+[a-z]? \|", l) and any(k == l.split(" | ")[0][2:] for k, _ in paket)):
+            alan = l.strip().strip("|").split(" | ")[-1] if l.startswith("| P") else l
+            plan_h += [h for h in re.findall(r"\b[0-9a-f]{7}\b", alan) if re.search(r"\d", h) and h not in sira]
+    beklenen.update({"komit_eslesmeyen": sum(1 for h in sira[: bas + 1] if h not in hucre_h), "hash_eksik": len(plan_h)})
     beklenen.update({"paket_" + e: n for e, n in say.items()})
     beklenen.update({"grup_" + g: n for g, n in grup.items()})
-    beklenen.update({"faz_karar_F%d" % i: fk.get("F%d" % i, 0) for i in range(10)})
+    beklenen.update({"faz_karar_" + f: fk.get(f, 0) for f in fazlar()})   # plandaki fazlar (F0 … F10), P10.9a
     nh = 0
     for o in a.ogeler:
         if "data-h" in o["a"]:
@@ -256,7 +284,7 @@ def main():
     for o in a.ogeler:
         if "data-satir" in o["a"]:
             for parca in o["a"]["data-satir"].split("·"):
-                m = re.match(r"\s*(F\d[a-d]?)\s+(.*)", parca)
+                m = re.match(r"\s*(F\d+[a-z]?)\s+(.*)", parca)
                 if not m:
                     continue
                 rel = "planlama/d158/%s-kontrol.md" % m.group(1)
@@ -299,10 +327,121 @@ def main():
     print("    plan %d, tablo %d, tekrar/eksik %d" % (len(kod), len(trp), sum(1 for k in kod if trp.count(k) != 1)))
     # Satır başına durum: plandaki emoji, satırın Durum hücresinde (F9c-kontrol D-1 f)
     pd = dict(paket)
-    for kd, satir in re.findall(r'<tr data-paket="(P\d\.\d)">(.*?)</tr>', sayfa, re.S):
+    for kd, satir in re.findall(r'<tr data-paket="(P\d+\.\d+[a-z]?)">(.*?)</tr>', sayfa, re.S):
         hc = re.findall(r'<td[^>]*data-b="Durum"[^>]*>(.*?)</td>', satir, re.S)
         if not hc or pd.get(kd, "?") not in hc[0]:
             hata("paket %s durum hücresi plandaki %s'yi içermiyor" % (kd, pd.get(kd)))
+    # Faz özet satırı (P10.9a kontrolü B2): plandaki her faz tabloda bir kez, Durum = fazdaki paketlerin en kötüsü
+    fz = {}
+    for kd, em in paket:
+        fz.setdefault("F" + re.match(r"P(\d+)\.", kd).group(1), []).append(em)
+    en_kotu = lambda ems: next((e for e in "🔄⛔🟡⏳" if e in ems), "✅")
+    fsat = re.findall(r'<tr><td data-b="Faz"><b>(F\d+)</b>(.*?)</tr>', sayfa, re.S)
+    for f in fazlar():
+        hs = [s for k, s in fsat if k == f]
+        if len(hs) != 1:
+            hata("faz %s özet tablosunda %d kez" % (f, len(hs)))
+        elif en_kotu(fz.get(f, [])) not in (re.findall(r'<td data-b="Durum">(.*?)</td>', hs[0], re.S) or [""])[0]:
+            hata("faz %s durum hücresi plandaki %s'yi içermiyor" % (f, en_kotu(fz.get(f, []))))
+    for k in sorted({k for k, _ in fsat} - set(fazlar())):
+        hata("özet tablosunda plan dışı faz " + k)
+    # Elle yazılmış durum sözcükleri (P10.9a kontrolü B3), F10 ve sonrası: (a) plandaki durum ✅ değilse Sonuç "Açık" ile
+    # başlar, ✅ ise başlamaz; (b) "Kapalı alt paketler:" listesindeki her alt paket planda kapalı, "Sürüyor:" listesindeki
+    # açık, planda adı geçen her alt paket bu iki listeden birinde; (c) "Açık (Kxx)" ve "Kalan:" içindeki K kodları kuyrukta
+    # açık, "Kxx kapandı" kapalı. Alt paket planda kapalı: kalın başlığı "**P10.7a ✅" ya da "**P10.7b2a (…) ✅ …, kapandı**".
+    dongu_t = oku(DONGU)
+    kacik = {r[0]: r[4] for r in rows}
+    alt = {}
+    for kd_, gv in re.findall(r"\*\*(P\d+\.\d+[a-z][a-z0-9]*)\b([^*]*)\*\*", dongu_t):
+        alt[kd_] = alt.get(kd_, False) or gv.startswith(" ✅") or "kapandı" in gv
+    yaz = lambda t: re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", t))).strip()
+    sonuclar = [(kd, yaz((re.findall(r'<td data-b="Sonuç">(.*?)</td>', s, re.S) or [""])[0]))
+                for kd, s in re.findall(r'<tr data-paket="(P\d+\.\d+[a-z]?)">(.*?)</tr>', sayfa, re.S)
+                if int(re.match(r"P(\d+)", kd).group(1)) >= 10]
+    for kd, sn in sonuclar:
+        if (pd.get(kd) != "✅") != sn.startswith("Açık"):
+            hata("paket %s sonuç metni plandaki %s durumuyla çelişiyor: %s" % (kd, pd.get(kd), sn[:40]))
+        kap = re.search(r"Kapalı alt paketler: (.*?)(?: Sürüyor:| Kalan:|$)", sn)
+        sur = re.search(r"Sürüyor: (.*?)(?: Kalan:|$)", sn)
+        kap_k = re.findall(r"\b(%s[a-z][a-z0-9]*)\b" % re.escape(kd), kap.group(1)) if kap else []
+        sur_k = re.findall(r"\b(%s[a-z][a-z0-9]*)\b" % re.escape(kd), sur.group(1)) if sur else []
+        for x in kap_k:
+            if not alt.get(x):
+                hata("paket %s: %s 'kapalı' yazıyor, planda kapanmamış" % (kd, x))
+        for x in sur_k:
+            if alt.get(x, True):
+                hata("paket %s: %s 'sürüyor' yazıyor, planda %s" % (kd, x, "kapandı" if x in alt else "yok"))
+        if kap or sur:
+            for x in sorted(a_ for a_ in alt if re.match(re.escape(kd) + r"[a-z]", a_) and a_ not in kap_k + sur_k):
+                hata("paket %s: planda geçen alt paket %s sayfada yok" % (kd, x))
+        kal = re.search(r"Kalan: (.*)", sn)
+        for x in re.findall(r"Açık \((K\d+)\)", sn) + (re.findall(r"\bK\d+\b", kal.group(1)) if kal else []):
+            if not kacik.get(x):
+                hata("paket %s: %s açık yazıyor, kuyrukta %s" % (kd, x, "kapalı" if x in kacik else "yok"))
+        for x in re.findall(r"\b(K\d+(?:, K\d+)*) kapandı", sn):
+            for y in x.split(", "):
+                if kacik.get(y, True):
+                    hata("paket %s: %s kapandı yazıyor, kuyrukta %s" % (kd, y, "açık" if y in kacik else "yok"))
+    # Faz özet satırı, F10 ve sonrası: "Kapalı:" listesindeki paketler planda ✅, "Açık:" listesindekiler değil, fazın her paketi
+    # birinde; "P10.7'nin a, b1 … alt paketleri" planda kapalı, "(b2d sürüyor)" kapanmamış.
+    for f, s in fsat:
+        if int(f[1:]) < 10:
+            continue
+        sn = yaz((re.findall(r'<td data-b="Ana sonuç">(.*?)</td>', s, re.S) or [""])[0])
+        kap = re.search(r"Kapalı: (.*?)(?: Açık:|$)", sn)
+        ack = re.search(r"Açık: (.*)", sn)
+        kp = re.findall(r"\bP\d+\.\d+[a-z]?\b", kap.group(1)) if kap else []
+        ap = re.findall(r"\bP\d+\.\d+[a-z]?\b", ack.group(1)) if ack else []
+        for x in kp:
+            if pd.get(x) != "✅" and x not in re.findall(r"(P\d+\.\d+)'nin", kap.group(1)):
+                hata("faz %s: %s 'kapalı' yazıyor, planda %s" % (f, x, pd.get(x)))
+        for x in ap:
+            if pd.get(x) == "✅":
+                hata("faz %s: %s 'açık' yazıyor, planda ✅" % (f, x))
+        for x in [k for k, _ in paket if "F" + re.match(r"P(\d+)", k).group(1) == f and k not in kp + ap]:
+            hata("faz %s: plandaki %s özet cümlesinde yok" % (f, x))
+        for ust, liste in re.findall(r"(P\d+\.\d+)'nin (.*?) alt paketleri", sn):
+            for x in re.split(r",\s*|\s+ve\s+", liste):
+                if x and not alt.get(ust + x):
+                    hata("faz %s: %s%s 'kapalı' yazıyor, planda kapanmamış" % (f, ust, x))
+        for ust, x in re.findall(r"(P\d+\.\d+) \(([a-z][a-z0-9]*) sürüyor\)", sn):
+            if alt.get(ust + x, True):
+                hata("faz %s: %s%s 'sürüyor' yazıyor, planda %s" % (f, ust, x, "kapandı" if ust + x in alt else "yok"))
+    # Faz satırındaki karar kimlikleri (sayı aynı kalsa da): "· K53, K54 …" kuyruktan hesaplanan faz kümesiyle aynı
+    fkk = {}
+    for r in acik:
+        fkk.setdefault(karar_faz(r[2], r[3]), set()).add(r[0])
+    for f, s in fsat:
+        hc = (re.findall(r'<td class="n" data-b="Açık karar">(.*?)</td>', s, re.S) or [""])[0]
+        if set(re.findall(r"\bK\d+\b", yaz(hc))) != fkk.get(f, set()):
+            hata("faz %s açık karar kimlikleri kuyruktan farklı" % f)
+    # Rapor bağlantısı: planlama/d158'deki her paket raporu en az bir paket satırında (F9c-rapor.html F9'un ara raporu, satırı yok)
+    rlink = set()
+    for _, s in re.findall(r'<tr data-paket="(P\d+\.\d+[a-z]?)">(.*?)</tr>', sayfa, re.S):
+        rlink |= set(re.findall(r'href="([^"]+)"', (re.findall(r'<td data-b="Rapor">(.*?)</td>', s, re.S) or [""])[0]))
+    for r in sorted(os.listdir(BURASI)):
+        if r.endswith("-rapor.html") and r != "F9c-rapor.html" and r not in rlink:
+            hata("paket raporu %s hiçbir paket satırında bağlı değil" % r)
+    # Commit'in paketi (P10.9a kontrolü): plan Durum hücresindeki her hash (git log'da olan) o paketin commit hücresinde.
+    # Bir commit'i başka pakete taşıma bozmasını yakalar; F9c-gunluk §12'deki "hash'in hangi pakete ait olduğu" sınırını daraltır.
+    hucre_p = {kd: set(re.findall(r"\b[0-9a-f]{7}\b", yaz((re.findall(r'<td data-b="Commit">(.*?)</td>', s, re.S) or [""])[0])))
+               for kd, s in re.findall(r'<tr data-paket="(P\d+\.\d+[a-z]?)">(.*?)</tr>', sayfa, re.S)}
+    for l in dongu_t.splitlines():
+        m = re.match(r"\| (P\d+\.\d+[a-z]?) \|", l)
+        if m and m.group(1) in pd:
+            for h in re.findall(r"\b[0-9a-f]{7}\b", PUSH_SOL.sub("", l.strip().strip("|").split(" | ")[-1])):
+                if h in sira and h not in hucre_p.get(m.group(1), set()):
+                    hata("paket %s: plandaki %s commit hücresinde yok" % (m.group(1), h))
+    # Konu öneki yalnız P kodlarından oluşan döngü commit'i ("Lale P1.1:", "Lale P7.4/P9.4:", "Lale P2.1–P2.2:") o paketlerin
+    # commit hücresinde; planda paket olmayan harfli kod harfsize iner (P10.7b2c -> P10.7, P4.5a -> P4.5).
+    for h, s in satirlar[: bas + 1]:
+        on = s.split(": ", 1)[0]
+        if not re.fullmatch(r"Lale P\d+\.\d+[a-z0-9]*(?:\s*(?:\+|/|–)\s*P\d+\.\d+[a-z0-9]*)*", on):
+            continue
+        for x in re.findall(r"P\d+\.\d+[a-z0-9]*", on):
+            x = x if x in pd else re.match(r"P\d+\.\d+", x).group(0)
+            if x in pd and h not in hucre_p.get(x, set()):
+                hata("paket %s: konu öneki bu pakette olan %s commit hücresinde yok" % (x, h))
 
     print("[5b] kaynaktan bağımsız denetimler (takvim, P8.1, düşükler)")
     # Takvim: proje-plani.md "İki örnek" tablosu bu betiğin kendi ayrıştırmasıyla; satır sayısı ve hücreler sayfadaki tabloyla.
@@ -347,7 +486,7 @@ def main():
     kt, ktsay = set(), {"düşük": 0, "kuyruk": 0, "günlük §6": 0}
     for f in sorted(os.listdir(BURASI)):
         if f.endswith("-kontrol.md") and not f.startswith("F9c"):
-            kt |= set(re.findall(r"KT-F\d[a-d]?-\d+", oku("planlama/d158/" + f)))
+            kt |= set(re.findall(r"KT-F\d+[a-z]?-\d+", oku("planlama/d158/" + f)))
     for k in sorted(kt):
         yer = "düşük" if k in dj else "kuyruk" if k in kq else "günlük §6" if k in g6 else None
         if yer:
@@ -385,13 +524,13 @@ def main():
         len(a.baglanti) - len(goreli) - len(capa)))
 
     print("[8] yerel yol, takma ad, soyad")
-    dosyalar = ["planlama/d158/sonuc-rapor.html"] + ["planlama/d158/" + d for d in sorted(os.listdir(BURASI)) if d.startswith("F9c-")
+    dosyalar = [SAYFA] + ["planlama/d158/" + d for d in sorted(os.listdir(BURASI)) if d.startswith("F9c-")
                                                     and os.path.splitext(d)[1] in (".md", ".py", ".json", ".html", ".txt")]
     yol = ad = soy = 0
     takma = os.environ.get("TAKMA_AD", "").strip().lower()
     soyad = [s.strip() for s in os.environ.get("SOYADLAR", "").split(",") if s.strip()]
     for d in dosyalar:
-        t = oku(d)
+        t = open(d, encoding="utf-8").read() if os.path.isabs(d) else oku(d)
         n = len(T.PY_DESEN.findall(t))
         yol += n
         if n:

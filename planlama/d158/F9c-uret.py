@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """F9c (P9.3): 1,58 m döngüsünün sonuç raporunu kaynaklardan üretir -> planlama/d158/sonuc-rapor.html
 
-Yalnız okur; tek yazdığı dosya sonuc-rapor.html. FreeCAD gerekmez, git yalnız okuma komutlarıyla (log, show) çağrılır.
+Yalnız okur; tek yazdığı dosya sonuc-rapor.html (ya da --cikti ile verilen yol). FreeCAD gerekmez, git yalnız okuma komutlarıyla (log, show) çağrılır.
 
     py -3 -B planlama/d158/F9c-uret.py            # raporu üret
     py -3 -B planlama/d158/F9c-uret.py --kuru     # yalnız özet bas, dosya yazma
+    py -3 -B planlama/d158/F9c-uret.py --cikti YOL   # sonuc-rapor.html yerine YOL'a yaz (P10.9a; deneme üretimi)
 
 Sayıların bağı (F9c-dogrula.py bunları yeniden hesaplar):
   data-j="dosya|anahtar|biçim"   JSON (ya da git:<commit>:dosya) değeri; anahtar nokta yolu, sonda #say = uzunluk,
@@ -151,14 +152,14 @@ def K(metin, *kaynak, etiket="span", sinif=""):
 def plan_paketleri():
     faz, fazlar, paket = None, [], []
     for i, l in enumerate(oku(DONGU).splitlines(), 1):
-        m = re.match(r"### Faz (F\d): (.*)", l)
+        m = re.match(r"### Faz (F\d+): (.*)", l)
         if m:
             faz = m.group(1)
             fazlar.append((faz, m.group(2).strip()))
             continue
         if l.startswith("## 4."):
             faz = None
-        m = re.match(r"\| (P\d\.\d) \| ", l)
+        m = re.match(r"\| (P\d+\.\d+[a-z]?) \| ", l)   # P10.4b gibi harfli plan satırı da paket (P10.9a)
         if m and faz:
             h = [c.strip() for c in l.strip().strip("|").split(" | ")]
             durum = h[-1]
@@ -167,16 +168,22 @@ def plan_paketleri():
     return fazlar, paket
 
 
-def brief_etiketleri():
-    """Fxx-brief.md başlığındaki P kodları: {'F1a': ['P1.2', ...]}; P4.5a -> P4.5."""
+def paket_kodu(a, b, harf, kodset):
+    """P kodunu plan paketine indirger: harfli kod (P10.4b) planda paket ise kalır, değilse harfsiz (P4.5a -> P4.5, P10.7b2d -> P10.7)."""
+    k = "P%s.%s" % (a, b)
+    return k + harf if harf and kodset is not None and k + harf in kodset else k
+
+
+def brief_etiketleri(kodset=None):
+    """Fxx-brief.md başlığındaki P kodları: {'F1a': ['P1.2', ...]}; P4.5a -> P4.5; F10e -> P10.4b (planda paket)."""
     out = {}
     for ad in sorted(os.listdir(BURASI)):
-        m = re.match(r"(F\d[a-d]?)-brief\.md$", ad)
+        m = re.match(r"(F\d+[a-z]?)-brief\.md$", ad)
         if not m or m.group(1) == "F9c":
             continue
         with open(os.path.join(BURASI, ad), encoding="utf-8") as f:
             bas = f.readline()
-        out[m.group(1)] = sorted({"P%s.%s" % (a, b) for a, b in re.findall(r"P(\d)\.(\d)", bas)})
+        out[m.group(1)] = sorted({paket_kodu(a, b, h, kodset) for a, b, h in re.findall(r"P(\d+)\.(\d+)([a-z]?)", bas)})
     return out
 
 
@@ -196,10 +203,13 @@ def komitler():
     return [(h, hepsi[h]) for h in sira[: bas + 1]], hepsi
 
 
-def kodlar(konu):
+PUSH_SOL = re.compile(r"\b[0-9a-f]{7}\.\.(?=[0-9a-f]{7}\b)")   # "push A..B" aralığının sol ucu (F9c-dogrula.py ile aynı)
+
+
+def kodlar(konu, kodset=None):
     k = set()
-    for a, b, c in re.findall(r"P(\d)\.(\d)a?(?:\s*[–-]\s*P\d\.(\d))?", konu):
-        k.add("P%s.%s" % (a, b))
+    for a, b, h, c in re.findall(r"P(\d+)\.(\d+)([a-z]?)(?:\s*[–-]\s*P\d+\.(\d+))?", konu):
+        k.add(paket_kodu(a, b, h, kodset))
         if c:
             for x in range(int(b), int(c) + 1):
                 k.add("P%s.%d" % (a, x))
@@ -207,7 +217,7 @@ def kodlar(konu):
 
 
 def etiket(konu):
-    m = re.search(r"\((F\d[a-d]?)\)", konu) or re.match(r"Lale (?:158 )?(?:döngüsü: plan, )?(F\d[a-d]?)\b", konu)
+    m = re.search(r"\((F\d+[a-z]?)\)", konu) or re.match(r"Lale (?:158 )?(?:döngüsü: plan, )?(F\d+[a-z]?)\b", konu)
     return m.group(1) if m else None
 
 
@@ -218,10 +228,10 @@ def paket_komitleri(paket, etk):
     fazpaket = {}
     for p in paket:
         fazpaket.setdefault(p["faz"], []).append(p["kod"])
-    hedef = lambda L: (etk.get(L, []) + EK_ETIKET.get(L, [])) or fazpaket.get(L, [L] if re.match(r"P\d\.\d$", L) else [])
+    hedef = lambda L: (etk.get(L, []) + EK_ETIKET.get(L, [])) or fazpaket.get(L, [L] if re.match(r"P\d+\.\d+[a-z]?$", L) else [])
     eksik = []
     for h, s in kom:
-        ks = set(kodlar(s))
+        ks = set(kodlar(s.split(": ", 1)[0], set(harita)))   # yalnız konu öneki; gövdedeki "(P10.7)" gibi göndermeler değil (P10.9a kontrolü B1)
         L = etiket(s)
         if L:
             ks |= set(hedef(L))
@@ -230,14 +240,17 @@ def paket_komitleri(paket, etk):
                 harita[k].append(h)
     # §5'te tek bir paket/faz başlığı taşıyan "✅" kayıt satırlarındaki commit'ler ve durum hücresindeki commit'ler
     for l in dongu:
-        b = re.findall(r"\b(F\d[a-d]?|P\d\.\d) ✅", l)
+        b = re.findall(r"\b(F\d+[a-z]?|P\d+\.\d+[a-z]?) ✅", l)
         if len(b) == 1 and "**%s ✅" % b[0] in l:
-            for h in re.findall(r"\b[0-9a-f]{7}\b", l):
+            # "**P10.7a ✅" gibi planda paket olmayan harfli başlık harfsiz pakete iner (P10.7); hash'ler sessizce düşmez (B8)
+            b0 = paket_kodu(*re.match(r"P(\d+)\.(\d+)([a-z]?)", b[0]).groups(), set(harita)) if b[0].startswith("P") else b[0]
+            # "push A..B": A bir önceki paketin son commit'i, bu satırın değil (B1)
+            for h in re.findall(r"\b[0-9a-f]{7}\b", PUSH_SOL.sub("", l)):
                 if h in hepsi:
-                    hk = hedef(b[0])
+                    hk = hedef(b0)
                     # Faz düzeyindeki satır (ör. "**F0 ✅**"): konu satırında faz etiketi geçmeyen commit fazın tüm paketlerine
                     # değil, yalnız ilk paketine bağlanır (F0: 8dcc4eb … 680b965 P0.1 sınıflandırma grupları; F9c-kontrol D-6).
-                    if re.match(r"F\d$", b[0]) and b[0] not in dict(kom).get(h, "") and hk:
+                    if re.match(r"F\d+$", b[0]) and b[0] not in dict(kom).get(h, "") and hk:
                         hk = hk[:1]
                     for k in hk:
                         if k in harita and h not in harita[k]:
@@ -265,7 +278,7 @@ def raporlar(kod, etk):
             r = "%s-rapor.html" % L
             if os.path.exists(os.path.join(BURASI, r)):
                 out.append(r)
-    if kod == "P9.3":
+    if kod in ("P9.3", "P10.9"):   # P10.9: faz sonu yenilemesi aynı sayfa
         out.append("sonuc-rapor.html")
     return out
 
@@ -283,8 +296,10 @@ def kararlar():
 
 
 def karar_faz(k):
-    """Kural: Durum hücresindeki paket etiketi (F8a -> F8); yoksa Bloke hücresindeki ilk P kodunun fazı; yoksa F0."""
-    m = re.search(r"\bF(\d)[a-d]?\b", k["durum"]) or re.search(r"\bP(\d)\.\d", k["bloke"])
+    """Kural: Durum hücresindeki paket etiketi (F8a -> F8, F10b -> F10); yoksa Bloke hücresindeki ilk P kodunun fazı; yoksa Durum
+    hücresindeki ilk P kodunun fazı (P10.9a: K62 "P10.7b1"); yoksa F0."""
+    m = (re.search(r"\bF(\d+)[a-z]?\b", k["durum"]) or re.search(r"\bP(\d+)\.\d", k["bloke"])
+         or re.search(r"\bP(\d+)\.\d", k["durum"]))
     return "F" + m.group(1) if m else "F0"
 
 
@@ -346,6 +361,15 @@ GRUP = {
     "K47": ("C", "Bir sonraki rehber turunun git add listesinden önce; depo büyümesi."),
     "K48": ("C", "Silme Ahmet'in onayıyla; git status temizliği."),
     "K49": ("C", "K18–K24 ile birlikte; .gitignore."),
+    # F10'da açılanlar: P10.9a ön paketinin TASLAK önerisi (karar değil; orkestratör P10.9'da onaylar ya da değiştirir).
+    # Gerekçeler karar-kuyrugu.md Özet tablosunun "Beklettiği" hücresinden; P10.9a-gunluk.md § 3.
+    "K53": ("A", "Elektronik katının lazer kesim dosyası bu karara bağlı; lazer teklifi sipariş öncesi."),
+    "K54": ("B", "Kafa iskeleti baskısından (Parti kuponu) önce; rehber E3 notu."),
+    "K55": ("B", "Kabuk baskısından (Parti kuponu) önce; rehber F1 / F3 / F4 takma metni."),
+    "K60": ("A", "Elektrik güvenliği: elde acil stop; B seçilirse alıcının yeri ve beslemesi P10.7b kablajında."),
+    # K61 B → A (P10.9a kontrolü B4, orkestratör kararı): seçenek a kalemi siparişten çıkarır; K12 ve K32 ile aynı ölçüt.
+    "K61": ("A", "Seçenek a kalemi siparişten çıkarır (Bas-konuş düğmesi 76,24 TL); karar S = 16.11 siparişinden önce, b seçilirse kablo ve yer P10.7b kablajında."),
+    "K62": ("C", "Kayıt; döngü kuralının yorumu (sonraki paketlerin tur sayımı)."),
 }
 
 
@@ -386,6 +410,25 @@ PAKET_SONUC = {
     "P9.1": ("Sipariş gününe göre takvim: S = 16.11 + erken alımla demo 10.01; yoksa 20–24.01.", [DONGU]),
     "P9.2": ("Demo 127 JSON anahtarından; 14 karar \"karar bekliyor\"; maliyet 118.666,22 TL.", [DONGU]),
     "P9.4": ("Yerel kullanıcı yolu 48 → 4 satır, yazılabilir alanda 0; README 38 satır = JSON; K47–K49.", [DONGU]),
+    # F10: P10.9a TASLAĞI, kaynak dongu-158.md §3 F10 tablosunun Durum hücreleri (16.11 02:39 hâli). Açık paketler "Açık" diye
+    # başlar; faz sonu (P10.9) bu satırları günceller. Kalıp ve gerekçe P109a-gunluk.md § 4.
+    "P10.1": ("Seçim vurgusu, öncekiler yarı saydam, küçük görünüm, internetsiz açılma; 1 düzeltme turu (yazdırma kareleri 19/50 boştu → 50/50).", [DONGU]),
+    "P10.2": ("Açık (K53): girişim ölçüldü, 3,13 mm³, taşma 0,425 mm; model değişmedi; öneri çentik, bir sonraki tam taramalı pakette.", [DONGU]),
+    "P10.3": ("E4 sırası, E3 625ZZ + pim, kalıcı sıra denetimi; 1 düzeltme turu (E3 \"geometrik kilitli\" sonucu yanlıştı); K54 sıfır boşluk.", [DONGU]),
+    "P10.4": ("Kabuk adımları alt adımlara bölündü; açık 34 / zor 8 / anlaşılmıyor 0; 1 düzeltme turu (34 somun yanlış yerde); K55 bindirme dilleri.", [DONGU]),
+    "P10.4b": ("Gerçek parça rengi, bağlandığı yer vurgusu, cıvata yeri işaretleri; 1 düzeltme turu, ikinci kontrol GEÇER; açık 40 / zor 2.", [DONGU]),
+    "P10.5": ("Kol içi kablo yolu rehberde; 2 düzeltme turu, üçüncü bakış GEÇER; 28 şema, alt adım 71, PDF 75 sayfa.", [DONGU]),
+    "P10.5b": ("K56 + K57 montaj sırası rehberde; uçuş istisnası 20 → 16, çarpışan 0, PDF 75 sayfa; K56, K57 kapandı.", [DONGU]),
+    "P10.6": ("ESP32 pin haritası kararı K58 (`pin-haritasi.md` sürüm 3); üç bağımsız kontrol, üçüncüsü GEÇER; pano #8 mesajını Ahmet gönderecek.", [DONGU]),
+    # Kalan: plandaki "Sıradaki: P10.7b2" listesinden b2a–b2c'nin kapattıkları çıkarıldı (P10.9a kontrolü B3);
+    # b2d 78d160d ile kapandı, "Sürüyor" listesinden kapalılara geçti (P10.9a commit turu)
+    "P10.7": ("Açık. Kapalı alt paketler: P10.7a (74 kablo tek kaynakta, `kablolar.json`; 16.11 sipariş listesi genel 120.852,43 TL), "
+              "P10.7b1, P10.7b2a (74 / 74 kablo talimatta, PDF 80 sayfa), P10.7b2b, P10.7b2c, P10.7b2d (K1 / K2 demet alt adımları, PDF 84 sayfa). "
+              "Kalan: taban yollarının yeniden tasarımı, boyların ölçümü, düğüm tutucusu, boyun tüneli deneme parçası, G19 / G20 / G24 / G26 "
+              "(yalnız onayla); K52, K60, K61; Efe'nin iki cevabı.", [DONGU]),
+    "P10.8": ("Açık: satın alınan parça modelleri parçalar gelince.", [DONGU]),
+    "P10.9": ("Açık: bu sayfanın F10 yenilemesi. P10.9a ön paketi üretici ve denetimi iki basamaklı faza açtı; sayılar ve son üretim faz sonunda.",
+              [DONGU, "planlama/d158/P109a-gunluk.md"]),
 }
 
 FAZ_SONUC = {
@@ -399,6 +442,9 @@ FAZ_SONUC = {
     "F7": ("3B rehber 50 adım / 1192 parça; yazdırılabilir PDF 54 sayfa, elektrik güvenliği denetimi.", [DONGU]),
     "F8": ("Sipariş paketi 136 satır, baskı partileri, T1–T13 test kâğıtları; sipariş verilmedi.", [DONGU]),
     "F9": ("Takvim: S = 16.11 yalnız durum A'da sığar (bir hafta tampon); demo 127 anahtar, depo temizliği; bu rapor son paket.", [PLAN, DONGU]),
+    # P10.9a TASLAĞI: faz açık; P10.9 faz sonunda yeniden yazar.
+    "F10": ("Faz açık. Kapalı: P10.1, P10.3, P10.4, P10.4b, P10.5, P10.5b, P10.6 ve P10.7'nin a, b1, b2a, b2b, b2c, b2d alt paketleri. "
+            "Açık: P10.2 (K53), P10.7, P10.8, P10.9.", [DONGU]),
 }
 
 # Orkestratöre giden tutarsızlıklar (F9c-gunluk.md §7 ile aynı; her sayı kaynağında)
@@ -514,7 +560,7 @@ def td(icerik, baslik, sinif=""):
 
 def uret():
     fazlar, paket = plan_paketleri()
-    etk = brief_etiketleri()
+    etk = brief_etiketleri({p["kod"] for p in paket})
     harita, eksik, eslesmeyen, kom = paket_komitleri(paket, etk)
     kr = kararlar()
     acik = [k for k in kr if k["acik"]]
@@ -542,8 +588,9 @@ def uret():
 
     # kartlar
     w('<div class="cards">')
-    w('<div class="card"><div class="k">Paket</div><div class="v">%s</div><div class="d">%s ✅ · %s 🟡 · %s ⛔ · %s 🔄 (bu paket)</div></div>' % (
-        H("paket_sayisi", len(paket)), H("paket_✅", say["✅"]), H("paket_🟡", say["🟡"]), H("paket_⛔", say["⛔"]), H("paket_🔄", say["🔄"])))
+    w('<div class="card"><div class="k">Paket</div><div class="v">%s</div><div class="d">%s ✅ · %s 🟡 · %s ⛔ · %s 🔄 · %s ⏳</div></div>' % (
+        H("paket_sayisi", len(paket)), H("paket_✅", say["✅"]), H("paket_🟡", say["🟡"]), H("paket_⛔", say["⛔"]), H("paket_🔄", say["🔄"]),
+        H("paket_⏳", say["⏳"])))
     w('<div class="card"><div class="k">Açık karar</div><div class="v">%s / %s</div><div class="d">%s sipariş / güvenlik öncesi · %s montaj öncesi · %s sonra</div></div>' % (
         H("karar_acik", len(acik)), H("karar_toplam", len(kr)), H("grup_A", sum(1 for k in acik if GRUP[k["k"]][0] == "A")),
         H("grup_B", sum(1 for k in acik if GRUP[k["k"]][0] == "B")), H("grup_C", sum(1 for k in acik if GRUP[k["k"]][0] == "C"))))
@@ -572,9 +619,9 @@ def uret():
                              td("%s paket; plan tek doğru kaynak <code>dongu-158.md</code>" % H("paket_sayisi", len(paket)), "Ana sonuç"),
                              td("<b>%s</b>" % H("karar_acik", len(acik)), "Açık karar", "n")))
     w("</tbody></table></div>")
-    w('<p class="note">Faz durumu, fazdaki paketlerin en kötüsüdür (🔄 &gt; ⛔ &gt; 🟡 &gt; ✅). Açık kararlar faza şu kuralla '
-      'bağlandı: kuyruğun Durum hücresindeki paket etiketi (ör. F8a → F8); yoksa Bloke hücresindeki ilk P kodu; yoksa F0. '
-      'F9\'un 🔄\'ı bu paketin kendisidir; kayıttan sonra ✅ olur.</p>')
+    w('<p class="note">Faz durumu, fazdaki paketlerin en kötüsüdür (🔄 &gt; ⛔ &gt; 🟡 &gt; ⏳ &gt; ✅). Açık kararlar faza şu kuralla '
+      'bağlandı: kuyruğun Durum hücresindeki paket etiketi (ör. F8a → F8); yoksa Bloke hücresindeki ilk P kodu; yoksa Durum hücresindeki '
+      'ilk P kodu (ör. K62 → F10); yoksa F0. F10 açık; bu sayfanın faz sonu yenilemesi P10.9.</p>')
 
     # 2. Ahmet'in yapacakları
     gA = [k["k"] for k in acik if GRUP[k["k"]][0] == "A"]
@@ -722,9 +769,8 @@ def uret():
                 J(SP, "toplamlar.sayac.siparis_satiri"), H("p81_dogrulanan", sy["dogrulandi_onayli"] + sy["dogrulandi_onaysiz"]),
                 J(SP, "toplamlar.sayac.dogrulandi_onayli"), J(SP, "toplamlar.sayac.dogrulandi_onaysiz"),
                 K(PAKET_SONUC["P8.1"][0], *PAKET_SONUC["P8.1"][1]))
-        elif p["kod"] == "P9.3":
-            son = ("Bu rapor: %s paket, %s açık karar, %s korunan değer; kayıt ajanında commit." % (
-                H("paket_sayisi", len(paket)), H("karar_acik", len(acik)), H("reg_sayi", len(r1["degerler"]))))
+        elif p["kod"] == "P9.3":   # kapalı paket: F9 sonu sayfasının değerleri, canlı sayım değil (P10.9a kontrolü B7)
+            son = K("F9 sonu sayfası (09.11): 36 paket, 47 / 52 açık karar, 10 korunan değer; F10 yenilemesi P10.9.", DONGU, BRIEF)
         else:
             m, kay = PAKET_SONUC[p["kod"]]
             son = K(m, *kay)
@@ -781,6 +827,10 @@ def uret():
 
 
 def main():
+    arg = sys.argv[1:]
+    cikti = CIKTI
+    if "--cikti" in arg:   # P10.9a: depo dışına deneme üretimi (göreli bağlantılar sayfanın asıl yerine, planlama/d158/'ye göredir)
+        cikti = arg[arg.index("--cikti") + 1]
     metin, b = uret()
     print("paket %d (%s); komit %d; plandaki bulunamayan hash %d; eşleşmeyen commit %d" % (
         len(b["paket"]), ", ".join("%s %d" % (e, n) for e, n in b["say"].items() if n), len(b["kom"]), len(b["eksik"]), len(b["eslesmeyen"])))
@@ -793,14 +843,17 @@ def main():
     print("karar: toplam %d, açık %d; faz: %s" % (len(b["kr"]), len(b["acik"]), ", ".join("%s %d" % (f, len(v)) for f, v in sorted(b["fk"].items()))))
     eksik_grup = [k["k"] for k in b["acik"] if k["k"] not in GRUP]
     fazla_grup = [k for k in GRUP if k not in {x["k"] for x in b["acik"]}]
-    if eksik_grup or fazla_grup:
-        print("GRUP uyuşmazlığı: eksik %s, fazla %s" % (eksik_grup, fazla_grup))
+    if eksik_grup:
+        print("GRUP uyuşmazlığı: eksik %s" % eksik_grup)
         return 1
+    if fazla_grup:   # kapanan kararın grubu sayfaya girmez; bilgi (P10.9a: K1, K10, K11, K14 kapandı 14.11)
+        print("bilgi: GRUP'ta kapanmış karar %s" % fazla_grup)
     if "--kuru" in sys.argv:
         return 0
-    with open(CIKTI, "w", encoding="utf-8", newline="\n") as f:
+    with open(cikti, "w", encoding="utf-8", newline="\n") as f:
         f.write(metin)
-    print("yazıldı:", os.path.relpath(CIKTI, KOK).replace("\\", "/"), "(%d bayt)" % len(metin.encode("utf-8")))
+    print("yazıldı:", os.path.abspath(cikti) if cikti != CIKTI else os.path.relpath(CIKTI, KOK).replace("\\", "/"),
+          "(%d bayt)" % len(metin.encode("utf-8")))
     return 0
 
 
