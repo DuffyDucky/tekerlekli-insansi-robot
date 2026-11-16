@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-15 14:42",
+ "tarih": "2026-11-16 04:10",
  "tarayici": "chrome.exe",
  "ozet": {
   "adim": 50,
@@ -14,7 +14,7 @@
    "hic_gorunmeyen": []
   },
   "sema": 65,
-  "veri_uretim": "2026-11-15 13:59",
+  "veri_uretim": "2026-11-16 03:29",
   "kaynak_cad": {
    "iskelet": "2026-11-09 14:27",
    "omuz_sag": "2026-11-09 14:27",
@@ -1227,16 +1227,298 @@
   }
  ],
  "alt_adim": {
-  "alt_adim": 71,
-  "gecen": 71,
+  "alt_adim": 91,
+  "gecen": 91,
   "konsol_hatasi": 0,
   "her_parca_tek_alt_adimda": {
    "gecti": true,
-   "parca": 487,
+   "parca": 499,
    "birden_cok_alt_adimda": {},
    "hic_gorunmeyen": []
   },
+  "her_sema_tek_alt_adimda": {
+   "gecti": true,
+   "sema": 60,
+   "birden_cok_alt_adimda": {},
+   "hic_vurgulanmayan": []
+  },
   "sonuc": [
+   {
+    "adim": 17,
+    "alt_adim": 1,
+    "kod": "K1",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-17-01.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 1,
+    "gorunen_simdi": 1,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 222,
+     "alan": "sag-sutun",
+     "nokta": 8
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 17,
+    "alt_adim": 2,
+    "kod": "K1",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-17-02.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 1,
+    "gorunen_simdi": 1,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 487,
+     "alan": "sag-sutun",
+     "nokta": 8
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 17,
+    "alt_adim": 3,
+    "kod": "K1",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-17-03.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 0,
+    "gorunen_simdi": 0,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 258,
+     "alan": "alt-serit",
+     "nokta": 8
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 17,
+    "alt_adim": 4,
+    "kod": "K1",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-17-04.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 1,
+    "gorunen_simdi": 1,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 574,
+     "alan": "sag-sutun",
+     "nokta": 8
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 17,
+    "alt_adim": 5,
+    "kod": "K1",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-17-05.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 1,
+    "gorunen_simdi": 1,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 670,
+     "alan": "sag-sutun",
+     "nokta": 16
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 17,
+    "alt_adim": 6,
+    "kod": "K1",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-17-06.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 0,
+    "gorunen_simdi": 0,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 204,
+     "alan": "alt-serit",
+     "nokta": 8
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 17,
+    "alt_adim": 7,
+    "kod": "K1",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-17-07.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 1,
+    "gorunen_simdi": 1,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 464,
+     "alan": "sag-sutun",
+     "nokta": 8
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 17,
+    "alt_adim": 8,
+    "kod": "K1",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-17-08.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 1,
+    "gorunen_simdi": 1,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 526,
+     "alan": "alt-serit",
+     "nokta": 8
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 17,
+    "alt_adim": 9,
+    "kod": "K1",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-17-09.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 0,
+    "gorunen_simdi": 0,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 225,
+     "alan": "sag-sutun",
+     "nokta": 8
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 17,
+    "alt_adim": 10,
+    "kod": "K1",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-17-10.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 1,
+    "gorunen_simdi": 1,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 653,
+     "alan": "alt-serit",
+     "nokta": 48
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 17,
+    "alt_adim": 11,
+    "kod": "K1",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-17-11.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 0,
+    "gorunen_simdi": 0,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 2760,
+     "alan": "sag-sutun",
+     "nokta": 8
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 17,
+    "alt_adim": 12,
+    "kod": "K1",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-17-12.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 0,
+    "gorunen_simdi": 0,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 2760,
+     "alan": "sag-sutun",
+     "nokta": 8
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
    {
     "adim": 21,
     "alt_adim": 1,
@@ -1367,7 +1649,7 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 497,
+     "D": 518,
      "alan": "sag-sutun",
      "nokta": 88
     },
@@ -1508,6 +1790,190 @@
      "D": 561,
      "alan": "sag-sutun",
      "nokta": 104
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 32,
+    "alt_adim": 1,
+    "kod": "K2",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-32-01.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 2,
+    "gorunen_simdi": 2,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 2254,
+     "alan": "sag-sutun",
+     "nokta": 16
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 32,
+    "alt_adim": 2,
+    "kod": "K2",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-32-02.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 1,
+    "gorunen_simdi": 1,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 208,
+     "alan": "sag-sutun",
+     "nokta": 8
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 32,
+    "alt_adim": 3,
+    "kod": "K2",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-32-03.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 1,
+    "gorunen_simdi": 1,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 2086,
+     "alan": "sag-sutun",
+     "nokta": 8
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 32,
+    "alt_adim": 4,
+    "kod": "K2",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-32-04.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 1,
+    "gorunen_simdi": 1,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 2201,
+     "alan": "sag-sutun",
+     "nokta": 16
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 32,
+    "alt_adim": 5,
+    "kod": "K2",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-32-05.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 0,
+    "gorunen_simdi": 0,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 1122,
+     "alan": "sag-sutun",
+     "nokta": 24
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 32,
+    "alt_adim": 6,
+    "kod": "K2",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-32-06.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 0,
+    "gorunen_simdi": 0,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 3256,
+     "alan": "sag-sutun",
+     "nokta": 8
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 32,
+    "alt_adim": 7,
+    "kod": "K2",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-32-07.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 0,
+    "gorunen_simdi": 0,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 1906,
+     "alan": "sag-sutun",
+     "nokta": 8
+    },
+    "eksik_mesh": [],
+    "konum_dogru": true,
+    "gecti": true
+   },
+   {
+    "adim": 32,
+    "alt_adim": 8,
+    "kod": "K2",
+    "hazir": true,
+    "hata": null,
+    "goruntu": "planlama/rehber/goruntu/adim-32-08.png",
+    "veri_okundu": true,
+    "beklenen_simdi": 0,
+    "gorunen_simdi": 0,
+    "beklenen_alt": 0,
+    "gorunen_alt": 0,
+    "fark": [],
+    "sema_fark": [],
+    "kadraj": {
+     "D": 3256,
+     "alan": "sag-sutun",
+     "nokta": 8
     },
     "eksik_mesh": [],
     "konum_dogru": true,
@@ -2873,25 +3339,45 @@
   ],
   "gecti": true,
   "yazdir_goruntu": {
-   "alt_adim": 71,
+   "alt_adim": 91,
    "eksik": [],
    "bos": [],
    "cizim_esik": 0.01,
    "yeniden_cekim": {},
-   "en_dusuk_cizim_orani": 0.1102,
+   "en_dusuk_cizim_orani": 0.0804,
    "cizim_orani": {
+    "17.1": 0.8886,
+    "17.2": 0.6791,
+    "17.3": 0.7605,
+    "17.4": 0.6437,
+    "17.5": 0.6994,
+    "17.6": 0.8043,
+    "17.7": 0.6934,
+    "17.8": 0.6992,
+    "17.9": 0.9593,
+    "17.10": 0.7025,
+    "17.11": 0.0804,
+    "17.12": 0.0805,
     "21.1": 0.375,
     "21.2": 0.3975,
     "31.1": 0.1482,
     "31.2": 0.3127,
     "31.3": 0.1508,
-    "31.4": 0.4155,
+    "31.4": 0.4052,
     "31.5": 0.2433,
     "31.6": 0.222,
     "31.7": 0.7576,
     "31.8": 0.732,
     "31.9": 0.3165,
     "31.10": 0.4206,
+    "32.1": 0.1005,
+    "32.2": 0.6957,
+    "32.3": 0.0878,
+    "32.4": 0.099,
+    "32.5": 0.1816,
+    "32.6": 0.0838,
+    "32.7": 0.096,
+    "32.8": 0.0804,
     "33.1": 0.4312,
     "33.2": 0.4842,
     "33.3": 0.3037,
@@ -3014,18 +3500,38 @@
    "47": 0.2132,
    "48": 0.4536,
    "49": 0.2213,
+   "17.1": 0.8886,
+   "17.2": 0.6791,
+   "17.3": 0.7605,
+   "17.4": 0.6437,
+   "17.5": 0.6994,
+   "17.6": 0.8043,
+   "17.7": 0.6934,
+   "17.8": 0.6992,
+   "17.9": 0.9593,
+   "17.10": 0.7025,
+   "17.11": 0.0804,
+   "17.12": 0.0805,
    "21.1": 0.375,
    "21.2": 0.3975,
    "31.1": 0.1482,
    "31.2": 0.3127,
    "31.3": 0.1508,
-   "31.4": 0.4155,
+   "31.4": 0.4052,
    "31.5": 0.2433,
    "31.6": 0.222,
    "31.7": 0.7576,
    "31.8": 0.732,
    "31.9": 0.3165,
    "31.10": 0.4206,
+   "32.1": 0.1005,
+   "32.2": 0.6957,
+   "32.3": 0.0878,
+   "32.4": 0.099,
+   "32.5": 0.1816,
+   "32.6": 0.0838,
+   "32.7": 0.096,
+   "32.8": 0.0804,
    "33.1": 0.4312,
    "33.2": 0.4842,
    "33.3": 0.3037,
@@ -3088,9 +3594,9 @@
   },
   "piksel_denetimi": true,
   "ana_adim": 50,
-  "alt_adim": 71,
-  "kare": 121,
-  "denetlenen": 121
+  "alt_adim": 91,
+  "kare": 141,
+  "denetlenen": 141
  },
  "telefon": {
   "pencere": [
@@ -3174,13 +3680,13 @@
  },
  "yazdir": {
   "pdf": "planlama/rehber/Lale-montaj-rehberi.pdf",
-  "pdf_sayfa": 80,
+  "pdf_sayfa": 84,
   "pdf_yeni": true,
-  "html_sayfa": 80,
+  "html_sayfa": 84,
   "adim": 50,
   "tasan": [],
   "kucuk_yazi": [],
-  "boyut_kb": 16326,
+  "boyut_kb": 18563,
   "sayfa_esleme": {
    "0": [
     1
@@ -3238,132 +3744,136 @@
     19,
     20,
     21,
-    22
-   ],
-   "18": [
-    23
-   ],
-   "19": [
+    22,
+    23,
     24
    ],
-   "20": [
+   "18": [
     25
    ],
-   "21": [
+   "19": [
     26
    ],
-   "22": [
+   "20": [
     27
    ],
-   "23": [
+   "21": [
     28
    ],
-   "24": [
+   "22": [
     29
    ],
-   "25": [
+   "23": [
     30
    ],
-   "26": [
+   "24": [
     31
    ],
-   "27": [
+   "25": [
     32
    ],
-   "28": [
+   "26": [
     33
    ],
-   "29": [
-    34,
+   "27": [
+    34
+   ],
+   "28": [
     35
    ],
+   "29": [
+    36,
+    37
+   ],
    "30": [
-    36
+    38
    ],
    "31": [
-    37,
-    38,
     39,
     40,
-    41
-   ],
-   "32": [
+    41,
     42,
     43
    ],
-   "33": [
+   "32": [
     44,
     45,
     46,
-    47,
-    48,
-    49
+    47
    ],
-   "34": [
+   "33": [
+    48,
+    49,
     50,
     51,
     52,
-    53,
-    54
+    53
    ],
-   "35": [
+   "34": [
+    54,
     55,
     56,
-    57
+    57,
+    58
    ],
-   "36": [
-    58,
-    59
-   ],
-   "37": [
-    60
-   ],
-   "38": [
+   "35": [
+    59,
+    60,
     61
    ],
-   "39": [
-    62
+   "36": [
+    62,
+    63
    ],
-   "40": [
-    63,
+   "37": [
     64
    ],
+   "38": [
+    65
+   ],
+   "39": [
+    66
+   ],
+   "40": [
+    67,
+    68
+   ],
    "41": [
-    65,
-    66,
-    67
+    69,
+    70,
+    71
    ],
    "42": [
-    68,
-    69
-   ],
-   "43": [
-    70
-   ],
-   "44": [
-    71,
-    72
-   ],
-   "45": [
+    72,
     73
    ],
-   "46": [
+   "43": [
     74
    ],
-   "47": [
-    75
+   "44": [
+    75,
+    76
    ],
-   "48": [
-    76,
+   "45": [
     77
    ],
+   "46": [
+    78
+   ],
+   "47": [
+    79
+   ],
+   "48": [
+    80,
+    81
+   ],
    "49": [
-    78,
-    79,
-    80
+    82,
+    83,
+    84
    ]
   },
-  "devam_sayfasi": 30,
+  "devam_sayfasi": 34,
   "en_kucuk_yazi_pt_dom": 8.1,
   "en_kucuk_yazi_pt_pdf": 8.1,
   "yazi_alt_sinir_pt": 8.0,
@@ -3371,9 +3881,9 @@
   "tamlik": {
    "olculdu": true,
    "adim": 50,
-   "is_karakter": 32017,
+   "is_karakter": 20391,
    "is_eksik_karakter": 0,
-   "madde": 416,
+   "madde": 436,
    "madde_eksik": 0,
    "madde_fazla": 0,
    "eksik": [],
@@ -3393,11 +3903,11 @@
     "17": [
      [
       19,
-      5138
+      175
      ],
      [
       20,
-      3413
+      0
      ],
      [
       21,
@@ -3406,30 +3916,30 @@
      [
       22,
       0
+     ],
+     [
+      23,
+      0
+     ],
+     [
+      24,
+      0
      ]
     ],
     "29": [
      [
-      34,
+      36,
       1784
      ],
      [
-      35,
+      37,
       0
      ]
     ],
     "31": [
      [
-      37,
-      2028
-     ],
-     [
-      38,
-      0
-     ],
-     [
       39,
-      0
+      2028
      ],
      [
       40,
@@ -3438,22 +3948,20 @@
      [
       41,
       0
-     ]
-    ],
-    "32": [
+     ],
      [
       42,
-      3401
+      0
      ],
      [
       43,
       0
      ]
     ],
-    "33": [
+    "32": [
      [
       44,
-      1570
+      148
      ],
      [
       45,
@@ -3466,20 +3974,20 @@
      [
       47,
       0
-     ],
+     ]
+    ],
+    "33": [
      [
       48,
-      0
+      1570
      ],
      [
       49,
       0
-     ]
-    ],
-    "34": [
+     ],
      [
       50,
-      649
+      0
      ],
      [
       51,
@@ -3492,16 +4000,16 @@
      [
       53,
       0
-     ],
-     [
-      54,
-      0
      ]
     ],
-    "35": [
+    "34": [
+     [
+      54,
+      649
+     ],
      [
       55,
-      1663
+      0
      ],
      [
       56,
@@ -3510,83 +4018,101 @@
      [
       57,
       0
+     ],
+     [
+      58,
+      0
+     ]
+    ],
+    "35": [
+     [
+      59,
+      1663
+     ],
+     [
+      60,
+      0
+     ],
+     [
+      61,
+      0
      ]
     ],
     "36": [
      [
-      58,
+      62,
       647
      ],
      [
-      59,
+      63,
       0
      ]
     ],
     "40": [
      [
-      63,
+      67,
       664
      ],
      [
-      64,
+      68,
       0
      ]
     ],
     "41": [
      [
-      65,
+      69,
       654
      ],
      [
-      66,
+      70,
       0
      ],
      [
-      67,
+      71,
       0
      ]
     ],
     "42": [
      [
-      68,
+      72,
       416
      ],
      [
-      69,
+      73,
       0
      ]
     ],
     "44": [
      [
-      71,
+      75,
       313
      ],
      [
-      72,
+      76,
       0
      ]
     ],
     "48": [
      [
-      76,
+      80,
       235
      ],
      [
-      77,
+      81,
       0
      ]
     ],
     "49": [
      [
-      78,
-      2436
+      82,
+      2439
      ],
      [
-      79,
+      83,
       0
      ],
      [
-      80,
+      84,
       0
      ]
     ]
@@ -3617,30 +4143,6 @@
    },
    {
     "adim": "K1",
-    "alan": "is_",
-    "yasak": "PCA9685 V+ bağlama",
-    "ifade": "PCA9685'in V+ pinine tel takma",
-    "cumle": "PCA9685'in V+ pinine tel takma;",
-    "istisna": "olumsuz biçim: takma"
-   },
-   {
-    "adim": "K1",
-    "alan": "is_",
-    "yasak": "köprüleme talimatı",
-    "ifade": "köprülenmez",
-    "cumle": "Bunların dışında mantarın kendi uçları ve ana anahtarın uçları hiçbir zaman köprülenmez;",
-    "istisna": "olumsuz biçim: köprülenmez"
-   },
-   {
-    "adim": "K1",
-    "alan": "is_",
-    "yasak": "köprüleme talimatı (nesneyle)",
-    "ifade": "mantarın kendi uçları ve ana anahtarın uçları hiçbir zaman köprülenmez",
-    "cumle": "Bunların dışında mantarın kendi uçları ve ana anahtarın uçları hiçbir zaman köprülenmez;",
-    "istisna": "olumsuz biçim: köprülenmez"
-   },
-   {
-    "adim": "K1",
     "alan": "kontrol",
     "yasak": "köprüleme talimatı",
     "ifade": "köprülenmedi",
@@ -3654,6 +4156,30 @@
     "ifade": "Mantar ve ana anahtar uçları köprülenmedi",
     "cumle": "Mantar ve ana anahtar uçları köprülenmedi;",
     "istisna": "olumsuz biçim: köprülenmedi"
+   },
+   {
+    "adim": "K1",
+    "alan": "alt adım 11 is_",
+    "yasak": "PCA9685 V+ bağlama",
+    "ifade": "PCA9685'in V+ pinine tel takma",
+    "cumle": "PCA9685'in V+ pinine tel takma;",
+    "istisna": "olumsuz biçim: takma"
+   },
+   {
+    "adim": "K1",
+    "alan": "alt adım 12 is_",
+    "yasak": "köprüleme talimatı",
+    "ifade": "köprülenmez",
+    "cumle": "Bunların dışında mantarın kendi uçları ve ana anahtarın uçları hiçbir zaman köprülenmez;",
+    "istisna": "olumsuz biçim: köprülenmez"
+   },
+   {
+    "adim": "K1",
+    "alan": "alt adım 12 is_",
+    "yasak": "köprüleme talimatı (nesneyle)",
+    "ifade": "mantarın kendi uçları ve ana anahtarın uçları hiçbir zaman köprülenmez",
+    "cumle": "Bunların dışında mantarın kendi uçları ve ana anahtarın uçları hiçbir zaman köprülenmez;",
+    "istisna": "olumsuz biçim: köprülenmez"
    },
    {
     "adim": "E3a",
@@ -3786,20 +4312,20 @@
      ]
     },
     {
-     "ifade": "ESP32 USB boyundan",
-     "yer": "adım 32 K2 is_",
-     "cumle": "ESP32 USB (U06) boyuna girmez (05.11 kararı): ESP32'den (taban) direk arka yüzü (z −26) boyunca yukarı;",
-     "baglam": [
-      "girmez"
-     ]
-    },
-    {
      "ifade": "ESP32 → kafa USB",
      "yer": "adım 32 K2 kablo",
      "cumle": "Taban şeması 12'nin direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB);",
      "baglam": [
       "eski",
       "05.11 öncesi"
+     ]
+    },
+    {
+     "ifade": "ESP32 USB boyundan",
+     "yer": "adım 32 K2 alt adım 4 is_",
+     "cumle": "ESP32 USB (U06) boyuna girmez (05.11 kararı): ESP32'den (taban) direk arka yüzü (z −26) boyunca yukarı;",
+     "baglam": [
+      "girmez"
      ]
     },
     {
@@ -4393,6 +4919,16 @@
      "adim": "K1",
      "uyari": "K1 kablo: P03 tablosunda dağıtım kartı C'nin yeri (güç paneli) (alan kablo)",
      "var": true
+    },
+    {
+     "adim": "K1",
+     "uyari": "K1 ana metin: kabuktan önce dur, akü ayrık (alt adımlardan önce) (alan is_ana)",
+     "var": true
+    },
+    {
+     "adim": "K2",
+     "uyari": "K2 ana metin: kabuktan önce dur, enerjisiz, F3 takılı değil (alt adımlardan önce) (alan is_ana)",
+     "var": true
     }
    ],
    "zorunlu_eksik": []
@@ -4401,8 +4937,8 @@
   "elektrik": [],
   "elektrik_sayi": 0,
   "metin_sayisi": {
-   "veri": 4985,
-   "tarayici": 129
+   "veri": 5025,
+   "tarayici": 149
   },
   "parca": 1192,
   "sema": 65,
@@ -4543,7 +5079,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 55.6,
+     "sure_s": 57.9,
      "yon": [
       {
        "yon": [
@@ -4651,7 +5187,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 14.3,
+     "sure_s": 14.6,
      "yon": [
       {
        "yon": [
@@ -4802,7 +5338,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 27.2,
+     "sure_s": 27.8,
      "yon": [
       {
        "yon": [
@@ -4953,7 +5489,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 3.5,
+     "sure_s": 3.7,
      "yon": [
       {
        "yon": [
@@ -5129,7 +5665,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 72.7,
+     "sure_s": 76.4,
      "yon": [
       {
        "yon": [
@@ -5293,7 +5829,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 76.8,
+     "sure_s": 80.2,
      "yon": [
       {
        "yon": [
@@ -5457,7 +5993,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 28.9,
+     "sure_s": 30.2,
      "yon": [
       {
        "yon": [
@@ -5647,7 +6183,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 6.9,
+     "sure_s": 7.3,
      "yon": [
       {
        "yon": [
@@ -5912,7 +6448,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 4.7,
+     "sure_s": 4.8,
      "yon": [
       {
        "yon": [
@@ -5940,7 +6476,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 5.3,
+     "sure_s": 5.5,
      "yon": [
       {
        "yon": [
@@ -6101,7 +6637,7 @@
    ],
    "gecti": true,
    "e3_kafa_serbest": true,
-   "sure_s": 296.1
+   "sure_s": 308.6
   },
   "ucus": {
    "durum": "koştu",
@@ -16026,7 +16562,7 @@
      ]
     }
    ],
-   "sure_s": 945.4
+   "sure_s": 954.4
   },
   "isil_gomme": {
    "durum": "koştu",
@@ -27883,16 +28419,16 @@
     }
    }
   ],
-  "sure_s": 74.7,
+  "sure_s": 77.5,
   "sure": {
-   "yukleme_s": 12.1,
-   "sira_s": 84.1,
-   "perdelenme_s": 125.8,
-   "giris_s": 296.2,
-   "ucus_s": 945.4,
-   "toplam_s": 1463.6,
+   "yukleme_s": 11.7,
+   "sira_s": 87.3,
+   "perdelenme_s": 144.1,
+   "giris_s": 308.6,
+   "ucus_s": 954.4,
+   "toplam_s": 1506.0,
    "voksel_alani": 87,
-   "voksel_s": 80.0
+   "voksel_s": 83.4
   }
  },
  "perdelenme": {
@@ -28259,7 +28795,131 @@
     "gizli": 0,
     "gizli_parca": 0,
     "gizli_baglanti": 0,
-    "gizli_liste": []
+    "gizli_liste": [],
+    "grup": [
+     {
+      "grup": "Toprak ve iki bara",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 1,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "Ana hat ve şarj kolu",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 2,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "Akü ölçüm teli (G07)",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 3,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "Röle K1 ve ön şarj kartı",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 4,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "Bara çıkışları: BTS7960B ve XL4016 A / B / C",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 5,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "PC817 #2 algı teli (G22)",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 6,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "Sigorta kutusu çıkışları",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 7,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "Acil stop ve röle sürücüleri",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 8,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "Alt kat kartlarının öbür uçları",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 9,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "Enkoder, BTS sinyal ve sonar kabloları",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 10,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "Direğe çıkan hatların taban kısmı",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 11,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "Son kontrol: K1'de enerji verilmez",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 12,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     }
+    ],
+    "alt_gizli_istisnasiz": 0,
+    "alt_istisna": 0
    },
    {
     "adim": 18,
@@ -29139,7 +29799,91 @@
     "gizli": 0,
     "gizli_parca": 0,
     "gizli_baglanti": 0,
-    "gizli_liste": []
+    "gizli_liste": [],
+    "grup": [
+     {
+      "grup": "Kol servo uzatmaları",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 1,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "Kafa servoları, hat C",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 2,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "Kafa 12 V",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 3,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "ESP32 USB",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 4,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "Boyun demeti: tünelden geçirme",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 5,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "Kafa uçları, hoparlör kablosu ve gövdeye inenler",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 6,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "Göğüs ekranı 12 V",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 7,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     },
+     {
+      "grup": "Son kontrol: direğe tuttur",
+      "tezgah": "",
+      "yeni": 0,
+      "gizli": 0,
+      "gizli_liste": [],
+      "alt_adim": 8,
+      "istisna": [],
+      "gizli_istisnasiz": []
+     }
+    ],
+    "alt_gizli_istisnasiz": 0,
+    "alt_istisna": 0
    },
    {
     "adim": 33,
@@ -31732,7 +32476,7 @@
    }
   ],
   "toplam_gizli": 264,
-  "sure_s": 125.8,
+  "sure_s": 144.1,
   "alt_adim_gizli_istisnasiz": 0,
   "alt_adim_istisna": 117,
   "alt_sinir": 0,
@@ -36275,7 +37019,7 @@
   "hata": [],
   "gecti": true,
   "bolum": 38,
-  "sure_s": 38.0
+  "sure_s": 37.6
  },
  "kablo_esleme": {
   "hata": [],

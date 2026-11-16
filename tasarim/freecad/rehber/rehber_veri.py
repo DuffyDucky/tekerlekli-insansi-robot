@@ -69,6 +69,11 @@ TABLO = m6_tablo()
 log("M6 tablosu: %d satir" % len(TABLO))
 KODLAR = ["0"] + [r["kod"] for r in TABLO]
 KOD_IDX = {k: i for i, k in enumerate(KODLAR)}
+# P10.7b2d-A düzeltme turu 1 (F10l-kontrol D2): K1 / K2 metnindeki "alt adım 17.5" göndermeleri rehber_metin.m6_kodlar()'dan türer;
+# adım sırası burada başka çıkarsa göndermeler yanlış karta gider: üretim durur
+if any(KOD_IDX.get(_k) != _n for _k, _n in RM.ALT_ADIM_NO.items()) or RM.M6_KODLAR != KODLAR:
+    raise SystemExit("rehber_metin.ALT_ADIM_NO %s adim sirasiyla (%s) uyusmuyor: alt adim gondermeleri yanlis karta gider" % (
+        RM.ALT_ADIM_NO, {k: KOD_IDX.get(k) for k in RM.ALT_ADIM_NO}))
 TEZGAH_KOD = dict(RS.TEZGAH)
 BAGLANIR = dict(RS.BAGLANIR)
 _bilinmeyen = [k for k, _t, _f in RS.ADIMLAR if k not in KOD_IDX]
@@ -845,6 +850,8 @@ for i, kod in enumerate(KODLAR):
                 e["kenar"] = [q["id"] for q in P if q["a"] <= i and q["tur"] != "Referans" and any(d in gorunen(q) for d in g["kenar"])]
             if g.get("sema"):
                 e["_sema"] = tuple(g["sema"])
+            if g.get("sema_ortulu"):                                # P10.7b2d-A d1: karede görünmeyen şema {desen: neden} (lejant)
+                e["sema_ortulu"] = dict(g["sema_ortulu"])
             if g.get("gizli_ok"):
                 e["gizli_ok"] = dict(g["gizli_ok"])
             if g.get("ucus_ok"):
@@ -853,12 +860,21 @@ for i, kod in enumerate(KODLAR):
                 e["giris_ok"] = dict(g["giris_ok"])
             if g.get("piksel_ok"):                                  # F10d düzeltme 1: görünürlük ölçütü istisnası {desen: gerekçe}
                 e["piksel_ok"] = dict(g["piksel_ok"])
+            # P10.7b2d-A: demet alt adımı (rehber_metin.DEMET_ALT): demet adları, "genel" işareti, alt adımda gösterilen kablo listesi
+            # maddesi (adımın kablo listesindeki sırası; liste adım düzeyinde kalır, madde basılıda ve ekranda yalnız bu alt adımda)
+            e.update(RM.demet_grup_alanlari(g, mt.get("kablo") or [], kod, n))
             sg.append(e)
         ek = dict(sira=[x for g in sg for x in g["satir"]], sira_grup=sg)
+        if mt.get("demet_alt"):
+            ek["demet_alt"] = True
         if mt.get("alt"):
             ek["alt"] = len(sg)
             for p in ps:                                            # gösterim parçası (satırı yok) desenine uyan alt adımda görünür
                 if p["tur"] == "Referans":
+                    if mt.get("demet_alt"):                         # P10.7b2d-A: kablo yolu tam bir alt adımın deseninde (son gruba düşmez)
+                        cok = RM.demet_sema_coklu([g.get("desen") or () for g in sira], [(p["id"], tr(p["ad"]))])
+                        if cok:
+                            raise SystemExit("demet alt adimi %s: kablo yolu tam bir alt adimda degil: %s" % (kod, "; ".join(cok)))
                     sg[grup_i(p)].setdefault("ref", []).append(p["id"])
     if mt.get("poz"):
         ek["poz"] = mt["poz"]
@@ -899,6 +915,10 @@ for a in ADIMLAR:
     if not a.get("sira_grup"):
         continue
     kalan = {k for k, s in enumerate(SEMALAR) if s["a"] == a["i"]}
+    if a.get("demet_alt"):                                          # P10.7b2d-A: demet alt adımında şema tam bir alt adımın deseninde
+        cok = RM.demet_sema_coklu([g.get("_sema", ()) for g in a["sira_grup"]], [(k, SEMALAR[k]["ad"]) for k in sorted(kalan)])
+        if cok:
+            raise SystemExit("demet alt adimi %s: sema tam bir alt adimda degil: %s" % (a["kod"], "; ".join(cok)))
     for g in a["sira_grup"]:
         d = g.pop("_sema", ())
         g["sema"] = [k for k in sorted(kalan) if any(x in SEMALAR[k]["ad"] for x in d)]
@@ -906,7 +926,11 @@ for a in ADIMLAR:
     if kalan and a.get("alt"):
         log("UYARI sema alt adimi yok:", a["kod"], sorted(kalan))
         a["sira_grup"][-1]["sema"] = sorted(set(a["sira_grup"][-1]["sema"]) | kalan)
-    for g in a["sira_grup"]:
+    for n, g in enumerate(a["sira_grup"]):
+        # P10.7b2d-A d1: sema_ortulu deseni grubun kendi şemalarından birine uymalı (bayat desen sessizce lejantı yanıltmasın)
+        bos = [x for x in g.get("sema_ortulu") or {} if not any(x in SEMALAR[k]["ad"] for k in g["sema"])]
+        if bos:
+            raise SystemExit("%s.%d: sema_ortulu deseni grubun semasina uymuyor: %s" % (a["kod"], n + 1, bos))
         if not g["sema"]:
             g.pop("sema")
 

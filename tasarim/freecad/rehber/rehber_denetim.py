@@ -141,7 +141,10 @@ maddeden
 modelden dokuz yerlerdir kartlara bakarak durumu sinyali
 tablosudur pininin denemesine kesin
 panelinin
+kutbuna
 """.split())
+# P10.7b2d düzeltme turu 2 (F10l-kontrol-2 D1): son satır 17.1'deki G05 akü ucu cümlesinin 1 yeni kelimesi (gözden geçirildi: Türkçe
+# harfi olmayan doğru yazım, "kutup" → "kutbuna").
 # P10.7b2c düzeltme turu 1 (F10k-kontrol D2): son satır K2 kablo listesindeki U06 cümlesinin 1 yeni kelimesi (gözden geçirildi: Türkçe
 # harfi olmayan doğru yazım).
 # P10.7b2c ikinci yarı (ajan B): son satır bağlantı tablosu ve kafa içi / ses şeması notlarının 4 yeni kelimesi (gözden geçirildi:
@@ -299,9 +302,10 @@ ZORUNLU = [
            r"köprü yoksa röle çekmez", "K1 Ö4 yeri köprülü, köprü teli zincirin kesitinde (köprü yoksa röle çekmez)"),
     # açık işler turu (F10h-kontrol-2 §3.3-13): "tek köprü" yerine bu adımda takılan köprülerin açık listesi
     # düzeltme turu 2 (F10h-kontrol-3 §2): "yalnız" çıktı, anahtarlı baranın köprüleri listede; iki bara madde 2'de ayrı ayrı
-    ("K1", r"Bu adımda takılan köprüler: Ö4 yerindeki kısa tel köprü \(madde 5\), acil stop düğüm kartındaki "
-           r"\(A02, A04\) {kopru.A02} tel köprü \(madde 5\), yıldız barasının saplamaları arasındaki {kopru_adet.yildiz} adet "
-           r"{kopru.yildiz} köprü \(madde 2\), anahtarlı baranın saplamaları arasındaki {kopru_adet.bara} adet {kopru.bara} köprü",
+    # P10.7b2d-A düzeltme turu 1 (F10l-kontrol D2): "madde N" göndermeleri alt adım numarasına çevrildi (rehber_metin._demet_bol)
+    ("K1", r"Bu adımda takılan köprüler: Ö4 yerindeki kısa tel köprü \(alt adım 17\.8\), acil stop düğüm kartındaki "
+           r"\(A02, A04\) {kopru.A02} tel köprü \(alt adım 17\.8\), yıldız barasının saplamaları arasındaki {kopru_adet.yildiz} adet "
+           r"{kopru.yildiz} köprü \(alt adım 17\.1\), anahtarlı baranın saplamaları arasındaki {kopru_adet.bara} adet {kopru.bara} köprü",
      "K1 madde 8: bu adımda takılan köprülerin listesi (iki bara)"),
     ("K1", r"Anahtarlı bara \(\+\) {saplama.bara} M5 saplama: saplamalar {kopru_adet.bara} adet {kopru_renk.bara} {kopru.bara} "
            r"köprüyle", "K1 madde 2: anahtarlı baranın köprüleri (adet, renk, kesit)"),
@@ -389,6 +393,12 @@ ZORUNLU_ALAN = [
      "K2 kablo: U06 şemasının taban ucu yanlış çizili, kablo ESP32'nin USB girişine"),
     ("K1", "kablo", r"Dağıtım kartı C \(kafa\): kart güç panelinde, XL4016 C'nin yanında; adındaki \"kafa\" beslediği pan / tilt "
                     r"servolarıdır\.", "K1 kablo: P03 tablosunda dağıtım kartı C'nin yeri (güç paneli)"),
+    # P10.7b2d-A (F10l): demet alt adımlı K1 / K2'de uyarılar ana metinde ("is_ana": alt adım metni sayılmaz). Ana metin basılıda alt
+    # adım kartlarından önce, ekranda her alt adımın metninin üstünde (rehber/yazdir.html, rehber/app.js)
+    ("K1", "is_ana", r"Kabuk takılmadan önce burada dur\. Bağlarken akü ayrık \(XT60 açık\)\.",
+     "K1 ana metin: kabuktan önce dur, akü ayrık (alt adımlardan önce)"),
+    ("K2", "is_ana", r"Kabuktan önce dur\. Enerjisiz çalış: akü XT60 ayrık, F3 \(kafa\) takılı değil; kafa uçları enerjisiz bağlanır\.",
+     "K2 ana metin: kabuktan önce dur, enerjisiz, F3 takılı değil (alt adımlardan önce)"),
 ]
 # P10.7b2b (F10i-kontrol-3 A4, A5, A6): sıra. (adım, alan, önce, sonra, ad): "önce" alanda geçmeli ve "sonra"nın her geçişi "önce"nin
 # ilk geçişinden sonra gelmeli (cümleler kalıp yerinde dururken sırası bozulursa yakalanır; tek desenli ZORUNLU bunu tutmaz:
@@ -799,7 +809,9 @@ def tutarlilik(V, metinler):
     zorunlu = [dict(adim=k, uyari=ad, var=bool(re.search(d, adim_metin[kod[k]]))) for k, d, ad in zorunlu_listesi(zh)]
     A = {a["kod"]: a for a in V["adimlar"]}
     for k, alan, d, ad in zorunlu_alan_listesi(zh):
-        t = A.get(k, {}).get(alan)
+        # P10.7b2d düzeltme turu 2 (üretim çıkış 2, F10l-gunluk § 10.3): "is_ana" kaynak tarafında türetilen alan adı (_alan_anahtarlari);
+        # veride demet alt adımlı adımın ana metni adımın kendi "is_" alanıdır (alt adım metinleri sira_grup[..]["is_"]'te).
+        t = A.get(k, {}).get("is_" if alan == "is_ana" else alan)
         t = "\n".join(t) if isinstance(t, list) else (t or "")
         zorunlu.append(dict(adim=k, uyari=ad + " (alan %s)" % alan, var=bool(re.search(d, t))))
     for x in cumle_denetle({k: adim_metin[kod[k]] for k in kod}, zh):
@@ -1980,6 +1992,17 @@ def _ham_boz(ham, kod, eski, yeni):
     return out, n
 
 
+def _alan_anahtarlari(p):
+    """Kaynak yerinin (bölünmüş) ZORUNLU_ALAN / ZORUNLU_SIRA alan anahtarları. P10.7b2d-A: "is_ana" yalnız adımın ana metni; demet
+    alt adımlı adımda (rehber_metin.DEMET_ALT) alt adım metinleri sırayla "is_" alanına da girer (metin bölündü, kural aynı yerde)."""
+    out = [p[2]]
+    if p[2] == "is_":
+        out.append("is_ana")
+    elif p[2] == "alt" and p[-1] == "is_" and RM.ADIM.get(p[1], {}).get("demet_alt"):
+        out.append("is_")
+    return out
+
+
 def _zorunlu_eksik_say(ham):
     """Ham metinden (yer tutucular çözülerek) ZORUNLU + ZORUNLU_ALAN + ZORUNLU_CUMLE eksik sayısı."""
     D = _RDG.degerler()
@@ -1989,7 +2012,8 @@ def _zorunlu_eksik_say(ham):
         if p[0] == "kaynak" and len(p) > 2 and p[1] in RM.ADIM:
             c = D.coz(t or "", [])
             adim[p[1]] += "\n" + c
-            alanlar[(p[1], p[2])] += "\n" + c
+            for a in _alan_anahtarlari(p):
+                alanlar[(p[1], a)] += "\n" + c
     n = sum(1 for k, d, ad in zorunlu_listesi() if k in RM.ADIM and not re.search(d, adim[k]))
     n += sum(1 for k, alan, d, ad in zorunlu_alan_listesi() if k in RM.ADIM and not re.search(d, alanlar[(k, alan)]))
     n += len(sira_denetle(alanlar))                                  # P10.7b2b: ZORUNLU_SIRA
@@ -2178,7 +2202,159 @@ def elektrik_bozma_denemesi():
     finally:
         TALIMAT_ERTELE = eski_e
     out.append(dict(ad="açık iş: onay kaydı (TALIMAT_ERTELE gevşedi)", yakalandi=n > 0, hata=n))
+    out += demet_bozma_denemesi(ham)
     return dict(temel_hata=len(temel), deneme=out, yakalanan=sum(1 for x in out if x["yakalandi"]), toplam=len(out))
+
+
+def demet_bozma_denemesi(ham=None):
+    """P10.7b2d-A: demet alt adımı kurallarının (D1–D5) bozmaları. Her biri beklenen kuralın hatasını artırmalı."""
+    import copy
+    ham = ham if ham is not None else kaynak_metinler(ham=True)
+    yol = demet_yol_adimlari()
+    t0 = demet_alt_denetle(ham=ham, yol_adim=yol)["hata"]
+    out = [dict(ad="demet: bozulmamış kaynak (hata 0)", yakalandi=not t0, hata=len(t0))]
+
+    def kural_say(r, k):
+        return sum(1 for x in r["hata"] if x[0] == k)
+
+    def ham_yer(h, yer, f):
+        return [(y, f(t) if y == yer else t) for y, t in h]
+
+    def sira_boz(kod, f):
+        s = copy.deepcopy(RM.ADIM_HAM[kod]["sira"])
+        f(s)
+        return {kod: s}
+
+    def dene(ad, kural, h=None, sira=None):
+        r = demet_alt_denetle(ham=h if h is not None else ham, sira=sira, yol_adim=yol)
+        n = kural_say(r, kural) - sum(1 for x in t0 if x[0] == kural)
+        out.append(dict(ad="demet %s: %s" % (kural, ad), yakalandi=n > 0, hata=n))
+    y = "kaynak %s alt adım %d is_"
+
+    # düzeltme turu 1: alt adım sırası ada göre aranır (kart eklenince / bölününce bozmalar sessizce başka karta kaymaz)
+    def ki(kod, parca):
+        ns = [n for n, g in enumerate(RM.DEMET_ALT[kod]) if parca in g["ad"]]
+        assert len(ns) == 1, (kod, parca, ns)
+        return ns[0]
+
+    def ky(kod, parca):
+        return y % (kod, ki(kod, parca) + 1)
+    hm = dict(ham)
+    k_bara, k_g07, k_role = ki("K1", "iki bara"), ki("K1", "(G07)"), ki("K1", "Röle K1")
+    k_cikis, k_g22, k_kutu, k_acil = ki("K1", "Bara çıkışları"), ki("K1", "(G22)"), ki("K1", "Sigorta kutusu"), ki("K1", "Acil stop")
+    k_altkat, k_sonar, k_son = ki("K1", "Alt kat"), ki("K1", "sonar"), ki("K1", "Son kontrol")
+    sonar = "Sonarlar: sağ (Q01), orta (Q02) ve sol (Q03) sonarın VCC'sini arayüz"
+    t8 = hm.get(ky("K1", "sonar")) or ""
+    i8 = t8.find(sonar)
+    j8 = t8.find("bağla.", i8) + len("bağla.")
+    cumle = t8[i8:j8] if i8 >= 0 else "⁣yok"
+    # kablo yanlış alt adımda: sonar cümlesi (Q01–Q03, demet "taban sonar") ilk alt adıma (17.1) taşındı
+    h = ham_yer(ham_yer(ham, ky("K1", "sonar"), lambda t: t.replace(cumle + " ", "")), y % ("K1", 1), lambda t: t + " " + cumle)
+    dene("sonar cümlesi (Q01–Q03) kendi alt adımından 17.1'e taşındı", "D3", h)
+    dene("sonar cümlesi taşındı: metin kendi paragraflarıyla aynı değil", "D1", h)
+    dene("sonar alt adımının demetinden \"taban sonar\" silindi (Q01–Q03 demetsiz)", "D3",
+         sira=sira_boz("K1", lambda s: s[k_sonar].update(demet=("taban elektronik katı",))))
+    dene("K2 madde 1'in demetleri yer değiştirdi (kol sağ → gövde (K2))", "D2",
+         sira=sira_boz("K2", lambda s: s[0].update(demet=("gövde (K2)", "kol sol"))))
+    dene("kayıtta olmayan demet adı", "D2", sira=sira_boz("K1", lambda s: s[k_role].update(demet=("taban (K3)",))))
+    dene("gerekçesiz demet (röle alt adımına \"kafa içi\")", "D2",
+         sira=sira_boz("K1", lambda s: s[k_role].update(demet=("taban (K1)", "kafa içi"))))
+    dene("demetsiz alt adımın \"genel\" işareti silindi", "D2", sira=sira_boz("K1", lambda s: s[k_son].pop("genel")))
+    # madde silindi / yer değiştirdi
+    dene("acil stop alt adımının metni silindi", "D1", ham_yer(ham, ky("K1", "Acil stop"), lambda t: ""))
+    dene("sıra kaydında acil stop paragrafı yok", "D1", sira=sira_boz("K1", lambda s: s[k_acil].update(paragraf=())))
+    a3, a4 = hm[y % ("K1", 3)], hm[y % ("K1", 4)]
+    dene("17.3 ile 17.4'ün metni yer değiştirdi", "D1",
+         ham_yer(ham_yer(ham, y % ("K1", 3), lambda t: a4), y % ("K1", 4), lambda t: a3))
+    dene("sıra kaydında K2 madde 2 ile 3 yer değiştirdi", "D1",
+         sira=sira_boz("K2", lambda s: (s[1].update(paragraf=(3,)), s[2].update(paragraf=(2,)))))
+    kg = ki("K2", "Göğüs")
+    dene("K2 bir paragraf iki alt adımda (yineleme)", "D1",
+         sira=sira_boz("K2", lambda s: s[kg].update(paragraf=(kg + 1, kg + 2))))
+    # uyarı düştü: alt adım metnindeki uyarı (D1) ve ana metnin uyarısı (D5: ZORUNLU_ALAN is_ana)
+    dene("G22 alt adımından \"ters bağlıyken enerji verme\" uyarısı silindi", "D1",
+         ham_yer(ham, ky("K1", "(G22)"), lambda t: t.replace(", ters bağlıyken enerji verme", "")))
+    z0 = _zorunlu_eksik_say(ham)
+    for ad, kod, eski in (("K1 ana metinden \"Bağlarken akü ayrık (XT60 açık).\" silindi", "K1", " Bağlarken akü ayrık (XT60 açık)."),
+                          ("K2 ana metinden \"kafa uçları enerjisiz bağlanır\" silindi", "K2", "; kafa uçları enerjisiz bağlanır")):
+        h2 = ham_yer(ham, "kaynak %s is_" % kod, lambda t, e=eski: t.replace(e, ""))
+        n = _zorunlu_eksik_say(h2) - z0 if h2 != ham else 0
+        out.append(dict(ad="demet D5: " + ad, yakalandi=n > 0, hata=n))
+    # uyarı ana metinden alt adıma taşındı: ana metinde değil (D5), metin bölünmesi de bozuk (D1)
+    w = " Bağlarken akü ayrık (XT60 açık)."
+    h2 = ham_yer(ham_yer(ham, "kaynak K1 is_", lambda t: t.replace(w, "")), y % ("K1", 1), lambda t: w.strip() + " " + t)
+    n = _zorunlu_eksik_say(h2) - z0
+    out.append(dict(ad="demet D5: K1 akü ayrık uyarısı ana metinden 17.1'e taşındı", yakalandi=n > 0, hata=n))
+    # ZORUNLU_SIRA demet adımında alt adım metninde de geçerli (G07 makaronu, AU3 dikişleri)
+    h2 = ham_yer(ham, ky("K2", "Kafa uçları"), lambda t: t.replace("Hoparlör kablosu (AU3) dışındaki",
+                                                                    "Dikişleri sık. Hoparlör kablosu (AU3) dışındaki", 1))
+    n = _zorunlu_eksik_say(h2) - z0 if h2 != ham else 0
+    out.append(dict(ad="demet ZORUNLU_SIRA: K2 kafa uçları alt adımında dikişler AU3'ten önce sıkılıyor", yakalandi=n > 0, hata=n))
+    # şema / kablo yolu tam bir alt adımda
+    dene("G19 şeması hiçbir alt adımda değil", "D4", sira=sira_boz("K1", lambda s: s[k_altkat].update(sema=())))
+    dene("G19 şeması iki alt adımda (bara çıkışları ve alt kat)", "D4",
+         sira=sira_boz("K1", lambda s: s[k_cikis].update(sema=tuple(s[k_cikis].get("sema") or ()) + ("(G19,",))))
+    dene("Kablo yolu 9 hiçbir alt adımda değil", "D4", sira=sira_boz("K1", lambda s: s[k_kutu].update(desen=())))
+    dene("U06 şeması kablosunu anmayan alt adımda (32.1)", "D4",
+         sira=sira_boz("K2", lambda s: (s[3].update(sema=()), s[0].update(sema=("(U06)",)))))
+    dene("Kablo yolu 12'nin sema_ok gerekçesi silindi", "D4", sira=sira_boz("K2", lambda s: s[3].pop("sema_ok")))
+    dene("bayat şema deseni", "D4", sira=sira_boz("K1", lambda s: s[k_g07].update(sema=("(G07,", "(G99,"))))
+    dene("P03 bağlantı tablosu iki alt adımda", "D4", sira=sira_boz("K1", lambda s: s[k_sonar].update(kablo_sec=("Bağlantı tablosu P03",))))
+
+    # D6 bara uçları (F10l-kontrol D1). uc alanı sira_boz kopyasında yoksa DEMET_ALT'tan ada göre okunur; bozma açıkça yazar.
+    def uc_boz(f):
+        def g(s):
+            for n, x in enumerate(s):
+                x["uc"] = tuple(RM.DEMET_ALT["K1"][n].get("uc") or ())
+            f(s)
+        return sira_boz("K1", g)
+    kopru = ("köprü/+", "köprü/−")
+    h2 = ham_yer(ham, ky("K1", "Röle K1"), lambda t: t + " Köprüler: {kopru_adet.yildiz} ve {kopru_adet.bara}.")
+    dene("bara köprüleri röle alt adımına (17.4) kaydı: G06 bara kurulmadan baraya takılıyor (eski hata)", "D6", h2,
+         sira=uc_boz(lambda s: (s[k_bara].update(uc=("G05/−",)), s[k_role].update(uc=s[k_role]["uc"] + kopru))))
+    t5 = hm.get(ky("K1", "Bara çıkışları")) or ""
+    i16 = t5.find("XL4016 C'yi de")
+    i12 = t5.find("G12–G15'in alt kat ucu")
+    h2 = ham_yer(ham, ky("K1", "Bara çıkışları"), lambda t: t[:i12] + t[i16:] + " " + t[i12:i16].rstrip()) if min(i16, i12) >= 0 else ham
+    dene("G16 cümlesi G12–G15 bağlamasının önüne alındı: 16 AWG pabuç G13'ün altına girer", "D6", h2)
+    dene("alt kat alt adımında \"alt adım 17.5'te bağlandı\" göstergesi silindi (G12–G15 iki kartta bağla)", "D6",
+         ham_yer(ham, ky("K1", "Alt kat"), lambda t: t.replace(" alt adım 17.5'te,", ",")))
+    dene("direk alt adımında G17 / G20 \"alt adım 17.7'de bağlandı\" yerine \"bağla\"", "D6",
+         ham_yer(ham, ky("K1", "Direğe"), lambda t: t.replace("taban uçları alt adım 17.7'de bağlandı; ", "taban uçlarını bağla; ")))
+    dene("ucun alt adımında saplama yer tutucusu yok (G06 − ucu \"barasına\")", "D6",
+         ham_yer(ham, ky("K1", "şarj kolu"), lambda t: t.replace("yıldız barasının {saplama.G06} numaralı saplamasına", "yıldız barasına")))
+    dene("bara ucu hiçbir alt adımda değil (G22/−)", "D6",
+         sira=uc_boz(lambda s: s[k_g22].update(uc=tuple(x for x in s[k_g22]["uc"] if x != "G22/−"))))
+    dene("bir uç iki kartta bağlatılıyor (G17/− kutu ve alt kat alt adımında)", "D6",
+         sira=uc_boz(lambda s: s[k_altkat].update(uc=("G17/−",))))
+    dene("kayıttaki bara yerleşiminde olmayan uç (G99/+)", "D6", sira=uc_boz(lambda s: s[k_role].update(uc=s[k_role]["uc"] + ("G99/+",))))
+    # F10l-kontrol N1: G22 talimatı kendi alt adımından 17.1'e taşındı. D3 demet üyeliğine baktığı için yakalamıyordu; bara uçlu kablo
+    # için D6 (saplama yer tutucusu sahip alt adımda değil) yakalar. Bara ucu olmayan kablo için kaba kalır (onay kaydı yakalar).
+    t6 = hm.get(ky("K1", "(G22)")) or ""
+    dene("N1: G22 talimatı kendi alt adımından 17.1'e taşındı", "D6",
+         ham_yer(ham_yer(ham, ky("K1", "(G22)"), lambda t: ""), y % ("K1", 1), lambda t: t + " " + t6))
+
+    # D7 göndermeler (F10l-kontrol D2)
+    dene("çözülmeyen gönderme (\"madde 9\" çevrilmeden kaldı)", "D7",
+         ham_yer(ham, ky("K1", "(G07)"), lambda t: t + " (madde 9)"))
+    dene("var olmayan karta gönderme (alt adım 17.13)", "D7",
+         ham_yer(ham, ky("K1", "Son kontrol"), lambda t: t.replace("(alt adım 17.8)", "(alt adım 17.13)", 1)))
+    dene("paragraf başında çapa kaldı (\"3. \" kart numarasıyla çelişir)", "D7", ham_yer(ham, ky("K1", "Röle K1"), lambda t: "3. " + t))
+    yf = next((a for a, t in ham if a.startswith("kaynak F5") and "alt adım 32.4" in (t or "")), None)
+    dene("başka adımda \"K2 madde 4\" çevrilmeden kaldı (F5)", "D7",
+         ham_yer(ham, yf, lambda t: t.replace("alt adım 32.4", "K2 madde 4", 1)) if yf else ham)
+    kay = [dict(e) for e in RM.GONDERME_KAYIT]
+    if kay:
+        kay[0]["hedef"] = kay[0]["hedef"] % len(RM.DEMET_ALT[kay[0]["kod"]]) + 1
+    r = demet_alt_denetle(ham=ham, yol_adim=yol, gonderme=dict(kayit=kay))
+    n = kural_say(r, "D7") - sum(1 for x in t0 if x[0] == "D7")
+    out.append(dict(ad="demet D7: gönderme yanlış karta çevrildi (kayıt hedefi kaydı)", yakalandi=n > 0, hata=n))
+    kayn = dict(RM.GONDERME_KAYNAK)
+    kayn[("K1", "bozma")] = "G05'in üstüne (madde 2)"
+    r = demet_alt_denetle(ham=ham, yol_adim=yol, gonderme=dict(kaynak=kayn))
+    n = kural_say(r, "D7") - sum(1 for x in t0 if x[0] == "D7")
+    out.append(dict(ad="demet D7: kaynakta kayda geçmeyen gönderme var", yakalandi=n > 0, hata=n))
+    return out
 
 
 def denetle(V, ek_metinler=()):
@@ -2217,6 +2393,287 @@ def teyit_denetle(ham=None):
     return out
 
 
+# ------------------------------------------------------------------ P10.7b2d-A: K1 / K2 demet alt adımları (planlama/d158/F10l-gunluk.md)
+# rehber_metin.DEMET_ALT. FreeCAD'siz, veri üretmeden. Kurallar:
+#   D1 paragraf: alt adımların paragraf sırası 1 … n ardışık, eksiksiz, yinelemesiz; ana metin = paragraf 0; her alt adımın metni kendi
+#      paragrafları; ana metin + alt adımlar (sırayla) = adımın tam metni (ALT_TAM_HAM). ham verilirse metinler oradan okunur (bozma).
+#   D2 demet: alt adımın demet adları kayıttaki demet_sirasi'nda; her demet adı alt adımın metninde kimliğiyle geçen bir kablonun kayıttaki
+#      demetidir (elle demet yok); demetsiz alt adım "genel" işaretli (son kontrol), "genel" alt adımın demeti yok.
+#   D3 kablo: adımın alt adım metinlerinde kimliğiyle geçen her kablo, kayıttaki demeti o alt adımın demetlerinde olan bir alt adımda geçer.
+#   D4 kare: adımın her şeması (SEMA) ve her CAD kablo yolu (taban-analiz.json, rehber_metin.kablo_kapisi) tam bir alt adımın desenine uyar;
+#      o alt adım şemanın kablolarından birini (demeti uyan) anar ya da desen sema_ok'ta gerekçeli; hiçbir şemaya uymayan desen yok;
+#      kablo_sec adımın kablo listesinde tam bir maddeye uyar, madde tek alt adımda, maddedeki kimlik alt adımın metninde geçer.
+#   D5 (ZORUNLU_ALAN "is_ana"): ana metnin uyarıları ana metinde (alt adım kartlarından önce basılır, ekranda her alt adımın üstünde).
+def _demet_kimlikleri(metin, kimlikler):
+    s = {k for k in _KIMLIK_ACIK.findall(metin or "") if k in kimlikler}
+    for on, a, b in re.findall(r"(?<![\w{.])([A-Z]{1,2})(\d{2})\s*[–-]\s*\1(\d{2})(?![\w}])", metin or ""):
+        s |= {"%s%02d" % (on, n) for n in range(int(a), int(b) + 1) if "%s%02d" % (on, n) in kimlikler}
+    return s
+
+
+def demet_yol_adimlari(yol=None):
+    """CAD kablo yolu numarası -> adım kodu (rehber_veri.py ile aynı kural: kablo_kapisi(yolun en büyük y'si)); dosya yoksa None."""
+    import rehber_kablo as _RKB
+    yol = yol or _RKB.GEO_ANALIZ
+    if not os.path.exists(yol):
+        return None
+    ky = json.load(open(yol, encoding="utf-8")).get("kablo_yolu") or []
+    return {n: RM.kablo_kapisi(max(p[1] for p in k["noktalar"])) for n, k in enumerate(ky, 1) if k.get("noktalar")}
+
+
+# P10.7b2d-A düzeltme turu 1 (F10l-kontrol D1): bara uçları (rehber_metin.DEMET_ALT "uc"; kayıt kablolar.json bara-pabuc yerlesim).
+#   U1 kayıttaki her bara ucu (ve iki baranın köprüleri) tam bir alt adımda; kayıtta olmayan uç yok.
+#   U2 ucun alt adımının metninde ucun saplama yer tutucusu ({saplama.…Gnn…} yıldız, {bsaplama.…Gnn…} anahtarlı bara, köprü için
+#      {kopru_adet.yildiz|bara}): montajcı numarayı başka alt adımda aramaz.
+#   U3 aynı saplamada 12 AWG pabuç (köprü uçları dahil) incelerden önce takılır (alt adım sırası, aynı alt adımda metindeki yer):
+#      "büyük akımlı (12 AWG) pabuçlar yığının altında" (bara-pabuc.not). Köprüsüz bara olmadığı için bu, bara kurulmadan baraya uç
+#      takılmamasını da sınar.
+#   U4 ucu başka alt adımda bağlanan kabloyu anan alt adım (yerlesim=True olan yerleşim listesi hariç) o alt adımı numarasıyla anar
+#      ("alt adım 17.5'te bağlandı"): aynı uç iki kartta "bağla" diye okunmaz.
+def bara_uc_denetle(R, kod, G, metinler, T, h):
+    D = _RDG.degerler()
+    BP = T["klemens_turleri"]["bara-pabuc"]
+    yer = {}
+    for bara, isaret in (("Yıldız barası · GND", "−"), ("Anahtarlı bara · +", "+")):
+        for s, lst in (BP["kopruler"][bara].get("yerlesim") or {}).items():
+            for x in lst:
+                yer[x] = (isaret, s)
+    kopru_awg = {"+": BP["kopruler"]["Anahtarlı bara · +"]["awg"], "−": BP["kopruler"]["Yıldız barası · GND"]["awg"]}
+    kesit = {r["kimlik"]: (r.get("kesit") or {}).get("awg") for r in T["kablolar"]}
+    adlar = {g["ad"]: g for g in getattr(R, "DEMET_ALT", {}).get(kod, [])}
+
+    def alan(g, k):
+        return g[k] if k in g else (adlar.get(g.get("ad")) or {}).get(k)
+    sahip = {}
+    for n, g in enumerate(G):
+        for u in alan(g, "uc") or ():
+            sahip.setdefault(u, []).append(n)
+    if not sahip:
+        return
+    no = getattr(R, "ALT_ADIM_NO", {}).get(kod)
+    for u in sorted(set(yer) | {"köprü/+", "köprü/−"}):
+        ns = sahip.get(u, [])
+        if len(ns) != 1:
+            h("D6", "%s %s: bara ucu %d alt adımda bağlatılıyor (tam bir olmalı: %s)" % (kod, u, len(ns),
+                                                                                    ", ".join("%d" % (n + 1) for n in ns) or "hiçbiri"))
+    for u in sorted(sahip):
+        if u not in yer and u not in ("köprü/+", "köprü/−"):
+            h("D6", "%s %s: kayıttaki bara yerleşiminde yok" % (kod, u))
+    pos = {}
+    for u, ns in sorted(sahip.items()):
+        if len(ns) != 1:
+            continue
+        k, isaret = u.split("/")
+        if k == "köprü":
+            desen = r"\{kopru_adet\.%s\}" % ("bara" if isaret == "+" else "yildiz")
+        else:
+            desen = r"\{%s\.[^{}\s]*\b%s\b[^{}\s]*\}" % ("bsaplama" if isaret == "+" else "saplama", re.escape(k))
+        m = re.search(desen, metinler[ns[0]] or "")
+        if not m:
+            h("D6", "%s alt adım %d: %s bu alt adımda bağlatılıyor ama metninde saplama yer tutucusu yok" % (kod, ns[0] + 1, u))
+        else:
+            pos[u] = (ns[0], m.start())
+    for isaret, s in sorted(set(yer.values())):
+        uclar = [u for u, v in sorted(yer.items()) if v == (isaret, s)] + ["köprü/" + isaret]
+        awg = {u: kopru_awg[isaret] if u.startswith("köprü/") else kesit.get(u.split("/")[0]) for u in uclar}
+        for a in uclar:
+            for b in uclar:
+                if awg[a] == 12 and awg[b] != 12 and a in pos and b in pos and pos[a] >= pos[b]:
+                    h("D6", "%s %s barası saplama %s: %s (12 AWG) %s'den sonra takılıyor (alt adım %d, %d): büyük akımlı pabuç altta "
+                            "olmalı" % (kod, "anahtarlı" if isaret == "+" else "yıldız", s, a, b, pos[a][0] + 1, pos[b][0] + 1))
+    kab = {}
+    for u, ns in sahip.items():
+        if not u.startswith("köprü/"):
+            kab.setdefault(u.split("/")[0], set()).update(ns)
+    kim = set(kesit)
+    for n, g in enumerate(G):
+        if alan(g, "yerlesim"):
+            continue
+        anilan = _demet_kimlikleri(D.coz(metinler[n] or "", []), kim)
+        for c in sorted(anilan & set(kab)):
+            if n in kab[c]:
+                continue
+            if not any(("alt adım %s.%d" % (no, k + 1)) in (metinler[n] or "") for k in kab[c]):
+                h("D6", "%s alt adım %d (%s): %s'yi anıyor ama ucu alt adım %s'de bağlanıyor ve bu metin o alt adımı anmıyor (aynı uç iki "
+                        "kartta \"bağla\" okunur)" % (kod, n + 1, g.get("ad"), c, "/".join("%s.%d" % (no, k + 1) for k in sorted(kab[c]))))
+
+
+# P10.7b2d-A düzeltme turu 1 (F10l-kontrol D2): alt adım göndermeleri (rehber_metin._demet_bol, gonderme_cevir).
+#   D7a çözülemeyen gönderme yok (rehber_metin.GONDERME_HATA).
+#   D7b K1 / K2 metinlerinde "madde N" kalmadı (başka adımın maddesi "B6a madde 4" hariç); başka adımlarda "K1 / K2 madde N" kalmadı.
+#   D7c paragraf başında çapa ("3. ", "3b. ") kalmadı: kart numarasıyla çelişen ikinci numara yok.
+#   D7d her "alt adım S.M" var olan bir kartı gösterir (S alt adımlı bir adımın numarası, 1 ≤ M ≤ alt adım sayısı).
+#   D7e her çevrilen gönderme (GONDERME_KAYIT) çapanın paragrafını içeren karta gider (kaynaktan bağımsız yeniden kurulur) ve
+#       kaynaktaki gönderme sayısı çevrilen sayıya eşit.
+def gonderme_denetle(R, ham, h, kayit=None, kaynak=None):
+    kayit = R.GONDERME_KAYIT if kayit is None else kayit
+    kaynak = R.GONDERME_KAYNAK if kaynak is None else kaynak
+    for e in R.GONDERME_HATA:
+        h("D7", "çözülemeyen gönderme: %s" % e)
+    kodlar = set(getattr(R, "DEMET_ALT", {}))
+    adimlar = set(R.ADIM)
+
+    def kalan(t, kod_bagli):
+        out = []
+        for m in R._GONDERME.finditer(t or ""):
+            on = R._ADIM_ONEKI.search((t or "")[:m.start()])
+            if not m.group(1) and on and on.group(1) in adimlar:
+                continue
+            if m.group(1) or kod_bagli in kodlar:
+                out.append(m.group(0))
+        return out
+    no_kod = {v: k for k, v in getattr(R, "ALT_ADIM_NO", {}).items()}
+    sira_say = {i: len(R.ADIM[k].get("sira") or []) for i, k in enumerate(getattr(R, "M6_KODLAR", [])) if k in R.ADIM}
+    for y, t in ham:
+        p = y.split()
+        kod = p[1] if len(p) > 1 else ""
+        for x in kalan(t, kod):
+            h("D7", "%s: gönderme çevrilmedi: «%s»" % (y, x))
+        if kod in kodlar and (y.endswith(" is_")):
+            for s in (t or "").split("\n"):
+                if R._CAPA.match(s):
+                    h("D7", "%s: paragraf başında çapa kaldı (kart numarasıyla çelişen numara): «%s»" % (y, s[:30]))
+        for m in re.finditer(r"\balt adım (\d+)\.(\d+)\b", t or ""):
+            s, j = int(m.group(1)), int(m.group(2))
+            if not (1 <= j <= sira_say.get(s, 0)):
+                h("D7", "%s: «%s» var olan bir kartı göstermiyor" % (y, m.group(0)))
+    n_kaynak = sum(len(kalan(t, yol[0])) for yol, t in kaynak.items())
+    if n_kaynak != len(kayit) + len(R.GONDERME_HATA):
+        h("D7", "kaynakta %d gönderme, çevrilen %d, çözülemeyen %d" % (n_kaynak, len(kayit), len(R.GONDERME_HATA)))
+    par = {k: R.ALT_KAYNAK_HAM.get(k, "").split("\n") for k in kodlar}
+    hm = dict(ham)
+    for e in kayit:
+        kod, capa, n = e["kod"], e["capa"], e["hedef"]
+        bul = [_RCAPA_SIL(R, s) for s in par.get(kod, []) if s.startswith(capa + ". ")]
+        kart = hm.get("kaynak %s alt adım %d is_" % (kod, n)) or ""
+        if len(bul) != 1 or bul[0] not in kart:
+            h("D7", "%s: %s madde %s alt adım %s.%d'e çevrildi, ama çapanın paragrafı o kartta değil" % (
+                e["yer"], kod, capa, getattr(R, "ALT_ADIM_NO", {}).get(kod), n))
+
+
+def _RCAPA_SIL(R, s):
+    """Çapası silinmiş kaynak paragrafı, gönderme çevrilmeden önceki biçimiyle karşılaştırılamaz: yalnız çevrilmeyen baş kısmı
+    (ilk "madde" göndermesine kadar) aranır."""
+    s = R._CAPA.sub("", s, count=1)
+    m = R._GONDERME.search(s)
+    return (s[:m.start()] if m else s)[:120]
+
+
+def demet_alt_denetle(R=None, ham=None, sira=None, T=None, yol_adim=None, gonderme=None):
+    """Doner dict(hata=[(kural, ileti)], adim={kod: dict(alt, kablo, oge)}). sira: {kod: [grup]} (bozma; varsayılan R.ADIM_HAM).
+    gonderme: dict(kayit=…, kaynak=…) D7 bozması için."""
+    R = R or RM
+    D = _RDG.degerler()
+    T = T or D.T
+    demet = {r["kimlik"]: r.get("demet") for r in T["kablolar"]}
+    kim = set(demet)
+    gecerli = set(T.get("demet_sirasi") or [])
+    yol_adim = yol_adim if yol_adim is not None else demet_yol_adimlari()
+    import rehber_kablo as _RKB
+    hm = dict(ham) if ham is not None else None
+    hata, ozet = [], {}
+
+    def h(kural, ileti):
+        hata.append((kural, ileti))
+    for kod in getattr(R, "DEMET_ALT", {}):
+        G = (sira or {}).get(kod) or R.ADIM_HAM[kod].get("sira") or []
+        tam = R.ALT_TAM_HAM.get(kod, "")
+        par = tam.split("\n")
+        y = "kaynak %s" % kod
+        # D1
+        sirali = [j for g in G for j in g.get("paragraf") or ()]
+        if sirali != list(range(1, len(par))):
+            eks = sorted(set(range(1, len(par))) - set(sirali))
+            yin = sorted({j for j in sirali if sirali.count(j) > 1})
+            h("D1", "%s: alt adım paragrafları %s, beklenen 1 … %d sırayla (eksik %s, yinelenen %s)" % (kod, sirali, len(par) - 1, eks or "-",
+                                                                                              yin or "-"))
+        bas = hm.get(y + " is_") if hm is not None else R.ADIM_HAM[kod].get("is_")
+        if bas != par[0]:
+            h("D1", "%s: ana metin tam metnin ilk paragrafı değil" % kod)
+        if hm is not None:
+            n_ham = sum(1 for k in hm if k.startswith(y + " alt adım ") and k.endswith(" is_"))
+            if n_ham != len(G):
+                h("D1", "%s: kaynakta %d alt adım metni, sırada %d alt adım" % (kod, n_ham, len(G)))
+        metin = []
+        for n, g in enumerate(G):
+            t = hm.get("%s alt adım %d is_" % (y, n + 1)) if hm is not None else g.get("is_")
+            bek = "\n".join(par[j] for j in (g.get("paragraf") or ()) if 0 < j < len(par))
+            if t != bek:
+                i = next((i for i, (a, b) in enumerate(zip(t or "", bek)) if a != b), min(len(t or ""), len(bek)))
+                h("D1", "%s alt adım %d (%s): metin kendi paragraflarıyla aynı değil (ilk fark %d. karakter: «%s» ↔ «%s»)" % (
+                    kod, n + 1, g.get("ad"), i, (t or "")[max(0, i - 20):i + 30], bek[max(0, i - 20):i + 30]))
+            metin.append(t or "")
+        if "\n".join([bas or ""] + metin) != tam:
+            h("D1", "%s: ana metin + alt adımlar (sırayla) adımın tam metniyle aynı değil (madde silinmiş, eklenmiş ya da yer değiştirmiş)" % kod)
+        # D2, D3
+        anilan = [_demet_kimlikleri(D.coz(t, []), kim) for t in metin]
+        for n, g in enumerate(G):
+            dm = tuple(g.get("demet") or ())
+            ad = "%s alt adım %d (%s)" % (kod, n + 1, g.get("ad"))
+            if not dm and not g.get("genel"):
+                h("D2", "%s: demeti yok, \"genel\" işareti de yok" % ad)
+            if dm and g.get("genel"):
+                h("D2", "%s: \"genel\" işaretli ama demeti var %s" % (ad, list(dm)))
+            for d in dm:
+                if d not in gecerli:
+                    h("D2", "%s: demet \"%s\" kayıttaki demet_sirasi'nda yok" % (ad, d))
+                elif not any(demet.get(k) == d for k in anilan[n]):
+                    h("D2", "%s: demet \"%s\" metinde geçen hiçbir kablonun kayıttaki demeti değil (%s)" % (
+                        ad, d, ", ".join(sorted(anilan[n])) or "kimlik yok"))
+        for k in sorted(set().union(*anilan) if anilan else set()):
+            if not any(k in anilan[n] and demet.get(k) in (G[n].get("demet") or ()) for n in range(len(G))):
+                h("D3", "%s: %s (kayıtta demet \"%s\") geçtiği alt adımların (%s) hiçbirinin demeti değil" % (
+                    kod, k, demet.get(k), ", ".join("%d" % (n + 1) for n in range(len(G)) if k in anilan[n])))
+        # D4
+        oge = [("şema", s[3], tuple(s[4]), "sema") for s in R.SEMA if s[2] == kod]
+        if yol_adim is None:
+            h("D4", "%s: taban-analiz.json okunamadı, CAD kablo yollarının adımı bilinmiyor" % kod)
+        else:
+            oge += [("kablo yolu", "Kablo yolu %d: %s" % (no, R.KABLO_AD.get(no, ("", ""))[1]), tuple(_RKB.CAD_ESLEME.get(no, ())), "desen")
+                    for no, a in sorted(yol_adim.items()) if a == kod]
+        kullanilan = set()
+        for tur, ad_o, kab, alan in oge:
+            uy = [(n, x) for n, g in enumerate(G) for x in (g.get(alan) or ()) if x in ad_o]
+            ns = sorted({n for n, x in uy})
+            kullanilan |= {(n, alan, x) for n, x in uy}
+            if len(ns) != 1:
+                h("D4", "%s %s \"%s\": %s alt adımın desenine uyuyor (tam bir olmalı: %s)" % (
+                    kod, tur, ad_o[:60], len(ns), ", ".join("%d" % (n + 1) for n in ns) or "hiçbiri"))
+                continue
+            n = ns[0]
+            g = G[n]
+            if not any(k in anilan[n] and demet.get(k) in (g.get("demet") or ()) for k in kab) and \
+                    not any(x in (g.get("sema_ok") or {}) for n2, x in uy):
+                h("D4", "%s %s \"%s\": alt adım %d kablolarından (%s) birini demetiyle anmıyor, sema_ok gerekçesi de yok" % (
+                    kod, tur, ad_o[:60], n + 1, ", ".join(kab)))
+        for n, g in enumerate(G):
+            for alan in ("sema", "desen"):
+                for x in g.get(alan) or ():
+                    if (n, alan, x) not in kullanilan:
+                        h("D4", "%s alt adım %d: %s deseni \"%s\" hiçbir şemaya / kablo yoluna uymuyor (bayat desen)" % (kod, n + 1, alan, x))
+            for x in g.get("sema_ok") or {}:
+                if x not in tuple(g.get("sema") or ()) + tuple(g.get("desen") or ()):
+                    h("D4", "%s alt adım %d: sema_ok \"%s\" alt adımın desenlerinde yok" % (kod, n + 1, x))
+        kablo = R.ADIM.get(kod, {}).get("kablo") or []
+        secilen = {}
+        for n, g in enumerate(G):
+            for x in g.get("kablo_sec") or ():
+                m = [i for i, t in enumerate(kablo) if x in t]
+                if len(m) != 1:
+                    h("D4", "%s alt adım %d: kablo_sec \"%s\" kablo listesinde %d maddeye uyuyor (tam bir olmalı)" % (kod, n + 1, x, len(m)))
+                    continue
+                secilen.setdefault(m[0], []).append(n)
+                if not (_demet_kimlikleri(x, kim) & anilan[n]):
+                    h("D4", "%s alt adım %d: kablo_sec \"%s\" kimliği alt adımın metninde geçmiyor" % (kod, n + 1, x))
+        for i, ns in sorted(secilen.items()):
+            if len(ns) > 1:
+                h("D4", "%s kablo listesi maddesi %d: %d alt adımda gösteriliyor (bir kez basılmalı)" % (kod, i + 1, len(ns)))
+        bara_uc_denetle(R, kod, G, metin, T, h)                     # D6 (düzeltme turu 1, F10l-kontrol D1)
+        ozet[kod] = dict(alt=len(G), kablo=len(set().union(*anilan)) if anilan else 0, oge=len(oge))
+    gonderme_denetle(R, ham if ham is not None else kaynak_metinler(ham=True), h, **(gonderme or {}))   # D7 (F10l-kontrol D2)
+    return dict(hata=hata, adim=ozet)
+
+
 def kaynak_denetle():
     """FreeCAD'siz, veri üretmeden: rehber_metin.py kaynağında ASCII kalıntı, elektrik iddiaları ve zorunlu uyarılar (P10.7b1)."""
     m = kaynak_metinler()
@@ -2233,7 +2690,8 @@ def kaynak_denetle():
         p = yer.split()
         if p[0] == "kaynak" and p[1] in RM.ADIM:
             adim[p[1]] += "\n" + t
-            alanlar[(p[1], p[2])] += "\n" + t
+            for a in _alan_anahtarlari(p):
+                alanlar[(p[1], a)] += "\n" + t
     zh = []
     zor = [dict(adim=k, uyari=ad) for k, d, ad in zorunlu_listesi(zh) if k in RM.ADIM and not re.search(d, adim[k])]
     zor += [dict(adim=k, uyari=ad + " (alan %s)" % alan) for k, alan, d, ad in zorunlu_alan_listesi(zh)
@@ -2254,12 +2712,13 @@ def kaynak_denetle():
     kr = kritik_fark(kg)                                             # onaylı kritik metin kaydı
     tm = tamlik_denetle(ham)                                         # düzeltme turu 2: kayıt → rehber tamlığı
     ty = teyit_denetle(ham)                                          # düzeltme turu 1 (F10i-kontrol A6): "kablajda teyit" ibaresi
+    da = demet_alt_denetle(ham=ham)                                  # P10.7b2d-A: K1 / K2 demet alt adımları (D1–D4)
     return dict(ascii_kalinti=asc, elektrik=el, zorunlu_eksik=zor, zorunlu_veride=sorted(set(zor_disari)), metin=len(m),
                 cad_metin=None if cad is None else len(cad), arayuz_metin=len(ara), arayuz_gorunen=len(gor), yasak=ya, yasak_affedilen=ya_ist,
-                ciplak=cip, cozum_hata=coz, bozuk=boz, baglam=bag, kritik=kr, tamlik=tm, teyit=ty,
+                ciplak=cip, cozum_hata=coz, bozuk=boz, baglam=bag, kritik=kr, tamlik=tm, teyit=ty, demet_alt=da,
                 kritik_sayi={b: len(v) for b, v in kg.items()},
                 gecti=not asc and not el and not zor and not ya and not cip and not coz and cad is not None and not boz and not bag
-                and not kr and not tm["hata"] and not ty)
+                and not kr and not tm["hata"] and not ty and not da["hata"])
 
 
 def ozet_yaz(d):
@@ -2324,6 +2783,11 @@ def _ana():
             print("  TAMLIK MUAF", x)
         for x in tm["hata"]:
             print("  TAMLIK", x)
+        da = d["demet_alt"]
+        print("demet alt adimlari (D1-D7): hata %d; %s" % (len(da["hata"]), ", ".join(
+            "%s %d alt adim, %d kablo, %d sema / kablo yolu" % (k, v["alt"], v["kablo"], v["oge"]) for k, v in sorted(da["adim"].items()))))
+        for x in da["hata"]:
+            print("  DEMET %s %s" % x)
         print("kablajda teyit ibaresi eksik madde: %d" % len(d["teyit"]))
         for x in d["teyit"]:
             print("  TEYIT", x)

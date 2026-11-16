@@ -1,6 +1,6 @@
 {
- "tarih": "2026-11-15 14:55",
- "konum": 121,
+ "tarih": "2026-11-16 04:20",
+ "konum": 141,
  "renk_cad": {
   "yontem": "CAD rengi rehber_gorunum.cad_parcalar() ile FCStd'den yeniden okunur (Document.xml Renk özelliği × gorsel betiğinin RENK tablosu); ayrıca GuiDocument.xml yayınık rengi",
   "cad": 1192,
@@ -2204,7 +2204,7 @@
   "tema": {
    "light": {
     "zemin": "#eceae4",
-    "yeni_parca_konum": 2239,
+    "yeni_parca_konum": 2251,
     "esik_alti": 701,
     "esik_alti_kenarsiz": 0,
     "kenarsiz": [],
@@ -2234,7 +2234,7 @@
    },
    "dark": {
     "zemin": "#1b1c20",
-    "yeni_parca_konum": 2239,
+    "yeni_parca_konum": 2251,
     "esik_alti": 177,
     "esik_alti_kenarsiz": 0,
     "kenarsiz": [],
@@ -2319,14 +2319,34 @@
   "gecti": true
  },
  "ev": {
-  "konum": 120,
+  "konum": 140,
   "veride_ev": 102,
   "sahnede_ev": 102,
   "eksik": [],
   "bos": [
    "1",
    "17",
+   "17.1",
+   "17.2",
+   "17.3",
+   "17.4",
+   "17.5",
+   "17.6",
+   "17.7",
+   "17.8",
+   "17.9",
+   "17.10",
+   "17.11",
+   "17.12",
    "32",
+   "32.1",
+   "32.2",
+   "32.3",
+   "32.4",
+   "32.5",
+   "32.6",
+   "32.7",
+   "32.8",
    "36.4",
    "36.5",
    "40.2",
@@ -2356,13 +2376,13 @@
    "baglanti": 74,
    "masa tabanı (yeni)": 16,
    "temas 0.6 mm": 12,
-   "yeni parça yok": 17
+   "yeni parça yok": 37
   },
   "gecti": true
  },
  "isaret": {
   "yontem": "işaret listesi = konumda yeni (durum simdi) bağlantı elemanı sayısı (Python durum kuralı); küme adetleri toplamı = liste (her işaret tuvalde); SVG halka sayısı = küme sayısı",
-  "konum": 121,
+  "konum": 141,
   "toplam_beklenen": 1284,
   "toplam_isaret": 1284,
   "kabuk_beklenen": 277,
@@ -2525,6 +2545,114 @@
    },
    {
     "adres": "17",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "17.1",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "17.2",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "17.3",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "17.4",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "17.5",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "17.6",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "17.7",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "17.8",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "17.9",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "17.10",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "17.11",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "17.12",
     "beklenen": 0,
     "liste": 0,
     "kumede": 0,
@@ -2768,6 +2896,78 @@
    },
    {
     "adres": "32",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "32.1",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "32.2",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "32.3",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "32.4",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "32.5",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "32.6",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "32.7",
+    "beklenen": 0,
+    "liste": 0,
+    "kumede": 0,
+    "kume": 0,
+    "dom": 0,
+    "gecti": true
+   },
+   {
+    "adres": "32.8",
     "beklenen": 0,
     "liste": 0,
     "kumede": 0,
@@ -4258,8 +4458,8 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Arka kafa kabuğu sol",
-     "fark": 234047,
-     "yalniz": 244929,
+     "fark": 215511,
+     "yalniz": 225227,
      "gorunur": true,
      "parca": 9,
      "ic_gorunmeyen": [
@@ -8295,8 +8495,8 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Arka kafa kabuğu sol",
-     "fark": 245154,
-     "yalniz": 244929,
+     "fark": 225552,
+     "yalniz": 225227,
      "gorunur": true,
      "parca": 9,
      "ic_gorunmeyen": [
@@ -8323,7 +8523,7 @@
       {
        "id": "p0777",
        "ad": "Isıl gömme somun M3 (kafa ön/arka sol y-60)",
-       "fark": 0,
+       "fark": 1,
        "masada": "31.3",
        "masada_fark": 181,
        "masada_yalniz": 179,
@@ -12044,7 +12244,7 @@
   "gecti": true
  },
  "goruntu": [],
- "sure_s": 977,
+ "sure_s": 966,
  "gecti_ozet": {
   "renk_cad": true,
   "renk_sahne": true,

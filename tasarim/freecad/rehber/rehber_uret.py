@@ -491,7 +491,7 @@ def _tam_sil(t, metin):
     return re.sub(d, "", t, count=1)
 
 
-def pdf_tamlik_bozma(pdf, V, esleme):
+def pdf_tamlik_bozma(pdf, V, esleme, sentetik=False):
     """P10.7b2b: pdf_tamlik() bozma denemesi, üretim koşmadan (PDF bir kez okunur, bozma sayfa metninde). Doner [(ad, beklenen, tuttu)].
     Çağrı: rehber_uret modülü içe aktarılıp pdf_tamlik_bozma(pdf, rehber-veri.json, kontrol.json yazdir.sayfa_esleme)."""
     import fitz
@@ -499,14 +499,40 @@ def pdf_tamlik_bozma(pdf, V, esleme):
         ham = [p.get_text("text") for p in doc]
     temiz = pdf_tamlik(pdf, V, esleme, ham=ham)
     out = [("temiz PDF (yakalanmamalı)", False, not temiz["gecti"])]
-    s = next(i for i, a in enumerate(V["adimlar"]) if len(esleme.get(i, [])) > 1 and
-             (temiz["sayfa_parca"].get(str(i)) or [[0, 0], [0, 0]])[1][1] > 0)     # iş metni iki sayfaya bölünen adım (bugün K1)
+    s = next((i for i, a in enumerate(V["adimlar"]) if len(esleme.get(i, [])) > 1 and
+              (temiz["sayfa_parca"].get(str(i)) or [[0, 0], [0, 0]])[1][1] > 0), None)   # iş metni iki sayfaya bölünen adım (P10.7b2c'de K1)
+    if s is None or sentetik:
+        # P10.7b2d-A: K1 alt adımlara bölününce iş metni iki sayfaya bölünen adım kalmayabilir. Sentetik bölünme: iki sayfalı, kontrol
+        # listeli adımlardan iş metni en uzun olanın ilk sayfadaki son iş metni satırı ikinci sayfanın başına taşınır; bu taban temiz
+        # sayılmalı (pdf_tamlik geçer), B4b denemeleri onun üstünde. Taban geçmezse deneme sonucu "yakalanmadı" yazılır (sessiz değil).
+        def son_satir(i):                                               # ilk sayfada iş metninin sonu olan satır (yoksa None)
+            T_ = _tam_norm(_tam_md(V["adimlar"][i].get("is_")))
+            sp = temiz["sayfa_parca"].get(str(i)) or []
+            if not sp or sp[0][1] != len(T_):                           # iş metni ilk sayfada bitmiyor: aday değil
+                return None
+            sat_ = ham[esleme[i][0] - 1].split("\n")
+            return next((n for n in range(len(sat_) - 1, -1, -1) if len(_tam_norm(sat_[n])) >= TAM_EN_AZ and
+                         T_.endswith(_tam_norm(sat_[n])) and len(_tam_norm(sat_[n])) < len(T_)), None)
+        aday = [i for i, a in enumerate(V["adimlar"]) if len(esleme.get(i, [])) > 1 and a.get("kontrol") and son_satir(i) is not None]
+        s = max(aday, key=lambda i: len(_tam_norm(_tam_md(V["adimlar"][i]["is_"]))))
+        q1, q2 = esleme[s][0], esleme[s][1]
+        sat = ham[q1 - 1].split("\n")
+        k0 = son_satir(s)
+        ham = list(ham)
+        tas = sat[k0]
+        ham[q1 - 1] = "\n".join(sat[:k0] + sat[k0 + 1:])
+        ham[q2 - 1] = tas + "\n" + ham[q2 - 1]
+        temiz = pdf_tamlik(pdf, V, esleme, ham=ham)
+        out.append(("sentetik bölünme tabanı temiz (%s s%d → s%d; yakalanmamalı)" % (V["adimlar"][s]["kod"], q1, q2), False,
+                    not temiz["gecti"] or not (temiz["sayfa_parca"].get(str(s)) or [[0, 0], [0, 0]])[1][1]))
     st = V["adimlar"][s]
     p1, p2 = esleme[s][0], esleme[s][1]
     T = _tam_norm(_tam_md(st["is_"]))
     i1 = temiz["sayfa_parca"][str(s)][0][1]
     satir1 = [x for x in ham[p1 - 1].split("\n") if len(_tam_norm(x)) >= TAM_EN_AZ and _tam_norm(x) in T[:i1]]
-    son = satir1[-1]                                                     # p1'de basılan is_'in son satırı
+    # P10.7b2d-A: önce basılan parçanın sonu olan satır (iş metnindeki bir yol adı kablo listesinde de geçebilir: "kablolar.md")
+    sonek = [x for x in satir1 if T[:i1].endswith(_tam_norm(x))]
+    son = (sonek or satir1)[-1]                                          # p1'de basılan is_'in son satırı
     satir2 = ham[p2 - 1].split("\n")
     k = next(n for n, x in enumerate(satir2) if len(_tam_norm(x)) >= 6 and _tam_norm(x) in T[i1:])
 
@@ -629,7 +655,7 @@ def alt_kontrol(tb, V, adimlar):
         return dict(alt_adim=0, sonuc=[], gecti=True), [], dict(bos=[], eksik=[])
     os.makedirs(GORUNTU, exist_ok=True)
     os.makedirs(YAZDIR_GORUNTU, exist_ok=True)
-    sonuc, metin, say = [], [], {}
+    sonuc, metin, say, say_sema = [], [], {}, {}
     bos, oran, tekrar = [], {}, {}
     c = Cdp(tb)
 
@@ -668,6 +694,8 @@ def alt_kontrol(tb, V, adimlar):
                 gs, ga = set(g["simdi"]), set(g["alt"])
                 for i in gs:
                     say.setdefault(i, []).append(ad)
+                for i in set(g.get("sema") or []):                        # P10.7b2d-A: şemanın "şimdi" olduğu alt adımlar
+                    say_sema.setdefault(i, []).append(ad)
                 fark = sorted(gs ^ b_simdi) + sorted(ga ^ b_alt)
                 d.update(beklenen_simdi=len(b_simdi), gorunen_simdi=len(gs), beklenen_alt=len(b_alt), gorunen_alt=len(ga),
                          fark=[AD.get(i, i) for i in fark], sema_fark=sorted(set(g.get("sema") or []) ^ b_sema), kadraj=g.get("kadraj"),
@@ -696,19 +724,34 @@ def alt_kontrol(tb, V, adimlar):
         c.kapat()
     # her parça (alt adımlı adımlarda) tam bir alt adımda yeni
     tum = sorted(adimlar) == list(range(len(V["adimlar"])))
-    tek = None
+    tek = tek_s = None                                              # P10.7b2d-A d1 (F10l-kontrol D3): kısmi koşuda (--adimlar) ikisi de yok
     if tum:
         bek = [p["id"] for p in V["parcalar"] if V["adimlar"][p["a"]].get("alt")]
         coklu = {AD[i]: v for i, v in say.items() if len(v) != 1}
         hic = [AD[i] for i in bek if i not in say]
         tek = dict(gecti=not coklu and not hic, parca=len(bek), birden_cok_alt_adimda=coklu, hic_gorunmeyen=hic)
+        # P10.7b2d-A: şema karşılığı. Alt adımlı adımın her şeması tam bir alt adımda "şimdi" (vurgulu); hiç vurgulanmayan 0. Parça
+        # ölçütü yukarıda değişmeden kalır.
+        SA = {i: "%s [adım %s]" % (x.get("ad", "")[:60], x.get("a")) for i, x in enumerate(V.get("semalar") or [])}
+        bek_s = [i for i, x in enumerate(V.get("semalar") or []) if V["adimlar"][x["a"]].get("alt")]
+        coklu_s = {SA.get(i, i): v for i, v in say_sema.items() if len(v) != 1}
+        hic_s = [SA[i] for i in bek_s if i not in say_sema]
+        tek_s = dict(gecti=not coklu_s and not hic_s, sema=len(bek_s), birden_cok_alt_adimda=coklu_s, hic_vurgulanmayan=hic_s)
     gecerli = [v for v in oran.values() if v is not None]
     yg = dict(alt_adim=len(hedef), eksik=[], bos=bos, cizim_esik=CIZIM_ESIK, yeniden_cekim=tekrar, en_dusuk_cizim_orani=min(gecerli) if gecerli else None,
               cizim_orani=oran, piksel_denetimi=bool(gecerli) and len(gecerli) == len(oran))
-    print("alt adim: %d, gecti %d, her parca tek alt adimda: %s; yazdir goruntusu bos %s, en dusuk cizim orani %s" % (
-        len(sonuc), sum(1 for d in sonuc if d["gecti"]), tek["gecti"] if tek else "-", bos or "-", yg["en_dusuk_cizim_orani"]))
+    print("alt adim: %d, gecti %d, her parca tek alt adimda: %s, her sema tek alt adimda: %s%s; yazdir goruntusu bos %s, en dusuk "
+          "cizim orani %s" % (len(sonuc), sum(1 for d in sonuc if d["gecti"]), tek["gecti"] if tek else "-", tek_s["gecti"] if tek_s else "-",
+                              " (%d sema, birden cok %d, hic %d)" % (tek_s["sema"], len(tek_s["birden_cok_alt_adimda"]),
+                                                                    len(tek_s["hic_vurgulanmayan"])) if tek_s else "",
+                              bos or "-", yg["en_dusuk_cizim_orani"]))
+    for k, v in sorted((tek_s or {}).get("birden_cok_alt_adimda", {}).items())[:10]:
+        print("  SEMA birden cok alt adimda: %s %s" % (k, v))
+    for k in ((tek_s or {}).get("hic_vurgulanmayan") or [])[:10]:
+        print("  SEMA hic vurgulanmadi: %s" % k)
     return dict(alt_adim=len(hedef), gecen=sum(1 for d in sonuc if d["gecti"]), konsol_hatasi=sum(1 for d in sonuc if d["hata"]),
-                her_parca_tek_alt_adimda=tek, sonuc=sonuc, gecti=all(d["gecti"] for d in sonuc) and (tek is None or tek["gecti"])), metin, yg
+                her_parca_tek_alt_adimda=tek, her_sema_tek_alt_adimda=tek_s, sonuc=sonuc,
+                gecti=all(d["gecti"] for d in sonuc) and (tek is None or tek["gecti"]) and (tek_s is None or tek_s["gecti"])), metin, yg
 
 
 def on_sinama():

@@ -1,6 +1,6 @@
 {
 "surum": 1,
-"uretim": "2026-11-15 13:59",
+"uretim": "2026-11-16 03:29",
 "betik": "tasarim/freecad/rehber/rehber_veri.py",
 "kaynak": {
 "m6": "planlama/adim4/M6-montaj-sirasi.md (adım sırası ve tablo metni)",
@@ -885,7 +885,7 @@
 }
 },
 {
-"ad": "Akü ölçüm bölücüsü (G07, 22 AWG): ana anahtar çıkışı (bölücünün üst direnci bu uçta) → güç paneli üstü → kat üstü → arayüz kartı, bölücü orta noktası",
+"ad": "Akü ölçüm bölücüsü (G07, 22 AWG): ana anahtar çıkışı (bölücünün üst direnci bu uçta) → güç paneli üstü → kat üstü → arayüz kartı, bölücü orta noktası. Ana anahtar henüz yerinde değil (F1'de etek plakasının altına takılır), karede yok",
 "kaynak": "taban:G07",
 "a": 17,
 "boy_mm": 281,
@@ -9714,11 +9714,11 @@
 ],
 "kablo": [
 "Kart konnektörleri erişilebilir; servo dağıtım çıkışları direğe bakar",
+"Bu dört satır (ve K1'deki P03) bağlantı tablosudur, 3B çizim değil: pin ve kanal numaraları kayıttan (`planlama/adim3/pin-haritasi.md`, `planlama/adim3/kablolar.json`). Başlıklardaki pin sırası ve kart üstündeki yeri kayıtta yok: kart üstü yazıya göre bağla",
 "Bağlantı tablosu I01 (ESP32 → PCA9685 giriş başlığı, 22 AWG dişi uçlu tel): SDA: ESP32 GPIO21 (`I2C_SDA`) → PCA9685 SDA (giriş); SCL: ESP32 GPIO22 (`I2C_SCL`) → PCA9685 SCL (giriş); VCC 3V3: ESP32 3V3 → PCA9685 VCC (giriş); GND: ESP32 GND → PCA9685 GND (giriş)",
 "Bağlantı tablosu I02 (PCA9685 çıkış başlığı → BNO055, 22 AWG dişi uçlu tel): SDA: PCA9685 SDA (çıkış) → BNO055 SDA; SCL: PCA9685 SCL (çıkış) → BNO055 SCL; VIN 3V3: PCA9685 VCC (çıkış) → BNO055 VIN; GND: PCA9685 GND (çıkış) → BNO055 GND",
 "Bağlantı tablosu P01 (yalnız sinyal teli, madde 4, 22 AWG): PCA9685 kanal 0 sinyali (`sag_omuz`) → Dağıtım kartı A sinyal girişi 1; PCA9685 kanal 1 sinyali (`sag_omuz_yan`) → Dağıtım kartı A sinyal girişi 2; PCA9685 kanal 2 sinyali (`sag_dirsek`) → Dağıtım kartı A sinyal girişi 3; PCA9685 kanal 3 sinyali (`sag_bilek`) → Dağıtım kartı A sinyal girişi 4",
-"Bağlantı tablosu P02 (yalnız sinyal teli, madde 4, 22 AWG): PCA9685 kanal 5 sinyali (`sol_omuz`) → Dağıtım kartı B sinyal girişi 1; PCA9685 kanal 6 sinyali (`sol_omuz_yan`) → Dağıtım kartı B sinyal girişi 2; PCA9685 kanal 7 sinyali (`sol_dirsek`) → Dağıtım kartı B sinyal girişi 3; PCA9685 kanal 8 sinyali (`sol_bilek`) → Dağıtım kartı B sinyal girişi 4",
-"Bu dört satır (ve K1'deki P03) bağlantı tablosudur, 3B çizim değil: pin ve kanal numaraları kayıttan (`planlama/adim3/pin-haritasi.md`, `planlama/adim3/kablolar.json`). Başlıklardaki pin sırası ve kart üstündeki yeri kayıtta yok: kart üstü yazıya göre bağla"
+"Bağlantı tablosu P02 (yalnız sinyal teli, madde 4, 22 AWG): PCA9685 kanal 5 sinyali (`sol_omuz`) → Dağıtım kartı B sinyal girişi 1; PCA9685 kanal 6 sinyali (`sol_omuz_yan`) → Dağıtım kartı B sinyal girişi 2; PCA9685 kanal 7 sinyali (`sol_dirsek`) → Dağıtım kartı B sinyal girişi 3; PCA9685 kanal 8 sinyali (`sol_bilek`) → Dağıtım kartı B sinyal girişi 4"
 ],
 "not_": [],
 "kamera": null,
@@ -9886,7 +9886,7 @@
 "no": "17",
 "faz": "Kablolama kapısı",
 "baslik": "Kablolama kapısı 1: taban",
-"is_": "Kabuk takılmadan önce burada dur. Bağlarken akü ayrık (XT60 açık). Kablo kimlikleri, uçlar, kesit ve sigortalar tek kaynakta: `planlama/adim3/kablolar.md` (kimlikler aşağıda parantez içinde); sırayla:\n1. Ana hat (12 AWG): akü + → XT60 (G01, akü tarafı) → ana sigorta 30 A (standart bıçak, kablolu yuva; XT60'ın robot tarafından yuvanın girişine G02) → ana anahtar (yuvanın çıkışından G03) → sigorta kutusu (anahtarın çıkışından kutunun girişine G04). Ana anahtar henüz yerinde değil (F1'de etek plakasının altına takılır): G03 ve G04'ün anahtar uçlarını halka pabuçlu ve bantlı bırak; şarj kolunun + ucu (G06) ve akü ölçüm teli (G07) de anahtara gider; dördü F1'de bağlanır. Şarj kolu (G06, 16 AWG): + ucu ana sigortanın yük tarafından, ana anahtarın giriş saplamasına gidecek (G03 ile aynı saplama, mavi M5 halka pabuç, ana anahtarın saplama ölçüsü kablajda teyit; F1'de takılır); 7,5 A mini hat sigortasının kapaklı yuvası ana anahtar girişindeki ucun dibinde (kaynak ucu), kuyruğuna lehim + makaron; öbür uç etekteki XT60E-M şarj girişine (F1); − ucu yıldız barasına (mavi pabuç). Kolu akü XT60'ının robot tarafından, ana hattan al: akü XT60'tan ayrılınca kol da enerjisiz kalır (rehberdeki \"akü ayrık = enerjisiz\" düzeni buna dayanır; ana anahtar kapalıyken şarj edilir, karar O-17). Uç bantlı bırakılır, F1'de etekteki şarj girişine bağlanır; 7,5 A sigortası takılmaz (F1 aşama 1).\nAkü ölçüm teli (G07, 22 AWG; akü ölçüm bölücüsünün 100 kΩ üst direnci kaynak ucunda): arayüz kartı ucunu bölücünün orta noktası pedine lehimle, makaronla ört. Öbür uçta (G07'nin ana anahtar ucu), lehimden önce: kırmızı M5 halka pabucun PVC kılıfını çıkar (ana anahtarın saplama ölçüsü kablajda teyit); yalıtımlı pabucun kovanına lehim kılıfı eritir. Sonra lehimden önce makaronu G07'nin teline geçir: boyu direnci, iki bacağını ve pabucun kovanını birlikte örtecek kadar (lehimden sonra geçmez). Makaronu lehim yerinden uzağa, telin geri tarafına it ve iki lehim bitip soğuyana kadar orada tut (lehimin ısısı yakındaki makaronu erken büzer, sonra kaymaz). Direnci telin ucuna lehimle. Direncin öbür bacağını pabucun kovanına sık (pabuç pensesiyle), sonra kovana lehimle: direnç ile pabuç arasında tel kalmaz. Soğuyunca makaronu direncin ve kovanın üstüne çek ve ısıtarak büz: direnç, iki bacağı ve kovan tümüyle örtülü, açıkta bacak kalmaz (G07'nin direnci ana anahtar çıkış ucunda (kaynak ucu)). Gerginlik giderme: G07'yi direncin tel tarafında, ana anahtara giden G04'e kablo bağıyla tuttur; teli çekince yükü kablo bağı taşır, direncin gövdesi ve bacakları değil (bağın yeri kaynakta yok, kablajda teyit). Pabucu bantlı bırak: F1'de ana anahtarın çıkış saplamasına, G04'ün üstüne takılır. Pabuç saplamaya girmeden, akü ayrıkken multimetrenin direnç kademesiyle pabuç ile akü ölçüm bölücüsünün orta noktası arasını ölç: 100 kΩ'a yakın okunur (kontrol).\n2. Toprak (G05, 12 AWG): akü − → yıldız barasının ortadaki (3.) saplaması. İki bara da M5 saplama üstünde halka pabuç yığını: saplama başına en çok 4 pabuç, büyük akımlı pabuçlar yığının altında, üstte düz pul + yaylı pul; WAGO yok. Yıldız barası (toprak) 5 M5 saplama: saplamalar 4 adet siyah 12 AWG köprüyle (≈ 50 mm, iki ucu sarı halka pabuç) birbirine zincir bağlanır. Yerleşim: saplama 1 G12 / G14 / G15, 2 G13 / G16, 3 G05 (akü) / G06, 4 G17 / G18, 5 G20 / G22 dönüşleri. Anahtarlı bara (+) 4 M5 saplama: saplamalar 3 adet kırmızı 12 AWG köprüyle (≈ 50 mm, iki ucu sarı halka pabuç) birbirine zincir bağlanır; bütün saplamalar köprüyle birbirine bağlı. Anahtarlı bara yerleşimi (kalın pabuç altta): saplama 1 G12 / G14 / G15, 2 G13 / G16, 3 G09 / G11 (baraya gelen iki hat: röle K1 ve ön şarj kartı), 4 G22; saplama başına en çok 4 pabuç, köprü uçları dahil (`planlama/adim3/kablolar.json` yerleşim kaydı).\n3. F1 20 A → röle K1 kontağı (30 → 87 (87a boş); soketin kuyruk numaraları kablajda teyit: G08 sigorta kutusundan girişe, G09 çıkıştan anahtarlı baraya; 12 AWG); F1 → ön şarj kartı → anahtarlı bara (G10, G11; 12 AWG). Ön şarj kartında, lehimden önce K2'nin pimlerini bul: akü ayrıkken röle gövdesindeki şemaya bak, multimetrenin süreklilik kademesinde (bobin boşta) COM ile NC arası öter, COM ile NO arası ötmez (pim yeri kablajda teyit). Sonra G10'u K2 kontağının girişine lehimle, ön şarj direnci (5,6 Ω) çıkış ucunda, G11 direncin öbür bacağından baraya; K2'nin uçları COM → NO (NC boş) (röle pimlerinin yeri kablajda teyit: röle gövdesindeki şema). Baradan: iki BTS7960B (G12, G13; 12 AWG); mini hat sigortalarıyla XL4016 A ve B (7,5 A; G14, G15), 16 AWG. XL4016 C'yi de mini hat sigortasıyla (5 A) baradan güç panelindeki IN+ / IN− klemensine bağla (G16, 16 AWG). G14, G15 ve G16'nın hat sigortası yuvası anahtarlı bara ucunda (kaynak ucu): yuvanın bir kuyruğu mavi M5 halka pabuçla bara saplamasına, öbür kuyruğu kablonun teline lehim + makaron; XL4016 ucunda sigorta yok. PC817 #2 algı teli (G22, 22 AWG): anahtarlı bara ucunda (kaynak ucu) 2 A mini hat sigortası. G22'nin kutbu + → IN2 +, IN2 − → GND: + damarını (hat sigortasından gelen) arayüz kartındaki PC817 modülünün IN2 + klemensine, − damarını modülün IN2 − klemensinden yıldız barasına bağla; − damarının yıldız ucu 5 cm 18 AWG siyah ara parçaya lehimli, ara parça kırmızı pabuçla yıldız barasının 5. saplamasına. Bağlamadan önce modülün üstündeki IN2 + / IN2 − yazısını oku: ters bağlanan G22'de giriş LED'i yanmaz, bara gerilimliyken PC817 #2 (GPIO5) LOW'a düşmez ve ESP32 devreye almada hata verir; modülün girişinde ters gerilim koruması olup olmadığı belgede yok (kablajda teyit), ters bağlıyken enerji verme.\n4. Sigorta kutusundan (standart bıçak): F3 5 A kafa hattı (G17, 18 AWG; uç direk dibinde bırakılır), F4 5 A XL4016 çevre (G18, 18 AWG; çevre çıkışı G19, 16 AWG, OUT+ ucunun dibinde 2 A mini hat sigortası), F5 2 A acil stop (A01, 18 AWG; mantar F1'de takılır, uç bantlı), F6 3 A göğüs ekranı dalı (G20, 18 AWG; uç bantlı, K2'de direğe çıkar). Göğüs regülatörünün panel yeri karar bekliyor (K52): G20'nin uç yeri ve boyu bu karara bağlı.\n5. Acil stop ve röle sürücüleri (yeşil, A01–A05 18 AWG; E3, E9): mantar NC çıkışı → acil stop düğüm kartı (güç panelinde küçük pertinaks parçası: iki adet 2 pin 5,08 mm vidalı klemens, dört ucu kart üstünde ≥ 18 AWG tel köprüyle lehimli) → röle K1 bobini (86; A02) ve ön şarj kartındaki K2 bobini (+; A04). Bobinlerin − uçları arayüz kartına: K1 85 → BC337-40 #1 kollektörü (A03; GPIO4 sürer), K2 − → BC337-40 #2 kollektörü (A05; GPIO19 sürer). Her sürücüde 270 Ω seri taban direnci ve 2,2 kΩ taban → GND. Geri tepme diyotları 1N4007: K1'de soketin 86 / 85 kuyruklarının üstünde lehim + makaron, katot (bantlı uç) 86'ya, anot 85'e; K2'de ön şarj kartında bobin klemensinin üstünde, katot bobin + ucuna. PC817 #1 girişi düğümden (A06, 22 AWG; GPIO23 okur): A06'nın + ucunu acil stop düğümü (mantar NC çıkışı) noktasına, yani acil stop düğüm kartında bir klemensin kuyruğuna (kart altı) lehimle, modülün IN1 + klemensine bağla; − ucunu modülün IN1 − klemensinden arayüz kartının GND pedine lehimle (makaron). Mantar ile düğüm arasında elde taşınan acil stop için ayrılan iki uçlu yer (Ö4; 2 pin 5,08 mm klemens) karar verilene kadar zincirin kendi teliyle (A01, A02) aynı kesitte (18 AWG) kısa bir tel köprüyle kapalı durur; köprü yoksa röle çekmez. Ö4 karar bekliyor (K60).\nAlt kat kartlarının (iki BTS7960B, XL4016 A / B / çevre) klemens uçları B3'te, kat ve güç paneli gelmeden bağlandı. Burada B3'te etiketli bırakılan öbür uçları yerlerine bağla: G12 ve G13'ün + uçlarını anahtarlı baraya, − uçlarını yıldız barasına; G14 ve G15'in + uçlarını hat sigortası yuvasıyla anahtarlı baraya (madde 3), − uçlarını yıldız barasına; G18'in + ucunu sigorta kutusunun F4 çıkışına (madde 4), − ucunu yıldız barasına; G19'u arayüz kartının çevre 5 V / GND klemensine; SV1'i dağıtım kartı A'nın, SV2'yi dağıtım kartı B'nin V+ / GND giriş klemensine (OUT+ → V+, OUT− → GND). Alt kat klemensine burada uzanma: kart üstünden elektronik katına 69 mm, yanda 40–150 mm (sıra kontrolü).\n6. Enkoder, BTS sinyal ve sonar kabloları (dişi uçlu sinyal teli, O-4 r; pinler `planlama/adim3/kablolar.md`'de, kart üstü yazıya göre bağla): arka sol motorun enkoderi (N01) ve arka sağ motorun enkoderi (N02) → ESP32 taşıyıcı başlığı (VCC → 3V3, GND, A, B). Sol BTS7960B'nin sinyal başlığı (B01) ve sağınki (B02) → ESP32 (IN1, IN2) ve arayüz kartı (EN1 + EN2 → BTS EN düğümü, IS1 + IS2 → IS bölücüsü, VCC → çevre 5 V, GND). Sonarlar: sağ (Q01), orta (Q02) ve sol (Q03) sonarın VCC'sini arayüz kartının çevre 5 V'una, Trig'ini PCA9685'e, Echo'sunu arayüz kartındaki sonar bölücüsüne, GND'sini arayüz kartının GND'sine bağla. Motor uçları B3'te BTS7960B'ye bağlandı. Acil stop ucunu bırak: mantar F1'de takılır.\n7. Direğe çıkacak hatların taban kısmını da burada bağla. Kafa servolarının sinyal köprüsünü (P03), yalnız sinyal teliyle, PCA9685'in kafa pan ve tilt kanallarının sinyal pinlerinden dağıtım kartı C'nin pan / tilt sinyal girişlerine bağla. PCA9685'in V+ pinine tel takma; 3 telli hazır kablo kullanırsan V+ damarını iki ucundan kes, makaronla yalıt (B6a madde 4: V+ teli XL4016 C'nin çıkışını A ve B'ninkilere paralel bağlar). Kafa 12 V (G17), göğüs 12 V (G20) ve ESP32 USB'nin (U06) taban uçlarını bağla. Servo uzatmaları (A / B / kafa) K2'de dağıtım kartlarının çıkışına takılır. Yukarısı K2'de.\n8. K1'de enerji verilmez: ana anahtar ve acil stop mantarı F1'de takılır. Bu adımda takılan köprüler: Ö4 yerindeki kısa tel köprü (madde 5), acil stop düğüm kartındaki (A02, A04) ≥ 18 AWG tel köprü (madde 5), yıldız barasının saplamaları arasındaki 4 adet 12 AWG köprü (madde 2), anahtarlı baranın saplamaları arasındaki 3 adet 12 AWG köprü (madde 2) ve KT3 bakışında kutu ayrı girişli çıkarsa yuva girişlerine giden ara kablolar (kontrol listesi). Bunların dışında mantarın kendi uçları ve ana anahtarın uçları hiçbir zaman köprülenmez; akü XT60 ayrık kalır, boştaki ana hat uçları gerilimsiz ve bantlı. XL4016 ayarı ve PC817 ölçümü kartlar takılmadan önce tezgâhta, akım sınırlı tezgâh kaynağıyla yapılır (kontrol; B3, B5a, B6a). İlk enerji iki aşamalı: F1 sonunda kafasız (aşama 1: ana anahtar, BMS, mantar; F1 takılı değil, anahtarlı bara enerjisiz), devreye alma ve motor yön testi F5'te (aşama 2). Bu sıra kaynakta yok, doğrulanmadı.",
+"is_": "Kabuk takılmadan önce burada dur. Bağlarken akü ayrık (XT60 açık). Kablo kimlikleri, uçlar, kesit ve sigortalar tek kaynakta: `planlama/adim3/kablolar.md` (kimlikler aşağıda parantez içinde); sırayla:",
 "baglanti_md": "M5 halka pabuç (saplama düğümleri), 2 pin 5,08 mm vidalı klemens (acil stop düğüm kartı), lehim + makaron, kablo bağı. Yıldız barası ve anahtarlı bara köprüleri: 7 adet 12 AWG köprü (yıldız 4 siyah, anahtarlı bara 3 kırmızı, her biri ≈ 50 mm) ve uçlarına 14 sarı halka pabuç. Kablo listesi ve uç türleri: `planlama/adim3/kablolar.md` (adet ve boy orada)",
 "alet": "Multimetre, kablo soyucu, pabuç pensesi, tornavida",
 "erisim": "Kabuk yok. Kat üstü açık (dağıtım kartları, ESP32, arayüz kartı, XL4016 C, sigorta kutusu: el bölgesine uzaklık 6–9 mm, el yakına ulaşıyor). Alt kat kartlarının klemenslerine el dar: kart üstünden elektronik katına 69 mm, yanda raylara ve komşu karta 40–150 mm (sıra kontrolü 10.11, 11.11'de yeniden ölçüldü; ışınla, klemens yerleri modelde yok); o uçlar B3'te bağlanır",
@@ -9905,12 +9905,12 @@
 "Röle sürücüleri arayüz kartında: BC337-40 #1 (K1, GPIO4) ve #2 (K2, GPIO19), her birinde 270 Ω seri ve 2,2 kΩ taban → GND",
 "Ana hat ve toprak düğümleri (G01–G05, 12 AWG) yalnız M5 saplama + halka pabuçta (saplama başına en çok 4 pabuç). Vidalı klemensli (5,08 mm) düğümler: kafa giriş kartı, acil stop düğüm kartı ve arayüz kartının çevre 5 V düğümü (`planlama/adim3/kablolar.json` klemens yerleri). İnce telli uç vidalı klemense kalaylanmadan, bükülerek girer (yüksük varsa yüksük)",
 "Akü ölçüm teli (G07): pabuç henüz saplamada değilken, akü ayrık, multimetrenin direnç kademesinde pabuç ile arayüz kartındaki akü ölçüm bölücüsünün orta noktası arası 100 kΩ'a yakın; direnç, iki bacağı ve pabuç kovanı makaronla tümüyle örtülü (açıkta bacak yok), tel direncin yanında G04'e kablo bağıyla tutturulu (çekince direnç gerilmiyor), pabuç bantlı (F1'de ana anahtarın çıkış saplamasına)",
-"Ön şarj kartında K2'nin uçları COM → NO (NC boş): G10 girişte, ön şarj direnci çıkışta. Pim yeri G10 lehimlenmeden önce (madde 3) röle gövdesindeki şemayla ve akü ayrıkken multimetrenin süreklilik kademesiyle bakıldı (bobin boşta: G10'un pimi ile boş pim arası öter, G10'un pimi ile direncin pimi arası ötmez)",
+"Ön şarj kartında K2'nin uçları COM → NO (NC boş): G10 girişte, ön şarj direnci çıkışta. Pim yeri G10 lehimlenmeden önce (alt adım 17.4) röle gövdesindeki şemayla ve akü ayrıkken multimetrenin süreklilik kademesiyle bakıldı (bobin boşta: G10'un pimi ile boş pim arası öter, G10'un pimi ile direncin pimi arası ötmez)",
 "G22'nin kutbu: + damarı (hat sigortası tarafı) PC817 modülünün IN2 + klemensinde, − damarı IN2 − klemensinden yıldız barasında; akü ayrıkken multimetrenin süreklilik kademesiyle IN2 − ile yıldız barası arası öter, IN2 + ile yıldız barası arası ötmez",
 "PCA9685 V+ boş (P03): akü ayrıkken multimetrenin süreklilik kademesiyle PCA9685'in kanal başlığının V+ pini ile dağıtım kartı C'nin V+ barası arasında süreklilik yok (ötmemeli; ölçü ucu klemense değil kanal başlığının V+ pinine; B6a'da A ve B için de bakıldı)",
-"Anahtarlı bara: G14, G15, G16 ve G22'nin hat sigortası yuvaları bara ucunda, sigortaları takılı değil; saplamalardaki yerleşim madde 2'deki gibi (G09 ve G11 aynı saplamada), her saplamada en çok 4 pabuç",
+"Anahtarlı bara: G14, G15, G16 ve G22'nin hat sigortası yuvaları bara ucunda, sigortaları takılı değil; saplamalardaki yerleşim alt adım 17.1'deki gibi (G09 ve G11 aynı saplamada), her saplamada en çok 4 pabuç",
 "A06'nın − ucu arayüz kartının GND pedinde; X01, B01, B02, N01, N02, Q01, Q02, Q03 ve P03'ün uçları kart üstü yazıyla kablolar.md'deki uca eşleşti",
-"Teslimde bakılacaklar (`planlama/d158/kablo-tablosu-gunluk.md` §16.7, §17.7): alçak profil mini sigortalar (çevre 2 A, şarj 7,5 A) \"Mini/Micro\" yuvaya oturuyor; K1 soketinin kuyruk kesiti okundu, G08 / G09'un 12 AWG teline eklendi; 5,08 mm klemensin kesit aralığı okundu (A06 / G07 lehimli uçlarına yeniden bakılır); G22'nin yıldız ucu 5 cm 18 AWG ara parça + kırmızı pabuç; akü dönüşü (G05) yıldızın 3. saplamasında; T8 E ve E2 tezgâh kısa devre denemeleri yapıldı (`planlama/d158/testler/T8-servo-hatlari.md` E: bir servo uzatmasının ucunda ve SV1–SV3'te, servolar sökülü, en çok 2 s, yanmaz zemin): XL4016 akımı kesiyor ya da düşürüyor, kablo 80 °C'nin altında (kalırsa istisna düşer, tasarıma); K04'ün (kafa ekranı Power USB) üstündeki kesit yazısı okundu: 24 AWG'den inceyse ya da yazı yoksa 18 AWG + micro B fişle yeniden yapılır. Seçenek: kollu WAGO 221-413 (ince telli alır) alınabilir, karar Ahmet'in; tablo vidalı klemensle gider",
+"Teslimde bakılacaklar (`planlama/d158/kablo-tablosu-gunluk.md` §16.7, §17.7): alçak profil mini sigortalar (çevre 2 A, şarj 7,5 A) \"Mini/Micro\" yuvaya oturuyor; K1 soketinin kuyruk kesiti okundu, G08 / G09'un 12 AWG teline eklendi; 5,08 mm klemensin kesit aralığı okundu (A06 / G07 lehimli uçlarına yeniden bakılır); G22'nin yıldız ucu 5 cm 18 AWG ara parça + kırmızı pabuç; akü dönüşü (G05) yıldızın 3 numaralı saplamasında; T8 E ve E2 tezgâh kısa devre denemeleri yapıldı (`planlama/d158/testler/T8-servo-hatlari.md` E: bir servo uzatmasının ucunda ve SV1–SV3'te, servolar sökülü, en çok 2 s, yanmaz zemin): XL4016 akımı kesiyor ya da düşürüyor, kablo 80 °C'nin altında (kalırsa istisna düşer, tasarıma); K04'ün (kafa ekranı Power USB) üstündeki kesit yazısı okundu: 24 AWG'den inceyse ya da yazı yoksa 18 AWG + micro B fişle yeniden yapılır. Seçenek: kollu WAGO 221-413 (ince telli alır) alınabilir, karar Ahmet'in; tablo vidalı klemensle gider",
 "Teslimde (KT3): sigorta kutusunun yuvaları ortak giriş barasında mı: akü ayrıkken multimetrenin süreklilik kademesiyle kutunun giriş ucu ile her yuvanın giriş tarafı arasına bak (altısı da öterse ortak bara). Biri ötmezse kutu ayrı girişli: her yuvaya kutunun üstünde olabildiğince kısa, kutunun giriş kablosuyla (G04) aynı kesitte 12 AWG ara kablo, hepsi tek giriş klemensinden yıldız (`planlama/adim3/kablolama-on-kararlar.md` §3, KT3)",
 "BTS7960B kartının pin adları şemadakinden farklı olabilir: kart üstü yazıya göre bağla",
 "İsim karıştırma: burada K1 / K2 röle adıdır; Kablolama kapısı K1 / K2 ayrı şey",
@@ -9922,7 +9922,7 @@
 "Burada: 12 V ana hat, şarj kolu, toprak, iki motor hattı, çevre 5 V, acil stop, sonar sinyal. Şemada devre sınıfının renginde (lejant; `planlama/adim3/kablolar.md` renk kuralı); tıklayınca kablo kimliği, iki uç, kesit, sigorta ve acil stopta enerjili olup olmadığı",
 "Direk boyunca gidenler K2 listesinde; o hatların taban kısmı da bu adımda bağlanır (şema bölünmedi)",
 "Dokuz hattın (G07, G16, G22, G19, B02, N01, N02, Q01, Q02) çizimi gösterim şemasıdır (`lale158/kablo_yolu_taban.py`): çarpışma taramasından geçmedi, parça sayısına girmez, boy ölçümü değildir. Kat ve alt plaka geçişleri modeldeki yerlerdir (ön kat kesiği, arka kablo deliği); kart üstündeki klemens yeri ve kartların arasındaki çizgi tahmin. Anahtarlı baranın yeri yaklaşık (modelde yok, röle yanından çizildi). Kabloyu çizgiye değil, kartlara ve klemenslere bakarak döşe",
-"Bağlantı tablosu P03 (yalnız sinyal teli, madde 7, 22 AWG): PCA9685 kanal 4 sinyali (`kafa_pan`) → Dağıtım kartı C (kafa) pan sinyal girişi; PCA9685 kanal 9 sinyali (`kafa_tilt`) → Dağıtım kartı C (kafa) tilt sinyal girişi. Dağıtım kartı C (kafa): kart güç panelinde, XL4016 C'nin yanında; adındaki \"kafa\" beslediği pan / tilt servolarıdır. Dağıtım kartı C modelde yok, yeri çizilmez; kart üstündeki pan / tilt giriş pininin numarası kayıtta yok: kart üstü yazıya göre bağla",
+"Bağlantı tablosu P03 (yalnız sinyal teli, alt adım 17.11, 22 AWG): PCA9685 kanal 4 sinyali (`kafa_pan`) → Dağıtım kartı C (kafa) pan sinyal girişi; PCA9685 kanal 9 sinyali (`kafa_tilt`) → Dağıtım kartı C (kafa) tilt sinyal girişi. Dağıtım kartı C (kafa): kart güç panelinde, XL4016 C'nin yanında; adındaki \"kafa\" beslediği pan / tilt servolarıdır. Dağıtım kartı C modelde yok, yeri çizilmez; kart üstündeki pan / tilt giriş pininin numarası kayıtta yok: kart üstü yazıya göre bağla",
 "Kablo listesi (uçlar, kesit, sigorta, sonlandırma): `planlama/adim3/kablolar.md` (tek kaynak `kablolar.json`); boy için tablodaki tahmin kuralı"
 ],
 "not_": [],
@@ -9931,6 +9931,195 @@
 "sure_dk": 5,
 "sure_tahmini": true,
 "kablolama": true,
+"sira": [],
+"sira_grup": [
+{
+"ad": "Toprak ve iki bara",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Toprak (G05, 12 AWG): akü − → yıldız barasının ortadaki (3 numaralı) saplaması. G05'in akü ucu XT60'ın robot tarafındaki − ucudur (lehim): akünün kutbuna doğrudan bağlama, akü kutupları bantlı kalır (akü ile XT60'ın akü tarafı arası G01, alt adım 17.2). İki bara da M5 saplama üstünde halka pabuç yığını: saplama başına en çok 4 pabuç, büyük akımlı pabuçlar yığının altında, üstte düz pul + yaylı pul; WAGO yok. Yıldız barası (toprak) 5 M5 saplama: saplamalar 4 adet siyah 12 AWG köprüyle (≈ 50 mm, iki ucu sarı halka pabuç) birbirine zincir bağlanır. Yerleşim: saplama 1 G12 / G14 / G15, 2 G13 / G16, 3 G05 (akü) / G06, 4 G17 / G18, 5 G20 / G22 dönüşleri. Anahtarlı bara (+) 4 M5 saplama: saplamalar 3 adet kırmızı 12 AWG köprüyle (≈ 50 mm, iki ucu sarı halka pabuç) birbirine zincir bağlanır; bütün saplamalar köprüyle birbirine bağlı. Anahtarlı bara yerleşimi (kalın pabuç altta): saplama 1 G12 / G14 / G15, 2 G13 / G16, 3 G09 / G11 (baraya gelen iki hat: röle K1 ve ön şarj kartı), 4 G22; saplama başına en çok 4 pabuç, köprü uçları dahil (`planlama/adim3/kablolar.json` yerleşim kaydı).",
+"demet": [
+"taban (K1)"
+],
+"ref": [
+"p1181"
+],
+"ev": []
+},
+{
+"ad": "Ana hat ve şarj kolu",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Ana hat (12 AWG): akü + → XT60 (G01, akü tarafı) → ana sigorta 30 A (standart bıçak, kablolu yuva; XT60'ın robot tarafından yuvanın girişine G02) → ana anahtar (yuvanın çıkışından G03) → sigorta kutusu (anahtarın çıkışından kutunun girişine G04). Ana anahtar henüz yerinde değil (F1'de etek plakasının altına takılır): G03 ve G04'ün anahtar uçlarını halka pabuçlu ve bantlı bırak; şarj kolunun + ucu (G06) ve akü ölçüm teli (G07) de anahtara gider; dördü F1'de bağlanır. Şarj kolu (G06, 16 AWG): + ucu ana sigortanın yük tarafından, ana anahtarın giriş saplamasına gidecek (G03 ile aynı saplama, mavi M5 halka pabuç, ana anahtarın saplama ölçüsü kablajda teyit; F1'de takılır); 7,5 A mini hat sigortasının kapaklı yuvası ana anahtar girişindeki ucun dibinde (kaynak ucu), kuyruğuna lehim + makaron; öbür uç etekteki XT60E-M şarj girişine (F1); − ucu yıldız barasının 3 numaralı saplamasına, alt adım 17.1'de takılan G05'in üstüne (mavi pabuç). Kolu akü XT60'ının robot tarafından, ana hattan al: akü XT60'tan ayrılınca kol da enerjisiz kalır (rehberdeki \"akü ayrık = enerjisiz\" düzeni buna dayanır; ana anahtar kapalıyken şarj edilir, karar O-17). Uç bantlı bırakılır, F1'de etekteki şarj girişine bağlanır; 7,5 A sigortası takılmaz (F1 aşama 1).",
+"demet": [
+"taban (K1)",
+"etek (F1)"
+],
+"ref": [
+"p1180"
+],
+"ev": []
+},
+{
+"ad": "Akü ölçüm teli (G07)",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Akü ölçüm teli (G07, 22 AWG; akü ölçüm bölücüsünün 100 kΩ üst direnci kaynak ucunda): arayüz kartı ucunu bölücünün orta noktası pedine lehimle, makaronla ört. Öbür uçta (G07'nin ana anahtar ucu), lehimden önce: kırmızı M5 halka pabucun PVC kılıfını çıkar (ana anahtarın saplama ölçüsü kablajda teyit); yalıtımlı pabucun kovanına lehim kılıfı eritir. Sonra lehimden önce makaronu G07'nin teline geçir: boyu direnci, iki bacağını ve pabucun kovanını birlikte örtecek kadar (lehimden sonra geçmez). Makaronu lehim yerinden uzağa, telin geri tarafına it ve iki lehim bitip soğuyana kadar orada tut (lehimin ısısı yakındaki makaronu erken büzer, sonra kaymaz). Direnci telin ucuna lehimle. Direncin öbür bacağını pabucun kovanına sık (pabuç pensesiyle), sonra kovana lehimle: direnç ile pabuç arasında tel kalmaz. Soğuyunca makaronu direncin ve kovanın üstüne çek ve ısıtarak büz: direnç, iki bacağı ve kovan tümüyle örtülü, açıkta bacak kalmaz (G07'nin direnci ana anahtar çıkış ucunda (kaynak ucu)). Gerginlik giderme: G07'yi direncin tel tarafında, ana anahtara giden G04'e kablo bağıyla tuttur; teli çekince yükü kablo bağı taşır, direncin gövdesi ve bacakları değil (bağın yeri kaynakta yok, kablajda teyit). Pabucu bantlı bırak: F1'de ana anahtarın çıkış saplamasına, G04'ün üstüne takılır. Pabuç saplamaya girmeden, akü ayrıkken multimetrenin direnç kademesiyle pabuç ile akü ölçüm bölücüsünün orta noktası arasını ölç: 100 kΩ'a yakın okunur (kontrol).",
+"demet": [
+"taban (K1)"
+],
+"sema": [
+11
+],
+"ev": []
+},
+{
+"ad": "Röle K1 ve ön şarj kartı",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "F1 20 A → röle K1 kontağı (30 → 87 (87a boş); soketin kuyruk numaraları kablajda teyit: G08 sigorta kutusundan girişe, G09 çıkıştan anahtarlı baranın 3 numaralı saplamasına; 12 AWG); F1 → ön şarj kartı → anahtarlı bara (G10, G11; 12 AWG). Ön şarj kartında, lehimden önce K2'nin pimlerini bul: akü ayrıkken röle gövdesindeki şemaya bak, multimetrenin süreklilik kademesinde (bobin boşta) COM ile NC arası öter, COM ile NO arası ötmez (pim yeri kablajda teyit). Sonra G10'u K2 kontağının girişine lehimle, ön şarj direnci (5,6 Ω) çıkış ucunda, G11 direncin öbür bacağından anahtarlı baranın 3 numaralı saplamasına; K2'nin uçları COM → NO (NC boş) (röle pimlerinin yeri kablajda teyit: röle gövdesindeki şema). Karede Kablo yolu 3'ün baradan sol BTS7960B'ye giden kısmı (G12) da görünür; o uç alt adım 17.5'te bağlanır.",
+"demet": [
+"taban (K1)"
+],
+"ref": [
+"p1182"
+],
+"ev": []
+},
+{
+"ad": "Bara çıkışları: BTS7960B ve XL4016 A / B / C",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Baradan: iki BTS7960B (G12, G13; 12 AWG); mini hat sigortalarıyla XL4016 A ve B (7,5 A; G14, G15), 16 AWG. G14, G15 ve G16'nın hat sigortası yuvası anahtarlı bara ucunda (kaynak ucu): yuvanın bir kuyruğu mavi M5 halka pabuçla bara saplamasına, öbür kuyruğu kablonun teline lehim + makaron; XL4016 ucunda sigorta yok. G12–G15'in alt kat ucu B3'te bağlandı; burada B3'te etiketli bırakılan bara uçlarını bağla, kalın pabuç altta: önce G12'nin + ucunu anahtarlı baranın 1 numaralı, G13'ünkünü 2 numaralı saplamasına, − uçlarını yıldız barasının 1 ve 2 numaralı saplamasına; sonra G14 ve G15'in + uçlarını hat sigortası yuvasıyla anahtarlı baranın 1 numaralı saplamasına, − uçlarını yıldız barasının 1 numaralı saplamasına (her biri G12'nin üstüne). XL4016 C'yi de mini hat sigortasıyla (5 A) baradan güç panelindeki IN+ / IN− klemensine bağla (G16, 16 AWG); G16'nın + ucu anahtarlı baranın 2 numaralı, − ucu yıldız barasının 2 numaralı saplamasına, G13'ün üstüne.",
+"demet": [
+"taban (K1)",
+"taban alt kat"
+],
+"ref": [
+"p1183"
+],
+"sema": [
+12
+],
+"ev": []
+},
+{
+"ad": "PC817 #2 algı teli (G22)",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "PC817 #2 algı teli (G22, 22 AWG): anahtarlı bara ucunda (kaynak ucu) 2 A mini hat sigortası; G22'nin yuvasının bara kuyruğu anahtarlı baranın 4 numaralı saplamasına. G22'nin kutbu + → IN2 +, IN2 − → GND: + damarını (hat sigortasından gelen) arayüz kartındaki PC817 modülünün IN2 + klemensine, − damarını modülün IN2 − klemensinden yıldız barasına bağla; − damarının yıldız ucu 5 cm 18 AWG siyah ara parçaya lehimli, ara parça kırmızı pabuçla yıldız barasının 5 numaralı saplamasına. Bağlamadan önce modülün üstündeki IN2 + / IN2 − yazısını oku: ters bağlanan G22'de giriş LED'i yanmaz, bara gerilimliyken PC817 #2 (GPIO5) LOW'a düşmez ve ESP32 devreye almada hata verir; modülün girişinde ters gerilim koruması olup olmadığı belgede yok (kablajda teyit), ters bağlıyken enerji verme.",
+"demet": [
+"taban (K1)"
+],
+"sema": [
+13
+],
+"ev": []
+},
+{
+"ad": "Sigorta kutusu çıkışları",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Sigorta kutusundan (standart bıçak): F3 5 A kafa hattı (G17, 18 AWG; uç direk dibinde bırakılır), F4 5 A XL4016 çevre (G18, 18 AWG; çevre çıkışı G19, 16 AWG, OUT+ ucunun dibinde 2 A mini hat sigortası), F5 2 A acil stop (A01, 18 AWG; mantar F1'de takılır, uç bantlı), F6 3 A göğüs ekranı dalı (G20, 18 AWG; uç bantlı, K2'de direğe çıkar). Göğüs regülatörünün panel yeri karar bekliyor (K52): G20'nin uç yeri ve boyu bu karara bağlı. G17, G18, G20 ve A01'in kutu ucunu kendi yuvasının çıkışına bağla (G17 F3, G18 F4, A01 F5, G20 F6); G17, G18 ve G20'nin − ucunu yıldız barasına: G17 ve G18 4 numaralı, G20 5 numaralı saplamaya (G18'in öbür ucu B3'te XL4016 çevreye bağlandı).",
+"demet": [
+"taban (K1)",
+"taban alt kat",
+"boyun",
+"etek (F1)"
+],
+"ref": [
+"p1188"
+],
+"ev": []
+},
+{
+"ad": "Acil stop ve röle sürücüleri",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Acil stop ve röle sürücüleri (yeşil, A01–A05 18 AWG; E3, E9): mantar NC çıkışı → acil stop düğüm kartı (güç panelinde küçük pertinaks parçası: iki adet 2 pin 5,08 mm vidalı klemens, dört ucu kart üstünde ≥ 18 AWG tel köprüyle lehimli) → röle K1 bobini (86; A02) ve ön şarj kartındaki K2 bobini (+; A04). Bobinlerin − uçları arayüz kartına: K1 85 → BC337-40 #1 kollektörü (A03; GPIO4 sürer), K2 − → BC337-40 #2 kollektörü (A05; GPIO19 sürer). Her sürücüde 270 Ω seri taban direnci ve 2,2 kΩ taban → GND. Geri tepme diyotları 1N4007: K1'de soketin 86 / 85 kuyruklarının üstünde lehim + makaron, katot (bantlı uç) 86'ya, anot 85'e; K2'de ön şarj kartında bobin klemensinin üstünde, katot bobin + ucuna. PC817 #1 girişi düğümden (A06, 22 AWG; GPIO23 okur): A06'nın + ucunu acil stop düğümü (mantar NC çıkışı) noktasına, yani acil stop düğüm kartında bir klemensin kuyruğuna (kart altı) lehimle, modülün IN1 + klemensine bağla; − ucunu modülün IN1 − klemensinden arayüz kartının GND pedine lehimle (makaron). Mantar ile düğüm arasında elde taşınan acil stop için ayrılan iki uçlu yer (Ö4; 2 pin 5,08 mm klemens) karar verilene kadar zincirin kendi teliyle (A01, A02) aynı kesitte (18 AWG) kısa bir tel köprüyle kapalı durur; köprü yoksa röle çekmez. Ö4 karar bekliyor (K60).",
+"demet": [
+"taban (K1)",
+"etek (F1)"
+],
+"ref": [
+"p1189"
+],
+"ev": []
+},
+{
+"ad": "Alt kat kartlarının öbür uçları",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Alt kat kartlarının (iki BTS7960B, XL4016 A / B / çevre) klemens uçları B3'te, kat ve güç paneli gelmeden bağlandı; G12–G15'in bara uçları alt adım 17.5'te, G18'in kutu ve yıldız uçları alt adım 17.7'de bağlandı. Burada B3'te etiketli bırakılan öbür uçları yerlerine bağla: G19'u arayüz kartının çevre 5 V / GND klemensine; SV1'i dağıtım kartı A'nın, SV2'yi dağıtım kartı B'nin V+ / GND giriş klemensine (OUT+ → V+, OUT− → GND). Alt kat klemensine burada uzanma: kart üstünden elektronik katına 69 mm, yanda 40–150 mm (sıra kontrolü).",
+"demet": [
+"taban alt kat"
+],
+"sema": [
+15
+],
+"ev": []
+},
+{
+"ad": "Enkoder, BTS sinyal ve sonar kabloları",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Enkoder, BTS sinyal ve sonar kabloları (dişi uçlu sinyal teli, O-4 r; pinler `planlama/adim3/kablolar.md`'de, kart üstü yazıya göre bağla): arka sol motorun enkoderi (N01) ve arka sağ motorun enkoderi (N02) → ESP32 taşıyıcı başlığı (VCC → 3V3, GND, A, B). Sol BTS7960B'nin sinyal başlığı (B01) ve sağınki (B02) → ESP32 (IN1, IN2) ve arayüz kartı (EN1 + EN2 → BTS EN düğümü, IS1 + IS2 → IS bölücüsü, VCC → çevre 5 V, GND). Sonarlar: sağ (Q01), orta (Q02) ve sol (Q03) sonarın VCC'sini arayüz kartının çevre 5 V'una, Trig'ini PCA9685'e, Echo'sunu arayüz kartındaki sonar bölücüsüne, GND'sini arayüz kartının GND'sine bağla. Motor uçları B3'te BTS7960B'ye bağlandı. Acil stop ucunu bırak: mantar F1'de takılır.",
+"demet": [
+"taban elektronik katı",
+"taban sonar"
+],
+"ref": [
+"p1190"
+],
+"sema": [
+17,
+18,
+19,
+20,
+21
+],
+"ev": []
+},
+{
+"ad": "Direğe çıkan hatların taban kısmı",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Direğe çıkacak hatların taban kısmını da burada bağla. Kafa servolarının sinyal köprüsünü (P03), yalnız sinyal teliyle, PCA9685'in kafa pan ve tilt kanallarının sinyal pinlerinden dağıtım kartı C'nin pan / tilt sinyal girişlerine bağla. PCA9685'in V+ pinine tel takma; 3 telli hazır kablo kullanırsan V+ damarını iki ucundan kes, makaronla yalıt (B6a madde 4: V+ teli XL4016 C'nin çıkışını A ve B'ninkilere paralel bağlar). Kafa 12 V'un (G17) ve göğüs 12 V'un (G20) taban uçları alt adım 17.7'de bağlandı; ESP32 USB'nin (U06) taban ucunu bağla. Servo uzatmaları (A / B / kafa) K2'de dağıtım kartlarının çıkışına takılır. Yukarısı K2'de.",
+"demet": [
+"taban elektronik katı",
+"boyun",
+"taban (K1)",
+"gövde (K2)"
+],
+"kablo": [
+3
+],
+"ev": []
+},
+{
+"ad": "Son kontrol: K1'de enerji verilmez",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "K1'de enerji verilmez: ana anahtar ve acil stop mantarı F1'de takılır. Bu adımda takılan köprüler: Ö4 yerindeki kısa tel köprü (alt adım 17.8), acil stop düğüm kartındaki (A02, A04) ≥ 18 AWG tel köprü (alt adım 17.8), yıldız barasının saplamaları arasındaki 4 adet 12 AWG köprü (alt adım 17.1), anahtarlı baranın saplamaları arasındaki 3 adet 12 AWG köprü (alt adım 17.1) ve KT3 bakışında kutu ayrı girişli çıkarsa yuva girişlerine giden ara kablolar (kontrol listesi). Bunların dışında mantarın kendi uçları ve ana anahtarın uçları hiçbir zaman köprülenmez; akü XT60 ayrık kalır, boştaki ana hat uçları gerilimsiz ve bantlı. XL4016 ayarı ve PC817 ölçümü kartlar takılmadan önce tezgâhta, akım sınırlı tezgâh kaynağıyla yapılır (kontrol; B3, B5a, B6a). İlk enerji iki aşamalı: F1 sonunda kafasız (aşama 1: ana anahtar, BMS, mantar; F1 takılı değil, anahtarlı bara enerjisiz), devreye alma ve motor yön testi F5'te (aşama 2). Bu sıra kaynakta yok, doğrulanmadı.",
+"demet": [],
+"genel": "son kontrol",
+"ev": []
+}
+],
+"demet_alt": true,
+"alt": 12,
 "ev": []
 },
 {
@@ -11707,6 +11896,9 @@
 0.0,
 -1.0
 ],
+"sema_ortulu": {
+"Ses kablosu (AU1": "sol arka kabuğun arkasında kalır"
+},
 "sema": [
 7,
 26
@@ -11901,7 +12093,7 @@
 "no": "32",
 "faz": "Kablolama kapısı",
 "baslik": "Kablolama kapısı 2: gövde içi",
-"is_": "Kabuktan önce dur. Enerjisiz çalış: akü XT60 ayrık, F3 (kafa) takılı değil; kafa uçları enerjisiz bağlanır. Taban uçları K1'de bağlandı; burada direk ve boyun boyunca çıkar:\n1. Kol servo uzatmaları: kart ucunu dağıtım kartının 3 pinli çıkışına tak: sağ kol dağıtım kartı A'ya (S01 omuz öne-arka, S02 omuz yana, S03 dirsek, S04 bilek), sol kol dağıtım kartı B'ye (S05 omuz öne-arka, S06 omuz yana, S07 dirsek, S08 bilek); çıkış numaraları `planlama/adim3/kablolar.md`'de. Yol: dağıtım A / B → etek → direk arka yüzü (z −26) → travers altı (y ≈ 1215) arkası → omuz.\n2. Kafa servoları, hat C (XL4016 C → SV3 → dağıtım kartı C, güç panelinde; B5a): kafa pan uzatmasını (S09) dağıtım kartı C'nin pan çıkışına, kafa tilt uzatmasını (S10) tilt çıkışına tak → direk üstü R62 halkası; tilt kablosu boyundan kafaya.\n3. Kafa 12 V (G17, 18 AWG çift, F3 5 A): direk ön yüzü (z +26) → R62 → boyun → kafa giriş kartı (E3a; oradan D24V50F5 ve SY8205).\n4. ESP32 USB (U06) boyuna girmez (05.11 kararı): ESP32'den (taban) direk arka yüzü (z −26) boyunca yukarı; ucu üst arka kapak hizasında (y ≈ 1.085–1.157) hub için bırakılır, F5'te hub'a takılır. VBUS teline seri 1N5819: anot hub (Pi) tarafında, katot ESP32 tarafında; çevre 5 V hub'a / Pi'ye geri beslemez. ESP32 kartının kendi VBUS→VIN diyodu varsa gerekmez: multimetreyle bak (doğrulanmadı). 1N5819'un sınırı 1 A: çevre yükleri USB'den geri beslenirse aşılabilir (teslimde bakılacaklar; Efe'ye soru).\n5. Boyun demeti, 5 kablo (K14 a): hub uzatması (U03; Pi USB 3 → hub), göğüs HDMI (H02; Pi micro HDMI 1), tilt servo (S10), hoparlör (AU3; PAM8403 → hoparlör), kafa 12 V (G17). Yol: alt çıkış → servo yuvası arka kanalı (20 × 7,8 mm kapalı tünel, ≈ 34 mm, iki dik dönüş) → kablo odası → mil penceresi → Ø32 adaptör → sol yanak dışı → tabla geçişi (x −50…−37). Geçiş sırası: (1) hub uzatması (USB 2.0, erkek fiş gövdesi ≤ 13 × 7 mm; erkek uç aşağıdan yukarı, tünel boşken), (2) HDMI (Ø ≤ 6 mm; micro HDMI ucu aşağıdan yukarı, HDMI A ucu gövdede), (3) tilt servo kablosu, (4) hoparlör ve (5) 12 V çifti fişsiz (uç kontakları / pabuçlar geçirdikten sonra takılır). Demeti kurmadan önce basılmış tünel deneme parçasında (20 × 7,8 mm, ≈ 34 mm, iki dik dönüş, mil penceresi 20 × 10) fişleri elle geçir (KT4; kumpas ölçüsü yetmez). Fiş geçmezse sırasıyla: kablo fişsiz geçirilip yeniden sonlandırılır (USB 2.0'da lehimli USB-A fiş), HDMI için şerit HDMI + uç adaptörleri. Demeti kelepçe / kılıfla kapatmadan önce Efe'nin iki cevabı beklenir (ESP32 bilinçli reseti DTR / RTS ile; ReSpeaker 16 kHz). Hoparlör kablosu (AU3) dışındaki dört kabloyu (U03, H02, S10, G17) kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı). Hoparlör kablosu (AU3) için, dikişleri sıkmadan önce, enerjisizken (akü XT60 ayrık): lehimden önce hoparlör kablosunun (AU3) + damarını iki ucunda multimetrenin süreklilik kademesiyle bul ve işaretle (iki ucu da boşta). Hoparlör kablosunun (AU3) kafa ucunu PAM8403'ün sol kanal çıkışına lehimle: + damarını L+ ucuna, − damarını L− ucuna; gövde ucunu fişsiz bırak (madde 6), F2'de hoparlöre lehimlenir. Kutup kontrolü, dikişleri sıkmadan önce (AU3): işaretli + damarı L+ ucunda, öbür damar L− ucunda (ters ise lehimi şimdi düzelt). Sonra dikişleri sık.\n6. Boyundan inenler travers arkasından gövdeye: HDMI direğin solundan ekran arkasına (F3); hub uzatmasının ucu üst arka kapak hizasında (F5); hoparlör kablosu sağ önden göğüs altına (y ≈ 1.000; F2'de hoparlöre).\n7. Göğüs ekranı 12 V boyundan geçmez: sigorta kutusunun F6 3 A (standart) yuvasından ayrı dal (K11 a: ana anahtar sonrası, röle öncesi; acil stopta açık kalır) → LM2577 + LM2596 regülatörü (G20) → ekran 12 V jakı (G21), 18 AWG. Regülatörün çıkışına ekran 12 V jak kablosunu bağla (G21); kabloyu direğin arka yüzünden, travers altından direğin soluna geçir ve jak ucunu ekran arkasında boşta bırak (ekrana F3'te takılır). Regülatörün panel yeri karar bekliyor (K52): G20'nin uç yeri ve boyu buna bağlı. Regülatör ekrana bağlanmadan 12 V'a ayarlanır (kontrol).\n8. Kablo bağıyla direğe tuttur. S1 uçları travers arkasında kalır: G4'te yarıktan girer.",
+"is_": "Kabuktan önce dur. Enerjisiz çalış: akü XT60 ayrık, F3 (kafa) takılı değil; kafa uçları enerjisiz bağlanır. Taban uçları K1'de bağlandı; burada direk ve boyun boyunca çıkar:",
 "baglanti_md": "Kablo bağı. Kablo listesi (uçlar, kesit, sigorta): `planlama/adim3/kablolar.md`",
 "alet": "Kumpas, yan keski, multimetre",
 "erisim": "Kabuk yok; arkadan ve önden düz erişim. Kafa uçları arka kabuk dikişleri açıkken",
@@ -11941,6 +12133,126 @@
 "sure_dk": 5,
 "sure_tahmini": true,
 "kablolama": true,
+"sira": [],
+"sira_grup": [
+{
+"ad": "Kol servo uzatmaları",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Kol servo uzatmaları: kart ucunu dağıtım kartının 3 pinli çıkışına tak: sağ kol dağıtım kartı A'ya (S01 omuz öne-arka, S02 omuz yana, S03 dirsek, S04 bilek), sol kol dağıtım kartı B'ye (S05 omuz öne-arka, S06 omuz yana, S07 dirsek, S08 bilek); çıkış numaraları `planlama/adim3/kablolar.md`'de. Yol: dağıtım A / B → etek → direk arka yüzü (z −26) → travers altı (y ≈ 1215) arkası → omuz. Karede Kablo yolu 5 ve 7'nin baradan dağıtım kartlarına giden kısmı K1'de bağlandı; burada yalnız uzatmaları tak.",
+"demet": [
+"kol sağ",
+"kol sol"
+],
+"ref": [
+"p1184",
+"p1186"
+],
+"ev": []
+},
+{
+"ad": "Kafa servoları, hat C",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Kafa servoları, hat C (XL4016 C → SV3 → dağıtım kartı C, güç panelinde; B5a): kafa pan uzatmasını (S09) dağıtım kartı C'nin pan çıkışına, kafa tilt uzatmasını (S10) tilt çıkışına tak → direk üstü R62 halkası; tilt kablosu boyundan kafaya.",
+"demet": [
+"gövde (K2)",
+"boyun",
+"taban (K1)"
+],
+"ref": [
+"p1185"
+],
+"ev": []
+},
+{
+"ad": "Kafa 12 V",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Kafa 12 V (G17, 18 AWG çift, F3 5 A): direk ön yüzü (z +26) → R62 → boyun → kafa giriş kartı (E3a; oradan D24V50F5 ve SY8205).",
+"demet": [
+"boyun"
+],
+"ref": [
+"p1187"
+],
+"ev": []
+},
+{
+"ad": "ESP32 USB",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "ESP32 USB (U06) boyuna girmez (05.11 kararı): ESP32'den (taban) direk arka yüzü (z −26) boyunca yukarı; ucu üst arka kapak hizasında (y ≈ 1.085–1.157) hub için bırakılır, F5'te hub'a takılır. VBUS teline seri 1N5819: anot hub (Pi) tarafında, katot ESP32 tarafında; çevre 5 V hub'a / Pi'ye geri beslemez. ESP32 kartının kendi VBUS→VIN diyodu varsa gerekmez: multimetreyle bak (doğrulanmadı). 1N5819'un sınırı 1 A: çevre yükleri USB'den geri beslenirse aşılabilir (teslimde bakılacaklar; Efe'ye soru).",
+"demet": [
+"gövde (K2)"
+],
+"ref": [
+"p1191"
+],
+"sema": [
+2
+],
+"ev": []
+},
+{
+"ad": "Boyun demeti: tünelden geçirme",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Boyun demeti, 5 kablo (K14 a): hub uzatması (U03; Pi USB 3 → hub), göğüs HDMI (H02; Pi micro HDMI 1), tilt servo (S10), hoparlör (AU3; PAM8403 → hoparlör), kafa 12 V (G17). Yol: alt çıkış → servo yuvası arka kanalı (20 × 7,8 mm kapalı tünel, ≈ 34 mm, iki dik dönüş) → kablo odası → mil penceresi → Ø32 adaptör → sol yanak dışı → tabla geçişi (x −50…−37). Geçiş sırası: (1) hub uzatması (USB 2.0, erkek fiş gövdesi ≤ 13 × 7 mm; erkek uç aşağıdan yukarı, tünel boşken), (2) HDMI (Ø ≤ 6 mm; micro HDMI ucu aşağıdan yukarı, HDMI A ucu gövdede), (3) tilt servo kablosu, (4) hoparlör ve (5) 12 V çifti fişsiz (uç kontakları / pabuçlar geçirdikten sonra takılır). Demeti kurmadan önce basılmış tünel deneme parçasında (20 × 7,8 mm, ≈ 34 mm, iki dik dönüş, mil penceresi 20 × 10) fişleri elle geçir (KT4; kumpas ölçüsü yetmez). Fiş geçmezse sırasıyla: kablo fişsiz geçirilip yeniden sonlandırılır (USB 2.0'da lehimli USB-A fiş), HDMI için şerit HDMI + uç adaptörleri. Demeti kelepçe / kılıfla kapatmadan önce Efe'nin iki cevabı beklenir (ESP32 bilinçli reseti DTR / RTS ile; ReSpeaker 16 kHz).",
+"demet": [
+"boyun"
+],
+"sema": [
+0,
+1,
+3
+],
+"ev": []
+},
+{
+"ad": "Kafa uçları, hoparlör kablosu ve gövdeye inenler",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Hoparlör kablosu (AU3) dışındaki dört kabloyu (U03, H02, S10, G17) kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı). Hoparlör kablosu (AU3) için, dikişleri sıkmadan önce, enerjisizken (akü XT60 ayrık): lehimden önce hoparlör kablosunun (AU3) + damarını iki ucunda multimetrenin süreklilik kademesiyle bul ve işaretle (iki ucu da boşta). Hoparlör kablosunun (AU3) kafa ucunu PAM8403'ün sol kanal çıkışına lehimle: + damarını L+ ucuna, − damarını L− ucuna; gövde ucunu fişsiz bırak (bu alt adımda aşağıda), F2'de hoparlöre lehimlenir. Kutup kontrolü, dikişleri sıkmadan önce (AU3): işaretli + damarı L+ ucunda, öbür damar L− ucunda (ters ise lehimi şimdi düzelt). Sonra dikişleri sık.\nBoyundan inenler travers arkasından gövdeye: HDMI direğin solundan ekran arkasına (F3); hub uzatmasının ucu üst arka kapak hizasında (F5); hoparlör kablosu sağ önden göğüs altına (y ≈ 1.000; F2'de hoparlöre).",
+"demet": [
+"boyun"
+],
+"ev": []
+},
+{
+"ad": "Göğüs ekranı 12 V",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Göğüs ekranı 12 V boyundan geçmez: sigorta kutusunun F6 3 A (standart) yuvasından ayrı dal (K11 a: ana anahtar sonrası, röle öncesi; acil stopta açık kalır) → LM2577 + LM2596 regülatörü (G20) → ekran 12 V jakı (G21), 18 AWG. Regülatörün çıkışına ekran 12 V jak kablosunu bağla (G21); kabloyu direğin arka yüzünden, travers altından direğin soluna geçir ve jak ucunu ekran arkasında boşta bırak (ekrana F3'te takılır). Regülatörün panel yeri karar bekliyor (K52): G20'nin uç yeri ve boyu buna bağlı. Regülatör ekrana bağlanmadan 12 V'a ayarlanır (kontrol).",
+"demet": [
+"göğüs",
+"taban (K1)"
+],
+"sema": [
+4
+],
+"ev": []
+},
+{
+"ad": "Son kontrol: direğe tuttur",
+"tezgah": "",
+"bag": "",
+"satir": [],
+"is_": "Kablo bağıyla direğe tuttur. S1 uçları travers arkasında kalır: G4'te yarıktan girer.",
+"demet": [],
+"genel": "son kontrol",
+"ev": []
+}
+],
+"demet_alt": true,
+"alt": 8,
 "ev": []
 },
 {
@@ -12292,7 +12604,7 @@
 ],
 "kontrol": [
 "Acil stop NP2 BE102: CAD 60 mm; delik gerçek parçayla tutuyor mu bak",
-"İlk enerji, aşama 1 (F1 sonu, kafasız): ana anahtar ve mantar bağlı. Saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken ana sigortayı (30 A, standart), F4 (5 A, XL4016 çevre 5 V: ESP32; çevre çıkışındaki 2 A mini hat sigortası da) ve F5 (2 A, acil stop: mantar, röle bobinleri) tak. F1 (20 A: röle K1 ve ön şarj kolu K2), F3 (5 A, kafa), F6 (3 A, göğüs ekranı), XL4016 hat sigortaları (mini; A 7,5 A, B 7,5 A, C 5 A), PC817 #2 algı telinin (G22) 2 A mini sigortası ve şarj kolunun 7,5 A mini sigortası takılı değil (`planlama/adim3/elektrik.md` sigorta listesi; kutudakiler standart bıçak, hat yuvalarındakiler mini): anahtarlı bara, kafa ve göğüs ekranı dalı enerjisiz, Pi enerjisiz. Şarj kolu ana sigortanın yük tarafında, ana anahtardan önce: sigortası takılı olsaydı ana anahtar kapalıyken de gerilimli olurdu. Devreye alma komutu Pi'den gelir (E3). ESP32'deki program bilinmiyor: röleleri süren pinler GPIO4 (K1) ve GPIO19 (K2), açılışta LOW ve taban 2,2 kΩ ile GND'ye çekili (E9); bilinmeyen bir program bu pinleri sürebilir. F1 takılı olmadığı için röle K1 ve K2'nin kontakları enerjisiz, anahtarlı bara enerjisiz kalır. Tekerlekler yerden kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Mantar ölçümü: akü ayrıkken multimetreyi DC V kademesine al (20 V aralığı ya da otomatik; akü en çok 14,6 V), kırmızı ucu V soketine tak: 10 A soketinde kalırsa multimetre bu noktayı GND'ye bağlar ve F5 2 A atar (`planlama/d158/testler/00-genel.md` multimetre kuralı). Kırmızı ucu arayüz kartındaki PC817 #1 giriş klemensinin + ucuna (mantar sonrası düğüm, E3), siyah ucunu güç panelindeki yıldız barasının (GND, M5 saplama) akü dönüşü saplamasına (3.) bağla. Ölçü kıskacını mantar uçlarına takma. Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 takılı olmadığı için yalnız F4 / F5 girişleri, tam açılış aşama 2'de). Mantara basınca PC817 #1 girişi 0 V, bırakınca akü gerilimi (12,8–14,4 V). Bitince ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök. Devreye alma, ön şarj ve motor yön testi F5'te (İlk enerji, aşama 2). Bu aşamalar, sigorta sırası, ölçü noktası, klemensin + ucu, multimetre aralığı ve \"yerden kesik\" düzeni bu adım için kaynakta yok, doğrulanmadı",
+"İlk enerji, aşama 1 (F1 sonu, kafasız): ana anahtar ve mantar bağlı. Saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken ana sigortayı (30 A, standart), F4 (5 A, XL4016 çevre 5 V: ESP32; çevre çıkışındaki 2 A mini hat sigortası da) ve F5 (2 A, acil stop: mantar, röle bobinleri) tak. F1 (20 A: röle K1 ve ön şarj kolu K2), F3 (5 A, kafa), F6 (3 A, göğüs ekranı), XL4016 hat sigortaları (mini; A 7,5 A, B 7,5 A, C 5 A), PC817 #2 algı telinin (G22) 2 A mini sigortası ve şarj kolunun 7,5 A mini sigortası takılı değil (`planlama/adim3/elektrik.md` sigorta listesi; kutudakiler standart bıçak, hat yuvalarındakiler mini): anahtarlı bara, kafa ve göğüs ekranı dalı enerjisiz, Pi enerjisiz. Şarj kolu ana sigortanın yük tarafında, ana anahtardan önce: sigortası takılı olsaydı ana anahtar kapalıyken de gerilimli olurdu. Devreye alma komutu Pi'den gelir (E3). ESP32'deki program bilinmiyor: röleleri süren pinler GPIO4 (K1) ve GPIO19 (K2), açılışta LOW ve taban 2,2 kΩ ile GND'ye çekili (E9); bilinmeyen bir program bu pinleri sürebilir. F1 takılı olmadığı için röle K1 ve K2'nin kontakları enerjisiz, anahtarlı bara enerjisiz kalır. Tekerlekler yerden kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Mantar ölçümü: akü ayrıkken multimetreyi DC V kademesine al (20 V aralığı ya da otomatik; akü en çok 14,6 V), kırmızı ucu V soketine tak: 10 A soketinde kalırsa multimetre bu noktayı GND'ye bağlar ve F5 2 A atar (`planlama/d158/testler/00-genel.md` multimetre kuralı). Kırmızı ucu arayüz kartındaki PC817 #1 giriş klemensinin + ucuna (mantar sonrası düğüm, E3), siyah ucunu güç panelindeki yıldız barasının (GND, M5 saplama) akü dönüşü saplamasına (3 numaralı) bağla. Ölçü kıskacını mantar uçlarına takma. Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 takılı olmadığı için yalnız F4 / F5 girişleri, tam açılış aşama 2'de). Mantara basınca PC817 #1 girişi 0 V, bırakınca akü gerilimi (12,8–14,4 V). Bitince ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök. Devreye alma, ön şarj ve motor yön testi F5'te (İlk enerji, aşama 2). Bu aşamalar, sigorta sırası, ölçü noktası, klemensin + ucu, multimetre aralığı ve \"yerden kesik\" düzeni bu adım için kaynakta yok, doğrulanmadı",
 "Akü ölçüm teli (G07), aşama 1'de mantar ölçümünden sonra: ana anahtar kapalı, akü XT60'tan ayrıkken multimetreyi DC V kademesinde bırak (kırmızı uç V soketinde). Önce akünün kendi gerilimini oku: akü XT60'tan ayrıkken kırmızı ucu akünün XT60'ındaki (akü tarafı) + kontağına, siyah ucu − kontağına değdir (bir uç iki kontağa birden değmesin, iki uç birbirine değmesin), okunanı not al: bu akü gerilimidir. Akü gerilimi 12,8–14,4 V dışındaysa burada dur: bölücü ölçümüne geçme, ana anahtarı açma, aşama 2'ye (F5) geçme; akü 12,8–14,4 V aralığına gelince bu maddeyi baştan yinele (akünün şarjı bu adım için kaynakta yok, doğrulanmadı)",
 "Akü gerilimi 12,8–14,4 V içindeyse: kırmızı ucu arayüz kartındaki akü ölçüm bölücüsünün orta noktasına (G07'nin kart ucu), siyah ucu yıldız barasının akü dönüşü (G05) saplamasına bağla. Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: okunan gerilim akü geriliminin bölücü oranı (0,1525) katıdır: akü 12,8–14,4 V iken bölücünün orta noktasında 1,95–2,20 V okunur (`planlama/adim3/elektrik.md` E2). Bölücü okumasını not al: not aldığın akü gerilimiyle birlikte ESP32'nin bir kez yapılan multimetre kalibrasyonunda kullanılır (E2); beklenen bölücü okuması = akü gerilimi × bölücü oranı (0,1525); bu açıklamadır, karar ölçütü değildir (dirençlerin toleransı kaynakta yok, kablajda teyit). Karar yalnız banttan: okuma 1,95–2,20 V içindeyse bölücü geçer; ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök",
 "Bölücü okuması 1,95–2,20 V aralığının altında ya da üstündeyse: ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök. Akü gerilimi 12,8–14,4 V içinde olduğu için bölücü bozuk: hiç gerilim okunmadıysa G07'nin pabucu, direnci ya da kart ucu kopmuş; aralığın üstündeyse bölücünün alt direnci eksik ya da yanlış. Akü ayrıkken bölücüyü kontrol et: G07'nin direnci (pabuç ile bölücünün orta noktası arası, K1 kontrolündeki direnç ölçümü), direncin ve G07'nin iki ucundaki lehim, bölücünün alt direnci. Bölücünün orta noktası ESP32'nin akü ölçüm pinine bağlı (B6a, X01): bölücüdeki kusuru düzeltmeden ana anahtarı yeniden açma, ESP32'ye bu bölücüyle enerji verme, aşama 2'ye (F5) geçme. Kusuru düzeltince ölçümü baştan, akünün kendi gerilimini okuduğun maddeden yinele. Listedeki yerlerde kusur bulunmazsa da devam etme: akü gerilimini ve bölücü okumasını kayda yaz (tolerans kaynakta yok)"
@@ -16145,7 +16457,7 @@
 "no": "—",
 "faz": "Son",
 "baslik": "Servis kapakları (test sonrası)",
-"is_": "1. 4'lü USB hub (harici beslemesiz, USB 2.0) üst arka servis kapağının içinde: hub'ı kapağın takozuna, iki yan dayamanın arasına 1 mm köpük bantla yapıştır. Bağla: hub kablosu ← Pi USB 3'ten boyundan gelen USB 2.0 uzatma (U03, K2), Hub 1 → göğüs ekranı dokunmatiği (U05; F3'te boşta bırakılan USB), Hub 2 → ESP32 USB (U06; K2'de direk arka yüzünden çıkarılan uç; 1N5819 yönü K2 madde 4). Hub 3 ve 4 boş. Hub'ın anahtarı açık kalmalı.\n2. İlk enerji, aşama 2 (devreye alma testi): kapaklar açık, hub bağlı (ESP32 ile Pi hub üzerinden konuşur). Saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken F1 (20 A), F3 (5 A, kafa), XL4016 hat sigortalarını (mini; A 7,5 A, B 7,5 A, C 5 A) ve PC817 #2 algı telinin (G22) 2 A mini sigortasını tak (`planlama/adim3/elektrik.md` sigorta listesi; F6 3 A F3'te takıldı). Şarj kolunun 7,5 A mini sigortası bu aşamada da takılı değil. Tekerlekler yerden kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Kollar aşağıda başlar: mantara basınca servo gücü de kesilir ve kollar düşer (E3 DTR / RTS notu). Kolların erişim alanında ve düşme hattında, kafanın ve tekerlerin erişim alanında kimse yok, bir kişi yalnız mantarda (kural 1 ve 7). Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 / F4 / F5 / F6 girişleri, Pololu ve göğüs ekranı dalı dahil; ekranlı ilk açılışta F6 atmamalı, KT3). Pi açılır; ESP32, Pi seri portu açılınca resetlenmemeli (boot mesajı yok; E3 DTR / RTS). Pi'den devreye al, ESP32 ön şarj dizisi (E9): ön koşul (mantar serbest, servo hedefleri son konumda, BTS EN = 0 ve PWM = 0) → GPIO19 = 1 (röle K2) → en az 300 ms bekle (boş aküde 500 ms önerilir) → GPIO5 (PC817 #2) LOW teyidi (bara var; LOW değilse ön şarj kolu çalışmıyor: GPIO19 = 0, hata) → GPIO4 = 1 (röle K1) → 100 ms sonra GPIO19 = 0 (K2 bırakılır) → GPIO5 LOW teyidi. K2 toplam en çok 1 s çeker. Mantara basınca K1 düşer (K2, devreye alma sırasında K1 çektikten 100 ms sonra zaten bırakılmıştı; E9 adım 5), anahtarlı bara kesilir (GPIO5 HIGH), kollar düşer; göğüs ekranı dalı (F6) acil stopta açık kalır. Mantarı bırak: röle kendiliğinden çekmez, yeniden devreye alma yalnız Pi komutuyla. Motor yön testi: her yan ileri komutta ileri döner; dönen tekere el uzatılmaz. Bitince ana anahtarı kapat, aküyü XT60'tan ayır (`planlama/adim3/elektrik.md` E3, E9). Bu adımdaki sıra kaynakta yok, doğrulanmadı.\n3. Testten sonra kapat: arka servis kapağı, üst arka servis kapağı (hub'la birlikte), etek H1 ve H2.\nH1 sigorta kutusuna açılır: sık değişen F1, F3, F4, F5 ortadaki dört yuvada (29.10). Kutu 1 × 6 dizilişliyse kapak altında kalan iki uç yuva nadiren değişenlere ayrıldı: yedek sigorta F2 (15 A standart; hiçbir dalı beslemez) ve F6 (3 A, göğüs ekranı, 14.11; kutunun 6. yuvası). 2 × 3 dizilişte altısı da açıkta (`planlama/adim3/elektrik.md` sigorta listesi, H1 erişimi).",
+"is_": "1. 4'lü USB hub (harici beslemesiz, USB 2.0) üst arka servis kapağının içinde: hub'ı kapağın takozuna, iki yan dayamanın arasına 1 mm köpük bantla yapıştır. Bağla: hub kablosu ← Pi USB 3'ten boyundan gelen USB 2.0 uzatma (U03, K2), Hub 1 → göğüs ekranı dokunmatiği (U05; F3'te boşta bırakılan USB), Hub 2 → ESP32 USB (U06; K2'de direk arka yüzünden çıkarılan uç; 1N5819 yönü alt adım 32.4). Hub 3 ve 4 boş. Hub'ın anahtarı açık kalmalı.\n2. İlk enerji, aşama 2 (devreye alma testi): kapaklar açık, hub bağlı (ESP32 ile Pi hub üzerinden konuşur). Saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken F1 (20 A), F3 (5 A, kafa), XL4016 hat sigortalarını (mini; A 7,5 A, B 7,5 A, C 5 A) ve PC817 #2 algı telinin (G22) 2 A mini sigortasını tak (`planlama/adim3/elektrik.md` sigorta listesi; F6 3 A F3'te takıldı). Şarj kolunun 7,5 A mini sigortası bu aşamada da takılı değil. Tekerlekler yerden kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Kollar aşağıda başlar: mantara basınca servo gücü de kesilir ve kollar düşer (E3 DTR / RTS notu). Kolların erişim alanında ve düşme hattında, kafanın ve tekerlerin erişim alanında kimse yok, bir kişi yalnız mantarda (kural 1 ve 7). Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 / F4 / F5 / F6 girişleri, Pololu ve göğüs ekranı dalı dahil; ekranlı ilk açılışta F6 atmamalı, KT3). Pi açılır; ESP32, Pi seri portu açılınca resetlenmemeli (boot mesajı yok; E3 DTR / RTS). Pi'den devreye al, ESP32 ön şarj dizisi (E9): ön koşul (mantar serbest, servo hedefleri son konumda, BTS EN = 0 ve PWM = 0) → GPIO19 = 1 (röle K2) → en az 300 ms bekle (boş aküde 500 ms önerilir) → GPIO5 (PC817 #2) LOW teyidi (bara var; LOW değilse ön şarj kolu çalışmıyor: GPIO19 = 0, hata) → GPIO4 = 1 (röle K1) → 100 ms sonra GPIO19 = 0 (K2 bırakılır) → GPIO5 LOW teyidi. K2 toplam en çok 1 s çeker. Mantara basınca K1 düşer (K2, devreye alma sırasında K1 çektikten 100 ms sonra zaten bırakılmıştı; E9 adım 5), anahtarlı bara kesilir (GPIO5 HIGH), kollar düşer; göğüs ekranı dalı (F6) acil stopta açık kalır. Mantarı bırak: röle kendiliğinden çekmez, yeniden devreye alma yalnız Pi komutuyla. Motor yön testi: her yan ileri komutta ileri döner; dönen tekere el uzatılmaz. Bitince ana anahtarı kapat, aküyü XT60'tan ayır (`planlama/adim3/elektrik.md` E3, E9). Bu adımdaki sıra kaynakta yok, doğrulanmadı.\n3. Testten sonra kapat: arka servis kapağı, üst arka servis kapağı (hub'la birlikte), etek H1 ve H2.\nH1 sigorta kutusuna açılır: sık değişen F1, F3, F4, F5 ortadaki dört yuvada (29.10). Kutu 1 × 6 dizilişliyse kapak altında kalan iki uç yuva nadiren değişenlere ayrıldı: yedek sigorta F2 (15 A standart; hiçbir dalı beslemez) ve F6 (3 A, göğüs ekranı, 14.11; kutunun 6. yuvası). 2 × 3 dizilişte altısı da açıkta (`planlama/adim3/elektrik.md` sigorta listesi, H1 erişimi).",
 "baglanti_md": "1,58 m: arka kapak 7 × M3×6 ISO 7380; üst arka kapak 7 × M3×6 ISO 7380; H1 4 × M3×6 (x ±50); H2 4 × M3×6; hepsi ısıl gömmeye. Isıl gömmeler kapaklarda değil, bantların boss'larında: arka kapağınkiler orta bantta (F2), üst arka kapağınkiler göğüs bandında (F3), H1 / H2'ninkiler etek arka bantlarında (F1); o adımlarda takılı geldi. Hub: 1 mm köpük bant (kapak takozunda). Üst kapak, H2 ve hub M6'da yok",
 "alet": "alyan 2",
 "erisim": "Düz. Hub kapağın iç yüzünde: kapak açıkken bağlanır",
@@ -16312,7 +16624,7 @@
 "p:1",
 "p:2"
 ],
-"is_": "Masada: 4'lü USB hub'ı üst arka servis kapağının iç yüzündeki takoza, iki yan dayamanın arasına 1 mm köpük bantla yapıştır. Bağla: hub kablosu ← Pi USB 3'ten boyundan gelen uzatma (K2), Hub 1 → göğüs ekranı dokunmatiği (F3'te boşta bırakılan USB), Hub 2 → ESP32 USB (K2'de direk arka yüzünden çıkarılan uç; 1N5819 yönü K2 madde 4). Hub 3 ve 4 boş. Hub'ın anahtarı açık kalmalı.",
+"is_": "Masada: 4'lü USB hub'ı üst arka servis kapağının iç yüzündeki takoza, iki yan dayamanın arasına 1 mm köpük bantla yapıştır. Bağla: hub kablosu ← Pi USB 3'ten boyundan gelen uzatma (K2), Hub 1 → göğüs ekranı dokunmatiği (F3'te boşta bırakılan USB), Hub 2 → ESP32 USB (K2'de direk arka yüzünden çıkarılan uç; 1N5819 yönü alt adım 32.4). Hub 3 ve 4 boş. Hub'ın anahtarı açık kalmalı.",
 "kamera": [
 0.6,
 0.45,
@@ -47377,14 +47689,14 @@
 "gomme": 164,
 "diger": 12
 },
-"konum": 120,
+"konum": 140,
 "ev_bulunan": 102,
 "kaynak": {
 "önceki parça yok": 1,
 "baglanti": 74,
 "masa tabanı (yeni)": 16,
 "temas 0.6 mm": 12,
-"yeni parça yok": 17
+"yeni parça yok": 37
 },
 "bos": [
 {
@@ -47398,7 +47710,107 @@
 "neden": "yeni parça yok"
 },
 {
+"adres": "17.1",
+"kod": "K1",
+"neden": "yeni parça yok"
+},
+{
+"adres": "17.2",
+"kod": "K1",
+"neden": "yeni parça yok"
+},
+{
+"adres": "17.3",
+"kod": "K1",
+"neden": "yeni parça yok"
+},
+{
+"adres": "17.4",
+"kod": "K1",
+"neden": "yeni parça yok"
+},
+{
+"adres": "17.5",
+"kod": "K1",
+"neden": "yeni parça yok"
+},
+{
+"adres": "17.6",
+"kod": "K1",
+"neden": "yeni parça yok"
+},
+{
+"adres": "17.7",
+"kod": "K1",
+"neden": "yeni parça yok"
+},
+{
+"adres": "17.8",
+"kod": "K1",
+"neden": "yeni parça yok"
+},
+{
+"adres": "17.9",
+"kod": "K1",
+"neden": "yeni parça yok"
+},
+{
+"adres": "17.10",
+"kod": "K1",
+"neden": "yeni parça yok"
+},
+{
+"adres": "17.11",
+"kod": "K1",
+"neden": "yeni parça yok"
+},
+{
+"adres": "17.12",
+"kod": "K1",
+"neden": "yeni parça yok"
+},
+{
 "adres": "32",
+"kod": "K2",
+"neden": "yeni parça yok"
+},
+{
+"adres": "32.1",
+"kod": "K2",
+"neden": "yeni parça yok"
+},
+{
+"adres": "32.2",
+"kod": "K2",
+"neden": "yeni parça yok"
+},
+{
+"adres": "32.3",
+"kod": "K2",
+"neden": "yeni parça yok"
+},
+{
+"adres": "32.4",
+"kod": "K2",
+"neden": "yeni parça yok"
+},
+{
+"adres": "32.5",
+"kod": "K2",
+"neden": "yeni parça yok"
+},
+{
+"adres": "32.6",
+"kod": "K2",
+"neden": "yeni parça yok"
+},
+{
+"adres": "32.7",
+"kod": "K2",
+"neden": "yeni parça yok"
+},
+{
+"adres": "32.8",
 "kod": "K2",
 "neden": "yeni parça yok"
 },
@@ -47478,8 +47890,8 @@
 "neden": "yeni parça yok"
 }
 ],
-"sure_s": 42.3,
-"sure_baglanti_s": 14.7
+"sure_s": 39.8,
+"sure_baglanti_s": 13.9
 },
 "kol_kablo": {
 "betik": "tasarim/freecad/rehber/rehber_kol_kablo.py",

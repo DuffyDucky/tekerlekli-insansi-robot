@@ -178,12 +178,30 @@ def gorunurluk(c):
                         birim=birim, sema=sema_px, yabanci_sema=yabanci, parca=parca, saydam=g.get("saydam") or [], gecti=gecti))
     sinirli = [x for x in out if x["sinir"]]
     kabuk = [x for x in out if x["sinir"] and int(x["adres"].split(".")[0]) in KABUK]
-    return dict(yontem=gorunurluk.__doc__.strip(), esik=dict(piksel=PX_ESIK, oran=ORAN_ESIK), olcum=out,
+    # P10.7b2d-A: şema karşılığı (parça ölçütü yukarıda değişmedi). Alt adımlı adımın her şeması kendi adımının tam bir alt adımında
+    # "şimdi" (vurgulu) çizilir; hiç vurgulanmayan şema 0. O alt adımın karesindeki pikseli bilgi (geçme şartı değil).
+    sema_say = {}
+    for (s, j), (ok, g) in olc.items():
+        if not j or s not in ALTLI:
+            continue
+        px = g.get("piksel") or {}
+        for x in g.get("sema") or []:
+            if x.get("d") == "simdi":
+                sema_say.setdefault(x["i"], []).append(dict(adres=adr(s, j), px=px.get("sema%d" % x["i"], 0)))
+    bek_s = [i for i, x in enumerate(V.get("semalar") or []) if x["a"] in ALTLI]
+    sema_ol = [dict(i=i, ad=V["semalar"][i]["ad"][:70], adim=V["semalar"][i]["a"], vurgulu=sema_say.get(i, []),
+                    gecti=len(sema_say.get(i, [])) == 1) for i in bek_s]
+    sema_ol += [dict(i=i, ad=(V["semalar"][i]["ad"] if i < len(V["semalar"]) else "?")[:70], adim=None, vurgulu=v, gecti=False)
+                for i, v in sema_say.items() if i not in set(bek_s)]
+    sema_tek = dict(sema=len(bek_s), birden_cok=[x for x in sema_ol if len(x["vurgulu"]) > 1],
+                    hic=[x for x in sema_ol if not x["vurgulu"]], piksel_sifir=[x for x in sema_ol if any(not v["px"] for v in x["vurgulu"])],
+                    gecti=all(x["gecti"] for x in sema_ol), olcum=sema_ol)
+    return dict(yontem=gorunurluk.__doc__.strip(), esik=dict(piksel=PX_ESIK, oran=ORAN_ESIK), olcum=out, sema_tek=sema_tek,
                 kabuk_alt_adim=len(kabuk), kabuk_yeni=sum(x["yeni"] for x in kabuk),
                 kabuk_gorunmeyen=sum(len(x["gorunmeyen"]) for x in kabuk), kabuk_istisna=sum(len(x["istisna"]) for x in kabuk),
                 kabuk_birim_ic=sum(len((x["birim"] or {}).get("ic_gorunmeyen", [])) for x in kabuk),
                 masa_yabanci_sema=sum(len(x["yabanci_sema"]) for x in out),
-                gecti=all(x["gecti"] for x in sinirli))
+                gecti=all(x["gecti"] for x in sinirli) and sema_tek["gecti"])
 
 
 def gizli_piksel(c, yol):
@@ -308,6 +326,14 @@ def gorunurluk_yaz(gr):
     print("  kabuk alt adim %d, yeni parca %d, gorunmeyen %d, istisna %d, birim ici (masada gosterilen) %d; masa yabanci sema %d; esik %s" % (
         gr["kabuk_alt_adim"], gr["kabuk_yeni"], gr["kabuk_gorunmeyen"], gr["kabuk_istisna"], gr["kabuk_birim_ic"], gr["masa_yabanci_sema"],
         gr["esik"]))
+    st_ = gr.get("sema_tek") or {}
+    print("  sema tek alt adimda vurgulu: %d sema, birden cok %d, hic %d, karede piksel 0 (bilgi) %d -> %s" % (
+        st_.get("sema", 0), len(st_.get("birden_cok", [])), len(st_.get("hic", [])), len(st_.get("piksel_sifir", [])),
+        "GECTI" if st_.get("gecti") else "KALDI"))
+    for x in st_.get("birden_cok", []) + st_.get("hic", []):
+        print("      SEMA %s %s (adim %s): vurgulu %s" % (x["i"], x["ad"][:50], x["adim"], [v["adres"] for v in x["vurgulu"]] or "hic"))
+    for x in st_.get("piksel_sifir", []):
+        print("      SEMA piksel 0 (bilgi) %s %s: %s" % (x["i"], x["ad"][:50], [v["adres"] for v in x["vurgulu"] if not v["px"]]))
 
 
 def main():

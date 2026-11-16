@@ -1174,7 +1174,12 @@
       if (st.alt) roz.push("<span class='rozet'>" + (ag ? "alt adım " + ss + " / " + st.alt : st.alt + " alt adım") + "</span>");
       $("rozetler").innerHTML = roz.join("");
       $("adim-baslik").textContent = ag ? s + "." + ss + " · " + ag.ad : s + ". " + st.baslik;
-      $("adim-is").innerHTML = ag ? "<span class='not'>Adım " + s + ": " + esc(st.baslik) + "</span><br>" + md(ag.is_ || "") : md(st.is_);
+      // P10.7b2d-A: demet alt adımında (K1 / K2) ana metnin uyarısı (kabuktan önce dur, akü ayrık) alt adım metninin üstünde; grubun
+      // kablo listesi maddesi (ag.kablo: st.kablo sırası, ör. P03 bağlantı tablosu) metnin altında, aşağıdaki kablo listesinde yinelenmez
+      const agKab = ag && ag.kablo ? ag.kablo.map((i) => st.kablo[i]).filter((t) => t) : [];
+      $("adim-is").innerHTML = ag ? "<span class='not'>Adım " + s + ": " + esc(st.baslik) + "</span><br>" +
+        (st.demet_alt && st.is_ ? "<div class='notlar'>" + md(st.is_) + "</div>" : "") + md(ag.is_ || "") +
+        (agKab.length ? "<ul class='kablo'>" + agKab.map((t) => "<li>" + md(t) + "</li>").join("") + "</ul>" : "") : md(st.is_);
       $("altlar").innerHTML = altListe(s);
       // notlar (rehber_metin.py not_: doğrulanmamış bilgiler, uyarılar)
       const nt = st.not_ || [];
@@ -1222,7 +1227,7 @@
         "<li class='" + (kk[i] ? "tamam" : "") + "'><input type='checkbox' data-i='" + i + "'" + (kk[i] ? " checked" : "") + "><span>" + md(t) + "</span></li>").join("")
         : "<li class='bos'>Bu adım için kontrol listesi henüz yazılmadı (erişim notuna bak).</li>";
       // kablo kancası (kablo parçası ve şema satırına tıklayınca modelde vurgu)
-      const kab = st.kablo.map((t) => "<li>" + md(t) + "</li>");
+      const kab = st.kablo.filter((t, i) => !(ag && ag.kablo && ag.kablo.indexOf(i) >= 0)).map((t) => "<li>" + md(t) + "</li>");
       VERI.parcalar.forEach((p) => {
         if (p.renk && p.a === s) kab.push("<li class='secilir' data-kid='" + esc(p.id) + "'><i class='sw' style='background:" + kabloTon(p) + "'></i>" + esc(p.ad) + kabloBilgi(p) + "</li>");
       });
@@ -1289,6 +1294,14 @@
       });
       // ince gri çerçeve: beyaz (kablo bağı) ve sarı (bilek eki) kutu açık zeminde de görünsün
       kl.forEach((x) => h.push("<span><i style='background:" + x[0] + ";box-shadow:inset 0 0 0 1px #808080" + (x[2] ? ";opacity:.35" : "") + "'></i>" + esc(x[1]) + "</span>"));
+      // P10.7b2d-A düzeltme turu 1: bu alt adımın karede görünmeyen şeması (veri sira_grup[].sema_ortulu {desen: neden}); lejant nedenini yazar
+      const ago = altGrup(s);
+      if (ago && ago.sema_ortulu) SEMA_OBJ.forEach((o, i) => {
+        if (!o || !o.visible || o.userData.d !== "simdi") return;
+        Object.keys(ago.sema_ortulu).forEach((x) => {
+          if (SEMA[i].ad.indexOf(x) >= 0) h.push("<span class='not'>" + esc(SEMA[i].ad.split(":")[0]) + ": " + esc(ago.sema_ortulu[x]) + " (görünümü döndür)</span>");
+        });
+      });
       if (sonEv.length) h.push("<span><i style='background:" + EV_RENK + "'></i>Bağlandığı yer</span>");
       if (s > 0) h.push("<span><i style='background:" + SINIF.onceki[0] + "'></i>" + SINIF.onceki[1] + "</span>");
       if (ISARET.acik && ISARET.liste.length) h.push("<span><i class='hl'></i>Bağlantı elemanı yeri (×n: küme)</span>");

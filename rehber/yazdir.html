@@ -94,8 +94,15 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
   // CSS 12 px, kare 76 mm). Karenin altında metin olarak (≥ 8,1 pt): şemanın rengi ve app.js lejantındaki adı; soluk iz ayrıca.
   // P10.7b2a (F10h-kontrol-4): karedeki CAD kablo parçaları (parcalar[].renk; app.js lejantıyla aynı: devre sınıfı "k:" + kt / ks) da
   // sayılır. K1 karesinde yalnız CAD kablo yolu var, "Karede:" satırı hiç çıkmıyordu; K2'de taban kabloları eksikti.
-  function lejantMetin(sema, iz, par) {
-    var L = [];
+  // P10.7b2d-A düzeltme turu 1: ortulu = {desen: neden} (veri sira_grup[].sema_ortulu): karede görünmeyen şema "Karede:" satırına
+  // girmez, ayrı satırda nedeniyle yazılır (E4 alt 4: ses kablosu sol arka kabuğun arkasında)
+  function lejantMetin(sema, iz, par, ortulu) {
+    var L = [], O = [];
+    sema = (sema || []).filter(function (i) {
+      var x = SEMA[i], k = x && ortulu ? Object.keys(ortulu).filter(function (d) { return x.ad.indexOf(d) >= 0; }) : [];
+      if (k.length) O.push(x.ad.split(":")[0] + ": " + ortulu[k[0]]);
+      return !k.length;
+    });
     function koy(x, ad, soluk) { if (!L.some(function (y) { return y[1] === ad; })) L.push([ton(x), ad, soluk]); }
     function ekle(i, soluk) {
       var x = SEMA[i]; if (!x) return;
@@ -110,9 +117,9 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
       var ks = V.kablo_sinif && V.kablo_sinif[p.kt || p.ks];
       if (p.renk && ks) koy(p, "Kablo: " + ks[1], false);
     });
-    return L.length ? "<div class='lej'>Karede: " + L.map(function (y) {
+    return (L.length ? "<div class='lej'>Karede: " + L.map(function (y) {
       return "<span><i class='sw' style='background:" + y[0] + (y[2] ? ";opacity:.35" : "") + "'></i>" + esc(y[1]) + "</span>";
-    }).join(" · ") + "</div>" : "";
+    }).join(" · ") + "</div>" : "") + (O.length ? "<div class='lej'>Karede görünmez: " + O.map(esc).join(" · ") + "</div>" : "");
   }
 
   // F7c (D-3): adım bloklara bölünür; sığmazsa bloklar sondan "devam" sayfasına taşınır. Yazı 8,5 pt'nin, küçük öğeler 8,1 pt'nin altına inmez.
@@ -136,7 +143,15 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
       var x = st.parcalar[+k.split(":")[1]];
       (x && x.ids || []).forEach(function (id) { if (PID[id] && PID[id].renk) out.push(PID[id]); });
     });
+    // P10.7b2d-A: satırı olmayan gösterim parçaları (g.ref: K1 / K2 "Kablo yolu N") da alt adımın karesinde (app.js grupHarita ile aynı)
+    (g.ref || []).forEach(function (id) { if (PID[id] && PID[id].renk && out.indexOf(PID[id]) < 0) out.push(PID[id]); });
     return out;
+  }
+  // P10.7b2d-A: alt adımda gösterilen kablo listesi maddeleri (g.kablo: st.kablo sırası); adımın "Kablo kancası" bloğunda basılmaz
+  function altKabloSec(st) {
+    var s = {};
+    (st.sira_grup || []).forEach(function (g) { (g.kablo || []).forEach(function (i) { s[i] = 1; }); });
+    return s;
   }
   // P10.7b2a-Y: iş metni (is_) paragraf paragraf blok: sayfaya sığmayan paragraflar "devam" sayfasına akar (önceden is_ ilk sayfada
   // tek parçaydı; .ic overflow:hidden kestiği yeri basmıyordu, K1'in son ≈ 3645 karakteri PDF'te yoktu). Hepsi sığınca çıktı eskisiyle aynı.
@@ -147,7 +162,9 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
     var b = isBloklari(st);
     if ((st.not_ || []).length) b.push({ tur: "ust", h: "<div class='notlar'><b>Notlar ve uyarılar</b><ul>" + st.not_.map(function (t) { return "<li>" + md(t) + "</li>"; }).join("") + "</ul></div>" });
     var sol = [st.sira ? "<h2>Parçalar ve bağlantı elemanları (takma sırasıyla)</h2>" : "<h2>Parçalar</h2>"];
-    if (st.sira) {
+    if (st.sira && !st.sira_grup.some(function (g) { return g.satir.length; })) {
+      sol.push("<p class='bos'>Bu adımda yeni parça yok.</p>");   // P10.7b2d-A: satırsız sıralı adım (K1 / K2), boş tablo yerine
+    } else if (st.sira) {
       sol.push("<table>" + st.sira_grup.map(function (g, n) {
         return g.satir.length ? "<tr class='grup'><td colspan='2'>" + (st.alt ? s + "." + (n + 1) + " · " : (n + 1) + ". ") + esc(g.ad) + "</td></tr>" +
           g.satir.map(function (k) { return satir(st, k); }).join("") : "";
@@ -167,7 +184,8 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
     b.push({ tur: "iki", h: bag.join("") });
     b.push({ tur: "iki", h: "<h2>Kontrol listesi</h2>" + (st.kontrol.length ? "<ul class='kontrol'>" + st.kontrol.map(function (t) { return "<li><span>" + md(t) + "</span></li>"; }).join("") + "</ul>"
       : "<p class='bos'>Bu adım için kontrol listesi yazılmadı (erişim notuna bak).</p>") });
-    var kab = st.kablo.map(function (t) { return "<li>" + md(t) + "</li>"; });
+    var sec = altKabloSec(st);
+    var kab = st.kablo.filter(function (t, i) { return !sec[i]; }).map(function (t) { return "<li>" + md(t) + "</li>"; });
     V.parcalar.forEach(function (p) { if (p.renk && p.a === s) kab.push("<li><i class='sw' style='background:" + ton(p) + "'></i>" + esc(p.ad) + "</li>"); });
     SEMA.forEach(function (x) { if (x.a === s) kab.push("<li><i class='sw' style='background:" + ton(x) + "'></i>" + esc(x.ad) + " <span class='t'>(şema)</span></li>"); });
     b.push({ tur: "iki", h: "<h2>Kablo kancası</h2>" + (kab.length ? "<ul class='kablo'>" + kab.join("") + "</ul>" : "<p class='bos'>Bu adımda özel kablo işi yok.</p>") });
@@ -176,8 +194,9 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
     (st.alt ? st.sira_grup : []).forEach(function (g, n) {
       var j = n + 1, ad = s + "." + j;
       b.push({ tur: "alt", h: "<div class='altkart'><div><img class='agorsel' alt='Alt adım " + ad + " 3B görünüm' src='goruntu/adim-" + iki(s) + "-" + iki(j) +
-        ".png' onerror=\"this.outerHTML='<div class=agorsel-yok>Görüntü yok</div>'\">" + lejantMetin(g.sema, g.iz, altKablo(st, g)) + "</div><div><h3>" + ad + " · " + esc(g.ad) + "</h3>" +
+        ".png' onerror=\"this.outerHTML='<div class=agorsel-yok>Görüntü yok</div>'\">" + lejantMetin(g.sema, g.iz, altKablo(st, g), g.sema_ortulu) + "</div><div><h3>" + ad + " · " + esc(g.ad) + "</h3>" +
         (g.is_ ? "<div class='is'>" + md(g.is_) + "</div>" : "") +
+        ((g.kablo || []).length ? "<ul class='kablo'>" + g.kablo.map(function (i) { return st.kablo[i] ? "<li>" + md(st.kablo[i]) + "</li>" : ""; }).join("") + "</ul>" : "") +
         (g.satir.length ? "<table>" + g.satir.map(function (k) { return satir(st, k); }).join("") + "</table>" : "") + "</div></div>" });
     });
     return b;

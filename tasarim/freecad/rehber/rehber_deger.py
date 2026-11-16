@@ -41,6 +41,7 @@
 #   {oran.aku_olcum}      akü ölçüm bölücüsünün oranı alt / (üst + alt): elektrik.md E2 "100 kΩ / 18 kΩ" → "0,1525"
 #   {v.aku_aralik}        ölçümde beklenen akü aralığı: elektrik.md "akü 12,8–14,4 V"         → "12,8–14,4 V"
 #   {v.aku_olcum}         bölücü orta noktasında beklenen gerilim (aralık × oran, 2 basamak)  → "1,95–2,20 V"
+#   {v.aku_en_cok}        akünün en yüksek gerilimi: elektrik.md E2 "Akü gerilimi" satırı "14,6 V →" (P10.7b2d-A d1, R9) → "14,6 V"
 #   {vida.<anahtar>}      saplama ölçüsü: anahtarlar[<k>].saplama.olcu (varsayım; teyit kaydı) → "M5"
 # Düzeltme turu 2 (F10i-kontrol-2):
 #   {kontak.K2:giris|cikis|bos}  röle kontağının tek ucu: anahtarlar.K<n>-kontak.uclar     → "COM" / "NO" / "NC"
@@ -243,6 +244,13 @@ class Degerler:
                 raise KeyError("kablo %s'de tek + / V+ ve tek − / GND damarı yok" % anahtar)
             n = lambda s: s.split(" · ", 1)[-1]
             return "%s → %s, %s → %s" % (n(ar[0]["a"]), n(ar[0]["b"]), n(ek[0]["a"]), n(ek[0]["b"]))
+        if tur == "v" and anahtar == "aku_en_cok":                     # P10.7b2d-A düzeltme turu 1 (R9): akünün en yüksek gerilimi,
+            # bölücü hesabının üst sınırıyla aynı satırdan (elektrik.md E2 "Akü gerilimi | … | 14,6 V → …"): tek kaynak
+            sat = re.search(r"\| Akü gerilimi \|[^\n]*", self.EL)
+            ust_v = re.findall(r"(\d+(?:,\d+)?) V →", sat.group(0)) if sat else []
+            if not ust_v:
+                raise KeyError("elektrik.md E2 'Akü gerilimi' satırında 'N V →' yok")
+            return "%s V" % max(ust_v, key=lambda x: float(x.replace(",", ".")))
         if tur in ("oran", "v") and anahtar in ("aku_olcum", "aku_aralik"):   # düzeltme turu 1 (A1, A4): akü ölçüm bölücüsü
             m = re.search(r"\| Akü gerilimi \| (\d+) kΩ / (\d+) kΩ", self.EL)
             m2 = re.search(r"akü (\d+,\d+)–(\d+,\d+) V", self.EL)
@@ -366,6 +374,7 @@ class Degerler:
     _OZEL[("oran", "aku_olcum")] = ["bölücü"]
     _OZEL[("v", "aku_olcum")] = ["bölücü"]
     _OZEL[("v", "aku_aralik")] = ["akü"]
+    _OZEL[("v", "aku_en_cok")] = ["akü"]                              # P10.7b2d-A düzeltme turu 1 (R9)
     _OZEL[("vida", "ana-anahtar")] = ["ana anahtar", "anahtar"]
     del _t
 

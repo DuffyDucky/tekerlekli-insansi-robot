@@ -143,7 +143,7 @@ def renk_isle(V):
 
 # ------------------------------------------------------------------ 2) görünüm alanları (rehber_metin.py)
 # F10f: sema_yalniz = alt adımda yalnız o grubun şemaları çizilir (kol kablo yolu uç duruş yakın kareleri; öbür yollar üst üste binmesin)
-GRUP_ALAN = ("ad", "is_", "kamera", "gizli_ok", "ucus_ok", "giris_ok", "piksel_ok", "sema_yalniz")
+GRUP_ALAN = ("ad", "is_", "kamera", "gizli_ok", "ucus_ok", "giris_ok", "piksel_ok", "sema_yalniz", "sema_ortulu")   # P10.7b2d-A d1
 ADIM_ALAN = ("baslik", "is_", "baglanti_md", "alet", "erisim", "kontrol", "kablo", "not_", "kamera")
 
 
@@ -158,6 +158,10 @@ def alan_isle(V):
     for a in V["adimlar"]:
         kod, i = a["kod"], a["i"]
         mt = RM.HAZIRLIK if kod == "0" else RM.ADIM.get(kod, {})
+        # P10.7b2d-A: metinde alt adım var, veride yoksa (ör. K1 / K2 demet alt adımları, eski veri) ana metin yalnız başlık paragrafı
+        # kalırdı: FreeCAD'siz yol durur
+        if mt.get("sira") and not a.get("sira_grup"):
+            raise SystemExit("%s: rehber_metin'de sira var, veride sira_grup yok: FreeCAD'li tam üretim gerekir" % kod)
         for k in ADIM_ALAN:
             if k in mt and mt[k]:
                 v = list(mt[k]) if isinstance(mt[k], tuple) else mt[k]
@@ -174,7 +178,19 @@ def alan_isle(V):
             continue
         if not sira or len(sira) != len(a["sira_grup"]):
             raise SystemExit("%s: rehber_metin sira grubu sayısı veriden farklı: FreeCAD'li tam üretim gerekir" % kod)
+        if bool(mt.get("demet_alt")) != bool(a.get("demet_alt")):
+            raise SystemExit("%s: demet alt adımı işareti veriden farklı: FreeCAD'li tam üretim gerekir" % kod)
         for n, (g, e) in enumerate(zip(sira, a["sira_grup"])):
+            # P10.7b2d-A: demet alanları rehber_veri.py ile aynı kuraldan (rehber_metin.demet_grup_alanlari)
+            dg = RM.demet_grup_alanlari(g, mt.get("kablo") or [], kod, n)
+            for k in ("demet", "genel", "kablo"):
+                if k in dg:
+                    if e.get(k) != dg[k]:
+                        degisen.append("%s.%d %s" % (kod, n + 1, k))
+                    e[k] = dg[k]
+                elif k in e:
+                    degisen.append("%s.%d %s (silindi)" % (kod, n + 1, k))
+                    e.pop(k)
             for k in GRUP_ALAN:
                 v = g.get(k)
                 if k == "kamera" and v is not None and not isinstance(v, str):

@@ -1,9 +1,11 @@
 {
- "tarih": "2026-11-15 15:11",
+ "tarih": "2026-11-16 04:36",
  "adim": 50,
  "alt_adimli": [
+  17,
   21,
   31,
+  32,
   33,
   34,
   35,
@@ -19,14 +21,40 @@
   49
  ],
  "gezinme": {
-  "konum_sayisi": 121,
+  "konum_sayisi": 141,
   "ana_adim": 50,
-  "alt_adim": 71,
+  "alt_adim": 91,
   "sayfa_konumlari_esit": true,
   "ileri_esit": true,
   "geri_esit": true,
   "sonda_kalir": true,
   "dogrudan": [
+   {
+    "adres": "17.1",
+    "hazir": true,
+    "konum": [
+     17,
+     1
+    ],
+    "sayac": "Adım 17 / 49 · alt adım 1 / 12",
+    "secim": "17.1",
+    "cubuk": "12.8571%",
+    "alt_baglanti": 13,
+    "gecti": true
+   },
+   {
+    "adres": "17.12",
+    "hazir": true,
+    "konum": [
+     17,
+     12
+    ],
+    "sayac": "Adım 17 / 49 · alt adım 12 / 12",
+    "secim": "17.12",
+    "cubuk": "20.7143%",
+    "alt_baglanti": 13,
+    "gecti": true
+   },
    {
     "adres": "21.1",
     "hazir": true,
@@ -36,7 +64,7 @@
     ],
     "sayac": "Adım 21 / 49 · alt adım 1 / 2",
     "secim": "21.1",
-    "cubuk": "18.3333%",
+    "cubuk": "24.2857%",
     "alt_baglanti": 3,
     "gecti": true
    },
@@ -49,7 +77,7 @@
     ],
     "sayac": "Adım 21 / 49 · alt adım 2 / 2",
     "secim": "21.2",
-    "cubuk": "19.1667%",
+    "cubuk": "25%",
     "alt_baglanti": 3,
     "gecti": true
    },
@@ -62,7 +90,7 @@
     ],
     "sayac": "Adım 31 / 49 · alt adım 1 / 10",
     "secim": "31.1",
-    "cubuk": "28.3333%",
+    "cubuk": "32.8571%",
     "alt_baglanti": 11,
     "gecti": true
    },
@@ -75,8 +103,34 @@
     ],
     "sayac": "Adım 31 / 49 · alt adım 10 / 10",
     "secim": "31.10",
-    "cubuk": "35.8333%",
+    "cubuk": "39.2857%",
     "alt_baglanti": 11,
+    "gecti": true
+   },
+   {
+    "adres": "32.1",
+    "hazir": true,
+    "konum": [
+     32,
+     1
+    ],
+    "sayac": "Adım 32 / 49 · alt adım 1 / 8",
+    "secim": "32.1",
+    "cubuk": "40.7143%",
+    "alt_baglanti": 9,
+    "gecti": true
+   },
+   {
+    "adres": "32.8",
+    "hazir": true,
+    "konum": [
+     32,
+     8
+    ],
+    "sayac": "Adım 32 / 49 · alt adım 8 / 8",
+    "secim": "32.8",
+    "cubuk": "45.7143%",
+    "alt_baglanti": 9,
     "gecti": true
    },
    {
@@ -88,7 +142,7 @@
     ],
     "sayac": "Adım 33 / 49 · alt adım 1 / 10",
     "secim": "33.1",
-    "cubuk": "38.3333%",
+    "cubuk": "47.1429%",
     "alt_baglanti": 11,
     "gecti": true
    },
@@ -101,7 +155,7 @@
     ],
     "sayac": "Adım 33 / 49 · alt adım 10 / 10",
     "secim": "33.10",
-    "cubuk": "45.8333%",
+    "cubuk": "53.5714%",
     "alt_baglanti": 11,
     "gecti": true
    },
@@ -114,7 +168,7 @@
     ],
     "sayac": "Adım 34 / 49 · alt adım 1 / 9",
     "secim": "34.1",
-    "cubuk": "47.5%",
+    "cubuk": "55%",
     "alt_baglanti": 10,
     "gecti": true
    },
@@ -127,7 +181,7 @@
     ],
     "sayac": "Adım 34 / 49 · alt adım 9 / 9",
     "secim": "34.9",
-    "cubuk": "54.1667%",
+    "cubuk": "60.7143%",
     "alt_baglanti": 10,
     "gecti": true
    },
@@ -140,7 +194,7 @@
     ],
     "sayac": "Adım 35 / 49 · alt adım 1 / 5",
     "secim": "35.1",
-    "cubuk": "55.8333%",
+    "cubuk": "62.1429%",
     "alt_baglanti": 6,
     "gecti": true
    },
@@ -153,7 +207,7 @@
     ],
     "sayac": "Adım 35 / 49 · alt adım 5 / 5",
     "secim": "35.5",
-    "cubuk": "59.1667%",
+    "cubuk": "65%",
     "alt_baglanti": 6,
     "gecti": true
    },
@@ -166,7 +220,7 @@
     ],
     "sayac": "Adım 36 / 49 · alt adım 1 / 5",
     "secim": "36.1",
-    "cubuk": "60.8333%",
+    "cubuk": "66.4286%",
     "alt_baglanti": 6,
     "gecti": true
    },
@@ -179,7 +233,7 @@
     ],
     "sayac": "Adım 36 / 49 · alt adım 5 / 5",
     "secim": "36.5",
-    "cubuk": "64.1667%",
+    "cubuk": "69.2857%",
     "alt_baglanti": 6,
     "gecti": true
    },
@@ -192,7 +246,7 @@
     ],
     "sayac": "Adım 40 / 49 · alt adım 1 / 3",
     "secim": "40.1",
-    "cubuk": "68.3333%",
+    "cubuk": "72.8571%",
     "alt_baglanti": 4,
     "gecti": true
    },
@@ -205,7 +259,7 @@
     ],
     "sayac": "Adım 40 / 49 · alt adım 3 / 3",
     "secim": "40.3",
-    "cubuk": "70%",
+    "cubuk": "74.2857%",
     "alt_baglanti": 4,
     "gecti": true
    },
@@ -218,7 +272,7 @@
     ],
     "sayac": "Adım 41 / 49 · alt adım 1 / 6",
     "secim": "41.1",
-    "cubuk": "71.6667%",
+    "cubuk": "75.7143%",
     "alt_baglanti": 7,
     "gecti": true
    },
@@ -231,7 +285,7 @@
     ],
     "sayac": "Adım 41 / 49 · alt adım 6 / 6",
     "secim": "41.6",
-    "cubuk": "75.8333%",
+    "cubuk": "79.2857%",
     "alt_baglanti": 7,
     "gecti": true
    },
@@ -244,7 +298,7 @@
     ],
     "sayac": "Adım 42 / 49 · alt adım 1 / 3",
     "secim": "42.1",
-    "cubuk": "77.5%",
+    "cubuk": "80.7143%",
     "alt_baglanti": 4,
     "gecti": true
    },
@@ -257,7 +311,7 @@
     ],
     "sayac": "Adım 42 / 49 · alt adım 3 / 3",
     "secim": "42.3",
-    "cubuk": "79.1667%",
+    "cubuk": "82.1429%",
     "alt_baglanti": 4,
     "gecti": true
    },
@@ -270,7 +324,7 @@
     ],
     "sayac": "Adım 43 / 49 · alt adım 1 / 2",
     "secim": "43.1",
-    "cubuk": "80.8333%",
+    "cubuk": "83.5714%",
     "alt_baglanti": 3,
     "gecti": true
    },
@@ -283,7 +337,7 @@
     ],
     "sayac": "Adım 43 / 49 · alt adım 2 / 2",
     "secim": "43.2",
-    "cubuk": "81.6667%",
+    "cubuk": "84.2857%",
     "alt_baglanti": 3,
     "gecti": true
    },
@@ -296,7 +350,7 @@
     ],
     "sayac": "Adım 44 / 49 · alt adım 1 / 3",
     "secim": "44.1",
-    "cubuk": "83.3333%",
+    "cubuk": "85.7143%",
     "alt_baglanti": 4,
     "gecti": true
    },
@@ -309,7 +363,7 @@
     ],
     "sayac": "Adım 44 / 49 · alt adım 3 / 3",
     "secim": "44.3",
-    "cubuk": "85%",
+    "cubuk": "87.1429%",
     "alt_baglanti": 4,
     "gecti": true
    },
@@ -322,7 +376,7 @@
     ],
     "sayac": "Adım 45 / 49 · alt adım 1 / 2",
     "secim": "45.1",
-    "cubuk": "86.6667%",
+    "cubuk": "88.5714%",
     "alt_baglanti": 3,
     "gecti": true
    },
@@ -335,7 +389,7 @@
     ],
     "sayac": "Adım 45 / 49 · alt adım 2 / 2",
     "secim": "45.2",
-    "cubuk": "87.5%",
+    "cubuk": "89.2857%",
     "alt_baglanti": 3,
     "gecti": true
    },
@@ -348,7 +402,7 @@
     ],
     "sayac": "Adım 46 / 49 · alt adım 1 / 2",
     "secim": "46.1",
-    "cubuk": "89.1667%",
+    "cubuk": "90.7143%",
     "alt_baglanti": 3,
     "gecti": true
    },
@@ -361,7 +415,7 @@
     ],
     "sayac": "Adım 46 / 49 · alt adım 2 / 2",
     "secim": "46.2",
-    "cubuk": "90%",
+    "cubuk": "91.4286%",
     "alt_baglanti": 3,
     "gecti": true
    },
@@ -374,7 +428,7 @@
     ],
     "sayac": "Adım 48 / 49 · alt adım 1 / 4",
     "secim": "48.1",
-    "cubuk": "92.5%",
+    "cubuk": "93.5714%",
     "alt_baglanti": 5,
     "gecti": true
    },
@@ -387,7 +441,7 @@
     ],
     "sayac": "Adım 48 / 49 · alt adım 4 / 4",
     "secim": "48.4",
-    "cubuk": "95%",
+    "cubuk": "95.7143%",
     "alt_baglanti": 5,
     "gecti": true
    },
@@ -400,7 +454,7 @@
     ],
     "sayac": "Adım 49 / 49 · alt adım 1 / 5",
     "secim": "49.1",
-    "cubuk": "96.6667%",
+    "cubuk": "97.1429%",
     "alt_baglanti": 6,
     "gecti": true
    },
@@ -430,8 +484,8 @@
   "gecti": true
  },
  "panel_takma": {
-  "konum": 121,
-  "esit": 121,
+  "konum": 141,
+  "esit": 141,
   "kotu": [],
   "gecti": true,
   "olcum": [
@@ -590,6 +644,114 @@
    },
    {
     "adres": "17",
+    "kod": "K1",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "17.1",
+    "kod": "K1",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "17.2",
+    "kod": "K1",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "17.3",
+    "kod": "K1",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "17.4",
+    "kod": "K1",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "17.5",
+    "kod": "K1",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "17.6",
+    "kod": "K1",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "17.7",
+    "kod": "K1",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "17.8",
+    "kod": "K1",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "17.9",
+    "kod": "K1",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "17.10",
+    "kod": "K1",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "17.11",
+    "kod": "K1",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "17.12",
     "kod": "K1",
     "panel": 0,
     "takma": 0,
@@ -833,6 +995,78 @@
    },
    {
     "adres": "32",
+    "kod": "K2",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "32.1",
+    "kod": "K2",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "32.2",
+    "kod": "K2",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "32.3",
+    "kod": "K2",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "32.4",
+    "kod": "K2",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "32.5",
+    "kod": "K2",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "32.6",
+    "kod": "K2",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "32.7",
+    "kod": "K2",
+    "panel": 0,
+    "takma": 0,
+    "panelde_takmada_yok": [],
+    "takmada_panelde_yok": [],
+    "esit": true
+   },
+   {
+    "adres": "32.8",
     "kod": "K2",
     "panel": 0,
     "takma": 0,
@@ -2440,6 +2674,480 @@
     "gecti": true
    },
    {
+    "adres": "17",
+    "kod": "K1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 7,
+    "gorunmeyen": [
+     {
+      "id": "p1181",
+      "ad": "Kablo yolu 2: Toprak (G05, 12 AWG): akü − → yıldız barası (güç paneli, M5 saplama) → tüm dönüştürücüler",
+      "px": 193,
+      "yalniz": 1156,
+      "oran": 0.167,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p1182",
+      "ad": "Kablo yolu 3: Motor 12 V (G08–G12, 12 AWG; M01 motorun kendi kablosu): F1 20 A → röle K1 ∥ ön şarj kolu → anahtarlı bara (M5 saplama) → BTS7960 sol → ön sol motor",
+      "px": 736,
+      "yalniz": 5095,
+      "oran": 0.144,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p1183",
+      "ad": "Kablo yolu 4: Motor 12 V sağ (G13, 12 AWG: anahtarlı bara → BTS7960 sağ; M03, M04 motorun kendi kablosu: ön sağ ve arka sağ motor; plaka altından, z 36 deliğinden). Arka sol motor (M02) bu yolda değil: kendi gösterim şeması B3'te",
+      "px": 32,
+      "yalniz": 8540,
+      "oran": 0.004,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema11": [
+      1095,
+      1798
+     ],
+     "sema12": [
+      447,
+      1904
+     ],
+     "sema13": [
+      747,
+      1730
+     ],
+     "sema15": [
+      1143,
+      2881
+     ],
+     "sema17": [
+      428,
+      1383
+     ],
+     "sema18": [
+      1432,
+      4909
+     ],
+     "sema19": [
+      539,
+      5663
+     ],
+     "sema20": [
+      2077,
+      3314
+     ],
+     "sema21": [
+      1592,
+      2534
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p1180",
+      "ad": "Kablo yolu 1: 12 V ana hat (G01–G04, 12 AWG): akü + → XT60 → ana sigorta 30 A → ana anahtar → sigorta kutusu",
+      "px": 2129,
+      "yalniz": 5644,
+      "oran": 0.377,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p1181",
+      "ad": "Kablo yolu 2: Toprak (G05, 12 AWG): akü − → yıldız barası (güç paneli, M5 saplama) → tüm dönüştürücüler",
+      "px": 193,
+      "yalniz": 1156,
+      "oran": 0.167,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p1182",
+      "ad": "Kablo yolu 3: Motor 12 V (G08–G12, 12 AWG; M01 motorun kendi kablosu): F1 20 A → röle K1 ∥ ön şarj kolu → anahtarlı bara (M5 saplama) → BTS7960 sol → ön sol motor",
+      "px": 736,
+      "yalniz": 5095,
+      "oran": 0.144,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p1183",
+      "ad": "Kablo yolu 4: Motor 12 V sağ (G13, 12 AWG: anahtarlı bara → BTS7960 sağ; M03, M04 motorun kendi kablosu: ön sağ ve arka sağ motor; plaka altından, z 36 deliğinden). Arka sol motor (M02) bu yolda değil: kendi gösterim şeması B3'te",
+      "px": 32,
+      "yalniz": 8540,
+      "oran": 0.004,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p1188",
+      "ad": "Kablo yolu 9: Çevre 5 V (G18, 18 AWG): F4 5 A → XL4016 çevre. Şemanın XL4016 sonrası kısmı eski (doğrudan ESP32'ye); tabloda G19 (16 AWG) 2 A mini hat sigortasıyla arayüz kartına gider, bu şemada çizili değil: kendi gösterim şeması K1'de",
+      "px": 1582,
+      "yalniz": 5108,
+      "oran": 0.31,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p1189",
+      "ad": "Kablo yolu 10: Acil stop (A01–A06, 18 AWG; PC817 teli 22 AWG): F5 2 A → mantar (NC) → acil stop düğüm kartı → röle K1 ve K2 bobinleri → BC337-40 #1 / #2 (arayüz kartı, GPIO4 / GPIO19); PC817 #1 mantar sonrası gerilimi okur (GPIO23)",
+      "px": 3705,
+      "yalniz": 4537,
+      "oran": 0.817,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p1190",
+      "ad": "Kablo yolu 11: Sinyal: sol sonar (Q03, 22 AWG) → arayüz kartı bölücü (4,7 kΩ / 10 kΩ) → ESP32 (X01; ön ara ray üstünden). Orta ve sağ sonar (Q01, Q02) bu şemada değil: kendi gösterim şemaları K1'de",
+      "px": 2157,
+      "yalniz": 4851,
+      "oran": 0.445,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
+   },
+   {
+    "adres": "17.1",
+    "kod": "K1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 1,
+    "gorunmeyen": [
+     {
+      "id": "p1181",
+      "ad": "Kablo yolu 2: Toprak (G05, 12 AWG): akü − → yıldız barası (güç paneli, M5 saplama) → tüm dönüştürücüler",
+      "px": 2360,
+      "yalniz": 18013,
+      "oran": 0.131,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p1181",
+      "ad": "Kablo yolu 2: Toprak (G05, 12 AWG): akü − → yıldız barası (güç paneli, M5 saplama) → tüm dönüştürücüler",
+      "px": 2360,
+      "yalniz": 18013,
+      "oran": 0.131,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
+   },
+   {
+    "adres": "17.2",
+    "kod": "K1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 1,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p1180",
+      "ad": "Kablo yolu 1: 12 V ana hat (G01–G04, 12 AWG): akü + → XT60 → ana sigorta 30 A → ana anahtar → sigorta kutusu",
+      "px": 12314,
+      "yalniz": 21472,
+      "oran": 0.573,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "17.3",
+    "kod": "K1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema11": [
+      16631,
+      20366
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "17.4",
+    "kod": "K1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 1,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p1182",
+      "ad": "Kablo yolu 3: Motor 12 V (G08–G12, 12 AWG; M01 motorun kendi kablosu): F1 20 A → röle K1 ∥ ön şarj kolu → anahtarlı bara (M5 saplama) → BTS7960 sol → ön sol motor",
+      "px": 2666,
+      "yalniz": 12221,
+      "oran": 0.218,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "17.5",
+    "kod": "K1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 1,
+    "gorunmeyen": [
+     {
+      "id": "p1183",
+      "ad": "Kablo yolu 4: Motor 12 V sağ (G13, 12 AWG: anahtarlı bara → BTS7960 sağ; M03, M04 motorun kendi kablosu: ön sağ ve arka sağ motor; plaka altından, z 36 deliğinden). Arka sol motor (M02) bu yolda değil: kendi gösterim şeması B3'te",
+      "px": 204,
+      "yalniz": 13793,
+      "oran": 0.015,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema12": [
+      559,
+      2693
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p1183",
+      "ad": "Kablo yolu 4: Motor 12 V sağ (G13, 12 AWG: anahtarlı bara → BTS7960 sağ; M03, M04 motorun kendi kablosu: ön sağ ve arka sağ motor; plaka altından, z 36 deliğinden). Arka sol motor (M02) bu yolda değil: kendi gösterim şeması B3'te",
+      "px": 204,
+      "yalniz": 13793,
+      "oran": 0.015,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
+   },
+   {
+    "adres": "17.6",
+    "kod": "K1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema13": [
+      23273,
+      23273
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "17.7",
+    "kod": "K1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 1,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p1188",
+      "ad": "Kablo yolu 9: Çevre 5 V (G18, 18 AWG): F4 5 A → XL4016 çevre. Şemanın XL4016 sonrası kısmı eski (doğrudan ESP32'ye); tabloda G19 (16 AWG) 2 A mini hat sigortasıyla arayüz kartına gider, bu şemada çizili değil: kendi gösterim şeması K1'de",
+      "px": 6862,
+      "yalniz": 19675,
+      "oran": 0.349,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "17.8",
+    "kod": "K1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 1,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p1189",
+      "ad": "Kablo yolu 10: Acil stop (A01–A06, 18 AWG; PC817 teli 22 AWG): F5 2 A → mantar (NC) → acil stop düğüm kartı → röle K1 ve K2 bobinleri → BC337-40 #1 / #2 (arayüz kartı, GPIO4 / GPIO19); PC817 #1 mantar sonrası gerilimi okur (GPIO23)",
+      "px": 8531,
+      "yalniz": 11328,
+      "oran": 0.753,
+      "karede": false,
+      "gorunur": true,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
+   },
+   {
+    "adres": "17.9",
+    "kod": "K1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema15": [
+      12964,
+      33029
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "17.10",
+    "kod": "K1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 1,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema17": [
+      840,
+      2020
+     ],
+     "sema18": [
+      2216,
+      6957
+     ],
+     "sema19": [
+      746,
+      7188
+     ],
+     "sema20": [
+      3611,
+      5298
+     ],
+     "sema21": [
+      2545,
+      3830
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p1190",
+      "ad": "Kablo yolu 11: Sinyal: sol sonar (Q03, 22 AWG) → arayüz kartı bölücü (4,7 kΩ / 10 kΩ) → ESP32 (X01; ön ara ray üstünden). Orta ve sağ sonar (Q01, Q02) bu şemada değil: kendi gösterim şemaları K1'de",
+      "px": 3645,
+      "yalniz": 7634,
+      "oran": 0.477,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "17.11",
+    "kod": "K1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "17.12",
+    "kod": "K1",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
     "adres": "31",
     "kod": "E4",
     "hazir": true,
@@ -3984,8 +4692,8 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Arka kafa kabuğu sol",
-     "px": 244929,
-     "yalniz": 244929,
+     "px": 225226,
+     "yalniz": 225227,
      "gorunur": true,
      "parca": 9,
      "ic_gorunmeyen": [
@@ -4066,11 +4774,11 @@
     "sema": {
      "sema7": [
       0,
-      1243
+      1141
      ],
      "sema26": [
-      75,
-      5902
+      78,
+      5419
      ]
     },
     "yabanci_sema": [],
@@ -4642,6 +5350,353 @@
       "saydam": false
      }
     ],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "32",
+    "kod": "K2",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 5,
+    "gorunmeyen": [
+     {
+      "id": "p1184",
+      "ad": "Kablo yolu 5: Servo 6 V A (G14 16 AWG → SV1 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 A (0; 170) → dağıtım A (72; 205) → uzatmalar S01–S04: sağ kol",
+      "px": 243,
+      "yalniz": 1367,
+      "oran": 0.178,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p1185",
+      "ad": "Kablo yolu 6: Servo uzatmaları kafaya (S09, S10; 22 AWG): pan + tilt (hat C, XL4016 C güç panelinde; direk üstü, R62 halkasından)",
+      "px": 0,
+      "yalniz": 140,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p1186",
+      "ad": "Kablo yolu 7: Servo 6 V B (G15 16 AWG → SV2 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 B (−49; 75) → dağıtım B (−72; 205) → uzatmalar S05–S08: sol kol",
+      "px": 228,
+      "yalniz": 1428,
+      "oran": 0.16,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema0": [
+      205,
+      782
+     ],
+     "sema1": [
+      37,
+      578
+     ],
+     "sema2": [
+      300,
+      782
+     ],
+     "sema3": [
+      323,
+      789
+     ],
+     "sema4": [
+      314,
+      1385
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p1184",
+      "ad": "Kablo yolu 5: Servo 6 V A (G14 16 AWG → SV1 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 A (0; 170) → dağıtım A (72; 205) → uzatmalar S01–S04: sağ kol",
+      "px": 243,
+      "yalniz": 1367,
+      "oran": 0.178,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p1185",
+      "ad": "Kablo yolu 6: Servo uzatmaları kafaya (S09, S10; 22 AWG): pan + tilt (hat C, XL4016 C güç panelinde; direk üstü, R62 halkasından)",
+      "px": 0,
+      "yalniz": 140,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p1186",
+      "ad": "Kablo yolu 7: Servo 6 V B (G15 16 AWG → SV2 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 B (−49; 75) → dağıtım B (−72; 205) → uzatmalar S05–S08: sol kol",
+      "px": 228,
+      "yalniz": 1428,
+      "oran": 0.16,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p1187",
+      "ad": "Kablo yolu 8: Kafa 12 V (G17, 18 AWG çift): F3 5 A → direk ön yüzü → R62 → boyun → kafa giriş kartı (P6KE18A) → Pololu D24V50F5 (Pi 5, PAM8403) + SY8205 (10,1\" QLED)",
+      "px": 1018,
+      "yalniz": 1163,
+      "oran": 0.875,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p1191",
+      "ad": "Kablo yolu 12: Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de. Şemanın direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
+      "px": 1031,
+      "yalniz": 1235,
+      "oran": 0.835,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
+   },
+   {
+    "adres": "32.1",
+    "kod": "K2",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 2,
+    "gorunmeyen": [
+     {
+      "id": "p1184",
+      "ad": "Kablo yolu 5: Servo 6 V A (G14 16 AWG → SV1 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 A (0; 170) → dağıtım A (72; 205) → uzatmalar S01–S04: sağ kol",
+      "px": 419,
+      "yalniz": 2308,
+      "oran": 0.182,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p1186",
+      "ad": "Kablo yolu 7: Servo 6 V B (G15 16 AWG → SV2 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 B (−49; 75) → dağıtım B (−72; 205) → uzatmalar S05–S08: sol kol",
+      "px": 397,
+      "yalniz": 2365,
+      "oran": 0.168,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p1184",
+      "ad": "Kablo yolu 5: Servo 6 V A (G14 16 AWG → SV1 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 A (0; 170) → dağıtım A (72; 205) → uzatmalar S01–S04: sağ kol",
+      "px": 419,
+      "yalniz": 2308,
+      "oran": 0.182,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     },
+     {
+      "id": "p1186",
+      "ad": "Kablo yolu 7: Servo 6 V B (G15 16 AWG → SV2 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 B (−49; 75) → dağıtım B (−72; 205) → uzatmalar S05–S08: sol kol",
+      "px": 397,
+      "yalniz": 2365,
+      "oran": 0.168,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
+   },
+   {
+    "adres": "32.2",
+    "kod": "K2",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 1,
+    "gorunmeyen": [
+     {
+      "id": "p1185",
+      "ad": "Kablo yolu 6: Servo uzatmaları kafaya (S09, S10; 22 AWG): pan + tilt (hat C, XL4016 C güç panelinde; direk üstü, R62 halkasından)",
+      "px": 0,
+      "yalniz": 19568,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p1185",
+      "ad": "Kablo yolu 6: Servo uzatmaları kafaya (S09, S10; 22 AWG): pan + tilt (hat C, XL4016 C güç panelinde; direk üstü, R62 halkasından)",
+      "px": 0,
+      "yalniz": 19568,
+      "oran": 0.0,
+      "karede": true,
+      "gorunur": false,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": false
+   },
+   {
+    "adres": "32.3",
+    "kod": "K2",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 1,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p1187",
+      "ad": "Kablo yolu 8: Kafa 12 V (G17, 18 AWG çift): F3 5 A → direk ön yüzü → R62 → boyun → kafa giriş kartı (P6KE18A) → Pololu D24V50F5 (Pi 5, PAM8403) + SY8205 (10,1\" QLED)",
+      "px": 2087,
+      "yalniz": 2329,
+      "oran": 0.896,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "32.4",
+    "kod": "K2",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 1,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema2": [
+      611,
+      1314
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [
+     {
+      "id": "p1191",
+      "ad": "Kablo yolu 12: Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de. Şemanın direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
+      "px": 1796,
+      "yalniz": 2105,
+      "oran": 0.853,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     }
+    ],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "32.5",
+    "kod": "K2",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema0": [
+      1131,
+      4568
+     ],
+     "sema1": [
+      229,
+      3558
+     ],
+     "sema3": [
+      1714,
+      4596
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "32.6",
+    "kod": "K2",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "32.7",
+    "kod": "K2",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {
+     "sema4": [
+      896,
+      3400
+     ]
+    },
+    "yabanci_sema": [],
+    "parca": [],
+    "saydam": [],
+    "gecti": true
+   },
+   {
+    "adres": "32.8",
+    "kod": "K2",
+    "hazir": true,
+    "sinir": false,
+    "yeni": 0,
+    "gorunmeyen": [],
+    "istisna": [],
+    "birim": null,
+    "sema": {},
+    "yabanci_sema": [],
+    "parca": [],
     "saydam": [],
     "gecti": true
    },
@@ -20581,6 +21636,760 @@
     "gecti": true
    }
   ],
+  "sema_tek": {
+   "sema": 60,
+   "birden_cok": [],
+   "hic": [],
+   "piksel_sifir": [
+    {
+     "i": 6,
+     "ad": "ReSpeaker USB (U01): Pi USB 1 → ReSpeaker (kısa micro USB)",
+     "adim": 31,
+     "vurgulu": [
+      {
+       "adres": "31.2",
+       "px": 0
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 7,
+     "ad": "PAM8403 5 V (K05, 18 AWG): D24V50F5 → PAM (K10 a)",
+     "adim": 31,
+     "vurgulu": [
+      {
+       "adres": "31.4",
+       "px": 0
+      }
+     ],
+     "gecti": true
+    }
+   ],
+   "gecti": true,
+   "olcum": [
+    {
+     "i": 0,
+     "ad": "Göğüs ekranı HDMI (H02): Pi micro HDMI 1 → boyun → travers arkası → di",
+     "adim": 32,
+     "vurgulu": [
+      {
+       "adres": "32.5",
+       "px": 1131
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 1,
+     "ad": "Hub uzatması (U03, USB 2.0): Pi USB 3 → boyun → travers arkası → üst a",
+     "adim": 32,
+     "vurgulu": [
+      {
+       "adres": "32.5",
+       "px": 229
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 2,
+     "ad": "ESP32 USB (U06): hub (Hub 2) → direk arka yüzü → ESP32 (taban); VBUS't",
+     "adim": 32,
+     "vurgulu": [
+      {
+       "adres": "32.4",
+       "px": 611
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 3,
+     "ad": "Hoparlör (AU3): PAM8403 → boyun → travers arkası → sağ ön → hoparlör (",
+     "adim": 32,
+     "vurgulu": [
+      {
+       "adres": "32.5",
+       "px": 1714
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 4,
+     "ad": "Göğüs ekranı 12 V (G20, G21; 18 AWG): güç paneli (F6 3 A → LM2577 + LM",
+     "adim": 32,
+     "vurgulu": [
+      {
+       "adres": "32.7",
+       "px": 896
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 5,
+     "ad": "Göğüs dokunmatiği (U05, USB): ekran TOUCH → hub (Hub 1); F5'te hub'a t",
+     "adim": 35,
+     "vurgulu": [
+      {
+       "adres": "35.4",
+       "px": 7549
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 6,
+     "ad": "ReSpeaker USB (U01): Pi USB 1 → ReSpeaker (kısa micro USB)",
+     "adim": 31,
+     "vurgulu": [
+      {
+       "adres": "31.2",
+       "px": 0
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 7,
+     "ad": "PAM8403 5 V (K05, 18 AWG): D24V50F5 → PAM (K10 a)",
+     "adim": 31,
+     "vurgulu": [
+      {
+       "adres": "31.4",
+       "px": 0
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 8,
+     "ad": "Kafa ekranı HDMI (H01, 30 cm şerit): Pi micro HDMI 0 → QLED",
+     "adim": 31,
+     "vurgulu": [
+      {
+       "adres": "31.9",
+       "px": 2868
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 9,
+     "ad": "Kafa ekranı Touch (U04): Pi USB 4 → QLED (VBUS uyarısı: Notlar)",
+     "adim": 31,
+     "vurgulu": [
+      {
+       "adres": "31.9",
+       "px": 4061
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 10,
+     "ad": "Kafa ekranı Power (K04): SY8205 → QLED (ayrı 5 V hattı)",
+     "adim": 31,
+     "vurgulu": [
+      {
+       "adres": "31.9",
+       "px": 992
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 11,
+     "ad": "Akü ölçüm bölücüsü (G07, 22 AWG): ana anahtar çıkışı (bölücünün üst di",
+     "adim": 17,
+     "vurgulu": [
+      {
+       "adres": "17.3",
+       "px": 16631
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 12,
+     "ad": "XL4016 C girişi (G16, 16 AWG): anahtarlı bara (yeri yaklaşık: modelde ",
+     "adim": 17,
+     "vurgulu": [
+      {
+       "adres": "17.5",
+       "px": 559
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 13,
+     "ad": "Bara durumu (G22, 22 AWG): anahtarlı bara (yeri yaklaşık: modelde yok,",
+     "adim": 17,
+     "vurgulu": [
+      {
+       "adres": "17.6",
+       "px": 23273
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 15,
+     "ad": "Çevre 5 V (G19, 16 AWG): XL4016 çevre OUT (alt kat) → ön kat kesiği → ",
+     "adim": 17,
+     "vurgulu": [
+      {
+       "adres": "17.9",
+       "px": 12964
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 17,
+     "ad": "BTS sağ sinyali (B02, 22 AWG): BTS7960 sağ sinyal başlığı → ön kat kes",
+     "adim": 17,
+     "vurgulu": [
+      {
+       "adres": "17.10",
+       "px": 840
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 18,
+     "ad": "Arka sol enkoder (N01, 22 AWG): motor → plaka altı → arka kablo deliği",
+     "adim": 17,
+     "vurgulu": [
+      {
+       "adres": "17.10",
+       "px": 2216
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 19,
+     "ad": "Arka sağ enkoder (N02, 22 AWG): motor → plaka altı → arka kablo deliği",
+     "adim": 17,
+     "vurgulu": [
+      {
+       "adres": "17.10",
+       "px": 746
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 20,
+     "ad": "Sağ sonar (Q01, 22 AWG): pin bloğu → ön ara ray üstü → ön kat kesiği →",
+     "adim": 17,
+     "vurgulu": [
+      {
+       "adres": "17.10",
+       "px": 3611
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 21,
+     "ad": "Orta sonar (Q02, 22 AWG): pin bloğu → ön ara ray üstü → ön kat kesiği ",
+     "adim": 17,
+     "vurgulu": [
+      {
+       "adres": "17.10",
+       "px": 2545
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 25,
+     "ad": "Kamera şeridi (C01, CSI FPC): Pi CSI → QLED'in üst kenarının üstünden ",
+     "adim": 31,
+     "vurgulu": [
+      {
+       "adres": "31.9",
+       "px": 1373
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 26,
+     "ad": "Ses kablosu (AU1, AU2): ReSpeaker 3,5 mm jakı → ses bölücüsü → PAM8403",
+     "adim": 31,
+     "vurgulu": [
+      {
+       "adres": "31.4",
+       "px": 78
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 27,
+     "ad": "Sağ kol · Bilek servosu kablosu: mil ucu → ara duvar çentiği → dirsek ",
+     "adim": 42,
+     "vurgulu": [
+      {
+       "adres": "42.2",
+       "px": 21017
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 28,
+     "ad": "Sağ kol · Dirsek servosu kablosu: servo üstü → tırnak",
+     "adim": 42,
+     "vurgulu": [
+      {
+       "adres": "42.2",
+       "px": 4426
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 29,
+     "ad": "Sağ kol · Dirsek lopu (L 120, 2 kablo): tırnak → çatal oluğu → Ø10 del",
+     "adim": 44,
+     "vurgulu": [
+      {
+       "adres": "44.2",
+       "px": 53051
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 30,
+     "ad": "Sağ kol · Tüp içi: Ø10 delik → tüp girişi (y -152)",
+     "adim": 48,
+     "vurgulu": [
+      {
+       "adres": "48.2",
+       "px": 4360
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 31,
+     "ad": "Sağ kol · Tüp içi, iki ek arası (y -127 → -118): bilek uzatması (lehim",
+     "adim": 48,
+     "vurgulu": [
+      {
+       "adres": "48.2",
+       "px": 1883
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 32,
+     "ad": "Sağ kol · Ek yeri: dirsek kablosu JR çifti (26 mm), tüp içinde birleşi",
+     "adim": 48,
+     "vurgulu": [
+      {
+       "adres": "48.2",
+       "px": 9935
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 33,
+     "ad": "Sağ kol · Ek yeri: bilek kablosu lehim + makaron (25 mm), tüp girişini",
+     "adim": 48,
+     "vurgulu": [
+      {
+       "adres": "48.2",
+       "px": 9530
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 34,
+     "ad": "Sağ kol · Ek noktası: bilek kablosu lehimi (makaron ortası, y -139.5)",
+     "adim": 48,
+     "vurgulu": [
+      {
+       "adres": "48.2",
+       "px": 1509
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 35,
+     "ad": "Sağ kol · Ek noktası: dirsek kablosu JR birleşimi (y -105)",
+     "adim": 48,
+     "vurgulu": [
+      {
+       "adres": "48.2",
+       "px": 1589
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 36,
+     "ad": "Sağ kol · Uzatmalar tüp içinde: birleşim → tüp penceresi",
+     "adim": 48,
+     "vurgulu": [
+      {
+       "adres": "48.2",
+       "px": 8830
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 37,
+     "ad": "Sağ kol · Uzatmalar: tüp penceresi → tüp cıvatası yanı → K noktası (ça",
+     "adim": 40,
+     "vurgulu": [
+      {
+       "adres": "40.2",
+       "px": 16713
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 38,
+     "ad": "Sağ kol · S2 lopu (L 80, 2 kablo): K noktası → göbek arka iç şeridi (G",
+     "adim": 40,
+     "vurgulu": [
+      {
+       "adres": "40.2",
+       "px": 22836
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 39,
+     "ad": "Sağ kol · Kablo bağı: K noktası (çatal arka plakasının arkası, yapışka",
+     "adim": 40,
+     "vurgulu": [
+      {
+       "adres": "40.2",
+       "px": 2887
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 40,
+     "ad": "Sağ kol · Kablo bağı: tambur bağı (ψ 145, 2 ip)",
+     "adim": 40,
+     "vurgulu": [
+      {
+       "adres": "40.2",
+       "px": 1125
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 41,
+     "ad": "Sağ kol · G2 → tambur bağı (ψ 145, 3 kablo: dirsek, bilek, S2 uzatmala",
+     "adim": 40,
+     "vurgulu": [
+      {
+       "adres": "40.2",
+       "px": 3421
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 42,
+     "ad": "Sağ kol · S1 U-lopu (L 171.4): tambur bağı → iç koşu (tamburda) → U → ",
+     "adim": 41,
+     "vurgulu": [
+      {
+       "adres": "41.2",
+       "px": 29158
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 43,
+     "ad": "Sağ kol · Duvar bağı → duvar boyunca ψ 214 → radyal içe (r 52) → kaset",
+     "adim": 41,
+     "vurgulu": [
+      {
+       "adres": "41.2",
+       "px": 10561
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 44,
+     "ad": "Sağ kol · Yarık (ψ 214, 12 × 6) → gövde içi → travers arkası",
+     "adim": 36,
+     "vurgulu": [
+      {
+       "adres": "36.4",
+       "px": 17422
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 45,
+     "ad": "Sağ kol · S1 -45°'de U-lopu (uç duruş): tambur bağı ψ 100 → U → duvar ",
+     "adim": 41,
+     "vurgulu": [
+      {
+       "adres": "41.4",
+       "px": 33613
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 46,
+     "ad": "Sağ kol · S1 +135°'de U-lopu (uç duruş): tambur bağı ψ 280 → U → duvar",
+     "adim": 41,
+     "vurgulu": [
+      {
+       "adres": "41.5",
+       "px": 36397
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 47,
+     "ad": "Sol kol · Bilek servosu kablosu: mil ucu → ara duvar çentiği → dirsek ",
+     "adim": 42,
+     "vurgulu": [
+      {
+       "adres": "42.3",
+       "px": 20187
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 48,
+     "ad": "Sol kol · Dirsek servosu kablosu: servo üstü → tırnak",
+     "adim": 42,
+     "vurgulu": [
+      {
+       "adres": "42.3",
+       "px": 4257
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 49,
+     "ad": "Sol kol · Dirsek lopu (L 120, 2 kablo): tırnak → çatal oluğu → Ø10 del",
+     "adim": 44,
+     "vurgulu": [
+      {
+       "adres": "44.3",
+       "px": 57064
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 50,
+     "ad": "Sol kol · Tüp içi: Ø10 delik → tüp girişi (y -152)",
+     "adim": 48,
+     "vurgulu": [
+      {
+       "adres": "48.3",
+       "px": 4500
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 51,
+     "ad": "Sol kol · Tüp içi, iki ek arası (y -127 → -118): bilek uzatması (lehim",
+     "adim": 48,
+     "vurgulu": [
+      {
+       "adres": "48.3",
+       "px": 1948
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 52,
+     "ad": "Sol kol · Ek yeri: dirsek kablosu JR çifti (26 mm), tüp içinde birleşi",
+     "adim": 48,
+     "vurgulu": [
+      {
+       "adres": "48.3",
+       "px": 10381
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 53,
+     "ad": "Sol kol · Ek yeri: bilek kablosu lehim + makaron (25 mm), tüp girişini",
+     "adim": 48,
+     "vurgulu": [
+      {
+       "adres": "48.3",
+       "px": 9865
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 54,
+     "ad": "Sol kol · Ek noktası: bilek kablosu lehimi (makaron ortası, y -139.5)",
+     "adim": 48,
+     "vurgulu": [
+      {
+       "adres": "48.3",
+       "px": 1557
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 55,
+     "ad": "Sol kol · Ek noktası: dirsek kablosu JR birleşimi (y -105)",
+     "adim": 48,
+     "vurgulu": [
+      {
+       "adres": "48.3",
+       "px": 1648
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 56,
+     "ad": "Sol kol · Uzatmalar tüp içinde: birleşim → tüp penceresi",
+     "adim": 48,
+     "vurgulu": [
+      {
+       "adres": "48.3",
+       "px": 8574
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 57,
+     "ad": "Sol kol · Uzatmalar: tüp penceresi → tüp cıvatası yanı → K noktası (ça",
+     "adim": 40,
+     "vurgulu": [
+      {
+       "adres": "40.3",
+       "px": 16274
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 58,
+     "ad": "Sol kol · S2 lopu (L 80, 2 kablo): K noktası → göbek arka iç şeridi (G",
+     "adim": 40,
+     "vurgulu": [
+      {
+       "adres": "40.3",
+       "px": 21487
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 59,
+     "ad": "Sol kol · Kablo bağı: K noktası (çatal arka plakasının arkası, yapışka",
+     "adim": 40,
+     "vurgulu": [
+      {
+       "adres": "40.3",
+       "px": 2797
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 60,
+     "ad": "Sol kol · Kablo bağı: tambur bağı (ψ 145, 2 ip)",
+     "adim": 40,
+     "vurgulu": [
+      {
+       "adres": "40.3",
+       "px": 1209
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 61,
+     "ad": "Sol kol · G2 → tambur bağı (ψ 145, 3 kablo: dirsek, bilek, S2 uzatmala",
+     "adim": 40,
+     "vurgulu": [
+      {
+       "adres": "40.3",
+       "px": 3246
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 62,
+     "ad": "Sol kol · S1 U-lopu (L 171.4): tambur bağı → iç koşu (tamburda) → U → ",
+     "adim": 41,
+     "vurgulu": [
+      {
+       "adres": "41.3",
+       "px": 31695
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 63,
+     "ad": "Sol kol · Duvar bağı → duvar boyunca ψ 214 → radyal içe (r 52) → kaset",
+     "adim": 41,
+     "vurgulu": [
+      {
+       "adres": "41.3",
+       "px": 10957
+      }
+     ],
+     "gecti": true
+    },
+    {
+     "i": 64,
+     "ad": "Sol kol · Yarık (ψ 214, 12 × 6) → gövde içi → travers arkası",
+     "adim": 36,
+     "vurgulu": [
+      {
+       "adres": "36.5",
+       "px": 19231
+      }
+     ],
+     "gecti": true
+    }
+   ]
+  },
   "kabuk_alt_adim": 44,
   "kabuk_yeni": 335,
   "kabuk_gorunmeyen": 0,
@@ -20595,6 +22404,78 @@
    1600
   ],
   "olcum": [
+   {
+    "adres": "17.1",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "17.2",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "17.3",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "17.4",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "17.5",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "17.6",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "17.7",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "17.8",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "17.9",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "17.10",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "17.11",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "17.12",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
    {
     "adres": "21.1",
     "hazir": true,
@@ -20663,6 +22544,54 @@
    },
    {
     "adres": "31.10",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "32.1",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "32.2",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "32.3",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "32.4",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "32.5",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "32.6",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "32.7",
+    "hazir": true,
+    "tasma_px": 0,
+    "hata": null
+   },
+   {
+    "adres": "32.8",
     "hazir": true,
     "tasma_px": 0,
     "hata": null
@@ -21027,6 +22956,6 @@
  },
  "kontrol_hatasi": null,
  "goruntu": [],
- "sure_s": 756,
+ "sure_s": 871,
  "gecti": true
 }
