@@ -337,9 +337,10 @@ class Tablo:
         return d
 
     def lejant(self):
-        """app.js lejantı: sınıf → [renk, okunur ad, tema tonları]. Hazır kablo türleri ayrı satır (hazir-usb, hazir-hdmi, hazir-csi)."""
+        """app.js lejantı: sınıf → [renk, okunur ad, tema tonları]. Hazır kablo türleri ayrı satır (hazir-usb, hazir-hdmi, hazir-csi).
+        P10.7b2e kısım 2 (F10l-kare-inceleme 32.5): beyaz kablo açık temada koyu camgöbeği (#4c7078) çizilir; lejant adı bunu söyler."""
         ad = dict(kirmizi="12 V doğrudan (kırmızı)", turuncu="Anahtarlı bara, motor (turuncu)", sari="Servo gücü 6 V (sarı)",
-                  mavi="5 V (mavi)", yesil="Acil stop (yeşil)", mor="Sinyal (mor)", siyah="Toprak (siyah)", beyaz="Analog ses (beyaz)",
+                  mavi="5 V (mavi)", yesil="Acil stop (yeşil)", mor="Sinyal (mor)", siyah="Toprak (siyah)", beyaz="Analog ses (beyaz; açık temada koyu çizilir)",
                   hazir="Hazır kablo: USB, HDMI, CSI (gri)")
         out = {k: [v["cizim"], ad.get(k, k), dict(TEMA_TON.get(k) or {"light": v["cizim"], "dark": v["cizim"]})] for k, v in self.S.items()}
         if "hazir" in self.S:
@@ -869,7 +870,8 @@ SEMA_ESLEMESIZ_MUAF = {
 # TABAN_DISI_BOLGE'nin "sol kol" kutusu (x ≤ −60, y ≥ 880) göğsün sol yarısını da kapsadığı için ekran portu ayrı bölgedir.
 GOGUS_PORT = "göğüs ekranı portu"
 SEMA_PARCA_BOLGE = ((r"^Göğüs ekranı 11,6", GOGUS_PORT), (r"^Hoparlör ", "gövde"))
-SEMA_MODELSIZ = {"Göğüs ekranı regülatörü": "regülatör yeri karar bekliyor (K52); modeli ve nominal noktası yok: sınanmaz, elle bakıldı"}
+SEMA_MODELSIZ = {"Göğüs ekranı regülatörü": "regülatör güç panelinde (K52 a, B5a) ama modeli ve nominal noktası yok (model sonraki tam "
+                                             "taramalı CAD paketinde): sınanmaz, elle bakıldı"}
 # Mevcut 11 şemada tutmayan uçlar (P10.7b2c; geometri düzeltilmedi, F10k-gunluk.md "mevcut şemalar"). Anahtar (SEMA kaynak adı, yer).
 _FIS = "fiş gövdesi kart kutusunun dışında kalır; kablo_yolu_ekran fişin arka ucunu çizer (fiş boyu TAHMİN)"
 _ESP = ("şemanın taban ucu (51,6; 190; −120) güç panelinin üstünde; ESP32 taşıyıcısı 9 Ekim'den beri (80; 75)'te (arayuz TABAN esp), "
@@ -883,8 +885,9 @@ SEMA_GEO_ISTISNA = {
     ("Dizi USB", "baş"): "ReSpeaker micro USB fişinin arka ucu (U01 b ile aynı; kafa bölgesinin x ±60 sınırı dışında): " + _FIS,
     ("ESP32 USB", "U06 b"): _ESP,
     ("ESP32 USB", "son"): _ESP,
-    ("12 V", "G20 a"): "baş güç panelinde sigorta kutusunun yanında (F6 çıkışı, kutuya 13 mm); göğüs ekranı regülatörünün yeri karar "
-                       "bekliyor (K52): baş noktası kesinleşmedi",
+    ("12 V", "G20 a"): "baş güç panelinde sigorta kutusunun yanında (F6 çıkışı, kutuya 13 mm); göğüs ekranı regülatörü güç panelinde "
+                       "(K52 a, B5a) ama panel üstündeki yeri modelde yok: şema regülatörü çizmez, baş noktası regülatör modele girince "
+                       "(sonraki tam taramalı CAD paketi) yeniden bakılır",
 }
 
 

@@ -76,7 +76,7 @@ Espressif belgeleri ve Arduino-ESP32 / ESP-IDF kaynakları 14.11.2026'da Espress
 "Reset sırasında → sonrası" sütunu DS Ek A.4 IO_MUX tablosundan: reset sırasında bütün pinlerin çıkışı kapalıdır (Tablo 6-1 not 9); reset
 bitince her pin "Function 0"a döner (not 10). wpu / wpd = dahili zayıf pull-up / pull-down, 45 kΩ tipik (DS Tablo 5-3). "Yüzer" = çıkış
 kapalı, dahili çekme yok. "Açılışta / varsayılan olarak süren" sütunu: firmware'in `setup()`'ından önce ya da varsayılan bir kütüphane
-çağrısında pine dokunan kod; aksi yazmadıkça 2.0.17 (AR, IDF44), "3.x" yazanlar AR3.
+çağrısında pine dokunan kod; aksi yazmadıkça 2.0.17 (AR, IDF44), "3.x" yazanlar AR3. **Sağ / sol (P10.7b2e, Echo kararı 16.11.2026, K65):** Bu tablodaki "Bağlı parça / uç" sütununda ve montaj rehberiyle kablo tablosunda sağ / sol, robota önden bakan kişinin sağı / soludur; robotun kendi sağı / solu değildir (ör. "sağ motor", "sağ enkoder", "sağ sonar" CAD'de +X'te, robotun kendi solundadır). ESP32 yazılımı (`kod/esp32`, `kod/jestler`) sağ / solu robotun kendi çerçevesinde kullanır; ad → pin → robotun kendi tarafı karşılıkları ve gereken yazılım düzeltmesi `planlama/d158/sag-sol-karari.md`'de.
 
 | GPIO | Yön | İşlev | Bağlı parça / uç | Reset sırasında → sonrası (DS A.4) | Açılışta / varsayılan olarak süren | Donanım şartı | Not |
 |---|---|---|---|---|---|---|---|
@@ -400,7 +400,7 @@ Kararı bunlara bağlamadım; her biri montajda ölçülür, sonuç günlüğe y
 
 ## 9. `kod/ortak/pinler.json` için içerik önerisi
 
-Dosyayı Efe açar; aşağıdaki içerik bu tablonun aynısıdır. `eklem_sinirlari.json` gibi ASCII yazıldı. Alan adları öneridir.
+Dosyayı Efe açar; aşağıdaki içerik bu tablonun aynısıdır. `eklem_sinirlari.json` gibi ASCII yazıldı. Alan adları öneridir. Sağ / sol (`sag` / `sol`) adları § 2'deki tanımla robota önden bakanın sağı / solu, yani robotun kendi solu / sağıdır (K65, `planlama/d158/sag-sol-karari.md`); yazılım kendi çerçevesine bu karşılıkla çevirir.
 
 ```json
 {

@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-16 04:20",
+ "tarih": "2026-11-16 07:50",
  "konum": 141,
  "renk_cad": {
   "yontem": "CAD rengi rehber_gorunum.cad_parcalar() ile FCStd'den yeniden okunur (Document.xml Renk özelliği × gorsel betiğinin RENK tablosu); ayrıca GuiDocument.xml yayınık rengi",
@@ -2800,8 +2800,8 @@
     "beklenen": 41,
     "liste": 41,
     "kumede": 41,
-    "kume": 24,
-    "dom": 24,
+    "kume": 22,
+    "dom": 22,
     "gecti": true
    },
    {
@@ -4254,8 +4254,8 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Arka kafa kabuğu sağ",
-     "fark": 234173,
-     "yalniz": 245005,
+     "fark": 140593,
+     "yalniz": 209863,
      "gorunur": true,
      "parca": 12,
      "ic_gorunmeyen": [
@@ -4282,10 +4282,30 @@
       {
        "id": "p0767",
        "ad": "Isıl gömme somun M3 (kafa sağ/sol arka üst)",
-       "fark": 4,
+       "fark": 1,
        "masada": "31.1",
        "masada_fark": 104,
        "masada_yalniz": 87,
+       "masada_gorunur": true,
+       "gomme": true
+      },
+      {
+       "id": "p0769",
+       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar üst)",
+       "fark": 0,
+       "masada": "31.1",
+       "masada_fark": 95,
+       "masada_yalniz": 83,
+       "masada_gorunur": true,
+       "gomme": true
+      },
+      {
+       "id": "p0771",
+       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar alt)",
+       "fark": 0,
+       "masada": "31.1",
+       "masada_fark": 101,
+       "masada_yalniz": 98,
        "masada_gorunur": true,
        "gomme": true
       },
@@ -4308,46 +4328,6 @@
        "masada_yalniz": 127,
        "masada_gorunur": true,
        "gomme": true
-      },
-      {
-       "id": "p0826",
-       "ad": "ReSpeaker Mic Array v2.0",
-       "fark": 0,
-       "masada": "31.1",
-       "masada_fark": 9334,
-       "masada_yalniz": 9309,
-       "masada_gorunur": true,
-       "gomme": false
-      },
-      {
-       "id": "p0827",
-       "ad": "Dizi vidası M2x8 PT (0)",
-       "fark": 0,
-       "masada": "31.1",
-       "masada_fark": 52,
-       "masada_yalniz": 92,
-       "masada_gorunur": true,
-       "gomme": false
-      },
-      {
-       "id": "p0828",
-       "ad": "Dizi vidası M2x8 PT (1)",
-       "fark": 0,
-       "masada": "31.1",
-       "masada_fark": 47,
-       "masada_yalniz": 85,
-       "masada_gorunur": true,
-       "gomme": false
-      },
-      {
-       "id": "p0829",
-       "ad": "Dizi vidası M2x8 PT (2)",
-       "fark": 0,
-       "masada": "31.1",
-       "masada_fark": 51,
-       "masada_yalniz": 85,
-       "masada_gorunur": true,
-       "gomme": false
       }
      ]
     },
@@ -4458,8 +4438,8 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Arka kafa kabuğu sol",
-     "fark": 215511,
-     "yalniz": 225227,
+     "fark": 98753,
+     "yalniz": 216845,
      "gorunur": true,
      "parca": 9,
      "ic_gorunmeyen": [
@@ -4476,7 +4456,7 @@
       {
        "id": "p0762",
        "ad": "Isıl gömme somun M3 (tabla rafı sol z-75)",
-       "fark": 0,
+       "fark": 1,
        "masada": "31.3",
        "masada_fark": 156,
        "masada_yalniz": 142,
@@ -4506,7 +4486,7 @@
       {
        "id": "p0822",
        "ad": "Köpük bant (yedek USB ses kartı için; kart takılmaz, bant yapıştırılmaz)",
-       "fark": 0,
+       "fark": 247,
        "masada": "31.3",
        "masada_fark": 3489,
        "masada_yalniz": 3507,
@@ -4514,32 +4494,12 @@
        "gomme": false
       },
       {
-       "id": "p0823",
-       "ad": "USB ses kartı (yedek, takılmaz)",
-       "fark": 0,
-       "masada": "31.3",
-       "masada_fark": 5544,
-       "masada_yalniz": 5927,
-       "masada_gorunur": true,
-       "gomme": false
-      },
-      {
        "id": "p0824",
        "ad": "Köpük bant (PAM8403 amfi)",
-       "fark": 0,
+       "fark": 185,
        "masada": "31.3",
        "masada_fark": 1644,
        "masada_yalniz": 1560,
-       "masada_gorunur": true,
-       "gomme": false
-      },
-      {
-       "id": "p0825",
-       "ad": "PAM8403 amfi",
-       "fark": 0,
-       "masada": "31.3",
-       "masada_fark": 2177,
-       "masada_yalniz": 2225,
        "masada_gorunur": true,
        "gomme": false
       }
@@ -8291,8 +8251,8 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Arka kafa kabuğu sağ",
-     "fark": 245723,
-     "yalniz": 245005,
+     "fark": 139574,
+     "yalniz": 209863,
      "gorunur": true,
      "parca": 12,
      "ic_gorunmeyen": [
@@ -8319,10 +8279,30 @@
       {
        "id": "p0767",
        "ad": "Isıl gömme somun M3 (kafa sağ/sol arka üst)",
-       "fark": 0,
+       "fark": 1,
        "masada": "31.1",
        "masada_fark": 94,
        "masada_yalniz": 87,
+       "masada_gorunur": true,
+       "gomme": true
+      },
+      {
+       "id": "p0769",
+       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar üst)",
+       "fark": 0,
+       "masada": "31.1",
+       "masada_fark": 88,
+       "masada_yalniz": 83,
+       "masada_gorunur": true,
+       "gomme": true
+      },
+      {
+       "id": "p0771",
+       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar alt)",
+       "fark": 0,
+       "masada": "31.1",
+       "masada_fark": 94,
+       "masada_yalniz": 98,
        "masada_gorunur": true,
        "gomme": true
       },
@@ -8345,46 +8325,6 @@
        "masada_yalniz": 127,
        "masada_gorunur": true,
        "gomme": true
-      },
-      {
-       "id": "p0826",
-       "ad": "ReSpeaker Mic Array v2.0",
-       "fark": 1,
-       "masada": "31.1",
-       "masada_fark": 9523,
-       "masada_yalniz": 9309,
-       "masada_gorunur": true,
-       "gomme": false
-      },
-      {
-       "id": "p0827",
-       "ad": "Dizi vidası M2x8 PT (0)",
-       "fark": 0,
-       "masada": "31.1",
-       "masada_fark": 52,
-       "masada_yalniz": 92,
-       "masada_gorunur": true,
-       "gomme": false
-      },
-      {
-       "id": "p0828",
-       "ad": "Dizi vidası M2x8 PT (1)",
-       "fark": 0,
-       "masada": "31.1",
-       "masada_fark": 47,
-       "masada_yalniz": 85,
-       "masada_gorunur": true,
-       "gomme": false
-      },
-      {
-       "id": "p0829",
-       "ad": "Dizi vidası M2x8 PT (2)",
-       "fark": 0,
-       "masada": "31.1",
-       "masada_fark": 51,
-       "masada_yalniz": 85,
-       "masada_gorunur": true,
-       "gomme": false
       }
      ]
     },
@@ -8495,8 +8435,8 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Arka kafa kabuğu sol",
-     "fark": 225552,
-     "yalniz": 225227,
+     "fark": 127527,
+     "yalniz": 216845,
      "gorunur": true,
      "parca": 9,
      "ic_gorunmeyen": [
@@ -8513,7 +8453,7 @@
       {
        "id": "p0762",
        "ad": "Isıl gömme somun M3 (tabla rafı sol z-75)",
-       "fark": 0,
+       "fark": 1,
        "masada": "31.3",
        "masada_fark": 155,
        "masada_yalniz": 142,
@@ -8523,7 +8463,7 @@
       {
        "id": "p0777",
        "ad": "Isıl gömme somun M3 (kafa ön/arka sol y-60)",
-       "fark": 1,
+       "fark": 0,
        "masada": "31.3",
        "masada_fark": 181,
        "masada_yalniz": 179,
@@ -8543,7 +8483,7 @@
       {
        "id": "p0822",
        "ad": "Köpük bant (yedek USB ses kartı için; kart takılmaz, bant yapıştırılmaz)",
-       "fark": 0,
+       "fark": 240,
        "masada": "31.3",
        "masada_fark": 3530,
        "masada_yalniz": 3507,
@@ -8551,32 +8491,12 @@
        "gomme": false
       },
       {
-       "id": "p0823",
-       "ad": "USB ses kartı (yedek, takılmaz)",
-       "fark": 0,
-       "masada": "31.3",
-       "masada_fark": 5509,
-       "masada_yalniz": 5927,
-       "masada_gorunur": true,
-       "gomme": false
-      },
-      {
        "id": "p0824",
        "ad": "Köpük bant (PAM8403 amfi)",
-       "fark": 0,
+       "fark": 168,
        "masada": "31.3",
        "masada_fark": 1653,
        "masada_yalniz": 1560,
-       "masada_gorunur": true,
-       "gomme": false
-      },
-      {
-       "id": "p0825",
-       "ad": "PAM8403 amfi",
-       "fark": 0,
-       "masada": "31.3",
-       "masada_fark": 2202,
-       "masada_yalniz": 2225,
        "masada_gorunur": true,
        "gomme": false
       }
@@ -12244,7 +12164,7 @@
   "gecti": true
  },
  "goruntu": [],
- "sure_s": 966,
+ "sure_s": 973,
  "gecti_ozet": {
   "renk_cad": true,
   "renk_sahne": true,

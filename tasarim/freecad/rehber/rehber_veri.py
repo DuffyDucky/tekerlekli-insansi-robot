@@ -127,7 +127,7 @@ ATANMAMIS = []
 for p in P:
     if p["tur"] == "Referans":
         if p["modul"] == "taban" and p["ad"].startswith("Kablo yolu"):
-            p["kodr"], p["kablo"] = RM.kablo_kapisi(p["bb"][3]), True
+            p["kodr"], p["kablo"] = RM.kablo_kapisi(p["bb"][3], RM.kablo_yolu_no(p["ad"])), True   # P10.7b2e: istisna (Kablo yolu 12)
         elif p["modul"] == "kafa":
             p["kodr"], p["kablo"] = "E3a", True
         else:
@@ -848,6 +848,11 @@ for i, kod in enumerate(KODLAR):
                 e["saydam"] = [q["id"] for q in P if q["a"] <= i and q["tur"] != "Referans" and any(d in gorunen(q) for d in g["saydam"])]
             if g.get("kenar"):                                      # F10f düzeltme 1: kenar çizgisi alan parçalar (desen)
                 e["kenar"] = [q["id"] for q in P if q["a"] <= i and q["tur"] != "Referans" and any(d in gorunen(q) for d in g["kenar"])]
+            if g.get("odak"):                                       # P10.7b2e kısım 2: kadraj bu parçalara sığar (desen; app.js uygula)
+                e["odak"] = [q["id"] for q in P if q["a"] <= i and any(d in gorunen(q) for d in g["odak"])]
+                bos = [d for d in g["odak"] if not any(d in gorunen(q) for q in P if q["a"] <= i)]
+                if bos:
+                    raise SystemExit("%s.%d: odak deseni bu adima kadar takilan hicbir parcaya uymuyor: %s" % (kod, n + 1, bos))
             if g.get("sema"):
                 e["_sema"] = tuple(g["sema"])
             if g.get("sema_ortulu"):                                # P10.7b2d-A d1: karede görünmeyen şema {desen: neden} (lejant)
@@ -941,7 +946,9 @@ VERI = dict(
                 sema="tasarim/freecad/lale158/kablo_yolu_ekran.py (gösterim şemaları; parça değil)",
                 cad={m: time.strftime("%Y-%m-%d %H:%M", time.localtime(os.path.getmtime(os.path.join(FC, f))))
                      for m, f in Y.DOSYA.items() if not m.endswith("_sol")}),
-    koordinat="mm; +X sag, +Y yukari, +Z ileri (yuz)",
+    # P10.7b2e kısım 2 (sağ / sol kararı K65, planlama/d158/sag-sol-karari.md): eksenler sağ elli; +X robota önden bakanın sağı,
+    # yani robotun kendi solu. Rehberdeki "sağ" / "sol" bu tanımla (robota önden bakanın sağı / solu)
+    koordinat="mm; +X robota önden bakanın sağı (robotun kendi solu), +Y yukarı, +Z ileri (yüz); eksenler sağ elli",
     m6_bayrak=dict(M6SAY), mesh=dict(benzersiz=len(MESH), parca=len(P), ucgen=sum(len(m[1]) for m in MESH),
                                      glb_mb=round(len(glb) / 1e6, 2)),
     atanmamis=ATANMAMIS, kablo_ad_uyari=KABLO_UYARI, tur_ad=RM.TUR_AD, modul_ad=RM.MODUL_AD, semalar=SEMALAR,

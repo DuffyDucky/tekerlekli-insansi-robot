@@ -119,6 +119,47 @@ def satir_ids(st, g):
     return out + list(g.get("ref") or [])
 
 
+def sema_karede(olc, V, altli):
+    """olc {(adım, alt): (ok, RehberTest.gorunurluk())} → ({şema: [{adres, px}]} vurgulu olduğu alt adımlar, cizilmeyen). P10.7b2e kısım 2
+    (F10l-kare-inceleme 31.4, 32.4): lejantta "Kablo: ..." diye geçen (vurgulu) şema karede çizilmeli; pikseli PX_ESIK altındaysa ve
+    grubun sema_ortulu'sunda (lejant "Karede görünmez" + nedenini yazar) değilse cizilmeyen (geçme şartı)."""
+    sema_say, cizilmeyen = {}, []
+    for (s, j), (ok, g) in olc.items():
+        if not j or s not in altli:
+            continue
+        px = g.get("piksel") or {}
+        sg = V["adimlar"][s].get("sira_grup") or []
+        ortulu = (sg[j - 1].get("sema_ortulu") or {}) if j <= len(sg) else {}
+        for x in g.get("sema") or []:
+            if x.get("d") == "simdi":
+                p = px.get("sema%d" % x["i"], 0)
+                sema_say.setdefault(x["i"], []).append(dict(adres=adr(s, j), px=p))
+                ad_s = V["semalar"][x["i"]]["ad"] if x["i"] < len(V.get("semalar") or []) else ""
+                if p < PX_ESIK and not any(k in ad_s for k in ortulu):
+                    cizilmeyen.append(dict(adres=adr(s, j), i=x["i"], ad=ad_s[:70], px=p))
+    return sema_say, cizilmeyen
+
+
+def sema_karede_bozma():
+    """FreeCAD'siz, tarayıcısız bozma denemesi (sentetik ölçüm): kural bozulan durumu yakalamalı, sağlam ve örtülü durumu geçirmeli."""
+    Vs = dict(semalar=[dict(ad="PAM8403 5 V (K05)"), dict(ad="Ses kablosu (AU1, AU2)")],
+              adimlar={31: dict(sira_grup=[dict(), dict(sema_ortulu={"Ses kablosu (AU1": "kabuğun arkasında"})])})
+    def olc(p0, p1, j=2):
+        return {(31, j): (True, dict(piksel={"sema0": p0, "sema1": p1}, sema=[dict(i=0, d="simdi"), dict(i=1, d="simdi")]))}
+    vakalar = [("sağlam: iki şema çiziliyor", olc(1800, 7900), 0),
+               ("bozuk: lejanttaki K05 karede 0 px", olc(0, 7900), 1),
+               ("bozuk: K05 eşiğin altında (29 px)", olc(PX_ESIK - 1, 7900), 1),
+               ("örtülü: AU1 0 px ama sema_ortulu'da", olc(1800, 0), 0),
+               ("bozuk: örtülü olmayan alt adımda AU1 0 px", olc(1800, 0, j=1), 1)]
+    tut = 0
+    for ad, o, bek in vakalar:
+        n = len(sema_karede(o, Vs, (31,))[1])
+        tut += n == bek
+        print("  %-45s cizilmeyen %d (beklenen %d) %s" % (ad, n, bek, "TUTTU" if n == bek else "TUTMADI"))
+    print("sema karede bozma denemesi: %d/%d" % (tut, len(vakalar)))
+    return tut == len(vakalar)
+
+
 def gorunurluk(c):
     """Her konumda (sınırlı: kabuk adımlarının alt adımları ve 21, 25, 43, 45, 46 ile alt adımları; öbürleri yok) RehberTest.gorunurluk().
     Alt adımın kendi satırlarındaki her yeni parça ölçütü geçmeli (istisna: grubun piksel_ok {desen: gerekçe}). Bağlanan masa birimi
@@ -180,14 +221,9 @@ def gorunurluk(c):
     kabuk = [x for x in out if x["sinir"] and int(x["adres"].split(".")[0]) in KABUK]
     # P10.7b2d-A: şema karşılığı (parça ölçütü yukarıda değişmedi). Alt adımlı adımın her şeması kendi adımının tam bir alt adımında
     # "şimdi" (vurgulu) çizilir; hiç vurgulanmayan şema 0. O alt adımın karesindeki pikseli bilgi (geçme şartı değil).
-    sema_say = {}
-    for (s, j), (ok, g) in olc.items():
-        if not j or s not in ALTLI:
-            continue
-        px = g.get("piksel") or {}
-        for x in g.get("sema") or []:
-            if x.get("d") == "simdi":
-                sema_say.setdefault(x["i"], []).append(dict(adres=adr(s, j), px=px.get("sema%d" % x["i"], 0)))
+    # P10.7b2e kısım 2 (F10l-kare-inceleme 31.4, 32.4): lejantta "Kablo: ..." diye geçen (vurgulu) şema karede çizilmeli: piksel
+    # PX_ESIK altındaysa ve grubun sema_ortulu'sunda (lejant "Karede görünmez" + neden yazar) değilse hata (cizilmeyen; geçme şartı)
+    sema_say, cizilmeyen = sema_karede(olc, V, ALTLI)
     bek_s = [i for i, x in enumerate(V.get("semalar") or []) if x["a"] in ALTLI]
     sema_ol = [dict(i=i, ad=V["semalar"][i]["ad"][:70], adim=V["semalar"][i]["a"], vurgulu=sema_say.get(i, []),
                     gecti=len(sema_say.get(i, [])) == 1) for i in bek_s]
@@ -195,7 +231,7 @@ def gorunurluk(c):
                 for i, v in sema_say.items() if i not in set(bek_s)]
     sema_tek = dict(sema=len(bek_s), birden_cok=[x for x in sema_ol if len(x["vurgulu"]) > 1],
                     hic=[x for x in sema_ol if not x["vurgulu"]], piksel_sifir=[x for x in sema_ol if any(not v["px"] for v in x["vurgulu"])],
-                    gecti=all(x["gecti"] for x in sema_ol), olcum=sema_ol)
+                    cizilmeyen=cizilmeyen, gecti=all(x["gecti"] for x in sema_ol) and not cizilmeyen, olcum=sema_ol)
     return dict(yontem=gorunurluk.__doc__.strip(), esik=dict(piksel=PX_ESIK, oran=ORAN_ESIK), olcum=out, sema_tek=sema_tek,
                 kabuk_alt_adim=len(kabuk), kabuk_yeni=sum(x["yeni"] for x in kabuk),
                 kabuk_gorunmeyen=sum(len(x["gorunmeyen"]) for x in kabuk), kabuk_istisna=sum(len(x["istisna"]) for x in kabuk),
@@ -334,6 +370,9 @@ def gorunurluk_yaz(gr):
         print("      SEMA %s %s (adim %s): vurgulu %s" % (x["i"], x["ad"][:50], x["adim"], [v["adres"] for v in x["vurgulu"]] or "hic"))
     for x in st_.get("piksel_sifir", []):
         print("      SEMA piksel 0 (bilgi) %s %s: %s" % (x["i"], x["ad"][:50], [v["adres"] for v in x["vurgulu"] if not v["px"]]))
+    print("  lejantta gecen sema karede cizilmiyor (sema_ortulu disi, px < %d): %d" % (PX_ESIK, len(st_.get("cizilmeyen", []))))
+    for x in st_.get("cizilmeyen", []):
+        print("      CIZILMEYEN %s sema %s %s: %s px" % (x["adres"], x["i"], x["ad"][:50], x["px"]))
 
 
 def main():
@@ -342,7 +381,10 @@ def main():
     ap.add_argument("--yalniz-gorunurluk", metavar="JSON", help="yalnız görünürlük ölçümü (-> JSON; depoya yazmaz)")
     ap.add_argument("--gizli", metavar="JSON", help="yalnız perdelenmede gizli çıkan parçaların alt adım karesindeki pikselleri "
                                                    "(-> F10d-gizli-piksel.json)")
+    ap.add_argument("--bozma-denemesi", action="store_true", help="yalnız 'lejanttaki şema karede çiziliyor' kuralının sentetik denemesi")
     g = ap.parse_args()
+    if g.bozma_denemesi:
+        sys.exit(0 if sema_karede_bozma() else 1)
     tb = tarayici()
     if g.yalniz_gorunurluk:
         c = Cdp(tb, "f10d")

@@ -12,7 +12,7 @@
 #   C  gönderme biçimi eşitlenmeden: çevrilen her gönderme sayılır (rehber_metin.GONDERME_KAYIT), çözülemeyen 0.
 import os, sys, re, subprocess, types, collections
 ROBOT = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-HEAD = sys.argv[2] if len(sys.argv) > 2 else "1c4e882"
+HEAD = sys.argv[2] if len(sys.argv) > 2 else "84f1a4a"          # P10.7b2e: taban 84f1a4a (b2d'de 1c4e882)
 RH = os.path.join(ROBOT, "tasarim", "freecad", "rehber")
 sys.path.insert(0, RH)
 b = subprocess.run(["git", "show", HEAD + ":tasarim/freecad/rehber/rehber_metin.py"], cwd=ROBOT, capture_output=True, check=True).stdout
@@ -105,6 +105,132 @@ BEKLENEN_EKLENEN = [
     ("T2 N2 F1 kontrol saplama biçimi", _F1K % "(3 numaralı)"),
     ("T2 N2 K1 kontrol saplama biçimi", _TES % "3 numaralı"),
 ]
+
+# P10.7b2e (F10m-gunluk.md): taban 84f1a4a (b2d + P10.9a). Yukarıdaki iki liste b2d'nin kaydıdır (taban 1c4e882, ağaç 78d160d'de
+# geçerli); b2e metni değiştiği için 1c4e882 tabanıyla koşu artık b2e farklarını da gösterir. Varsayılan taban b2e'ninki.
+BEKLENEN = {"1c4e882": (BEKLENEN_SILINEN, BEKLENEN_EKLENEN)}
+_K1M4 = ("Sigorta kutusundan (standart bıçak): F3 5 A kafa hattı (G17, 18 AWG; uç direk dibinde bırakılır), F4 5 A XL4016 çevre (G18, "
+         "18 AWG; çevre çıkışı G19, 16 AWG, OUT+ ucunun dibinde 2 A mini hat sigortası), F5 2 A acil stop (A01, 18 AWG; mantar F1'de "
+         "takılır, uç bantlı), F6 3 A göğüs ekranı dalı (G20, 18 AWG%s")
+_SEMA12 = ("Göğüs ekranı 12 V (G20, G21; 18 AWG): güç paneli (F6 3 A → LM2577 + LM2596; regülatör %s) → direk arka yüzü → direk solu → "
+           "ekran; boyundan geçmez")
+B2E_SILINEN = [
+    ("K52 a K1 madde 4: G20 artık direğe çıkmaz, panelde regülatöre", _K1M4 % "; uç bantlı, K2'de direğe çıkar)."),
+    ("K52 a K1: 'karar bekliyor (K52)' cümlesi", "Göğüs regülatörünün panel yeri karar bekliyor (K52): G20'nin uç yeri ve boyu bu karara bağlı."),
+    ("K52 a K1 'Direğe' alt adımı: G20 taban ucu", "Kafa 12 V'un (G17) ve göğüs 12 V'un (G20) taban uçları §G bağlandı; ESP32 USB'nin (U06) taban ucunu bağla."),
+    ("K52 a K2 madde 7: 'karar bekliyor (K52)'", "Regülatörün panel yeri karar bekliyor (K52): G20'nin uç yeri ve boyu buna bağlı."),
+    ("K52 a K2 madde 7: ayar cümlesi yeni cümleye katıldı", "Regülatör ekrana bağlanmadan 12 V'a ayarlanır (kontrol)."),
+    ("K52 a K2 not", "LM2577 + LM2596 kartı modelde yok; panel yeri karar bekliyor (K52)"),
+    ("K52 a F3 not", "Regülatör kartı modelde yok; panel yeri karar bekliyor (K52)"),
+    ("K52 a şema 12 V", _SEMA12 % "yeri karar bekliyor, K52"),
+]
+B2E_EKLENEN = [
+    ("K52 a K1 madde 4: G20 panelde regülatör girişine",
+     _K1M4 % "): kutudan, B5a'da güç paneline takılan göğüs ekranı regülatörünün girişine (K52 a); G20'nin iki ucu da panelde, göğüs "
+     "regülatörünün direğe çıkan çıkışı K2'de."),
+    ("K52 a K1 madde 4: G20'nin regülatör ucu (kutup kayıttan {kutup.G20})",
+     "G20'nin regülatör ucunu regülatörün giriş klemensine bağla (F6 çıkışı → IN+, IN− → GND; kart üstü IN+ / IN− yazısına göre)."),
+    ("K52 a K1 'Direğe' alt adımı: G20 panel içinde",
+     "Kafa 12 V'un (G17) taban ucu ve panel içinde kalan göğüs ekranı dalı (G20) §G bağlandı; ESP32 USB'nin (U06) taban ucunu bağla."),
+    ("K52 a K2 madde 7", "Regülatör B5a'da güç paneline takıldı (K52 a): panele takılmadan önce, ekrana bağlanmadan 12 V'a ayarlandı "
+     "(kontrol); girişi (G20) K1'de bağlandı."),
+    ("K52 a K2 not", "LM2577 + LM2596 kartı güç panelinde (B5a, K52 a); kart ve panel üstündeki yeri modelde yok"),
+    ("K52 a F3 not (çıkış klemensine erişim ölçülmedi)", "Regülatör kartı güç panelinde (B5a, K52 a); kart ve panel üstündeki yeri modelde "
+     "yok: bu adımda çıkış klemenslerine erişim ölçülmedi, doğrulanmadı"),
+    ("K52 a şema 12 V", _SEMA12 % "güç panelinde, B5a, K52 a; modelde yok"),
+    ("K52 a B5a paragraf (T7 B)", "Göğüs ekranı regülatörü (LM2577 + LM2596; K52 a): ekrana ve panele bağlamadan, tezgâhta çıkışını "
+     "multimetreyle 12 V'a ayarla ve trimpotun konumunu boya noktasıyla işaretle (`planlama/d158/testler/T7-gogus-ekrani-12v.md` B)."),
+    ("K52 a B5a paragraf", "Sonra kartı güç paneline tak; giriş (IN+ / IN−) ve çıkış (OUT+ / OUT−) klemensleri erişilebilir kalsın."),
+    ("K52 a B5a paragraf: yeri kaynakta yok", "Kart, ölçüsü ve panel üstündeki yeri modelde yok; yeri ve bağlantı elemanı kaynakta yok, "
+     "doğrulanmadı."),
+    ("K52 a B5a paragraf", "Girişi (G20) K1'de, çıkışı (G21) K2'de bağlanır."),
+    ("K52 a B5a kontrol", "Göğüs ekranı regülatörü (LM2577 + LM2596) panelde; panele takılmadan önce tezgâhta, ekran bağlı değilken çıkışı "
+     "12 V'a ayarlandı, trimpotu boya noktasıyla işaretli (T7 B)"),
+    # P10.7b2e kısım 2: K64 kapandı (a); kısım 1'in "karar bekliyor (K64)" cümlesi B2E_K2_EKLENEN'deki K64 a cümlesiyle değişti
+    ("K64 B5a not", "K1'in \"Toprak ve iki bara\" alt adımı iki barayı panelde varsayar"),
+    ("K52 a B5a not", "Göğüs ekranı regülatörü (K52 a) modelde yok: karede görünmez, model sonraki tam taramalı CAD paketinde"),
+]
+# P10.7b2e kısım 2 (F10m-gunluk.md § 8, § 11): kare düzeltmelerinin kart metinleri (yer tarifi, eski çizim uyarısı, göndermeler),
+# K64 a, K65 sağ / sol kurulum testi, F1 ölçü noktaları. Düzeltme turu 1'den beri adım 0 (HAZIRLIK) da kaynak_metinler'de.
+B2E_K2_SILINEN = [
+    ('kısım 2 F1 kontrol: cümleye nokta (ardına yeni cümle)',
+     'Bu aşamalar, sigorta sırası, ölçü noktası, klemensin + ucu, multimetre aralığı ve "yerden kesik" düzeni bu adım için kaynakta yok, doğrulanmadı'),
+]
+B2E_K2_EKLENEN = [
+    ('kısım 2 17.7: öbür kabloların karesi',
+     "A01'in çizgisi §G'in, G17'ninki §G'ün, göğüs ekranı hattının şeması §G'nin karesinde."),
+    ('kısım 2 B6a: BNO055 yön oku karede yok',
+     "BNO055'in yön oku karede çizili değil: kartın üstündeki X okunu robotun önüne (yüz tarafı) çevir (kontrol)."),
+    ('K64 a B5a not: tutucu CAD paketinde',
+     'Bara tutucusu (yıldız barasının ve anahtarlı baranın M5 saplamalarını taşıyan basılmış yalıtkan parça; `planlama/adim3/kablolar.json` bara pabuç kaydı) henüz tasarlanmadı: modelde ve baskı listesinde yok, sonraki tam taramalı CAD paketinde tasarlanıp basılacak, satın alınmayacak (K64 a).'),
+    ('kısım 2 17.11: karede vurgu yok, nedeni',
+     "Bu alt adımın kabloları karede vurgulu değil: P03'ün çizimi yok (bağlantı tablosu aşağıda), U06'nın şeması §G'ün karesinde."),
+    ('kısım 2 F1 kontrol: cümleye nokta (ardına yeni cümle)',
+     'Bu aşamalar, sigorta sırası, ölçü noktası, klemensin + ucu, multimetre aralığı ve "yerden kesik" düzeni bu adım için kaynakta yok, doğrulanmadı.'),
+    ('K65 K1 kontrol: sağ / sol kurulum testi',
+     "Devreye alma adımları ve `sur`'un yalnız w ile davranışı kartta denenmedi (`kod/esp32/OKU_BENI.md`)"),
+    ('kısım 2 17.10: U06 göndermesi',
+     "ESP32'nin direğe çıkan kablosu ESP32 USB'dir (U06, §G)."),
+    ("kısım 2 17.5: G14 / G15 çizgisi 32.1'de",
+     "G14 ve G15'in çizgisi Kablo yolu 5 ve 7'nin parçasıdır: §G'in karesinde görünür."),
+    ('kısım 2 17.1: baralar modelde yok (K64 a)',
+     'Karede görünmez: iki bara ve tutucuları modelde yok (tutucu CAD paketinde gelecek, K64 a); baralar güç panelinde (arka kat, B5a).'),
+    ('kısım 2 B6a: kartların yeri',
+     'Karede kartların adı yazmaz; yerleri (robota önden bakınca): arayüz kartı solda, ESP32 taşıyıcı sağda, PCA9685 onun önünde sağda, BNO055 ortada; dağıtım kartı A ön kenarda sağda, B solda.'),
+    ("kısım 2 17.10: Kablo yolu 12'nin eski kısmı",
+     "Karede vurgulu Kablo yolu 12 (B01): direk boyunca yukarı çıkan kısmı eski çizimdir (ESP32'den kafaya giden eski USB yolu), uygulanmaz; B01 tabanda kalır."),
+    ("kısım 2 17.7: Kablo yolu 9'un eski kısmı",
+     "Karede vurgulu çizgi Kablo yolu 9'dur (G18): XL4016 çevreden sonraki kısmı eski çizimdir (doğrudan ESP32'ye), uygulanmaz; çevre çıkışı G19 §G arayüz kartına bağlanır."),
+    ('kısım 2 17.10: yer',
+     'Karede yer: ESP32 taşıyıcı ve PCA9685 elektronik katında önden bakınca sağda, arayüz kartı solda; sonarlar ön yüzde.'),
+    ('kısım 2 17.6: yer',
+     'Karede yer: PC817 modülü arayüz kartının üstünde, arayüz kartı elektronik katında önden bakınca solda; anahtarlı bara karede görünmez (modelde yok, güç panelinde).'),
+    ('kısım 2 17.11: yer',
+     'Karede yer: PCA9685 ve ESP32 taşıyıcı elektronik katında önden bakınca sağda; dağıtım kartı C güç panelinde (B5a, modelde yok).'),
+    ('kısım 2 17.9: yer',
+     'Karede yer: XL4016 A alt katta ortada, B solda, çevre sağda; dağıtım kartı A elektronik katının ön kenarında sağda, B solda.'),
+    ('kısım 2 17.2: yer',
+     "Karede yer: ana sigorta yuvası güç panelinde sağda, sigorta kutusu panelin arka ortasında; ana anahtar karede yok (F1'de sol arka köşeye takılır)."),
+    ('kısım 2 17.3: yer',
+     "Karede yer: arayüz kartı elektronik katında (ön kat), önden bakınca solda; G07'nin öbür ucu F1'de sol arka köşedeki ana anahtara gider."),
+    ('kısım 2 17.5: yer',
+     'Karede yer: iki BTS7960B alt katta, sol olan önden bakınca solda, sağ olan sağda; XL4016 A ortada, B solda; XL4016 C güç panelinde (B5a).'),
+    ('kısım 2 17.8: yer',
+     "Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda, arayüz kartı elektronik katında solda; acil stop düğüm kartı karede görünmez (modelde yok); mantar F1'de sağ arka köşeye takılır."),
+    ('kısım 2 17.4: yer',
+     'Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda.'),
+    ('kısım 2 17.1: SV3 çizgisi',
+     "Karedeki soluk sarı çizgi B5a'da bağlanan SV3'ün şemasıdır, bu alt adımın kablosu değil."),
+    ('K64 a B5a not',
+     'O zamana dek rehber panelde yerini ve bağlantı elemanını yazmaz.'),
+    ("kısım 2 17.9: SV1 / SV2 çizgisi 32.1'de",
+     "SV1 ve SV2'nin çizgisi Kablo yolu 5 ve 7'nin parçasıdır: §G'in karesinde görünür."),
+    # düzeltme turu 1 (F10m-kontrol D2): test yön testinden sonra, sayaç ölçütü "hangi sayaç değişiyor"
+    ('K65 K1 kontrol: sağ / sol kurulum testi (D2: yön testinden sonra)',
+     'Sağ / sol kurulum testi (bağladığın taraf ile yazılımın tarafı aynı mı; bu adımda değil, F5 "İlk enerji, aşama 2"de devreye aldıktan ve motor / enkoder yön testinden (`*_MOTOR_TERS`, `*_ENKODER_TERS`; `kod/esp32/OKU_BENI.md`) sonra yapılır): tekerler yerden kesik (şasi takozda).'),
+    ('K65 K1 kontrol: sağ / sol kurulum testi (D2: hangi sayaç değişiyor)',
+     'Sonra `odo_sifirla` komutunu gönder ve arka tekerleri tek tek elle çevir: önden bakınca soldaki arka teker `odo` satırında yalnız `sag` sayacını değiştirmeli (`sol` sabit kalır), sağdaki yalnız `sol` sayacını; sayacın artıp azalması bu testin konusu değil, yön testinin konusudur.'),
+    ('düzeltme turu 1 (D2) F5 aşama 2: sağ / sol testine gönderme',
+     'Yön testinden sonra K1 kontrolündeki sağ / sol kurulum testini yap.'),
+    # düzeltme turu 1 (F10m-kontrol D1): kaynak_metinler adım 0'ı (HAZIRLIK) da okuyor; değişmeyen adım 0 cümleleri iki yanda eşit,
+    # kısım 2'nin K65 tanım cümleleri ekleme olarak görünür
+    ('K65 adım 0: sağ / sol tanımı',
+     'Sağ / sol: Bu rehberde ve kablo tablosunda sağ / sol, robota önden bakan kişinin sağı / soludur; robotun kendi sağı / solu değildir.'),
+    ('K65 adım 0: örnek',
+     "Örnek: acil stop mantarı, robota önden bakınca sağ arka köşededir; üstüne 'SOL' yazılan aynalı kol önden bakınca solda takılır (robotun kendi sağ kolu)."),
+    ('K65 adım 0: parça adları ve yazılım',
+     "Parça ve kart adlarındaki sağ / sol da bu tanıma göredir; yazılımdaki adlar robotun kendi sağını / solunu kullanır, karşılıkları `planlama/d158/sag-sol-karari.md`'de."),
+    ('düzeltme turu 1 (N13) adım 0: arkadan çalışırken',
+     'Robotun arkasından çalışırken önden bakanın sağı senin solunda kalır.'),
+    ('K65 K1 kontrol: sağ / sol kurulum testi',
+     "Ters çıkarsa kabloyu değiştirme: robotu sürme, `planlama/d158/sag-sol-karari.md`'deki yazılım düzeltmesi bekleniyor (Efe)."),
+    ('kısım 2 F1 kontrol (E): ölçü noktaları karede görünmez',
+     'Ölçü noktaları karede görünmez: PC817 #1 klemensi ve akü ölçüm bölücüsü arayüz kartının üstünde (elektronik katı, robota önden bakınca solda; kart üstü klemensler modelde çizili değil), yıldız barası güç panelinde (arka kat; bara modelde yok)'),
+    ('K65 K1 kontrol: sağ / sol kurulum testi',
+     'Önce `sur` komutunu v = 0, w = 0,2 ile gönder (w sola +; motorlar yarım saniyede kendiliğinden durur, gerekirse yinele): robot kendi soluna dönmek ister, yani robota önden bakınca soldaki tekerler ileri, sağdakiler geri döner.'),
+]
+BEKLENEN["84f1a4a"] = (B2E_SILINEN + B2E_K2_SILINEN, B2E_EKLENEN + B2E_K2_EKLENEN)
+BEKLENEN_SILINEN, BEKLENEN_EKLENEN = BEKLENEN.get(HEAD, ([], []))
 
 
 def norm(t):

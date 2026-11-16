@@ -64,7 +64,7 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K49 | Kalıcı izlenmeyenler ve `.gitignore` | **açık** (F9d) | 5 girdi `.gitignore`, 5 dosya commit, kalanı bağlı kararını bekler | P0.1 (git status temiz); K18–K24 ile birlikte |
 | K50 | Şarj girişi konnektörü: sigortadan sonra gerilimli erkek pimler | **açık** (F7d) | b: XT60E-F (dişi) panel; olmazsa a | İlk şarj, rehber F5 notu, `maliyet.json:111` |
 | K51 | Pi hattındaki ikinci P6KE6V8A: maliyette 2, model BOM'unda 1 | **açık** (F7c) | a: modele ve BOM'a 1 adet ekle (0 TL) | Model / BOM güncellemesi, rehber E3a TVS notu, çakışma taraması |
-| K52 | Göğüs ekranı regülatörü (LM2577 + LM2596) panel yeri (sigortası kutunun F6 3 A yuvası, K11 a; önce mini 2 A + hat yuvası): modelde ve BOM'da yok | **açık** (F7c) | a: K11 kararıyla birlikte güç paneline (B5a) ekle | K11, model / BOM güncellemesi, rehber B5a, `maliyet.json:122-123` notları |
+| K52 | Göğüs ekranı regülatörü (LM2577 + LM2596) panel yeri (sigortası kutunun F6 3 A yuvası, K11 a; önce mini 2 A + hat yuvası): modelde ve BOM'da yok | kapandı (16.11; orkestratör kararı (Echo); a: güç paneli, rehber B5a, 0 TL; P10.7b2e kayıt ve metin; model sonraki tam taramalı CAD paketinde, K51 ve K53 ile) | — | — |
 | K53 | Ön şarj kartı burcu × elektronik katı (B6'da kat inerken girişim) | **açık** (F10b) | a + iii: katta 1,5 mm çentik, bir sonraki tam taramalı pakette; o zamana dek rehber B6 notu | Lazer kesim dosyası (elektronik katı), rehber B6 adımı (F10c), çakışma taraması kaynağı |
 | K54 | E3 kafa inişinde sıfır boşluk (yanaklar arası 54,4 mm ↔ yığın 54,4 mm) | **açık** (F10c) | c: ilk baskı kuponunda dene; zorlarsa b (yanak iç yüzlerine 0,2–0,3 mm pay) | Kafa iskeleti baskısı (Parti kuponu), rehber E3 notu, çakışma taraması kaynağı (b seçilirse) |
 | K55 | Kabuk bindirme dilleri: etek ön, göğüs ve omuz bantları, göğüs ekranı çerçevesi düz yoldan yerine girmiyor | **açık** (F10d) | Etek ön için c (iki bacaklı yol ölçülsün); göğüs, omuz, çerçeve için a geçici (kuponda denensin), b bir sonraki geometri paketinde | Rehber F1 / F3 / F4 takma metni, kabuk baskısı (Parti kuponu), kabuk çakışma taraması (b seçilirse) |
@@ -76,9 +76,11 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K61 | Bas-konuş düğmesi kullanılacak mı (O-12) | **açık** (P10.7a) | Kayıtta yok; Efe'ye sorulacak | Düğmenin kablosu ve yeri (P10.7b) |
 | K62 | P10.7b1'de tur sayısı: iki düzeltme turu + açık işler turu + üretimin uyum düzeltmesi (kural "en çok 2 tur") | **açık** (P10.7b1; kayıt, Ahmet'in bilgisine / onayına; 15.11 notu: P10.7b2a'da üç düzeltme turu, ikisi kaynak, biri basılı sayfa) | Kayıt olarak kabul (orkestratörün sınıflaması) | Döngü kuralının yorumu (sonraki paketlerin tur sayımı) |
 | K63 | Montajdan önce kapanacak iki talimat boşluğu: G07 akü ölçüm hattı + 100 kΩ; SV3 + dağıtım kartı C | kapandı (15.11; P10.7b2a, commit `4a097fb` "Lale P10.7b2a"; dört bağımsız kontrol, üç düzeltme turu; metin orkestratörün, Ahmet'e bilgi) | — | — |
+| K64 | Bara tutucusu (yıldız barası + anahtarlı baranın M5 saplamalarını taşıyan basılmış yalıtkan parça): panelde yeri, bağlantı elemanı ve CAD'i yok | kapandı (16.11; orkestratör kararı (Echo); a: tam taramalı CAD paketinde tasarlanıp basılır, satın alma yok; o zamana dek rehber B5a talimat yazmaz; P10.7b2e kısım 2) | — | — |
+| K65 | Sağ / sol tanımı: CAD'de sağ (+X) robota önden bakanın sağı = robotun kendi solu; ESP32 yazılımı robotun kendi sağını kullanıyor | kapandı (16.11; orkestratör kararı (Echo): donanım adları korunur, rehber / kablo tablosu / pin haritasına tanım cümlesi, K1'e kurulum testi; yazılım düzeltmesi Efe'de, iş; P10.7b2e kısım 2, `planlama/d158/sag-sol-karari.md`) | — | — |
 
-**Açık: 49.** **Kapandı: 14** (K1, K5, K8, K10, K11, K14, K15, K16, K17, K56, K57, K58, K59, K63; K10 masa testine bağlı kabul). Toplam 63 madde
-(15.11.2026, P10.7b2b: özet tablosunun satırları tek tek sayıldı).
+**Açık: 48.** **Kapandı: 17** (K1, K5, K8, K10, K11, K14, K15, K16, K17, K52, K56, K57, K58, K59, K63, K64, K65; K10 masa testine bağlı kabul). Toplam 65 madde
+(16.11.2026, P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, K65 eklendi ve kapandı; özet tablosunun satırları tek tek sayıldı).
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
@@ -956,7 +958,7 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 
 ---
 
-## K52 · Göğüs ekranı regülatörünün panel yeri (sigortası kutunun F6 3 A yuvası, K11 a; önce mini 2 A + hat yuvası): modelde ve BOM'da yok (KT-F7c-3)
+## K52 · Göğüs ekranı regülatörünün panel yeri (sigortası kutunun F6 3 A yuvası, K11 a; önce mini 2 A + hat yuvası): modelde ve BOM'da yok (KT-F7c-3) — KAPANDI
 - **Soru:** Göğüs ekranı dalı `planlama/adim3/elektrik.md:60-62`: "Taban güç paneli ── mini bıçak 2 A (hat sigortası yuvası) ── LM2577 + LM2596
   kartı (giriş 4–35 V, 12 V'a ayarlı) ── 18 AWG ── 11,6" ekran 12 V jakı"; giriş noktası K11'e bağlı. Bu üç parça (regülatör kartı, mini 2 A sigorta,
   hat sigortası yuvası) modelde ve model BOM'unda yok. Nereye ve ne zaman eklensin?
@@ -981,7 +983,13 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **Bloke:** K11 sonrası model / BOM güncellemesi; rehber B5a'daki "göğüs regülatörü + mini 2 A yuvası" satırı; göğüs dalının montajı.
 - **Not (14.11.2026, K11 düzeltmesi):** göğüs dalı artık sigorta kutusunun F6 3 A standart yuvasından; mini 2 A ve ayrı hat sigortası yuvası
   yok. Modele / BOM'a yalnız regülatör kartı girer (`planlama/adim3/kablolama-on-kararlar.md` §3).
-- **Durum:** açık.
+- **Durum:** **kapandı (16.11.2026; orkestratör kararı (Echo), seçenek a).** Regülatör kartı (LM2577 + LM2596) güç panelinde; rehber
+  B5a'da, tezgâhta ekran bağlı değilken 12 V'a ayarlandıktan sonra panele takılır (`planlama/d158/testler/T7-gogus-ekrani-12v.md` B).
+  Maliyet 0 TL (regülatör `maliyet.json:190` zaten listede; K11 düzeltmesiyle mini 2 A ve ayrı hat yuvası yok; `maliyet.json:122-123`
+  notları K11'le zaten güncel, değişmedi). **Model bu kararla değişmez:** model değişikliği 9 bölümlük çakışma taramasını eskitir; kart
+  zarfı K51 ve K53 ile birlikte sonraki tam taramalı CAD paketinde girer. O zamana dek kart ölçüsü, panel üstündeki yeri ve bağlantı
+  elemanı kayıtta yok (rehber "modelde yok, doğrulanmadı" der). Uygulama: P10.7b2e (yalnız kayıt ve rehber metni; `kablolar.json` G20
+  "karara bağlı" → "kablajda teyit edilecek", `elektrik.md`, rehber B5a / K1 / K2 / F3 / şema). Ayrıntı `planlama/d158/F10m-gunluk.md`.
 
 ---
 
@@ -1144,7 +1152,7 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 
 ---
 
-## K58 · ESP32 pin haritası (pano #8)
+## K58 · ESP32 pin haritası (pano #8) — KAPANDI
 - **Soru:** `kod/esp32/include/pinler.h` (`main` `2be1c63`) ile `elektrik.md` pin planı aynı pinlere farklı iş veriyor (pano #8, mesaj
   #19). Efe'nin tarafı (#20): plan esas, K1 → GPIO16, K2 → GPIO17. Hangi tablo kesin?
 - **Karar (14.11.2026):** orkestratör verdi, Ahmet'in 13.11.2026 yetkilendirmesiyle ("kararını sen oluşturabilirsin, projede ona
@@ -1246,6 +1254,43 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   F1 aşama 1'de DC V ölçümü. (2) B5a: dağıtım kartı C tezgâhta, 2200 µF `{yon.kondansator}` (eksi şeridi okunmuyorsa takılmaz,
   kablajda teyit), SV3 OUT+ → V+, OUT− → GND; K2 madde 2'de hat C ve S09 / S10. Karar: orkestratör, 15.11 (G07 direnci pabuçta;
   dağıtım kartı C güç panelinde, SV3 B5a'da). Ayrıntı `planlama/d158/F10i-gunluk.md` § 2, § 5.
+
+## K64 · Bara tutucusu: panelde yeri, bağlantı elemanı ve CAD'i yok (P10.7b2e; F10l N3) — KAPANDI
+- **Soru:** Yıldız barası (5 M5 saplama) ve anahtarlı bara (4 M5 saplama) güç panelinde (rehber B5a kablo notu; `kablolama-on-kararlar.md`
+  §3). Saplamaları taşıyan parça nedir, panele nereye ve hangi elemanla takılır?
+- **Kayıtta olan:** ne olduğu: "basılmış yalıtkan tutucu" (`planlama/adim3/kablolar.md` O-3 r; `planlama/maliyet.json:200` bara saplaması
+  notu "Basılmış yalıtkan tutucu, CAD'i P10.7b"; `planlama/adim3/kablolar.json` bara-pabuc "Tutucunun CAD'i P10.7b iş maddesi";
+  `planlama/adim3/kablolama-on-kararlar.md:434`). Yaklaşık yeri: güç paneli (5 mm huş kontrplak 270 × 274, `taban_parcalar.py:219`).
+- **Kayıtta olmayan:** tutucunun ölçüsü, CAD'i, baskı listesi satırı, panel üstündeki yeri ve panele bağlantı elemanı (vida / somun /
+  delik). Bu yüzden rehber B5a'ya talimat yazılmadı; B5a not_ "karar bekliyor (K64)" der, K1 "Toprak ve iki bara" alt adımı iki barayı
+  panelde varsayar. (Açılıştaki durum; kapanıştan sonra B5a not_'u ve 17.1 değişti, bkz. aşağıda "Durum".)
+- **Seçenekler:**
+  a) Basılmış yalıtkan tutucu (O-3 r'nin kendi tarifi): K51 / K52 / K53 ile aynı tam taramalı CAD paketinde tasarlanır; panele bağlantı
+     elemanı o pakette seçilir. Satın alma yok; filament stoktan, gram CAD'den çıkınca (bugün **doğrulanmadı**). Maliyet ≈ 0 TL.
+  b) Saplamalar doğrudan 5 mm kontrplak panele: parça yok, ama panel delikleri model değişikliğidir (taramayı eskitir); M5 sıkma
+     torkunda kontrplak ezilmesi ve panelin alt yüzüne erişim riski. Maliyet 0 TL (somun / pul var sayılırsa; **doğrulanmadı**).
+  c) Hazır pano tipi pirinç nötr barası: satın alma; onaylı satıcılarda bakılmadı, fiyatı **doğrulanmadı**; Ahmet'in satın alma onayı gerekir.
+- **Önerilen varsayılan:** a (kayıttaki tarif; satın alma yok; model değişikliği zaten planlanan CAD paketine girer).
+- **Karar:** teknik seçim orkestratörün (13.11 yetkilendirmesi); c seçilirse satın alma Ahmet'in.
+- **Bloke:** rehber B5a'da tutucunun takılma talimatı; baskı listesi; K1 "Toprak ve iki bara" alt adımının fiziksel dayanağı. Fiziksel
+  montajdan önce kapanmalı.
+- **Durum:** **kapandı (16.11.2026, orkestratör kararı (Echo): seçenek a).** Tutucu ileride tam taramalı CAD paketinde (K51 / K52 / K53
+  ile aynı) tasarlanıp basılır; satın alma yok. O zamana dek rehber tutucunun yerini ve bağlantı elemanını yazmaz: B5a not_ "henüz
+  tasarlanmadı … CAD paketinde tasarlanıp basılacak, satın alınmayacak (K64 a)"; K1 17.1 "Karede görünmez: iki bara ve tutucuları
+  modelde yok". Açılış 16.11.2026, P10.7b2e; uygulama P10.7b2e kısım 2 (`planlama/d158/F10m-gunluk.md` § 11). Açık iş: CAD paketi.
+
+## K65 · Sağ / sol tanımı: CAD'in sağı robotun kendi solu, yazılım robotun kendi sağını kullanıyor (P10.7b2e kısım 2) — KAPANDI
+- **Bulgu:** CAD'de +X "sağ" adını taşır ve robota önden bakanın sağıdır; eksenler sağ elli (+Y yukarı, +Z ön), yani +X robotun
+  kendi solu. Donanım belgeleri (CAD, `kablolar.json`, rehber, pin haritası) bu adla tutarlı; ESP32 sürüş kinematiği ve jestler
+  sağ / solu robotun kendi çerçevesinde kullanıyor. Rehberde okura tanım yoktu. Ayrıntı ve kanıt: `planlama/d158/sag-sol-karari.md`.
+- **Karar (16.11.2026, orkestratör kararı (Echo)):** donanım adları korunur; rehber girişine (adım 0), kablo tablosuna
+  (`kablolar_uret.py` → `kablolar.md`) ve pin haritasına (§ 2, § 9) tanım cümlesi; app.js küçük görünüm balonu ve `koordinat`
+  açıklaması tanıma uyar; K1 kontrol listesine sağ / sol kurulum testi (F5'te, tekerler havada). CAD model dosyaları değişmez.
+- **Açık iş (karar değil):** yazılımdaki eşleme (Efe; `sag-sol-karari.md` "Yazılımda değişmesi gerekenler"); CAD yorumlarındaki
+  "+X robotun sağı" ifadeleri (`arayuz.py:7` ve kopyaları, pan yorumları) model dosyalarına dokunan sonraki pakette; `arayuz.py:359`
+  göğüs ekranı port tarafı gerçek üründe bakılacak. İleride donanım adlarını robotun kendi çerçevesine çevirme seçeneği açık not
+  (`sag-sol-karari.md` § 8).
+- **Durum:** kapandı (16.11.2026; uygulama P10.7b2e kısım 2, `planlama/d158/F10m-gunluk.md` § 11).
 
 ---
 

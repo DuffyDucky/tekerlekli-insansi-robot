@@ -14,7 +14,7 @@ Geçerli olan bu bölüm. Kaynak: `tubitak-2209b/BAGLAM.md` §8 (03–04.11 kara
 `planlama/d158/kablo-kurali-notu.md`, `planlama/d158/karar-kuyrugu.md` (K1, K10, K11, K14). Açık kararlar satırında "karar bekliyor (Kn)" yazar.
 **CAD durumu (09.11):** 10,1" QLED, SY8205, Pololu D24V50F5, PAM8403, USB ses kartı, ReSpeaker Mic Array v2.0, 4'lü hub ve hoparlör modelde
 (`montaj/robot-bom.csv` satır 158, 151, 147, 145, 157, 150, 156, 133); 11,6" göğüs ekranı da modelde (satır 159). Göğüs 12 V regülatörü (LM2577 + LM2596)
-modelde yok (BOM'da satırı yok). Yerleşim: ses kartı ve PAM8403 kafa sol duvarında, hub gövdede göğüs üst arka servis kapağının içinde, hoparlör gövde orta bandı
+modelde yok (BOM'da satırı yok); yeri güç paneli, rehber B5a'da takılır (K52 a, 16.11; modele sonraki tam taramalı CAD paketinde girer). Yerleşim: ses kartı ve PAM8403 kafa sol duvarında, hub gövdede göğüs üst arka servis kapağının içinde, hoparlör gövde orta bandı
 sağ duvarında (`KY/uygulama-notu.md:45, 47, 56, 58, 59`). I2S amfi modelde 0 parça (`KY/uygulama-notu.md:57`; K16 kapandı, 04.11).
 04.11 gecesinin "bu parçalar henüz modelde yok" notu tarihçedir.
 
@@ -516,7 +516,7 @@ Karar: Ahmet'in 13.11.2026 yetkilendirmesiyle. Tek yazılı kaynak ve gerekçele
 13. Kafa ısı testi: normal karşılamada kapalı kafa ~49 °C hesap, ölçülecek; aşılırsa 25–30 mm egzoz fanı.
 14. **10,1" QLED (04.11):** kütle (600 g varsayım), akım (0,9 A varsayım), Touch VBUS ile Power arasındaki bağ ölçülecek.
 15. **Boyun demeti K14 a (14.11):** 12 V + tilt + göğüs HDMI + hub uzatması + hoparlör; yazılım kabul (pano #6 #21). Açık: alınacak HDMI kablosu Ø ≤ 6 mm (MJ:191'in çapı bilinmiyor), hub uzatması USB 2.0 ve fiş ≤ 13 × 7 mm (MJ:137 USB 3.0, büyük ihtimalle geçmez); demet kurulmadan önce tünel deneme parçasında elle fiş denemesi (parça P10.7 baskı listesinde); ince HDMI ile masa denemesi (pano #6 soru f), boyun içi dört geçiş elle, pan ±90 / tilt ±13'te büküm; demet bağlanmadan Efe'nin reset cevabı.
-16. **Göğüs ekranı dalı K11 a (14.11):** ana anahtar sonrası, röle öncesi, acil stopta açık. Açık: jak ölçüsü; port yeri ve girintisi (fotoğraftan tahmini; P1.4 🟡); üç 90° fiş; F6 3 A (kutu yuvalarının ortak girişli olduğu kutu gelince teyit); regülatörün panel yeri (K52).
+16. **Göğüs ekranı dalı K11 a (14.11):** ana anahtar sonrası, röle öncesi, acil stopta açık. Açık: jak ölçüsü; port yeri ve girintisi (fotoğraftan tahmini; P1.4 🟡); üç 90° fiş; F6 3 A (kutu yuvalarının ortak girişli olduğu kutu gelince teyit); regülatör güç panelinde (K52 a, 16.11; rehber B5a), kart ölçüsü ve panel üstündeki yeri modelde yok.
 17. **USB (14.11):** 4 cihaz (K1 a; ses kartı çıktı, ReSpeaker 3,5 mm → PAM8403; PAM 5 V D24V50F5, K10 a). Açık: K10 a ve ses yolu masa denemesine bağlı (KT1, KT2); hub girişi gerilimi (harici besleme yok; F4 atarsa hub ≈ 0,37 A); Pi USB akım ayarı (`PSU_MAX_CURRENT` / `usb_max_current_enable`); modelde Pi 2'deki ses kartı ve uzatması (P10.7).
 18. **Akü süresi:** normal ~3,8–4,4 sa kaba tahmin; yoğun senaryo yeniden hesaplanacak, ölçüm yapılacak (gereksinim 2 saat; 1,83 sa kabulü 1,65 m yükleri içindi).
 19. **v4 muadilleri:** BTS7960B pin adları pin planında eşlendi (EN1/EN2 = INH, IN1/IN2 = PWM varsayımı; `pin-haritasi.md` §6.1); bu eşleme ve 3,3 V lojik kart gelince ölçülecek (T4). K2 JQC-3FF ayak düzeni.
@@ -555,7 +555,7 @@ Bu blok `planlama/adim3/kablolar.json`'dan `py -3 planlama/adim3/kablolar_uret.p
 | G17 | F3 | 18 AWG | F3 5 A (sigorta kutusu) (`F3`, 5 A) | kafa 49 °C × 0,75 | 5,25 A | kablajda teyit edilecek |
 | G18 | F4 | 18 AWG | F4 5 A (sigorta kutusu) (`F4`, 5 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
 | G19 | F4 | 16 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 8,2 A | kablajda teyit edilecek |
-| G20 | F6 | 18 AWG | F6 3 A standart (sigorta kutusu) (`F6`, 3 A) | etek 45 °C × 0,82 | 5,74 A | karara bağlı |
+| G20 | F6 | 18 AWG | F6 3 A standart (sigorta kutusu) (`F6`, 3 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
 | G21 | F6 | 18 AWG | F6 3 A standart (sigorta kutusu) (`F6`, 3 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
 | G22 | anahtarli-bara | 22 AWG | Hat sigortası G22 2 A mini (bara ucunda) (`hat-G22`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kablajda teyit edilecek |
 | I01 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kesin |

@@ -2,12 +2,14 @@
 
 > **Bu dosya üretilmiştir, elle düzenlenmez.** Tek kaynak `planlama/adim3/kablolar.json`; görünüm `py -3 planlama/adim3/kablolar_uret.py` ile, denetim `py -3 planlama/adim3/kablolar_denetim.py` ile.
 
-Tablo sürümü 5, tarih 2026-11-15. Robottaki kabloların tek kaynağı. Okunur görünüm planlama/adim3/kablolar.md bu dosyadan planlama/adim3/kablolar_uret.py ile üretilir; denetim planlama/adim3/kablolar_denetim.py. Bir kaydı değiştirince ikisini de koş. Sürüm 2 (14.11, P10.7a ikinci tur): orkestratör kararları O-1 … O-14 işlendi (kararlar), kesit kuralı web kaynaklı tabloya bağlandı, boyu bilinmeyenlere etiketli kaba tahmin (boy_tahmin), klemens türleri ve malzeme özeti eklendi. Üçüncü tur (14.11): O-15 … O-18 ve O-3 / O-4 revizeleri; boy tahmininden 150 mm pay kaldırıldı. Sürüm 3 (14.11, düzeltme turu 1): düğümler / ağlar / koruyucular / anahtarlar / dallar ve her kablonun besleme zinciri; koruma kablodaki sayıdan değil koruyucular tablosundan; kesit kuralına ortam sıcaklığı düzeltmesi; denetim acil stop, dönüş, 5 V ayrımı ve kesiti devrenin yapısından türetir.
+Tablo sürümü 5, tarih 2026-11-16. Robottaki kabloların tek kaynağı. Okunur görünüm planlama/adim3/kablolar.md bu dosyadan planlama/adim3/kablolar_uret.py ile üretilir; denetim planlama/adim3/kablolar_denetim.py. Bir kaydı değiştirince ikisini de koş. Sürüm 2 (14.11, P10.7a ikinci tur): orkestratör kararları O-1 … O-14 işlendi (kararlar), kesit kuralı web kaynaklı tabloya bağlandı, boyu bilinmeyenlere etiketli kaba tahmin (boy_tahmin), klemens türleri ve malzeme özeti eklendi. Üçüncü tur (14.11): O-15 … O-18 ve O-3 / O-4 revizeleri; boy tahmininden 150 mm pay kaldırıldı. Sürüm 3 (14.11, düzeltme turu 1): düğümler / ağlar / koruyucular / anahtarlar / dallar ve her kablonun besleme zinciri; koruma kablodaki sayıdan değil koruyucular tablosundan; kesit kuralına ortam sıcaklığı düzeltmesi; denetim acil stop, dönüş, 5 V ayrımı ve kesiti devrenin yapısından türetir.
+
+**Sağ / sol:** Bu rehberde ve kablo tablosunda sağ / sol, robota önden bakan kişinin sağı / soludur; robotun kendi sağı / solu değildir. Kablo ve uç adlarındaki sağ / sol (ör. BTS7960 sağ, arka sağ enkoder, sağ sonar, sağ kol) bu tanıma göredir; ESP32 yazılımındaki adlar robotun kendi sağını / solunu kullanır, karşılıkları `planlama/d158/sag-sol-karari.md`'de.
 
 ## Özet
 
 - **74 kablo** (çok damarlı demet ve çiftler tek kayıt; damar sayısı 175).
-- Durum: kesin 20, kablajda teyit edilecek 53, karara bağlı 1.
+- Durum: kesin 20, kablajda teyit edilecek 54, karara bağlı 0.
 - Boyu CAD'de tasarlanmış yoldan ya da listeden belli: 17; belli değil: 57 (bunlarda yalnız etiketli kaba üst sınır var, `boy_tahmin`: tahmin, P10.7b'de ölçülecek).
 - Gösterim şeması yolunun uzunluğu yazılı: 27 kablo (`sema_boy`, gösterim şeması yolu; ölçüm değil: boy ve tahminin yerine geçmez, sipariş hesabına girmez).
 - Kesit kuralının kayıtlı istisnası: 25 kablo; kesit ↔ koruma uyuşmazlığı karara bağlı: 0 (-).
@@ -16,7 +18,7 @@ Tablo sürümü 5, tarih 2026-11-15. Robottaki kabloların tek kaynağı. Okunur
 | Demet | Kablo | Karara bağlı | Teyit | Kesin |
 |---|---|---|---|---|
 | taban alt kat | 12 | 0 | 12 | 0 |
-| taban (K1) | 17 | 1 | 16 | 0 |
+| taban (K1) | 17 | 0 | 17 | 0 |
 | taban elektronik katı | 10 | 0 | 5 | 5 |
 | taban sonar | 3 | 0 | 0 | 3 |
 | etek (F1) | 4 | 0 | 4 | 0 |
@@ -124,7 +126,7 @@ Koruması olan güç dalları (aynı tablo `elektrik.md` sonunda üretilmiş blo
 | G17 | F3 | 18 AWG | F3 5 A (sigorta kutusu) (`F3`, 5 A) | kafa 49 °C × 0,75 | 5,25 A | kablajda teyit edilecek |
 | G18 | F4 | 18 AWG | F4 5 A (sigorta kutusu) (`F4`, 5 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
 | G19 | F4 | 16 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 8,2 A | kablajda teyit edilecek |
-| G20 | F6 | 18 AWG | F6 3 A standart (sigorta kutusu) (`F6`, 3 A) | etek 45 °C × 0,82 | 5,74 A | karara bağlı |
+| G20 | F6 | 18 AWG | F6 3 A standart (sigorta kutusu) (`F6`, 3 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
 | G21 | F6 | 18 AWG | F6 3 A standart (sigorta kutusu) (`F6`, 3 A) | etek 45 °C × 0,82 | 5,74 A | kablajda teyit edilecek |
 | G22 | anahtarli-bara | 22 AWG | Hat sigortası G22 2 A mini (bara ucunda) (`hat-G22`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kablajda teyit edilecek |
 | I01 | F4 | 22 AWG | Çevre hat sigortası 2 A mini (G19'un XL4016 çevre OUT+ ucunun dibinde) (`hat-cevre`, 2 A) | etek 45 °C × 0,82 | 2,46 A | kesin |
@@ -196,7 +198,7 @@ Boy belliyse CAD / liste boyu, değilse kaba üst sınır tahmini; toplam × 1,3
 | 18 AWG silikon kablo | siyah | 7,05 m | 9,2 m | 10 m | 60: Silikon kablo 18 AWG |
 | 22 AWG çok telli sinyal teli | hepsi | 26,35 m | 34,3 m | 3 × 15 m | 157: Sinyal teli 22 AWG (fiyat bekliyor) |
 
-## Orkestratör kararları (14.11, 15.11)
+## Orkestratör kararları (14.11, 15.11, 16.11)
 
 | Kod | Karar | Metin | Tabloda uygulama | Veren |
 |---|---|---|---|---|
@@ -239,6 +241,7 @@ Boy belliyse CAD / liste boyu, değilse kaba üst sınır tahmini; toplam × 1,3
 | P7b2a-4 | TVS ve kondansatör kutbu | Tek yönlü TVS'te katot (bantlı uç) artı hatta, anot GND'de (Vishay P6KE veri sayfası); elektrolitikte eksi şeritli bacak GND'de (veri sayfası yok: kablajda teyit). | tvs; kondansatorler.yon / teyit | orkestratör kararı, 15.11.2026 |
 | P7b2a-5 | G07 direnci pabuçta | 100 kΩ'un öbür bacağı ana anahtarın çıkış saplamasına takılan halka pabucun kovanına lehimlenir; direnç ile saplama arasında tel yok. | G07 damarı uc_turu a pabuc, uc_kuyrugu a (kırmızı pabuç; malzeme sayımına girer) | orkestratör kararı, 15.11.2026 |
 | P7b2a-6 | dağıtım kartı C güç panelinde | Dağıtım kartı C güç panelinde, XL4016 C'nin yanında: SV3 B5a'da tezgâhta, P03 K1'de bağlanır. | rehber B5a / K1 metni; SV3, P03 rehber alanı | orkestratör kararı, 15.11.2026 |
+| K52 | göğüs ekranı regülatörü güç panelinde | K52 a: LM2577 + LM2596 kartı güç paneline, rehber B5a'da takılır (tezgâhta 12 V'a ayarlandıktan sonra); maliyet 0 TL (planlama/maliyet.json 'Göğüs ekranı 12 V regülatörü' satırı aynı). Model bu pakette değişmez: kart zarfı K51 ve K53 ile birlikte sonraki tam taramalı CAD paketinde; kart ölçüsü, panel üstündeki yeri ve bağlantı elemanı o zamana dek kayıtta yok. | G20 durum / eksik / teyit / boy_tahmin.vekil; orkestratore listesinden çıktı; rehber B5a / K1 / K2 / F3 metni (P10.7b2e) | orkestratör kararı (Echo), 16.11.2026 |
 
 ## Acil stop dalları ve besleme zinciri
 
@@ -859,12 +862,12 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 
 #### G20 · F6 3 A → göğüs ekranı regülatörü (LM2577 + LM2596) girişi
 
-- **Devre:** güç 12 V (göğüs dalı) · **dal:** F6 · **durum:** karara bağlı
+- **Devre:** güç 12 V (göğüs dalı) · **dal:** F6 · **durum:** kablajda teyit edilecek
 - **Uçlar:** Sigorta kutusu (F6 3 A çıkışı / Yıldız barası) → Göğüs ekranı regülatörü (LM2577 + LM2596) (IN+ / IN−)
 - **Kesit:** 18 AWG (0,82 mm²) · **renk:** + kırmızı, − / GND siyah; makaron kırmızı
 - **Koruma:** F6 3 A standart (sigorta kutusu) (`F6`, 3 A) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F6
-- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 1.550 mm; Manhattan 1.207 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: göğüs regülatörü CAD'de yok (K52): göğüs ekranına kadar üst sınır. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
+- **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 1.550 mm; Manhattan 1.207 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: göğüs regülatörü CAD'de yok (K52 a: güç panelinde, panel üstündeki yeri modelde yok): göğüs ekranına kadar üst sınır; regülatör panelde olduğu için gerçek boy bundan çok kısa, panelde ölçülür. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
 - **Rehber adımı:** 17 K1, 32 K2 · **sonlandırma:** regülatör vidalı klemens
 - **Uç türü (uc_turu):** a: modul-vidali, sigorta-kutusu · b: bara-pabuc, modul-vidali
 
@@ -873,8 +876,8 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | + | Sigorta kutusu · F6 çıkışı | Göğüs regülatörü · IN+ |  |
 | − | Göğüs regülatörü · IN− | Yıldız barası · GND |  |
 
-- Eksik: regülatörün panel yeri açık (K52, planlama/d158/karar-kuyrugu.md): uç yeri ve boy bu karara bağlı
 - Teyit: klemens: sigorta kutusunun F6 çıkış ucu (uç türü sigorta-kutusu) ve göğüs regülatörü giriş klemensinin (uç türü modul-vidali) kesit aralığı belgede yok; 18 AWG ince telli uçlar teslimde denenir (P10.7b, dördüncü bakış §2-5)
+- Teyit: regülatörün yeri: K52 a (16.11.2026) ile güç panelinde, rehber B5a'da takılır; kart, ölçüsü ve panel üstündeki yeri modelde yok (model K51, K53 ile birlikte sonraki tam taramalı CAD paketinde): iki ucu da güç panelinde, boy panelde ölçülür
 - Not: 14.11 K11 a ile kaynak kutunun 6. yuvası (F6 3 A standart)
 - Kaynak: `planlama/adim3/elektrik.md:62`, `planlama/adim3/elektrik.md:68`, `planlama/adim3/elektrik.md:371`, `planlama/adim3/kablolama-on-kararlar.md:88-94`, `planlama/adim3/kablolama-on-kararlar.md:342` · 10.11 dökümü: #43 (bölündü: F6 dalı)
 
@@ -1912,5 +1915,3 @@ Dökümde karşılığı olmayan yeni kayıtlar: G01, X01, AU2.
   - kablolama-on-kararlar.md §8
 - **O-12:** Bas-konuş düğmesi listede, pin / kablo yok; Efe'ye sorulacak (orkestratör panodan soracak).
   - bilgi günlükte (P10.7a ikinci tur)
-- **K52:** Göğüs regülatörünün panel yeri (G20'nin ucu ve boyu). Etkilenen: G20.
-  - karar kuyruğunda K52

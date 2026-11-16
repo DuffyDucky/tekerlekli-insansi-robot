@@ -212,6 +212,17 @@ def alan_isle(V):
             elif "saydam" in e:
                 degisen.append("%s.%d saydam (silindi)" % (kod, n + 1))
                 e.pop("saydam")
+            if g.get("odak"):                                       # P10.7b2e kısım 2: kadraj odak parçaları (rehber_veri ile aynı)
+                ids = [q["id"] for q in P if q["a"] <= i and any(d in q["ad"] for d in g["odak"])]
+                bos = [d for d in g["odak"] if not any(d in q["ad"] for q in P if q["a"] <= i)]
+                if bos:
+                    raise SystemExit("%s.%d: odak deseni bu adima kadar takilan hicbir parcaya uymuyor: %s" % (kod, n + 1, bos))
+                if e.get("odak") != ids:
+                    degisen.append("%s.%d odak" % (kod, n + 1))
+                e["odak"] = ids
+            elif "odak" in e:
+                degisen.append("%s.%d odak (silindi)" % (kod, n + 1))
+                e.pop("odak")
             if g.get("kenar"):                                      # F10f düzeltme 1: kenar çizgisi alan parçalar (rehber_veri ile aynı)
                 ids = [q["id"] for q in P if q["a"] <= i and q["tur"] != "Referans" and any(d in q["ad"] for d in g["kenar"])]
                 if e.get("kenar") != ids:

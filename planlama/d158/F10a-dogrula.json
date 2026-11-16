@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-16 04:51",
+ "tarih": "2026-11-16 08:36",
  "tarayici": "chrome.exe",
  "adim": 50,
  "yontem": "CDP (Chrome DevTools protokolü), file://; önce = 749627b~1 rehber sayfası geçici kopyada (three.js aynı 0.160 yerel paket)",
@@ -7,8 +7,8 @@
   "kare": "1400 x 900 pencere, sahne alanı (panel hariç)",
   "once_ortanca": 0.1732,
   "sonra_ortanca": 0.4013,
-  "once_ortalama": 0.1646,
-  "sonra_ortalama": 0.378,
+  "once_ortalama": 0.1643,
+  "sonra_ortalama": 0.3727,
   "once_tasan_adim": 0,
   "sonra_tasan_adim": 0,
   "sonra_tasan_parca": 0,
@@ -225,12 +225,12 @@
    {
     "adim": 17,
     "kod": "K1",
-    "once": 0.1556,
-    "sonra": 0.3926,
+    "once": 0.1453,
+    "sonra": 0.1659,
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 16,
+    "yeni_parca": 17,
     "hazir": true,
     "hata": null
    },
@@ -285,7 +285,7 @@
    {
     "adim": 22,
     "kod": "D1",
-    "once": 0.1471,
+    "once": 0.143,
     "sonra": 0.4452,
     "once_tasan": 0,
     "sonra_tasan": 0,
@@ -394,7 +394,7 @@
     "adim": 31,
     "kod": "E4",
     "once": 0.209,
-    "sonra": 0.4764,
+    "sonra": 0.4379,
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
@@ -410,7 +410,7 @@
     "once_tasan": 0,
     "sonra_tasan": 0,
     "sonra_ortulen": 0,
-    "yeni_parca": 10,
+    "yeni_parca": 9,
     "hazir": true,
     "hata": null
    },
@@ -1042,7 +1042,7 @@
      {
       "adim": 31,
       "satir": 22,
-      "D_acilis": 627,
+      "D_acilis": 651,
       "D_patlak": 858,
       "D_hepsi_takili": 651,
       "D_geri_al": 858,
@@ -1231,15 +1231,15 @@
    {
     "adim": 17,
     "var": true,
-    "oran": 0.523,
-    "boyut_kb": 209.7,
+    "oran": 0.0995,
+    "boyut_kb": 100.8,
     "cizili": true
    },
    {
     "adim": 18,
     "var": true,
     "oran": 0.0737,
-    "boyut_kb": 99.9,
+    "boyut_kb": 103.2,
     "cizili": true
    },
    {
@@ -1266,8 +1266,8 @@
    {
     "adim": 22,
     "var": true,
-    "oran": 0.4301,
-    "boyut_kb": 124.7,
+    "oran": 0.4331,
+    "boyut_kb": 136.8,
     "cizili": true
    },
    {
@@ -1281,14 +1281,14 @@
     "adim": 24,
     "var": true,
     "oran": 0.445,
-    "boyut_kb": 104.6,
+    "boyut_kb": 105.6,
     "cizili": true
    },
    {
     "adim": 25,
     "var": true,
     "oran": 0.6303,
-    "boyut_kb": 179.7,
+    "boyut_kb": 181.3,
     "cizili": true
    },
    {
@@ -1330,14 +1330,14 @@
     "adim": 31,
     "var": true,
     "oran": 0.3422,
-    "boyut_kb": 119.0,
+    "boyut_kb": 120.3,
     "cizili": true
    },
    {
     "adim": 32,
     "var": true,
     "oran": 0.1078,
-    "boyut_kb": 104.8,
+    "boyut_kb": 104.9,
     "cizili": true
    },
    {
@@ -1465,7 +1465,7 @@
   "en_dusuk": 0.0606,
   "pdf": {
    "olculdu": true,
-   "sayfa": 84,
+   "sayfa": 86,
    "goruntu": 141,
    "bos_sayfa": [],
    "en_dusuk": 0.0606
@@ -1858,7 +1858,7 @@
      "w": 170,
      "h": 227,
      "dolu": 4970,
-     "vurgu": 217,
+     "vurgu": 234,
      "tasma": 0,
      "genislik": 1400,
      "sahne_icinde": true,
@@ -2188,7 +2188,7 @@
      "w": 170,
      "h": 227,
      "dolu": 4970,
-     "vurgu": 407,
+     "vurgu": 388,
      "tasma": 0,
      "genislik": 1400,
      "sahne_icinde": true,
@@ -2966,7 +2966,7 @@
      "w": 84,
      "h": 112,
      "dolu": 1201,
-     "vurgu": 47,
+     "vurgu": 52,
      "tasma": 0,
      "genislik": 360,
      "sahne_icinde": true,
@@ -3296,7 +3296,7 @@
      "w": 84,
      "h": 112,
      "dolu": 1201,
-     "vurgu": 106,
+     "vurgu": 103,
      "tasma": 0,
      "genislik": 360,
      "sahne_icinde": true,
@@ -3691,6 +3691,6 @@
  },
  "goruntu": [],
  "veri_degismedi": false,
- "sure_s": 450,
+ "sure_s": 444,
  "gecti": true
 }

@@ -1,7 +1,7 @@
 {
  "surum": 5,
- "tarih": "2026-11-15",
- "kaynak": "P10.7a; kararlar: planlama/adim3/elektrik.md, pin-haritasi.md (sürüm 4), kablolama-on-kararlar.md (K1, K10, K11, K14); P10.7b2a (şema 4: koruyucu yeri, kontak uçları, TVS ve kondansatör yönü, anahtarlı bara yerleşimi; planlama/d158/F10i-gunluk.md); P10.7b2c (şema 5: sema_boy, gösterim şeması yolunun uzunluğu; planlama/d158/F10k-gunluk.md)",
+ "tarih": "2026-11-16",
+ "kaynak": "P10.7a; kararlar: planlama/adim3/elektrik.md, pin-haritasi.md (sürüm 4), kablolama-on-kararlar.md (K1, K10, K11, K14); P10.7b2a (şema 4: koruyucu yeri, kontak uçları, TVS ve kondansatör yönü, anahtarlı bara yerleşimi; planlama/d158/F10i-gunluk.md); P10.7b2c (şema 5: sema_boy, gösterim şeması yolunun uzunluğu; planlama/d158/F10k-gunluk.md); P10.7b2e (K52 a: G20, kararlar K52; planlama/d158/F10m-gunluk.md)",
  "aciklama": "Robottaki kabloların tek kaynağı. Okunur görünüm planlama/adim3/kablolar.md bu dosyadan planlama/adim3/kablolar_uret.py ile üretilir; denetim planlama/adim3/kablolar_denetim.py. Bir kaydı değiştirince ikisini de koş. Sürüm 2 (14.11, P10.7a ikinci tur): orkestratör kararları O-1 … O-14 işlendi (kararlar), kesit kuralı web kaynaklı tabloya bağlandı, boyu bilinmeyenlere etiketli kaba tahmin (boy_tahmin), klemens türleri ve malzeme özeti eklendi. Üçüncü tur (14.11): O-15 … O-18 ve O-3 / O-4 revizeleri; boy tahmininden 150 mm pay kaldırıldı. Sürüm 3 (14.11, düzeltme turu 1): düğümler / ağlar / koruyucular / anahtarlar / dallar ve her kablonun besleme zinciri; koruma kablodaki sayıdan değil koruyucular tablosundan; kesit kuralına ortam sıcaklığı düzeltmesi; denetim acil stop, dönüş, 5 V ayrımı ve kesiti devrenin yapısından türetir.",
  "alanlar": {
   "kimlik": "kısa kimlik; ilk harf grup (G güç, A acil stop, M motor, SV servo gücü, X arayüz, B BTS sinyal, N enkoder, I I2C, P PCA sinyal, Q sonar, S servo uzatması, K kafa içi güç, U USB, H HDMI, C CSI, AU ses)",
@@ -481,13 +481,6 @@
    "konu": "Bas-konuş düğmesi listede, pin / kablo yok; Efe'ye sorulacak (orkestratör panodan soracak)",
    "secenekler": [
     "bilgi günlükte (P10.7a ikinci tur)"
-   ]
-  },
-  {
-   "kod": "K52",
-   "konu": "Göğüs regülatörünün panel yeri (G20'nin ucu ve boyu)",
-   "secenekler": [
-    "karar kuyruğunda K52"
    ]
   }
  ],
@@ -3111,13 +3104,12 @@
      "tur": "bugün"
     }
    ],
-   "eksik": [
-    "regülatörün panel yeri açık (K52, planlama/d158/karar-kuyrugu.md): uç yeri ve boy bu karara bağlı"
-   ],
+   "eksik": [],
    "teyit": [
-    "klemens: sigorta kutusunun F6 çıkış ucu (uç türü sigorta-kutusu) ve göğüs regülatörü giriş klemensinin (uç türü modul-vidali) kesit aralığı belgede yok; 18 AWG ince telli uçlar teslimde denenir (P10.7b, dördüncü bakış §2-5)"
+    "klemens: sigorta kutusunun F6 çıkış ucu (uç türü sigorta-kutusu) ve göğüs regülatörü giriş klemensinin (uç türü modul-vidali) kesit aralığı belgede yok; 18 AWG ince telli uçlar teslimde denenir (P10.7b, dördüncü bakış §2-5)",
+    "regülatörün yeri: K52 a (16.11.2026) ile güç panelinde, rehber B5a'da takılır; kart, ölçüsü ve panel üstündeki yeri modelde yok (model K51, K53 ile birlikte sonraki tam taramalı CAD paketinde): iki ucu da güç panelinde, boy panelde ölçülür"
    ],
-   "durum": "karara bağlı",
+   "durum": "kablajda teyit edilecek",
    "kaynak": [
     "planlama/adim3/elektrik.md:62",
     "planlama/adim3/elektrik.md:68",
@@ -3143,7 +3135,7 @@
     "kaynak": "tasarim/freecad/montaj/montaj-analiz.json#parcalar",
     "yontem": "montaj-analiz.json ev pozu parça merkezleri arası Manhattan uzaklığı (dik açılı döşeme) × 1,25, 50 mm'ye yukarı yuvarlanır; çok uçlu kablolarda en uzak çift (kural: boy_tahmin_kurali)",
     "etiket": "tahmin, P10.7b'de ölçülecek",
-    "vekil": "göğüs regülatörü CAD'de yok (K52): göğüs ekranına kadar üst sınır"
+    "vekil": "göğüs regülatörü CAD'de yok (K52 a: güç panelinde, panel üstündeki yeri modelde yok): göğüs ekranına kadar üst sınır; regülatör panelde olduğu için gerçek boy bundan çok kısa, panelde ölçülür"
    },
    "besleme_zinciri": [
     "aku-bms",
@@ -3152,7 +3144,8 @@
     "F6"
    ],
    "tarihce": [
-    "10.11 dökümünde dal 'mini 2 A hat yuvası' idi"
+    "10.11 dökümünde dal 'mini 2 A hat yuvası' idi",
+    "16.11 (P10.7b2e): K52 a ile 'karara bağlı' → 'kablajda teyit edilecek'; eksik (regülatörün panel yeri) teyite geçti"
    ]
   },
   {
@@ -8731,6 +8724,13 @@
    "metin": "Dağıtım kartı C güç panelinde, XL4016 C'nin yanında: SV3 B5a'da tezgâhta, P03 K1'de bağlanır.",
    "uygulama": "rehber B5a / K1 metni; SV3, P03 rehber alanı",
    "veren": "orkestratör kararı, 15.11.2026"
+  },
+  {
+   "kod": "K52",
+   "karar": "göğüs ekranı regülatörü güç panelinde",
+   "metin": "K52 a: LM2577 + LM2596 kartı güç paneline, rehber B5a'da takılır (tezgâhta 12 V'a ayarlandıktan sonra); maliyet 0 TL (planlama/maliyet.json 'Göğüs ekranı 12 V regülatörü' satırı aynı). Model bu pakette değişmez: kart zarfı K51 ve K53 ile birlikte sonraki tam taramalı CAD paketinde; kart ölçüsü, panel üstündeki yeri ve bağlantı elemanı o zamana dek kayıtta yok.",
+   "uygulama": "G20 durum / eksik / teyit / boy_tahmin.vekil; orkestratore listesinden çıktı; rehber B5a / K1 / K2 / F3 metni (P10.7b2e)",
+   "veren": "orkestratör kararı (Echo), 16.11.2026"
   }
  ],
  "boy_tahmin_kurali": {

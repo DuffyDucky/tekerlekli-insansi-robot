@@ -57,6 +57,9 @@ KISALTMA = {
 # metinlerinin 19 yeni kelimesi (gözden geçirildi, hepsi Türkçe harfi olmayan doğru yazım). Beşinci satır F10f düzeltme 2 metin ve şema
 # adlarının 8 yeni kelimesi (gözden geçirildi, hepsi doğru yazım). P10.7b1 üretim uyumu (S1): "turuncu … gri" satırı panelin kablo
 # tablosundan gösterdiği lejant / kb kelimeleri ve "Birden" (app.js karışık sınıf notu); hepsi Türkçe harfi olmayan doğru yazım.
+# P10.7b2e kısım 2: "temada koyu" beyaz kablonun yeni lejant adından ("Analog ses (beyaz; açık temada koyu çizilir)"); sonraki satır
+# K1 kartlarının yer tarifleri ve B5a K64 a notunun 10 yeni kelimesi; ondan sonraki satır K1 sağ / sol kurulum testi, B6a ve F1 yer
+# tariflerinin 12 yeni kelimesi ve app.js küçük görünüm balonundaki "bakana" (gözden geçirildi, hepsi Türkçe harfi olmayan doğru yazım).
 ASCII_TAMAM = set("""
 hepsine elin ekli kolunun dayanana pulla lehimden lehimi
 artanla denenmedi ekler ekseninin ekten girdi gerilmeden hepsinden kabloyla kablonun kendisi kuruldu lopu modeldeki orada oturtma
@@ -65,6 +68,9 @@ beri bekler demette eklendi indirme itme kablosuna kasetin kesintisiz lopuyla pe
 tamburdaki uzatmalara yay yaylar
 eksik ilkesi koruyucunun saplamaya zincir
 turuncu mor koruma enkoderle okunur kapatma birden besleyen klemensi liste analog beyaz gri
+temada koyu
+karedeki baralar dek karesinde katta olan panelin solda yazmaz zamana
+okunu kurulum taraf sola saniyede gerekirse ister soldaki tekerleri bekleniyor klemensler komutunu bakana
 acil active adafruit adapter adaptor adet akim al alet alma alt alttaki alttan alyan alyanla amfi ana anahtar anahtara ancak anot ara
 arazi arka arkadan arkaya array artan ay ayak ayar az bak bakar bakma bant bara baradan bas basinca bilek bilezik bileziklerine
 bindirme bindirmeleri binmiyor bir birbirine blok bobini bobinine boss boy boyda boynu boyun boyuna boyunca boyunda boyundan bozma
@@ -142,7 +148,15 @@ modelden dokuz yerlerdir kartlara bakarak durumu sinyali
 tablosudur pininin denemesine kesin
 panelinin
 kutbuna
+ayarla trimpotun konumunu boya trimpotu tutucusu varsayar paketinde kutudan
+rehberde tablosunda bakan soludur adlar
+sabit testin testinin testini konusu konusudur senin
 """.split())
+# P10.7b2e düzeltme turu 1 (F10m-kontrol D1): sondan bir önceki satır adım 0 sağ / sol tanım cümlesinin 5 kelimesi (gözden geçirildi:
+# Türkçe harfi olmayan doğru yazım; TR sözlüğünde ASCII karşılıkları yok, gevşetme değil). D2: son satır K1 sağ / sol kurulum testinin
+# ve F5 göndermesinin 6 yeni kelimesi ve N13 adım 0 ipucunun "senin"i (gözden geçirildi, aynı ölçüt).
+# P10.7b2e (K52 a): son satır B5a göğüs regülatörü paragrafı / kontrolü, bara tutucusu notu (K64) ve K1 G20 cümlesinin 9 yeni
+# kelimesi (gözden geçirildi: Türkçe harfi olmayan doğru yazım).
 # P10.7b2d düzeltme turu 2 (F10l-kontrol-2 D1): son satır 17.1'deki G05 akü ucu cümlesinin 1 yeni kelimesi (gözden geçirildi: Türkçe
 # harfi olmayan doğru yazım, "kutup" → "kutbuna").
 # P10.7b2c düzeltme turu 1 (F10k-kontrol D2): son satır K2 kablo listesindeki U06 cümlesinin 1 yeni kelimesi (gözden geçirildi: Türkçe
@@ -313,8 +327,13 @@ ZORUNLU = [
     ("K1", r"Bunların dışında mantarın kendi uçları ve ana anahtarın uçları hiçbir zaman köprülenmez",
      "K1 köprülenmeyenler: mantar ve ana anahtar uçları"),
     ("K1", r"Ö4 karar bekliyor \(K60\)", "K1 Ö4 karar bekliyor (K60)"),
-    ("K1", r"karar bekliyor \(K52\)", "K1 göğüs regülatörü yeri karar bekliyor (K52)"),
-    ("K2", r"karar bekliyor \(K52\)", "K2 göğüs regülatörü yeri karar bekliyor (K52)"),
+    # P10.7b2e (K52 a, 16.11): eski "karar bekliyor (K52)" desenleri yerine kararın kendisi (regülatör B5a'da panelde, G20 panel içinde)
+    ("B5a", r"Göğüs ekranı regülatörü \(LM2577 \+ LM2596; K52 a\)", "B5a göğüs ekranı regülatörü güç paneline (K52 a)"),
+    # P10.7b2e kısım 2 (Echo kararı 16.11.2026): K64 kapandı (a): tutucu CAD paketinde tasarlanıp basılır
+    ("B5a", r"CAD paketinde tasarlanıp basılacak, satın alınmayacak \(K64 a\)", "B5a bara tutucusu CAD paketinde basılır (K64 a)"),
+    ("K1", r"regülatörünün girişine \(K52 a\); G20'nin iki ucu da panelde", "K1 G20 panel içinde, regülatör B5a'da (K52 a)"),
+    ("K1", r"G20'nin regülatör ucunu regülatörün giriş klemensine bağla \({kutup.G20}", "K1 G20'nin regülatör ucu ve kutbu"),
+    ("K2", r"Regülatör B5a'da güç paneline takıldı \(K52 a\)", "K2 göğüs regülatörü B5a'da panelde (K52 a)"),
     ("K2", r"karar bekliyor \(K61\)", "K2 konuşma düğmesi karar bekliyor (K61)"),
     ("K2", r"Demeti kurmadan önce basılmış tünel deneme parçasında", "K2 boyun: tünel deneme parçasında fiş denemesi"),
     ("K2", r"Efe'nin iki cevabı", "K2 boyun: demet kapanmadan Efe'nin cevapları"),
@@ -425,6 +444,9 @@ ZORUNLU_SIRA = [
      "K1 G07: makaron lehimlerden önce tele geçirilir"),
     ("F1", "kontrol", r"Önce akünün kendi gerilimini oku", r"aküyü XT60'tan tak, sonra ana anahtarı aç: okunan gerilim akü geriliminin",
      "F1 G07: akünün kendi gerilimi akü takılmadan önce okunur"),
+    # P10.7b2e (K52 a; T7 B): regülatör panele takılmadan, ekran bağlı değilken 12 V'a ayarlanır
+    ("B5a", "is_", r"tezgâhta çıkışını multimetreyle 12 V'a ayarla", r"kartı güç paneline\s+tak",
+     "B5a göğüs regülatörü panele takılmadan önce 12 V'a ayarlanır"),
 ]
 
 
@@ -465,7 +487,8 @@ ZORUNLU_CUMLE = [
     ("F5", r"{gpio.ROLE_K2_ONSARJ} = 1 \(röle K2\)", r"en az {ms.onsarj} bekle", "F5 E9: K2'den sonra en az bekleme"),
     ("F5", r"{gpio.ROLE_K1} = 1 \(röle K1\)", r"{ms.k1_sonra} sonra {gpio.ROLE_K2_ONSARJ} = 0", "F5 E9: K1'den sonra K2 bırakılır"),
     # açık işler turu (F10h-kontrol-2 B28): göğüs regülatörünün yeri şemada da açık karar
-    ("SEMA 12 V", r"LM2577 \+ LM2596", r"regülatör yeri karar bekliyor, K52\)", "SEMA 12 V: göğüs regülatörü yeri karar bekliyor (K52)"),
+    # P10.7b2e (K52 a, 16.11): karar şemada da (regülatör güç panelinde, B5a)
+    ("SEMA 12 V", r"LM2577 \+ LM2596", r"regülatör güç panelinde, B5a, K52 a", "SEMA 12 V: göğüs regülatörü güç panelinde (K52 a)"),
     # düzeltme turu 1 (F10i-kontrol A7, Ü1): iki uçlu kablonun iki ucu da aynı cümlede
     ("K1", r"A06'nın \+ ucunu", r"IN1 \+ klemensine bağla; − ucunu modülün IN1 − klemensinden arayüz kartının GND pedine lehimle",
      "K1 is_: A06'nın iki ucu (+ IN1 +, − IN1 − → GND)"),
@@ -832,7 +855,7 @@ def tutarlilik(V, metinler):
 #    "uzatma" yanındaki AWG o kablonun kesiti. Direnç: değer kaynakta geçen dirençlerden biri (≤ ile yazılan süreklilik eşiği hariç);
 #    "BC337-40" yanındaki direnç 270 Ω ya da 2,2 kΩ; "ön şarj" yanındaki direnç ön şarj direnci. Terim: MOSFET yok (sürücü BJT); WAGO
 #    yalnız "yok" / "seçenek" bağlamında; "ses kartı" yalnız yedek bağlamında; "Hızlı klemens" yok; USB 3.0 yalnız olumsuz bağlamda;
-#    kapanmış kararlar (K1, K10, K11, K14) "karar bekliyor" değil, "varsayım, K10" değil, "K11 b" dalı yok; ön şarj beklemesi "en az
+#    kapanmış kararlar (K1, K10, K11, K14; P10.7b2e: K52) "karar bekliyor" değil, "varsayım, K10" değil, "K11 b" dalı yok; ön şarj beklemesi "en az
 #    300 ms"; hub "harici besleme" yalnız olumsuz.
 PIN_HARITASI = os.path.join(ROBOT, "planlama", "adim3", "pin-haritasi.md")
 KABLO_TABLO = os.path.join(ROBOT, "planlama", "adim3", "kablolar.json")
@@ -1020,8 +1043,9 @@ def elektrik_denetle(metinler, E=None):
                 h(yer, "terim", t.group(0), {"MOSFET": "röle sürücüsü BC337-40 (BJT)", "WAGO": "düğümler M5 saplama + halka pabuç ve 5,08 "
                   "mm vidalı klemens (WAGO yok)"}.get(t.group(0), "USB ses kartı kablajdan çıktı (yedek, takılmaz)")
                   + "; istisna yalnız TERIM_ISTISNA tam cümle listesinde")
-            # düzeltme turu 1 (M21, M22, M28): açık kararlar (K52, K60, K61) yalnız "karar bekliyor / bağlı" cümlesinde; Ö4 köprüsüz kalmaz
-            for t in re.finditer(r"\b(K52|K60|K61)\b", c):
+            # düzeltme turu 1 (M21, M22, M28): açık kararlar (K60, K61; P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, a)
+            # yalnız "karar bekliyor / bağlı" cümlesinde; Ö4 köprüsüz kalmaz
+            for t in re.finditer(r"\b(K60|K61)\b", c):
                 if not re.search(r"karar\w*\s+bekl|bekliyor|karar verilene kadar|kararına bağlı|karara bağlı", c):
                     h(yer, "karar", t.group(0), "%s açık karar: 'karar bekliyor' yazılmalı" % t.group(1))
             # açık işler turu (F10h-kontrol-2 §3.1-8): "çekmez" sözcüğü Ö4 kuralını affetmez
@@ -1033,7 +1057,7 @@ def elektrik_denetle(metinler, E=None):
                 h(yer, "terim", "USB 3.0", "hub uzatması USB 2.0")
             for t in re.finditer(r"karar bekliyor", c):
                 p = c[max(0, t.start() - 25):t.end() + 25]
-                k = re.search(r"\bK(1|10|11|14)\b(?! a)", p)
+                k = re.search(r"\bK(1|10|11|14|52|64|65)\b(?! a)", p)        # P10.7b2e: K52 kapandı (a, 16.11); kısım 2: K64 (a); düzeltme turu 1 (N7): K65
                 if k:
                     h(yer, "karar", p.strip(), "K%s kapandı" % k.group(1))
             if re.search(r"varsayım,?\s*K10\b|\bK11 b\b", c):
@@ -1051,7 +1075,10 @@ def kaynak_metinler(R=None, ham=False):
     R = R or RM
     ADIM, KAD, SEMA = (R.ADIM_HAM, R.KABLO_AD_HAM, R.SEMA_HAM) if ham else (R.ADIM, R.KABLO_AD, R.SEMA)
     out = []
-    for kod, a in ADIM.items():
+    # P10.7b2e düzeltme turu 1 (F10m-kontrol D1): adım 0 (HAZIRLIK) da taranır; eskiden yalnız ADIM dolaşıldığı için adım 0'daki
+    # sağ / sol cümlesinin ASCII kalıntısı ancak üretim sonundaki veri denetiminde görünüyordu. HAZIRLIK yer tutucu taşımaz (ham = çözülmüş).
+    H = getattr(R, "HAZIRLIK", None)
+    for kod, a in ([("0", H)] if isinstance(H, dict) else []) + list(ADIM.items()):
         y = "kaynak %s" % kod
         for k in ("baslik", "is_", "baglanti_md", "alet", "erisim"):
             if isinstance(a.get(k), str):
@@ -1726,7 +1753,14 @@ ELEKTRIK_BOZMA = [
     ("M13 G22 16 AWG", "K1", "is_", "PC817 #2 algı teli (G22, 16 AWG): bara ucunda"),
     ("M14 tel köprü ≥ 22 AWG", "K1", "is_", "dört ucu kart üstünde ≥ 22 AWG tel köprüyle lehimli"),
     ("M15 dirençler yer değiştirmiş", "K1", "is_", "Her sürücüde 2,2 kΩ seri taban direnci ve 270 Ω taban → GND (BC337-40)"),
-    ("M21 K52 kararlaştırılmış gibi", "K1", "is_", "Göğüs regülatörü güç panelinde (K52): G20 oraya gider"),
+    # P10.7b2e: K52 kapandı (a): eski M21 ("K52 kararlaştırılmış gibi") ters döndü; açık karar artık K64
+    ("M21 K52 yeniden 'karar bekliyor' (kapandı)", "K1", "is_",
+     "Göğüs regülatörünün panel yeri karar bekliyor (K52): G20'nin uç yeri ve boyu bu karara bağlı"),
+    ("M21b K52 'karar bekliyor' şemada (kapandı)", "SEMA 12 V", "ad", "güç paneli (F6 3 A → LM2577 + LM2596; regülatör yeri karar bekliyor, K52)"),
+    # P10.7b2e kısım 2: K64 kapandı (a): eski M21c ("K64 kararlaştırılmış gibi") ters döndü
+    ("M21c K64 yeniden 'karar bekliyor' (kapandı)", "B5a", "not_", "Bara tutucusunun panelde yeri karar bekliyor (K64)"),
+    # düzeltme turu 1 (F10m-kontrol N7): K65 kapandı (Echo, 16.11)
+    ("M21d K65 yeniden 'karar bekliyor' (kapandı)", "K1", "not_", "Sağ / sol tanımı karar bekliyor (K65)"),
     ("M22 K61 kararlaştırılmış gibi", "K2", "not_", "Konuşmak için basılan düğme (O-12) göğüs bandında (K61)"),
     ("M24 en az 100 ms", "F5", "is_", "röle K2 → en az 100 ms bekle → PC817 #2 LOW"),
     ("M28 Ö4 köprüsüz", "K1", "is_", "Ö4 için ayrılan iki uçlu yer köprüsüz bırakılır"),
@@ -2020,6 +2054,73 @@ def _zorunlu_eksik_say(ham):
     return n + len([x for x in cumle_denetle(dict(adim)) if not x["yer"].startswith("SEMA ")])
 
 
+def _veri_benzetimi():
+    """P10.7b2e: rehber_veri.py'nin adım biçiminde (FreeCAD'siz) en küçük veri: rehber_metin.ADIM'dan (yer tutucular çözülmüş) adımın is_ /
+    baglanti_md / kontrol / kablo / not_ alanı ve alt adım metinleri sira_grup[..]["is_"]. Demet alt adımlı adımda adımın is_ alanı ana
+    metindir; veride "is_ana" adlı anahtar YOKTUR (rehber_veri.py ADIMLAR.append). Parça listesi boş (BILESEN anması bu sınamada aranmaz)."""
+    ad = []
+    for i, (k, m) in enumerate(RM.ADIM.items()):
+        a = dict(i=i, kod=k, is_=m.get("is_") or "", baglanti_md=m.get("baglanti_md") or "", kontrol=list(m.get("kontrol") or []),
+                 kablo=list(m.get("kablo") or []), not_=list(m.get("not_") or []))
+        if m.get("sira"):
+            a["sira_grup"] = [dict(ad=g.get("ad"), **({"is_": g["is_"]} if g.get("is_") else {})) for g in m["sira"]]
+        ad.append(a)
+    return dict(adimlar=ad, parcalar=[])
+
+
+def veri_is_ana_bozma_denemesi():
+    """P10.7b2e (F10l-gunluk § 10.3, § 10.7): veri modu (tutarlilik) ZORUNLU_ALAN "is_ana"yı veride adımın is_ alanında arar. b2d'nin ilk
+    üretimi bu alanı veride var olmayan "is_ana" anahtarında aradığı için düştü (zorunlu eksik 2); FreeCAD'siz sınamalar yalnız kaynak
+    modunu koştuğu için görmedi. Kalıcı sınama: veri benzetiminde temel eksik 0 ve is_ana kuralı boş değil; üç uyarı bozması yakalanır;
+    uyarı yalnız "is_ana" adlı (veride olmayan) anahtara yazılırsa da yakalanır (kod yeniden o anahtarı okursa bu bozma kaçar)."""
+    import copy
+    ana = [(k, d) for k, alan, d, a in zorunlu_alan_listesi() if alan == "is_ana"]
+    V0 = _veri_benzetimi()
+
+    def say(V):
+        return [x for x in tutarlilik(V, [])["zorunlu_eksik"] if "(alan is_ana)" in x["uyari"]]
+
+    t0 = say(V0)
+    out = [dict(ad="veri is_ana: bozulmamış benzetimde eksik 0, kural %d" % len(ana), yakalandi=not t0 and len(ana) >= 2, hata=len(t0))]
+    A0 = {a["kod"]: a for a in V0["adimlar"]}
+
+    def boz(ad, f):
+        V = copy.deepcopy(V0)
+        A = {a["kod"]: a for a in V["adimlar"]}
+        degisti = f(A)
+        n = len(say(V))
+        out.append(dict(ad="veri is_ana: " + ad, yakalandi=bool(degisti) and n > 0, hata=n))
+
+    def sil(kod, eski):
+        def f(A):
+            if eski not in A[kod]["is_"]:
+                return False
+            A[kod]["is_"] = A[kod]["is_"].replace(eski, "")
+            return True
+        return f
+
+    def tasi(A):                                                    # K1 uyarısı ana metinden ilk alt adıma
+        u = "Bağlarken akü ayrık (XT60 açık)."
+        if u not in A["K1"]["is_"] or not A["K1"].get("sira_grup"):
+            return False
+        A["K1"]["is_"] = A["K1"]["is_"].replace(u, "")
+        A["K1"]["sira_grup"][0]["is_"] = u + " " + A["K1"]["sira_grup"][0].get("is_", "")
+        return True
+
+    def yanlis_anahtar(A):                                          # uyarılar yalnız veride olmayan "is_ana" anahtarında
+        for k in ("K1", "K2"):
+            A[k]["is_ana"], A[k]["is_"] = A[k]["is_"], ""
+        return True
+
+    boz("K1 ana metinden 'Bağlarken akü ayrık (XT60 açık).' silindi", sil("K1", "Bağlarken akü ayrık (XT60 açık)."))
+    boz("K2 ana metinden 'F3 (kafa) takılı değil' silindi", sil("K2", "F3 (kafa) takılı değil"))
+    boz("K1 uyarısı ana metinden ilk alt adıma taşındı", tasi)
+    boz("uyarılar yalnız 'is_ana' anahtarında (kod o anahtarı okursa kaçar)", yanlis_anahtar)
+    if not all(A0[k].get("sira_grup") for k in ("K1", "K2")):
+        out.append(dict(ad="veri is_ana: K1 / K2 benzetimde alt adımlı değil", yakalandi=False, hata=1))
+    return out
+
+
 def elektrik_bozma_denemesi():
     E = elektrik_kaynak()
     temel = elektrik_denetle(kaynak_metinler(), E)
@@ -2202,6 +2303,7 @@ def elektrik_bozma_denemesi():
     finally:
         TALIMAT_ERTELE = eski_e
     out.append(dict(ad="açık iş: onay kaydı (TALIMAT_ERTELE gevşedi)", yakalandi=n > 0, hata=n))
+    out += veri_is_ana_bozma_denemesi()                               # P10.7b2e: veri modu is_ana (F10l-gunluk § 10.3)
     out += demet_bozma_denemesi(ham)
     return dict(temel_hata=len(temel), deneme=out, yakalanan=sum(1 for x in out if x["yakalandi"]), toplam=len(out))
 
@@ -2297,7 +2399,26 @@ def demet_bozma_denemesi(ham=None):
     dene("Kablo yolu 9 hiçbir alt adımda değil", "D4", sira=sira_boz("K1", lambda s: s[k_kutu].update(desen=())))
     dene("U06 şeması kablosunu anmayan alt adımda (32.1)", "D4",
          sira=sira_boz("K2", lambda s: (s[3].update(sema=()), s[0].update(sema=("(U06)",)))))
-    dene("Kablo yolu 12'nin sema_ok gerekçesi silindi", "D4", sira=sira_boz("K2", lambda s: s[3].pop("sema_ok")))
+    # P10.7b2e kısım 2 (F10l-kare-inceleme 32.4): Kablo yolu 12 (B01) K2 32.4'ten (sema_ok gerekçesiyle) K1 17.10'a geçti; eski
+    # "sema_ok gerekçesi silindi" bozması yerine: yolun deseni 17.10'dan silinince hiçbir alt adımda kalmaz
+    dene("Kablo yolu 12 deseni 17.10'dan silindi", "D4",
+         sira=sira_boz("K1", lambda s: s[k_sonar].update(desen=tuple(x for x in s[k_sonar]["desen"] if x != "Kablo yolu 12:"))))
+    dene("Kablo yolu 12 yeniden 32.4'e (U06 alt adımı) desenlendi", "D4",
+         sira=sira_boz("K2", lambda s: s[3].update(desen=("Kablo yolu 12:",))))
+    # D8 (P10.7b2e kısım 2, F10l-kare-inceleme 17.11 = 17.12): yeni parçası ve vurgusu olmayan iki alt adımın karesi aynı olamaz
+    dene("17.11'in kamerası ve odağı silindi: karesi 17.12 ile aynı (eski hata)", "D8",
+         sira=sira_boz("K1", lambda s: (s[k_son - 1].pop("kamera", None), s[k_son - 1].pop("odak", None))))
+    dene("32.6'nın şeması silindi, bakışı 32.8'e (son kontrol) kopyalandı", "D8",
+         sira=sira_boz("K2", lambda s: (s[5].update(sema=()), s[7].update(kamera=s[5].get("kamera"), saydam=s[5].get("saydam"),
+                                                                            odak=s[5].get("odak")))))
+    # düzeltme turu 1 (F10m-kontrol N6): neredeyse aynı kamera (1e-6) ve ters sıralı odak da aynı karedir
+    dene("32.6'nın şeması silindi, bakışı 32.8'e kamerası 1e-6 kaydırılıp kopyalandı", "D8",
+         sira=sira_boz("K2", lambda s: (s[5].update(sema=()), s[7].update(
+             kamera=tuple(v + 1e-6 for v in s[5].get("kamera")), saydam=s[5].get("saydam"), odak=s[5].get("odak")))))
+    dene("32.6'nın şeması silindi, bakışı 32.8'e saydam / odak ters sırayla kopyalandı", "D8",
+         sira=sira_boz("K2", lambda s: (s[5].update(sema=()), s[7].update(
+             kamera=s[5].get("kamera"), saydam=tuple(reversed(s[5].get("saydam") or ())),
+             odak=tuple(reversed(s[5].get("odak") or ()))))))
     dene("bayat şema deseni", "D4", sira=sira_boz("K1", lambda s: s[k_g07].update(sema=("(G07,", "(G99,"))))
     dene("P03 bağlantı tablosu iki alt adımda", "D4", sira=sira_boz("K1", lambda s: s[k_sonar].update(kablo_sec=("Bağlantı tablosu P03",))))
 
@@ -2320,7 +2441,8 @@ def demet_bozma_denemesi(ham=None):
     dene("alt kat alt adımında \"alt adım 17.5'te bağlandı\" göstergesi silindi (G12–G15 iki kartta bağla)", "D6",
          ham_yer(ham, ky("K1", "Alt kat"), lambda t: t.replace(" alt adım 17.5'te,", ",")))
     dene("direk alt adımında G17 / G20 \"alt adım 17.7'de bağlandı\" yerine \"bağla\"", "D6",
-         ham_yer(ham, ky("K1", "Direğe"), lambda t: t.replace("taban uçları alt adım 17.7'de bağlandı; ", "taban uçlarını bağla; ")))
+         # P10.7b2e: K52 a ile G20 metni "taban ucu ve panel içinde kalan göğüs ekranı dalı (G20) ... bağlandı" oldu
+         ham_yer(ham, ky("K1", "Direğe"), lambda t: t.replace("dalı (G20) alt adım 17.7'de bağlandı; ", "dalını (G20) bağla; ")))
     dene("ucun alt adımında saplama yer tutucusu yok (G06 − ucu \"barasına\")", "D6",
          ham_yer(ham, ky("K1", "şarj kolu"), lambda t: t.replace("yıldız barasının {saplama.G06} numaralı saplamasına", "yıldız barasına")))
     dene("bara ucu hiçbir alt adımda değil (G22/−)", "D6",
@@ -2418,7 +2540,7 @@ def demet_yol_adimlari(yol=None):
     if not os.path.exists(yol):
         return None
     ky = json.load(open(yol, encoding="utf-8")).get("kablo_yolu") or []
-    return {n: RM.kablo_kapisi(max(p[1] for p in k["noktalar"])) for n, k in enumerate(ky, 1) if k.get("noktalar")}
+    return {n: RM.kablo_kapisi(max(p[1] for p in k["noktalar"]), n) for n, k in enumerate(ky, 1) if k.get("noktalar")}
 
 
 # P10.7b2d-A düzeltme turu 1 (F10l-kontrol D1): bara uçları (rehber_metin.DEMET_ALT "uc"; kayıt kablolar.json bara-pabuc yerlesim).
@@ -2668,6 +2790,22 @@ def demet_alt_denetle(R=None, ham=None, sira=None, T=None, yol_adim=None, gonder
         for i, ns in sorted(secilen.items()):
             if len(ns) > 1:
                 h("D4", "%s kablo listesi maddesi %d: %d alt adımda gösteriliyor (bir kez basılmalı)" % (kod, i + 1, len(ns)))
+        # D8 (P10.7b2e kısım 2, F10l-kare-inceleme 17.11 = 17.12): yeni parçası (desen) ve vurgusu (sema) olmayan alt adımın karesini
+        # yalnız bakışı (kamera, saydam, odak) belirler; iki böyle alt adımın bakışı aynıysa kareleri aynıdır
+        # P10.7b2e düzeltme turu 1 (F10m-kontrol N6): kamera 3 ondalığa yuvarlanır (1e-6 farkı aynı kare), saydam / odak sırasız küme
+        bakis = {}
+        for n, g in enumerate(G):
+            if g.get("desen") or g.get("sema"):
+                continue
+            kam = g.get("kamera")
+            if isinstance(kam, (list, tuple)):
+                kam = tuple(round(float(v), 3) if isinstance(v, (int, float)) else v for v in kam)
+            k = (repr(kam), tuple(sorted(map(str, g.get("saydam") or ()))), tuple(sorted(map(str, g.get("odak") or ()))))
+            bakis.setdefault(k, []).append(n)
+        for k, ns in sorted(bakis.items(), key=lambda x: x[1]):
+            if len(ns) > 1:
+                h("D8", "%s alt adım %s: yeni parça ve vurgu yok, bakış (kamera %s, saydam %s, odak %s) aynı: kareleri aynı olur" % (
+                    kod, " / ".join("%d" % (n + 1) for n in ns), k[0], list(k[1]) or "-", list(k[2]) or "-"))
         bara_uc_denetle(R, kod, G, metin, T, h)                     # D6 (düzeltme turu 1, F10l-kontrol D1)
         ozet[kod] = dict(alt=len(G), kablo=len(set().union(*anilan)) if anilan else 0, oge=len(oge))
     gonderme_denetle(R, ham if ham is not None else kaynak_metinler(ham=True), h, **(gonderme or {}))   # D7 (F10l-kontrol D2)
@@ -2784,7 +2922,7 @@ def _ana():
         for x in tm["hata"]:
             print("  TAMLIK", x)
         da = d["demet_alt"]
-        print("demet alt adimlari (D1-D7): hata %d; %s" % (len(da["hata"]), ", ".join(
+        print("demet alt adimlari (D1-D8): hata %d; %s" % (len(da["hata"]), ", ".join(
             "%s %d alt adim, %d kablo, %d sema / kablo yolu" % (k, v["alt"], v["kablo"], v["oge"]) for k, v in sorted(da["adim"].items()))))
         for x in da["hata"]:
             print("  DEMET %s %s" % x)

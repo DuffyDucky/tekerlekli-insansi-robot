@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-16 04:36",
+ "tarih": "2026-11-16 08:21",
  "adim": 50,
  "alt_adimli": [
   17,
@@ -2678,24 +2678,14 @@
     "kod": "K1",
     "hazir": true,
     "sinir": false,
-    "yeni": 7,
+    "yeni": 8,
     "gorunmeyen": [
-     {
-      "id": "p1181",
-      "ad": "Kablo yolu 2: Toprak (G05, 12 AWG): akü − → yıldız barası (güç paneli, M5 saplama) → tüm dönüştürücüler",
-      "px": 193,
-      "yalniz": 1156,
-      "oran": 0.167,
-      "karede": true,
-      "gorunur": false,
-      "saydam": false
-     },
      {
       "id": "p1182",
       "ad": "Kablo yolu 3: Motor 12 V (G08–G12, 12 AWG; M01 motorun kendi kablosu): F1 20 A → röle K1 ∥ ön şarj kolu → anahtarlı bara (M5 saplama) → BTS7960 sol → ön sol motor",
-      "px": 736,
-      "yalniz": 5095,
-      "oran": 0.144,
+      "px": 72,
+      "yalniz": 498,
+      "oran": 0.145,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -2703,9 +2693,9 @@
      {
       "id": "p1183",
       "ad": "Kablo yolu 4: Motor 12 V sağ (G13, 12 AWG: anahtarlı bara → BTS7960 sağ; M03, M04 motorun kendi kablosu: ön sağ ve arka sağ motor; plaka altından, z 36 deliğinden). Arka sol motor (M02) bu yolda değil: kendi gösterim şeması B3'te",
-      "px": 32,
-      "yalniz": 8540,
-      "oran": 0.004,
+      "px": 1,
+      "yalniz": 722,
+      "oran": 0.001,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -2715,40 +2705,40 @@
     "birim": null,
     "sema": {
      "sema11": [
-      1095,
-      1798
+      135,
+      217
      ],
      "sema12": [
-      447,
-      1904
+      55,
+      216
      ],
      "sema13": [
-      747,
-      1730
+      77,
+      175
      ],
      "sema15": [
-      1143,
-      2881
+      123,
+      230
      ],
      "sema17": [
-      428,
-      1383
+      56,
+      100
      ],
      "sema18": [
-      1432,
-      4909
+      145,
+      466
      ],
      "sema19": [
-      539,
-      5663
+      38,
+      480
      ],
      "sema20": [
-      2077,
-      3314
+      165,
+      267
      ],
      "sema21": [
-      1592,
-      2534
+      123,
+      199
      ]
     },
     "yabanci_sema": [],
@@ -2756,9 +2746,9 @@
      {
       "id": "p1180",
       "ad": "Kablo yolu 1: 12 V ana hat (G01–G04, 12 AWG): akü + → XT60 → ana sigorta 30 A → ana anahtar → sigorta kutusu",
-      "px": 2129,
-      "yalniz": 5644,
-      "oran": 0.377,
+      "px": 295,
+      "yalniz": 598,
+      "oran": 0.493,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -2766,19 +2756,19 @@
      {
       "id": "p1181",
       "ad": "Kablo yolu 2: Toprak (G05, 12 AWG): akü − → yıldız barası (güç paneli, M5 saplama) → tüm dönüştürücüler",
-      "px": 193,
-      "yalniz": 1156,
-      "oran": 0.167,
+      "px": 42,
+      "yalniz": 116,
+      "oran": 0.362,
       "karede": true,
-      "gorunur": false,
+      "gorunur": true,
       "saydam": false
      },
      {
       "id": "p1182",
       "ad": "Kablo yolu 3: Motor 12 V (G08–G12, 12 AWG; M01 motorun kendi kablosu): F1 20 A → röle K1 ∥ ön şarj kolu → anahtarlı bara (M5 saplama) → BTS7960 sol → ön sol motor",
-      "px": 736,
-      "yalniz": 5095,
-      "oran": 0.144,
+      "px": 72,
+      "yalniz": 498,
+      "oran": 0.145,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -2786,9 +2776,9 @@
      {
       "id": "p1183",
       "ad": "Kablo yolu 4: Motor 12 V sağ (G13, 12 AWG: anahtarlı bara → BTS7960 sağ; M03, M04 motorun kendi kablosu: ön sağ ve arka sağ motor; plaka altından, z 36 deliğinden). Arka sol motor (M02) bu yolda değil: kendi gösterim şeması B3'te",
-      "px": 32,
-      "yalniz": 8540,
-      "oran": 0.004,
+      "px": 1,
+      "yalniz": 722,
+      "oran": 0.001,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -2796,9 +2786,9 @@
      {
       "id": "p1188",
       "ad": "Kablo yolu 9: Çevre 5 V (G18, 18 AWG): F4 5 A → XL4016 çevre. Şemanın XL4016 sonrası kısmı eski (doğrudan ESP32'ye); tabloda G19 (16 AWG) 2 A mini hat sigortasıyla arayüz kartına gider, bu şemada çizili değil: kendi gösterim şeması K1'de",
-      "px": 1582,
-      "yalniz": 5108,
-      "oran": 0.31,
+      "px": 189,
+      "yalniz": 462,
+      "oran": 0.409,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -2806,9 +2796,9 @@
      {
       "id": "p1189",
       "ad": "Kablo yolu 10: Acil stop (A01–A06, 18 AWG; PC817 teli 22 AWG): F5 2 A → mantar (NC) → acil stop düğüm kartı → röle K1 ve K2 bobinleri → BC337-40 #1 / #2 (arayüz kartı, GPIO4 / GPIO19); PC817 #1 mantar sonrası gerilimi okur (GPIO23)",
-      "px": 3705,
-      "yalniz": 4537,
-      "oran": 0.817,
+      "px": 401,
+      "yalniz": 487,
+      "oran": 0.823,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -2816,9 +2806,19 @@
      {
       "id": "p1190",
       "ad": "Kablo yolu 11: Sinyal: sol sonar (Q03, 22 AWG) → arayüz kartı bölücü (4,7 kΩ / 10 kΩ) → ESP32 (X01; ön ara ray üstünden). Orta ve sağ sonar (Q01, Q02) bu şemada değil: kendi gösterim şemaları K1'de",
-      "px": 2157,
-      "yalniz": 4851,
-      "oran": 0.445,
+      "px": 195,
+      "yalniz": 387,
+      "oran": 0.504,
+      "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p1191",
+      "ad": "Kablo yolu 12: Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de. Şemanın direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
+      "px": 1442,
+      "yalniz": 1624,
+      "oran": 0.888,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -2925,9 +2925,9 @@
      {
       "id": "p1182",
       "ad": "Kablo yolu 3: Motor 12 V (G08–G12, 12 AWG; M01 motorun kendi kablosu): F1 20 A → röle K1 ∥ ön şarj kolu → anahtarlı bara (M5 saplama) → BTS7960 sol → ön sol motor",
-      "px": 2666,
-      "yalniz": 12221,
-      "oran": 0.218,
+      "px": 2814,
+      "yalniz": 9113,
+      "oran": 0.309,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -2942,24 +2942,13 @@
     "hazir": true,
     "sinir": false,
     "yeni": 1,
-    "gorunmeyen": [
-     {
-      "id": "p1183",
-      "ad": "Kablo yolu 4: Motor 12 V sağ (G13, 12 AWG: anahtarlı bara → BTS7960 sağ; M03, M04 motorun kendi kablosu: ön sağ ve arka sağ motor; plaka altından, z 36 deliğinden). Arka sol motor (M02) bu yolda değil: kendi gösterim şeması B3'te",
-      "px": 204,
-      "yalniz": 13793,
-      "oran": 0.015,
-      "karede": true,
-      "gorunur": false,
-      "saydam": false
-     }
-    ],
+    "gorunmeyen": [],
     "istisna": [],
     "birim": null,
     "sema": {
      "sema12": [
-      559,
-      2693
+      2856,
+      3549
      ]
     },
     "yabanci_sema": [],
@@ -2967,16 +2956,16 @@
      {
       "id": "p1183",
       "ad": "Kablo yolu 4: Motor 12 V sağ (G13, 12 AWG: anahtarlı bara → BTS7960 sağ; M03, M04 motorun kendi kablosu: ön sağ ve arka sağ motor; plaka altından, z 36 deliğinden). Arka sol motor (M02) bu yolda değil: kendi gösterim şeması B3'te",
-      "px": 204,
-      "yalniz": 13793,
-      "oran": 0.015,
+      "px": 3440,
+      "yalniz": 11969,
+      "oran": 0.287,
       "karede": true,
-      "gorunur": false,
+      "gorunur": true,
       "saydam": false
      }
     ],
     "saydam": [],
-    "gecti": false
+    "gecti": true
    },
    {
     "adres": "17.6",
@@ -3075,30 +3064,30 @@
     "kod": "K1",
     "hazir": true,
     "sinir": false,
-    "yeni": 1,
+    "yeni": 2,
     "gorunmeyen": [],
     "istisna": [],
     "birim": null,
     "sema": {
      "sema17": [
-      840,
-      2020
+      1860,
+      2217
      ],
      "sema18": [
-      2216,
-      6957
+      4522,
+      9066
      ],
      "sema19": [
-      746,
-      7188
+      2964,
+      6497
      ],
      "sema20": [
-      3611,
-      5298
+      6294,
+      6806
      ],
      "sema21": [
-      2545,
-      3830
+      4849,
+      5193
      ]
     },
     "yabanci_sema": [],
@@ -3106,16 +3095,26 @@
      {
       "id": "p1190",
       "ad": "Kablo yolu 11: Sinyal: sol sonar (Q03, 22 AWG) → arayüz kartı bölücü (4,7 kΩ / 10 kΩ) → ESP32 (X01; ön ara ray üstünden). Orta ve sağ sonar (Q01, Q02) bu şemada değil: kendi gösterim şemaları K1'de",
-      "px": 3645,
-      "yalniz": 7634,
-      "oran": 0.477,
+      "px": 8165,
+      "yalniz": 10304,
+      "oran": 0.792,
       "karede": true,
+      "gorunur": true,
+      "saydam": false
+     },
+     {
+      "id": "p1191",
+      "ad": "Kablo yolu 12: Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de. Şemanın direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
+      "px": 4274,
+      "yalniz": 6257,
+      "oran": 0.683,
+      "karede": false,
       "gorunur": true,
       "saydam": false
      }
     ],
     "saydam": [],
-    "gecti": true
+    "gecti": false
    },
    {
     "adres": "17.11",
@@ -3157,9 +3156,9 @@
      {
       "id": "p0753",
       "ad": "Arka kafa kabuğu sol",
-      "px": 7787,
-      "yalniz": 134407,
-      "oran": 0.058,
+      "px": 7154,
+      "yalniz": 125221,
+      "oran": 0.057,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -3168,7 +3167,7 @@
       "id": "p0755",
       "ad": "Tabla cıvatası M3x10 (sağ z-15)",
       "px": 0,
-      "yalniz": 273,
+      "yalniz": 259,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3178,7 +3177,7 @@
       "id": "p0756",
       "ad": "Isıl gömme somun M3 (tabla rafı sağ z-15)",
       "px": 0,
-      "yalniz": 134,
+      "yalniz": 126,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3188,7 +3187,7 @@
       "id": "p0757",
       "ad": "Tabla cıvatası M3x10 (sağ z-75)",
       "px": 0,
-      "yalniz": 243,
+      "yalniz": 224,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3198,7 +3197,7 @@
       "id": "p0758",
       "ad": "Isıl gömme somun M3 (tabla rafı sağ z-75)",
       "px": 0,
-      "yalniz": 122,
+      "yalniz": 118,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3208,7 +3207,7 @@
       "id": "p0759",
       "ad": "Tabla cıvatası M3x10 (sol z-15)",
       "px": 0,
-      "yalniz": 194,
+      "yalniz": 179,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3218,7 +3217,7 @@
       "id": "p0760",
       "ad": "Isıl gömme somun M3 (tabla rafı sol z-15)",
       "px": 0,
-      "yalniz": 99,
+      "yalniz": 94,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3228,7 +3227,7 @@
       "id": "p0761",
       "ad": "Tabla cıvatası M3x10 (sol z-75)",
       "px": 0,
-      "yalniz": 169,
+      "yalniz": 158,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3238,7 +3237,7 @@
       "id": "p0762",
       "ad": "Isıl gömme somun M3 (tabla rafı sol z-75)",
       "px": 0,
-      "yalniz": 87,
+      "yalniz": 78,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3248,7 +3247,7 @@
       "id": "p0763",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol ön üst)",
       "px": 0,
-      "yalniz": 141,
+      "yalniz": 132,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3257,9 +3256,9 @@
      {
       "id": "p0764",
       "ad": "Kabuk cıvatası M3x5 ISO 7380 havşada (kafa sağ/sol ön üst)",
-      "px": 31,
-      "yalniz": 163,
-      "oran": 0.19,
+      "px": 24,
+      "yalniz": 149,
+      "oran": 0.161,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -3268,7 +3267,7 @@
       "id": "p0765",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol ön alt (çerçeve))",
       "px": 0,
-      "yalniz": 116,
+      "yalniz": 104,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3278,7 +3277,7 @@
       "id": "p0767",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka üst)",
       "px": 0,
-      "yalniz": 110,
+      "yalniz": 106,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3287,9 +3286,9 @@
      {
       "id": "p0768",
       "ad": "Kabuk cıvatası M3x5 ISO 7380 havşada (kafa sağ/sol arka üst)",
-      "px": 23,
-      "yalniz": 126,
-      "oran": 0.183,
+      "px": 19,
+      "yalniz": 116,
+      "oran": 0.164,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -3298,7 +3297,7 @@
       "id": "p0769",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar üst)",
       "px": 0,
-      "yalniz": 99,
+      "yalniz": 86,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3308,7 +3307,7 @@
       "id": "p0770",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol arka duvar üst)",
       "px": 0,
-      "yalniz": 131,
+      "yalniz": 122,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3318,7 +3317,7 @@
       "id": "p0771",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar alt)",
       "px": 0,
-      "yalniz": 81,
+      "yalniz": 79,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3328,7 +3327,7 @@
       "id": "p0772",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol arka duvar alt)",
       "px": 0,
-      "yalniz": 115,
+      "yalniz": 105,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3338,7 +3337,7 @@
       "id": "p0773",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sağ y-60)",
       "px": 0,
-      "yalniz": 144,
+      "yalniz": 132,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3348,7 +3347,7 @@
       "id": "p0775",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sağ y+70)",
       "px": 0,
-      "yalniz": 175,
+      "yalniz": 157,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3358,7 +3357,7 @@
       "id": "p0777",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sol y-60)",
       "px": 0,
-      "yalniz": 90,
+      "yalniz": 85,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3368,7 +3367,7 @@
       "id": "p0778",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sol y-60)",
       "px": 0,
-      "yalniz": 122,
+      "yalniz": 114,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3378,7 +3377,7 @@
       "id": "p0779",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sol y+70)",
       "px": 0,
-      "yalniz": 107,
+      "yalniz": 97,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3388,7 +3387,7 @@
       "id": "p0780",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sol y+70)",
       "px": 0,
-      "yalniz": 143,
+      "yalniz": 135,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3398,7 +3397,7 @@
       "id": "p0782",
       "ad": "Ekran tırnağı üst sağ",
       "px": 0,
-      "yalniz": 2300,
+      "yalniz": 2097,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3408,7 +3407,7 @@
       "id": "p0783",
       "ad": "Köpük bant (tırnak üst sağ)",
       "px": 0,
-      "yalniz": 543,
+      "yalniz": 494,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3418,7 +3417,7 @@
       "id": "p0784",
       "ad": "Tırnak cıvatası M3x6 ISO 7380 (üst sağ)",
       "px": 0,
-      "yalniz": 218,
+      "yalniz": 197,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3428,7 +3427,7 @@
       "id": "p0785",
       "ad": "Isıl gömme somun M3 (tırnak boss üst sağ)",
       "px": 0,
-      "yalniz": 160,
+      "yalniz": 143,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3438,7 +3437,7 @@
       "id": "p0786",
       "ad": "Ekran tırnağı üst sol",
       "px": 0,
-      "yalniz": 1492,
+      "yalniz": 1381,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3448,7 +3447,7 @@
       "id": "p0787",
       "ad": "Köpük bant (tırnak üst sol)",
       "px": 0,
-      "yalniz": 333,
+      "yalniz": 313,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3458,7 +3457,7 @@
       "id": "p0788",
       "ad": "Tırnak cıvatası M3x6 ISO 7380 (üst sol)",
       "px": 0,
-      "yalniz": 167,
+      "yalniz": 158,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3468,7 +3467,7 @@
       "id": "p0789",
       "ad": "Isıl gömme somun M3 (tırnak boss üst sol)",
       "px": 0,
-      "yalniz": 126,
+      "yalniz": 115,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3478,7 +3477,7 @@
       "id": "p0790",
       "ad": "Ekran tırnağı alt sağ",
       "px": 0,
-      "yalniz": 1599,
+      "yalniz": 1469,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3488,7 +3487,7 @@
       "id": "p0791",
       "ad": "Köpük bant (tırnak alt sağ)",
       "px": 0,
-      "yalniz": 427,
+      "yalniz": 387,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3498,7 +3497,7 @@
       "id": "p0792",
       "ad": "Tırnak cıvatası M3x6 ISO 7380 (alt sağ)",
       "px": 0,
-      "yalniz": 178,
+      "yalniz": 161,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3508,7 +3507,7 @@
       "id": "p0793",
       "ad": "Isıl gömme somun M3 (tırnak boss alt sağ)",
       "px": 0,
-      "yalniz": 134,
+      "yalniz": 121,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3518,7 +3517,7 @@
       "id": "p0794",
       "ad": "Ekran tırnağı alt sol",
       "px": 0,
-      "yalniz": 1098,
+      "yalniz": 1023,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3528,7 +3527,7 @@
       "id": "p0795",
       "ad": "Köpük bant (tırnak alt sol)",
       "px": 0,
-      "yalniz": 276,
+      "yalniz": 260,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3538,7 +3537,7 @@
       "id": "p0796",
       "ad": "Tırnak cıvatası M3x6 ISO 7380 (alt sol)",
       "px": 0,
-      "yalniz": 136,
+      "yalniz": 131,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3548,7 +3547,7 @@
       "id": "p0797",
       "ad": "Isıl gömme somun M3 (tırnak boss alt sol)",
       "px": 0,
-      "yalniz": 106,
+      "yalniz": 95,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3557,9 +3556,9 @@
      {
       "id": "p0798",
       "ad": "Kamera Raspberry Pi Camera Module 3",
-      "px": 246,
-      "yalniz": 2558,
-      "oran": 0.096,
+      "px": 231,
+      "yalniz": 2350,
+      "oran": 0.098,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -3568,7 +3567,7 @@
       "id": "p0799",
       "ad": "Kamera vidası M2x8 PT (0)",
       "px": 0,
-      "yalniz": 127,
+      "yalniz": 117,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3578,7 +3577,7 @@
       "id": "p0800",
       "ad": "Kamera vidası M2x8 PT (1)",
       "px": 0,
-      "yalniz": 129,
+      "yalniz": 116,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3588,7 +3587,7 @@
       "id": "p0801",
       "ad": "Kamera vidası M2x8 PT (2)",
       "px": 0,
-      "yalniz": 129,
+      "yalniz": 116,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3598,7 +3597,7 @@
       "id": "p0802",
       "ad": "Kamera vidası M2x8 PT (3)",
       "px": 0,
-      "yalniz": 130,
+      "yalniz": 121,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3608,7 +3607,7 @@
       "id": "p0822",
       "ad": "Köpük bant (yedek USB ses kartı için; kart takılmaz, bant yapıştırılmaz)",
       "px": 0,
-      "yalniz": 3206,
+      "yalniz": 2968,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3618,7 +3617,7 @@
       "id": "p0823",
       "ad": "USB ses kartı (yedek, takılmaz)",
       "px": 0,
-      "yalniz": 4195,
+      "yalniz": 3886,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3628,7 +3627,7 @@
       "id": "p0824",
       "ad": "Köpük bant (PAM8403 amfi)",
       "px": 0,
-      "yalniz": 1340,
+      "yalniz": 1242,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3638,7 +3637,7 @@
       "id": "p0825",
       "ad": "PAM8403 amfi",
       "px": 0,
-      "yalniz": 1604,
+      "yalniz": 1477,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3648,7 +3647,7 @@
       "id": "p0826",
       "ad": "ReSpeaker Mic Array v2.0",
       "px": 0,
-      "yalniz": 4405,
+      "yalniz": 3994,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3658,7 +3657,7 @@
       "id": "p0827",
       "ad": "Dizi vidası M2x8 PT (0)",
       "px": 0,
-      "yalniz": 136,
+      "yalniz": 112,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3668,7 +3667,7 @@
       "id": "p0828",
       "ad": "Dizi vidası M2x8 PT (1)",
       "px": 0,
-      "yalniz": 122,
+      "yalniz": 109,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3690,31 +3689,31 @@
     "sema": {
      "sema6": [
       0,
-      1795
+      1650
      ],
      "sema7": [
       0,
-      966
+      888
      ],
      "sema8": [
       0,
-      5377
+      4950
      ],
      "sema9": [
       0,
-      4270
+      3898
      ],
      "sema10": [
       0,
-      2673
+      2443
      ],
      "sema25": [
       0,
-      1346
+      1234
      ],
      "sema26": [
       0,
-      3987
+      3674
      ]
     },
     "yabanci_sema": [],
@@ -3722,8 +3721,8 @@
      {
       "id": "p0750",
       "ad": "Yüz kabuğu (ön) sağ",
-      "px": 91420,
-      "yalniz": 96006,
+      "px": 83789,
+      "yalniz": 88033,
       "oran": 0.952,
       "karede": true,
       "gorunur": true,
@@ -3732,9 +3731,9 @@
      {
       "id": "p0751",
       "ad": "Yüz kabuğu (ön) sol",
-      "px": 42818,
-      "yalniz": 51449,
-      "oran": 0.832,
+      "px": 39890,
+      "yalniz": 47729,
+      "oran": 0.836,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -3742,9 +3741,9 @@
      {
       "id": "p0752",
       "ad": "Arka kafa kabuğu sağ",
-      "px": 57883,
-      "yalniz": 125398,
-      "oran": 0.462,
+      "px": 53696,
+      "yalniz": 115722,
+      "oran": 0.464,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -3752,9 +3751,9 @@
      {
       "id": "p0753",
       "ad": "Arka kafa kabuğu sol",
-      "px": 7787,
-      "yalniz": 134407,
-      "oran": 0.058,
+      "px": 7154,
+      "yalniz": 125221,
+      "oran": 0.057,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -3763,7 +3762,7 @@
       "id": "p0755",
       "ad": "Tabla cıvatası M3x10 (sağ z-15)",
       "px": 0,
-      "yalniz": 273,
+      "yalniz": 259,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3773,7 +3772,7 @@
       "id": "p0756",
       "ad": "Isıl gömme somun M3 (tabla rafı sağ z-15)",
       "px": 0,
-      "yalniz": 134,
+      "yalniz": 126,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3783,7 +3782,7 @@
       "id": "p0757",
       "ad": "Tabla cıvatası M3x10 (sağ z-75)",
       "px": 0,
-      "yalniz": 243,
+      "yalniz": 224,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3793,7 +3792,7 @@
       "id": "p0758",
       "ad": "Isıl gömme somun M3 (tabla rafı sağ z-75)",
       "px": 0,
-      "yalniz": 122,
+      "yalniz": 118,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3803,7 +3802,7 @@
       "id": "p0759",
       "ad": "Tabla cıvatası M3x10 (sol z-15)",
       "px": 0,
-      "yalniz": 194,
+      "yalniz": 179,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3813,7 +3812,7 @@
       "id": "p0760",
       "ad": "Isıl gömme somun M3 (tabla rafı sol z-15)",
       "px": 0,
-      "yalniz": 99,
+      "yalniz": 94,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3823,7 +3822,7 @@
       "id": "p0761",
       "ad": "Tabla cıvatası M3x10 (sol z-75)",
       "px": 0,
-      "yalniz": 169,
+      "yalniz": 158,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3833,7 +3832,7 @@
       "id": "p0762",
       "ad": "Isıl gömme somun M3 (tabla rafı sol z-75)",
       "px": 0,
-      "yalniz": 87,
+      "yalniz": 78,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3843,7 +3842,7 @@
       "id": "p0763",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol ön üst)",
       "px": 0,
-      "yalniz": 141,
+      "yalniz": 132,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3852,9 +3851,9 @@
      {
       "id": "p0764",
       "ad": "Kabuk cıvatası M3x5 ISO 7380 havşada (kafa sağ/sol ön üst)",
-      "px": 31,
-      "yalniz": 163,
-      "oran": 0.19,
+      "px": 24,
+      "yalniz": 149,
+      "oran": 0.161,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -3863,7 +3862,7 @@
       "id": "p0765",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol ön alt (çerçeve))",
       "px": 0,
-      "yalniz": 116,
+      "yalniz": 104,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3872,9 +3871,9 @@
      {
       "id": "p0766",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol ön alt (çerçeve))",
-      "px": 103,
-      "yalniz": 153,
-      "oran": 0.673,
+      "px": 97,
+      "yalniz": 143,
+      "oran": 0.678,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -3883,7 +3882,7 @@
       "id": "p0767",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka üst)",
       "px": 0,
-      "yalniz": 110,
+      "yalniz": 106,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3892,9 +3891,9 @@
      {
       "id": "p0768",
       "ad": "Kabuk cıvatası M3x5 ISO 7380 havşada (kafa sağ/sol arka üst)",
-      "px": 23,
-      "yalniz": 126,
-      "oran": 0.183,
+      "px": 19,
+      "yalniz": 116,
+      "oran": 0.164,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -3903,7 +3902,7 @@
       "id": "p0769",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar üst)",
       "px": 0,
-      "yalniz": 99,
+      "yalniz": 86,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3913,7 +3912,7 @@
       "id": "p0770",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol arka duvar üst)",
       "px": 0,
-      "yalniz": 131,
+      "yalniz": 122,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3923,7 +3922,7 @@
       "id": "p0771",
       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar alt)",
       "px": 0,
-      "yalniz": 81,
+      "yalniz": 79,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3933,7 +3932,7 @@
       "id": "p0772",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol arka duvar alt)",
       "px": 0,
-      "yalniz": 115,
+      "yalniz": 105,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3943,7 +3942,7 @@
       "id": "p0773",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sağ y-60)",
       "px": 0,
-      "yalniz": 144,
+      "yalniz": 132,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3952,9 +3951,9 @@
      {
       "id": "p0774",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sağ y-60)",
-      "px": 110,
-      "yalniz": 187,
-      "oran": 0.588,
+      "px": 101,
+      "yalniz": 173,
+      "oran": 0.584,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -3963,7 +3962,7 @@
       "id": "p0775",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sağ y+70)",
       "px": 0,
-      "yalniz": 175,
+      "yalniz": 157,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3972,9 +3971,9 @@
      {
       "id": "p0776",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sağ y+70)",
-      "px": 139,
-      "yalniz": 229,
-      "oran": 0.607,
+      "px": 126,
+      "yalniz": 209,
+      "oran": 0.603,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -3983,7 +3982,7 @@
       "id": "p0777",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sol y-60)",
       "px": 0,
-      "yalniz": 90,
+      "yalniz": 85,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -3993,7 +3992,7 @@
       "id": "p0778",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sol y-60)",
       "px": 0,
-      "yalniz": 122,
+      "yalniz": 114,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4003,7 +4002,7 @@
       "id": "p0779",
       "ad": "Isıl gömme somun M3 (kafa ön/arka sol y+70)",
       "px": 0,
-      "yalniz": 107,
+      "yalniz": 97,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4013,7 +4012,7 @@
       "id": "p0780",
       "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sol y+70)",
       "px": 0,
-      "yalniz": 143,
+      "yalniz": 135,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4022,9 +4021,9 @@
      {
       "id": "p0781",
       "ad": "Yüz ekranı WaveShare 10,1\" QLED HDMI",
-      "px": 99241,
-      "yalniz": 130359,
-      "oran": 0.761,
+      "px": 92074,
+      "yalniz": 120819,
+      "oran": 0.762,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -4033,7 +4032,7 @@
       "id": "p0782",
       "ad": "Ekran tırnağı üst sağ",
       "px": 0,
-      "yalniz": 2300,
+      "yalniz": 2097,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4043,7 +4042,7 @@
       "id": "p0783",
       "ad": "Köpük bant (tırnak üst sağ)",
       "px": 0,
-      "yalniz": 543,
+      "yalniz": 494,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4053,7 +4052,7 @@
       "id": "p0784",
       "ad": "Tırnak cıvatası M3x6 ISO 7380 (üst sağ)",
       "px": 0,
-      "yalniz": 218,
+      "yalniz": 197,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4063,7 +4062,7 @@
       "id": "p0785",
       "ad": "Isıl gömme somun M3 (tırnak boss üst sağ)",
       "px": 0,
-      "yalniz": 160,
+      "yalniz": 143,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4073,7 +4072,7 @@
       "id": "p0786",
       "ad": "Ekran tırnağı üst sol",
       "px": 0,
-      "yalniz": 1492,
+      "yalniz": 1381,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4083,7 +4082,7 @@
       "id": "p0787",
       "ad": "Köpük bant (tırnak üst sol)",
       "px": 0,
-      "yalniz": 333,
+      "yalniz": 313,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4093,7 +4092,7 @@
       "id": "p0788",
       "ad": "Tırnak cıvatası M3x6 ISO 7380 (üst sol)",
       "px": 0,
-      "yalniz": 167,
+      "yalniz": 158,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4103,7 +4102,7 @@
       "id": "p0789",
       "ad": "Isıl gömme somun M3 (tırnak boss üst sol)",
       "px": 0,
-      "yalniz": 126,
+      "yalniz": 115,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4113,7 +4112,7 @@
       "id": "p0790",
       "ad": "Ekran tırnağı alt sağ",
       "px": 0,
-      "yalniz": 1599,
+      "yalniz": 1469,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4123,7 +4122,7 @@
       "id": "p0791",
       "ad": "Köpük bant (tırnak alt sağ)",
       "px": 0,
-      "yalniz": 427,
+      "yalniz": 387,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4133,7 +4132,7 @@
       "id": "p0792",
       "ad": "Tırnak cıvatası M3x6 ISO 7380 (alt sağ)",
       "px": 0,
-      "yalniz": 178,
+      "yalniz": 161,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4143,7 +4142,7 @@
       "id": "p0793",
       "ad": "Isıl gömme somun M3 (tırnak boss alt sağ)",
       "px": 0,
-      "yalniz": 134,
+      "yalniz": 121,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4153,7 +4152,7 @@
       "id": "p0794",
       "ad": "Ekran tırnağı alt sol",
       "px": 0,
-      "yalniz": 1098,
+      "yalniz": 1023,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4163,7 +4162,7 @@
       "id": "p0795",
       "ad": "Köpük bant (tırnak alt sol)",
       "px": 0,
-      "yalniz": 276,
+      "yalniz": 260,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4173,7 +4172,7 @@
       "id": "p0796",
       "ad": "Tırnak cıvatası M3x6 ISO 7380 (alt sol)",
       "px": 0,
-      "yalniz": 136,
+      "yalniz": 131,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4183,7 +4182,7 @@
       "id": "p0797",
       "ad": "Isıl gömme somun M3 (tırnak boss alt sol)",
       "px": 0,
-      "yalniz": 106,
+      "yalniz": 95,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4192,9 +4191,9 @@
      {
       "id": "p0798",
       "ad": "Kamera Raspberry Pi Camera Module 3",
-      "px": 246,
-      "yalniz": 2558,
-      "oran": 0.096,
+      "px": 231,
+      "yalniz": 2350,
+      "oran": 0.098,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -4203,7 +4202,7 @@
       "id": "p0799",
       "ad": "Kamera vidası M2x8 PT (0)",
       "px": 0,
-      "yalniz": 127,
+      "yalniz": 117,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4213,7 +4212,7 @@
       "id": "p0800",
       "ad": "Kamera vidası M2x8 PT (1)",
       "px": 0,
-      "yalniz": 129,
+      "yalniz": 116,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4223,7 +4222,7 @@
       "id": "p0801",
       "ad": "Kamera vidası M2x8 PT (2)",
       "px": 0,
-      "yalniz": 129,
+      "yalniz": 116,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4233,7 +4232,7 @@
       "id": "p0802",
       "ad": "Kamera vidası M2x8 PT (3)",
       "px": 0,
-      "yalniz": 130,
+      "yalniz": 121,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4243,7 +4242,7 @@
       "id": "p0822",
       "ad": "Köpük bant (yedek USB ses kartı için; kart takılmaz, bant yapıştırılmaz)",
       "px": 0,
-      "yalniz": 3206,
+      "yalniz": 2968,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4253,7 +4252,7 @@
       "id": "p0823",
       "ad": "USB ses kartı (yedek, takılmaz)",
       "px": 0,
-      "yalniz": 4195,
+      "yalniz": 3886,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4263,7 +4262,7 @@
       "id": "p0824",
       "ad": "Köpük bant (PAM8403 amfi)",
       "px": 0,
-      "yalniz": 1340,
+      "yalniz": 1242,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4273,7 +4272,7 @@
       "id": "p0825",
       "ad": "PAM8403 amfi",
       "px": 0,
-      "yalniz": 1604,
+      "yalniz": 1477,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4283,7 +4282,7 @@
       "id": "p0826",
       "ad": "ReSpeaker Mic Array v2.0",
       "px": 0,
-      "yalniz": 4405,
+      "yalniz": 3994,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4293,7 +4292,7 @@
       "id": "p0827",
       "ad": "Dizi vidası M2x8 PT (0)",
       "px": 0,
-      "yalniz": 136,
+      "yalniz": 112,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4303,7 +4302,7 @@
       "id": "p0828",
       "ad": "Dizi vidası M2x8 PT (1)",
       "px": 0,
-      "yalniz": 122,
+      "yalniz": 109,
       "oran": 0.0,
       "karede": true,
       "gorunur": false,
@@ -4471,8 +4470,8 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Arka kafa kabuğu sağ",
-     "px": 244889,
-     "yalniz": 245005,
+     "px": 138416,
+     "yalniz": 209863,
      "gorunur": true,
      "parca": 12,
      "ic_gorunmeyen": [
@@ -4504,6 +4503,24 @@
        "masada_gorunur": true
       },
       {
+       "id": "p0769",
+       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar üst)",
+       "px": 0,
+       "masada": "31.1",
+       "masada_px": 83,
+       "masada_yalniz": 83,
+       "masada_gorunur": true
+      },
+      {
+       "id": "p0771",
+       "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar alt)",
+       "px": 0,
+       "masada": "31.1",
+       "masada_px": 98,
+       "masada_yalniz": 98,
+       "masada_gorunur": true
+      },
+      {
        "id": "p0773",
        "ad": "Isıl gömme somun M3 (kafa ön/arka sağ y-60)",
        "px": 0,
@@ -4520,49 +4537,13 @@
        "masada_px": 127,
        "masada_yalniz": 127,
        "masada_gorunur": true
-      },
-      {
-       "id": "p0826",
-       "ad": "ReSpeaker Mic Array v2.0",
-       "px": 0,
-       "masada": "31.1",
-       "masada_px": 9180,
-       "masada_yalniz": 9309,
-       "masada_gorunur": true
-      },
-      {
-       "id": "p0827",
-       "ad": "Dizi vidası M2x8 PT (0)",
-       "px": 0,
-       "masada": "31.1",
-       "masada_px": 48,
-       "masada_yalniz": 92,
-       "masada_gorunur": true
-      },
-      {
-       "id": "p0828",
-       "ad": "Dizi vidası M2x8 PT (1)",
-       "px": 0,
-       "masada": "31.1",
-       "masada_px": 44,
-       "masada_yalniz": 85,
-       "masada_gorunur": true
-      },
-      {
-       "id": "p0829",
-       "ad": "Dizi vidası M2x8 PT (2)",
-       "px": 0,
-       "masada": "31.1",
-       "masada_px": 42,
-       "masada_yalniz": 85,
-       "masada_gorunur": true
       }
      ]
     },
     "sema": {
      "sema6": [
-      0,
-      2812
+      1473,
+      2100
      ]
     },
     "yabanci_sema": [],
@@ -4692,8 +4673,8 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Arka kafa kabuğu sol",
-     "px": 225226,
-     "yalniz": 225227,
+     "px": 126228,
+     "yalniz": 216845,
      "gorunur": true,
      "parca": 9,
      "ic_gorunmeyen": [
@@ -4736,49 +4717,31 @@
       {
        "id": "p0822",
        "ad": "Köpük bant (yedek USB ses kartı için; kart takılmaz, bant yapıştırılmaz)",
-       "px": 0,
+       "px": 160,
        "masada": "31.3",
        "masada_px": 3507,
        "masada_yalniz": 3507,
        "masada_gorunur": true
       },
       {
-       "id": "p0823",
-       "ad": "USB ses kartı (yedek, takılmaz)",
-       "px": 0,
-       "masada": "31.3",
-       "masada_px": 5927,
-       "masada_yalniz": 5927,
-       "masada_gorunur": true
-      },
-      {
        "id": "p0824",
        "ad": "Köpük bant (PAM8403 amfi)",
-       "px": 0,
+       "px": 120,
        "masada": "31.3",
        "masada_px": 1560,
        "masada_yalniz": 1560,
-       "masada_gorunur": true
-      },
-      {
-       "id": "p0825",
-       "ad": "PAM8403 amfi",
-       "px": 0,
-       "masada": "31.3",
-       "masada_px": 2225,
-       "masada_yalniz": 2225,
        "masada_gorunur": true
       }
      ]
     },
     "sema": {
      "sema7": [
-      0,
-      1141
+      1651,
+      1833
      ],
      "sema26": [
-      78,
-      5419
+      7242,
+      7364
      ]
     },
     "yabanci_sema": [],
@@ -5358,7 +5321,7 @@
     "kod": "K2",
     "hazir": true,
     "sinir": false,
-    "yeni": 5,
+    "yeni": 4,
     "gorunmeyen": [
      {
       "id": "p1184",
@@ -5383,9 +5346,9 @@
      {
       "id": "p1186",
       "ad": "Kablo yolu 7: Servo 6 V B (G15 16 AWG → SV2 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 B (−49; 75) → dağıtım B (−72; 205) → uzatmalar S05–S08: sol kol",
-      "px": 228,
+      "px": 234,
       "yalniz": 1428,
-      "oran": 0.16,
+      "oran": 0.164,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -5440,9 +5403,9 @@
      {
       "id": "p1186",
       "ad": "Kablo yolu 7: Servo 6 V B (G15 16 AWG → SV2 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 B (−49; 75) → dağıtım B (−72; 205) → uzatmalar S05–S08: sol kol",
-      "px": 228,
+      "px": 234,
       "yalniz": 1428,
-      "oran": 0.16,
+      "oran": 0.164,
       "karede": true,
       "gorunur": false,
       "saydam": false
@@ -5453,16 +5416,6 @@
       "px": 1018,
       "yalniz": 1163,
       "oran": 0.875,
-      "karede": true,
-      "gorunur": true,
-      "saydam": false
-     },
-     {
-      "id": "p1191",
-      "ad": "Kablo yolu 12: Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de. Şemanın direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
-      "px": 1031,
-      "yalniz": 1235,
-      "oran": 0.835,
       "karede": true,
       "gorunur": true,
       "saydam": false
@@ -5477,28 +5430,7 @@
     "hazir": true,
     "sinir": false,
     "yeni": 2,
-    "gorunmeyen": [
-     {
-      "id": "p1184",
-      "ad": "Kablo yolu 5: Servo 6 V A (G14 16 AWG → SV1 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 A (0; 170) → dağıtım A (72; 205) → uzatmalar S01–S04: sağ kol",
-      "px": 419,
-      "yalniz": 2308,
-      "oran": 0.182,
-      "karede": true,
-      "gorunur": false,
-      "saydam": false
-     },
-     {
-      "id": "p1186",
-      "ad": "Kablo yolu 7: Servo 6 V B (G15 16 AWG → SV2 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 B (−49; 75) → dağıtım B (−72; 205) → uzatmalar S05–S08: sol kol",
-      "px": 397,
-      "yalniz": 2365,
-      "oran": 0.168,
-      "karede": true,
-      "gorunur": false,
-      "saydam": false
-     }
-    ],
+    "gorunmeyen": [],
     "istisna": [],
     "birim": null,
     "sema": {},
@@ -5507,26 +5439,26 @@
      {
       "id": "p1184",
       "ad": "Kablo yolu 5: Servo 6 V A (G14 16 AWG → SV1 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 A (0; 170) → dağıtım A (72; 205) → uzatmalar S01–S04: sağ kol",
-      "px": 419,
-      "yalniz": 2308,
-      "oran": 0.182,
+      "px": 2213,
+      "yalniz": 2504,
+      "oran": 0.884,
       "karede": true,
-      "gorunur": false,
+      "gorunur": true,
       "saydam": false
      },
      {
       "id": "p1186",
       "ad": "Kablo yolu 7: Servo 6 V B (G15 16 AWG → SV2 16 AWG): anahtarlı bara → 7,5 A mini hat sigortası → XL4016 B (−49; 75) → dağıtım B (−72; 205) → uzatmalar S05–S08: sol kol",
-      "px": 397,
-      "yalniz": 2365,
-      "oran": 0.168,
+      "px": 1709,
+      "yalniz": 2320,
+      "oran": 0.737,
       "karede": true,
-      "gorunur": false,
+      "gorunur": true,
       "saydam": false
      }
     ],
     "saydam": [],
-    "gecti": false
+    "gecti": true
    },
    {
     "adres": "32.2",
@@ -5534,18 +5466,7 @@
     "hazir": true,
     "sinir": false,
     "yeni": 1,
-    "gorunmeyen": [
-     {
-      "id": "p1185",
-      "ad": "Kablo yolu 6: Servo uzatmaları kafaya (S09, S10; 22 AWG): pan + tilt (hat C, XL4016 C güç panelinde; direk üstü, R62 halkasından)",
-      "px": 0,
-      "yalniz": 19568,
-      "oran": 0.0,
-      "karede": true,
-      "gorunur": false,
-      "saydam": false
-     }
-    ],
+    "gorunmeyen": [],
     "istisna": [],
     "birim": null,
     "sema": {},
@@ -5554,16 +5475,16 @@
      {
       "id": "p1185",
       "ad": "Kablo yolu 6: Servo uzatmaları kafaya (S09, S10; 22 AWG): pan + tilt (hat C, XL4016 C güç panelinde; direk üstü, R62 halkasından)",
-      "px": 0,
-      "yalniz": 19568,
-      "oran": 0.0,
+      "px": 19238,
+      "yalniz": 19357,
+      "oran": 0.994,
       "karede": true,
-      "gorunur": false,
+      "gorunur": true,
       "saydam": false
      }
     ],
     "saydam": [],
-    "gecti": false
+    "gecti": true
    },
    {
     "adres": "32.3",
@@ -5596,29 +5517,18 @@
     "kod": "K2",
     "hazir": true,
     "sinir": false,
-    "yeni": 1,
+    "yeni": 0,
     "gorunmeyen": [],
     "istisna": [],
     "birim": null,
     "sema": {
      "sema2": [
-      611,
-      1314
+      2623,
+      2623
      ]
     },
     "yabanci_sema": [],
-    "parca": [
-     {
-      "id": "p1191",
-      "ad": "Kablo yolu 12: Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de. Şemanın direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
-      "px": 1796,
-      "yalniz": 2105,
-      "oran": 0.853,
-      "karede": true,
-      "gorunur": true,
-      "saydam": false
-     }
-    ],
+    "parca": [],
     "saydam": [],
     "gecti": true
    },
@@ -5633,16 +5543,12 @@
     "birim": null,
     "sema": {
      "sema0": [
-      1131,
-      4568
+      4266,
+      7870
      ],
      "sema1": [
-      229,
-      3558
-     ],
-     "sema3": [
-      1714,
-      4596
+      622,
+      5316
      ]
     },
     "yabanci_sema": [],
@@ -5659,7 +5565,12 @@
     "gorunmeyen": [],
     "istisna": [],
     "birim": null,
-    "sema": {},
+    "sema": {
+     "sema3": [
+      4817,
+      8796
+     ]
+    },
     "yabanci_sema": [],
     "parca": [],
     "saydam": [],
@@ -5676,8 +5587,8 @@
     "birim": null,
     "sema": {
      "sema4": [
-      896,
-      3400
+      3188,
+      3209
      ]
     },
     "yabanci_sema": [],
@@ -21640,32 +21551,8 @@
    "sema": 60,
    "birden_cok": [],
    "hic": [],
-   "piksel_sifir": [
-    {
-     "i": 6,
-     "ad": "ReSpeaker USB (U01): Pi USB 1 → ReSpeaker (kısa micro USB)",
-     "adim": 31,
-     "vurgulu": [
-      {
-       "adres": "31.2",
-       "px": 0
-      }
-     ],
-     "gecti": true
-    },
-    {
-     "i": 7,
-     "ad": "PAM8403 5 V (K05, 18 AWG): D24V50F5 → PAM (K10 a)",
-     "adim": 31,
-     "vurgulu": [
-      {
-       "adres": "31.4",
-       "px": 0
-      }
-     ],
-     "gecti": true
-    }
-   ],
+   "piksel_sifir": [],
+   "cizilmeyen": [],
    "gecti": true,
    "olcum": [
     {
@@ -21675,7 +21562,7 @@
      "vurgulu": [
       {
        "adres": "32.5",
-       "px": 1131
+       "px": 4266
       }
      ],
      "gecti": true
@@ -21687,7 +21574,7 @@
      "vurgulu": [
       {
        "adres": "32.5",
-       "px": 229
+       "px": 622
       }
      ],
      "gecti": true
@@ -21699,7 +21586,7 @@
      "vurgulu": [
       {
        "adres": "32.4",
-       "px": 611
+       "px": 2623
       }
      ],
      "gecti": true
@@ -21710,8 +21597,8 @@
      "adim": 32,
      "vurgulu": [
       {
-       "adres": "32.5",
-       "px": 1714
+       "adres": "32.6",
+       "px": 4817
       }
      ],
      "gecti": true
@@ -21723,7 +21610,7 @@
      "vurgulu": [
       {
        "adres": "32.7",
-       "px": 896
+       "px": 3188
       }
      ],
      "gecti": true
@@ -21747,7 +21634,7 @@
      "vurgulu": [
       {
        "adres": "31.2",
-       "px": 0
+       "px": 1473
       }
      ],
      "gecti": true
@@ -21759,7 +21646,7 @@
      "vurgulu": [
       {
        "adres": "31.4",
-       "px": 0
+       "px": 1651
       }
      ],
      "gecti": true
@@ -21819,7 +21706,7 @@
      "vurgulu": [
       {
        "adres": "17.5",
-       "px": 559
+       "px": 2856
       }
      ],
      "gecti": true
@@ -21855,7 +21742,7 @@
      "vurgulu": [
       {
        "adres": "17.10",
-       "px": 840
+       "px": 1860
       }
      ],
      "gecti": true
@@ -21867,7 +21754,7 @@
      "vurgulu": [
       {
        "adres": "17.10",
-       "px": 2216
+       "px": 4522
       }
      ],
      "gecti": true
@@ -21879,7 +21766,7 @@
      "vurgulu": [
       {
        "adres": "17.10",
-       "px": 746
+       "px": 2964
       }
      ],
      "gecti": true
@@ -21891,7 +21778,7 @@
      "vurgulu": [
       {
        "adres": "17.10",
-       "px": 3611
+       "px": 6294
       }
      ],
      "gecti": true
@@ -21903,7 +21790,7 @@
      "vurgulu": [
       {
        "adres": "17.10",
-       "px": 2545
+       "px": 4849
       }
      ],
      "gecti": true
@@ -21927,7 +21814,7 @@
      "vurgulu": [
       {
        "adres": "31.4",
-       "px": 78
+       "px": 7242
       }
      ],
      "gecti": true
@@ -22394,7 +22281,7 @@
   "kabuk_yeni": 335,
   "kabuk_gorunmeyen": 0,
   "kabuk_istisna": 0,
-  "kabuk_birim_ic": 39,
+  "kabuk_birim_ic": 35,
   "masa_yabanci_sema": 0,
   "gecti": true
  },
@@ -22956,6 +22843,6 @@
  },
  "kontrol_hatasi": null,
  "goruntu": [],
- "sure_s": 871,
+ "sure_s": 873,
  "gecti": true
 }

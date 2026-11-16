@@ -419,7 +419,8 @@
 
     // ---------------------------------------------------------------- F10e: kare başlığı (karenin hangi adım / alt adım ve bakış yönü
     // olduğu karenin kendisinden okunsun: benzer kare çiftleri 34.3 / 34.5, 34.4 / 34.6, 49.3 / 49.4). Bakış yönü kamera vektöründen
-    // (robot: +x sağ, +y yukarı, +z ön).
+    // (robot: +x sağ, +y yukarı, +z ön). P10.7b2e kısım 2 (K65, planlama/d158/sag-sol-karari.md): "sağ" = robota önden bakanın sağı
+    // (+x; robotun kendi solu), rehberin adım 0 tanımıyla aynı; eksenler sağ elli.
     // Yalnız yazdırma / PDF karesinde (?sahne=1): etkileşimli sayfada aynı ad ve numara sahnenin yanındaki panel başlığında; araç
     // çubuğunun altında ayrıca başlık bandı güvenli alanı daraltıyor, yeni parçalar küçülüyordu (F10d görünürlüğü: 33.5, 33.7, 36.1'de
     // cıvata / ısıl gömme 30 px eşiğinin altına indi)
@@ -432,7 +433,7 @@
       e.innerHTML = "<b>" + esc(adres(s, ss)) + "</b> " + esc(ad) + " <span class='bakis'>· bakış: " + esc(bakisMetin(y)) + "</span>";
       e.hidden = false;
     }
-    function bakisMetin(y) {                          // "sağ-ön-üstten", "sol-arkadan"
+    function bakisMetin(y) {                          // "sağ-ön-üstten", "sol-arkadan"; sağ / sol önden bakana göre (adım 0 tanımı)
       const t = [];
       if (y.x > 0.3) t.push("sağ"); else if (y.x < -0.3) t.push("sol");
       if (y.z > 0.3) t.push("ön"); else if (y.z < -0.3) t.push("arka");
@@ -521,6 +522,15 @@
       // cıvatalara sıkı kadraj yerini göstermiyordu (F10d "kadraj yakın"); cıvataların yeri işaret halkalarıyla seçilir
       if (uc.length && sonEv.length && uc.every((x) => x.k.v.r === "baglanti")) {
         sonEv.forEach((id) => { const o = PAR[id] && PAR[id].obj; if (o && o.visible) koseler(o, null, nokta); });
+      }
+      // P10.7b2e kısım 2 (F10l-kare-inceleme 17.10, 17.11, 32.6): alt adımın odak parçaları (veri sira_grup[].odak; rehber_metin
+      // "odak" deseni, saydam ile aynı kural). Varsa kadraj yalnız onlara sığdırılır: yeni parçası olmayan alt adım (17.11, 32.6) bütün
+      // robota açılmasın, yeni kablosu direk boyunca uzanan alt adım (17.10) tabana baksın. Yalnız kadraj; renk ve vurgu değişmez.
+      const agOdak = altGrup(s);
+      if (agOdak && agOdak.odak && agOdak.odak.length) {
+        const on = [];
+        agOdak.odak.forEach((id) => { const o = PAR[id] && PAR[id].obj; if (o && o.visible) koseler(o, null, on); });
+        if (on.length) { nokta.length = 0; on.forEach((p) => nokta.push(p)); }
       }
       if (!nokta.length && !gorunur.isEmpty()) {
         for (let i = 0; i < 8; i++) gNokta.push(new THREE.Vector3(i & 1 ? gorunur.max.x : gorunur.min.x, i & 2 ? gorunur.max.y : gorunur.min.y,
@@ -958,8 +968,8 @@
       miniYer(s);
       miniKamera();
     }
-    // F10e düzeltme 1 (kontrol bulgu 4): küçük görünümün altında yeni parçaların yeri: taraf (vurgulu kutunun ortası; robotun sağı
-    // +x, önü +z) ve vurgulu kutunun yükseklik aralığı (y, mm, 10'a yuvarlı). Benzer kare çiftleri (34.3 / 34.5, 34.4 / 34.6, 49.3 / 49.4) aynı bakıştan
+    // F10e düzeltme 1 (kontrol bulgu 4): küçük görünümün altında yeni parçaların yeri: taraf (vurgulu kutunun ortası; robota önden
+    // bakanın sağı +x, P10.7b2e kısım 2 / K65: robotun kendi solu; önü +z) ve vurgulu kutunun yükseklik aralığı (y, mm, 10'a yuvarlı). Benzer kare çiftleri (34.3 / 34.5, 34.4 / 34.6, 49.3 / 49.4) aynı bakıştan
     // çizildiği için 3B karede ayrılmıyordu; etiket küçük görünüm kutusunun içinde, sahneyi küçültmez (güvenli alan değişmez).
     function miniYer(s) {
       const e = $("mini-yer"); if (!e) return;
@@ -972,7 +982,7 @@
       // F10f (F10e devri c): y yerden yükseklik değil, model koordinatı (robotun en alt noktası y < 0); yerden yükseklik ayrıca, en alt
       // parçaya göre (10'a yuvarlı)
       const ta = robotTabanY(), h0 = Math.round((MINI.hk.min.y - ta) / 10) * 10, h1 = Math.round((MINI.hk.max.y - ta) / 10) * 10;
-      e.title = "Bu adımın parçaları: robotun " + t.join("-") + " tarafı; y " + y0 + "–" + y1 + " mm (model koordinatı, yerden yükseklik değil; " +
+      e.title = "Bu adımın parçaları (sağ / sol robota önden bakana göre): " + t.join("-") + " tarafı; y " + y0 + "–" + y1 + " mm (model koordinatı, yerden yükseklik değil; " +
         "robotun en alt noktası y " + Math.round(ta) + "). Yerden yaklaşık " + h0 + "–" + h1 + " mm";
       e.hidden = false;
       // F10f (F10e devri d): dar ekranda satır kaymasın: tek satır, sığmazsa yazı küçülür (en az 7 px)
@@ -1299,7 +1309,9 @@
       if (ago && ago.sema_ortulu) SEMA_OBJ.forEach((o, i) => {
         if (!o || !o.visible || o.userData.d !== "simdi") return;
         Object.keys(ago.sema_ortulu).forEach((x) => {
-          if (SEMA[i].ad.indexOf(x) >= 0) h.push("<span class='not'>" + esc(SEMA[i].ad.split(":")[0]) + ": " + esc(ago.sema_ortulu[x]) + " (görünümü döndür)</span>");
+          // P10.7b2e kısım 2 (F10l-kare-inceleme 31.4): "(görünümü döndür)" yalnız etkileşimli sayfada; yazdırma karesinde (?sahne=1)
+          // döndürülemez, basılı kâğıtta yanlış yönlendirir
+          if (SEMA[i].ad.indexOf(x) >= 0) h.push("<span class='not'>" + esc(SEMA[i].ad.split(":")[0]) + ": " + esc(ago.sema_ortulu[x]) + (SAHNE ? "" : " (görünümü döndür)") + "</span>");
         });
       });
       if (sonEv.length) h.push("<span><i style='background:" + EV_RENK + "'></i>Bağlandığı yer</span>");

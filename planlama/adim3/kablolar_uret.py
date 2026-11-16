@@ -228,6 +228,11 @@ def uret(veri, maliyet=None):
     y("")
     y(f"Tablo sürümü {veri['surum']}, tarih {veri['tarih']}. {veri['aciklama']}")
     y("")
+    # P10.7b2e kısım 2 (Echo kararı 16.11.2026, K65): sağ / sol tanımı; montaj rehberinin adım 0'ındaki cümleyle aynı
+    y("**Sağ / sol:** Bu rehberde ve kablo tablosunda sağ / sol, robota önden bakan kişinin sağı / soludur; robotun kendi sağı / "
+      "solu değildir. Kablo ve uç adlarındaki sağ / sol (ör. BTS7960 sağ, arka sağ enkoder, sağ sonar, sağ kol) bu tanıma göredir; "
+      "ESP32 yazılımındaki adlar robotun kendi sağını / solunu kullanır, karşılıkları `planlama/d158/sag-sol-karari.md`'de.")
+    y("")
     y("## Özet")
     y("")
     dur = Counter(r["durum"] for r in K)
@@ -363,7 +368,7 @@ def uret(veri, maliyet=None):
         y(f"| {mt['ad']} | {renk} | {sayi(round(mm / 1000, 2))} m | {sayi(round(mm / 1000 * (1 + pay), 1))} m | {liste} | "
           f"{i}: {hucre(kal[i]['ad'])}{fiyat} |")
     y("")
-    y("## Orkestratör kararları (14.11, 15.11)")
+    y("## Orkestratör kararları (14.11, 15.11, 16.11)")
     y("")
     y("| Kod | Karar | Metin | Tabloda uygulama | Veren |")
     y("|---|---|---|---|---|")

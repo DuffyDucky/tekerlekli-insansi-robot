@@ -370,6 +370,9 @@ GRUP = {
     # K61 B → A (P10.9a kontrolü B4, orkestratör kararı): seçenek a kalemi siparişten çıkarır; K12 ve K32 ile aynı ölçüt.
     "K61": ("A", "Seçenek a kalemi siparişten çıkarır (Bas-konuş düğmesi 76,24 TL); karar S = 16.11 siparişinden önce, b seçilirse kablo ve yer P10.7b kablajında."),
     "K62": ("C", "Kayıt; döngü kuralının yorumu (sonraki paketlerin tur sayımı)."),
+    # P10.7b2e kısım 2 (F10m-gunluk.md § 11): K64 kuyruğa açık girdiğinde GRUP'ta yoktu (KeyError 'K64'); ikisi de 16.11'de kapandı
+    "K64": ("B", "Fiziksel montajdan önce (B5a güç paneli, K1 17.1 iki bara); kapandı 16.11, a: tutucu CAD paketinde basılır."),
+    "K65": ("B", "K1 kablajından ve ilk sürüşten önce (sağ / sol tanımı, kurulum testi); kapandı 16.11, yazılım düzeltmesi Efe'de."),
 }
 
 
@@ -828,6 +831,16 @@ def uret():
 
 def main():
     arg = sys.argv[1:]
+    # P10.7b2e düzeltme turu 1 (F10m-kontrol kaza notu): --help / -h ya da tanınmayan bayrak yazmadan durur (eskiden tanınmayan bayrak
+    # görmezden gelinip depodaki sonuc-rapor.html'in üzerine yazılıyordu)
+    if "-h" in arg or "--help" in arg:
+        print(__doc__.split("\n\nSayıların bağı")[0])
+        return 0
+    bilinmeyen = [a for i, a in enumerate(arg) if a not in ("--kuru", "--cikti") and not (i > 0 and arg[i - 1] == "--cikti")]
+    if bilinmeyen or (arg and arg[-1] == "--cikti"):
+        print("bilinmeyen bayrak ya da eksik değer: %s (yazılmadı; kullanım için --help)" % (" ".join(bilinmeyen) or "--cikti YOL"),
+              file=sys.stderr)
+        return 2
     cikti = CIKTI
     if "--cikti" in arg:   # P10.9a: depo dışına deneme üretimi (göreli bağlantılar sayfanın asıl yerine, planlama/d158/'ye göredir)
         cikti = arg[arg.index("--cikti") + 1]
