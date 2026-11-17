@@ -434,8 +434,9 @@ PAKET_SONUC = {
               "Sürüyor: P10.7b2f (Kablo yolu 12 gerilemesi, uç etiketleri; kısım 2: kayıt düzeltmeleri, VIN'e seri Schottky K66; "
               "kaynak düzeyinde). "
               # P10.7b2f kısım 2: Efe'nin iki cevabı 14.11'de geldi (pano #7 mesaj #28), kayda 16.11'de geçti; "Kalan"dan çıktı
+              # P10.9b (17.11.2026, orkestratör kararı): K60 (A + köprülü klemens) ve K61 (a) kapandı; "Kalan"dan çıktı (P109b-gunluk.md)
               "Kalan: taban yollarının yeniden tasarımı, boyların ölçümü, düğüm tutucusu, boyun tüneli deneme parçası, G19 / G20 / G24 / G26 "
-              "(yalnız onayla); K60, K61.", [DONGU]),
+              "(yalnız onayla).", [DONGU]),
     "P10.8": ("Açık: satın alınan parça modelleri parçalar gelince.", [DONGU]),
     "P10.9": ("Açık: bu sayfanın F10 yenilemesi. P10.9a ön paketi üretici ve denetimi iki basamaklı faza açtı; sayılar ve son üretim faz sonunda.",
               [DONGU, "planlama/d158/P109a-gunluk.md"]),

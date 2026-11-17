@@ -14,17 +14,17 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | # | Karar | Durum | Önerilen varsayılan | Bloke ettiği |
 |---|---|---|---|---|
 | K1 | Altıncı USB cihazı | kapandı (14.11; orkestratör kararı, Ahmet'in 13.11 yetkilendirmesiyle; kontrol GEÇER 14.11; a, 4 cihaz) | — | — |
-| K2 | AI HAT+ × arka üst boss: boss taşı / HAT yönü | **açık** | Boss taşı | P1.3 seçimi, P6.1 |
-| K3 | Düz zeminde elde yük sınırı | **açık** (P3.1 tablosu eklendi, F3a) | b: her elde ≤ 100 g, yalnız düz zeminde; rampada yüksüz | P3.1 sonucu, P3.2, P9.3 |
-| K4 | Listede olmayan 6 kablo kalemi | **açık** | Koşullu kalem, fiyatsız | P4.2, P8.1 |
+| K2 | AI HAT+ × arka üst boss: boss taşı / HAT yönü | **açık** (teknik yarı 17.11: a, boss taşınır; bütçe yarısı Ahmet'te) | Boss taşı | P1.3 seçimi, P6.1 |
+| K3 | Düz zeminde elde yük sınırı | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; b: her elde ≤ 100 g, yalnız düz zeminde, rampada yüksüz; 2209-B metninde elde yük vaadi yok) | — | — |
+| K4 | Listede olmayan 6 kablo kalemi | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; a, zaten uygulanmış: `maliyet.json` koşullu satırlar) | — | — |
 | K5 | Hub ve ses kartı arka kabuk yan duvarında, servis | kapandı (B + R1) | — | — |
-| K6 | Hoparlör duvara paralel / yatay eksene kama | **açık** | Paralel, ölçümden sonra yeniden | P1.7, P8.3 |
-| K7 | Dizi kabuğun altında: "kafanın üstü" ifadesi kabul mü | **açık** (yalnız ifade; yer kapandı) | Kabul | P9.3 |
+| K6 | Hoparlör duvara paralel / yatay eksene kama | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; a, paralel, akustik ölçümden sonra yeniden) | — | — |
+| K7 | Dizi kabuğun altında: "kafanın üstü" ifadesi kabul mü | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; a, ifade kabul) | — | — |
 | K8 | H1 sigorta erişimi | kapandı (29.10, seçenek a) | — | — |
-| K9 | El yükü 0,5 kg: servo değişimi mi 100 g sınırı mı | **açık** (1,58 m'de yeniden hesaplandı, F3a) | a: her elde ≤ 100 g | P3.2, P5.1, P8.1 |
+| K9 | El yükü 0,5 kg: servo değişimi mi 100 g sınırı mı | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; a: her elde ≤ 100 g, K3 b ile aynı sınır) | — | — |
 | K10 | PAM8403 5 V besleme noktası | kapandı (14.11; orkestratör kararı, Ahmet'in 13.11 yetkilendirmesiyle; kontrol GEÇER 14.11; a, masa testine bağlı kabul, geçmezse b) | — | — |
 | K11 | Göğüs ekranı 12 V dalının girişi (acil stopta ekran) | kapandı (14.11; orkestratör kararı, Ahmet'in 13.11 yetkilendirmesiyle; kontrol GEÇER 14.11; a, kutunun F6 3 A standart yuvası) | — | — |
-| K12 | Kafa havalandırması: yarık / 30 mm fan | **açık** | Yarıklar kalsın, fan yeri ayrılı | P8.1, P8.3 |
+| K12 | Kafa havalandırması: yarık / 30 mm fan | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; a, yarıklar; stres testinde tilt servo gövdesi > 50 °C ise fan) | — | — |
 | K13 | ReSpeaker LED'leri görünmese olur mu | **açık** | Görünmesin | P4.3 (yalnız "görünsün" seçilirse) |
 | K14 | Boyun demeti (Efe teyidi) | kapandı (14.11; orkestratör kararı, Ahmet'in 13.11 yetkilendirmesiyle; kontrol GEÇER 14.11; a, 5 kablo, kablo şartı + demetten önce fiş denemesi) | — | — |
 | K15 | Omuz bölümü taraması koşulsun mu | kapandı (08.11 onayı) | — | — |
@@ -43,45 +43,78 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K28 | Bütçe farkı (≈ +29.545 TL) hocaya bildirilsin mi | **açık** (F8a) | a: siparişten önce | sipariş onayı (S = 16.11; liste `planlama/maliyet.json`, P8.1 paketi 14.11 notuyla bayat) |
 | K29 | Erken alım: bu hafta mı, okul mu kişisel mi | **açık** (F8a) | Bu hafta, insert 168; okul/kişisel için yok | P9.1 kupon, kritik yol 1 |
 | K30 | Akü zamanlaması: Atakale bu hafta / S'de / Limacell | **açık** (F8a) | a: Atakale bu hafta; biterse Limacell S'de | Dal 2b, taban adım 9 |
-| K31 | Isıl gömme insert A/B/C (M3 ve M5) | **açık** (F8a) | M3: A (OD4 L4); M5: yok | K29, kupon C, P4.3 |
+| K31 | Isıl gömme insert A/B/C (M3 ve M5) | **açık** (F8a; teknik yarı 17.11: M3 A, M5 kupon deliği Ø6,7–6,8; alım yarısı Ahmet'te) | M3: A (OD4 L4); M5: yok | K29, kupon C, P4.3 |
 | K32 | Kafa ekranı: hocadan mı, satın alma mı | **açık** (F8a) | Kayıtta yok | `maliyet.json` öneri 8, K28, Parti 3 |
-| K33 | M6×16: ikinci satıcı / paslanmaz / fosfat şartı | **açık** (F8a) | a: paslanmaz DIN 912 A2 | Taban (aşama 5) |
+| K33 | M6×16: ikinci satıcı / paslanmaz / fosfat şartı | **açık** (F8a; teknik yarı 17.11: a, paslanmaz DIN 912 A2; alım yarısı Ahmet'te) | a: paslanmaz DIN 912 A2 | Taban (aşama 5) |
 | K34 | 3B baskı hizmeti ücretli mi, teklif | **açık** (F8a) | a: teklif S'den önce | K28, `maliyet.json` öneri 10 |
 | K35 | Onaylı olmayan satıcılar (6.063,11 TL) hocaya nasıl | **açık** (F8a) | Kayıtta yok | P8.1 liste biçimi, K29 |
 | K36 | 8 Ω hoparlör (PAKET A) stok 1 < 3 | **açık** (F8a) | Kayıtta yok | PAKET A siparişi |
 | K37 | Kamera Module 3 tükendi | **açık** (F8a) | a: S'de yeniden bak | Görüntü (ikinci aşama) |
-| K38 | S2 alt bölge hız sınırı ve kapanma sırası | **açık** (F2) | a: S2 < 20°'de ≤ 60°/s (yüklü ≤ 30°/s); kapanmada S2 ≤ 15° | `kod/` hareket planlayıcısı, kapanma |
-| K39 | Omuz durdurucu güçlendirme | **açık** (F2) | d: kök yarıçapı (P6.1) + DS3235 düşme ölçümü, sonra gerekirse | P6.1, ölçüm kâğıdı, K38 |
-| K40 | S2 sıfır kalibrasyonu ve sınır metni (`yana_alt_bosluk_mm`) | **açık** (F2) | a: horn dişe dayalı takılır; metin P6.1'de | P6.1, P7.1, `eklem_sinirlari.json` |
-| K41 | S1 yazılım aralığı: kod 0…160 ↔ CAD −45…135 | **açık** (F2 + F5) | a: kod −45…135 | `kod/` eklem sınırları, P5.1 |
+| K38 | S2 alt bölge hız sınırı ve kapanma sırası | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; a, K45 b ile: S2 < 20°'de yüksüz ≤ 60°/s, yüklü ≤ 30°/s; kapanmada S2 ≤ 15°) | — | — |
+| K39 | Omuz durdurucu güçlendirme | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; d: kök yarıçapı yapıldı, DS3235 düşme ölçümü, < 1,5 ise c + a ya da b) | — | — |
+| K40 | S2 sıfır kalibrasyonu ve sınır metni (`yana_alt_bosluk_mm`) | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; a: horn dişe dayalı takılır, 0,3 sentil geçer / 0,4 geçmez) | — | — |
+| K41 | S1 yazılım aralığı: kod 0…160 ↔ CAD −45…135 | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; a: kod S1 −45…135, mekanik durdurucu yok) | — | — |
 | K42 | PETG-CF miktarı: 1,5 kg yetmiyor | **açık** (F4c; F6b notu eklendi) | a: +1 makara (4 × 0,5 = 2,0 kg), +1.114,03 TL | S siparişi filament satırı, K34, Parti 0/2 |
-| K43 | Isıl gömme somun adedi: M3 177, M5 21 (plan 168 / 6) | **açık** (F4c) | Erken alımda M3 177 + pay, M5 21 + pay | K29, K31, Parti 0 kuponları |
-| K44 | `eklem_sinirlari.json`'un `kod/`'a yazılması | **açık** (F6a) | a: Ahmet onayıyla `kod/`'a yazılır + Efe'ye pano bilgisi | `kod/ortak/eklem_sinirlari.json` güncelliği, K2/K3 regresyon betikleri, P4.5 (`kod/`) |
-| K45 | S2 darbe hız sınırı (K38'i sayısallaştırır) | **açık** (F6a) | Kayıtta yok (a / b / c) | K38, `kod/` hareket planlayıcısı, K39 ölçümü |
-| K46 | Destek azaltma geometri önerileri (VESA, omuz yuvası, kol çatalı, omuz göbeği, göğüs bandı) | **açık** (F6b) | Şimdilik değişiklik yok; Parti 0 kuponundan sonra karar | Parti 1–2 dilimleme, K42 payı, tam tarama (geometri değişirse) |
-| K47 | Rehber kontrol görüntüleri (`planlama/rehber/goruntu/adim-*.png`) depoda nasıl tutulsun | **açık** (F9d) | b: yalnız sürüm commit'inde | Rehber turlarının `git add` listesi, depo büyümesi |
-| K48 | `tasarim/cad/lale158-model.js` artık dosyası | **açık** (F9d) | a: sil (Ahmet onayıyla) | `git status` temizliği (P0.1) |
-| K49 | Kalıcı izlenmeyenler ve `.gitignore` | **açık** (F9d) | 5 girdi `.gitignore`, 5 dosya commit, kalanı bağlı kararını bekler | P0.1 (git status temiz); K18–K24 ile birlikte |
-| K50 | Şarj girişi konnektörü: sigortadan sonra gerilimli erkek pimler | **açık** (F7d) | b: XT60E-F (dişi) panel; olmazsa a | İlk şarj, rehber F5 notu, `maliyet.json:111` |
-| K51 | Pi hattındaki ikinci P6KE6V8A: maliyette 2, model BOM'unda 1 | **açık** (F7c) | a: modele ve BOM'a 1 adet ekle (0 TL) | Model / BOM güncellemesi, rehber E3a TVS notu, çakışma taraması |
+| K43 | Isıl gömme somun adedi: M3 177, M5 21 (plan 168 / 6) | **açık** (F4c; teknik yarı 17.11: M3 177, M5 21, artı pay; alım yarısı Ahmet'te) | Erken alımda M3 177 + pay, M5 21 + pay | K29, K31, Parti 0 kuponları |
+| K44 | `eklem_sinirlari.json`'un `kod/`'a yazılması | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; b: dosyayı `kod/` sahibi Efe üretir, öneri dosyası pano bilgisiyle) | — | — |
+| K45 | S2 darbe hız sınırı (K38'i sayısallaştırır) | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; b: 59–60 / 30°/s ve rijitlik ölçümü, rijit uca yakınsa düşürülür) | — | — |
+| K46 | Destek azaltma geometri önerileri (VESA, omuz yuvası, kol çatalı, omuz göbeği, göğüs bandı) | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; şimdilik değişiklik yok, Parti 0 kuponundan sonra gerekirse yeni madde) | — | — |
+| K47 | Rehber kontrol görüntüleri (`planlama/rehber/goruntu/adim-*.png`) depoda nasıl tutulsun | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; b: yalnız paket kayıt commit'inde) | — | — |
+| K48 | `tasarim/cad/lale158-model.js` artık dosyası | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; a: depo dışına taşınır; yalnız karar kaydı, taşıma açık iş) | — | — |
+| K49 | Kalıcı izlenmeyenler ve `.gitignore` | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; önerilen gruplama; dört klasör girdisi K18–K21 kararıyla birlikte) | — | — |
+| K50 | Şarj girişi konnektörü: sigortadan sonra gerilimli erkek pimler | **açık** (F7d; teknik yarı 17.11: b, dişi panel konnektör; alım yarısı Ahmet'te) | b: XT60E-F (dişi) panel; olmazsa a | İlk şarj, rehber F5 notu, `maliyet.json:111` |
+| K51 | Pi hattındaki ikinci P6KE6V8A: maliyette 2, model BOM'unda 1 | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; a: modele ve BOM'a 1 adet, tam taramalı CAD paketinde) | — | — |
 | K52 | Göğüs ekranı regülatörü (LM2577 + LM2596) panel yeri (sigortası kutunun F6 3 A yuvası, K11 a; önce mini 2 A + hat yuvası): modelde ve BOM'da yok | kapandı (16.11; orkestratör kararı (Echo); a: güç paneli, rehber B5a, 0 TL; P10.7b2e kayıt ve metin; model sonraki tam taramalı CAD paketinde, K51 ve K53 ile) | — | — |
-| K53 | Ön şarj kartı burcu × elektronik katı (B6'da kat inerken girişim) | **açık** (F10b) | a + iii: katta 1,5 mm çentik, bir sonraki tam taramalı pakette; o zamana dek rehber B6 notu | Lazer kesim dosyası (elektronik katı), rehber B6 adımı (F10c), çakışma taraması kaynağı |
-| K54 | E3 kafa inişinde sıfır boşluk (yanaklar arası 54,4 mm ↔ yığın 54,4 mm) | **açık** (F10c) | c: ilk baskı kuponunda dene; zorlarsa b (yanak iç yüzlerine 0,2–0,3 mm pay) | Kafa iskeleti baskısı (Parti kuponu), rehber E3 notu, çakışma taraması kaynağı (b seçilirse) |
-| K55 | Kabuk bindirme dilleri: etek ön, göğüs ve omuz bantları, göğüs ekranı çerçevesi düz yoldan yerine girmiyor | **açık** (F10d) | Etek ön için c (iki bacaklı yol ölçülsün); göğüs, omuz, çerçeve için a geçici (kuponda denensin), b bir sonraki geometri paketinde | Rehber F1 / F3 / F4 takma metni, kabuk baskısı (Parti kuponu), kabuk çakışma taraması (b seçilirse) |
+| K53 | Ön şarj kartı burcu × elektronik katı (B6'da kat inerken girişim) | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; a + iii: 1,5 mm çentik, sonraki tam taramalı CAD paketinde) | — | — |
+| K54 | E3 kafa inişinde sıfır boşluk (yanaklar arası 54,4 mm ↔ yığın 54,4 mm) | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; c: ilk baskı kuponunda dene, zorlarsa b) | — | — |
+| K55 | Kabuk bindirme dilleri: etek ön, göğüs ve omuz bantları, göğüs ekranı çerçevesi düz yoldan yerine girmiyor | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; dört bant için a geçici, baskı kuponunda denenir; b sonraki geometri paketinde) | — | — |
 | K56 | Kol çatalı + 625ZZ rulmanının takılma sırası (G2 / G3, adım 39 ↔ 40.1) | kapandı (13.11, Ahmet: seçenek C; uygulama F10g, kontrol GEÇER 14.11) | — | — |
 | K57 | Dirsek çatalı ↔ dirsek horn merkez vidası (H0b / H0c, adım 43 ↔ 44.1) | kapandı (13.11, Ahmet: seçenek a; uygulama F10g, kontrol GEÇER 14.11) | — | — |
 | K58 | ESP32 pin haritası (pano #8) | kapandı (14.11; orkestratör kararı, Ahmet'in 13.11 yetkilendirmesiyle) | — | — |
 | K59 | P10.7a kablo tablosunun bağımsız bakışları (üçüncü bakış geçmedi; ek tur) | kapandı (14.11; orkestratör kararı, Ahmet'in 13.11 yetkilendirmesiyle; dördüncü bakış GEÇER 14.11) | — | — |
-| K60 | Elde taşınan acil stop (Ö4) | **açık** (P10.7a) | Kayıtta yok (A / B / C; Ahmet + Efe) | B seçilirse alıcının yeri ve beslemesi (P10.7b kablajı) |
-| K61 | Bas-konuş düğmesi kullanılacak mı (O-12) | **açık** (P10.7a) | Kayıtta yok; Efe'ye sorulacak | Düğmenin kablosu ve yeri (P10.7b) |
+| K60 | Elde taşınan acil stop (Ö4) | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; A + köprülü klemens şimdi; demoda mantarın yanında bir kişi) | — | — |
+| K61 | Bas-konuş düğmesi kullanılacak mı (O-12) | kapandı (17.11.2026; orkestratör kararı (Echo), Ahmet'in 17.11 02:36 devriyle; a: düğme sipariş listesinden çıkar, geri alınabilir; maliyetten düşülmesi açık iş) | — | — |
 | K62 | P10.7b1'de tur sayısı: iki düzeltme turu + açık işler turu + üretimin uyum düzeltmesi (kural "en çok 2 tur") | **açık** (P10.7b1; kayıt, Ahmet'in bilgisine / onayına; 15.11 notu: P10.7b2a'da üç düzeltme turu, ikisi kaynak, biri basılı sayfa) | Kayıt olarak kabul (orkestratörün sınıflaması) | Döngü kuralının yorumu (sonraki paketlerin tur sayımı) |
 | K63 | Montajdan önce kapanacak iki talimat boşluğu: G07 akü ölçüm hattı + 100 kΩ; SV3 + dağıtım kartı C | kapandı (15.11; P10.7b2a, commit `4a097fb` "Lale P10.7b2a"; dört bağımsız kontrol, üç düzeltme turu; metin orkestratörün, Ahmet'e bilgi) | — | — |
 | K64 | Bara tutucusu (yıldız barası + anahtarlı baranın M5 saplamalarını taşıyan basılmış yalıtkan parça): panelde yeri, bağlantı elemanı ve CAD'i yok | kapandı (16.11; orkestratör kararı (Echo); a: tam taramalı CAD paketinde tasarlanıp basılır, satın alma yok; o zamana dek rehber B5a talimat yazmaz; P10.7b2e kısım 2) | — | — |
 | K65 | Sağ / sol tanımı: CAD'de sağ (+X) robota önden bakanın sağı = robotun kendi solu; ESP32 yazılımı robotun kendi sağını kullanıyor | kapandı (16.11; orkestratör kararı (Echo): donanım adları korunur, rehber / kablo tablosu / pin haritasına tanım cümlesi, K1'e kurulum testi; yazılım düzeltmesi Efe'de, iş; P10.7b2e kısım 2, `planlama/d158/sag-sol-karari.md`) | — | — |
 | K66 | ESP32 VIN'e seri Schottky: çevre 5 V → 1N5819 → VIN (çevre hat sigortası atınca geri besleme; pano #7 mesaj #26 madde 3 / #28) | kapandı (16.11; orkestratör kararı (Echo): seri 1N5819, anot çevre 5 V, katot VIN; tezgâh denemesine bağlı kabul, VIN payı tutmazsa geri alınır; malzeme 1N5819 1 → 2, +1,22 TL; P10.7b2f kısım 2) | — | — |
 
-**Açık: 48.** **Kapandı: 18** (K1, K5, K8, K10, K11, K14, K15, K16, K17, K52, K56, K57, K58, K59, K63, K64, K65, K66; K10 masa testine, K66 tezgâh denemesine bağlı kabul). Toplam 66 madde
-(16.11.2026, P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, K65 eklendi ve kapandı; P10.7b2f kısım 2: K66 eklendi ve kapandı; özet tablosunun satırları tek tek sayıldı).
+**Açık: 26.** **Kapandı: 40** (K1, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K14, K15, K16, K17, K38, K39, K40, K41, K44, K45, K46, K47, K48,
+K49, K51, K52, K53, K54, K55, K56, K57, K58, K59, K60, K61, K63, K64, K65, K66; K10 masa testine, K66 tezgâh denemesine, K12 / K39 / K54 /
+K55 ölçüme ya da kupona bağlı kabul). Toplam 66 madde
+(16.11.2026, P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, K65 eklendi ve kapandı; P10.7b2f kısım 2: K66 eklendi ve kapandı;
+17.11.2026, P10.9b: 22 madde kapandı, 5 maddenin teknik yarısı karara bağlandı; özet tablosunun satırları tek tek sayıldı).
+
+**P10.9b (17.11.2026, üretimsiz kayıt paketi):** Ahmet 17.11.2026 02:36'da orkestratöre "benim yerime karar verebileceğin şeyler varsa
+ver" yazdı. Orkestratör (Echo) hazırlık taramasının (A: Echo verebilir / B: Ahmet'te kalmalı) A listesinden şu kararları verdi; her
+maddenin gövdesinde "Durum" satırı gerekçe ve kaynakla. Günlük: `planlama/d158/P109b-gunluk.md`.
+- **Kapandı (22):** K3 b + K9 a (her elde ≤ 100 g, yalnız düz zemin, rampada yüksüz; şart: 2209-B önerisinde elde yük vaadi yok, okundu,
+  bulunmadı), K4 a, K6 a, K7 a, K12 a, K38 a + K45 b, K39 d, K40 a, K41 a, K44 b, K46 (şimdilik değişiklik yok), K47 b, K48 a (yalnız
+  karar kaydı), K49 (önerilen gruplama), K51 a, K53 a + iii, K54 c, K55 (dört bant için a geçici + kupon), K60 A + köprülü klemens, K61 a.
+- **Yalnız teknik yarısı karara bağlandı, madde açık (5):** K2 (a, boss taşınır; bütçe yarısı), K31 / K33 / K43 (M3 insert A, M5 kupon
+  deliği Ø6,7–6,8, M6 A2 paslanmaz, adet M3 177 / M5 21 artı pay; alım yarısı), K50 (b, dişi panel konnektör; alım yarısı).
+- **Ahmet'te kalanlar (26 açık madde):** K13 (LED'ler görünsün mü), K18–K26 (depo içeriği, gizlilik, hesap adı; hazırlık taramasının
+  önerisi gövdelerdeki "Önerilen varsayılan"la aynı, karar değil), K27–K30, K32, K34–K37, K42, K62; K2 bütçe yarısı (AI HAT+ okul
+  bütçesinden mi), K31 / K33 / K43 alımı, K50 alımı (XT60E-M siparişe girdi mi, IMAX B6 çıkış kablosunun ucu). Ortak ön soru:
+  **16.11 siparişi verildi mi, hangi listeyle?** (kayıtta yok; K27–K37, K42, K43, K50 ve K61'in maliyet işi bu cevaba bağlı).
+- **Uygulaması açık (bu pakette yapılmadı; karar değil, iş):**
+  - Tam taramalı CAD paketi: K2 a boss taşıma (`KY/hat_secenek.py` a → kafa modeli, P6.1), K51 a TVS (model + BOM), K53 a çentik
+    (`arayuz.py`, `taban_parcalar.py`, lazer kesim dosyası), K40 `arayuz.py` sınır metninin F2 ölçümüyle aynı olduğunun denetimi.
+  - FreeCAD / kupon: K31 CAD insert boyu 4 mm ve kupon C M5 delikleri Ø6,7–6,8; K54 c kafa yanağı kuponu; K55 a bant kuponu (baskı
+    listesi satırları).
+  - Rehber (üretimli paket): K50 b K1 / F1 / F5 metni ve `kablolar.json` G06; K55 F1 / F3 / F4 takma metni; K40 S2 horn adımı ve
+    sentil kontrolü; K51 E3a "ikinci TVS" metni; K60 kayıt cümlesi (`kablolama-on-kararlar.md` §8 / §14) ve demo kuralı.
+  - Yazılım (Efe'nin alanı, pano bilgisi): K38 / K45 hız sınırları ve kapanma sırası; K41 S1 −45…135; K44 `eklem_sinirlari.json`
+    üretimi; K3 / K9 el yükü kuralı.
+  - Ölçüm kâğıtları: K12 ısı testi (50 °C eşiği), K39 DS3235 düşme ölçümü, K45 rijitlik ölçümü, K6 akustik ölçüm.
+  - Depo temizliği: K48 dosyanın depo dışına taşınması; K49 `FREECAD-KILIT.txt` girdisi ve 5 dosyanın commit'i (dört klasör girdisi
+    K18–K21 ile); K47 kayıt ajanlarının `git add` pratiği.
+  - Maliyet (Ahmet'in sipariş kararıyla): K61 "Bas-konuş düğmesi" (76,24 TL) `planlama/maliyet.json` ve türevlerinden düşülecek;
+    K33 / K43 / K50 satırları alımla.
+  - Demo sayfası: `tasarim/cad/demo_uret.py` sabit listesi K3, K9, K38, K41, K44, K45, K46'yı hâlâ "karar bekliyor" gösteriyor;
+    `F9b-dogrula.py` [5] sayfa yeniden üretilene kadar geçmez (bu paketin yazma alanı dışında).
+  - Sonuç raporu: P9.3 rapor dili (K3 / K9 el yükü, K7 ifade).
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
@@ -195,9 +228,14 @@ açık işleri sondaki bölümde (P10.7b2a, kontrol-3 / -4), bu pakette yapılan
 - **Not (F8a P8.1, 09.11.2026), bütçe sorusu:** AI HAT+ (26T) PAKET A'da (TÜBİTAK önerisi, okul toplamına girmez): Robotistan 6.978,88 TL,
   stok 23. Açık soru: TÜBİTAK desteği gelmezse kart okul bütçesine mi eklenir (+6.978,88; okul bütçesi 93.538,38 → 100.517,26)?
   Yerleşim seçeneği a/b'nin maliyet etkisi 0 (yalnız baskı geometrisi). Kaynak: `planlama/d158/F8a-siparis.md` §5.7, §6, §9 madde 9.
-- **Durum:** açık (`KY/uygulama-notu.md:149`).
+- **Durum:** açık (yalnız bütçe yarısı; `KY/uygulama-notu.md:149`).
+- **Teknik yarı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b):** **seçenek a, boss taşınır** (baş çerçevesinde x −8, y 60 → x −5, y 76; dikiş cıvatası ve ısıl
+  gömme somun onunla). Gerekçe: iki seçenekte de çakışma 0 ve korunan değerler sağlanıyor (not 5); b'de kablo yolları 5 mm kayıyor,
+  kablo boyu / kütle yeniden hesaplanmadı (not 3). Ahmet'te açık: TÜBİTAK desteği gelmezse AI HAT+ (6.978,88 TL) okul bütçesine mi
+  eklenir (F8a notu; takılması KT1 denemesine de bağlı, K10). Uygulaması açık: `KY/hat_secenek.py` a → kafa modeli, tam taramalı CAD
+  paketinde (P6.1); rehber kafa adımı.
 
-## K3 · Düz zeminde elde yük sınırı
+## K3 · Düz zeminde elde yük sınırı — KAPANDI
 - **Soru:** Robot elinde en çok ne kadar yük taşısın (düz zemin)?
 - **Seçenekler:** a) yük yok (yalnız boş el); b) ≤ 100 g her elde; c) ≤ 500 g yalnız düz zeminde, rampada yüksüz.
 - **Sayısal etki (güncel model, `KY/uygulama-ivme.json`):**
@@ -229,9 +267,15 @@ açık işleri sondaki bölümde (P10.7b2a, kontrol-3 / -4), bu pakette yapılan
   c (500 g) ancak K9 b ile (500 g'da S1 / S2 0,97, dirsek 0,74). Alternatif: rampada kollar ev pozunda zorlanırsa ≤ 100 g (1,601; SO Ç7'ye bağlı:
   `planlama/d158/servo-10-oneri.md` Ç7). Önceki ön öneri: `dongu-158.md:153, §4 K3`.
 - **Bloke:** P3.1'in önerisi, P3.2, P9.3 rapor.
-- **Durum:** açık (`qled-cerceve-tasarim-notu.md:128`; KZ2 açık: `planlama/y3/Y3-kontrol.md:115`, `planlama/kararlar-2026-10-29.md:23-24`).
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek b**, her elde ≤ 100 g (iki elde toplam ≤ 200 g), yalnız düz zeminde;
+  rampada yüksüz. K9 a ile aynı sınır. Gerekçe: bağlayan ölçüt servo payı (P3.1 tablosu: 100 g'da S2 2,00, pay ≥ 2 için ≤ 99 g);
+  100 g'da rampa 1,479 < 1,5. **Şart denetimi (karardan önce, salt okuma):** 2209-B önerisinin nihai metni
+  (`tubitak-2209b/teslim/TYBS-arastirma-onerisi-v14.md`) ve `tubitak-2209b/BAGLAM.md` elde taşıma yükü vaat etmiyor: yük / kg /
+  taşıma geçen cümleler 4 saatlik "tipik yük" testi (elektrik yükü), model kütlesi 25,8 kg ve itme testi (65 / 25 N); elde yük, kg
+  ya da gram vaadi yok. Uygulaması açık: el yükü kuralı yazılımda (Efe'ye bilgi), P9.3 rapor dili, rehber kullanım notu.
+  Önceki kayıt: `qled-cerceve-tasarim-notu.md:128`; KZ2: `planlama/y3/Y3-kontrol.md:115`, `planlama/kararlar-2026-10-29.md:23-24`.
 
-## K4 · Listede olmayan 6 kablo kalemi
+## K4 · Listede olmayan 6 kablo kalemi — KAPANDI
 - **Soru:** USB-A uzatma ~30 cm, USB-A uzatma ~1 m, L USB-A dirsek, kısa micro USB, hoparlör kablosu ~1,1 m, L 3,5 mm fişli kısa kablo
   (`KY/uygulama-notu.md:134`) malzeme listesine girsin mi?
 - **Seçenekler:** a) `maliyet.json`'a "koşullu" kalem, fiyat satıcı sayfası doğrulanınca; b) bütçe dışı, ekip karşılar; c) v4 listesine kesin kalem.
@@ -246,7 +290,9 @@ açık işleri sondaki bölümde (P10.7b2a, kontrol-3 / -4), bu pakette yapılan
   yeniden değerlendirilsin (`planlama/d158/F8a-siparis.md` §5.3, §6, §9 madde 6).
 - **Not (P10.7a, 14.11.2026):** Pi → hub uzatması USB 2.0 küçük fişli oldu (fiyat bekliyor, koşullu K4'te kaldı); o ve L 3,5 mm kısa kablo
   onaylı satıcılarda yok; başka satıcı kararı K35 notunda.
-- **Durum:** açık (`KY/uygulama-notu.md:150`, `KY/secenekler.md:341`).
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek a**, zaten uygulanmış (F8a notu: dört satır fiyatlı ve `secenek: kosullu`, iki
+  satır `fiyat_bekliyor`); bu yalnız kayıt kapanışı. Onaylı satıcı dışı alım K35'te (Ahmet). Kaynak: `KY/uygulama-notu.md:150`,
+  `KY/secenekler.md:341`.
 
 ## K5 · Hub ve ses kartı arka kabuk yan duvarında, servis için kabul mü — KAPANDI
 - **Soru (eski düzen):** `qled-cerceve-tasarim-notu.md:147`.
@@ -257,22 +303,26 @@ açık işleri sondaki bölümde (P10.7b2a, kontrol-3 / -4), bu pakette yapılan
   duvarına taşındı, modele işlendi (`d26c7e7`). Soru eski yerleşime aitti. Ses kartı ve PAM kafada sol duvarda kaldı
   (`KY/secenekler.md:12`); servis erişimleri B seçimiyle kabul edilmiş sayılır, ayrı bir onay kaydı yok.
 
-## K6 · Hoparlör ekseni: duvara paralel mi, yatay eksene kama mı
+## K6 · Hoparlör ekseni: duvara paralel mi, yatay eksene kama mı — KAPANDI
 - **Seçenekler:** a) duvara paralel (bugünkü model: eksen yatayın 35° altında, kama yok, `KY/uygulama-notu.md:59`); b) yatay eksene kama.
 - **Sayısal etki:** 1,6 m kulak yüksekliğinde 1 m'deki dinleyiciye eksen dışı açı a) 68,1°, b) 33,2° (`KY/secenekler.md:240`).
   b geometrik olarak sığıyor (duvara 0,41 mm, ekrana 23,29 mm) ama kama boşluğu 0,5–28 mm, ayrı akustik hazne sorunu (`KY/secenekler.md:243`).
   Duyulabilirlik **ölçülmedi** (`KY/secenekler.md:253`).
 - **Varsayılan:** a, ölçümden sonra yeniden (`dongu-158.md:141, §4 K6`).
 - **Bloke:** P1.7 hoparlör kabı tutucu, P8.3 akustik test.
-- **Durum:** açık (`KY/secenekler.md:337`). Model a ile kuruldu; bu Ahmet kararı değil.
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek a**, duvara paralel (model zaten a); P8.3 akustik ölçümünden sonra yeniden
+  bakılır. Gerekçe: b'nin kama boşluğu (0,5–28 mm) ayrı akustik hazne sorunu; duyulabilirlik ölçülmedi. Uygulaması açık: P8.3 akustik
+  test kâğıdı. Önceki kayıt: `KY/secenekler.md:337`.
 
-## K7 · Dizi kabuğun altında: "kafanın üstü" böyle kabul mü
+## K7 · Dizi kabuğun altında: "kafanın üstü" böyle kabul mü — KAPANDI
 - **Seçenekler:** a) kabul: dizi kabuğun 2,5 mm altında, delikli tavan (`KY/secenekler.md:299`); b) dizi kabuğun üstüne.
 - **Sayısal etki:** b en az 13 mm boy aşar (`KY/secenekler.md:286`): boy 1.580,0 → ≥ 1.593 mm, korunan değer "boy 1.580,0" bozulur
   (`dongu-158.md:24, §1 korunan değerler`). Mikrofon-hoparlör a ile 574,3 mm ≥ 400 (`KY/uygulama-olcum.json mic_hoparlor.poz_min_mm`).
 - **Varsayılan:** a (`dongu-158.md:142, §4 K7`).
 - **Bloke:** P9.3 (rapor dili). 2209-B v14 metni değişmeyecek (`dongu-158.md:39, §2 2209-B kuralı`); soru yalnız ifadenin kabulü.
-- **Durum:** yer kapandı (R1, 05.11: `KY/secenekler.md:1`); ifade sorusu açık (`KY/secenekler.md:339`).
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek a**, "kafanın üstü" ifadesi kabul (dizi kabuğun 2,5 mm altında, delikli tavan).
+  Gerekçe: b boyu ≥ 1.593 mm yapar, korunan "boy 1.580,0" bozulur; 2209-B metni değişmez. Uygulaması açık: P9.3 rapor dili. Önceki
+  kayıt: `KY/secenekler.md:339`.
 
 ## K8 · H1 sigorta erişimi — KAPANDI
 - **Seçenekler o zaman:** a) açıklık ±32 kalır, kutu gelince ölçülür, uçtaki iki yuva yedek; b) dolgu şeridi dikişlerini kaydırıp
@@ -281,7 +331,7 @@ açık işleri sondaki bölümde (P10.7b2a, kontrol-3 / -4), bu pakette yapılan
 - **Durum:** kapandı. "KARAR 29.10: (a)" (`Y3-kontrol.md:109`), commit `f95f96b` ("H1 uç yuvalar yedek").
   Kalan iş karar değil: kutu alınınca ölçüm (P8.3).
 
-## K9 · El yükü 0,5 kg: servo değişimi mi, 100 g sınırı mı
+## K9 · El yükü 0,5 kg: servo değişimi mi, 100 g sınırı mı — KAPANDI
 - **Seçenekler:** a) el yükü ≤ 100 g (yazılım ve kullanım kuralı); b) S1/S2 ve dirsek için daha güçlü servo.
 - **Sayısal etki:** 0,5 kg'da S1/S2 payı 0,97, dirsek 0,74 (< 1); 2× pay için ~100 g (`planlama/kararlar-2026-10-29.md:24`).
   1,58 m modelinde yeniden hesaplandı (F3a P3.2, 09.11.2026, `F3a-yuk.json P3_2`): 500 g elde S1 0,97, S2 0,97, dirsek 0,74;
@@ -298,7 +348,9 @@ açık işleri sondaki bölümde (P10.7b2a, kontrol-3 / -4), bu pakette yapılan
     Robocombo DES220 220 kg **24 V** 15.075,00 stok 5 (24 V servo hattı gerekir). DS5160 60 kg·cm (5 adet +3.195,00) eşiğin altında
     (60 < 62,4). Dirsek ≥ 25,2 için DS3235: +4.819,50. Kaynak: `planlama/d158/F8a-siparis.md` §6, §9 madde 7; `F8a-kontrol.md` §2.3.
 - **Bloke:** P3.2, P5.1 (servo modeli sütunu), P8.1.
-- **Durum:** açık (`kararlar-2026-10-29.md:23` "AÇIK (karar değil)").
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek a**, el yükü ≤ 100 g (yazılım ve kullanım kuralı; K3 b ile aynı sınır); servo
+  değişmez, 0 TL. 2209-B şart denetimi K3'te (elde yük vaadi yok). Uygulaması açık: yazılım kuralı (Efe'ye bilgi); P5.1 servo sütunu
+  değişmez. Önceki kayıt: `kararlar-2026-10-29.md:23`.
 
 ## K10 · PAM8403 5 V besleme noktası — KAPANDI
 - **Seçenekler:** a) D24V50F5 (Pi hattı); b) SY8205 (kafa ekranı hattı); c) ayrı küçük düşürücü.
@@ -338,7 +390,7 @@ açık işleri sondaki bölümde (P10.7b2a, kontrol-3 / -4), bu pakette yapılan
   hat sigortası yuvası 5 → 4 (−36,72 TL), standart 3 A sigortanın fiyatı bekliyor; listedeki mini sigortalar kutuya girmez (F5 2 A ve F4 5 A da standart). Kutu 1 × 6 dizilişliyse F6 kapak altındaki uç yuvalardan
   biri olur (K8 notu, rapor §3). Modele / BOM'a ekleme K52'nin işi. `planlama/adim3/kablolama-on-kararlar.md` §3.
 
-## K12 · Kafa havalandırması: mevcut yarıklar mı, 30 mm fan mı
+## K12 · Kafa havalandırması: mevcut yarıklar mı, 30 mm fan mı — KAPANDI
 - **Seçenekler:** a) mevcut arka yarıklar, fan yeri ayrılı ama parça yok; b) 30 mm egzoz fanı şimdi.
 - **Sayısal etki (el hesabı):** normal 19,8 W'ta kapalı 49,7 °C, yarıklı 48,2 °C, fanlı 36,9–39,1 °C; yükte 22,9 W'ta 52,8 / 50,9 /
   38,0–40,5 °C (`qled-cerceve-tasarim-notu.md:114-117`). Sınır: servo 55 °C, tilt servo gövdesi 50 °C (`qled-cerceve-tasarim-notu.md:119`).
@@ -347,7 +399,9 @@ açık işleri sondaki bölümde (P10.7b2a, kontrol-3 / -4), bu pakette yapılan
 - **Bloke:** P8.1 (fan kalemi), P8.3 (ısı testi kâğıdı).
 - **Not (F8a P8.1, 09.11.2026):** a 0 TL; b 30 mm 12 V fan +66,07 TL (Motorobit, stok 526; ikinci Robotistan 90,87, stok 97). Fan yeri
   zarfı AI HAT+ zarfıyla kesişiyor (K2 notu) (`planlama/d158/F8a-siparis.md` §6, §9 madde 8).
-- **Durum:** açık; notta "öneri", Ahmet kararı kayıtta yok.
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek a**, mevcut yarıklar, fan yeri ayrılı; stres testinde tilt servo gövdesi
+  50 °C'yi geçerse 30 mm fan eklenir (+66,07 TL, alımı o zaman Ahmet'in onayıyla). Fan yeri zarfı AI HAT+ ile kesişiyor (K2 not 2):
+  fan gerekirse fan yeri taşınır. Uygulaması açık: P8.3 ısı testi kâğıdı (eşik 50 °C).
 
 ## K13 · ReSpeaker LED'leri görünmese olur mu
 - **Seçenekler:** a) görünmesin (bugün 12 LED kabuğun altında); b) ışık borusu ya da saydam parça.
@@ -580,7 +634,10 @@ açık işleri sondaki bölümde (P10.7b2a, kontrol-3 / -4), bu pakette yapılan
   176 (v4): fark 8 adet +42,32 TL. Yanlış varyant erken alımı boşa çıkarır (kuponun amacı geçme denemesi, `F8a-kontrol.md` D3).
 - **Önerilen varsayılan:** M3 için A (`F8a-siparis.md` §9 madde 3). M5 için önerilen varsayılan yok. Yalnız öneri.
 - **Bloke:** K29 (erken alım), kupon C basımı, P4.3 (insert boyu ve adedi). `maliyet.json` insert satırlarında yalnız not var (09.11).
-- **Durum:** açık.
+- **Durum:** açık (yalnız alım yarısı).
+- **Teknik yarı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b):** **M3 seçenek A** (Rhino ID3 OD4 L4; kupondaki Ø3,8 / 3,9 delikleri uyar, CAD insert
+  boyu P4.3'te 4'e çekilir). **M5:** Rhino ID5 OD7 L7, kupon M5 delikleri Ø6,7–6,8'e büyütülür. Ahmet'te açık: alım (ne zaman, okul
+  mu kişisel mi: K29; 16.11 siparişinin durumu). Uygulaması açık: CAD insert boyu ve kupon C M5 delikleri (FreeCAD, üretimli paket).
 
 ## K32 · Kafa ekranı: hocadan mı gelecek, satın mı alınacak
 - **Soru:** README ve `maliyet.json` notu "yüz ekranı 10,1" HDMI'yı hoca verecek" diyor; v4 (03.11) QLED'i satın alma satırı yapıyor. Hangisi?
@@ -605,7 +662,10 @@ açık işleri sondaki bölümde (P10.7b2a, kontrol-3 / -4), bu pakette yapılan
   bulunamadı (`maliyet.json` notu yalnız "CAD M6×16 = 16 + 2 yedek"). CNC'de M6×12 ve M6×20 fosfat allen de tükendi.
 - **Önerilen varsayılan:** a (`F8a-siparis.md` §9 madde 11). `maliyet.json` satırı değiştirilmedi (satıcı değişimi bu karara bağlı). Yalnız öneri.
 - **Bloke:** taban (aşama 5) sigma bağlantıları; sigma / T-somun siparişiyle aynı gün gelmesi gerekiyor (`F8a-kontrol.md` D2).
-- **Durum:** açık.
+- **Durum:** açık (yalnız alım yarısı).
+- **Teknik yarı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b):** **seçenek a**, paslanmaz DIN 912 A2 M6×16 (baş şekli aynı; fosfat şartının kaynağı
+  bulunamadı). A2-70 dayanım sınıfının sigma bağlantısı için yeterliği kontrol edilmedi (açık iş, karar değil). Ahmet'te açık: alım
+  (satıcı değişimi, +5,22 TL; `maliyet.json` satırı sipariş kararıyla).
 
 ## K34 · 3B baskı hizmeti: anlaşmalı firma ücretli mi, teklif alınacak mı
 - **Soru:** 03.11'de filament firma / ekipten, baskı anlaşmalı firmadan denmişti. Baskı hizmeti ücretli mi; ücretliyse teklif ne zaman istenecek?
@@ -655,7 +715,7 @@ açık işleri sondaki bölümde (P10.7b2a, kontrol-3 / -4), bu pakette yapılan
 <!-- K38–K41: P2.1 omuz durdurucu (F2, 09.11.2026), kaynak `planlama/d158/F2-gunluk.md` "Karar taslakları" KT-F2-1…4, metinler B'nin
 düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yorum"). -->
 
-## K38 · S2 alt bölge hız sınırı ve kapanma sırası (KT-F2-1)
+## K38 · S2 alt bölge hız sınırı ve kapanma sırası (KT-F2-1) — KAPANDI
 - **Soru:** Omuz durdurucu dişi (S2 4,30°) stall'u karşılıyor ama hızlı çarpma ve güç kesik düşmede emniyeti varsayıma bağlı. Yazılım S2'nin alt
   bölgesinde hızı sınırlasın mı, kapanmadan önce kolları indirsin mi?
 - **Seçenekler:**
@@ -672,9 +732,12 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
   kaset kapağına (3,65° / 3,21°) dayanır. Sahibi `kod/`; CAD değişmez. Gerekçe: F2-gunluk darbe tablosu ve F2-kontrol B-1/B-2." Yalnız öneri.
 - **Bloke:** `kod/` hareket planlayıcısı ve kapanma betiği (Efe'nin alanı; panoya yalnız bilgi/soru); K39 ölçümü sınırı gevşetebilir.
 - **F6a notu:** diş kökü r 1,5 yayı uygulandı, K_t 1,45; emniyet sayıları K_t ile yeniden hesaplandı. Sayısal hız sınırı için K45'e bakın.
-- **Durum:** açık.
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek a**, K45 b ile birlikte: S2 < 20° bölgesinde açısal hız yüksüz ≤ 60°/s, elde
+  yük varken ≤ 30°/s; güç kesilmeden önce iki kol S2 ≤ 15°'ye indirilir (güç kesik düşme sınırı 15,5°, K45). Donanım şartı olarak
+  Efe'ye panodan bildirilir; uygulama `kod/` hareket planlayıcısı ve kapanma betiğinde (Efe'nin alanı). CAD değişmez. K39 ölçümü
+  sınırı gevşetebilir; K45 rijitlik ölçümü rijit uca yakın çıkarsa sınır düşer.
 
-## K39 · Durdurucu güçlendirme (KT-F2-2)
+## K39 · Durdurucu güçlendirme (KT-F2-2) — KAPANDI
 - **Soru:** Diş, kaçak servo ve yüksekten güç kesik düşmede tek başına yetmiyor (emniyet < 1). Durdurucu güçlendirilsin mi, nasıl?
 - **Seçenekler:**
   a) Dişe TPU (Shore 95A) ped 1–1,5 mm: tepe kuvvet ~√k ile azalır; 3,65…5° penceresi ~0,37 mm boşluk bıraktığı için yalnız c ile birlikte.
@@ -690,9 +753,11 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
   (c) = bu maddede b.) Yalnız öneri.
 - **Bloke:** P6.1 (kök yarıçapı `omuz_parcalar.py`'de; zaten plana yazıldı), P8.3 benzeri ölçüm kâğıdı (DS3235 gelince), K38'in gevşetilmesi.
 - **F6a notu:** (1) yapıldı: kök yarıçapı r 1,5 uygulandı (temas 4,30° ve 5°'te 0,34 mm korundu), K_t 1,45. (2) DS3235 düşme ölçümü açık. K45'e bakın.
-- **Durum:** açık.
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek d**: (1) kök yarıçapı yapıldı (F6a notu, r 1,5); (2) DS3235 gelince güç
+  kesik düşme ölçümü (S2 30 / 60 / 90°); (3) ölçüm emniyet < 1,5 gösterirse bu maddede c + a (S2 alt sınırı 5 → 8° ve TPU ped) ya da
+  b (metal diş), o zaman yeni madde. Uygulaması açık: ölçüm kâğıdı (P8.3 benzeri), DS3235 gelince.
 
-## K40 · S2 sıfır kalibrasyonu ve sınır metni (KT-F2-3)
+## K40 · S2 sıfır kalibrasyonu ve sınır metni (KT-F2-3) — KAPANDI
 - **Soru:** S2 horn'u durdurucuya göre mi takılsın; `arayuz.py`'deki eski "kabuk −3°" tablosu ve `eklem_sinirlari.json` metni F2 ölçümüyle
   güncellensin mi?
 - **Seçenekler:**
@@ -710,9 +775,12 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
   metni F2 ölçümüyle güncellenir (kaset 3,21°, tambur 3,65°, durdurucu 4,3°, 5°'te dişe 0,344 mm). `kod/ortak/eklem_sinirlari.json` sahibi
   yeniden üretir. `arayuz.py` değiştiği için bu, taramalı bir pakette yapılır." Yalnız öneri.
 - **Bloke:** P6.1 (`arayuz.py:178` ve üreteç; zaten plana yazıldı), P7.1 montaj rehberi (S2 horn adımı ve sentil kontrolü), Efe'ye bilgi (`kod/`).
-- **Durum:** açık.
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek a**: horn kol dişe dayalıyken (S2 = 4,3°) takılır; S2 5 komutunda dişle
+  0,3 mm sentil geçer, 0,4 geçmez; geçmiyorsa diş yüzü zımparalanır. Sınır metni F6a'da `arayuz.py`'de güncellendi (K44 soru satırı);
+  `kod/` dosyası K44 b ile Efe'de. Uygulaması açık: rehber S2 horn adımı ve sentil kontrolü (P7.1, üretimli paket); `arayuz.py`
+  metninin F2 ölçümüyle aynı olduğunun denetimi tam taramalı CAD paketinde.
 
-## K41 · S1 yazılım aralığı: kod 0…160 ↔ CAD −45…135 (KT-F2-4 + F5 Ç2)
+## K41 · S1 yazılım aralığı: kod 0…160 ↔ CAD −45…135 (KT-F2-4 + F5 Ç2) — KAPANDI
 - **Soru:** Kodda omuz öne-arka (S1) 0…160 (`planlama/d158/servo-10-oneri.md:29, 81` Ç2), CAD ve `eklem_sinirlari.json` −45…135. Kod sınırı
   CAD'e çekilsin mi; S1 için mekanik durdurucu gerekli mi?
 - **Seçenekler:**
@@ -726,7 +794,9 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
   açısında çarpışmıyor; sınırı yalnız kablo U lopu belirliyor (≈ 140,2°'de kasete sıkışır). S1 için mekanik durdurucu istenirse ayrı tasarım
   paketi açılır. Sahibi `kod/`." F5 bulgusuyla tek karar. Yalnız öneri.
 - **Bloke:** `kod/` eklem sınırları (Efe'nin alanı; pano #6 Ç2 ile aynı konu), P5.1 satır 0 ve 2.
-- **Durum:** açık.
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek a**: kod S1 aralığı −45…135 (CAD ve `eklem_sinirlari.json` ile aynı);
+  mekanik durdurucu yok. Gerekçe: sınırı yalnız kablo U lopu belirliyor (≈ 140,2°), kod 160'a giderse ≈ 20° aşar. Uygulaması açık:
+  `kod/` eklem sınırları (Efe; pano #6 Ç2 ile aynı konu, panoya bilgi), P5.1 satır 0 ve 2.
 
 <!-- K42–K43: P4.3 baskı listesi + P8.2 baskı partileri (F4c, 09.11.2026), kaynak `planlama/d158/F4c-gunluk.md` §7 KT-F4c-1…2, metinler B'nin
 önerisiyle (`planlama/d158/F4c-kontrol.md` "Karar kuyruğuna girecek metin"; K43 B-1 düzeltmesiyle). -->
@@ -766,12 +836,14 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
   seçilmeden M5 alınmamalı (kupon delikleri Rhino M5 için küçük). Yalnız öneri.
 - **İlişki:** K29'un önerisindeki "insert 168" bu maddeyle M3 177 + pay olur; K31 ürün seçimini, K43 adedi belirler.
 - **Bloke:** K29 (erken alım), K31, Parti 0 kupon B/C.
-- **Durum:** açık.
+- **Durum:** açık (yalnız alım yarısı).
+- **Teknik yarı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b):** adet **M3 177, M5 21, ikisine de pay** (pay oranı alımda; M5 ancak K31'in M5 ürünüyle,
+  delikler Ø6,7–6,8). Ahmet'te açık: alım ve pay oranı (K29 ile).
 
 <!-- K44–K45: P6.1 + P4.5 kalanı (F6a, 09.11.2026), kaynak `planlama/d158/F6a-gunluk.md` §4 KT-F6a-1…2, sayılar B'nin bağımsız hesabıyla
 (`planlama/d158/F6a-kontrol.md` O-2, madde 5, D-2). -->
 
-## K44 · `eklem_sinirlari.json`'un `kod/`'a yazılması (KT-F6a-1)
+## K44 · `eklem_sinirlari.json`'un `kod/`'a yazılması (KT-F6a-1) — KAPANDI
 - **Soru:** F6a `arayuz.py`'deki S2 sınır metnini ve `yana_alt_bosluk_mm`'yi 158 modeline göre güncelledi. `kod/ortak/eklem_sinirlari.json`
   bu yüzden eski (`py -3 kod/ortak/eklem_sinirlari_uret.py --kontrol` → "ESKI ya da yok", çıkış 1). Yeni içerik `kod/`'a yazılsın mı, kim yazsın?
 - **Kaynak:** öneri dosyası `planlama/d158/F6a-eklem_sinirlari-oneri.json`. Üreticinin `uret()` çıktısıyla bayt bayt aynı, 6133 bayt (`F6a-kontrol.md` madde 5).
@@ -792,9 +864,12 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
   "eşit değil" derler.
 - **Önerilen varsayılan:** a. Yalnız öneri.
 - **Bloke:** `kod/ortak/eklem_sinirlari.json` güncelliği, P4.5'in `kod/` kalanı, K2/K3 regresyon betikleri.
-- **Durum:** açık.
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek b**: `kod/ortak/eklem_sinirlari.json`'u `kod/` sahibi (Efe) kendi takviminde
+  üretir; öneri dosyası `planlama/d158/F6a-eklem_sinirlari-oneri.json` o zamana dek burada durur ve Efe'ye panodan bildirilir
+  (sayısal sınır farkı yok; `bosluk_mm` anahtarlarının anlamı değişti). `main`'e girişi yine Ahmet'in. Uygulaması açık: Efe'nin
+  üretimi; o zamana dek K2/K3 regresyon betikleri "eşit değil" der, P4.5 `kod/` kalanı ve teker notundaki takma ad kalır.
 
-## K45 · S2 darbe hız sınırı (KT-F6a-2; K38'i sayısallaştırır)
+## K45 · S2 darbe hız sınırı (KT-F6a-2; K38'i sayısallaştırır) — KAPANDI
 - **Soru:** Kök yayından (r 1,5, K_t 1,45) sonra S2 durdurucuya yaklaşırken hangi açısal hız sınırı yazılsın?
 - **Sayılar** (`F6a-gunluk.md` §1d ve §9 tablosu; B'nin bağımsız hesabıyla aynı, `F6a-kontrol.md` O-2):
   - F2 rijitlik varsayımında (k_lin = k_diş/2, kol esnek) emniyet 2 için ≤ **59°/s** yüksüz, ≤ **30°/s** 500 g yükte.
@@ -812,12 +887,14 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
 - **Önerilen varsayılan:** kayıtta yok; A'nın taslağı a ile b arasında bırakıyor. Kaçak servo ve güç kesik düşme için mekanik çözüm (yumuşak
   durdurucu / sönüm) K39'da.
 - **Bloke:** K38, `kod/` hareket planlayıcısı (Efe'nin alanı), K39 ölçümünün yorumu.
-- **Durum:** açık.
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek b**: 59–60°/s yüksüz, 30°/s yüklü (K38 a ile aynı sınır) ve rijitlik
+  ölçümü; ölçüm rijit uca yakın çıkarsa sınır düşürülür (rijit uçta emniyet 2 için 27 / 14°/s). Uygulaması açık: `kod/` (Efe, pano
+  bilgisi); rijitlik ölçümünün test kâğıdı (aday: K39 DS3235 düşme ölçümüyle aynı kurulum).
 
 <!-- K46: P6.2 tek baskı analizi (F6b, 09.11.2026), kaynak `planlama/d158/F6b-gunluk.md` §5 ve §6 KT-F6b-3, e seçeneği B'nin düzeltmesiyle
 (`planlama/d158/F6b-kontrol.md` O-1; a–d madde 6b). -->
 
-## K46 · Destek azaltma geometri önerileri (KT-F6b-3)
+## K46 · Destek azaltma geometri önerileri (KT-F6b-3) — KAPANDI
 - **Soru:** Destek oranı en yüksek parçalarda geometri ya da baskı yönü değiştirilerek destek azaltılsın mı; ne zaman?
 - **Sayılar** (`tasarim/freecad/lale158/baski-analiz.json` `parcalar[]`, tasarım yönü, 45° eşik; destek g = destek hacmi × 0,15 × 1,27, tahmini):
   toplam destek 124,5 g (9 tür / 13 adet). VESA taşıyıcı 31,7 g (destek oranı %21,9), omuz yuvası 2 × 11,5 g (%14,1), kol çatalı 2 × 12,7 g
@@ -837,12 +914,13 @@ düzeltilmiş önerisiyle (`planlama/d158/F2-kontrol.md` "Karar taslaklarına yo
   baskı yönü; geometri değişmez.
 - **Önerilen varsayılan:** şimdilik değişiklik yok; Parti 0 kuponundan sonra karar. Yalnız öneri.
 - **Bloke:** Parti 1 (göğüs bantları, VESA) ve Parti 2 (omuz PETG-CF) dilimleme ayarı; K42 payı.
-- **Durum:** açık.
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): şimdilik değişiklik yok**; Parti 0 kuponundan sonra geometri ya da baskı yönü
+  önerisi gerekirse yeni madde açılır. Uygulaması açık: Parti 1–2 dilimleme ayarı (dilimleyici desteği esas).
 
 <!-- K47–K49: P9.4 herkese açık depo temizliği (F9d, 09.11.2026), kaynak `planlama/d158/F9d-gunluk.md` §4 KT-F9d-1…3 (KT-F9d-1 etiketi
 D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F9d-kontrol.md` madde 6). -->
 
-## K47 · Rehber kontrol görüntüleri depoda nasıl tutulsun (KT-F9d-1, D-9)
+## K47 · Rehber kontrol görüntüleri depoda nasıl tutulsun (KT-F9d-1, D-9) — KAPANDI
 - **Soru:** `planlama/rehber/goruntu/adim-*.png` her tam yeniden üretimde yeniden yazılıyor. Bunlar `.gitignore`'a mı alınsın, yalnız sürüm
   commit'inde mi girsin, Git LFS'e mi taşınsın?
 - **Sayılar** (`F9d-gunluk.md` §4; B aynı):
@@ -866,9 +944,11 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **Önerilen varsayılan:** b. Kanıt bağlantıları korunur, araç değişmez; belirlenimci üretim yüzünden artış yalnız görsel değiştiğinde.
   Yalnız öneri. (Karar değil, not: gevşek nesneler yerel bakım işi, `git gc` GitHub'daki boyu değiştirmez.)
 - **Bloke:** rehber turlarının `git add` listesi (ara turda PNG girsin mi), depo büyümesi.
-- **Durum:** açık.
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek b**: rehber kontrol görüntüleri yalnız paket kayıt (sürüm) commit'inde girer;
+  ara düzeltme turlarında `git add` listesine alınmaz. Araç ve `.gitignore` değişmez. Uygulaması açık: kayıt ajanlarının `git add`
+  pratiği.
 
-## K48 · `tasarim/cad/lale158-model.js` artık dosyası (KT-F9d-2)
+## K48 · `tasarim/cad/lale158-model.js` artık dosyası (KT-F9d-2) — KAPANDI
 - **Soru:** İzlenmeyen `tasarim/cad/lale158-model.js` ne olsun?
 - **Bulgular** (`F9d-gunluk.md` §4; B `F9d-kontrol.md` madde 6):
   - 3.495.365 B, 09.11 17:30; başlıkta "Ureten: tasarim/cad/demo_uret.py" (F9b ilk turu). KT-F9b-2 = b ile sayfa göreli bağlantıya geçti; betik
@@ -882,9 +962,11 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   c) Bırak: 1 `??` satırı kalır; açık listesiz bir `git add` 3,5 MB'ı herkese açık depoya sokabilir.
 - **Önerilen varsayılan:** a. Silme yalnız Ahmet onayıyla (kayıt ajanları silmez). Yalnız öneri.
 - **Bloke:** `git status` temizliği (P0.1).
-- **Durum:** açık.
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek a**, yalnız karar kaydı: dosya silinmek yerine depo dışına taşınır (içerik
+  `rehber/veri/robot.glb` ile aynı, geçmişte 0 commit). Bu pakette dosyaya dokunulmadı. Uygulaması açık: taşıma (depo temizliği
+  işinde, K49 ile).
 
-## K49 · Kalıcı izlenmeyenler ve `.gitignore` (KT-F9d-3)
+## K49 · Kalıcı izlenmeyenler ve `.gitignore` (KT-F9d-3) — KAPANDI
 - **Soru:** `git status`'ta kalıcı duran izlenmeyen girdiler commit mi edilsin, `.gitignore`'a mı alınsın, bağlı kararı mı beklesin?
 - **Girdiler** (`F9d-gunluk.md` §4 tablosu, `git status --porcelain` 20:23; boyutlar B'nin tekrarıyla aynı):
   - `.gitignore` önerilen 5 girdi: `kvkk/` (16 dosya, 3.142.451 B; K19), `rapor/` (20 dosya, 11.087.000 B; K20), `tubitak-2209b/` (267 dosya,
@@ -901,7 +983,9 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   ≈ 45 kB, sarkan 3 atıf kapanır. Bekleyenler bağlı kararlarla (K22, K23, K24) kapanır.
 - **Önerilen varsayılan:** yukarıdaki gruplama; `.gitignore` değişikliği ve commit Ahmet kararından sonra kayıt ajanınca. Yalnız öneri.
 - **Bloke:** P0.1 (`git status` temiz); K18–K24 ile birlikte uygulanır.
-- **Durum:** açık.
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): önerilen gruplama** (yukarıdaki üç grup). Uygulama sırası: `FREECAD-KILIT.txt`
+  girdisi ve 5 dosyanın commit'i hemen uygulanabilir; `kvkk/`, `rapor/`, `tubitak-2209b/`, `KY/kaynak/` girdileri K18–K21'in
+  kararıyla (Ahmet) birlikte; bekleyenler K22–K24 ile. Uygulaması açık: `.gitignore` ve commit (depo temizliği işi).
 
 <!-- K50: P7.4 rehberde son düşükler (F7d, 09.11.2026), kaynak `planlama/d158/F7d-kontrol.md` "KT-F7d-1 (son hâl)" (B), O-2 bulgusu ve
 `planlama/d158/F7d-gunluk.md` "Düzeltme turu 1". -->
@@ -932,11 +1016,15 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **Not:** Rehberin F5 notundaki "kuyruğa girmedi" ifadesi bu maddeyle eskidi (`F7d-kontrol.md` D-9); sonraki rehber turunda bu maddeye bağlanır.
   Karar ne olursa olsun K1 kol tarafı ve F5 pim uyarısı metni rehberde kalır.
 - **Bloke:** ilk şarj; rehber F5 notu (ve b / c'de K1, F1 metni); `maliyet.json:111`.
-- **Durum:** açık.
+- **Durum:** açık (yalnız alım yarısı).
+- **Teknik yarı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b):** **seçenek b**, XT60E-F (dişi) panel konnektör; şarj kablosunun ucu erkek XT60. Gerekçe:
+  gerilimli tarafı dokunmaya kapalı yapan tek seçenek. Ahmet'te açık: XT60E-M siparişe girdi mi; IMAX B6 çıkış kablosunun ucu ne;
+  XT60E-F alınabilir mi (fiyat / stok doğrulanmadı). Uygulaması açık: `maliyet.json:111` (alımla), `kablolar.json` G06, rehber K1 /
+  F1 / F5 metni (üretimli paket).
 
 ---
 
-## K51 · Pi hattındaki ikinci P6KE6V8A: maliyette 2, model BOM'unda 1 (KT-F7c-2)
+## K51 · Pi hattındaki ikinci P6KE6V8A: maliyette 2, model BOM'unda 1 (KT-F7c-2) — KAPANDI
 - **Soru:** Elektrik mimarisi her iki kafa 5 V çıkışına P6KE6V8A koyuyor (`planlama/adim3/elektrik.md:282` "her iki 5 V çıkışına P6KE6V8A";
   `:47` Pi hattı D24V50F5 çıkışı, `:49` QLED hattı SY8205 çıkışı). Satın alma listesinde 2 adet var, modelde ve model BOM'unda 1 adet.
   Eksik olan Pi hattındaki TVS. Model ve BOM nasıl hizalansın?
@@ -955,7 +1043,9 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   Pi hattı (2,67 A, hesap; `elektrik.md:47`) aşırı gerilim korumasız kalır.
 - **Önerilen varsayılan:** a (F7c önerisi, `F7c-gunluk.md:218-219`); b'deki metin düzeltmesi a ile birlikte yapılır. Yalnız öneri; karar Ahmet'te.
 - **Bloke:** model / BOM güncellemesi ve çakışma taraması; rehber E3a TVS notu.
-- **Durum:** açık.
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek a**: modele D24V50F5 çıkışına 1 P6KE6V8A, BOM'a +1 (toplam 2); 0 TL
+  (`maliyet.json:103` adet zaten 2). Uygulaması açık: tam taramalı CAD paketinde (K52 zarfı, K53, K64 ile); rehber E3a "ikinci TVS"
+  metni b'deki düzeltmeyle birlikte (üretimli paket).
 
 ---
 
@@ -994,7 +1084,7 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 
 ---
 
-## K53 · Ön şarj kartı burcu × elektronik katı (B6'da kat inerken girişim)
+## K53 · Ön şarj kartı burcu × elektronik katı (B6'da kat inerken girişim) — KAPANDI
 - **Soru:** Rehber B6'da elektronik katı M5x40 burçlara inerken, B5a'da güç paneline takılmış ön şarj kartının iki ön burcuna (M3x8 naylon,
   burç 1 ve 3, x −130 / −65, z +21,5) takılıyor. Model mi değişsin, yoksa yalnız rehbere not mu düşülsün?
 - **Ölçüm** (`planlama/d158/F10b-olcum.json`; FreeCAD katıları, kat +Y yönünde 0…60 mm, 0,5 mm adım, 121 konum; betik `F10b-olcum.py`
@@ -1027,11 +1117,13 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **İlgili not (F10b'den bağımsız, ayrı iş):** burç 2 bugün de güç panelindeki akü kablo yarığının (x −80…−40, z −37…−23) üstünde: panele
   oturma %39 (7,484 / 19,129 mm²), alt vida başı %26 (6,28 / 23,758 mm²), delik yarığa açık (`on_sarj_oturma`). Seçenek a bunu çözmez.
 - **Bloke:** elektronik katının lazer kesim dosyası; rehber B6 adımı (F10c); çakışma taraması kaynağı (a / b / c'de).
-- **Durum:** açık.
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): a + iii**: elektronik katında 1,5 mm çentik (x −136…−60,75, yana açık), bir sonraki
+  tam taramalı CAD paketinde, lazer kesim dosyası çıkmadan önce; o zamana dek rehber B6 notu. Uygulaması açık: `arayuz.py`,
+  `taban_parcalar.py`, lazer kesim dosyası; burç 2 oturma sorunu ayrı iş (yukarıdaki ilgili not).
 
 ---
 
-## K54 · E3 kafa inişinde sıfır boşluk (yanaklar arası 54,4 mm ↔ yığın 54,4 mm)
+## K54 · E3 kafa inişinde sıfır boşluk (yanaklar arası 54,4 mm ↔ yığın 54,4 mm) — KAPANDI
 - **Soru:** Kafa iskeletinin iki yanağı arası 54,4 mm; aradaki yığın da 54,4 mm (sol: çatal dayaması ve 625ZZ iç bileziği x −24,2,
   yanak iç yüzü −24,2; sağ: tilt hornu dış yüzü 30,2, yanak iç yüzü 30,2). Modelde kafa yukarıdan ortak hacimsiz iniyor, yüzler temas
   ediyor. Baskı toleransında yanaklar zorlamadan inmeyebilir. Yanak iç yüzlerine pay verilsin mi?
@@ -1052,11 +1144,13 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   Yalnız öneri; karar Ahmet'te.
 - **Bloke:** kafa iskeletinin baskısı (kupon sonucu); rehber E3 adımındaki "bilinen açık konu" notu; b seçilirse kafa geometrisi ve
   çakışma taraması kaynağı.
-- **Durum:** açık.
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek c**: ilk baskı kuponunda yanak + çatal dayaması + horn kalınlığında kısa
+  kupon basılır, iniş elle denenir; zorlarsa b (yanak iç yüzlerine 0,2–0,3 mm pay; sol yanağın eksenel yük etkisi o zaman ölçülür).
+  Uygulaması açık: kupon parçası ve baskı listesi satırı; rehber E3 notu aynı kalır.
 
 ---
 
-## K55 · Kabuk bindirme dilleri: etek ön, göğüs ve omuz bantları, göğüs ekranı çerçevesi düz yoldan yerine girmiyor
+## K55 · Kabuk bindirme dilleri: etek ön, göğüs ve omuz bantları, göğüs ekranı çerçevesi düz yoldan yerine girmiyor — KAPANDI
 - **Soru:** Etek ön sağ / sol, göğüs bandı sağ / sol, omuz bandı sağ / sol ve göğüs ekranı çerçevesi sağ / sol, bir alttaki bandın
   bindirme diline (`tasarim/freecad/kabuk/kabuk_rapor.py` ≈ 211: "iç yarı komşunun dış yarısının arkasına 12 mm dil") hiçbir düz yoldan
   girmiyor. Okura nasıl tarif edilsin, geometri mi değişsin?
@@ -1085,7 +1179,10 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   için 6 yön (dışa / içe x, ±y, −z, dışa-yukarı) × 6 uzunluk (1, 2, 3, 5, 8, 12 mm), ardından +z; ters sıra (önce +z 0,5 / 1 mm, sonra
   dışa / ±y) 6; bant başına 42 yol. **Dönme ve ara açılar denenmedi.** Uygulama ajanının adayı: perçin somununu bant yerindeyken bandın
   deliğinden takmak (sıra değişikliği) ya da a / b. Rehberde uygulanmadı; karar Ahmet'te.
-- **Durum:** açık.
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b):** dört bant (etek ön, göğüs bandı, omuz bandı, göğüs ekranı çerçevesi; sağ / sol)
+  için geçici çözüm **a** ("bandı hafifçe esneterek dili alttaki bandın arkasına sok"), baskı kuponunda denenir; kupon zorlarsa b
+  (geometri) sonraki geometri paketinde. Etek önde c ölçüldü, denenen 42 yolun hiçbiri çıkmadı (F10e notu); perçin somunu sıra adayı
+  uygulanmadı. Uygulaması açık: rehber F1 / F3 / F4 takma metni (üretimli paket), kabuk kuponu.
 
 ---
 
@@ -1189,7 +1286,7 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **Sonuç:** dördüncü bakış (`planlama/d158/P107a-kontrol-4.md`) **GEÇER**; K59 kapandı. Kural sapması proje sahibine bildirildi.
 - **Açık kalan (karar değil):** dördüncü bakışın kayıtlı açık işleri sondaki bölümde (P10.7a).
 
-## K60 · Elde taşınan acil stop (Ö4)
+## K60 · Elde taşınan acil stop (Ö4) — KAPANDI
 - **Soru:** Mantar acil stopa ek olarak elde taşınan, kumandalı bir acil stop olsun mu? (pano #7 mesaj #22 madde 4; Efe'nin tarafının
   önerisi.)
 - **Seçenekler (`planlama/adim3/kablolama-on-kararlar.md` §8):** A) yok, demoda mantarın yanında bir kişi; B) kumandalı, arıza-güvenli
@@ -1203,9 +1300,13 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **Not (14.11.2026, P10.7b1 açık işler turu, `F10h-kontrol-2.md` madde 15):** köprü telinin kesiti kayıtta yazmıyordu; rehber zincirin
   teliyle aynı kesiti söylüyor (K1 madde 5 ve kontrol listesi: A01 / A02 ile aynı, yer tutucu `{awg.A01|A02}`). `kablolar.json` devre
   değerleri değişmedi.
-- **Durum:** açık (14.11.2026, P10.7a C adımında kuyruğa alındı).
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek A + köprülü klemens şimdi konur** (pano #7 mesaj #29'da Efe'nin tarafının
+  isteğiyle aynı): elde taşınan acil stop yok; mantar ile acil stop düğüm kartı arasındaki köprülü 2 pin 5,08 mm klemens (A02
+  sonlandırması) şimdi takılır, B ileride sökmeden eklenebilir. Kablaj ve maliyet değişmez (klemens zaten listede). **Şart (demo):**
+  demoda mantar butonun yanında bir kişi durur. Uygulaması açık: `kablolama-on-kararlar.md` §8 / §14 kayıt cümlesi, gerekirse rehber
+  K1 metni (üretimli paket); demo kuralı demo / test kâğıdına. Açılış 14.11.2026, P10.7a.
 
-## K61 · Bas-konuş düğmesi kullanılacak mı (O-12)
+## K61 · Bas-konuş düğmesi kullanılacak mı (O-12) — KAPANDI
 - **Soru:** `maliyet.json`'daki "Bas-konuş düğmesi" (43 mm arcade, Robotistan 76,24 TL) robotta kullanılacak mı; kullanılacaksa yeri
   ve kablosu?
 - **Bilinen (`planlama/d158/kablo-tablosu-gunluk.md` §13):** CAD'de ve belgelerde düğmenin yeri yok. `main` kodunda tetik varsayılanı
@@ -1215,7 +1316,11 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
 - **Sayısal etki:** kalem 76,24 TL (pay hariç). Tabloya kablo eklenmedi, sipariş kalemi değişmedi (O-12, `planlama/adim3/kablolar.md`).
 - **Önerilen varsayılan:** kayıtta yok; Efe'ye panodan sorulacak (orkestratör). Karar Ahmet + Efe.
 - **Bloke:** düğmenin kablosu ve yeri (P10.7b).
-- **Durum:** açık (14.11.2026, P10.7a C adımında kuyruğa alındı).
+- **Durum:** **kapandı (17.11.2026, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b): seçenek a**: bas-konuş düğmesi kullanılmaz, sipariş listesinden çıkar (pano #7 mesaj
+  #29'da Efe'nin tarafının isteği; `main` tetik varsayılanı zaten düğmesiz). Geri alınabilir: b gerekirse düğme Pi GPIO17 ile GND
+  arasına bağlanır, ESP32 pini gerekmez. Sipariş zaten verildiyse düğme elde kalır, yazılım kullanmaz. Uygulaması açık: "Bas-konuş
+  düğmesi" (76,24 TL) `planlama/maliyet.json` ve türevlerinden düşülecek; maliyet dosyası 16.11 siparişinin durumuyla birlikte
+  Ahmet'te (bu pakette değişmedi). Açılış 14.11.2026, P10.7a.
 
 ## K62 · P10.7b1'de tur sayısı ve döngü kuralı (kayıt)
 - **Ne:** döngü kuralı (`planlama/dongu-158.md` § 1, adım 4) en çok 2 düzeltme turu der, 3. turda hâlâ geçmeyen paket kuyruğa gider.
