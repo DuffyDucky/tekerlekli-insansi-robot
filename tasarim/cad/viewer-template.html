@@ -166,7 +166,7 @@ em.eski{display:inline-block;font-style:normal;font-size:10.5px;font-weight:700;
         <tr><td>{{reg_cakisma_kabuk_ici_etiket}}</td><td class="num">{{reg_cakisma_kabuk_ici}}</td><td class="num">≤ {{reg_cakisma_kabuk_ici_esik}}</td><td class="ok">{{reg_cakisma_kabuk_ici_durum}}</td></tr>
         <tr><td>{{reg_cakisma_kabuk_x_iskelet_etiket}}</td><td class="num">{{reg_cakisma_kabuk_x_iskelet}}</td><td class="num">≤ {{reg_cakisma_kabuk_x_iskelet_esik}}</td><td class="ok">{{reg_cakisma_kabuk_x_iskelet_durum}}</td></tr>
         <tr><td>{{reg_cakisma_ev_pozu_etiket}}</td><td class="num">{{reg_cakisma_ev_pozu}}</td><td class="num">≤ {{reg_cakisma_ev_pozu_esik}}</td><td class="ok">{{reg_cakisma_ev_pozu_durum}}</td></tr>
-        <tr><td>{{reg_rampa_yuksuz_etiket}} · el yükü sınırı {{K:K3}}</td><td class="num">{{reg_rampa_yuksuz}}</td><td class="num">≥ {{reg_rampa_yuksuz_esik}}</td><td class="ok">{{reg_rampa_yuksuz_durum}}</td></tr>
+        <tr><td>{{reg_rampa_yuksuz_etiket}} · el yükü sınırı (K3, kapandı)</td><td class="num">{{reg_rampa_yuksuz}}</td><td class="num">≥ {{reg_rampa_yuksuz_esik}}</td><td class="ok">{{reg_rampa_yuksuz_durum}}</td></tr>
         <tr><td>{{reg_tilt_payi_etiket}} · AI HAT+ yuvası {{K:K2}}</td><td class="num">{{reg_tilt_payi}}</td><td class="num">≥ {{reg_tilt_payi_esik}}</td><td class="ok">{{reg_tilt_payi_durum}}</td></tr>
         <tr><td>{{reg_pan_payi_etiket}}</td><td class="num">{{reg_pan_payi}}</td><td class="num">≥ {{reg_pan_payi_esik}}</td><td class="ok">{{reg_pan_payi_durum}}</td></tr>
         <tr><td>{{reg_mik_hoparlor_mm_etiket}}</td><td class="num">{{reg_mik_hoparlor_mm}}</td><td class="num">≥ {{reg_mik_hoparlor_mm_esik}}</td><td class="ok">{{reg_mik_hoparlor_mm_durum}}</td></tr>
@@ -197,12 +197,12 @@ em.eski{display:inline-block;font-style:normal;font-size:10.5px;font-weight:700;
     </section>
     <section class="panel" id="eklem">
       <h2>Eklem aralıkları</h2>
-      <p class="note" style="margin:0 0 8px">Kaynak <code>planlama/d158/F6a-eklem_sinirlari-oneri.json</code>; sayısal sınırlar <code>kod/ortak/eklem_sinirlari.json</code> ile aynı. Öneri dosyasının <code>kod/</code> klasörüne yazılması {{K:K44}}. Sol kol sağın aynası.</p>
+      <p class="note" style="margin:0 0 8px">Kaynak <code>planlama/d158/F6a-eklem_sinirlari-oneri.json</code>; sayısal sınırlar <code>kod/ortak/eklem_sinirlari.json</code> ile aynı. Öneri dosyasını <code>kod/</code> klasörüne kodun sahibi yazar (K44, kapandı). Sol kol sağın aynası.</p>
       <div class="table-wrap"><table>
         <thead><tr><th>Eklem</th><th class="num">Aralık (°)</th><th>Servo</th></tr></thead>
         <tbody>
-          <tr><td>Omuz öne-arka (S1) · yazılım aralığı {{K:K41}}</td><td class="num">{{ek_r_s1_min}} … {{ek_r_s1_max}}</td><td>{{ek_r_s1_servo}}</td></tr>
-          <tr><td>Omuz yana açma (S2) · darbe hız sınırı {{K:K45}} · alt bölge {{K:K38}}</td><td class="num">{{ek_r_s2_min}} … {{ek_r_s2_max}}</td><td>{{ek_r_s2_servo}}</td></tr>
+          <tr><td>Omuz öne-arka (S1) · yazılım aralığı, mekanik durdurucu yok (K41, kapandı)</td><td class="num">{{ek_r_s1_min}} … {{ek_r_s1_max}}</td><td>{{ek_r_s1_servo}}</td></tr>
+          <tr><td>Omuz yana açma (S2) · darbe hız sınırı tezgâh ölçümüyle doğrulanır (K45, kapandı) · alt bölgede yavaş hareket (K38, kapandı)</td><td class="num">{{ek_r_s2_min}} … {{ek_r_s2_max}}</td><td>{{ek_r_s2_servo}}</td></tr>
           <tr><td>Dirsek</td><td class="num">{{ek_r_dirsek_min}} … {{ek_r_dirsek_max}}</td><td>{{ek_r_dirsek_servo}}</td></tr>
           <tr><td>Bilek</td><td class="num">{{ek_r_bilek_min}} … {{ek_r_bilek_max}}</td><td>{{ek_r_bilek_servo}}</td></tr>
           <tr><td>Kafa pan</td><td class="num">{{ek_pan_min}} … {{ek_pan_max}}</td><td>{{ek_pan_servo}}</td></tr>
@@ -212,7 +212,7 @@ em.eski{display:inline-block;font-style:normal;font-size:10.5px;font-weight:700;
       <ul class="tips note" style="font-size:12.5px">
         <li>Bağımlı sınır: S1 {{bag_s1}}° ve üstündeyken S2 en çok {{bag_s2}}° (kablo lopu kaset kapağına yaklaşır).</li>
         <li>Teker ivmesi: düz zeminde sürüş ≤ {{iv_duz}} m/s², fren ≤ {{iv_fren}} m/s²; rampada sürüş ≤ {{iv_rampa}} m/s², fren ≤ {{iv_rampa_fren}} m/s².</li>
-        <li>El yükü sınırı {{K:K3}} · servo değişimi {{K:K9}}.</li>
+        <li>El yükü: servo değişmez, yük sınırı geçerli; yük yalnız düz zeminde, rampada el yüksüz (K3, K9 kapandı).</li>
       </ul>
     </section>
   </div>
@@ -225,7 +225,7 @@ em.eski{display:inline-block;font-style:normal;font-size:10.5px;font-weight:700;
       <div class="kpi"><div class="lab">Süre</div><div class="val">{{b_sa0}}–{{b_sa1}} sa</div><div class="sub">{{b_destekli}} parça destekli basılır ({{b_destekli_tur}} tür), öteki parçalar desteksiz.</div></div>
       <div class="kpi"><div class="lab">Malzeme</div><div class="val">PETG ve PETG-CF</div><div class="sub">PETG {{petg}} g, PETG-CF {{cf0}}–{{cf1}} g (parçalar; kupon hariç). PETG-CF makara sayısı {{K:K42}}.</div></div>
     </div>
-    <p class="note" style="margin:8px 0 0">Kaynak <code>tasarim/freecad/lale158/baski-analiz.json</code> (tek analiz) ve <code>planlama/y2/Y2b-baski.json</code>; parça listesi <code>planlama/baski-listesi.md</code>. Destek azaltma önerileri {{K:K46}} · baskı hizmeti ücreti {{K:K34}}.</p>
+    <p class="note" style="margin:8px 0 0">Kaynak <code>tasarim/freecad/lale158/baski-analiz.json</code> (tek analiz) ve <code>planlama/y2/Y2b-baski.json</code>; parça listesi <code>planlama/baski-listesi.md</code>. Destek azaltma önerileri şimdilik uygulanmaz (K46, kapandı) · baskı hizmeti ücreti {{K:K34}}.</p>
   </section>
 
   <section class="panel" id="maliyet" style="margin-top:12px;scroll-margin-top:12px" hidden>

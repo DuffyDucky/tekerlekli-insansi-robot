@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-17 03:24",
+ "tarih": "2026-11-17 07:27",
  "tarayici": "chrome.exe",
  "ozet": {
   "adim": 50,
@@ -3686,7 +3686,7 @@
   "adim": 50,
   "tasan": [],
   "kucuk_yazi": [],
-  "boyut_kb": 19011,
+  "boyut_kb": 19014,
   "sayfa_esleme": {
    "0": [
     1
@@ -5100,7 +5100,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 58.7,
+     "sure_s": 58.6,
      "yon": [
       {
        "yon": [
@@ -5208,7 +5208,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 15.3,
+     "sure_s": 15.4,
      "yon": [
       {
        "yon": [
@@ -5359,7 +5359,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 28.6,
+     "sure_s": 28.0,
      "yon": [
       {
        "yon": [
@@ -5510,7 +5510,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 3.7,
+     "sure_s": 3.6,
      "yon": [
       {
        "yon": [
@@ -5686,7 +5686,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 77.8,
+     "sure_s": 77.4,
      "yon": [
       {
        "yon": [
@@ -5850,7 +5850,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 81.3,
+     "sure_s": 81.4,
      "yon": [
       {
        "yon": [
@@ -6204,7 +6204,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 7.4,
+     "sure_s": 7.5,
      "yon": [
       {
        "yon": [
@@ -6469,7 +6469,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 4.8,
+     "sure_s": 4.9,
      "yon": [
       {
        "yon": [
@@ -6658,7 +6658,7 @@
    ],
    "gecti": true,
    "e3_kafa_serbest": true,
-   "sure_s": 313.8
+   "sure_s": 313.0
   },
   "ucus": {
    "durum": "koştu",
@@ -16583,7 +16583,7 @@
      ]
     }
    ],
-   "sure_s": 962.3
+   "sure_s": 964.1
   },
   "isil_gomme": {
    "durum": "koştu",
@@ -28440,14 +28440,14 @@
     }
    }
   ],
-  "sure_s": 78.1,
+  "sure_s": 78.2,
   "sure": {
    "yukleme_s": 11.9,
    "sira_s": 88.0,
-   "perdelenme_s": 145.9,
-   "giris_s": 313.8,
-   "ucus_s": 962.3,
-   "toplam_s": 1522.0,
+   "perdelenme_s": 145.8,
+   "giris_s": 313.0,
+   "ucus_s": 964.1,
+   "toplam_s": 1522.8,
    "voksel_alani": 87,
    "voksel_s": 84.0
   }
@@ -32497,7 +32497,7 @@
    }
   ],
   "toplam_gizli": 264,
-  "sure_s": 145.9,
+  "sure_s": 145.8,
   "alt_adim_gizli_istisnasiz": 0,
   "alt_adim_istisna": 117,
   "alt_sinir": 0,
@@ -37040,7 +37040,7 @@
   "hata": [],
   "gecti": true,
   "bolum": 38,
-  "sure_s": 38.0
+  "sure_s": 38.1
  },
  "kablo_esleme": {
   "hata": [],

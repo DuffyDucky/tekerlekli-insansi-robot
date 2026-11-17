@@ -1,0 +1,521 @@
+{
+ "betik": "tasarim/freecad/kafa/boyun_tunel_deneme.py",
+ "paket": "P10.7b2g",
+ "tarih": "2026-11-17",
+ "kaynak": {
+  "fcstd": "tasarim/freecad/kafa/kafa-montaj.FCStd",
+  "md5": "e7f7ba7e1180d4076558a39a4b58712e",
+  "parcalar": [
+   "Servo yuvasi",
+   "Rulman yuvasi",
+   "Boyun mili"
+  ],
+  "komsular": [
+   "Pan servosu MG996R",
+   "Pan servosu cikis mili",
+   "Pan horn 25T aluminyum disk",
+   "Pan horn merkez vidasi M3",
+   "Mil-horn civatasi M3x8"
+  ],
+  "horn_r_mm": 12.5,
+  "hacim_mm3": {
+   "Servo yuvasi": 142055.16,
+   "Rulman yuvasi": 25184.82,
+   "Boyun mili": 38116.03,
+   "Pan servosu MG996R": 29818.16,
+   "Pan servosu cikis mili": 334.54,
+   "Pan horn 25T aluminyum disk": 1433.27,
+   "Pan horn merkez vidasi M3": 96.88,
+   "Mil-horn civatasi M3x8": 118.08
+  },
+  "uretici": "kafa_montaj.py (Govde / Pan: kafa7_parcalar.py:138-159, 162-178, 237-249)"
+ },
+ "kutu_mm": {
+  "x": [
+   -20.0,
+   20.0
+  ],
+  "y": [
+   3.0,
+   96.0
+  ],
+  "z": [
+   -31.0,
+   20.0
+  ]
+ },
+ "baski_ekleri": {
+  "dolgu": "y 46...47,9, r < 20, kanal ustu izi (x -14...6) HARIC: izde yalniz gercek horn",
+  "rulman": "r 20...26, y 64...82 (iki 6808 + arasi)",
+  "servo_alti": "servo cebi y 3...5 (pan servosu alti)",
+  "ek_bolge_malzeme": {
+   "dolgu": {
+    "hacim_mm3": 969.32,
+    "yol_kesisim_mm3": 0.0
+   },
+   "rulman": {
+    "hacim_mm3": 8246.631,
+    "yol_kesisim_mm3": 0.0
+   },
+   "servo_alti": {
+    "hacim_mm3": 1228.19,
+    "yol_kesisim_mm3": 0.0
+   },
+   "basamak_y44_49": {
+    "yol_bos_kaynak_mm3": 1311.035,
+    "yol_bos_parca_mm3": 1311.035
+   },
+   "bilgi_yan_dolgu_basamak_iz_disi_mm3": 126.687,
+   "kesilen_kaynak_eksi_parca_mm3": 0.0,
+   "eklenen_parca_eksi_kaynak_mm3": 9832.546,
+   "yol_bos_kaynak_mm3": 53904.187,
+   "yol_bos_parca_mm3": 53904.187
+  },
+  "ekler_kablo_yoluna_girmiyor": true
+ },
+ "olcu": {
+  "kanal_kesit_mm": [
+   19.96,
+   7.76
+  ],
+  "kanal_sabit_kesit_boy_mm": 33.95,
+  "kanal_y_eksen_bos_mm": 37.86,
+  "alt_cikis_mm": [
+   19.96,
+   11.96
+  ],
+  "mil_penceresi_mm": [
+   19.96,
+   9.96
+  ],
+  "mil_penceresi_kutusuz_mm": [
+   19.96,
+   9.96
+  ],
+  "kablo_odasi_radyal_mm": 7.42,
+  "mil_ici_cap_mm": [
+   31.96,
+   31.96
+  ],
+  "pencere_mil_ici_z_y58": [
+   -27.48,
+   15.98
+  ],
+  "basamak_z_araliklari": {
+   "basamak_y45.0_x-10.0": [
+    -22.98,
+    -7.52
+   ],
+   "basamak_y45.0_x-4.0": [
+    -22.98,
+    -11.86
+   ],
+   "basamak_y45.0_x0.0": [
+    -22.98,
+    -12.5
+   ],
+   "basamak_y45.0_x4.0": [
+    -22.98,
+    -11.86
+   ],
+   "basamak_y46.95_x-10.0": [
+    -25.6,
+    -7.52
+   ],
+   "basamak_y46.95_x-4.0": [
+    -27.2,
+    -11.86
+   ],
+   "basamak_y46.95_x0.0": [
+    -27.48,
+    -12.52
+   ],
+   "basamak_y46.95_x4.0": [
+    -27.2,
+    -11.86
+   ],
+   "basamak_y48.5_x-10.0": [
+    -25.6,
+    -17.34
+   ],
+   "basamak_y48.5_x-4.0": [
+    -27.2,
+    -19.6
+   ],
+   "basamak_y48.5_x0.0": [
+    -27.48,
+    -20.0
+   ],
+   "basamak_y48.5_x4.0": [
+    -27.2,
+    -19.6
+   ]
+  },
+  "horn_r_mm": 12.5
+ },
+ "beklenen": {
+  "kanal_kesit_mm": [
+   20.0,
+   7.8
+  ],
+  "kanal_boy_mm": 34.0,
+  "mil_penceresi_mm": [
+   20.0,
+   10.0
+  ],
+  "alt_cikis_mm": [
+   20.0,
+   12.0
+  ],
+  "kaynak": "kablolama-on-kararlar.md:148-149, rehber_metin.py:676"
+ },
+ "donusler": [
+  "alt cikis (arka yuz, yatay +z) -> arka kanal (dik, +y): 1. dik donus",
+  "kanal ustu -> basamak (horn katmani) -> kablo odasi -> mil penceresi (yatay, +z eksene dogru)",
+  "mil penceresi -> O32 mil ici (karsi duvar z +16...20) -> yukari (+y, mil ucu y 96): 2. dik donus"
+ ],
+ "karsilastirma": {
+  "tolerans_mm": 0.05,
+  "olcumler": {
+   "kanal_x": {
+    "kaynak": [
+     -13.98,
+     5.98
+    ],
+    "parca": [
+     -13.98,
+     5.98
+    ],
+    "fark_mm": 0.0
+   },
+   "kanal_z": {
+    "kaynak": [
+     -26.98,
+     -19.22
+    ],
+    "parca": [
+     -26.98,
+     -19.22
+    ],
+    "fark_mm": 0.0
+   },
+   "kanal_y_eksen": {
+    "kaynak": [
+     6.02,
+     43.88
+    ],
+    "parca": [
+     6.02,
+     43.88
+    ],
+    "fark_mm": 0.0
+   },
+   "kanal_sabit_kesit_y": {
+    "kaynak": [
+     6.05,
+     40.0
+    ],
+    "parca": [
+     6.05,
+     40.0
+    ],
+    "fark_mm": 0.0
+   },
+   "alt_cikis_x": {
+    "kaynak": [
+     -13.98,
+     5.98
+    ],
+    "parca": [
+     -13.98,
+     5.98
+    ],
+    "fark_mm": 0.0
+   },
+   "alt_cikis_y": {
+    "kaynak": [
+     6.02,
+     17.98
+    ],
+    "parca": [
+     6.02,
+     17.98
+    ],
+    "fark_mm": 0.0
+   },
+   "pencere_x_y55": {
+    "kaynak": [
+     -9.98,
+     9.98
+    ],
+    "parca": [
+     -9.98,
+     9.98
+    ],
+    "fark_mm": 0.0
+   },
+   "pencere_y_x0": {
+    "kaynak": [
+     53.02,
+     62.98
+    ],
+    "parca": [
+     53.02,
+     62.98
+    ],
+    "fark_mm": 0.0
+   },
+   "oda_z_y56": {
+    "kaynak": [
+     -27.48,
+     -20.06
+    ],
+    "parca": [
+     -27.48,
+     -20.06
+    ],
+    "fark_mm": 0.0
+   },
+   "basamak_y45.0_x-10.0": {
+    "kaynak": [
+     -22.98,
+     -7.52
+    ],
+    "parca": [
+     -22.98,
+     -7.52
+    ],
+    "fark_mm": 0.0
+   },
+   "basamak_y45.0_x-4.0": {
+    "kaynak": [
+     -22.98,
+     -11.86
+    ],
+    "parca": [
+     -22.98,
+     -11.86
+    ],
+    "fark_mm": 0.0
+   },
+   "basamak_y45.0_x0.0": {
+    "kaynak": [
+     -22.98,
+     -12.5
+    ],
+    "parca": [
+     -22.98,
+     -12.52
+    ],
+    "fark_mm": 0.02
+   },
+   "basamak_y45.0_x4.0": {
+    "kaynak": [
+     -22.98,
+     -11.86
+    ],
+    "parca": [
+     -22.98,
+     -11.86
+    ],
+    "fark_mm": 0.0
+   },
+   "basamak_y46.95_x-10.0": {
+    "kaynak": [
+     -25.6,
+     -7.52
+    ],
+    "parca": [
+     -25.6,
+     -7.52
+    ],
+    "fark_mm": 0.0
+   },
+   "basamak_y46.95_x-4.0": {
+    "kaynak": [
+     -27.2,
+     -11.86
+    ],
+    "parca": [
+     -27.2,
+     -11.86
+    ],
+    "fark_mm": 0.0
+   },
+   "basamak_y46.95_x0.0": {
+    "kaynak": [
+     -27.48,
+     -12.52
+    ],
+    "parca": [
+     -27.48,
+     -12.52
+    ],
+    "fark_mm": 0.0
+   },
+   "basamak_y46.95_x4.0": {
+    "kaynak": [
+     -27.2,
+     -11.86
+    ],
+    "parca": [
+     -27.2,
+     -11.86
+    ],
+    "fark_mm": 0.0
+   },
+   "basamak_y48.5_x-10.0": {
+    "kaynak": [
+     -25.6,
+     -17.34
+    ],
+    "parca": [
+     -25.6,
+     -17.34
+    ],
+    "fark_mm": 0.0
+   },
+   "basamak_y48.5_x-4.0": {
+    "kaynak": [
+     -27.2,
+     -19.6
+    ],
+    "parca": [
+     -27.2,
+     -19.6
+    ],
+    "fark_mm": 0.0
+   },
+   "basamak_y48.5_x0.0": {
+    "kaynak": [
+     -27.48,
+     -20.0
+    ],
+    "parca": [
+     -27.48,
+     -20.02
+    ],
+    "fark_mm": 0.02
+   },
+   "basamak_y48.5_x4.0": {
+    "kaynak": [
+     -27.2,
+     -19.6
+    ],
+    "parca": [
+     -27.2,
+     -19.6
+    ],
+    "fark_mm": 0.0
+   },
+   "mil_donus_y58_x0": {
+    "kaynak": [
+     -27.48,
+     15.98
+    ],
+    "parca": [
+     -27.48,
+     15.98
+    ],
+    "fark_mm": 0.0
+   },
+   "mil_ici_y70_x0": {
+    "kaynak": [
+     -15.98,
+     15.98
+    ],
+    "parca": [
+     -15.98,
+     15.98
+    ],
+    "fark_mm": 0.0
+   },
+   "mil_ici_y90_x0": {
+    "kaynak": [
+     -15.98,
+     15.98
+    ],
+    "parca": [
+     -15.98,
+     15.98
+    ],
+    "fark_mm": 0.0
+   },
+   "mil_ici_y70_z0": {
+    "kaynak": [
+     -15.98,
+     15.98
+    ],
+    "parca": [
+     -15.98,
+     15.98
+    ],
+    "fark_mm": 0.0
+   }
+  },
+  "sonuc": true
+ },
+ "stl_karsilastirma": {
+  "olcumler": {
+   "hacim_brep_mm3": 119591.79,
+   "hacim_stl_mm3": 119594.66,
+   "hacim_fark_yuzde": 0.002,
+   "bb_fark_mm": 0.0,
+   "kapali": true,
+   "manifold_disi": false,
+   "ucgen": 14454
+  },
+  "sonuc": true,
+  "olcut": "hacim farki < %0,5, sinir kutusu < 0,02 mm, kapali, manifold"
+ },
+ "parca": {
+  "stl": "tasarim/freecad/kafa/stl/boyun-tunel-deneme.stl",
+  "stl_md5": "fae0117813ccebd5e23de88bc4cf6308",
+  "malzeme": "PETG (beyaz; tunel olcusu icin; asil servo yuvasi PETG-CF)",
+  "olcu_mm": [
+   40.0,
+   50.0,
+   93.0
+  ],
+  "kati": 1,
+  "gecerli": true,
+  "hacim_cm3": 119.59,
+  "kutle_100_g": 151.9,
+  "kutle_tahmini_g": 67.5,
+  "sure_tahmini_dk": 115.0,
+  "tabla_temas_mm2": 2000.0,
+  "yon": "dik: servo yuvasi tabani (kaynak y = 3) tablada, mil ucu yukari",
+  "baski": {
+   "cikinti_46ustu_mm2": 1612.9,
+   "en_buyuk_z_mm2": [
+    [
+     61.0,
+     458.6
+    ],
+    [
+     41.6,
+     433.9
+    ],
+    [
+     44.9,
+     357.1
+    ],
+    [
+     43.0,
+     109.7
+    ],
+    [
+     11.0,
+     88.0
+    ],
+    [
+     59.0,
+     77.4
+    ]
+   ],
+   "not_": "46 derece ustu asagi bakan yuzler (z = kaynak y - 3); gruplar F10o-gunluk.md duzeltme turu 1 bolumunde"
+  },
+  "tahmin_not": "tahmini: 4 cevre + %25 dolgu, arayuz.PETG_HACIM_HIZI x 1,3 (test/m7_kuponlari.py ile ayni yontem)"
+ },
+ "sure_s": 333.1
+}

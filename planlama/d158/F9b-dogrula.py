@@ -565,7 +565,9 @@ def main():
             if not durum.get(k, "").startswith("**açık**"):
                 hata("%s sayfada 'karar bekliyor', kuyrukta: %r" % (k, durum.get(k)))
     print("    %d karar, %d etiket: %s" % (len(sayfa_k), sum(sayfa_k.values()), ", ".join("%s×%d" % kv for kv in sorted(sayfa_k.items(), key=lambda x: int(x[0][1:])))))
-    for k in ("K42", "K44", "K45"):
+    # P10.7b2g kapanisi: F9b brief'inin ornekleri K42 / K44 / K45 idi; K44 ve K45 17.11'de kapandi (P10.9b) ve sayfada artik
+    # "karar bekliyor" degiller. Ornek sinamasinin amaci (karar etiketi sayfada calisiyor) hala acik kararlarla korunur.
+    for k in ("K42", "K32", "K34"):
         if k not in sayfa_k:
             hata("brief ornegi %s sayfada yok" % k)
 

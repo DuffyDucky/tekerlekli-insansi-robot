@@ -418,7 +418,9 @@ PAKET_SONUC = {
     # F10: P10.9a TASLAĞI, kaynak dongu-158.md §3 F10 tablosunun Durum hücreleri (16.11 02:39 hâli). Açık paketler "Açık" diye
     # başlar; faz sonu (P10.9) bu satırları günceller. Kalıp ve gerekçe P109a-gunluk.md § 4.
     "P10.1": ("Seçim vurgusu, öncekiler yarı saydam, küçük görünüm, internetsiz açılma; 1 düzeltme turu (yazdırma kareleri 19/50 boştu → 50/50).", [DONGU]),
-    "P10.2": ("Açık (K53): girişim ölçüldü, 3,13 mm³, taşma 0,425 mm; model değişmedi; öneri çentik, bir sonraki tam taramalı pakette.", [DONGU]),
+    # P10.7b2g kapanışı: K53 17.11'de kapandı (P10.9b; a + iii, çentik); model değişikliği sonraki tam taramalı CAD paketinde
+    "P10.2": ("Açık: K53 kapandı (17.11, çentik); girişim ölçüldü, 3,13 mm³, taşma 0,425 mm; model değişmedi; çentik bir sonraki "
+              "tam taramalı CAD paketinde.", [DONGU]),
     "P10.3": ("E4 sırası, E3 625ZZ + pim, kalıcı sıra denetimi; 1 düzeltme turu (E3 \"geometrik kilitli\" sonucu yanlıştı); K54 sıfır boşluk.", [DONGU]),
     "P10.4": ("Kabuk adımları alt adımlara bölündü; açık 34 / zor 8 / anlaşılmıyor 0; 1 düzeltme turu (34 somun yanlış yerde); K55 bindirme dilleri.", [DONGU]),
     "P10.4b": ("Gerçek parça rengi, bağlandığı yer vurgusu, cıvata yeri işaretleri; 1 düzeltme turu, ikinci kontrol GEÇER; açık 40 / zor 2.", [DONGU]),
@@ -430,12 +432,13 @@ PAKET_SONUC = {
     # kapalı (P10.7b2f bakım; F10n-gunluk.md)
     "P10.7": ("Açık. Kapalı alt paketler: P10.7a (74 kablo tek kaynakta, `kablolar.json`; 16.11 sipariş listesi genel 120.852,43 TL), "
               "P10.7b1, P10.7b2a (74 / 74 kablo talimatta, PDF 80 sayfa), P10.7b2b, P10.7b2c, P10.7b2d (K1 / K2 demet alt adımları, PDF 84 sayfa), "
-              "P10.7b2e (K52 a, K64 a, sağ / sol K65, kare düzeltmeleri; PDF 86 sayfa). "
-              "Sürüyor: P10.7b2f (Kablo yolu 12 gerilemesi, uç etiketleri; kısım 2: kayıt düzeltmeleri, VIN'e seri Schottky K66; "
-              "kaynak düzeyinde). "
+              "P10.7b2e (K52 a, K64 a, sağ / sol K65, kare düzeltmeleri; PDF 86 sayfa), "
+              # P10.7b2g kapanışı: b2f 9b019d2 ile kapandı; b2g bu commit'le (F10o-gunluk.md)
+              "P10.7b2f (Kablo yolu 12 gerilemesi, uç etiketleri; kayıt düzeltmeleri, VIN'e seri Schottky K66), "
+              "P10.7b2g (boyun tüneli deneme parçası; rehberde K2 alt adım 5'e bağlandı). "
               # P10.7b2f kısım 2: Efe'nin iki cevabı 14.11'de geldi (pano #7 mesaj #28), kayda 16.11'de geçti; "Kalan"dan çıktı
               # P10.9b (17.11.2026, orkestratör kararı): K60 (A + köprülü klemens) ve K61 (a) kapandı; "Kalan"dan çıktı (P109b-gunluk.md)
-              "Kalan: taban yollarının yeniden tasarımı, boyların ölçümü, düğüm tutucusu, boyun tüneli deneme parçası, G19 / G20 / G24 / G26 "
+              "Kalan: taban yollarının yeniden tasarımı, boyların ölçümü, düğüm tutucusu, G19 / G20 / G24 / G26 "
               "(yalnız onayla).", [DONGU]),
     "P10.8": ("Açık: satın alınan parça modelleri parçalar gelince.", [DONGU]),
     "P10.9": ("Açık: bu sayfanın F10 yenilemesi. P10.9a ön paketi üretici ve denetimi iki basamaklı faza açtı; sayılar ve son üretim faz sonunda.",
@@ -454,8 +457,8 @@ FAZ_SONUC = {
     "F8": ("Sipariş paketi 136 satır, baskı partileri, T1–T13 test kâğıtları; sipariş verilmedi.", [DONGU]),
     "F9": ("Takvim: S = 16.11 yalnız durum A'da sığar (bir hafta tampon); demo 127 anahtar, depo temizliği; bu rapor son paket.", [PLAN, DONGU]),
     # P10.9a TASLAĞI: faz açık; P10.9 faz sonunda yeniden yazar.
-    "F10": ("Faz açık. Kapalı: P10.1, P10.3, P10.4, P10.4b, P10.5, P10.5b, P10.6 ve P10.7'nin a, b1, b2a, b2b, b2c, b2d, b2e alt paketleri. "
-            "Açık: P10.2 (K53), P10.7, P10.8, P10.9.", [DONGU]),
+    "F10": ("Faz açık. Kapalı: P10.1, P10.3, P10.4, P10.4b, P10.5, P10.5b, P10.6 ve P10.7'nin a, b1, b2a, b2b, b2c, b2d, b2e, b2f, b2g alt paketleri. "
+            "Açık: P10.2 (K53 kapandı, çentik sonraki CAD paketinde), P10.7, P10.8, P10.9.", [DONGU]),
 }
 
 # Orkestratöre giden tutarsızlıklar (F9c-gunluk.md §7 ile aynı; her sayı kaynağında)

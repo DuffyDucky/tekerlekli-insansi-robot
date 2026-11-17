@@ -12,7 +12,7 @@
 #   C  gönderme biçimi eşitlenmeden: çevrilen her gönderme sayılır (rehber_metin.GONDERME_KAYIT), çözülemeyen 0.
 import os, sys, re, subprocess, types, collections
 ROBOT = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-HEAD = sys.argv[2] if len(sys.argv) > 2 else "b5fc255"          # P10.7b2f: taban b5fc255 (b2e'de 84f1a4a, b2d'de 1c4e882)
+HEAD = sys.argv[2] if len(sys.argv) > 2 else "9b019d2"          # P10.7b2g: taban 9b019d2 (b2f'de b5fc255, b2e'de 84f1a4a, b2d'de 1c4e882)
 RH = os.path.join(ROBOT, "tasarim", "freecad", "rehber")
 sys.path.insert(0, RH)
 b = subprocess.run(["git", "show", HEAD + ":tasarim/freecad/rehber/rehber_metin.py"], cwd=ROBOT, capture_output=True, check=True).stdout
@@ -296,6 +296,20 @@ B2F_EKLENEN += [
      "cevabı, 14.11)"),
 ]
 BEKLENEN["b5fc255"] = (B2F_SILINEN, B2F_EKLENEN)
+# P10.7b2g (F10o-gunluk.md § 4): taban 9b019d2 (b2f). Boyun tüneli deneme parçası üretildi (tasarim/freecad/kafa/boyun_tunel_deneme.py);
+# K2 alt adım 5 (boyun demeti) parçanın adına / dosyasına ve fiş sırasına (kablolar.json U03 / H02 / S10 gecis_sirasi) bağlandı.
+# Silinen cümle yok: eski KT4 cümlesi aynen kaldı, üç cümle eklendi (düzeltme turu 1: D1 birikme, N2 pan servo kablosu).
+B2G_EKLENEN = [
+    ("b2g: K2 alt adım 5 parça adı ve dosyası", "Parça: Boyun tüneli deneme parçası (`tasarim/freecad/kafa/stl/boyun-tunel-deneme.stl`; "
+     "baskı listesinde tolerans kuponlarının yanında, beyaz PETG, ≈ 68 g, destek gerekmez)."),
+    ("b2g düz.2 Y1: pan servo kablosu yerinde", "Önce bir servo kablosunu alt çıkıştan kanala sok, ucunu kanal dibindeki servo kablo "
+     "yarığına it ve yerinde bırak (pan servosunun kendi kablosu robotta bu kanaldan iner)."),
+    ("b2g düz.1 D1: fiş sırası ve birikme", "Fişleri parçanın arka yüzündeki alt çıkıştan sok, kanaldan yukarı, kablo odasından mil penceresine, "
+     "milin içinde yukarı geçirip mil ucundan çıkar; geçen kabloyu parçada bırak, sonraki fişi onun yanından geçir: önce tünel boşken hub "
+     "uzatmasının (U03) USB-A erkek fişi, sonra U03'ün kablosu tünelde yerindeyken HDMI'nin (H02) micro HDMI ucu, sonra iki kablonun yanından "
+     "tilt servo kablosunun (S10) 3 pinli fişi; hoparlör (AU3) ve 12 V (G17) fişsiz geçer, deneme gerekmez."),
+]
+BEKLENEN["9b019d2"] = ([], B2G_EKLENEN)
 BEKLENEN_SILINEN, BEKLENEN_EKLENEN = BEKLENEN.get(HEAD, ([], []))
 
 

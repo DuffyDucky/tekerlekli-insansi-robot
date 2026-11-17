@@ -975,7 +975,19 @@ ADIM = {
             "sırası: (1) hub uzatması (USB 2.0, erkek fiş gövdesi ≤ 13 × 7 mm; erkek uç aşağıdan yukarı, tünel boşken), (2) HDMI (Ø ≤ 6 "
             "mm; micro HDMI ucu aşağıdan yukarı, HDMI A ucu gövdede), (3) tilt servo kablosu, (4) hoparlör ve (5) 12 V çifti fişsiz "
             "(uç kontakları / pabuçlar geçirdikten sonra takılır). Demeti kurmadan önce basılmış tünel deneme parçasında (20 × 7,8 mm, "
-            "≈ 34 mm, iki dik dönüş, mil penceresi 20 × 10) fişleri elle geçir (KT4; kumpas ölçüsü yetmez). Fiş geçmezse sırasıyla: "
+            # P10.7b2g: deneme parçası üretildi (kafa/boyun_tunel_deneme.py; kesit kafa-montaj.FCStd'nin servo yuvası + rulman yuvası +
+            # boyun milinden + gerçek horn / pan servosu), fiş listesi planlama/adim3/kablolar.json U03 / H02 / S10 hazir_kablo şartı ve
+            # gecis_sirasi; düzeltme turu 1 (F10o-kontrol D1, N2): kablolar birikir (kablolama-on-kararlar.md:141), pan servo kablosu
+            # kafa7_parcalar.py:146 yarığından kanala iner
+            "≈ 34 mm, iki dik dönüş, mil penceresi 20 × 10) fişleri elle geçir (KT4; kumpas ölçüsü yetmez). Parça: Boyun tüneli deneme "
+            "parçası (`tasarim/freecad/kafa/stl/boyun-tunel-deneme.stl`; baskı listesinde tolerans kuponlarının yanında, beyaz PETG, "
+            "≈ 68 g, destek gerekmez). "
+            "Önce bir servo kablosunu alt çıkıştan kanala sok, ucunu kanal dibindeki servo kablo yarığına it ve yerinde bırak (pan "
+            "servosunun kendi kablosu robotta bu kanaldan iner). "
+            "Fişleri parçanın arka yüzündeki alt çıkıştan sok, kanaldan yukarı, kablo odasından mil penceresine, milin içinde yukarı "
+            "geçirip mil ucundan çıkar; geçen kabloyu parçada bırak, sonraki fişi onun yanından geçir: önce tünel boşken hub uzatmasının "
+            "(U03) USB-A erkek fişi, sonra U03'ün kablosu tünelde yerindeyken HDMI'nin (H02) micro HDMI ucu, sonra iki kablonun yanından tilt "
+            "servo kablosunun (S10) 3 pinli fişi; hoparlör (AU3) ve 12 V (G17) fişsiz geçer, deneme gerekmez. Fiş geçmezse sırasıyla: "
             "kablo fişsiz geçirilip yeniden sonlandırılır (USB 2.0'da lehimli USB-A fiş), HDMI için şerit HDMI + uç adaptörleri. "
             # P10.7b2f kısım 2: Efe'nin cevabı pano #7 mesaj #28 (elektrik.md E3)
             "Efe'nin iki cevabı geldi (ESP32 bilinçli reseti mevcut DTR / RTS devresiyle; ReSpeaker 16 kHz kabul): boyundan yeni tel "

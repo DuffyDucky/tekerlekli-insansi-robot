@@ -140,20 +140,15 @@ for _e in EKLEMLER:
                 ("ek_%s_servo" % _e, "eklem", "eklemler.%s.servo" % _e, "s")]
 
 # Sayfada "karar bekliyor" diye gorunen kararlar: kendi kisa etiketimiz (sayisiz); durum karar-kuyrugu.md ozet tablosundan.
+# P10.7b2g kapanisi: K3, K9, K38, K41, K44, K45, K46 17.11'de kapandi (P10.9b); listeden cikti, sablonda yerlerine kararin
+# sayisiz ozeti yazildi (viewer-template.html).
 KARARLAR = [
     ("K2", "AI HAT+ ile kafa arka üst bağlantı yuvası (boss)", "tilt payı bu kararla yeniden ölçülür"),
-    ("K3", "Düz zeminde elde yük sınırı", "rampa payı yüksüz değerdir"),
-    ("K9", "El yükü: servo değişimi mi, yük sınırı mı", "kol servo modelleri"),
     ("K28", "Bütçe farkının hocaya bildirilmesi (sipariş onayı)", "maliyet ve takvim"),
     ("K29", "Erken alım (kupon parçaları)", "takvim"),
     ("K32", "Kafa ekranı: hocadan mı, satın alma mı", "kafa ekranı ve maliyet"),
     ("K34", "Baskı hizmeti ücreti", "maliyet ve baskı"),
-    ("K38", "S2 alt bölge hız sınırı ve kapanma sırası", "eklem aralıkları"),
-    ("K41", "S1 yazılım aralığı (kod ile CAD)", "eklem aralıkları"),
     ("K42", "PETG-CF makara sayısı", "baskı ve maliyet"),
-    ("K44", "Eklem sınırları dosyasının kod/ klasörüne yazılması", "eklem aralıkları"),
-    ("K45", "S2 darbe hız sınırı", "eklem aralıkları"),
-    ("K46", "Destek azaltma geometri önerileri", "baskı"),
 ]
 
 # maliyet.json notlarinda F9b'den sonra yanlis kalan cumle: maliyet.json dokunulmaz (F9b brief), sayfada isaretlenir.

@@ -195,6 +195,21 @@ B ve C hem PETG-CF hem beyaz PETG; D2 yalnız D1 geçmezse ya da karşılaştır
 Rulman elle (ya da mengeneyle hafif) bastırınca oturmalı; ısıl gömme somun havyayla düz girmeli, vida sıkınca dönmemeli. Sonuç CAD'e uygulanır ve STL'ler
 yeniden çıkarılır.
 
+### Kablo deneme parçası (Parti 0'ın yanında, toplama katılmaz; P10.7b2g, 17.11)
+
+Boyun kablolarının fişleri demet kurulmadan önce bu parçada elle denenir (KT4, `planlama/adim3/kablolama-on-kararlar.md` §4 K14). Parça
+kafa modülünün gerçek CAD'inden kesildi (`tasarim/freecad/kafa/boyun_tunel_deneme.py`: `kafa-montaj.FCStd`'deki servo yuvası + rulman
+yuvası + boyun mili, kutu kesişimi); ölçüler ve kaynakla karşılaştırma `tasarim/freecad/kafa/boyun-tunel-deneme.json`. Kablolar
+gelince basılır; ilk günün kuponlarına bağlı değil (parça montaja girmez; kaynak parçaların vida ve ısıl gömme deliklerinin kesitleri parçada kalır,
+kullanılmaz, insert takılmaz).
+
+| Parça | STL | Malzeme | Ölçü (mm, X × Y × Z) | Filament (g) | Süre (tahmini) | Tabla yönü | Destek | Ne denenir |
+|---|---|---|---|---|---|---|---|---|
+| Boyun tüneli deneme parçası | `tasarim/freecad/kafa/stl/boyun-tunel-deneme.stl` | PETG (beyaz) | 40 × 50 × 93 | 67,5–151,9 | ≈ 1 sa 55 dk | dik: servo yuvası tabanı tablada, mil ucu yukarı | desteksiz (köprüler ≤ 20 mm; horn altında 6 mm konsol halka, fiş yolu dışında) | alt çıkış 20 × 12 → arka kanal 20 × 7,8 × 34 → basamak (horn katmanı) → kablo odası → mil penceresi 20 × 10 → Ø32 mil içinde yukarı: servo kablosu yarıkta, U03 USB-A erkek fişi, sonra U03 yerindeyken H02 micro HDMI ucu, sonra S10 servo fişi |
+
+Fiş geçmezse ne yapılacağı rehberde ve `kablolama-on-kararlar.md` §4'te (fişsiz geçirip yeniden sonlandırma; HDMI için şerit + uç
+adaptörleri). Parçayı gerçek parçalarla aynı profille bas; kesit 0,8 mm boşlukla dar (USB-A fişi 13 × 7 ↔ kanal 20 × 7,8).
+
 ## STL durumu
 
 Omuz STL'leri (`tasarim/freecad/omuz/stl/`, 09.11 F2 koşusu; `omuz-gobegi.stl` dişli) ve kuponlar (`tasarim/freecad/test/stl/`) var. Diğer

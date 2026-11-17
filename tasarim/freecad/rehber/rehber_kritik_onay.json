@@ -6068,6 +6068,24 @@
    },
    {
     "yer": "kaynak K2 alt adım 5 is_",
+    "ozet": "ed1c9380fdb9cdef",
+    "neden": "metin",
+    "metin": "Parça: Boyun tüneli deneme parçası (`tasarim/freecad/kafa/stl/boyun-tunel-deneme.stl`; baskı listesinde tolerans kuponlarının yanında, beyaz PETG, ≈ 68 g, destek gerekmez)."
+   },
+   {
+    "yer": "kaynak K2 alt adım 5 is_",
+    "ozet": "1443c01745891039",
+    "neden": "metin",
+    "metin": "Önce bir servo kablosunu alt çıkıştan kanala sok, ucunu kanal dibindeki servo kablo yarığına it ve yerinde bırak (pan servosunun kendi kablosu robotta bu kanaldan iner)."
+   },
+   {
+    "yer": "kaynak K2 alt adım 5 is_",
+    "ozet": "35a4f1d4d7f0d946",
+    "neden": "anahtar sözcük",
+    "metin": "Fişleri parçanın arka yüzündeki alt çıkıştan sok, kanaldan yukarı, kablo odasından mil penceresine, milin içinde yukarı geçirip mil ucundan çıkar; geçen kabloyu parçada bırak, sonraki fişi onun yanından geçir: önce tünel boşken hub uzatmasının (U03) USB-A erkek fişi, sonra U03'ün kablosu tünelde yerindeyken HDMI'nin (H02) micro HDMI ucu, sonra iki kablonun yanından tilt servo kablosunun (S10) 3 pinli fişi; hoparlör (AU3) ve 12 V (G17) fişsiz geçer, deneme gerekmez."
+   },
+   {
+    "yer": "kaynak K2 alt adım 5 is_",
     "ozet": "231ae2084c3ddd0d",
     "neden": "anahtar sözcük",
     "metin": "Fiş geçmezse sırasıyla: kablo fişsiz geçirilip yeniden sonlandırılır (USB 2.0'da lehimli USB-A fiş), HDMI için şerit HDMI + uç adaptörleri."

@@ -153,7 +153,10 @@ rehberde tablosunda bakan soludur adlar
 sabit testin testinin testini konusu konusudur senin
 sayfada karenin listesindeki
 beslenmesin diye diyodun belirlenir iletir iletmez etti pano demete beslenmesini keser mevcut devresiyle kapatabilirsin
+dibindeki
 """.split())
+# P10.7b2g düzeltme turu 2 (F10o-kontrol Y1): son satır K2 alt adım 5 servo kablosu cümlesinin 1 yeni kelimesi ("kanal dibindeki";
+# gözden geçirildi: Türkçe harfi olmayan doğru yazım).
 # P10.7b2f: sondan bir önceki satır B6a uç etiketi cümlesinin ve F5 kurulum testi göndermesinin 3 yeni kelimesi (gözden geçirildi: Türkçe harfi
 # olmayan doğru yazım). Kısım 2 (kayıt düzeltmeleri, K66): son satır B6a VIN diyodu cümlesi ve kontrolü, K2 alt adım 4 / 5 ve kontrol,
 # E4 not_ (Efe'nin pano cevabı) metinlerinin 14 yeni kelimesi (gözden geçirildi: Türkçe harfi olmayan doğru yazım).
