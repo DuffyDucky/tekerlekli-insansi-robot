@@ -83,4 +83,8 @@ Listenin tamamı `karar-kuyrugu.md` P10.9b bölümünde; kısaca:
 
 ## 7. Commit, push, pano
 
-Commit, push ve pano mesajı numarası bu günlüğün ikinci commit'inde (aşağıda) işlenir.
+- Commit `437d864` "Lale P10.9b: 17.11 kararları kuyruğa işlendi" (yalnız bu üç dosya, adıyla eklendi). Gidecek fark yerel kanca
+  kalıplarıyla elle tarandı: 0 eşleşme; `pre-push` kancası temiz geçti. Push: `9b019d2..437d864`, yerel = uzak.
+- Pano: konu #7, **mesaj #34** (Efe'ye; #29'un cevabı): K60 A + köprülü klemens, K61 düğme siparişten çıkıyor, K38 / K45 hız sınırları
+  (donanım şartı), K41 S1 −45…135, K44 dosyayı Efe üretir; bilgi olarak K3 / K9 el yükü. Kişisel bilgi yok.
+- Bu satırlar ikinci commit'te.
