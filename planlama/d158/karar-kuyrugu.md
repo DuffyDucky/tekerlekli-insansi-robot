@@ -78,9 +78,10 @@ Sayıların hepsi dosyadan okundu; yanında dosya:satır ya da JSON anahtar yolu
 | K63 | Montajdan önce kapanacak iki talimat boşluğu: G07 akü ölçüm hattı + 100 kΩ; SV3 + dağıtım kartı C | kapandı (15.11; P10.7b2a, commit `4a097fb` "Lale P10.7b2a"; dört bağımsız kontrol, üç düzeltme turu; metin orkestratörün, Ahmet'e bilgi) | — | — |
 | K64 | Bara tutucusu (yıldız barası + anahtarlı baranın M5 saplamalarını taşıyan basılmış yalıtkan parça): panelde yeri, bağlantı elemanı ve CAD'i yok | kapandı (16.11; orkestratör kararı (Echo); a: tam taramalı CAD paketinde tasarlanıp basılır, satın alma yok; o zamana dek rehber B5a talimat yazmaz; P10.7b2e kısım 2) | — | — |
 | K65 | Sağ / sol tanımı: CAD'de sağ (+X) robota önden bakanın sağı = robotun kendi solu; ESP32 yazılımı robotun kendi sağını kullanıyor | kapandı (16.11; orkestratör kararı (Echo): donanım adları korunur, rehber / kablo tablosu / pin haritasına tanım cümlesi, K1'e kurulum testi; yazılım düzeltmesi Efe'de, iş; P10.7b2e kısım 2, `planlama/d158/sag-sol-karari.md`) | — | — |
+| K66 | ESP32 VIN'e seri Schottky: çevre 5 V → 1N5819 → VIN (çevre hat sigortası atınca geri besleme; pano #7 mesaj #26 madde 3 / #28) | kapandı (16.11; orkestratör kararı (Echo): seri 1N5819, anot çevre 5 V, katot VIN; tezgâh denemesine bağlı kabul, VIN payı tutmazsa geri alınır; malzeme 1N5819 1 → 2, +1,22 TL; P10.7b2f kısım 2) | — | — |
 
-**Açık: 48.** **Kapandı: 17** (K1, K5, K8, K10, K11, K14, K15, K16, K17, K52, K56, K57, K58, K59, K63, K64, K65; K10 masa testine bağlı kabul). Toplam 65 madde
-(16.11.2026, P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, K65 eklendi ve kapandı; özet tablosunun satırları tek tek sayıldı).
+**Açık: 48.** **Kapandı: 18** (K1, K5, K8, K10, K11, K14, K15, K16, K17, K52, K56, K57, K58, K59, K63, K64, K65, K66; K10 masa testine, K66 tezgâh denemesine bağlı kabul). Toplam 66 madde
+(16.11.2026, P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, K65 eklendi ve kapandı; P10.7b2f kısım 2: K66 eklendi ve kapandı; özet tablosunun satırları tek tek sayıldı).
 P8.1 (F8a, 09.11.2026) Ahmet listesinin 14 maddesi (`planlama/d158/F8a-siparis.md` §9): 10'u 11 yeni madde oldu (K27–K37; madde 3
 erken alım K29 ve insert K31 diye bölündü); 4'ü (madde 6, 7, 8, 9) var olan K4, K9, K1 / K10 / K11 / K12 ve K2'ye not olarak eklendi.
 P2.1 (F2, 09.11.2026) karar taslakları KT-F2-1…4 → K38–K41, B'nin düzeltilmiş metinleriyle (`planlama/d158/F2-kontrol.md`); KT-F2-4 F5 bulgusuyla tek karar (K41).
@@ -1291,6 +1292,39 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   göğüs ekranı port tarafı gerçek üründe bakılacak. İleride donanım adlarını robotun kendi çerçevesine çevirme seçeneği açık not
   (`sag-sol-karari.md` § 8).
 - **Durum:** kapandı (16.11.2026; uygulama P10.7b2e kısım 2, `planlama/d158/F10m-gunluk.md` § 11).
+- **Ek not (16.11.2026, P10.7b2f kısım 2; pano #8 mesaj #33):** takasta IS arıza adları (`is_sol` / `is_sag`) da girişleriyle birlikte
+  taşınır (`sag-sol-karari.md` § 3). Yazılımın işi; karar değişmedi.
+
+## K66 · ESP32 VIN'e seri Schottky: çevre 5 V sigortası atınca geri besleme (P10.7b2f kısım 2; pano #7 mesaj #26 madde 3, #28) — KAPANDI
+- **Soru (pano #7 mesaj #26 madde 3; Efe'nin tarafının cevabı #28 #26.3):** ESP32 Pi'nin USB'sinden beslenmeye devam ederken çevre
+  5 V'taki 2 A mini sigorta (O-19 a) atarsa çevre yükleri USB → hub → VBUS'taki 1N5819 → ESP32 kartı → VIN yolundan geri beslenir.
+  Yazılım bunu ayırt edemez (boş ADC1 pini yok, I2C yoklaması bir şey görmez). Efe'nin tarafının önerisi: çevre 5 V → ESP32 VIN arasına
+  seri Schottky; "diyot kararı sizin".
+- **Seçenekler (pano #7 mesaj #32'nin dayanağı; `planlama/adim3/elektrik.md` E4):** A) diyot yok (bugünkü): sigorta
+  atınca sonar ve BTS kartları USB'den ≈ 4,4 V ile çalışmaya devam eder, arıza görünmez; sigortayı bir kısa devre attırdıysa kısa devre
+  bu kez USB'den beslenir (1N5819 1 A, Pi'nin ortak USB bütçesi; hesap / çıkarım, denenmedi). B) VIN'e seri 1N5819 (anot çevre 5 V,
+  katot VIN): sigorta atınca çevre hattı gerçekten düşer, ESP32 ve 3V3 yükleri USB'den ayakta kalır; kısa devre USB'ye taşınmaz.
+- **Karar (16.11.2026, orkestratör kararı (Echo), Ahmet'in 13.11 yetkilendirmesiyle; pano #7 mesaj #32 ile Efe'ye bildirildi):** B.
+  Tezgâh denemesine bağlı kabul; VIN payı tutmazsa diyot geri alınır ve panoya yazılır.
+- **Sigorta atınca (B):** düşenler: 5 V'tan beslenen üç HC-SR04 ve iki BTS7960B kartının mantık VCC'si. Ayakta kalanlar: ESP32 (USB'den)
+  ve ESP32 kartının 3V3 regülatöründen beslenenler: PCA9685 mantığı, BNO055, iki enkoder, PC817 çıkış tarafı (`elektrik.md` E2). PCA9685
+  susmaz; Efe'nin tarafının "PCA9685 cevap vermez" beklentisi tutmaz. Önerilen algılama: üç sonarın birden art arda zaman aşımı (yazılım).
+- **Risk (hesap, ölçülmedi):** diyottan sonra VIN ≈ 4,5–4,6 V (1N5819 düşümü yük akımına bağlı, tahmini); ESP32 kartının regülatörü ve
+  düşüm gerilimi doğrulanmadı. XL4016 çevre çıkışı yükseltilemez (5,2 V'ta sonar echo bölücüsü 3,54 V, sınır 3,6 V). BTS kartının VCC
+  kesilince ne yaptığı bilinmiyor (`pin-haritasi.md` D8, T4).
+- **Tezgâh denemesi (kart gelince; `elektrik.md` E4):** ESP32 USB'ye takılıyken çevre 2 A sigortası sökülür: (1) ESP32 ayakta kalır;
+  (2) Wi-Fi gönderirken VIN ölçülür (eşik kartın regülatörüne göre); (3) BTS kartları motorları durdurur. (1) ya da (2) tutmazsa diyot
+  geri alınır; (3) tutmazsa bu karar yeniden açılır.
+- **Sayısal etki:** `planlama/maliyet.json` "Diyot 1N5819" adet 1 → 2: +1,22 TL (pay hariç), %15 payla +1,40 TL; genel 120.852,43 →
+  120.853,83 TL, koşullularla 126.423,90 → 126.425,31 TL (`planlama/adim5/maliyet_toplam.py`). Yedek alınmadı. Sipariş günü 16.11:
+  kalemin bu siparişe girip girmediği kayıtta yok.
+- **Uygulama (P10.7b2f kısım 2, `planlama/d158/F10n-gunluk.md` § 8):** `elektrik.md` E4 (yeni madde), E4 karşılaştırma tablosu, blok
+  şema, açık işler 6; `planlama/adim3/kablolar.json` X01 "5 V" damarı (not, teyit, kaynak) ve `kararlar` K66 → `kablolar.md`; rehber
+  B6a madde 2 ve kontrol, K2 madde 4 (`tasarim/freecad/rehber/rehber_metin.py`).
+- **Açık iş (karar değil):** diyodun fiziksel yeri ve bağlantı biçimi (arayüz kartı üstünde mi, X01'in 5 V damarında hat içi mi) kayıtta
+  yok; rehber yalnız yönü ve adımı (B6a, X01) söyler. Tezgâh denemesinin hangi test kâğıdına gireceği açık (aday: `kablolama-on-kararlar.md`
+  KT5, hub girişi denemesiyle aynı kurulum). Algılama (sonar zaman aşımı) yazılımda, Efe'nin tarafı.
+- **Durum:** kapandı (16.11.2026; tezgâh denemesine bağlı kabul).
 
 ---
 
@@ -1419,7 +1453,10 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     `tasarim/freecad/arayuz.py` `SES_USB`, `kablo_yolu_ekran.py` `KABLO`, rehber şemaları 7 ve 8, `planlama/yazilim-plani.md`; `elektrik.md:29,
     :278, :511` "tepe hesaplanmadı" ifadeleri.
   - 62 kablonun dökümü depoda yok: P10.7'de yeniden kurulur (rapor §11; bu kararlarla 61). → 14.11 P10.7a A adımı: `planlama/adim3/kablolar.json` 74 kayıt, 62 ile eşleme `kablolar.md`; karar gerekenler günlükte (O-1…O-14); ikinci ve üçüncü turda orkestratör kararları işlendi, karara bağlı 1 kablo (G20, K52). Yapıldı (P10.7a ✅ 14.11): üçüncü bağımsız bakış geçmedi, orkestratör tek ek tur + dar kapsamlı dördüncü bakış kararı verdi, dördüncü bakış GEÇER (K59, kapandı).
-  - Efe'nin iki cevabı (bilinçli reset DTR / RTS ile; ReSpeaker 16 kHz / firmware): boyun demeti kapanmadan önce.
+  - Efe'nin iki cevabı (bilinçli reset DTR / RTS ile; ReSpeaker 16 kHz / firmware): boyun demeti kapanmadan önce. → **Geldi (pano #7
+    mesaj #28, 14.11; kayda 16.11, P10.7b2f kısım 2):** reset `esp32_reset()` mevcut DTR / RTS devresiyle, otomatik reset devresi yerinde,
+    yeni tel yok (KT6 doğrular); ReSpeaker 16 kHz kabul, 1 kanallı firmware. İki açıdan da boyun demeti kapatılabilir (`elektrik.md` E3).
+    Yapıldı.
   - Kontrol-3'ün bakamadıkları: Direnc.net BC337-40TA'nın üreticisi (adından onsemi çıkarımı); MAH-112-C-4'ün kendi veri sayfası.
 - P10.7a'dan (kablo tablosu + sipariş listesi, 14.11.2026) kayıt ve açık iş (`planlama/d158/kablo-tablosu-gunluk.md`;
   `planlama/d158/P107a-kontrol-4.md` §2):

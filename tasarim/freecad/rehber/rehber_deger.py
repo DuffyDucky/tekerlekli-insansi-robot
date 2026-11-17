@@ -50,7 +50,7 @@
 # P10.7b2c ikinci yarı (ajan B):
 #   {bag.<kablo>}         bağlantı tablosu: kablonun bütün damarları "ad: a → b" ("; " ile), kablolar[<k>].damarlar'dan; ESP32 ucu
 #                         "ESP32 GPIO21 (`I2C_SDA`)" (damar gpio + pin, pin haritası § 9 pinler ile aynı olmalı), PCA9685 ucu "PCA9685 kanal 0
-#                         sinyali (`sag_omuz`)" (damar pca_kanal + pca_ad, pin haritası pca9685_kanallar ile aynı olmalı); tutmazsa KeyError
+#                         sinyali (yazılım adı `sag_omuz`)" (damar pca_kanal + pca_ad, pin haritası pca9685_kanallar ile aynı olmalı); tutmazsa KeyError
 # Çözülemeyen yer tutucu hata listesine girer (rehber_denetim.kaynak_denetle sayar; rehber_metin içe aktarılırken metin "⟦?…⟧" olur).
 import os, re, json
 
@@ -329,7 +329,9 @@ class Degerler:
                 raise KeyError("kablo %s damarı '%s': uç kanal %d, damar pca_kanal %s / pca_ad %s, pin haritasında kanal %d = %s" % (
                     kimlik, d.get("ad"), n, d.get("pca_kanal"), d.get("pca_ad"), n, ad))
             bulgu.add("pca")
-            return "PCA9685 kanal %d sinyali (`%s`)" % (n, ad)
+            # P10.7b2f (F10m-kare-inceleme § 5): kanal adı yazılım adıdır (robotun kendi sağı / solu, sag-sol-karari.md); rehberdeki
+            # sağ / sol önden bakanın, okur karıştırmasın
+            return "PCA9685 kanal %d sinyali (yazılım adı `%s`)" % (n, ad)
         return "%s %s" % (parca, nokta)
 
     def _bag(self, kimlik):

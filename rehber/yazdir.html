@@ -35,6 +35,7 @@ h1{font-size:1.55em;margin:0 0 1.2mm;line-height:1.2}
 .kpi{display:grid;grid-template-columns:auto auto 1fr auto auto;gap:1.5mm 4mm;margin:2mm 0;font-size:max(8.1pt,.92em);align-items:baseline}
 .kpi span{color:var(--mut);font-size:max(8.1pt,.88em);margin-left:1mm}
 .is{white-space:pre-line;margin:1.5mm 0}
+.is.tanim{border:.4mm solid var(--acc);border-radius:1.2mm;padding:1.2mm 2.5mm;background:#f3f8fd}
 .isdevam{color:var(--mut);font-size:max(8.1pt,.88em);font-style:italic;margin:1mm 0}   /* P10.7b2a-Y: iş metni sayfa sınırında sürüyor */
 .notlar{border:.3mm solid var(--line);border-left:1.2mm solid var(--uyar);border-radius:1.2mm;padding:1.2mm 2.5mm;margin:1.8mm 0}
 .notlar b{color:var(--uyar)}
@@ -62,6 +63,7 @@ code{background:#efede7;padding:0 1mm;border-radius:.6mm;font-size:max(8.1pt,.9e
 .altkart{display:grid;grid-template-columns:76mm 1fr;gap:3mm;border-top:.3mm solid var(--line);padding:1.6mm 0;break-inside:avoid}
 .agorsel{width:76mm;height:45.6mm;object-fit:contain;background:var(--zemin);border-radius:1.2mm;display:block}
 .lej{font-size:8.1pt;color:var(--mut);line-height:1.3;margin-top:.8mm;width:76mm}.lej.ana{width:auto}
+.lej .ucn{display:inline-block;min-width:1.35em;text-align:center;border-radius:99px;background:var(--ink);color:#fff;font-weight:700;padding:0 .3em}
 .agorsel-yok{width:76mm;height:45.6mm;display:grid;place-items:center;background:var(--zemin);color:var(--mut);border-radius:1.2mm}
 h3{font-size:1.05em;margin:0 0 .8mm}
 tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
@@ -122,6 +124,18 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
     }).join(" · ") + "</div>" : "") + (O.length ? "<div class='lej'>Karede görünmez: " + O.map(esc).join(" · ") + "</div>" : "");
   }
 
+  // P10.7b2f: uç etiketleri (veri sira_grup[].uc / adimlar[].uc, rehber_gorunum.uc_isle). Karede numara (app.js ?sahne=1), adı burada
+  // karenin altında (≥ 8,1 pt); karede numarası olmayan (fazla) uç numarasız. uc_yok: parçası modelde olmayan ya da o konumda takılı
+  // olmayan uç, nedeniyle "karede görünmez" satırında.
+  function ucMetin(g) {
+    var u = (g && g.uc) || [], y = (g && g.uc_yok) || [];
+    return (u.length ? "<div class='lej uc'>Uçlar: " + u.map(function (x) {
+      return (x.karede ? "<b class='ucn'>" + x.n + "</b> " : "") + esc(x.ad) + " <span class='t'>(" + esc(x.kablo.join(", ")) + ")</span>";
+    }).join(" · ") + "</div>" : "") + (y.length ? "<div class='lej'>Uç karede görünmez: " + y.map(function (x) {
+      return esc(x.ad) + " (" + esc(x.neden) + ")";
+    }).join(" · ") + "</div>" : "");
+  }
+
   // F7c (D-3): adım bloklara bölünür; sığmazsa bloklar sondan "devam" sayfasına taşınır. Yazı 8,5 pt'nin, küçük öğeler 8,1 pt'nin altına inmez.
   var FS_MAX = 9.6, FS_MIN = 8.5, GH_MAX = 84, GH_MIN = 46;
   // F10d: takma sırası tablosu (app.js ile aynı: st.sira varsa parçalar ve bağlantı elemanları tek tabloda, grup başlıklarıyla)
@@ -157,6 +171,17 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
   // tek parçaydı; .ic overflow:hidden kestiği yeri basmıyordu, K1'in son ≈ 3645 karakteri PDF'te yoktu). Hepsi sığınca çıktı eskisiyle aynı.
   function isBloklari(st) {
     return st.is_ ? st.is_.split("\n").map(function (t) { return { tur: "is", t: t }; }) : [];
+  }
+  // P10.7b2f (F10m-kare-inceleme § 5): "**Başlık:** …" ile başlayan iş paragrafı (adım 0 sağ / sol tanımı) çerçeveli kutuda; öbürleri düz
+  function isHtml(isb) {
+    var h = [], duz = [];
+    function bosalt() { if (duz.length) { h.push("<div class='is'>" + md(duz.join("\n")) + "</div>"); duz = []; } }
+    isb.forEach(function (x) {
+      if (/^\*\*[^*]{1,60}:\*\*/.test(x.t) && !x.parca) { bosalt(); h.push("<div class='is tanim'>" + md(x.t) + "</div>"); }
+      else duz.push(x.t);
+    });
+    bosalt();
+    return h.join("");
   }
   function bloklar(st, s) {
     var b = isBloklari(st);
@@ -194,7 +219,7 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
     (st.alt ? st.sira_grup : []).forEach(function (g, n) {
       var j = n + 1, ad = s + "." + j;
       b.push({ tur: "alt", h: "<div class='altkart'><div><img class='agorsel' alt='Alt adım " + ad + " 3B görünüm' src='goruntu/adim-" + iki(s) + "-" + iki(j) +
-        ".png' onerror=\"this.outerHTML='<div class=agorsel-yok>Görüntü yok</div>'\">" + lejantMetin(g.sema, g.iz, altKablo(st, g), g.sema_ortulu) + "</div><div><h3>" + ad + " · " + esc(g.ad) + "</h3>" +
+        ".png' onerror=\"this.outerHTML='<div class=agorsel-yok>Görüntü yok</div>'\">" + lejantMetin(g.sema, g.iz, altKablo(st, g), g.sema_ortulu) + ucMetin(g) + "</div><div><h3>" + ad + " · " + esc(g.ad) + "</h3>" +
         (g.is_ ? "<div class='is'>" + md(g.is_) + "</div>" : "") +
         ((g.kablo || []).length ? "<ul class='kablo'>" + g.kablo.map(function (i) { return st.kablo[i] ? "<li>" + md(st.kablo[i]) + "</li>" : ""; }).join("") + "</ul>" : "") +
         (g.satir.length ? "<table>" + g.satir.map(function (k) { return satir(st, k); }).join("") + "</table>" : "") + "</div></div>" });
@@ -204,7 +229,7 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
   // surer: bu sayfadan sonra iş metni sürüyor mu (1 paragraf sınırında, 2 paragraf ortasında); sayfanın sonunda okura işaret
   function sayfa(st, s, ilk, bl, surer) {
     var h = [], isb = bl.filter(function (x) { return x.tur === "is"; });
-    var isMetin = "<div class='is'>" + md(isb.map(function (x) { return x.t; }).join("\n")) + "</div>" + (surer ? "<p class='isdevam'>" +
+    var isMetin = isHtml(isb) + (surer ? "<p class='isdevam'>" +
       (surer === 2 ? "İş metni yarım kaldı" : "İş metni sürüyor") + ": devamı sonraki sayfa (" + esc(st.kod) + ", adım " + s + ") →</p>" : "");
     h.push("<div class='ust'><span><b>Lale</b> · 3B montaj rehberi, yazdırılabilir sürüm (taslak)</span><span>Adım " + s + " / " + (N - 1) + (ilk ? "" : " (devam)") + "</span></div>");
     if (ilk) {
@@ -218,7 +243,9 @@ tr.grup td{font-weight:600;color:var(--mut);background:#f4f2ec}
       var yalniz = {};
       (st.sira_grup || []).forEach(function (g) { if (g.sema_yalniz) (g.sema || []).forEach(function (i) { yalniz[i] = 1; }); });
       h.push(lejantMetin(SEMA.map(function (x, i) { return i; }).filter(function (i) { return SEMA[i].a === s && !yalniz[i]; }), [],
-        V.parcalar.filter(function (p) { return p.renk && p.a === s; })).replace("class='lej'", "class='lej ana'"));
+        // P10.7b2f: kablolama kapısının ana karesinde önceki kapının kabloları da renkli (app.js lejantıyla aynı)
+        V.parcalar.filter(function (p) { return p.renk && (p.a === s || (st.kablolama && p.a < s)); })).replace("class='lej'", "class='lej ana'"));
+      if (!st.alt) h.push(ucMetin(st).replace(/class='lej/g, "class='lej ana"));   // P10.7b2f: alt adımı olmayan adımın karesi
       var np = st.parcalar.reduce(function (a, b) { return a + b.adet; }, 0), nb = st.baglantilar.reduce(function (a, b) { return a + b.adet; }, 0);
       h.push("<div class='kpi'><div><b>~" + st.sure_dk + " dk</b><span>süre" + (st.sure_tahmini ? " (tahmini)" : "") + "</span></div>" +
         "<div><b>" + np + "</b><span>parça</span></div><div><b>" + (st.alet ? md(st.alet) : "—") + "</b><span>alet</span></div>" +

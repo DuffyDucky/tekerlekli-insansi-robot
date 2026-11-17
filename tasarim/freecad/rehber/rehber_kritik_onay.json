@@ -99,10 +99,352 @@
     "metin": "yolun ucu ESP32'de: CAD yolu eski tasarımı çiziyor (çevre 5 V doğrudan ESP32'ye); tabloda G19 arayüz kartının 5 V klemensine gider ve bu yolda çizili sayılmaz (P10.7b2: yol yeniden çizilir)"
    },
    {
-    "yer": "GEO_ISTISNA 12",
-    "ozet": "8cbb539a06f13457",
-    "neden": "geometri istisnası",
-    "metin": "yolun üst ucu kafada: CAD yolu 05.11 öncesi ESP32 → kafa USB hattını çiziyor; ESP32 USB (U06) artık hub'a direk arka yüzünden gider ve \"ESP32 USB\" şemasında çizilir, bu yolda sayılmaz (P10.7b2: yol yeniden çizilir)"
+    "yer": "CAD_KIRP 12",
+    "ozet": "efdf0ed22aa812a7",
+    "neden": "rehberde kırpılan CAD yolu",
+    "metin": "son 2 kesim y 192.5 · yolun noktalar[3..] bölümü 05.11 öncesi ESP32 → kafa USB hattı (direk boyunca kafaya çıkar); B01'in ESP32 ucu taban-analiz.json kablo_yolu[11].noktalar[2] = ESP32 taşıyıcısının merkezi; rehber yalnız noktalar[0..2]'yi çizer"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "2a6ff8df190e4137",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "Acil stop mantarı = '^Acil stop kontak govdesi' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "ded52b61ffa02f79",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "Akü = '^Aku LiFePO4' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "cce052522a14448b",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "Ana anahtar = '^Ana anahtar ASW' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "d1f346228d3104a8",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "Ana sigorta yuvası = '^Ana sigorta yuvasi' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "12ea7583f02cbfde",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "Arayüz kartı = '^Arayuz karti' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "b915d07e1b0dd66e",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "BNO055 = '^BNO055 IMU' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "bb9c71bab8397456",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "BTS7960 sağ = '^BTS7960 motor surucu sag$' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "7f37558d5ddf991d",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "BTS7960 sol = '^BTS7960 motor surucu sol$' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "3a7bd718a5639d5b",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "D24V50F5 = '^5 V cevirici Pololu' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "da60fc8bfc4868f5",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "Dağıtım kartı A = '^Servo dagitim karti A' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "69295939179eeeee",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "Dağıtım kartı B = '^Servo dagitim karti B' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "56ebb1ea342cb09a",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "ESP32 = '^ESP32 DevKit' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "edbeeacff8700663",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "Göğüs ekranı = '^Gogus ekrani 11,6' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "382a73314f787062",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "HC-SR04 orta = '^Sonar HC-SR04 \\\\(orta\\\\)' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "f304a990d0f85125",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "HC-SR04 sağ = '^Sonar HC-SR04 \\\\(sag\\\\)' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "832220e12398e2fa",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "HC-SR04 sol = '^Sonar HC-SR04 \\\\(sol\\\\)' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "8fbe97cccdb5279f",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "Hoparlör = '^Hoparlor 40 x 20' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "f6661300d0c87ae1",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "JGB37 arka sağ = '^Motor JGB37-520 \\\\(arka sag\\\\)' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "cd5caf19c7731d49",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "JGB37 arka sol = '^Motor JGB37-520 \\\\(arka sol\\\\)' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "e7dbc28766c205aa",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "JGB37 ön sağ = '^Motor JGB37-520 \\\\(on sag\\\\)' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "47d9c00d43cbd61d",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "JGB37 ön sol = '^Motor JGB37-520 \\\\(on sol\\\\)' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "e59db5726c3d36ef",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "Kamera = '^Kamera Raspberry Pi Camera' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "0ac1474fdc0e09fc",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "PAM8403 = '^PAM8403' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "4ef68b9057c160ce",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "PC817 modülü = '^Arayuz karti' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "fe8d87211cb4dc28",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "PCA9685 = '^PCA9685' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "438c78fc4d465519",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "QLED = '^Yuz ekrani WaveShare' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "10df9f4bd66e34b0",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "Raspberry Pi 5 = '^Raspberry Pi 5' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "290c225c068484ab",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "ReSpeaker = '^ReSpeaker' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "61bddaa2f5f2dac2",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "Röle K1 = '^Role 12 V' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "6b8431112c707def",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "SY8205 = '^SY8205 kafa' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "34648a66998d7e72",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "Sigorta kutusu = '^Sigorta kutusu' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "eb08d5fb972859b8",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "USB hub = '^USB Hub 4' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "d4b6cc5a4cab3664",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "XL4016 A = '^XL4016 servo 6 V A' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "9f2b9b3776ab4c5d",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "XL4016 B = '^XL4016 servo 6 V B' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "0f3e3099ea5017fc",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "XL4016 C = '^XL4016 servo 6 V C' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "240e359188e56829",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "XL4016 çevre = '^XL4016 cevre 5 V' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "ca110be759763755",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "kafa pan servosu = '^Pan servosu MG996R' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "ba0f74b48e52c293",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "kafa tilt servosu = '^Tilt servosu MG996R' None"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "68cf77043999eed6",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "sağ S1 (omuz öne-arka) servosu = '^S1 servo DS3235' 'omuz_sag'"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "34ec51238ee23d3d",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "sağ S2 (omuz yana) servosu = '^S2 servo DS3235' 'omuz_sag'"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "6c4e0dc8b3090617",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "sağ bilek servosu = '^Bilek servosu MG996R' 'dirsek_sag'"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "a22c10cc79aa543b",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "sağ dirsek servosu = '^Dirsek servosu MG996R' 'dirsek_sag'"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "e42f831791085f01",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "sol S1 (omuz öne-arka) servosu = '^S1 servo DS3235' 'omuz_sol'"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "2280168c4f5476a0",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "sol S2 (omuz yana) servosu = '^S2 servo DS3235' 'omuz_sol'"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "96fb14e442382160",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "sol bilek servosu = '^Bilek servosu MG996R' 'dirsek_sol'"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "21a2eaf6b7bafca7",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "sol dirsek servosu = '^Dirsek servosu MG996R' 'dirsek_sol'"
+   },
+   {
+    "yer": "UC_ETIKET",
+    "ozet": "15223c57b1ee812c",
+    "neden": "uç etiketi → CAD parçası",
+    "metin": "Ön şarj kartı = '^On sarj karti' None"
+   },
+   {
+    "yer": "UC_MODELSIZ",
+    "ozet": "222d6b67dd800d7d",
+    "neden": "uç etiketi: modelde parçası yok",
+    "metin": "Acil stop düğümü (mantar NC çıkışı) = düğüm kartı modelde yok"
+   },
+   {
+    "yer": "UC_MODELSIZ",
+    "ozet": "69ddaba9305bc89f",
+    "neden": "uç etiketi: modelde parçası yok",
+    "metin": "Anahtarlı bara = bara modelde yok (bara tutucusu CAD paketinde, K64)"
+   },
+   {
+    "yer": "UC_MODELSIZ",
+    "ozet": "4d3d35d0b4e2c3d9",
+    "neden": "uç etiketi: modelde parçası yok",
+    "metin": "Dağıtım kartı C (kafa) = kafa dağıtım kartı modelde yok"
+   },
+   {
+    "yer": "UC_MODELSIZ",
+    "ozet": "9b82fd4f09d9ca2d",
+    "neden": "uç etiketi: modelde parçası yok",
+    "metin": "Göğüs regülatörü = regülatör modelde yok (K52 a: güç panelinde)"
+   },
+   {
+    "yer": "UC_MODELSIZ",
+    "ozet": "a5a58fd02bbc5a8e",
+    "neden": "uç etiketi: modelde parçası yok",
+    "metin": "Kafa giriş klemensi = klemens modelde yok"
+   },
+   {
+    "yer": "UC_MODELSIZ",
+    "ozet": "ef45c9b78601e3f9",
+    "neden": "uç etiketi: modelde parçası yok",
+    "metin": "Ses bölücüsü = bölücü modelde yok"
+   },
+   {
+    "yer": "UC_MODELSIZ",
+    "ozet": "32f11925526c15e1",
+    "neden": "uç etiketi: modelde parçası yok",
+    "metin": "XT60 (akü tarafı) = konnektör modelde yok"
+   },
+   {
+    "yer": "UC_MODELSIZ",
+    "ozet": "28c2621a6b494cea",
+    "neden": "uç etiketi: modelde parçası yok",
+    "metin": "XT60 (robot tarafı) = konnektör modelde yok"
+   },
+   {
+    "yer": "UC_MODELSIZ",
+    "ozet": "bbee6874b841293b",
+    "neden": "uç etiketi: modelde parçası yok",
+    "metin": "XT60E-M şarj girişi = konnektör modelde yok (K50)"
+   },
+   {
+    "yer": "UC_MODELSIZ",
+    "ozet": "e71449445c7a6378",
+    "neden": "uç etiketi: modelde parçası yok",
+    "metin": "Yıldız barası = bara modelde yok (bara tutucusu CAD paketinde, K64)"
    },
    {
     "yer": "PARCA_CAD",
@@ -1752,6 +2094,18 @@
    },
    {
     "yer": "LISTE ZORUNLU_CUMLE",
+    "ozet": "3aefa67980a3cba6",
+    "neden": "kural listesi",
+    "metin": "('B6a', \"VIN'e seri 1N5819:\", 'anot çevre 5 V tarafında, katot ESP32 VIN tarafında', \"B6a is_: VIN'e seri 1N5819 yönü (K66)\")"
+   },
+   {
+    "yer": "LISTE ZORUNLU_CUMLE",
+    "ozet": "df0861947232fc7c",
+    "neden": "kural listesi",
+    "metin": "('B6a', \"VIN'e seri 1N5819'un yönü:\", 'çevre 5 V → ESP32 VIN yönünde iletir, ters yönde iletmez \\\\(bantlı uç, katot, VIN tarafında\\\\)', \"B6a kontrol: VIN'e seri 1N5819'un ölçülen yönü (K66)\")"
+   },
+   {
+    "yer": "LISTE ZORUNLU_CUMLE",
     "ozet": "4a1b4881635f3a03",
     "neden": "kural listesi",
     "metin": "('F5', '{gpio.ROLE_K2_ONSARJ} = 1 \\\\(röle K2\\\\)', 'en az {ms.onsarj} bekle', \"F5 E9: K2'den sonra en az bekleme\")"
@@ -1911,6 +2265,12 @@
     "ozet": "f5d1434c8e0e8e21",
     "neden": "kural listesi",
     "metin": "\"USB ses kartı: yedek, takılmaz (KT2 geçmezse Pi port 2'ye;\""
+   },
+   {
+    "yer": "LISTE TERIM_ISTISNA",
+    "ozet": "439dcd517537d044",
+    "neden": "kural listesi",
+    "metin": "\"Karede PAM8403'ün yanındaki ikinci kart yedek USB ses kartıdır: takılmaz (önceki alt adım).\""
    },
    {
     "yer": "LISTE CIPLAK_MUAF",
@@ -2282,9 +2642,9 @@
    },
    {
     "yer": "kaynak 0 is_",
-    "ozet": "3f40adfeed84ca79",
+    "ozet": "4443d8693cd1cc9e",
     "neden": "metin",
-    "metin": "Sağ / sol: Bu rehberde ve kablo tablosunda sağ / sol, robota önden bakan kişinin sağı / soludur; robotun kendi sağı / solu değildir."
+    "metin": "**Sağ / sol tanımı:** Bu rehberde ve kablo tablosunda sağ / sol, robota önden bakan kişinin sağı / soludur; robotun kendi sağı / solu değildir."
    },
    {
     "yer": "kaynak 0 is_",
@@ -2954,6 +3314,18 @@
    },
    {
     "yer": "kaynak B6a is_",
+    "ozet": "66b6a64f30e01540",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "VIN'e seri 1N5819: anot çevre 5 V tarafında, katot ESP32 VIN tarafında (K66; çevre hat sigortası atınca çevre yükleri USB'den beslenmesin diye)."
+   },
+   {
+    "yer": "kaynak B6a is_",
+    "ozet": "eeb1585dd192b30a",
+    "neden": "anahtar sözcük",
+    "metin": "Diyodun takılacağı yer (arayüz kartı üstü ya da X01'in 5 V damarı) kayıtta yok, kablajda belirlenir."
+   },
+   {
+    "yer": "kaynak B6a is_",
     "ozet": "853591c9e84b134b",
     "neden": "yer tutucu, zorunlu, anahtar sözcük",
     "metin": "PC817 modülünün çıkış besleme ucunu (çıkış VCC) ESP32'nin {uc.X01:PC817_çıkış_beslemesi:b} pinine bağla (X01): 5 V'a bağlama."
@@ -3008,9 +3380,9 @@
    },
    {
     "yer": "kaynak B6a is_",
-    "ozet": "e3027eb44564bc6e",
+    "ozet": "9fa6cd193bb6af45",
     "neden": "metin",
-    "metin": "Karede kartların adı yazmaz; yerleri (robota önden bakınca): arayüz kartı solda, ESP32 taşıyıcı sağda, PCA9685 onun önünde sağda, BNO055 ortada; dağıtım kartı A ön kenarda sağda, B solda."
+    "metin": "Karede bağlantı kablolarının uç kartları numaralı (etkileşimli sayfada adıyla, basılı sayfada adları karenin altında); yerleri (robota önden bakınca): arayüz kartı solda, ESP32 taşıyıcı sağda, PCA9685 onun önünde sağda, BNO055 ortada; dağıtım kartı A ön kenarda sağda, B solda."
    },
    {
     "yer": "kaynak B6a is_",
@@ -3029,6 +3401,12 @@
     "ozet": "69ae77225719001c",
     "neden": "anahtar sözcük",
     "metin": "X01, I01, I02, P01 ve P02 bağlandı: her dişi uç kart üstü yazıyla kablolar.md'deki uca eşleşti; dağıtım kartı A ve B'de kondansatörlerin eksi şeritli bacağı GND barasında"
+   },
+   {
+    "yer": "kaynak B6a kontrol",
+    "ozet": "731c5829fde63caf",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "VIN'e seri 1N5819'un yönü: multimetrenin diyot kademesinde çevre 5 V → ESP32 VIN yönünde iletir, ters yönde iletmez (bantlı uç, katot, VIN tarafında)"
    },
    {
     "yer": "kaynak B6a kontrol",
@@ -3386,33 +3764,9 @@
    },
    {
     "yer": "kaynak K1 kontrol",
-    "ozet": "149297fa10584d8c",
+    "ozet": "5f5e14979197cb17",
     "neden": "anahtar sözcük",
-    "metin": "Sağ / sol kurulum testi (bağladığın taraf ile yazılımın tarafı aynı mı; bu adımda değil, F5 \"İlk enerji, aşama 2\"de devreye aldıktan ve motor / enkoder yön testinden (`*_MOTOR_TERS`, `*_ENKODER_TERS`; `kod/esp32/OKU_BENI.md`) sonra yapılır): tekerler yerden kesik (şasi takozda)."
-   },
-   {
-    "yer": "kaynak K1 kontrol",
-    "ozet": "7994368119ffd676",
-    "neden": "metin",
-    "metin": "Önce `sur` komutunu v = 0, w = 0,2 ile gönder (w sola +; motorlar yarım saniyede kendiliğinden durur, gerekirse yinele): robot kendi soluna dönmek ister, yani robota önden bakınca soldaki tekerler ileri, sağdakiler geri döner."
-   },
-   {
-    "yer": "kaynak K1 kontrol",
-    "ozet": "e1a88bbd48fe7e60",
-    "neden": "metin",
-    "metin": "Sonra `odo_sifirla` komutunu gönder ve arka tekerleri tek tek elle çevir: önden bakınca soldaki arka teker `odo` satırında yalnız `sag` sayacını değiştirmeli (`sol` sabit kalır), sağdaki yalnız `sol` sayacını; sayacın artıp azalması bu testin konusu değil, yön testinin konusudur."
-   },
-   {
-    "yer": "kaynak K1 kontrol",
-    "ozet": "b35873afc12524b7",
-    "neden": "metin",
-    "metin": "Ters çıkarsa kabloyu değiştirme: robotu sürme, `planlama/d158/sag-sol-karari.md`'deki yazılım düzeltmesi bekleniyor (Efe)."
-   },
-   {
-    "yer": "kaynak K1 kontrol",
-    "ozet": "0cea1d6624c6965b",
-    "neden": "metin",
-    "metin": "Devreye alma adımları ve `sur`'un yalnız w ile davranışı kartta denenmedi (`kod/esp32/OKU_BENI.md`)"
+    "metin": "Sağ / sol kurulum testi bu adımda yapılmaz: F5 \"İlk enerji, aşama 2\" kontrol listesinde (devreye alma ve motor / enkoder yön testinden sonra)"
    },
    {
     "yer": "kaynak K1 kablo",
@@ -3926,9 +4280,9 @@
    },
    {
     "yer": "kaynak K1 alt adım 10 is_",
-    "ozet": "8458ade5b439081c",
+    "ozet": "6da21348fefb9556",
     "neden": "anahtar sözcük",
-    "metin": "Karede vurgulu Kablo yolu 12 (B01): direk boyunca yukarı çıkan kısmı eski çizimdir (ESP32'den kafaya giden eski USB yolu), uygulanmaz; B01 tabanda kalır."
+    "metin": "Karede vurgulu Kablo yolu 12 (B01) tabanda kalır: sol BTS7960B'den ESP32 taşıyıcısına."
    },
    {
     "yer": "kaynak K1 alt adım 10 is_",
@@ -5222,9 +5576,9 @@
    },
    {
     "yer": "kaynak E4 not_",
-    "ozet": "9b88a5b9aafb4cef",
+    "ozet": "fdfbaf5e89a87a02",
     "neden": "metin",
-    "metin": "Efe'ye soru (demet kapanmadan): ReSpeaker çalma akışı en çok 16 kHz; konuşma sesi için kabul mü, hangi firmware"
+    "metin": "ReSpeaker çalma akışı en çok 16 kHz: Efe konuşma sesi için kabul etti, 1 kanallı firmware (pano cevabı, 14.11)"
    },
    {
     "yer": "kaynak E4 not_",
@@ -5309,6 +5663,12 @@
     "ozet": "56416b6ebabb1ee4",
     "neden": "anahtar sözcük",
     "metin": "Sonra sol kabuğu arkadan yerine koy (giriş yolu ölçümü)."
+   },
+   {
+    "yer": "kaynak E4 alt adım 4 is_",
+    "ozet": "437f88b7bfb9d70b",
+    "neden": "anahtar sözcük",
+    "metin": "Karede PAM8403'ün yanındaki ikinci kart yedek USB ses kartıdır: takılmaz (önceki alt adım)."
    },
    {
     "yer": "kaynak E4 alt adım 5 ad",
@@ -5492,9 +5852,9 @@
    },
    {
     "yer": "kaynak K2 kontrol",
-    "ozet": "834cbd612c98f67c",
+    "ozet": "0cb54566e23fdca3",
     "neden": "zorunlu",
-    "metin": "Demet kapatılmadan: Efe'nin iki cevabı geldi (DTR / RTS reset, ReSpeaker 16 kHz); \"tel gerekir\" derse bükümlü çift eklenir"
+    "metin": "Demet kapatılmadan: Efe'nin iki cevabı geldi (DTR / RTS reset, ReSpeaker 16 kHz); yeni tel yok, demete bükümlü çift eklenmedi"
    },
    {
     "yer": "kaynak K2 kontrol",
@@ -5531,12 +5891,6 @@
     "ozet": "4756d08ac9e316a9",
     "neden": "metin",
     "metin": "Göğüs ekranı, hub ve ses yolları gösterim şemasıdır (`lale158/kablo_yolu_ekran.py`): parça sayısına girmez; kablo çapı, büküm yarıçapı ve port yeri doğrulanmadı"
-   },
-   {
-    "yer": "kaynak K2 kablo",
-    "ozet": "d631ab82704917d0",
-    "neden": "anahtar sözcük",
-    "metin": "Taban şeması 12'nin direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); geçerli yol \"ESP32 USB\" şemasında"
    },
    {
     "yer": "kaynak K2 kablo",
@@ -5678,9 +6032,9 @@
    },
    {
     "yer": "kaynak K2 alt adım 4 is_",
-    "ozet": "0b71126692eda278",
+    "ozet": "d6417b6721addd8f",
     "neden": "anahtar sözcük",
-    "metin": "1N5819'un sınırı 1 A: çevre yükleri USB'den geri beslenirse aşılabilir (teslimde bakılacaklar; Efe'ye soru)."
+    "metin": "1N5819'un sınırı 1 A: çevre yüklerinin USB'den geri beslenmesini VIN'e seri ikinci 1N5819 keser (B6a, K66)."
    },
    {
     "yer": "kaynak K2 alt adım 5 ad",
@@ -5720,9 +6074,9 @@
    },
    {
     "yer": "kaynak K2 alt adım 5 is_",
-    "ozet": "3d78a8b0e9bc21d8",
+    "ozet": "1788e51ebd288bf7",
     "neden": "zorunlu",
-    "metin": "Demeti kelepçe / kılıfla kapatmadan önce Efe'nin iki cevabı beklenir (ESP32 bilinçli reseti DTR / RTS ile; ReSpeaker 16 kHz)."
+    "metin": "Efe'nin iki cevabı geldi (ESP32 bilinçli reseti mevcut DTR / RTS devresiyle; ReSpeaker 16 kHz kabul): boyundan yeni tel gerekmez, demeti kelepçe / kılıfla kapatabilirsin."
    },
    {
     "yer": "kaynak K2 alt adım 6 ad",
@@ -8402,9 +8756,9 @@
    },
    {
     "yer": "kaynak F5 is_",
-    "ozet": "050a0802e1575f68",
+    "ozet": "26d499619509ecc2",
     "neden": "metin",
-    "metin": "Yön testinden sonra K1 kontrolündeki sağ / sol kurulum testini yap."
+    "metin": "Yön testinden sonra kontrol listesindeki sağ / sol kurulum testini yap."
    },
    {
     "yer": "kaynak F5 is_",
@@ -8531,6 +8885,36 @@
     "ozet": "fe651eb8d4c5fb72",
     "neden": "metin",
     "metin": "Kapak altında kablo sıkışmadı"
+   },
+   {
+    "yer": "kaynak F5 kontrol",
+    "ozet": "00e897e3a8e4daef",
+    "neden": "metin",
+    "metin": "Sağ / sol kurulum testi (bağladığın taraf ile yazılımın tarafı aynı mı; K1'de bağlanan kablolar; devreye aldıktan ve motor / enkoder yön testinden (`*_MOTOR_TERS`, `*_ENKODER_TERS`; `kod/esp32/OKU_BENI.md`) sonra yapılır): tekerler yerden kesik (şasi takozda)."
+   },
+   {
+    "yer": "kaynak F5 kontrol",
+    "ozet": "7994368119ffd676",
+    "neden": "metin",
+    "metin": "Önce `sur` komutunu v = 0, w = 0,2 ile gönder (w sola +; motorlar yarım saniyede kendiliğinden durur, gerekirse yinele): robot kendi soluna dönmek ister, yani robota önden bakınca soldaki tekerler ileri, sağdakiler geri döner."
+   },
+   {
+    "yer": "kaynak F5 kontrol",
+    "ozet": "e1a88bbd48fe7e60",
+    "neden": "metin",
+    "metin": "Sonra `odo_sifirla` komutunu gönder ve arka tekerleri tek tek elle çevir: önden bakınca soldaki arka teker `odo` satırında yalnız `sag` sayacını değiştirmeli (`sol` sabit kalır), sağdaki yalnız `sol` sayacını; sayacın artıp azalması bu testin konusu değil, yön testinin konusudur."
+   },
+   {
+    "yer": "kaynak F5 kontrol",
+    "ozet": "b35873afc12524b7",
+    "neden": "metin",
+    "metin": "Ters çıkarsa kabloyu değiştirme: robotu sürme, `planlama/d158/sag-sol-karari.md`'deki yazılım düzeltmesi bekleniyor (Efe)."
+   },
+   {
+    "yer": "kaynak F5 kontrol",
+    "ozet": "0cea1d6624c6965b",
+    "neden": "metin",
+    "metin": "Devreye alma adımları ve `sur`'un yalnız w ile davranışı kartta denenmedi (`kod/esp32/OKU_BENI.md`)"
    },
    {
     "yer": "kaynak F5 kablo",
@@ -8780,9 +9164,9 @@
    },
    {
     "yer": "kaynak KABLO_AD 12",
-    "ozet": "3bbf4653086b21a1",
+    "ozet": "9d51be872943d614",
     "neden": "anahtar sözcük",
-    "metin": "Şemanın direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); ESP32 USB artık hub'dan: \"ESP32 USB\" şeması"
+    "metin": "CAD yolunun 05.11 öncesi ESP32 → kafa USB kısmı rehberde çizilmez; ESP32 USB artık hub'dan: \"ESP32 USB\" şeması"
    },
    {
     "yer": "kaynak SEMA HDMI",

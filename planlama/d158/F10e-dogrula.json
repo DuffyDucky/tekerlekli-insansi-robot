@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-16 07:50",
+ "tarih": "2026-11-17 03:35",
  "konum": 141,
  "renk_cad": {
   "yontem": "CAD rengi rehber_gorunum.cad_parcalar() ile FCStd'den yeniden okunur (Document.xml Renk özelliği × gorsel betiğinin RENK tablosu); ayrıca GuiDocument.xml yayınık rengi",
@@ -5007,7 +5007,7 @@
      {
       "id": "p0221",
       "ad": "Etek orta sağ",
-      "fark": 112788,
+      "fark": 112791,
       "kimlik": 115280,
       "yalniz": 115486,
       "oran": 0.977,
@@ -5092,7 +5092,7 @@
      {
       "id": "p0222",
       "ad": "Etek orta sol",
-      "fark": 91788,
+      "fark": 91798,
       "kimlik": 96019,
       "yalniz": 96189,
       "oran": 0.954,
@@ -5177,7 +5177,7 @@
      {
       "id": "p0223",
       "ad": "Etek ön sağ",
-      "fark": 117634,
+      "fark": 117633,
       "kimlik": 137063,
       "yalniz": 137635,
       "oran": 0.855,
@@ -5311,7 +5311,7 @@
      {
       "id": "p0224",
       "ad": "Etek ön sol",
-      "fark": 135352,
+      "fark": 135351,
       "kimlik": 138615,
       "yalniz": 139205,
       "oran": 0.972,
@@ -5505,7 +5505,7 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Etek arka sağ",
-     "fark": 124623,
+     "fark": 124622,
      "yalniz": 133309,
      "gorunur": true,
      "parca": 12,
@@ -5913,10 +5913,10 @@
      {
       "id": "p0205",
       "ad": "Gövde alt bandı sağ",
-      "fark": 186080,
+      "fark": 186202,
       "kimlik": 235494,
       "yalniz": 236064,
-      "oran": 0.788,
+      "oran": 0.789,
       "gorunur": true
      },
      {
@@ -6007,10 +6007,10 @@
      {
       "id": "p0206",
       "ad": "Gövde alt bandı sol",
-      "fark": 288043,
+      "fark": 290593,
       "kimlik": 313193,
       "yalniz": 313829,
-      "oran": 0.918,
+      "oran": 0.926,
       "gorunur": true
      },
      {
@@ -6101,7 +6101,7 @@
      {
       "id": "p0207",
       "ad": "Gövde uzatma bandı 1 sağ",
-      "fark": 285426,
+      "fark": 285430,
       "kimlik": 312095,
       "yalniz": 313450,
       "oran": 0.911,
@@ -6343,7 +6343,7 @@
      {
       "id": "p0209",
       "ad": "Gövde uzatma bandı 2 sağ",
-      "fark": 287279,
+      "fark": 287268,
       "kimlik": 313756,
       "yalniz": 315115,
       "oran": 0.912,
@@ -6847,10 +6847,10 @@
      {
       "id": "p0212",
       "ad": "Gövde orta bandı sol",
-      "fark": 103257,
+      "fark": 105680,
       "kimlik": 105264,
       "yalniz": 144695,
-      "oran": 0.714,
+      "oran": 0.73,
       "gorunur": true
      },
      {
@@ -6968,7 +6968,7 @@
      {
       "id": "p0213",
       "ad": "Göğüs bandı sağ",
-      "fark": 125868,
+      "fark": 125849,
       "kimlik": 125625,
       "yalniz": 126209,
       "oran": 0.997,
@@ -7107,10 +7107,10 @@
      {
       "id": "p0214",
       "ad": "Göğüs bandı sol",
-      "fark": 121861,
+      "fark": 121736,
       "kimlik": 120874,
       "yalniz": 121565,
-      "oran": 1.002,
+      "oran": 1.001,
       "gorunur": true
      },
      {
@@ -7313,7 +7313,7 @@
      {
       "id": "p0407",
       "ad": "Göğüs ekranı 11,6\" HDMI 1920x1080 kasalı",
-      "fark": 374032,
+      "fark": 374030,
       "kimlik": 374199,
       "yalniz": 374199,
       "oran": 1.0,
@@ -7407,7 +7407,7 @@
      {
       "id": "p0229",
       "ad": "Göğüs ekranı çerçevesi sağ",
-      "fark": 29690,
+      "fark": 29687,
       "kimlik": 28827,
       "yalniz": 31984,
       "oran": 0.928,
@@ -7582,7 +7582,7 @@
      {
       "id": "p0215",
       "ad": "Omuz bandı sağ",
-      "fark": 91451,
+      "fark": 91442,
       "kimlik": 124790,
       "yalniz": 134303,
       "oran": 0.681,
@@ -7667,10 +7667,10 @@
      {
       "id": "p0216",
       "ad": "Omuz bandı sol",
-      "fark": 190608,
+      "fark": 190337,
       "kimlik": 194114,
       "yalniz": 215342,
-      "oran": 0.885,
+      "oran": 0.884,
       "gorunur": true
      },
      {
@@ -7841,7 +7841,7 @@
      {
       "id": "p0217",
       "ad": "Arka servis kapağı",
-      "fark": 266597,
+      "fark": 266575,
       "kimlik": 265294,
       "yalniz": 268902,
       "oran": 0.991,
@@ -9004,7 +9004,7 @@
      {
       "id": "p0221",
       "ad": "Etek orta sağ",
-      "fark": 115640,
+      "fark": 115631,
       "kimlik": 115280,
       "yalniz": 115486,
       "oran": 1.001,
@@ -9089,7 +9089,7 @@
      {
       "id": "p0222",
       "ad": "Etek orta sol",
-      "fark": 96348,
+      "fark": 96349,
       "kimlik": 96019,
       "yalniz": 96189,
       "oran": 1.002,
@@ -9174,7 +9174,7 @@
      {
       "id": "p0223",
       "ad": "Etek ön sağ",
-      "fark": 137785,
+      "fark": 137784,
       "kimlik": 137063,
       "yalniz": 137635,
       "oran": 1.001,
@@ -9910,7 +9910,7 @@
      {
       "id": "p0205",
       "ad": "Gövde alt bandı sağ",
-      "fark": 235141,
+      "fark": 235142,
       "kimlik": 235494,
       "yalniz": 236064,
       "oran": 0.996,
@@ -10004,10 +10004,10 @@
      {
       "id": "p0206",
       "ad": "Gövde alt bandı sol",
-      "fark": 310158,
+      "fark": 310920,
       "kimlik": 313193,
       "yalniz": 313829,
-      "oran": 0.988,
+      "oran": 0.991,
       "gorunur": true
      },
      {
@@ -10098,7 +10098,7 @@
      {
       "id": "p0207",
       "ad": "Gövde uzatma bandı 1 sağ",
-      "fark": 312251,
+      "fark": 312239,
       "kimlik": 312095,
       "yalniz": 313450,
       "oran": 0.996,
@@ -10340,7 +10340,7 @@
      {
       "id": "p0209",
       "ad": "Gövde uzatma bandı 2 sağ",
-      "fark": 313896,
+      "fark": 313894,
       "kimlik": 313756,
       "yalniz": 315115,
       "oran": 0.996,
@@ -10834,7 +10834,7 @@
      {
       "id": "p0212",
       "ad": "Gövde orta bandı sol",
-      "fark": 105613,
+      "fark": 105623,
       "kimlik": 105264,
       "yalniz": 144695,
       "oran": 0.73,
@@ -10955,10 +10955,10 @@
      {
       "id": "p0213",
       "ad": "Göğüs bandı sağ",
-      "fark": 126535,
+      "fark": 126522,
       "kimlik": 125625,
       "yalniz": 126209,
-      "oran": 1.003,
+      "oran": 1.002,
       "gorunur": true
      },
      {
@@ -11094,7 +11094,7 @@
      {
       "id": "p0214",
       "ad": "Göğüs bandı sol",
-      "fark": 121865,
+      "fark": 121856,
       "kimlik": 120874,
       "yalniz": 121565,
       "oran": 1.002,
@@ -11300,10 +11300,10 @@
      {
       "id": "p0407",
       "ad": "Göğüs ekranı 11,6\" HDMI 1920x1080 kasalı",
-      "fark": 225977,
+      "fark": 225256,
       "kimlik": 374199,
       "yalniz": 374199,
-      "oran": 0.604,
+      "oran": 0.602,
       "gorunur": true
      },
      {
@@ -11394,10 +11394,10 @@
      {
       "id": "p0229",
       "ad": "Göğüs ekranı çerçevesi sağ",
-      "fark": 29641,
+      "fark": 29621,
       "kimlik": 28827,
       "yalniz": 31984,
-      "oran": 0.927,
+      "oran": 0.926,
       "gorunur": true
      },
      {
@@ -11654,7 +11654,7 @@
      {
       "id": "p0216",
       "ad": "Omuz bandı sol",
-      "fark": 195217,
+      "fark": 195220,
       "kimlik": 194114,
       "yalniz": 215342,
       "oran": 0.907,
@@ -12164,7 +12164,7 @@
   "gecti": true
  },
  "goruntu": [],
- "sure_s": 973,
+ "sure_s": 1014,
  "gecti_ozet": {
   "renk_cad": true,
   "renk_sahne": true,

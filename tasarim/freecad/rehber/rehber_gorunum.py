@@ -525,6 +525,122 @@ def ev_isle(V, M):
 
 
 # ------------------------------------------------------------------ ana
+# ------------------------------------------------------------------ 5) uç etiketleri (P10.7b2f; F10m-kare-inceleme § 6)
+# Konumun (alt adımın; alt adımı olmayan adımda adımın) metninde kimliği geçen ve o konumda çizilen kabloların (CAD kablo parçası
+# kablo listesi, şemanın kablo listesi; bağlantı tablosu kabloları metinde geçmesi yeter) damar uçları. Uç kısa adı (rehber_kablo.uc_kisa)
+# UC_ETIKET'le modeldeki parçaya bağlanır; parça o konumda gizli değilse etiket olur: metin = kısa ad (aynı parçaya düşen adlar " / "
+# ile birleşir), yer = parçanın robot.glb kutusunun merkezi (dünya, mm). Parçası olmayan ya da o konumda takılı olmayan uç
+# "uc_yok"a nedeniyle yazılır (basılı sayfa ve lejant "karede görünmez" der). Demet adımının ana karesi (j = 0) etiketlenmez (bütün
+# kablolar birden). En çok UC_EN_COK etiket: fazlası basılı listede kalır, karede numarası yoktur (sıra: metinde geçiş sırası).
+# rehber_metin.UC_ORTULU {(kod, alt adım): {kısa ad: neden}}: ölçümde karede görünmeyen uç (F10d uc_etiket) etiketlenmez, uc_yok'a.
+UC_EN_COK = 10
+_UC_KIMLIK = re.compile(r"(?<![\w{.])([A-Z]{1,2}\d{1,2})(?![\w}])")
+_UC_ARALIK = re.compile(r"(?<![\w{.])([A-Z]{1,2})(\d{2})\s*[–-]\s*\1(\d{2})(?![\w}])")
+
+
+def _metin_kimlikleri(metin, tum):
+    """Metinde geçiş sırasıyla kimlikler (A01–A06 aralığı açılır); yalnız tablodakiler."""
+    out = []
+    for m in re.finditer(r"%s|%s" % (_UC_ARALIK.pattern, _UC_KIMLIK.pattern), metin or ""):
+        if m.group(1):
+            ks = ["%s%02d" % (m.group(1), n) for n in range(int(m.group(2)), int(m.group(3)) + 1)]
+        else:
+            ks = [m.group(4)]
+        out += [k for k in ks if k in tum and k not in out]
+    return out
+
+
+def uc_isle(V, kutular, cad=None):
+    """sira_grup[].uc / adimlar[].uc ve uc_yok alanlarını yazar (yukarıdaki kural). kutular: parça kimliği → (bmin, bmax)."""
+    import rehber_kablo as RK
+    import rehber_metin as RM
+    TB = RK.Tablo()
+    cad = cad if cad is not None else cad_parcalar()
+    A, P, S = V["adimlar"], V["parcalar"], V.get("semalar", [])
+    if len(cad) != len(P):
+        raise SystemExit("uc_isle: CAD parça sayısı %d, veri %d" % (len(cad), len(P)))
+    GH = {a["i"]: grup_harita(a) for a in A}
+    PID = {p["id"]: p for p in P}
+    hedef = {}                                                    # kısa ad → parça kimliği
+    for ad, (desen, mod) in RK.UC_ETIKET.items():
+        ids = [P[i]["id"] for i, c in enumerate(cad) if re.search(desen, c["etiket"]) and (mod is None or c["modul"] == mod)]
+        if len(ids) != 1:
+            raise SystemExit("uc_isle: %s deseni %d parçaya uyuyor (rehber_kablo.uc_etiket_denetle)" % (ad, len(ids)))
+        hedef[ad] = ids[0]
+    say = dict(konum=0, etiket=0, yok=0)
+    kullanilan = set()
+
+    def konum(a, j, g, metin, ciz, ortulu):
+        bt = {k for k, kod in RK.BAGLANTI_TABLOSU.items() if kod == a["kod"]}
+        kim = [k for k in _metin_kimlikleri(metin, TB.K) if k in ciz or k in bt]
+        uc, yok = collections.OrderedDict(), collections.OrderedDict()
+        for k in kim:
+            for d in TB.K[k].get("damarlar") or []:
+                for y in "ab":
+                    ad = RK.uc_kisa(d.get(y))
+                    if not ad:
+                        continue
+                    pid = hedef.get(ad)
+                    if pid is None:
+                        yok.setdefault(ad, dict(ad=ad, neden=RK.UC_MODELSIZ.get(ad, "modelde yok"), kablo=[]))["kablo"].append(k)
+                    elif ad in ortulu:
+                        kullanilan.add((a["kod"], j, ad))
+                        yok.setdefault(ad, dict(ad=ad, neden=ortulu[ad], kablo=[]))["kablo"].append(k)
+                    elif durum(PID[pid], a["i"], j, A, GH) == "gizli":
+                        yok.setdefault(ad, dict(ad=ad, neden="bu adımda takılı değil", kablo=[]))["kablo"].append(k)
+                    else:
+                        u = uc.setdefault(pid, dict(id=pid, adlar=[], kablo=[]))
+                        if ad not in u["adlar"]:
+                            u["adlar"].append(ad)
+                        if k not in u["kablo"]:
+                            u["kablo"].append(k)
+        for x in yok.values():
+            x["kablo"] = sorted(set(x["kablo"]))
+        liste = []
+        for n, u in enumerate(uc.values(), 1):
+            bmin, bmax = kutular[u["id"]]
+            liste.append(dict(n=n, id=u["id"], ad=" / ".join(u["adlar"]), kablo=u["kablo"],
+                              ip=[round((float(bmin[i]) + float(bmax[i])) / 2, 1) for i in range(3)], karede=n <= UC_EN_COK))
+        for k in ("uc", "uc_yok"):
+            g.pop(k, None)
+        if liste:
+            g["uc"] = liste
+        if yok:
+            g["uc_yok"] = list(yok.values())
+        if liste or yok:
+            say["konum"] += 1
+            say["etiket"] += sum(1 for x in liste if x["karede"])
+            say["yok"] += len(yok)
+
+    for a in A:
+        if a["i"] == 0:
+            continue
+        mt = RM.ADIM.get(a["kod"], {})
+        G = a.get("sira_grup") or []
+        if a.get("alt") and G:
+            a.pop("uc", None); a.pop("uc_yok", None)
+            for j, g in enumerate(G, 1):
+                ciz = set()
+                for pid in g.get("ref") or []:
+                    ciz |= set(PID[pid].get("kablo") or [])
+                for i in g.get("sema") or []:
+                    ciz |= set(S[i].get("kablo") or [])
+                konum(a, j, g, g.get("is_") or "", ciz, dict(RM.UC_ORTULU.get((a["kod"], j)) or {}))
+        else:
+            ciz = set()
+            for p in P:
+                if p.get("kablo") and durum0(p, a["i"], A) == "simdi":
+                    ciz |= set(p["kablo"])
+            for s in S:
+                if s.get("a") == a["i"]:
+                    ciz |= set(s.get("kablo") or [])
+            konum(a, 0, a, a.get("is_") or "", ciz, dict(RM.UC_ORTULU.get((a["kod"], 0)) or {}))
+    say["ortulu_kullanilmayan"] = ["%s.%d %s" % (k, j, ad) for (k, j), d in sorted(RM.UC_ORTULU.items()) for ad in d
+                                   if (k, j, ad) not in kullanilan]
+    V["uc_kaynak"] = dict(say, en_cok=UC_EN_COK, kural="rehber_gorunum.uc_isle (P10.7b2f)")
+    return say
+
+
 def yaz(V):
     open(os.path.join(VERI_DIR, "rehber-veri.json"), "w", encoding="utf-8").write(json.dumps(V, ensure_ascii=False, indent=0))
     open(os.path.join(VERI_DIR, "rehber-veri.js"), "w", encoding="utf-8").write(
@@ -538,6 +654,9 @@ def isle(yazma=False, sessiz=False):
     deg = alan_isle(V)
     M = Mesh(V)
     kayit = ev_isle(V, M)
+    us = uc_isle(V, {pid: (q["bmin"], q["bmax"]) for pid, q in M.P.items()})   # P10.7b2f
+    if not sessiz:
+        print("gorunum: uc etiketi %d konumda %d etiket (karede), karede gorunmez uc %d" % (us["konum"], us["etiket"], us["yok"]))
     if not sessiz:
         d = rk["denetim"]
         print("gorunum: renk %d parca (CAD sirasi esles %d), GuiDocument kayitli %d, ayni %d, farkli %d, GuiDocument yok %d (%s)" % (

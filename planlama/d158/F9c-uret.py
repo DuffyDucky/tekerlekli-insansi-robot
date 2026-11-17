@@ -373,6 +373,8 @@ GRUP = {
     # P10.7b2e kısım 2 (F10m-gunluk.md § 11): K64 kuyruğa açık girdiğinde GRUP'ta yoktu (KeyError 'K64'); ikisi de 16.11'de kapandı
     "K64": ("B", "Fiziksel montajdan önce (B5a güç paneli, K1 17.1 iki bara); kapandı 16.11, a: tutucu CAD paketinde basılır."),
     "K65": ("B", "K1 kablajından ve ilk sürüşten önce (sağ / sol tanımı, kurulum testi); kapandı 16.11, yazılım düzeltmesi Efe'de."),
+    # P10.7b2f kısım 2 (F10n-gunluk.md § 8): K66 kuyruğa kapalı girdi; açık olsaydı KeyError vermesin diye (K64 / K65 ile aynı)
+    "K66": ("A", "Elektrik güvenliği ve sipariş: ESP32 VIN'e seri 1N5819 (+1 adet); kapandı 16.11, tezgâh denemesine bağlı kabul."),
 }
 
 
@@ -424,11 +426,16 @@ PAKET_SONUC = {
     "P10.5b": ("K56 + K57 montaj sırası rehberde; uçuş istisnası 20 → 16, çarpışan 0, PDF 75 sayfa; K56, K57 kapandı.", [DONGU]),
     "P10.6": ("ESP32 pin haritası kararı K58 (`pin-haritasi.md` sürüm 3); üç bağımsız kontrol, üçüncüsü GEÇER; pano #8 mesajını Ahmet gönderecek.", [DONGU]),
     # Kalan: plandaki "Sıradaki: P10.7b2" listesinden b2a–b2c'nin kapattıkları çıkarıldı (P10.9a kontrolü B3);
-    # b2d 78d160d ile kapandı, "Sürüyor" listesinden kapalılara geçti (P10.9a commit turu)
+    # b2d 78d160d ile kapandı, "Sürüyor" listesinden kapalılara geçti (P10.9a commit turu); b2e b5fc255 ile kapandı, K52 kuyrukta
+    # kapalı (P10.7b2f bakım; F10n-gunluk.md)
     "P10.7": ("Açık. Kapalı alt paketler: P10.7a (74 kablo tek kaynakta, `kablolar.json`; 16.11 sipariş listesi genel 120.852,43 TL), "
-              "P10.7b1, P10.7b2a (74 / 74 kablo talimatta, PDF 80 sayfa), P10.7b2b, P10.7b2c, P10.7b2d (K1 / K2 demet alt adımları, PDF 84 sayfa). "
+              "P10.7b1, P10.7b2a (74 / 74 kablo talimatta, PDF 80 sayfa), P10.7b2b, P10.7b2c, P10.7b2d (K1 / K2 demet alt adımları, PDF 84 sayfa), "
+              "P10.7b2e (K52 a, K64 a, sağ / sol K65, kare düzeltmeleri; PDF 86 sayfa). "
+              "Sürüyor: P10.7b2f (Kablo yolu 12 gerilemesi, uç etiketleri; kısım 2: kayıt düzeltmeleri, VIN'e seri Schottky K66; "
+              "kaynak düzeyinde). "
+              # P10.7b2f kısım 2: Efe'nin iki cevabı 14.11'de geldi (pano #7 mesaj #28), kayda 16.11'de geçti; "Kalan"dan çıktı
               "Kalan: taban yollarının yeniden tasarımı, boyların ölçümü, düğüm tutucusu, boyun tüneli deneme parçası, G19 / G20 / G24 / G26 "
-              "(yalnız onayla); K52, K60, K61; Efe'nin iki cevabı.", [DONGU]),
+              "(yalnız onayla); K60, K61.", [DONGU]),
     "P10.8": ("Açık: satın alınan parça modelleri parçalar gelince.", [DONGU]),
     "P10.9": ("Açık: bu sayfanın F10 yenilemesi. P10.9a ön paketi üretici ve denetimi iki basamaklı faza açtı; sayılar ve son üretim faz sonunda.",
               [DONGU, "planlama/d158/P109a-gunluk.md"]),
@@ -446,7 +453,7 @@ FAZ_SONUC = {
     "F8": ("Sipariş paketi 136 satır, baskı partileri, T1–T13 test kâğıtları; sipariş verilmedi.", [DONGU]),
     "F9": ("Takvim: S = 16.11 yalnız durum A'da sığar (bir hafta tampon); demo 127 anahtar, depo temizliği; bu rapor son paket.", [PLAN, DONGU]),
     # P10.9a TASLAĞI: faz açık; P10.9 faz sonunda yeniden yazar.
-    "F10": ("Faz açık. Kapalı: P10.1, P10.3, P10.4, P10.4b, P10.5, P10.5b, P10.6 ve P10.7'nin a, b1, b2a, b2b, b2c, b2d alt paketleri. "
+    "F10": ("Faz açık. Kapalı: P10.1, P10.3, P10.4, P10.4b, P10.5, P10.5b, P10.6 ve P10.7'nin a, b1, b2a, b2b, b2c, b2d, b2e alt paketleri. "
             "Açık: P10.2 (K53), P10.7, P10.8, P10.9.", [DONGU]),
 }
 

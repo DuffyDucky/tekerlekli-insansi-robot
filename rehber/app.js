@@ -410,6 +410,98 @@
           k.ids.length + "</text>" : "") + "</g>";
       }).join("");
     }
+    // ---------------------------------------------------------------- P10.7b2f: uç etiketleri (F10m-kare-inceleme § 6)
+    // Konumun (alt adımın; alt adımı yoksa adımın) kablolarının uç parçaları. Veri sira_grup[].uc / adimlar[].uc (rehber_gorunum.uc_isle:
+    // metin = kablolar.json damar ucunun kısa adı, yer = parçanın robot.glb kutusunun merkezi; elle koordinat yok). Ekranda numaralı
+    // işaret; etkileşimli sayfada yanında kısa ad, yazdırma karesinde (?sahne=1) yalnız numara (adlar basılı sayfada karenin altında,
+    // ≥ 8,1 pt). Yer seçimi: işaret önce parçanın üstünde, çakışırsa çevresindeki adaylardan (8 yön × 4 uzaklık) güvenli alanın içinde,
+    // başka etiketle, işaret halkasıyla ve başka etiketin parça noktasıyla çakışmayan ilki; uzaktaysa parça noktasına ince çizgi.
+    // Parçası gizli ya da noktası güvenli alanın dışında olan etiket çizilmez (RehberTest.ucEtiket "cizilmedi" ile bildirir; F10d
+    // uc_etiket denetimi bunu hata sayar). ?uc=0: kapalı.
+    const UC = { acik: P.get("uc") !== "0", liste: [], ciz: [], cizilmedi: [], R: SAHNE ? 13 : 10 };
+    const ucEl = $("uc-etiket");
+    let _ucOlc = null;
+    function ucGenislik(t) {                          // etkileşimli kipte ad kutusunun genişliği (CSS px; .uc-etiket .t ile aynı yazı)
+      if (!_ucOlc) { _ucOlc = document.createElement("canvas").getContext("2d"); _ucOlc.font = "600 12px system-ui, 'Segoe UI', sans-serif"; }
+      return Math.ceil(_ucOlc.measureText(t).width) + 10;
+    }
+    function ucKur(s) {
+      const g = altGrup(s) || (ADIM[s] && !ADIM[s].alt ? ADIM[s] : null);
+      UC.liste = ((g && g.uc) || []).filter((u) => u.karede).map((u) => ({ n: u.n, ad: u.ad, id: u.id, ip: new THREE.Vector3(u.ip[0], u.ip[1], u.ip[2]) }));
+    }
+    function ucAlanlar(W, H) {                        // güvenli alanlar CSS px (sol, üst, sağ, alt)
+      return guvenliAlanlar().map((q) => ({ x0: (q.x0 + 1) / 2 * W, x1: (q.x1 + 1) / 2 * W, y0: (1 - q.y1) / 2 * H, y1: (1 - q.y0) / 2 * H }));
+    }
+    function ucCiz() {
+      if (!ucEl) return;
+      UC.ciz = []; UC.cizilmedi = [];
+      if (!UC.acik || !UC.liste.length) { if (ucEl.innerHTML) ucEl.innerHTML = ""; return; }
+      const c = tuval.getBoundingClientRect(), W = c.width, H = c.height, R = UC.R;
+      const AL = ucAlanlar(W, H);
+      const nokta = [];
+      UC.liste.forEach((m) => {
+        const k = PAR[m.id], o = k && k.obj;
+        if (!o || !o.visible) { UC.cizilmedi.push({ n: m.n, ad: m.ad, id: m.id, neden: "parça gizli" }); return; }
+        _ip.copy(m.ip).add(o.position).sub(k.taban);
+        _v.copy(_ip).applyMatrix4(kamera.matrixWorldInverse);
+        if (_v.z > -kamera.near) { UC.cizilmedi.push({ n: m.n, ad: m.ad, id: m.id, neden: "kameranın arkasında" }); return; }
+        _ip.project(kamera);
+        const x = (_ip.x + 1) / 2 * W, y = (1 - _ip.y) / 2 * H;
+        const al = AL.find((q) => x >= q.x0 && x <= q.x1 && y >= q.y0 && y <= q.y1);
+        if (!al) { UC.cizilmedi.push({ n: m.n, ad: m.ad, id: m.id, neden: "güvenli alanın dışında", x: x, y: y }); return; }
+        nokta.push({ m: m, x: x, y: y, al: al });
+      });
+      const engel = (ISARET.acik ? ISARET.kume : []).map((q) => ({ x0: q.x - 11, y0: q.y - 11, x1: q.x + 11, y1: q.y + 11 }));
+      const kutular = [];
+      const ust = (a, b) => a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1;
+      const YON = [[1, -1], [-1, -1], [1, 1], [-1, 1], [0, -1], [0, 1], [1, 0], [-1, 0]];
+      nokta.forEach((q) => {
+        const gw = SAHNE ? 0 : ucGenislik(q.m.ad);
+        // ad kutusu işaretin sağında ya da solunda (etkileşimli kip); yazdırma karesinde yalnız işaret
+        const kutu = (cx, cy, yan) => ({ x0: cx - R - (yan < 0 ? gw + 3 : 0), y0: cy - R, x1: cx + R + (yan > 0 ? gw + 3 : 0), y1: cy + R });
+        let sec = null;
+        for (const d of [0, 2.4 * R, 3.6 * R, 5 * R, 6.6 * R, 8.5 * R]) {
+          for (const [dx, dy] of (d ? YON : [[0, 0]])) {
+            for (const yan of (gw ? (dx < 0 ? [-1, 1] : [1, -1]) : [0])) {
+              const L = Math.hypot(dx, dy) || 1, cx = q.x + dx / L * d, cy = q.y + dy / L * d, b = kutu(cx, cy, yan);
+              if (b.x0 < q.al.x0 || b.x1 > q.al.x1 || b.y0 < q.al.y0 || b.y1 > q.al.y1) continue;
+              if (kutular.some((z) => ust(z, b)) || engel.some((z) => ust(z, b))) continue;
+              if (nokta.some((r) => r !== q && r.x > b.x0 - 3 && r.x < b.x1 + 3 && r.y > b.y0 - 3 && r.y < b.y1 + 3)) continue;
+              sec = { x: cx, y: cy, b: b, d: d, yan: yan }; break;
+            }
+            if (sec) break;
+          }
+          if (sec) break;
+        }
+        if (!sec) { UC.cizilmedi.push({ n: q.m.n, ad: q.m.ad, id: q.m.id, neden: "yer bulunamadı (çakışma)", x: q.x, y: q.y }); return; }
+        kutular.push(sec.b);
+        UC.ciz.push({ n: q.m.n, ad: q.m.ad, id: q.m.id, ax: q.x, ay: q.y, x: sec.x, y: sec.y, kutu: sec.b, uzak: sec.d, yan: sec.yan, alan: q.al });
+      });
+      ucEl.setAttribute("viewBox", "0 0 " + Math.round(W) + " " + Math.round(H));
+      ucEl.innerHTML = UC.ciz.map((u) => {
+        const f = (v) => v.toFixed(1);
+        let h = "<g class='uc'>";
+        if (u.uzak) {
+          const L = Math.hypot(u.x - u.ax, u.y - u.ay) || 1, ex = u.x - (u.x - u.ax) / L * R, ey = u.y - (u.y - u.ay) / L * R;
+          h += "<line class='c0' x1='" + f(u.ax) + "' y1='" + f(u.ay) + "' x2='" + f(ex) + "' y2='" + f(ey) + "'/><line class='c' x1='" + f(u.ax) +
+            "' y1='" + f(u.ay) + "' x2='" + f(ex) + "' y2='" + f(ey) + "'/><circle class='a' cx='" + f(u.ax) + "' cy='" + f(u.ay) + "' r='3'/>";
+        }
+        if (!SAHNE) {
+          const gw = ucGenislik(u.ad), x0 = u.yan < 0 ? u.x - R - gw - 3 : u.x + R - 2;
+          h += "<rect class='p' x='" + f(x0) + "' y='" + f(u.y - 9) + "' width='" + (gw + 5) + "' height='18' rx='4'/>" +
+            "<text class='t' x='" + f(x0 + 6) + "' y='" + f(u.y) + "'>" + esc(u.ad) + "</text>";
+        }
+        return h + "<circle class='m' cx='" + f(u.x) + "' cy='" + f(u.y) + "' r='" + R + "'/><text class='n' x='" + f(u.x) + "' y='" + f(u.y) + "'>" +
+          u.n + "</text></g>";
+      }).join("");
+    }
+    function ucGoster(a) {
+      UC.acik = a;
+      if (!SAHNE) yaz("uc", a);
+      ciz();
+    }
+    if (!SAHNE && P.get("uc") == null && oku().uc === false) UC.acik = false;
+
     function isaretGoster(a) {
       ISARET.acik = a;
       if (!SAHNE) yaz("isaret", a);
@@ -426,7 +518,8 @@
     // cıvata / ısıl gömme 30 px eşiğinin altına indi)
     function kareBaslik(s) {
       const e = $("kare-baslik"); if (!e) return;
-      if (s === 0 || !SAHNE) { e.hidden = true; return; }
+      // P10.7b2f (F10m-kare-inceleme § 4.4): adım 0 karesinde de (sağ / sol tanımının örneği karede; hangi yandan çekildiği okunsun)
+      if (!SAHNE) { e.hidden = true; return; }
       const ag = altGrup(s), st = ADIM[s];
       const y = kameraYonu();
       const ad = ag ? ag.ad : st.baslik;
@@ -476,6 +569,9 @@
           o.userData.mat0 = o.material;
           o.userData.ev = evMi && !p.renk;
           if (o.userData.ev) sonEv.push(p.id);
+          // P10.7b2f (F10m-kare-inceleme § 4.3): kablolama kapısının ana karesinde önceki kapının kabloları da renkli durur; lejant onları
+          // da sayar (K2 ana karesinde tabandaki K1 mor hatları vardı, lejantta "Sinyal (mor)" yoktu). Alt adım kareleri değişmez
+          if (p.renk && ADIM[s].kablolama && !altGrup(s)) sinifSay["k:" + (p.kt || p.ks || "")] = 1;
           kenarKoy(o, null);
           continue;
         }
@@ -586,6 +682,7 @@
       if (ag && ag.kenar) ag.kenar.forEach((id) => { const o = PAR[id] && PAR[id].obj; if (o && o.visible) kenarKoy(o, grupKenar); });
       sonUc = uc; sonSay = sinifSay;
       isaretKur(uc);
+      ucKur(s);                                       // P10.7b2f
       kareBaslik(s);
       if (sira && sira.adim === s && sira.alt === ss) siraKonum();
       vurguUygula(true);
@@ -911,6 +1008,7 @@
       renderer.setViewport(0, 0, _boy.x, _boy.y);
       renderer.render(sahne, kamera);
       isaretCiz();
+      ucCiz();                                        // P10.7b2f: işaret kümelerinden sonra (onlardan kaçar)
       if (miniAcik && MINI.hazir && !miniEl.hidden) {
         const r = miniDikdortgen();
         if (r.w > 4 && r.h > 4) {
@@ -963,6 +1061,13 @@
         const v = s === 0 || semaDurum(i, s) === "simdi";
         m.material = v ? MINI.vurgu : MINI.soluk; m.renderOrder = v ? 10 : 0;
         if (v && m.userData.mkutu) MINI.hk.union(m.userData.mkutu);
+      });
+      // P10.7b2f (F10m-kontrol N9): yeni parçası da yeni şeması da olmayan alt adımda (17.11) küçük görünüm odak parçalarını vurgular
+      // (veri sira_grup[].odak, kadrajla aynı); önceden halka ve yer satırı hiç çıkmıyordu
+      if (MINI.hk.isEmpty() && ag && ag.odak && ag.odak.length) ag.odak.forEach((id) => {
+        const k = PAR[id]; if (!k || !k.mini) return;
+        k.mini.material = MINI.vurgu; k.mini.renderOrder = 10;
+        MINI.hk.union(k.mkutu); MINI.hlist.push(k.mkutu);
       });
       MINI.yon.copy(kameraYonu());
       miniYer(s);
@@ -1381,6 +1486,7 @@
       else if (k === "m" || k === "M") miniGoster(!miniAcik);
       else if (k === "c" || k === "C") renkKipAyarla(renkKip === "gercek" ? "sinif" : "gercek", true);   // F10e: renk kipi
       else if (k === "i" || k === "I" || k === "ı" || k === "İ") isaretGoster(!ISARET.acik);            // F10e: işaretler
+      else if (k === "u" || k === "U") ucGoster(!UC.acik);                                              // P10.7b2f: uç etiketleri
       else if (k === "Escape") secimTemizle();
     });
     let dok = null;                                   // panel / üst şeritte yatay kaydırma = adım değiştir
@@ -1612,6 +1718,15 @@
           dom: isaretEl ? isaretEl.querySelectorAll("g.isr").length : 0, dom_secili: isaretEl ? isaretEl.querySelectorAll("g.isr.secili").length : 0 };
       },
       isaretGoster: (a) => isaretGoster(a),
+      // P10.7b2f: uç etiketleri (ekran px, tuvale göre): veri listesi, çizilenler (parça noktası ax/ay, işaret x/y, kutu, güvenli alan),
+      // çizilmeyenler ve nedeni. planlama/d158/F10d-dogrula.py uc_etiket denetimi okur
+      ucEtiket() {
+        render();
+        const c = tuval.getBoundingClientRect();
+        return { acik: UC.acik, sahne: SAHNE, R: UC.R, veri: UC.liste.map((m) => ({ n: m.n, ad: m.ad, id: m.id })), ciz: UC.ciz.map((u) => Object.assign({}, u)),
+          cizilmedi: UC.cizilmedi.slice(), tuval: { w: c.width, h: c.height }, dom: ucEl ? ucEl.querySelectorAll("g.uc").length : 0 };
+      },
+      ucGoster: (a) => ucGoster(a),
       kareBaslik: () => { const e = $("kare-baslik"); return e && !e.hidden ? e.textContent : null; }
     };
   };

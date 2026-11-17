@@ -4064,6 +4064,7 @@
      "ad": "5 V",
      "a": "Arayüz kartı · çevre 5 V",
      "b": "ESP32 · VIN",
+     "not": "seri 1N5819: anot çevre 5 V tarafında, katot ESP32 VIN tarafında (K66, 16.11; tezgâh denemesine bağlı); diyodun yeri ve bağlantı biçimi kayıtta yok",
      "uc_turu": {
       "a": "konnektor",
       "b": "konnektor"
@@ -4103,7 +4104,8 @@
    ],
    "eksik": [],
    "teyit": [
-    "T5 (PC817 3,3 V tarafı), T6 (IS direnci ölçülmeden IS ucu bağlanmaz), T2"
+    "T5 (PC817 3,3 V tarafı), T6 (IS direnci ölçülmeden IS ucu bağlanmaz), T2",
+    "VIN'e seri 1N5819 (K66): diyodun yeri ve bağlantı biçimi (arayüz kartı üstünde mi, damar üstünde mi) kablajda belirlenir; tezgâh denemesi elektrik.md E4 (sigorta sökülünce ESP32 USB'den ayakta, Wi-Fi gönderirken VIN, BTS motorları durduruyor); tutmazsa diyot geri alınır"
    ],
    "durum": "kablajda teyit edilecek",
    "kaynak": [
@@ -4111,6 +4113,7 @@
     "planlama/adim3/pin-haritasi.md:294-302",
     "planlama/adim3/elektrik.md:233-236",
     "planlama/adim3/elektrik.md:283",
+    "planlama/adim3/elektrik.md:286",
     "planlama/adim3/elektrik.md:306",
     "planlama/adim3/elektrik.md:472-489"
    ],
@@ -8730,6 +8733,13 @@
    "karar": "göğüs ekranı regülatörü güç panelinde",
    "metin": "K52 a: LM2577 + LM2596 kartı güç paneline, rehber B5a'da takılır (tezgâhta 12 V'a ayarlandıktan sonra); maliyet 0 TL (planlama/maliyet.json 'Göğüs ekranı 12 V regülatörü' satırı aynı). Model bu pakette değişmez: kart zarfı K51 ve K53 ile birlikte sonraki tam taramalı CAD paketinde; kart ölçüsü, panel üstündeki yeri ve bağlantı elemanı o zamana dek kayıtta yok.",
    "uygulama": "G20 durum / eksik / teyit / boy_tahmin.vekil; orkestratore listesinden çıktı; rehber B5a / K1 / K2 / F3 metni (P10.7b2e)",
+   "veren": "orkestratör kararı (Echo), 16.11.2026"
+  },
+  {
+   "kod": "K66",
+   "karar": "ESP32 VIN'e seri 1N5819",
+   "metin": "K66: çevre 5 V → 1N5819 anodu, katot → ESP32 VIN (X01 '5 V' damarı). Çevre hat sigortası atınca çevre 5 V gerçekten düşer (sonarlar, BTS kartlarının VCC'si); ESP32 ve 3V3 yükleri USB'den ayakta kalır. Tezgâh denemesine bağlı (elektrik.md E4); VIN payı tutmazsa diyot geri alınır. Diyodun yeri ve bağlantı biçimi kayıtta yok (X01 teyit).",
+   "uygulama": "X01 '5 V' damarı not, teyit, kaynak; elektrik.md E4 ve blok şema; maliyet.json 1N5819 adedi 1 → 2; rehber B6a / K2 metni (P10.7b2f kısım 2)",
    "veren": "orkestratör kararı (Echo), 16.11.2026"
   }
  ],

@@ -116,7 +116,7 @@ CAD_ESLEME = {
     9: ("G18",),                                                         # F4 → XL4016 çevre (yolun devamı eski tasarım: GEO_ISTISNA)
     10: ("A02", "A01", "A03", "A04", "A05", "A06"),                      # acil stop
     11: ("Q03", "X01"),                                                  # sol sonar → arayüz kartı → ESP32 (orta / sağ sonara gitmez)
-    12: ("B01",),                                                        # BTS sol sinyali → ESP32 (üst kısım eski yol: GEO_ISTISNA; U06 "ESP32 USB" şemasında)
+    12: ("B01",),                                                        # BTS sol sinyali → ESP32 (eski üst kısım rehberde kırpılır: CAD_KIRP; U06 "ESP32 USB" şemasında)
 }
 
 # ------------------------------------------------------------------ geometrik eşleme sınaması (CAD yolu noktaları ↔ kablonun uçları)
@@ -214,9 +214,103 @@ GEO_DAL = {4: 3}                                                        # yol 4,
 GEO_ISTISNA = {
     9: "yolun ucu ESP32'de: CAD yolu eski tasarımı çiziyor (çevre 5 V doğrudan ESP32'ye); tabloda G19 arayüz kartının 5 V klemensine "
        "gider ve bu yolda çizili sayılmaz (P10.7b2: yol yeniden çizilir)",
-    12: "yolun üst ucu kafada: CAD yolu 05.11 öncesi ESP32 → kafa USB hattını çiziyor; ESP32 USB (U06) artık hub'a direk arka yüzünden "
-        "gider ve \"ESP32 USB\" şemasında çizilir, bu yolda sayılmaz (P10.7b2: yol yeniden çizilir)",
+    # P10.7b2f: 12 kalktı; yolun eski üst bölümü rehberde kırpılır (CAD_KIRP), kırpılmış yolun iki ucu da B01'in uçlarında
 }
+# P10.7b2f: rehberde kırpılan CAD yolları. Model (taban_parcalar.py YOL) değişmez; rehber_veri.py parçanın gövdesini kesim düzleminin
+# (y ≤ kesim) altında bırakır, sınamalar (geometri_denetle, demet_yol_adimlari, veri GLB sınaması) aynı kırpılmış noktalarla yürür.
+# Yol 12: noktalar[0..2] B01'in gerçek yolu (BTS7960 sol → ESP32 taşıyıcısının merkezi (80; 75), kablo_yolu_taban.py ESP konumu);
+# noktalar[3..] 05.11 öncesi "ESP32 → kafa USB" hattı (direk boyunca y 1325'e çıkar), ESP32 USB artık "ESP32 USB" şemasında çizilir.
+# Kesim y = korunan son noktaların en büyük y'si + tüp yarıçapı (taban_parcalar.tup r = 2.5).
+CAD_TUP_R = 2.5
+CAD_KIRP = {
+    12: dict(son=2, gerekce="yolun noktalar[3..] bölümü 05.11 öncesi ESP32 → kafa USB hattı (direk boyunca kafaya çıkar); B01'in ESP32 ucu "
+                            "taban-analiz.json kablo_yolu[11].noktalar[2] = ESP32 taşıyıcısının merkezi; rehber yalnız noktalar[0..2]'yi çizer"),
+}
+
+
+def cad_noktalar(n, analiz=None, kirp=True):
+    """Yol n'in noktaları (taban-analiz.json); kirp ise CAD_KIRP'e göre rehberin çizdiği bölüm."""
+    A = analiz if analiz is not None else json.load(open(GEO_ANALIZ, encoding="utf-8"))
+    pts = A["kablo_yolu"][n - 1]["noktalar"]
+    k = CAD_KIRP.get(n) if kirp else None
+    return pts[:k["son"] + 1] if k else pts
+
+
+# P10.7b2f (F10m-kare-inceleme § 6, "ana kaldıraç"): uç etiketleri. Kablolar.json damar uçlarının kısa adı (damar a / b metninin " · "
+# öncesi) → modeldeki parça (CAD etiketi deseni, gerekirse modül). Etiketin metni bu kısa addır, yeri parçanın robot.glb'deki kutusunun
+# merkezi (rehber_gorunum.uc_isle); elle koordinat yok. Modelde parçası olmayan uç (bara, düğüm, klemens, konnektör) UC_MODELSIZ'de
+# gerekçesiyle: karede etiketlenmez, basılı sayfada "karede görünmez" diye yazılır. uc_etiket_denetle: her kısa ad iki tablodan
+# birinde, desen modelde tam bir parçaya (modül süzgeciyle) uyuyor.
+UC_ETIKET = {
+    "Akü": (r"^Aku LiFePO4", None), "Ana anahtar": (r"^Ana anahtar ASW", None), "Ana sigorta yuvası": (r"^Ana sigorta yuvasi", None),
+    "Sigorta kutusu": (r"^Sigorta kutusu", None), "Röle K1": (r"^Role 12 V", None), "Ön şarj kartı": (r"^On sarj karti", None),
+    "BTS7960 sol": (r"^BTS7960 motor surucu sol$", None), "BTS7960 sağ": (r"^BTS7960 motor surucu sag$", None),
+    "JGB37 ön sol": (r"^Motor JGB37-520 \(on sol\)", None), "JGB37 ön sağ": (r"^Motor JGB37-520 \(on sag\)", None),
+    "JGB37 arka sol": (r"^Motor JGB37-520 \(arka sol\)", None), "JGB37 arka sağ": (r"^Motor JGB37-520 \(arka sag\)", None),
+    "XL4016 A": (r"^XL4016 servo 6 V A", None), "XL4016 B": (r"^XL4016 servo 6 V B", None), "XL4016 C": (r"^XL4016 servo 6 V C", None),
+    "XL4016 çevre": (r"^XL4016 cevre 5 V", None),
+    "Dağıtım kartı A": (r"^Servo dagitim karti A", None), "Dağıtım kartı B": (r"^Servo dagitim karti B", None),
+    "Arayüz kartı": (r"^Arayuz karti", None), "PC817 modülü": (r"^Arayuz karti", None),       # PC817 arayüz kartının üstünde (modeli yok)
+    "ESP32": (r"^ESP32 DevKit", None), "PCA9685": (r"^PCA9685", None), "BNO055": (r"^BNO055 IMU", None),
+    "HC-SR04 sağ": (r"^Sonar HC-SR04 \(sag\)", None), "HC-SR04 orta": (r"^Sonar HC-SR04 \(orta\)", None),
+    "HC-SR04 sol": (r"^Sonar HC-SR04 \(sol\)", None),
+    "Acil stop mantarı": (r"^Acil stop kontak govdesi", None),
+    "Raspberry Pi 5": (r"^Raspberry Pi 5", None), "Kamera": (r"^Kamera Raspberry Pi Camera", None), "QLED": (r"^Yuz ekrani WaveShare", None),
+    "SY8205": (r"^SY8205 kafa", None), "D24V50F5": (r"^5 V cevirici Pololu", None), "PAM8403": (r"^PAM8403", None),
+    "ReSpeaker": (r"^ReSpeaker", None), "Hoparlör": (r"^Hoparlor 40 x 20", None), "USB hub": (r"^USB Hub 4", None),
+    "Göğüs ekranı": (r"^Gogus ekrani 11,6", None),
+    "kafa pan servosu": (r"^Pan servosu MG996R", None), "kafa tilt servosu": (r"^Tilt servosu MG996R", None),
+    "sağ S1 (omuz öne-arka) servosu": (r"^S1 servo DS3235", "omuz_sag"), "sağ S2 (omuz yana) servosu": (r"^S2 servo DS3235", "omuz_sag"),
+    "sol S1 (omuz öne-arka) servosu": (r"^S1 servo DS3235", "omuz_sol"), "sol S2 (omuz yana) servosu": (r"^S2 servo DS3235", "omuz_sol"),
+    "sağ dirsek servosu": (r"^Dirsek servosu MG996R", "dirsek_sag"), "sağ bilek servosu": (r"^Bilek servosu MG996R", "dirsek_sag"),
+    "sol dirsek servosu": (r"^Dirsek servosu MG996R", "dirsek_sol"), "sol bilek servosu": (r"^Bilek servosu MG996R", "dirsek_sol"),
+}
+UC_MODELSIZ = {
+    "Acil stop düğümü (mantar NC çıkışı)": "düğüm kartı modelde yok", "Anahtarlı bara": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
+    "Yıldız barası": "bara modelde yok (bara tutucusu CAD paketinde, K64)", "XT60 (akü tarafı)": "konnektör modelde yok",
+    "XT60 (robot tarafı)": "konnektör modelde yok", "XT60E-M şarj girişi": "konnektör modelde yok (K50)",
+    "Dağıtım kartı C (kafa)": "kafa dağıtım kartı modelde yok", "Kafa giriş klemensi": "klemens modelde yok",
+    "Göğüs regülatörü": "regülatör modelde yok (K52 a: güç panelinde)", "Ses bölücüsü": "bölücü modelde yok",
+}
+
+
+def uc_kisa(d):
+    """Damar ucu metni ("ESP32 · GPIO25") → kısa ad ("ESP32")."""
+    return (d or "").split(" · ")[0].strip()
+
+
+def uc_etiket_denetle(TB=None, cad=None):
+    """Her damar ucunun kısa adı UC_ETIKET ya da UC_MODELSIZ'de (ikisinde birden değil); cad (rehber_gorunum.cad_parcalar()) verilirse
+    UC_ETIKET deseni modelde (modül süzgeciyle) tam bir parçaya uyar. Döner hata listesi."""
+    TB = TB or Tablo()
+    hata = []
+    adlar = set()
+    for k, r in TB.K.items():
+        for d in r.get("damarlar") or []:
+            for y in "ab":
+                if d.get(y):
+                    adlar.add(uc_kisa(d[y]))
+    for a in sorted(adlar):
+        if a in UC_ETIKET and a in UC_MODELSIZ:
+            hata.append("uç etiketi: %s hem UC_ETIKET hem UC_MODELSIZ'de" % a)
+        elif a not in UC_ETIKET and a not in UC_MODELSIZ:
+            hata.append("uç etiketi: %s sınıflanmamış (UC_ETIKET'e desen ya da UC_MODELSIZ'e gerekçe)" % a)
+    for a in sorted(set(UC_ETIKET) | set(UC_MODELSIZ)):
+        if a not in adlar:
+            hata.append("uç etiketi: %s kablolar.json damar uçlarında yok (eski kayıt)" % a)
+    if cad is not None:
+        for a, (desen, mod) in sorted(UC_ETIKET.items()):
+            n = sum(1 for c in cad if re.search(desen, c["etiket"]) and (mod is None or c["modul"] == mod))
+            if n != 1:
+                hata.append("uç etiketi: %s deseni %r%s modelde %d parçaya uyuyor (1 beklenir)" % (a, desen, " (%s)" % mod if mod else "", n))
+    return hata
+
+
+def cad_kirp_y(n, analiz=None):
+    """Yol n kırpılıyorsa rehberdeki kesim düzlemi (global y, mm); kırpılmıyorsa None."""
+    if n not in CAD_KIRP:
+        return None
+    return max(p[1] for p in cad_noktalar(n, analiz)) + CAD_TUP_R
 
 # Kol içi yol bölümleri (rehber_kol_kablo.py bölüm anahtarı, sağ kol) → kimlikler. Sol kol aynı bölümler: SAG_SOL ile çevrilir.
 # Bölüm "isaret" ise (ek yeri, ek noktası, kablo bağı) kablo değil, kendi işaret rengini korur; kimliği bilgi içindir.
@@ -746,11 +840,11 @@ def geometri_denetle(TB=None, analiz=None, esleme=None, istisna=None):
         if n > len(A["kablo_yolu"]):
             hata.append("yol %d: taban-analiz.json'da yok" % n)
             continue
-        pts = A["kablo_yolu"][n - 1]["noktalar"]
+        pts = cad_noktalar(n, A)                                      # P10.7b2f: rehberin çizdiği (kırpılmış) bölüm
         cizgiler = [pts]
         ana = GEO_DAL.get(n)
         if ana:
-            ap = A["kablo_yolu"][ana - 1]["noktalar"]
+            ap = cad_noktalar(ana, A)
             j = min(range(len(ap)), key=lambda i: math.dist(pts[0], ap[i]))
             if math.dist(pts[0], ap[j]) > 1.0:
                 hata.append("yol %d: GEO_DAL'a göre yol %d'den ayrılmalı, baş noktası o yolda değil" % (n, ana))
@@ -1139,6 +1233,13 @@ def kritik_tablolar(esleme=None):
     g.append(_RK.girdi("GEO_EKSIK_MUAF", repr(sorted((n, sorted(v.items())) for n, v in GEO_EKSIK_MUAF.items())), "eksik eşleme muafları"))
     for n in sorted(GEO_ISTISNA):
         g.append(_RK.girdi("GEO_ISTISNA %d" % n, GEO_ISTISNA[n], "geometri istisnası"))
+    for n in sorted(CAD_KIRP):                                         # P10.7b2f
+        g.append(_RK.girdi("CAD_KIRP %d" % n, "son %d kesim y %r · %s" % (CAD_KIRP[n]["son"], cad_kirp_y(n), CAD_KIRP[n]["gerekce"]),
+                           "rehberde kırpılan CAD yolu"))
+    for k in sorted(UC_ETIKET):                                        # P10.7b2f: uç etiketi metni ve yeri bu eşlemeden
+        g.append(_RK.girdi("UC_ETIKET", "%s = %r %r" % (k, UC_ETIKET[k][0], UC_ETIKET[k][1]), "uç etiketi → CAD parçası"))
+    for k in sorted(UC_MODELSIZ):
+        g.append(_RK.girdi("UC_MODELSIZ", "%s = %s" % (k, UC_MODELSIZ[k]), "uç etiketi: modelde parçası yok"))
     for k in sorted(PARCA_CAD):
         g.append(_RK.girdi("PARCA_CAD", "%s = %s" % (k, PARCA_CAD[k]), "uç parçası → CAD"))
     for (k, kt) in sorted(MODELSIZ_KONUM):
@@ -1535,13 +1636,80 @@ def veri_denetle(V, TB=None):
     return hata, eslesmeyen
 
 
+# ------------------------------------------------------------------ P10.7b2f: kırpılan yolların üretilmiş mesh'i
+def glb_kutulari(glb):
+    """robot.glb düğüm adı (parça kimliği) → (bmin, bmax) dünya koordinatında (mm); dosya yoksa None."""
+    if not glb or not os.path.exists(glb):
+        return None
+    import rehber_sira as _RS
+    meshes, nodes = _RS.glb_oku(glb)
+    out = {}
+    for name, mi, M in nodes:
+        w = meshes[mi][0] @ M[:3, :3].T + M[:3, 3]
+        out[name] = (tuple(float(x) for x in w.min(0)), tuple(float(x) for x in w.max(0)))
+    return out
+
+
+def kirp_veri_denetle(V, kutular):
+    """CAD_KIRP'teki her yol veride tek parça; mesh'i (robot.glb) kesim düzleminin (+0,5 mm pay) üstüne çıkmıyor ve yolun başına
+    (noktalar[0], tüp yarıçapı + 0,5 mm) iniyor. kutular None ise (GLB yok) yalnız parça varlığı sınanır."""
+    hata = []
+    A = json.load(open(GEO_ANALIZ, encoding="utf-8"))
+    for n in sorted(CAD_KIRP):
+        ky = cad_kirp_y(n, A)
+        ps = [p for p in V["parcalar"] if cad_no(p.get("ad_cad") or p["ad"]) == n]
+        if len(ps) != 1:
+            hata.append("CAD_KIRP yol %d: veride %d parça (1 beklenir)" % (n, len(ps)))
+            continue
+        if kutular is None:
+            continue
+        k = kutular.get(ps[0]["id"])
+        if k is None:
+            hata.append("CAD_KIRP yol %d: %s robot.glb'de yok" % (n, ps[0]["id"]))
+            continue
+        if k[1][1] > ky + 0.5:
+            hata.append("CAD_KIRP yol %d (%s): mesh y en büyük %.1f, kesim %.1f: eski kısım rehberde çiziliyor" % (n, ps[0]["id"], k[1][1], ky))
+        y0 = min(p[1] for p in cad_noktalar(n, A))
+        if k[0][1] > y0 - CAD_TUP_R + 0.5:
+            hata.append("CAD_KIRP yol %d (%s): mesh y en küçük %.1f, yolun başı %.1f: kesim yolun B01 kısmını da kesmiş" % (
+                n, ps[0]["id"], k[0][1], y0 - CAD_TUP_R))
+    return hata
+
+
+def uc_veri_denetle(V):
+    """P10.7b2f: veride uç etiketleri (rehber_gorunum.uc_isle). Her etiket adı UC_ETIKET'te (birleşik ad " / " ile), numaralar 1..n
+    sıralı, parça veride var; karede görünmez uçların adı UC_ETIKET ya da UC_MODELSIZ'de. uc_kaynak yoksa hata (eski veri)."""
+    hata = []
+    if "uc_kaynak" not in V:
+        return ["veride uc_kaynak yok: uç etiketleri işlenmemiş (rehber_gorunum.uc_isle)"]
+    PID = {p["id"] for p in V["parcalar"]}
+    for a in V["adimlar"]:
+        for j, g in [(0, a)] + list(enumerate(a.get("sira_grup") or [], 1)):
+            yer = "%s.%d" % (a["i"], j)
+            uc = g.get("uc") or []
+            if [u["n"] for u in uc] != list(range(1, len(uc) + 1)):
+                hata.append("uç etiketi %s: numaralar sıralı değil %s" % (yer, [u["n"] for u in uc]))
+            for u in uc:
+                bil = [x for x in u["ad"].split(" / ") if x not in UC_ETIKET]
+                if bil or u["id"] not in PID:
+                    hata.append("uç etiketi %s: %s (%s) UC_ETIKET'te yok ya da parça veride yok" % (yer, u["ad"], u["id"]))
+            for u in g.get("uc_yok") or []:
+                if u["ad"] not in UC_ETIKET and u["ad"] not in UC_MODELSIZ:
+                    hata.append("uç etiketi %s: görünmez uç %s sınıflanmamış" % (yer, u["ad"]))
+    return hata
+
+
 # ------------------------------------------------------------------ bozma denemesi
-def bozma_denemesi(V=None):
+def bozma_denemesi(V=None, kutular=None):
     import importlib
     import rehber_metin as RM0
     sonuc = []
     ANZ = json.load(open(GEO_ANALIZ, encoding="utf-8"))
     KAF = json.load(open(KAFA_ANALIZ, encoding="utf-8"))
+
+    KU = {"k": None}
+    import rehber_gorunum as _RG
+    CAD = _RG.cad_parcalar()                                             # P10.7b2f: uç etiketi desenleri modelde sınanır
 
     def dene(ad, f):
         RM = copy.deepcopy(_modul_kopya(RM0))
@@ -1552,8 +1720,11 @@ def bozma_denemesi(V=None):
         eski_kb, eski_em, eski_pc = copy.deepcopy(KARISIK_BILINEN), copy.deepcopy(GEO_EKSIK_MUAF), copy.deepcopy(PARCA_CAD)
         eski_sp, eski_si = copy.deepcopy(SEMA_PARCA), copy.deepcopy(SEMA_GEO_ISTISNA)
         eski_sk, eski_sm, eski_bt = copy.deepcopy(SEMA_KONUM), copy.deepcopy(SEMA_ESLEMESIZ_MUAF), copy.deepcopy(BAGLANTI_TABLOSU)
+        eski_kr = copy.deepcopy(CAD_KIRP)
+        eski_ue, eski_um = copy.deepcopy(UC_ETIKET), copy.deepcopy(UC_MODELSIZ)
         try:
             V2 = copy.deepcopy(V) if V is not None else None
+            KU["k"] = copy.deepcopy(kutular)
             f(RM, TB, V2)
             h = kaynak_denetle(TB, RM)
             h += geometri_denetle(TB, ANZ, CAD_ESLEME, GEO_ISTISNA)[0]
@@ -1561,12 +1732,18 @@ def bozma_denemesi(V=None):
             h += baglanti_tablosu_denetle(TB, RM)                            # P10.7b2c B
             h += sema_boy_denetle(TB, RM)
             h += sema_boy_etiketi_denetle() + sema_not_denetle(TB, RM) + uc_yer_eki_denetle(TB, RM)   # düzeltme turu 1
+            h += uc_etiket_denetle(TB, CAD)                                   # P10.7b2f
             if V2 is not None:
                 h += veri_denetle(V2, TB)[0]
+                h += kirp_veri_denetle(V2, KU["k"])                     # P10.7b2f
+                h += uc_veri_denetle(V2)
             ho = onay_denetle()                                       # açık işler turu: onay kaydı ayrı mekanizma olarak sayılır
         finally:
             APP_JS_ELLE.clear()
             SEMA_KONUM.clear(); SEMA_KONUM.update(eski_sk)
+            CAD_KIRP.clear(); CAD_KIRP.update(eski_kr)
+            UC_ETIKET.clear(); UC_ETIKET.update(eski_ue)
+            UC_MODELSIZ.clear(); UC_MODELSIZ.update(eski_um)
             SEMA_ESLEMESIZ_MUAF.clear(); SEMA_ESLEMESIZ_MUAF.update(eski_sm)
             BAGLANTI_TABLOSU.clear(); BAGLANTI_TABLOSU.update(eski_bt)
             CAD_ESLEME.clear(); CAD_ESLEME.update(eski_cad)
@@ -1817,6 +1994,18 @@ def bozma_denemesi(V=None):
               ("SV3 adından 'yeri yaklaşık' silindi", b79), ("G19 şeması B3'e taşındı", b80), ("E3a notunda K02 anılmıyor", b81),
               ("D3: K1 P03 kartın yeri silindi", b82), ("D3: kb satırında yer eki yok", b83), ("D3: şema adında ad eksiz", b84),
               ("ek: kol bölümünde etiketsiz '~N mm'", b85), ("ek: kol bölümünde '(kesim boyu değil)' silindi", b86)]
+    # P10.7b2f: Kablo yolu 12'nin kırpılması (CAD_KIRP)
+    def b87(RM, TB, V): CAD_KIRP.pop(12)                                 # eski üst kısım yeniden çizilir, istisnası yok
+    def b88(RM, TB, V): CAD_KIRP[12] = dict(CAD_KIRP[12], son=1)          # kesim B01'in ESP32 ucunu da kesti
+    deneme += [("kırpma: yol 12 CAD_KIRP'ten silindi", b87), ("kırpma: yol 12 ESP32 ucundan önce kesildi", b88)]
+    # P10.7b2f: uç etiketleri (UC_ETIKET / UC_MODELSIZ)
+    def b89(RM, TB, V): UC_ETIKET.pop("ESP32")                           # uç sınıflanmamış
+    def b90(RM, TB, V): UC_ETIKET["HC-SR04 sol"] = (r"^Sonar HC-SR04", None)   # desen üç sonara uyar
+    def b91(RM, TB, V): UC_ETIKET["sağ dirsek servosu"] = (r"^Dirsek servosu MG996R", "dirsek_sol")   # yanlış yan: kayıt değişti (onay)
+    def b92(RM, TB, V): UC_MODELSIZ["ESP32"] = "elle"                    # iki tabloda birden
+    def b93(RM, TB, V): UC_ETIKET["Eski kart"] = (r"^ESP32 DevKit", None)  # kayıtta olmayan uç
+    deneme += [("uç etiketi: ESP32 sınıflanmamış", b89), ("uç etiketi: sonar deseni üç parçaya uyuyor", b90),
+               ("uç etiketi: sağ dirsek sol modülde", b91), ("uç etiketi: ESP32 iki tabloda", b92), ("uç etiketi: kayıtta olmayan uç", b93)]
     if V is not None:
         def v1(RM, TB, V):
             i = next(k for k, s in enumerate(V["semalar"]) if s.get("kablo") and s.get("tur") not in KOL_ISARET_TUR)
@@ -1841,6 +2030,26 @@ def bozma_denemesi(V=None):
         def v8(RM, TB, V): TEMA_TON["yesil"]["light"] = "#2e8b57"     # kaynak ton değişti, veri yeniden üretilmedi
         def v9(RM, TB, V):                                            # düzeltme turu 1 (D1): gösterim şemasına "kol" (etiketsiz boy)
             next(s for s in V["semalar"] if not str(s.get("kaynak", "")).startswith("kol_kablo:"))["kol"] = "sag"
+        def v10(RM, TB, V):                                           # P10.7b2f: veri eski üretimden (mesh kırpılmamış)
+            pid = next(p["id"] for p in V["parcalar"] if cad_no(p.get("ad_cad") or p["ad"]) == 12)
+            KU["k"][pid] = (KU["k"][pid][0], (KU["k"][pid][1][0], 1327.4, KU["k"][pid][1][2]))
+        def v11(RM, TB, V):
+            pid = next(p["id"] for p in V["parcalar"] if cad_no(p.get("ad_cad") or p["ad"]) == 12)
+            KU["k"][pid] = ((KU["k"][pid][0][0], 180.0, KU["k"][pid][0][2]), KU["k"][pid][1])
+        def v13(RM, TB, V):                                           # uç etiketi adı tabloda yok
+            g = next(g for a in V["adimlar"] for g in [a] + (a.get("sira_grup") or []) if g.get("uc"))
+            g["uc"][0]["ad"] = "Eski kart"
+        def v14(RM, TB, V):                                           # numara atlıyor
+            g = next(g for a in V["adimlar"] for g in [a] + (a.get("sira_grup") or []) if len(g.get("uc") or []) > 1)
+            g["uc"][1]["n"] = 7
+        def v15(RM, TB, V): V.pop("uc_kaynak", None)                 # eski veri
+        def v12(RM, TB, V):
+            V["parcalar"] = [p for p in V["parcalar"] if cad_no(p.get("ad_cad") or p["ad"]) != 12]
+        if kutular is not None:
+            deneme += [("veri: yol 12 mesh'i kırpılmamış (eski GLB)", v10), ("veri: yol 12 mesh'i baştan kesilmiş", v11)]
+        deneme += [("veri: yol 12 parçası yok", v12)]
+        if V.get("uc_kaynak") is not None:
+            deneme += [("veri: uç etiketi adı tabloda yok", v13), ("veri: uç etiketi numarası atlıyor", v14), ("veri: uç etiketi işlenmemiş", v15)]
         deneme += [("veri: şema rengi elle değişti", v1), ("veri: şema yarıçapı elle değişti", v2), ("veri: CAD kablo rengi eski",
                    v3), ("veri: CAD kablosunda bilinmeyen kimlik", v4), ("veri: lejant tablosu yok", v5),
                    ("veri: CAD kablo tema tonu yanlış", v6), ("veri: CAD kablosunda tema tonu yok", v7),
@@ -1889,8 +2098,9 @@ if __name__ == "__main__":
         sys.exit(0)
     TB = Tablo()
     V = json.load(open(a.veri, encoding="utf-8")) if a.veri else None
+    KUTU = glb_kutulari(os.path.join(os.path.dirname(os.path.abspath(a.veri)), "robot.glb")) if a.veri else None   # P10.7b2f
     if a.bozma_denemesi:
-        s = bozma_denemesi(V)
+        s = bozma_denemesi(V, KUTU)
         kac = [x for x in s if x[1] == 0]
         for ad, n, h, mek in s:
             print("  %-55s %s %s" % (ad, "YAKALANDI (%d; %s)" % (n, mek) if n else "KAÇTI", [x[:160] for x in h[:1]]))
@@ -1943,6 +2153,13 @@ if __name__ == "__main__":
     print("düzeltme turu 1: kart boy etiketi hata %d; gösterim şeması notu (%s) %d şema, hata %d; yer eki (%s) hata %d" % (
         len(eh), "/".join(sorted(SEMA_NOT_KAYNAK)), sum(1 for s in RM.SEMA if s[0] in SEMA_NOT_KAYNAK), len(nh),
         ", ".join(UC_YER_EK), len(uh)))
+    try:                                                             # P10.7b2f: uç etiketleri
+        import rehber_gorunum as _RG
+        ueh = uc_etiket_denetle(TB, _RG.cad_parcalar())
+    except Exception as e:                                           # noqa: BLE001
+        ueh = ["uç etiketi: CAD etiketleri okunamadı (%s: %s)" % (type(e).__name__, e)]
+    h += ueh
+    print("uç etiketi: %d kısa ad modelde, %d modelsiz; hata %d" % (len(UC_ETIKET), len(UC_MODELSIZ), len(ueh)))
     ae = ayirt_edilemeyen(TB)
     print("geometrinin ayırt edemediği çiftler (onay kaydı korur): %d" % len(ae))
     for n, m, k, yer in ae:
@@ -1956,6 +2173,14 @@ if __name__ == "__main__":
     if V is not None:
         hv, es = veri_denetle(V, TB)
         h += hv
+        kh = kirp_veri_denetle(V, KUTU)                                  # P10.7b2f
+        h += kh
+        uh2 = uc_veri_denetle(V)
+        h += uh2
+        print("veri uç etiketi: %d konum, hata %d" % (sum(1 for a in V["adimlar"] for g in [a] + (a.get("sira_grup") or [])
+                                                        if g.get("uc") or g.get("uc_yok")), len(uh2)))
+        print("kırpılan CAD yolları (%s): robot.glb %s; hata %d" % (
+            ", ".join("yol %d y ≤ %.1f" % (n, cad_kirp_y(n)) for n in sorted(CAD_KIRP)), "okundu" if KUTU is not None else "YOK", len(kh)))
         print("veri: eşlemesiz çizim %d%s" % (len(es), (": " + "; ".join(es[:6])) if es else ""))
         h += ["eşlemesiz çizim: %s" % x for x in es]
     for x in h[:40]:

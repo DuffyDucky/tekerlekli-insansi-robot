@@ -154,7 +154,7 @@ kesit %44,8). Ayrıntı §11. Maliyet: genel toplamda **−83,80 TL + üç stand
        düz geçer, adaptörler sonra takılır; 1080p'yi KT4'ün masa denemesi gösterir. CAD değişikliği (tüneli oluk olarak açmak) önerilmez.
      - Malzeme etkisi: MJ:137 ve MJ:191 "değişecek kalem" (günlük §7 C listesi).
   4. **Demet fiziksel olarak kapatılmadan** (kelepçe / kılıf) önce Efe'nin iki cevabı beklenir (§7). "Tel gerekir" derse bükümlü çift
-     eklenir: ≈ 1–2 mm² (tahmin), servo kanalı 69,9 → ≈ 72 mm², **%44,8 → ≈ %46**; mil penceresi ≈ %41, alt çıkış ≈ %35 (hesap).
+     eklenir: ≈ 1–2 mm² (tahmin), servo kanalı 69,9 → ≈ 72 mm², **%44,8 → ≈ %46**; mil penceresi ≈ %41, alt çıkış ≈ %35 (hesap). **16.11 kaydı: iki cevap geldi (pano #7 mesaj #28, 14.11), tel gerekmiyor; demet kapatılabilir (§7, `elektrik.md` E3).**
 - **Kablajda teyit edilecek (KT4):** masa denemesi (pano #6 soru f): Pi 5 → aynı ince kabloyla 11,6" ekran, algılama ve 1080p; boyun içi dört
   geçiş elle (HDMI × mil, HDMI × servo yuvası, hub uzatması × mil, hoparlör × mil); pan ±90 ve tilt ±13'te kablo zorlanmıyor. Görüntü gelmezse
   ayrı karar (yedek yol modellenmedi).
@@ -205,7 +205,7 @@ değiştirmeden çalışır ama işçilik (lehim) ve şerit HDMI'de 1080p deneme
 - **K16 notu:** bu karar Ahmet'in 04.11 seçimini (K16: "PAM8403 + USB ses kartı") değiştirir: ses kartı kısmı devreden çıkar, PAM8403 kalır.
   KK K16 girdisine ve EL:145'e "14.11: ses yolu değişti" notu yazıldı. Teknik karar yetkilendirme kapsamında sayıldı; Ahmet itiraz ederse eski
   yol olduğu gibi geri gelir (kart siparişte).
-- **Efe'ye soru (taslak, gönderilmedi):** en yüksek örnekleme hızı 16 kHz; konuşma sesi (TTS) 16 kHz'te kabul mü, hangi firmware.
+- **Efe'ye soru (taslak, gönderilmedi):** en yüksek örnekleme hızı 16 kHz; konuşma sesi (TTS) 16 kHz'te kabul mü, hangi firmware. **Cevap (pano #7 mesaj #28, 14.11; kayıt 16.11):** 16 kHz kabul, 1 kanallı (işlenmiş) firmware; mikrofon zinciri zaten 16 kHz mono; ses açısından demet kapanabilir.
 - **Kablajda teyit edilecek (KT2):** (1) **bağlamadan önce** multimetreyle 3,5 mm fişin kılıfı ↔ ReSpeaker USB GND (micro USB kılıfı ya da Pi
   GND) süreklilik: ≤ 1 Ω ve kılıfta DC gerilim yok olmalı; değilse kılıf PAM GND'sine bağlanmaz, yedek yola geçilir; (2) seviye ölçümü ve bölücü
   değeri (yukarıda); (3) en yüksek seste uğultu, bozulma; (4) jak yönü ve kabuk içinde fiş payı (dizi kabuğun 2,5 mm altında); kablo boyu CAD'den.
@@ -247,7 +247,7 @@ değiştirmeden çalışır ama işçilik (lehim) ve şerit HDMI'de 1080p deneme
 - **Ek şart (düzeltme turu 1):** boyun demeti fiziksel olarak kapatılmadan (kelepçe / kılıf) önce **Efe'nin iki cevabı** beklenir: (1) bilinçli
   reset DTR / RTS ile yapılabiliyor mu; (2) otomatik reset donanımda (kartta iz kesme) kapatılacak mı. Cevap "tel gerekir" ise o zaman bükümlü
   çift eklenir: kesit etkisi §4 madde 4 (servo kanalı ≈ %46); pin, açılışta pull-down olan bir Pi GPIO'su, transistör ESP32 ucunda, tabanına
-  pull-down ve RC filtre (değerler o gün).
+  pull-down ve RC filtre (değerler o gün). **Cevap (pano #7 mesaj #28, 14.11; kayıt 16.11):** (1) evet, `esp32_reset()` aynı devreyle (DTR bırakık, RTS etkin ≈ 100 ms); (2) hayır, iz kesilmez, yeni tel yok; port açılış sırası yazılımda çevrilir (DTR etkin / RTS bırakık açılır, sonra DTR bırakılır), KT6 doğrular. Reset açısından demet kapatılabilir.
 - **Efe'nin önerisinden sapma:** soru taslağı hazır (gönderilmedi).
 - **Kablajda teyit edilecek (KT6):** bilinçli reset dizisi ESP32'yi resetliyor; normal port açılışı resetlemiyor; **Pi servisinin yeniden başlatılması
   ve Pi'nin yeniden açılışı ESP32'yi resetlemiyor** (her biri ≥ 10 kez; ESP32 açılış yazısı ve PC817 #2 / bara izlenir).
@@ -390,7 +390,7 @@ Ana anahtar devrede (ON), mantar basılı (ya da F5 attı, ya da ESP32 resetlend
 
 1. Bilinçli reset için yeni tel yerine mevcut DTR / RTS devresi (§7): `esp32_reset()` bu diziyle yazılabilir mi? Otomatik reset donanımda
    (kartta iz kesme) kapatılacak mı? (Boyun demeti bu cevap gelmeden bağlanmaz.)
-2. ReSpeaker çalma akışı 16 kHz (üretici): konuşma sesi için kabul mü, hangi firmware?
+2. ReSpeaker çalma akışı 16 kHz (üretici): konuşma sesi için kabul mü, hangi firmware? (1 ve 2 cevaplandı: pano #7 mesaj #28, §7 ve §5'te.)
 3. Bilgi: hub USB'den beslenmeye devam (§6); Pi USB akım ayarı (`PSU_MAX_CURRENT=5000` ya da `usb_max_current_enable=1`) kurulum listesine;
    röle sürücüsü BC337'ye döndü (firmware'i etkilemez, HIGH = çeker; taban → GND 2,2 kΩ); 4 / 19'un sürüş gücü varsayılanda kalmalı;
    T2 yöntemi değişti (bobin gerilimi); masa HDMI denemesi (f) hâlâ açık.

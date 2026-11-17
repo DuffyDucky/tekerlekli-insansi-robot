@@ -151,7 +151,12 @@ kutbuna
 ayarla trimpotun konumunu boya trimpotu tutucusu varsayar paketinde kutudan
 rehberde tablosunda bakan soludur adlar
 sabit testin testinin testini konusu konusudur senin
+sayfada karenin listesindeki
+beslenmesin diye diyodun belirlenir iletir iletmez etti pano demete beslenmesini keser mevcut devresiyle kapatabilirsin
 """.split())
+# P10.7b2f: sondan bir önceki satır B6a uç etiketi cümlesinin ve F5 kurulum testi göndermesinin 3 yeni kelimesi (gözden geçirildi: Türkçe harfi
+# olmayan doğru yazım). Kısım 2 (kayıt düzeltmeleri, K66): son satır B6a VIN diyodu cümlesi ve kontrolü, K2 alt adım 4 / 5 ve kontrol,
+# E4 not_ (Efe'nin pano cevabı) metinlerinin 14 yeni kelimesi (gözden geçirildi: Türkçe harfi olmayan doğru yazım).
 # P10.7b2e düzeltme turu 1 (F10m-kontrol D1): sondan bir önceki satır adım 0 sağ / sol tanım cümlesinin 5 kelimesi (gözden geçirildi:
 # Türkçe harfi olmayan doğru yazım; TR sözlüğünde ASCII karşılıkları yok, gevşetme değil). D2: son satır K1 sağ / sol kurulum testinin
 # ve F5 göndermesinin 6 yeni kelimesi ve N13 adım 0 ipucunun "senin"i (gözden geçirildi, aynı ölçüt).
@@ -484,6 +489,11 @@ ZORUNLU_CUMLE = [
     ("K1", r"PC817 #1 girişi düğümden", r"{gpio.ACIL_STOP_DURUM} okur", "K1 is_: PC817 #1'in pini (M2: ; ile ayrılan pin bağlam kuralına girmez)"),
     ("K2", r"VBUS teline seri 1N5819", r"anot hub \(Pi\)\s+tarafında, katot ESP32 tarafında", "K2 is_: 1N5819 yönü"),
     ("SEMA ESP32 USB", r"1N5819", r"anot hub \(Pi\) tarafında, katot ESP32 tarafında", "SEMA ESP32 USB: 1N5819 yönü"),
+    # P10.7b2f kısım 2 (K66, 16.11): VIN'e seri ikinci 1N5819'un yönü B6a'da (X01)
+    ("B6a", r"VIN'e seri 1N5819:", r"anot çevre 5 V tarafında, katot ESP32 VIN tarafında", "B6a is_: VIN'e seri 1N5819 yönü (K66)"),
+    # düzeltme turu 1 (F10n-kontrol N8): kontrol maddesindeki ölçüm yönü de zorunlu (silinir / ters çevrilirse yalnız onay kaydı görüyordu)
+    ("B6a", r"VIN'e seri 1N5819'un yönü:", r"çevre 5 V → ESP32 VIN yönünde iletir, ters yönde iletmez \(bantlı uç, katot, VIN tarafında\)",
+     "B6a kontrol: VIN'e seri 1N5819'un ölçülen yönü (K66)"),
     ("F5", r"{gpio.ROLE_K2_ONSARJ} = 1 \(röle K2\)", r"en az {ms.onsarj} bekle", "F5 E9: K2'den sonra en az bekleme"),
     ("F5", r"{gpio.ROLE_K1} = 1 \(röle K1\)", r"{ms.k1_sonra} sonra {gpio.ROLE_K2_ONSARJ} = 0", "F5 E9: K1'den sonra K2 bırakılır"),
     # açık işler turu (F10h-kontrol-2 B28): göğüs regülatörünün yeri şemada da açık karar
@@ -568,6 +578,8 @@ TERIM_ISTISNA = [
     "Köpük bant (yedek USB ses kartı için;",
     "USB ses kartı (yedek, takılmaz)",
     "USB ses kartı: yedek, takılmaz (KT2 geçmezse Pi port 2'ye;",
+    # P10.7b2f (F10m-kare-inceleme § 4.2): 31.4'ün karesindeki yedek kart
+    "Karede PAM8403'ün yanındaki ikinci kart yedek USB ses kartıdır: takılmaz (önceki alt adım).",
 ]
 _TERIM_ISTISNA = {_RK.normal(x) for x in TERIM_ISTISNA}
 _TERIM = r"MOSFET|WAGO|[Ss]es kart"
@@ -2539,8 +2551,10 @@ def demet_yol_adimlari(yol=None):
     yol = yol or _RKB.GEO_ANALIZ
     if not os.path.exists(yol):
         return None
-    ky = json.load(open(yol, encoding="utf-8")).get("kablo_yolu") or []
-    return {n: RM.kablo_kapisi(max(p[1] for p in k["noktalar"]), n) for n, k in enumerate(ky, 1) if k.get("noktalar")}
+    A = json.load(open(yol, encoding="utf-8"))
+    ky = A.get("kablo_yolu") or []
+    # P10.7b2f: rehberin çizdiği (rehber_kablo.CAD_KIRP ile kırpılmış) bölüm; rehber_veri.py kırpılmış gövdenin y'sine bakar
+    return {n: RM.kablo_kapisi(max(p[1] for p in _RKB.cad_noktalar(n, A)), n) for n, k in enumerate(ky, 1) if k.get("noktalar")}
 
 
 # P10.7b2d-A düzeltme turu 1 (F10l-kontrol D1): bara uçları (rehber_metin.DEMET_ALT "uc"; kayıt kablolar.json bara-pabuc yerlesim).

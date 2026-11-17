@@ -112,6 +112,57 @@ for mod in Y.DOSYA:
                       dosya=Y.DOSYA[mod], yerel=s, shape=Y._global(s, mod), M=Mm))
 for d in acik.values():
     App.closeDocument(d.Name)
+
+
+# P10.7b2f (F10m-kare-inceleme § 4.1): rehberde kırpılan CAD kablo yolları (rehber_kablo.CAD_KIRP). Model dosyası değişmez; yolun
+# gövdesi kesim düzleminin (global y ≤ kesim) altında bırakılır. Kablo yolu 12: direk boyunca kafaya çıkan eski ESP32 → kafa USB
+# bölümü rehberde çizilmez, B01'in tabandaki yolu kalır.
+# Düzeltme turu 1 (F10n-kontrol D1): sınırlar sıkı kutudan (optimalBoundingBox, üçgenlemesiz: kesin geometri). Shape.BoundBox eğri
+# yüzde gevşek (silindirin UV kutusu): doğru kesilmiş tüp kesimi aşmış görünür. Pay 0,05 mm (kesişim ve kutu hesabının sayısal payı).
+KIRP_PAY = 0.05
+
+
+# Yolun korunan noktaları (rehber_kablo.cad_noktalar; tüpün eksen noktaları) kesilmiş katının içinde, ilk atılan nokta dışında olmalı:
+# kesim düzlemi B01'in tabandaki kısmını keserse (çok alçak) ya da eski kısmı bırakırsa üretim durur.
+def kirp(p, ky, n):
+    _k, _a = A.modul_konum(p["modul"])
+    if tuple(_k) != (0, 0, 0) or _a:
+        raise SystemExit("CAD_KIRP: %s modülü birim yerleşimde değil, kesim düzlemi yerel şekle taşınamaz" % p["modul"])
+    tut = RK.cad_noktalar(n)
+    tum = RK.cad_noktalar(n, kirp=False)
+    at = tum[len(tut)] if len(tum) > len(tut) else None
+    out = []
+    for s in (p["yerel"], p["shape"]):
+        sb = s.optimalBoundingBox(False, False)
+        if sb.YMax <= ky + KIRP_PAY:
+            raise SystemExit("CAD_KIRP: %s kesecek bir şey yok (y en büyük %.2f, kesim %.2f): kayıt bayat" % (p["ad"], sb.YMax, ky))
+        kutu = Part.makeBox(2e4, ky + 1e4, 2e4, V(-1e4, -1e4, -1e4))
+        c = s.common(kutu)
+        if not c.Solids or c.Volume <= 0 or c.Volume >= s.Volume:
+            raise SystemExit("CAD_KIRP: %s kesimi boş ya da hacmi küçültmedi (kesim %.2f)" % (p["ad"], ky))
+        b = c.optimalBoundingBox(False, False)
+        if b.YMax > ky + KIRP_PAY or abs(b.YMin - sb.YMin) > KIRP_PAY:
+            raise SystemExit("CAD_KIRP: %s kesimi aşıyor ya da yolun başını kesmiş (y %.2f…%.2f, önce %.2f, kesim %.2f)" % (
+                p["ad"], b.YMin, b.YMax, sb.YMin, ky))
+        disari = [q for q in tut if not c.isInside(V(*q), 0.01, True)]
+        if disari or (at is not None and c.isInside(V(*at), 0.01, True)):
+            raise SystemExit("CAD_KIRP: %s kesimi yanlış yerde (kesim %.2f): korunan noktalardan dışarıda kalan %s, ilk atılan nokta %s %s" % (
+                p["ad"], ky, disari, at, "içeride" if at is not None and c.isInside(V(*at), 0.01, True) else "dışarıda"))
+        out.append(c)
+    log("CAD_KIRP: %s y %.2f -> %.2f (kesim %.2f; sıkı kutu)" % (p["ad"], p["shape"].optimalBoundingBox(False, False).YMax,
+                                                                  out[1].optimalBoundingBox(False, False).YMax, ky))
+    p["yerel"], p["shape"] = out
+
+
+KIRPILAN = []
+for p in P:
+    if p["modul"] == "taban" and p["ad"].startswith("Kablo yolu"):
+        _ky = RK.cad_kirp_y(RM.kablo_yolu_no(p["ad"]))
+        if _ky is not None:
+            kirp(p, _ky, RM.kablo_yolu_no(p["ad"]))
+            KIRPILAN.append(RM.kablo_yolu_no(p["ad"]))
+if sorted(KIRPILAN) != sorted(RK.CAD_KIRP):
+    raise SystemExit("CAD_KIRP %s, kırpılan %s: yol adı modelde yok" % (sorted(RK.CAD_KIRP), sorted(KIRPILAN)))
 for p in P:
     b = p["shape"].BoundBox
     p["bb"] = (b.XMin, b.XMax, b.YMin, b.YMax, b.ZMin, b.ZMax)
@@ -127,7 +178,7 @@ ATANMAMIS = []
 for p in P:
     if p["tur"] == "Referans":
         if p["modul"] == "taban" and p["ad"].startswith("Kablo yolu"):
-            p["kodr"], p["kablo"] = RM.kablo_kapisi(p["bb"][3], RM.kablo_yolu_no(p["ad"])), True   # P10.7b2e: istisna (Kablo yolu 12)
+            p["kodr"], p["kablo"] = RM.kablo_kapisi(p["bb"][3], RM.kablo_yolu_no(p["ad"])), True   # P10.7b2f: Kablo yolu 12 kırpıldı (y ≤ 192,5), eşikle K1
         elif p["modul"] == "kafa":
             p["kodr"], p["kablo"] = "E3a", True
         else:

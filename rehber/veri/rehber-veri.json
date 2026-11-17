@@ -1,6 +1,6 @@
 {
 "surum": 1,
-"uretim": "2026-11-16 06:58",
+"uretim": "2026-11-17 02:41",
 "betik": "tasarim/freecad/rehber/rehber_veri.py",
 "kaynak": {
 "m6": "planlama/adim4/M6-montaj-sirasi.md (adım sırası ve tablo metni)",
@@ -20,7 +20,7 @@
 "mesh": {
 "benzersiz": 288,
 "parca": 1192,
-"ucgen": 189934,
+"ucgen": 189600,
 "glb_mb": 2.56
 },
 "atanmamis": [],
@@ -8076,7 +8076,7 @@
 "no": "0",
 "faz": "Hazırlık",
 "baslik": "Hazırlık: parçalar, ısıl gömme somunlar, alet seti",
-"is_": "Baskı parçaları basılmış, destekleri temizlenmiş ve ısıl gömme somunları takılmış olmalı. Profiller kesilmiş, lazer parçalar gelmiş. Alet seti ve bağlantı elemanları adım adım kutulara ayrılmış.\nSağ / sol: Bu rehberde ve kablo tablosunda sağ / sol, robota önden bakan kişinin sağı / soludur; robotun kendi sağı / solu değildir. Örnek: acil stop mantarı, robota önden bakınca sağ arka köşededir; üstüne 'SOL' yazılan aynalı kol önden bakınca solda takılır (robotun kendi sağ kolu). Parça ve kart adlarındaki sağ / sol da bu tanıma göredir; yazılımdaki adlar robotun kendi sağını / solunu kullanır, karşılıkları `planlama/d158/sag-sol-karari.md`'de. Robotun arkasından çalışırken önden bakanın sağı senin solunda kalır.",
+"is_": "Baskı parçaları basılmış, destekleri temizlenmiş ve ısıl gömme somunları takılmış olmalı. Profiller kesilmiş, lazer parçalar gelmiş. Alet seti ve bağlantı elemanları adım adım kutulara ayrılmış.\n**Sağ / sol tanımı:** Bu rehberde ve kablo tablosunda sağ / sol, robota önden bakan kişinin sağı / soludur; robotun kendi sağı / solu değildir. Örnek: acil stop mantarı, robota önden bakınca sağ arka köşededir; üstüne 'SOL' yazılan aynalı kol önden bakınca solda takılır (robotun kendi sağ kolu). Parça ve kart adlarındaki sağ / sol da bu tanıma göredir; yazılımdaki adlar robotun kendi sağını / solunu kullanır, karşılıkları `planlama/d158/sag-sol-karari.md`'de. Robotun arkasından çalışırken önden bakanın sağı senin solunda kalır.",
 "baglanti_md": "",
 "alet": "",
 "erisim": "",
@@ -9026,6 +9026,31 @@
 "p1036",
 "p1039",
 "p1042"
+],
+"uc": [
+{
+"n": 1,
+"id": "p0980",
+"ad": "BTS7960 sol",
+"kablo": [
+"M02"
+],
+"ip": [
+-67.5,
+124.0,
+165.0
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "JGB37 arka sol",
+"neden": "bu bakışta başka parçaların arkasında",
+"kablo": [
+"M02"
+]
+}
 ]
 },
 {
@@ -9422,6 +9447,31 @@
 "kablolama": false,
 "ev": [
 "p0891"
+],
+"uc": [
+{
+"n": 1,
+"id": "p1045",
+"ad": "XL4016 C",
+"kablo": [
+"SV3"
+],
+"ip": [
+97.5,
+199.2,
+-0.0
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "Dağıtım kartı C (kafa)",
+"neden": "kafa dağıtım kartı modelde yok",
+"kablo": [
+"SV3"
+]
+}
 ]
 },
 {
@@ -9486,7 +9536,7 @@
 "no": "14",
 "faz": "Taban",
 "baslik": "Tezgâh: elektronik katı",
-"is_": "Tezgâhta, kat burçlara inmeden: kartları kata tak (arayüz kartı, dağıtım kartı A ve B, PCA9685, BNO055, ESP32 taşıyıcı), sonra kat üstündeki kartlar arası kabloları bağla. Hepsi dişi uçlu sinyal teli (O-4 r); uçlar ve pinler `planlama/adim3/kablolar.md` tablolarında, kart üstü yazıya göre bağla:\n1. Dağıtım kartı A ve B: her kartın iki 2200 µF kondansatörünü V+ / GND barasına lehimle, yönü − bacağı (gövdedeki eksi şeridinin olduğu yan) GND barasına, öbür bacak V+ barasına; eksi şeridi okunmuyorsa takma (kablajda teyit).\n2. Arayüz kartı → ESP32 (X01): bölücü çıkışları, iki röle sürücüsünün taban girişi, PC817 çıkışları, BTS EN düğümü, çevre 5 V → ESP32 VIN, GND → GND. PC817 modülünün çıkış besleme ucunu (çıkış VCC) ESP32'nin 3V3 pinine bağla (X01): 5 V'a bağlama. Modülün çıkışları PC817 #1 (acil stop, GPIO23) ve PC817 #2 (bara, GPIO5) pinlerine gider; besleme 5 V olursa bu pinler 5 V görür, ESP32 girişleri en çok 3,6 V'a dayanır (pin haritası D3).\n3. I2C: ESP32 → PCA9685 giriş başlığı (I01: SDA, SCL, 3V3 → VCC, GND); PCA9685 çıkış başlığı → BNO055 (I02: SDA, SCL, VCC → VIN, GND). PCA9685'in OE ucunu kart üstünde GND'ye bağla.\n4. Servo sinyalleri, yalnız sinyal teli: PCA9685'in sağ kol kanallarının sinyal pinlerini dağıtım kartı A'nın sinyal girişlerine (P01), sol kol kanallarınınkini dağıtım kartı B'ninkilere (P02) tek telli dişi uçlarla bağla. PCA9685'in V+ klemensine ve kanal başlıklarının V+ pinine tel takma; dağıtım kartının sinyal girişindeki V+ pini kartta bağlı değildir. 3 telli hazır servo kablosu kullanırsan V+ damarını iki ucundan kes, makaronla yalıt. Neden: PCA9685'te kanal başlıklarının V+ pinleri V+ klemensine ortaktır; V+ teli takılırsa üç dağıtım kartının V+'ı, yani XL4016 A, B ve C'nin çıkışları birbirine paralel girer, dönüştürücüler zarar görebilir (kart içi ortak V+ sırası kablajda teyit). Hangi kanalın hangi girişe gittiği kablolar.md'de (P01, P02).\nKarede kartların adı yazmaz; yerleri (robota önden bakınca): arayüz kartı solda, ESP32 taşıyıcı sağda, PCA9685 onun önünde sağda, BNO055 ortada; dağıtım kartı A ön kenarda sağda, B solda. BNO055'in yön oku karede çizili değil: kartın üstündeki X okunu robotun önüne (yüz tarafı) çevir (kontrol).",
+"is_": "Tezgâhta, kat burçlara inmeden: kartları kata tak (arayüz kartı, dağıtım kartı A ve B, PCA9685, BNO055, ESP32 taşıyıcı), sonra kat üstündeki kartlar arası kabloları bağla. Hepsi dişi uçlu sinyal teli (O-4 r); uçlar ve pinler `planlama/adim3/kablolar.md` tablolarında, kart üstü yazıya göre bağla:\n1. Dağıtım kartı A ve B: her kartın iki 2200 µF kondansatörünü V+ / GND barasına lehimle, yönü − bacağı (gövdedeki eksi şeridinin olduğu yan) GND barasına, öbür bacak V+ barasına; eksi şeridi okunmuyorsa takma (kablajda teyit).\n2. Arayüz kartı → ESP32 (X01): bölücü çıkışları, iki röle sürücüsünün taban girişi, PC817 çıkışları, BTS EN düğümü, çevre 5 V → ESP32 VIN, GND → GND. VIN'e seri 1N5819: anot çevre 5 V tarafında, katot ESP32 VIN tarafında (K66; çevre hat sigortası atınca çevre yükleri USB'den beslenmesin diye). Diyodun takılacağı yer (arayüz kartı üstü ya da X01'in 5 V damarı) kayıtta yok, kablajda belirlenir. PC817 modülünün çıkış besleme ucunu (çıkış VCC) ESP32'nin 3V3 pinine bağla (X01): 5 V'a bağlama. Modülün çıkışları PC817 #1 (acil stop, GPIO23) ve PC817 #2 (bara, GPIO5) pinlerine gider; besleme 5 V olursa bu pinler 5 V görür, ESP32 girişleri en çok 3,6 V'a dayanır (pin haritası D3).\n3. I2C: ESP32 → PCA9685 giriş başlığı (I01: SDA, SCL, 3V3 → VCC, GND); PCA9685 çıkış başlığı → BNO055 (I02: SDA, SCL, VCC → VIN, GND). PCA9685'in OE ucunu kart üstünde GND'ye bağla.\n4. Servo sinyalleri, yalnız sinyal teli: PCA9685'in sağ kol kanallarının sinyal pinlerini dağıtım kartı A'nın sinyal girişlerine (P01), sol kol kanallarınınkini dağıtım kartı B'ninkilere (P02) tek telli dişi uçlarla bağla. PCA9685'in V+ klemensine ve kanal başlıklarının V+ pinine tel takma; dağıtım kartının sinyal girişindeki V+ pini kartta bağlı değildir. 3 telli hazır servo kablosu kullanırsan V+ damarını iki ucundan kes, makaronla yalıt. Neden: PCA9685'te kanal başlıklarının V+ pinleri V+ klemensine ortaktır; V+ teli takılırsa üç dağıtım kartının V+'ı, yani XL4016 A, B ve C'nin çıkışları birbirine paralel girer, dönüştürücüler zarar görebilir (kart içi ortak V+ sırası kablajda teyit). Hangi kanalın hangi girişe gittiği kablolar.md'de (P01, P02).\nKarede bağlantı kablolarının uç kartları numaralı (etkileşimli sayfada adıyla, basılı sayfada adları karenin altında); yerleri (robota önden bakınca): arayüz kartı solda, ESP32 taşıyıcı sağda, PCA9685 onun önünde sağda, BNO055 ortada; dağıtım kartı A ön kenarda sağda, B solda. BNO055'in yön oku karede çizili değil: kartın üstündeki X okunu robotun önüne (yüz tarafı) çevir (kontrol).",
 "baglanti_md": "16 × M3×8 + 8 × M2,5×8 (alt), 16 × M3×6 + 8 × M2,5×5 (üst)",
 "alet": "alyan 2,5 / 2",
 "erisim": "düz",
@@ -9711,6 +9761,7 @@
 "kontrol": [
 "Burçlar alttan, kartlar üstten (arayüz kartı, 2 dağıtım kartı, PCA9685, BNO055, ESP32 taşıyıcı)",
 "X01, I01, I02, P01 ve P02 bağlandı: her dişi uç kart üstü yazıyla kablolar.md'deki uca eşleşti; dağıtım kartı A ve B'de kondansatörlerin eksi şeritli bacağı GND barasında",
+"VIN'e seri 1N5819'un yönü: multimetrenin diyot kademesinde çevre 5 V → ESP32 VIN yönünde iletir, ters yönde iletmez (bantlı uç, katot, VIN tarafında)",
 "PC817 modülünün çıkış VCC ucu ESP32'nin 3V3 pininde (X01), 5 V'ta değil: multimetrenin süreklilik kademesiyle çıkış VCC ile ESP32 3V3 pini arası öter, çıkış VCC ile çevre 5 V arası ötmez",
 "PCA9685 V+ boş: multimetrenin süreklilik kademesiyle PCA9685'in kanal başlığının V+ pini ile dağıtım kartı A'nın ve B'nin V+ barası arasında süreklilik yok (ötmemeli; ölçü ucu V+ klemensine değil kanal başlığının V+ pinine: kartta klemens ile V+ rayı arasında ters kutup koruması olabilir). Öterse bir V+ teli takılı ya da kartın sinyal girişindeki V+ pini bağlı: o teli ya da bağı sök, ölçüm ötmeyene kadar devam etme",
 "BNO055 yönü: kartın X oku robotun önüne (+z)",
@@ -9721,8 +9772,8 @@
 "Bu dört satır (ve K1'deki P03) bağlantı tablosudur, 3B çizim değil: pin ve kanal numaraları kayıttan (`planlama/adim3/pin-haritasi.md`, `planlama/adim3/kablolar.json`). Başlıklardaki pin sırası ve kart üstündeki yeri kayıtta yok: kart üstü yazıya göre bağla",
 "Bağlantı tablosu I01 (ESP32 → PCA9685 giriş başlığı, 22 AWG dişi uçlu tel): SDA: ESP32 GPIO21 (`I2C_SDA`) → PCA9685 SDA (giriş); SCL: ESP32 GPIO22 (`I2C_SCL`) → PCA9685 SCL (giriş); VCC 3V3: ESP32 3V3 → PCA9685 VCC (giriş); GND: ESP32 GND → PCA9685 GND (giriş)",
 "Bağlantı tablosu I02 (PCA9685 çıkış başlığı → BNO055, 22 AWG dişi uçlu tel): SDA: PCA9685 SDA (çıkış) → BNO055 SDA; SCL: PCA9685 SCL (çıkış) → BNO055 SCL; VIN 3V3: PCA9685 VCC (çıkış) → BNO055 VIN; GND: PCA9685 GND (çıkış) → BNO055 GND",
-"Bağlantı tablosu P01 (yalnız sinyal teli, madde 4, 22 AWG): PCA9685 kanal 0 sinyali (`sag_omuz`) → Dağıtım kartı A sinyal girişi 1; PCA9685 kanal 1 sinyali (`sag_omuz_yan`) → Dağıtım kartı A sinyal girişi 2; PCA9685 kanal 2 sinyali (`sag_dirsek`) → Dağıtım kartı A sinyal girişi 3; PCA9685 kanal 3 sinyali (`sag_bilek`) → Dağıtım kartı A sinyal girişi 4",
-"Bağlantı tablosu P02 (yalnız sinyal teli, madde 4, 22 AWG): PCA9685 kanal 5 sinyali (`sol_omuz`) → Dağıtım kartı B sinyal girişi 1; PCA9685 kanal 6 sinyali (`sol_omuz_yan`) → Dağıtım kartı B sinyal girişi 2; PCA9685 kanal 7 sinyali (`sol_dirsek`) → Dağıtım kartı B sinyal girişi 3; PCA9685 kanal 8 sinyali (`sol_bilek`) → Dağıtım kartı B sinyal girişi 4"
+"Bağlantı tablosu P01 (yalnız sinyal teli, madde 4, 22 AWG): PCA9685 kanal 0 sinyali (yazılım adı `sag_omuz`) → Dağıtım kartı A sinyal girişi 1; PCA9685 kanal 1 sinyali (yazılım adı `sag_omuz_yan`) → Dağıtım kartı A sinyal girişi 2; PCA9685 kanal 2 sinyali (yazılım adı `sag_dirsek`) → Dağıtım kartı A sinyal girişi 3; PCA9685 kanal 3 sinyali (yazılım adı `sag_bilek`) → Dağıtım kartı A sinyal girişi 4",
+"Bağlantı tablosu P02 (yalnız sinyal teli, madde 4, 22 AWG): PCA9685 kanal 5 sinyali (yazılım adı `sol_omuz`) → Dağıtım kartı B sinyal girişi 1; PCA9685 kanal 6 sinyali (yazılım adı `sol_omuz_yan`) → Dağıtım kartı B sinyal girişi 2; PCA9685 kanal 7 sinyali (yazılım adı `sol_dirsek`) → Dağıtım kartı B sinyal girişi 3; PCA9685 kanal 8 sinyali (yazılım adı `sol_bilek`) → Dağıtım kartı B sinyal girişi 4"
 ],
 "not_": [],
 "kamera": null,
@@ -9732,6 +9783,81 @@
 "kablolama": false,
 "ev": [
 "p0890"
+],
+"uc": [
+{
+"n": 1,
+"id": "p1163",
+"ad": "ESP32",
+"kablo": [
+"I01"
+],
+"ip": [
+80.5,
+197.0,
+75.0
+],
+"karede": true
+},
+{
+"n": 2,
+"id": "p1124",
+"ad": "PCA9685",
+"kablo": [
+"I01",
+"I02",
+"P01",
+"P02"
+],
+"ip": [
+83.0,
+193.8,
+125.0
+],
+"karede": true
+},
+{
+"n": 3,
+"id": "p1137",
+"ad": "BNO055",
+"kablo": [
+"I02"
+],
+"ip": [
+0.0,
+188.9,
+60.0
+],
+"karede": true
+},
+{
+"n": 4,
+"id": "p1098",
+"ad": "Dağıtım kartı A",
+"kablo": [
+"P01"
+],
+"ip": [
+72.0,
+193.3,
+205.0
+],
+"karede": true
+},
+{
+"n": 5,
+"id": "p1111",
+"ad": "Dağıtım kartı B",
+"kablo": [
+"P02"
+],
+"ip": [
+-72.0,
+193.3,
+205.0
+],
+"karede": true
+}
 ]
 },
 {
@@ -9921,13 +10047,13 @@
 "Tezgâhta (arayüz kartı takılmadan, B6a öncesi; akım sınırlı tezgâh kaynağıyla): PC817 modülü 3,3 V'ta ölçüldü: LOW < 0,4 V, HIGH > 2,5 V; tutmazsa `elektrik.md` E3'teki yedek devre",
 "Akü ayrıkken: bara kapasitesi multimetrenin kapasite kademesiyle ölçüldü (ön şarj değeri için)",
 "İlk açılış ve BMS gözlemi burada değil: F1 \"İlk enerji, aşama 1\"; devreye alma ve motor yön testi F5 \"İlk enerji, aşama 2\"",
-"Sağ / sol kurulum testi (bağladığın taraf ile yazılımın tarafı aynı mı; bu adımda değil, F5 \"İlk enerji, aşama 2\"de devreye aldıktan ve motor / enkoder yön testinden (`*_MOTOR_TERS`, `*_ENKODER_TERS`; `kod/esp32/OKU_BENI.md`) sonra yapılır): tekerler yerden kesik (şasi takozda). Önce `sur` komutunu v = 0, w = 0,2 ile gönder (w sola +; motorlar yarım saniyede kendiliğinden durur, gerekirse yinele): robot kendi soluna dönmek ister, yani robota önden bakınca soldaki tekerler ileri, sağdakiler geri döner. Sonra `odo_sifirla` komutunu gönder ve arka tekerleri tek tek elle çevir: önden bakınca soldaki arka teker `odo` satırında yalnız `sag` sayacını değiştirmeli (`sol` sabit kalır), sağdaki yalnız `sol` sayacını; sayacın artıp azalması bu testin konusu değil, yön testinin konusudur. Ters çıkarsa kabloyu değiştirme: robotu sürme, `planlama/d158/sag-sol-karari.md`'deki yazılım düzeltmesi bekleniyor (Efe). Devreye alma adımları ve `sur`'un yalnız w ile davranışı kartta denenmedi (`kod/esp32/OKU_BENI.md`)"
+"Sağ / sol kurulum testi bu adımda yapılmaz: F5 \"İlk enerji, aşama 2\" kontrol listesinde (devreye alma ve motor / enkoder yön testinden sonra)"
 ],
 "kablo": [
 "Burada: 12 V ana hat, şarj kolu, toprak, iki motor hattı, çevre 5 V, acil stop, sonar sinyal. Şemada devre sınıfının renginde (lejant; `planlama/adim3/kablolar.md` renk kuralı); tıklayınca kablo kimliği, iki uç, kesit, sigorta ve acil stopta enerjili olup olmadığı",
 "Direk boyunca gidenler K2 listesinde; o hatların taban kısmı da bu adımda bağlanır (şema bölünmedi)",
 "Dokuz hattın (G07, G16, G22, G19, B02, N01, N02, Q01, Q02) çizimi gösterim şemasıdır (`lale158/kablo_yolu_taban.py`): çarpışma taramasından geçmedi, parça sayısına girmez, boy ölçümü değildir. Kat ve alt plaka geçişleri modeldeki yerlerdir (ön kat kesiği, arka kablo deliği); kart üstündeki klemens yeri ve kartların arasındaki çizgi tahmin. Anahtarlı baranın yeri yaklaşık (modelde yok, röle yanından çizildi). Kabloyu çizgiye değil, kartlara ve klemenslere bakarak döşe",
-"Bağlantı tablosu P03 (yalnız sinyal teli, alt adım 17.11, 22 AWG): PCA9685 kanal 4 sinyali (`kafa_pan`) → Dağıtım kartı C (kafa) pan sinyal girişi; PCA9685 kanal 9 sinyali (`kafa_tilt`) → Dağıtım kartı C (kafa) tilt sinyal girişi. Dağıtım kartı C (kafa): kart güç panelinde, XL4016 C'nin yanında; adındaki \"kafa\" beslediği pan / tilt servolarıdır. Dağıtım kartı C modelde yok, yeri çizilmez; kart üstündeki pan / tilt giriş pininin numarası kayıtta yok: kart üstü yazıya göre bağla",
+"Bağlantı tablosu P03 (yalnız sinyal teli, alt adım 17.11, 22 AWG): PCA9685 kanal 4 sinyali (yazılım adı `kafa_pan`) → Dağıtım kartı C (kafa) pan sinyal girişi; PCA9685 kanal 9 sinyali (yazılım adı `kafa_tilt`) → Dağıtım kartı C (kafa) tilt sinyal girişi. Dağıtım kartı C (kafa): kart güç panelinde, XL4016 C'nin yanında; adındaki \"kafa\" beslediği pan / tilt servolarıdır. Dağıtım kartı C modelde yok, yeri çizilmez; kart üstündeki pan / tilt giriş pininin numarası kayıtta yok: kart üstü yazıya göre bağla",
 "Kablo listesi (uçlar, kesit, sigorta, sonlandırma): `planlama/adim3/kablolar.md` (tek kaynak `kablolar.json`); boy için tablodaki tahmin kuralı"
 ],
 "not_": [],
@@ -9950,7 +10076,23 @@
 "ref": [
 "p1181"
 ],
-"ev": []
+"ev": [],
+"uc_yok": [
+{
+"ad": "XT60 (robot tarafı)",
+"neden": "konnektör modelde yok",
+"kablo": [
+"G05"
+]
+},
+{
+"ad": "Yıldız barası",
+"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
+"kablo": [
+"G05"
+]
+}
+]
 },
 {
 "ad": "Ana hat ve şarj kolu",
@@ -9965,7 +10107,69 @@
 "ref": [
 "p1180"
 ],
-"ev": []
+"ev": [],
+"uc": [
+{
+"n": 1,
+"id": "p1082",
+"ad": "Ana sigorta yuvası",
+"kablo": [
+"G02",
+"G03"
+],
+"ip": [
+112.0,
+189.5,
+-130.0
+],
+"karede": true
+},
+{
+"n": 2,
+"id": "p1071",
+"ad": "Sigorta kutusu",
+"kablo": [
+"G04"
+],
+"ip": [
+0.0,
+197.0,
+-203.0
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "Akü",
+"neden": "akü alt plakanın altında, bu bakışta başka parçaların arkasında",
+"kablo": [
+"G01"
+]
+},
+{
+"ad": "XT60 (akü tarafı)",
+"neden": "konnektör modelde yok",
+"kablo": [
+"G01"
+]
+},
+{
+"ad": "XT60 (robot tarafı)",
+"neden": "konnektör modelde yok",
+"kablo": [
+"G02"
+]
+},
+{
+"ad": "Ana anahtar",
+"neden": "bu adımda takılı değil",
+"kablo": [
+"G03",
+"G04"
+]
+}
+]
 },
 {
 "ad": "Akü ölçüm teli (G07)",
@@ -9979,7 +10183,23 @@
 "sema": [
 11
 ],
-"ev": []
+"ev": [],
+"uc_yok": [
+{
+"ad": "Ana anahtar",
+"neden": "bu adımda takılı değil",
+"kablo": [
+"G07"
+]
+},
+{
+"ad": "Arayüz kartı",
+"neden": "bu kadrajın dışında",
+"kablo": [
+"G07"
+]
+}
+]
 },
 {
 "ad": "Röle K1 ve ön şarj kartı",
@@ -9998,7 +10218,79 @@
 "ref": [
 "p1182"
 ],
-"ev": []
+"ev": [],
+"uc": [
+{
+"n": 1,
+"id": "p1071",
+"ad": "Sigorta kutusu",
+"kablo": [
+"G08",
+"G10"
+],
+"ip": [
+0.0,
+197.0,
+-203.0
+],
+"karede": true
+},
+{
+"n": 2,
+"id": "p1078",
+"ad": "Röle K1",
+"kablo": [
+"G08",
+"G09"
+],
+"ip": [
+-112.0,
+202.0,
+-135.0
+],
+"karede": true
+},
+{
+"n": 3,
+"id": "p1058",
+"ad": "Ön şarj kartı",
+"kablo": [
+"G10",
+"G11"
+],
+"ip": [
+-97.5,
+192.6,
+-1.0
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "Anahtarlı bara",
+"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
+"kablo": [
+"G09",
+"G11",
+"G12"
+]
+},
+{
+"ad": "BTS7960 sol",
+"neden": "bu bakışta başka parçaların arkasında",
+"kablo": [
+"G12"
+]
+},
+{
+"ad": "Yıldız barası",
+"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
+"kablo": [
+"G12"
+]
+}
+]
 },
 {
 "ad": "Bara çıkışları: BTS7960B ve XL4016 A / B / C",
@@ -10024,7 +10316,55 @@
 "sema": [
 12
 ],
-"ev": []
+"ev": [],
+"uc": [
+{
+"n": 1,
+"id": "p0993",
+"ad": "BTS7960 sağ",
+"kablo": [
+"G13"
+],
+"ip": [
+67.5,
+124.0,
+165.0
+],
+"karede": true
+},
+{
+"n": 2,
+"id": "p1045",
+"ad": "XL4016 C",
+"kablo": [
+"G16"
+],
+"ip": [
+97.5,
+199.2,
+-0.0
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "Anahtarlı bara",
+"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
+"kablo": [
+"G13",
+"G16"
+]
+},
+{
+"ad": "Yıldız barası",
+"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
+"kablo": [
+"G13",
+"G16"
+]
+}
+]
 },
 {
 "ad": "PC817 #2 algı teli (G22)",
@@ -10038,7 +10378,30 @@
 "sema": [
 13
 ],
-"ev": []
+"ev": [],
+"uc_yok": [
+{
+"ad": "Anahtarlı bara",
+"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
+"kablo": [
+"G22"
+]
+},
+{
+"ad": "PC817 modülü",
+"neden": "bu kadrajın dışında",
+"kablo": [
+"G22"
+]
+},
+{
+"ad": "Yıldız barası",
+"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
+"kablo": [
+"G22"
+]
+}
+]
 },
 {
 "ad": "Sigorta kutusu çıkışları",
@@ -10055,7 +10418,46 @@
 "ref": [
 "p1188"
 ],
-"ev": []
+"ev": [],
+"uc": [
+{
+"n": 1,
+"id": "p1071",
+"ad": "Sigorta kutusu",
+"kablo": [
+"G18"
+],
+"ip": [
+0.0,
+197.0,
+-203.0
+],
+"karede": true
+},
+{
+"n": 2,
+"id": "p1019",
+"ad": "XL4016 çevre",
+"kablo": [
+"G18"
+],
+"ip": [
+49.2,
+114.2,
+75.0
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "Yıldız barası",
+"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
+"kablo": [
+"G18"
+]
+}
+]
 },
 {
 "ad": "Acil stop ve röle sürücüleri",
@@ -10070,7 +10472,81 @@
 "ref": [
 "p1189"
 ],
-"ev": []
+"ev": [],
+"uc": [
+{
+"n": 1,
+"id": "p1071",
+"ad": "Sigorta kutusu",
+"kablo": [
+"A01"
+],
+"ip": [
+0.0,
+197.0,
+-203.0
+],
+"karede": true
+},
+{
+"n": 2,
+"id": "p1085",
+"ad": "Arayüz kartı / PC817 modülü",
+"kablo": [
+"A03",
+"A05",
+"A06"
+],
+"ip": [
+-90.5,
+195.8,
+80.0
+],
+"karede": true
+},
+{
+"n": 3,
+"id": "p1058",
+"ad": "Ön şarj kartı",
+"kablo": [
+"A04",
+"A05"
+],
+"ip": [
+-97.5,
+192.6,
+-1.0
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "Acil stop mantarı",
+"neden": "bu adımda takılı değil",
+"kablo": [
+"A01",
+"A02"
+]
+},
+{
+"ad": "Acil stop düğümü (mantar NC çıkışı)",
+"neden": "düğüm kartı modelde yok",
+"kablo": [
+"A02",
+"A04",
+"A06"
+]
+},
+{
+"ad": "Röle K1",
+"neden": "bu bakışta başka parçaların arkasında",
+"kablo": [
+"A02",
+"A03"
+]
+}
+]
 },
 {
 "ad": "Alt kat kartlarının öbür uçları",
@@ -10084,14 +10560,39 @@
 "sema": [
 15
 ],
-"ev": []
+"ev": [],
+"uc": [
+{
+"n": 1,
+"id": "p1085",
+"ad": "Arayüz kartı",
+"kablo": [
+"G19"
+],
+"ip": [
+-90.5,
+195.8,
+80.0
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "XL4016 çevre",
+"neden": "alt katta, bu bakışta başka parçaların arkasında",
+"kablo": [
+"G19"
+]
+}
+]
 },
 {
 "ad": "Enkoder, BTS sinyal ve sonar kabloları",
 "tezgah": "",
 "bag": "",
 "satir": [],
-"is_": "Enkoder, BTS sinyal ve sonar kabloları (dişi uçlu sinyal teli, O-4 r; pinler `planlama/adim3/kablolar.md`'de, kart üstü yazıya göre bağla): arka sol motorun enkoderi (N01) ve arka sağ motorun enkoderi (N02) → ESP32 taşıyıcı başlığı (VCC → 3V3, GND, A, B). Sol BTS7960B'nin sinyal başlığı (B01) ve sağınki (B02) → ESP32 (IN1, IN2) ve arayüz kartı (EN1 + EN2 → BTS EN düğümü, IS1 + IS2 → IS bölücüsü, VCC → çevre 5 V, GND). Sonarlar: sağ (Q01), orta (Q02) ve sol (Q03) sonarın VCC'sini arayüz kartının çevre 5 V'una, Trig'ini PCA9685'e, Echo'sunu arayüz kartındaki sonar bölücüsüne, GND'sini arayüz kartının GND'sine bağla. Motor uçları B3'te BTS7960B'ye bağlandı. Acil stop ucunu bırak: mantar F1'de takılır. Karede vurgulu Kablo yolu 12 (B01): direk boyunca yukarı çıkan kısmı eski çizimdir (ESP32'den kafaya giden eski USB yolu), uygulanmaz; B01 tabanda kalır. ESP32'nin direğe çıkan kablosu ESP32 USB'dir (U06, alt adım 32.4). Karede yer: ESP32 taşıyıcı ve PCA9685 elektronik katında önden bakınca sağda, arayüz kartı solda; sonarlar ön yüzde.",
+"is_": "Enkoder, BTS sinyal ve sonar kabloları (dişi uçlu sinyal teli, O-4 r; pinler `planlama/adim3/kablolar.md`'de, kart üstü yazıya göre bağla): arka sol motorun enkoderi (N01) ve arka sağ motorun enkoderi (N02) → ESP32 taşıyıcı başlığı (VCC → 3V3, GND, A, B). Sol BTS7960B'nin sinyal başlığı (B01) ve sağınki (B02) → ESP32 (IN1, IN2) ve arayüz kartı (EN1 + EN2 → BTS EN düğümü, IS1 + IS2 → IS bölücüsü, VCC → çevre 5 V, GND). Sonarlar: sağ (Q01), orta (Q02) ve sol (Q03) sonarın VCC'sini arayüz kartının çevre 5 V'una, Trig'ini PCA9685'e, Echo'sunu arayüz kartındaki sonar bölücüsüne, GND'sini arayüz kartının GND'sine bağla. Motor uçları B3'te BTS7960B'ye bağlandı. Acil stop ucunu bırak: mantar F1'de takılır. Karede vurgulu Kablo yolu 12 (B01) tabanda kalır: sol BTS7960B'den ESP32 taşıyıcısına. ESP32'nin direğe çıkan kablosu ESP32 USB'dir (U06, alt adım 32.4). Karede yer: ESP32 taşıyıcı ve PCA9685 elektronik katında önden bakınca sağda, arayüz kartı solda; sonarlar ön yüzde.",
 "kamera": [
 -0.6,
 0.9,
@@ -10147,7 +10648,146 @@
 20,
 21
 ],
-"ev": []
+"ev": [],
+"uc": [
+{
+"n": 1,
+"id": "p1163",
+"ad": "ESP32",
+"kablo": [
+"N01",
+"N02",
+"B01",
+"B02"
+],
+"ip": [
+80.5,
+197.0,
+75.0
+],
+"karede": true
+},
+{
+"n": 2,
+"id": "p0980",
+"ad": "BTS7960 sol",
+"kablo": [
+"B01"
+],
+"ip": [
+-67.5,
+124.0,
+165.0
+],
+"karede": true
+},
+{
+"n": 3,
+"id": "p1085",
+"ad": "Arayüz kartı",
+"kablo": [
+"B01",
+"B02",
+"Q01",
+"Q02",
+"Q03"
+],
+"ip": [
+-90.5,
+195.8,
+80.0
+],
+"karede": true
+},
+{
+"n": 4,
+"id": "p0993",
+"ad": "BTS7960 sağ",
+"kablo": [
+"B02"
+],
+"ip": [
+67.5,
+124.0,
+165.0
+],
+"karede": true
+},
+{
+"n": 5,
+"id": "p1174",
+"ad": "HC-SR04 sağ",
+"kablo": [
+"Q01"
+],
+"ip": [
+79.4,
+106.2,
+261.2
+],
+"karede": true
+},
+{
+"n": 6,
+"id": "p1124",
+"ad": "PCA9685",
+"kablo": [
+"Q01",
+"Q02",
+"Q03"
+],
+"ip": [
+83.0,
+193.8,
+125.0
+],
+"karede": true
+},
+{
+"n": 7,
+"id": "p1168",
+"ad": "HC-SR04 orta",
+"kablo": [
+"Q02"
+],
+"ip": [
+-0.0,
+106.2,
+261.2
+],
+"karede": true
+},
+{
+"n": 8,
+"id": "p1164",
+"ad": "HC-SR04 sol",
+"kablo": [
+"Q03"
+],
+"ip": [
+-79.4,
+106.2,
+261.2
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "JGB37 arka sol",
+"neden": "arka motor tabanın altında, bu bakışta başka parçaların arkasında",
+"kablo": [
+"N01"
+]
+},
+{
+"ad": "JGB37 arka sağ",
+"neden": "arka motor tabanın altında, bu bakışta başka parçaların arkasında",
+"kablo": [
+"N02"
+]
+}
+]
 },
 {
 "ad": "Direğe çıkan hatların taban kısmı",
@@ -10210,7 +10850,32 @@
 "kablo": [
 3
 ],
-"ev": []
+"ev": [],
+"uc": [
+{
+"n": 1,
+"id": "p1124",
+"ad": "PCA9685",
+"kablo": [
+"P03"
+],
+"ip": [
+83.0,
+193.8,
+125.0
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "Dağıtım kartı C (kafa)",
+"neden": "kafa dağıtım kartı modelde yok",
+"kablo": [
+"P03"
+]
+}
+]
 },
 {
 "ad": "Son kontrol: K1'de enerji verilmez",
@@ -11482,6 +12147,61 @@
 "kablolama": false,
 "ev": [
 "p0754"
+],
+"uc": [
+{
+"n": 1,
+"id": "p0817",
+"ad": "D24V50F5",
+"kablo": [
+"K01",
+"K03"
+],
+"ip": [
+-80.0,
+1516.3,
+31.0
+],
+"karede": true
+},
+{
+"n": 2,
+"id": "p0819",
+"ad": "SY8205",
+"kablo": [
+"K02"
+],
+"ip": [
+36.0,
+1514.4,
+39.0
+],
+"karede": true
+},
+{
+"n": 3,
+"id": "p0803",
+"ad": "Raspberry Pi 5",
+"kablo": [
+"K03"
+],
+"ip": [
+0.3,
+1526.9,
+-30.0
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "Kafa giriş klemensi",
+"neden": "klemens modelde yok",
+"kablo": [
+"K01",
+"K02"
+]
+}
 ]
 },
 {
@@ -11879,7 +12599,7 @@
 "Montaj sırası kaynakta yok (montaj mantığından), doğrulanmadı. Boyun uçları K2'de geldiği için arka kabuk dikişleri K2'den sonra sıkılır",
 "Ses yolu (14.11, `planlama/adim3/kablolama-on-kararlar.md` §5): ReSpeaker'ın kendi 3,5 mm çıkışı → bölücü → PAM8403; USB ses kartı kablajdan çıktı, siparişte kalır, takılmaz (yedek): masa denemesi KT2 geçmezse Pi USB 2'ye takılır ve 04.11 düzeni geri gelir. Modelde kart hâlâ çizili. Alt direnç KT2 ölçümüyle seçilir (başlangıç 2,2 kΩ)",
 "PAM8403'ün 5 V'u D24V50F5'ten (K10 a; KT1 masa denemesi, geçmezse SY8205). PAM8403 ölçüsü tahmini; ReSpeaker vida tipi ve kütlesi varsayım",
-"Efe'ye soru (demet kapanmadan): ReSpeaker çalma akışı en çok 16 kHz; konuşma sesi için kabul mü, hangi firmware",
+"ReSpeaker çalma akışı en çok 16 kHz: Efe konuşma sesi için kabul etti, 1 kanallı firmware (pano cevabı, 14.11)",
 "Kafa ekranının kütlesi (600 g) ve akımı (0,9 A) varsayım, ölçülmedi"
 ],
 "kamera": null,
@@ -11994,7 +12714,7 @@
 "tezgah": "",
 "bag": "arka_sol",
 "satir": [],
-"is_": "Kabloları kafanın açık ön tarafından tak: ReSpeaker 3,5 mm jakı → 10 kΩ / 2,2 kΩ bölücü → PAM8403 sol girişi (AU1, AU2; önce kılıf ↔ ReSpeaker USB GND sürekliliği, KT2), PAM 5 V → D24V50F5 (K05; K10 a). Ses kablosunun çizimi gösterim şemasıdır: bölücünün yeri ve varlığı KT2'ye bağlı, ReSpeaker jakının yeri tahmin. Sonra sol kabuğu arkadan yerine koy (giriş yolu ölçümü).",
+"is_": "Kabloları kafanın açık ön tarafından tak: ReSpeaker 3,5 mm jakı → 10 kΩ / 2,2 kΩ bölücü → PAM8403 sol girişi (AU1, AU2; önce kılıf ↔ ReSpeaker USB GND sürekliliği, KT2), PAM 5 V → D24V50F5 (K05; K10 a). Ses kablosunun çizimi gösterim şemasıdır: bölücünün yeri ve varlığı KT2'ye bağlı, ReSpeaker jakının yeri tahmin. Sonra sol kabuğu arkadan yerine koy (giriş yolu ölçümü). Karede PAM8403'ün yanındaki ikinci kart yedek USB ses kartıdır: takılmaz (önceki alt adım).",
 "kamera": [
 0.55,
 0.5,
@@ -12012,6 +12732,61 @@
 "ev": [
 "p0752",
 "p0754"
+],
+"uc": [
+{
+"n": 1,
+"id": "p0826",
+"ad": "ReSpeaker",
+"kablo": [
+"AU1"
+],
+"ip": [
+40.3,
+1570.3,
+-4.9
+],
+"karede": true
+},
+{
+"n": 2,
+"id": "p0825",
+"ad": "PAM8403",
+"kablo": [
+"AU2",
+"K05"
+],
+"ip": [
+-129.0,
+1550.9,
+5.5
+],
+"karede": true
+},
+{
+"n": 3,
+"id": "p0817",
+"ad": "D24V50F5",
+"kablo": [
+"K05"
+],
+"ip": [
+-80.0,
+1516.3,
+31.0
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "Ses bölücüsü",
+"neden": "bölücü modelde yok",
+"kablo": [
+"AU1",
+"AU2"
+]
+}
 ]
 },
 {
@@ -12157,6 +12932,68 @@
 "ev": [
 "p0752",
 "p0753"
+],
+"uc": [
+{
+"n": 1,
+"id": "p0803",
+"ad": "Raspberry Pi 5",
+"kablo": [
+"C01",
+"H01",
+"U04"
+],
+"ip": [
+0.3,
+1526.9,
+-30.0
+],
+"karede": true
+},
+{
+"n": 2,
+"id": "p0798",
+"ad": "Kamera",
+"kablo": [
+"C01"
+],
+"ip": [
+0.0,
+1563.5,
+67.7
+],
+"karede": true
+},
+{
+"n": 3,
+"id": "p0781",
+"ad": "QLED",
+"kablo": [
+"H01",
+"K04",
+"U04"
+],
+"ip": [
+-0.0,
+1465.0,
+62.0
+],
+"karede": true
+},
+{
+"n": 4,
+"id": "p0819",
+"ad": "SY8205",
+"kablo": [
+"K04"
+],
+"ip": [
+36.0,
+1514.4,
+39.0
+],
+"karede": true
+}
 ]
 },
 {
@@ -12213,7 +13050,7 @@
 "Pan ve tilt elle tam açıda: boyunda 5 kablo gerilmiyor (boyun yuva kanalı %44,8 dolu, hesap)",
 "Hub'a gidecek uçlarda (hub uzatması, ESP32 USB) yaklaşık 150 mm kapak söküm payı var",
 "Demet kurulmadan: tünel deneme parçasında fiş denemesi yapıldı (hub uzatması önce, sonra HDMI; KT4), sonuç yazıldı",
-"Demet kapatılmadan: Efe'nin iki cevabı geldi (DTR / RTS reset, ReSpeaker 16 kHz); \"tel gerekir\" derse bükümlü çift eklenir",
+"Demet kapatılmadan: Efe'nin iki cevabı geldi (DTR / RTS reset, ReSpeaker 16 kHz); yeni tel yok, demete bükümlü çift eklenmedi",
 "Kafa uçları bağlandı, arka kabuk dikişleri sıkıldı",
 "Her hat iki ucundan etiketli, süreklilik ölçüldü",
 "Göğüs ekranı regülatörü (LM2577 + LM2596) ekrana bağlanmadan, çıkışı multimetreyle 12 V'a ayarlandı: tezgâhta akım sınırlı kaynakla (sınır 2 A) ve yük direnciyle (`planlama/adim3/elektrik.md`; `planlama/d158/testler/T7-gogus-ekrani-12v.md`)"
@@ -12221,7 +13058,6 @@
 "kablo": [
 "Burada: servo A, servo B, servo kafa, kafa 12 V, enkoder / BTS sinyalleri (tabanda), boyun demeti, ESP32 USB ve göğüs ekranı kabloları. Şemada devre sınıfının renginde (lejant); tıklayınca tablodaki kimlik, uçlar, kesit, sigorta",
 "Göğüs ekranı, hub ve ses yolları gösterim şemasıdır (`lale158/kablo_yolu_ekran.py`): parça sayısına girmez; kablo çapı, büküm yarıçapı ve port yeri doğrulanmadı",
-"Taban şeması 12'nin direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); geçerli yol \"ESP32 USB\" şemasında",
 "\"ESP32 USB\" şemasının (U06) taban ucu yanlış yerde, güç panelinin üstünde çizili (şema yeniden çizilecek): kablonun taban ucu elektronik katındaki ESP32 taşıyıcısında ESP32'nin USB girişine takılır",
 "Şemada taban kısımları da görünür: onlar K1'de bağlandı",
 "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.360, hoparlör 1.030, göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`). Kablo listesi: `planlama/adim3/kablolar.md`"
@@ -12256,7 +13092,115 @@
 "p1184",
 "p1186"
 ],
-"ev": []
+"ev": [],
+"uc": [
+{
+"n": 1,
+"id": "p1098",
+"ad": "Dağıtım kartı A",
+"kablo": [
+"S01",
+"S02",
+"S03",
+"S04"
+],
+"ip": [
+72.0,
+193.3,
+205.0
+],
+"karede": true
+},
+{
+"n": 2,
+"id": "p0060",
+"ad": "sağ S1 (omuz öne-arka) servosu",
+"kablo": [
+"S01"
+],
+"ip": [
+124.5,
+1260.0,
+0.0
+],
+"karede": true
+},
+{
+"n": 3,
+"id": "p1111",
+"ad": "Dağıtım kartı B",
+"kablo": [
+"S05",
+"S06",
+"S07",
+"S08"
+],
+"ip": [
+-72.0,
+193.3,
+205.0
+],
+"karede": true
+},
+{
+"n": 4,
+"id": "p0133",
+"ad": "sol S1 (omuz öne-arka) servosu",
+"kablo": [
+"S05"
+],
+"ip": [
+-124.5,
+1260.0,
+0.0
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "sağ S2 (omuz yana) servosu",
+"neden": "bu adımda takılı değil",
+"kablo": [
+"S02"
+]
+},
+{
+"ad": "sağ dirsek servosu",
+"neden": "bu adımda takılı değil",
+"kablo": [
+"S03"
+]
+},
+{
+"ad": "sağ bilek servosu",
+"neden": "bu adımda takılı değil",
+"kablo": [
+"S04"
+]
+},
+{
+"ad": "sol S2 (omuz yana) servosu",
+"neden": "bu adımda takılı değil",
+"kablo": [
+"S06"
+]
+},
+{
+"ad": "sol dirsek servosu",
+"neden": "bu adımda takılı değil",
+"kablo": [
+"S07"
+]
+},
+{
+"ad": "sol bilek servosu",
+"neden": "bu adımda takılı değil",
+"kablo": [
+"S08"
+]
+}
+]
 },
 {
 "ad": "Kafa servoları, hat C",
@@ -12293,7 +13237,40 @@
 "ref": [
 "p1185"
 ],
-"ev": []
+"ev": [],
+"uc": [
+{
+"n": 1,
+"id": "p0681",
+"ad": "kafa pan servosu",
+"kablo": [
+"S09"
+],
+"ip": [
+0.0,
+1313.3,
+10.2
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "Dağıtım kartı C (kafa)",
+"neden": "kafa dağıtım kartı modelde yok",
+"kablo": [
+"S09",
+"S10"
+]
+},
+{
+"ad": "kafa tilt servosu",
+"neden": "bu kadrajın dışında",
+"kablo": [
+"S10"
+]
+}
+]
 },
 {
 "ad": "Kafa 12 V",
@@ -12307,32 +13284,92 @@
 "ref": [
 "p1187"
 ],
-"ev": []
+"ev": [],
+"uc": [
+{
+"n": 1,
+"id": "p1071",
+"ad": "Sigorta kutusu",
+"kablo": [
+"G17"
+],
+"ip": [
+0.0,
+197.0,
+-203.0
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "Kafa giriş klemensi",
+"neden": "klemens modelde yok",
+"kablo": [
+"G17"
+]
+},
+{
+"ad": "Yıldız barası",
+"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
+"kablo": [
+"G17"
+]
+}
+]
 },
 {
 "ad": "ESP32 USB",
 "tezgah": "",
 "bag": "",
 "satir": [],
-"is_": "ESP32 USB (U06) boyuna girmez (05.11 kararı): ESP32'den (taban) direk arka yüzü (z −26) boyunca yukarı; ucu üst arka kapak hizasında (y ≈ 1.085–1.157) hub için bırakılır, F5'te hub'a takılır. VBUS teline seri 1N5819: anot hub (Pi) tarafında, katot ESP32 tarafında; çevre 5 V hub'a / Pi'ye geri beslemez. ESP32 kartının kendi VBUS→VIN diyodu varsa gerekmez: multimetreyle bak (doğrulanmadı). 1N5819'un sınırı 1 A: çevre yükleri USB'den geri beslenirse aşılabilir (teslimde bakılacaklar; Efe'ye soru).",
+"is_": "ESP32 USB (U06) boyuna girmez (05.11 kararı): ESP32'den (taban) direk arka yüzü (z −26) boyunca yukarı; ucu üst arka kapak hizasında (y ≈ 1.085–1.157) hub için bırakılır, F5'te hub'a takılır. VBUS teline seri 1N5819: anot hub (Pi) tarafında, katot ESP32 tarafında; çevre 5 V hub'a / Pi'ye geri beslemez. ESP32 kartının kendi VBUS→VIN diyodu varsa gerekmez: multimetreyle bak (doğrulanmadı). 1N5819'un sınırı 1 A: çevre yüklerinin USB'den geri beslenmesini VIN'e seri ikinci 1N5819 keser (B6a, K66).",
 "kamera": "arka",
+"saydam": [
+"p0005"
+],
 "demet": [
 "gövde (K2)"
 ],
 "kablo": [
-3
+2
 ],
 "sema": [
 2
 ],
-"ev": []
+"ev": [],
+"uc": [
+{
+"n": 1,
+"id": "p1163",
+"ad": "ESP32",
+"kablo": [
+"U06"
+],
+"ip": [
+80.5,
+197.0,
+75.0
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "USB hub",
+"neden": "bu adımda takılı değil",
+"kablo": [
+"U06"
+]
+}
+]
 },
 {
 "ad": "Boyun demeti: tünelden geçirme",
 "tezgah": "",
 "bag": "",
 "satir": [],
-"is_": "Boyun demeti, 5 kablo (K14 a): hub uzatması (U03; Pi USB 3 → hub), göğüs HDMI (H02; Pi micro HDMI 1), tilt servo (S10), hoparlör (AU3; PAM8403 → hoparlör), kafa 12 V (G17). Yol: alt çıkış → servo yuvası arka kanalı (20 × 7,8 mm kapalı tünel, ≈ 34 mm, iki dik dönüş) → kablo odası → mil penceresi → Ø32 adaptör → sol yanak dışı → tabla geçişi (x −50…−37). Geçiş sırası: (1) hub uzatması (USB 2.0, erkek fiş gövdesi ≤ 13 × 7 mm; erkek uç aşağıdan yukarı, tünel boşken), (2) HDMI (Ø ≤ 6 mm; micro HDMI ucu aşağıdan yukarı, HDMI A ucu gövdede), (3) tilt servo kablosu, (4) hoparlör ve (5) 12 V çifti fişsiz (uç kontakları / pabuçlar geçirdikten sonra takılır). Demeti kurmadan önce basılmış tünel deneme parçasında (20 × 7,8 mm, ≈ 34 mm, iki dik dönüş, mil penceresi 20 × 10) fişleri elle geçir (KT4; kumpas ölçüsü yetmez). Fiş geçmezse sırasıyla: kablo fişsiz geçirilip yeniden sonlandırılır (USB 2.0'da lehimli USB-A fiş), HDMI için şerit HDMI + uç adaptörleri. Demeti kelepçe / kılıfla kapatmadan önce Efe'nin iki cevabı beklenir (ESP32 bilinçli reseti DTR / RTS ile; ReSpeaker 16 kHz).",
+"is_": "Boyun demeti, 5 kablo (K14 a): hub uzatması (U03; Pi USB 3 → hub), göğüs HDMI (H02; Pi micro HDMI 1), tilt servo (S10), hoparlör (AU3; PAM8403 → hoparlör), kafa 12 V (G17). Yol: alt çıkış → servo yuvası arka kanalı (20 × 7,8 mm kapalı tünel, ≈ 34 mm, iki dik dönüş) → kablo odası → mil penceresi → Ø32 adaptör → sol yanak dışı → tabla geçişi (x −50…−37). Geçiş sırası: (1) hub uzatması (USB 2.0, erkek fiş gövdesi ≤ 13 × 7 mm; erkek uç aşağıdan yukarı, tünel boşken), (2) HDMI (Ø ≤ 6 mm; micro HDMI ucu aşağıdan yukarı, HDMI A ucu gövdede), (3) tilt servo kablosu, (4) hoparlör ve (5) 12 V çifti fişsiz (uç kontakları / pabuçlar geçirdikten sonra takılır). Demeti kurmadan önce basılmış tünel deneme parçasında (20 × 7,8 mm, ≈ 34 mm, iki dik dönüş, mil penceresi 20 × 10) fişleri elle geçir (KT4; kumpas ölçüsü yetmez). Fiş geçmezse sırasıyla: kablo fişsiz geçirilip yeniden sonlandırılır (USB 2.0'da lehimli USB-A fiş), HDMI için şerit HDMI + uç adaptörleri. Efe'nin iki cevabı geldi (ESP32 bilinçli reseti mevcut DTR / RTS devresiyle; ReSpeaker 16 kHz kabul): boyundan yeni tel gerekmez, demeti kelepçe / kılıfla kapatabilirsin.",
 "kamera": [
 -0.85,
 0.5,
@@ -12354,7 +13391,40 @@
 0,
 1
 ],
-"ev": []
+"ev": [],
+"uc": [
+{
+"n": 1,
+"id": "p0803",
+"ad": "Raspberry Pi 5",
+"kablo": [
+"U03",
+"H02"
+],
+"ip": [
+0.3,
+1526.9,
+-30.0
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "USB hub",
+"neden": "bu adımda takılı değil",
+"kablo": [
+"U03"
+]
+},
+{
+"ad": "Göğüs ekranı",
+"neden": "bu adımda takılı değil",
+"kablo": [
+"H02"
+]
+}
+]
 },
 {
 "ad": "Kafa uçları, hoparlör kablosu ve gövdeye inenler",
@@ -12382,7 +13452,32 @@
 "sema": [
 3
 ],
-"ev": []
+"ev": [],
+"uc": [
+{
+"n": 1,
+"id": "p0825",
+"ad": "PAM8403",
+"kablo": [
+"AU3"
+],
+"ip": [
+-129.0,
+1550.9,
+5.5
+],
+"karede": true
+}
+],
+"uc_yok": [
+{
+"ad": "Hoparlör",
+"neden": "bu adımda takılı değil",
+"kablo": [
+"AU3"
+]
+}
+]
 },
 {
 "ad": "Göğüs ekranı 12 V",
@@ -12398,7 +13493,38 @@
 "sema": [
 4
 ],
-"ev": []
+"ev": [],
+"uc_yok": [
+{
+"ad": "Sigorta kutusu",
+"neden": "bu kadrajın dışında",
+"kablo": [
+"G20"
+]
+},
+{
+"ad": "Göğüs regülatörü",
+"neden": "regülatör modelde yok (K52 a: güç panelinde)",
+"kablo": [
+"G20",
+"G21"
+]
+},
+{
+"ad": "Yıldız barası",
+"neden": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
+"kablo": [
+"G20"
+]
+},
+{
+"ad": "Göğüs ekranı",
+"neden": "bu adımda takılı değil",
+"kablo": [
+"G21"
+]
+}
+]
 },
 {
 "ad": "Son kontrol: direğe tuttur",
@@ -16617,7 +17743,7 @@
 "no": "—",
 "faz": "Son",
 "baslik": "Servis kapakları (test sonrası)",
-"is_": "1. 4'lü USB hub (harici beslemesiz, USB 2.0) üst arka servis kapağının içinde: hub'ı kapağın takozuna, iki yan dayamanın arasına 1 mm köpük bantla yapıştır. Bağla: hub kablosu ← Pi USB 3'ten boyundan gelen USB 2.0 uzatma (U03, K2), Hub 1 → göğüs ekranı dokunmatiği (U05; F3'te boşta bırakılan USB), Hub 2 → ESP32 USB (U06; K2'de direk arka yüzünden çıkarılan uç; 1N5819 yönü alt adım 32.4). Hub 3 ve 4 boş. Hub'ın anahtarı açık kalmalı.\n2. İlk enerji, aşama 2 (devreye alma testi): kapaklar açık, hub bağlı (ESP32 ile Pi hub üzerinden konuşur). Saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken F1 (20 A), F3 (5 A, kafa), XL4016 hat sigortalarını (mini; A 7,5 A, B 7,5 A, C 5 A) ve PC817 #2 algı telinin (G22) 2 A mini sigortasını tak (`planlama/adim3/elektrik.md` sigorta listesi; F6 3 A F3'te takıldı). Şarj kolunun 7,5 A mini sigortası bu aşamada da takılı değil. Tekerlekler yerden kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Kollar aşağıda başlar: mantara basınca servo gücü de kesilir ve kollar düşer (E3 DTR / RTS notu). Kolların erişim alanında ve düşme hattında, kafanın ve tekerlerin erişim alanında kimse yok, bir kişi yalnız mantarda (kural 1 ve 7). Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 / F4 / F5 / F6 girişleri, Pololu ve göğüs ekranı dalı dahil; ekranlı ilk açılışta F6 atmamalı, KT3). Pi açılır; ESP32, Pi seri portu açılınca resetlenmemeli (boot mesajı yok; E3 DTR / RTS). Pi'den devreye al, ESP32 ön şarj dizisi (E9): ön koşul (mantar serbest, servo hedefleri son konumda, BTS EN = 0 ve PWM = 0) → GPIO19 = 1 (röle K2) → en az 300 ms bekle (boş aküde 500 ms önerilir) → GPIO5 (PC817 #2) LOW teyidi (bara var; LOW değilse ön şarj kolu çalışmıyor: GPIO19 = 0, hata) → GPIO4 = 1 (röle K1) → 100 ms sonra GPIO19 = 0 (K2 bırakılır) → GPIO5 LOW teyidi. K2 toplam en çok 1 s çeker. Mantara basınca K1 düşer (K2, devreye alma sırasında K1 çektikten 100 ms sonra zaten bırakılmıştı; E9 adım 5), anahtarlı bara kesilir (GPIO5 HIGH), kollar düşer; göğüs ekranı dalı (F6) acil stopta açık kalır. Mantarı bırak: röle kendiliğinden çekmez, yeniden devreye alma yalnız Pi komutuyla. Motor yön testi: her yan ileri komutta ileri döner; dönen tekere el uzatılmaz. Yön testinden sonra K1 kontrolündeki sağ / sol kurulum testini yap. Bitince ana anahtarı kapat, aküyü XT60'tan ayır (`planlama/adim3/elektrik.md` E3, E9). Bu adımdaki sıra kaynakta yok, doğrulanmadı.\n3. Testten sonra kapat: arka servis kapağı, üst arka servis kapağı (hub'la birlikte), etek H1 ve H2.\nH1 sigorta kutusuna açılır: sık değişen F1, F3, F4, F5 ortadaki dört yuvada (29.10). Kutu 1 × 6 dizilişliyse kapak altında kalan iki uç yuva nadiren değişenlere ayrıldı: yedek sigorta F2 (15 A standart; hiçbir dalı beslemez) ve F6 (3 A, göğüs ekranı, 14.11; kutunun 6. yuvası). 2 × 3 dizilişte altısı da açıkta (`planlama/adim3/elektrik.md` sigorta listesi, H1 erişimi).",
+"is_": "1. 4'lü USB hub (harici beslemesiz, USB 2.0) üst arka servis kapağının içinde: hub'ı kapağın takozuna, iki yan dayamanın arasına 1 mm köpük bantla yapıştır. Bağla: hub kablosu ← Pi USB 3'ten boyundan gelen USB 2.0 uzatma (U03, K2), Hub 1 → göğüs ekranı dokunmatiği (U05; F3'te boşta bırakılan USB), Hub 2 → ESP32 USB (U06; K2'de direk arka yüzünden çıkarılan uç; 1N5819 yönü alt adım 32.4). Hub 3 ve 4 boş. Hub'ın anahtarı açık kalmalı.\n2. İlk enerji, aşama 2 (devreye alma testi): kapaklar açık, hub bağlı (ESP32 ile Pi hub üzerinden konuşur). Saat, yüzük, bileklik çıkar (`planlama/d158/testler/00-genel.md` kural 8). Akü XT60 ayrık, ana anahtar kapalıyken F1 (20 A), F3 (5 A, kafa), XL4016 hat sigortalarını (mini; A 7,5 A, B 7,5 A, C 5 A) ve PC817 #2 algı telinin (G22) 2 A mini sigortasını tak (`planlama/adim3/elektrik.md` sigorta listesi; F6 3 A F3'te takıldı). Şarj kolunun 7,5 A mini sigortası bu aşamada da takılı değil. Tekerlekler yerden kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Kollar aşağıda başlar: mantara basınca servo gücü de kesilir ve kollar düşer (E3 DTR / RTS notu). Kolların erişim alanında ve düşme hattında, kafanın ve tekerlerin erişim alanında kimse yok, bir kişi yalnız mantarda (kural 1 ve 7). Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 / F4 / F5 / F6 girişleri, Pololu ve göğüs ekranı dalı dahil; ekranlı ilk açılışta F6 atmamalı, KT3). Pi açılır; ESP32, Pi seri portu açılınca resetlenmemeli (boot mesajı yok; E3 DTR / RTS). Pi'den devreye al, ESP32 ön şarj dizisi (E9): ön koşul (mantar serbest, servo hedefleri son konumda, BTS EN = 0 ve PWM = 0) → GPIO19 = 1 (röle K2) → en az 300 ms bekle (boş aküde 500 ms önerilir) → GPIO5 (PC817 #2) LOW teyidi (bara var; LOW değilse ön şarj kolu çalışmıyor: GPIO19 = 0, hata) → GPIO4 = 1 (röle K1) → 100 ms sonra GPIO19 = 0 (K2 bırakılır) → GPIO5 LOW teyidi. K2 toplam en çok 1 s çeker. Mantara basınca K1 düşer (K2, devreye alma sırasında K1 çektikten 100 ms sonra zaten bırakılmıştı; E9 adım 5), anahtarlı bara kesilir (GPIO5 HIGH), kollar düşer; göğüs ekranı dalı (F6) acil stopta açık kalır. Mantarı bırak: röle kendiliğinden çekmez, yeniden devreye alma yalnız Pi komutuyla. Motor yön testi: her yan ileri komutta ileri döner; dönen tekere el uzatılmaz. Yön testinden sonra kontrol listesindeki sağ / sol kurulum testini yap. Bitince ana anahtarı kapat, aküyü XT60'tan ayır (`planlama/adim3/elektrik.md` E3, E9). Bu adımdaki sıra kaynakta yok, doğrulanmadı.\n3. Testten sonra kapat: arka servis kapağı, üst arka servis kapağı (hub'la birlikte), etek H1 ve H2.\nH1 sigorta kutusuna açılır: sık değişen F1, F3, F4, F5 ortadaki dört yuvada (29.10). Kutu 1 × 6 dizilişliyse kapak altında kalan iki uç yuva nadiren değişenlere ayrıldı: yedek sigorta F2 (15 A standart; hiçbir dalı beslemez) ve F6 (3 A, göğüs ekranı, 14.11; kutunun 6. yuvası). 2 × 3 dizilişte altısı da açıkta (`planlama/adim3/elektrik.md` sigorta listesi, H1 erişimi).",
 "baglanti_md": "1,58 m: arka kapak 7 × M3×6 ISO 7380; üst arka kapak 7 × M3×6 ISO 7380; H1 4 × M3×6 (x ±50); H2 4 × M3×6; hepsi ısıl gömmeye. Isıl gömmeler kapaklarda değil, bantların boss'larında: arka kapağınkiler orta bantta (F2), üst arka kapağınkiler göğüs bandında (F3), H1 / H2'ninkiler etek arka bantlarında (F1); o adımlarda takılı geldi. Hub: 1 mm köpük bant (kapak takozunda). Üst kapak, H2 ve hub M6'da yok",
 "alet": "alyan 2",
 "erisim": "Düz. Hub kapağın iç yüzünde: kapak açıkken bağlanır",
@@ -16746,7 +17872,8 @@
 "Testte ESP32 ve göğüs dokunmatiği hub üzerinden görünüyor",
 "Kapak açılınca hub'a bağlı üç kablo gerilmiyor (yaklaşık 150 mm söküm payı)",
 "E7 ve kafa ısı ölçümü kabuk kapalı yapıldı (kafada hesap ≈ 49 °C, ölçülmedi)",
-"Kapak altında kablo sıkışmadı"
+"Kapak altında kablo sıkışmadı",
+"Sağ / sol kurulum testi (bağladığın taraf ile yazılımın tarafı aynı mı; K1'de bağlanan kablolar; devreye aldıktan ve motor / enkoder yön testinden (`*_MOTOR_TERS`, `*_ENKODER_TERS`; `kod/esp32/OKU_BENI.md`) sonra yapılır): tekerler yerden kesik (şasi takozda). Önce `sur` komutunu v = 0, w = 0,2 ile gönder (w sola +; motorlar yarım saniyede kendiliğinden durur, gerekirse yinele): robot kendi soluna dönmek ister, yani robota önden bakınca soldaki tekerler ileri, sağdakiler geri döner. Sonra `odo_sifirla` komutunu gönder ve arka tekerleri tek tek elle çevir: önden bakınca soldaki arka teker `odo` satırında yalnız `sag` sayacını değiştirmeli (`sol` sabit kalır), sağdaki yalnız `sol` sayacını; sayacın artıp azalması bu testin konusu değil, yön testinin konusudur. Ters çıkarsa kabloyu değiştirme: robotu sürme, `planlama/d158/sag-sol-karari.md`'deki yazılım düzeltmesi bekleniyor (Efe). Devreye alma adımları ve `sur`'un yalnız w ile davranışı kartta denenmedi (`kod/esp32/OKU_BENI.md`)"
 ],
 "kablo": [
 "Hub: Pi USB 3 → boyun → hub (U03, USB 2.0 uzatma), Hub 1 → göğüs dokunmatiği (U05), Hub 2 → ESP32 (U06). Hub kapanırsa ESP32 ve göğüs dokunmatiği birlikte düşer"
@@ -47457,7 +48584,7 @@
 },
 {
 "id": "p1191",
-"ad": "Kablo yolu 12: Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de. Şemanın direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
+"ad": "Kablo yolu 12: Sinyal: BTS7960 sol PWM / EN / IS (B01, 22 AWG) → ESP32. Enkoderler (N01, N02) ve BTS sağ (B02) bu şemada değil: kendi gösterim şemaları K1'de. CAD yolunun 05.11 öncesi ESP32 → kafa USB kısmı rehberde çizilmez; ESP32 USB artık hub'dan: \"ESP32 USB\" şeması",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
 "kod": "(gösterim)",
@@ -47468,11 +48595,11 @@
 "b": 17,
 "t": null,
 "u": [
-0.069,
+0.056,
 0.0,
 0.998
 ],
-"d": 604.2,
+"d": 96.0,
 "kablo": [
 "B01"
 ],
@@ -48050,8 +49177,16 @@
 "neden": "yeni parça yok"
 }
 ],
-"sure_s": 39.5,
-"sure_baglanti_s": 13.6
+"sure_s": 39.8,
+"sure_baglanti_s": 13.9
+},
+"uc_kaynak": {
+"konum": 24,
+"etiket": 48,
+"yok": 46,
+"ortulu_kullanilmayan": [],
+"en_cok": 10,
+"kural": "rehber_gorunum.uc_isle (P10.7b2f)"
 },
 "kol_kablo": {
 "betik": "tasarim/freecad/rehber/rehber_kol_kablo.py",

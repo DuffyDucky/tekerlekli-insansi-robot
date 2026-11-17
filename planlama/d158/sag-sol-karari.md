@@ -78,7 +78,9 @@ En dar düzeltme (öneri; seçim Efe'nin):
   `motorlar_hedef` içinde iki tarafı değiştirmek; enkoderler de aynı biçimde (odometride `sol` = GPIO16 / 15, `sag` = GPIO18 / 17).
   Motor ile kendi enkoderi zaten aynı kanalda (B02 ↔ N02, B01 ↔ N01); takas ikisini birlikte yapılmalı.
 - **BTS akım (IS) girişleri:** `guc.*`'taki arıza bayrağı (`is_sol` / `is_sag`, GPIO32 / GPIO33; `kod/esp32/OKU_BENI.md`) da aynı
-  biçimde takas edilir: robotun kendi solunun IS'i GPIO33 (donanımdaki "sağ" BTS), kendi sağınınki GPIO32.
+  biçimde takas edilir: robotun kendi solunun IS'i GPIO33 (donanımdaki "sağ" BTS), kendi sağınınki GPIO32. **Ek (16.11, pano #8
+  mesaj #33):** Pi'ye giden arıza satırındaki `is_sol` / `is_sag` adları da girişleriyle birlikte taşınır; takastan sonra `is_sol`
+  GPIO33'ün, `is_sag` GPIO32'nin arızasıdır (ad robotun kendi tarafını gösterir). Eşik önerisi (≥ 500 mV, hesap) `pin-haritasi.md` Y7'de.
 - **Yön bayrakları takasla birlikte:** `motorlar.cpp`'deki `SOL_MOTOR_TERS` / `SAG_MOTOR_TERS` ve `SOL_ENKODER_TERS` /
   `SAG_ENKODER_TERS` (bugün false / true, false / true; hepsi TAHMİNİ) taraf adına bağlı. Pinler takas edilirse bu bayraklar da
   taraflarıyla birlikte taşınır ya da F5 yön testinde yeniden kalibre edilir; pinler takas edilip bayraklar yerinde bırakılırsa iki

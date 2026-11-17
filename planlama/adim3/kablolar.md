@@ -242,6 +242,7 @@ Boy belliyse CAD / liste boyu, değilse kaba üst sınır tahmini; toplam × 1,3
 | P7b2a-5 | G07 direnci pabuçta | 100 kΩ'un öbür bacağı ana anahtarın çıkış saplamasına takılan halka pabucun kovanına lehimlenir; direnç ile saplama arasında tel yok. | G07 damarı uc_turu a pabuc, uc_kuyrugu a (kırmızı pabuç; malzeme sayımına girer) | orkestratör kararı, 15.11.2026 |
 | P7b2a-6 | dağıtım kartı C güç panelinde | Dağıtım kartı C güç panelinde, XL4016 C'nin yanında: SV3 B5a'da tezgâhta, P03 K1'de bağlanır. | rehber B5a / K1 metni; SV3, P03 rehber alanı | orkestratör kararı, 15.11.2026 |
 | K52 | göğüs ekranı regülatörü güç panelinde | K52 a: LM2577 + LM2596 kartı güç paneline, rehber B5a'da takılır (tezgâhta 12 V'a ayarlandıktan sonra); maliyet 0 TL (planlama/maliyet.json 'Göğüs ekranı 12 V regülatörü' satırı aynı). Model bu pakette değişmez: kart zarfı K51 ve K53 ile birlikte sonraki tam taramalı CAD paketinde; kart ölçüsü, panel üstündeki yeri ve bağlantı elemanı o zamana dek kayıtta yok. | G20 durum / eksik / teyit / boy_tahmin.vekil; orkestratore listesinden çıktı; rehber B5a / K1 / K2 / F3 metni (P10.7b2e) | orkestratör kararı (Echo), 16.11.2026 |
+| K66 | ESP32 VIN'e seri 1N5819 | K66: çevre 5 V → 1N5819 anodu, katot → ESP32 VIN (X01 '5 V' damarı). Çevre hat sigortası atınca çevre 5 V gerçekten düşer (sonarlar, BTS kartlarının VCC'si); ESP32 ve 3V3 yükleri USB'den ayakta kalır. Tezgâh denemesine bağlı (elektrik.md E4); VIN payı tutmazsa diyot geri alınır. Diyodun yeri ve bağlantı biçimi kayıtta yok (X01 teyit). | X01 '5 V' damarı not, teyit, kaynak; elektrik.md E4 ve blok şema; maliyet.json 1N5819 adedi 1 → 2; rehber B6a / K2 metni (P10.7b2f kısım 2) | orkestratör kararı (Echo), 16.11.2026 |
 
 ## Acil stop dalları ve besleme zinciri
 
@@ -1054,12 +1055,13 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 | bara durumu | PC817 modülü · OUT2 | ESP32 · GPIO5 | GPIO5 `BARA_DURUM` |
 | BTS EN (dört uç ortak) | Arayüz kartı · BTS EN düğümü (10 kΩ → GND) | ESP32 · GPIO13 | GPIO13 `BTS_EN` |
 | PC817 çıkış beslemesi | PC817 modülü · çıkış VCC | ESP32 · 3V3 | yalnız 3V3'e ya da boş (PH D3); 5 V'a bağlanmaz |
-| 5 V | Arayüz kartı · çevre 5 V | ESP32 · VIN |  |
+| 5 V | Arayüz kartı · çevre 5 V | ESP32 · VIN | seri 1N5819: anot çevre 5 V tarafında, katot ESP32 VIN tarafında (K66, 16.11; tezgâh denemesine bağlı); diyodun yeri ve bağlantı biçimi kayıtta yok |
 | GND | Arayüz kartı · GND | ESP32 · GND |  |
 
 - Teyit: T5 (PC817 3,3 V tarafı), T6 (IS direnci ölçülmeden IS ucu bağlanmaz), T2
+- Teyit: VIN'e seri 1N5819 (K66): diyodun yeri ve bağlantı biçimi (arayüz kartı üstünde mi, damar üstünde mi) kablajda belirlenir; tezgâh denemesi elektrik.md E4 (sigorta sökülünce ESP32 USB'den ayakta, Wi-Fi gönderirken VIN, BTS motorları durduruyor); tutmazsa diyot geri alınır
 - Not: BTS EN düğümü (10 kΩ → GND) ve çevre 5 V dağıtımı arayüz kartında (O-7 a).
-- Kaynak: `planlama/adim3/pin-haritasi.md:83-97`, `planlama/adim3/pin-haritasi.md:294-302`, `planlama/adim3/elektrik.md:233-236`, `planlama/adim3/elektrik.md:283`, `planlama/adim3/elektrik.md:306`, `planlama/adim3/elektrik.md:472-489` · 10.11 dökümü: yeni (bölücü / röle sürücü / PC817 çıkış uçları; #7, #32, #41, #42, #48 dökümde ESP32 ucuna kadar tek kablo sayılmıştı)
+- Kaynak: `planlama/adim3/pin-haritasi.md:83-97`, `planlama/adim3/pin-haritasi.md:294-302`, `planlama/adim3/elektrik.md:233-236`, `planlama/adim3/elektrik.md:283`, `planlama/adim3/elektrik.md:286`, `planlama/adim3/elektrik.md:306`, `planlama/adim3/elektrik.md:472-489` · 10.11 dökümü: yeni (bölücü / röle sürücü / PC817 çıkış uçları; #7, #32, #41, #42, #48 dökümde ESP32 ucuna kadar tek kablo sayılmıştı)
 
 #### B01 · BTS7960 sol sinyal → ESP32 / arayüz kartı
 

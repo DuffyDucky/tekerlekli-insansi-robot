@@ -12,7 +12,7 @@
 #   C  gönderme biçimi eşitlenmeden: çevrilen her gönderme sayılır (rehber_metin.GONDERME_KAYIT), çözülemeyen 0.
 import os, sys, re, subprocess, types, collections
 ROBOT = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-HEAD = sys.argv[2] if len(sys.argv) > 2 else "84f1a4a"          # P10.7b2e: taban 84f1a4a (b2d'de 1c4e882)
+HEAD = sys.argv[2] if len(sys.argv) > 2 else "b5fc255"          # P10.7b2f: taban b5fc255 (b2e'de 84f1a4a, b2d'de 1c4e882)
 RH = os.path.join(ROBOT, "tasarim", "freecad", "rehber")
 sys.path.insert(0, RH)
 b = subprocess.run(["git", "show", HEAD + ":tasarim/freecad/rehber/rehber_metin.py"], cwd=ROBOT, capture_output=True, check=True).stdout
@@ -230,6 +230,72 @@ B2E_K2_EKLENEN = [
      'Önce `sur` komutunu v = 0, w = 0,2 ile gönder (w sola +; motorlar yarım saniyede kendiliğinden durur, gerekirse yinele): robot kendi soluna dönmek ister, yani robota önden bakınca soldaki tekerler ileri, sağdakiler geri döner.'),
 ]
 BEKLENEN["84f1a4a"] = (B2E_SILINEN + B2E_K2_SILINEN, B2E_EKLENEN + B2E_K2_EKLENEN)
+
+# P10.7b2f (F10n-gunluk.md § 2, § 3): taban b5fc255 (b2e). Kablo yolu 12'nin eski dikey kısmı rehber verisinde kırpılıyor
+# (rehber_kablo.CAD_KIRP), "eski çizim" cümleleri kalktı; uç etiketi cümlesi (B6a); 31.4 yedek ses kartı; sağ / sol tanımı kutuda
+# (adım 0, "**…:**" öneki); kurulum testi K1 kontrolünden F5 kontrolüne taşındı; K2'nin "Taban şeması 12" maddesi (N4) kalktı.
+_KUR = ("Sağ / sol kurulum testi (bağladığın taraf ile yazılımın tarafı aynı mı; %sdevreye aldıktan ve motor / enkoder yön testinden "
+        "(`*_MOTOR_TERS`, `*_ENKODER_TERS`; `kod/esp32/OKU_BENI.md`) sonra yapılır): tekerler yerden kesik (şasi takozda).")
+_TANIM = ("Bu rehberde ve kablo tablosunda sağ / sol, robota önden bakan kişinin sağı / soludur; robotun kendi sağı / solu değildir.")
+_B6A = ("; yerleri (robota önden bakınca): arayüz kartı solda, ESP32 taşıyıcı sağda, PCA9685 onun önünde sağda, BNO055 ortada; "
+        "dağıtım kartı A ön kenarda sağda, B solda.")
+B2F_SILINEN = [
+    ("madde 1 17.10: eski kısım artık çizilmiyor (CAD_KIRP)",
+     "Karede vurgulu Kablo yolu 12 (B01): direk boyunca yukarı çıkan kısmı eski çizimdir (ESP32'den kafaya giden eski USB yolu), "
+     "uygulanmaz; B01 tabanda kalır."),
+    ("madde 1 KABLO_AD[12]: şema açıklaması", "Şemanın direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa USB); ESP32 USB artık "
+     "hub'dan: \"ESP32 USB\" şeması"),
+    ("N4 K2 kablo listesi: 'Taban şeması 12' maddesi", "Taban şeması 12'nin direkten kafaya çıkan kısmı eski (05.11 öncesi ESP32 → kafa "
+     "USB); geçerli yol \"ESP32 USB\" şemasında"),
+    ("madde 2 B6a: adlar artık uç etiketinde", "Karede kartların adı yazmaz" + _B6A),
+    ("madde 3 adım 0: tanım kutuda", "Sağ / sol: " + _TANIM),
+    ("madde 3 kurulum testi K1 → F5", _KUR % "bu adımda değil, F5 \"İlk enerji, aşama 2\"de "),
+    ("madde 3 F5 aşama 2: test aynı listede", "Yön testinden sonra K1 kontrolündeki sağ / sol kurulum testini yap."),
+]
+B2F_EKLENEN = [
+    ("madde 1 17.10: yalnız B01'in taban kısmı çizili", "Karede vurgulu Kablo yolu 12 (B01) tabanda kalır: sol BTS7960B'den ESP32 "
+     "taşıyıcısına."),
+    ("madde 1 KABLO_AD[12]: şema açıklaması", "CAD yolunun 05.11 öncesi ESP32 → kafa USB kısmı rehberde çizilmez; ESP32 USB artık hub'dan: "
+     "\"ESP32 USB\" şeması"),
+    ("madde 2 B6a: uç etiketleri", "Karede bağlantı kablolarının uç kartları numaralı (etkileşimli sayfada adıyla, basılı sayfada adları "
+     "karenin altında)" + _B6A),
+    ("madde 3 31.4: yedek USB ses kartı", "Karede PAM8403'ün yanındaki ikinci kart yedek USB ses kartıdır: takılmaz (önceki alt adım)."),
+    ("madde 3 adım 0: tanım kutuda (yazdir.html .is.tanim)", "**Sağ / sol tanımı:** " + _TANIM),
+    ("madde 3 kurulum testi K1 → F5: K1'de gösterge", "Sağ / sol kurulum testi bu adımda yapılmaz: F5 \"İlk enerji, aşama 2\" kontrol "
+     "listesinde (devreye alma ve motor / enkoder yön testinden sonra)"),
+    ("madde 3 kurulum testi K1 → F5: F5 kontrolünde", _KUR % "K1'de bağlanan kablolar; "),
+    ("madde 3 F5 aşama 2: test aynı listede", "Yön testinden sonra kontrol listesindeki sağ / sol kurulum testini yap."),
+]
+# P10.7b2f kısım 2 (F10n-gunluk.md § 8): kayıt düzeltmeleri. K66 (VIN'e seri 1N5819, B6a); Efe'nin iki cevabı geldi (pano #7 mesaj
+# #28: DTR / RTS reset, ReSpeaker 16 kHz) → K2 alt adım 5 / kontrol ve E4 not_; K2 alt adım 4'ün "geri beslenirse aşılabilir"
+# cümlesi K66 ile geçersiz.
+B2F_SILINEN += [
+    ("kısım 2 K66: K2 alt adım 4 geri besleme notu geçersiz",
+     "1N5819'un sınırı 1 A: çevre yükleri USB'den geri beslenirse aşılabilir (teslimde bakılacaklar; Efe'ye soru)."),
+    ("kısım 2 pano #28: K2 alt adım 5 bekleme kalktı",
+     "Demeti kelepçe / kılıfla kapatmadan önce Efe'nin iki cevabı beklenir (ESP32 bilinçli reseti DTR / RTS ile; ReSpeaker 16 kHz)."),
+    ("kısım 2 pano #28: K2 kontrol koşulu kalktı",
+     "Demet kapatılmadan: Efe'nin iki cevabı geldi (DTR / RTS reset, ReSpeaker 16 kHz); \"tel gerekir\" derse bükümlü çift eklenir"),
+    ("kısım 2 pano #28: E4 not_ soru cevaplandı",
+     "Efe'ye soru (demet kapanmadan): ReSpeaker çalma akışı en çok 16 kHz; konuşma sesi için kabul mü, hangi firmware"),
+]
+B2F_EKLENEN += [
+    ("kısım 2 K66: B6a madde 2 diyot yönü", "VIN'e seri 1N5819: anot çevre 5 V tarafında, katot ESP32 VIN tarafında (K66; çevre hat "
+     "sigortası atınca çevre yükleri USB'den beslenmesin diye)."),
+    ("kısım 2 K66: B6a madde 2 yer açık (kayıtta yok)", "Diyodun takılacağı yer (arayüz kartı üstü ya da X01'in 5 V damarı) kayıtta "
+     "yok, kablajda belirlenir."),
+    ("kısım 2 K66: B6a kontrol diyot yönü", "VIN'e seri 1N5819'un yönü: multimetrenin diyot kademesinde çevre 5 V → ESP32 VIN yönünde "
+     "iletir, ters yönde iletmez (bantlı uç, katot, VIN tarafında)"),
+    ("kısım 2 K66: K2 alt adım 4 geri beslemeyi VIN diyodu keser", "1N5819'un sınırı 1 A: çevre yüklerinin USB'den geri beslenmesini "
+     "VIN'e seri ikinci 1N5819 keser (B6a, K66)."),
+    ("kısım 2 pano #28: K2 alt adım 5 demet kapatılabilir", "Efe'nin iki cevabı geldi (ESP32 bilinçli reseti mevcut DTR / RTS devresiyle; "
+     "ReSpeaker 16 kHz kabul): boyundan yeni tel gerekmez, demeti kelepçe / kılıfla kapatabilirsin."),
+    ("kısım 2 pano #28: K2 kontrol", "Demet kapatılmadan: Efe'nin iki cevabı geldi (DTR / RTS reset, ReSpeaker 16 kHz); yeni tel yok, "
+     "demete bükümlü çift eklenmedi"),
+    ("kısım 2 pano #28: E4 not_", "ReSpeaker çalma akışı en çok 16 kHz: Efe konuşma sesi için kabul etti, 1 kanallı firmware (pano "
+     "cevabı, 14.11)"),
+]
+BEKLENEN["b5fc255"] = (B2F_SILINEN, B2F_EKLENEN)
 BEKLENEN_SILINEN, BEKLENEN_EKLENEN = BEKLENEN.get(HEAD, ([], []))
 
 

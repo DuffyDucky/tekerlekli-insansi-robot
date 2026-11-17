@@ -240,6 +240,134 @@ def gorunurluk(c):
                 gecti=all(x["gecti"] for x in sinirli) and sema_tek["gecti"])
 
 
+# P10.7b2f: uç etiketleri (rehber_gorunum.uc_isle → sira_grup[].uc / adimlar[].uc; app.js ucCiz, RehberTest.ucEtiket). Her etiketli
+# konum iki kipte ölçülür: yazdırma karesi (?sahne=1, 1200 x 720; rehber_uret.alt_kontrol ile aynı) ve etkileşimli (1400 x 900).
+# Kurallar (uc_degerlendir; hepsi geçme şartı):
+#   U1 verideki her karede etiketi (karede: true) iki kipte de çizilir (çizilmeyen + nedeni hata)
+#   U2 çizilen her etiketin kutusu tuvalin ve kendi güvenli alanının içinde (taşma 0); DOM'daki etiket sayısı = çizilen
+#   U3 iki etiket kutusu çakışmaz
+#   U4 etiketlenen parça karede görünür: etkileşimli kipte gorunurlukFark pikseli ≥ PX_ESIK (görünmüyorsa rehber_metin.UC_ORTULU'ya
+#      nedeniyle yazılır, etiketlenmez)
+#   U5 adında sağ / sol geçen etiketin parça noktası doğru yanda (+X = önden bakanın sağı; K65)
+#   U6 rehber_metin.UC_ORTULU'da kullanılmayan kayıt yok (veri uc_kaynak.ortulu_kullanilmayan)
+_UC_YAN = re.compile(r"(?:^|[\s(/])(sağ|sol)(?=$|[\s)/])")
+
+
+def uc_konumlari(V):
+    out = []
+    for a in V["adimlar"]:
+        if a.get("uc"):
+            out.append((a["i"], 0, a))
+        for j, g in enumerate(a.get("sira_grup") or [], 1):
+            if g.get("uc"):
+                out.append((a["i"], j, g))
+    return out
+
+
+def uc_degerlendir(olc, V):
+    """olc {adres: dict(sahne=ucEtiket(), etk=ucEtiket(), fark={id: px})} → hata listesi (kurallar yukarıda)."""
+    hata = []
+    for s, j, g in uc_konumlari(V):
+        ad = adr(s, j)
+        bek = [u for u in g["uc"] if u.get("karede", True)]
+        for u in g["uc"]:
+            for yan in _UC_YAN.findall(u["ad"]):
+                x = u["ip"][0]
+                if (yan == "sağ" and x <= 0) or (yan == "sol" and x >= 0):
+                    hata.append("U5 %s %s: parça noktası x %.1f (%s)" % (ad, u["ad"], x, "sağ: +X olmalı" if yan == "sağ" else "sol: −X olmalı"))
+        o = olc.get(ad)
+        if o is None:
+            hata.append("U1 %s: ölçülmedi" % ad)
+            continue
+        for kip in ("sahne", "etk"):
+            r = o.get(kip) or {}
+            ciz = r.get("ciz") or []
+            cn = {x["n"] for x in ciz}
+            for u in bek:
+                if u["n"] not in cn:
+                    ned = next((x["neden"] for x in r.get("cizilmedi") or [] if x["n"] == u["n"]), "listede yok")
+                    hata.append("U1 %s %s: %d %s çizilmedi (%s)" % (ad, kip, u["n"], u["ad"], ned))
+            W, H = (r.get("tuval") or {}).get("w", 0), (r.get("tuval") or {}).get("h", 0)
+            for x in ciz:
+                k, al = x["kutu"], x.get("alan") or {}
+                if k["x0"] < 0 or k["y0"] < 0 or k["x1"] > W or k["y1"] > H:
+                    hata.append("U2 %s %s: %d %s tuvalden taşıyor %s" % (ad, kip, x["n"], x["ad"], [round(k[q]) for q in ("x0", "y0", "x1", "y1")]))
+                elif al and (k["x0"] < al["x0"] - 0.5 or k["y0"] < al["y0"] - 0.5 or k["x1"] > al["x1"] + 0.5 or k["y1"] > al["y1"] + 0.5):
+                    hata.append("U2 %s %s: %d %s güvenli alanın dışına taşıyor" % (ad, kip, x["n"], x["ad"]))
+            if r.get("dom") != len(ciz):
+                hata.append("U2 %s %s: DOM'da %s etiket, çizilen %d" % (ad, kip, r.get("dom"), len(ciz)))
+            for i in range(len(ciz)):
+                for q in ciz[i + 1:]:
+                    a_, b_ = ciz[i]["kutu"], q["kutu"]
+                    if a_["x0"] < b_["x1"] and b_["x0"] < a_["x1"] and a_["y0"] < b_["y1"] and b_["y0"] < a_["y1"]:
+                        hata.append("U3 %s %s: %d %s ile %d %s çakışıyor" % (ad, kip, ciz[i]["n"], ciz[i]["ad"], q["n"], q["ad"]))
+        fk = o.get("fark") or {}
+        for u in bek:
+            p = fk.get(u["id"])
+            if p is None or p < PX_ESIK:
+                hata.append("U4 %s: %d %s (%s) karede görünmüyor (%s px < %d; görünmüyorsa UC_ORTULU'ya nedeniyle)" % (
+                    ad, u["n"], u["ad"], u["id"], p, PX_ESIK))
+    for x in (V.get("uc_kaynak") or {}).get("ortulu_kullanilmayan") or []:
+        hata.append("U6 UC_ORTULU kullanılmıyor: %s" % x)
+    return hata
+
+
+def uc_etiket(c, kok=None, V_=None):
+    kok, V_ = kok or REHBER, V_ or V
+    olc = {}
+    for s, j, g in uc_konumlari(V_):
+        ad = adr(s, j)
+        c.boyut(1200, 720)
+        c.git(url(kok, "?adim=%s&cekim=1&sahne=1&tema=light" % ad))
+        sahne = c.js("RehberTest.ucEtiket()") or {}
+        c.boyut(1400, 900)
+        c.git(url(kok, "?adim=%s&cekim=1&tema=light" % ad))
+        etk = c.js("RehberTest.ucEtiket()") or {}
+        ids = sorted({u["id"] for u in g["uc"]})
+        fark = (c.js("RehberTest.gorunurlukFark({ids: %s, alan: 'hepsi'})" % json.dumps(ids)) or {}).get("piksel") or {}
+        olc[ad] = dict(sahne=sahne, etk=etk, fark=fark)
+    hata = uc_degerlendir(olc, V_)
+    say = sum(len([u for u in g["uc"] if u.get("karede", True)]) for _s, _j, g in uc_konumlari(V_))
+    return dict(konum=len(olc), etiket=say, yok=sum(len(g.get("uc_yok") or []) for _s, _j, g in uc_konumlari(V_)),
+                hata=hata, olcum=olc, gecti=not hata)
+
+
+def uc_etiket_bozma():
+    """Tarayıcısız sentetik bozma: her kural bozulunca yakalanmalı, sağlam ölçüm geçmeli."""
+    import copy
+    Vs = dict(adimlar=[dict(i=0, sira_grup=[dict(uc=[dict(n=1, id="p1", ad="BTS7960 sağ", ip=[67.5, 1, 1], karede=True),
+                                                    dict(n=2, id="p2", ad="ESP32", ip=[80, 1, 1], karede=True)])])], uc_kaynak={})
+    al = dict(x0=0, y0=40, x1=1000, y1=680)
+
+    def kip():
+        return dict(tuval=dict(w=1200, h=720), dom=2, cizilmedi=[], ciz=[
+            dict(n=1, ad="BTS7960 sağ", id="p1", kutu=dict(x0=100, y0=100, x1=126, y1=126), alan=al),
+            dict(n=2, ad="ESP32", id="p2", kutu=dict(x0=300, y0=100, x1=326, y1=126), alan=al)])
+    saglam = {"0.1": dict(sahne=kip(), etk=kip(), fark={"p1": 500, "p2": 800})}
+
+    def b(f):
+        o, v = copy.deepcopy(saglam), copy.deepcopy(Vs)
+        f(o, v)
+        return o, v
+    vakalar = [("sağlam", saglam, Vs, 0),
+               ("U1: etiket çizilmedi", *b(lambda o, v: (o["0.1"]["sahne"]["ciz"].pop(), o["0.1"]["sahne"].update(dom=1))), 1),
+               ("U2: kutu tuvalden taşıyor", *b(lambda o, v: o["0.1"]["etk"]["ciz"][0]["kutu"].update(x1=1210)), 1),
+               ("U2: kutu güvenli alandan taşıyor", *b(lambda o, v: o["0.1"]["sahne"]["ciz"][1]["kutu"].update(y0=20)), 1),
+               ("U2: DOM sayısı tutmuyor", *b(lambda o, v: o["0.1"]["sahne"].update(dom=3)), 1),
+               ("U3: iki etiket çakışıyor", *b(lambda o, v: o["0.1"]["etk"]["ciz"][1]["kutu"].update(x0=110, x1=136)), 1),
+               ("U4: parça görünmüyor", *b(lambda o, v: o["0.1"]["fark"].update(p2=0)), 1),
+               ("U5: sağ etiketi solda", *b(lambda o, v: v["adimlar"][0]["sira_grup"][0]["uc"][0].update(ip=[-67.5, 1, 1])), 1),
+               ("U6: kullanılmayan UC_ORTULU", *b(lambda o, v: v["uc_kaynak"].update(ortulu_kullanilmayan=["K1.3 Akü"])), 1)]
+    tut = 0
+    for ad, o, v, bek in vakalar:
+        n = len(uc_degerlendir(o, v))
+        ok = (n == 0) if bek == 0 else (n >= 1)
+        tut += ok
+        print("  %-38s hata %d %s" % (ad, n, "TUTTU" if ok else "TUTMADI"))
+    print("uc etiketi bozma denemesi: %d/%d" % (tut, len(vakalar)))
+    return tut == len(vakalar)
+
+
 def gizli_piksel(c, yol):
     """Perdelenme ölçümünde (voksel 3 mm, 26 yön) alt adımında tamamen gizli çıkan yeni parçaların o alt adımın karesindeki kimlik
     tamponu piksel sayısı (bağımsız ikinci ölçüm: piksel düzeyinde, tek kamera). yol: rehber_sira --json çıktısı ya da kontrol.json."""
@@ -375,16 +503,41 @@ def gorunurluk_yaz(gr):
         print("      CIZILMEYEN %s sema %s %s: %s px" % (x["adres"], x["i"], x["ad"][:50], x["px"]))
 
 
+def uc_yaz(r):
+    print("  uc etiketi: %d konum, %d etiket, karede gorunmez uc %d; hata %d -> %s" % (
+        r["konum"], r["etiket"], r["yok"], len(r["hata"]), "GECTI" if r["gecti"] else "KALDI"))
+    for x in r["hata"][:40]:
+        print("      " + x)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--goruntu-yok", action="store_true")
     ap.add_argument("--yalniz-gorunurluk", metavar="JSON", help="yalnız görünürlük ölçümü (-> JSON; depoya yazmaz)")
     ap.add_argument("--gizli", metavar="JSON", help="yalnız perdelenmede gizli çıkan parçaların alt adım karesindeki pikselleri "
                                                    "(-> F10d-gizli-piksel.json)")
-    ap.add_argument("--bozma-denemesi", action="store_true", help="yalnız 'lejanttaki şema karede çiziliyor' kuralının sentetik denemesi")
+    ap.add_argument("--bozma-denemesi", action="store_true", help="yalnız sentetik bozma denemeleri ('lejanttaki şema karede çiziliyor', "
+                                                                   "uç etiketleri)")
+    ap.add_argument("--yalniz-uc", metavar="JSON", help="P10.7b2f: yalnız uç etiketi denetimi (-> JSON)")
+    ap.add_argument("--rehber", metavar="DIR", help="P10.7b2f: rehber/ yerine bu klasör (önizleme; index.html ve veri/ içerir)")
     g = ap.parse_args()
     if g.bozma_denemesi:
-        sys.exit(0 if sema_karede_bozma() else 1)
+        a1 = sema_karede_bozma()
+        a2 = uc_etiket_bozma()                                          # P10.7b2f
+        sys.exit(0 if a1 and a2 else 1)
+    global REHBER, V
+    if g.rehber:                                                        # P10.7b2f: önizleme klasörü (depo dışı)
+        REHBER = os.path.abspath(g.rehber)
+        V = json.load(open(os.path.join(REHBER, "veri", "rehber-veri.json"), encoding="utf-8"))
+    if g.yalniz_uc:
+        c = Cdp(tarayici(), "f10d")
+        try:
+            r = uc_etiket(c, REHBER, V)
+        finally:
+            c.kapat()
+        json.dump(r, open(g.yalniz_uc, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        uc_yaz(r)
+        sys.exit(0 if r["gecti"] else 2)
     tb = tarayici()
     if g.yalniz_gorunurluk:
         c = Cdp(tb, "f10d")
@@ -418,6 +571,8 @@ def main():
         print("  %d/%d konum esit; kotu %s" % (pt["esit"], pt["konum"], [x["adres"] for x in pt["kotu"]]))
         print("gorunurluk"); sonuc["gorunurluk"] = gr = gorunurluk(c)
         gorunurluk_yaz(gr)
+        print("uc etiketi"); sonuc["uc_etiket"] = ue = uc_etiket(c)        # P10.7b2f
+        uc_yaz(ue)
         print("telefon"); sonuc["telefon"] = tf = telefon(c)
         print("  360 px tasma en cok %s -> %s" % (tf["tasma_max"], "GECTI" if tf["gecti"] else "KALDI"))
         sonuc["kontrol_hatasi"] = c.js("document.documentElement.dataset.hata || null")
@@ -425,7 +580,7 @@ def main():
     finally:
         c.kapat()
     sonuc["sure_s"] = round(time.time() - t0)
-    sonuc["gecti"] = all(sonuc[k]["gecti"] for k in ("gezinme", "panel_takma", "gorunurluk", "telefon"))
+    sonuc["gecti"] = all(sonuc[k]["gecti"] for k in ("gezinme", "panel_takma", "gorunurluk", "uc_etiket", "telefon"))
     json.dump(sonuc, open(CIKTI, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print("F10d dogrulama: %s (%d s), kare %d" % ("GECTI" if sonuc["gecti"] else "KALDI", sonuc["sure_s"], len(sonuc["goruntu"])))
     sys.exit(0 if sonuc["gecti"] else 2)
