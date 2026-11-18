@@ -154,7 +154,15 @@ sabit testin testinin testini konusu konusudur senin
 sayfada karenin listesindeki
 beslenmesin diye diyodun belirlenir iletir iletmez etti pano demete beslenmesini keser mevcut devresiyle kapatabilirsin
 dibindeki
+ileride eklenebilir demoda eklenecek soket soketleri dilini kuponunda sentil komutunda soketlere sokma
+engel dil braketinin kuponda dururken sentili tutan
+mantardaki durduktan saniye kumandaya telefona klavyeye dokunmaz sentilin tutarak sokar sokmaz elini kolun komut beklenmedik hemen
+giremiyorsa zorlama kaydet proje sahibine sor
 """.split())
+# P10.7b2h (F10q-gunluk.md § 2): son satır K60 A (K1 alt adım 8), K51 a (E3a), K50 b (F1, F5 not_), K55 a (bant takma) ve K40 a
+# (G3 sentil) metinlerinin 12 yeni kelimesi (gözden geçirildi, hepsi Türkçe harfi olmayan doğru yazım). Düzeltme turu 1: son satır
+# etek ön perçin somunu cümlesi (F1) ve F5 sentil sınamasının 7 yeni kelimesi (aynı gözden geçirme). Düzeltme turu 2: son iki satır
+# F5 sentil istisnası ve erişim çekincesinin 22 yeni kelimesi (aynı gözden geçirme).
 # P10.7b2g düzeltme turu 2 (F10o-kontrol Y1): son satır K2 alt adım 5 servo kablosu cümlesinin 1 yeni kelimesi ("kanal dibindeki";
 # gözden geçirildi: Türkçe harfi olmayan doğru yazım).
 # P10.7b2f: sondan bir önceki satır B6a uç etiketi cümlesinin ve F5 kurulum testi göndermesinin 3 yeni kelimesi (gözden geçirildi: Türkçe harfi
@@ -290,7 +298,8 @@ ZORUNLU = [
      "F5 H1: uç yuvalarda F2 yedek ve F6"),
     # F7d düzeltme 1 (F7d-kontrol D-1, O-2): "Kollar aşağıda başlar" kendi satırıyla; sigortadan sonra şarj pimleri gerilimli
     ("F5", r"Kollar aşağıda başlar", "F5 kollar aşağıda başlar"),
-    ("F5", r"pimleri, akü XT60'tan ayrılmadıkça gerilimlidir: ana anahtar da mantar da bu kolu kesmez",
+    # P10.7b2h (K50 b): panel konnektör dişi (XT60E-F): "pimleri" → "soketleri"
+    ("F5", r"soketleri, akü XT60'tan ayrılmadıkça gerilimlidir: ana anahtar da mantar da bu kolu kesmez",
      "F5 şarj pimleri sigortadan sonra gerilimli"),
     # F7c (D-12): XL4016 ayarı ve PC817 ölçümü kartların takıldığı adımda da yazar
     ("B3", r"Kartlar takılmadan tezgâhta.*XL4016 A / B", "B3 XL4016 tezgâhta ayar"),
@@ -320,7 +329,8 @@ ZORUNLU = [
     ("K1", r"katot \(bantlı uç\) 86'ya", "K1 1N4007 yönü (K1)"),
     ("K1", r"Teslimde bakılacaklar", "K1 teslimde bakılacaklar"),
     # P10.7b1 düzeltme turu 1 (F10h-kontrol Ü2, M21, M22): Ö4 yeri köprülü; açık kararlar "karar bekliyor"
-    ("K1", r"karar verilene kadar zincirin kendi teliyle \(A01, A02\) aynı kesitte \({awg.A01|A02}\) kısa bir tel köprüyle kapalı durur; "
+    # P10.7b2h (K60 A, 17.11): "karar verilene kadar" çıktı, köprü kalıcı
+    ("K1", r"zincirin kendi teliyle \(A01, A02\) aynı kesitte \({awg.A01|A02}\) kısa bir tel köprüyle kapalı durur; "
            r"köprü yoksa röle çekmez", "K1 Ö4 yeri köprülü, köprü teli zincirin kesitinde (köprü yoksa röle çekmez)"),
     # açık işler turu (F10h-kontrol-2 §3.3-13): "tek köprü" yerine bu adımda takılan köprülerin açık listesi
     # düzeltme turu 2 (F10h-kontrol-3 §2): "yalnız" çıktı, anahtarlı baranın köprüleri listede; iki bara madde 2'de ayrı ayrı
@@ -334,7 +344,26 @@ ZORUNLU = [
     ("K1", r"İki baranın köprüleri takılı", "K1 kontrol: iki baranın köprüleri ve süreklilik"),
     ("K1", r"Bunların dışında mantarın kendi uçları ve ana anahtarın uçları hiçbir zaman köprülenmez",
      "K1 köprülenmeyenler: mantar ve ana anahtar uçları"),
-    ("K1", r"Ö4 karar bekliyor \(K60\)", "K1 Ö4 karar bekliyor (K60)"),
+    # P10.7b2h (K60 A, 17.11): eski "Ö4 karar bekliyor (K60)" deseni yerine kararın kendisi + demo şartı
+    ("K1", r"Elde taşınan acil stop yok \(K60 A\): köprü kalıcıdır.*demoda mantarın yanında bir kişi durur",
+     "K1 Ö4: elde taşınan acil stop yok, köprü kalıcı, demo şartı (K60 A)"),
+    # P10.7b2h: K40 a (S2 horn dişe dayalı + sentil), K51 a (ikinci TVS sonraki CAD paketinde), K55 a (bant esnetilerek), K50 b (dişi)
+    # düzeltme turu 1 (F10q-kontrol bulgu 1): sentil sınaması kol takılıyken ve S2 sürülebilirken: F5 aşama 2 (S2 ilk kez orada beslenir)
+    ("G3", r"kol takılınca dişe dayanacağı konumda \(S2 = 4,3°\) tak \(K40 a\)", "G3 S2 horn dişe göre (K40 a)"),
+    ("G3", r"sentil sınaması \(K40 a\) burada yapılmaz: S2 ilk kez F5", "G3 sentil sınaması F5 aşama 2'ye gönderili (K40 a)"),
+    ("F5", r"S2 sentil sınaması \(K40 a.*0,3 mm geçmeli, 0,4 mm geçmemeli", "F5 aşama 2 S2 sentil sınaması (K40 a)"),
+    # düzeltme turu 2 (F10q-kontrol T1, T2): sentil sınaması kuralın sınırlı istisnası; şartları silinirse yakalanır
+    ("F5", r"kuralının tek istisnasıdır ve yalnız şöyle yapılır: komutu mantardaki kişi verir", "F5 sentil: tek istisna, komutu mantardaki kişi verir"),
+    ("F5", r"kol durduktan sonra üç saniye bekle; mantardaki kişi bundan sonra kumandaya, telefona ve klavyeye dokunmaz",
+     "F5 sentil: 3 s bekleme, mantardaki kişi komut aygıtlarına dokunmaz"),
+    ("F5", r"parmağını dişle kol arasına sokmaz \(sıkışma hattı\)", "F5 sentil: parmak sıkışma hattına girmez"),
+    ("F5", r"erişim alanından çıkmadan hiçbir komut verilmez", "F5 sentil: kişi yakındayken komut verilmez"),
+    ("F5", r"Kol beklenmedik biçimde kıpırdarsa mantara hemen basılır", "F5 sentil: kol kıpırdarsa mantar"),
+    ("F5", r"diş yüzünü zımparala \(yalnız enerjisizken\)", "F5 sentil: zımpara enerjisizken"),
+    ("F5", r"ölçülemedi diye kaydet ve omuz bandını sökmeden önce proje sahibine sor", "F5 sentil: erişilemezse zorlama, sor"),
+    ("F5", r"bu kuralın tek istisnası aşağıdaki S2 sentil sınamasıdır", "F5 erişim kuralı sentil istisnasını gösteriyor"),
+    ("E3a", r"sonraki CAD paketinde eklenecek \(K51 a\)", "E3a Pi hattı TVS modele sonraki CAD paketinde (K51 a)"),
+    ("F1", r"XT60E-F, dişi panel girişi; K50 b", "F1 şarj girişi dişi panel konnektör (K50 b)"),
     # P10.7b2e (K52 a, 16.11): eski "karar bekliyor (K52)" desenleri yerine kararın kendisi (regülatör B5a'da panelde, G20 panel içinde)
     ("B5a", r"Göğüs ekranı regülatörü \(LM2577 \+ LM2596; K52 a\)", "B5a göğüs ekranı regülatörü güç paneline (K52 a)"),
     # P10.7b2e kısım 2 (Echo kararı 16.11.2026): K64 kapandı (a): tutucu CAD paketinde tasarlanıp basılır
@@ -1060,7 +1089,7 @@ def elektrik_denetle(metinler, E=None):
                   + "; istisna yalnız TERIM_ISTISNA tam cümle listesinde")
             # düzeltme turu 1 (M21, M22, M28): açık kararlar (K60, K61; P10.7b2e: K52 kapandı, K64 açıldı; kısım 2: K64 kapandı, a)
             # yalnız "karar bekliyor / bağlı" cümlesinde; Ö4 köprüsüz kalmaz
-            for t in re.finditer(r"\b(K60|K61)\b", c):
+            for t in re.finditer(r"\b(K61)\b", c):                     # P10.7b2h: K60 kapandı (A), kural yalnız K61
                 if not re.search(r"karar\w*\s+bekl|bekliyor|karar verilene kadar|kararına bağlı|karara bağlı", c):
                     h(yer, "karar", t.group(0), "%s açık karar: 'karar bekliyor' yazılmalı" % t.group(1))
             # açık işler turu (F10h-kontrol-2 §3.1-8): "çekmez" sözcüğü Ö4 kuralını affetmez
@@ -1072,7 +1101,7 @@ def elektrik_denetle(metinler, E=None):
                 h(yer, "terim", "USB 3.0", "hub uzatması USB 2.0")
             for t in re.finditer(r"karar bekliyor", c):
                 p = c[max(0, t.start() - 25):t.end() + 25]
-                k = re.search(r"\bK(1|10|11|14|52|64|65)\b(?! a)", p)        # P10.7b2e: K52 kapandı (a, 16.11); kısım 2: K64 (a); düzeltme turu 1 (N7): K65
+                k = re.search(r"\bK(1|10|11|14|40|51|52|55|60|64|65)\b(?! a)(?! A\b)", p)   # P10.7b2h: K40, K51, K55, K60 kapandı        # P10.7b2e: K52 kapandı (a, 16.11); kısım 2: K64 (a); düzeltme turu 1 (N7): K65
                 if k:
                     h(yer, "karar", p.strip(), "K%s kapandı" % k.group(1))
             if re.search(r"varsayım,?\s*K10\b|\bK11 b\b", c):
@@ -1776,6 +1805,8 @@ ELEKTRIK_BOZMA = [
     ("M21c K64 yeniden 'karar bekliyor' (kapandı)", "B5a", "not_", "Bara tutucusunun panelde yeri karar bekliyor (K64)"),
     # düzeltme turu 1 (F10m-kontrol N7): K65 kapandı (Echo, 16.11)
     ("M21d K65 yeniden 'karar bekliyor' (kapandı)", "K1", "not_", "Sağ / sol tanımı karar bekliyor (K65)"),
+    # P10.7b2h: K60 kapandı (A)
+    ("M21e K60 yeniden 'karar bekliyor' (kapandı)", "K1", "not_", "Ö4 karar bekliyor (K60)"),
     ("M22 K61 kararlaştırılmış gibi", "K2", "not_", "Konuşmak için basılan düğme (O-12) göğüs bandında (K61)"),
     ("M24 en az 100 ms", "F5", "is_", "röle K2 → en az 100 ms bekle → PC817 #2 LOW"),
     ("M28 Ö4 köprüsüz", "K1", "is_", "Ö4 için ayrılan iki uçlu yer köprüsüz bırakılır"),
@@ -1881,6 +1912,10 @@ YASAK_BOZMA = [
 # Düzeltme turu 1 (F10i-kontrol Ü1, Ü2, Ü3, Ü6, A1, A2, A7, A13): ham metinde bir adımın cümlesi bozulur; ZORUNLU / ZORUNLU_ALAN /
 # ZORUNLU_CUMLE desenlerinden en az biri tutmamalı. (ad, adım, eski, yeni); eski ham metinde yoksa deneme kaçmış sayılır.
 ZORUNLU_BOZMA = [
+    # düzeltme turu 2 (F10q-kontrol T1): sentil istisnasının şartları silinirse ZORUNLU yakalar
+    ("F5 sentil istisna ibaresi silindi", "F5", "kuralının tek istisnasıdır ve yalnız şöyle yapılır: komutu mantardaki kişi verir", "yapılır"),
+    ("F5 sentil 'komut verilmez' silindi", "F5", "erişim alanından çıkmadan hiçbir komut verilmez", "erişim alanından çıkar"),
+    ("F5 erişim kuralının istisna göndermesi silindi", "F5", "; bu kuralın tek istisnası aşağıdaki S2 sentil sınamasıdır, şartları o cümlede", ""),
     ("K1 SV1 / SV2 ters kutup (Ü6)", "K1", "({kutup.SV1|SV2})", "(OUT− → V+, OUT+ → GND)"),
     ("K1 SV1 / SV2 kutbu silindi (Ü6)", "K1", " ({kutup.SV1|SV2})", ""),
     ("B6a kondansatör ters (Ü6)", "B6a", "yönü {yon.kondansator}", "yönü + bacağı GND barasında"),

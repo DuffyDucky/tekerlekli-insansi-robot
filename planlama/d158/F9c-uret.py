@@ -366,7 +366,8 @@ GRUP = {
     "K53": ("A", "Elektronik katının lazer kesim dosyası bu karara bağlı; lazer teklifi sipariş öncesi."),
     "K54": ("B", "Kafa iskeleti baskısından (Parti kuponu) önce; rehber E3 notu."),
     "K55": ("B", "Kabuk baskısından (Parti kuponu) önce; rehber F1 / F3 / F4 takma metni."),
-    "K60": ("A", "Elektrik güvenliği: elde acil stop; B seçilirse alıcının yeri ve beslemesi P10.7b kablajında."),
+    # P10.7b2h (F10q-kontrol): K60 17.11'de kapandı (P10.9b); metin K64 / K65 biçiminde güncellendi (yalnız açık kararlarda gösterilir)
+    "K60": ("A", "Elektrik güvenliği: elde acil stop; kapandı 17.11, A + köprülü klemens şimdi (demoda mantarın yanında bir kişi)."),
     # K61 B → A (P10.9a kontrolü B4, orkestratör kararı): seçenek a kalemi siparişten çıkarır; K12 ve K32 ile aynı ölçüt.
     "K61": ("A", "Seçenek a kalemi siparişten çıkarır (Bas-konuş düğmesi 76,24 TL); karar S = 16.11 siparişinden önce, b seçilirse kablo ve yer P10.7b kablajında."),
     "K62": ("C", "Kayıt; döngü kuralının yorumu (sonraki paketlerin tur sayımı)."),
@@ -436,6 +437,8 @@ PAKET_SONUC = {
               # P10.7b2g kapanışı: b2f 9b019d2 ile kapandı; b2g bu commit'le (F10o-gunluk.md)
               "P10.7b2f (Kablo yolu 12 gerilemesi, uç etiketleri; kayıt düzeltmeleri, VIN'e seri Schottky K66), "
               "P10.7b2g (boyun tüneli deneme parçası; rehberde K2 alt adım 5'e bağlandı). "
+              # P10.7b2h kapanışı (F10q-gunluk.md § 10): bu commit'le kapandı
+              "P10.7b2h (17.11 kararlarının rehber metni: K40, K50 b, K51, K55, K60). "
               # P10.7b2f kısım 2: Efe'nin iki cevabı 14.11'de geldi (pano #7 mesaj #28), kayda 16.11'de geçti; "Kalan"dan çıktı
               # P10.9b (17.11.2026, orkestratör kararı): K60 (A + köprülü klemens) ve K61 (a) kapandı; "Kalan"dan çıktı (P109b-gunluk.md)
               "Kalan: taban yollarının yeniden tasarımı, boyların ölçümü, düğüm tutucusu, G19 / G20 / G24 / G26 "
@@ -457,7 +460,7 @@ FAZ_SONUC = {
     "F8": ("Sipariş paketi 136 satır, baskı partileri, T1–T13 test kâğıtları; sipariş verilmedi.", [DONGU]),
     "F9": ("Takvim: S = 16.11 yalnız durum A'da sığar (bir hafta tampon); demo 127 anahtar, depo temizliği; bu rapor son paket.", [PLAN, DONGU]),
     # P10.9a TASLAĞI: faz açık; P10.9 faz sonunda yeniden yazar.
-    "F10": ("Faz açık. Kapalı: P10.1, P10.3, P10.4, P10.4b, P10.5, P10.5b, P10.6 ve P10.7'nin a, b1, b2a, b2b, b2c, b2d, b2e, b2f, b2g alt paketleri. "
+    "F10": ("Faz açık. Kapalı: P10.1, P10.3, P10.4, P10.4b, P10.5, P10.5b, P10.6 ve P10.7'nin a, b1, b2a, b2b, b2c, b2d, b2e, b2f, b2g, b2h alt paketleri. "
             "Açık: P10.2 (K53 kapandı, çentik sonraki CAD paketinde), P10.7, P10.8, P10.9.", [DONGU]),
 }
 

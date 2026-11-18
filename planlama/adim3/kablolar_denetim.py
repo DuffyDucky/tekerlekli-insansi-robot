@@ -208,7 +208,7 @@ DIYAGRAM = {
     "K1-kontak": (r"röle K1 kontağı", None), "K2-kontak": (r"K2 ön şarj kolu", None), "mantar": (r"^mantar NC", None),
     "K1-bobin": (r"röle K1 bobini", None), "K2-bobin": (r"K2 bobini", None),
     "hat-A": (SAYI_A + "$", r"^XL4016 A\b"), "hat-B": (SAYI_A + "$", r"^XL4016 B\b"), "hat-C": (SAYI_A + "$", r"^XL4016 C\b"),
-    "hat-G22": (SAYI_A + " mini", r"^PC817 #2"), "hat-cevre": (SAYI_A + " mini", r"^ESP32 VIN"), "hat-sarj": (SAYI_A + " mini", r"^XT60E-M"),
+    "hat-G22": (SAYI_A + " mini", r"^PC817 #2"), "hat-cevre": (SAYI_A + " mini", r"^ESP32 VIN"), "hat-sarj": (SAYI_A + " mini", r"^XT60E-F"),
     "XL4016-A": (r"^XL4016 A\b", None), "XL4016-B": (r"^XL4016 B\b", None), "XL4016-C": (r"^XL4016 C\b", None),
     "XL4016-cevre": (r"^XL4016 çevre", None), "D24V50F5": (r"^D24V50F5", None), "SY8205": (r"^SY8205", None),
     "gogus-regulatoru": (r"^LM2577 \+ LM2596", None), "BTS7960-sol": (r"^BTS7960 sol", None), "BTS7960-sag": (r"^BTS7960 sağ", None),
@@ -2762,7 +2762,7 @@ def b_kaynak_4(v, b):
 
 
 def b_sayi_metin(v, b):
-    bul(v, "G06")["ad"] = "Şarj kolu: akü + → 10 A hat sigortası → XT60E-M şarj girişi (+ / −)"   # D3'teki eski ad
+    bul(v, "G06")["ad"] = "Şarj kolu: akü + → 10 A hat sigortası → XT60E-F şarj girişi (+ / −)"   # D3'teki eski ad
 
 
 def b_sayi_metin_2(v, b):

@@ -12,7 +12,7 @@
 #   C  gönderme biçimi eşitlenmeden: çevrilen her gönderme sayılır (rehber_metin.GONDERME_KAYIT), çözülemeyen 0.
 import os, sys, re, subprocess, types, collections
 ROBOT = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-HEAD = sys.argv[2] if len(sys.argv) > 2 else "9b019d2"          # P10.7b2g: taban 9b019d2 (b2f'de b5fc255, b2e'de 84f1a4a, b2d'de 1c4e882)
+HEAD = sys.argv[2] if len(sys.argv) > 2 else "376fe90"          # P10.7b2h: taban 376fe90 (b2g'de 9b019d2) (b2f'de b5fc255, b2e'de 84f1a4a, b2d'de 1c4e882)
 RH = os.path.join(ROBOT, "tasarim", "freecad", "rehber")
 sys.path.insert(0, RH)
 b = subprocess.run(["git", "show", HEAD + ":tasarim/freecad/rehber/rehber_metin.py"], cwd=ROBOT, capture_output=True, check=True).stdout
@@ -310,6 +310,60 @@ B2G_EKLENEN = [
      "tilt servo kablosunun (S10) 3 pinli fişi; hoparlör (AU3) ve 12 V (G17) fişsiz geçer, deneme gerekmez."),
 ]
 BEKLENEN["9b019d2"] = ([], B2G_EKLENEN)
+# P10.7b2h (F10q-gunluk.md § 2): taban 376fe90 (b2g). 17.11 kararlarının rehber metni: K50 b (XT60E-F dişi panel; K1 / F1 / F5),
+# K51 a (E3a ikinci TVS), K55 a (dört bant esnetilerek, kupon), K40 a (G3 S2 horn + sentil), K60 A (K1 Ö4 köprüsü kalıcı + demo şartı).
+# Liste uygulanan metinden betikle üretildi, etiketler elle denetlendi. Düzeltme turu 1 (F10q-kontrol): G3 sentil F5'e, etek ön perçin
+# somunu cümlesi, F1 'alımı açık'; düzeltme turu 2: F5 sentil istisnası + erişim kuralı göndermesi; liste yeniden üretildi.
+B2H_SILINEN = [
+    ('b2h K50 b', "Delik açıldıysa konnektörü (XT60E-M, erkek panel girişi) tak, K1'de bırakılan şarj ucunu (G06) akü ayrıkken bağla; açılmadıysa uç bantlı kalır."),
+    ('b2h K51 a', "Her iki 5 V çıkışına bir P6KE6V8A TVS: SY8205 → QLED hattındaki modelde var, D24V50F5 → Pi hattındaki modelde ve BOM'da yok (ikinci TVS'i ayrıca al)."),
+    ('b2h K40 a', 'Kolların erişim alanında ve düşme hattında, kafanın ve tekerlerin erişim alanında kimse yok, bir kişi yalnız mantarda (kural 1 ve 7).'),
+    ('b2h K60 A', 'Mantar ile düğüm arasında elde taşınan acil stop için ayrılan iki uçlu yer (Ö4; 2 pin 5,08 mm klemens) karar verilene kadar zincirin kendi teliyle (A01, A02) aynı kesitte (18 AWG) kısa bir tel köprüyle kapalı durur; köprü yoksa röle çekmez.'),
+    ('b2h K50 b', 'Pimlere metal değdirme; kapak takılı kalır (K50, teslimde bakılacaklar)'),
+    ('b2h K40 a', 'S2 hornu + merkez vidası; kol çatalı → horn (4 × M3×8): 625ZZ tezgâhta çatalın arka kolunun Ø16 yuvasına önceden preslenir, iki bileziğiyle çatalla birlikte gelir.'),
+    ('b2h K40 a', 'S2 hornu, merkez vidası.'),
+    ('b2h K50 b', "Uyarı: sigorta takıldıktan sonra etekteki şarj girişinin (XT60E-M panel erkek, `planlama/maliyet.json`) pimleri, akü XT60'tan ayrılmadıkça gerilimlidir: ana anahtar da mantar da bu kolu kesmez."),
+    ('b2h K50 b', 'XT60 şarj girişi (panel konnektör): önerilen yer etek üst plakasının arkası, delik modelde yok (doğrulanmadı); delik açıldıysa konnektörü (XT60E-M) tak, şarj ucunu (G06) akü ayrıkken bağla, açılmadıysa uç bantlı kalır.'),
+    ('b2h K50 b', 'XT60E-M pinleri sigorta takılınca her zaman akü geriliminde (ana anahtar da mantar da kesmez): kapağı takılı kalır.'),
+    ('b2h K60 A', 'Ö4 karar bekliyor (K60).'),
+    ('b2h K50 b', "Şarj kolu (G06, 16 AWG): + ucu ana sigortanın yük tarafından, ana anahtarın giriş saplamasına gidecek (G03 ile aynı saplama, mavi M5 halka pabuç, ana anahtarın saplama ölçüsü kablajda teyit; F1'de takılır); 7,5 A mini hat sigortasının kapaklı yuvası ana anahtar girişindeki ucun dibinde (kaynak ucu), kuyruğuna lehim + makaron; öbür uç etekteki XT60E-M şarj girişine (F1); − ucu yıldız barasının 3 numaralı saplamasına, §G takılan G05'in üstüne (mavi pabuç)."),
+    ('b2h K50 b', 'Şarj kolunun 7,5 A mini sigortası takılmaz (aşama 1 listesi); sonra XT60E-M pinleri her zaman gerilimli olacağı için kapağı kapalı kalır.'),
+]
+B2H_EKLENEN = [
+    ('b2h K40 a', '0,3 geçmiyorsa ana anahtarı kapat, aküyü ayır, sonra diş yüzünü zımparala (yalnız enerjisizken) ve sınamayı yinele.'),
+    ('b2h K55 a', 'Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir).'),
+    ('b2h K55 a', 'Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir).'),
+    ('b2h K55 a', 'Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir).'),
+    ('b2h K55 a', 'Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir).'),
+    ('b2h K55 a', 'Bant düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir).'),
+    ('b2h K55 a', 'Bant düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir).'),
+    ('b2h K40 a', "Bantlar takılıyken sentil dişle kol arasına düz giremiyorsa sınamayı zorlama; ölçülemedi diye kaydet ve omuz bandını sökmeden önce proje sahibine sor (aralığın kabuk altında erişilebilirliği CAD'de doğrulanmadı)."),
+    ('b2h K55 a', 'Bu bantta engel dil değil, z +105 braketinin perçin somunu (ölçüm): kuponda bu bant ayrıca, somun takılıyken denenir.'),
+    ('b2h K55 a', 'Bu bantta engel dil değil, z +105 braketinin perçin somunu (ölçüm): kuponda bu bant ayrıca, somun takılıyken denenir.'),
+    ('b2h K40 a', 'Bu sınama aşamadaki "kolların erişim alanında kimse yok" kuralının tek istisnasıdır ve yalnız şöyle yapılır: komutu mantardaki kişi verir; S2\'ye 5 komutunu ver, kol durduktan sonra üç saniye bekle; mantardaki kişi bundan sonra kumandaya, telefona ve klavyeye dokunmaz, eli mantarın üstünde kalır.'),
+    ('b2h K50 b', "Delik açıldıysa konnektörü (XT60E-F, dişi panel girişi; K50 b: akü tarafı gömük soket, şarj kablosunun ucu erkek XT60; alımı açık, F5 notu) tak, K1'de bırakılan şarj ucunu (G06) akü ayrıkken bağla; açılmadıysa uç bantlı kalır."),
+    ('b2h K60 A', 'Elde taşınan acil stop yok (K60 A): köprü kalıcıdır, ileride kumandalı acil stop sökmeden bu yere eklenebilir; demoda mantarın yanında bir kişi durur.'),
+    ('b2h K51 a', "Her iki 5 V çıkışına bir P6KE6V8A TVS (satın alma listesinde 2 adet, `planlama/maliyet.json`): SY8205 → QLED hattındaki modelde var, D24V50F5 → Pi hattındaki bugün modelde ve BOM'da yok, sonraki CAD paketinde eklenecek (K51 a)."),
+    ('b2h K40 a', 'Kişi elini çekip kolun erişim alanından çıkmadan hiçbir komut verilmez; ikinci kol için aynı sıra.'),
+    ('b2h K40 a', 'Kol beklenmedik biçimde kıpırdarsa mantara hemen basılır.'),
+    ('b2h K40 a', 'Kolların erişim alanında ve düşme hattında, kafanın ve tekerlerin erişim alanında kimse yok, bir kişi yalnız mantarda (kural 1 ve 7); bu kuralın tek istisnası aşağıdaki S2 sentil sınamasıdır, şartları o cümlede.'),
+    ('b2h K50 b', 'Konnektörün alımı açık: siparişte XT60E-M varsa XT60E-F ile değiştirilir (K50, teslimde bakılacaklar)'),
+    ('b2h K60 A', 'Mantar ile düğüm arasında elde taşınan acil stop için ayrılan iki uçlu yer (Ö4; 2 pin 5,08 mm klemens) zincirin kendi teliyle (A01, A02) aynı kesitte (18 AWG) kısa bir tel köprüyle kapalı durur; köprü yoksa röle çekmez.'),
+    ('b2h K40 a', 'S2 5 komutunda dişle kol arasında 0,3 mm sentil geçiyor, 0,4 mm geçmiyor; iki kolda da (K40 a)'),
+    ('b2h K40 a', "S2 hornu + merkez vidası (horn kol dişe dayalıyken, S2 = 4,3°; sentil sınaması F5 aşama 2'de, K40 a); kol çatalı → horn (4 × M3×8): 625ZZ tezgâhta çatalın arka kolunun Ø16 yuvasına önceden preslenir, iki bileziğiyle çatalla birlikte gelir."),
+    ('b2h K40 a', 'S2 hornu, merkez vidası: hornu, kol takılınca dişe dayanacağı konumda (S2 = 4,3°) tak (K40 a).'),
+    ('b2h K40 a', "S2 sentil sınaması (K40 a; horn G3'te dişe göre takıldı)."),
+    ('b2h K40 a', 'S2\'nin sentil sınaması (K40 a) burada yapılmaz: S2 ilk kez F5 "İlk enerji, aşama 2"de sürülür, sınama orada.'),
+    ('b2h K50 b', 'Soketlere metal sokma; kapak takılı kalır.'),
+    ('b2h K50 b', "Uyarı: sigorta takıldıktan sonra etekteki şarj girişinin (XT60E-F panel dişi, K50 b) soketleri, akü XT60'tan ayrılmadıkça gerilimlidir: ana anahtar da mantar da bu kolu kesmez."),
+    ('b2h K50 b', 'XT60 şarj girişi (panel konnektör): önerilen yer etek üst plakasının arkası, delik modelde yok (doğrulanmadı); delik açıldıysa konnektörü (XT60E-F, dişi; K50 b) tak, şarj ucunu (G06) akü ayrıkken bağla, açılmadıysa uç bantlı kalır.'),
+    ('b2h K50 b', 'XT60E-F soketleri sigorta takılınca her zaman akü geriliminde (ana anahtar da mantar da kesmez): kapağı takılı kalır.'),
+    ('b2h K55 a', 'Çerçeve düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir).'),
+    ('b2h K40 a', 'Öbür kişi yalnız sentilin ucundan tutarak dişle kol arasına 0,3 mm sentili sokar, parmağını dişle kol arasına sokmaz (sıkışma hattı): 0,3 mm geçmeli, 0,4 mm geçmemeli.'),
+    ('b2h K50 b', "Şarj kolu (G06, 16 AWG): + ucu ana sigortanın yük tarafından, ana anahtarın giriş saplamasına gidecek (G03 ile aynı saplama, mavi M5 halka pabuç, ana anahtarın saplama ölçüsü kablajda teyit; F1'de takılır); 7,5 A mini hat sigortasının kapaklı yuvası ana anahtar girişindeki ucun dibinde (kaynak ucu), kuyruğuna lehim + makaron; öbür uç etekteki XT60E-F (dişi) şarj girişine (F1); − ucu yıldız barasının 3 numaralı saplamasına, §G takılan G05'in üstüne (mavi pabuç)."),
+    ('b2h K50 b', 'Şarj kolunun 7,5 A mini sigortası takılmaz (aşama 1 listesi); sonra XT60E-F soketleri her zaman gerilimli olacağı için kapağı kapalı kalır.'),
+]
+BEKLENEN["376fe90"] = (B2H_SILINEN, B2H_EKLENEN)
 BEKLENEN_SILINEN, BEKLENEN_EKLENEN = BEKLENEN.get(HEAD, ([], []))
 
 

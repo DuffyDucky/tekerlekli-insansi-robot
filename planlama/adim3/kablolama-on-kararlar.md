@@ -21,7 +21,7 @@ değişmedi, 522), **KK** = `planlama/d158/karar-kuyrugu.md`, **PH** = `planlama
 | Ö1 | Ses: ReSpeaker çıkışı → PAM8403 | **Masa denemesine bağlı kabul** (KT2); yedek USB ses kartı siparişte | K16'daki 04.11 seçimini değiştirir | Enerjili (F3) |
 | Ö2 | Hub harici beslemeli | **Hayır**, USB'den beslenmeye devam | Efe'nin önerisinden sapma | Enerjili (F3) |
 | Ö3 | Pi → ESP32 reset hattı | **Yeni tel yok.** Bilinçli reset mevcut CP2102 DTR / RTS devresinden; demet bağlanmadan Efe'nin cevabı beklenir | Efe'nin önerisinden sapma (Efe'ye soru) | Reset = röleler bırakır (bilinen) |
-| Ö4 | Elde taşınan acil stop | **Karar verilmedi** (Ahmet + Efe). Seçenekler ve kablaj etkisi §8 | – | – |
+| Ö4 | Elde taşınan acil stop | **Kapandı: A** + köprülü klemens şimdi takılır (K60 A, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b); demoda mantarın yanında bir kişi. §8 | – | – |
 | PH | Röle sürücüsü | **BC337-40 + 270 Ω + 2,2 kΩ taban → GND + 1N4007** (PH sürüm 4 + 14.11 düzeltme; pinler değişmedi) | Sürüm 3'ün MOSFET şartı kalktı | – |
 
 Kablo sayısı: **62 → 61** (ses kartı uzatması çıkar; göğüs 12 V'ta ara kablo yok), boyun demeti **değişmez** (5 kablo, 69,9 mm², en dar
@@ -252,9 +252,9 @@ değiştirmeden çalışır ama işçilik (lehim) ve şerit HDMI'de 1080p deneme
 - **Kablajda teyit edilecek (KT6):** bilinçli reset dizisi ESP32'yi resetliyor; normal port açılışı resetlemiyor; **Pi servisinin yeniden başlatılması
   ve Pi'nin yeniden açılışı ESP32'yi resetlemiyor** (her biri ≥ 10 kez; ESP32 açılış yazısı ve PC817 #2 / bara izlenir).
 
-## 8. Öneri 4 · Elde taşınan, kumandalı acil stop (karar verilmedi)
+## 8. Öneri 4 · Elde taşınan, kumandalı acil stop (kapandı: A, K60)
 
-**Karar Ahmet + Efe'de** (para ve güvenlik mimarisi; pano #7 mesaj #22 madde 4). Burada yalnız seçenekler ve kablaj etkisi.
+**Karar (17.11.2026): A + köprülü klemens şimdi konur** (K60 A, orkestratör kararı (Echo), Ahmet'in 17.11.2026 02:36 devriyle; P10.9b; pano #7 mesaj #29'da Efe'nin tarafının isteğiyle aynı): elde taşınan acil stop yok, mantar ile acil stop düğüm kartı arasındaki köprülü 2 pin klemens şimdi takılır, B ileride sökmeden eklenebilir; kablaj ve maliyet değişmez. **Demo şartı:** mantarın yanında bir kişi durur. Seçenekler (pano #7 mesaj #22 madde 4) kayıt için aşağıda.
 
 | Seçenek | Ne | Kablaja etkisi | Not |
 |---|---|---|---|
@@ -377,7 +377,7 @@ Ana anahtar devrede (ON), mantar basılı (ya da F5 attı, ya da ESP32 resetlend
 
 ## 14. Ahmet'e kalanlar
 
-- **Elde taşınan acil stop** (Ö4): A / B / C ve "köprülü klemensle yer ayrılsın mı" (Ahmet + Efe).
+- ~~**Elde taşınan acil stop** (Ö4)~~: kapandı, A + köprülü klemens (K60, 17.11.2026; §8).
 - **Bilgi:** K16'daki 04.11 seçimi değişti: USB ses kartı kablajdan çıktı, yedek olarak siparişte (§5); denemeyi geçmezse geri gelir. İtiraz ederse eski yol.
 - **Bilgi:** K8 (29.10 H1): kutunun boş yedek yuvası göğüs ekranının F6'sı oldu; 1 × 6 dizilişte kapak altında kalabilir (§3).
 - **Bilgi:** AI HAT+ siparişi K10 masa denemesine bağlı (§2).

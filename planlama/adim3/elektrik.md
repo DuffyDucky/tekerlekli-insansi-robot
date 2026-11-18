@@ -321,7 +321,7 @@ Tarih notu 04.11.2026: düşürücü, bütçe, ekran beslemesi ve boyun demeti 1
 
 ```
 Akü Victron SuperPack 12,8 V 20 Ah (BMS 30 A sürekli) ── XT60 ── Ana sigorta 30 A ── ASW-A01 ana anahtar ── sigorta kutusu (6 yol)
-  │                              └─ (ana sigorta sonrası) 7,5 A mini ── XT60E-M şarj  │
+  │                              └─ (ana sigorta sonrası) 7,5 A mini ── XT60E-F şarj  │
   └─ (anahtar sonrası) akü ADC bölücü 100k/18k ── ESP32 GPIO36                         ├─ F1 20 A ── röle K1 kontağı ∥ K2 ön şarj kolu ── anahtarlı 12 V bara (M5 saplama + pabuç, O-3 r)
                                                                                       │        ├─ BTS7960 sol ── ön sol + arka sol JGB37 (paralel)
                                                                                       │        ├─ BTS7960 sağ ── ön sağ + arka sağ JGB37 (paralel)

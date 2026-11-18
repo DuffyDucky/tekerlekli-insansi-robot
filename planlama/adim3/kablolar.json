@@ -916,7 +916,7 @@
   },
   {
    "kimlik": "G06",
-   "ad": "Şarj kolu: akü + → 7,5 A hat sigortası → XT60E-M şarj girişi (+ / −)",
+   "ad": "Şarj kolu: akü + → 7,5 A hat sigortası → XT60E-F şarj girişi (+ / −)",
    "devre": "güç 12 V şarj",
    "demet": "etek (F1)",
    "dal": "sarj",
@@ -925,14 +925,14 @@
     "nokta": "giriş (akü tarafı; ana sigortanın yük tarafı) / yıldız barası"
    },
    "uc_b": {
-    "parca": "XT60E-M panel şarj girişi",
+    "parca": "XT60E-F panel şarj girişi",
     "nokta": "+ / −"
    },
    "damarlar": [
     {
      "ad": "+",
      "a": "Ana anahtar · giriş",
-     "b": "XT60E-M şarj girişi · +",
+     "b": "XT60E-F şarj girişi · +",
      "ara": "7,5 A mini hat sigortası yuvası (16 AWG kuyruklu), ana anahtar girişindeki ucun dibinde (O-17)",
      "ara_koruyucu": "hat-sarj",
      "ara_uc": "a",
@@ -943,7 +943,7 @@
     },
     {
      "ad": "−",
-     "a": "XT60E-M şarj girişi · −",
+     "a": "XT60E-F şarj girişi · −",
      "b": "Yıldız barası · GND",
      "uc_turu": {
       "a": "lehim",
@@ -962,7 +962,7 @@
     "makaron": "kırmızı",
     "cizim": "#d63031"
    },
-   "sonlandirma": "ana anahtar girişinde mavi M5 halka pabuç (M5 varsayım: ana anahtarın saplama ölçüsü kablajda teyit) (G03 ile aynı saplama); 7,5 A mini sigorta yuvası bu ucun dibinde, kuyruğuna lehim + makaron; panel ucu XT60E-M lehim; − yıldız barasına mavi pabuç",
+   "sonlandirma": "ana anahtar girişinde mavi M5 halka pabuç (M5 varsayım: ana anahtarın saplama ölçüsü kablajda teyit) (G03 ile aynı saplama); 7,5 A mini sigorta yuvası bu ucun dibinde, kuyruğuna lehim + makaron; panel ucu XT60E-F lehim; − yıldız barasına mavi pabuç",
    "koruma": "hat-sarj",
    "acil_stopta_enerjili": true,
    "boy": null,
@@ -1010,7 +1010,7 @@
     "etiket": "tahmin, P10.7b'de ölçülecek",
     "vekil": "şarj girişi CAD'de yok (etek üst plakası arkası): ana anahtar vekil"
    },
-   "not": "O-17 (orkestratör kararı, 14.11.2026): + ana sigortanın yük tarafına, ana anahtarın akü tarafına: ana anahtar kapalıyken şarj edilir, robot enerjisiz; şarj akımı ana sigortadan da geçer. − ana dönüş yıldız noktasına. Sigorta akü tarafındaki ucun dibinde (kısa devrede akü besler). Sigorta değeri ve gerekçesi kesit_not alanında; şarj cihazı IMAX B6 (Robocombo sayfası: en çok 50 W). XT60E-M erkek panel girişinin pinleri ana anahtar öncesinde: **pinler her zaman akü geriliminde**, kapak / koruyucu takılır (K50).",
+   "not": "O-17 (orkestratör kararı, 14.11.2026): + ana sigortanın yük tarafına, ana anahtarın akü tarafına: ana anahtar kapalıyken şarj edilir, robot enerjisiz; şarj akımı ana sigortadan da geçer. − ana dönüş yıldız noktasına. Sigorta akü tarafındaki ucun dibinde (kısa devrede akü besler). Sigorta değeri ve gerekçesi kesit_not alanında; şarj cihazı IMAX B6 (Robocombo sayfası: en çok 50 W). XT60E-F erkek panel girişinin pinleri ana anahtar öncesinde: **pinler her zaman akü geriliminde**, kapak / koruyucu takılır (K50).",
    "besleme_zinciri": [
     "aku-bms",
     "ana-sigorta",
@@ -8922,7 +8922,7 @@
    "kutup": "+",
    "gerilim": "12 V",
    "sinif": "12V",
-   "ad": "şarj hat sigortası → XT60E-M +"
+   "ad": "şarj hat sigortası → XT60E-F +"
   },
   "aku-olcum": {
    "kutup": "+",
@@ -10048,12 +10048,12 @@
    "parca": "XT60 (robot tarafı)",
    "ag": "GND"
   },
-  "XT60E-M şarj girişi · +": {
-   "parca": "XT60E-M şarj girişi",
+  "XT60E-F şarj girişi · +": {
+   "parca": "XT60E-F şarj girişi",
    "ag": "sarj-girisi"
   },
-  "XT60E-M şarj girişi · −": {
-   "parca": "XT60E-M şarj girişi",
+  "XT60E-F şarj girişi · −": {
+   "parca": "XT60E-F şarj girişi",
    "ag": "GND"
   },
   "Yıldız barası · GND": {

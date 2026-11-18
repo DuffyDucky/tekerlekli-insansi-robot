@@ -1252,25 +1252,25 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - Teyit: ana anahtar ASW-A01'in saplama ölçüsü belgede yok: M5 varsayım (kablajda teyit edilecek); teslimde anahtarın saplaması okunur, M5 değilse anahtar ucundaki halka pabuçlar (G03, G04, G06, G07) o ölçüde alınır
 - Kaynak: `planlama/adim3/elektrik.md:323`, `raporlar/kaynaklar/06-aku-secimi.md:162` · 10.11 dökümü: #2
 
-#### G06 · Şarj kolu: akü + → 7,5 A hat sigortası → XT60E-M şarj girişi (+ / −)
+#### G06 · Şarj kolu: akü + → 7,5 A hat sigortası → XT60E-F şarj girişi (+ / −)
 
 - **Devre:** güç 12 V şarj · **dal:** sarj · **durum:** kablajda teyit edilecek
-- **Uçlar:** Ana anahtar ASW-A01 (giriş (akü tarafı; ana sigortanın yük tarafı) / yıldız barası) → XT60E-M panel şarj girişi (+ / −)
+- **Uçlar:** Ana anahtar ASW-A01 (giriş (akü tarafı; ana sigortanın yük tarafı) / yıldız barası) → XT60E-F panel şarj girişi (+ / −)
 - **Kesit:** 16 AWG (1,31 mm²); 16 AWG: 7,5 A hat sigortası ≤ 16 AWG'nin etekteki 8,2 A'i (45 °C düzeltmeli; O-1 / O-2, düzeltme turu 1) · **renk:** + kırmızı, − / GND siyah; makaron kırmızı
 - **Koruma:** Şarj hat sigortası 7,5 A mini (akü tarafındaki ucun dibinde) (`hat-sarj`, 7,5 A) · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → hat-sarj
 - **Boy:** **tahmin, P10.7b'de ölçülecek:** ≤ 400 mm; Manhattan 299 mm, `tasarim/freecad/montaj/montaj-analiz.json#parcalar`; uç vekili: şarj girişi CAD'de yok (etek üst plakası arkası): ana anahtar vekil. P10.7b'de ölçülecek (CAD'de tasarlanmış yol yok)
-- **Rehber adımı:** 17 K1, 33 F1 · **sonlandırma:** ana anahtar girişinde mavi M5 halka pabuç (M5 varsayım: ana anahtarın saplama ölçüsü kablajda teyit) (G03 ile aynı saplama); 7,5 A mini sigorta yuvası bu ucun dibinde, kuyruğuna lehim + makaron; panel ucu XT60E-M lehim; − yıldız barasına mavi pabuç
+- **Rehber adımı:** 17 K1, 33 F1 · **sonlandırma:** ana anahtar girişinde mavi M5 halka pabuç (M5 varsayım: ana anahtarın saplama ölçüsü kablajda teyit) (G03 ile aynı saplama); 7,5 A mini sigorta yuvası bu ucun dibinde, kuyruğuna lehim + makaron; panel ucu XT60E-F lehim; − yıldız barasına mavi pabuç
 - **Uç türü (uc_turu):** a: lehim, pabuc · b: bara-pabuc, lehim
 
 | Damar | Uç A | Uç B | Pin / kanal / not |
 |---|---|---|---|
-| + | Ana anahtar · giriş | XT60E-M şarj girişi · + | ara: 7,5 A mini hat sigortası yuvası (16 AWG kuyruklu), ana anahtar girişindeki ucun dibinde (O-17) |
-| − | XT60E-M şarj girişi · − | Yıldız barası · GND |  |
+| + | Ana anahtar · giriş | XT60E-F şarj girişi · + | ara: 7,5 A mini hat sigortası yuvası (16 AWG kuyruklu), ana anahtar girişindeki ucun dibinde (O-17) |
+| − | XT60E-F şarj girişi · − | Yıldız barası · GND |  |
 
 - Teyit: akü ayrı şarj ucuyla gelirse o kullanılır (O-17)
 - Teyit: ana anahtar ASW-A01'in saplama ölçüsü belgede yok: M5 varsayım (kablajda teyit edilecek); teslimde anahtarın saplaması okunur, M5 değilse anahtar ucundaki halka pabuçlar (G03, G04, G06, G07) o ölçüde alınır
-- Not: O-17 (orkestratör kararı, 14.11.2026): + ana sigortanın yük tarafına, ana anahtarın akü tarafına: ana anahtar kapalıyken şarj edilir, robot enerjisiz; şarj akımı ana sigortadan da geçer. − ana dönüş yıldız noktasına. Sigorta akü tarafındaki ucun dibinde (kısa devrede akü besler). Sigorta değeri ve gerekçesi kesit_not alanında; şarj cihazı IMAX B6 (Robocombo sayfası: en çok 50 W). XT60E-M erkek panel girişinin pinleri ana anahtar öncesinde: **pinler her zaman akü geriliminde**, kapak / koruyucu takılır (K50).
+- Not: O-17 (orkestratör kararı, 14.11.2026): + ana sigortanın yük tarafına, ana anahtarın akü tarafına: ana anahtar kapalıyken şarj edilir, robot enerjisiz; şarj akımı ana sigortadan da geçer. − ana dönüş yıldız noktasına. Sigorta akü tarafındaki ucun dibinde (kısa devrede akü besler). Sigorta değeri ve gerekçesi kesit_not alanında; şarj cihazı IMAX B6 (Robocombo sayfası: en çok 50 W). XT60E-F erkek panel girişinin pinleri ana anahtar öncesinde: **pinler her zaman akü geriliminde**, kapak / koruyucu takılır (K50).
 - Kaynak: `planlama/adim3/elektrik.md:372`, `planlama/adim3/elektrik.md:91`, `raporlar/kaynaklar/06-aku-secimi.md:165`, `planlama/maliyet.json:111` · 10.11 dökümü: #6
 
 ### gövde (K2) (3)

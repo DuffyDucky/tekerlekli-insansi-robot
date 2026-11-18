@@ -436,9 +436,9 @@
    },
    {
     "yer": "UC_MODELSIZ",
-    "ozet": "bbee6874b841293b",
+    "ozet": "950999070410e9e6",
     "neden": "uç etiketi: modelde parçası yok",
-    "metin": "XT60E-M şarj girişi = konnektör modelde yok (K50)"
+    "metin": "XT60E-F şarj girişi = konnektör modelde yok (K50)"
    },
    {
     "yer": "UC_MODELSIZ",
@@ -646,9 +646,9 @@
    },
    {
     "yer": "PARCA_CAD",
-    "ozet": "938a63130a556583",
+    "ozet": "7dad4a4b0d642996",
     "neden": "uç parçası → CAD",
-    "metin": "XT60E-M = modelsiz"
+    "metin": "XT60E-F = modelsiz"
    },
    {
     "yer": "PARCA_CAD",
@@ -706,9 +706,9 @@
    },
    {
     "yer": "MODELSIZ_KONUM",
-    "ozet": "cd575c6737818997",
+    "ozet": "a5e5bc3e1608644a",
     "neden": "modelsiz uç → nominal konum / vekil",
-    "metin": "XT60E-M * = None None"
+    "metin": "XT60E-F * = None None"
    },
    {
     "yer": "MODELSIZ_KONUM",
@@ -1632,9 +1632,9 @@
    },
    {
     "yer": "LISTE ZORUNLU",
-    "ozet": "2e3a0af16669d787",
+    "ozet": "0f5d0ca33d855d18",
     "neden": "kural listesi",
-    "metin": "('F5', \"pimleri, akü XT60'tan ayrılmadıkça gerilimlidir: ana anahtar da mantar da bu kolu kesmez\", 'F5 şarj pimleri sigortadan sonra gerilimli')"
+    "metin": "('F5', \"soketleri, akü XT60'tan ayrılmadıkça gerilimlidir: ana anahtar da mantar da bu kolu kesmez\", 'F5 şarj pimleri sigortadan sonra gerilimli')"
    },
    {
     "yer": "LISTE ZORUNLU",
@@ -1752,9 +1752,9 @@
    },
    {
     "yer": "LISTE ZORUNLU",
-    "ozet": "049123ad853fa9a7",
+    "ozet": "9f79b6ed9567e259",
     "neden": "kural listesi",
-    "metin": "('K1', 'karar verilene kadar zincirin kendi teliyle \\\\(A01, A02\\\\) aynı kesitte \\\\({awg.A01|A02}\\\\) kısa bir tel köprüyle kapalı durur; köprü yoksa röle çekmez', 'K1 Ö4 yeri köprülü, köprü teli zincirin kesitinde (köprü yoksa röle çekmez)')"
+    "metin": "('K1', 'zincirin kendi teliyle \\\\(A01, A02\\\\) aynı kesitte \\\\({awg.A01|A02}\\\\) kısa bir tel köprüyle kapalı durur; köprü yoksa röle çekmez', 'K1 Ö4 yeri köprülü, köprü teli zincirin kesitinde (köprü yoksa röle çekmez)')"
    },
    {
     "yer": "LISTE ZORUNLU",
@@ -1782,9 +1782,87 @@
    },
    {
     "yer": "LISTE ZORUNLU",
-    "ozet": "6e0ef3701eb36a13",
+    "ozet": "4c13534a5284769d",
     "neden": "kural listesi",
-    "metin": "('K1', 'Ö4 karar bekliyor \\\\(K60\\\\)', 'K1 Ö4 karar bekliyor (K60)')"
+    "metin": "('K1', 'Elde taşınan acil stop yok \\\\(K60 A\\\\): köprü kalıcıdır.*demoda mantarın yanında bir kişi durur', 'K1 Ö4: elde taşınan acil stop yok, köprü kalıcı, demo şartı (K60 A)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "28dd284ffaa8535d",
+    "neden": "kural listesi",
+    "metin": "('G3', 'kol takılınca dişe dayanacağı konumda \\\\(S2 = 4,3°\\\\) tak \\\\(K40 a\\\\)', 'G3 S2 horn dişe göre (K40 a)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "05f4af6455f2ce5f",
+    "neden": "kural listesi",
+    "metin": "('G3', 'sentil sınaması \\\\(K40 a\\\\) burada yapılmaz: S2 ilk kez F5', \"G3 sentil sınaması F5 aşama 2'ye gönderili (K40 a)\")"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "e93e3e0dcb1772bd",
+    "neden": "kural listesi",
+    "metin": "('F5', 'S2 sentil sınaması \\\\(K40 a.*0,3 mm geçmeli, 0,4 mm geçmemeli', 'F5 aşama 2 S2 sentil sınaması (K40 a)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "1ff17a32bcc58861",
+    "neden": "kural listesi",
+    "metin": "('F5', 'kuralının tek istisnasıdır ve yalnız şöyle yapılır: komutu mantardaki kişi verir', 'F5 sentil: tek istisna, komutu mantardaki kişi verir')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "e2c94ab715609083",
+    "neden": "kural listesi",
+    "metin": "('F5', 'kol durduktan sonra üç saniye bekle; mantardaki kişi bundan sonra kumandaya, telefona ve klavyeye dokunmaz', 'F5 sentil: 3 s bekleme, mantardaki kişi komut aygıtlarına dokunmaz')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "a27e533020b5768f",
+    "neden": "kural listesi",
+    "metin": "('F5', 'parmağını dişle kol arasına sokmaz \\\\(sıkışma hattı\\\\)', 'F5 sentil: parmak sıkışma hattına girmez')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "face958ab8e6779d",
+    "neden": "kural listesi",
+    "metin": "('F5', 'erişim alanından çıkmadan hiçbir komut verilmez', 'F5 sentil: kişi yakındayken komut verilmez')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "3204a256a272dd23",
+    "neden": "kural listesi",
+    "metin": "('F5', 'Kol beklenmedik biçimde kıpırdarsa mantara hemen basılır', 'F5 sentil: kol kıpırdarsa mantar')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "9596ceef6910ebd7",
+    "neden": "kural listesi",
+    "metin": "('F5', 'diş yüzünü zımparala \\\\(yalnız enerjisizken\\\\)', 'F5 sentil: zımpara enerjisizken')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "5708b4bd35bb586b",
+    "neden": "kural listesi",
+    "metin": "('F5', 'ölçülemedi diye kaydet ve omuz bandını sökmeden önce proje sahibine sor', 'F5 sentil: erişilemezse zorlama, sor')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "7b88407b259100c9",
+    "neden": "kural listesi",
+    "metin": "('F5', 'bu kuralın tek istisnası aşağıdaki S2 sentil sınamasıdır', 'F5 erişim kuralı sentil istisnasını gösteriyor')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "b4b17d76cf0e620d",
+    "neden": "kural listesi",
+    "metin": "('E3a', 'sonraki CAD paketinde eklenecek \\\\(K51 a\\\\)', 'E3a Pi hattı TVS modele sonraki CAD paketinde (K51 a)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "1631d1af9f4c0e96",
+    "neden": "kural listesi",
+    "metin": "('F1', 'XT60E-F, dişi panel girişi; K50 b', 'F1 şarj girişi dişi panel konnektör (K50 b)')"
    },
    {
     "yer": "LISTE ZORUNLU",
@@ -3914,9 +3992,9 @@
    },
    {
     "yer": "kaynak K1 alt adım 2 is_",
-    "ozet": "0ec70b0d0e6091cd",
+    "ozet": "97e08bd5d7b7c7ce",
     "neden": "yer tutucu, anahtar sözcük",
-    "metin": "Şarj kolu (G06, {awg.G06}): + ucu ana sigortanın yük tarafından, ana anahtarın giriş saplamasına gidecek (G03 ile aynı saplama, mavi {vida.ana-anahtar} halka pabuç, ana anahtarın saplama ölçüsü kablajda teyit; F1'de takılır); {a.hat-sarj} {bicak.hat-sarj} hat sigortasının kapaklı yuvası {yer.hat-sarj}, kuyruğuna lehim + makaron; öbür uç etekteki XT60E-M şarj girişine (F1); − ucu yıldız barasının {saplama.G06} numaralı saplamasına, alt adım 17.1'de takılan G05'in üstüne (mavi pabuç)."
+    "metin": "Şarj kolu (G06, {awg.G06}): + ucu ana sigortanın yük tarafından, ana anahtarın giriş saplamasına gidecek (G03 ile aynı saplama, mavi {vida.ana-anahtar} halka pabuç, ana anahtarın saplama ölçüsü kablajda teyit; F1'de takılır); {a.hat-sarj} {bicak.hat-sarj} hat sigortasının kapaklı yuvası {yer.hat-sarj}, kuyruğuna lehim + makaron; öbür uç etekteki XT60E-F (dişi) şarj girişine (F1); − ucu yıldız barasının {saplama.G06} numaralı saplamasına, alt adım 17.1'de takılan G05'in üstüne (mavi pabuç)."
    },
    {
     "yer": "kaynak K1 alt adım 2 is_",
@@ -4190,15 +4268,15 @@
    },
    {
     "yer": "kaynak K1 alt adım 8 is_",
-    "ozet": "8505158d21518bd4",
+    "ozet": "47ba8b8975eeab32",
     "neden": "yer tutucu, zorunlu, anahtar sözcük",
-    "metin": "Mantar ile düğüm arasında elde taşınan acil stop için ayrılan iki uçlu yer (Ö4; 2 pin 5,08 mm klemens) karar verilene kadar zincirin kendi teliyle (A01, A02) aynı kesitte ({awg.A01|A02}) kısa bir tel köprüyle kapalı durur; köprü yoksa röle çekmez."
+    "metin": "Mantar ile düğüm arasında elde taşınan acil stop için ayrılan iki uçlu yer (Ö4; 2 pin 5,08 mm klemens) zincirin kendi teliyle (A01, A02) aynı kesitte ({awg.A01|A02}) kısa bir tel köprüyle kapalı durur; köprü yoksa röle çekmez."
    },
    {
     "yer": "kaynak K1 alt adım 8 is_",
-    "ozet": "df44ea0a8e5cb688",
+    "ozet": "0c4531f4264678e4",
     "neden": "zorunlu, anahtar sözcük",
-    "metin": "Ö4 karar bekliyor (K60)."
+    "metin": "Elde taşınan acil stop yok (K60 A): köprü kalıcıdır, ileride kumandalı acil stop sökmeden bu yere eklenebilir; demoda mantarın yanında bir kişi durur."
    },
    {
     "yer": "kaynak K1 alt adım 8 is_",
@@ -4928,9 +5006,9 @@
    },
    {
     "yer": "kaynak E3a is_",
-    "ozet": "7213b1283d56a1b3",
+    "ozet": "376e26a54c9e5e6f",
     "neden": "zorunlu, anahtar sözcük",
-    "metin": "Her iki 5 V çıkışına bir P6KE6V8A TVS: SY8205 → QLED hattındaki modelde var, D24V50F5 → Pi hattındaki modelde ve BOM'da yok (ikinci TVS'i ayrıca al)."
+    "metin": "Her iki 5 V çıkışına bir P6KE6V8A TVS (satın alma listesinde 2 adet, `planlama/maliyet.json`): SY8205 → QLED hattındaki modelde var, D24V50F5 → Pi hattındaki bugün modelde ve BOM'da yok, sonraki CAD paketinde eklenecek (K51 a)."
    },
    {
     "yer": "kaynak E3a is_",
@@ -6266,9 +6344,9 @@
    },
    {
     "yer": "kaynak F1 is_",
-    "ozet": "deec3a5931deb056",
-    "neden": "anahtar sözcük",
-    "metin": "Delik açıldıysa konnektörü (XT60E-M, erkek panel girişi) tak, K1'de bırakılan şarj ucunu (G06) akü ayrıkken bağla; açılmadıysa uç bantlı kalır."
+    "ozet": "17d9f34606fb8d78",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "Delik açıldıysa konnektörü (XT60E-F, dişi panel girişi; K50 b: akü tarafı gömük soket, şarj kablosunun ucu erkek XT60; alımı açık, F5 notu) tak, K1'de bırakılan şarj ucunu (G06) akü ayrıkken bağla; açılmadıysa uç bantlı kalır."
    },
    {
     "yer": "kaynak F1 is_",
@@ -6278,9 +6356,9 @@
    },
    {
     "yer": "kaynak F1 is_",
-    "ozet": "3d3cf6946a635a5c",
+    "ozet": "751a59d90afa8763",
     "neden": "anahtar sözcük",
-    "metin": "XT60E-M pinleri sigorta takılınca her zaman akü geriliminde (ana anahtar da mantar da kesmez): kapağı takılı kalır."
+    "metin": "XT60E-F soketleri sigorta takılınca her zaman akü geriliminde (ana anahtar da mantar da kesmez): kapağı takılı kalır."
    },
    {
     "yer": "kaynak F1 baglanti_md",
@@ -6571,6 +6649,18 @@
     "metin": "Ön sağ bandı orta bandın önüne getir; z +88 bindirmesini 3 × M3×6 ile bağla, z +105 braketine dışarıdan M3×14. Bant düz bir yoldan girmiyor (ölçüm, Notlar)."
    },
    {
+    "yer": "kaynak F1 alt adım 3 is_",
+    "ozet": "ee57aafe40173cdc",
+    "neden": "anahtar sözcük",
+    "metin": "Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir)."
+   },
+   {
+    "yer": "kaynak F1 alt adım 3 is_",
+    "ozet": "80802b981c627131",
+    "neden": "anahtar sözcük",
+    "metin": "Bu bantta engel dil değil, z +105 braketinin perçin somunu (ölçüm): kuponda bu bant ayrıca, somun takılıyken denenir."
+   },
+   {
     "yer": "kaynak F1 alt adım 4 ad",
     "ozet": "f007bd8862c30b8b",
     "neden": "metin",
@@ -6599,6 +6689,18 @@
     "ozet": "4cf85ff8b2add8d9",
     "neden": "anahtar sözcük",
     "metin": "Ön sol bandı getir; z +88 sol bindirmesi 3 × M3×6, x −38 ön bindirmesi 2 × M3×6, z +105 braketine M3×14. Bant düz bir yoldan girmiyor (ölçüm, Notlar)."
+   },
+   {
+    "yer": "kaynak F1 alt adım 5 is_",
+    "ozet": "ee57aafe40173cdc",
+    "neden": "anahtar sözcük",
+    "metin": "Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir)."
+   },
+   {
+    "yer": "kaynak F1 alt adım 5 is_",
+    "ozet": "80802b981c627131",
+    "neden": "anahtar sözcük",
+    "metin": "Bu bantta engel dil değil, z +105 braketinin perçin somunu (ölçüm): kuponda bu bant ayrıca, somun takılıyken denenir."
    },
    {
     "yer": "kaynak F1 alt adım 6 ad",
@@ -6704,15 +6806,15 @@
    },
    {
     "yer": "kaynak F1 alt adım 10 is_",
-    "ozet": "81af8bb31f0220d8",
+    "ozet": "615ea861d93be360",
     "neden": "anahtar sözcük",
-    "metin": "XT60 şarj girişi (panel konnektör): önerilen yer etek üst plakasının arkası, delik modelde yok (doğrulanmadı); delik açıldıysa konnektörü (XT60E-M) tak, şarj ucunu (G06) akü ayrıkken bağla, açılmadıysa uç bantlı kalır."
+    "metin": "XT60 şarj girişi (panel konnektör): önerilen yer etek üst plakasının arkası, delik modelde yok (doğrulanmadı); delik açıldıysa konnektörü (XT60E-F, dişi; K50 b) tak, şarj ucunu (G06) akü ayrıkken bağla, açılmadıysa uç bantlı kalır."
    },
    {
     "yer": "kaynak F1 alt adım 10 is_",
-    "ozet": "fedceef949ef9ef7",
+    "ozet": "1f675a4fc2cc543d",
     "neden": "yer tutucu, anahtar sözcük",
-    "metin": "Şarj kolunun {a.hat-sarj} {bicak.hat-sarj} sigortası takılmaz (aşama 1 listesi); sonra XT60E-M pinleri her zaman gerilimli olacağı için kapağı kapalı kalır."
+    "metin": "Şarj kolunun {a.hat-sarj} {bicak.hat-sarj} sigortası takılmaz (aşama 1 listesi); sonra XT60E-F soketleri her zaman gerilimli olacağı için kapağı kapalı kalır."
    },
    {
     "yer": "kaynak F2 baslik",
@@ -7244,6 +7346,12 @@
    },
    {
     "yer": "kaynak F3 alt adım 1 is_",
+    "ozet": "ee57aafe40173cdc",
+    "neden": "anahtar sözcük",
+    "metin": "Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir)."
+   },
+   {
+    "yer": "kaynak F3 alt adım 1 is_",
     "ozet": "e42cb48fce364bb8",
     "neden": "metin",
     "metin": "Bandın boss'larındaki ısıl gömmeler (y 1198 dikişi ve F5'teki üst arka servis kapağının 4'ü) hazırlıkta takılı (adım 0; bantlar saydam çizili)."
@@ -7259,6 +7367,12 @@
     "ozet": "759c8cb4d559f3e9",
     "neden": "anahtar sözcük",
     "metin": "Göğüs bandı solu −x'ten getir; bindirmeleri bağla (x = 0'da cep altı y 1022,7 ve cep üstü y 1222 dahil), y 1095 braketine M5×18. Bant düz bir yoldan girmiyor (ölçüm, Notlar)."
+   },
+   {
+    "yer": "kaynak F3 alt adım 2 is_",
+    "ozet": "ee57aafe40173cdc",
+    "neden": "anahtar sözcük",
+    "metin": "Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir)."
    },
    {
     "yer": "kaynak F3 alt adım 2 is_",
@@ -7331,6 +7445,12 @@
     "ozet": "8ff53a750ffe53ab",
     "neden": "metin",
     "metin": "Ekran camı çerçevenin 2 mm gerisinde, köşe takozlarına dayalı."
+   },
+   {
+    "yer": "kaynak F3 alt adım 5 is_",
+    "ozet": "0df8a8782430c6b7",
+    "neden": "anahtar sözcük",
+    "metin": "Çerçeve düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir)."
    },
    {
     "yer": "kaynak F4 baslik",
@@ -7435,6 +7555,12 @@
     "metin": "y 1198 bindirmelerine M3×6 ISO 7380. Bandın boss'larındaki ısıl gömmeler (x 0 dikişi, S1 kaseti) hazırlıkta takılı (adım 0; bantlar saydam çizili)."
    },
    {
+    "yer": "kaynak F4 alt adım 1 is_",
+    "ozet": "326db8a185e131d9",
+    "neden": "anahtar sözcük",
+    "metin": "Bant düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir)."
+   },
+   {
     "yer": "kaynak F4 alt adım 2 ad",
     "ozet": "589b5b792e38655d",
     "neden": "metin",
@@ -7451,6 +7577,12 @@
     "ozet": "8132401b59191e44",
     "neden": "metin",
     "metin": "S1 kaseti ısıl gömmeleri hazırlıkta takılı (bantlar saydam çizili)."
+   },
+   {
+    "yer": "kaynak F4 alt adım 2 is_",
+    "ozet": "326db8a185e131d9",
+    "neden": "anahtar sözcük",
+    "metin": "Bant düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir)."
    },
    {
     "yer": "kaynak F4 alt adım 3 ad",
@@ -7670,9 +7802,9 @@
    },
    {
     "yer": "kaynak G3 is_",
-    "ozet": "77929d882015ba75",
-    "neden": "metin",
-    "metin": "1. S2 hornu, merkez vidası."
+    "ozet": "328b9ff8325adbc3",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "1. S2 hornu, merkez vidası: hornu, kol takılınca dişe dayanacağı konumda (S2 = 4,3°) tak (K40 a)."
    },
    {
     "yer": "kaynak G3 is_",
@@ -7691,6 +7823,12 @@
     "ozet": "58725d3e397140c2",
     "neden": "metin",
     "metin": "Çatal yerindeyken mafsal pulu + M5×12: arka koldan rulmanın iç bileziğinden göbekteki M5 ısıl gömmeye (iç bileziği göbeğe sıkar, çatal döner)."
+   },
+   {
+    "yer": "kaynak G3 is_",
+    "ozet": "ae61e2eb2f6af792",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "S2'nin sentil sınaması (K40 a) burada yapılmaz: S2 ilk kez F5 \"İlk enerji, aşama 2\"de sürülür, sınama orada."
    },
    {
     "yer": "kaynak G3 is_",
@@ -7778,9 +7916,9 @@
    },
    {
     "yer": "kaynak G3 alt adım 1 is_",
-    "ozet": "fba499a20497c9c1",
-    "neden": "metin",
-    "metin": "S2 hornu + merkez vidası; kol çatalı → horn (4 × M3×8): 625ZZ tezgâhta çatalın arka kolunun Ø16 yuvasına önceden preslenir, iki bileziğiyle çatalla birlikte gelir."
+    "ozet": "94e8104ebf601b49",
+    "neden": "anahtar sözcük",
+    "metin": "S2 hornu + merkez vidası (horn kol dişe dayalıyken, S2 = 4,3°; sentil sınaması F5 aşama 2'de, K40 a); kol çatalı → horn (4 × M3×8): 625ZZ tezgâhta çatalın arka kolunun Ø16 yuvasına önceden preslenir, iki bileziğiyle çatalla birlikte gelir."
    },
    {
     "yer": "kaynak G3 alt adım 1 is_",
@@ -8726,9 +8864,9 @@
    },
    {
     "yer": "kaynak F5 is_",
-    "ozet": "876840d7644e815e",
+    "ozet": "29b9c198470ab9d5",
     "neden": "zorunlu, anahtar sözcük",
-    "metin": "Kolların erişim alanında ve düşme hattında, kafanın ve tekerlerin erişim alanında kimse yok, bir kişi yalnız mantarda (kural 1 ve 7)."
+    "metin": "Kolların erişim alanında ve düşme hattında, kafanın ve tekerlerin erişim alanında kimse yok, bir kişi yalnız mantarda (kural 1 ve 7); bu kuralın tek istisnası aşağıdaki S2 sentil sınamasıdır, şartları o cümlede."
    },
    {
     "yer": "kaynak F5 is_",
@@ -8777,6 +8915,48 @@
     "ozet": "26d499619509ecc2",
     "neden": "metin",
     "metin": "Yön testinden sonra kontrol listesindeki sağ / sol kurulum testini yap."
+   },
+   {
+    "yer": "kaynak F5 is_",
+    "ozet": "d245f5781a13eca8",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "S2 sentil sınaması (K40 a; horn G3'te dişe göre takıldı)."
+   },
+   {
+    "yer": "kaynak F5 is_",
+    "ozet": "57d772f4bd68d24f",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "Bu sınama aşamadaki \"kolların erişim alanında kimse yok\" kuralının tek istisnasıdır ve yalnız şöyle yapılır: komutu mantardaki kişi verir; S2'ye 5 komutunu ver, kol durduktan sonra üç saniye bekle; mantardaki kişi bundan sonra kumandaya, telefona ve klavyeye dokunmaz, eli mantarın üstünde kalır."
+   },
+   {
+    "yer": "kaynak F5 is_",
+    "ozet": "b7de3887cc3cb146",
+    "neden": "zorunlu",
+    "metin": "Öbür kişi yalnız sentilin ucundan tutarak dişle kol arasına 0,3 mm sentili sokar, parmağını dişle kol arasına sokmaz (sıkışma hattı): 0,3 mm geçmeli, 0,4 mm geçmemeli."
+   },
+   {
+    "yer": "kaynak F5 is_",
+    "ozet": "0a600aec49c0e2ca",
+    "neden": "zorunlu",
+    "metin": "Kişi elini çekip kolun erişim alanından çıkmadan hiçbir komut verilmez; ikinci kol için aynı sıra."
+   },
+   {
+    "yer": "kaynak F5 is_",
+    "ozet": "77f724dec97f7850",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "Kol beklenmedik biçimde kıpırdarsa mantara hemen basılır."
+   },
+   {
+    "yer": "kaynak F5 is_",
+    "ozet": "95b4818cf1821cba",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "Bantlar takılıyken sentil dişle kol arasına düz giremiyorsa sınamayı zorlama; ölçülemedi diye kaydet ve omuz bandını sökmeden önce proje sahibine sor (aralığın kabuk altında erişilebilirliği CAD'de doğrulanmadı)."
+   },
+   {
+    "yer": "kaynak F5 is_",
+    "ozet": "ae20357fa7395269",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "0,3 geçmiyorsa ana anahtarı kapat, aküyü ayır, sonra diş yüzünü zımparala (yalnız enerjisizken) ve sınamayı yinele."
    },
    {
     "yer": "kaynak F5 is_",
@@ -8882,6 +9062,12 @@
    },
    {
     "yer": "kaynak F5 kontrol",
+    "ozet": "2e6da3938c5d47d5",
+    "neden": "anahtar sözcük",
+    "metin": "S2 5 komutunda dişle kol arasında 0,3 mm sentil geçiyor, 0,4 mm geçmiyor; iki kolda da (K40 a)"
+   },
+   {
+    "yer": "kaynak F5 kontrol",
     "ozet": "8b5c5a358c86e0e2",
     "neden": "metin",
     "metin": "Testte ESP32 ve göğüs dokunmatiği hub üzerinden görünüyor"
@@ -8978,15 +9164,21 @@
    },
    {
     "yer": "kaynak F5 not_",
-    "ozet": "cdacd3148695108e",
+    "ozet": "5c7fb3dcbe3c4135",
     "neden": "zorunlu, anahtar sözcük",
-    "metin": "Uyarı: sigorta takıldıktan sonra etekteki şarj girişinin (XT60E-M panel erkek, `planlama/maliyet.json`) pimleri, akü XT60'tan ayrılmadıkça gerilimlidir: ana anahtar da mantar da bu kolu kesmez."
+    "metin": "Uyarı: sigorta takıldıktan sonra etekteki şarj girişinin (XT60E-F panel dişi, K50 b) soketleri, akü XT60'tan ayrılmadıkça gerilimlidir: ana anahtar da mantar da bu kolu kesmez."
    },
    {
     "yer": "kaynak F5 not_",
-    "ozet": "841c0363f1d29be1",
+    "ozet": "01fa252346456cb3",
+    "neden": "metin",
+    "metin": "Soketlere metal sokma; kapak takılı kalır."
+   },
+   {
+    "yer": "kaynak F5 not_",
+    "ozet": "7a5aafc576e34372",
     "neden": "anahtar sözcük",
-    "metin": "Pimlere metal değdirme; kapak takılı kalır (K50, teslimde bakılacaklar)"
+    "metin": "Konnektörün alımı açık: siparişte XT60E-M varsa XT60E-F ile değiştirilir (K50, teslimde bakılacaklar)"
    },
    {
     "yer": "kaynak F5 not_",

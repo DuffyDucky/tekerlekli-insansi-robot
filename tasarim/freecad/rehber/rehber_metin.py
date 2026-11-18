@@ -390,7 +390,7 @@ ADIM = {
             "bantlı bırak; şarj kolunun + ucu (G06) ve akü ölçüm teli (G07) de anahtara gider; dördü F1'de bağlanır. "
             "Şarj kolu (G06, {awg.G06}): + ucu ana sigortanın yük tarafından, ana anahtarın giriş saplamasına gidecek (G03 ile aynı saplama, "
             "mavi {vida.ana-anahtar} halka pabuç, ana anahtarın saplama ölçüsü kablajda teyit; F1'de takılır); {a.hat-sarj} {bicak.hat-sarj} hat sigortasının kapaklı yuvası {yer.hat-sarj}, "
-            "kuyruğuna lehim + makaron; öbür uç etekteki XT60E-M şarj girişine (F1); − ucu yıldız barasının {saplama.G06} numaralı saplamasına, madde 2'de takılan G05'in üstüne (mavi pabuç). Kolu akü XT60'ının robot tarafından, ana hattan al: akü XT60'tan ayrılınca "
+            "kuyruğuna lehim + makaron; öbür uç etekteki XT60E-F (dişi) şarj girişine (F1); − ucu yıldız barasının {saplama.G06} numaralı saplamasına, madde 2'de takılan G05'in üstüne (mavi pabuç). Kolu akü XT60'ının robot tarafından, ana hattan al: akü XT60'tan ayrılınca "
             "kol da enerjisiz kalır (rehberdeki \"akü ayrık = enerjisiz\" düzeni buna dayanır; ana anahtar kapalıyken şarj edilir, karar "
             "O-17). Uç bantlı bırakılır, F1'de etekteki şarj girişine bağlanır; {a.hat-sarj} sigortası takılmaz (F1 aşama 1). "
             # P10.7b2e kısım 2 (F10l-kare-inceleme 17.2): uçların yeri (taban-analiz.json merkezleri; sağ / sol önden bakana göre)
@@ -482,9 +482,9 @@ ADIM = {
             "85'e; K2'de ön şarj kartında bobin klemensinin üstünde, katot bobin + ucuna. PC817 #1 girişi düğümden (A06, {awg.A06}; {gpio.ACIL_STOP_DURUM} "
             "okur): A06'nın + ucunu {parca.A06:+:a} noktasına, yani acil stop düğüm kartında bir klemensin kuyruğuna (kart altı) "
             "lehimle, modülün IN1 + klemensine bağla; "
-            "− ucunu modülün IN1 − klemensinden arayüz kartının GND pedine lehimle (makaron). Mantar ile düğüm arasında elde taşınan acil stop için ayrılan iki uçlu yer (Ö4; 2 pin 5,08 mm klemens) karar "
-            "verilene kadar zincirin kendi teliyle (A01, A02) aynı kesitte ({awg.A01|A02}) kısa bir tel köprüyle kapalı durur; köprü yoksa "
-            "röle çekmez. Ö4 karar bekliyor (K60). "
+            "− ucunu modülün IN1 − klemensinden arayüz kartının GND pedine lehimle (makaron). Mantar ile düğüm arasında elde taşınan acil stop için ayrılan iki uçlu yer (Ö4; 2 pin 5,08 mm klemens) "
+            "zincirin kendi teliyle (A01, A02) aynı kesitte ({awg.A01|A02}) kısa bir tel köprüyle kapalı durur; köprü yoksa "
+            "röle çekmez. Elde taşınan acil stop yok (K60 A): köprü kalıcıdır, ileride kumandalı acil stop sökmeden bu yere eklenebilir; demoda mantarın yanında bir kişi durur. "
             # P10.7b2e kısım 2 (F10l-kare-inceleme 17.8)
             "Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda, arayüz kartı "
             "elektronik katında solda; acil stop düğüm kartı karede görünmez (modelde yok); mantar F1'de sağ arka köşeye takılır.\n"
@@ -734,8 +734,8 @@ ADIM = {
             "1. Pi 5'i 4 pirinç burca tak: burç alttan M2,5×8, Pi üstten M2,5×5. Kablo kenarı öne: micro HDMI 0 kafa ekranına, "
             "micro HDMI 1 göğüs ekranına, CSI kameraya gidecek.\n"
             "2. Tablaya 1 mm köpük bant + kablo bağıyla: Pololu D24V50F5 (Pi'nin 5 V'u) ve SY8205 (kafa ekranının ayrı 5 V hattı). "
-            "Her iki 5 V çıkışına bir P6KE6V8A TVS: SY8205 → QLED hattındaki modelde var, D24V50F5 → Pi hattındaki modelde ve BOM'da yok "
-            "(ikinci TVS'i ayrıca al). TVS'ler tek yönlü; gövdedeki renkli bant katot ucudur (Vishay P6KE veri sayfası; "
+            "Her iki 5 V çıkışına bir P6KE6V8A TVS (satın alma listesinde 2 adet, `planlama/maliyet.json`): SY8205 → QLED hattındaki modelde var, "
+            "D24V50F5 → Pi hattındaki bugün modelde ve BOM'da yok, sonraki CAD paketinde eklenecek (K51 a). TVS'ler tek yönlü; gövdedeki renkli bant katot ucudur (Vishay P6KE veri sayfası; "
             "`planlama/adim3/kablolar.json` tvs). Her P6KE6V8A'yı çeviricinin çıkış uçlarına lehimle: D24V50F5'te {yon.P6KE6V8A-pi}, "
             "SY8205'te {yon.P6KE6V8A-ekran}. "
             # düzeltme turu 1 (F10i-kontrol A13): çift yönlü tipte bant yoktur, ayırt etmek için gövde baskısı (Vishay belge 88369)
@@ -1060,9 +1060,9 @@ ADIM = {
             "pabuç ({awg.G03|G04}; G03, G04) altta, üstte düz pul + yaylı pul; giriş ile çıkışı anahtarın üstündeki işaretten oku (anahtarın saplama "
             "ölçüsü {vida.ana-anahtar} varsayım, kablajda teyit: başka çıkarsa pabuçları o ölçüde al). G07 çıkışta olmalı: girişte olursa bölücü ana anahtar kapalıyken de akım çeker.\n"
             "5. XT60 şarj girişi (panel konnektör): önerilen yer etek üst plakasının arkası, delik modelde yok "
-            "(`tasarim/freecad/taban/rapor.html` şarj notu; doğrulanmadı). Delik açıldıysa konnektörü (XT60E-M, erkek panel girişi) tak, "
+            "(`tasarim/freecad/taban/rapor.html` şarj notu; doğrulanmadı). Delik açıldıysa konnektörü (XT60E-F, dişi panel girişi; K50 b: akü tarafı gömük soket, şarj kablosunun ucu erkek XT60; alımı açık, F5 notu) tak, "
             "K1'de bırakılan şarj ucunu (G06) akü ayrıkken bağla; açılmadıysa uç bantlı kalır. Şarj kolunun {a.hat-sarj} {bicak.hat-sarj} sigortası takılmaz "
-            "(aşama 1 listesi). XT60E-M pinleri sigorta takılınca her zaman akü geriliminde (ana anahtar da mantar da kesmez): kapağı "
+            "(aşama 1 listesi). XT60E-F soketleri sigorta takılınca her zaman akü geriliminde (ana anahtar da mantar da kesmez): kapağı "
             "takılı kalır.",
         baglanti_md="1,58 m: bindirme M3×6 ISO 7380; braket 6 × M3×14 ISO 7380 dışarıdan + M3 perçin somun (Y3 K2). M6'daki içeriden M3×8 eski",
         alet="alyan 2 (acil stop için ayrıca anahtar)",
@@ -1144,7 +1144,8 @@ ADIM = {
               dict(ad="Ön sağ bant", desen=("Etek ön sağ", "(etek z+88 sağ)", "(Etek braketi sağ z+105)"), ucus={"*": (1, 0, 1)},
                    saydam=("Etek ön sağ",),
                    is_="Ön sağ bandı orta bandın önüne getir; z +88 bindirmesini 3 × M3×6 ile bağla, z +105 braketine dışarıdan M3×14. "
-                       "Bant düz bir yoldan girmiyor (ölçüm, Notlar).",
+                       "Bant düz bir yoldan girmiyor (ölçüm, Notlar). Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir). Bu bantta "
+                       "engel dil değil, z +105 braketinin perçin somunu (ölçüm): kuponda bu bant ayrıca, somun takılıyken denenir.",
                    ucus_ok={"Etek ön sağ": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. Çizilen (1, 0, 1) yönünde sonar 1–12 mm; "
                                            "+z'de yalnız braket perçin somunu 1–7 mm, sonra serbest; +x'te sonar 1–73 mm; +y'de sonar 1–81 mm. "
                                            "Karar önerisi F10d-K1"}),
@@ -1158,7 +1159,8 @@ ADIM = {
               dict(ad="Ön sol bant", desen=("Etek ön sol", "(etek z+88 sol)", "(Etek braketi sol z+105)", "(etek x-38 ön)"),
                    ucus={"*": (1, 0, 1)}, kamera=(-0.85, 0.62, 1.25),
                    is_="Ön sol bandı getir; z +88 sol bindirmesi 3 × M3×6, x −38 ön bindirmesi 2 × M3×6, z +105 braketine M3×14. "
-                       "Bant düz bir yoldan girmiyor (ölçüm, Notlar).",
+                       "Bant düz bir yoldan girmiyor (ölçüm, Notlar). Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir). Bu bantta "
+                       "engel dil değil, z +105 braketinin perçin somunu (ölçüm): kuponda bu bant ayrıca, somun takılıyken denenir.",
                    ucus_ok={"Etek ön sol": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. Çizilen (−1, 0, 1) yönünde sonar 1–11 mm; "
                                            "+z'de yalnız braket perçin somunu 1–7 mm, sonra serbest; −x'te sonar 1–61 mm; +y'de sonar 1–81 mm. "
                                            "Karar önerisi F10d-K1"}),
@@ -1190,8 +1192,8 @@ ADIM = {
                        "saplamasına G03'ü ve şarj kolunun + pabucunu (G06), çıkış saplamasına G04'ü ve akü ölçüm telinin pabucunu (G07); "
                        "kalın pabuç (G03, G04) altta. XT60 şarj "
                        "girişi (panel konnektör): önerilen yer etek üst plakasının arkası, delik modelde yok (doğrulanmadı); delik "
-                       "açıldıysa konnektörü (XT60E-M) tak, şarj ucunu (G06) akü ayrıkken bağla, açılmadıysa uç bantlı kalır. Şarj "
-                       "kolunun {a.hat-sarj} {bicak.hat-sarj} sigortası takılmaz (aşama 1 listesi); sonra XT60E-M pinleri her zaman gerilimli olacağı için "
+                       "açıldıysa konnektörü (XT60E-F, dişi; K50 b) tak, şarj ucunu (G06) akü ayrıkken bağla, açılmadıysa uç bantlı kalır. Şarj "
+                       "kolunun {a.hat-sarj} {bicak.hat-sarj} sigortası takılmaz (aşama 1 listesi); sonra XT60E-F soketleri her zaman gerilimli olacağı için "
                        "kapağı kapalı kalır.")],
     ),
     "F2": dict(
@@ -1338,7 +1340,7 @@ ADIM = {
                    konum={"(gövde y1005": {"x": (0, 1000)}}, ucus={"*": (1, 0, 0)}, saydam=GOVDE_BANT,
                    kamera=(0.6, 0.45, 1.25),   # F10e: varsayılan bakışta bindirme cıvatası p0280 29 px (gizle-fark); bununla hepsi geçer
                    is_="Göğüs bandı sağı +x'ten getir (dikiş y 1005), bindirmeleri bağla, y 1095 braketine dışarıdan M5×18. "
-                       "Bant düz bir yoldan girmiyor (ölçüm, Notlar). Bandın boss'larındaki ısıl gömmeler (y 1198 dikişi ve F5'teki "
+                       "Bant düz bir yoldan girmiyor (ölçüm, Notlar). Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir). Bandın boss'larındaki ısıl gömmeler (y 1198 dikişi ve F5'teki "
                        "üst arka servis kapağının 4'ü) hazırlıkta takılı (adım 0; bantlar saydam çizili).",
                    ucus_ok={"Göğüs bandı sağ": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +x'te orta bant sağ ile 1–159 mm "
                                                "ortak hacim (bindirme dili), 173 mm'de ayrılıyor; +y'de orta bant 1–13 mm; ±z'de orta bant 1–213 mm. "
@@ -1346,7 +1348,7 @@ ADIM = {
               dict(ad="Göğüs bandı sol + y 1095 braketi", desen=("Göğüs bandı sol", "(Gövde braketi sol", "(gövde y1005", "(gövde x0"),
                    konum={"(gövde y1005": {"x": (-1000, 0)}}, ucus={"*": (1, 0, 0)}, kamera=(-0.85, 0.62, 1.25), saydam=GOVDE_BANT,
                    is_="Göğüs bandı solu −x'ten getir; bindirmeleri bağla (x = 0'da cep altı y 1022,7 ve cep üstü y 1222 dahil), y 1095 "
-                       "braketine M5×18. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Isıl gömmeler (y 1198 dikişi, üst arka servis kapağının "
+                       "braketine M5×18. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir). Isıl gömmeler (y 1198 dikişi, üst arka servis kapağının "
                        "3'ü) hazırlıkta takılı.",
                    ucus_ok={"Göğüs bandı sol": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. −x'te orta bant sol ile 1–135 mm "
                                                "ortak hacim (bindirme dili), 161 mm'de ayrılıyor; +y'de orta bant 1–13 mm ve göğüs bandı sağ 1–19 mm; "
@@ -1373,7 +1375,8 @@ ADIM = {
               dict(ad="Göğüs ekranı çerçevesi", desen=("Göğüs ekranı çerçevesi", "Çerçeve cıvatası"), ucus={"*": (0, 0, 1)},
                    saydam=GOVDE_BANT + ("Göğüs ekranı çerçevesi",),
                    is_="Çerçeve sağ + sol: göğüs bandına dışarıdan, yarı başına 4 × M3×6 ISO 7380, çerçeve flanşındaki ısıl gömmeye. "
-                       "Ekran camı çerçevenin 2 mm gerisinde, köşe takozlarına dayalı.",
+                       "Ekran camı çerçevenin 2 mm gerisinde, köşe takozlarına dayalı. Çerçeve düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe "
+                       "esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir).",
                    ucus_ok={"Göğüs ekranı çerçevesi": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +z'de göğüs bandı 1–9 mm "
                                                       "(flanş bandın iç yüzünde) ve ekran 3–7 mm; yana (dışa) göğüs bandı 1–151 mm; +y ve −z de kapalı. "
                                                       "Karar önerisi F10d-K1"})],
@@ -1403,7 +1406,8 @@ ADIM = {
                    # üstten bakışta x 0 arka ısıl gömmeyi kafa örtüyor: kafa kabukları ve iskeleti de saydam
                    saydam=GOVDE_BANT + KAFA_KABUK + ("Kafa iskeleti", "Servo yuvası", "Rulman yuvası", "Boyun", "Eğme çatalı"),
                    is_="Omuz bandı sağı Ø84 rulman kapağının üstünden geçir; üst kapak boynu sarar. y 1198 bindirmelerine M3×6 ISO 7380. "
-                       "Bandın boss'larındaki ısıl gömmeler (x 0 dikişi, S1 kaseti) hazırlıkta takılı (adım 0; bantlar saydam çizili).",
+                       "Bandın boss'larındaki ısıl gömmeler (x 0 dikişi, S1 kaseti) hazırlıkta takılı (adım 0; bantlar saydam çizili). Bant düz "
+                       "bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir).",
                    # F10f düzeltme 2 (kontrol F10f-kontrol-2 M8): kol adımında (36) dize anahtar kabul edilmez; aynı gerekçe dar anahtarla
                    # (engeller ve derinlikler düzeltilmiş denetimle ölçüldü, satır F10d'den beri değişmedi)
                    ucus_ok={"p0215": dar("yol", "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +x'te göğüs bandı sağ 1–161 mm "
@@ -1418,7 +1422,8 @@ ADIM = {
                                              "7–101 mm; ±z'de göğüs bandı ve omuz bandı sağ. Karar önerisi F10d-K1",
                                         p0214=63.0, p0151=25.25, p0143=10.0, p0291=2.57, p0293=2.57)},
                    is_="Omuz bandı solu aynı biçimde geçir; önde y 1198 ve x 0 dikişlerini M3×6 ile bağla. S1 kaseti ısıl gömmeleri "
-                       "hazırlıkta takılı (bantlar saydam çizili)."),
+                       "hazırlıkta takılı (bantlar saydam çizili). Bant düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini "
+                       "göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir)."),
               dict(ad="Omuz arka dikişi", desen=("(gövde y1198 arka)", "(gövde x0 arka)"), kamera=(-0.85, 0.62, -1.25),
                    ucus={"*": (1, 0, 0)}, saydam=GOVDE_BANT,
                    gizli_ok={"(gövde x0 arka)": voksel_ok(435, "arka sağ (0,85, 0,62, −1,25)")},
@@ -1465,10 +1470,11 @@ ADIM = {
     ),
     "G3": dict(
         baslik="S2 hornu, kol çatalı, üst kol tüpü",
-        is_="1. S2 hornu, merkez vidası.\n"
+        is_="1. S2 hornu, merkez vidası: hornu, kol takılınca dişe dayanacağı konumda (S2 = 4,3°) tak (K40 a).\n"
             "2. Kol çatalı → horn (4 × M3×8). 625ZZ çatalın arka kolunun Ø16 yuvasında: tezgâhta önceden preslenir, iki bileziğiyle "
             "çatalla gelir. Çatal yerindeyken mafsal pulu + M5×12: arka koldan rulmanın iç bileziğinden göbekteki M5 ısıl gömmeye "
-            "(iç bileziği göbeğe sıkar, çatal döner).\n"
+            "(iç bileziği göbeğe sıkar, çatal döner). S2'nin sentil sınaması (K40 a) burada yapılmaz: S2 ilk kez F5 \"İlk enerji, "
+            "aşama 2\"de sürülür, sınama orada.\n"
             "3. Üst kol tüpü → çatal.\n"
             "4. Kablolar (F4'te yarıktan dışarı alınan uzatma uçlarıyla, gövdeden kola doğru): yarıktan tambur bağına (ψ 145): 3 şerit kanala "
             "teğet, 2 ip demetin üstünde düğüm; yarıkla tambur bağı arası gevşek kalır (G4'te U-lopu). Tambur bağından göbek arka iç şeridine (G2).\n"
@@ -1496,7 +1502,7 @@ ADIM = {
                    # dirsek 625ZZ ile aynı yapı (F10g-gunluk.md, okur pikseli F10f-dogrula gizli_piksel)
                    gizli_ok={i: gizli("625ZZ rulman iç bileziği kol çatalının arka kolundaki Ø16 yuvada, mafsal pulu ve cıvata başının altında")
                              for i in ("p0116", "p0189")},
-                   is_="S2 hornu + merkez vidası; kol çatalı → horn (4 × M3×8): 625ZZ tezgâhta çatalın arka kolunun Ø16 yuvasına "
+                   is_="S2 hornu + merkez vidası (horn kol dişe dayalıyken, S2 = 4,3°; sentil sınaması F5 aşama 2'de, K40 a); kol çatalı → horn (4 × M3×8): 625ZZ tezgâhta çatalın arka kolunun Ø16 yuvasına "
                        "önceden preslenir, iki bileziğiyle çatalla birlikte gelir. Çatal yerindeyken mafsal pulu + M5×12: arka koldan "
                        "rulmanın iç bileziğinden göbekteki M5 ısıl gömmeye. Üst kol tüpü → çatal (2 × M3×8 → ısıl gömme). Kablolar "
                        "sonraki iki alt adımda."),
@@ -1748,7 +1754,8 @@ ADIM = {
             "sigorta listesi; F6 {a.F6} F3'te takıldı). Şarj kolunun {a.hat-sarj} {bicak.hat-sarj} sigortası bu aşamada da takılı değil. Tekerlekler yerden "
             "kesik (şasi takozda, `planlama/d158/testler/T13-rampada-acil-stop.md`); BTS EN = 0. Kollar aşağıda başlar: mantara basınca "
             "servo gücü de kesilir ve kollar düşer (E3 DTR / RTS notu). Kolların erişim alanında ve düşme hattında, kafanın ve tekerlerin "
-            "erişim alanında kimse yok, bir kişi yalnız mantarda (kural 1 ve 7). Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana "
+            "erişim alanında kimse yok, bir kişi yalnız mantarda (kural 1 ve 7); bu kuralın tek istisnası aşağıdaki S2 sentil sınamasıdır, "
+            "şartları o cümlede. Ana anahtar kapalıyken aküyü XT60'tan tak, sonra ana "
             "anahtarı aç: BMS kesiyor mu gözle (röle K1 açık; F3 / F4 / F5 / F6 girişleri, Pololu ve göğüs ekranı dalı dahil; ekranlı ilk "
             "açılışta F6 atmamalı, KT3). Pi açılır; ESP32, Pi seri portu açılınca resetlenmemeli (boot mesajı yok; E3 DTR / RTS). Pi'den "
             "devreye al, ESP32 ön şarj dizisi (E9): ön koşul (mantar serbest, servo hedefleri son konumda, BTS EN = 0 ve PWM = 0) → {gpio.ROLE_K2_ONSARJ} "
@@ -1758,7 +1765,15 @@ ADIM = {
             "sonra zaten bırakılmıştı; E9 adım 5), anahtarlı bara kesilir ({gpio.BARA_DURUM} HIGH), kollar düşer; göğüs ekranı dalı (F6) acil stopta açık kalır. "
             "Mantarı bırak: röle kendiliğinden çekmez, yeniden devreye alma yalnız Pi komutuyla. "
             "Motor yön testi: her yan ileri komutta ileri döner; dönen tekere el uzatılmaz. Yön testinden sonra kontrol listesindeki sağ / sol "
-            "kurulum testini yap. Bitince ana anahtarı kapat, aküyü XT60'tan ayır "
+            "kurulum testini yap. S2 sentil sınaması (K40 a; horn G3'te dişe göre takıldı). Bu sınama aşamadaki \"kolların erişim "
+            "alanında kimse yok\" kuralının tek istisnasıdır ve yalnız şöyle yapılır: komutu mantardaki kişi verir; S2'ye 5 komutunu ver, "
+            "kol durduktan sonra üç saniye bekle; mantardaki kişi bundan sonra kumandaya, telefona ve klavyeye dokunmaz, eli mantarın "
+            "üstünde kalır. Öbür kişi yalnız sentilin ucundan tutarak dişle kol arasına 0,3 mm sentili sokar, parmağını dişle kol arasına "
+            "sokmaz (sıkışma hattı): 0,3 mm geçmeli, 0,4 mm geçmemeli. Kişi elini çekip kolun erişim alanından çıkmadan hiçbir komut "
+            "verilmez; ikinci kol için aynı sıra. Kol beklenmedik biçimde kıpırdarsa mantara hemen basılır. Bantlar takılıyken sentil dişle kol "
+            "arasına düz giremiyorsa sınamayı zorlama; ölçülemedi diye kaydet ve omuz bandını sökmeden önce proje sahibine sor (aralığın "
+            "kabuk altında erişilebilirliği CAD'de doğrulanmadı). 0,3 geçmiyorsa ana anahtarı kapat, aküyü ayır, sonra diş yüzünü "
+            "zımparala (yalnız enerjisizken) ve sınamayı yinele. Bitince ana anahtarı kapat, aküyü XT60'tan ayır "
             "(`planlama/adim3/elektrik.md` E3, E9). Bu adımdaki sıra kaynakta yok, doğrulanmadı.\n"
             "3. Testten sonra kapat: arka servis kapağı, üst arka servis kapağı (hub'la birlikte), etek H1 ve H2.\n"
             "H1 sigorta kutusuna açılır: sık değişen F1, F3, F4, F5 ortadaki dört yuvada (29.10). Kutu 1 × 6 dizilişliyse kapak altında "
@@ -1775,6 +1790,7 @@ ADIM = {
                  "teyidiyle bitti, K2 en çok {s.k2_en_cok} çekti; mantara basınca K1 düştü, bara kesildi; her yan ileri komutta ileri döndü; sonunda "
                  "akü XT60'tan ayrıldı",
                  "Göğüs ekranı ilk açılışta F6 {a.F6}'i attırmadı (KT3)",
+                 "S2 5 komutunda dişle kol arasında 0,3 mm sentil geçiyor, 0,4 mm geçmiyor; iki kolda da (K40 a)",
                  "Testte ESP32 ve göğüs dokunmatiği hub üzerinden görünüyor",
                  "Kapak açılınca hub'a bağlı üç kablo gerilmiyor (yaklaşık 150 mm söküm payı)",
                  "E7 ve kafa ısı ölçümü kabuk kapalı yapıldı (kafada hesap ≈ 49 °C, ölçülmedi)", "Kapak altında kablo sıkışmadı",
@@ -1795,9 +1811,9 @@ ADIM = {
               "{ms.onsarj_bos} önerilir (Efe'ye bildirildi; karar yazılım tarafıyla). PC817 #2'nin ({gpio.BARA_DURUM}) LOW olması kondansatörlerin dolduğunu göstermez",
               "Şarj kolunun {a.hat-sarj} {bicak.hat-sarj} sigortası iki aşamada da takılı değil: kol ana sigortanın yük tarafında, ana anahtardan önce "
               "(`planlama/adim3/elektrik.md` sigorta listesi, karar O-17). Sigorta ilk şarjdan önce, akü XT60 ayrıkken takılır; bu sıra "
-              "kaynakta yok, doğrulanmadı. Uyarı: sigorta takıldıktan sonra etekteki şarj girişinin (XT60E-M panel erkek, "
-              "`planlama/maliyet.json`) pimleri, akü XT60'tan ayrılmadıkça gerilimlidir: ana anahtar da mantar da bu kolu kesmez. Pimlere "
-              "metal değdirme; kapak takılı kalır (K50, teslimde bakılacaklar)",
+              "kaynakta yok, doğrulanmadı. Uyarı: sigorta takıldıktan sonra etekteki şarj girişinin (XT60E-F panel dişi, "
+              "K50 b) soketleri, akü XT60'tan ayrılmadıkça gerilimlidir: ana anahtar da mantar da bu kolu kesmez. Soketlere "
+              "metal sokma; kapak takılı kalır. Konnektörün alımı açık: siparişte XT60E-M varsa XT60E-F ile değiştirilir (K50, teslimde bakılacaklar)",
               "Hub'ın kapakla birlikte açılması ve 150 mm söküm payı tahmin; testten önce hub bağlantısının yapılması montaj mantığından, "
               "kaynakta sıra yok: doğrulanmadı",
               "Hub harici beslemesiz (Ö2: hayır), USB'den beslenir; girişindeki gerilim ölçülmedi (KT5)",

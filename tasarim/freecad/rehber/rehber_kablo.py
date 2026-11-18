@@ -149,7 +149,7 @@ PARCA_CAD = {                                                           # tablo 
     "JGB37-520 ön sağ": r"^Motor JGB37-520 \(on sag\)", "JGB37-520 arka sağ": r"^Motor JGB37-520 \(arka sag\)",
     "XL4016 A": r"^XL4016 servo 6 V A", "XL4016 B": r"^XL4016 servo 6 V B", "XL4016 çevre": r"^XL4016 cevre",
     "XL4016 C": r"^XL4016 servo 6 V C",                                  # P10.7b2b (R8): G16 / SV3'ün ucu; CAD parçası güç panelinde
-    "XT60E-M": MODELSIZ,                                                 # P10.7b2b (R8): G06'nın ucu; modeli yok (K50, MODELSIZ_KONUM)
+    "XT60E-F": MODELSIZ,                                                 # P10.7b2b (R8): G06'nın ucu; modeli yok (K50, MODELSIZ_KONUM)
     "Dağıtım kartı A": r"^Servo dagitim karti A", "Dağıtım kartı B": r"^Servo dagitim karti B",
     "Arayüz kartı": r"^Arayuz karti", "ESP32 DevKit": r"^ESP32 (DevKit|tasiyici)", "ESP32 / arayüz kartı": r"^(ESP32 |Arayuz karti)",
     "Elektronik katı": r"^(Arayuz karti|PCA9685|ESP32 )", "PC817 modülü (arayüz kartı)": r"^Arayuz karti",
@@ -182,8 +182,8 @@ MODELSIZ_KONUM = {
     ("Dağıtım kartı C", "*"): (None, None,
                                "güç panelinde, XL4016 C'nin yanında (kablolar.json P7b2a-6); kart modelde yok (R23) ve yol 6 yalnız boyun → "
                                "kafa bölümünü çiziyor: kart yanı sınanmaz, elle bakıldı"),
-    ("XT60E-M", "*"): (None, None,
-                       "panel şarj girişi: konnektör K50'de karar bekliyor, etek deliği açık iş; modeli ve yol noktası yok: sınanmaz"),
+    ("XT60E-F", "*"): (None, None,
+                       "panel şarj girişi: konnektör K50 b (dişi; alımı açık), etek deliği açık iş; modeli ve yol noktası yok: sınanmaz"),
 }
 # P10.7b2b (F10h-kontrol-3 §3.3-2; R8): onay kaydı olmadan da yakalanacak eşleme bozmaları.
 # (a) Dal (GEO_DAL): dalda eşlenen her kablonun en az bir yanı dalın KENDİ noktalarıyla sağlanmalı; ana yolun ayrılma noktasına kadarki
@@ -268,7 +268,7 @@ UC_ETIKET = {
 UC_MODELSIZ = {
     "Acil stop düğümü (mantar NC çıkışı)": "düğüm kartı modelde yok", "Anahtarlı bara": "bara modelde yok (bara tutucusu CAD paketinde, K64)",
     "Yıldız barası": "bara modelde yok (bara tutucusu CAD paketinde, K64)", "XT60 (akü tarafı)": "konnektör modelde yok",
-    "XT60 (robot tarafı)": "konnektör modelde yok", "XT60E-M şarj girişi": "konnektör modelde yok (K50)",
+    "XT60 (robot tarafı)": "konnektör modelde yok", "XT60E-F şarj girişi": "konnektör modelde yok (K50)",
     "Dağıtım kartı C (kafa)": "kafa dağıtım kartı modelde yok", "Kafa giriş klemensi": "klemens modelde yok",
     "Göğüs regülatörü": "regülatör modelde yok (K52 a: güç panelinde)", "Ses bölücüsü": "bölücü modelde yok",
 }
