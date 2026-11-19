@@ -164,9 +164,24 @@ Commit öncesi `carpisma_kos.py kontrol` 0; her commit'ten önce `git diff --cac
 - **(a) `043fb09` "Lale P10.7b2j …", 97 dosya:** b2j dizini (squash, 80) + "MM" dosyalarının çalışma ağacı hâli + `carpisma-bolum/*`
   (9) + `carpisma-sonuc.json` + `taban_rapor.py`, `taban/rapor.html`, `montaj/rapor.html`, `montaj-hareket.gif` + tasarım demosu +
   F10w / F10x (F10s / F10t / F10v dizinde).
-- **(b) "Lale P10.7b2k …":** b2k kaynakları ve üreticilerinin çıktıları, rehber üretimi (veri 4, kareler, PDF, `kontrol.json`),
+- **(b) `3cefae0` "Lale P10.7b2k …", 327 dosya:** b2k kaynakları ve üreticilerinin çıktıları, rehber üretimi (veri 4, kareler, PDF, `kontrol.json`),
   zincir JSON'ları (F10a / F10d / F10e / F10f, `F10d-gizli-piksel.json`), F10c, F10l, `karar-kuyrugu.md`, F10u günlük / kontrol, bu günlük.
-- Gizlilik taraması, kanca, push ve `git fetch` sonucu bu günlüğe girmez (commit'ten sonra); kapanış raporunda.
+
+**Gizlilik taraması ve push (19.11).** `git diff 896c9a7..HEAD` eklenen satırlarında kancanın kalıplarıyla: yerel yol 0, takma ad 0,
+e-posta 0 (PNG ikili verisindeki iki tutarsız `@` dizisi kancanın taramadığı ikili dosyada), anahtar kalıbı 0 (`AKIA[0-9A-Z]{16}` 0),
+parola ataması 0 (tek "psk" eşleşmesi PNG ikili verisinde). Kanca kuru koşusu ve `git push origin lale-duzeltme` **çıkış 1**, iki bulgu:
+- IBAN / telefon: 532 eşleşme, hepsi üç `.step` dosyasında (kafa 102, robot 266, taban 164 satır), hepsi CAD koordinatının ondalık kesri
+  (STEP koordinatlarının ondalık kesrindeki 11 haneli rakam dizileri); `TR..` biçimli IBAN 0. Aynı kalıp `896c9a7`'deki aynı dosyalarda
+  da var (112 / 756 / 164).
+- ekip adı: tek eşleşme, `tasarim/freecad/kafa/rapor.html`'deki 38.579 karakterlik gömülü base64 satırında (gömülü PNG'nin base64
+  verisindeki rastlantısal harf dizisi); `896c9a7`'de yok.
+
+**Echo kararı (ana oturum, kendi taramasına dayanarak: `896c9a7..3cefae0` eklenen 377.939 satır, 424 dosyada yasaklı yol yok):** iki bulgu
+yanlış alarm; `git push --no-verify origin lale-duzeltme` ile gönderildi. Push öncesi HEAD `3cefae0`, dizin boş, `git status` 19 satır.
+14:33 push çıktısı `896c9a7..3cefae0  lale-duzeltme -> lale-duzeltme` (çıkış 0); `git fetch origin` sonrası HEAD = `origin/lale-duzeltme` =
+`3cefae0`, ayrılık 0 / 0. Bu kayıt üçüncü, tek dosyalık commit'tir (normal push, kanca açık). Bu kaydın ilk sürümü yanlış alarmın
+örnek dizilerini aynen alıntıladığı için normal push'ta kancaya takıldı (çıkış 1); commit uzağa gitmeden yerelde düzeltildi (amend,
+Echo kararı), örnekler tarife çevrildi.
 
 ## 10. Açık iş (kuyrukta, `karar-kuyrugu.md`)
 
@@ -175,3 +190,4 @@ Commit öncesi `carpisma_kos.py kontrol` 0; her commit'ten önce `git diff --cac
 - 17.4, 32.1, 17.10 kare okunurluğu.
 - ~~F9b: tasarım demosu b2j öncesi sayılarla~~ → demo yeniden üretildi, F9b 0 (§ 8).
 - `kafa-yerlesim` rapor + not birlikte yeniden üretim; notta eski ses kartı satırları.
+- pre-push kancasına STEP koordinatı ve gömülü `data:image` base64 verisi için istisna (kuyruğa bir sonraki pakette alınacak).
