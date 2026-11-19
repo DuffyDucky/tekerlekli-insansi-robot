@@ -1,6 +1,6 @@
 {
 "surum": 1,
-"uretim": "2026-11-19 12:51",
+"uretim": "2026-11-19 18:51",
 "betik": "tasarim/freecad/rehber/rehber_veri.py",
 "kaynak": {
 "m6": "planlama/adim4/M6-montaj-sirasi.md (adım sırası ve tablo metni)",
@@ -10379,11 +10379,31 @@
 "tezgah": "",
 "bag": "",
 "satir": [],
-"is_": "F1 20 A → röle K1 kontağı (30 → 87 (87a boş); soketin kuyruk numaraları kablajda teyit: G08 sigorta kutusundan girişe, G09 çıkıştan anahtarlı baranın 3 numaralı saplamasına; 12 AWG); F1 → ön şarj kartı → anahtarlı bara (G10, G11; 12 AWG). Ön şarj kartında, lehimden önce K2'nin pimlerini bul: akü ayrıkken röle gövdesindeki şemaya bak, multimetrenin süreklilik kademesinde (bobin boşta) COM ile NC arası öter, COM ile NO arası ötmez (pim yeri kablajda teyit). Sonra G10'u K2 kontağının girişine lehimle, ön şarj direnci (5,6 Ω) çıkış ucunda, G11 direncin öbür bacağından anahtarlı baranın 3 numaralı saplamasına; K2'nin uçları COM → NO (NC boş) (röle pimlerinin yeri kablajda teyit: röle gövdesindeki şema). Karede Kablo yolu 3 (G08–G12) anahtarlı baranın 3 numaralı saplamasına gelir; yolun 1 numaralı saplamadan sol BTS7960B'ye giden kısmı (G12) da görünür; o uç alt adım 17.5'te bağlanır. Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda.",
+"is_": "F1 20 A → röle K1 kontağı (30 → 87 (87a boş); soketin kuyruk numaraları kablajda teyit: G08 sigorta kutusundan girişe, G09 çıkıştan anahtarlı baranın 3 numaralı saplamasına; 12 AWG); F1 → ön şarj kartı → anahtarlı bara (G10, G11; 12 AWG). Ön şarj kartında, lehimden önce K2'nin pimlerini bul: akü ayrıkken röle gövdesindeki şemaya bak, multimetrenin süreklilik kademesinde (bobin boşta) COM ile NC arası öter, COM ile NO arası ötmez (pim yeri kablajda teyit). Sonra G10'u K2 kontağının girişine lehimle, ön şarj direnci (5,6 Ω) çıkış ucunda, G11 direncin öbür bacağından anahtarlı baranın 3 numaralı saplamasına; K2'nin uçları COM → NO (NC boş) (röle pimlerinin yeri kablajda teyit: röle gövdesindeki şema). Karede Kablo yolu 3 (G08–G12) anahtarlı baranın 3 numaralı saplamasına gelir; yolun 1 numaralı saplamadan sol BTS7960B'ye giden kısmı (G12) da görünür; o uç alt adım 17.5'te bağlanır. Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda. Saplama numaraları robota önden bakınca soldan sağa (B5a); karenin kamerası hafif soldan bakar, saplamaları önden bakışa göre say.",
 "kamera": [
--0.85,
-0.9,
-0.5
+-0.35,
+1.0,
+0.7
+],
+"saydam": [
+"p0005"
+],
+"odak": [
+"p1058",
+"p1059",
+"p1060",
+"p1061",
+"p1062",
+"p1063",
+"p1064",
+"p1065",
+"p1066",
+"p1067",
+"p1068",
+"p1069",
+"p1070",
+"p1078",
+"p1110"
 ],
 "demet": [
 "taban (K1)"
@@ -10395,21 +10415,6 @@
 "uc": [
 {
 "n": 1,
-"id": "p1071",
-"ad": "Sigorta kutusu",
-"kablo": [
-"G08",
-"G10"
-],
-"ip": [
-0.0,
-197.0,
--203.0
-],
-"karede": true
-},
-{
-"n": 2,
 "id": "p1078",
 "ad": "Röle K1",
 "kablo": [
@@ -10424,7 +10429,7 @@
 "karede": true
 },
 {
-"n": 3,
+"n": 2,
 "id": "p1110",
 "ad": "Anahtarlı bara",
 "kablo": [
@@ -10440,7 +10445,7 @@
 "karede": true
 },
 {
-"n": 4,
+"n": 3,
 "id": "p1058",
 "ad": "Ön şarj kartı",
 "kablo": [
@@ -10455,7 +10460,7 @@
 "karede": true
 },
 {
-"n": 5,
+"n": 4,
 "id": "p1085",
 "ad": "Yıldız barası",
 "kablo": [
@@ -10470,6 +10475,14 @@
 }
 ],
 "uc_yok": [
+{
+"ad": "Sigorta kutusu",
+"neden": "bu kadrajın dışında",
+"kablo": [
+"G08",
+"G10"
+]
+},
 {
 "ad": "BTS7960 sol",
 "neden": "bu bakışta başka parçaların arkasında",
@@ -10839,9 +10852,9 @@
 "satir": [],
 "is_": "Enkoder, BTS sinyal ve sonar kabloları (dişi uçlu sinyal teli, O-4 r; pinler `planlama/adim3/kablolar.md`'de, kart üstü yazıya göre bağla): arka sol motorun enkoderi (N01) ve arka sağ motorun enkoderi (N02) → ESP32 taşıyıcı başlığı (VCC → 3V3, GND, A, B). Sol BTS7960B'nin sinyal başlığı (B01) ve sağınki (B02) → ESP32 (IN1, IN2) ve arayüz kartı (EN1 + EN2 → BTS EN düğümü, IS1 + IS2 → IS bölücüsü, VCC → çevre 5 V, GND). Sonarlar: sağ (Q01), orta (Q02) ve sol (Q03) sonarın VCC'sini arayüz kartının çevre 5 V'una, Trig'ini PCA9685'e, Echo'sunu arayüz kartındaki sonar bölücüsüne, GND'sini arayüz kartının GND'sine bağla. Motor uçları B3'te BTS7960B'ye bağlandı. Acil stop ucunu bırak: mantar F1'de takılır. Karede vurgulu Kablo yolu 12 (B01) tabanda kalır: sol BTS7960B'den ESP32 taşıyıcısına. ESP32'nin direğe çıkan kablosu ESP32 USB'dir (U06, alt adım 32.4). Karede yer: ESP32 taşıyıcı ve PCA9685 elektronik katında önden bakınca sağda, arayüz kartı solda; sonarlar ön yüzde. Q03 ve B01 elektronik katına ön kat kesiğinden geçer; karedeki Kablo yolu 11 ve 12 kesiğin dışında görünür (çizim kusuru).",
 "kamera": [
--0.6,
-0.9,
-0.5
+0.0,
+1.0,
+0.45
 ],
 "saydam": [
 "p0890"
@@ -11110,6 +11123,20 @@
 125.0
 ],
 "karede": true
+},
+{
+"n": 2,
+"id": "p1209",
+"ad": "ESP32",
+"kablo": [
+"U06"
+],
+"ip": [
+80.5,
+197.0,
+75.0
+],
+"karede": true
 }
 ],
 "uc_yok": [
@@ -11118,6 +11145,13 @@
 "neden": "kafa dağıtım kartı modelde yok",
 "kablo": [
 "P03"
+]
+},
+{
+"ad": "USB hub",
+"neden": "bu adımda takılı değil",
+"kablo": [
+"U06"
 ]
 }
 ]
@@ -13299,7 +13333,7 @@
 "Burada: servo A, servo B, servo kafa, kafa 12 V, enkoder / BTS sinyalleri (tabanda), boyun demeti, ESP32 USB ve göğüs ekranı kabloları. Şemada devre sınıfının renginde (lejant); tıklayınca tablodaki kimlik, uçlar, kesit, sigorta",
 "Göğüs ekranı, hub ve ses yolları gösterim şemasıdır (`lale158/kablo_yolu_ekran.py`): parça sayısına girmez; kablo çapı, büküm yarıçapı ve port yeri doğrulanmadı",
 "Şemada taban kısımları da görünür: onlar K1'de bağlandı",
-"Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.560, hoparlör 1.030, göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`). Kablo listesi: `planlama/adim3/kablolar.md`"
+"Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI (H02) 950, hub uzatması (U03) 920, ESP32 USB (U06) 1.560, hoparlör (AU3) 1.030, göğüs 12 V (G21) 1.720 mm (`planlama/adim3/elektrik.md`). Kablo listesi: `planlama/adim3/kablolar.md`"
 ],
 "not_": [
 "Boyun demeti K14 a ile kapandı (CAD'deki gibi 5 kablo, şartlarla; `planlama/adim3/kablolama-on-kararlar.md` §4): demet yazıldığı gibi kurulamayabilir, tünel deneme parçasındaki fiş denemesi belirler",
@@ -14241,7 +14275,7 @@
 "b:5",
 "b:6"
 ],
-"is_": "Ön sağ bandı orta bandın önüne getir; z +88 bindirmesini 3 × M3×6 ile bağla, z +105 braketine dışarıdan M3×14. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir). Bu bantta engel dil değil, z +105 braketinin perçin somunu (ölçüm): kuponda bu bant ayrıca, somun takılıyken denenir.",
+"is_": "Ön sağ bandı orta bandın önüne getir; z +88 bindirmesini 3 × M3×6 ile bağla, z +105 braketine dışarıdan M3×14. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil orta bantta: bu bandın z +88 kenarı orta bandın dilinin dışından geçer (ölçüm). Bandı yerinin 10 mm önünde yandan (+x) getir (bu yol serbest, ölçüm), sonra önden içeri (−z) it: bu son 10 mm'de engel dil değil, z +105 braketinin perçin somunu (1–8 mm, ölçüm); bandı hafifçe esneterek somunun üstünden geçir (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme denenmedi; bu bant için kupon henüz yok.",
 "saydam": [
 "p0223"
 ],
@@ -14282,7 +14316,7 @@
 "b:9",
 "b:10"
 ],
-"is_": "Ön sol bandı getir; z +88 sol bindirmesi 3 × M3×6, x −38 ön bindirmesi 2 × M3×6, z +105 braketine M3×14. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir). Bu bantta engel dil değil, z +105 braketinin perçin somunu (ölçüm): kuponda bu bant ayrıca, somun takılıyken denenir.",
+"is_": "Ön sol bandı getir; z +88 sol bindirmesi 3 × M3×6, x −38 ön bindirmesi 2 × M3×6, z +105 braketine M3×14. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil orta bantta: bu bandın z +88 kenarı orta bandın dilinin dışından geçer (ölçüm). Bandı yerinin 10 mm önünde yandan (−x) getir (bu yol serbest, ölçüm), sonra önden içeri (−z) it: bu son 10 mm'de engel dil değil, z +105 braketinin perçin somunu (1–8 mm, ölçüm); bandı hafifçe esneterek somunun üstünden geçir (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme denenmedi; bu bant için kupon henüz yok.",
 "kamera": [
 -0.85,
 0.62,
@@ -15512,7 +15546,7 @@
 "b:1",
 "b:2"
 ],
-"is_": "Göğüs bandı sağı +x'ten getir (dikiş y 1005), bindirmeleri bağla, y 1095 braketine dışarıdan M5×18. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir). Bandın boss'larındaki ısıl gömmeler (y 1198 dikişi ve F5'teki üst arka servis kapağının 4'ü) hazırlıkta takılı (adım 0; bantlar saydam çizili).",
+"is_": "Göğüs bandı sağı +x'ten getir (dikiş y 1005), bindirmeleri bağla, y 1095 braketine dışarıdan M5×18. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil orta bantta. Bandı dikişin 16 mm üstünde yandan getir (bu yol serbest, ölçüm), sonra aşağı indir. İnişin son 12 mm'sinde bandın alt kenarı orta bandın dilinin dışından geçmeli; modelde bu geçme sıkı: orta bantla ortak hacim 1–12 mm boyunca, en çok ≈ 2.200 mm³, ölçüm; dikişe 10 mm kala radyal girişim önde 6,8 mm, ön-yan köşede 7,8 mm (kupon dilimi, ölçüm). Ön yüz eğik, arka yüz dik: tek bir itiş ikisini birlikte kurtarmaz. Bandın esneyip yerine oturup oturmayacağı bilinmiyor; buna kupon karar verir (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): kupon sonucunu ya da tasarım değişikliğini (K55 b) bekle. İnişte dikişin ısıl gömmeleri ve y 1095 braketinin perçin somunu da kenara değer (1–14 mm, ölçüm). Bu geçme kuponla denenmedi; kupon sonucu gelince bu adım yeniden yazılabilir. Bandın boss'larındaki ısıl gömmeler (y 1198 dikişi ve F5'teki üst arka servis kapağının 4'ü) hazırlıkta takılı (adım 0; bantlar saydam çizili).",
 "kamera": [
 0.6,
 0.45,
@@ -15548,7 +15582,7 @@
 "b:4",
 "b:5"
 ],
-"is_": "Göğüs bandı solu −x'ten getir; bindirmeleri bağla (x = 0'da cep altı y 1022,7 ve cep üstü y 1222 dahil), y 1095 braketine M5×18. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir). Isıl gömmeler (y 1198 dikişi, üst arka servis kapağının 3'ü) hazırlıkta takılı.",
+"is_": "Göğüs bandı solu −x'ten getir; bindirmeleri bağla (x = 0'da cep altı y 1022,7 ve cep üstü y 1222 dahil), y 1095 braketine M5×18. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil orta bantta. Bandı dikişin 24 mm üstünde yandan getir (bu yol serbest, ölçüm), sonra aşağı indir. İnişin son 12 mm'sinde bandın alt kenarı orta bandın dilinin dışından geçmeli; modelde bu geçme sıkı: orta bantla ortak hacim 1–12 mm boyunca, en çok ≈ 2.100 mm³, ölçüm; dikişe 10 mm kala radyal girişim önde 6,8 mm, ön-yan köşede 7,8 mm (kupon dilimi, ölçüm). Ön yüz eğik, arka yüz dik: tek bir itiş ikisini birlikte kurtarmaz. Bandın esneyip yerine oturup oturmayacağı bilinmiyor; buna kupon karar verir (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): kupon sonucunu ya da tasarım değişikliğini (K55 b) bekle. İnişte x 0 dikişinde göğüs bandı sağın bindirmesi (1–18 mm), orta bant sağ (1–4 mm), dikişin ısıl gömmeleri ve braketin perçin somunu da değer (ölçüm). Bu geçme kuponla denenmedi; kupon sonucu gelince bu adım yeniden yazılabilir. Isıl gömmeler (y 1198 dikişi, üst arka servis kapağının 3'ü) hazırlıkta takılı.",
 "kamera": [
 -0.85,
 0.62,
@@ -15663,7 +15697,7 @@
 "b:11",
 "b:12"
 ],
-"is_": "Çerçeve sağ + sol: göğüs bandına dışarıdan, yarı başına 4 × M3×6 ISO 7380, çerçeve flanşındaki ısıl gömmeye. Ekran camı çerçevenin 2 mm gerisinde, köşe takozlarına dayalı. Çerçeve düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir).",
+"is_": "Çerçeve sağ + sol: göğüs bandına dışarıdan, yarı başına 4 × M3×6 ISO 7380, çerçeve flanşındaki ısıl gömmeye. Ekran camı çerçevenin 2 mm gerisinde, köşe takozlarına dayalı. Çerçeve düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; ölçüm: çerçeve kenarı göğüs bandının iç yüzünde). Oturmazsa zorlama (çerçeve kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme denenmedi; bu bant için kupon henüz yok.",
 "saydam": [
 "p0205",
 "p0206",
@@ -15821,7 +15855,7 @@
 "b:0",
 "b:1"
 ],
-"is_": "Omuz bandı sağı Ø84 rulman kapağının üstünden geçir; üst kapak boynu sarar. y 1198 bindirmelerine M3×6 ISO 7380. Bandın boss'larındaki ısıl gömmeler (x 0 dikişi, S1 kaseti) hazırlıkta takılı (adım 0; bantlar saydam çizili). Bant düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir).",
+"is_": "Omuz bandı sağı Ø84 rulman kapağının üstünden geçir; üst kapak boynu sarar. y 1198 bindirmelerine M3×6 ISO 7380. Bandın boss'larındaki ısıl gömmeler (x 0 dikişi, S1 kaseti) hazırlıkta takılı (adım 0; bantlar saydam çizili). Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil göğüs bandında; y 1198 dikişinde kesit dik, düz inişte dil engel değil (ölçüm). Bandı dikişin 16 mm üstünde yandan (+x) getir, sonra aşağı indir. Bu yolda engel bant değil, Ø84 rulman kapağı (yanal yolun son 4 mm'si ve inişte dikişin 16–7 mm üstü; ortak hacim en çok ≈ 300 mm³) ve kapak cıvataları (yanal yolun son 6 mm'si, ölçüm): bandın kenarı kapağın üstünden esnetilerek geçmeli (K55 a, geçici). Bandın esneyip geçeceği bilinmiyor. Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme denenmedi; bu bant için kupon henüz yok.",
 "kamera": [
 0.3,
 1.0,
@@ -15889,7 +15923,7 @@
 "b:2",
 "b:3"
 ],
-"is_": "Omuz bandı solu aynı biçimde geçir; önde y 1198 ve x 0 dikişlerini M3×6 ile bağla. S1 kaseti ısıl gömmeleri hazırlıkta takılı (bantlar saydam çizili). Bant düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir).",
+"is_": "Omuz bandı solu aynı biçimde geçir; önde y 1198 ve x 0 dikişlerini M3×6 ile bağla. S1 kaseti ısıl gömmeleri hazırlıkta takılı (bantlar saydam çizili). Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil göğüs bandında; düz inişte dil engel değil (ölçüm). Bandı dikişin 16 mm üstünde yandan (−x) getir, sonra aşağı indir. Engel sağdaki gibi rulman kapağı ve kapak cıvataları (ölçüm): bandın kenarı kapağın üstünden esnetilerek geçmeli (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme denenmedi; bu bant için kupon henüz yok.",
 "kamera": [
 -0.85,
 0.62,
@@ -50816,13 +50850,13 @@
 "neden": "yeni parça yok"
 }
 ],
-"sure_s": 34.2,
-"sure_baglanti_s": 12.2
+"sure_s": 35.4,
+"sure_baglanti_s": 12.8
 },
 "uc_kaynak": {
 "konum": 24,
 "etiket": 58,
-"yok": 36,
+"yok": 38,
 "ortulu_kullanilmayan": [],
 "en_cok": 10,
 "kural": "rehber_gorunum.uc_isle (P10.7b2f)"

@@ -1289,11 +1289,69 @@ def bara_tutarlilik(KYT, arayuz_taban=None, tablo=None):
 U06_PORT_PAY = 2.5
 
 
-def u06_port_denetle(analiz=None):
+U06_YON_EN_AZ = 4        # P10.8b: rehberde DevKit yönünü söyleyen cümle sayısı (B6a iş, B6a kontrol, F1 kontrol, K1 17.11)
+
+
+def _rm_dizeler(x):
+    """rehber_metin yapısındaki bütün dizeler (iç içe dict / list / tuple)."""
+    if isinstance(x, str):
+        yield x
+    elif isinstance(x, dict):
+        for v in x.values():
+            yield from _rm_dizeler(v)
+    elif isinstance(x, (list, tuple)):
+        for v in x:
+            yield from _rm_dizeler(v)
+
+
+def u06_yon_denetle(analiz, RM=None):
+    """P10.8b (planlama/d158/P108b-gunluk.md § 2; F10u-kontrol 7'nin açık işi): ESP32 DevKit'in modeldeki yönü ↔ rehberin söylediği yön.
+    FreeCAD istemez; taban-analiz.json'daki iki bağımsız iz (taban_lib.esp_local'dan):
+      (a) taşma: micro USB portu kart kenarından 1 mm dışarı taşar (esp_local port l/2 + 1), WROOM taşmaz → DevKit kutusu taşıyıcı
+          kartın merkezinden port tarafına daha uzağa uzanır;
+      (b) kütle: WROOM kalkanı (18 x 25,5 x 3,2 mm) portun karşı ucunda → DevKit hacim merkezi kutu merkezinden WROOM tarafına kayar.
+    İkisi ayrı yön derse HATA (model yönü okunamıyor). Robota önden (+z) bakan için +x sağdır (y yukarı). Rehberde "micro USB portu /
+    fişi ... önden bakınca sağ / sol" ve "WROOM modülü sağda / solda" cümleleri model yönüyle aynı olmalı; en az U06_YON_EN_AZ cümle
+    (sessiz düşüş yok). Sınır: iz 1 mm taşma ve kütle kayması; esp_local'ın biçimi değişirse eşikler (0,4 mm / 0,5 mm) yeniden bakılır.
+    Bilinen sınır (P108b-kontrol D4, düzeltme turu 1'de kod değişmedi): taşma izi taşıyıcı merkezine göre ölçülür; DevKit taşıyıcıda
+    dönmeden ≈ 0,6 mm kayarsa iz eşiğin altına düşer ve "okunamıyor" HATA verir. Bu güvenli yanda yanlış alarmdır (ters kart
+    kaçırılmaz); kütle izi (≈ 3,4 mm) sağlamdır. Böyle bir HATA'da önce DevKit'in taşıyıcıdaki konumuna bak."""
+    hata = []
+    dk = [p for p in analiz["parcalar"] if p["ad"].startswith("ESP32 DevKit")]
+    ta = [p for p in analiz["parcalar"] if p["ad"].startswith("ESP32 tasiyici kart")]
+    if len(dk) != 1 or len(ta) != 1:
+        return ["U06 yön: taban-analiz.json'da %d ESP32 DevKit, %d taşıyıcı kart (1 / 1 beklenir)" % (len(dk), len(ta))]
+    bb, mx = dk[0]["bb"], dk[0]["merkez"][0]
+    tc = (ta[0]["bb"][0] + ta[0]["bb"][1]) / 2.0
+    tasma = (bb[1] - tc) - (tc - bb[0])                     # > 0: kutu +x'e daha uzun (port +x)
+    kutle = (bb[0] + bb[1]) / 2.0 - mx                      # > 0: hacim merkezi −x'te (WROOM −x, port +x)
+    if abs(tasma) < 0.4 or abs(kutle) < 0.5:
+        return ["U06 yön: ESP32 DevKit yönü modelden okunamıyor (taşma %.2f mm, kütle kayması %.2f mm; eşik 0,4 / 0,5)" % (tasma, kutle)]
+    if (tasma > 0) != (kutle > 0):
+        return ["U06 yön: ESP32 DevKit izleri çelişiyor: taşma port %s, kütle port %s (model 180° dönmüş ya da bozuk)" % (
+            "+x" if tasma > 0 else "−x", "+x" if kutle > 0 else "−x")]
+    model = "sağ" if tasma > 0 else "sol"
+    if RM is None:
+        import rehber_metin as RM
+    say = 0
+    for s in _rm_dizeler(RM.ADIM):
+        for m in re.finditer(r"micro USB (?:portu|fişini)[^.;]*?önden bakınca (sağ|sol)", s):
+            say += 1
+            if m.group(1) != model:
+                hata.append("U06 yön: rehber '%s…' diyor, modelde micro USB portu önden bakınca %sda" % (m.group(0)[:70], model))
+        for m in re.finditer(r"WROOM modülü (sağ|sol)da", s):
+            if m.group(1) == model:
+                hata.append("U06 yön: rehber '%s' diyor, modelde WROOM portun karşısında (%s)" % (m.group(0), "sol" if model == "sağ" else "sağ"))
+    if say < U06_YON_EN_AZ:
+        hata.append("U06 yön: rehberde DevKit yönünü söyleyen %d cümle (en az %d; cümle silinmiş ya da biçimi değişmiş)" % (say, U06_YON_EN_AZ))
+    return hata
+
+
+def u06_port_denetle(analiz=None, RM=None):
     """P10.7b2k (F10r-kontrol D5): U06 ("ESP32 USB") şemasının taban ucu ESP32 DevKit'in micro USB portuna kilitli. kablo_yolu_ekran
     ESP_PORT ESP32 DevKit kutusunun +x yüzünde (taban-analiz.json), y ve z kutunun içinde; şemanın son noktası port ağzının
-    U06_PORT_PAY mm önünde (+x). Kart taşınırsa ve şema kalırsa HATA. Sınır (F10u-kontrol 7): DevKit CAD'de 180° dönerse kutu aynı
-    kalır, sınama geçer; yön yalnız taban_lib.esp_local'da (FreeCAD ister), açık iş karar kuyruğunda."""
+    U06_PORT_PAY mm önünde (+x). Kart taşınırsa ve şema kalırsa HATA. P10.8b: DevKit'in yönü (180° dönmesi) u06_yon_denetle'de
+    (F10u-kontrol 7'deki sınır kapandı; "kutu aynı kalır" yalnız yaklaşık doğruydu, kutu 1 mm kayar)."""
     for p in (FC_DIZIN, os.path.join(FC_DIZIN, "lale158")):
         if p not in sys.path:
             sys.path.insert(0, p)
@@ -1310,7 +1368,7 @@ def u06_port_denetle(analiz=None):
     hedef = (ep[0] + U06_PORT_PAY, ep[1], ep[2])
     if son is None or math.dist(son, hedef) > 0.05:
         hata.append("U06: 'ESP32 USB' şemasının son noktası %r, port ağzının %.1f mm önü %r değil" % (son, U06_PORT_PAY, hedef))
-    return hata
+    return hata + u06_yon_denetle(A_, RM)
 
 
 def sema_geometri_denetle(TB=None, RM=None, analiz=None, kafa=None, istisna=None, nokta_f=None, kaynak_yol=None):
@@ -1339,7 +1397,7 @@ def sema_geometri_denetle(TB=None, RM=None, analiz=None, kafa=None, istisna=None
         hata.append("SEMA_KONUM Dağıtım kartı C %s ≠ kablo_yolu_taban.DAGITIM_C %s" % (dk, [round(c, 1) for c in KYT.DAGITIM_C]))
 
     hata += bara_tutarlilik(KYT)                                                # P10.7b2k (A4)
-    hata += u06_port_denetle(analiz)                                            # P10.7b2k (F10r-kontrol D5)
+    hata += u06_port_denetle(analiz, RM)                                        # P10.7b2k (F10r-kontrol D5); P10.8b yön
 
     def cad(desen):
         return [p for p in modelli if re.search(desen, p["ad"])]
@@ -2293,6 +2351,29 @@ def bozma_denemesi(V=None, kutular=None):
         _modul_boz(KYE, "ESP_PORT", (97.0,) + tuple(KYE.ESP_PORT[1:]))
     deneme += [("şema: anahtarlı bara tutucu vekili silindi", b100), ("şema: bara saplama ölçüsü modelden ayrı", b101),
                ("şema: G22 yanlış saplamadan", b102), ("şema: U06 port ağzı DevKit yüzünde değil", b103)]
+    # P10.8b (P108b-gunluk.md § 2): ESP32 DevKit 180° ters (F10u-kontrol 7'nin açık işi)
+    def _dk_boz(f):
+        dk = next(p for p in ANZ["parcalar"] if p["ad"].startswith("ESP32 DevKit"))
+        eski = copy.deepcopy(dk)
+        f(dk)
+        def geri():
+            dk.clear(); dk.update(eski)
+        _BOZMA_GERI.append(geri)
+    def _ayna(dk, kutu=True):                                             # taşıyıcı merkezi (x 80) etrafında 180° (y ekseni)
+        ta = next(p for p in ANZ["parcalar"] if p["ad"].startswith("ESP32 tasiyici kart"))
+        c = (ta["bb"][0] + ta["bb"][1]) / 2.0
+        if kutu:
+            dk["bb"] = [2 * c - dk["bb"][1], 2 * c - dk["bb"][0]] + list(dk["bb"][2:])
+        dk["merkez"] = [2 * c - dk["merkez"][0]] + list(dk["merkez"][1:])
+    def b104(RM, TB, V): _dk_boz(_ayna)                                   # DevKit tam 180° (kutu 53..106, merkez −x→+x)
+    def b105(RM, TB, V): _dk_boz(lambda dk: _ayna(dk, kutu=False))        # yalnız kütle izi ters (kutu aynı: iki iz çelişir)
+    def b106(RM, TB, V):                                                  # rehber B6a: port "solda" (model sağda)
+        a = RM.ADIM["B6a"]
+        if "önden bakınca sağda (WROOM modülü solda)" not in a["is_"]:
+            raise RuntimeError("b106: B6a cümlesi bulunamadı")
+        a["is_"] = a["is_"].replace("önden bakınca sağda (WROOM modülü solda)", "önden bakınca solda (WROOM modülü sağda)")
+    deneme += [("şema: ESP32 DevKit 180° ters (kutu + kütle)", b104), ("şema: ESP32 DevKit yön izleri çelişiyor", b105),
+               ("şema: rehber ESP32 portunu solda diyor", b106)]
     # P10.7b2k (F10r-kontrol D4): yol 9 kırpılmışken eski GEO_ISTISNA'sı geri eklendi ("kullanılmıyor" yakalanmalı)
     def b99(RM, TB, V): GEO_ISTISNA[9] = "eski: yol 9'un ESP32 ucu eski tasarımda"
     deneme += [("geometri: yol 9 eski istisnası geri eklendi (kırpılmışken)", b99)]

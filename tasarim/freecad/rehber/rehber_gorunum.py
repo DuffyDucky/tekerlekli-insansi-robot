@@ -625,6 +625,15 @@ def uc_isle(V, kutular, cad=None):
                     ciz |= set(PID[pid].get("kablo") or [])
                 for i in g.get("sema") or []:
                     ciz |= set(S[i].get("kablo") or [])
+                # P10.8b (planlama/d158/P108b-gunluk.md § 4): etiket_kablo = şeması bu alt adımda çizilmeyen (başka adımın şeması)
+                # ama ucu bu alt adımda takılan kablolar; uç etiketi basılır, çizgi çizilmez (U06'nın ESP32 ucu 17.11, şeması K2'de).
+                # Kimlik tabloda ve alt adımın metninde olmalı (sessiz düşüş yok)
+                sg = mt.get("sira") or []
+                ek = tuple(sg[j - 1].get("etiket_kablo") or ()) if j - 1 < len(sg) else ()
+                for k in ek:
+                    if k not in TB.K or k not in _metin_kimlikleri(g.get("is_") or "", TB.K):
+                        raise SystemExit("uc_isle: %s.%d etiket_kablo %s tabloda ya da alt adımın metninde yok" % (a["kod"], j, k))
+                ciz |= set(ek)
                 konum(a, j, g, g.get("is_") or "", ciz, dict(RM.UC_ORTULU.get((a["kod"], j)) or {}))
         else:
             ciz = set()

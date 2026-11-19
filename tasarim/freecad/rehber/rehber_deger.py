@@ -53,6 +53,9 @@
 #   {bag.<kablo>}         bağlantı tablosu: kablonun bütün damarları "ad: a → b" ("; " ile), kablolar[<k>].damarlar'dan; ESP32 ucu
 #                         "ESP32 GPIO21 (`I2C_SDA`)" (damar gpio + pin, pin haritası § 9 pinler ile aynı olmalı), PCA9685 ucu "PCA9685 kanal 0
 #                         sinyali (yazılım adı `sag_omuz`)" (damar pca_kanal + pca_ad, pin haritası pca9685_kanallar ile aynı olmalı); tutmazsa KeyError
+# P10.8b (planlama/d158/P108b-gunluk.md § 5; F10r-kontrol D6):
+#   {boy.<kablo>}         önerilen kesme boyu: kablolar[<k>].boy.onerilen_mm (boy_tazelik lale158-kontrol.json'a bağlar) → "1.560"
+#                         (mm birimi metinde; bağlam: kablonun kimliği cümlede)
 # Çözülemeyen yer tutucu hata listesine girer (rehber_denetim.kaynak_denetle sayar; rehber_metin içe aktarılırken metin "⟦?…⟧" olur).
 import os, re, json
 
@@ -318,6 +321,12 @@ class Degerler:
             return "%s ms" % v
         if tur == "s" and anahtar == "k2_en_cok":
             return "%s s" % _sayi_metin(self.PH["pinler"]["ROLE_K2_ONSARJ"]["en_cok_ms"] / 1000.0)
+        if tur == "boy":                                                # P10.8b (F10r-kontrol D6): önerilen kesme boyu, kayıttan
+            r = self.K.get(anahtar)
+            v = ((r or {}).get("boy") or {}).get("onerilen_mm") if isinstance((r or {}).get("boy"), dict) else None
+            if not isinstance(v, (int, float)) or v <= 0:
+                raise KeyError("kablo %s: boy.onerilen_mm yok" % anahtar)
+            return "{:,}".format(int(round(v))).replace(",", ".")
         if tur == "bag":                                                # P10.7b2c B: bağlantı tablosu (kablonun bütün damarları)
             return self._bag(anahtar)
         raise KeyError("bilinmeyen yer tutucu türü %s" % tur)
@@ -416,7 +425,7 @@ class Degerler:
             return [uye.split(":")[0]]
         if tur == "kontak" and ":" in uye:                              # düzeltme turu 2: tek uç ("K2:giris") rölenin adıyla
             return self.varlik_adlari(tur, uye.split(":")[0])
-        if tur in ("awg", "saplama", "kopru", "ara", "yeniden", "bsaplama"):
+        if tur in ("awg", "saplama", "kopru", "ara", "yeniden", "bsaplama", "boy"):
             return [uye]
         if tur == "yon":                                                # TVS: parçanın adı (P6KE18A / P6KE6V8A)
             e = (self.T.get("tvs") or {}).get(uye) or {}

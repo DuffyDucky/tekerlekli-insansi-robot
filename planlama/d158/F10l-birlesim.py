@@ -12,7 +12,7 @@
 #   C  gönderme biçimi eşitlenmeden: çevrilen her gönderme sayılır (rehber_metin.GONDERME_KAYIT), çözülemeyen 0.
 import os, sys, re, subprocess, types, collections
 ROBOT = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-HEAD = sys.argv[2] if len(sys.argv) > 2 else "896c9a7"          # P10.7b2k: taban 896c9a7 (b2i'de 8bca2f5) (b2h'de 376fe90) (b2g'de 9b019d2) (b2f'de b5fc255, b2e'de 84f1a4a, b2d'de 1c4e882)
+HEAD = sys.argv[2] if len(sys.argv) > 2 else "1d7fb71"          # P10.8b: taban 1d7fb71 (b2k'de 896c9a7) (b2i'de 8bca2f5) (b2h'de 376fe90) (b2g'de 9b019d2) (b2f'de b5fc255, b2e'de 84f1a4a, b2d'de 1c4e882)
 RH = os.path.join(ROBOT, "tasarim", "freecad", "rehber")
 sys.path.insert(0, RH)
 b = subprocess.run(["git", "show", HEAD + ":tasarim/freecad/rehber/rehber_metin.py"], cwd=ROBOT, capture_output=True, check=True).stdout
@@ -472,6 +472,70 @@ B2K_EKLENEN = [
     ('b2k dt4 E4 kabuk sırası öneri (F10y)', 'Önce sağ kabuğu arkadan (−z) yerine koy, sonra solu (arkadan ya da soldan): dikey dikişte sağ kabuğun bindirmesi solun altında kalır, bu sırayla takmak kolaydır (sol önce takılırsa sağ yalnız sağdan, +x yönünde girer; giriş yolu ölçümü).'),
 ]
 BEKLENEN["896c9a7"] = (B2K_SILINEN, B2K_EKLENEN)
+# P10.8b (P108b-gunluk.md): taban 1d7fb71 (b2k + P10.8a, rehber_metin 3cefae0 ile aynı). K55 bant metni ölçümden (dil alttaki
+# bantta; yol: yandan getir, sonra indir / it; "kuponla denenmedi" notu), K2 önerilen boylar kayıttan ({boy.<kimlik>}, F10r-kontrol D6).
+# Liste uygulanan metinden (F10l-birlesim'in kendi çıktısı), etiketler elle.
+# Düzeltme turu 1 (P108b-kontrol O1, O2, D1, D6): göğüs inişi sıkı geçme (hafifçe kalktı), omuzda dil engeli kalktı, etek ön ve
+# omuz için "kupon henüz yok", K1 alt adım 4 saplama numara kuralı; eklenen 25 → 37, silinen 10 aynı.
+# Düzeltme turu 2 (P108b-kontrol T2, T3): çerçeve notu "kupon henüz yok"; F1 / F3 çerçeve / F4'te "Oturmazsa zorlama …: tasarım
+# kararını (K55 b) bekle."; eklenen 37 → 42.
+P108B_SILINEN = [
+    ('P10.8b K55 bant (ölçüm)', 'Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir).'),
+    ('P10.8b K55 bant (ölçüm)', 'Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir).'),
+    ('P10.8b K55 bant (ölçüm)', 'Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir).'),
+    ('P10.8b K55 bant (ölçüm)', 'Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir).'),
+    ('P10.8b K55 bant (ölçüm)', 'Bant düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir).'),
+    ('P10.8b K55 bant (ölçüm)', 'Bant düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir).'),
+    ('P10.8b K55 bant (ölçüm)', 'Bu bantta engel dil değil, z +105 braketinin perçin somunu (ölçüm): kuponda bu bant ayrıca, somun takılıyken denenir.'),
+    ('P10.8b K55 bant (ölçüm)', 'Bu bantta engel dil değil, z +105 braketinin perçin somunu (ölçüm): kuponda bu bant ayrıca, somun takılıyken denenir.'),
+    ('P10.8b K55 bant (ölçüm)', 'Çerçeve düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir).'),
+    ('P10.8b D6 {boy.<kimlik>}', "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.560, hoparlör 1.030, göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`)."),
+]
+P108B_EKLENEN = [
+    ('P10.8b K55 bant (ölçüm)', 'Bandı dikişin 16 mm üstünde yandan (+x) getir, sonra aşağı indir.'),
+    ('P10.8b K55 bant (ölçüm)', 'Bandı dikişin 16 mm üstünde yandan (−x) getir, sonra aşağı indir.'),
+    ('P10.8b K55 bant (ölçüm)', 'Bandı dikişin 16 mm üstünde yandan getir (bu yol serbest, ölçüm), sonra aşağı indir.'),
+    ('P10.8b K55 bant (ölçüm)', 'Bandı dikişin 24 mm üstünde yandan getir (bu yol serbest, ölçüm), sonra aşağı indir.'),
+    ('P10.8b K55 bant (ölçüm)', "Bandı yerinin 10 mm önünde yandan (+x) getir (bu yol serbest, ölçüm), sonra önden içeri (−z) it: bu son 10 mm'de engel dil değil, z +105 braketinin perçin somunu (1–8 mm, ölçüm); bandı hafifçe esneterek somunun üstünden geçir (K55 a, geçici)."),
+    ('P10.8b K55 bant (ölçüm)', "Bandı yerinin 10 mm önünde yandan (−x) getir (bu yol serbest, ölçüm), sonra önden içeri (−z) it: bu son 10 mm'de engel dil değil, z +105 braketinin perçin somunu (1–8 mm, ölçüm); bandı hafifçe esneterek somunun üstünden geçir (K55 a, geçici)."),
+    ('P10.8b K55 bant (ölçüm)', 'Bandın esneyip geçeceği bilinmiyor.'),
+    ('P10.8b K55 bant (ölçüm)', 'Bandın esneyip yerine oturup oturmayacağı bilinmiyor; buna kupon karar verir (K55 a, geçici).'),
+    ('P10.8b K55 bant (ölçüm)', 'Bandın esneyip yerine oturup oturmayacağı bilinmiyor; buna kupon karar verir (K55 a, geçici).'),
+    ('P10.8b K55 bant (ölçüm)', 'Bant düz bir yoldan girmiyor (ölçüm, Notlar).'),
+    ('P10.8b K55 bant (ölçüm)', 'Bant düz bir yoldan girmiyor (ölçüm, Notlar).'),
+    ('P10.8b K55 bant (ölçüm)', 'Bu geçme denenmedi; bu bant için kupon henüz yok.'),
+    ('P10.8b K55 bant (ölçüm)', 'Bu geçme denenmedi; bu bant için kupon henüz yok.'),
+    ('P10.8b K55 bant (ölçüm)', 'Bu geçme denenmedi; bu bant için kupon henüz yok.'),
+    ('P10.8b K55 bant (ölçüm)', 'Bu geçme denenmedi; bu bant için kupon henüz yok.'),
+    ('P10.8b K55 bant (ölçüm)', 'Bu geçme denenmedi; bu bant için kupon henüz yok.'),
+    ('P10.8b K55 bant (ölçüm)', 'Bu geçme kuponla denenmedi; kupon sonucu gelince bu adım yeniden yazılabilir.'),
+    ('P10.8b K55 bant (ölçüm)', 'Bu geçme kuponla denenmedi; kupon sonucu gelince bu adım yeniden yazılabilir.'),
+    ('P10.8b K55 bant (ölçüm)', "Bu yolda engel bant değil, Ø84 rulman kapağı (yanal yolun son 4 mm'si ve inişte dikişin 16–7 mm üstü; ortak hacim en çok ≈ 300 mm³) ve kapak cıvataları (yanal yolun son 6 mm'si, ölçüm): bandın kenarı kapağın üstünden esnetilerek geçmeli (K55 a, geçici)."),
+    ('P10.8b K55 bant (ölçüm)', 'Dil göğüs bandında; düz inişte dil engel değil (ölçüm).'),
+    ('P10.8b K55 bant (ölçüm)', 'Dil göğüs bandında; y 1198 dikişinde kesit dik, düz inişte dil engel değil (ölçüm).'),
+    ('P10.8b K55 bant (ölçüm)', 'Dil orta bantta.'),
+    ('P10.8b K55 bant (ölçüm)', 'Dil orta bantta.'),
+    ('P10.8b K55 bant (ölçüm)', 'Dil orta bantta: bu bandın z +88 kenarı orta bandın dilinin dışından geçer (ölçüm).'),
+    ('P10.8b K55 bant (ölçüm)', 'Dil orta bantta: bu bandın z +88 kenarı orta bandın dilinin dışından geçer (ölçüm).'),
+    ('P10.8b K55 bant (ölçüm)', 'Engel sağdaki gibi rulman kapağı ve kapak cıvataları (ölçüm): bandın kenarı kapağın üstünden esnetilerek geçmeli (K55 a, geçici).'),
+    ('P10.8b K55 bant (ölçüm)', 'Oturmazsa zorlama (bant kırılabilir): kupon sonucunu ya da tasarım değişikliğini (K55 b) bekle.'),
+    ('P10.8b K55 bant (ölçüm)', 'Oturmazsa zorlama (bant kırılabilir): kupon sonucunu ya da tasarım değişikliğini (K55 b) bekle.'),
+    ('P10.8b K55 bant (ölçüm)', 'Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle.'),
+    ('P10.8b K55 bant (ölçüm)', 'Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle.'),
+    ('P10.8b K55 bant (ölçüm)', 'Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle.'),
+    ('P10.8b K55 bant (ölçüm)', 'Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle.'),
+    ('P10.8b K55 bant (ölçüm)', 'Oturmazsa zorlama (çerçeve kırılabilir): tasarım kararını (K55 b) bekle.'),
+    ('P10.8b K55 bant (ölçüm)', 'Çerçeve düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; ölçüm: çerçeve kenarı göğüs bandının iç yüzünde).'),
+    ('P10.8b K55 bant (ölçüm)', 'Ön yüz eğik, arka yüz dik: tek bir itiş ikisini birlikte kurtarmaz.'),
+    ('P10.8b K55 bant (ölçüm)', 'Ön yüz eğik, arka yüz dik: tek bir itiş ikisini birlikte kurtarmaz.'),
+    ('P10.8b K55 bant (ölçüm)', "İnişin son 12 mm'sinde bandın alt kenarı orta bandın dilinin dışından geçmeli; modelde bu geçme sıkı: orta bantla ortak hacim 1–12 mm boyunca, en çok ≈ 2.100 mm³, ölçüm; dikişe 10 mm kala radyal girişim önde 6,8 mm, ön-yan köşede 7,8 mm (kupon dilimi, ölçüm)."),
+    ('P10.8b K55 bant (ölçüm)', "İnişin son 12 mm'sinde bandın alt kenarı orta bandın dilinin dışından geçmeli; modelde bu geçme sıkı: orta bantla ortak hacim 1–12 mm boyunca, en çok ≈ 2.200 mm³, ölçüm; dikişe 10 mm kala radyal girişim önde 6,8 mm, ön-yan köşede 7,8 mm (kupon dilimi, ölçüm)."),
+    ('P10.8b K55 bant (ölçüm)', 'İnişte dikişin ısıl gömmeleri ve y 1095 braketinin perçin somunu da kenara değer (1–14 mm, ölçüm).'),
+    ('P10.8b K55 bant (ölçüm)', 'İnişte x 0 dikişinde göğüs bandı sağın bindirmesi (1–18 mm), orta bant sağ (1–4 mm), dikişin ısıl gömmeleri ve braketin perçin somunu da değer (ölçüm).'),
+    ('P10.8b düzeltme turu 1 17.4 numara', 'Saplama numaraları robota önden bakınca soldan sağa (B5a); karenin kamerası hafif soldan bakar, saplamaları önden bakışa göre say.'),
+    ('P10.8b D6 {boy.<kimlik>}', "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI (H02) 950, hub uzatması (U03) 920, ESP32 USB (U06) 1.560, hoparlör (AU3) 1.030, göğüs 12 V (G21) 1.720 mm (`planlama/adim3/elektrik.md`)."),
+]
+BEKLENEN["1d7fb71"] = (P108B_SILINEN, P108B_EKLENEN)
 BEKLENEN_SILINEN, BEKLENEN_EKLENEN = BEKLENEN.get(HEAD, ([], []))
 
 

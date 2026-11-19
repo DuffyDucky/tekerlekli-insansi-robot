@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-19 13:28",
+ "tarih": "2026-11-19 19:30",
  "tarayici": "chrome.exe",
  "ozet": {
   "adim": 50,
@@ -14,7 +14,7 @@
    "hic_gorunmeyen": []
   },
   "sema": 65,
-  "veri_uretim": "2026-11-19 12:51",
+  "veri_uretim": "2026-11-19 18:51",
   "kaynak_cad": {
    "iskelet": "2026-11-09 14:27",
    "omuz_sag": "2026-11-19 07:45",
@@ -1327,9 +1327,9 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 674,
+     "D": 336,
      "alan": "sag-sutun",
-     "nokta": 8
+     "nokta": 120
     },
     "eksik_mesh": [],
     "konum_dogru": true,
@@ -1465,7 +1465,7 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 596,
+     "D": 522,
      "alan": "sag-sutun",
      "nokta": 240
     },
@@ -3349,13 +3349,13 @@
     "17.1": 0.9892,
     "17.2": 0.6957,
     "17.3": 0.7604,
-    "17.4": 0.6011,
+    "17.4": 0.8821,
     "17.5": 0.5572,
     "17.6": 0.9478,
     "17.7": 0.6517,
     "17.8": 0.6996,
     "17.9": 0.9592,
-    "17.10": 0.6248,
+    "17.10": 0.7795,
     "17.11": 0.8956,
     "17.12": 0.0796,
     "21.1": 0.375,
@@ -3503,13 +3503,13 @@
    "17.1": 0.9892,
    "17.2": 0.6957,
    "17.3": 0.7604,
-   "17.4": 0.6011,
+   "17.4": 0.8821,
    "17.5": 0.5572,
    "17.6": 0.9478,
    "17.7": 0.6517,
    "17.8": 0.6996,
    "17.9": 0.9592,
-   "17.10": 0.6248,
+   "17.10": 0.7795,
    "17.11": 0.8956,
    "17.12": 0.0796,
    "21.1": 0.375,
@@ -3680,13 +3680,13 @@
  },
  "yazdir": {
   "pdf": "planlama/rehber/Lale-montaj-rehberi.pdf",
-  "pdf_sayfa": 87,
+  "pdf_sayfa": 89,
   "pdf_yeni": true,
-  "html_sayfa": 87,
+  "html_sayfa": 89,
   "adim": 50,
   "tasan": [],
   "kucuk_yazi": [],
-  "boyut_kb": 19317,
+  "boyut_kb": 19306,
   "sayfa_esleme": {
    "0": [
     1
@@ -3822,61 +3822,63 @@
    "35": [
     62,
     63,
-    64
+    64,
+    65
    ],
    "36": [
-    65,
-    66
-   ],
-   "37": [
-    67
-   ],
-   "38": [
+    66,
+    67,
     68
    ],
-   "39": [
+   "37": [
     69
    ],
-   "40": [
-    70,
+   "38": [
+    70
+   ],
+   "39": [
     71
    ],
-   "41": [
+   "40": [
     72,
-    73,
-    74
+    73
    ],
-   "42": [
+   "41": [
+    74,
     75,
     76
    ],
-   "43": [
-    77
+   "42": [
+    77,
+    78
    ],
-   "44": [
-    78,
+   "43": [
     79
    ],
-   "45": [
-    80
-   ],
-   "46": [
+   "44": [
+    80,
     81
    ],
-   "47": [
+   "45": [
     82
    ],
-   "48": [
-    83,
+   "46": [
+    83
+   ],
+   "47": [
     84
    ],
-   "49": [
+   "48": [
     85,
-    86,
-    87
+    86
+   ],
+   "49": [
+    87,
+    88,
+    89
    ]
   },
-  "devam_sayfasi": 37,
+  "devam_sayfasi": 39,
   "en_kucuk_yazi_pt_dom": 8.1,
   "en_kucuk_yazi_pt_pdf": 8.1,
   "yazi_alt_sinir_pt": 8.0,
@@ -4057,83 +4059,91 @@
      [
       64,
       0
+     ],
+     [
+      65,
+      0
      ]
     ],
     "36": [
      [
-      65,
+      66,
       647
      ],
      [
-      66,
+      67,
+      0
+     ],
+     [
+      68,
       0
      ]
     ],
     "40": [
      [
-      70,
+      72,
       813
      ],
      [
-      71,
+      73,
       0
      ]
     ],
     "41": [
      [
-      72,
+      74,
       654
      ],
      [
-      73,
-      0
-     ],
-     [
-      74,
-      0
-     ]
-    ],
-    "42": [
-     [
       75,
-      416
+      0
      ],
      [
       76,
       0
      ]
     ],
-    "44": [
+    "42": [
+     [
+      77,
+      416
+     ],
      [
       78,
+      0
+     ]
+    ],
+    "44": [
+     [
+      80,
       313
      ],
      [
-      79,
+      81,
       0
      ]
     ],
     "48": [
      [
-      83,
+      85,
       235
      ],
      [
-      84,
+      86,
       0
      ]
     ],
     "49": [
      [
-      85,
+      87,
       3433
      ],
      [
-      86,
+      88,
       0
      ],
      [
-      87,
+      89,
       0
      ]
     ]
@@ -4997,6 +5007,41 @@
      "var": true
     },
     {
+     "adim": "F1",
+     "uyari": "F1 ön bantlar: dil orta bantta, kenar dilin dışından (K55, ölçüm; sağ + sol)",
+     "var": true
+    },
+    {
+     "adim": "F3",
+     "uyari": "F3 göğüs bantları: dil orta bantta, sıkı geçme kuponla karara bağlanır, zorlama (K55, ölçüm; sağ + sol)",
+     "var": true
+    },
+    {
+     "adim": "F4",
+     "uyari": "F4 omuz bantları: dil engel değil, engel rulman kapağı, yandan getir + indir (K55, ölçüm; sağ + sol)",
+     "var": true
+    },
+    {
+     "adim": "F1",
+     "uyari": "F1 oturmazsa zorlama + K55 b, denenmedi, kupon yok notu (K55)",
+     "var": true
+    },
+    {
+     "adim": "F3",
+     "uyari": "F3 kuponla denenmedi notu (K55; göğüs bantları)",
+     "var": true
+    },
+    {
+     "adim": "F3",
+     "uyari": "F3 çerçeve: oturmazsa zorlama + K55 b, kupon yok notu (K55)",
+     "var": true
+    },
+    {
+     "adim": "F4",
+     "uyari": "F4 oturmazsa zorlama + K55 b, denenmedi, kupon yok notu (K55)",
+     "var": true
+    },
+    {
      "adim": "K2",
      "uyari": "K2 kontrol: tünel deneme parçasında fiş denemesi (alan kontrol)",
      "var": true
@@ -5295,7 +5340,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 54.3,
+     "sure_s": 55.8,
      "yon": [
       {
        "yon": [
@@ -5408,7 +5453,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 22.6,
+     "sure_s": 23.6,
      "yon": [
       {
        "yon": [
@@ -5552,7 +5597,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 26.2,
+     "sure_s": 26.8,
      "yon": [
       {
        "yon": [
@@ -5703,7 +5748,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 3.3,
+     "sure_s": 3.4,
      "yon": [
       {
        "yon": [
@@ -5879,7 +5924,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 69.4,
+     "sure_s": 71.4,
      "yon": [
       {
        "yon": [
@@ -6043,7 +6088,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 74.3,
+     "sure_s": 75.5,
      "yon": [
       {
        "yon": [
@@ -6207,7 +6252,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 27.2,
+     "sure_s": 27.8,
      "yon": [
       {
        "yon": [
@@ -6397,7 +6442,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 6.4,
+     "sure_s": 6.8,
      "yon": [
       {
        "yon": [
@@ -6662,7 +6707,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 4.6,
+     "sure_s": 4.7,
      "yon": [
       {
        "yon": [
@@ -6696,7 +6741,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 17.3,
+     "sure_s": 17.6,
      "yon": [
       {
        "yon": [
@@ -6833,7 +6878,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 1.2,
+     "sure_s": 1.3,
      "yon": [
       {
        "yon": [
@@ -6861,7 +6906,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 8.1,
+     "sure_s": 8.3,
      "yon": [
       {
        "yon": [
@@ -6926,7 +6971,7 @@
    ],
    "gecti": true,
    "e3_kafa_serbest": true,
-   "sure_s": 315.0
+   "sure_s": 323.1
   },
   "ucus": {
    "durum": "koştu",
@@ -16803,7 +16848,7 @@
      ]
     }
    ],
-   "sure_s": 858.2
+   "sure_s": 875.2
   },
   "isil_gomme": {
    "durum": "koştu",
@@ -28944,16 +28989,16 @@
     }
    }
   ],
-  "sure_s": 70.0,
+  "sure_s": 71.1,
   "sure": {
-   "yukleme_s": 11.7,
-   "sira_s": 78.8,
-   "perdelenme_s": 132.8,
-   "giris_s": 315.1,
-   "ucus_s": 858.2,
-   "toplam_s": 1396.6,
+   "yukleme_s": 11.8,
+   "sira_s": 80.1,
+   "perdelenme_s": 140.3,
+   "giris_s": 323.1,
+   "ucus_s": 875.2,
+   "toplam_s": 1430.6,
    "voksel_alani": 87,
-   "voksel_s": 74.7
+   "voksel_s": 75.9
   }
  },
  "perdelenme": {
@@ -33032,7 +33077,7 @@
    }
   ],
   "toplam_gizli": 272,
-  "sure_s": 132.8,
+  "sure_s": 140.3,
   "alt_adim_gizli_istisnasiz": 0,
   "alt_adim_istisna": 116,
   "alt_sinir": 0,
@@ -37575,7 +37620,7 @@
   "hata": [],
   "gecti": true,
   "bolum": 38,
-  "sure_s": 34.7
+  "sure_s": 35.3
  },
  "kablo_esleme": {
   "hata": [],

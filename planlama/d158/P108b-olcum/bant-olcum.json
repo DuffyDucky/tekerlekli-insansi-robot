@@ -1,0 +1,2024 @@
+{
+ "aciklama": "P10.8b görev 1 (planlama/d158/P108b-gunluk.md § 2). Kaynak: rehber/veri/robot.glb + rehber-veri.json (1d7fb71 üretimi; kabuk-montaj.FCStd'den), FreeCAD'siz. dil: dikiş bindirme bölgesinde (dikiş + 1..11 mm) radyal ışın satırlarında hangi bandın dış yüzü dışta (a_dista / b_dista satır sayısı; yüz: ön z>40, arka z<-40, yan |x|>100 ya da etekte |x|>200 / y>200). profil: bandın alt adımında yerinde olanlar engel (bandın kendi grubu hariç), düz yolda 2 mm adımla engel başına ilk-son mm (rehber_giris.Giris.carpisma, h 0,5 mm, eşik 0,2 mm). iki_parcali: önce 'kalk' yönünde L mm, sonra 'cik' yönünde çekme.",
+ "kutu": {
+  "p0205": {
+   "ad": "Gövde alt bandı sağ",
+   "bmin": [
+    -12.0,
+    263.0,
+    -85.0
+   ],
+   "bmax": [
+    125.0,
+    488.5,
+    85.0
+   ]
+  },
+  "p0206": {
+   "ad": "Gövde alt bandı sol",
+   "bmin": [
+    -125.0,
+    263.0,
+    -85.0
+   ],
+   "bmax": [
+    0.0,
+    488.5,
+    85.0
+   ]
+  },
+  "p0207": {
+   "ad": "Gövde uzatma bandı 1 sağ",
+   "bmin": [
+    -12.0,
+    476.5,
+    -85.0
+   ],
+   "bmax": [
+    125.0,
+    646.0,
+    85.0
+   ]
+  },
+  "p0208": {
+   "ad": "Gövde uzatma bandı 1 sol",
+   "bmin": [
+    -125.0,
+    476.5,
+    -85.0
+   ],
+   "bmax": [
+    -0.0,
+    646.0,
+    85.0
+   ]
+  },
+  "p0209": {
+   "ad": "Gövde uzatma bandı 2 sağ",
+   "bmin": [
+    -12.0,
+    634.0,
+    -85.0
+   ],
+   "bmax": [
+    125.0,
+    803.5,
+    85.0
+   ]
+  },
+  "p0210": {
+   "ad": "Gövde uzatma bandı 2 sol",
+   "bmin": [
+    -125.0,
+    634.0,
+    -85.0
+   ],
+   "bmax": [
+    0.0,
+    803.5,
+    85.0
+   ]
+  },
+  "p0211": {
+   "ad": "Gövde orta bandı sağ",
+   "bmin": [
+    -12.0,
+    791.5,
+    -88.0
+   ],
+   "bmax": [
+    149.8,
+    1018.4,
+    126.2
+   ]
+  },
+  "p0212": {
+   "ad": "Gövde orta bandı sol",
+   "bmin": [
+    -149.8,
+    791.5,
+    -88.0
+   ],
+   "bmax": [
+    0.0,
+    1018.4,
+    126.2
+   ]
+  },
+  "p0213": {
+   "ad": "Göğüs bandı sağ",
+   "bmin": [
+    -12.0,
+    1005.0,
+    -88.0
+   ],
+   "bmax": [
+    152.0,
+    1240.0,
+    129.2
+   ]
+  },
+  "p0214": {
+   "ad": "Göğüs bandı sol",
+   "bmin": [
+    -152.0,
+    1005.0,
+    -88.0
+   ],
+   "bmax": [
+    -0.0,
+    1240.0,
+    129.2
+   ]
+  },
+  "p0215": {
+   "ad": "Omuz bandı sağ",
+   "bmin": [
+    -12.0,
+    1198.0,
+    -80.9
+   ],
+   "bmax": [
+    152.0,
+    1300.0,
+    75.3
+   ]
+  },
+  "p0216": {
+   "ad": "Omuz bandı sol",
+   "bmin": [
+    -152.0,
+    1198.0,
+    -80.9
+   ],
+   "bmax": [
+    0.0,
+    1300.0,
+    75.3
+   ]
+  },
+  "p0219": {
+   "ad": "Etek arka sağ",
+   "bmin": [
+    26.0,
+    35.0,
+    -262.5
+   ],
+   "bmax": [
+    260.0,
+    262.0,
+    -87.5
+   ]
+  },
+  "p0220": {
+   "ad": "Etek arka sol",
+   "bmin": [
+    -260.0,
+    35.0,
+    -262.5
+   ],
+   "bmax": [
+    -38.0,
+    262.0,
+    -87.5
+   ]
+  },
+  "p0221": {
+   "ad": "Etek orta sağ",
+   "bmin": [
+    38.0,
+    35.0,
+    -99.5
+   ],
+   "bmax": [
+    260.0,
+    262.0,
+    99.5
+   ]
+  },
+  "p0222": {
+   "ad": "Etek orta sol",
+   "bmin": [
+    -260.0,
+    35.0,
+    -99.5
+   ],
+   "bmax": [
+    -38.0,
+    262.0,
+    99.5
+   ]
+  },
+  "p0223": {
+   "ad": "Etek ön sağ",
+   "bmin": [
+    26.0,
+    35.0,
+    87.5
+   ],
+   "bmax": [
+    260.0,
+    262.0,
+    262.5
+   ]
+  },
+  "p0224": {
+   "ad": "Etek ön sol",
+   "bmin": [
+    -260.0,
+    35.0,
+    87.5
+   ],
+   "bmax": [
+    -38.0,
+    262.0,
+    262.5
+   ]
+  },
+  "p0229": {
+   "ad": "Göğüs ekranı çerçevesi sağ",
+   "bmin": [
+    0.1,
+    1016.7,
+    65.8
+   ],
+   "bmax": [
+    147.1,
+    1218.8,
+    127.1
+   ]
+  },
+  "p0230": {
+   "ad": "Göğüs ekranı çerçevesi sol",
+   "bmin": [
+    -147.1,
+    1016.7,
+    65.8
+   ],
+   "bmax": [
+    -0.1,
+    1218.8,
+    127.1
+   ]
+  }
+ },
+ "dil": {
+  "y1005 sağ (orta sağ / göğüs sağ) ön": {
+   "ad": "y1005 sağ (orta sağ / göğüs sağ) ön",
+   "a": "Gövde orta bandı sağ",
+   "b": "Göğüs bandı sağ",
+   "eksen": "z",
+   "dis": 1,
+   "a_dista": 0,
+   "b_dista": 1477
+  },
+  "y1005 sağ (orta sağ / göğüs sağ) arka": {
+   "ad": "y1005 sağ (orta sağ / göğüs sağ) arka",
+   "a": "Gövde orta bandı sağ",
+   "b": "Göğüs bandı sağ",
+   "eksen": "z",
+   "dis": -1,
+   "a_dista": 0,
+   "b_dista": 673
+  },
+  "y1005 sağ (orta sağ / göğüs sağ) yan": {
+   "ad": "y1005 sağ (orta sağ / göğüs sağ) yan",
+   "a": "Gövde orta bandı sağ",
+   "b": "Göğüs bandı sağ",
+   "eksen": "x",
+   "dis": 1,
+   "a_dista": 0,
+   "b_dista": 2076
+  },
+  "y1005 sol (orta sol / göğüs sol) ön": {
+   "ad": "y1005 sol (orta sol / göğüs sol) ön",
+   "a": "Gövde orta bandı sol",
+   "b": "Göğüs bandı sol",
+   "eksen": "z",
+   "dis": 1,
+   "a_dista": 0,
+   "b_dista": 1360
+  },
+  "y1005 sol (orta sol / göğüs sol) arka": {
+   "ad": "y1005 sol (orta sol / göğüs sol) arka",
+   "a": "Gövde orta bandı sol",
+   "b": "Göğüs bandı sol",
+   "eksen": "z",
+   "dis": -1,
+   "a_dista": 0,
+   "b_dista": 676
+  },
+  "y1005 sol (orta sol / göğüs sol) yan": {
+   "ad": "y1005 sol (orta sol / göğüs sol) yan",
+   "a": "Gövde orta bandı sol",
+   "b": "Göğüs bandı sol",
+   "eksen": "x",
+   "dis": -1,
+   "a_dista": 0,
+   "b_dista": 2076
+  },
+  "y1198 sağ (göğüs sağ / omuz sağ) ön": {
+   "ad": "y1198 sağ (göğüs sağ / omuz sağ) ön",
+   "a": "Göğüs bandı sağ",
+   "b": "Omuz bandı sağ",
+   "eksen": "z",
+   "dis": 1,
+   "a_dista": 20,
+   "b_dista": 0
+  },
+  "y1198 sağ (göğüs sağ / omuz sağ) arka": {
+   "ad": "y1198 sağ (göğüs sağ / omuz sağ) arka",
+   "a": "Göğüs bandı sağ",
+   "b": "Omuz bandı sağ",
+   "eksen": "z",
+   "dis": -1,
+   "a_dista": 0,
+   "b_dista": 734
+  },
+  "y1198 sağ (göğüs sağ / omuz sağ) yan": {
+   "ad": "y1198 sağ (göğüs sağ / omuz sağ) yan",
+   "a": "Göğüs bandı sağ",
+   "b": "Omuz bandı sağ",
+   "eksen": "x",
+   "dis": 1,
+   "a_dista": 0,
+   "b_dista": 1449
+  },
+  "y1198 sol (göğüs sol / omuz sol) ön": {
+   "ad": "y1198 sol (göğüs sol / omuz sol) ön",
+   "a": "Göğüs bandı sol",
+   "b": "Omuz bandı sol",
+   "eksen": "z",
+   "dis": 1,
+   "a_dista": 10,
+   "b_dista": 0
+  },
+  "y1198 sol (göğüs sol / omuz sol) arka": {
+   "ad": "y1198 sol (göğüs sol / omuz sol) arka",
+   "a": "Göğüs bandı sol",
+   "b": "Omuz bandı sol",
+   "eksen": "z",
+   "dis": -1,
+   "a_dista": 0,
+   "b_dista": 734
+  },
+  "y1198 sol (göğüs sol / omuz sol) yan": {
+   "ad": "y1198 sol (göğüs sol / omuz sol) yan",
+   "a": "Göğüs bandı sol",
+   "b": "Omuz bandı sol",
+   "eksen": "x",
+   "dis": -1,
+   "a_dista": 0,
+   "b_dista": 1449
+  },
+  "z88 sağ (etek orta sağ / etek ön sağ) yan": {
+   "ad": "z88 sağ (etek orta sağ / etek ön sağ) yan",
+   "a": "Etek orta sağ",
+   "b": "Etek ön sağ",
+   "eksen": "x",
+   "dis": 1,
+   "a_dista": 0,
+   "b_dista": 2016
+  },
+  "z88 sağ (etek orta sağ / etek ön sağ) üst": {
+   "ad": "z88 sağ (etek orta sağ / etek ön sağ) üst",
+   "a": "Etek orta sağ",
+   "b": "Etek ön sağ",
+   "eksen": "y",
+   "dis": 1,
+   "a_dista": 0,
+   "b_dista": 336
+  },
+  "z88 sol (etek orta sol / etek ön sol) yan": {
+   "ad": "z88 sol (etek orta sol / etek ön sol) yan",
+   "a": "Etek orta sol",
+   "b": "Etek ön sol",
+   "eksen": "x",
+   "dis": -1,
+   "a_dista": 0,
+   "b_dista": 2016
+  },
+  "z88 sol (etek orta sol / etek ön sol) üst": {
+   "ad": "z88 sol (etek orta sol / etek ön sol) üst",
+   "a": "Etek orta sol",
+   "b": "Etek ön sol",
+   "eksen": "y",
+   "dis": 1,
+   "a_dista": 0,
+   "b_dista": 338
+  },
+  "çerçeve sağ / göğüs sağ ön": {
+   "ad": "çerçeve sağ / göğüs sağ ön",
+   "a": "Göğüs bandı sağ",
+   "b": "Göğüs ekranı çerçevesi sağ",
+   "eksen": "z",
+   "dis": 1,
+   "a_dista": 1143,
+   "b_dista": 0
+  },
+  "çerçeve sol / göğüs sol ön": {
+   "ad": "çerçeve sol / göğüs sol ön",
+   "a": "Göğüs bandı sol",
+   "b": "Göğüs ekranı çerçevesi sol",
+   "eksen": "z",
+   "dis": 1,
+   "a_dista": 1143,
+   "b_dista": 0
+  }
+ },
+ "profil": [
+  {
+   "adim": "F3",
+   "grup": "Göğüs bandı sağ + y 1095 braketi",
+   "parca": "Göğüs bandı sağ",
+   "pid": "p0213",
+   "yon": [
+    1,
+    0,
+    0
+   ],
+   "adim_mm": 2.0,
+   "ayrildi_mm": 174.0,
+   "dinlenme": [],
+   "engel": [
+    {
+     "ad": "Gövde orta bandı sağ",
+     "id": "p0211",
+     "ilk_mm": 2.0,
+     "son_mm": 160.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (gövde y1005 arka)",
+     "id": "p0279",
+     "ilk_mm": 18.0,
+     "son_mm": 110.0
+    }
+   ],
+   "sure_s": 4.4
+  },
+  {
+   "adim": "F3",
+   "grup": "Göğüs bandı sağ + y 1095 braketi",
+   "parca": "Göğüs bandı sağ",
+   "pid": "p0213",
+   "yon": [
+    0,
+    1,
+    0
+   ],
+   "adim_mm": 2.0,
+   "ayrildi_mm": null,
+   "dinlenme": [],
+   "engel": [
+    {
+     "ad": "Gövde orta bandı sağ",
+     "id": "p0211",
+     "ilk_mm": 2.0,
+     "son_mm": 12.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (gövde y1005 ön)",
+     "id": "p0275",
+     "ilk_mm": 2.0,
+     "son_mm": 10.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (gövde y1005 yan)",
+     "id": "p0283",
+     "ilk_mm": 2.0,
+     "son_mm": 8.0
+    },
+    {
+     "ad": "Perçin somun M5 (Gövde braketi sağ y1095)",
+     "id": "p0518",
+     "ilk_mm": 2.0,
+     "son_mm": 14.0
+    },
+    {
+     "ad": "Rulman kapağı",
+     "id": "p0078",
+     "ilk_mm": 32.0,
+     "son_mm": 294.0
+    },
+    {
+     "ad": "S1 horn 25T alüminyum disk",
+     "id": "p0088",
+     "ilk_mm": 48.0,
+     "son_mm": 276.0
+    },
+    {
+     "ad": "Kapak cıvatası M3x12",
+     "id": "p0080",
+     "ilk_mm": 54.0,
+     "son_mm": 260.0
+    },
+    {
+     "ad": "Kapak cıvatası M3x12",
+     "id": "p0082",
+     "ilk_mm": 54.0,
+     "son_mm": 260.0
+    },
+    {
+     "ad": "S1 servo çıkış mili",
+     "id": "p0061",
+     "ilk_mm": 58.0,
+     "son_mm": 266.0
+    },
+    {
+     "ad": "S1 horn merkez vidası M3",
+     "id": "p0089",
+     "ilk_mm": 58.0,
+     "son_mm": 266.0
+    },
+    {
+     "ad": "Kapak cıvatası M3x12",
+     "id": "p0084",
+     "ilk_mm": 66.0,
+     "son_mm": 272.0
+    },
+    {
+     "ad": "Kapak cıvatası M3x12",
+     "id": "p0086",
+     "ilk_mm": 66.0,
+     "son_mm": 272.0
+    },
+    {
+     "ad": "S1 servo DS3235 (ön-arka)",
+     "id": "p0060",
+     "ilk_mm": 114.0,
+     "son_mm": 168.0
+    },
+    {
+     "ad": "Yüz kabuğu (ön) sağ",
+     "id": "p0750",
+     "ilk_mm": 128.0,
+     "son_mm": 302.0
+    },
+    {
+     "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol ön alt (çerçeve))",
+     "id": "p0766",
+     "ilk_mm": 134.0,
+     "son_mm": 162.0
+    },
+    {
+     "ad": "Yüz kabuğu (ön) sol",
+     "id": "p0751",
+     "ilk_mm": 140.0,
+     "son_mm": 184.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (kafa sağ/sol ön alt (çerçeve))",
+     "id": "p0765",
+     "ilk_mm": 148.0,
+     "son_mm": 158.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (tırnak boss alt sağ)",
+     "id": "p0793",
+     "ilk_mm": 148.0,
+     "son_mm": 152.0
+    },
+    {
+     "ad": "Yüz ekranı WaveShare 10,1\" QLED HDMI",
+     "id": "p0781",
+     "ilk_mm": 152.0,
+     "son_mm": 302.0
+    },
+    {
+     "ad": "Ekran tırnağı alt sağ",
+     "id": "p0790",
+     "ilk_mm": 152.0,
+     "son_mm": 164.0
+    },
+    {
+     "ad": "Köpük bant (tırnak alt sağ)",
+     "id": "p0791",
+     "ilk_mm": 152.0,
+     "son_mm": 164.0
+    },
+    {
+     "ad": "Ekran tırnağı üst sağ",
+     "id": "p0782",
+     "ilk_mm": 300.0,
+     "son_mm": 302.0
+    },
+    {
+     "ad": "Köpük bant (tırnak üst sağ)",
+     "id": "p0783",
+     "ilk_mm": 300.0,
+     "son_mm": 302.0
+    }
+   ],
+   "sure_s": 18.8
+  },
+  {
+   "adim": "F1",
+   "grup": "Ön sağ bant",
+   "parca": "Etek ön sağ",
+   "pid": "p0223",
+   "yon": [
+    0,
+    0,
+    1
+   ],
+   "adim_mm": 2.0,
+   "ayrildi_mm": 182.0,
+   "dinlenme": [],
+   "engel": [
+    {
+     "ad": "Perçin somun M3 (Etek braketi sağ z+105)",
+     "id": "p0555",
+     "ilk_mm": 2.0,
+     "son_mm": 8.0
+    },
+    {
+     "ad": "Şase uzun rayı sağ",
+     "id": "p0000",
+     "ilk_mm": 24.0,
+     "son_mm": 162.0
+    },
+    {
+     "ad": "Alt plaka",
+     "id": "p0837",
+     "ilk_mm": 24.0,
+     "son_mm": 162.0
+    }
+   ],
+   "sure_s": 11.1
+  },
+  {
+   "adim": "F1",
+   "grup": "Ön sağ bant",
+   "parca": "Etek ön sağ",
+   "pid": "p0223",
+   "yon": [
+    1,
+    0,
+    1
+   ],
+   "adim_mm": 2.83,
+   "ayrildi_mm": 229.1,
+   "dinlenme": [],
+   "engel": [
+    {
+     "ad": "Sonar HC-SR04 (sağ)",
+     "id": "p1220",
+     "ilk_mm": 2.8,
+     "son_mm": 11.3
+    },
+    {
+     "ad": "Şase uzun rayı sağ",
+     "id": "p0000",
+     "ilk_mm": 33.9,
+     "son_mm": 152.7
+    },
+    {
+     "ad": "Alt plaka",
+     "id": "p0837",
+     "ilk_mm": 33.9,
+     "son_mm": 206.5
+    }
+   ],
+   "sure_s": 7.8
+  },
+  {
+   "adim": "F4",
+   "grup": "Omuz bandı sağ",
+   "parca": "Omuz bandı sağ",
+   "pid": "p0215",
+   "yon": [
+    1,
+    0,
+    0
+   ],
+   "adim_mm": 2.0,
+   "ayrildi_mm": 174.0,
+   "dinlenme": [],
+   "engel": [
+    {
+     "ad": "Rulman kapağı",
+     "id": "p0078",
+     "ilk_mm": 2.0,
+     "son_mm": 98.0
+    },
+    {
+     "ad": "Göğüs bandı sağ",
+     "id": "p0213",
+     "ilk_mm": 2.0,
+     "son_mm": 160.0
+    },
+    {
+     "ad": "Yuva bağlantı cıvatası M6x16",
+     "id": "p0070",
+     "ilk_mm": 4.0,
+     "son_mm": 28.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (gövde y1198 arka)",
+     "id": "p0287",
+     "ilk_mm": 18.0,
+     "son_mm": 106.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (gövde y1198 arka)",
+     "id": "p0289",
+     "ilk_mm": 44.0,
+     "son_mm": 132.0
+    }
+   ],
+   "sure_s": 5.2
+  },
+  {
+   "adim": "F4",
+   "grup": "Omuz bandı sağ",
+   "parca": "Omuz bandı sağ",
+   "pid": "p0215",
+   "yon": [
+    0,
+    1,
+    0
+   ],
+   "adim_mm": 2.0,
+   "ayrildi_mm": null,
+   "dinlenme": [],
+   "engel": [
+    {
+     "ad": "Rulman kapağı",
+     "id": "p0078",
+     "ilk_mm": 6.0,
+     "son_mm": 100.0
+    },
+    {
+     "ad": "Kapak cıvatası M3x12",
+     "id": "p0080",
+     "ilk_mm": 18.0,
+     "son_mm": 66.0
+    },
+    {
+     "ad": "Kapak cıvatası M3x12",
+     "id": "p0082",
+     "ilk_mm": 18.0,
+     "son_mm": 66.0
+    },
+    {
+     "ad": "Omuz yuvası",
+     "id": "p0059",
+     "ilk_mm": 22.0,
+     "son_mm": 52.0
+    },
+    {
+     "ad": "Kapak cıvatası M3x12",
+     "id": "p0084",
+     "ilk_mm": 30.0,
+     "son_mm": 78.0
+    },
+    {
+     "ad": "Kapak cıvatası M3x12",
+     "id": "p0086",
+     "ilk_mm": 30.0,
+     "son_mm": 78.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (yuvada)",
+     "id": "p0083",
+     "ilk_mm": 32.0,
+     "son_mm": 32.0
+    },
+    {
+     "ad": "S1 horn 25T alüminyum disk",
+     "id": "p0088",
+     "ilk_mm": 42.0,
+     "son_mm": 72.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (yuvada)",
+     "id": "p0087",
+     "ilk_mm": 44.0,
+     "son_mm": 44.0
+    },
+    {
+     "ad": "S1 servo çıkış mili",
+     "id": "p0061",
+     "ilk_mm": 56.0,
+     "son_mm": 62.0
+    },
+    {
+     "ad": "S1 horn merkez vidası M3",
+     "id": "p0089",
+     "ilk_mm": 56.0,
+     "son_mm": 74.0
+    },
+    {
+     "ad": "Yüz kabuğu (ön) sağ",
+     "id": "p0750",
+     "ilk_mm": 66.0,
+     "son_mm": 302.0
+    },
+    {
+     "ad": "Arka kafa kabuğu sağ",
+     "id": "p0752",
+     "ilk_mm": 66.0,
+     "son_mm": 282.0
+    },
+    {
+     "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol ön alt (çerçeve))",
+     "id": "p0766",
+     "ilk_mm": 80.0,
+     "son_mm": 136.0
+    },
+    {
+     "ad": "Ekran tırnağı alt sağ",
+     "id": "p0790",
+     "ilk_mm": 80.0,
+     "son_mm": 94.0
+    },
+    {
+     "ad": "Tırnak cıvatası M3x6 ISO 7380 (alt sağ)",
+     "id": "p0792",
+     "ilk_mm": 82.0,
+     "son_mm": 88.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (tırnak boss alt sağ)",
+     "id": "p0793",
+     "ilk_mm": 84.0,
+     "son_mm": 88.0
+    },
+    {
+     "ad": "Yüz ekranı WaveShare 10,1\" QLED HDMI",
+     "id": "p0781",
+     "ilk_mm": 90.0,
+     "son_mm": 290.0
+    },
+    {
+     "ad": "Köpük bant (tırnak alt sağ)",
+     "id": "p0791",
+     "ilk_mm": 90.0,
+     "son_mm": 94.0
+    },
+    {
+     "ad": "Yüz kabuğu (ön) sol",
+     "id": "p0751",
+     "ilk_mm": 106.0,
+     "son_mm": 302.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (kafa sağ/sol ön alt (çerçeve))",
+     "id": "p0765",
+     "ilk_mm": 114.0,
+     "son_mm": 124.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (kafa ön/arka sağ y-60)",
+     "id": "p0773",
+     "ilk_mm": 118.0,
+     "son_mm": 122.0
+    },
+    {
+     "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sağ y-60)",
+     "id": "p0774",
+     "ilk_mm": 118.0,
+     "son_mm": 124.0
+    },
+    {
+     "ad": "Tabla cıvatası M3x10 (sağ z-15)",
+     "id": "p0755",
+     "ilk_mm": 202.0,
+     "son_mm": 216.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (tabla rafı sağ z-15)",
+     "id": "p0756",
+     "ilk_mm": 202.0,
+     "son_mm": 208.0
+    },
+    {
+     "ad": "Tabla cıvatası M3x10 (sağ z-75)",
+     "id": "p0757",
+     "ilk_mm": 202.0,
+     "son_mm": 216.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (tabla rafı sağ z-75)",
+     "id": "p0758",
+     "ilk_mm": 202.0,
+     "son_mm": 208.0
+    },
+    {
+     "ad": "Kafa iskeleti",
+     "id": "p0754",
+     "ilk_mm": 208.0,
+     "son_mm": 212.0
+    },
+    {
+     "ad": "Köpük bant (SY8205)",
+     "id": "p0818",
+     "ilk_mm": 212.0,
+     "son_mm": 214.0
+    },
+    {
+     "ad": "Köpük bant (TVS)",
+     "id": "p0820",
+     "ilk_mm": 212.0,
+     "son_mm": 214.0
+    },
+    {
+     "ad": "SY8205 kafa ekranı 5 V",
+     "id": "p0819",
+     "ilk_mm": 214.0,
+     "son_mm": 218.0
+    },
+    {
+     "ad": "TVS P6KE6V8A kafa ekranı",
+     "id": "p0821",
+     "ilk_mm": 214.0,
+     "son_mm": 218.0
+    },
+    {
+     "ad": "Raspberry Pi 5 4GB + Active Cooler",
+     "id": "p0803",
+     "ilk_mm": 220.0,
+     "son_mm": 238.0
+    },
+    {
+     "ad": "Ekran tırnağı üst sağ",
+     "id": "p0782",
+     "ilk_mm": 238.0,
+     "son_mm": 252.0
+    },
+    {
+     "ad": "Köpük bant (tırnak üst sağ)",
+     "id": "p0783",
+     "ilk_mm": 238.0,
+     "son_mm": 242.0
+    },
+    {
+     "ad": "Tırnak cıvatası M3x6 ISO 7380 (üst sağ)",
+     "id": "p0784",
+     "ilk_mm": 244.0,
+     "son_mm": 250.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (tırnak boss üst sağ)",
+     "id": "p0785",
+     "ilk_mm": 246.0,
+     "son_mm": 250.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (kafa ön/arka sağ y+70)",
+     "id": "p0775",
+     "ilk_mm": 248.0,
+     "son_mm": 252.0
+    },
+    {
+     "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sağ y+70)",
+     "id": "p0776",
+     "ilk_mm": 248.0,
+     "son_mm": 254.0
+    },
+    {
+     "ad": "Kamera Raspberry Pi Camera Module 3",
+     "id": "p0798",
+     "ilk_mm": 252.0,
+     "son_mm": 302.0
+    },
+    {
+     "ad": "Kamera vidası M2x8 PT (2)",
+     "id": "p0801",
+     "ilk_mm": 252.0,
+     "son_mm": 258.0
+    },
+    {
+     "ad": "Kamera vidası M2x8 PT (3)",
+     "id": "p0802",
+     "ilk_mm": 266.0,
+     "son_mm": 270.0
+    },
+    {
+     "ad": "ReSpeaker Mic Array v2.0",
+     "id": "p0826",
+     "ilk_mm": 272.0,
+     "son_mm": 278.0
+    },
+    {
+     "ad": "Kamera vidası M2x8 PT (0)",
+     "id": "p0799",
+     "ilk_mm": 298.0,
+     "son_mm": 300.0
+    }
+   ],
+   "sure_s": 14.3
+  },
+  {
+   "adim": "F3",
+   "grup": "Göğüs ekranı çerçevesi",
+   "parca": "Göğüs ekranı çerçevesi sağ",
+   "pid": "p0229",
+   "yon": [
+    0,
+    0,
+    1
+   ],
+   "adim_mm": 2.0,
+   "ayrildi_mm": 64.0,
+   "dinlenme": [],
+   "engel": [
+    {
+     "ad": "Göğüs bandı sağ",
+     "id": "p0213",
+     "ilk_mm": 2.0,
+     "son_mm": 10.0
+    },
+    {
+     "ad": "Göğüs ekranı 11,6\" HDMI 1920x1080 kasalı",
+     "id": "p0407",
+     "ilk_mm": 4.0,
+     "son_mm": 8.0
+    },
+    {
+     "ad": "Gövde orta bandı sağ",
+     "id": "p0211",
+     "ilk_mm": 6.0,
+     "son_mm": 6.0
+    }
+   ],
+   "sure_s": 2.1
+  },
+  {
+   "adim": "F3",
+   "grup": "Göğüs bandı sol + y 1095 braketi",
+   "parca": "Göğüs bandı sol",
+   "pid": "p0214",
+   "yon": [
+    -1,
+    0,
+    0
+   ],
+   "adim_mm": 2.0,
+   "ayrildi_mm": 162.0,
+   "dinlenme": [],
+   "engel": [
+    {
+     "ad": "Gövde orta bandı sol",
+     "id": "p0212",
+     "ilk_mm": 2.0,
+     "son_mm": 136.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (gövde y1005 arka)",
+     "id": "p0281",
+     "ilk_mm": 18.0,
+     "son_mm": 86.0
+    }
+   ],
+   "sure_s": 4.9
+  },
+  {
+   "adim": "F3",
+   "grup": "Göğüs bandı sol + y 1095 braketi",
+   "parca": "Göğüs bandı sol",
+   "pid": "p0214",
+   "yon": [
+    0,
+    1,
+    0
+   ],
+   "adim_mm": 2.0,
+   "ayrildi_mm": null,
+   "dinlenme": [],
+   "engel": [
+    {
+     "ad": "Gövde orta bandı sağ",
+     "id": "p0211",
+     "ilk_mm": 2.0,
+     "son_mm": 4.0
+    },
+    {
+     "ad": "Gövde orta bandı sol",
+     "id": "p0212",
+     "ilk_mm": 2.0,
+     "son_mm": 12.0
+    },
+    {
+     "ad": "Göğüs bandı sağ",
+     "id": "p0213",
+     "ilk_mm": 2.0,
+     "son_mm": 18.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (gövde y1005 ön)",
+     "id": "p0277",
+     "ilk_mm": 2.0,
+     "son_mm": 10.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (gövde y1005 yan)",
+     "id": "p0285",
+     "ilk_mm": 2.0,
+     "son_mm": 8.0
+    },
+    {
+     "ad": "Perçin somun M5 (Gövde braketi sol y1095)",
+     "id": "p0525",
+     "ilk_mm": 2.0,
+     "son_mm": 14.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (gövde x0 ön)",
+     "id": "p0315",
+     "ilk_mm": 4.0,
+     "son_mm": 16.0
+    },
+    {
+     "ad": "Rulman kapağı",
+     "id": "p0151",
+     "ilk_mm": 32.0,
+     "son_mm": 294.0
+    },
+    {
+     "ad": "S1 horn 25T alüminyum disk",
+     "id": "p0161",
+     "ilk_mm": 48.0,
+     "son_mm": 276.0
+    },
+    {
+     "ad": "Kapak cıvatası M3x12",
+     "id": "p0153",
+     "ilk_mm": 54.0,
+     "son_mm": 260.0
+    },
+    {
+     "ad": "Kapak cıvatası M3x12",
+     "id": "p0155",
+     "ilk_mm": 54.0,
+     "son_mm": 260.0
+    },
+    {
+     "ad": "S1 servo çıkış mili",
+     "id": "p0134",
+     "ilk_mm": 58.0,
+     "son_mm": 266.0
+    },
+    {
+     "ad": "S1 horn merkez vidası M3",
+     "id": "p0162",
+     "ilk_mm": 58.0,
+     "son_mm": 266.0
+    },
+    {
+     "ad": "Kapak cıvatası M3x12",
+     "id": "p0157",
+     "ilk_mm": 66.0,
+     "son_mm": 272.0
+    },
+    {
+     "ad": "Kapak cıvatası M3x12",
+     "id": "p0159",
+     "ilk_mm": 66.0,
+     "son_mm": 272.0
+    },
+    {
+     "ad": "S1 servo DS3235 (ön-arka)",
+     "id": "p0133",
+     "ilk_mm": 114.0,
+     "son_mm": 168.0
+    },
+    {
+     "ad": "Yüz kabuğu (ön) sol",
+     "id": "p0751",
+     "ilk_mm": 128.0,
+     "son_mm": 302.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (tırnak boss alt sol)",
+     "id": "p0797",
+     "ilk_mm": 148.0,
+     "son_mm": 152.0
+    },
+    {
+     "ad": "Yüz ekranı WaveShare 10,1\" QLED HDMI",
+     "id": "p0781",
+     "ilk_mm": 152.0,
+     "son_mm": 302.0
+    },
+    {
+     "ad": "Ekran tırnağı alt sol",
+     "id": "p0794",
+     "ilk_mm": 152.0,
+     "son_mm": 164.0
+    },
+    {
+     "ad": "Köpük bant (tırnak alt sol)",
+     "id": "p0795",
+     "ilk_mm": 152.0,
+     "son_mm": 164.0
+    },
+    {
+     "ad": "Ekran tırnağı üst sol",
+     "id": "p0786",
+     "ilk_mm": 300.0,
+     "son_mm": 302.0
+    },
+    {
+     "ad": "Köpük bant (tırnak üst sol)",
+     "id": "p0787",
+     "ilk_mm": 300.0,
+     "son_mm": 302.0
+    }
+   ],
+   "sure_s": 24.2
+  },
+  {
+   "adim": "F1",
+   "grup": "Ön sol bant",
+   "parca": "Etek ön sol",
+   "pid": "p0224",
+   "yon": [
+    0,
+    0,
+    1
+   ],
+   "adim_mm": 2.0,
+   "ayrildi_mm": 182.0,
+   "dinlenme": [],
+   "engel": [
+    {
+     "ad": "Perçin somun M3 (Etek braketi sol z+105)",
+     "id": "p0561",
+     "ilk_mm": 2.0,
+     "son_mm": 8.0
+    },
+    {
+     "ad": "Şase uzun rayı sol",
+     "id": "p0001",
+     "ilk_mm": 24.0,
+     "son_mm": 162.0
+    },
+    {
+     "ad": "Alt plaka",
+     "id": "p0837",
+     "ilk_mm": 24.0,
+     "son_mm": 162.0
+    }
+   ],
+   "sure_s": 13.9
+  },
+  {
+   "adim": "F4",
+   "grup": "Omuz bandı sol, ön dikiş",
+   "parca": "Omuz bandı sol",
+   "pid": "p0216",
+   "yon": [
+    -1,
+    0,
+    0
+   ],
+   "adim_mm": 2.0,
+   "ayrildi_mm": 162.0,
+   "dinlenme": [],
+   "engel": [
+    {
+     "ad": "Rulman kapağı",
+     "id": "p0151",
+     "ilk_mm": 2.0,
+     "son_mm": 98.0
+    },
+    {
+     "ad": "Göğüs bandı sol",
+     "id": "p0214",
+     "ilk_mm": 2.0,
+     "son_mm": 136.0
+    },
+    {
+     "ad": "Yuva bağlantı cıvatası M6x16",
+     "id": "p0143",
+     "ilk_mm": 4.0,
+     "son_mm": 28.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (gövde y1198 arka)",
+     "id": "p0291",
+     "ilk_mm": 18.0,
+     "son_mm": 82.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (gövde y1198 arka)",
+     "id": "p0293",
+     "ilk_mm": 44.0,
+     "son_mm": 108.0
+    }
+   ],
+   "sure_s": 6.1
+  },
+  {
+   "adim": "F4",
+   "grup": "Omuz bandı sol, ön dikiş",
+   "parca": "Omuz bandı sol",
+   "pid": "p0216",
+   "yon": [
+    0,
+    1,
+    0
+   ],
+   "adim_mm": 2.0,
+   "ayrildi_mm": null,
+   "dinlenme": [],
+   "engel": [
+    {
+     "ad": "Rulman kapağı",
+     "id": "p0151",
+     "ilk_mm": 6.0,
+     "son_mm": 100.0
+    },
+    {
+     "ad": "Kapak cıvatası M3x12",
+     "id": "p0153",
+     "ilk_mm": 18.0,
+     "son_mm": 66.0
+    },
+    {
+     "ad": "Kapak cıvatası M3x12",
+     "id": "p0155",
+     "ilk_mm": 18.0,
+     "son_mm": 66.0
+    },
+    {
+     "ad": "Omuz yuvası",
+     "id": "p0132",
+     "ilk_mm": 22.0,
+     "son_mm": 52.0
+    },
+    {
+     "ad": "Kapak cıvatası M3x12",
+     "id": "p0157",
+     "ilk_mm": 30.0,
+     "son_mm": 78.0
+    },
+    {
+     "ad": "Kapak cıvatası M3x12",
+     "id": "p0159",
+     "ilk_mm": 30.0,
+     "son_mm": 78.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (yuvada)",
+     "id": "p0156",
+     "ilk_mm": 32.0,
+     "son_mm": 32.0
+    },
+    {
+     "ad": "S1 horn 25T alüminyum disk",
+     "id": "p0161",
+     "ilk_mm": 42.0,
+     "son_mm": 72.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (yuvada)",
+     "id": "p0160",
+     "ilk_mm": 44.0,
+     "son_mm": 44.0
+    },
+    {
+     "ad": "S1 servo çıkış mili",
+     "id": "p0134",
+     "ilk_mm": 56.0,
+     "son_mm": 62.0
+    },
+    {
+     "ad": "S1 horn merkez vidası M3",
+     "id": "p0162",
+     "ilk_mm": 56.0,
+     "son_mm": 74.0
+    },
+    {
+     "ad": "Yüz kabuğu (ön) sol",
+     "id": "p0751",
+     "ilk_mm": 66.0,
+     "son_mm": 282.0
+    },
+    {
+     "ad": "Arka kafa kabuğu sol",
+     "id": "p0753",
+     "ilk_mm": 66.0,
+     "son_mm": 282.0
+    },
+    {
+     "ad": "Yüz kabuğu (ön) sağ",
+     "id": "p0750",
+     "ilk_mm": 68.0,
+     "son_mm": 280.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (kafa sağ/sol ön alt (çerçeve))",
+     "id": "p0765",
+     "ilk_mm": 74.0,
+     "son_mm": 78.0
+    },
+    {
+     "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol ön alt (çerçeve))",
+     "id": "p0766",
+     "ilk_mm": 74.0,
+     "son_mm": 82.0
+    },
+    {
+     "ad": "Arka kafa kabuğu sağ",
+     "id": "p0752",
+     "ilk_mm": 78.0,
+     "son_mm": 280.0
+    },
+    {
+     "ad": "Ekran tırnağı alt sol",
+     "id": "p0794",
+     "ilk_mm": 80.0,
+     "son_mm": 94.0
+    },
+    {
+     "ad": "Tırnak cıvatası M3x6 ISO 7380 (alt sol)",
+     "id": "p0796",
+     "ilk_mm": 82.0,
+     "son_mm": 88.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (tırnak boss alt sol)",
+     "id": "p0797",
+     "ilk_mm": 84.0,
+     "son_mm": 88.0
+    },
+    {
+     "ad": "Yüz ekranı WaveShare 10,1\" QLED HDMI",
+     "id": "p0781",
+     "ilk_mm": 90.0,
+     "son_mm": 244.0
+    },
+    {
+     "ad": "Köpük bant (tırnak alt sol)",
+     "id": "p0795",
+     "ilk_mm": 90.0,
+     "son_mm": 94.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (kafa ön/arka sol y-60)",
+     "id": "p0777",
+     "ilk_mm": 118.0,
+     "son_mm": 122.0
+    },
+    {
+     "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sol y-60)",
+     "id": "p0778",
+     "ilk_mm": 118.0,
+     "son_mm": 124.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar alt)",
+     "id": "p0771",
+     "ilk_mm": 128.0,
+     "son_mm": 132.0
+    },
+    {
+     "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol arka duvar alt)",
+     "id": "p0772",
+     "ilk_mm": 128.0,
+     "son_mm": 134.0
+    },
+    {
+     "ad": "Tabla cıvatası M3x10 (sol z-15)",
+     "id": "p0759",
+     "ilk_mm": 202.0,
+     "son_mm": 216.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (tabla rafı sol z-15)",
+     "id": "p0760",
+     "ilk_mm": 202.0,
+     "son_mm": 208.0
+    },
+    {
+     "ad": "Tabla cıvatası M3x10 (sol z-75)",
+     "id": "p0761",
+     "ilk_mm": 202.0,
+     "son_mm": 216.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (tabla rafı sol z-75)",
+     "id": "p0762",
+     "ilk_mm": 202.0,
+     "son_mm": 208.0
+    },
+    {
+     "ad": "Vida M2,5x8 (Pi 2 alt)",
+     "id": "p0812",
+     "ilk_mm": 204.0,
+     "son_mm": 216.0
+    },
+    {
+     "ad": "Kafa iskeleti",
+     "id": "p0754",
+     "ilk_mm": 208.0,
+     "son_mm": 212.0
+    },
+    {
+     "ad": "Burç M2,5x8 (Pi 2)",
+     "id": "p0810",
+     "ilk_mm": 212.0,
+     "son_mm": 220.0
+    },
+    {
+     "ad": "Köpük bant (5)",
+     "id": "p0816",
+     "ilk_mm": 212.0,
+     "son_mm": 214.0
+    },
+    {
+     "ad": "Köpük bant (TVS Pi hattı)",
+     "id": "p0822",
+     "ilk_mm": 212.0,
+     "son_mm": 214.0
+    },
+    {
+     "ad": "5 V çevirici Pololu D24V50F5",
+     "id": "p0817",
+     "ilk_mm": 214.0,
+     "son_mm": 222.0
+    },
+    {
+     "ad": "TVS P6KE6V8A Pi hattı",
+     "id": "p0823",
+     "ilk_mm": 214.0,
+     "son_mm": 218.0
+    },
+    {
+     "ad": "Vida M2,5x5 (Pi 2 üst)",
+     "id": "p0811",
+     "ilk_mm": 216.0,
+     "son_mm": 224.0
+    },
+    {
+     "ad": "Raspberry Pi 5 4GB + Active Cooler",
+     "id": "p0803",
+     "ilk_mm": 220.0,
+     "son_mm": 236.0
+    },
+    {
+     "ad": "Ekran tırnağı üst sol",
+     "id": "p0786",
+     "ilk_mm": 238.0,
+     "son_mm": 252.0
+    },
+    {
+     "ad": "Köpük bant (tırnak üst sol)",
+     "id": "p0787",
+     "ilk_mm": 238.0,
+     "son_mm": 242.0
+    },
+    {
+     "ad": "Tırnak cıvatası M3x6 ISO 7380 (üst sol)",
+     "id": "p0788",
+     "ilk_mm": 244.0,
+     "son_mm": 250.0
+    },
+    {
+     "ad": "Köpük bant (PAM8403 amfi)",
+     "id": "p0824",
+     "ilk_mm": 244.0,
+     "son_mm": 262.0
+    },
+    {
+     "ad": "PAM8403 amfi",
+     "id": "p0825",
+     "ilk_mm": 244.0,
+     "son_mm": 262.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (tırnak boss üst sol)",
+     "id": "p0789",
+     "ilk_mm": 246.0,
+     "son_mm": 250.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (kafa ön/arka sol y+70)",
+     "id": "p0779",
+     "ilk_mm": 248.0,
+     "son_mm": 252.0
+    },
+    {
+     "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa ön/arka sol y+70)",
+     "id": "p0780",
+     "ilk_mm": 248.0,
+     "son_mm": 254.0
+    },
+    {
+     "ad": "Kamera Raspberry Pi Camera Module 3",
+     "id": "p0798",
+     "ilk_mm": 252.0,
+     "son_mm": 278.0
+    },
+    {
+     "ad": "Kamera vidası M2x8 PT (0)",
+     "id": "p0799",
+     "ilk_mm": 252.0,
+     "son_mm": 258.0
+    },
+    {
+     "ad": "Isıl gömme somun M3 (kafa sağ/sol arka duvar üst)",
+     "id": "p0769",
+     "ilk_mm": 254.0,
+     "son_mm": 258.0
+    },
+    {
+     "ad": "Kabuk cıvatası M3x6 ISO 7380 (kafa sağ/sol arka duvar üst)",
+     "id": "p0770",
+     "ilk_mm": 254.0,
+     "son_mm": 260.0
+    },
+    {
+     "ad": "Kamera vidası M2x8 PT (1)",
+     "id": "p0800",
+     "ilk_mm": 266.0,
+     "son_mm": 270.0
+    }
+   ],
+   "sure_s": 17.4
+  }
+ ],
+ "iki_parcali": [
+  {
+   "adim": "F3",
+   "parca": "Göğüs bandı sağ",
+   "kalk": [
+    0,
+    1,
+    0
+   ],
+   "L_mm": 16,
+   "cik": [
+    1,
+    0,
+    0
+   ],
+   "kalk_engel": {
+    "Gövde orta bandı sağ": [
+     2.0,
+     12.0
+    ],
+    "Isıl gömme somun M3 (gövde y1005 ön)": [
+     2.0,
+     10.0
+    ],
+    "Isıl gömme somun M3 (gövde y1005 yan)": [
+     2.0,
+     8.0
+    ],
+    "Perçin somun M5 (Gövde braketi sağ y1095)": [
+     2.0,
+     14.0
+    ]
+   },
+   "cik_ayrildi_mm": 174.0,
+   "cik_engel": {}
+  },
+  {
+   "adim": "F3",
+   "parca": "Göğüs bandı sağ",
+   "kalk": [
+    0,
+    1,
+    0
+   ],
+   "L_mm": 24,
+   "cik": [
+    1,
+    0,
+    0
+   ],
+   "kalk_engel": {
+    "Gövde orta bandı sağ": [
+     2.0,
+     12.0
+    ],
+    "Isıl gömme somun M3 (gövde y1005 ön)": [
+     2.0,
+     10.0
+    ],
+    "Isıl gömme somun M3 (gövde y1005 yan)": [
+     2.0,
+     8.0
+    ],
+    "Perçin somun M5 (Gövde braketi sağ y1095)": [
+     2.0,
+     14.0
+    ]
+   },
+   "cik_ayrildi_mm": 174.0,
+   "cik_engel": {}
+  },
+  {
+   "adim": "F3",
+   "parca": "Göğüs bandı sol",
+   "kalk": [
+    0,
+    1,
+    0
+   ],
+   "L_mm": 16,
+   "cik": [
+    -1,
+    0,
+    0
+   ],
+   "kalk_engel": {
+    "Gövde orta bandı sağ": [
+     2.0,
+     4.0
+    ],
+    "Gövde orta bandı sol": [
+     2.0,
+     12.0
+    ],
+    "Göğüs bandı sağ": [
+     2.0,
+     16.0
+    ],
+    "Isıl gömme somun M3 (gövde y1005 ön)": [
+     2.0,
+     10.0
+    ],
+    "Isıl gömme somun M3 (gövde y1005 yan)": [
+     2.0,
+     8.0
+    ],
+    "Perçin somun M5 (Gövde braketi sol y1095)": [
+     2.0,
+     14.0
+    ],
+    "Isıl gömme somun M3 (gövde x0 ön)": [
+     4.0,
+     16.0
+    ]
+   },
+   "cik_ayrildi_mm": 162.0,
+   "cik_engel": {
+    "Göğüs bandı sağ": [
+     0.0,
+     8.0
+    ],
+    "Isıl gömme somun M3 (gövde x0 ön)": [
+     0.0,
+     6.0
+    ]
+   }
+  },
+  {
+   "adim": "F3",
+   "parca": "Göğüs bandı sol",
+   "kalk": [
+    0,
+    1,
+    0
+   ],
+   "L_mm": 24,
+   "cik": [
+    -1,
+    0,
+    0
+   ],
+   "kalk_engel": {
+    "Gövde orta bandı sağ": [
+     2.0,
+     4.0
+    ],
+    "Gövde orta bandı sol": [
+     2.0,
+     12.0
+    ],
+    "Göğüs bandı sağ": [
+     2.0,
+     18.0
+    ],
+    "Isıl gömme somun M3 (gövde y1005 ön)": [
+     2.0,
+     10.0
+    ],
+    "Isıl gömme somun M3 (gövde y1005 yan)": [
+     2.0,
+     8.0
+    ],
+    "Perçin somun M5 (Gövde braketi sol y1095)": [
+     2.0,
+     14.0
+    ],
+    "Isıl gömme somun M3 (gövde x0 ön)": [
+     4.0,
+     16.0
+    ]
+   },
+   "cik_ayrildi_mm": 162.0,
+   "cik_engel": {}
+  },
+  {
+   "adim": "F4",
+   "parca": "Omuz bandı sağ",
+   "kalk": [
+    0,
+    1,
+    0
+   ],
+   "L_mm": 16,
+   "cik": [
+    1,
+    0,
+    0
+   ],
+   "kalk_engel": {
+    "Rulman kapağı": [
+     6.0,
+     16.0
+    ]
+   },
+   "cik_ayrildi_mm": 174.0,
+   "cik_engel": {
+    "Rulman kapağı": [
+     0.0,
+     4.0
+    ],
+    "Kapak cıvatası M3x12": [
+     2.0,
+     6.0
+    ]
+   }
+  },
+  {
+   "adim": "F4",
+   "parca": "Omuz bandı sağ",
+   "kalk": [
+    0,
+    1,
+    0
+   ],
+   "L_mm": 24,
+   "cik": [
+    1,
+    0,
+    0
+   ],
+   "kalk_engel": {
+    "Rulman kapağı": [
+     6.0,
+     24.0
+    ],
+    "Kapak cıvatası M3x12": [
+     18.0,
+     24.0
+    ],
+    "Omuz yuvası": [
+     22.0,
+     24.0
+    ]
+   },
+   "cik_ayrildi_mm": 174.0,
+   "cik_engel": {
+    "Omuz yuvası": [
+     0.0,
+     0.0
+    ],
+    "Rulman kapağı": [
+     0.0,
+     14.0
+    ],
+    "Kapak cıvatası M3x12": [
+     0.0,
+     6.0
+    ],
+    "6808-2RS rulman (dış bilezik)": [
+     2.0,
+     12.0
+    ]
+   }
+  },
+  {
+   "adim": "F4",
+   "parca": "Omuz bandı sol",
+   "kalk": [
+    0,
+    1,
+    0
+   ],
+   "L_mm": 16,
+   "cik": [
+    -1,
+    0,
+    0
+   ],
+   "kalk_engel": {
+    "Rulman kapağı": [
+     6.0,
+     16.0
+    ]
+   },
+   "cik_ayrildi_mm": 162.0,
+   "cik_engel": {
+    "Rulman kapağı": [
+     0.0,
+     4.0
+    ],
+    "Kapak cıvatası M3x12": [
+     2.0,
+     6.0
+    ]
+   }
+  },
+  {
+   "adim": "F4",
+   "parca": "Omuz bandı sol",
+   "kalk": [
+    0,
+    1,
+    0
+   ],
+   "L_mm": 24,
+   "cik": [
+    -1,
+    0,
+    0
+   ],
+   "kalk_engel": {
+    "Rulman kapağı": [
+     6.0,
+     24.0
+    ],
+    "Kapak cıvatası M3x12": [
+     18.0,
+     24.0
+    ],
+    "Omuz yuvası": [
+     22.0,
+     24.0
+    ]
+   },
+   "cik_ayrildi_mm": 162.0,
+   "cik_engel": {
+    "Omuz yuvası": [
+     0.0,
+     0.0
+    ],
+    "Rulman kapağı": [
+     0.0,
+     14.0
+    ],
+    "Kapak cıvatası M3x12": [
+     0.0,
+     6.0
+    ],
+    "6808-2RS rulman (dış bilezik)": [
+     2.0,
+     12.0
+    ]
+   }
+  },
+  {
+   "adim": "F1",
+   "parca": "Etek ön sağ",
+   "kalk": [
+    0,
+    0,
+    1
+   ],
+   "L_mm": 10,
+   "cik": [
+    1,
+    0,
+    0
+   ],
+   "kalk_engel": {
+    "Perçin somun M3 (Etek braketi sağ z+105)": [
+     2.0,
+     8.0
+    ]
+   },
+   "cik_ayrildi_mm": 236.0,
+   "cik_engel": {}
+  },
+  {
+   "adim": "F1",
+   "parca": "Etek ön sol",
+   "kalk": [
+    0,
+    0,
+    1
+   ],
+   "L_mm": 10,
+   "cik": [
+    -1,
+    0,
+    0
+   ],
+   "kalk_engel": {
+    "Perçin somun M3 (Etek braketi sol z+105)": [
+     2.0,
+     8.0
+    ]
+   },
+   "cik_ayrildi_mm": 224.0,
+   "cik_engel": {}
+  }
+ ]
+}

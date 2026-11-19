@@ -164,7 +164,12 @@ tutucunun ceplerine somununu tur tutucuyu somunlara sonradan modele silindir gel
 baradaki ezecek enerjiden zamanla oradaki ikisi
 portuna
 ikisinde biter saplamadan tutucusuyla kartla sorulacak bakacak ezer yelpaze takmak
+dilinin somunun kuponla sonucu yerinin kenara yanal
+say kala dilimi ikisini kurtarmaz esneyip oturup oturmazsa sonucunu esnetilerek
 """.split())
+# P10.8b düzeltme turu 1 (P108b-kontrol O1, O2, D6): son satır F3 / F4 sıkı geçme cümlelerinin ve K1 alt adım 4 numara cümlesinin
+# 10 yeni kelimesi (gözden geçirildi: Türkçe harfi olmayan doğru yazımlar).
+# P10.8b (P108b-gunluk.md § 1): son satır K55 bant metninin (dil yönü ve yol ölçümden, kuponla denenmedi notu) 7 yeni kelimesi
 # P10.7b2i (F10r-gunluk.md § 2): son satır K1 alt adım 11'deki U06 taban ucu talimatının 1 yeni kelimesi ("portuna"; gözden
 # geçirildi: Türkçe harfi olmayan doğru yazım, "port" + yönelme).
 # P10.7b2h (F10q-gunluk.md § 2): son satır K60 A (K1 alt adım 8), K51 a (E3a), K50 b (F1, F5 not_), K55 a (bant takma) ve K40 a
@@ -434,6 +439,30 @@ ZORUNLU = [
     ("E4", r"10 kΩ / 2,2 kΩ bölücü → PAM8403 sol", "E4 ses yolu ReSpeaker → bölücü → PAM8403"),
     # düzeltme turu 1 (F10u-kontrol 8): KT2 geçmezse kartla siparişten çıkan uzatma ve dirsek
     ("E4", r"~30 cm USB-A uzatma ve L USB-A dirsek de gerekir", "E4 KT2 geçmezse uzatma + dirsek"),
+    # P10.8b (P108b-gunluk.md § 1): K55 bantları: dil yönü ölçümden (dil alttaki bantta), sağ + sol; "kuponla denenmedi" notu
+    ("F1", r"(?:Dil orta bantta: bu bandın z \+88 kenarı orta bandın dilinin dışından geçer[^.]*\.\s+Bandı yerinin 10 mm önünde "
+           r"yandan[\s\S]*){2}",
+     "F1 ön bantlar: dil orta bantta, kenar dilin dışından (K55, ölçüm; sağ + sol)"),
+    # P10.8b düzeltme turu 1 (P108b-kontrol O1): iniş "hafifçe" değil; sıkı geçme, sonucu kupon belirler, oturmazsa zorlama
+    ("F3", r"(?:Dil orta bantta\.[^.]*?sonra aşağı indir\.\s+İnişin son 12 mm'sinde bandın alt kenarı orta bandın dilinin dışından "
+           r"geçmeli; modelde bu geçme sıkı:[\s\S]*?bilinmiyor; buna kupon karar verir[\s\S]*?Oturmazsa zorlama \(bant kırılabilir\)"
+           r"[\s\S]*){2}", "F3 göğüs bantları: dil orta bantta, sıkı geçme kuponla karara bağlanır, zorlama (K55, ölçüm; sağ + sol)"),
+    # P10.8b düzeltme turu 1 (P108b-kontrol O2): omuzda dil engel değil (kesit dik); engel rulman kapağı ve kapak cıvataları
+    ("F4", r"(?:Dil göğüs bandında; [^.]*?düz\s+inişte dil engel değil \(ölçüm\)\.\s+Bandı dikişin 16 mm üstünde yandan[\s\S]*?"
+           r"rulman kapağı[\s\S]*?kapağın üstünden esnetilerek geçmeli[\s\S]*?Oturmazsa zorlama \(bant kırılabilir\): tasarım "
+           r"kararını \(K55 b\) bekle[\s\S]*){2}",
+     "F4 omuz bantları: dil engel değil, engel rulman kapağı, yandan getir + indir (K55, ölçüm; sağ + sol)"),
+    # P10.8b düzeltme turu 1 (P108b-kontrol D1): etek ön bandı için kupon yok
+    # P10.8b düzeltme turu 2 (P108b-kontrol T3): kuponu olmayan dikişte "oturmazsa zorlama + tasarım kararı (K55 b)"
+    ("F1", r"(?:Oturmazsa zorlama \(bant kırılabilir\): tasarım kararını \(K55 b\) bekle\. Bu geçme denenmedi; bu bant için kupon "
+           r"henüz yok\.[\s\S]*){2}", "F1 oturmazsa zorlama + K55 b, denenmedi, kupon yok notu (K55)"),
+    # P10.8b düzeltme turu 2 (P108b-kontrol T2): göğüs bantlarının kuponu var (iki not), çerçevenin yok
+    ("F3", r"(?:Bu geçme kuponla denenmedi; kupon sonucu gelince bu adım yeniden yazılabilir\.[\s\S]*){2}",
+     "F3 kuponla denenmedi notu (K55; göğüs bantları)"),
+    ("F3", r"Oturmazsa zorlama \(çerçeve kırılabilir\): tasarım kararını \(K55 b\) bekle\. Bu geçme denenmedi; bu bant için kupon "
+           r"henüz yok\.", "F3 çerçeve: oturmazsa zorlama + K55 b, kupon yok notu (K55)"),
+    ("F4", r"(?:Oturmazsa zorlama \(bant kırılabilir\): tasarım kararını \(K55 b\) bekle\. Bu geçme denenmedi; bu bant için kupon "
+           r"henüz yok\.[\s\S]*){2}", "F4 oturmazsa zorlama + K55 b, denenmedi, kupon yok notu (K55)"),
 ]
 # P10.7b1 düzeltme turu 1 (F10h-kontrol §2-1, §2-2): ZORUNLU desenleri sabit sayı taşımaz, rehber_metin ile aynı yer tutucuları
 # ({a.F6}, {gpio.ROLE_K1}, {ms.onsarj} …) kullanır; denetim öncesi rehber_deger aynı kayıttan doldurur (tablo değişince bayatlamaz).
@@ -699,6 +728,13 @@ YASAK = [
     ("köprüleme (birbirine bağla)", _KOPRU_NESNE + r"\bbirbirine\s+(?:bağla|değdir|lehimle|tuttur|kıskaçla)\w*", _OLUMSUZ_GENEL),
     # P10.7b2k düzeltme turu 1 (F10u-kontrol 2): bara tutucuları modelde (P10.7b2j); "bara modelde yok / karede görünmez" bayat
     ("bara modelde yok", r"\bbara\w*\b[^.;]{0,40}?\b(?:modelde\s+(?:yok|çizili\s+değil)|karede\s+görünmez)", r"$^"),
+    # P10.8b (P108b-gunluk.md § 1): bantlarda dil alttaki bantta (ölçüm); "bandın dilini komşu bandın arkasına sok" ters.
+    # Çerçevenin dili gerçekten göğüs bandının arkasında (ölçüm): "çerçeve" geçen cümle tutmaz.
+    # P10.8b düzeltme turu 1 (P108b-kontrol D3): özne şartı kalktı; "dilini (en çok üç sözcük) …band… arkasına" cümlenin her yerinde
+    # ("Bandın dilini …", "Göğüs bandının dilini …", "dilini alttaki orta bandın arkasına"); dışlama yalnız "çerçeve" geçen cümle.
+    # "Kuponda denenir" iddiası da yasak (kupon basılmadı; etek ön bandı için kupon yok, P108a-kontrol O2)
+    ("bant dili ters (K55)", r"^(?![^.;]*\bçerçeve)[^.;]*?\bdilini\b(?:\s+\w+){0,3}?\s+band\w*\s+arkasına", r"$^"),
+    ("kuponda denenir iddiası (K55)", r"\bkupon\w*\b[^.;]{0,40}?\bdenenir\b", r"$^"),
     ("röleyi elle kapatma", r"\bröle\w*(?:\s+\w+){0,2}?\s+elle\s+(?:kapat|çek|bastır|kapa)\w*", _OLUMSUZ_GENEL),
     # D-2: yalnız öznesi akü olan "akü (XT60) bağlı / takılı" ("Akü ön takozu … takılı", "Akü kayışları takılı" tutmaz)
     ("akü bağlıyken iş", r"\bakü(?:yü|nün|sü)?\s+(?:XT60\S*\s+)?(?:bağlı|takılı)\w*(?:\s+(?:iken|olabilir|kalabilir|kalsın|durumda\w*))?",
@@ -1214,6 +1250,46 @@ def cad_ad_metinleri(R=None, yol=MONTAJ_ANALIZ):
             gor.add((k, v))
             out.append(("CAD parça %s %s" % (k, v[:40]), R.tr(v)))
     return out
+
+
+CAD_KABLO_ETIKET = r"^Kablo yolu \d+:"         # kablo yolu etiketi veride KABLO_AD adıyla görünür (kaynak_metinler'de)
+
+
+def cad_kaynak_metinleri(R=None, cad=None):
+    """P10.8b (planlama/d158/P108b-gunluk.md § 3): CAD parça etiketi / kodu, güncel kaynaktan (modül FCStd'lerinin Document.xml'i,
+    rehber_gorunum.cad_parcalar; FreeCAD istemez, üretimin okuduğu dosyalar). montaj-analiz.json montaj betiğiyle yenilenir, CAD
+    değişip montaj koşmadıysa eskidir (F10y § 5.4: yeni parça adlarındaki ASCII sözcükleri --kaynak görmedi, yalnız tam üretim gördü).
+    Döner [(yer, metin)] ya da okunamazsa None (çağıran HATA sayar)."""
+    R = R or RM
+    try:
+        if cad is None:
+            import rehber_gorunum as _RGo
+            cad = _RGo.cad_parcalar()
+    except Exception as e:                                          # FCStd yok / bozuk: sessiz geçme yok
+        print("UYARI: CAD kaynak adları okunamadı (%s: %s)" % (type(e).__name__, e))
+        return None
+    gor, out = set(), []
+    for c in cad:
+        # P10.8b düzeltme turu 2 (P108b-kontrol T1): etiket üretimin gösterdiği hâliyle (rehber_veri: RM.tr(RM.kopya_eki_sil(ad, kod)));
+        # FreeCAD'in "001" kopya eki görünen adda yok
+        for k, v in (("etiket", R.kopya_eki_sil(c["etiket"], c["kod"])), ("kod", c["kod"])):
+            if not v or (k, v) in gor or (k == "etiket" and re.match(CAD_KABLO_ETIKET, v)):
+                continue
+            gor.add((k, v))
+            out.append(("CAD kaynak %s %s %s" % (c["modul"], k, v[:40]), R.tr(v)))
+    return out
+
+
+def cad_ad_eskime(cad_kaynak, cad_analiz):
+    """montaj-analiz.json'daki adlar ↔ güncel FCStd adları: analizde olup kaynakta olmayan (eski) ve kaynakta olup analizde olmayan
+    metin sayısı. P10.8b düzeltme turu 1: analizde olup kaynakta olmayan HATA (kaynak_denetle geçmez; montaj betiği koşmadan CAD
+    adı değişti demek); kaynakta olup analizde olmayan bilgi. Düzeltme turu 2 (P108b-kontrol T1): kaynak etiketleri üretim gibi
+    kopya_eki_sil'den geçer; kalan bilgi farkı 10 (P108b-gunluk.md § 14): 2 "(gösterim)" etiketi ve FreeCAD'in "ISO 7380" sonundaki
+    sayıyı artırdığı 8 etiket ("ISO 7381" … "ISO 7387"; kopya_eki_sil 0NN ekini tanır, bunu tanımaz, üretim de aynı adı gösterir)."""
+    if cad_kaynak is None or cad_analiz is None:
+        return None
+    a, k = {t for _, t in cad_analiz}, {t for _, t in cad_kaynak}
+    return dict(analizde_eski=sorted(a - k), kaynakta_yeni=sorted(k - a))
 
 
 def arayuz_metinleri(dosyalar=ARAYUZ_DOSYALARI):
@@ -1921,6 +1997,19 @@ ACIK_BOZMA = [
 ]
 # düzeltme turu 2: köprüleme fiili yakalanır, çoğul ad ("köprüler") yakalanmaz
 YASAK_BOZMA = [
+    # P10.8b (P108b-gunluk.md § 1): K55 eski bant cümleleri yakalanmalı, çerçeve cümlesi yakalanmamalı
+    ("bant dili ters (F3 eski)", "Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici)", True),
+    ("bant dili ters (F4 eski)", "Bant düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok", True),
+    ("çerçeve dili (doğru, yakalanmamalı)", "Çerçeve düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok", False),
+    ("kuponda denenir (eski)", "dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir)", True),
+    ("kuponda bu bant ayrıca denenir (eski)", "kuponda bu bant ayrıca, somun takılıyken denenir", True),
+    # P10.8b düzeltme turu 1 (P108b-kontrol D3): eski dar kalıbın kaçırdığı yazımlar
+    ("bant dili ters (Bandın dilini)", "Bandın dilini orta bandın arkasına sok", True),
+    ("bant dili ters (Göğüs bandının dilini)", "Göğüs bandının dilini omuz bandının arkasına sok", True),
+    ("bant dili ters (alttaki orta bandın)", "Bandı yandan getir, sonra dilini alttaki orta bandın arkasına sok", True),
+    ("bant dili ters (öznesiz)", "Önce yandan getir; dilini göğüs bandının arkasına it", True),
+    ("çerçevenin dili (doğru, yakalanmamalı)", "Çerçevenin dilini göğüs bandının arkasına sok", False),
+    ("dil orta bantta (doğru, yakalanmamalı)", "Dil orta bantta: bandın alt kenarı orta bandın dilinin dışından geçmeli", False),
     # P10.7b2k düzeltme turu 1 (F10u-kontrol 2)
     ("bara modelde yok (17.6 eski)", "anahtarlı bara karede görünmez (modelde yok, güç panelinde)", True),
     ("bara modelde yok (F1 eski)", "yıldız barası güç panelinde (arka kat; bara modelde yok)", True),
@@ -2443,7 +2532,68 @@ def elektrik_bozma_denemesi():
     out += veri_is_ana_bozma_denemesi()                               # P10.7b2e: veri modu is_ana (F10l-gunluk § 10.3)
     out += kalkan_parca_bozma_denemesi()                              # P10.7b2k düzeltme turu 1 (F10u-kontrol 8)
     out += demet_bozma_denemesi(ham)
+    out += cad_kaynak_bozma_denemesi()                                # P10.8b (P108b-gunluk.md § 3)
+    out += boy_bozma_denemesi(ham)                                    # P10.8b (P108b-gunluk.md § 5)
     return dict(temel_hata=len(temel), deneme=out, yakalanan=sum(1 for x in out if x["yakalandi"]), toplam=len(out))
+
+
+def boy_bozma_denemesi(ham):
+    """P10.8b (F10r-kontrol D6): K2 "Önerilen boylar" {boy.<kimlik>} ile kablolar.json'dan. (1) Kayıtta U06 boyu değişince rehber
+    metni de değişir (eski 1.360 elle yazılmış kalmaz). (2) Kayıtta boy yoksa yer tutucu çözülmez (HATA). (3) Kimlik cümleden silinirse
+    bağlam denetimi yakalar."""
+    D = _RDG.degerler()
+    out = []
+    T2 = json.loads(json.dumps(D.T))
+    u = next(r for r in T2["kablolar"] if r["kimlik"] == "U06")
+    u["boy"] = dict(u["boy"], onerilen_mm=1360)
+    v = _RDG.Degerler(T2, D.PH, D.EL).deger("boy", "U06")
+    out.append(dict(ad="boy: kayıtta U06 1.360 → metin izler", yakalandi=v == "1.360" and D.deger("boy", "U06") != v, hata=int(v == "1.360")))
+    u.pop("boy")
+    try:
+        _RDG.Degerler(T2, D.PH, D.EL).deger("boy", "U06")
+        n = 0
+    except KeyError:
+        n = 1
+    out.append(dict(ad="boy: kayıtta U06 boyu yok (çözülmez)", yakalandi=n > 0, hata=n))
+    h2 = [(y, (t or "").replace("ESP32 USB (U06) {boy.U06}", "ESP32 USB {boy.U06}")) for y, t in ham]
+    n = len(baglam_denetle(h2)) - len(baglam_denetle(ham))
+    out.append(dict(ad="boy: cümlede U06 kimliği yok (bağlam)", yakalandi=n > 0, hata=n))
+    return out
+
+
+def cad_kaynak_bozma_denemesi():
+    """P10.8b: --kaynak CAD etiketlerini güncel FCStd'den görür. (1) F10y'de rehber_metin.TR_EK'e eklenen bir sözcük çıkınca (yeni
+    CAD adı çevrilmez) yakalanır: F10y'de --kaynak bu sözcükleri görmemişti, yalnız tam üretim görmüştü. (2) Kaynakta yeni bir parça
+    etiketi (ASCII kalıntılı) yakalanır. (3) FCStd okunamazsa (None) denetim geçmez."""
+    import rehber_gorunum as _RGo
+    cad = _RGo.cad_parcalar()
+    out = []
+    for w in ("saplamasi", "anahtarli"):
+        eski_v = RM.TR_EK.pop(w)
+        try:
+            n = sum(1 for x in ascii_kalinti(cad_kaynak_metinleri(cad=cad)) if x["kelime"].lower() == w)
+        finally:
+            RM.TR_EK[w] = eski_v
+        out.append(dict(ad="CAD kaynak: TR_EK'ten '%s' çıktı" % w, yakalandi=n > 0, hata=n))
+    yeni = cad + [dict(cad[0], etiket="Kablo tutucusu yesil (yeni parca)", kod="")]
+    n = sum(1 for x in ascii_kalinti(cad_kaynak_metinleri(cad=yeni)) if x["kelime"].lower() in ("yesil", "parca"))
+    out.append(dict(ad="CAD kaynak: yeni ASCII etiketli parça", yakalandi=n > 0, hata=n))
+    eski = _RGo.cad_parcalar
+    _RGo.cad_parcalar = lambda: (_ for _ in ()).throw(FileNotFoundError("bozma: FCStd yok"))
+    try:
+        n = int(cad_kaynak_metinleri() is None)
+    finally:
+        _RGo.cad_parcalar = eski
+    out.append(dict(ad="CAD kaynak: FCStd okunamıyor (None, denetim geçmez)", yakalandi=n > 0, hata=n))
+    # P10.8b düzeltme turu 1 (P108b-kontrol D5): FCStd'de bir parça yeniden adlanınca montaj-analiz.json'daki eski ad HATA
+    cadk = cad_kaynak_metinleri(cad=cad)
+    analiz = cad_ad_metinleri()
+    n0 = len((cad_ad_eskime(cadk, analiz) or {}).get("analizde_eski") or [])
+    hedef = next(t for _, t in analiz)
+    ad_deg = [dict(c, etiket=c["etiket"] + " yeniden") if RM.tr(c["etiket"]) == hedef or c["etiket"] == hedef else c for c in cad]
+    n = len((cad_ad_eskime(cad_kaynak_metinleri(cad=ad_deg), analiz) or {}).get("analizde_eski") or []) - n0
+    out.append(dict(ad="CAD kaynak: parça yeniden adlandı, analiz eski (HATA)", yakalandi=n > 0 and n0 == 0, hata=n))
+    return out
 
 
 def demet_bozma_denemesi(ham=None):
@@ -2956,11 +3106,14 @@ def kaynak_denetle():
     """FreeCAD'siz, veri üretmeden: rehber_metin.py kaynağında ASCII kalıntı, elektrik iddiaları ve zorunlu uyarılar (P10.7b1)."""
     m = kaynak_metinler()
     gor = arayuz_gorunen_metinler()                                # P10.7b2a: app.js / yazdir.html görünen dizgeleri, kol lejantı
-    asc = ascii_kalinti(m + tablo_metinleri() + gor)               # S1: panelin tablodan gösterdiği metinler de
+    # P10.8b: CAD etiket / kodları güncel FCStd'den (veride parça adı olarak görünür); ASCII ve elektrik denetimine girer
+    cadk = cad_kaynak_metinleri()
+    asc = ascii_kalinti(m + tablo_metinleri() + gor + (cadk or []))   # S1: panelin tablodan gösterdiği metinler de
     # P10.7b1 düzeltme turu 1: elektrik iddiaları CAD parça adları / kodları ve arayüz sabit metinlerinde de (F10h-kontrol Ü1, §2-3)
     cad = cad_ad_metinleri()
     ara = arayuz_metinleri()
-    el = elektrik_denetle(m + (cad or []) + ara)
+    el = elektrik_denetle(m + (cad or []) + (cadk or []) + ara)
+    esk = cad_ad_eskime(cadk, cad)
     ya, ya_ist = yasak_metinler(m + ara)
     adim = collections.defaultdict(str)
     alanlar = collections.defaultdict(str)
@@ -2993,10 +3146,15 @@ def kaynak_denetle():
     da = demet_alt_denetle(ham=ham)                                  # P10.7b2d-A: K1 / K2 demet alt adımları (D1–D4)
     return dict(ascii_kalinti=asc, elektrik=el, zorunlu_eksik=zor, zorunlu_veride=sorted(set(zor_disari)), metin=len(m),
                 cad_metin=None if cad is None else len(cad), arayuz_metin=len(ara), arayuz_gorunen=len(gor), yasak=ya, yasak_affedilen=ya_ist,
+                cad_kaynak_metin=None if cadk is None else len(cadk), cad_eskime=esk,
                 ciplak=cip, cozum_hata=coz, bozuk=boz, baglam=bag, kritik=kr, tamlik=tm, teyit=ty, demet_alt=da,
                 kritik_sayi={b: len(v) for b, v in kg.items()},
-                gecti=not asc and not el and not zor and not ya and not cip and not coz and cad is not None and not boz and not bag
-                and not kr and not tm["hata"] and not ty and not da["hata"])
+                gecti=not asc and not el and not zor and not ya and not cip and not coz and cad is not None and cadk is not None
+                and not boz and not bag
+                and not kr and not tm["hata"] and not ty and not da["hata"]
+                # P10.8b düzeltme turu 1 (P108b-kontrol D5): montaj-analiz.json'da olup güncel FCStd'de olmayan ad = eskimiş analiz, HATA
+                # (kaynakta olup analizde olmayan bilgi kalır, nedeni cad_ad_eskime docstring'inde ve P108b-gunluk.md § 14)
+                and not (esk or {}).get("analizde_eski"))
 
 
 def ozet_yaz(d):
@@ -3050,6 +3208,12 @@ def _ana():
             len(d["ascii_kalinti"]), len(d["elektrik"]), len(d["zorunlu_eksik"]), ", ".join(d["zorunlu_veride"]) or "-",
             len(d["yasak"]), len(d["yasak_affedilen"]), len(d["ciplak"]), len(d["cozum_hata"]), len(d["bozuk"]), len(d["baglam"]),
             len(d["kritik"]), ", ".join("%s %d" % (b, n) for b, n in sorted(d["kritik_sayi"].items()))))
+        esk = d["cad_eskime"]                                        # P10.8b
+        print("CAD kaynak (FCStd) etiket/kod %s; montaj-analiz.json eskime: analizde olup kaynakta olmayan (HATA) %s, kaynakta olup "
+              "analizde olmayan (bilgi) %s" % ("YOK (okunamadi)" if d["cad_kaynak_metin"] is None else d["cad_kaynak_metin"],
+                                       "-" if esk is None else len(esk["analizde_eski"]), "-" if esk is None else len(esk["kaynakta_yeni"])))
+        for t in ([] if esk is None else esk["analizde_eski"][:10]):
+            print("  ANALIZDE ESKI %s" % t[:90])
         for x in d["kritik"][:40]:
             print("  KRITIK %s %s %s\n      eski: %s\n      yeni: %s" % (x["tur"], x["bolum"], x["yer"], x["eski"] or "-", x["yeni"] or "-"))
         tm = d["tamlik"]

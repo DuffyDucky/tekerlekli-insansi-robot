@@ -1203,6 +1203,15 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   için geçici çözüm **a** ("bandı hafifçe esneterek dili alttaki bandın arkasına sok"), baskı kuponunda denenir; kupon zorlarsa b
   (geometri) sonraki geometri paketinde. Etek önde c ölçüldü, denenen 42 yolun hiçbiri çıkmadı (F10e notu); perçin somunu sıra adayı
   uygulanmadı. Uygulaması açık: rehber F1 / F3 / F4 takma metni (üretimli paket), kabuk kuponu.
+- **Not (P10.8b, 19.11.2026; `planlama/d158/P108b-gunluk.md` § 2, § 13, § 14).** Rehber metni ölçümden yazıldı; tam üretimde
+  (`rehber/`, PDF) görünüyor.
+  - Dil alttaki bantta; ters cümle kalktı.
+  - Göğüs bandı inişi modelde sıkı geçme: ortak hacim ≈ 2.200 mm³; 10 mm kala önde 6,8 mm, ön-yan köşede 7,8 mm radyal girişim. Kupon
+    karar verir; oturmazsa K55 b.
+  - Omuz bandında dil engel değil; rulman kapağına ≈ 300 mm³ değer.
+  - Etek ön bandında engel yalnız perçin somunu (B-rep 1–8 mm, ≈ 9 mm³; F10d § 11.5 doğrulandı).
+  - Etek ön, omuz ve çerçeve için kupon yok; rehber "oturmazsa zorlama, tasarım kararını (K55 b) bekle" diyor.
+  - Rehber tarafı kapandı; kabuk kuponu ve K55 b açık. F3 çerçeve takma cümlesi bilerek değişmedi, yalnız notu (P108b § 13.4, § 14.1).
 
 ---
 
@@ -1841,6 +1850,9 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     5 V'un bir GPIO pinine gelmesi; F1'de enerjiden önce yön bakışı (kontrol maddesi + `ZORUNLU`). **Açık:** `u06_port_denetle` 180°
     dönmüş DevKit'i yakalamaz (analizdeki DevKit kutusu taşıyıcıya simetrik, x 54…107; yön yalnız `taban_lib.esp_local`'da, FreeCAD
     ister). Ucuz kilit yok; ileride analiz JSON'una WROOM / port alt kutusu yazılırsa sınanır (CAD işi).
+  - → 19.11 P10.8b: **180° kapandı** (`u06_yon_denetle`, `planlama/d158/P108b-gunluk.md` § 3; bozma b104–b106). Bilinen sınır: taşma
+    izi 1 mm, DevKit ≈ 0,6 mm kayarsa yanlış alarm (güvenli yanda). **D6 rehber tarafı kapandı** (`{boy.<kimlik>}`, P108b § 6;
+    `elektrik.md` açık). **17.11'de U06** uç etiketiyle kapandı (P108b § 5; çizgi açık, aşağıda).
   - → 19.11 07:50 düzeltme turu 2: **D3 hâlâ açık.** `uygulama-olcum.json` 09.11 tarihli (ESP32 USB 971 / 1.360), `lale158-kontrol.json`
     07:49 (08:00'den önce; F10x'in `lale158_kontrol` / `uygulama_olc` → `uygulama_rapor` koşusu bekleniyor). Kayıt ve notlar değişmedi;
     koşudan sonra 1.129 / 1.560 ile tutarlılık bakılır.
@@ -1864,8 +1876,11 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     yalnız öneri olarak veriyor.
   - `rehber_denetim --kaynak` yeni CAD ad / kodlarını görmedi (kaynakta ASCII 0, veride 10): kaynak modu CAD adlarını üretimden önceki
     veriden okuyor. Yeni modelden gelen kelimeler ancak FreeCAD üretiminden sonra yakalanıyor (bu kez `TR_EK`'e 9 kelime eklendi).
+    → 19.11 P10.8b: **kapandı** (`cad_kaynak_metinleri`, FCStd'den üretimin adıyla; P108b § 4, § 14.2). Malzeme adları açık (aşağıda).
   - Kare okunurluğu: 17.1 ve 17.6 19.11'de düzeldi (odak + ön-üst kamera + Gövde direği saydam; F10y § 6). Açık: 17.4 ve 32.1'de
     saplama sırası bu ölçekte seçilemiyor; 17.10'da yol 11 / 12'nin kesikten geçişi ayırt edilemiyor (veri doğru, 2a hata 0).
+    → 19.11 P10.8b: 17.4 (kamera, odak, saydam direk) ve 17.10 (önden-üstten kamera) kaynakta değişti, tam üretimde gözle bakıldı
+    (P108b § 5 ve Kapanış). **32.1 açık** (aşağıda).
   - `kafa-yerlesim/rapor.html` HEAD hâlinde (ESP32 USB 971 / 1.360, ses kartı satırları); `uygulama-notu.md` yalnız ESP32 satırı elle
     güncel, ses kartı satırları (217 / 270, 3,5 mm → PAM, Pi 2) eski. Üretici düzeltilip ikisi birlikte yeniden üretilmeli (yukarıdaki
     açık iş).
@@ -1884,6 +1899,7 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     `bant-kuponu.json` `inis_x`). Ters dil cümlesi kupon sonucunu beklemeden bir sonraki rehber üretimli pakette düzeltilmeli. Önerilen
     metin: "alt kenarı alttaki bandın dilinin dışından geçir". Yol cümlesi (+x / +y) kupon sonucuyla yazılır (`test/README.md` K55 karar
     ağacı). Kupon geçerse F3 / F4 takma metni kupondaki yola göre yeniden yazılır; geçmezse K55 b.
+    → 19.11 P10.8b: ters dil cümlesi ve "kuponda denenir" iddiaları kalktı, yollar ölçümden (K55 notu, P108b § 2, § 13, § 14).
   - **Etek ön kuponu (O2):** rehber F1 (adım 33 grup 2 / 4) "kuponda bu bant ayrıca, somun takılıyken denenir" diyor; kupon yok. Engel
     2 mm alüminyum L etek braketindeki M3 perçin somunu (+z'de 1–7 mm, F10d § 11.5). `bant_kuponu.py` kalıbıyla çıkmıyor: braketin basılı
     eşi yok, perçin somunu PETG'ye alüminyumdaki gibi oturmaz, bant için iki bacaklı yol (F10d-K1 c) de ölçülmedi. Yeni tasarım işi: etek ön
@@ -1894,3 +1910,22 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   - **Ahmet'e sorular (satın alma ve sıra; karar açılmadı):** (1) yanak kuponunun sol ölçümü için bir 625ZZ ile Rhino M3 / M5 insertler
     Parti 0 gününe yetişir mi (K29 / K31 / K43 alımları)? (2) bant kuponu (≈ 1,5 sa, 51 g PETG) Parti 0 ile mi basılsın, yoksa modelde
     önde 6,8 mm, ön-yan köşede 7,8 mm girişim göründüğü için doğrudan K55 b'ye mi geçilsin?
+
+**P10.8b rehber açıklarından (19.11, `planlama/d158/P108b-gunluk.md`, `P108b-kontrol.md`; karar değil, iş)**
+  - **Kapandı:** K55 rehber metni (K55 notu); ESP32 180° yön denetimi (`u06_yon_denetle`); `--kaynak` CAD adları (üretimin adıyla,
+    FCStd'den); 17.4 / 17.10 kamerası ve 17.11 U06 uç etiketi; D6 rehber tarafı (`{boy.<kimlik>}`). Tam üretim ve zincir: günlüğün
+    "Kapanış" bölümü.
+  - **32.1 karesi:** yol 5 / 7'nin anahtarlı 1'den çıkışı seçilemiyor; üç bakış denendi, değiştirilmedi (P108b § 5). Sahibine sorulacak.
+  - **17.11'de U06 çizgisi:** karede yalnız uç etiketi ("ESP32"); çizginin kendisi `app.js`'e adım ötesi şema özelliği ister (U06'nın
+    şeması 32.4'te; P108b § 5, karar 5).
+  - **Ölçülmeyen yollar:** göğüs bandı sol 16 mm yanal yolu (metin yalnız 24 mm diyor; 24 B-rep ile serbest); F2 ve etek arka dikişleri
+    (metinlerinde dil cümlesi yok) (P108b § 9, § 13.3).
+  - **`--kaynak` CAD malzeme adlarını görmüyor:** `cad_kaynak_metinleri` yalnız etiket / kod; üretimde `malzeme` de görünür
+    (P108b-kontrol D5).
+  - **ESP32 yön denetiminin bilinen sınırı:** `u06_yon_denetle` taşma izi 1 mm; DevKit taşıyıcıda ≈ 0,6 mm kayarsa "okunamıyor" HATA
+    verir (yanlış alarm, güvenli yanda; ters kart kaçmaz) (P108b § 13.5).
+  - **`elektrik.md` önerilen boyları kayda bağlı değil:** rehber K2 artık `kablolar.json`'dan (`{boy.<kimlik>}`), `elektrik.md`'deki
+    aynı sayılar elle (P108b § 6, § 9).
+  - **Yeni bulgu, yanlış standart numarası:** üretilmiş rehberde "Çerçeve cıvatası M3x6 ISO 7381" … "ISO 7387" (7 ad) ve "Yaka cıvatası
+    M3x6 ISO 7381" görünüyor; doğrusu ISO 7380. FreeCAD aynı etiketi ikinci kez alınca sondaki sayıyı artırmış, `kopya_eki_sil` yalnız
+    "0NN" ekini tanıyor; `montaj-analiz.json`'da ad doğru. Düzeltme yeri CAD etiketi ya da `kopya_eki_sil` (P108b § 14.2).

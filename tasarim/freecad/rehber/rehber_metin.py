@@ -479,7 +479,10 @@ ADIM = {
             # Düzeltme turu 1 (F10u-kontrol 2): bara ucu tutucuda (CAD yolu taşınınca), saplama kayıttan
             "anahtarlı baranın {bsaplama.G09|G11} numaralı saplamasına gelir; yolun {bsaplama.G12} numaralı saplamadan sol "
             "BTS7960B'ye giden kısmı (G12) da görünür; o uç madde 3b'de bağlanır. Karede yer: röle K1 güç panelinde önden bakınca "
-            "solda, ön şarj kartı panelin ön kenarında aynı yanda.\n"
+            "solda, ön şarj kartı panelin ön kenarında aynı yanda. "
+            # P10.8b düzeltme turu 1 (P108b-kontrol D6): numara kuralı bu alt adımda da yazılı (kare hafif soldan bakar)
+            "Saplama numaraları robota önden bakınca soldan sağa (B5a); karenin kamerası hafif soldan bakar, saplamaları "
+            "önden bakışa göre say.\n"
             # P10.7b2d-A düzeltme turu 1 (F10l-kontrol D1, N4): bara çıkışları kendi alt adımında; G12–G15'in bara uçları (eskiden
             # "Alt kat kartlarının öbür uçları"nda) burada, G16'dan önce: saplama 1 ve 2'de 12 AWG pabuç (G12, G13) altta, G14 / G15 /
             # G16'nın 16 AWG yuva kuyruğu üstte (kablolar.json bara-pabuc yerlesim; rehber_denetim bara_uc_denetle U3)
@@ -1107,8 +1110,10 @@ ADIM = {
                # (taban ucu ESP32'nin portunda; lale158_kontrol çakışma 0, F10r-gunluk § 2)
                "Şemada taban kısımları da görünür: onlar K1'de bağlandı",
                # P10.7b2i: ESP32 USB önerilen boyu yeni şemadan (lale158-kontrol.json kablo_ozet: yol 1.129 mm → 1.560)
-               "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.560, hoparlör 1.030, "
-               "göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`). Kablo listesi: `planlama/adim3/kablolar.md`"],
+               # P10.8b (F10r-kontrol D6): sayılar kablolar.json boy.onerilen_mm'den ({boy.<kimlik>}); kimlik bağlam için cümlede
+               "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI (H02) {boy.H02}, hub uzatması (U03) {boy.U03}, "
+               "ESP32 USB (U06) {boy.U06}, hoparlör (AU3) {boy.AU3}, göğüs 12 V (G21) {boy.G21} mm (`planlama/adim3/elektrik.md`). "
+               "Kablo listesi: `planlama/adim3/kablolar.md`"],
         not_=["Boyun demeti K14 a ile kapandı (CAD'deki gibi 5 kablo, şartlarla; `planlama/adim3/kablolama-on-kararlar.md` §4): demet "
               "yazıldığı gibi kurulamayabilir, tünel deneme parçasındaki fiş denemesi belirler",
               "Göğüs ekranı 12 V dalı K11 a ile kapandı: F6 {a.F6} {bicak.F6}, ana anahtar sonrası, röle öncesi; acil stopta açık kalır",
@@ -1225,8 +1230,10 @@ ADIM = {
               dict(ad="Ön sağ bant", desen=("Etek ön sağ", "(etek z+88 sağ)", "(Etek braketi sağ z+105)"), ucus={"*": (1, 0, 1)},
                    saydam=("Etek ön sağ",),
                    is_="Ön sağ bandı orta bandın önüne getir; z +88 bindirmesini 3 × M3×6 ile bağla, z +105 braketine dışarıdan M3×14. "
-                       "Bant düz bir yoldan girmiyor (ölçüm, Notlar). Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir). Bu bantta "
-                       "engel dil değil, z +105 braketinin perçin somunu (ölçüm): kuponda bu bant ayrıca, somun takılıyken denenir.",
+                       "Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil orta bantta: bu bandın z +88 kenarı orta bandın dilinin dışından geçer "
+                       "(ölçüm). Bandı yerinin 10 mm önünde yandan (+x) getir (bu yol serbest, ölçüm), sonra önden içeri (−z) it: bu son "
+                       "10 mm'de engel dil değil, z +105 braketinin perçin somunu (1–8 mm, ölçüm); bandı hafifçe esneterek somunun üstünden "
+                       "geçir (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme denenmedi; bu bant için kupon henüz yok.",
                    ucus_ok={"Etek ön sağ": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. Çizilen (1, 0, 1) yönünde sonar 1–12 mm; "
                                            "+z'de yalnız braket perçin somunu 1–7 mm, sonra serbest; +x'te sonar 1–73 mm; +y'de sonar 1–81 mm. "
                                            "Karar önerisi F10d-K1"}),
@@ -1240,8 +1247,10 @@ ADIM = {
               dict(ad="Ön sol bant", desen=("Etek ön sol", "(etek z+88 sol)", "(Etek braketi sol z+105)", "(etek x-38 ön)"),
                    ucus={"*": (1, 0, 1)}, kamera=(-0.85, 0.62, 1.25),
                    is_="Ön sol bandı getir; z +88 sol bindirmesi 3 × M3×6, x −38 ön bindirmesi 2 × M3×6, z +105 braketine M3×14. "
-                       "Bant düz bir yoldan girmiyor (ölçüm, Notlar). Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir). Bu bantta "
-                       "engel dil değil, z +105 braketinin perçin somunu (ölçüm): kuponda bu bant ayrıca, somun takılıyken denenir.",
+                       "Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil orta bantta: bu bandın z +88 kenarı orta bandın dilinin dışından geçer "
+                       "(ölçüm). Bandı yerinin 10 mm önünde yandan (−x) getir (bu yol serbest, ölçüm), sonra önden içeri (−z) it: bu son "
+                       "10 mm'de engel dil değil, z +105 braketinin perçin somunu (1–8 mm, ölçüm); bandı hafifçe esneterek somunun üstünden "
+                       "geçir (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme denenmedi; bu bant için kupon henüz yok.",
                    ucus_ok={"Etek ön sol": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. Çizilen (−1, 0, 1) yönünde sonar 1–11 mm; "
                                            "+z'de yalnız braket perçin somunu 1–7 mm, sonra serbest; −x'te sonar 1–61 mm; +y'de sonar 1–81 mm. "
                                            "Karar önerisi F10d-K1"}),
@@ -1416,12 +1425,17 @@ ADIM = {
         ucus="radyal",
         # F10c (P10.3): iş metnindeki sıra (bant → taşıyıcı → ekran → çerçeve); taşıyıcı M6'sı ekran takılınca kapanır (sıra denetimi)
         # F10d: alt adımlar; bantlar yandan (±x, giriş yolu ölçümü), sağ / sol ayrı (y 1005 dikişinin aynı adlı cıvataları x'e göre)
+        # P10.8b (P108b-gunluk.md § 1): dil orta bantta (ölçüm: y 1005 bindirmesinde göğüs bandı her ışın satırında dışta). En az
+        # girişimli yol iki parçalı: dikişin 16 / 24 mm üstünde yandan (serbest), sonra iniş (orta bandın dili 2–12 mm). Düz +y yolu
+        # 32 mm'den sonra omuz ve kafa parçalarına giriyor; düz ±x'te orta bant 2–160 / 2–136 mm. Uçuş çizimi (±x) değişmedi
         alt=True,
         sira=[dict(ad="Göğüs bandı sağ + y 1095 braketi", desen=("Göğüs bandı sağ", "(Gövde braketi sağ", "(gövde y1005"),
                    konum={"(gövde y1005": {"x": (0, 1000)}}, ucus={"*": (1, 0, 0)}, saydam=GOVDE_BANT,
                    kamera=(0.6, 0.45, 1.25),   # F10e: varsayılan bakışta bindirme cıvatası p0280 29 px (gizle-fark); bununla hepsi geçer
                    is_="Göğüs bandı sağı +x'ten getir (dikiş y 1005), bindirmeleri bağla, y 1095 braketine dışarıdan M5×18. "
-                       "Bant düz bir yoldan girmiyor (ölçüm, Notlar). Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir). Bandın boss'larındaki ısıl gömmeler (y 1198 dikişi ve F5'teki "
+                       "Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil orta bantta. Bandı dikişin 16 mm üstünde yandan getir (bu yol "
+                       "serbest, ölçüm), sonra aşağı indir. İnişin son 12 mm'sinde bandın alt kenarı orta bandın dilinin dışından geçmeli; modelde bu geçme sıkı: orta bantla ortak hacim 1–12 mm boyunca, en çok ≈ 2.200 mm³, ölçüm; dikişe 10 mm kala radyal girişim önde 6,8 mm, ön-yan köşede 7,8 mm (kupon dilimi, ölçüm). Ön yüz eğik, arka yüz dik: tek bir itiş ikisini birlikte kurtarmaz. Bandın esneyip yerine oturup oturmayacağı bilinmiyor; buna kupon karar verir (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): kupon sonucunu ya da tasarım değişikliğini (K55 b) bekle. İnişte dikişin ısıl gömmeleri ve y 1095 braketinin perçin "
+                       "somunu da kenara değer (1–14 mm, ölçüm). Bu geçme kuponla denenmedi; kupon sonucu gelince bu adım yeniden yazılabilir. Bandın boss'larındaki ısıl gömmeler (y 1198 dikişi ve F5'teki "
                        "üst arka servis kapağının 4'ü) hazırlıkta takılı (adım 0; bantlar saydam çizili).",
                    ucus_ok={"Göğüs bandı sağ": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +x'te orta bant sağ ile 1–159 mm "
                                                "ortak hacim (bindirme dili), 173 mm'de ayrılıyor; +y'de orta bant 1–13 mm; ±z'de orta bant 1–213 mm. "
@@ -1429,7 +1443,10 @@ ADIM = {
               dict(ad="Göğüs bandı sol + y 1095 braketi", desen=("Göğüs bandı sol", "(Gövde braketi sol", "(gövde y1005", "(gövde x0"),
                    konum={"(gövde y1005": {"x": (-1000, 0)}}, ucus={"*": (1, 0, 0)}, kamera=(-0.85, 0.62, 1.25), saydam=GOVDE_BANT,
                    is_="Göğüs bandı solu −x'ten getir; bindirmeleri bağla (x = 0'da cep altı y 1022,7 ve cep üstü y 1222 dahil), y 1095 "
-                       "braketine M5×18. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir). Isıl gömmeler (y 1198 dikişi, üst arka servis kapağının "
+                       "braketine M5×18. Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil orta bantta. Bandı dikişin 24 mm üstünde yandan "
+                       "getir (bu yol serbest, ölçüm), sonra aşağı indir. İnişin son 12 mm'sinde bandın alt kenarı orta bandın dilinin dışından geçmeli; modelde bu geçme sıkı: orta bantla ortak hacim 1–12 mm boyunca, en çok ≈ 2.100 mm³, ölçüm; dikişe 10 mm kala radyal girişim önde 6,8 mm, ön-yan köşede 7,8 mm (kupon dilimi, ölçüm). Ön yüz eğik, arka yüz dik: tek bir itiş ikisini birlikte kurtarmaz. Bandın esneyip yerine oturup oturmayacağı bilinmiyor; buna kupon karar verir (K55 a, geçici). Oturmazsa zorlama (bant kırılabilir): kupon sonucunu ya da tasarım değişikliğini (K55 b) bekle. İnişte x 0 dikişinde göğüs bandı sağın "
+                       "bindirmesi (1–18 mm), orta bant sağ (1–4 mm), dikişin ısıl gömmeleri ve braketin perçin somunu da değer (ölçüm). "
+                       "Bu geçme kuponla denenmedi; kupon sonucu gelince bu adım yeniden yazılabilir. Isıl gömmeler (y 1198 dikişi, üst arka servis kapağının "
                        "3'ü) hazırlıkta takılı.",
                    ucus_ok={"Göğüs bandı sol": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. −x'te orta bant sol ile 1–135 mm "
                                                "ortak hacim (bindirme dili), 161 mm'de ayrılıyor; +y'de orta bant 1–13 mm ve göğüs bandı sağ 1–19 mm; "
@@ -1457,7 +1474,7 @@ ADIM = {
                    saydam=GOVDE_BANT + ("Göğüs ekranı çerçevesi",),
                    is_="Çerçeve sağ + sol: göğüs bandına dışarıdan, yarı başına 4 × M3×6 ISO 7380, çerçeve flanşındaki ısıl gömmeye. "
                        "Ekran camı çerçevenin 2 mm gerisinde, köşe takozlarına dayalı. Çerçeve düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe "
-                       "esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir).",
+                       "esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; ölçüm: çerçeve kenarı göğüs bandının iç yüzünde). Oturmazsa zorlama (çerçeve kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme denenmedi; bu bant için kupon henüz yok.",
                    ucus_ok={"Göğüs ekranı çerçevesi": "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +z'de göğüs bandı 1–9 mm "
                                                       "(flanş bandın iç yüzünde) ve ekran 3–7 mm; yana (dışa) göğüs bandı 1–151 mm; +y ve −z de kapalı. "
                                                       "Karar önerisi F10d-K1"})],
@@ -1488,7 +1505,11 @@ ADIM = {
                    saydam=GOVDE_BANT + KAFA_KABUK + ("Kafa iskeleti", "Servo yuvası", "Rulman yuvası", "Boyun", "Eğme çatalı"),
                    is_="Omuz bandı sağı Ø84 rulman kapağının üstünden geçir; üst kapak boynu sarar. y 1198 bindirmelerine M3×6 ISO 7380. "
                        "Bandın boss'larındaki ısıl gömmeler (x 0 dikişi, S1 kaseti) hazırlıkta takılı (adım 0; bantlar saydam çizili). Bant düz "
-                       "bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir).",
+                       "bir yoldan girmiyor (ölçüm, Notlar). Dil göğüs bandında; y 1198 dikişinde kesit dik, düz inişte dil engel değil (ölçüm). "
+                       "Bandı dikişin 16 mm üstünde yandan (+x) getir, sonra aşağı indir. Bu yolda engel bant değil, Ø84 rulman kapağı "
+                       "(yanal yolun son 4 mm'si ve inişte dikişin 16–7 mm üstü; ortak hacim en çok ≈ 300 mm³) ve kapak cıvataları (yanal "
+                       "yolun son 6 mm'si, ölçüm): bandın kenarı kapağın üstünden esnetilerek geçmeli (K55 a, geçici). Bandın esneyip "
+                       "geçeceği bilinmiyor. Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme denenmedi; bu bant için kupon henüz yok.",
                    # F10f düzeltme 2 (kontrol F10f-kontrol-2 M8): kol adımında (36) dize anahtar kabul edilmez; aynı gerekçe dar anahtarla
                    # (engeller ve derinlikler düzeltilmiş denetimle ölçüldü, satır F10d'den beri değişmedi)
                    ucus_ok={"p0215": dar("yol", "giriş yolu ölçümü (düzeltme turu 1; ışın aralıkları h 0,5 mm, ortak hacim eşiği 0,2 mm, 2 mm adım; temas sayılmaz): düz yol yok. +x'te göğüs bandı sağ 1–161 mm "
@@ -1503,8 +1524,10 @@ ADIM = {
                                              "7–101 mm; ±z'de göğüs bandı ve omuz bandı sağ. Karar önerisi F10d-K1",
                                         p0214=63.0, p0151=25.25, p0143=10.0, p0291=2.57, p0293=2.57)},
                    is_="Omuz bandı solu aynı biçimde geçir; önde y 1198 ve x 0 dikişlerini M3×6 ile bağla. S1 kaseti ısıl gömmeleri "
-                       "hazırlıkta takılı (bantlar saydam çizili). Bant düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini "
-                       "göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir)."),
+                       "hazırlıkta takılı (bantlar saydam çizili). Bant düz bir yoldan girmiyor (ölçüm, Notlar). Dil göğüs bandında; düz "
+                       "inişte dil engel değil (ölçüm). Bandı dikişin 16 mm üstünde yandan (−x) getir, sonra aşağı indir. Engel sağdaki "
+                       "gibi rulman kapağı ve kapak cıvataları (ölçüm): bandın kenarı kapağın üstünden esnetilerek geçmeli (K55 a, "
+                       "geçici). Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle. Bu geçme denenmedi; bu bant için kupon henüz yok."),
               dict(ad="Omuz arka dikişi", desen=("(gövde y1198 arka)", "(gövde x0 arka)"), kamera=(-0.85, 0.62, -1.25),
                    ucus={"*": (1, 0, 0)}, saydam=GOVDE_BANT,
                    gizli_ok={"(gövde x0 arka)": voksel_ok(435, "arka sağ (0,85, 0,62, −1,25)")},
@@ -2266,7 +2289,10 @@ DEMET_ALT = {
              # P10.7b2e kısım 2 (F10l-kare-inceleme 17.4): eski "sağ-önden" bakışta röle ve ön şarj kartı direğin arkasındaydı; ikisi de
              # önden bakanın solunda (x ≈ −112 / −98): sol-ön-üstten bakış. Röle + şarj kartına odak denendi, kare bağlamsız kaldı
              # (yalnız bir kutu ve kablo), kaldırıldı
-             kamera=(-0.85, 0.9, 0.5)),
+             # P10.8b (P108b-gunluk.md § 4; 17.1 / 17.6 yaklaşımı, F10y § 5.3): (−0,85, 0,9, 0,5) bakışında anahtarlı baranın saplama
+             # sırası seçilemiyordu. Odak röle + ön şarj kartı + anahtarlı bara tutucusu (bara bağlamı korunur), daha üstten sol-ön
+             # bakış, gövde direği saydam; depo dışı önizlemede 4 saplama ve yol 3'ün 3 numaraya gelişi okunuyor. Sigorta kutusu kadraj dışı
+             kamera=(-0.35, 1.0, 0.7), saydam=("Gövde direği",), odak=("Bara tutucusu anahtarlı", "Röle 12 V", "Ön şarj kartı (E9")),
         dict(ad="Bara çıkışları: BTS7960B ve XL4016 A / B / C", paragraf=(5,), demet=("taban (K1)", "taban alt kat"),
              desen=("Kablo yolu 4:",), sema=("(G16,",), kamera=(0.6, 0.9, 0.5), saydam=("Elektronik katı",),
              uc=("G12/+", "G12/−", "G13/+", "G13/−", "G14/+", "G14/−", "G15/+", "G15/−", "G16/+", "G16/−")),
@@ -2285,10 +2311,14 @@ DEMET_ALT = {
              # P10.7b2e kısım 2 (F10l-kare-inceleme 17.10, A 32.4): Kablo yolu 12 (B01) bu alt adıma geldi (rehber_metin.kablo_kapisi
              # istisnası); yolun direkten çıkan eski kısmı kadrajı direğin boyuna açıyordu, taban küçük kalıyordu: kadraj tabandaki
              # kartlara / sonarlara odaklanır, elektronik katı saydam (önizleme: B01 oran 0,68, Q03 0,79, şemalar ≥ 1800 px)
-             kamera=(-0.6, 0.9, 0.5), saydam=("Elektronik katı",),
+             # P10.8b (P108b-gunluk.md § 4): (−0,6, 0,9, 0,5) bakışında yol 11 / 12'nin katı ön kat kesiğinin dışından deldiği yer
+             # seçilemiyordu; üstten-önden bakışta saydam katın kesiği ve kesik dışından geçen çizgi ayırt ediliyor (önizleme), 8 etiket karede
+             kamera=(0.0, 1.0, 0.45), saydam=("Elektronik katı",),
              odak=("Elektronik katı", "Sonar HC-SR04", "BTS7960 motor sürücü")),
         dict(ad="Direğe çıkan hatların taban kısmı", paragraf=(11,), demet=("taban elektronik katı", "boyun", "taban (K1)", "gövde (K2)"),
-             kablo_sec=("Bağlantı tablosu P03",), kamera=(0.3, 1.0, 0.4),
+             # P10.8b (P108b-gunluk.md § 4): U06'nın şeması K2'nin (32.4); şema kendi adımından önce çizilmez (app.js semaDurum), bu
+             # karede yoktu. etiket_kablo: çizgi değil, ESP32 ucunun etiketi (rehber_gorunum.uc_isle)
+             kablo_sec=("Bağlantı tablosu P03",), kamera=(0.3, 1.0, 0.4), etiket_kablo=("U06",),
              odak=("ESP32 taşıyıcı kart", "PCA9685 servo sürücü", "XL4016 servo 6 V C")),
         dict(ad="Son kontrol: K1'de enerji verilmez", paragraf=(12,), demet=(), genel="son kontrol"),
     ],
@@ -2326,7 +2356,7 @@ UC_ORTULU = {
     ("B3", 0): {"JGB37 arka sol": _ARKADA},
     ("K1", 2): {"Akü": "akü alt plakanın altında, " + _ARKADA},
     ("K1", 3): {"Arayüz kartı": _DISARIDA},
-    ("K1", 4): {"BTS7960 sol": _ARKADA},
+    ("K1", 4): {"BTS7960 sol": _ARKADA, "Sigorta kutusu": _DISARIDA},     # P10.8b: odaklı kadraj (röle + şarj kartı + anahtarlı bara)
     ("K1", 6): {"PC817 modülü": _DISARIDA},
     ("K1", 8): {"Röle K1": _ARKADA},
     ("K1", 9): {"XL4016 çevre": "alt katta, " + _ARKADA},

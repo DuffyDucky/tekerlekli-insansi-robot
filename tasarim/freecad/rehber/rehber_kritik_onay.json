@@ -2087,6 +2087,48 @@
     "metin": "('E4', '~30 cm USB-A uzatma ve L USB-A dirsek de gerekir', 'E4 KT2 geçmezse uzatma + dirsek')"
    },
    {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "afe7f15e721a5c96",
+    "neden": "kural listesi",
+    "metin": "('F1', '(?:Dil orta bantta: bu bandın z \\\\+88 kenarı orta bandın dilinin dışından geçer[^.]*\\\\.\\\\s+Bandı yerinin 10 mm önünde yandan[\\\\s\\\\S]*){2}', 'F1 ön bantlar: dil orta bantta, kenar dilin dışından (K55, ölçüm; sağ + sol)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "153302831f04abe0",
+    "neden": "kural listesi",
+    "metin": "('F3', \"(?:Dil orta bantta\\\\.[^.]*?sonra aşağı indir\\\\.\\\\s+İnişin son 12 mm'sinde bandın alt kenarı orta bandın dilinin dışından geçmeli; modelde bu geçme sıkı:[\\\\s\\\\S]*?bilinmiyor; buna kupon karar verir[\\\\s\\\\S]*?Oturmazsa zorlama \\\\(bant kırılabilir\\\\)[\\\\s\\\\S]*){2}\", 'F3 göğüs bantları: dil orta bantta, sıkı geçme kuponla karara bağlanır, zorlama (K55, ölçüm; sağ + sol)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "310d7484d6e0ffa8",
+    "neden": "kural listesi",
+    "metin": "('F4', '(?:Dil göğüs bandında; [^.]*?düz\\\\s+inişte dil engel değil \\\\(ölçüm\\\\)\\\\.\\\\s+Bandı dikişin 16 mm üstünde yandan[\\\\s\\\\S]*?rulman kapağı[\\\\s\\\\S]*?kapağın üstünden esnetilerek geçmeli[\\\\s\\\\S]*?Oturmazsa zorlama \\\\(bant kırılabilir\\\\): tasarım kararını \\\\(K55 b\\\\) bekle[\\\\s\\\\S]*){2}', 'F4 omuz bantları: dil engel değil, engel rulman kapağı, yandan getir + indir (K55, ölçüm; sağ + sol)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "f7d215a7c231c408",
+    "neden": "kural listesi",
+    "metin": "('F1', '(?:Oturmazsa zorlama \\\\(bant kırılabilir\\\\): tasarım kararını \\\\(K55 b\\\\) bekle\\\\. Bu geçme denenmedi; bu bant için kupon henüz yok\\\\.[\\\\s\\\\S]*){2}', 'F1 oturmazsa zorlama + K55 b, denenmedi, kupon yok notu (K55)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "2bacec8368205179",
+    "neden": "kural listesi",
+    "metin": "('F3', '(?:Bu geçme kuponla denenmedi; kupon sonucu gelince bu adım yeniden yazılabilir\\\\.[\\\\s\\\\S]*){2}', 'F3 kuponla denenmedi notu (K55; göğüs bantları)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "e9a355d8904d3928",
+    "neden": "kural listesi",
+    "metin": "('F3', 'Oturmazsa zorlama \\\\(çerçeve kırılabilir\\\\): tasarım kararını \\\\(K55 b\\\\) bekle\\\\. Bu geçme denenmedi; bu bant için kupon henüz yok\\\\.', 'F3 çerçeve: oturmazsa zorlama + K55 b, kupon yok notu (K55)')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "f960dd949982f4eb",
+    "neden": "kural listesi",
+    "metin": "('F4', '(?:Oturmazsa zorlama \\\\(bant kırılabilir\\\\): tasarım kararını \\\\(K55 b\\\\) bekle\\\\. Bu geçme denenmedi; bu bant için kupon henüz yok\\\\.[\\\\s\\\\S]*){2}', 'F4 oturmazsa zorlama + K55 b, denenmedi, kupon yok notu (K55)')"
+   },
+   {
     "yer": "LISTE ZORUNLU_ALAN",
     "ozet": "32eb562756ac3d0a",
     "neden": "kural listesi",
@@ -2577,6 +2619,18 @@
     "ozet": "ac9804f4fa860e97",
     "neden": "kural listesi",
     "metin": "('bara modelde yok', '\\\\bbara\\\\w*\\\\b[^.;]{0,40}?\\\\b(?:modelde\\\\s+(?:yok|çizili\\\\s+değil)|karede\\\\s+görünmez)', '$^')"
+   },
+   {
+    "yer": "LISTE YASAK",
+    "ozet": "551a5944a312814a",
+    "neden": "kural listesi",
+    "metin": "('bant dili ters (K55)', '^(?![^.;]*\\\\bçerçeve)[^.;]*?\\\\bdilini\\\\b(?:\\\\s+\\\\w+){0,3}?\\\\s+band\\\\w*\\\\s+arkasına', '$^')"
+   },
+   {
+    "yer": "LISTE YASAK",
+    "ozet": "7ebdbb3e9c664225",
+    "neden": "kural listesi",
+    "metin": "('kuponda denenir iddiası (K55)', '\\\\bkupon\\\\w*\\\\b[^.;]{0,40}?\\\\bdenenir\\\\b', '$^')"
    },
    {
     "yer": "LISTE YASAK",
@@ -4349,6 +4403,12 @@
     "ozet": "a96c0233721968a2",
     "neden": "anahtar sözcük",
     "metin": "Karede yer: röle K1 güç panelinde önden bakınca solda, ön şarj kartı panelin ön kenarında aynı yanda."
+   },
+   {
+    "yer": "kaynak K1 alt adım 4 is_",
+    "ozet": "12fdd11cf0ffffcd",
+    "neden": "anahtar sözcük",
+    "metin": "Saplama numaraları robota önden bakınca soldan sağa (B5a); karenin kamerası hafif soldan bakar, saplamaları önden bakışa göre say."
    },
    {
     "yer": "kaynak K1 alt adım 5 ad",
@@ -6200,9 +6260,9 @@
    },
    {
     "yer": "kaynak K2 kablo",
-    "ozet": "eb09466cabd0971e",
-    "neden": "anahtar sözcük",
-    "metin": "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.560, hoparlör 1.030, göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`)."
+    "ozet": "dd325adb626bc654",
+    "neden": "yer tutucu, anahtar sözcük",
+    "metin": "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI (H02) {boy.H02}, hub uzatması (U03) {boy.U03}, ESP32 USB (U06) {boy.U06}, hoparlör (AU3) {boy.AU3}, göğüs 12 V (G21) {boy.G21} mm (`planlama/adim3/elektrik.md`)."
    },
    {
     "yer": "kaynak K2 kablo",
@@ -6902,15 +6962,27 @@
    },
    {
     "yer": "kaynak F1 alt adım 3 is_",
-    "ozet": "ee57aafe40173cdc",
+    "ozet": "ba12ec05a3eb24ef",
     "neden": "anahtar sözcük",
-    "metin": "Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir)."
+    "metin": "Dil orta bantta: bu bandın z +88 kenarı orta bandın dilinin dışından geçer (ölçüm)."
    },
    {
     "yer": "kaynak F1 alt adım 3 is_",
-    "ozet": "80802b981c627131",
+    "ozet": "b742e1aba7d4e748",
     "neden": "anahtar sözcük",
-    "metin": "Bu bantta engel dil değil, z +105 braketinin perçin somunu (ölçüm): kuponda bu bant ayrıca, somun takılıyken denenir."
+    "metin": "Bandı yerinin 10 mm önünde yandan (+x) getir (bu yol serbest, ölçüm), sonra önden içeri (−z) it: bu son 10 mm'de engel dil değil, z +105 braketinin perçin somunu (1–8 mm, ölçüm); bandı hafifçe esneterek somunun üstünden geçir (K55 a, geçici)."
+   },
+   {
+    "yer": "kaynak F1 alt adım 3 is_",
+    "ozet": "f99dc9a2091a00a9",
+    "neden": "anahtar sözcük",
+    "metin": "Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle."
+   },
+   {
+    "yer": "kaynak F1 alt adım 3 is_",
+    "ozet": "9cd74c93831f2613",
+    "neden": "metin",
+    "metin": "Bu geçme denenmedi; bu bant için kupon henüz yok."
    },
    {
     "yer": "kaynak F1 alt adım 4 ad",
@@ -6944,15 +7016,27 @@
    },
    {
     "yer": "kaynak F1 alt adım 5 is_",
-    "ozet": "ee57aafe40173cdc",
+    "ozet": "ba12ec05a3eb24ef",
     "neden": "anahtar sözcük",
-    "metin": "Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir)."
+    "metin": "Dil orta bantta: bu bandın z +88 kenarı orta bandın dilinin dışından geçer (ölçüm)."
    },
    {
     "yer": "kaynak F1 alt adım 5 is_",
-    "ozet": "80802b981c627131",
+    "ozet": "679ca2e9c67ec903",
     "neden": "anahtar sözcük",
-    "metin": "Bu bantta engel dil değil, z +105 braketinin perçin somunu (ölçüm): kuponda bu bant ayrıca, somun takılıyken denenir."
+    "metin": "Bandı yerinin 10 mm önünde yandan (−x) getir (bu yol serbest, ölçüm), sonra önden içeri (−z) it: bu son 10 mm'de engel dil değil, z +105 braketinin perçin somunu (1–8 mm, ölçüm); bandı hafifçe esneterek somunun üstünden geçir (K55 a, geçici)."
+   },
+   {
+    "yer": "kaynak F1 alt adım 5 is_",
+    "ozet": "f99dc9a2091a00a9",
+    "neden": "anahtar sözcük",
+    "metin": "Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle."
+   },
+   {
+    "yer": "kaynak F1 alt adım 5 is_",
+    "ozet": "9cd74c93831f2613",
+    "neden": "metin",
+    "metin": "Bu geçme denenmedi; bu bant için kupon henüz yok."
    },
    {
     "yer": "kaynak F1 alt adım 6 ad",
@@ -7598,9 +7682,51 @@
    },
    {
     "yer": "kaynak F3 alt adım 1 is_",
-    "ozet": "ee57aafe40173cdc",
+    "ozet": "ae7f958dc995ee17",
+    "neden": "metin",
+    "metin": "Dil orta bantta."
+   },
+   {
+    "yer": "kaynak F3 alt adım 1 is_",
+    "ozet": "22b989a30124105f",
     "neden": "anahtar sözcük",
-    "metin": "Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir)."
+    "metin": "Bandı dikişin 16 mm üstünde yandan getir (bu yol serbest, ölçüm), sonra aşağı indir."
+   },
+   {
+    "yer": "kaynak F3 alt adım 1 is_",
+    "ozet": "80ab8ab9c0ddffb7",
+    "neden": "anahtar sözcük",
+    "metin": "İnişin son 12 mm'sinde bandın alt kenarı orta bandın dilinin dışından geçmeli; modelde bu geçme sıkı: orta bantla ortak hacim 1–12 mm boyunca, en çok ≈ 2.200 mm³, ölçüm; dikişe 10 mm kala radyal girişim önde 6,8 mm, ön-yan köşede 7,8 mm (kupon dilimi, ölçüm)."
+   },
+   {
+    "yer": "kaynak F3 alt adım 1 is_",
+    "ozet": "f22b288aaf98d70a",
+    "neden": "metin",
+    "metin": "Ön yüz eğik, arka yüz dik: tek bir itiş ikisini birlikte kurtarmaz."
+   },
+   {
+    "yer": "kaynak F3 alt adım 1 is_",
+    "ozet": "b7c99aa2a1915475",
+    "neden": "anahtar sözcük",
+    "metin": "Bandın esneyip yerine oturup oturmayacağı bilinmiyor; buna kupon karar verir (K55 a, geçici)."
+   },
+   {
+    "yer": "kaynak F3 alt adım 1 is_",
+    "ozet": "04118c94a45ba799",
+    "neden": "anahtar sözcük",
+    "metin": "Oturmazsa zorlama (bant kırılabilir): kupon sonucunu ya da tasarım değişikliğini (K55 b) bekle."
+   },
+   {
+    "yer": "kaynak F3 alt adım 1 is_",
+    "ozet": "c293df4a12395f87",
+    "neden": "anahtar sözcük",
+    "metin": "İnişte dikişin ısıl gömmeleri ve y 1095 braketinin perçin somunu da kenara değer (1–14 mm, ölçüm)."
+   },
+   {
+    "yer": "kaynak F3 alt adım 1 is_",
+    "ozet": "1e37d945e219f632",
+    "neden": "metin",
+    "metin": "Bu geçme kuponla denenmedi; kupon sonucu gelince bu adım yeniden yazılabilir."
    },
    {
     "yer": "kaynak F3 alt adım 1 is_",
@@ -7622,9 +7748,51 @@
    },
    {
     "yer": "kaynak F3 alt adım 2 is_",
-    "ozet": "ee57aafe40173cdc",
+    "ozet": "ae7f958dc995ee17",
+    "neden": "metin",
+    "metin": "Dil orta bantta."
+   },
+   {
+    "yer": "kaynak F3 alt adım 2 is_",
+    "ozet": "b6a5739ce4c25a95",
     "neden": "anahtar sözcük",
-    "metin": "Bandı hafifçe esneterek dilini orta bandın arkasına sok (K55 a, geçici; baskı kuponunda denenir)."
+    "metin": "Bandı dikişin 24 mm üstünde yandan getir (bu yol serbest, ölçüm), sonra aşağı indir."
+   },
+   {
+    "yer": "kaynak F3 alt adım 2 is_",
+    "ozet": "18187c8b3c68031c",
+    "neden": "anahtar sözcük",
+    "metin": "İnişin son 12 mm'sinde bandın alt kenarı orta bandın dilinin dışından geçmeli; modelde bu geçme sıkı: orta bantla ortak hacim 1–12 mm boyunca, en çok ≈ 2.100 mm³, ölçüm; dikişe 10 mm kala radyal girişim önde 6,8 mm, ön-yan köşede 7,8 mm (kupon dilimi, ölçüm)."
+   },
+   {
+    "yer": "kaynak F3 alt adım 2 is_",
+    "ozet": "f22b288aaf98d70a",
+    "neden": "metin",
+    "metin": "Ön yüz eğik, arka yüz dik: tek bir itiş ikisini birlikte kurtarmaz."
+   },
+   {
+    "yer": "kaynak F3 alt adım 2 is_",
+    "ozet": "b7c99aa2a1915475",
+    "neden": "anahtar sözcük",
+    "metin": "Bandın esneyip yerine oturup oturmayacağı bilinmiyor; buna kupon karar verir (K55 a, geçici)."
+   },
+   {
+    "yer": "kaynak F3 alt adım 2 is_",
+    "ozet": "04118c94a45ba799",
+    "neden": "anahtar sözcük",
+    "metin": "Oturmazsa zorlama (bant kırılabilir): kupon sonucunu ya da tasarım değişikliğini (K55 b) bekle."
+   },
+   {
+    "yer": "kaynak F3 alt adım 2 is_",
+    "ozet": "e5bccf4fa8349647",
+    "neden": "anahtar sözcük",
+    "metin": "İnişte x 0 dikişinde göğüs bandı sağın bindirmesi (1–18 mm), orta bant sağ (1–4 mm), dikişin ısıl gömmeleri ve braketin perçin somunu da değer (ölçüm)."
+   },
+   {
+    "yer": "kaynak F3 alt adım 2 is_",
+    "ozet": "1e37d945e219f632",
+    "neden": "metin",
+    "metin": "Bu geçme kuponla denenmedi; kupon sonucu gelince bu adım yeniden yazılabilir."
    },
    {
     "yer": "kaynak F3 alt adım 2 is_",
@@ -7700,9 +7868,21 @@
    },
    {
     "yer": "kaynak F3 alt adım 5 is_",
-    "ozet": "0df8a8782430c6b7",
+    "ozet": "4772d7ba8d636447",
     "neden": "anahtar sözcük",
-    "metin": "Çerçeve düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir)."
+    "metin": "Çerçeve düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; ölçüm: çerçeve kenarı göğüs bandının iç yüzünde)."
+   },
+   {
+    "yer": "kaynak F3 alt adım 5 is_",
+    "ozet": "1a50ae1b895353a6",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "Oturmazsa zorlama (çerçeve kırılabilir): tasarım kararını (K55 b) bekle."
+   },
+   {
+    "yer": "kaynak F3 alt adım 5 is_",
+    "ozet": "9cd74c93831f2613",
+    "neden": "zorunlu",
+    "metin": "Bu geçme denenmedi; bu bant için kupon henüz yok."
    },
    {
     "yer": "kaynak F4 baslik",
@@ -7808,9 +7988,45 @@
    },
    {
     "yer": "kaynak F4 alt adım 1 is_",
-    "ozet": "326db8a185e131d9",
+    "ozet": "5afa52d3a539e6a7",
     "neden": "anahtar sözcük",
-    "metin": "Bant düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir)."
+    "metin": "Bant düz bir yoldan girmiyor (ölçüm, Notlar)."
+   },
+   {
+    "yer": "kaynak F4 alt adım 1 is_",
+    "ozet": "b0789a0d1c333137",
+    "neden": "anahtar sözcük",
+    "metin": "Dil göğüs bandında; y 1198 dikişinde kesit dik, düz inişte dil engel değil (ölçüm)."
+   },
+   {
+    "yer": "kaynak F4 alt adım 1 is_",
+    "ozet": "4f75745dda8c9db6",
+    "neden": "metin",
+    "metin": "Bandı dikişin 16 mm üstünde yandan (+x) getir, sonra aşağı indir."
+   },
+   {
+    "yer": "kaynak F4 alt adım 1 is_",
+    "ozet": "6e64ec54eb9f2ead",
+    "neden": "anahtar sözcük",
+    "metin": "Bu yolda engel bant değil, Ø84 rulman kapağı (yanal yolun son 4 mm'si ve inişte dikişin 16–7 mm üstü; ortak hacim en çok ≈ 300 mm³) ve kapak cıvataları (yanal yolun son 6 mm'si, ölçüm): bandın kenarı kapağın üstünden esnetilerek geçmeli (K55 a, geçici)."
+   },
+   {
+    "yer": "kaynak F4 alt adım 1 is_",
+    "ozet": "03152778f0ef4374",
+    "neden": "metin",
+    "metin": "Bandın esneyip geçeceği bilinmiyor."
+   },
+   {
+    "yer": "kaynak F4 alt adım 1 is_",
+    "ozet": "f99dc9a2091a00a9",
+    "neden": "anahtar sözcük",
+    "metin": "Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle."
+   },
+   {
+    "yer": "kaynak F4 alt adım 1 is_",
+    "ozet": "9cd74c93831f2613",
+    "neden": "metin",
+    "metin": "Bu geçme denenmedi; bu bant için kupon henüz yok."
    },
    {
     "yer": "kaynak F4 alt adım 2 ad",
@@ -7832,9 +8048,39 @@
    },
    {
     "yer": "kaynak F4 alt adım 2 is_",
-    "ozet": "326db8a185e131d9",
+    "ozet": "5afa52d3a539e6a7",
     "neden": "anahtar sözcük",
-    "metin": "Bant düz bir yoldan girmiyor (ölçüm, Notlar): hafifçe esneterek dilini göğüs bandının arkasına sok (K55 a, geçici; baskı kuponunda denenir)."
+    "metin": "Bant düz bir yoldan girmiyor (ölçüm, Notlar)."
+   },
+   {
+    "yer": "kaynak F4 alt adım 2 is_",
+    "ozet": "88b40e1f9deab40f",
+    "neden": "anahtar sözcük",
+    "metin": "Dil göğüs bandında; düz inişte dil engel değil (ölçüm)."
+   },
+   {
+    "yer": "kaynak F4 alt adım 2 is_",
+    "ozet": "9e37c0ab633e2f25",
+    "neden": "metin",
+    "metin": "Bandı dikişin 16 mm üstünde yandan (−x) getir, sonra aşağı indir."
+   },
+   {
+    "yer": "kaynak F4 alt adım 2 is_",
+    "ozet": "f9bba49cbb40aef4",
+    "neden": "anahtar sözcük",
+    "metin": "Engel sağdaki gibi rulman kapağı ve kapak cıvataları (ölçüm): bandın kenarı kapağın üstünden esnetilerek geçmeli (K55 a, geçici)."
+   },
+   {
+    "yer": "kaynak F4 alt adım 2 is_",
+    "ozet": "f99dc9a2091a00a9",
+    "neden": "anahtar sözcük",
+    "metin": "Oturmazsa zorlama (bant kırılabilir): tasarım kararını (K55 b) bekle."
+   },
+   {
+    "yer": "kaynak F4 alt adım 2 is_",
+    "ozet": "9cd74c93831f2613",
+    "neden": "metin",
+    "metin": "Bu geçme denenmedi; bu bant için kupon henüz yok."
    },
    {
     "yer": "kaynak F4 alt adım 3 ad",

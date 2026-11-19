@@ -1,0 +1,261 @@
+{
+ "etek_on_sag": {
+  "vaka": "etek_on_sag",
+  "bant": "Etek ön sağ",
+  "dinlenme": {},
+  "yollar": [
+   {
+    "kalk": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "yon": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "ayrildi_mm": null,
+    "engel": {
+     "cik Perçin somun M3 (Etek braketi sağ z+105)": [
+      2,
+      8,
+      8.9
+     ]
+    }
+   },
+   {
+    "kalk": [
+     0.0,
+     0.0,
+     10.0
+    ],
+    "yon": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "ayrildi_mm": null,
+    "engel": {
+     "kalk Perçin somun M3 (Etek braketi sağ z+105)": [
+      1,
+      8,
+      9.4
+     ]
+    }
+   }
+  ]
+ },
+ "etek_on_sol": {
+  "vaka": "etek_on_sol",
+  "bant": "Etek ön sol",
+  "dinlenme": {},
+  "yollar": [
+   {
+    "kalk": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "yon": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "ayrildi_mm": null,
+    "engel": {
+     "cik Perçin somun M3 (Etek braketi sol z+105)": [
+      2,
+      8,
+      8.9
+     ]
+    }
+   },
+   {
+    "kalk": [
+     0.0,
+     0.0,
+     10.0
+    ],
+    "yon": [
+     -1.0,
+     0.0,
+     0.0
+    ],
+    "ayrildi_mm": null,
+    "engel": {
+     "kalk Perçin somun M3 (Etek braketi sol z+105)": [
+      1,
+      8,
+      9.4
+     ]
+    }
+   }
+  ]
+ },
+ "omuz_sag": {
+  "vaka": "omuz_sag",
+  "bant": "Omuz bandı sağ",
+  "dinlenme": {},
+  "yollar": [
+   {
+    "kalk": [
+     0.0,
+     16.0,
+     0.0
+    ],
+    "yon": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "ayrildi_mm": null,
+    "engel": {
+     "kalk Rulman kapağı": [
+      7,
+      16,
+      302.9
+     ],
+     "cik Rulman kapağı": [
+      2,
+      4,
+      181.7
+     ],
+     "cik Kapak cıvatası M3x12": [
+      2,
+      6,
+      2.5
+     ]
+    }
+   },
+   {
+    "kalk": [
+     0.0,
+     24.0,
+     0.0
+    ],
+    "yon": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "ayrildi_mm": null,
+    "engel": {
+     "kalk Rulman kapağı": [
+      7,
+      24,
+      1951.2
+     ],
+     "kalk Kapak cıvatası M3x12": [
+      18,
+      24,
+      35.3
+     ],
+     "kalk Omuz yuvası": [
+      22,
+      24,
+      6.3
+     ],
+     "cik Rulman kapağı": [
+      2,
+      14,
+      1586.1
+     ],
+     "cik 6808-2RS rulman (dış bilezik)": [
+      2,
+      12,
+      90.3
+     ],
+     "cik Kapak cıvatası M3x12": [
+      2,
+      6,
+      68.1
+     ]
+    }
+   }
+  ]
+ },
+ "omuz_sol": {
+  "vaka": "omuz_sol",
+  "bant": "Omuz bandı sol",
+  "dinlenme": {},
+  "yollar": [
+   {
+    "kalk": [
+     0.0,
+     16.0,
+     0.0
+    ],
+    "yon": [
+     -1.0,
+     0.0,
+     0.0
+    ],
+    "ayrildi_mm": null,
+    "engel": {
+     "kalk Rulman kapağı": [
+      7,
+      16,
+      302.9
+     ],
+     "cik Rulman kapağı": [
+      2,
+      4,
+      181.7
+     ],
+     "cik Kapak cıvatası M3x12": [
+      2,
+      6,
+      2.5
+     ]
+    }
+   },
+   {
+    "kalk": [
+     0.0,
+     24.0,
+     0.0
+    ],
+    "yon": [
+     -1.0,
+     0.0,
+     0.0
+    ],
+    "ayrildi_mm": null,
+    "engel": {
+     "kalk Rulman kapağı": [
+      7,
+      24,
+      1951.2
+     ],
+     "kalk Kapak cıvatası M3x12": [
+      18,
+      24,
+      35.3
+     ],
+     "kalk Omuz yuvası": [
+      22,
+      24,
+      6.3
+     ],
+     "cik Rulman kapağı": [
+      2,
+      14,
+      1586.1
+     ],
+     "cik 6808-2RS rulman (dış bilezik)": [
+      2,
+      12,
+      90.3
+     ],
+     "cik Kapak cıvatası M3x12": [
+      2,
+      6,
+      68.1
+     ]
+    }
+   }
+  ]
+ },
+ "_not": "Duzeltme turu 1: FreeCAD 1.1 B-rep, kaynak FCStd salt okunur (m6_yukle ile ayni yerlesim). Olcut ortak hacim > 1 mm3; kalk bacagi 1 mm, cik bacagi 2 mm adim. Engel adaylari brep_liste.py (alt adim izin kumesi, yol koridoru + 2 mm). ayrildi_mm None: BoundBox gevsek, yol sonuna kadar tarandi."
+}
