@@ -273,8 +273,8 @@
     "not_": "USB A -> micro B, HUB -> gogus ekrani TOUCH; kutudaki kablo 35 cm, yetmez; v4 satir 58, 2 m"
    },
    "ESP32 USB": {
-    "yol_mm": 971.0,
-    "onerilen_mm": 1360.0,
+    "yol_mm": 1129.0,
+    "onerilen_mm": 1560.0,
     "kapak_sokme_pay_mm": 150.0,
     "cap_mm": 4.0,
     "not_": "Hub -> ESP32 (taban), VBUS'ta 1N5819; govde ici sema, v4'te 2 m"
@@ -459,8 +459,8 @@
    "kati": 1
   },
   "ESP32 USB": {
-   "hacim_mm3": 12218.1,
-   "pi_r2_L": 12201.6,
+   "hacim_mm3": 14199.8,
+   "pi_r2_L": 14192.0,
    "gecerli": true,
    "kati": 1
   },
@@ -1648,5 +1648,5 @@
    ]
   }
  },
- "sure_s": 9.5
+ "sure_s": 12.8
 }

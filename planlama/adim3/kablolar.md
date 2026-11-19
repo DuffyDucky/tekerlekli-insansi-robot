@@ -1282,7 +1282,7 @@ Rehber adımı: bugünkü rehber metninde geçen adım; "öneri" yazanlar öneri
 - **Kesit:** — (hazır kablo) · **renk:** üreticinin kablosu; makaron yok (hazır kablo)
 - **Koruma:** — · **acil stopta:** enerjili
 - **Besleme zinciri:** aku-bms → ana-sigorta → ana-anahtar → F3 → D24V50F5
-- **Boy:** yol 971 mm / önerilen 1.360 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.ESP32 USB`) · **Gösterim şeması yolu; ölçüm değil:** ≈ 971 mm (şema `yollar:ESP32 USB`, `tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar`)
+- **Boy:** yol 1.129 mm / önerilen 1.560 mm (`tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.ESP32 USB`) · **Gösterim şeması yolu; ölçüm değil:** ≈ 1.129 mm (şema `yollar:ESP32 USB`, `tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar`)
 - **Rehber adımı:** 17 K1, 32 K2, 49 F5 · **sonlandırma:** VBUS teli kesilip 1N5819 seri lehimlenir + makaron (kartın kendi VBUS→VIN diyodu doğrulanırsa gerekmez)
 - **Uç türü (uc_turu):** a: konnektor · b: konnektor
 - **Hazır kablo:** USB-A → micro B, 2 m (maliyet.json 'ESP32 – Pi USB kablosu')

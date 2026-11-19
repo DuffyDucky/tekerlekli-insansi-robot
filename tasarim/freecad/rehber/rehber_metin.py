@@ -470,8 +470,9 @@ ADIM = {
             "ucunu yıldız barasına: G17 ve G18 "
             "{saplama.G17|G18} numaralı, G20 {saplama.G20} numaralı saplamaya (G18'in öbür ucu B3'te XL4016 çevreye bağlandı). "
             "G20'nin regülatör ucunu regülatörün giriş klemensine bağla ({kutup.G20}; kart üstü IN+ / IN− yazısına göre). "
-            # P10.7b2e kısım 2 (F10l-kare-inceleme 17.7, A): vurgulu Kablo yolu 9'un eski kısmı (KABLO_AD[9]) ve öbür kabloların karesi
-            "Karede vurgulu çizgi Kablo yolu 9'dur (G18): XL4016 çevreden sonraki kısmı eski çizimdir (doğrudan ESP32'ye), uygulanmaz; "
+            # P10.7b2e kısım 2 (F10l-kare-inceleme 17.7, A): vurgulu Kablo yolu 9 ve öbür kabloların karesi. P10.7b2i: yolun XL4016
+            # çevreden sonraki eski kısmı rehberde kırpıldı (rehber_kablo.CAD_KIRP 9), "eski çizim" cümlesi kalktı
+            "Karede vurgulu çizgi Kablo yolu 9'dur (G18, F4 → XL4016 çevre); "
             "çevre çıkışı G19 alt adım 17.9'da arayüz kartına bağlanır. A01'in çizgisi madde 5'in, G17'ninki K2 madde 3'ün, göğüs "
             "ekranı hattının şeması K2 madde 7'nin karesinde.\n"
             "5. Acil stop ve röle sürücüleri (yeşil, A01–A05 {awg.A01|A02|A03|A04|A05}; E3, E9): mantar NC çıkışı → acil stop düğüm kartı (güç panelinde küçük pertinaks "
@@ -515,7 +516,10 @@ ADIM = {
             "PCA9685'in kafa pan ve tilt kanallarının sinyal pinlerinden dağıtım kartı C'nin pan / tilt sinyal girişlerine bağla. "
             "PCA9685'in V+ pinine tel takma; 3 telli hazır kablo kullanırsan V+ damarını iki ucundan kes, makaronla yalıt (B6a madde 4: "
             "V+ teli XL4016 C'nin çıkışını A ve B'ninkilere paralel bağlar). Kafa 12 V'un (G17) taban ucu ve panel içinde kalan göğüs "
-            "ekranı dalı (G20) madde 4'te bağlandı; ESP32 USB'nin (U06) taban ucunu bağla. Servo uzatmaları (A / B / kafa) K2'de dağıtım "
+            # P10.7b2i (F10r-gunluk § 2): U06 şeması yeniden çizildi (lale158/kablo_yolu_ekran.py ESP_USB_TABAN): taban ucu ESP32'nin portunda
+            "ekranı dalı (G20) madde 4'te bağlandı; ESP32 USB'nin (U06) taban ucunu bağla: micro USB fişini ESP32'nin önden bakınca sağ "
+            "ucundaki portuna tak; kabloyu elektronik katının üstünden, ESP32 taşıyıcısı ile güç panelindeki XL4016 C'nin arasından "
+            "direğin sağına götür (yukarısı K2'de, direk arka yüzü). Servo uzatmaları (A / B / kafa) K2'de dağıtım "
             "kartlarının çıkışına takılır. Yukarısı K2'de. "
             # P10.7b2e kısım 2 (F10l-kare-inceleme 17.11): karede vurgu yok, nedeni ve yer
             "Bu alt adımın kabloları karede vurgulu değil: P03'ün çizimi yok (bağlantı tablosu aşağıda), U06'nın şeması K2 madde 4'ün "
@@ -1030,11 +1034,11 @@ ADIM = {
                "kabloları. Şemada devre sınıfının renginde (lejant); tıklayınca tablodaki kimlik, uçlar, kesit, sigorta",
                "Göğüs ekranı, hub ve ses yolları gösterim şemasıdır (`lale158/kablo_yolu_ekran.py`): parça sayısına girmez; kablo çapı, büküm "
                "yarıçapı ve port yeri doğrulanmadı",
-               # P10.7b2c düzeltme turu 1 (F10k-kontrol D2): şema yeniden çizilene kadar (FreeCAD koşusu, karar-kuyrugu.md)
-               "\"ESP32 USB\" şemasının (U06) taban ucu yanlış yerde, güç panelinin üstünde çizili (şema yeniden çizilecek): kablonun "
-               "taban ucu elektronik katındaki ESP32 taşıyıcısında ESP32'nin USB girişine takılır",
+               # P10.7b2c düzeltme turu 1 (F10k-kontrol D2) "yanlış yerde" maddesi P10.7b2i'de kalktı: U06 şeması yeniden çizildi
+               # (taban ucu ESP32'nin portunda; lale158_kontrol çakışma 0, F10r-gunluk § 2)
                "Şemada taban kısımları da görünür: onlar K1'de bağlandı",
-               "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.360, hoparlör 1.030, "
+               # P10.7b2i: ESP32 USB önerilen boyu yeni şemadan (lale158-kontrol.json kablo_ozet: yol 1.129 mm → 1.560)
+               "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.560, hoparlör 1.030, "
                "göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`). Kablo listesi: `planlama/adim3/kablolar.md`"],
         not_=["Boyun demeti K14 a ile kapandı (CAD'deki gibi 5 kablo, şartlarla; `planlama/adim3/kablolama-on-kararlar.md` §4): demet "
               "yazıldığı gibi kurulamayabilir, tünel deneme parçasındaki fiş denemesi belirler",
@@ -2061,9 +2065,10 @@ KABLO_AD = {
     # F7a P7.2 madde 4: CAD adı "kafada 5 V/5,5 A cevirici (Pi 5, LCD)" eski (LCD kalktı; kafada iki 5 V hattı: elektrik.md kafa güç mimarisi)
     8: ("Kafa 12 V", "Kafa 12 V (G17, {awg.G17} çift): F3 {a.F3} → direk ön yüzü → R62 → boyun → kafa giriş kartı (P6KE18A) → Pololu "
                      "D24V50F5 (Pi 5, PAM8403) + SY8205 (10,1\" QLED)"),
-    9: ("Cevre 5 V", "Çevre 5 V (G18, {awg.G18}): F4 {a.F4} → XL4016 çevre. Şemanın XL4016 sonrası kısmı eski (doğrudan ESP32'ye); "
-                     "tabloda G19 ({awg.G19}) {a.hat-cevre} {bicak.hat-cevre} hat sigortasıyla arayüz kartına gider, bu şemada çizili değil: "
-                     "kendi gösterim şeması K1'de"),
+    # P10.7b2i: CAD yolunun XL4016 sonrası eski kısmı rehberde kırpıldı (rehber_kablo.CAD_KIRP 9)
+    9: ("Cevre 5 V", "Çevre 5 V (G18, {awg.G18}): F4 {a.F4} → XL4016 çevre. CAD yolunun XL4016 sonrası eski kısmı (doğrudan ESP32'ye) "
+                     "rehberde çizilmez; çevre çıkışı G19 ({awg.G19}) {a.hat-cevre} {bicak.hat-cevre} hat sigortasıyla arayüz kartına "
+                     "gider, bu şemada çizili değil: kendi gösterim şeması K1'de"),
     10: ("Acil stop", "Acil stop (A01–A06, {awg.A01}; PC817 teli {awg.A06}): F5 {a.F5} → mantar (NC) → acil stop düğüm kartı → röle K1 ve K2 "
                       "bobinleri → BC337-40 #1 / #2 (arayüz kartı, {gpio.ROLE_K1} / {gpio.ROLE_K2_ONSARJ}); PC817 #1 mantar sonrası gerilimi okur ({gpio.ACIL_STOP_DURUM})"),
     11: ("Sinyal: sonar", "Sinyal: sol sonar (Q03, {awg.Q03}) → arayüz kartı bölücü (4,7 kΩ / 10 kΩ) → ESP32 (X01; ön ara ray üstünden). "
@@ -2183,7 +2188,10 @@ DEMET_ALT = {
              uc=("G12/+", "G12/−", "G13/+", "G13/−", "G14/+", "G14/−", "G15/+", "G15/−", "G16/+", "G16/−")),
         dict(ad="PC817 #2 algı teli (G22)", paragraf=(6,), demet=("taban (K1)",), sema=("(G22,",), uc=("G22/+", "G22/−")),
         dict(ad="Sigorta kutusu çıkışları", paragraf=(7,), demet=("taban (K1)", "taban alt kat", "boyun", "etek (F1)"),
-             desen=("Kablo yolu 9:",), uc=("G17/−", "G18/−", "G20/−")),
+             desen=("Kablo yolu 9:",), uc=("G17/−", "G18/−", "G20/−"),
+             # P10.7b2i kapanışı (F10r-gunluk § 8): yol 9 XL4016 çevrede kırpılınca kadraj kısalan yola sığdı, "2 XL4016 çevre" ucu
+             # güvenli alanın dışına düştü (F10d U1 / U4); kadraj yol + iki uç parçasına
+             odak=("Kablo yolu 9:", "Sigorta kutusu", "XL4016 çevre")),
         dict(ad="Acil stop ve röle sürücüleri", paragraf=(8,), demet=("taban (K1)", "etek (F1)"), desen=("Kablo yolu 10:",)),
         dict(ad="Alt kat kartlarının öbür uçları", paragraf=(9,), demet=("taban alt kat",), sema=("(G19,",)),
         dict(ad="Enkoder, BTS sinyal ve sonar kabloları", paragraf=(10,), demet=("taban elektronik katı", "taban sonar"),
@@ -2208,8 +2216,8 @@ DEMET_ALT = {
         # yanlış yerdeki taban ucu kablo listesi maddesi bu kartta basılır (kablo_sec)
         # P10.7b2f (F10m-kare-inceleme § 4.5): gri hazır USB kablosu gri direğin arka yüzünde zor seçiliyordu; direk saydam (renk
         # tablosu değişmez: hazir-usb tonu öbür sınıflarla ΔE00 eşiğine yakın, rehber_kablo.renk_farki_tablosu)
-        dict(ad="ESP32 USB", paragraf=(4,), demet=("gövde (K2)",), sema=("(U06)",), kamera="arka", saydam=("Gövde direği",),
-             kablo_sec=("şemasının (U06) taban ucu yanlış yerde",)),
+        # P10.7b2i: "yanlış yerde" kablo listesi maddesi kalktı (şema yeniden çizildi), kablo_sec de
+        dict(ad="ESP32 USB", paragraf=(4,), demet=("gövde (K2)",), sema=("(U06)",), kamera="arka", saydam=("Gövde direği",)),
         # P10.7b2e kısım 2 (F10l-kare-inceleme 32.5, 32.6): 32.5'te tünel opak servo yuvasının içindeydi (saydam), 32.6'nın karesinde
         # vurgu yoktu: hoparlör kablosunun (AU3) lehimi ve kutup kontrolü 32.6'nın metninde, şeması da oraya taşındı (32.5'te AU3
         # 281 px idi; 32.6'da ≈ 4800 px). Kafa ucu için arka kabuk saydam, kadraj PAM8403'e ve sol kabuğa odaklı

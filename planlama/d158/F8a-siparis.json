@@ -2171,7 +2171,7 @@
    "adet": 2.0,
    "url1": "https://robocombo.com/2-metre-micro-usb-2-0-kablo-sarj-kablosu-4143",
    "url2": "https://www.robotistan.com/mikro-usb-kablo-1",
-   "not2": "1,5 m (ESP32 yolu 1.360 mm, göğüs dokunmatik 640 mm: yeter)",
+   "not2": "1,5 m: ESP32 USB'ye yetmez (önerilen 1.560 mm, P10.7b2i); yalnız göğüs dokunmatiğine (640 mm) yeter",
    "v4_satir": 58,
    "v4_fiyat": 75.5,
    "v4_not": "Stok 285. Veri taşır. ESP32–Pi yolu ≈ 1,57 m; göğüs dokunmatik ≥ 1,06 m, kutudaki 35 cm yetmez.",

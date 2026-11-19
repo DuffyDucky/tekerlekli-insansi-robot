@@ -158,7 +158,10 @@ ileride eklenebilir demoda eklenecek soket soketleri dilini kuponunda sentil kom
 engel dil braketinin kuponda dururken sentili tutan
 mantardaki durduktan saniye kumandaya telefona klavyeye dokunmaz sentilin tutarak sokar sokmaz elini kolun komut beklenmedik hemen
 giremiyorsa zorlama kaydet proje sahibine sor
+portuna
 """.split())
+# P10.7b2i (F10r-gunluk.md § 2): son satır K1 alt adım 11'deki U06 taban ucu talimatının 1 yeni kelimesi ("portuna"; gözden
+# geçirildi: Türkçe harfi olmayan doğru yazım, "port" + yönelme).
 # P10.7b2h (F10q-gunluk.md § 2): son satır K60 A (K1 alt adım 8), K51 a (E3a), K50 b (F1, F5 not_), K55 a (bant takma) ve K40 a
 # (G3 sentil) metinlerinin 12 yeni kelimesi (gözden geçirildi, hepsi Türkçe harfi olmayan doğru yazım). Düzeltme turu 1: son satır
 # etek ön perçin somunu cümlesi (F1) ve F5 sentil sınamasının 7 yeni kelimesi (aynı gözden geçirme). Düzeltme turu 2: son iki satır
@@ -253,6 +256,11 @@ ZORUNLU = [
     ("K1", r"Bağlamadan önce modülün üstündeki IN2 \+ / IN2 − yazısını oku: ters bağlanan G22'de .{0,260}ters bağlıyken enerji verme",
      "G22: kutup yazısı okunur, ters bağlıyken enerji verilmez"),
     ("K1", r"lehimden önce makaronu G07'nin teline geçir", "G07: makaron lehimden önce geçirilir"),
+    # P10.7b2i (F10r-gunluk § 2): U06 şemasının yeni taban ucu (kablo_yolu_ekran.ESP_USB_TABAN): fiş ESP32'nin portunda, kablo
+    # XL4016 C ile ESP32 taşıyıcısının arasından (K2'deki eski "yanlış yerde" kilidinin yerine)
+    ("K1", r"ESP32 USB'nin \(U06\) taban ucunu bağla: micro USB fişini ESP32'nin önden bakınca sağ ucundaki portuna tak; kabloyu "
+           r"elektronik katının üstünden, ESP32 taşıyıcısı ile güç panelindeki XL4016 C'nin arasından direğin sağına götür",
+     "U06: taban ucu ESP32'nin micro USB portunda, kablo XL4016 C ile ESP32 taşıyıcısı arasından"),
     ("K1", r"Gerginlik giderme: G07'yi direncin tel tarafında, ana anahtara giden G04'e kablo bağıyla tuttur", "G07: gerginlik giderme"),
     ("K1", r"lehimden önce K2'nin pimlerini bul", "K2 pim yeri 12 AWG lehiminden önce bulunur"),
     # düzeltme turu 2 (F10i-kontrol-2 §5 TVS): "sonu A" muğlaktı (…CA da A ile biter)
@@ -443,10 +451,8 @@ ZORUNLU_ALAN = [
                       r"doğrulanmadı\)(?=\n|$)", "F1 kontrol: akü aralık dışındaysa aralığa gelince madde baştan"),
     ("F1", "kontrol", r"okuma {v.aku_olcum} içindeyse bölücü geçer; ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını "
                       r"sök(?=\n|$)", "F1 kontrol: bölücü geçerse söküm sırası (ana anahtar, akü, uçlar), bant gevşemez"),
-    # P10.7b2c düzeltme turu 1 (F10k-kontrol D2, D3): U06 şemasının yanlış çizilen taban ucu ve dağıtım kartı C'nin yeri
-    ("K2", "kablo", r"\"ESP32 USB\" şemasının \(U06\) taban ucu yanlış yerde, güç panelinin üstünde çizili \(şema yeniden çizilecek\): "
-                    r"kablonun taban ucu elektronik katındaki ESP32 taşıyıcısında ESP32'nin USB girişine takılır(?=\n|$)",
-     "K2 kablo: U06 şemasının taban ucu yanlış çizili, kablo ESP32'nin USB girişine"),
+    # P10.7b2c düzeltme turu 1 (F10k-kontrol D2, D3): dağıtım kartı C'nin yeri. U06 "yanlış yerde" kilidi P10.7b2i'de kalktı (şema
+    # yeniden çizildi; taban ucu talimatı K1'de ZORUNLU, F10r-gunluk § 2)
     ("K1", "kablo", r"Dağıtım kartı C \(kafa\): kart güç panelinde, XL4016 C'nin yanında; adındaki \"kafa\" beslediği pan / tilt "
                     r"servolarıdır\.", "K1 kablo: P03 tablosunda dağıtım kartı C'nin yeri (güç paneli)"),
     # P10.7b2d-A (F10l): demet alt adımlı K1 / K2'de uyarılar ana metinde ("is_ana": alt adım metni sayılmaz). Ana metin basılıda alt
@@ -2044,14 +2050,13 @@ ZORUNLU_BOZMA = [
      "kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı). Dikişleri iyice sık. "),
     ("K2 A4 'DİKİŞLERİ SIK' lehimden önce", "K2", "kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı). ",
      "kafa ucunda bağla (E4'te arka kabuk dikişleri sıkılmadı). DİKİŞLERİ SIK. "),
-    # P10.7b2c düzeltme turu 1 (F10k-kontrol D2, D3)
-    ("K2 U06 taban ucu notu silindi (D2)", "K2",
-     "\"ESP32 USB\" şemasının (U06) taban ucu yanlış yerde, güç panelinin üstünde çizili (şema yeniden çizilecek): kablonun taban ucu "
-     "elektronik katındaki ESP32 taşıyıcısında ESP32'nin USB girişine takılır", ""),
-    ("K2 U06 ucu şemadaki yere (D2)", "K2", "ESP32 taşıyıcısında ESP32'nin USB girişine takılır", "şemadaki yere, güç panelinin üstüne bırakılır"),
-    ("K2 U06 'yanlış yerde' gevşedi (D2)", "K2", "taban ucu yanlış yerde, güç panelinin üstünde çizili",
-     "taban ucu güç panelinin üstünde çizili"),
-    ("K2 U06 notunun arkasına şemaya uy (D2)", "K2", "ESP32'nin USB girişine takılır", "ESP32'nin USB girişine takılır; şüphede şemaya uy"),
+    # P10.7b2c düzeltme turu 1 (F10k-kontrol D2, D3). D2'nin dört U06 bozması P10.7b2i'de kalktı (kilidi kalktı); yerine K1 taban ucu
+    ("K1 U06 taban ucu talimatı silindi (P10.7b2i)", "K1",
+     "micro USB fişini ESP32'nin önden bakınca sağ ucundaki portuna tak; ", ""),
+    ("K1 U06 fişi güç paneline (P10.7b2i)", "K1", "fişini ESP32'nin önden bakınca sağ ucundaki portuna tak",
+     "fişini güç panelinin üstünde bırak"),
+    ("K1 U06 kablosu ESP32 kartının üstünden (P10.7b2i)", "K1", "ESP32 taşıyıcısı ile güç panelindeki XL4016 C'nin arasından",
+     "ESP32 kartının üstünden"),
     ("K1 P03 dağıtım kartı C'nin yeri silindi (D3)", "K1",
      " Dağıtım kartı C (kafa): kart güç panelinde, XL4016 C'nin yanında; adındaki \"kafa\" beslediği pan / tilt servolarıdır.", ""),
     ("K1 P03 kart kafada (D3)", "K1", "kart güç panelinde, XL4016 C'nin yanında", "kart kafada, tilt servosunun yanında"),

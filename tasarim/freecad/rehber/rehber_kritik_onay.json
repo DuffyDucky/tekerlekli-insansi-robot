@@ -93,10 +93,10 @@
     "metin": "[(1, [('G10', \"ön şarj kartı sigorta kutusunun yanında: yol sigorta kutusunda biter ve kartın kutusuna 10 mm'den yakın geçer; G10 (F1 → ön şarj kartı) yol 3'te çizili\")]), (8, [('G10', \"ön şarj kartı sigorta kutusunun yanında: yol sigorta kutusunda biter ve kartın kutusuna 10 mm'den yakın geçer; G10 (F1 → ön şarj kartı) yol 3'te çizili\")])]"
    },
    {
-    "yer": "GEO_ISTISNA 9",
-    "ozet": "e6747509ee24f3ec",
-    "neden": "geometri istisnası",
-    "metin": "yolun ucu ESP32'de: CAD yolu eski tasarımı çiziyor (çevre 5 V doğrudan ESP32'ye); tabloda G19 arayüz kartının 5 V klemensine gider ve bu yolda çizili sayılmaz (P10.7b2: yol yeniden çizilir)"
+    "yer": "CAD_KIRP 9",
+    "ozet": "014256cc638199b4",
+    "neden": "rehberde kırpılan CAD yolu",
+    "metin": "son 3 kesim yön (0.0, 1.0, 1.0) ≤ 143.921 · yolun noktalar[4..] bölümü eski tasarımın XL4016 çevre → ESP32 hattı (çevre 5 V doğrudan ESP32'ye); G18'in XL4016 ucu taban-analiz.json kablo_yolu[8].noktalar[3] (XL4016 çevrenin kutusunda); y aralıkları çakıştığı için kesim y + z yönünde; rehber yalnız noktalar[0..3]'ü çizer"
    },
    {
     "yer": "CAD_KIRP 12",
@@ -1216,18 +1216,6 @@
    },
    {
     "yer": "SEMA_GEO_ISTISNA",
-    "ozet": "9c1bbdb389f6a61c",
-    "neden": "şema geometri istisnası",
-    "metin": "ESP32 USB / U06 b = şemanın taban ucu (51,6; 190; −120) güç panelinin üstünde; ESP32 taşıyıcısı 9 Ekim'den beri (80; 75)'te (arayuz TABAN esp), şema 5 Kasım'da bu uçla çizildi: uç ESP32'ye 115 mm uzak, şema yeniden çizilmeli (açık iş, bu pakette düzeltilmedi)"
-   },
-   {
-    "yer": "SEMA_GEO_ISTISNA",
-    "ozet": "96c87a65f95b61f9",
-    "neden": "şema geometri istisnası",
-    "metin": "ESP32 USB / son = şemanın taban ucu (51,6; 190; −120) güç panelinin üstünde; ESP32 taşıyıcısı 9 Ekim'den beri (80; 75)'te (arayuz TABAN esp), şema 5 Kasım'da bu uçla çizildi: uç ESP32'ye 115 mm uzak, şema yeniden çizilmeli (açık iş, bu pakette düzeltilmedi)"
-   },
-   {
-    "yer": "SEMA_GEO_ISTISNA",
     "ozet": "6075e75e6e7ce2df",
     "neden": "şema geometri istisnası",
     "metin": "HDMI / H02 a = baş Pi micro HDMI 1 fişinin arka ucu (pi_hdmi, Pi kutusuna 13 mm): fiş gövdesi kart kutusunun dışında kalır; kablo_yolu_ekran fişin arka ucunu çizer (fiş boyu TAHMİN)"
@@ -1443,6 +1431,12 @@
     "ozet": "e8fac597b0fefde5",
     "neden": "kural listesi",
     "metin": "('K1', \"lehimden önce makaronu G07'nin teline geçir\", 'G07: makaron lehimden önce geçirilir')"
+   },
+   {
+    "yer": "LISTE ZORUNLU",
+    "ozet": "4b975e46781d158a",
+    "neden": "kural listesi",
+    "metin": "('K1', \"ESP32 USB'nin \\\\(U06\\\\) taban ucunu bağla: micro USB fişini ESP32'nin önden bakınca sağ ucundaki portuna tak; kabloyu elektronik katının üstünden, ESP32 taşıyıcısı ile güç panelindeki XL4016 C'nin arasından direğin sağına götür\", \"U06: taban ucu ESP32'nin micro USB portunda, kablo XL4016 C ile ESP32 taşıyıcısı arasından\")"
    },
    {
     "yer": "LISTE ZORUNLU",
@@ -2097,12 +2091,6 @@
     "ozet": "626d6d7d2c452e0f",
     "neden": "kural listesi",
     "metin": "('F1', 'kontrol', \"okuma {v.aku_olcum} içindeyse bölücü geçer; ana anahtarı kapat, aküyü XT60'tan ayır, sonra ölçü uçlarını sök(?=\\\\n|$)\", 'F1 kontrol: bölücü geçerse söküm sırası (ana anahtar, akü, uçlar), bant gevşemez')"
-   },
-   {
-    "yer": "LISTE ZORUNLU_ALAN",
-    "ozet": "5aa562ff328383dc",
-    "neden": "kural listesi",
-    "metin": "('K2', 'kablo', '\\\\\"ESP32 USB\\\\\" şemasının \\\\(U06\\\\) taban ucu yanlış yerde, güç panelinin üstünde çizili \\\\(şema yeniden çizilecek\\\\): kablonun taban ucu elektronik katındaki ESP32 taşıyıcısında ESP32\\'nin USB girişine takılır(?=\\\\n|$)', \"K2 kablo: U06 şemasının taban ucu yanlış çizili, kablo ESP32'nin USB girişine\")"
    },
    {
     "yer": "LISTE ZORUNLU_ALAN",
@@ -4220,9 +4208,9 @@
    },
    {
     "yer": "kaynak K1 alt adım 7 is_",
-    "ozet": "e3e7e9151a5d1cc8",
+    "ozet": "c7d26446fc82db9e",
     "neden": "anahtar sözcük",
-    "metin": "Karede vurgulu çizgi Kablo yolu 9'dur (G18): XL4016 çevreden sonraki kısmı eski çizimdir (doğrudan ESP32'ye), uygulanmaz; çevre çıkışı G19 alt adım 17.9'da arayüz kartına bağlanır."
+    "metin": "Karede vurgulu çizgi Kablo yolu 9'dur (G18, F4 → XL4016 çevre); çevre çıkışı G19 alt adım 17.9'da arayüz kartına bağlanır."
    },
    {
     "yer": "kaynak K1 alt adım 7 is_",
@@ -4400,9 +4388,9 @@
    },
    {
     "yer": "kaynak K1 alt adım 11 is_",
-    "ozet": "d56e617506e0e42f",
-    "neden": "anahtar sözcük",
-    "metin": "Kafa 12 V'un (G17) taban ucu ve panel içinde kalan göğüs ekranı dalı (G20) alt adım 17.7'de bağlandı; ESP32 USB'nin (U06) taban ucunu bağla."
+    "ozet": "e1b87f7a22dd7e25",
+    "neden": "zorunlu, anahtar sözcük",
+    "metin": "Kafa 12 V'un (G17) taban ucu ve panel içinde kalan göğüs ekranı dalı (G20) alt adım 17.7'de bağlandı; ESP32 USB'nin (U06) taban ucunu bağla: micro USB fişini ESP32'nin önden bakınca sağ ucundaki portuna tak; kabloyu elektronik katının üstünden, ESP32 taşıyıcısı ile güç panelindeki XL4016 C'nin arasından direğin sağına götür (yukarısı K2'de, direk arka yüzü)."
    },
    {
     "yer": "kaynak K1 alt adım 11 is_",
@@ -5972,21 +5960,15 @@
    },
    {
     "yer": "kaynak K2 kablo",
-    "ozet": "c005d797d7217ef0",
-    "neden": "zorunlu, anahtar sözcük",
-    "metin": "\"ESP32 USB\" şemasının (U06) taban ucu yanlış yerde, güç panelinin üstünde çizili (şema yeniden çizilecek): kablonun taban ucu elektronik katındaki ESP32 taşıyıcısında ESP32'nin USB girişine takılır"
-   },
-   {
-    "yer": "kaynak K2 kablo",
     "ozet": "9e2db86a8ddad2ec",
     "neden": "metin",
     "metin": "Şemada taban kısımları da görünür: onlar K1'de bağlandı"
    },
    {
     "yer": "kaynak K2 kablo",
-    "ozet": "f015cb7a5021d84a",
+    "ozet": "eb09466cabd0971e",
     "neden": "anahtar sözcük",
-    "metin": "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.360, hoparlör 1.030, göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`)."
+    "metin": "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.560, hoparlör 1.030, göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`)."
    },
    {
     "yer": "kaynak K2 kablo",
@@ -9344,9 +9326,9 @@
    },
    {
     "yer": "kaynak KABLO_AD 9",
-    "ozet": "ac79ac6d6a57c9e6",
+    "ozet": "941c0b6e924e6bb2",
     "neden": "yer tutucu, anahtar sözcük",
-    "metin": "Şemanın XL4016 sonrası kısmı eski (doğrudan ESP32'ye); tabloda G19 ({awg.G19}) {a.hat-cevre} {bicak.hat-cevre} hat sigortasıyla arayüz kartına gider, bu şemada çizili değil: kendi gösterim şeması K1'de"
+    "metin": "CAD yolunun XL4016 sonrası eski kısmı (doğrudan ESP32'ye) rehberde çizilmez; çevre çıkışı G19 ({awg.G19}) {a.hat-cevre} {bicak.hat-cevre} hat sigortasıyla arayüz kartına gider, bu şemada çizili değil: kendi gösterim şeması K1'de"
    },
    {
     "yer": "kaynak KABLO_AD 10",

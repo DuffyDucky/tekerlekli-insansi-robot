@@ -1607,7 +1607,8 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     tutucusu ve tünel deneme parçası P10.7b2'de kalıyor.
   - **P10.7b2'ye (14.11 düzeltme turu 1 ek kararları):**
     - Geometrik eşleme istisnaları yol 9 ve 12 (`rehber_kablo.py` `GEO_ISTISNA`; CAD yolları eski tasarımı çiziyor): taban yolları
-      yeniden tasarlanıp geometri düzelince istisna kalkar.
+      yeniden tasarlanıp geometri düzelince istisna kalkar. → 19.11 P10.7b2i: yol 9 yapıldı (`GEO_ISTISNA[9]` kalktı, `CAD_KIRP[9]`
+      y + z kesimi; F10r-gunluk § 1); yol 12 P10.7b2f'de `CAD_KIRP` ile.
     - CAD'de E4 adımında duran USB ses kartı parçası: adımdan / modelden çıkarılması P10.7b2'de (CAD kaynağı değişikliği). O zamana dek
       rehberde "USB ses kartı (yedek, takılmaz)" adı ve E4 metnindeki "bu adımda takılmaz, yeri boş kalır" cümlesi.
 - P10.7b1'den (rehberin elektrik tarafı tek kablo kaynağına bağlandı, 14.11.2026) açık iş, paketi durdurmuyor; hepsi P10.7b2, karar
@@ -1729,7 +1730,9 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
   - Açık kaldı (karar değil, iş): U06 "ESP32 USB" şemasının taban ucu düzeltilmedi. Taşımak çarpışma taramasının izlediği dosyalardan
     birini değiştirmez (`kablo_yolu_ekran.py` `carpisma_kos.py` listesinde değil), ama U06'nın `boy` kaynağını
     (`lale158-kontrol.json#kablo_ozet.kablo.ESP32 USB`, FreeCAD `lale158_kontrol` yazar; 971 / 1360 mm) ve aynı dosyanın tüp
-    çarpışma sonucunu eskitir: düzeltme FreeCAD koşusuyla birlikte yapılmalı. İstisna yerinde.
+    çarpışma sonucunu eskitir: düzeltme FreeCAD koşusuyla birlikte yapılmalı. İstisna yerinde. → 19.11 P10.7b2i: yapıldı (taban
+    ucu ESP32 micro USB portuna yeniden çizildi, `lale158_kontrol` ile boy 1.129 / 1.560, tüp çakışması [], istisna kalktı;
+    F10r-gunluk § 2).
   - 5 yeni kafa içi / ses şeması (`lale158/kablo_yolu_kafa.py`) çarpışma taramasından geçmedi; kafa giriş kartının yeri, SY8205 /
     D24V50F5 / Pi USB-C / CSI / kamera konnektörü / ReSpeaker jakı / PAM giriş pedinin kart üstündeki yeri TAHMİN.
   - Ses bölücüsü masa denemesine (KT2) bağlı: KT2 sonucu gelince AU1 / AU2 şeması ve kaydı birlikte güncellenmeli (şema bölücüyü PAM'ın
@@ -1757,4 +1760,25 @@ D-2 düzeltmesiyle), ölçümler B'nin bağımsız tekrarıyla (`planlama/d158/F
     kayıttaki boy (S02–S08 `gereken_mm`) değil, kesim boyu da değil. Etiket artık "bölüm uzunluğu ~N mm (kesim boyu değil)"
     (app.js `semaSec` kol dalı; kilit `sema_boy_etiketi_denetle`, bozmalar b85, b86). Ayrıntı `F10k-gunluk.md` "Düzeltme turu 1".
   - U06 "ESP32 USB" şemasının yeniden çizimi (FreeCAD koşusuyla; yukarıdaki madde) yapılınca K2 kablo listesindeki "taban ucu yanlış
-    yerde" cümlesi, kural kilidi (`ZORUNLU_ALAN`) ve dört bozması da birlikte kaldırılır.
+    yerde" cümlesi, kural kilidi (`ZORUNLU_ALAN`) ve dört bozması da birlikte kaldırılır. → 19.11 P10.7b2i: yapıldı (cümle,
+    `ZORUNLU_ALAN` ve dört bozma kalktı; yerine K1 17.11 `ZORUNLU` + üç bozma; F10r-gunluk § 2).
+- **P10.7b2i bağımsız kontrolünden açık iş (19.11.2026; `planlama/d158/F10r-kontrol.md` § 1; kapanışta D1, D2 düzeltildi, D3 notlara
+  işlendi; montajda zarar yok):**
+  - D3: `tasarim/freecad/lale158/kafa-yerlesim/uygulama-olcum.json` `kablo_listesi["ESP32 USB"]` hâlâ 971 / 1360 (FreeCAD
+    `uygulama_olc.py` yazar). Bir sonraki `uygulama_olc` koşusuyla 1.129 / 1.560'a yenilenmeli, sonra `uygulama_rapor.py` ile
+    `uygulama-notu.md` yeniden üretilmeli (`:110`'daki "→ 19.11 P10.7b2i" eki o zaman kaynaktan gelen değerle yer değiştirir).
+  - D4: `rehber_kablo.py` `GEO_ISTISNA` için "kullanılmıyor" denetimi yok (`SEMA_GEO_ISTISNA`'da var). Yol istisnasız da geometri
+    sınamasından geçiyorsa "GEO_ISTISNA n: kullanılmıyor" hatası; bozması `CAD_KIRP[9]` dururken `GEO_ISTISNA[9]` geri eklensin.
+  - D5: U06'nın hangi porta takıldığı geometrik olarak kilitli değil (şema ucu ESP32'nin −x ucuna taşınınca şema geometrisi geçiyor,
+    yalnız `sema_boy` yakalıyor). `SEMA_GEO`'ya port düzeyinde uç: `ESP32 USB` son noktası `ESP_PORT`'a ≤ 5 mm.
+  - D6: rehber K2 "Önerilen boylar" (ESP32 USB 1.560) ve `elektrik.md` kaynağa yalnız onay kaydıyla bağlı. Sayılar yer tutucuyla
+    (`{boy.U06}` benzeri) kablo kaydından basılsın; bir sonraki `lale158_kontrol` koşusunda sessizce eskimesin.
+  - D7 (kozmetik, onay kaydını yeniden yenilemeyi gerektirdiği için bu pakette yapılmadı): `rehber_kablo.py` onay girdisi "son 3 kesim
+    yön (0.0, 1.0, 1.0) ≤ 143.921" normalize edilmemiş yön yazıyor; `cad_kirp_metin(n)` ile "(0, 0.7071, 0.7071) · p ≤ 143.92" yazılsın,
+    onay kaydı bir kez yenilensin.
+  - B1: ESP32 DevKit'in taşıyıcıdaki yönü (USB ucu +x, WROOM −x) rehberde hiçbir adımda açık yazılı değil; 30 pinli kart 180° ters de
+    girer. B6a / K1'de "USB ucu önden bakınca sağda (+x)" cümlesi ve kilidi eklensin. Ayrıca 17.11'deki "(yukarısı K2'de, direk arka
+    yüzü)" ile iki cümle sonraki "Yukarısı K2'de." tekrarı (kozmetik).
+  - Kapanışta gözle (F10r-gunluk § 8): K1 alt adım 17.11 karesinde U06 çizilmiyor (şema 32.4'te; karedeki tek uç etiketi "1 PCA9685",
+    P03), oysa 17.11 metni micro USB fişini ESP32 portuna taktırıyor. 32.4'ün geniş karesinde de port ucu seçilemiyor. 17.11'e U06'nın
+    taban kısmı (`sema_ok` / uç etiketi "ESP32 micro USB") ya da port yakın karesi eklensin.

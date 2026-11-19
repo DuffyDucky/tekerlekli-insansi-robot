@@ -1966,6 +1966,30 @@ def s_acil_stop(v, b):
     return h
 
 
+def boy_tazelik(r):
+    """P10.7b2i (F10r-gunluk § 3): boy JSON anahtarından yazıldıysa (ör. lale158-kontrol.json#kablo_ozet.kablo.ESP32 USB) kayıttaki
+    sayısal alanlar kaynaktaki aynı adlı alanlarla eşit olmalı (kaynak yeniden üretilince kayıt eskir: U06 971 → 1.129 mm). Kaynak
+    değeri sözlük değilse (dirsek-analiz uzatma_mm: tek sayı) kayıttaki tek mm alanıyla karşılaştırılır. Döner hata listesi."""
+    s = r["boy"]["kaynak"]
+    if "#" not in s:
+        return []
+    yol, anahtar = s.split("#", 1)
+    d = json.loads((KOK / yol).read_text(encoding="utf-8"))
+    for parca in anahtar.split("."):
+        d = d[int(parca)] if isinstance(d, list) else d[parca]
+    mm = {k: x for k, x in r["boy"].items() if k.endswith("_mm")}
+    if isinstance(d, dict):
+        fark = [f"{k} {mm[k]} ≠ kaynak {d[k]}" for k in sorted(mm) if k in d and isinstance(d[k], (int, float)) and mm[k] != d[k]]
+        if not any(k in d for k in mm):
+            fark.append("kaynakta kayıttaki alanların hiçbiri yok (%s)" % ", ".join(sorted(mm)))
+    elif isinstance(d, (int, float)) and len(mm) == 1:
+        (k, x), = mm.items()
+        fark = [] if x == d else [f"{k} {x} ≠ kaynak {d}"]
+    else:
+        fark = []
+    return [f"{r['kimlik']}: boy kaynağıyla tutmuyor ({'; '.join(fark)}; {s})"] if fark else []
+
+
 def kaynak_coz(s, terimler=None):
     """'yol:satır', 'yol:a-b' ya da 'yol#anahtar.yolu' -> hata metni ya da None. terimler verilirse hedef metinde biri aranır."""
     if "#" in s:
@@ -2056,6 +2080,8 @@ def s_kaynak(v, b):
             e = kaynak_coz(r["boy"]["kaynak"])
             if e:
                 h.append(f"{r['kimlik']}: boy kaynağı: {e}")
+            else:
+                h += boy_tazelik(r)                                   # P10.7b2i
     for t in v["kesit_kurali"]["tablo"]:
         e = kaynak_coz(t["kaynak"])
         if e:
@@ -3025,6 +3051,12 @@ def b_sema_boy_4(v, b):
 def b_sema_boy_5(v, b):
     bul(v, "G07")["sema_boy"]["kaynak"] = "tasarim/freecad/lale158/yok.py#yollar"                    # kaynak dosyası yok
 
+# P10.7b2i: boy kaynağı yeniden üretildi, kayıt eski
+def b_boy_tazelik(v, b):
+    bul(v, "U06")["boy"]["yol_mm"] = 971                                                          # U06 eski şema boyu (b2h)
+def b_boy_tazelik_2(v, b):
+    bul(v, "S03")["boy"]["gereken_mm"] = 1800                                                     # dirsek-analiz değeri (tek sayı) tutmuyor
+
 
 # kontrolün (P107a-kontrol.md §1 D1) yakalanmayan on bozması, aynı biçimde
 def k_B3(v, b):
@@ -3133,7 +3165,9 @@ BOZMALAR = [("iki_uc", b_iki_uc), ("ayni_nokta", b_ayni_nokta), ("esp32_pin", b_
             ("koruyucu", b_koruyucu_8), ("koruyucu", b_koruyucu_9), ("koruyucu", b_koruyucu_10),
             # P10.7b2c (şema 5)
             ("sema_boy", b_sema_boy), ("sema_boy", b_sema_boy_2), ("sema_boy", b_sema_boy_3), ("sema_boy", b_sema_boy_4),
-            ("sema_boy", b_sema_boy_5)]
+            ("sema_boy", b_sema_boy_5),
+            # P10.7b2i (F10r-gunluk § 3): boy kaynağının tazeliği
+            ("kaynak", b_boy_tazelik), ("kaynak", b_boy_tazelik_2)]
 
 
 def main():

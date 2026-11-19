@@ -123,43 +123,58 @@ KIRP_PAY = 0.05
 
 
 # Yolun korunan noktaları (rehber_kablo.cad_noktalar; tüpün eksen noktaları) kesilmiş katının içinde, ilk atılan nokta dışında olmalı:
-# kesim düzlemi B01'in tabandaki kısmını keserse (çok alçak) ya da eski kısmı bırakırsa üretim durur.
-def kirp(p, ky, n):
+# kesim düzlemi korunan kısmı keserse (çok alçak) ya da eski kısmı bırakırsa üretim durur.
+# P10.7b2i (F10r-gunluk § 1): kesim yönü genel (rehber_kablo.cad_kirp_kesim: yon · p ≤ d; yol 9 (0, 1, 1) / √2, yol 12 +y). Kesim
+# kutusu, yerel y ekseni yon'a dönen yerleşimle kurulur; sınırlar şekil R⁻¹ ile döndürülüp sıkı kutunun y'sinden okunur (yerel y = yon
+# · p). +y yönünde R birim: b2f'deki y sınaması aynen. Dönmüş şeklin sıkı kutusu da kesin geometriden (optimalBoundingBox(False, False)).
+def _izd(s, R):
+    """Şeklin yon (R'nin y ekseni) üstündeki sıkı izdüşüm aralığı: R⁻¹ ile döndürülmüş kopyanın sıkı kutusunun y'si."""
+    q = s.copy()
+    q.transformShape(App.Placement(V(0, 0, 0), R.inverted()).toMatrix(), True)
+    return q.optimalBoundingBox(False, False)
+
+
+def kirp(p, yon, ky, n):
     _k, _a = A.modul_konum(p["modul"])
     if tuple(_k) != (0, 0, 0) or _a:
         raise SystemExit("CAD_KIRP: %s modülü birim yerleşimde değil, kesim düzlemi yerel şekle taşınamaz" % p["modul"])
+    R = App.Rotation(V(0, 1, 0), V(*yon))
     tut = RK.cad_noktalar(n)
     tum = RK.cad_noktalar(n, kirp=False)
     at = tum[len(tut)] if len(tum) > len(tut) else None
+    atilan = tum[len(tut):]                                  # P10.7b2i: bütün atılan noktalar dışarıda (yol 9'da z kesimi ESP32 ucunu bırakırdı)
     out = []
     for s in (p["yerel"], p["shape"]):
-        sb = s.optimalBoundingBox(False, False)
+        sb = _izd(s, R)
         if sb.YMax <= ky + KIRP_PAY:
-            raise SystemExit("CAD_KIRP: %s kesecek bir şey yok (y en büyük %.2f, kesim %.2f): kayıt bayat" % (p["ad"], sb.YMax, ky))
+            raise SystemExit("CAD_KIRP: %s kesecek bir şey yok (izdüşüm en büyük %.2f, kesim %.2f): kayıt bayat" % (p["ad"], sb.YMax, ky))
         kutu = Part.makeBox(2e4, ky + 1e4, 2e4, V(-1e4, -1e4, -1e4))
+        kutu.transformShape(App.Placement(V(0, 0, 0), R).toMatrix(), True)
         c = s.common(kutu)
         if not c.Solids or c.Volume <= 0 or c.Volume >= s.Volume:
             raise SystemExit("CAD_KIRP: %s kesimi boş ya da hacmi küçültmedi (kesim %.2f)" % (p["ad"], ky))
-        b = c.optimalBoundingBox(False, False)
+        b = _izd(c, R)
         if b.YMax > ky + KIRP_PAY or abs(b.YMin - sb.YMin) > KIRP_PAY:
-            raise SystemExit("CAD_KIRP: %s kesimi aşıyor ya da yolun başını kesmiş (y %.2f…%.2f, önce %.2f, kesim %.2f)" % (
+            raise SystemExit("CAD_KIRP: %s kesimi aşıyor ya da yolun başını kesmiş (izdüşüm %.2f…%.2f, önce %.2f, kesim %.2f)" % (
                 p["ad"], b.YMin, b.YMax, sb.YMin, ky))
         disari = [q for q in tut if not c.isInside(V(*q), 0.01, True)]
-        if disari or (at is not None and c.isInside(V(*at), 0.01, True)):
-            raise SystemExit("CAD_KIRP: %s kesimi yanlış yerde (kesim %.2f): korunan noktalardan dışarıda kalan %s, ilk atılan nokta %s %s" % (
-                p["ad"], ky, disari, at, "içeride" if at is not None and c.isInside(V(*at), 0.01, True) else "dışarıda"))
+        iceride = [q for q in atilan if c.isInside(V(*q), 0.01, True)]
+        if disari or iceride:
+            raise SystemExit("CAD_KIRP: %s kesimi yanlış yerde (kesim %.2f): korunan noktalardan dışarıda kalan %s, atılan noktalardan "
+                             "içeride kalan %s (ilk atılan %s)" % (p["ad"], ky, disari, iceride, at))
         out.append(c)
-    log("CAD_KIRP: %s y %.2f -> %.2f (kesim %.2f; sıkı kutu)" % (p["ad"], p["shape"].optimalBoundingBox(False, False).YMax,
-                                                                  out[1].optimalBoundingBox(False, False).YMax, ky))
+    # freecadcmd stdout'u cp1254: log satırında "≤" / "·" yok (P10.7b2i denemesinde UnicodeEncodeError)
+    log("CAD_KIRP: %s izdüşüm %.2f -> %.2f (yon %s, kesim %.2f; sıkı kutu; katı %d)" % (
+        p["ad"], _izd(p["shape"], R).YMax, _izd(out[1], R).YMax, "(%s)" % ", ".join("%.4g" % x for x in yon), ky, len(out[1].Solids)))
     p["yerel"], p["shape"] = out
 
 
 KIRPILAN = []
 for p in P:
     if p["modul"] == "taban" and p["ad"].startswith("Kablo yolu"):
-        _ky = RK.cad_kirp_y(RM.kablo_yolu_no(p["ad"]))
-        if _ky is not None:
-            kirp(p, _ky, RM.kablo_yolu_no(p["ad"]))
+        _kk = RK.cad_kirp_kesim(RM.kablo_yolu_no(p["ad"]))
+        if _kk is not None:
+            kirp(p, _kk[0], _kk[1], RM.kablo_yolu_no(p["ad"]))
             KIRPILAN.append(RM.kablo_yolu_no(p["ad"]))
 if sorted(KIRPILAN) != sorted(RK.CAD_KIRP):
     raise SystemExit("CAD_KIRP %s, kırpılan %s: yol adı modelde yok" % (sorted(RK.CAD_KIRP), sorted(KIRPILAN)))

@@ -57,6 +57,20 @@ def hoparlor_merkez():
     return dict(C=(H_["x"], H_["y"], z0 + (H_["y"] - y0) * t), n=(0.0, -math.sin(al), math.cos(al)), alfa=al)
 
 
+# P10.7b2i (planlama/d158/F10r-gunluk.md § 2): "ESP32 USB" (U06) taban ucu. 05.11 cizimi (51,6; 190; -120) guc panelinin ustunde
+# bitiyordu, ESP32 9 Ekim'den beri elektronik katinda (arayuz TABAN esp (80; 75)). Yeni uc ESP32 DevKit'in micro USB portu: taban_lib
+# esp_local() bileseni (l/2 - 6 ... l/2 + 1; +x ucu) -> global x 100...107, y 199,2...202,2 (kart ustu y_esp 197,6 + 1,6...4,6), z 71...79.
+# Fis +x'ten -x yonunde takilir; fisin arka ucu port agzindan FIS_ESP mm (micro B fis + kabartma, TAHMIN; urun elde yok), son nokta port
+# agzinin 2,5 mm onu (kure DevKit kutusuna degmez). Yol: etek ust plakasi gecisi (14; 262; -40, 05.11 cizimiyle ayni) -> direk sagindan
+# (x 40; direk x +-20, XL4016 C x >= 65) elektronik katinin ustune -> XL4016 C (z <= 23,5) ile ESP32 tasiyicisi (z >= 50) arasindaki
+# z 37 seridinde +x'e -> tasiyicinin +x kenarinin otesinde (x 127; tasiyici x <= 115, kat x <= 135) one -> fisin arka ucu -> port.
+# Kat ustu yukseklik y 205: ESP32 ustu 202,4, PCA9685 ustu 200,1, XL4016 C ustu 211 (yanindan gecer). Kart ici bilesen yeri TAHMIN.
+ESP_PORT = (107.0, 200.7, 75.0)                     # micro USB port agzi (+x yuzu), global
+FIS_ESP = 18.0                                      # fis + kabartma boyu, TAHMIN
+ESP_USB_TABAN = [(14.0, 225.0, -40.0), (40.0, 215.0, -30.0), (40.0, 205.0, 37.0), (125.0, 205.0, 37.0),
+                 (ESP_PORT[0] + 2.5 + FIS_ESP, ESP_PORT[1], ESP_PORT[2]), (ESP_PORT[0] + 2.5, ESP_PORT[1], ESP_PORT[2])]
+
+
 def yollar():
     K = A.KAFA
     YT, ZT = K["tilt_nokta"][1], K["tilt_nokta"][2]
@@ -107,7 +121,7 @@ def yollar():
         "HDMI": pi_hdmi + trunk + inis + ekran_ucu(5.0, 0.0),
         "Hub uzatmasi": [bas(*p3)] + koridor + trunk[2:] + inis + [(30.0, 1190.0, -40.0), (47.5, HB["y"][1] + 4.0, lz + 10.0)],
         "USB dokunmatik": [(47.5, ym, lz + 60.0), (24.0, 1190.0, -30.0)] + ekran_ucu(-15.0, 7.0),
-        "ESP32 USB": [(47.5, ym - 20.0, lz + 60.0), (14.0, 1060.0, -26.0), (14.0, 300.0, -26.0), (14.0, 262.0, -40.0), (40.0, 195.0, -100.0), (51.6, 190.0, -120.0)],
+        "ESP32 USB": [(47.5, ym - 20.0, lz + 60.0), (14.0, 1060.0, -26.0), (14.0, 300.0, -26.0), (14.0, 262.0, -40.0)] + ESP_USB_TABAN,
         "Hoparlor": [bas(-(x_ic - 7.0), PM["y"], -28.0), bas(-100.0, 60.0, -13.0), bas(-50.0, 42.0, -13.0), bas(-43.5, 38.0, -13.0)] + trunk[2:] + inis + hop_uc,
         "Ses karti uzatmasi": [bas(*p2), bas(60.0, 52.0, -25.0), bas(40.0, 58.0, -14.0), bas(-60.0, 58.0, -14.0), bas(-80.0, 58.0, -60.0), bas(*s_uc)],
         "Dizi USB": [bas(*d_uc), bas(d_uc[0] + 6.0, 72.0, d_uc[2] - 6.0), bas(68.0, 55.0, p1[2]), bas(p1[0] + 16.0, p1[1], p1[2]), bas(*p1)],

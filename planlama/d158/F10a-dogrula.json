@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-18 03:39",
+ "tarih": "2026-11-19 05:41",
  "tarayici": "chrome.exe",
  "adim": 50,
  "yontem": "CDP (Chrome DevTools protokolü), file://; önce = 749627b~1 rehber sayfası geçici kopyada (three.js aynı 0.160 yerel paket)",
@@ -1175,7 +1175,7 @@
     "adim": 8,
     "var": true,
     "oran": 0.4022,
-    "boyut_kb": 154.5,
+    "boyut_kb": 154.4,
     "cizili": true
    },
    {
@@ -1238,7 +1238,7 @@
     "adim": 17,
     "var": true,
     "oran": 0.523,
-    "boyut_kb": 209.7,
+    "boyut_kb": 208.4,
     "cizili": true
    },
    {
@@ -1350,7 +1350,7 @@
     "adim": 33,
     "var": true,
     "oran": 0.2689,
-    "boyut_kb": 162.9,
+    "boyut_kb": 163.0,
     "cizili": true
    },
    {
@@ -1371,7 +1371,7 @@
     "adim": 36,
     "var": true,
     "oran": 0.5713,
-    "boyut_kb": 114.5,
+    "boyut_kb": 114.4,
     "cizili": true
    },
    {
@@ -1864,7 +1864,7 @@
      "w": 170,
      "h": 227,
      "dolu": 4970,
-     "vurgu": 221,
+     "vurgu": 217,
      "tasma": 0,
      "genislik": 1400,
      "sahne_icinde": true,
@@ -2194,7 +2194,7 @@
      "w": 170,
      "h": 227,
      "dolu": 4970,
-     "vurgu": 388,
+     "vurgu": 392,
      "tasma": 0,
      "genislik": 1400,
      "sahne_icinde": true,
@@ -2972,7 +2972,7 @@
      "w": 84,
      "h": 112,
      "dolu": 1201,
-     "vurgu": 50,
+     "vurgu": 47,
      "tasma": 0,
      "genislik": 360,
      "sahne_icinde": true,
@@ -3302,7 +3302,7 @@
      "w": 84,
      "h": 112,
      "dolu": 1201,
-     "vurgu": 103,
+     "vurgu": 104,
      "tasma": 0,
      "genislik": 360,
      "sahne_icinde": true,
@@ -3697,6 +3697,6 @@
  },
  "goruntu": [],
  "veri_degismedi": false,
- "sure_s": 423,
+ "sure_s": 525,
  "gecti": true
 }

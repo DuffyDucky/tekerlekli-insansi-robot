@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-18 02:58",
+ "tarih": "2026-11-19 04:51",
  "tarayici": "chrome.exe",
  "ozet": {
   "adim": 50,
@@ -14,7 +14,7 @@
    "hic_gorunmeyen": []
   },
   "sema": 65,
-  "veri_uretim": "2026-11-17 02:41",
+  "veri_uretim": "2026-11-19 02:16",
   "kaynak_cad": {
    "iskelet": "2026-11-09 14:27",
    "omuz_sag": "2026-11-09 14:27",
@@ -1396,9 +1396,9 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 464,
+     "D": 488,
      "alan": "sag-sutun",
-     "nokta": 8
+     "nokta": 120
     },
     "eksik_mesh": [],
     "konum_dogru": true,
@@ -1879,7 +1879,7 @@
     "fark": [],
     "sema_fark": [],
     "kadraj": {
-     "D": 1635,
+     "D": 1655,
      "alan": "sag-sutun",
      "nokta": 8
     },
@@ -3352,7 +3352,7 @@
     "17.4": 0.6576,
     "17.5": 0.5906,
     "17.6": 0.8043,
-    "17.7": 0.6933,
+    "17.7": 0.6857,
     "17.8": 0.699,
     "17.9": 0.9592,
     "17.10": 0.6256,
@@ -3373,15 +3373,15 @@
     "32.1": 0.1008,
     "32.2": 0.6131,
     "32.3": 0.0878,
-    "32.4": 0.1006,
+    "32.4": 0.0954,
     "32.5": 0.2427,
     "32.6": 0.4621,
     "32.7": 0.1002,
     "32.8": 0.0804,
-    "33.1": 0.4312,
+    "33.1": 0.4313,
     "33.2": 0.4822,
     "33.3": 0.3037,
-    "33.4": 0.5196,
+    "33.4": 0.5197,
     "33.5": 0.3286,
     "33.6": 0.14,
     "33.7": 0.3191,
@@ -3506,7 +3506,7 @@
    "17.4": 0.6576,
    "17.5": 0.5906,
    "17.6": 0.8043,
-   "17.7": 0.6933,
+   "17.7": 0.6857,
    "17.8": 0.699,
    "17.9": 0.9592,
    "17.10": 0.6256,
@@ -3527,15 +3527,15 @@
    "32.1": 0.1008,
    "32.2": 0.6131,
    "32.3": 0.0878,
-   "32.4": 0.1006,
+   "32.4": 0.0954,
    "32.5": 0.2427,
    "32.6": 0.4621,
    "32.7": 0.1002,
    "32.8": 0.0804,
-   "33.1": 0.4312,
+   "33.1": 0.4313,
    "33.2": 0.4822,
    "33.3": 0.3037,
-   "33.4": 0.5196,
+   "33.4": 0.5197,
    "33.5": 0.3286,
    "33.6": 0.14,
    "33.7": 0.3191,
@@ -3686,7 +3686,7 @@
   "adim": 50,
   "tasan": [],
   "kucuk_yazi": [],
-  "boyut_kb": 19014,
+  "boyut_kb": 18973,
   "sayfa_esleme": {
    "0": [
     1
@@ -3885,7 +3885,7 @@
    "adim": 50,
    "is_karakter": 23074,
    "is_eksik_karakter": 0,
-   "madde": 442,
+   "madde": 441,
    "madde_eksik": 0,
    "madde_fazla": 0,
    "eksik": [],
@@ -4453,6 +4453,11 @@
     },
     {
      "adim": "K1",
+     "uyari": "U06: taban ucu ESP32'nin micro USB portunda, kablo XL4016 C ile ESP32 taşıyıcısı arasından",
+     "var": true
+    },
+    {
+     "adim": "K1",
      "uyari": "G07: gerginlik giderme",
      "var": true
     },
@@ -4997,11 +5002,6 @@
      "var": true
     },
     {
-     "adim": "K2",
-     "uyari": "K2 kablo: U06 şemasının taban ucu yanlış çizili, kablo ESP32'nin USB girişine (alan kablo)",
-     "var": true
-    },
-    {
      "adim": "K1",
      "uyari": "K1 kablo: P03 tablosunda dağıtım kartı C'nin yeri (güç paneli) (alan kablo)",
      "var": true
@@ -5023,7 +5023,7 @@
   "elektrik": [],
   "elektrik_sayi": 0,
   "metin_sayisi": {
-   "veri": 5031,
+   "veri": 5030,
    "tarayici": 149
   },
   "parca": 1192,
@@ -5165,7 +5165,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 54.5,
+     "sure_s": 63.8,
      "yon": [
       {
        "yon": [
@@ -5273,7 +5273,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 14.3,
+     "sure_s": 16.4,
      "yon": [
       {
        "yon": [
@@ -5424,7 +5424,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 26.0,
+     "sure_s": 30.6,
      "yon": [
       {
        "yon": [
@@ -5575,7 +5575,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 3.3,
+     "sure_s": 3.9,
      "yon": [
       {
        "yon": [
@@ -5751,7 +5751,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 68.6,
+     "sure_s": 83.0,
      "yon": [
       {
        "yon": [
@@ -5915,7 +5915,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 73.0,
+     "sure_s": 88.3,
      "yon": [
       {
        "yon": [
@@ -6079,7 +6079,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 4,
-     "sure_s": 26.8,
+     "sure_s": 33.0,
      "yon": [
       {
        "yon": [
@@ -6269,7 +6269,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 6.7,
+     "sure_s": 7.9,
      "yon": [
       {
        "yon": [
@@ -6534,7 +6534,7 @@
      "h_mm": 0.25,
      "esik_mm": 0.2,
      "tek_isin": 11,
-     "sure_s": 4.6,
+     "sure_s": 5.5,
      "yon": [
       {
        "yon": [
@@ -6562,7 +6562,7 @@
      "h_mm": 0.5,
      "esik_mm": 0.2,
      "tek_isin": 1795,
-     "sure_s": 5.0,
+     "sure_s": 6.1,
      "yon": [
       {
        "yon": [
@@ -6723,7 +6723,7 @@
    ],
    "gecti": true,
    "e3_kafa_serbest": true,
-   "sure_s": 282.9
+   "sure_s": 338.7
   },
   "ucus": {
    "durum": "koştu",
@@ -16648,7 +16648,7 @@
      ]
     }
    ],
-   "sure_s": 840.1
+   "sure_s": 1032.9
   },
   "isil_gomme": {
    "durum": "koştu",
@@ -28505,16 +28505,16 @@
     }
    }
   ],
-  "sure_s": 69.1,
+  "sure_s": 102.0,
   "sure": {
-   "yukleme_s": 11.7,
-   "sira_s": 77.8,
-   "perdelenme_s": 131.5,
-   "giris_s": 282.9,
-   "ucus_s": 840.1,
-   "toplam_s": 1344.0,
+   "yukleme_s": 18.5,
+   "sira_s": 115.0,
+   "perdelenme_s": 178.5,
+   "giris_s": 338.7,
+   "ucus_s": 1032.9,
+   "toplam_s": 1683.6,
    "voksel_alani": 87,
-   "voksel_s": 74.0
+   "voksel_s": 108.8
   }
  },
  "perdelenme": {
@@ -32562,7 +32562,7 @@
    }
   ],
   "toplam_gizli": 264,
-  "sure_s": 131.5,
+  "sure_s": 178.5,
   "alt_adim_gizli_istisnasiz": 0,
   "alt_adim_istisna": 117,
   "alt_sinir": 0,
@@ -37105,7 +37105,7 @@
   "hata": [],
   "gecti": true,
   "bolum": 38,
-  "sure_s": 34.2
+  "sure_s": 50.6
  },
  "kablo_esleme": {
   "hata": [],

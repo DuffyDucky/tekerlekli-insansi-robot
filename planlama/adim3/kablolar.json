@@ -7644,12 +7644,12 @@
    "koruma": null,
    "acil_stopta_enerjili": true,
    "boy": {
-    "yol_mm": 971,
-    "onerilen_mm": 1360,
+    "yol_mm": 1129,
+    "onerilen_mm": 1560,
     "kaynak": "tasarim/freecad/lale158/lale158-kontrol.json#kablo_ozet.kablo.ESP32 USB"
    },
    "sema_boy": {
-    "mm": 971,
+    "mm": 1129,
     "sema": "yollar:ESP32 USB",
     "kaynak": "tasarim/freecad/lale158/kablo_yolu_ekran.py#yollar",
     "etiket": "gösterim şeması yolu; ölçüm değil"

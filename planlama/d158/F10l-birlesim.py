@@ -12,7 +12,7 @@
 #   C  gönderme biçimi eşitlenmeden: çevrilen her gönderme sayılır (rehber_metin.GONDERME_KAYIT), çözülemeyen 0.
 import os, sys, re, subprocess, types, collections
 ROBOT = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-HEAD = sys.argv[2] if len(sys.argv) > 2 else "376fe90"          # P10.7b2h: taban 376fe90 (b2g'de 9b019d2) (b2f'de b5fc255, b2e'de 84f1a4a, b2d'de 1c4e882)
+HEAD = sys.argv[2] if len(sys.argv) > 2 else "8bca2f5"          # P10.7b2i: taban 8bca2f5 (b2h'de 376fe90) (b2g'de 9b019d2) (b2f'de b5fc255, b2e'de 84f1a4a, b2d'de 1c4e882)
 RH = os.path.join(ROBOT, "tasarim", "freecad", "rehber")
 sys.path.insert(0, RH)
 b = subprocess.run(["git", "show", HEAD + ":tasarim/freecad/rehber/rehber_metin.py"], cwd=ROBOT, capture_output=True, check=True).stdout
@@ -364,6 +364,23 @@ B2H_EKLENEN = [
     ('b2h K50 b', 'Şarj kolunun 7,5 A mini sigortası takılmaz (aşama 1 listesi); sonra XT60E-F soketleri her zaman gerilimli olacağı için kapağı kapalı kalır.'),
 ]
 BEKLENEN["376fe90"] = (B2H_SILINEN, B2H_EKLENEN)
+# P10.7b2i (F10r-gunluk.md § 1–2): taban 8bca2f5 (b2h). Yol 9'un eski XL4016 → ESP32 kısmı rehberde kırpıldı (rehber_kablo.CAD_KIRP 9):
+# 17.7 ve KABLO_AD[9]'un "eski çizim" cümleleri; U06 şeması yeniden çizildi: K2 "yanlış yerde" maddesi kalktı, taban ucu talimatı K1
+# alt adım 17.11'de, K2 önerilen boyu 1.360 → 1.560 (lale158-kontrol.json). Liste uygulanan metinden, etiketler elle.
+B2I_SILINEN = [
+    ('b2i yol 9 kırpma (KABLO_AD 9)', "Şemanın XL4016 sonrası kısmı eski (doğrudan ESP32'ye); tabloda G19 (16 AWG) 2 A mini hat sigortasıyla arayüz kartına gider, bu şemada çizili değil: kendi gösterim şeması K1'de"),
+    ('b2i yol 9 kırpma (17.7)', "Karede vurgulu çizgi Kablo yolu 9'dur (G18): XL4016 çevreden sonraki kısmı eski çizimdir (doğrudan ESP32'ye), uygulanmaz; çevre çıkışı G19 §G arayüz kartına bağlanır."),
+    ('b2i U06 taban ucu (17.11)', "Kafa 12 V'un (G17) taban ucu ve panel içinde kalan göğüs ekranı dalı (G20) §G bağlandı; ESP32 USB'nin (U06) taban ucunu bağla."),
+    ('b2i U06 "yanlış yerde" kalktı (K2 kablo)', "\"ESP32 USB\" şemasının (U06) taban ucu yanlış yerde, güç panelinin üstünde çizili (şema yeniden çizilecek): kablonun taban ucu elektronik katındaki ESP32 taşıyıcısında ESP32'nin USB girişine takılır"),
+    ('b2i U06 önerilen boy (K2 kablo)', "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.360, hoparlör 1.030, göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`)."),
+]
+B2I_EKLENEN = [
+    ('b2i yol 9 kırpma (KABLO_AD 9)', "CAD yolunun XL4016 sonrası eski kısmı (doğrudan ESP32'ye) rehberde çizilmez; çevre çıkışı G19 (16 AWG) 2 A mini hat sigortasıyla arayüz kartına gider, bu şemada çizili değil: kendi gösterim şeması K1'de"),
+    ('b2i yol 9 kırpma (17.7)', "Karede vurgulu çizgi Kablo yolu 9'dur (G18, F4 → XL4016 çevre); çevre çıkışı G19 §G arayüz kartına bağlanır."),
+    ('b2i U06 taban ucu (17.11)', "Kafa 12 V'un (G17) taban ucu ve panel içinde kalan göğüs ekranı dalı (G20) §G bağlandı; ESP32 USB'nin (U06) taban ucunu bağla: micro USB fişini ESP32'nin önden bakınca sağ ucundaki portuna tak; kabloyu elektronik katının üstünden, ESP32 taşıyıcısı ile güç panelindeki XL4016 C'nin arasından direğin sağına götür (yukarısı K2'de, direk arka yüzü)."),
+    ('b2i U06 önerilen boy (K2 kablo)', "Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.560, hoparlör 1.030, göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`)."),
+]
+BEKLENEN["8bca2f5"] = (B2I_SILINEN, B2I_EKLENEN)
 BEKLENEN_SILINEN, BEKLENEN_EKLENEN = BEKLENEN.get(HEAD, ([], []))
 
 

@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-18 03:08",
+ "tarih": "2026-11-19 05:03",
  "konum": 141,
  "renk_cad": {
   "yontem": "CAD rengi rehber_gorunum.cad_parcalar() ile FCStd'den yeniden okunur (Document.xml Renk özelliği × gorsel betiğinin RENK tablosu); ayrıca GuiDocument.xml yayınık rengi",
@@ -5007,10 +5007,10 @@
      {
       "id": "p0221",
       "ad": "Etek orta sağ",
-      "fark": 112791,
+      "fark": 112919,
       "kimlik": 115280,
       "yalniz": 115486,
-      "oran": 0.977,
+      "oran": 0.978,
       "gorunur": true
      },
      {
@@ -5092,10 +5092,10 @@
      {
       "id": "p0222",
       "ad": "Etek orta sol",
-      "fark": 91798,
+      "fark": 91820,
       "kimlik": 96019,
       "yalniz": 96189,
-      "oran": 0.954,
+      "oran": 0.955,
       "gorunur": true
      },
      {
@@ -5177,10 +5177,10 @@
      {
       "id": "p0223",
       "ad": "Etek ön sağ",
-      "fark": 117633,
+      "fark": 117431,
       "kimlik": 137063,
       "yalniz": 137635,
-      "oran": 0.855,
+      "oran": 0.853,
       "gorunur": true
      },
      {
@@ -5505,7 +5505,7 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Etek arka sağ",
-     "fark": 124622,
+     "fark": 124625,
      "yalniz": 133309,
      "gorunur": true,
      "parca": 12,
@@ -5665,7 +5665,7 @@
      {
       "id": "p0225",
       "ad": "Etek dolgu şeridi arka",
-      "fark": 78716,
+      "fark": 78717,
       "kimlik": 78140,
       "yalniz": 80021,
       "oran": 0.984,
@@ -5796,7 +5796,7 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Etek arka sol",
-     "fark": 122833,
+     "fark": 122838,
      "yalniz": 140641,
      "gorunur": true,
      "parca": 5,
@@ -5913,10 +5913,10 @@
      {
       "id": "p0205",
       "ad": "Gövde alt bandı sağ",
-      "fark": 186202,
+      "fark": 186674,
       "kimlik": 235494,
       "yalniz": 236064,
-      "oran": 0.789,
+      "oran": 0.791,
       "gorunur": true
      },
      {
@@ -6007,10 +6007,10 @@
      {
       "id": "p0206",
       "ad": "Gövde alt bandı sol",
-      "fark": 290593,
+      "fark": 290423,
       "kimlik": 313193,
       "yalniz": 313829,
-      "oran": 0.926,
+      "oran": 0.925,
       "gorunur": true
      },
      {
@@ -6101,7 +6101,7 @@
      {
       "id": "p0207",
       "ad": "Gövde uzatma bandı 1 sağ",
-      "fark": 285430,
+      "fark": 285418,
       "kimlik": 312095,
       "yalniz": 313450,
       "oran": 0.911,
@@ -6222,7 +6222,7 @@
      {
       "id": "p0208",
       "ad": "Gövde uzatma bandı 1 sol",
-      "fark": 353192,
+      "fark": 353186,
       "kimlik": 363503,
       "yalniz": 364942,
       "oran": 0.968,
@@ -6343,7 +6343,7 @@
      {
       "id": "p0209",
       "ad": "Gövde uzatma bandı 2 sağ",
-      "fark": 287268,
+      "fark": 287267,
       "kimlik": 313756,
       "yalniz": 315115,
       "oran": 0.912,
@@ -6766,7 +6766,7 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Gövde orta bandı sağ",
-     "fark": 99729,
+     "fark": 99742,
      "yalniz": 142495,
      "gorunur": true,
      "parca": 19,
@@ -6968,7 +6968,7 @@
      {
       "id": "p0213",
       "ad": "Göğüs bandı sağ",
-      "fark": 125849,
+      "fark": 125850,
       "kimlik": 125625,
       "yalniz": 126209,
       "oran": 0.997,
@@ -9004,7 +9004,7 @@
      {
       "id": "p0221",
       "ad": "Etek orta sağ",
-      "fark": 115631,
+      "fark": 115625,
       "kimlik": 115280,
       "yalniz": 115486,
       "oran": 1.001,
@@ -9089,7 +9089,7 @@
      {
       "id": "p0222",
       "ad": "Etek orta sol",
-      "fark": 96349,
+      "fark": 96351,
       "kimlik": 96019,
       "yalniz": 96189,
       "oran": 1.002,
@@ -9910,7 +9910,7 @@
      {
       "id": "p0205",
       "ad": "Gövde alt bandı sağ",
-      "fark": 235142,
+      "fark": 235146,
       "kimlik": 235494,
       "yalniz": 236064,
       "oran": 0.996,
@@ -10004,7 +10004,7 @@
      {
       "id": "p0206",
       "ad": "Gövde alt bandı sol",
-      "fark": 310920,
+      "fark": 310919,
       "kimlik": 313193,
       "yalniz": 313829,
       "oran": 0.991,
@@ -10219,7 +10219,7 @@
      {
       "id": "p0208",
       "ad": "Gövde uzatma bandı 1 sol",
-      "fark": 361583,
+      "fark": 361565,
       "kimlik": 363503,
       "yalniz": 364942,
       "oran": 0.991,
@@ -10763,7 +10763,7 @@
     "istisna": [],
     "birim": {
      "en_buyuk": "Gövde orta bandı sağ",
-     "fark": 103134,
+     "fark": 103137,
      "yalniz": 142495,
      "gorunur": true,
      "parca": 19,
@@ -12164,7 +12164,7 @@
   "gecti": true
  },
  "goruntu": [],
- "sure_s": 916,
+ "sure_s": 1162,
  "gecti_ozet": {
   "renk_cad": true,
   "renk_sahne": true,

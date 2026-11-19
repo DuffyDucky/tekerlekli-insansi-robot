@@ -1,6 +1,6 @@
 {
 "surum": 1,
-"uretim": "2026-11-17 02:41",
+"uretim": "2026-11-19 02:16",
 "betik": "tasarim/freecad/rehber/rehber_veri.py",
 "kaynak": {
 "m6": "planlama/adim4/M6-montaj-sirasi.md (adım sırası ve tablo metni)",
@@ -20,8 +20,8 @@
 "mesh": {
 "benzersiz": 288,
 "parca": 1192,
-"ucgen": 189600,
-"glb_mb": 2.56
+"ucgen": 189360,
+"glb_mb": 2.55
 },
 "atanmamis": [],
 "kablo_ad_uyari": [],
@@ -312,7 +312,7 @@
 "ad": "ESP32 USB (U06): hub (Hub 2) → direk arka yüzü → ESP32 (taban); VBUS'ta seri 1N5819: anot hub (Pi) tarafında, katot ESP32 tarafında; kartın kendi diyodu varsa gerekmez, multimetreyle bak (doğrulanmadı)",
 "kaynak": "yollar:ESP32 USB",
 "a": 32,
-"boy_mm": 971,
+"boy_mm": 1129,
 "pts": [
 [
 47.5,
@@ -335,14 +335,34 @@
 -40.0
 ],
 [
-40.0,
-195.0,
--100.0
+14.0,
+225.0,
+-40.0
 ],
 [
-51.6,
-190.0,
--120.0
+40.0,
+215.0,
+-30.0
+],
+[
+40.0,
+205.0,
+37.0
+],
+[
+125.0,
+205.0,
+37.0
+],
+[
+127.5,
+200.7,
+75.0
+],
+[
+109.5,
+200.7,
+75.0
 ]
 ],
 "kablo": [
@@ -10408,7 +10428,7 @@
 "tezgah": "",
 "bag": "",
 "satir": [],
-"is_": "Sigorta kutusundan (standart bıçak): F3 5 A kafa hattı (G17, 18 AWG; uç direk dibinde bırakılır), F4 5 A XL4016 çevre (G18, 18 AWG; çevre çıkışı G19, 16 AWG, OUT+ ucunun dibinde 2 A mini hat sigortası), F5 2 A acil stop (A01, 18 AWG; mantar F1'de takılır, uç bantlı), F6 3 A göğüs ekranı dalı (G20, 18 AWG): kutudan, B5a'da güç paneline takılan göğüs ekranı regülatörünün girişine (K52 a); G20'nin iki ucu da panelde, göğüs regülatörünün direğe çıkan çıkışı K2'de. G17, G18, G20 ve A01'in kutu ucunu kendi yuvasının çıkışına bağla (G17 F3, G18 F4, A01 F5, G20 F6); G17, G18 ve G20'nin − ucunu yıldız barasına: G17 ve G18 4 numaralı, G20 5 numaralı saplamaya (G18'in öbür ucu B3'te XL4016 çevreye bağlandı). G20'nin regülatör ucunu regülatörün giriş klemensine bağla (F6 çıkışı → IN+, IN− → GND; kart üstü IN+ / IN− yazısına göre). Karede vurgulu çizgi Kablo yolu 9'dur (G18): XL4016 çevreden sonraki kısmı eski çizimdir (doğrudan ESP32'ye), uygulanmaz; çevre çıkışı G19 alt adım 17.9'da arayüz kartına bağlanır. A01'in çizgisi alt adım 17.8'in, G17'ninki alt adım 32.3'ün, göğüs ekranı hattının şeması alt adım 32.7'nin karesinde.",
+"is_": "Sigorta kutusundan (standart bıçak): F3 5 A kafa hattı (G17, 18 AWG; uç direk dibinde bırakılır), F4 5 A XL4016 çevre (G18, 18 AWG; çevre çıkışı G19, 16 AWG, OUT+ ucunun dibinde 2 A mini hat sigortası), F5 2 A acil stop (A01, 18 AWG; mantar F1'de takılır, uç bantlı), F6 3 A göğüs ekranı dalı (G20, 18 AWG): kutudan, B5a'da güç paneline takılan göğüs ekranı regülatörünün girişine (K52 a); G20'nin iki ucu da panelde, göğüs regülatörünün direğe çıkan çıkışı K2'de. G17, G18, G20 ve A01'in kutu ucunu kendi yuvasının çıkışına bağla (G17 F3, G18 F4, A01 F5, G20 F6); G17, G18 ve G20'nin − ucunu yıldız barasına: G17 ve G18 4 numaralı, G20 5 numaralı saplamaya (G18'in öbür ucu B3'te XL4016 çevreye bağlandı). G20'nin regülatör ucunu regülatörün giriş klemensine bağla (F6 çıkışı → IN+, IN− → GND; kart üstü IN+ / IN− yazısına göre). Karede vurgulu çizgi Kablo yolu 9'dur (G18, F4 → XL4016 çevre); çevre çıkışı G19 alt adım 17.9'da arayüz kartına bağlanır. A01'in çizgisi alt adım 17.8'in, G17'ninki alt adım 32.3'ün, göğüs ekranı hattının şeması alt adım 32.7'nin karesinde.",
 "demet": [
 "taban (K1)",
 "taban alt kat",
@@ -10419,6 +10439,23 @@
 "p1188"
 ],
 "ev": [],
+"odak": [
+"p1019",
+"p1020",
+"p1021",
+"p1022",
+"p1023",
+"p1024",
+"p1025",
+"p1026",
+"p1027",
+"p1028",
+"p1029",
+"p1030",
+"p1031",
+"p1071",
+"p1188"
+],
 "uc": [
 {
 "n": 1,
@@ -10794,7 +10831,7 @@
 "tezgah": "",
 "bag": "",
 "satir": [],
-"is_": "Direğe çıkacak hatların taban kısmını da burada bağla. Kafa servolarının sinyal köprüsünü (P03), yalnız sinyal teliyle, PCA9685'in kafa pan ve tilt kanallarının sinyal pinlerinden dağıtım kartı C'nin pan / tilt sinyal girişlerine bağla. PCA9685'in V+ pinine tel takma; 3 telli hazır kablo kullanırsan V+ damarını iki ucundan kes, makaronla yalıt (B6a madde 4: V+ teli XL4016 C'nin çıkışını A ve B'ninkilere paralel bağlar). Kafa 12 V'un (G17) taban ucu ve panel içinde kalan göğüs ekranı dalı (G20) alt adım 17.7'de bağlandı; ESP32 USB'nin (U06) taban ucunu bağla. Servo uzatmaları (A / B / kafa) K2'de dağıtım kartlarının çıkışına takılır. Yukarısı K2'de. Bu alt adımın kabloları karede vurgulu değil: P03'ün çizimi yok (bağlantı tablosu aşağıda), U06'nın şeması alt adım 32.4'ün karesinde. Karede yer: PCA9685 ve ESP32 taşıyıcı elektronik katında önden bakınca sağda; dağıtım kartı C güç panelinde (B5a, modelde yok).",
+"is_": "Direğe çıkacak hatların taban kısmını da burada bağla. Kafa servolarının sinyal köprüsünü (P03), yalnız sinyal teliyle, PCA9685'in kafa pan ve tilt kanallarının sinyal pinlerinden dağıtım kartı C'nin pan / tilt sinyal girişlerine bağla. PCA9685'in V+ pinine tel takma; 3 telli hazır kablo kullanırsan V+ damarını iki ucundan kes, makaronla yalıt (B6a madde 4: V+ teli XL4016 C'nin çıkışını A ve B'ninkilere paralel bağlar). Kafa 12 V'un (G17) taban ucu ve panel içinde kalan göğüs ekranı dalı (G20) alt adım 17.7'de bağlandı; ESP32 USB'nin (U06) taban ucunu bağla: micro USB fişini ESP32'nin önden bakınca sağ ucundaki portuna tak; kabloyu elektronik katının üstünden, ESP32 taşıyıcısı ile güç panelindeki XL4016 C'nin arasından direğin sağına götür (yukarısı K2'de, direk arka yüzü). Servo uzatmaları (A / B / kafa) K2'de dağıtım kartlarının çıkışına takılır. Yukarısı K2'de. Bu alt adımın kabloları karede vurgulu değil: P03'ün çizimi yok (bağlantı tablosu aşağıda), U06'nın şeması alt adım 32.4'ün karesinde. Karede yer: PCA9685 ve ESP32 taşıyıcı elektronik katında önden bakınca sağda; dağıtım kartı C güç panelinde (B5a, modelde yok).",
 "kamera": [
 0.3,
 1.0,
@@ -13058,9 +13095,8 @@
 "kablo": [
 "Burada: servo A, servo B, servo kafa, kafa 12 V, enkoder / BTS sinyalleri (tabanda), boyun demeti, ESP32 USB ve göğüs ekranı kabloları. Şemada devre sınıfının renginde (lejant); tıklayınca tablodaki kimlik, uçlar, kesit, sigorta",
 "Göğüs ekranı, hub ve ses yolları gösterim şemasıdır (`lale158/kablo_yolu_ekran.py`): parça sayısına girmez; kablo çapı, büküm yarıçapı ve port yeri doğrulanmadı",
-"\"ESP32 USB\" şemasının (U06) taban ucu yanlış yerde, güç panelinin üstünde çizili (şema yeniden çizilecek): kablonun taban ucu elektronik katındaki ESP32 taşıyıcısında ESP32'nin USB girişine takılır",
 "Şemada taban kısımları da görünür: onlar K1'de bağlandı",
-"Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.360, hoparlör 1.030, göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`). Kablo listesi: `planlama/adim3/kablolar.md`"
+"Önerilen boylar (yol × 1,25, hub'a gidenlere + 150 mm; tahmin): HDMI 950, hub uzatması 920, ESP32 USB 1.560, hoparlör 1.030, göğüs 12 V 1.720 mm (`planlama/adim3/elektrik.md`). Kablo listesi: `planlama/adim3/kablolar.md`"
 ],
 "not_": [
 "Boyun demeti K14 a ile kapandı (CAD'deki gibi 5 kablo, şartlarla; `planlama/adim3/kablolama-on-kararlar.md` §4): demet yazıldığı gibi kurulamayabilir, tünel deneme parçasındaki fiş denemesi belirler",
@@ -13330,9 +13366,6 @@
 ],
 "demet": [
 "gövde (K2)"
-],
-"kablo": [
-2
 ],
 "sema": [
 2
@@ -48477,7 +48510,7 @@
 },
 {
 "id": "p1188",
-"ad": "Kablo yolu 9: Çevre 5 V (G18, 18 AWG): F4 5 A → XL4016 çevre. Şemanın XL4016 sonrası kısmı eski (doğrudan ESP32'ye); tabloda G19 (16 AWG) 2 A mini hat sigortasıyla arayüz kartına gider, bu şemada çizili değil: kendi gösterim şeması K1'de",
+"ad": "Kablo yolu 9: Çevre 5 V (G18, 18 AWG): F4 5 A → XL4016 çevre. CAD yolunun XL4016 sonrası eski kısmı (doğrudan ESP32'ye) rehberde çizilmez; çevre çıkışı G19 (16 AWG) 2 A mini hat sigortasıyla arayüz kartına gider, bu şemada çizili değil: kendi gösterim şeması K1'de",
 "modul": "taban",
 "grup": "Kablo_yolu_sema",
 "kod": "(gösterim)",
@@ -48488,11 +48521,11 @@
 "b": 17,
 "t": null,
 "u": [
-0.881,
+0.442,
 0.0,
--0.473
+-0.897
 ],
-"d": 194.8,
+"d": 154.0,
 "kablo": [
 "G18"
 ],
@@ -49178,8 +49211,8 @@
 "neden": "yeni parça yok"
 }
 ],
-"sure_s": 33.9,
-"sure_baglanti_s": 11.8
+"sure_s": 42.5,
+"sure_baglanti_s": 15.0
 },
 "uc_kaynak": {
 "konum": 24,

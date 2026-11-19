@@ -439,6 +439,8 @@ PAKET_SONUC = {
               "P10.7b2g (boyun tüneli deneme parçası; rehberde K2 alt adım 5'e bağlandı). "
               # P10.7b2h kapanışı (F10q-gunluk.md § 10): bu commit'le kapandı
               "P10.7b2h (17.11 kararlarının rehber metni: K40, K50 b, K51, K55, K60). "
+              # P10.7b2i kapanışı (F10r-gunluk.md § 8): bu commit'le kapandı
+              "P10.7b2i (yol 9 eski kısmı rehberde kırpıldı, U06 şeması ESP32 portuna yeniden çizildi, U06 boyu 1.560). "
               # P10.7b2f kısım 2: Efe'nin iki cevabı 14.11'de geldi (pano #7 mesaj #28), kayda 16.11'de geçti; "Kalan"dan çıktı
               # P10.9b (17.11.2026, orkestratör kararı): K60 (A + köprülü klemens) ve K61 (a) kapandı; "Kalan"dan çıktı (P109b-gunluk.md)
               "Kalan: taban yollarının yeniden tasarımı, boyların ölçümü, düğüm tutucusu, G19 / G20 / G24 / G26 "
@@ -460,7 +462,7 @@ FAZ_SONUC = {
     "F8": ("Sipariş paketi 136 satır, baskı partileri, T1–T13 test kâğıtları; sipariş verilmedi.", [DONGU]),
     "F9": ("Takvim: S = 16.11 yalnız durum A'da sığar (bir hafta tampon); demo 127 anahtar, depo temizliği; bu rapor son paket.", [PLAN, DONGU]),
     # P10.9a TASLAĞI: faz açık; P10.9 faz sonunda yeniden yazar.
-    "F10": ("Faz açık. Kapalı: P10.1, P10.3, P10.4, P10.4b, P10.5, P10.5b, P10.6 ve P10.7'nin a, b1, b2a, b2b, b2c, b2d, b2e, b2f, b2g, b2h alt paketleri. "
+    "F10": ("Faz açık. Kapalı: P10.1, P10.3, P10.4, P10.4b, P10.5, P10.5b, P10.6 ve P10.7'nin a, b1, b2a, b2b, b2c, b2d, b2e, b2f, b2g, b2h, b2i alt paketleri. "
             "Açık: P10.2 (K53 kapandı, çentik sonraki CAD paketinde), P10.7, P10.8, P10.9.", [DONGU]),
 }
 
