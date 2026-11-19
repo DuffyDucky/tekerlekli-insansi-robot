@@ -2,7 +2,8 @@
 # Lale 1,58 m - P1.3 / K2: AI HAT+ 26T x arka duvar ust dikis boss'u. Iki secenek + bugunku durum (freecadcmd). ANA MODELE YAZMAZ:
 # kafa10_lib.SECENEK yalniz bu surecte degisir; kafa-analiz.json, FCStd, STEP dokunulmaz. Yalniz hat-secenek-<s>.json yazar
 # (+ istenirse HAT_FCSTD=<yol> ile gorsel icin gecici FCStd, depo disina).
-#   HAT_SECENEK=0 : bugunku model + AI HAT+ (cakisma gosterimi)
+#   HAT_SECENEK=0 : bugunku model + AI HAT+ (cakisma gosterimi; P10.7b2j'den beri ana model K2 a, yani 0 = a; 08.11 sonuclari
+#                   hat-secenek-0.json eski (x -8, y 60) modelin kaydidir)
 #   HAT_SECENEK=a : boss'u tasi  (arka duvar ust boss'u x -8 -> -5, y 60 -> 76; yarik bantlari arasinda, dil uzerinde)
 #   HAT_SECENEK=b : yigini tasi  (Pi 5 + AI HAT+ yigini 5 mm one; boss yerinde)
 # FC_SCRIPT=<bu dosya> HAT_SECENEK=a freecadcmd run_fc.py

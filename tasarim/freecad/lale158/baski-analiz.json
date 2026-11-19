@@ -1,5 +1,5 @@
 {
- "tarih": "2026-11-09",
+ "tarih": "2026-11-19",
  "betik": "tasarim/freecad/lale158/baski_analiz_ortak.py",
  "paket": "F6b (P6.2)",
  "yontem": {
@@ -27,24 +27,24 @@
  },
  "moduller": {
   "taban": {
-   "tarih": "2026-11-09T16:18:46",
-   "sure_s": 6.0
+   "tarih": "2026-11-19T07:41:03",
+   "sure_s": 5.1
   },
   "kabuk": {
-   "tarih": "2026-11-09T16:24:20",
-   "sure_s": 280.0
+   "tarih": "2026-11-19T07:43:13",
+   "sure_s": 128.4
   },
   "kafa": {
-   "tarih": "2026-11-09T16:19:39",
-   "sure_s": 38.5
+   "tarih": "2026-11-19T07:43:34",
+   "sure_s": 19.9
   },
   "dirsek": {
-   "tarih": "2026-11-09T16:18:51",
-   "sure_s": 4.4
+   "tarih": "2026-11-19T07:43:38",
+   "sure_s": 3.5
   },
   "omuz": {
-   "tarih": "2026-11-09T16:19:00",
-   "sure_s": 7.3
+   "tarih": "2026-11-19T07:43:44",
+   "sure_s": 4.8
   }
  },
  "parcalar": [
@@ -218,9 +218,363 @@
    "kaynak": {
     "fcstd": "tasarim/freecad/taban/taban-montaj.FCStd",
     "fcstd_nesne": "T138",
-    "fcstd_degistirilme": "2026-11-09T14:29:10",
+    "fcstd_degistirilme": "2026-11-19T07:39:40",
     "step": "tasarim/freecad/taban/taban-montaj.step",
     "fcstd_hacim_mm3": 67662.6,
+    "hacim_esit": true,
+    "geometri": "taban/taban_parcalar.py"
+   }
+  },
+  {
+   "modul": "taban",
+   "ad": "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+   "adet": 1,
+   "malzeme": "PETG",
+   "doluluk": [
+    0.8
+   ],
+   "yon": "ust yuzu tablada (altigen cepler ve insert delikleri yukari)",
+   "yon_kaynak": "taban_parcalar.BASKI",
+   "yon_aday": "tasarim",
+   "yukari": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "olcu": [
+    109.2,
+    109.2,
+    10.0
+   ],
+   "tabla_aci": 45,
+   "x2d_sigar": true,
+   "desteksiz": true,
+   "destek_alan_mm2": 0.0,
+   "destek_hacim_cm3": 0.0,
+   "destek_g": [
+    0.0,
+    0.0
+   ],
+   "parca_g": [
+    29.6,
+    29.6
+   ],
+   "toplam_g": [
+    29.6,
+    29.6
+   ],
+   "sure_sa": [
+    0.62,
+    0.62
+   ],
+   "destek_orani": 0.0,
+   "destek_bolge": [],
+   "serbest_alan_mm2": 0.0,
+   "cikinti45_mm2": 0.0,
+   "temas_mm2": 2865.8,
+   "parite_hatasi": 0,
+   "kolon": 11490,
+   "hacim_cm3": 27.78,
+   "ucgen": 1504,
+   "en_az_destek": {
+    "aday": "tasarim",
+    "yukari": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "destek_alan_mm2": 0.0,
+    "destek_hacim_cm3": 0.0,
+    "destek_g": 0.0,
+    "olcu": [
+     109.2,
+     109.2,
+     10.0
+    ],
+    "x2d_sigar": true,
+    "temas_mm2": 2865.8
+   },
+   "adaylar": {
+    "tasarim": {
+     "yukari": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "destek_alan_mm2": 0.0,
+     "destek_hacim_cm3": 0.0,
+     "olcu": [
+      109.2,
+      109.2,
+      10.0
+     ],
+     "x2d_sigar": true,
+     "temas_mm2": 2865.8
+    },
+    "+X": {
+     "yukari": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "destek_alan_mm2": 0,
+     "destek_hacim_cm3": 0.0,
+     "olcu": [
+      22.0,
+      10.0,
+      136.0
+     ],
+     "x2d_sigar": true,
+     "temas_mm2": 168.6
+    },
+    "-X": {
+     "yukari": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "destek_alan_mm2": 0,
+     "destek_hacim_cm3": 0.0,
+     "olcu": [
+      22.0,
+      10.0,
+      136.0
+     ],
+     "x2d_sigar": true,
+     "temas_mm2": 168.6
+    },
+    "+Y": {
+     "yukari": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "destek_alan_mm2": 0,
+     "destek_hacim_cm3": 0.0,
+     "olcu": [
+      109.2,
+      109.2,
+      10.0
+     ],
+     "x2d_sigar": true,
+     "temas_mm2": 2653.6
+    },
+    "+Z": {
+     "yukari": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "destek_alan_mm2": 0,
+     "destek_hacim_cm3": 0.0,
+     "olcu": [
+      103.2,
+      103.2,
+      22.0
+     ],
+     "x2d_sigar": true,
+     "temas_mm2": 1308.6
+    },
+    "-Z": {
+     "yukari": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "destek_alan_mm2": 0,
+     "destek_hacim_cm3": 0.0,
+     "olcu": [
+      103.2,
+      103.2,
+      22.0
+     ],
+     "x2d_sigar": true,
+     "temas_mm2": 1308.6
+    }
+   },
+   "kaynak": {
+    "fcstd": "tasarim/freecad/taban/taban-montaj.FCStd",
+    "fcstd_nesne": "T248",
+    "fcstd_degistirilme": "2026-11-19T07:39:40",
+    "step": "tasarim/freecad/taban/taban-montaj.step",
+    "fcstd_hacim_mm3": 27776.8,
+    "hacim_esit": true,
+    "geometri": "taban/taban_parcalar.py"
+   }
+  },
+  {
+   "modul": "taban",
+   "ad": "Bara tutucusu anahtarli bara (+) (4 saplama)",
+   "adet": 1,
+   "malzeme": "PETG",
+   "doluluk": [
+    0.8
+   ],
+   "yon": "ust yuzu tablada (altigen cepler ve insert delikleri yukari)",
+   "yon_kaynak": "taban_parcalar.BASKI",
+   "yon_aday": "tasarim",
+   "yukari": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "olcu": [
+    91.5,
+    91.5,
+    10.0
+   ],
+   "tabla_aci": 45,
+   "x2d_sigar": true,
+   "desteksiz": true,
+   "destek_alan_mm2": 0.0,
+   "destek_hacim_cm3": 0.0,
+   "destek_g": [
+    0.0,
+    0.0
+   ],
+   "parca_g": [
+    24.2,
+    24.2
+   ],
+   "toplam_g": [
+    24.2,
+    24.2
+   ],
+   "sure_sa": [
+    0.5,
+    0.5
+   ],
+   "destek_orani": 0.0,
+   "destek_bolge": [],
+   "serbest_alan_mm2": 0.0,
+   "cikinti45_mm2": 0.0,
+   "temas_mm2": 2339.5,
+   "parite_hatasi": 0,
+   "kolon": 9380,
+   "hacim_cm3": 22.66,
+   "ucgen": 1308,
+   "en_az_destek": {
+    "aday": "tasarim",
+    "yukari": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "destek_alan_mm2": 0.0,
+    "destek_hacim_cm3": 0.0,
+    "destek_g": 0.0,
+    "olcu": [
+     91.5,
+     91.5,
+     10.0
+    ],
+    "x2d_sigar": true,
+    "temas_mm2": 2339.5
+   },
+   "adaylar": {
+    "tasarim": {
+     "yukari": [
+      0.0,
+      -1.0,
+      0.0
+     ],
+     "destek_alan_mm2": 0.0,
+     "destek_hacim_cm3": 0.0,
+     "olcu": [
+      91.5,
+      91.5,
+      10.0
+     ],
+     "x2d_sigar": true,
+     "temas_mm2": 2339.5
+    },
+    "+X": {
+     "yukari": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "destek_alan_mm2": 0,
+     "destek_hacim_cm3": 0.0,
+     "olcu": [
+      22.0,
+      10.0,
+      111.0
+     ],
+     "x2d_sigar": true,
+     "temas_mm2": 168.6
+    },
+    "-X": {
+     "yukari": [
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "destek_alan_mm2": 0,
+     "destek_hacim_cm3": 0.0,
+     "olcu": [
+      22.0,
+      10.0,
+      111.0
+     ],
+     "x2d_sigar": true,
+     "temas_mm2": 168.6
+    },
+    "+Y": {
+     "yukari": [
+      0.0,
+      1.0,
+      0.0
+     ],
+     "destek_alan_mm2": 0,
+     "destek_hacim_cm3": 0.0,
+     "olcu": [
+      91.5,
+      91.5,
+      10.0
+     ],
+     "x2d_sigar": true,
+     "temas_mm2": 2164.7
+    },
+    "+Z": {
+     "yukari": [
+      0.0,
+      0.0,
+      1.0
+     ],
+     "destek_alan_mm2": 0,
+     "destek_hacim_cm3": 0.0,
+     "olcu": [
+      85.6,
+      85.6,
+      22.0
+     ],
+     "x2d_sigar": true,
+     "temas_mm2": 1058.6
+    },
+    "-Z": {
+     "yukari": [
+      0.0,
+      0.0,
+      -1.0
+     ],
+     "destek_alan_mm2": 0,
+     "destek_hacim_cm3": 0.0,
+     "olcu": [
+      85.6,
+      85.6,
+      22.0
+     ],
+     "x2d_sigar": true,
+     "temas_mm2": 1058.6
+    }
+   },
+   "kaynak": {
+    "fcstd": "tasarim/freecad/taban/taban-montaj.FCStd",
+    "fcstd_nesne": "T273",
+    "fcstd_degistirilme": "2026-11-19T07:39:40",
+    "step": "tasarim/freecad/taban/taban-montaj.step",
+    "fcstd_hacim_mm3": 22656.3,
     "hacim_esit": true,
     "geometri": "taban/taban_parcalar.py"
    }
@@ -394,8 +748,8 @@
    },
    "kaynak": {
     "fcstd": "tasarim/freecad/taban/taban-montaj.FCStd",
-    "fcstd_nesne": "T328",
-    "fcstd_degistirilme": "2026-11-09T14:29:10",
+    "fcstd_nesne": "T374",
+    "fcstd_degistirilme": "2026-11-19T07:39:40",
     "step": "tasarim/freecad/taban/taban-montaj.step",
     "fcstd_hacim_mm3": 4953.9,
     "hacim_esit": true,
@@ -571,8 +925,8 @@
    },
    "kaynak": {
     "fcstd": "tasarim/freecad/taban/taban-montaj.FCStd",
-    "fcstd_nesne": "T332",
-    "fcstd_degistirilme": "2026-11-09T14:29:10",
+    "fcstd_nesne": "T378",
+    "fcstd_degistirilme": "2026-11-19T07:39:40",
     "step": "tasarim/freecad/taban/taban-montaj.step",
     "fcstd_hacim_mm3": 5481.2,
     "hacim_esit": true,
@@ -748,8 +1102,8 @@
    },
    "kaynak": {
     "fcstd": "tasarim/freecad/taban/taban-montaj.FCStd",
-    "fcstd_nesne": "T338",
-    "fcstd_degistirilme": "2026-11-09T14:29:10",
+    "fcstd_nesne": "T384",
+    "fcstd_degistirilme": "2026-11-19T07:39:40",
     "step": "tasarim/freecad/taban/taban-montaj.step",
     "fcstd_hacim_mm3": 4953.9,
     "hacim_esit": true,
@@ -7139,7 +7493,7 @@
    "kaynak": {
     "fcstd": "tasarim/freecad/kafa/kafa-montaj.FCStd",
     "fcstd_nesne": "K001",
-    "fcstd_degistirilme": "2026-11-09T08:54:37",
+    "fcstd_degistirilme": "2026-11-19T07:33:53",
     "step": "tasarim/freecad/kafa/kafa-montaj.step",
     "fcstd_hacim_mm3": 142055.2,
     "hacim_esit": true,
@@ -7316,7 +7670,7 @@
    "kaynak": {
     "fcstd": "tasarim/freecad/kafa/kafa-montaj.FCStd",
     "fcstd_nesne": "K002",
-    "fcstd_degistirilme": "2026-11-09T08:54:37",
+    "fcstd_degistirilme": "2026-11-19T07:33:53",
     "step": "tasarim/freecad/kafa/kafa-montaj.step",
     "fcstd_hacim_mm3": 25184.8,
     "hacim_esit": true,
@@ -7493,7 +7847,7 @@
    "kaynak": {
     "fcstd": "tasarim/freecad/kafa/kafa-montaj.FCStd",
     "fcstd_nesne": "K035",
-    "fcstd_degistirilme": "2026-11-09T08:54:37",
+    "fcstd_degistirilme": "2026-11-19T07:33:53",
     "step": "tasarim/freecad/kafa/kafa-montaj.step",
     "fcstd_hacim_mm3": 38116.0,
     "hacim_esit": true,
@@ -7670,7 +8024,7 @@
    "kaynak": {
     "fcstd": "tasarim/freecad/kafa/kafa-montaj.FCStd",
     "fcstd_nesne": "K042",
-    "fcstd_degistirilme": "2026-11-09T08:54:37",
+    "fcstd_degistirilme": "2026-11-19T07:33:53",
     "step": "tasarim/freecad/kafa/kafa-montaj.step",
     "fcstd_hacim_mm3": 33850.0,
     "hacim_esit": true,
@@ -7847,7 +8201,7 @@
    "kaynak": {
     "fcstd": "tasarim/freecad/kafa/kafa-montaj.FCStd",
     "fcstd_nesne": "K061",
-    "fcstd_degistirilme": "2026-11-09T08:54:37",
+    "fcstd_degistirilme": "2026-11-19T07:33:53",
     "step": "tasarim/freecad/kafa/kafa-montaj.step",
     "fcstd_hacim_mm3": 65846.4,
     "hacim_esit": true,
@@ -8057,7 +8411,7 @@
    "kaynak": {
     "fcstd": "tasarim/freecad/kafa/kafa-montaj.FCStd",
     "fcstd_nesne": "K074",
-    "fcstd_degistirilme": "2026-11-09T08:54:37",
+    "fcstd_degistirilme": "2026-11-19T07:33:53",
     "step": "tasarim/freecad/kafa/kafa-montaj.step",
     "fcstd_hacim_mm3": 75760.0,
     "hacim_esit": true,
@@ -8234,7 +8588,7 @@
    "kaynak": {
     "fcstd": "tasarim/freecad/kafa/kafa-montaj.FCStd",
     "fcstd_nesne": "K075",
-    "fcstd_degistirilme": "2026-11-09T08:54:37",
+    "fcstd_degistirilme": "2026-11-19T07:33:53",
     "step": "tasarim/freecad/kafa/kafa-montaj.step",
     "fcstd_hacim_mm3": 70325.6,
     "hacim_esit": true,
@@ -8297,7 +8651,7 @@
      "kolon_mm": 2.3,
      "merkez_parca": [
       -7.8,
-      184.3,
+      184.2,
       -63.4
      ]
     }
@@ -8351,7 +8705,7 @@
       0.0
      ],
      "destek_alan_mm2": 20010.3,
-     "destek_hacim_cm3": 2938.41,
+     "destek_hacim_cm3": 2938.29,
      "olcu": [
       215.0,
       106.9,
@@ -8383,7 +8737,7 @@
       0.0
      ],
      "destek_alan_mm2": 18181.7,
-     "destek_hacim_cm3": 3077.51,
+     "destek_hacim_cm3": 3075.87,
      "olcu": [
       151.0,
       106.9,
@@ -8428,7 +8782,7 @@
    "kaynak": {
     "fcstd": "tasarim/freecad/kafa/kafa-montaj.FCStd",
     "fcstd_nesne": "K076",
-    "fcstd_degistirilme": "2026-11-09T08:54:37",
+    "fcstd_degistirilme": "2026-11-19T07:33:53",
     "step": "tasarim/freecad/kafa/kafa-montaj.step",
     "fcstd_hacim_mm3": 191182.5,
     "hacim_esit": true,
@@ -8605,7 +8959,7 @@
    "kaynak": {
     "fcstd": "tasarim/freecad/kafa/kafa-montaj.FCStd",
     "fcstd_nesne": "K077",
-    "fcstd_degistirilme": "2026-11-09T08:54:37",
+    "fcstd_degistirilme": "2026-11-19T07:33:53",
     "step": "tasarim/freecad/kafa/kafa-montaj.step",
     "fcstd_hacim_mm3": 179452.2,
     "hacim_esit": true,
@@ -8782,7 +9136,7 @@
    "kaynak": {
     "fcstd": "tasarim/freecad/kafa/kafa-montaj.FCStd",
     "fcstd_nesne": "K078",
-    "fcstd_degistirilme": "2026-11-09T08:54:37",
+    "fcstd_degistirilme": "2026-11-19T07:33:53",
     "step": "tasarim/freecad/kafa/kafa-montaj.step",
     "fcstd_hacim_mm3": 119477.4,
     "hacim_esit": true,
@@ -8959,7 +9313,7 @@
    "kaynak": {
     "fcstd": "tasarim/freecad/kafa/kafa-montaj.FCStd",
     "fcstd_nesne": "K106",
-    "fcstd_degistirilme": "2026-11-09T08:54:37",
+    "fcstd_degistirilme": "2026-11-19T07:33:53",
     "step": "tasarim/freecad/kafa/kafa-montaj.step",
     "fcstd_hacim_mm3": 1468.9,
     "hacim_esit": true,
@@ -9136,7 +9490,7 @@
    "kaynak": {
     "fcstd": "tasarim/freecad/kafa/kafa-montaj.FCStd",
     "fcstd_nesne": "K110",
-    "fcstd_degistirilme": "2026-11-09T08:54:37",
+    "fcstd_degistirilme": "2026-11-19T07:33:53",
     "step": "tasarim/freecad/kafa/kafa-montaj.step",
     "fcstd_hacim_mm3": 1468.9,
     "hacim_esit": true,
@@ -9313,7 +9667,7 @@
    "kaynak": {
     "fcstd": "tasarim/freecad/kafa/kafa-montaj.FCStd",
     "fcstd_nesne": "K114",
-    "fcstd_degistirilme": "2026-11-09T08:54:37",
+    "fcstd_degistirilme": "2026-11-19T07:33:53",
     "step": "tasarim/freecad/kafa/kafa-montaj.step",
     "fcstd_hacim_mm3": 1456.0,
     "hacim_esit": true,
@@ -9490,7 +9844,7 @@
    "kaynak": {
     "fcstd": "tasarim/freecad/kafa/kafa-montaj.FCStd",
     "fcstd_nesne": "K118",
-    "fcstd_degistirilme": "2026-11-09T08:54:37",
+    "fcstd_degistirilme": "2026-11-19T07:33:53",
     "step": "tasarim/freecad/kafa/kafa-montaj.step",
     "fcstd_hacim_mm3": 1456.0,
     "hacim_esit": true,
@@ -11469,18 +11823,18 @@
   }
  ],
  "toplam": {
-  "adet": 72,
+  "adet": 74,
   "toplam_g": [
-   7668.9,
-   7726.7
+   7722.7,
+   7780.5
   ],
   "destek_g": [
    124.5,
    124.5
   ],
   "sure_sa": [
-   159.9,
-   161.08
+   161.02,
+   162.2
   ],
   "destekli_adet": 13,
   "destekli_tur": 9,
@@ -11526,15 +11880,15 @@
   {
    "i": 1,
    "modul": "taban",
-   "ad": "Sonar tutucu sol",
+   "ad": "Bara tutucusu yildiz barasi (GND) (5 saplama)",
    "eski_kaynak": "taban/taban-analiz.json baski[1]",
    "eski_g": [
-    5.3,
-    5.3
+    29.6,
+    29.6
    ],
    "yeni_g": [
-    5.3,
-    5.3
+    29.6,
+    29.6
    ],
    "fark_yuzde": 0.0,
    "eski_desteksiz": true,
@@ -11544,16 +11898,16 @@
    "yeni_destek_g": 0.0,
    "eski_destek_sorun": 0,
    "eski_destek_alan_mm2": null,
-   "yeni_destek_alan_mm2": 0,
+   "yeni_destek_alan_mm2": 0.0,
    "eski_olcu": [
-    61.2,
-    61.0,
-    7.6
+    109.2,
+    109.2,
+    10.0
    ],
    "yeni_olcu": [
-    61.2,
-    61.0,
-    7.6
+    109.2,
+    109.2,
+    10.0
    ],
    "eski_yontem": "katman 1 mm, onceki katman 1 mm ofset, kopru 15 mm; destek g sayilmaz",
    "buyuk": false
@@ -11561,15 +11915,15 @@
   {
    "i": 2,
    "modul": "taban",
-   "ad": "Sonar tutucu orta",
+   "ad": "Bara tutucusu anahtarli bara (+) (4 saplama)",
    "eski_kaynak": "taban/taban-analiz.json baski[2]",
    "eski_g": [
-    5.8,
-    5.8
+    24.2,
+    24.2
    ],
    "yeni_g": [
-    5.8,
-    5.8
+    24.2,
+    24.2
    ],
    "fark_yuzde": 0.0,
    "eski_desteksiz": true,
@@ -11579,16 +11933,16 @@
    "yeni_destek_g": 0.0,
    "eski_destek_sorun": 0,
    "eski_destek_alan_mm2": null,
-   "yeni_destek_alan_mm2": 0,
+   "yeni_destek_alan_mm2": 0.0,
    "eski_olcu": [
-    65.8,
-    65.8,
-    7.6
+    91.5,
+    91.5,
+    10.0
    ],
    "yeni_olcu": [
-    65.8,
-    65.8,
-    7.6
+    91.5,
+    91.5,
+    10.0
    ],
    "eski_yontem": "katman 1 mm, onceki katman 1 mm ofset, kopru 15 mm; destek g sayilmaz",
    "buyuk": false
@@ -11596,7 +11950,7 @@
   {
    "i": 3,
    "modul": "taban",
-   "ad": "Sonar tutucu sag",
+   "ad": "Sonar tutucu sol",
    "eski_kaynak": "taban/taban-analiz.json baski[3]",
    "eski_g": [
     5.3,
@@ -11630,6 +11984,76 @@
   },
   {
    "i": 4,
+   "modul": "taban",
+   "ad": "Sonar tutucu orta",
+   "eski_kaynak": "taban/taban-analiz.json baski[4]",
+   "eski_g": [
+    5.8,
+    5.8
+   ],
+   "yeni_g": [
+    5.8,
+    5.8
+   ],
+   "fark_yuzde": 0.0,
+   "eski_desteksiz": true,
+   "yeni_desteksiz": true,
+   "destek_var_yok_degisti": false,
+   "eski_destek_g": null,
+   "yeni_destek_g": 0.0,
+   "eski_destek_sorun": 0,
+   "eski_destek_alan_mm2": null,
+   "yeni_destek_alan_mm2": 0,
+   "eski_olcu": [
+    65.8,
+    65.8,
+    7.6
+   ],
+   "yeni_olcu": [
+    65.8,
+    65.8,
+    7.6
+   ],
+   "eski_yontem": "katman 1 mm, onceki katman 1 mm ofset, kopru 15 mm; destek g sayilmaz",
+   "buyuk": false
+  },
+  {
+   "i": 5,
+   "modul": "taban",
+   "ad": "Sonar tutucu sag",
+   "eski_kaynak": "taban/taban-analiz.json baski[5]",
+   "eski_g": [
+    5.3,
+    5.3
+   ],
+   "yeni_g": [
+    5.3,
+    5.3
+   ],
+   "fark_yuzde": 0.0,
+   "eski_desteksiz": true,
+   "yeni_desteksiz": true,
+   "destek_var_yok_degisti": false,
+   "eski_destek_g": null,
+   "yeni_destek_g": 0.0,
+   "eski_destek_sorun": 0,
+   "eski_destek_alan_mm2": null,
+   "yeni_destek_alan_mm2": 0,
+   "eski_olcu": [
+    61.2,
+    61.0,
+    7.6
+   ],
+   "yeni_olcu": [
+    61.2,
+    61.0,
+    7.6
+   ],
+   "eski_yontem": "katman 1 mm, onceki katman 1 mm ofset, kopru 15 mm; destek g sayilmaz",
+   "buyuk": false
+  },
+  {
+   "i": 6,
    "modul": "kabuk",
    "ad": "Govde alt bandi sag",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[0]",
@@ -11664,7 +12088,7 @@
    "buyuk": false
   },
   {
-   "i": 5,
+   "i": 7,
    "modul": "kabuk",
    "ad": "Govde alt bandi sol",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[1]",
@@ -11699,7 +12123,7 @@
    "buyuk": false
   },
   {
-   "i": 6,
+   "i": 8,
    "modul": "kabuk",
    "ad": "Govde uzatma bandi 1 sag",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[2]",
@@ -11734,7 +12158,7 @@
    "buyuk": false
   },
   {
-   "i": 7,
+   "i": 9,
    "modul": "kabuk",
    "ad": "Govde uzatma bandi 1 sol",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[3]",
@@ -11769,7 +12193,7 @@
    "buyuk": false
   },
   {
-   "i": 8,
+   "i": 10,
    "modul": "kabuk",
    "ad": "Govde uzatma bandi 2 sag",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[4]",
@@ -11804,7 +12228,7 @@
    "buyuk": false
   },
   {
-   "i": 9,
+   "i": 11,
    "modul": "kabuk",
    "ad": "Govde uzatma bandi 2 sol",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[5]",
@@ -11839,7 +12263,7 @@
    "buyuk": false
   },
   {
-   "i": 10,
+   "i": 12,
    "modul": "kabuk",
    "ad": "Govde orta bandi sag",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[6]",
@@ -11874,7 +12298,7 @@
    "buyuk": false
   },
   {
-   "i": 10,
+   "i": 12,
    "modul": "kabuk",
    "ad": "Govde orta bandi sag",
    "eski_kaynak": "lale158/kafa-yerlesim/uygulama-baski.json parca[Govde orta bandi sag]",
@@ -11909,7 +12333,7 @@
    "buyuk": false
   },
   {
-   "i": 11,
+   "i": 13,
    "modul": "kabuk",
    "ad": "Govde orta bandi sol",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[7]",
@@ -11944,7 +12368,7 @@
    "buyuk": false
   },
   {
-   "i": 12,
+   "i": 14,
    "modul": "kabuk",
    "ad": "Gogus bandi sag",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[8]",
@@ -11979,7 +12403,7 @@
    "buyuk": false
   },
   {
-   "i": 13,
+   "i": 15,
    "modul": "kabuk",
    "ad": "Gogus bandi sol",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[9]",
@@ -12014,7 +12438,7 @@
    "buyuk": false
   },
   {
-   "i": 14,
+   "i": 16,
    "modul": "kabuk",
    "ad": "Omuz bandi sag",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[10]",
@@ -12049,7 +12473,7 @@
    "buyuk": false
   },
   {
-   "i": 15,
+   "i": 17,
    "modul": "kabuk",
    "ad": "Omuz bandi sol",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[11]",
@@ -12084,7 +12508,7 @@
    "buyuk": false
   },
   {
-   "i": 16,
+   "i": 18,
    "modul": "kabuk",
    "ad": "Arka servis kapagi",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[12]",
@@ -12119,7 +12543,7 @@
    "buyuk": false
   },
   {
-   "i": 17,
+   "i": 19,
    "modul": "kabuk",
    "ad": "Ust arka servis kapagi",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[13]",
@@ -12154,7 +12578,7 @@
    "buyuk": true
   },
   {
-   "i": 17,
+   "i": 19,
    "modul": "kabuk",
    "ad": "Ust arka servis kapagi",
    "eski_kaynak": "lale158/kafa-yerlesim/uygulama-baski.json parca[Ust arka servis kapagi]",
@@ -12189,7 +12613,7 @@
    "buyuk": false
   },
   {
-   "i": 18,
+   "i": 20,
    "modul": "kabuk",
    "ad": "Etek arka sag",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[14]",
@@ -12224,7 +12648,7 @@
    "buyuk": false
   },
   {
-   "i": 19,
+   "i": 21,
    "modul": "kabuk",
    "ad": "Etek arka sol",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[15]",
@@ -12259,7 +12683,7 @@
    "buyuk": false
   },
   {
-   "i": 20,
+   "i": 22,
    "modul": "kabuk",
    "ad": "Etek orta sag",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[16]",
@@ -12294,7 +12718,7 @@
    "buyuk": false
   },
   {
-   "i": 21,
+   "i": 23,
    "modul": "kabuk",
    "ad": "Etek orta sol",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[17]",
@@ -12329,7 +12753,7 @@
    "buyuk": false
   },
   {
-   "i": 22,
+   "i": 24,
    "modul": "kabuk",
    "ad": "Etek on sag",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[18]",
@@ -12364,7 +12788,7 @@
    "buyuk": false
   },
   {
-   "i": 23,
+   "i": 25,
    "modul": "kabuk",
    "ad": "Etek on sol",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[19]",
@@ -12399,7 +12823,7 @@
    "buyuk": false
   },
   {
-   "i": 24,
+   "i": 26,
    "modul": "kabuk",
    "ad": "Etek dolgu seridi arka",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[20]",
@@ -12434,7 +12858,7 @@
    "buyuk": false
   },
   {
-   "i": 25,
+   "i": 27,
    "modul": "kabuk",
    "ad": "Etek dolgu seridi on",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[21]",
@@ -12469,7 +12893,7 @@
    "buyuk": false
   },
   {
-   "i": 26,
+   "i": 28,
    "modul": "kabuk",
    "ad": "Etek servis kapagi H1 (sigorta kutusu)",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[22]",
@@ -12504,7 +12928,7 @@
    "buyuk": false
   },
   {
-   "i": 27,
+   "i": 29,
    "modul": "kabuk",
    "ad": "Etek servis kapagi H2 (ana sigorta)",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[23]",
@@ -12539,7 +12963,7 @@
    "buyuk": false
   },
   {
-   "i": 28,
+   "i": 30,
    "modul": "kabuk",
    "ad": "Gogus ekrani cercevesi sag",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[24]",
@@ -12574,7 +12998,7 @@
    "buyuk": false
   },
   {
-   "i": 29,
+   "i": 31,
    "modul": "kabuk",
    "ad": "Gogus ekrani cercevesi sol",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[25]",
@@ -12609,7 +13033,7 @@
    "buyuk": false
   },
   {
-   "i": 30,
+   "i": 32,
    "modul": "kabuk",
    "ad": "Gogus ekrani VESA tasiyici",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[26]",
@@ -12644,7 +13068,7 @@
    "buyuk": true
   },
   {
-   "i": 31,
+   "i": 33,
    "modul": "kabuk",
    "ad": "S1 kaset govdesi sag",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[27]",
@@ -12679,7 +13103,7 @@
    "buyuk": false
   },
   {
-   "i": 32,
+   "i": 34,
    "modul": "kabuk",
    "ad": "S1 kaset kapagi sag",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[28]",
@@ -12714,7 +13138,7 @@
    "buyuk": false
   },
   {
-   "i": 33,
+   "i": 35,
    "modul": "kabuk",
    "ad": "S1 kaset govdesi sol",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[29]",
@@ -12749,7 +13173,7 @@
    "buyuk": false
   },
   {
-   "i": 34,
+   "i": 36,
    "modul": "kabuk",
    "ad": "S1 kaset kapagi sol",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[30]",
@@ -12784,7 +13208,7 @@
    "buyuk": false
   },
   {
-   "i": 35,
+   "i": 37,
    "modul": "kabuk",
    "ad": "Hoparlor kabi on halka",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[31]",
@@ -12819,7 +13243,7 @@
    "buyuk": false
   },
   {
-   "i": 35,
+   "i": 37,
    "modul": "kabuk",
    "ad": "Hoparlor kabi on halka",
    "eski_kaynak": "lale158/kafa-yerlesim/uygulama-baski.json parca[Hoparlor kabi on halka]",
@@ -12854,7 +13278,7 @@
    "buyuk": false
   },
   {
-   "i": 36,
+   "i": 38,
    "modul": "kabuk",
    "ad": "Hoparlor kabi arka (flansli)",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[32]",
@@ -12889,7 +13313,7 @@
    "buyuk": false
   },
   {
-   "i": 36,
+   "i": 38,
    "modul": "kabuk",
    "ad": "Hoparlor kabi arka (flansli)",
    "eski_kaynak": "lale158/kafa-yerlesim/uygulama-baski.json parca[Hoparlor kabi arka (flansli)]",
@@ -12924,7 +13348,7 @@
    "buyuk": false
   },
   {
-   "i": 37,
+   "i": 39,
    "modul": "kabuk",
    "ad": "Hoparlor kelepcesi",
    "eski_kaynak": "kabuk/kabuk-analiz.json baski[33]",
@@ -12959,7 +13383,7 @@
    "buyuk": false
   },
   {
-   "i": 38,
+   "i": 40,
    "modul": "kafa",
    "ad": "Servo yuvasi",
    "eski_kaynak": "kafa/kafa-analiz.json baski[0]",
@@ -12994,7 +13418,7 @@
    "buyuk": false
   },
   {
-   "i": 39,
+   "i": 41,
    "modul": "kafa",
    "ad": "Rulman yuvasi",
    "eski_kaynak": "kafa/kafa-analiz.json baski[1]",
@@ -13029,7 +13453,7 @@
    "buyuk": false
   },
   {
-   "i": 40,
+   "i": 42,
    "modul": "kafa",
    "ad": "Boyun mili",
    "eski_kaynak": "kafa/kafa-analiz.json baski[2]",
@@ -13064,7 +13488,7 @@
    "buyuk": false
   },
   {
-   "i": 41,
+   "i": 43,
    "modul": "kafa",
    "ad": "Egme catali",
    "eski_kaynak": "kafa/kafa-analiz.json baski[3]",
@@ -13099,7 +13523,7 @@
    "buyuk": false
   },
   {
-   "i": 42,
+   "i": 44,
    "modul": "kafa",
    "ad": "Boyun yukseltme adaptoru",
    "eski_kaynak": "kafa/kafa-analiz.json baski[4]",
@@ -13134,7 +13558,7 @@
    "buyuk": false
   },
   {
-   "i": 43,
+   "i": 45,
    "modul": "kafa",
    "ad": "Yuz kabugu (on) sag",
    "eski_kaynak": "kafa/kafa-analiz.json baski[5]",
@@ -13169,7 +13593,7 @@
    "buyuk": false
   },
   {
-   "i": 44,
+   "i": 46,
    "modul": "kafa",
    "ad": "Yuz kabugu (on) sol",
    "eski_kaynak": "kafa/kafa-analiz.json baski[6]",
@@ -13204,7 +13628,7 @@
    "buyuk": false
   },
   {
-   "i": 45,
+   "i": 47,
    "modul": "kafa",
    "ad": "Arka kafa kabugu sag",
    "eski_kaynak": "kafa/kafa-analiz.json baski[7]",
@@ -13239,7 +13663,7 @@
    "buyuk": false
   },
   {
-   "i": 46,
+   "i": 48,
    "modul": "kafa",
    "ad": "Arka kafa kabugu sol",
    "eski_kaynak": "kafa/kafa-analiz.json baski[8]",
@@ -13274,7 +13698,7 @@
    "buyuk": false
   },
   {
-   "i": 47,
+   "i": 49,
    "modul": "kafa",
    "ad": "Kafa iskeleti",
    "eski_kaynak": "kafa/kafa-analiz.json baski[9]",
@@ -13309,7 +13733,7 @@
    "buyuk": false
   },
   {
-   "i": 48,
+   "i": 50,
    "modul": "kafa",
    "ad": "Ekran tirnagi ust sag",
    "eski_kaynak": "kafa/kafa-analiz.json baski[10]",
@@ -13344,7 +13768,7 @@
    "buyuk": false
   },
   {
-   "i": 49,
+   "i": 51,
    "modul": "kafa",
    "ad": "Ekran tirnagi ust sol",
    "eski_kaynak": "kafa/kafa-analiz.json baski[11]",
@@ -13379,7 +13803,7 @@
    "buyuk": false
   },
   {
-   "i": 50,
+   "i": 52,
    "modul": "kafa",
    "ad": "Ekran tirnagi alt sag",
    "eski_kaynak": "kafa/kafa-analiz.json baski[12]",
@@ -13414,7 +13838,7 @@
    "buyuk": false
   },
   {
-   "i": 51,
+   "i": 53,
    "modul": "kafa",
    "ad": "Ekran tirnagi alt sol",
    "eski_kaynak": "kafa/kafa-analiz.json baski[13]",
@@ -13449,7 +13873,7 @@
    "buyuk": false
   },
   {
-   "i": 52,
+   "i": 54,
    "modul": "dirsek",
    "ad": "Dirsek catali",
    "eski_kaynak": "dirsek/dirsek-analiz.json baski[0]",
@@ -13484,7 +13908,7 @@
    "buyuk": false
   },
   {
-   "i": 53,
+   "i": 55,
    "modul": "dirsek",
    "ad": "On kol govdesi",
    "eski_kaynak": "dirsek/dirsek-analiz.json baski[1]",
@@ -13519,7 +13943,7 @@
    "buyuk": false
   },
   {
-   "i": 54,
+   "i": 56,
    "modul": "dirsek",
    "ad": "Bilek flansi",
    "eski_kaynak": "dirsek/dirsek-analiz.json baski[2]",
@@ -13554,7 +13978,7 @@
    "buyuk": false
   },
   {
-   "i": 55,
+   "i": 57,
    "modul": "dirsek",
    "ad": "El",
    "eski_kaynak": "dirsek/dirsek-analiz.json baski[3]",
@@ -13589,7 +14013,7 @@
    "buyuk": false
   },
   {
-   "i": 56,
+   "i": 58,
    "modul": "omuz",
    "ad": "Omuz yuvasi",
    "eski_kaynak": "omuz/omuz-baski.json parcalar[0]",
@@ -13624,7 +14048,7 @@
    "buyuk": false
   },
   {
-   "i": 56,
+   "i": 58,
    "modul": "omuz",
    "ad": "Omuz yuvasi",
    "eski_kaynak": "omuz/omuz-analiz.json baski[0]",
@@ -13659,7 +14083,7 @@
    "buyuk": false
   },
   {
-   "i": 57,
+   "i": 59,
    "modul": "omuz",
    "ad": "Rulman kapagi",
    "eski_kaynak": "omuz/omuz-baski.json parcalar[1]",
@@ -13694,7 +14118,7 @@
    "buyuk": false
   },
   {
-   "i": 57,
+   "i": 59,
    "modul": "omuz",
    "ad": "Rulman kapagi",
    "eski_kaynak": "omuz/omuz-analiz.json baski[1]",
@@ -13729,7 +14153,7 @@
    "buyuk": false
   },
   {
-   "i": 58,
+   "i": 60,
    "modul": "omuz",
    "ad": "Omuz gobegi",
    "eski_kaynak": "omuz/omuz-baski.json parcalar[2]",
@@ -13764,7 +14188,7 @@
    "buyuk": false
   },
   {
-   "i": 58,
+   "i": 60,
    "modul": "omuz",
    "ad": "Omuz gobegi",
    "eski_kaynak": "omuz/omuz-analiz.json baski[2]",
@@ -13799,7 +14223,7 @@
    "buyuk": false
   },
   {
-   "i": 59,
+   "i": 61,
    "modul": "omuz",
    "ad": "S1 kablo tamburu",
    "eski_kaynak": "omuz/omuz-baski.json parcalar[3]",
@@ -13834,7 +14258,7 @@
    "buyuk": false
   },
   {
-   "i": 59,
+   "i": 61,
    "modul": "omuz",
    "ad": "S1 kablo tamburu",
    "eski_kaynak": "omuz/omuz-analiz.json baski[3]",
@@ -13869,7 +14293,7 @@
    "buyuk": false
   },
   {
-   "i": 60,
+   "i": 62,
    "modul": "omuz",
    "ad": "Kol catali",
    "eski_kaynak": "omuz/omuz-baski.json parcalar[4]",
@@ -13904,7 +14328,7 @@
    "buyuk": false
   },
   {
-   "i": 60,
+   "i": 62,
    "modul": "omuz",
    "ad": "Kol catali",
    "eski_kaynak": "omuz/omuz-analiz.json baski[4]",
@@ -13939,7 +14363,7 @@
    "buyuk": false
   },
   {
-   "i": 61,
+   "i": 63,
    "modul": "omuz",
    "ad": "Ust kol tupu",
    "eski_kaynak": "omuz/omuz-baski.json parcalar[5]",
@@ -13974,7 +14398,7 @@
    "buyuk": false
   },
   {
-   "i": 61,
+   "i": 63,
    "modul": "omuz",
    "ad": "Ust kol tupu",
    "eski_kaynak": "omuz/omuz-analiz.json baski[5]",

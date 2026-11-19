@@ -2228,8 +2228,8 @@
    "kutle_g": 218.52,
    "hacim_mm3": 191182.5,
    "merkez": [
-    87.664,
-    190.462,
+    87.668,
+    190.481,
     -31.415
    ],
    "bb": [
@@ -2257,8 +2257,8 @@
    "kutle_g": 205.11,
    "hacim_mm3": 179452.2,
    "merkez": [
-    -93.321,
-    188.357,
+    -93.322,
+    188.356,
     -30.642
    ],
    "bb": [
@@ -2721,15 +2721,15 @@
    "kutle_g": 0.27,
    "hacim_mm3": 31.3,
    "merkez": [
-    -8.0,
-    248.878,
+    -5.0,
+    264.878,
     -60.793
    ],
    "bb": [
-    -10.0,
-    -6.0,
-    246.88,
-    250.88,
+    -7.0,
+    -3.0,
+    262.88,
+    266.88,
     -63.64,
     -57.94
    ],
@@ -2750,15 +2750,15 @@
    "kutle_g": 0.63,
    "hacim_mm3": 80.8,
    "merkez": [
-    -8.0,
-    248.878,
+    -5.0,
+    264.878,
     -63.747
    ],
    "bb": [
-    -10.85,
-    -5.15,
-    246.03,
-    251.73,
+    -7.85,
+    -2.15,
+    262.03,
+    267.73,
     -66.59,
     -58.94
    ],
@@ -4250,25 +4250,25 @@
   },
   {
    "i": 146,
-   "ad": "Kopuk bant (USB ses karti)",
+   "ad": "Kopuk bant (TVS Pi hatti)",
    "grup": "Kafa",
    "tur": "Satin",
    "malzeme": "Kopuk",
    "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
-   "kutle_g": 0.12,
-   "hacim_mm3": 1152.0,
+   "kutle_g": 0.0,
+   "hacim_mm3": 27.4,
    "merkez": [
-    -132.0,
-    235.878,
-    -9.0
+    -80.0,
+    221.378,
+    45.0
    ],
    "bb": [
-    -132.5,
-    -131.5,
-    223.88,
-    247.88,
-    -33.0,
-    15.0
+    -83.8,
+    -76.2,
+    220.88,
+    221.88,
+    43.2,
+    46.8
    ],
    "patlat": [
     0,
@@ -4279,32 +4279,32 @@
   },
   {
    "i": 147,
-   "ad": "USB ses karti",
+   "ad": "TVS P6KE6V8A Pi hatti",
    "grup": "Kafa",
    "tur": "Satin",
    "malzeme": "-",
-   "kod": "USB ses karti (PAM8403 girisi; olcu VARSAYIM, fotograftan)",
-   "kutle_g": 8.0,
-   "hacim_mm3": 12672.0,
+   "kod": "P6KE6V8A TVS (Pi 5 V hatti, D24V50F5 cikisi, K51 a)",
+   "kutle_g": 1.0,
+   "hacim_mm3": 77.4,
    "merkez": [
-    -126.0,
-    235.878,
-    -9.0
+    -80.0,
+    223.678,
+    45.0
    ],
    "bb": [
-    -131.5,
-    -120.5,
-    223.88,
-    247.88,
-    -33.0,
-    15.0
+    -83.8,
+    -76.2,
+    221.88,
+    225.48,
+    43.2,
+    46.8
    ],
    "patlat": [
     0,
     140,
     0
    ],
-   "not_": "yan duvarda kopuk bant + kablo bagi; kutle ve (ses karti, PAM8403) olcu TAHMIN"
+   "not_": "tablada kopuk bant + kablo bagi"
   },
   {
    "i": 148,
@@ -4845,8 +4845,8 @@
     "SY8205 kafa ekrani 5 V",
     "Kopuk bant (TVS)",
     "TVS P6KE6V8A kafa ekrani",
-    "Kopuk bant (USB ses karti)",
-    "USB ses karti",
+    "Kopuk bant (TVS Pi hatti)",
+    "TVS P6KE6V8A Pi hatti",
     "Kopuk bant (PAM8403 amfi)",
     "PAM8403 amfi",
     "ReSpeaker Mic Array v2.0",
@@ -4955,7 +4955,7 @@
  "gecersiz": [],
  "coklu_kati": [],
  "statik": [],
- "cift_sayisi": 498,
+ "cift_sayisi": 499,
  "tolerans_mm3": 0.5,
  "baglanti_kontrol": [
   {
@@ -6327,7 +6327,7 @@
      true
     ],
     [
-     "USB ses karti -> arka kabuk yan duvari: USB ses karti <-> Arka kafa kabugu sol, Kopuk bant (USB ses karti) uzerinden dayali",
+     "TVS P6KE6V8A Pi hatti -> kafa tablasi: TVS P6KE6V8A Pi hatti <-> Kafa iskeleti, Kopuk bant (TVS Pi hatti) uzerinden dayali",
      0.0,
      true
     ],
@@ -13118,62 +13118,6 @@
     "not_": "micro USB fis zarfi VARSAYIM"
    },
    {
-    "ad": "Ses karti USB-A fisi",
-    "bb": [
-     -131.5,
-     -127.0,
-     229.88,
-     241.88,
-     -45.0,
-     -33.0
-    ],
-    "kesisim": [],
-    "pan_mm": 113.52,
-    "not_": "USB-A fis, L USB dirsek, uzatma disi ucu, L 3,5 mm fis zarflari VARSAYIM; urun secilmedi; listede yok"
-   },
-   {
-    "ad": "L USB dirsek",
-    "bb": [
-     -131.5,
-     -119.5,
-     226.88,
-     244.88,
-     -61.0,
-     -45.0
-    ],
-    "kesisim": [],
-    "pan_mm": 113.04,
-    "not_": "USB-A fis, L USB dirsek, uzatma disi ucu, L 3,5 mm fis zarflari VARSAYIM; urun secilmedi; listede yok"
-   },
-   {
-    "ad": "USB uzatma disi ucu",
-    "bb": [
-     -119.5,
-     -89.5,
-     226.88,
-     244.88,
-     -58.5,
-     -47.5
-    ],
-    "kesisim": [],
-    "pan_mm": 90.8,
-    "not_": "USB-A fis, L USB dirsek, uzatma disi ucu, L 3,5 mm fis zarflari VARSAYIM; urun secilmedi; listede yok"
-   },
-   {
-    "ad": "L 3,5 mm fis",
-    "bb": [
-     -131.5,
-     -121.5,
-     225.88,
-     235.88,
-     15.0,
-     31.0
-    ],
-    "kesisim": [],
-    "pan_mm": 92.31,
-    "not_": "USB-A fis, L USB dirsek, uzatma disi ucu, L 3,5 mm fis zarflari VARSAYIM; urun secilmedi; listede yok"
-   },
-   {
     "ad": "Fan yeri 30x30x10 (listede yok)",
     "bb": [
      12.5,
@@ -13211,8 +13155,8 @@
  },
  "tork": {
   "tilt": {
-   "kutle_g": 1570.8,
-   "kutle_parca_g": 1476.4,
+   "kutle_g": 1542.7,
+   "kutle_parca_g": 1469.3,
    "kablo_payi": {
     "kutle_g": 59.0,
     "merkez": [
@@ -13244,16 +13188,6 @@
      ]
     },
     {
-     "ad": "Ses karti uzatmasi",
-     "yol_mm": 217.0,
-     "kutle_g": 6.5,
-     "nokta": [
-      -19.497614406507797,
-      245.04128674796607,
-      -2.3477504459642784
-     ]
-    },
-    {
      "ad": "Dizi USB",
      "yol_mm": 85.0,
      "kutle_g": 2.5,
@@ -13261,16 +13195,6 @@
       80.84102198881021,
       254.5584929201441,
       -7.186642584218746
-     ]
-    },
-    {
-     "ad": "3,5 mm -> PAM",
-     "yol_mm": 36.0,
-     "kutle_g": 0.5,
-     "nokta": [
-      -124.24893522164894,
-      245.37161132989354,
-      23.90127773402126
      ]
     },
     {
@@ -13282,121 +13206,91 @@
       243.68321802090827,
       10.907204114481553
      ]
-    },
-    {
-     "ad": "L USB dirsek",
-     "yol_mm": null,
-     "kutle_g": 5.0,
-     "nokta": [
-      -125.5,
-      235.878,
-      -53.0
-     ]
-    },
-    {
-     "ad": "USB uzatma disi ucu",
-     "yol_mm": null,
-     "kutle_g": 6.0,
-     "nokta": [
-      -104.5,
-      235.878,
-      -53.0
-     ]
-    },
-    {
-     "ad": "L 3,5 mm fis",
-     "yol_mm": null,
-     "kutle_g": 3.0,
-     "nokta": [
-      -126.5,
-      230.878,
-      23.0
-     ]
     }
    ],
-   "statik_tilt15_kgcm": 0.152,
-   "toplam_tilt15_kgcm": 2.583,
-   "pay_tilt15": 3.64,
-   "pay_iki_hane": 3.65,
-   "statik_iki_yon_kgcm": 0.143,
+   "statik_tilt15_kgcm": 0.093,
+   "toplam_tilt15_kgcm": 2.484,
+   "pay_tilt15": 3.78,
+   "pay_iki_hane": 3.8,
+   "statik_iki_yon_kgcm": 0.086,
    "am": [
-    0.29,
-    190.73,
-    24.5
+    2.09,
+    189.88,
+    25.35
    ],
    "eksen": [
     188.878,
     25.0
    ],
-   "am_eksen_mm": 1.9,
-   "yercekimi_max_kgcm": 0.14,
-   "yercekimi_max_th": -13,
-   "tam_tur_max_kgcm": 0.3,
-   "I_kgm2": 0.009107,
+   "am_eksen_mm": 1.1,
+   "yercekimi_max_kgcm": 0.09,
+   "yercekimi_max_th": 12,
+   "tam_tur_max_kgcm": 0.16,
+   "I_kgm2": 0.008959,
    "alfa_rad_s2": 26.2,
-   "ivme_kgcm": 2.43,
-   "toplam_kgcm": 2.57,
+   "ivme_kgcm": 2.391,
+   "toplam_kgcm": 2.48,
    "stall_kgcm": 9.4,
-   "pay": 3.65,
+   "pay": 3.8,
    "egri": [
     {
      "th": -13,
-     "yercekimi_kgcm": -0.143
+     "yercekimi_kgcm": 0.018
     },
     {
      "th": -8,
-     "yercekimi_kgcm": -0.119
+     "yercekimi_kgcm": 0.032
     },
     {
      "th": -3,
-     "yercekimi_kgcm": -0.094
+     "yercekimi_kgcm": 0.046
     },
     {
      "th": 2,
-     "yercekimi_kgcm": -0.069
+     "yercekimi_kgcm": 0.06
     },
     {
      "th": 7,
-     "yercekimi_kgcm": -0.043
+     "yercekimi_kgcm": 0.073
     },
     {
      "th": 12,
-     "yercekimi_kgcm": -0.017
+     "yercekimi_kgcm": 0.086
     }
    ],
    "mesnet": {
     "x_625": -26.7,
     "x_horn": 28.55,
-    "horn_payi": 0.488,
-    "horn_N": 7.53,
-    "pim_N": 7.88
+    "horn_payi": 0.521,
+    "horn_N": 7.88,
+    "pim_N": 7.25
    }
   },
   "pan": {
-   "kutle_g": 1849.3,
+   "kutle_g": 1821.2,
    "am": [
-    0.32,
-    182.16,
-    21.84
+    1.84,
+    181.31,
+    22.53
    ],
    "I_kgm2": {
-    "-13.0": 0.014681,
-    "0": 0.014299,
-    "13.0": 0.0141
+    "-13.0": 0.01431,
+    "0": 0.013941,
+    "13.0": 0.013753
    },
    "alfa_rad_s2": 26.2,
-   "ivme_kgcm": 3.918,
-   "rulman_kgcm": 0.0317,
+   "ivme_kgcm": 3.819,
+   "rulman_kgcm": 0.0321,
    "kablo_kgcm": 0.31,
-   "toplam_kgcm": 4.255,
+   "toplam_kgcm": 4.157,
    "stall_kgcm": 9.4,
-   "pay": 2.2,
-   "pay_iki_hane": 2.21,
+   "pay": 2.3,
+   "pay_iki_hane": 2.26,
    "rulman": {
-    "eksenel_N": 18.14,
-    "devirme_Nm": 0.3963,
+    "eksenel_N": 17.87,
+    "devirme_Nm": 0.4038,
     "rulman_arasi_mm": 11.0,
-    "radyal_N": 36.0,
+    "radyal_N": 36.7,
     "not_": "6808: eksenel yuk ust rulmanda (mil omzu -> ic bilezik -> dis bilezik -> yuva tablasi); devirme momenti iki rulmanda kuvvet cifti; pan servosu mili yalniz dondurur"
    }
   },
@@ -13421,11 +13315,11 @@
    ]
   },
   "Kafa": {
-   "m": 1476.4,
+   "m": 1469.3,
    "am": [
-    0.376,
-    190.051,
-    24.766
+    1.022,
+    189.834,
+    24.966
    ]
   }
  },
@@ -13656,7 +13550,7 @@
    "destek_sorun": [
     {
      "z": 2.5,
-     "alan": 2723.2,
+     "alan": 2727.3,
      "boy": 200.4,
      "robot": [
       -8.5,
@@ -13879,17 +13773,17 @@
    246.0
   ]
  },
- "kutle_g": 2088.5,
+ "kutle_g": 2081.4,
  "kutle_tur": {
   "Imalat": 42.9,
   "Baski": 1027.9,
-  "Satin": 907.2,
+  "Satin": 900.1,
   "Baglanti": 110.5
  },
  "agirlik_merkezi": [
-  0.347,
-  156.441,
-  19.449
+  0.803,
+  156.172,
+  19.573
  ],
  "bom": [
   [
@@ -14124,7 +14018,7 @@
    "Satin",
    "Cift tarafli kopuk bant 1 mm (VHB)",
    9,
-   0.3
+   0.2
   ],
   [
    "Satin",
@@ -14137,6 +14031,12 @@
    "MG996R servo",
    2,
    110.0
+  ],
+  [
+   "Satin",
+   "P6KE6V8A TVS (Pi 5 V hatti, D24V50F5 cikisi, K51 a)",
+   1,
+   1.0
   ],
   [
    "Satin",
@@ -14177,12 +14077,6 @@
   [
    "Satin",
    "SY8205 5 V dusurucu kart (kafa ekrani ayri hat)",
-   1,
-   8.0
-  ],
-  [
-   "Satin",
-   "USB ses karti (PAM8403 girisi; olcu VARSAYIM, fotograftan)",
    1,
    8.0
   ],
@@ -14413,5 +14307,5 @@
   "not_": "1,58 m: Govde/Pan olculeri kafa7 (125 cm) ile ayni; Bas (10,1 in QLED) olculeri kafa10_lib (Bas cercevesi = tilt ekseni)"
  },
  "kablo_yolu": [],
- "sure_s": 213.3
+ "sure_s": 228.4
 }

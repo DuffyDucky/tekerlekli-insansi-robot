@@ -112,18 +112,18 @@
     0.0
    ],
    "ayna": false,
-   "parca": 355,
+   "parca": 401,
    "haric": [
     "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)",
     "Kablo yolu 1: 12 V ana hat: aku + -> XT60 -> ana sigorta 30 A -> ana anahtar -> sigorta kutusu",
-    "Kablo yolu 2: Toprak: aku - -> WAGO yildiz noktasi (guc paneli) -> tum donusturuculer",
-    "Kablo yolu 3: Motor 12 V: F1 20 A -> role -> WAGO -> BTS7960 sol/sag -> motor kablo delikleri -> 4 motor",
-    "Kablo yolu 4: Motor 12 V sag kol + arka motorlar (plaka altindan z 36 deliginden)",
-    "Kablo yolu 5: Servo 6 V A (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol",
+    "Kablo yolu 2: Toprak: aku - -> yildiz barasi 3. saplama (guc paneli) -> tum donusturuculer",
+    "Kablo yolu 3: Motor 12 V: F1 20 A -> role K1 -> anahtarli bara 3. saplama (kopru) 1. saplama -> BTS7960 sol -> on sol motor",
+    "Kablo yolu 4: Motor 12 V sag kol + arka motorlar: anahtarli bara / yildiz 2. saplama -> BTS7960 sag (plaka altindan z 36 deliginden)",
+    "Kablo yolu 5: Servo 6 V A (E1): anahtarli bara / yildiz 1. saplama -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol",
     "Kablo yolu 6: Servo uzatmalari kafaya: pan + tilt (hat C, XL4016 C guc panelinde; direk ustu, R62 halkasindan)",
-    "Kablo yolu 7: Servo 6 V B (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol",
-    "Kablo yolu 8: Kafa 12 V (K4/E4): F3 5 A -> 18 AWG cift -> direk on yuzu -> R62 -> kafada 5 V/5,5 A cevirici (Pi 5, LCD)",
-    "Kablo yolu 9: Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)",
+    "Kablo yolu 7: Servo 6 V B (E1): anahtarli bara / yildiz 1. saplama -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol",
+    "Kablo yolu 8: Kafa 12 V (K4/E4): F3 5 A + yildiz 4. saplama -> 18 AWG cift -> direk on yuzu -> R62 -> kafada 5 V/5,5 A cevirici (Pi 5, LCD)",
+    "Kablo yolu 9: Cevre 5 V: F4 5 A + yildiz 4. saplama -> XL4016 cevre -> ESP32 / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)",
     "Kablo yolu 10: Acil stop (E3): F5 -> mantar (NC) -> role bobini -> MOSFET (arayuz karti, ESP32 'devreye al') ; PC817 mantar sonrasi gerilimi okur",
     "Kablo yolu 11: Sinyal: sonar x3 -> arayuz karti bolucu (4,7k/10k) -> ESP32 (on ara ray ustunden)",
     "Kablo yolu 12: Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (VBUS hattinda seri 1N5819)"
@@ -156,7 +156,7 @@
   }
  ],
  "ev_pozu_cakisma": [],
- "ev_pozu_kesisen_cift": 821,
+ "ev_pozu_kesisen_cift": 868,
  "ev_pozu_poz": {
   "one_arka": 0.0,
   "yana": 5.0,
@@ -8980,7 +8980,7 @@
    "yakin_aralikta": [],
    "yakin_aralikta_sayi": 0,
    "bosluk_notu": "olculmeyen ciftlerin boslugu >= 150 mm (sinir kutusu); YAKIN = 5 mm altindaki her aday tam olculdu",
-   "sure_s": 169.6
+   "sure_s": 153.9
   },
   "sol": {
    "taraf": "sol",
@@ -12309,7 +12309,7 @@
    "yakin_aralikta": [],
    "yakin_aralikta_sayi": 0,
    "bosluk_notu": "olculmeyen ciftlerin boslugu >= 150 mm (sinir kutusu); YAKIN = 5 mm altindaki her aday tam olculdu",
-   "sure_s": 169.4
+   "sure_s": 152.3
   }
  },
  "kol_kol": {
@@ -18610,7 +18610,7 @@
     "kutu_bosluk_min": 290.0
    }
   ],
-  "sure_s": 44.5,
+  "sure_s": 40.8,
   "not_": "hareketli: iki kolun omuz gobegi + ust kol (omuz) + dirsek parcalari; poz = (one-arka, yana, dirsek, bilek), sol kolda ayni acilar aynali hareket"
  },
  "kafa_tarama": {
@@ -19153,14 +19153,14 @@
      "aralikta": true
     }
    ],
-   "sure_s": 95.5
+   "sure_s": 88.6
   },
   "kol": {
    "sag": {
     "kol_alt_oge": 40050,
     "zarfa_yakin_alt_oge": 5580,
     "kafa_oge": 15633,
-    "aday": 909085,
+    "aday": 891857,
     "ince_aday": 0,
     "ince_tur": 0,
     "ince_isaretli": 0,
@@ -19953,13 +19953,13 @@
       "cakisan_kafa_poz": []
      }
     ],
-    "sure_s": 468.2
+    "sure_s": 396.2
    },
    "sol": {
     "kol_alt_oge": 40050,
     "zarfa_yakin_alt_oge": 5580,
     "kafa_oge": 15633,
-    "aday": 906843,
+    "aday": 889537,
     "ince_aday": 0,
     "ince_tur": 0,
     "ince_isaretli": 0,
@@ -20752,11 +20752,11 @@
       "cakisan_kafa_poz": []
      }
     ],
-    "sure_s": 458.8
+    "sure_s": 393.0
    }
   },
   "not_": "kafa pozu = (pan, tilt); kol pozu = (one-arka, yana, dirsek, bilek); alt poz: kafa Govde (), Pan (pan), Kafa (pan, tilt); kol Gobek (one-arka), Kol/UstKol (one-arka, yana), OnKol (+dirsek), El (+bilek). Eklem araligi: kafa pan +-90, tilt -25...30 ve kol araligi; aralik disi = kafa pan +-90 disi ya da tilt 40 (serbest -25...40) ya da kol ince komsulugu disi. Olculmeyen ciftlerin boslugu >= 100 mm (sinir kutusu).",
-  "sure_s": 1023.0
+  "sure_s": 878.3
  },
  "taban_tarama": {
   "statik": {
@@ -20810,7 +20810,7 @@
     "tam_olcum": 1
    },
    "kabuk": {
-    "kutu_kesisen": 422,
+    "kutu_kesisen": 469,
     "cakisma": [],
     "temas": 1,
     "temas_ornek": [
@@ -20821,7 +20821,7 @@
      "Acil stop mantari + bilezik",
      "Etek arka sag"
     ],
-    "tam_olcum": 124
+    "tam_olcum": 143
    },
    "dirsek_sag": {
     "kutu_kesisen": 0,
@@ -21051,7 +21051,7 @@
      "not_": "siki tutucu kutunun alt siniri (gercek nokta en cok ~0,5 mm yukarida)"
     },
     "taban_en_ust_y_mm": 290.0,
-    "sure_s": 6.2
+    "sure_s": 6.8
    },
    "sol": {
     "poz": {
@@ -21243,7 +21243,7 @@
      "not_": "siki tutucu kutunun alt siniri (gercek nokta en cok ~0,5 mm yukarida)"
     },
     "taban_en_ust_y_mm": 290.0,
-    "sure_s": 6.3
+    "sure_s": 6.7
    }
   },
   "kafa": {
@@ -21269,10 +21269,10 @@
    "sonar",
    "taban diger"
   ],
-  "hedef_sayisi": 359,
+  "hedef_sayisi": 405,
   "yakin_mm": 5.0,
   "not_": "kol pozu = (one-arka, yana, dirsek, bilek); aralik disi halka omuz -60 / 150, yana -10. Hedef: taban parcalari (kablo yolu semalari haric), ana anahtar dugmesi gosterimi, kabuk etek parcalari. Bulunan en kucugun otesindeki ciftler olculmedi (siki kutu boslugu alt sinir).",
-  "sure_s": 23.7
+  "sure_s": 25.2
  },
  "toplam": {
   "cakisma": 364,
@@ -21294,27 +21294,27 @@
   "kabuk": 7170.4,
   "dirsek_sag": 400.5,
   "dirsek_sol": 400.5,
-  "kafa": 2088.5,
-  "taban": 8109.8
+  "kafa": 2081.4,
+  "taban": 8231.4
  },
- "kutle_toplam_g": 25720.6,
+ "kutle_toplam_g": 25835.1,
  "agirlik_merkezi": [
-  -0.03,
-  528.59,
-  -9.25
+  0.01,
+  526.72,
+  -9.59
  ],
  "tolerans_mm3": 0.5,
- "sure_s": 14073.7,
+ "sure_s": 13139.1,
  "bolumler": {
   "statik": {
    "durum": "tamam",
-   "kosu": "20261109-084522",
-   "baslangic": "2026-11-09T10:06:29",
-   "bitis": "2026-11-09T10:06:41",
-   "sure_s": 12.2,
-   "yukleme_s": 61.2,
-   "tepe_bellek_mb": 733,
-   "tepe_sayfa_mb": 2641,
+   "kosu": "20261119-075818",
+   "baslangic": "2026-11-19T07:59:18",
+   "bitis": "2026-11-19T07:59:31",
+   "sure_s": 12.9,
+   "yukleme_s": 58.8,
+   "tepe_bellek_mb": 736,
+   "tepe_sayfa_mb": 2642,
    "ayni_surec": [
     "statik"
    ],
@@ -21331,13 +21331,13 @@
   },
   "omuz": {
    "durum": "tamam",
-   "kosu": "20261109-084522",
-   "baslangic": "2026-11-09T10:36:16",
-   "bitis": "2026-11-09T14:00:08",
-   "sure_s": 12231.7,
-   "yukleme_s": 60.7,
-   "tepe_bellek_mb": 747,
-   "tepe_sayfa_mb": 2655,
+   "kosu": "20261119-075818",
+   "baslangic": "2026-11-19T08:00:30",
+   "bitis": "2026-11-19T11:11:59",
+   "sure_s": 11488.7,
+   "yukleme_s": 58.7,
+   "tepe_bellek_mb": 739,
+   "tepe_sayfa_mb": 2648,
    "ayni_surec": [
     "omuz"
    ],
@@ -21351,13 +21351,13 @@
   },
   "kol_sag": {
    "durum": "tamam",
-   "kosu": "20261109-084522",
-   "baslangic": "2026-11-09T10:07:41",
-   "bitis": "2026-11-09T10:10:31",
-   "sure_s": 169.6,
-   "yukleme_s": 59.1,
-   "tepe_bellek_mb": 748,
-   "tepe_sayfa_mb": 2659,
+   "kosu": "20261119-075818",
+   "baslangic": "2026-11-19T11:12:57",
+   "bitis": "2026-11-19T11:15:31",
+   "sure_s": 153.9,
+   "yukleme_s": 57.5,
+   "tepe_bellek_mb": 743,
+   "tepe_sayfa_mb": 2653,
    "ayni_surec": [
     "kol_sag"
    ],
@@ -21372,13 +21372,13 @@
   },
   "kol_sol": {
    "durum": "tamam",
-   "kosu": "20261109-084522",
-   "baslangic": "2026-11-09T10:11:32",
-   "bitis": "2026-11-09T10:14:21",
-   "sure_s": 169.5,
-   "yukleme_s": 60.1,
-   "tepe_bellek_mb": 745,
-   "tepe_sayfa_mb": 2655,
+   "kosu": "20261119-075818",
+   "baslangic": "2026-11-19T11:16:30",
+   "bitis": "2026-11-19T11:19:02",
+   "sure_s": 152.4,
+   "yukleme_s": 58.7,
+   "tepe_bellek_mb": 738,
+   "tepe_sayfa_mb": 2647,
    "ayni_surec": [
     "kol_sol"
    ],
@@ -21393,13 +21393,13 @@
   },
   "kolkol": {
    "durum": "tamam",
-   "kosu": "20261109-084522",
-   "baslangic": "2026-11-09T10:14:34",
-   "bitis": "2026-11-09T10:15:18",
-   "sure_s": 44.5,
-   "yukleme_s": 11.2,
-   "tepe_bellek_mb": 198,
-   "tepe_sayfa_mb": 2200,
+   "kosu": "20261119-075818",
+   "baslangic": "2026-11-19T11:19:14",
+   "bitis": "2026-11-19T11:19:55",
+   "sure_s": 40.8,
+   "yukleme_s": 11.1,
+   "tepe_bellek_mb": 196,
+   "tepe_sayfa_mb": 2198,
    "ayni_surec": [
     "kolkol"
    ],
@@ -21412,13 +21412,13 @@
   },
   "kafa_sabit": {
    "durum": "tamam",
-   "kosu": "20261109-084522",
-   "baslangic": "2026-11-09T10:16:21",
-   "bitis": "2026-11-09T10:17:57",
-   "sure_s": 95.6,
-   "yukleme_s": 62.6,
-   "tepe_bellek_mb": 738,
-   "tepe_sayfa_mb": 2645,
+   "kosu": "20261119-075818",
+   "baslangic": "2026-11-19T11:20:55",
+   "bitis": "2026-11-19T11:22:23",
+   "sure_s": 88.7,
+   "yukleme_s": 59.2,
+   "tepe_bellek_mb": 739,
+   "tepe_sayfa_mb": 2648,
    "ayni_surec": [
     "kafa_sabit"
    ],
@@ -21433,13 +21433,13 @@
   },
   "kafa_sag": {
    "durum": "tamam",
-   "kosu": "20261109-084522",
-   "baslangic": "2026-11-09T10:18:09",
-   "bitis": "2026-11-09T10:25:58",
-   "sure_s": 468.4,
-   "yukleme_s": 11.7,
+   "kosu": "20261119-075818",
+   "baslangic": "2026-11-19T11:22:36",
+   "bitis": "2026-11-19T11:29:12",
+   "sure_s": 396.4,
+   "yukleme_s": 11.6,
    "tepe_bellek_mb": 620,
-   "tepe_sayfa_mb": 2644,
+   "tepe_sayfa_mb": 2639,
    "ayni_surec": [
     "kafa_sag"
    ],
@@ -21451,13 +21451,13 @@
   },
   "kafa_sol": {
    "durum": "tamam",
-   "kosu": "20261109-084522",
-   "baslangic": "2026-11-09T10:26:10",
-   "bitis": "2026-11-09T10:33:49",
-   "sure_s": 459.0,
-   "yukleme_s": 11.8,
-   "tepe_bellek_mb": 626,
-   "tepe_sayfa_mb": 2645,
+   "kosu": "20261119-075818",
+   "baslangic": "2026-11-19T11:29:24",
+   "bitis": "2026-11-19T11:35:57",
+   "sure_s": 393.2,
+   "yukleme_s": 11.7,
+   "tepe_bellek_mb": 615,
+   "tepe_sayfa_mb": 2639,
    "ayni_surec": [
     "kafa_sol"
    ],
@@ -21469,13 +21469,13 @@
   },
   "taban": {
    "durum": "tamam",
-   "kosu": "20261109-084522",
-   "baslangic": "2026-11-09T10:34:51",
-   "bitis": "2026-11-09T10:35:15",
-   "sure_s": 23.7,
-   "yukleme_s": 61.1,
-   "tepe_bellek_mb": 739,
-   "tepe_sayfa_mb": 2746,
+   "kosu": "20261119-075818",
+   "baslangic": "2026-11-19T11:36:57",
+   "bitis": "2026-11-19T11:37:23",
+   "sure_s": 25.3,
+   "yukleme_s": 59.5,
+   "tepe_bellek_mb": 775,
+   "tepe_sayfa_mb": 2790,
    "ayni_surec": [
     "taban"
    ],
@@ -21492,15 +21492,15 @@
   }
  },
  "kaynak": {
-  "arayuz.py": "50bc12c355",
+  "arayuz.py": "288cc20c6e",
   "carpisma.py": "c688d738c3",
   "dirsek/dirsek_lib.py": "51238e19bd",
   "dirsek/dirsek_parcalar.py": "7182c29899",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
   "kabuk/kabuk_lib.py": "ec1c00a7bd",
   "kabuk/kabuk_parcalar.py": "cb2d75a334",
-  "kafa/kafa-analiz.json": "7ce2ec0179",
-  "kafa/kafa10_lib.py": "ba4e0b0378",
+  "kafa/kafa-analiz.json": "682d561278",
+  "kafa/kafa10_lib.py": "32479026d5",
   "kafa/kafa_lib.py": "a0240ebf6f",
   "kafa/kafa_parcalar.py": "2421681738",
   "omuz/omuz_lib.py": "b5c14c4ed2",
@@ -21508,8 +21508,8 @@
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "taban/taban_lib.py": "638881cefc",
-  "taban/taban_parcalar.py": "86dae15841"
+  "taban/taban_parcalar.py": "d00e2075e9"
  },
  "tek_kosu": true,
- "birlestirme_notu": "2026-11-09: birlestirilmemis, tek seferlik tam kosu (kosu 20261109-084522, 2026-11-09T10:06:29 ... 2026-11-09T14:00:08). Dokuz bolum (statik, omuz, kol_sag, kol_sol, kolkol, kafa_sabit, kafa_sag, kafa_sol, taban) ayri freecadcmd sureclerinde sirayla kostu; her bolumun suresi ve tepe bellegi 'bolumler'de. Tum bolumler ayni kaynak dosyalarla (md5 ozetleri 'kaynak') kostu; onceki kosulardan veri alinmadi."
+ "birlestirme_notu": "2026-11-19: birlestirilmemis, tek seferlik tam kosu (kosu 20261119-075818, 2026-11-19T07:59:18 ... 2026-11-19T11:37:23). Dokuz bolum (statik, omuz, kol_sag, kol_sol, kolkol, kafa_sabit, kafa_sag, kafa_sol, taban) ayri freecadcmd sureclerinde sirayla kostu; her bolumun suresi ve tepe bellegi 'bolumler'de. Tum bolumler ayni kaynak dosyalarla (md5 ozetleri 'kaynak') kostu; onceki kosulardan veri alinmadi."
 }

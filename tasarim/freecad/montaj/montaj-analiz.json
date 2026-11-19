@@ -1,18 +1,18 @@
 {
  "dosya": "robot-montaj.FCStd",
  "step": "robot-montaj.step",
- "step_kati": 1179,
+ "step_kati": 1225,
  "bom": "robot-bom.csv",
  "bom_ozet": {
   "Baglanti": {
-   "kalem": 40,
-   "adet": 893,
-   "kutle_g": 1463.4
+   "kalem": 44,
+   "adet": 937,
+   "kutle_g": 1534.3
   },
   "Baski": {
-   "kalem": 62,
-   "adet": 72,
-   "kutle_g": 7240.2
+   "kalem": 64,
+   "adet": 74,
+   "kutle_g": 7291.4
   },
   "Imalat": {
    "kalem": 1,
@@ -22,19 +22,19 @@
   "Lazer": {
    "kalem": 3,
    "adet": 3,
-   "kutle_g": 1799.8
+   "kutle_g": 1799.3
   },
   "Satin": {
    "kalem": 53,
    "adet": 191,
-   "kutle_g": 15097.5
+   "kutle_g": 15090.4
   }
  },
  "boy_mm": 1580.0,
  "s3_mm": 1270.0,
  "uzama_mm": 315.0,
  "taban_w_mm": 520.0,
- "parca_sayisi": 1179,
+ "parca_sayisi": 1225,
  "grup_sayisi": 22,
  "gecersiz": [],
  "hacim_fark_mm3": 6.111804395914078e-10,
@@ -205,11 +205,11 @@
    "parca": 161,
    "haric": [],
    "haric_neden": "kablo demeti gosterimi (Referans grubu, 0 g); kafa analizinin parca sayisina da girmiyor",
-   "kutle_g": 2088.5,
+   "kutle_g": 2081.39,
    "agirlik_merkezi": [
-    0.347,
-    1446.441,
-    19.449
+    0.803,
+    1446.172,
+    19.573
    ],
    "gruplar": [
     "Kafa_Govde",
@@ -226,29 +226,29 @@
    ],
    "ayna": false,
    "not_": "yerel = global; plakalar, tahrik, aku, guc, elektronik kati, sonar, acil stop (statik)",
-   "parca_modulde": 355,
-   "parca": 342,
+   "parca_modulde": 401,
+   "parca": 388,
    "haric": [
     "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)",
     "Kablo yolu 1: 12 V ana hat: aku + -> XT60 -> ana sigorta 30 A -> ana anahtar -> sigorta kutusu",
-    "Kablo yolu 2: Toprak: aku - -> WAGO yildiz noktasi (guc paneli) -> tum donusturuculer",
-    "Kablo yolu 3: Motor 12 V: F1 20 A -> role -> WAGO -> BTS7960 sol/sag -> motor kablo delikleri -> 4 motor",
-    "Kablo yolu 4: Motor 12 V sag kol + arka motorlar (plaka altindan z 36 deliginden)",
-    "Kablo yolu 5: Servo 6 V A (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol",
+    "Kablo yolu 2: Toprak: aku - -> yildiz barasi 3. saplama (guc paneli) -> tum donusturuculer",
+    "Kablo yolu 3: Motor 12 V: F1 20 A -> role K1 -> anahtarli bara 3. saplama (kopru) 1. saplama -> BTS7960 sol -> on sol motor",
+    "Kablo yolu 4: Motor 12 V sag kol + arka motorlar: anahtarli bara / yildiz 2. saplama -> BTS7960 sag (plaka altindan z 36 deliginden)",
+    "Kablo yolu 5: Servo 6 V A (E1): anahtarli bara / yildiz 1. saplama -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol",
     "Kablo yolu 6: Servo uzatmalari kafaya: pan + tilt (hat C, XL4016 C guc panelinde; direk ustu, R62 halkasindan)",
-    "Kablo yolu 7: Servo 6 V B (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol",
-    "Kablo yolu 8: Kafa 12 V (K4/E4): F3 5 A -> 18 AWG cift -> direk on yuzu -> R62 -> kafada 5 V/5,5 A cevirici (Pi 5, LCD)",
-    "Kablo yolu 9: Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)",
+    "Kablo yolu 7: Servo 6 V B (E1): anahtarli bara / yildiz 1. saplama -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol",
+    "Kablo yolu 8: Kafa 12 V (K4/E4): F3 5 A + yildiz 4. saplama -> 18 AWG cift -> direk on yuzu -> R62 -> kafada 5 V/5,5 A cevirici (Pi 5, LCD)",
+    "Kablo yolu 9: Cevre 5 V: F4 5 A + yildiz 4. saplama -> XL4016 cevre -> ESP32 / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)",
     "Kablo yolu 10: Acil stop (E3): F5 -> mantar (NC) -> role bobini -> MOSFET (arayuz karti, ESP32 'devreye al') ; PC817 mantar sonrasi gerilimi okur",
     "Kablo yolu 11: Sinyal: sonar x3 -> arayuz karti bolucu (4,7k/10k) -> ESP32 (on ara ray ustunden)",
     "Kablo yolu 12: Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (VBUS hattinda seri 1N5819)"
    ],
    "haric_neden": "kablo yolu semalari ve ana anahtar dugmesi gosterimi (Referans grubu, 0 g); taban analizinin parca sayisina girmiyor",
-   "kutle_g": 8109.81,
+   "kutle_g": 8231.43,
    "agirlik_merkezi": [
-    -0.726,
-    120.292,
-    -45.397
+    -0.711,
+    121.299,
+    -45.942
    ],
    "gruplar": [
     "Taban_Govde",
@@ -10044,8 +10044,8 @@
    "kod": "PETG baski, 2,5 mm duvar",
    "kutle_g": 218.522,
    "merkez": [
-    87.66,
-    1480.46,
+    87.67,
+    1480.48,
     -31.41
    ]
   },
@@ -10265,8 +10265,8 @@
    "kod": "M3 isil gomme somun",
    "kutle_g": 0.266,
    "merkez": [
-    -8.0,
-    1538.88,
+    -5.0,
+    1554.88,
     -60.79
    ]
   },
@@ -10278,8 +10278,8 @@
    "kod": "M3x6 ISO 7380",
    "kutle_g": 0.634,
    "merkez": [
-    -8.0,
-    1538.88,
+    -5.0,
+    1554.88,
     -63.75
    ]
   },
@@ -10948,28 +10948,28 @@
   },
   {
    "modul": "kafa",
-   "ad": "Kopuk bant (USB ses karti)",
+   "ad": "Kopuk bant (TVS Pi hatti)",
    "grup": "Bas",
    "tur": "Satin",
    "kod": "Cift tarafli kopuk bant 1 mm (VHB)",
-   "kutle_g": 0.115,
+   "kutle_g": 0.003,
    "merkez": [
-    -132.0,
-    1525.88,
-    -9.0
+    -80.0,
+    1511.38,
+    45.0
    ]
   },
   {
    "modul": "kafa",
-   "ad": "USB ses karti",
+   "ad": "TVS P6KE6V8A Pi hatti",
    "grup": "Bas",
    "tur": "Satin",
-   "kod": "USB ses karti (PAM8403 girisi; olcu VARSAYIM, fotograftan)",
-   "kutle_g": 8.0,
+   "kod": "P6KE6V8A TVS (Pi 5 V hatti, D24V50F5 cikisi, K51 a)",
+   "kutle_g": 1.0,
    "merkez": [
-    -126.0,
-    1525.88,
-    -9.0
+    -80.0,
+    1513.68,
+    45.0
    ]
   },
   {
@@ -11836,11 +11836,11 @@
    "grup": "Govde",
    "tur": "Lazer",
    "kod": "Elektronik kati on 270 x 226 x 5 huş kontrplak (lazer)",
-   "kutle_g": 195.963,
+   "kutle_g": 195.587,
    "merkez": [
-    -0.03,
+    0.16,
     177.0,
-    135.77
+    135.98
    ]
   },
   {
@@ -11849,11 +11849,11 @@
    "grup": "Govde",
    "tur": "Lazer",
    "kod": "Guc paneli arka 270 x 274 x 5 huş kontrplak (lazer)",
-   "kutle_g": 240.073,
+   "kutle_g": 239.95,
    "merkez": [
     0.02,
     177.0,
-    -117.54
+    -117.56
    ]
   },
   {
@@ -14354,6 +14354,604 @@
   },
   {
    "modul": "taban",
+   "ad": "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+   "grup": "Govde",
+   "tur": "Baski",
+   "kod": "Bara tutucusu yildiz barasi (GND), PETG baski (K64 a)",
+   "kutle_g": 28.221,
+   "merkez": [
+    0.0,
+    184.59,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Bara civatasi M5x25 DIN 933 (yildiz 1)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5x25 altigen basli civata (DIN 933, bara saplamasi takimi)",
+   "kutle_g": 5.376,
+   "merkez": [
+    -50.0,
+    191.76,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M5 (yildiz 1)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 125 pul",
+   "kutle_g": 0.443,
+   "merkez": [
+    -50.0,
+    190.0,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Yayli pul M5 (yildiz 1)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 127 yayli pul (takim)",
+   "kutle_g": 0.434,
+   "merkez": [
+    -50.0,
+    191.1,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Somun M5 (yildiz 1)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 934 somun (takim)",
+   "kutle_g": 1.124,
+   "merkez": [
+    -50.0,
+    193.7,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Bara civatasi M5x25 DIN 933 (yildiz 2)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5x25 altigen basli civata (DIN 933, bara saplamasi takimi)",
+   "kutle_g": 5.376,
+   "merkez": [
+    -25.0,
+    191.76,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M5 (yildiz 2)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 125 pul",
+   "kutle_g": 0.443,
+   "merkez": [
+    -25.0,
+    190.0,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Yayli pul M5 (yildiz 2)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 127 yayli pul (takim)",
+   "kutle_g": 0.434,
+   "merkez": [
+    -25.0,
+    191.1,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Somun M5 (yildiz 2)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 934 somun (takim)",
+   "kutle_g": 1.124,
+   "merkez": [
+    -25.0,
+    193.7,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Bara civatasi M5x25 DIN 933 (yildiz 3)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5x25 altigen basli civata (DIN 933, bara saplamasi takimi)",
+   "kutle_g": 5.376,
+   "merkez": [
+    -0.0,
+    191.76,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M5 (yildiz 3)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 125 pul",
+   "kutle_g": 0.443,
+   "merkez": [
+    -0.0,
+    190.0,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Yayli pul M5 (yildiz 3)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 127 yayli pul (takim)",
+   "kutle_g": 0.434,
+   "merkez": [
+    -0.0,
+    191.1,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Somun M5 (yildiz 3)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 934 somun (takim)",
+   "kutle_g": 1.124,
+   "merkez": [
+    -0.0,
+    193.7,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Bara civatasi M5x25 DIN 933 (yildiz 4)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5x25 altigen basli civata (DIN 933, bara saplamasi takimi)",
+   "kutle_g": 5.376,
+   "merkez": [
+    25.0,
+    191.76,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M5 (yildiz 4)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 125 pul",
+   "kutle_g": 0.443,
+   "merkez": [
+    25.0,
+    190.0,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Yayli pul M5 (yildiz 4)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 127 yayli pul (takim)",
+   "kutle_g": 0.434,
+   "merkez": [
+    25.0,
+    191.1,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Somun M5 (yildiz 4)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 934 somun (takim)",
+   "kutle_g": 1.124,
+   "merkez": [
+    25.0,
+    193.7,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Bara civatasi M5x25 DIN 933 (yildiz 5)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5x25 altigen basli civata (DIN 933, bara saplamasi takimi)",
+   "kutle_g": 5.376,
+   "merkez": [
+    50.0,
+    191.76,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M5 (yildiz 5)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 125 pul",
+   "kutle_g": 0.443,
+   "merkez": [
+    50.0,
+    190.0,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Yayli pul M5 (yildiz 5)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 127 yayli pul (takim)",
+   "kutle_g": 0.434,
+   "merkez": [
+    50.0,
+    191.1,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Somun M5 (yildiz 5)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 934 somun (takim)",
+   "kutle_g": 1.124,
+   "merkez": [
+    50.0,
+    193.7,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Isil gomme somun M3 (bara tutucusu yildiz x -60.0)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -60.0,
+    182.35,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Civata M3x10 ISO 7380 (bara tutucusu yildiz x -60.0)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x10 ISO 7380",
+   "kutle_g": 0.856,
+   "merkez": [
+    -60.0,
+    177.46,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Isil gomme somun M3 (bara tutucusu yildiz x +60.0)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    60.0,
+    182.35,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Civata M3x10 ISO 7380 (bara tutucusu yildiz x +60.0)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x10 ISO 7380",
+   "kutle_g": 0.856,
+   "merkez": [
+    60.0,
+    177.46,
+    -55.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Bara tutucusu anahtarli bara (+) (4 saplama)",
+   "grup": "Govde",
+   "tur": "Baski",
+   "kod": "Bara tutucusu anahtarli bara (+), PETG baski (K64 a)",
+   "kutle_g": 23.019,
+   "merkez": [
+    0.0,
+    184.59,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Bara civatasi M5x25 DIN 933 (anahtarli 1)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5x25 altigen basli civata (DIN 933, bara saplamasi takimi)",
+   "kutle_g": 5.376,
+   "merkez": [
+    -37.5,
+    191.76,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M5 (anahtarli 1)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 125 pul",
+   "kutle_g": 0.443,
+   "merkez": [
+    -37.5,
+    190.0,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Yayli pul M5 (anahtarli 1)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 127 yayli pul (takim)",
+   "kutle_g": 0.434,
+   "merkez": [
+    -37.5,
+    191.1,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Somun M5 (anahtarli 1)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 934 somun (takim)",
+   "kutle_g": 1.124,
+   "merkez": [
+    -37.5,
+    193.7,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Bara civatasi M5x25 DIN 933 (anahtarli 2)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5x25 altigen basli civata (DIN 933, bara saplamasi takimi)",
+   "kutle_g": 5.376,
+   "merkez": [
+    -12.5,
+    191.76,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M5 (anahtarli 2)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 125 pul",
+   "kutle_g": 0.443,
+   "merkez": [
+    -12.5,
+    190.0,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Yayli pul M5 (anahtarli 2)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 127 yayli pul (takim)",
+   "kutle_g": 0.434,
+   "merkez": [
+    -12.5,
+    191.1,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Somun M5 (anahtarli 2)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 934 somun (takim)",
+   "kutle_g": 1.124,
+   "merkez": [
+    -12.5,
+    193.7,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Bara civatasi M5x25 DIN 933 (anahtarli 3)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5x25 altigen basli civata (DIN 933, bara saplamasi takimi)",
+   "kutle_g": 5.376,
+   "merkez": [
+    12.5,
+    191.76,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M5 (anahtarli 3)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 125 pul",
+   "kutle_g": 0.443,
+   "merkez": [
+    12.5,
+    190.0,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Yayli pul M5 (anahtarli 3)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 127 yayli pul (takim)",
+   "kutle_g": 0.434,
+   "merkez": [
+    12.5,
+    191.1,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Somun M5 (anahtarli 3)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 934 somun (takim)",
+   "kutle_g": 1.124,
+   "merkez": [
+    12.5,
+    193.7,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Bara civatasi M5x25 DIN 933 (anahtarli 4)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5x25 altigen basli civata (DIN 933, bara saplamasi takimi)",
+   "kutle_g": 5.376,
+   "merkez": [
+    37.5,
+    191.76,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Pul M5 (anahtarli 4)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 125 pul",
+   "kutle_g": 0.443,
+   "merkez": [
+    37.5,
+    190.0,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Yayli pul M5 (anahtarli 4)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 127 yayli pul (takim)",
+   "kutle_g": 0.434,
+   "merkez": [
+    37.5,
+    191.1,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Somun M5 (anahtarli 4)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M5 DIN 934 somun (takim)",
+   "kutle_g": 1.124,
+   "merkez": [
+    37.5,
+    193.7,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Isil gomme somun M3 (bara tutucusu anahtarli x -47.5)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    -47.5,
+    182.35,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Civata M3x10 ISO 7380 (bara tutucusu anahtarli x -47.5)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x10 ISO 7380",
+   "kutle_g": 0.856,
+   "merkez": [
+    -47.5,
+    177.46,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Isil gomme somun M3 (bara tutucusu anahtarli x +47.5)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3 isil gomme somun",
+   "kutle_g": 0.266,
+   "merkez": [
+    47.5,
+    182.35,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
+   "ad": "Civata M3x10 ISO 7380 (bara tutucusu anahtarli x +47.5)",
+   "grup": "Govde",
+   "tur": "Baglanti",
+   "kod": "M3x10 ISO 7380",
+   "kutle_g": 0.856,
+   "merkez": [
+    47.5,
+    177.46,
+    -115.0
+   ]
+  },
+  {
+   "modul": "taban",
    "ad": "Arayuz karti (E2/E3)",
    "grup": "Govde",
    "tur": "Satin",
@@ -16200,47 +16798,47 @@
  ],
  "solve": 0,
  "ev_pozu_cozucu_sapmasi": 0.0,
- "kutle_g": 25720.55,
+ "kutle_g": 25835.06,
  "agirlik_merkezi": [
-  -0.026,
-  528.595,
-  -9.253
+  0.013,
+  526.719,
+  -9.594
  ],
  "karsilastirma": {
   "parca": {
-   "montaj": 1179,
-   "beklenen": 1179,
-   "formul": "iskelet 59 + 2 x (omuz 75 - travers - kabuk referansi) + kabuk 357 + dirsek_sag 57 + dirsek_sol 57 + kafa 161 + taban 342",
+   "montaj": 1225,
+   "beklenen": 1225,
+   "formul": "iskelet 59 + 2 x (omuz 75 - travers - kabuk referansi) + kabuk 357 + dirsek_sag 57 + dirsek_sol 57 + kafa 161 + taban 388",
    "ayni": true
   },
   "kutle": {
-   "montaj_dosyasi": 25720.55,
-   "bellek": 25720.55,
-   "beklenen_analizlerden": 25720.7,
+   "montaj_dosyasi": 25835.06,
+   "bellek": 25835.06,
+   "beklenen_analizlerden": 25835.2,
    "carpisma": 25720.6,
-   "fark_analiz": -0.147,
-   "fark_carpisma": -0.05
+   "fark_analiz": -0.134,
+   "fark_carpisma": 114.463
   },
   "am": {
    "montaj_dosyasi": [
-    -0.026,
-    528.595,
-    -9.253
+    0.013,
+    526.719,
+    -9.594
    ],
    "bellek": [
-    -0.026,
-    528.595,
-    -9.253
+    0.013,
+    526.719,
+    -9.594
    ],
    "carpisma": [
     -0.03,
     528.59,
     -9.25
    ],
-   "fark_carpisma_mm": 0.007,
+   "fark_carpisma_mm": 1.903,
    "fark_bellek_mm": 0.0
   },
   "not_": "analiz JSON'lari 0,1 g'a yuvarlanmis; carpisma AM'si 0,01 mm'ye. 1,65 m (Y2a): carpisma-sonuc.json Y4 tam taramasina kadar ESKI (125 cm) - fark_carpisma anlamsiz, montaj/yerlesim-kontrol.json kisa kontrolu kullan"
  },
- "sure_s": 96.2
+ "sure_s": 94.2
 }

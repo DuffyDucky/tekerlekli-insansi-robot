@@ -56,10 +56,13 @@ DOLULUK = 0.80              # kucuk PETG parcalar (eski kafa ile ayni, tahmini)
 HAVSA = 1.7                 # tepe dikis civatalari: ISO 7380 basi (k 1,65) yuzeyin altinda
 RHO = {"PETG": A.PETG_RHO, "PETG-CF": A.OMUZ["baski_rho"]["PETG-CF"][0], "Aluminyum": 2.70, "Celik": 7.85, "Celik 8.8": 7.85, "Celik 10.9": 7.85, "Pirinc": 8.50, "Kopuk": 0.10}
 BIG = 1000.0
-# K2 secenekleri (P1.3, 08.11.2026; lale158/kafa-yerlesim/hat_secenek.py): ana model bu varsayilanlarla kurulur ve DEGISMEZ.
+# K2 secenekleri (P1.3, 08.11.2026; lale158/kafa-yerlesim/hat_secenek.py): ana model bu varsayilanlarla kurulur.
 # Secenek betigi kur()'dan once degistirir: arka_ust_boss = arka duvar ust dikis civatasi boss'u (x, y) eksen cercevesinde;
 # pi_dz = Pi 5 (ve tabla ustu kablo yolu zarfi) z kaydirmasi, + one.
-SECENEK = dict(arka_ust_boss=(-DIL_W / 2, 60.0), pi_dz=0.0)
+# K2 a (teknik yari, 17.11.2026; uygulama P10.7b2j, planlama/d158/F10s-gunluk.md): boss AI HAT+ zarfindan cikmak icin
+# (-DIL_W / 2, 60) = (-8, 60) -> (-5, 76): ust yarik bandinin yuksekliginde, iki yarik sutununun arasinda (dikis civatasi ve isil gomme
+# somun onunla). hat_secenek.py HAT_SECENEK=a ile ayni deger; HAT_SECENEK=0 artik bu (a) modeli verir.
+SECENEK = dict(arka_ust_boss=(-5.0, 76.0), pi_dz=0.0)
 
 # eski kafa sabitleri (eski kafa yerelinde): tilt ekseni (130, 25), yanak x araliklari, horn delikleri
 import kafa7_parcalar as KP  # noqa  125 cm kafasi (gruplar Govde / Pan / Kafa); yeniden kullanilan parcalar buradan
@@ -409,8 +412,13 @@ def kur(dy, zb, log=print):
         # kafa ekrani ayri 5 V (planlama/adim3/elektrik.md): SY8205 + P6KE6V8A tablada, Power konnektoru tarafinda (+X); Touch USB'si Pi'ye veri, 5 V kopru yok
         _tablada += [("SY8205 kafa ekrani 5 V", (36.0, 14.0), box(-SY8205["l"] / 2, SY8205["l"] / 2, 0, SY8205["h"], -SY8205["w"] / 2, SY8205["w"] / 2), SY8205["model"], SY8205["l"], SY8205["w"], SY8205["kutle_g"]),
                      ("TVS P6KE6V8A kafa ekrani", (64.0, 20.0), tvs_local(), TVS["model"], TVS["l"], TVS["d"], TVS["kutle_g"])]
+    # K51 a (17.11.2026 karari; model P10.7b2j, planlama/d158/F10s-gunluk.md): D24V50F5 -> Pi 5 V hattina ikinci P6KE6V8A, cevirici
+    # cikisinin hemen onunde (+z) tablada. Echo karari (geri alinabilir): yer (-80; 20) = cevirici on kenari (z 16,15) + 2 mm; ayni govde
+    # (kafa_lib.TVS), ayri ad ve kod; kafa ekrani TVS'si (ilk eslesme, uygulama_olc.tek) yerinde kalir. BOM'da toplam 2 P6KE6V8A, 0 TL.
+    _tablada += [("TVS P6KE6V8A Pi hatti", (-80.0, 20.0), tvs_local(), "P6KE6V8A TVS (Pi 5 V hatti, D24V50F5 cikisi, K51 a)", TVS["l"], TVS["d"], TVS["kutle_g"])]
+    _KOPUK_AD = {"TVS P6KE6V8A Pi hatti": "Kopuk bant (TVS Pi hatti)"}
     for ad_, (cx_, cz_), sh_, kod_, l_, w_, m_ in _tablada:
-        add("Kopuk bant (%s)" % ad_.split()[0], box(cx_ - l_ / 2, cx_ + l_ / 2, Y_TABLA[1], Y_TABLA[1] + 1.0, cz_ - w_ / 2, cz_ + w_ / 2),
+        add(_KOPUK_AD.get(ad_, "Kopuk bant (%s)" % ad_.split()[0]), box(cx_ - l_ / 2, cx_ + l_ / 2, Y_TABLA[1], Y_TABLA[1] + 1.0, cz_ - w_ / 2, cz_ + w_ / 2),
             "Satin", "Kopuk", kod="Cift tarafli kopuk bant 1 mm (VHB)", renk="siyah")
         sh_ = sh_.copy()
         sh_.translate(V(cx_, Y_TABLA[1] + 1.0, cz_))
@@ -423,7 +431,9 @@ def kur(dy, zb, log=print):
     YZ = {}
     if QLED:
         xw = KX - KT
-        for ad_, sx, (yc_, zc_), bl in (("USB ses karti", -1, (SU["ses"]["y"], SU["ses"]["zc"]), SES), ("PAM8403 amfi", -1, (SU["pam"]["y"], SU["pam"]["zc"]), PAM)):
+        # P10.7b2j (planlama/d158/F10s-gunluk.md; kablolama-on-kararlar.md 5, 14.11): USB ses karti kablajdan cikti, yedek, takilmaz ->
+        # modelde yok (yeri SU["ses"] kayitta kalir; masa denemesi KT2 gecmezse 04.11 duzeni geri gelir). PAM8403 yerinde.
+        for ad_, sx, (yc_, zc_), bl in (("PAM8403 amfi", -1, (SU["pam"]["y"], SU["pam"]["zc"]), PAM),):
             duv = "Arka kafa kabugu %s" % ("sag" if sx > 0 else "sol")
             x0, x1 = sorted((sx * (xw - 1.0), sx * (xw - 1.0 - bl["h"])))
             fx0, fx1 = sorted((sx * xw, sx * (xw - 1.0)))
@@ -464,16 +474,7 @@ def kur(dy, zb, log=print):
         _ux, _uy, _uz = _dizi(_D["usb_x"], -35.0, 1.4)
         _F = _D["fis"]
         zr("Dizi USB fis zarfi", _ux, _ux + _F["boy"], _uy - _F["y"] / 2, _uy + _F["y"] / 2, _uz - _F["z"] / 2, _uz + _F["z"] / 2, (0.95, 0.7, 0.7), _F["durum"])
-        _S = SU["ses"]
-        _fz = _S["zc"] - _S["olcu"][0] / 2
-        _rk = (0.55, 0.88, 0.6)
-
-        def _dv(yc, zc, l, w, h):
-            return (-(xw - 1.0), -(xw - 1.0 - h), yc - w / 2, yc + w / 2, zc - l / 2, zc + l / 2)
-        zr("Ses karti USB-A fisi", *_dv(_S["y"], _fz - 6.0, 12.0, 12.0, 4.5), _rk, _S["ek_durum"])
-        zr("L USB dirsek", *_dv(_S["y"], _fz - 20.0, 16.0, 18.0, 12.0), _rk, _S["ek_durum"], kutle=_S["dirsek_g"])
-        zr("USB uzatma disi ucu", -(xw - 13.0), -(xw - 43.0), _S["y"] - 9.0, _S["y"] + 9.0, _fz - 25.5, _fz - 14.5, _rk, _S["ek_durum"], kutle=_S["uzatma_g"])
-        zr("L 3,5 mm fis", *_dv(_S["y"] - 5.0, _S["zc"] + _S["olcu"][0] / 2 + 8.0, 16.0, 10.0, 10.0), _rk, _S["ek_durum"], kutle=_S["jak_g"])
+        # ses karti fis zarflari (USB-A, L dirsek, uzatma disi ucu, L 3,5 mm) P10.7b2j'de karla birlikte cikti (kart takilmaz)
         # fan yeri (LISTEDE YOK; yalniz yer): 30 x 30 x 10, ust yarik bandi arkasinda, +X yarik grubu ustunde (elektrik.md: 'ust bant arkasina 25-30 mm egzoz fani')
         zf0 = zb + KT
         zr("Fan yeri 30x30x10 (listede yok)", 12.5, 42.5, 62.0, 92.0, zf0, zf0 + 10.0, (0.1, 0.75, 0.75), "yalniz yer ayirma; karar notu qled-cerceve-tasarim-notu.md")

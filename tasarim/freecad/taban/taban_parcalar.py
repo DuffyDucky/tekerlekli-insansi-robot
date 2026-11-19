@@ -177,6 +177,9 @@ for sx in (-1, 1):
         (kes_on if z > 0 else kes_ar).append(delik_y(sx * RX, z, 5.5, y0d, td))
 x0, x1, z0, z1 = T["kat_kesik_on"]
 kes_on.append(kesik_r(x0, x1, z0, z1, 5.0, y0d, td))
+# K53 a (P10.7b2j): arka kenarda yana acik 1,5 mm centik (on sarj karti on burclari, B6 inisi); olcu arayuz TABAN['kat_on_centik']
+_KC = T["kat_on_centik"]
+kes_on.append(box(_KC["x"][0], _KC["x"][1], y0d - 1, y0d + td + 1, KAT_ON_Z0 - 1.0, _KC["z1"]))
 kes_ar.append(box(-22, 22, y0d - 1, y0d + td + 1, -22, KAT_ARKA_Z1 + 1))          # direk cebi (onden acik)
 for sx in (-1, 1):
     a0, a1 = sorted((sx * 40.0, sx * 80.0))
@@ -193,6 +196,8 @@ XLK_DEL = [(XLK_C[0] + dx * L.XL["dx"] / 2, XLK_C[1] + dz * L.XL["dz"] / 2) for 
 OS_C = T["on_sarj_karti"]["merkez"]
 OS_DEL = [(OS_C[0] + sx * (L.PERF["l"] / 2 - L.PERF["kenar"]), OS_C[1] + sz * (L.PERF["w"] / 2 - L.PERF["kenar"])) for sx in (-1, 1) for sz in (-1, 1)]
 kes_ar += [delik_y(x, z, A.CLEAR[3], y0d, td) for (x, z) in XLK_DEL + OS_DEL]
+# K64 a: bara tutucularinin panel vidalari (ISO 7380 M3 alttan; tutucu ve saplamalar "guc" bolumunde)
+kes_ar += [delik_y(x, b["z"], A.CLEAR[3], y0d, td) for b in T["bara_tutucu"]["baralar"].values() for x in b["vida_x"]]
 
 # --- kart konumlari (kat ustu y = Y_DECK1)
 YD1 = A.Y_DECK1
@@ -445,6 +450,79 @@ AAI = add("Ana anahtar ASW-A01 govdesi (tahmini zarf)", "Guc", zarf(aax - 25, aa
 add("Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)", "Referans",
     Part.makeCylinder(20.0, 22.0, V(aax, A.Y_COV1, aaz), UP), "Referans", "-", kod="(gosterim)", renk="kirmizi", patlat=(-60, 470, -200),
     kutle=0.0)
+# --- K64 a (P10.7b2j; planlama/d158/F10s-gunluk.md): iki bara tutucusu (basilmis yalitkan, PETG) guc panelinde, akunun ustunde.
+# Saplama: M5x25 altigen basli (DIN 933, VARSAYIM: takimin bas tipi kayitta yok, maliyet.json 'Bara saplamasi M5') basi tutucunun alt
+# yuzundeki altigen cepte (donmez), ustte duz pul + yayli pul (DIN 127) + M5 somun; pabuc yigini pulun altina (modelde yok).
+# Tutucu panele: 2x ISO 7380 M3x10 alttan (bas 1,65 mm; panel alti - aku ustu 3 mm) -> tutucudaki M3 isil gomme somun.
+# Olcu ve yer arayuz TABAN['bara_tutucu'].
+BT = T["bara_tutucu"]
+D933 = BT["civata_bas"]                                   # (s, k) altigen bas
+
+
+def vida933(d, L, p, direction):
+    """Altigen basli civata (DIN 933). p: bas ust yuzu (govdenin basladigi yuz) merkezi, direction: govdenin gittigi yon."""
+    s, k = D933
+    u = unit(direction)
+    p = V(*p)
+    return hexprism(s, p - u * k, p, V(1, 0, 0)).fuse(Part.makeCylinder(d / 2, L, p, u)).removeSplitter()
+
+
+def yayli_pul(d, p, direction):
+    di, do, t = BT["yayli_pul"]
+    u = unit(direction)
+    p = V(*p)
+    return Part.makeCylinder(do / 2, t, p, u).cut(Part.makeCylinder(di / 2, t + 2, p - u, u))
+
+
+BARA_I = {}
+H_T = BT["h"]
+y_ust = YD1 + H_T
+for anahtar, b in BT["baralar"].items():
+    xs = b["saplama_x"]
+    zc = b["z"]
+    x0, x1 = xs[0] - BT["uc_pay"], xs[-1] + BT["uc_pay"]
+    z0, z1 = zc - BT["w"] / 2, zc + BT["w"] / 2
+    sh = kutu_r(x0, x1, YD1, y_ust, z0, z1, BT["r"], "Y")
+    for x in xs:
+        sh = sh.cut(hexprism(D933[0] + BT["cep_pay"][0], V(x, YD1 - 1.0, zc), V(x, YD1 + D933[1] + BT["cep_pay"][1], zc), V(1, 0, 0)))
+        sh = sh.cut(delik_y(x, zc, A.CLEAR[5], YD1 - 1.0, H_T + 2.0))
+    for x in b["vida_x"]:
+        sh = sh.cut(insert_hole(3, (x, YD1, zc), UP, extra=BT["insert_ek"]))
+    ad_t = "Bara tutucusu %s (%d saplama)" % (b["ad"], len(xs))
+    it = add(ad_t, "Guc", sh.removeSplitter(), "Baski", "PETG", kod="Bara tutucusu %s, PETG baski (K64 a)" % b["ad"], renk="petg",
+             patlat=(0, 300, zc * 0.3), not_=b["not_"])
+    BASKI[ad_t] = dict(yukari=DOWN, yon="ust yuzu tablada (altigen cepler ve insert delikleri yukari)")
+    BARA_I[anahtar] = it
+    for j, x in enumerate(xs, 1):
+        etk = "%s %d" % (b["kisa"], j)
+        y_bas = YD1 + D933[1] + BT["cep_pay"][1]                 # somun sikilinca bas cep tavanina dayanir (panelle arasi 0,3 mm)
+        ic = add("Bara civatasi M5x25 DIN 933 (%s)" % etk, "Guc", vida933(5, 25.0, (x, y_bas, zc), UP), "Baglanti", "Celik",
+                 kod="M5x25 altigen basli civata (DIN 933, bara saplamasi takimi)", renk="celik", patlat=(0, 260, zc * 0.3))
+        iw = add("Pul M5 (%s)" % etk, "Guc", pul(5, (x, y_ust, zc), UP), "Baglanti", "Celik", kod="M5 DIN 125 pul", renk="celik",
+                 patlat=(0, 340, zc * 0.3))
+        yw = y_ust + A.WASH125[5][2]
+        iy = add("Yayli pul M5 (%s)" % etk, "Guc", yayli_pul(5, (x, yw, zc), UP), "Baglanti", "Celik", kod="M5 DIN 127 yayli pul (takim)",
+                 renk="celik", patlat=(0, 360, zc * 0.3))
+        yn = yw + BT["yayli_pul"][2]
+        isn = add("Somun M5 (%s)" % etk, "Guc", nut(5, (x, yn, zc), UP, kind="934"), "Baglanti", "Celik", kod="M5 DIN 934 somun (takim)",
+                  renk="celik", patlat=(0, 380, zc * 0.3))
+        uc = y_bas + 25.0
+        n_ust = yn + A.NUT934[5][1]
+        bag("Bara saplamasi - tutucu (%s)" % etk, "somun", dict(vida=ic, pul=iw, somun=isn, govde=[it]),
+            dict(d=5, uc_disari=uc - n_ust - BT["pabuc_yigini"], uc_bos=uc - n_ust, pabuc_yigini=BT["pabuc_yigini"]),
+            temas=[(ic, it), (iw, it), (iy, iw), (isn, iy)], eksen=(V(x, 0, zc), UP, [(ic, 2.5), (isn, 2.5)]),
+            aciklama="bas tutucunun altigen cebinde (donmez); pabuc yigini (en cok 4, %.1f mm VARSAYIM) pulun altinda, ustte yayli pul + somun"
+                     % BT["pabuc_yigini"])
+    for x in b["vida_x"]:
+        ii = add("Isil gomme somun M3 (bara tutucusu %s x %+.1f)" % (b["kisa"], x), "Guc", insert(3, (x, YD1, zc), UP), "Baglanti", "Pirinc",
+                 kod="M3 isil gomme somun", renk="pirinc", patlat=(0, 280, zc * 0.3))
+        iv = add("Civata M3x10 ISO 7380 (bara tutucusu %s x %+.1f)" % (b["kisa"], x), "Guc", vida7380(3, 10, (x, y0d, zc), UP), "Baglanti",
+                 "Celik", kod="M3x10 ISO 7380", renk="celik", patlat=(0, 150, zc * 0.3))
+        bag("Bara tutucusu %s - guc paneli (x %+.1f)" % (b["kisa"], x), "insert", dict(vida=iv, govde=[KAT_AR], insert=ii, parca=it),
+            dict(d=3, kavrama=10 - td, insert_boy=A.INSERT[3][1]), temas=[(iv, KAT_AR), (it, KAT_AR)],
+            eksen=(V(x, 0, zc), UP, [(iv, 1.5), (ii, 1.5)]),
+            aciklama="alttan ISO 7380 M3x10 (bas panel altinda 1,65 mm; aku ustune 1,35 mm), tutucuda M3 isil gomme somun")
+
 log("guc")
 
 # ====================================================================== 6) ELEKTRONIK KATI (on)
@@ -534,32 +612,68 @@ log("sensor")
 ex, ez = ES["x"], ES["z"]
 S3Y = A.S3   # 1,65 m: govde ici dikey hatlar omuz / kafa yuksekligine kadar (125 cm'de 955)
 SKC = V(cx, YD1 + 36, cz)
+# P10.7b2j (planlama/d158/F10v-gunluk.md § 1): yollar eski WAGO / role noktalari yerine bara tutucularinin saplamalarina (K64 a). Saplama
+# numarasi = BT saplama_x sirasi (robota onden bakinca soldan saga), atama planlama/adim3/kablolar.json bara-pabuc yerlesimi.
+# Bara ucu: saplama ekseninden 10 mm (pabuc dili yonunde), pabuc yigini yuksekliginde (y 194: tutucu ustu 189,5 + 4,5; tup alti tutucuya 2 mm).
+# Bara ustu yatay hat y 197 (somun ustu 195,7; tup alti 194,5): tutucuyu yalniz iki saplamanin ortasindan (12,5 mm) asar. Panelden alt
+# kata inis aku kablo yariklarinin ortasindan (z -30; yarik z -37...-23, aku govdesinin on yuzu z -38). U06 seridi (x 14...40, z -40...-30,
+# y >= 205) ustte kalir: bu bolgedeki en yuksek tup ustu y 201,5.
+Y_BU, Y_BH, BU_D, Z_YRK = YD1 + BT["h"] + 4.5, YD1 + BT["h"] + 7.5, 10.0, -30.0
+
+
+def bara_uc(bara, no, yon=1):
+    """Baranin no. saplamasinin (1'den) kablo ucu: +z (yon 1) ya da -z (yon -1) yaninda."""
+    b = BT["baralar"][bara]
+    return (b["saplama_x"][no - 1], Y_BU, b["z"] + yon * BU_D)
+
+
+def bara_arasi(bara, no):
+    """Baranin no. ve no+1. saplamasinin ortasi (x)."""
+    return 0.5 * sum(BT["baralar"][bara]["saplama_x"][no - 1:no + 1])
+
+
+def yarik_inis(x):
+    """Panel ustunden aku kablo yarigindan alt kata (x yarigin icinde)."""
+    return [(x, Y_BH - 1.0, -38.0), (x, 186.0, Z_YRK), (x, 168.0, Z_YRK)]
+
+
+X_Y12 = bara_arasi("yildiz", 1)                                   # -37,5: yildiz 1-2 arasi
+# anahtarli 1 (+) -> yildiz 1 (-) -> sol yarik: G12 / G14 / G15 ayni saplama cifti (yol 3, 5, 7 ortak bas)
+BAS_A1 = [bara_uc("anahtarli", 1), (X_Y12, Y_BH, -80.0), (X_Y12, Y_BH, -42.0), bara_uc("yildiz", 1)]
 YOL += [
     ("12 V ana hat: aku + -> XT60 -> ana sigorta 30 A -> ana anahtar -> sigorta kutusu", "kirmizi",
-     [(-65.5, 133, -29), (-62, 160, -29), (-60, 190, -30), (40, 190, -70), (ax_, 192, az_ + 30), (ax_, 192, az_ - 30), (60, 195, -175),
+     [(-65.5, 133, -29), (-60, 160, Z_YRK), (-57, 168, Z_YRK), (-57, 186, Z_YRK), (-50, 199, -36), (72, 199, -36), (88, 199, -60),
+      (ax_, 192, az_ + 30), (ax_, 192, az_ - 30), (60, 200, -165), (-80, 205, -165),
       (aax, 220, aaz + 25), (aax, 214, aaz - 10), (-20, 196, -215), (cx - 30, YD1 + 36, cz)]),
-    ("Toprak: aku - -> WAGO yildiz noktasi (guc paneli) -> tum donusturuculer", "siyah",
-     [(65.5, 133, -29), (62, 160, -29), (60, 190, -30), (30, 186, -60), (-20, 186, -90)]),
-    ("Motor 12 V: F1 20 A -> role -> WAGO -> BTS7960 sol/sag -> motor kablo delikleri -> 4 motor", "turuncu",
-     [(cx - 40, YD1 + 36, cz), (rx, YD1 + 46, rz), (-60, 182, -30), (-60, 150, 0), (-50, 145, 60), (-67.5, 145, 140), (-80, 120, 196),
-      (-80, 90, 200), (-(100 + DX), 85, 185)]),
-    ("Motor 12 V sag kol + arka motorlar (plaka altindan z 36 deliginden)", "turuncu",
-     [(-50, 145, 60), (50, 145, 60), (67.5, 145, 140), (80, 120, 196), (80, 88, 200), (100 + DX, 85, 185), (80, 120, 140), (80, 112, 40),
-      (80, 88, 36), (80, 87, -150), (100 + DX, 85, -185)]),
-    ("Servo 6 V A (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol", "sari",
-     [(rx, YD1 + 46, rz), (-60, 182, -30), (-30, 150, 40), (0, 130, 150), (0, 140, 170), (20, 150, 160), (30, 190, 165), (SD_C["A"][0], 200, SD_C["A"][1]),
+    ("Toprak: aku - -> yildiz barasi 3. saplama (guc paneli) -> tum donusturuculer", "siyah",
+     [(65.5, 133, -29), (62, 160, Z_YRK), (62, 168, Z_YRK), (62, 186, Z_YRK), (10, Y_BU, -36), bara_uc("yildiz", 3)]),
+    ("Motor 12 V: F1 20 A -> role K1 -> anahtarli bara 3. saplama (kopru) 1. saplama -> BTS7960 sol -> on sol motor", "turuncu",
+     [(cx - 40, YD1 + 36, cz), (rx, YD1 + 46, rz), (-95, 200, -95), (5, Y_BH, -95), bara_uc("anahtarli", 3), bara_uc("anahtarli", 2)]
+     + BAS_A1 + yarik_inis(-55.0) + [(-55, 150, 0), (-50, 145, 60), (-67.5, 145, 140), (-80, 120, 196), (-80, 87, 200), (-(100 + DX), 85, 185)]),
+    # dal: yol 3'un anahtarli 2. saplama ucundan (rehber_kablo GEO_DAL)
+    ("Motor 12 V sag kol + arka motorlar: anahtarli bara / yildiz 2. saplama -> BTS7960 sag (plaka altindan z 36 deliginden)", "turuncu",
+     [bara_uc("anahtarli", 2), (bara_arasi("yildiz", 2), Y_BH, -80.0), (bara_arasi("yildiz", 2), Y_BH, -42.0), bara_uc("yildiz", 2),
+      (-15, Y_BH, -38)] + yarik_inis(54.0) + [(52, 150, 20), (50, 145, 60), (67.5, 145, 140), (80, 120, 196), (80, 88, 200),
+                                               (100 + DX, 85, 185), (80, 88, 200), (80, 120, 196), (87, 120, 140), (87, 112, 40), (80, 88, 36), (80, 85.5, -150),
+                                               (100 + DX, 85, -185)]),
+    ("Servo 6 V A (E1): anahtarli bara / yildiz 1. saplama -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol", "sari",
+     BAS_A1 + yarik_inis(-45.0) + [(-30, 150, 40), (0, 130, 150), (0, 140, 170), (20, 150, 160), (30, 190, 165), (SD_C["A"][0], 200, SD_C["A"][1]),
       (40, 205, 180), (25, 230, 26), (25, 262, -26), (0, 400, -26), (0, S3Y - 55, -26), (60, S3Y, -26), (100, S3Y, -26)]),
     ("Servo uzatmalari kafaya: pan + tilt (hat C, XL4016 C guc panelinde; direk ustu, R62 halkasindan)", "sari", [(0, S3Y - 55, -26), (0, S3Y + 20, -30), (0, S3Y + 55, -10)]),
-    ("Servo 6 V B (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol", "sari",
-     [(rx, YD1 + 46, rz), (-62, 182, -30), (-55, 150, 20), (T["xl"][0][0], 125, T["xl"][0][1]), (-40, 150, 150), (-30, 190, 165),
+    ("Servo 6 V B (E1): anahtarli bara / yildiz 1. saplama -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol", "sari",
+     BAS_A1 + yarik_inis(-50.0) + [(-55, 150, 20), (T["xl"][0][0], 125, T["xl"][0][1]), (-36, 150, 130), (-38, 152, 150), (-30, 190, 165),
       (SD_C["B"][0], 200, SD_C["B"][1]), (-40, 205, 180), (-25, 230, 26), (-25, 262, -26), (-5, 400, -26), (-5, S3Y - 55, -26), (-60, S3Y, -26),
       (-100, S3Y, -26)]),
-    ("Kafa 12 V (K4/E4): F3 5 A -> 18 AWG cift -> direk on yuzu -> R62 -> kafada 5 V/5,5 A cevirici (Pi 5, LCD)", "kirmizi",
-     [(cx - 20, YD1 + 36, cz), (-62, 182, -30), (-40, 200, 20), (-24, 230, 26), (-24, 262, 26), (-24, S3Y - 55, 26), (-24, S3Y + 20, 30), (0, S3Y + 55, 20)]),
+    ("Kafa 12 V (K4/E4): F3 5 A + yildiz 4. saplama -> 18 AWG cift -> direk on yuzu -> R62 -> kafada 5 V/5,5 A cevirici (Pi 5, LCD)", "kirmizi",
+     [(cx - 20, YD1 + 36, cz), (-20, 219, -176), (-5, 199, -150), (bara_arasi("anahtarli", 2), Y_BH, -130), (bara_arasi("anahtarli", 2), Y_BH, -85),
+      (bara_arasi("yildiz", 4), Y_BH, -80), (bara_arasi("yildiz", 4), Y_BH, -40), bara_uc("yildiz", 4), (-40, Y_BH, -38),
+      (-40, 200, 20), (-24, 230, 26), (-24, 262, 26), (-24, S3Y - 55, 26), (-24, S3Y + 20, 30), (0, S3Y + 55, 20)]),
     # 1,65 m (Y2a): gogus Nextion ekrani kaldirildi (Ahmet, 25 Ekim 2026) -> cevre 5 V hatti govdeye cikmaz, ESP32'de biter
-    ("Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)", "mavi",
-     [(cx, YD1 + 36, cz), (62, 182, -30), (55, 150, 20), (T["xl"][1][0], 125, T["xl"][1][1]), (40, 150, 150), (40, 185, 160),
-      (ESP_C[0], 200, ESP_C[1])]),
+    # Rehber yalniz noktalar[0..12]'yi (F4 -> yildiz 4 -> sag yarik -> XL4016 cevre) cizer; [13..] eski XL4016 -> ESP32 hatti (rehber_kablo CAD_KIRP 9)
+    ("Cevre 5 V: F4 5 A + yildiz 4. saplama -> XL4016 cevre -> ESP32 / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)", "mavi",
+     [(cx, YD1 + 36, cz), (0, 219, -176), (20, 199, -150), (bara_arasi("anahtarli", 3), Y_BH, -130), (bara_arasi("anahtarli", 3), Y_BH, -85),
+      bara_uc("yildiz", 4, -1), (bara_arasi("yildiz", 4), Y_BH, -66), (bara_arasi("yildiz", 4), Y_BH, -40)] + yarik_inis(46.0)
+     + [(55, 150, 20), (T["xl"][1][0], 125, T["xl"][1][1]), (40, 150, 150), (40, 185, 160), (ESP_C[0], 200, ESP_C[1])]),
     ("Acil stop (E3): F5 -> mantar (NC) -> role bobini -> MOSFET (arayuz karti, ESP32 'devreye al') ; PC817 mantar sonrasi gerilimi okur", "yesil",
      [(cx + 30, YD1 + 36, cz), (ex, 205, ez), (ex, 214, ez), (ex - 10, 205, ez + 20), (rx, YD1 + 46, rz), (-110, 200, -60), (-100, 200, 40),
       (AK_C[0], 195, AK_C[1])]),

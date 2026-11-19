@@ -635,6 +635,23 @@ TABAN = dict(
     burc_z=(-230.0, -40.0, 40.0, 230.0),          # M5x40 burc, uzun ray ust kanalinda (V3 -230/230 + kat ayrimi icin -40/40)
     kat_ayrim_z=24.0,                             # on kat z 24,25...250, arka guc paneli z -250...23,75 (0,5 mm aralik)
     kat_kesik_on=(-60.0, 60.0, 150.0, 175.0),     # rc:410 deck_cut (kablo gecisi XL4016 / BTS -> kat)
+    # K53 a (17.11.2026 karari; uygulama P10.7b2j, planlama/d158/F10s-gunluk.md): on kat arka kenarinda 1,5 mm centik, guc panelindeki on
+    # sarj kartinin iki on burcu (x -130 / -65, kose z 24,675) kat inerken (B6) takilmasin. Yana acik (x0 -136 < kat kenari -135: kosede
+    # ince serit kalmaz); kat kenari orada z 24,25 -> 25,75 (F10b-olcum.json 'centik_1.5': inis boyunca ortak hacim 0, bosluk 1,075 mm).
+    kat_on_centik=dict(x=(-136.0, -60.75), z1=25.75),
+    # K64 a (16.11.2026 karari; tasarim P10.7b2j, planlama/d158/F10s-gunluk.md, Echo kararlari geri alinabilir): iki basilmis yalitkan bara
+    # tutucusu, guc panelinin ortasinda akunun ustunde (panel ustu y 179,5). Saplama araligi 25 (kablolar.json bara-pabuc kopruler 'saplama
+    # araligi ~ 25 mm', kopru 50 mm). Yildiz z -55: aku kablo yariklarina (z -37) 7 mm; anahtarli z -115: rolenin (z -130, x -112) hizasinda.
+    # Iki bara arasi 60 mm. Panele 2x ISO 7380 M3x10 alttan + tutucuda M3 isil gomme somun: vida basi aku ustunun 1,35 mm ustunde,
+    # aku kayislarinin (z -152,5...-127,5 ve -92,5...-67,5; ust yuzu y 173,2) disinda. Saplama M5x25 basi (DIN 933, VARSAYIM) alttaki
+    # altigen cepte. pabuc_yigini: saplamada en cok 4 pabuc x 1,2 mm (RV 5.5-5 kalinligi VARSAYIM, olculmedi).
+    bara_tutucu=dict(h=10.0, w=22.0, r=3.0, uc_pay=18.0, cep_pay=(0.4, 0.3), insert_ek=1.0, civata_bas=(8.0, 3.5),
+                     yayli_pul=(5.1, 9.2, 1.2), pabuc_yigini=4.8,
+                     baralar=dict(
+                         yildiz=dict(ad="yildiz barasi (GND)", kisa="yildiz", z=-55.0, saplama_x=(-50.0, -25.0, 0.0, 25.0, 50.0),
+                                     vida_x=(-60.0, 60.0), not_="5 M5 saplama, 12 AWG siyah koprulerle zincir (kablolar.json bara-pabuc); K64 a"),
+                         anahtarli=dict(ad="anahtarli bara (+)", kisa="anahtarli", z=-115.0, saplama_x=(-37.5, -12.5, 12.5, 37.5),
+                                        vida_x=(-47.5, 47.5), not_="4 M5 saplama, 12 AWG kirmizi koprulerle zincir; besleme 3. saplama; K64 a"))),
     aku=dict(merkez=(0.0, Y_RAIL0, _Z_BAT), olcu=(181.0, 77.0, 167.0), kutle_g=3000.0,
              not_="rc:46-47 Landport LFP12-20 olcusu; alinacak Victron SuperPack 12,8 V 20 Ah (K3, malzeme listesi v4) 181 x 77 x 167 ayni. Kutle 3,0 kg (Victron datasheet; planlama/maliyet.json aku satiri; P1.1 08.11.2026, onceki 2,8 kg Landport)"),
     # Aku 75 mm one (Ahmet, 25 Ekim 2026 karari; devrilme analizi kutle noktasi olarak): GEOMETRIK OLARAK UYGULANAMADI (Y2a, 26 Ekim 2026).

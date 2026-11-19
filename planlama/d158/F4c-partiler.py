@@ -53,6 +53,11 @@ def isaretli(x, n=2):
 META = {
     "Aku on takozu": ("Akü (K30) gelince ölçü teyidi", "4 (B1a)"),
     "Sonar tutucu sol": ("—", "16 (B7)"), "Sonar tutucu orta": ("—", "16 (B7)"), "Sonar tutucu sag": ("—", "16 (B7)"),
+    # P10.7b2j (K64 a; planlama/d158/F10s-gunluk.md § 4, kontrol F10t): iki bara tutucusu, rehber B5a (güç paneli tezgâhı)
+    "Bara tutucusu yildiz barasi (GND) (5 saplama)": ("Bara saplaması M5 × 25 altıgen baş (DIN 933, VARSAYIM) gelince cep teyidi",
+                                                      "B5a (güç paneli); M6'da satırı yok"),
+    "Bara tutucusu anahtarli bara (+) (4 saplama)": ("Bara saplaması M5 × 25 altıgen baş (DIN 933, VARSAYIM) gelince cep teyidi",
+                                                     "B5a (güç paneli); M6'da satırı yok"),
     "Govde alt bandi sag": ("Kupon B/C (ısıl gömme deliği)", "34 (F2)"), "Govde alt bandi sol": ("Kupon B/C", "34 (F2)"),
     "Govde uzatma bandi 1 sag": ("Kupon B/C", "34 (F2) ile; M6'da satırı yok"), "Govde uzatma bandi 1 sol": ("Kupon B/C", "34 (F2) ile; M6'da satırı yok"),
     "Govde uzatma bandi 2 sag": ("Kupon B/C", "34 (F2) ile; M6'da satırı yok"), "Govde uzatma bandi 2 sol": ("Kupon B/C", "34 (F2) ile; M6'da satırı yok"),

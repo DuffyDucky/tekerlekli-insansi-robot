@@ -1,0 +1,627 @@
+{
+ "1 tam": {
+  "devre": "12 V ana hat: aku + -> XT60 -> ana sigorta 30 A -> ana anahtar -> sigorta kutusu",
+  "en_dar_yabanci": [
+   [
+    4.46,
+    "On sarj karti (E9: K2 + 5,6 ohm)",
+    false
+   ],
+   [
+    4.5,
+    "Guc paneli (arka kat)",
+    false
+   ],
+   [
+    4.69,
+    "Burc M3x8 naylon burc (On sarj karti (E9: K2 + 5,6 ohm) 2)",
+    false
+   ],
+   [
+    5.06,
+    "Vida M3x8 (On sarj karti (E9: K2 + 5,6 ohm) 2 alt)",
+    false
+   ],
+   [
+    5.67,
+    "Vida M3x6 (On sarj karti (E9: K2 + 5,6 ohm) 2 ust)",
+    false
+   ],
+   [
+    8.74,
+    "Bara tutucusu yildiz barasi (GND) (5 saplama)",
+    false
+   ]
+  ],
+  "izinli_temas": [
+   [
+    0.0,
+    "Aku LiFePO4 12,8 V (yatik)",
+    true
+   ],
+   [
+    0.0,
+    "Ana anahtar ASW-A01 govdesi (tahmini zarf)",
+    true
+   ],
+   [
+    0.0,
+    "Ana sigorta yuvasi 30 A (tahmini zarf)",
+    true
+   ],
+   [
+    0.0,
+    "Sigorta kutusu 6 yollu (tahmini zarf)",
+    true
+   ]
+  ]
+ },
+ "2 tam": {
+  "devre": "Toprak: aku - -> yildiz barasi 3. saplama (guc paneli) -> tum donusturuculer",
+  "en_dar_yabanci": [
+   [
+    4.5,
+    "Guc paneli (arka kat)",
+    false
+   ],
+   [
+    4.81,
+    "XL4016 servo 6 V C (kafa pan + tilt)",
+    false
+   ],
+   [
+    11.0,
+    "Aku on takozu",
+    false
+   ],
+   [
+    12.78,
+    "Burc M3x8 naylon burc (XL4016 servo 6 V C (kafa pan + tilt) 0)",
+    false
+   ],
+   [
+    12.95,
+    "Vida M3x8 (XL4016 servo 6 V C (kafa pan + tilt) 0 alt)",
+    false
+   ],
+   [
+    13.17,
+    "Pul M5 (yildiz 4)",
+    false
+   ]
+  ],
+  "izinli_temas": [
+   [
+    0.0,
+    "Aku LiFePO4 12,8 V (yatik)",
+    true
+   ]
+  ]
+ },
+ "3 tam": {
+  "devre": "Motor 12 V: F1 20 A -> role K1 -> anahtarli bara 3. saplama (kopru) 1. saplama -> BTS7960 sol -> on sol motor",
+  "en_dar_yabanci": [
+   [
+    2.26,
+    "Alt plaka",
+    false
+   ],
+   [
+    4.5,
+    "Guc paneli (arka kat)",
+    false
+   ],
+   [
+    5.5,
+    "Aku LiFePO4 12,8 V (yatik)",
+    false
+   ],
+   [
+    6.1,
+    "Somun M5 (yildiz 2)",
+    false
+   ],
+   [
+    6.13,
+    "On sarj karti (E9: K2 + 5,6 ohm)",
+    false
+   ],
+   [
+    6.26,
+    "Burc M3x8 naylon burc (On sarj karti (E9: K2 + 5,6 ohm) 2)",
+    false
+   ]
+  ],
+  "izinli_temas": [
+   [
+    0.0,
+    "BTS7960 motor surucu sol",
+    true
+   ],
+   [
+    0.0,
+    "Motor JGB37-520 (on sol)",
+    true
+   ],
+   [
+    0.0,
+    "Role 12 V 40 A + soket (tahmini zarf)",
+    true
+   ],
+   [
+    0.0,
+    "Sigorta kutusu 6 yollu (tahmini zarf)",
+    true
+   ]
+  ]
+ },
+ "4 tam": {
+  "devre": "Motor 12 V sag kol + arka motorlar: anahtarli bara / yildiz 2. saplama -> BTS7960 sag (plaka altindan z 36 deliginden)",
+  "en_dar_yabanci": [
+   [
+    0.89,
+    "Aku kayisi 25 mm (z -80)",
+    false
+   ],
+   [
+    1.11,
+    "Alt plaka",
+    false
+   ],
+   [
+    1.7,
+    "Aku kayisi 25 mm (z -140)",
+    false
+   ],
+   [
+    4.5,
+    "Guc paneli (arka kat)",
+    false
+   ],
+   [
+    4.99,
+    "Aku LiFePO4 12,8 V (yatik)",
+    false
+   ],
+   [
+    5.19,
+    "Aku on takozu",
+    false
+   ]
+  ],
+  "izinli_temas": [
+   [
+    0.0,
+    "BTS7960 motor surucu sag",
+    true
+   ],
+   [
+    0.0,
+    "Motor JGB37-520 (arka sag)",
+    true
+   ],
+   [
+    0.0,
+    "Motor JGB37-520 (on sag)",
+    true
+   ]
+  ]
+ },
+ "5 tam": {
+  "devre": "Servo 6 V A (E1): anahtarli bara / yildiz 1. saplama -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol",
+  "en_dar_yabanci": [
+   [
+    2.5,
+    "Guc paneli (arka kat)",
+    false
+   ],
+   [
+    5.5,
+    "Aku LiFePO4 12,8 V (yatik)",
+    false
+   ],
+   [
+    6.1,
+    "Somun M5 (yildiz 2)",
+    false
+   ],
+   [
+    7.01,
+    "Yayli pul M5 (yildiz 2)",
+    false
+   ],
+   [
+    7.42,
+    "Pul M5 (yildiz 2)",
+    false
+   ],
+   [
+    7.5,
+    "Bara civatasi M5x25 DIN 933 (yildiz 2)",
+    false
+   ]
+  ],
+  "izinli_temas": []
+ },
+ "6 tam": {
+  "devre": "Servo uzatmalari kafaya: pan + tilt (hat C, XL4016 C guc panelinde; direk ustu, R62 halkasindan)",
+  "en_dar_yabanci": [],
+  "izinli_temas": []
+ },
+ "7 tam": {
+  "devre": "Servo 6 V B (E1): anahtarli bara / yildiz 1. saplama -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol",
+  "en_dar_yabanci": [
+   [
+    4.5,
+    "Guc paneli (arka kat)",
+    false
+   ],
+   [
+    5.5,
+    "Aku LiFePO4 12,8 V (yatik)",
+    false
+   ],
+   [
+    5.76,
+    "Elektronik kati (on)",
+    false
+   ],
+   [
+    6.1,
+    "Somun M5 (yildiz 2)",
+    false
+   ],
+   [
+    7.01,
+    "Yayli pul M5 (yildiz 2)",
+    false
+   ],
+   [
+    7.42,
+    "Pul M5 (yildiz 2)",
+    false
+   ]
+  ],
+  "izinli_temas": [
+   [
+    0.0,
+    "Servo dagitim karti B (sol kol)",
+    true
+   ]
+  ]
+ },
+ "8 tam": {
+  "devre": "Kafa 12 V (K4/E4): F3 5 A + yildiz 4. saplama -> 18 AWG cift -> direk on yuzu -> R62 -> kafada 5 V/5,5 A cevirici (Pi 5, LCD)",
+  "en_dar_yabanci": [
+   [
+    5.0,
+    "Bara tutucusu anahtarli bara (+) (4 saplama)",
+    false
+   ],
+   [
+    5.53,
+    "Somun M5 (yildiz 3)",
+    false
+   ],
+   [
+    6.1,
+    "Somun M5 (anahtarli 2)",
+    false
+   ],
+   [
+    6.1,
+    "Somun M5 (anahtarli 3)",
+    false
+   ],
+   [
+    6.1,
+    "Somun M5 (yildiz 5)",
+    false
+   ],
+   [
+    6.2,
+    "Yayli pul M5 (yildiz 3)",
+    false
+   ]
+  ],
+  "izinli_temas": [
+   [
+    0.0,
+    "Sigorta kutusu 6 yollu (tahmini zarf)",
+    true
+   ]
+  ]
+ },
+ "9 tam": {
+  "devre": "Cevre 5 V: F4 5 A + yildiz 4. saplama -> XL4016 cevre -> ESP32 / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)",
+  "en_dar_yabanci": [
+   [
+    0.0,
+    "Burc M2,5x8 pirinc burc (PCA9685 servo surucu 1)",
+    false
+   ],
+   [
+    0.0,
+    "PCA9685 servo surucu",
+    false
+   ],
+   [
+    0.0,
+    "Vida M2,5x5 (PCA9685 servo surucu 1 ust)",
+    false
+   ],
+   [
+    0.7,
+    "Vida M2,5x5 (PCA9685 servo surucu 0 ust)",
+    false
+   ],
+   [
+    2.95,
+    "Burc M2,5x8 pirinc burc (PCA9685 servo surucu 0)",
+    false
+   ],
+   [
+    3.5,
+    "Guc paneli (arka kat)",
+    false
+   ]
+  ],
+  "izinli_temas": [
+   [
+    0.0,
+    "ESP32 DevKit 30 pin",
+    true
+   ],
+   [
+    0.0,
+    "ESP32 tasiyici kart (pertinaks)",
+    true
+   ],
+   [
+    0.0,
+    "Sigorta kutusu 6 yollu (tahmini zarf)",
+    true
+   ]
+  ]
+ },
+ "9 rehber": {
+  "devre": "Cevre 5 V: F4 5 A + yildiz 4. saplama -> XL4016 cevre -> ESP32 / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)",
+  "en_dar_yabanci": [
+   [
+    3.5,
+    "Guc paneli (arka kat)",
+    false
+   ],
+   [
+    5.0,
+    "Bara tutucusu anahtarli bara (+) (4 saplama)",
+    false
+   ],
+   [
+    5.5,
+    "Aku LiFePO4 12,8 V (yatik)",
+    false
+   ],
+   [
+    6.1,
+    "Somun M5 (anahtarli 3)",
+    false
+   ],
+   [
+    6.1,
+    "Somun M5 (anahtarli 4)",
+    false
+   ],
+   [
+    6.1,
+    "Somun M5 (yildiz 5)",
+    false
+   ]
+  ],
+  "izinli_temas": [
+   [
+    0.0,
+    "Sigorta kutusu 6 yollu (tahmini zarf)",
+    true
+   ]
+  ]
+ },
+ "10 tam": {
+  "devre": "Acil stop (E3): F5 -> mantar (NC) -> role bobini -> MOSFET (arayuz karti, ESP32 'devreye al') ; PC817 mantar sonrasi gerilimi okur",
+  "en_dar_yabanci": [
+   [
+    0.0,
+    "On sarj karti (E9: K2 + 5,6 ohm)",
+    false
+   ],
+   [
+    12.25,
+    "Civata M5x12 (kat sol z -40)",
+    false
+   ],
+   [
+    13.0,
+    "Elektronik kati (on)",
+    false
+   ]
+  ],
+  "izinli_temas": [
+   [
+    0.0,
+    "Acil stop kontak govdesi (1NC)",
+    true
+   ],
+   [
+    0.0,
+    "Arayuz karti (E2/E3)",
+    true
+   ],
+   [
+    0.0,
+    "Role 12 V 40 A + soket (tahmini zarf)",
+    true
+   ],
+   [
+    0.0,
+    "Sigorta kutusu 6 yollu (tahmini zarf)",
+    true
+   ]
+  ]
+ },
+ "11 tam": {
+  "devre": "Sinyal: sonar x3 -> arayuz karti bolucu (4,7k/10k) -> ESP32 (on ara ray ustunden)",
+  "en_dar_yabanci": [
+   [
+    0.0,
+    "Alt plaka",
+    false
+   ],
+   [
+    0.0,
+    "Elektronik kati (on)",
+    false
+   ],
+   [
+    0.0,
+    "Vida M3x6 (ESP32 tasiyici kart (pertinaks) 1 ust)",
+    false
+   ],
+   [
+    0.8,
+    "Vida M3x6 (Arayuz karti (E2/E3) 3 ust)",
+    false
+   ],
+   [
+    1.85,
+    "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 1)",
+    false
+   ],
+   [
+    2.66,
+    "Burc M3x8 naylon burc (Arayuz karti (E2/E3) 3)",
+    false
+   ]
+  ],
+  "izinli_temas": [
+   [
+    0.0,
+    "Arayuz karti (E2/E3)",
+    true
+   ],
+   [
+    0.0,
+    "ESP32 tasiyici kart (pertinaks)",
+    true
+   ],
+   [
+    0.0,
+    "Sonar HC-SR04 (sol)",
+    true
+   ],
+   [
+    0.0,
+    "Sonar tutucu sol",
+    true
+   ]
+  ]
+ },
+ "12 tam": {
+  "devre": "Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (VBUS hattinda seri 1N5819)",
+  "en_dar_yabanci": [
+   [
+    0.0,
+    "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 1)",
+    false
+   ],
+   [
+    0.0,
+    "Elektronik kati (on)",
+    false
+   ],
+   [
+    0.0,
+    "Vida M3x6 (ESP32 tasiyici kart (pertinaks) 1 ust)",
+    false
+   ],
+   [
+    0.0,
+    "Vida M3x8 (ESP32 tasiyici kart (pertinaks) 1 alt)",
+    false
+   ],
+   [
+    7.23,
+    "Vida M3x6 (ESP32 tasiyici kart (pertinaks) 0 ust)",
+    false
+   ],
+   [
+    10.63,
+    "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 0)",
+    false
+   ]
+  ],
+  "izinli_temas": [
+   [
+    0.0,
+    "BTS7960 motor surucu sol",
+    true
+   ],
+   [
+    0.0,
+    "ESP32 DevKit 30 pin",
+    true
+   ],
+   [
+    0.0,
+    "ESP32 tasiyici kart (pertinaks)",
+    true
+   ]
+  ]
+ },
+ "12 rehber": {
+  "devre": "Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (VBUS hattinda seri 1N5819)",
+  "en_dar_yabanci": [
+   [
+    0.0,
+    "Burc M3x8 naylon burc (ESP32 tasiyici kart (pertinaks) 1)",
+    false
+   ],
+   [
+    0.0,
+    "Elektronik kati (on)",
+    false
+   ],
+   [
+    0.0,
+    "Vida M3x6 (ESP32 tasiyici kart (pertinaks) 1 ust)",
+    false
+   ],
+   [
+    0.0,
+    "Vida M3x8 (ESP32 tasiyici kart (pertinaks) 1 alt)",
+    false
+   ],
+   [
+    11.6,
+    "Burc M2,5x8 pirinc burc (PCA9685 servo surucu 0)",
+    false
+   ],
+   [
+    11.71,
+    "PCA9685 servo surucu",
+    false
+   ]
+  ],
+  "izinli_temas": [
+   [
+    0.0,
+    "BTS7960 motor surucu sol",
+    true
+   ],
+   [
+    0.0,
+    "ESP32 tasiyici kart (pertinaks)",
+    true
+   ]
+  ]
+ }
+}

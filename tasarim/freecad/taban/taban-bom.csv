@@ -1,26 +1,32 @@
 ﻿Tur;Kalem;Adet;Toplam kutle (g)
 Baglanti;M2,5x5 DIN 912;8;3.7
 Baglanti;M2,5x8 DIN 912;8;4.6
-Baglanti;M3 isil gomme somun;2;0.5
+Baglanti;M3 isil gomme somun;6;1.6
+Baglanti;M3x10 ISO 7380;4;3.4
 Baglanti;M3x6 DIN 912;80;65.3
 Baglanti;M3x8 DIN 912;26;24.1
 Baglanti;M4 DIN 125 pul;15;4.6
 Baglanti;M4 DIN 985 naylon somun;11;12.9
 Baglanti;M4x16 DIN 912;15;39.6
-Baglanti;M5 DIN 125 pul;8;3.5
+Baglanti;M5 DIN 125 pul;17;7.5
+Baglanti;M5 DIN 127 yayli pul (takim);9;3.9
+Baglanti;M5 DIN 934 somun (takim);9;10.1
 Baglanti;M5 cekic somun, kanal 10 (tahmini olcu);8;44.1
 Baglanti;M5x12 DIN 912;8;30.0
 Baglanti;M5x16 DIN 913 set vida (saplama);8;18.7
+Baglanti;M5x25 altigen basli civata (DIN 933, bara saplamasi takimi);9;48.4
 Baglanti;M6 cekic somun, kanal 10;18;93.1
 Baglanti;M6x14 DIN 912;14;86.7
 Baglanti;M6x14 ISO 7380;4;20.5
 Baski;Aku on takozu;1;68.7
+Baski;Bara tutucusu anahtarli bara (+) (4 saplama);1;23.0
+Baski;Bara tutucusu yildiz barasi (GND) (5 saplama);1;28.2
 Baski;Sonar tutucu orta;1;5.6
 Baski;Sonar tutucu sag;1;5.0
 Baski;Sonar tutucu sol;1;5.0
 Lazer;Alt plaka;1;1363.7
-Lazer;Elektronik kati (on);1;196.0
-Lazer;Guc paneli (arka kat);1;240.1
+Lazer;Elektronik kati (on);1;195.6
+Lazer;Guc paneli (arka kat);1;239.9
 Satin;12 mm altigen kaplin x 30, O6;4;140.0
 Satin;25 mm cirt bant kayis (tahmini);2;54.9
 Satin;37 mm L motor braketi 1,5 mm;4;120.0

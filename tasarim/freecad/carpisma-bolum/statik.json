@@ -1,16 +1,16 @@
 {
  "bolum": "statik",
- "kosu": "20261109-084522",
- "baslangic": "2026-11-09T10:06:29",
- "bitis": "2026-11-09T10:06:41",
- "sure_s": 12.2,
- "yukleme_s": 61.2,
- "tepe_bellek_mb": 733,
- "tepe_sayfa_mb": 2641,
+ "kosu": "20261119-075818",
+ "baslangic": "2026-11-19T07:59:18",
+ "bitis": "2026-11-19T07:59:31",
+ "sure_s": 12.9,
+ "yukleme_s": 58.8,
+ "tepe_bellek_mb": 736,
+ "tepe_sayfa_mb": 2642,
  "ayni_surec": [
   "statik"
  ],
- "pid": 21808,
+ "pid": 21912,
  "moduller": [
   "iskelet",
   "omuz_sag",
@@ -23,7 +23,7 @@
  ],
  "kaynak": {
   "carpisma.py": "c688d738c3",
-  "arayuz.py": "50bc12c355",
+  "arayuz.py": "288cc20c6e",
   "ortak_lib.py": "a668036c1b",
   "sigma_profil.py": "7db14eb8d5",
   "iskelet/iskelet_parcalar.py": "da1de9d063",
@@ -31,11 +31,11 @@
   "kabuk/kabuk_parcalar.py": "cb2d75a334",
   "dirsek/dirsek_parcalar.py": "7182c29899",
   "kafa/kafa_parcalar.py": "2421681738",
-  "taban/taban_parcalar.py": "86dae15841",
-  "kafa/kafa-analiz.json": "7ce2ec0179",
+  "taban/taban_parcalar.py": "d00e2075e9",
+  "kafa/kafa-analiz.json": "682d561278",
   "dirsek/dirsek_lib.py": "51238e19bd",
   "kabuk/kabuk_lib.py": "ec1c00a7bd",
-  "kafa/kafa10_lib.py": "ba4e0b0378",
+  "kafa/kafa10_lib.py": "32479026d5",
   "kafa/kafa_lib.py": "a0240ebf6f",
   "omuz/omuz_lib.py": "b5c14c4ed2",
   "taban/taban_lib.py": "638881cefc"
@@ -154,18 +154,18 @@
      0.0
     ],
     "ayna": false,
-    "parca": 355,
+    "parca": 401,
     "haric": [
      "Ana anahtar dugmesi (gosterim, kabuk deligi gerekir)",
      "Kablo yolu 1: 12 V ana hat: aku + -> XT60 -> ana sigorta 30 A -> ana anahtar -> sigorta kutusu",
-     "Kablo yolu 2: Toprak: aku - -> WAGO yildiz noktasi (guc paneli) -> tum donusturuculer",
-     "Kablo yolu 3: Motor 12 V: F1 20 A -> role -> WAGO -> BTS7960 sol/sag -> motor kablo delikleri -> 4 motor",
-     "Kablo yolu 4: Motor 12 V sag kol + arka motorlar (plaka altindan z 36 deliginden)",
-     "Kablo yolu 5: Servo 6 V A (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol",
+     "Kablo yolu 2: Toprak: aku - -> yildiz barasi 3. saplama (guc paneli) -> tum donusturuculer",
+     "Kablo yolu 3: Motor 12 V: F1 20 A -> role K1 -> anahtarli bara 3. saplama (kopru) 1. saplama -> BTS7960 sol -> on sol motor",
+     "Kablo yolu 4: Motor 12 V sag kol + arka motorlar: anahtarli bara / yildiz 2. saplama -> BTS7960 sag (plaka altindan z 36 deliginden)",
+     "Kablo yolu 5: Servo 6 V A (E1): anahtarli bara / yildiz 1. saplama -> 7,5 A hat sigortasi -> XL4016 A (0; 170) -> 16 AWG -> dagitim A (72; 205) -> uzatmalar: sag kol",
      "Kablo yolu 6: Servo uzatmalari kafaya: pan + tilt (hat C, XL4016 C guc panelinde; direk ustu, R62 halkasindan)",
-     "Kablo yolu 7: Servo 6 V B (E1): role -> WAGO -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol",
-     "Kablo yolu 8: Kafa 12 V (K4/E4): F3 5 A -> 18 AWG cift -> direk on yuzu -> R62 -> kafada 5 V/5,5 A cevirici (Pi 5, LCD)",
-     "Kablo yolu 9: Cevre 5 V: F4 5 A -> XL4016 cevre -> ESP32 / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)",
+     "Kablo yolu 7: Servo 6 V B (E1): anahtarli bara / yildiz 1. saplama -> 7,5 A hat sigortasi -> XL4016 B (-49; 75) -> 16 AWG -> dagitim B (-72; 205) -> sol kol",
+     "Kablo yolu 8: Kafa 12 V (K4/E4): F3 5 A + yildiz 4. saplama -> 18 AWG cift -> direk on yuzu -> R62 -> kafada 5 V/5,5 A cevirici (Pi 5, LCD)",
+     "Kablo yolu 9: Cevre 5 V: F4 5 A + yildiz 4. saplama -> XL4016 cevre -> ESP32 / sensorler / PCA ve BNO 3V3 (ESP32 regulatorunden)",
      "Kablo yolu 10: Acil stop (E3): F5 -> mantar (NC) -> role bobini -> MOSFET (arayuz karti, ESP32 'devreye al') ; PC817 mantar sonrasi gerilimi okur",
      "Kablo yolu 11: Sinyal: sonar x3 -> arayuz karti bolucu (4,7k/10k) -> ESP32 (on ara ray ustunden)",
      "Kablo yolu 12: Sinyal: enkoder + BTS PWM/EN/IS -> ESP32; ESP32 -> kafa USB (VBUS hattinda seri 1N5819)"
@@ -198,7 +198,7 @@
    }
   ],
   "ev_pozu_cakisma": [],
-  "ev_pozu_kesisen_cift": 821,
+  "ev_pozu_kesisen_cift": 868,
   "ev_pozu_poz": {
    "one_arka": 0.0,
    "yana": 5.0,
@@ -241,14 +241,14 @@
    "kabuk": 7170.4,
    "dirsek_sag": 400.5,
    "dirsek_sol": 400.5,
-   "kafa": 2088.5,
-   "taban": 8109.8
+   "kafa": 2081.4,
+   "taban": 8231.4
   },
-  "kutle_toplam_g": 25720.6,
+  "kutle_toplam_g": 25835.1,
   "agirlik_merkezi": [
-   -0.03,
-   528.59,
-   -9.25
+   0.01,
+   526.72,
+   -9.59
   ]
  }
 }

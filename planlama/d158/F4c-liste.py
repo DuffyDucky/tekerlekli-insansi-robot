@@ -75,13 +75,18 @@ s += ["## F6b farkı: tek baskı analizi (09.11.2026, P6.2)", "",
       "Önce = F6a sonu (`%s:planlama/y2/Y2b-baski.json`; modül analizleri + omuz-baski), sonra = `baski-analiz.json`. Satır başına adet × g;" % ONCE_REF,
       "yalnız fark ≥ 1 g ya da destek var/yok değişen satırlar. Nedenler `planlama/d158/F6b-gunluk.md` §3.", "",
       "| Parça | Adet | Önce (g) | Sonra (g) | Destek (g, sonra) | Destek önce → sonra |", "|---|---|---|---|---|---|"]
+YENI_PARCA = [r for r in ROWS if (r["modul"], r["ad"]) not in ONCE_S]     # F6b'den sonra eklenen (P10.7b2j: bara tutuculari)
 for r in ROWS:
-    o = ONCE_S[(r["modul"], r["ad"])]
+    o = ONCE_S.get((r["modul"], r["ad"]))
+    if o is None:
+        s.append("| %s %s | %d | — (yoktu) | %s | %s | — → %s |" % (r["modul"], r["ad_tr"], r["adet"], ar([r["adet"] * x for x in r["g"]], 1),
+                                                                 ar([r["adet"] * x for x in r["destek_g"]], 1), "var" if r["destekli"] else "yok"))
+        continue
     dg = [r["adet"] * (r["g"][i] - o["g"][i]) for i in (0, 1)]
     if max(abs(x) for x in dg) >= 1.0 or o["desteksiz"] == r["destekli"]:
         s.append("| %s %s | %d | %s | %s | %s | %s → %s |" % (r["modul"], r["ad_tr"], r["adet"], ar([r["adet"] * x for x in o["g"]], 1), ar([r["adet"] * x for x in r["g"]], 1),
                                                          ar([r["adet"] * x for x in r["destek_g"]], 1), "yok" if o["desteksiz"] else "var", "var" if r["destekli"] else "yok"))
-s += ["| **Toplam (72 parça)** | **%d** | **%s** | **%s** | **%s** | %d → %d adet destekli |" % (YT["adet"], ar(OT["g"], 1), ar(YT["g"], 1), ar(YT["destek_g"], 1),
+s += ["| **Toplam (%d parça)** | **%d** | **%s** | **%s** | **%s** | %d → %d adet destekli |" % (YT["adet"], YT["adet"], ar(OT["g"], 1), ar(YT["g"], 1), ar(YT["destek_g"], 1),
                                                                                              sum(x["adet"] for x in ONCE["satirlar"] if not x["desteksiz"]), D_ADET),
       "", "| Toplam | Önce (F6a) | Sonra (F6b) | Fark |", "|---|---|---|---|",
       "| Adet | %d | %d | %d |" % (OT["adet"], YT["adet"], YT["adet"] - OT["adet"]),
@@ -90,6 +95,16 @@ s += ["| **Toplam (72 parça)** | **%d** | **%s** | **%s** | **%s** | %d → %d 
       "| PETG-CF | %s kg | %s kg | %s / %s g |" % (ar(OT["cf_g"], 2, 1000), ar(YT["cf_g"], 2, 1000), FP.isaretli(YT["cf_g"][0] - OT["cf_g"][0], 1), FP.isaretli(YT["cf_g"][1] - OT["cf_g"][1], 1)),
       "| Süre | %s sa | %s sa | %s / %s sa |" % (ar(OT["sa"], 1), ar(YT["sa"], 1), FP.isaretli(YT["sa"][0] - OT["sa"][0], 2), FP.isaretli(YT["sa"][1] - OT["sa"][1], 2)),
       ""]
+
+if YENI_PARCA:
+    s += ["## F6b'den sonra eklenen parçalar", "",
+          "Yukarıdaki tabloda \"önce\" sütunu boş olan satırlar. P10.7b2j (19.11.2026, K64 a): güç panelinde iki basılmış yalıtkan bara tutucusu",
+          "(PETG, desteksiz, rehber B5a); tasarım `planlama/d158/F10s-gunluk.md` § 4, kontrol `planlama/d158/F10t-gunluk.md`. Saplama M5 × 25",
+          "altıgen başı (DIN 933) VARSAYIM: baş tutucunun alt yüzündeki altıgen cepte durur, sipariş başka baş tipiyle gelirse cep değişir.", "",
+          "| Parça | Adet | Filament (g) | Süre (sa) |", "|---|---|---|---|"]
+    s += ["| %s %s | %d | %s | %s |" % (r["modul"], r["ad_tr"], r["adet"], ar([r["adet"] * x for x in r["g"]], 1), ar([r["adet"] * x for x in r["sa"]], 2))
+          for r in YENI_PARCA]
+    s += [""]
 
 s += ["## 03.11 → 09.11 farkı (F4c)", "",
       "| Değişiklik | Parça | Adet | Filament | Süre | Neden ve kaynak |", "|---|---|---|---|---|---|",
@@ -202,8 +217,15 @@ for x in P["partiler"]["0"]["kuponlar"]:
     s.append("| %s%s | %s | %s | %s |" % (x["kod"], " (koşullu)" if x["kosullu"] else "", x["malzeme"], x["denenen"], ar(x["g"], 1)))
 s += ["",
       "Rulman elle (ya da mengeneyle hafif) bastırınca oturmalı; ısıl gömme somun havyayla düz girmeli, vida sıkınca dönmemeli. Sonuç CAD'e uygulanır ve STL'ler",
-      "yeniden çıkarılır.", "",
-      "## STL durumu", "",
+      "yeniden çıkarılır.", ""]
+# P10.7b2g (17.11) "Kablo deneme parçası" bölümü elle yazıldı (bu betik üretmiyor); F10t (P10.7b2j): mevcut dosyadan aynen korunur
+_MD = os.path.join(KOK, "planlama", "baski-listesi.md")
+_eski = open(_MD, encoding="utf-8").read().split("\n") if os.path.exists(_MD) else []
+_b = [i for i, x in enumerate(_eski) if x.startswith("### Kablo deneme parçası")]
+_e = [i for i, x in enumerate(_eski) if x == "## STL durumu"]
+if _b and _e and _e[0] > _b[0]:
+    s += _eski[_b[0]:_e[0]]
+s += ["## STL durumu", "",
       "Omuz STL'leri (`tasarim/freecad/omuz/stl/`, 09.11 F2 koşusu; `omuz-gobegi.stl` dişli) ve kuponlar (`tasarim/freecad/test/stl/`) var. Diğer",
       "modüllerin baskı parçaları kupon sonucundan sonra FreeCAD'den toplu dışa aktarılmalı (açık iş; P6.1'de modüller yeniden üretilirken).", "",
       "## Parti tabloları", "",

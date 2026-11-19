@@ -246,8 +246,18 @@ for tp in tip_ad:
             ek += "; uç somun üstünü en az %s mm geçer" % sayi(min(b["somun_gecme_pay"] for b in bs), 1)
     elif tp == "ray":
         ek = "PCB–ray en büyük %s mm" % sayi(max(b["kart_tutucu_mm"] for b in bs), 2)
-    elif "kavrama" in ornek:
-        ek = "kavrama %s mm" % sayi(min(b["olcu"]["kavrama"] for b in bs), 1)
+    elif any("kavrama" in b["olcu"] or "pabuc_yigini" in b["olcu"] for b in bs):
+        # Bara saplamalarinin (P10.7b2j) olcusunde kavrama yok; uc payi pabuc yiginiyla / bos olarak ayri yazilir.
+        parca = []
+        kv = [b["olcu"]["kavrama"] for b in bs if "kavrama" in b["olcu"]]
+        if kv:
+            parca.append("kavrama %s mm" % sayi(min(kv), 1))
+        bara = [b["olcu"] for b in bs if "pabuc_yigini" in b["olcu"]]
+        if bara:
+            parca.append("bara saplaması (%d): uç somun üstünü en az %s mm geçer (%s mm pabuç yığınıyla; pabuçsuz %s mm)"
+                         % (len(bara), sayi(min(o["uc_disari"] for o in bara), 1), sayi(max(o["pabuc_yigini"] for o in bara), 1),
+                            sayi(min(o["uc_bos"] for o in bara), 1)))
+        ek = "; ".join(parca)
     rows.append((esc(tip_ad[tp]), "%d / %d" % (ok, len(bs)), esc(ek)))
 H.append("<div class='tw'>" + tablo(["Tür", "Tamam", "Ölçüt örneği"], rows) + "</div>")
 H.append("<p class='not'>Ölçütler: baş, pul, somun, burç ve kart yüzeye dayalı (≤ 0,01 mm); bağlantı elemanı ve delik/somun aynı eksende (≤ 10⁻⁴ mm); "

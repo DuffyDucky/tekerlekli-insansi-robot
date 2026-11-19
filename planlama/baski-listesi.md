@@ -8,14 +8,14 @@ geometri modüllerin `*_parcalar.py`'sinden, FCStd nesnesinin hacmiyle eşit) �
 filamenti, g, süre, X2D; 45° eşik, tasarım yönü; doluluk kabuk 0,9, küçük parça 0,8, omuz PETG-CF 0,8–0,9; 10 mm³/s) → `planlama/y2/Y2b-baski.py` →
 `planlama/y2/Y2b-baski.json` → bu dosya. Kabuk ve kafa satırlarını `tasarim/freecad/lale158/baski_listesi_guncelle.py` yazar; öteki
 satırlar, ek sütunlar ve parti planı F4c'den (`planlama/d158/F4c-partiler.md`). Denetim: `py -3 planlama/d158/F4c-dogrula.py` (her satırın
-JSON anahtarı, toplamlar, betik çıktısı, tek analizde her parça bir kez). Ana montajın BOM'u (`tasarim/freecad/montaj/robot-bom.csv`, `Baski` satırları) aynı 72 parçayı sayıyor.
-Yazıcı: Bambu Lab X2D (246 × 246 × 250 mm); **72 parçanın hepsi X2D'ye sığıyor** (tek analiz `x2d_sigar`; en büyük ölçü 235,0 mm, göğüs
-bandı yüksekliği). **13 adet destekli** basılır (9 tür): Göğüs bandı sağ (kabuk), Göğüs bandı sol (kabuk), Göğüs ekranı VESA taşıyıcı (kabuk), Omuz yuvası (omuz, ×2), Omuz göbeği (omuz, ×2), S1 kablo tamburu (omuz, ×2), Kol çatalı (omuz, ×2), Yüz kabuğu (ön) sağ (kafa), Arka kafa kabuğu sağ (kafa). Diğer 59 parça desteksiz. Filament ve süreye destek malzemesi dahil
+JSON anahtarı, toplamlar, betik çıktısı, tek analizde her parça bir kez). Ana montajın BOM'u (`tasarim/freecad/montaj/robot-bom.csv`, `Baski` satırları) aynı 74 parçayı sayıyor.
+Yazıcı: Bambu Lab X2D (246 × 246 × 250 mm); **74 parçanın hepsi X2D'ye sığıyor** (tek analiz `x2d_sigar`; en büyük ölçü 235,0 mm, göğüs
+bandı yüksekliği). **13 adet destekli** basılır (9 tür): Göğüs bandı sağ (kabuk), Göğüs bandı sol (kabuk), Göğüs ekranı VESA taşıyıcı (kabuk), Omuz yuvası (omuz, ×2), Omuz göbeği (omuz, ×2), S1 kablo tamburu (omuz, ×2), Kol çatalı (omuz, ×2), Yüz kabuğu (ön) sağ (kafa), Arka kafa kabuğu sağ (kafa). Diğer 61 parça desteksiz. Filament ve süreye destek malzemesi dahil
 (toplam 124 g, tahmini: destek hacmi × 0,15 × 1,27 g/cm³; dilimleyicinin verdiği esastır).
 
 ## 158 cm güncellemesi (09.11.2026)
 
-Boy 1,58 m, göğüste 11,6" gömülü ekran, kafada 10,1" QLED. Kabuk ve kafa satırları bu betikle `Y2b-baski.json`'dan; öteki satırlar ve ek sütunlar F4c'de (denetim `planlama/d158/F4c-dogrula.py`). Güncel toplam **72 parça, 7,67–7,73 kg, 160–161 sa** (`planlama/y2/Y2b-baski.py`, 6,47 kg PETG + 1,19–1,25 kg PETG-CF).
+Boy 1,58 m, göğüste 11,6" gömülü ekran, kafada 10,1" QLED. Kabuk ve kafa satırları bu betikle `Y2b-baski.json`'dan; öteki satırlar ve ek sütunlar F4c'de (denetim `planlama/d158/F4c-dogrula.py`). Güncel toplam **74 parça, 7,72–7,78 kg, 161–162 sa** (`planlama/y2/Y2b-baski.py`, 6,53 kg PETG + 1,19–1,25 kg PETG-CF).
 Parti tablolarında satırı olmayan kabuk / kafa parçası:
 
 yok.
@@ -35,15 +35,28 @@ yalnız fark ≥ 1 g ya da destek var/yok değişen satırlar. Nedenler `planlam
 | kabuk Göğüs ekranı VESA taşıyıcı | 1 | 113,0 | 144,8 | 31,7 | var → var |
 | omuz Omuz yuvası | 2 | 162,0–179,8 | 163,0–180,4 | 23,0 | var → var |
 | omuz Kol çatalı | 2 | 197,4–219,2 | 200,0–222,0 | 25,4 | var → var |
-| **Toplam (72 parça)** | **72** | **7604,8–7662,4** | **7668,9–7726,7** | **124,5** | 14 → 13 adet destekli |
+| taban Bara tutucusu yildiz barasi (GND) (5 saplama) | 1 | — (yoktu) | 29,6 | 0,0 | — → yok |
+| taban Bara tutucusu anahtarli bara (+) (4 saplama) | 1 | — (yoktu) | 24,2 | 0,0 | — → yok |
+| **Toplam (74 parça)** | **74** | **7604,8–7662,4** | **7722,7–7780,5** | **124,5** | 14 → 13 adet destekli |
 
 | Toplam | Önce (F6a) | Sonra (F6b) | Fark |
 |---|---|---|---|
-| Adet | 72 | 72 | 0 |
-| Filament | 7,60–7,66 kg | 7,67–7,73 kg | +64,1 / +64,3 g |
-| PETG | 6,45 kg | 6,47 kg | +28,3 / +28,3 g |
+| Adet | 72 | 74 | 2 |
+| Filament | 7,60–7,66 kg | 7,72–7,78 kg | +117,9 / +118,1 g |
+| PETG | 6,45 kg | 6,53 kg | +82,1 / +82,1 g |
 | PETG-CF | 1,16–1,22 kg | 1,19–1,25 kg | +35,8 / +36,0 g |
-| Süre | 158,2–159,4 sa | 159,9–161,1 sa | +1,68 / +1,66 sa |
+| Süre | 158,2–159,4 sa | 161,0–162,2 sa | +2,80 / +2,78 sa |
+
+## F6b'den sonra eklenen parçalar
+
+Yukarıdaki tabloda "önce" sütunu boş olan satırlar. P10.7b2j (19.11.2026, K64 a): güç panelinde iki basılmış yalıtkan bara tutucusu
+(PETG, desteksiz, rehber B5a); tasarım `planlama/d158/F10s-gunluk.md` § 4, kontrol `planlama/d158/F10t-gunluk.md`. Saplama M5 × 25
+altıgen başı (DIN 933) VARSAYIM: baş tutucunun alt yüzündeki altıgen cepte durur, sipariş başka baş tipiyle gelirse cep değişir.
+
+| Parça | Adet | Filament (g) | Süre (sa) |
+|---|---|---|---|
+| taban Bara tutucusu yildiz barasi (GND) (5 saplama) | 1 | 29,6 | 0,62 |
+| taban Bara tutucusu anahtarli bara (+) (4 saplama) | 1 | 24,2 | 0,50 |
 
 ## 03.11 → 09.11 farkı (F4c)
 
@@ -71,25 +84,25 @@ Parça sayısının 65 → 72 artışı yalnız küçük parçalardan (en büyü
 | 1 | Hemen | 27 | 3,37 kg | ≈ 70 sa |
 | 2 | Servo ve horn gelip ölçülünce | 25 | 1,33–1,39 kg | ≈ 28–29 sa |
 | 3 | 10,1" QLED yüz ekranı gelip ölçülünce | 9 | 0,76 kg | ≈ 16 sa |
-| 4 | Etek tasarım kararından sonra (M6 CAD) | 11 | 2,21 kg | ≈ 46 sa |
-| **Toplam** | | **72** | **7,67–7,73 kg** | **≈ 160–161 sa** |
+| 4 | Etek tasarım kararından sonra (M6 CAD) | 13 | 2,26 kg | ≈ 47 sa |
+| **Toplam** | | **74** | **7,72–7,78 kg** | **≈ 161–162 sa** |
 
 | Malzemeye göre | Düz PETG (beyaz) | PETG-CF (siyah) |
 |---|---|---|
 | Parti 1 | 3,19 kg | 0,18 kg |
 | Parti 2 | 0,32 kg | 1,02–1,07 kg |
 | Parti 3 | 0,76 kg | 0,00 kg |
-| Parti 4 | 2,21 kg | 0,00 kg |
-| **Parçalar** | **6,47 kg** | **1,19–1,25 kg** |
+| Parti 4 | 2,26 kg | 0,00 kg |
+| **Parçalar** | **6,53 kg** | **1,19–1,25 kg** |
 | Parti 0 kuponları | 0,08–0,12 kg | 0,18–0,30 kg |
-| **Parça + kupon** | **6,56–6,59 kg** | **1,37–1,55 kg** |
+| **Parça + kupon** | **6,61–6,65 kg** | **1,37–1,55 kg** |
 
 Parti ayrıntısı, bağımlılıklar, montaj adımı ve takvim kontrolü: `planlama/d158/F4c-partiler.md`.
 
-**Filament:** parçalar **düz PETG 6,47 kg** + **PETG-CF 1,19–1,25 kg** (`Y2b-baski.json`; omuz doluluğu 0,8–0,9; bütün satırlarda destek dahil,
+**Filament:** parçalar **düz PETG 6,53 kg** + **PETG-CF 1,19–1,25 kg** (`Y2b-baski.json`; omuz doluluğu 0,8–0,9; bütün satırlarda destek dahil,
 toplam 124 g, F6b). Kuponlar (Parti 0) PETG 0,08–0,12 kg, PETG-CF 0,18–0,30 kg.
 Plan: **9 makara beyaz PETG + 1,5 kg siyah PETG-CF (3 × 0,5 kg)** (`planlama/maliyet.json` `kalemler[107–109]`).
-- **PETG yetiyor:** parça + kupon 6,56–6,59 kg, 9 kg'de ≈ 2,4 kg pay (≈ %37).
+- **PETG yetiyor:** parça + kupon 6,61–6,65 kg, 9 kg'de ≈ 2,4 kg pay (≈ %36).
 - **PETG-CF 1,5 kg sınırda, yetmiyor sayılmalı:** parça + kupon 1,37–1,55 kg; 1,5 kg'de pay 130 g (doluluk 0,8 ve kuponların tahmini kütlesiyle) ile −53 g
   (doluluk 0,9 ve %100 kupon). D2 kuponu basılmazsa pay 33–172 g. En büyük CF parçası (kafa servo yuvası) 152 g: tek bir başarısız baskı alt
   durumdaki payı bitiriyor. Karar taslağı `planlama/d158/F4c-gunluk.md` (KT-F4c-1: +1 makara, 0,5 kg, 1.114,03 TL; %15 payla 1.281,13 TL).
@@ -146,7 +159,7 @@ baskı yönüne 2,27° eğik, flanşın üst yüzü tabladan 1,4988 mm'de; eski 
 verdi ve bir sonraki katmanın tamamı desteksiz sayıldı. Aynı iki katmanın gerçek farkı 5,01 mm² (45° payının içinde). Tek analiz: destek 0.
 Kanıt `baski-analiz.json` `kapak_tani`, `planlama/d158/F6b-gunluk.md` §2.
 
-**Süre:** ≈ 160–161 saat; yazıcı hiç durmazsa ≈ 6,7 gün. Paylaşımlı okul yazıcısında haftada 32–40 sa ile ≈ 4,0–5,0 hafta (tahmini). Parti 1 hemen başlamalı.
+**Süre:** ≈ 161–162 saat; yazıcı hiç durmazsa ≈ 6,8 gün. Paylaşımlı okul yazıcısında haftada 32–40 sa ile ≈ 4,0–5,1 hafta (tahmini). Parti 1 hemen başlamalı.
 
 ## Sıralama mantığı
 
@@ -221,7 +234,7 @@ Sütunlar: ölçü tek analizdeki baskı yönündeki kutu (mm), filament ve sür
 0,8–0,9). Malzeme `Y2b-baski.py` CF kümesinden. Destek sütununda alan ve destek filamenti (`baski-analiz.json` `destek_alan_mm2`, `destek_g`).
 Kaynak: `baski-analiz/parcalar[i]` = `tasarim/freecad/lale158/baski-analiz.json` → `parcalar[i]` (yön, destek bölgeleri, en az destekli aday yön,
 FCStd nesnesi); `Y2b[i]` = `planlama/y2/Y2b-baski.json` → `satirlar[i]`. X2D: tek analizdeki `x2d_sigar` ve ölçü ≤ 246 × 246 × 250.
-Montaj adımları `F4c-partiler.md`'de. **Eski analiz:** yok; tek analiz 2026-11-09 tarihli, geometri her modülün `*_parcalar.py`'sinden yeniden
+Montaj adımları `F4c-partiler.md`'de. **Eski analiz:** yok; tek analiz 2026-11-19 tarihli, geometri her modülün `*_parcalar.py`'sinden yeniden
 üretildi ve FCStd'lerle hacimce eşit (`kaynak.hacim_esit`; eşit olmayan: yok). Ayrıntı `planlama/d158/F6b-gunluk.md`.
 
 ## Parti 1 — Hemen
@@ -230,31 +243,31 @@ Montaj adımları `F4c-partiler.md`'de. **Eski analiz:** yok; tek analiz 2026-11
 
 | ☐ | Modül | Parça | Adet | Ölçü (mm) | Filament (g/adet) | Süre (sa/adet) | Malzeme | Tabla yönü | Destek | X2D | Kaynak (JSON) | Bağlı olduğu kalem |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ☐ | taban | Sonar tutucu sol | 1 | 61 × 61 × 8 | 5 | 0,11 | PETG | arka yüzü (ray tarafı) tablada | desteksiz | sığar | `baski-analiz/parcalar[1]` · Y2b[1] | — |
-| ☐ | taban | Sonar tutucu orta | 1 | 66 × 66 × 8 | 6 | 0,12 | PETG | arka yüzü (ray tarafı) tablada | desteksiz | sığar | `baski-analiz/parcalar[2]` · Y2b[2] | — |
-| ☐ | taban | Sonar tutucu sağ | 1 | 61 × 61 × 8 | 5 | 0,11 | PETG | arka yüzü (ray tarafı) tablada | desteksiz | sığar | `baski-analiz/parcalar[3]` · Y2b[3] | — |
-| ☐ | kabuk | Gövde alt bandı sağ | 1 | 170 × 137 × 226 | 299 | 6,23 | PETG | dik (alt kenarı tablada) | desteksiz | sığar | `baski-analiz/parcalar[4]` · Y2b[4] | Kupon B/C (ısıl gömme deliği) |
-| ☐ | kabuk | Gövde alt bandı sol | 1 | 170 × 125 × 226 | 280 | 5,84 | PETG | dik (alt kenarı tablada) | desteksiz | sığar | `baski-analiz/parcalar[5]` · Y2b[5] | Kupon B/C |
-| ☐ | kabuk | Gövde uzatma bandı 1 sağ | 1 | 170 × 137 × 170 | 224 | 4,67 | PETG | dik (alt kenarı tablada) | desteksiz | sığar | `baski-analiz/parcalar[6]` · Y2b[6] | Kupon B/C |
-| ☐ | kabuk | Gövde uzatma bandı 1 sol | 1 | 170 × 125 × 170 | 211 | 4,39 | PETG | dik (alt kenarı tablada) | desteksiz | sığar | `baski-analiz/parcalar[7]` · Y2b[7] | Kupon B/C |
-| ☐ | kabuk | Gövde uzatma bandı 2 sağ | 1 | 170 × 137 × 170 | 224 | 4,67 | PETG | dik (alt kenarı tablada) | desteksiz | sığar | `baski-analiz/parcalar[8]` · Y2b[8] | Kupon B/C |
-| ☐ | kabuk | Gövde uzatma bandı 2 sol | 1 | 170 × 125 × 170 | 211 | 4,39 | PETG | dik (alt kenarı tablada) | desteksiz | sığar | `baski-analiz/parcalar[9]` · Y2b[9] | Kupon B/C |
-| ☐ | kabuk | Gövde orta bandı sağ | 1 | 214 × 162 × 227 | 272 | 5,66 | PETG | dik (alt kenarı tablada) | desteksiz | sığar | `baski-analiz/parcalar[10]` · Y2b[10] | Kupon B/C |
-| ☐ | kabuk | Gövde orta bandı sol | 1 | 214 × 150 × 227 | 262 | 5,45 | PETG | dik (alt kenarı tablada) | desteksiz | sığar | `baski-analiz/parcalar[11]` · Y2b[11] | Kupon B/C |
-| ☐ | kabuk | Göğüs bandı sağ | 1 | 217 × 164 × 235 | 234 | 4,90 | PETG | dik (alt kenarı tablada) | **destekli**: 10,7 cm², 15,6 g; cep üst kenarı (köprü 160 mm) + z 12–15'te alt kenar çıkıntısı | sığar | `baski-analiz/parcalar[12]` · Y2b[12] | Kupon B/C; 11,6" ekran cebi |
-| ☐ | kabuk | Göğüs bandı sol | 1 | 217 × 152 × 235 | 229 | 4,79 | PETG | dik (alt kenarı tablada) | **destekli**: 3,6 cm², 14,1 g; cep üst kenarı (köprü 148 mm) | sığar | `baski-analiz/parcalar[13]` · Y2b[13] | Kupon B/C; 11,6" ekran cebi |
-| ☐ | kabuk | Omuz bandı sağ | 1 | 164 × 156 × 102 | 184 | 3,84 | PETG | ters (üst kapak tablada) | desteksiz | sığar | `baski-analiz/parcalar[14]` · Y2b[14] | Kupon B/C |
-| ☐ | kabuk | Omuz bandı sol | 1 | 156 × 152 × 102 | 178 | 3,71 | PETG | ters (üst kapak tablada) | desteksiz | sığar | `baski-analiz/parcalar[15]` · Y2b[15] | Kupon B/C |
-| ☐ | kabuk | Arka servis kapağı | 1 | 190 × 160 × 3 | 98 | 2,04 | PETG | dış yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[16]` · Y2b[16] | — |
-| ☐ | omuz | Rulman kapağı | 2 | 71 × 71 × 14 | 15–17 | 0,32–0,36 | PETG-CF | +X: x = 146 yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[57]` · Y2b[57] | 6808-2RS (kupon A) |
-| ☐ | omuz | Üst kol tüpü | 2 | 56 × 56 × 130 | 54 | 1,13 | PETG | +Y: y = -170 yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[61]` · Y2b[61] | Kupon E (tüp–pim geçmesi) |
-| ☐ | kabuk | Üst arka servis kapağı | 1 | 168 × 150 × 12 | 85 | 1,77 | PETG | dış yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[17]` · Y2b[17] | USB hub 4'lü (72 × 25 × 19) ölçüsü: hub takozu; Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır |
-| ☐ | kabuk | Göğüs ekranı çerçevesi sağ | 1 | 207 × 147 × 10 | 31 | 0,65 | PETG | arka yüzü (flanş) tablada | desteksiz | sığar | `baski-analiz/parcalar[28]` · Y2b[28] | 11,6" göğüs ekranı kasası (284,65 × 182,25); Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır |
-| ☐ | kabuk | Göğüs ekranı çerçevesi sol | 1 | 207 × 147 × 10 | 31 | 0,65 | PETG | arka yüzü (flanş) tablada | desteksiz | sığar | `baski-analiz/parcalar[29]` · Y2b[29] | 11,6" göğüs ekranı kasası (284,65 × 182,25); Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır |
-| ☐ | kabuk | Göğüs ekranı VESA taşıyıcı | 1 | 106 × 100 × 63 | 145 | 3,05 | PETG-CF | VESA plakası tablada; arka flanş destekli | **destekli**: 38,1 cm², 31,7 g; arka flanş (z 32–58) | sığar | `baski-analiz/parcalar[30]` · Y2b[30] | 11,6" göğüs ekranı VESA delikleri (yer ve derinlik doğrulanmadı, `arayuz.py:342`); Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır |
-| ☐ | kabuk | Hoparlör kabı ön halka | 1 | 46 × 46 × 7 | 3 | 0,06 | PETG | VARSAYIM kap; ön halka, düz (desteksiz) | desteksiz | sığar | `baski-analiz/parcalar[35]` · Y2b[35] | 8 Ω hoparlör (K36 stok, K6 yön); kap ölçüsü VARSAYIM; Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır |
-| ☐ | kabuk | Hoparlör kabı arka (flanşlı) | 1 | 62 × 62 × 13 | 7 | 0,15 | PETG | VARSAYIM kap; flanş yüzü tablada (desteksiz) | desteksiz | sığar | `baski-analiz/parcalar[36]` · Y2b[36] | 8 Ω hoparlör (K36, K6); VARSAYIM; Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır |
-| ☐ | kabuk | Hoparlör kelepçesi | 1 | 57 × 57 × 14 | 4 | 0,09 | PETG | VARSAYIM; köprü üst yüzü tablada, bacaklar yukarı (desteksiz) | desteksiz | sığar | `baski-analiz/parcalar[37]` · Y2b[37] | 8 Ω hoparlör (K36, K6); VARSAYIM; Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır |
+| ☐ | taban | Sonar tutucu sol | 1 | 61 × 61 × 8 | 5 | 0,11 | PETG | arka yüzü (ray tarafı) tablada | desteksiz | sığar | `baski-analiz/parcalar[3]` · Y2b[3] | — |
+| ☐ | taban | Sonar tutucu orta | 1 | 66 × 66 × 8 | 6 | 0,12 | PETG | arka yüzü (ray tarafı) tablada | desteksiz | sığar | `baski-analiz/parcalar[4]` · Y2b[4] | — |
+| ☐ | taban | Sonar tutucu sağ | 1 | 61 × 61 × 8 | 5 | 0,11 | PETG | arka yüzü (ray tarafı) tablada | desteksiz | sığar | `baski-analiz/parcalar[5]` · Y2b[5] | — |
+| ☐ | kabuk | Gövde alt bandı sağ | 1 | 170 × 137 × 226 | 299 | 6,23 | PETG | dik (alt kenarı tablada) | desteksiz | sığar | `baski-analiz/parcalar[6]` · Y2b[6] | Kupon B/C (ısıl gömme deliği) |
+| ☐ | kabuk | Gövde alt bandı sol | 1 | 170 × 125 × 226 | 280 | 5,84 | PETG | dik (alt kenarı tablada) | desteksiz | sığar | `baski-analiz/parcalar[7]` · Y2b[7] | Kupon B/C |
+| ☐ | kabuk | Gövde uzatma bandı 1 sağ | 1 | 170 × 137 × 170 | 224 | 4,67 | PETG | dik (alt kenarı tablada) | desteksiz | sığar | `baski-analiz/parcalar[8]` · Y2b[8] | Kupon B/C |
+| ☐ | kabuk | Gövde uzatma bandı 1 sol | 1 | 170 × 125 × 170 | 211 | 4,39 | PETG | dik (alt kenarı tablada) | desteksiz | sığar | `baski-analiz/parcalar[9]` · Y2b[9] | Kupon B/C |
+| ☐ | kabuk | Gövde uzatma bandı 2 sağ | 1 | 170 × 137 × 170 | 224 | 4,67 | PETG | dik (alt kenarı tablada) | desteksiz | sığar | `baski-analiz/parcalar[10]` · Y2b[10] | Kupon B/C |
+| ☐ | kabuk | Gövde uzatma bandı 2 sol | 1 | 170 × 125 × 170 | 211 | 4,39 | PETG | dik (alt kenarı tablada) | desteksiz | sığar | `baski-analiz/parcalar[11]` · Y2b[11] | Kupon B/C |
+| ☐ | kabuk | Gövde orta bandı sağ | 1 | 214 × 162 × 227 | 272 | 5,66 | PETG | dik (alt kenarı tablada) | desteksiz | sığar | `baski-analiz/parcalar[12]` · Y2b[12] | Kupon B/C |
+| ☐ | kabuk | Gövde orta bandı sol | 1 | 214 × 150 × 227 | 262 | 5,45 | PETG | dik (alt kenarı tablada) | desteksiz | sığar | `baski-analiz/parcalar[13]` · Y2b[13] | Kupon B/C |
+| ☐ | kabuk | Göğüs bandı sağ | 1 | 217 × 164 × 235 | 234 | 4,90 | PETG | dik (alt kenarı tablada) | **destekli**: 10,7 cm², 15,6 g; cep üst kenarı (köprü 160 mm) + z 12–15'te alt kenar çıkıntısı | sığar | `baski-analiz/parcalar[14]` · Y2b[14] | Kupon B/C; 11,6" ekran cebi |
+| ☐ | kabuk | Göğüs bandı sol | 1 | 217 × 152 × 235 | 229 | 4,79 | PETG | dik (alt kenarı tablada) | **destekli**: 3,6 cm², 14,1 g; cep üst kenarı (köprü 148 mm) | sığar | `baski-analiz/parcalar[15]` · Y2b[15] | Kupon B/C; 11,6" ekran cebi |
+| ☐ | kabuk | Omuz bandı sağ | 1 | 164 × 156 × 102 | 184 | 3,84 | PETG | ters (üst kapak tablada) | desteksiz | sığar | `baski-analiz/parcalar[16]` · Y2b[16] | Kupon B/C |
+| ☐ | kabuk | Omuz bandı sol | 1 | 156 × 152 × 102 | 178 | 3,71 | PETG | ters (üst kapak tablada) | desteksiz | sığar | `baski-analiz/parcalar[17]` · Y2b[17] | Kupon B/C |
+| ☐ | kabuk | Arka servis kapağı | 1 | 190 × 160 × 3 | 98 | 2,04 | PETG | dış yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[18]` · Y2b[18] | — |
+| ☐ | omuz | Rulman kapağı | 2 | 71 × 71 × 14 | 15–17 | 0,32–0,36 | PETG-CF | +X: x = 146 yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[59]` · Y2b[59] | 6808-2RS (kupon A) |
+| ☐ | omuz | Üst kol tüpü | 2 | 56 × 56 × 130 | 54 | 1,13 | PETG | +Y: y = -170 yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[63]` · Y2b[63] | Kupon E (tüp–pim geçmesi) |
+| ☐ | kabuk | Üst arka servis kapağı | 1 | 168 × 150 × 12 | 85 | 1,77 | PETG | dış yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[19]` · Y2b[19] | USB hub 4'lü (72 × 25 × 19) ölçüsü: hub takozu; Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır |
+| ☐ | kabuk | Göğüs ekranı çerçevesi sağ | 1 | 207 × 147 × 10 | 31 | 0,65 | PETG | arka yüzü (flanş) tablada | desteksiz | sığar | `baski-analiz/parcalar[30]` · Y2b[30] | 11,6" göğüs ekranı kasası (284,65 × 182,25); Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır |
+| ☐ | kabuk | Göğüs ekranı çerçevesi sol | 1 | 207 × 147 × 10 | 31 | 0,65 | PETG | arka yüzü (flanş) tablada | desteksiz | sığar | `baski-analiz/parcalar[31]` · Y2b[31] | 11,6" göğüs ekranı kasası (284,65 × 182,25); Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır |
+| ☐ | kabuk | Göğüs ekranı VESA taşıyıcı | 1 | 106 × 100 × 63 | 145 | 3,05 | PETG-CF | VESA plakası tablada; arka flanş destekli | **destekli**: 38,1 cm², 31,7 g; arka flanş (z 32–58) | sığar | `baski-analiz/parcalar[32]` · Y2b[32] | 11,6" göğüs ekranı VESA delikleri (yer ve derinlik doğrulanmadı, `arayuz.py:342`); Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır |
+| ☐ | kabuk | Hoparlör kabı ön halka | 1 | 46 × 46 × 7 | 3 | 0,06 | PETG | VARSAYIM kap; ön halka, düz (desteksiz) | desteksiz | sığar | `baski-analiz/parcalar[37]` · Y2b[37] | 8 Ω hoparlör (K36 stok, K6 yön); kap ölçüsü VARSAYIM; Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır |
+| ☐ | kabuk | Hoparlör kabı arka (flanşlı) | 1 | 62 × 62 × 13 | 7 | 0,15 | PETG | VARSAYIM kap; flanş yüzü tablada (desteksiz) | desteksiz | sığar | `baski-analiz/parcalar[38]` · Y2b[38] | 8 Ω hoparlör (K36, K6); VARSAYIM; Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır |
+| ☐ | kabuk | Hoparlör kelepçesi | 1 | 57 × 57 × 14 | 4 | 0,09 | PETG | VARSAYIM; köprü üst yüzü tablada, bacaklar yukarı (desteksiz) | desteksiz | sığar | `baski-analiz/parcalar[39]` · Y2b[39] | 8 Ω hoparlör (K36, K6); VARSAYIM; Parti 1'in sonunda; ilgili kalem gelip ölçülünce basılır |
 
 ## Parti 2 — Servo ve horn gelip ölçülünce
 
@@ -262,23 +275,23 @@ Montaj adımları `F4c-partiler.md`'de. **Eski analiz:** yok; tek analiz 2026-11
 
 | ☐ | Modül | Parça | Adet | Ölçü (mm) | Filament (g/adet) | Süre (sa/adet) | Malzeme | Tabla yönü | Destek | X2D | Kaynak (JSON) | Bağlı olduğu kalem |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ☐ | kabuk | S1 kaset gövdesi sağ | 1 | 112 × 111 × 6 | 10 | 0,20 | PETG | arka yüzü (x 152) tablada | desteksiz | sığar | `baski-analiz/parcalar[31]` · Y2b[31] | Kablo kalınlığı ≤ 1,4 mm (K1) |
-| ☐ | kabuk | S1 kaset kapağı sağ | 1 | 112 × 111 × 4 | 7 | 0,15 | PETG | flanş dış yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[32]` · Y2b[32] | — |
-| ☐ | kabuk | S1 kaset gövdesi sol | 1 | 112 × 111 × 6 | 10 | 0,20 | PETG | arka yüzü (x 152) tablada | desteksiz | sığar | `baski-analiz/parcalar[33]` · Y2b[33] | Kablo kalınlığı ≤ 1,4 mm (K1) |
-| ☐ | kabuk | S1 kaset kapağı sol | 1 | 112 × 111 × 4 | 7 | 0,15 | PETG | flanş dış yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[34]` · Y2b[34] | — |
-| ☐ | kafa | Servo yuvası | 1 | 88 × 88 × 43 | 152 | 3,16 | PETG-CF | dik: kulak flanşı tablada | desteksiz | sığar | `baski-analiz/parcalar[38]` · Y2b[38] | MG996R gövdesi |
-| ☐ | kafa | Rulman yuvası | 1 | 68 × 60 × 36 | 27 | 0,56 | PETG-CF | dik: kulaklar tablada, rulman yuvası yukarı | desteksiz | sığar | `baski-analiz/parcalar[39]` · Y2b[39] | 6808-2RS (kupon A) |
-| ☐ | kafa | Boyun mili | 1 | 60 × 60 × 48 | 41 | 0,85 | PETG-CF | dik: horn diski tablada, flanş yukarı (45 derece koni) | desteksiz | sığar | `baski-analiz/parcalar[40]` · Y2b[40] | Pan horn delik dizilimi |
-| ☐ | kafa | Eğme çatalı | 1 | 74 × 60 × 49 | 36 | 0,75 | PETG-CF | dik: taban tablada, duvarlar yukarı | desteksiz | sığar | `baski-analiz/parcalar[41]` · Y2b[41] | Tilt horn delik dizilimi |
-| ☐ | kafa | Boyun yükseltme adaptörü | 1 | 60 × 60 × 59 | 70 | 1,46 | PETG-CF | dik: alt flanş tablada | desteksiz | sığar | `baski-analiz/parcalar[42]` · Y2b[42] | — |
-| ☐ | dirsek | Dirsek çatalı | 2 | 74 × 72 × 74 | 97 | 2,03 | PETG-CF | ters: pim ve bilezik ucu tablada, kollar yukarı | desteksiz | sığar | `baski-analiz/parcalar[52]` · Y2b[52] | Dirsek horn delik dizilimi; kupon D1/D2 |
-| ☐ | dirsek | Ön kol gövdesi | 2 | 130 × 129 × 34 | 57 | 1,18 | PETG | ön yüzü tablada, açık arka yukarı | desteksiz | sığar | `baski-analiz/parcalar[53]` · Y2b[53] | MG996R gövdesi |
-| ☐ | dirsek | Bilek flanşı | 2 | 28 × 28 × 8 | 4 | 0,09 | PETG-CF | horn yüzü tablada, havşalar yukarı | desteksiz | sığar | `baski-analiz/parcalar[54]` · Y2b[54] | Bilek horn delik dizilimi |
-| ☐ | dirsek | El | 2 | 56 × 56 × 85 | 78 | 1,64 | PETG | ters: parmak ucu ve avuç altı tablada, yaka yukarı | desteksiz | sığar | `baski-analiz/parcalar[55]` · Y2b[55] | — |
-| ☐ | omuz | Omuz yuvası | 2 | 76 × 76 × 67 | 82–90 | 1,71–1,89 | PETG-CF | -Y: y = 25 yüzü tablada | **destekli**: 22,6 cm², 11,5 g; manşon içi + S1 penceresi | sığar | `baski-analiz/parcalar[56]` · Y2b[56] | DS3235 gövdesi, çekiç somun |
-| ☐ | omuz | Omuz göbeği | 2 | 77 × 51 × 49 | 64–71 | 1,33–1,48 | PETG-CF | +X: x = 150 yüzü tablada | **destekli**: 24,3 cm², 5,9 g; flanş altı + diş | sığar | `baski-analiz/parcalar[58]` · Y2b[58] | S1 horn delik dizilimi; kök yarıçapı r 1,5 F6a'da uygulandı (K39 DS3235 düşme ölçümü açık) |
-| ☐ | omuz | S1 kablo tamburu | 2 | 87 × 87 × 10 | 6 | 0,12 | PETG | +X: x = 152,5 yüzü tablada | **destekli**: 8,6 cm², 0,8 g; +x dudak altı | sığar | `baski-analiz/parcalar[59]` · Y2b[59] | Göbekle birlikte |
-| ☐ | omuz | Kol çatalı | 2 | 76 × 56 × 64 | 100–111 | 2,10–2,32 | PETG-CF | -Z: z = 30,5 yüzü tablada | **destekli**: 20,4 cm², 12,7 g; horn kulağı | sığar | `baski-analiz/parcalar[60]` · Y2b[60] | S2 horn delik dizilimi |
+| ☐ | kabuk | S1 kaset gövdesi sağ | 1 | 112 × 111 × 6 | 10 | 0,20 | PETG | arka yüzü (x 152) tablada | desteksiz | sığar | `baski-analiz/parcalar[33]` · Y2b[33] | Kablo kalınlığı ≤ 1,4 mm (K1) |
+| ☐ | kabuk | S1 kaset kapağı sağ | 1 | 112 × 111 × 4 | 7 | 0,15 | PETG | flanş dış yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[34]` · Y2b[34] | — |
+| ☐ | kabuk | S1 kaset gövdesi sol | 1 | 112 × 111 × 6 | 10 | 0,20 | PETG | arka yüzü (x 152) tablada | desteksiz | sığar | `baski-analiz/parcalar[35]` · Y2b[35] | Kablo kalınlığı ≤ 1,4 mm (K1) |
+| ☐ | kabuk | S1 kaset kapağı sol | 1 | 112 × 111 × 4 | 7 | 0,15 | PETG | flanş dış yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[36]` · Y2b[36] | — |
+| ☐ | kafa | Servo yuvası | 1 | 88 × 88 × 43 | 152 | 3,16 | PETG-CF | dik: kulak flanşı tablada | desteksiz | sığar | `baski-analiz/parcalar[40]` · Y2b[40] | MG996R gövdesi |
+| ☐ | kafa | Rulman yuvası | 1 | 68 × 60 × 36 | 27 | 0,56 | PETG-CF | dik: kulaklar tablada, rulman yuvası yukarı | desteksiz | sığar | `baski-analiz/parcalar[41]` · Y2b[41] | 6808-2RS (kupon A) |
+| ☐ | kafa | Boyun mili | 1 | 60 × 60 × 48 | 41 | 0,85 | PETG-CF | dik: horn diski tablada, flanş yukarı (45 derece koni) | desteksiz | sığar | `baski-analiz/parcalar[42]` · Y2b[42] | Pan horn delik dizilimi |
+| ☐ | kafa | Eğme çatalı | 1 | 74 × 60 × 49 | 36 | 0,75 | PETG-CF | dik: taban tablada, duvarlar yukarı | desteksiz | sığar | `baski-analiz/parcalar[43]` · Y2b[43] | Tilt horn delik dizilimi |
+| ☐ | kafa | Boyun yükseltme adaptörü | 1 | 60 × 60 × 59 | 70 | 1,46 | PETG-CF | dik: alt flanş tablada | desteksiz | sığar | `baski-analiz/parcalar[44]` · Y2b[44] | — |
+| ☐ | dirsek | Dirsek çatalı | 2 | 74 × 72 × 74 | 97 | 2,03 | PETG-CF | ters: pim ve bilezik ucu tablada, kollar yukarı | desteksiz | sığar | `baski-analiz/parcalar[54]` · Y2b[54] | Dirsek horn delik dizilimi; kupon D1/D2 |
+| ☐ | dirsek | Ön kol gövdesi | 2 | 130 × 129 × 34 | 57 | 1,18 | PETG | ön yüzü tablada, açık arka yukarı | desteksiz | sığar | `baski-analiz/parcalar[55]` · Y2b[55] | MG996R gövdesi |
+| ☐ | dirsek | Bilek flanşı | 2 | 28 × 28 × 8 | 4 | 0,09 | PETG-CF | horn yüzü tablada, havşalar yukarı | desteksiz | sığar | `baski-analiz/parcalar[56]` · Y2b[56] | Bilek horn delik dizilimi |
+| ☐ | dirsek | El | 2 | 56 × 56 × 85 | 78 | 1,64 | PETG | ters: parmak ucu ve avuç altı tablada, yaka yukarı | desteksiz | sığar | `baski-analiz/parcalar[57]` · Y2b[57] | — |
+| ☐ | omuz | Omuz yuvası | 2 | 76 × 76 × 67 | 82–90 | 1,71–1,89 | PETG-CF | -Y: y = 25 yüzü tablada | **destekli**: 22,6 cm², 11,5 g; manşon içi + S1 penceresi | sığar | `baski-analiz/parcalar[58]` · Y2b[58] | DS3235 gövdesi, çekiç somun |
+| ☐ | omuz | Omuz göbeği | 2 | 77 × 51 × 49 | 64–71 | 1,33–1,48 | PETG-CF | +X: x = 150 yüzü tablada | **destekli**: 24,3 cm², 5,9 g; flanş altı + diş | sığar | `baski-analiz/parcalar[60]` · Y2b[60] | S1 horn delik dizilimi; kök yarıçapı r 1,5 F6a'da uygulandı (K39 DS3235 düşme ölçümü açık) |
+| ☐ | omuz | S1 kablo tamburu | 2 | 87 × 87 × 10 | 6 | 0,12 | PETG | +X: x = 152,5 yüzü tablada | **destekli**: 8,6 cm², 0,8 g; +x dudak altı | sığar | `baski-analiz/parcalar[61]` · Y2b[61] | Göbekle birlikte |
+| ☐ | omuz | Kol çatalı | 2 | 76 × 56 × 64 | 100–111 | 2,10–2,32 | PETG-CF | -Z: z = 30,5 yüzü tablada | **destekli**: 20,4 cm², 12,7 g; horn kulağı | sığar | `baski-analiz/parcalar[62]` · Y2b[62] | S2 horn delik dizilimi |
 
 ## Parti 3 — 10,1" QLED yüz ekranı gelip ölçülünce
 
@@ -286,30 +299,32 @@ Montaj adımları `F4c-partiler.md`'de. **Eski analiz:** yok; tek analiz 2026-11
 
 | ☐ | Modül | Parça | Adet | Ölçü (mm) | Filament (g/adet) | Süre (sa/adet) | Malzeme | Tabla yönü | Destek | X2D | Kaynak (JSON) | Bağlı olduğu kalem |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| ☐ | kafa | Yüz kabuğu (ön) sağ | 1 | 215 × 151 × 37 | 91 | 1,90 | PETG | ön yüzü tablada | **destekli**: 12,3 cm², 0,4 g; dikiş dili (karar 29.10) | sığar | `baski-analiz/parcalar[43]` · Y2b[43] | QLED (K32) + K2 (P6.1) |
-| ☐ | kafa | Yüz kabuğu (ön) sol | 1 | 215 × 135 × 37 | 84 | 1,76 | PETG | ön yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[44]` · Y2b[44] | QLED (K32) + K2 (P6.1) |
-| ☐ | kafa | Arka kafa kabuğu sağ | 1 | 215 × 151 × 107 | 230 | 4,80 | PETG | arka yüzü tablada | **destekli**: 30,6 cm², 0,9 g; dikiş dili (karar 29.10) | sığar | `baski-analiz/parcalar[45]` · Y2b[45] | QLED (K32) + K2 (P6.1) |
-| ☐ | kafa | Arka kafa kabuğu sol | 1 | 215 × 135 × 107 | 215 | 4,49 | PETG | arka yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[46]` · Y2b[46] | QLED (K32) + K2 (P6.1) |
-| ☐ | kafa | Kafa iskeleti | 1 | 224 × 115 × 48 | 128 | 2,66 | PETG | ters: tabla tablada, yanaklar yukarı | desteksiz | sığar | `baski-analiz/parcalar[47]` · Y2b[47] | QLED + kamera delikleri; K2 (P6.1) |
-| ☐ | kafa | Ekran tırnağı üst sağ | 1 | 24 × 14 × 8 | 2 | 0,03 | PETG | plaka tablada, dil yukarı (desteksiz) | desteksiz | sığar | `baski-analiz/parcalar[48]` · Y2b[48] | QLED kasa ölçüsü |
-| ☐ | kafa | Ekran tırnağı üst sol | 1 | 24 × 14 × 8 | 2 | 0,03 | PETG | plaka tablada, dil yukarı (desteksiz) | desteksiz | sığar | `baski-analiz/parcalar[49]` · Y2b[49] | QLED kasa ölçüsü |
-| ☐ | kafa | Ekran tırnağı alt sağ | 1 | 24 × 14 × 8 | 2 | 0,03 | PETG | plaka tablada, dil yukarı (desteksiz) | desteksiz | sığar | `baski-analiz/parcalar[50]` · Y2b[50] | QLED kasa ölçüsü |
-| ☐ | kafa | Ekran tırnağı alt sol | 1 | 24 × 14 × 8 | 2 | 0,03 | PETG | plaka tablada, dil yukarı (desteksiz) | desteksiz | sığar | `baski-analiz/parcalar[51]` · Y2b[51] | QLED kasa ölçüsü |
+| ☐ | kafa | Yüz kabuğu (ön) sağ | 1 | 215 × 151 × 37 | 91 | 1,90 | PETG | ön yüzü tablada | **destekli**: 12,3 cm², 0,4 g; dikiş dili (karar 29.10) | sığar | `baski-analiz/parcalar[45]` · Y2b[45] | QLED (K32) + K2 (P6.1) |
+| ☐ | kafa | Yüz kabuğu (ön) sol | 1 | 215 × 135 × 37 | 84 | 1,76 | PETG | ön yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[46]` · Y2b[46] | QLED (K32) + K2 (P6.1) |
+| ☐ | kafa | Arka kafa kabuğu sağ | 1 | 215 × 151 × 107 | 230 | 4,80 | PETG | arka yüzü tablada | **destekli**: 30,6 cm², 0,9 g; dikiş dili (karar 29.10) | sığar | `baski-analiz/parcalar[47]` · Y2b[47] | QLED (K32) + K2 (P6.1) |
+| ☐ | kafa | Arka kafa kabuğu sol | 1 | 215 × 135 × 107 | 215 | 4,49 | PETG | arka yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[48]` · Y2b[48] | QLED (K32) + K2 (P6.1) |
+| ☐ | kafa | Kafa iskeleti | 1 | 224 × 115 × 48 | 128 | 2,66 | PETG | ters: tabla tablada, yanaklar yukarı | desteksiz | sığar | `baski-analiz/parcalar[49]` · Y2b[49] | QLED + kamera delikleri; K2 (P6.1) |
+| ☐ | kafa | Ekran tırnağı üst sağ | 1 | 24 × 14 × 8 | 2 | 0,03 | PETG | plaka tablada, dil yukarı (desteksiz) | desteksiz | sığar | `baski-analiz/parcalar[50]` · Y2b[50] | QLED kasa ölçüsü |
+| ☐ | kafa | Ekran tırnağı üst sol | 1 | 24 × 14 × 8 | 2 | 0,03 | PETG | plaka tablada, dil yukarı (desteksiz) | desteksiz | sığar | `baski-analiz/parcalar[51]` · Y2b[51] | QLED kasa ölçüsü |
+| ☐ | kafa | Ekran tırnağı alt sağ | 1 | 24 × 14 × 8 | 2 | 0,03 | PETG | plaka tablada, dil yukarı (desteksiz) | desteksiz | sığar | `baski-analiz/parcalar[52]` · Y2b[52] | QLED kasa ölçüsü |
+| ☐ | kafa | Ekran tırnağı alt sol | 1 | 24 × 14 × 8 | 2 | 0,03 | PETG | plaka tablada, dil yukarı (desteksiz) | desteksiz | sığar | `baski-analiz/parcalar[53]` · Y2b[53] | QLED kasa ölçüsü |
 
 ## Parti 4 — Etek tasarım kararından sonra (M6 CAD)
 
-11 adet · 2,21 kg filament (PETG 2,21, PETG-CF 0,00) · ≈ 46,0 saat. Bağımlılık: E7 etek havalandırma yarıkları (elektrik.md:505); akü (K30) → akü takozu.
+13 adet · 2,26 kg filament (PETG 2,26, PETG-CF 0,00) · ≈ 47,2 saat. Bağımlılık: E7 etek havalandırma yarıkları (elektrik.md:505); akü (K30) → akü takozu.
 
 | ☐ | Modül | Parça | Adet | Ölçü (mm) | Filament (g/adet) | Süre (sa/adet) | Malzeme | Tabla yönü | Destek | X2D | Kaynak (JSON) | Bağlı olduğu kalem |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | ☐ | taban | Akü ön takozu | 1 | 125 × 125 × 25 | 72 | 1,50 | PETG | alt yüzü tablada | desteksiz | sığar | `baski-analiz/parcalar[0]` · Y2b[0] | Akü (K30) gelince ölçü teyidi; Parti 1 arasında basılır (M6 adım 4 taban aşamasında lazım; proje-plani.md kritik yol 4–5) |
-| ☐ | kabuk | Etek arka sağ | 1 | 234 × 190 × 227 | 366 | 7,62 | PETG | ters (üst plakası tablada) | desteksiz | sığar | `baski-analiz/parcalar[18]` · Y2b[18] | E7 havalandırma yarıkları CAD'e; ana anahtar (M6 K7) + XT60 + H1 (K5) |
-| ☐ | kabuk | Etek arka sol | 1 | 222 × 175 × 227 | 362 | 7,54 | PETG | ters (üst plakası tablada) | desteksiz | sığar | `baski-analiz/parcalar[19]` · Y2b[19] | E7 havalandırma yarıkları CAD'e; ana anahtar (M6 K7) + XT60 + H1 (K5) |
-| ☐ | kabuk | Etek orta sağ | 1 | 222 × 199 × 227 | 216 | 4,51 | PETG | ters (üst plakası tablada) | desteksiz | sığar | `baski-analiz/parcalar[20]` · Y2b[20] | E7 havalandırma kararı |
-| ☐ | kabuk | Etek orta sol | 1 | 222 × 199 × 227 | 216 | 4,51 | PETG | ters (üst plakası tablada) | desteksiz | sığar | `baski-analiz/parcalar[21]` · Y2b[21] | E7 havalandırma kararı |
-| ☐ | kabuk | Etek ön sağ | 1 | 234 × 190 × 227 | 372 | 7,75 | PETG | ters (üst plakası tablada) | desteksiz | sığar | `baski-analiz/parcalar[22]` · Y2b[22] | E7 havalandırma kararı |
-| ☐ | kabuk | Etek ön sol | 1 | 222 × 175 × 227 | 363 | 7,55 | PETG | ters (üst plakası tablada) | desteksiz | sığar | `baski-analiz/parcalar[23]` · Y2b[23] | E7 havalandırma kararı |
-| ☐ | kabuk | Etek dolgu şeridi arka | 1 | 192 × 88 × 227 | 98 | 2,04 | PETG | ters (üst plakası tablada) | desteksiz | sığar | `baski-analiz/parcalar[24]` · Y2b[24] | — |
-| ☐ | kabuk | Etek dolgu şeridi ön | 1 | 192 × 88 × 227 | 107 | 2,24 | PETG | ters (üst plakası tablada) | desteksiz | sığar | `baski-analiz/parcalar[25]` · Y2b[25] | — |
-| ☐ | kabuk | Etek servis kapağı H1 (sigorta kutusu) | 1 | 111 × 111 × 3 | 24 | 0,51 | PETG | düz (alt yüzü tablada) | desteksiz | sığar | `baski-analiz/parcalar[26]` · Y2b[26] | — |
-| ☐ | kabuk | Etek servis kapağı H2 (ana sigorta) | 1 | 70 × 56 × 3 | 14 | 0,28 | PETG | düz (alt yüzü tablada) | desteksiz | sığar | `baski-analiz/parcalar[27]` · Y2b[27] | — |
+| ☐ | taban | Bara tutucusu yildiz barasi (GND) (5 saplama) | 1 | 109 × 109 × 10 | 30 | 0,62 | PETG | üst yüzü tablada (altigen cepler ve insert delikleri yukarı) | desteksiz | sığar | `baski-analiz/parcalar[1]` · Y2b[1] | Bara saplaması M5 × 25 altıgen baş (DIN 933, VARSAYIM) gelince cep teyidi |
+| ☐ | taban | Bara tutucusu anahtarli bara (+) (4 saplama) | 1 | 92 × 92 × 10 | 24 | 0,50 | PETG | üst yüzü tablada (altigen cepler ve insert delikleri yukarı) | desteksiz | sığar | `baski-analiz/parcalar[2]` · Y2b[2] | Bara saplaması M5 × 25 altıgen baş (DIN 933, VARSAYIM) gelince cep teyidi |
+| ☐ | kabuk | Etek arka sağ | 1 | 234 × 190 × 227 | 366 | 7,62 | PETG | ters (üst plakası tablada) | desteksiz | sığar | `baski-analiz/parcalar[20]` · Y2b[20] | E7 havalandırma yarıkları CAD'e; ana anahtar (M6 K7) + XT60 + H1 (K5) |
+| ☐ | kabuk | Etek arka sol | 1 | 222 × 175 × 227 | 362 | 7,54 | PETG | ters (üst plakası tablada) | desteksiz | sığar | `baski-analiz/parcalar[21]` · Y2b[21] | E7 havalandırma yarıkları CAD'e; ana anahtar (M6 K7) + XT60 + H1 (K5) |
+| ☐ | kabuk | Etek orta sağ | 1 | 222 × 199 × 227 | 216 | 4,51 | PETG | ters (üst plakası tablada) | desteksiz | sığar | `baski-analiz/parcalar[22]` · Y2b[22] | E7 havalandırma kararı |
+| ☐ | kabuk | Etek orta sol | 1 | 222 × 199 × 227 | 216 | 4,51 | PETG | ters (üst plakası tablada) | desteksiz | sığar | `baski-analiz/parcalar[23]` · Y2b[23] | E7 havalandırma kararı |
+| ☐ | kabuk | Etek ön sağ | 1 | 234 × 190 × 227 | 372 | 7,75 | PETG | ters (üst plakası tablada) | desteksiz | sığar | `baski-analiz/parcalar[24]` · Y2b[24] | E7 havalandırma kararı |
+| ☐ | kabuk | Etek ön sol | 1 | 222 × 175 × 227 | 363 | 7,55 | PETG | ters (üst plakası tablada) | desteksiz | sığar | `baski-analiz/parcalar[25]` · Y2b[25] | E7 havalandırma kararı |
+| ☐ | kabuk | Etek dolgu şeridi arka | 1 | 192 × 88 × 227 | 98 | 2,04 | PETG | ters (üst plakası tablada) | desteksiz | sığar | `baski-analiz/parcalar[26]` · Y2b[26] | — |
+| ☐ | kabuk | Etek dolgu şeridi ön | 1 | 192 × 88 × 227 | 107 | 2,24 | PETG | ters (üst plakası tablada) | desteksiz | sığar | `baski-analiz/parcalar[27]` · Y2b[27] | — |
+| ☐ | kabuk | Etek servis kapağı H1 (sigorta kutusu) | 1 | 111 × 111 × 3 | 24 | 0,51 | PETG | düz (alt yüzü tablada) | desteksiz | sığar | `baski-analiz/parcalar[28]` · Y2b[28] | — |
+| ☐ | kabuk | Etek servis kapağı H2 (ana sigorta) | 1 | 70 × 56 × 3 | 14 | 0,28 | PETG | düz (alt yüzü tablada) | desteksiz | sığar | `baski-analiz/parcalar[29]` · Y2b[29] | — |
